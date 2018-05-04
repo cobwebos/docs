@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bfbcf8ff3f24b69b49b9a2bd5d567e1ead57d974
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 在应用程序的整个生命周期内，你可能需要修改或更新你的虚拟机规模集。 这些更新可能包括更新规模集的配置，或更改应用程序配置。 本文介绍了如何使用 REST API、Azure PowerShell 或 Azure CLI 2.0 修改现有规模集。
@@ -347,6 +347,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - 可用性区域
 - Image reference publisher
 - image reference offer
+- 托管 OS 磁盘存储帐户类型
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>只能在当前值的基础上更改的属性
 某些属性可以更改，但也有例外，具体取决于当前值。 这些属性包括：

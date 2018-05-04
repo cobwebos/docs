@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights 遥测关联 | Microsoft 文档"
-description: "Application Insights 遥测关联"
+title: Azure Application Insights 遥测关联 | Microsoft 文档
+description: Application Insights 遥测关联
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
@@ -10,13 +10,13 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9adecca35524962402d46169c531d135d0772bbd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -103,6 +103,31 @@ ASP.NET Core 2.0 支持提取 Http 标头和启动新的活动。
 ASP.NET Classic 有一个新的 Http 模块 [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)。 此模块使用 DiagnosticsSource 实现遥测关联。 它会基于传入的请求标头启动活动。 它还会关联不同请求处理阶段的遥测， 即使每个 IIS 处理阶段在不同的管理线程上运行，它也能做到这一点。
 
 从版本 `2.4.0-beta1` 开始，Application Insights SDK 使用 DiagnosticsSource 和 Activity 收集遥测数据并将其与当前活动相关联。 
+
+<a name="java-correlation"></a>
+## <a name="telemetry-correlation-in-the-java-sdk"></a>Java SDK 中的遥测关联
+从版本 `2.0.0` 开始，[Application Insights Java SDK](app-insights-java-get-started.md) 支持自动关联遥测。 对于所有在请求范围内发出的遥测（跟踪、异常、自定义事件等），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还负责传播关联标头（如上所述），前提是 [Java SDK 代理](app-insights-java-agent.md)已配置。 注意：只有通过 Apache HTTP 客户端进行的调用才能使用关联功能。 如果使用 Spring Rest 模板或 Feign，则二者实际上都可以与 Apache HTTP 客户端配合使用。
+
+目前不支持跨消息传送技术（例如，Kafka、RabbitMQ、Azure 服务总线）自动进行上下文传播。 但是，可以通过 `trackDependency` 和 `trackRequest` API 手动编码此类方案，让依赖项遥测代表由生成者排队的消息，让请求代表由使用者除了的消息。 在这种情况下，`operation_id` 和 `operation_parentId` 都应在消息的属性中传播。
+
+<a name="java-role-name"></a>
+### <a name="role-name"></a>角色名称
+有时候，可能需要对组件名称在[应用程序映射](app-insights-app-map.md)中的显示方式进行自定义。 为此，可执行以下操作之一，以便手动设置 `cloud_roleName`：
+
+使用遥测初始化表达式（所有遥测项都进行标记）
+```Java
+public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
+
+    @Override
+    protected void onInitializeTelemetry(Telemetry telemetry) {
+        telemetry.getContext().getTags().put(ContextTagKeys.getKeys().getDeviceRoleName(), "My Component Name");
+    }
+  }
+```
+使用[设备上下文类](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context)（仅标记此遥测项）
+```Java
+telemetry.getContext().getDevice().setRoleName("My Component Name");
+```
 
 ## <a name="next-steps"></a>后续步骤
 

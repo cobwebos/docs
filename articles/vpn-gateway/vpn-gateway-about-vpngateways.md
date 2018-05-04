@@ -1,45 +1,44 @@
 ---
-title: VPN 网关概述：创建到 Azure 虚拟网络的跨界 VPN 连接 | Microsoft 文档
-description: 本文介绍了什么是 VPN 网关，并说明了在使用基于 Internet 的 VPN 连接时，如何通过各种方式连接到 Azure 虚拟网络。 随附基本连接配置示意图。
+title: Azure VPN 网关 | Microsoft Docs
+description: 了解什么是 VPN 网关，以及可以通过什么方式将 VPN 网关用于连接到 Azure 虚拟网络。 包括 IPsec/IKE 站点到站点跨界解决方案和 VNet 到 VNet 解决方案，以及点到站点 VPN。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
+manager: jeconnoc
 editor: ''
-tags: azure-resource-manager,azure-service-management
+tags: azure-resource-manager
+Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 405af7d1191e8ea3c0ba1c526f0c5a526aef795b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 30a2029fdf169747570d8c07915270ffae8ef8f5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="about-vpn-gateway"></a>关于 VPN 网关
+# <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 
-VPN 网关是一种虚拟网络网关，可通过公共连接将加密流量发送到本地位置。 也可使用 VPN 网关在基于 Microsoft 网络的 Azure 虚拟网络之间发送加密流量。 若要在 Azure 虚拟网络与本地站点之间发送加密网络流量，必须为虚拟网络创建 VPN 网关。
-
-每个虚拟网络只能有一个 VPN 网关，但是，可以创建连接到相同 VPN 网关的多个连接。 此示例演示了一种多站点连接配置。 与同一个 VPN 网关建立多个连接时，所有 VPN 隧道（包括点到站点 VPN）将共享该网关可用的带宽。
+VPN 网关是特定类型的虚拟网关，用于跨公共 Internet 在 Azure 虚拟网络和本地位置之间发送加密的流量。 也可使用 VPN 网关在基于 Microsoft 网络的 Azure 虚拟网络之间发送加密流量。 每个虚拟网络只能有一个 VPN 网关。 但是，可以创建连接到相同 VPN 网关的多个连接。 与同一个 VPN 网关建立多个连接时，所有 VPN 隧道共享可用的网关带宽。
 
 ## <a name="whatis"></a>什么是虚拟网关？
 
-虚拟网络网关由两个或多个部署到名为 GatewaySubnet 的特定子网的虚拟机组成。 创建虚拟网络网关时，将创建位于 GatewaySubnet 的 VM。 虚拟网络网关 VM 配置为包含特定于该网关的路由表和网关服务。 无法直接配置属于虚拟网络网关的 VM，且绝不应该将其他资源部署到 GatewaySubnet。
+虚拟网关由两个或多个部署到名为“网关子网”的特定子网的虚拟机组成。 创建虚拟网关时，将创建位于网关子网中的 VM。 虚拟网络网关 VM 配置为包含特定于该网关的路由表和网关服务。 无法直接配置属于虚拟网关的 VM，且绝不应该将其他资源部署到网关子网。
 
-如果使用网关类型“VPN”创建虚拟网络网关，则会创建可加密流量的特定类型的虚拟网络网关，即 VPN 网关。 VPN 网关可能需要长达 45 分钟才能创建完。 这是因为，适用于 VPN 网关的 VM 是部署到 GatewaySubnet 且使用指定的设置进行配置的。 所选网关 SKU 决定了 VM 功能的强大程度。
+创建 VPN 网关可能需要多达 45 分钟才能完成。 在创建 VPN 网关时，请将网关 VM 部署到网关子网，并使用指定的设置进行配置。 在创建 VPN 网关以后，即在一个 VPN 网关和另一个 VPN 网关之间（VNet 到 VNet）创建 IPsec/IKE VPN 隧道连接，或者在 VPN 网关和本地 VPN 设备（站点到站点）之间创建跨界 IPsec/IKE VPN 隧道连接。 也可创建点到站点 VPN 连接（基于 IKEv2 或 SSTP 的 VPN），以便从远程位置（例如从会议或家）连接到虚拟网络。
 
 ## <a name="configuring"></a>配置 VPN 网关
 
-VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资源可以单独配置，虽然在某些情况下它们必须按特定顺序配置。
+VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资源可以单独配置，虽然某些资源必须按特定顺序配置。
 
 ### <a name="settings"></a>设置
 
-为每个资源选择的设置对于成功创建连接至关重要。 有关 VPN 网关的各个资源和设置的信息，请参阅 [关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。 本文包含的信息有助于了解网关类型、VPN 类型、连接类型、网关子网、本地网络网关，以及可能需要考虑的其他各项资源设置。
+为每个资源选择的设置对于成功创建连接至关重要。 有关 VPN 网关的各个资源和设置的信息，请参阅 [关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。 本文包含的信息有助于了解网关类型、网关 SKU、VPN 类型、连接类型、网关子网、本地网关，以及可能需要考虑的其他各项资源设置。
 
 ### <a name="tools"></a>部署工具
 
@@ -47,7 +46,7 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 
 ### <a name="models"></a>部署模型
 
-配置 VPN 网关时，采取的步骤取决于用于创建虚拟网络的部署模型。 例如，如果使用经典部署模型创建的 VNet，则使用经典部署模型的指导原则和说明来创建及配置 VPN 网关设置。 有关部署模型的详细信息，请参阅 [了解 Resource Manager 和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。
+目前有两种适用于 Azure 的部署模型。 配置 VPN 网关时，采取的步骤取决于用于创建虚拟网络的部署模型。 例如，如果使用经典部署模型创建的 VNet，则使用经典部署模型的指导原则和说明来创建及配置 VPN 网关设置。 有关部署模型的详细信息，请参阅 [了解 Resource Manager 和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。
 
 ### <a name="planningtable"></a>规划表
 
@@ -83,7 +82,7 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 
 ### <a name="Multi"></a>多站点
 
-这种类型的连接是站点到站点连接的另一种形式。 可从虚拟网络网关创建多个 VPN 连接（通常是连接到多个本地站点）。 使用多个连接时，必须使用 RouteBased VPN 类型（使用经典 VNet 时称为动态网关）。 由于每个虚拟网络只能有一个 VPN 网关，因此通过网关的所有连接都共享可用带宽。 这通常称为“多站点”连接。
+这种类型的连接是站点到站点连接的另一种形式。 可从虚拟网络网关创建多个 VPN 连接（通常是连接到多个本地站点）。 使用多个连接时，必须使用 RouteBased VPN 类型（使用经典 VNet 时称为动态网关）。 由于每个虚拟网络只能有一个 VPN 网关，因此通过网关的所有连接都共享可用带宽。 此类连接通常称为“多站点”连接。
 
 ![Azure VPN 网关多站点连接示例](./media/vpn-gateway-about-vpngateways/vpngateway-multisite-connection-diagram.png)
 
@@ -130,11 +129,11 @@ Azure 当前有两种部署模型：经典模型和 Resource Manager 模型。 �
 
 ## <a name="ExpressRoute"></a>ExpressRoute（专用连接）
 
-使用 Microsoft Azure ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。
+使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。
 
 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。
 
-ExpressRoute 连接不使用 VPN 网关，不过，它确实会使用虚拟网络网关作为其所需配置的一部分。 在 ExpressRoute 连接中，虚拟网络网关配置了网关类型“ExpressRoute”，而不是“Vpn”。 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)。
+ExpressRoute 连接使用虚拟网关作为其所需配置的一部分。 在 ExpressRoute 连接中，虚拟网络网关配置了网关类型“ExpressRoute”，而不是“Vpn”。 虽然经 ExpressRoute 线路传送的流量默认不加密，但可以创建一项解决方案，通过 ExpressRoute 线路来发送加密的流量。 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)。
 
 ## <a name="coexisting"></a>站点到站点和 ExpressRoute 共存连接
 

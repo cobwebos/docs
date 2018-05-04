@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: damaerte
-ms.openlocfilehash: 5c4cb6230d8509830d25caaf497e4e63ac7e5806
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: cd1582697307219bf3710139c6b44b5957b176e4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>PowerShell in Azure Cloud Shell（预览版）的功能和工具
 
@@ -77,7 +77,7 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 安装完成后，模块会自动持久保存在不同的 Cloud Shell 会话中。
 
 > [!TIP]
-> 用户安装的模块保存在 `$Home\CloudDrive\.pscloudshell\WindowsPowerShell` 文件夹中。 在用户的 documents 文件夹 (`$home\Documents\WindowsPowerShell`) 中创建此文件夹的符号链接。
+> 用户安装的模块保存在 `$Home\clouddrive\.pscloudshell\WindowsPowerShell` 文件夹中。 在用户的 documents 文件夹 (`$home\Documents\WindowsPowerShell`) 中创建此文件夹的符号链接。
 
 ![](media/features-powershell/powershellget-module.png)
 
@@ -90,7 +90,7 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 
 |**类别**    |**Name**                                 |
 |----------------|-----------------------------------------|
-|Azure 工具     |[Azure PowerShell (5.6.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.30)](https://docs.microsoft.com/cli/azure)|
+|Azure 工具     |[Azure PowerShell (5.7.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.31)](https://docs.microsoft.com/cli/azure)|
 |文本编辑器    |vim<br> nano                             |
 |包管理器 |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |源代码管理  |git                                      |
@@ -99,11 +99,11 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 
 ## <a name="language-support"></a>语言支持
 
-|语言|**版本**|
+|**语言**|**版本**|
 |------------|-----------|
 |.NET        |4.6        |
-|Node.js     |6.10       |
-|PowerShell  |5.1 和 [6.0.2](https://github.com/PowerShell/powershell/releases)       |
+|Node.js     |8.9.4       |
+|PowerShell  |5.1 和 [6.1.0-preview.1](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>后续步骤

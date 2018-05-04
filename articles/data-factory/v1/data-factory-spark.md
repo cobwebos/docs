@@ -1,11 +1,11 @@
 ---
-title: "从 Azure 数据工厂调用 Spark 程序 | Microsoft Docs"
-description: "了解如何使用 MapReduce 活动从 Azure 数据工厂调用 Spark 程序。"
+title: 从 Azure 数据工厂调用 Spark 程序 | Microsoft Docs
+description: 了解如何使用 MapReduce 活动从 Azure 数据工厂调用 Spark 程序。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b39e6012365c426e95a38d5c5a40790f584ba473
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9df8b0987378fef37c7ca8f24070a88cbfc42f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
 
@@ -59,7 +59,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 2. 遵循[在 HDInsight 中创建 Spark 群集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)教程中的说明在 HDInsight 中创建一个 Spark 群集。 将在步骤 1 中创建的存储帐户与此群集相关联。
 
-3. 下载并查看位于以下网址的 Python 脚本文件 **test.py**：[https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py)。
+3. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) 的 Python 脚本文件 **test.py**。
 
 4. 将 **test.py** 上传到 Blob 存储中 **adfspark** 容器中的 **pyFiles** 文件夹。 如果该容器和文件夹不存在，则创建它们。
 
@@ -81,10 +81,10 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 6. 选中“固定到仪表板”复选框。
 
-7. 选择“创建”。
+7. 选择**创建**。
 
    > [!IMPORTANT]
-   > 只有订阅/资源组级别的[数据工厂参与者](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor)角色成员才能创建数据工厂实例。
+   > 只有订阅/资源组级别的[数据工厂参与者](../../role-based-access-control/built-in-roles.md#data-factory-contributor)角色成员才能创建数据工厂实例。
 
 8. 此时可在 Azure 门户的仪表板中看到所创建的数据工厂。
 
@@ -127,7 +127,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
     c. 指定该用户的密码。
 
-    d.单击“下一步”。 指定与 HDInsight Spark 群集关联的存储链接服务。 在此示例中，链接服务为 AzureStorageLinkedService。
+    d. 指定与 HDInsight Spark 群集关联的存储链接服务。 在此示例中，链接服务为 AzureStorageLinkedService。
 
     ```json
     {
@@ -224,7 +224,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
     c. **entryFilePath** 属性设置为 **test.py**，这是 Python 文件。
 
-    d.单击“下一步”。 **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（无论成功还是失败）。
+    d. **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（无论成功还是失败）。
 
     > [!IMPORTANT]
     > 在生产环境中，除非要排查问题，否则我们不建议将此属性设置为 `Always`。

@@ -1,12 +1,12 @@
 ---
-title: "Azure 堆栈上的 app Service： 容错域更新 |Microsoft 文档"
-description: "如何重新 Azure 堆栈上的 Azure App Service 发布跨容错域"
+title: Azure Stack 上的应用服务：容错域更新 | Microsoft Docs
+description: 如何跨容错域在 Azure Stack 上重新分配 Azure 应用服务
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 851747263879aa89fabe8b168876238a004ea8b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 42adef66fb1b1141ab44aab3a1ccdaae022202b5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>如何重新 Azure 堆栈上的 Azure App Service 发布跨容错域
+# <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>如何跨容错域在 Azure Stack 上重新分配 Azure 应用服务
 
 *适用于：Azure Stack 集成系统*
 
-利用 1802年更新中，Azure 堆栈现在支持工作负荷的分布跨容错域上，一项功能，这很关键的高可用性。
+1802 更新推出后，Azure Stack 现在支持跨容错域分配工作负荷，这对于高可用性而言是一项很重要的功能。
 
 > [!IMPORTANT]
-> 您必须已更新你的 Azure 堆栈集成系统到 1802 能够利用的容错域支持。  本文档仅适用于在 1802年更新之前完成的应用程序服务资源提供程序部署。  如果你部署 Azure 堆栈上的 App Service 是 1802年更新已应用于 Azure 堆栈后，资源提供程序已分布在容错域。
+> 必须将 Azure Stack 集成系统更新为 1802 才能利用容错域支持。  本文档仅适用于在 1802 更新之前已完成的应用服务资源提供程序部署。  如果在将 1802 更新应用到 Azure Stack 之后才部署 Azure Stack 上的应用服务，则资源提供程序已跨容错域分配。
 >
 >
 
-## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>跨容错域重新平衡的应用程序服务资源提供程序
+## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>跨容错域重新均衡应用服务资源提供程序
 
-若要重新分发应用程序服务资源提供程序部署缩放集，必须执行以下步骤，为每个缩放集。  默认情况下 scaleset 名称是：
+若要为应用服务资源提供程序重新分配部署的规模集，必须针对每个规模集执行以下步骤。  默认情况下，规模集名称为：
 
 * ManagementServersScaleSet
 * FrontEndsScaleSet
@@ -44,18 +44,18 @@ ms.lasthandoff: 03/16/2018
 * LargeWorkerTierScaleSet
 
 > [!NOTE]
-> 如果你不具有任何实例部署在某些辅助层缩放集，你不需要重新平衡这些缩放集。  当你在将来缩放它们将正确平衡缩放集。
+> 如果某些辅助角色层规模集中未部署任何实例，则无需重新均衡这些规模集。  以后在缩放规模集时，规模集将会正确均衡。
 >
 >
 
-1. 浏览到 Azure 的堆栈管理员门户中虚拟机规模集。  作为 App Service 部署的一部分部署的现有缩放集将列出与实例计数信息。
+1. 在 Azure Stack 管理员门户中浏览到“虚拟机规模集”。  部署为应用服务部署一部分的现有规模集将连同实例计数信息一起列出。
 
-    ![虚拟机缩放集 UX 中列出的 azure 应用程序服务缩放集][1]
+    ![列在虚拟机规模集 UX 中的 Azure 应用服务规模集][1]
 
-2. 下一步横向扩展每个组中。  例如，如果你有三个现有实例规模集中你必须向外扩展到 6，以便将跨容错域设置的三个新实例。
-    a. [设置 PowerShell 中的 Azure 堆栈管理员环境](azure-stack-powershell-configure-admin.md)b。 使用此示例向外缩放集扩展：
+2. 接下来横向扩展每个规模集。  例如，如果规模集中有 3 个现有实例，则必须横向扩展为 6 个，以便跨容错域预配 3 个新实例。
+    a. [在 PowerShell 中设置 Azure Stack 管理环境](azure-stack-powershell-configure-admin.md) b. 使用以下示例来横向扩展规模集：
         ```powershell
-                Login-AzureRMAccount -EnvironmentName AzureStackAdmin 
+                Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
 
                 # Get current scale set
                 $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"
@@ -65,17 +65,17 @@ ms.lasthandoff: 03/16/2018
                 Update-AzureRmVmss -ResourceGroupName "AppService.local" -Name "SmallWorkerTierScaleSet" -VirtualMachineScaleSet $vmss
         '''
 > [!NOTE]
-> 此步骤可能需要数小时才能完成，具体取决于角色的类型和实例数。
+> 根据角色类型和实例数目，此步骤可能需要几小时才能完成。
 >
 >
 
-3. 监视应用程序服务管理角色边栏选项卡中的新角色实例的状态。  通过单击列表中的角色类型检查单个角色实例的状态
+3. 在“应用服务管理角色”边栏选项卡中监视新角色实例的状态。  在列表中单击角色类型，检查各个角色实例的状态
 
-    ![在 Azure 堆栈角色上的 azure App Service][2]
+    ![Azure Stack 上的 Azure 应用服务角色][2]
 
-4. 一个新的实例处于**准备**状态，返回到虚拟机规模集的边栏选项卡和**删除**旧实例。
+4. 新实例进入“就绪”状态后，请返回“虚拟机规模集”边栏选项卡并**删除**旧实例。
 
-5. 重复上述步骤**每个**虚拟机规模集。
+5. 针对**每个**虚拟机规模集重复上述步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

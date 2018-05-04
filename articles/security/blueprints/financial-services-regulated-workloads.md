@@ -1,6 +1,6 @@
 ---
-title: "Azure 安全性和符合性蓝图 - FFIEC 金融服务管控的工作负荷"
-description: "Azure 安全性和符合性蓝图 - FFIEC 金融服务管控的工作负荷"
+title: Azure 安全性和符合性蓝图 - FFIEC 金融服务管控的工作负荷
+description: Azure 安全性和符合性蓝图 - FFIEC 金融服务管控的工作负荷
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: a1167f56f595f905c6338868806351345c06b91a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 497c5a987753cbbe577c1d042d6bf61be9d905ab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Azure 安全性和符合性蓝图 - FFIEC 金融服务管控的工作负荷
 
@@ -122,7 +122,7 @@ Edna Benson 是业务经理兼接待员。 她负责确保客户信息准确和�
 >- 应用程序网关
 >- Azure Active Directory
 >- 应用服务环境 v2
->- OMS Log Analytics
+>- Log Analytics
 >- Azure 密钥保管库
 >- 网络安全组
 >- Azure SQL 数据库
@@ -177,7 +177,7 @@ Edna Benson 是业务经理兼接待员。 她负责确保客户信息准确和�
 此外，为每个 NSG 启用了以下配置：
 
 - 启用的[诊断日志和事件](/azure/virtual-network/virtual-network-nsg-manage-log)存储在存储帐户中 
-- 已将 OMS Log Analytics 连接到 [NSG 的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+- 已将 Log Analytics 连接到 [NSG 的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
  
 #### <a name="subnets"></a>子网
@@ -208,12 +208,12 @@ Azure SQL 数据库实例使用以下数据库安全措施：
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
-[Operations Management Suite (OMS)](/azure/operations-management-suite/) 可让 Contoso Webstore 全面记录所有的系统和用户活动，包括记录金融数据。 可以检查和验证更改的准确性。 
+[Log Analytics](https://azure.microsoft.com/services/log-analytics) 可让 Contoso Webstore 全面记录所有的系统和用户活动，包括记录金融数据。 可以检查和验证更改的准确性。 
 
 - **活动日志。**  [活动日志](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。
 - **诊断日志。**  [诊断日志](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储日志、表和队列的日志。
 - **防火墙日志。**  应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
-- **日志存档。**  所有诊断日志已配置为写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 然后，日志会连接到 Azure Log Analytics 进行处理、存储以及在仪表板中显示。 [Log Analytics](https://azure.microsoft.com/services/log-analytics) 是一个 OMS 服务，可帮助收集和分析云与本地环境中资源生成的数据。
+- **日志存档。**  所有诊断日志已配置为写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 然后，日志会连接到 Azure Log Analytics 进行处理、存储以及在仪表板中显示。 [Log Analytics](https://azure.microsoft.com/services/log-analytics) 是一个服务，可帮助收集和分析云与本地环境中资源生成的数据。
 
 ### <a name="encryption-and-secrets-management"></a>加密和机密管理
 
@@ -230,7 +230,7 @@ Contoso Webstore 加密所有敏感数据，并使用 Azure Key Vault 管理密�
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 解决方案的所有用户（包括访问 SQL 数据库的用户）都在 Azure Active Directory 中创建。
 - 使用 Azure AD 对应用程序执行身份验证。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](/azure/active-directory/develop/active-directory-integrating-applications)。 此外，数据库列加密还使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅[Always Encrypted：保护 SQL 数据库中的敏感数据](/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。 
 - [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) 可以检测会影响组织标识的潜在漏洞，配置自动化的措施来应对所检测到的与组织标识相关的可疑操作，调查可疑的事件，并采取相应的措施予以解决。
-- [Azure 基于角色的访问控制 (RBAC)](/azure/active-directory/role-based-access-control-configure) 可在 Azure 中实现极有针对性的访问管理。 只有订阅管理员可以访问订阅，所有用户可访问 Azure Key Vault。
+- [Azure 基于角色的访问控制 (RBAC)](/azure/role-based-access-control/role-assignments-portal) 可在 Azure 中实现极有针对性的访问管理。 只有订阅管理员可以访问订阅，所有用户可访问 Azure Key Vault。
 
 若要详细了解 Azure SQL 数据库安全功能的用法，请参阅 [Contoso Clinic 演示应用程序](https://github.com/Microsoft/azure-sql-security-sample)示例。
    
@@ -263,7 +263,7 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 使用以下配置创建了一个用作 Jumpbox（守护主机）的虚拟机：
 
 -   [反恶意软件扩展](/azure/security/azure-security-antimalware)
--   [OMS 扩展](/azure/virtual-machines/virtual-machines-windows-extensions-oms)
+-   [Log Analytics 扩展](/azure/virtual-machines/virtual-machines-windows-extensions-oms)
 -   [Azure 诊断扩展](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   使用 Azure Key Vault 的 [Azure 磁盘加密](/azure/security/azure-security-disk-encryption) 
 -   [自动关闭策略](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)，在不使用虚拟机时可减少其资源消耗量
@@ -284,11 +284,11 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) 是 Operations Management Suite (OMS) 中的一个服务，可帮助收集和分析云与本地环境中资源生成的数据。
+[Log Analytics](https://azure.microsoft.com/services/log-analytics/) 是一个服务，可帮助收集和分析云与本地环境中资源生成的数据。
 
-#### <a name="oms-solutions"></a>OMS 解决方案
+#### <a name="managment-solutions"></a>管理解决方案
 
-应考虑并配置以下附加 OMS 解决方案： 
+应考虑并配置以下附加管理解决方案： 
 - [活动 Log Analytics](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
 - [Azure 网络分析](/azure/log-analytics/log-analytics-azure-networking-analytics?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 - [Azure SQL Analytics](/azure/log-analytics/log-analytics-azure-sql)
@@ -344,9 +344,9 @@ Microsoft 强烈建议使用全新的 PowerShell 安装来部署解决方案。 
     
     有关详细用法说明，请参阅[脚本说明 - 部署和配置 Azure 资源](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)。
     
-3. OMS 日志记录和监视。 部署解决方案后，可以打开 [Microsoft Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) 工作区，并可以使用解决方案存储库中提供的示例模板来演示如何配置监视仪表板。 有关示例 OMS 模板，请参阅 [omsDashboards 文件夹](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)。 请注意，必须在模板的 OMS 用于正确部署中收集数据。 这可以最多需要一小时或更多具体取决于站点的活动。
+3. Log Analytics 日志记录和监视。 部署解决方案后，可以打开 Log Analytics 工作区，并可以使用解决方案存储库中提供的示例模板来演示如何配置监视仪表板。 有关示例模板，请参阅 [omsDashboards 文件夹](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)。 请注意，必须在 Log Analytics 中收集数据，以便正确部署模板。 这可以最多需要一小时或更多具体取决于站点的活动。
  
-    设置 OMS 日志记录时，请考虑包含以下资源：
+    设置 Log Analytics 日志记录时，请考虑包含以下资源：
  
     - Microsoft.Network/applicationGateways
     - Microsoft.Network/NetworkSecurityGroups

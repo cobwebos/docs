@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69b2caa6cd2fe6d2c89074614aaf28e2ad68a25a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>排查 Azure 负载均衡器问题
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/23/2018
 验证及解决方法
 
 * 如果启用了防火墙，请检查它是否配置为允许探测端口。 如果没有，请将其配置为允许探测端口上的流量并重新测试。 
-* 在网络安全组列表中，检查探测端口上的传入或传出流量是否受到干扰。 
+* 在网络安全组列表中，检查探测端口上的传入或传出流量是否被干扰。 
 * 此外，检查 VM NIC 或子网上是否存在优先级高于允许 LB 探测和流量的默认规则的“全部拒绝”网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16）。 
 * 如果上述某规则要阻止探测流量，请将其删除并将规则配置为允许探测流量。  
 * 测试 VM 是否现已开始响应运行状况探测。 
@@ -103,11 +103,9 @@ ms.lasthandoff: 03/23/2018
 
 如果子网或 VM 上配置的一个或多个网络安全组要阻止源 IP 或端口，则此 VM 无法响应。
 
-* 列出后端 VM 上配置的网络安全组。 有关详细信息，请参阅：
-    -  [使用门户管理网络安全组](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
-    -  [使用 PowerShell 管理网络安全组](../virtual-network/virtual-network-manage-nsg-arm-ps.md)
+* 列出后端 VM 上配置的网络安全组。 有关详细信息，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)。
 * 在网络安全组列表中，检查：
-    - 数据端口上的传入或传出流量是否受到干扰。 
+    - 数据端口上的传入或传出流量是否被干扰。 
     - 检查 VM NIC 或子网上是否存在优先级高于允许负载均衡探测和流量的默认规则的“全部拒绝”网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16 - 即探测端口） 
 * 如果某规则要阻止流量，请将其删除并将规则重新配置为允许数据流量。  
 * 测试 VM 是否现已开始响应运行状况探测。

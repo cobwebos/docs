@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 947e26aadd06e1420e95a6d25ff96e631265db3f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 541055eeae5e2c0eaff2fb88d8e83fdc43ba08b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>如何使用 Azure VM 托管服务标识 (MSI) 获取令牌 
 
@@ -59,18 +59,18 @@ ms.lasthandoff: 04/18/2018
 使用 MSI 实例元数据服务 (IMDS) 终结点*（推荐使用）*的示例请求：
 
 ```
-GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
+GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1 Metadata: true
 ```
 
 | 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | 实例元数据服务的 MSI 终结点。 |
-| `api-version`  | 查询字符串参数，指示 IMDS 终结点的 API 版本。  |
+| `api-version`  | 查询字符串参数，指示 IMDS 终结点的 API 版本。 请使用 API `2018-02-01` 或更高版本。 |
 | `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 https://management.azure.com/ 的令牌。 |
 | `Metadata` | 一个 HTTP 请求标头字段，MSI 需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。
 
-使用 MSI VM 扩展终结点*（即将推出的废弃计划）*的示例请求：
+使用 MSI VM 扩展终结点（即将弃用）的示例请求：
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -230,6 +230,11 @@ func main() {
 2. 使用该访问令牌调用 Azure 资源管理器 REST API 并获取有关 VM 的信息。 请务必将 `<SUBSCRIPTION-ID>`、`<RESOURCE-GROUP>` 和 `<VM-NAME>` 分别替换为自己的订阅 ID、资源组名称和虚拟机名称。
 
 ```azurepowershell
+Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Headers @{Metadata="true"}
+```
+
+有关如何分析响应中的访问令牌的示例：
+```azurepowershell
 # Get an access token for the MSI
 $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F `
                               -Headers @{Metadata="true"}
@@ -247,7 +252,14 @@ echo $vmInfoRest
 ## <a name="get-a-token-using-curl"></a>使用 CURL 获取令牌
 
 ```bash
-response=$(curl http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F -H Metadata:true -s)
+curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s
+```
+
+
+有关如何分析响应中的访问令牌的示例：
+
+```bash
+response=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s)
 access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
 echo The MSI access token is $access_token
 ```

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: 02a34111fbab62884c9ecbfc084a55d21d775182
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ae24031922c2ef01c9274f6ecf572158a9a194d4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -236,6 +236,8 @@ module.exports = function(context, myQueueItem) {
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
 * `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) 方法的反序列化消息。
+
+这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x，请使用 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
 在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题消息。 服务总线消息作为字符串或 JSON 对象传递到函数中。
 
@@ -479,6 +481,8 @@ public static string Run([HttpTrigger] dynamic input, TraceWriter log)
 * `ICollector<T>` 或 `IAsyncCollector<T>` - 用于创建多条消息。 调用 `Add` 方法时创建了一条消息。
 
 在异步函数中，请使用返回值或 `IAsyncCollector` 而非 `out` 参数。
+
+这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x，请使用 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
 在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题。 可以向 `context.binding.<name>` 分配一个字符串、字节数组或 Javascript 对象（反序列化为 JSON）。
 

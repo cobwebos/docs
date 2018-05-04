@@ -1,11 +1,11 @@
 ---
-title: "为 VM 配置专用 IP 地址 - Azure CLI | Microsoft Docs"
-description: "了解如何使用 Azure 命令行接口 (CLI) 为虚拟机配置专用 IP 地址。"
+title: 为 VM 配置专用 IP 地址 - Azure CLI | Microsoft Docs
+description: 了解如何使用 Azure 命令行接口 (CLI) 为虚拟机配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9fe7020719079e11150c62068650aa6ca17b056
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f4f6a40fde23ee70391c5057762f17ce1eb44123
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
 
@@ -158,6 +158,7 @@ ms.lasthandoff: 03/09/2018
 
    * `--nics`：VM 所附加到的 NIC 的名称。
    
+我们建议，除非有必要（例如，[为 Windows VM 分配多个 IP 地址](virtual-network-multiple-ip-addresses-cli.md)时），否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>检索 VM 的静态专用 IP 地址信息
 
@@ -267,9 +268,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
     > [!NOTE]
     > 如果 VM 大到足以安装多个 NIC，请运行 **azure network nic delete** 命令删除旧 NIC。
-   
-## <a name="next-steps"></a>后续步骤
-* 了解[保留公共 IP](virtual-networks-reserved-public-ip.md) 地址。
-* 了解[实例层级公共 IP (ILPIP) 地址](virtual-networks-instance-level-public-ip.md)。
-* 查阅[保留 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
 
+## <a name="next-steps"></a>后续步骤
+
+了解如何管理 [IP 地址设置](virtual-network-network-interface-addresses.md)。

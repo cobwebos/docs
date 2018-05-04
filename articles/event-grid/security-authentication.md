@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: f97de4e93c9330206ed22c071d8ade0821bf6691
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4b9ab8aaef091573d204b8de58115cc03707aa01
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -64,7 +64,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 在创建事件订阅时，可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 将这些查询参数之一设置为机密（例如[访问令牌](https://en.wikipedia.org/wiki/Access_token)），Webhook 可以使用它来确认事件来自具有有效权限的事件网格。 事件网格会在前往 Webhook 的每个事件传递中包括这些查询参数。
 
-编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) 参数，否则，不会显示或返回查询参数。
+编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) 参数，否则，不会显示或返回查询参数。
 
 最后，请务必注意 Azure 事件网格仅支持 HTTPS Webhook 终结点。
 

@@ -1,4 +1,4 @@
-要在应用程序上启用细化密码重置，需要创建密码重置策略。 请注意，[此处](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md)指定租户范围的密码重置选项。 此策略描述了使用者在密码重置过程中将要体验的内容以及应用程序在成功完成时会接收到的令牌内容。
+若要在应用程序上启用细化密码重置，请使用**密码重置**策略。 请注意，[此处](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md)指定租户范围的密码重置选项。 此策略描述了客户在密码重置过程中将经历的体验以及应用程序在成功完成时会接收到的令牌内容。
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
@@ -8,7 +8,7 @@
 
 输入供应用程序引用的策略名称。 例如，输入 `SSPR`。
 
-选择“标识提供者”，然后单击“使用电子邮件地址重置密码”。 单击 **“确定”**。
+选择“标识提供者”，然后单击“使用电子邮件地址重置密码”。 单击“确定”。
 
 ![以标识提供者身份选择“使用电子邮件地址重置密码”，然后单击“确定”按钮](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-identity-providers.png)
 

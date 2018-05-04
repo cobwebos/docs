@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 2c542f9d47eb8011a13bf7156430324c53d238ce
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6bfb34c05a03ed02694210a5901f4f367e8a2fd3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>使用 PowerShell 基于 VHD 文件创建自定义映像
 
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/23/2018
 
 以下步骤引导完成使用 PowerShell 基于 VHD 文件创建自定义映像：
 
-1. 在 PowerShell 提示符下，通过对 **Login-AzureRmAccount** cmdlet 进行以下调用登录到 Azure 帐户。  
+1. 在 PowerShell 提示符下，通过对 Connect-AzureRmAccount cmdlet 进行以下调用登录到 Azure 帐户。  
     
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1.  通过调用 **Select-AzureRmSubscription** cmdlet 选择所需的 Azure 订阅。 将 **$subscriptionId** 变量的以下占位符替换为有效的 Azure 订阅 ID。 
@@ -83,7 +83,7 @@ ms.lasthandoff: 03/23/2018
 
 ```PowerShell
 # Log in to your Azure account.  
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Select the desired Azure subscription. 
 $subscriptionId = '<Specify your subscription ID here>'

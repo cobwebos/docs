@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2017
-ms.openlocfilehash: 15b8548e8b5b6ff8d2f5722d2a4031f8e52d044b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e84903870110091d527e870600d9a67bdc9cc6e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流数据的实时分析仪表板
+# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>教程：流分析和 Power BI：针对流数据的实时分析仪表板
 Azure 流分析使你可以利用其中一种领先的商业智能工具 [Microsoft Power BI](https://powerbi.com/)。 本文将介绍如何使用 Power BI 作为 Azure 流分析作业的输出，以创建商业智能工具。 此外，还将介绍如何创建和使用实时仪表板。
 
 本文是流分析[实时欺诈检测](stream-analytics-real-time-fraud-detection.md)教程的延续。 本文是在该教程中所创建工作流的基础上编写的，并添加了 Power BI 输出，以便可视化流分析作业检测到的欺诈性电话呼叫。 

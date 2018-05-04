@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: fdc986fb32225f94e5a257c46a7b943abc0edf8f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1d5bc55b132b449ebc2964ef95016a6a4780c19
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 04/05/2018
    ![步骤详细信息](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
    > [!NOTE]
-   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。 只有当用户请求查看该数据时，才会进行解密。 还可以通过 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 来控制对这些事件的访问。
+   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。 只有当用户请求查看该数据时，才会进行解密。 还可以通过 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 来控制对这些事件的访问。
 
 6. 要获取有关特定触发事件的详细信息，请返回到“概述”窗格。 在“触发历史记录”下选择“触发事件”。 现在可以查看输入和输出等详细信息，例如：
 
@@ -113,9 +113,9 @@ ms.lasthandoff: 04/05/2018
 
    ![选择“Log Analytics”](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 
-2. 在“Log Analytics”下，查找并选择 Log Analytics 工作区。 
+2. 在“Log Analytics”下，查找并选择你的 Log Analytics 工作区。 
 
-   ![选择 Log Analytics 工作区](media/logic-apps-monitor-your-logic-apps/selectla.png)
+   ![选择你的 Log Analytics 工作区](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
 3. 在“管理”下，选择“OMS 门户”。
 

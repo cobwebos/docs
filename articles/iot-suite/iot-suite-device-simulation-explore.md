@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 2a9a6f3387b7f9fb4e3896fc55a06ac4a902ad24
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="device-simulation-walkthrough"></a>设备模拟演练
 
@@ -69,22 +69,22 @@ Azure IoT 设备模拟是一项工具，可以用来协助开发和测试 IoT �
 
 设备模拟提供三个预配置的设备型号。 提供了冷却器、升降机和卡车的设备型号。
 
-预配置的设备型号包括多个预配置了遥测频率的传感器。 不能自定义这些设备的遥测频率。
+预配置的设备型号包括多个具有 JavaScript 文件中定义的高级行为的传感器。 Web UI 不支持这些自定义行为。 
 
 下表显示了一系列配置，适用于各个预配置的设备型号：
 
-| 设备型号 | 传感器 | 单位 | 遥测频率
-| -------------| ------ | -----| --------------------|
-| 冷却器 | 湿度 | % | 5 秒 |
-| | 压强 | psig | 5 秒 |
-| | 温度 | F | 5 秒 |
-| 升降机 | 层 | | 5 秒 |
-| | 振动 | mm | 5 秒 |
-| | 温度 | F | 5 秒 |
-| 卡车 | 纬度 | | 3 秒 |
-| | 经度 | | 3 秒 |
-| | 速度 | mph | 5 秒 |
-| | cargotemperature | F | 5 秒 |
+| 设备型号 | 传感器 | 单位 | 
+| -------------| ------ | -----| 
+| 冷却器 | 湿度 | % |
+| | 压强 | psig | 
+| | 温度 | F | 
+| 升降机 | 层 | 
+| | 振动 | mm | 
+| | 温度 | F | 
+| 卡车 | 纬度 | |
+| | 经度 | | 
+| | 速度 | mph | 
+| | cargotemperature | F | 
 
 #### <a name="custom-device-model"></a>自定义设备型号
 
@@ -106,7 +106,7 @@ Azure IoT 设备模拟是一项工具，可以用来协助开发和测试 IoT �
 
 ### <a name="number-of-devices"></a>设备数
 
-设备模拟目前允许模拟多达 1,000 个设备。
+设备模拟目前允许模拟多达 20,000 个设备。
 
 ![设备数](media/iot-suite-device-simulation-explore/numberofdevices.png)
 

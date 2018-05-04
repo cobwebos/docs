@@ -1,11 +1,11 @@
 ---
-title: "准备与 cloud-init 配合使用的 Azure VM 映像 | Microsoft Docs"
-description: "如何准备一个与 cloud-init 配合用来完成部署的现有 Azure VM 映像"
+title: 准备与 cloud-init 配合使用的 Azure VM 映像 | Microsoft Docs
+description: 如何准备一个与 cloud-init 配合用来完成部署的现有 Azure VM 映像
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 2eb7510d4e76e4996e83f351a62c0b025b487df2
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: dda444e77f588cd1ba5989b393e9a3987241ef9a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>准备与 cloud-init 配合使用的现有 Linux Azure VM 映像
-本文介绍如何选择一个现有的 Azure 虚拟机，使其准备好重新部署并可使用 cloud-init。 生成的映像可用于部署新的虚拟机或虚拟机规模集 - 然后，可以在部署时通过 cloud-init 进一步对其进行自定义。  Azure 预配资源后首次启动时，会运行这些 cloud-init 脚本。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
+本文介绍如何选择一个现有的 Azure 虚拟机，使其准备好重新部署并可使用 cloud-init。 生成的映像可用于部署新的虚拟机或虚拟机规模集 - 然后，可以在部署时通过 cloud-init 进一步对其进行自定义。  Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
 
 ## <a name="prerequisites"></a>先决条件
 本文档假设已有一个运行受支持 Linux 操作系统版本的 Azure 虚拟机。 已根据需要配置该计算机，已安装所需的所有模块，已处理所需的所有更新并已对其进行测试，确保其满足要求。 
@@ -43,22 +43,20 @@ sudo yum install cloud-init -y
 
 以下示例显示某个通用 `cloud_init_modules` 节的大致内容。
 ```bash
- cloud_config_modules:
- - mounts
- - locale
- - set-passwords
- - rh_subscription
- - yum-add-repo
- - package-update-upgrade-install
- - timezone
- - puppet
- - chef
- - salt-minion
- - mcollective
- - disable-ec2-metadata
- - runcmd
+cloud_init_modules:
+ - migrator
+ - bootcmd
+ - write-files
+ - growpart
+ - resizefs
  - disk_setup
  - mounts
+ - set_hostname
+ - update_hostname
+ - update_etc_hosts
+ - rsyslog
+ - users-groups
+ - ssh
 ```
 需要在 `/etc/waagent.conf` 中更新一些与预配和处理临时磁盘相关的任务。 运行以下命令更新相应的设置。 
 ```bash
@@ -72,6 +70,28 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 ```bash
 # This configuration file is provided by the WALinuxAgent package.
 datasource_list: [ Azure ]
+```
+
+添加配置来解决未修复的主机名注册 bug。
+```bash
+cat > /etc/cloud/hostnamectl-wrapper.sh <<\EOF
+#!/bin/bash -e
+if [[ -n $1 ]]; then
+  hostnamectl set-hostname $1
+else
+  hostname
+fi
+EOF
+
+chmod 0755 /etc/cloud/hostnamectl-wrapper.sh
+
+cat > /etc/cloud/cloud.cfg.d/90-hostnamectl-workaround-azure.cfg <<EOF
+# local fix to ensure hostname is registered
+datasource:
+  Azure:
+    hostname_bounce:
+      hostname_command: /etc/cloud/hostnamectl-wrapper.sh
+EOF
 ```
 
 如果现有 Azure 映像中配置了交换文件，而你想要使用 cloud-init 更改新映像的交换文件配置，则需要删除现有的交换文件。

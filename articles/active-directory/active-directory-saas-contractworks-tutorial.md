@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 97e5ad805bbb25d2431944e2ede1f22630956356
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3c986810f3d994b956d4c81fd80b38d9dfee4f50
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>教程：Azure Active Directory 与 ContractWorks 集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/17/2018
 
 **若要从库中添加 ContractWorks，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 03/17/2018
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_samlbase.png)
 
 3. 在“ContractWorks 域和 URL”部分中，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
@@ -121,7 +121,7 @@ ms.lasthandoff: 03/17/2018
 6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称 | 属性值 |
-    | ---------------| --------------- |    
+    | ---------------| --------------- |
     | mail | user.mail |
     | displayName | user.displayname |
 
@@ -139,34 +139,15 @@ ms.lasthandoff: 03/17/2018
     
     d. 单击“确定”
 
-7. 单击“保存”按钮。
+7. 在“SAML 签名证书”部分上，单击”复制”按钮，复制“应用联合元数据 URL”并将其粘贴到记事本。
+    
+    ![配置单一登录](./media/active-directory-saas-contractworks-tutorial/tutorial_metadataurl.png)
+     
+8. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-contractworks-tutorial/tutorial_general_400.png)
 
-8. 若要生成**元数据 URL**，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_endpoint.png)
-     
-    d. 现在，转到 **contractworks** 的属性页，使用“复制”按钮复制**应用程序 ID** 并将其粘贴到记事本。
- 
-    ![配置单一登录](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-9. 若要在“ContractWorks”端配置单一登录，需要将生成的“元数据 URL”发送到 [ContractWorks 支持团队](mailto:support@contractworks.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+9. 若要在“ContractWorks”端配置单一登录，需要将生成的“应用联合元数据 URL”发送到 [ContractWorks 支持团队](mailto:support@contractworks.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

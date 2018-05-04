@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b4e123475679cf1afce09630c157377ee67b5202
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7d7d3f6a773fad0b0d4ba0593230af5ff5a1e443
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>快速入门：使用 T-SQL 在 Azure SQL 数据仓库中缩放计算资源
 
@@ -25,8 +25,6 @@ ms.lasthandoff: 04/18/2018
 ## <a name="before-you-begin"></a>开始之前
 
 下载并安装最新版本的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS)。
-
-这假定你已完成[快速入门：创建并连接-门户](create-data-warehouse-portal.md)。 完成创建和连接快速入门后，知道如何连接到：创建名为数据仓库 **mySampleDataWarehouse**，创建防火墙规则，让我们客户端可安装的服务器访问。
  
 ## <a name="create-a-data-warehouse"></a>创建数据仓库
 
@@ -45,7 +43,7 @@ ms.lasthandoff: 04/18/2018
    | 服务器类型 | 数据库引擎 | 此值是必需的 |
    | 服务器名称 | 完全限定的服务器名称 | 下面是一个示例：mynewserver-20171113.database.windows.net。 |
    | 身份验证 | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
-   | 登录 | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
+   | 登录 | 服务器管理员帐户 | 在创建服务器时指定的帐户。 |
    | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 
     ![连接到服务器](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -91,11 +89,42 @@ ms.lasthandoff: 04/18/2018
 1. 右键单击“master”，并单击“新建查询”。
 2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) T-SQL 语句修改的服务目标。 运行以下查询以将服务目标更改为 DW300。 
 
-```Sql
-ALTER DATABASE mySampleDataWarehouse
-MODIFY (SERVICE_OBJECTIVE = 'DW300')
-;
-```
+    ```Sql
+    ALTER DATABASE mySampleDataWarehouse
+    MODIFY (SERVICE_OBJECTIVE = 'DW300')
+    ;
+    ```
+
+## <a name="monitor-scale-change-request"></a>监视规模更改请求
+若要查看以前的更改请求的进度，可以使用 `WAITFORDELAY` T-SQL 语法来轮询 sys.dm_operation_status 动态管理视图 (DMV)。
+
+若要轮询服务对象更改状态，请执行以下操作：
+
+1. 右键单击“master”，并单击“新建查询”。
+2. 运行以下查询来轮询 sys.dm_operation_status DMV。
+
+    ```sql
+    WHILE 
+    (
+        SELECT TOP 1 state_desc
+        FROM sys.dm_operation_status
+        WHERE 
+            1=1
+            AND resource_type_desc = 'Database'
+            AND major_resource_id = 'MySampleDataWarehouse'
+            AND operation = 'ALTER DATABASE'
+        ORDER BY
+            start_time DESC
+    ) = 'IN_PROGRESS'
+    BEGIN
+        RAISERROR('Scale operation in progress',0,0) WITH NOWAIT;
+        WAITFOR DELAY '00:00:05';
+    END
+    PRINT 'Complete';
+    ```
+3. 生成的输出显示了状态轮询的日志。
+
+    ![操作状态](media/quickstart-scale-compute-tsql/polling-output.png)
 
 ## <a name="check-data-warehouse-state"></a>检查数据仓库状态
 
@@ -103,7 +132,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW300')
 
 ## <a name="check-operation-status"></a>检查操作状态
 
-若要返回有关在 SQL 数据仓库的各种管理操作的信息，请运行以下查询 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) DMV。 例如，它将返回该操作，将是 IN_PROGRESS 或完成的操作的状态。
+若要返回有关在 SQL 数据仓库的各种管理操作的信息，请运行以下查询 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) DMV。 例如，它返回操作和操作状态，后者为 IN_PROGRESS 或 COMPLETED。
 
 ```sql
 SELECT *
@@ -112,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySQLDW'
+    major_resource_id = 'MySampleDataWarehouse'
 ```
 
 
 ## <a name="next-steps"></a>后续步骤
-现在已暂停并恢复了数据仓库的计算。 若要了解有关 Azure SQL 数据仓库的详细信息，请继续有关加载数据的教程。
+你现在已了解如何缩放数据仓库的计算。 若要了解有关 Azure SQL 数据仓库的详细信息，请继续有关加载数据的教程。
 
 > [!div class="nextstepaction"]
 >[将数据加载到 SQL 数据仓库](load-data-from-azure-blob-storage-using-polybase.md)

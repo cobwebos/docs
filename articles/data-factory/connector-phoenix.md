@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 04/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 56559adbc2ebd4e4379326607a28333d538504da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8cc6fa994c750f4718e6cc065819763d8be4f18c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>使用 Azure 数据工厂从 Phoenix 复制数据 
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Phoenix 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -46,7 +46,7 @@ Phoenix 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Phoenix** | 是 |
 | host | Phoenix 服务器的 IP 地址或主机名。 （即，192.168.222.160）  | 是 |
-| 端口 | Phoenix 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8765。  | 否 |
+| 端口 | Phoenix 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8765。 如果连接到 Azure HDInsights，请指定端口 443。 | 否 |
 | httpPath | 对应于 Phoenix 服务器的部分 URL。 （即，/gateway/sandbox/phoenix/version）。 如果使用 WindowsAzureHDInsightService，默认值是 `hbasephoenix`。  | 否 |
 | authenticationType | 用于连接到 Phoenix 服务器的身份验证机制。 <br/>允许的值为：**Anonymous**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | 是 |
 | username | 用于连接到 Phoenix 服务器的用户名。  | 否 |
@@ -67,7 +67,7 @@ Phoenix 链接服务支持以下属性：
         "type": "Phoenix",
         "typeProperties": {
             "host" : "<cluster>.azurehdinsight.net",
-            "port" : "<port>",
+            "port" : "443",
             "httpPath" : "hbasephoenix",
             "authenticationType" : "WindowsAzureHDInsightService",
             "username" : "<username>",

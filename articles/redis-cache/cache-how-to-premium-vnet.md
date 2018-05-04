@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: ba3a7ccc059dd5036753f471b762e27f22a179af
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 250c66c3a39519a6eddc1ecb51259ec1944c88a9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能的选择上具有灵活性，其中包括高级层功能，如群集、暂留和虚拟网络支持。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
@@ -84,12 +84,13 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 
 * [Azure Redis 缓存和 VNet 有哪些常见的错误配置问题？](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
 * [如何验证 VNET 中缓存是否正常工作？](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
+* [尝试连接到 VNET 中的 Redis 缓存时，为何会收到指出远程证书无效的错误？](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
 * [是否可以通过标准或基本缓存使用 VNet？](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * [为什么在某些子网中创建 Redis 缓存失败，而在其他子网中不会失败？](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
 * [子网地址空间有哪些要求？](#what-are-the-subnet-address-space-requirements)
 * [在 VNET 中托管缓存时，是否可以使用所有缓存功能？](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
-## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Azure Redis 缓存和 VNet 有哪些常见的错误配置问题？
+### <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Azure Redis 缓存和 VNet 有哪些常见的错误配置问题？
 在 VNet 中托管 Azure Redis 缓存时，将使用下表中的端口。 
 
 >[!IMPORTANT]
@@ -100,7 +101,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 - [出站端口要求](#outbound-port-requirements)
 - [入站端口要求](#inbound-port-requirements)
 
-### <a name="outbound-port-requirements"></a>出站端口要求
+#### <a name="outbound-port-requirements"></a>出站端口要求
 
 有 7 个出站端口要求。
 
@@ -120,7 +121,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 | 6379-6380 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 
 
-### <a name="inbound-port-requirements"></a>入站端口要求
+#### <a name="inbound-port-requirements"></a>入站端口要求
 
 有 8 个入站端口范围要求。 这些范围内的入站请求是指从同一 VNET 上托管的其他服务入站或者来自 Redis 子网通信内部。
 
@@ -135,7 +136,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 | 16001 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
 | 20226 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 
-### <a name="additional-vnet-network-connectivity-requirements"></a>其他 VNET 网络连接要求
+#### <a name="additional-vnet-network-connectivity-requirements"></a>其他 VNET 网络连接要求
 
 在虚拟网络中，可能一开始不符合 Azure Redis 缓存的网络连接要求。 在虚拟网络中使用时，Azure Redis 缓存需要以下所有项才能正常运行。
 
@@ -164,6 +165,24 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
   - 进行测试的另一种方法是创建测试缓存客户端（可以是使用 StackExchange.Redis 的简单控制台应用程序），使其连接到缓存，以便添加和检索缓存的某些项。 将示例客户端应用程序安装到与缓存位于同一 VNET 中的 VM 上，并运行以验证与缓存的连接性。
 
 
+### <a name="when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid"></a>尝试连接到 VNET 中的 Redis 缓存时，为何会收到指出远程证书无效的错误？
+
+尝试连接到 VNET 中的 Redis 缓存时，会收到类似于以下内容的证书验证错误：
+
+`{"No connection is available to service this operation: SET mykey; The remote certificate is invalid according to the validation procedure.; …"}`
+
+这可能是因为你在通过 IP 地址来连接主机。 建议使用主机名。 换而言之，请使用以下方法：     
+
+`[mycachename].redis.windows.net:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
+
+避免使用类似于以下连接字符串的 IP 地址：
+
+`10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
+
+如果无法解析 DNS 名称，某些客户端库包括了 `sslHost`（这是由 StackExchange.Redis 客户端提供的）之类的配置选项。 这允许你替代用于证书验证的主机名。 例如：
+
+`10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
+
 ### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>是否可以对标准或基本缓存使用 VNet？
 只能对高级缓存使用 VNet。
 
@@ -182,7 +201,9 @@ Azure 会保留每个子网中的某些 IP 地址，但是这些地址不能使�
 
 * Redis 控制台 - 由于 Redis 控制台在本地浏览器中运行（这在 VNET 的外部），因此它无法连接到缓存。
 
+
 ## <a name="use-expressroute-with-azure-redis-cache"></a>将 ExpressRoute 用于 Azure Redis 缓存
+
 客户可以将 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 线路连接到虚拟网络基础结构，从而将其本地网络扩展到 Azure。 
 
 默认情况下，新创建的 ExpressRoute 线路不会在 VNET 上执行强制隧道（默认路由播发，0.0.0.0/0）。 因此，允许出站 Internet 连接直接来自 VNET，而且客户端应用程序能够连接到其他 Azure 终结点（包括 Azure Redis 缓存）。

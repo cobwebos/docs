@@ -1,8 +1,8 @@
 ---
-title: "在 HDInsight 中的 Hadoop 上将 C# 与 Hive 和 Pig 配合使用 - Azure | Microsoft Docs"
-description: "了解在 Azure HDInsight 中如何将 C# 用户定义的函数 (UDF) 与 Hive 和 Pig 流式处理配合使用。"
+title: 在 HDInsight 中的 Hadoop 上将 C# 与 Hive 和 Pig 配合使用 - Azure | Microsoft Docs
+description: 了解在 Azure HDInsight 中如何将 C# 用户定义的函数 (UDF) 与 Hive 和 Pig 流式处理配合使用。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: d83def76-12ad-4538-bb8e-3ba3542b7211
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 8455a45f1c39c5cb04f742d57a16a81776f850e0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: b776b214b9d46293a3ab97ad226dffd3107f3430
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>在 HDInsight 中的 Hadoop 上将 C# 用户定义函数与 Hive 和 Pig 流式处理配合使用
 
@@ -49,7 +47,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 ## <a name="net-on-hdinsight"></a>HDInsight 上的 .NET
 
-* __基于 Linux 的 HDInsight__ 群集使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。
+* 使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序的__基于 Linux 的 HDInsight__ 群集。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。
 
     有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)。
 

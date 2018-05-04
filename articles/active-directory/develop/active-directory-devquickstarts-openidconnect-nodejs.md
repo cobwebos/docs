@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 04/20/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 477056581b847693ae115f94c2f6466036add765
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e92c50525efdf2854710d7e62781a5c6efb2cf3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web 应用 入门
 此处，我们使用 Passport 进行以下操作：
@@ -331,7 +331,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
 
 2. 在根目录下创建 `/routes/user.js` 路由。
 
-                ```JavaScript
+    ```JavaScript
                 /*
                  * GET users listing.
                  */
@@ -339,7 +339,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
                 exports.list = function(req, res){
                   res.send("respond with a resource");
                 };
-                ```
+    ```
 
  这些路由会将请求传递到我们的视图，包括用户（如果存在）。
 
@@ -356,7 +356,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
     <% } %>
     ```
 
-4. 在根目录下创建 `/views/account.ejs` 视图，以便能够查看 `passport-azuread` 放置在用户请求中的其他信息。
+4. 在根目录下创建 `/views/account.ejs` 视图，以便能够查看 `passport-azure-ad` 放置在用户请求中的其他信息。
 
     ```Javascript
     <% if (!user) { %>

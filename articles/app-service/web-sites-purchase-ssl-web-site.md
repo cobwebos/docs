@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 759bd1e8be8aaebbf98e1c02d67f3e56609354aa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 63592a1a1c20dd25e5eea66d501f26efeaf0cf21
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
-本教程将演示如何通过以下方法保护 Web 应用的安全：为 **[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)**购买 SSL 证书、将其安全存储在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 中并与自定义域进行关联。
+本教程将演示如何通过以下方法保护 Web 应用的安全：为 **[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)** 购买 SSL 证书、将其安全存储在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 中并与自定义域进行关联。
 
 ## <a name="step-1---log-in-to-azure"></a>步骤 1 - 登录 Azure
 
@@ -101,7 +101,7 @@ SSL 证书购买过程完成之后，需要打开[应用服务证书](https://po
 
 单击要分配此证书的应用的名称。
 
-在“设置”中，单击“SSL 证书”。
+在“设置”中，单击“SSL 设置”。
 
 单击“导入应用服务证书”，再选择刚购买的证书。
 
@@ -206,5 +206,7 @@ SSL 证书购买过程完成之后，需要打开[应用服务证书](https://po
 
 ## <a name="more-resources"></a>更多资源
 
+* [实施 HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
+* [实施 TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
 * [在 Azure 应用服务的应用程序代码中使用 SSL 证书](app-service-web-ssl-cert-load.md)
 * [常见问题解答：应用服务证书](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

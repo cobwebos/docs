@@ -1,24 +1,24 @@
 ---
-title: "使用 Azure Log Analytics 跨资源进行搜索 | Microsoft Docs"
-description: "本文介绍了如何在订阅中跨多个工作区以及从特定的 App Insights 应用查询资源。"
+title: 使用 Azure Log Analytics 跨资源进行搜索 | Microsoft Docs
+description: 本文介绍了如何在订阅中跨多个工作区以及从特定的 App Insights 应用查询资源。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 04/17/2018
 ms.author: magoedte
-ms.openlocfilehash: 5485b1634013c73b58932aafa6e17d636558715d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e46ae3af3a718703f9e1d6b847b2342469bf3a1e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>在 Log Analytics 中执行跨资源日志搜索  
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/24/2018
 若要在查询中引用另一个工作区，请使用 [*workspace*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) 标识符，对于 Application Insights 中的应用，请使用 [*app*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app()) 标识符。  
 
 ### <a name="identifying-workspace-resources"></a>标识工作区资源
-以下示例演示了跨 Log Analytics 工作区进行查询来从当前工作区和另一个名为 *contosoretail-it* 的工作区的 Update 表中返回更新的分类所需的这些更新汇总计数。 
+以下示例演示了跨 Log Analytics 工作区进行查询从名为 *contosoretail-it* 的工作区的 Update 表中返回更新的汇总计数。 
 
 可以通过以下任一方式来标识工作区：
 

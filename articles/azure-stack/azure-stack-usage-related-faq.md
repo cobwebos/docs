@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 3d6f2bf569ecfebe3bf4f535a7a8ab3bf22849f1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f0df9b02e7672faec3a1d94997c9b27ffca275e5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Azure Stack 用量 API 的常见问题解答
 此文解答有关 Azure Stack 用量 API 的一些常见问题。
@@ -68,7 +68,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Azure Stack 用量 API 与 [Azure 用量 API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)（目前为公共预览版）有何差别？
 * 租户用量 API 与 Azure API 相同，但有一点除外：Azure Stack 目前不支持 *showDetails* 标志。
 * 提供程序用量 API 只适用于 Azure Stack。
-* 目前，Azure Stack 不提供 Azure 中所提供的[费率卡 API](https://msdn.microsoft.com/en-us/library/azure/mt219004.aspx)。
+* 目前，Azure Stack 不提供 Azure 中所提供的[费率卡 API](https://msdn.microsoft.com/library/azure/mt219004.aspx)。
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>使用时间与报告时间有何差别？
 用量数据报告包含两个主要时间值：

@@ -1,6 +1,6 @@
 ---
-title: "排查无数据问题 - 用于 .NET 的 Application Insights"
-description: "在 Azure Application Insights 中看不到数据？ 试试这里。"
+title: 排查无数据问题 - 用于 .NET 的 Application Insights
+description: 在 Azure Application Insights 中看不到数据？ 试试这里。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
 ms.openlocfilehash: 951a3217d795df6360cd3cfa2d47db08c11f978e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据

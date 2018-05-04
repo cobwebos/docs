@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: a35da5c84e4e79d7bc6f2167ec7e172970992612
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
@@ -263,6 +263,91 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 ```
 
 若要获取新密钥，请[在 Application Insights 门户中创建新资源][new]。
+
+
+
+## <a name="applicationid-provider"></a>ApplicationId 提供程序
+
+_从 v2.6.0 开始可用_
+
+此提供程序的用途是根据检测密钥查找应用程序 ID。 应用程序 ID 包括在 RequestTelemetry 和 DependencyTelemetry 中并用来在门户中确定关联。
+
+这是通过在代码或配置中设置 `TelemetryConfiguration.ApplicationIdProvider` 来提供的。
+
+### <a name="interface-iapplicationidprovider"></a>接口：IApplicationIdProvider
+
+```csharp
+public interface IApplicationIdProvider
+{
+    bool TryGetApplicationId(string instrumentationKey, out string applicationId);
+}
+```
+
+
+我们在 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) SDK 中提供了两个实现：`ApplicationInsightsApplicationIdProvider` 和 `DictionaryApplicationIdProvider`。
+
+### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
+
+这是针对我们的配置文件 API 的一个包装器。 它将限制请求和缓存结果。
+
+当安装 [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) 或 [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 时此提供程序将添加到配置文件中
+
+此类有一个可选属性 `ProfileQueryEndpoint`。
+默认情况下，这设置为 `https://dc.services.visualstudio.com/api/profiles/{0}/appId`。
+如果需要为此配置配置一个代理，建议为基址使用代理并包括“/api/profiles/{0}/appId”。 注意，“{0}”将在运行时根据请求替换为检测密钥。
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>通过 ApplicationInsights.config 实现的示例配置：
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>通过代码实现的示例配置：
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApplicationIdProvider();
+```
+
+### <a name="dictionaryapplicationidprovider"></a>DictionaryApplicationIdProvider
+
+这是一个静态提供程序，将依赖于所配置的检测密钥 / 应用程序 ID 对。
+
+此类有一个 `Defined` 属性，它是包含检测密钥和应用程序 ID 对的一个 Dictionary<string,string>。
+
+此类有一个可选的 `Next` 属性，这可以用来配置当请求你的配置中不存在的检测密钥时要使用的其他提供程序。
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>通过 ApplicationInsights.config 实现的示例配置：
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.DictionaryApplicationIdProvider, Microsoft.ApplicationInsights">
+        <Defined>
+            <Type key="InstrumentationKey_1" value="ApplicationId_1"/>
+            <Type key="InstrumentationKey_2" value="ApplicationId_2"/>
+        </Defined>
+        <Next Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights" />
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>通过代码实现的示例配置：
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationIdProvider{
+ Defined = new Dictionary<string, string>
+    {
+        {"InstrumentationKey_1", "ApplicationId_1"},
+        {"InstrumentationKey_2", "ApplicationId_2"}
+    }
+};
+```
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解 API][api]。

@@ -1,0 +1,196 @@
+- name: 网络观察程序文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于网络观察程序
+      href: network-watcher-monitoring-overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 诊断 VM 流量筛选器问题 - 门户
+      href: diagnose-vm-network-traffic-filtering-problem.md
+    - name: 诊断 VM 流量筛选器问题 - PowerShell
+      href: diagnose-vm-network-traffic-filtering-problem-powershell.md
+    - name: 诊断 VM 流量筛选器问题 - Azure CLI
+      href: diagnose-vm-network-traffic-filtering-problem-cli.md
+- name: 教程
+  items:
+    - name: 诊断 VM 路由问题
+      href: diagnose-vm-network-routing-problem.md
+    - name: 监视网络连接
+      href: connection-monitor.md
+- name: 概念
+  items:
+    - name: 诊断 VM 网络流量筛选器问题
+      href: network-watcher-ip-flow-verify-overview.md
+    - name: 诊断 VM 路由问题
+      href: network-watcher-next-hop-overview.md
+    - name: 诊断出站 VM 通信问题
+      href: network-watcher-connectivity-overview.md
+    - name: 排查 VPN 连接性问题
+      href: network-watcher-troubleshoot-overview.md
+    - name: 可变数据包捕获
+      href: network-watcher-packet-capture-overview.md
+    - name: 网络安全组流日志记录
+      href: network-watcher-nsg-flow-logging-overview.md
+    - name: 网络安全组视图
+      href: network-watcher-security-group-view-overview.md
+    - name: 查看网络拓扑
+      href: network-watcher-topology-overview.md
+- name: 操作指南
+  items:
+    - name: 配置网络观察程序
+      href: network-watcher-create.md
+    - name: 诊断 VM 网络问题
+      items:
+        - name: 安装 VM 扩展
+          items:
+            - name: Windows
+              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+            - name: Linux
+              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+        - name: 诊断路由问题
+          items:
+            - name: Azure PowerShell
+              href: diagnose-vm-network-routing-problem-powershell.md
+            - name: Azure CLI
+              href: diagnose-vm-network-routing-problem-cli.md
+        - name: 诊断出站连接问题
+          items:
+            - name: Azure 门户
+              href: network-watcher-connectivity-portal.md
+            - name: Azure PowerShell
+              href: network-watcher-connectivity-powershell.md
+            - name: Azure CLI
+              href: network-watcher-connectivity-cli.md
+            - name: REST
+              href: network-watcher-connectivity-rest.md
+        - name: 捕获和分析数据包
+          items:
+            - name: 管理数据包捕获
+              items:
+                - name: Azure 门户
+                  href: network-watcher-packet-capture-manage-portal.md
+                - name: Azure PowerShell
+                  href: network-watcher-packet-capture-manage-powershell.md
+                - name: Azure CLI
+                  href: network-watcher-packet-capture-manage-cli.md
+                - name: Azure CLI 1.0
+                  href: network-watcher-packet-capture-manage-cli-nodejs.md
+                - name: REST
+                  href: network-watcher-packet-capture-manage-rest.md
+            - name: 分析数据包捕获
+              items:
+                - name: 查找异常
+                  href: network-watcher-deep-packet-inspection.md
+                - name: 使用 Azure Functions 执行主动网络监视
+                  href: network-watcher-alert-triggered-packet-capture.md
+                - name: 使用开放源代码工具执行入侵检测
+                  href: network-watcher-intrusion-detection-open-source-tools.md
+                - name: 使用开放源代码工具可视化网络流量模式
+                  href: network-watcher-using-open-source-tools.md
+    - name: 使用网络安全组
+      items:
+        - name: 配置 NSG 流日志
+          items:
+            - name: Azure 门户
+              href: network-watcher-nsg-flow-logging-portal.md
+            - name: Azure PowerShell
+              href: network-watcher-nsg-flow-logging-powershell.md
+            - name: Azure CLI
+              href: network-watcher-nsg-flow-logging-cli.md
+            - name: Azure CLI 1.0
+              href: network-watcher-nsg-flow-logging-cli-nodejs.md
+            - name: REST
+              href: network-watcher-nsg-flow-logging-rest.md
+        - name: 分析 NSG 流日志
+          items:
+            - name: 读取 NSG 流日志
+              href: network-watcher-read-nsg-flow-logs.md
+            - name: 使用流量分析
+              href: traffic-analytics.md
+              items:
+                - name: 常见问题
+                  href: traffic-analytics-faq.md
+            - name: 使用 Power BI
+              href: network-watcher-visualize-nsg-flow-logs-power-bi.md
+            - name: 使用 Elastic Stack
+              href: network-watcher-visualize-nsg-flow-logs-open-source-tools.md
+            - name: 使用 Grafana
+              href: network-watcher-nsg-grafana.md
+            - name: 使用 Graylog
+              href: network-watcher-analyze-nsg-flow-logs-graylog.md
+        - name: 查看网络安全组
+          items:
+            - name: Azure PowerShell
+              href: network-watcher-security-group-view-powershell.md
+            - name: Azure CLI
+              href: network-watcher-security-group-view-cli.md
+            - name: Azure CLI 1.0
+              href: network-watcher-security-group-view-cli-nodejs.md
+            - name: REST
+              href: network-watcher-security-group-view-rest.md
+        - name: 执行符合性检查和审核网络
+          href: network-watcher-nsg-auditing-powershell.md
+    - name: 诊断 VPN 网关和连接
+      items:
+        - name: 故障排除
+          items:
+            - name: Azure 门户
+              href: network-watcher-troubleshoot-manage-portal.md
+            - name: Azure PowerShell
+              href: network-watcher-troubleshoot-manage-powershell.md
+            - name: Azure CLI
+              href: network-watcher-troubleshoot-manage-cli.md
+            - name: Azure CLI 1.0
+              href: network-watcher-troubleshoot-manage-cli-nodejs.md
+            - name: REST
+              href: network-watcher-troubleshoot-manage-rest.md
+        - name: 使用 Azure 自动化监视 VPN 网关
+          href: network-watcher-monitor-with-azure-automation.md
+        - name: 通过 VPN 网关诊断本地连接
+          href: network-watcher-diagnose-on-premises-connectivity.md
+    - name: 查看网络拓扑
+      items:
+        - name: Azure PowerShell
+          href: network-watcher-topology-powershell.md
+        - name: Azure CLI
+          href: network-watcher-topology-cli.md
+        - name: Azure CLI 1.0
+          href: network-watcher-topology-cli-nodejs.md
+        - name: REST
+          href: network-watcher-topology-rest.md
+    - name: 确定位置和 Azure 区域之间的相对延迟
+      href: view-relative-latencies.md
+- name: 引用
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network/watcher
+    - name: Azure PowerShell
+      href: '/powershell/module/azurerm.network/#network_watcher'
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.network
+    - name: Ruby
+      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher'
+    - name: Python
+      href: /python/api/overview/azure/network
+    - name: .NET
+      href: /dotnet/api/overview/azure/virtual-network
+    - name: Node.js
+      href: /javascript/api/azure-arm-network
+    - name: REST
+      href: /rest/api/network-watcher/
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=network-watcher'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/network-watcher'

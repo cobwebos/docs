@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.openlocfilehash: 6b33da21a32373196d86ec8c93f180b3d40b1c6e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d287206d30c05289679c83636ba5f968a5fcbcbe
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 
 本主题提供分步指导，引导用户使用 Azure 媒体服务资源管理器 (AMSE) 和 Azure Media Redactor Visualizer（开源工具）运行完整修正工作流。
 
-有关详细信息，请参阅[此](https://azure.microsoft.com/en-us/blog/redaction-preview-available-globally)博客。
+有关详细信息，请参阅[此](https://azure.microsoft.com/blog/redaction-preview-available-globally)博客。
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure 媒体服务资源管理器工作流
 

@@ -1,19 +1,19 @@
 ---
-title: "缩放 Azure 容器服务群集"
-description: "如何使用 Azure CLI 或 Azure 门户在 Azure 容器服务中缩放 DC/OS、Docker Swarm 或 Kubernetes 群集中的代理节点。"
+title: 缩放 Azure 容器服务群集
+description: 如何使用 Azure CLI 或 Azure 门户在 Azure 容器服务中缩放 DC/OS、Docker Swarm 或 Kubernetes 群集中的代理节点。
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: c4465826be9e8af636c24e70642288d97294898e
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 8fc78a84d624f9339b9b77e748b3c36e38d3ae5a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="scale-agent-nodes-in-a-container-service-cluster"></a>在容器服务群集中缩放代理节点
 

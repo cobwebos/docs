@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 993ff518a1987581ad7de4797611f104080c2c2f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3175b99c0e41cedf313115043b09608496adfdca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置自定义 DNS
 
@@ -79,5 +79,5 @@ Azure VNet 上的 DNS 配置需要输入 IP 地址，因此，请按照以下步
 ## <a name="next-steps"></a>后续步骤
 
 - 有关概述，请参阅[什么是托管实例](sql-database-managed-instance.md)
-- 有关创建 VNet，然后创建托管实例的示例，请参阅[创建托管实例](sql-database-managed-instance-tutorial-portal.md)。
-- 有关配置 VNet 的信息，请参阅[托管实例的 VNet 配置](sql-database-managed-instance-vnet-configuration.md)
+- 有关演示如何新建托管实例的教程，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)。
+- 有关为托管实例配置 VNet 的信息，请参阅[托管实例的 VNet 配置](sql-database-managed-instance-vnet-configuration.md)

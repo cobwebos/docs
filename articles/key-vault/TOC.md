@@ -1,4 +1,4 @@
-# [Key Vault 文档](index.md)
+# [Key Vault 文档](index.yml)
 
 # 概述
 ## [Key Vault 概述](key-vault-overview.md)
@@ -9,13 +9,13 @@
 ## [创建 Key Vault - 门户](quick-create-portal.md)
 
 # 教程
-## [配置 Azure Web 应用程序以从 Key Vault 读取机密](tutorial-web-application-keyvault.md)
-# 示例
-## [代码示例](https://azure.microsoft.com/resources/samples/?service=key-vault)
-# 概念
+## [从 Key Vault 读取机密](tutorial-web-application-keyvault.md)
 ## [密钥保管库入门](key-vault-get-started.md)
 ## [设置密钥轮替和审核](key-vault-key-rotation-log-monitoring.md)
 ## [从 Web 应用使用密钥保管库](key-vault-use-from-web-application.md)
+# 示例
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=key-vault)
+# 概念
 ## [安全体系](key-vault-ovw-security-worlds.md)
 ## [软删除](key-vault-ovw-soft-delete.md)
 ## [存储帐户密钥](key-vault-ovw-storage-keys.md)

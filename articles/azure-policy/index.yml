@@ -1,36 +1,36 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure 策略文档"
+title: Azure 策略文档
 metadata:
-  title: "Azure 策略文档 - 教程和 API 参考 | Microsoft Docs"
-  description: "可以借助 Azure 策略，通过策略定义来强制实施资源的规则和操作，以便管理和预防 IT 问题。 使用 Azure 策略时，资源始终符合公司标准和服务级别协议。 通过快速入门、教程和示例了解如何创建、分配和管理策略定义。"
+  title: Azure 策略文档 - 教程和 API 参考 | Microsoft Docs
+  description: 可以借助 Azure 策略，通过策略定义来强制实施资源的规则和操作，以便管理和预防 IT 问题。 使用 Azure 策略时，资源始终符合公司标准和服务级别协议。 通过快速入门、教程和示例了解如何创建、分配和管理策略定义。
   services: azure-policy
-  author: czeumault
-  manager: carolz
+  author: DCtheGeek
+  manager: carmonm
   ms.service: azure-policy
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/18/2017
-  ms.author: carolz
-  ms.openlocfilehash: 6082601b46ab4b420575fbc4d04b176c96225f72
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.author: dacoulte
+  ms.openlocfilehash: 0ca9efe0c1c1871265da127acfd76e90126b59ad
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 04/28/2018
 abstract:
-  description: "可以借助 Azure 策略，通过策略定义来强制实施资源的规则和操作，以便管理和预防 IT 问题。 使用 Azure 策略时，资源始终符合公司标准和服务级别协议。 通过快速入门、教程和示例了解如何创建、分配和管理策略定义。"
+  description: 可以借助 Azure 策略，通过策略定义来强制实施资源的规则和操作，以便管理和预防 IT 问题。 使用 Azure 策略时，资源始终符合公司标准和服务级别协议。 通过快速入门、教程和示例了解如何创建、分配和管理策略定义。
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解如何在 Azure 中创建、分配和管理策略定义。"
+    text: 了解如何在 Azure 中创建、分配和管理策略定义。
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
-      text: "Azure 门户"
+      text: Azure 门户
       href: /azure/azure-policy/assign-policy-definition
     - image:
         src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
@@ -40,30 +40,30 @@ sections:
         src: https://docs.microsoft.com/media/common/cli.svg
       text: Azure CLI
       href: /azure/azure-policy/assign-policy-definition-cli
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何在 Azure 中创建、分配和管理策略定义。"
+    text: 了解如何在 Azure 中创建、分配和管理策略定义。
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"/azure/azure-policy/create-manage-policy\">创建和管理 Azure 策略</a>"
-- title: "示例"
+    - html: <a href="/azure/azure-policy/create-manage-policy">创建和管理 Azure 策略</a>
+- title: 示例
   items:
   - type: paragraph
-    text: "通过以下 JSON 示例了解如何在 Azure 中创建策略定义。"
+    text: 通过以下 JSON 示例了解如何在 Azure 中创建策略定义。
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/azure-policy/json-samples">Azure PowerShell</a>
-- title: "引用"
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "命令行"
+    - title: 命令行
       html: <p><a href="https://docs.microsoft.com/cli/azure/policy">Azure CLI</a></p>
     - title: PowerShell
       html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>

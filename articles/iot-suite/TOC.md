@@ -1,3 +1,4 @@
+# [Azure IoT 基础](../iot-fundamentals/index.yml)
 # [IoT 套件文档](index.md)
 
 # 概述
@@ -94,10 +95,20 @@
 ## [安全基础知识](securing-iot-ground-up.md)
 
 # 相关内容
+## 解决方案 
+### [IoT 套件预配置解决方案](/azure/iot-suite) 
+### [IoT 中心](https://docs.microsoft.com/microsoft-iot-central/) 
+## 平台服务 
+### [IoT 中心](/azure/iot-hub) 
+### [IoT 中心设备预配服务](/azure/iot-dps)
+### [IoT 服务 SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
+### [Location Based Services](/azure/location-based-services) 
+### [时序见解](/azure/time-series-insights) 
+## Microsoft Edge 
+### [IoT Edge](/azure/iot-edge) 
+### [IoT 设备 SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 ## [流分析](/azure/stream-analytics/)
 ## [事件中心](/azure/event-hubs/)
-## [IoT 中心](/azure/iot-hub/)
-## [Microsoft IoT Central](/azure/index#pivot=services&panel=iot)
 ## [机器学习](/azure/machine-learning/)
 
 # 资源

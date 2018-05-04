@@ -1,46 +1,44 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure 搜索文档"
+title: Azure 搜索文档
 metadata:
   document_id: 
-  title: "Azure 搜索文档 – 教程、快速入门和 API 参考"
+  title: Azure 搜索文档 – 教程、快速入门和 API 参考
   meta.description: Learn how to create an enterprise search solution over private, heterogenous content using Azure Search. Tutorials, API references, and other docs show you how to  consolidate searchable content into a single fast index, queryable using simple-to-advanced syntax for a broad range of scenarios.
-  services: search
   author: HeidiSteen
   manager: cgronlun
   ms.service: search
-  ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/04/2018
   ms.author: heidist
-  ms.openlocfilehash: 046159c537d31579f0eb0dcd65c7fb8903dffd20
-  ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+  ms.openlocfilehash: e22cd20edcb9e60b13a5c608b5e51064101b4813
+  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/13/2018
+  ms.lasthandoff: 04/18/2018
 abstract:
-  description: "了解如何使用 Azure 搜索创建基于专用异类内容的企业搜索解决方案。 教程、API 参考和其他文档介绍了如何将从简单到高级的语法用于各种方案，以便将可搜索内容整合到单个可查询的快速索引中。"
+  description: 了解如何使用 Azure 搜索创建基于专用异类内容的企业搜索解决方案。 教程、API 参考和其他文档介绍了如何将从简单到高级的语法用于各种方案，以便将可搜索内容整合到单个可查询的快速索引中。
   aside:
     image:
       alt: 
       height: 110
       src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
       width: 250
-    title: "了解 Azure 搜索 (9:32)"
+    title: 了解 Azure 搜索 (9:32)
     href: https://channel9.msdn.com/Events/Connect/2016/138/player
     width: 250
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "开始在门户中使用搜索服务，然后使用 C# 或 REST 来定义、加载和查询索引。"
+    text: 开始在门户中使用搜索服务，然后使用 C# 或 REST 来定义、加载和查询索引。
   - type: list
     style: icon48
     items:
     - image:
         src: /azure/search/media/index/portal.svg
-      text: "Azure 门户"
+      text: Azure 门户
       href: https://docs.microsoft.com/azure/search/search-create-service-portal
     - image:
         src: /azure/search/media/index/logo_Csharp.svg
@@ -50,25 +48,25 @@ sections:
         src: /azure/search/media/index/rest.svg
       text: REST
       href: https://docs.microsoft.com/azure/search/search-fiddler
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "使用 .NET 或 REST 编写代码，或者尝试使用门户进行快速的概念测试。"
+    text: 使用 .NET 或 REST 编写代码，或者尝试使用门户进行快速的概念测试。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/search/search-howto-dotnet-sdk\">如何将 Azure 搜索与 .NET 配合使用</a>"
-    - html: "<a href=\"/azure/search/search-indexer-tutorial\">通过 .NET 对 Azure SQL 数据库内容进行索引</a>"
-    - html: "<a href=\"/azure/search/search-semi-structured-data\">通过 REST 对 Azure Blob 存储中的半结构化数据进行索引</a>"
-    - html: "<a href=\"/azure/search/search-synonyms-tutorial-sdk\">添加可返回等效术语结果的同义词</a>"
-    - html: "<a href=\"/azure/search/search-get-started-portal\">使用门户编制索引并进行查询测试</a>"
-- title: "引用"
+    - html: <a href="/azure/search/search-howto-dotnet-sdk">如何将 Azure 搜索与 .NET 配合使用</a>
+    - html: <a href="/azure/search/search-indexer-tutorial">通过 .NET 对 Azure SQL 数据库内容进行索引</a>
+    - html: <a href="/azure/search/search-semi-structured-data">通过 REST 对 Azure Blob 存储中的半结构化数据进行索引</a>
+    - html: <a href="/azure/search/search-synonyms-tutorial-sdk">添加可返回等效术语结果的同义词</a>
+    - html: <a href="/azure/search/search-get-started-portal">使用门户编制索引并进行查询测试</a>
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "语言"
-      html: "<p><a href=\"/dotnet/api/?term=microsoft.azure.search\">.NET</a></p><p><a href=\"/dotnet/api/?term=microsoft.azure.management.search\">.NET（管理）</a></p><p><a href=\"http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html\">Python（管理）</a></p>"
+    - title: 语言
+      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET（管理）</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html">Python（管理）</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/searchservice\">服务 API 参考</a></p><p><a href=\"/rest/api/searchmanagement\">管理 API 参考</a></p>"
+      html: <p><a href="/rest/api/searchservice">服务 API 参考</a></p><p><a href="/rest/api/searchmanagement">管理 API 参考</a></p>

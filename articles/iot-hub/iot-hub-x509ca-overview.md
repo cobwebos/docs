@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT 中心 X.509 CA 安全性概述 | Microsoft Docs"
-description: "概述 - 如何使用 X.509 证书颁发机构在 IoT 中心对设备进行身份验证。"
+title: Azure IoT 中心 X.509 CA 安全性概述 | Microsoft Docs
+description: 概述 - 如何使用 X.509 证书颁发机构在 IoT 中心对设备进行身份验证。
 services: iot-hub
 documentationcenter: .net
 author: eustacea
 manager: arjmands
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 7497753cc27867b1fdb9635ba6613ac75b449090
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 11f340ebe1719c680cce5f6ad34150d3717c57d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 证书进行设备身份验证
 
@@ -69,7 +69,7 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>如何在 IoT 中心创建设备
 
-为了防止设备模拟，IoT 中心要求告知设备的预期。  为此，可在 IoT 中心的设备注册表中创建一个设备条目。  使用 IoT 中心[设备预配服务](https://azure.microsoft.com/en-us/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (DPS) 时，此过程会自动化。 
+为了防止设备模拟，IoT 中心要求告知设备的预期。  为此，可在 IoT 中心的设备注册表中创建一个设备条目。  使用 IoT 中心[设备预配服务](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (DPS) 时，此过程会自动化。 
 
 在此处了解如何[在 IoT 中心手动创建设备](iot-hub-security-x509-get-started.md#createdevice)。
 

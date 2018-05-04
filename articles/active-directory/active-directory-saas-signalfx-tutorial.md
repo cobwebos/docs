@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 SignalFx 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 SignalFx 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 SignalFx 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 SignalFx 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 50a86a01c22450ae2d92e6743fb6de7e652d4017
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9db01b4ea9a4f0d307db8bb9f8b6d6437a06815d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>教程：Azure Active Directory 与 SignalFx 的集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/12/2018
 
 **若要从库中添加 SignalFx，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -136,53 +136,37 @@ ms.lasthandoff: 03/12/2018
 
     c. 在“值”列表中，选择为该行显示的属性值。
 
-    d.单击“下一步”。 将“命名空间”留空。
+    d. 将“命名空间”留空。
     
     e. 单击“确定” 。
  
-6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+6. 在“SAML 签名证书”部分中执行以下步骤： 
 
-    ![证书下载链接](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png) 
+    ![证书下载链接](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png)
+
+    a. 单击“复制”按钮，复制**应用联合元数据 URL** 并将其粘贴到记事本。
+
+    b. 单击“证书(Base64)”，然后将证书保存在计算机上。
 
 7. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-signalfx-tutorial/tutorial_general_400.png)
 
-8. 若要生成**元数据 URL**，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpoint.png)
-     
-    d.单击“下一步”。 现在，转到 **SignalFx** 的属性页，使用“复制”按钮复制**应用程序 ID** 并将其粘贴到记事本中。
- 
-    ![配置单一登录](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-9. 在“SignalFx 配置”部分中，单击“配置 SignalFx”以打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。
+8. 在“SignalFx 配置”部分中，单击“配置 SignalFx”以打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。
 
     ![SignalFx 配置](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_configure.png) 
 
-10. 以管理员身份登录到 SignalFx 公司站点。
+9. 以管理员身份登录到 SignalFx 公司站点。
 
-11. 在 SignalFx 中，在顶部单击“集成”以打开“集成”页。
+10. 在 SignalFx 中，在顶部单击“集成”以打开“集成”页。
 
     ![SignalFx 集成](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_intg.png)
 
-12. 在“登录服务”部分下单击 **Azure Active Directory** 磁贴。
+11. 在“登录服务”部分下单击 **Azure Active Directory** 磁贴。
  
     ![SignalFx SAML](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_saml.png)
 
-13. 单击“新建集成”并在“安装”选项卡下执行以下步骤：
+12. 单击“新建集成”并在“安装”选项卡下执行以下步骤：
  
     ![SignalFx samlintgpage](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_azure.png)
 
@@ -192,14 +176,11 @@ ms.lasthandoff: 03/12/2018
 
     c. 在“证书”文本框中，单击“上传文件”以上传从 Azure 门户下载的 **Base64 编码证书**。
 
-    d.单击“下一步”。 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者 URL”文本框中。
+    d. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者 URL”文本框中。
 
-    e. 在“元数据 URL”文本框中，粘贴从 Azure 门户生成的**元数据 URL**。
+    e. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**。
 
     f. 单击“ **保存**”。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -231,7 +212,7 @@ ms.lasthandoff: 03/12/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
   
 ### <a name="create-a-signalfx-test-user"></a>创建一个 SignalFx 测试用户
 

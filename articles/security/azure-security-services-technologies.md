@@ -3,7 +3,7 @@ title: Azure 安全服务与技术 | Microsoft Docs
 description: 本文提供了一个包含 Azure 安全服务与技术的特选列表。
 services: security
 documentationcenter: na
-author: TomShinder
+author: barclayn
 manager: MBaldwin
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 20d3eb9a1843e1a223ba7fb060df46a22f9315b0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: eedfca2506f9e34b8e5039b0f101b1d4e68ef5a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure 安全服务与技术
+
 在我们与当前和未来 Azure 客户的讨论中，我们经常被问及“你们是否有 Azure 必须提供的所有安全相关服务和技术的列表？”
 
 了解以下信息有助于评估云服务提供程序选项。
@@ -28,6 +29,7 @@ ms.lasthandoff: 04/23/2018
 下面是我们初步提供的一个列表。 随着时间推移，此列表会像 Azure 那样不断增长变化。 此列表已进行分类，分类列表也会随时间的推移而增多。 请务必定期检查此页面，掌握我们最新的与安全相关的服务和技术。
 
 ## <a name="azure-security---general"></a>Azure 安全 - 概况
+
 * [Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)
 * [Azure 密钥保管库](https://azure.microsoft.com/documentation/services/key-vault/)
 * [Azure 磁盘加密](azure-security-disk-encryption.md)
@@ -35,6 +37,7 @@ ms.lasthandoff: 04/23/2018
 * [Azure 开发/测试实验室](https://azure.microsoft.com/documentation/services/devtest-lab/)
 
 ## <a name="azure-storage-security"></a>Azure 存储安全
+
 * [Azure 存储服务加密](../storage/common/storage-service-encryption.md)
 * [StorSimple 加密混合存储](https://azure.microsoft.com/documentation/services/storsimple/)
 * [Azure 客户端加密](../storage/common/storage-client-side-encryption.md)
@@ -44,6 +47,7 @@ ms.lasthandoff: 04/23/2018
 * [Azure 存储分析](https://msdn.microsoft.com/library/hh343270.aspx)
 
 ## <a name="azure-database-security"></a>Azure 数据库安全
+
 * [Azure SQL 防火墙](../sql-database/sql-database-firewall-configure.md)
 * [Azure SQL 单元格级别加密](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)
 * [Azure SQL 连接加密](../sql-database/sql-database-control-access.md)
@@ -54,6 +58,7 @@ ms.lasthandoff: 04/23/2018
 * [Azure SQL 数据库审核](../sql-database/sql-database-auditing.md)
 
 ## <a name="azure-identity-and-access-management"></a>Azure 标识和访问管理
+
 * [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
@@ -61,10 +66,12 @@ ms.lasthandoff: 04/23/2018
 * [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)
 
 ## <a name="backup-and-disaster-recovery"></a>备份和灾难恢复
+
 * [Azure 备份](https://azure.microsoft.com/documentation/services/backup/)
 * [Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery/)
 
 ## <a name="azure-networking"></a>Azure 网络
+
 * [网络安全组](../virtual-network/virtual-networks-nsg.md)
 * [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 * [Azure 应用程序网关](../application-gateway/application-gateway-introduction.md)

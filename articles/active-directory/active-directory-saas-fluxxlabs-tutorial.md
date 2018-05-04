@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 5288ae3deaf82e76accb9c9584c250c7dbe2c9ca
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0bba820c14c5eddc6db99923e3fb1de58c110f4c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>教程：Azure Active Directory 与 Fluxx Labs 集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 04/03/2018
 
 **若要从库添加 Fluxx Labs，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -114,16 +114,14 @@ ms.lasthandoff: 04/03/2018
     |-------------|------------|
     | 生产 | `https://<subdomain>.fluxx.io` |
     | 预生产 | `https://<subdomain>.preprod.fluxxlabs.com`|
-    | 过渡    | `https://<subdomain>.stage.fluxxlabs.com`|
-    
+        
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：
 
     | 环境 | URL 模式|
     |-------------|------------|
     | 生产 | `https://<subdomain>.fluxx.io/auth/saml/callback` |
     | 预生产 | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
-    | 过渡    | `https://<subdomain>.stage.fluxxlabs.com/auth/saml/callback`|
-    
+        
     > [!NOTE] 
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Fluxx Labs 支持团队](mailto:travis@fluxxlabs.com)。
 
@@ -141,11 +139,11 @@ ms.lasthandoff: 04/03/2018
 
 7. 在其他 Web 浏览器窗口中，以管理员身份登录 Fluxx Labs 公司站点。
 
-8. 在页面右上角，依次单击“设置”图标和“管理”。
+8. 在“设置”部分下，选择“管理员”。
 
     ![Fluxx Labs 配置](./media/active-directory-saas-fluxxlabs-tutorial/config1.png)
 
-9. 在管理面板中，选择“插件” > “集成”，然后选择“SAML SSO (已启用)”
+9. 在管理面板中，选择“插件” > “集成”，然后选择“SAML SSO (已禁用)”
 
     ![Fluxx Labs 配置](./media/active-directory-saas-fluxxlabs-tutorial/config2.png)
     
@@ -159,13 +157,13 @@ ms.lasthandoff: 04/03/2018
 
     c. 在“回调路径”文本框中，键入 **/auth/saml/callback**。
 
-    d. 在“断言使用者服务 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    d. 在“断言使用者服务 URL (单一登录 URL)”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
-    e. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。
+    e. 在“受众 (SP 实体 ID)”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
-    f. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“IDP 证书”文本框中。
+    f. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“标识提供者证书”文本框。
 
-    g.  在“名称标识符格式”文本框中，输入值 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
+    g. 在“名称标识符格式”文本框中，输入值 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
 
     h. 单击“ **保存**”。
 
@@ -212,23 +210,21 @@ ms.lasthandoff: 04/03/2018
 
 1. 以管理员身份登录到 Fluxx Labs 公司站点。
 
-2. 在仪表板中，单击下面显示的图标打开“新建人员”卡。
+2. 单击下面显示的**图标**。
+
+    ![Fluxx Labs 配置](./media/active-directory-saas-fluxxlabs-tutorial/config6.png)
+
+3. 在仪表板中，单击下面显示的图标打开“新建人员”卡。
 
     ![Fluxx Labs 配置](./media/active-directory-saas-fluxxlabs-tutorial/config4.png)
 
-3. 在“新建人员”部分执行以下步骤：
+4. 在“新建人员”部分中，执行以下步骤：
     
     ![Fluxx Labs 配置](./media/active-directory-saas-fluxxlabs-tutorial/config5.png)
 
-    a. 在“登录名”文本框中，输入类似于 Azure_Admin 的用户电子邮件地址。
+    a. Fluxx Labs 使用电子邮件作为 SSO 登录名的唯一标识符。 在“SSO UID”字段中填写用户的电子邮件地址，该值与他们进行 SSO 登录时使用的电子邮件地址匹配。
 
-    b. 在“密码”文本框中，键入 Azure_Admin 帐户的密码。
-
-    c. 在“确认密码”文本框中，再次输入 Azure_Admin 帐户的密码。
-
-    d. Fluxx Labs 使用电子邮件作为 SSO 登录名的唯一标识符。 在“SSO UID”字段中填写用户的电子邮件地址，该值与他们进行 SSO 登录时使用的电子邮件地址匹配。
-
-    e. 单击“创建人员”。
+    b. 单击“ **保存**”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -285,4 +281,3 @@ ms.lasthandoff: 04/03/2018
 [201]: ./media/active-directory-saas-fluxxlabs-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-fluxxlabs-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-fluxxlabs-tutorial/tutorial_general_203.png
-

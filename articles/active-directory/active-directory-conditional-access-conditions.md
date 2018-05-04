@@ -1,26 +1,26 @@
 ---
-title: "Azure Active Directory 条件访问中的条件 | Microsoft Docs"
-description: "了解如何使用 Azure Active Directory 条件访问中的分配来触发策略。"
+title: Azure Active Directory 条件访问中的条件 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory 条件访问中的分配来触发策略。
 services: active-directory
-keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
-documentationcenter: 
+keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2415a2c2c0143b4abeb8ec1ecab379a204456874
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 168301bbd0e7a59330ee6c87d1821db3fca39f67
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件 
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 02/13/2018
 
 可以选择：
 
-- **所有云应用**对要应用到整个组织的策略设置基准。 在要求执行多重身份验证（由于检测到任何云应用存在登录风险）的策略中，往往会选择此选项。
+- **所有云应用**对要应用到整个组织的策略设置基准。 在要求执行多重身份验证（由于检测到任何云应用存在登录风险）的策略中，往往会选择此选项。 应用于**所有云应用**的策略将应用于对所有网站和服务的访问权限。 此设置并非仅限用于“选择云应用”列表上显示的云应用。
 
 - 根据策略将特定服务指定为目标的单个云应用。 例如，可以要求用户使用[合规的设备](active-directory-conditional-access-policy-connected-applications.md)访问 SharePoint Online。 当其他服务访问 SharePoint 内容（例如 Microsoft Teams）时，也会对这些服务应用此策略。 
 

@@ -1,24 +1,24 @@
 ---
-title: "将 Azure 容器服务与 Kafka on HDInsight 配合使用 | Microsoft Docs"
-description: "了解如何使用 Azure 容器服务 (AKS) 托管的容器映像中的 Kafka on HDInsight。"
+title: 将 Azure 容器服务与 Kafka on HDInsight 配合使用 | Microsoft Docs
+description: 了解如何使用 Azure 容器服务 (AKS) 托管的容器映像中的 Kafka on HDInsight。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 53342e11476a307bb6af356eb40fe51928041822
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 16513cbd775e200a0821e8786ae823b82c67e437
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>将 Azure 容器服务与 Kafka on HDInsight 配合使用
 
@@ -108,7 +108,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 使用以下步骤将 Kafka 配置为播发 IP 地址而不是域名：
 
-1. 使用 Web 浏览器，并转到 https://CLUSTERNAME.azurehdinsight.net。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
+1. 使用 Web 浏览器，转到 https://CLUSTERNAME.azurehdinsight.net。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
 
     出现提示时，使用群集的 HTTPS 用户名称密码。 将显示群集的 Ambari Web UI。
 

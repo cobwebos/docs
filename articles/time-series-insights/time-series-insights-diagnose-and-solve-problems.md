@@ -1,6 +1,6 @@
 ---
-title: "诊断并解决 Azure 时序见解中的问题 | Microsoft Docs"
-description: "本文介绍如何诊断、排查和解决可能在 Azure 时序见解环境中遇见的常见问题。"
+title: 诊断并解决 Azure 时序见解中的问题 | Microsoft Docs
+description: 本文介绍如何诊断、排查和解决可能在 Azure 时序见解环境中遇见的常见问题。
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
@@ -10,12 +10,12 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/15/2017
-ms.openlocfilehash: 757d37183ad334aca462af59bad261cfa686299e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/09/2018
+ms.openlocfilehash: f0c1b8aa99e9ac9c73f57af17490dd3a465a9cac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>在时序见解环境中诊断并解决问题
 
@@ -45,6 +45,11 @@ IoT 中心或事件中心注册期间，指定应用于读取数据的使用者�
 当可以看见部分数据但数据滞后时，需要考虑几种可能性：
 
 ### <a name="possible-cause-a-your-environment-is-getting-throttled"></a>可能的原因 A：环境受到了限制
+在使用数据创建某个事件源以后，如果预配了环境，则常常出现此问题。  Azure IoT 中心和事件中心存储数据的时间最多为七天。  在事件源中，TSI 将始终从最早的事件开始（先进先出）。  因此，如果你在某个事件源中有五百万个事件，则当你连接到 S1（单个单位 TSI 环境）时，TSI 每天会读取大约一百万个事件。  初看起来，似乎 TSI 会经历五天的延迟。  实际发生的是，环境会受到限制。  如果在事件源中有旧的事件，则可通过以下两种方式之一来访问：
+
+- 更改事件源的保留限制，以便去除不希望其显示在 TSI 中的旧事件
+- 预配一个更大的环境大小（就单元数目而言），以便增加旧事件的吞吐量。  以上面的示例为例，如果将该 S1 环境增加到一天五个单元，则环境现在应该在当天就能够赶上来。  如果事件生成稳定在每天 1 百万（或更少）个事件，则可在赶上来以后将事件容量减少到一个单元。  
+
 将基于环境 SKU 类型和容量对环境进行强制限制。 环境中的所有事件源都共享此容量。 如果 IoT 中心或事件中心的事件源推送的数据超出了强制的限制，则会出现限制和延迟的情况。
 
 下图显示了一个 SKU 为 S1 且容量为 3 的时序见解环境。 它每天可以引入 300 万个事件。
@@ -76,6 +81,12 @@ IoT 中心或事件中心注册期间，指定应用于读取数据的使用者�
 请确保名称和值符合以下规则：
 * 时间戳属性名称区分大小写。
 * 来自事件源的时间戳属性值（作为 JSON 字符串）的格式应为 yyyy-MM-ddTHH:mm:ss.FFFFFFFK。 “2008-04-12T12:53Z”即是此类字符串的一个示例。
+
+若要确保捕获时间戳属性名称并让其正常运行，最简单的方法是使用 TSI 资源管理器。  在 TSI 资源管理器中，使用此图表，在提供时间戳属性名称以后选择一个时间段。  右键单击所做的选择，然后选择“浏览事件”选项。  第一个列标题应该是时间戳属性名称，它应该在 *Timestamp* 单词旁边有 *($ts)*，而不是：
+- *(abc)*，指示 TSI 正在将数据值作为字符串来读取
+- 日历图标，指示 TSI 正在将数据值作为日期/时间来读取
+- *#*，指示 TSI 正在将数据值作为整数来读取
+
 
 ## <a name="next-steps"></a>后续步骤
 - 有关其他帮助，请在 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights) 中展开交流。 

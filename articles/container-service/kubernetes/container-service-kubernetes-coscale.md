@@ -1,19 +1,19 @@
 ---
-title: "使用 CoScale 监视 Azure Kubernetes 群集"
-description: "使用 CoScale 在 Azure 容器服务中监视 Kubernetes 群集"
+title: 使用 CoScale 监视 Azure Kubernetes 群集
+description: 使用 CoScale 在 Azure 容器服务中监视 Kubernetes 群集
 services: container-service
 author: fryckbos
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 2d6757397d76b6ca87a45254cb31f34d34a42541
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 16580307193bbb7eb9b401eb1b14356e8589d6e2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>使用 CoScale 监视 Azure 容器服务 Kubernetes 群集
 

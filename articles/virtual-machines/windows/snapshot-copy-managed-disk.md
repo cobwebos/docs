@@ -3,7 +3,7 @@ title: 在 Azure 中创建 VHD 快照 | Microsoft Docs
 description: 了解如何创建 Azure VM 的副本用作备份或用于解决问题。
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: timlt
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 15eb778e-fc07-45ef-bdc8-9090193a6d20
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: c5f4c7224e04b601d7d3fe4da7d8f5f0c02c7039
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d7315d3fb7fc156beb85271d0e5aa19ec6baa7a9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-snapshot"></a>创建快照
 
@@ -37,41 +37,52 @@ ms.lasthandoff: 04/06/2018
 9. 单击“创建”。
 
 ## <a name="use-powershell-to-take-a-snapshot"></a>使用 PowerShell 拍摄快照
+
 以下步骤演示如何使用 [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) cmdlet 获取要复制的 VHD 磁盘、创建快照配置以及创建磁盘的快照。 
 
-请确保已安装最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。
+开始前，请确保具有最新版本的 AzureRM.Compute PowerShell 模块。 本文需要 5.7.0 版本或更高版本的 AzureRM 模块。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
 
-```
-Install-Module AzureRM.Compute -MinimumVersion 2.6.0
-```
-有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
-
-
-1. 设置一些参数。 
+设置一些参数。 
 
  ```azurepowershell-interactive
 $resourceGroupName = 'myResourceGroup' 
 $location = 'eastus' 
-$dataDiskName = 'myDisk' 
+$vmName = 'myVM'
 $snapshotName = 'mySnapshot'  
 ```
 
-2. 获取要复制的 VHD 磁盘。
+获取 VM。
 
  ```azurepowershell-interactive
-$disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName -DiskName $dataDiskName 
+$vm = get-azurermvm `
+   -ResourceGroupName $resourceGroupName `
+   -Name $vmName
 ```
-3. 创建快照配置。 
+
+创建快照配置。 在此示例中，我们将创建 OS 磁盘的快照。
 
  ```azurepowershell-interactive
-$snapshot =  New-AzureRmSnapshotConfig -SourceUri $disk.Id -CreateOption Copy -Location $location 
+$snapshot =  New-AzureRmSnapshotConfig `
+   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+   -Location $location `
+   -CreateOption copy
 ```
-4. 拍摄快照。
+   
+> [!NOTE]
+> 如果希望将快照存储在具有区域复原能力的存储中，需要在支持[可用性区域](../../availability-zones/az-overview.md)的区域中创建该快照并包括 `-SkuName Standard_ZRS` 参数。   
 
- ```azurepowershell-interactive
-New-AzureRmSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName 
+   
+拍摄快照。
+
+```azurepowershell-interactive
+New-AzureRmSnapshot `
+   -Snapshot $snapshot `
+   -SnapshotName $snapshotName `
+   -ResourceGroupName $resourceGroupName 
 ```
-如果计划使用快照创建托管磁盘并将其附加到需要高性能的 VM，请使用 New-AzureRmSnapshot 命令中的参数 `-AccountType Premium_LRS`。 此参数将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘比标准托管磁盘费用高。 因此使用该参数前，请确保确实需要使用高级托管磁盘。
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

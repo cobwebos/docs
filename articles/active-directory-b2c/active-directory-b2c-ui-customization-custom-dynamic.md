@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: davidmu
-ms.openlocfilehash: d8aaf0ef8cefdc0cb1c4ff3dec656d31c32f664f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 77f6ae1df8a364eecc5e7d6d6fe3a07dd215ac16
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 使用 Azure Active Directory B2C (Azure AD B2C) 自定义策略可在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 
 
 ## <a name="prerequisites"></a>先决条件
@@ -94,7 +97,7 @@ ms.lasthandoff: 03/23/2018
 
 4. 在“名称”框中，将名称更改为 **unified.cshtml**。
 
-5. 选择“添加”。
+5. 选择 **添加** 。
 
     ![添加 MVC 视图](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
 
@@ -322,7 +325,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 
     c. 创建新视图 *selfasserted*。
 
-    d.单击“下一步”。 将 *selfasserted* 添加到 **Home** 控制器。
+    d. 将 *selfasserted* 添加到 **Home** 控制器。
 
 2. 返回“步骤 4”，执行以下操作： 
 

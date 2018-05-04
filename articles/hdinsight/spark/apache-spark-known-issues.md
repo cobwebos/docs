@@ -1,8 +1,8 @@
 ---
-title: "排查 Azure HDInsight 中 Apache Spark 群集的相关问题 | Microsoft Docs"
-description: "了解与 Azure HDInsight 中的 Apache Spark 群集相关的问题以及如何解决这些问题。"
+title: 排查 Azure HDInsight 中 Apache Spark 群集的相关问题 | Microsoft Docs
+description: 了解与 Azure HDInsight 中的 Apache Spark 群集相关的问题以及如何解决这些问题。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,24 +10,22 @@ tags: azure-portal
 ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 664c97117de793209007843fa23c98f52c2b079d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
 
 本文档记述了 HDInsight Spark 公共预览版的所有已知问题。  
 
 ## <a name="livy-leaks-interactive-session"></a>Livy 泄漏交互式会话
-如果 Livy 在某个交互式会话仍保持活动状态的情况下重启（通过 Ambari 重启或由于头节点 0 虚拟机重启导致），则会泄漏交互式作业会话。 因此，新作业可能卡在“已接受”状态且无法启动。
+如果 Livy 在某个交互式会话仍保持活动状态的情况下重启（通过 Ambari 重启或由于头节点 0 虚拟机重启导致），则会泄漏交互式作业会话。 因此，新作业可能会停滞在“已接受”状态。
 
 **缓解：**
 
@@ -54,7 +52,12 @@ ms.lasthandoff: 02/24/2018
 从 Ambari 手动启动 History Server。
 
 ## <a name="permission-issue-in-spark-log-directory"></a>Spark 日志目录中的权限问题
-当 hdiuser 通过 spark-submit 提交作业时发生错误 java.io.FileNotFoundException：/var/log/spark/sparkdriver_hdiuser.log（权限被拒绝），且不会写入驱动程序日志。 
+使用 spark-submit 提交作业时 hdiuser 会收到以下错误：
+
+```
+java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permission denied)
+```
+并且不会写入任何驱动程序日志。 
 
 **缓解：**
 
@@ -65,7 +68,7 @@ ms.lasthandoff: 02/24/2018
 
 ## <a name="spark-phoenix-connector-is-not-supported"></a>不支持 Spark-Phoenix 连接器
 
-目前，HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
+HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 **缓解：**
 
@@ -75,7 +78,7 @@ ms.lasthandoff: 02/24/2018
 下面是与 Jupyter 笔记本相关的一些已知问题。
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>笔记本的文件名中包含非 ASCII 字符
-可在 Spark HDInsight 群集中使用的 Jupyter 笔记本的文件名不应包含非 ASCII 字符。 如果尝试通过 Jupyter UI 上传文件名中包含非 ASCII 字符的文件，操作会失败且不显示提示（即 Jupyter 禁止上传该文件，但也不引发可视的错误）。 
+不要在 Jupyter Notebook 文件名中使用非 ASCII 字符。 如果尝试通过 Jupyter UI 来上传具有非 ASCII 文件名的文件，则上传将失败且不会显示任何错误消息。 Jupyter 不会让你上传文件，但是也不会引发可见的错误。
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>加载大型笔记本时发生错误
 加载大型笔记本时，可能会看到错误 **`Error loading notebook`**。  

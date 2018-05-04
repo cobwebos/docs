@@ -1,32 +1,30 @@
 ---
-title: "在 HDInsight 中使用 R 自定义群集 - Azure | Microsoft Docs"
-description: "了解如何通过脚本操作安装 R，以及如何在 HDInsight 群集上使用 R。"
+title: 在 HDInsight 中使用 R 自定义群集 - Azure | Microsoft Docs
+description: 了解如何通过脚本操作安装 R，以及如何在 HDInsight 群集上使用 R。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: be851270-afa5-4af0-a69e-2d343a4deeb7
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 666b51970bf04634708cbf65b8bca0c05412934b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c5fb38de8b1023a05709d07ba17b0c776c87957e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 R
 
 了解如何使用 R 通过脚本操作来自定义基于 Windows 的 HDInsight 群集，以及如何在 HDInsight 群集上使用 R。 [HDInsight 产品/服务](https://azure.microsoft.com/pricing/details/hdinsight/)包括作为 HDInsight 群集一部分的 R Server。 它允许 R 脚本使用 MapReduce 和 Spark 来运行分布式计算。 有关详细信息，请参阅 [开始使用 HDInsight 上的 R Server](r-server/r-server-get-started.md)。 有关在基于 Linux 的群集中使用 R 的信息，请参阅[在 HDInsight Hadoop 群集 (Linux) 上安装并使用 R](hdinsight-hadoop-r-scripts-linux.md)。
 
-可以使用*脚本操作*，在 Azure HDInsight 的任何一种群集（Hadoop、Storm、HBase、Spark）上安装 R。 用于在 HDInsight 群集上安装 R 的示例脚本可通过 [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) 上的只读 Azure 存储 Blob 获得。
+可以使用*脚本操作*，在 Azure HDInsight 的任何一种群集（Hadoop、Storm、HBase、Spark）上安装 R。 用于在 HDInsight 群集上安装 R 的示例脚本可从只读 Azure 存储 Blob ([https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1)) 获得。
 
 **相关文章**
 
@@ -55,10 +53,10 @@ R 与 Azure Blob 存储 (WASB) 兼容，这样，存储在此的数据可以在 
 
     <table border='1'>
         <tr><th>属性</th><th>值</th></tr>
-        <tr><td>Name</td>
+        <tr><td>名称</td>
             <td>指定脚本操作的名称，例如 <b>Install R</b>。</td></tr>
         <tr><td>脚本 URI</td>
-            <td>指定调用用于自定义群集的脚本的 URI，例如 <i>https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1</i></td></tr>
+            <td>指定要调用以自定义群集的脚本的 URI，例如 <i>https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1</i></td></tr>
         <tr><td>节点类型</td>
             <td>指定在其上运行自定义脚本的节点。 可以选择“所有节点”<b></b>、“仅限头节点”<b></b>或“仅限辅助角色节点”<b></b>。
         <tr><td>parameters</td>

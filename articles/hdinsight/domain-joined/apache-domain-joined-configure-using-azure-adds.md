@@ -1,24 +1,19 @@
 ---
-title: 使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集 - Azure | Microsoft Docs
+title: 使用 AAD-DS 配置已加入域的 HDInsight 群集
 description: 了解如何使用 Azure Active Directory 域服务设置和配置已加入域的 HDInsight 群集
 services: hdinsight
-documentationcenter: ''
-author: bprakash
+author: omidm1
 manager: jhubbard
 editor: cgronlun
-tags: ''
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/20/2018
-ms.author: bhanupr
-ms.openlocfilehash: ae7ccaf3d167176a1fc6015e84b0eb023da945d5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 060ca8040f514ec1df48c2ca4568cbbb2a529267
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务设置和配置已加入域的 HDInsight 群集
 
@@ -36,7 +31,10 @@ ms.lasthandoff: 03/23/2018
 > [!NOTE]
 > 只有租户管理员拥有创建域服务的特权。 如果将 Azure Data Lake 存储 (ADLS) 用作 HDInsight 的默认存储，则确保 ADLS 的默认 Azure AD 租户与 HDInsight 群集的域相同。 需对有权访问群集的用户禁用多重身份验证，才可将此安装程序用于 Azure Data Lake Store。
 
-预配域服务后，需要在“Azure AD DC 管理员”组中创建一个服务帐户用于创建 HDInsight 群集。 服务帐户必须是 Azure AD 上的全局管理员。
+预配 AAD 域服务后，需要在 AAD 中创建一个具有合适权限的服务帐户（将同步到 AAD-DS），以用于创建 HDInsight 群集。 如果此服务帐户已存在，则需要重置其密码并等待，直到其同步到 AAD DS（此重置会导致创建 kerberos 密码哈希并且可能需要最多 30 分钟）。 此服务帐户应具有以下权限：
+
+- 将计算机加入到域，并将计算机主体放到在创建群集期间指定的 OU 中。
+- 在群集创建期间指定的 OU 内创建服务主体。
 
 必须为 Azure AD 域服务托管域启用安全 LDAP。 要启用安全 LDAP，请参阅[为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)。
 
@@ -49,7 +47,7 @@ ms.lasthandoff: 03/23/2018
 创建已加入域的 HDInsight 群集时，必须提供以下参数：
 
 - **域名**：与 Azure AD DS 关联的域名。 例如 contoso.onmicrosoft.com
-- **域用户名**：“Azure AD DC 管理员组”中的服务帐户，已在上一部分创建。 例如，hdiadmin@contoso.onmicrosoft.com。此域用户是此已加入域的 HDInsight 群集的管理员。
+- **域用户名**：在前面的部分中在 Azure AD DC 中创建的服务帐户。 例如，hdiadmin@contoso.onmicrosoft.com。此域用户将成为此已加入域的 HDInsight 群集的管理员。
 - **域密码**：服务帐户的密码。
 - **组织单位**：要用于 HDInsight 群集的 OU 的可分辨名称。 例如：OU=HDInsightOU,DC=contoso,DC=onmicrosohift,DC=com。如果此 OU 不存在，HDInsight 群集会尝试创建此 OU。 
 - **LDAPS URL**：例如 ldaps://contoso.onmicrosoft.com:636

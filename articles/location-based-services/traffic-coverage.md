@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 251c736e0f607ffeea144639f437900eb337b6ea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6d061d5b1100051a2a06e838dc16912119efb6c9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-location-based-services---traffic-coverage"></a>Azure Location Based Services - 路况覆盖区域
 
@@ -31,6 +31,7 @@ Azure Location Based Services (LBS) 以流量和事故形式提供丰富的路�
 |巴林     |         |✓         |
 |比利时     |✓         |✓         |
 |巴西     |✓         |✓         |
+|保加利亚     |✓         |✓         |
 |加拿大     |✓         |✓         |
 |智利     |✓         |✓         |
 |哥伦比亚      |         |✓         |

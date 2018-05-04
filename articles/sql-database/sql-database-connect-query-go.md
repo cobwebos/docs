@@ -11,23 +11,23 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: v-daveng
-ms.openlocfilehash: b10d3e469ffac22a2b0994708f50125d21496fef
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3585a47e0823a765bd59b28f4b399aed7c5fcae3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>使用 Go 查询 Azure SQL 数据库
 
-此快速入门教程演示如何使用 [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) 连接到 Azure SQL 数据库。 此外演示了用于查询和修改数据的 Transact-SQL 语句。
+本快速入门演示了如何使用 [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) 连接到 Azure SQL 数据库。 此外演示了用于查询和修改数据的 Transact-SQL 语句。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门教程，请确保符合以下先决条件：
+若要完成本快速入门，请确保符合以下先决条件：
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- 针对用于本快速入门教程的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+- 针对用于本快速入门的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
 
 - 已为操作系统安装 Go 和相关软件。
 

@@ -1,33 +1,35 @@
 ---
 title: Terraform 和 Azure 提供程序部署槽位
-description: Terraform 和 Azure 提供程序部署槽位教程
+description: 有关使用 Terraform 和 Azure 提供程序部署槽位的教程
 keywords: terraform, devops, 虚拟机, Azure, 部署槽位
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 4/05/2018
 ms.topic: article
-ms.openlocfilehash: 34b16b5fb2b5b574d166693db346ebba15eaa1f9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3a018dbaf90801604b13efcf8bd7afb6dbc68659
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="using-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>结合 Azure 部署槽位使用 Terraform 来预配基础结构
+# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>结合 Azure 部署槽位使用 Terraform 来预配基础结构
 
-使用 [Azure 部署槽位](/azure/app-service/web-sites-staged-publishing)可以交换应用的不同版本 - 例如生产和过渡 - 以最大程度地降低中断部署造成的影响。 本文将会通过 GitHub 和 Azure 演练两个应用的部署，以演示部署槽位的示例用法。 一个应用托管在“生产”槽位中，另一个应用托管在“过渡”槽位中。 （名称“生产”和“过渡”是任意给出的，可以使用任何名称，只要能表示场景即可。）配置部署槽位后，可根据需要使用 Terraform 在两个槽位之间交换。
+可以使用 [Azure 部署槽位](/azure/app-service/web-sites-staged-publishing)交换应用的不同版本。 该功能有助于最大程度地降低中断部署造成的影响。 
+
+本文将会通过 GitHub 和 Azure 演练两个应用的部署，以演示部署槽位的示例用法。 一个应用托管在生产槽位中。 另一个应用托管在过渡槽位中。 （名称“生产”和“过渡”是任意给出的，可以使用任何名称，只要能表示场景即可。）配置部署槽位后，可根据需要使用 Terraform 在两个槽位之间交换。
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 订阅** - 如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 - **GitHub 帐户** - 需要通过一个 [GitHub](http://www.github.com) 帐户来克隆和使用测试 GitHub 存储库。
 
 ## <a name="create-and-apply-the-terraform-plan"></a>创建并应用 Terraform 计划
 
-1. 浏览到 [Azure 门户](http://portal.azure.com)
+1. 浏览到 [Azure 门户](http://portal.azure.com)。
 
-1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)，并选择“Bash”作为环境（如果之前未这样做）。
+1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
 
     ![Cloud Shell 提示符](./media/terraform-slot-walkthru/azure-portal-cloud-shell-button-min.png)
 
@@ -49,7 +51,7 @@ ms.lasthandoff: 04/06/2018
     mkdir swap
     ```
 
-1. 使用 `ls` bash 命令验证是否已创建这两个目录。
+1. 使用 `ls` bash 命令验证是否已成功创建这两个目录。
 
     ![创建目录后的 Clould Shell](./media/terraform-slot-walkthru/cloud-shell-after-creating-dirs.png)
 
@@ -59,18 +61,18 @@ ms.lasthandoff: 04/06/2018
     cd deploy
     ```
 
-1. 使用 [vi 编辑器](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html)创建名为 `deploy.tf` 的文件，其中包含 [Terraform 配置](https://www.terraform.io/docs/configuration/index.html)。
+1. 使用 [vi 编辑器](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html)创建名为 `deploy.tf` 的文件。 此文件将包含 [Terraform 配置](https://www.terraform.io/docs/configuration/index.html)。
 
     ```bash
     vi deploy.tf
     ```
 
-1. 按 `i` 字母键进入插入模式。
+1. 按 I 键进入插入模式。
 
 1. 在编辑器中粘贴以下代码：
 
     ```JSON
-    # Configure the Azure Provider
+    # Configure the Azure provider
     provider "azurerm" { }
 
     resource "azurerm_resource_group" "slotDemo" {
@@ -104,15 +106,15 @@ ms.lasthandoff: 04/06/2018
     }
     ```
 
-1. 按 **&lt;Esc>** 键退出插入模式。
+1. 按 Esc 键退出插入模式。
 
-1. 保存文件，然后输入以下命令并按 **&lt;Enter>** 退出 vi 编辑器：
+1. 保存文件，然后输入以下命令退出 vi 编辑器：
 
     ```bash
     :wq
     ```
 
-1. 创建该文件后，可以验证其内容。
+1. 创建该文件后，请验证其内容。
 
     ```bash
     cat deploy.tf
@@ -138,15 +140,15 @@ ms.lasthandoff: 04/06/2018
 
 1. 关闭 Cloud Shell 窗口。
 
-1. 在 Azure 门户主菜单中，选择“资源组”。
+1. 在 Azure 门户的主菜单中，选择“资源组”。
 
-    ![Azure 门户中的“资源组”](./media/terraform-slot-walkthru/resource-groups-menu-option.png)
+    ![门户中的“资源组”选项](./media/terraform-slot-walkthru/resource-groups-menu-option.png)
 
 1. 在“资源组”选项卡上，选择“slotDemoResourceGroup”。
 
     ![Terraform 创建的资源组](./media/terraform-slot-walkthru/resource-group.png)
 
-完成后，会看到 Terraform 创建的所有资源。
+现在会看到 Terraform 创建的所有资源。
 
 ![Terraform 创建的资源](./media/terraform-slot-walkthru/resources.png)
 
@@ -156,7 +158,7 @@ ms.lasthandoff: 04/06/2018
 
 1. 浏览到 [GitHub 上的 awesome-terraform 存储库](https://github.com/Azure/awesome-terraform)。
 
-1. 克隆 **awesome-terraform 存储库**。
+1. 克隆 **awesome-terraform** 存储库。
 
     ![克隆 GitHub awesome-terraform 存储库](./media/terraform-slot-walkthru/fork-repo.png)
 
@@ -166,7 +168,7 @@ ms.lasthandoff: 04/06/2018
 
 克隆测试项目存储库后，通过以下步骤配置部署槽位：
 
-1. 在 Azure 门户主菜单中，选择“资源组”。
+1. 在 Azure 门户的主菜单中，选择“资源组”。
 
 1. 选择“slotDemoResourceGroup”。
 
@@ -206,17 +208,17 @@ ms.lasthandoff: 04/06/2018
 
 - 在步骤 3 中，选择“slotAppServiceSlotOne”资源。
 
-- 在步骤 13 中，选择“working”分支而不是 master 分支。
+- 在步骤 13 中，选择 working 分支而不是 master 分支。
 
-    ![选择 Working 分支](./media/terraform-slot-walkthru/choose-branch-working.png)
+    ![选择 working 分支](./media/terraform-slot-walkthru/choose-branch-working.png)
 
 ## <a name="test-the-app-deployments"></a>测试应用部署
 
 在前面的部分中，我们设置了要从 GitHub 中不同分支部署的两个槽位 - **slotAppService** 和 **slotAppServiceSlotOne**。 让我们预览 Web 应用，以验证是否已成功部署这些应用。
 
-执行以下步骤两次，第一次执行步骤 3 时，请选择“slotAppService”，第二次请选择“slotAppServiceSlotOne”：
+执行以下步骤两次。 执行步骤 3 时，第一次请选择“slotAppService”，第二次请选择“slotAppServiceSlotOne”。
 
-1. 在 Azure 门户主菜单中，选择“资源组”。
+1. 在 Azure 门户的主菜单中，选择“资源组”。
 
 1. 选择“slotDemoResourceGroup”。
 
@@ -257,12 +259,12 @@ ms.lasthandoff: 04/06/2018
     vi swap.tf
     ```
 
-1. 按 `i` 字母键进入插入模式。
+1. 按 I 键进入插入模式。
 
 1. 在编辑器中粘贴以下代码：
 
     ```JSON
-    # Configure the Azure Provider
+    # Configure the Azure provider
     provider "azurerm" { }
 
     # Swap the production slot and the staging slot
@@ -273,9 +275,9 @@ ms.lasthandoff: 04/06/2018
     }
     ```
 
-1. 按 **&lt;Esc>** 键退出插入模式。
+1. 按 Esc 键退出插入模式。
 
-1. 保存文件，然后输入以下命令并按 **&lt;Enter>** 退出 vi 编辑器：
+1. 保存文件，然后输入以下命令退出 vi 编辑器：
 
     ```bash
     :wq
@@ -311,4 +313,4 @@ ms.lasthandoff: 04/06/2018
 terraform apply
 ```
 
-交换后，会看到原始配置。
+交换应用后，会看到原始配置。

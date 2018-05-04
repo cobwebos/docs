@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: e2d9732dca7b0506a3307fc8aa1674d0d379c67f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 70de9ed6175a5fe7a8e3eed9c0a921cf8184d50d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 添加辅助证书
 > [!TIP]
-> 现在可以使用 [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) cmdlet 更好、更轻松地添加辅助证书。 无需执行本部分中的其余步骤。  此外，使用 [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) cmdlet 时，不需要最初用于创建部署群集的模板。
+> 现在可以使用 [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) cmdlet 更好、更轻松地添加辅助证书。 无需执行本部分中的其余步骤。  此外，使用 [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) cmdlet 时，不需要使用最初用来创建和部署群集的模板。
 
 执行以下步骤的前提是，熟悉 Resource Manager 的工作原理，并已使用 Resource Manager 模板至少部署了一个 Service Fabric 群集，同时已准备好你在设置此群集时使用的模板。 此外，还有一个前提就是，可以熟练使用 JSON。
 

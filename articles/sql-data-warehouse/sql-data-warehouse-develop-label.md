@@ -1,27 +1,26 @@
 ---
-title: "在 SQL 数据仓库中使用标签检测查询 | Microsoft 文档"
-description: "有关在开发解决方案时于 Azure SQL 数据仓库中使用标签检测查询的技巧。"
+title: 在 SQL 数据仓库中使用标签检测查询 | Microsoft Docs
+description: 有关在开发解决方案时于 Azure SQL 数据仓库中使用标签检测查询的技巧。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 44988de8-04c1-4fed-92be-e1935661a4e8
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: queries
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 9e75bbe528a427724a623305fbd45e2277e9d0af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 22737faa146d83f1f31489125dee4146c7d11ac1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="use-labels-to-instrument-queries-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用标签检测查询
+# <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中使用标签检测查询
+有关在开发解决方案时于 Azure SQL 数据仓库中使用标签检测查询的技巧。
+
+
+## <a name="what-are-labels"></a>什么是标签？
 SQL 数据仓库支持称为查询标签的概念。 在继续之前，让我们看一个示例：
 
 ```sql
@@ -31,11 +30,11 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-最后一行将字符串 'My Query Label' 标记为查询。 此字符串特别有用，因为可以通过 DMV 查询标签。 这为我们提供了一种机制用于跟踪问题查询，以及帮助通过 ETL 运行来了解进度。
+最后一行将字符串“My Query Label”标记为查询。 此标记特别有用，因为可以通过 DMV 查询标签。 对标签进行查询提供了一种用于定位有问题的查询并帮助查明 ELT 运行进度的机制。
 
-良好的命名约定确实很有帮助。 例如，类似 ' PROJECT : PROCEDURE : STATEMENT : COMMENT' 的内容有助于在源代码管理的几乎所有代码中唯一标识查询。
+良好的命名约定确实很有帮助。 例如，让标签以 PROJECT、PROCEDURE、STATEMENT 或 COMMENT 开头有助于在源代码管理的几乎所有代码中唯一地标识查询。
 
-若要按标签进行搜索，可以运行以下使用动态管理视图的查询：
+以下查询使用动态管理视图按标签进行搜索。
 
 ```sql
 SELECT  *
@@ -45,18 +44,11 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> 查询时，必须以方括号或双引号括住文字标签。 标签是一个保留字，如果未分隔，会导致错误。
+> 查询时，必须以方括号或双引号括住文字标签。 Label 是一个保留字，不将其分隔会导致错误。 
 > 
 > 
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[开发概述][development overview]。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
 
-<!--Image references-->
 
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

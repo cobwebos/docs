@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 XaitPorter 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 2012d990f7cdcb8c12da5f16db518b261b06a5b7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5e18850d902e5a11da904af719e598c4e247ce0d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>教程：Azure Active Directory 与 XaitPorter 集成
 
@@ -36,11 +36,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 XaitPorter 的集成，需要准备好以下各项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 XaitPorter 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -51,14 +51,14 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 XaitPorter
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-xaitporter-from-the-gallery"></a>从库中添加 XaitPorter
 要配置 XaitPorter 与 Azure AD 的集成，需要从库中将 XaitPorter 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 XaitPorter，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“XaitPorter”，在结果面板中选择“XaitPorter”，然后单击“添加”按钮添加该应用程序。
 
@@ -113,33 +113,17 @@ ms.lasthandoff: 12/11/2017
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.xaitporter.com`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [XaitPorter 客户端支持团队](https://www.xait.com/support/)获取这些值。 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [XaitPorter 客户端支持团队](https://www.xait.com/support/)获取这些值。
+     
+4. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。 
 
-4. 单击“保存”按钮。
+    ![证书下载链接](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_certificate.png) 
+
+5. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-xaitporter-tutorial/tutorial_general_400.png)
 
-5. 若要生成**元数据** URL，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_endpoint.png)
-     
-    d.单击“下一步”。 现在，转到 **XaitPorter** 的属性页，使用“复制”按钮复制**应用程序 ID** 并将其粘贴到记事本。
- 
-    ![配置单一登录](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. 向 [SmartRecruiters 支持团队](https://www.smartrecruiters.com/about-us/contact-us/)提供“IP 地址”或“元数据 URL”，使 XaitPorter 能够确保可从其配置允许列表的 XaitPorter 实例访问该 IP 地址。 
+6. 向 [SmartRecruiters 支持团队](https://www.smartrecruiters.com/about-us/contact-us/)提供 **IP 地址**或**应用联合元数据 URL**，使 XaitPorter 能够确保可从其配置允许列表的 XaitPorter 实例访问该 IP 地址。 
 
 7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 XaitPorter 公司站点。
 
@@ -157,15 +141,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 选择“启用单一登录身份验证”。
 
-    b. 在“标识提供者设置”文本框中，粘贴从 Azure 复制的“元数据 URL”并单击“提取”。
+    b. 在“标识提供者设置”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**并单击“提取”。
 
     c. 选择“启用用户自动创建”。
 
-    d.单击“下一步”。 单击 **“确定”**。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    d. 单击“确定”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -191,13 +171,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-xaitporter-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-a-xaitporter-test-user"></a>创建 XaitPorter 测试用户
 
@@ -243,7 +223,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

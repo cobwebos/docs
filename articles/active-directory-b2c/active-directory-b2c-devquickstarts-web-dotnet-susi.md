@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: davidmu
-ms.openlocfilehash: f7b7cce84f8ff7be14120568e710432be639ce8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 052d81f8170273bb0e40572322349550e7219363
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>使用 Azure Active Directory B2C 注册、登录、配置文件编辑和密码重置创建 ASP.NET Web 应用
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须将 B2C 租户连接到 Azure 帐户。 可以[在此](https://azure.microsoft.com/en-us/)创建一个免费的 Azure 帐户。
+- 必须将 B2C 租户连接到 Azure 帐户。 可以[在此](https://azure.microsoft.com/)创建一个免费的 Azure 帐户。
 - 需要 [Microsoft Visual Studio](https://www.visualstudio.com/)或类似程序，才能查看和修改示例代码。
 
 ## <a name="create-an-azure-ad-b2c-directory"></a>创建 Azure AD B2C 目录
@@ -194,7 +194,7 @@ public partial class Startup
                 },
 
                 // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
-                Scope = $"{OpenIdConnectScopes.OpenId} {ReadTasksScope} {WriteTasksScope}"
+                Scope = $"openid profile offline_access {ReadTasksScope} {WriteTasksScope}"
             }
         );
     }

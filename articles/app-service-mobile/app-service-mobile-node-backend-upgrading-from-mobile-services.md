@@ -1,11 +1,11 @@
 ---
-title: "从移动服务升级到 Azure 应用服务 - Node.js"
-description: "了解如何轻松将移动服务应用程序升级到应用服务移动应用"
+title: 从移动服务升级到 Azure 应用服务 - Node.js
+description: 了解如何轻松将移动服务应用程序升级到应用服务移动应用
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 9a641bc667d07d1b674d2864c1f29151d527f46a
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 07ebf23270addc63793278d4e0510c187289b82c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>将现有 Node.js Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
@@ -97,7 +97,7 @@ ms.lasthandoff: 01/04/2018
 2. 单击“+新建” > “Web + 移动” > “移动应用”，并提供移动应用后端名称。
 3. 对于“资源组”，请选择现有资源组，或创建新组（使用与应用相同的名称。）
 
-    可以选择其他应用服务计划或创建新的计划。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
+    可以选择其他应用服务计划或创建新的计划。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 Azure 应用服务计划深入概述。
 4. 对于“应用服务计划”，请选择默认计划（位于 [标准层](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../app-service/app-service-plan-manage.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。
 
     做出有关计划的决定后，单击“创建”。 随后将创建移动应用后端。
@@ -146,7 +146,7 @@ Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、G
 
 <!-- URLs. -->
 
-[Azure portal]: https://portal.azure.com/
+[Azure 门户]: https://portal.azure.com/
 [Azure classic portal]: https://manage.windowsazure.com/
 [什么是移动应用？]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
@@ -159,7 +159,7 @@ Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、G
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[应用服务定价]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[应用服务定价]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [身份验证概念]: ../app-service/app-service-authentication-overview.md
 [身份验证快速入门]: app-service-mobile-auth.md

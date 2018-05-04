@@ -9,11 +9,11 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: e7f894733546fa8949902a82f4ae3a9c62b749c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 102fa06be3734fa6993616f752922433ee0dee7f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="choosing-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
@@ -87,7 +87,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法：
 
 * **用户体验：**建议组织借助传递身份验证部署无缝单一登录，通过避免登陆后的不必要提示提升用户登录体验。
 
-* **高级方案：**传递身份验证确保在本地用户帐户状态禁用、锁定或密码过期时立即拒绝身份验证请求。 需要借助传递身份验证的多重身份验证的组织必须使用 Azure AD 多重身份验证，并且不能使用第三方或本地多重身份验证方法。 高级功能（例如 Identity Protection 已泄漏凭据报表）要求部署密码哈希同步，不管是否选择传递身份验证均如此。
+* **高级方案：**传递身份验证可确保在本地用户帐户状态为禁用、锁定、密码过期或不在用户的允许登录时段时，立即拒绝身份验证请求。 需要借助传递身份验证的多重身份验证的组织必须使用 Azure AD 多重身份验证，并且不能使用第三方或本地多重身份验证方法。 高级功能（例如 Identity Protection 已泄漏凭据报表）要求部署密码哈希同步，不管是否选择传递身份验证均如此。
 
 * **业务连续性：**除 Azure AD Connect 服务器上的第一个代理以外，建议部署两个额外的传递代理，确保身份验证请求的高可用性。 如果部署了三个代理，关闭一个代理进行维护时另一个仍然可能失败。 部署除传递身份验证以外的密码哈希同步的另一个优势是：主要身份验证方法不再可用时（例如本地服务器不可用时），它可以用作备用身份验证方法。
 

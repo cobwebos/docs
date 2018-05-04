@@ -1,24 +1,24 @@
 ---
-title: "如何通过 Python 使用 Azure 服务总线队列 | Microsoft Docs"
-description: "了解如何使用 Python 中的 Azure 服务总线队列"
+title: 如何通过 Python 使用 Azure 服务总线队列 | Microsoft Docs
+description: 了解如何使用 Python 中的 Azure 服务总线队列
 services: service-bus-messaging
 documentationcenter: python
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 08/10/2017
-ms.author: sethm;lmazuel
-ms.openlocfilehash: e1e81ad1d7b4fe0e044917f090cac59dfd5b6332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/30/2018
+ms.author: sethm
+ms.openlocfilehash: aa0f243f4a5bc3d84c580b950bcf0ed7a78362e7
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>如何通过 Python 使用服务总线队列
 

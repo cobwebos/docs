@@ -1,6 +1,6 @@
 ---
-title: "Azure 付款处理蓝图 - 密码要求"
-description: "PCI DSS 要求 2"
+title: Azure 付款处理蓝图 - 密码要求
+description: PCI DSS 要求 2
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 4ae9fc7d5b53d33f9feb98c450970e0560afa2af
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 8fafc277d7410ab3f8f54b0defee127fd6ec2f4d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="password-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的密码要求 
 ## <a name="pci-dss-requirement-2"></a>PCI DSS 要求 2
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 对于客户在 AADUX 门户中提供的新密码，将会强制实施 Microsoft Azure Active Directory 密码策略要求。 客户启动的自助密码更改要求对以前的密码进行验证。 在后续登录时，要求更改管理员重置密码。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 对于客户在 AADUX 门户中提供的新密码，将会强制实施 Microsoft Azure Active Directory 密码策略要求。 客户启动的自助密码更改要求对以前的密码进行验证。 在后续登录时，要求更改管理员重置密码。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 要求要使用的用户为所有用户设置强密码。 演示版中未启用示例帐户或来宾帐户。<br /><br />解决方案中不实施无线和 SNMP 技术。|
 
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 解决方案中不实施无线和 SNMP 技术。|
 
 
@@ -70,8 +70,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 对于 Microsoft Azure，OSSC 技术安全服务团队为 Microsoft Azure 环境中的系统制定了安全配置标准，这些标准与行业接受的强化标准一致。 这些配置记录在系统基线中，相关配置更改会告知受影响的团队（例如，IPAK 团队）。 将会执行相关过程来监视安全配置标准是否得到了遵循。 Microsoft Azure 环境中的系统安全配置标准与行业接受的强化标准一致，至少每年审核一次。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以通过 Contoso Webstore 来强化持卡人数据环境 (CDE) 范围内的所有服务。 <br /><br />Contoso Webstore 还部署 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)，用于集中查看所有 Azure 资源的安全状态。 一眼就可验证适当的安全控制是否配置到位且配置正确，还可快速确认任何需要注意的资源。<br /><br />Contoso Webstore 利用 Operations Management Suite 来记录所有系统更改。 [Operations Management Suite (OMS)](/azure/operations-management-suite/) 可以大量记录更改。 可以对更改进行审核和验证，确保准确性。 如需更具体的指南，请参阅 [PCI 指南 - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing)。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 对于 Microsoft Azure，OSSC 技术安全服务团队为 Microsoft Azure 环境中的系统制定了安全配置标准，这些标准与行业接受的强化标准一致。 这些配置记录在系统基线中，相关配置更改会告知受影响的团队（例如，IPAK 团队）。 将会执行相关过程来监视安全配置标准是否得到了遵循。 Microsoft Azure 环境中的系统安全配置标准与行业接受的强化标准一致，至少每年审核一次。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以通过 Contoso Webstore 来强化持卡人数据环境 (CDE) 范围内的所有服务。 <br /><br />Contoso Webstore 还部署 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)，用于集中查看所有 Azure 资源的安全状态。 可立即确认相应的安全控制措施是否部署到位且配置正确，并且可以快速识别任何需要关注的资源。<br /><br />Contoso Webstore 利用 Operations Management Suite 来记录所有系统更改。 Log Analytics 可广泛记录更改。 可以检查和验证更改的准确性。 如需更具体的指南，请参阅 [PCI 指南 - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing)。|
 
 
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 服务部署为 PaaS 服务。 所有服务都是隔离的，使用网络分段来分段。<br /><br />Contoso Webstore 也使用[应用服务环境 (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) 来强制实施密钥规范。 有关详细信息，请参阅 [PCI 指南 - 应用服务环境](payment-processing-blueprint.md#app-service-environment)。|
 
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 软件和硬件配置至少每季审核一次，以便确定并去除任何不需要的功能、端口、协议和服务。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 软件和硬件配置至少每季审核一次，以便确定并去除任何不需要的功能、端口、协议和服务。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 服务部署为 PaaS 服务。 所有服务都是隔离的，使用网络分段来分段。<br /><br />Contoso Webstore 也使用[应用服务环境 (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) 来强制实施密钥规范。 有关详细信息，请参阅 [PCI 指南 - 应用服务环境](payment-processing-blueprint.md#app-service-environment)。|
 
 
@@ -116,8 +116,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 服务部署为 PaaS 服务。 所有服务都是隔离的，使用网络分段来分段。 还可以通过此部署强化 CDE 范围内的所有服务。 <br /><br />Contoso Webstore 还部署 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)，用于集中查看所有 Azure 资源的安全状态。 一眼就可验证适当的安全控制是否配置到位且配置正确，还可快速确认任何需要注意的资源。<br /><br />Contoso Webstore 也使用[应用服务环境 (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) 来强制实施密钥规范。 有关详细信息，请参阅 [PCI 指南 - 应用服务环境](payment-processing-blueprint.md#app-service-environment)。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 服务部署为 PaaS 服务。 所有服务都是隔离的，使用网络分段来分段。 还可以通过此部署强化 CDE 范围内的所有服务。 <br /><br />Contoso Webstore 还部署 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)，用于集中查看所有 Azure 资源的安全状态。 可立即确认相应的安全控制措施是否部署到位且配置正确，并且可以快速识别任何需要关注的资源。<br /><br />Contoso Webstore 也使用[应用服务环境 (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) 来强制实施密钥规范。 有关详细信息，请参阅 [PCI 指南 - 应用服务环境](payment-processing-blueprint.md#app-service-environment)。|
 
 
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Azure 使用多重访问控制和记录业务需求的方式，确保只有经授权的人员能够配置 Azure 平台安全控件。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Azure 使用多重访问控制和记录业务需求的方式，确保只有经授权的人员能够配置 Azure 平台安全控件。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 利用 AAD 和 AD RBAC 来管理安全参数，确保其部署正确。 有关详细信息，请参阅 [PCI 指南 - 标识管理](payment-processing-blueprint.md#identity-management)。|
 
 
@@ -142,7 +142,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 提供有关如何建立边界的文档。 Contoso 的威胁模型和数据流关系图演示了所有使用的服务和启用的控件。|
 
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 确保在访问虚拟机监控程序基础结构时强制使用强加密。 Microsoft Azure 还确保使用 Microsoft Azure 管理门户的客户能够访问其使用强加密的服务/IaaS 控制台。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 确保在访问虚拟机监控程序基础结构时强制使用强加密。 Microsoft Azure 还确保使用 Microsoft Azure 管理门户的客户能够访问其使用强加密的服务/IaaS 控制台。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 演示了如何在解决方案中实现强密码；另外，所有测试都可以用来验证是否在解决方案中始终实施加密。<br /><br />Contoso Webstore 也使用[应用服务环境 (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) 来强制实施密钥规范。 有关详细信息，请参阅 [PCI 指南 - 应用服务环境](payment-processing-blueprint.md#app-service-environment)。|
 
 
@@ -171,8 +171,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 演示版 PaaS 解决方案清单可以在提供的文档中查看。 有关详细信息，请参阅 [PCI 指南 - 预安装的 OMS 解决方案](payment-processing-blueprint.md#oms-solutions)。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 演示版 PaaS 解决方案清单可以在提供的文档中查看。 有关详细信息，请参阅 [PCI 指南 - 预安装的管理解决方案](payment-processing-blueprint.md#management-solutions)。|
 
 
 
@@ -184,7 +184,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 提供介绍安全参数的文档，并对服务元素进行记录。 |
 
 
@@ -197,7 +197,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 Microsoft Azure 不是共享宿主提供程序。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 Microsoft Azure 不是共享宿主提供程序。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。 Microsoft Azure 不是共享宿主提供程序。|
 
 

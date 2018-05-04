@@ -7,11 +7,11 @@ manager: rloutlaw
 ms.author: tarcher
 ms.date: 3/12/2018
 ms.topic: article
-ms.openlocfilehash: db45e9fe1eb724e6404f5e83bbbe4f62ee32343d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5f0ee2904c1072a5ad8c5f7ae1c90e649cc4813c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>结合托管服务标识使用 Azure Marketplace 映像创建 Terraform Linux 虚拟机
 
@@ -88,7 +88,7 @@ Terraform VM 映像执行以下步骤：
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- 有关远程状态管理的详细信息，请参阅[有关 Terraform 远程状态的页面](https://www.terraform.io/docs/state/remote.html)。 存储访问密钥已在此文件中公开，需要谨慎地将其签入源代码管理。  
+ 有关远程状态管理的详细信息，请参阅[有关 Terraform 远程状态的页面](https://www.terraform.io/docs/state/remote.html)。 存储访问密钥在此文件中公开，将 Terraform 配置文件提交到源代码管理之前，需要将存储访问密钥排除在外。
 
 ## <a name="next-steps"></a>后续步骤
 本文已介绍如何在 Azure 上设置 Terraform Linux 虚拟机。 请参阅以下附加资源，帮助自己详细了解 Azure 上的 Terraform： 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7493c10407bfe83bdc7277c49dae1a7e9d7c39f2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>使用 Azure Data Lake Store 的最佳做法
 本文介绍 Azure Data Lake Store 使用方面的最佳做法和注意事项。 本文介绍 Data Lake Store 的安全性、性能、复原和监视。 在 Data Lake Store 出现之前，在 Azure HDInsight 之类的服务中使用真正大型的数据是很复杂的事情。 必须将数据在多个 Blob 存储帐户中分片，才能实现 PB 级的存储以及在该规模下的性能优化。 使用 Data Lake Store 时，大部分针对大小和性能的硬性限制都会去除。 但是，若要充分利用 Data Lake Store 的性能，仍有一些需要本文讨论的注意事项。 
@@ -26,11 +26,13 @@ ms.lasthandoff: 04/05/2018
 
 Azure Data Lake Store 为 Azure Active Directory (Azure AD) 用户、组和服务主体提供 POSIX 访问控制和详细的审核。 可以对现有文件和文件夹设置这些访问控制。 也可使用访问控制来创建可以应用到新文件或文件夹的默认设置。 设置针对现有文件夹和子对象的权限时，需在每个对象上以递归方式传播这些权限。 如果有大量的文件，传播这些权限可能需要很长时间。 所需时间取决于传播速度，而传播速度则在每秒 30-50 个处理对象这一范围内。 因此，请对文件夹结构和用户组进行相应的规划。 否则，在使用数据时，可能导致意外的延迟和问题。 
 
-假设文件夹有 100,000 个子对象。 以每秒处理 30 个对象的速度下限为例，更新整个文件夹的权限可能需要一小时。 有关 Data Lake Store ACL 的更多详细信息，请参阅 [Azure Data Lake Store 中的访问控制](data-lake-store-access-control.md)。 若要改进以递归方式分配 ACL 的性能，可以使用 Azure Data Lake 命令行工具。 此工具可以创建多个线程和递归导航逻辑，快速地向数百万文件应用 ACL。 此工具适用于 Linux 和 Windows，其[文档](https://github.com/Azure/data-lake-adlstool)和[下载包](http://aka.ms/adlstool-download)在 GitHub 上提供。
+假设文件夹有 100,000 个子对象。 以每秒处理 30 个对象的速度下限为例，更新整个文件夹的权限可能需要一小时。 有关 Data Lake Store ACL 的更多详细信息，请参阅 [Azure Data Lake Store 中的访问控制](data-lake-store-access-control.md)。 若要改进以递归方式分配 ACL 的性能，可以使用 Azure Data Lake 命令行工具。 此工具可以创建多个线程和递归导航逻辑，快速地向数百万文件应用 ACL。 此工具适用于 Linux 和 Windows，其[文档](https://github.com/Azure/data-lake-adlstool)和[下载包](http://aka.ms/adlstool-download)在 GitHub 上提供。 可以通过以 Data Lake Store [.NET](data-lake-store-data-operations-net-sdk.md) 和 [Java](data-lake-store-get-started-java-sdk.md) SDK 编写的自己的工具来实现相同的性能改进。
 
 ### <a name="use-security-groups-versus-individual-users"></a>安全组和单个用户的使用比较 
 
-在 Data Lake Store 中处理大数据时，大多数情况下会使用服务主体，以便使用 Azure HDInsight 之类的服务来处理数据。 但是，在某些情况下，单个用户也需要访问数据。 在这种情况下，必须使用 Azure Active Directory 安全组，而不是将单个用户分配给文件夹和文件。 为安全组分配权限以后，在组中添加或删除用户就不需要对 Data Lake Store 进行任何更新。 
+在 Data Lake Store 中处理大数据时，大多数情况下会使用服务主体，以便使用 Azure HDInsight 之类的服务来处理数据。 但是，在某些情况下，单个用户也需要访问数据。 在这种情况下，必须使用 Azure Active Directory [安全组](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory)，而不是将单个用户分配给文件夹和文件。 
+
+为安全组分配权限以后，在组中添加或删除用户就不需要对 Data Lake Store 进行任何更新。 这还有助于确保不超出 [32 访问和默认 ACL](../azure-subscription-service-limits.md#data-lake-store-limits)（这包括始终与每个文件和文件夹关联的四个 POSIX 样式的 ACL：[负责人用户](data-lake-store-access-control.md#the-owning-user)、[负责人组](data-lake-store-access-control.md#the-owning-group)、[掩码](data-lake-store-access-control.md#the-mask-and-effective-permissions)和其他）。
 
 ### <a name="security-for-groups"></a>组的安全性 
 
@@ -98,7 +100,7 @@ Azure Data Lake Store 去除了对 Blob 存储帐户的硬性 IO 限制。 但�
 
 |  |Distcp  |Azure 数据工厂  |AdlCopy  |
 |---------|---------|---------|---------|
-|**规模限制**     | 受辅助角色节点数限制        | 受最大云数据移动单位数限制        | 受分析单位数限制        |
+|**规模限制**     | 受工作节点数限制        | 受最大云数据移动单位数限制        | 受分析单位数限制        |
 |**支持复制增量数据**     |   是      | 否         | 否         |
 |**内置业务流程**     |  否（使用 Oozie Airflow 或 cron 作业）       | 是        | 否（使用 Azure 自动化或 Windows 任务计划程序）         |
 |**支持的文件系统**     | ADL、HDFS、WASB、S3、GS、CFS        |很多，请参阅[连接器](../data-factory/connector-azure-blob-storage.md)。         | ADL 到 ADL、WASB 到 ADL（仅限同一区域）        |

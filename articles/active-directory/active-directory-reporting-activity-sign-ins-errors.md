@@ -1,25 +1,25 @@
 ---
-title: "Azure Active Directory 门户中的登录活动报告错误代码 | Microsoft Docs"
-description: "登录活动报告错误代码参考。"
+title: Azure Active Directory 门户中的登录活动报告错误代码 | Microsoft Docs
+description: 登录活动报告错误代码参考。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e5d477aa74d3d0588e33363888d84e860d4b2f8
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的登录活动报告错误代码
 
@@ -65,6 +65,7 @@ ms.lasthandoff: 02/11/2018
 |50055|密码无效，输入的密码已过期。|
 |50057|用户帐户已禁用。|
 |50058|在提供的凭据中找不到有关用户标识的信息，或者在租户中找不到用户，或者已发送无提示登录请求，但没有用户登录，或者服务无法对用户进行身份验证。|
+|50072|用户需注册进行双重身份验证（交互式）。|
 |50074|用户未通过 MFA 质询。|
 |50079|用户需注册进行双重身份验证。|
 |50089|流令牌验证因流令牌到期而失败。|
@@ -97,7 +98,6 @@ ms.lasthandoff: 02/11/2018
 |81013|根据用户的 Kerberos 票证中的信息，找不到用户对象。|
 |90014|用于凭据中不存在预期字段的各种情况。|
 |90093|Graph 返回了针对请求的禁止访问错误代码。|
-
 
 
 ## <a name="next-steps"></a>后续步骤

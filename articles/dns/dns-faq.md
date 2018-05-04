@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2017
 ms.author: kumud
-ms.openlocfilehash: f07f914ccf8ea6df216e3f571e38d7628b2d7fb6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0eb39ced1d88d2e0b6128493304f112f9c685fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -46,6 +46,7 @@ Azure 保证在至少 99.99% 的时间内，有效的 DNS 请求将从至少一�
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>什么是“DNS 区域”？ 它是否等同于 DNS 域？ 
 
 域在域名系统中具有唯一名称，例如“contoso.com”。
+
 
 DNS 区域用来托管某个特定域的 DNS 记录。 例如，域“contoso.com”可能包含几条 DNS 记录，如“mail.contoso.com”（用于邮件服务器）和“www.contoso.com”（用于网站）。 这些记录托管在 DNS 区域“contoso.com” 中。
 
@@ -90,6 +91,14 @@ Azure DNS 仅支持托管“静态”DNS 域，其中对某给定的 DNS 记录�
 不会。 URL 重定向服务实际并非 DNS 服务 - 它们在 HTTP 级别运行，而非 DNS 级别。 某些 DNS 提供商会在整体产品/服务中捆绑销售 URL 重定向服务。 Azure DNS 目前不支持此服务。
 
 我们正在 Azure DNS 积压工作中跟踪 URL 重定向功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)。
+
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Azure DNS 是否支持适用于 TXT 记录集的扩展型 ASCII 编码（8 位）集？
+
+是的。 Azure DNS 支持适用于 TXT 记录集的扩展型 ASCII 编码集，前提是使用最新版的 Azure REST API、SDK、PowerShell 和 CLI（比 2017-10-01 或 SDK 2.1 更早的版本不支持扩展型 ASCII 集）。 例如，如果用户提供一个字符串作为 TXT 记录的值，其中包含扩展型 ASCII 字符 \128（例如：“abcd\128efgh”），Azure DNS 会在内部表示形式中使用该字符的字节值（即 128）。 在进行 DNS 解析时，此字节值也会在响应中返回。 另请注意，在考虑到解析的情况下，“abc”和“\097\098\099”是可以互换的。 
+
+我们遵循适用于 TXT 记录的 [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) 区域文件母版格式转义规则。 例如，按照 RFC 规则，“\”现在实际上可以对所有内容进行转义操作。 如果指定“A\B”作为 TXT 记录值，则会在呈现时，仅将其解析为“AB”。 如果确实需要让 TXT 记录在解析时呈现为“A\B”，则需对 "\" 再次执行转义操作，即 将其指定为“A\\B”。 
+
+请注意，此支持目前不适用于通过 Azure 门户创建的 TXT 记录。 
 
 ## <a name="using-azure-dns"></a>使用 Azure DNS
 
@@ -169,7 +178,7 @@ Azure DNS 由 Azure 资源管理器管理，且受益于 Azure 资源管理器�
 是的。 客户最多可将 10 个解析虚拟网络关联到一个专用区域。
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>是否可以在专用区域中，将属于不同订阅的虚拟网络添加为解析虚拟网络？ 
-可以，前提是用户对虚拟网络以及专用 DNS 区域拥有“写入”操作权限。 请注意，“写入”权限可能已分配到多个 RBAC 角色。 例如，经典网络参与者 RBAC 角色对虚拟网络拥有写入权限。 有关 RBAC 角色的详细信息，请阅读[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。
+可以，前提是用户对虚拟网络以及专用 DNS 区域拥有“写入”操作权限。 请注意，“写入”权限可能已分配到多个 RBAC 角色。 例如，经典网络参与者 RBAC 角色对虚拟网络拥有写入权限。 有关 RBAC 角色的详细信息，请阅读[基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>客户删除虚拟机后，是否会自动删除在专用区域中自动注册的虚拟机 DNS 记录？
 是的。 如果删除注册虚拟网络中的虚拟机，我们会自动删除已注册到区域中的 DNS 记录，因为这是一个注册虚拟网络。 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 快速入门 - 运行 Batch 作业 - CLI"
-description: "快速了解如何使用 Azure CLI 运行 Batch 作业。"
+title: Azure 快速入门 - 运行 Batch 作业 - CLI
+description: 快速了解如何使用 Azure CLI 运行 Batch 作业。
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/16/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8d0e827dd3658d711de3830453c92af581786ad0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: de0ff088b3a61c48ddcbdff01f105884870886e1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入门：使用 Azure CLI 运行第一个 Batch 作业
 
@@ -40,7 +40,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-可以将 Azure 常规用途存储帐户与 Batch 帐户相关联。 虽然本快速入门不需要，但存储帐户可以用于为大多数现实世界的工作负荷部署应用程序和存储输入和输出数据。 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令在资源组中创建存储帐户。
+可以将 Azure 存储帐户与 Batch 帐户相关联。 虽然本快速入门不需要，但存储帐户可以用于为大多数现实世界的工作负荷部署应用程序和存储输入和输出数据。 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令在资源组中创建存储帐户。
 
 ```azurecli-interactive
 az storage account create \

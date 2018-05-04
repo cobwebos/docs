@@ -1,33 +1,32 @@
 ---
-title: "SQL 数据仓库中的 Create Table As Select (CTAS) | Microsoft 文档"
-description: "有关在开发解决方案时使用 Azure SQL 数据仓库中的 create table as select (CTAS) 语句编写代码的技巧。"
+title: Azure SQL 数据仓库中的 CREATE TABLE AS SELECT (CTAS) | Microsoft Docs
+description: 有关在开发解决方案时使用 Azure SQL 数据仓库中的 CREATE TABLE AS SELECT (CTAS) 语句编写代码的技巧。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 68ac9a94-09f9-424b-b536-06a125a653bd
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: queries
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: a885ba4f455fecd158696faaee38c83c1e4ec0bf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 9bff6b1216ae826203b24a2cdf8a3d7fd0fd586f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="create-table-as-select-ctas-in-sql-data-warehouse"></a>SQL 数据仓库中的 Create Table As Select (CTAS)
-Create Table As Select (`CTAS`) 是所提供的最重要的 T-SQL 功能之一。 它是根据 SELECT 语句的输出创建新表的完全并行化操作。 `CTAS` 是创建表副本的最简单快速方法。 本文档提供 `CTAS` 的示例和最佳实践。
+# <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中使用 CREATE TABLE AS SELECT (CTAS)
+有关在开发解决方案时使用 Azure SQL 数据仓库中的 CREATE TABLE AS SELECT (CTAS) T-SQL 语句编写代码的技巧。
+
+## <a name="what-is-create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS) 介绍
+
+[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 或 CTAS 语句是所提供的最重要的 T-SQL 功能之一。 它是根据 SELECT 语句的输出创建新表的并行化操作。 CTASD 是创建表副本的最简单快速方法。 
 
 ## <a name="selectinto-vs-ctas"></a>SELECT..INTO 与CTAS
-可将 `CTAS` 视为 `SELECT..INTO` 的增强版本。
+可将 CTAS 视为 [SELECT...INTO](/sql/t-sql/queries/select-into-clause-transact-sql) 语句的超强版本。
 
-下面是一个简单 `SELECT..INTO` 语句的示例：
+下面是一个简单的 SELECT..INTO 示例：
 
 ```sql
 SELECT *
@@ -35,11 +34,11 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-在上面的示例中，`[dbo].[FactInternetSales_new]` 将创建为 ROUND_ROBIN 分布表，其中包含聚集列存储索引，因为这是 Azure SQL 数据仓库中的表默认值。
+在以上示例中，`[dbo].[FactInternetSales_new]` 将创建为 ROUND_ROBIN 分布表，其中包含聚集列存储索引，因为这是 Azure SQL 数据仓库中的表默认值。
 
-但是，`SELECT..INTO` 不允许在操作过程中更改分布方法或索引类型。 这就是 `CTAS` 的作用所在。
+但是，SELECT..INTO 不允许在操作过程中更改分布方法或索引类型。 这就是 CTAS 的作用所在。
 
-将上述代码转换为 `CTAS` 相当直接：
+将以上示例转化为 CTAS 的方式十分简单直接：
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_new]
@@ -54,7 +53,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-使用 `CTAS` 可以更改表数据的分布以及表类型。 
+使用 CTAS 可以更改表数据的分布以及表类型。 
 
 > [!NOTE]
 > 如果只是想要尝试更改 `CTAS` 操作中的索引并且源表经过哈希分布，那么，在保留相同的分布列和数据类型的情况下，`CTAS` 操作的效果最佳。 这可以避免操作期间发生交叉分布数据移动，从而提高效率。
@@ -62,7 +61,7 @@ FROM    [dbo].[FactInternetSales]
 > 
 
 ## <a name="using-ctas-to-copy-a-table"></a>使用 CTAS 复制表
-`CTAS` 最常见的用途之一就是创建表副本，使你可以更改 DDL。 例如，最初将表创建为 `ROUND_ROBIN`，现在想要改为在列上分布的表，则可以使用 `CTAS` 来更改分布列。 `CTAS` 还可用于更改数据分区、索引或列类型。
+ph x="1" /> 最常见的用途之一就是创建表副本，使你可以更改 DDL。 例如，最初将表创建为 `ROUND_ROBIN`，现在想要改为在列上分布的表，则可以使用 `CTAS` 来更改分布列。 `CTAS` 还可用于更改数据分区、索引或列类型。
 
 假设在 `CREATE TABLE` 中没有指定分布列，因而使用 `ROUND_ROBIN` 分布的默认分布类型创建此表。
 
@@ -126,12 +125,12 @@ DROP TABLE FactInternetSales_old;
 ```
 
 > [!NOTE]
-> Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。  为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。  有关统计信息的详细说明，请参阅开发主题组中的[统计信息][Statistics]主题。
+> Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。  为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。  有关统计信息的详细说明，请参阅开发主题组中的 [统计信息] [Statistics] 主题。
 > 
 > 
 
 ## <a name="using-ctas-to-work-around-unsupported-features"></a>使用 CTAS 解决不支持的功能
-`CTAS` 还可用于解决以下多种不支持的功能。 这往往是一种经过证实的双赢局面，因为代码不但能够兼容，而且通常可以在 SQL 数据仓库中更快速执行。 这是完全并行化设计的结果。 可以使用 CTAS 解决的方案包括：
+CTAS 还可用于解决以下列出的多种不支持的功能。 这往往是一种经过证实的双赢局面，因为代码不但能够兼容，而且通常可以在 SQL 数据仓库中更快速执行。 这是完全并行化设计的结果。 可以使用 CTAS 解决的方案包括：
 
 * UPDATE 中的 ANSI JOIN
 * DELETE 中的 ANSI JOIN
@@ -246,9 +245,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## <a name="replace-merge-statements"></a>替换 Merge 语句
-使用 `CTAS` 至少可以部分替换 Merge 语句。 可以将 `INSERT` 和 `UPDATE` 合并成单个语句。 任何已删除的记录都需要在第二个语句中隔离。
+使用 CTAS 至少可以部分替换 Merge 语句。 可以将 INSERT 和 UPDATE 合并成单个语句。 任何已删除的记录都需要在第二个语句中隔离。
 
-`UPSERT` 的示例如下：
+以下是 UPSERT 语句的示例：
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -329,13 +328,13 @@ from ctas_r
 
 为结果存储的值不相同。 因为结果列中保留的值用于其他表达式，错误变得更加严重。
 
-![][1]
+![CTAS 结果](media/sql-data-warehouse-develop-ctas/ctas-results.png)
 
 这对于数据迁移特别重要。 尽管第二个查询看起来更准确，但仍有一个问题。 相比于源系统，此数据有所不同，这会在迁移中造成完整性问题。 这是“错误”答案其实是正确答案的极少见情况之一！
 
 我们看到这两个结果之间有差异，追根究底的原因是隐式类型转型。 在第一个示例中，表定义了列定义。 插入行后，将发生隐式类型转换。 在第二个示例中，没有隐式类型转换，因为表达式定义了列的数据类型。 请注意，第二个示例中的列已定义为可为 Null 的列，而在第一个示例中还没有定义。 在第一个示例中创建表时，尚未显式定义列可为 null。 在第二个示例中，它只留给了表达式，默认情况下，这会导致 NULL 定义。  
 
-若要解决这些问题，必须在 `CTAS` 语句的 `SELECT` 部分中明确设置类型转换和可为 null 属性。 无法在创建表的部分中设置这些属性。
+若要解决这些问题，必须在 CTAS 语句的 SELECT 部分中明确设置类型转换和可为 null 属性。 无法在创建表的部分中设置这些属性。
 
 以下示例演示如何修复代码：
 
@@ -357,7 +356,7 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 * ISNULL 的第二个部分是常量，即 0
 
 > [!NOTE]
-> 若要正确设置可为 null 属性，必须使用 `ISNULL` 而不是 `COALESCE`。 `COALESCE` 不是确定性的函数，因此表达式的结果始终可为 Null。 `ISNULL` 则不同。 它是确定性的。 因此当 `ISNULL` 函数的第二个部分是常量或文本时，结果值将是 NOT NULL。
+> 若要正确设置可为 null 属性，必须使用 ISNULL 而不是 COALESCE。 COALESCE 不是确定性的函数，因此表达式的结果始终可为 Null。 ISNULL 则不同。 它是确定性的。 因此当 ISNULL 函数的第二个部分是常量或文本时，结果值将是 NOT NULL。
 > 
 > 
 
@@ -435,19 +434,8 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 因此，可以看出，保持类型一致性并维护 CTAS 上的可为 null 属性是良好的工程最佳实践。 这有助于维护计算的完整性，而且还可确保分区切换能够实现。
 
-有关使用 [CTAS][CTAS] 的详细信息，请参阅 MSDN。 CTAS 是 Azure SQL 数据仓库中最重要的语句之一。 请确保全面了解该语句。
+请参阅 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 文档。 CTAS 是 Azure SQL 数据仓库中最重要的语句之一。 请确保全面了解该语句。
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[开发概述][development overview]。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
 
-<!--Image references-->
-[1]: media/sql-data-warehouse-develop-ctas/ctas-results.png
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-
-<!--MSDN references-->
-[CTAS]: https://msdn.microsoft.com/library/mt204041.aspx
-
-<!--Other Web references-->

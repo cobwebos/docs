@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: e2bd041bd5848ceb5f04f06601190fb0508aca1c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: de3fcc4abcc8558066d9e524011047d6a117f4e5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -99,6 +99,8 @@ VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 
 可以使用[服务标记](../virtual-network/security-overview.md#service-tags)允许与特定区域存储建立连接。 确保允许访问存储帐户的规则的优先级高于阻止 Internet 访问的规则。 
 
 ![使用区域存储标记的网络安全组](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+若要了解配置服务标记的分步过程，请观看[此视频](https://youtu.be/1EjLQtbKm1M)。
 
 > [!WARNING]
 > 存储服务标记以预览版提供。 它们只在特定的区域中可用。 有关区域列表，请参阅[存储的服务标记](../virtual-network/security-overview.md#service-tags)。

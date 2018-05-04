@@ -18,7 +18,7 @@
 
         -   如果 Azure 中还存在希望使用 StorSimple 设备部署的现有工作负荷，我们建议使用该数据中心。
 
-        -   StorSimple 设备管理器和 Azure 存储可位于两个不同的位置。 在这种情况下，需要分别创建 StorSimple 设备管理器和 Azure 存储帐户。 若要创建 Azure 存储帐户，请转到 Azure 门户中的 Azure 存储服务，并按照[创建 Azure 存储帐户](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account)中的步骤操作。 创建此帐户后，按照[针对服务配置新的存储帐户](https://azure.microsoft.com/en-us/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service)中的步骤，将它添加到 StorSimple 设备管理器服务。
+        -   StorSimple 设备管理器和 Azure 存储可位于两个不同的位置。 在这种情况下，需要分别创建 StorSimple 设备管理器和 Azure 存储帐户。 若要创建 Azure 存储帐户，请转到 Azure 门户中的 Azure 存储服务，并按照[创建 Azure 存储帐户](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account)中的步骤操作。 创建此帐户后，按照[针对服务配置新的存储帐户](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service)中的步骤，将它添加到 StorSimple 设备管理器服务。
 
         -   如果是在政府门户中部署虚拟设备，则 StorSimple 设备管理器服务在美国爱荷华州和美国弗吉尼亚州可用。
 

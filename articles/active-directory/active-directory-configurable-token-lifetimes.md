@@ -16,17 +16,17 @@ ms.date: 07/20/2017
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 840cd28b1b5781428e23f36fe5904cd445942e69
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 480c1984219a5e2fb79e8eb81ed87710c79611e4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory 中可配置的令牌生存期（公共预览版）
 可以指定 Azure Active Directory (Azure AD) 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。
 
-> [!NOTE]
-> 此功能目前以公共预览版提供。 应准备好还原或删除所做的任何更改。 在公共预览版推出期间，可在任何 Azure Active Directory 订阅中使用此功能。 但是，在正式版推出后，某些功能可能需要使用 [Azure Active Directory Premium](active-directory-get-started-premium.md) 订阅。
+> [!IMPORTANT]
+> 将弃用这种控制令牌生存期的方法。  虽然此方法在替代功能就绪之前始终可用，但在弃用后，使用此方法创建的令牌生存期策略将无法正常使用。 
 >
 >
 

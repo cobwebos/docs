@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure AD v2.0 隐式流保护单页应用程序 | Microsoft Docs"
-description: "使用单页面应用隐式流的 Azure AD v2.0 实现构建 Web 应用程序。"
+title: 使用 Azure AD v2.0 隐式流保护单页应用程序 | Microsoft Docs
+description: 使用单页面应用隐式流的 Azure AD v2.0 实现构建 Web 应用程序。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3605931f-dc24-4910-bb50-5375defec6a8
 ms.service: active-directory
 ms.workload: identity
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 7ecc9de6a9eb910ac4c31290710530555441890d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b855dcaae99e16aa21a0e19ad37d933cb18c678a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 协议 - 使用隐式流的 SPA
-使用 v2.0 终结点，可以让具有 Microsoft 的个人和工作/学校帐户的用户登录单一页面应用。  主要在浏览器上运行的单一页面和其他 JavaScript 应用程序在身份验证时面临一些有趣的挑战：
+使用 v2.0 终结点，可以让具有 Microsoft 的个人和工作/学校帐户的用户登录单一页面应用。 主要在浏览器上运行的单一页面和其他 JavaScript 应用程序在身份验证时面临一些有趣的挑战：
 
-* 这些应用程序的安全特征与传统的基于服务器的 Web 应用程序大不相同。
+* 这些应用的安全特征与传统的基于服务器的 Web 应用程序大不相同。
 * 许多授权服务器与标识提供者不支持 CORS 请求。
 * 重定向离开应用程序的完整网页浏览器变得对用户经验特别有侵略性。
 
@@ -70,15 +70,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | --- | --- | --- |
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。  允许的值为 `common`、`organizations`、`consumers` 和租户标识符。  有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | client_id |必填 |注册门户 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) 分配给应用的应用程序 ID。 |
-| response_type |必填 |必须包含 OpenID Connect 登录的 `id_token`。  也可以包含 response_type `token`。 此处使用 `token`，让应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。  如果使用 `token` response_type，`scope` 参数必须包含范围，以指出要对哪个资源发出令牌。 |
-| redirect_uri |建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。  其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 |
-| 作用域 |必填 |范围的空格分隔列表。  针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“你将登录”权限。  （可选）可能需要包含 `email` 或 `profile` [范围](active-directory-v2-scopes.md)，以获取对其他用户数据的访问权限。  也可以在此请求中包含其他范围，以请求同意各种资源。 |
-| response_mode |建议 |指定将生成的令牌送回到应用程序所应该使用的方法。  对于隐式流应该是 `fragment`。 |
-| state |建议 |同样随令牌响应返回的请求中所包含的值。  它可以是你想要的任何内容的字符串。  随机生成的唯一值通常用于[防止跨站点请求伪造攻击](http://tools.ietf.org/html/rfc6749#section-10.12)。  该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
-| nonce |必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。  此值通常是随机的唯一字符串，可用以识别请求的来源。 |
-| prompt |可选 |表示需要的用户交互类型。  此时唯一有效的值为“login”、“none”和“consent”。  `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。  `prompt=none` 完全相反，它将确保无论如何都不会向用户显示任何交互提示。  如果请求无法通过单一登录静默完成，该 v2.0 终结点将返回一个错误。  `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
-| login_hint |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。  通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。 |
-| domain_hint |可选 |可以是 `consumers` 或 `organizations` 之一。  如果包含，它跳过用户在 v2.0 登录页面上经历的基于电子邮件的发现过程，导致稍微更加流畅的用户体验。  通常，应用会在重新身份验证期间使用此参数，方法是从 id_token 提取 `tid` 声明。  如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
+| response_type |必填 |必须包含 OpenID Connect 登录的 `id_token`。  也可以包含 response_type `token`。 此处使用 `token`，让应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` response_type，`scope` 参数必须包含范围，以指出要对哪个资源发出令牌。 |
+| redirect_uri |建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 |
+| 作用域 |必填 |范围的空格分隔列表。 针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“你将登录”权限。 （可选）可能需要包含 `email` 或 `profile` [范围](active-directory-v2-scopes.md)，以获取对其他用户数据的访问权限。 也可以在此请求中包含其他范围，以请求同意各种资源。 |
+| response_mode |建议 |指定将生成的令牌送回到应用程序所应该使用的方法。 对于隐式流应该是 `fragment`。 |
+| state |建议 |同样随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。  随机生成的唯一值通常用于[防止跨站点请求伪造攻击](http://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
+| nonce |必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 |
+| prompt |可选 |表示需要的用户交互类型。 此时唯一有效的值为“login”、“none”和“consent”。  `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。  `prompt=none` 完全相反，它将确保无论如何都不会向用户显示任何交互提示。 如果请求无法通过单一登录静默完成，该 v2.0 终结点将返回一个错误。  `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
+| login_hint |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。 |
+| domain_hint |可选 |可以是 `consumers` 或 `organizations` 之一。 如果包含，它跳过用户在 v2.0 登录页面上经历的基于电子邮件的发现过程，导致稍微更加流畅的用户体验。  通常，应用会在重新身份验证期间使用此参数，方法是从 id_token 提取 `tid` 声明。  如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
 
 此时，请求用户输入其凭据并完成身份验证。  v2.0 终结点也将确保用户已经同意 `scope` 查询参数中指示的权限。  如果用户未曾同意这些权限的任何一项，就请求用户同意请求的权限。  [此处提供了权限、许可与多租户应用](active-directory-v2-scopes.md)的详细信息。
 
@@ -99,12 +99,12 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | 参数 | 说明 |
 | --- | --- |
-| access_token |如果 `response_type` 包含 `token`，则包含该参数。 应用请求的访问令牌，在本例中为 Microsoft Graph 的访问令牌。  访问令牌不得进行解码或检查，可被视为不透明的字符串。 |
-| token_type |如果 `response_type` 包含 `token`，则包含该参数。  始终为 `Bearer`。 |
-| expires_in |如果 `response_type` 包含 `token`，则包含该参数。  表示令牌有效的秒数（针对缓存目的）。 |
+| access_token |如果 `response_type` 包含 `token`，则包含该参数。 应用请求的访问令牌，在本例中为 Microsoft Graph 的访问令牌。 访问令牌不得进行解码或检查，可被视为不透明的字符串。 |
+| token_type |如果 `response_type` 包含 `token`，则包含该参数。 始终为 `Bearer`。 |
+| expires_in |如果 `response_type` 包含 `token`，则包含该参数。 表示令牌有效的秒数（针对缓存目的）。 |
 | 作用域 |如果 `response_type` 包含 `token`，则包含该参数。  表示 access_token 的有效范围。 |
 | id_token |应用程序请求的 id_token。 可以使用 id_token 验证用户的标识，并以用户身份开始会话。  有关 id_token 及其内容的更多详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。 |
-| state |如果请求中包含状态参数，响应中就应该出现相同的值。 应用需验证请求和响应中的状态值是否相同。 |
+| state |如果请求中包含状态参数，响应中就应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
 
 #### <a name="error-response"></a>错误响应
 错误响应可能也发送到 `redirect_uri`，让应用可以适当地处理：
@@ -215,6 +215,16 @@ error=user_authentication_required
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 
 如果在 iframe 请求中收到此错误，用户必须再次以交互方式登录以检索新令牌。  可以选择对应用程序合理的任何方式处理这种情况。
+
+## <a name="validating-access-tokens"></a>验证访问令牌
+
+在收到 access_token 后，请确保对令牌的签名及以下声明进行验证。 还可以选择根据自己的方案对其他声明进行验证。 
+
+* **受众**声明，以确保打算将令牌提供给你的应用
+* **颁发者**声明：验证令牌是否由 v2.0 终结点颁发给应用
+* **不早于**和**过期时间**声明，以验证令牌是否未过期
+
+有关访问令牌中提供的声明的详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。
 
 ## <a name="refreshing-tokens"></a>刷新令牌
 `id_token` 和 `access_token` 很快就会过期，因此应用必须准备好定期刷新这些令牌。  若要刷新任一类型的令牌，可以通过使用 `prompt=none` 参数控制 Azure AD 的行为，来执行上述同一隐藏的 iframe 请求。  如果想要接收新的 `id_token`，请务必使用 `response_type=id_token` 和 `scope=openid`，以及 `nonce` 参数。

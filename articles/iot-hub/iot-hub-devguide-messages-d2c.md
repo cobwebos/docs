@@ -1,11 +1,11 @@
 ---
-title: "了解 Azure IoT 中心设备到云的消息传送 | Microsoft Docs"
-description: "开发人员指南 - 如何使用 IoT 中心进行设备到云的消息传送。 包含有关发送遥测和非遥测数据以及使用路由传递消息的信息。"
+title: 了解 Azure IoT 中心设备到云的消息传送 | Microsoft Docs
+description: 开发人员指南 - 如何使用 IoT 中心进行设备到云的消息传送。 包含有关发送遥测和非遥测数据以及使用路由传递消息的信息。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 54b2961713f529438f5508bb0615824ec6bec214
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>将设备到云的消息发送到 IoT 中心
 
@@ -32,7 +32,7 @@ IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与
 * 设备到云的消息可持久保留在 IoT 中心的默认 messages/events 终结点长达七天。
 * 设备到云的消息最大可为 256 KB，而且可分成多个批以优化发送。 Batch 最大可为 256 KB。
 * 如[控制对 IoT 中心的访问][lnk-devguide-security]部分所述，IoT 中心允许基于设备的身份验证和访问控制。
-* IoT 中心最多允许创建 10 个自定义终结点。 基于 IoT 中心上配置的路由，将消息传递到终结点。 有关详细信息，请参阅[路由规则](#routing-rules)。
+* IoT 中心最多允许创建 10 个自定义终结点。 基于 IoT 中心上配置的路由，将消息传递到终结点。 有关详细信息，请参阅[路由规则](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions)。
 * IoT 中心启动数百万同时连接的设备（请参阅[配额和限制][lnk-quotas]）。
 * IoT 中心不允许任意分区。 从设备到云的消息根据其源于的 **deviceId** 进行分区。
 

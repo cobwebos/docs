@@ -1,25 +1,22 @@
 ---
-title: Visual Studio WebApi 项目中的 Azure AD 入门 | Microsoft 文档
+title: 开始在 Visual Studio WebApi 项目中使用 Azure AD
 description: 通过 Visual Studio 连接服务连接到或创建 Azure AD 之后，如何在 WebApi 项目中开始使用 Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: bf1eb32d-25cd-4abf-8679-2ead299fedaa
-ms.service: active-directory
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: f44c60cc02ef93fb8bd08954d8b059889eb82df1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 109de9fb78ae3abfc09a37c6b8cb38c554f7613c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Azure Active Directory 入门（WebApi 项目）
 

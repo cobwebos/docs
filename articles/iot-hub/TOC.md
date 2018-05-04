@@ -1,7 +1,7 @@
+# [Azure IoT 基础](../iot-fundamentals/index.yml)
 # [IoT 中心文档](index.md)
 
 # 概述
-## [Azure 和 IoT](iot-hub-what-is-azure-iot.md)
 ## [Azure IoT 中心是什么？](iot-hub-what-is-iot-hub.md)
 ## [设备管理概述](iot-hub-device-management-overview.md)
 
@@ -78,6 +78,7 @@
 #### [配额和限制](iot-hub-devguide-quotas-throttling.md)
 #### [定价示例](iot-hub-devguide-pricing.md)
 #### [设备和服务 SDK](iot-hub-devguide-sdks.md)
+#### [为移动设备进行开发](iot-hub-how-to-develop-for-mobile-devices.md)
 #### [MQTT 支持](iot-hub-mqtt-support.md)
 #### [术语表](iot-hub-devguide-glossary.md)
 ### [使用适用于 C 的 IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)
@@ -169,7 +170,7 @@
 ##### [创建证书 - PowerShell](iot-hub-security-x509-create-certificates.md)
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=iot-hub)
 ## [Azure CLI](/cli/azure/iot)
 ## [.NET（服务）](/dotnet/api/microsoft.azure.devices)
 ## [.NET（设备）](/dotnet/api/microsoft.azure.devices.client)
@@ -186,11 +187,18 @@
 ## [REST（作业）](https://docs.microsoft.com/rest/api/iothub/jobapi)
 
 # 相关内容
-## [Azure IoT 套件](https://azure.microsoft.com/documentation/suites/iot-suite/)
-## [Azure IoT 中心设备预配服务](https://azure.microsoft.com/documentation/services/iot-dps/)
-## [Azure 事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)
-## [流分析](https://azure.microsoft.com/documentation/services/stream-analytics/)
-## [机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)
+## 解决方案 
+### [IoT 套件预配置解决方案](/azure/iot-suite) 
+### [IoT 中心](https://docs.microsoft.com/microsoft-iot-central/) 
+## 平台服务 
+### [IoT 中心](/azure/iot-hub) 
+### [IoT 中心设备预配服务](/azure/iot-dps)
+### [IoT 服务 SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
+### [Location Based Services](/azure/location-based-services) 
+### [时序见解](/azure/time-series-insights) 
+## Microsoft Edge 
+### [IoT Edge](/azure/iot-edge) 
+### [IoT 设备 SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 
 # 资源
 ## [Azure IoT 已认证设备目录](https://catalog.azureiotsuite.com/)

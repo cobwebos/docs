@@ -1,14 +1,14 @@
 ---
-title: "使用 Azure 事件中心为 Azure 逻辑应用设置事件监视 | Microsoft Docs"
-description: "使用 Azure 事件中心监视数据流，以便通过逻辑应用接收事件和发送事件"
+title: 使用 Azure 事件中心为 Azure 逻辑应用设置事件监视 | Microsoft Docs
+description: 使用 Azure 事件中心监视数据流，以便通过逻辑应用接收事件和发送事件
 services: logic-apps
-keywords: "数据流, 事件监视器, 事件中心"
+keywords: 数据流, 事件监视器, 事件中心
 author: ecfan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
-ms.assetid: 
+ms.assetid: ''
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/06/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 076f7dd11ca8c153046727861ecb755e88f32b01
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8de56cd64f38791fb27d9bcce1e16641fb162c2f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>通过事件中心连接器监视、接收和发送事件
 
@@ -76,11 +76,28 @@ ms.lasthandoff: 02/09/2018
 3. 选择要监视的事件中心，并针对何时检查事件中心设置时间间隔和频率。
 
     ![指定事件中心或使用者组](./media/connectors-create-api-azure-event-hubs/select-event-hub.png)
+    
+    > [!NOTE]
+    > 所有事件中心触发器都是*长轮询*触发器，这意味着当触发器触发时，触发器将处理所有事件，然后等待 30 秒，以等待更多事件出现在事件中心。
+    > 如果在 30 秒内未收到事件，则会跳过触发器运行。 否则，该触发器将继续读取事件，直到事件中心为空。
+    > 下一次触发器轮询将基于在触发器的属性中指定的重复周期间隔。
 
-    > [!TIP]
-    > （可选）若要选择一个用于读取事件的使用者组，请选择“显示高级选项”。
 
-4. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
+4. （可选）若要选择部分高级的触发器选项，请选择“显示高级选项”。
+
+    ![触发高级选项](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-advanced.png)
+
+    | 属性 | 详细信息 |
+    | --- | --- |
+    | 内容类型  |从下拉列表中选择事件的内容类型。 默认选中“application/octet-stream”。 |
+    | 内容架构 |对于从事件中心读取的事件，请输入 JSON 格式的内容架构。 |
+    | 使用者组名称 |若要读取事件，请输入事件中心[使用者组名称](../event-hubs/event-hubs-features.md#consumer-groups)。 如果未指定使用者组名称，则会使用默认的使用者组。 |
+    | 最小分区键 |输入要读取的最小[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
+    | 最大分区键 |输入要读取的最大[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
+    | 最大事件计数 |输入一个表示最大事件数的值。 触发器返回的事件数至少为 1，至多为此属性指定的事件数。 |
+    |||
+
+5. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 现在，当逻辑应用检查所选事件中心并查找新事件时，触发器将针对找到的事件运行逻辑应用中的操作。
 

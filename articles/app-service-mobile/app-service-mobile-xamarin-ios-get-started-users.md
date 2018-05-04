@@ -1,11 +1,11 @@
 ---
-title: "Xamarin iOS 应用中的移动应用身份验证入门"
-description: "了解如何使用移动应用通过各种标识提供者（包括 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin iOS 应用的用户进行身份验证。"
+title: Xamarin iOS 应用中的移动应用身份验证入门
+description: 了解如何使用移动应用通过各种标识提供者（包括 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin iOS 应用的用户进行身份验证。
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.service: app-service-mobile
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: 1649d2bf4f3429f2f5f56bdabdfe9a015a115893
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: c2b77d7c9caab1c7ac13af5ccd50e992bcce1caf
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -116,7 +116,7 @@ ms.lasthandoff: 01/04/2018
             return ResumeWithURL != null && ResumeWithURL(url);
         }
 6. 打开 Info.plist 文件，导航到“高级”部分中的“URL 类型”。 现在配置 URL 类型的标识符和 URL 方案，然后单击“添加 URL 类型”。 URL 方案应与你的 {url_scheme_of_your_app} 相同。
-7. 在已连接到 Mac 上的 Xamarin 生成主机的 Visual Studio 或 Xamarin Studio 中，针对设备或模拟器运行客户端项目。 验证应用程序是否未显示任何数据。
+7. 在已连接到 Mac 主机的 Visual Studio 中或在 Visual Studio for Mac 中，针对设备或模拟器运行客户端项目。 验证应用程序是否未显示任何数据。
    
     通过向下拉动项列表来执行刷新笔势，这会导致显示登录屏幕。 成功输入有效的凭据后，应用会显示待办事项列表，用户可以对数据进行更新。
 

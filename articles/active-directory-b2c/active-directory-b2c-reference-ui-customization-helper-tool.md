@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: f898c626d52b1a4e7df72284190749f4481999ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C：用于演示页面用户界面 (UI) 自定义功能的帮助程序工具
 本文是 Azure Active Directory (Azure AD) B2C 中[主 UI 自定义文章](active-directory-b2c-reference-ui-customization.md)的一篇配套文章。 以下步骤介绍了如何使用我们提供的示例 HTML 和 CSS 内容来演练页面 UI 自定义功能。
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="register-an-application"></a>注册应用程序
 需要在 B2C 租户中[注册一个应用程序](active-directory-b2c-app-registration.md)，该应用程序可用于执行策略。 注册应用程序后，有几个选项可用来实际执行注册策略：
 
-* 构建在[在应用程序中注册并登录使用者](active-directory-b2c-overview.md#get-started)的“入门”部分中列出的 Azure AD B2C 快速入门应用程序之一。
+* 构建在[在应用程序中注册并登录使用者](active-directory-b2c-overview.md)的“入门”部分中列出的 Azure AD B2C 快速入门应用程序之一。
 * 使用预建的 [Azure AD B2C Playground](https://aadb2cplayground.azurewebsites.net) 应用程序。 如果选择使用 Playground，则必须使用“重定向 URI”`https://aadb2cplayground.azurewebsites.net/`在 B2C 租户中注册应用程序。
 * 在 [Azure 门户](https://portal.azure.com/)中使用策略上的“立即运行”按钮。
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/23/2018
 出于本教程的目的，我们已经创建了一些示例内容并将其托管在 Azure Blob 存储上。 示例内容是我们的虚拟公司“Wingtip Toys”主题下的一个非常基本的自定义。 若要在自己的策略中进行尝试，请按照以下步骤操作：
 
 1. 在 [Azure 门户](https://portal.azure.com/)上登录租户，并导航到 B2C 功能边栏选项卡。
-2. 单击“注册或登录策略”，然后单击策略（例如，“b2c\_1\_sign\_up\_sign\_in”）。
+2. 单击“注册或登录策略”，单击策略并单击“编辑”（例如，“b2c\_1\_sign\_up\_sign\_in”）。
 3. 单击“页面 UI 自定义”，并单击“统一注册或登录页”。
 4. 将“使用自定义页面”切换为“是”。 在“自定义页面 URI”字段中，输入 `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/unified.html`。 单击“确定”。
 5. 单击“本地帐户注册页”。 将“使用自定义模板”切换为“是”。 在“自定义页面 URI”字段中，输入 `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/selfasserted.html`。

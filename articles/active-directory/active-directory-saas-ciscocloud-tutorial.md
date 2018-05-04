@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f41d8f508bb6ee5b50b7f304c703c4d9bed75d8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8f3d97e26b71c2e17753943f7004d7eb7ee19e44
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>教程：Azure Active Directory 与 Cisco Cloud 的集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 04/05/2018
 
 **若要从库中添加 Cisco Cloud，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -117,33 +117,17 @@ ms.lasthandoff: 04/05/2018
     在“登录 URL”文本框中，键入 URL `https://<subdomain>.cloudapps.cisco.com`
      
     > [!NOTE] 
-    > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 请联系 [Cisco Cloud 客户端支持团队](mailto:cpr-ops@cisco.com)来获取这些值。 
+    > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 请联系 [Cisco Cloud 客户端支持团队](mailto:cpr-ops@cisco.com)来获取这些值。
 
-5. 单击“保存”按钮。
+5. 在“SAML 签名证书”部分上，单击”复制”按钮，复制**应用联合元数据 URL**并将其粘贴到记事本。
+
+    ![证书下载链接](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
+
+6. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-ciscocloud-tutorial/tutorial_general_400.png)
 
-6. 若要生成**元数据 URL**，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_endpoint.png)
-     
-    d. 现在，转到 **Cisco Cloud** 的属性页，使用“复制”按钮复制**应用程序 ID** 并将其粘贴到记事本。
- 
-    ![配置单一登录](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. 若要在 **Cisco Cloud** 端配置单一登录，需要将下载的**元数据 XML** 发送给 [Cisco Cloud 支持团队](mailto:cpr-ops@cisco.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+7. 若要在 **Cisco Cloud** 端配置单一登录，需要将下载的**应用联合元数据 URL** 发送给 [Cisco Cloud 支持团队](mailto:cpr-ops@cisco.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

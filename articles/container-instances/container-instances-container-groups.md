@@ -3,17 +3,17 @@ title: Azure 容器实例容器组
 description: 了解容器组如何在 Azure 容器实例中工作
 services: container-instances
 author: seanmck
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 3b1eeebacb55ffc7af4e2014f26dd9d5643f5478
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cb3d8c27a82c7dfc5fd71c1c7d589e81890e5cfb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 

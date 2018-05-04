@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1290a186ca8e83b09f53b286e80c5ce75f08d88c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7e0219a662483ef123bdc2889a43dd3d93d23ac2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>准备本地 Hyper-V 服务器用于灾难恢复到 Azure
 
@@ -58,14 +58,13 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="verify-internet-access"></a>验证 Internet 访问
 
-1. 对于本教程，最简单的配置是 Hyper-V 主机和 VMM 服务器（如果适用）能够直接访问 Internet 而无需使用代理。 
+1. 对于本教程，最简单的配置是让 Hyper-V 主机和 VMM 服务器能够直接访问 Internet 而无需使用代理。 
 2. 请确保该 Hyper-V 主机和 VMM 服务器（如果相关）可以访问以下 URL： 
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
     
-3. 请确保：
-    - 任何基于 IP 地址的防火墙规则都应允许与 Azure 通信。
-    - 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)和 HTTPS (443) 端口。
+3. 如果要通过 IP 地址来控制访问，请确保：
+    - 基于 IP 地址的防火墙规则可以连接到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)和 HTTPS (443) 端口。
     - 允许订阅的 Azure 区域的 IP 地址范围以及美国西部的 IP 地址范围（用于访问控制和标识管理）。
 
 

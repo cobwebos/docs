@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store 性能优化指南 | Microsoft Docs"
-description: "Azure Data Lake Store 性能优化指南"
+title: Azure Data Lake Store 性能优化指南 | Microsoft Docs
+description: Azure Data Lake Store 性能优化指南
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 15832f94b73057a8bfce7be27e3fd57c7771940d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>优化 Azure Data Lake Store 性能
 
@@ -42,7 +42,7 @@ Azure Data Lake Store 可进行缩放，以便为所有分析方案提供必要�
 
 ### <a name="network-connectivity-to-azure-data-lake-store"></a>与 Azure Data Lake Store 的网络连接
 
-源数据和 Azure Data Lake Store 之间的网络连接有时可能成为瓶颈。 如果源数据位于本地，请考虑使用 [Azure ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) 的专用链接。 如果源数据位于 Azure 中，当数据与 Data Lake Store 位于同一 Azure 区域时可获得最佳性能。
+源数据和 Azure Data Lake Store 之间的网络连接有时可能成为瓶颈。 如果源数据位于本地，请考虑使用 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 的专用链接。 如果源数据位于 Azure 中，当数据与 Data Lake Store 位于同一 Azure 区域时可获得最佳性能。
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>配置数据引入工具，实现最大并行化
 

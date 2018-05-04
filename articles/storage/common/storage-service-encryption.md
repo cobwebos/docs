@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储服务加密
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 03/29/2018
 
 **问：创建存储帐户时，是否会默认启用存储服务加密？**
 
-答：默认已对所有存储帐户启用使用 Microsoft 托管密钥的存储服务帐户- Azure 资源管理器帐户和经典存储帐户。 对所有服务启用 - Blob 存储、表存储、队列存储和 Azure 文件。
+答：是的，默认情况下，会为所有存储帐户和所有 Azure 存储服务启用存储服务加密。
 
 **问：此功能与 Azure 磁盘加密有何不同？**
 

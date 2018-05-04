@@ -1,12 +1,12 @@
 ---
-title: "通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题 | Microsoft 文档"
-description: "通过用于 Visual Studio 的 Azure Data Lake 工具排查潜在解决方案的数据倾斜问题。"
+title: 通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题 | Microsoft 文档
+description: 通过用于 Visual Studio 的 Azure Data Lake 工具排查潜在解决方案的数据倾斜问题。
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/16/2016
 ms.author: yanacai
-ms.openlocfilehash: 9b284ef33be4b935569fc368d81ddf040b2c2b7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1d33b5d2392832899fd30636e9d40231fc74ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
 
@@ -49,13 +49,13 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="option-4-use-round-robin-distribution"></a>选项 4：使用轮循机制分布
 
-如果找不到适当的分区和分布键，可以尝试使用轮循机制分布。 轮循机制分布可以均匀处理所有行，并将其随机放入相应的桶中。 数据将均匀分布，但会丢失位置信息，因此也会在某些操作中降低作业性能，这是其缺点。 此外，如果仍要对倾斜的键执行聚合，则还会出现数据倾斜问题。 若要详细了解轮循机制分布，请参阅 [CREATE TABLE (U-SQL): Creating a Table with Schema](https://msdn.microsoft.com/en-us/library/mt706196.aspx#dis_sch)（CREATE TABLE (U-SQL)：使用架构创建表）的“U-SQL Table Distributions”（U-SQL 表分布）部分。
+如果找不到适当的分区和分布键，可以尝试使用轮循机制分布。 轮循机制分布可以均匀处理所有行，并将其随机放入相应的桶中。 数据将均匀分布，但会丢失位置信息，因此也会在某些操作中降低作业性能，这是其缺点。 此外，如果仍要对倾斜的键执行聚合，则还会出现数据倾斜问题。 若要详细了解轮循机制分布，请参阅 [CREATE TABLE (U-SQL): Creating a Table with Schema](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch)（CREATE TABLE (U-SQL)：使用架构创建表）的“U-SQL Table Distributions”（U-SQL 表分布）部分。
 
 ## <a name="solution-2-improve-the-query-plan"></a>解决方案 2：改进查询计划
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>选项 1：使用 CREATE STATISTICS 语句
 
-U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器提供存储在表中的数据特征（例如值分布）的相关详细信息。 对于大多数查询，查询优化器已生成高质量查询计划所必需的统计信息。 有时候，用户可能需要通过 CREATE STATISTICS 或通过修改查询设计创建额外的统计信息，以便改进查询性能。 有关详细信息，请参阅 [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/en-us/library/azure/mt771898.aspx) 页。
+U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器提供存储在表中的数据特征（例如值分布）的相关详细信息。 对于大多数查询，查询优化器已生成高质量查询计划所必需的统计信息。 有时候，用户可能需要通过 CREATE STATISTICS 或通过修改查询设计创建额外的统计信息，以便改进查询性能。 有关详细信息，请参阅 [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx) 页。
 
 代码示例：
 

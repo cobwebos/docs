@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: pabutler
-ms.openlocfilehash: 64becc80192e69bd332d6657637c845acf93748b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: eb6db45ca0fcb6879aeaeaaf70715691cac438b0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="saas-applications-technical-publishing-guide"></a>SaaS 应用程序技术发布指南
 
 欢迎使用 Azure Marketplace SaaS 应用程序技术发布指南。 本指南旨在帮助候选发布者和现有发布者使用 SaaS 应用程序产品将其应用程序和服务列入 Azure Marketplace。  
-假设你要使用 SaaS 应用程序产品将解决方案部署在自己的 Azure 订阅中，然后，客户可以通过你设计和管理的界面登录，以测试应用程序。 在此过程中，需要通过 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis) 利用现有的试用环境。 换而言之，它是一个客户导向的、合作伙伴托管的免费试用环境。 公开解决方案时，必须使云采购商能够独立地免费体验该解决方案，并且此产品类型能够根据客户搜索云解决方案的习惯来提供试用体验。  
+假设你要使用 SaaS 应用程序产品将解决方案部署在自己的 Azure 订阅中，然后，客户可以通过你设计和管理的界面登录，以测试应用程序。 在此过程中，需要通过 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 利用现有的试用环境。 换而言之，它是一个客户导向的、合作伙伴托管的免费试用环境。 公开解决方案时，必须使云采购商能够独立地免费体验该解决方案，并且此产品类型能够根据客户搜索云解决方案的习惯来提供试用体验。  
 
 有关其他所有 Marketplace 产品的概述，请参阅 [Marketplace 发布者指南](https://aka.ms/sellerguide)。
 
@@ -31,8 +31,8 @@ ms.lasthandoff: 03/17/2018
 SaaS 应用程序的技术要求非常简单。 发布者只需与要发布的 Azure AD 集成。  Azure AD 与应用程序的集成已有完善的文档，并且 Microsoft 可以提供多个 SDK 和资源来实现此目的。  
 
 若要开始，我们建议专门使用一个订阅进行 Azure Marketplace 发布，使发布工作与其他活动相互独立。 此外，我们建议在开发环境中安装以下工具（如果尚未安装）： 
-- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)  
-- [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-5.0.0)  
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)  
+- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)  
 - [Azure 开发人员工具（查看可用工具）](https://azure.microsoft.com/tools/)  
 - [Visual Studio Code](https://code.visualstudio.com/)  
 
@@ -41,11 +41,11 @@ SaaS 应用程序的技术要求非常简单。 发布者只需与要发布的 A
 
 **文档**
 
-- [Azure Active Directory 开发人员指南](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+- [Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-- [与 Azure Active Directory 集成](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate)
+- [与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-- [将应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+- [将应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 - [Azure 路线图 - 安全和标识](https://azure.microsoft.com/roadmap/?category=security-identity)
 

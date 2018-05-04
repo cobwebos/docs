@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 8fb20fc9e6249a2d19d62df1ce331ce873d5fd3d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 865b0e485480f5ee7d676d3a6c90cb51fd50d19c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>通过在 Log Analytics 中控制数据量和保留期管理成本
 Log Analytics 用于调整和支持来自任何源的巨量数据的每日收集、索引和存储，这些源部署在企业或 Azure 中。  尽管这可能是组织的主要驱动力，但成本效益最终是基本驱动力。 为此，必须了解 Log Analytics 工作区的成本不仅仅是基于收集的数据量，而且也取决于所选的计划，以及连接源生成的数据的存储时间长短。  
@@ -33,15 +33,14 @@ Log Analytics 用于调整和支持来自任何源的巨量数据的每日收集
 - 数据在工作区中保留的时限  
 - 启用的管理解决方案数、数据源和收集频率 
 
+请参考每个解决方案的文档，这些文档提供了数据收集量的预测值。   
+
+如果是“免费”定价层，数据保留期限制为 7 天。 对于“按 GB (独立)”或“按节点(OMS)”层，可以使用过去 31 天的收集数据，保留期可以提高到 2 年。 如果选择更长的保留期，则会收取费用。 “免费”计划的每日引入限制为 500 MB。如果发现一直超出允许的量，可将工作区更改为“按 GB”或“按节点”层，从而收集超出该限制的数据。 可随时更改计划类型，关于定价的详细信息，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。 
+
 > [!NOTE]
-> 请参考每个解决方案的文档，这些文档提供了数据收集量的预测值。   
+> 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/en-us/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 深入了解[新的定价模型](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)、如何根据使用情况模式[评估移到此模型的影响](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)以及[如何选择加入该新模型](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)。 
 
-如果是“免费”计划，数据保留期限制为 7 天。 对于“独立”或“付费”层，收集的数据在最后 31 天可用。 “免费”计划的每日引入限制为 500 MB。如果发现一直超出允许的量，可将工作区更改为付费计划，从而收集超出该限制的数据。 
-
-> [!NOTE]
-> 如果为该付费层选择更长的保留期，会收取费用。 可随时更改计划类型，关于定价的详细信息，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。 
-
-可通过以下两种方法限制数据量和帮助控制成本：每日上限和数据保留。  
+不管定价模型或层如何，若要控制成本，管理数据量是基础。 除了特定解决方案的选择和配置，还可在 Log Analytics 中通过以下两种方法限制数据量和帮助控制成本：每日上限和数据保留。  
 
 ## <a name="review-estimated-cost"></a>查看预估成本
 使用 Log Analytics 可以轻松了解基于最近使用模式的可能成本。  为此，请执行以下步骤。  

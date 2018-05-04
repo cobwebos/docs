@@ -1,25 +1,25 @@
 ---
-title: "Azure Functions C# 脚本开发人员参考"
-description: "了解如何使用 C # 脚本开发 Azure Functions。"
+title: Azure Functions C# 脚本开发人员参考
+description: '了解如何使用 C # 脚本开发 Azure Functions。'
 services: functions
 documentationcenter: na
-author: ggailey777
+author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
+editor: ''
+tags: ''
+keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.service: functions
 ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
-ms.author: glenga
-ms.openlocfilehash: 683ef1ebffaec74df95b454d717857d55b8026dd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: tdykstra
+ms.openlocfilehash: 91e85fb25f9324f9b8d83884fe34a014f280de0b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -233,7 +233,7 @@ public static void Run(string myBlob, TraceWriter log)
 
 ## <a name="async"></a>异步
 
-若要使函数异步，使用 `async` 关键字并返回 `Task` 对象。
+要使函数[异步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，请使用 `async` 关键字并返回 `Task` 对象。
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(

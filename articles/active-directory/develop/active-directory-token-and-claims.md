@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 04/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a28811437668488c2207535cef3aa4640f17aa54
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 627b5bf39c066cd974b70f9db974fcf3fd73b251
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD 令牌参考
-Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。
+Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。 
 
 ## <a name="types-of-tokens"></a>类型的令牌
 Azure AD 支持 [OAuth 2.0 授权协议](active-directory-protocols-oauth-code.md)，该协议使用 access_token 与 refresh_token。  它还支持通过 [OpenID Connect](active-directory-protocols-openid-connect-code.md) 进行身份验证和登录，其引入了第三种类型的令牌：id_token。  每个令牌表示为“持有者令牌”。
@@ -52,7 +52,6 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 > [!div class="mx-codeBreakAll"]
 | JWT 声明 | 名称 | 说明 |
 | --- | --- | --- |
-| `appid` |应用程序 ID |标识使用令牌访问资源的应用程序。 该应用程序可以自身名义或者代表用户进行操作。 应用程序 ID 通常表示应用程序对象，但它还可以表示 Azure AD 中的服务主体对象。 <br><br> **JWT 值示例**： <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
 | `aud` |目标受众 |令牌的目标接收方。 接收令牌的应用程序必须验证受众值是否正确，并拒绝任何针对其他受众的令牌。 <br><br> **SAML 值示例**： <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT 值示例**： <br> `"aud":"https://contoso.com"` |
 | `appidacr` |应用程序身份验证上下文类引用 |表示对客户端进行身份验证的方式。 对于公共客户端，该值为 0。 如果使用客户端 ID 和客户端机密，则该值为 1。 <br><br> **JWT 值示例**： <br> `"appidacr": "0"` |
 | `acr` |身份验证上下文类引用 |表示使用者的身份验证方式，此方式与应用程序的身份验证上下文类引用声明中的客户端身份验证截然不同。 值为“0”指示最终用户身份验证不符合 ISO/IEC 29115 要求。 <br><br> **JWT 值示例**： <br> `"acr": "0"` |
@@ -147,7 +146,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 * **Nonce** - 缓和令牌重播攻击。
 * 等等...
 
-有关应用对 ID 令牌应该执行的声明验证的完整列表，请参阅 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation) 规范。 这些声明的预期值详细信息包含在前面的 [id_token](#id-tokens) 部分中。
+有关应用对 ID 令牌应该执行的声明验证的完整列表，请参阅 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation) 规范。 这些声明的预期值详细信息包含在前面的 [id_token](#id-tokens) 节中。
 
 ## <a name="token-revocation"></a>令牌吊销
 
@@ -163,9 +162,8 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
   * 非自愿密码更改：如果管理员强制用户更改其密码或重置密码，则使用其密码获得的用户令牌将会失效。  请参阅下面的注释，了解例外情况。 
   * 安全漏洞：如果出现安全漏洞（例如本地存储的密码泄露），管理员可以撤消当前颁发的所有刷新令牌。  这将强制所有用户重新进行身份验证。 
 
-注意： 
-
-如果使用了非密码的身份验证方法（Windows Hello、Authenticator 应用、面部或指纹等生物识别）来获得令牌，更改用户的密码不会强制用户重新进行身份验证（但它会强制其 Authenticator 应用重新进行身份验证）。  这是因为其所选身份验证输入（例如面部）并未发生更改，因此可再次使用进行重新身份验证。
+> [!NOTE]
+>如果使用了非密码的身份验证方法（Windows Hello、Authenticator 应用、面部或指纹等生物识别）来获得令牌，更改用户的密码不会强制用户重新进行身份验证（但它会强制其 Authenticator 应用重新进行身份验证）。  这是因为其所选身份验证输入（例如面部）并未发生更改，因此可再次使用进行重新身份验证。
 
 ## <a name="sample-tokens"></a>示例令牌
 

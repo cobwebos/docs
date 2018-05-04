@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e92bb8b4078bc5c85a639d3b5b38c124152576f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bf535dfae4c5f710a423343bc3d76c81d83df2ae
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>用例：使用 Automation DSC 和 Chocolatey 持续部署到虚拟机
 DevOps 领域中有许多工具可帮助你处理持续集成管道中的各个点。  Azure Automation Desired State Configuration (DSC) 是 DevOps 团队可以采用的新选项。  本文演示如何为 Windows 计算机设置持续部署 (CD)。  可以轻松扩展技术，在角色（例如网站）中按需要添加更多 Windows 计算机，还能从该角色扩展到其他角色。
@@ -50,7 +50,7 @@ Resource Manager 模板的一项主要功能是能够在预配时将 VM 扩展�
 如果不是从 ARM 模板开始，也没关系。  有一些 PowerShell Cmdlet 可帮助你向拉取服务器注册 VM，以及完成余下的所有工作。 有关详细信息，请参阅以下文章：[载入由 Azure 自动化 DSC 管理的计算机](automation-dsc-onboarding.md)
 
 ## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>步骤 1：设置“拉”服务器和自动化帐户
-在经过身份验证的 (Add-AzureRmAccount) PowerShell 命令行中：（如果设置了请求服务器则可能需要几分钟时间）
+在经过身份验证的 (Connect-AzureRmAccount) PowerShell 命令行中：（如果设置了请求服务器则可能需要几分钟时间）
 
     New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
     New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 

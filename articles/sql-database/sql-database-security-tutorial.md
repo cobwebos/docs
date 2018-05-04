@@ -9,15 +9,22 @@ ms.custom: mvc,security
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: daredis
-ms.openlocfilehash: 4d2f5ce387a1e9b36fd1625210f42525a272c270
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 68a2a61dd5821470d30e3735ea6a2df89360cbb2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>保护 Azure SQL 数据库
 
-SQL 数据库通过限制对数据库的访问来保护数据，具体措施包括：使用防火墙规则，实施要求用户证明其身份的身份验证机制，通过基于角色的成员身份和权限实施数据访问授权，以及使用行级别安全性和动态数据屏蔽。
+SQL 数据库通过以下方式来确保数据的安全： 
+- 使用防火墙规则限制对数据库的访问 
+- 使用需要标识的身份验证机制
+- 通过基于角色的成员身份和权限实现对数据的授权 
+- 行级别安全性
+- 动态数据掩码
+
+SQL 数据库还有复杂的监视、审核和威胁检测功能。 
 
 只需几个简单的步骤，即可大大提升数据库抵御恶意用户或未经授权的访问的能力。 在本教程中，学习： 
 
@@ -155,7 +162,7 @@ Azure SQL 数据库透明数据加密 (TDE) 会自动加密静态数据，无需
 
 3. 必要时，将“数据加密”设置为“开”，再单击“保存”。
 
-加密进程在后台启动。 可以使用 [SQL Server Management Studio](./sql-database-connect-query-ssms.md) 连接到 SQL 数据库并查询 `sys.dm_database_encryption_keys` 视图的 encryption_state 列，来监视进度。
+加密进程在后台启动。 若要监视进度，可以使用 [SQL Server Management Studio](./sql-database-connect-query-ssms.md) 连接到 SQL 数据库并查询 [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) 视图的 encryption_state 列。 状态为 3 指示数据库已加密。 
 
 ## <a name="enable-sql-database-auditing-if-necessary"></a>启用 SQL 数据库审核（必要时）
 

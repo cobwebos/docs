@@ -1,16 +1,16 @@
 ---
-title: "在 Azure Migrate 中使用计算机依赖项分组计算机 | Microsoft 文档"
-description: "介绍了如何在 Azure Migrate 服务中使用计算机依赖项创建评估。"
+title: 在 Azure Migrate 中使用计算机依赖项分组计算机 | Microsoft 文档
+description: 介绍了如何在 Azure Migrate 服务中使用计算机依赖项创建评估。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/25/2017
 ms.author: raynew
-ms.openlocfilehash: 720380fd14d9eaf4856ad75269a80f2b63a4725f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 9e8e1fb918d9cd35b12e71abdd23ca101239ae26
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>使用计算机依赖项映射分组计算机
 
@@ -33,8 +33,8 @@ ms.lasthandoff: 01/02/2018
 1. 双击下载的代理。
 2. 在“欢迎”页面上，单击“下一步”。 在“许可条款”页面上，单击“我接受”以接受许可协议。
 3. 在“目标文件夹”中，保留或修改默认安装文件夹，然后选择“下一步”。 
-4. 在“代理安装选项”中，选择“Azure Log Analytics (OMS)” > “下一步”。 
-5. 单击“添加”以添加新 OMS 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“资源组名称” 的 Azure 数据工厂。
+4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。 
+5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“资源组名称” 的 Azure 数据工厂。
 
 
 若要在 Linux 计算机上安装代理：

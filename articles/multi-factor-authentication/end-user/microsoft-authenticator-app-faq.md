@@ -15,15 +15,15 @@ ms.date: 03/08/2018
 ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: aa3c6bb9196a17ae41c05458533f73f3ec315bd8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e9c152fddbfcd603a84caf2c168ec4f12368dcfa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator 应用常见问题解答
 
-本文回答我们收到的有关 Microsoft Authenticator 应用的常见问题。 如果没有看到所提问题的答案，请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)。 我们还提供了另一个有关应用上一个特定功能的常见问题解答，即[使用手机登录常见问题解答](microsoft-authenticator-app-phone-signin-faq.md)。
+本文解答了有关 Microsoft Authenticator 应用的常见问题。 如果没有看到所提问题的答案，请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)。 此外，另一篇常见问题解答文章[使用手机登录时的常见问题解答](microsoft-authenticator-app-phone-signin-faq.md)也解答了有关具体应用功能的常见问题。
 
 Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使用 Azure 多重身份验证时使用该应用。 Microsoft 验证器应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)。
 
@@ -33,9 +33,9 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 Microsoft Authenticator 存储添加帐户时创建的帐户信息。 使用 Authenticator 时，创建诊断日志以进行调试，并存储有用的数据，帮助 Microsoft 诊断任何不可预见的问题。 可以通过依次打开“帮助” > “发送日志” > “查看日志”来访问日志数据。
 
-可以通过删除帐户磁贴来删除数据。 这将删除应用程序正在使用的所有帐户信息，包括日志。 
+可以通过删除帐户磁贴来删除数据。 删除帐户磁贴也会删除应用程序正在使用的所有帐户信息，包括日志。 
 
-有关 Microsoft 如何使用你的数据的详细信息，请访问：https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted
+有关 Microsoft 如何使用客户数据的详细信息，请访问：https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted
 
 ### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>此应用中的代码有哪些用途？ 为什么数字会保持倒计数？
 
@@ -57,7 +57,7 @@ Microsoft Authenticator 存储添加帐户时创建的帐户信息。 使用 Aut
 - 是否能从其他应用接收通知？ 如果不能，可能是手机出现网络连接问题或出现 Android/Apple 通知频道问题。 第一种问题可通过手机设置解决，但对于第二个问题，可能需要联系服务提供商获取帮助。
 - 是否应用上的某些帐户可以收到通知而其他帐户不能？ 如果是这样的话，从应用中删除有问题的帐户，然后重新添加该帐户以启用推送通知。
 
-如果尝试过这些建议的故障排除方法，但仍然有问题，请向我们发送你的日志以供诊断。 请转到应用程序设置，然后选择“帮助和反馈”和“发送日志”。 然后，请转到 [ 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)告诉我们你所遇到的问题以及目前为止你已尝试过步骤。
+如果尝试过这些建议的故障排除方法，但仍有问题，可以向我们发送日志以供诊断。 请转到应用程序设置，然后选择“帮助和反馈”和“发送日志”。 然后，请转到 [ 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)告诉我们你所遇到的问题以及目前为止你已尝试过步骤。
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>我已使用 Microsoft Authenticator 应用程序生成验证代码。 如何切换到一键式推送通知？
 通过推送通知批准登录仅适用于个人 Microsoft 帐户或工作和学校 Microsoft 帐户，并不适用于 Google 或 Facebook 等第三方帐户。 如果拥有工作或学校 Microsoft 帐户，组织可以选择禁用此选项。
@@ -69,13 +69,15 @@ Microsoft Authenticator 存储添加帐户时创建的帐户信息。 使用 Aut
 ### <a name="do-one-click-push-notifications-work-for-non-microsoft-accounts"></a>一键式推送通知是否适用于非 Microsoft 帐户？
 不适用，推送通知只适用于 Microsoft 帐户和 Azure Active Directory 帐户。 如果工作单位或学校使用的是 Azure AD 帐户，则可能会禁用此功能。  
 
-### <a name="i-restored-my-device-from-a-backup-and-my-account-codes-are-missing-or-not-working-what-happened"></a>我从备份还原设备后，帐户代码丢失或无效。 发生了什么情况？
-出于安全考虑，我们不会从应用备份还原帐户。  还原应用后，请删除帐户，并重新添加。
+### <a name="i-got-a-new-device-or-restored-my-device-from-a-backup-how-do-i-set-up-my-accounts-in-the-microsoft-authenticator-app-again"></a>我购买了新的设备，或者从备份还原了我的设备。 如何再次在 Microsoft Authenticator 应用中设置我的帐户？
+如果运行 iOS 设备，已启用“自动备份”，并且在旧设备上创建了帐户的备份，则可以使用该备份在新设备上恢复帐户凭据。 有关详细信息，请参阅[使用 Microsoft Authenticator 应用备份和恢复帐户凭据](microsoft-authenticator-app-backup-and-recovery.md)一文。 
 
-### <a name="i-got-a-new-device-how-do-i-remove-the-microsoft-authenticator-app-from-my-old-device-and-move-to-the-new-one"></a>我将使用新设备。 如何从旧设备删除 Microsoft Authenticator 应用并将其迁移到新设备？
-将 Microsoft Authenticator 应用添加到新设备不会自动将其从任何其他设备删除。 要管理为帐户配置的设备，请访问用于管理双重验证的同一网站，并选择删除旧应用。
+### <a name="i-lost-my-device-or-moved-on-to-a-new-device-how-do-i-make-sure-notifications-dont-continue-to-go-to-my-old-device"></a>我丢失了设备或者改用了新设备。 如何确保不会继续向旧设备发送通知？  
+将 Microsoft Authenticator 应用添加到新 iOS 设备不会自动从旧设备上删除该应用。 从旧设备中删除该应用并不足够。 必须从旧设备中删除该应用，同时告知 Microsoft 或组织忘记旧设备，并从帐户中注销该设备。
+- **使用个人 Microsoft 帐户从设备中删除应用。** 转到[帐户安全](https://account.microsoft.com/security) 页的双重验证区域，选择关闭旧设备的验证。  
+- **使用工作或学校 Microsoft 帐户从设备中删除应用。** 转到[我的应用](https://myapps.microsoft.com/)页的双重验证区域或转到组织的自定义门户，选择关闭旧设备的验证。 
 
-对于个人 Microsoft 帐户，此网站是[帐户安全](https://account.microsoft.com/security)页。 对于工作或学校 Microsoft 帐户，此网站可能是 [MyApps](https://myapps.microsoft.com) 或组织已设置的自定义门户。
+
 
 ### <a name="how-do-i-remove-an-account-from-the-app"></a>如何从应用中删除帐户？
 * iOS：从主屏幕中，向左滑动帐户磁贴。 选择“删除”。
@@ -85,14 +87,14 @@ Microsoft Authenticator 存储添加帐户时创建的帐户信息。 使用 Aut
 如果拥有已注册到组织的设备，可能需要完成一个额外步骤才能删除帐户。 在这些设备上，Microsoft Authenticator 应用自动注册为设备管理员。 如果要完全卸载该应用，首先需要在应用设置中取消注册它。
 
 ### <a name="why-does-the-app-request-so-many-permissions"></a>应用为什么请求这么多的权限？
-下面是可能需要的权限的完整列表及它们在应用中的用法。 所见到的特定权限取决于所持有的电话类型。
+下面是可能需要的权限完整列表及它们在应用中的用法。 所见到的特定权限取决于所持有的电话类型。
 
-* **照相机**：添加工作、学校或非 Microsoft 帐户时，我们使用照相机来扫描 QR 代码。
-* **联系人和电话**：使用个人 Microsoft 帐户登录时，我们会尝试通过查找你在手机中使用的现有帐户简化该过程。
-* **短信**：首次使用个人 Microsoft 帐户登录时，我们必须确保电话号码与我们记录的相符。 我们将短信发送到下载应用的手机。 短信包含 6-8 位验证码。 我们在短信中找到此代码，而不是要求查找并输入。
-* **在其他应用上绘制**：当收到让你验证自己身份的通知时，我们会将该通知显示在可能正运行的任何其他应用上方。
+* **照相机**：在添加工作、学校或非 Microsoft 帐户时用于扫描 QR 码。
+* **联系人和电话**：在使用个人 Microsoft 帐户登录时，用于通过查找手机中的现有帐户来简化过程。
+* **短信**：用于确保在首次使用个人 Microsoft 帐户登录时， 电话号码与记录中的号码匹配。  我们会将包含 6-8 位数验证码的短信发送到下载应用的手机。 我们不会要求在应用中查找并输入此代码，而是在短信中发送此代码。
+* **在其他应用上绘制**：身份验证的通知也会显示在可能正运行的其他任何应用上。
 * **从 Internet 接收数据**：此权限是发送通知所必需的。
-* **防止手机休眠**：如果向组织注册设备，他们可以更改你手机上的这项策略。
+* **防止手机休眠**：如果向组织注册设备，组织可以更改手机上的这项策略。
 * **控制振动**：可以选择在收到验证身份的通知时是否希望手机振动。
 * **使用指纹硬件**：每验证身份时，某些工作和学校帐户需要其他的 PIN。 为了使过程更加简单，我们允许使用指纹而不是输入 PIN。
 * **查看网络连接**：添加 Microsoft 帐户时，应用需要网络/Internet 连接。

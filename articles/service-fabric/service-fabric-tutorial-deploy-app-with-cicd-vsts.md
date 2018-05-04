@@ -1,12 +1,12 @@
 ---
-title: "部署具有持续集成功能的 Azure Service Fabric 应用程序 (Team Services) | Microsoft Docs"
-description: "本教程介绍如何使用 Visual Studio Team Services 为 Service Fabric 应用程序设置持续集成和部署。  将应用程序部署到 Azure 中的 Service Fabric 群集。"
+title: 部署具有持续集成功能的 Azure Service Fabric 应用程序 (Team Services) | Microsoft Docs
+description: 本教程介绍如何使用 Visual Studio Team Services 为 Service Fabric 应用程序设置持续集成和部署。  将应用程序部署到 Azure 中的 Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 3f5ccd40e2b46cc68b4f7aeb67577fb66dbd5355
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b61b7f89c127b297f058082d86952f2a45d766a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
-本教程是一个系列的第三部分，介绍了如何使用 Visual Studio Team Services 为 Azure Service Fabric 应用程序设置持续集成和部署。  需要一个现有的 Service Fabric 应用程序，将使用在[生成 .NET 应用程序](service-fabric-tutorial-create-dotnet-app.md)中创建的应用程序作为示例。
+本教程是一个系列的第四部分，介绍了如何使用 Visual Studio Team Services 为 Azure Service Fabric 应用程序设置持续集成和部署。  需要一个现有的 Service Fabric 应用程序，将使用在[生成 .NET 应用程序](service-fabric-tutorial-create-dotnet-app.md)中创建的应用程序作为示例。
 
 在该系列的第三部分中，你会学习如何：
 
@@ -36,6 +36,7 @@ ms.lasthandoff: 02/24/2018
 > [!div class="checklist"]
 > * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)
 > * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [向 ASP.NET Core 前端服务添加 HTTPS 终结点](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * 使用 Visual Studio Team Services 配置 CI/CD
 > * [设置监视和诊断应用程序](service-fabric-tutorial-monitoring-aspnet.md)
 
@@ -124,7 +125,7 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 ![启用触发器][enable-trigger]
 
-选择“+ 发布” -> “创建发布” -> “创建”，手动创建发布。  验证部署是否已成功且应用程序是否正在群集中运行。  打开 web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。 
+选择“+ 发布” -> “创建发布” -> “创建”，手动创建发布。  验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。 
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>提交并推送更改，触发发布
 通过将一些代码更改签入到 Team Services 中来验证持续集成管道是否正常工作。    
@@ -143,7 +144,7 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 若要检查生成进度，请在 Visual Studio 中切换到“团队资源管理器”中的“生成”选项卡。  在验证生成成功执行后，定义用于将应用程序部署到群集的发布定义。
 
-验证部署是否已成功且应用程序是否正在群集中运行。  打开 web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170815.3”。
+验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170815.3”。
 
 ![Service Fabric Explorer][sfx1]
 

@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2838d8fd53d4e2e564bb7784cb5489e9a167d5bb
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 41a5ff2613706b7454a96daa52c7cb20c734c394
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案（预览）
 
@@ -54,16 +54,15 @@ ms.lasthandoff: 03/30/2018
    ![Azure 门户](media/automation-solution-vm-management/azure-portal-01.png)
 
 1. 此时会显示“添加解决方案”页面。 系统会提示先要配置解决方案，然后才可以将它导入自动化订阅。
+
    ![VM 管理中的“添加解决方案”页面](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
+
 1. 在“添加解决方案”页面上，选择“工作区”。 选择链接到自动化帐户所在的同一个 Azure 订阅的 Log Analytics 工作区。 如果没有工作区，请选择“新建工作区”。 在“OMS 工作区”页面上，执行以下操作：
    * 指定新 **OMS 工作区**的名称。
    * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    * 对于“资源组”，可以创建新资源组，或选择现有的资源组。
    * 选择“位置” 。 目前可用的位置仅为：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部和西欧。
-   * 选择“定价层”。 该解决方案提供了两种定价层：“免费”和“每个节点 (OMS)”。 免费层的每日可收集数据量、保留期和 Runbook 作业运行时分钟数有限制。 “按节点”层对每日收集的数据量没有限制。
-
-        > [!NOTE]
-        > 虽然“按 GB (独立)”付费层显示为一个选项，但它不适用。 如果选择它并继续在订阅中创建此解决方案，它会失败。 正式发布此解决方案时，此问题将得到解决。 此解决方案仅使用自动化作业分钟数和日志引入。 它不会向环境中添加其他节点。
+   * 选择“定价层”。 选择“每 GB (独立)”选项。 Log Analytics 已更新[定价](https://azure.microsoft.com/pricing/details/log-analytics/)，“每 GB”层级是唯一的选项。
 
 1. 在“OMS 工作区”页面上提供所需信息后，单击“创建”。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。
 1. 在“添加解决方案”页面中，选择“自动化帐户”。 如果要创建新的 Log Analytics 工作区，则还需要创建与它关联的新自动化帐户。 选择“创建自动化帐户”，并在“添加自动化帐户”页面中提供以下信息：
@@ -80,6 +79,9 @@ ms.lasthandoff: 03/30/2018
    * 指定“VM 排除列表(字符串)”。 这是来自目标资源组的一个或多个虚拟机的名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 支持使用通配符。 此值存储在 **External_ExcludeVMNames** 变量中。
    * 选择“计划”。 这是启动和停止目标资源组中 VM 的周期性日期和时间。 默认情况下，该计划配置为 UTC 时区。 无法选择其他区域。 若要在配置解决方案后将计划配置为特定时区，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedule)。
    * 要从 SendGrid 接收“电子邮件通知”，请接受默认值“是”，并提供有效的电子邮件地址。 如果选择了 **No**，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新 **External_EmailToAddress**，然后使用值 **Yes** 修改变量 **External_IsSendEmail**。
+
+> [!IMPORTANT]
+> “目标资源组名称”的默认值是 &ast;。 这面向订阅中的所有 VM。 如果不希望解决方案面向订阅中的所有 VM，则需要在启用计划前，将此值更新到资源组名称列表。
 
 1. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。 系统会验证所有设置，然后在订阅中部署该解决方案。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。
 

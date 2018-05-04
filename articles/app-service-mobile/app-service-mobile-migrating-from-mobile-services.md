@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: e94f08b9b9dad20c6f47367c47eb49aea59f4bd8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5001704f47af0c7b07744f1dceb7aa58bdb6448c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="article-top"></a>将现有的 Azure 移动服务迁移到 Azure 应用服务
 借助 [Azure 应用服务正式版]，可轻松就地迁移 Azure 移动服务站点，使用 Azure 应用服务的所有功能。  本文档说明将站点从 Azure 移动服务迁移到 Azure 应用服务时的情形。
@@ -372,16 +372,16 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[应用服务定价]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[应用服务定价]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自动缩放]: ../app-service/web-sites-scale.md
 [Azure 应用服务]: ../app-service/app-service-web-overview.md
 [Azure 经典门户]: https://manage.windowsazure.com
 [Azure 门户]: https://portal.azure.com
-[Azure Region]: https://azure.microsoft.com/en-us/regions/
+[Azure Region]: https://azure.microsoft.com/regions/
 [Azure 计划程序计划]: ../scheduler/scheduler-plans-billing.md
 [连续部署]: ../app-service/app-service-continuous-deployment.md
-[转换混合命名空间]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[转换混合命名空间]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [自定义域名]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: http://www.telerik.com/fiddler

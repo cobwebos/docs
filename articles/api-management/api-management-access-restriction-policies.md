@@ -1,11 +1,11 @@
 ---
-title: "Azure API 管理访问限制策略 | Microsoft 文档"
-description: "了解可在 Azure API 管理中使用的访问限制策略。"
+title: Azure API 管理访问限制策略 | Microsoft 文档
+description: 了解可在 Azure API 管理中使用的访问限制策略。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 11cc5841d2f804f0d120dddda226bf05a0612607
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5fbb4f8a15ee7ee8b6cecbe76391e2b2a7e4be1b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -88,8 +88,8 @@ ms.lasthandoff: 02/21/2018
   
 ```xml  
 <rate-limit calls="number" renewal-period="seconds">  
-    <api name="name" calls="number" renewal-period="seconds">  
-        <operation name="name" calls="number" renewal-period="seconds" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </rate-limit>  
 ```  
@@ -113,8 +113,8 @@ ms.lasthandoff: 02/21/2018
 |名称|说明|必选|  
 |----------|-----------------|--------------|  
 |set-limit|根元素。|是|  
-|api|添加一个或多个此类元素，对产品中的 API 施加调用速率限制。 产品和 API 的调用速率限制是分别应用的。|否|  
-|operation|添加一个或多个此类元素，对 API 中的操作施加调用速率限制。 产品、API 和操作的调用速率限制是分别应用的。|否|  
+|api|添加一个或多个此类元素，对产品中的 API 施加调用速率限制。 产品和 API 的调用速率限制是分别应用的。 可以通过 `name` 或 `id` 引用 API。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。|否|  
+|operation|添加一个或多个此类元素，对 API 中的操作施加调用速率限制。 产品、API 和操作的调用速率限制是分别应用的。 可以通过 `name` 或 `id` 引用 Operation。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。|否|  
   
 ### <a name="attributes"></a>属性  
   
@@ -243,8 +243,8 @@ ms.lasthandoff: 02/21/2018
   
 ```xml  
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">  
-    <api name="name" calls="number" bandwidth="kilobytes">  
-        <operation name="name" calls="number" bandwidth="kilobytes" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </quota>  
 ```  
@@ -268,8 +268,8 @@ ms.lasthandoff: 02/21/2018
 |名称|说明|必选|  
 |----------|-----------------|--------------|  
 |quota|根元素。|是|  
-|api|添加一个或多个此类元素，对产品中的 API 设置配额。 产品和 API 的配额是分别应用的。|否|  
-|operation|添加一个或多个此类元素，对 API 中的操作设置配额。 产品、API 和操作的配额是分别应用的。|否|  
+|api|添加一个或多个此类元素，对产品中的 API 设置调用配额。 产品和 API 的调用配额是分别应用的。 可以通过 `name` 或 `id` 引用 API。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。|否|  
+|operation|添加一个或多个此类元素，对 API 中的操作设置调用配额。 产品、API 和操作的调用配额是分别应用的。 可以通过 `name` 或 `id` 引用 Operation。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。|否|  
   
 ### <a name="attributes"></a>属性  
   

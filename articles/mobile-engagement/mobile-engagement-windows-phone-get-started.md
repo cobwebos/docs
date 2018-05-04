@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9fb1426e66df6cd8085342743b7d045c297743e5
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9bf51bf6a4e2b84771edb9841e1b0ae18953826c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-phone-silverlight-apps"></a>适用于 Windows Phone Silverlight 应用的 Azure Mobile Engagement 入门
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/30/2018
 本教程演示使用 Mobile Engagement 的简单广播方案。 演示中，将创建一个空白 Windows Phone 8 应用，以使用 Microsoft 推送通知服务 (MPNS) 收集基本数据和接收推送通知。
 
 > [!NOTE]
-> Azure Mobile Engagement 服务将于 2018 年 3 月停用，且当前仅向现有客户提供。 有关详细信息，请参阅 [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)。
+> Azure Mobile Engagement 服务将于 2018 年 3 月停用，且当前仅向现有客户提供。 有关详细信息，请参阅 [Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/)。
 
 > [!NOTE]
 > Visual Studio 2017 中不支持 Windows Phone 8.1 和更低版本的项目。  有关详细信息，请参阅 [Visual Studio 2017 平台目标以及兼容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。

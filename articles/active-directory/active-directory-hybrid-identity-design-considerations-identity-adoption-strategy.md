@@ -1,11 +1,11 @@
 ---
-title: "混合标识设计 - 采用策略 Azure | Microsoft Docs"
-description: "借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。"
-documentationcenter: 
+title: 混合标识设计 - 采用策略 Azure | Microsoft Docs
+description: 借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e6c9cbc4f158e62092c7a9e401e618880e5ea3b6
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -196,7 +196,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 本地 AD |多重身份验证服务器 |
 
 > [!NOTE]
-> 还应该确保选择的多重身份验证设计选项支持设计所需的功能。  有关详细信息，请参阅 [Choose the multi-factor security solution for you](../multi-factor-authentication/multi-factor-authentication-get-started.md#what-am-i-trying-to-secure)（选择适合自己的多因素安全解决方案）。
+> 还应该确保选择的多重身份验证设计选项支持设计所需的功能。  有关详细信息，请参阅 [Choose the multi-factor security solution for you](authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure)（选择适合自己的多因素安全解决方案）。
 > 
 > 
 

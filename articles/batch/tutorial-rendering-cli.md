@@ -6,18 +6,18 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 02/05/2018
+ms.date: 04/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f8a93e873f79e99777fe2d8675c9426f5fc5ecda
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5cd4ce6b04f9257de13aad6e59eb772fbe2fa558
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
-Azure Batch 提供云规模的渲染功能，按使用付费。 Batch 渲染服务支持 Autodesk Maya、3ds Max、Arnold 和 V-Ray。 本教程介绍如何执行相关步骤，以便使用 Azure 命令行界面通过 Batch 来渲染小型场景。 学习如何：
+Azure Batch 提供云规模的渲染功能，按使用付费。 Batch 渲染服务支持 Autodesk Maya、3ds Max、Arnold、V-Ray 等渲染应用。 本教程介绍如何执行相关步骤，以便使用 Azure 命令行界面通过 Batch 来渲染小型场景。 学习如何：
 
 > [!div class="checklist"]
 > * 将场景上传到 Azure 存储
@@ -123,7 +123,7 @@ az storage blob upload-batch \
       "publisher": "batch",
       "offer": "rendering-windows2016",
       "sku": "rendering",
-      "version": "latest"
+      "version": "1.2.1"
     },
     "nodeAgentSKUId": "batch.node.windows amd64"
   },
@@ -213,7 +213,7 @@ az batch job create \
 ```json
 {
   "id": "myrendertask",
-  "commandLine": "cmd /c \"3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
+  "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
         "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",

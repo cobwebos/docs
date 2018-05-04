@@ -1,26 +1,22 @@
 ---
-title: "Hadoop 安全性 - 已加入域的 HDInsight 群集 - Azure | Microsoft 文档"
-description: "学习内容"
+title: HDInsight - 已加入域的 HDInsight 群集 - Azure
+description: 学习内容
 services: hdinsight
-documentationcenter: 
-author: saurinsh
+author: omidm1
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 10/31/2016
-ms.author: saurinsh
-ms.openlocfilehash: 0a3558973014e47d470ef89d5d0f7c9ac15cb4d9
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 6225bd824e3bcff24b84c79f39ce209f16caafd8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>已加入域的 HDInsight 群集的 Hadoop 安全性简介
 
@@ -35,7 +31,7 @@ ms.lasthandoff: 12/14/2017
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 ## <a name="benefits"></a>优点
-企业安全性包含四大支柱 – 外围安全性、身份验证、授权和加密。
+企业安全性包含四大支柱 - 外围安全性、身份验证、授权和加密。
 
 ![已加入域的 HDInsight 群集可以稳固这些支柱](./media/apache-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png)。
 
@@ -43,7 +39,7 @@ ms.lasthandoff: 12/14/2017
 HDInsight 中的外围安全性是使用虚拟网络和网关服务实现的。 现在，企业管理员可以在虚拟网络中创建 HDInsight 群集，使用网络安全组（入站或出站防火墙规则）来限制对虚拟网络的访问。 只有入站防火墙规则中定义的 IP 地址才能与 HDInsight 群集通信，从而实现了外围安全性。 外围安全性的另一个层是使用网关服务实现的。 服务中的网关服务充当传入 HDInsight 群集的任何请求的第一道防线。 它接受请求，只在验证请求之后才允许请求传入群集中的其他节点，因此为群集中的其他名称节点和数据节点提供外围安全性。
 
 ### <a name="authentication"></a>身份验证
-企业管理员可以在[虚拟网络](https://azure.microsoft.com/services/virtual-network/)中创建已加入域的 HDInsight 群集。 HDInsight 群集的节点将加入企业管理的域。 此过程是使用 [Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-overview.md)实现的。 群集中的所有节点已加入企业管理的域。 借助这种设置，企业员工可以使用他们的域凭据登录到群集节点。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Hue、Ambari视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。 管理员拥有完全控制权，可以限制通过这些终结点与群集交互的用户数目。
+企业管理员可以在[虚拟网络](https://azure.microsoft.com/services/virtual-network/)中创建已加入域的 HDInsight 群集。 HDInsight 群集的节点将加入企业管理的域。 此过程是使用 [Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-overview.md)实现的。 群集中的所有节点已加入企业管理的域。 借助这种设置，企业员工可以使用他们的域凭据登录到群集节点。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Hue、Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。 管理员拥有完全控制权，可以限制通过这些终结点与群集交互的用户数目。
 
 ### <a name="authorization"></a>授权
 大多数企业遵循的最佳实践是，并非每位员工都有权访问所有企业资源。 同理，在本版本中，管理员可以针对群集资源定义基于角色的访问控制策略。 例如，管理员可以配置 [Apache Ranger](http://hortonworks.com/apache/ranger/)，为 Hive 设置访问控制策略。 此功能可确保员工最多只能访问为了成功完成其作业而要访问的数据。 此外，只有管理员能够通过 SSH 访问群集。
@@ -56,6 +52,9 @@ HDInsight 中的外围安全性是使用虚拟网络和网关服务实现的。 
 
 ## <a name="next-steps"></a>后续步骤
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
-* 若要管理已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](apache-domain-joined-manage.md)（管理已加入域的 HDInsight 群集）。
+* 若要管理已加入域的 HDInsight 群集，请参阅[管理已加入域的 HDInsight 群集](apache-domain-joined-manage.md)。
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](apache-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。
 * 有关在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+* 有关使用 VSCode 链接到已加入域的群集，请参阅[使用 VSCode 链接到已加入域的群集](../hdinsight-for-vscode.md#linkcluster)。
+* 有关使用 IntelliJ 链接到已加入域的群集，请参阅[使用 IntelliJ 链接到已加入域的群集](../spark/apache-spark-intellij-tool-plugin.md#linkcluster)。
+* 有关使用 Eclipse 链接到已加入域的群集，请参阅[使用 Eclipse 链接到已加入域的群集](../spark/apache-spark-eclipse-tool-plugin.md#linkcluster)。

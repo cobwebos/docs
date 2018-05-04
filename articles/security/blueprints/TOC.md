@@ -6,7 +6,7 @@
 ## [实现运营安全](../azure-operational-security.md)
 ## [Azure 中的监管](../governance-in-azure.md)
 ## [Azure 云中的隔离](../azure-isolation.md)
-## [保护混合网络体系结构](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
+## [保护混合网络体系结构](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
 ## [安全技术功能](../azure-security-technical-capabilities.md)
 
 # [数据安全与加密](../security-azure-encryption-overview.md)

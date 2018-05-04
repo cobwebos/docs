@@ -1,0 +1,32 @@
+- name: Azure IoT 基础
+  href: index.yml
+- name: 概述
+  items:
+    - name: 介绍
+      href: iot-introduction.md
+    - name: Azure IoT 服务与技术
+      href: iot-services-and-technologies.md
+- name: 解决方案
+  items:
+    - name: IoT 套件预配置解决方案
+      href: /azure/iot-suite
+    - name: IoT Central
+      href: 'https://docs.microsoft.com/microsoft-iot-central/'
+- name: 平台服务
+  items:
+    - name: IoT 中心
+      href: /azure/iot-hub
+    - name: IoT 中心设备预配服务
+      href: /azure/iot-dps
+    - name: Location Based Services
+      href: /azure/location-based-services
+    - name: 服务 SDK
+      href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+    - name: 时序见解
+      href: /azure/time-series-insights
+- name: Microsoft Edge
+  items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: IoT 设备 SDK
+      href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

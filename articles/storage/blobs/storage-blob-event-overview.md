@@ -8,11 +8,11 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -92,7 +92,7 @@ Blob 存储事件包含响应数据更改所需的所有信息。  可以识别 
 
 Blob 存储事件使用者使用的格式：
 
-```json
+```
 /blobServices/default/containers/<containername>/blobs/<blobname>
 ```
 
@@ -100,19 +100,19 @@ Blob 存储事件使用者使用的格式：
 
 要匹配在一组共享前缀的容器中创建的 blob 的事件，请使用 `subjectBeginsWith` 筛选器，如下所示：
 
-```json
+```
 /blobServices/default/containers/containerprefix
 ```
 
 要匹配在特定容器中创建的 blob 的事件，请使用 `subjectBeginsWith` 筛选器，如下所示：
 
-```json
+```
 /blobServices/default/containers/containername/
 ```
 
 要匹配在共享 blob 名称前缀的特定容器中创建的 blob 的事件，请使用 `subjectBeginsWith` 筛选器，如下所示：
 
-```json
+```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 

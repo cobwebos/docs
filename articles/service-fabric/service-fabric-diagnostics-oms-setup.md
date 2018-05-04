@@ -12,24 +12,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/30/2018
+ms.date: 4/03/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: af09df52fe733b69cfe4470de2fd6e978f126ca0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3d6a47ba184b4bbbd290a61c581ae8b83b9361af
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>为群集设置 Log Analytics
 
-可以通过 Azure 资源管理器、PowerShell 或 Azure Marketplace 设置 Log Analytics 工作区。 如果要保留已更新的资源管理器部署模板供将来使用，请使用同一模板设置 OMS 环境。 如果部署的群集已启用诊断，则通过 Marketplace 部署更方便。 如果要将 OMS 部署到的帐户没有订阅级别访问权限，请通过 PowerShell 或资源管理器模板进行部署。
+若要监视群集级别的事件，建议使用 Log Analytics。 可以通过 Azure 资源管理器、PowerShell 或 Azure Marketplace 设置 Log Analytics 工作区。 对于所做的部署，如果要保留更新的资源管理器模板供将来使用，请使用同一模板设置 Log Analytics 环境。 如果部署的群集已启用诊断，则通过 Marketplace 部署更方便。 如果你在要部署到的帐户中没有订阅级别访问权限，请通过 PowerShell 或资源管理器模板进行部署。
 
 > [!NOTE]
-> 要设置 Log Analytics 来监视群集，需要启用诊断功能以监视群集级别或平台级别事件。
+> 要设置 Log Analytics 来监视群集，需要启用诊断功能以监视群集级别或平台级别事件。 有关详细信息，请参阅[如何在 Windows 群集中设置诊断](service-fabric-diagnostics-event-aggregation-wad.md)和[如何在 Linux 群集中设置诊断](service-fabric-diagnostics-event-aggregation-lad.md)
 
-## <a name="deploy-oms-by-using-azure-marketplace"></a>使用 Azure Marketplace 部署 OMS
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>使用 Azure Marketplace 部署 Log Analytics 工作区
 
-若要在部署群集之后添加 OMS 工作区，请转到在门户中的 Azure Marketplace，然后查找“Service Fabric 分析”：
+若要在部署群集之后添加 Log Analytics 工作区，请转到门户中的 Azure Marketplace，然后查找“Service Fabric 分析”。 这是一个适用于 Service Fabric 部署的自定义解决方案，其数据是特定于 Service Fabric 的。 在此过程中，需创建解决方案（用于查看见解的仪表板）和工作区（聚合了基础的群集数据）。
 
 1. 在左侧导航菜单中选择“新建”。 
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 04/19/2018
 
     ![Marketplace 中的 OMS SF 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. 在 Service Fabric 分析创建窗口中，为“OMS 工作区”字段选中“选择工作区”，然后选择“创建新工作区”。 填写所需的条目。 此处仅要求 Service Fabric 群集和 OMS 工作区的订阅相同。 验证条目后，即开始部署 OMS 工作区。 几分钟即可完成部署。
+4. 在 Service Fabric 分析创建窗口中，为“OMS 工作区”字段选中“选择工作区”，然后选择“创建新工作区”。 填写所需的条目。 此处仅要求 Service Fabric 群集和工作区的订阅相同。 验证条目后，即开始部署工作区。 几分钟即可完成部署。
 
 5. 完成后，在 Service Fabric 分析创建窗口底部再次选择“创建”。 请确保新工作区显示在 OMS 工作区下。 此操作会将解决方案添加到所创建的工作区中。
 
@@ -48,9 +48,9 @@ ms.lasthandoff: 04/19/2018
 >[!NOTE]
 >尚不可对 Linux 群集启用此体验。 
 
-### <a name="connect-the-oms-workspace-to-your-cluster"></a>将 OMS 工作区连接到群集 
+### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>将 Log Analytics 工作区连接到群集 
 
-1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 ServiceFabric\<nameOfOMSWorkspace\>然后转到其概述页。 可在此处更改解决方案设置和工作区设置，还可访问 OMS 门户。
+1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfWorkspace\>**，然后转到其概述页。 可在此处更改解决方案设置和工作区设置，还可访问 OMS 门户。
 
 2. 在左侧导航菜单的“工作区数据源”下，选择“存储帐户日志”。
 

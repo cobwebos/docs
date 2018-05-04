@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 84363a92445991d08a2593bb3ade863db06b8670
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 622d9f1f498435ae36d1b35b938b513849efc3c5
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>排查在 Azure 中部署 Windows 虚拟机时遇到的问题
 
@@ -94,13 +94,9 @@ productPesIds="1234, 5678"
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>在我的 N 系列 VM 中找不到 GPU 实例
 
-若要利用运行 Windows Server 2016 或 Windows Server 2012 R2 的 Azure N 系列 VM 的 GPU 功能，在部署后必须在每个 VM 上安装 NVIDIA 图形驱动程序。 针对 [Windows VM](n-series-driver-setup.md) 和 [Linux VM](../linux/n-series-driver-setup.md) 提供了驱动程序安装信息。
+若要利用运行 Windows Server 2016 或 Windows Server 2012 R2 的 Azure N 系列 VM 的 GPU 功能，在部署后必须在每个 VM 上安装 NVIDIA 图形驱动程序。 可获取 [Windows VM](n-series-driver-setup.md) 和 [Linux VM](../linux/n-series-driver-setup.md) 的驱动程序安装信息。
 
-## <a name="are-client-images-supported-for-n-series"></a>N 系列是否支持客户端映像？
-
-目前，Azure 仅支持运行 Windows Server 和 Linux 操作系统的 VM 上的 N 系列。
-
-## <a name="is-n-series-vms-available-in-my-region"></a>我所在的地区是否提供 N 系列 VM？
+## <a name="is-n-series-vms-available-in-my-region"></a>我所在的区域是否支持 N 系列 VM？
 
 可以从[可用产品(按区域)](https://azure.microsoft.com/regions/services) 以及[此处](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)的定价来查看可用性。
 

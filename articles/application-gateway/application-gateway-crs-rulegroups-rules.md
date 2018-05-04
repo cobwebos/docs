@@ -1,25 +1,22 @@
 ---
-title: "Azure 应用程序网关 Web 应用程序防火墙 CRS 规则组和规则 | Microsoft Docs"
-description: "本页提供有关 Web 应用程序防火墙 CRS 规则组和规则的信息。"
+title: Azure 应用程序网关 Web 应用程序防火墙 CRS 规则组和规则
+description: 本页提供有关 Web 应用程序防火墙 CRS 规则组和规则的信息。
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: e5ea5cf9-3b41-4b85-a12c-e758bff7f3ec
+author: vhorne
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
-ms.date: 03/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 9265be4ac4258115c9302189d84b20e4894d42bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/16/2018
+ms.author: victorh
+ms.openlocfilehash: 5ba291eaa93a48e3aadc11b1f0f7b48b01683b07
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>提供的 Web 应用程序防火墙 CRS 规则组和规则列表
 
@@ -27,28 +24,8 @@ ms.lasthandoff: 10/11/2017
 
 下列表格列出了在将应用程序网关与 Web 应用程序防火墙结合使用时可用的规则。  每个表格显示了特定 CRS 版本的规则组中的规则。
 
-##<a name="owasp30"></a> OWASP_3.0
+## <a name="owasp30"></a> OWASP_3.0
 
-### <a name="crs910"></a>  <p x-ms-format-detection="none">REQUEST-910-IP-REPUTATION</p>
-
-|RuleId|说明|
-|---|---|
-|910011|规则 910011|
-|910012|规则 910012|
-|910000|来自已知恶意客户端（根据以前的流量违规判断）的请求。|
-|910100|来自高风险国家/地区的客户端 IP。|
-|910120|规则 910120|
-|910130|规则 910130|
-|910150|搜索引擎 IP 的 HTTP 方块列表匹配项|
-|910160|垃圾邮件发送者 IP 的 HTTP 方块列表匹配项|
-|910170|可疑 IP 的 HTTP 方块列表匹配项|
-|910180|搜集者 IP 的 HTTP 方块列表匹配项|
-|910013|规则 910013|
-|910014|规则 910014|
-|910015|规则 910015|
-|910016|规则 910016|
-|910017|规则 910017|
-|910018|规则 910018|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
@@ -64,26 +41,6 @@ ms.lasthandoff: 10/11/2017
 |911017|规则 911017|
 |911018|规则 911018|
 
-### <a name="crs912"></a> <p x-ms-format-detection="none">REQUEST-912-DOS-PROTECTION</p>
-
-|RuleId|说明|
-|---|---|
-|912100|规则 912100|
-|912012|规则 912012|
-|912120|从 %@{tx.real_ip} 识别的拒绝服务 (DoS) 攻击（自上次警报以来触发了 %@{tx.dos_block_counter} 次）|
-|912130|规则 912130|
-|912140|规则 912140|
-|912150|规则 912150|
-|912160|规则 912160|
-|912170|来自 %@{tx.real_ip} 的潜在拒绝服务 (DoS) 攻击 - 请求喷发数 = %@{ip.dos_burst_counter}|
-|912013|规则 912013|
-|912014|规则 912014|
-|912019|规则 912019|
-|912171|来自 %@{tx.real_ip} 的潜在拒绝服务 (DoS) 攻击 - 请求喷发数 = %@{ip.dos_burst_counter}|
-|912015|规则 912015|
-|912016|规则 912016|
-|912017|规则 912017|
-|912018|规则 912018|
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 

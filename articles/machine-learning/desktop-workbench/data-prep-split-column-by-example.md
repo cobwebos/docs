@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Machine Learning Workbench 的“按示例拆分列”转换"
-description: "“按示例拆分列”转换的参考文档"
+title: 使用 Azure Machine Learning Workbench 的“按示例拆分列”转换
+description: “按示例拆分列”转换的参考文档
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -12,10 +12,10 @@ ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
 ms.openlocfilehash: 497c1725fc4554792add11c0ec069d1628a89fbd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="split-column-by-example-transformation"></a>“按示例拆分列”转换
 此转换预先在有意义的边界拆分列内容，无需用户输入。 拆分算法在分析列内容后选择边界。 可以通过以下项定义这些边界

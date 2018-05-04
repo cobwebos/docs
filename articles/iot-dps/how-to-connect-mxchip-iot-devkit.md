@@ -1,26 +1,26 @@
 ---
-title: 如何使用 MXChip IoT DevKit 连接到 Azure IoT 中心设备预配服务 | Microsoft Docs
-description: 如何使用 MXChip IoT DevKit 连接到 Azure IoT 中心设备预配服务
+title: 如何使用 Azure IoT 中心设备预配服务的自动预配功能将 MXChip IoT DevKit 注册到 IoT 中心 | Microsoft Docs
+description: 如何使用 Azure IoT 中心设备预配服务的自动预配功能将 MXChip IoT DevKit 注册到 IoT 中心。
 services: iot-dps
 keywords: ''
 author: liydu
 ms.author: liydu
-ms.date: 02/20/2018
+ms.date: 04/04/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 502f22a39622e9a8341e1daca8c9899fd8b7d7d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d60c5766b22e31c33d0dd4a743fa297470109ac6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="connect-the-mxchip-iot-devkit-to-the-azure-iot-hub-device-provisioning-service"></a>将 MXChip IoT DevKit 连接到 Azure IoT 中心设备预配服务
+# <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>使用 Azure IoT 中心设备预配服务的自动预配功能将 MXChip IoT DevKit 注册到 IoT 中心
 
-本文介绍如何配置 MXChip IoT DevKit，以使用 Azure IoT 设备预配服务将其自动注册到 Azure IoT 中心。 本教程介绍如何执行下列操作：
+本文介绍如何使用 Azure IoT 中心设备预配服务的[自动预配](concepts-auto-provisioning.md)功能将 MXChip IoT DevKit 注册到 Azure IoT 中心 本教程介绍如何执行下列操作：
 
 * 在设备上配置设备预配服务的全局终结点。
 * 使用唯一设备机密 (UDS) 生成 X.509 证书。
@@ -33,11 +33,11 @@ ms.lasthandoff: 03/28/2018
 
 若要完成本教程中的步骤，请先执行以下任务：
 
-* 遵循[将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)中的步骤准备好 DevKit。
+* 遵循[将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)中的步骤准备好 DevKit。
 * 参考[更新 DevKit 固件](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)教程升级到最新固件（1.3.0 或以上）。
-* 遵循[使用 Azure 门户设置 IoT 中心设备预配服务](https://docs.microsoft.com/en-us/azure/iot-dps/quick-setup-auto-provision)中的步骤，创建 IoT 中心并将其链接到设备预配服务实例。
+* 遵循[使用 Azure 门户设置 IoT 中心设备预配服务](/azure/iot-dps/quick-setup-auto-provision)中的步骤，创建 IoT 中心并将其链接到设备预配服务实例。
 
-## <a name="set-up-the-device-provisioning-service-configuration-on-the-device"></a>在设备上设置设备预配服务配置
+## <a name="build-and-deploy-auto-provisioning-registration-software-to-the-device"></a>生成自动预配注册软件并将其部署到设备
 
 将 DevKit 连接到创建的设备预配服务实例：
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="save-a-unique-device-secret-on-an-stsafe-security-chip"></a>将唯一设备机密保存在 STSAFE 安全芯片上
 
-可以根据设备的[硬件安全模块](https://azure.microsoft.com/en-us/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)在设备上配置设备预配服务。 MXChip IoT DevKit 使用[受信任计算组](https://trustedcomputinggroup.org)提供的[设备标识组合引擎](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf)。 保存在 DevKit 上的 STSAFE 安全芯片中的*唯一设备机密 (UDS)* 用于生成唯一的 [X.509](https://docs.microsoft.com/en-us/azure/iot-dps/tutorial-set-up-device#select-a-hardware-security-module) 设备证书。 稍后在设备预配服务中，可以使用该证书完成登记过程。
+可以根据设备的[证明机制](concepts-security.md#attestation-mechanism)在设备上配置自动预配。 MXChip IoT DevKit 使用[受信任计算组](https://trustedcomputinggroup.org)提供的[设备标识组合引擎](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf)。 保存在 DevKit 上的 STSAFE 安全芯片中的*唯一设备机密 (UDS)* 用于生成唯一的 [X.509](concepts-security.md#x509-certificates) 设备证书。 稍后在设备预配服务中和运行时的注册过程中，可以使用该证书完成注册过程。
 
 典型的唯一设备机密是长度为 64 个字符的字符串，如以下示例所示：
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 03/28/2018
 
 4. 在串行监视器窗口中，键入 *set_dps_uds [your_own_uds_value]* 并按 Enter。
   > [!NOTE]
-  > 例如，如果通过将最后两个字符更改为 `f` 设置自己的 UDS，则需要输入类似于 set_dps_uds 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eff 的命令。
+  > 例如，如果通过将最后两个字符更改为 `f` 设置自己的 UDS，则需要输入类似于 `set_dps_uds 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eff` 的命令。
 
 5. 在未关闭串行监视器窗口的情况下，在 DevKit 上按“重置”按钮。
 
@@ -107,16 +107,17 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>在设备预配服务中创建设备注册条目
 
-1. 在 Azure 门户中转到自己的预配服务。 选择 **管理登记** ，然后选择 **单独登记** 选项卡。![个人登记](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
+1. 在 Azure 门户中转到设备预配服务实例。 选择 **管理登记** ，然后选择 **单独登记** 选项卡。![个人登记](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
 
 2. 选择 **添加** 。
 
-3. 在 **机制** 中选择 **X.509** 。
-  ![上传证书](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
+3. 在“添加注册”面板中，请执行以下操作：
+   - 在“机制”下选择“X.509”
+   - 在“主证书 .pem 或 .cer 文件”下单击“选择文件”
+   - 在“打开的文件”对话框中，导航到刚生成的 **.pem** 证书并将其上传
+   - 将其余的设置保留默认值，然后单击“保存”
 
-4. 在**证书 .pem 或 .cer 文件**中，上传刚刚生成的 **.pem** 证书。
-
-5. 将其余的设置保留默认值，然后选择“保存”。
+   ![上传证书](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
 
 ## <a name="start-the-devkit"></a>启动 DevKit
 

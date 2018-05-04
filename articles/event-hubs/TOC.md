@@ -47,7 +47,7 @@
 ### [使用 Resource Manager 模板创建和部署事件中心](event-hubs-resource-manager-namespace-event-hub.md)
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=event-hubs)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=event-hubs)
 ## Java
 ### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
 ### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)

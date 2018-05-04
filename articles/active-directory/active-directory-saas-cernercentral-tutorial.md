@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Cerner Central 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Cerner Central 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Cerner Central 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Cerner Central 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 391994b8df73657dc75e8c9790356f443341159d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6481a96956fe82d47c3c0bb2f7f69a0df8d5b993
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>教程：Azure Active Directory 与 Cerner Central 的集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在 Azure AD 中控制谁有权访问 Cerner Central
 - 可以让用户使用其 Azure AD 帐户自动登录到 Cerner Central（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Cerner Central 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已批准的 Cerner Central 系统帐户
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 Cerner Central，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 12/11/2017
     ![配置单一登录][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![配置单一登录](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
 
 3. 在“Cerner Central 域和 URL”部分中，执行以下步骤：
@@ -115,46 +115,24 @@ ms.lasthandoff: 12/11/2017
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
     
-
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso` |
     
+    > [!NOTE]
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Cerner Central 支持团队](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)来获取这些值。
 
-    > [!NOTE] 
-    > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 请联系 [Cerner Central 支持团队](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)来获取这些值。
- 
-4. 单击“保存”按钮。
+4. 在“SAML 签名证书”部分上，单击”复制”按钮，复制“应用联合元数据 URL”并将其粘贴到记事本。
+    
+    ![配置单一登录](./media/active-directory-saas-cernercentral-tutorial/tutorial_metadataurl.png)
+     
+5. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-cernercentral-tutorial/tutorial_general_400.png)
 
-5. 若要生成**元数据** URL，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_endpoint.png)
-     
-    d. 现在，转到 **Cerner Central** 的属性页，使用“复制”按钮复制**应用程序 Id** 并将其粘贴到记事本。
- 
-    ![配置单一登录](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. 要在 **Cerner Central** 端配置单一登录，需要将**元数据 URL** 发送给 [Cerner Central 支持团队](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)。 他们会在应用程序端配置 SSO 以完成集成。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. 若要在“Cerner Central”端配置单一登录，需要将“应用联合元数据 URL”发送给 [Cerner Central 支持团队](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)。 他们会在应用程序端配置 SSO 以完成集成。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。 
@@ -185,7 +163,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-cerner-central-test-user"></a>创建 Cerner Central 测试用户
 
@@ -230,7 +208,7 @@ Cerner Central 应用程序允许从任何联合标识提供者进行身份验�
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -247,4 +225,3 @@ Cerner Central 应用程序允许从任何联合标识提供者进行身份验�
 [201]: ./media/active-directory-saas-cernercentral-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cernercentral-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cernercentral-tutorial/tutorial_general_203.png
-

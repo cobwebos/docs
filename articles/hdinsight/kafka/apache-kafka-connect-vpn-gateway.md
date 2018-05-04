@@ -1,25 +1,25 @@
 ---
-title: "使用虚拟网络连接到 Kafka - Azure HDInsight | Microsoft Docs"
-description: "了解如何通过 Azure 虚拟网络直接连接到 Kafka on HDInsight。 了解如何使用 VPN 网关从开发客户端连接到 Kafka，或使用 VPN 网关设备从本地网络中的客户端连接到 Kafka。"
+title: 使用虚拟网络连接到 Kafka - Azure HDInsight | Microsoft Docs
+description: 了解如何通过 Azure 虚拟网络直接连接到 Kafka on HDInsight。 了解如何使用 VPN 网关从开发客户端连接到 Kafka，或使用 VPN 网关设备从本地网络中的客户端连接到 Kafka。
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
+ms.devlang: ''
 ms.custom: hdinsightactive
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1ddfbbb5efb73f968c9ef42396be45fce12ff47a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Kafka on HDInsight
 
@@ -92,7 +92,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 2. 打开 PowerShell 提示符，并使用下列代码登录 Azure 订阅：
 
     ```powershell
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
     # If you have multiple subscriptions, uncomment to set the subscription
     #Select-AzureRmSubscription -SubscriptionName "name of your subscription"
     ```
@@ -244,7 +244,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 默认情况下，Zookeeper 向客户端返回 Kafka 中转站的域名。 此配置不使用 VPN 软件客户端，因为它无法对虚拟网络中的实体使用名称解析。 对于此配置，请使用以下步骤来配置 Kafka，以播发 IP 地址而不是域名：
 
-1. 使用 Web 浏览器，并转到 https://CLUSTERNAME.azurehdinsight.net。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
+1. 使用 Web 浏览器转到 https://CLUSTERNAME.azurehdinsight.net。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
 
     出现提示时，使用群集的 HTTPS 用户名称密码。 将显示群集的 Ambari Web UI。
 

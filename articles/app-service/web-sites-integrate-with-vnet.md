@@ -1,8 +1,8 @@
 ---
-title: "将应用与 Azure 虚拟网络进行集成"
-description: "演示如何将 Azure 应用服务中的应用连接到新的或现有的 Azure 虚拟网络"
+title: 将应用与 Azure 虚拟网络进行集成
+description: 演示如何将 Azure 应用服务中的应用连接到新的或现有的 Azure 虚拟网络
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: erikre
 editor: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: b755197af7e8791e01273bcc25f72c0d92ef6bc2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 83f5c64926eb9b718463c415a5478af374245f31
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) 中使用应用对其进行设置。 如果不熟悉 Azure 虚拟网络 (VNet)，则这里需要指出的是，该功能允许将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用多种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述][VNETOverview]。 
@@ -57,7 +57,8 @@ VNet 集成不支持某些功能，其中包括：
 
 * VNet 集成仅适用于“标准”、“高级”或“隔离”定价计划中的应用。 如果在启用此功能后又将应用服务计划缩放为不受支持的定价计划，应用会失去与所用 VNet 的连接。 
 * 如果目标虚拟网络已经存在，必须在连接到应用之前借助动态路由网关使网络处于点到站点 VPN 启用状态。 如果网关由静态路由配置，则无法启用点到站点虚拟专用网络 (VPN)。
-* VNet 所在的订阅必须与应用服务计划 (ASP) 所在的订阅相同。 
+* VNet 所在的订阅必须与应用服务计划 (ASP) 所在的订阅相同。
+* 如果已存在启用了点到站点的网关，并且它不在基本 SKU 中，则必须在点到站点配置中禁用 IKEV2。
 * 与 VNet 集成的应用使用为该 VNet 指定的 DNS。
 * 默认情况下，集成应用只根据 VNet 中的已定义路由将流量路由到 VNet 中。 
 

@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: ''
-ms.openlocfilehash: cd458b1f6d26fbd5f5821a04cd01be5c3a4e4514
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="auto-provisioning-concepts"></a>自动预配的概念
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/28/2018
    > [!NOTE]
    > 无论 IoT 解决方案的大小如何，也不管是否要支持数百万台设备，此阶段也是**一次性配置**。
 
-2. **设备登记** - 使设备预配服务实例将来识别尝试注册的设备的过程。 登记是通过在预配服务中配置设备标识信息来实现的。可以针对单个设备执行“单独登记”，也可以针对多个设备执行“组登记”。 标识基于设备应该使用的[认证机制](concepts-security.md#attestation-mechanism)，使预配服务在注册过程中认证设备的真实性：
+2. **设备登记** - 使设备预配服务实例将来识别尝试注册的设备的过程。 [登记](concepts-service.md#enrollment)是通过在预配服务中配置设备标识信息来实现的。可以针对单个设备进行“单独登记”，也可以针对多个设备进行“组登记”。 标识基于设备应该使用的[认证机制](concepts-security.md#attestation-mechanism)，使预配服务在注册过程中认证设备的真实性：
 
    - **TPM**：配置为“单独登记”的设备标识基于 TPM 注册 ID 和公共认可密钥。 既然 TPM 是一种[规范]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/))，服务期望只会根据规范进行认证，而不考虑 TPM 实现方式（硬件或软件）如何。 有关基于 TPM 的认证的详细信息，请参阅[设备预配：使用 TPM 进行标识认证](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/)。 
 

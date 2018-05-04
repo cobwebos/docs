@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 072ce2952e3cdea47b02ef7656ca67d4bc0ae8f1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e93b3348c933f65067114bfce4ac517f1204af34
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -79,7 +79,7 @@ Visual Basic
 
 TelemetryClient 是线程安全的。
 
-对于 ASP.NET 和 Java 项目，可自动捕获传入的 HTTP 请求。 可能需要为应用的其他模块创建 TelemetryClient 的其他实例。 例如，可以在中间件类中使用一个 TelemetryClient 实例报告业务逻辑事件。 可以设置属性（如 UserId 和 DeviceId）来标识计算机。 此信息会附加到实例发送的所有事件。 
+对于 ASP.NET 和 Java 项目，可自动捕获传入的 HTTP 请求。 可能需要为应用的其他模块创建 TelemetryClient 的其他实例。 例如，可以在中间件类中使用一个 TelemetryClient 实例报告业务逻辑事件。 可以设置属性（如 UserId 和 DeviceId）来标识计算机。 此信息将附加到实例发送的所有事件中。 
 
 *C#*
 

@@ -1,0 +1,100 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 负载均衡器
+metadata:
+  document_id: 
+  title: 负载均衡器
+  meta.description: Learn how to use Azure Load Balancer. Quickstarts, tutorials, samples, and more, show you how to deploy a load balancer and load balance traffic to and from virtual machines and cloud resources, and in cross-premises virtual networks.
+  services: load-balancer
+  author: KumudD
+  manager: jeconnoc
+  ms.service: load-balancer
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/19/2018
+  ms.author: kumud
+  ms.openlocfilehash: 55d33ea42c831103286f68e22ed14caf2743af99
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/28/2018
+abstract:
+  description: 了解如何使用 Azure 负载均衡器。 快速入门、教程、示例等介绍了如何部署负载均衡器，以及如何对传入和传出虚拟机、云资源和跨界虚拟网络的流量进行负载均衡。
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何创建负载均衡器，如何创建充当后端服务器的虚拟机，如何在虚拟机上安装自定义 Web 应用，然后如何在虚拟机之间对 Web 应用进行负载均衡。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/i_portal.svg
+      text: Azure 门户
+      href: /azure/load-balancer/quickstart-create-basic-load-balancer-portal
+    - image:
+        src: https://docs.microsoft.com/en-us/media/logos/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/load-balancer/quickstart-create-basic-load-balancer-powershell
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/cli.svg
+      text: Azure CLI
+      href: /azure/load-balancer/quickstart-create-basic-load-balancer-cli
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何创建负载均衡器并跨 VM 对服务进行负载均衡。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal">创建区域冗余的公共标准负载均衡器</a>
+    - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal">在区域内对 VM 进行负载均衡</a>
+- title: 免费 Pluralsight 视频培训
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: 实现 Microsoft Azure 网络服务
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: 计划和设计 Microsoft Azure 网络解决方案
+      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+    - title: 实现 Microsoft Azure 网络服务
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: 面向 AWS 管理员的 Microsoft Azure 管理
+      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+- title: 示例
+  items:
+  - type: paragraph
+    text: 常见任务的脚本示例。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/load-balancer/cli-samples">Azure CLI</a>
+    - html: <a href="/azure/load-balancer/powershell-samples">PowerShell</a>
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 命令行
+      html: <p><a href="/powershell/module/azurerm.network#networking">PowerShell</a></p><p><a href="/cli/azure/network">Azure CLI</a></p>
+    - title: 语言
+      html: <p><a href="/dotnet/api/overview/azure/network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html">Node.js</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations#azure.mgmt.network.operations.LoadBalancersOperations">Python</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/load-balancer/">REST API 参考</a></p>

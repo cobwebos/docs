@@ -10,23 +10,23 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 30dce6caefc0b95435d1dadc48aa927be475fc66
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f86c53465636f82cf36d5099699fc9e6efeb55a5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-ruby-to-query-an-azure-sql-database"></a>使用 Ruby 查询 Azure SQL 数据库
 
-本快速入门教程演示如何使用 [Ruby](https://www.ruby-lang.org) 创建连接到 Azure SQL 数据库的程序，并使用 Transact-SQL 语句查询数据。
+此快速入门演示如何使用 [Ruby](https://www.ruby-lang.org) 来创建连接到 Azure SQL 数据库的程序，并使用 Transact-SQL 语句来查询数据。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门教程，请确保符合以下先决条件：
+若要完成本快速入门，请确保符合以下先决条件：
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- 针对用于本快速入门教程的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+- 针对用于本快速入门的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
 
 - 为操作系统安装了 Ruby 和相关软件：
     - **MacOS**：依次安装 Homebrew、rbenv、ruby-build、Ruby 和 FreeTDS。 请参阅[步骤 1.2、1.3、1.4 和 1.5](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)。

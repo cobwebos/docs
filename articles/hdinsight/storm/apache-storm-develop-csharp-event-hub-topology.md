@@ -1,26 +1,24 @@
 ---
-title: "使用 Storm 从事件中心处理事件 - Azure HDInsight | Microsoft Docs"
-description: "了解如何使用用于 Visual Studio 的 HDInsight 工具，通过 Visual Studio 中创建的 C# Storm 拓扑处理来自 Azure 事件中心的数据。"
+title: 使用 Storm 从事件中心处理事件 - Azure HDInsight | Microsoft Docs
+description: 了解如何使用用于 Visual Studio 的 HDInsight 工具，通过 Visual Studio 中创建的 C# Storm 拓扑处理来自 Azure 事件中心的数据。
 services: hdinsight,notification hubs
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 67f9d08c-eea0-401b-952b-db765655dad0
 ms.service: hdinsight
-ms.custom: 
+ms.custom: ''
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: fe1cf3eab1f0ca930b516e4ab44f1e2439cb3e07
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 475a63937ed09b4ce875465c0eb3488ce92c38be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>使用 Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
@@ -51,7 +49,7 @@ C# 拓扑还必须针对 .NET 4.5 运行。
 
 ## <a name="how-to-work-with-event-hubs"></a>如何使用事件中心
 
-Microsoft 提供一组 Java 组件用于与 Storm 拓扑中的事件中心通信。 可以在 [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) 找到包含这些组件的 HDInsight 3.6 兼容版本的 Java 存档 (JAR) 文件。
+Microsoft 提供一组 Java 组件用于与 Storm 拓扑中的事件中心通信。 可在 [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) 中找到包含这些组件的 HDInsight 3.6 兼容版本的 Java 存档 (JAR) 文件。
 
 > [!IMPORTANT]
 > 虽然组件是以 Java 编写的，但可通过 C# 拓扑轻松使用它们。

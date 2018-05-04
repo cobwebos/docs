@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 7df566ced755e1e817b3107dac8f17e9f6e9b8e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 58b4c6769f6eb441e9ccaf041f3d56f4af9a0831
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>了解如何使用、配置并重复使用 IoT Edge 模块 - 预览版
 
@@ -168,7 +168,7 @@ Edge 中心会一直存储消息，直到达到在 [Edge 中心所需属性](mod
 
 如果未在部署清单中指定模块孪生的所需属性，则 IoT 中心将不会以任何方式修改模块孪生，并且你将能够以编程方式设置所需属性。
 
-将使用用来修改设备孪生的相同机制来修改模块孪生。 有关更多信息，请参阅[设备孪生开发人员指南](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)。   
+将使用用来修改设备孪生的相同机制来修改模块孪生。 有关更多信息，请参阅[设备孪生开发人员指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)。   
 
 ## <a name="deployment-manifest-example"></a>部署清单示例
 

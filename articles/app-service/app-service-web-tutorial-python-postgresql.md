@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: f53ffdaa6c99d63bdab91f30ffa6b2b182c53848
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e342a10c2f3b6c32d8d0bc727bf3325c26fb53d6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>教程：在 Azure 中生成 Python 和 PostgreSQL Web 应用
 
@@ -134,35 +134,43 @@ Flask 示例应用程序在数据库中存储用户数据。 如果成功注册�
 
 使用 [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) 命令创建 PostgreSQL 服务器。
 
-在下列命令中，用唯一的服务器名称替换 *\<postgresql_name >* 占位符，并用用户名替换 *\<admin_username >* 占位符。 此服务器名称将用作 PostgreSQL 终结点 (`https://<postgresql_name>.postgres.database.azure.com`) 的一部分，因此需要在 Azure 中的所有服务器之间保持唯一。 此用户名用于初始数据库管理员用户帐户。 系统会提示选择此用户的密码。
+在下列命令中，用唯一的服务器名称替换 *\<postgresql_name>* 占位符，用用户名替换 *\<admin_username>* 占位符，并用密码替换 *\<admin_password>* 占位符。 此服务器名称将用作 PostgreSQL 终结点 (`https://<postgresql_name>.postgres.database.azure.com`) 的一部分，因此需要在 Azure 中的所有服务器之间保持唯一。
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <admin_username>  --storage-size 51200
+az postgres server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_username> --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
 ```
 
 创建用于 PostgreSQL 的 Azure 数据库服务器后，Azure CLI 会显示类似于以下示例的信息：
 
 ```json
 {
+  "additionalProperties": {},
   "administratorLogin": "<my_admin_username>",
+  "earliestRestoreDate": "2018-04-19T22:51:05.340000+00:00",
   "fullyQualifiedDomainName": "<postgresql_name>.postgres.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>",
-  "location": "westus",
+  "location": "westeurope",
   "name": "<postgresql_name>",
   "resourceGroup": "myResourceGroup",
   "sku": {
-    "capacity": 100,
-    "family": null,
-    "name": "PGSQLS3M100",
+    "additionalProperties": {},
+    "capacity": 2,
+    "family": "Gen4",
+    "name": "GP_Gen4_2",
     "size": null,
-    "tier": "Basic"
+    "tier": "GeneralPurpose"
   },
-  "sslEnforcement": null,
-  "storageMb": 2048,
+  "sslEnforcement": "Enabled",
+  "storageProfile": {
+    "additionalProperties": {},
+    "backupRetentionDays": 7,
+    "geoRedundantBackup": "Disabled",
+    "storageMb": 5120
+  },
   "tags": null,
   "type": "Microsoft.DBforPostgreSQL/servers",
   "userVisibleState": "Ready",
-  "version": null
+  "version": "9.6"
 }
 ```
 
@@ -178,14 +186,19 @@ Azure CLI 使用类似以下示例的输出确认防火墙规则：
 
 ```json
 {
-  "endIpAddress": "0.0.0.0",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>/firewallRules/AllowAzureIPs",
-  "name": "AllowAzureIPs",
-  "resourceGroup": "myResourceGroup",
+  "additionalProperties": {},
+  "endIpAddress": "255.255.255.255",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>/firewallRules/AllowAllIPs",
+  "name": "AllowAllIPs",
+ "resourceGroup": "myResourceGroup",
   "startIpAddress": "0.0.0.0",
   "type": "Microsoft.DBforPostgreSQL/servers/firewallRules"
 }
 ```
+
+> [!TIP] 
+> 甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](app-service-ip-addresses.md#find-outbound-ips)。
+>
 
 ### <a name="create-a-production-database-and-user"></a>创建生产数据库和用户
 
@@ -194,7 +207,7 @@ Azure CLI 使用类似以下示例的输出确认防火墙规则：
 连接到数据库（系统会提示输入管理员密码）。
 
 ```bash
-psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<postgresql_name> postgres
+psql -h <postgresql_name>.postgres.database.azure.com -U <admin_username>@<postgresql_name> postgres
 ```
 
 通过 PostgreSQL CLI 创建数据库和用户。

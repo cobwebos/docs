@@ -1,26 +1,24 @@
 ---
-title: "将 HBase 群集迁移到新版本 - Azure HDInsight | Microsoft Docs"
-description: "如何将 HBase 群集迁移到新版本。"
+title: 将 HBase 群集迁移到新版本 - Azure HDInsight | Microsoft Docs
+description: 如何将 HBase 群集迁移到新版本。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 15d23d0ccf816ca355103ad7fd0d6124f1c5c226
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 3ca982e7fc0ce56bee2ee2e193c82a78fac44362
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-an-hbase-cluster-to-a-new-version"></a>将 HBase 群集迁移到新版本
 

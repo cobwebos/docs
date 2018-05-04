@@ -1,11 +1,11 @@
 ---
-title: "排查 Azure 中的 Windows 虚拟机激活问题 | Microsoft Docs"
-description: "介绍了用于修复 Azure 中的 Windows 虚拟机激活问题的疑难解答步骤"
+title: 排查 Azure 中的 Windows 虚拟机激活问题 | Microsoft Docs
+description: 介绍了用于修复 Azure 中的 Windows 虚拟机激活问题的疑难解答步骤
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: fd3f52de40c6d448d457824bcc675db036d2cb86
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 3926522c8359587798ea540d13b157832551f24d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -78,7 +78,7 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>第 2 步：验证 VM 与 Azure KMS 服务的连接
 
-1. 将 [Psping](http:/technet.microsoft.com/en-us/sysinternals/jj729731.aspx) 工具下载并提取到未激活的 VM 中的本地文件夹。 
+1. 将 [Psping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) 工具下载并提取到未激活的 VM 中的本地文件夹。 
 
 2. 转到“开始”，搜索 Windows PowerShell，右键单击 Windows PowerShell，再选择“以管理员身份运行”。
 
@@ -126,7 +126,7 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>如果 Windows 激活已过期，会出现什么情况？ 
  
-如果宽限期已过期且 Windows 仍未激活，Windows Server 2008 R2 及更高版本的 Windows 将显示有关激活的其他通知。 桌面壁纸将保持黑色不变，并且 Windows 更新将仅安装安全更新程序和关键更新，而不安装可选更新。 请参阅[授权条件](http://technet.microsoft.com/en-us/library/ff793403.aspx)页底部的“通知”部分。   
+如果宽限期已过期且 Windows 仍未激活，Windows Server 2008 R2 及更高版本的 Windows 将显示有关激活的其他通知。 桌面壁纸将保持黑色不变，并且 Windows 更新将仅安装安全更新程序和关键更新，而不安装可选更新。 请参阅[授权条件](http://technet.microsoft.com/library/ff793403.aspx)页底部的“通知”部分。   
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

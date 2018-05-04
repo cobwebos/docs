@@ -1,26 +1,24 @@
 ---
-title: "在 YARN 中创建高可用性 Spark 流作业 - Azure HDInsight | Microsoft Docs"
-description: "如何为高可用性方案设置 Spark 流。"
+title: 在 YARN 中创建高可用性 Spark 流作业 - Azure HDInsight | Microsoft Docs
+description: 如何为高可用性方案设置 Spark 流。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ramoha
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: ramoha
-ms.openlocfilehash: f916f9939ac9683a2ee162ba4d2105f66187b111
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0a738d7e26384523e9da9c8c79e12729330fe6f7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>使用 YARN 创建高可用性 Spark 流作业
 
@@ -28,7 +26,7 @@ ms.lasthandoff: 02/01/2018
 
 Spark 流创建长时间运行的作业，在此期间，你可以对数据应用转换，然后将结果推送到文件系统、数据库、仪表板和控制台。 Spark 流处理微批数据，它首先收集定义的时间间隔内的一批事件。 接下来，发送该批进行处理和输出。 批时间间隔通常以几分之一秒定义。
 
-![Spark 流](./media/apache-spark-streaming-high-availability/spark-streaming.png)
+![Spark Streaming](./media/apache-spark-streaming-high-availability/spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -117,7 +115,7 @@ RDD 包含多个属性，可帮助创建高可用性且容错的 Spark 流作业
 
 * 应将长时间运行的作业分段。  将 Spark 流应用程序提交到群集后，必须定义运行作业的 YARN 队列。 可以使用 [YARN 容量计划程序](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)将长时间运行的作业提交到单独的队列。
 
-* 正常关闭流应用程序。 如果偏移量是已知的，并且所有应用程序状态存储在外部，则可以在适当的位置以编程方式停止流应用程序。 一种方法是使用 Spark 中的“线程挂钩”，每隔 *n* 秒检查外部标志。 也可以在启动应用程序时使用 HDFS 中创建的标记文件，然后在想要停止应用程序时删除该文件。 对于标记文件方法，可以在 Spark 应用程序中使用一个单独的线程，用于调用如下所示的代码：
+* 正常关闭流应用程序。 如果偏移量是已知的，并且所有应用程序状态存储在外部，则可以在适当的位置以编程方式停止流应用程序。 一种方法是通过每隔 *n* 秒检查一次外部标志，来使用 Spark 中的“线程挂钩”。 也可以在启动应用程序时使用 HDFS 中创建的标记文件，然后在想要停止应用程序时删除该文件。 对于标记文件方法，可以在 Spark 应用程序中使用一个单独的线程，用于调用如下所示的代码：
 
     ```scala
     streamingContext.stop(stopSparkContext = true, stopGracefully = true)

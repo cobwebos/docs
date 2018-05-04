@@ -1,11 +1,11 @@
 ---
-title: "保护对 Azure 逻辑应用的访问 | Microsoft 文档"
-description: "添加安全机制来保护对 Azure 逻辑应用中工作流使用的触发器、输入和输出、操作参数以及服务的访问。"
+title: 保护对 Azure 逻辑应用的访问 | Microsoft 文档
+description: 添加安全机制来保护对 Azure 逻辑应用中工作流使用的触发器、输入和输出、操作参数以及服务的访问。
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2042fdaa037fe1928fdb81727968a532ddfae0a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-access-to-your-logic-apps"></a>安全访问逻辑应用
 
@@ -77,7 +77,7 @@ POST
 可在逻辑应用设置中配置此项设置：
 
 1. 在 Azure 门户中，打开要添加 IP 地址限制的逻辑应用
-1. 单击“设置”下面的“访问控制配置”菜单项
+1. 单击“设置”下的“工作流设置”菜单项
 1. 指定触发器接受的 IP 地址范围列表
 
 有效的 IP 范围采用 `192.168.1.1/255` 格式。 如果希望逻辑应用只作为嵌套逻辑应用触发，请选择“仅限其他逻辑应用”选项。 此选项将一个空数组写入资源，意味着只有来自服务本身（父逻辑应用）的调用才能成功触发。
@@ -119,7 +119,7 @@ POST
 
 ## <a name="secure-access-to-manage-or-edit-logic-apps"></a>保护对逻辑应用管理或编辑功能的访问
 
-可以限制对逻辑应用中管理操作的访问，以便只有特定的用户或组才能对资源执行操作。 逻辑应用使用 Azure [基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 功能，用户可以使用相同的工具对它进行自定义。  还可以将订阅的成员分配到几个内置角色：
+可以限制对逻辑应用中管理操作的访问，以便只有特定的用户或组才能对资源执行操作。 逻辑应用使用 Azure [基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 功能，用户可以使用相同的工具对它进行自定义。  还可以将订阅的成员分配到几个内置角色：
 
 * **逻辑应用参与者** - 提供查看、编辑和更新逻辑应用的访问权限。  无法删除资源或执行管理操作。
 * **逻辑应用操作员** - 可以查看逻辑应用和运行历史记录，以及启用/禁用相关功能。  无法编辑或更新定义。
@@ -179,7 +179,7 @@ POST
 
 #### <a name="resource-deployment-template-with-secrets"></a>包含机密的资源部署模板
 
-以下示例显示在运行时引用安全参数 `secret` 的部署。 在单独的参数文件中，可以指定 `secret` 的环境值，或者在部署时利用 [Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) 检索密钥。
+以下示例显示在运行时引用安全参数 `secret` 的部署。 在单独的参数文件中，可以指定 `secret` 的环境值，或者在部署时利用 [Azure 资源管理器 KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) 检索密钥。
 
 ``` json
 {

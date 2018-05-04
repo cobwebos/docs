@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/7/2018
-ms.openlocfilehash: 7532e252638832ab6257d2edc97c98a03eef6316
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1e8ad7a85739f67bf8130011ba18243ad0b4b9d0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-1-classify-iris---preparing-the-data"></a>教程 1：鸢尾花分类 - 准备数据
 
@@ -60,7 +60,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    项目名称 | myIris |输入用于标识帐户的唯一名称。 可以使用自己的名称，或者能够最好地标识试验的部门或项目名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 
    项目目录 | c:\Temp\ | 指定在其中创建项目的目录。
    项目说明 | 留空 | 用于描述项目的可选字段。
-   Visualstudio.com GIT 存储库 URL |留空 | 可选字段。 可以在 Visual Studio Team Services 中将项目与 Git 存储库关联，以便进行源代码管理和协作。 [了解如何进行该设置](https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)。 
+   Visualstudio.com GIT 存储库 URL |留空 | 可选字段。 可以在 Visual Studio Team Services 中将项目与 Git 存储库关联，以便进行源代码管理和协作。 [了解如何进行该设置](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)。 
    所选工作区 | IrisGarden（如果存在） | 在 Azure 门户中选择一个已经为试验帐户创建的工作区。 <br/>如果是按本快速入门进行的操作，则应该已经有了一个名为 IrisGarden 的工作区。 如果还没有该工作区，则请选择一个在创建试验帐户时创建的工作区，或者任何其他需要使用的工作区。
    项目模板 | 鸢尾花分类 | 模板包含的脚本和数据可以用来探索产品的功能。 此模板包含的脚本和数据是本快速入门以及此文档站点中的其他教程所需要的。 
 

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Workday 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Workday 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Workday 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Workday 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 1dfe319e708e6a4e815413da1a7bf635f4d0a53d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>教程：Azure Active Directory 与 Workday 的集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/24/2018
 
 若要从库中添加 Workday，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 01/24/2018
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
      
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 回复 URL 必须具有一个子域（例如：www、wd2、wd3、wd3-impl、wd5 和 wd5-impl）。 可以使用类似于“*http://www.myworkday.com*”的 URL，但不能使用“*http://myworkday.com*”的 URL。 请联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)获取这些值。  
+    > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 回复 URL 必须具有一个子域（例如：www、wd2、wd3、wd3-impl、wd5 和 wd5-impl）。 使用类似于“*http://www.myworkday.com*”的内容有效，但“*http://myworkday.com*”无效。 请联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)获取这些值。  
 
 5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -149,11 +149,11 @@ ms.lasthandoff: 01/24/2018
    
     c. 在 Azure 门户的“配置登录”窗口中，复制“注销 URL”，然后将其粘贴到“注销重定向 URL”文本框。
 
-    d.单击“下一步”。 在“用于环境”文本框中，选择环境名称。  
+    d. 在“用于环境”文本框中，选择环境名称。  
 
     >[!NOTE]
     > “环境”属性的值与租户 URL 的值绑定：  
-    >如果 Workday 租户 URL 的域名以 impl 开头（例如：https://impl.workday.com/\<tenant\>/login-saml2.htmld），则“环境”属性必须设置为“实现”。  
+    >-如果 Workday 租户 URL 的域名以 impl 开头（例如：*https://impl.workday.com/\<tenant\>/login-saml2.htmld*），则“环境”属性必须设置为“实现”。  
     >如果域名以其他内容开头，则需要联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)，获取匹配的“环境”值。
 
 11. 在“SAML 设置”部分中执行以下步骤：
@@ -172,11 +172,11 @@ ms.lasthandoff: 01/24/2018
    
     b. 在 Azure 门户的“配置登录”窗口中，复制“SAML 实体 ID”值，然后将其粘贴到“颁发者”文本框。
 
-    ![SAML 标识提供者](./media/active-directory-saas-workday-tutorial/IC7829271(1).png "SAML 标识提供者")
+    ![SAML 标识提供者](./media/active-directory-saas-workday-tutorial/IC7829272.png "SAML 标识提供者")
    
-    c. 选择“启用 Workday 发起的注销”。
+    c. 选择“启用 idp 发起的注销”。
    
-    d.单击“下一步”。 在 Azure 门户的“配置登录”窗口中，复制“注销 URL”值，然后将其粘贴到“注销响应 URL”文本框中。
+    d. 在 Azure 门户的“配置登录”窗口中，复制“注销 URL”值，然后将其粘贴到“注销响应 URL”文本框中。
 
     e. 在 Azure 门户的“配置登录”窗口中，复制“SAML 单一登录服务 URL”值，然后将其粘贴到“IdP SSO 服务 URL”文本框。
 
@@ -205,7 +205,7 @@ ms.lasthandoff: 01/24/2018
     > 
     >
    
-    d.单击“下一步”。  在记事本中打开 Base-64 编码的证书，并复制其内容。
+    d.  在记事本中打开 Base-64 编码的证书，并复制其内容。
    
     e.  在“证书”文本框中，粘贴剪贴板的内容。
    
@@ -223,12 +223,9 @@ ms.lasthandoff: 01/24/2018
    
     ![身份验证请求签名方法](./media/active-directory-saas-workday-tutorial/WorkdaySSOConfiguration.png "身份验证请求签名方法") 
    
-    d.单击“下一步”。 单击“确定”。 
+    d. 单击“确定”。 
    
     ![确定](./media/active-directory-saas-workday-tutorial/IC782933.png "确定")
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -260,7 +257,7 @@ ms.lasthandoff: 01/24/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-workday-test-user"></a>创建 Workday 测试用户
 
@@ -309,7 +306,6 @@ ms.lasthandoff: 01/24/2018
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-workday-tutorial/tutorial_general_01.png
@@ -323,4 +319,3 @@ ms.lasthandoff: 01/24/2018
 [201]: ./media/active-directory-saas-workday-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workday-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workday-tutorial/tutorial_general_203.png
-

@@ -1,19 +1,19 @@
 ---
-title: "使用 DataDog 监视 Azure Kubernetes 群集"
-description: "使用 DataDog 在 Azure 容器服务中监视 Kubernetes 群集"
+title: 使用 DataDog 监视 Azure Kubernetes 群集
+description: 使用 DataDog 在 Azure 容器服务中监视 Kubernetes 群集
 services: container-service
 author: bburns
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 96bbd88f163939b58263f2f3a94b7b4d90f85736
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0a3f0baa4998dbc594023935575d659f7d45bbb9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-datadog"></a>通过 DataDog 监视 Azure 容器服务群集
 

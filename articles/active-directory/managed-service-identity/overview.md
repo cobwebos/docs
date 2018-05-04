@@ -14,11 +14,11 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: e4f9d9e4e0f84610ad072d889abf68b62c0dd41f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6b62baf1fdad6e08535b13f2ca461b00156a7f14
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure 资源的托管服务标识 (MSI)
 
@@ -32,14 +32,14 @@ ms.lasthandoff: 04/06/2018
 
 下面的示例展示了托管服务标识如何与 Azure 虚拟机协同工作。
 
-![虚拟机 MSI 示例](../media/msi-vm-example.png)
+![虚拟机 MSI 示例](../media/msi-vm-imds-example.png)
 
-1. Azure 资源管理器收到消息，要在 VM 上启用 MSI。
+1. Azure 资源管理器收到一条消息，要求在 VM 上启用托管的服务标识 (MSI)。
 2. Azure 资源管理器在 Azure AD 中创建服务主体，用于表示 VM 的标识。 服务主体是在此订阅信任的 Azure AD 租户中进行创建。
-3. Azure 资源管理器在 VM 的 MSI VM 扩展中配置服务主体的详细信息。  这一步包括配置扩展从 Azure AD 获取访问令牌所需的客户端 ID 和证书。
-4. 至此，VM 的服务主体标识已知，现在可以授予 VM 对 Azure 资源的访问权限了。  例如，如果代码需要调用 Azure 资源管理器，将会在 Azure AD 中使用基于角色的访问控制 (RBAC) 向 VM 的服务主体分配相应的角色。  如果代码需要调用 Key Vault，将会授予代码对 Key Vault 中特定机密或密钥的访问权限。
-5. 在 VM 上运行的代码请求从 MSI VM 扩展托管的本地终结点获取令牌：http://localhost:50342/oauth2/token。  resource 参数指定了要向其发送令牌的服务。 例如，如果希望代码通过 Azure 资源管理器的身份验证，需要使用 resource=https://management.azure.com/。
-6. MSI VM 扩展使用自己配置的客户端 ID 和证书从 Azure AD 请求获取访问令牌。  Azure AD 返回 JSON Web 令牌 (JWT) 访问令牌。
+3. Azure 资源管理器在 VM 的 Azure 实例元数据服务中为 VM 配置服务主体详细信息。 此步骤包括配置用来从 Azure AD 获取访问令牌的客户端 ID 和证书。 *注意：MSI IMDS 终结点将替代当前的 MSI VM 扩展终结点。有关此更改的详细信息，请参阅“常见问题解答和已知问题”页*
+4. 至此，VM 的服务主体标识已知，现在可以授予 VM 对 Azure 资源的访问权限了。 例如，如果代码需要调用 Azure 资源管理器，将会在 Azure AD 中使用基于角色的访问控制 (RBAC) 向 VM 的服务主体分配相应的角色。  如果代码需要调用 Key Vault，将会授予代码对 Key Vault 中特定机密或密钥的访问权限。
+5. 在 VM 上运行的代码从 Azure 实例元数据服务 (IMDS) MSI 终结点请求令牌，只能从 VM 内访问该终结点：http://169.254.169.254/metadata/identity/oauth2/token。 resource 参数指定了要向其发送令牌的服务。 例如，如果希望代码通过 Azure 资源管理器的身份验证，需要使用 resource=https://management.azure.com/。
+6. Azure 实例元数据使用 VM 的客户端 ID 和证书从 Azure AD 请求访问令牌。 Azure AD 返回 JSON Web 令牌 (JWT) 访问令牌。
 7. 代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。
 
 为了让代码获取访问令牌，每个支持托管服务标识的 Azure 服务都有其自己的方法。 请查看各个服务的相关教程，确定用于获取令牌的具体方法。

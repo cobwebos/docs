@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: c49cfad5f362f4402be476066f0e8c0158f20d73
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
 
@@ -37,7 +37,6 @@ ms.lasthandoff: 01/29/2018
 - **Edge**：在 Windows 10 周年纪念版或更高版本上。 
 - **Chrome**：在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
-- **Internet Explorer 8、9、10、11**：Windows 7 或更高版本上（支持受限）。
 
 ## <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
 
@@ -50,7 +49,7 @@ ms.lasthandoff: 01/29/2018
 3.  出现提示时，选择“立即安装”。  
     你将被定向到所选浏览器的下载链接。 
     
-4.  选择“添加”。
+4.  选择 **添加** 。
 
 5.  如果出现提示，请**启用**或**允许**扩展。
 
@@ -65,7 +64,7 @@ ms.lasthandoff: 01/29/2018
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>使用我的应用安全登录扩展
 * 如果使用的我的应用 URL 不是 `https://myapps.microsoft.com`，请通过执行以下操作配置默认 URL：
-   1. *未*登录到该扩展时，请右键单击该扩展图标。
+   1. 未登录到该扩展时，请右键单击该扩展图标。
    2. 在菜单上，选择“我的应用 URL”。
    3. 选择默认 URL。
    4. 单击该扩展图标。
@@ -75,12 +74,12 @@ ms.lasthandoff: 01/29/2018
    1. 安装该扩展后，通过选择“登录以开始使用”登录到该扩展。
    2. 使用登录 URL 登录到应用。  
        登录 URL 通常是显示登录表单的应用的 URL。
-      该扩展应更改状态并让你知道密码可用。
-   3. 若要登录，选择该扩展图标。
+      该扩展的状态应会更改，并告知密码可用。
+   3. 若要登录，请选择扩展图标。
 
 * 若要从扩展启动应用，请执行以下操作：
    1. 安装该扩展后，通过选择“登录以开始使用”登录到该扩展。
-   2. 选择扩展图标以打开其菜单。
+   2. 选择扩展图标打开其菜单。
    3. 在“我的应用”门户中搜索可用的应用。
    4. 在搜索结果列表中，选择应用。  
        最近使用的三个应用会显示在“最近使用”快捷方式列表中。

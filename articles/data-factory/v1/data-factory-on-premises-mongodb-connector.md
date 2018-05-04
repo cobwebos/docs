@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 086cc528e500a55bba73796e5fc7b17c561de8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0afdfb7b7d1f74d3df40b22bb97afc0f39bcc6d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="prerequisites"></a>先决条件
 若要使 Azure 数据工厂服务能够连接到本地 MongoDB 数据库，必须安装以下组件：
 
-- 支持的 MongoDB 版本为：2.4、2.6、3.0 和 3.2。
+- 支持的 MongoDB 版本为：2.4、2.6、3.0、3.2、3.4 和 3.6。
 - 在托管数据库的同一计算机上安装数据管理网关，或安装在不同计算机上，以避免与数据库争用资源。 数据管理网关是一种以安全和托管的方式将本地数据源连接到云服务的软件。 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
     安装网关时，会自动安装用于连接到 MongoDB的 Microsoft MongoDB ODBC 驱动程序。

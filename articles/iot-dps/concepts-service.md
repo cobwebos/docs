@@ -1,28 +1,28 @@
 ---
-title: "Azure IoT 中心设备预配服务中的服务概念 | Microsoft Docs"
-description: "介绍服务预配概念，特定于使用 DPS 和 IoT 中心预配的设备"
+title: Azure IoT 中心设备预配服务中的服务概念 | Microsoft Docs
+description: 介绍服务预配概念，特定于使用 DPS 和 IoT 中心预配的设备
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 10/03/2017
+ms.date: 03/30/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 96c63e5d0379150ea619dbbe912a21e373f808af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2bc58514ea716954ec3ac96151549168fedc2ed
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT 中心设备预配服务概念
 
-IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式预配数百万台设备。
+IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式[自动预配](concepts-auto-provisioning.md)数百万台设备。
 
-设备预配是一个两部分过程。 第一部分是通过注册设备来建立设备和 IoT 解决方案之间的初始连接。 第二部分是根据解决方案的具体要求将适当的配置应用于设备。 只有完成这两个步骤后，我们才能说该设备已完全预配。 设备预配服务自动执行这两个步骤，为设备提供无缝的预配体验。
+设备预配是一个两部分过程。 第一部分是通过注册设备来建立设备和 IoT 解决方案之间的初始连接。 第二部分是根据解决方案的具体要求将适当的配置应用于设备。 在这两个步骤都完成后，设备已完全预配。 设备预配服务自动执行这两个步骤，为设备提供无缝的预配体验。
 
 本文概述了最适用于管理服务的预配概念。 本文与设备部署准备工作的[云设置步骤](about-iot-dps.md#cloud-setup-step)中提及的角色最为相关。
 
@@ -32,7 +32,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 ## <a name="device-provisioning-endpoint"></a>设备预配终结点
 
-设备预配终结点是所有设备与其进行通信以进行预配的中心终结点。 所有预配服务的 URL 都相同，从而无需在供应链方案中刷新具有新连接信息的设备。 [ID 范围](#id-scope)确保租户隔离。
+设备预配终结点是单一终结点，所有设备都使用它进行自动预配。 此 URL 对于所有预配服务实例都是相同 ，因而无需使用供应链方案中的新连接信息来刷新设备。 [ID 范围](#id-scope)确保租户隔离。
 
 ## <a name="linked-iot-hubs"></a>链接 IoT 中心
 
@@ -47,21 +47,27 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 ## <a name="enrollment"></a>注册
 
-注册是可能在某一时刻注册的设备或设备组的记录。 注册记录包含关于设备或设备组的信息，包括设备的证明方法，以及可选初始所需配置、所需 IoT 中心和所需设备 ID。 设备预配服务支持两种类型的注册。
+注册是指可以通过自动预配注册的设备或设备组的记录。 注册记录包含有关设备或设备组的信息，包括：
+- 设备使用的[证明机制](concepts-security.md#attestation-mechanism)
+- 可选的初始所需配置
+- 所需的 IoT 中心
+- 所需的设备 ID
+
+设备预配服务支持两种类型的注册：
 
 ### <a name="enrollment-group"></a>注册组
 
-注册组是一组共享特定证明机制的设备。 注册组中的所有设备都表示已由相同根 CA 签名的 X.509 证书。 注册组只能使用 X.509 证明机制。 注册组名称和证书名称必须是小写的字母数字，并可包含连字符。
+注册组是一组共享特定证明机制的设备。 注册组中的所有设备都提供已由同一根或中间 CA 签名的 X.509 证书。 注册组只能使用 X.509 证明机制。 注册组名称和证书名称必须是小写的字母数字，并可包含连字符。
 
 > [!TIP]
 > 建议对共享所需初始配置的大量设备，或者全部转到同一租户的设备使用注册组。
 
-### <a name="individual-enrollment"></a>单独注册
+### <a name="individual-enrollment"></a>个人注册
 
-单独注册是用于可注册的单一设备的条目。 单独注册可使用 X.509 证书或 SAS 令牌（在真实或虚拟 TPM 中）作为证明机制。 单独注册中的注册 ID 是小写的字母数字，并且可包含连字符。 单独注册可能会指定所需 IoT 中心设备 ID。
+个人注册是用于可注册的单一设备的条目。 个人注册可使用 X.509 叶证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 个人注册中的注册 ID 是小写的字母数字，并且可包含连字符。 个人注册可能会指定所需 IoT 中心设备 ID。
 
 > [!TIP]
-> 建议对需要唯一初始配置的设备或仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备使用单独注册。
+> 对于需要唯一初始配置的设备或仅能通过 TPM 证明使用 SAS 令牌进行身份验证的设备，建议为其使用个人注册。
 
 ## <a name="registration"></a>注册
 

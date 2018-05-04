@@ -36,7 +36,7 @@
 ##### [工作原理](active-directory-aadconnect-sso-how-it-works.md)
 ##### [常见问题](active-directory-aadconnect-sso-faq.md)
 ##### [故障排除](active-directory-aadconnect-troubleshoot-sso.md)
-##### [GDPR](active-directory-aadconnect-sso-gdpr.md)
+##### [用户隐私和 Azure AD 无缝单一登录](active-directory-aadconnect-sso-gdpr.md)
 #### [直通身份验证](active-directory-aadconnect-pass-through-authentication.md)
 ##### [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md)
 ##### [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
@@ -46,7 +46,7 @@
 ##### [常见问题](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ##### [深入了解安全性](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
-##### [GDPR](active-directory-aadconnect-pass-through-authentication-gdpr.md)
+##### [用户隐私和 Azure Active Directory 直通身份验证](active-directory-aadconnect-pass-through-authentication-gdpr.md)
 ### [对联合的多域支持](active-directory-aadconnect-multiple-domains.md)
 ### [自动升级](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [将 SAML 2.0 标识提供者 (IdP) 用于单一登录](active-directory-aadconnect-federation-saml-idp.md)
@@ -54,7 +54,8 @@
 
 
 ## 管理 Azure AD Connect Sync
-### [GDPR 符合性和 Azure AD Connect](active-directory-aadconnect-gdpr.md)
+### [用户隐私和 Azure AD Connect](active-directory-aadconnect-gdpr.md)
+### [O365 资源的首选数据位置](active-directory-aadconnectsync-feature-preferreddatalocation.md)
 ### [防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)
 ### [Azure AD 服务帐户](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -91,7 +92,7 @@
 ### [如何从 LocalDB 10 GB 的限制恢复](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [标识同步和重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [混合标识所需的端口和协议](active-directory-aadconnect-ports.md)
 ## [预览版功能](active-directory-aadconnect-feature-preview.md)

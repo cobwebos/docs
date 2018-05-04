@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: cc36fdde962ec44d679dc0e96f440b0437a84fa8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4d6177fe0a50c531ba6c4b3e87eaa08299af2ddd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>使用 Microsoft Azure 导入/导出服务将数据传输到 Azure 存储中
 本文分步介绍如何使用 Azure 导入/导出服务将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure 存储传输到硬盘驱动器，然后再寄送到本地站点。 可将单个内部 SATA 磁盘驱动器中的数据导入 Azure Blob 存储或 Azure 文件。 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/23/2018
 2.  根据数据的总大小，采购所需数目的 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 硬盘驱动器。
 3.  直接使用 SATA 或通过外部 USB 适配器将硬盘驱动器附加到 Windows 计算机。
 1.  在每个硬盘驱动器上创建一个 NTFS 卷，并向该卷分配一个驱动器号。 没有装入点。
-2.  若要在 Windows 计算机上启用加密，请启用 NTFS 卷上的 bit locker 加密。 请使用 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx 中的说明。
+2.  若要在 Windows 计算机上启用加密，请启用 NTFS 卷上的 bit locker 加密。 请使用 https://technet.microsoft.com/library/cc731549(v=ws.10).aspx 中的说明。
 3.  使用复制粘贴或拖放操作，或使用 RoboCopy 或任何类似的工具将数据完全复制到磁盘上这些加密的 NTFS 卷。
 7.  从 https://www.microsoft.com/en-us/download/details.aspx?id=42659 下载 WAImportExport V1
 8.  解压缩到默认文件夹 waimportexportv1。 例如，C:\WaImportExportV1  
@@ -560,7 +560,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 默认情况下，Azure 导入/导出服务使用 AES 128 BitLocker 加密进行加密，但在复制数据前，可以使用 BitLocker 进行手动加密，从而将加密提升为 AES 256。 
 
-如果使用的是 [WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip)，下面展示了示例命令
+如果使用的是 [WAImportExport V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip)，下面展示了示例命令
 ```
 WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
 ```

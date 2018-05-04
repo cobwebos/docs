@@ -1,8 +1,8 @@
 ---
-title: "使用 Apache Kafka 生成者和使用者 API - Azure HDInsight | Microsoft Docs"
-description: "了解如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 可以使用这些 API 开发向 Apache Kafka 中进行写入以及从中进行读取的应用程序。"
+title: 使用 Apache Kafka 生成者和使用者 API - Azure HDInsight | Microsoft Docs
+description: 了解如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 可以使用这些 API 开发向 Apache Kafka 中进行写入以及从中进行读取的应用程序。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -12,14 +12,14 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/18/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: b57745d6bd993a993e923c964327d9071e745413
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 01592401c4c88adeed49b11df4e7963e27b1bcee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-kafka-producer-and-consumer-apis"></a>Apache Kafka 生成者和使用者 API
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 01/20/2018
 
 ## <a id="run"></a> 运行示例
 
-1. 若要打开到群集的 SSH 连接，请使用以下命令：
+1. 若要与群集建立 SSH 连接，请使用以下命令：
 
     ```bash
     ssh SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net

@@ -1,12 +1,12 @@
 ---
-title: "Azure 虚拟机的多个 IP 地址 - 模板 | Microsoft Docs"
-description: "了解如何使用 Azure Resource Manager 模板将多个 IP 地址分配给虚拟机。"
-documentationcenter: 
+title: Azure 虚拟机的多个 IP 地址 - 模板 | Microsoft Docs
+description: 了解如何使用 Azure 资源管理器模板将多个 IP 地址分配给虚拟机。
+documentationcenter: ''
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,22 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板将多个 IP 地址分配给虚拟机
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板将多个 IP 地址分配给虚拟机
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-本文介绍如何使用 Resource Manager 模板通过 Azure Resource Manager 部署模型创建虚拟机 (VM)。 通过经典部署模型部署 VM 时，不能将多个公共和专用 IP 地址分配给同一 NIC。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../resource-manager-deployment-model.md)（了解部署模型）一文。
+本文介绍如何使用资源管理器模板通过 Azure 资源管理器部署模型创建虚拟机 (VM)。 通过经典部署模型部署 VM 时，不能将多个公共和专用 IP 地址分配给同一 NIC。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../resource-manager-deployment-model.md)（了解部署模型）一文。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name="template-description"></a>模板说明
 
-部署模板后，即可使用不同配置值快速且一致地创建 Azure 资源。 如果不熟悉 Azure Resource Manager 模板，请阅读 [Resource Manager 模板演练](../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 本文使用[部署具有多个 IP 地址的 VM](https://azure.microsoft.com/resources/templates/101-vm-multiple-ipconfig) 模板。
+部署模板后，即可使用不同配置值快速且一致地创建 Azure 资源。 如果不熟悉 Azure 资源管理器模板，请阅读[资源管理器模板演练](../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 本文使用[部署具有多个 IP 地址的 VM](https://azure.microsoft.com/resources/templates/101-vm-multiple-ipconfig) 模板。
 
 <a name="resources"></a>部署模板时，会创建以下资源：
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 
 若要使用 Azure 门户部署模板，请完成以下步骤：
 
-1. 根据需要修改模板。 模板部署本文的[资源](#resources)部分列出的资源和设置。 若要详细了解模板及其创作方法，请阅读[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
+1. 根据需要修改模板。 模板部署本文的[资源](#resources)部分列出的资源和设置。 若要详细了解模板及其创作方法，请阅读[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
 2. 使用以下方法之一部署模板：
     - **在门户中选择模板：**完成[从自定义模板部署资源](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)一文中的步骤。 选择名为 *101-vm-multiple-ipconfig* 的预先存在的模板。
     - **直接：**单击下面的按钮，在门户中直接打开模板：<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
@@ -76,7 +76,7 @@ ms.lasthandoff: 10/11/2017
 
 若要使用 PowerShell 部署模板，请完成以下步骤：
 
-1. 通过完成[使用 PowerShell 部署模板](../azure-resource-manager/resource-group-template-deploy-cli.md)一文中的步骤来部署模板。 本文介绍多个用于部署模板的选项。 如果选择使用 `-TemplateUri parameter` 部署，则此模板的 URI 为 *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*。 如果选择通过 `-TemplateFile` 参数进行部署，可将[模板文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json)的内容从 GitHub 复制到计算机的新文件中。 根据需要修改模板内容。 模板部署本文的[资源](#resources)部分列出的资源和设置。 若要详细了解模板及其创作方法，请阅读[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)一文。
+1. 通过完成[使用 PowerShell 部署模板](../azure-resource-manager/resource-group-template-deploy-cli.md)一文中的步骤来部署模板。 本文介绍多个用于部署模板的选项。 如果选择使用 `-TemplateUri parameter` 部署，则此模板的 URI 是 *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*。 如果选择通过 `-TemplateFile` 参数进行部署，可将[模板文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json)的内容从 GitHub 复制到计算机的新文件中。 根据需要修改模板内容。 模板部署本文的[资源](#resources)部分列出的资源和设置。 若要详细了解模板及其创作方法，请阅读[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)一文。
 
     不管选择哪个选项来部署模板，都必须为本文[参数](#parameters)部分列出的参数提供值。 如果选择使用参数文件提供参数，请将[参数文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)的内容从 GitHub 复制到计算机上的新文件中。 修改文件中的值。 使用所创建的文件作为 `-TemplateParameterFile` 参数的值。
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 10/11/2017
 
 若要使用 Azure CLI 1.0 部署模板，请完成以下步骤：
 
-1. 通过完成[使用 Azure CLI 部署模板](../azure-resource-manager/resource-group-template-deploy-cli.md)一文中的步骤来部署模板。 本文介绍多个用于部署模板的选项。 如果选择使用 `--template-uri` (-f) 部署，则此模板的 URI 为 *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*。 如果选择通过 `--template-file` (-f) 参数进行部署，则可将[模板文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json)的内容从 GitHub 复制到计算机的新文件中。 根据需要修改模板内容。 模板部署本文的[资源](#resources)部分列出的资源和设置。 若要详细了解模板及其创作方法，请阅读[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)一文。
+1. 通过完成[使用 Azure CLI 部署模板](../azure-resource-manager/resource-group-template-deploy-cli.md)一文中的步骤来部署模板。 本文介绍多个用于部署模板的选项。 如果选择使用 `--template-uri` (-f) 部署，则此模板的 URI 是 *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*。 如果选择通过 `--template-file` (-f) 参数进行部署，则可将[模板文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json)的内容从 GitHub 复制到计算机的新文件中。 根据需要修改模板内容。 模板部署本文的[资源](#resources)部分列出的资源和设置。 若要详细了解模板及其创作方法，请阅读[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)一文。
 
     不管选择哪个选项来部署模板，都必须为本文[参数](#parameters)部分列出的参数提供值。 如果选择使用参数文件提供参数，请将[参数文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)的内容从 GitHub 复制到计算机上的新文件中。 修改文件中的值。 使用所创建的文件作为 `--parameters-file` (-e) 参数的值。
 

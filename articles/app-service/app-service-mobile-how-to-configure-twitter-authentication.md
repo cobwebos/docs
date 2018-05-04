@@ -1,24 +1,24 @@
 ---
-title: "如何为应用服务应用程序配置 Twitter 身份验证"
-description: "了解如何为应用服务应用程序配置 Twitter 身份验证。"
+title: 如何为应用服务应用程序配置 Twitter 身份验证
+description: 了解如何为应用服务应用程序配置 Twitter 身份验证。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: mattchenderson
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: afde020b7817dc58ecea24eb4a09cf93d0986eb2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6449f99fda9c1a612ed9f9134751ff76b25904c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>如何将应用服务应用程序配置为使用 Twitter 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
    
    默认情况下，应用服务提供身份验证但不限制对站点内容和 API 的已授权访问。 必须在应用代码中为用户授权。
 4. （可选）要限制只有通过 Twitter 帐户身份验证的用户可以访问站点，请将“请求未经身份验证时需执行的操作”设置为“Twitter”。 这会要求对所有请求进行身份验证，而所有未经身份验证的请求会被重定向到 Twitter 进行身份验证。
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 
 现在，可以在应用中使用 Twitter 进行身份验证了。
 

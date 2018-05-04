@@ -1,8 +1,8 @@
 ---
-title: "对 Azure 存储进行监视、诊断和故障排除 | Microsoft Docs"
-description: "使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。"
+title: 对 Azure 存储进行监视、诊断和故障排除 | Microsoft Docs
+description: 使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: fhryo-msft
 manager: jahogg
 editor: tysonn
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.openlocfilehash: b89071048594e1e11efb321da3d0b48005824b46
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -474,7 +474,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 | Source | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |Starting synchronous request to https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14. |
+| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |开始向 https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14 发出同步请求。 |
 | Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |正在等待响应。 |
 | Microsoft.WindowsAzure.Storage |警告 |2 |85d077ab -… |在等待响应时引发了异常：远程服务器返回了错误：(403) 禁止访问。 |
 | Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |收到响应。 状态代码 = 403，请求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = 。 |
@@ -519,24 +519,24 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 | 请求 ID | 操作文本 |
 | --- | --- |
-| 07b26a5d-... |Starting synchronous request to https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
+| 07b26a5d-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出同步请求。 |
 | 07b26a5d-... |StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |正在等待响应。 |
 | 07b26a5d-... |收到响应。 Status code = 200, Request ID = eeead849-...Content-MD5 = , ETag =    &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | 07b26a5d-... |正在下载响应正文。 |
 | 07b26a5d-... |操作已成功完成。 |
-| 07b26a5d-... |Starting synchronous request to https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
+| 07b26a5d-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出同步请求。 |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |正在等待响应。 |
 | 07b26a5d-... |收到响应。 状态代码 = 202，请求 ID = 6ab2a4cf-...，Content-MD5 = ，ETag = 。 |
 | 07b26a5d-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | 07b26a5d-... |正在下载响应正文。 |
 | 07b26a5d-... |操作已成功完成。 |
-| e2d06d78-... |Starting asynchronous request to https://domemaildist.blob.core.windows.net/azuremmblobcontainer.</td> |
+| e2d06d78-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出异步请求。</td> |
 | e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |正在等待响应。 |
-| de8b1c3c-... |Starting synchronous request to https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt. |
+| de8b1c3c-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt 发出同步请求。 |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |正在准备写入请求数据。 |
 | e2d06d78-... |在等待响应时引发的异常：远程服务器返回了错误：(404) 未找到... |
@@ -544,7 +544,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 | e2d06d78-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | e2d06d78-... |正在下载响应正文。 |
 | e2d06d78-... |操作已成功完成。 |
-| e2d06d78-... |Starting asynchronous request to https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
+| e2d06d78-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出异步请求。 |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |正在等待响应。 |
 | de8b1c3c-... |正在写入请求数据。 |
@@ -794,7 +794,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 有关 Microsoft Message Analyzer 本地链路层跟踪的详细信息，请参阅 [Microsoft-PEF-NDIS-PacketCapture Provider](http://technet.microsoft.com/library/jj659264.aspx)（Microsoft-PEF-NDIS-PacketCapture 提供程序）。
 
 ### <a name="appendix-4"></a>附录 4：使用 Excel 查看指标和日志数据
-使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，需要基于“存储分析日志格式”和“存储分析度量表架构”中的信息添加相应的列标题。[](http://msdn.microsoft.com/library/azure/hh343259.aspx)[](http://msdn.microsoft.com/library/azure/hh343264.aspx)
+使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，需要基于[存储分析日志格式](http://msdn.microsoft.com/library/azure/hh343259.aspx)和[存储分析度量表架构](http://msdn.microsoft.com/library/azure/hh343264.aspx)中的信息添加相应的列标题。
 
 要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 

@@ -1,26 +1,26 @@
 ---
-title: "在 HDInsight 中将 Hadoop Pig 与 REST 配合使用 — Azure | Microsoft Docs"
-description: "了解如何使用 REST 在 Azure HDInsight 中的 Hadoop 群集上运行 Pig Latin 作业。"
+title: 在 HDInsight 中将 Hadoop Pig 与 REST 配合使用 — Azure | Microsoft Docs
+description: 了解如何使用 REST 在 Azure HDInsight 中的 Hadoop 群集上运行 Pig Latin 作业。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: ed5e10d1-4f47-459c-a0d6-7ff967b468c4
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: c2c441d92607a017b4451cd8a06fb78a5e8e7135
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4883794261116abf4925e7e4e9a8df14626c7a71
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>使用 REST 通过 HDInsight 上的 Hadoop 运行 Pig 作业
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/18/2018
     * **-u**：用于对请求进行身份验证的用户名和密码
     * **-G**：指示此请求是 GET 请求
 
-     所有请求的 URL 开头都是 **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**。 路径 **/status** 指示请求是要返回服务器的 WebHCat（也称为 Templeton）状态。
+     URL 的开头 (**https://CLUSTERNAME.azurehdinsight.net/templeton/v1**) 对于所有请求都是相同的。 路径 **/status** 指示请求是要返回服务器的 WebHCat（也称为 Templeton）状态。
 
 2. 使用以下代码将 Pig Latin 作业提交到群集：
 

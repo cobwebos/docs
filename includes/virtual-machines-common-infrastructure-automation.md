@@ -62,7 +62,7 @@ Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 y
 
 
 ## <a name="powershell-dsc"></a>PowerShell DSC
-[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) 是一个管理平台，用于定义目标计算机的配置。 也可通过 [Open Management Infrastructure (OMI) 服务器](https://collaboration.opengroup.org/omi/)在 Linux 上使用 DSC。
+[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) 是一个管理平台，用于定义目标计算机的配置。 也可通过 [Open Management Infrastructure (OMI) 服务器](https://collaboration.opengroup.org/omi/)在 Linux 上使用 DSC。
 
 DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 本地配置管理器 (LCM) 引擎在每个目标节点上运行，此类节点根据推送的配置处理请求的操作。 拉取服务器是一项在中心主机上运行的 Web 服务，用于存储 DSC 配置和关联的资源。 该拉取服务器与每个目标主机上的 LCM 引擎通信，提供所需的配置并报告符合性情况。
 

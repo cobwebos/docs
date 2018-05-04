@@ -1,6 +1,6 @@
 ---
-title: "如何将 Azure Blob 存储装载为 Linux 上的文件系统 | Microsoft Docs"
-description: "使用 FUSE 在 Linux 上装载 Azure Blob 存储容器"
+title: 如何将 Azure Blob 存储装载为 Linux 上的文件系统 | Microsoft Docs
+description: 使用 FUSE 在 Linux 上装载 Azure Blob 存储容器
 services: storage
 documentationcenter: linux
 author: seguler
@@ -10,11 +10,11 @@ ms.devlang: bash
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: seguler
-ms.openlocfilehash: 299b96c783fb3606347bb448d00d44f0071da429
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 44b0c36ad366d50480212adff9cdb8b10a17db05
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse-preview"></a>如何使用 Blobfuse（预览）将 Blob 存储装载为文件系统
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/23/2018
 本指南介绍如何使用 Blobfuse，以及如何在 Linux 上装载 Blob 存储容器并访问数据。 若要详细了解 Blobfuse，请阅读 [Blobfuse 存储库](https://github.com/Azure/azure-storage-fuse)中的详细信息。
 
 > [!WARNING]
-> Blobfuse 不保证 100% 的 POSIX 符合性，因为它只是将请求转换成 [Blob REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api)。 例如，重命名操作在 POSIX 中是原子操作，但在 Blobfuse 中不是。
+> Blobfuse 不保证 100% 的 POSIX 符合性，因为它只是将请求转换成 [Blob REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)。 例如，重命名操作在 POSIX 中是原子操作，但在 Blobfuse 中不是。
 > 有关本机文件系统和 Blobfuse 之间差异的完整列表，请访问 [Blobfuse 源代码存储库](https://github.com/azure/azure-storage-fuse)。
 > 
 

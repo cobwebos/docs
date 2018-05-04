@@ -9,18 +9,18 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: cfad53a3f86450163b2e29d5e4d4ed2726ecb0bc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fe3864c3f765ff4858deede798d5641a55dd8aef
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>将 Azure Active Directory 身份验证与 SQL 数据库、托管实例或 SQL 数据仓库结合使用
 Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) 中的标识连接到 Microsoft Azure SQL 数据库和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。 通过 Azure AD 身份验证，可以在一个中心位置中集中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供一个单一位置来管理数据库用户，并简化权限管理。 包括如下优点：
 
 * 提供一个 SQL Server 身份验证的替代方法。
 * 帮助阻止用户标识在数据库服务器之间激增。
-* 允许在单一位置中轮换密码
+* 允许在单一位置中轮换密码。
 * 客户可以使用外部 (Azure AD) 组管理数据库权限。
 * 它可以通过启用集成的 Windows 身份验证和 Azure Active Directory 支持的其他形式的身份验证来消除存储密码。
 * Azure AD 身份验证使用包含的数据库用户以数据库级别对标识进行身份验证。
@@ -75,7 +75,7 @@ Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) �
 - 只有 Azure AD 管理员才能创建数据库，Azure AD 用户的作用域为单个数据库，并且不具有此权限
 - 数据库所有权：
   - Azure AD 主体不能更改数据库（更改数据库授权）的所有权，并且不能设为所有者。
-  - 由 Azure AD 管理员创建的数据库不设置所有权（sys.sysdatabases 中的 owner_sid 字段为 0x1）
+  - 由 Azure AD 管理员创建的数据库不设置所有权（sys.sysdatabases 中的 owner_sid 字段为 0x1）。
 - 使用 Azure AD 主体登录时，无法管理 SQL 代理。 
 - 使用 EXECUTE AS 不能模拟 Azure AD 管理员
 - Azure AD 主体不支持 DAC 连接。 

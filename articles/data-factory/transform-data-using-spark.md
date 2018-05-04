@@ -3,21 +3,20 @@ title: 在 Azure 数据工厂中使用 Spark 活动转换数据 | Microsoft Docs
 description: 了解如何通过使用 Spark 活动从 Azure 数据工厂管道运行 Spark 程序来转换数据。
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 3b877a9ae8fe58314171c8b556a7005e98dc3a33
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: 52b6489d14c016ce2efdd06614102a40651b94c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +26,7 @@ ms.lasthandoff: 03/23/2018
 数据工厂[管道](concepts-pipelines-activities.md)中的 Spark 活动在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Spark 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 使用按需的 Spark 链接服务时，数据工厂会自动为你实时创建用于处理数据的 Spark 群集，然后在处理完成后删除群集。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的 Spark 活动](v1/data-factory-spark.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的 Spark 活动](v1/data-factory-spark.md)。
 
 > [!IMPORTANT]
 > Spark 活动不支持那些使用 Azure Data Lake Store 作为主存储的 HDInsight Spark 群集。

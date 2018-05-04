@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4cf77a2267cd2a49a873c1a1c742dc4205cad29a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a9a4f7b19d6ef08562d17474e252ce72fd0977dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-data-factory-issues"></a>排查数据工厂问题
 > [!NOTE]
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/23/2018
 2. 使用以下命令登录到 Azure 帐户。
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. 运行以下命令来注册 Azure 数据工厂提供程序。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/23/2018
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>问题：运行数据工厂 cmdlet 时出现未授权错误
 可能未在 Azure PowerShell 中使用正确的 Azure 帐户或订阅。 使用以下 cmdlet 选择要在 Azure PowerShell 中使用的正确 Azure 帐户和订阅。
 
-1. Login-AzureRmAccount - 使用正确的用户 ID 和密码
+1. Connect-AzureRmAccount - 使用正确的用户 ID 和密码
 2. Get-AzureRmSubscription - 查看帐户的所有订阅。
 3. Select-AzureRmSubscription &lt;订阅名称&gt; - 选择正确的订阅。 使用在 Azure 门户中创建数据工厂时所用的同一个订阅。
 

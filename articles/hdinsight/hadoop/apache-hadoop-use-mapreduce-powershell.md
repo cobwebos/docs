@@ -1,8 +1,8 @@
 ---
-title: "将 MapReduce 和 PowerShell 与 Hadoop 配合使用 — Azure HDInsight | Microsoft Docs"
-description: "了解如何使用 PowerShell 在 HDInsight 上的 Hadoop 上远程运行 MapReduce 作业。"
+title: 将 MapReduce 和 PowerShell 与 Hadoop 配合使用 — Azure HDInsight | Microsoft Docs
+description: 了解如何使用 PowerShell 在 HDInsight 上的 Hadoop 上远程运行 MapReduce 作业。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 21b56d32-1785-4d44-8ae8-94467c12cfba
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: larryfr
-ms.openlocfilehash: ba4a2dfc6a69e9ab18948bc9e33597a56bdd3bd9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 01dd31c1dfd9a91483c0ac9eaca1c80410463731
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>使用 PowerShell 在 HDInsight 上的 Hadoop 上运行 MapReduce 作业
 
@@ -43,7 +41,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
 在远程 HDInsight 群集上运行 MapReduce 作业时，将使用以下 Cmdlet。
 
-* **Login-AzureRmAccount**：在 Azure 订阅中进行 Azure PowerShell 身份验证。
+* **Connect-AzureRmAccount**：在 Azure 订阅中进行 Azure PowerShell 身份验证。
 
 * **New-AzureRmHDInsightMapReduceJobDefinition**：使用指定的 MapReduce 信息创建新的*作业定义*。
 

@@ -6,14 +6,14 @@ author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: f02311026e3f28d4cf41dfe9b155f928885ae938
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1eecd28d5e7043acae5cfd52edf93e8d301bd31e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
 
@@ -79,4 +79,4 @@ ms.lasthandoff: 03/16/2018
 ## <a name="next-steps"></a>后续步骤
 
 - 有关托管实例的信息，请参阅[什么是托管实例](sql-database-managed-instance.md)。
-- 有关教程，请参阅[创建托管实例](sql-database-managed-instance-tutorial-portal.md)。
+- 有关演示如何新建托管实例的教程，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)。

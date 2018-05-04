@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 0d67bf5625ee9037c5ec152c8ce8564235018e8e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b4fe1151337dc6f5874e6ad102c6e905e90fd963
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for PostgreSQL 中备份和还原服务器
 
@@ -81,6 +81,10 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
 
 2. 在窗体的“选择源”下拉列表中，选择“备份”。 此操作将加载已启用异地冗余备份的服务器列表。 选择这些备份之一作为新服务器的源。
    ![选择源：备份和异地冗余备份的列表](./media/howto-restore-server-portal/2-georestore.png)
+
+   > [!NOTE]
+   > 首次创建服务器时，该服务器可能不会立即可用于异地还原。 填充必需的元数据可能需要几个小时。
+   >
 
 3. 根据需要填写窗体的其余部分。 可以选择任意**位置**。 选择位置后，可以选择**定价层**。 默认情况下将显示要从中还原的现有服务器的参数。 可以单击“确定”，以不进行任何更改继承这些设置。 也可以更改**计算的代**（如果在所选区域中可用）、**vCore** 数、**备份保留期**和**备份冗余选项**。 不支持在还原过程中更改**定价层**（“基本”、“常规用途”或“内存优化”）或**存储**大小。
 

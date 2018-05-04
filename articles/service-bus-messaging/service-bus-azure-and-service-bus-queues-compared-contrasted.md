@@ -1,11 +1,11 @@
 ---
-title: "Azure 存储队列和服务总线队列比较 | Microsoft 文档"
-description: "分析 Azure 提供的两种队列类型之间的差异和相似性。"
+title: Azure 存储队列和服务总线队列比较 | Microsoft 文档
+description: 分析 Azure 提供的两种队列类型之间的差异和相似性。
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/08/2017
 ms.author: sethm
-ms.openlocfilehash: d564f3974b2bc6355bb5dc5320a5193fe3c196af
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b1919037e3a112659a81e9207c842c279734fb48
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>存储队列和服务总线队列 - 比较与对照
 本文分析 Microsoft Azure 目前提供的以下两种队列类型之间的差异和相似：存储队列和服务总线队列。 通过使用该信息，可以比较和对照这两种技术，并可以明智地决定哪种解决方案最符合需要。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 Azure 支持两种队列机制：**存储队列**和**服务总线队列**。
 
 存储队列是 [Azure 存储](https://azure.microsoft.com/services/storage/)基础结构的一部分，具有简单的基于 REST 的 GET/PUT/PEEK 接口，可在服务内部和服务之间提供可靠、持久的消息传送。
@@ -39,7 +39,7 @@ Azure 支持两种队列机制：**存储队列**和**服务总线队列**。
 
 作为解决方案架构师/开发人员，在以下情况下，**应考虑使用存储队列**：
 
-* 应用程序需要在队列中存储超过 80 GB 的消息，这些消息的生存期不到 7 天。
+* 应用程序必须在队列中存储超过 80 GB 的消息。
 * 应用程序需要跟踪队列内部消息的处理进度。 这在处理消息的工作线程发生崩溃时很有用。 然后，后续的工作线程可以使用该信息从之前的工作线程停止处继续。
 * 要求在服务器端记录针对队列执行的所有事务。
 
@@ -51,7 +51,6 @@ Azure 支持两种队列机制：**存储队列**和**服务总线队列**。
 * 解决方案必须能够支持自动重复检测。
 * 希望应用程序将消息作为长时间运行的并行流进行处理（使用消息的 [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) 属性，将消息与流相关联）。 在这种模式下，消费应用程序中的每个节点将竞争流而不是消息。 当流被提供给某个消费节点时，该节点可以使用事务检查应用程序流的状态。
 * 解决方案在发送或接收来自队列的多个消息时，需要事务行为和原子性。
-* 应用程序特定的工作负荷的生存时间 (TTL) 特性超过 7 天的期限。
 * 应用程序处理的消息介于 64 KB 和 256 KB 之间。
 * 需要向队列提供基于角色的访问模型，为发送者和接收者提供不同权限。
 * 队列大小不会增长到超过 80 GB。
@@ -133,7 +132,7 @@ Azure 支持两种队列机制：**存储队列**和**服务总线队列**。
 | --- | --- | --- |
 | 最大队列大小 |**500 TB**<br/><br/>（限制为[单个存储帐户容量](../storage/common/storage-introduction.md#queue-storage)） |**1 GB 到 80 GB**<br/><br/>（在创建队列和[启用分区](service-bus-partitioning.md)时定义 – 请参阅“其他信息”部分） |
 | 最大消息大小 |**64 KB**<br/><br/>（使用 **Base64** 编码时为 48 KB）<br/><br/>Azure 可以通过合并队列和 Blob 支持大消息 – 单个项目排队的消息最多达到 200 GB。 |**256 KB** 或 **1 MB**<br/><br/>（包含标题和正文，最大标题大小：64 KB）。<br/><br/>取决于[服务层](service-bus-premium-messaging.md)。 |
-| 最大消息 TTL |**7 天** |**TimeSpan.Max** |
+| 最大消息 TTL |**无限**（从 api-version 2017-07-27 开始） |**TimeSpan.Max** |
 | 最大队列数 |**不受限制** |**10,000**<br/><br/>（按服务命名空间） |
 | 并发客户端的最大数目 |**不受限制** |**不受限制**<br/><br/>（100 个并发连接限制仅适用于基于 TCP 协议的通信） |
 

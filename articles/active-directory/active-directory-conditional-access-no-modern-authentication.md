@@ -1,25 +1,25 @@
 ---
-title: "为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online | Microsoft Docs"
-description: "了解如何为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online。"
+title: 为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online | Microsoft Docs
+description: 了解如何为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 62349fba-3cc0-4ab5-babe-372b3389eff6
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 04/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c527d4511ab2dd3bb349c10c1defb24723fef59a
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: aff37c4b440fe545ba69a409b9dcd83deabf7660
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online 
 
@@ -180,7 +180,11 @@ ms.lasthandoff: 01/16/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)
+有关详细信息，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)。
+
+有关配置声明规则的说明，请参阅[配置声明规则](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-claim-rules)。 
+
+
 
 
 

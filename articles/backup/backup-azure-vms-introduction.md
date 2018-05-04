@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk
-ms.openlocfilehash: 47d5da880f47831274fe05817ac9c488464d3096
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: markgal;trinadhk;sogup
+ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>在 Azure 中计划 VM 备份基础结构
 本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-arm-vms-prepare.md)，请首先进行此规划，再开始[备份 VM](backup-azure-arm-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。
@@ -99,7 +99,8 @@ Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序
 
 * 花费在[安装或更新备份扩展](backup-azure-arm-vms.md)上的时间。
 * 快照时间，即触发某个快照所花费的时间。 在接近计划的备份时间时，会触发快照。
-* 队列等待时间。 由于备份服务要处理来自多个客户的备份，可能不会立即将备份数据从快照复制到备份或恢复服务保管库。 在负载高峰期，由于要处理的备份数过多，等待时间可能会长达 8 小时。 但是，每日备份策略规定的 VM 备份总时间不会超过 24 小时。
+* 队列等待时间。 由于备份服务要处理来自多个客户的备份，可能不会立即将备份数据从快照复制到备份或恢复服务保管库。 在负载高峰期，由于要处理的备份数过多，等待时间可能会长达 8 小时。 但是，每日备份策略规定的 VM 备份总时间不会超过 24 小时。 <br>
+**这仅对增量备份有效，对第一个备份无效。第一个备份的时间是成比例的，可能大于 24 小时，具体取决于数据大小和创建备份的时间。**
 * 数据传输时间，备份服务计算上一备份中的增量更改并将更改传输到保管库存储所需的时间。
 
 ### <a name="why-am-i-observing-longer12-hours-backup-time"></a>为什么会看到较长的备份时间（超过 12 个小时）？

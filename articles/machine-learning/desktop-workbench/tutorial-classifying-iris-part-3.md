@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 0b56b15af7c573304db9a1b6e6e9f37453a63458
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8eb6470afb44ba1b41e0077a890a36601db5387e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>教程 3：鸢尾花分类：部署模型
 Azure 机器学习（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -120,7 +120,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 现在可以准备环境来操作化模型。
 
-## <a name="prepare-to-operationalize-locally"></a>在本地准备操作化
+## <a name="prepare-to-operationalize-locally-for-development-and-testing-your-service"></a>在本地准备操作化[适用于开发以及服务测试]
 使用“本地模式”部署在本地计算机上的 Docker 容器中运行。
 
 可以使用“本地模式”进行开发和测试。 若要完成以下步骤来操作化模型，必须在本地运行 Docker 引擎。 可以在每个命令尾部使用 `-h` 标志来显示相应的帮助消息。
@@ -257,7 +257,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    docker ps
    ```
 
-## <a name="create-a-real-time-web-service-by-using-separate-commands"></a>使用单独的命令创建实时 Web 服务
+## <a name="optional-alternative-create-a-real-time-web-service-by-using-separate-commands"></a>[可选替代项] 使用单独的命令创建实时 Web 服务
 除了前面所示的 az ml service create realtime 命令以外，还可以单独执行这些步骤。 
 
 先注册模型， 再生成清单，然后生成 Docker 映像，最后创建 Web 服务。 这种循序渐进的方法能够更灵活地控制每个步骤。 此外，可以重复使用前述步骤生成的实体，仅当需要时才重新生成实体。

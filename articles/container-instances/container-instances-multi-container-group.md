@@ -3,17 +3,17 @@ title: 在 Azure 容器实例中部署多容器组
 description: 了解如何在 Azure 容器实例中部署包含多个容器的容器组。
 services: container-instances
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 58fd4c18df5ec0a5d02be0e6e89cb2b4af26b20e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8cbf379e167f854d495704bc0919789dcbafd8e1
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="deploy-a-container-group"></a>部署容器组
 
@@ -34,7 +34,15 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
   "variables": {
     "container1name": "aci-tutorial-app",
     "container1image": "microsoft/aci-helloworld:latest",
@@ -43,7 +51,7 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
   },
   "resources": [
     {
-      "name": "myContainerGroup",
+      "name": "[parameters('containerGroupName')]",
       "type": "Microsoft.ContainerInstance/containerGroups",
       "apiVersion": "2018-04-01",
       "location": "[resourceGroup().location]",
@@ -102,13 +110,13 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
   "outputs": {
     "containerIPv4Address": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', 'myContainerGroup')).ipAddress.ip]"
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
     }
   }
 }
 ```
 
-若要使用专用容器映像注册表，请采用以下格式向 JSON 文档添加对象。
+若要使用专用容器映像注册表，请采用以下格式向 JSON 文档添加对象。 有关此配置的示例实现，请参阅 [ACI 资源管理器模板引用][template-reference]文档。
 
 ```json
 "imageRegistryCredentials": [
@@ -131,7 +139,7 @@ az group create --name myResourceGroup --location eastus
 使用 [az group deployment create][az-group-deployment-create] 命令部署模板。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --name myContainerGroup --template-file azuredeploy.json
+az group deployment create --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
 将在几秒钟内收到来自 Azure 的初始响应。
@@ -210,3 +218,4 @@ Connection: keep-alive
 [az-container-show]: /cli/azure/container#az_container_show
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-deployment-create]: /cli/azure/group/deployment#az_group_deployment_create
+[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups

@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c0db53a8eadefe661837ab0dbc84fd2eb4bf6057
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 98f20e8a185e1c36f4114d3a196db61a9dccc3c9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用
 
@@ -132,6 +132,10 @@ az sql server create --name <server_name> --resource-group myResourceGroup --loc
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
+
+> [!TIP] 
+> 甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](app-service-ip-addresses.md#find-outbound-ips)。
+>
 
 ### <a name="create-a-database"></a>创建数据库
 

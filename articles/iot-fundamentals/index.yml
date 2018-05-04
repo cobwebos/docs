@@ -1,0 +1,102 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure IoT 基础
+metadata:
+  title: Azure IoT 基础
+  description: Azure IoT 是 Microsoft 托管的云服务的集合，这些服务用于连接、监视和控制数十亿个物联网资产。
+  services: iot
+  author: BryanLa
+  manager: timlt
+  ms.service: iot
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/20/2018
+  ms.author: bryanla
+  ms.openlocfilehash: a86827616c96dd877a88fdd89cb5b0205c2cface
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/28/2018
+abstract:
+  description: 欢迎使用 Microsoft Azure 与物联网 (IoT)。 Azure IoT 汇集了各种服务和解决方案，专用于在 Azure 上创建端到端 IoT 应用程序。 Azure IoT 提供各种适合行业需求以及公司技能和资源的选项和工具，既有完全承载和托管的软件即服务 (SaaS) 解决方案，又有独特且专用的平台即服务 (PaaS) 产品/服务，还有构建智能边缘所需的技术。
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 浏览以下快速入门文章，轻松/快速地了解 Azure IoT
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-central/quick-deploy-iot-central">了解如何创建新的 Azure IoT 中心应用程序</a>。
+    - html: <a href="/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started">了解如何创建 IoT 中心并将第一个模拟设备连接到 Azure (Node.js)</a>。
+    - html: <a href="/azure/iot-edge/quickstart-linux">在 Windows、Linux 或 Mac 的模拟设备上部署第一个 IoT Edge 模块并处理数据</a>。
+    - html: <a href="/azure/location-based-services/quick-demo-map-app">启动使用 Azure Location Based Services（预览版）的地图搜索应用</a>。
+    - html: <a href="/azure/time-series-insights/time-series-quickstart">探索时序见解</a>。
+- title: 技术和解决方案
+  items:
+  - type: paragraph
+    text: 通过预配置的解决方案和 SaaS 产品/服务进行快速入门。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-suite">IoT Suite</a>
+    - html: <a href="/azure/iot-central">IoT 中心</a>
+  - type: paragraph
+    text: 以平台即服务 (PaaS) 产品/服务为基础进行生成。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-hub">IoT 中心</a>
+    - html: <a href="/azure/iot-dps">IoT 中心设备预配服务</a>
+    - html: <a href="/azure/location-based-services">Azure Location Based Services</a>
+    - html: <a href="/azure/time-series-insights">Azure 时序见解</a>
+    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks">IoT 服务 SDK</a>
+  - type: paragraph
+    text: 构建智能边缘。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-edge">IoT Edge</a>
+    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks">IoT 设备 SDK</a>
+- title: 示例
+  items:
+  - type: paragraph
+    text: 查找常用设备和语言的示例。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0">所有示例</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0&platform=C">C 示例</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0&platform=dotnet">.NET 示例</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0&platform=python">批处理 Python 示例</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0&platform=nodejs">Node.js 示例</a>
+- title: 视频
+  items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-18-Contoso-HVACs-Digital-transformation-through-Internet-of-Things-solutions/player
+      html: <p>Contoso HVAC’s Digital transformation through Internet of Things solutions（Contoso HVAC 通过物联网解决方案进行的的数字化转换）</p>
+      image:
+        src: media/index/i_video.png
+      title: 介绍
+    - href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-88-Codeless-IoT-Solution/player
+      html: <p>Codeless IoT Solution with Azure IoT Central（在 Azure IoT 中心使用无代码 IoT 解决方案）</p>
+      image:
+        src: media/index/i_video.png
+      title: 演示
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 命令行
+      html: <p><a href="/cli/azure/iot">Azure CLI</a></p><p><a href="https://github.com/Azure/azure-iot-cli-extension">Azure IoT CLI 扩展</a></p>
+    - title: 语言
+      html: <p><a href="/azure/iot-hub/iot-hub-devguide-sdks">用于 .Net、C、Java、Node.js、Python 的 Azure IoT SDK</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/iothub">IoT 中心</a></p><p><a href="/rest/api/iot-dps">IoT 中心设备预配服务</a></p><p><a href="/rest/api/location-based-services-management/">Location Based Services 管理</a></p><p><a href="/rest/api/location-based-services/">Location Based Services 功能</a></p><p><a href="/rest/api/time-series-insights-management/">时序见解管理</a></p><p><a href="/rest/api/time-series-insights/">时序见解</a></p>

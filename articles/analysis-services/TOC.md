@@ -1,18 +1,22 @@
 # [Analysis Services 文档](index.md)
 
 # 概述
-## [了解 Analysis Services](analysis-services-overview.md)
-## [支持的数据源](analysis-services-datasource.md)
-## [身份验证和用户权限](analysis-services-manage-users.md)
-## [连接到本地数据源](analysis-services-gateway.md)
-## [兼容性级别](analysis-services-compat-level.md)
-## [高可用性](analysis-services-bcdr.md)
+## [什么是 Azure Analysis Services？](analysis-services-overview.md)
+
 
 # 入门
 ## [在 Azure 门户中创建服务器](analysis-services-create-server.md)
 ## [使用 Azure PowerShell 创建服务器](analysis-services-create-powershell.md)
 ## [从 Visual Studio 部署模型](analysis-services-deploy.md)
 ## [在 Azure 门户（预览）中创建模型](analysis-services-create-model-portal.md)
+
+# 概念
+## [支持的数据源](analysis-services-datasource.md)
+## [连接到本地数据源](analysis-services-gateway.md)
+## [连接到服务器](analysis-services-connect.md)
+## [身份验证和用户权限](analysis-services-manage-users.md)
+## [兼容性级别](analysis-services-compat-level.md)
+## [高可用性](analysis-services-bcdr.md)
 
 # 操作说明 
 ## [安装并配置本地数据网关](analysis-services-gateway-install.md)
@@ -31,7 +35,7 @@
 ### [管理服务器管理员](analysis-services-server-admins.md)
 ### [监视服务器指标](analysis-services-monitor.md)
 ### [设置诊断日志记录](analysis-services-logging.md)
-### [将网关用于 VNET 上的数据源](analysis-services-vnet-gateway.md)
+### [将网关用于 VNet 上的数据源](analysis-services-vnet-gateway.md)
 ## 连接
 ### [获取客户端库](analysis-services-data-providers.md)
 ### [使用 Excel 进行连接](analysis-services-connect-excel.md)

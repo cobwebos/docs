@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 264befc6c60b87d41658b4da763e477fbb7e3f8c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bbda406633f97d9a6c90bc49374268df28b68f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体
 
@@ -46,13 +46,13 @@ ms.lasthandoff: 03/23/2018
 
    ![查看应用注册](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
 
-1. 如果应用注册设置已设置为“否”，则只有管理员用户可以注册应用。 检查帐户是否为 Active AD 租户的管理员。 选择“概述”并查看用户信息。 如果将帐户分配到“用户”角色，但（前面步骤中设置的）应用注册设置仅限于管理员用户，请要求管理员分配管理员角色或允许用户注册应用。
+1. 如果应用注册设置已设置为“否”，则只有[全局管理员](../active-directory/active-directory-assign-admin-roles-azure-portal.md)可以注册应用。 检查帐户是否为 Active AD 租户的管理员。 选择“概述”并查看用户信息。 如果将帐户分配到“用户”角色，但（前面步骤中设置的）应用注册设置仅限于管理员用户，请要求管理员为你分配“全局管理员”角色或允许用户注册应用。
 
    ![查找用户](./media/resource-group-create-service-principal-portal/view-user-info.png)
 
 ### <a name="check-azure-subscription-permissions"></a>检查 Azure 订阅权限
 
-在 Azure 订阅中，帐户必须具有 `Microsoft.Authorization/*/Write` 访问权限才能向角色分配 AD 应用。 通过[所有者](../active-directory/role-based-access-built-in-roles.md#owner)角色或[用户访问管理员](../active-directory/role-based-access-built-in-roles.md#user-access-administrator)角色授权此操作。 如果将帐户分配到“参与者”角色，则没有足够权限。 尝试将服务主体分配到角色时，将收到错误。
+在 Azure 订阅中，帐户必须具有 `Microsoft.Authorization/*/Write` 访问权限才能向角色分配 AD 应用。 通过[所有者](../role-based-access-control/built-in-roles.md#owner)角色或[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)角色授权此操作。 如果将帐户分配到“参与者”角色，则没有足够权限。 尝试将服务主体分配到角色时，将收到错误。
 
 检查订阅权限的方法如下：
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="assign-application-to-role"></a>将应用程序分配到角色
 
-要访问订阅中的资源，必须将应用程序分配到角色。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。
+要访问订阅中的资源，必须将应用程序分配到角色。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../role-based-access-control/built-in-roles.md)。
 
 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 03/23/2018
 
    ![选择访问权限](./media/resource-group-create-service-principal-portal/select-access-control.png)
 
-1. 选择“添加”。
+1. 选择 **添加** 。
 
    ![选择添加](./media/resource-group-create-service-principal-portal/select-add.png)
 
@@ -167,5 +167,5 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="next-steps"></a>后续步骤
 * 若要设置多租户应用程序，请参阅[使用 Azure 资源管理器 API 进行授权的开发人员指南](resource-manager-api-authentication.md)。
-* 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。  
-* 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../active-directory/role-based-access-control-resource-provider-operations.md)。
+* 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。  
+* 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../role-based-access-control/resource-provider-operations.md)。

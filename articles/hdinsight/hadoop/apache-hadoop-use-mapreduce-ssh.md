@@ -1,26 +1,26 @@
 ---
-title: "将 MapReduce 和 SSH 连接与 HDInsight 中的 Hadoop 配合使用 — Azure | Microsoft Docs"
-description: "了解如何在 HDInsight 上的 Hadoop 中使用 SSH 运行 MapReduce 作业。"
+title: 将 MapReduce 和 SSH 连接与 HDInsight 中的 Hadoop 配合使用 — Azure | Microsoft Docs
+description: 了解如何在 HDInsight 上的 Hadoop 中使用 SSH 运行 MapReduce 作业。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlunb
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 844678ba-1e1f-4fda-b9ef-34df4035d547
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: 08c67168cde60c1b7551806da8542c98dcb82f55
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 67e1bf6cee04eda51f5dbfc51a95614347fc2b7f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>通过 SSH 将 MapReduce 与 HDInsight 上的 Hadoop 配合使用
 
@@ -42,16 +42,16 @@ ms.lasthandoff: 01/18/2018
 
 ## <a id="ssh"></a>使用 SSH 进行连接
 
-使用 SSH 连接到群集。 例如，以下命令将连接到名为 **myhdinsight** 的群集：
+使用 SSH 连接到群集。 例如，以下命令将以 **sshuser** 帐户身份连接到名为 **myhdinsight** 的群集：
 
 ```bash
-ssh admin@myhdinsight-ssh.azurehdinsight.net
+ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
 **如果使用用于 SSH 身份验证的证书密钥**，则可能需要指定客户端系统上的私钥位置，例如：
 
 ```bash
-ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
+ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
 **如果使用用于 SSH 身份验证的密码**，则需要根据提示提供密码。

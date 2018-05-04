@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: 4b4a5b9199fe648425304eaa8db0130bb1b4264d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0a6e355d8f16fed9022cc2cf55dc09781364f0b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>使用 Azure Batch CLI 模板和文件传输（预览版）
 
@@ -261,5 +261,5 @@ az batch file download --file-group ffmpeg-output --local-path
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 Batch 模板博客文章：[Running Azure Batch jobs using the Azure CLI – no code required](https://azure.microsoft.com/en-us/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/)（使用 Azure CLI 运行 Azure Batch 作业 – 无需代码）。
+- 请参阅 Batch 模板博客文章：[Running Azure Batch jobs using the Azure CLI – no code required](https://azure.microsoft.com/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/)（使用 Azure CLI 运行 Azure Batch 作业 – 无需代码）。
 - 有关安装和使用情况的详细文档、示例和源代码，请参阅 [Azure GitHub 存储库](https://github.com/Azure/azure-batch-cli-extensions)。

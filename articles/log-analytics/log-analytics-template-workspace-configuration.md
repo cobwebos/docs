@@ -1,29 +1,29 @@
 ---
-title: "使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区 | Microsoft Docs"
-description: "可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。"
+title: 使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区 | Microsoft Docs
+description: 可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/16/2018
 ms.author: richrund
-ms.openlocfilehash: db9b941e84c018a3a56dd683c118e47ee808259d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0d9848a6477dbf1b93a7f640bc44adf627b40a45
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
 可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
-* 创建工作区
+* 创建工作区，包括设置定价层 
 * 添加解决方案
 * 创建保存的搜索
 * 创建计算机组
@@ -32,34 +32,110 @@ ms.lasthandoff: 03/08/2018
 * 从 Linux 计算机的 syslog 中收集事件 
 * 从 Windows 事件日志中收集事件
 * 将日志分析代理添加到 Azure 虚拟机
-* 配置 Log Analytics 以为使用 Azure 诊断收集的数据编制索引
+* 将日志分析配置为索引使用 Azure 诊断收集的数据
 
-本文将提供模板示例，用于演示一些可以从模板执行的配置。
+本文将提供模板示例，用于演示一些可以通过模板执行的配置。
 
-## <a name="api-versions"></a>API 版本
-本文中的示例适用于[升级的 Log Analytics 工作区](log-analytics-log-search-upgrade.md)。  若要使用旧版工作区，则需要将查询的语法更改为旧语言，并更改每个资源的 API 版本。  下表列出了此示例中使用的资源的 API 版本。
+## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
+以下示例将使用本地计算机的模板创建一个工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。  
 
-| 资源 | 资源类型 | 旧 API 版本 | 升级的 API 版本 |
-|:---|:---|:---|:---|
-| 工作区   | workspaces    | 2015-11-01-preview | 2017-03-15-preview |
-| 搜索      | savedSearches | 2015-11-01-preview | 2017-03-15-preview |
-| 数据源 | datasources   | 2015-11-01-preview | 2015-11-01-preview |
-| 解决方案    | solutions     | 2015-11-01-preview | 2015-11-01-preview |
+以下参数设置默认值：
 
+* 位置 - 默认设置为“美国东部”
+* SKU - 默认设置为新的“按 GB”定价层，该层已在 2018 年 4 月的定价模型中发布
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>创建和配置 Log Analytics 工作区
+>[!WARNING]
+>如果在订阅中创建或配置 Log Analytics 工作区，而该订阅已加入 2018 年 4 月的新定价模型，则唯一有效的 Log Analytics 定价层为 **PerGB2018**。 
+>
+
+### <a name="create-and-deploy-template"></a>创建和部署模板
+
+1. 将以下 JSON 语法复制并粘贴到文件中：
+
+    ```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "eastus",
+              "westus"
+            ],
+            "defaultValue": "eastus",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        },
+        "sku": {
+            "type": "String",
+            "allowedValues": [
+              "Standalone",
+              "PerNode",
+              "PerGB2018"
+            ],
+            "defaultValue": "PerGB2018",
+            "metadata": {
+            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
+        }
+          },
+    },
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2017-03-15-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "sku": {
+                    "Name": "[parameters('sku')]"
+                },
+                "features": {
+                    "searchVersion": 1
+                }
+            }
+          }
+       ]
+    }
+    ```
+2. 按要求编辑模板。  查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
+3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。
+4. 已做好部署此模板的准备。 请使用 PowerShell 或命令行来创建工作区。
+
+   * 对于 PowerShell，请在包含模板的文件夹中使用以下命令：
+   
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        ```
+
+   * 对于命令行，请在包含模板的文件夹中使用以下命令：
+
+        ```cmd
+        azure config mode arm
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        ```
+
+部署可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息，如下所示：<br><br> ![部署完成后的示例结果](./media/log-analytics-template-workspace-configuration/template-output-01.png)
+
+## <a name="configure-a-log-analytics-workspace"></a>配置 Log Analytics 工作区
 以下模板示例演示了如何：
 
-1. 创建工作区，包括设置数据保留期
-2. 向工作区添加解决方案
-3. 创建保存的搜索
-4. 创建计算机组
-5. 从装有 Windows 代理的计算机启用 IIS 日志收集
-6. 从 Linux 计算机中收集逻辑磁盘性能计数器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
-7. 从 Linux 计算机中收集 syslog 事件
-8. 从 Windows 计算机的应用程序事件日志中收集错误和警告事件
-9. 从 Windows 计算机中收集可用内存 (MB) 性能计数器
-11. 收集由 Azure 诊断写入存储帐户的 IIS 日志和 Windows 事件日志
+1. 向工作区添加解决方案
+2. 创建保存的搜索
+3. 创建计算机组
+4. 从装有 Windows 代理的计算机启用 IIS 日志收集
+5. 从 Linux 计算机中收集逻辑磁盘性能计数器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
+6. 从 Linux 计算机中收集 syslog 事件
+7. 从 Windows 计算机的应用程序事件日志中收集错误和警告事件
+8. 从 Windows 计算机中收集可用内存 (MB) 性能计数器
+9. 收集由 Azure 诊断写入存储帐户的 IIS 日志和 Windows 事件日志
 
 ```json
 {
@@ -77,10 +153,11 @@ ms.lasthandoff: 03/08/2018
       "allowedValues": [
         "Free",
         "Standalone",
-        "PerNode"
+        "PerNode",
+        "PerGB2018"
       ],
       "metadata": {
-        "description": "Service Tier: Free, Standalone, or PerNode"
+        "description": "Service Tier: Free, Standalone, PerNode, or PerGB2018"
     }
       },
     "dataRetention": {
@@ -421,7 +498,6 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
-
 
 ## <a name="example-resource-manager-templates"></a>示例 资源管理器模板
 Azure 快速入门模板库包含 Log Analytics 的多个模板，其中包括：

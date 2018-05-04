@@ -1,11 +1,11 @@
 ---
-title: "了解 Azure 帐单"
-description: "了解如何阅读并理解 Azure 订阅的使用情况和帐单"
-services: 
-documentationcenter: 
+title: 了解 Azure 帐单
+description: 了解如何阅读并理解 Azure 订阅的使用情况和帐单
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: be15c74456b0cec64455f03dd72b8b64eef2bd5d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ec4fd970c6b552d87e006f9e0ab55d3495c9b0c8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
 要了解 Azure 帐单，请在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较。
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/09/2018
  | 发票（PDF） | 使用情况明细 (CSV)|
  | --- | --- |
 |计费周期 | 计费周期 |
- |名称​​ |测定仪类别 |
+ |名称 |测定仪类别 |
  |Type |测定仪子类别 |
  |资源 |测定仪名称 |
  |区域 |测定仪区域 |
@@ -102,7 +102,7 @@ Azure 门户也可帮助核查费用。Azure 门户提供费用管理图表，�
 [创建支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以询问付款状态。 
 
 ## <a name="tips-for-cost-management"></a>成本管理建议
-- 通过使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)和[总拥有成本计算器](https://aka.ms/azure-tco-calculator)估计成本，获取[每项服务的定价信息明细](https://azure.microsoft.com/en-us/pricing/)。
+- 通过使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)和[总拥有成本计算器](https://aka.ms/azure-tco-calculator)估计成本，获取[每项服务的定价信息明细](https://azure.microsoft.com/pricing/)。
 - [设置计费警报](billing-set-up-alerts.md)。
 - [在 Azure 门户中定期查看使用情况和成本](billing-getting-started.md#costs)。
 

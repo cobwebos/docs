@@ -1,12 +1,12 @@
 ---
-title: "使用 Jenkins 插件部署到 Azure App Service | Microsoft Docs"
-description: "了解如何在 Jenkins 中使用 Azure App Service Jenkins 插件将 Java Web 应用部署到 Azure"
+title: 使用 Jenkins 插件部署到 Azure App Service | Microsoft Docs
+description: 了解如何在 Jenkins 中使用 Azure App Service Jenkins 插件将 Java Web 应用部署到 Azure
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0e5916b2f8f901ff549ef74fca57cf09dc9fec21
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0128ad37e3ba66710279de42cf4eae0ce5431b5b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/01/2018
 * [Jenkins Git 客户端插件](https://plugins.jenkins.io/git-client)版本 .2.4.6 
 * [Docker Commons 插件](https://plugins.jenkins.io/docker-commons)版本.1.4.0
 * [Azure 凭据](https://plugins.jenkins.io/azure-credentials)版本 1.2
-* [Azure App Service](https://plugins.jenkins.io/azure-app-server) 版本 0.1
+* [Azure App Service](https://plugins.jenkins.io/azure-app-service) 版本 0.1
 
 Jenkins 插件可用于通过 Web 应用支持的所有语言（例如 C#、PHP、Java 和 Node.js）部署 Web 应用。 本教程使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)。 要将存储库分叉到自己的 GitHub 帐户，请选择 GitHub 界面右上角的“分叉”按钮。  
 > [!NOTE]

@@ -1,11 +1,11 @@
 ---
-title: "升级 Windows Server 上的独立 Azure Service Fabric 群集 | Microsoft 文档"
-description: "升级运行独立 Service Fabric 群集的 Azure Service Fabric 代码和/或配置，其中包括设置群集更新模式。"
+title: 升级 Windows Server 上的独立 Azure Service Fabric 群集 | Microsoft 文档
+description: 升级运行独立 Service Fabric 群集的 Azure Service Fabric 代码和/或配置，其中包括设置群集更新模式。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: c95c1827d0433dcb61eace34e7a905a5610c7781
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3354fab5f664391520e721586712e5035ff79cb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>升级 Windows Server 上的独立 Azure Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -120,7 +120,7 @@ ms.lasthandoff: 12/21/2017
 
         "fabricClusterAutoupgradeEnabled": false,
 
-有关用法详细信息，请参阅 [Start-ServiceFabricClusterConfigurationUpgrade PowerShell 命令](https://msdn.microsoft.com/en-us/library/mt788302.aspx)。 在启动配置升级之前，请务必在 JSON 中更新“clusterConfigurationVersion”。
+有关用法详细信息，请参阅 [Start-ServiceFabricClusterConfigurationUpgrade PowerShell 命令](https://msdn.microsoft.com/library/mt788302.aspx)。 在启动配置升级之前，请务必在 JSON 中更新“clusterConfigurationVersion”。
 
 ```powershell
 

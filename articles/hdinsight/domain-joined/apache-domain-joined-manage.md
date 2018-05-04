@@ -1,29 +1,91 @@
 ---
-title: 管理已加入域的 HDInsight 群集 - Azure | Microsoft Docs
+title: 管理已加入域的 HDInsight 群集 - Azure
 description: 了解如何管理已加入域的 HDInsight 群集
 services: hdinsight
-documentationcenter: ''
-author: bprakash
+author: omidm1
 manager: jhubbard
 editor: cgronlun
-tags: ''
 ms.assetid: 6ebc4d2f-2f6a-4e1e-ab6d-af4db6b4c87c
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/11/2018
-ms.author: bhanupr
-ms.openlocfilehash: 44202541557a7513e0068f52289a637f6e48f43f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 9875d9884f04d26ebfbd44e858beb272c2306958
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>管理已加入域的 HDInsight 群集
 了解已加入域的 HDInsight 中的用户和角色以及如何管理已加入域的 HDInsight 群集。
+
+## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>使用 VSCode 链接到已加入域的群集
+
+可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：user1@contoso.com）链接安全 hadoop 群集。
+1. 通过选择 **CTRL+SHIFT+P** 打开命令面板，然后输入“HDInsight: Link a cluster”。
+
+   ![链接群集命令](./media/apache-domain-joined-manage/link-cluster-command.png)
+
+2. 输入 HDInsight 群集 URL -> 输入用户名 -> 输入密码 -> 选择群集类型 -> 如果通过验证，将显示成功信息。
+   
+   ![“链接群集”对话框](./media/apache-domain-joined-manage/link-cluster-process.png)
+
+   > [!NOTE]
+   > 如果群集已登录到 Azure 订阅中并且已链接群集，则使用链接用户名和密码。 
+   
+3. 可以使用命令**列出群集**来查看链接群集。 现在可以将脚本提交到此链接群集。
+
+   ![链接的群集](./media/apache-domain-joined-manage/linked-cluster.png)
+
+4. 还可以通过从命令面板输入“HDInsight: Unlink a cluster”取消链接群集。
+
+## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>使用 IntelliJ 链接到已加入域的群集
+
+可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：user1@contoso.com）链接安全 hadoop 群集。 
+1. 从 **Azure 资源管理器**单击“链接群集”。
+
+   ![链接群集上下文菜单](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+
+2. 输入**群集名称**、**用户名**和**密码**。 如果获得身份验证失败，需要检查用户名和密码。 或者，添加存储帐户、存储密钥，然后从存储容器中选择一个容器。 存储信息用于左侧树中的存储资源管理器
+   
+   ![“链接群集”对话框](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+
+   > [!NOTE]
+   > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
+   > ![IntelliJ 中的存储资源管理器](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
+
+   
+3. 如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
+
+   ![链接的群集](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+
+4. 还可以从 **Azure 资源管理器**取消链接群集。
+   
+   ![取消链接的群集](./media/apache-domain-joined-manage/unlink.png)
+
+## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>使用 Eclipse 链接到已加入域的群集
+
+可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：user1@contoso.com）链接安全 hadoop 群集。
+1. 从 **Azure 资源管理器**单击“链接群集”。
+
+   ![链接群集上下文菜单](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+
+2. 输入“群集名称”、“用户名”和“密码”，然后单击“确定”按钮以链接群集。 （可选）输入“存储帐户”、“存储密钥”，然后选择“存储资源管理器”，以便存储资源管理器在左侧树状视图中工作
+   
+   ![“链接群集”对话框](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   
+   > [!NOTE]
+   > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
+   > ![Eclipse 中的存储资源管理器](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
+
+3. 单击“确定”按钮后，如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
+
+   ![链接的群集](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+
+4. 还可以从 **Azure 资源管理器**取消链接群集。
+   
+   ![取消链接的群集](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>使用企业安全包访问群集。
 
@@ -31,7 +93,7 @@ ms.lasthandoff: 03/28/2018
 
 安全和用户隔离对于使用企业安全包的 HDInsight 群集很重要。 为了满足这些要求，将阻止通过 SSH 访问使用企业安全包的群集。 下表显示了对于每种群集类型建议的访问方法：
 
-|工作负载|方案|访问方法|
+|工作负载|场景|访问方法|
 |--------|--------|-------------|
 |Hadoop|Hive - 交互式作业/查询 |<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Spark|交互式作业/查询，PySpark 交互式环境|<ul><li>[Beeline](#beeline)</li><li>[带有 Livy 的 Zeppelin](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|

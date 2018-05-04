@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/03/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 81357bce92bb8bd2f77f7aaabc8e3b1d49047a1b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dac04ed9a43e19d022720979c8f83aa2b4132f78
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 **上次文档更新时间**：太平洋标准时间 4 月 3 日下午 3:00。
 
@@ -23,7 +23,7 @@ Microsoft 已在我们的所有云服务中部署了缓解措施。 运行 Azure
 此外，Azure 正在尽可能扩大[内存保留维护](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance)的使用范围，当主机更新或 VM 移动到已更新的主机时，会将 VM 暂停最多 30 秒。  内存保留维护进一步降低了对客户的影响，并且不需要重新启动。  对主机进行系统级更新时，Azure 将利用这些方法。
 
 > [!NOTE] 
-> 2018 年 2 月 下旬，Intel Corporation 发布了关于微代码发布状态的更新版 [Microcode Revision Guidance](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf)（微代码修订指南），这不仅提升了稳定性还缓解了 [Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) 披露的最新漏洞。 Azure 于 [2018 年 1 月 3 日](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/)实施的缓解措施不会受到 Intel 微代码更新的影响。 Microsoft 已经采取强有力的措施，保护 Azure 客户免受其他 Azure 虚拟机的影响。  
+> 2018 年 2 月 下旬，Intel Corporation 发布了关于微代码发布状态的更新版 [Microcode Revision Guidance](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf)（微代码修订指南），这不仅提升了稳定性还缓解了 [Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) 披露的最新漏洞。 Azure 于 [2018 年 1 月 3 日](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/)实施的缓解措施不会受到 Intel 微代码更新的影响。 Microsoft 已经采取强有力的措施，保护 Azure 客户免受其他 Azure 虚拟机的影响。  
 >
 > Intel 的微代码地址变体 2 Spectre（[CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) 或分支目标注入）仅可避免在 Azure 的 VM 上运行共享或不受信任的工作负荷所造成的攻击。 在面向 Azure 客户推出之前，我们的工程师正在测试稳定性，最大程度地降低微代码对性能的影响。  由于只有极少数客户会在 VM 上运行不受信任的工作负荷，因此发布后大多数客户都不需要启用此功能。 
 >

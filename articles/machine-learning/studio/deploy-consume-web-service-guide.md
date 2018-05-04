@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 2d64b007b68db4df652bde4308760400f4de6dbc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ac2d9620cfb6b3bc12bd3ff664d03d342efc5791
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure 机器学习 Web 服务：部署和使用
 可以使用 Azure 机器学习来部署机器学习工作流和模型作为 Web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 由于 Web 服务是 RESTful，可以从各种编程语言和平台（如 .NET 和 Java）以及应用程序（如 Excel）调用它们。
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/23/2018
 ### <a name="with-powershell-cmdlets"></a>使用 PowerShell cmdlet
 用于 Web 服务的 Azure 机器学习资源提供程序支持使用 PowerShell cmdlet 来部署和管理 Web 服务。
 
-要使用 cmdlet，必须先使用 [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 从 PowerShell 环境内登录到 Azure 帐户。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/powershell-azure-resource-manager.md)。
+要使用 cmdlet，必须先使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet 从 PowerShell 环境中登录到 Azure 帐户。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/powershell-azure-resource-manager.md)。
 
 若要导出预测实验，则使用[此代码示例](https://github.com/ritwik20/AzureML-WebServices)。 从代码创建 .exe 文件后，可以键入：
 

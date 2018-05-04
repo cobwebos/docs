@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 堆栈策略模块 |Microsoft 文档"
-description: "了解如何约束表现得像 Azure 堆栈订阅的 Azure 订阅"
+title: 使用 Azure Stack 策略模块 | Microsoft Docs
+description: 了解如何限制 Azure 订阅使其行为像 Azure Stack 订阅
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 937ef34f-14d4-4ea9-960b-362ba986f000
 ms.service: azure-stack
 ms.workload: na
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: mabrigg
-ms.openlocfilehash: 71f17a460f4a81a98e2cdef183acb29f721d584e
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 10df87ec6d30e74356b0ff0f44b8745f8c7b8bf3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>管理 Azure 策略使用 Azure 堆栈策略模块
+# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>使用 Azure Stack 策略模块管理 Azure 策略
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 堆栈策略模块，可使用相同的版本控制和 Azure 堆栈的服务可用性配置一个 Azure 订阅。  模块使用**新建 AzureRMPolicyAssignment** cmdlet 可创建 Azure 的策略，这可以限制的资源类型和订阅中可用的服务。  完成后，你可以使用你的 Azure 订阅若要开发针对 Azure 堆栈的应用。  
+使用 Azure Stack 策略模块，可为 Azure 订阅配置与 Azure Stack 相同的版本控制和服务可用性。  该模块使用 **New-AzureRMPolicyAssignment** cmdlet 创建 Azure 策略，限制订阅中可用的资源类型和服务。  完成后，可以使用 Azure 订阅来开发针对 Azure Stack 的应用。  
 
 ## <a name="install-the-module"></a>安装模块
-1. 安装 AzureRM PowerShell 模块中，所需的版本的步骤 1 中所述[安装适用于 Azure 堆栈的 PowerShell](azure-stack-powershell-install.md)。   
-2. [从 GitHub 下载 Azure 堆栈工具](azure-stack-powershell-download.md)  
+1. 按照[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md) 步骤 1 中的说明，安装所需的 AzureRM PowerShell 模块版本。   
+2. [从 GitHub 下载 Azure Stack 工具](azure-stack-powershell-download.md)  
 3. [配置适用于 Azure Stack 的 PowerShell](azure-stack-powershell-configure-user.md)
 
 4. 导入 AzureStack.Policy.psm1 模块：
@@ -37,11 +37,11 @@ Azure 堆栈策略模块，可使用相同的版本控制和 Azure 堆栈的服�
    Import-Module .\Policy\AzureStack.Policy.psm1
    ```
 
-## <a name="apply-policy-to-subscription"></a>将策略应用到订阅
-可以使用以下命令，将针对你的 Azure 订阅的默认 Azure 堆栈策略。 在运行前，替换*Azure 订阅名称*与 Azure 订阅。
+## <a name="apply-policy-to-subscription"></a>将策略应用于订阅
+可以使用以下命令针对 Azure 订阅应用默认 Azure Stack 策略。 运行前，请将“Azure 订阅名称”替换为你的 Azure 订阅。
 
 ```PowerShell
-Login-AzureRmAccount
+Add-AzureRmAccount
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
@@ -49,11 +49,11 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ```
 
-## <a name="apply-policy-to-a-resource-group"></a>将策略应用到资源组
-你可能想要应用的更精细的方法中的策略。  例如，您可能必须运行相同的订阅中的其他资源。  您可以限定范围策略应用到特定资源组，这样就可以使用 Azure 资源的 Azure 堆栈测试你的应用。 在运行前，替换*Azure 订阅名称*替换为你的 Azure 订阅名称。
+## <a name="apply-policy-to-a-resource-group"></a>将策略应用于资源组
+你可能想要以更精细的方式应用策略。  例如，你在相同的订阅中可能有其他正在运行的资源。  可以将策略应用范围限定为特定资源组，这样就可以使用 Azure 资源测试 Azure Stack 的应用。 运行前，请将“Azure 订阅名称”替换为你的 Azure 订阅名称。
 
 ```PowerShell
-Login-AzureRmAccount
+Add-AzureRmAccount
 $rgName = 'myRG01'
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
@@ -61,14 +61,14 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ```
 
-## <a name="policy-in-action"></a>在操作中的策略
-后你部署 Azure 策略，你收到错误，当你尝试部署的资源的情况下禁止的策略。  
+## <a name="policy-in-action"></a>执行中的策略
+部署 Azure 策略后，当你尝试部署策略禁止的资源时会收到错误。  
 
-![由于策略约束的资源部署失败的结果](./media/azure-stack-policy-module/image1.png)
+![由于策略约束而资源部署失败的结果](./media/azure-stack-policy-module/image1.png)
 
 ## <a name="next-steps"></a>后续步骤
 [通过 PowerShell 部署模板](azure-stack-deploy-template-powershell.md)
 
 [使用 Azure CLI 部署模板](azure-stack-deploy-template-command-line.md)
 
-[部署使用 Visual Studio 模板](azure-stack-deploy-template-visual-studio.md)
+[使用 Visual Studio 部署模板](azure-stack-deploy-template-visual-studio.md)

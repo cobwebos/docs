@@ -3,21 +3,20 @@ title: 在 Azure 数据工厂管道中使用自定义活动
 description: 了解如何创建自定义活动并在 Azure 数据工厂管道中使用。
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 770187c16ed9d0eacfaf99e571ad048c6723a9cf
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: a9e70ad5296a832e711ebac97302d56429ab5bff
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +31,7 @@ ms.lasthandoff: 03/23/2018
 若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建**自定义活动**，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅[数据工厂版本 1 中的（自定义）DotNet 活动](v1/data-factory-use-custom-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅[数据工厂版本 1 中的（自定义）DotNet 活动](v1/data-factory-use-custom-activities.md)。
  
 
 如果不熟悉 Azure Batch 服务，请参阅以下文章：

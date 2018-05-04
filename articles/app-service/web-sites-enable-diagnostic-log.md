@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 27c4a169a906f8e53a5548a38e3f680fd38155b3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 15c580a026495d11ffdeb161d4bf0793850040f5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>在 Azure 应用服务中启用 Web 应用的诊断日志记录
 ## <a name="overview"></a>概述
@@ -84,7 +84,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 > 只能使用存储客户端访问或由直接使用这些存储系统的应用程序访问存储在“表存储”或“Blob 存储”中的信息。 例如，Visual Studio 2013 包含的存储资源管理器可用于浏览表或 Blob 存储，而 HDInsight 可以访问存储在 Blob 存储中的数据。 还可编写通过使用 [Azure SDK](/downloads/#) 之一访问 Azure 存储的应用程序。
 >
 > [!NOTE]
-> 也可从 Azure PowerShell 使用 **Set-AzureWebsite** cmdlet 启用诊断。 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)。
+> 也可从 Azure PowerShell 使用 **Set-AzureWebsite** cmdlet 启用诊断。 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)。
 >
 >
 
@@ -113,7 +113,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 此命令会将 **-Name** 参数指定的 Web 应用的日志保存到当前目录中名为 **logs.zip** 的文件。
 
 > [!NOTE]
-> 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)。
+> 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)。
 >
 >
 
@@ -125,7 +125,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 此命令将名为“webappname”的 Web 应用的日志保存到当前目录中名为 **diagnostics.zip** 的文件。
 
 > [!NOTE]
-> 如果尚未安装 Azure 命令行接口 (Azure CLI)，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
+> 如果尚未安装 Azure 命令行接口 (Azure CLI)，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
 >
 >
 

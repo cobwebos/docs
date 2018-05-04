@@ -1,11 +1,11 @@
 ---
-title: "更改 Azure 订阅产品/服务 | Microsoft Docs"
-description: "了解如何通过 Azure 帐户中心更改 Azure 订阅并切换为其他产品/服务"
-services: 
-documentationcenter: 
+title: 更改 Azure 订阅产品/服务 | Microsoft Docs
+description: 了解如何通过 Azure 帐户中心更改 Azure 订阅并切换为其他产品/服务
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: aae227b3-6d64-4550-a5b6-d359f53f0a59
 ms.service: billing
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 381994079b7bcaeff08802b06573b977bf631e9d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 12e5641093dd1bdc1546cc115283f48d5c134121
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>将 Azure 即用即付订阅更改为其他产品
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/08/2017
 
 ## <a name="whats-supported"></a>支持的操作：
 
-| 从 | 目标 |
+| 源 | 目标 |
 | --- | --- |
 | 即用即付 |[即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p/) |
 | 即用即付 |[Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |

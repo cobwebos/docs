@@ -1,19 +1,19 @@
 ---
-title: "使用 Web UI 管理 Azure Kubernetes 群集"
-description: "在 Azure 容器服务中使用 Kubernetes Web UI"
+title: 使用 Web UI 管理 Azure Kubernetes 群集
+description: 在 Azure 容器服务中使用 Kubernetes Web UI
 services: container-service
 author: bburns
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: d5a3906e5e26c9ed0a6cf356000c3d81f00de72c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0680551d3a87c942574a4eac70fa380cc1e9b5d9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>在 Azure 容器服务中使用 Kubernetes Web UI
 
@@ -63,7 +63,7 @@ $ az acs kubernetes browse -g [Resource Group] -n [Container service instance na
 
     此时会打开一个对话框，用户可以开始在其中创建应用程序。
 
-2. 将其命名为 `hello-nginx`。 使用 [`nginx`Docker 中的容器](https://hub.docker.com/_/nginx/)，部署此 Web 服务的三个副本。
+2. 将其命名为 `hello-nginx`。 使用 Docker](https://hub.docker.com/_/nginx/) 中的 [`nginx` 容器，部署此 Web 服务的三个副本。
 
     ![Kubernetes Pod“创建”对话框](./media/container-service-kubernetes-ui/nginx.png)
 

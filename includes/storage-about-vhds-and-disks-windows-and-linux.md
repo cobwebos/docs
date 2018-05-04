@@ -1,4 +1,19 @@
-
+---
+title: include 文件
+description: include 文件
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/24/2018
+---
 ## <a name="about-vhds"></a>关于 VHD
 
 Azure 中使用的 VHD 是在 Azure 的标准或高级存储帐户中作为页 Blob 存储的 .vhd 文件。 有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)。 有关高级存储的详细信息，请参阅[高性能高级存储和 Azure VM](../articles/virtual-machines/windows/premium-storage.md)。
@@ -10,10 +25,10 @@ Azure 中想要用作源创建磁盘或映像的所有 .vhd 文件都是只读�
 基于映像创建虚拟机时，Azure 将为虚拟机创建磁盘，该磁盘是源 .vhd 文件的副本。 为避免被意外删除，Azure 对任何用于创建映像、操作系统磁盘或数据磁盘的源 .vhd 文件设置了租约。
 
 在删除源 .vhd 文件之前，需要先通过删除磁盘或映像来解除租约。 若要删除由虚拟机当前用作操作系统磁盘的 .vhd 文件，可以通过删除虚拟机并删除所有关联的磁盘，一次性删除虚拟机、操作系统磁盘和源 .vhd 文件。 但是，删除作为数据磁盘源的 .vhd 文件需要按一定顺序执行几个步骤。 首先从虚拟机分离该磁盘，然后删除该磁盘，再删除 .vhd 文件。
-
 > [!WARNING]
 > 如果从存储空间删除了源 .vhd 文件或删除了存储帐户，Microsoft 无法恢复数据。
 > 
+> 根据设计，高级存储中的页 Blob 只用作 VHD。 Microsoft 建议不要在高级存储的页 Blob 中存储其他类型的数据，因为成本可能显著过高。 使用块 Blob 存储不在 VHD 中的数据。
 
 ## <a name="types-of-disks"></a>磁盘类型 
 
@@ -30,7 +45,7 @@ Azure 磁盘具备 99.999% 的可用性。 Azure 磁盘持续提供企业级持�
 
 ### <a name="premium-storage"></a>高级存储 
 
-高级存储受 SSD 支持，为运行 I/O 密集型工作负荷的 VM 提供高性能、低延迟的磁盘支持。 可以将高级存储与 DS、DSv2、GS、Ls 或 FS 系列的 Azure VM 结合使用。 有关详细信息，请参阅[高级存储](../articles/virtual-machines/windows/premium-storage.md)。
+高级存储受 SSD 支持，为运行 I/O 密集型工作负荷的 VM 提供高性能、低延迟的磁盘支持。 通常可以使用其大小在系列名称中包含“s”的高级存储。 例如，有 Dv3 系列和 Dsv3 系列，可以将 Dsv3 系列用于高级存储。  有关详细信息，请参阅[高级存储](../articles/virtual-machines/windows/premium-storage.md)。
 
 ### <a name="unmanaged-disks"></a>非托管磁盘
 
@@ -52,7 +67,7 @@ Azure 磁盘具备 99.999% 的可用性。 Azure 磁盘持续提供企业级持�
 |--- | ------------------ | ------------------- |
 | 磁盘类型 | 固态硬盘 (SSD) | 硬盘驱动器 (HDD)  |
 | 概述  | 基于 SSD 的高性能、低延迟磁盘支持，适用于运行 IO 密集型工作负荷或托管任务关键型生产环境的 VM | 基于 HDD 的经济高效型磁盘支持，适用于开发/测试 VM 方案 |
-| 方案  | 生产和性能敏感型工作负荷 | 开发/测试, 非关键, <br>很少访问 |
+| 场景  | 生产和性能敏感型工作负荷 | 开发/测试, 非关键, <br>很少访问 |
 | 磁盘大小 | P4：32 GB（仅托管磁盘）<br>P6：64 GB（仅托管磁盘）<br>P10：128 GB<br>P20：512 GB<br>P30：1024 GB<br>P40：2048 GB<br>P50：4095 GB | 非托管磁盘：1 GB - 4 TB (4095 GB) <br><br>托管磁盘：<br> S4：32 GB <br>S6：64 GB <br>S10：128 GB <br>S20：512 GB <br>S30：1024 GB <br>S40：2048 GB<br>S50：4095 GB| 
 | 每个磁盘的最大吞吐量 | 250 MB/秒 | 60 MB/秒 | 
 | 每个磁盘的最大 IOPS | 7,500 IOPS | 500 IOPS | 

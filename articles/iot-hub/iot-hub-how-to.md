@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT 中心操作方法 | Microsoft 文档"
-description: "作为开发人员，我应该如何使用各种 IoT 中心功能？"
+title: Azure IoT 中心操作方法 | Microsoft 文档
+description: 作为开发人员，我应该如何使用各种 IoT 中心功能？
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 24376318-5344-4a81-a1e6-0003ed587d53
 ms.service: iot-hub
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: dobett
-ms.openlocfilehash: b451ea2d42f0ff2f64746bcb296fb9128472fea8
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 9b112d2d7fc1756b74e98335831175f5d4c13320
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-use-azure-iot-hub"></a>如何使用 Azure IoT 中心
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/24/2017
 
 - [使用所需属性配置设备][lnk-properties-tutorial]。 本教程介绍如何使用设备孪生的所需和报告属性，以远程配置设备。
 
-- [使用设备作业启动设备固件更新][lnk-jobs-tutorial]。 本教程介绍如何使用关键的设备管理功能（例如孪生和直接方法）。 了解如何使用这些功能远程更新设备的固件。
+- [使用设备管理更新设备固件][lnk-jobs-tutorial]。 本教程介绍如何使用关键的设备管理功能（例如孪生和直接方法）。 了解如何使用这些功能远程更新设备的固件。
 
 - [计划和广播作业][lnk-schedule-tutorial]。 本教程介绍如何使用所需属性和直接方法在计划的时间与多个设备交互。
 

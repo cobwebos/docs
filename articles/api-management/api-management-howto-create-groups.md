@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: df2e25bca907e90c12d18ea76f9c6a94c38a4ece
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3986b07c3568c3dcbb4077361d38f74d658458cd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何创建和使用组来管理 Azure API 管理中的开发人员帐户
 在 API 管理中，使用组来管理产品对开发人员的可见性。 产品首次对组可见，这些组中的开发人员可以查看和订阅与组关联的产品。 
@@ -32,7 +32,7 @@ API 管理具有下列不可变的系统组：
 
 本指南演示 API 管理实例的管理员如何添加新组并将它们关联产品和开发人员。
 
-除了在发布者门户中创建和管理组，还可使用 API 管理 REST API [组](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)实体创建和管理组。
+除了在发布者门户中创建和管理组，还可使用 API 管理 REST API [组](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)实体创建和管理组。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -94,7 +94,7 @@ API 管理具有下列不可变的系统组：
 ## <a name="next-steps"></a>后续步骤
 
 * 一旦开发人员添加到组，他们可以查看和订阅与该组关联的产品。 有关详细信息，请参阅[如何在 Azure API 管理中创建和发布产品][How create and publish a product in Azure API Management]，
-* 除了在发布者门户中创建和管理组，还可使用 API 管理 REST API [组](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)实体创建和管理组。
+* 除了在发布者门户中创建和管理组，还可使用 API 管理 REST API [组](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)实体创建和管理组。
 
 [Create a group]: #create-group
 [Associate a group with a product]: #associate-group-product

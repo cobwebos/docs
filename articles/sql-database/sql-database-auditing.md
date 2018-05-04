@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
@@ -165,8 +165,18 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
 3. 返回“审核配置”边栏选项卡，将“存储访问密钥”从“辅助”切换为“主要”，然后单击“确定”。 然后单击“审核配置”边栏选项卡顶部的“保存”。
 4. 返回“存储配置”边栏选项卡并重新生成辅助访问密钥（为下一个密钥刷新周期做好准备）。
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>使用 Azure PowerShell 管理 SQL 数据库审核
+## <a name="additional-information"></a>其他信息
 
+* 有关日志格式、存储文件夹的层次结构和命名约定的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
+
+   > [!IMPORTANT]
+   > Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符的数据。 当可审核操作返回的**语句**或 **data_sensitivity_information** 值包含超过 4000 个的字符时，超出前 4000 个字符的任何数据将**被截去不进行审核**。
+
+* 审核日志会写入 Azure 订阅的 Azure Blob 存储中的追加 Blob。
+   * 追加 Blob 目前不支持高级存储。
+   * 目前不支持 VNet 中的存储。
+
+## <a name="manage-sql-database-auditing-using-azure-powershell"></a>使用 Azure PowerShell 管理 SQL 数据库审核
 
 * **PowerShell cmdlet**：
 

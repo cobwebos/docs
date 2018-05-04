@@ -1,25 +1,23 @@
 ---
-title: "使用 HDInsight 中的 Hadoop 分析航班延误数据 — Azure | Microsoft Docs"
-description: "了解如何使用一个 Windows PowerShell 脚本来创建 HDInsight 群集、运行 Hive 作业、运行 Sqoop 作业和删除群集。"
+title: 使用 HDInsight 中的 Hadoop 分析航班延误数据 — Azure | Microsoft Docs
+description: 了解如何使用一个 Windows PowerShell 脚本来创建 HDInsight 群集、运行 Hive 作业、运行 Sqoop 作业和删除群集。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5da745901ec2fe57530e4d7fe38a055e0b8691ac
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0e91cf994306c115911d9dd9cf0018f7947502d8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析航班延误数据
 Hive 提供了通过类似 SQL 的脚本语言（称为 [HiveQL][hadoop-hiveql]）运行 Hadoop MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
@@ -134,7 +132,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
         $acct = Get-AzureRmSubscription
     }
     catch{
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     }
     Select-AzureRmSubscription -SubscriptionID $subscriptionID
 
@@ -256,7 +254,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
 2. 在该页面上，选择以下值：
 
     <table border="1">
-    <tr><th>Name</th><th>值</th></tr>
+    <tr><th>名称</th><th>值</th></tr>
     <tr><td>筛选年份</td><td>2013 </td></tr>
     <tr><td>筛选期间</td><td>1 月</td></tr>
     <tr><td>字段</td><td>*Year*、 *FlightDate*、 *UniqueCarrier*、 *Carrier*、 *FlightNum*、 *OriginAirportID*、 *Origin*、 *OriginCityName*、 *OriginState*、 *DestAirportID*、 *Dest*、 *DestCityName*、 *DestState*、 *DepDelayMinutes*、 *ArrDelay*、 *ArrDelayMinutes*、 *CarrierDelay*、 *WeatherDelay*、 *NASDelay*、 *SecurityDelay* 、 *LateAircraftDelay* （清除其他所有字段）</td></tr>
@@ -299,7 +297,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
     #Region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
-    catch{Login-AzureRmAccount}
+    catch{Connect-AzureRmAccount}
     #EndRegion
 
     #Region - Validate user input
@@ -383,8 +381,10 @@ HiveQL 脚本将执行以下操作：
     <tr><td>$storageAccountName</td><td>要将 HiveQL 脚本上传到的 Azure 存储帐户。</td></tr>
     <tr><td>$blobContainerName</td><td>要将 HiveQL 脚本上传到的 Blob 容器。</td></tr>
     </table>
-2. 打开 Azure PowerShell ISE。
-3. 将以下脚本复制并粘贴到脚本窗格中：
+    
+2. 打开 Azure PowerShell ISE。  
+
+3. 将以下脚本复制并粘贴到脚本窗格中：  
 
     ```powershell
     [CmdletBinding()]
@@ -418,7 +418,7 @@ HiveQL 脚本将执行以下操作：
     #Region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
-    catch{Login-AzureRmAccount}
+    catch{Connect-AzureRmAccount}
     #EndRegion
 
     #Region - Validate user input
@@ -573,8 +573,10 @@ HiveQL 脚本将执行以下操作：
     <tr><td>$sqlDatabaseLocation</td><td>只有在创建新的 Azure 数据库服务器时才会使用此值。</td></tr>
     <tr><td>$sqlDatabaseName</td><td>Sqoop 作业的 AvgDelays 表的 SQL 数据库。 保留空白会创建名为 HDISqoop 的数据库。 Sqooop 作业输出的表名称为 AvgDelays。 </td></tr>
     </table>
+    
 2. 打开 Azure PowerShell ISE。
-3. 将以下脚本复制并粘贴到脚本窗格中：
+
+3. 将以下脚本复制并粘贴到脚本窗格中：  
 
     ```powershell
     [CmdletBinding()]
@@ -635,7 +637,7 @@ HiveQL 脚本将执行以下操作：
     #Region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
-    catch{Login-AzureRmAccount}
+    catch{Connect-AzureRmAccount}
     #EndRegion
 
     #region - Create and validate Azure resouce group
@@ -699,11 +701,11 @@ HiveQL 脚本将执行以下操作：
     ```
 
    > [!NOTE]
-   > 该脚本使用具象状态传输 (REST) 服务 (http://bot.whatismyipaddress.com) 来检索外部 IP 地址。 IP 地址用于创建 SQL 数据库服务器的防火墙规则。
+   > 该脚本使用具象状态传输 (REST) 服务 http://bot.whatismyipaddress.com 来检索外部 IP 地址。 IP 地址用于创建 SQL 数据库服务器的防火墙规则。
 
     该脚本中使用的某些变量：
 
-   * **$ipAddressRestService** - 默认值是 http://bot.whatismyipaddress.com。这是用来获取外部 IP 地址的公共 IP 地址 REST 服务。 如果需要，可以使用其他服务。 使用此服务检索的外部 IP 地址用于创建 Azure SQL 数据库服务器的防火墙规则，使你能够从工作站访问数据库（通过 Windows PowerShell 脚本）。
+   * **$ipAddressRestService** - 默认值为 http://bot.whatismyipaddress.com。这是用来获取外部 IP 地址的公共 IP 地址 REST 服务。 如果需要，可以使用其他服务。 使用此服务检索的外部 IP 地址用于创建 Azure SQL 数据库服务器的防火墙规则，使你能够从工作站访问数据库（通过 Windows PowerShell 脚本）。
    * **$fireWallRuleName** - 这是 Azure SQL 数据库服务器的防火墙规则名称。 默认名称为 <u>FlightDelay</u>。 如果需要，可以将它重命名。
    * **$sqlDatabaseMaxSizeGB** - 只有在创建新的 Azure SQL 数据库服务器时才会使用此值。 默认值为 10GB。 10GB 对于本教程来说已足够。
    * **$sqlDatabaseName** - 只有在创建新的 Azure SQL 数据库时才会使用此值。 默认值为 HDISqoop。 如果将它重命名，则必须相应地更新 Sqoop Windows PowerShell 脚本。

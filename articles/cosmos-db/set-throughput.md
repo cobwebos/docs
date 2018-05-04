@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: 0e89b93764f51873d991524a5e226464c224b649
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="set-throughput-for-azure-cosmos-db-containers"></a>为 Azure Cosmos DB 容器设置吞吐量
+# <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>为 Azure Cosmos DB 容器设置和获取吞吐量
 
 可在 Azure 门户中或使用客户端 SDK 为 Azure Cosmos DB 容器设置吞吐量。 
 
@@ -96,6 +96,43 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
+## <a id="GetLastRequestStatistics"></a>通过 MongoDB API 的 GetLastRequestStatistics 命令获取吞吐量
+
+MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索给定操作的请求费用。
+
+例如，在 Mongo Shell 中，执行所需的操作来验证请求费用。
+```
+> db.sample.find()
+```
+
+接下来，执行命令 *getLastRequestStatistics*。
+```
+> db.runCommand({getLastRequestStatistics: 1})
+{
+    "_t": "GetRequestStatisticsResponse",
+    "ok": 1,
+    "CommandName": "OP_QUERY",
+    "RequestCharge": 2.48,
+    "RequestDurationInMilliSeconds" : 4.0048
+}
+```
+
+基于这一点，有一种方法可以估计应用程序所需的保留的吞吐量：记录与针对应用程序所使用的代表性项运行典型操作相关联的请求单位费用，并估计预计每秒执行的操作数。
+
+> [!NOTE]
+> 如果有多种项类型，它们的索引属性大小和数目截然不同，则记录与每种类型的典型项相关联的适用操作请求单位费用。
+> 
+> 
+
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>使用 MongoDB API 门户指标获取吞吐量
+
+准确估算 MongoDB API 数据库请求单位费用的最简单方法是使用 [Azure 门户](https://portal.azure.com)指标。 使用“请求数”和“请求费用”图表，可以估算每个操作消耗的请求单位数，以及每个操作相对于其他操作消耗的请求单位数。
+
+![MongoDB API 门户指标][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a>超过 MongoDB API 中保留的吞吐量限制
+如果应用程序超出针对某个容器预配的吞吐量，则会对该应用程序进行速率限制，直到使用速率降至预配的吞吐量速率。 进行速率限制时，后端会提前结束请求并返回 `16500` 错误代码 -`Too Many Requests`。 默认情况下，在返回`Too Many Requests`错误代码之前，MongoDB API 会自动重试最多 10 次。 如果收到大量的`Too Many Requests`错误代码，可能需要考虑在应用程序的错误处理例程中添加重试逻辑，或者[提高容器的预配吞吐量](set-throughput.md)。
+
 ## <a name="throughput-faq"></a>吞吐量常见问题
 
 **是否可以将吞吐量设置为小于 400 RU/s？**
@@ -109,3 +146,5 @@ client.replaceOffer(offer);
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关使用 Cosmos DB 进行预配和全球扩展的详细信息，请参阅[使用 Cosmos DB 进行分区和缩放](partition-data.md)。
+
+[1]: ./media/set-throughput/api-for-mongodb-metrics.png

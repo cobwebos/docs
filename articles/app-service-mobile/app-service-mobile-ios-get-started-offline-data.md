@@ -1,10 +1,10 @@
 ---
-title: "启用与 iOS 移动应用进行脱机同步 | Microsoft 文档"
-description: "了解如何使用 Azure 应用服务移动应用来缓存和同步 iOS 应用程序中的脱机数据。"
+title: 启用与 iOS 移动应用进行脱机同步 | Microsoft 文档
+description: 了解如何使用 Azure 应用服务移动应用来缓存和同步 iOS 应用程序中的脱机数据。
 documentationcenter: ios
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
 ms.service: app-service-mobile
@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: b676b51241e4883fb1b4c40caba8e281bfa68a4c
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 2f415f1886c654f3bdd880cdccaadc7aa3e69892
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -161,9 +161,9 @@ ms.lasthandoff: 01/04/2018
 | 属性 | Type |
 | --- | --- |
 | id | Integer 64 |
-| itemId | 字符串 |
+| itemId | String |
 | 属性 | 二进制数据 |
-| 表 | 字符串 |
+| 表 | String |
 | tableKind | 16 位整数 |
 
 
@@ -173,7 +173,7 @@ ms.lasthandoff: 01/04/2018
 
 | 属性 | Type |
 | --- | --- |
-| id |字符串 |
+| id |String |
 | operationId |64 位整数 |
 | 属性 |二进制数据 |
 | tableKind |16 位整数 |
@@ -184,10 +184,10 @@ ms.lasthandoff: 01/04/2018
 
 | 属性 | Type |
 | --- | --- |
-| id |字符串 |
-| key |字符串 |
+| id |String |
+| key |String |
 | keyType |64 位整数 |
-| 表 |字符串 |
+| 表 |String |
 | 值 |字符串 |
 
 ### <a name="data-table"></a>数据表
@@ -198,10 +198,10 @@ ms.lasthandoff: 01/04/2018
 | --- | --- | --- |
 | id | 字符串（标记为必需） |远程存储中的主键 |
 | complete | 布尔 | 待办事项字段 |
-| text |字符串 |待办事项字段 |
+| text |String |待办事项字段 |
 | createdAt | 日期 | （可选）映射到 **createdAt** 系统属性 |
 | updatedAt | 日期 | （可选）映射到 **updatedAt** 系统属性 |
-| 版本 | 字符串 | （可选）用于检测冲突，映射到版本 |
+| 版本 | String | （可选）用于检测冲突，映射到版本 |
 
 ## <a name="setup-sync"></a>更改应用的同步行为
 在本部分，将修改应用，以便在应用启动时或插入和更新项时应用不会进行同步。 仅当按刷新手势按钮时，应用才会同步。
@@ -285,4 +285,4 @@ ms.lasthandoff: 01/04/2018
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
 [云覆盖：Azure 移动服务中的脱机同步]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/en-us/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

@@ -2,24 +2,19 @@
 title: 管理 Azure SQL 数据仓库中的计算资源 | Microsoft Docs
 description: 了解 Azure SQL 数据仓库中的性能横向扩展功能。 调整 DWU 可以实现横向扩展，暂停数据仓库可以降低成本。
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: ''
-ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 02/20/2018
-ms.author: elbutter
-ms.openlocfilehash: c34e37f0c6393c65d4b60705012769608bb7395b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: ca6d34d3b670bfd05a9b65fe9e6b260120e3a5b8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>管理 Azure SQL 数据仓库中的计算资源
 了解如何管理 Azure SQL 数据仓库中的计算资源。 可以通过暂停数据仓库来降低成本，或者根据性能需求缩放数据仓库。 
@@ -28,7 +23,7 @@ ms.lasthandoff: 03/28/2018
 SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许每项功能单独进行缩放。 因此，可以独立于数据存储，根据性能需求缩放计算资源。 还可以暂停和恢复计算资源。 此体系结构的自然结果是，计算和存储的[计费](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)是独立的。 如果有一段时间不需要使用数据仓库，可以通过暂停计算来节省计算成本。 
 
 ## <a name="scaling-compute"></a>缩放计算资源
-调整数据仓库的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)设置，可以横向扩展或还原计算资源。 添加更多的数据仓库单位后，加载和查询性能可线性提高。 SQL 数据仓库提供数据仓库单位的[服务级别](performance-tiers.md#service-levels)，确保在横向扩展或还原后性能不会有明显的变化。 
+调整数据仓库的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)设置，可以横向扩展或还原计算资源。 添加更多的数据仓库单位后，加载和查询性能可线性提高。 
 
 有关横向扩展的步骤，请参阅适用于 [Azure 门户](quickstart-scale-compute-portal.md)、[PowerShell](quickstart-scale-compute-powershell.md) 或 [T-SQL](quickstart-scale-compute-tsql.md) 的快速入门。 也可以使用 [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) 执行横向扩展操作。
 
@@ -103,7 +98,7 @@ SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许�
 
 在暂停或缩放 SQL 数据仓库时，用户一发起暂停或缩放请求，系统就会在后台取消查询。  取消简单的 SELECT 查询是很快的操作，对于暂停或缩放实例所花费的时间几乎没有什么影响。  但是，事务性查询（将修改数据或结构）可能无法快速地停止。  **按定义，事务性查询必须完全完成或回退更改。**  回滚事务性查询已完成的任务可能需要很长时间，甚至比查询应用原始更改更久。  例如，如果取消的删除行查询已经运行一小时，系统可能需要一个小时重新插入已删除的行。  如果在事务运行中运行暂停或缩放，暂停或缩放操作可能需要一些时间，因为暂停和缩放必须等回滚完成才能继续。
 
-另请参阅[了解事务](sql-data-warehouse-develop-transactions.md)和 [优化事务][优化事务](sql-data-warehouse-develop-best-practices-transactions.md)。
+另请参阅[了解事务](sql-data-warehouse-develop-transactions.md)和[优化事务](sql-data-warehouse-develop-best-practices-transactions.md)。
 
 ## <a name="automating-compute-management"></a>将计算管理自动化
 若要将计算管理操作自动化，请参阅[使用 Azure Functions 管理计算](manage-compute-with-azure-functions.md)。
@@ -115,7 +110,7 @@ SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许�
 
 ## <a name="permissions"></a>权限
 
-缩放数据仓库需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse.md) 中所述的权限。  暂停和恢复需要 [SQL DB 参与者](../active-directory/role-based-access-built-in-roles.md#sql-db-contributor)权限，具体而言是 Microsoft.Sql/servers/databases/action 权限。
+缩放数据仓库需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) 中所述的权限。  暂停和恢复需要 [SQL DB 参与者](../role-based-access-control/built-in-roles.md#sql-db-contributor)权限，具体而言是 Microsoft.Sql/servers/databases/action 权限。
 
 
 ## <a name="next-steps"></a>后续步骤

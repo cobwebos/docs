@@ -1,6 +1,6 @@
 ---
-title: "Azure 付款处理蓝图 - 监视要求"
-description: "PCI DSS 要求 10"
+title: Azure 付款处理蓝图 - 监视要求
+description: PCI DSS 要求 10
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 5fa1d17e68ce04b1f67081479518279be6cca099
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 708c57c1d7b79d3fd3c129de9a7ce4099ab6ac36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的监视要求 
 ## <a name="pci-dss-requirement-10"></a>PCI DSS 要求 10
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 仅限具有相关职责的授权人员访问管理和诊断工具。 Microsoft Azure 根据“尽量减少特权”原则限制对生产环境中使用的工具进行的特许访问。 Microsoft Azure 记录和维护一个日志，其内容是在平台环境中对 Microsoft Azure 系统组件进行的所有个人用户访问。<br /><br />Microsoft Azure 平台组件（包括 OS、CloudNet、Fabric 等）已配置为记录和收集安全事件。 Microsoft Azure 平台中的管理员活动是受到记录的。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 仅限具有相关职责的授权人员访问管理和诊断工具。 Microsoft Azure 根据“尽量减少特权”原则限制对生产环境中使用的工具进行的特许访问。 Microsoft Azure 记录和维护一个日志，其内容是在平台环境中对 Microsoft Azure 系统组件进行的所有个人用户访问。<br /><br />Microsoft Azure 平台组件（包括 OS、CloudNet、Fabric 等）已配置为记录和收集安全事件。 Microsoft Azure 平台中的管理员活动是受到记录的。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 广泛记录所有系统活动和用户活动（包括 CHD 日志记录）。 有关详细信息，请参阅 [PCI 指南 - 日志记录](payment-processing-blueprint.md#logging-and-auditing)。|
 
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 仅限具有相关职责的授权人员访问管理和诊断工具。 Microsoft Azure 根据“尽量减少特权”原则限制对生产环境中使用的工具进行的特许访问。 Microsoft Azure 记录和维护一个日志，其内容是在平台环境中对 Microsoft Azure 系统组件进行的所有个人用户访问。<br /><br />Microsoft Azure 平台组件（包括 OS、CloudNet、Fabric 等）已配置为记录和收集安全事件。 Microsoft Azure 平台中的管理员活动是受到记录的。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 仅限具有相关职责的授权人员访问管理和诊断工具。 Microsoft Azure 根据“尽量减少特权”原则限制对生产环境中使用的工具进行的特许访问。 Microsoft Azure 记录和维护一个日志，其内容是在平台环境中对 Microsoft Azure 系统组件进行的所有个人用户访问。<br /><br />Microsoft Azure 平台组件（包括 OS、CloudNet、Fabric 等）已配置为记录和收集安全事件。 Microsoft Azure 平台中的管理员活动是受到记录的。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 广泛记录所有系统活动和用户活动，其中包括 CHD 日志记录。 有关详细信息，请参阅 [PCI 指南 - 日志记录](payment-processing-blueprint.md#logging-and-auditing)。|
 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 已建立相关过程，将 Microsoft Azure 环境中的服务器和网络设备与 NTP 第 1 层时间服务器同步，而后者则同步到全球定位系统 (GPS) 卫星。 每隔五分钟自动执行一次同步。 Microsoft Azure 负责确保服务主机正确进行时间同步。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 已建立相关过程，将 Microsoft Azure 环境中的服务器和网络设备与 NTP 第 1 层时间服务器同步，而后者则同步到全球定位系统 (GPS) 卫星。 每隔五分钟自动执行一次同步。 Microsoft Azure 负责确保服务主机正确进行时间同步。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 根据 10.3 控制的要求，记录用户识别情况、事件类型、日期时间戳、成功/失败事件、事件源、资源名称。|
 
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 已建立相关过程，将 Microsoft Azure 环境中的服务器和网络设备与 NTP 第 1 层时间服务器同步，而后者则同步到全球定位系统 (GPS) 卫星。 每隔五分钟自动执行一次同步。 Microsoft Azure 负责确保服务主机正确进行时间同步。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 已建立相关过程，将 Microsoft Azure 环境中的服务器和网络设备与 NTP 第 1 层时间服务器同步，而后者则同步到全球定位系统 (GPS) 卫星。 每隔五分钟自动执行一次同步。 Microsoft Azure 负责确保服务主机正确进行时间同步。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 针对 PaaS 服务的时间同步由 Azure 执行。|
 
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.4](#pci-dss-requirement-10-4) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.4](#pci-dss-requirement-10-4) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 针对 PaaS 服务的时间同步由 Azure 执行。|
 
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.4](#pci-dss-requirement-10-4) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.4](#pci-dss-requirement-10-4) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 针对 PaaS 服务的时间同步由 Azure 执行。|
 
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.4](#pci-dss-requirement-10-4) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.4](#pci-dss-requirement-10-4) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 针对 PaaS 服务的时间同步由 Azure 执行。|
 
 
@@ -144,8 +144,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | FIM 和 IDS 工具在 Microsoft Azure 环境中实施。 Microsoft Azure 使用 EWS，支持对其操作环境中的事件进行实时分析。 对于可能会损害系统的事件，MA 和 AIMS 会生成近实时警报。 <br /><br />集中启用和保留对服务、用户和安全事件（Web 服务器日志、FTP 服务器日志等）的日志记录。 Azure 仅限授权人员根据职责访问审核日志。 事件日志在 Azure 安全存档基础结构上存档，保留 180 天。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 OMS 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | FIM 和 IDS 工具在 Microsoft Azure 环境中实施。 Microsoft Azure 使用 EWS，支持对其操作环境中的事件进行实时分析。 对于可能会损害系统的事件，MA 和 AIMS 会生成近实时警报。 <br /><br />集中启用和保留对服务、用户和安全事件（Web 服务器日志、FTP 服务器日志等）的日志记录。 Azure 仅限授权人员根据职责访问审核日志。 事件日志在 Azure 安全存档基础结构上存档，保留 180 天。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 Azure 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
 
 
 
@@ -157,8 +157,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 OMS 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 Azure 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
 
 
 
@@ -170,8 +170,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 OMS 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 Azure 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
 
 
 
@@ -183,8 +183,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 OMS 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 Azure 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
 
 
 
@@ -196,8 +196,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 OMS 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 Azure 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
 
 
 
@@ -209,8 +209,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 OMS 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.5](#pci-dss-requirement-10-5) 的“Microsoft Azure”部分。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以使用 Contoso Webstore 通过 Azure 对所有元素进行审核。 可以通过 [Azure 备份](https://azure.microsoft.com/services/backup/)备份到外部源。|
 
 
 
@@ -225,7 +225,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | FIM 和 IDS 工具在 Microsoft Azure 环境中实施。 Microsoft Azure 使用 EWS，支持对其操作环境中的事件进行实时分析。 对于可能会损害系统的事件，MA 和 AIMS 会生成近实时警报。 <br /><br />集中启用和保留对服务、用户和安全事件（Web 服务器日志、FTP 服务器日志等）的日志记录。 Azure 仅限授权人员根据职责访问审核日志。 事件日志在 Azure 安全存档基础结构上存档，保留 180 天。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | FIM 和 IDS 工具在 Microsoft Azure 环境中实施。 Microsoft Azure 使用 EWS，支持对其操作环境中的事件进行实时分析。 对于可能会损害系统的事件，MA 和 AIMS 会生成近实时警报。 <br /><br />集中启用和保留对服务、用户和安全事件（Web 服务器日志、FTP 服务器日志等）的日志记录。 Azure 仅限授权人员根据职责访问审核日志。 事件日志在 Azure 安全存档基础结构上存档，保留 180 天。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)监视、报告和预防异常活动。 [Azure 顾问](/azure/advisor/advisor-security-recommendations)针对所有 Azure 资源提供一个一致且统一的建议视图。|
 
 
@@ -242,7 +242,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.6](#pci-dss-requirement-10-6) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.6](#pci-dss-requirement-10-6) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)监视、报告和预防异常活动。 [Azure 顾问](/azure/advisor/advisor-security-recommendations)针对所有 Azure 资源提供一个一致且统一的建议视图。|
 
 
@@ -255,7 +255,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.6](#pci-dss-requirement-10-6) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.6](#pci-dss-requirement-10-6) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)监视、报告和预防异常活动。 [Azure 顾问](/azure/advisor/advisor-security-recommendations)针对所有 Azure 资源提供一个一致且统一的建议视图。|
 
 
@@ -268,7 +268,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 10.6](#pci-dss-requirement-10-6) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 10.6](#pci-dss-requirement-10-6) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)监视、报告和预防异常活动。 [Azure 顾问](/azure/advisor/advisor-security-recommendations)针对所有 Azure 资源提供一个一致且统一的建议视图。|
 
 
@@ -281,7 +281,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 保留审核日志一年，最近 3 个月的数据可以通过内部门户立即进行访问。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 保留审核日志一年，最近 3 个月的数据可以通过内部门户立即进行访问。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 广泛记录所有系统活动和用户活动（包括 CHD 日志记录）。 有关详细信息，请参阅 [PCI 指南 - 日志记录](payment-processing-blueprint.md#logging-and-auditing)。|
 
 
@@ -307,7 +307,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 使用 EWS，支持对其操作环境中的事件进行实时分析。 对于可能会损害系统的事件，MA 和 AIMS 会生成近实时警报。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 使用 EWS，支持对其操作环境中的事件进行实时分析。 对于可能会损害系统的事件，MA 和 AIMS 会生成近实时警报。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 广泛记录所有系统活动和用户活动（包括 CHD 日志记录）。 有关详细信息，请参阅 [PCI 指南 - 日志记录](payment-processing-blueprint.md#logging-and-auditing)。|
 
 
@@ -330,7 +330,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 使用 EWS，支持对其操作环境中的事件进行实时分析。 对于可能会损害系统的事件，MA 和 AIMS 会生成近实时警报。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 使用 EWS，支持对其操作环境中的事件进行实时分析。 对于可能会损害系统的事件，MA 和 AIMS 会生成近实时警报。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 广泛记录所有系统活动和用户活动（包括 CHD 日志记录）。 有关详细信息，请参阅 [PCI 指南 - 日志记录](payment-processing-blueprint.md#logging-and-auditing)。|
 
 
@@ -344,7 +344,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 提供了一个用例，说明了如何管理和保护 CHD。|
 
 

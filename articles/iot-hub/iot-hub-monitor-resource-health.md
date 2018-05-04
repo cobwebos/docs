@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: 28903c4cc530937b4b39a5239d2a6d1ea6896924
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ed0bde0945a36c4fa194059f3b17557d566047a2
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
@@ -244,7 +244,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 通过诊断设置设置事件日志记录后，可以创建应用程序用于读出日志，以便可以根据日志中的信息采取措施。 以下示例代码从事件中心检索日志：
 
-```
+```csharp
 class Program 
 { 
     static string connectionString = "{your AMS eventhub endpoint connection string}"; 

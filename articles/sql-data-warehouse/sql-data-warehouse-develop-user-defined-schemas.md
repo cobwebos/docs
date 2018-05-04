@@ -1,27 +1,26 @@
 ---
-title: "SQL 数据仓库中的用户定义架构 | Microsoft 文档"
-description: "有关在开发解决方案时使用 Azure SQL 数据仓库中的 Transact-SQL 架构的技巧。"
+title: 在 SQL 数据仓库中使用用户定义架构 | Microsoft Docs
+description: 有关在 Azure SQL 数据仓库中使用 T-SQL 用户定义架构开发解决方案的技巧。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 52af5bd5-d5d3-4f9b-8704-06829fb924e3
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: c18e6d34416390ae7e93b69b28d508a540f7b1ab
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="user-defined-schemas-in-sql-data-warehouse"></a>SQL 数据仓库中用户定义的架构
+# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用用户定义架构
+有关在 Azure SQL 数据仓库中使用 T-SQL 用户定义架构开发解决方案的技巧。
+
+## <a name="schemas-for-application-boundaries"></a>应用程序边界的架构
+
 传统数据仓库通常使用不同的数据库，根据工作负荷、域或安全性来创建应用程序边界。 例如，传统 SQL Server 数据仓库可能包含过渡数据库、数据仓库数据库和某些数据集市数据库。 在此拓扑中，每个数据库均作为体系结构中的工作负荷和安全边界来运行。
 
 相比之下，SQL 数据仓库在一个数据库中运行整个数据仓库工作负荷。 不允许跨数据库联接。 因此，SQL 数据仓库预期仓库使用的所有表都存储在一个数据库中。
@@ -121,13 +120,5 @@ FROM    [edw].customer
 > 
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[开发概述][development overview]。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

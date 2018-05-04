@@ -1,26 +1,24 @@
 ---
-title: "使用 Python 组件的 Apache Storm - Azure HDInsight | Microsoft Docs"
-description: "了解如何创建使用 Python 组件的 Apache Storm 拓扑。"
+title: 使用 Python 组件的 Apache Storm - Azure HDInsight | Microsoft Docs
+description: 了解如何创建使用 Python 组件的 Apache Storm 拓扑。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 keywords: apache storm python
 ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: python
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/22/2018
+ms.topic: conceptual
+ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 1da38ebbe3354bbb36f68d1243b30bf2f4c5633f
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 0a8930da2d44714573155477d791dd9cb78d872a
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 开发 Apache Storm 拓扑
 
@@ -29,7 +27,7 @@ ms.lasthandoff: 01/23/2018
 > [!IMPORTANT]
 > 本文档中的信息已使用 Storm on HDInsight 3.6 进行测试。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-此项目的代码位于 [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount)。
+[https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) 上提供了此项目的代码。
 
 ## <a name="prerequisites"></a>先决条件
 

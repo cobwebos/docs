@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/18/2018
+ms.date: 04/20/2018
 ms.author: barclayn
-ms.openlocfilehash: fea235ed057517840515f1ad0543dba1b1c46dd0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4b2d785f5b9095a2decfc65ec46808ff6f65c38e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architecture"></a>Azure DDoS 防护最佳做法和参考体系结构
 
@@ -167,7 +167,7 @@ Azure DDoS 防护基本服务可帮助保护客户，但仅限于防止他们影
 
 - 培训网络安全团队
 
-网络安全是一场无止境的战争，需要不断在防御技术上做出创新。 Azure 的 DDoS 标准防护是一个艺术级的产品/服务 (tstate-of-the-artstomers)，它提供有效的解决方案来缓解日益复杂的 DDoS 攻击。
+网络安全是一场无止境的战争，需要不断在防御技术上做出创新。 Azure 的 DDoS 标准防护是适用于客户的最新产品/服务，可提供有效的解决方案来应对日益复杂的 DDoS 攻击。
 
 ## <a name="components-of-a-ddos-response-strategy"></a>DDoS 响应策略的组件
 

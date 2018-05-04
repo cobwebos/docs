@@ -1,6 +1,6 @@
 ---
-title: "在本地站点中重新保护 Azure 上的 VM | Microsoft Docs"
-description: "将 VM 故障转移到 Azure 之后，可以启动故障回复将 VM 恢复到本地。 了解如何在故障回复之前进行重新保护。"
+title: 在本地站点中重新保护 Azure 上的 VM | Microsoft Docs
+description: 将 VM 故障转移到 Azure 之后，可以启动故障回复将 VM 恢复到本地。 了解如何在故障回复之前进行重新保护。
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: cd5e53b49a850acf851e8351b5e14e2993176435
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的计算机
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 03/08/2018
 - 如果使用的是现有进程服务器/配置服务器计算机或者是规模或进程服务器/主目标服务器计算机，则需要添加新驱动器。 新驱动器应满足上述要求。 如果保留驱动器不存在，则它不会显示在门户上的选择下拉列表中。 将驱动器添加到本地主目标后，该驱动器最多将需要 15 分钟才会显示在门户上的选择项中。 如果 15 分钟后未显示该驱动器，还可以刷新配置服务器。
 - 在主目标服务器上安装 VMware 工具。 没有 VMware 工具，将无法检测到主目标的 ESXi 主机上的数据存储。
 - 在 VMware 中的主目标虚拟机的配置参数中设置 `disk.EnableUUID=true` 设置。 如果此行不存在，请添加此行。 若要为虚拟机磁盘 (VMDK) 提供一致的 UUID，以便能够正确进行装载，则必须指定此设置。
-- 主目标应当附加了至少一个 VMFS 数据存储。 如果未附加任何数据存储，则重新保护页上的“数据存储”输入将为空，你将无法继续操作。
+- 在创建了主目标的 ESX 主机应至少附加了一个 VMFS 数据存储。 如果未附加任何数据存储，则重新保护页上的“数据存储”输入将为空，你将无法继续操作。
 - 主目标服务器在磁盘上不能具有任何快照。 如果具有快照，则重新保护和故障回复会失败。
 - 主目标不能具有半虚拟化 SCSI 控制器。 控制器只能是 LSI 逻辑控制器。 如果没有 LSI 逻辑控制器，重新保护会失败。
 - 在任何给定的实例，主目标可以具有 atmst 60 磁盘附加到它。 如果正在重新保护到本地主目标虚拟机数之和总磁盘数超过 60，则重新保护到主目标会失败。 确保有足够的主目标的磁盘槽或部署更多的主目标服务器。
@@ -92,7 +92,7 @@ ms.lasthandoff: 03/08/2018
 
 1. 在“保管库” > “已复制的项”中，右键单击已故障转移的虚拟机，并选择“重新保护”。 也可以单击该计算机，并从命令按钮中选择“重新保护”。
 2. 确认已选中“Azure 到本地”的保护方向。
-3. 在“主目标服务器”和“进程服务器”中，选择本地主目标服务器和进程服务器。
+3. 在“主目标服务器”和“进程服务器”中，选择本地主目标服务器和进程服务器。  
 4. 对于“数据存储”，选择要将本地磁盘恢复到的数据存储。 删除本地虚拟机后，如果需要创建新磁盘，可使用此选项。 如果磁盘已存在，则会忽略此选项，但你仍然需要指定一个值。
 5. 选择保留驱动器。
 6. 将自动选择故障回复策略。

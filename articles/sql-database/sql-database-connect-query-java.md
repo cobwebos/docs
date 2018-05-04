@@ -10,23 +10,23 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: andrela
-ms.openlocfilehash: e91c80a3a4e44e2e02b77ed417d6b2d4b629fcf1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 2e11b349bb1bc5b92c3876df5c14312efc0805b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>使用 Java 查询 Azure SQL 数据库
 
-此快速入门教程演示如何使用 [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句查询数据。
+本快速入门演示了如何使用 [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句查询数据。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门教程，请确保符合以下先决条件：
+若要完成本快速入门，请确保符合以下先决条件：
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- 针对用于本快速入门教程的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+- 针对用于本快速入门的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
 
 - 已为操作系统安装 Java 和相关软件：
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 付款处理蓝图 - 物理访问要求"
-description: "PCI DSS 要求 9"
+title: Azure 付款处理蓝图 - 物理访问要求
+description: PCI DSS 要求 9
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 89f7b20a130e988bfe4964d50ae97de788ca4623
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 2dbf4d9e2f4ff7b6cdf8e48c24eeee4d036fe195
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="physical-access-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的物理访问要求 
 ## <a name="pci-dss-requirement-9"></a>PCI DSS 要求 9
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 负责实施、强制和监视针对数据中心的物理访问安全措施。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 负责实施、强制和监视针对数据中心的物理访问安全措施。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 负责实施、强制和监视针对数据中心的 CCTV 和生物识别访问控制机制。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 负责实施、强制和监视针对数据中心的 CCTV 和生物识别访问控制机制。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 平台中没有可公开使用的网络插孔。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 平台中没有可公开使用的网络插孔。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 对 Microsoft Azure 网络硬件进行物理访问会受到严格的控制，控制措施包括：访问列表、多种形式的身份验证、入口处的物理障碍、要求提供业务需求，经批准后才能访问设备。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 对 Microsoft Azure 网络硬件进行物理访问会受到严格的控制，控制措施包括：访问列表、多种形式的身份验证、入口处的物理障碍、要求提供业务需求，经批准后才能访问设备。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 负责实施、强制和监视物理访问安全措施以及员工或承包商在访问数据中心时使用的标识。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 负责实施、强制和监视物理访问安全措施以及员工或承包商在访问数据中心时使用的标识。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft 数据中心的访问授权使用授权访问列表进行控制，该列表由数据中心团队根据“尽量减少特权”的原则进行审批。 访问控制列表按季进行审核、验证和更新。<br /><br />Microsoft Azure 数据中心使用各种物理访问设备，例如外围入口、电子访问徽章读取器、生物识别读取器、限制门/门户、防重用设备。 会持续监视访问徽章设备。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft 数据中心的访问授权使用授权访问列表进行控制，该列表由数据中心团队根据“尽量减少特权”的原则进行审批。 访问控制列表按季进行审核、验证和更新。<br /><br />Microsoft Azure 数据中心使用各种物理访问设备，例如外围入口、电子访问徽章读取器、生物识别读取器、限制门/门户、防重用设备。 会持续监视访问徽章设备。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 负责确保预先批准的交付项已在安全的收货间收到，该收货间与信息处理设施进行了物理隔离，并由获得授权的人员监视。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 负责确保预先批准的交付项已在安全的收货间收到，该收货间与信息处理设施进行了物理隔离，并由获得授权的人员监视。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -140,7 +140,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 负责确保预先批准的交付项已在安全的收货间收到，该收货间与信息处理设施进行了物理隔离，并由获得授权的人员监视。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 负责确保预先批准的交付项已在安全的收货间收到，该收货间与信息处理设施进行了物理隔离，并由获得授权的人员监视。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft 数据中心访问权限必须预先获得批准，获得授权的访问者必须使用物理的安全方式在入口点签入，在进入前需提供有效的身份证明。 徽章可以清楚地指示员工。 承包商和访问者收到的临时徽章必须在离开设施时交回。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft 数据中心访问权限必须预先获得批准，获得授权的访问者必须使用物理的安全方式在入口点签入，在进入前需提供有效的身份证明。 徽章可以清楚地指示员工。 承包商和访问者收到的临时徽章必须在离开设施时交回。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -166,7 +166,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 访问者必须在离开 Microsoft 设施时交回徽章。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 访问者必须在离开 Microsoft 设施时交回徽章。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -181,7 +181,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 负责保留访问者日志，作为访问者在设施地点、计算机房间和数据中心（在其中进行持卡人数据存储或传输操作）进行的活动的物理审核记录。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 负责保留访问者日志，作为访问者在设施地点、计算机房间和数据中心（在其中进行持卡人数据存储或传输操作）进行的活动的物理审核记录。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -194,7 +194,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -207,7 +207,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -220,7 +220,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -233,7 +233,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -246,7 +246,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -272,7 +272,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -286,7 +286,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -299,7 +299,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -312,7 +312,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有数据存储在 Azure SQL 数据库中。 PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -325,7 +325,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 数据析构技术各不相同，具体取决于要销毁的数据对象的类型，即它是订阅、存储、虚拟机还是数据库。 在 Microsoft Azure 多租户环境中，必须小心确保一个客户的数据不会“漏”到其他客户的数据中，或者当客户删除数据时，其他客户（大多数情况下包括曾经拥有这些数据的客户）也无法访问那些被删除的数据。<br /><br />Microsoft Azure 遵循有关介质清理的 NIST 800-88 准则，解决了确保数据不是随意发布的这一主要考量。 这些准则包含电子清理和物理清理。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 数据析构技术各不相同，具体取决于要销毁的数据对象的类型，即它是订阅、存储、虚拟机还是数据库。 在 Microsoft Azure 多租户环境中，必须小心确保一个客户的数据不会“漏”到其他客户的数据中，或者当客户删除数据时，其他客户（大多数情况下包括曾经拥有这些数据的客户）也无法访问那些被删除的数据。<br /><br />Microsoft Azure 遵循有关介质清理的 NIST 800-88 准则，解决了确保数据不是随意发布的这一主要考量。 这些准则包含电子清理和物理清理。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 删除在部署中使用的资源组即可整个删除 Contoso Webstore。|
 
 
@@ -341,8 +341,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 利用 OMS 来记录所有系统更改。<br /><br />[Operations Management Suite (OMS)](/azure/operations-management-suite/) 可以大量记录更改。 可以对更改进行审核和验证，确保准确性。 如需更具体的指南，请参阅 [PCI 指南 - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing)。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 利用 Azure 来记录所有系统更改。<br /><br />Log Analytics 可广泛记录更改。 可以检查和验证更改的准确性。 如需更具体的指南，请参阅 [PCI 指南 - 日志记录和审核](payment-processing-blueprint.md#logging-and-auditing)。|
 
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 提供参考体系结构和一个列表，其中包含在其部署文档中使用的所有服务。|
 
 
@@ -373,7 +373,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -390,7 +390,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -403,7 +403,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 

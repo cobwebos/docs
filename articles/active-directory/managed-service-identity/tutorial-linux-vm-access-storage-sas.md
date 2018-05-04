@@ -1,8 +1,8 @@
 ---
-title: "使用 Linux VM MSI 通过 SAS 凭据访问 Azure 存储"
-description: "本教程介绍如何使用 Linux VM 托管服务标识 (MSI) 通过 SAS 凭据（而不是存储帐户访问密钥）访问 Azure 存储。"
+title: 使用 Linux VM MSI 通过 SAS 凭据访问 Azure 存储
+description: 本教程介绍如何使用 Linux VM 托管服务标识 (MSI) 通过 SAS 凭据（而不是存储帐户访问密钥）访问 Azure 存储。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a3edf58d1e2429d15b599f75e7f9382afd94bb7b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 724d05ab931254c9db372612fedb035a93c393a5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>使用 Linux VM 托管服务标识通过 SAS 凭据访问 Azure 存储
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/08/2018
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
 
-通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 事实上，启用 MSI 会执行两项操作：在 VM 上安装 MSI VM 扩展，以及为 VM 启用托管服务标识。  
+通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。 
 
 1. 导航到新虚拟机的资源组，并选择已在上一步中创建的虚拟机。
 2. 在左侧的 VM“设置”下，单击“配置”。
@@ -67,10 +67,6 @@ ms.lasthandoff: 03/08/2018
 4. 务必单击“保存”，以保存配置。
 
     ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. 若要检查 VM 上安装了哪些扩展，请单击“扩展”。 如果 MSI 已启用，列表中会显示“ManagedIdentityExtensionforLinux”。
-
-    ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 
@@ -124,7 +120,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
     下面是用于获取访问令牌的 CURL 请求和响应：
     
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true    
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true    
     ```
     
     > [!NOTE]

@@ -1,25 +1,25 @@
 ---
-title: "用于 Python 的 Azure Cosmos DB 表 API | Microsoft Docs"
-description: "了解有关 Azure Cosmos DB 表 API 的全部信息，包括发布日期、停用日期和各版本之间进行的更改。"
+title: 用于 Python 的 Azure Cosmos DB 表 API | Microsoft Docs
+description: 了解有关 Azure Cosmos DB 表 API 的全部信息，包括发布日期、停用日期和各版本之间进行的更改。
 services: cosmos-db
 documentationcenter: python
-author: mimig
-manager: jhubbard
-editor: 
-ms.assetid: 
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 11/20/2017
-ms.author: mimig1
-ms.custom: 
-ms.openlocfilehash: 70315d93b7211351c19a17553db88962f25d8acb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: sngun
+ms.custom: ''
+ms.openlocfilehash: 760f79bf50ea3e6e76beb26d2cd8419a8404a3ab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>用于 Python 的 Azure Cosmos DB 表 API SDK：发行说明和资源
 > [!div class="op_single_selector"]

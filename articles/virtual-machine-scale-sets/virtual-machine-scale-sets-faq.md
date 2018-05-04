@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: e7fc12c9b4cc79109975e34f64f236394c33af25
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c161b8fb70f20ef7d82834e6c61daff759726b93
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 04/03/2018
 
 **问：** 规模集是否可以与 Azure 可用性区域配合使用？
 
-**答：** 可以！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+**答：** 能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>自动缩放
@@ -170,7 +170,7 @@ ms.lasthandoff: 04/03/2018
     ```powershell
     Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
     ```
@@ -402,9 +402,9 @@ Update-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vms
  
 可以在 `$vmss` 中找到 extensionName 值。
    
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-operations-management-suite"></a>与 Operations Management Suite 集成的虚拟机规模集模板是否有任何示例可供参考？
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>与 Log Analytics 集成的虚拟机规模集模板是否有任何示例可供参考？
 
-有关与 Operations Management Suite 集成的虚拟机规模集模板示例，请参阅[部署 Azure Service Fabric 群集，并通过使用 Log Analytics 来启用监视](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)中的第二个示例。
+有关与 Log Analytics 集成的虚拟机规模集模板示例，请参阅 [Deploy an Azure Service Fabric cluster and enable monitoring by using Log Analytics](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)（部署 Azure Service Fabric 群集，并通过使用 Log Analytics 来启用监视）中的第二个示例。
    
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>扩展似乎在虚拟机规模集上并行运行。 这导致我的自定义脚本扩展失败。 如何进行修复？
 
@@ -693,9 +693,9 @@ IP 地址是从指定的子网中选择的。
 
 有关详细信息，请参阅[管理虚拟机规模集中的所有 VM](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)。
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-oms-operations-management-suite"></a>是否可以将规模集与 Azure OMS (Operations Management Suite) 集成？
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>是否可以将规模集与 Azure Log Analytics 集成？
 
-可以，可在规模集 VM 上安装 OMS 扩展。 Azure CLI 示例如下：
+可以，可在规模集 VM 上安装 Log Analytics 扩展。 Azure CLI 示例如下：
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```

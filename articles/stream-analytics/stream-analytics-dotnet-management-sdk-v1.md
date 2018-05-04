@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/06/2017
-ms.openlocfilehash: 79e807a1ee52c4b6b18671e25785ed14bd79624a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a8f272403a0c6903521acc7cc45935c4e5bc419c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK v1.x：使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
 了解如何通过 Management .NET SDK 使用用于 .NET 的流分析 API 设置和运行分析作业。 设置项目、创建输入和输出源、转换，以及开始和停止作业。 就分析作业来说，可以从 Blob 存储或事件中心流式传输数据。
@@ -45,7 +45,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* 设置要使用的输入源和输出目标。 有关进一步说明，请参阅[添加输入](stream-analytics-add-inputs.md)以设置示例输入，参阅[添加输出](stream-analytics-add-outputs.md)以设置示例输出。
+* 设置作业要连接到的输入源和输出目标。
 
 ## <a name="set-up-a-project"></a>设置项目
 要使用 .NET 版流分析 API 创建分析作业，请首先设置项目。

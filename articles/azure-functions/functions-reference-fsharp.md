@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions F # 开发人员参考 | Microsoft Docs"
-description: "了解如何开发使用 F # 的 Azure 功能。"
+title: 'Azure Functions F # 开发人员参考 | Microsoft Docs'
+description: '了解如何开发使用 F # 的 Azure 功能。'
 services: functions
 documentationcenter: fsharp
 author: sylvanc
 manager: jbronsk
-editor: 
-tags: 
-keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务器体系结构, F#"
+editor: ''
+tags: ''
+keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务器体系结构, F#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: functions
 ms.devlang: fsharp
@@ -16,14 +16,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2c84de3f38a49bc97fda04a7a4eb449a1f7d14bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 Azure Functions F# 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 数据通过函数参数流入 F # 函数。 在 `function.json`指定参数名称，没有访问函数记录器和取消令牌等的预定义的名称。
 

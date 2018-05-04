@@ -229,7 +229,7 @@
 ### [重试逻辑](media-services-retry-logic-in-dotnet-sdk.md)
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=media-services)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=media-services)
 ## [Azure PowerShell（资源管理器）](/powershell/module/azurerm.media)
 ## [Azure PowerShell（服务管理）](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: f251fe11c43dc4b3f29c70f937f5bfcb6af6c44e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 01cc75c522b85f7b4a4b38c92f42cb113d016b73
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
@@ -31,9 +31,9 @@ ms.lasthandoff: 03/16/2018
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | 遵循存储帐户的命名限制。 | [解析存储帐户名称](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | 检查可用的存储帐户属性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | 群集或区域没有可用的资源或无法支持所请求的 VM 大小。 稍后重试请求，或者请求不同的 VM 大小。 | [Linux 预配和分配问题](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)和 [Windows 预配和分配问题](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) |
+| AllocationFailed | 群集或区域没有可用的资源或无法支持所请求的 VM 大小。 稍后重试请求，或者请求不同的 VM 大小。 | [Linux 预配和分配问题](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)、[Windows 预配和分配问题](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)和[排查分配失败问题](../virtual-machines/windows/allocation-failure.md)|
 | AnotherOperationInProgress | 等待并发操作完成。 | |
-| AuthorizationFailed | 帐户或服务主体没有足够的访问权限，无法完成部署。 检查帐户所属的角色及其在部署范围内的访问权限。 | [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md) |
+| AuthorizationFailed | 帐户或服务主体没有足够的访问权限，无法完成部署。 检查帐户所属的角色及其在部署范围内的访问权限。 | [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md) |
 | BadRequest | 发送的部署值与资源管理器预期的值不匹配。 检查内部状态消息，以帮助进行故障排除。 | [模板引用](/azure/templates/)和[支持的位置](resource-manager-templates-resources.md#location) |
 | 冲突 | 请求的操作在资源的当前状态下不受允许。 例如，仅当创建 VM 或该 VM 已解除分配时，才允许调整磁盘大小。 | |
 | DeploymentActive | 等待此资源组上的并发部署完成。 | |

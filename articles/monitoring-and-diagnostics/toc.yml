@@ -67,6 +67,8 @@
           href: insights-alerts-powershell.md
         - name: 用于日志警报的 Webhook 操作
           href: monitor-alerts-unified-log-webhook.md
+        - name: 使用资源管理器模板创建更新的指标警报
+          href: monitoring-create-metric-alerts-with-templates.md
         - name: 使用资源管理器模板创建经典指标警报
           href: monitoring-enable-alerts-using-template.md
         - name: 将警报从 OMS 门户复制到 Azure 门户

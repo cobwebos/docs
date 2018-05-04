@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c9f7d4841846e41eacb66125bcdeeb29466bb0b8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何通过 Java 使用 SendGrid 发送电子邮件
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 示例使用 Java 编写。 涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
@@ -81,7 +81,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
        Authenticator auth = new SMTPAuthenticator();
        Session mailSession = Session.getDefaultInstance(properties, auth);
 3. 创建邮件并分配**收件人**、**发件人**、**主题**和内容值。 此操作在[如何：创建电子邮件](#how-to-create-an-email)部分进行演示。
-4. 通过 javax.mail.Transport 对象发送邮件。 此操作在[如何：发送电子邮件][How to: Send an Email]部分进行演示。
+4. 通过 javax.mail.Transport 对象发送邮件。 此操作在 [如何：发送电子邮件][#how-to-send-an-email] 部分进行演示。
 
 ## <a name="how-to-create-an-email"></a>如何：创建电子邮件
 以下代码演示如何为电子邮件指定值。

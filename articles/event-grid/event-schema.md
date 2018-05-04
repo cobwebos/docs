@@ -6,19 +6,21 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 7af0e1cc8ae36774ef1cebf1bada6477888860d0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cb7797f5322b9288faf96be2ede164f156fd66cc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
 本文介绍为所有事件提供的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象包含特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
 
-事件会发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 如果只存在单个事件，则数组长度为 1。 数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB。
+事件资源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB。 事件或数组超出大小限制时会收到响应“413 有效负载太大”。
+
+事件网格会将事件发送给数组中的订阅者（其中可能包含单个事件）。 此行为在将来可能会更改。
 
 可以在[事件架构存储](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane)中找到事件网格事件的 JSON 架构和每个 Azure 发布服务器的数据负载。
 

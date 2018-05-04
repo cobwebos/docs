@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用
 
@@ -145,6 +145,9 @@ ms.lasthandoff: 04/06/2018
 添加管理员用户名和密码。 有关密码复杂性要求，请参阅[密码策略](/sql/relational-databases/security/password-policy)。
 
 牢记此用户名和密码。 随后，你需要用它们来管理逻辑服务器实例。
+
+> [!IMPORTANT]
+> 虽然连接字符串中的密码已在 Visual Studio 和应用服务中受到屏蔽，但由于它实际上是保留在某个位置，因此增加了应用的受攻击面。 应用服务可以使用[托管服务标识](app-service-managed-service-identity.md)，因此根本不需要将机密保留在代码或应用配置中，这样就消除了上述风险。 有关详细信息，请参阅[后续步骤](#next-steps)。
 
 ![创建 SQL Server 实例](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
@@ -413,8 +416,6 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 [!INCLUDE [Clean up section](../../includes/clean-up-section-portal-web-app.md)]
 
-<a name="next"></a>
-
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何：
@@ -427,7 +428,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 > * 将日志从 Azure 流式传输到终端
 > * 在 Azure 门户中管理应用
 
-转到下一个教程，了解如何向 web 应用映射自定义 DNS 名称。
+转到下一教程，了解如何轻松地提高 Azure SQL 数据库连接的安全性。
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 DNS 名称映射到 Azure Web 应用](app-service-web-tutorial-custom-domain.md)
+> [使用托管服务标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)

@@ -13,11 +13,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: c8f35656e9db07b596cd24ecb570fa0960f540b8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b4370f63c2e5ccf466de7cb680377b12940a6efc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-python"></a>通过 Python 开始使用 Azure 表存储
 
@@ -42,7 +42,7 @@ Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，�
 
 - [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5 或 3.6
 - [用于 Python 的 Azure Cosmos DB 表 SDK](https://pypi.python.org/pypi/azure-cosmosdb-table/)。 此 SDK 同时与 Azure 表存储和 Azure Cosmos DB 表 API 连接。
-- [Azure 存储帐户](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#create-a-storage-account)或 [Azure Cosmos DB 帐户](https://azure.microsoft.com/en-us/try/cosmosdb/)
+- [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)或 [Azure Cosmos DB 帐户](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
@@ -223,11 +223,11 @@ table_service.delete_table('tasktable')
 
 ## <a name="next-steps"></a>后续步骤
 
-* [常见问题解答 - 使用表 API 进行开发](https://docs.microsoft.com/en-us/azure/cosmos-db/faq#develop-with-the-table-api)
+* [常见问题解答 - 使用表 API 进行开发](https://docs.microsoft.com/azure/cosmos-db/faq#develop-with-the-table-api)
 * [用于 Python API 的 Azure Cosmos DB SDK 参考](https://azure.github.io/azure-cosmosdb-python/)
 * [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)：一种跨平台的免费应用程序，用于在 Windows、MacOS 和 Linux 上对 Azure 存储数据进行可视化处理。
-* [在 Visual Studio (Windows) 中使用 Python](https://docs.microsoft.com/en-us/visualstudio/python/overview-of-python-tools-for-visual-studio)
+* [在 Visual Studio (Windows) 中使用 Python](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 [py_commit_batch]: https://azure.github.io/azure-cosmosdb-python/ref/azure.cosmosdb.table.tableservice.html
 [py_create_table]: https://azure.github.io/azure-cosmosdb-python/ref/azure.cosmosdb.table.tableservice.html

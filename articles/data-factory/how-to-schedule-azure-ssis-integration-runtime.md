@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 04/17/2018
 ms.author: douglasl
-ms.openlocfilehash: cc9ab244c784cab608a75092b542dea0a6f69f22
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3e69c147201ab7f3c5e2cf61e72bdb8073354e67
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>如何计划 Azure SSIS 集成运行时的启动和停止 
 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 下面是本文所述的概要步骤：
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/23/2018
 4. **创建数据工厂管道**。 创建的管道由三个活动组成。 第一个 **Web** 活动调用第一个 Webhook 来启动 Azure SSIS IR。 **存储过程**活动运行一个 SQL 脚本来运行 SSIS 包。 第二个 **Web** 活动停止 Azure SSIS IR。 有关使用存储过程活动从数据工厂管道调用 SSIS 包的详细信息，请参阅[调用 SSIS 包](how-to-invoke-ssis-package-stored-procedure-activity.md)。 然后，创建一个计划触发器，用于将管道计划为按指定的频率运行。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[在版本 1 中使用存储过程活动调用 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[在版本 1 中使用存储过程活动调用 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
 
  
 ## <a name="prerequisites"></a>先决条件
@@ -123,7 +123,7 @@ ms.lasthandoff: 03/23/2018
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
     
         "Logging in to Azure..."
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -226,7 +226,7 @@ ms.lasthandoff: 03/23/2018
 创建的管道由三个活动组成。 
 
 1. 第一个 **Web** 活动调用第一个 Webhook 来启动 Azure SSIS IR。 
-2. **存储过程**活动运行一个 SQL 脚本来运行 SSIS 包。 第二个 **Web** 活动停止 Azure SSIS IR。 有关使用存储过程活动从数据工厂管道调用 SSIS 包的详细信息，请参阅[调用 SSIS 包](how-to-invoke-ssis-package-stored-procedure-activity.md)。 
+2. “执行 SSIS 包”活动或“存储过程”活动运行 SSIS 包。
 3. 第二个 **Web** 活动调用 Webhook 来停止 Azure SSIS IR。 
 
 创建并测试管道后，请创建一个计划触发器，并将其与管道相关联。 计划触发器定义管道的计划。 假设要创建一个计划在每天晚上 11 点运行的触发器。 该触发器在每天的晚上 11 点运行管道。 该管道启动 Azure SSIS IR、执行 SSIS 包，然后停止 Azure SSIS IR。 
@@ -258,7 +258,7 @@ ms.lasthandoff: 03/23/2018
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
-9. 创建完成后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
 10. 单击“创作和监视”，在单独的选项卡中启动数据工厂用户界面 (UI)。
@@ -278,69 +278,55 @@ ms.lasthandoff: 03/23/2018
     3. 对于“正文”，请输入 `{"message":"hello world"}`。 
    
         ![第一个 Web 活动 -“设置”选项卡](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-settnigs-tab.png)
-5. 从“活动”工具箱的“常规”部分拖放“存储过程”活动。 将活动名称设置为 **RunSSISPackage**。 
-6. 切换到“属性”窗口中的“SQL 帐户”选项卡。 
-7. 对于“链接服务”，请单击“+ 新建”。
-8. 在“新建链接服务”窗口中执行以下操作： 
 
-    1. 选择“Azure SQL 数据库”作为“类型”。
-    2. 在“服务器名称”字段中，选择托管 **SSISDB** 数据库的 Azure SQL 服务器。 Azure SSIS IR 预配过程将在指定的 Azure SQL 服务器中创建 SSIS 目录（SSISDB 数据库）。
-    3. 选择“SSISDB”作为“数据库名称”。
-    4. 对于“用户名”，输入有权访问数据库的用户的名称。
-    5. 对于“密码”，输入该用户的密码。 
-    6. 单击“测试连接”按钮，测试与数据库之间的连接。
-    7. 单击“保存”按钮保存链接服务。
-9. 在“属性”窗口中，从“SQL 帐户”选项卡切换到“存储过程”选项卡，然后执行以下步骤： 
+4. 从“活动”工具箱的“常规”部分拖放“执行 SSIS 包”活动或“存储过程”活动。 将活动名称设置为 **RunSSISPackage**。 
 
-    1. 对于“存储过程名称”，请选择“编辑”选项，然后输入 **sp_executesql**。 
-    2. 在“存储过程参数”部分选择“+ 新建”。 
-    3. 对于参数的“名称”，输入“stmt”。 
-    4. 输入“字符串”作为参数**类型**。 
-    5. 输入以下 SQL 查询作为参数的**值**：
+5. 如果选择“执行 SSIS 包”活动，请按照[在 Azure 数据工厂中使用 SSIS 活动运行 SSIS 包](how-to-invoke-ssis-package-ssis-activity.md)中的说明完成活动创建。  请确保指定充足的重试尝试次数以等待 Azure-SSIS IR 可用，因为它的启动需要多达 30 分钟。 
 
-        在 SQL 查询中，指定 **folder_name**、**project_name** 和 **package_name** 参数的右侧值。 
+    ![重试设置](media/how-to-schedule-azure-ssis-integration-runtime/retry-settings.png)
 
-        ```sql
-        DECLARE       @return_value int, @exe_id bigint, @err_msg nvarchar(150)
+6. 如果选择“存储过程”活动，请按照[在 Azure 数据工厂中使用存储过程活动调用 SSIS 包](how-to-invoke-ssis-package-stored-procedure-activity.md)中的说明完成活动创建。 确保插入 Transact-SQL 脚本等待 Azure-SSIS IR 可用，因为它的启动需要多达 30 分钟。
+    ```sql
+    DECLARE @return_value int, @exe_id bigint, @err_msg nvarchar(150)
 
-        -- Wait until Azure-SSIS IR is started
-        WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
-        BEGIN
-            WAITFOR DELAY '00:00:01';
-        END
+    -- Wait until Azure-SSIS IR is started
+    WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
+    BEGIN
+        WAITFOR DELAY '00:00:01';
+    END
 
-        EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
-            @project_name=N'YourProject', @package_name=N'YourPackage',
-            @use32bitruntime=0, @runincluster=1, @useanyworker=1,
-            @execution_id=@exe_id OUTPUT 
+    EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
+        @project_name=N'YourProject', @package_name=N'YourPackage',
+        @use32bitruntime=0, @runincluster=1, @useanyworker=1,
+        @execution_id=@exe_id OUTPUT 
 
-        EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
+    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
 
-        EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
+    EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
 
-        -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/failed (4)/
-        -- pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
-        IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
-        BEGIN
-            SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
-            RAISERROR(@err_msg, 15, 1)
-        END
+    -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/
+    -- failed (4)/pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
+    IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
+    BEGIN
+        SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
+        RAISERROR(@err_msg, 15, 1)
+    END
+    ```
 
-        ```
-10. 将“Web”活动连接到“存储过程”活动。 
+7. 将“Web”活动连接到“执行 SSIS 包”或“存储过程”活动。 
 
     ![连接“Web”和“存储过程”活动](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-sproc.png)
 
-11. 将另一个“Web”活动拖放到“存储过程”活动的右侧。 将活动名称设置为 **StopIR**。 
-12. 在“属性”窗口中切换到“设置”选项卡，然后执行以下操作： 
+8. 将另一个“Web”活动拖放到“执行 SSIS 包”活动或“存储过程”活动的右侧。 将活动名称设置为 **StopIR**。 
+9. 在“属性”窗口中切换到“设置”选项卡，然后执行以下操作： 
 
     1. 对于“URL”，请粘贴用于停止 Azure SSIS IR 的 Webhook 的 URL。 
     2. 对于“方法”，请选择“POST”。 
     3. 对于“正文”，请输入 `{"message":"hello world"}`。  
-4. 将“存储过程”活动连接到最后一个“Web”活动。
+10. 将“执行 SSIS 包”活动或“存储过程”活动连接到最近的“Web”活动。
 
     ![完整管道](./media/how-to-schedule-azure-ssis-integration-runtime/full-pipeline.png)
-5. 单击工具栏中的“验证”来验证管道设置。 单击 **>>** 按钮关闭“管道验证报告”。 
+11. 单击工具栏中的“验证”来验证管道设置。 单击 **>>** 按钮关闭“管道验证报告”。 
 
     ![验证管道](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
 

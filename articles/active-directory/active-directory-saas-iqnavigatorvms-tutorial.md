@@ -1,23 +1,23 @@
 ---
-title: "教程：Azure Active Directory 与 IQNavigator VMS 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 IQNavigator VMS 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 IQNavigator VMS 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 IQNavigator VMS 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: a8a09b25-dfa5-4c31-aea2-53bf1853b365
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 82c91ba8fa340fb2b179d61200a69e94ab85b6d9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddb2883c0b90aaffa82bbc701cdc20de1feb7e19
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>教程：Azure Active Directory 与 IQNavigator VMS 集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 IQNavigator VMS
 - 可以让用户通过其 Azure AD 帐户自动登录到 IQNavigator VMS（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 IQNavigator VMS 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 IQNavigator VMS 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 若要从库中添加 IQNavigator VMS，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -103,7 +103,7 @@ ms.lasthandoff: 12/11/2017
     ![配置单一登录][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
 
 3. 在“IQNavigator VMS 域和 URL”部分中，执行以下步骤：
@@ -120,46 +120,26 @@ ms.lasthandoff: 12/11/2017
 
     在“中继状态”文本框中，使用以下格式键入 URL：`https://<subdomain>.iqnavigator.com`
 
-    > [!NOTE] 
-    > 这些不是实际值。 使用实际回复 URL 和中继状态更新这些值。 请联系 [IQNavigator VMS 客户端支持团队](https://www.beeline.com/iqn-product-support/)获取这些值。 
+    > [!NOTE]
+    > 这些不是实际值。 使用实际回复 URL 和中继状态更新这些值。 请联系 [IQNavigator VMS 客户端支持团队](https://www.beeline.com/iqn-product-support/)获取这些值。
 
-5. 单击“保存”按钮。
-
-    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_general_400.png)
-
-6. 若要生成**元数据** URL，请执行以下步骤：
-
-    a. 单击“应用注册”。
+5. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
     
-    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_endpointicon.png)
+    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_metadataurl.png)
 
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_endpoint.png)
-     
-    d. 现在，转到 IQNavigator VMS 的属性页，使用“复制”按钮复制应用程序 ID 并将其粘贴到记事本。
- 
-    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. IQNavigator 应用程序希望在名称标识符声明中的用户标识符是唯一的。 用户可以为名称标识符声明映射正确的值。 在这种情况下，出于演示目的，我们映射了 user.UserPrincipalName。 但是你应该根据组织设置映射正确的值。   
+6. IQNavigator 应用程序希望在名称标识符声明中的用户标识符是唯一的。 用户可以为名称标识符声明映射正确的值。 在这种情况下，出于演示目的，我们映射了 user.UserPrincipalName。 但是你应该根据组织设置映射正确的值。
 
     ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
 
+7. 单击“保存”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_general_400.png)
+
 8. 在“IQNavigator VMS 配置”部分中，单击“配置 IQNavigator VMS”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
-    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png) 
+    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
 
-9. 若要在 IQNavigator VMS 端配置单一登录，需要将元数据 URL、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [IQNavigator VMS 支持团队](https://www.beeline.com/iqn-product-support/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+9. 若要在 **IQNavigator VMS** 端配置单一登录，需要将**应用联合元数据 URL**、**注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL** 发送给 [IQNavigator VMS 支持团队](https://www.beeline.com/iqn-product-support/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -174,11 +154,11 @@ ms.lasthandoff: 12/11/2017
 
 2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_02.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_02.png)
 
 3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
- 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_03.png) 
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_03.png)
 
 4. 在“用户”对话框页上，执行以下步骤：
  
@@ -186,12 +166,12 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
- 
+    d. 单击“创建”。
+
 ### <a name="creating-a-iqnavigator-vms-test-user"></a>创建 IQNavigator VMS 测试用户
 
 本部分的目的是在 IQNavigator VMS 中创建名为“Britta Simon”的用户。 请与 [IQNavigator VMS 支持团队](https://www.beeline.com/iqn-product-support/)协作，将用户添加到 IQNavigator VMS 帐户中。
@@ -200,21 +180,21 @@ ms.lasthandoff: 12/11/2017
 
 在本部分中，通过授予 Britta Simon 访问 IQNavigator VMS 的权限，允许她使用 Azure 单一登录。
 
-![分配用户][200] 
+![分配用户][200]
 
 若要将 Britta Simon 分配到 IQNavigator VMS，请执行以下步骤：
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
-    ![分配用户][201] 
+    ![分配用户][201]
 
 2. 在应用程序列表中，选择“IQNavigator VMS”。
 
-    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png) 
+    ![配置单一登录](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
 
 3. 在左侧菜单中，单击“用户和组”。
 
-    ![分配用户][202] 
+    ![分配用户][202]
 
 4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
@@ -236,9 +216,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-
-
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

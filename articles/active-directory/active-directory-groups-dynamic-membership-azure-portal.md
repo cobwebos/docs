@@ -16,11 +16,11 @@ ms.date: 03/30/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: a4ed9ddabe19406fa694992f29cf529b491438c0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 25b3e47b013cbcd99a39d128cca733709b7a1bb9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
 在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。 可以为安全组或 Office 365 组中的动态成员身份设置规则。
@@ -168,7 +168,7 @@ ms.lasthandoff: 04/03/2018
 | mail |任意字符串值或 null（用户的 SMTP 地址） |(user.mail -eq "value") |
 | mailNickName |任意字符串值（用户的邮件别名） |(user.mailNickName -eq "value") |
 | mobile |任意字符串值或 null |(user.mobile -eq "value") |
-| objectId |用户对象的 GUID。 |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
+| objectId |用户对象的 GUID。 |(user.objectId -eq "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | 从本地同步至云端的用户的本地安全标识符 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName |任意字符串值或 null |(user.physicalDeliveryOfficeName -eq "value") |

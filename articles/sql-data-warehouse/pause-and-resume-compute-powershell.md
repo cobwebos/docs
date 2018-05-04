@@ -1,42 +1,38 @@
 ---
-title: "快速入门：在 Azure SQL 数据仓库中暂停和恢复计算 - PowerShell | Microsoft Docs"
-description: "PowerShell 任务通过暂停 Azure SQL 数据仓库的计算来节约成本。 在要使用数据仓库时恢复计算。"
+title: 快速入门：在 Azure SQL 数据仓库中暂停和恢复计算 - PowerShell | Microsoft Docs
+description: 使用 PowerShell 暂停 Azure SQL 数据仓库中的计算来节约成本。 在准备好使用数据仓库时恢复计算。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: 
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 01/25/2018
-ms.author: barbkess
-ms.openlocfilehash: b1f5c10fe294b44a9853f16e1866b77cf74a1479
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: ef341a1528bf759461abfb7cfc6d878fd8a44cb4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-powershell"></a>快速入门：在 PowerShell 中暂停和恢复 Azure SQL 数据仓库的计算
-使用 PowerShell 暂停 Azure SQL 数据仓库的计算来节约成本。 在准备好使用数据仓库时[还原计算](sql-data-warehouse-manage-compute-overview.md)。
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>快速入门：使用 PowerShell 暂停和恢复 Azure SQL 数据仓库中的计算
+使用 PowerShell 暂停 Azure SQL 数据仓库中的计算来节约成本。 在准备好使用数据仓库时[还原计算](sql-data-warehouse-manage-compute-overview.md)。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-本教程需要 Azure PowerShell 模块版本 5.1.1 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps.md)。 
+本教程需要 Azure PowerShell 模块版本 5.1.1 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps.md)。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本快速入门教程假定已有可暂停和恢复的 SQL 数据仓库。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。 
+本快速入门教程假定已有可暂停和恢复的 SQL 数据仓库。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-使用 [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 若要查看正在使用的订阅，请运行 [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription)。
@@ -53,7 +49,7 @@ Select-AzureRmSubscription -SubscriptionName "MySubscription"
 
 ## <a name="look-up-data-warehouse-information"></a>查找数据仓库信息
 
-查找计划暂停和恢复的数据仓库的数据库名称、服务器名称和资源组。 
+查找计划暂停和恢复的数据仓库的数据库名称、服务器名称和资源组。
 
 按照以下步骤查找数据仓库的位置信息。
 
@@ -63,12 +59,12 @@ Select-AzureRmSubscription -SubscriptionName "MySubscription"
 
     ![服务器名称和资源组](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. 记下将用作数据库名称的数据仓库名称。 同时记下服务器名称和资源组。 你 
+4. 记下将用作数据库名称的数据仓库名称。 同时记下服务器名称和资源组。 你
 5.  执行暂停和恢复命令时会用到。
 6. 如果服务器是 foo.database.windows.net，请在 PowerShell cmdlet 中仅使用第一部分作为服务器名称。 在上图中，完整的服务器名称为 newserver-20171113.database.windows.net。 删除后缀并使用 newserver-20171113 作为 PowerShell cmdlet 中的服务器名称。
 
 ## <a name="pause-compute"></a>暂停计算
-为了节省成本，可以按需暂停和恢复计算资源。 例如，如果晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 数据库暂停时，不对计算资源进行收费。 但是，仍将收取存储费用。 
+为了节省成本，可以按需暂停和恢复计算资源。 例如，如果晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 数据库暂停时，不对计算资源进行收费。 但是，仍将收取存储费用。
 
 若要暂停数据库，请使用 [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase.md) cmdlet。 以下示例暂停 newserver-20171113 服务器上托管的 mySampleDataWarehouse 数据仓库。 该服务器位于名为 myResourceGroup 的 Azure 资源组中。
 
@@ -107,10 +103,10 @@ $resultDatabase
 
 ## <a name="clean-up-resources"></a>清理资源
 
-针对数据仓库资源用量和数据仓库存储的数据，将会收取你的费用。 这些计算和存储资源是分开计费的。 
+针对数据仓库资源用量和数据仓库存储的数据，将会收取你的费用。 这些计算和存储资源是分开计费的。
 
 - 要将数据保存在存储中，请暂停计算。
-- 如果不想支付将来的费用，则可以删除数据仓库。 
+- 如果不想支付将来的费用，则可以删除数据仓库。
 
 请按照下列步骤按需清理资源。
 

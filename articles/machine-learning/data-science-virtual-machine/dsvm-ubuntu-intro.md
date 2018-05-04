@@ -5,24 +5,24 @@ services: machine-learning
 documentationcenter: ''
 author: bradsev
 manager: cgronlun
-editor: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 721b18845a3b839d59c7eb0a04646635fa8d9fe7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4715384a0c6eb24a6a4208ca387b8c4a9871d5c7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
-适用于 Linux 的数据科学虚拟机是基于 Ubuntu 的虚拟机映像，使用它可以轻松地开始在 Azure 上进行深度学习。 深度学习工具包括：
+适用于 Linux 的数据科学虚拟机是基于 Ubuntu 的虚拟机映像，使用它可以轻松地开始在 Azure 上进行机器学习（包括深度学习）。 深度学习工具包括：
 
   * [Caffe](http://caffe.berkeleyvision.org/)：一种以高速、清晰表达和模块化为理念建立起来的深度学习框架
   * [Caffe2](https://github.com/caffe2/caffe2)：Caffe 的跨平台版本
@@ -31,6 +31,7 @@ ms.lasthandoff: 03/17/2018
   * [Keras](https://keras.io/)：Python 中基于 Theano 和 TensorFlow 的高级神经网络 API
   * [MXNet](http://mxnet.io/)：灵活、高效的深度学习库，具有许多语言绑定
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits)：一种简化常见深度学习任务的图形系统
+  * [PyTorch](http://pytorch.org/)：高级 Python 库，有对动态网络的支持
   * [TensorFlow](https://www.tensorflow.org/)：来自 Google 的机器智能的开源库
   * [Theano](http://deeplearning.net/software/theano/)：用于定义、优化和高效评估涉及多维数组的数学表达式的 Python 库
   * [Torch](http://torch.ch/)：一种广泛支持机器学习算法的科学计算框架
@@ -102,7 +103,7 @@ ms.lasthandoff: 03/17/2018
    * **存储帐户**：可以在订阅中创建新的 Azure 存储帐户，或者使用位于与向导的**基本信息**步骤中选择的相同位置的现有帐户。
    * **其他参数**：大多数情况下，只需使用默认值。 若考虑使用非默认值，请将鼠标悬停在信息链接上获取特定字段的帮助。
    
-   d.单击“下一步”。 **汇总**：
+   d. **汇总**：
    
    * 验证输入的所有信息是否正确。
    
@@ -113,6 +114,14 @@ ms.lasthandoff: 03/17/2018
 预配大约需要 5 到 10 分钟。 预配的状态在 Azure 门户上显示。
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>如何访问适用于 Linux 的数据科学虚拟机
+
+可以使用三种方法访问 Ubuntu DSVM：
+1. 终端会话 SSH
+2. 图形会话 X2Go
+3. Jupyter 笔记本的 JupyterHub 和 JupyterLab
+
+### <a name="ssh"></a>SSH
+
 创建 VM 后，可使用 SSH 登录。 使用在步骤 3 的**基本信息**部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 上下载 [Putty](http://www.putty.org) 之类的 SSH 客户端工具。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。
 
 > [!NOTE]
@@ -120,7 +129,7 @@ ms.lasthandoff: 03/17/2018
 > 
 > 
 
-## <a name="installing-and-configuring-x2go-client"></a>安装和配置 X2Go 客户端
+### <a name="x2go"></a>X2Go
 Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 若要连接到 Linux VM 图形桌面，请在客户端上完成以下过程：
 
 1. 从 [X2Go ](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
@@ -134,6 +143,14 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
    * **共享文件夹**：如果希望将目录从客户端计算机装入 Linux VM，则在此选项卡上添加要与 VM 共享的客户端计算机目录。
 
 通过 X2Go 客户端使用 SSH 客户端或 XFCE 图形桌面登录 VM 后，即可开始使用 VM 上安装和配置的工具。 在 XFCE 上，可看到许多工具的应用程序菜单快捷方式和桌面图标。
+
+### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub 和 JupyterLab
+
+Ubuntu DSVM 运行 [JupyterHub](https://github.com/jupyterhub/jupyterhub)，一个多用户 Jupyter 服务器。 若要连接，请浏览到笔记本电脑或台式电脑上的 https://your-vm-ip:8000，输入用来创建 VM 的用户名和密码，然后登录。 提供多个示例笔记本用于浏览和试用。
+
+也会提供 JupyterLab（下一代的 Jupyter 笔记本和 JupyterHub）。 若要访问它，请登录到 JupyterHub，然后浏览到 URL https://your-vm-ip:8000/lab。 可以通过将此行添加到 /etc/jupyterhub/jupyterhub_config.py，将 JupyterLab 设置为默认笔记本服务器：
+
+    c.Spawner.default_url = '/lab'
 
 ## <a name="tools-installed-on-the-data-science-virtual-machine-for-linux"></a>在适用于 Linux 的数据科学虚拟机上安装的工具
 ### <a name="deep-learning-libraries"></a>深度学习库
@@ -159,7 +176,7 @@ Caffe2 是 Facebook 基于 Caffe 构建的深度学习框架。 它可在 Conda 
 可在 JupyterHub 中获取一些示例笔记本。
 
 #### <a name="h2o"></a>H2O
-H2O 是一种快速的内存中分布式机器学习和预测分析平台。 根环境和 py35 Anaconda 环境中都安装有 Python 包。 同时也会安装 R 包。 从命令行启动 H2O，运行 `java -jar /dsvm/tools/h2o/current/h2o.jar`；可能需要配置各种[命令行选项](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)。 首选可以浏览到 http://localhost:54321 访问 Flow Web UI。 示例笔记本也位于 JupyterHub。
+H2O 是一种快速的内存中分布式机器学习和预测分析平台。 根环境和 py35 Anaconda 环境中都安装有 Python 包。 同时也会安装 R 包。 从命令行启动 H2O，运行 `java -jar /dsvm/tools/h2o/current/h2o.jar`；可能需要配置各种[命令行选项](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)。 首先可以浏览到 http://localhost:54321 访问 Flow Web UI。 示例笔记本也位于 JupyterHub。
 
 #### <a name="keras"></a>Keras
 Keras 是 Python 中的高级神经网络 API，能够在 TensorFlow 或 Theano 上运行。 位于根环境和 py35 Python 环境中。 
@@ -170,7 +187,7 @@ MXNet 是专为提高效率和灵活性而设计的深度学习框架。 具有 
 #### <a name="nvidia-digits"></a>NVIDIA DIGITS
 NVIDIA 深度学习 GPU 训练系统也称为 DIGITS，该系统用于简化常见深度学习任务，比如管理数据，在 GPU 系统上设计和训练神经网络，以及实时监视高级可视化效果的性能。 
 
-DIGITS 可用作一项服务，称为数字。 启动服务，并浏览到 http://localhost:5000 开始体验。
+DIGITS 可用作一项服务，称为数字。 启动服务，然后浏览到 http://localhost:5000 开始操作。
 
 DIGITS 也可在 Conda 根环境中作为 Python 模块安装。
 
@@ -193,30 +210,32 @@ R 是数据分析和机器学习的最常用语言之一。 如果要使用 R �
 还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](http://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 此脚本可以在 R 交互式界面中运行，可以通过在 shell 中键入 **R** 来输入此脚本（如前所述）。  
 
 ### <a name="python"></a>Python
-为方便使用 Python 进行开发，已安装 Anaconda Python 分发版 2.7 和 3.5。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。 可以使用默认文本编辑器。 此外，可以使用 Spyder，它是与 Anaconda Python 分发版捆绑在一起的 Python IDE。 Spyder 需要图形桌面或 X11 转发。 图形桌面中提供了 Spyder 的快捷方式。
+使用 Python 2.7 和 3.5 环境安装 Anaconda Python。 2.7 环境称为根环境，3.5 环境称为 py35 环境。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。 
 
-由于同时拥有 Python 2.7 和 Python 3.5，因此需专门激活要在当前会话中使用的所需 Python 版本（conda 环境）。 激活过程会将 PATH 变量设置为所需的 Python 版本。
+默认为 py35 环境。 激活根 (2.7) 环境：
 
-若要激活 Python 2.7 conda 环境，请从 shell 运行以下命令：
+    source activate root
 
-    source /anaconda/bin/activate root
+再次激活 py35 环境：
 
-Python 2.7 安装在 */anaconda/bin* 中。
+    source activate py35
 
-若要激活 Python 3.5 conda 环境，请从 shell 运行以下命令：
+若要调用 Python 交互式会话，只需在 shell 中键入 **python**。 
 
-    source /anaconda/bin/activate py35
+使用 ```conda``` 或 ````pip```` 安装其他 Python 库。 对于 pip，如果不需要默认值，请先激活正确环境：
 
+    source activate root
+    pip install <package>
 
-Python 3.5 安装在 */anaconda/envs/py35/bin* 中。
+或者，指定到 pip 的完整路径：
 
-若要调用 Python 交互式会话，只需在 shell 中键入 **python**。 如果在图形界面上或已设置 X11 转发，则可以通过键入 **pycharm** 启动 PyCharm Python IDE。
+    /anaconda/bin/pip install <package>
+    
+对于 conda，应始终指定环境名称（py35 或根）：
 
-若要安装其他 Python 库，需要在 sudo 下运行 ```conda``` 或 ````pip```` 命令，并提供 Python 包管理器（conda 或 pip）的完整路径，以便安装到正确的 Python 环境。 例如：
+    conda install <package> -n py35
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
-
+如果在图形界面上或已设置 X11 转发，则可以通过键入 **pycharm** 启动 PyCharm Python IDE。 可以使用默认文本编辑器。 此外，可以使用 Spyder，它是与 Anaconda Python 分发版捆绑在一起的 Python IDE。 Spyder 需要图形桌面或 X11 转发。 图形桌面中提供了 Spyder 的快捷方式。
 
 ### <a name="jupyter-notebook"></a>Jupyter 笔记本
 Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的环境。 可通过 JupyterHub 访问 Jupyter notebook。 使用本地 Linux 用户名和密码登录。

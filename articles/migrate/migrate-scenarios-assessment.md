@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 04/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1ac6c3e428148a6609b264b0b8f8cff416b0fa4d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 33e31c47a6125ac363410a9a78e9c9310c74d51e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>方案 1：评估要迁移到 Azure 的本地工作负荷
 
@@ -285,7 +285,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 5. 在“指定 vCenter Server 详细信息”中，执行以下操作：
     - 指定 vCenter 服务器的名称 (FQDN) 或 IP 地址。
     - 在“用户名”和“密码”中，指定收集器用来发现 vCenter Server 上的 VM 的只读帐户凭据。
-    - 在“选择范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 包含的范围不应超过 1000 个 VM。 
+    - 在“选择范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1500 台 VM。 
 
     ![连接到 vCenter](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 

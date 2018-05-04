@@ -7,13 +7,13 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/21/2017
+ms.date: 04/20/2018
 ms.author: liamca
-ms.openlocfilehash: c83b3b0d9c0cc99ba8a76dc4a6b2f83ed6de49dc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 46e03834cb307ea103a8794616f6f38227881272
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>在 Azure 搜索中生成查询的 Lucene 查询语法示例
 为 Azure 搜索构建查询时，可使用默认的[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)或备用的 [Azure 搜索中的 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)。 Lucene 查询分析程序支持更复杂的查询构造，如字段范围查询、模糊搜索、邻近搜索、字词提升和正则表达式搜索。
@@ -37,13 +37,13 @@ ms.lasthandoff: 04/23/2018
 
 **示例 1** -- 右键单击以下查询段，在加载 JSFiddle 和运行查询的新浏览器页面中打开。
 
-* [&queryType=full&search=*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
+* [&queryType=full&search=*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
 
 在新的浏览器窗口中，JavaScript 源和 HTML 输出并排显示。 脚本引用完整查询（而不仅仅是代码段，如链接中所示）。 每个示例的 URL 中显示的都是完整查询。 
 
 以下查询从“纽约市工作”索引（即在沙盒服务上加载的 nycjobs）返回文档。 为简洁起见，查询仅指定返回职位。 完整的基础查询如下所示：
 
-    http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*
+    http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*
 
 **searchFields** 参数将搜索限制在 business title 字段范围内。 “queryType”设为“完整”，这指示 Azure 搜索将 Lucene 查询分析器用于此查询。
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 04/23/2018
 
 **示例 2** -- 右键单击以下查询代码段。以下查询搜索包含“高级”（而非“初级”）一词的职位：
 
-* [&queryType=full&search= business_title:senior NOT junior](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:senior+NOT+junior)
+* [&queryType=full&search= business_title:senior NOT junior](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:senior+NOT+junior)
 
 ## <a name="fuzzy-search-example"></a>模糊搜索示例
 模糊搜索在构造相似的术语中查找匹配项。 对于 [Lucene 文档](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)，模糊搜索基于 [Damerau-Levenshtein 距离](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance)。
@@ -72,7 +72,7 @@ ms.lasthandoff: 04/23/2018
 
 **示例 3** -- 右键单击以下查询段。 此查询搜索带有术语“关联”（拼写错误）的作业：
 
-* [&queryType=full&search= business_title:asosiate~](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:asosiate~)
+* [&queryType=full&search= business_title:asosiate~](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:asosiate~)
 
 > [!Note]
 > 不会[分析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)模糊查询，如果希望进行词干分解或词形还原，可能会感到惊讶。 只会对完整字词（字词查询或短语查询）进行词法分析。 字词不完整的查询类型（前缀查询、通配符查询、正则表达式查询、模糊查询）会被直接添加到查询树中，绕过分析阶段。 对不完整查询字词执行的唯一转换操作是转换为小写。
@@ -83,11 +83,11 @@ ms.lasthandoff: 04/23/2018
 
 **示例 4** -- 右键单击查询。 搜索带有术语“高级分析师”的作业，分隔字数不超过一个字：
 
-* [&queryType=full&search=business_title:"senior analyst"~1](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~1)
+* [&queryType=full&search=business_title:"senior analyst"~1](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~1)
 
 **示例 5** -- 再次尝试删除术语“高级分析师”之间的词。
 
-* [&queryType=full&search=business_title:"senior analyst"~0](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~0)
+* [&queryType=full&search=business_title:"senior analyst"~0](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~0)
 
 ## <a name="term-boosting-examples"></a>字词提升示例
 术语提升是指相对于不包含术语的文档，提高包含提升术语的文档排名。 这不同于计分配置文件，因为计分配置文件提升某些字段，而非特定术语。 以下示例有助于解释这些差异。
@@ -98,11 +98,11 @@ ms.lasthandoff: 04/23/2018
 
 **示例 6** -- 右键单击查询。 搜索带有术语“计算机分析师”的作业时，我们看到没有结果同时包含“计算机”和“分析师”，但“分析师”作业排在结果顶部。
 
-* [&queryType=full&search=business_title:computer analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
+* [&queryType=full&search=business_title:computer analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
 
 **示例 7**  --  请重试，如果两个词都不存在，这一次提升带有术语“计算机”而非“分析师”的结果。
 
-* [&queryType=full&search=business_title:computer^2 analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
+* [&queryType=full&search=business_title:computer^2 analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
 
 ## <a name="regular-expression-example"></a>正则表达式示例
 正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](http://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。
@@ -111,14 +111,14 @@ ms.lasthandoff: 04/23/2018
 
 * `&queryType=full&$select=business_title&search=business_title:/(Sen|Jun)ior/`
 
-此示例的 URL 在页面中无法正常呈现。 解决方法是复制下面的 URL，并将其粘贴到浏览器 URL 地址：`http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
+此示例的 URL 在页面中无法正常呈现。 解决方法是复制下面的 URL，并将其粘贴到浏览器 URL 地址：`http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
 
 ## <a name="wildcard-search-example"></a>通配符搜索示例
 可将通常可识别的语法用于多个 (\*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
 **示例 9** -- 右键单击查询。 搜索包含前缀“prog”的作业，这会包含带有术语“编程”和“程序员”的 business title。
 
-* [&queryType=full&$select=business_title&search=business_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:prog*)
+* [&queryType=full&$select=business_title&search=business_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26queryType=full%26$select=business_title%26search=business_title:prog*)
 
 不得将 * 或 ? 符号用作搜索的第一个字符。
 

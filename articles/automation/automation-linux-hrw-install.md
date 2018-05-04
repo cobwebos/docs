@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b4559afa9294111eaa1f20fdf295d1fb26dcc994
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bc6c98784195aaf80cb6ca32ef29f75666099b06
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>如何部署 Linux 混合 Runbook 辅助角色
 
@@ -36,7 +36,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 
 1.  启用 Azure 中的“自动化混合辅助角色”解决方案。 可通过以下任一方式实现：
 
-   1. 通过[将 Log Analytics 管理解决方案添加到工作区](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-add-solutions)中所述的过程，将“自动化混合辅助角色”解决方案添加到你的订阅。
+   1. 通过[将 Log Analytics 管理解决方案添加到工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)中所述的过程，将“自动化混合辅助角色”解决方案添加到你的订阅。
    2. 运行以下 cmdlet：
 
         ```powershell

@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/12/2018
-ms.openlocfilehash: cda5c26d4256720a8cf9af0e9abd604c979422a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常检测
 
@@ -65,6 +65,8 @@ AnomalyDetection 运算符返回一个包含所有三种评分的记录作为输
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 上述异常评分如果有一项超过阈值，将检测到某个异常。 阈值可以是任意浮点数 >= 0。 阈值是敏感度和置信度之间的权衡值。 例如，过低的阈值使得检测对变化更敏感，生成更多警报，而较高的阈值会使检测的敏感性下降，其置信度虽然变高，但容易过滤某些异常。 阈值的精确值取决于具体情况。 虽然不设上限，但建议使用 3.25-5 范围内的值。 
+
+示例中显示的值 3.25 只是一个建议的起点。 请通过对自己的数据集运行操作来微调值，并观察输出值，直至达到一个可容许的阈值。
 
 ## <a name="anomaly-detection-algorithm"></a>异常检测算法
 
@@ -118,19 +120,19 @@ AnomalyDetection 运算符返回一个包含所有三种评分的记录作为输
    - 如果 event_value > 90th_percentile，则为 event_value/90th_percentile  
    - 如果 event_value < 10th_percentile，则为 10th_percentile/event_value  
 
-2. **慢速正趁势：**根据历史记录窗口中的事件值计算趋势线，可以观察该线中的正趋势。 奇异值计算方式为：  
+2. **慢速正趁势：**根据历史记录窗口中的事件值计算趋势线，并且该操作将查找该线中的正趋势。 奇异值计算方式为：  
 
    - 如果斜率为正，则为斜率  
    - 否则为 0 
 
-1. **慢速负趁势：**根据历史记录窗口中的事件值计算趋势线，可以观察该线中的负趋势。 奇异值计算方式为： 
+3. **慢速负趁势：**根据历史记录窗口中的事件值计算趋势线，并且该操作将查找该线中的负趋势。 奇异值计算方式为： 
 
    - 如果斜率为负，则为斜率  
    - 否则为 0  
 
 计算传入事件的奇异值后，可根据计算该奇异值计算鞅值（有关如何计算鞅值的详细信息，请参阅[机器学习博客](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)）。 此鞅值作为异常评分返回。 鞅值在响应奇异值时缓慢递增，因此，检测器能够稳定地检测偶发性更改并减少误报。 它也是一个有用的属性： 
 
-概率 [例如 M<sub>t</sub> > λ] < 1/λ，其中，M<sub>t</sub> 是瞬时 t 处的鞅值，λ 是实际值。 例如，如果 M<sub>t</sub>> 100 时发出警报，则误报概率小于 1/100。  
+概率 [例如 M<sub>t</sub> > λ] < 1/λ，其中，M<sub>t</sub> 是瞬时 t 处的鞅值，λ 是实际值。 例如，如果 M<sub>t</sub>> 100 时存在警报，则误报概率小于 1/100。  
 
 ## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>有关使用双向级别更改检测器的指导 
 
@@ -140,7 +142,7 @@ AnomalyDetection 运算符返回一个包含所有三种评分的记录作为输
 
 1. 当时序突然发现值增大或下降时，AnomalyDetection 运算符会检测该更改。 但检测恢复正常状态需要更多的规划。 时序在异常之前是否处于稳定状态。这可以通过将 AnomalyDetection 运算符的检测窗口设置为异常长度的最多一半来实现这种检测。 此方案假设可以提前评估异常的最短持续时间，并且该时间范围中有足够的事件可用于充分训练模型（至少 50 个事件）。 
 
-   下图 1 和 2 使用上限更改显示了此方案（相同的逻辑适用于下限更改）。 在这两个示意图中，波形表示异常级别更改。 橙色竖线表示跃点边界，跃点大小与 AnomalyDetection 运算符中指定的检测窗口相同。 绿线表示训练窗口的大小。 在图 1 中，跃点大小与异常持续时间相同。 在图 2 中，跃点大小是异常持续时间的一半。 在所有情况下，都会检测向上更改，因为用于评分的模型是根据正常数据训练的。 但是，根据双向级别更改检测器的工作原理，我们必须从为恢复正常状态评分的模型的训练窗口中排除正常值。 在图 1 中，评分模型的训练包括一些正常事件，因此无法检测恢复正常状态。 但在图 2 中，训练仅包括异常部分，因此可确保检测恢复正常状态。 出于相同的原因，任何小于一半的项目也适用，而任何更大的项目最终会包括一部分正常事件。 
+   下图 1 和 2 使用上限更改显示了此方案（相同的逻辑适用于下限更改）。 在这两个示意图中，波形表示异常级别更改。 橙色竖线表示跃点边界，跃点大小与 AnomalyDetection 运算符中指定的检测窗口相同。 绿线表示训练窗口的大小。 在图 1 中，跃点大小与异常持续时间相同。 在图 2 中，跃点大小是异常持续时间的一半。 在所有情况下，都会检测向上更改，因为用于评分的模型是根据正常数据训练的。 但是，根据双向级别更改检测器的工作原理，它必须从为恢复正常状态评分的模型的训练窗口中排除正常值。 在图 1 中，评分模型的训练包括一些正常事件，因此无法检测恢复正常状态。 但在图 2 中，训练仅包括异常部分，因此可确保检测恢复正常状态。 出于相同的原因，任何小于一半的项目也适用，而任何更大的项目最终会包括一部分正常事件。 
 
    ![窗口大小等于异常长度的 AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
 

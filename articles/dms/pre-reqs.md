@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/29/2018
-ms.openlocfilehash: 536a75118e1005ddc0bb5814e2367e1ced808305
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b480ca189b3d63d92c48abf8d9c398c1c9b22241
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务的先决条件概述
 若要确保 Azure 数据库迁移服务在执行数据库迁移时顺利运行，需要具备几个先决条件。 某些先决条件适用于该服务支持的所有方案（源/目标对），而其他先决条件则是特定方案所独有的。
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/29/2018
 - 创建网络共享，供 Azure 数据库迁移服务用来备份源数据库。
 - 确保运行源 SQL Server 实例的服务帐户在创建的网络共享中拥有写入特权。
 - 记下在前面创建的网络共享中拥有完全控制特权的 Windows 用户（和密码）。 Azure 数据库迁移服务可模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。
-- 通过采用[使用存储资源管理器（预览版）管理 Azure Blob 存储资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)一文中的步骤，创建 blob 容器并检索其 SAS URI。 在创建 SAS URI 时，务必在策略窗口选择所有权限（读取、写入、删除、列出）。
+- 通过采用[使用存储资源管理器管理 Azure Blob 存储资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)一文中的步骤，创建 blob 容器并检索其 SAS URI。 在创建 SAS URI 时，务必在策略窗口选择所有权限（读取、写入、删除、列出）。
 
    > [!NOTE]
    > 有关使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 数据库托管实例的迁移所需的先决条件的完整列表，请参阅教程[将 SQL Server 迁移到 Azure SQL 数据库托管实例](https://aka.ms/migratetomiusingdms)。

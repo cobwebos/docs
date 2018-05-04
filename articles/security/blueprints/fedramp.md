@@ -1,6 +1,6 @@
 ---
-title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化"
-description: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化"
+title: Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化
+description: Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 10ed297180f68fcaf006f2778990879be02f994d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化
 
@@ -76,10 +76,9 @@ ms.lasthandoff: 02/11/2018
 * **Azure Active Directory**
 * **Azure 资源管理器**
 * **Azure Log Analytics**
+    - (1) Log Analytics 工作区
 * **Azure 自动化**
     - (1) 自动化帐户
-* **Operations Management Suite**
-    - (1) OMS 工作区
 
 ## <a name="deployment-architecture"></a>部署体系结构
 
@@ -136,7 +135,7 @@ Azure 磁盘加密用于加密 Windows IaaS 虚拟机磁盘。 [Azure 磁盘加�
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 可广泛记录系统和用户活动以及系统运行状况。 
+[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 可广泛记录系统和用户活动以及系统运行状况。 
 
 - **活动日志：**[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。
 - **诊断日志：**[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志，以及应用程序网关访问和防火墙日志。
@@ -154,7 +153,7 @@ Azure 磁盘加密用于加密 Windows IaaS 虚拟机磁盘。 [Azure 磁盘加�
 以下技术在 Azure 环境中提供标识管理功能。
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。
 - 可以使用 Azure AD 向客户部署的 Web 应用程序进行身份验证。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。  
-- [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 可在 Azure 中实现极有针对性的访问管理。 仅限订阅管理员进行订阅访问，而资源访问则取决于用户角色。
+- [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 可在 Azure 中实现极有针对性的访问管理。 仅限订阅管理员进行订阅访问，而资源访问则取决于用户角色。
 - 可以通过部署的 IaaS Active Directory 实例在 OS 级别对部署的 IaaS 虚拟机进行标识管理。
    
 ### <a name="compute-resources"></a>计算资源
@@ -182,17 +181,17 @@ Azure 磁盘加密用于加密 Windows IaaS 虚拟机磁盘。 [Azure 磁盘加�
 
 ### <a name="patch-management"></a>修补程序管理
 
-通过此 Azure 安全性和符合性蓝图自动化部署的 Windows 虚拟机默认配置为从 Windows 更新服务接收自动更新。 另外，此解决方案还部署 OMS Azure 自动化解决方案，通过此方案可以创建更新部署，以便在需要时将修补程序部署到 Windows 服务器上。
+通过此 Azure 安全性和符合性蓝图自动化部署的 Windows 虚拟机默认配置为从 Windows 更新服务接收自动更新。 另外，此解决方案还部署 Azure 自动化解决方案，通过此方案可以创建更新部署，以便在需要时将修补程序部署到 Windows 服务器上。
 
 ### <a name="operations-management"></a>操作管理
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) 是 Operations Management Suite (OMS) 中的一个服务，用于收集和分析 Azure 环境与本地环境中资源生成的数据。
+[Log Analytics](https://azure.microsoft.com/services/log-analytics/) 是一个服务，用于收集和分析 Azure 环境与本地环境中资源生成的数据。
 
-#### <a name="oms-solutions"></a>OMS 解决方案
+#### <a name="management-solutions"></a>管理解决方案
 
-此解决方案中已预装以下 OMS 解决方案：
+此解决方案中已预装以下管理解决方案：
 - [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)
 - [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)
 - [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)

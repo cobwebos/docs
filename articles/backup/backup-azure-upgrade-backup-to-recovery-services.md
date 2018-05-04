@@ -1,6 +1,6 @@
 ---
-title: "将备份保管库升级到恢复服务保管库 | Microsoft Docs"
-description: "将 Azure 备份保管库升级到恢复服务保管库的说明和支持信息。"
+title: 将备份保管库升级到恢复服务保管库 | Microsoft Docs
+description: 将 Azure 备份保管库升级到恢复服务保管库的说明和支持信息。
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 25ad2f6309531678ec98012f540556af581649b2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>将备份保管库升级到恢复服务保管库
 
@@ -84,7 +84,7 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 ### <a name="pre-requisites-checking"></a>先决条件检查
 输入 Azure 凭据后，Azure 会检查环境是否满足以下先决条件：
 
-- 最低代理版本 - 将备份保管库升级到恢复服务保管库要求 MARS 代理版本至少为 2.0.9083.0。 如果使用版本低于 2.0.9083.0 的代理将项注册到了备份保管库，先决条件检查会失败。 如果先决条件检查失败，请更新代理，并重试升级保管库。 可以从 [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) 下载最新版本的代理。
+- 最低代理版本 - 将备份保管库升级到恢复服务保管库要求 MARS 代理版本至少为 2.0.9083.0。 如果使用版本低于 2.0.9083.0 的代理将项注册到了备份保管库，先决条件检查会失败。 如果先决条件检查失败，请更新代理，并重试升级保管库。 可以从 [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) 下载代理的最新版本。
 - **正在进行的配置作业**：如果某人正在针对设置为要升级的备份保管库配置作业，或者正在注册某个项，先决条件检查会失败。 请先完成配置或完成项的注册，再启动保管库升级过程。
 - **基于存储的计费模型**：恢复服务保管库支持基于实例的计费模型。 如果在使用基于存储的计费模型的备份保管库上运行保管库升级，系统会提示连同保管库一起升级计费模型。 否则，可以先更新计费模型，再运行保管库升级。
 - 标识恢复服务保管库的资源组。 若要利用 Resource Manager 部署功能，必须在资源组中放置一个恢复服务保管库。 如果不知道要使用哪个资源组，请提供一个名称，然后，升级过程会创建该资源组。 升级过程还会将保管库与新资源组相关联。
@@ -106,7 +106,7 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 
 ## <a name="enhanced-security"></a>增强的安全性
 
-备份保管库升级到恢复服务保管库后，将自动启用该保管库的安全设置。 启用安全设置后，某些操作（如删除备份或更改密码）需要 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md) PIN。 关于增强的安全性的详细信息，请参阅[用于保护混合备份的安全性功能](backup-azure-security-feature.md)一文。 
+备份保管库升级到恢复服务保管库后，将自动启用该保管库的安全设置。 启用安全设置后，某些操作（如删除备份或更改密码）需要 [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md) PIN。 关于增强的安全性的详细信息，请参阅[用于保护混合备份的安全性功能](backup-azure-security-feature.md)一文。 
 
 启用增强的安全性后，数据将在恢复点信息从保管库中删除之后至多保留 14 天。 为此安全数据的存储对客户计费。 安全数据保留期适用于针对 Azure 备份代理、Azure 备份服务器和 System Center Data Protection Manager 的恢复点。 
 

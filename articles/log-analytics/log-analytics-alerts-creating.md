@@ -1,8 +1,8 @@
 ---
-title: "在 OMS Log Analytics 中创建警报 | Microsoft Docs"
-description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息，还可主动通知你存在问题或调用操作以尝试更正问题。  本文介绍如何创建警报规则和它们可执行的不同操作的详细信息。"
+title: 在 OMS Log Analytics 中创建警报 | Microsoft Docs
+description: Log Analytics 中的警报标识 OMS 存储库中的重要信息，还可主动通知你存在问题或调用操作以尝试更正问题。  本文介绍如何创建警报规则和它们可执行的不同操作的详细信息。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,28 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 04/13/2018
 ms.author: bwren
-ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b692822660ab12f89b274cea75727fb808d673f8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="working-with-alert-rules-in-log-analytics"></a>使用 Log Analytics 中的警报规则
+
+> [!NOTE]
+> 本文介绍在 OMS 门户中托管的经典 Log Analytics 警报。  Log Analytics 中的警报将[扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。  完成此操作后，将在 Azure 门户中创建和编辑警报规则，请注意使用本文中的过程。
+
+
 警报通过警报规则创建，警报规则定期自动运行日志搜索。  如果结果符合特定的条件，警报规则将创建警报记录。  然后，该规则可自动运行一个或多个操作以主动通知你存在警报或调用另一个进程。   
 
 本文介绍使用 OMS 门户创建和编辑警报规则的过程。  有关不同的设置以及如何实现所需逻辑的详细信息，请参阅[了解 Log Analytics 中的警报](log-analytics-alerts.md)。
 
->[!NOTE]
-> 目前无法使用 Azure 门户创建或修改警报规则。 
 
 ## <a name="create-an-alert-rule"></a>创建警报规则
 
 若要使用 OMS 门户创建警报规则，首先请针对应该调用警报的记录创建日志搜索。  然后，就可以使用“警报”按钮创建和配置警报规则。
 
 >[!NOTE]
-> 当前在 OMS 工作区中最多可以创建 250 个警报规则。 
+> 当前在 Log Analytics 工作区中最多可以创建 250 个警报规则。 
 
 1. 从 OMS“概述”页中，单击“**日志搜索**”。
 2. 创建新的日志搜索查询，或选择已保存的日志搜索。 
@@ -66,9 +69,9 @@ ms.lasthandoff: 10/11/2017
 
 | 属性 | 说明 |
 |:--- |:---|
-| Name | 用于标识警报规则的唯一名称。 此名称包含在规则创建的任何警报中。  |
+| 名称 | 用于标识警报规则的唯一名称。 此名称包含在规则创建的任何警报中。  |
 | 说明 | 警报规则的可选说明。 |
-| 严重性 |此规则创建的任何警报的严重性。 |
+| Severity |此规则创建的任何警报的严重性。 |
 
 ### <a name="search-query-and-time-window"></a>搜索查询和时间范围
 搜索查询和时间范围，返回确定是否应创建任何警报时要评估的记录。
@@ -119,7 +122,7 @@ ms.lasthandoff: 10/11/2017
 | 属性 | 说明 |
 |:--- |:---|
 | 电子邮件通知 |如果希望在触发警报时发送电子邮件，则指定“**是**”。 |
-| 使用者 |电子邮件主题。  不能修改邮件正文。 |
+| 主题 |电子邮件主题。  不能修改邮件正文。 |
 | 收件人 |所有电子邮件收件人的地址。  如果指定多个地址，则用分号 (;) 分隔地址。 |
 
 #### <a name="webhook-actions"></a>Webhook 操作

@@ -11,15 +11,15 @@ ms.topic: article
 ms.service: iot-edge
 ms.custom: ''
 ms.reviewer: kgremban
-ms.openlocfilehash: 1f71fdfb7090dce24ba73f1fa01e287c52b065f8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7bc0d0706385f2f3e101d06be3a2837341c331b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-modules-to-an-iot-edge-device-using-iot-extension-for-azure-cli-20"></a>使用 Azure CLI 2.0 的 IoT 扩展将模块部署到 IoT Edge 设备
 
-[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) 是一个开源跨平台命令行工具，用于管理 IoT Edge 等 Azure 资源。 Azure CLI 2.0 适用于 Windows、Linux 和 MacOS。
+[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是一个开源跨平台命令行工具，用于管理 IoT Edge 等 Azure 资源。 Azure CLI 2.0 适用于 Windows、Linux 和 MacOS。
 
 使用 Azure CLI 2.0 可以管理 Azure IoT 中心资源、设备预配服务实例和现成的链接中心。 新的 IoT 扩展丰富了 Azure CLI 2.0 的功能，例如设备管理和完整的 IoT Edge 功能。
 

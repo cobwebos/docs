@@ -1,25 +1,23 @@
 ---
-title: "使数据分析管道可操作化 - Azure | Microsoft Docs"
-description: "设置和运行由新数据触发的示例数据管道并生成简明结果。"
+title: 使数据分析管道可操作化 - Azure | Microsoft Docs
+description: 设置和运行由新数据触发的示例数据管道并生成简明结果。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 7a439c9d25a470a2474b427f6b20addb6ff3b0c7
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 7ac1ed0db15d91ef8af009c879c3634148826286
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
@@ -103,7 +101,7 @@ Azure SQL 数据库现已准备就绪。
 #### <a name="provision-an-hdinsight-hadoop-cluster"></a>预配置 HDInsight Hadoop 群集
 
 1. 在 Azure 门户中，选择“+新建”，并搜索 HDInsight。
-2. 选择“创建”。
+2. 选择**创建**。
 3. 在“基础知识”窗格上，为群集提供一个唯一的名称并选择 Azure 订阅。
 
     ![HDInsight 群集名称和订阅](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)

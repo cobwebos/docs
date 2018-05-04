@@ -24,6 +24,8 @@
           href: migrate-scenarios-overview.md
         - name: 方案 1 - 评估要迁移到 Azure 的本地资源
           href: migrate-scenarios-assessment.md
+        - name: 方案 2 - 直接迁移到 Azure
+          href: migrate-scenarios-lift-and-shift.md
     - name: 发现和评估大型环境
       href: how-to-scale-assessment.md
     - name: 将计算机分组

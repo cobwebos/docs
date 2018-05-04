@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: d893b55e2e771035bbd1097da678830fafb24e7a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bc5b41da83f183aaf62723212f7197fb50dc536d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>教程：Azure Active Directory 与 ServiceNow 集成
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/16/2018
 
 **若要从库中添加 ServiceNow，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -119,37 +119,21 @@ ms.lasthandoff: 03/16/2018
     > [!NOTE] 
     > 这些不是实际值。 稍后需要基于实际登录 URL 和标识符更新这些值（本教程稍后会介绍）。
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中执行以下步骤： 
 
-    ![证书下载链接](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png) 
+    ![证书下载链接](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+
+    a. 单击“复制”按钮来复制**应用联合元数据 URL** 并将其粘贴到记事本，因为本教程中稍后将使用此应用联合元数据 URL。
+
+    b. 单击“证书(Base64)”，然后将证书保存在计算机上。
 
 5. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-servicenow-tutorial/tutorial_general_400.png)
 
-6. 若要生成**元数据** URL，请执行以下步骤：
+6. 以管理员身份登录到 ServiceNow 应用程序。
 
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/appregistrations.png)
-
-    b. 单击“终结点”以打开“终结点”对话框。
-    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/endpointicon.png)
-    
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/endpoint.png)
-
-    d. 现在，转到 **ServiceNow** 的属性，使用“复制”按钮复制“应用程序 ID”并将其粘贴到记事本。
-
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`。  将生成的值复制到记事本中，因为本教程稍后要使用元数据 URL。
-
-7. 以管理员身份登录到 ServiceNow 应用程序。
-
-8. 请按照以下步骤操作，激活“集成 - 多提供程序单一登录安装程序”插件：
+7. 请按照以下步骤操作，激活“集成 - 多提供程序单一登录安装程序”插件：
 
     a. 在左侧导航窗格中，通过搜索栏搜索“系统定义”部分，单击“插件”。
 
@@ -163,9 +147,9 @@ ms.lasthandoff: 03/16/2018
 
     d. 单击“激活”按钮。
 
-9. 可通过两种方式配置 **ServiceNow**：自动和手动。
+8. 可通过两种方式配置 **ServiceNow**：自动和手动。
 
-10. 若要自动配置 **ServiceNow**，请执行以下步骤
+9. 若要自动配置 **ServiceNow**，请执行以下步骤
 
     a. 返回到 Azure 门户中的 **ServiceNow** 单一登录页。
 
@@ -201,15 +185,15 @@ ms.lasthandoff: 03/16/2018
 
     * 单击页面右上角的“激活”。
 
-11. 若要手动配置 **ServiceNow**，请执行以下步骤
+10. 若要手动配置 **ServiceNow**，请执行以下步骤
 
-12. 以管理员身份登录到 ServiceNow 应用程序。
+11. 以管理员身份登录到 ServiceNow 应用程序。
 
-13. 在左侧导航窗格中，通过搜索栏搜索“多提供程序 SSO”，单击“属性”。
+12. 在左侧导航窗格中，通过搜索栏搜索“多提供程序 SSO”，单击“属性”。
 
     ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "配置应用 URL")
 
-14. 在“多提供程序 SSO 属性”对话框中，执行以下步骤：
+13. 在“多提供程序 SSO 属性”对话框中，执行以下步骤：
 
     ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/ic7694981.png "配置应用 URL")
 
@@ -265,7 +249,7 @@ ms.lasthandoff: 03/16/2018
 
     a. 在“导入标识提供者元数据”对话框中选择“URL”选项。
 
-    b. 输入通过 Azure 门户生成的“元数据 URL”。
+    b. 输入从 Azure 门户复制的**应用联合元数据 URL**。
 
     c. 单击“导入”。
 
@@ -358,7 +342,7 @@ ms.lasthandoff: 03/16/2018
 
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificates.png)
 
 5. 单击“保存”按钮。
 
@@ -459,11 +443,7 @@ ms.lasthandoff: 03/16/2018
     > 可以配置 Azure AD 以发出 Azure AD 用户 ID（用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符，方法是转到 Azure 门户的“ServiceNow”>“属性”>“单一登录”部分，并将所需字段映射到 **nameidentifier** 属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_name）
 
     f. 单击“ **保存**”。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！ 从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
+ 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。

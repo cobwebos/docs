@@ -1,8 +1,8 @@
 ---
-title: "使用 Ambari REST API 监视和管理 Hadoop - Azure HDInsight | Microsoft Docs"
-description: "了解如何使用 Ambari 监视和管理 Azure HDInsight 中的 Hadoop 群集。 在本文档中，学习如何使用 HDInsight 群集随附的 Ambari REST API。"
+title: 使用 Ambari REST API 监视和管理 Hadoop - Azure HDInsight | Microsoft Docs
+description: 了解如何使用 Ambari 监视和管理 Azure HDInsight 中的 Hadoop 群集。 在本文档中，学习如何使用 HDInsight 群集随附的 Ambari REST API。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 2400530f-92b3-47b7-aa48-875f028765ff
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/22/2018
+ms.topic: conceptual
+ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 44066a3b4d5bebc67b089bebc2f3c11d33c77000
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 55017b139ce89fa74a8105da05792024ecee86b2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>使用 Ambari REST API 管理 HDInsight 群集
 
@@ -51,7 +49,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Hadoop 群集�
 
 ### <a name="base-uri-for-ambari-rest-api"></a>Ambari Rest API 的基本 URI
 
-HDInsight 上 Ambari REST API 的基本 URI 是 https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME，其中 **CLUSTERNAME** 是群集的名称。
+Ambari REST API 在 HDInsight 上的基 URI 是 https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME，其中 **CLUSTERNAME** 是群集的名称。
 
 > [!IMPORTANT]
 > URI 的完全限定域名 (FQDN) 部分 (CLUSTERNAME.azurehdinsight.net) 中的群集名称不区分大小写，但 URI 中的其他部分则区分大小写。 例如，如果群集名称为 `MyCluster`，则有效的 URI 如下：

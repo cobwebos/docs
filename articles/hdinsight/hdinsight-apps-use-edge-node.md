@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 04/19/2018
 ms.author: jgao
-ms.openlocfilehash: 0e5e05a1a5c084854cd911188777dedf40817227
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6cb7bb982da36256707d080a7f5118127deb3a9c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Hadoop 群集上使用空边缘节点
 
@@ -69,6 +69,9 @@ ms.lasthandoff: 04/16/2018
 >
 > 如果在使用 Apache 技术，可通过 [http://apache.org](http://apache.org) 上的 Apache 项目站点（如 [Hadoop](http://hadoop.apache.org/) 站点）获取帮助。
 
+> [!NOTE]
+> 与群集一样，边缘节点也是通过修补程序托管的。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
+
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>将边缘节点添加到现有群集
 本部分介绍如何使用 Resource Manager 模板将边缘节点添加到现有 HDInsight 群集。  可以在 [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/) 中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。该脚本不执行任何操作。  它只是演示如何从 Resource Manager 模板调用脚本操作。
 
@@ -115,6 +118,10 @@ ms.lasthandoff: 04/16/2018
      
      模板中已硬编码某些属性：群集类型、群集辅助角色节点计数、边缘节点大小和边缘节点名称。
 4. 选中“我同意上述条款和条件”，并单击“购买”，以创建包含该边缘节点的群集。
+
+## <a name="add-multiple-edge-nodes"></a>添加多个边缘节点
+
+可以向一个 HDInsight 群集添加多个边缘节点。  只能使用 Azure 资源管理器模板进行多边缘节点配置。  请参阅本文开头的模板示例。  需更新 **targetInstanceCount**，使之反映要创建的边缘节点数。
 
 ## <a name="access-an-edge-node"></a>访问边缘节点
 边缘节点 ssh 终结点为&lt;边缘节点名称&lt;群集名称>-ssh.azurehdinsight.cn:22。  例如，new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22。

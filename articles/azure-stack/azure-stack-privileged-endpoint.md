@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f176e0689c630a406ab6e2f82e9320a214ff8a1a
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9fb928b7cb8e1a83734b64a8b9c19bc3cf3203ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>使用 Azure Stack 中的特权终结点
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure Stack 操作员应使用管理员门户、PowerShell 或 Azure 资源管理器 API 来完成大多数日常管理任务。 但是，对于非常规操作，需要使用特权终结点 (PEP)。 PEP 是预配置的远程 PowerShell 控制台，可提供恰到好处的功能来帮助执行所需的任务。 该终结点使用 [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/en-us/powershell/jea/overview)，只公开一组受限的 cmdlet。 若要访问 PEP 并调用一组受限的 cmdlet，可以使用低特权帐户。 无需管理员帐户。 为了提高安全性，不允许使用脚本。
+Azure Stack 操作员应使用管理员门户、PowerShell 或 Azure 资源管理器 API 来完成大多数日常管理任务。 但是，对于非常规操作，需要使用特权终结点 (PEP)。 PEP 是预配置的远程 PowerShell 控制台，可提供恰到好处的功能来帮助执行所需的任务。 该终结点使用 [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview)，只公开一组受限的 cmdlet。 若要访问 PEP 并调用一组受限的 cmdlet，可以使用低特权帐户。 无需管理员帐户。 为了提高安全性，不允许使用脚本。
 
 使用 PEP 可以执行如下所述的任务：
 
@@ -108,7 +108,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
 ## <a name="tips-for-using-the-privileged-endpoint"></a>有关使用特权终结点的提示 
 
-如前所述，PEP 是一个 [PowerShell JEA](https://docs.microsoft.com/en-us/powershell/jea/overview) 终结点。 尽管 JEA 终结点提供强大的安全层，但也缩减了部分 PowerShell 基本功能，例如脚本编写或 Tab 键补全。 尝试执行任何类型的脚本操作时，该操作会失败并出现错误 **ScriptsNotAllowed**。 这是预期的行为。
+如前所述，PEP 是一个 [PowerShell JEA](https://docs.microsoft.com/powershell/jea/overview) 终结点。 尽管 JEA 终结点提供强大的安全层，但也缩减了部分 PowerShell 基本功能，例如脚本编写或 Tab 键补全。 尝试执行任何类型的脚本操作时，该操作会失败并出现错误 **ScriptsNotAllowed**。 这是预期的行为。
 
 例如，若要获取特定 cmdlet 的参数列表，需运行以下命令：
 
@@ -116,7 +116,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
     Get-Command <cmdlet_name> -Syntax
 ```
 
-或者，可以使用 [Import-PSSession](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) cmdlet 将所有 PEP cmdlet 导入到本地计算机上的当前会话中。 这样，PEP 的所有 cmdlet 和函数，以及 Tab 键补全和更常用的脚本功能现在都可在本地计算机上使用。 
+或者，可以使用 [Import-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) cmdlet 将所有 PEP cmdlet 导入到本地计算机上的当前会话中。 这样，PEP 的所有 cmdlet 和函数，以及 Tab 键补全和更常用的脚本功能现在都可在本地计算机上使用。 
 
 若要在本地计算机上导入 PEP 会话，请执行以下步骤：
 

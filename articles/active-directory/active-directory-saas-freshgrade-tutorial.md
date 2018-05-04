@@ -1,23 +1,23 @@
 ---
-title: "教程：Azure Active Directory 与 FreshGrade 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 FreshGrade 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 FreshGrade 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 FreshGrade 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 1055bba6-f4df-462e-bc9b-1ad5ada0f638
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: f9cdf73643a8aa18506e59eff513b98282f60832
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4062f7c7a0f789cef6d0c415d73127d13e646f7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>教程：Azure Active Directory 与 FreshGrade 集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在 Azure AD 中控制谁有权访问 FreshGrade
 - 可以让用户使用其 Azure AD 帐户自动登录到 FreshGrade（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 FreshGrade 的集成，需具备以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 FreshGrade 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 FreshGrade，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -103,66 +103,41 @@ ms.lasthandoff: 12/11/2017
     ![配置单一登录][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_samlbase.png)
 
 3. 在“FreshGrade 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
       | |
       |--|
-      | `https://<subdomain>.freshgrade.com/login` |    
+      | `https://<subdomain>.freshgrade.com/login` |
       | `https://<subdomain>.onboarding.freshgrade.com/login` |
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL： 
+    b. 在“标识符”文本框中，使用以下模式键入 URL：
       | |
       |--|
-      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |      
+      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
       | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [FreshGrade 客户端支持团队](mailTo:support@freshgrade.com)获取这些值。 
- 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [FreshGrade 客户端支持团队](mailTo:support@freshgrade.com)获取这些值。
 
-
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
-
-    ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_certificate.png) 
-
+4. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+    
+    ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_metadataurl.png)
+     
 5. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_general_400.png)
 
 6. 在“FreshGrade 配置”部分中，单击“配置 FreshGrade”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
-    ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_configure.png) 
+    ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_configure.png)
 
-7. 若要生成**元数据** URL，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpoint.png)
-     
-    d. 现在，转到 **FreshGrade** 的属性页，使用“复制”按钮复制**应用程序 ID** 并将其粘贴到记事本。
- 
-    ![配置单一登录](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-8. 若要在 **FreshGrade** 端配置单一登录，需要将**元数据 URL** 和 **SAML 单一登录服务 URL** 发送给 [FreshGrade 支持团队](mailTo:support@freshgrade.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. 若要在 **FreshGrade** 端配置单一登录，需要将**应用联合元数据 URL** 和 **SAML 单一登录服务 URL** 发送给 [FreshGrade 支持团队](mailTo:support@freshgrade.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -189,11 +164,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-freshgrade-test-user"></a>创建 FreshGrade 测试用户
 
@@ -239,7 +214,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

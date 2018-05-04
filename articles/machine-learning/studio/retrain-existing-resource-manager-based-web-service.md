@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 67d75a28ba65dbdc0a3a105f9e41a1c4f02f2615
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f870bf1a282d7a044bb876e0015962b4f520a15f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>重新训练现有预测 Web 服务
 本文档介绍了以下方案的重新训练流程：
@@ -26,8 +26,8 @@ ms.lasthandoff: 03/23/2018
 * 具有训练实验以及已部署为运营 Web 服务的预测实验。
 * 具有想要预测 Web 服务用以执行评分的新数据。
 
-> [!NOTE] 
-> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
+> [!NOTE]
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
 
 若要开始使用现有 Web 服务和实验，需要遵循以下操作：
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/23/2018
    6. 使用新的 Web 服务定义更新 Web 服务。
 
 ## <a name="deploy-the-training-experiment"></a>部署训练实验
-要将训练实验部署为重新训练的 Web 服务，必须将 Web 服务输入和输出添加到模型。 通过将“Web 服务输出”模块连接到实验的*[训练模型][train-model]*模块，训练实验能够生成一个新的训练模型，可以在预测实验中使用它。 如果有“评估模型”模块，还可以附加 Web 服务输出，可将评估结果作为输出。
+要将训练实验部署为重新训练的 Web 服务，必须将 Web 服务输入和输出添加到模型。 通过将“Web 服务输出”模块连接到实验的*[训练模型][train-model]* 模块，训练实验能够生成一个新的训练模型，可以在预测实验中使用它。 如果有“评估模型”模块，还可以附加 Web 服务输出，可将评估结果作为输出。
 
 若要更新训练实验：
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 03/23/2018
 
 运行实验。
 
-接下来，必须将训练实验部署为 Web 服务，该服务将生成训练模型和模型评估结果。  
+接下来，必须将训练实验部署为 Web 服务，该服务将生成训练模型和模型评估结果。
 
 在实验画布的底部，单击“设置 Web 服务”，并选择“部署 Web 服务 [全新]”。 Azure 机器学习 Web 服务门户可打开“部署 Web 服务”页。 为 Web 服务键入名称，选择付款计划，并单击“部署”。 只可将 Batch 执行方法用于创建训练模型。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/23/2018
 在“**使用**”页的“**基本使用信息**”部分中，定位到主键，并将其复制到 **apikey** 声明。
 
 ### <a name="update-the-azure-storage-information"></a>更新 Azure 存储信息
-BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）中的文件上传到 Azure 存储、对其进行处理，并将结果写回 Azure 存储。  
+BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）中的文件上传到 Azure 存储、对其进行处理，并将结果写回 Azure 存储。
 
 运行试验之后，生成的工作流应与以下内容类似：
 
@@ -126,7 +126,7 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 ## <a name="evaluate-the-retraining-results"></a>评估重新训练结果
 运行应用程序时，输出包括 URL 和访问评估结果所需的共享访问签名令牌。
 
-通过组合 *output2*（如前面的重新培训输出图像中所示）的输出结果中的 *BaseLocation* 、 *RelativeLocation* 和 *SasBlobToken* 并在浏览器地址栏中粘贴完整的 URL，可以查看重新训练模型的性能结果。  
+通过组合 *output2*（如前面的重新培训输出图像中所示）的输出结果中的 *BaseLocation* 、 *RelativeLocation* 和 *SasBlobToken* 并在浏览器地址栏中粘贴完整的 URL，可以查看重新训练模型的性能结果。
 
 检查结果以确定最新重新训练的模型是否执行得很好，足以替换现有的模型。
 
@@ -136,7 +136,7 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。 Web 服务定义是 Web 服务训练模型的内部表示形式，它不能直接进行修改。 请确保为预测实验而不是训练实验检索 Web 服务定义。
 
 ## <a name="sign-in-to-azure-resource-manager"></a>登录到 Azure 资源管理器
-首先必须使用 [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 从 PowerShell 环境中登录 Azure 帐户。
+首先必须使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet 从 PowerShell 环境中登录到 Azure 帐户。
 
 ## <a name="get-the-web-service-definition-object"></a>获取 Web 服务定义对象
 然后，通过调用 [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 获取 Web 服务定义对象。

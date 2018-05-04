@@ -9,13 +9,13 @@ ms.service: virtual-network
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1aab466a06711a334df0584334e5229b33f57754
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure 虚拟数据中心：网络透视图
 **Microsoft Azure**：更快更省地迁移、集成本地应用和数据
@@ -97,7 +97,7 @@ vDC 需要与外部网络连接才能为客户、合作伙伴和/或内部用户
 部署 ExpressRoute 连接涉及与 ExpressRoute 服务提供程序通信。 对于需要快速入门的客户，通常先使用站点到站点 VPN 在 vDC 与本地资源之间建立连接，然后再迁移到 ExpressRoute 连接。
 
 ##### <a name="connectivity-within-the-cloud"></a>*云内的连接*
-[VNet][VNet] 和 [VNet 对等互连][VNetPeering]是 vDC 中的基本网络连接服务。 VNet 保证 vDC 资源具有自然隔离边界，VNet 对等互连允许同一 Azure 区域内的不同 VNet 相互通信。 VNet 内部以及 VNet 之间的流量控制需要与通过访问控制列表（[网络安全组][NSG]）、[网络虚拟设备][NVA]和自定义路由表 ([UDR][UDR]) 指定的一组安全规则匹配。
+[VNet][VNet] 和 [VNet 对等互连][VNetPeering]是 vDC 中的基本网络连接服务。 VNet 保证 vDC 资源具有自然隔离边界，VNet 对等互连允许同一 Azure 区域或不同区域的不同 VNet 相互通信。 VNet 内部以及 VNet 之间的流量控制需要与通过访问控制列表（[网络安全组][NSG]）、[网络虚拟设备][NVA]和自定义路由表 ([UDR][UDR]) 指定的一组安全规则匹配。
 
 ## <a name="virtual-data-center-overview"></a>虚拟数据中心概述
 
@@ -124,7 +124,7 @@ vDC 通过在多个辐射之间使用共享中心基础结构来降低总体成�
 ##### <a name="subscription-limits-and-multiple-hubs"></a>订阅限制和多个中心
 在 Azure 中，每个组件（无论何种类型）都通过 Azure 订阅进行部署。 不同 Azure 订阅中的 Azure 组件的隔离可满足不同 LOB 的需求，如设置不同级别的访问和授权。
 
-尽管与每个 IT 系统一样具有平台限制，单个 vDC 仍能增加到大量辐射。 中心部署与特定的 Azure 订阅绑定，该订阅具有相关的约束和限制（如 VNet 对等互连上限 - 请参阅 [Azure 订阅和服务限制、配额和约束条件][Limits]获取详细信息）。 如果出现限制问题，体系结构可以通过将模型从单个中心辐射型扩展为中心辐射群集实现进一步纵向扩展。 位于一个或多个 Azure 区域的多个中心可以使用 ExpressRoute 或站点到站点 VPN 实现互连。
+尽管与每个 IT 系统一样具有平台限制，单个 vDC 仍能增加到大量辐射。 中心部署与特定的 Azure 订阅绑定，该订阅具有相关的约束和限制（如 VNet 对等互连上限 - 请参阅 [Azure 订阅和服务限制、配额和约束条件][Limits]获取详细信息）。 如果出现限制问题，体系结构可以通过将模型从单个中心辐射型扩展为中心辐射群集实现进一步纵向扩展。 位于一个或多个 Azure 区域的多个中心可以使用 VNet 对等互连、ExpressRoute 或站点到站点 VPN 实现互连。
 
 [![2]][2]
 
@@ -191,10 +191,10 @@ NAT 在本地边缘路由器或 Azure 环境中时可避免 IP 地址冲突，�
 -   [**虚拟网络**][VPN]。 虚拟网络是 vDC 的主要组件之一，通过虚拟网络可以在 Azure 平台创建流量隔离边界。 虚拟网络由单个或多个虚拟网络段构成，每个虚拟网络段都有一个特定的 IP 网络前缀（子网）。 虚拟网络定义内部外围区域，在该区域中 IaaS 虚拟机和 PaaS 服务可以建立专用通信。 一个虚拟网络中的 VM（和 PaaS 服务）不能与另一个虚拟网络中的 VM（和 PaaS 服务）直接通信，即使这两个虚拟网络是由同一个客户在同一订阅下创建的。 隔离是一个非常关键的属性，可确保客户 VM 与通信在虚拟网络中保持私密性。
 -   [**UDR**][UDR]。 虚拟网络中的流量默认基于系统路由表路由。 用户定义的路由是自定义路由表，网络管理员可以将该路由表关联到一个或多个子网，覆盖系统路由表的行为并定义虚拟网络中的通信路径。 UDR 保证辐射的出口流量通过中心和辐射中的特定自定义 VM 和/或虚拟网络设备以及负载均衡器传输。
 -   [**NSG**][NSG]。 网络安全组是一系列安全规则，充当 IP 源、IP 目标、协议、IP 源端口和 IP 目标端口的流量筛选器。 NSG 可应用于子网和/或与 Azure VM 关联的虚拟 NIC 卡。 NSG 对在中心和辐射中实现正确的流控制至关重要。 NSG 提供的安全级别由出于何种原因打开哪个端口决定。 客户应通过基于主机的防火墙（如 IPtable 或 Windows 防火墙）对每个 VM 应用附加筛选器。
--   **DNS**。 vDC 中 VNet 资源的名称解析通过 DNS 提供。 默认 DNS 的名称解析范围受限于 VNet。 通常情况下，自定义 DNS 服务需要作为常见服务的一部分在中心部署，但 DNS 服务的主要使用者位于辐射中。 如有必要，客户可以通过向辐射委派 DNS 区域创建分层的 DNS 结构。
+-   [**DNS**][DNS]。 vDC 中 VNet 资源的名称解析通过 DNS 提供。 Azure 提供的 DNS 服务适用于[公用][DNS] 和[专用 DNS][PrivateDNS] 名称解析。 专用区域在虚拟网络内或虚拟网络之间提供名称解析功能。 可以让专用区域跨同一区域的虚拟网络，以及跨区域和跨订阅。 对于公用解析，Azure DNS 提供 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 -   [**订阅][SubMgmt]和[资源组管理][RGMgmt]**。 订阅定义在 Azure 创建多个资源组的自然边界。 订阅中的资源聚集在名为资源组的逻辑容器中。 资源组表示组织 vDC 资源的逻辑组。
 -   [**RBAC**][RBAC]。 通过 RBAC，可以映射组织角色以及访问特定 Azure 资源的权限，允许限制用户只进行特定子网操作。 使用 RBAC，可以通过将相应的角色分配给相关范围内的用户、组和应用程序授予访问权限。 角色分配的范围可以是 Azure 订阅、资源组或单个资源。 RBAC 允许继承权限。 分配在父范围内的角色也会将访问权限授予给其中所含的子范围。 使用 RBAC，可以对职责进行分配，仅向用户授予执行作业所需的访问权限。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL DB。
--   [**VNet 对等互连**][VNetPeering]。 用于创建 vDC 基础结构的基本功能是 VNet 对等互连，它是通过 Azure 数据中心网络连接同一区域内两个虚拟机 (VNet) 的机制。
+-   [**VNet 对等互连**][VNetPeering]。 用于创建 vDC 基础结构的基本功能是 VNet 对等互连，它是一种通过 Azure 数据中心网络或跨区域的 Azure 全球主干网络连接同一区域内两个虚拟网络 (VNet) 的机制。
 
 #### <a name="component-type-perimeter-networks"></a>组件类型：外围网络
 [外围网络][DMZ]组件（又称为 DMZ 网络）允许与本地或实际数据中心网络建立连接，并允许与 Internet 建立连接。 它也是网络和安全团队花费大部分时间的地方。
@@ -244,6 +244,8 @@ Azure 负载均衡器也可以探测各种服务器实例的运行状态，当�
 
 Azure 提供不同类型的记录和监视服务，跟踪 Azure 托管资源的行为。 对 Azure 中工作负荷的管理和控制不仅只基于收集日志数据，也基于根据特定报告事件触发操作的能力。
 
+[**Azure Monitor**][Monitor] - Azure 包括多项可以在监视空间单独执行特定角色或任务的服务。 这些服务组合在一起就可以提供一个全面的解决方案，用于从应用程序以及支持应用程序的 Azure 资源收集遥测数据，对这些数据进行分析并执行操作。 这些服务还监视关键的本地资源，以提供混合监视环境。 为应用程序开发完整监视策略的第一步是了解可用的工具和数据。
+
 Azure 中主要有两种日志类型：
 
 -   [**活动日志**][ActLog]（也称为“运行日志”）提供相关信息，方便用户了解对 Azure 订阅中的资源执行的操作。 这些日志报告订阅的控制平面事件。 每个 Azure 资源都会生成审核日志。
@@ -263,6 +265,8 @@ Azure 中主要有两种日志类型：
 
 Log Analytics 是 Azure 中的一个服务，可帮助收集、关联、搜索以及处理由操作系统、应用程序和基础结构云组件生成的日志和性能数据。 使用集成搜索和自定义仪表板为客户提供实时操作见解，分析 vDC 中所有工作负荷的所有记录。
 
+OMS 中的[网络性能监视器 (NPM)][NPM] 解决方案提供详细的端到端网络信息，包括以单个视图的方式来显示 Azure 网络和本地网络。 使用特定的适用于 ExpressRoute 和公共服务的监视器。
+
 #### <a name="component-type-workloads"></a>组件类型：工作负荷
 工作负荷组件是实际应用程序和服务所在的位置。 它也是应用程序开发团队花费大部分时间的地方。
 
@@ -276,7 +280,7 @@ Log Analytics 是 Azure 中的一个服务，可帮助收集、关联、搜索�
 -   **数据驱动**。 LOB 应用程序是数据密集型应用程序，频繁访问数据库或其他存储。
 -   **集成性**。 LOB 应用程序可与组织内外的其他系统集成。
 
-**面向客户的 Web 站点（面向 Internet 或内部）**与 Internet 交互的大多数应用程序是 Web 站点。 Azure 提供在 IaaS VM 上或从 [Azure Web 应用][WebApps]站点 (PaaS) 运行网站的功能。 Azure Web 应用支持与允许在 vDC 的辐射中部署 Web 应用的 VNet 集成。 通过 VNet 集成，便不需要向应用程序公开 Internet 终结点，但可以改为从专用 VNet 使用非 Internet 的资源专用可路由地址。
+**面向客户的 Web 站点（面向 Internet 或内部）**与 Internet 交互的大多数应用程序是 Web 站点。 Azure 提供在 IaaS VM 上或从 [Azure Web 应用][WebApps]站点 (PaaS) 运行网站的功能。 Azure Web 应用支持与允许在 vDC 的辐射中部署 Web 应用的 VNet 集成。 以面向内部的网站为例，通过 VNet 集成，便不需要向应用程序公开 Internet 终结点，但可以改为从专用 VNet 通过专用非 Internet 可路由地址来使用资源。
 
 **大数据/分析** 当数据需要增加到极大的量时，数据库可能无法正常增加。 Hadoop 技术提供可在大量节点上并行运行所分配查询的系统。 客户可以选择在 IaaS VM 或 PaaS ([HDInsight][HDI]) 中运行数据工作负荷。 HDInsight 支持部署到基于位置的 VNet，可以部署到 vDC 辐射中的群集。
 
@@ -308,11 +312,12 @@ Azure 数据中心遍布世界各地。 选择多个 Azure 数据中心时，客
 
 对不同 vDC 中应用程序的同步性和检测信号的监视需要在不同 vDC 之间建立通信。 可以通过以下方式连接不同区域中的两个 vDC：
 
+-   VNet 对等互连 - VNet 对等互连可以跨区域连接多个中心
 -   当 vDC 中心连接到同一 ExpressRoute 线路时使用 ExpressRoute 专用对等互连
 -   通过企业主干和连接到 ExpressRoute 线路的 vDC 对等网格连接多个 ExpressRoute 线路
 -   在每个 Azure 区域中的 vDC 中心建立站点到站点 VPN 连接
 
-通常情况下，ExpressRoute 连接是首选机制，因为通过 Microsoft 主干传输时具有更高的带宽和一致性延迟。
+通常情况下，VNet 对等互连或 ExpressRoute 连接是首选机制，因为通过 Microsoft 主干传输时具有更高的带宽和一致性延迟。
 
 没有魔法秘诀来验证在不同区域中的两个（或多个）不同 vDC 之间分配的应用程序。 客户应通过运行网络资格测试来验证连接的延迟和带宽，检查同步或异步数据复制是否合适，以及确定工作负荷的最佳恢复时间目标 (RTO)。
 
@@ -330,9 +335,9 @@ Azure 数据中心遍布世界各地。 选择多个 Azure 数据中心时，客
 | | | |
 |-|-|-|
 |网络功能|负载均衡|连接|
-|[Azure 虚拟网络][VNet]</br>[网络安全组][NSG]</br>[NSG 日志][NSGLog]</br>[用户定义的路由][UDR]</br>[网络虚拟设备][NVA]</br>[公共 IP 地址][PIP]|[Azure 负载均衡器 (L3)][ALB]</br>[应用程序网关 (L7)][AppGW]</br>[Web 应用程序防火墙][WAF]</br>[Azure 流量管理器][TM] |[VNet 对等互连][VNetPeering]</br>[虚拟专用网络][VPN]</br>[ExpressRoute][ExR]
+|[Azure 虚拟网络][VNet]</br>[网络安全组][NSG]</br>[NSG 日志][NSGLog]</br>[用户定义的路由][UDR]</br>[网络虚拟设备][NVA]</br>[公共 IP 地址][PIP]</br>[DNS]|[Azure 负载均衡器 (L3)][ALB]</br>[应用程序网关 (L7)][AppGW]</br>[Web 应用程序防火墙][WAF]</br>[Azure 流量管理器][TM] |[VNet 对等互连][VNetPeering]</br>[虚拟专用网络][VPN]</br>[ExpressRoute][ExR]
 |标识</br>|监视</br>|最佳实践</br>|
-|[Azure Active Directory][AAD]</br>[多重身份验证][MFA]</br>[基于角色的访问控制][RBAC]</br>[默认 AAD 角色][Roles] |[活动日志][ActLog]</br>[诊断日志][DiagLog]</br>[Log Analytics][LogAnalytics]</br> |[外围网络最佳实践][DMZ]</br>[订阅管理][SubMgmt]</br>[资源组管理][RGMgmt]</br>[Azure 订阅限制][Limits] |
+|[Azure Active Directory][AAD]</br>[多重身份验证][MFA]</br>[基于角色的访问控制][RBAC]</br>[默认 AAD 角色][Roles] |[Azure Monitor][Monitor]</br>[活动日志][ActLog]</br>[诊断日志][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br>[网络性能监视器][NPM]|[外围网络最佳实践][DMZ]</br>[订阅管理][SubMgmt]</br>[资源组管理][RGMgmt]</br>[Azure 订阅限制][Limits] |
 |其他 Azure 服务|
 |[Azure Web 应用][WebApps]</br>[HDInsights (Hadoop)][HDI]</br>[事件中心][EventHubs]</br>[服务总线][ServiceBus]|
 
@@ -358,12 +363,14 @@ Azure 数据中心遍布世界各地。 选择多个 Azure 数据中心时，客
 
 <!--Link References-->
 [Limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits
-[Roles]: https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles
+[Roles]: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 [VNet]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview
-[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg 
+[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg
+[DNS]: https://docs.microsoft.com/azure/dns/dns-overview
+[PrivateDNS]: https://docs.microsoft.com/azure/dns/private-dns-overview
 [VNetPeering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview 
 [UDR]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview 
-[RBAC]: https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is
+[RBAC]: https://docs.microsoft.com/azure/role-based-access-control/overview
 [MFA]: https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication
 [AAD]: https://docs.microsoft.com/azure/active-directory/active-directory-whatis
 [VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways 
@@ -376,10 +383,12 @@ Azure 数据中心遍布世界各地。 选择多个 Azure 数据中心时，客
 [PIP]: https://docs.microsoft.com/azure/virtual-network/resource-groups-networking#public-ip-address
 [AppGW]: https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
 [WAF]: https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview
+[Monitor]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
+[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[NPM]: https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

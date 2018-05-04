@@ -10,16 +10,14 @@ ms.assetid: e4941329-1580-4cd8-b82e-a2258802c1a7
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 0c74e46f37319a9d1eb0ea1587087e24312de451
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: be62705ce0217235b75ec5ad220ad6f32dfd3c10
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>将 Apache Kafka 与 HDInsight 中的 Storm 配合使用
 
@@ -32,7 +30,7 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="get-the-code"></a>获取代码
 
-本文档中使用的示例代码位于 [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)。
+[https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) 中提供了本文档所用示例的代码。
 
 若要编译此项目，需要对开发环境进行以下配置：
 
@@ -68,7 +66,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure 资源管理器模板位于 https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json。 它创建以下资源：
+    Azure 资源管理器模板位于 **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**。 它创建以下资源：
     
     * Azure 资源组
     * Azure 虚拟网络

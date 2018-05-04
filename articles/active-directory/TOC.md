@@ -1,5 +1,3 @@
-# [Azure Active Directory 文档](index.md)
-
 # 概述
 ## [什么是 Azure Active Directory？](active-directory-whatis.md)
 ## [关于 Azure 标识管理](identity-fundamentals.md)
@@ -46,7 +44,6 @@
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
 ### [共享帐户](active-directory-sharing-accounts.md)
 ### [将用户分配到管理员角色](active-directory-users-assign-role-azure-portal.md)
-### [还原已删除的用户](active-directory-users-restore.md)
 ### [添加另一个目录中的来宾用户 (B2B)](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [管理员添加 B2B 用户](active-directory-b2b-admin-add-users.md)
 #### [信息工作者添加 B2B 用户](active-directory-b2b-iw-add-users.md)
@@ -56,7 +53,6 @@
 #### [邀请电子邮件](active-directory-b2b-invitation-email.md)
 #### [邀请兑换](active-directory-b2b-redemption-experience.md)
 #### [在没有邀请的情况下添加 B2B 用户](active-directory-b2b-add-user-without-invite.md)
-#### [允许或阻止邀请](active-directory-b2b-allow-deny-list.md)
 #### [用于 B2B 的条件性访问](active-directory-b2b-mfa-instructions.md)
 #### [B2B 共享策略](active-directory-b2b-delegate-invitations.md)
 #### [将 B2B 用户添加到角色](active-directory-b2b-add-guest-to-role.md)
@@ -80,8 +76,7 @@
 ## [管理组和成员](active-directory-manage-groups.md)
 ### 管理组
 #### [Azure 门户](active-directory-groups-create-azure-portal.md)
-#### [用于 Graph 的 Azure AD PowerShell (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure AD PowerShell MSOnline (v1)](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 ### [管理组成员](active-directory-groups-members-azure-portal.md)
 ### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
 ### [管理组成员身份](active-directory-groups-membership-azure-portal.md)
@@ -89,17 +84,16 @@
 #### [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
 #### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
-#### [在产品许可证之间迁移用户](active-directory-licensing-group-product-migration.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 #### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
 #### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
 ### [设置 Office 365 组过期时间](active-directory-groups-lifecycle-azure-portal.md)
-### [为组强制执行命名策略](groups-naming-policy.md)
 ### [查看所有组](active-directory-groups-view-azure-portal.md)
 ### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
 ### [还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)
-### [管理组设置](active-directory-groups-settings-azure-portal.md)
-
+### 管理组设置
+#### [Azure 门户](active-directory-groups-settings-azure-portal.md)
+#### [Cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### 创建高级规则
 #### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [设置自助服务组](active-directory-accessmanagement-self-service-group-management.md)
@@ -116,7 +110,6 @@
 #### [配置命名位置](active-directory-named-locations.md)
 #### [查找活动报表](active-directory-reporting-migration.md)
 #### [使用 Azure Active Directory Power BI 内容包](active-directory-reporting-power-bi-content-pack-how-to.md)
-#### [修复已标记为存在风险的用户](active-directory-report-security-user-at-risk-remediation.md)
 ### 引用
 #### [保留](active-directory-reporting-retention.md)
 #### [延迟](active-directory-reporting-latencies-azure-portal.md)
@@ -185,19 +178,10 @@
 ##### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 ##### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
-### [对 SaaS 应用进行用户预配和取消预配](active-directory-saas-app-provisioning.md)
-#### [应用集成教程](active-directory-saas-tutorial-list.md)
-#### [对启用 SCIM 的应用自动执行预配](active-directory-scim-provisioning.md)
-#### [自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)
-#### [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)
-#### [使用范围筛选器](active-directory-saas-scoping-filters.md)
-#### [针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md)
-#### [排查用户预配问题](active-directory-application-provisioning-content-map.md)
 
 ### [使用应用代理远程访问应用](active-directory-application-proxy-get-started.md)
 #### 入门
 ##### [启用应用代理](active-directory-application-proxy-enable.md)
-##### [GDPR 支持](active-directory-application-proxy-gdpr.md)
 ##### [发布应用](application-proxy-publish-azure-portal.md)
 ##### [自定义域](active-directory-application-proxy-custom-domains.md)
 #### [单一登录](application-proxy-sso-overview.md)
@@ -208,6 +192,8 @@
 ##### [连接器](application-proxy-understand-connectors.md)
 ##### [安全性](application-proxy-security-considerations.md)
 ##### [网络](application-proxy-network-topology-considerations.md)
+
+
 ##### [从 TMG 或 UAG 升级](application-proxy-transition-from-uag-tmg.md)
 
 #### 高级配置
@@ -218,16 +204,13 @@
 ##### [无提示安装](active-directory-application-proxy-silent-installation.md)
 ##### [自定义主页](application-proxy-office365-app-launcher.md)
 ##### [转换内联链接](application-proxy-link-translation.md)
-##### [通配符应用程序](active-directory-application-proxy-wildcard.md)
-
 #### 发布演练
 ##### [远程桌面](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
-##### [Qlik Sense](active-directory-application-proxy-qlik.md) 
-#### [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-#### [故障排除](active-directory-application-proxy-troubleshoot.md)
+##### [Tableau](active-directory-application-proxy-tableau.md)
 
+#### [故障排除](active-directory-application-proxy-troubleshoot.md)
 
 ### 管理企业应用
 #### [分配用户](active-directory-coreapps-assign-user-azure-portal.md)
@@ -238,9 +221,9 @@
 #### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 #### [管理适用于企业应用的单一登录](active-directory-enterprise-apps-manage-sso.md)
 #### [SAML 应用的高级证书签名](active-directory-enterprise-apps-advance-certificate-options.md)
-#### [从用户体验中隐藏应用程序](active-directory-coreapps-hide-third-party-app.md)
+#### [从用户的体验中隐藏第三方应用](active-directory-coreapps-hide-third-party-app.md)
 ### [使用 HRD 策略配置登录自动加速](active-directory-auto-acceleration-using-hrd.md)
-### [将 AD FS 应用迁移到 Azure AD](migrate-adfs-apps-to-azure.md)
+
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [SSO 访问](active-directory-appssoaccess-whatis.md)
 #### [SSO 证书](active-directory-sso-certs.md)
@@ -255,13 +238,6 @@
 ##### [配置](active-directory-application-config-content-map.md)
 ##### [登录](active-directory-application-sign-in-content-map.md)
 ##### [预配](active-directory-application-provisioning-content-map.md)
-###### [验证用户是否已预配](application-provisioning-when-will-provisioning-finish-specific-user.md)
-###### [预配需要很长时间](application-provisioning-when-will-provisioning-finish.md)
-###### [如何配置用户预配](application-provisioning-config-how-to.md)
-###### [配置预配时出现问题](application-provisioning-config-problem.md)
-###### [保存管理员凭据时出现问题](application-provisioning-config-problem-storage-limit.md)
-###### [没有用户正在进行预配](application-provisioning-config-problem-no-users-provisioned.md)
-###### [正在对错误的用户进行预配](application-provisioning-config-problem-wrong-users-provisioned.md)
 ##### [管理访问](active-directory-application-access-content-map.md)
 ##### [访问面板](active-directory-application-access-panel-content-map.md)
 ##### [应用程序代理](active-directory-application-proxy-content-map.md)
@@ -288,16 +264,15 @@
 
 ### [使用 Azure AD Connect 集成本地标识](./connect/active-directory-aadconnect.md)
 
-## [管理对 Azure 的访问权限](toc.yml)
+## [管理对 Azure 的访问权限](../role-based-access-control/toc.yml)
 
 ## 委托对资源的访问权限
 ### [管理员角色](active-directory-assign-admin-roles-azure-portal.md)
-#### [向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)
-#### [比较成员和来宾的用户权限](users-default-permissions.md)
-### [保护特权访问](admin-roles-best-practices.md) 
-### [创建紧急访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md)
+#### [分配管理员角色](active-directory-users-assign-role-azure-portal.md)
+#### [默认用户权限](users-default-permissions.md)
 ### [管理单元](active-directory-administrative-units-management.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
+### [管理紧急访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md)
 
 ## 访问评审
 ### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)
@@ -309,17 +284,17 @@
 ### [通过评审管理用于访问](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 ### [管理计划和控件](active-directory-azure-ad-controls-manage-programs-controls.md)
 
-
 ## 保护标识
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
 #### [条件](active-directory-conditional-access-conditions.md)
-#### [位置条件](active-directory-conditional-access-locations.md)
 #### [控制](active-directory-conditional-access-controls.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
 #### [迁移经典策略](active-directory-conditional-access-migration.md)
 #### [假设分析工具](active-directory-conditional-access-whatif.md)
+#### 快速入门
+##### [根据云应用 MFA 进行配置](active-directory-conditional-access-app-based-mfa.md)
 #### 任务
 ##### [迁移经典 MFA 策略](active-directory-conditional-access-migration-mfa.md)
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
@@ -331,6 +306,9 @@
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
 #### [常见问题](active-directory-conditional-faqs.md)
 
+### Windows Hello
+#### [无密码身份验证](active-directory-azureadjoin-passport.md)
+#### [启用 Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
 ### 基于证书的身份验证
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
@@ -349,15 +327,8 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## 将其他服务与 Azure AD 集成
-### [将 LinkedIn 与 Azure AD 集成](linkedin-integration.md)
-
-## [在 Azure VM 上部署 AD DS](virtual-networks-windows-server-active-directory-virtual-machines.md)
-### [Azure VM 上的 Windows Server Active Directory](active-directory-deploying-ws-ad-guidelines.md)
-### [Azure 虚拟网络中的副本域控制器](active-directory-install-replica-active-directory-domain-controller.md)
-### [在 Azure 虚拟网络中新建林](active-directory-new-forest-virtual-machine.md)
-
-
+## [将其他服务与 Azure AD 集成]()
+### [启用 LinkedIn 集成](linkedin-integration.md)
 
 ## [在 Azure 中部署 AD FS](active-directory-aadconnect-azure-adfs.md)
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
@@ -374,7 +345,7 @@
 
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure PowerShell cmdlet](/powershell/azure/overview)
 ## [Java API 参考](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)

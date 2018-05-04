@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: jeffgilb
 ms.reviewer: avishwan
-ms.openlocfilehash: 676dff1ae651d4754b96da52a68a9c7a7f35c2b8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0d8c1ebe9688f32c460ef689119313b0682a0a68
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
-注册[Azure 堆栈](azure-stack-poc.md)与 Azure 允许你从 Azure 下载应用商店项并设置回向 Microsoft 报告的商业数据。 注册 Azure 堆栈后，使用情况报告给 Azure 商务和你可以在用于注册的订阅下看到它。 
+将 [Azure Stack](azure-stack-poc.md) 注册到 Azure 即可从 Azure 下载 Marketplace 项，并设置向 Microsoft 报告商业数据的功能。 注册 Azure Stack 之后，使用情况会报告给 Azure 商业组件，然后你就可以在用于注册的订阅下查看它。 
 
 > [!IMPORTANT]
 > 如果选择即用即付计费模式，则必须注册。 否则，你将会违反 Azure 堆栈部署的许可条款因为将不会报告使用情况。
@@ -36,19 +36,19 @@ ms.lasthandoff: 04/03/2018
   > 当前不支持德国和美国政府云订阅。
 
 - 订阅所有者的帐户用户名和密码（支持 MSA/2FA 帐户）。
-- 注册 Azure 堆栈资源提供程序 （请参阅下面有关详细信息的注册 Azure 堆栈资源提供程序部分）。
+- 已注册 Azure Stack 资源提供程序（请参阅下面的“注册 Azure Stack 资源提供程序”部分以了解详细信息）。
 
 如果你没有满足这些要求的 Azure 订阅，则可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。
 
 ### <a name="bkmk_powershell"></a>安装适用于 Azure Stack 的 PowerShell
-你需要使用 Azure 堆栈的最新 PowerShell 将注册 Azure。
+需要使用适用于 Azure Stack 的最新 PowerShell 来注册到 Azure。
 
 [安装适用于 Azure Stack 的 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)（如果尚未安装）。 
 
 ### <a name="bkmk_tools"></a>下载 Azure Stack 工具
 Azure Stack 工具 GitHub 存储库包含支持 Azure Stack 功能（包括注册功能）的 PowerShell 模块。 在注册过程中，你需要导入和使用 RegisterWithAzure.psm1 PowerShell 模块中，找到 Azure 堆栈工具储存库中，向 Azure 注册你的 Azure 堆栈实例。 
 
-若要确保使用最新版本，你应删除任何现有版本的 Azure 堆栈工具和[从 GitHub 下载最新版本](azure-stack-powershell-download.md)之前注册 Azure。
+若要确保使用最新版本，应在注册到 Azure 之前删除 Azure Stack 工具的任何现有版本，然后[从 GitHub 下载最新版本](azure-stack-powershell-download.md)。
 
 ## <a name="register-azure-stack-in-connected-environments"></a>在连接的环境中注册 Azure Stack
 连接的环境可以访问 Internet 和 Azure。 对于这些环境，需将 Azure Stack 资源提供程序注册到 Azure，然后配置计费模式。
@@ -59,7 +59,7 @@ Azure Stack 工具 GitHub 存储库包含支持 Azure Stack 功能（包括注�
 ### <a name="register-the-azure-stack-resource-provider"></a>注册 Azure Stack 资源提供程序
 若要向 Azure 注册 Azure 堆栈资源提供程序，请以管理员身份启动 PowerShell ISE，并使用以下 PowerShell 命令使用**EnvironmentName**参数设置为相应的 Azure 订阅类型 （请参阅以下参数）。 
 
-1. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加的帐户，运行**添加 AzureRmAccount** cmdlet。 系统将提示你输入你的 Azure 全局管理员帐户凭据，并且你可能必须为使用双因素身份验证，具体情况视你的帐户的配置。
+1. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet。 系统会提示输入 Azure 全局管理员帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。
 
    ```PowerShell
       Add-AzureRmAccount -EnvironmentName "<Either AzureCloud or AzureChinaCloud>"
@@ -94,7 +94,7 @@ Azure Stack 工具 GitHub 存储库包含支持 Azure Stack 功能（包括注�
 2. 接下来，在相同的 PowerShell 会话中，确保你已登录到正确的 Azure PowerShell 上下文。 这是用于注册上述 Azure 堆栈资源提供程序的 azure 帐户。 若要运行的 Powershell: 
 
   ```powershell 
-  Login-AzureRmAccount -Environment "<Either AzureCloud or AzureChinaCloud>" 
+  Add-AzureRmAccount -Environment "<Either AzureCloud or AzureChinaCloud>" 
   ``` 
 
 3. 在相同的 PowerShell 会话中，运行**集 AzsRegistration** cmdlet。 要运行的 PowerShell：  
@@ -114,7 +114,7 @@ Azure Stack 工具 GitHub 存储库包含支持 Azure Stack 功能（包括注�
   |BillingModel|订阅使用的计费模式。 此参数允许的值：Capacity、PayAsYouUse 和 Development。|
   |  |  |
 
-  过程需要介于 10 到 15 分钟之间。 命令完成后，你将看到消息**"你的环境现在已注册和激活使用提供的参数。"**
+  过程需要介于 10 到 15 分钟之间。 命令完成后，你将看到消息 **"你的环境现在已注册和激活使用提供的参数。"**
 
 ### <a name="register-azure-stack-with-azure-using-the-capacity-billing-model"></a>使用容量计费模式将 Azure Stack 注册到 Azure
 按照相同的说明用于注册使用作为你的使用付费计费模型，但添加在其下购买容量的协议编号，并更改**BillingModel**参数**容量**. 其他所有参数不变。
@@ -147,11 +147,11 @@ Set-AzsRegistration `
 
   ```Powershell
   $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-  $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<your agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+  $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
   ```
   
   > [!TIP]  
-  > 注册令牌保存在为指定的文件*$FilePathForRegistrationToken*。 你可以自行更改文件路径或文件名。 
+  > 注册令牌保存在为指定的文件 *$FilePathForRegistrationToken*。 你可以自行更改文件路径或文件名。 
 
 3. 保存此注册令牌，以便在连接 Azure 的计算机上使用。 你可以从 $FilePathForRegistrationToken 复制文件或文本。
 
@@ -183,7 +183,7 @@ Set-AzsRegistration `
   $ActivationKey = Get-AzsActivationKey -RegistrationName $RegistrationResourceName -KeyOutputFilePath $KeyOutputFilePath 
   ``` 
   > [!TIP]   
-  > 激活密钥保存在为指定的文件*$KeyOutputFilePath*。 你可以自行更改文件路径或文件名。 
+  > 激活密钥保存在为指定的文件 *$KeyOutputFilePath*。 你可以自行更改文件路径或文件名。 
 
 ### <a name="create-an-activation-resource-in-azure-stack"></a>在 Azure 堆栈中创建激活资源 
 从返回到 Azure 堆栈环境使用的文件或文本创建从 Get AzsActivationKey 的激活密钥。 接下来你将使用的激活密钥的 Azure 堆栈中创建激活资源。 若要创建激活资源，请运行以下 PowerShell 命令：  
@@ -269,4 +269,4 @@ Set-AzsRegistration `
 
 ## <a name="next-steps"></a>后续步骤
 
-[从 Azure 下载应用商店项](azure-stack-download-azure-marketplace-item.md)
+[从 Azure 下载 Marketplace 项](azure-stack-download-azure-marketplace-item.md)

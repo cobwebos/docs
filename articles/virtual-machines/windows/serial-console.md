@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: d5d855cac9f09f92798d955dda3d66ab6b631091
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>虚拟机串行控制台（预览版） 
 
@@ -109,7 +109,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 本部分包含需要使用 SAC 访问 VM（例如，需要排查 RDP 连接失败问题）时，用于执行常见任务的示例命令。
 
-SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁用。 SAC 依赖于 `sacdrv.sys` 内核驱动程序、`Special Administration Console Helper` 服务 (`sacsvr`) 和 `sacsess.exe` 进程。 有关详细信息，请参阅[紧急管理服务工具和设置](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))。
+SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁用。 SAC 依赖于 `sacdrv.sys` 内核驱动程序、`Special Administration Console Helper` 服务 (`sacsvr`) 和 `sacsess.exe` 进程。 有关详细信息，请参阅[紧急管理服务工具和设置](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))。
 
 使用 SAC 可以通过串行端口连接到正在运行的 OS。 从 SAC 启动 CMD 时，`sacsess.exe` 会从正在运行的 OS 内部启动 `cmd.exe`。 如果通过 RDP 连接到 VM，同时通过串行控制台功能连接到 SAC 的话，可在任务管理器中看到此进程。 通过 SAC 访问的 CMD 也就是通过 RDP 连接时使用的 `cmd.exe`。 可以使用所有相同的命令和工具，包括可以从该 CMD 实例启动 PowerShell。 SAC 与 Windows 恢复环境 (WinRE) 之间的主要差别在于，使用 SAC 可以管理正在运行的 OS，而 WinRE 会引导进入一个不同的精简 OS。 尽管 Azure VM 不支持访问 WinRE，但使用串行控制台功能可以通过 SAC 管理 Azure VM。
 
@@ -266,11 +266,11 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 #### <a name="scan-for-system-file-corruption"></a>在系统中扫描文件损坏情况
 `sfc /scannow`
 
-另请参阅[修复 Windows 映像](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image)。
+另请参阅[修复 Windows 映像](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image)。
 #### <a name="scan-for-system-file-corruption"></a>在系统中扫描文件损坏情况
 `dism /online /cleanup-image /scanhealth`
 
-另请参阅[修复 Windows 映像](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image)。
+另请参阅[修复 Windows 映像](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image)。
 #### <a name="export-file-permissions-to-text-file"></a>将文件权限导出到文本文件
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 #### <a name="save-file-permissions-to-acl-file"></a>将文件权限保存到 ACL 文件
@@ -516,7 +516,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 查询实例元数据需要来宾网络连接正常，因为需要通过 Azure 主机向实例元数据服务发出 REST 调用。 因此，如果能够查询实例元数据，则结果会告知来宾能够通过网络来与 Azure 托管服务通信。
 
-有关详细信息，请参阅 [Azure 实例元数据服务](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service)。
+有关详细信息，请参阅 [Azure 实例元数据服务](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)。
 
 #### <a name="instance-metadata"></a>实例元数据
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

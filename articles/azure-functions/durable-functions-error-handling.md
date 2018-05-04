@@ -1,12 +1,12 @@
 ---
-title: "处理 Durable Functions 中的错误 - Azure"
-description: "了解如何在 Azure Functions 的 Durable Functions 扩展中处理错误。"
+title: 处理 Durable Functions 中的错误 - Azure
+description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处理错误。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ee5362d33bb9dadadb4194457cfd7726f4825f56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 108c6020956b398effb8ba9dd4471190362359d6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
@@ -26,7 +26,7 @@ Durable Function 业务流程采用代码实现，并可使用编程语言的错
 
 ## <a name="errors-in-activity-functions"></a>活动函数中的错误
 
-活动函数中引发的任何异常都将封送回业务流程协调程序函数，并作为 `TaskFailedException` 引发。 可在业务流程协调程序函数中编写满足需要的错误处理和补偿代码。
+活动函数中引发的任何异常都将封送回业务流程协调程序函数，并作为 `FunctionFailedException` 引发。 可在业务流程协调程序函数中编写满足需要的错误处理和补偿代码。
 
 例如，考虑使用以下业务流程协调程序函数，将一个帐户中的资金转到另一帐户：
 
@@ -80,7 +80,7 @@ public static async Task Run(DurableOrchestrationContext context)
         firstRetryInterval: TimeSpan.FromSeconds(5),
         maxNumberOfAttempts: 3);
 
-    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions);
+    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
     
     // ...
 }

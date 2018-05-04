@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 577b3e86f4a126dd38598ac09c48ff895e5fa93b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 720e566206a5b85a03c64de798418c3061e308e6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>快速入门：使用 Java 和 Azure Cosmos DB 生成 Cassandra 应用
 
@@ -164,7 +164,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     config.properties 的第 2 行现在应类似于 
 
-    `cassandra_host=cosmos-db-quickstarts.documents.azure.com`
+    `cassandra_host=cosmos-db-quickstarts.cassandra.cosmosdb.azure.com`
 
 3. 返回到门户，然后复制“用户名”值。 粘贴门户中的“用户名”值，并覆盖第 4 行中的 `<cassandra endpoint username>`。
 

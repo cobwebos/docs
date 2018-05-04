@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源 | Microsoft Docs"
-description: "了解如何在 Azure 开发测试实验室中通过 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源"
+title: 使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源 | Microsoft Docs
+description: 了解如何在 Azure 开发测试实验室中通过 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: devtest-lab
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: v-craic
-ms.openlocfilehash: b4582dd03ceb1c2104f6e93c55a65e5a2b968c0a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 38e048e9ec4985d16632f8891e42c2b6394c83d6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 02/21/2018
 
     ![选择一个库](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
   
-1. 在“添加”窗格中，输入“环境名称”值。 环境名称是向实验室中的用户显示的名称。 剩余的输入字段已在 Azure 资源管理器模板中定义。 如果模板中定义了默认值或者存在 `azuredeploy.parameter.json` 文件，默认值会显示在这些输入字段中。 对于*安全字符串*类型的参数，可以使用实验室的[个人机密存储](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)中存储的机密。
+1. 在“添加”窗格中，输入“环境名称”值。 环境名称是向实验室中的用户显示的名称。 剩余的输入字段已在 Azure 资源管理器模板中定义。 如果模板中定义了默认值或者存在 `azuredeploy.parameter.json` 文件，默认值会显示在这些输入字段中。 对于*安全字符串*类型的参数，可以使用实验室的[个人机密存储](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)中存储的机密。
 
     ![添加窗格](./media/devtest-lab-create-environment-from-arm/add.png)
 

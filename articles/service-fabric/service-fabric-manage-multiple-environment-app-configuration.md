@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: a3d0770d3b9c8702dbe4dac86f86030bea4090c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3035d0e8642310698274e4351a95013e204e2f14
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多个环境的应用程序
 
@@ -48,8 +48,8 @@ ms.lasthandoff: 03/23/2018
 
 在 Service Fabric 中创建命名的应用程序实例时，可以选择传入参数。 执行此操作的方式取决于创建应用程序实例的方式。
 
-  - 在 PowerShell 中，[`New-ServiceFabricApplication`](https://docs.microsoft.com/en-us/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 将应用程序参数作为哈希表。
-  - 借助 sfctl，[`sfctl application create`](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) 命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
+  - 在 PowerShell 中，[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 将应用程序参数作为哈希表。
+  - 借助 sfctl，[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) 命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
   - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 从 Visual Studio 发布、使用 Visual Studio Team Service 或 Team Foundation Server 时会用到这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
 
 ## <a name="next-steps"></a>后续步骤

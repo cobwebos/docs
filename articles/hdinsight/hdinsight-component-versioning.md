@@ -1,27 +1,25 @@
 ---
-title: "Hadoop 组件和版本 - Azure HDInsight | Microsoft Docs"
-description: "了解 HDInsight 中的 Hadoop 组件和版本，以及 Hortonworks 数据平台的此云分发版中可用的服务级别。"
-keywords: "hadoop 版本,hadoop 生态系统组件,hadoop 组件,如何检查 hadoop 版本"
+title: Hadoop 组件和版本 - Azure HDInsight | Microsoft Docs
+description: 了解 HDInsight 中的 Hadoop 组件和版本，以及 Hortonworks 数据平台的此云分发版中可用的服务级别。
+keywords: hadoop 版本,hadoop 生态系统组件,hadoop 组件,如何检查 hadoop 版本
 services: hdinsight
 editor: cgronlun
 manager: asadk
 author: bprakash
 tags: azure-portal
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 367b3f4a-f7d3-4e59-abd0-5dc59576f1ff
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: bprakash
-ms.openlocfilehash: 35ded349e9ced6463ece876ca1fd92423d20c625
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 813b05c5be4378ea6e57cb0b14fd8110e2772998
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Hadoop 组件和版本？
 
@@ -109,7 +107,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
 ## <a name="enterprise-security-package-for-hdinsight"></a>适用于 HDInsight 的 Enterprise Security 包
 
-Azure HDInsight 是一种可选包，可在 HDInsight 群集上作为创建群集工作流的一部分添加。 Enterprise Security 包支持：
+Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建群集工作流的一部分添加。 Enterprise Security 包支持：
 
 - 与 Active Directory 集成进行身份验证。
 

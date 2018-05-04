@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: voellm
-ms.openlocfilehash: c32c85c560e9dfe587e79e77aa4b1262e347bed4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 831fa2b6b9afb39bff715ef54cc41e11ee903e50
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Azure Cosmos DB 数据库静态加密
 
@@ -65,4 +65,4 @@ Cosmos DB 属于 PaaS 服务，非常便于使用。 存储在 Cosmos DB 中的�
 ## <a name="next-steps"></a>后续步骤
 
 有关 Cosmos DB 安全性的概述以及最新改进，请参阅 [Azure Cosmos DB 数据库安全性](database-security.md)。
-有关 Microsoft 认证的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/en-us/support/trust-center/)。
+有关 Microsoft 认证的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。

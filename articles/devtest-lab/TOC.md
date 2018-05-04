@@ -86,5 +86,5 @@
 
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/en-us/roadmap/?category=developer-tools)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=developer-tools)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

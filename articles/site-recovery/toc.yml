@@ -111,6 +111,8 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: 关于将 Azure 流量管理器与 Site Recovery 配合使用
       href: concepts-traffic-manager-with-site-recovery.md
+    - name: 关于将 ExpressRoute 与 Site Recovery 配合使用
+      href: concepts-expressroute-with-site-recovery.md
     - name: 常见问题
       href: site-recovery-faq.md
 - name: 操作方法指南
@@ -119,16 +121,20 @@
       items:
         - name: 网络
           items:
-            - name: 管理网络以进行 Azure VM 灾难恢复（预览版）
+            - name: 管理网络以进行 Azure VM 灾难恢复
               href: azure-to-azure-about-networking.md
             - name: 准备用于 Azure VM 灾难恢复的网络映射
               href: azure-to-azure-network-mapping.md
             - name: 设置 IP 地址以进行故障转移
               href: site-recovery-retain-ip-azure-vm-failover.md
+            - name: 将 ExpressRoute 与 Azure VM 灾难恢复配合使用
+              href: azure-vm-disaster-recovery-with-expressroute.md
         - name: 灾难恢复
           items:
             - name: 迁移到 Azure 之后的 Azure VM 灾难恢复
               href: azure-to-azure-replicate-after-migration.md
+            - name: 使用 PowerShell 进行 Azure VM 灾难恢复
+              href: azure-to-azure-powershell.md
         - name: 复制、故障转移和故障回复
           items:
             - name: 启用 Azure 到 Azure 复制

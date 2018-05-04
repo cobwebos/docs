@@ -1,6 +1,6 @@
 ---
-title: "如何在 Azure 时序见解中监视和降低限制 | Microsoft Docs"
-description: "本文介绍如何监视、诊断并减少导致 Azure 时序见解延迟和限制的性能问题。"
+title: 如何在 Azure 时序见解中监视和降低限制 | Microsoft Docs
+description: 本文介绍如何监视、诊断并减少导致 Azure 时序见解延迟和限制的性能问题。
 services: time-series-insights
 ms.service: time-series-insights
 author: jasonwhowell
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: ec16f20723e4a613c953363da6cf6b463de829a9
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: ac59359eb6af268f311534d90e1529fc5e41094f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 传入数据量超过环境配置时，Azure 时序见解中可能会出现延迟或限制。
@@ -52,10 +52,17 @@ ms.lasthandoff: 11/28/2017
 |入口收到的消息数   | 从所有事件中心或 IoT 中心事件源读取的消息的计数。        |
 |入口存储的字节数     | 已存储且可用于查询的事件的总大小。 仅根据属性值计算大小。        |
 |入口存储的事件数     |   已存储并可供查询的平展事件计数。      |
+|**入口接收消息时间延迟**    |  消息在事件源中排队与消息在入口中处理之间的时间差异。      |
+|**入口接收消息计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
 
-![延迟](media/environment-mitigate-latency/latency.png)
 
-一种方法是将“入口已存储事件“警报设置为在 2 小时的时间内 >= 略低于总环境容量的阈值。  此警报有助于了解是否持续达到容量要求，指示很可能存在延迟。  
+![Latency](media/environment-mitigate-latency/latency.png)
+
+如果受到限制，则会看到入口接收消息时间延迟的值，了解到当消息命中事件源时，TSI 落后于实际时间多少分钟（不计索引时间，该时间大约为 30-60 秒）。  入口接收消息计数延迟也应该有一个值，用于确定你在消息数方面落后多少。  若要赶上来，最容易的方式是增加环境的容量，使之达到能够克服此差异的规模。  
+
+例如，如果你的 S1 环境是一个单元的，在计数方面滞后五百万条消息，则可增加环境的大小，使之达到六个单元，则大约一天就可以赶上来。  甚至可以增加更多，这样追赶速度会更快。  在一开始预配某个环境时，尤其是在将其连接到某个事件源，而该事件源中已经有事件时，或者在批量上传大量历史数据时，这是常见的现象。
+
+另一种方法是将“入口已存储事件”警报设置为在 2 小时的时间内 >= 略低于总环境容量的阈值。  此警报有助于了解是否持续达到容量要求，指示很可能存在延迟。  
 
 例如，如果预配了三个 S1 单位（或每分钟入口容量为 2100 个事件），则可以将“入口存储的事件数”警报设置为 2 小时 >= 1900 个事件。 如果因不断超过该阈值而触发警报，很可能是由于预配不足。  
 

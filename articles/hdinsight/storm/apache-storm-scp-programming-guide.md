@@ -1,8 +1,8 @@
 ---
-title: "SCP.NET 编程指南 | Microsoft Docs"
-description: "了解如何通过 SCP.NET 创建可在 Storm on HDInsight 中使用的基于 .NET 的 Storm 拓扑。"
+title: SCP.NET 编程指南 | Microsoft Docs
+description: 了解如何通过 SCP.NET 创建可在 Storm on HDInsight 中使用的基于 .NET 的 Storm 拓扑。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: raviperi
 manager: jhubbard
 editor: cgronlun
@@ -11,15 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
-ms.openlocfilehash: a0ce92ba58fbcda812a3d4e5e275178b73400d6c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0f4c021bc209c99e1b3f34b34bf5ba0549eb48f9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scp-programming-guide"></a>SCP 编程指南
 SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](http://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](http://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
@@ -351,7 +349,7 @@ SCPRuntime 提供以下两种方法：
         }
 
 ## <a name="topology-specification-language"></a>拓扑规范语言
-SCP 拓扑规范是一种特定于域的语言，用于描述和配置 SCP 拓扑。 它基于 Storm 的 Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>)，可通过 SCP 进行扩展。
+SCP 拓扑规范是一种特定于域的语言，用于描述和配置 SCP 拓扑。 它基于 Storm 的 Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) 并通过 SCP 进行扩展。
 
 拓扑规范可通过 ***runspec*** 命令直接提交到 Storm 群集进行执行。
 
@@ -364,8 +362,8 @@ SCP.NET 添加了以下函数来定义事务性拓扑：
 | **scp-tx-batch-bolt** |exec-name<br />args<br />fields |定义事务性批处理 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />Fields 是用于 Bolt 的输出字段。 |
 | **scp-tx-commit-bolt** |exec-name<br />args<br />fields |定义事务性 Committer Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段 |
 | **nontx-topolopy** |topology-name<br />spout-map<br />bolt-map |使用拓扑名称、Spout 定义图和 Bolt 来定义非事务性拓扑&nbsp; |
-| **scp-spout** |exec-name<br />args<br />fields<br />参数 |定义非事务性 Spout。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
-| **scp-bolt** |exec-name<br />args<br />fields<br />参数 |定义非事务性 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
+| **scp-spout** |exec-name<br />args<br />fields<br />parameters |定义非事务性 Spout。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
+| **scp-bolt** |exec-name<br />args<br />fields<br />parameters |定义非事务性 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
 
 SCP.NET 定义了以下关键字：
 

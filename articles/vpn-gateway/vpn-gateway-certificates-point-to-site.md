@@ -1,11 +1,11 @@
 ---
-title: "为点到站点连接生成和导出证书：PowerShell：Azure | Microsoft Docs"
-description: "在 Windows 10 或 Windows Server 2016 上使用 PowerShell 创建自签名根证书、导出公钥和生成客户端证书。"
+title: 为点到站点连接生成和导出证书：PowerShell：Azure | Microsoft Docs
+description: 在 Windows 10 或 Windows Server 2016 上使用 PowerShell 创建自签名根证书、导出公钥和生成客户端证书。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 27b99f7c-50dc-4f88-8a6e-d60080819a43
 ms.service: vpn-gateway
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/23/2018
+ms.date: 04/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 410fe05e0a545905024f223e6f7297066b326d14
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 385b6ed2e8104fd2e15e6e55d46dcd12b963ec6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10-or-windows-server-2016"></a>在 Windows 10 或 Windows Server 2016 上使用 PowerShell 为点到站点连接生成并导出证书
+# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>使用 PowerShell 为点到站点连接生成和导出证书
 
 点到站点连接使用证书进行身份验证。 本文介绍如何在 Windows 10 或 Windows Server 2016 上使用 PowerShell 创建自签名根证书并生成客户端证书。 如果正在寻找点到站点配置步骤（例如，如何上传根证书），请从下面的列表选择一篇关于“配置点到站点”的文章：
 

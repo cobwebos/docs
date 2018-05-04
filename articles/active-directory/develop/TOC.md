@@ -17,6 +17,7 @@
 ### [ASP.NET](GuidedSetups/active-directory-aspnetwebapp-v1.md)
 ### [ASP.NET Core](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore)
 ### [Java](active-directory-devquickstarts-webapp-java.md)
+### [Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)
 ### [NodeJS](active-directory-devquickstarts-openidconnect-nodejs.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
 ## 单页应用
@@ -68,9 +69,9 @@
 ## [ACS 迁移](active-directory-acs-migration.md)
 ## [ADAL 错误处理最佳做法](active-directory-devhowto-adal-error-handling.md)
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [身份验证库 (ADAL)](active-directory-authentication-libraries.md)
-## [代码示例文章](active-directory-code-samples.md)
+## [按方案分类的代码示例](active-directory-code-samples.md)
 ## [术语表](active-directory-dev-glossary.md)
 ## [身份验证协议](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
@@ -96,7 +97,8 @@
 ### 移动应用和桌面应用
 #### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
-#### [.NET (Windows Desktop)](guidedsetups/active-directory-windesktop.md)
+#### [Windows 桌面 .NET](guidedsetups/active-directory-windesktop.md)
+#### [通用 Windows 平台](guidedsetups/active-directory-uwp-v2.md)
 ### Web 应用
 #### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
@@ -108,8 +110,10 @@
 #### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## 指南
 ### [注册应用](active-directory-v2-app-registration.md)
+### [应用注册参考](active-directory-v2-registration-portal.md)
 ## 引用
 ### [身份验证库](active-directory-v2-libraries.md)
+### [按方案分类的 v2.0 代码示例](active-directory-v2-code-samples.md)
 ### [v2.0 身份验证协议](active-directory-v2-protocols.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
 #### [OAuth 2.0 授权代码授予](active-directory-v2-protocols-oauth-code.md)

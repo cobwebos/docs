@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 322de1fb19461455a063d939ace3d5553ed1fc79
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bd4ebbec4506824f00d09a09369ebbeaf9458c19
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中备份和还原服务器
 
@@ -68,14 +68,14 @@ az extension update --name rdbms
 
 通过 `az mysql server create` 命令创建服务器时，`--geo-redundant-backup` 参数描述备份冗余选项。 如果为 `Enabled`，则创建异地冗余备份。 如果为 `Disabled`，则创建本地冗余备份。 
 
-备份保留期由参数 `--backup-retention-days` 设置。 
+备份保留期由参数 `--backup-retention` 设置。 
 
 有关在创建过程中设置这些值的详细信息，请参阅 [Azure Database for MySQL 服务器 CLI 快速入门](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
 可以如下所述更改服务器的备份保留期：
 
 ```azurecli-interactive
-az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention-days 10
+az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
 前面的示例将 mydemoserver 的备份保留期更改为 10 天。
@@ -113,6 +113,10 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 如果为服务器配置了异地冗余备份，则可以从该现有服务器的备份创建新服务器。 可以在 Azure Database for MySQL 可用的任何区域中创建此新服务器。  
 
 若要使用异地冗余备份创建服务器，请使用 Azure CLI `az mysql server georestore` 命令。
+
+> [!NOTE]
+> 首次创建服务器时，该服务器可能不会立即可用于异地还原。 填充必需的元数据可能需要几个小时。
+>
 
 若要异地还原服务器，请在 Azure CLI 命令提示符下输入以下命令：
 

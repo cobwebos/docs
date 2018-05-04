@@ -1,30 +1,26 @@
 ---
-title: "表设计简介 - Azure SQL 数据仓库 | Microsoft Docs"
-description: "有关在 Azure SQL 数据仓库中设计表的简介。"
+title: 设计表 - Azure SQL 数据仓库 | Microsoft Docs
+description: 有关在 Azure SQL 数据仓库中设计表的简介。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 01/18/2018
-ms.author: barbkess
-ms.openlocfilehash: 5c163880a7508d69bce0019cc5379bca8c704d59
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d299ff0d8e719040d503852af6056d9d87738b7d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="introduction-to-designing-tables-in-azure-sql-data-warehouse"></a>有关在 Azure SQL 数据仓库中设计表的简介
+# <a name="designing-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中设计表
 
 了解有关在 Azure SQL 数据仓库中设计表的重要概念。 
 
-## <a name="determining-table-category"></a>确定表类别 
+## <a name="determine-table-category"></a>确定表类别 
 
 [星型架构](https://en.wikipedia.org/wiki/Star_schema)将数据组织成事实数据表和维度表。 某些表在转移到事实数据表或维度表之前已用于集成或暂存数据。 设计某个表时，请确定该表的数据是属于事实数据表、维度表还是集成表。 此项决策可以明确相应的表结构和分布方式。 
 
@@ -46,7 +42,7 @@ CREATE SCHEMA wwi;
 若要在 SQL 数据仓库中显示表的组织方式，可以使用 fact、dim 和 int 作为表名称的前缀。 下表显示了 WideWorldImportersDW 的一些架构和表名称。 它将 SQL Server 中的名称和 SQL 数据仓库中的名称进行了对比。 
 
 | WideWorldImportersDW 表  | 表类型 | SQL Server | SQL 数据仓库 |
-|:-----|:-----|:------|
+|:-----|:-----|:------|:-----|
 | 城市 | 维度 | Dimension.City | wwi.DimCity |
 | 顺序 | Fact | Fact.Order | wwi.FactOrder |
 
@@ -70,7 +66,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 外部表指向位于 Azure 存储 Blob 或 Azure Data Lake Store 中的数据。 与 CREATE TABLE AS SELECT 语句结合使用时，从外部表中选择数据可将数据导入到 SQL 数据仓库。 因此，外部表可用于加载数据。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
 
 ## <a name="data-types"></a>数据类型
-SQL 数据仓库支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的 [CREATE TABLE 引用中的数据类型](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)。 最小化数据类型的大小有助于提高查询性能。 有关使用数据类型的指导，请参阅[数据类型](sql-data-warehouse-tables-data-types.md)。
+SQL 数据仓库支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的 [CREATE TABLE 引用中的数据类型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)。 最小化数据类型的大小有助于提高查询性能。 有关使用数据类型的指导，请参阅[数据类型](sql-data-warehouse-tables-data-types.md)。
 
 ## <a name="distributed-tables"></a>分布式表
 SQL 数据仓库的一个基本功能是它可以跨 60 个[分布区](massively-parallel-processing-mpp-architecture.md#distributions)对表进行存储和操作的方式。  表将使用循环方法、哈希方法或复制方法进行分布。
@@ -106,7 +102,7 @@ SQL 数据仓库的一个基本功能是它可以跨 60 个[分布区](massively
 ## <a name="columnstore-indexes"></a>列存储索引
 默认情况下，SQL 数据仓库将表存储为聚集列存储索引。 对于大型表而言，这种数据存储形式可以实现较高的数据压缩率和查询性能。  聚集列存储索引通常是最佳选择，但在某些情况下，聚集索引或堆是适当的存储结构。
 
-有关列存储功能的列表，请参阅[列存储索引的新增功能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)。 若要提高列存储索引性能，请参阅[最大化列存储索引的行组质量](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+有关列存储功能的列表，请参阅[列存储索引的新增功能](/sql/relational-databases/indexes/columnstore-indexes-whats-new)。 若要提高列存储索引性能，请参阅[最大化列存储索引的行组质量](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 ## <a name="statistics"></a>统计信息
 查询优化器在创建用于执行查询的计划时，使用列级统计信息。 若要提高查询性能，必须基于各个列（尤其是查询联接中使用的列）创建统计信息。 创建和更新统计信息的过程不会自动发生。 在创建表之后[创建统计信息](/sql/t-sql/statements/create-statistics-transact-sql)。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
@@ -143,7 +139,7 @@ SQL 数据仓库支持其他数据库所提供的许多（但不是全部）表�
 - [用户定义的类型](/sql/relational-databases/native-client/features/using-user-defined-types)
 
 ## <a name="table-size-queries"></a>表大小查询
-若要确定这 60 个分布区中每个分布区的表所占用的空间和行，一种简单的方法是使用 [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED]。
+若要确定这 60 个分布中每个分布的表所占用的空间和行，一个简单的方法是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)。
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -342,4 +338,4 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>后续步骤
-为数据仓库创建表后，接下来可将数据载入该表。  有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
+为数据仓库创建表后，接下来可将数据载入该表。  有关加载教程，请参阅[将数据加载到 SQL 数据仓库](load-data-wideworldimportersdw.md)。

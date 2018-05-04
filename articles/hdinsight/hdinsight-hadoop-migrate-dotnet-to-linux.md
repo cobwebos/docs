@@ -1,26 +1,24 @@
 ---
-title: "在基于 Linux 的 HDInsight 上将 .NET 与 Hadoop MapReduce 配合使用 - Azure | Microsoft Docs"
-description: "了解如何在基于 Linux 的 HDInsight 上将 .NET 应用程序用于流式处理 MapReduce。"
+title: 在基于 Linux 的 HDInsight 上将 .NET 与 Hadoop MapReduce 配合使用 - Azure | Microsoft Docs
+description: 了解如何在基于 Linux 的 HDInsight 上将 .NET 应用程序用于流式处理 MapReduce。
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: bff53af8f5c0b74cf0f69ba474d62ecdb7e20ce1
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 36b8f51122bad6614e63dfc58e09e5c1ca08f83d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight
 
@@ -58,7 +56,7 @@ HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关包含在 HDInsight �
 
 ## <a name="manual-portability-analysis"></a>手动可移植性分析
 
-使用[应用程序可移植性 (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/) 文档中的信息手动审核代码。
+使用[应用程序可移植性 (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/) 文档中的信息执行代码的手动审核。
 
 ## <a name="modify-and-build"></a>修改和生成
 

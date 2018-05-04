@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: a2aacc28a70a5150c1903a60c7a697409e2bbbe7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 800105d29fa284531e02ce80db69eff3a9915652
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识（公共预览版）
 
@@ -234,5 +234,9 @@ $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SEC
 $accessToken = $tokenResponse.access_token
 ```
 
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [使用托管服务标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)
 
 [Microsoft.Azure.Services.AppAuthentication 参考]: https://go.microsoft.com/fwlink/p/?linkid=862452

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 4de9f66b4632f2573299757b2e40fae65f86f7d6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ce90545900f4abdaf5173c160faf9b178193eafe
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="technical-prerequisites-for-creating-a-solution-template-for-the-azure-marketplace"></a>为 Azure Marketplace 创建解决方案模板的技术先决条件
 在开始之前，请仔细阅读过程，并了解执行每个步骤的位置和原因。 在开始产品/服务创建过程前，应尽可能多地准备公司信息和其他数据、下载必需的工具和/或创建技术组件。  
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/16/2018
 
 1. [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
 2. Azure 快速入门模板：
-   * [https://azure.microsoft.com/en-us/documentation/templates/](https://azure.microsoft.com/documentation/templates/)
+   * [https://azure.microsoft.com/documentation/templates/](https://azure.microsoft.com/documentation/templates/)
    * [https://github.com/azure/azure-quickstart-templates](https://github.com/azure/azure-quickstart-templates)
 
 ## <a name="next-steps"></a>后续步骤

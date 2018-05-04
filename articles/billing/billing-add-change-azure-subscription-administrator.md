@@ -1,11 +1,11 @@
 ---
-title: "如何添加或更改 Azure 管理员订阅角色 | Microsoft Docs"
-description: "描述如何添加或更改 Azure 共同管理员、服务管理员和帐户管理员"
-services: 
-documentationcenter: 
+title: 如何添加或更改 Azure 管理员订阅角色 | Microsoft Docs
+description: 描述如何添加或更改 Azure 共同管理员、服务管理员和帐户管理员
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
 ms.service: billing
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/04/2018
 ms.author: genli
-ms.openlocfilehash: dc09f29fec78d408e1560bfa0a943f16ab50c760
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ecee98e9b74613a4176d20d231b32e4cb99a721e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>添加或更改 Azure 订阅管理员
 
-Azure 经典订阅管理员和 Azure [基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 是用于管理 Azure 资源访问权限的两个系统：
+Azure 经典订阅管理员和 Azure [基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 是用于管理 Azure 资源访问权限的两个系统：
 
 * 经典订阅管理员角色提供基本访问权限管理，角色包括帐户管理员、服务管理员和协同管理员。
     * 注册新的 Azure 订阅后，帐户会默认同时设置为帐户管理员和服务管理员。
@@ -41,10 +41,12 @@ Azure 经典订阅管理员和 Azure [基于角色的访问控制 (RBAC)](../act
 
 1. 请访问 [Azure 门户中的“订阅”](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 2. 选择要提供访问权限的订阅。
-3. 选择菜单中的“访问控制 (IAM)”。
-4. 在“角色”框中，选择“所有者”。 
-5. 在“分配其访问权限”框中，选择“Azure AD 用户、组或应用程序”。 
-6. 在“选择”框中，键入要添加为“所有者”的用户的电子邮件地址。 选择用户，再选择“保存”。
+3. 选择“添加”  
+   （如果缺少“添加”按钮，则表示无权添加权限。）
+4. 选择菜单中的“访问控制 (IAM)”。
+5. 在“角色”框中，选择“所有者”。 
+6. 在“分配其访问权限”框中，选择“Azure AD 用户、组或应用程序”。 
+7. 在“选择”框中，键入要添加为“所有者”的用户的电子邮件地址。 选择用户，再选择“保存”。
 
     ![显示所选所有者角色的屏幕截图](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
@@ -111,7 +113,7 @@ Azure 经典订阅管理员和 Azure [基于角色的访问控制 (RBAC)](../act
  帐户管理员、服务管理员和共同管理员是 Azure 中的三种经典订阅管理员角色。 用于注册 Azure 的帐户会自动同时设置为帐户管理员和服务管理员。 注册后便可添加协同管理员。 下表描述这三个管理角色之间的具体差异。 
 
 > [!TIP]
-> 为实现更好的控制和精细访问管理，建议使用 Azure 基于角色的访问控制 (RBAC)，从而允许将用户添加到多个角色。 有关详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。
+> 为实现更好的控制和精细访问管理，建议使用 Azure 基于角色的访问控制 (RBAC)，从而允许将用户添加到多个角色。 有关详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../role-based-access-control/overview.md)。
 
 | 经典订阅管理员 | 限制 | 说明 |
 | --- | --- | --- |
@@ -121,7 +123,7 @@ Azure 经典订阅管理员和 Azure [基于角色的访问控制 (RBAC)](../act
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>了解有关资源访问控制和 Active Directory 的详细信息
 
-* 若要深入了解如何在 Microsoft Azure 中控制资源访问，请参阅[了解 Azure 中的资源访问](../active-directory/active-directory-understanding-resource-access.md)。
+* 若要深入了解如何在 Microsoft Azure 中控制资源访问，请参阅[了解 Azure 中的资源访问](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 * 有关 Azure Active Directory 的详细信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](../active-directory/active-directory-how-subscriptions-associated-directory.md)以及[在 Azure Active Directory 中分配管理员角色](../active-directory/active-directory-assign-admin-roles-azure-portal.md)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。

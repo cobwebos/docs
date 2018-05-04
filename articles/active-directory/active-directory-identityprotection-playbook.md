@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory Identity Protection 演练手册 | Microsoft 文档"
-description: "了解如何使用 Azure AD Identity Protection 来限制攻击者利用已泄露标识或设备的能力，以及保护之前怀疑或已知受到威胁的标识或设备。"
+title: Azure Active Directory Identity Protection 演练手册 | Microsoft 文档
+description: 了解如何使用 Azure AD Identity Protection 来限制攻击者利用已泄露标识或设备的能力，以及保护之前怀疑或已知受到威胁的标识或设备。
 services: active-directory
-keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略"
-documentationcenter: 
+keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f4240c9196796c2e83c408271fe81b20842ab722
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 210d097f0719725a0ecf145ce536875a383b04e6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/21/2018
 ## <a name="simulating-vulnerabilities"></a>模拟漏洞
 漏洞是 Azure AD 环境中可能由危险分子利用的弱点。 Azure AD Identity Protection 中当前显示了 3 种类型的漏洞，这些漏洞会利用 Azure AD 的其他功能。 设置这些功能后，这些漏洞会自动显示在 Identity Protection 仪表板上。
 
-* Azure AD [多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
+* Azure AD [多重身份验证](authentication/multi-factor-authentication.md)
 * Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)。
 * Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)。 
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 02/21/2018
 
 **若要测试用户风险安全策略，请执行以下步骤**：
 
-1. 使用租户的全局管理员凭据登录 [https://portal.azure.com](https://portal.azure.com)。
+1. 使用租户的全局管理员凭据登录到 [https://portal.azure.com](https://portal.azure.com)。
 2. 导航到 **Identity Protection**。 
 3. 在“Azure AD Identity Protection”页中，单击“用户风险策略”。
 4. 在“分配”部分，选择所需的用户（和组）以及用户风险级别。
@@ -145,7 +145,7 @@ ms.lasthandoff: 02/21/2018
 
 **若要测试登录风险策略，请执行以下步骤：**
 
-1. 使用租户的全局管理员凭据登录 [https://portal.azure.com](https://portal.azure.com)。
+1. 使用租户的全局管理员凭据登录到 [https://portal.azure.com ](https://portal.azure.com)。
 
 2. 导航到 **Azure AD Identity Protection**。
 

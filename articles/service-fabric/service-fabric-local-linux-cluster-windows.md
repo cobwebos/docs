@@ -1,11 +1,11 @@
 ---
-title: "设置 Windows 上的 Azure Service Fabric Linux 群集 | Microsoft Docs"
-description: "本文介绍如何设置在 Windows 开发计算机上运行的 Service Fabric Linux 群集。 这对于跨平台开发尤其有用。"
+title: 设置 Windows 上的 Azure Service Fabric Linux 群集 | Microsoft Docs
+description: 本文介绍如何设置在 Windows 开发计算机上运行的 Service Fabric Linux 群集。 这对于跨平台开发尤其有用。
 services: service-fabric
 documentationcenter: .net
 author: suhuruli
 manager: mfussell
-editor: 
+editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: java
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: db6ad8b83ce34a8b86de822bc074e8a13345a1b4
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 89c1cf36c3b92376dedb1cb29d190c4c6d8f619b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>设置 Windows 开发人员计算机上的 Linux Service Fabric 群集
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/27/2018
 
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>创建本地容器和设置 Service Fabric
-要设置本地 Docker 容器并在其上运行 Service Fabric 群集，请执行以下步骤：
+若要设置本地 Docker 容器并在其上运行 Service Fabric 群集，请在 PowerShell 执行以下步骤：
 
 1. 从 Docker 中心存储库拉取映像：
 

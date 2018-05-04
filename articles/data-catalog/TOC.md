@@ -26,7 +26,7 @@
 ## [查看相关的数据资产](data-catalog-how-to-view-related-data-assets.md) 
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=data-catalog)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=data-catalog)
 ## [REST](/rest/api/datacatalog/)
 ## [搜索语法参考](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [开发人员概念](data-catalog-developer-concepts.md)

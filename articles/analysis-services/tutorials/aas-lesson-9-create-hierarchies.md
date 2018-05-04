@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services 教程第 9 课：创建层次结构 | Microsoft Docs"
-description: 
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: Azure Analysis Services 教程第 9 课：创建层次结构 | Microsoft Docs
+description: 介绍如何在表格模型中创建层次结构。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 041096b1a93fdc671939b6d6715a7836d1977e3c
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: bb32736e5837c939b696e131746f9af2b9340acb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-hierarchies"></a>创建层次结构
 
@@ -29,7 +22,7 @@ ms.lasthandoff: 01/09/2018
   
 本课预计完成时间：**20 分钟**  
   
-## <a name="prerequisites"></a>系统必备  
+## <a name="prerequisites"></a>先决条件  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 8 课：创建透视](../tutorials/aas-lesson-8-create-perspectives.md)。  
   
 ## <a name="create-hierarchies"></a>创建层次结构  

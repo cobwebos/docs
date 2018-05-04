@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2017
+ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9727e3b715334837b959f22dd526caba221be62c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 81c5b6051b8e1b1812e47cfcb64538c25ee8bfe5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights 中 Analytics 的演示
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/18/2018
 
 ![依次打开 portal.azure.com 和 Application Insights 资源，并单击“Analytics”。](./media/app-insights-analytics-tour/001.png)
 
-## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[Take](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html)：显示 n 行
+## <a name="takehttpsdocsloganalyticsiodocslanguage-referencetabular-operators-show-me-n-rows"></a>[Take](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators)：显示 n 行
 记录用户操作的数据点（通常是 Web 应用收到的 HTTP 请求）存储在名为 `requests` 的表中。 每一行均为应用从 Application Insights SDK 接收的遥测数据点。
 
 先来检查一下表中的几个示例行：
@@ -68,7 +68,7 @@ ms.lasthandoff: 04/18/2018
     
 ```
 
-## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Top](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) 和 [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
+## <a name="tophttpsdocsloganalyticsiodocslanguage-referencetabular-operatorstop-operator-and-sorthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssort-operator"></a>[Top](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) 和 [sort](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator)
 `take` 用于快速获取结果示例，但其不以特定顺序显示表中的行。 若要获取有序视图，请使用 `top`（针对示例）或 `sort`（针对整个表）。
 
 显示前 n 行，按特定列排序：
@@ -94,7 +94,7 @@ ms.lasthandoff: 04/18/2018
 
 还可使用表视图中的列标头对屏幕上的结果进行排序。 当然，如果已使用 `take` 或 `top` 只检索表中的部分内容，则单击列标头仅会重新排列已检索到的记录。
 
-## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[Where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)：按条件筛选
+## <a name="wherehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorswhere-operator-filtering-on-a-condition"></a>[Where](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)：按条件筛选
 
 来了解一下仅返回特定结果代码的请求：
 
@@ -173,7 +173,7 @@ ms.lasthandoff: 04/18/2018
 [日期和时间参考](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime)。
 
 
-## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Project](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html)：选择、重命名和计算列
+## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Project](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator)：选择、重命名和计算列
 使用 [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) 挑选出所需列：
 
 ```AIQL
@@ -207,7 +207,7 @@ ms.lasthandoff: 04/18/2018
 表达式可包含所有常用运算符（`+`、`-`、...），且含有一系列有用的函数。
 
 ## <a name="extend"></a>Extend
-如果只想将列添加到现有列，请使用 [`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html)：
+如果只想将列添加到现有列，请使用 [`extend`](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator)：
 
 ```AIQL
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 04/18/2018
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-如果想保留所有现有列，使用 [`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) 比 [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) 更简便。
+如果想保留所有现有列，使用 [`extend`](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator) 比 [`project`](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) 更简便。
 
 ### <a name="convert-to-local-time"></a>转换为本地时间
 
@@ -229,8 +229,7 @@ ms.lasthandoff: 04/18/2018
     | extend localTime = timestamp - 8h
 ```
 
-
-## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html)：聚合成组的行
+## <a name="summarizehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssummarize-operator-aggregate-groups-of-rows"></a>[Summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator)：聚合成组的行
 `Summarize` 会向成组的行应用指定的聚合函数。
 
 例如，会在 `duration` 字段中报告 Web 应用响应请求所需的时间。 来看看所有请求的平均响应时间：
@@ -268,7 +267,7 @@ ms.lasthandoff: 04/18/2018
 
 如果要对组中的行数进行计数，还可使用 `count()` 聚合（以及一个计数运算）。
 
-存在一系列[聚合函数](https://docs.loganalytics.io/learn/tutorials/aggregations.html)。
+存在一系列[聚合函数](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions)。
 
 ## <a name="charting-the-results"></a>绘制结果图表
 ```AIQL
@@ -409,7 +408,7 @@ ms.lasthandoff: 04/18/2018
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[百分点值](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
+## <a name="percentileshttpsdocsloganalyticsiodocslanguage-referenceaggregation-functionspercentiles"></a>[百分点值](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/percentiles())
 哪些持续时间范围涵盖不同会话百分比？
 
 使用上述查询，但替换掉最后一行：
@@ -470,7 +469,7 @@ ms.lasthandoff: 04/18/2018
 执行联接前，最好使用 `project` 选中所需列。
 在同一子句中，重命名时间戳列。
 
-## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[Let](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html)：将结果分配给变量
+## <a name="lethttpsdocsloganalyticsiodocslanguage-referencequery-statementslet-statement-assign-a-result-to-a-variable"></a>[Let](https://docs.loganalytics.io/docs/Language-Reference/Query-statements/Let-statement)：将结果分配给变量
 
 使用 `let` 分离出上一个表达式的各部分。 结果不变：
 
@@ -567,7 +566,7 @@ requests
 
 ### <a name="special-characters"></a>特殊字符
 
-对于名称中有特殊字符或语言关键字的标识符，需要通过 `['` 和 `']` 或使用 `["` 和 `"]` 访问它们。
+对于名称中有特殊字符或语言关键字的标识符，需要通过 `['` 和 `']` 或者 `["` 和 `"]` 访问它们。
 
 ```AIQL
 

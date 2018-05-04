@@ -1,23 +1,23 @@
 ---
-title: "教程：Azure Active Directory 与 DigiCert 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 DigiCert 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 DigiCert 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 DigiCert 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 646f3129-aa67-4875-9073-1d0b6a3173d9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2017
+ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 1eb3f6eda8603174fa5be5c76e16f7c2e3e58b2a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f291b69f084913808f4494c7379a0f753254e3f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>教程：Azure Active Directory 与 DigiCert 的集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 DigiCert
 - 可以让用户使用其 Azure AD 帐户自动登录到 DigiCert（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 DigiCert 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 DigiCert 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 DigiCert，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -106,9 +106,11 @@ ms.lasthandoff: 12/11/2017
  
     ![配置单一登录](./media/active-directory-saas-digicert-tutorial/tutorial_digicert_samlbase.png)
 
-3. 在“DigiCert 域和 URL”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
+3. 在“DigiCert 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/active-directory-saas-digicert-tutorial/tutorial_digicert_url.png)
+    
+    在“标识符”文本框中，键入 URL：`https://www.digicert.com/sso`
 
 4. DigiCert 应用程序需要采用特定格式的 SAML 断言语句。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示了此配置的示例。 
 
@@ -130,7 +132,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-digicert-tutorial/tutorial_attribute_05.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。
     
@@ -144,10 +146,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-digicert-tutorial/tutorial_general_400.png)
 
-8. 若要在 DigiCert 端配置单一登录，需要将下载的元数据 XML 发送给 [DigiCert 支持团队](mailto:support@digicert.com)。 他们会对此进行设置，使 SAML SSO 连接在两端均正确设置。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+8. 若要在 DigiCert 端配置单一登录，需要将下载的元数据 XML 发送给 [DigiCert 支持团队](mailto:support@digicert.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -174,11 +173,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-digicert-test-user"></a>创建 DigiCert 测试用户
 
@@ -216,7 +215,7 @@ ms.lasthandoff: 12/11/2017
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-在本部分中，将使用访问面板测试 Azure AD 单一登录配置。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 DigiCert 磁贴时，应当会自动登录到 DeigiCert 应用程序。
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
@@ -224,7 +223,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

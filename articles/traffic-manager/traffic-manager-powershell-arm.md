@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 管理 Azure 中的流量管理器 | Microsoft Docs"
-description: "使用包含 Azure Resource Manager 的流量管理器 PowerShell"
+title: 使用 PowerShell 管理 Azure 中的流量管理器 | Microsoft Docs
+description: 使用包含 Azure 资源管理器的流量管理器 PowerShell
 services: traffic-manager
 documentationcenter: na
 author: kumudd
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1cd7bd7e32c96398d72c7cd3b51e2b456d60f01d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 951e845e23a1ed0cbdc83fc24a97a545f00c52ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
-Azure Resource Manager 是 Azure 中的首选服务管理接口。 可以使用基于 Azure Resource Manager 的 API 和工具来管理 Azure 流量管理器配置文件。
+Azure 资源管理器是 Azure 中的首选服务管理接口。 可以使用基于 Azure 资源管理器的 API 和工具来管理 Azure 流量管理器配置文件。
 
 ## <a name="resource-model"></a>资源模型
 
@@ -44,7 +44,7 @@ New-AzureRmResourceGroup -Name MyRG -Location "West US"
 ```
 
 > [!NOTE]
-> Azure Resource Manager 要求所有资源组拥有一个位置。 此位置将用作在该资源组中创建的资源的默认值。 但是，由于流量管理器配置文件所有资源都是全局性而不是区域性的，因此，所选的资源组位置不会影响 Azure 流量管理器。
+> Azure 资源管理器要求所有资源组拥有一个位置。 此位置将用作在该资源组中创建的资源的默认值。 但是，由于流量管理器配置文件所有资源都是全局性而不是区域性的，因此，所选的资源组位置不会影响 Azure 流量管理器。
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
@@ -58,7 +58,7 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 
 | 参数 | 说明 |
 | --- | --- |
-| Name |流量管理器配置文件资源的资源名称。 同一资源组中的配置文件必须具有唯一的名称。 此名称不同于用于 DNS 查询的 DNS 名称。 |
+| 名称 |流量管理器配置文件资源的资源名称。 同一资源组中的配置文件必须具有唯一的名称。 此名称不同于用于 DNS 查询的 DNS 名称。 |
 | ResourceGroupName |包含配置资源的资源组的名称。 |
 | TrafficRoutingMethod |指定用于确定在响应 DNS 查询时返回的终结点的流量路由方法。 可能的值为“Performance”、“Weighted”或“Priority”。 |
 | RelativeDnsName |指定此流量管理器配置文件提供的 DNS 名称中的主机名部分。 将此值与 Azure 流量管理器使用的 DNS 域名相结合，可以构成配置文件的完全限定域名 (FQDN)。 例如，设置“contoso”值将成为“contoso.trafficmanager.net”。 |
@@ -203,6 +203,18 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```powershell
 $child = Get-AzureRmTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
 New-AzureRmTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceGroupName MyRG -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
+```
+
+## <a name="adding-endpoints-from-another-subscription"></a>从其他订阅添加终结点
+
+流量管理器可以使用不同订阅中的终结点。 需要使用要添加的终结点切换到订阅，以检索所需的流量管理器输入。 然后，需要使用流量管理器配置文件切换到订阅，并向其中添加终结点。 下面的示例演示如何使用公共 IP 地址执行此操作。
+
+```powershell
+Set-AzureRmContext -SubscriptionId $EndpointSubscription
+$ip = Get-AzureRmPublicIpAddress -Name $IpAddresName -ResourceGroupName $EndpointRG
+
+Set-AzureRmContext -SubscriptionId $trafficmanagerSubscription
+New-AzureRmTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -ResourceGroupName $TrafficManagerRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
 ```
 
 ## <a name="update-a-traffic-manager-endpoint"></a>更新流量管理器终结点

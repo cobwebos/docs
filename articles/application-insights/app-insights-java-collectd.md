@@ -1,9 +1,9 @@
 ---
-title: "监视 Linux 上 Java Web 应用的性能 - Azure | Microsoft Docs"
-description: "通过 Application Insights 的 CollectD 插件监视 Java 网站的扩展应用程序性能。"
+title: 监视 Linux 上 Java Web 应用的性能 - Azure | Microsoft Docs
+description: 通过 Application Insights 的 CollectD 插件监视 Java 网站的扩展应用程序性能。
 services: application-insights
 documentationcenter: java
-author: harelbr
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: cde0fc020f1774e0e7669e7573e4aaff3534b34c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 56e30ff4ee7765cd0950293999d93a9cf1fe5d36
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中 Linux 性能指标
 

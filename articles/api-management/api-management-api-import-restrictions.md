@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: ab4bc4024248675c6325159b5507add1274addc9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b33c95af94c436b1069658963692242d0f905554
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 ## <a name="about-this-list"></a>关于此列表
@@ -38,12 +38,12 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="wsdl"></a>WSDL
 WSDL 文件用于生成 SOAP 直通 API，或用作 SOAP 到 REST API 的后端。
-
-* **WSDL:Import** - 目前 APIM 不支持使用该属性的 API。 客户应将导入的元素合并到一个文档中。
-* **包含多个部分的消息** - 目前 APIM 不支持这些类型的消息。
-* **WCF wsHttpBinding** 使用 Windows Communication Foundation 创建的 SOAP 服务应使用 basicHttpBinding - 不支持 wsHttpBinding。
-* **MTOM** 使用 MTOM 的服务<em>可能</em>工作。 目前暂未提供官方支持。
-* APIM 不支持以递归方式定义的**递归**类型（例如，引用这些类型本身的数组）。
+* **SOAP 绑定** - 仅支持样式“文档”和“文本”编码的 SOAP 绑定。 不支持“rpc”样式或 SOAP 编码。
+* **WSDL:Import** - 不支持此属性。 客户应将导入项合并到一个文档中。
+* **包含多个部分的消息** - 不支持这些类型的消息。
+* **WCF wsHttpBinding** - 使用 Windows Communication Foundation 创建的 SOAP 服务应使用 basicHttpBinding - 不支持 wsHttpBinding。
+* **MTOM** - 使用 MTOM 的服务<em>可能</em>正常工作。 目前暂未提供官方支持。
+* **递归** - APIM 不支持以递归方式定义的类型（例如，引用这些类型本身的数组）。
 
 ## <a name="wadl"></a>WADL
 目前没有已知的 WADL 导入问题。

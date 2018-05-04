@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 055d8b1c9884c9525ba15ea9508ab00a5f48a048
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 59d6b960a40910b8b2fe72f6c3b149608ee8b8ad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -264,7 +264,7 @@ ms.lasthandoff: 04/16/2018
 对于使用 Python 进行的开发，DSVM 上已安装了 Anaconda Python 分发版 2.7 和 3.5。
 
 > [!NOTE]
-> Anaconda 分发版包含 [Condas](http://conda.pydata.org/docs/index.html)，可用来为 Python 建立已安装不同版本和 (或) 封装的自定义环境。
+> Anaconda 发行版包含 [Condas](http://conda.pydata.org/docs/index.html)，可用来为 Python 建立已安装不同版本和 (或) 封装的自定义环境。
 >
 >
 
@@ -316,6 +316,24 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="jupyterhub"></a>Jupyterhub
 在 DSVM 中的 Anaconda 分发版包含 Jupyter notebook - 一个共享 Python、R 或 Julia 代码和分析的跨平台环境。 可通过 JupyterHub 访问 Jupyter notebook。 使用本地 Linux 用户名和密码在 ***https://\<VM DNS 名称 或 IP 地址\>:8000/*** 中进行登录。 JupyterHub 的所有配置文件可以在 **/etc/jupyterhub** 目录中找到。
+
+> [!NOTE]
+> 若要在当前内核中从 Jupyter Notebook 使用 Python 包管理器（通过 `pip` 命令），可以在代码单元中使用以下命令，例如：
+```python
+   import sys
+   ! {sys.executable} -m pip install numpy -y
+```
+>
+>
+
+> [!NOTE]
+> 若要在当前内核中从 Jupyter Notebook 使用 Conda 安装程序（通过 `conda` 命令），可以在代码单元中使用以下命令，例如：
+```python
+   import sys
+   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+```
+>
+>
 
 VM 上已安装了几个示例 Notebook：
 

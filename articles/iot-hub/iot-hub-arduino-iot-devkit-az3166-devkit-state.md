@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 38a0c4f90b99686450b164637162c117b1fb6063
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 33d8a36cc88bd1c263f2c4a38a59e04e1253357c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="what-you-need"></a>所需条件
 
-- 遵照[入门指南](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)设置开发环境。
+- 遵照[入门指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)设置开发环境。
 - 在 GitBash 终端窗口（或其他 Git 命令行接口）中键入以下命令：
     - `git clone https://github.com/DevKitExamples/DevKitState.git`
     - `cd DevKitState`
@@ -96,4 +96,4 @@ ms.lasthandoff: 04/06/2018
 下面是建议的后续步骤：
 
 * [Azure IoT 套件概述](https://docs.microsoft.com/azure/iot-suite/)
-* [将 MXChip IoT DevKit 设备连接到 Microsoft IoT Central 应用程序](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [将 MXChip IoT DevKit 设备连接到 Microsoft IoT Central 应用程序](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

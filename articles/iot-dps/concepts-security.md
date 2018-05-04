@@ -5,22 +5,22 @@ services: iot-dps
 keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 03/27/2018
+ms.date: 03/30/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5e35a802349bd85b50a13a3d9a7e0c78945937bd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f6410aa3ab21e7c50ec6918930f31b9e1455c464
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中心设备预配服务安全性概念 
 
-IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式预配数百万台设备。 本文概述了设备预配中涉及的安全性概念。 本文涉及设备部署准备工作中提及的所有角色。
+IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式[自动预配](concepts-auto-provisioning.md)数百万台设备。 本文概述了设备预配中涉及的安全性概念。 本文涉及设备部署准备工作中提及的所有角色。
 
 ## <a name="attestation-mechanism"></a>证明机制
 
@@ -46,6 +46,8 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 TPM 可引用适用于安全存储用于对平台进行身份验证的密钥的标准，或者可引用用于与实现标准的模块交互的 I/O 接口。 TPM 可以作为离散硬件、集成硬件、基于固件或基于软件的方式存在。 详细了解 [TPM 和 TPM 证明](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation)。 设备预配服务仅支持 TPM 2.0。
 
+TPM 证明基于 nonce 质询，该质询使用认可和存储根密钥来提供已签名的共享访问签名 (SAS) 令牌。
+
 ### <a name="endorsement-key"></a>认可密钥
 
 认可密钥是 TPM 内部包含的非对称密钥，该密钥在制造时在内部生成或注入并且对于每个 TPM 是唯一的。 不能更改或删除认可密钥。 认可密钥的私有部分绝不会在 TPM 之外发布，而其公共部分则用于识别 TPM 的真伪。 详细了解[认可密钥](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx)。
@@ -56,21 +58,27 @@ TPM 可引用适用于安全存储用于对平台进行身份验证的密钥的�
 
 ## <a name="x509-certificates"></a>X.509 证书
 
-将 X.509 证书用作一种证明机制是扩大生产规模和简化设备设置的极佳途径。 X.509 证书通常是信任证书链中一系列证书中的一个，证书链中的每个证书均通过下一个更高级别证书的私钥进行签名，位于链顶端的证书是自签名的根证书。 这会建立一个委托的信任链，该信任链始于受信任的根证书颁发机构 (CA) 生成的根证书，期间是每个中间 CA，终结于设备上安装的最终实体证书。 有关详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)。 
+将 X.509 证书用作一种证明机制是扩大生产规模和简化设备设置的极佳途径。 X.509 证书通常是信任证书链中一系列证书中的一个，证书链中的每个证书均通过下一个更高级别证书的私钥进行签名，位于链顶端的证书是自签名的根证书。 这会建立一个委托的信任链，该信任链始于受信任的根证书颁发机构 (CA) 生成的根证书，期间是每个中间 CA，终结于设备上安装的最终实体“叶”证书。 有关详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](/azure/iot-hub/iot-hub-x509ca-overview)。 
 
-证书链通常代表与设备关联一些逻辑或物理层次结构。 例如，制造商可能会颁发自签名的根 CA 证书，使用该证书生成用于每个工厂的唯一中间 CA 证书，使用每个工厂的证书生成工厂中每个生产线的唯一中间 CA 证书，最后使用生产线证书为生产线上制造的每个设备生成唯一的设备（最终实体）证书。 若要了解详细信息，请参阅[概念性理解 IoT 行业中的 X.509 CA 证书](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept)。 
+证书链通常代表与设备关联一些逻辑或物理层次结构。 例如，制造商可以：
+- 颁发自签名根 CA 证书
+- 使用根证书为每个工厂生成唯一的中间 CA 证书
+- 使用每个工厂的证书为工厂中的每条生产线生成唯一的中间 CA 证书
+- 并最终使用生产线证书为在生产线上制造的每台设备生成唯一的设备（最终实体）证书。 
+
+若要了解详细信息，请参阅[概念性理解 IoT 行业中的 X.509 CA 证书](/azure/iot-hub/iot-hub-x509ca-concept)。 
 
 ### <a name="root-certificate"></a>根证书
 
-根证书是表示证书颁发机构 (CA) 的自签名的 X.509 证书。 它是证书链的终点或信任定位点。 根证书可由组织自行颁发或从根证书颁发机构购买。 若要了解详细信息，请参阅[获取 X.509 CA 证书](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates)。 根证书也可称为根 CA 证书。
+根证书是表示证书颁发机构 (CA) 的自签名的 X.509 证书。 它是证书链的终点或信任定位点。 根证书可由组织自行颁发或从根证书颁发机构购买。 若要了解详细信息，请参阅[获取 X.509 CA 证书](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates)。 根证书也可称为根 CA 证书。
 
 ### <a name="intermediate-certificate"></a>中间证书
 
 中间证书是已由根证书（或其链中具有根证书的另一个中间证书）签名的 X.509 证书。 链中的最后一个中间证书用于对分支证书进行签名。 中间证书也可称为中间 CA 证书。
 
-### <a name="leaf-certificate"></a>分支证书
+### <a name="end-entity-leaf-certificate"></a>最终实体“叶”证书
 
-分支证书或最终实体证书标识证书持有者。 它具有其证书链中的根证书以及零个或多个中间证书。 分支证书不用于对任何其他证书进行签名。 它向设置服务唯一标识设备，有时称为设备证书。 在身份验证期间，设备使用与此证书关联的私钥响应来自服务的所有权证明质询。 有关详细信息，请参阅[对使用 X.509 CA 证书签名的设备进行身份验证](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)。
+分支证书或最终实体证书标识证书持有者。 它具有其证书链中的根证书以及零个或多个中间证书。 分支证书不用于对任何其他证书进行签名。 它向设置服务唯一标识设备，有时称为设备证书。 在身份验证期间，设备使用与此证书关联的私钥响应来自服务的所有权证明质询。 有关详细信息，请参阅[对使用 X.509 CA 证书签名的设备进行身份验证](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)。
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>使用 X.509 证书控制设备对设置服务的访问权限
 

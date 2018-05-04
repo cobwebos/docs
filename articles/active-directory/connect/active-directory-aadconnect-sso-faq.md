@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 819d8ce9793f785726f55a89d49d08d818401b33
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: ba402847d14f7de6c70b545b74d7ba8c1aaddcb0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -62,7 +62,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 ## <a name="what-is-the-difference-between-the-single-sign-on-experience-provided-by-azure-ad-joinactive-directory-azureadjoin-overviewmd-and-seamless-sso"></a>[Azure AD 加入](../active-directory-azureadjoin-overview.md) 与无缝 SSO 提供的单一登录体验有何不同？
 
-如果用户的设备注册了 Azure AD，[Azure AD 加入](../active-directory-azureadjoin-overview.md)会向用户提供 SSO。 这些设备不必已加入域。 使用主刷新令牌或 PRT（而非 Kerberos）提供 SSO。 用户体验在 Windows 10 设备上最佳。 在 Microsoft Edge 浏览器上，SSO 自动实现。 也可在 Chrome 上实现，但需要使用浏览器扩展插件。
+如果用户的设备注册了 Azure AD，[Azure AD 加入](../active-directory-azureadjoin-overview.md)会向用户提供 SSO。 这些设备不必已加入域。 使用主刷新令牌或 PRT（而非 Kerberos）提供 SSO。 用户体验在 Windows 10 设备上最佳。 在 Edge 浏览器上，SSO 自动实现。 也可在 Chrome 上实现，但需要使用浏览器扩展插件。
 
 可同时在租户上使用 Azure AD 加入和无缝 SSO。 这两种功能互补。 如果同时开启这两项功能，将先通过 Azure AD 加入实现 SSO，再进行无缝 SSO。
 
@@ -79,10 +79,10 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 在运行 Azure AD Connect 的本地服务器上执行以下步骤：
 
-### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>步骤 1. 获取已在其中启用了无缝 SSO 的 AD 林列表
+### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>步骤 1。 获取已在其中启用了无缝 SSO 的 AD 林列表
 
 1. 首先，下载并安装 [Microsoft Online Services 登录助手](http://go.microsoft.com/fwlink/?LinkID=286152)。
-2. 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)。
+2. 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)。
 3. 导航到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
 4. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
 5. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。
@@ -109,7 +109,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 若要完成此过程，请在运行 Azure AD Connect 的本地服务器上按以下手动步骤操作：
 
-### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>步骤 1. 获取已在其中启用了无缝 SSO 的 AD 林列表
+### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>步骤 1。 获取已在其中启用了无缝 SSO 的 AD 林列表
 
 1. 首先，下载并安装 [Microsoft Online Services 登录助手](http://go.microsoft.com/fwlink/?LinkID=286152)。
 2. 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](http://go.microsoft.com/fwlink/p/?linkid=236297)。

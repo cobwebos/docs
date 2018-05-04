@@ -1,10 +1,10 @@
 ---
-title: "教程：Azure Active Directory 与 Clever 的集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Clever 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Clever 的集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 Clever 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 04/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 1aad242ff1e9161ad5dfbecd01a44d8fb3c93cbb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6531e6c8c97bfadac898c4aa4943855dcd32bdfe
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>教程：Azure Active Directory 与 Clever 的集成
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 - 启用了单一登录的 Clever 订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 Clever，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Clever”，在结果面板中选择“Clever”，然后单击“添加”按钮添加该应用程序。
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 12/11/2017
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/active-directory-saas-clever-tutorial/tutorial_clever_samlbase.png)
 
 3. 在“Clever 域和 URL”部分中，执行以下步骤：
@@ -112,26 +112,26 @@ ms.lasthandoff: 12/11/2017
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://clever.com/<companyname>`
 
-    > [!NOTE] 
+    > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Clever 客户端支持团队](https://clever.com/about/contact/)来获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
-
-    ![证书下载链接](./media/active-directory-saas-clever-tutorial/tutorial_clever_certificate.png)
+4. 在“SAML 签名证书”部分上，单击”复制”按钮，复制**应用联合元数据 URL**并将其粘贴到记事本。
+    
+    ![配置单一登录](./media/active-directory-saas-clever-tutorial/tutorial_metadataurl.png)
 
 5. Clever 应用程序需要特定格式的 SAML 断言，这要求向 **SAML 令牌属性**配置添加自定义属性映射。
 
     以下屏幕截图显示一个示例。
 
-    ![配置单一登录](./media/active-directory-saas-clever-tutorial/tutorial_clever_07.png) 
+    ![配置单一登录](./media/active-directory-saas-clever-tutorial/tutorial_clever_07.png)
 
 6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称  | 属性值 |
-    | --------------- | -------------------- |    
+    | --------------- | -------------------- |
     | clever.student.credentials.district\_username  | user.userprincipalname |
     | 名  | user.givenname |
-    | Lastname  | user.surname |    
+    | Lastname  | user.surname |
 
     a. 单击“添加属性”，打开“添加属性”对话框。
 
@@ -139,45 +139,25 @@ ms.lasthandoff: 12/11/2017
     
     ![配置单一登录](./media/active-directory-saas-clever-tutorial/tutorial_attribute_05.png)
     
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。
 
     d. 将“命名空间”文本框保留为空。
     
-    d. 单击“确定” 。     
-
-5. 单击“保存”按钮。
+    d. 单击“确定” 。
+    
+7. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-clever-tutorial/tutorial_general_400.png)
 
-8. 若要生成**元数据** URL，请执行以下步骤：
+8. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Clever 公司站点。
 
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-clever-tutorial/tutorial_clever_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpoint.png)
-     
-    d. 现在，转到 **Clever** 的属性页，使用“复制”按钮复制**应用程序 ID** 并将其粘贴到记事本。
- 
-    ![配置单一登录](./media/active-directory-saas-clever-tutorial/tutorial_clever_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
-
-9. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Clever 公司站点。
-
-10. 在工具栏中，单击“即时登录”。
+9. 在工具栏中，单击“即时登录”。
 
     ![即时登录](./media/active-directory-saas-clever-tutorial/ic798984.png "Instant Login")
 
-11. 在“即时登录”页上，执行以下步骤：
+10. 在“即时登录”页上，执行以下步骤：
       
       ![即时登录](./media/active-directory-saas-clever-tutorial/ic798985.png "Instant Login")
       
@@ -188,13 +168,9 @@ ms.lasthandoff: 12/11/2017
       
       b. 对于“标识系统”，选择“ADFS”。
 
-      c. 在“元数据 URL”文本框中键入元数据 URL。
+      c. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值。
       
-      d. 单击“保存” 。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+      d. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -220,19 +196,19 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-clever-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
- 
+    d. 单击“创建”。
+
 ### <a name="create-a-clever-test-user"></a>创建 Clever 测试用户
 
 若要使 Azure AD 用户能够登录到 Clever，必须将其预配到 Clever 中。
 
-对于 Clever，请与 [Clever 客户端支持团队](https://clever.com/about/contact/)协作来在 Clever 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+对于 Clever，请与 [Clever 客户端支持团队](https://clever.com/about/contact/)协作来在 Clever 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 >[!NOTE]
 >可以使用 Clever 提供的任何其他 Clever 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
@@ -241,17 +217,17 @@ ms.lasthandoff: 12/11/2017
 
 在本部分中，通过授予 Britta Simon 访问 Clever 的权限，允许其使用 Azure 单一登录。
 
-![分配用户角色][200] 
+![分配用户角色][200]
 
 **若要将 Britta Simon 分配到 Clever，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
-    ![分配用户][201] 
+    ![分配用户][201]
 
 2. 在应用程序列表中，选择“Clever”。
 
-    ![应用程序列表中的 Clever 链接](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)  
+    ![应用程序列表中的 Clever 链接](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)
 
 3. 在左侧菜单中，单击“用户和组”。
 
@@ -266,18 +242,18 @@ ms.lasthandoff: 12/11/2017
 6. 在“用户和组”对话框中单击“选择”按钮。
 
 7. 在“添加分配”对话框中单击“分配”按钮。
-    
+
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Clever 磁贴时，应当会自动登录到 Clever 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 中国世纪互联开发人员指南 | Microsoft Docs"
-description: "Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Azure 和 Azure 中国世纪互联。 了解可在全球 Azure 中和 Azure 中国使用的服务和功能，以及哪些功能可能在中国不可用。"
+title: Azure 中国世纪互联开发人员指南 | Microsoft Docs
+description: Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Azure 和 Azure 中国世纪互联。 了解可在全球 Azure 中和 Azure 中国使用的服务和功能，以及哪些功能可能在中国不可用。
 services: china
 cloud: na
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: d373713dba7534866de31f941db458ffd4d171b2
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 2db929d91e589c58f5d2934fcd82a084de2f52b6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure 中国世纪互联开发人员指南
 Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Microsoft Azure 服务（“全球服务”）和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）。 大多数当前可用的技术内容（例如 [Azure 文档中心](https://azure.microsoft.com/documentation/)）都假设应用程序是针对全球 Azure 开发的，因此，必须了解哪些[服务和功能](/azure/china/china-get-started-service-availability)可在 Microsoft Azure 中国世纪互联中使用。
@@ -68,14 +68,14 @@ Microsoft Azure 中国世纪互联与全球 Azure 有所不同，因此，必须
 | Azure 服务总线                     | \*.servicebus.windows.net                                                                                               | \*.servicebus.chinacloudapi.cn                                                                                                                        |
 | Azure 访问控制服务          | \*.accesscontrol.windows.net                                                                                            | \*.accesscontrol.chinacloudapi.cn                                                                                                                     |
 | Azure HDInsight                       | \*.azurehdinsight.net                                                                                                   | \*.azurehdinsight.cn                                                                                                                                  |
-| SQL 数据库导入/导出服务终结点 |                                                                                                                         |  1.中国东部：[https://sh1prod-dacsvc.chinacloudapp.cn/dacwebservice.svc](https://sh1prod-dacsvc.chinacloudapp.cn/dacwebservice.svc) <br>2.中国北部：[https://bj1prod-dacsvc.chinacloudapp.cn/dacwebservice.svc](https://bj1prod-dacsvc.chinacloudapp.cn/dacwebservice.svc) |
+| SQL 数据库导入/导出服务终结点 |                                                                                                                         |  1.中国东部[https://sh1prod-dacsvc.chinacloudapp.cn/dacwebservice.svc](https://sh1prod-dacsvc.chinacloudapp.cn/dacwebservice.svc) <br>2.中国北部[https://bj1prod-dacsvc.chinacloudapp.cn/dacwebservice.svc](https://bj1prod-dacsvc.chinacloudapp.cn/dacwebservice.svc) |
 | MySQL PaaS                            |                                                                                                                         | \*.mysqldb.chinacloudapi.cn                                                                                                                           |
 | Azure Service Fabric 群集          | \*.cloudapp.azure.com                                                                                                   | \*.chinaeast.chinacloudapp.cn                                                                                                                         |
 | Azure Active Directory (AD)           | \*.onmicrosoft.com                                                                                                      | \*.partner.onmschina.cn                                                                                                                               |
 | Azure AD 登录                        | [https://login.windows.net](https://login.windows.net/)                                                                 | [https://login.chinacloudapi.cn](https://login.chinacloudapi.cn/)                                                                                     |
 | Azure AD 图形 API                    | [https://graph.windows.net](https://graph.windows.net/)                                                                 | [https://graph.chinacloudapi.cn](https://graph.chinacloudapi.cn/)                                                                                     |
 | 认知服务                    | <https://api.projectoxford.ai/face/v1.0>                                                                                | <https://api.cognitive.azure.cn/face/v1.0>                                                                                                            |
-| 使用 PowerShell 登录： <br>- 经典 Azure <br>- Azure 资源管理器  <br>- Azure AD|    - Add-AzureAccount<br>- Add-AzureRmAccount <br> - Connect-msolservice                                                                                                                       |  - Add-AzureAccount -Environment AzureChinaCloud  <br> - Add-AzureRmAccount -Environment AzureChinaCloud <br>- Connect-msolservice -AzureEnvironment AzureChinaCloud |               |                                                                                                                         |
+| 使用 PowerShell 登录： <br>- 经典 Azure <br>- Azure 资源管理器  <br>- Azure AD|    - Add-AzureAccount<br>- Connect-AzureRmAccount <br> - Connect-msolservice                                                                                                                       |  - Add-AzureAccount -Environment AzureChinaCloud  <br> - Connect-AzureRmAccount -Environment AzureChinaCloud <br>- Connect-msolservice -AzureEnvironment AzureChinaCloud |               |                                                                                                                         |
  |
 
 

@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: hero-article
 ms.date: 03/28/2017
-ms.openlocfilehash: 491b0fdba464e5b0c6225a75c534ca6abb710855
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8bee80647d692b60898880a85652189a684426f7
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>开始使用 Azure 流分析处理来自 IoT 设备的数据
 在本教程中，会学习如何创建流处理逻辑，以从物联网 (IoT) 设备收集数据。 我们会使用真实的物联网 (IoT) 用例来演示如何经济实惠地快速生成解决方案。
@@ -27,19 +27,21 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 
 下图中，Texas Instruments SensorTag 设备正在生成数据。 数据的有效负载是 JSON 格式，如下所示：
 
-    {
-        "time": "2016-01-26T20:47:53.0000000",  
-        "dspl": "sensorE",  
-        "temp": 123,  
-        "hmdt": 34  
-    }  
+```json
+{
+    "time": "2016-01-26T20:47:53.0000000",  
+    "dspl": "sensorE",  
+    "temp": 123,  
+    "hmdt": 34  
+}  
+```
 
 在实际情况下，其中可能有数百个传感器以流的形式生成事件。 理想情况下，网关设备会运行代码，将这些事件推送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)或 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)。 流分析作业将从事件中心引入这些事件，并针对流运行实时分析查询。 然后，可以将结果发送到[支持的输出](stream-analytics-define-outputs.md)之一。
 
 为了方便使用，本入门指南提供从实际 SensorTag 设备中捕获的示例数据文件。 可以对示例数据运行查询并查看结果。 在后续教程中，学习如何将作业连接到输入和输出并将其部署到 Azure 服务。
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
-1. 在 [Azure 门户中](http://portal.azure.com)单击“加号”，并在右侧的文本窗口中键入 “流分析”。 然后在结果列表中选择“流分析作业”。
+1. 在 [Azure 门户中](https://portal.azure.com)单击“加号”，并在右侧的文本窗口中键入 “流分析”。 然后在结果列表中选择“流分析作业”。
    
     ![创建新的流分析作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 2. 输入唯一的作业名称并验证订阅是否为用于作业的正确订阅。 然后创建新的资源组，或选择订阅上的现有资源组。

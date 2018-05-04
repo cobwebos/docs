@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: e23d0a70cdfcc1b37f02d86dd6418aa28c5bbf2c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6bfe48df685952d2b465d9549e2f1c086c1c490
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/06/2018
 
 Azure VM 代理和关联的扩展是 Microsoft Azure 基础结构服务的一部分。 VM 扩展是软件组件，可以扩展 VM 功能并简化各种 VM 管理操作。
 
-Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到 [Azure Automation DSC 服务](../../automation/automation-dsc-overview.md)。 启动 VM 带来的[好处](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#pull-service)包括：持续管理 VM 的配置，并与其他操作工具（例如 Azure 监视）集成。
+Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到 [Azure Automation DSC 服务](../../automation/automation-dsc-overview.md)。 启动 VM 带来的[好处](https://docs.microsoft.com/powershell/dsc/metaconfig#pull-service)包括：持续管理 VM 的配置，并与其他操作工具（例如 Azure 监视）集成。
 
 可以独立于 Automation DSC 服务使用 DSC 扩展。 但是，这涉及到在部署期间执行单个操作。 系统不会提供持续的报告或配置管理，只能在 VM 本地执行此类操作。
 
@@ -49,7 +49,7 @@ Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到
 
 ## <a name="architecture"></a>体系结构
 
-Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM 上运行的 DSC 配置。 DSC 扩展接受配置文档和一组参数。 如果未提供任何文件，[默认配置脚本](#default-configuration-script)会嵌入到扩展中。 默认配置脚本仅用于在[本地配置管理器](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig)中设置元数据。
+Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM 上运行的 DSC 配置。 DSC 扩展接受配置文档和一组参数。 如果未提供任何文件，[默认配置脚本](#default-configuration-script)会嵌入到扩展中。 默认配置脚本仅用于在[本地配置管理器](https://docs.microsoft.com/powershell/dsc/metaconfig)中设置元数据。
 
 首次调用扩展时，该扩展使用以下逻辑安装 WMF 版本：
 
@@ -61,7 +61,7 @@ Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM
 
 ### <a name="default-configuration-script"></a>默认配置脚本
 
-Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Automation DSC 服务载入 VM 时使用。 脚本参数符合[本地配置管理器](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig)的可配置属性。 有关脚本参数，请参阅 [Desired State Configuration 扩展与 Azure 资源管理器模板](extensions-dsc-template.md)中的[默认配置脚本](extensions-dsc-template.md#default-configuration-script)。 有关完整脚本，请参阅 [GitHub 中的 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)。
+Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Automation DSC 服务载入 VM 时使用。 脚本参数符合[本地配置管理器](https://docs.microsoft.com/powershell/dsc/metaconfig)的可配置属性。 有关脚本参数，请参阅 [Desired State Configuration 扩展与 Azure 资源管理器模板](extensions-dsc-template.md)中的[默认配置脚本](extensions-dsc-template.md#default-configuration-script)。 有关完整脚本，请参阅 [GitHub 中的 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>资源管理器模板中的 DSC 扩展
 

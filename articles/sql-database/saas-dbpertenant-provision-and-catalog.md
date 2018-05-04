@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 4ddb870d0513d6834aacf0964c240260f18df0fd
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3a4026b56522da6c6efede4b8b7a542efc8a776d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 04/06/2018
 
 Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服务器上部署的名为 _basetenantdb_ 的模板数据库来预配新租户。 可使用脚本将预配集成到应用程序作为注册体验的一部分。 也可以使用脚本对它进行脱机支持。 本教程将探讨如何使用 PowerShell 进行预配。 
 
-预配脚本将复制 _basetenantdb_ 数据库，以在弹性池中创建新的租户数据库。 然后通过特定于租户的信息初始化该数据库，并在目录分片映射中注册该数据库。 租户数据库的名称基于租户名称。 此命名方案不是该模式的关键部分。 目录会将租户密钥映射到数据库名，因此可以使用任何命名约定。 
+预配脚本将复制 _basetenantdb_ 数据库，以在弹性池中创建新的租户数据库。 将在映射到 _newtenant_ DNS 别名的租户服务器中创建租户数据库。 此别名维持对用于预配新租户的服务器的引用，并且已更新以指向灾难恢复教程（[使用异地还原进行灾难恢复](saas-dbpertenant-dr-geo-restore.md)，[使用 异地复制进行灾难恢复](saas-dbpertenant-dr-geo-replication.md)）中的恢复租户服务器。 然后通过特定于租户的信息初始化该数据库，并在目录分片映射中注册该数据库。 租户数据库的名称基于租户名称。 此命名方案不是该模式的关键部分。 目录会将租户密钥映射到数据库名，因此可以使用任何命名约定。 
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS“每租户一个数据库”应用程序脚本

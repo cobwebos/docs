@@ -9,11 +9,11 @@ ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91a093a44106ad861449b6defb140532698fa668
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e4abf8ae491c9992dd3d21a0d657ba9cd214b740
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -23,18 +23,19 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和清单
 
-
 若要开始跟踪更改，需要为自动化帐户中启用更改跟踪和清单解决方案。
 
 1. 在 Azure 门户中，导航到自动化帐户。
 1. 选择**更改跟踪**下的**配置**。
-2. 选择现有的 Log Analytics 工作区，或创建一个工作区。
+1. 选择现有的 Log Analytics 工作区，或创建一个工作区。
 
 这会启用自动化帐户的解决方案。 启用解决方案最多可能需要 15 分钟。 启用解决方案后，蓝色横幅会通知你。 导航回到“更改跟踪”页以管理解决方案。
 
 ## <a name="configuring-change-tracking-and-inventory"></a>配置更改跟踪和清单
 
-若要了解如何到板载计算机添加到解决方案中访问：[载入自动化解决方案](automation-onboard-solutions-from-automation-account.md)。 启用的新文件或注册表项以跟踪时，它会启用更改跟踪和清单。
+若要了解如何到板载计算机添加到解决方案中访问：[载入自动化解决方案](automation-onboard-solutions-from-automation-account.md)。 有了向更改跟踪和清单解决方案登记的计算机后，便可以配置要跟踪的项目了。启用的新文件或注册表项以跟踪时，它会启用更改跟踪和清单。
+
+若要跟踪 Windows 和 Linux 上文件的更改，请使用文件的 MD5 哈希。 然后使用这些哈希检测自上一个清单以来是否进行了更改。
 
 ### <a name="configure-linux-files-to-track"></a>配置要跟踪的 Linux 文件
 
@@ -109,6 +110,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="known-issues"></a>已知问题
 
 更改跟踪解决方案当前遇到以下问题：
+
 * 没有为 Windows 10 创意者更新和 Windows Server 2016 Core RS3 计算机收集修补程序更新。
 
 ## <a name="change-tracking-data-collection-details"></a>“更改跟踪”数据收集详细信息
@@ -117,13 +119,13 @@ ms.lasthandoff: 03/23/2018
 
 | **更改类型** | **频率** |
 | --- | --- |
-| Windows 注册表 | 50 分钟 | 
-| Windows 文件 | 30 分钟 | 
-| Linux 文件 | 15 分钟 | 
-| Windows 服务 | 30 分钟 | 
+| Windows 注册表 | 50 分钟 |
+| Windows 文件 | 30 分钟 |
+| Linux 文件 | 15 分钟 |
+| Windows 服务 | 30 分钟 |
 | Linux 守护程序 | 5 分钟 |
-| Windows 软件 | 30 分钟 | 
-| Linux 软件 | 5 分钟 | 
+| Windows 软件 | 30 分钟 |
+| Linux 软件 | 5 分钟 |
 
 ### <a name="registry-key-change-tracking"></a>注册表项更改跟踪
 

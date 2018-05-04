@@ -1,8 +1,8 @@
 ---
-title: "有关在基于 Linux 的 HDInsight 上使用 Hadoop 的提示 - Azure | Microsoft Docs"
-description: "获取有关使用基于 Linux 的 HDInsight (Hadoop) 群集的实施提示（群集在 Azure 云中熟悉的 Linux 环境中运行）。"
+title: 有关在基于 Linux 的 HDInsight 上使用 Hadoop 的提示 - Azure | Microsoft Docs
+description: 获取有关使用基于 Linux 的 HDInsight (Hadoop) 群集的实施提示（群集在 Azure 云中熟悉的 Linux 环境中运行）。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: c41c611c-5798-4c14-81cc-bed1e26b5609
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 4449dfa1b189f51292d24af884ba9d2addf1fe24
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3ad7aa01200bf2bf4a63a380b2b883983c8622d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -231,7 +229,7 @@ HDInsight 使用 Azure 存储中的 Blob 或 Azure Data Lake Store 作为默认�
 
     * **Storm UI**：使用以下步骤来重新平衡使用 Storm UI 的拓扑。
 
-        1. 在 Web 浏览器中打开 **https://CLUSTERNAME.azurehdinsight.net/stormui**，其中“CLUSTERNAME”是 Storm 群集的名称。 如果系统提示，请输入创建群集时指定的 HDInsight 群集管理员 (admin) 名称和密码。
+        1. 在 Web 浏览器中打开 **https://CLUSTERNAME.azurehdinsight.net/stormui**，其中 CLUSTERNAME 是 Storm 群集的名称。 如果系统提示，请输入创建群集时指定的 HDInsight 群集管理员 (admin) 名称和密码。
         2. 选择要重新平衡的拓扑，并选择“重新平衡”按钮。 输入执行重新平衡操作前的延迟。
 
 * **Kafka**：执行缩放操作后，应重新均衡分区副本。 有关详细信息，请参阅[通过 Kafka on HDInsight 实现数据的高可用性](./kafka/apache-kafka-high-availability.md)文档。

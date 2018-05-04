@@ -1,0 +1,173 @@
+- name: 流分析文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是流分析？
+      href: stream-analytics-introduction.md
+- name: 快速入门
+  items:
+    - name: 创建作业 - Azure 门户
+      href: stream-analytics-quick-create-portal.md
+    - name: 创建作业 - PowerShell
+      href: stream-analytics-quick-create-powershell.md
+- name: 教程
+  items:
+    - name: 1 - 创建/管理作业
+      href: stream-analytics-manage-job.md
+    - name: 2 - 运行 Azure Functions
+      href: stream-analytics-with-azure-functions.md
+    - name: 3 - 运行 JavaScript UDF
+      href: stream-analytics-javascript-user-defined-functions.md
+- name: 示例
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
+- name: 概念
+  items:
+    - name: 作业的输入类型
+      href: stream-analytics-add-inputs.md
+      items:
+        - name: 流式数据输入
+          href: stream-analytics-define-inputs.md
+        - name: 引用数据输入
+          href: stream-analytics-use-reference-data.md
+    - name: 作业的输出类型
+      href: stream-analytics-define-outputs.md
+      items:
+        - name: 输出到 Cosmos DB
+          href: stream-analytics-documentdb-output.md
+    - name: 开窗函数
+      href: stream-analytics-window-functions.md
+    - name: 兼容性级别
+      href: stream-analytics-compatibility-level.md
+    - name: 通用查询模式
+      href: stream-analytics-stream-analytics-query-patterns.md
+    - name: 事件排序注意事项
+      href: stream-analytics-out-of-order-and-late-events.md
+    - name: 检查点和重播
+      href: stream-analytics-concepts-checkpoint-replay.md
+- name: 操作方法指南
+  items:
+    - name: 管理
+      items:
+        - name: 更新作业
+          href: stream-analytics-job-reliability.md
+        - name: 更新凭据
+          href: stream-analytics-login-credentials-inputs-outputs.md
+        - name: 配置警报
+          href: stream-analytics-set-up-alerts.md
+        - name: 测试作业
+          href: stream-analytics-test-query.md
+        - name: 在仪表板上查看结果
+          href: stream-analytics-power-bi-dashboard.md
+    - name: 构建解决方案
+      items:
+        - name: Twitter 情绪分析
+          href: stream-analytics-twitter-sentiment-analysis-trends.md
+        - name: 实时欺诈检测
+          href: stream-analytics-real-time-fraud-detection.md
+        - name: 在 IoT Edge 上运行作业
+          href: stream-analytics-edge.md
+        - name: 收费站传感器数据分析
+          href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+        - name: 运行 JavaScript UDA
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: 高频交易
+          href: stream-analytics-high-frequency-trading.md
+        - name: 处理 IoT 流数据
+          href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+    - name: 监视
+      items:
+        - name: 监视作业 - Azure 门户
+          href: stream-analytics-monitoring.md
+        - name: 监视作业 - PowerShell
+          href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+        - name: 监视作业 - Azure .Net SDK
+          href: stream-analytics-monitor-jobs.md
+    - name: 缩放
+      items:
+        - name: 利用流单元进行缩放
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: 利用查询并行度进行缩放
+          href: stream-analytics-parallelization.md
+          items:
+            - name: 提高吞吐量
+              href: stream-analytics-scale-jobs.md
+        - name: 利用 ML 函数进行缩放
+          href: stream-analytics-scale-with-machine-learning-functions.md
+    - name: 自动化
+      items:
+        - name: 使用 .NET SDK
+          href: stream-analytics-dotnet-management-sdk.md
+        - name: 使用 Azure PowerShell
+          href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
+    - name: Visual Studio 工具
+      items:
+        - name: 安装工具
+          href: stream-analytics-tools-for-visual-studio-install.md
+        - name: 开发云作业
+          href: stream-analytics-tools-for-visual-studio.md
+        - name: 开发 Edge 作业
+          href: stream-analytics-tools-for-visual-studio-edge-jobs.md
+        - name: 设置 CI/CD 管道
+          href: stream-analytics-tools-for-visual-studio-cicd.md
+    - name: 故障排除
+      items:
+        - name: 疑难解答步骤
+          href: stream-analytics-troubleshooting-guide.md
+        - name: 常见问题
+          href: stream-analytics-common-troubleshooting-issues.md
+        - name: 作业关系图
+          href: stream-analytics-job-diagram-with-metrics.md
+        - name: 诊断日志
+          href: stream-analytics-job-diagnostic-logs.md
+        - name: 检查资源运行状况
+          href: stream-analytics-resource-health.md
+        - name: SELECT INTO 语句
+          href: stream-analytics-select-into.md
+        - name: 事件中心接收方
+          href: stream-analytics-event-hub-consumer-groups.md
+    - name: 与机器学习集成
+      items:
+        - name: 使用 ML 模型进行情绪分析
+          href: stream-analytics-machine-learning-integration-tutorial.md
+        - name: 异常检测
+          href: stream-analytics-machine-learning-anomaly-detection.md
+        - name: 使用 REST API
+          href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+- name: 引用
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.streamanalytics
+    - name: 查询语言
+      href: 'https://msdn.microsoft.com/library/azure/dn834998'
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.streamanalytics
+    - name: REST
+      href: /rest/api/streamanalytics
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 博客
+      href: 'http://blogs.msdn.com/b/streamanalytics/'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
+    - name: 反馈论坛
+      href: 'http://feedback.azure.com/forums/270577-azure-stream-analytics'
+    - name: 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-stream-analytics'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics'
+    - name: 客户案例研究
+      href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
+    - name: 白皮书 - 实时事件处理
+      href: stream-analytics-real-time-event-processing-reference-architecture.md

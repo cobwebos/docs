@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 88a9f5988d1fe3f4de4fe10da23a5f713e3f3370
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5520781c9f687e5e32ad1d8c38922a456bb5e3ce
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configuring-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>在 Azure Active Directory 中为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="steps-to-use-this-feature"></a>使用此功能的步骤
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 03/23/2018
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`。
 
-    d.单击“下一步”。 从服务主体对象中提取 appRoles 属性。
+    d. 从服务主体对象中提取 appRoles 属性。
 
     ![Graph 浏览器对话框](./media/active-directory-enterprise-app-role-management/graph-explorer-approles.png)
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 03/23/2018
 
     c. 在“值”列表中，选择为该行显示的属性值。
 
-    d.单击“下一步”。 将“命名空间”留空。
+    d. 将“命名空间”留空。
     
     e. 单击“确定” 。
 
@@ -180,7 +180,7 @@ ms.lasthandoff: 03/23/2018
     
     ![Graph 浏览器对话框](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
     
-    d.单击“下一步”。 从提取的服务主体列表中，获取需要修改的服务主体。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索已从“属性”页复制的“对象 ID”，并使用以下查询转到相应的服务主体。
+    d. 从提取的服务主体列表中，获取需要修改的服务主体。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索已从“属性”页复制的“对象 ID”，并使用以下查询转到相应的服务主体。
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`。
     
@@ -216,7 +216,7 @@ ms.lasthandoff: 03/23/2018
     
     ![Graph 浏览器对话框](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
     
-    d.单击“下一步”。 从提取的服务主体列表中，获取需要修改的服务主体。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索已从“属性”页复制的“对象 ID”，并使用以下查询转到相应的服务主体。
+    d. 从提取的服务主体列表中，获取需要修改的服务主体。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索已从“属性”页复制的“对象 ID”，并使用以下查询转到相应的服务主体。
      
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`。
     
@@ -250,7 +250,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-有关其他步骤，请参阅[应用文档](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-tutorial-list)。
+有关其他步骤，请参阅[应用文档](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)。
 
 <!--Image references-->
 <!--Image references-->

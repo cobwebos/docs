@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric CLI- sfctl node | Microsoft Docs
-description: "介绍 Service Fabric CLI sfctl node 命令。"
+description: 介绍 Service Fabric CLI sfctl node 命令。
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 50c7fe38d8bf7b14adf437f85c758e465e7d231d
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 管理构成群集的节点。
@@ -60,7 +60,7 @@ ms.lasthandoff: 02/27/2018
 | --debug            | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query            | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-enable"></a>sfctl node enable
@@ -82,7 +82,7 @@ ms.lasthandoff: 02/27/2018
 | --debug            | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query            | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-health"></a>sfctl node health
@@ -105,7 +105,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                  | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h                | 显示此帮助消息并退出。|
 | --output -o              | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query                  | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                  | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-info"></a>sfctl node info
@@ -127,7 +127,7 @@ ms.lasthandoff: 02/27/2018
 | --debug            | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query            | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-list"></a>sfctl node list
@@ -150,7 +150,7 @@ ms.lasthandoff: 02/27/2018
 | --debug          | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h        | 显示此帮助消息并退出。|
 | --output -o      | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query          | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query          | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose        | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-load"></a>sfctl node load
@@ -172,7 +172,7 @@ ms.lasthandoff: 02/27/2018
 | --debug            | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query            | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-restart"></a>sfctl node restart
@@ -196,7 +196,7 @@ ms.lasthandoff: 02/27/2018
 | --debug            | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query            | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-transition"></a>sfctl node transition
@@ -223,7 +223,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                           | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h                         | 显示此帮助消息并退出。|
 | --output -o                       | 输出格式。  允许的值：json、jsonc、table、tsv。                       默认值：json。|
-| --query                           | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                           | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                         | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
 
 ## <a name="next-steps"></a>后续步骤

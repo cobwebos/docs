@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: sujayt
-ms.openlocfilehash: 7292948c40b184a58eb3e27aecac28e2227a29f8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ad0281df19ac1696ebb7cc913045d49c652be84a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 02/24/2018
 
 **错误代码** | **可能的原因** | **建议**
 --- | --- | ---
-151037<br></br>**消息**：Failed to register Azure virtual machine with Site Recovery.（未能向 Site Recovery 注册 Azure 虚拟机。） | - 使用 NSG 来控制 VM 的出站访问，且未将所需的 IP 范围加入出站访问允许列表。</br></br>- 使用第三方防火墙工具，且未将所需的 IP 范围/URL 加入允许列表。</br>| - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入允许列表。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。</br></br>- 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
+151037<br></br>**消息**：Failed to register Azure virtual machine with Site Recovery.（未能向 Site Recovery 注册 Azure 虚拟机。） | - 使用 NSG 来控制 VM 的出站访问，且未将所需的 IP 范围加入出站访问允许列表。</br></br>- 使用第三方防火墙工具，且未将所需的 IP 范围/URL 加入允许列表。</br>| - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入白名单。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。</br></br>- 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
 151072<br></br>**消息**：Site Recovery configuration failed.（Site Recovery 配置失败。） | 无法建立到 Site Recovery 服务终结点的连接。 | - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入允许列表。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。</br></br>- 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
 
 ### <a name="fix-the-problem"></a>解决问题
@@ -199,6 +199,17 @@ ms.lasthandoff: 02/24/2018
 
 - 如果 **provisioningState** 是“失败”，请联系支持人员并提供详细信息，以便进行故障排除。
 - 如果 **provisioningState** 是“正在更新”，可以部署其他扩展。 检查 VM 上是否有任何正在进行的操作，等待这些操作完成，然后重试失败的 Site Recovery 的“启用复制”作业。
+
+
+## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/卷影复制服务错误（错误代码 151025）
+**错误代码** | **可能的原因** | **建议**
+--- | --- | ---
+151025<br></br>**消息**：Site Recovery 扩展安装失败 | - 禁用了“COM + 系统应用程序”服务。</br></br>- 禁用了“卷影复制”服务。| 将“COM + 系统应用程序”和“卷影复制”服务设置为自动或手动启动模式。
+
+### <a name="fix-the-problem"></a>解决问题
+
+可以打开“服务”控制台并确保“COM + 系统应用程序”和“卷影复制”的“启动类型”未设置为“已禁用”。
+  ![com-error](./media/azure-to-azure-troubleshoot-errors/com-error.png)
 
 ## <a name="next-steps"></a>后续步骤
 [复制 Azure 虚拟机](site-recovery-replicate-azure-to-azure.md)

@@ -4,7 +4,7 @@ description: ExpressRoute 常见问题包含有关支持的 Azure 服务、费�
 documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 04/09/2018
 ms.author: cherylmc
-ms.openlocfilehash: 557c6a75140f399f74d77543de834af086871032
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4c61cdc504306d4e28d1d8c03fce4e479a0bfd34
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -67,6 +67,10 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 * 虚拟网络，包括所有虚拟机和云服务
 
 ### <a name="public-peering"></a>公共对等互连
+
+>[!NOTE]
+>Microsoft 对等互连是访问 Azure 上托管的所有服务的首选方式。
+>
 
 * Power BI
 * Dynamics 365 for Finance and Operations（以前称为 Dynamics AX Online）

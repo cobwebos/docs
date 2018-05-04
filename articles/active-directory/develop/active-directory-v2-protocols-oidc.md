@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory v2.0 和 OpenID Connect 协议 | Microsoft Docs"
-description: "通过使用 OpenID Connect 身份验证协议的 Azure AD v2.0 实现，构建 Web 应用程序。"
+title: Azure Active Directory v2.0 和 OpenID Connect 协议 | Microsoft Docs
+description: 通过使用 OpenID Connect 身份验证协议的 Azure AD v2.0 实现，构建 Web 应用程序。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 568c2128a12abd4f3c366eae943e3ea8c1af2532
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3f5b6a68cf6ee38d1dc2317381ec33f035c57569
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 和 OpenID Connect 协议
 OpenID Connect 是在 OAuth 2.0 基础上构建的身份验证协议，可用于将用户安全登录到 Web 应用程序。 使用 OpenID Connect 的 v2.0 终结点的实现时，可以将登录和 API 访问权限添加到基于 Web 的应用中。 本文将演示执行此操作的方法（无论何种语言）。 本文介绍在不使用任何 Microsoft 开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -29,7 +29,7 @@ OpenID Connect 是在 OAuth 2.0 基础上构建的身份验证协议，可用于
 > 
 > 
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 ID 令牌的概念，ID 令牌是一种可让客户端验证用户标识的安全令牌。 ID 令牌还可获取用户的基本个人资料信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。 如果要构建在服务器上托管并通过浏览器访问的 [web 应用程序](active-directory-v2-flows.md#web-apps)，建议使用 OpenID Connect。
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 ID 令牌的概念，ID 令牌是一种可让客户端验证用户标识的安全令牌。 ID 令牌还可获取用户的基本个人资料信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。 v2.0 终结点还允许向 Azure AD 进行了注册的第三方应用为受保护的资源（例如 Web API）颁发访问令牌。 有关如何设置应用程序来颁发访问令牌的详细信息，请参阅[如何向 v2.0 终结点注册应用](active-directory-v2-app-registration.md)。 如果要构建在服务器上托管并通过浏览器访问的 [web 应用程序](active-directory-v2-flows.md#web-apps)，建议使用 OpenID Connect。
 
 ## <a name="protocol-diagram-sign-in"></a>协议图：登录
 最基本的登录流程步骤如下图所示。 本文将详细介绍每个步骤。
@@ -94,7 +94,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 https://localhost/myapp/，且在地址栏中有一个 ID 令牌。 请注意，此请求使用 `response_mode=query`（仅用于演示）。 建议使用 `response_mode=form_post`。
+> 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 https://localhost/myapp/，且地址栏中有一个 ID 令牌。 请注意，此请求使用 `response_mode=query`（仅用于演示）。 建议使用 `response_mode=form_post`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=query&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
@@ -221,7 +221,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 ```
 
 > [!TIP]
-> 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 https://localhost/myapp/，且在地址栏中有一个 ID 令牌和一个代码。 请注意，此请求使用 `response_mode=query`（仅用于演示）。 建议使用 `response_mode=form_post`。
+> 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 https://localhost/myapp/，且地址栏中有一个 ID 令牌和一个代码。 请注意，此请求使用 `response_mode=query`（仅用于演示）。 建议使用 `response_mode=form_post`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 

@@ -11,13 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/25/2018
+ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 82fffa23a7688b66be486cc3147c134fa849a33e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 564bfb9c80fe835bd5defb4321607e0970c9f0aa
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -41,9 +41,6 @@ ms.lasthandoff: 04/19/2018
 * [Maven](http://maven.apache.org/)
 
 * [装有 HBase 的基于 Linux 的 Azure HDInsight 群集](apache-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
-
-  > [!NOTE]
-  > 本文档中的步骤已在 HDInsight 群集版本 3.4 和 3.5 中进行了测试。 示例中提供的默认值适用于 HDInsight 3.5 群集。
 
 ## <a name="create-the-project"></a>创建项目
 

@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 服务总线为 Azure 逻辑应用设置消息传送 | Microsoft Docs"
-description: "通过逻辑应用使用 Azure 服务总线发送和接收消息"
+title: 使用 Azure 服务总线为 Azure 逻辑应用设置消息传送 | Microsoft Docs
+description: 通过逻辑应用使用 Azure 服务总线发送和接收消息
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.service: logic-apps
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 02/06/2018
 ms.author: ladocs
-ms.openlocfilehash: e81580db17610adc6be534c9801881f9b68b14fd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d5a4760e1e0f38fd81fd779786985f5753d77eab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="send-and-receive-messages-with-the-azure-service-bus-connector"></a>使用 Azure 服务总线连接器发送和接收消息
 
@@ -36,11 +36,11 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="connect-to-azure-service-bus"></a>连接到 Azure 服务总线
 
-若要使逻辑应用能够访问某个服务，必须在逻辑应用与该服务之间创建[连接](./connectors-overview.md)（如果尚未创建）。 该连接授权逻辑应用访问数据。 要使逻辑应用能够访问服务总线帐户，请检查你的权限。
+要使逻辑应用能够访问某个服务，必须在逻辑应用与该服务之间创建[连接](./connectors-overview.md)（如果尚未创建）。 该连接授权逻辑应用访问数据。 要使逻辑应用能够访问服务总线帐户，请检查你的权限。
 
 1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。 
 
-2. 转到你的服务总线“命名空间”，而非特定的“消息传送实体”。 在命名空间页面上，在“设置”下，选择“共享访问策略”。 在“声明”下，检查你是否有该命名空间的“管理”权限。
+2. 转到你的服务总线“命名空间”，而非特定的“消息传送实体”。 在命名空间页上，在“设置”下，选择“共享访问策略”。 在“声明”下，检查你是否有该命名空间的“管理”权限。
 
    ![管理服务总线命名空间的权限](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
@@ -65,12 +65,17 @@ ms.lasthandoff: 02/09/2018
 
    ![选择服务总线触发器](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
+   > [!NOTE]
+   > 某些触发器会返回一条或多条消息，例如 *Service Bus - When one or more messages arrive in a queue (auto-complete)* 触发器。
+   > 当这些触发器触发时，它们会返回一定数目的消息，消息数介于 1 和由触发器的**最大消息计数**属性指定的数目之间。
+
    1. 如果还没有到服务总线命名空间的连接，则会提示你立即创建该连接。 为连接提供一个名称，然后选择要使用的服务总线命名空间。
 
       ![创建服务总线连接](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
 
       或者，若要手动输入连接字符串，请选择“手动输入连接信息”。 
       了解[如何查找连接字符串](#permissions-connection-string)。
+      
 
    2. 现在，选择要使用的服务总线策略，然后选择“创建”。
 
@@ -79,6 +84,11 @@ ms.lasthandoff: 02/09/2018
 4. 选择要使用的服务总线队列，并针对何时检查队列设置间隔和频率。
 
    ![选择服务总线队列，设置轮询间隔](./media/connectors-create-api-azure-service-bus/select-service-bus-queue.png)
+
+   > [!NOTE]
+   > 所有服务总线触发器都是**长轮询**触发器，这意味着当触发器触发时，触发器将处理所有消息，然后等待 30 秒，以等待更多消息出现在队列或主题订阅中。
+   > 如果在 30 秒内未收到消息，则会跳过触发器运行。 否则，该触发器将继续读取消息，直到队列或主题订阅为空。
+   > 下一次触发器轮询将基于在触发器的属性中指定的重复周期间隔。
 
 5. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 

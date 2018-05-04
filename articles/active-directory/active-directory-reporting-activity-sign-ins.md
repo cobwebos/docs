@@ -1,25 +1,25 @@
 ---
-title: "Azure Active Directory 门户中的“登录活动”报告 | Microsoft Docs"
-description: "Azure Active Directory 门户中的“登录活动”报告简介"
+title: Azure Active Directory 门户中的“登录活动”报告 | Microsoft Docs
+description: Azure Active Directory 门户中的“登录活动”报告简介
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 04/20/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ad7b1aae4ee14e46a5df6be0ebc29bfd455852d4
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 579af89c0d6d184b517ecb9e8a53be9d76cf1c93
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -61,14 +61,16 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 ![登录活动](./media/active-directory-reporting-activity-sign-ins/61.png "登录活动")
 
 
-审核日志有一个默认列表视图，用于显示：
+登录日志有一个默认列表视图，用于显示：
 
+- 登录日期
 - 相关的用户
 - 用户登录到的应用程序
 - 登录状态
-- 登录时间
+- 风险检测的状态
+- 多重身份验证 (MFA) 要求的状态 
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/41.png "登录活动")
+![登录活动](./media/active-directory-reporting-activity-sign-ins/01.png "登录活动")
 
 单击工具栏中的“列”即可自定义列表视图。
 
@@ -76,58 +78,81 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 用于显示其他字段，或者删除已显示的字段。
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/42.png "登录活动")
+![登录活动](./media/active-directory-reporting-activity-sign-ins/02.png "登录活动")
 
-通过单击列表视图中的项，可以获得已提供的所有相关详情。
+通过单击列表视图中的项，可以在水平视图中获得为该项提供的所有相关详情。
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/43.png "登录活动")
+![登录活动](./media/active-directory-reporting-activity-sign-ins/03.png "登录活动")
 
 
 ## <a name="filtering-sign-in-activities"></a>筛选登录活动
 
-要将所报告数据的范围缩小到适当的级别，可以使用以下字段筛选登录数据：
+若要将所报告数据的范围缩小到适当的级别，可以使用以下默认字段筛选登录数据：
 
-- 时间间隔
 - 用户
 - Application
-- Client
 - 登录状态
+- 风险检测的状态
+- 日期
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/44.png "登录活动")
+
+![登录活动](./media/active-directory-reporting-activity-sign-ins/04.png "登录活动")
+
+“用户”筛选器用于指定所关注的用户的名称或用户主体名称 (UPN)。 
+
+“应用程序”筛选器用于指定所关注的应用程序的名称。  
+
+“登录状态”筛选器用于选择：
+
+- 全部 
+- 成功
+- 失败
+
+“检测到的风险”筛选器用于选择：
+
+- 全部
+- 是
+- 否 
 
 
-“时间间隔”筛选器用于定义已返回数据的时间范围。  
+“日期”筛选器用于定义已返回数据的时间范围。  
 可能的值包括：
 
 - 1 个月
 - 7 天
 - 24 小时
-- “自定义”
+- 自定义时间范围
 
 选择自定义时间范围时，可以配置开始时间和结束时间。
 
-“用户”筛选器用于指定所关注的用户的名称或用户主体名称 (UPN)。
+如果向登录视图添加其他字段，这些字段会自动添加到筛选器列表。 例如，如果向列表添加“客户端应用”字段，则还会获得另一筛选器选项，用于设置以下筛选器：
 
-“应用程序”筛选器用于指定所关注的应用程序的名称。
+- 浏览器      
+- Exchange ActiveSync（受支持）               
+- Exchange ActiveSync（不受支持）
+- 其他客户端               
+    - IMAP
+    - MAPI
+    - 旧式 Office 客户端
+    - POP
+    - SMTP
 
-“客户端”筛选器用于指定所关注的设备的相关信息。
 
-“登录状态”筛选器用于选择下述筛选器之一：
+![登录活动](./media/active-directory-reporting-activity-sign-ins/12.png "登录活动")
 
-- 全部
-- 成功
-- 失败
 
 
 ## <a name="sign-in-activities-shortcuts"></a>登录活动快捷方式
 
 除了 Azure Active Directory，Azure 门户还提供了两个额外的登录活动数据的入口点：
 
-- 用户和组
+- 标识安全保护概览
+- 用户
+- 组
 - 企业应用程序
 
 
-### <a name="users-and-groups-sign-ins-activities"></a>用户和组的登录活动
+### <a name="users-sign-ins-activities"></a>用户登录活动
 
 通过用户登录报表提供的信息，可以找到一些问题的答案，例如：
 
@@ -137,29 +162,40 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 
 
-该数据的入口点为“概览”部分的“用户和组”下面的用户登录图。
+该数据的入口点为“标识安全保护”概览页上的用户登录图。 用户登录图显示指定时间内所有用户的按周汇总的登录信息。 默认时间为 30 天。
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/45.png "登录活动")
+![登录活动](./media/active-directory-reporting-activity-sign-ins/06.png "登录活动")
 
-用户登录图显示指定时间内所有用户的按周汇总的登录信息。 默认时间为 30 天。
+单击登录图中的某一天时，可以获得该天的登录活动的概览。
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/46.png "登录活动")
+![登录活动](./media/active-directory-reporting-activity-sign-ins/07.png "登录活动")
 
-单击登录图中的某一天时，可以获取该天的登录活动的详细列表。
-
-![登录活动](./media/active-directory-reporting-activity-sign-ins/41.png "登录活动")
-
-登录活动列表中的每一行提供了有关所选登录的详细信息，例如：
+登录活动列表中的每一行显示以下内容：
 
 * 登录者是谁？
-* 相关的 UPN 是什么？
 * 登录的目标应用程序是哪个？
-* 登录的 IP 地址是多少？
-* 登录的状态怎样？
+* 登录的状态是什么？
+* 登录的 MFA 状态是什么？
 
-“登录”选项可提供所有用户登录的完整概览。
+单击某个项即可获得有关登录操作的更多详情：
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/51.png "登录活动")
+- 用户 ID
+- 用户
+- 用户名
+- 应用程序 ID
+- Application
+- Client
+- Location
+- IP 地址
+- 日期
+- 需要 MFA
+- 登录状态
+
+ 
+在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。
+
+![登录活动](./media/active-directory-reporting-activity-sign-ins/08.png "登录活动")
+
 
 
 
@@ -171,9 +207,9 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 * 组织中最常用的 3 个应用程序是哪些？
 * 我最近推出了一个应用程序。 它用起来怎样？
 
-该数据的入口点为“概览”部分的“企业应用程序”下面的组织过去 30 天的报告中最常用的 3 个应用程序。
+该数据的入口点为“企业应用程序”页“概览”部分的“组织过去 30 天最常用的 3 个应用程序”报告。
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/64.png "登录活动")
+![登录活动](./media/active-directory-reporting-activity-sign-ins/10.png "登录活动")
 
 应用程序使用情况图显示指定时间内最常用的 3 个应用程序的按周汇总的登录情况。 默认时间为 30 天。
 
@@ -192,7 +228,7 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 **登录** 选项可提供应用程序的所有登录事件的完整概览。
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/49.png "登录活动")
+![登录活动](./media/active-directory-reporting-activity-sign-ins/11.png "登录活动")
 
 
 

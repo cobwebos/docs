@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric CLI - sfctl service | Microsoft Docs
-description: "介绍 Service Fabric CLI sfctl service 命令。"
+description: 介绍 Service Fabric CLI sfctl service 命令。
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/23/2018
 ms.author: ryanwi
 ms.openlocfilehash: 5b30d3732ff00e5bb79e2d58a9f0b3e5b29dedf8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-service"></a>sfctl service
 创建、删除和管理服务、服务类型与服务包。
@@ -93,7 +93,7 @@ ms.lasthandoff: 02/27/2018
 | --debug               | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query               | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-delete"></a>sfctl service delete
@@ -116,7 +116,7 @@ ms.lasthandoff: 02/27/2018
 | --debug             | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h           | 显示此帮助消息并退出。|
 | --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query             | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-description"></a>sfctl service description
@@ -138,7 +138,7 @@ ms.lasthandoff: 02/27/2018
 | --debug             | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h           | 显示此帮助消息并退出。|
 | --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query             | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-health"></a>sfctl service health
@@ -163,7 +163,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                      | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h                    | 显示此帮助消息并退出。|
 | --output -o                  | 输出格式。  允许的值：json、jsonc、table、tsv。                  默认值：json。|
-| --query                      | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                      | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                    | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-info"></a>sfctl service info
@@ -186,7 +186,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                 | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                 | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-list"></a>sfctl service list
@@ -210,7 +210,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                 | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                 | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-manifest"></a>sfctl service manifest
@@ -234,7 +234,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                           | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h                         | 显示此帮助消息并退出。|
 | --output -o                       | 输出格式。  允许的值：json、jsonc、table、tsv。                       默认值：json。|
-| --query                           | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                           | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                         | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
 
 ## <a name="sfctl-service-recover"></a>sfctl service recover
@@ -256,7 +256,7 @@ ms.lasthandoff: 02/27/2018
 | --debug             | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h           | 显示此帮助消息并退出。|
 | --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query             | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-resolve"></a>sfctl service resolve
@@ -281,7 +281,7 @@ ms.lasthandoff: 02/27/2018
 | --debug             | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h           | 显示此帮助消息并退出。|
 | --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query             | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-update"></a>sfctl service update
@@ -315,7 +315,7 @@ ms.lasthandoff: 02/27/2018
 | --debug               | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query               | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="next-steps"></a>后续步骤

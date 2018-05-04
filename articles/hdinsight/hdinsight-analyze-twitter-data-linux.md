@@ -1,26 +1,24 @@
 ---
-title: "使用 Apache Hive 分析 Twitter 数据 - Azure HDInsight | Microsoft Docs"
-description: "了解如何使用 HDInsight 中的 Hive 和 Hadoop 将原始 TWitter 数据转换为可搜索的 Hive 表。"
+title: 使用 Apache Hive 分析 Twitter 数据 - Azure HDInsight | Microsoft Docs
+description: 了解如何使用 HDInsight 中的 Hive 和 Hadoop 将原始 TWitter 数据转换为可搜索的 Hive 表。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: e1e249ed-5f57-40d6-b3bc-a1b4d9a871d3
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/22/2018
+ms.topic: conceptual
+ms.date: 04/23/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: b6e540576bc4a5876bc8546262a181bd82ad9727
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 89c5ff86b6c59223e0580860e14fdffdaef2472c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Hive 和 Hadoop 分析 Twitter 数据
 
@@ -37,7 +35,7 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
 
 ### <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 
-1. 从 Web 浏览器登录到 [https://apps.twitter.com/](https://apps.twitter.com/)。 单击“立即注册”链接（如果没有 Twitter 帐户）。
+1. 在 Web 浏览器中登录到 [https://apps.twitter.com/](https://apps.twitter.com/)。 单击“立即注册”链接（如果没有 Twitter 帐户）。
 
 2. 单击“创建新应用”。
 
@@ -179,9 +177,9 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
 
 要将数据上传到 HDInsight 存储，请使用以下命令：
 
-   ```bash
-   hdfs dfs -mkdir -p /tutorials/twitter/data
-   hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
+```bash
+hdfs dfs -mkdir -p /tutorials/twitter/data
+hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 ```
 
 这些命令会在群集中的所有节点都可以访问的位置中存储数据。

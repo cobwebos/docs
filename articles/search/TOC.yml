@@ -75,7 +75,7 @@
           href: search-modeling-multitenant-saas-applications.md
         - name: 性能和优化
           href: search-performance-optimization.md
-    - name: “安全”
+    - name: 安全
       items:
         - name: 安全概述
           href: search-security-overview.md
@@ -99,6 +99,8 @@
           href: search-get-started-java.md
         - name: 升级 SDK
           items:
+            - name: .NET SDK 5.0
+              href: search-dotnet-sdk-migration-version-5.md
             - name: .NET SDK 3.0
               href: search-dotnet-sdk-migration.md
             - name: .NET SDK 1.1

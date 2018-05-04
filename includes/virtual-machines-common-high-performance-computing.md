@@ -181,7 +181,7 @@ Azure 虚拟机、虚拟机规模集、Batch 和相关的计算服务是大多�
 * 详细了解用于[工程仿真](https://simulation.azure.com/)、[渲染](https://simulation.azure.com/)、[银行和资本市场](https://finance.azure.com/)以及[基因组学](https://enterprise.microsoft.com/en-us/industries/health/genomics/)的大型计算解决方案。
 * 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](https://azure.microsoft.com/blog/tag/hpc/)。
 
-* 使用托管的可缩放 Azure [Batch](https://azure.microsoft.com/services/batch/) 服务运行计算密集型工作负荷，而无需管理基础结构 [了解详细信息](https://azure.microsoft.com/en-us/solutions/architecture/hpc-big-compute-saas/)
+* 使用托管的可缩放 Azure [Batch](https://azure.microsoft.com/services/batch/) 服务运行计算密集型工作负荷，而无需管理基础结构 [了解详细信息](https://azure.microsoft.com/solutions/architecture/hpc-big-compute-saas/)
 
 
 

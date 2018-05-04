@@ -1,16 +1,16 @@
 ---
-title: "Azure Migrate 中的依赖项可视化 | Microsoft 文档"
-description: "概述 Azure Migrate 服务中的评估计算。"
+title: Azure Migrate 中的依赖项可视化 | Microsoft 文档
+description: 概述 Azure Migrate 服务中的评估计算。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: bcbb2ace6686e4052149a5dde1ed837a16c36bad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d075ce9ee124d373a1284577324a50338245a03f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/02/2018
 ## <a name="how-does-it-work"></a>工作原理
 
 Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md) 中的[服务映射](../operations-management-suite/operations-management-suite-service-map.md)解决方案来实现依赖项可视化。
-- 创建 Azure 迁移项目时，会在你的订阅中创建一个 OMS Log Analytics 工作区。
+- 创建 Azure 迁移项目时，会在你的订阅中创建一个 Log Analytics 工作区。
 - 工作区名称是你为迁移项目指定的名称，以 **migrate-** 为前缀，并且（可选）以数字为后缀。 
 - 从项目“概述”页的“概要”部分导航到 Log Analytics 工作区。
 - 创建的工作区使用密钥 **MigrateProject** 和值“项目名称”进行标记。 你可以使用这些信息在 Azure 门户中进行搜索。  

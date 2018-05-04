@@ -1,6 +1,6 @@
 ---
-title: "Azure 付款处理蓝图 - 测试要求"
-description: "PCI DSS 要求 11"
+title: Azure 付款处理蓝图 - 测试要求
+description: PCI DSS 要求 11
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 57429741afd2ffd16c09a0f1485cb1cfbdda5571
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: db9f1022ecb3b727f08bb6f232a8df55476e0755
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="testing-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的测试要求 
 ## <a name="pci-dss-requirement-11"></a>PCI DSS 要求 11
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Azure 不允许在 Azure 网络环境中进行无线连接。 内部安全团队定期扫描（按季）恶意无线信号，并在进行调查后将其去除。 客户不得在 Azure 环境中部署无线技术。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Azure 不允许在 Azure 网络环境中进行无线连接。 内部安全团队定期扫描（按季）恶意无线信号，并在进行调查后将其去除。 客户不得在 Azure 环境中部署无线技术。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 解决方案中不实施无线和 SNMP 技术。|
 
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 11.1](#pci-dss-requirement-11-1) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 11.1](#pci-dss-requirement-11-1) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 解决方案中不实施无线和 SNMP 技术。|
 
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 11.1](#pci-dss-requirement-11-1) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 11.1](#pci-dss-requirement-11-1) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 解决方案中不实施无线和 SNMP 技术。|
 
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Azure 按季进行内部和外部漏洞扫描。 扫描由合格人员执行。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Azure 按季进行内部和外部漏洞扫描。 扫描由合格人员执行。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 已进行渗透测试并按“现状”进行漏洞扫描。 渗透测试结果可以重复，只需使用 nmap、pentest-tools.com 等常用工具即可。可以通过渗透测试结果了解攻击面（非结论性），确保没有可利用的漏洞。 另外，[Azure 安全中心](https://azure.microsoft.com/services/security-center/)和 [Azure 顾问](/azure/advisor/advisor-security-recommendations)会提供漏洞信息和修正措施。|
 
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 对范围内的底层基础结构进行漏洞扫描。 Microsoft Azure 使用适当的漏洞扫描工具，对服务器操作系统、数据库和网络设备实施漏洞扫描。 Azure Web 应用程序使用适当的行业扫描解决方案进行扫描。 按季度进行漏洞扫描。<br /><br />根据需要对所有系统反复扫描，直到所有“高风险”漏洞（参见“要求 6.1”）都已解决。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 对范围内的底层基础结构进行漏洞扫描。 Microsoft Azure 使用适当的漏洞扫描工具，对服务器操作系统、数据库和网络设备实施漏洞扫描。 Azure Web 应用程序使用适当的行业扫描解决方案进行扫描。 按季度进行漏洞扫描。<br /><br />根据需要对所有系统反复扫描，直到所有“高风险”漏洞（参见“要求 6.1”）都已解决。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 已进行渗透测试并按“现状”进行漏洞扫描。 渗透测试结果可以重复，只需使用 nmap、pentest-tools.com 等常用工具即可。可以通过渗透测试结果了解攻击面（非结论性），确保没有可利用的漏洞。 另外，[Azure 安全中心](https://azure.microsoft.com/services/security-center/)和 [Azure 顾问](/azure/advisor/advisor-security-recommendations)会提供漏洞信息和修正措施。|
 
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 对范围内可以从外部访问的底层基础结构进行外部漏洞扫描。 扫描由核准扫描供应商 (ASV) 执行。<br /><br />Microsoft Azure 订阅了 MSRC/OSSC 的按月修补程序通知，至少按季进行漏洞扫描。 已确定的漏洞会根据风险级别按既定的时间线进行评估和修正。<br /><br />每个季度都会对 Microsoft Azure 环境的优先化组件有针对地进行综合性安全漏洞扫描，以便确定安全漏洞。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 对范围内可以从外部访问的底层基础结构进行外部漏洞扫描。 扫描由核准扫描供应商 (ASV) 执行。<br /><br />Microsoft Azure 订阅了 MSRC/OSSC 的按月修补程序通知，至少按季进行漏洞扫描。 已确定的漏洞会根据风险级别按既定的时间线进行评估和修正。<br /><br />每个季度都会对 Microsoft Azure 环境的优先化组件有针对地进行综合性安全漏洞扫描，以便确定安全漏洞。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 部署 Contoso Webstore 时，演示版客户负责使用经支付卡行业安全标准委员会核准的核准扫描供应商 (ASV)，根据需要对其持卡人数据环境 (CDE) 中的所有 PaaS 实例执行按季外部漏洞扫描和反复扫描。<br /><br />|
 
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 结果会报告给利益干系人，修正措施由 Azure 安全团队在关闭案例时进行跟踪。 Azure 测试结果可能会根据 NDA（Non Disclosure Agreement，保密协议）与客户共享。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 结果会报告给利益干系人，修正措施由 Azure 安全团队在关闭案例时进行跟踪。 Azure 测试结果可能会根据 NDA（Non Disclosure Agreement，保密协议）与客户共享。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责根据需要按季对其 CDE 中的所有 PaaS 实例执行内外部漏洞扫描和反复扫描。 在进行重大更改后，应在范围内的环境中执行扫描。<br /><br />必须由 ASV 或具有组织独立性的人员执行扫描。|
 
 
@@ -152,7 +152,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 使用第三方渗透测试来验证服务，该测试基于使用 CREST 认证测试人员进行的 OWASP（开放式 Web 应用程序安全项目）的前十个漏洞。 测试结果通过风险登记簿进行跟踪，该登记簿会定期进行审核和查看，确保符合安全做法。 <br /><br />Microsoft 还对 Microsoft 托管的基础结构、服务和应用程序使用红队研判。 在红队研判和实时站点渗透测试过程中，不会特意针对最终客户数据。 测试针对 Microsoft Azure 基础结构和平台以及 Microsoft 自己的应用程序和数据。 从不针对 Azure 中托管的客户租户、应用程序和数据进行测试。<br /><br />Microsoft Azure 雇佣独立的评估师来制定系统评估计划，并进行控件评估。 控件评估每年进行一次，结果报告给相关方。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 使用第三方渗透测试来验证服务，该测试基于使用 CREST 认证测试人员进行的 OWASP（开放式 Web 应用程序安全项目）的前十个漏洞。 测试结果通过风险登记簿进行跟踪，该登记簿会定期进行审核和查看，确保符合安全做法。 <br /><br />Microsoft 还对 Microsoft 托管的基础结构、服务和应用程序使用红队研判。 在红队研判和实时站点渗透测试过程中，不会特意针对最终客户数据。 测试针对 Microsoft Azure 基础结构和平台以及 Microsoft 自己的应用程序和数据。 从不针对 Azure 中托管的客户租户、应用程序和数据进行测试。<br /><br />Microsoft Azure 雇佣独立的评估师来制定系统评估计划，并进行控件评估。 控件评估每年进行一次，结果报告给相关方。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 已进行渗透测试并按“现状”进行漏洞扫描。 渗透测试结果可以重复，只需使用 nmap、pentest-tools.com 等常用工具即可。可以通过渗透测试结果了解攻击面（非结论性），确保没有可利用的漏洞。 另外，[Azure 安全中心](https://azure.microsoft.com/services/security-center/)和 [Azure 顾问](/azure/advisor/advisor-security-recommendations)会提供漏洞信息和修正措施。|
 
 
@@ -165,7 +165,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 11.3](#pci-dss-requirement-11-3) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 11.3](#pci-dss-requirement-11-3) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 已进行渗透测试并按“现状”进行漏洞扫描。 渗透测试结果可以重复，只需使用 nmap、pentest-tools.com 等常用工具即可。可以通过渗透测试结果了解攻击面（非结论性），确保没有可利用的漏洞。 另外，[Azure 安全中心](https://azure.microsoft.com/services/security-center/)和 [Azure 顾问](/azure/advisor/advisor-security-recommendations)会提供漏洞信息和修正措施。|
 
 
@@ -178,7 +178,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 与独立评估师约定，对 Microsoft Azure 边界进行渗透测试。 还会定期进行红队练习，根据结果来改善安全。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 与独立评估师约定，对 Microsoft Azure 边界进行渗透测试。 还会定期进行红队练习，根据结果来改善安全。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 已进行渗透测试并按“现状”进行漏洞扫描。 渗透测试结果可以重复，只需使用 nmap、pentest-tools.com 等常用工具即可。可以通过渗透测试结果了解攻击面（非结论性），确保没有可利用的漏洞。 另外，[Azure 安全中心](https://azure.microsoft.com/services/security-center/)和 [Azure 顾问](/azure/advisor/advisor-security-recommendations)会提供漏洞信息和修正措施。|
 
 
@@ -221,7 +221,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 请参阅[要求 11.3.4](#pci-dss-requirement-11-3-4) 的“Microsoft Azure”部分。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 请参阅[要求 11.3.4](#pci-dss-requirement-11-3-4) 的“Microsoft Azure”部分。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 已使用 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)和 [Azure 顾问](/azure/advisor/advisor-security-recommendations)来提供漏洞信息和修正措施，确保已修正 Contoso Webstore 演示 CDE 的所有未决问题。|
 
 
@@ -235,7 +235,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 对其操作环境中的事件进行实时分析，IDS 系统针对可能损害系统的事件生成近实时警报。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 对其操作环境中的事件进行实时分析，IDS 系统针对可能损害系统的事件生成近实时警报。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 是一项 PaaS 服务，网络入侵检测和防护是 Azure 的责任。 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)和 [Azure 顾问](/azure/advisor/advisor-security-recommendations)提供入侵警报和漏洞修正措施。|
 
 
@@ -251,8 +251,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 对于可能发生的更改以及可能影响服务安全性或可用性的事件，Microsoft Azure 会通过联机服务仪表板保留相关记录并通知客户。 如果 Microsoft Azure 客户的安全承诺和安全义务发生变化，将会及时在 Microsoft Azure 网站上进行更新。<br /><br />只允许授权的管理人员在 Microsoft Azure 生产环境中进行软件安装或更改，且相关操作必须按更改管理过程进行。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 演示版是一项 PaaS 服务，更改检测已使用 OMS 实施。 有关详细信息，请参阅 [PCI 指南 - 预安装的 OMS 解决方案](payment-processing-blueprint.md#oms-solutions)。<br /><br />|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 对于可能发生的更改以及可能影响服务安全性或可用性的事件，Microsoft Azure 会通过联机服务仪表板保留相关记录并通知客户。 如果 Microsoft Azure 客户的安全承诺和安全义务发生变化，将会及时在 Microsoft Azure 网站上进行更新。<br /><br />只允许授权的管理人员在 Microsoft Azure 生产环境中进行软件安装或更改，且相关操作必须按更改管理过程进行。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 演示版是一项 PaaS 服务，更改检测已使用 Log Analytics 实施。 有关详细信息，请参阅 [PCI 指南 - 预安装的管理解决方案](payment-processing-blueprint.md#management-solutions)。<br /><br />|
 
 
 
@@ -264,8 +264,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Azure 监视事件规则针对高风险操作和资产提供的监视级别已提高。 监视 Azure 托管的网络设备，看其是否符合既定的安全标准。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 更改警报通过 OMS 实施提供。 有关详细信息，请参阅 [PCI 指南 - 预安装的 OMS 解决方案](payment-processing-blueprint.md#oms-solutions)。<br /><br /><br /><br />|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Azure 监视事件规则针对高风险操作和资产提供的监视级别已提高。 监视 Azure 托管的网络设备，看其是否符合既定的安全标准。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 更改警报通过 Log Analytics 实施提供。 有关详细信息，请参阅 [PCI 指南 - 预安装的管理解决方案](payment-processing-blueprint.md#management-solutions)。<br /><br /><br /><br />|
 
 
 
@@ -277,8 +277,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 更改警报通过 OMS 实施提供。 有关详细信息，请参阅 [PCI 指南 - 预安装的 OMS 解决方案](payment-processing-blueprint.md#oms-solutions)。<br /><br /><br /><br />|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 更改警报通过 Log Analytics 实施提供。 有关详细信息，请参阅 [PCI 指南 - 预安装的管理解决方案](payment-processing-blueprint.md#management-solutions)。<br /><br /><br /><br />|
 
 
 

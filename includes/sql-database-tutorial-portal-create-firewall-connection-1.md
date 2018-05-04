@@ -4,7 +4,7 @@
 
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 
-创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](../articles/sql-database/sql-database-service-tiers.md)。 数据库在 [Azure 资源组](../articles/azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](../articles/sql-database/sql-database-features.md)中创建。 
+创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](../articles/sql-database/sql-database-service-tiers-dtu.md)。 数据库在 [Azure 资源组](../articles/azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](../articles/sql-database/sql-database-features.md)中创建。 
 
 按照以下步骤创建空的 SQL 数据库。 
 

@@ -13,22 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2018
+ms.date: 04/19/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 21862bb110801a43f13e3e65811e10726c188614
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 24723f268e59103c712b98b4bd895472b034afc0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允许或阻止向特定组织中的 B2B 用户发送邀请
 
 可以使用允许列表或拒绝列表，来允许或阻止向特定组织中的 B2B 用户发送邀请。 例如，如果你要阻止个人电子邮件地址域，可以设置一个拒绝列表，并在其中包含类似于 Gmail.com 和 Outlook.com 的域。或者，如果你的企业与 Contoso.com、Fabrikam.com 和 Litware.com 等其他企业建立了合作关系，并且你希望将邀请限制为这些组织，则可以将 Contoso.com、Fabrikam.com 和 Litware.com 添加到允许列表。
   
-> [!NOTE]
-> 目前只能使用拒绝列表。 使用允许列表的功能即将推出。
-
 ## <a name="important-considerations"></a>重要注意事项
 
 - 可以创建允许列表或拒绝列表。 不能同时设置这两种类型的列表。 默认情况下，不在允许列表中的任何域都会包含在拒绝列表中，反之亦然。 
@@ -50,22 +47,34 @@ ms.lasthandoff: 04/18/2018
 2. 选择“Azure Active Directory” > “用户” > “用户设置”。
 3. 在“外部用户”下，选择“管理外部协作设置”。
 4. 在“协作限制”下，选择“拒绝向指定的域发送邀请”。
-5. 在“目标域”下，输入要阻止的某个域的名称。 若要阻止多个域，请分行输入每个域。
+5. 在“目标域”下，输入要阻止的某个域的名称。 若要阻止多个域，请分行输入每个域。 例如：
 
    ![显示针对添加的域的拒绝选项](./media/active-directory-b2b-allow-deny-list/DenyListSettings.png)
  
 6. 完成后，单击“保存”。
 
-设置策略后，如果尝试邀请被阻止域中的用户，将会收到一条消息，指出该用户当前已被邀请策略阻止。
+设置策略后，如果尝试邀请被阻止域中的用户，将会收到一条消息，指出该用户的域当前已被邀请策略阻止。
  
 ### <a name="add-an-allow-list"></a>添加允许列表
-
-> [!NOTE]
-> “只允许向指定的域发送邀请(限制性最强)”设置目前不可用。 使用允许列表的功能即将推出。
 
 这是限制性更强的配置。使用此配置可在允许列表中设置特定的域，并将邀请限制为列表中未提到的其他任何组织或域。 
 
 若要使用允许列表，请确保花些时间来全面评估业务需求。 如果此策略的限制性过于严格，则用户可能会选择通过电子邮件发送文档，或者寻求 IT 部门未批准的其他协作方式。
+
+
+若要添加允许列表，请执行以下操作：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“Azure Active Directory” > “用户” > “用户设置”。
+3. 在“外部用户”下，选择“管理外部协作设置”。
+4. 在“协作限制”下，选择“只允许向指定的域发送邀请(限制性最强)”。
+5. 在“目标域”下，输入要允许的某个域的名称。 若要阻止多个域，请分行输入每个域。 例如：
+
+   ![显示已添加域的允许选项](./media/active-directory-b2b-allow-deny-list/AllowListSettings.png)
+ 
+6. 完成后，单击“保存”。
+
+设置策略后，如果尝试邀请的用户来自不在允许列表中的域，则会收到一条消息，指出该用户的域当前已被邀请策略阻止。
 
 ### <a name="switch-from-allow-to-deny-list-and-vice-versa"></a>从允许列表切换到拒绝列表或反之 
 
@@ -115,9 +124,6 @@ ms.lasthandoff: 04/18/2018
     ````
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>使用 AzureADPolicy cmdlet 配置策略
-
-> [!NOTE]
-> 目前只能配置拒绝列表。 使用允许列表的功能即将推出。
 
 若要创建允许或拒绝列表，请使用 [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) cmdlet。 以下示例演示如何设置阻止“live.com”域的拒绝列表。
 

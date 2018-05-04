@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2018
 ms.author: kgremban
-ms.openlocfilehash: a6b498b38e76dfa2553bf3a916b723cd774d950d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dae4599db5127ac8fd266d5e0f299e1284fc9b9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/05/2018
 
 借助租户限制，组织可以指定其用户有权访问的租户的列表。 然后，Azure AD 只会授予对这些允许的租户的访问权限。
 
-本文重点介绍 Office 365 的租户限制，但该功能应该也适用于结合 Azure AD 使用新式身份验证协议进行单一登录的任何 SaaS 云应用。 如果 SaaS 应用使用的 Azure AD 租户不同于 Office 365 使用的租户，请确保允许全部所需的租户。 有关 SaaS 云应用的详细信息，请参阅 [Active Directory Marketplace](https://azure.microsoft.com/en-us/marketplace/active-directory/)（Active Directory 应用商店）。
+本文重点介绍 Office 365 的租户限制，但该功能应该也适用于结合 Azure AD 使用新式身份验证协议进行单一登录的任何 SaaS 云应用。 如果 SaaS 应用使用的 Azure AD 租户不同于 Office 365 使用的租户，请确保允许全部所需的租户。 有关 SaaS 云应用的详细信息，请参阅 [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)（Active Directory 应用商店）。
 
 ## <a name="how-it-works"></a>工作原理
 

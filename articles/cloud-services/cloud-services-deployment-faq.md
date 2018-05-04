@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure 云服务部署常见问题解答 | Microsoft 文档"
-description: "本文将介绍一些关于 Microsoft Azure 云服务部署的常见问题解答。"
+title: Microsoft Azure 云服务部署常见问题解答 | Microsoft 文档
+description: 本文将介绍一些关于 Microsoft Azure 云服务部署的常见问题解答。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: genli
-ms.openlocfilehash: 61d1cc511bf541e75ffda3e84b116f78a434f6f1
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: effc0eb872a1f63e32c1958234c173a53c381620
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务部署问题：常见问题解答 (FAQ)
 
@@ -79,4 +79,4 @@ ms.lasthandoff: 12/12/2017
 
 在经典门户中，包直接上传到管理 API 层，然后 API 层暂时将其放入内部存储帐户。  API 层并不是文件上传服务，因此这个过程会导致性能和可伸缩性问题。  在 Azure 门户中（资源管理器部署模型），我们越过了先上传到 API 层这一临时步骤，因此实现了更快、更可靠的部署。 
 
-所需成本很少，并且可以在所有部署中重复使用同一存储帐户。 可以使用[存储成本计算器](https://azure.microsoft.com/en-us/pricing/calculator/#storage1)确定上传服务包 (CSPKG)、下载 CSPKG 以及之后删除 CSPKG 的成本。 
+所需成本很少，并且可以在所有部署中重复使用同一存储帐户。 可以使用[存储成本计算器](https://azure.microsoft.com/pricing/calculator/#storage1)确定上传服务包 (CSPKG)、下载 CSPKG 以及之后删除 CSPKG 的成本。 

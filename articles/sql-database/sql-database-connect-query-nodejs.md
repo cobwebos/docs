@@ -10,23 +10,23 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ebc199f740179ce14c7fb374e8be8862d24d6c32
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 0d1cdd40264ff76b0175c861b3084ed7e7b62a31
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-nodejs-to-query-an-azure-sql-database"></a>使用 Node.js 查询 Azure SQL 数据库
 
-本快速入门教程演示了如何使用 [Node.js](https://nodejs.org/en/) 来创建连接到 Azure SQL 数据库的程序，并使用 Transact-SQL 语句来查询数据。
+此快速入门演示如何使用 [Node.js](https://nodejs.org/en/) 来创建连接到 Azure SQL 数据库的程序，并使用 Transact-SQL 语句来查询数据。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门教程，请确保符合以下条件：
+若要完成本快速入门，请确保符合以下条件：
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- 针对用于本快速入门教程的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+- 针对用于本快速入门的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
 
 - 已为操作系统安装 Node.js 和相关软件：
     - **MacOS**：安装 Homebrew 和 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)。

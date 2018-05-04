@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据工厂调用 SSIS 包 - 存储过程活动 | Microsoft Docs
-description: 本文介绍如何使用存储过程活动从 Azure 数据工厂管道调用 SQL Server Integration Services (SSIS) 包。
+title: 在 Azure 数据工厂中使用存储过程活动运行 SSIS 包 | Microsoft Docs
+description: 本文介绍如何使用存储过程活动从 Azure 数据工厂管道运行 SQL Server Integration Services (SSIS) 包。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 00a4401a9116d8ebbfefa56194fe45802bcf198e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 283e1022abda083d73e8e4e5bca7872791cb4861
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
-本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
+# <a name="run-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
+本文介绍如何使用存储过程活动从 Azure 数据工厂管道中运行 SSIS 包。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[在版本 1 中使用存储过程活动调用 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[在版本 1 中使用存储过程活动调用 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 04/03/2018
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
-9. 创建完成后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
     ![数据工厂主页](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。 
@@ -85,12 +85,13 @@ ms.lasthandoff: 04/03/2018
 4. 在“新建链接服务”窗口中执行以下步骤： 
 
     1. 选择“Azure SQL 数据库”作为“类型”。
-    2. 选择托管 SSISDB 数据库的 Azure SQL Server 作为“服务器名称”字段。
-    3. 选择“SSISDB”作为“数据库名称”。
-    4. 对于“用户名”，输入有权访问数据库的用户的名称。
-    5. 对于“密码”，输入该用户的密码。 
-    6. 单击“测试连接”按钮，测试与数据库之间的连接。
-    7. 单击“保存”按钮保存链接服务。 
+    2. 选择默认的 Azure 集成运行时连接到托管 `SSISDB` 数据库的 Azure SQL 数据库。
+    3. 在“服务器名称”字段中，选择托管 SSISDB 数据库的 Azure SQL 数据库。
+    4. 选择“SSISDB”作为“数据库名称”。
+    5. 对于“用户名”，输入有权访问数据库的用户的名称。
+    6. 对于“密码”，输入该用户的密码。 
+    7. 单击“测试连接”按钮，测试与数据库之间的连接。
+    8. 单击“保存”按钮保存链接服务。 
 
         ![Azure SQL 数据库链接服务](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. 在属性窗口中，从“SQL 帐户”选项卡切换到“存储过程”选项卡，然后执行以下步骤： 
@@ -121,14 +122,18 @@ ms.lasthandoff: 04/03/2018
 
 1. 若要触发某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。 
 
-    ![立即触发](./media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+    ![立即触发](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+
 2. 在“管道运行”窗口中选择“完成”。 
 3. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态以及其他信息（比如运行开始时间）。 若要刷新视图，请单击“刷新”。
 
     ![管道运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+
 3. 在“操作”列中单击“查看活动运行”链接。 此时只显示一个活动运行，因为管道只有一个活动（存储过程活动）。
 
-    ![活动运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png) 4.可在 Azure SQL Server 中针对 SSISDB 数据库运行以下**查询**，验证是否执行了该包。 
+    ![活动运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
+
+4. 可在 Azure SQL Server 中针对 SSISDB 数据库运行以下查询，验证是否执行了该包。 
 
     ```sql
     select * from catalog.executions

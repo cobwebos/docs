@@ -253,6 +253,8 @@
           href: app-service-web-troubleshoot-http-502-http-503.md
         - name: 排查性能问题
           href: app-service-web-troubleshoot-performance-degradation.md
+        - name: 排查域和证书问题
+          href: app-service-web-troubleshoot-domain-ssl-certificates.md
         - name: 常见问题
           items:
             - name: 可用性、性能和应用程序常见问题解答

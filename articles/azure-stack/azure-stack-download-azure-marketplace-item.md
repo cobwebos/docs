@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: c7d28831edf028657b7dd2a6a404a692a4a3bcb0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将 Marketplace 项从 Azure 下载到 Azure Stack
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 04/19/2018
 
 1. 以管理员身份打开 PowerShell 控制台，然后[安装 Azure Stack 特定的 PowerShell 模块](azure-stack-powershell-install.md)。 确保安装 **PowerShell 1.2.11 或更高版本**。  
 
-2. 添加已经用来注册过 Azure Stack 的 Azure 帐户。 若要添加的帐户，运行**连接 AzureRmAccount**不带任何参数的 cmdlet。 系统会提示输入 Azure 帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。  
+2. 添加已经用来注册过 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet，不带任何参数。 系统会提示输入 Azure 帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。  
 
 3. 如果有多个订阅，请运行以下命令，选择已经用于注册的那个订阅：  
 

@@ -1,28 +1,26 @@
 ---
-title: "将 Tez UI 与基于 Windows 的 HDInsight 配合使用 — Azure | Microsoft Docs"
-description: "了解如何使用 Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业。"
+title: 将 Tez UI 与基于 Windows 的 HDInsight 配合使用 — Azure | Microsoft Docs
+description: 了解如何使用 Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: a55bccb9-7c32-4ff2-b654-213a2354bd5c
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 32f6a12544c05dbf4ac65dd386cd9dea18ca79b3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4201fb76ef9b0e711fd48972db86c356d72e6671
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>使用 Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业
-Tez UI 是一个网页，可用于了解和调试在基于 Windows 的 HDInsight 群集上将 Tez 用作执行引擎的作业。 利用 Tez UI，可以将作业显示为包含已连接项目的图形，深入了解每个项目并检索统计信息和日志记录信息。
+Tez UI 可以用来调试使用 Tez 作为执行引擎的 Hive 作业。 Tez UI 可以将作业显示为包含已连接项目的图形，深入了解每个项目并检索统计信息和日志记录信息。
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -37,22 +35,22 @@ Tez UI 是一个网页，可用于了解和调试在基于 Windows 的 HDInsight
 * 基于 Windows 的远程桌面客户端。
 
 ## <a name="understanding-tez"></a>了解 Tez
-Tez 是 Hadoop 中的一种可扩展数据处理框架，其处理速度比传统的 MapReduce 处理要快。 对于基于 Windows 的 HDInsight 群集来说，它是一个可以为 Hive 启用的可选引擎，启用时只需在 Hive 查询中使用以下命令即可：
+Tez 是 Hadoop 中的一种可扩展数据处理框架，其处理速度比传统的 MapReduce 处理要快。 可以将以下文本作为 Hive 查询的一部分，以便启用 Tez：
 
     set hive.execution.engine=tez;
 
-将工作提交到 Tez 时，Tez 会创建一个有向无环图 (DAG)，用于描述作业所需操作的执行顺序。 单独的操作称为顶点，每个顶点执行完整作业的一部分。 实际执行顶点所描述的工作称为完成任务，任务可以分布在群集的多个节点中。
+Tez 会创建一个有向无环图 (DAG)，用于描述作业所需操作的执行顺序。 单独的操作称为顶点，每个顶点执行完整作业的一部分。 实际执行顶点所描述的工作称为完成任务，任务可以分布在群集的多个节点中。
 
 ### <a name="understanding-the-tez-ui"></a>了解 Tez UI
-Tez UI 是一个网页，提供正在使用 Tez 运行的或此前使用 Tez 运行过的进程的信息。 它允许查看 Tez 生成的 DAG 及其在群集中的分布情况、计数器（例如任务和顶点所用内存）以及错误信息。 它可以为以下情况提供有用的信息：
+Tez UI 是一个网页，提供使用 Tez 的进程的信息。 它可以为以下情况提供有用的信息：
 
 * 监视长时间运行的进程、查看映射的进度以及精简任务。
 * 分析成功进程或失败进程的历史数据，了解处理过程的改进方式或其失败的原因。
 
 ## <a name="generate-a-dag"></a>生成 DAG
-Tez UI 包含数据的前提是使用 Tez 引擎的作业当前正在运行或过去曾经运行过。 简单的 Hive 查询通常在不使用 Tez 的情况下即可进行解析，但是，更复杂的需要进行筛选、分组、排序、联接等操作的查询则通常需要使用 Tez。
+如果使用 Tez 引擎的作业当前正在运行或过去曾经运行过，则 Tez UI 包含数据。 通常情况下，无需使用 Tez 即可解析简单的 Hive 查询。 进行筛选、分组、排序、联接等操作的更复杂查询需要 Tez。
 
-请使用以下步骤来运行 Hive 查询，该查询将通过 Tez 来执行。
+使用以下步骤来运行使用 Tez 的 Hive 查询。
 
 1. 在 Web 浏览器中导航到 https://CLUSTERNAME.azurehdinsight.net，其中“CLUSTERNAME”是 HDInsight 群集的名称。
 2. 从页面顶部的菜单中选择“Hive 编辑器”。 此时会显示包含以下示例性查询的页面。
@@ -75,7 +73,7 @@ Tez UI 包含数据的前提是使用 Tez 引擎的作业当前正在运行或�
 >
 >
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集。 从 HDInsight 边栏选项卡的顶部，选择“远程桌面”图标。 这会显示远程桌面边栏选项卡
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集。 从 HDInsight 边栏选项卡的顶部，选择“远程桌面”图标。 此链接会显示远程桌面边栏选项卡
 
     ![远程桌面图标](./media/hdinsight-debug-tez-ui/remotedesktopicon.png)
 2. 在远程桌面边栏选项卡中，选择“连接”以连接到群集头节点。 出现提示时，使用群集远程桌面用户的用户名和密码来验证连接。
@@ -88,14 +86,14 @@ Tez UI 包含数据的前提是使用 Tez 引擎的作业当前正在运行或�
    >
 3. 连接后，在远程桌面上打开 Internet Explorer，在浏览器的右上角选择齿轮图标，并选择“兼容性视图设置”。
 4. 在“兼容性视图设置”底部，清除“在兼容性视图中显示 Intranet 站点”和“使用 Microsoft 兼容性列表”所对应的复选框，并选择“关闭”。
-5. 在 Internet Explorer 中，浏览到 http://headnodehost:8188/tezui/#/。 此时会显示 Tez UI
+5. 在 Internet Explorer 中浏览到 http://headnodehost:8188/tezui/#/。 此时会显示 Tez UI
 
     ![Tez UI](./media/hdinsight-debug-tez-ui/tezui.png)
 
     在 Tez UI 加载以后，会看到群集中当前正在运行或过去曾经运行过的 DAG 的列表。 默认视图包括“DAG 名称”、“ID”、“提交者”、“状态”、“开始时间”、“结束时间”、“持续时间”、“应用程序 ID”和“队列”。 使用页面右侧的齿轮图标可以添加更多列。
 
-    如果只有一个条目，则该条目是针对你在前一部分运行的查询的。 如果有多个条目，可在 DAG 上方的字段中输入搜索条件，并按 **Enter** 进行搜索。
-6. 选择最新的 DAG 条目的 **DAG 名称**。 此时会显示有关 DAG 的信息，以及用于下载 JSON Zip 文件（其中包含有关 DAG 的信息）的选项。
+    如果只有一个条目，则该条目是前一部分运行的查询的结果。 如果有多个条目，可在 DAG 上方的字段中输入搜索条件，并按 **Enter** 进行搜索。
+6. 选择最新的 DAG 条目的 **DAG 名称**。 此链接会显示有关 DAG 的信息，以及用于下载 JSON Zip 文件（其中包含有关 DAG 的信息）的选项。
 
     ![DAG 详细信息](./media/hdinsight-debug-tez-ui/dagdetails.png)
 7. “DAG 详细信息”上方是多个可用于显示 DAG 相关信息的链接。
@@ -134,7 +132,7 @@ Tez UI 包含数据的前提是使用 Tez 引擎的作业当前正在运行或�
       > 与前一菜单一样，可以滚动“任务”、“任务尝试”、“源和接收器”的列显示，以便显示每个项的详细信息链接。
       >
       >
-11. 选择“任务”，并选择名为 **00_000000** 的项。 此时会显示此任务的“任务详细信息”。 在此屏幕中，可以查看“任务计数器”和“任务尝试”。
+11. 选择“任务”，并选择名为 **00_000000** 的项。 此链接会显示此任务的“任务详细信息”。 在此屏幕中，可以查看“任务计数器”和“任务尝试”。
 
     ![任务详细信息](./media/hdinsight-debug-tez-ui/taskdetails.png)
 

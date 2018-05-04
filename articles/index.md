@@ -6,11 +6,11 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ea272619638c8794a17bcd62f818cc9f230167ef
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cd33973a4786b722ff4eafbf6be53ef9fb509f48
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -527,7 +527,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/germany/">
                                                 <img src="media/index/azure-germany.svg" alt="" />
-                                                <p>Azure Germany</p>
+                                                <p>Azure 德国</p>
                                             </a>
                                         </li>
                                         <li>
@@ -580,7 +580,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/cdn/">
                                                 <img src="media/index/ContentDeliveryNetwork.svg" alt="" />
-                                                <p>内容传送网络</p>
+                                                <p>内容分发网络</p>
                                             </a>
                                         </li>
                                         <li>
@@ -619,7 +619,7 @@ Terraform </a>
                                         <li>
                                             <a href="https://docs.microsoft.com/bot-framework/bot-service-overview-introduction">
                                                 <img src="media/index/bot-service.svg" alt="" />
-                                                <p>Azure Bot 服务</p>
+                                                <p>Azure 机器人服务</p>
                                             </a>
                                         </li>
                                         <li>
@@ -881,7 +881,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/data-lake-analytics/">
                                                 <img src="media/index/Azure-Data-Lake-Analytics-COLOR.svg" alt="" />
-                                                <p>数据湖分析</p>
+                                                <p>Data Lake Analytics</p>
                                             </a>
                                         </li>
                                         <li>
@@ -966,7 +966,7 @@ Terraform </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://azure.microsoft.com/en-us/features/xamarin">
+                                            <a href="https://azure.microsoft.com/features/xamarin">
                                                 <img src="media/index/logo_xamarin.svg" alt="" />
                                                 <p>Xamarin</p>
                                             </a>
@@ -975,9 +975,9 @@ Terraform </a>
                                     <h3>物联网</h3>
                                     <ul>
                                         <li>
-                                            <a href="https://azure.microsoft.com/develop/iot/">
+                                            <a href="/azure/iot-fundamentals">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>IoT 开发人员中心</p>
+                                                <p>IoT 基础</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1090,7 +1090,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/cdn/">
                                                 <img src="media/index/ContentDeliveryNetwork.svg" alt="" />
-                                                <p>内容传送网络</p>
+                                                <p>内容分发网络</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1153,7 +1153,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/active-directory-domain-services">
                                                 <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                <p>用于域服务的 Azure Active Directory</p>
+                                                <p>Azure Active Directory 域服务</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1186,7 +1186,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/monitoring-and-diagnostics/">
                                                 <img src="media/index/AzureMonitoring.svg" alt="" />
-                                                <p>Azure 监视器</p>
+                                                <p>Azure Monitor</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1602,7 +1602,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>内容传送网络</h3>
+                                                    <h3>内容分发网络</h3>
                                                     <p>广泛的全球性覆盖，确保实现安全、可靠的内容交付</p>
                                                 </div>
                                             </div>
@@ -1954,7 +1954,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>内容传送网络</h3>
+                                                    <h3>内容分发网络</h3>
                                                     <p>广泛的全球性覆盖，确保实现安全、可靠的内容交付</p>
                                                 </div>
                                             </div>
@@ -2387,7 +2387,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>数据湖分析</h3>
+                                                    <h3>Data Lake Analytics</h3>
                                                     <p>简化大数据分析的分布式分析服务</p>
                                                 </div>
                                             </div>
@@ -2585,7 +2585,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Bot 服务</h3>
+                                                    <h3>Azure 机器人服务</h3>
                                                     <p>可按需缩放的智能无服务器 bot 服务</p>
                                                 </div>
                                             </div>
@@ -2637,7 +2637,7 @@ Terraform </a>
                         <a href="#iot">物联网</a>
                         <ul id="iot" class="cardsA">
                             <li>
-                                <a href="https://azure.microsoft.com/develop/iot/">
+                                <a href="/azure/iot-fundamentals">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2647,7 +2647,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>IoT 开发人员中心</h3>
+                                                    <h3>IoT 基础</h3>
                                                     <p>开始连接设备</p>
                                                 </div>
                                             </div>
@@ -3355,7 +3355,7 @@ Terraform </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://azure.microsoft.com/en-us/features/xamarin">
+                                <a href="https://azure.microsoft.com/features/xamarin">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3427,7 +3427,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure 监视器</h3>
+                                                    <h3>Azure Monitor</h3>
                                                     <p>针对任何 Azure 资源的高精度和实时监视数据</p>
                                                 </div>
                                             </div>
@@ -3701,7 +3701,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Microsoft Azure Germany</h3>
+                                                    <h3>Microsoft Azure 德国</h3>
                                                     <p>在符合德国法规及主要国际标准并受到数据受托人其他控制的情况下，构建和托管应用程序</p>
                                                 </div>
                                             </div>
@@ -3732,7 +3732,7 @@ Terraform </a>
                     </li>
                 </ul>
             </li>
-            <li>
+             <li>
                 <a href="#sdkstools">SDK/工具</a>
                 <ul id="sdkstools">
                     <li>
@@ -3754,8 +3754,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">获取用于 .NET 的 Azure 库</a>
-                                                </h3>
+面向 .NET 开发人员的 Azure </h3>
                                                 <p>
                                                     <a href="/dotnet/azure">入门</a>
                                                 </p>
@@ -3778,8 +3777,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/python/azure">获取用于 Python 的 Azure 库</a>
-                                                </h3>
+面向 Python 开发人员的 Azure </h3>
                                                 <p>
                                                     <a href="/python/azure">入门</a>
                                                 </p>
@@ -3802,8 +3800,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/nodejs/azure/">获取用于 Node.js 的 Azure 库</a>
-                                                </h3>
+面向 Node.js 开发人员的 Azure </h3>
                                                 <p>
                                                     <a href="/javascript/azure/">入门</a>
                                                 </p>
@@ -3826,8 +3823,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/java/azure/java-sdk-azure-install">获取用于 Java 的 Azure 库</a>
-                                                </h3>
+面向 Java 开发人员的 Azure </h3>
                                                 <p>
                                                     <a href="/java/azure">入门</a>
                                                 </p>
@@ -3845,47 +3841,17 @@ Terraform </a>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="media/index/azure_dev-5.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_gopher.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://rubygems.org/gems/azure">获取 Ruby SDK</a>
-                                                </h3>
+面向 Go 开发人员的 Azure </h3>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">入门</a>
+                                                    <a href="/go/azure/">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">API 参考</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=ruby">获取示例</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/develop/ruby/">了解详细信息</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cardSize">
-                                    <div class="cardPadding">
-                                        <div class="card">
-                                            <div class="cardImageOuter">
-                                                <div class="cardImage">
-                                                </div>
-                                            </div>
-                                            <div class="cardText">
-                                                <h3>
-                                                    <a href="/go/azure/">获取 Go SDK</a>
-                                                </h3>
-                                                <p>
-                                                    <a href="/go/azure/azure-sdk-go-qs-vm">入门</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">参考</a>
+                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">API 参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3903,13 +3869,9 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/rest/api/">REST 入门</a>
-                                                </h3>
+Azure REST API </h3>
                                                 <p>
-                                                    <a href="/rest/api">参考</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=rest">获取示例</a>
+                                                    <a href="/rest/api">API 参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3932,15 +3894,12 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-Azure CLI 2.0 </h3>
+Azure CLI </h3>
                                                 <p>
                                                     <a href="/cli/azure">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure/install-azure-cli">下载 Azure CLI 2.0</a>
-                                                </p>
-                                                <p>
-                                                    <a href="/cli/azure">参考</a>
+                                                    <a href="/cli/azure/reference-index">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3957,47 +3916,12 @@ Azure CLI 2.0 </h3>
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>PowerShell</h3>
+                                                <h3>Azure PowerShell</h3>
                                                 <p>
                                                     <a href="/powershell/azure/get-started-azureps">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/install-azurerm-ps">下载 PowerShell</a>
-                                                </p>
-                                                <p>
                                                     <a href="/powershell/azure/overview">参考</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cardSize">
-                                    <div class="cardPadding">
-                                        <div class="card">
-                                            <div class="cardImageOuter">
-                                                <div class="cardImage">
-                                                    <img src="media/index/azure_dev-7.svg" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="cardText">
-                                                <h3>
-Azure CLI </h3>
-                                                <p>
-                                                    <a href="/azure/xplat-cli-install?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">入门</a>
-                                                </p>
-                                                <p>
-                                                    <a href="http://aka.ms/linux-azure-cli">下载用于 Linux 的 Azure CLI</a>
-                                                </p>
-                                                <p>
-                                                    <a href="http://aka.ms/mac-azure-cli">下载用于 Mac 的 Azure CLI</a>
-                                                </p>
-                                                <p>
-                                                    <a href="http://aka.ms/webpi-azure-cli">下载用于 Windows 的 Azure CLI</a>
-                                                </p>
-                                                <p>
-                                                    <a href="/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4015,15 +3939,24 @@ Azure CLI </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="media/index/azure_dev-9.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/media/logos/logo_vs-code.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">用于 Azure 的 Visual Studio 工具</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-azureextensionpack">Visual Studio Code</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">下载</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice">应用服务</a>
+                                                </p>
+                                                 <p>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Azure Functions</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage">存储</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb">Cosmos DB</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4041,10 +3974,9 @@ Azure CLI </h3>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://github.com/Microsoft/DockerToolsDocs">Docker 工具</a>
-                                                </h3>
+Docker </h3>
                                                 <p>
-                                                    <a href="/dotnet/articles/core/docker/visual-studio-tools-for-docker">入门</a>
+                                                    <a href="/dotnet/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker">Visual Studio Tools for Docker</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780680">适用于 Visual Studio 的下载项</a>
@@ -4066,15 +3998,44 @@ Azure CLI </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="media/index/azure_dev-8.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/media/logos/logo_java.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">用于 Visual Studio 的 PowerShell 工具</a>
+Java 工具 </h3>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/java/api/overview/azure/maven/readme">Maven 插件</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/java/azure/java-azure-tools">IntelliJ 和 Eclipse</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://code.visualstudio.com/docs/languages/java">Visual Studio Code</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/azure_dev-2.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+                                                    <a href="https://www.visualstudio.com/vs/python">Python 工具</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">下载</a>
+                                                    <a href="https://docs.microsoft.com/visualstudio/python/python-in-visual-studio">Visual Studio</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://code.visualstudio.com/docs/languages/python">Visual Studio Code</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4133,30 +4094,6 @@ SQL 工具 </h3>
                                                 </p>
                                                 <p>
                                                     <a href="http://go.microsoft.com/fwlink/?LinkId=708343">适用于 Windows 的下载项</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cardSize">
-                                    <div class="cardPadding">
-                                        <div class="card">
-                                            <div class="cardImageOuter">
-                                                <div class="cardImage">
-                                                    <img src="media/index/azure_dev-2.svg" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="cardText">
-                                                <h3>
-                                                    <a href="https://www.visualstudio.com/vs/python">Python 工具</a>
-                                                </h3>
-                                                <p>
-                                                    <a href="https://docs.microsoft.com/visualstudio/python/python-in-visual-studio">Visual Studio 入门</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://code.visualstudio.com/docs/languages/python">Visual Studio Code 入门</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4278,7 +4215,7 @@ Azure 体系结构中心包含用于在 Microsoft Azure 上构建端到端解决
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>云设计模式</h3>
-                                                    <p>云的设计模式 每种模式描述了一个问题、用于解决该问题的模式，以及基于 Azure 的示例。</p>
+                                                    <p>云的设计模式。 每种模式描述了一个问题、用于解决该问题的模式，以及基于 Azure 的示例。</p>
                                                 </div>
                                             </div>
                                         </div>

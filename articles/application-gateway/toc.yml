@@ -1,0 +1,127 @@
+- name: 应用程序网关文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于应用程序网关
+      href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 定向 Web 流量 - 门户
+      href: quick-create-portal.md
+    - name: 定向 Web 流量 - PowerShell
+      href: quick-create-powershell.md
+    - name: 定向 Web 流量 - Azure CLI
+      href: quick-create-cli.md
+- name: 教程
+  items:
+    - name: 管理 Web 流量
+      href: tutorial-manage-web-traffic-cli.md
+    - name: 限制 Web 流量
+      href: tutorial-restrict-web-traffic-cli.md
+    - name: 使用 SSL 进行保护
+      href: tutorial-ssl-cli.md
+    - name: 托管多个站点
+      href: tutorial-multiple-sites-cli.md
+    - name: 按 URL 路由
+      href: tutorial-url-route-cli.md
+    - name: 重定向 Web 流量
+      href: tutorial-url-redirect-cli.md
+- name: 示例
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
+- name: 概念
+  items:
+    - name: Web 应用程序防火墙
+      href: waf-overview.md
+    - name: URL 路由
+      href: url-route-overview.md
+    - name: 多站点托管
+      href: multiple-site-overview.md
+    - name: SSL 终止
+      href: ssl-overview.md
+    - name: URL 重定向
+      href: redirect-overview.md
+- name: 操作指南
+  items:
+    - name: 创建应用程序网关
+      items:
+        - name: 模板
+          href: create-vmss-template.md
+        - name: Web 应用 - PowerShell
+          href: create-web-app.md
+    - name: 启用 SSL 终止 - 门户
+      href: create-ssl-portal.md
+    - name: 托管多个站点 - 门户
+      href: create-multiple-sites-portal.md
+    - name: 重定向外部流量
+      items:
+        - name: Azure PowerShell
+          href: redirect-external-site-powershell.md
+        - name: Azure CLI
+          href: redirect-external-site-cli.md
+    - name: 将 HTTP 重定向到 HTTPS
+      items:
+        - name: Azure PowerShell
+          href: redirect-http-to-https-powershell.md
+        - name: Azure CLI
+          href: redirect-http-to-https-cli.md
+    - name: 重定向内部流量
+      items:
+        - name: Azure PowerShell
+          href: redirect-internal-site-powershell.md
+        - name: Azure CLI
+          href: redirect-internal-site-cli.md
+    - name: 限制 Web 流量 - 门户
+      href: create-waf-portal.md
+    - name: 基于 URL 的路由 - 门户
+      href: create-url-route-portal.md
+    - name: 使用 Azure PowerShell 管理 Web 流量
+      href: tutorial-manage-web-traffic-powershell.md
+    - name: 使用 Azure PowerShell 限制 Web 流量
+      href: tutorial-restrict-web-traffic-powershell.md
+    - name: 使用 Azure PowerShell 的 SSL 终止
+      href: tutorial-ssl-powershell.md
+    - name: 使用 Azure PowerShell 托管多个站点
+      href: tutorial-multiple-sites-powershell.md
+    - name: 使用 Azure PowerShell 路由 Web 流量
+      href: tutorial-url-route-powershell.md
+    - name: 使用 Azure PowerShell 重定向 Web 流量
+      href: tutorial-url-redirect-powershell.md
+- name: 引用
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network/application-gateway
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/applicationgateway
+    - name: Azure 资源管理器
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: 资源
+  items:
+    - name: 创作模板
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 社区模板
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-application-gateway'
+    - name: 常见问题
+      href: application-gateway-faq.md

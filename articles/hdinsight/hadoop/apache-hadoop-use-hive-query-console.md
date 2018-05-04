@@ -1,8 +1,8 @@
 ---
-title: "在 HDInsight 中的查询控制台上使用 Hadoop Hive — Azure | Microsoft Docs"
-description: "了解如何在浏览器中使用基于 Web 的查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。"
+title: 在 HDInsight 中的查询控制台上使用 Hadoop Hive — Azure | Microsoft Docs
+description: 了解如何在浏览器中使用基于 Web 的查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 5ae074b0-f55e-472d-94a7-005b0e79f779
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: d6032b8a1e3d338b046c958804102aeb9efcf4ab
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 04a6ad67fec4145d8f9164743b08f9e105778091
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>使用查询控制台运行 Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -39,7 +37,7 @@ ms.lasthandoff: 11/03/2017
 * 现代 Web 浏览器
 
 ## <a id="run"></a>使用查询控制台运行 Hive 查询
-1. 打开 Web 浏览器并导航到 **https://CLUSTERNAME.azurehdinsight.net**，其中 **CLUSTERNAME**是 HDInsight 群集的名称。 出现提示时，输入在创建群集时使用的用户名和密码。
+1. 打开 Web 浏览器并导航到 **https://CLUSTERNAME.azurehdinsight.net**，其中“CLUSTERNAME”是 HDInsight 群集的名称。 出现提示时，输入在创建群集时使用的用户名和密码。
 2. 在页面顶部的链接中，选择“Hive 编辑器”。 此时会显示一个窗体，可以在其中输入要在 HDInsight 群集上运行的 HiveQL 语句。
 
     ![hive 编辑器](./media/apache-hadoop-use-hive-query-console/queryconsole.png)

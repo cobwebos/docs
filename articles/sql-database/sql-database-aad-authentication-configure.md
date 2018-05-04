@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: 6e6f925f325dff74544464d8a888aa6c3ed092d5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1f5f4a4ece116503c8ddb5eaa4998b5b1a407bb1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>使用 SQL 数据库、托管实例或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 04/19/2018
 以下两个过程演示如何使用 PowerShell 在 Azure 门户中为 Azure SQL Server 预配 Azure Active Directory 管理员。
 
 ### <a name="azure-portal"></a>Azure 门户
-1. 在 [Azure 门户](https://portal.azure.com/)右上角，单击相关连接以下拉包含可能 Active Directory 的列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与 Active Directory 关联的订阅链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL Server 托管的可能是 Azure SQL 数据库或 Azure SQL 数据仓库。）   
+1. 在 [Azure 门户](https://portal.azure.com/)右上角，单击相关连接以下拉包含可能 Active Directory 的列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL Server 托管的可能是 Azure SQL 数据库或 Azure SQL 数据仓库。）   
     ![选择-AD][8]   
     
 2. 在左侧标题中，选择“SQL Server”、选择你的“SQL Server”，然后在“SQL Server”页中，单击“Active Directory 管理员”。   
@@ -208,7 +208,7 @@ Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23
 Azure Active Directory 身份验证要求以包含的数据库用户的身份创建数据库用户。 基于 Azure AD 标识的包含的数据库用户是在 master 数据库中不具有登录名的数据库用户，它映射到与数据库相关联的 Azure AD 目录中的标识。 Azure AD 标识可以是单独的用户帐户，也可以是组。 有关包含的数据库用户的详细信息，请参阅[包含的数据库用户 - 使数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 > [!NOTE]
-> 不能使用门户创建数据库用户（管理员除外）。 RBAC 角色不会传播到 SQL Server、SQL 数据库或 SQL 数据仓库。 Azure RBAC 角色用于管理 Azure 资源，不会应用于数据库权限。 例如，**SQL Server 参与者**角色不会授予连接到 SQL 数据库或 SQL 数据仓库的访问权限。 必须使用 Transact-SQL 语句直接在数据库中授予访问权限。
+> 不能使用 Azure 门户创建数据库用户（管理员除外）。 RBAC 角色不会传播到 SQL Server、SQL 数据库或 SQL 数据仓库。 Azure RBAC 角色用于管理 Azure 资源，不会应用于数据库权限。 例如，**SQL Server 参与者**角色不会授予连接到 SQL 数据库或 SQL 数据仓库的访问权限。 必须使用 Transact-SQL 语句直接在数据库中授予访问权限。
 >
 
 若要创建基于 Azure AD 的包含的数据库用户（而不是拥有数据库的服务器管理员），请以至少具有 **ALTER ANY USER** 权限的用户身份使用 Azure AD 标识连接到数据库。 然后，使用以下 Transact-SQL 语法：
@@ -279,9 +279,10 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 ## <a name="active-directory-password-authentication"></a>Active Directory 密码身份验证
 
-在使用 Azure AD 托管域与 Azure AD 主体名称连接时使用此方法。 还可以将其用于无需访问该域的联合帐户，例如远程工作时。
+在使用 Azure AD 托管域与 Azure AD 主体名称连接时使用此方法。 还可以在某些情况下（例如，在进行远程工作时）将其用于联合帐户，无需访问域。
 
-如果从未与 Azure 联合的域中使用凭证登录到 Windows，或者基于初始域或客户端域通过 Azure AD 使用 Azure AD 身份验证，请使用此方法。
+对于本机联合身份验证 Azure AD 用户，请使用此方法通过 Azure AD 向 SQL DB/DW 进行身份验证。
+本机用户是指以显式方式在 Azure AD 中创建并使用用户名和密码进行身份验证的用户，而联合用户则是指其域与 Azure AD 联合的 Windows 用户。 当用户需要使用其 Windows 凭据（远程访问），但其本地计算机未加入域时，可以使用后一方法（用户和密码）。 在这种情况下，Windows 用户可以指定其域帐户和密码，然后使用联合凭据向 SQL DB/DW 进行身份验证。
 
 1. 启动 Management Studio 或 Data Tools 后，在“连接到服务器”（或“连接到数据库引擎”）对话框的“身份验证”框中，选择“Active Directory - 密码”。
 2. 在“用户名”框中，以 **username@domain.com** 格式键入 Azure Active Directory 用户名。这必须是来自 Azure Active Directory 的帐户或来自与 Azure Active Directory 联合的域的帐户。

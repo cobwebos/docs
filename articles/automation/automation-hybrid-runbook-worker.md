@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/04/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 8f212797decdd967154584927984bc0a4e58f4ba
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7065ec97e1e02dfb4ee873993caac584f6a63ba6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -148,6 +148,12 @@ Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任�
 1. 在 Azure 门户中，导航到自动化帐户。
 2. 在“设置”边栏选项卡中，选择“密钥”并记下“URL”和“主访问密钥”字段的值。 下一步需要用到此信息。
 3. 在管理员模式下打开 PowerShell 会话，并运行以下命令 - `Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>`。 可使用 **-Verbose** 开关获取删除过程的详细日志。
+
+若要从混合辅助角色组中删除过时的计算机，请使用可选的 `machineName` 参数。
+
+```powershell-interactive
+Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+```
 
 > [!NOTE]
 > 这不会从计算机中删除 Microsoft 监视代理，而只会删除混合 Runbook 辅助角色的功能和配置。

@@ -1,4 +1,26 @@
-
+---
+title: include 文件
+description: include 文件
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: d407b015699925a6a3ce6ef9108ace1e9900303f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="set-up-your-project"></a>设置项目
 
 本部分将创建新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“使用 Microsoft 登录”集成，使该应用程序能查询需要令牌的 Web API。
@@ -6,7 +28,7 @@
 使用本指南创建的应用程序将显示一个用于调用图的按钮、一个用于在屏幕上显示结果的区域和一个注销按钮。
 
 > [!NOTE]
-> 想要改为下载此示例的 Visual Studio 项目？ [下载项目](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)并跳到[配置步骤](#create-an-application-express)，在执行前配置代码示例。
+> 想要改为下载此示例的 Visual Studio 项目？ [下载一个项目](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)，并且在执行该项目之前跳到[配置步骤](#register-your-application)来配置代码示例。
 >
 
 若要创建应用程序，请执行以下操作：
@@ -51,6 +73,7 @@
     ```
 
 ## <a name="create-the-application-ui"></a>创建应用程序 UI
+
 本部分说明应用程序如何查询受保护的后端服务器，例如 Microsoft Graph。 
 
 项目模板中应自动创建了 *MainWindow.xaml* 文件。 打开此文件，然后将应用程序的 *\<Grid>* 节点替换为以下代码：

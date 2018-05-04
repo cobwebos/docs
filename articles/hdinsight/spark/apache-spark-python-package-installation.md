@@ -1,8 +1,8 @@
 ---
-title: "脚本操作：在 Azure HDInsight 上使用 Jupyter 安装 Python 包 | Microsoft Docs"
-description: "逐步说明如何使用脚本操作配置可在 HDInsight Spark 群集中使用的 Jupyter 笔记本，以使用外部 python 包。"
+title: 脚本操作：在 Azure HDInsight 上使用 Jupyter 安装 Python 包 | Microsoft Docs
+description: 逐步说明如何使用脚本操作配置可在 HDInsight Spark 群集中使用的 Jupyter 笔记本，以使用外部 python 包。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 21978b71-eb53-480b-a3d1-c5d428a7eb5b
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: cf4721e57d846db299ec6b8cdb7dc8cceb9d638f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4d9d1e0aaf6a1c0155f9ab74a5e63302635a0c11
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>使用脚本操作在 HDInsight 上的 Apache Spark 群集中安装 Jupyter 笔记本的外部 Python 包
 > [!div class="op_single_selector"]
@@ -55,7 +53,7 @@ ms.lasthandoff: 02/21/2018
 
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
 
-2. 在 Spark 群集边栏选项卡中，单击左窗格中的“脚本操作”。 运行用于在头节点和工作节点中安装 TensorFlow 的自定义操作。 可以从以下位置引用 bash 脚本：https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh 访问有关[如何使用自定义脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)的文档。
+2. 在 Spark 群集边栏选项卡中，单击左窗格中的“脚本操作”。 运行用于在头节点和工作节点中安装 TensorFlow 的自定义操作。 可以从 https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh 参考 bash 脚本；访问有关[如何使用自定义脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)的文档。
 
    > [!NOTE]
    > 群集中有两个 python 安装。 Spark 将使用位于 `/usr/bin/anaconda/bin` 中的 Anaconda python 安装。 通过 `/usr/bin/anaconda/bin/pip` 和 `/usr/bin/anaconda/bin/conda` 在自定义操作中引用该安装。

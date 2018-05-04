@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 829cedea9752fe41ad24427339d3f13c2f3e371a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>创建并管理 Azure SQL 数据库服务器和数据库
 
@@ -52,7 +52,7 @@ Azure 数据库逻辑服务器：
 - 为数据库访问提供连接终结点 (<serverName>.database.windows.net)
 - 连接到 master 数据库通过 DMV 提供对与包含资源相关的元数据的访问 
 - 提供应用于数据库的管理策略的作用域，即登录名、防火墙、审核、威胁检测等。 
-- 受父订阅中的配额限制（默认情况下，每个订阅六个服务器，[请单击此处了解订阅限制](../azure-subscription-service-limits.md)）
+- 受父订阅中的配额限制（默认情况下，每个订阅二十台服务器，[请单击此处了解订阅限制](../azure-subscription-service-limits.md)）
 - 提供所含资源的数据库配额和 DTU 或 vCore 配额范围（例如，45,000 个 DTU）
 - 是在包含资源上启用的功能的版本控制作用域 
 - 服务器级主体登录名可以管理服务器上的所有数据库
@@ -65,11 +65,11 @@ Azure 数据库逻辑服务器：
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>使用 Azure 门户管理 Azure SQL 服务器、数据库和防火墙
 
-可以提前创建 Azure SQL 数据库的资源组，也可以在创建服务器本身期间创建。 转到新 SQL 服务器表单的方法有多种，可以通过新建 SQL 服务器，也可以在新建数据库期间。 
+可以提前创建 Azure SQL 数据库的资源组，也可以在创建服务器本身期间创建。 
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>创建空白 SQL 服务器（逻辑服务器）
 
-若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库服务器（不含数据库），请转到空白 SQL 服务器（逻辑服务器）表单。  
+若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库服务器（不含数据库），请转到一个空白 SQL（逻辑）服务器表单。  
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>创建空白或示例 SQL 数据库
 
@@ -95,7 +95,7 @@ Azure 数据库逻辑服务器：
 >
 
 > [!TIP]
-> 有关 Azure 门户快速入门教程，请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-get-started-portal.md)。
+> 有关 Azure 门户快速入门，请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-get-started-portal.md)。
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>使用 PowerShell 管理 Azure SQL 服务器、数据库和防火墙
@@ -120,7 +120,7 @@ Azure 数据库逻辑服务器：
 | New-AzureRmSqlServerVirtualNetworkRule | 基于作为虚拟网络服务终结点的子网创建[*虚拟网络规则*](sql-database-vnet-service-endpoint-rule-overview.md)。 |
 
 > [!TIP]
-> 有关 PowerShell 快速入门教程，请参阅[使用 PowerShell 创建单一 Azure SQL 数据库](sql-database-get-started-portal.md)。 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)和[使用 PowerShell 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
+> 有关 PowerShell 快速入门，请参阅[使用 PowerShell 创建单一 Azure SQL 数据库](sql-database-get-started-portal.md)。 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)和[使用 PowerShell 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure SQL 服务器、数据库和防火墙
@@ -150,7 +150,7 @@ Azure 数据库逻辑服务器：
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|删除防火墙规则|
 
 > [!TIP]
-> 有关 Azure CLI 快速入门教程，请参阅[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-get-started-cli.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)和[使用 CLI 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
+> 有关 Azure CLI 快速入门，请参阅[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-get-started-cli.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)和[使用 CLI 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>使用 Transact-SQL 管理 Azure SQL 服务器、数据库和防火墙
@@ -181,7 +181,7 @@ Azure 数据库逻辑服务器：
 
 
 > [!TIP]
-> 有关在 Microsoft Windows 上使用 SQL Server Management Studio 的快速入门教程，请参阅 [Azure SQL 数据库：使用 SQL Server Management Studio 进行连接和数据查询](sql-database-connect-query-ssms.md)。 有关在 macOS、Linux 或 Windows 上使用 Visual Studio Code 的快速入门教程，请参阅 [Azure SQL 数据库：使用 Visual Studio Code 进行连接和数据查询](sql-database-connect-query-vscode.md)。
+> 有关在 Microsoft Windows 上使用 SQL Server Management Studio 的快速入门，请参阅 [Azure SQL 数据库：使用 SQL Server Management Studio 进行连接和数据查询](sql-database-connect-query-ssms.md)。 有关在 macOS、Linux 或 Windows 上使用 Visual Studio Code 的快速入门，请参阅 [Azure SQL 数据库：使用 Visual Studio Code 进行连接和数据查询](sql-database-connect-query-vscode.md)。
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>使用 REST API 管理 Azure SQL 服务器、数据库和防火墙
 

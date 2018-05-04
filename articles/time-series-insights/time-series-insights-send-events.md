@@ -1,6 +1,6 @@
 ---
-title: "如何向 Azure 时序见解环境发送事件 | Microsoft Docs"
-description: "本教程介绍如何创建和配置事件中心，并运行一个示例应用程序来推送要在 Azure 时序见解中显示的事件。"
+title: 如何向 Azure 时序见解环境发送事件 | Microsoft Docs
+description: 本教程介绍如何创建和配置事件中心，并运行一个示例应用程序来推送要在 Azure 时序见解中显示的事件。
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
@@ -11,12 +11,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 2c1b91fb87857eee8ca938be193b61e01bbdb886
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.date: 04/09/2018
+ms.openlocfilehash: b418d1114cf6b906dcdee46bbf7e094cbc4a0521
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>通过事件中心向时序见解环境发送事件
 本文介绍如何创建和配置事件中心并运行示例应用程序来推送事件。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在[时序见解](https://insights.timeseries.azure.com)中查看你的环境。
@@ -48,6 +48,18 @@ ms.lasthandoff: 11/16/2017
   ![选择共享访问策略，并单击“添加”按钮](media/send-events/shared-access-policy.png)  
 
   ![添加新的共享访问策略](media/send-events/shared-access-policy-2.png)  
+
+## <a name="add-time-series-insights-reference-data-set"></a>添加时序见解引用数据集 
+使用 TSI 中的参考数据将遥测数据上下文化。  该上下文在数据中添加含义，并使其更易于筛选和聚合。  TSI 在引入时联接参考数据，且无法以追溯方式联接此数据。  因此，在添加包含数据的事件源之前添加参考数据至关重要。  位置或传感器类型等数据是有用的维度，可将其联接到设备/标记/传感器 ID，以方便切片和筛选。  
+
+> [!IMPORTANT]
+> 上传历史数据时配置参考数据集非常关键。
+
+将历史数据批量上传到 TSI 时，请务必准备好参考数据。  请记住，如果事件源包含数据，则 TSI 会立即开始从联接的事件源读取数据。  在准备好参考数据之前等待将事件源联接到 TSI 非常有用，尤其是该事件源包含数据时。 或者，可以在准备好参考数据集之前，等待将数据推送到该事件源。
+
+若要管理参考数据，可以使用 TSI 资源管理器中基于 Web 的用户界面，或使用编程 C# API。 TSI 资源管理器提供视觉用户体验用于上传文件，或者以 JSON 或 CSV 格式粘贴现有的参考数据集。 借助 API，可以根据需要生成自定义应用。
+
+有关在时序见解中管理参考数据的详细信息，请参阅[参考数据文章](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)。
 
 ## <a name="create-time-series-insights-event-source"></a>创建时序见解事件源
 1. 如果尚未创建事件源，请按[这些说明](time-series-insights-how-to-add-an-event-source-eventhub.md)操作，以便创建事件源。
@@ -143,7 +155,7 @@ namespace Microsoft.Rdx.DataGenerator
     "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-#### <a name="output---1-event"></a>输出 - 1 个事件
+#### <a name="output---one-event"></a>输出 - 一个事件
 
 |id|timestamp|
 |--------|---------------|
@@ -165,7 +177,7 @@ namespace Microsoft.Rdx.DataGenerator
     }
 ]
 ```
-#### <a name="output---2-events"></a>输出 - 2 个事件
+#### <a name="output---two-events"></a>输出 - 两个事件
 
 |id|timestamp|
 |--------|---------------|
@@ -176,7 +188,7 @@ namespace Microsoft.Rdx.DataGenerator
 
 #### <a name="input"></a>输入
 
-具有嵌套 JSON 数组（其中包含两个 JSON 对象）的 JSON 对象。
+具有嵌套 JSON 数组（其中包含两个 JSON 对象）的 JSON 对象：
 ```json
 {
     "location":"WestUs",
@@ -193,7 +205,7 @@ namespace Microsoft.Rdx.DataGenerator
 }
 
 ```
-#### <a name="output---2-events"></a>输出 - 2 个事件
+#### <a name="output---two-events"></a>输出 - 两个事件
 请注意，“location”属性复制到每个事件。
 
 |location|events.id|events.timestamp|
@@ -236,12 +248,185 @@ namespace Microsoft.Rdx.DataGenerator
     ]
 }
 ```
-#### <a name="output---2-events"></a>输出 - 2 个事件
+#### <a name="output---two-events"></a>输出 - 两个事件
 
 |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|压强|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|振动|abs G|217.09|
+
+### <a name="json-shaping-strategies"></a>JSON 塑型策略
+让我们使用以下事件示例作为起点，然后探讨其相关问题和缓解这些问题的策略。
+
+#### <a name="payload-1"></a>有效负载 1：
+```json
+[{
+            "messageId": "LINE_DATA",
+            "deviceId": "FXXX",
+            "timestamp": 1522355650620,
+            "series": [{
+                        "chId": 3,
+                        "value": -3750.0
+                  }, {
+                        "chId": 13,
+                        "value": 0.58015072345733643
+                  }, {
+                        "chId": 11,
+                        "value": 800.0
+                  }, {
+                        "chId": 21,
+                        "value": 0.0
+                  }, {
+                        "chId": 14,
+                        "value": -999.0
+                  }, {
+                        "chId": 37,
+                        "value": 2.445906400680542
+                  }, {
+                        "chId": 39,
+                        "value": 0.0
+                  }, {
+                        "chId": 40,
+                        "value": 1.0
+                  }, {
+                        "chId": 1,
+                        "value": 1.0172575712203979
+                  }
+            ],
+            "EventProcessedUtcTime": "2018-03-29T20:36:21.3245900Z",
+            "PartitionId": 2,
+            "EventEnqueuedUtcTime": "2018-03-29T20:34:11.0830000Z",
+            "IoTHub": {
+                  "MessageId": "<17xxx2xx-36x0-4875-9x1x-x428x41x1x68>",
+                  "CorrelationId": "<x253x5xx-7xxx-4xx3-91x4-xxx3bx2xx0x3>",
+                  "ConnectionDeviceId": "AAAA-ZZ-001",
+                  "ConnectionDeviceGenerationId": "<123456789012345678>",
+                  "EnqueuedTime": "2018-03-29T20:34:10.7990000Z",
+                  "StreamId": null
+            }
+      }
+]
+ ```
+
+如果此事件数组作为有效负载推送到 TSI，此数组将会根据每个测量值存储为一个事件。 这可能会创建过多的事件，因此可能不是理想状态。 请注意，可以使用 TSI 中的参考数据将有意义的名称添加为属性。  例如，可以使用键属性 chId 创建参考数据集：  
+
+chId  Measure               Unit 24    Engine Oil Pressure   PSI 25    CALC Pump Rate        bbl/min
+
+有关在时序见解中管理参考数据的详细信息，请参阅[参考数据文章](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)。
+
+第一个有效负载的另一个问题是时间戳以毫秒为单位。 TSI 仅接受 ISO 格式的时间戳。 解决方法之一是保留 TSI 中的默认时间戳行为，即使用排队时间戳。
+
+作为上述有效负载的替代项，让我们看看另一个示例。  
+
+#### <a name="payload-2"></a>有效负载 2：
+```json
+{
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "STATE Engine State": 1,
+      "unit": "NONE"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "MPC_AAAA-ZZ-001",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "Well Head Px 1": -494162.8515625,
+      "unit": "psi"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "CALC Pump Rate": 0,
+      "unit": "bbl/min"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "Engine Fuel Pressure": 0,
+      "unit": "psi"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "Engine Oil Pressure": 0.58015072345733643,
+      "unit": "psi"
+}
+```
+
+与有效负载 1 一样，TSI 会将每个测量值存储为唯一事件。  显著的差别在于，此处 TSI 将会正确读取 ISO 格式的时间戳。  
+
+如果需要减少发送的事件数，可按如下所示发送信息。  
+
+#### <a name="payload-3"></a>有效负载 3：
+```json
+{
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "CALC Pump Rate": 0,
+      "CALC Pump Rate.unit": "bbl/min"
+      "Engine Oil Pressure": 0.58015072345733643,
+      "Engine Oil Pressure.unit": "psi"
+      "Engine Fuel Pressure": 0,
+      "Engine Fuel Pressure.unit": "psi"
+}
+```
+最终的建议如下。
+
+#### <a name="payload-4"></a>有效负载 4：
+```json
+{
+              "line": "Line01",
+              "station": "Station 11",
+              "gatewayid": "AAAA-ZZ-001",
+              "deviceid": "F12XX",
+              "timestamp": "2018-03-29T20:34:15.0000000Z",
+              "CALC Pump Rate": {
+                           "value": 0,
+                           "unit": "bbl/min"
+              },
+              "Engine Oil Pressure": {
+                           "value": 0.58015072345733643,
+                           "unit": "psi"
+              },
+              "Engine Fuel Pressure": {
+                           "value": 0,
+                           "unit": "psi"
+              }
+}
+```
+
+此示例演示平展 JSON 后的输出：
+
+```json
+{
+      "line": "Line01",
+      "station": "Station 11",,
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "CALC Pump Rate.value": 0,
+      "CALC Pump Rate.unit": "bbl/min"
+      "Engine Oil Pressure.value": 0.58015072345733643,
+      "Engine Oil Pressure.unit": "psi"
+      "Engine Fuel Pressure.value": 0,
+      "Engine Fuel Pressure.unit": "psi"
+}
+```
+
+我们可以在每个通道的自身 JSON 对象中为该通道定义不同的属性，同时仍将事件计数保持在较低水平。 此平展方法确实会占用更多的空间，必须考虑到这一点。 TSI 容量基于事件数和大小，以先达到的限制为准。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

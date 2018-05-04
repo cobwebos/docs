@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 489d1044de49c63ac7e1423708cc0638355ab1b5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5fcf33d3d54b118c1c25f1467a496da3644a2345
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>使用 PowerShell 创建 Azure SQL 数据库的虚拟服务终结点和规则
 
@@ -50,6 +50,9 @@ ms.lasthandoff: 03/16/2018
 - 已可以登录到 Azure，例如通过 [Azure 门户][http-azure-portal-link-ref-477t]。
 - 已可以运行 PowerShell 脚本。
 
+> [!NOTE]
+> 请确保已为想要添加到服务器的 Vnet/Subnet 打开服务终结点，否则创建 Vnet 防火墙规则将会失败。
+
 #### <a name="one-script-divided-into-four-chunks"></a>一个脚本划分为四个区块
 
 我们的演示 PowerShell 脚本被划分为更小的脚本序列。 这种划分可使学习更为轻松且灵活性更大。 脚本必须在其指示的序列中运行。 如果现在没有时间运行脚本，我们的实际测试结果已在脚本 4 后显示。
@@ -79,7 +82,7 @@ ms.lasthandoff: 03/16/2018
 ###########################################################
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 ###########################################################
 ##  Assignments to variables used by the later scripts.  ##
@@ -519,7 +522,7 @@ Completed script 4, the "Clean-Up".
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 # Assignments to variables used by the later scripts.
 # You can EDIT these values, if necessary.

@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>使用适用于 Azure 移动应用的 .NET 后端服务器 SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -46,7 +46,21 @@ ms.lasthandoff: 04/05/2018
 
 返回“开始使用”边栏选项卡，在“创建表 API”下面，选择“C#”作为“后端语言”。 单击“下载”，将压缩的项目文件解压缩到本地计算机，并在 Visual Studio 中打开解决方案。
 
-### <a name="create-a-net-backend-using-visual-studio-2013-and-visual-studio-2015"></a>使用 Visual Studio 2013 和 Visual Studio 2015 创建 .NET 后端
+### <a name="create-a-net-backend-using-visual-studio-2017"></a>使用 Visual Studio 2017 创建 .NET 后端
+
+通过 Visual Studio 安装程序安装 Azure 工作负荷，以从 Visual Studio 发布到 Azure 移动应用项目。 安装 SDK 后，请使用以下步骤创建 ASP.NET 应用程序：
+
+1. 打开“新建项目”对话框（从“文件” > “新建” > “项目...”）。
+2. 展开“Visual C#”，然后选择“Web”。
+3. 选择“ASP.NET Web 应用程序(.NET Framework)”。
+4. 填写项目名称。 然后单击“确定”。
+5. 从模板列表中选择“Azure 移动应用”。
+6. 单击“确定”创建解决方案。
+7. 右键单击解决方案资源管理器中的项目，并选择“发布...”，然后选择“应用服务”作为发布目标。
+8. 按照提示进行身份验证，然后选择新的或现有的 Azure 应用服务进行发布。
+
+### <a name="create-a-net-backend-using-visual-studio-2015"></a>使用 Visual Studio 2015 创建 .NET 后端
+
 安装[用于 .NET 的 Azure SDK][4]（2.9.0 版或更高版本），在 Visual Studio 中创建 Azure 移动应用项目。 安装 SDK 后，请使用以下步骤创建 ASP.NET 应用程序：
 
 1. 打开“新建项目”对话框（从“文件” > “新建” > “项目...”）。

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 1d8f8d903046f1d471f7abbe08a957b81522e391
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4f0d41dbc2438217cb4f382da7c44833379b9637
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>教程：将应用程序部署到 Azure 中的 Service Fabric 群集
 本教程是一个系列的第二部分，介绍如何将 Azure Service Fabric 应用程序直接从 Visual Studio 部署到 Azure 中的新群集。
@@ -34,6 +34,7 @@ ms.lasthandoff: 03/28/2018
 > [!div class="checklist"]
 > * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)
 > * 将应用程序部署到远程群集
+> * [向 ASP.NET Core 前端服务添加 HTTPS 终结点](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * [使用 Visual Studio Team Services 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [设置监视和诊断应用程序](service-fabric-tutorial-monitoring-aspnet.md)
 
@@ -103,4 +104,4 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 转到下一教程：
 > [!div class="nextstepaction"]
-> [使用 Visual Studio Team Services 设置持续集成](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> [启用 HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)

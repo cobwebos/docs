@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights SDK 中的筛选和预处理 | Microsoft Docs"
-description: "为 SDK 编写遥测处理器和遥测初始值设定项，以在将遥测发送到 Application Insights 门户之前筛选属性或将其添加到数据。"
+title: Azure Application Insights SDK 中的筛选和预处理 | Microsoft Docs
+description: 为 SDK 编写遥测处理器和遥测初始值设定项，以在将遥测发送到 Application Insights 门户之前筛选属性或将其添加到数据。
 services: application-insights
-documentationcenter: 
-author: beckylino
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 38a9e454-43d5-4dba-a0f0-bd7cd75fb97b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
-ms.author: borooji;mbullwin
-ms.openlocfilehash: 3f621010c1c36445ad35d81d96a2e5aefc46b10c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: mbullwin; borooji
+ms.openlocfilehash: 06f116fc5096fe4bda9c8433c3a33726acb67eea
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 

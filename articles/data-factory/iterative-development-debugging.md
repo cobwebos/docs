@@ -4,7 +4,7 @@ description: 了解如何在 Azure 门户中以迭代方式开发和调试数据
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 04/04/2018
+ms.date: 04/16/2018
 ms.topic: article
 ms.service: data-factory
 services: data-factory
@@ -12,11 +12,11 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: adb5ffd65d4b2b591abba5d4b3481b7ca08de579
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6a6fbd721e4f0af977fe7fa03adc4459de7611f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>使用 Azure 数据工厂进行迭代开发和调试
 
@@ -48,6 +48,14 @@ Azure 数据工厂允许以迭代方式开发和调试数据工厂管道。
 数据工厂还允许一直调试到管道画布中的某个特定活动。 只需要在活动上放置要测试到的一个断点，然后选择“调试”即可。 数据工厂会确保测试仅运行到管道画布上的断点活动。 如果不想测试整个管道，只想测试该管道内的一部分活动，则此“调试至”功能非常有用。
 
 ![管道画布上的断点](media/iterative-development-debugging/iterative-development-image4.png)
+
+若要设置断点，请选择管道画布上的元素。 “调试至”选项在元素的右上角显示为空心的红色圆圈。
+
+![在所选元素上设置断点之前](media/iterative-development-debugging/iterative-development-image5.png)
+
+选择“调试至”选项后，它将变为实心的红色圆圈，以指示已启用断点。
+
+![在所选元素上设置断点之后](media/iterative-development-debugging/iterative-development-image6.png)
 
 ## <a name="next-steps"></a>后续步骤
 [在 Azure 数据工厂中进行持续集成和部署](continuous-integration-deployment.md)

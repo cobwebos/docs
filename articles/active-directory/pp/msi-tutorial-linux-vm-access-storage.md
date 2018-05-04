@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5ae0e4e8149772d79190ee196cdd1c1bef344681
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4a1a2d0c40012649f6cd89193fd3f704f325e38a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-storage"></a>使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure 存储
 
@@ -96,10 +96,10 @@ ms.lasthandoff: 03/16/2018
 
 与系统分配的 MSI 不同，用户分配的 MSI 可由多个 Azure 资源上的客户端使用。 在本教程中，将其分配给单个 VM。 也可以将其分配给多个 VM。
 
-使用 [az vm assign-identity](/cli/azure/vm#az_vm_assign_identity) 将用户分配的 MSI 分配给 Linux VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 将上一步返回的 `id` 属性用于 `--identities` 参数值：
+使用 [az vm assign-identity](/cli/azure/vm#az-vm-identity-assign) 将用户分配的 MSI 分配给 Linux VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 将上一步返回的 `id` 属性用于 `--identities` 参数值：
 
 ```azurecli-interactive
-az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>"
+az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>"
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
@@ -189,7 +189,7 @@ az role assignment create --assignee <MSI PRINCIPALID> --role 'Reader' --scope "
 4. 现在使用访问令牌访问 Azure 存储，例如，读取先前上传到容器的示例文件的内容。 将 `<STORAGE ACCOUNT>`、`<CONTAINER NAME>` 和 `<FILE NAME>` 的值替换为先前指定的值，将 `<ACCESS TOKEN>` 替换为上一步返回的令牌。
 
    ```bash
-   curl https://<STORAGE ACCOUNT>.blob.core.windows.net/<CONTAINER NAME>/<FILE NAME>?api-version=2017-11-09 -H "Authorization: Bearer <ACCESS TOKEN>"
+   curl https://<STORAGE ACCOUNT>.blob.core.windows.net/<CONTAINER NAME>/<FILE NAME> -H "x-ms-version: 2017-11-09" -H "Authorization: Bearer <ACCESS TOKEN>"
    ```
 
    响应包含文件内容：

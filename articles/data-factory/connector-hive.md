@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 0b216b334f07a59f7c159bc804116f2190f3bf6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 758da9ceb86e26d373f71e4f89a47d67d1cefe2d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>使用 Azure 数据工厂从 Hive 复制数据 
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Hive 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -46,7 +46,7 @@ Hive 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Hive** | 是 |
 | host | Hive 服务器的 IP 地址或主机名；对于多台主机，将以“;”分隔（仅限启用了 serviceDiscoveryMode 时）。  | 是 |
-| 端口 | Hive 服务器用来侦听客户端连接的 TCP 端口。  | 否 |
+| 端口 | Hive 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
 | serverType | Hive 服务器的类型。 <br/>允许的值为：**HiveServer1**、**HiveServer2**、**HiveThriftServer** | 否 |
 | thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许的值为：**Binary**、**SASL**、**HTTP** | 否 |
 | authenticationType | 用于访问 Hive 服务器的身份验证方法。 <br/>允许的值为：**Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | 是 |
@@ -78,8 +78,7 @@ Hive 链接的服务支持以下属性：
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
-            },
-            "httpPath" : "gateway/sandbox/spark"
+            }
         }
     }
 }

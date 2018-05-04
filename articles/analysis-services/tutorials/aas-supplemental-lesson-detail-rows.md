@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services 教程补充课程：详细信息行 | Microsoft Docs"
-description: "介绍了在 Azure Analysis Services 教程中如何创建详细信息行表达式。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: Azure Analysis Services 教程补充课程：详细信息行 | Microsoft Docs
+description: 介绍了在 Azure Analysis Services 教程中如何创建详细信息行表达式。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 5a4dc7004245923fa6bda779114166ecf08d075f
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 02e9edd966e64c0bfa32e2b80f4c26f797e58582
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supplemental-lesson---detail-rows"></a>补充课程 - 详细信息行
 
@@ -27,11 +20,11 @@ ms.lasthandoff: 01/09/2018
   
 本课预计完成时间：**10 分钟**  
   
-## <a name="prerequisites"></a>系统必备  
+## <a name="prerequisites"></a>先决条件  
 本补充课程是表格建模教程的一部分。 在执行本补充课程中的任务之前，应当已完成了前面的所有课程，或者具有已完成的“Adventure Works Internet 销售”示例模型项目。  
   
 ## <a name="whats-the-issue"></a>问题出在哪里？
-在添加详细信息行表达式之前，让我们看一下我们的 InternetTotalSales 度量值的详细信息。
+在添加详细信息行表达式之前，让我们看一下 InternetTotalSales 度量值的详细信息。
 
 1.  在 SSDT 中，单击“模型”菜单 >“在 Excel 中分析”以打开 Excel 并创建一个空白数据透视表。
   
@@ -39,11 +32,11 @@ ms.lasthandoff: 01/09/2018
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-pivottable.png)
 
-3. 在数据透视表中，双击针对某个年份和区域名称的聚合值。 此处，双击针对澳大利亚和 2014 年的值。 此时将打开一个新的工作表，其中含有数据，但并无用处。
+3. 在数据透视表中，双击针对某个年份和区域名称的聚合值。 双击针对澳大利亚和 2014 年的值。 此时将打开一个新的工作表，其中含有数据，但并无用处。
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-sheet.png)
   
-此处，我们希望看到的是一个包含对 InternetTotalSales 度量值的聚合结果作出了贡献的数据列或数据行的表。 为实现此目标，我们可以将一个详细信息行表达式添加为该度量值的属性。
+此处的目标是一个包含对 InternetTotalSales 度量值的聚合结果作出了贡献的数据列和数据行的表。 为实现此目标，可以将一个详细信息行表达式添加为该度量值的属性。
 
 ## <a name="add-a-detail-rows-expression"></a>添加详细信息行表达式
 
@@ -80,6 +73,8 @@ ms.lasthandoff: 01/09/2018
 
   
 ## <a name="see-also"></a>另请参阅  
-[SELECTCOLUMNS 函数 (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)  
-[补充课程 - 动态安全性](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
-[补充课程 - 不规则层次结构](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
+
+[SELECTCOLUMNS 函数 (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
+[补充课程 - 动态安全性](../tutorials/aas-supplemental-lesson-dynamic-security.md)   
+[补充课程 - 不规则层次结构](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)   
+ 

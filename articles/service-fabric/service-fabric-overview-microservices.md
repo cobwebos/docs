@@ -1,11 +1,11 @@
 ---
-title: "Azure 上的微服务简介 | Microsoft Docs"
-description: "概述为何使用微服务方法构建云应用程序对于开发现代应用程序非常重要，以及 Azure Service Fabric 如何提供一个平台用于实现此目的。"
+title: Azure 上的微服务简介 | Microsoft Docs
+description: 概述为何使用微服务方法构建云应用程序对于开发现代应用程序非常重要，以及 Azure Service Fabric 如何提供一个平台用于实现此目的。
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: f69f594d058ba061cec116f87435c96280e19f93
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: d56b78a0274842c012e57f80f0c2fe5619a62962
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>为什么通过微服务的方法构建应用程序？
 作为软件开发人员，我们已知道思考如何将应用程序因数分解成组件部分。 这是对象导向、软件抽象和组件化的中心模式。 现在，这种因数分解往往以共享库和技术层之间的类与接口呈现。 通常采用一种分层方法，有后端存储、中间层业务逻辑和前端用户界面 (UI)。 过去几年来的*变化*是身为开发人员的我们，开始为业务驱动的云构建分布式应用程序。
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/19/2017
 
 这类单一式设计方法有一些优点。 设计较简单，组件之间通常通过进程间通信 (IPC) 调用，因此调用更快。 此外，每个人都只测试单一产品，人力资源运用更有效率。 缺点是分层之间紧密耦合，无法缩放单个组件。 如果需要执行修复或升级，则必须等待其他人完成其测试， 因此更难以发挥灵活性。
 
-微服务解决了这些缺点，更密切配合上述业务要求，但它们本身也都有优缺点。 微服务的优点是通常各自封装较为简单的业务功能，可独立增加或减少、测试、部署和管理。 微服务方法的一个重要优点是团队倾向于以业务方案为导向，而不是以分层方法建议的技术为导向。 实际上，较小的团队可以根据客户方案来开发微服务，并采用他们选择的任何技术。 
+微服务解决了这些缺点，更密切配合上述业务要求，但它们本身也都有优缺点。 微服务的优点是通常各自封装较为简单的业务功能，可独立缩放、测试、部署和管理。 微服务方法的一个重要优点是团队倾向于以业务方案为导向，而不是以分层方法建议的技术为导向。 实际上，较小的团队可以根据客户方案来开发微服务，并采用他们选择的任何技术。 
 
 换句话说，组织不需要为了维护微服务应用程序而将技术标准化。 拥有服务的单个团队可以根据团队的专业知识，或什么最适合解决问题，各自发挥所长。 实际上，最好有一组建议的技术，例如特定的 NoSQL 存储或 Web 应用程序框架。
 
@@ -181,7 +181,7 @@ Service Fabric 的目标是将使用微服务方法构建应用程序时的复�
 
 ## <a name="next-steps"></a>后续步骤
 * [Service Fabric 术语概述](service-fabric-technical-overview.md)
-* [微服务：由云支持的应用程序变革](https://azure.microsoft.com/en-us/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [微服务：由云支持的应用程序变革](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

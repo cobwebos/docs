@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/14/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f4825d7393b4507b1cd512f3e33c5637fea8ba2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 35636543ac4cbd260e9db2f6ca5d1548a7329858
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中分区和缩放
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 04/18/2018
 简而言之，分区在 Azure Cosmos DB 中的工作原理如下：
 
 * 使用 **T** RU/s（每秒请求数）吞吐量预配 Azure Cosmos DB 容器。
-* Azure Cosmos DB 在后台预配所需的分区来提供每秒请求数 **T**。 如果 **T** 高于每个分区的最大吞吐量 **t**，则 Azure Cosmos DB 会预配 **N = T/t** 个分区。
+* Azure Cosmos DB 在后台预配所需的分区来提供每秒请求数 **T**。 如果 **T** 高于每个分区的最大吞吐量 **t**，则 Azure Cosmos DB 会预配 **N = T/t** 个分区。 单分区的最大吞吐量的值由 Azure Cosmos DB 配置。此值根据总的预配吞吐量以及所使用的硬件配置来分配。 
 * Azure Cosmos DB 在 **N** 个分区之间均衡分配分区键哈希的键空间。 因此，每个分区（物理分区）托管 **1/N** 个分区键值（逻辑分区）。
 * 当物理分区 **p** 达到其存储限制时，Azure Cosmos DB 会将 **p** 无缝拆分为两个新的分区 **p1** 和 **p2**。 它会向每个新分区分发对应于大约一半键的值。 此拆分操作对应用程序完全不可见。 如果物理分区达到其存储限制，但物理分区中的所有数据属于同一个逻辑分区键，则不会发生该拆分操作。 这是因为单个逻辑分区键的所有数据必须驻留在同一个物理分区中。 在这种情况下，应采用其他分区键策略。
 * 当预配高于 **t*N** 的吞吐量时，Azure Cosmos DB 会拆分一个或多个分区，以支持更高的吞吐量。

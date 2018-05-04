@@ -8,6 +8,7 @@
 ## [DNS 常见问题](dns-faq.md)
 ## [使用专用 DNS 区域](private-dns-overview.md)
 ## [专用 DNS 方案](private-dns-scenarios.md)
+## [DNS 指标和警报](dns-alerts-metrics.md)
 
 
 # 入门
@@ -50,7 +51,7 @@
 ### [故障排除指南](dns-troubleshoot.md)
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=dns)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=dns)
 ## [Azure PowerShell](/powershell/module/azurerm.dns)
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)

@@ -3,17 +3,17 @@ title: 使用 Azure 策略来创建和管理策略以强制实施组织符合性
 description: 使用 Azure 策略强制执行标准、满足法规遵从性、审核需求、控制成本、维护安全和性能的一致性，并实施企业范围的设计原则。
 services: azure-policy
 keywords: ''
-author: bandersmsft
-ms.author: banders
-ms.date: 01/18/2018
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 04/19/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: a3d47abcbf41133b9bc7194fd97f9b66a70003ff
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0b6e77d080ce4e4483709b9a5e47dca21c22e1d9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
@@ -345,7 +345,7 @@ az policy definition list
    - 需要 SQL Server 版本 12.0
    - 在安全中心监视不受保护的 Web 应用程序。
    - 监视安全中心内的许可网络。
-   - 监视安全中心内列为允许列表的可能的应用。
+   - 监视安全中心内列为白名单的可能的应用。
    - 监视安全中心内未加密的 VM 磁盘。
 
    ![计划定义](media/create-manage-policy/initiative-definition-2.png)
@@ -372,7 +372,7 @@ az policy definition list
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>使用“排除”豁免不符合或遭拒绝的资源
 
-继续以上示例，在分配策略定义、要求使用 SQL server 版本 12.0 以后，通过其他版本创建的 SQL Server 将被拒绝。 本部分介绍如何通过请求排除解决拒绝尝试创建不同版本的 SQL Server 的问题。 排除实质上是阻止策略实施。 排除可以应用到资源组，或者你可以将排除范围缩小到单个资源。
+继续以上示例，在通过分配策略定义来要求使用 SQL Server 版本 12.0 以后，通过 12.0 以外的版本创建的 SQL Server 将被拒绝。 本部分介绍如何针对特定的资源来请求排除，以便解决拒绝尝试创建 SQL Server 的问题。 排除实质上是阻止策略实施。 在以下示例中，任何 SQL Server 版本都是允许的。 排除可以应用到资源组，或者你可以将排除范围缩小到单个资源。
 
 1. 选择左侧窗格中的“分配”。
 2. 浏览所有策略分配并打开“需要 SQL Server 版本 12.0”分配。
@@ -384,7 +384,7 @@ az policy definition list
 
 4. 单击“分配”。
 
-本部分中，通过请求对资源进行排除解决了尝试创建版本为 12.0 的 SQL Server 遭拒绝的问题。
+本部分中，通过请求对资源进行排除解决了尝试创建 SQL Server 遭拒绝的问题。
 
 ## <a name="clean-up-resources"></a>清理资源
 

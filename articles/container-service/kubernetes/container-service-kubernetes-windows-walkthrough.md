@@ -1,19 +1,19 @@
 ---
-title: "快速入门 - 适用于 Windows 的 Azure Kubernetes 群集"
-description: "快速学习在 Azure 容器服务中使用 Azure CLI 为 Windows 容器创建 Kubernetes 群集。"
+title: 快速入门 - 适用于 Windows 的 Azure Kubernetes 群集
+description: 快速学习在 Azure 容器服务中使用 Azure CLI 为 Windows 容器创建 Kubernetes 群集。
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: a7bb330657d14ac42cddf2e20fbb2e5a5b2a589b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 74ce913548fbcefdc441d0d2b772c864dacd4482
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>为 Windows 容器部署 Kubernetes 群集
 

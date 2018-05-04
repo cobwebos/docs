@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: cpendle
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8c284bb3637415186a12c63d4eeb088ab5f23e2e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f85a7b018085ce30550bec21fe41ca3f9253da80
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-location-based-services---supported-languages"></a>Azure Location Based Services - 支持的语言
 Azure Location Based Services 已经采用各种语言对服务进行了本地化。  下表提供了每项服务支持的语言代码。  
@@ -38,7 +38,7 @@ Azure Location Based Services 已经采用各种语言对服务进行了本地�
 | hr-HR      | 克罗地亚语               |       |    ✓   |         |                   |                |     ✓     |
 | cs-CZ      | 捷克语                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | da-DK      | 丹麦语                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| nl -NL     | 荷兰语                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| nl-NL      | 荷兰语                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | nl-BE      | 荷兰语(比利时)        |       |    ✓   |         |                   |                |     ✓     |
 | en         | 英语                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | et-EE      | 爱沙尼亚语               |       |    ✓   |         |         ✓         |                |     ✓     |

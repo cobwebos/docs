@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fd68658d2549e47f69005af4012c2c328e192631
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>教程：将现有的自定义 SSL 证书绑定到 Azure Web 应用
 
@@ -232,9 +232,17 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 在 Web 应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“TLS 版本”中，选择所需的最低 TLS 版本。
 
-![实施 HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+![强制实施 TLS 1.1 或 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 该操作完成后，你的应用将拒绝使用更低 TLS 版本的所有连接。
+
+## <a name="renew-certificates"></a>续订证书
+
+在删除某个绑定时，即使该绑定是基于 IP 的，入站 IP 地址也可能会更改。 在续订已进行基于 IP 的绑定的证书时，了解这一点尤为重要。 若要避免应用的 IP 地址更改，请按顺序执行以下步骤：
+
+1. 上传新证书。
+2. 将新证书绑定到所需的自定义域，不要删除旧证书。 此操作替换而不是删除旧的绑定。
+3. 删除旧证书。 
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
@@ -278,7 +286,7 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>公用证书（可选）
-可向自己的 Web 应用上传[公用证书](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)。 还可以对应用服务环境中的应用使用公用证书。 若要将证书存储在 LocalMachine 证书存储中，需要在应用服务环境中使用 Web 应用。 有关详细信息，请参阅[如何将公用证书配置到 Web 应用](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)。
+可以将[公用证书](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)上传到 Web 应用，使该应用能够访问需要证书身份验证的外部服务。  若要更详细地了解如何在应用中加载和使用公用证书，请参阅[在 Azure 应用服务的应用程序代码中使用 SSL 证书](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load)。  还可以对应用服务环境中的应用使用公用证书。 若要将证书存储在 LocalMachine 证书存储中，需要在应用服务环境中使用 Web 应用。 有关详细信息，请参阅[如何将公用证书配置到 Web 应用](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)。
 
 ![上传公用证书](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

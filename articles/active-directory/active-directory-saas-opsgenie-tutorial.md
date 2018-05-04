@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b0cd54c7750e85eb7b4e1ba6be309c585d5a7b4e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d57c80e8e965e15d92736ec482247f02064f6009
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>教程：Azure Active Directory 与 OpsGenie 的集成
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/29/2018
 
 **若要从库添加 OpsGenie，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -112,33 +112,17 @@ ms.lasthandoff: 03/29/2018
 
     在“登录 URL”文本框中，键入 URL：`https://app.opsgenie.com/auth/login`
 
-4. 单击“保存”按钮。
+4. 在“SAML 签名证书”部分上，单击”复制”按钮，复制**应用联合元数据 URL**并将其粘贴到记事本。
+
+    ![证书下载链接](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png)
+
+5. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_general_400.png)
 
-5. 在“OpsGenie 配置”部分，单击“配置 OpsGenie”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”。
+6. 在“OpsGenie 配置”部分，单击“配置 OpsGenie”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png)
-
-6. 若要生成**元数据 URL**，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpoint.png)
-     
-    d.单击“下一步”。 现在，转到“OpsGenie”的属性页，使用“复制”按钮复制“应用程序 ID”，并将它粘贴到记事本中。
- 
-    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 7. 打开另一个浏览器实例，并以管理员身份登录到 OpsGenie。
 
@@ -160,13 +144,9 @@ ms.lasthandoff: 03/29/2018
     
     a. 在“SAML 2.0 终结点”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
     
-    b. 在“元数据 URL:”文本框中，粘贴从 Azure 门户复制的“元数据 URL”值。
+    b. 在“元数据 URL:”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值。
     
     c. 单击“保存更改”。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -197,7 +177,7 @@ ms.lasthandoff: 03/29/2018
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="creating-a-opsgenie-test-user"></a>创建 OpsGenie 测试用户
 

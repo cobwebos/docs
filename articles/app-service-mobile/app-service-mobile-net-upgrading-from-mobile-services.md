@@ -1,11 +1,11 @@
 ---
-title: "从移动服务升级到 Azure 应用服务"
-description: "了解如何轻松将移动服务应用程序升级到应用服务移动应用"
+title: 从移动服务升级到 Azure 应用服务
+description: 了解如何轻松将移动服务应用程序升级到应用服务移动应用
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: f07b1d6037ff8ca16b673e6a1a235769355a9993
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 05041637aa5cbb044e6731208825f75edec83352
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>将现有 .NET Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
@@ -155,7 +155,7 @@ ms.lasthandoff: 01/04/2018
 | id |字符串（标记为必需） |远程存储中的主键 |
 | createdAt |日期 |（可选）映射到 createdAt 系统属性 |
 | updatedAt |日期 |（可选）映射到 updatedAt 系统属性 |
-| 版本 |字符串 |（可选）用于检测冲突，映射到版本 |
+| 版本 |String |（可选）用于检测冲突，映射到版本 |
 
 #### <a name="querying-system-properties"></a>查询系统属性
 在 Azure 移动服务中，默认不会发送系统属性，而是仅当使用查询字符串 `__systemProperties` 请求时才发送系统属性。 相反，在 Azure 移动应用中，**始终会选择**系统属性，因为它们是服务器 SDK 对象模型的一部分。
@@ -270,5 +270,5 @@ ms.lasthandoff: 01/04/2018
 [如何使用 .NET 服务器 SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[应用服务定价]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[应用服务定价]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET 服务器 SDK 概述]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

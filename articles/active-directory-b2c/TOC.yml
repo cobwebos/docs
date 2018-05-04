@@ -112,6 +112,10 @@
               href: active-directory-b2c-setup-qq-app.md
             - name: 微信
               href: active-directory-b2c-setup-wechat-app.md
+            - name: Azure AD（单租户）
+              href: active-directory-b2c-setup-oidc-azure-active-directory.md
+            - name: 自定义 OpenID Connect
+              href: active-directory-b2c-setup-oidc-idp.md
         - name: 设置自助密码重置
           href: active-directory-b2c-reference-sspr.md
         - name: 自定义 UI
@@ -159,6 +163,8 @@
                   href: active-directory-b2c-custom-setup-li-idp.md
                 - name: Twitter
                   href: active-directory-b2c-custom-setup-twitter-idp.md
+                - name: 多租户
+                  href: active-directory-b2c-setup-commonaad-custom.md
             - name: 配置 SAML 提供程序
               items:
                 - name: ADFS
@@ -195,12 +201,12 @@
                   href: active-directory-b2c-reference-password-change-custom.md
                 - name: 启用“使我保持登录状态”
                   href: active-directory-b2c-reference-kmsi-custom.md
-            - name: 跟踪用户行为
-              href: active-directory-b2c-custom-guide-eventlogger-appins.md
             - name: 故障排除
               items:
                 - name: 使用 Application Insights 收集日志
                   href: active-directory-b2c-troubleshoot-custom.md
+                - name: 跟踪用户行为
+                  href: active-directory-b2c-custom-guide-eventlogger-appins.md
         - name: 引用
           items:
             - name: 发行说明

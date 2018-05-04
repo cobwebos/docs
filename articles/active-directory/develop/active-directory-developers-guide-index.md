@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 03/08/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: ccad1f12e4f99074763f116596b4467e822d9f35
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fe5d344eaaecc40f6d1937943603eda0404a1ca9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="articles-in-the-azure-ad-developer-guide"></a>Azure AD 开发人员指南中的文章
 下面是 Azure Active Directory 开发人员指南中涉及的所有主题的列表。
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/09/2018
 | [Office 365 卖家仪表板](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)               | 如何在 O365 卖家仪表板上发布应用程序 |
 | [Visual Studio 连接服务](vs-active-directory-dotnet-getting-started.md)                                               | 如何在 Visual Studio 中使用 Azure AD 与 MVC 项目的集成 |
 | [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers) | 如何使用 ADFS 与本地 Active Directory 集成 |
-| [ADAL 错误处理最佳做法](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | 如何构建弹性错误处理和启用日志记录 |
+| [ADAL 错误处理最佳做法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | 如何构建弹性错误处理和启用日志记录 |
 
 ## <a name="reference"></a>引用
 以下文章提供了有关 REST 和身份验证库 API、协议、错误、代码示例和终结点的基础信息。

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 456a0c63881f6eb15e8166bee0105e25c951b536
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 20d08fa6aac5a55480d2c11eb6e4f746ff863f78
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-microsoft-azure-active-directory-single-sign-on-for-jira-52"></a>教程：Azure Active Directory 与 Microsoft Azure Active Directory single sign-on for JIRA 5.2 的集成
 
@@ -63,7 +63,8 @@ ms.lasthandoff: 03/16/2018
 *   JIRA 也支持 6.0 和 7.2.0。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA](./active-directory-saas-jiramicrosoft-tutorial.md)
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD 单一登录。
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Microsoft Azure Active Directory single sign-on for JIRA 5.2
 2. 配置和测试 Azure AD 单一登录
@@ -73,7 +74,7 @@ ms.lasthandoff: 03/16/2018
 
 **若要从库中添加 Microsoft Azure Active Directory single sign-on for JIRA 5.2，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -114,7 +115,7 @@ ms.lasthandoff: 03/16/2018
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_singlesign-onforjira5.2_samlbase.png)
 
 3. 在“Microsoft Azure Active Directory single sign-on for JIRA 5.2 域和 URL”部分执行以下步骤：
@@ -127,29 +128,13 @@ ms.lasthandoff: 03/16/2018
 
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
 
-    > [!NOTE] 
+    > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 JIRA 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
- 
-4. 若要生成**元数据** URL，请执行以下步骤：
 
-    a. 单击“应用注册”。
+4. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
     
-    ![配置单一登录](.\media\active-directory-saas-msaadssojira5.2-tutorial\appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](.\media\active-directory-saas-msaadssojira5.2-tutorial\endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](.\media\active-directory-saas-msaadssojira5.2-tutorial\endpoint.png)
+    ![配置单一登录](./media/active-directory-saas-msaadssojira5.2-tutorial/tutorial_metadataurl.png)
      
-    d. 现在，转到“Microsoft Azure Active Directory single sign-on for JIRA 5.2”的属性页，使用“复制”按钮复制“应用程序 ID”并将其粘贴到记事本中。
- 
-    ![配置单一登录](.\media\active-directory-saas-msaadssojira5.2-tutorial\appid.png)
-
-    e. 使用以下模式 `<FEDERATION METADATA DOCUMENT url>?appid=<application id>` 生成元数据 URL，并将此值复制到记事本，以备将来配置插件时使用。
-
 5. 单击“保存”按钮。
 
     ![配置单一登录](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_general_400.png)
@@ -178,8 +163,8 @@ ms.lasthandoff: 03/16/2018
 
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
- 
-    a. 在“元数据 URL”中，粘贴从 Azure AD 生成的元数据 URL，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
+
+    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
     b. 复制“标识符”、“回复 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中，“Microsoft Azure Active Directory single sign-on for JIRA 5.2 域和 URL”部分下的“标识符、回复 URL 和登录 URL”文本框内。
 
@@ -202,10 +187,6 @@ ms.lasthandoff: 03/16/2018
 
     > [!NOTE]
     > 有关安装和故障排除的详细信息，请访问 [MS JIRA SSO 连接器管理员指南](ms-confluence-jira-plugin-adminguide.md)，还可以参阅[常见问题解答](ms-confluence-jira-plugin-faq.md)以获得帮助
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -328,4 +309,3 @@ ms.lasthandoff: 03/16/2018
 [201]: .\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_general_201.png
 [202]: .\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_general_202.png
 [203]: .\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_general_203.png
-

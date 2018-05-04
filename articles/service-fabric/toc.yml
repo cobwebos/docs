@@ -246,11 +246,13 @@
       items:
         - name: 监视概述
           href: service-fabric-diagnostics-overview.md
-        - name: 群集事件
+        - name: 群集监视
           href: service-fabric-diagnostics-event-generation-infra.md
           items:
-            - name: 操作通道
-              href: service-fabric-diagnostics-event-generation-operational.md
+            - name: Service Fabric 事件
+              href: service-fabric-diagnostics-events.md
+            - name: EventStore 概述
+              href: service-fabric-diagnostics-eventstore.md
             - name: Reliable Services 事件
               href: service-fabric-reliable-services-diagnostics.md
             - name: Reliable Actors 事件
@@ -507,6 +509,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Azure 资源管理器
                   href: service-fabric-cluster-creation-via-arm.md
+                - name: 使用证书公用名称的群集
+                  href: service-fabric-create-cluster-using-cert-cn.md
             - name: 缩放
               items:
                 - name: 手动
@@ -519,6 +523,10 @@
               href: service-fabric-cluster-security-roles.md
             - name: 打开负载均衡器的端口
               href: create-load-balancer-rule.md
+            - name: 将群集证书更改为公用名称
+              href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+            - name: 以手动方式滚动更新群集证书
+              href: service-fabric-cluster-rollover-cert-cn.md
             - name: 管理群集证书
               href: service-fabric-cluster-security-update-certs-azure.md
             - name: 删除
@@ -567,6 +575,8 @@
               href: service-fabric-diagnostics-oms-containers.md
         - name: 监视群集
           items:
+            - name: 查询 EventStore API
+              href: service-fabric-diagnostics-eventstore-query.md
             - name: Windows Azure 诊断
               href: service-fabric-diagnostics-event-aggregation-wad.md
             - name: Linux Azure 诊断
@@ -630,6 +640,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST
       href: /rest/api/servicefabric
+    - name: Service Fabric 事件
+      href: service-fabric-diagnostics-event-generation-operational.md
     - name: 配置群集设置和结构升级策略
       href: service-fabric-cluster-fabric-settings.md
     - name: 服务模型 XML 架构

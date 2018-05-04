@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2ab79e3a6308d01d836a82f356f43eccb6af9791
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>结合使用 Draft 与 Azure 容器服务 (AKS)
 
@@ -33,10 +33,10 @@ Helm 也必须安装在 AKS 群集中。 有关安装 Helm 的详细信息，请
 
 ## <a name="install-draft"></a>安装 Draft
 
-Draft CLI 是一个在开发系统上运行的客户端，可让你将代码快速部署到 Kubernetes 群集中。 
+Draft CLI 是一个在开发系统上运行的客户端，可让你将代码快速部署到 Kubernetes 群集中。
 
-> [!NOTE] 
-> 如果已安装低于 0.12 版本的 Draft，应该先使用 `helm delete --purge draft` 从群集中删除 Draft，然后运行 `rm -rf ~/.draft` 删除本地配置。 如果在 MacOS 上操作，可以运行 `brew upgrade draft`。
+> [!NOTE]
+> 如果已安装低于 0.12 版本的 Draft，应该先使用 `helm delete --purge draft` 从群集中删除 Draft，然后运行 `rm -rf ~/.draft` 删除本地配置。 如果在 MacOS 上操作，请运行 `brew upgrade draft`。
 
 若要在 Mac 上安装 Draft CLI，请使用 `brew`。 有关更多安装选项，请参阅 [Draft 安装指南][install-draft]。
 
@@ -71,9 +71,9 @@ az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role 
 
 在 AKS 与 ACR 之间建立信任关系后，执行以下步骤，从 AKS 群集使用 ACR。
 1. 运行 `draft config set registry <registry name>.azurecr.io` 来设置 Draft 配置值 `registry`，其中，_&lt;registry name&lt;_ 是 ACR 注册表的名称。
-2. 运行 `az acr login -n <registry name>` 登录到 ACR 注册表。 
+2. 运行 `az acr login -n <registry name>` 登录到 ACR 注册表。
 
-由于现已在本地登录到 ACR，并在 AKS 与 ACR 之间建立了信任关系，因此，无需密码或机密即可推送到 AKS，或者从 ACR 提取到 AKS。 身份验证使用 Azure Active Directory 在 Azure 资源管理器级别发生。 
+由于现已在本地登录到 ACR，并在 AKS 与 ACR 之间建立了信任关系，因此，无需密码或机密即可推送到 AKS，或者从 ACR 提取到 AKS。 身份验证使用 Azure Active Directory 在 Azure 资源管理器级别发生。
 
 ## <a name="run-an-application"></a>运行应用程序
 

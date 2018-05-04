@@ -22,7 +22,7 @@
 ### [禁用 Stretch Database](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data)
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=sql-server-database)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=sql-server-database)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)

@@ -1,23 +1,23 @@
 ---
-title: "Azure Kubernetes 群集的服务主体"
-description: "在 AKS 中为 Kubernetes 群集创建和管理 Azure Active Directory 服务主体"
+title: Azure Kubernetes 群集的服务主体
+description: 在 AKS 中为 Kubernetes 群集创建和管理 Azure Active Directory 服务主体
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: get-started-article
-ms.date: 02/24/2018
+ms.date: 04/19/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a7c80b64a33f4f71c694f80bf3e68f39ecd01828
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 81f455668e81c2a6c21b66d85199da3f475e7265
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>使用 Azure 容器服务 (AKS) 的服务主体
 
-AKS 群集需要 [Azure Active Directory 服务主体][aad-service-principal]才能与 Azure API 交互。 需要服务主体才能动态管理相关资源，例如[用户定义路由][user-defined-routes]和[第 4 层 Azure 负载均衡器][azure-load-balancer-overview]。
+AKS 群集需要 [Azure Active Directory 服务主体][aad-service-principal]才能与 Azure API 交互。 需要服务主体才能动态创建和管理资源，例如 [Azure 负载均衡器][azure-load-balancer-overview]。
 
 本文介绍用于在 AKS 中为 Kubernetes 群集设置服务主体的不同选项。
 
@@ -82,8 +82,8 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --service-pri
 * 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 `https://www.contoso.org/example`）相关联。 应用程序的 URL 不一定是实际的终结点。
 * 指定服务主体的“客户端 ID”时，可以使用 `appId` 的值（如本文所示）或相应的服务主体 `name`（例如，`https://www.contoso.org/example`）。
 * 在 Kubernetes 群集的主 VM 和节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中。
-* 使用 `az aks create` 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/acsServicePrincipal.json` 文件中。
-* 删除由 `az aks create` 创建的 AKS 群集时，不会删除自动创建的服务主体。 可以使用 `az ad sp delete --id $clientID` 将其删除。
+* 使用 `az aks create` 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
+* 删除由 `az aks create` 创建的 AKS 群集时，不会删除自动创建的服务主体。 使用 `az ad sp delete --id $clientID` 将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

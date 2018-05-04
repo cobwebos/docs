@@ -14,20 +14,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 7fa93e138bc9feb66c200597119bb12dbaf00480
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 865243a10bd5043ca04c392c043b37772271f68f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>使用机器学习管理 PowerShell cmdlet 重新训练新的基于 Resource Manager 的 Web 服务
-重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。  
+重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。
 
 ## <a name="prerequisites"></a>先决条件
-必须设置训练实验和预测实验，如[以编程方式重新训练机器学习模型](retrain-models-programmatically.md)中所示。 
+必须设置训练实验和预测实验，如[以编程方式重新训练机器学习模型](retrain-models-programmatically.md)中所示。
 
 > [!IMPORTANT]
-> 预测实验必须部署为基于 Azure 资源管理器（全新）的机器学习 Web 服务。 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
+> 预测实验必须部署为基于 Azure 资源管理器（全新）的机器学习 Web 服务。
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
 
 有关部署 Web 服务的其他信息，请参阅[部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)。
 
@@ -48,7 +49,7 @@ ms.lasthandoff: 03/23/2018
 6. 使用新的 Web 服务定义更新 Web 服务
 
 ## <a name="sign-in-to-your-azure-resource-manager-account"></a>登录到 Azure 资源管理器帐户
-首先必须使用 [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 从 PowerShell 环境内登录到 Azure 帐户。
+首先必须使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet 从 PowerShell 环境中登录到 Azure 帐户。
 
 ## <a name="get-the-web-service-definition"></a>获取 Web 服务定义
 然后，通过调用 [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 获取 Web 服务。 Web 服务定义是 Web 服务训练模型的内部表示形式，它不能直接进行修改。 请确保为预测实验而不是训练实验检索 Web 服务定义。

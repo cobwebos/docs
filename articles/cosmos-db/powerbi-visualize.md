@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/19/2018
 ms.author: sngun
-ms.openlocfilehash: 7f884589cc198bed95a4a5fe51325a72cb799b69
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8a0f50ad6df1135e05cd69be78e6b7f7820f90c6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 的 Power BI 教程：使用 Power BI 连接器可视化数据
 [PowerBI.com](https://powerbi.microsoft.com/) 是一个在线服务，在此处可以创建和共享包含对你和组织来说很重要的数据的仪表板和报表。  Power BI Desktop 是一个专用的报表创作工具，使你能够从各种数据源检索数据、合并和转换数据、创建功能强大的报表和可视化效果以及将报表发布到 Power BI。  使用最新版本的 Power BI Desktop，现在可以通过 Power BI 的 Azure Cosmos DB 连接器连接到 Azure Cosmos DB 帐户。   
@@ -96,16 +96,16 @@ ms.lasthandoff: 04/20/2018
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 桌面连接窗口](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
 8. 如果是首次连接到此终结点，则会提示输入帐户密钥。 若使用自己的帐户，请从 Azure 门户的[“只读密钥”](manage-account.md#keys)边栏选项卡中的“主密钥”框中检索密钥。 对于演示帐户，该密钥为 `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`。 输入相应的密钥，然后单击“连接”。
    
-    我们建议在生成报表时使用只读密钥。  这会防止主密钥不必要地暴露于潜在的安全风险中。 只读密钥从 Azure 门户的 [密钥](manage-account.md#keys) 边栏选项卡中可用，或者可以使用上文提供的演示帐户信息。
+    我们建议在生成报表时使用只读密钥。  这可防止主密钥不必要地暴露于潜在的安全风险中。 只读密钥从 Azure 门户的 [密钥](manage-account.md#keys) 边栏选项卡中可用，或者可以使用上文提供的演示帐户信息。
    
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 帐户密钥](./media/powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
     
     > [!NOTE] 
     > 如果收到“未找到指定的数据库”的错误消息， 请参阅此 [Power BI 问题](https://community.powerbi.com/t5/Issues/Document-DB-Power-BI/idi-p/208200)中的变通办法步骤。
     
-9. 帐户成功连接后，将出现“导航器”。  “导航器”会在帐户下显示数据库的列表。
-10. 单击并展开将提供报表数据的数据库，如果正在使用演示帐户，请选择**volcanodb**。   
-11. 现在，选择要从其中检索数据的集合。 如果正在使用演示帐户，请选择 **volcano1**。
+9. 帐户成功连接后，将出现“导航器”窗格。  “导航器”会在帐户下显示数据库的列表。
+10. 单击并展开将提供报表数据的数据库，如果使用的是演示帐户，请选择 **volcanodb**。   
+11. 现在，选择包含要检索的数据的集合。 如果正在使用演示帐户，请选择 **volcano1**。
     
     预览窗格显示“记录”项的列表。  文档在 Power BI 中表示为一种“记录”类型。 同样，文档内部的嵌套 JSON 块也是“记录”。
     
@@ -115,40 +115,39 @@ ms.lasthandoff: 04/20/2018
 ## <a name="flattening-and-transforming-json-documents"></a>平展和转换 JSON 文档
 1. 切换到“Power BI 查询编辑器”窗口，其中“文档”列位于中心窗格。
    ![Power BI Desktop 查询编辑器](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
-2. 单击“文档”列标头右侧的扩展器。  将显示带有字段列表的上下文菜单。  选择报表所需的字段，例如，火山名称、国家/地区、区域、位置、海拔、类型、状态和已知的上次喷发，然后单击“确定”。
+2. 单击“文档”列标头右侧的扩展器。  将显示带有字段列表的上下文菜单。  选择报表所需的字段，例如，火山名称、国家/地区、区域、位置、海拔、类型、状态和已知的上次喷发。 取消选中“使用原始列名作为前缀”框，然后单击“确定”。
    
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 扩展文档](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
-3. 中心窗格以所选字段显示结果预览。
+3. 中央窗格显示其中包含所选字段的结果预览。
    
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 平铺结果](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
 4. 在我们的示例中，“位置”属性在文档中为 GeoJSON 块。  正如你所看到的那样，“位置”在 Power BI Desktop 中表示为一种“记录”类型。  
-5. 单击“位置”列标头右侧的扩展器。  将显示具有类型和坐标字段的上下文菜单。  选择坐标字段并单击“确定”。
+5. 单击 Document.Location 列标题右侧的扩展器。  此时会显示包含类型和坐标字段的上下文菜单。  让我们选择坐标字段，确保未选中“使用原始列名作为前缀”，然后单击“确定”。
    
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 位置记录](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
 6. 中心窗格现在显示“列表”类型的坐标列。  如教程的开头所示，本教程中的 GeoJSON 数据是“点”类型，纬度值和经度值记录在坐标数组中。
    
     coordinates[0] 元素表示经度，coordinates[1] 表示纬度。
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 坐标列表](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
-7. 若要平展坐标数组，我们需创建名为“经纬度”的自定义列。  选择“添加列”功能区并单击“添加自定义列”。  应出现“添加自定义列”窗口。
-8. 为新列提供一个名称，例如经纬度。
+7. 若要平展坐标数组，请创建一个名为 LatLong 的**自定义列**。  选择“添加列”功能区并单击“自定义列”。  此时将显示“自定义列”窗口。
+8. 为新列提供一个名称，例如 LatLong。
 9. 接下来，为新列指定自定义公式。  对于我们的示例，我们将如下所示，使用以下公式连接逗号分隔的纬度值和经度值：`Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 单击“确定”。
    
     有关数据分析表达式 (DAX)（包括 DAX 函数）的详细信息，请访问 [Power BI Desktop 中的 DAX Basic](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)。
    
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 添加自定义列](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
-10. 现在，中心窗格会显示使用逗号分隔的纬度值和经度值填充的新“经纬度”列。
+
+10. 现在，中央窗格将显示填充了值的新 LatLong 列。
     
-    ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 自定义经纬度列](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
+    ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 自定义 LatLong 列](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
     
     如果新的列中出现“错误”，请确保“查询设置”中应用的步骤与下图匹配：
     
     ![应用的步骤应该为“源”、“导航”、“展开的文档”、“展开的文档位置”、“添加自定义”](./media/powerbi-visualize/power-bi-applied-steps.png)
     
     如果步骤不同，请删除额外的步骤并再次尝试添加自定义列。 
-11. 此时我们已经完成了将数据平展到表格格式中。  可以利用查询编辑器中所有可用的功能在 Cosmos DB 中形成和转换数据。  如果正在使用示例，可以通过在“主页”功能区上更改“数据类型”，将“海拔”数据类型更改为“整数”。
-    
-    ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 更改列类型](./media/powerbi-visualize/power_bi_connector_pbichangetype.png)
-12. 单击“关闭并应用”以保存数据模型。
+
+11. 单击“关闭并应用”以保存数据模型。
     
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 关闭和应用](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
 
@@ -160,21 +159,22 @@ ms.lasthandoff: 04/20/2018
 
 在报表视图中，应找到：
 
-1. “字段”窗格中存在可用于报表的带有字段的数据模型列表。
+1. 在“字段”窗格中，可以看到包含可用于报表的字段的数据模型的列表。
 2. “可视化”窗格。 一个报表可以包含单个或多个可视化效果。  从“可视化”窗格中选取所需视觉对象类型。
-3. 可在“报表”画布中为报表生成视觉效果。
+3. 在“报表”画布中，可以为报表生成视觉效果。
 4. “报表”页。 可以在 Power BI Desktop 中添加多个报表页。
 
 下面将演示创建简单交互地图视图报表的基本步骤。
 
 1. 对于我们的示例，我们将创建显示每座火山的位置的地图视图。  在“可视化”窗格中，单击如上屏幕截图中突出显示的“地图”视觉对象类型。  应该会看到绘制在“报表”画布上的地图视觉对象类型。  “可视化”窗格也应该显示一组与地图视觉对象类型相关的属性。
-2. 现在，从“字段”窗格将经纬度字段拖放到“可视化”窗格中的“位置”属性。
+2. 现在，从“字段”窗格中将 LatLong 字段拖放到“可视化”窗格中的“位置”属性。
 3. 接下来，将“火山名称”字段拖放到“图例”属性。  
 4. 然后，将“海拔”字段拖放到“大小”属性。  
 5. 现在，你应会看到该地图视觉对象显示有一组表示每座火山位置的气泡，并用气泡的大小对应火山的海拔。
 6. 此时已成功创建了基本报表。  可以通过添加更多可视化效果来进一步自定义该报表。  在本例中，我们添加了火山类型切片器以使报表具有交互性。  
    
     ![Azure Cosmos DB 的 Power BI 教程完成时最终 Power BI Desktop 报表的屏幕截图](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
+7. 在“文件”菜单中，单击“保存”并将该文件保存为 PowerBITutorial.pbix。
 
 ## <a name="publish-and-share-your-report"></a>发布和共享报表
 要共享报表，必须在 PowerBI.com 中拥有帐户。
@@ -201,26 +201,26 @@ ms.lasthandoff: 04/20/2018
 
 创建仪表板之前也可以临时修改报表。 但是，建议使用 Power BI Desktop 执行修改并将报表重新发布到 PowerBI.com。
 
-## <a name="refresh-data-in-powerbicom"></a>在 PowerBI.com 中刷新数据
-刷新数据有两种方法，临时和计划。
+<!-- ## Refresh data in PowerBI.com
+There are two ways to refresh data, ad hoc and scheduled.
 
-对于临时刷新，只需单击“数据集”旁的省略号 (…)，例如 PowerBITutorial。 应该会出现一个包括“立即刷新”的操作列表。 单击“立即刷新”刷新数据。
+For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![PowerBI.com 中“立即刷新”的屏幕截图](./media/powerbi-visualize/power-bi-refresh-now.png)
+![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
 
-对于计划刷新，请执行以下操作。
+For a scheduled refresh, do the following.
 
-1. 单击操作列表中的“计划刷新”。 
+1. Click **Schedule Refresh** in the action list. 
 
-    ![PowerBI.com 中计划刷新的屏幕截图](./media/powerbi-visualize/power-bi-schedule-refresh.png)
-2. 在“设置”页上，展开“数据源凭据”。 
-3. 单击“编辑凭据”。 
+    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+2. In the **Settings** page, expand **Data source credentials**. 
+3. Click on **Edit credentials**. 
    
-    出现配置弹出窗口。 
-4. 输入密钥连接到该数据集的 Azure Cosmos DB 帐户，并单击“登录”。 
-5. 展开“计划刷新”并设置刷新数据集的计划。 
-6. 单击“应用”，就可完成计划刷新设置。
-
+    The Configure popup appears. 
+4. Enter the key to connect to the Azure Cosmos DB account for that data set, then click **Sign in**. 
+5. Expand **Schedule Refresh** and set up the schedule you want to refresh the dataset. 
+6. Click **Apply** and you are done setting up the scheduled refresh.
+-->
 ## <a name="next-steps"></a>后续步骤
 * 有关 Power BI 的详细信息，请参阅 [Power BI 入门](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
 * 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 文档登陆页](https://azure.microsoft.com/documentation/services/cosmos-db/)。

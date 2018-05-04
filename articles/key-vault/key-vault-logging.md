@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e7dcb3778de31258f4aa3c946ffa214d87cb858a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-logging"></a>Azure 密钥保管库日志记录
 在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
@@ -235,32 +235,32 @@ ms.lasthandoff: 04/19/2018
 | operationName | REST API 命令 |
 | --- | --- |
 | 身份验证 |通过 Azure Active Directory 终结点 |
-| VaultGet |[获取有关密钥保管库的信息](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx) |
-| VaultPut |[创建或更新密钥保管库](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx) |
-| VaultDelete |[删除密钥保管库](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx) |
+| VaultGet |[获取有关密钥保管库的信息](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
+| VaultPut |[创建或更新密钥保管库](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| VaultDelete |[删除密钥保管库](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
 | VaultPatch |[更新密钥保管库](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultList |[列出资源组中的所有密钥保管库](https://msdn.microsoft.com/en-us/library/azure/mt620027.aspx) |
-| KeyCreate |[创建密钥](https://msdn.microsoft.com/en-us/library/azure/dn903634.aspx) |
-| KeyGet |[获取有关密钥的信息](https://msdn.microsoft.com/en-us/library/azure/dn878080.aspx) |
-| KeyImport |[将密钥导入保管库](https://msdn.microsoft.com/en-us/library/azure/dn903626.aspx) |
-| KeyBackup |[备份密钥](https://msdn.microsoft.com/en-us/library/azure/dn878058.aspx)。 |
-| KeyDelete |[删除密钥](https://msdn.microsoft.com/en-us/library/azure/dn903611.aspx) |
-| KeyRestore |[还原密钥](https://msdn.microsoft.com/en-us/library/azure/dn878106.aspx) |
-| KeySign |[使用密钥签名](https://msdn.microsoft.com/en-us/library/azure/dn878096.aspx) |
-| KeyVerify |[使用密钥验证](https://msdn.microsoft.com/en-us/library/azure/dn878082.aspx) |
-| KeyWrap |[包装密钥](https://msdn.microsoft.com/en-us/library/azure/dn878066.aspx) |
-| KeyUnwrap |[解包密钥](https://msdn.microsoft.com/en-us/library/azure/dn878079.aspx) |
-| KeyEncrypt |[使用密钥加密](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx) |
-| KeyDecrypt |[使用密钥解密](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx) |
-| KeyUpdate |[更新密钥](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx) |
-| KeyList |[列出保管库中的密钥](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx) |
-| KeyListVersions |[列出密钥的版本](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx) |
-| SecretSet |[创建机密](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx) |
-| SecretGet |[获取机密](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx) |
-| SecretUpdate |[更新机密](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx) |
-| SecretDelete |[删除机密](https://msdn.microsoft.com/en-us/library/azure/dn903613.aspx) |
-| SecretList |[列出保管库中的机密](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
-| SecretListVersions |[列出机密的版本](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
+| VaultList |[列出资源组中的所有密钥保管库](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
+| KeyCreate |[创建密钥](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| KeyGet |[获取有关密钥的信息](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
+| KeyImport |[将密钥导入保管库](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
+| KeyBackup |[备份密钥](https://msdn.microsoft.com/library/azure/dn878058.aspx)。 |
+| KeyDelete |[删除密钥](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| KeyRestore |[还原密钥](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
+| KeySign |[使用密钥签名](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
+| KeyVerify |[使用密钥验证](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| KeyWrap |[包装密钥](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| KeyUnwrap |[解包密钥](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
+| KeyEncrypt |[使用密钥加密](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
+| KeyDecrypt |[使用密钥解密](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| KeyUpdate |[更新密钥](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| KeyList |[列出保管库中的密钥](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
+| KeyListVersions |[列出密钥的版本](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
+| SecretSet |[创建机密](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
+| SecretGet |[获取机密](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| SecretUpdate |[更新机密](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
+| SecretDelete |[删除机密](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
+| SecretList |[列出保管库中的机密](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
+| SecretListVersions |[列出机密的版本](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
 ## <a id="loganalytics"></a>使用 Log Analytics
 

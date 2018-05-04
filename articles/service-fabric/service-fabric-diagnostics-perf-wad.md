@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: b2b740c2ececba2c3f95f8fbfbfb55e7f4811112
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a9e8ef7243fcef990dae6ddc6509cd31b3f36e3d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
 
@@ -44,7 +44,9 @@ ms.lasthandoff: 03/28/2018
 
     `scheduledTransferPeriod` 定义所收集的计数器值被传输到 Azure 存储表和任何已配置接收器的频率。 
 
-3. 添加要收集到上一步中声明的 `PerformanceCounterConfiguration` 中的性能计数器。 要收集的每个计数器都通过 `counterSpecifier`、`sampleRate`、`unit`、`annotation` 和任何相关的 `sinks` 来定义。 下面是一个配置示例，其中有总处理器时间（CPU 处理操作所用的时间）的计数器和每秒 Service Fabric 执行组件方法调用数的计数器（Service Fabric 的自定义性能计数器之一）。 若要获取 Service Fabric 自定义性能计数器的完整列表，请参考 [Reliable Actor 性能计数器](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)和 [Reliable Service 性能计算器](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)。
+3. 添加要收集到上一步中声明的 `PerformanceCounterConfiguration` 中的性能计数器。 要收集的每个计数器都通过 `counterSpecifier`、`sampleRate`、`unit`、`annotation` 和任何相关的 `sinks` 来定义。
+
+下面是一个配置示例，其中有总处理器时间（CPU 处理操作所用的时间）的计数器和每秒 Service Fabric 执行组件方法调用数的计数器（Service Fabric 的自定义性能计数器之一）。 若要获取 Service Fabric 自定义性能计数器的完整列表，请参考 [Reliable Actor 性能计数器](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)和 [Reliable Service 性能计算器](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)。
 
  ```json
  "WadCfg": {
@@ -112,9 +114,8 @@ ms.lasthandoff: 03/28/2018
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. 在升级完成回滚后（需要 15-45 分钟），WAD 应收集性能计数器，并将其发送到与群集关联的存储帐户中的 WADPerformanceCountersTable 表中。
+5. 在升级完成回滚后（需要 15-45 分钟），WAD 应收集性能计数器，并将其发送到与群集关联的存储帐户中的 WADPerformanceCountersTable 表中。 通过[将 AI 接收器添加到资源管理器模板](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)，查看 Application Insights 中的性能计数器。
 
 ## <a name="next-steps"></a>后续步骤
-* 通过[将 AI 接收器添加到资源管理器模板](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)，查看 Application Insights 中的性能计数器
 * 收集群集的更多性能计数器。 有关应收集的计数器列表，请参阅[性能指标](service-fabric-diagnostics-event-generation-perf.md)。
 * [将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../virtual-machines/windows/extensions-diagnostics-template.md)，以进一步修改 `WadCfg`，包括配置向其发送诊断数据的其他存储帐户。

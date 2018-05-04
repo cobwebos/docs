@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 99595eb1f9a1eab1db51796632d58df35bf45be6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4a303db638b8ea304db5cba4075b0b102eedd0f3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-net-sdk-to-access-azure-mobile-engagement-service-apis"></a>使用.NET SDK 访问 Azure Mobile Engagement 服务 API
 > [!IMPORTANT]
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/30/2018
 Azure Mobile Engagement 公开一组 API，以便管理设备、市场宣传/推送市场活动等。要与这些 API 进行交互，我们还提供了一个 [Swagger 文件](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)，可以与为首选语言生成 SDK 的工具一起使用。 我们建议使用 [AutoRest](https://github.com/Azure/AutoRest) 工具从我们提供的 Swagger 文件生成 SDK。
 
 > [!NOTE]
-> Azure Mobile Engagement 服务将于 2018 年 3 月停用，且当前仅向现有客户提供。 有关详细信息，请参阅 [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)。
+> Azure Mobile Engagement 服务将于 2018 年 3 月停用，且当前仅向现有客户提供。 有关详细信息，请参阅 [Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/)。
 
 我们以类似的方式创建了一个 .NET SDK，以允许使用一个 C# 包装与这些 API 进行交互，并且不需要执行身份验证令牌协商，也不必自动刷新。  
 
@@ -54,7 +54,7 @@ Azure Mobile Engagement 公开一组 API，以便管理设备、市场宣传/推
         const string SUBSCRIPTION_ID = "<Your Subscription Id>";
    
         // This is the Azure Resource group concept for grouping together resources 
-        //  see here: https://azure.microsoft.com/en-us/documentation/articles/resource-group-portal/
+        //  see here: https://azure.microsoft.com/documentation/articles/resource-group-portal/
         const string RESOURCE_GROUP = "";
    
         // For Mobile Engagement operations
@@ -104,7 +104,7 @@ Azure Mobile Engagement 公开一组 API，以便管理设备、市场宣传/推
         private async static Task CreateCampaign()
         {
             //  Refer to the Announcement Campaign format from here - 
-            //      https://msdn.microsoft.com/en-us/library/azure/mt683751.aspx
+            //      https://msdn.microsoft.com/library/azure/mt683751.aspx
             // Make sure you are passing all the non-optional parameters
             Campaign parameters = new Campaign(
                 name:"WelcomeCampaign",
@@ -114,7 +114,7 @@ Azure Mobile Engagement 公开一组 API，以便管理设备、市场宣传/推
                 deliveryTime:"any"
                 );
    
-            // Refer to the Campaign Kinds from here - https://msdn.microsoft.com/en-us/library/azure/mt683742.aspx
+            // Refer to the Campaign Kinds from here - https://msdn.microsoft.com/library/azure/mt683742.aspx
             CampaignStateResult result = 
                 await engagementClient.Campaigns.CreateAsync(CampaignKinds.Announcements, parameters);
             Console.WriteLine("Campaign Id '{0}' was created successfully and it is in '{1}' state", result.Id, result.State);

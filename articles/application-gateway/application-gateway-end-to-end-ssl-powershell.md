@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/27/2018
 ms.author: victorh
-ms.openlocfilehash: 08d31bb15b7bd710a51858f2100fb52219314673
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7e259936dce433683dd135171ee1c5626bf23739
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>使用 PowerShell 通过应用程序网关配置端到端 SSL
 
@@ -158,8 +158,8 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
    5. 配置应用程序网关的证书。 此证书用于加密和解密应用程序网关上的流量。
 
    ```powershell
-   $password = ConvertTo-SecureString  <password for certificate file> -AsPlainText -Force 
-   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $password 
+   $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
+   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $passwd 
    ```
 
    > [!NOTE]

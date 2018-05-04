@@ -1,18 +1,18 @@
 ---
-title: "Azure 容器注册表 Webhook 架构参考"
-description: "Azure 容器注册表的 Webhook 请求 JSON 有效负载参考。"
+title: Azure 容器注册表 Webhook 架构参考
+description: Azure 容器注册表的 Webhook 请求 JSON 有效负载参考。
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: 84f0277a7b1a5bd7dfe2178f78f34140b1dd2642
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/05/2017
 
 ### <a name="push-event-payload"></a>Push 事件负载
 
-|元素|类型|说明|
+|元素|Type|说明|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/05/2017
 
 ### <a name="target"></a>目标
 
-|元素|类型|说明|
+|元素|Type|说明|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。 与 Length 字段相同。|
@@ -61,7 +61,7 @@ ms.lasthandoff: 12/05/2017
 
 ### <a name="request"></a>请求
 
-|元素|类型|说明|
+|元素|Type|说明|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
@@ -104,7 +104,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete-event-payload"></a>Delete 事件负载
 
-|元素|类型|说明|
+|元素|Type|说明|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -114,7 +114,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete_target"></a> 目标
 
-|元素|类型|说明|
+|元素|Type|说明|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
@@ -122,7 +122,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete_request"></a> 请求
 
-|元素|类型|说明|
+|元素|Type|说明|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|

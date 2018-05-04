@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 1963c4d7b2e895032862fae896c6d9ff7cf80806
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 090629874e75d75223e018b002cf04a02b1d1bb0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>在创建资源时使用 Resource Manager 模板自动启用诊断设置
 本文介绍如何使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这样可以让用户在创建资源时自动将诊断日志和指标流式传输到事件中心、将其存档在存储帐户中，或者发送到 Log Analytics。
@@ -116,7 +116,7 @@ ms.lasthandoff: 04/23/2018
     ]
     ```
 
-诊断设置的属性 blob 遵循[此文所述的格式](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate)。 添加 `metrics` 属性还可将资源指标发送到这些相同输出，前提是[该资源支持 Azure Monitor 指标](monitoring-supported-metrics.md)。
+诊断设置的属性 blob 遵循[此文所述的格式](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)。 添加 `metrics` 属性还可将资源指标发送到这些相同输出，前提是[该资源支持 Azure Monitor 指标](monitoring-supported-metrics.md)。
 
 下面是一个完整的示例，说明了如何创建逻辑应用，以及如何启用流式传输到事件中心和在存储帐户中进行存储的功能。
 
@@ -134,7 +134,7 @@ ms.lasthandoff: 04/23/2018
     },
     "testUri": {
       "type": "string",
-      "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
+      "defaultValue": "http://azure.microsoft.com/status/feed/"
     },
     "settingName": {
       "type": "string",

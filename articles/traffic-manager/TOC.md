@@ -34,7 +34,7 @@
 ### [排查 Azure 流量管理器中出现降级状态的问题](traffic-manager-troubleshooting-degraded.md)
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=traffic-manager)
 ## [Azure PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)

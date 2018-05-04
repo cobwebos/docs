@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: febeb2b7e6ada69db78cb0553b4fa90874f5f2eb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 17b2f1b65463f87f81ffe06bae5ac559a84bcb2a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>教程：在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
-本教程是一个系列中的第四部分， 介绍了使用 Application Insights 针对 Service Fabric 群集上运行的 ASP.NET Core 应用程序设置监视和诊断的步骤。 我们会从本教程第一部分（即[构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)）开发的应用程序中收集遥测数据。 
+本教程是系列教程的第五部分， 介绍了使用 Application Insights 针对 Service Fabric 群集上运行的 ASP.NET Core 应用程序设置监视和诊断的步骤。 我们会从本教程第一部分（即[构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)）开发的应用程序中收集遥测数据。 
 
 此教程系列的第四部分介绍如何：
 > [!div class="checklist"]
@@ -35,6 +35,7 @@ ms.lasthandoff: 04/06/2018
 > [!div class="checklist"]
 > * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)
 > * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [向 ASP.NET Core 前端服务添加 HTTPS 终结点](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * [使用 Visual Studio Team Services 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * 设置应用程序的监视和诊断
 
@@ -104,8 +105,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
     
-    2. 在 CreateServiceInstanceListeners() 或 CreateServiceReplicaListeners() 的嵌套式 return 语句中，在 ConfigureServices > services 下两个已声明的单一实例服务之间添加：`.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`。
-    此时会向遥测添加服务上下文，方便用户更好地理解 Application Insights 中遥测的源代码。 VotingWeb.cs 中的嵌套式 return 语句应如下所示：
+    2. 在 CreateServiceInstanceListeners() 或 CreateServiceReplicaListeners() 的嵌套式 return 语句中，在 ConfigureServices > services 下两个已声明的单一实例服务之间添加：`.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`。这会将服务上下文添加到遥测，让你更好地了解 Application Insights 中遥测的源。 VotingWeb.cs 中的嵌套式 return 语句应如下所示：
     
     ```csharp
     return new WebHostBuilder()

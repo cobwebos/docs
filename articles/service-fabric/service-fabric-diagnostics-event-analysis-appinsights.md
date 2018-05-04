@@ -1,40 +1,50 @@
 ---
-title: "使用 Application Insights 进行 Azure Service Fabric 事件分析 | Microsoft Docs"
-description: "了解通过使用 Application Insights 可视化和分析事件来监视和诊断 Azure Service Fabric 群集。"
+title: 使用 Application Insights 进行 Azure Service Fabric 事件分析 | Microsoft Docs
+description: 了解通过使用 Application Insights 可视化和分析事件来监视和诊断 Azure Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 479e486dca432020d5fcbaf98971a9803888bf98
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 04/04/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 3a7c7663bc13b7169ec9d31aa21365219ec39059
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
-Azure Application Insights 是用于应用程序监视和诊断的可扩展平台。 它具有强大的分析和查询工具、可自定义的仪表板和可视化效果，以及包括自动报警在内的其他选项。 推荐使用该平台为 Service Fabric 应用程序和服务进行监视和诊断。
+Azure Application Insights 是用于应用程序监视和诊断的可扩展平台。 它具有强大的分析和查询工具、可自定义的仪表板和可视化效果，以及包括自动报警在内的其他选项。 推荐使用该平台为 Service Fabric 应用程序和服务进行监视和诊断。 本文帮助解决以下常见问题
 
-## <a name="setting-up-application-insights"></a>设置 Application Insights
+* 如何知道应用程序中发生的情况，如何收集遥测数据
+* 如何排查应用程序问题，尤其是服务相互通信的问题
+* 如何获取服务性能相关的指标，例如页面加载时间和 http 请求数
 
-### <a name="creating-an-ai-resource"></a>创建 AI 资源
+本文旨在介绍如何从 App Insights 获取见解和进行故障排除。 如果想要了解如何使用 Service Fabric 设置和配置 AI，请查看[此教程](service-fabric-tutorial-monitoring-aspnet.md)。
 
-若要创建 AI 资源，请转到 Azure Marketplace 并搜索“Application Insights”。 它应显示为首个解决方案（位于“Web + Mobile”类别下）。 发现相应资源时单击“创建”（请确保路径与以下图像匹配）。
+## <a name="monitoring-in-app-insights"></a>App Insights 中的监视
 
-![新建 Application Insights 资源](media/service-fabric-diagnostics-event-analysis-appinsights/create-new-ai-resource.png)
+Application Insights 以多样化的方式与 Service Fabric 集成。 在概述页中，AI 提供有关服务的重要信息，例如响应时间和处理的请求数。 单击顶部的“搜索”按钮可以看到应用程序中最近请求的列表。 此外，可在此处查看失败的请求数，以及诊断可能发生的错误。
 
-需要填写一些信息以正确预配资源。 若将使用任何 Service Fabric 编程模型或向群集发布 .NET 应用程序，请在“应用程序类型”字段中使用“ASP.NET Web 应用程序”。 若将部署来宾可执行文件和容器，请使用“常规”。 通常情况下默认使用“ASP.NET Web 应用程序”，使选项保持在将来可更改。 名称可自定，且资源组和订阅都是该资源的可更改后期部署。 建议 AI 资源与群集处于相同资源组。 如需详细信息，请参阅[创建 Application Insights 资源](../application-insights/app-insights-create-new-resource.md)
+![AI 概述](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
-使用事件聚合工具配置 AI 需要 AI 检测密钥。 设置 AI 资源后（验证部署后需要几分钟时间），请导航至该资源，并在左侧导航栏上查找“属性”部分。 将打开新的边栏选项卡，显示“检测密钥”。 若要更改订阅或资源的资源组，也可在此完成。
+在上图的右侧面板上，列表中有两种主要类型的条目：请求和事件。 在本例中，请求是通过 HTTP 请求对应用 API 发出的调用，事件是自定义事件，充当可以添加到代码中任意位置的遥测数据。 可以在[用于处理自定义事件和指标的 Application Insights API](../application-insights/app-insights-api-custom-events-metrics.md) 中进一步了解如何检测应用程序。 单击某个请求会显示下图所示的更多详细信息，包括 AI Service Fabric Nuget 包中收集的、特定于 Service Fabric 的数据。 在排查和了解应用程序的状态时，此信息非常有用；所有这些信息都可以在 Application Insights 中搜索
+
+![AI 请求详细信息](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+
+Application Insights 提供指定的视图用于查询所有传入的数据。 单击“概述”页顶部的“指标资源管理器”可导航到 AI 门户。 在此处，可以使用 Kusto 查询语言，针对前面所述的自定义事件、请求、异常、性能计数器和其他指标运行查询。 以下示例演示过去 1 小时内的所有请求。
+
+![AI 请求详细信息](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
+
+若要进一步了解 App Insights 门户的功能，请转到 [Application Insights 门户文档](../application-insights/app-insights-dashboards.md)。
 
 ### <a name="configuring-ai-with-wad"></a>使用 WAD 配置 AI
 
@@ -47,7 +57,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 ![添加 AI 密钥](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
 
-创建群集时，如果诊断处于打开状态，会显示要求输入 Application Insights 检测密钥的可选字段。 若在此处粘贴 AI 密钥，将在用于部署群集的 Resource Manager 模板中自动为你配置该 AI 接收器。
+创建群集时，如果诊断处于打开状态，会显示要求输入 Application Insights 检测密钥的可选字段。 如果在此处粘贴 AI 密钥，则系统会在用于部署群集的资源管理器模板中自动配置 AI 接收器。
 
 #### <a name="add-the-ai-sink-to-the-resource-manager-template"></a>将 AI 接收器添加到 Resource Manager 模板
 
@@ -73,23 +83,22 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
     "sinks": "applicationInsights"
     ```
 
-在以上两个代码片段中，名称“applicationInsights”用于描述该接收器。 这不是必需的，并且只要接收器名称包含在“接收器”中，就可将名称设定为任何字符串。
+在上面的两个代码片段中，名称“applicationInsights”用于描述接收器。 这不是必需的，并且只要接收器名称包含在“接收器”中，就可将名称设定为任何字符串。
 
-目前，群集的日志会在 AI 日志查看器中作为跟踪显示。 由于来自平台的大部分跟踪信息都是“参考”级别，因此还可以考虑将接收器配置更改为仅发送类型为“关键”或“错误”的日志。 这可通过将“通道”添加到接收器完成，如[本文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所示。
+目前，群集中的日志在 AI 日志查看器中显示为**跟踪**。 由于来自平台的大部分跟踪信息都是“参考”级别，因此还可以考虑将接收器配置更改为仅发送类型为“关键”或“错误”的日志。 这可通过将“通道”添加到接收器完成，如[本文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所示。
 
 >[!NOTE]
->若在门户或 Resource Manager 模板中使用了错误的 AI 密钥，则必须手动更改密钥并更新/重新部署群集。 
+>如果在门户或资源管理器模板中使用错误的 AI 密钥，则必须手动更改密钥并更新/重新部署群集。
 
 ### <a name="configuring-ai-with-eventflow"></a>使用 EventFlow 配置 AI
 
-若正在使用 EventFlow 聚合事件，请务必导入 `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` NuGet 包。 以下内容须包含在 eventFlowConfig.json 的输出部分：
+若正在使用 EventFlow 聚合事件，请务必导入 `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` NuGet 包。 需要在 *eventFlowConfig.json* 的 *outputs* 节中包含以下代码：
 
 ```json
 "outputs": [
     {
         "type": "ApplicationInsights",
-        // (replace the following value with your AI resource's instrumentation key)
-        "instrumentationKey": "00000000-0000-0000-0000-000000000000"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
     }
 ]
 ```
@@ -98,7 +107,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 ## <a name="aisdk"></a>AI.SDK
 
-通常建议使用 EventFlow 和 WAD 作为聚合解决方案，因为它们允许使用更加模块化的方法，方便诊断和监视。例如，若想从 EventFlow 更改输出，不需要更改实际检测，仅需对配置文件进行简单修改。 然而，若决定投资使用 Application Insights，且不太可能更改到其他平台，则应使用 AI 的新 SDK 以聚合事件并将它们发送到 AI。 这意味着不再非得配置 EventFlow 将数据发送到 AI，而是安装 Application Insight 的 Service Fabric NuGet 包。 可在[此处](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)找到此包的详细信息。
+建议使用 EventFlow 和 WAD 作为聚合解决方案，因为它们允许使用更加模块化的方法，方便诊断和监视。例如，若要从 EventFlow 更改输出，不需要更改实际检测，仅需对配置文件进行简单修改。 然而，若决定投资使用 Application Insights，且不太可能更改到其他平台，则应使用 AI 的新 SDK 以聚合事件并将它们发送到 AI。 这意味着不再非得配置 EventFlow 将数据发送到 AI，而是安装 Application Insight 的 Service Fabric NuGet 包。 可在[此处](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)找到此包的详细信息。
 
 [微服务和容器的 Application Insights 支持](https://azure.microsoft.com/en-us/blog/app-insights-microservices/)会显示一些开发中的新功能（当前仍为 beta 版本），通过它们可以使用更加丰富的现成 AI 监视选项。 这包含依赖项跟踪（用于生成群集中所有服务和应用程序的 AppMap 以及它们之间的通信），以及服务的更好跟踪关联（有助于更好地查明应用或服务的工作流中的问题）。
 

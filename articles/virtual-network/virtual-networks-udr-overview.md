@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 014c9ea34f35e915c6c4eac5a96c55201549e18a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: eb00bd3a9680091827a6e1d768a9b828a15d1b97
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -121,8 +121,10 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 - **ExpressRoute**：必须使用 BGP 将本地路由播发到 Microsoft 边缘路由器。 如果将虚拟网关部署为 ExpressRoute 类型，则不能通过创建用户定义路由来强制流量到达 ExpressRoute 虚拟网关。 例如，可以使用用户定义的路由来强制来自 Express Route 的流量到达网络虚拟设备。 
 - **VPN**：可以选择性地使用 BGP。 有关详细信息，请参阅 [BGP 与站点到站点 VPN 连接配合使用](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-使用 BGP 与 Azure 交换路由时，系统会针对每个播发的前缀，将一个单独的路由添加到包含虚拟网络中所有子网的路由表。 添加路由时，会将“虚拟网关”列为源和下一跃点类型。 
- 
+使用 BGP 与 Azure 交换路由时，系统会针对每个播发的前缀，将一个单独的路由添加到包含虚拟网络中所有子网的路由表。 添加路由时，会将*虚拟网关*列为源和下一跃点类型。 
+
+可以使用路由表的一个属性，在子网上禁用 BGP 路由传播。 使用 BGP 与 Azure 交换路由时，路由不会添加到禁用 BGP 传播的任何子网的路由表。 VPN 连接的连接性是通过下一跃点类型为 VPN 的[自定义路由](#custom-routes)实现的。 有关详细信息，请参阅[如何禁用 BGP 路由传播](/manage-route-table#create-a-route-table.md)。
+
 ## <a name="how-azure-selects-a-route"></a>Azure 如何选择路由
 
 当出站流量是从子网发送时，Azure 使用最长前缀匹配算法，根据目标 IP 地址选择路由。 例如，一个路由表有两个路由：一个路由指定 10.0.0.0/24 地址前缀，另一个路由指定 10.0.0.0/16 地址前缀。 Azure 会将目标为 10.0.0.5 的流量路由到在路由中指定的地址前缀为 10.0.0.0/24 的下一跃点类型，因为前缀 10.0.0.0/24 比 10.0.0.0/16 长，虽然 10.0.0.5 处于这两个地址前缀范围内。 Azure 会将目标为 10.0.1.5 的流量路由到在路由中指定的地址前缀为 10.0.0.0/16 的下一跃点类型，因为 10.0.1.5 不包括在 10.0.0.0/24 地址前缀中，而地址前缀为 10.0.0.0/16 的路由具有相匹配的最长前缀。

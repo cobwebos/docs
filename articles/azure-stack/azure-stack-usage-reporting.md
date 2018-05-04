@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 9153efb73e84d7b84a732217b92a9c66617e90ae
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 602cd6c3b2be8881bebbcebe30ec2520358b731f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>向 Azure 报告 Azure Stack 用量数据 
 
 用量数据也称为消耗数据，表示使用的资源量。 
 
-使用基于消费的计费模型的 azure 堆栈多节点系统应出于计费目的，向 Azure 报告使用情况数据。  Azure Stack 操作员应将其 Azure Stack 实例配置为向 Azure 报告用量数据。
+使用基于消耗的计费模式的 Azure Stack 多节点系统应向 Azure 报告用量数据，以便计费。  Azure Stack 操作员应将其 Azure Stack 实例配置为向 Azure 报告用量数据。
 
 > [!NOTE]
-> 根据即用即付付费模式购买许可证的 Azure Stack 多节点用户必须配置用量数据报告。 它是可选的容量模式下许可证的用户 (请参阅[如何购买页面](https://azure.microsoft.com/en-us/overview/azure-stack/how-to-buy/)。 对于 Azure Stack 开发工具包用户，Azure Stack 操作员可以报告用量数据并测试此功能。 但是，用户无需为产生的任何用量付费。 
+> 根据即用即付付费模式购买许可证的 Azure Stack 多节点用户必须配置用量数据报告。 它是可选的容量模式下许可证的用户 (请参阅[如何购买页面](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)。 对于 Azure Stack 开发工具包用户，Azure Stack 操作员可以报告用量数据并测试此功能。 但是，用户无需为产生的任何用量付费。 
 
 
 ![计费流](media/azure-stack-usage-reporting/billing-flow.png)
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="set-up-usage-data-reporting"></a>设置用量数据报告
 
-若要设置用量数据报告，必须[将 Azure Stack 实例注册到 Azure](azure-stack-register.md)。 作为注册过程的一部分，Azure 堆栈，以连接到 Azure 的 Azure 堆栈并将发送使用情况数据，将该 Azure 桥组件配置。 会将以下用量数据从 Azure Stack 发送到 Azure：
+若要设置用量数据报告，必须[将 Azure Stack 实例注册到 Azure](azure-stack-register.md)。 在注册过程中，将配置 Azure Stack 的 Azure Bridge 组件，以便将 Azure Stack 连接到 Azure 并发送用量数据。 会将以下用量数据从 Azure Stack 发送到 Azure：
 
 - **计数 ID** – 已耗用的资源的唯一 ID。
 - **数量**– 指定的资源使用量。
@@ -95,9 +95,9 @@ ms.lasthandoff: 03/28/2018
 
 在 Azure Stack 开发工具包中，用量数据报告需要全球 Azure 系统中创建的订阅。 在某个主权云（Azure 政府、Azure 德国和 Azure 中国云）中创建的订阅无法注册到 Azure，因此不支持用量数据报告。
 
-## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>用户如何标识 Azure 计费门户中的 Azure 堆栈使用情况数据？
+## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>用户如何在 Azure 计费门户中确定 Azure Stack 用量数据？
 
-用户可以看到的使用情况详细信息文件中的 Azure 堆栈使用情况数据。 若要了解有关如何获取的使用情况详细信息文件，请参阅[Azure 帐户中心文章中的说明下载使用量文件](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)。 使用情况详细信息文件包含标识 Azure 堆栈存储和虚拟机的 Azure 堆栈计量。 使用 Azure 堆栈中的所有资源都报告下名为"Azure 堆栈。"的区域
+用户可以在用量详细信息文件中查看 Azure Stack 用量数据。 若要了解如何获取用量详细信息文件，请参阅[从 Azure 帐户中心下载用量文件](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)一文。 用量详细信息文件包含的 Azure Stack 计量可用于标识 Azure Stack 存储和 VM。 在 Azure Stack 中使用的所有资源都在名为“Azure Stack”的区域下报告。
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>为何 Azure Stack 中报告的用量与从 Azure 帐户中心生成的报告不匹配？
 
@@ -108,4 +108,4 @@ Azure Stack 用量 API 报告用量数据的时间与 Azure 帐户中心报告�
 * [提供者使用情况 API](azure-stack-provider-resource-api.md)  
 * [租户使用情况 API](azure-stack-tenant-resource-usage-api.md)
 * [使用情况常见问题](azure-stack-usage-related-faq.md)
-* [管理使用情况和计费作为云服务提供商](azure-stack-add-manage-billing-as-a-csp.md)
+* [以云服务提供商身份管理使用情况和计费](azure-stack-add-manage-billing-as-a-csp.md)

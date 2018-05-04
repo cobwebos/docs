@@ -1,27 +1,22 @@
 ---
-title: "SQL 数据仓库的驱动程序 | Microsoft 文档"
-description: "SQL 数据仓库的连接字符串和驱动程序"
+title: Azure SQL 数据仓库的连接字符串 | Microsoft Docs
+description: SQL 数据仓库的连接字符串
 services: sql-data-warehouse
-documentationcenter: NA
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: 5c91f423-b550-4734-8094-c7f2c418ac8d
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 6950fff1c899510ce9291393aa3f6cb9774c994d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 8fce3ba099c871059ffb71a589e4d8cd33d5bcae
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="drivers-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的驱动程序
+# <a name="connection-strings-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的连接字符串
 用户可以使用多个不同的应用程序协议，例如 [ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP] 和 [JDBC][JDBC] 连接到 SQL 数据仓库。 下面是每个协议的连接字符串的一些示例。  可以使用 Azure 门户来生成连接字符串。  若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”下单击“显示数据库连接字符串”。
 
 ## <a name="sample-adonet-connection-string"></a>示例 ADO.NET 连接字符串

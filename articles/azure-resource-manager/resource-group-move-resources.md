@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3f5ad64a73bddbb64556ae7a329f91f93b99b016
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9e1cee4df8870886a2a10ac525d54eea5882c04f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -121,7 +121,6 @@ ms.lasthandoff: 04/16/2018
 * 认知服务
 * 内容审查器
 * 数据目录
-* 数据工厂
 * 数据湖分析
 * Data Lake Store
 * DNS
@@ -163,11 +162,14 @@ ms.lasthandoff: 04/16/2018
 * AD 域服务
 * AD 混合运行状况服务
 * 应用程序网关
+* Azure Database for MySQL
 * BizTalk 服务
+* 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
 * 容器服务
-* Express Route
+* 数据工厂
 * 开发测试实验室 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * Dynamics LCS
+* Express Route
 * 负载均衡器 - 请参阅[负载均衡器限制](#lb-limitations)
 * 托管应用程序
 * 托管磁盘 - 请参阅[虚拟机限制](#virtual-machines-limitations)

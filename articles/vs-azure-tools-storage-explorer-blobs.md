@@ -1,6 +1,6 @@
 ---
-title: 使用存储资源管理器（预览版）管理 Azure Blob 存储资源 | Microsoft Docs
-description: 使用存储资源管理器（预览版）管理 Azure Blob 容器和 Blob
+title: 使用存储资源管理器管理 Azure Blob 存储资源 | Microsoft Docs
+description: 使用存储资源管理器管理 Azure Blob 容器和 Blob
 services: storage
 documentationcenter: na
 author: cawa
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 98a1016f78587b4139041f140634b98fa47edfd1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2207bac1ef7cb6393d7dc173f96ddda719bcdfdf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>使用存储资源管理器（预览版）管理 Azure Blob 存储资源
+# <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>使用存储资源管理器管理 Azure Blob 存储资源
 ## <a name="overview"></a>概述
 [Azure Blob 存储](storage/blobs/storage-dotnet-how-to-use-blobs.md)是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。
-可以使用 Blob 存储向外公开数据，或者私下存储应用程序数据。 本文介绍如何使用适合 Blob 容器和 Blob 的存储资源管理器（预览版）。
+可以使用 Blob 存储向外公开数据，或者私下存储应用程序数据。 本文介绍如何使用存储资源管理器来处理 Blob 容器和 Blob。
 
 ## <a name="prerequisites"></a>先决条件
 若要完成本文中的步骤，需要满足以下先决条件：
 
-* [下载并安装存储资源管理器（预览版）](http://www.storageexplorer.com)
+* [下载并安装存储资源管理器](http://www.storageexplorer.com)
 * [连接到 Azure 存储帐户或服务](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>创建 Blob 容器
 所有 Blob 都必须驻留在 Blob 容器中。简单说来，该容器就是对 Blob 进行逻辑分组。 一个帐户可以包含无限数量的容器，一个容器可以存储无限数量的 Blob。
 
-以下步骤演示了如何在存储资源管理器（预览版）中创建 Blob 容器。
+以下步骤演示了如何在存储资源管理器中创建 Blob 容器。
 
-1. 打开存储资源管理器（预览版）。
+1. 打开存储资源管理器。
 2. 在左窗格中，展开需要在其中创建 Blob 容器的存储帐户。
 3. 右键单击“Blob 容器”，并从上下文菜单中选择“创建 Blob 容器”。
 
@@ -51,9 +51,9 @@ ms.lasthandoff: 03/28/2018
 ## <a name="view-a-blob-containers-contents"></a>查看 Blob 容器的内容
 Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
 
-以下步骤演示了如何在存储资源管理器（预览版）中查看 Blob 容器的内容：
+以下步骤演示了如何在存储资源管理器中查看 Blob 容器的内容：
 
-1. 打开存储资源管理器（预览版）。
+1. 打开存储资源管理器。
 2. 在左窗格中，展开包含想要查看的 Blob 容器的存储帐户。
 3. 展开该存储帐户的“Blob 容器”。
 4. 右键单击想要查看的 Blob 容器，并从上下文菜单中选择“打开 Blob 容器编辑器”。
@@ -67,9 +67,9 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
 ## <a name="delete-a-blob-container"></a>删除 Blob 容器
 可以根据需要轻松地创建和删除 Blob 容器。 （若要了解如何删除各个 Blob，请参阅[管理 Blob 容器中的 Blob](#managing-blobs-in-a-blob-container) 部分。）
 
-以下步骤演示了如何在存储资源管理器（预览版）中删除 Blob 容器：
+以下步骤演示了如何在存储资源管理器中删除 Blob 容器。
 
-1. 打开存储资源管理器（预览版）。
+1. 打开存储资源管理器。
 2. 在左窗格中，展开包含想要查看的 Blob 容器的存储帐户。
 3. 展开该存储帐户的“Blob 容器”。
 4. 右键单击想要删除的 Blob 容器，并从上下文菜单中选择“删除”。
@@ -81,11 +81,11 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
    ![“删除 Blob 容器”确认][5]
 
 ## <a name="copy-a-blob-container"></a>复制 Blob 容器
-可以通过存储资源管理器（预览版）将 Blob 容器复制到剪贴板，然后再将该 Blob 容器粘贴到另一存储帐户中。 （若要了解如何复制各个 Blob，请参阅[管理 Blob 容器中的 Blob](#managing-blobs-in-a-blob-container) 部分。）
+可以通过存储资源管理器将 Blob 容器复制到剪贴板，然后再将该 Blob 容器粘贴到另一存储帐户中。 （若要了解如何复制各个 Blob，请参阅[管理 Blob 容器中的 Blob](#managing-blobs-in-a-blob-container) 部分。）
 
 以下步骤演示了如何将 Blob 容器从一个存储帐户复制到另一个存储帐户。
 
-1. 打开存储资源管理器（预览版）。
+1. 打开存储资源管理器。
 2. 在左窗格中，展开包含想要复制的 Blob 容器的存储帐户。
 3. 展开该存储帐户的“Blob 容器”。
 4. 右键单击想要复制的 Blob 容器，并从上下文菜单中选择“复制 Blob 容器”。
@@ -101,7 +101,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
 
 以下步骤演示了如何为 Blob 容器创建 SAS：
 
-1. 打开存储资源管理器（预览版）。
+1. 打开存储资源管理器。
 2. 在左窗格中，展开想要获取其 SAS 的 Blob 容器所在的存储帐户。
 3. 展开该存储帐户的“Blob 容器”。
 4. 右键单击所需 Blob 容器，并从上下文菜单中选择“获取共享访问签名”。
@@ -120,7 +120,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
 ## <a name="manage-access-policies-for-a-blob-container"></a>管理 Blob 容器的访问策略
 以下步骤演示了如何管理（添加和删除）Blob 容器的访问策略：
 
-1. 打开存储资源管理器（预览版）。
+1. 打开存储资源管理器。
 2. 在左窗格中，展开想要管理其访问策略的 Blob 容器所在的存储帐户。
 3. 展开该存储帐户的“Blob 容器”。
 4. 选择所需 Blob 容器，并从上下文菜单中选择“管理访问策略”。
@@ -140,7 +140,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
 
 以下步骤演示了如何指定 Blob 容器的公共访问级别。
 
-1. 打开存储资源管理器（预览版）。
+1. 打开存储资源管理器。
 2. 在左窗格中，展开想要管理其访问策略的 Blob 容器所在的存储帐户。
 3. 展开该存储帐户的“Blob 容器”。
 4. 选择所需 Blob 容器，并从上下文菜单中选择“设置公共访问级别”。
@@ -156,7 +156,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
 
 以下步骤演示如何管理 Blob 容器中的 Blob（和文件夹）。
 
-1. 打开存储资源管理器（预览版）。
+1. 打开存储资源管理器。
 2. 在左窗格中，展开想要管理的 Blob 容器所在的存储帐户。
 3. 展开该存储帐户的“Blob 容器”。
 4. 双击想要查看的 Blob 容器。
@@ -212,7 +212,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
      3. 出现确认对话框时，选择“是”。
 
 ## <a name="next-steps"></a>后续步骤
-* 查看[最新的存储资源管理器（预览版）发行说明和视频](http://www.storageexplorer.com)。
+* 查看[最新的存储资源管理器发行说明和视频](http://www.storageexplorer.com)。
 * 了解如何[使用 Azure Blob、表、队列和文件创建应用程序](https://azure.microsoft.com/documentation/services/storage/)。
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png

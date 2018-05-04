@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4479b3d34824b88f0a666b6185a6bc89337358a9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 071e0c2b802b1bb6ef68092362c61bf3960fd45a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0 令牌引用
 Azure Active Directory (Azure AD) v2.0 在每个[身份验证流](active-directory-v2-flows.md)中发出多种安全令牌。 此引用说明每种令牌的格式、安全特征和内容。
@@ -73,9 +73,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | 对象 ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | 在 Microsoft 标识系统中，对象的不可变标识符在这种情况下是用户帐户。  还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。  这意味着，对 Microsoft Online Services（如 Microsoft Graph）进行查询时可以使用它。  Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。  因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
 
 ### <a name="access-tokens"></a>访问令牌
-目前，仅 Microsoft 服务可以使用 v2.0 终结点发布的访问令牌。 在任何目前支持的方案中，应用应该无需执行任何的访问令牌验证或检查。 可将访问令牌视作完全不透明。 它们只是应用可通过 HTTP 请求传递给 Microsoft 的字符串。
 
-在不久的将来，v2.0 终结点将引入可让应用程序从其它客户端接收访问令牌的功能。 到时，此引用主题中的信息将更新为应用执行访问令牌验证和其他类似任务所需的信息。
+v2.0 终结点允许向 Azure AD 进行了注册的第三方应用为受保护的资源（例如 Web API）颁发访问令牌。 有关设置应用程序来颁发访问令牌的详细信息，请参阅[如何向 v2.0 终结点注册应用](active-directory-v2-app-registration.md)。 在向 v2.0 终结点注册应用程序时，开发者可以指定可以为其颁发访问令牌的访问级别（称为**作用域**）。 例如，在 Microsoft Graph API 中定义的 **calendars.read** 作用域授权读取用户的日历。 当应用程序从 v2.0 终结点收到访问令牌时，你必须根据方案对令牌的签名、颁发者、受众、过期时间和任何其他声明进行验证。 
 
 向 v2.0 终结点请求访问令牌时，v2.0 终结点还会返回有关访问令牌的元数据，以供应用使用。 此信息包括访问令牌的到期时间及其有效范围。 应用使用此元数据执行访问令牌的智能缓存，无需打开和分析访问令牌本身。
 

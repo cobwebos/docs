@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fcdcc4cf948550467257fa6cbe9287cd26d49962
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4089fe636ad25f97fe78f0bd10553b93d768321d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>使用 Azure 数据工厂从 Spark 复制数据 
 
@@ -47,9 +47,9 @@ Spark 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Spark** | 是 |
 | host | Spark 服务器的 IP 地址或主机名  | 是 |
-| 端口 | Spark 服务器用来侦听客户端连接的 TCP 端口。  | 是 |
+| 端口 | Spark 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
 | serverType | Spark 服务器的类型。 <br/>允许的值为：**SharkServer**、**SharkServer2**、**SparkThriftServer** | 否 |
-| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许的值为：**Binary**、**SASL**、**HTTP ** | 否 |
+| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许的值为：**Binary**、**SASL**、**HTTP** | 否 |
 | authenticationType | 用于访问 Spark 服务器的身份验证方法。 <br/>允许的值为：**Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | 是 |
 | username | 用于访问 Spark 服务器的用户名。  | 否 |
 | password | 用户所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -76,8 +76,7 @@ Spark 链接服务支持以下属性：
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
-            },
-            "httpPath" : "gateway/sandbox/spark"
+            }
         }
     }
 }

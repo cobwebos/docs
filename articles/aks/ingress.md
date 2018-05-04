@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b0bc6035c3004587ae50f1c331dd3976883e9d34
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: dbb37c6fc2b5db8b2799eaacbfb4864c4e04fee7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Azure 容器服务 (AKS) 中的 HTTPS 入口
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="install-an-ingress-controller"></a>安装入口控制器
 
-使用 Helm 安装 NGINX 入口控制器。 有关详细的部署信息，请参阅 NGINX 入口控制器的[文档][nginx-ingress]。 
+使用 Helm 安装 NGINX 入口控制器。 有关详细的部署信息，请参阅 NGINX 入口控制器的[文档][nginx-ingress]。
 
 更新图表存储库。
 
@@ -76,13 +76,7 @@ PIPNAME=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAdd
 az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --dns-name $DNSNAME
 ```
 
-根据需要运行以下命令来检索 FQDN。 将 IP 地址值更新为入口控制器的 IP 地址。
-
-```azurecli
-az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '52.224.125.195')].[dnsSettings.fqdn]" --output tsv
-```
-
-现在，可以通过 FQDN 访问入口控制器。
+现在应该可以通过 FQDN 访问入口控制器了。
 
 ## <a name="install-kube-lego"></a>安装 KUBE-LEGO
 
@@ -181,14 +175,14 @@ kubectl apply -f hello-world-ingress.yaml
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解本文档中演示的软件。 
+详细了解本文档中演示的软件。
 
 - [Helm CLI][helm-cli]
 - [NGINX 入口控制器][nginx-ingress]
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
+[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

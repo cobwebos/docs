@@ -1,11 +1,11 @@
 ---
-title: "关于 Azure 应用服务中的移动应用"
-description: "了解应用服务为企业移动应用带来的优势。"
+title: 关于 Azure 应用服务中的移动应用
+description: 了解应用服务为企业移动应用带来的优势。
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
 ms.service: app-service-mobile
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 082b410c9375dbdfa7f95ccd4c176e7384dad0d7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e84ac98508b791b4617ead2b6bf3b0edc549bdb6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
 Azure 应用服务是完全托管的[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 产品，适用于专业开发人员。 该服务为 Web、移动和集成方案提供丰富的功能集。 
@@ -104,4 +104,4 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 [虚拟网络]: ../app-service/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
 [应用服务环境]: ../app-service/environment/intro.md
-[学习路线图]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
+[学习路线图]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/

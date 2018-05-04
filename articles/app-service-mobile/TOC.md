@@ -171,7 +171,7 @@
 ## [应用服务最佳实践](../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
-## [定价](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [定价](https://azure.microsoft.com/pricing/details/app-service/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-mobile-services)

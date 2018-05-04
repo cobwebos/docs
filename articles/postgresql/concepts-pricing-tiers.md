@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 3ea7d09338d4d89030138b8c4dc4085a6cd8ccc5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8526988685faec0318d0f048b10971712942eef5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -36,7 +36,8 @@ ms.lasthandoff: 04/05/2018
 | 常规用途 | 大多数业务工作负荷。此类工作负荷需要均衡的计算和内存以及可缩放的 I/O 吞吐量。 相关示例包括用于托管 Web 和移动应用的服务器，以及其他企业应用程序。|
 | 内存优化 | 高性能数据库工作负荷。此类工作负荷需要内存中性能来实现更快的事务处理速度和更高的并发性。 相关示例包括用于处理实时数据的服务器，以及高性能事务性应用或分析应用。|
 
-创建服务器后，只需数秒钟即可更改 vCore 数。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 有关详细信息，请参阅“缩放资源”部分。
+创建服务器后，只需数秒钟即可向上或向下更改 vCore 数（在同一定价层中）。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 创建服务器之后，不能更改定价层或备份存储类型。 有关详细信息，请参阅[缩放资源](#scale-resources)部分。
+
 
 ## <a name="compute-generations-vcores-and-memory"></a>计算的代、vCore 数和内存
 
@@ -53,13 +54,13 @@ ms.lasthandoff: 04/05/2018
 | 美国西部 2 |  | X |
 | 加拿大中部 | X | X |
 | 加拿大东部 | X | X |
-| 巴西南部 | X |  |
+| 巴西南部 | X | X |
 | 北欧 | X | X |
 | 欧洲西部 | X | X |
 | 英国西部 |  | X |
 | 英国南部 |  | X |
 | 东亚 | X |  |
-| 东南亚 | X |  |
+| 东南亚 | X | X |
 | 澳大利亚东部 |  | X |
 | 印度中部 | X |  |
 | 印度西部 | X |  |
@@ -90,7 +91,7 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="scale-resources"></a>缩放资源
 
-创建服务器之后，可以独立地更改 vCore 数、存储量和备份保留期。 创建服务器之后，不能更改定价层或备份存储类型。 vCore 数和备份保留期可以上下缩放。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)。
+创建服务器之后，可以独立地更改 vCore 数、存储量和备份保留期。 创建服务器之后，不能更改定价层或备份存储类型。 可以在同一定价层中向上或向下调整 VCores 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。  可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)。
 
 更改 vCore 数时，将会使用新的计算分配创建原始服务器的副本。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此时段是可变的，但大多数情况下不到一分钟。
 

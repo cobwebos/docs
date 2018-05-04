@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: f22b16979638d3ef53a6978f95b921aef7688276
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 3bbd39f99c72d92bd7969de52d893c892314fc99
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>基于 Azure Stack 的应用服务：添加更多的基础结构或辅助角色
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/19/2018
     ##### Scale out the AppService Role instances ######
    
     # Set context to AzureStack admin.
-    Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
+    Add-AzureRmAccount -EnvironmentName AzureStackAdmin
                                                  
     ## Name of the Resource group where AppService is deployed.
     $AppServiceResourceGroupName = "AppService.local"

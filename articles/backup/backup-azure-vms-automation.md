@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bac1e679aa46b280596ab09ba40da780c81cac5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3431db3844ca47ce6c2beafbd894a69f05e0311a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>使用 AzureRM.RecoveryServices.Backup cmdlet 来备份虚拟机
 
@@ -79,9 +79,9 @@ ms.lasthandoff: 04/03/2018
     Cmdlet          Unregister-AzureRmRecoveryServicesBackupManagem... 1.4.0      AzureRM.RecoveryServices.Backup
     Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
     ```
-3. 使用 **Login-AzureRmAccount** 登录到 Azure 帐户。 此 cmdlet 打开一个网页，提示输入帐户凭据： 
-    - 或者，还可使用 -Credential 参数将帐户凭据作为参数包含在 Login-AzureRmAccount cmdlet 中。
-    - 如果是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如：Login-AzureRmAccount -Tenant "fabrikam.com"
+3. 使用 Connect-AzureRmAccount 登录到 Azure 帐户。 此 cmdlet 打开一个网页，提示输入帐户凭据： 
+    - 或者，还可使用 -Credential 参数将帐户凭据作为参数包含在 Connect-AzureRmAccount cmdlet 中。
+    - 如果是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如：Connect-AzureRmAccount -Tenant "fabrikam.com"
 4. 由于一个帐户可以有多个订阅，因此请将要使用的订阅与帐户关联在一起：
 
     ```PS
@@ -362,7 +362,7 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
 还原磁盘以后，即可通过以下步骤从磁盘创建和配置虚拟机。
 
 > [!NOTE]
-> 若要使用已还原的磁盘创建加密 VM，则 Azure 角色必须有权执行 **Microsoft.KeyVault/vaults/deploy/action** 操作。 如果角色不具有此权限，可通过此操作创建自定义角色。 有关详细信息，请参阅 [Custom Roles in Azure RBAC](../active-directory/role-based-access-control-custom-roles.md)（Azure RBAC 中的自定义角色）。
+> 若要使用已还原的磁盘创建加密 VM，则 Azure 角色必须有权执行 **Microsoft.KeyVault/vaults/deploy/action** 操作。 如果角色不具有此权限，可通过此操作创建自定义角色。 有关详细信息，请参阅 [Custom Roles in Azure RBAC](../role-based-access-control/custom-roles.md)（Azure RBAC 中的自定义角色）。
 >
 >
 

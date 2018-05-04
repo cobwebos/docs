@@ -1,12 +1,12 @@
 ---
-title: "循环 - 处理数组或重复执行操作 - Azure 逻辑应用 | Microsoft Docs"
-description: "通过“for each”循环处理数组，或者重复执行操作，直到逻辑应用中满足特定的条件"
+title: 循环 - 处理数组或重复执行操作 - Azure 逻辑应用 | Microsoft Docs
+description: 通过“for each”循环处理数组，或者重复执行操作，直到逻辑应用中满足特定的条件
 services: logic-apps
-keywords: "for each 循环"
-documentationcenter: 
+keywords: for each 循环
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
 ms.workload: logic-apps
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: f634b1004fef2eb65c6b8134088ceead47c91890
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>循环：处理数组或重复执行操作，直到满足某个条件
 
@@ -154,9 +154,6 @@ ms.lasthandoff: 03/05/2018
 * 调用某个终结点，直至获得想要的响应。
 * 在数据库中创建一条记录，等到该记录中的特定字段得到批准，然后继续进行处理。 
 
-> [!NOTE]
-> Until 循环不能包括 Foreach 循环或其他 Until 循环。
-
 例如，在每天的上午 8:00，此逻辑应用都递增某个变量的值，直到该变量的值等于 10。 然后，该逻辑应用将发送一封电子邮件来确认当前值。 虽然此示例使用的是 Office 365 Outlook，但是也可以使用逻辑应用支持的任何电子邮件提供程序（[查看此处的连接器列表](https://docs.microsoft.com/connectors/)）。 如果使用其他电子邮件帐户，整个步骤仍然是相同的，但 UI 可能稍有不同。 
 
 1. 创建空白逻辑应用。 在逻辑应用设计器中，搜索“定期”，然后选择以下触发器：“计划 - 定期”。 
@@ -184,7 +181,7 @@ ms.lasthandoff: 03/05/2018
 
    | 属性 | 值 | 说明 |
    | -------- | ----- | ----------- |
-   | **名称** | Limit | 变量的名称 | 
+   | **Name** | 限制 | 变量的名称 | 
    | **类型** | Integer | 变量的数据类型 | 
    | **值** | 0 | 变量的起始值 | 
    |||| 
@@ -215,7 +212,7 @@ ms.lasthandoff: 03/05/2018
 
     | 属性 | 值 | 说明 |
     | -------- | ----- | ----------- | 
-    | **收件人** | *<email-address@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
+    | **To** | *<email-address@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
     | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
     | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
     |||| 

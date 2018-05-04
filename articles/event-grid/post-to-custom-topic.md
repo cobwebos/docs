@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 04/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f4323c4e68c639af9a5959af512c1cdd07cdf0c4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
 
@@ -73,7 +73,7 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 ]
 ```
 
-有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB。
 
 例如，有效的事件数据架构是：
 
@@ -98,9 +98,10 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 |结果  |响应  |
 |---------|---------|
 |成功  | 200 正常  |
-|终结点不正确 | 404 未找到 |
-|访问密钥无效 | 401 未授权 |
 |事件数据的格式不正确 | 400 错误请求 |
+|访问密钥无效 | 401 未授权 |
+|终结点不正确 | 404 未找到 |
+|数组或事件超出大小限制 | 413 有效负载太大 |
 
 对于错误，消息正文采用以下格式：
 

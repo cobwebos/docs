@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 82e88b0b2b7f04f2849bf5c3a780df3c8f1c9849
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: a70962c63fdf9ab723ce437563a4670d536300aa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>教程：Azure Active Directory 与 Trisotech Digital Enterprise Server 的集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/17/2018
 
 **若要从库中添加 Trisotech Digital Enterprise Server，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -111,31 +111,15 @@ ms.lasthandoff: 03/17/2018
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.trisotech.com`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Trisotech Digital Enterprise Server 客户端支持团队](mailto:support@trisotech.com)获取这些值。 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Trisotech Digital Enterprise Server 客户端支持团队](mailto:support@trisotech.com)获取这些值。
 
-4. 单击“保存”按钮。
+4. 在“SAML 签名证书”部分上，单击”复制”按钮，复制**应用联合元数据 URL**并将其粘贴到记事本。 
+
+    ![证书下载链接](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_certificate.png)
+
+5. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_general_400.png)
-
-5. 若要生成**元数据** URL，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_endpoint.png)
-     
-    d. 现在转到 **Trisotech Digital Enterprise Server** 的属性页，使用“复制”按钮复制“应用程序 ID”并将其粘贴到记事本中。
- 
-    ![配置单一登录](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 6. 在另一个 Web 浏览器窗口中，以管理员身份登录到“Trisotech Digital Enterprise Server 配置”公司站点。
 
@@ -153,7 +137,7 @@ ms.lasthandoff: 03/17/2018
 
     a. 从“身份验证方法”中的下拉列表内选择“安全断言标记语言 2 (SAML 2)”。
 
-    b. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的“元数据 URL”值。
+    b. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值。
 
     c. 在“应用程序 ID”文本框中，使用以下模式输入 URL：`https://<companyname>.trisotech.com`。
 
@@ -163,11 +147,7 @@ ms.lasthandoff: 03/17/2018
 
     f. 单击“保存”
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+ ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 

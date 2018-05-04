@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Application Insights .NET SDK 跟踪自定义操作 | Microsoft Docs"
-description: "使用 Azure Application Insights .NET SDK 跟踪自定义操作"
+title: 使用 Azure Application Insights .NET SDK 跟踪自定义操作 | Microsoft Docs
+description: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 5c6f7521614d7c8337ef31fb8102c5715f83a58d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 94424a3d8aad56cf4504cccd8adb1a45523d95e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -450,7 +450,7 @@ public async Task RunMyTaskAsync()
 
 释放操作会导致操作停止，因此你可以执行此操作而不用调用 `StopOperation`。
 
-*警告*：在某些情况下，未处理的异常可能会[阻止](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-finally)调用 `finally`，因此无法跟踪操作。
+*警告*：在某些情况下，未处理的异常可能会[阻止](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally)调用 `finally`，因此无法跟踪操作。
 
 ### <a name="parallel-operations-processing-and-tracking"></a>并行处理和跟踪操作
 

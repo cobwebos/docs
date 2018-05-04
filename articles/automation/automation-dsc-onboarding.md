@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0da6bd56a684657d8275ca8c781847f31f8e05c5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Onboarding machines for management by Azure Automation DSC（登记由 Azure 自动化 DSC 管理的计算机）
 
@@ -31,7 +31,7 @@ Azure 自动化 DSC 可用于管理各种不同的计算机：
 此外，如果未准备好从云管理计算机配置，Azure 自动化 DSC 也可用作仅限报告的终结点。 这样，便可以通过 DSC 本地设置（推送）所需配置，以及查看符合 Azure 自动化中的所需状态匹配节点的丰富报告详细信息。
 
 > [!NOTE]
-> 如果安装了高于 2.70 版的虚拟机 DSC 扩展，则包含使用 DSC 管理 Azure VM 的功能而无需额外付费。 有关更多详细信息，请参阅[**自动化定价页**](https://azure.microsoft.com/en-us/pricing/details/automation/)。
+> 如果安装了高于 2.70 版的虚拟机 DSC 扩展，则包含使用 DSC 管理 Azure VM 的功能而无需额外付费。 有关更多详细信息，请参阅[**自动化定价页**](https://azure.microsoft.com/pricing/details/automation/)。
 
 
 以下部分概述了如何将每种类型的计算机登记到 Azure 自动化 DSC。
@@ -53,7 +53,7 @@ Azure 自动化 DSC 可用于管理各种不同的计算机：
 ```powershell
 # log in to both Azure Service Management and Azure Resource Manager
 Add-AzureAccount
-Add-AzureRmAccount
+Connect-AzureRmAccount
 
 # fill in correct values for your VM/Automation account here
 $VMName = ""
@@ -195,7 +195,7 @@ Azure Automation DSC 可让你使用 Azure 门户、Azure 资源管理器模板�
 
 ## <a name="generating-dsc-metaconfigurations"></a>生成 DSC 元配置
 
-要以一般方式将任何计算机登记到 Azure 自动化 DSC，可以生成应用时告知计算机上的 DSC 代理从 Azure 自动化 DSC 提取和/或报告的 [DSC 元配置](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig)。 Azure 自动化 DSC 的 DSC 元配置可以使用 PowerShell DSC 配置或 Azure 自动化 PowerShell cmdlet 来生成。
+要以一般方式将任何计算机登记到 Azure 自动化 DSC，可以生成应用时告知计算机上的 DSC 代理从 Azure 自动化 DSC 提取和/或报告的 [DSC 元配置](https://msdn.microsoft.com/powershell/dsc/metaconfig)。 Azure 自动化 DSC 的 DSC 元配置可以使用 PowerShell DSC 配置或 Azure 自动化 PowerShell cmdlet 来生成。
 
 > [!NOTE]
 > DSC 元配置包含将计算机登记到进行管理的自动化帐户的机密。 请务必适当保护所创建的任何 DSC 元配置，或者在使用后将其删除。
@@ -329,7 +329,7 @@ Azure Automation DSC 可让你使用 Azure 门户、Azure 资源管理器模板�
 如果 PowerShell DSC 本地配置管理器默认值与用例匹配，并且你想要将计算机登记为同时从 Azure 自动化 DSC 提取并报告信息，Azure 自动化 cmdlet 可提供一种简单的方法来生成所需的 DSC 元配置：
 
 1. 在本地环境中，以计算机管理员身份打开 PowerShell 控制台或 PowerShell ISE。
-2. 使用 **Add-AzureRmAccount** 连接到 Azure 资源管理器
+2. 使用 **Connect-AzureRmAccount** 连接到 Azure 资源管理器
 3. 从要登记节点的目标自动化帐户下载想要登记的计算机的 PowerShell DSC 元配置：
 
     ```powershell

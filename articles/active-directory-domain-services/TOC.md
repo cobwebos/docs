@@ -16,7 +16,7 @@
 ## [任务 2：配置网络设置](active-directory-ds-getting-started-network.md)
 ## [任务 3：配置管理员组并启用 Azure AD 域服务](active-directory-ds-getting-started-admingroup.md)
 ## [任务 4：更新虚拟网络的 DNS 设置](active-directory-ds-getting-started-dns.md)
-## [任务 5：启用密码同步](active-directory-ds-getting-started-password-sync.md)
+## [任务 5：启用密码哈希同步](active-directory-ds-getting-started-password-sync.md)
 
 # 如何
 ## [检查托管域的运行状况](active-directory-ds-check-health.md)
@@ -56,7 +56,7 @@
 
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # 相关内容
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

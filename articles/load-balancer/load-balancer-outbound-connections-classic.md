@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: ec13109173f89b53e32f903febcec13c7f38c574
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7679fd253370d8ca9ca9ac57dc080806050f5c3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="outbound-connections-classic"></a>出站连接（经典）
 
@@ -60,7 +60,7 @@ Azure 提供三种不同的方法来实现出站连接经典部署。  并非所
 
 在此场景中，向 VM 分配了实例级公共 IP (ILPIP)。 就出站连接而言，VM 是否包含负载均衡终结点并不重要。 此方案优先于其他方案。 使用 ILPIP 时，VM 将 ILPIP 用于所有出站流。  
 
-分配到 VM 的公共 IP 属于 1 对 1 关系（而不是 1 对多关系），并作为无状态的 1 对 1 NAT 进行实现。  不使用端口伪装 (PAT)，并且 VM 具有所有可供使用的临时端口。
+分配到 VM 的公共 IP 属于 1 对 1 关系（而不是 1 对多关系），并实现为无状态的 1 对 1 NAT。  不使用端口伪装 (PAT)，并且 VM 具有所有可供使用的临时端口。
 
 如果应用程序启动很多出站流，并且遇到 SNAT 端口耗尽的情况，可以考虑分配 [ILPIP 以缓解 SNAT 约束](#assignilpip)。 请查看[管理 SNAT 耗尽](#snatexhaust)。
 
@@ -114,8 +114,6 @@ SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
-| 401-800 | 64 |
-| 801-1,000 | 32 |
 
 请记住，可用的 SNAT 端口数不会直接转换为流数。 可以针对多个唯一目标重用单个 SNAT 端口。 仅当需要使流保持唯一时，才使用端口。 有关设计和缓解指导，请参阅[如何管理这项可耗尽的资源](#snatexhaust)；另请参阅介绍 [PAT](#pat) 的部分。
 

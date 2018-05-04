@@ -1,12 +1,12 @@
 ---
-title: "Power BI 工作区集合常见问题解答"
-description: "与 Power BI 工作区集合相关的常见问题。"
+title: Power BI 工作区集合常见问题解答
+description: 与 Power BI 工作区集合相关的常见问题。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1475ed4f-fc84-4865-b243-e8a47d8bda59
 ms.service: power-bi-embedded
@@ -15,17 +15,17 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 6b33f497a5dbc889945e2147586f79edf1bd9aeb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 6915538e47207ee9a45f2647a84924d79c7b2851
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI 工作区集合常见问题解答
 
 > [!IMPORTANT]
-> Power BI 工作区集合已弃用，到 2018 年 6 月或合同指示时可用。 建议规划迁移到 Power BI Embedded 以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
+> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
 ## <a name="what-is-microsoft-power-bi-workspace-collections"></a>什么是 Microsoft Power BI 工作区集合？
 Power BI 工作区集合是一项 Azure 服务，应用程序开发人员可以通过该服务将令人惊叹的完整交互式报表和可视化元素嵌入到面向客户的应用中，使客户无需花费时间和费用从头开始生成其自己的控件。 现在，全球 9 个数据中心内都提供了包含 SLA 的 Power BI 工作区集合。 此服务中还提供了增强的功能，例如，支持通过 Power BI 工作区集合中的行级安全性 (RLS) 提供数据安全性以用于高级筛选。 Power BI 工作区集合定价模型也进行了简化和更新。
@@ -66,7 +66,7 @@ Azure 门户会提供关于针对订阅已执行的呈现/报表会话数的帐�
 是的。 可以使用现有的 Azure 订阅预配和使用 Microsoft Power BI 工作区集合服务。
 
 ## <a name="does-my-application-end-user-need-a-power-bi-license"></a>应用程序的最终用户是否需要 Power BI 许可证？
-不能。 应用程序的最终用户无需单独购买 Power BI 订阅便可访问应用内数据可视化元素。 在 Power BI 工作区集合模型中，会通过 Azure 消耗计量器针对服务向应用程序提供商计费。 请参阅[定价和许可页](http://go.microsoft.com/fwlink/?LinkId=760527)。
+不会。 应用程序的最终用户无需单独购买 Power BI 订阅便可访问应用内数据可视化元素。 在 Power BI 工作区集合模型中，会通过 Azure 消耗计量器针对服务向应用程序提供商计费。 请参阅[定价和许可页](http://go.microsoft.com/fwlink/?LinkId=760527)。
 
 ## <a name="how-does-user-authentication-work-with-power-bi-workspace-collections"></a>如何对 Power BI 工作区集合的用户进行身份验证？
 Power BI 工作区集合服务使用“应用令牌”进行身份验证和授权，而不是使用显式的最终用户身份验证。 在应用令牌模型中，应用程序管理最终用户的身份验证和授权。 然后，若有必要，应用将创建

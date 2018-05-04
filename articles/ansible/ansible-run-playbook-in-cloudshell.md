@@ -1,6 +1,6 @@
 ---
-title: "使用 Bash in Azure Cloud Shell 运行 Ansible"
-description: "了解如何使用 Bash in Azure Cloud Shell 执行各种 Ansible 任务"
+title: 使用 Bash in Azure Cloud Shell 运行 Ansible
+description: 了解如何使用 Bash in Azure Cloud Shell 执行各种 Ansible 任务
 ms.service: ansible
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 author: tomarcher
@@ -8,11 +8,11 @@ manager: routlaw
 ms.author: tarcher
 ms.date: 02/01/2018
 ms.topic: article
-ms.openlocfilehash: 92ca2950199d638c5f76c0c7aadbae4fda7e9d1e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9fe65f4cf10119002bcb7a3855d112d850e20f1a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>使用 Bash in Azure Cloud Shell 运行 Ansible
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/08/2018
 
 - **Azure 凭据** - [创建 Azure 凭据和配置 Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
-- **配置 Azure Cloud Shell** - 如果不熟悉 Azure Cloud Shell，[Bash in Azure Cloud Shell 快速入门](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart)一文演示了如何启动和配置 Cloud Shell。 在此处启动 Cloud Shell 专用的网站：
+- **配置 Azure Cloud Shell** - 如果不熟悉 Azure Cloud Shell，[Bash in Azure Cloud Shell 快速入门](https://docs.microsoft.com/azure/cloud-shell/quickstart)一文演示了如何启动和配置 Cloud Shell。 在此处启动 Cloud Shell 专用的网站：
 
 [![启动 Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "启动 Cloud Shell")](https://shell.azure.com)
 

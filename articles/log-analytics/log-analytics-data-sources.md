@@ -1,8 +1,8 @@
 ---
-title: "配置 Azure Log Analytics 中的数据源 | Microsoft Docs"
-description: "数据源定义 Log Analytics 从代理和其他连接的源所收集的数据。  本文介绍有关 Log Analytics 如何使用数据源的概念，详细解释如何配置数据源，并对不同的可用数据源进行概要介绍。"
+title: 配置 Azure Log Analytics 中的数据源 | Microsoft Docs
+description: 数据源定义 Log Analytics 从代理和其他连接的源所收集的数据。  本文介绍有关 Log Analytics 如何使用数据源的概念，详细解释如何配置数据源，并对不同的可用数据源进行概要介绍。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 04/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4237df0934d6191b77ff82c86a66585e72191ac9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics 中的数据源
 Log Analytics 从已连接的数据源收集数据并将其存储在 Log Analytics 工作区中。  从每个源收集的数据由所配置的数据源定义。  Log Analytics 中的数据以一组记录的形式存储。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
@@ -29,16 +29,19 @@ Log Analytics 从已连接的数据源收集数据并将其存储在 Log Analyti
 
 
 ## <a name="summary-of-data-sources"></a>数据源概要介绍
-下表列出了当前在 Log Analytics 中可用的数据源。  每个数据源都链接到一篇单独的文章，提供该数据源的详细信息。
+下表列出了 Log Analytics 中当前可用的数据源。  每个数据源都链接到一篇单独的文章，提供该数据源的详细信息。   它还提供了这些解决方案将数据收集到 Log Analytics 中时采用的方法和频率的相关信息。  可以使用本文中的信息来了解可用的各种解决方案，并了解各种管理解决方案的数据流和连接要求。 有关列的说明，请参阅 [Azure 中的管理解决方案的数据收集详细信息](../monitoring/monitoring-solutions-inventory.md)。
 
-| 数据源 | 事件类型 | 说明 |
-|:--- |:--- |:--- |
-| [自定义日志](log-analytics-data-sources-custom-logs.md) |\<LogName\>_CL |Windows 或 Linux Agent 中包含日志信息的文本文件。 |
-| [Windows 事件日志](log-analytics-data-sources-windows-events.md) |事件 |从 Windows 计算机中的事件日志收集的事件。 |
-| [Windows 性能计数器](log-analytics-data-sources-performance-counters.md) |性能 |从 Windows 计算机收集的性能计数器。 |
-| [Linux 性能计数器](log-analytics-data-sources-performance-counters.md) |性能 |从 Linux 计算机收集的性能计数器。 |
-| [IIS 日志](log-analytics-data-sources-iis-logs.md) |W3CIISLog |W3C 格式的 Internet Information Services (IIS) 日志 |
-| [Syslog](log-analytics-data-sources-syslog.md) |Syslog |在 Windows 或 Linux 计算机上的 Syslog 事件。 |
+
+| 数据源 | 平台 | Microsoft Monitoring Agent | Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [自定义日志](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | 到达时 |
+| [自定义日志](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | 到达时 |
+| [IIS 日志](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 分钟 |
+| [性能计数器](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |根据计划，最小值为 10 秒 |
+| [性能计数器](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |根据计划，最小值为 10 秒 |
+| [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |来自 Azure 存储：10 分钟；来自代理：到达时 |
+| [Windows 事件日志](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | 到达时 |
+
 
 ## <a name="configuring-data-sources"></a>配置数据源
 可以从 Log Analytics **高级设置**中的“数据”菜单配置数据源。  任何配置都将传送到工作区中所有已连接的数据源。  当前不能从此配置中排除任何代理。

@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure REST API 创建 Hadoop 群集 — Azure | Microsoft Docs"
-description: "了解如何通过将 Azure 资源管理器模板提交到 Azure REST API 来创建 HDInsight 群集。"
+title: 使用 Azure REST API 创建 Hadoop 群集 — Azure | Microsoft Docs
+description: 了解如何通过将 Azure 资源管理器模板提交到 Azure REST API 来创建 HDInsight 群集。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 98be5893-2c6f-4dfa-95ec-d4d8b5b7dcb5
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: 4fcdde200fa9d54c7eb5b0ffe151aff3fbd0ed85
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a71a73d8d54e6a24c9a491bd02c7270f56823003
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Hadoop 群集
 
@@ -40,7 +38,7 @@ Azure REST API 允许对托管在 Azure 平台中的服务执行管理操作，�
 
 Azure 资源管理器模板是描述**资源组**及其包含的所有资源（例如 HDInsight）的 JSON 文档此基于模板的方法可以在一个模板中定义需要用于 HDInsight 的资源。
 
-下面的 JSON 文档是来自 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) 的模板与参数文件的组合形式，它将创建基于 Linux 的群集，并使用密码来保护 SSH 用户帐户。
+下面的 JSON 文档是来自 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) 的模板与参数文件的组合形式，它将创建基于 Linux 的群集，并使用密码保护 SSH 用户帐户。
 
    ```json
    {

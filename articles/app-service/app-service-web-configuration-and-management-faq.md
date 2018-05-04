@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: efbed264babe0b192590380639cdc1c8861b4f38
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6aa0c08fad98eeff7c937f817ca0a8fa20238c4a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/28/2018
 
 出站 IP 地址列表随即出现。
 
-如果你的网站在适用于 PowerApps 的应用服务环境中承载，则若要了解如何获取出站 IP 地址，请参阅[出站网络地址](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses)。
+如果你的网站在应用服务环境中承载，则若要了解如何获取出站 IP 地址，请参阅[出站网络地址](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses)。
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的保留或专用入站 IP 地址？
 
@@ -185,7 +185,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 3. 验证是否选择了“网络”选项卡，然后选择绿色的“播放”按钮。
 4. 执行再现问题的步骤。
 5. 选择红色的“停止”按钮。
-6. 选择“保存”按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Microsoft Edge 中），或右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”（在 Chrome 中）。
+6. 选择“保存”按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Edge 中），或右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”（在 Chrome 中）。
 
 ### <a name="f12-console-output"></a>F12 控制台输出
 
@@ -268,7 +268,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 如果你的应用服务证书在 24 小时后继续显示此消息，请运行以下 PowerShell 脚本。 该脚本会联系[证书提供商](https://www.godaddy.com/)直接解决问题。
 
 ```
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <subId>
 $actionProperties = @{
     "Name"= "<Customer Email Address>"

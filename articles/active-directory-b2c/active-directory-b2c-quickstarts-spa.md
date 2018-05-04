@@ -1,6 +1,6 @@
 ---
-title: 体验启用了 Azure AD B2C 的单页应用
-description: 快速入门：尝试使用示例性的单页应用，通过 Azure Active Directory B2C 进行用户身份验证和注册。
+title: 快速入门 - 使用 Azure Active Directory B2C 为单页应用设置登录 | Microsoft Docs
+description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例单页应用程序。
 services: active-directory-b2c
 documentationcenter: ''
 author: davidmu1
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 02a0515ff7c461370f29a511ac576d857676cb2b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 96baf0297c3d2976f3d6fb112b0bd0ce077a186f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-single-page-app"></a>快速入门：体验启用了 Azure AD B2C 的单页应用
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为单页应用设置登录
 
 Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序、业务和客户。 应用可以使用 Azure AD B2C 通过开放式标准协议对社交帐户和企业帐户进行身份验证。
 

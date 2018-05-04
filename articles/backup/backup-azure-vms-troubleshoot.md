@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: trinadhk;markgal;jpallavi;sogup
-ms.openlocfilehash: 93eb9a65e9d5733963f7d6269a06d5f3cde5e256
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 25008736dbff87aafe2f2ef2d13bbaf746e95e4d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 可以参考下表中所列的信息，排查使用 Azure 备份时遇到的错误。
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/16/2018
 | 虚拟机不存在。 - 请确保该虚拟机存在，或选择其他虚拟机。 |当主 VM 已删除，而备份策略仍继续查找用于执行备份的 VM 时，会发生这种情况。 若要修复此错误，请执行以下操作： <ol><li> 使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机，<br>（或者）<br></li><li>停止保护虚拟机，无需删除备份数据。 [更多详细信息](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | 命令执行失败。 - 此项上当前正在进行另一项操作。 请等到前一项操作完成，并重试 |VM 上的现有备份正在运行，而当现有作业正在运行时，无法启动新的作业。 |
 | 从备份保管库复制 VHD 超时 - 请在几分钟后重试操作。 如果问题持续出现，请联系 Microsoft 支持。 | 如果存储端存在暂时性错误，或备份服务未从托管 VM 的存储帐户获得足够的 IOPS 以在超时期限内将数据传输到保管库，将发生这种情况。 设置备份时，请确保遵循[最佳做法](backup-azure-vms-introduction.md#best-practices)。 尝试将 VM 移动到未加载的其他存储帐户，然后重试备份。|
-| 发生内部错误，备份失败 - 请在几分钟后重试操作。 如果问题持续出现，请联系 Microsoft 支持 |可能发生此错误的两个原因如下： <ol><li> 在访问 VM 存储时存在暂时性问题。 请检查 [Azure 状态](https://azure.microsoft.com/en-us/status/)，确定区域中是否存在任何与计算、存储或网络相关的问题。 问题得到解决后，再重试此备份作业。 <li>已删除原始 VM，因此无法采用恢复点。 若要保留已删除 VM 的备份数据，但要删除备份错误，请取消保护 VM 并选择保留数据选项。 此操作可停止计划备份作业和阻止反复出现的错误消息。 |
+| 发生内部错误，备份失败 - 请在几分钟后重试操作。 如果问题持续出现，请联系 Microsoft 支持 |可能发生此错误的两个原因如下： <ol><li> 在访问 VM 存储时存在暂时性问题。 请检查 [Azure 状态](https://azure.microsoft.com/status/)，确定区域中是否存在任何与计算、存储或网络相关的问题。 问题得到解决后，再重试此备份作业。 <li>已删除原始 VM，因此无法采用恢复点。 若要保留已删除 VM 的备份数据，但要删除备份错误，请取消保护 VM 并选择保留数据选项。 此操作可停止计划备份作业和阻止反复出现的错误消息。 |
 | 未能在所选项上安装 Azure 恢复服务扩展 - VM 代理是 Azure 恢复服务扩展的必备组件。 安装 Azure VM 代理并重启注册操作 |<ol> <li>检查是否已正确安装 VM 代理。 <li>确保已正确设置 VM 配置中的标志。</ol> [详细了解](#validating-vm-agent-installation)如何安装 VM 代理以及如何验证 VM 代理安装。 |
 | 扩展安装失败，出现错误“COM+ 无法与 Microsoft 分布式事务处理协调器通信”。 |这通常意味着到 COM+ 服务未运行。 请与 Microsoft 支持部门联系，以获取解决此问题所需的帮助。 |
 | 快照操作失败，出现 VSS 操作错误"此驱动器已通过 BitLocker 驱动器加密锁定”。 必须通过控制面板解锁此驱动器。 |针对 VM 上的所有驱动器关闭 BitLocker，观察 VSS 问题是否得到解决 |

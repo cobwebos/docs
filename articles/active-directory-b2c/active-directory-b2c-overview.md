@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: davidmu
-ms.openlocfilehash: 4f2c47f3e2debe0dc2b919858af9c347da00be5b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ca9e45a214639da86cf8e0c4a39b3e3d6b6d6491
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>什么是 Azure Active Directory B2C？
 
@@ -72,7 +72,7 @@ Azure AD B2C 通过多种方式防范应用程序遭受拒绝服务和密码攻�
 
 #### <a name="custom-policies"></a>自定义策略 
 
-自定义策略是在 Azure AD B2C 租户中定义标识体验框架行为的配置文件。 可以全面编辑自定义策略以完成大量任务。 自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 
+[自定义策略](active-directory-b2c-overview-custom.md)是在 Azure AD B2C 租户中定义标识体验框架行为的配置文件。 可以全面编辑自定义策略以完成大量任务。 自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 
 
 可根据需要在 Azure AD B2C 租户中使用不同类型的多个自定义策略，并可以在不同的应用程序之间重复使用这些策略。 由于这种灵活性，我们只需对代码做出极少量的更改或根本不需要更改，即可定义和修改客户标识体验。 可以通过在 HTTP 身份验证请求中添加特殊的查询参数来使用策略。
 

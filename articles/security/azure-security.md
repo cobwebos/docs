@@ -1,12 +1,12 @@
 ---
-title: "Azure 安全性简介 | Microsoft Docs"
-description: "了解 Azure 安全性以及其服务和工作原理。"
+title: Azure 安全性简介 | Microsoft Docs
+description: 了解 Azure 安全性以及其服务和工作原理。
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 68bba95e177fa8d0261b84f51b0f5285c7fb7417
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 51d0f1f6d2689e37c1c39bf4a5e8078a2482c76d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -58,8 +58,8 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 | [安全平台](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [隐私和控制](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[合规性](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [透明度](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [安全开发周期](https://www.microsoft.com/en-us/sdl/)，内部审核 | [随时进行数据管理](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [信任中心](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [强制性安全培训，背景检查](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc) |  [控制数据位置](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](http://azuredatacentermap.azurewebsites.net/)|
-| [渗透测试](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc)，[入侵检测，DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)，[审核和日志记录](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [根据条件提供数据访问](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [云服务审慎调查清单](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 中的哪些人员可以根据哪些条款访问数据](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
+| [强制性安全培训，背景检查](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [控制数据位置](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](http://azuredatacentermap.azurewebsites.net/)|
+| [渗透测试](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)，[入侵检测，DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)，[审核和日志记录](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [根据条件提供数据访问](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [云服务审慎调查清单](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 中的哪些人员可以根据哪些条款访问数据](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [数据中心状态](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)，物理安全性，[安全网络](https://docs.microsoft.com/azure/security/security-network-overview) | [响应执法部门](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [服务、位置和行业的符合性](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [安全事件响应](http://aka.ms/SecurityResponsepaper)，[共担责任](http://aka.ms/sharedresponsibility) |[严格的隐私标准](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [查看 Azure 服务和透明度中心的认证](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
@@ -152,7 +152,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 本部分提供了关于 Azure 存储安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
-可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure 资源管理器](https://docs.microsoft.com/azure/storage/storage-security-guide)模型访问存储帐户的存储密钥的情况。
+可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure 资源管理器](https://docs.microsoft.com/azure/storage/storage-security-guide)模型访问存储帐户的存储密钥的情况。
 
 ### <a name="shared-access-signature"></a>共享访问签名
 [共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
@@ -356,7 +356,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 -   [强制实施密码策略](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/)通过强制执行长度和复杂性要求、强制定期轮换和身份验证尝试失败后的帐户锁定来提高传统密码的安全性。
 
--   [基于令牌的身份验证](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)通过 Active Directory 联合身份验证服务 (AD FS) 或第三方安全令牌系统启用身份验证。
+-   [基于令牌的身份验证](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)启用通过 Azure Active Directory 进行身份验证。
 
 -   [基于角色的访问控制 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) 能够根据用户分配的角色来授予访问权限，从而轻松为用户仅提供执行作业所需的访问量。 可以根据组织的业务模型和风险允许范围自定义 RBAC。
 

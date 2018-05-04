@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/16/2018
+ms.date: 04/17/2018
 ms.author: billmath
-ms.openlocfilehash: 5308803bb36024ee2373cf07ec46f798eb7192c5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: de6c56df201e5f22c5c5884d0d8fffc1f07ec625
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
 
+
 本文旨在帮助你跟踪已发布的版本，并了解你是否需要更新为最新版本。
 
 下面是相关主题的列表：
-
-
 
 主题 |  详细信息
 --------- | --------- |
@@ -35,6 +34,21 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](./active-directory-aadconnect-accounts-permissions.md#upgrade)。
 
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
+
+## <a name="117510"></a>1.1.751.0
+状态：2018 年 4 月 12 日发布，仅供下载
+
+>[!NOTE]
+>这是适用于 Azure AD Connect 的修补程序
+
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同步
+#### <a name="fixed-issues"></a>修复的问题
+更正了为中国区租户自动发现 Azure 实例时偶尔会失败的问题。  
+
+### <a name="ad-fs-management"></a>AD FS 管理
+#### <a name="fixed-issues"></a>修复的问题
+
+配置重试逻辑中存在一个问题，该问题将导致一个 ArgumentException，指出“已添加了具有相同键的项”。  这会导致所有重试操作失败。
 
 ## <a name="117500"></a>1.1.750.0
 状态 3/22/2018：已发布，用于自动升级和下载。
@@ -99,8 +113,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 这些更改将针对以下事项：
 1. 快速安装
 2. 用于自动创建帐户的自定义安装
-
-* 更改了安装程序，因此在进行 Azure AD Connect 的全新安装时，不需要 SA 权限
+3. 更改了安装程序，因此在进行 Azure AD Connect 的全新安装时，不需要 SA 权限
 
 * 添加了新的实用程序，用于排查特定对象的同步问题。 该实用程序位于 Azure AD Connect 向导的“排查其他任务的问题”的“排查对象同步问题”选项下。 目前，该实用程序用于检查以下问题：
 

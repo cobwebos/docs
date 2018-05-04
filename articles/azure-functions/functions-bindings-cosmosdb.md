@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 47629350967026f6901441ff20d182cd7fd5be3a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3d63e33adb9cbbe96ad2851870592cc07c9cc3da
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure Cosmos DB 绑定
 
@@ -170,7 +170,13 @@ JavaScript 代码如下所示：
 |**leaseCollectionName** | **LeaseCollectionName** | （可选）用于存储租用的集合的名称。 未设置时，使用值 `leases`。 |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值为 `false`。 |
 |**leasesCollectionThroughput**| **LeasesCollectionThroughput**| （可选）在创建租用集合时，定义要分配的请求单位的数量。 仅当 `createLeaseCollectionIfNotExists` 设置为 `true` 时，才会使用该设置。 使用门户创建绑定时，将自动设置该参数。
-| |**LeaseOptions** | 通过在 [ChangeFeedHostOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.changefeedprocessor.changefeedhostoptions) 类的实例中设置属性来配置租用选项。
+|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| （可选）设置后，此项向在此 Function 的“租用”集合中创建的租用添加一个前缀，实际上就是允许两个不同的 Azure Functions（使用不同的前缀）共享同一“租用”集合。
+|**feedPollDelay**| **FeedPollDelay**| （可选）设置后，此项以毫秒为单位定义在所有当前更改均耗尽后，源上新更改的分区轮询间的延迟。 默认为 5000（5 秒）。
+|**leaseAcquireInterval**| **LeaseAcquireInterval**| （可选）设置后，此项以毫秒为单位定义启动一个计算任务的时间间隔（前提是分区在已知的主机实例中均匀分布）。 默认为 13000（13 秒）。
+|**leaseExpirationInterval**| **LeaseExpirationInterval**| （可选）设置后，此项以毫秒为单位定义在表示分区的租用上进行租用的时间间隔。 如果在此时间间隔内不续订租用，则该租用会过期，分区的所有权会转移到另一个实例。 默认为 60000（60 秒）。
+|**leaseRenewInterval**| **LeaseRenewInterval**| （可选）设置后，此项以毫秒为单位定义当前由实例拥有的分区的所有租用的续订时间间隔。 默认为 17000（17 秒）。
+|**checkpointFrequency**| **CheckpointFrequency**| （可选）设置后，此项以毫秒为单位定义租用检查点的时间间隔。 默认为始终在成功地进行 Function 调用之后进行检查。
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| （可选）设置后，此项对每次 Function 调用收到的项目的最大数目进行自定义。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -769,7 +775,7 @@ JavaScript 代码如下所示：
 
 | 绑定 | 引用 |
 |---|---|
-| CosmosDB | [CosmosDB 错误代码](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+| CosmosDB | [CosmosDB 错误代码](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 ## <a name="next-steps"></a>后续步骤
 

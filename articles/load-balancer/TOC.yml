@@ -1,0 +1,172 @@
+- name: 负载均衡器文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是负载均衡器？
+      href: load-balancer-overview.md
+- name: 快速入门
+  items:
+    - name: 创建基本负载均衡器 - 门户
+      href: quickstart-create-basic-load-balancer-portal.md
+    - name: 创建基本负载均衡器 - Azure CLI
+      href: quickstart-create-basic-load-balancer-cli.md
+    - name: 创建标准负载均衡器 - 门户
+      href: quickstart-load-balancer-standard-public-portal.md
+    - name: 创建标准负载均衡器 - Azure CLI
+      href: quickstart-load-balancer-standard-public-cli.md
+- name: 示例
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: 教程
+  items:
+    - name: 跨可用性区域对 VM 进行负载均衡
+      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+    - name: 在特定的可用性区域中对 VM 进行负载均衡
+      href: tutorial-load-balancer-standard-public-zonal-portal.md
+- name: 概念
+  items:
+    - name: 什么是负载均衡器标准版？
+      href: load-balancer-standard-overview.md
+    - name: 负载均衡器探测
+      href: load-balancer-custom-probe-overview.md
+    - name: 高可用性端口
+      href: load-balancer-ha-ports-overview.md
+    - name: IPv6 支持
+      href: load-balancer-ipv6-overview.md
+    - name: 多个前端
+      href: load-balancer-multivip-overview.md
+    - name: 出站连接
+      href: load-balancer-outbound-connections.md
+    - name: 标准负载均衡器和可用性区域
+      href: load-balancer-standard-availability-zones.md
+    - name: 标准负载均衡器指标和诊断
+      href: load-balancer-standard-diagnostics.md
+- name: 如何
+  items:
+    - name: 创建区域冗余的公共标准负载均衡器
+      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+      items:
+        - name: 创建区域冗余的公共标准负载均衡器 (PowerShell)
+          href: load-balancer-get-started-internet-az-powershell.md
+        - name: 创建区域冗余的公共标准负载均衡器 (CLI)
+          href: load-balancer-get-started-internet-az-cli.md
+    - name: 创建区域的公共标准负载均衡器
+      href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+      items:
+        - name: 创建区域的公共标准负载均衡器 (PowerShell)
+          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+        - name: 创建区域冗余的公共标准负载均衡器 (CLI)
+          href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
+    - name: 跨可用性区域对 VM 进行负载均衡 (CLI)
+      href: load-balancer-standard-public-zone-redundant-cli.md
+    - name: 在区域内对 VM 进行负载均衡 (CLI)
+      href: load-balancer-standard-public-zonal-cli.md
+    - name: 创建基本负载均衡器（模板）
+      href: load-balancer-get-started-internet-arm-template.md
+    - name: 使用 IPv6 创建公共负载均衡器
+      href: load-balancer-ipv6-internet-ps.md
+      items:
+        - name: 使用 IPv6 创建公共负载均衡器 (CLI)
+          href: load-balancer-ipv6-internet-cli.md
+        - name: 使用 IPv6 创建公共负载均衡器（模板）
+          href: load-balancer-ipv6-internet-template.md
+    - name: 配置内部负载均衡器
+      href: load-balancer-get-started-ilb-arm-portal.md
+      items:
+        - name: 配置内部负载均衡器 (PowerShell)
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: 配置内部负载均衡器 (CLI)
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: 配置内部负载均衡器（模板）
+          href: load-balancer-get-started-ilb-arm-template.md
+    - name: 配置负载均衡器的 TCP 空闲超时
+      href: load-balancer-tcp-idle-timeout.md
+    - name: 配置负载均衡器的分布模式
+      href: load-balancer-distribution-mode.md
+    - name: 结合使用负载均衡服务
+      href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
+    - name: 使用多个 IP 配置
+      href: load-balancer-multiple-ip.md
+      items:
+        - name: 使用多个 IP 配置 (CLI)
+          href: load-balancer-multiple-ip-cli.md
+        - name: 使用多个 IP 配置 (PowerShell)
+          href: load-balancer-multiple-ip-powershell.md
+    - name: Azure 负载均衡器的 Log Analytics
+      href: load-balancer-monitor-log.md
+    - name: 为内部负载均衡器配置高可用性端口
+      href: load-balancer-configure-ha-ports.md
+    - name: 故障排除
+      items:
+        - name: 排查 Azure 负载均衡器问题
+          href: load-balancer-troubleshoot.md
+    - name: 经典部署模型文章
+      items:
+        - name: 出站连接（经典）
+          href: load-balancer-outbound-connections-classic.md
+    - name: 为云服务配置多个 VIP
+      href: load-balancer-multivip.md
+      items:
+        - name: 为云服务配置内部负载均衡器
+          href: load-balancer-get-started-ilb-classic-cloud.md
+          items:
+            - name: 为云服务配置内部负载均衡器 (PowerShell)
+              href: load-balancer-get-started-ilb-classic-ps.md
+            - name: 为云服务配置内部负载均衡器 (CLI)
+              href: load-balancer-get-started-ilb-classic-cli.md
+        - name: 配置公共负载均衡器（经典 PowerShell）
+          href: load-balancer-get-started-internet-classic-ps.md
+          items:
+            - name: 配置公共负载均衡器（经典云）
+              href: load-balancer-get-started-internet-classic-cloud.md
+            - name: 配置公共负载均衡器（经典 CLI）
+              href: load-balancer-get-started-internet-classic-cli.md
+- name: 引用
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.network
+    - name: Azure CLI
+      href: /cli/azure/network/lb
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.network.models
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.network
+    - name: Node.js
+      href: 'http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html'
+    - name: Ruby
+      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers'
+    - name: Python
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
+    - name: REST
+      href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
+- name: 相关内容
+  items:
+    - name: 应用程序网关
+      href: /azure/application-gateway/
+    - name: Express Route
+      href: /azure/expressroute/
+    - name: 虚拟网络
+      href: /azure/virtual-network/
+    - name: VPN 网关
+      href: /azure/vpn-gateway/
+    - name: 虚拟机
+      href: /azure/virtual-machines/
+    - name: 流量管理器
+      href: /azure/traffic-manager/
+    - name: DNS
+      href: /azure/dns/
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=load-balancer'

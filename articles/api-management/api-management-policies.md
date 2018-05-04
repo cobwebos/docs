@@ -1,11 +1,11 @@
 ---
-title: "Azure API 管理策略 | Microsoft Docs"
-description: "了解可在 Azure API 管理中使用的策略。"
+title: Azure API 管理策略 | Microsoft Docs
+description: 了解可在 Azure API 管理中使用的策略。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: cb0304cae1b92578eb3c9230ae9faeecdf13d750
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 7304ade9c47034b6cb76eb87126f09fb5af65c8b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
@@ -47,7 +47,7 @@ ms.lasthandoff: 02/28/2018
     -   [设置变量](api-management-advanced-policies.md#set-variable) - 保存命名上下文变量中的值供以后访问。  
     -   [设置请求方法](api-management-advanced-policies.md#SetRequestMethod) - 允许更改请求的 HTTP 方法。  
     -   [设置状态代码](api-management-advanced-policies.md#SetStatus) - 将 HTTP 状态代码更改为指定的值。  
-    -   [跟踪](api-management-advanced-policies.md#Trace) - 将字符串添加到 [API 检查器](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/)输出中。  
+    -   [跟踪](api-management-advanced-policies.md#Trace) - 将字符串添加到 [API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)输出中。  
     -   [等待](api-management-advanced-policies.md#Wait) - 继续之前，等待括住的[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)或[控制流](api-management-advanced-policies.md#choose)策略完成。  
 -   [身份验证策略](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [使用基本方法进行身份验证](api-management-authentication-policies.md#Basic) - 使用基本身份验证方法对后端服务进行身份验证。  

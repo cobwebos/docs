@@ -1,25 +1,24 @@
 ---
-title: 如何使用访问控制 (Java) | Microsoft Docs
+title: 如何使用访问控制 (Java)
 description: 了解如何在 Azure 中以 Java 开发和使用访问控制。
 services: active-directory
 documentationcenter: java
 author: rmcmurray
-manager: mtillman
-editor: ''
+manager: mbaldwin
 ms.assetid: 247dfd59-0221-4193-97ec-4f3ebe01d3c7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/11/2018
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bd65da490bf3d7e17bf6ff36e76e306842d50653
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>如何使用 Eclipse 在 Azure Access Control 服务上对 Web 用户进行身份验证
 本指南将说明如何在 Azure Toolkit for Eclipse 中使用 Azure 访问控制服务 (ACS)。 有关 ACS 的详细信息，请参阅[后续步骤](#next_steps)部分。
@@ -123,7 +122,7 @@ Windows Live ID 现已作为 ACS 命名空间的 IP 启用。 紧接着，将 Ja
    5. 接受其余字段中的默认值。
 4. 单击“ **保存**”。
 
-现在已成功完成对 Java Web 应用程序的配置，该应用程序在 Azure 计算模拟器（位于 http://localhost:8080/）中运行时会作为 ACS 命名空间中的 RP。 接下来，创建 ACS 用于处理 RP 的声明的规则。
+现在已成功完成对 Java Web 应用程序的配置，该应用程序在 Azure 计算模拟器（位于 http://localhost:8080/)）中运行时会作为 ACS 命名空间中的 RP。 接下来，创建 ACS 用于处理 RP 的声明的规则。
 
 ## <a name="create-rules"></a>创建规则
 在此任务中，将定义用于决定将声明从 IP 传递到 RP 的方式的规则。 在本指南中，我们只将 ACS 配置为直接复制输出令牌中的输入声明类型和值，而不筛选或修改它们。

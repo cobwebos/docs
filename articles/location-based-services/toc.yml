@@ -1,3 +1,5 @@
+- name: Azure IoT 基础
+  href: ../iot-fundamentals/index.yml
 - name: Azure Location Based Services 文档
   href: index.yml
 - name: 概述
@@ -47,6 +49,32 @@
       href: 'https://docs.microsoft.com/rest/api/location-based-services-management/'
     - name: 地图控件 API - Javascript
       href: 'https://docs.microsoft.com/javascript/api/location-based-services-javascript/'
+- name: 相关内容
+  items:
+    - name: 解决方案
+      items:
+        - name: IoT 套件预配置解决方案
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: 平台服务
+      items:
+        - name: IoT 中心
+          href: /azure/iot-hub
+        - name: IoT 中心设备预配服务
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: 服务 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: 时序见解
+          href: /azure/time-series-insights
+    - name: Microsoft Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 设备 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 资源
   items:
     - name: Azure IoT 开发人员中心

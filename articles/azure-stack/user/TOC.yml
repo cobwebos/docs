@@ -27,7 +27,7 @@
   items:
     - name: 使用 Azure Stack 门户
       href: azure-stack-use-portal.md
-    - name: 使用 Azure 堆栈 API
+    - name: 使用 Azure Stack API
       href: azure-stack-rest-api-use.md
     - name: 安全性和遵从性
       items:
@@ -110,7 +110,11 @@
                   href: azure-stack-version-profiles-azurecli2.md
                 - name: 前往
                   href: azure-stack-version-profiles-go.md
-                - name: 资源提供程序 Api 支持的配置文件
+                - name: Ruby
+                  href: azure-stack-version-profiles-ruby.md
+                - name: Python
+                  href: azure-stack-version-profiles-python.md
+                - name: 配置文件支持的资源提供程序 API
                   href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: 使用策略模块
           href: azure-stack-policy-module.md

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 1399455fb727c27e22da8c5525eec87e343d46cc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 798af75625e0d2fed1220932c172683fe71f9aad
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂  
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -230,7 +230,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-[在此处了解详细信息](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
+[在此处了解详细信息](https://msdn.microsoft.com/library/azure/dn931932.aspx)
 
 ## <a name="schema-of-logs--events"></a>日志和事件的架构
 

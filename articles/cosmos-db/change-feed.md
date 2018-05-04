@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 8cc4d8110db0a650b8355f96fee490093826ac30
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: be59f1a9dc19fffdb6a952c7db73756909036bf6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的更改源支持
 
@@ -159,6 +159,11 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
             }
     }
     ```
+
+> [!NOTE]
+> 可以使用 `ChangeFeedOptions.PartitionKey`（而不是 `ChangeFeedOptions.PartitionKeyRangeId`）指定要为其获取更改源的单个分区键。 例如，`PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`。
+> 
+>
 
 如果有多个读取者，可以使用 **ChangeFeedOptions** 将读取负载分配到不同的线程或不同的客户端。
 

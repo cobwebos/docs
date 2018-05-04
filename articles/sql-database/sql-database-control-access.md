@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: f7865ab165f1ef9377817b8110e35d516e01c0e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1844abbff660b175ea78d09bd2256aa5ba83ed83
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-database-access-control"></a>Azure SQL 数据库访问控制
 为了提供安全性，SQL 数据库会使用按 IP 限制连接的防火墙规则、要求用户证明其身份的身份验证机制，以及只允许用户执行特定操作和访问特定数据的授权机制，来控制访问。 
@@ -37,7 +37,7 @@ SQL 数据库支持两种类型的身份验证：
 
 数据库引擎将关闭空闲超过 30 分钟的连接。 该连接必须重新登录才可供使用。 连续与 SQL 数据库建立活动连接需要至少每隔 10 小时重新授权一次（由数据库引擎执行授权）。 数据库引擎将尝试使用最初提交的密码重新授权，且不需要用户输入。 出于性能原因，在 SQL 数据库中重置密码时，不会对连接重新进行身份验证，即使该连接由于连接池而重置。 这一点与本地 SQL Server 的行为不同。 如果在最初授权连接后密码发生更改，则必须终止该连接，并使用新密码建立新连接。 具有 `KILL DATABASE CONNECTION` 权限的用户可以使用 [KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql) 命令显式终止与 SQL 数据库的连接。
 
-可在 master 数据库中创建用户帐户并向其授予服务器上所有数据库中的权限，或者在数据库本身内部创建用户帐户（称为包含的用户）。 有关创建和管理登录名的信息，请参阅[管理登录名](sql-database-manage-logins.md)。 若要增强可移植性和可伸缩性，请使用包含的数据库用户来增强可伸缩性。 有关包含的用户的详细信息，请参阅[包含的数据库用户 - 使数据库可移植](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)、[CREATE USER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) 和[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)。
+可在 master 数据库中创建用户帐户并向其授予服务器上所有数据库中的权限，或者在数据库本身内部创建用户帐户（称为包含的用户）。 有关创建和管理登录名的信息，请参阅[管理登录名](sql-database-manage-logins.md)。 若要增强可移植性和可伸缩性，请使用包含的数据库。 有关包含的用户的详细信息，请参阅[包含的数据库用户 - 使数据库可移植](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)、[CREATE USER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) 和[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)。
 
 根据最佳实践，应用程序应使用专用帐户进行身份验证 – 这样，就可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 建议的方法是创建[包含的数据库用户](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)，使应用程序能够直接向数据库进行身份验证。 
 

@@ -1,18 +1,18 @@
 ---
-title: "Azure 容器注册表中的最佳做法"
-description: "通过遵循这些最佳做法，了解如何有效使用 Azure 容器注册表。"
+title: Azure 容器注册表中的最佳做法
+description: 通过遵循这些最佳做法，了解如何有效使用 Azure 容器注册表。
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 12/20/2017
 ms.author: marsma
-ms.openlocfilehash: 684b778f57da4adb331958c5daef6b9906b6d253
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c993e55193ffb140f6c3aabfa7626b501ab24b9d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
 

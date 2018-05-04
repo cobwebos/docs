@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 109a5b50688ca0b2c4edc63b6ba5c89bac74a6d3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9897a3578ad35376bea81b4821dbc2d84526a736
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -240,7 +240,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>使用专用工作站进行 Azure AD 管理
 
-攻击者会尝试以特权帐户为目标获取组织数据和系统的访问权限，这样就可以通过恶意代码来更改程序逻辑，或者窥视管理员输入某个凭据，对数据的完整性和验证造成损害。 特权访问工作站 (PAW) 为敏感任务提供专用操作系统，使其免受 Internet 攻击和威胁向量攻击。 从日常使用的工作站和设备中分离这些敏感任务和帐户可提供强大的保护，使其免受网络钓鱼攻击、应用程序和操作系统漏洞攻击、各种模拟攻击和凭据盗窃攻击（例如按键日志记录、哈希传递和票证传递）。 部署特权访问工作站可以降低管理员输入管理员凭据时遇到的风险，除非是在经过强化的桌面环境中。 有关详细信息，请参阅[特权访问工作站](https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations)。
+攻击者会尝试以特权帐户为目标获取组织数据和系统的访问权限，这样就可以通过恶意代码来更改程序逻辑，或者窥视管理员输入某个凭据，对数据的完整性和验证造成损害。 特权访问工作站 (PAW) 为敏感任务提供专用操作系统，使其免受 Internet 攻击和威胁向量攻击。 从日常使用的工作站和设备中分离这些敏感任务和帐户可提供强大的保护，使其免受网络钓鱼攻击、应用程序和操作系统漏洞攻击、各种模拟攻击和凭据盗窃攻击（例如按键日志记录、哈希传递和票证传递）。 部署特权访问工作站可以降低管理员输入管理员凭据时遇到的风险，除非是在经过强化的桌面环境中。 有关详细信息，请参阅[特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)。
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>查看美国国家标准与技术协会提供的有关如何处理事件的建议 
 

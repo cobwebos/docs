@@ -5,21 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 8A336052-8520-41D2-AF6F-0CCE23F727B4
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/23/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 452ed1de0588b380747edaa44dd0cc3805c51392
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1ea65c9c1f69c8eec77eb498a5963b0d77ce57f1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>管理 Azure Stack 中的 API 版本配置文件
 
@@ -38,15 +36,28 @@ API 配置文件指定 Azure 资源提供程序和 Azure REST 终结点的 API �
 ## <a name="summary-of-api-profiles"></a>API 配置文件的摘要
 
 - API 配置文件用于表示一组的 Azure 资源提供程序和其 API 版本。
-- 为开发人员能够跨多个 Azure 云创建模板创建 API 配置文件。 它们旨在满足对兼容且稳定的接口的需要。
+- 为开发人员能够跨多个 Azure 云创建模板创建 API 配置文件。 它们旨在满足对兼容和稳定接口的需要。
 - 配置文件将发布四次一年。
 - 三个配置文件命名约定是：
-    - **latest**  
+    - **最新**  
         在 Azure 中发布最新的 API 版本。
     - **yyyy-mm-dd-hybrid**  
-    发布节奏举行，此版本侧重于一致性和稳定性多个云。
+    发布节奏举行，此版本侧重于一致性和稳定性多个云。 此配置文件以目标最佳 Azure 堆栈兼容性。 
     - **yyyy-mm-dd-profile**  
     位于之间最佳的稳定性和最新功能。
+
+### <a name="api-profiles-and-azure-stack-compatibility"></a>API 配置文件和 Azure 堆栈兼容性
+
+最新的 API 配置文件不是与 Azure 堆栈兼容的。 命名约定将帮助你确定要在 Azure 堆栈解决方案中使用的配置文件。
+
+**最新**  
+此配置文件是在全局 Azure 中，将不起作用 Azure 堆栈中找到的最新的 API 版本。 此配置文件具有的最大数的重大更改。 稳定性和与其他云中的兼容性，该配置文件将保留。 如果你正在使用的最新的 API 版本，这是你应使用的配置文件。
+
+**Yyyy mm dd 混合**  
+此配置文件在年 3 月和 9 月每年发布。 此配置文件具有最佳的稳定性和与各类云的兼容性。 此配置文件设计为针对全局 Azure 和 Azure 堆栈。 此配置文件中列出的 Azure API 版本将列出 Azure 堆栈的相同。 此配置文件可用于开发针对混合云解决方案的代码。
+
+**yyyy-mm-dd-profile**  
+此配置文件面向全球 Azure 发布于 6 月和年 12 月。 对 Azure 堆栈; 起不到此配置文件将有许多重大更改。 当它搁置后面最佳的稳定性和最新功能时，最新和此配置文件之间的差异是最新将始终包含的最新的 API 版本，而不考虑该 API 已发布时。 如果新的 API 版本明天创建为计算 API，该 API 版本中的最新的配置文件，将列出，但不是在作为此配置文件的配置文件 yyyy mm dd 配置文件事先建立。 它涵盖年 6 月或年 12 月之前发布的最新版本。
 
 ## <a name="azure-resource-manager-api-profiles"></a>Azure 资源管理器 API 配置文件
 
@@ -67,14 +78,13 @@ API 配置文件工作的工具可以使用 Azure 资源管理器，例如 Power
 你可以找到可帮助你通过使用配置文件与具有 Azure 堆栈首选语言集成你的解决方案的代码示例。 目前，你可以找到指南和示例的以下语言：
 
 - **PowerShell**  
-你可以使用**AzureRM.Bootstrapper**可通过 PowerShell 库，以获取使用 API 版本配置文件所需的 PowerShell cmdlet 的模块。  
-有关信息，请参阅[使用 API 版本适用于 PowerShell 的配置文件](azure-stack-version-profiles-powershell.md)。
+你可以使用**AzureRM.Bootstrapper**可通过 PowerShell 库，以获取使用 API 版本配置文件所需的 PowerShell cmdlet 的模块。 有关信息，请参阅[使用 API 版本适用于 PowerShell 的配置文件](azure-stack-version-profiles-powershell.md)。
 - **Azure CLI 2.0**  
-你可以更新你的环境配置为使用 Azure 堆栈的特定 API 版本配置文件。  
-有关信息请参阅[使用 API 版本配置文件为使用 Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md)。
-- **GO**  
-在转到 SDK 中，配置文件是具有来自不同服务的不同版本的不同资源类型的组合。 配置文件均位于配置文件 / 路径中其版本**YYYY-月-日**格式。  
-有关信息请参阅[使用 API 版本转到配置文件](azure-stack-version-profiles-go.md)。
+你可以更新你的环境配置为使用 Azure 堆栈的特定 API 版本配置文件。 有关信息请参阅[使用 API 版本配置文件为使用 Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md)。
+- **转到**  
+在转到 SDK 中，配置文件是具有来自不同服务的不同版本的不同资源类型的组合。 配置文件均位于配置文件 / 路径中其版本**YYYY-月-日**格式。 有关信息，请参阅[使用 API 版本转到配置文件](azure-stack-version-profiles-go.md)。
+- **Ruby**  
+Ruby SDK Azure 堆栈资源管理器提供了工具来帮助你构建和管理你的基础结构。 SDK 中的资源提供程序包括计算、 虚拟网络和存储与 Ruby 语言使用。 有关信息，请参阅[使用 API 版本配置文件与 Ruby](azure-stack-version-profiles-ruby.md)
 
 ## <a name="next-steps"></a>后续步骤
 * [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)

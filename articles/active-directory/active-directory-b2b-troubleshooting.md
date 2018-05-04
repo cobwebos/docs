@@ -1,13 +1,13 @@
 ---
-title: "Azure Active Directory B2B 协作故障排除 | Microsoft 文档"
-description: "Azure Active Directory B2B 协作的常见问题的补救措施"
+title: Azure Active Directory B2B 协作故障排除 | Microsoft 文档
+description: Azure Active Directory B2B 协作的常见问题的补救措施
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 05/25/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 588e154d35fda539ac6ee8803ed96e6cd9a3d1df
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 82c171c59b7f465afd760d50b36d17912ee7c8e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>“\#”（这通常不是有效字符）如何与 Azure AD 进行同步？
 
-由于受邀帐户 user@contoso.com 变为 user_contoso.com#EXT@fabrikam.onmicrosoft.com，“\#”是 Azure AD B2B 协作或外部用户的 UPN 中的保留字符。因此，不允许来自本地的 UPN 中的 \# 登录到 Azure 门户。 
+由于受邀帐户 user@contoso.com 变为 user_contoso.com#EXT#@fabrikam.onmicrosoft.com，“\#”是 Azure AD B2B 协作或外部用户的 UPN 中的保留字符。因此，不允许来自本地的 UPN 中的 \# 登录到 Azure 门户。 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>我将外部用户添加到同步组时，收到错误
 

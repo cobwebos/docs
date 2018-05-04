@@ -3,16 +3,17 @@ title: 在 Fiddler 或 Postman（Azure 搜索 REST）中探索 REST API | Micros
 description: 如何使用 Fiddler 或 Postman 发出对 Azure 搜索的 HTTP 请求和 REST API 调用。
 author: HeidiSteen
 manager: cgronlun
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/04/2018
 ms.author: heidist
-ms.openlocfilehash: 8a2e423d635c12f5d08395c03e4bc57ac71156ef
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6108e0061c4a8de3000de7f7a07cca313803e80d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>使用 Fiddler 或 Postman 探索 Azure 搜索 REST API
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/18/2018
 
 以下工具广泛用于 Web 开发，但如果你熟悉其他工具，则仍可在使用该工具时遵循本文中的说明。
 
-+ [Postman（Google Chrome 加载项）](https://www.getpostman.com/)
++ [Postman 桌面应用](https://www.getpostman.com/)
 + [Telerik Fiddler](http://www.telerik.com/fiddler)
 
 ## <a name="get-the-api-key-and-endpoint"></a>获取 api-key 和终结点

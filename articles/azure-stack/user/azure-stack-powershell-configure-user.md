@@ -1,41 +1,42 @@
 ---
-title: "配置 Azure 堆栈用户 PowerShell 环境 |Microsoft 文档"
-description: "配置 Azure 堆栈用户 PowerShell 环境"
+title: 配置 Azure Stack 用户的 PowerShell 环境 | Microsoft Docs
+description: 配置 Azure Stack 用户的 PowerShell 环境
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: F4ED2238-AAF2-4930-AA7F-7C140311E10F
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 4/26/2017
 ms.author: mabrigg
-ms.openlocfilehash: 0bd5b4a98fee7a5d914e53e49a9517f5d3682a88
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.reviewer: Balsu.G
+ms.openlocfilehash: e17fc85de3d11034889c39fd205b7ddc8cb344cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="configure-the-azure-stack-users-powershell-environment"></a>配置 Azure 堆栈用户 PowerShell 环境
+# <a name="configure-the-azure-stack-users-powershell-environment"></a>配置 Azure Stack 用户的 PowerShell 环境
 
-作为 Azure 堆栈用户，你可以配置你 Azure 堆栈开发工具包 PowerShell 环境。 在配置之后，你可以使用 PowerShell 管理 Azure 堆栈的资源如订阅产品，虚拟机创建，部署 Azure 资源管理器模板，等等。本主题范围以将环境只，如果你想要设置云运算符环境中，PowerShell 是指的用户与使用[配置 Azure 堆栈运算符 PowerShell 环境](../azure-stack-powershell-configure-admin.md)文章。 
+Azure Stack 用户可以配置 Azure Stack 开发工具包的 PowerShell 环境。 配置后，可以使用 PowerShell 来管理 Azure Stack 资源，例如订阅产品、创建虚拟机、部署 Azure 资源管理器模板，等等。本主题的范围仅限用户环境，若要为云操作员环境设置 PowerShell，请参阅[配置 Azure Stack 操作员的 PowerShell 环境](../azure-stack-powershell-configure-admin.md)一文。 
 
 ## <a name="prerequisites"></a>必备组件 
 
-从运行以下先决条件[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或从基于 Windows 的外部客户端如果你是[通过 VPN 连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+如果已[通过 VPN 建立连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)，请通过[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)或基于 Windows 的外部客户端运行以下先决条件操作：
 
-* 安装[Azure 堆栈兼容 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
-* 下载[工具需要使用处理 Azure 堆栈](azure-stack-powershell-download.md)。 
+* 安装 [Azure Stack 兼容的 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
+* 下载[使用 Azure Stack 所需的工具](azure-stack-powershell-download.md)。 
 
-## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>配置用户环境并登录到 Azure 堆栈
+## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>配置用户环境并登录到 Azure Stack
 
-基于的部署 (Azure AD 或 AD FS)，运行以下脚本以配置 PowerShell 以 Azure 堆栈 （请确保将 AAD tenantName、 GraphAudience 终结点和根据你的环境配置 ArmEndpoint 值） 之一的类型：
+根据部署类型（Azure AD 或 AD FS），运行以下脚本之一配置适用于 Azure Stack 的 PowerShell（请确保根据自己的环境配置替换 AAD tenantName、GraphAudience 终结点和 ArmEndpoint 的值）：
 
-### <a name="azure-active-directory-aad-based-deployments"></a>部署基于 azure Active Directory (AAD)
+### <a name="azure-active-directory-aad-based-deployments"></a>基于 Azure Active Directory (AAD) 的部署
        
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
@@ -69,7 +70,7 @@ ms.lasthandoff: 12/11/2017
     -TenantId $TenantID 
    ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>部署基于 active Directory 联合身份验证服务 (AD FS) 
+### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>基于 Active Directory 联合身份验证服务 (AD FS) 的部署 
           
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
@@ -106,7 +107,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="register-resource-providers"></a>注册资源提供程序
 
-当在不具有通过门户部署任何资源的新创建的用户订阅上运行，不自动注册资源提供程序。 显式应通过使用以下脚本来注册它们：
+当尚未通过门户部署任何资源的新建用户订阅中操作时，不会自动注册资源提供程序。 应使用以下脚本显式注册资源提供程序：
 
 ```powershell
 foreach($s in (Get-AzureRmSubscription)) {
@@ -118,7 +119,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -F
 
 ## <a name="test-the-connectivity"></a>测试连接
 
-现在，我们具有所有内容设置，让我们使用 PowerShell 创建 Azure 堆栈中的资源。 例如，你可以创建应用程序的资源组并添加虚拟机。 使用以下命令创建名为"MyResourceGroup"的资源组：
+完成所有设置后，让我们使用 PowerShell 在 Azure Stack 中创建资源。 例如，可以为应用程序创建资源组并添加虚拟机。 使用以下命令创建名为“MyResourceGroup”的资源组：
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"

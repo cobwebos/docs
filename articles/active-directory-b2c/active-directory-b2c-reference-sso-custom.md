@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: davidmu
-ms.openlocfilehash: 3d378d188d9acec06f37ca91e3c67e82fb31fc08
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca7160d39d5d26ca69345ce636f22afbe44b25db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C：单一登录 (SSO) 会话管理
 
@@ -47,6 +47,9 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
 此提供程序可以用于在会话中存储声明。 此提供程序通常在用于管理本地帐户的技术配置文件中引用。 
+
+> [!NOTE]
+> 使用 DefaultSSOSessionProvider 在会话中存储声明时，需要确保需要返回给应用程序或由后续步骤的前提条件使用的任何声明都存储在会话中或通过读取目录中的用户配置文件进行扩充。 这可确保缺少声明时，身份验证旅程不会失败。
 
 ```XML
 <TechnicalProfile Id="SM-AAD">

@@ -1,31 +1,32 @@
 ---
-title: "分布式表的设计指南 - Azure SQL 数据仓库 | Microsoft Docs"
-description: "有关如何在 Azure SQL 数据仓库中设计哈希分布表和轮循机制表的一些建议。"
+title: 分布式表设计指南 - Azure SQL 数据仓库 | Microsoft Docs
+description: 有关如何在 Azure SQL 数据仓库中设计哈希分布式表和轮循机制分布式表的一些建议。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 01/18/2018
-ms.author: barbkess
-ms.openlocfilehash: 3c86b89da796223336e3a0d9dd809ae140d6911e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d65ca91fc4cffa53adf3a7c56c7919e46c5037d9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>有关如何在 Azure SQL 数据仓库中设计分布式表的指南
+有关如何在 Azure SQL 数据仓库中设计哈希分布式表和轮循机制分布式表的一些建议。
 
-本文针对如何在 Azure SQL 数据仓库中设计分布式表提出了一些建议。 哈希分布表可提高大型事实数据表上的查询性能，本文会重点进行介绍。 轮循机制表可用于提高加载速度。 这些设计选择对提高查询和加载性能具有重大影响。
+本文假设读者熟悉 SQL 数据仓库中的数据分布和数据移动概念。  有关详细信息，请参阅 [Azure SQL 数据仓库 - 大规模并行处理 (MPP) 体系结构](massively-parallel-processing-mpp-architecture.md)。 
 
-## <a name="prerequisites"></a>先决条件
-本文假设读者熟悉 SQL 数据仓库中的数据分布和数据移动概念。  有关详细信息，请参阅[体系结构](massively-parallel-processing-mpp-architecture.md)一文。 
+## <a name="what-is-a-distributed-table"></a>什么是分布式表？
+分布式表显示为单个表，但表中的行实际存储在 60 个分布区中。 这些行使用哈希或轮循机制算法进行分布。  
+
+**哈希分布式表**可提高大型事实数据表的查询性能，本文会重点进行介绍。 **轮循机制表**可用于提高加载速度。 这些设计选择对提高查询和加载性能具有重大影响。
+
+另一个表存储选项是跨所有计算节点复制一个小型表。 有关详细信息，请参阅[复制表的设计准则](design-guidance-for-replicated-tables.md)。 若要在这三个选项之间快速选择其一，请参阅[表概述](sql-data-warehouse-tables-overview.md)中的分布式表。 
 
 在设计表的过程中，尽可能多地了解数据以及数据查询方式。  例如，考虑以下问题：
 
@@ -33,20 +34,15 @@ ms.lasthandoff: 02/01/2018
 - 表的刷新频率是多少？   
 - 数据仓库中有事实数据表和维度表吗？   
 
-## <a name="what-is-a-distributed-table"></a>什么是分布式表？
-分布式表显示为单个表，但表中的行实际存储在 60 个分布区中。 这些行使用哈希或轮循机制算法进行分布。 
-
-另一个表存储选项是跨所有计算节点复制一个小型表。 有关详细信息，请参阅[复制表的设计准则](design-guidance-for-replicated-tables.md)。 若要在这三个选项之间快速选择其一，请参阅[表概述](sql-data-warehouse-tables-overview.md)中的分布式表。 
-
 
 ### <a name="hash-distributed"></a>哈希分布
-哈希分布表通过使用确定性的哈希函数将每一行分配给一个[分布区](massively-parallel-processing-mpp-architecture.md#distributions)，来跨计算节点分布表行。 
+哈希分布表通过使用确定性的哈希函数将每一行分配给一个[分布区](massively-parallel-processing-mpp-architecture.md#distributions)，实现表行的跨计算节点分布。 
 
 ![分布式表](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "分布式表")  
 
 由于相同的值始终哈希处理到相同的分布区，因此，数据仓库本身就具有行位置方面的信息。 SQL 数据仓库利用此信息最大程度地减少查询期间的数据移动，从而提高查询性能。 
 
-哈希分布表适用于星型架构中的大型事实数据表。 它们可以包含大量行，但仍实现高性能。 当然，用户也可以通过了解一些设计注意事项，获得分布式系统本应具有的性能。 本文所述的选择合适的分布列就是其中之一。 
+哈希分布表适用于星型架构中的大型事实数据表。 它们可以包含大量行，但仍实现高性能。 当然，用户应该了解一些设计注意事项，它们有助于获得分布式系统本应具有的性能。 本文所述的选择合适的分布列就是其中之一。 
 
 在以下情况下，考虑使用哈希分布表：
 
@@ -60,14 +56,14 @@ ms.lasthandoff: 02/01/2018
 
 在以下情况下，考虑对表使用轮循机制分布：
 
-- 从一个简单的起点入门时，因为该分布是默认选项
+- 在最开始将其用作一个简单的起点，因为该分布是默认选项
 - 没有明显的联接键时
 - 没有合适的候选列可供哈希分布表时
 - 表没有与其他表共享通用的联接键时
 - 该联接比查询中的其他联接更不重要时
 - 表是临时过渡表时
 
-[从 Azure 存储 blob 加载数据](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)教程提供了将数据加载到轮循机制临时表的示例。
+教程[将纽约出租车数据加载到 Azure SQL 数据仓库](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了将数据加载到轮循机制临时表的示例。
 
 
 ## <a name="choosing-a-distribution-column"></a>选择分布列
@@ -91,14 +87,14 @@ WITH
 ;
 ``` 
 
-选择分布列是一个重要的设计决策，因为此列中的值确定行的分布方式。 最佳选择取决于多种因素，通常需要对各方面进行权衡。 但是，如果第一次未选择最合适的列，可以使用 [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新创建具有不同分布列的表。 
+选择分布列是一个重要的设计决策，因为此列中的值确定行的分布方式。 最佳选择取决于多种因素，通常需要对各方面进行权衡。 但是，如果第一次未选择最合适的列，可以使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新创建具有不同分布列的表。 
 
 ### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>选择不需要更新的分布列
 除非删除行并插入包含更新值的新行，否则无法更新分布列。 因此，应选择包含静态值的列。 
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>选择数据均衡分布的分布列
 
-为了获得最佳性能，所有分布区都应当具有大致相同的行数。 当一个或多个分布区的行数不相称时，某些分布区会先于其他分布区完成其并行查询部分。 由于必须等到所有分布区都完成处理，才能完成查询，因此，每个查询的速度与最慢分布区的速度是一样的。
+为了获得最佳性能，所有分布区都应当具有大致相同的行数。 当一个或多个分布区的行数不相称时，某些分布区会先于其他分布区完成其并行查询部分。 由于必须等到所有分布区都完成处理，才能完成查询，因此，每个查询的速度取决于最慢分布区的速度。
 
 - 数据倾斜意味着数据未均衡分布在分布区中
 - 处理倾斜意味着在运行并行查询时，某些分布区所用的时间比其他分布区长。 数据倾斜时可能会出现这种情况。
@@ -117,7 +113,7 @@ WITH
 
 - 用于 `JOIN`、`GROUP BY`、`DISTINCT`、`OVER` 和 `HAVING` 子句。 当两个大型事实数据表频繁联接时，如果将这两个表分布在某个联接列上，查询性能将得到提升。  如果某个表不进行联接操作，则考虑将该表分布在经常出现在 `GROUP BY` 子句中的列上。
 - *不*用于 `WHERE` 子句。 这可以缩小查询范围，从而不必在所有分布区上运行查询。 
-- *不*是日期列。 WHERE 子句通常按日期进行筛选。  在这种情况下，可以在仅仅几个分布区上运行所有处理。
+- *不*是日期列。 WHERE 子句通常按日期进行筛选。  在这种情况下，可能会在少数几个分布区上运行所有处理。
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>没有合适分布列时怎么办
 
@@ -126,10 +122,10 @@ WITH
 完成哈希分布表的设计后，下一步就是将数据加载到表。  有关加载指南，请参阅[加载概述](sql-data-warehouse-overview-load.md)。 
 
 ## <a name="how-to-tell-if-your-distribution-column-is-a-good-choice"></a>如何判断分布列是否合适
-将数据加载到哈希分布表之后，查看行在 60 个分布区中分布的均衡程度。 每个分布区的行数最多可以相差 10%，但不对性能产生明显影响。 
+将数据加载到哈希分布表之后，查看行在 60 个分布区中分布的均衡程度。 如果每个分布区的行数相差不超过 10%，性能不会受到明显影响。 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>确定表是否有数据倾斜现象
-一种快速的数据倾斜检查方法是使用 [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)。 以下 SQL 代码返回 60 个分布区中每个分布区存储的表行数。 为了获得平衡的性能，分布式表中的行应该均衡分布在所有分布区中。
+一种快速的数据倾斜检查方法是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)。 以下 SQL 代码返回 60 个分布区中每个分布区存储的表行数。 为了获得平衡的性能，分布式表中的行应该均衡分布在所有分布区中。
 
 ```sql
 -- Find data skew for a distributed table

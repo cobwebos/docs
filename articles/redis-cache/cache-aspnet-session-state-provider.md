@@ -1,6 +1,6 @@
 ---
-title: "缓存 ASP.NET 会话状态提供程序 | Microsoft Docs"
-description: "了解如何使用 Azure Redis 缓存存储 ASP.NET 会话状态"
+title: 缓存 ASP.NET 会话状态提供程序 | Microsoft Docs
+description: 了解如何使用 Azure Redis 缓存存储 ASP.NET 会话状态
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: 485375f2f2ffb83b7d0fdeef8daab5880a8bbc27
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: bb0c53433af8a679811f00bfff2efee94d211a24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
-Azure Redis 缓存提供一个会话状态提供程序，可用于在缓存而不是内存或 SQL Server 数据库中存储会话状态。 要使用缓存会话状态提供程序，首先配置缓存，然后使用 Redis 缓存会话状态 NuGet 包为缓存配置 ASP.NET 应用程序。
+Azure Redis 缓存提供了一个会话状态提供程序，可以使用该提供程序通过 Redis 缓存将会话状态存储在内存中而不是存储在 SQL Server 数据库中。 要使用缓存会话状态提供程序，首先配置缓存，然后使用 Redis 缓存会话状态 NuGet 包为缓存配置 ASP.NET 应用程序。
 
 在实际云应用中避免存储某种形式的用户会话状态通常是不现实的，但某些方法相比其他方法而言，对性能和可伸缩性的影响更大。 如果需要存储状态，最佳解决方案是使状态量保持较小并将其存储在 Cookie 中。 如果这不可行，下一个最佳解决方案是将 ASP.NET 会话状态与提供程序配合使用以实现分布式内存中缓存。 从性能和可伸缩性的角度来看，最差的解决方案是使用数据库支持的会话状态提供程序。 本主题提供有关使用 Azure Redis 缓存的 ASP.NET 会话状态提供程序的指南。 有关其他会话状态选项的信息，请参阅 [ASP.NET 会话状态选项](#aspnet-session-state-options)。
 
@@ -112,7 +112,7 @@ Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 
 ## <a name="aspnet-session-state-options"></a>ASP.NET 会话状态选项
 * 内存中会话状态提供程序 - 此提供程序会话状态存储在内存中。 使用此提供程序的好处是它简单且快速。 但是，如果使用内存中提供程序，由于它不是分布式的，因此不能缩放 Web 应用。
-* SQL Server 会话状态提供程序 - 此提供程序会话状态存储在 SQL Server 中。 如果要在持久性存储区中存储会话状态，请使用此提供程序。 可以缩放 Web 应用，但将 SQL Server 用于会话将对 Web 应用造成性能影响。
+* SQL Server 会话状态提供程序 - 此提供程序会话状态存储在 SQL Server 中。 如果要在持久性存储区中存储会话状态，请使用此提供程序。 可以缩放 Web 应用，但将 SQL Server 用于会话将对 Web 应用造成性能影响。 还可以将此提供程序与[内存中 OLTP 配置](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/)一起使用来帮助提高性能。
 * 分布式内存中会话状态提供程序，如 Redis 缓存会话状态提供程序 - 此提供程序提供两全其美的功能。 Web 应用可以使用简单、快速且可缩放的会话状态提供程序。 因为此提供程序会话状态存储在缓存中，因此应用必须考虑到在与分布式内存中缓存通信时关联的所有特征，如暂时性网络故障。 有关使用缓存的最佳实践，请参阅 Microsoft 模式和实践 [Azure 云应用程序设计和实现指南](https://github.com/mspnp/azure-guidance)中的[缓存指南](../best-practices-caching.md)。
 
 有关会话状态和其他最佳实践的详细信息，请参阅 [Web Development Best Practices (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)（Web 开发最佳做法（使用 Azure 构建实际的云应用））。

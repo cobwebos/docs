@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea69fdab9ec510f6060b280db3afffb7533a4bda
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2f56443eb41e2a7f723e95f86f39c5cc47e82f6f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 Microsoft Dynamics 365 或 Microsoft Dynamics CRM 复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用已正式发布的版本 1 的数据工厂，请参阅[版本 1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用已正式发布的版本 1 的数据工厂，请参阅[版本 1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -63,7 +63,7 @@ Dynamics 链接服务支持以下属性。
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **Dynamics**。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 Dynamics Online 必须为 **"Online"**。 | 是 |
-| organizationName | Dynamics 实例的组织名称。 | 否，应指定何时与用户关联多个 Dynamics 实例 |
+| serviceUri | 你的 Dynamics 实例的服务 URL，例如 `https://adfdynamics.crm.dynamics.com`。 | 是 |
 | authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为 Dynamics Online 指定 **"Office365"**。 | 是 |
 | username | 指定用于连接到 Dynamics 的用户名。 | 是 |
 | password | 指定为 username 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -71,6 +71,9 @@ Dynamics 链接服务支持以下属性。
 
 >[!IMPORTANT]
 >将数据复制到 Dynamics 时，不能使用默认 Azure 集成运行时执行复制。 换而言之，如果源链接服务未指定集成运行时，请使用靠近 Dynamics 实例的位置显式[创建 Azure 集成运行时](create-azure-integration-runtime.md#create-azure-ir)。 按如下示例所示在 Dynamics 链接服务中关联该运行时。
+
+>[!NOTE]
+>Dynamics 连接器使用可选的“organizationName”属性来标识 Dynamics CRM/365 Online 实例。 虽然它保持正常工作，但建议改为指定新的“serviceUri”属性来获得更好的实例发现性能。
 
 示例：使用 Office365 身份验证的 Dynamics 联机
 
@@ -82,7 +85,7 @@ Dynamics 链接服务支持以下属性。
         "description": "Dynamics online linked service using Office365 authentication",
         "typeProperties": {
             "deploymentType": "Online",
-            "organizationName": "orga02d9c75",
+            "serviceUri": "https://adfdynamics.crm.dynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -207,7 +210,7 @@ Dynamics 链接服务支持以下属性。
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **DynamicsSource**。 | 是 |
-| query | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 有关详细信息，请参阅[使用 FeachXML 生成查询](https://msdn.microsoft.com/en-us/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
+| query | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 有关详细信息，请参阅[使用 FeachXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
 
 **示例：**
 

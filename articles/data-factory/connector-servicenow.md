@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 6926ae6c67e3397006e95595a8dc28bab67256da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 29fb74e49ad3fdca0bc54a431da40b02ef24882b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 ServiceNow 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -45,7 +45,7 @@ ServiceNow 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：“ServiceNow” | 是 |
-| endpoint | ServiceNow 服务器的终结点 (`http://ServiceNowData.com`)。  | 是 |
+| endpoint | ServiceNow 服务器的终结点 (`http://<instance>.service-now.com`)。  | 是 |
 | authenticationType | 可使用的身份验证类型。 <br/>允许的值是：Basic、OAuth2 | 是 |
 | username | 用户名用于连接到 ServiceNow 服务器，进行基本和 OAuth2 身份验证。  | 否 |
 | password | 基本和 OAuth2 身份验证的用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -63,7 +63,7 @@ ServiceNow 链接服务支持以下属性：
     "properties": {
         "type": "ServiceNow",
         "typeProperties": {
-            "endpoint" : "http://ServiceNowData.com",
+            "endpoint" : "http://<instance>.service-now.com",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {

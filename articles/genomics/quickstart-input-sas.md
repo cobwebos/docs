@@ -1,7 +1,7 @@
 ---
-title: "使用 SAS 而非存储帐户密钥提交工作流 | Microsoft Docs"
+title: 使用 SAS 而非存储帐户密钥提交工作流 | Microsoft Docs
 titleSuffix: Azure
-description: "本快速入门假定你已安装 msgen 客户端并已通过服务成功运行示例数据。"
+description: 本快速入门假定你已安装 msgen 客户端并已通过服务成功运行示例数据。
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -11,11 +11,11 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 03/02/2018
-ms.openlocfilehash: b6d84428749d8f5f78374efcca22ef913ee96c5e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 802e300ac453baa4ea9bd9183223315abced2ea1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="submit-a-workflow-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS 而非存储帐户密钥提交工作流
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 03/08/2018
 
 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)是一项工具，用于管理已经存储在 Azure 存储中的资源。  可在[此处](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)详细了解如何使用 Azure 存储资源管理器。
 
-输入文件的 SAS 的作用域应局限于特定输入文件 (Blob)。 若要创建 SAS 令牌，请遵循[这些说明](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-storage-explorer#work-with-shared-access-signatures)。 创建 SAS 之后，包含查询字符串的完整 URL 以及查询字符串本身都已提供，可以从屏幕复制。
+输入文件的 SAS 的作用域应局限于特定输入文件 (Blob)。 若要创建 SAS 令牌，请遵循[这些说明](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer#work-with-shared-access-signatures)。 创建 SAS 之后，包含查询字符串的完整 URL 以及查询字符串本身都已提供，可以从屏幕复制。
 
  ![基因组学 SAS 存储资源管理器](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "基因组学 SAS 存储资源管理器")
 

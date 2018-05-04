@@ -3,7 +3,7 @@ title: Azure Stack 服务策略 | Microsoft Docs
 description: 了解 Azure Stack 服务策略，以及如何使集成系统保持在受支持的状态。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.assetid: caac3d2f-11cc-4ff2-82d6-52b58fee4c39
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/18/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: 160ba42c5cbdd3e8b999040cba8254d4c87f7c63
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 77cc2f80588a104880e8149daccc6debd1ec43bc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack 服务策略
 本文介绍 Azure Stack 集成系统的服务策略，以及必须如何做才能使系统保持在受支持的状态。 
@@ -55,6 +55,9 @@ Microsoft 预期每月发布软件更新包。 但是，可能一个月内发布
 例如，如果最新发布的更新版本为 1805，在此之前的两个更新包为版本 1804 和 1803，则 1803 和 1804 仍受支持， 但 1802 不受支持。 即使最近一到两个月没有发布任何版本，此策略也有效。 例如，如果当前版本是 1805年并且没有任何 1804年版本，1803年和 1802年以前的两个更新包保持的支持。
 
 Microsoft 软件更新包是非累积性的，其先决条件是需要前一个更新包。 如果决定延后一个或多个更新，则要使用最新版本，请考虑整体运行时。 
+
+## <a name="get-support"></a>获取支持
+Azure 堆栈遵循作为 Azure 在相同的支持流程。 企业客户可以按照中描述的过程[如何创建 Azure 支持请求](/azure/azure-supportability/how-to-create-azure-support-request)。 如果你是客户的云服务提供程序 (CSP)，请联系你的 CSP 以获得支持。  有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。 
 
 
 ## <a name="next-steps"></a>后续步骤

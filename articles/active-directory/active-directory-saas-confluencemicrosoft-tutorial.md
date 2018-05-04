@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5b81ca4f5a9f30b2882d86639ca9386e7bbc09e8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c89be4917bb266bcd0244f2409bfa703dd3e523c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 与 Confluence SAML SSO by Microsoft 集成
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 03/16/2018
 
 **若要从库中添加 Confluence SAML SSO by Microsoft，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 03/16/2018
     ![配置单一登录][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![配置单一登录](./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
 
 3. 在“Confluence SAML SSO by Microsoft 域和 URL”部分，执行以下步骤：
@@ -131,29 +131,13 @@ ms.lasthandoff: 03/16/2018
 
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
 
-    > [!NOTE] 
+    > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 Confluence 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
 
-4. 若要生成**元数据** URL，请执行以下步骤：
-
-    a. 单击“应用注册”。
+4. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
     
-    ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/endpoint.png)
+    ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/tutorial_metadataurl.png)
      
-    d. 现在，转到 Confluence SAML SSO by Microsoft 的属性页，使用“复制”按钮复制应用程序 ID 并将其粘贴到记事本。
- 
-    ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/appid.png)
-
-    e. 使用以下模式 `<FEDERATION METADATA DOCUMENT url>?appid=<application id>` 生成元数据 URL，并将此值复制到记事本，以备将来配置插件时使用。
-
 5. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/tutorial_general_400.png)
@@ -175,11 +159,11 @@ ms.lasthandoff: 03/16/2018
 10. 在配置页上执行下列步骤：
 
     ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/addon52.png)
- 
+
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
 
-    a. 在“元数据 URL”中，粘贴从 Azure AD 生成的元数据 URL，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
+    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
     b. 复制“标识符、回复 URL 和登录 URL”值，并将其分别粘贴到 Azure 门户中“Confluence SAML SSO by Microsoft 域和 URL”部分的“标识符、回复 URL 和登录 URL”文本框内。
 
@@ -202,10 +186,6 @@ ms.lasthandoff: 03/16/2018
 
     > [!NOTE]
     > 有关安装和故障排除的详细信息，请访问 [MS Confluence SSO 连接器管理员指南](ms-confluence-jira-plugin-adminguide.md)，还可以参阅[常见问题解答](ms-confluence-jira-plugin-faq.md)以获得帮助
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -323,4 +303,3 @@ ms.lasthandoff: 03/16/2018
 [201]: ./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_general_203.png
-

@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 6a66c9fe3716935a717dca984d1995ca371d9499
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b45e1434d648096a67c2f12046960926d2c7640d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-your-sql-database"></a>保护 SQL 数据库
 
@@ -39,7 +39,7 @@ SQL 数据库可以保护数据。对于动态数据，它使用[传输层安全
 数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 发现最敏感的数据（业务/财务、医疗保健、 PII 等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
 
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
-- 控制包含高度敏感数据的数据库的访问并增强其安全性。
+- 控制对包含高度敏感数据的数据库的访问并增强其安全性。
 - 帮助满足数据隐私标准和法规符合性要求。
 
 有关详细信息，请参阅 [SQL DB 数据发现和分类入门](sql-database-data-discovery-and-classification.md)。 
@@ -66,7 +66,7 @@ SQL 数据库身份验证是指连接到数据库时如何证明用户的身份�
 行级别安全性使客户能够根据执行查询的用户的特征（例如，组成员身份或执行上下文），控制对数据库表中的行的访问。 有关详细信息，请参阅[行级别安全性](https://msdn.microsoft.com/library/dn765131)。
 
 ### <a name="dynamic-data-masking"></a>动态数据掩码 
-SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来限制此类数据的泄露。 动态数据过滤可自动发现 Azure SQL 数据库中可能存在的敏感数据，提供实用建议来过滤这些字段，对应用程序层几乎没有任何影响。 它的工作原理是在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。 有关详细信息，请参阅 [SQL 数据库动态数据过滤入门](sql-database-dynamic-data-masking-get-started.md)，了解如何限制敏感数据的公开。
+SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来限制此类数据的泄露。 动态数据过滤可自动发现 Azure SQL 数据库中可能存在的敏感数据，提供实用建议来过滤这些字段，对应用程序层几乎没有任何影响。 它的工作原理是在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。 有关详细信息，请参阅 [SQL 数据库动态数据掩码入门](sql-database-dynamic-data-masking-get-started.md)。
 
 ## <a name="proactive-monitoring"></a>主动监视
 SQL 数据库通过提供审核和威胁检测功能来保护数据。 

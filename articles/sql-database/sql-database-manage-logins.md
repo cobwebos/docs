@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 1f512cdbb0275e9ae2d868a326df0e4e5dd2ee24
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 54bf692f35e2529fe7d0b14684c9acc7d66b9903
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="controlling-and-granting-database-access"></a>控制和授予数据库访问权限
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 03/17/2018
 1. 使用管理员帐户连接到 master 数据库。
 2. 可选步骤：使用 [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) 语句创建 SQL Server 身份验证登录名。 示例语句：
    
-   ```
+   ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
    ```
    
@@ -86,15 +86,15 @@ ms.lasthandoff: 03/17/2018
 
 3. 在 master 数据库中，使用 [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) 语句创建用户。 该用户可以是 Azure Active Directory 身份验证包含数据库用户（如果已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。示例语句：
    
-   ```
-   CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
-   CREATE USER Tran WITH PASSWORD = '<strong_password>';
-   CREATE USER Mary FROM LOGIN Mary; 
+   ```sql
+   CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
+   CREATE USER Tran WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
+   CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
 4. 使用 [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) 语句将新用户添加到 **dbmanager** 数据库角色。 示例语句：
    
-   ```
+   ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
    ALTER ROLE dbmanager ADD MEMBER [mike@contoso.com];
    ```
@@ -114,21 +114,25 @@ ms.lasthandoff: 03/17/2018
 
 要创建用户，请先连接到数据库，然后执行如下所示的语句：
 
-```
+```sql
 CREATE USER Mary FROM LOGIN Mary; 
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 开始时，仅其中一个管理员或数据库所有者可以创建用户。 若要授权其他用户来创建新用户，可通过如下所示语句向该选定用户授予 `ALTER ANY USER` 权限：
 
-```
+```sql
 GRANT ALTER ANY USER TO Mary;
 ```
 
 若要向其他用户授予对数据库的完全控制权限，可通过 `ALTER ROLE` 语句让这些用户成为 **db_owner** 固定数据库角色的成员。
 
+```sql
+ALTER ROLE db_owner ADD MEMBER Mary; 
+```
+
 > [!NOTE]
-> 根据登录名创建数据库用户的最常见原因是 SQL Server 身份验证用户需要访问多个数据库。 基于登录名的用户与登录名绑定，并且只为该登录名保留一个密码。 各个数据库中的包含数据库用户都是单个的实体，且均保留各自的密码。 如果包含数据库用户的密码不相同，则可能会给这些用户造成混淆。
+> 创建基于逻辑服务器登录名的数据库用户的一个常见原因是用户需要访问多个数据库。 由于包含的数据库的用户都是单独的实体，因此每个数据库都维护其各自的用户及其密码。 这可能会导致开销，因为用户必须记住每个数据库的密码，当必须为许多数据库更改多个密码时，这通常难以做到。 但是，当使用 SQL Server 登录名和高可用性（活动异地复制和故障转移组）时，必须手动在每台服务器上设置 SQL Server 登录名。 否则，数据库用户在发生故障转移后将不再映射到该服务器登录名，并且在故障转移后将无法访问数据库。 有关为异地复制配置登录名的详细信息，请参阅[针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性](sql-database-geo-replication-security-config.md)。
 
 ### <a name="configuring-the-database-level-firewall"></a>配置数据库级防火墙
 最好是规定非管理员用户只能通过防火墙来访问所使用的数据库。 可以使用 [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) 语句来配置数据库级防火墙，而不必通过服务器级防火墙来授权其 IP 地址访问所有数据库。 不能通过门户来配置数据库级防火墙。
@@ -164,7 +168,7 @@ GRANT ALTER ANY USER TO Mary;
 * 在 ADO.NET 应用程序中执行 `CREATE/ALTER/DROP LOGIN` 和 `CREATE/ALTER/DROP DATABASE` 语句时，不允许使用参数化命令。 有关详细信息，请参阅[命令和参数](https://msdn.microsoft.com/library/ms254953.aspx)。
 * 在执行 `CREATE/ALTER/DROP DATABASE` 和 `CREATE/ALTER/DROP LOGIN` 语句时，上述每个语句都必须是 Transact-SQL 批处理中的唯一语句。 否则会出错。 例如，以下 Transact-SQL 会检查该数据库是否存在。 如果该数据库存在，则调用 `DROP DATABASE` 语句删除该数据库。 因为 `DROP DATABASE` 语句不是该批处理中的唯一语句，所以执行以下 Transact-SQL 将导致错误。
 
-  ```
+  ```sql
   IF EXISTS (SELECT [name]
            FROM   [sys].[databases]
            WHERE  [name] = N'database_name')

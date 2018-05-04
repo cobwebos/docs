@@ -3,22 +3,21 @@ title: 如何通过 Node.js 使用 Azure 表存储或 Azure Cosmos DB | Microsof
 description: 使用 Azure 表存储或 Azure Cosmos DB 将结构化数据存储在云中。
 services: cosmos-db
 documentationcenter: nodejs
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: fc2e33d2-c5da-4861-8503-53fdc25750de
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 03/23/2018
-ms.author: mimig
-ms.openlocfilehash: fc6e3ca079b4d1edefa82e06dbe63b393ab2fbb3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: 3f1908a6c2d129da44e0719b2cf69cf09baef356
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>如何通过 Node.js 使用 Azure 表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -27,12 +26,20 @@ ms.lasthandoff: 03/28/2018
 ## <a name="overview"></a>概述
 本文演示如何使用 Node.js 应用程序中的 Azure 存储表服务或 Azure Cosmos DB 执行常见方案。
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
+
+### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
+
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>创建 Azure Cosmos DB 表 API 帐户
+
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="configure-your-application-to-access-azure-storage"></a>创建用于访问 Azure 存储的应用程序
-若要使用 Azure 存储，需要 Azure Storage SDK for Node.js ，其中包括一组便于与存储 REST 服务进行通信的库。
+若要使用 Azure 存储或 Azure Cosmos DB，需要适用于 Node.js 的 Azure 存储 SDK，其中包括一组便于与存储 REST 服务进行通信的库。
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用 Node 包管理器 (NPM) 安装包
 1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行接口导航到在其中创建了应用程序的文件夹。

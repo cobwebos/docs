@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d009e8bdf513b10198aac826236ff44376ed630
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 60432e18c9496ff6fc5431fcd7b73aa5f4c9696c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>教程：Azure Active Directory 与 Mercell 集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/23/2018
 
 **若要从库中添加 Mercell，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 03/23/2018
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_samlbase.png)
 
 3. 在“Mercell 域和 URL”部分中，执行以下步骤：
@@ -107,36 +107,16 @@ ms.lasthandoff: 03/23/2018
     ![Mercell 域和 URL 单一登录信息](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_url.png)
 
     在“标识符”文本框中，键入 URL：`https://my.mercell.com/`
- 
-4. 单击“保存”按钮。
+
+4. 在“SAML 签名证书”部分上，单击”复制”按钮，复制**应用联合元数据 URL**并将其粘贴到记事本。
+    
+    ![配置单一登录](./media/active-directory-saas-mercell-tutorial/tutorial_metadataurl.png)
+     
+5. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-mercell-tutorial/tutorial_general_400.png)
 
-5. 若要生成**元数据 URL**，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpoint.png)
-     
-    d.单击“下一步”。 现在，转到 **Mercell** 的属性页，使用“复制”按钮复制**应用程序 ID** 并将其粘贴到记事本中。
- 
-    ![配置单一登录](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. 若要在“Mercell”端配置单一登录，需要将生成的“元数据 URL”发送到 [Mercell 支持团队](mailto:webmaster@mercell.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. 若要在 **Mercell** 端配置单一登录，需要将生成的**应用联合元数据 RUL**发送给 [Mercell 支持团队](mailto:webmaster@mercell.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -168,7 +148,7 @@ ms.lasthandoff: 03/23/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-mercell-test-user"></a>创建 Mercell 测试用户
 

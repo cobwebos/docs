@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b304a198ce1791a14094eea4cad3b6de870c80ce
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: df0b578448e1f943d45233f7d36ebf4b9cb09fad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>教程：Azure Active Directory 与 SafetyNet 集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/28/2018
 
 **若要从库中添加 SafetyNet，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -117,33 +117,17 @@ ms.lasthandoff: 03/28/2018
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.predictivesolutions.com`
      
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SafetyNet 客户端支持团队](mailto:dev@predictivesolutions.com)获取这些值。 
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SafetyNet 客户端支持团队](mailto:dev@predictivesolutions.com)获取这些值。
 
-5. 单击“保存”按钮。
+5. 在“SAML 签名证书”部分上，单击”复制”按钮，复制**应用联合元数据 URL**并将其粘贴到记事本。
+
+    ![证书下载链接](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_certificate.png)
+
+6. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-safetynet-tutorial/tutorial_general_400.png)
 
-6. 若要生成**元数据 URL**，请执行以下步骤：
-
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpointicon.png)
-
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpoint.png)
-     
-    d.单击“下一步”。 现在，转到 **SafetyNet** 的属性页，使用“复制”按钮复制**应用程序 ID** 并将其粘贴到记事本中。
- 
-    ![配置单一登录](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-    
-7. 若要在“SafetyNet”端配置单一登录，需要将生成的“元数据 URL”发送到 [SafetyNet 支持团队](mailto:dev@predictivesolutions.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+7. 若要在 **SafetyNet** 端配置单一登录，需要将生成的**应用联合元数据 URL** 发送给 [SafetyNet 支持团队](mailto:dev@predictivesolutions.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -175,7 +159,7 @@ ms.lasthandoff: 03/28/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-safetynet-test-user"></a>创建 SafetyNet 测试用户
 

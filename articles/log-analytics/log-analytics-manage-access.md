@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: af648e97f5913ef7413f72db8e19aa5ea69d6d09
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 25a68fb535300e80efdf2adf9f3a8afe1b304667
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/16/2018
 ## <a name="determine-the-number-of-workspaces-you-need"></a>确定所需工作区数
 工作区是一种 Azure 资源，也是 Azure 门户中收集、聚合、分析和呈现数据的容器。
 
-一个 Azure 订阅可以有多个工作区，可以访问多个工作区。 以前只可以分析来自当前工作区内的数据，这限制了跨多个工作区（在订阅中定义）查询数据的能力。 现在可[跨多个工作区进行查询](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search)，以便在系统范围内查看数据。 本部分介绍有助于创建多个工作区的情况。
+一个 Azure 订阅可以有多个工作区，可以访问多个工作区。 以前只可以分析来自当前工作区内的数据，这限制了跨多个工作区（在订阅中定义）查询数据的能力。 现在可[跨多个工作区进行查询](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)，以便在系统范围内查看数据。 本部分介绍有助于创建多个工作区的情况。
 
 工作区目前提供：
 

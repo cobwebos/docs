@@ -1,12 +1,12 @@
 ---
-title: "Azure 顾问性能建议 | Microsoft Docs"
-description: "使用顾问优化 Azure 部署的性能。"
+title: Azure 顾问性能建议 | Microsoft Docs
+description: 使用顾问优化 Azure 部署的性能。
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: e32723cd3ef13829890a630f4bff308164e17674
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 00abb5aafc6f3aec2e2dd7326a307bee74d97cc1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="advisor-performance-recommendations"></a>顾问性能建议
 
@@ -31,11 +31,11 @@ Azure 顾问性能建议有助于提高关键业务应用程序的速度和响�
 > [!NOTE]
 > 若要获取建议，数据库必须具有一周左右的使用量，且该周内必须有一些一致的活动。 SQL 数据库顾问优化一致的查询模式比优化随机的突发活动更加轻松。
 
-有关 SQL 数据库顾问的详细信息，请参阅 [SQL 数据库顾问](https://azure.microsoft.com/en-us/documentation/articles/sql-database-advisor/)。
+有关 SQL 数据库顾问的详细信息，请参阅 [SQL 数据库顾问](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)。
 
 ## <a name="improve-redis-cache-performance-and-reliability"></a>提高 Redis 缓存性能和可靠性
 
-Redis 缓存实例的性能可能会受到高内存使用率、服务器负载、网络带宽或大量客户端连接的不利影响，顾问可识别这些实例。 顾问还可提供最佳做法建议，有助于避免潜在问题。 有关 Redis 缓存建议的详细信息，请参阅 [Redis 缓存顾问](https://azure.microsoft.com/en-us/documentation/articles/cache-configure/#redis-cache-advisor)。
+Redis 缓存实例的性能可能会受到高内存使用率、服务器负载、网络带宽或大量客户端连接的不利影响，顾问可识别这些实例。 顾问还可提供最佳做法建议，有助于避免潜在问题。 有关 Redis 缓存建议的详细信息，请参阅 [Redis 缓存顾问](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)。
 
 
 ## <a name="improve-app-service-performance-and-reliability"></a>提高应用服务性能和可靠性
@@ -44,7 +44,7 @@ Azure 顾问集成最佳做法建议，可改善应用服务体验，并发现�
 * 检测其中应用运行时已耗尽内存或 CPU 资源的实例，并提出缓解措施。
 * 检测在其中并置资源（如 Web 应用和数据库）的实例，以改善性能并降低成本。 
 
-有关应用服务建议的详细信息，请参阅 [Best Practices for Azure App Service](https://azure.microsoft.com/en-us/documentation/articles/app-service-best-practices/)（Azure 应用服务的最佳实践）。
+有关应用服务建议的详细信息，请参阅 [Best Practices for Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)（Azure 应用服务的最佳实践）。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议
 

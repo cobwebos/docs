@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 4eeff0d89fa8a73b8f7f4b73fb5bfb85cda26184
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 786261b38fe27dccc9c7ef5ee6550f4b50c52e4b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 常规用途 VM 大小提供均衡的 CPU 与内存之比。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。 
 
@@ -20,7 +20,10 @@ ms.lasthandoff: 04/03/2018
 
 - D 系列的 VM 旨在运行需要更高计算能力和临时磁盘性能的应用程序。 D 系列 VM 为临时磁盘提供更快的处理器、更高的内存 vCPU 比和固态硬盘 (SSD)。 有关详细信息，请参阅 Azure 博客[新的 D 系列虚拟机大小](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)上的公告。
 
-- Dv3 系列、Dv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更强大。 Dv2 系列 CPU 比 D 系列 CPU 快大约 35%。 该系列基于最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 处理器，通过 Intel Turbo Boost Technology 2.0 可以达到 3.1 GHz。 Dv2 系列的内存和磁盘配置与 D 系列相同。
+- Dv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更强大。 Dv2 系列 CPU 比 D 系列 CPU 快大约 35%。 它基于最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 2.4 GHz (Haswell) 或 E5-2673 v4 2.3 GHz (Broadwell) 处理器，通过英特尔睿频加速技术 2.0 可以达到 3.1 GHz。 Dv2 系列的内存和磁盘配置与 D 系列相同。
+
+- Dv3 系列采用的处理器与 Dv2 系列相同，但在超线程配置中，Dv3 系列针对最常规用途的工作负荷提供了更好的价值主张，并且使 Dv3 更适用于大多数其他云的常规用途 VM。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。  Dv3 不再有 D/Dv2 系列的高内存 VM 大小，那些已成为新的 EV3 系列。
+
 
 - 基本层大小主要用于开发工作负荷，以及其他不需要负载均衡、自动缩放或内存密集型虚拟机的应用程序。
 
@@ -77,6 +80,7 @@ Dv3 系列大小基于 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 处理器或 2.
 
 <sup>1</sup> Dv3 系列 VM 的 Intel® 超线程技术功能
 
+
 ## <a name="dsv2-series"></a>DSv2-series
 
 ACU：210-250
@@ -95,15 +99,15 @@ ACU：210-250
 
 ACU：210-250
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1_v2 |1 |3.5 |4 |50 |3000/46/23 |4/4x500 |2 / 750 |
-| Standard_D2_v2 |2 |7 |8 |100 |6000/93/46 |8/8x500 |2 / 1500 |
-| Standard_D3_v2 |4 |14 |16 |200 |12000/187/93 |16/16x500 |4 / 3000 |
-| Standard_D4_v2 |8 |28 |32 |400 |24000/375/187  |32/32x500 |8 / 6000 |
-| Standard_D5_v2 |16 |56 |64 |800 |48000/750/375 |64/64x500 |8 / 12000 |
+| 大小           | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数 | 吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
+|----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
+| Standard_D1_v2 | 1    | 3.5         | 50                     | 3000/46/23                                             | 4              | 4x500            | 2 / 750                                      |
+| Standard_D2_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 8              | 8x500            | 2 / 1500                                     |
+| Standard_D3_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 16             | 16x500           | 4 / 3000                                       |
+| Standard_D4_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 32             | 32x500           | 8 / 6000                                       |
+| Standard_D5_v2 | 16   | 56          | 800                    | 48000/750/375                                          | 64             | 64x500           | 8 / 12000                                    |
 
-<br>
+
 
 ## <a name="ds-series"></a>DS 系列
 

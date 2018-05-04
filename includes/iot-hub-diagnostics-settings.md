@@ -27,7 +27,7 @@
 
 如果想要通过 PowerShell 打开诊断设置，请使用以下代码：
 
-```
+```azurepowershell
 Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <subscription that includes your IoT Hub>
 Set-AzureRmDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true

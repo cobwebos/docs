@@ -1,10 +1,10 @@
 ---
-title: "Azure Data Lake 工具：使用针对 Visual Studio Code 的 Azure Data Lake 工具 | Microsoft Docs"
-description: "了解如何使用针对 Visual Studio Code 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。 "
+title: Azure Data Lake 工具：使用针对 Visual Studio Code 的 Azure Data Lake 工具 | Microsoft Docs
+description: '了解如何使用针对 Visual Studio Code 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。 '
 Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview file,upload to storage path,download,upload
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
+documentationcenter: ''
+author: Jejiang
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: jejiang
-ms.openlocfilehash: 7e1e2c0a5481a81e9267bcf87076076b377a1496
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: fcd821c91a8c94792eeed83940abe1c72d0b2fb8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
 
@@ -224,7 +224,7 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
     ![针对 Visual Studio Code 的 Data Lake 工具命令面板](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
     ![针对 Visual Studio Code 设备的 Data Lake 工具登录信息](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
-3.  单击“复制并打开”以打开 URL 为 https://aka.ms/devicelogin 的登录网页。 将代码 **G567LX42V** 粘贴到文本框中，然后选择“继续”。
+3.  单击“复制并打开”，通过 URL https://aka.ms/devicelogin 打开登录网页。 将代码 **G567LX42V** 粘贴到文本框中，然后选择“继续”。
 
    ![用于 Visual Studio Code 的 Data Lake 工具登录粘贴代码](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
 4.  按照说明从网页登录。 连接后，“VS Code”窗口左下角的状态栏上会显示 Azure 帐户名称。 
@@ -356,13 +356,13 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
 **Azure 集成** 
 
-- 在登录到 Azure 之前，始终可以展开“DATALAKE 资源管理器”，然后单击“登录到 Azure”以登录到 Azure。 登录后，你将看到你的 Azure 帐户下的所有订阅都在“DATALAKE 资源管理器”的左侧面板中列出。 
+- 在登录到 Azure 之前，始终可以展开“AZURE DATALAKE”，然后单击“登录到 Azure”以登录到 Azure。 登录后，你将看到你的 Azure 帐户下的所有订阅都在“AZURE DATALAKE”的左侧面板中列出。 
 
    ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/sign-in-datalake-explorer.png)
 
    ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
-**ADLA 元数据导航** 
+**ADLA 元数据导航**
 
 - 展开你的 Azure 订阅，可以在 U-SQL 数据库中导航，在“U-SQL 数据库”节点下查看**架构**、**凭据**、**程序集**、**表**、**索引**等等。
 
@@ -382,11 +382,31 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
 **ADLS 集成** 
 
- - 导航到“存储帐户”，可以通过文件节点的上下文菜单进行**预览**、**下载**、**删除**、**复制相对路径**以及**复制完整路径**。 可以通过右键单击文件夹节点的上下文菜单进行**刷新**、**上传**、**上传文件夹**以及**删除**。
+导航到“Data Lake Store”
+
+ - 在文件夹节点上，可以在右键单击的上下文菜单中“刷新”、“删除”、“上传”、“上传文件夹”、“复制相对路径”、“复制完整路径”。
 
    ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
+ - 在文件节点上，可以在右键单击的上下文菜单中“下载”、“预览”、“删除”、“复制相对路径”、“复制完整路径”。 
+
    ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-download-preview-file.png)
+
+**WASB 集成**
+
+导航到“Blob 存储”
+
+- 在 blob 容器节点上，可以在右键单击的上下文菜单中“刷新”、“删除 Blob 容器”、“上传 Blob”。
+
+    ![Blob 存储 blob 容器节点](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
+
+- 在文件夹节点上，可以在右键单击的上下文菜单中“刷新”、“上传 Blob”。
+
+    ![Blob 存储文件夹节点](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
+
+- 在文件节点上，可以在右键单击的上下文菜单中“预览/编辑”、“下载”、“删除”、“复制相对路径”、“复制完整路径”。
+
+    ![Blob 存储文件节点](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-file-node.png)
 
 ## <a name="open-adl-storage-explorer-in-portal"></a>在门户中打开 ADL 存储资源管理器
 1. 按 Ctrl+Shift+P 打开命令面板。

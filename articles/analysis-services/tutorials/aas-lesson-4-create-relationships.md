@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services 教程第 4 课：创建关系 | Microsoft Docs"
-description: "介绍如何在 Azure Analysis Services 教程项目中创建关系。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: Azure Analysis Services 教程第 4 课：创建关系 | Microsoft Docs
+description: 介绍如何在 Azure Analysis Services 教程项目中创建关系。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 57b3a172445047291f0aea5b1616b9dcbf6bf745
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 694043454ba2564900416135e1f143bdeb63c202
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-relationships"></a>创建关系
 
@@ -27,7 +20,7 @@ ms.lasthandoff: 01/09/2018
   
 本课预计完成时间：**10 分钟**  
   
-## <a name="prerequisites"></a>系统必备  
+## <a name="prerequisites"></a>先决条件  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课程中的任务之前，应已完成上一课：[第 3 课：标记为日期表](../tutorials/aas-lesson-3-mark-as-date-table.md)。 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>查看现有关系和添加新关系  
