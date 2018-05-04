@@ -13,22 +13,23 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/20/2018
   ms.author: bryanla
-  ms.openlocfilehash: a86827616c96dd877a88fdd89cb5b0205c2cface
-  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.openlocfilehash: d8b144eb52400a76395096a2577fb9ecf28e01c1
+  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/28/2018
+  ms.lasthandoff: 05/03/2018
 abstract:
   description: 欢迎使用 Microsoft Azure 与物联网 (IoT)。 Azure IoT 汇集了各种服务和解决方案，专用于在 Azure 上创建端到端 IoT 应用程序。 Azure IoT 提供各种适合行业需求以及公司技能和资源的选项和工具，既有完全承载和托管的软件即服务 (SaaS) 解决方案，又有独特且专用的平台即服务 (PaaS) 产品/服务，还有构建智能边缘所需的技术。
 sections:
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 浏览以下快速入门文章，轻松/快速地了解 Azure IoT
+    text: 浏览以下文章，轻松快速地了解 Azure IoT。
   - type: list
     style: unordered
     items:
     - html: <a href="/azure/iot-central/quick-deploy-iot-central">了解如何创建新的 Azure IoT 中心应用程序</a>。
+    - html: <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">了解如何部署远程监视预配置解决方案</a>。
     - html: <a href="/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started">了解如何创建 IoT 中心并将第一个模拟设备连接到 Azure (Node.js)</a>。
     - html: <a href="/azure/iot-edge/quickstart-linux">在 Windows、Linux 或 Mac 的模拟设备上部署第一个 IoT Edge 模块并处理数据</a>。
     - html: <a href="/azure/location-based-services/quick-demo-map-app">启动使用 Azure Location Based Services（预览版）的地图搜索应用</a>。
@@ -53,7 +54,7 @@ sections:
     - html: <a href="/azure/time-series-insights">Azure 时序见解</a>
     - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks">IoT 服务 SDK</a>
   - type: paragraph
-    text: 构建智能边缘。
+    text: 使用 IoT 设备和边缘计算生成解决方案。
   - type: list
     style: unordered
     items:

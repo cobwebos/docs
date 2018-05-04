@@ -76,6 +76,8 @@
           href: stream-analytics-high-frequency-trading.md
         - name: 处理 IoT 流数据
           href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+        - name: 基于阈值的规则
+          href: stream-analytics-threshold-based-rules.md
     - name: 监视
       items:
         - name: 监视作业 - Azure 门户

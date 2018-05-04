@@ -123,6 +123,8 @@
           href: durable-functions-versioning.md
         - name: 性能和缩放性
           href: durable-functions-perf-and-scale.md
+        - name: 灾难恢复和异地分发
+          href: durable-functions-disaster-recovery-geo-distribution.md
 - name: 操作指南
   items:
     - name: 开发

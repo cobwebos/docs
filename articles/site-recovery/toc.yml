@@ -145,6 +145,12 @@
           items:
             - name: 排查 Azure 到 Azure 复制的问题
               href: azure-to-azure-troubleshoot-errors.md
+            - name: 排查 Azure Site Recovery 扩展问题
+              href: site-recovery-extension-troubleshoot.md
+        - name: 管理
+          items:
+            - name: 自动更新移动服务扩展
+              href: azure-to-azure-autoupdate.md
     - name: VMware/物理服务器到 Azure
       items:
         - name: 网络

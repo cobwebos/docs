@@ -22,6 +22,8 @@
       href: powershell-samples.md
 - name: 教程
   items:
+    - name: 对传入 VM 的内部流量进行负载均衡
+      href: tutorial-load-balancer-basic-internal-portal.md
     - name: 跨可用性区域对 VM 进行负载均衡
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定的可用性区域中对 VM 进行负载均衡

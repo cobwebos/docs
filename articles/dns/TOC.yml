@@ -1,0 +1,132 @@
+- name: DNS 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure DNS？
+      href: dns-overview.md
+- name: 快速入门
+  items:
+    - name: 创建 DNS 区域和记录 - 门户
+      href: dns-getstarted-portal.md
+    - name: 创建 DNS 区域和记录 - PowerShell
+      href: dns-getstarted-powershell.md
+    - name: 创建 DNS 区域和记录 - CLI
+      href: dns-getstarted-cli.md
+- name: 示例
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+- name: 教程
+  items:
+    - name: 创建专用 DNS 区域和记录
+      href: private-dns-getstarted-powershell.md
+    - name: 将域委托给 Azure DNS
+      href: dns-delegate-domain-azure-dns.md
+    - name: 为 Web 应用创建自定义 DNS 记录
+      href: dns-web-sites-custom-domain.md
+- name: 概念
+  items:
+    - name: DNS 区域和记录
+      href: dns-zones-records.md
+    - name: 使用 Azure DNS 进行 DNS 委派
+      href: dns-domain-delegation.md
+    - name: DNS 常见问题解答
+      href: dns-faq.md
+    - name: 使用专用 DNS 区域
+      href: private-dns-overview.md
+    - name: 专用 DNS 方案
+      href: private-dns-scenarios.md
+    - name: DNS 指标和警报
+      href: dns-alerts-metrics.md
+    - name: 反向 DNS
+      href: dns-reverse-dns-overview.md
+- name: 如何
+  items:
+    - name: 创建自定义 DNS 区域和记录 - Azure CLI
+      href: private-dns-getstarted-cli.md
+    - name: 管理 DNS 区域
+      items:
+        - name: Azure 门户
+          href: dns-operations-dnszones-portal.md
+        - name: Azure PowerShell
+          href: dns-operations-dnszones.md
+        - name: Azure CLI
+          href: dns-operations-dnszones-cli.md
+    - name: 管理 DNS 记录
+      items:
+        - name: Azure 门户
+          href: dns-operations-recordsets-portal.md
+        - name: Azure PowerShell
+          href: dns-operations-recordsets.md
+        - name: Azure CLI
+          href: dns-operations-recordsets-cli.md
+    - name: 管理反向 DNS
+      items:
+        - name: Azure DNS 中的主机反向查找区域
+          href: dns-reverse-dns-hosting.md
+        - name: 管理 Azure 服务的反向 DNS 记录
+          href: dns-reverse-dns-for-azure-services.md
+    - name: 导入和导出 DNS 区域文件
+      href: dns-import-export.md
+    - name: 与其他 Azure 服务集成
+      href: dns-for-azure-services.md
+    - name: 保护 DNS 区域和记录
+      href: dns-protect-zones-recordsets.md
+    - name: 使用 .NET SDK 自动化 DNS 操作
+      href: dns-sdk.md
+    - name: Azure 资源的自定义域
+      href: dns-custom-domain.md
+    - name: 故障排除
+      items:
+        - name: 故障排除指南
+          href: dns-troubleshoot.md
+- name: 引用
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=dns'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.dns
+    - name: Azure CLI
+      href: /cli/azure/network/dns
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.dns.models
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.dns
+    - name: Node.js
+      href: 'http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/'
+    - name: Ruby
+      href: 'http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0'
+    - name: Python
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html'
+    - name: REST
+      href: /rest/api/dns/
+- name: 相关内容
+  items:
+    - name: 应用程序网关
+      href: /azure/application-gateway/
+    - name: 虚拟网络
+      href: /azure/virtual-network/
+    - name: 虚拟机
+      href: /azure/virtual-machines/
+    - name: 负载均衡器
+      href: /azure/load-balancer/
+    - name: 流量管理器
+      href: /azure/traffic-manager/
+    - name: Web 应用
+      href: /azure/app-service/
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 功能请求
+      href: 'https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: 网络博客
+      href: 'http://azure.microsoft.com/blog/topics/networking'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/dns/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=dns'

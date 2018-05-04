@@ -71,6 +71,7 @@
 #### [管理设备标识](iot-hub-devguide-identity-registry.md)
 #### [控制对 IoT 中心的访问](iot-hub-devguide-security.md)
 #### [了解设备孪生](iot-hub-devguide-device-twins.md)
+#### [了解模块孪生](iot-hub-devguide-module-twins.md)
 #### [对设备调用直接方法](iot-hub-devguide-direct-methods.md)
 #### [在多个设备上计划作业](iot-hub-devguide-jobs.md)
 #### [IoT 中心终结点](iot-hub-devguide-endpoints.md)
@@ -106,6 +107,9 @@
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-twin-getstarted.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-twin-getstarted.md)
 #### [Python 后端/Python 设备](iot-hub-python-twin-getstarted.md)
+### 模块孪生入门
+#### [门户后端/.NET 设备](iot-hub-portal-csharp-module-twin-getstarted.md)
+#### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-module-twin-getstarted.md)
 ### 使用直接方法
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-direct-methods.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-direct-methods.md)

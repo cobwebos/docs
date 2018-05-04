@@ -105,7 +105,11 @@
         - name: 如何启用写入加速器
           href: how-to-enable-write-accelerator.md
         - name: 对附加的 VHD 进行故障排除
-          href: troubleshoot-vhds.md
+          items:
+            - name: 存储资源删除错误
+              href: storage-resource-deletion-errors.md
+            - name: 附加 VHD 的 VM 意外重启
+              href: unexpected-reboots-attached-vhds.md
     - name: 网络
       href: network-overview.md
     - name: 自动缩放应用程序

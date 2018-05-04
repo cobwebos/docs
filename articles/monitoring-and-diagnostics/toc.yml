@@ -73,6 +73,8 @@
           href: monitoring-enable-alerts-using-template.md
         - name: 将警报从 OMS 门户复制到 Azure 门户
           href: monitoring-alerts-extend-tool.md
+        - name: 使用动态阈值的警报
+          href: monitoring-alerts-dynamic-thresholds.md
     - name: 将操作组与警报配合使用
       items:
         - name: 了解 webhook 架构

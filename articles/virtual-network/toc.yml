@@ -31,6 +31,8 @@
       href: powershell-samples.md
     - name: 资源管理器模板
       href: template-samples.md
+    - name: Azure 策略模板
+      href: policy-samples.md
 - name: 概念
   items:
     - name: 安全

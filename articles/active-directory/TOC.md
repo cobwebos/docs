@@ -53,6 +53,7 @@
 #### [邀请电子邮件](active-directory-b2b-invitation-email.md)
 #### [邀请兑换](active-directory-b2b-redemption-experience.md)
 #### [在没有邀请的情况下添加 B2B 用户](active-directory-b2b-add-user-without-invite.md)
+#### [允许或阻止邀请](active-directory-b2b-allow-deny-list.md)
 #### [用于 B2B 的条件性访问](active-directory-b2b-mfa-instructions.md)
 #### [B2B 共享策略](active-directory-b2b-delegate-invitations.md)
 #### [将 B2B 用户添加到角色](active-directory-b2b-add-guest-to-role.md)
@@ -273,6 +274,7 @@
 ### [管理单元](active-directory-administrative-units-management.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 ### [管理紧急访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md)
+### [保护特权角色](admin-roles-best-practices.md)
 
 ## 访问评审
 ### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)

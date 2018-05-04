@@ -59,6 +59,8 @@
       href: monitor-event-delivery.md
     - name: 查询事件订阅
       href: query-event-subscriptions.md
+    - name: 使用 CloudEvents 架构
+      href: cloudevents-schema.md
 - name: 引用
   items:
     - name: Azure CLI

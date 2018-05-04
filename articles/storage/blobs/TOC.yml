@@ -108,34 +108,51 @@
           href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 页 Blob 功能
           href: storage-blob-pageblob-overview.md
-        - name: 高级存储
+        - name: Azure 磁盘
           items:
-            - name: Linux
+            - name: 高级存储
               items:
-                - name: 用于 VM 磁盘的高性能高级存储
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage'
-                - name: 使用 Azure Site Recovery 迁移到高级存储
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery'
-                - name: 高性能设计
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage-performance'
-            - name: Windows
+                - name: Linux
+                  items:
+                    - name: 用于 VM 磁盘的高性能高级存储
+                      href: ../../virtual-machines/linux/premium-storage.md
+                    - name: 使用 Azure Site Recovery 迁移到高级存储
+                      href: ../../virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery.md
+                    - name: 高性能设计
+                      href: ../../virtual-machines/linux/premium-storage-performance.md
+                - name: Windows
+                  items:
+                    - name: 用于 VM 磁盘的高性能高级存储
+                      href: ../../virtual-machines/windows/premium-storage.md
+                    - name: 使用 Azure Site Recovery 迁移到高级存储
+                      href: ../../virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery.md
+                    - name: 高性能设计
+                      href: ../../virtual-machines/windows/premium-storage-performance.md
+            - name: 标准存储
               items:
-                - name: 用于 VM 磁盘的高性能高级存储
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage'
-                - name: 使用 Azure Site Recovery 迁移到高级存储
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery'
-                - name: 高性能设计
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance'
-        - name: 标准存储
-          items:
-            - name: Linux
+                - name: Linux
+                  items:
+                    - name: VM 磁盘的标准存储
+                      href: ../../virtual-machines/linux/standard-storage.md
+                - name: Windows
+                  items:
+                    - name: VM 磁盘的标准存储
+                      href: ../../virtual-machines/windows/standard-storage.md
+            - name: 对附加的 VHD 进行故障排除
+              href: storage-troubleshoot-vhds.md
               items:
-                - name: VM 磁盘的标准存储
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/standard-storage'
-            - name: Windows
-              items:
-                - name: VM 磁盘的标准存储
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage'
+                - name: Linux
+                  items:
+                    - name: 存储资源删除错误
+                      href: ../../virtual-machines/linux/storage-resource-deletion-errors.md
+                    - name: 附加 VHD 的 VM 意外重启
+                      href: ../../virtual-machines/linux/unexpected-reboots-attached-vhds.md
+                - name: Windows
+                  items:
+                    - name: 存储资源删除错误
+                      href: ../../virtual-machines/windows/storage-resource-deletion-errors.md
+                    - name: 附加 VHD 的 VM 意外重启
+                      href: ../../virtual-machines/windows/unexpected-reboots-attached-vhds.md
     - name: 安全
       items:
         - name: 安全指南
