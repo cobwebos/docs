@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: d60c5766b22e31c33d0dd4a743fa297470109ac6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7fe1cd003bd7e6b681989324a42a076f4fd2f7df
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>使用 Azure IoT 中心设备预配服务的自动预配功能将 MXChip IoT DevKit 注册到 IoT 中心
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 04/16/2018
 4. 打开 Visual Studio Code，将 DevKit 连接到计算机，然后打开包含所克隆代码的文件夹。
 
 5. 打开 **DevKitDPS.ino**。 找到 `[Global Device Endpoint]` 和 `[ID Scope]` 并将其替换为刚刚记下的值。
-  ![DPS 终结点](./media/how-to-connect-mxchip-iot-devkit/endpoint.png)可将 **registrationId** 留空。 应用程序会根据 MAC 地址和固件版本自动生成一个 ID。 如果想要自定义注册 ID，只能使用字母数字、小写字母和连字符的组合，并且长度不能超过 128 个字符。 有关详细信息，请参阅[使用 Azure 门户管理设备登记](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-manage-enrollments)。
+  ![DPS 终结点](./media/how-to-connect-mxchip-iot-devkit/endpoint.png)可将 **registrationId** 留空。 应用程序会根据 MAC 地址和固件版本自动生成一个 ID。 如果想要自定义注册 ID，只能使用字母数字、小写字母和连字符的组合，并且长度不能超过 128 个字符。 有关详细信息，请参阅[使用 Azure 门户管理设备登记](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments)。
 
 6. 在 VS Code 中使用 Quick Open（Windows：`Ctrl+P`；macOS：`Cmd+P`），并键入 *task device-upload* 生成代码并将其上传到 DevKit。
 
