@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/22/2017
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0e1eed2601946ddff6fa15f1a1f82398706c920d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>将 SQL 数据库提供给 Azure Stack 用户使用
 Azure Stack 云管理员可以创建产品/服务，使用户（租户）能够创建 SQL 数据库，以配合其云原生应用、网站和工作负荷使用。 通过向用户提供这些基于云的按需自定义数据库的访问权限，可以节省用户的时间和资源。 若要设置此功能，需要：
@@ -34,8 +34,8 @@ Azure Stack 云管理员可以创建产品/服务，使用户（租户）能够�
 
 [在 Azure Stack 中使用 SQL 数据库](azure-stack-sql-resource-provider-deploy.md)一文中详细介绍了部署过程，该过程包括以下主要步骤：
 
-1. [部署 SQL 资源提供程序]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider)。
-2. [验证部署]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal)。
+1. [部署 SQL 资源提供程序](azure-stack-sql-resource-provider-deploy.md)。
+2. [验证部署](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal)。
 3. 通过连接到宿主 SQL 服务器来提供容量。
 
 ## <a name="create-an-offer"></a>创建产品
@@ -55,7 +55,7 @@ Azure Stack 云管理员可以创建产品/服务，使用户（租户）能够�
 部署 SQL Server 资源提供程序并创建产品/服务后，可以用户身份登录并订阅该产品/服务，然后创建数据库。
 
 ### <a name="subscribe-to-the-offer"></a>订阅产品/服务
-1. 登录到 Azure 堆栈门户 (https://portal.local.azurestack.external)作为租户。
+1. 以租户身份登录到 Azure Stack 门户 (https://portal.local.azurestack.external)。
 2. 单击“获取订阅”，然后在“显示名称”下键入 **TestSQLServerSubscription**。
 3. 单击“选择产品/服务” > “TestSQLServerOffer” > “创建”。
 4. 单击“更多服务” > “订阅” > “TestSQLServerSubscription” > “资源提供程序”。

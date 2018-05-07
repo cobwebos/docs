@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 86597defad7c76d41065270030a4c77ee901b014
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 1e2dbc6020dd317e96c4116811f8e3bf87680bfb
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>快速入门： Azure 堆栈中使用 PowerShell 创建 Linux 服务器虚拟机
 
@@ -28,6 +28,7 @@ ms.lasthandoff: 04/28/2018
 你可以通过 Azure 堆栈 PowerShell 创建 Ubuntu Server 16.04 LTS 虚拟机。 按照这篇文章创建和使用虚拟机中的步骤。  这篇文章还为你提供的步骤：
 
 * 连接到远程客户端的虚拟机。
+* 安装 NGINX web 服务器并查看默认的主页。
 * 清理未使用的资源。
 
 ## <a name="prerequisites"></a>必备组件
@@ -218,6 +219,26 @@ ssh <Public IP Address>
 ```
 
 出现提示时，输入 azureuser 作为登录用户。 如果你在创建 SSH 密钥时，你会使用通行短语，你将需要提供的通行短语。
+
+## <a name="install-the-nginx-web-server"></a>安装 NGINX web 服务器
+
+若要更新包的资源和安装最新的 NGINX 包，运行以下脚本：
+
+```bash
+#!/bin/bash
+
+# update package source
+apt-get -y update
+
+# install NGINX
+apt-get -y install nginx
+```
+
+## <a name="view-the-nginx-welcome-page"></a>查看 NGINX 欢迎页
+
+使用安装，NGINX 和端口 80 打开虚拟机上，你可以访问 web 服务器上使用虚拟机的公共 IP 地址。 打开 Web 浏览器，并浏览到 ```http://<public IP address>```。
+
+![NGINX web 服务器欢迎页](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

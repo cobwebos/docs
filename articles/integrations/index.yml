@@ -1,0 +1,37 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 开发人员工具集成
+metadata:
+  title: 开发人员工具集成
+  meta.description: from-team
+  services: from-team
+  author: 
+  manager: from-team
+  layout: LandingPage
+  ms.assetid: 
+  ms.service: from-team
+  ms.tgt_pltfrm: from-team
+  ms.devlang: from-team
+  ms.topic: landing-page
+  ms.date: 09/15/2017
+  ms.author: from-team
+  ms.openlocfilehash: 8ed2db241ae79b549f96581b67625114fd658c67
+  ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/04/2018
+abstract:
+  description: 
+sections:
+- title: 
+  items:
+  - type: list
+    style: cards
+    className: cardsA
+    items:
+    - html: <a href="/java/azure/intellij/azure-toolkit-for-intellij"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_intellij.svg" alt=""> <br><b>IntelliJ</b></a> <p>借助适用于 IntelliJ 的 Azure 工具包提供的模板和功能，可利用 IntelliJ 集成开发环境 (IDE) 轻松地创建、开发、测试和部署 Azure 应用程序。</p>
+    - html: <a href="/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_maven.svg" alt=""> <br><b>Maven</b></a> <p>用于 Apache Maven 的 Azure Web 应用的 Maven 插件允许将 Azure 应用服务无缝集成到 Maven 项目中，并简化了开发人员将 Web 应用部署到 Azure 应用服务的过程。</p>
+    - html: <a href="/java/azure/eclipse/azure-toolkit-for-eclipse"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_eclipse.svg" alt=""> <br><b>Eclipse</b></a> <p>使用用于 Eclipse 的 Azure 工具包提供的模板和功能，可以在 Eclipse 集成开发环境 (IDE) 中轻松创建、开发、测试云应用程序并将其部署到 Azure。</p>
+    - html: <a href="/azure/ansible/"> <img height="48" width="48" src="../media/index/ansible.svg" alt=""> <br><b>Ansible</b></a> <p>自动完成云预配、配置管理和应用程序部署。</p>
+    - html: <a href="/azure/jenkins/"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_jenkins.svg" alt=""> <br><b>Jenkins</b></a> <p>在云中生成应用并将其部署到 Azure。</p>
+    - html: <a href="/azure/terraform/"> <img height="48" width="48" src="../media/index/terraform.png" alt=""> <br><b>Terraform</b></a> <p>在 Azure 上可靠地版本化和创建基础结构。</p>

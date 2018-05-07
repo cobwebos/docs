@@ -1,6 +1,6 @@
 ---
 title: 为 Azure Stack 集成系统部署生成 Azure Stack 公钥基础结构证书 | Microsoft Docs
-description: 介绍 Azure 堆栈集成系统的 Azure 堆栈 PKI 证书部署过程。
+description: 介绍 Azure Stack 集成系统的 Azure Stack PKI 证书部署过程。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,28 +15,28 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cbc1efaee7404c3ffc82acea0846136c43eba2a9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b65d0d88fd57dea59c79d2f72bab60967856e015
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="azure-stack-certificates-signing-request-generation"></a>Azure 堆栈证书签名请求生成
+# <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 证书签名请求生成
 
-在本文中所述的 Azure 堆栈准备情况检查程序工具可[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)。 该工具创建证书签名请求 (Csr) 适用于 Azure 堆栈部署。 证书应请求、 生成，和足够的时间来测试部署前通过验证。 
+可[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)获取本文所述的 Azure Stack 就绪性检查器工具。 该工具可创建适用于 Azure Stack 部署的证书签名请求 (CSR)。 应该花费足够的时间来请求、生成并验证证书，以便在部署之前进行测试。
 
-Azure 堆栈准备情况检查器工具 (AzsReadinessChecker) 执行的以下证书申请：
+Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请求：
 
  - **标准证书请求**  
-    根据请求[生成 Azure 堆栈部署的 PKI 证书](azure-stack-get-pki-certs.md)。 
+    根据[为 Azure Stack 部署生成 PKI 证书](azure-stack-get-pki-certs.md)执行请求。
  - **请求类型**  
-    请求多个通配符 SAN，多个域证书，一个通配符证书请求。
+    指定证书签名请求将单个请求或多个请求。
  - **平台即服务**  
-    根据需要请求中指定的证书的平台即服务 (PaaS) 名称[Azure 堆栈公钥基础结构证书要求的可选 PaaS 证书](azure-stack-pki-certs.md#optional-paas-certificates)。
+    （可选）根据 [Azure Stack 公钥基础结构证书要求 - 可选的 PaaS 证书](azure-stack-pki-certs.md#optional-paas-certificates)中的规定，请求证书的平台即服务 (PaaS) 名称。
 
 ## <a name="prerequisites"></a>必备组件
 
-你的系统应在生成 Azure 堆栈部署的 PKI 证书 CSR(s) 之前满足以下先决条件：
+在为 Azure Stack 部署生成 PKI 证书的 CSR 之前，系统应符合以下先决条件：
 
  - Microsoft Azure 堆栈准备情况检查程序
  - 证书属性：
@@ -44,54 +44,74 @@ Azure 堆栈准备情况检查器工具 (AzsReadinessChecker) 执行的以下证
     - 外部完全限定的域名 (FQDN)
     - 主题
  - Windows 10 或 Windows Server 2016
+ 
+  > [!NOTE]
+  > 当你收到证书后从证书颁发机构中的步骤[准备 Azure 堆栈 PKI 证书](azure-stack-prepare-pki-certs.md)将需要在同一系统上完成 ！
 
 ## <a name="generate-certificate-signing-requests"></a>生成证书签名请求
 
 使用以下步骤来准备和验证 Azure Stack PKI 证书： 
 
-1.  通过运行以下 cmdlet 从 PowerShell 提示符下 （5.1 或更高版本），安装 AzsReadinessChecker:
+1.  在 PowerShell 提示符（5.1 或更高版本）下，运行以下 cmdlet 安装 AzsReadinessChecker：
 
     ````PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ````
 
-2.  声明**主题**作为有序的字典。 例如： 
+2.  将**使用者**声明为有序字典。 例如： 
 
     ````PowerShell  
     $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
     ````
     > [!note]  
-    > 如果提供的公用名 (CN)，则这将覆盖由证书请求的第一个 DNS 名称。
+    > 如果提供公用名 (CN)，此值将被证书请求的第一个 DNS 名称覆盖。
 
-3.  声明的输出目录中已存在：
+3.  声明已存在的输出目录：
 
     ````PowerShell  
     $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
     ````
+4.  声明标识系统
 
-4. 声明**区域名称**和**外部 FQDN**适用于 Azure 堆栈部署。
+    Azure Active Directory
 
-    ```PowerShell  
+    ```PowerShell
+    $IdentitySystem = "AAD"
+    ````
+
+    Active Directory 联合身份验证服务
+
+    ```PowerShell
+    $IdentitySystem = "ADFS"
+    ````
+
+5. 声明用于 Azure Stack 部署的**区域名称**和**外部 FQDN**。
+
+    ```PowerShell
     $regionName = 'east'
     $externalFQDN = 'azurestack.contoso.com'
     ````
 
     > [!note]  
-    > `<regionName>.<externalFQDN>` 窗体在其 Azure 堆栈中的所有外部 DNS 名称创建，在此示例中的基础，门户将会`portal.east.azurestack.contoso.com`。
+    > `<regionName>.<externalFQDN>` 构成了 Azure Stack 中所有外部 DNS 名称创建位置的基础，在此示例中，门户是 `portal.east.azurestack.contoso.com`。
 
-5. 若要使用多个使用者备用名称包括那些需要 PaaS 服务生成的单个证书请求：
-
-    ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IncludePaaS
-    ````
-
-6. 若要生成单个证书签名请求不使用 PaaS 服务的每个 DNS 名称：
+6. 若要生成多个使用者备用名称的单个证书请求：
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-7. 查看的输出：
+    若要包括 PaaS 服务指定交换机 ```-IncludePaaS```
+
+7. 若要生成单个证书签名请求每个 DNS 名称：
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    ````
+
+    若要包括 PaaS 服务指定交换机 ```-IncludePaaS```
+
+8. 查看输出：
 
     ````PowerShell  
     AzsReadinessChecker v1.1803.405.3 started
@@ -109,9 +129,8 @@ Azure 堆栈准备情况检查器工具 (AzsReadinessChecker) 执行的以下证
     AzsReadinessChecker Completed
     ````
 
-8.  提交**。请求**到你的 CA （内部或公共） 生成的文件。  输出目录**开始 AzsReadinessChecker**包含 CSR(s) 必要以便提交至证书颁发机构。  它还包含子目录包含在证书请求生成，作为引用过程中使用的 INF 文件。 请确保你的 CA 会生成使用生成的请求的证书，满足[Azure 堆栈的 PKI 要求](azure-stack-pki-certs.md)。
+9.  将生成的 **.REQ** 文件提交到 CA（内部或公共 CA）。  **Start-AzsReadinessChecker** 的输出目录包含提交到证书颁发机构时所需的 CSR。  它还包含一个子目录，其中包含生成证书请求期间用作参考的 INF 文件。 请确保 CA 使用符合 [Azure Stack PKI 要求](azure-stack-pki-certs.md)的生成请求来生成证书。
 
 ## <a name="next-steps"></a>后续步骤
 
 [准备 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)
-

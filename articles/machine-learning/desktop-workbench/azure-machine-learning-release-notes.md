@@ -333,10 +333,10 @@ ms.lasthandoff: 04/19/2018
     - `iris.dprep` 和 `iris.dsource` 已更新以反映最新的数据准备引擎更新。
     - `iris.ipynb` Notebook 已经过修改，可在 HDInsight 群集中工作。
     - 运行历史记录已在 `iris.ipynb` Notebook 单元格中打开。
-- [](./tutorial-bikeshare-dataprep.md)“使用自行车共享数据的高级数据准备”示例项目的“处理错误值”步骤已修复。
-- [](https://github.com/Azure/MachineLearningSamples-mmlspark)“针对成人人口普查数据的 MMLSpark”示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
-- [](./scenario-distributed-tuning-of-hyperparameters.md)“分布式超参数优化”示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
-- 新建示例项目“使用 CNTK 的图像分类”[](./scenario-image-classification-using-cntk.md)。
+- [_使用自行车共享数据的高级数据准备_](./tutorial-bikeshare-dataprep.md) 示例项目的 “处理错误值” 步骤已修复。
+- [_针对成人人口普查数据的 MMLSpark_](https://github.com/Azure/MachineLearningSamples-mmlspark) 示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
+- [_分布式超参数优化_](./scenario-distributed-tuning-of-hyperparameters.md) 示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
+- 新建示例项目 [_使用 CNTK 的图像分类_](./scenario-image-classification-using-cntk.md)。
 
 
 ## <a name="2017-10-sprint-0"></a>2017-10（冲刺 (sprint) 0） 

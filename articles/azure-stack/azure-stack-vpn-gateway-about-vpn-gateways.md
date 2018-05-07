@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: 10b2bf863540330a57b5aecac438f2b9e4bc8a74
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 7e489db0d9a65b850df41360ce11616d518c5265
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>关于 Azure Stack 的 VPN 网关
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
@@ -94,7 +94,7 @@ Azure Stack 不支持专门搭配 Express Route 使用的超性能网关 SKU。
 |**高性能 SKU** | 200 Mbps    | 5 |
 ***(1)*** VPN 吞吐量不是 Internet 上跨界连接的保证吞吐量。 它是可能的最大吞吐量。  
 ***(2)*** 最大隧道数是每个 Azure 堆栈部署的所有订阅的总数。  
-***(3)*** BGP 不支持针对基本 SKU。  
+***(3)*** BGP 不支持针对基本 SKU。
 
 ## <a name="next-steps"></a>后续步骤
 了解 Azure Stack 的 [VPN 网关设置](azure-stack-vpn-gateway-settings.md)。

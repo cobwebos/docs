@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: a9da65ec8634f0e8905d44ef690eb7885fbf6a80
-  ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-  ms.translationtype: HT
+  ms.openlocfilehash: 4b258290b197ff4fdee9490012a36519b041622c
+  ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+  ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/23/2018
+  ms.lasthandoff: 05/04/2018
 abstract:
   description: Azure Stack 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。 开发人员可以在 Azure Stack 上生成应用。 然后，可将这些应用部署到 Azure Stack 或 Azure，或者，可以生成利用 Azure Stack 云与 Azure 之间的连接的真正混合式应用。 使用快速入门和教程了解如何创建资源和部署应用。<br/><br/>如果你是 Azure Stack 操作员并想要管理基础结构和提供服务，请参阅<a href="/azure/azure-stack/">操作员文档</a>。<br/><br/>如果你是 Azure 堆栈操作员感中 Azure 堆栈开发工具包 (ASDK)，单节点部署的 Azure 堆栈，你可以下载和使用免费，请参阅我们<a href="/azure/azure-stack/asdk">ASDK 文档</a>。
 sections:
@@ -66,6 +66,8 @@ sections:
     style: ordered
     items:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-pipeline">将应用部署到 Azure Stack 和 Azure</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-identity">配置混合云标识与 Azure 和 Azure 堆栈的应用程序</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-connectivity">配置与 Azure 和 Azure 堆栈的混合云连接</a>
 - title: 参考
   items:
   - type: list

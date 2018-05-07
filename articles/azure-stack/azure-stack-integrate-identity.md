@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dc6c8ef2953b7495c734ec8b16530cdd812ac792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -60,6 +60,8 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="setting-up-graph-integration"></a>设置 Graph 集成
 
+关系图仅支持具有单个 Active Directory 林的集成。 如果存在多个林，仅在配置中指定的林将用于提取用户和组。
+
 需要使用以下信息作为自动化参数的输入：
 
 
@@ -95,12 +97,14 @@ ms.lasthandoff: 04/16/2018
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
-   出现提示时，请指定用于 Graph 服务的用户帐户（例如 graphservice）的凭据。
+   出现提示时，请指定用于 Graph 服务的用户帐户（例如 graphservice）的凭据。 寄存器目录 cmdlet 的输入必须是林名称/根林中域而不是林中的任何其他域。
 
    > [!IMPORTANT]
    > 等待凭据弹出（特权终结点不支持 Get-Credential），然后输入 Graph 服务帐户凭据。
 
 #### <a name="graph-protocols-and-ports"></a>Graph 协议和端口
+
+Azure 堆栈中的 graph 服务使用以下协议和端口可写的全局编录服务器 (GC) 和密钥分发中心 (KDC) 可以处理在目标的 Active Directory 林的登录请求进行通信。
 
 Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Directory 通信：
 
@@ -264,7 +268,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 4. 使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
 
    > [!note]  
-   > 使用 Windows Server 2012 或 2012 R2 AD FS 时，此步骤不适用。 则可以安全地跳过此命令并继续进行集成。
+   > 使用 Windows Server 2012 或 2012 R2 AD FS 时，此步骤不适用。 可以放心跳过此命令并继续集成。
 
    ```powershell
    Set-AdfsProperties -IgnoreTokenBinding $true

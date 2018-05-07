@@ -162,44 +162,13 @@
         - name: 通过使用 Azure 报告工具保护个人数据
           href: protection-personal-data-azure-reporting-tools.md
     - name: FEDRAMP
-      href: ./blueprints/fedramp.md
       items:
-        - name: 安全控制概述
-          href: ./blueprints/fedramp-controls-overview.md
-        - name: 访问控制
-          href: ./blueprints/fedramp-access-controls.md
-        - name: 审核和责任
-          href: ./blueprints/fedramp-audit-accountability-controls.md
-        - name: 意识和培训
-          href: ./blueprints/fedramp-awareness-training-controls.md
-        - name: 配置管理
-          href: ./blueprints/fedramp-configuration-manager-controls.md
-        - name: 应变规划
-          href: ./blueprints/fedramp-contingency-planning-controls.md
-        - name: 识别和身份验证
-          href: ./blueprints/fedramp-identification-authentication-controls.md
-        - name: 事件响应
-          href: ./blueprints/fedramp-incident-response-controls.md
-        - name: 维护
-          href: ./blueprints/fedramp-maintenance-controls.md
-        - name: 媒体保护
-          href: ./blueprints/fedramp-media-protection-controls.md
-        - name: 人员安全
-          href: ./blueprints/fedramp-personnel-security-controls.md
-        - name: 物理保护和环境保护
-          href: ./blueprints/fedramp-physical-environmental-protection-controls.md
-        - name: 规划
-          href: ./blueprints/fedramp-planning-controls.md
-        - name: 风险评估
-          href: ./blueprints/fedramp-risk-assessment-controls.md
-        - name: 安全评估和授权
-          href: ./blueprints/fedramp-security-assessment-authorization-controls.md
-        - name: 系统和通信保护
-          href: ./blueprints/fedramp-system-communications-protection-controls.md
-        - name: 系统和信息完整性
-          href: ./blueprints/fedramp-system-information-integrity-controls.md
-        - name: 系统和服务获取
-          href: ./blueprints/fedramp-system-services-acquisition-controls.md
+        - name: 数据分析
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: 数据仓库
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: IaaS Web 应用程序
+          href: ./blueprints/fedramp-iaaswa-overview.md
     - name: PCI DSS
       href: ./blueprints/payment-processing-blueprint.md
       items:

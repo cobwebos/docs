@@ -5,14 +5,14 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 04/18/2018
+ms.date: 04/27/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 7f74f100dca5dfe83ef88ca20f69a1b7af38b333
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 03b7ce49f935c36b0e0652925c41deea987a2a26
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 数据工厂是一项多租户服务，具有以下默认限制，目的是确保客户订阅不受彼此工作负荷的影响。 订阅的许多限制只需联系支持部门即可提高，最多可提高到最大限制。
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/18/2018
 | 每个管道的最大参数个数 | 20 | 30 |
 | 管道对象的每个对象字节数 <sup>1</sup> | 200 KB | 200 KB |
 | 数据集和关联服务对象的每个对象字节数 <sup>1</sup> | 100 KB | 2000 KB |
-| 云数据移动单位 <sup>3</sup> | 256 | [联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| 每个活动运行的云数据移动单位 <sup>3</sup> | 256 | [联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | 管道活动运行的重试次数 | 1 天（超时） | 1 天（超时） |
 | 编写 API 调用 | 2500/小时<br/><br/> 此限制是由 Azure 资源管理器而不是 Azure 数据工厂所强加的。 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 读取 API 调用 | 12,500/小时<br/><br/> 此限制是由 Azure 资源管理器而不是 Azure 数据工厂所强加的。 | [联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
@@ -49,7 +49,7 @@ ms.lasthandoff: 04/18/2018
 | 管道对象的每个对象字节数 <sup>1</sup> |200 KB |200 KB |
 | 数据集和关联服务对象的每个对象字节数 <sup>1</sup> |100 KB |2000 KB |
 | 订阅中的 HDInsight 按需群集核心数 <sup>2</sup> |60 |[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| 云数据移动单位 <sup>3</sup> |32 |[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| 每个活动运行的云数据移动单位 <sup>3</sup> |32 |[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | 管道活动运行的重试次数 |1000 |MaxInt（32 位） |
 
 <sup>1</sup> 管道、数据集和链接服务对象代表工作负荷的逻辑组。 对这些对象的限制与可以使用 Azure 数据工厂服务移动或处理的数据量无关。 可以缩放数据工厂以处理 PB 量级的数据。

@@ -23,6 +23,10 @@
   items:
     - name: 将应用部署到 Azure 和 Azure Stack
       href: azure-stack-solution-pipeline.md
+    - name: 配置混合云标识
+      href: azure-stack-solution-hybrid-identity.md
+    - name: 配置混合云连接
+      href: azure-stack-solution-hybrid-connectivity.md
 - name: 操作指南
   items:
     - name: 使用 Azure Stack 门户

@@ -1,8 +1,8 @@
 ---
-title: "使用 Linux VM MSI 通过 SAS 凭据访问 Azure 存储"
-description: "本教程介绍如何使用 Linux VM 托管服务标识 (MSI) 通过 SAS 凭据（而不是存储帐户访问密钥）访问 Azure 存储。"
+title: 使用 Linux VM MSI 通过 SAS 凭据访问 Azure 存储
+description: 本教程介绍如何使用 Linux VM 托管服务标识 (MSI) 通过 SAS 凭据（而不是存储帐户访问密钥）访问 Azure 存储。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
