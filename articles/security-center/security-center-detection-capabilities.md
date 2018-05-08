@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心的检测功能 | Microsoft Docs"
-description: "本文档介绍 Azure 安全中心检测功能的机制。"
+title: Azure 安全中心的检测功能 | Microsoft Docs
+description: 本文档介绍 Azure 安全中心检测功能的机制。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 4c5599cc-99a1-430f-895f-601615ef12a0
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: yurid
-ms.openlocfilehash: edef9bc1ba2420a4b7d95f891fd8b0b7e144c2ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 636f81361a59c1bfe1ba778722b79564609fb02a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure 安全中心检测功能
 本文档讨论 Azure 安全中心的高级检测功能，帮助用户确定以 Microsoft Azure 资源为目标的活跃威胁，了解进行快速响应所需的知识。
@@ -82,8 +82,8 @@ Azure 安全中心建立了安全研究和数据科学团队，持续监视威�
 ## <a name="see-also"></a>另请参阅
 本文档介绍了如何使用 Azure 安全中心的检测功能。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)
+* [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md)
+* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Azure 安全中心按类型划分的安全警报](security-center-alerts-type.md)
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
 * [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) （通过 Azure 安全中心监视合作伙伴解决方案）- 了解如何监视合作伙伴解决方案的运行状况。

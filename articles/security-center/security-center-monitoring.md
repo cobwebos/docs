@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 安全中心进行安全监视 | Microsoft 文档"
-description: "本文介绍如何开始使用 Azure 安全中心的监视功能。"
+title: 在 Azure 安全中心进行安全监视 | Microsoft 文档
+description: 本文介绍如何开始使用 Azure 安全中心的监视功能。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/06/2018
 ms.author: yurid
-ms.openlocfilehash: 608947ec4a94cad276e34e8d3457f05b06d04ad6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 330a12f851ef0191adc4dc46102b798f1b752589
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>在 Azure 安全中心进行安全运行状况监视
 本文介绍如何通过 Azure 安全中心的监视功能监视合规性。

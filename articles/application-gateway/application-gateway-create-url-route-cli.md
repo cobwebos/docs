@@ -1,24 +1,24 @@
 ---
-title: "使用基于 URL 路径的路由规则创建应用程序网关 - Azure CLI | Microsoft Docs"
-description: "了解如何使用 Azure CLI 为应用程序网关和虚拟机规模集创建基于 URL 路径的路由规则。"
+title: 使用基于 URL 路径的路由规则创建应用程序网关 - Azure CLI | Microsoft Docs
+description: 了解如何使用 Azure CLI 为应用程序网关和虚拟机规模集创建基于 URL 路径的路由规则。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 0593e37def43770efad7e07b306d8290b0590a48
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: victorh
+ms.openlocfilehash: eeba6ce5bd082cb6b9c3266fcc95deb1785e8cce
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>通过 Azure CLI 使用基于 URL 路径的路由规则创建应用程序网关
 
-创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure CLI 配置[基于 URL 路径的路由规则](application-gateway-url-route-overview.md)。 在本教程中，使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建路由规则，以便确保 Web 流量到达池中的相应服务器。
+创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure CLI 配置[基于 URL 路径的路由规则](application-gateway-url-route-overview.md)。 在本教程中，使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建路由规则，以确保 Web 流量到达池中的相应服务器。
 
 在本文中，学习如何：
 
@@ -213,13 +213,13 @@ for i in `seq 1 3`; do
     --name CustomScript \
     --resource-group myResourceGroupAG \
     --vmss-name myvmss$i \
-    --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+    --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
 done
 ```
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-若要获取应用程序网关的公共 IP 地址，可以使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，*http://40.121.222.19*、*http://40.121.222.19:8080/images/test.htm* 或 *http://40.121.222.19:8080/video/test.htm*。
+若要获取应用程序网关的公共 IP 地址，可以使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，http://40.121.222.19、http://40.121.222.19:8080/images/test.htm 或 http://40.121.222.19:8080/video/test.htm。
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -229,7 +229,7 @@ az network public-ip show \
   --output tsv
 ```
 
-![应用程序网关中的测试基 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
+![在应用程序网关中测试基 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
 将 http://<ip-address>:8080/video/test.html 的 URL 更改到基 URL 的末尾，应看到类似下例所示的内容：
 
@@ -237,7 +237,7 @@ az network public-ip show \
 
 更改 http://<ip-address>:8080/video/test.html 的 URL，应看到类似下例所示的内容。
 
-![应用程序网关中的测试视频 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
+![在应用程序网关中测试视频 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 
 ## <a name="next-steps"></a>后续步骤
 

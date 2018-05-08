@@ -8,18 +8,16 @@ ms.author: curtand
 ms.reviewer: jsnow
 ms.date: 11/14/2017
 ms.topic: article
-ms.prod: ''
 ms.service: active-directory
 ms.workload: identity
-ms.technology: ''
-ms.assetid: ''
+ms.component: users-groups-roles
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: eedcb80038179cf74666880816cb0b5416ac63fd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fc6cc88cabab1bc56b0a04ce8778823647c5b2bf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-azure-ad"></a>Azure AD 入门
 现代的标识管理需要一贯的可伸缩性和可靠性，确保只向经过身份验证的用户提供应用程序和服务。 为了充分支持用户对标识管理的需求，IT 部门需要通过某种方式提供对已批准的公用软件即服务 (SaaS) 应用的访问，托管内部业务线应用，甚至还需要通过某些方式来增强本地应用的开发与使用。 满足所有这些要求需要一种基于云的标识管理解决方案。      

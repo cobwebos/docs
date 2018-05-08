@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory 中的自助服务或试用注册 | Microsoft Docs"
-description: "在 Azure Active Directory (Azure AD) 租户中使用自助服务注册"
+title: Azure Active Directory 中的自助服务或试用注册 | Microsoft Docs
+description: 在 Azure Active Directory (Azure AD) 租户中使用自助服务注册
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
+editor: ''
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/28/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 9f2b541d5028596f9beabc7fd82001b4c9dacad4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 67fd5ba9be2de1f79511c806ffaa0ae3001bfdcf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>什么是 Azure Active Directory 的自助服务注册？
 此文章介绍自助服务注册及如何在 Azure Active Directory (Azure AD) 中支持自助服务注册的相关内容。 若要从非托管 Azure AD 租户处接管域名，请参阅[以管理员身份接管非托管目录](domains-admin-takeover.md)。

@@ -3,18 +3,18 @@ title: 教程：使用 Azure 门户创建和管理流分析作业 | Microsoft Do
 description: 本教程以端到端方式演示了如何使用 Azure 流分析来分析电话呼叫流中的欺诈性呼叫。
 services: stream-analytics
 author: SnehaGunda
+ms.author: sngun
 manager: kfile
 ms.service: stream-analytics
+ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.workload: data-services
-ms.author: sngun
-ms.openlocfilehash: 0c8fb0430d41babba1eb2bb3edd57d0ad4f3bede
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 524b15747a275c76fec6c529e4f00d0da1b41420
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>通过创建流分析作业来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 

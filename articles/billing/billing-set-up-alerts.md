@@ -1,27 +1,27 @@
 ---
-title: "为 Azure 订阅设置计费或信用额度警报 | Microsoft Docs"
-description: "介绍如何对 Azure 帐单设置警报，以免帐单出乎意料。"
-keywords: "信用额度警报, 计费警报"
-services: 
-documentationcenter: 
+title: 为 Azure 订阅设置计费或信用额度警报 | Microsoft Docs
+description: 介绍如何对 Azure 帐单设置警报，以免帐单出乎意料。
+keywords: 信用额度警报, 计费警报
+services: ''
+documentationcenter: ''
 author: vikdesai
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/9/2017
 ms.author: vikdesai
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fc0cb2b036e835450ee0fc404cce12439fabc77
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8606efc4e0d3050ddd72b6bf8ec87f6ddd84fa2e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>为 Microsoft Azure 订阅设置计费或信用额度警报
 如果用户是 Azure 订阅的帐户管理员，可以使用 Azure 计费警报服务来创建自定义的计费警报，以便监控和管理 Azure 帐户的计费活动。

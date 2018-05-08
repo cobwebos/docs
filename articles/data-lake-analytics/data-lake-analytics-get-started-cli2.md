@@ -1,8 +1,8 @@
 ---
-title: "通过 Azure CLI 2.0 开始使用 Azure Data Lake Analytics | Microsoft Docs"
-description: "了解如何使用 Azure 命令行界面 2.0 创建 Data Lake Analytics 帐户、如何使用 U-SQL 创建 Data Lake Analytics 作业，以及如何提交该作业。 "
+title: 通过 Azure CLI 2.0 开始使用 Azure Data Lake Analytics | Microsoft Docs
+description: '了解如何使用 Azure 命令行界面 2.0 创建 Data Lake Analytics 帐户、如何使用 U-SQL 创建 Data Lake Analytics 作业，以及如何提交该作业。 '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.openlocfilehash: fbd4f1ae5eeec971a378c41761508629e530887c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e7ce65446a6af49f15b3ce1881757b16f8fcaa35
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>通过 Azure CLI 2.0 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -193,26 +193,6 @@ az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Ou
 
 ```
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
-```
-
-## <a name="pipelines-and-recurrences"></a>管道和重复周期
-
-获取关于管道和重复周期的相关信息
-
-使用 `az dla job pipeline` 命令查看先前所提交作业的管道信息。
-
-```
-az dla job pipeline list --account "<Data Lake Analytics Account Name>"
-
-az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
-```
-
-使用 `az dla job recurrence` 命令查看先前所提交作业的重复周期信息。
-
-```
-az dla job recurrence list --account "<Data Lake Analytics Account Name>"
-
-az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
 ## <a name="next-steps"></a>后续步骤

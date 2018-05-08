@@ -1,26 +1,24 @@
 ---
-title: "排查动态组成员身份问题 | Microsoft 文档"
-description: "有关 Azure AD 中组的动态成员身份的疑难解答提示。"
+title: 排查动态组成员身份问题 | Microsoft 文档
+description: 有关 Azure AD 中组的动态成员身份的疑难解答提示。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 89bb04b6-a379-49c2-8465-fe386641816a
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: 0bb4c294cc6a4e1c9c2f1ad405c539854b6bcf5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6d8d04273e9f29b2634c8b77b0268f3c7b77b1e9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>组的动态成员身份疑难解答
 **我在组上配置了一个规则，但该组中的成员身份未更新**<br/>检查规则中的用户属性值：是否有用户满足该规则？ 如果一切看上去正常，请为要填充的组预留一些时间。 根据租户的大小，首次填充或者在更改规则后，最长可能需要 24 小时才能在组中完成填充。

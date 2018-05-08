@@ -3,8 +3,8 @@ title: 带 Azure 应用程序网关的多租户后端概述 | Microsoft Docs
 description: 此页概述了应用程序网关对多租户后端的支持。
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: ''
 ms.service: application-gateway
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
-ms.author: davidmu
-ms.openlocfilehash: f5ec916fcf45734ab85751e749bd6bb312f05b1a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: victorh
+ms.openlocfilehash: 7c00369737d05f414f9ac23d9d3e8918b908fc80
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>应用程序网关对多租户后端的支持
 

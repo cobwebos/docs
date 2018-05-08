@@ -1,26 +1,24 @@
 ---
-title: "基于 Azure Active Directory 组的许可的其他方案 | Microsoft 文档"
-description: "有关基于 Azure Active Directory 组的许可的更多方案"
+title: 基于 Azure Active Directory 组的许可的其他方案 | Microsoft 文档
+description: 有关基于 Azure Active Directory 组的许可的更多方案
 services: active-directory
-keywords: "Azure AD 许可"
-documentationcenter: 
+keywords: Azure AD 许可
+documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: piotrci
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf18076c81ecf7471771674fe40d36dba3b9866d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb8bd727618eda2a887cc9e1b739889204eb87fa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 

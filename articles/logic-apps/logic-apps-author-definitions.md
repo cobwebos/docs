@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: bde275eb75c97da2a99109484b46b599a5b2f871
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f37f600d001b110775d8ca0e78950e3b8743df82
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>创建、编辑或自定义逻辑应用定义的 JSON
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 03/16/2018
 
 ``` json
 {
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "uri": {
@@ -170,7 +170,7 @@ ms.lasthandoff: 03/16/2018
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "order": {
@@ -231,7 +231,7 @@ ms.lasthandoff: 03/16/2018
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "specialCategories": {
@@ -321,7 +321,7 @@ ms.lasthandoff: 03/16/2018
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "order": {

@@ -1,26 +1,24 @@
 ---
-title: "将许可证分配到 Azure Active Directory 中的组 | Microsoft 文档"
-description: "如何通过 Azure Active Directory 组许可分配许可证"
+title: 将许可证分配到 Azure Active Directory 中的组 | Microsoft 文档
+description: 如何通过 Azure Active Directory 组许可分配许可证
 services: active-directory
-keywords: "Azure AD 许可"
-documentationcenter: 
+keywords: Azure AD 许可
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f24daaf5690eb1d9a0ab3b27a3626d03e6021d99
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 091750d7cadd460ac46d3293951bf4423383c3c5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>按 Azure Active Directory 中的组成员资格将许可证分配给用户
 

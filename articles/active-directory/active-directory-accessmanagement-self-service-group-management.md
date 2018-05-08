@@ -1,26 +1,24 @@
 ---
-title: "在 Azure Active Directory 中设置自助式应用程序访问管理 | Microsoft Docs"
-description: "在 Azure Active Directory 中创建和管理安全组或 Office 365 组，并可以请求安全组或 Office 365 组成员身份"
+title: 在 Azure Active Directory 中设置自助式应用程序访问管理 | Microsoft Docs
+description: 在 Azure Active Directory 中创建和管理安全组或 Office 365 组，并可以请求安全组或 Office 365 组成员身份
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 904d5c70-c34a-46c4-a9a7-d1efecf4821c
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: get-started-article
 ms.date: 09/07/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 4798c9f9b289f8fa089498398079565c35ccdd2a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ee116762945f01c5c8031b97e0e09fa6c6ae6d7f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>为自助服务组管理设置 Azure Active Directory
 用户可以在 Azure Active Directory (Azure AD) 中创建和管理其自己的安全组或 Office 365 组。 用户也可以请求安全组或 Office 365 组成员身份，组所有者可以批准或拒绝成员身份。 可以将组成员身份的日常控制委托给了解该成员身份的业务上下文的人员。 自助组管理功能仅适用于安全组和 Office 365 组，而不适用于已启用邮件的安全组或通讯组列表。

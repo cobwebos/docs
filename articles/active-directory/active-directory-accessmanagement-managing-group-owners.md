@@ -1,25 +1,23 @@
 ---
-title: "使用组进行访问管理的后续步骤 | Microsoft 文档"
-description: "有关如何管理安全组，以及如何使用这些组来管理对资源的访问的高级操作指南。"
+title: 使用组进行访问管理的后续步骤 | Microsoft 文档
+description: 有关如何管理安全组，以及如何使用这些组来管理对资源的访问的高级操作指南。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 44350a3c-8ea1-4da1-aaac-7fc53933dd21
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: curtand
 ms.custom: it-pro
-ms.openlocfilehash: 177e31b8b8aff90cd91135d02eb3a2d8c85e2c33
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4703ab5d9f4b8593e758764e50455672e368e18
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="managing-owners-for-a-group"></a>管理组的所有者
 当资源所有者将资源访问权限分配给一个 Azure AD 组，该组所有者即可管理组的成员身份。 实际上，资源所有者是将其资源的用户访问权限委派给了组的所有者。

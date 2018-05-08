@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 05/01/2018
 ms.author: bwren
-ms.openlocfilehash: 2a8313640d2d0bd678d0e10da39c87de8cfce00b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cab92187c6c36dc4670e202b15b35db8ad510239
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure 中的管理解决方案的数据收集详细信息
 本文包括了 Microsoft 提供的[管理解决方案](monitoring-solutions.md)的列表以及指向其详细文档的链接。  它还提供了这些解决方案将数据收集到 Log Analytics 中时采用的方法和频率的相关信息。  可以使用本文中的信息来了解可用的各种解决方案，并了解各种管理解决方案的数据流和连接要求。 
@@ -38,7 +38,7 @@ ms.lasthandoff: 04/23/2018
 
 
 
-| **管理解决方案** | **平台** | **Microsoft Monitoring Agent** | **Operations Manager 代理** | **Azure 存储** | **是否需要 Operations Manager？** | **通过管理组发送 Operations Manager 代理数据** | **收集频率** |
+| **管理解决方案** | 平台 | **Microsoft Monitoring Agent** | **Operations Manager 代理** | **Azure 存储** | **是否需要 Operations Manager？** | **通过管理组发送 Operations Manager 代理数据** | **收集频率** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [活动 Log Analytics](../log-analytics/log-analytics-activity.md) | Azure | | | | | | 通知时 |
 | [AD 评估](../log-analytics/log-analytics-ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 天 |
@@ -53,7 +53,7 @@ ms.lasthandoff: 04/23/2018
 | [Azure 应用程序网关分析](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | 通知时 |
 | **管理解决方案** | 平台 | **Microsoft Monitoring Agent** | **Operations Manager 代理** | **Azure 存储** | **是否需要 Operations Manager？** | **通过管理组发送 Operations Manager 代理数据** | **收集频率** |
 | [Azure 网络安全组分析](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | 通知时 |
-| [Azure SQL Analytics（预览版）](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 10 分钟 |
+| [Azure SQL Analytics（预览版）](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 分钟 |
 | [备份](../backup/backup-introduction-to-azure-backup.md) | Azure |  |  |  |  |  | 不适用 |
 | [容量和性能（预览版）](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |到达时 |
 | [更改跟踪](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |每小时 |

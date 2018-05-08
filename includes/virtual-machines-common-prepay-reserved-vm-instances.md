@@ -1,3 +1,11 @@
+---
+ms.topic: include
+ms.openlocfilehash: b41b93db63038645257bc348d5a027fbc4f7fdc9
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/03/2018
+---
 # <a name="prepay-for-virtual-machines-with-reserved-vm-instances"></a>通过保留 VM 实例预付虚拟机
 
 通过保留虚拟机实例预付虚拟机并节省资金。 有关详细信息，请参阅[保留虚拟机实例产品/服务](https://azure.microsoft.com/pricing/reserved-vm-instances/)。

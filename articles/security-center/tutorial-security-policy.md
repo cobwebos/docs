@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心教程 - 定义和评估安全策略 | Microsoft Docs"
-description: "Azure 安全中心教程 - 定义和评估安全策略"
+title: Azure 安全中心教程 - 定义和评估安全策略 | Microsoft Docs
+description: Azure 安全中心教程 - 定义和评估安全策略
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: yurid
-ms.openlocfilehash: a740cec8a3177e0de5f33b362d5c4956671cd427
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 16dc8553fdc1209d1973934a87660ff61df8e68a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>教程：定义和评估安全策略
 可以通过安全中心使用安全策略来定义工作负荷的所需配置，确保用户遵守公司或法规方面的安全要求。 为 Azure 订阅定义策略并根据工作负荷类型或数据敏感性对其进行调整以后，即可通过安全中心获取计算、网络、SQL 和存储以及应用程序资源方面的安全建议。 在本教程中，将了解如何：

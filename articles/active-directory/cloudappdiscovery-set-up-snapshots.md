@@ -1,26 +1,24 @@
 ---
-title: "在 Azure Active Directory 中创建 Cloud App Discovery 快照报表 | Microsoft Docs"
-description: "提供有关如何使用 Cloud App Discovery 来查找和管理应用程序、这样做的好处以及其工作原理的信息。"
+title: 在 Azure Active Directory 中创建 Cloud App Discovery 快照报表 | Microsoft Docs
+description: 提供有关如何使用 Cloud App Discovery 来查找和管理应用程序、这样做的好处以及其工作原理的信息。
 services: active-directory
-keywords: "cloud app discovery, 管理应用程序"
-documentationcenter: 
+keywords: cloud app discovery, 管理应用程序
+documentationcenter: ''
 author: curtand
 manager: mtillman
-ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.custom: it-pro
-ms.openlocfilehash: 69a633b39e68596c536700dbb2c7c8d35f3b44bb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ad4591223c72893a4488f5515d8ceb83e0d7f8cf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-cloud-app-discovery-snapshot-reports"></a>创建 Cloud App Discovery 快照报表
 
@@ -43,7 +41,7 @@ ms.lasthandoff: 12/11/2017
   > FTP 示例格式在快照和自动上传中受支持，而 syslog 仅在自动上传中受支持。 下载示例日志时会下载示例 FTP 日志。
 6. **选择要上传的流量日志**。 一次最多可以上传 20 个文件。 此外，还支持压缩文件和 zip 文件。
   
-7. 单击“创建” 。 上传完成后，可能需要一些时间对这些文件进行分析。 如果是这样，Cloud App Discovery 会在这些文件准备好时发送电子邮件通知。
+7. 单击“创建”。 上传完成后，可能需要一些时间对这些文件进行分析。 如果是这样，Cloud App Discovery 会在这些文件准备好时发送电子邮件通知。
 
 8. 选择“管理快照报表”并选择快照报表。
   

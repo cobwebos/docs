@@ -1,23 +1,23 @@
 ---
-title: "管理 Azure 预订虚拟机实例 | Microsoft Docs"
-description: "了解如何为 Azure 预订 VM 实例更改订阅范围以及管理访问权限。"
+title: 管理 Azure 预订虚拟机实例 | Microsoft Docs
+description: 了解如何为 Azure 预订 VM 实例更改订阅范围以及管理访问权限。
 services: billing
-documentationcenter: 
+documentationcenter: ''
 author: vikramdesai01
 manager: vikramdesai01
-editor: 
+editor: ''
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
 ms.author: vikdesai
-ms.openlocfilehash: f3f5f974630c4bf1c68599e26612ed729b55bcfc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 003abb3ddf632261dc372549209ba664cb8f8398
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="manage-reserved-virtual-machine-instances"></a>管理保留虚拟机实例
 

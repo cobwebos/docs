@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 3d30f889c4d7ed0dafcf8559e8987090c03f4d5e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="access-control-ac"></a>访问控制 (AC)
 
@@ -609,7 +609,7 @@ AC-6 (9) 信息系统审核特权功能的执行。
 
 |||
 |---|---|
-| **客户** | 此蓝图可实现 Log Analytics 服务。 已部署的 VM 和 Azure 诊断存储帐户是连接到 Log Analytics 的源，确保审核特权功能的执行。 |
+| **客户** | 此蓝图实现 Log Analytics 服务。 已部署的 VM 和 Azure 诊断存储帐户是连接到 Log Analytics 的源，确保审核特权功能的执行。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 

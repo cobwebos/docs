@@ -1,25 +1,23 @@
 ---
-title: "如何在 Azure AD Privileged Identity Management 中使用审核日志 | Microsoft 文档"
-description: "了解如何在 Azure Privileged Identity Management 扩展中使用审核日志。"
+title: 如何在 Azure AD Privileged Identity Management 中使用审核日志 | Microsoft 文档
+description: 了解如何在 Azure Privileged Identity Management 扩展中使用审核日志。
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 5d13a6dd-1fcb-4e76-82fb-cb2f4f0e4357
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 02/14/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: dd6cecf9211dada02025d93e4d63234ff0a73949
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 20fd9c5ee90947cc2d3816a0590d4780408baa2f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-the-audit-log-in-pim"></a>在 PIM 中使用审核日志
 可以使用 Privileged Identity Management (PIM) 审核日志查看给定时间段内的所有用户分配和激活。 如果想要在租户中查看活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用 [Azure Active Directory 访问和使用情况报告。](active-directory-view-access-usage-reports.md)

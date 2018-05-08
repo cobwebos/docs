@@ -1,33 +1,33 @@
 ---
-title: "了解 Azure 外部服务收费 | Microsoft Docs"
-description: "了解 Azure 中外部服务（以前称为应用商店）的计费。"
-services: 
-documentationcenter: 
+title: 了解 Azure 外部服务收费 | Microsoft Docs
+description: 了解 Azure 中外部服务（以前称为 Marketplace）的计费。
+services: ''
+documentationcenter: ''
 author: adpick
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 5e0e2a3c-d111-4054-8508-0c111c1b749b
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/9/2017
 ms.author: adpick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 64bfd8581141001aa6c11ca17ec1af681054f490
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f7d8b89806e1f6d59e1a64e589558cd972f4fdc
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>了解外部服务收费的 Azure 计费
 外部服务由 Azure Marketplace 中的第三方软件供应商发布。 例如，ClearDB 和 SendGrid 是可以在 Azure 中购买的外部服务，但不是 Microsoft 发布的。
 
 预配新的外部服务或资源时，会显示警告：
 
-![应用商店购买警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
+![Marketplace 购买警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
 > [!NOTE]
 > 外部服务是 Microsoft 以外的公司发布的，但有时候，Microsoft 产品也会被归类为外部服务。
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
     ![查看外部服务帐单](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png)
 
 ## <a name="view-external-service-spending-for-enterprise-agreement-ea-customers"></a>查看针对企业协议 (EA) 客户的外部服务支出
-EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要开始使用，请参阅[适用于 EA 客户的 Azure 应用商店](https://ea.azure.com/helpdocs/azureMarketplace)。
+EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要开始使用，请参阅[适用于 EA 客户的 Azure Marketplace](https://ea.azure.com/helpdocs/azureMarketplace)。
 
 ## <a name="manage-payment-methods-for-external-service-orders"></a>管理外部服务订单的付款方式
 在[帐户中心](https://account.windowsazure.com/)更新外部服务订单的付款方式。

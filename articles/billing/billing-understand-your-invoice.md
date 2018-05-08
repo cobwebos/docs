@@ -1,24 +1,24 @@
 ---
-title: "了解 Azure 发票"
-description: "了解如何阅读并理解 Azure 订阅的使用情况和计费"
-services: 
-documentationcenter: 
+title: 了解 Azure 发票
+description: 了解如何阅读并理解 Azure 订阅的使用情况和计费
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 54de5e123dbb51948eb62d90b444ebd78f9879cb
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 38126e4539719ba56e6e5eac5e860cea9b49d446
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>了解 Microsoft Azure 发票的条款
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 01/09/2018
 
 | 术语 |说明 |
 | --- | --- |
-| 名称​​ |标识该次使用的最上层服务 |
+| 名称 |标识该次使用的最上层服务 |
 | Type |定义 Azure 服务类型，该类型可能会影响费率 |
 | 资源 |标识已使用计量的度量单位 |
 | 区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: kadimitr
-ms.openlocfilehash: a8d2a2281dcaf6e5e308ad4a2aafb167f9ba9121
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7de9a6f0d4dfcb45932b89504c0d38c3c70283e9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 单元测试
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="unit-testing-orchestrator-functions"></a>对业务流程协调程序函数进行单元测试
 
-业务流程协调程序包含的业务逻辑通常要多得多，因此，它们的单元测试更有趣。 目前只能在 C# 中实现业务流程协调程序函数。
+业务流程协调程序包含的业务逻辑通常要多得多，因此，它们的单元测试更有趣。
 
 在本部分，单元测试将验证 `E1_HelloSequence` 业务流程协调程序函数的输出：
 

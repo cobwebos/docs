@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0ce4497a8bebf9078363509c1f962728ab4189f8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册设置本地条件访问
 当你要求用户在工作区将其个人设备加入到 Azure Active Directory (Azure AD) 设备注册服务时，他们的设备会被标记为组织已知的设备。 以下是在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件访问的分步指南。
@@ -86,7 +86,7 @@ ms.lasthandoff: 04/19/2018
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>第 3 部分：在 Azure AD 中启用设备写回
 | 任务 | 引用 |
 | --- | --- |
-| 完成第 2 部分“在 Azure AD Connect 中启用设备写回”。 完成后，返回到本指南。 |[在 Azure AD Connect 中启用设备写回](#upgrade-your-active-directory-domain-services-schema) |
+| 完成第 2 部分“在 Azure AD Connect 中启用设备写回”。 完成后，返回到本指南。 |[在 Azure AD Connect 中启用设备写回](./connect/active-directory-aadconnect-feature-device-writeback.md) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[可选] 第 4 部分：启用多重身份验证
 强烈建议配置多重身份验证的多个选项之一。 如果你希望要求进行多重身份验证，请参阅[选择多重身份验证安全解决方案](authentication/concept-mfa-whichversion.md)。 其中包含每个解决方案的说明，以及可帮助配置所选解决方案的链接。

@@ -1,22 +1,22 @@
 ---
-title: "创建应用程序网关 - Azure CLI | Microsoft Docs"
-description: "了解如何使用 Azure CLI 创建应用程序网关。"
+title: 创建应用程序网关 - Azure CLI | Microsoft Docs
+description: 了解如何使用 Azure CLI 创建应用程序网关。
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: azurecli
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: bf7e22e86e593045d25a9f31166aebe992caeb45
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 791cc8bca95fc2264b485c23f30e24254067f513
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>使用 Azure CLI 创建应用程序网关
 

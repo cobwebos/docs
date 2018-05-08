@@ -1,27 +1,27 @@
 ---
-title: "下载 Azure 帐单发票和每日使用数据 | Microsoft Docs"
-description: "介绍如何下载或查看 Azure 帐单发票和每日使用数据。"
-keywords: "帐单发票, 发票下载, azure 发票, azure 使用情况"
-services: 
-documentationcenter: 
+title: 下载 Azure 帐单发票和每日使用数据 | Microsoft Docs
+description: 介绍如何下载或查看 Azure 帐单发票和每日使用数据。
+keywords: 帐单发票, 发票下载, azure 发票, azure 使用情况
+services: ''
+documentationcenter: ''
 author: genlin
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eea55735d0e17de4fe543847d0d521b0e8c0c3f7
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 6fa9f9ae4ef2bd39f3c6d3ec7c6d757aa50b2fd1
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
 可以从 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)下载发票，也可通过电子邮件发送发票。 若要下载每日使用情况，请转到 [Azure 帐户中心](https://account.azure.com/Subscriptions)。 只有特定角色有权获取帐单发票和使用情况信息，如帐户管理员。 若要详细了解如何获取计费信息，请参阅[使用角色管理对 Azure 计费的访问](billing-manage-access.md)。

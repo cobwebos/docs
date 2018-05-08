@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0e91cf994306c115911d9dd9cf0018f7947502d8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析航班延误数据
 Hive 提供了通过类似 SQL 的脚本语言（称为 [HiveQL][hadoop-hiveql]）运行 Hadoop MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
@@ -257,9 +257,10 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
     <tr><th>名称</th><th>值</th></tr>
     <tr><td>筛选年份</td><td>2013 </td></tr>
     <tr><td>筛选期间</td><td>1 月</td></tr>
-    <tr><td>字段</td><td>*Year*、 *FlightDate*、 *UniqueCarrier*、 *Carrier*、 *FlightNum*、 *OriginAirportID*、 *Origin*、 *OriginCityName*、 *OriginState*、 *DestAirportID*、 *Dest*、 *DestCityName*、 *DestState*、 *DepDelayMinutes*、 *ArrDelay*、 *ArrDelayMinutes*、 *CarrierDelay*、 *WeatherDelay*、 *NASDelay*、 *SecurityDelay* 、 *LateAircraftDelay* （清除其他所有字段）</td></tr>
+    <tr><td>字段</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay* 、*LateAircraftDelay*（清除其他所有字段）</td></tr>
     </table>
-3. 单击 **下载** 。
+
+3. 单击“下载”。
 4. 将文件解压缩到 **C:\Tutorials\FlightDelay\2013Data** 文件夹。 每个文件均为 CSV 文件且大小约为 60GB。
 5. 将文件重命名为其包含的数据所对应的月份的名称。 例如，将包含 1 月份数据的文件命名为 *January.csv*。
 6. 重复步骤 2 和步骤 5 为 2013 年中的 12 个月分别下载一个对应的文件。 完成本教程到少要有一个文件。
@@ -273,6 +274,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
     <tr><td>$storageAccountName</td><td>要将数据上传到的 Azure 存储帐户。</td></tr>
     <tr><td>$blobContainerName</td><td>要将数据上传到的 Blob 容器。</td></tr>
     </table>
+    
 2. 打开 Azure PowerShell ISE。
 3. 将以下脚本粘贴到脚本窗格中：
 

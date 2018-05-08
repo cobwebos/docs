@@ -2,20 +2,20 @@
 title: 创建应用程序网关 - Azure 门户 | Microsoft Docs
 description: 了解如何使用 Azure 门户创建应用程序网关。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: df9235bc7ff61943de52a0bcc4064bf9fab6636a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 0df71c445d2c5fc6827b69f708203a3b3e6e2b53
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-portal"></a>使用 Azure 门户创建应用程序网关
 
@@ -25,39 +25,39 @@ ms.lasthandoff: 01/29/2018
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-通过 [http://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户
+在 [http://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-要使创建的资源之间实现通信需要虚拟网络。 在此示例中创建了两个子网：一个用于应用程序网关，另一个用于后端服务器。 可以在创建应用程序网关的同时创建虚拟网络。
+若要在创建的资源之间实现通信，需要设置虚拟网络。 在本示例中创建了两个子网：一个用于应用程序网关，另一个用于后端服务器。 可以在创建应用程序网关的同时创建虚拟网络。
 
 1. 单击 Azure 门户左上角的“新建”。
-2. 选择“网络”，然后在“特别推荐”列表中选择“应用程序网关”。
-3. 对于应用程序网关输入以下值：
+2. 选择“网络”，然后在“特色”列表中选择“应用程序网关”。
+3. 输入应用程序网关的以下值：
 
-    - *myAppGateway* - 作为应用程序网关的名称。
-    - *myResourceGroupAG* - 作为新资源组。
+    - *myAppGateway* - 应用程序网关的名称。
+    - *myResourceGroupAG* - 新资源组。
 
     ![新建应用程序网关](./media/application-gateway-create-gateway-portal/application-gateway-create.png)
 
 4. 接受其他设置的默认值，然后单击“确定”。
-5. 单击“选择虚拟网络”，单击“新建”，然后为虚拟网络输入以下值：
+5. 依次单击“选择虚拟网络”、“新建”，然后输入虚拟网络的以下值：
 
-    - *myVNet* - 作为虚拟网络的名称。
-    - *10.0.0.0/16* - 作为虚拟网络地址空间。
-    - *myAGSubnet* - 作为子网名称。
-    - *10.0.0.0/24* - 作为子网地址空间。
+    - *myVNet* - 虚拟网络的名称。
+    - *10.0.0.0/16* - 虚拟网络地址空间。
+    - *myAGSubnet* - 子网名称。
+    - *10.0.0.0/24* - 子网地址空间。
 
     ![创建虚拟网络](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
 
-6. 单击“确定”以创建虚拟网络和子网。
-6. 单击“选择公共 IP 地址”，单击“新建”，然后输入公共 IP 地址的名称。 在此示例中，公共 IP 地址名为 *myAGPublicIPAddress*。 接受其他设置的默认值，然后单击“确定”。
+6. 单击“确定”创建虚拟网络和子网。
+6. 依次单击“选择公共 IP 地址”、“新建”，然后输入公共 IP 地址的名称。 在本示例中，公共 IP 地址名为 *myAGPublicIPAddress*。 接受其他设置的默认值，然后单击“确定”。
 8. 接受侦听器配置的默认值，让 Web 应用程序防火墙保留禁用状态，然后单击“确定”。
 9. 复查摘要页上的设置，然后单击“确定”以创建虚拟网络、公共 IP 地址和应用程序网关。 创建应用程序网关可能需要几分钟时间，请等到部署成功完成，然后再转到下一部分。
 
 ### <a name="add-a-subnet"></a>添加子网
 
-1. 单击左侧菜单中的“所有资源”，然后从资源列表中单击 **myVNet**。
+1. 单击左侧菜单中的“所有资源”，然后从资源列表中单击“myVNet”。
 2. 单击“子网”，然后单击“子网”。
 
     ![创建子网](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
@@ -71,19 +71,19 @@ ms.lasthandoff: 01/29/2018
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
 1. 单击“新建” 。
-2. 单击“计算”，然后在“特别推荐”列表中选择“Windows Server 2016 Datacenter”。
+2. 单击“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。
 3. 为虚拟机输入以下值：
 
     - *myVM* - 作为虚拟机的名称。
     - *azureuser* - 作为管理员用户名。
-    - *Azure123456!* 作为密码。
+    - *Azure123456!* - 密码。
     - 选择“使用现有资源组”，然后选择“myResourceGroupAG”。
 
 4. 单击“确定”。
-5. 选择 **DS1_V2** 作为虚拟机的大小，然后单击“选择”。
+5. 选择“DS1_V2”作为虚拟机的大小，然后单击“选择”。
 6. 请确保选择 **myVNet** 作为虚拟网络，子网是 **myBackendSubnet**。 
 7. 单击“禁用”以禁用启动诊断。
-8. 创建“确定”，复查“摘要”页上的设置，然后单击“创建”。
+8. 创建“确定”，检查“摘要”页上的设置，然后单击“创建”。
 
 ### <a name="install-iis"></a>安装 IIS
 

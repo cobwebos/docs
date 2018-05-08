@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: saveenr
-ms.openlocfilehash: bdd9ff78e8f720a7f1318c320d10070cbdd2d566
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 34967a9853f907c61494e72229d75af1c625ea8f
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -68,8 +68,7 @@ OUTPUT @a
 2. 粘贴在上面所示的 U-SQL 脚本文本中。 
 3. 单击“提交”。   
 4. 请等到作业状态变为“成功”。
-5. 如果作业失败，请参阅[对 Data Lake Analytics 作业进行监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)。
-6. 单击“输出”选项卡，然后单击 `data.csv`。 
+5. 单击“输出”选项卡，然后单击 `data.csv`。 
 
 ## <a name="see-also"></a>另请参阅
 

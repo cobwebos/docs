@@ -1,20 +1,20 @@
 ---
-title: "使用 SSL 终端创建应用程序网关 - Azure CLI | Microsoft Docs"
-description: "了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。"
+title: 使用 SSL 终端创建应用程序网关 - Azure CLI | Microsoft Docs
+description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/18/2018
-ms.author: davidmu
-ms.openlocfilehash: c69ab3db9f23b714f7de9244e4e7015ae60a4f6e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: victorh
+ms.openlocfilehash: cdc24d0b95e30f762eb202ce08222ccde34424e9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 SSL 终端创建应用程序网关
 
@@ -144,7 +144,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
@@ -164,7 +164,7 @@ az network public-ip show \
 
 若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。 随即显示受保护的 NGINX 站点，如下例所示：
 
-![应用程序网关中的测试基 URL](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
+![在应用程序网关中测试基 URL](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -176,4 +176,4 @@ az network public-ip show \
 > * 使用证书创建应用程序网关
 > * 使用默认后端池创建虚拟机规模集
 
-若要了解有关应用程序网关及其关联资源的详细信息，请继续阅读操作指南文章。
+若要详细了解应用程序网关及其关联的资源，请继续阅读操作指南文章。

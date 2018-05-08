@@ -1,26 +1,24 @@
 ---
-title: "在 Azure Active Directory 中管理组的 PowerShell 示例 | Microsoft Docs"
-description: "本页提供的 PowerShell 示例适用于在 Azure Active Directory 中管理组"
-keywords: "Azure AD, Azure Active Directory, PowerShell, 组, 组管理"
+title: 在 Azure Active Directory 中管理组的 PowerShell 示例 | Microsoft Docs
+description: 本页提供的 PowerShell 示例适用于在 Azure Active Directory 中管理组
+keywords: Azure AD, Azure Active Directory, PowerShell, 组, 组管理
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 7a5023dc-2727-4c25-8254-b531fc3244ac
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: rodejo
-ms.openlocfilehash: 3f57e1a0ded679325c8c739e73cc79f69c037191
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 312efd6233546ae32e498907e04fbf8aea73f7b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 > [!div class="op_single_selector"]
