@@ -1,24 +1,24 @@
 ---
-title: "在 Azure 上使用 PySpark 和 Scala 进行 HDInsight Spark 演练 | Microsoft Docs"
-description: "Team Data Science Process 的示例，演练如何在 Azure HDInsight Spark 上使用 PySpark 和 Scala 来执行预测分析。"
+title: 在 Azure 上使用 PySpark 和 Scala 进行 HDInsight Spark 演练 | Microsoft Docs
+description: Team Data Science Process 的示例，演练如何在 Azure HDInsight Spark 上使用 PySpark 和 Scala 来执行预测分析。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 76c9382cc5210bb5ac8551ebb7b16ecabe0dcd39
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: deguhath
+ms.openlocfilehash: 06498f55b38be98441ddceb8f1667c89d257f8fd
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>在 Azure 上使用 PySpark 和 Scala 进行 HDInsight Spark 数据科学演练
 

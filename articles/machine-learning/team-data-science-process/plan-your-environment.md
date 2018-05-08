@@ -1,9 +1,9 @@
 ---
-title: "确认方案并计划分析过程 - Azure | Microsoft Docs"
-description: "规划高级分析时需考虑一系列关键问题。"
+title: 确认方案并计划分析过程 - Azure | Microsoft Docs
+description: 规划高级分析时需考虑一系列关键问题。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: f4cf702b899b285b18c09d7a5951589d2ae71b7d
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: d2b982669f126695e3e5baefce24853269947536
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 将环境设置为对数据集执行高级分析处理时，应计划包括哪些资源？ 本文为一系列提出的问题提供建议，有助于确定与用户方案相关的任务和资源。 [什么是 Team Data Science Process (TDSP)？](overview.md)中概述了预测分析的高级步骤顺序。 每个步骤都需要与用户特定方案相关的任务特定资源。 确定方案的关键问题涉及数据物流、特征、数据集的质量以及执行分析要使用的工具和语言。

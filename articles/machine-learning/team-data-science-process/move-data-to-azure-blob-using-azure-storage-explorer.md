@@ -1,9 +1,9 @@
 ---
-title: "使用 Azure 存储资源管理器将数据移入和移出 Blob 存储 | Microsoft 文档"
-description: "使用 Azure 存储资源管理器将数据移动到 Azure Blob 存储或从中移动数据"
+title: 使用 Azure 存储资源管理器将数据移入和移出 Blob 存储 | Microsoft 文档
+description: 使用 Azure 存储资源管理器将数据移动到 Azure Blob 存储或从中移动数据
 services: machine-learning,storage
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 10bd283f-0875-4c67-af63-6492270b7656
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 3db06eed16191ef906f2c565d78fd0063cdb2f7b
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: c20bf045b156400e38e111337908d76b3016c0ea
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器将数据移入和移出 Azure Blob 存储
 Azure 存储资源管理器是 Microsoft 免费提供的应用，可用于在 Windows、macOS 和 Linux 上处理 Azure 存储数据。 本主题介绍如何使用它从 Azure Blob 存储上传和下载数据。 该工具可以从 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)下载。

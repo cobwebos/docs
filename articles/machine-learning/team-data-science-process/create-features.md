@@ -3,7 +3,7 @@ title: 数据科学中的特征工程 | Microsoft Docs
 description: 解释特征工程的目的，并提供其在机器学习的数据增强过程中的作用的相关示例。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 3fde69e8-5e7b-49ad-b3fb-ab8ef6503a4d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev
-ms.openlocfilehash: 70a78659bc14ce5ff9358ed11ad0af68be31bd17
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 0fcd17a5db1c5500c1b1591da52ba946188e8946
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="feature-engineering-in-data-science"></a>数据科学中的特征工程
 本文章解释特征工程的目的，并提供其在机器学习的数据增强过程中的作用的相关示例。 用于说明此过程的示例来自 Azure 机器学习工作室。 

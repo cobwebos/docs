@@ -1,9 +1,9 @@
 ---
-title: "对 Azure HDInsight Hive 表中的数据采样 | Microsoft Docs"
-description: "Azure HDInsight  (Hadopop) Hive 表中的向下采样数据"
+title: 对 Azure HDInsight Hive 表中的数据采样 | Microsoft Docs
+description: Azure HDInsight  (Hadopop) Hive 表中的向下采样数据
 services: machine-learning,hdinsight
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: f31e8d01-0fd4-4a10-b1a7-35de3c327521
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: d765c2adc8a3aa77d903490875c7f8ad622ef4d2
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: b40aae9d494f3e7ebeae56fcad48f0ff47798bbc
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>对 Azure HDInsight Hive 表中的数据进行采样
 本文介绍如何使用 Hive 查询向下采样存储在 Azure HDInsight Hive 表中的数据，以将其减至对于分析更易于管理的大小。 将介绍三种常用的采样方法：
