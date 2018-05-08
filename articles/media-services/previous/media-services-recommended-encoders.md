@@ -1,8 +1,8 @@
 ---
-title: "了解 Azure 媒体服务建议的编码器 | Microsoft 文档"
-description: "了解媒体服务建议的编码器"
+title: 了解 Azure 媒体服务建议的编码器 | Microsoft 文档
+description: 了解媒体服务建议的编码器
 services: media-services
-keywords: "编码;编码器;媒体"
+keywords: 编码;编码器;媒体
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: d0c5536d2339470eac058250cc14e1f250b86d90
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="recommended-on-premises-encoders"></a>推荐的本地编码器
 使用 Azure 媒体服务实时传送视频流时，可以指定通道接收输入流的方式。 如果选择将本地编码器与实时编码通道结合使用，则编码器应推送高质量单比特率流作为输出。 如果选择将本地编码器与直通通道结合使用，则编码器应推送具备所有所需输出质量的多比特率流作为输出。 有关详细信息，请参阅[使用本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)。

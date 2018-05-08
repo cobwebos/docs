@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心与 Azure Linux 虚拟机 | Microsoft 文档"
-description: "本文档可帮助理解 Azure 安全中心如何能够保护 Azure 虚拟机。"
+title: Azure 安全中心与 Azure Linux 虚拟机 | Microsoft 文档
+description: 本文档可帮助理解 Azure 安全中心如何能够保护 Azure 虚拟机。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e08444cbfdb095c79d164de06dda078c6a242b3f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure 安全中心与 Azure Linux 虚拟机
 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 * 缺少的系统安全更新和关键更新
 * 终结点保护建议
 * 磁盘加密验证
-* 基于网络的攻击（仅适用于[标准版](https://azure.microsoft.com/en-us/pricing/details/security-center/)）
+* 基于网络的攻击（仅适用于[标准版](https://azure.microsoft.com/pricing/details/security-center/)）
 
 除帮助保护 Azure VM 外，安全中心还可安全监视和管理云服务、应用服务、虚拟网络等。 
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/11/2017
 | [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md) |建议 OS 配置匹配推荐的配置规则，例如不允许保存密码。 |
 | [应用系统更新](security-center-apply-system-updates.md) |建议在 VM 上部署缺少的系统安全和重要更新。 |
 | [在系统更新后重启](security-center-apply-system-updates.md#reboot-after-system-updates) |建议重启 VM 以完成应用系统更新的过程。 |
-| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意程序，则必须在 VM 上安装 VM 代理。 对于从 Azure Marketplace 部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
+| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意程序，则必须在 VM 上安装 VM 代理。 对于从 Azure Marketplace 部署的 VM，会默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
 | [应用磁盘加密](security-center-apply-disk-encryption.md) |建议使用 Azure 磁盘加密（Windows 和 Linux VM）对 VM 磁盘进行加密。 对于 VM 上的 OS 和数据卷，建议使用加密。 |
 
 

@@ -1,12 +1,12 @@
 ---
-title: "使用脱机 Apple FairPlay 保护 HLS 内容 - Azure | Microsoft Docs"
-description: "本主题概括介绍并演示了如何使用 Azure 媒体服务以脱机模式通过 Apple FairPlay 动态加密 HTTP Live Streaming (HLS) 内容。"
+title: 使用脱机 Apple FairPlay 保护 HLS 内容 - Azure | Microsoft Docs
+description: 本主题概括介绍并演示了如何使用 Azure 媒体服务以脱机模式通过 Apple FairPlay 动态加密 HTTP Live Streaming (HLS) 内容。
 services: media-services
-keywords: "HLS, DRM, FairPlay Streaming (FPS), 脱机, iOS 10"
-documentationcenter: 
+keywords: HLS, DRM, FairPlay Streaming (FPS), 脱机, iOS 10
+documentationcenter: ''
 author: willzhan
 manager: steveng
-editor: 
+editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/01/2017
 ms.author: willzhan, dwgeo
 ms.openlocfilehash: dc38772097dddb7c7135d55598373d7ab544f9ea
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
  Azure 媒体服务提供一套设计良好的[内容保护服务](https://azure.microsoft.com/services/media-services/content-protection/)，包括：
@@ -196,7 +196,7 @@ func requestApplicationCertificate() throws -> Data {
 以下常见问题解答提供故障排除帮助：
 
 - **为什么在脱机模式期间只播放音频而不播放视频？** 此行为似乎是示例应用专门设计的。 存在备用音频曲目时（这适用于 HLS），在脱机模式期间，iOS 10 和 iOS 11 都默认播放备用音频曲目。为了补偿 FPS 脱机模式的此行为，需要从流删除备用音频曲目。 若要在媒体服务中完成此操作，请添加动态清单筛选器“audio-only=false”。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 
-- **为什么添加 audio-only=false 之后，在脱机模式期间仍只播放音频而不播放视频？** 根据内容交付网络 (CDN) 缓存键的设计，可能会缓存该内容。 请清除缓存。
+- **为什么添加 audio-only=false 之后，在脱机模式期间仍只播放音频而不播放视频？** 根据内容分发网络 (CDN) 缓存键的设计，可能会缓存该内容。 请清除缓存。
 - **除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？** 是的。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
 - **为什么在 FPS Server SDK 中，无法使用 FairPlay Streaming 和 HTTP Live Streaming 找到文档“脱机播放”？** 从 FPS Server SDK 版本 4 开始，此文档已合并到“FairPlay Streaming 编程指南”。
 - **FPS 脱机模式的以下 API 中最后一个参数代表什么？**

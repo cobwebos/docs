@@ -1,11 +1,11 @@
 ---
-title: "使用 AMS REST API 通过存储加密来加密内容"
-description: "了解如何使用 AMS REST API 通过存储空间加密来加密内容。"
+title: 使用 AMS REST API 通过存储加密来加密内容
+description: 了解如何使用 AMS REST API 通过存储空间加密来加密内容。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a0a79f3d-76a1-4994-9202-59b91a2230e0
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
 ms.openlocfilehash: 2fd4c91a8151067c0e9cc9000c158e48cb2cd8a5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>通过存储加密来加密内容
 

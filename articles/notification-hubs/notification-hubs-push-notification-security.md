@@ -1,26 +1,26 @@
 ---
-title: "通知中心的安全性"
-description: "本主题介绍 Azure 通知中心的安全性。"
+title: 通知中心的安全性
+description: 本主题介绍 Azure 通知中心的安全性。
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 6506177c-e25c-4af7-8508-a3ddca9dc07c
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 7c3283799806135060bb8ca57ea398c93d1106bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 9f197a85dfad31ce32d0f9c93127b69d8e33c9ee
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="security"></a>“安全”
+# <a name="security"></a>安全
 ## <a name="overview"></a>概述
 本主题介绍 Azure 通知中心的安全模型。 由于通知中心是服务总线实体，因此它们与服务总线实现同一安全模型。 有关详细信息，请参阅[服务总线身份验证](https://msdn.microsoft.com/library/azure/dn155925.aspx)主题。
 

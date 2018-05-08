@@ -1,11 +1,11 @@
 ---
-title: "使用 REST 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs"
-description: "了解如何通过创建和上传资产将媒体内容加入媒体服务。"
+title: 使用 REST 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs
+description: 了解如何通过创建和上传资产将媒体内容加入媒体服务。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: juliako
 ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/11/2018
 > * 使用上传 URL 将文件上传到 Blob 存储
 > * 在资产中为上传的媒体文件创建元数据
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。

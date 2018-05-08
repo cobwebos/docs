@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 501364f24e61c29ac0d5909a7dff1df9e93fe6a5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
@@ -85,7 +85,7 @@ PAW 方法是获得广泛认可的推荐做法的延伸，以使用单独分配�
 
 [Azure 开发测试实验室](../devtest-lab/devtest-lab-overview.md)服务使用 [Azure 基于角色的访问控制](../role-based-access-control/overview.md) (RBAC)。 使用 RBAC 可将团队内的责任分到各角色，这些角色仅授予用户完成其工作所需的访问级别。 RBAC 附带了预定义角色（所有者、实验室用户和参与者）。 甚至可以使用这些角色将权限分配给外部合作伙伴，大幅简化协作。
 
-由于开发测试实验室使用了 RBAC，因此可以创建其他[自定义角色](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md)。 开发测试实验室不仅简化了权限管理，还简化了设置预配过程。 此外，它还可以帮助处理开发和测试环境中团队的其他典型挑战。 它需要一些准备工作，但从长远来看，它将使团队处理事情变得更轻松。
+由于开发测试实验室使用了 RBAC，因此可以创建其他[自定义角色](../lab-services/devtest-lab-grant-user-permissions-to-specific-lab-policies.md)。 开发测试实验室不仅简化了权限管理，还简化了设置预配过程。 此外，它还可以帮助处理开发和测试环境中团队的其他典型挑战。 它需要一些准备工作，但从长远来看，它将使团队处理事情变得更轻松。
 
 Azure 开发测试实验室的功能包括：
 
@@ -166,7 +166,7 @@ Microsoft 会在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中
 
 安全合规管理器是一个免费工具。 将与组策略和 System Center Configuration Manager 结合使用可以快速配置和管理桌面、传统数据中心、私有云和公有云。
 
-安全合规管理器提供已经过测试的随时可部署的策略和 Desired Configuration Management 配置包。 这些基准基于 [Microsoft 安全指南](https://technet.microsoft.com/en-us/library/cc184906.aspx)建议和行业最佳做法。 它们可帮助你管理配置漂移、满足合规性要求，以及减少安全威胁。
+安全合规管理器提供已经过测试的随时可部署的策略和 Desired Configuration Management 配置包。 这些基准基于 [Microsoft 安全指南](https://technet.microsoft.com/library/cc184906.aspx)建议和行业最佳做法。 它们可帮助你管理配置漂移、满足合规性要求，以及减少安全威胁。
 
 可以使用安全合规管理器以两种不同的方法导入计算机的当前配置。 首先，可以导入基于 Active Directory 的组策略。 然后，可以通过使用 [LocalGPO](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/) 工具导入“黄金母版”引用计算机的配置，以备份本地组策略。 稍后可将本地组策略导入安全合规管理器。
 

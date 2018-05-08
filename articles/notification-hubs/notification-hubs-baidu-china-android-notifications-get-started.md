@@ -1,24 +1,24 @@
 ---
-title: "通过百度开始使用 Azure 通知中心 | Microsoft Docs"
-description: "在本教程中，将了解如何通过百度使用 Azure 通知中心将通知推送到 Android 设备。"
+title: 通过百度开始使用 Azure 通知中心 | Microsoft Docs
+description: 在本教程中，将了解如何通过百度使用 Azure 通知中心将通知推送到 Android 设备。
 services: notification-hubs
 documentationcenter: android
-author: kpiteira
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 08/29/2017
-ms.author: kapiteir
-ms.openlocfilehash: 91f20a6e0ff6c2dd512879e9ab3c9369dab5d8ff
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: c680de254c55adaad8cedde6cf4748efd0c2c858
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/16/2017
    
     ![百度注册确认](./media/notification-hubs-baidu-get-started/BaiduConfirmation.png)
 
-4. 登录到电子邮件帐户，打开百度激活邮件，然后单击激活链接以激活百度帐号。
+4. 登录到电子邮件帐户，打开百度激活邮件，并单击激活链接以激活百度帐号。
    
     ![百度激活电子邮件](./media/notification-hubs-baidu-get-started/BaiduActivationEmail.png)
 
@@ -519,7 +519,7 @@ ms.lasthandoff: 10/16/2017
     Console.ReadLine();
     ```
 
-## <a name="test-your-app"></a>测试应用程序
+## <a name="test-your-app"></a>测试应用
 
 要使用实际的手机测试此应用，只需使用 USB 电缆将该手机连接到计算机。 此操作会将应用加载到连接的手机中。
 

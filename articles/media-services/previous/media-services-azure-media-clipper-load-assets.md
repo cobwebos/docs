@@ -1,8 +1,8 @@
 ---
-title: "将资产加载到 Azure 媒体剪辑器 | Microsoft Docs"
-description: "将资产加载到 Azure 媒体剪辑器的步骤"
+title: 将资产加载到 Azure 媒体剪辑器 | Microsoft Docs
+description: 将资产加载到 Azure 媒体剪辑器的步骤
 services: media-services
-keywords: "剪辑;子剪辑;编码;媒体"
+keywords: 剪辑;子剪辑;编码;媒体
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 6a479218ff8bd5addf4273b23c06380859e0ea08
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>将资产加载到 Azure 媒体剪辑器
 可以通过两种方法将资产加载到 Azure 媒体剪辑器：

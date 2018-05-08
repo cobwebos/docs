@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: a916a261c310a2a9b4cc777fe17db794fed26cbd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 35762d5781d5437a25eaf9942e50f60846ae1ae2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 
 > [!div class="op_single_selector"]
-> - [Portal](network-watcher-troubleshoot-manage-portal.md)
+> - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
@@ -156,7 +156,7 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
       "recommendedActions": [
         {
           "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
-          "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
+          "actionUri": "https://azure.microsoft.com/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting the VPN Gateway"
         },
         {
@@ -173,7 +173,7 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
       "recommendedActions": [
         {
           "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
-          "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
+          "actionUri": "https://azure.microsoft.com/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting VPN gateway"
         },
         {
@@ -290,7 +290,7 @@ is a transient state while the Azure platform is being updated.",
       "recommendedActions": [
         {
           "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
-          "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
+          "actionUri": "https://azure.microsoft.com/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting the VPN gateway"
         },
         {
@@ -307,7 +307,7 @@ is a transient state while the Azure platform is being updated.",
       "recommendedActions": [
         {
           "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
-          "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
+          "actionUri": "https://azure.microsoft.com/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting VPN gateway"
         },
         {
