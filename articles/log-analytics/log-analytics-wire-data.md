@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics 中的 Wire Data 解决方案| Microsoft Docs"
-description: "线路数据是通过 OMS 代理（包括 Operations Manager 和 Windows 连接的代理）从计算机收集的网络和性能整合数据。 网络数据与日志数据结合在一起，可帮助将数据相关联。"
+title: Log Analytics 中的 Wire Data 解决方案| Microsoft Docs
+description: 线路数据是通过 OMS 代理（包括 Operations Manager 和 Windows 连接的代理）从计算机收集的网络和性能整合数据。 网络数据与日志数据结合在一起，可帮助将数据相关联。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 658d92900763249aeeb3542132f4fe0c43ba005f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics 中的 Wire Data 2.0（预览版）解决方案
 
@@ -58,8 +58,8 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
-| Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除 [OMS 代理](log-analytics-windows-agent.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)。 |
-| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除 [OMS 代理](log-analytics-quick-collect-linux-computer.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)。 |
+| Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除 [OMS 代理](log-analytics-windows-agent.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)。 |
+| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除 [OMS 代理](log-analytics-quick-collect-linux-computer.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)。 |
 | System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机直接连接到 Log Analytics。 数据从管理组转发到 Log Analytics。 |
 | Azure 存储帐户 | 否 | Wire Data 从代理计算机中收集数据，因此Wire Data 中没有从 Azure 存储收集的数据。 |
 

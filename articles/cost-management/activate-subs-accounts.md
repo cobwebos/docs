@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/01/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: quickstart
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6a42f4b5b54056424bc3e2d865408ad6711403e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>使用 Azure 成本管理激活 Azure 订阅和帐户
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 04/16/2018
 下面是修复问题的方法：
 
 1. 经销商需为你的帐户启用标记。 有关说明，请参阅[间接客户加入指南](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)。
-2. 生成要在 Azure 成本管理中使用的 Azure 企业协议密钥。 有关说明，请参阅[注册 Azure 企业协议并查看成本数据](https://docs.microsoft.com/en-us/azure/cost-management/quick-register-ea)。
+2. 生成要在 Azure 成本管理中使用的 Azure 企业协议密钥。 有关说明，请参阅[注册 Azure 企业协议并查看成本数据](https://docs.microsoft.com/azure/cost-management/quick-register-ea)。
 
 只有 Azure 服务管理员可以启用成本管理。 协同管理员的权限不足。
 

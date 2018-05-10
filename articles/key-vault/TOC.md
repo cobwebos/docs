@@ -54,6 +54,12 @@
 ### [迁移到.NET 2.0](key-vault-dotnet2api-release-notes.md)
 ### [保存 Web 应用机密](vs-secure-secret-appsettings.md)
 ### [使用 .NET 进行服务身份验证](service-to-service-authentication.md)
+### 使用 Visual Studio
+#### [使用 Key Vault 连接服务](vs-key-vault-add-connected-service.md)
+#### [ASP.NET 项目入门](vs-key-vault-aspnet-get-started.md)
+#### [我的 ASP.NET 项目发生了什么情况？](vs-key-vault-aspnet-what-happened.md)
+#### [ASP.NET Core 项目入门](vs-key-vault-aspnet-core-get-started.md)
+#### [我的 ASP.NET Core 项目发生了什么情况？](vs-key-vault-aspnet-core-what-happened.md)
 
 # 资源
 ## [服务概述](https://azure.microsoft.com/services/key-vault/)

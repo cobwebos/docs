@@ -148,7 +148,7 @@
             - name: REST API
               href: log-analytics-api-alerts.md
             - name: 资源管理器模板
-              href: ../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md
+              href: ../monitoring/monitoring-solutions-resources-searches-alerts.md
         - name: Webhook 操作示例
           href: log-analytics-alerts-webhooks.md
         - name: 警报管理解决方案
@@ -176,7 +176,7 @@
         - name: 解决方案概述
           href: log-analytics-add-solutions.md
         - name: 目标解决方案
-          href: ../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../monitoring/monitoring-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: Azure 活动日志
           items:
             - name: 分析
@@ -246,13 +246,13 @@
             - name: 将 Service Fabric 与 Azure 资源管理器配合使用
               href: log-analytics-service-fabric-azure-resource-manager.md
         - name: 服务映射
-          href: ../operations-management-suite/operations-management-suite-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: SQL 运行状况检查
           href: log-analytics-sql-assessment.md
         - name: Surface Hub
           href: log-analytics-surface-hubs.md
         - name: 更新管理
-          href: ../operations-management-suite/oms-solution-update-management.md
+          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: VMware
           href: log-analytics-vmware.md
         - name: Windows 分析

@@ -1,8 +1,8 @@
 - name: Azure HDInsight 文档
   href: /azure/hdinsight
-- name: HDInsight 上的 Hadoop
+- name: 概述
   items:
-    - name: 概述
+    - name: 关于 Hadoop on HDInsight
       href: apache-hadoop-introduction.md
     - name: HDInsight 中的 Hadoop 体系结构
       href: ../hdinsight-hadoop-architecture.md
@@ -10,20 +10,32 @@
     - name: HDInsight 上的 Hadoop 组件
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: 入门
+- name: 快速入门
   items:
-    - name: Hadoop 入门
+    - name: 创建 Hadoop 群集 - 门户
+      href: apache-hadoop-linux-create-cluster-get-started-portal.md
+    - name: 创建 Hadoop 群集 - 资源管理器
       href: apache-hadoop-linux-tutorial-get-started.md
-    - name: Hadoop 沙盒
-      href: apache-hadoop-emulator-get-started.md
-    - name: 安装 HDInsight 应用
-      href: ../hdinsight-apps-install-applications.md
+- name: 教程
+  items:
+    - name: 执行 ETL 操作
+      href: ../hdinsight-analyze-flight-delay-data-linux.md
       maintainContext: true
+    - name: 创建按需群集
+      href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+      maintainContext: true
+- name: 概念
+  items:
     - name: 群集容量规划
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: 可用性和可靠性
+      href: ../hdinsight-high-availability-linux.md
+      maintainContext: true
 - name: 如何
   items:
+    - name: 使用 Hadoop 沙盒
+      href: apache-hadoop-emulator-get-started.md
     - name: 使用群集存储
       items:
         - name: 使用 Azure 存储
@@ -144,9 +156,6 @@
         - name: 分析存储的推文
           href: ../hdinsight-analyze-twitter-data-linux.md
           maintainContext: true
-        - name: 分析航班延误数据
-          href: ../hdinsight-analyze-flight-delay-data-linux.md
-          maintainContext: true
         - name: 使用 Mahout 生成建议
           href: apache-hadoop-mahout-linux-mac.md
         - name: 使用 Hive 分析网站日志
@@ -164,6 +173,9 @@
           maintainContext: true
     - name: 扩展群集
       items:
+        - name: 安装 HDInsight 应用
+          href: ../hdinsight-apps-install-applications.md
+          maintainContext: true
         - name: 使用 Bootstrap 自定义群集
           href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
           maintainContext: true
@@ -260,9 +272,6 @@
             - name: 使用 Azure 资源管理器模板
               href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
               maintainContext: true
-        - name: 创建按需群集
-          href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-          maintainContext: true
         - name: 管理的 Hadoop 群集
           href: ../hdinsight-administer-use-portal-linux.md
           maintainContext: true
@@ -329,9 +338,6 @@
           maintainContext: true
         - name: 迁移到 Resource Manager 开发工具
           href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
-          maintainContext: true
-        - name: 可用性和可靠性
-          href: ../hdinsight-high-availability-linux.md
           maintainContext: true
         - name: 将 HDInsight 群集升级到更新的版本
           href: ../hdinsight-upgrade-cluster.md

@@ -1,25 +1,25 @@
 ---
-title: "Azure 策略 json 示例 - 允许的应用程序网关 SKU | Microsoft Docs"
-description: "此 json 示例策略要求应用程序网关使用已批准的 SKU。"
+title: Azure 策略 json 示例 - 允许的应用程序网关 SKU | Microsoft Docs
+description: 此 json 示例策略要求应用程序网关使用已批准的 SKU。
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 8843ee720e6dd919464a2e0f84501be5af8da7e3
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 42973dc18adfd276050e0d1ccf92cd0aaeb82527
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="allowed-application-gateway-skus"></a>允许的应用程序网关 SKU
 

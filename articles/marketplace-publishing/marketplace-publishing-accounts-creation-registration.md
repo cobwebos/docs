@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: mbaldwin
-ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 69da37cbf5691fe94b9550200e259711e9e201d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
 本文介绍成为 Azure Marketplace 的批准 Microsoft 开发人员的必要帐户创建和注册过程。
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/16/2018
 创建公司帐户时，如果多个用户将需要通过使用建立该帐户的 Microsoft 帐户登录来访问该帐户，请遵循以下准则。
 
 > [!Important]
-> 重要信息：要允许多个用户访问开发人员中心帐户，我们建议使用 Azure Active Directory 为单个用户分配角色，这些用户可以通过使用其个人 Azure AD 凭据登录来访问该帐户。 有关详细信息，请参阅[管理帐户用户](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users)。
+> 重要信息：要允许多个用户访问开发人员中心帐户，我们建议使用 Azure Active Directory 为单个用户分配角色，这些用户可以通过使用其个人 Azure AD 凭据登录来访问该帐户。 有关详细信息，请参阅[管理帐户用户](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users)。
 
 * 使用属于公司的域（而不是属于单个人）的电子邮件地址（例如，windowsapps@fabrikam.com）创建 Microsoft 帐户。
 * 限制只有尽可能最少数量的开发人员可以访问此 Microsoft 帐户。
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/16/2018
 
 应主要从受信任的电脑访问开发人员帐户。 这很关键，因为对每个帐户每周生成的代码数有限制。 它还确保提供最无缝的登录体验。
 
-有关其他开发人员帐户准则和安全性的详细信息，请单击[此处](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)。
+有关其他开发人员帐户准则和安全性的详细信息，请单击[此处](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)。
 
 ### <a name="instructions"></a>说明
 1. 打开新的 Chrome Incognito 或 Internet Explorer InPrivate 浏览会话，以确保未登录到现有帐户。

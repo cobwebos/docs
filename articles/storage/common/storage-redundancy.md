@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: bdb9bfaa85f526af0c5e42294a75664fa7137849
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2b105cd05ace9be6ad24d092f2b12c7ad092188e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-storage-replication"></a>Azure 存储复制
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/03/2018
 
 下表简要概述了每种复制策略为给定类型的事件（或具有类似影响性的事件）提供的持久性和可用性范围。
 
-| 方案 | LRS | ZRS | GRS | RA-GRS |
+| 场景 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
 | 数据中心内的节点不可用 |是 |是 |是 |是
 | 整个数据中心（区域性或非区域性）不可用 |否 |是 |是 |是 |
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/03/2018
 > 高级存储仅支持本地冗余存储 (LRS)。 有关高级存储的信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../virtual-machines/windows/premium-storage.md)。
 
 ## <a name="changing-replication-strategy"></a>更改复制策略
-我们允许使用 [Azure 门户](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) 或众多的 [Azure 客户端库](https://docs.microsoft.com/en-us/azure/index?view=azure-dotnet#pivot=sdkstools)之一来更改存储帐户的复制策略。 更改存储帐户的复制类型不会导致停机。
+我们允许使用 [Azure 门户](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 或众多的 [Azure 客户端库](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools)之一来更改存储帐户的复制策略。 更改存储帐户的复制类型不会导致停机。
 
    > [!NOTE]
    > 目前，无法使用门户或 API 将帐户转换为 ZRS。 但是，我们已计划在推出 ZRS 正式版后，支持从 LRS、GRS 和 RA-GRS 迁移到 ZRS。 有关详细信息，请参阅[区域冗余存储 (ZRS)](storage-redundancy-zrs.md)。

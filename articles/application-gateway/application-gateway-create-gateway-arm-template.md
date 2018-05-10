@@ -3,8 +3,8 @@ title: 创建 Azure 应用程序网关 - 模板 | Microsoft Docs
 description: 本页提供有关使用 Azure 资源管理器模板创建 Azure 应用程序网关的说明
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: davidmu
-ms.openlocfilehash: ba100189cec2060efa97914a2c90f7b0cccbc33f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: victorh
+ms.openlocfilehash: c749cdf133caebb2d1f061d53a1db38e9ec433bd
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建应用程序网关
 

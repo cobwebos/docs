@@ -1,26 +1,26 @@
 ---
-title: "如何使用 Azure CLI 2.0 和 IoT 扩展管理设备预配服务 | Microsoft Docs"
-description: "了解如何使用 Azure CLI 2.0 和 IoT 扩展来管理设备预配服务"
+title: 如何使用 Azure CLI 2.0 和 IoT 扩展管理设备预配服务 | Microsoft Docs
+description: 了解如何使用 Azure CLI 2.0 和 IoT 扩展来管理设备预配服务
 services: iot-dps
-keywords: 
+keywords: ''
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a1224c48537441726c0e01134f6a9256cf3b71c6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8e8bbf5808c11709a49f1cb6ebeba410837e5810
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-cli-20-and-the-iot-extension-to-manage-device-provisioning-services"></a>如何使用 Azure CLI 2.0 和 IoT 扩展来管理设备预配服务
 
-[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) 是一个开源跨平台命令行工具，用于管理 IoT Edge 等 Azure 资源。 Azure CLI 2.0 适用于 Windows、Linux 和 MacOS。 使用 Azure CLI 2.0 可以管理 Azure IoT 中心资源、设备预配服务实例和现成的链接中心。
+[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是一个开源跨平台命令行工具，用于管理 IoT Edge 等 Azure 资源。 Azure CLI 2.0 适用于 Windows、Linux 和 MacOS。 使用 Azure CLI 2.0 可以管理 Azure IoT 中心资源、设备预配服务实例和现成的链接中心。
 
 IoT 扩展丰富了 Azure CLI 2.0 的功能，例如设备管理和完整的 IoT Edge 功能。
 
@@ -34,7 +34,7 @@ IoT 扩展丰富了 Azure CLI 2.0 的功能，例如设备管理和完整的 IoT
 
 ### <a name="step-2---install-azure-cli-20"></a>步骤 2 - 安装 Azure CLI 2.0
 
-遵照[安装说明](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)在环境中安装 Azure CLI 2.0。 Azure CLI 2.0 版本必须至少是 2.0.24 或更高。 请使用 `az –version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 在 Windows 上，一种简单的安装方法是下载并安装 [MSI](https://aka.ms/InstallAzureCliWindows)。
+遵照[安装说明](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)在环境中安装 Azure CLI 2.0。 Azure CLI 2.0 版本必须至少是 2.0.24 或更高。 请使用 `az –version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 在 Windows 上，一种简单的安装方法是下载并安装 [MSI](https://aka.ms/InstallAzureCliWindows)。
 
 ### <a name="step-3---install-iot-extension"></a>步骤 3 - 安装 IoT 扩展
 

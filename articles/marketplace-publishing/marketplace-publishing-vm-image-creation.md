@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: mbaldwin
-ms.openlocfilehash: cb1d529f8e3eaabb4d49e8bbea03cab8e838cfa2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ea92275b26da4ac72f76b438f632bd1c048beb10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，并将其部署到 Azure Marketplace。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -514,11 +514,11 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
 |问题|失败消息|解决方法|文档链接|
 |---|---|---|---|
-|复制映像时失败 - 在 SAS url 中找不到 "?"|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用建议的工具更新 SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|复制映像时失败 -“st”和“se”参数不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用其开始和结束日期更新 SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|复制映像时失败 - "sp = rl" 不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob|使用设置为“读取”和“列出”的权限更新 SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|复制映像时失败 - SAS url 的 vhd 名称中包含空格|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|将 SAS Url 更新为不包含空格|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|复制映像时失败 - SAS Url 授权错误|失败：复制映像。 由于授权错误，无法下载 blob|重新生成 SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - 在 SAS url 中找不到 "?"|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用建议的工具更新 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 -“st”和“se”参数不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用其开始和结束日期更新 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - "sp = rl" 不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob|使用设置为“读取”和“列出”的权限更新 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - SAS url 的 vhd 名称中包含空格|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|将 SAS Url 更新为不包含空格|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - SAS Url 授权错误|失败：复制映像。 由于授权错误，无法下载 blob|重新生成 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |复制映像失败 - SAS URL“st”和“se”参数不具有完整的日期时间格式|失败：复制映像。 由于 SAS URL 错误，无法下载 blob |SAS URL 开始日期和结束日期参数（“st”、“se”）需要具有完整的日期时间格式（如 11-02-2017T00:00:00Z），不能仅具有日期或采用时间的缩写形式。 使用 Azure CLI 2.0（az 命令）时很可能会遇到这种情况。 请务必提供完整的日期时间格式并重新生成 SAS URL。|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>后续步骤

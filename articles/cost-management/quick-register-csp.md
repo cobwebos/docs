@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/17/2018
+ms.date: 04/26/2018
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: ''
 ms.service: cost-management
-manager: carmonm
-ms.openlocfilehash: 9e09961685ad688098970ae4ea73e1a90f6a95ca
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+manager: dougeby
+ms.openlocfilehash: 839f99153e0b7458d205c1afb61a05c75cbe0fb7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>注册 CSP 合作伙伴计划并查看成本数据
 

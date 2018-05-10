@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure Log Analytics 优化 SQL Server 环境 | Microsoft 文档"
-description: "借助 Azure Log Analytics，可以使用 SQL 运行状况检查解决方案定期评估环境的风险和运行状况。"
+title: 使用 Azure Log Analytics 优化 SQL Server 环境 | Microsoft 文档
+description: 借助 Azure Log Analytics，可以使用 SQL 运行状况检查解决方案定期评估环境的风险和运行状况。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5da04e9479ebd6cec886a8c5ca38d040aec2758d
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 47f912932f9a0e1383ef5f82d1d3e33b5ababa9c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>使用 Log Analytics 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 02/13/2018
 
 1. 如果该服务器尚不受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视，请安装 [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md)。
 2. 如果该服务器受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视并且管理组未与 Log Analytics 服务集成，则它可与 Log Analytics 共用多个宿主，以收集数据并将其转发到服务，同时仍可由 Operations Manager 监视。  
-3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](log-analytics-om-agents.md#connecting-operations-manager-to-oms)中的步骤，为数据收集服务添加域控制器。  
+3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics)中的步骤，为数据收集服务添加域控制器。  
 
 SQL Server 上的代理向 Operations Manager 管理组报告、收集数据、将数据转发到为其分配的管理服务器，然后将数据从管理服务器直接发送到 Log Analytics 服务。  数据不会写入 Operations Manager 数据库。  
 
@@ -163,7 +163,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 查看概述的针对基础结构的合规性评估，并深入分析建议。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
-1. 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+1. 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
 2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 3. 在 Log Analytics 订阅窗格中选择一个工作区，再单击“概述”磁贴。  
 4. 在“概述”页上，单击“SQL 运行状况检查”磁贴。

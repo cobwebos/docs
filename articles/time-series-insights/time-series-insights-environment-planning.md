@@ -1,6 +1,6 @@
 ---
-title: "计划 Azure 时序见解环境的缩放 | Microsoft Docs"
-description: "本文介绍了在计划 Azure 时序见解环境（包括存储容量、数据保留、入口容量和监控）时如何遵循最佳做法。"
+title: 计划 Azure 时序见解环境的缩放 | Microsoft Docs
+description: 本文介绍了在计划 Azure 时序见解环境（包括存储容量、数据保留、入口容量和监控）时如何遵循最佳做法。
 services: time-series-insights
 ms.service: time-series-insights
 author: jasonwhowell
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 5fb158ba162dd199f419f9568de08a7a18c833dd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4da62d808caf1e88aef8e67f91815b959a19af0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>计划 Azure 时序见解环境
 
@@ -32,6 +32,8 @@ ms.lasthandoff: 11/15/2017
 - 存储容量
 - 数据保留期
 - 入口容量 
+- 调整您的事件
+- 确保已具有参考数据
 
 ## <a name="understand-storage-capacity"></a>了解存储容量
 默认情况下，时序见解根据已预配的存储量（每个单位的存储时长）和入口来保留数据。
@@ -74,15 +76,26 @@ ms.lasthandoff: 11/15/2017
 
 可能无法提前知道想要推送多少数据。 在这种情况下，可以在 Azure 门户的 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)和 [Azure 事件中心](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/)中查找数据遥测。 这些遥测有助于确定如何预配环境。 在 Azure 门户使用相应事件源的“指标”页面，查看数据遥测。 了解事件源指标后，可以更有效地计划和预配时序见解环境。
 
-## <a name="calculate-ingress-requirements"></a>计算入口需求
+### <a name="calculate-ingress-requirements"></a>计算入口需求
 
 - 确认入口容量高于平均每分钟的速率，并且环境足够大，能够在 1 小时内处理相当于两倍容量的预期入口。
 
 - 如果入口激增持续时间超过 1 小时，则使用激增速率作为平均值，并预配容量足以处理激增速率的环境。
  
-## <a name="mitigate-throttling-and-latency"></a>缓解限制和延迟
+### <a name="mitigate-throttling-and-latency"></a>缓解限制和延迟
 
 有关如何避免限制和延迟的信息，请参阅[缓解限制和延迟](time-series-insights-environment-mitigate-latency.md)。 
+
+## <a name="shaping-your-events"></a>调整您的事件
+请务必确保向 TSI 发送事件时采用的方法支持你在预配的环境的规模（反过来，可以将环境的规模映射为 TSI 可以读取的事件数和每个事件的大小）。  同样，请务必考虑在查询数据时你可能希望对其进分片以及作为筛选依据的属性。  为此，建议查看“发送事件”文档 [文档]（https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events)）中的 JSON 成型部分。  它在页面底部附近。  
+
+## <a name="ensuring-you-have-reference-data-in-place"></a>确保已具有参考数据
+参考数据集是各种项的集合，这些项对事件源中的事件进行了增强。 时序见解入口引擎将事件源中的每个事件与参考数据集中的相应数据行联接到一起。 然后即可使用此增强的事件进行查询。 该联接基于在参考数据集中定义的主键列。
+
+请注意，参考数据不以追溯方式进行联接。 这意味着在配置并上传数据后，只会将当前和将来的入口数据匹配并联接到参考数据集。  如果打算向 TSI 发送大量历史数据并且不先在 TSI 中上传或创建参考数据，则可能必须重做你的工作（这意味着很无趣）。  
+
+若要详细了解如何在 TSI 中创建、上传和管理参考数据，请转至“参考数据”文档 [文档]（https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)）。
+
 
 ## <a name="next-steps"></a>后续步骤
 - [如何添加事件中心事件源](time-series-insights-how-to-add-an-event-source-eventhub.md)

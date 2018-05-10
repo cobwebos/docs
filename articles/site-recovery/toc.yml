@@ -177,8 +177,6 @@
               href: vmware-azure-set-up-process-server-scale.md
         - name: 灾难恢复
           items:
-            - name: 带有多租户支持和 CSP 的 VMware VM 灾难恢复
-              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
             - name: 使用 PowerShell 将 VMware 虚拟机复制到 Azure
               href: vmware-azure-disaster-recovery-powershell.md
             - name: 物理服务器到 Azure 的灾难恢复
@@ -199,12 +197,14 @@
               href: vmware-azure-exclude-disk.md
             - name: 启用 VMware VM 复制
               href: vmware-azure-enable-replication.md
+            - name: 使用 CSP 且适用于 VMWare VM 的多租户
+              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: 部署移动服务
           items:
+            - name: 移动服务概述
+              href: vmware-azure-install-mobility-service.md
             - name: 使用 System Center Configuration Manager 部署移动服务
               href: vmware-azure-mobility-install-configuration-mgr.md
-            - name: 使用 Azure Automation DSC 部署移动服务
-              href: vmware-azure-mobility-deploy-automation-dsc.md
         - name: 故障转移和故障回复
           items:
             - name: 运行 Azure 灾难恢复演练

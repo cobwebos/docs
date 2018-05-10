@@ -1,7 +1,7 @@
 - name: 适用于容器的 Azure
   href: index.yml
   items:
-    - name: 容器服务 (AKS)
+    - name: Kubernetes 服务 (AKS)
       href: 'https://docs.microsoft.com/azure/aks/'
       expanded: true
       items:

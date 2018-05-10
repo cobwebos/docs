@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 489b2a66cadb77a338f9ae00443c072a4e19edfd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0cef0a261b0362fcb9776e63c10e96aedc408b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -134,7 +134,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 #### <a name="device-registration"></a>设备注册
 
-[Azure AD 设备注册](https://docs.microsoft.com/en-us/azure/active-directory/device-management-introduction)是基于设备的[条件访问](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-device-registration-on-premises-setup)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，此标识用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
+[Azure AD 设备注册](https://docs.microsoft.com/azure/active-directory/device-management-introduction)是基于设备的[条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，此标识用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
 
 当与 Intune 之类的[移动设备管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) 解决方案结合使用时，Azure Active Directory 中的设备属性会使用关于设备的更多信息进行更新。 这会允许创建条件性访问规则，用于从设备强制访问满足安全和合规性标准。
 

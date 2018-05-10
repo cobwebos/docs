@@ -1,10 +1,10 @@
 ---
-title: "物联网安全最佳实践 | Microsoft Docs"
-description: "本文提供了 Microsoft 物联网安全最佳实践和一般建议的特选列表。"
+title: 物联网安全最佳实践 | Microsoft Docs
+description: 本文提供了 Microsoft 物联网安全最佳实践和一般建议的特选列表。
 services: security
 documentationcenter: na
-author: TomShinder
-manager: StevenPo
+author: barclayn
+manager: mbaldwin
 editor: TomSh
 ms.assetid: 2d5598c5-4c30-481d-b8f4-51ee024ea9a7
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 8937437652a78e05b94574cb9fe5df7962edb1ad
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 804dd6828931ca2801360ab18be938c8bacf2bfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="internet-of-things-security-best-practices"></a>物联网安全最佳实践
+
 保护物联网 (IoT) 基础结构是参与 IoT 解决方案的所有人员需要执行的一项关键任务。 由于涉及的设备数和这些设备的分布式性质，危害数以百万计的 IoT 设备的相关安全事件不容小视，具有广泛的影响。
 
 因此，IoT 安全需要一个深入安全的方法。 由于数据在专用和公用网络上传输，需要在云中确保数据安全。 需要准备方法来安全地预配 IoT 设备本身。 每一层（从设备到网络，再到云后端）都需要强大的安全保证。
@@ -35,6 +36,7 @@ IoT 最佳实践可以按照以下方式分类：
 此文章汇总了[物联网安全最佳实践](../iot-suite/iot-security-best-practices.md)。 有关更多详细信息，请参阅此文章。
 
 ## <a name="iot-hardware-manufacturer-or-integrator"></a>IoT 硬件制造商或系统集成商
+
 如果是 IoT 硬件制造商或硬件集成商，请遵循以下最佳实践：
 
 * **设置符合最低要求的硬件范围**：硬件设计应包括硬件工作时所需的最少功能，仅此而已。 
@@ -43,6 +45,7 @@ IoT 最佳实践可以按照以下方式分类：
 * **安全升级**：在设备生存期内，升级固件是不可避免的事。
 
 ## <a name="iot-solution-developer"></a>IoT 解决方案开发商
+
 如果是 IoT 解决方案开发商，请遵循以下最佳实践：
 
 * **遵循安全软件开发方法**：开发安全软件需要从项目开始，到项目实施、测试和部署为止，随时考量安全相关事项。
@@ -50,12 +53,14 @@ IoT 最佳实践可以按照以下方式分类：
 * **谨慎集成**：库和 API 的边界上存在许多软件安全漏洞。 
 
 ## <a name="iot-solution-deployer"></a>IoT 解决方案部署人员
+
 如果是 IoT 解决方案部署人员，请遵循以下最佳实践：
 
 * **安全部署硬件**：IoT 部署可能需要将硬件部署在不安全的位置，例如公共场所或不受监督的区域。
 * **保持身份验证密钥处于安全状态**：在部署期间，每个设备需要使用云服务生成的设备 ID 和关联的身份验证密钥。 即使是在部署之后，也必须以物理方式保护这些密钥的安全。 恶意设备可能会使用任何透漏的密钥伪装成现有设备。
 
 ## <a name="iot-solution-operator"></a>IoT 解决方案操作员
+
 如果是 IoT 解决方案操作员，请遵循以下最佳实践：
 
 * **使系统保持最新状态**：确保设备的操作系统和所有设备驱动程序都已更新到最新版本。 

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: b0d268937300abd105349d340f7bf1dae398fa8f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 24ac4d699a511cc99936cb2cd4b245de01984163
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>教程 2：鸢尾花分类 - 生成模型
 Azure 机器学习服务（预览版）是一个集成式的数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -280,7 +280,7 @@ Azure 机器学习服务（预览版）是一个集成式的数据科学和高�
    >[!IMPORTANT]
    >必须使用此 CLI 窗口来完成后续步骤。
 
-1. 在 CLI 窗口中登录到 Azure。 [详细了解 az 登录](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+1. 在 CLI 窗口中登录到 Azure。 [详细了解 az 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
    你可能已登录。 这种情况下，可以跳过此步骤。
 

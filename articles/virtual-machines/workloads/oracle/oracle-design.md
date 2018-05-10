@@ -1,13 +1,13 @@
 ---
-title: "在 Azure 上设计和实现 Oracle 数据库 | Microsoft 文档"
-description: "在 Azure 环境中设计和实现 Oracle 数据库。"
+title: 在 Azure 上设计和实现 Oracle 数据库 | Microsoft 文档
+description: 在 Azure 环境中设计和实现 Oracle 数据库。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.openlocfilehash: c8f858bf249c4b56ad4fe60654ab489676eceb1f
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: b291066137df004625029aef12c3db4d5441a89c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -136,7 +136,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 ![SQL*Net 吞吐量的屏幕截图](./media/oracle-design/sqlnet_info.png)
 
-基于网络带宽要求，有多种网关类型可供选择。 例如，Basic、VpnGw 和 Azure ExpressRoute。 有关详细信息，请参阅 [VPN 网关定价](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/?v=17.23h)页。
+基于网络带宽要求，有多种网关类型可供选择。 例如，Basic、VpnGw 和 Azure ExpressRoute。 有关详细信息，请参阅 [VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h)页。
 
 **建议**
 

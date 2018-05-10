@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric Java 客户端 API | Microsoft Docs"
-description: "按照 Service Fabric 客户端 REST API 规范生成和使用 Service Fabric Java 客户端 API"
+title: Azure Service Fabric Java 客户端 API | Microsoft Docs
+description: 按照 Service Fabric 客户端 REST API 规范生成和使用 Service Fabric Java 客户端 API
 services: service-fabric
 documentationcenter: java
 author: rapatchi
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 6f9b9d46be36b292fe2c3be92d90d4cf87155210
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 9596e55c6c915461ef4d0bff0d7f9583aac18a1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java 客户端 API
 
@@ -133,5 +133,5 @@ ms.lasthandoff: 01/22/2018
     * 若要使用反应式异步编程并处理原始 REST 响应，则可使用 API 调用的此变体
 
 ## <a name="next-steps"></a>后续步骤
-* 了解 [Service Fabric REST APIs](https://docs.microsoft.com/en-us/rest/api/servicefabric/)（Service Fabric REST API）
+* 了解 [Service Fabric REST APIs](https://docs.microsoft.com/rest/api/servicefabric/)（Service Fabric REST API）
 

@@ -1,25 +1,25 @@
 ---
-title: "自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure 门户 | Microsoft 文档"
-description: "本文将介绍如何使用 Azure 门户自定义应用程序网关的 Web 应用程序防火墙规则。"
+title: 自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure 门户 | Microsoft 文档
+description: 本文将介绍如何使用 Azure 门户自定义应用程序网关的 Web 应用程序防火墙规则。
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.assetid: 1159500b-17ba-41e7-88d6-b96986795084
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 406e491aa54806b3534ef0f500d6aea03434e2c2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: ae61e3a8308e95c16ccde71de37fb10666ef0df9
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>通过 Azure 门户自定义 Web 应用程序防火墙规则
 

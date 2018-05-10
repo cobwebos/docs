@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: fd30a8eb5149647a24ff04e099bf5c3e187459ef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5d0ab8cf9e87fc13b78b00dbe77ec6f9fb38c4b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure 服务总线到 Azure 事件网格集成示例
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/16/2018
 
 在完成整个方案之前，请设置至少一个小型测试函数，以便调试和观察流动的具体事件。
 
-1. 在 Azure 门户中创建新的 Azure Functions 应用程序。 若要了解 Azure Functions 的基础知识，请参阅 [Azure Functions 文档](https://docs.microsoft.com/en-us/azure/azure-functions/)。
+1. 在 Azure 门户中创建新的 Azure Functions 应用程序。 若要了解 Azure Functions 的基础知识，请参阅 [Azure Functions 文档](https://docs.microsoft.com/azure/azure-functions/)。
 
 2. 在新创建的函数中，选择加号 (+) 即可添加 HTTP 触发器函数：
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 03/16/2018
 
 3. 完成如图所示的窗体，然后记住在“后缀筛选器”框中输入相关筛选器。
 
-4. 选择“创建”。
+4. 选择**创建**。
 
 5. 如“先决条件”部分所述，向服务总线主题发送一条消息，然后通过 Azure Functions 的“监视”功能验证事件是否正在流动。
 

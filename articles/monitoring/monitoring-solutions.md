@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: bwren
-ms.openlocfilehash: 1e22aab85976fcab8ec270bdea1b8988b4d3bfe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="management-solutions-in-azure"></a>Azure 中的管理解决方案
 管理解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述 Azure 中的管理解决方案，并详细介绍如何使用和安装这些解决方案。
 
 管理解决方案通常将信息收集到 Log Analytics 中，并提供日志搜索和视图用于分析收集的数据。 这些解决方案还可以利用 Azure 自动化等其他服务来执行与应用程序或服务相关的操作。
 
-可将管理解决方案添加到所用任何应用程序和服务的 Azure 订阅。 这些解决方案是免费提供的，但收集数据可能会产生使用费。 除了由 Microsoft 提供的解决方案以外，合作伙伴和客户还可以[创建管理解决方案](../operations-management-suite/operations-management-suite-solutions-creating.md)，以便在各自环境中使用或通过社区提供给客户使用。
+可将管理解决方案添加到所用任何应用程序和服务的 Azure 订阅。 这些解决方案是免费提供的，但收集数据可能会产生使用费。 除了由 Microsoft 提供的解决方案以外，合作伙伴和客户还可以[创建管理解决方案](../monitoring/monitoring-solutions-creating.md)，以便在各自环境中使用或通过社区提供给客户使用。
 
 ## <a name="using-management-solutions"></a>使用管理解决方案
 每个 Log Analytics 工作区的“概述”页针对该工作区中安装的每个解决方案显示一个磁贴。 单击解决方案的磁贴会打开其视图，其中包含该解决方案收集的数据的更详细分析。

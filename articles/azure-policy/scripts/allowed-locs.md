@@ -1,25 +1,25 @@
 ---
-title: "Azure 策略 json 示例 - 允许的位置 | Microsoft Docs"
-description: "此 json 示例策略要求所有资源都要部署到已批准的位置。"
+title: Azure 策略 json 示例 - 允许的位置 | Microsoft Docs
+description: 此 json 示例策略要求所有资源都要部署到已批准的位置。
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 62baa8c2675b9ffef02b4140759b7119b349e9bb
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 08267f604fcafd17b4771a54990b1835fc543b82
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="allowed-locations"></a>允许的位置
 

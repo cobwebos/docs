@@ -3,8 +3,8 @@ title: 数据安全与加密最佳做法 | Microsoft Docs
 description: 本文提供一系列有关使用内置 Azure 功能实现数据安全与加密的最佳实践。
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbalwin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 574ca8a68bf6e532331a4b6f1106e472c8ab0449
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳实践
+
 在云中保护数据的关键问题之一是考虑数据可能将发生的状态，以及哪些控件适用于该状态。 根据 Azure 数据安全和加密最佳实践的目的，相关建议将围绕以下数据状态：
 
 * 静态：包括物理媒体（磁盘或光盘）上以静态方式存在的所有信息存储对象、容器和类型。
@@ -50,6 +51,7 @@ ms.lasthandoff: 04/23/2018
 * 实施文件级数据加密
 
 ## <a name="enforce-multi-factor-authentication"></a>实施多重身份验证
+
 在 Microsoft Azure 中访问和控制数据的第一个步骤是对用户进行身份验证。 [Azure 多重身份验证 (MFA)](../active-directory/authentication/multi-factor-authentication.md) 是除了使用用户名与密码以外，还要求使用其他方法对用户标识进行身份验证的方法。 这种身份验证方法可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。
 
 如果针对用户启用 Azure MFA，则可为用户登录和事务增加第二层安全性。 在此情况下，事务可能将访问位于文件服务器或 SharePoint Online 中的文档。 Azure MFA 还可帮助 IT 部门减少使用透露的凭据访问企业数据的可能性。
@@ -61,6 +63,7 @@ ms.lasthandoff: 04/23/2018
 有关 Azure MFA 的详细信息，请参阅[云中的 Azure 多重身份验证入门](../active-directory/authentication/howto-mfa-getstarted.md)。
 
 ## <a name="use-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC)
+
 根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。 对于想要实施数据访问安全策略的组织，这是必须要做的事。 Azure 基于角色的访问控制 (RBAC) 可用于向特定范围的用户、组和应用程序分配权限。 角色分配的范围可以是订阅、资源组或单个资源。
 
 可以利用 Azure 中[内置的 RBAC 角色](../role-based-access-control/built-in-roles.md)向用户分配权限。 考虑将*存储帐户参与者*用于需要管理存储帐户的云操作员，并使用*经典存储帐户参与者*角色来管理经典存储帐户。 对于需要管理 VM 和存储帐户的云操作员，请考虑将他们添加到*虚拟机参与者*角色。
@@ -70,6 +73,7 @@ ms.lasthandoff: 04/23/2018
 有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)一文。
 
 ## <a name="encrypt-azure-virtual-machines"></a>加密 Azure 虚拟机
+
 对许多组织而言，[静态数据加密](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、合规性和数据所有权的必要步骤。 Azure 磁盘加密可让 IT 管理员加密 Windows 和 Linux IaaS 虚拟机 (VM) 磁盘。 Azure 磁盘加密利用 Windows 的行业标准 BitLocker 功能和 Linux 的 DM-Crypt 功能，为 OS 和数据磁盘提供卷加密。
 
 可以利用 Azure 磁盘加密来帮助保护数据的安全，以满足组织安全与合规性要求。 组织还应考虑使用加密来帮助降低与未经授权访问数据相关的风险。 此外，建议在将敏感数据写入驱动器之前先将驱动器加密。
@@ -125,6 +129,7 @@ Azure 磁盘加密使用 [Azure Key Vault](https://azure.microsoft.com/services/
 有关 SQL TDE 加密的详细信息，请参阅 [Transparent Data Encryption with Azure SQL Database](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx)（使用 Azure SQL 数据库的透明数据加密）一文。
 
 ## <a name="protect-data-in-transit"></a>保护传输中的数据
+
 保护传输中的数据应该是数据保护策略中不可或缺的部分。 由于数据将从许多位置来回移动，一般将建议始终使用 SSL/TLS 协议来交换不同位置的数据。 在某些情况下，建议使用虚拟专用网络 (VPN) 隔离本地与云基础结构之间的整个通信通道。
 
 对于在本地基础结构与 Azure 之间移动的数据，应该考虑适当的防护措施，例如 HTTPS 或 VPN。
@@ -142,6 +147,7 @@ Azure 磁盘加密使用 [Azure Key Vault](https://azure.microsoft.com/services/
 有关 Azure VPN 选项的详细信息，请阅读[规划和设计 VPN 网关](../vpn-gateway/vpn-gateway-plan-design.md)一文。
 
 ## <a name="enforce-file-level-data-encryption"></a>实施文件级数据加密
+
 无论文件的位置为何，可提高数据安全级别的另一层保护就是将文件本身加密。
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) 使用加密、标识和授权策略帮助保护文件与电子邮件。 Azure RMS 可跨多个设备工作 — 手机、平板电脑和台式电脑保护组织内部和外部的数据。 因为 Azure RMS 添加了数据所属的保护级别，所以即使数据离开组织边界，此功能仍然可行。

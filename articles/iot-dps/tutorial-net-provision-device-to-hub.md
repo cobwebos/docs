@@ -12,15 +12,15 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ec08d617b461240062190ec7fdb919f051675798
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c02835e8712c79ea540d7560da111f54abbeed23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
 
-前面的教程介绍了设置设备以连接到设备预配服务的方法。 本教程介绍如何使用此服务通过**_单独登记_**和**_登记组_**将设备预配到单个 IoT 中心。 本教程演示如何：
+前面的教程介绍了设置设备以连接到设备预配服务的方法。 本教程介绍如何使用此服务通过**_单独登记_** 和**_登记组_** 将设备预配到单个 IoT 中心。 本教程演示如何：
 
 > [!div class="checklist"]
 > * 注册设备
@@ -49,7 +49,7 @@ ms.lasthandoff: 04/16/2018
 
 - 对于基于 X.509 的设备：
     - [颁发给设备的 X.509 证书](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)，采用 *.pem* 或 *.cer* 文件格式。 对于单独登记，需要对 X.509 系统使用叶证书；对于登记组，需要使用根证书或同等的签名人证书。
-    - 注册 ID，用于在命名空间/作用域内唯一标识设备。 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 X.509 的设备，注册 ID 派生自证书的公用名 (CN)。 有关这些要求的详细信息，请参阅[设备概念](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-device)。
+    - 注册 ID，用于在命名空间/作用域内唯一标识设备。 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 X.509 的设备，注册 ID 派生自证书的公用名 (CN)。 有关这些要求的详细信息，请参阅[设备概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)。
 
 可通过两种方法向设备预配服务注册设备：
 

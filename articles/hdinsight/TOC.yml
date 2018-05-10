@@ -1,5 +1,5 @@
 - name: HDInsight 文档
-  href: index.md
+  href: index.yml
 - name: Hadoop
   href: ./hadoop/apache-hadoop-introduction.md
 - name: Spark

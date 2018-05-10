@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: cost-management
+author: bandersmsft
+ms.service: cost-management
+ms.topic: include
+ms.date: 04/26/2018
+ms.author: banders
+manager: dougeby
+ms.custom: include file
+ms.openlocfilehash: 1b65775ef5ad40ca9e9c1e2c96fe1c2b8d92afdc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="view-cost-data"></a>查看成本数据
 
 使用 Cloudyn 提供的 Azure 成本管理可以访问所有云资源数据。 通过仪表板报表，可以在选项卡视图中查找标准报表和自定义报表。 下面是热门仪表板的示例，以及一份直接显示成本数据的报表。

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 03/09/2018
 ms.author: danlep
-ms.openlocfilehash: c26dd85d896445e19efb9906d953fd535fc1fb5c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91f067de33d1ff4bc272773e3db49de47fac2feb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>在 Azure 中部署 HPC Pack 2016 群集
 
@@ -56,7 +56,7 @@ Microsoft HPC Pack 2016 群集需要用于保护 HPC 节点之间通信的个人
 
 ### <a name="upload-certificate-to-an-azure-key-vault"></a>将证书上传到 Azure 密钥保管库
 
-在部署 HPC 群集之前，将 PFX 证书上传到 [Azure 密钥保管库](../../key-vault/index.md)作为机密，并记录以下信息供部署期间使用：“保管库名称”、“保管库资源组”、“证书 URL”和“证书指纹”。
+在部署 HPC 群集之前，将 PFX 证书上传到 [Azure 密钥保管库](../../key-vault/index.yml)作为机密，并记录以下信息供部署期间使用：“保管库名称”、“保管库资源组”、“证书 URL”和“证书指纹”。
 
 下面是示例 PowerShell 脚本，用于上传证书、创建密钥保管库并生成所需的信息。 有关将证书上传到 Azure 密钥保管库的详细信息，请参阅 [Azure 密钥保管库入门](../../key-vault/key-vault-get-started.md)。
 

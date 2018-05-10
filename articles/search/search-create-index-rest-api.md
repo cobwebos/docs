@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 12/08/2016
-ms.openlocfilehash: e871fa8cd2228067b3a1511b74ff7a425d1dc9fe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/20/2018
+ms.openlocfilehash: 86260e1929e8bd5c31682ef7f59cacae19a66020
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>使用 REST API 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -83,12 +83,12 @@ ms.lasthandoff: 04/23/2018
 上述索引定义对 `description_fr` 字段使用了语言分析器，因为它用于存储法语文本。 请参阅[语言支持主题](https://docs.microsoft.com/rest/api/searchservice/Language-support)以及相应的[博客文章](https://azure.microsoft.com/blog/language-support-in-azure-search/)，了解有关语言分析器的详细信息。
 
 ## <a name="issue-the-http-request"></a>发出 HTTP 请求
-1. 将索引定义用作请求正文，向 Azure 搜索服务终结点 URL 发出 HTTP POST 请求。 在 URL 中，请务必使用服务名称作为主机名，并将适当的 `api-version` 作为查询字符串参数（发布此文档时，API 版本为 `2016-09-01`）。
+1. 将索引定义用作请求正文，向 Azure 搜索服务终结点 URL 发出 HTTP POST 请求。 在 URL 中，请务必使用服务名称作为主机名，并将适当的 `api-version` 作为查询字符串参数（发布此文档时，API 版本为 `2017-11-11`）。
 2. 在请求头中，指定 `Content-Type` 作为 `application/json`。 还需提供步骤 I 中在 `api-key` 标头中标识的服务管理密钥。
 
 必须提供自己的服务名称和 API 密钥，以发出以下请求：
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [api-key]
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 04/23/2018
 
 使用完索引并想删除它时，只需发出 HTTP DELETE 请求。 例如，以下是删除“hotels”索引的方法：
 
-    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2016-09-01
+    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11
     api-key: [api-key]
 
 

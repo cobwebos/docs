@@ -1,19 +1,19 @@
 ---
-title: "使用 Azure 容器服务和 Swarm 的 CI/CD"
-description: "使用包含 Docker Swarm 的 Azure 容器服务、Azure 容器注册表和 Visual Studio Team Services 持续交付多容器 .NET Core 应用程序"
+title: 使用 Azure 容器服务和 Swarm 的 CI/CD
+description: 使用包含 Docker Swarm 的 Azure 容器服务、Azure 容器注册表和 Visual Studio Team Services 持续交付多容器 .NET Core 应用程序
 services: container-service
 author: jcorioland
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 38877afb63e993eeaab723a6ea5f4c40d3c956a5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 81a07fdfe1c862bc30fb9d567db9a393c0610990
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>用于通过 Visual Studio Team Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -147,7 +147,7 @@ Microsoft 提供了一个 VSTS 扩展，用于在生成和发布过程中操作 
 
     ![Visual Studio Team Services - Docker 生成](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
-    对于生成操作，请选择 Azure 容器注册表和“生成映像”操作，并选择定义每个映像的 Dockerfile。 将“生成上下文”设置为 Dockerfile 根目录，并定义“映像名称”。 
+    对于生成操作，请选择 Azure 容器注册表和“生成映像”操作，并选择定义每个映像的 Dockerfile。 将“生成上下文”设置为 Dockerfile 根目录，然后定义“映像名称”。 
     
     如上面的屏幕截图中所示，使用 Azure 容器注册表的 URI 作为映像名称的开头。 （还可以使用生成变量来参数化映像的标记，在本示例中为生成标识符。）
 
@@ -216,9 +216,9 @@ Microsoft 提供了一个 VSTS 扩展，用于在生成和发布过程中操作 
 >这种部署会造成一段时间的停机，因为需要停止旧服务并运行新服务。 执行蓝绿部署可避免这种情况。
 >
 
-## <a name="step-4-test-the-cicd-pipeline"></a>步骤 4。 测试 CI/CD 管道
+## <a name="step-4-test-the-cicd-pipeline"></a>步骤 4. 测试 CI/CD 管道
 
-完成配置后，便可以开始测试这个新的 CI/CD 管道。 最简单的测试方法是更新源代码，并将更改提交到 GitHub 存储库。 推送代码后的几秒钟内，就能看到新的内部版本在 Visual Studio Team Services 中运行。 成功完成后，新的发布会被触发，在 Azure 容器服务群集上部署应用程序的新版本。
+完成配置后，便可以开始测试这个新的 CI/CD 管道。 最简单的测试方法是更新源代码，然后将更改提交到 GitHub 存储库。 推送代码后的几秒钟内，就能看到新的内部版本在 Visual Studio Team Services 中运行。 成功完成后，新的发布会被触发，在 Azure 容器服务群集上部署应用程序的新版本。
 
 ## <a name="next-steps"></a>后续步骤
 

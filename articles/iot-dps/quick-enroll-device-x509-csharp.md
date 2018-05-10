@@ -12,18 +12,18 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 51fd3e12344fb20056012c00d6b38edf0355b0a4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ef00191e524e93d1ed578193d37fb6002c15a0b8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>使用 C# 服务 SDK 将 X.509 设备注册到 IoT 中心设备预配服务
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
 
-以下步骤演示了如何使用 [C# 服务 SDK](https://github.com/Azure/azure-iot-sdk-csharp) 和 C# .NET Core 应用程序示例，以编程方式为中间或根 CA X.509 证书创建注册组。 注册组可以控制对设备的预配服务的访问，此类设备在其证书链中共享常用签名证书。 若要了解详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。 若要详细了解如何将基于 X.509 证书的公钥基础结构 (PKI) 与 Azure IoT 中心和设备预配服务配合使用，请参阅 [X.509 CA 证书安全概述](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview)。 虽然本文中的步骤在 Windows 和 Linux 计算机上均适用，但本文使用 Windows 开发计算机。
+以下步骤演示了如何使用 [C# 服务 SDK](https://github.com/Azure/azure-iot-sdk-csharp) 和 C# .NET Core 应用程序示例，以编程方式为中间或根 CA X.509 证书创建注册组。 注册组可以控制对设备的预配服务的访问，此类设备在其证书链中共享常用签名证书。 若要了解详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。 若要详细了解如何将基于 X.509 证书的公钥基础结构 (PKI) 与 Azure IoT 中心和设备预配服务配合使用，请参阅 [X.509 CA 证书安全概述](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)。 虽然本文中的步骤在 Windows 和 Linux 计算机上均适用，但本文使用 Windows 开发计算机。
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/16/2018
 4. 需要一个 .pem 或 .cer 文件，其中包含的中间或根 CA X.509 证书的公用部分已上传到预配服务并通过该服务进行验证。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 包含的工具有助于创建 X.509 证书链、从该链上传根证书或中间证书，以及通过服务执行所有权证明操作，对证书进行验证。 若要使用此工具，请将 [azure-iot-sdk-c/tools/CACertificates](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) 文件夹的内容下载到计算机上的某个工作文件夹，然后按 [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) 中的步骤操作。 除了 C SDK 中的工具，还可以使用 **C# 服务 SDK** 中的[组证书验证示例](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample)，通过现有的 X.509 中间或根 CA 证书演示如何执行所有权证明操作。 
 
   > [!IMPORTANT]
-  > 根据设计，使用 SDK 工具创建的证书只能用于开发。 若要了解如何获取适用于生产代码的证书，请参阅 Azure IoT 中心文档中的[如何获取 X.509 CA 证书](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)。
+  > 根据设计，使用 SDK 工具创建的证书只能用于开发。 若要了解如何获取适用于生产代码的证书，请参阅 Azure IoT 中心文档中的[如何获取 X.509 CA 证书](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)。
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>获取适用于预配服务的连接字符串
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="create-the-enrollment-group-sample"></a>创建注册组示例 
 
-此部分的步骤演示如何创建一个 .NET Core 控制台应用，以便向预配服务添加注册组。 进行一些修改后，还可以按这些步骤创建 [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) 控制台应用，以便添加注册组。 若要详细了解如何使用 IoT Core 进行开发，请参阅 [Windows IoT Core developer documentation](https://docs.microsoft.com/en-us/windows/iot-core/)（Windows IoT Core 开发人员文档）。
+此部分的步骤演示如何创建一个 .NET Core 控制台应用，以便向预配服务添加注册组。 进行一些修改后，还可以按这些步骤创建 [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) 控制台应用，以便添加注册组。 若要详细了解如何使用 IoT Core 进行开发，请参阅 [Windows IoT Core developer documentation](https://docs.microsoft.com/windows/iot-core/)（Windows IoT Core 开发人员文档）。
 1. 在 Visual Studio 中，使用“控制台应用(.NET Core)”项目模板将 Visual C# .NET Core 控制台应用项目添加到新解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **CreateEnrollmentGroup**。
 
     ![新的 Visual C# Windows 经典桌面项目](media//quick-enroll-device-x509-csharp/create-app.png)

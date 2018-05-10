@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 6753b52b02373d03a9ed5fec775c899a806aff3e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5cb2d1cea80488970ef82071275b6c38e7f97cee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="storsimple-solution-support"></a>StorSimple 解决方案支持
 
@@ -83,7 +83,7 @@ Microsoft 为 StorSimple 企业存储客户提供灵活的支持选项。 我们
 除英语外，营业时间内还提供以下语言的本地支持：日语、韩语、闽南语和繁体中文。
 
 ## <a name="support-scope"></a>支持范围 
-对计费和订阅管理相关问题的支持在所有支持级别都可用。 为收到 StorSimple 支持，客户必须主动注册 StorSimple 标准或高级支持计划。 StorSimple 支持团队将负责解决影响 StorSimple 解决方案的所有问题。 为收到不与 StorSimple 直接相关的 Azure 相关问题，客户需要注册相应的 Azure 支持计划。 请参阅[此处](https://azure.microsoft.com/en-us/support/plans/)了解详细信息。 支持团队参考 Azure 团队的非 StorSimple 支持案例，以便根据客户的 Azure 授权进行跟进。 
+对计费和订阅管理相关问题的支持在所有支持级别都可用。 为收到 StorSimple 支持，客户必须主动注册 StorSimple 标准或高级支持计划。 StorSimple 支持团队将负责解决影响 StorSimple 解决方案的所有问题。 为收到不与 StorSimple 直接相关的 Azure 相关问题，客户需要注册相应的 Azure 支持计划。 请参阅[此处](https://azure.microsoft.com/support/plans/)了解详细信息。 支持团队参考 Azure 团队的非 StorSimple 支持案例，以便根据客户的 Azure 授权进行跟进。 
 
 
 | **严重性** |**客户情形**                                                                                                                                | 预期 Microsoft 响应 <sup>2                                                                                       | 预期客户响应                                                                                                                                                       |

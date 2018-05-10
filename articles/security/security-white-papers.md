@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/19/2018
 ms.author: tomsh
-ms.openlocfilehash: dfc0128247ad86e9fa6932f8b05c91ae7da0d950
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 29a479ffee3488768f1882c0938b0ecfdd55218b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-white-papers"></a>Azure 安全性白皮书
 | | |
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/05/2018
 |[Azure 网络安全](azure-network-security.md)|介绍各种网络控件，通过配置这些控件可增强 Azure 中部署的解决方案的安全性。 重点介绍面向客户的网络安全控件。|
 |[Azure 操作安全性](azure-operational-security.md)|全面介绍了 Azure 所提供的面向客户的操作安全技术和服务。|
 |[Azure 安全技术功能](azure-security-technical-capabilities.md)|重点介绍安全功能和支持 Azure 存储、Azure SQL 数据库、Azure 虚拟机模型的功能，以及管理所有这些功能的工具和基础结构。|
-|[Azure 存储安全指南](https://docs.microsoft.com/en-us/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |概述了每项可与 Azure 存储配合使用的安全功能。 涵盖了管理平面安全性、数据平面安全性、静态加密、动态加密和存储分析。|
+|[Azure 存储安全指南](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |概述了每项可与 Azure 存储配合使用的安全功能。 涵盖了管理平面安全性、数据平面安全性、静态加密、动态加密和存储分析。|
 |[云数据分类准备就绪](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03) |本可下载的白皮书介绍了数据分类及其在云计算上下文中的价值的基础知识。 评估云计算以备将来使用的组织或当前正在使用云服务并想方设法优化数据管理的组织将从本白皮书获益最多。|
 |[Azure 中的监管](governance-in-azure.md)|对 Azure 中内置的安全功能和管理功能进行说明。 讨论的主要监管问题包括：针对组织目标的策略、过程和程序实现；安全性和持续符合组织标准；警报和监视。
 |[Azure 公有云中的隔离](azure-isolation.md)|概述了 Azure 如何针对恶意和非恶意用户提供隔离。 通过为架构师提供各种隔离选项来用作构建云解决方案的指南。 主要焦点是面向客户的安全控制技术，并未尝试解决 SLA、定价模型以及 DevOps 实践注意事项。|

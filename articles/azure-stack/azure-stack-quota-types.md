@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/20/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: xiaofmao
-ms.openlocfilehash: b68a963dae4b3621bfd9ecdcbc20146d7b20c457
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 52d469236d607a145430134c24c4237346dafb4c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack 中的配额类型
 
@@ -38,18 +38,18 @@ ms.lasthandoff: 04/23/2018
 
 
 ## <a name="storage-quota-types"></a>存储配额类型
-| **Item** | **默认值** | **说明** |
+| **项目** | **默认值** | **说明** |
 | --- | --- | --- |
 | 最大容量 (GB) |500 |可供此位置的订阅使用的总存储容量。 |
 | 存储帐户的总数 |20 |订阅可以在此位置创建的存储帐户数目上限。 |
 
 > [!NOTE]  
-> 可能需要最多两个小时，才能强制执行新的存储配额。 
-> 
+> 可能需要最多两个小时，才能存储配额强制执行。 
 > 
 
+
 ## <a name="network-quota-types"></a>网络配额类型
-| **Item** | **默认值** | **说明** |
+| **项目** | **默认值** | **说明** |
 | --- | --- | --- |
 | 公共 IP 的数目上限 |50 |订阅可以在此位置创建的公共 IP 数目上限。 |
 | 虚拟网络的数目上限 |50 |订阅可以在此位置创建的虚拟网络数目上限。 |
@@ -64,7 +64,7 @@ ms.lasthandoff: 04/23/2018
 2. 选择具有要查看的配额的服务。
 3. 单击“配额”，然后选择要查看的配额。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 [详细了解计划、产品/服务和配额。](azure-stack-plan-offer-quota-overview.md)
 
 [创建计划时创建配额。](azure-stack-create-plan.md)

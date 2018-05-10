@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 213888ff47db56be8bfb99a816da4da245c39211
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ce858553a67bce714ceae43a5bb2f86839d9c507
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 04/19/2018
 
 1. 选择“+ 创建资源” > “网络” > “虚拟网络”。
 2. 为以下设置输入或选择值，然后选择“创建”：
-    - 名称：该名称在选择创建虚拟网络的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中必须是唯一的。 虚拟网络创建后，无法更改名称。 可随着时间推移创建多个虚拟网络。 有关命名建议，请参阅[命名约定](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)。 遵循命名约定有助于更加轻松地管理多个虚拟网络。
+    - 名称：该名称在选择创建虚拟网络的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中必须是唯一的。 虚拟网络创建后，无法更改名称。 可随着时间推移创建多个虚拟网络。 有关命名建议，请参阅[命名约定](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)。 遵循命名约定有助于更加轻松地管理多个虚拟网络。
     - **地址空间**：虚拟网络的地址空间由以 CIDR 表示法指定的一个或多个非重叠地址范围组成。 定义的地址范围可以是公共或专用 (RFC 1918) 地址。 无论是将地址范围定义为公用还是专用，地址范围都只能从虚拟网络内、从互联的虚拟网络以及从任何已连接到虚拟网络的本地网络进行访问。 无法添加以下的地址范围：
         - 224.0.0.0/4（多播）
         - 255.255.255.255/32（广播）

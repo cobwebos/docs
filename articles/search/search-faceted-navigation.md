@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 1bd814250a243d03f1eedc4d0ecb2719975b9c6f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e00e875619e4ed6800f5739362ff0c52971f6f16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
@@ -61,7 +61,7 @@ ms.lasthandoff: 04/23/2018
 
 ### <a name="query-basics"></a>查询基础知识
 
-在 Azure 搜索中，通过一个或多个查询参数指定请求（有关每个参数的描述，请参阅[搜索记录](http://msdn.microsoft.com/library/azure/dn798927.aspx)）。 所有查询参数都不是必需的，但必须至少有一个查询参数，才能使查询有效。
+在 Azure 搜索中，通过一个或多个查询参数指定请求（有关每个参数的描述，请参阅[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)）。 所有查询参数都不是必需的，但必须至少有一个查询参数，才能使查询有效。
 
 精度（表示能够筛选出不相关的匹配记录）通过以下一个或两个表达式实现：
 
@@ -228,7 +228,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-分面查询参数设置为字段，根据数据类型，可通过逗号分隔列表（包括 `count:<integer>`、`sort:<>`、`interval:<integer>` 和 `values:<list>`）对其执行进一步参数化。 设置范围时，数值数据支持值列表。 有关使用情况详细信息，请参阅[搜索记录（Azure 搜索 API）](http://msdn.microsoft.com/library/azure/dn798927.aspx)。
+分面查询参数设置为字段，根据数据类型，可通过逗号分隔列表（包括 `count:<integer>`、`sort:<>`、`interval:<integer>` 和 `values:<list>`）对其执行进一步参数化。 设置范围时，数值数据支持值列表。 有关使用情况详细信息，请参阅[搜索记录（Azure 搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
 通过分面，应用程序明确表述的请求还应生成筛选器，以便根据分面值选择缩小候选记录集。 对于自行车商店，分面导航提供了就“有哪些颜色、制造商和类型的自行车”问题的线索， 同时筛选对“在此价格区间，具体有哪些红色的山地自行车”问题的答案。 单击“红色”指示应仅显示红色产品时，应用程序发送的下一条查询将为 `$filter=Color eq ‘Red’`。
 
@@ -329,7 +329,7 @@ if (businessTitleFacet != "")
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>基于范围进行筛选
-基于值的范围分面是常见的搜索应用程序要求。 数值数据和 DateTime 值都支持范围。 可在[搜索记录（Azure 搜索 API）](http://msdn.microsoft.com/library/azure/dn798927.aspx)中阅读有关每种方法的详细信息。
+基于值的范围分面是常见的搜索应用程序要求。 数值数据和 DateTime 值都支持范围。 可在[搜索记录（Azure 搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)中阅读有关每种方法的详细信息。
 
 Azure 搜索通过提供两种用于计算范围的方法，简化范围构造。 对于这两种方法，Azure 搜索根据用户提供的输入创建适当的范围。 例如，如果用户指定范围值为 10|20|30，它会自动创建范围 0-10、10-20、20-30。 应用程序可以选择性地删除任何空间隔。 
 
@@ -362,7 +362,7 @@ Azure 搜索中有两个地理空间函数：**geo.distance** 和 **geo.intersec
 * **geo.distance** 函数返回两点之间的距离（以千米为单位）。 一个点是字段，另一个点是作为筛选器一部分传递的常量。 
 * 如果给定的点位于给定的多边形范围内，**geo.intersects** 函数将返回 true。 该点是字段，多边形指定为作为筛选器一部分传递的坐标常量列表。
 
-可以在 [OData 表达式语法（Azure 搜索）](http://msdn.microsoft.com/library/azure/dn798921.aspx)中查找筛选器示例。
+可以在 [OData 表达式语法（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)中查找筛选器示例。
 
 <a name="tryitout"></a>
 
@@ -431,9 +431,9 @@ Azure 搜索作业门户演示包含本文中参考的示例。
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
 [Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
+[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
+[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
 

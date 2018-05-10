@@ -1,27 +1,32 @@
 - name: Azure HDInsight 文档
   href: /azure/hdinsight
-- name: HDInsight 上的 Spark
+- name: 概述
   items:
-    - name: 概述
+    - name: 关于 Spark on HDInsight
       href: apache-spark-overview.md
     - name: HDInsight 上的 Hadoop 组件
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: 入门
+- name: 快速入门
   items:
-    - name: 创建 Spark 群集
+    - name: 创建 Spark 群集 - 门户
+      href: apache-spark-jupyter-spark-sql-use-portal.md
+    - name: 创建 Spark 群集 - PowerShell
+      href: apache-spark-jupyter-spark-sql-use-powershell.md
+    - name: 创建 Spark 群集 - 模板
       href: apache-spark-jupyter-spark-sql.md
+- name: 教程
+  items:
     - name: 在 Spark 群集上运行查询
       href: apache-spark-load-data-run-query.md
     - name: 使用 BI 工具分析数据
       href: apache-spark-use-bi-tools.md
-    - name: 管理群集资源
-      href: apache-spark-resource-manager.md
-    - name: 调试 Spark 作业
-      href: apache-spark-job-debugging.md
-    - name: 安装 HDInsight 应用
-      href: ../hdinsight-apps-install-applications.md
-      maintainContext: true
+    - name: 运行流式处理作业
+      href: apache-spark-eventhub-streaming.md
+    - name: 创建机器学习应用程序
+      href: apache-spark-ipython-notebook-machine-learning.md
+    - name: 使用 IntelliJ 创建 Spark 应用程序
+      href: apache-spark-create-standalone-application.md
 - name: 如何
   items:
     - name: 使用群集存储
@@ -34,8 +39,6 @@
           maintainContext: true
     - name: 开发
       items:
-        - name: 创建独立应用
-          href: apache-spark-create-standalone-application.md
         - name: 使用交互式 Spark Shell
           href: apache-spark-shell.md
         - name: 远程作业与 Livy
@@ -110,8 +113,6 @@
           href: apache-spark-streaming-exactly-once.md
     - name: Spark 和机器学习
       items:
-        - name: 预测 HVAC 性能
-          href: apache-spark-ipython-notebook-machine-learning.md
         - name: 预测食品检测结果
           href: apache-spark-machine-learning-mllib-ipython.md
         - name: 分析网站日志
@@ -205,6 +206,8 @@
           maintainContext: true
     - name: 管理
       items:
+        - name: 管理群集资源
+          href: apache-spark-resource-manager.md
         - name: 配置 Spark 设置
           href: apache-spark-settings.md
         - name: 优化 Spark 作业
@@ -311,6 +314,8 @@
           maintainContext: true
     - name: 故障排除
       items:
+        - name: 调试 Spark 作业
+          href: apache-spark-job-debugging.md
         - name: 排查 HDInsight 群集速度慢或故障问题
           href: ../hdinsight-troubleshoot-failed-cluster.md
           maintainContext: true

@@ -1,0 +1,46 @@
+- name: Azure Blockchain Workbench（公共预览版）
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure Blockchain Workbench
+      href: blockchain-workbench-overview.md
+- name: 概念
+  items:
+    - name: 体系结构
+      href: blockchain-workbench-architecture.md
+    - name: 集成模式
+      href: blockchain-workbench-integration-patterns.md
+- name: 操作指南
+  items:
+    - name: 部署 Workbench
+      href: blockchain-workbench-deploy.md
+    - name: 管理 Workbench 用户
+      href: blockchain-workbench-manage-users.md
+    - name: 创建区块链应用
+      href: blockchain-workbench-create-app.md
+    - name: 使用区块链应用
+      href: blockchain-workbench-use.md
+    - name: 使用 Workbench API
+      href: blockchain-workbench-use-API.md
+    - name: 排查应用问题
+      href: blockchain-workbench-troubleshooting.md
+    - name: 获取 Workbench DB 详细信息
+      href: blockchain-workbench-getdb-details.md
+    - name: 配置 Workbench SQL DB 防火墙
+      href: blockchain-workbench-database-firewall.md
+    - name: 在 Excel 中使用 Workbench 数据
+      href: blockchain-workbench-data-excel.md
+    - name: 在 Power BI 中使用 Workbench 数据
+      href: blockchain-workbench-data-powerbi.md
+    - name: 在 SQL Management Studio 中使用 Workbench 数据
+      href: blockchain-workbench-data-sql-management-studio.md
+- name: 引用
+  items:
+    - name: 配置
+      href: blockchain-workbench-configuration-overview.md
+    - name: 数据库视图
+      href: blockchain-workbench-database-views.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+    - name: 消息传送 API
+      href: blockchain-workbench-messages-overview.md

@@ -4,7 +4,7 @@ description: Microsoft Azure 上的专用 DNS 托管服务概述。
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jennoc
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: dns
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 7f1bd8cdcab7bdd61b3f006acf6090c53db8eda6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1c805819a22d26e650d13b0e41ebac00c4e52d91
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-azure-dns-for-private-domains"></a>将 Azure DNS 用于专用域
 域名系统（或称为 DNS）负责将服务名称转换（或解析）为其 IP 地址。 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。  除了面向 Internet 的 DNS 域之外，作为一项预览版功能，Azure DNS 现在还支持专用 DNS 域。  
@@ -55,12 +55,12 @@ Azure DNS 提供了可靠、安全的 DNS 服务来管理和解析虚拟网络�
 ## <a name="limitations"></a>限制
 * 每个专用区域 1 个“注册”虚拟网络
 * 每个专用区域最多 10 个“解析”虚拟网络
-* 一个给定的虚拟网络作为“注册”虚拟网络只能链接到一个专用区域
-* 一个给定的虚拟网络作为“解析”虚拟网络可以链接到最多 10 个专用区域
-* 如果指定了“注册”虚拟网络，则无法通过 Powershell/CLI/API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录，但是，VM 记录确实已注册并且会成功解析
+* 一个给定的虚拟网络只能作为注册虚拟网络链接到一个专用区域
+* 一个给定的虚拟网络可以作为解析虚拟网络链接到最多 10 个专用区域
+* 如果指定了注册虚拟网络，则无法通过 Powershell/CLI/API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录，但是，VM 记录确实已注册并且会成功解析
 * 反向 DNS 仅适用于“注册”虚拟网络中的专用 IP 空间
 * 对未在专用区域中注册的专用 IP 地址（例如：作为“解析”虚拟网络链接到专用区域的虚拟网络中的虚拟机的专用 IP）进行反向 DNS 查找将返回“internal.cloudapp.net”作为 DNS 后缀，不过此后缀将不可解析。   
-* 在最初（即首次） 作为“注册”或“解析”虚拟网络链接到专用区域时， 虚拟网络需要是空的（即没有 VM 记录）。 但是，以后作为“注册”或“解析”虚拟网络链接到其他专用区域时，虚拟网络可以是非空的。 
+* 在最初（即首次） 作为“注册”或“解析”虚拟网络链接到专用区域时， 虚拟网络需要是空的（即没有 VM 记录）。 但是，以后作为注册或解析虚拟网络链接到其他专用区域时，虚拟网络可以是非空的。 
 * 目前不支持条件转发，例如，为了启用 Azure 与本地网络之间的解析。 有关客户可以如何通过其他机制实现此方案的文档，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 建议你同时研究一下[常见问题解答](./dns-faq.md#private-dns)来了解有关 Azure DNS 中的专用区域的一些常见问题和解答，包括对于某些类型的操作可以期待的特定 DNS 注册和解析行为。 

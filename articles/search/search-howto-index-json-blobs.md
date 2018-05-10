@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 09/07/2017
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: aa0c26a722ecddabee70127bf4b4fd67855a1523
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 64d16182ce1992ec312ad1620d9d5cf11e0ddea8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>使用 Azure 搜索 Blob 索引器对 JSON blob 编制索引
 本文介绍如何配置 Azure 搜索 Blob 索引器，以从 Azure Blob 存储中的 JSON Blob 提取结构化内容。
@@ -36,7 +36,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
 
 第一个步骤是提供索引器使用的数据源连接信息。 数据源类型（此处指定为 `azureblob`）确定索引器要调用哪些数据提取行为。 对于 JSON Blob 索引，数据源的定义与 JSON 文档和数组的定义相同。 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -88,7 +88,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
 
 指定了完整信息的请求可能如下所示：
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -190,7 +190,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
 
 以下示例是一个指定了完整信息的索引器有效负载，其中包括字段映射：
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

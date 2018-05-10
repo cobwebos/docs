@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 6bad6c7cd641a2ef5461ee37b89c0bdc6a221017
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 诊断日志记录
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="logs-available-in-azure"></a>在 Azure 中可用的日志
 
-在探讨如何监视 Azure Cosmos DB 帐户之前，让我们先澄清一些有关日志记录和监视的事项。 Azure 平台上有不同类型的日志。 有 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[Azure 指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)日志、事件日志、检测信号监视日志、操作日志，等等。 有很多种日志。 可以在 Azure 门户的 [Azure Log Analytics](https://azure.microsoft.com/en-us/services/log-analytics/) 中看到日志的完整列表。 
+在探讨如何监视 Azure Cosmos DB 帐户之前，让我们先澄清一些有关日志记录和监视的事项。 Azure 平台上有不同类型的日志。 有 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[Azure 指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)日志、事件日志、检测信号监视日志、操作日志，等等。 有很多种日志。 可以在 Azure 门户的 [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中看到日志的完整列表。 
 
 下图显示所提供的不同种类的 Azure 日志：
 
@@ -51,7 +51,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 ### <a name="azure-metrics"></a>Azure 指标
 
-[Azure 指标](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics)，包含最重要的 Azure 遥测数据类型（也称为“性能计数器”），是大多数 Azure 资源发出的。 可以通过指标来查看与吞吐量、存储、一致性、可用性以及 Azure Cosmos DB 资源的延迟相关的信息。 有关详细信息，请参阅[使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)。
+[Azure 指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)，包含最重要的 Azure 遥测数据类型（也称为“性能计数器”），是大多数 Azure 资源发出的。 可以通过指标来查看与吞吐量、存储、一致性、可用性以及 Azure Cosmos DB 资源的延迟相关的信息。 有关详细信息，请参阅[使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)。
 
 ### <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 

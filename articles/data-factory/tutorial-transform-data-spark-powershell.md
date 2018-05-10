@@ -3,21 +3,20 @@ title: 在 Azure 数据工厂中使用 Spark 转换数据 | Microsoft Docs
 description: 本教程提供有关在 Azure 数据工厂中使用 Spark 活动转换数据的分步说明。
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: shengc
-ms.openlocfilehash: 861fe113ef9edd4417580821ef42fc913a4cb961
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: douglasl
+ms.openlocfilehash: c8676b4e7228105216f23de7c898c43c40fc2d0a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 本教程使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 Spark 活动和按需 HDInsight 链接服务转换数据。 在本教程中执行以下步骤：

@@ -1,8 +1,8 @@
 ---
-title: "混合标识：目录集成工具比较 | Microsoft Docs"
-description: "本页将提供针对可用于目录集成的各种目录集成工具进行比较的综合表。"
+title: 混合标识：目录集成工具比较 | Microsoft Docs
+description: 本页将提供针对可用于目录集成的各种目录集成工具进行比较的综合表。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 1e62a4bd-4d55-4609-895e-70131dedbf52
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/09/2018
+ms.date: 04/27/2018
 ms.author: billmath
-ms.openlocfilehash: 78ca910b4dfd5a706d2f1df7f70291fb48f096f5
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 5d189af9b08f2b6e9ea194c15bfba683afc75a54
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合标识目录集成工具比较
 过去数年以来，集成工具已得到发展和演进。  本文档旨在帮助提供这些工具的合并视图，并比较每个工具提供的功能。
@@ -43,16 +43,14 @@ PP = 公开预览版
 | 连接到单个本地 AD 林 |● |● |● |● |● |
 | 连接到多个本地 AD 林 |● |● | |● |● |
 | 连接到多个本地 Exchange 组织 |● | | | | |
-| 连接到单个在本地 LDAP 目录 |●* | | |● |● |
-| 连接到多个本地 LDAP 目录 |●*  | | |● |● |
-| 连接到本地 AD 和本地 LDAP 目录 |●* | | |● |● |
+| 连接到单个在本地 LDAP 目录 | | | |● |● |
+| 连接到多个本地 LDAP 目录 |  | | |● |● |
+| 连接到本地 AD 和本地 LDAP 目录 | | | |● |● |
 | 连接到自定义系统（例如 SQL、Oracle、MySQL 等） |FR | | |● |● |
 | 同步客户定义的属性（目录扩展） |● | | | | |
 | 连接到本地 HR（即 SAP、Oracle eBusiness、PeopleSoft） |FR | | |● |● |
 | 支持用于预配到本地系统的 FIM 同步规则和连接器。 | | | |● |● |
-&#42; 目前，这有两个支持的选项。  它们是：
-   1. 可以使用泛型 LDAP 连接器，在 Azure AD Connect 外部将其启用。  这很复杂，需要一位负责载入的合作伙伴，并签署关于维护的顶级支持协议。  此选项可以处理单个和多个 LDAP 目录。
-   2. 可以开发自己的解决方案，将对象从 LDAP 移至 Active Directory。  然后使用 Azure AD Connect 来同步对象。  可以将 MIM 或 FIM 用作移动这些对象的可能解决方案。
+
 
 ## <a name="cloud-to-on-premises-synchronization"></a>云到本地的同步
 | 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 | Azure Active Directory 同步工具 (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |

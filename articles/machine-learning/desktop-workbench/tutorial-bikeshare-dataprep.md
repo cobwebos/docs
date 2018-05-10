@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 77729ad52f101f0d57fe24115525795c6b4f2db2
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 51ed7dbead7f9085de563d2fb20c4e4a08f90bb2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>教程：使用 Azure Machine Learning Workbench 进行高级数据准备（共享自行车数据）
 Azure 机器学习（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -35,7 +35,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 ## <a name="prerequisites"></a>先决条件
 
 * 在本地安装 Azure Machine Learning Workbench。 有关详细信息，请参阅[安装快速入门](../service/quickstart-installation.md)。
-* 如果尚未安装 Azure CLI，请按说明[安装最新的 Azure CLI 版本](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 如果尚未安装 Azure CLI，请按说明[安装最新的 Azure CLI 版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * 一个在 Azure 中创建的 [HDInsights Spark 群集](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)。
 * 一个 Azure 存储帐户。
 * 熟悉如何在 Workbench 中创建新项目。

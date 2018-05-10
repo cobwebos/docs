@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure DNS 管理 DNS 记录集和记录 | Microsoft Docs"
-description: "Azure DNS 在托管域时具有管理 DNS 记录集和记录的功能。"
+title: 使用 Azure DNS 管理 DNS 记录集和记录 | Microsoft Docs
+description: Azure DNS 在托管域时具有管理 DNS 记录集和记录的功能。
 services: dns
 documentationcenter: na
-author: georgewallace
-manager: timlt
-editor: 
+author: KumudD
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
 ms.service: dns
@@ -14,24 +14,24 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: gwallace
-ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: kumud
+ms.openlocfilehash: da7d2118a0fb6bc5004856d994a01a932094ca45
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集
 
 > [!div class="op_single_selector"]
-> * [在 Azure 应用服务中创建 Java Web 应用](dns-operations-recordsets-portal.md)
+> * [Azure 门户](dns-operations-recordsets-portal.md)
 > * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 本文演示如何通过使用 Azure 门户来管理 DNS 区域的记录集和记录。
 
-请务必了解 DNS 记录集和单独的 DNS 记录之间的差异。 记录集是区域中具有相同名称和相同类型的记录的集合。 有关详细信息，请参阅[使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)。
+请务必了解 DNS 记录集与单独的 DNS 记录之间的差异。 记录集是区域中具有相同名称和相同类型的记录的集合。 有关详细信息，请参阅[使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)。
 
 ## <a name="create-a-new-record-set-and-record"></a>创建新的记录集和记录
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ea48300e83e1faa1250d2fba7c37a82825c820f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习常见问题：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -372,7 +372,7 @@ API 计算小时数是使用机器学习计算资源运行 API 调用所花费�
 
 **机器学习是否支持高可用性？**
 
-是的。 有关详细信息，请参阅[机器学习定价](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)，了解服务级别协议 (SLA) 的说明。
+是的。 有关详细信息，请参阅[机器学习定价](https://azure.microsoft.com/pricing/details/machine-learning/)，了解服务级别协议 (SLA) 的说明。
 
 **具体而言，会在哪种计算资源上运行生产 API 调用？**
 

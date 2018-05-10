@@ -1,19 +1,34 @@
 - name: Azure HDInsight 文档
   href: /azure/hdinsight
-- name: Kafka on HDInsight
+- name: 概述
   items:
-    - name: 概述
+    - name: 关于 Kafka on HDInsight
       href: apache-kafka-introduction.md
     - name: 组件版本控制
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: 入门
+- name: 快速入门
   items:
-    - name: 创建 Kafka 群集
+    - name: 创建 Kafka 群集 - 门户
       href: apache-kafka-get-started.md
-    - name: 安装 HDInsight 应用
-      href: ../hdinsight-apps-install-applications.md
+    - name: 创建 Kafka 群集 - PowerShell
+      href: apache-kafka-quickstart-powershell.md
+    - name: 创建 Kafka 群集 - 模板
+      href: apache-kafka-quickstart-resource-manager-template.md
+- name: 教程
+  items:
+    - name: Kafka 和 Spark
+      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
       maintainContext: true
+    - name: Kafka 和 Storm
+      href: ../hdinsight-apache-storm-with-kafka.md
+      maintainContext: true
+    - name: Kafka 生成者和使用者 API
+      href: apache-kafka-producer-consumer-api.md
+    - name: Kafka 流 API
+      href: apache-kafka-streams-api.md
+- name: 概念
+  items:
     - name: 容量计划
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -23,6 +38,11 @@
       href: apache-kafka-high-availability.md
 - name: 如何
   items:
+    - name: 启用自动创建主题功能
+      href: apache-kafka-auto-create-topics.md
+    - name: 安装 HDInsight 应用
+      href: ../hdinsight-apps-install-applications.md
+      maintainContext: true
     - name: 在虚拟网络中使用 Kafka
       href: apache-kafka-connect-vpn-gateway.md
     - name: 复制 Kafka 数据
@@ -31,17 +51,11 @@
       href: apache-kafka-log-analytics-operations-management.md
     - name: 创建流式处理管道
       items:
-        - name: Kafka 和 Spark（结构化流式处理）
-          href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-          maintainContext: true
-        - name: 通过结构化流式处理将数据从 Kafka 传输到 Azure Cosmos DB
+        - name: Spark、Kafka 和 Azure Cosmos DB
           href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
           maintainContext: true
         - name: Kafka 和 Spark (DStream)
           href: ../hdinsight-apache-spark-with-kafka.md
-          maintainContext: true
-        - name: Kafka 和 Storm
-          href: ../hdinsight-apache-storm-with-kafka.md
           maintainContext: true
         - name: 将 Kafka 与 Azure 容器服务配合使用
           href: apache-kafka-azure-container-services.md
@@ -49,10 +63,6 @@
           href: apache-kafka-azure-functions.md
     - name: 开发
       items:
-        - name: 使用 Kafka 生成者和使用者 API
-          href: apache-kafka-producer-consumer-api.md
-        - name: 使用 Kafka 流 API
-          href: apache-kafka-streams-api.md
         - name: 使用空边缘节点
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true

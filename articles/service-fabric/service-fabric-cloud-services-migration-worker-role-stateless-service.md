@@ -1,11 +1,11 @@
 ---
-title: "将 Azure 云服务应用转换为微服务 |Microsoft Docs"
-description: "本指南将云服务 Web 角色和辅助角色与 Service Fabric 无状态服务进行比较，以帮助你从云服务迁移到 Service Fabric。"
+title: 将 Azure 云服务应用转换为微服务 |Microsoft Docs
+description: 本指南将云服务 Web 角色和辅助角色与 Service Fabric 无状态服务进行比较，以帮助你从云服务迁移到 Service Fabric。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: fd24881444846d3905f8db61356656960698b7eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bb8f2f8a6f0905716c34796a5b16c38f406ae64c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
 本文说明如何将云服务的 Web 角色和辅助角色迁移到 Service Fabric 无状态服务。 对于整体体系结构大致保持相同的应用程序来说，这是最简单的云服务到 Service Fabric 迁移路径。
@@ -207,7 +207,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ## <a name="startup-tasks"></a>启动任务
 启动任务是应用程序启动前执行的操作。 启动任务通常用于以提升的权限运行设置脚本。 云服务和 Service Fabric 均支持启动任务。 两者的主要差异是，云服务中的启动任务绑定到 VM，因为 VM 是角色实例的一部分；而 Service Fabric 中的启动任务则绑定到服务，而不绑定到任何特定 VM。
 
-| 云服务 | Service Fabric |
+| Service Fabric | 云服务 |
 | --- | --- | --- |
 | 配置位置 |ServiceDefinition.csdef |
 | 特权 |“受限”或“提升” |

@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心的威胁智能 | Microsoft Docs"
-description: "了解如何使用 Azure 安全中心的威胁智能功能，确定 VM 和计算机中的潜在威胁。"
+title: Azure 安全中心的威胁智能 | Microsoft Docs
+description: 了解如何使用 Azure 安全中心的威胁智能功能，确定 VM 和计算机中的潜在威胁。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: yurid
-ms.openlocfilehash: b5bdeb1c70893c2477413df02c7b1a4a07999e93
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9654c25bf6b51d48dc195d6a536b61312fdcbeff
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Azure 安全中心的威胁智能
 本文介绍如何使用 Azure 安全中心威胁智能解决与安全性相关的问题。
@@ -68,7 +68,7 @@ ms.lasthandoff: 10/11/2017
 
     c.  威胁位置。 帮助确定全球范围内与你的环境进行通信的当前位置。 在显示的地图中，橙色（传入）和红色（传出）箭头标识流量方向。 如果选择其中某个箭头，则会显示威胁类型和流量方向。
 
-    d.单击“下一步”。  威胁详细信息。 显示有关地图中所选威胁的更多详细信息。
+    d.  威胁详细信息。 显示有关地图中所选威胁的更多详细信息。
 
 不管所选选项磁贴为何，显示的仪表板始终基于日志搜索查询。 唯一区别是查询类型和结果。
 

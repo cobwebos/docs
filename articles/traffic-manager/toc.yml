@@ -8,12 +8,6 @@
   items:
     - name: 创建流量管理器配置文件
       href: traffic-manager-create-profile.md
-- name: 示例
-  items:
-    - name: Azure CLl
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: 教程
   items:
     - name: 根据终结点的地理位置路由流量
@@ -24,6 +18,12 @@
       href: traffic-manager-configure-weighted-routing-method.md
     - name: 将流量路由到优先终结点
       href: traffic-manager-configure-priority-routing-method.md
+- name: 示例
+  items:
+    - name: Azure CLl
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: 概念
   items:
     - name: 路由方法

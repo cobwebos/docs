@@ -4,17 +4,17 @@
   expanded: true
   items:
     - name: 关于 Azure 机器学习
-      href: ../desktop-workbench/overview-what-is-azure-ml.md
+      href: overview-what-is-azure-ml.md
     - name: 模型管理概述
       href: ../desktop-workbench/model-management-overview.md
     - name: 其他 ML 产品
-      href: ../desktop-workbench/overview-more-machine-learning.md
+      href: overview-more-machine-learning.md
     - name: 新增功能
       href: ../desktop-workbench/azure-machine-learning-release-notes.md
 - name: 快速入门
   items:
     - name: 安装和启动
-      href: ../desktop-workbench/quickstart-installation.md
+      href: quickstart-installation.md
 - name: 教程
   items:
     - name: 1：准备数据
@@ -29,6 +29,8 @@
   items:
     - name: 关键概念
       href: ../desktop-workbench/overview-general-concepts.md
+    - name: FPGA 加速
+      href: concept-accelerate-with-fpgas.md
 - name: 操作指南
   items:
     - name: 首要 CLI 任务
@@ -92,8 +94,10 @@
           href: ../desktop-workbench/how-to-read-write-files.md
         - name: 使用 MMLSpark 库
           href: ../desktop-workbench/how-to-use-mmlspark.md
-    - name: 使模型可操作
+    - name: 部署和使用模型
       items:
+        - name: 将模型部署到 FPGA
+          href: how-to-deploy-fpga-web-service.md
         - name: 设置模型管理
           href: ../desktop-workbench/deployment-setup-configuration.md
         - name: 缩放群集和服务
@@ -142,6 +146,31 @@
           href: ../desktop-workbench/scenario-deep-learning-for-predictive-maintenance.md
 - name: 引用
   items:
+    - name: Python 包
+      href: reference-python-package-overview.md
+      items:
+        - name: 计算机视觉
+          items:
+            - name: 包概述和安装
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision'
+            - name: 生成和部署图像分类模型
+              href: how-to-build-deploy-image-classification-models.md
+            - name: 模型准确性
+              href: how-to-improve-accuracy-for-computer-vision-models.md
+        - name: 预测
+          items:
+            - name: 概述和安装
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview'
+            - name: 生成和部署预测模型
+              href: how-to-build-deploy-forecast-models.md
+        - name: FPGA 加速
+          href: reference-fpga-package-overview.md
+        - name: 文本分析
+          items:
+            - name: 概述和安装
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics'
+            - name: 生成和部署文本分类模型
+              href: how-to-build-deploy-text-classification-models.md
     - name: 数据准备工作
       items:
         - name: 用于数据准备的 Python 扩展
@@ -191,13 +220,13 @@
     - name: 常见问题
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 问题和故障排除
-      href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
+      href: known-issues-and-troubleshooting-guide.md
     - name: 支持和培训
-      href: ../desktop-workbench/support-for-aml-services.md
+      href: support-for-aml-services.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价
-      href: ../desktop-workbench/aml-pricing.md
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
     - name: 上市区域
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Team Data Science Process

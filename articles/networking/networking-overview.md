@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 47ee22df081b71e7bafa40210a9c4cac0a844825
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-networking"></a>Azure 网络
 
@@ -155,7 +155,7 @@ Azure 提供以下工具用于监视和管理网络：
 
 ## <a name="pricing"></a>定价
 
-有些 Azure 网络服务是收费的，而有些则是免费的。 有关详细信息，请查看[虚拟网络](https://azure.microsoft.com/pricing/details/virtual-network)、[VPN 网关](https://azure.microsoft.com/pricing/details/vpn-gateway)、[应用程序网关](https://azure.microsoft.com/en-us/pricing/details/application-gateway/)、[负载均衡器](https://azure.microsoft.com/pricing/details/load-balancer)、[网络观察程序](https://azure.microsoft.com/pricing/details/network-watcher)、[DNS](https://azure.microsoft.com/pricing/details/dns)、[流量管理器](https://azure.microsoft.com/pricing/details/traffic-manager)和 [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) 定价页。
+有些 Azure 网络服务是收费的，而有些则是免费的。 有关详细信息，请查看[虚拟网络](https://azure.microsoft.com/pricing/details/virtual-network)、[VPN 网关](https://azure.microsoft.com/pricing/details/vpn-gateway)、[应用程序网关](https://azure.microsoft.com/pricing/details/application-gateway/)、[负载均衡器](https://azure.microsoft.com/pricing/details/load-balancer)、[网络观察程序](https://azure.microsoft.com/pricing/details/network-watcher)、[DNS](https://azure.microsoft.com/pricing/details/dns)、[流量管理器](https://azure.microsoft.com/pricing/details/traffic-manager)和 [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) 定价页。
 
 ## <a name="next-steps"></a>后续步骤
 

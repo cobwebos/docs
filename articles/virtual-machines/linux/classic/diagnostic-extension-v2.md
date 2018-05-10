@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f1415e2cfbe48b287db5851bb8ebef1ff9251280
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>使用 Linux 诊断扩展监视 Linux VM 的性能和诊断数据
 
@@ -53,7 +53,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 使用 [Azure 门户](https://portal.azure.com/#)、Azure PowerShell 或 Azure CLI 脚本，可以启用此扩展。
 
-若要直接从 Azure 门户查看和配置系统和性能数据，请执行 [Azure 博客上的这些步骤](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)。
+若要直接从 Azure 门户查看和配置系统和性能数据，请执行 [Azure 博客上的这些步骤](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)。
 
 本文重点介绍如何使用 Azure CLI 命令来启用和配置此扩展。 这可让你直接从存储表读取和查看数据。
 
@@ -81,7 +81,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 * 一组核心基础系统数据。 请注意，[System Center 跨平台解决方案站点](https://scx.codeplex.com/wikipage?title=xplatproviders)上介绍了完整的数据集。
   如果想要启用额外的数据，请继续执行方案 2 和 3 中的步骤。
 
-步骤 1. 使用以下内容创建名为 PrivateConfig.json 的文件：
+步骤 1。 使用以下内容创建名为 PrivateConfig.json 的文件：
 
     {
         "storageAccountName" : "the storage account to receive data",
@@ -94,7 +94,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 此节介绍如何自定义性能和诊断数据表。
 
-步骤 1. 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 同时也创建名为 PublicConfig.json 的文件。 指定你想要收集的特定数据。
+步骤 1。 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 同时也创建名为 PublicConfig.json 的文件。 指定你想要收集的特定数据。
 
 有关所有受支持的提供程序和变量，请参考 [System Center 跨平台解决方案站点](https://scx.codeplex.com/wikipage?title=xplatproviders)。 可以拥有多个查询，通过将更多查询追加到脚本中，还可以将它们存储为多个表。
 
@@ -117,7 +117,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 此节介绍如何收集特定的日志文件并将其上传到存储帐户。 需要指定日志文件的路径，以及要用来存储日志的表名。 可以将多个文件/表条目添加到脚本，以创建多个日志文件。
 
-步骤 1. 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 然后使用以下内容创建另一个名为 PublicConfig.json 的文件：
+步骤 1。 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 然后使用以下内容创建另一个名为 PublicConfig.json 的文件：
 
 ```json
 {
@@ -139,7 +139,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 本节说明如何阻止扩展收集日志。 请注意，即使使用此重新配置，监视代理进程仍会启动并运行。 如果想要完全停止监视代理进程，可以通过禁用扩展来实现此目的。 禁用该扩展的命令是 `azure vm extension set --disable <vm_name> LinuxDiagnostic Microsoft.OSTCExtensions '2.*'`。
 
-步骤 1. 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 使用以下内容创建另一个名为 PublicConfig.json 的文件：
+步骤 1。 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 使用以下内容创建另一个名为 PublicConfig.json 的文件：
 
     {
         "perfCfg" : [],

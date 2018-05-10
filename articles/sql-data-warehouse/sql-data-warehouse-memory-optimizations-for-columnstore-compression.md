@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 3bbcf7b637a0f32751dc15664a1b7479e65503eb
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 909b53e65fd893575a944d714f99698c7e45387d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/23/2018
 
 如果内存不足，无法将至少 10,000 个行压缩到每个行组中，SQL 数据仓库将生成错误。
 
-有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index)（批量加载到聚集列存储索引中）。
+有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index)（批量加载到聚集列存储索引中）。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 

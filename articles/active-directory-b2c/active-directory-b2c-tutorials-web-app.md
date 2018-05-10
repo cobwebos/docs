@@ -8,11 +8,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 59e23344d235bac8f69bba76cfff2922bc41fd0f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 10e7c6a8e9e92a559352886095e367585dc484ef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 允许 Web 应用程序进行帐户身份验证
 
@@ -142,7 +142,7 @@ Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-示例 ASP.NET Web 应用是一个简单的任务列表应用，用于创建和更新待办事项列表。 此应用使用 [Microsoft OWIN 中间件组件](https://docs.microsoft.com/en-us/aspnet/aspnet/overview/owin-and-katana/)，允许用户注册使用 Azure AD B2C 租户中的应用。 创建 Azure AD B2C 策略之后，用户即可使用社交帐户来访问应用，也可创建一个可用作标识的帐户来访问应用。 
+示例 ASP.NET Web 应用是一个简单的任务列表应用，用于创建和更新待办事项列表。 此应用使用 [Microsoft OWIN 中间件组件](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/)，允许用户注册使用 Azure AD B2C 租户中的应用。 创建 Azure AD B2C 策略之后，用户即可使用社交帐户来访问应用，也可创建一个可用作标识的帐户来访问应用。 
 
 示例解决方案中有两个项目：
 

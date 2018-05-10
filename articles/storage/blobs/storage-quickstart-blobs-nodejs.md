@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 30a64ec6fd4df63eba9c35f1774c81c35fa3506f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 07ac5195d9653affdbb0f305ac1697cecd379319
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>快速入门：使用 Node.js 上传、下载和列出 Blob
 
@@ -143,7 +143,7 @@ const upload = () => {
 ```
 就示例应用程序来说，名为 *example.txt* 的文件上传到名为 *example* 的 Blob，后者位于名为 *test-container* 的容器中。 其他适用于将内容上传到 Blob 中的方法涉及到使用[文本](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText)和[流](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromStream)。
 
-为了验证文件是否已上传到 Blob 存储，可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/en-us/features/storage-explorer/)查看帐户中的数据。
+为了验证文件是否已上传到 Blob 存储，可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)查看帐户中的数据。
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
@@ -284,7 +284,7 @@ try {
 
 ### <a name="client-library-reference-and-samples"></a>客户端库参考和示例
 
-- 参阅 [Node.js API 参考](https://docs.microsoft.com/en-us/javascript/api/overview/azure/storage)，详细了解 Node.js 客户端库。
+- 参阅 [Node.js API 参考](https://docs.microsoft.com/javascript/api/overview/azure/storage)，详细了解 Node.js 客户端库。
 - 浏览使用 Node.js 客户端库编写的 [Blob 存储示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob)。
 
 ## <a name="next-steps"></a>后续步骤

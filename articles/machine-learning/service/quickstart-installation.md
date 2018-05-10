@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/7/2018
-ms.openlocfilehash: 0a24adb94930024f6eaaa5ac270ae7fc35520132
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 61f51063ea7542e11ec8488c1f526c0fff1e5e38
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>快速入门：安装并开始使用 Azure 机器学习服务
 Azure 机器学习服务（预览版）是集成式的端到端数据科学和高级分析解决方案。 它可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -64,7 +64,7 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
    资源组 | 你的资源组 | 使用订阅中的现有资源组，或者输入一个名称，为此试验帐户创建新的资源组。 
    Location | _离用户最近的区域_ | 选择最靠近用户和数据资源的位置。
    席位数 | 2 | 输入席位数。 了解[席位如何影响定价](https://azure.microsoft.com/pricing/details/machine-learning/)。<br/><br/>本快速入门只需要两个座位。 可以根据需要在 Azure 门户中添加或删除席位。
-   存储帐户 | 唯一的名称 | 选择“新建”，然后提供一个名称，用于创建 [Azure 存储帐户](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal)。 名称应该 3-24 个字符长，只应包含字母数字字符。 也可选择“使用现有”，从下拉列表中选择现有的存储帐户。 存储帐户是必需的，用于保存项目内容和运行历史记录数据。 
+   存储帐户 | 唯一的名称 | 选择“新建”，然后提供一个名称，用于创建 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)。 名称应该 3-24 个字符长，只应包含字母数字字符。 也可选择“使用现有”，从下拉列表中选择现有的存储帐户。 存储帐户是必需的，用于保存项目内容和运行历史记录数据。 
    试验帐户的工作区 | IrisGarden<br/>（在教程中使用的名称） | 提供此帐户的工作区的名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 此工作空间包含创建、管理和发布试验所需的工具。
    分配工作区的所有者 | 你的帐户 | 选择自己的帐户作为工作区所有者。
    创建模型管理帐户 | **勾选标记** |现在请创建一个模型管理帐户，这样就可以在需要以实时 Web 服务的方式部署和管理模型时使用此资源。 <br/><br/>建议在创建试验帐户的同时创建模型管理帐户，当然这是可选操作。

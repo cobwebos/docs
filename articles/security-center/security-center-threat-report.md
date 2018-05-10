@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心威胁智能报告 | Microsoft 文档"
-description: "本文档可帮助你在调查过程中使用 Azure 安全中心威胁智能报告来查找有关安全警报的详细信息。"
+title: Azure 安全中心威胁智能报告 | Microsoft 文档
+description: 本文档可帮助你在调查过程中使用 Azure 安全中心威胁智能报告来查找有关安全警报的详细信息。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-ms.openlocfilehash: b4310cf4e6849c67031b3ec8b1fd5957e35f7ea6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 540725147579f895cc17ed2dbf46471dab6b3747
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure 安全中心威胁智能报告
 本文档介绍 Azure 安全中心威胁智能报告如何能够帮助了解有关生成了安全警报的威胁的详细信息。

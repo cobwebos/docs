@@ -9,24 +9,36 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 路由 Blob 存储事件 - Azure CLI
+    - name: Blob 存储事件 - Azure CLI
       href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: 路由 Blob 存储事件 - Azure PowerShell
+    - name: Blob 存储事件 - PowerShell
       href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: 创建自定义事件 - Azure CLI
+    - name: 自定义事件 - Azure CLI
       href: custom-event-quickstart.md
-    - name: 创建自定义事件 - Azure PowerShell
+    - name: 自定义事件 - PowerShell
       href: custom-event-quickstart-powershell.md
-    - name: 创建自定义事件 - Azure 门户
+    - name: 自定义事件 - 门户
       href: custom-event-quickstart-portal.md
+    - name: 将事件发送到队列存储
+      href: custom-event-to-queue-storage.md
 - name: 教程
   items:
-    - name: 使用逻辑应用监视 VM 更改
+    - name: 当 VM 更改时发送电子邮件
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
     - name: 调整已上传图像的大小
       href: resize-images-on-storage-blob-upload-event.md
     - name: 触发自动化 Runbook
       href: ensure-tags-exists-on-new-virtual-machines.md
+    - name: 在添加 IoT 中心设备后发送电子邮件
+      href: publish-iot-hub-events-to-logic-apps.md
+    - name: 响应服务总线事件
+      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: 从事件中心对数据进行流式传输
+      href: event-grid-event-hubs-integration.md
+    - name: 路由媒体服务事件
+      href: ../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: 路由到混合连接
+      href: custom-event-to-hybrid-connection.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -43,22 +55,22 @@
       href: security-authentication.md
     - name: 传递和重试
       href: delivery-and-retry.md
+    - name: 事件源
+      href: event-sources.md
+    - name: 事件处理程序
+      href: event-handlers.md
 - name: 操作指南
   items:
     - name: 发布到自定义主题
       href: post-to-custom-topic.md
-    - name: 将事件接收到 HTTP 终结点
+    - name: 在 HTTP 终结点接收事件
       href: receive-events.md
-    - name: 将数据从事件中心流式传输到数据仓库
-      href: event-grid-event-hubs-integration.md
-    - name: 发送有关 IoT 中心事件的通知
-      href: publish-iot-hub-events-to-logic-apps.md
-    - name: 通过 Functions 和逻辑应用侦听服务总线事件
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: 监视事件传送
       href: monitor-event-delivery.md
     - name: 查询事件订阅
       href: query-event-subscriptions.md
+    - name: 将自定义字段映射到架构
+      href: input-mappings.md
     - name: 使用 CloudEvents 架构
       href: cloudevents-schema.md
 - name: 引用
@@ -84,8 +96,12 @@
           href: event-schema-event-hubs.md
         - name: IoT 中心
           href: event-schema-iot-hub.md
+        - name: 媒体服务
+          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: 资源组
           href: event-schema-resource-groups.md
+        - name: 服务总线
+          href: event-schema-service-bus.md
 - name: 资源
   items:
     - name: Azure 路线图

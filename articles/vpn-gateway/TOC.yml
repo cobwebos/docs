@@ -1,5 +1,5 @@
 - name: VPN 网关文档
-  href: index.md
+  href: index.yml
 - name: 概述
   items:
     - name: 关于 VPN 网关

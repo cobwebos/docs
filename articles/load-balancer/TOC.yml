@@ -14,12 +14,6 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: 创建标准负载均衡器 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-- name: 示例
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: 教程
   items:
     - name: 对传入 VM 的内部流量进行负载均衡
@@ -28,6 +22,12 @@
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定的可用性区域中对 VM 进行负载均衡
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+- name: 示例
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: 概念
   items:
     - name: 什么是负载均衡器标准版？

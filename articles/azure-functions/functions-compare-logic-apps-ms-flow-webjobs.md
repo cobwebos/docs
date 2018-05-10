@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/09/2018
 ms.author: tdykstra
 ms.custom: mvc
-ms.openlocfilehash: 23501eddc8921ed36a9e7d839660455e04ee9381
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6df97a40be7bf1c437c5228006d114ace768f8ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>比较流、逻辑应用、函数和 WebJobs
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/16/2018
 
 下表有助于确定流或逻辑应用是否最适合给定的集成。
 
-|  | 流 | 逻辑应用 |
+|  | 流向 | 逻辑应用 |
 | --- | --- | --- |
 | 用户 |办公人员、企业用户、SharePoint 管理员 |Pro 集成人员和开发人员、IT 专业人员 |
 | 方案 |自助服务 |高级集成 |
@@ -65,7 +65,7 @@ ms.lasthandoff: 04/16/2018
 | 连接 | [有关十多个内置的绑定类型](functions-triggers-bindings.md#supported-bindings)，为自定义绑定编写代码 | [大型连接器集合](../connectors/apis-list.md)、[适用于 B2B 方案的 Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)、[构建自定义连接器](../logic-apps/custom-connector-overview.md) |
 | 操作 | 每个活动都是一个 Azure 函数；为活动函数编写代码 |[现成操作的大型集合](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | 监视 | [Azure Application Insights](../application-insights/app-insights-overview.md) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Operations Management Suite](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)、[Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| 管理 | [REST API](durable-functions-http-api.md)、[Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](https://docs.microsoft.com/en-us/rest/api/logic/)、[PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/?view=azurermps-5.6.0)、[Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| 管理 | [REST API](durable-functions-http-api.md)、[Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](https://docs.microsoft.com/rest/api/logic/)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/?view=azurermps-5.6.0)、[Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | 执行上下文 | 可以[在本地](functions-runtime-overview.md)或在云中运行。 | 只能在云中运行。|
 
 <a name="function"></a>

@@ -289,6 +289,7 @@
 ## 保护标识
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
 #### [条件](active-directory-conditional-access-conditions.md)
+#### [位置条件](active-directory-conditional-access-locations.md)
 #### [控制](active-directory-conditional-access-controls.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)

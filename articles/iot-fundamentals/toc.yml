@@ -8,7 +8,7 @@
       href: iot-services-and-technologies.md
 - name: 解决方案
   items:
-    - name: IoT 套件预配置解决方案
+    - name: IoT 解决方案加速器
       href: /azure/iot-suite
     - name: IoT Central
       href: 'https://docs.microsoft.com/microsoft-iot-central/'
@@ -18,8 +18,8 @@
       href: /azure/iot-hub
     - name: IoT 中心设备预配服务
       href: /azure/iot-dps
-    - name: Location Based Services
-      href: /azure/location-based-services
+    - name: Azure Maps
+      href: /azure/azure-maps
     - name: 服务 SDK
       href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
     - name: 时序见解

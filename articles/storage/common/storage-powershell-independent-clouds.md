@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.openlocfilehash: 3bfedf940bd884fc8093f14236b6f3e4f7596839
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3eecf8918e6628071e44cc588b1826df68a00f10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
@@ -85,11 +85,10 @@ Get-AzureRmEnvironment | select Name, StorageEndpointSuffix
 
 | 名称| core.usgovcloudapi.net|
 |----|----|
-|AzureChinaCloud | core.chinacloudapi.cn|
+| AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
 | AzureGermanCloud | core.cloudapi.de|
-| AzureUSGovernment | core.usgov.cloudapi.net |
-
+| AzureUSGovernment | core.usgovcloudapi.net |
 
 若要检索指定环境的所有属性，请调用 **Get-AzureRmEnvironment** 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
 

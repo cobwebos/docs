@@ -16,15 +16,15 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a02844c678c08d8aefbceb16d3908faeffd755fb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 396452faf36bc43a185fd6492f952b7bfd9511cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>使用存储资源管理器管理 Azure Data Lake Store 资源
 
-[Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview) 是一项服务，用于存储大量的非结构化数据，例如文本数据或二进制数据。 可以通过 HTTP 或 HTTPS 从任何位置访问这些数据。 Azure 存储资源管理器中的 Data Lake Store 可以用来访问和管理 Data Lake Store 数据和资源，以及 Blob 和队列之类的其他 Azure 实体。 现在可以使用相同工具在一个位置管理不同 Azure 实体。
+[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) 是一项服务，用于存储大量的非结构化数据，例如文本数据或二进制数据。 可以通过 HTTP 或 HTTPS 从任何位置访问这些数据。 Azure 存储资源管理器中的 Data Lake Store 可以用来访问和管理 Data Lake Store 数据和资源，以及 Blob 和队列之类的其他 Azure 实体。 现在可以使用相同工具在一个位置管理不同 Azure 实体。
 
 另一优势是，不需拥有订阅权限即可管理 Data Lake Store 数据。 在存储资源管理器中，可以将 Data Lake Store 路径附加到“本地和附加”节点，只要有人授予权限即可。
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/16/2018
 若要完成本文中的步骤，需要符合以下先决条件：
 
 *   Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-*   Azure Data Lake Store 帐户。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal)。
+*   Azure Data Lake Store 帐户。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。
 
 ## <a name="install-storage-explorer"></a>安装存储资源管理器
 
@@ -197,7 +197,7 @@ Azure Data Lake Store 帐户的资源包含文件夹和文件。
 
 ## <a name="next-steps"></a>后续步骤
 * 查看[最新的存储资源管理器发行说明和视频](http://www.storageexplorer.com)。
-* 了解如何[在 Azure 存储资源管理器中管理 Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer)。
-* [存储资源管理器入门](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
-* [Azure Data Lake Store 入门](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview)。
+* 了解如何[在 Azure 存储资源管理器中管理 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)。
+* [存储资源管理器入门](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
+* [Azure Data Lake Store 入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)。
 * 观看[关于如何在 Azure 存储资源管理器中使用 Azure Cosmos DB 的 YouTube 视频](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。

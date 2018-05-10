@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 46d4962040a78942adbad443d5cbde64755ddadf
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 855cb159474836e4c015f84d7d57546b5e1a2e99
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,7 @@ ms.lasthandoff: 04/05/2018
 Azure SQL 数据仓库中的透明数据加密 (TDE) 可帮助对静态数据进行实时加密和解密，避免恶意活动造成的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
 #### <a name="azure-sql-database"></a>Azure SQL 数据库
-Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [SQL 数据库和数据仓库的透明数据加密](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
+Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [SQL 数据库和数据仓库的透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store 还为存储在帐户中的数据提供加密。 启用后，Data Lake Store 会在保存数据前进行自动加密，在检索前进行自动解密，从而使其对访问数据的客户端透明。 有关详细信息，请参阅 [Azure Data Lake Store 中的安全性](../data-lake-store/data-lake-store-security-overview.md)。 
@@ -86,7 +86,7 @@ Amazon Redshift 支持静态数据的群集加密。 有关详细信息，请参
 Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和自定义字段。 有关详细信息，请参阅 [Understanding the Web Server OAuth Authentication Flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)（了解 Web 服务器 OAuth 身份验证流）。  
 
 ## <a name="hybrid-scenarios"></a>混合场景
-混合场景需要在本地网络、虚拟网络 (Azure) 或虚拟私有云 (Amazon) 中安装自承载集成运行时。 自承载集成运行时必须能够访问本地数据存储。 有关自承载集成运行时的详细信息，请参阅[如何创建和配置自承载集成运行时](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime)。 
+混合场景需要在本地网络、虚拟网络 (Azure) 或虚拟私有云 (Amazon) 中安装自承载集成运行时。 自承载集成运行时必须能够访问本地数据存储。 有关自承载集成运行时的详细信息，请参阅[如何创建和配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)。 
 
 ![自承载集成运行时通道](media/data-movement-security-considerations/data-management-gateway-channels.png)
 
@@ -152,7 +152,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 | `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | （可选）从/向 Azure Data Lake Store 复制时需要。 |
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别管理端口/允许列表域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
+> 可能需要按相应数据源的要求在企业防火墙级别管理端口或白名单域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
 
 下表提供了 Windows 防火墙的入站端口要求：
 

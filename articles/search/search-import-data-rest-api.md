@@ -8,12 +8,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 12/08/2016
-ms.openlocfilehash: b622cffad66dc5d09df2d737bf2c1d30543a4252
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/20/2018
+ms.openlocfilehash: 53b20c9db7efe1f8876eec7c0167dc151aa38786
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>使用 REST API 将数据上传到 Azure 搜索
 > [!div class="op_single_selector"]
@@ -60,9 +60,9 @@ ms.lasthandoff: 04/23/2018
 既然已经为索引操作收集了必要的字段值，就可以构造实际的 HTTP 请求和 JSON 请求正文来导入数据。
 
 #### <a name="request-and-request-headers"></a>请求和请求头
-在 URL 中，需要提供服务名称、索引名称（本例为“hotels”）以及正确的 API 版本（发布本文档时的 API 版本为 `2016-09-01` ）。 需要定义 `Content-Type` 和 `api-key` 请求头。 请使用服务的其中一个管理密钥来定义后者。
+在 URL 中，需要提供服务名称、索引名称（本例为“hotels”）以及正确的 API 版本（发布本文档时的 API 版本为 `2017-11-11` ）。 需要定义 `Content-Type` 和 `api-key` 请求头。 请使用服务的其中一个管理密钥来定义后者。
 
-    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
+    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

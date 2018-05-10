@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 资源组项目在 VS Team Services 中连续集成 | Microsoft Docs"
-description: "介绍如何在 Visual Studio 中使用 Azure 资源组部署项目在 Visual Studio Team Services 中连续集成。"
+title: 使用 Azure 资源组项目在 VS Team Services 中连续集成 | Microsoft Docs
+description: 介绍如何在 Visual Studio 中使用 Azure 资源组部署项目在 Visual Studio Team Services 中连续集成。
 services: visual-studio-online
 documentationcenter: na
 author: mlearned
 manager: erickson-doug
-editor: 
+editor: ''
 ms.assetid: b81c172a-be87-4adc-861e-d20b94be9e38
 ms.service: azure-resource-manager
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc5a45c899cd72c051dd08f7db039565a57381a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>使用 Azure 资源组部署项目在 Visual Studio Team Services 中连续集成
 若要部署 Azure 模板，需要在各个阶段执行任务：生成、测试、复制到 Azure（也称为“暂存”）和部署模板。 在 Visual Studio Team Services (VS Team Services) 中可通过两种不同的方法部署模板。 两种方法产生的结果相同，因此请选择最符合工作流的方法。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 本文演示了这两个选项。 第一个选项的优点是，在 Visual Studio 中使用开发人员所用的同一脚本，并且在整个生命周期中提供一致性。 第二个选项为内置脚本提供一个便捷替代方式。 两个过程都假设已经在 VS Team Services 中签入 Visual Studio 部署项目。
 
 ## <a name="copy-artifacts-to-azure"></a>将项目复制到 Azure
-无论方案如何，如果具有模板部署所需的任何项目，必须向 Azure Resource Manager 授予这些项目的访问权限。 这些项目可以包括如下所述的文件：
+无论方案如何，如果具有模板部署所需的任何项目，必须向 Azure 资源管理器授予这些项目的访问权限。 这些项目可以包括如下所述的文件：
 
 * 嵌套模板
 * 配置脚本和 DSC 脚本
@@ -89,7 +89,7 @@ ms.lasthandoff: 10/11/2017
       对于 Azure CLI，请使用：
       
       `azure account show`
-   8. 若要获取服务主体 ID、服务主体密钥和租户 ID，请遵循[使用门户创建 Active Directory 应用程序和服务主体](resource-group-create-service-principal-portal.md)或[通过 Azure Resource Manager 对服务主体进行身份验证](resource-group-authenticate-service-principal.md)中的过程。
+   8. 若要获取服务主体 ID、服务主体密钥和租户 ID，请遵循[使用门户创建 Active Directory 应用程序和服务主体](resource-group-create-service-principal-portal.md)或[通过 Azure 资源管理器对服务主体进行身份验证](resource-group-authenticate-service-principal.md)中的过程。
    9. 向“添加 Azure 订阅”对话框添加服务主体 ID、服务主体密钥和租户 ID 值，并选择“确定”按钮。
       
       现在，已获得了用于运行 Azure PowerShell 脚本的有效服务主体。
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/11/2017
    
    | 参数 | 说明 |
    | --- | --- |
-   | -ResourceGroupLocation |资源组所在的地理位置值，例如 **eastus** 或 **'East US'**。 （如果名称中有空格，请添加单引号。）有关详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/en-us/regions/)。 |
+   | -ResourceGroupLocation |资源组所在的地理位置值，例如 **eastus** 或 **'East US'**。 （如果名称中有空格，请添加单引号。）有关详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
    | -ResourceGroupName |此部署使用的资源组名称。 |
    | -UploadArtifacts |如果提供此参数，将指定需要从本地系统上传到 Azure 的项目。 仅当模板部署需要使用 PowerShell 脚本暂存其他项目（例如配置脚本或嵌套模板）时，才需要设置此开关。 |
    | -StorageAccountName |用于暂存此部署的项目的存储帐户名称。 仅当暂存用于部署的项目时，才使用此参数。 当此参数已提供时，如果在执行以前的部署期间脚本尚未创建一个存储帐户，将创建新的存储帐户。 如果已指定该参数，则存储帐户必须已经存在。 |
@@ -148,7 +148,7 @@ ms.lasthandoff: 10/11/2017
    如果已将 Azure 服务终结点添加到 VS Team Services，请在“Azure 订阅”下拉列表框中选择订阅。 如果没有订阅，请参阅[选项 1](#detailed-walkthrough-for-option-1)，了解有关在 VS Team Services 中设置订阅的说明。
    
    * 源 - 输入 **$(Build.StagingDirectory)**
-   * Azure 连接类型 - 选择“Azure Resource Manager”
+   * Azure 连接类型 - 选择“Azure 资源管理器”
    * Azure RM 订阅 - 针对存储帐户选择要在“Azure 订阅”下拉列表框中使用的订阅。 如果订阅未出现，请选择“管理”链接旁边的“刷新”按钮。
    * 目标类型 - 选择“Azure Blob”
    * RM 存储帐户 - 选择要用于暂存项目的存储帐户
@@ -162,7 +162,7 @@ ms.lasthandoff: 10/11/2017
    ![配置 Azure 文件复制任务][16]
 6. 选择“Azure 资源组部署”生成步骤，并填充其值。
    
-   * Azure 连接类型 - 选择“Azure Resource Manager”
+   * Azure 连接类型 - 选择“Azure 资源管理器”
    * Azure RM 订阅 - 在“Azure 订阅”下拉列表框中选择用于部署的订阅。 这通常是上一步中使用的同一订阅
    * 操作 - 选择“创建或更新资源组”
    * 资源组 - 选择资源组或为部署选择新资源组的名称
@@ -178,7 +178,7 @@ ms.lasthandoff: 10/11/2017
 7. 在添加所有必需项之后，保存生成定义，并选择顶部“使新生成入队”。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关 Azure Resource Manager 和 Azure 资源组的详细信息，请阅读 [Azure Resource Manager 概述](azure-resource-manager/resource-group-overview.md)。
+若要了解有关 Azure 资源管理器和 Azure 资源组的详细信息，请阅读 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)。
 
 [0]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough1.png
 [1]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough2.png

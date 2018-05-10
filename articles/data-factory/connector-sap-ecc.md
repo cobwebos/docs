@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: abd3ef00148795f4b3e79e2ed64dd35f56946455
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 68e3775be36b434acb5c25b522f9e28bec1b6125
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP ECC 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP ECC (SAP Enterprise Central Component) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -124,7 +124,7 @@ SAP ECC 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**SapEccSource** | 是 |
-| query | 用于筛选数据的 OData 查询选项。 示例："$select=Name,Description&$top=10"。<br/><br/>SAP ECC 连接器复制以下组合 URL 中的数据：（在链接服务中指定的 RUL）/（在数据集中指定的路径）?（在复制活动源中指定的查询）。 请参阅 [OData URL 组件](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 是 |
+| query | 用于筛选数据的 OData 查询选项。 示例："$select=Name,Description&$top=10"。<br/><br/>SAP ECC 连接器复制以下组合 URL 中的数据：（在链接服务中指定的 RUL）/（在数据集中指定的路径）?（在复制活动源中指定的查询）。 请参阅 [OData URL 组件](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 
 **示例：**
 

@@ -8,8 +8,10 @@
 ## [创建命名空间](relay-create-namespace-portal.md)
 ## [创建本地/云混合应用程序](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## 混合连接
-### [.NET](relay-hybrid-connections-dotnet-get-started.md)
-### [Node](relay-hybrid-connections-node-get-started.md)
+### [.NET Websocket](relay-hybrid-connections-dotnet-get-started.md)
+### [.NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+### [Node Websocket](relay-hybrid-connections-node-get-started.md)
+### [Node HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
 ## [WCF 中继](relay-wcf-dotnet-get-started.md)
 ## [WCF 中继教程](service-bus-relay-tutorial.md)
 ## [WCF 中继 REST 教程](service-bus-relay-rest-tutorial.md)

@@ -1,23 +1,23 @@
 ---
-title: "通过为 Azure 虚拟机预付款来节省资金 - Azure | Microsoft Docs"
-description: "了解 Azure 保留虚拟机实例，以便节省虚拟机成本。"
+title: 通过为 Azure 虚拟机预付款来节省资金 - Azure | Microsoft Docs
+description: 了解 Azure 保留虚拟机实例，以便节省虚拟机成本。
 services: billing
-documentationcenter: 
+documentationcenter: ''
 author: vikramdesai01
 manager: vikramdesai01
-editor: 
+editor: ''
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: vikdesai
-ms.openlocfilehash: 799abddc4894bc090d860e7fe100ee65d4d085ab
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7d85d3500014962a90ae596598332a95f4aa557e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>通过保留虚拟机实例节省虚拟机资金 
 使用保留虚拟机实例时，需预付一年或三年的计算能力款项，以便获得所用虚拟机的折扣。 它可以显著减少虚拟机成本，最多可以降低 72% 的即用即付价格，前提是提前承诺使用一年或三年的服务。 保留虚拟机实例是一种计费折扣，不影响虚拟机的运行时状态。

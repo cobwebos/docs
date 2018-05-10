@@ -135,8 +135,8 @@
           href: /azure/iot-hub
         - name: IoT 中心设备预配服务
           href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
+        - name: 地图
+          href: /azure/azure-maps
         - name: 服务 SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 时序见解

@@ -1,4 +1,4 @@
-- name: Azure 容器服务 (AKS)
+- name: Azure Kubernetes 服务 (AKS)
   href: ./index.yml
 - name: 概述
   items:
@@ -25,9 +25,7 @@
       href: tutorial-kubernetes-scale.md
     - name: 6 - 更新应用程序
       href: tutorial-kubernetes-app-update.md
-    - name: 7 - 使用 Log Analytics 进行监视
-      href: tutorial-kubernetes-monitor.md
-    - name: 8 - 升级群集
+    - name: 7 - 升级群集
       href: tutorial-kubernetes-upgrade-cluster.md
 - name: 概念
   items:
@@ -57,12 +55,16 @@
           href: azure-files-dynamic-pv.md
     - name: 配置网络
       items:
+        - name: 网络概述
+          href: networking-overview.md
         - name: 静态 IP 地址
           href: static-ip.md
         - name: 内部负载均衡器
           href: internal-lb.md
         - name: 入口和 TLS
           href: ingress.md
+        - name: HTTP 应用程序路由
+          href: http-application-routing.md
     - name: 安全性和身份验证
       items:
         - name: 创建服务主体

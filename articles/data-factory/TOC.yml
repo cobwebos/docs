@@ -316,22 +316,24 @@
           href: compute-linked-services.md
     - name: 控制流
       items:
-        - name: If Condition 活动
-          href: control-flow-if-condition-activity.md
-        - name: Until 活动
-          href: control-flow-until-activity.md
-        - name: Web 活动
-          href: control-flow-web-activity.md
-        - name: 查找活动
-          href: control-flow-lookup-activity.md
-        - name: 获取元数据活动
-          href: control-flow-get-metadata-activity.md
         - name: 执行管道活动
           href: control-flow-execute-pipeline-activity.md
+        - name: 筛选器活动
+          href: control-flow-filter-activity.md
         - name: For Each 活动
           href: control-flow-for-each-activity.md
+        - name: 获取元数据活动
+          href: control-flow-get-metadata-activity.md
+        - name: If Condition 活动
+          href: control-flow-if-condition-activity.md
+        - name: 查找活动
+          href: control-flow-lookup-activity.md
+        - name: Until 活动
+          href: control-flow-until-activity.md
         - name: Wait 活动
           href: control-flow-wait-activity.md
+        - name: Web 活动
+          href: control-flow-web-activity.md
         - name: 表达式语言
           href: control-flow-expression-language-functions.md
         - name: 系统变量

@@ -1,21 +1,21 @@
 ---
-title: "有关使用 Azure 数据库迁移服务的常见问题解答 | Microsoft Docs"
-description: "有关使用 Azure 数据库迁移服务执行数据库迁移的常见问题。"
+title: 有关使用 Azure 数据库迁移服务的常见问题解答 | Microsoft Docs
+description: 有关使用 Azure 数据库迁移服务执行数据库迁移的常见问题。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/25/2018
-ms.openlocfilehash: 3c1c259cc58eb1adab39d9c0ca376726b798186e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 85052e1363ebbfe21cd7d6d5b3720f79cec7c417
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 本文列出了有关使用 Azure 数据库迁移服务的常见问题和相关解答。
@@ -48,11 +48,11 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 ### <a name="q-what-are-the-prerequisites-for-using-the-azure-database-migration-service"></a>问： 使用 Azure 数据库迁移服务的先决条件是什么？
 若要确保 Azure 数据库迁移服务在执行数据库迁移时顺利运行，需要满足几个先决条件。 某些先决条件适用于该服务支持的所有方案（源/目标对），而其他先决条件则是特定方案所特有的。
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
-- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNET，它将使用 [ExpressRoute](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
-- 确保 Azure 虚拟网络 (VNET) 网络安全组规则未阻止通信端口 443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg)一文。
+- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNET，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+- 确保 Azure 虚拟网络 (VNET) 网络安全组规则未阻止通信端口 443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 - 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
  
-有关使用 Azure 数据库迁移服务完成特定迁移方案所要满足的所有先决条件列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务[文档](https://docs.microsoft.com/en-us/azure/dms/dms-overview)中的相关教程。
+有关使用 Azure 数据库迁移服务完成特定迁移方案所要满足的所有先决条件列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务[文档](https://docs.microsoft.com/azure/dms/dms-overview)中的相关教程。
 
 ### <a name="q-how-do-i-find-the-ip-address-for-the-azure-database-migration-service-so-that-i-can-create-an-allow-list-for-the-firewall-rules-used-to-access-my-source-database-for-migration"></a>问： 如何查找 Azure 数据库迁移服务的 IP 地址，以便可以创建防火墙规则的允许列表用于访问要迁移的源数据库？
 可能需要添加防火墙规则，以允许 Azure 数据库迁移服务访问要迁移的源数据库。 该服务的 IP 地址是动态的，但如果使用 Express Route，则企业网络会专门分配此地址。 标识相应 IP 地址的最简单方法是查看预配的 Azure 数据库迁移服务资源所在的同一个资源组，找到关联的网络接口。 通常，网络接口资源的名称以 NIC 前缀开头，后接唯一的字符和序号，例如 NIC-jj6tnztnmarpsskr82rbndyp。 选择此网络接口资源后，可以看到需要包含在 Azure 门户资源概述页上的允许列表中的 IP 地址。
@@ -80,7 +80,7 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 - 在数据迁移操作期间，暂时将 Azure SQL 数据库目标实例纵向扩展到高级层 SKU，以尽量减少遇到使用较低级 SKU 时出现的 Azure SQL 数据库限制，从而避免对数据传输活动造成影响。
 
 ### <a name="q-how-do-i-set-up-an-azure-virtual-network"></a>问： 如何设置 Azure 虚拟网络？
-有多篇 Microsoft 教程逐步讲解了如何完成设置 Azure VNET 的过程，另外，还可以参阅 [Azure 虚拟网络](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)一文中提到的官方文档。
+有多篇 Microsoft 教程逐步讲解了如何完成设置 Azure VNET 的过程，另外，还可以参阅 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文中提到的官方文档。
 
 ### <a name="q-why-is-my-azure-database-migration-service-unavailable-or-stopped"></a>问： 为什么 Azure 数据库迁移服务不可用或已停止？
 如果用户显式停止 Azure 数据库迁移服务 (DMS)，或者如果服务处于非活动状态已有 24 小时，则服务将处于已停止或自动暂停状态。 在上述每种情况下，服务将不可用并处于已停止状态。  若要恢复活动迁移，请重启该服务。

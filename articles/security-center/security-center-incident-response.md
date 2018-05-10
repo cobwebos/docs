@@ -1,11 +1,11 @@
 ---
-title: "通过 Azure 安全中心响应安全事件 | Microsoft 文档"
-description: "本文档介绍了如何利用 Azure 安全中心应对事件响应场景。"
+title: 通过 Azure 安全中心响应安全事件 | Microsoft 文档
+description: 本文档介绍了如何利用 Azure 安全中心应对事件响应场景。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 8af12f1c-4dce-4212-8ac4-170d4313492d
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: yurid
-ms.openlocfilehash: 95af26a655e72a9cc370f339da5ecedbed441997
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: cca874c0511135b0b041d5d38a3986905b671393
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>利用 Azure 安全中心进行事件响应
 许多组织只有在遭受攻击后才会去学习如何响应安全事件。 为降低成本并减少破坏，必须在攻击发生之前制定事件响应计划。 可在事件响应的不同阶段使用 Azure 安全中心。
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/06/2017
 
 随后的方案说明了如何在安全事件的检测、评估和诊断/响应阶段利用安全中心。 在安全中心，[安全事件](security-center-incident.md)是对资源的所有警报汇总，与[网络攻击链](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)模式保持一致。 事件显示在 [安全警报](security-center-managing-and-responding-alerts.md) 磁贴和边栏选项卡中。 事件显示相关警报列表，可使你获取有关每个匹配项的详细信息。 安全中心还提供单独的安全警报，其还可用于更正可疑活动。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 Contoso 最近向 Azure 迁移了部分本地资源，包括基于虚拟机的一些业务线工作负荷和 SQL 数据库。 目前，Contoso 的核心计算机安全事件响应团队 (CSIRT) 无法调查安全问题，因为其当前的事件响应工具尚未集成安全智能。 由于没有集成，检测阶段以及评估和诊断阶段都出现了问题（误报过多）。 在此次迁移过程中，他们决定加入安全中心计划，以便解决此问题。
 
 在加载所有资源并遵循安全中心提供的所有安全建议进行操作以后，此迁移的第一阶段宣告完成。 Contoso CSIRT 负责处理计算机安全事件。 该团队由许多人员组成，负责处理安全事件。 团队成员都有明确的任务，确保在响应时不遗漏任何领域。

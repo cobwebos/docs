@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: 5eb562901d73974765878024b1107e3b75e9abb5
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6303fdce65e460489c9f66e388c28383b9942627
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>将 AD FS 本地应用迁移到 Azure 
 
@@ -230,7 +230,7 @@ SAML 2.0 应用程序可以通过 Marketplace 中的 Azure AD 应用程序库与
 ![选择 Azure AD 作为身份验证服务](media/migrate-adfs-apps-to-azure/migrate10.png)
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>可选：在 Azure AD 中配置用户预配
-如果需要使用 Azure AD 来直接处理 SaaS 应用的用户预配，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-app-provisioning)。
+如果需要使用 Azure AD 来直接处理 SaaS 应用的用户预配，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)。
 
 ## <a name="next-steps"></a>后续步骤
 

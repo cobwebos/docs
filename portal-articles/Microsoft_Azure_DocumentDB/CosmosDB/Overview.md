@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB 概述 | Microsoft Docs"
-description: "Azure 门户中 Azure Cosmos DB 概述的帮助内容"
+title: Azure Cosmos DB 概述 | Microsoft Docs
+description: Azure 门户中 Azure Cosmos DB 概述的帮助内容
 services: cosmos-db
 author: sewatson
 manager: lwelicki
@@ -8,11 +8,11 @@ ms.service: cosmos-db
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: sewatson
-ms.openlocfilehash: 9644a587d72973239e34073188ad2cd37eaab5dc
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 13fe8d81c656aeb07947fcd8b2c8a9157b810ca6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-documentation"></a>Azure Cosmos DB 文档
 
@@ -35,14 +35,14 @@ Azure Cosmos DB 是一个全球分布式数据库服务，使用它可以跨任�
 - [Java](/azure/cosmos-db/create-mongodb-java)
 - [Node.js](/azure/cosmos-db/create-mongodb-nodejs)
 
-### <a name="graph-api"></a>Graph API
+### <a name="graph-api"></a>图形 API
 
 - [.NET](/azure/cosmos-db/create-graph-dotnet)
 - [Java](/azure/cosmos-db/create-graph-java)
 - [Node.js](/azure/cosmos-db/create-graph-nodejs)
 - [Gremlin](/azure/cosmos-db/create-graph-gremlin-console)
 
-### <a name="graph-api"></a>Graph API
+### <a name="graph-api"></a>图形 API
 
 - [.NET](/azure/cosmos-db/create-table-dotnet)
 
@@ -50,7 +50,7 @@ Azure Cosmos DB 是一个全球分布式数据库服务，使用它可以跨任�
 
 了解如何使用 Azure Cosmos DB 开发应用：
 
-- 使用 Cosmos DB 开发应用：[SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb) | [表](/azure/cosmos-db/tutorial-develop-table-dotnet) | [图](/azure/cosmos-db/tutorial-develop-graph-dotnet)
+- 使用 Cosmos DB 开发应用：[SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [表](/azure/cosmos-db/tutorial-develop-table-dotnet) | [图](/azure/cosmos-db/tutorial-develop-graph-dotnet)
 - 将数据导入 Cosmos DB [SQL](/azure/cosmos-db/sql-api-import-data) | [MongoDB](/azure/cosmos-db/mongodb-migrate) 
 - 使用 Cosmos DB 查询数据：[SQL](/azure/cosmos-db/tutorial-query-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [表](/azure/cosmos-db/tutorial-query-table) | [图形](/azure/cosmos-db/tutorial-query-graph)
 - 通过 Cosmos DB 进行的全局数据库复制：[SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [表](/azure/cosmos-db/tutorial-global-distribution-table | [图](/azure/cosmos-db/tutorial-global-distribution-graph)

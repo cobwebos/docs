@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 4f1de1092458bfc12236802d829a2043dcc74540
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed6f3e0a369157bbf4c89982f8e1acbc1ed51340
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-universal-apps"></a>适用于 Windows Universal 应用的 Azure Mobile Engagement 入门
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/30/2018
 本教程演示使用 Mobile Engagement 的简单广播方案。 创建一个空白 Windows Universal 应用，该应用使用 Windows 通知服务 (WNS) 收集基本应用使用数据以及接收推送通知。
 
 > [!NOTE]
-> Azure Mobile Engagement 服务将于 2018 年 3 月停用，且当前仅向现有客户提供。 有关详细信息，请参阅 [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)。
+> Azure Mobile Engagement 服务将于 2018 年 3 月停用，且当前仅向现有客户提供。 有关详细信息，请参阅 [Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/)。
 
 ## <a name="prerequisites"></a>先决条件
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]

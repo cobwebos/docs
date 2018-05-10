@@ -1,11 +1,11 @@
 ---
-title: "安装 StorSimple Adapter for SharePoint | Microsoft 文档"
-description: "介绍如何在 SharePoint 服务器场中安装、配置或删除 StorSimple Adapter for SharePoint。"
+title: 安装 StorSimple Adapter for SharePoint | Microsoft 文档
+description: 介绍如何在 SharePoint 服务器场中安装、配置或删除 StorSimple Adapter for SharePoint。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
 ms.service: storsimple
 ms.devlang: NA
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 8910471e09b9ecc797005818538ccfc6a91c68a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安装和配置 StorSimple Adapter for SharePoint
 ## <a name="overview"></a>概述
@@ -139,7 +139,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
   3. 在左窗格中单击“本地服务器”。
   4. 在右窗格中的“IE 增强的安全配置”旁边单击“打开”。
   5. 在“管理员”下面，单击“关闭”。
-  6. 单击 **“确定”**。
+  6. 单击“确定”。
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>远程 BLOB 存储 (RBS) 先决条件
 确保使用受支持的 SQL Server 版本。 只有以下版本受支持且能够使用 RBS：
@@ -237,7 +237,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 2. 双击 StorSimple Adapter for SharePoint 安装程序。 此时会启动安装向导。
    
     ![安装向导](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. 单击“下一步”。 将显示以下页。
+3. 单击“资源组名称” 的 Azure 数据工厂。 将显示以下页。
    
     ![安装向导删除页](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 4. 单击“删除”开始执行删除过程。 将显示以下页。
@@ -261,4 +261,4 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 [3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
 [4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/en-us/library/ff943565.aspx
+[8]: https://technet.microsoft.com/library/ff943565.aspx

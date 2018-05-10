@@ -1,19 +1,19 @@
 ---
-title: "使用 Azure 容器服务引擎和 Swarm 模式的 CI/CD"
-description: "使用包含 Docker Swarm 模式的 Azure 容器服务引擎、Azure 容器注册表和 Visual Studio Team Services 持续交付多容器 .NET Core 应用程序"
+title: 使用 Azure 容器服务引擎和 Swarm 模式的 CI/CD
+description: 使用包含 Docker Swarm 模式的 Azure 容器服务引擎、Azure 容器注册表和 Visual Studio Team Services 持续交付多容器 .NET Core 应用程序
 services: container-service
 author: diegomrtnzg
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 6aa690ff7ec0689db78ff1225d36171adb30ee2c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 01126f3eef988eb1787bafea92e7384aad1a703c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>用于通过 Visual Studio Team Services 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -242,7 +242,7 @@ ms.lasthandoff: 12/06/2017
 
 ## <a name="step-4-test-the-cicd-pipeline"></a>步骤 4：测试 CI/CD 管道
 
-完成配置后，便可以开始测试这个新的 CI/CD 管道。 最简单的测试方法是更新源代码，并将更改提交到 GitHub 存储库。 推送代码后的几秒钟内，就能看到新的内部版本在 Visual Studio Team Services 中运行。 成功完成后，将触发新的发布，并在 Azure 容器服务群集上部署应用程序的新版本。
+完成配置后，便可以开始测试这个新的 CI/CD 管道。 最简单的测试方法是更新源代码，然后将更改提交到 GitHub 存储库。 推送代码后的几秒钟内，就能看到新的内部版本在 Visual Studio Team Services 中运行。 成功完成后，将触发新的发布，并在 Azure 容器服务群集上部署应用程序的新版本。
 
 ## <a name="next-steps"></a>后续步骤
 

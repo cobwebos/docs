@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 019785ae0bde58b33cc4b09e2e2746f3fd474b70
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 48beb0d1c70b0f9c524ba91934a1a0a7b5e8505d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 04/23/2018
 | 执行最终用户登录体验的客户端计算机 |  |
 | 可选项：用于验证体验的移动设备 |  |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -213,7 +213,7 @@ ms.lasthandoff: 04/23/2018
 | 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -275,7 +275,7 @@ ms.lasthandoff: 04/23/2018
 | 先决条件 | 资源 |
 | --- | --- |
 | 已安装并配置 Azure AD Connect | 构建基块：[目录同步 - 密码哈希同步](#directory-synchronization--password-hash-sync-phs--new-installation) |
-| 满足要求的 ADLDS 实例 | [泛型 LDAP 连接器技术参考：泛型 LDAP 连接器概述](./connect/active-directory-aadconnectsync-connector-genericldap.md#overview-of-the-generic-ldap-connector) |
+| 满足要求的 ADLDS 实例 | [泛型 LDAP 连接器技术参考：泛型 LDAP 连接器概述](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
 | 用户使用的工作负荷列表，以及与这些工作负荷关联的属性列表 | [Azure AD Connect 同步：与 Azure Active Directory 同步的属性](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
 
 
@@ -283,7 +283,7 @@ ms.lasthandoff: 04/23/2018
 
 | 步骤 | 资源 |
 | --- | --- |
-| 添加泛型 LDAP 连接器 | [泛型 LDAP 连接器技术参考：创建新连接器](./connect/active-directory-aadconnectsync-connector-genericldap.md#create-a-new-connector) |
+| 添加泛型 LDAP 连接器 | [泛型 LDAP 连接器技术参考：创建新连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
 | 为已创建的连接器创建运行配置文件（完全导入、增量导入、完全同步、增量同步、导出） | [创建管理代理运行配置文件](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [将连接器与 Azure AD Connect Sync Service Manager 配合使用](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
 | 运行完全导入配置文件，并验证在连接器空间中是否存在对象 | [搜索连接器空间对象](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[将连接器与 Azure AD Connect Sync Service Manager 配合使用：搜索连接器空间](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
 | 创建同步规则，使 Metaverse 中的对象具有工作负荷的所需属性 | [Azure AD Connect 同步：有关更改默认配置的最佳实践：同步规则的更改](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect 同步：了解声明性预配](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect Sync：了解声明性预配表达式](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
@@ -310,7 +310,7 @@ ms.lasthandoff: 04/23/2018
 | 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -384,7 +384,7 @@ ms.lasthandoff: 04/23/2018
 | 标识将使用此功能的 PoC 用户，并确保这些用户是安全组的成员。 这些用户不能是管理员，这样才能完全展示此功能 | [自定义：Azure AD 密码管理：限制对密码重置的访问](authentication/howto-sspr-writeback.md) |
 
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -446,7 +446,7 @@ ms.lasthandoff: 04/23/2018
 | 内部网络中的设备。 已配置内部地址范围中的 IP 地址 | 查找 IP 地址：https://www.bing.com/search?q=what%27s+my+ip |
 | 外部网络中的设备（可以是使用运营商的移动网络的手机） |  |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -554,7 +554,7 @@ ms.lasthandoff: 04/23/2018
 | 与 ADFS 联合的 Azure AD 域 | [Azure AD Connect 和联合身份验证](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 证书服务概述](https://technet.microsoft.com/library/hh831740.aspx)|
 | iOS 设备需要安装 Microsoft Authenticator 应用 | [Microsoft Authenticator 应用入门](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |

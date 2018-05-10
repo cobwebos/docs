@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/22/2018
 ms.author: davidste
-ms.openlocfilehash: e46a816b9a0d66991b8f619135b657a0d51ba395
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 039e21cb3c35f8eb024ad2fca56e8a59e3182d3a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="connector-version-release-history"></a>连接器版本发行历史记录
 Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接器会经常更新。
@@ -32,11 +32,11 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 相关链接：
 
 * [下载最新连接器](http://go.microsoft.com/fwlink/?LinkId=717495)
-* [泛型 LDAP 连接器](active-directory-aadconnectsync-connector-genericldap.md)参考文档
-* [泛型 SQL 连接器](active-directory-aadconnectsync-connector-genericsql.md)参考文档
+* [泛型 LDAP 连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap)参考文档
+* [泛型 SQL 连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)参考文档
 * [Web 服务连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws)参考文档
-* [PowerShell 连接器](active-directory-aadconnectsync-connector-powershell.md)参考文档
-* [Lotus Domino 连接器](active-directory-aadconnectsync-connector-domino.md)参考文档
+* [PowerShell 连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-powershell)参考文档
+* [Lotus Domino 连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-domino)参考文档
 
 
 ## <a name="118300"></a>1.1.830.0
@@ -117,7 +117,7 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 
 * 泛型 SQL：
   * **方案：重新设计实现：** "*"功能
-  * 解决方案说明：更改用于[多值引用属性处理](active-directory-aadconnectsync-connector-genericsql.md)的方法。
+  * 解决方案说明：更改用于[多值引用属性处理](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)的方法。
 
 
 ### <a name="fixed-issues"></a>已解决的问题：
@@ -194,7 +194,7 @@ Lotus：
 发布时间：2016 年 3 月
 
 **新连接器**  
-[泛型 SQL 连接器](active-directory-aadconnectsync-connector-genericsql.md)的初始版本。
+[泛型 SQL 连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)的初始版本。
 
 **新功能：**
 

@@ -21,12 +21,12 @@
         - name: 托管服务标识
           tocHref: /azure/active-directory/managed-service-identity/
           topicHref: /azure/active-directory/managed-service-identity/
-    - name: Active Directory B2C
-      tocHref: /azure/active-directory-b2c/
-      topicHref: /azure/active-directory-b2c/
-    - name: Active Directory 域服务
-      tocHref: /azure/active-directory-domain-services/
-      topicHref: /azure/active-directory-domain-services/
+        - name: B2C
+          tocHref: /azure/active-directory-b2c/
+          topicHref: /azure/active-directory-b2c/
+        - name: 域服务
+          tocHref: /azure/active-directory-domain-services/
+          topicHref: /azure/active-directory-domain-services/
     - name: Analysis Services
       tocHref: /azure/analysis-services/
       topicHref: /azure/analysis-services/
@@ -83,7 +83,7 @@
     - name: 'Azure Government '
       tocHref: /azure/azure-government/
       topicHref: /azure/azure-government/
-    - name: Azure Germany
+    - name: Azure 德国
       tocHref: /azure/germany/
       topicHref: /azure/germany/
     - name: Azure 中国世纪互联
@@ -119,6 +119,9 @@
     - name: BizTalk 服务
       tocHref: /azure/biztalk-services/
       topicHref: /azure/biztalk-services/
+    - name: Blockchain Workbench
+      tocHref: /azure/blockchain-workbench/
+      topicHref: /azure/blockchain-workbench/
     - name: 缓存
       tocHref: /azure/cache/
       topicHref: /azure/cache/
@@ -156,6 +159,9 @@
         - name: 必应视频搜索
           tocHref: /azure/cognitive-services/Bing-Video-Search/
           topicHref: /azure/cognitive-services/Bing-Video-Search/
+        - name: 必应视觉搜索
+          tocHref: /azure/cognitive-services/bing-visual-search/
+          topicHref: /azure/cognitive-services/bing-visual-search/
         - name: 必应 Web 搜索
           tocHref: /azure/cognitive-services/bing-web-search/
           topicHref: /azure/cognitive-services/bing-web-search/
@@ -183,6 +189,18 @@
         - name: 实体链接
           tocHref: /azure/cognitive-services/entitylinking/
           topicHref: /azure/cognitive-services/entitylinking/home
+        - name: 异常查找器
+          tocHref: /azure/cognitive-services/labs/anomaly-finder/
+          topicHref: /azure/cognitive-services/labs/anomaly-finder/overview
+        - name: 对话学习器
+          tocHref: /azure/cognitive-services/labs/conversation-learner/
+          topicHref: /azure/cognitive-services/labs/conversation-learner/overview
+        - name: URL 预览
+          tocHref: /azure/cognitive-services/labs/url-preview/
+          topicHref: /azure/cognitive-services/labs/url-preview/overview
+        - name: 答案搜索
+          tocHref: /azure/cognitive-services/labs/answer-search/
+          topicHref: /azure/cognitive-services/labs/answer-search/overview
         - name: 人脸
           tocHref: /azure/cognitive-services/face/
           topicHref: /azure/cognitive-services/face/
@@ -198,9 +216,12 @@
         - name: QnA Maker
           tocHref: /azure/cognitive-services/qnamaker/
           topicHref: /azure/cognitive-services/qnamaker/home
-        - name: 语音
+        - name: 语音 API
           tocHref: /azure/cognitive-services/Speech/
           topicHref: /azure/cognitive-services/Speech/home
+        - name: 语音服务（预览）
+          tocHref: /azure/cognitive-services/Speech-Service/
+          topicHref: /azure/cognitive-services/Speech-Service/
         - name: 文本分析
           tocHref: /azure/cognitive-services/text-analytics/
           topicHref: /azure/cognitive-services/text-analytics/
@@ -244,7 +265,7 @@
     - name: 数据工厂
       tocHref: /azure/data-factory/
       topicHref: /azure/data-factory/
-    - name: 数据湖分析
+    - name: Data Lake Analytics
       tocHref: /azure/data-lake-analytics/
       topicHref: /azure/data-lake-analytics/
     - name: Data Lake Store
@@ -312,12 +333,12 @@
         - name: IoT 中心设备预配服务
           tocHref: /azure/iot-dps/
           topicHref: /azure/iot-dps/
-        - name: IoT 套件
+        - name: IoT 解决方案加速器
           tocHref: /azure/iot-suite/
           topicHref: /azure/iot-suite/
-        - name: Location Based Services
-          tocHref: /azure/location-based-services/
-          topicHref: /azure/location-based-services/
+        - name: 地图
+          tocHref: /azure/azure-maps/
+          topicHref: /azure/azure-maps/
         - name: 时序见解
           tocHref: /azure/time-series-insights/
           topicHref: /azure/time-series-insights/
@@ -341,8 +362,8 @@
       topicHref: /azure/machine-learning/
       items:
         - name: 服务（预览版）
-          tocHref: /azure/machine-learning/preview
-          topicHref: /azure/machine-learning/preview/
+          tocHref: /azure/machine-learning/service
+          topicHref: /azure/machine-learning/service/
         - name: 工作室
           tocHref: /azure/machine-learning/studio
           topicHref: /azure/machine-learning/studio/
@@ -361,6 +382,13 @@
     - name: 媒体服务
       tocHref: /azure/media-services/
       topicHref: /azure/media-services/
+      items:
+        - name: v3
+          tocHref: /azure/media-services/latest/
+          topicHref: /azure/media-services/latest/
+        - name: v2
+          tocHref: /azure/media-services/previous/
+          topicHref: /azure/media-services/previous/
     - name: Mobile Engagement
       tocHref: /azure/mobile-engagement/
       topicHref: /azure/mobile-engagement/

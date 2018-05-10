@@ -9,11 +9,11 @@ author: lleonard-msft
 ms.author: alleonar
 manager: mbaldwin
 ms.date: 10/12/2017
-ms.openlocfilehash: a3f8d540c7e4c8a86b151540980724777fd150fd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4f42a47a6d934bf0538efccbcf7f057fd28e2c03
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault 存储帐户密钥
 
@@ -189,7 +189,7 @@ Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Contain
 
 ### <a name="get-sas-tokens"></a>获取 SAS 令牌
 
-获取相应的 SAS 令牌，并对存储进行调用。 执行 [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/en-us/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition) 时，使用 `AccountName` 和 `Name` 参数的输入构造 `-SecretName`。
+获取相应的 SAS 令牌，并对存储进行调用。 执行 [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition) 时，使用 `AccountName` 和 `Name` 参数的输入构造 `-SecretName`。
 
 ```powershell
 $readSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$accountName-$readSasName").SecretValueText

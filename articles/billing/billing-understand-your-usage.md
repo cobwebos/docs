@@ -1,24 +1,24 @@
 ---
-title: "了解 Azure 的详细使用情况"
-description: "了解如何阅读并理解 Azure 订阅的详细使用情况 CSV 部分"
-services: 
-documentationcenter: 
+title: 了解 Azure 的详细使用情况
+description: 了解如何阅读并理解 Azure 订阅的详细使用情况 CSV 部分
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 999f24b5a5c1bd5d259b785f9107697d2928b4eb
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 0f698bff1506484e1dd4afe22f7c14e0a710937c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>了解 Microsoft Azure 详细使用费条款 
 

@@ -12,10 +12,6 @@
       href: dns-getstarted-powershell.md
     - name: 创建 DNS 区域和记录 - CLI
       href: dns-getstarted-cli.md
-- name: 示例
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
 - name: 教程
   items:
     - name: 创建专用 DNS 区域和记录
@@ -24,6 +20,10 @@
       href: dns-delegate-domain-azure-dns.md
     - name: 为 Web 应用创建自定义 DNS 记录
       href: dns-web-sites-custom-domain.md
+- name: 示例
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
 - name: 概念
   items:
     - name: DNS 区域和记录

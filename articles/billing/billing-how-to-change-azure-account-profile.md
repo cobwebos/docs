@@ -1,26 +1,26 @@
 ---
-title: "更改 Azure 帐户个人资料信息 | Microsoft Docs"
-description: "介绍如何更改 Azure 帐户的个人资料，并解答一些常见问题，例如为何无法在 Azure 帐户中心更改国家/地区"
-services: 
-documentationcenter: 
+title: 更改 Azure 帐户个人资料信息 | Microsoft Docs
+description: 介绍如何更改 Azure 帐户的个人资料，并解答一些常见问题，例如为何无法在 Azure 帐户中心更改国家/地区
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 9d4ef5d9-11fc-4684-ace6-467f4ce26ba8
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22d64ba9c9bdceda108b1160aef32ff3d38e4b03
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6ec0caccafd7ed6eaf91be153014d2e3aaf5a30b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>更改 Azure 帐户的个人资料信息，如联系人电子邮件、地址和电话号码等
 
@@ -45,7 +45,7 @@ Microsoft 使用帐户管理员个人资料中的电子邮件地址来通知与�
 
 ### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>更新个人资料电子邮件也会更新登录电子邮件地址吗？
 
-否。 更新个人资料电子邮件不会更新登录电子邮件地址。 若要更改登录电子邮件地址，必须转移帐户的所有权。
+不会。 更新个人资料电子邮件不会更新登录电子邮件地址。 若要更改登录电子邮件地址，必须转移帐户的所有权。
 
 ### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>更新个人资料地址也会更新信用卡帐单寄送地址吗？
 

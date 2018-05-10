@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/23/2018
 ms.author: mamit
 ms.custom: ''
-ms.openlocfilehash: 16e0fc493a257504e2708336e05c30b36d4bea15
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c3622b4699ef532f204231c76aa3436be3676763
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="the-new-alerts-experience-in-azure-monitor"></a>Azure Monitor 中的全新警报体验
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/03/2018
 
 警报具有新体验。 旧版警报体验现在在“警报(经典)”选项卡下提供。全新警报体验与“警报(经典)”体验相比具有以下优点：
 
--   **更好的通知系统**：所有新型警报均使用[操作组]( https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups)，这些组是命名的通知和操作组，可以在多个警报中重复使用。  经典指标警报和旧版 Log Analytics 警报不使用操作组。 
+-   **更好的通知系统**：所有新型警报均使用[操作组]( https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)，这些组是命名的通知和操作组，可以在多个警报中重复使用。  经典指标警报和旧版 Log Analytics 警报不使用操作组。 
 - **统一的创作体验** - 针对 Azure Monitor、Log Analytics 和 Application Insights 中的指标、日志和活动日志的所有警报创建均在一个位置进行。 
 - **在 Azure 门户中查看触发的 Log Analytics 警报** - 现在还可以在订阅中查看触发的 Log Analytics 警报。 以前这些警报在单独的门户中。 
 - **分开触发的警报和警报规则** - 对警报规则（定义触发警报的条件）和触发的警报（警报规则触发实例）进行了区分，因此操作视图和配置视图是分开的。
@@ -104,7 +104,7 @@ ms.lasthandoff: 04/03/2018
 | **信号类型** | **监视器源** | **说明** | 
 |-------------|----------------|-------------|
 | 指标 | Azure Monitor | 也称为[近实时指标警报](monitoring-near-real-time-metric-alerts.md)，这些指标警报支持以 1 分钟 1 次的频率对指标条件进行评估，并且允许多指标和多维指标规则。 [此处](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)提供支持的资源类型的列表。 |
-| 指标 | Azure Monitor | 新警报体验不支持[旧式经典指标警报](monitoring-overview-alerts.md)。 可以在 Azure 门户中的“警报(经典)”下找到这些警报。 经典警报支持某些尚未移到更新警报的指标类型。 有关完整列表，请参阅[支持的指标](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
+| 指标 | Azure Monitor | 新警报体验不支持[旧式经典指标警报](monitoring-overview-alerts.md)。 可以在 Azure 门户中的“警报(经典)”下找到这些警报。 经典警报支持某些尚未移到更新警报的指标类型。 有关完整列表，请参阅[支持的指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
 | 日志  | Log Analytics | 当针对指标和/或事件数据进行的日志搜索查询符合特定的条件时，会收到通知（此时也可让系统运行自动化操作）。 旧式 Log Analytics 警报仍可用，但[正在复制到新体验](monitoring-alerts-extend.md)。 此外，可以使用 [*Log Analytics 日志即指标预览版*](monitoring-alerts-extend-tool.md)。 使用预览版可以提取某些类型的日志并将其转换为指标，然后，可以使用新的警报体验对其发出警报。 如果想要连同本机 Azure Monitor 指标一起获取非 Azure 日志，预览版很有用。 |
 | 活动日志 | 活动日志（常规） | 包含通过所选目标（资源/资源组/订阅）执行的所有创建、更新和删除操作的记录。 |
 | 活动日志  | 服务运行状况 | 在新警报体验中不受支持。 请参阅[创建有关服务通知的活动日志警报](monitoring-activity-log-alerts-on-service-notifications.md)。  |

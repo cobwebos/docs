@@ -1,20 +1,20 @@
 ---
-title: "配置 Azure Database for PostgreSQL 中的 SSL 连接"
-description: "有关如何配置 Azure Database for PostgreSQL 和关联应用程序以正确使用 SSL 连接的说明和信息。"
+title: 配置 Azure Database for PostgreSQL 中的 SSL 连接
+description: 有关如何配置 Azure Database for PostgreSQL 和关联应用程序以正确使用 SSL 连接的说明和信息。
 services: postgresql
 author: JasonMAnderson
 ms.author: janders
 editor: jasonwhowell
 manager: kfile
 ms.service: postgresql
-ms.custom: 
+ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0a4a7041a905470f895921cfedf2bd94e8466966
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f3efb99ddb47f167a0d9cbef064890e817a18841
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>配置 Azure Database for PostgreSQL 中的 SSL 连接
 Azure Database for PostgreSQL 倾向于使用安全套接字层 (SSL) 将客户端应用程序连接到 PostgreSQL 服务。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -98,7 +98,7 @@ OpenSSL 1.1.0e 7 Apr 2014
 
 #### <a name="for-windows"></a>对于 Windows
 可通过以下方式在 Windows 电脑上安装 OpenSSL：
-1. （推荐）使用 Window 10 和更高版本中内置的 Bash for Windows 功能，已默认安装 OpenSSL。 可在[此处](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)了解如何在 Windows 10 中启用 Bash for Windows 功能。
+1. （推荐）使用 Window 10 和更高版本中内置的 Bash for Windows 功能，已默认安装 OpenSSL。 可在[此处](https://msdn.microsoft.com/commandline/wsl/install_guide)了解如何在 Windows 10 中启用 Bash for Windows 功能。
 2. 通过下载社区提供的 Win32/64 应用程序。 虽然 OpenSSL Software Foundation 并未提供或认可任何特定的 Windows 安装程序，但在[此处](https://wiki.openssl.org/index.php/Binaries)提供了可用安装程序列表。
 
 ### <a name="decode-your-certificate-file"></a>解码证书文件

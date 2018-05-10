@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: e421797d85dd031b77788958db6b1df62a292a8a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db910096f776f2f8710c0ac03f0378491018fc09
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 已知问题和故障排除指南 
 作为使用 Azure Machine Learning Workbench 应用程序的一部分，本文帮助你查找和更正错误或遇到的问题。 
@@ -137,7 +137,7 @@ $ az ml account experimentation delete -g <resource group name> -n <experimentat
 如果安装了 Windows 10 Fall Creators Update，并且项目是在映射到 OneDrive 的本地文件夹中创建的，则可能无法在 Workbench 中打开任何文件。 原因是 Fall Creators Update 引入的一个 bug 导致 node.js 代码在 OneDrive 文件夹中失败。 我们在不久后会通过 Windows 更新修复该 bug，但在此之前，请不要在 OneDrive 文件夹中创建项目。
 
 ## <a name="file-name-too-long-on-windows"></a>Windows 上的文件名太长
-如果在 Windows 上使用 Workbench，则可能会遇到最大 260 个字符的默认文件名长度限制，这可能会呈现为“系统找不到指定的路径”错误。 可以修改注册表项设置以允许较长的文件路径名。 查看[本文](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)深入了解如何设置 MAX_PATH 注册表项。
+如果在 Windows 上使用 Workbench，则可能会遇到最大 260 个字符的默认文件名长度限制，这可能会呈现为“系统找不到指定的路径”错误。 可以修改注册表项设置以允许较长的文件路径名。 查看[本文](https://msdn.microsoft.com/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)深入了解如何设置 MAX_PATH 注册表项。
 
 ## <a name="interrupt-cli-execution-output"></a>中断 CLI 执行输出
 如果使用 `az ml experiment submit` 或 `az ml notebook start` 启动试验运行并且想要中断输出，请执行以下操作： 

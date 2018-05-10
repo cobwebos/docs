@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 62856d4743d853d5685503b5c21faedc46575e55
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-architecture"></a>物联网安全体系结构
 
 在设计系统时，我们应了解该系统的潜在威胁并添加适当的防御机制，以妥善设计系统与其体系结构。 在一开始设计产品时就先考虑安全很重要，因为了解攻击者可能如何破坏系统，有助于从一开始就准备好适当的安全防护功能。

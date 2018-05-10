@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da1289b7b86f6f8016920c28890189db8ccb2511
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 643db63b077d243617b8a54c6835aa560007d51b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
@@ -1052,7 +1052,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 | 变量名称 |`KeepAliveTime` |
 | 变量类型 |REG_DWORD（十进制） |
 | 值 |120000 |
-| 文档链接 |[https://technet.microsoft.com/en-us/library/cc957549.aspx](https://technet.microsoft.com/en-us/library/cc957549.aspx) |
+| 文档链接 |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 表 3：更改第一个 TCP/IP 参数__
 
@@ -1063,7 +1063,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 | 变量名称 |`KeepAliveInterval` |
 | 变量类型 |REG_DWORD（十进制） |
 | 值 |120000 |
-| 文档链接 |[https://technet.microsoft.com/en-us/library/cc957548.aspx](https://technet.microsoft.com/en-us/library/cc957548.aspx) |
+| 文档链接 |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 表 4：更改第二个 TCP/IP 参数__
 

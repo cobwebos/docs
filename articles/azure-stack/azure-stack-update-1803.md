@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 26c77b706f17f49eff782e6d0d73087050739874
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 36d4cd910f841a323dfada49d65f7acb4bdf3138
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新
 
@@ -34,14 +34,24 @@ ms.lasthandoff: 04/28/2018
 Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 
-## <a name="before-you-begin"></a>开始之前    
+## <a name="before-you-begin"></a>准备阶段    
 > [!IMPORTANT]    
 > 在安装此更新的过程中，请勿尝试创建虚拟机。 有关如何管理更新的详细信息，请参阅[在 Azure Stack 中管理更新的概述](azure-stack-updates.md#plan-for-updates)。
 
 
-### <a name="prerequisites"></a>必备组件
-- 在应用 Azure Stack 1803 更新之前安装 Azure Stack [1802 更新](azure-stack-update-1802.md)。    
+### <a name="prerequisites"></a>先决条件
+- 在应用 Azure Stack 1803 更新之前安装 Azure Stack [1802 更新](azure-stack-update-1802.md)。   
 
+- 安装**AzS 修补程序 – 1.0.180312.1-生成 20180222.2**应用 Azure 堆栈 1803年更新前。 此修补程序更新了 Windows Defender，在下载 Azure Stack 的更新后即可使用。
+
+  若要安装此修补程序，请执行[安装 Azure Stack 的更新](azure-stack-apply-updates.md)所需的常规过程。 此更新的名称显示为 **AzS 修补程序 - 1.0.180312.1**，包括以下文件： 
+    - PUPackageHotFix_20180222.2-1.exe
+    - PUPackageHotFix_20180222.2-1.bin
+    - Metadata.xml
+
+  将这些文件上传到存储帐户和容器以后，请在管理门户的“更新”磁贴中运行安装。 
+  
+  与 Azure Stack 的更新不同，此更新的安装不更改 Azure Stack 的版本。 若要确认此更新是否已安装，请查看“已安装更新”列表。
 
 ### <a name="post-update-steps"></a>更新后步骤
 - 安装 1803 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: v-craic
-ms.openlocfilehash: d8b9e48db9e75fb41ecad1958b3aa930a6bce3aa
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7a65ba691b9cf8b0ce989f0c54bd0b74edd43b85
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -128,9 +128,9 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，必须执行以下操作之一：
 
 - [购买 MSDN 订阅](https://www.visualstudio.com/products/how-to-buy-vs)。
-- 如果具有企业协议，请通过 [Enterprise 开发/测试服务](https://azure.microsoft.com/en-us/offers/ms-azr-0148p)创建 Azure 订阅。
+- 如果具有企业协议，请通过 [Enterprise 开发/测试服务](https://azure.microsoft.com/offers/ms-azr-0148p)创建 Azure 订阅。
 
-若要深入了解每个 MSDN 产品/服务的 Azure 信用额度，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/)。
+若要深入了解每个 MSDN 产品/服务的 Azure 信用额度，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
 
 ## <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>如何自动上传 VHD 文件以创建自定义映像？
 可通过两种方式自动上传 VHD 文件以创建自定义映像：

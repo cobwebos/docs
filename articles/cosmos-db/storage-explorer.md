@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 8c584ec0c8d89a232d573399cfabe02fc8aa1c87
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ff4ee0a47129be5df03112006dcd45a62ad410af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>在 Azure 存储资源管理器中管理 Azure Cosmos DB
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 04/18/2018
 
 使用以下步骤通过模拟器连接到 Azure Cosmos DB（目前仅支持 SQL 帐户）。
 
-1. 安装并启动模拟器。 有关如何安装模拟器的信息，请参阅 [Cosmos DB 模拟器](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator)
+1. 安装并启动模拟器。 有关如何安装模拟器的信息，请参阅 [Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)
 
 2. 在左侧树中找到“本地和附加”，右键单击“Cosmos DB 帐户”，然后选择“连接到 Cosmos DB 模拟器...”
 
@@ -210,7 +210,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="troubleshooting"></a>故障排除
 
-[Azure 存储资源管理器中的 Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer) 是一个独立的应用，用于连接到 Azure Cosmos DB 帐户，而该帐户托管在 Windows、macOS 或 Linux 版本的 Azure 和主权云上。 它可以用来管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器以及其他 Azure 实体（如存储 Blob 和队列）。
+[Azure 存储资源管理器中的 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) 是一个独立的应用，用于连接到 Azure Cosmos DB 帐户，而该帐户托管在 Windows、macOS 或 Linux 版本的 Azure 和主权云上。 它可以用来管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器以及其他 Azure 实体（如存储 Blob 和队列）。
 
 以下解决方案适用于存储资源管理器中 Azure Cosmos DB 的常见问题。
 

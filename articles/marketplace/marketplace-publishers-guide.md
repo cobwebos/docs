@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 999c9bc04cffcfe3e352d877ebf9e19fc7c7df35
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace 和 AppSource 发布者指南
 
@@ -253,7 +253,7 @@ Microsoft 客户有时使用企业协议支付 Microsoft 产品的费用，包�
 
 |**要求**  | **详细信息**  |**发布选项**  |
 |---------|---------|---------|
-|**免费试用期和试用体验**     |  客户须能够在有限时间内免费使用应用。<br><br>也就是说客户不需要获取产品的许可证或支付产品订阅费用，也不需要承担 Microsoft 第一方基础产品或服务的使用费用。 由于所有试用选项都部署至发布者的 Microsoft 产品订阅中，因此试用费用的优化和管理完全由发布者控制。<br><br>可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供最短时间的免费试用。<br><br>若要开始创建体验版，请访问 cloudmarketplace@microsoft.com。 <br><br>请注意，Azure Marketplace SaaS 试用体验须支持用户使用 Active Directory 工作凭据登录。 [了解详细信息](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences)。 |   试用      | 
+|**免费试用期和试用体验**     |  客户须能够在有限时间内免费使用应用。<br><br>也就是说客户不需要获取产品的许可证或支付产品订阅费用，也不需要承担 Microsoft 第一方基础产品或服务的使用费用。 由于所有试用选项都部署至发布者的 Microsoft 产品订阅中，因此试用费用的优化和管理完全由发布者控制。<br><br>可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供最短时间的免费试用。<br><br>若要开始创建体验版，请访问 cloudmarketplace@microsoft.com。 <br><br>请注意，Azure Marketplace SaaS 试用体验须支持用户使用 Active Directory 工作凭据登录。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences)。 |   试用      | 
 | **可轻松配置的即用型解决方案**    |  应用的配置和设置须便捷。       |  试用       |
 |**可用性/运行时间**    |    SaaS 应用或平台的运行时间须不低于 99.9%。     |    试用     |
 |**Azure Active Directory**    |    在已启用许可的情况下，产品/服务须允许使用 Azure Active Directory (Azure AD) 联合单一登录 (SSO)。      |  试用|
@@ -264,7 +264,7 @@ Microsoft 客户有时使用企业协议支付 Microsoft 产品的费用，包�
 |**要求**  |**详细信息** |**发布选项**  |
 |---------|---------|---------|
 |**计费和计量**    |  虚拟机须支持“自带许可”或基于使用情况的按月计费。       |    事务    |
-|**与 Azure 兼容的虚拟硬盘 (VHD)**     |   必须基于 [Windows](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 或 [Linux](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 构建虚拟机。    |   事务      |
+|**与 Azure 兼容的虚拟硬盘 (VHD)**     |   必须基于 [Windows](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 或 [Linux](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 构建虚拟机。    |   事务      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>特定于咨询服务发布的先决条件
 
@@ -277,7 +277,7 @@ Microsoft 客户有时使用企业协议支付 Microsoft 产品的费用，包�
 ## <a name="using-azure-active-directory-to-enable-trials"></a>使用 Azure Active Directory 启用试用
 Azure Active Directory 是一种云标识服务，它使用行业标准协议（OAuth 和 OpenID Connect）通过 Microsoft 工作或学校帐户实现身份验证。 在[产品网页](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features)中详细了解 Azure AD。 
 
-Microsoft 通过 Azure AD 对所有 Marketplace 用户进行身份验证。 当已验证的用户单击 Marketplace 中的试用列表并重定向到试用环境时，可将用户直接预配到一个试用中，而无需执行其他登录步骤。 [身份验证期间应用从 Azure AD 接收的令牌](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens)包含有用的客户信息，可使用这些信息在应用内创建用户帐户。 然后，可以自动获得预配体验并提高转换率。 
+Microsoft 通过 Azure AD 对所有 Marketplace 用户进行身份验证。 当已验证的用户单击 Marketplace 中的试用列表并重定向到试用环境时，可将用户直接预配到一个试用中，而无需执行其他登录步骤。 [身份验证期间应用从 Azure AD 接收的令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens)包含有用的客户信息，可使用这些信息在应用内创建用户帐户。 然后，可以自动获得预配体验并提高转换率。 
 
 使用 Azure AD 为应用或试用启用一键式身份验证：
 
@@ -292,20 +292,20 @@ Microsoft 通过 Azure AD 对所有 Marketplace 用户进行身份验证。 当�
 
 - 在 Azure 门户中注册应用程序。
 - 启用 Azure AD 中的多租户支持功能，以获取一键式试用体验。
-- [了解详细信息](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)。
+- [了解详细信息](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。
 
 如果不熟悉 Azure AD 联合 SSO：
 
 - 在 Azure 门户中注册应用程序。
-- 使用 [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 或 [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code) 开发 Azure AD 的 SSO。
+- 使用 [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 或 [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) 开发 Azure AD 的 SSO。
 - 启用 Azure AD 中的多租户支持功能，以获取一键式试用体验。
-- [了解详细信息](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified)。
+- [了解详细信息](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)。
 
 ### <a name="certify-your-azure-ad-integration-for-the-marketplace-single-tenant-applications"></a>为 Marketplace 认证 Azure AD 集成：单租户应用程序
 
 单租户应用程序有多种选项：
 
-- 使用 [Azure B2B](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) 将用户作为来宾用户添加到目录中。
+- 使用 [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) 将用户作为来宾用户添加到目录中。
 - 通过“与我联系”为客户手动预配试用版。
 - 开发针对每个用户的体验版。
 - 使用 SSO 生成多租户示例演示应用。
@@ -316,11 +316,11 @@ Microsoft 通过 Azure AD 对所有 Marketplace 用户进行身份验证。 当�
 
 |产品 |发布信息  |
 |---------|---------|
-|Office 365     |    查看[发布过程和指导]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store)。     |
-|Dynamics 365 for Finance and Operations  |   为 Enterprise Edition 生成项目时，请查看[发布过程和指导](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)。      |
-|Dynamics 365 for Customer Engagement |查看[发布过程和指导](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource)。 |
-|Power BI   |     查看[发布过程和指导]( https://docs.microsoft.com/en-us/power-bi/developer/office-store)。    |
-|Cortana Intelligence     |    了解 [AppSource 中的 Cortana](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide)。     |
+|Office 365     |    查看[发布过程和指导]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)。     |
+|Dynamics 365 for Finance and Operations  |   为 Enterprise Edition 生成项目时，请查看[发布过程和指导](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)。      |
+|Dynamics 365 for Customer Engagement |查看[发布过程和指导](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)。 |
+|Power BI   |     查看[发布过程和指导]( https://docs.microsoft.com/power-bi/developer/office-store)。    |
+|Cortana Intelligence     |    了解 [AppSource 中的 Cortana](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide)。     |
 |AppSource 咨询产品     |  查看[指导并了解如何提交报价](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)。    |
 
 
@@ -522,11 +522,11 @@ Microsoft 通过 Azure AD 对所有 Marketplace 用户进行身份验证。 当�
 
 应主要从受信任的电脑访问开发人员帐户。 这很关键，因为对每个帐户每周生成的代码数有限制。 使用受信任的电脑还可确保提供最无缝的登录体验。
 
-有关其他开发人员帐户准则和安全性的详细信息，请参阅[打开开发人员帐户](https://docs.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account)。
+有关其他开发人员帐户准则和安全性的详细信息，请参阅[打开开发人员帐户](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account)。
 
 ### <a name="guidance-for-microsoft-ids-in-an-azure-ad-federated-domain"></a>有关 Azure AD 联合域中 Microsoft ID 的指导
 
-可以通过 [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/) 联合企业帐户。 如果尝试用企业电子邮件地址创建 Microsoft ID，会返回错误。 如果收到错误信息，请首先与 IT 团队核实导致错误的原因是否是个问题。 这是一个已知问题，我们正在努力解决。 
+可以通过 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) 联合企业帐户。 如果尝试用企业电子邮件地址创建 Microsoft ID，会返回错误。 如果收到错误信息，请首先与 IT 团队核实导致错误的原因是否是个问题。 这是一个已知问题，我们正在努力解决。 
 
 作为一种解决方法，我们建议在 @outlook.com 域中创建新的电子邮件地址，并创建一条规则。 执行以下步骤:
 
@@ -562,7 +562,7 @@ Microsoft 通过 Azure AD 对所有 Marketplace 用户进行身份验证。 当�
 5. 在“帐户类型”中选择“公司”，然后选择“下一步”按钮。
 
    >[!IMPORTANT]
-   >要进一步了解帐户类型以及哪一个是最佳选择，请参阅[帐户类型、位置和费用](https://docs.microsoft.com/en-us/windows/uwp/publish/account-types-locations-and-fees)。
+   >要进一步了解帐户类型以及哪一个是最佳选择，请参阅[帐户类型、位置和费用](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)。
 
 6. 在“发布者显示名称”中输入显示名称（通常为公司名称）。
 

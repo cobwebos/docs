@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams
-ms.openlocfilehash: f678cb9819a2c03f97bcca5a2092160212779328
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 24e6ab7e94d8a1bdbfa0b5ee9112aaaff7e358ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence 解决方案评估工具
 ## <a name="overview"></a>概述
@@ -195,7 +195,7 @@ Azure机器学习 (AzureML) 提供了易于使用的工具，用于创建和部�
 有关使用 Azure 数据工厂自动执行模型训练过程的详细信息，请参阅[使用更新资源活动更新 Azure 机器学习模型](https://docs.microsoft.com/azure//data-factory/v1/data-factory-azure-ml-update-resource-activity)。
 
 ## <a name="existing-documentation"></a>现有文档
-[通过 Microsoft Azure 认证发展云业务](https://azure.microsoft.com/en-us/marketplace/programs/certified/)
+[通过 Microsoft Azure 认证发展云业务](https://azure.microsoft.com/marketplace/programs/certified/)
 
-[Microsoft Azure Cortana Intelligence 认证](https://azure.microsoft.com/en-us/marketplace/programs/certified/cortana/)
+[Microsoft Azure Cortana Intelligence 认证](https://azure.microsoft.com/marketplace/programs/certified/cortana/)
 

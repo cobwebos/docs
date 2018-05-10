@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: sutalasi
-ms.openlocfilehash: 86a1d53570aeefd57c5133688e67064da6f5dc77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 48a8f6d35c3ea1266880f05d12ebf4efd855df41
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 SharePoint 应用程序以实现灾难恢复
 
@@ -53,7 +53,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 ## <a name="sharepoint-architecture"></a>SharePoint 体系结构
 
-可以使用分层拓扑和服务器角色在一个或多个服务器上部署 SharePoint，实现符合特定目标的场设计。 支持大量并发用户和大量内容项的典型大型高要求 SharePoint 服务器场使用服务分组作为可伸缩性策略的一部分。 此方法涉及到在专用服务器上运行服务，将这些服务组合在一起，然后将服务器扩展为一个组。 以下拓扑演示了三层 SharePoint 服务器场的服务和服务器分组。 请参阅 SharePoint 文档和产品线体系结构，了解有关不同 SharePoint 拓扑的详细指导。 可在[此文档](https://technet.microsoft.com/en-us/library/cc303422.aspx)中找到有关 SharePoint 2013 部署的更多详细信息。
+可以使用分层拓扑和服务器角色在一个或多个服务器上部署 SharePoint，实现符合特定目标的场设计。 支持大量并发用户和大量内容项的典型大型高要求 SharePoint 服务器场使用服务分组作为可伸缩性策略的一部分。 此方法涉及到在专用服务器上运行服务，将这些服务组合在一起，然后将服务器扩展为一个组。 以下拓扑演示了三层 SharePoint 服务器场的服务和服务器分组。 请参阅 SharePoint 文档和产品线体系结构，了解有关不同 SharePoint 拓扑的详细指导。 可在[此文档](https://technet.microsoft.com/library/cc303422.aspx)中找到有关 SharePoint 2013 部署的更多详细信息。
 
 
 

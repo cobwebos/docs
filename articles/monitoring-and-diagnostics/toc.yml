@@ -21,7 +21,7 @@
   items:
     - name: 监视数据源
       href: monitoring-data-sources.md
-    - name: Azure 监视器
+    - name: Azure Monitor
       href: monitoring-overview-azure-monitor.md
     - name: 度量值
       href: monitoring-overview-metrics.md
@@ -65,8 +65,12 @@
           href: insights-alerts-command-line-interface.md
         - name: 使用 Azure PowerShell 配置经典警报
           href: insights-alerts-powershell.md
+        - name: 让经典指标警报调用 Webhook
+          href: insights-webhooks-alerts.md
         - name: 用于日志警报的 Webhook 操作
           href: monitor-alerts-unified-log-webhook.md
+        - name: 使用资源管理器模板创建日志警报
+          href: monitor-alerts-unified-log-template.md
         - name: 使用资源管理器模板创建更新的指标警报
           href: monitoring-create-metric-alerts-with-templates.md
         - name: 使用资源管理器模板创建经典指标警报
@@ -85,6 +89,8 @@
           href: monitoring-alerts-rate-limiting.md
         - name: 使用资源管理器创建操作组
           href: monitoring-create-action-group-with-resource-manager-template.md
+        - name: 实现逻辑应用操作
+          href: monitoring-action-groups-logic-app.md
     - name: 使用诊断日志
       items:
         - name: 存档
@@ -125,6 +131,8 @@
           href: insights-powershell-samples.md
     - name: 使用 Azure 诊断扩展
       items:
+        - name: 发送到 Azure 存储
+          href: azure-diagnostics-storage.md
         - name: 发送到 Application Insights
           href: azure-diagnostics-configure-application-insights.md
         - name: 发送到事件中心
@@ -175,6 +183,13 @@
       href: monitoring-activity-log-schema.md
     - name: Azure 诊断扩展架构
       href: azure-diagnostics-schema.md
+      items:
+        - name: 1.3 和更高版本
+          href: azure-diagnostics-schema-1dot3-and-later.md
+        - name: 1.2
+          href: azure-diagnostics-schema-1dot2.md
+        - name: 1
+          href: azure-diagnostics-schema-1dot0.md
 - name: 资源
   items:
     - name: Azure 路线图

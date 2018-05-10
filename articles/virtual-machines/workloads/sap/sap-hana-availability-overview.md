@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5694207f9283a5db5a937d9f8867d1a5f661aac
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7049a4b5159687ab928cda7ddc6b1a35959529ac
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虚拟机的 SAP HANA 高可用性
 
@@ -67,8 +67,8 @@ Azure 针对不同组件（如网络、存储和 VM）提供了不同的可用�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[一个 Azure 区域内的 SAP HANA 可用性](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)。
-- 了解[跨 Azure 区域的 SAP HANA 可用性](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)。 
+- 了解[一个 Azure 区域内的 SAP HANA 可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)。
+- 了解[跨 Azure 区域的 SAP HANA 可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)。 
 
 
 

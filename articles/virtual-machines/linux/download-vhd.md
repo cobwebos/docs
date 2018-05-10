@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: cynthn
-ms.openlocfilehash: d62fe702e42929fde2bb2a0dee4ea2cc8621ff99
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 93f165d08813506f9c4d4c0fbb885ddc958e8391
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
 
@@ -35,7 +35,7 @@ Azure 中的虚拟机 (VM) 将[磁盘](../windows/managed-disks-overview.md?toc=
 
 若要使用 VHD 作为映像创建其他 VM，请完成以下步骤：
 
-1. 使用 SSH、帐户名称和 VM 的公共 IP 地址连接到它并对其取消设置。 可以使用 [az network public-ip show](https://docs.microsoft.com/en-us/cli/azure/network/public-ip#az-network-public-ip-show) 查找公共 IP 地址。 +user 参数还会删除上次预配的用户帐户。 如果正在将帐户凭据收录到 VM，请省略此 +user 参数。 以下示例删除上次预配的用户帐户：
+1. 使用 SSH、帐户名称和 VM 的公共 IP 地址连接到它并对其取消设置。 可以使用 [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show) 查找公共 IP 地址。 +user 参数还会删除上次预配的用户帐户。 如果正在将帐户凭据收录到 VM，请省略此 +user 参数。 以下示例删除上次预配的用户帐户：
 
     ```bash
     ssh azureuser@<publicIpAddress>

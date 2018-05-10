@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: e3f6f0de16fcb84872fe7b420eb0d54e86682f23
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7633d2bd15e5bc4620a4980623f3883c162f4331
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 ## <a name="overview"></a>概述
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/28/2018
 要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Azure AI 库](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)执行此操作。  这会将两个 AzureML Web 服务（及其相关资源）部署到 Azure 订阅 - 一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [AzureML Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)提供了更详细的说明。
 
 ## <a name="scaling-the-api"></a>缩放 API
-默认情况下，部署将使用一个免费的开发/测试计费计划，其中包括 1,000 次交易/月和 2 个计算小时/月。  可以根据需求升级到其他计划。  在[此处](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)的“生产 Web API 定价”下提供了有关不同计划的定价的详细信息。
+默认情况下，部署将使用一个免费的开发/测试计费计划，其中包括 1,000 次交易/月和 2 个计算小时/月。  可以根据需求升级到其他计划。  在[此处](https://azure.microsoft.com/pricing/details/machine-learning/)的“生产 Web API 定价”下提供了有关不同计划的定价的详细信息。
 
 ## <a name="managing-aml-plans"></a>管理 AML 计划 
 可以在[此处](https://services.azureml.net/plans/)管理计费计划。  计划名称将基于在部署 API 时选择的资源组名称，再加上一个订阅所独有的字符串。  在[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)的“管理计费计划”部分下提供了有关如何升级计划的说明。

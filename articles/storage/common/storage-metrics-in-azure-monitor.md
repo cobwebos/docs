@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: e8e9f9c0cbe044b2aa459898f2d3900db10d200a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3c4c9a330286eb00aa6a0da6e95b56b49b6eaa6c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-storage-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 存储指标（预览）
+# <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
 使用 Azure 存储的指标可以分析使用趋势、跟踪请求，以及诊断存储帐户的问题。
 
@@ -28,9 +28,9 @@ Azure Monitor 提供统一的用户界面用于监视不同的 Azure 服务。 �
 
 ## <a name="access-metrics"></a>访问指标
 
-Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Log Analytics 和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 指标](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Operation Management Suite 和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 指标](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
-默认已启用指标，可以访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) 中完成这种配置。
+默认情况下，已启用指标，并且可访问过去 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) 中完成这种配置。
 
 ### <a name="access-metrics-in-the-azure-portal"></a>在 Azure 门户中访问指标
 
@@ -139,9 +139,151 @@ Azure Monitor 提供 [REST API](/rest/api/monitor/) 用于读取指标定义和�
 
 ```
 
-## <a name="billing-for-metrics"></a>指标计费
+### <a name="access-metrics-with-the-net-sdk"></a>使用 .Net SDK 访问指标
 
-目前，在 Azure Monitor 中可以免费使用指标。 但是，如果使用引入指标数据的其他解决方案，这些解决方案可能收费。 例如，如果将指标数据存档到 Azure 存储帐户，则 Azure 存储会收费。 或者，如果将指标数据流式传输到 Log Analytics 进行高级分析，则 Log Analytics 会收费。
+Azure Monitor 提供 [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)，用于读取指标定义和值。 [示例代码](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)演示如何通过不同的参数来使用 SDK。 对于存储指标，需使用 `0.18.0-preview` 或更高版本。 资源 ID 用在 .Net SDK 中。 有关详细信息，请阅读[了解存储中服务的资源 ID](#understanding-resource-id-for-services-in-storage)。
+
+以下示例说明了如何使用 Azure Monitor .Net SDK 来读取存储指标。
+
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>使用 .Net SDK 列出帐户级指标定义
+
+以下示例演示如何列出帐户级别的指标定义：
+
+```csharp
+    public static async Task ListStorageMetricDefinition()
+    {
+        // Resource ID for storage account
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        Using metrics in Azure Monitor is currently free. However, if you use additional solutions ingesting metrics data, you may be billed by these solutions. For example, you are billed by Azure Storage if you archive metrics data to an Azure Storage account. Or you are billed by Operation Management Suite (OMS) if you stream metrics data to OMS for advanced analysis.
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+        IEnumerable<MetricDefinition> metricDefinitions = await readOnlyClient.MetricDefinitions.ListAsync(resourceUri: resourceId, cancellationToken: new CancellationToken());
+
+        foreach (var metricDefinition in metricDefinitions)
+        {
+            //Enumrate metric definition:
+            //    Id
+            //    ResourceId
+            //    Name
+            //    Unit
+            //    MetricAvailabilities
+            //    PrimaryAggregationType
+            //    Dimensions
+            //    IsDimensionRequired
+        }
+    }
+
+```
+
+如果想要列出 Blob、表、文件或队列的指标定义，必须使用 API 指定每个服务的不同资源 ID。
+
+#### <a name="read-metric-values-with-the-net-sdk"></a>使用 .Net SDK 读取指标值
+
+以下示例演示如何读取帐户级别的 `UsedCapacity` 数据：
+
+```csharp
+    public static async Task ReadStorageMetricValue()
+    {
+        // Resource ID for storage account
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+
+        Microsoft.Azure.Management.Monitor.Models.Response Response;
+
+        string startDate = DateTime.Now.AddHours(-3).ToString("o");
+        string endDate = DateTime.Now.ToString("o");
+        string timeSpan = startDate + "/" + endDate;
+
+        Response = await readOnlyClient.Metrics.ListAsync(
+            resourceUri: resourceId,
+            timespan: timeSpan,
+            interval: System.TimeSpan.FromHours(1),
+            metric: "UsedCapacity",
+
+            aggregation: "Average",
+            resultType: ResultType.Data,
+            cancellationToken: CancellationToken.None);
+
+        foreach (var metric in Response.Value)
+        {
+            //Enumrate metric value
+            //    Id
+            //    Name
+            //    Type
+            //    Unit
+            //    Timeseries
+            //        - Data
+            //        - Metadatavalues
+        }
+    }
+
+```
+
+在上述示例中，如果想要读取 Blob、表、文件或队列的指标值，必须使用 API 指定每个服务的不同资源 ID。
+
+#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>使用 .Net SDK 读取多维指标值
+
+对于多维指标，如果需要读取基于特定维度值的指标数据，则需定义元数据筛选器。
+
+以下示例演示如何根据支持多维的指标读取指标数据：
+
+```csharp
+    public static async Task ReadStorageMetricValueTest()
+    {
+        // Resource ID for blob storage
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+
+        Microsoft.Azure.Management.Monitor.Models.Response Response;
+
+        string startDate = DateTime.Now.AddHours(-3).ToString("o");
+        string endDate = DateTime.Now.ToString("o");
+        string timeSpan = startDate + "/" + endDate;
+        // It's applicable to define meta data filter when a metric support dimension
+        // More conditions can be added with the 'or' and 'and' operators, example: BlobType eq 'BlockBlob' or BlobType eq 'PageBlob'
+        ODataQuery<MetadataValue> odataFilterMetrics = new ODataQuery<MetadataValue>(
+            string.Format("BlobType eq '{0}'", "BlockBlob"));
+
+        Response = readOnlyClient.Metrics.List(
+                        resourceUri: resourceId,
+                        timespan: timeSpan,
+                        interval: System.TimeSpan.FromHours(1),
+                        metric: "BlobCapacity",
+                        odataQuery: odataFilterMetrics,
+                        aggregation: "Average",
+                        resultType: ResultType.Data);
+
+        foreach (var metric in Response.Value)
+        {
+            //Enumrate metric value
+            //    Id
+            //    Name
+            //    Type
+            //    Unit
+            //    Timeseries
+            //        - Data
+            //        - Metadatavalues
+        }
+    }
+
+```
 
 ## <a name="understanding-resource-id-for-services-in-azure-storage"></a>了解 Azure 存储中服务的资源 ID
 
@@ -187,7 +329,6 @@ GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
 `
 
 ## <a name="capacity-metrics"></a>容量度量值
-
 容量指标每隔一小时发送到 Azure Monitor。 值每日刷新。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
 
 Azure 存储在 Azure Monitor 中提供以下容量指标。
@@ -196,7 +337,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 | 指标名称 | 说明 |
 | ------------------- | ----------------- |
-| UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，这与 BlobCapacity 相同。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
+| UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
 
 ### <a name="blob-storage"></a>Blob 存储
 
@@ -230,7 +371,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 | FileCount   | 存储帐户中的文件数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
 | FileShareCount | 存储帐户中的文件共享数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
 
-## <a name="transaction-metrics"></a>事务指标
+## <a name="transaction-metrics"></a>事务度量值
 
 事务指标每隔一分钟从 Azure 存储发送到 Azure Monitor。 所有事务指标在帐户和服务级别（Blob 存储、表存储、Azure 文件和队列存储）提供。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
 
@@ -252,16 +393,16 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 | 维度名称 | 说明 |
 | ------------------- | ----------------- |
 | /BlobType | 仅限 Blob 指标的 Blob 类型。 支持的值为 **BlockBlob** 和 **PageBlob**。 BlockBlob 中包含追加 Blob。 |
-| ResponseType | 事务响应类型。 可用的值包括： <br/><br/> <li>ServerOtherError：除描述的错误以外的其他所有服务器端错误 </li> <li> ServerBusyError：返回了 HTTP 503 状态代码的已经过身份验证的请求。 （尚不支持） </li> <li> ServerTimeoutError：返回了 HTTP 500 状态代码的已超时且经过身份验证的请求。 由于服务器错误而发生超时。 </li> <li> ThrottlingError：客户端和服务器端限制错误的总和（支持 ServerBusyError 和 ClientThrottlingError 后，会删除该维度） </li> <li> AuthorizationError：由于未经授权访问数据或者授权失败，经过身份验证的请求失败。 </li> <li> NetworkError：由于网络错误，经过身份验证的请求失败。 往往发生于客户端在超时失效之前提前关闭了连接时。 </li> <li>  ClientThrottlingError：客户端限制错误（尚不支持） </li> <li> ClientTimeoutError：返回了 HTTP 500 状态代码的已超时且经过身份验证的请求。 如果将客户端的网络超时或请求超时设置为比存储服务预期值更小的值，则预期会发生此超时。 否则，会报告为 ServerTimeoutError。 </li> <li> ClientOtherError：除描述的错误以外的其他所有客户端错误。 </li> <li> Success：成功请求|
+| ResponseType | 事务响应类型。 可用的值包括： <br/><br/> <li>ServerOtherError：除描述的错误以外的其他所有服务器端错误 </li> <li> ServerBusyError：返回了 HTTP 503 状态代码的已经过身份验证的请求。 </li> <li> ServerTimeoutError：返回了 HTTP 500 状态代码的已超时且经过身份验证的请求。 由于服务器错误而发生超时。 </li> <li> AuthorizationError：由于未经授权访问数据或者授权失败，经过身份验证的请求失败。 </li> <li> NetworkError：由于网络错误，经过身份验证的请求失败。 往往发生于客户端在超时失效之前提前关闭了连接时。 </li> <li>    ClientThrottlingError：客户端限制错误。 </li> <li> ClientTimeoutError：返回了 HTTP 500 状态代码的已超时且经过身份验证的请求。 如果将客户端的网络超时或请求超时设置为比存储服务预期值更小的值，则预期会发生此超时。 否则，会报告为 ServerTimeoutError。 </li> <li> ClientOtherError：除描述的错误以外的其他所有客户端错误。 </li> <li> Success：成功请求|
 | GeoType | 来自主要或辅助群集的事务。 可用值包括 Primary 和 Secondary。 从辅助租户读取对象时，该维度会应用到读取访问异地冗余存储 (RA-GRS)。 |
 | ApiName | 操作的名称。 例如： <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> 有关所有操作名称，请参阅[文档](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md)。 |
 
-对于指标支持的维度，需要指定维度值才能查看相应的指标值。 例如，如果查看成功响应的 **Transactions** 值，需要使用 **Success** 筛选 **ResponseType** 维度。 或者，如果查看块 Blob 的 **BlobCount** 值，需要使用 **BlockBlob** 筛选 **BlobType** 维度。
+对于支持维度的指标，需要指定维度值才能查看相应的指标值。 例如，如果查看成功响应的 **Transactions** 值，需要使用 **Success** 筛选 **ResponseType** 维度。 或者，如果查看块 Blob 的 **BlobCount** 值，需要使用 **BlockBlob** 筛选 **BlobType** 维度。
 
 ## <a name="service-continuity-of-legacy-metrics"></a>旧指标的服务连续性
 
-旧指标可与 Azure Monitor 托管的指标一同使用。 在 Azure 存储终止旧指标的服务之前，支持范围保持不变。 正式发布 Azure Monitor 托管的指标后，我们会公布终止计划。
+旧指标可与 Azure Monitor 托管的指标一同使用。 在 Azure 存储终止旧指标的服务之前，支持范围保持不变。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)

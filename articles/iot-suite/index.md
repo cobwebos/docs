@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT 套件文档 - 教程和 API 参考 | Microsoft 文档"
-description: "Azure IoT 套件的文档包括入门指南、操作方法文章、教程和 API 参考。"
+title: Azure IoT 解决方案加速器文档 - 教程和 API 参考 | Microsoft Docs
+description: Azure IoT 解决方案加速器的文档包括入门指南、操作方法文章、教程和 API 参考。
 services: iot-suite
 author: czeumault
 manager: carolz
@@ -9,72 +9,81 @@ ms.service: iot-suite
 ms.topic: landing-page
 ms.date: 11/27/2017
 ms.author: carolz
-ms.openlocfilehash: 8cb979f645f0c1405ebd424d39cc2d67c5b59ba0
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 62a414697e5ce217f1533d64020d4ce06c222d10
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="iot-suite-documentation"></a>IoT 套件文档
+# <a name="iot-solution-accelerators-documentation"></a>IoT 解决方案加速器文档
 
-Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快物联网 (IoT) 解决方案的开发。 使用适用于多个平台（包括 Linux、Windows 和实时操作系统）的设备 SDK 添加新设备并连接现有设备。 无论项目大小如何，均可从少数几个传感器轻松扩展至数百万台同步连接的设备，还可依赖 Azure 的全球可用性。
+通过 IoT 解决方案加速器快速入门，以便生成 IoT 解决方案。 使用适用于多个平台（包括 Linux、Windows 和实时操作系统）的设备 SDK 添加新设备并连接现有设备。 无论项目大小如何，均可从少数几个传感器轻松扩展至数百万台同步连接的设备，还可依赖 Azure 的全球可用性。
 
-<ul class="panelContent cardsFTitle">
+<h2>探究</h2>
+<ul class="panelContent cardsW">
     <li>
-        <a href="/azure/iot-suite/iot-suite-what-are-preconfigured-solutions">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/iot-suite.svg" alt="Learn about IoT Suite" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>了解 IoT 套件</h3>
+                        <p>了解解决方案加速器、关键方案和入门方法</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-what-are-solution-accelerators">解决方案加速器概述</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">部署解决方案加速器</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-explore">现成的解决方案功能</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-monitor">监视功能</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-automate">规则管理功能</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-automate">设备管理功能</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
+</ul> 
+
+---
+
+<h2>连接</h2>
+<ul class="panelContent cardsW">
     <li>
-        <a href="https://azure.microsoft.com/resources/videos/index/?sort=newest&tag=internet-of-things">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="Azure Video Library" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Azure 视频库</h3>
+                        <p>了解如何将设备连接到解决方案加速器</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-schema">设备模型概述</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-behavior">自定义模拟设备</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-connecting-devices-node">连接物理设备</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    <li>
-        <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="Deploy the remote monitoring preconfigured solution" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>部署远程监视预配置解决方案</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>    
 </ul>
+
+---
+
+<h2>自定义</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <p>了解如何自定义解决方案加速器</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy-local">在本地运行解决方案</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-customize#presentation-and-visualization">自定义 UX</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul> 
 
 ---
 

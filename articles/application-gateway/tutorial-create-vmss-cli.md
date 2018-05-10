@@ -1,20 +1,20 @@
 ---
-title: "使用虚拟机规模集创建应用程序网关 - Azure CLI | Microsoft Docs"
-description: "了解如何通过 Azure CLI 使用虚拟机规模集创建应用程序网关。"
+title: 使用虚拟机规模集创建应用程序网关 - Azure CLI | Microsoft Docs
+description: 了解如何通过 Azure CLI 使用虚拟机规模集创建应用程序网关。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: 9a0119e0db834f008a1a3999ff546580499e73c3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: victorh
+ms.openlocfilehash: 22eef26750bf4d45d87f222d0d34fbd56ad589df
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟机规模集创建应用程序网关
 
@@ -122,7 +122,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
@@ -137,7 +137,7 @@ az network public-ip show \
   --output tsv
 ```
 
-![应用程序网关中的测试基 URL](./media/tutorial-create-vmss-cli/tutorial-nginxtest.png)
+![在应用程序网关中测试基 URL](./media/tutorial-create-vmss-cli/tutorial-nginxtest.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -148,4 +148,4 @@ az network public-ip show \
 > * 创建应用程序网关
 > * 使用默认后端池创建虚拟机规模集
 
-若要了解有关应用程序网关及其关联资源的详细信息，请继续阅读操作指南文章。
+若要详细了解应用程序网关及其关联的资源，请继续阅读操作指南文章。

@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心安全策略简介 | Microsoft Docs"
-description: "了解 Azure 安全中心安全策略及主要功能。"
+title: Azure 安全中心安全策略简介 | Microsoft Docs
+description: 了解 Azure 安全中心安全策略及主要功能。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 7a4d056fa71f211dea5e7be649c39034eabc9395
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f552164edc22b450c4ace57cce5c051d1c93e780
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="security-policies-overview"></a>安全策略概述
 本文概述了安全中心安全策略。

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0d8bee936717a5668e16fbd66d416fcc4e738814
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 04/05/2018
 1. 在[Azure 门户](https://portal.azure.com)，选择 Vnet 的订阅到 ExpressRoute 线路对等。 然后从 Marketplace 服务列表中搜索“网络性能监视器”。 在返回结果中，单击打开“网络性能监视器”页面。
 
    >[!NOTE]
-   >可以创建新的工作区或使用现有的工作区。  如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >可以创建新的工作区或使用现有的工作区。  如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
    ![portal](.\media\how-to-npm\3.png)<br><br>
@@ -118,7 +118,7 @@ ms.lasthandoff: 04/05/2018
   >
   
   >[!NOTE]
-  >如果 SCOM 推送的代理（包括 [MMA](https://technet.microsoft.com/en-us/library/dn465154(v=sc.12).aspx)）在 Azure 中托管，可能无法持续检测其位置。  建议不要在 Azure VNET 中使用这些代理来监视 ExpressRoute。
+  >如果 SCOM 推送的代理（包括 [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)）在 Azure 中托管，可能无法持续检测其位置。  建议不要在 Azure VNET 中使用这些代理来监视 ExpressRoute。
   >
   >
 

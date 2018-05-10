@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 01de1020cd485b3cf91e5d5bc2e175df2bcad111
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 58e1c88629c21940e09efd6832d536c0b2b47ace
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 复制数据
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/23/2018
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Cosmos DB (SQL API) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Cosmos DB 连接器](v1/data-factory-azure-documentdb-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Cosmos DB 连接器](v1/data-factory-azure-documentdb-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -168,7 +168,6 @@ Azure Cosmos DB 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**DocumentDbCollectionSink** |是 |
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当nestedSeparator 是点时，输出数据集结构中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：`"Name": {"First": "[value maps to this column from source]"}`。 |否（默认值为点 `.`） |
-| writeBatchTimeout |超时之前等待操作完成的时间。<br/><br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
 
 **示例：**
 

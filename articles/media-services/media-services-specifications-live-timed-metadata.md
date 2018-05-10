@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: cf4541aebe0c735d66f42532c74e97bf9bbc4a5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9c8472e74cab779e417e68316a6125d40410ef1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号
 
@@ -407,7 +407,7 @@ DASHEventMessageBox 字段定义如下：
 
 **[AMF0]**[ （操作消息格式 AMF0）](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[LIVE-FMP4]**[ Azure 媒体服务分片 MP4 实时引入规范](https://docs.microsoft.com/en-us/azure/media-services/media-services-fmp4-live-ingest-overview)
+**[LIVE-FMP4]**[ Azure 媒体服务分片 MP4 实时引入规范](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
 **[ISO-14496-12]** ISO/IEC 14496-12：第 12 部分 ISO 基础媒体文件格式，2012-07-15 第 4 版。
 

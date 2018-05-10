@@ -1,11 +1,11 @@
 ---
-title: "使用 Aspera 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs"
-description: "本教程逐步讲解如何使用 Azure 上的 **Aspera Server On Demand** 服务将文件上传到与媒体服务帐户关联的存储帐户。"
+title: 使用 Aspera 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs
+description: 本教程逐步讲解如何使用 Azure 上的 **Aspera Server On Demand** 服务将文件上传到与媒体服务帐户关联的存储帐户。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: johndeu
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 8812623a-b425-4a0f-9e05-0ee6c839b6f9
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.openlocfilehash: 707d5db04d66760a12d0c947c8a86347fd0c73d9
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 58fec9746828863c4d0bff223fb6e9fb122256c3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>使用 Azure 上的 Aspera Server On-Demand 服务将文件上传到媒体服务帐户
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/08/2018
 
 **Aspera** 是一个高速文件传输软件。 使用 **Aspera Server On Demand** for Azure 可快速将大型文件直接上传和下载到 Azure Blob 对象存储。 有关 **Aspera On Demand** 的信息，请参阅 [Aspera 云](http://cloud.asperasoft.com/)站点。 
   
-可从 [Azure 应用商店](https://azure.microsoft.com/en-us/marketplace/)购买 **Aspera Server On Demand** for Azure。 若要完成 **Aspera Server On Demand** for Azure 的购买，请使用 Windows Live ID 登录到 Azure Marketplace。
+可从 [Azure 应用商店](https://azure.microsoft.com/marketplace/)购买 **Aspera Server On Demand** for Azure。 若要完成 **Aspera Server On Demand** for Azure 的购买，请使用 Windows Live ID 登录到 Azure Marketplace。
 
 本教程逐步讲解如何使用 Azure 上的 **Aspera Server On-Demand** 服务将文件上传到与媒体服务帐户关联的存储帐户。 
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/08/2018
 >使用 Azure 媒体服务媒体处理器 (MP) 进行处理时，支持的最大文件大小有限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
 >
 
-## <a name="prerequisites"></a>系统必备 
+## <a name="prerequisites"></a>先决条件 
 
 要完成本教程，需要：
 

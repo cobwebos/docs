@@ -3,15 +3,16 @@ title: Azure 搜索多语言索引 | Microsoft Docs
 description: Azure 搜索支持 56 种语言，通过 Microsoft 中的 Lucene 和自然语言处理技术利用语言分析器。
 author: yahnoosh
 manager: jlembicz
+services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: fc038c288f878d72d29ce35ba983b3d4b6f3633e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 278539a2451eb15c7148b75497798e81f5370a57
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>在 Azure 搜索中为多语言文档创建索引
 > [!div class="op_single_selector"]
@@ -61,7 +62,7 @@ ms.lasthandoff: 04/18/2018
 
 如果已知发出查询的代理的语言，可使用 **searchFields** 查询参数，将搜索请求的范围限制为特定字段。 以下查询将仅针对波兰文描述发出：
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2016-09-01`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2017-11-11`
 
 使用“搜索资源管理器”粘贴类似上述内容的查询，可以从门户查询索引。 从服务边栏选项卡的命令栏可以获取搜索资源管理器。 有关详细信息，请参阅[在门户中查询 Azure 搜索索引](search-explorer.md)。
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 04/18/2018
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2016-09-01`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
 如果是一名 .NET 开发人员，请注意，可以使用 [Azure 搜索 .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search) 来设置语言分析器。 最新版本还提供对 Microsoft 语言分析器的支持。
 

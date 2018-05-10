@@ -17,7 +17,7 @@
   items:
     - name: Azure 容器实例
       href: ../container-instances/container-instances-tutorial-prepare-app.md
-    - name: Azure 容器服务 (AKS)
+    - name: Azure Kubernetes 服务 (AKS)
       href: ../aks/tutorial-kubernetes-prepare-app.md
     - name: Service Fabric
       href: ../service-fabric/service-fabric-tutorial-create-container-images.md
@@ -29,7 +29,7 @@
           href: container-registry-tutorial-build-task.md
         - name: 3 - 基础映像更新生成
           href: container-registry-tutorial-base-image-update.md
-    - name: 异地复制（预览版）
+    - name: 异地复制
       items:
         - name: 1 - 准备容器注册表
           href: container-registry-tutorial-prepare-registry.md
@@ -45,7 +45,7 @@
       href: container-registry-storage.md
     - name: 使用 ACR Build 进行生成和修补
       href: container-registry-build-overview.md
-    - name: 异地复制（预览版）
+    - name: 异地复制
       href: container-registry-geo-replication.md
     - name: 注册最佳做法
       href: container-registry-best-practices.md
