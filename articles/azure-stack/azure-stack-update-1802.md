@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d0641e1c7c09ac081e4dc024d6e231b88bcb58d2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新
 
@@ -56,7 +56,7 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 
 ### <a name="post-update-steps"></a>更新后步骤
-安装之后 1802年，安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
+安装 1802 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
 - Azure 堆栈修补程序**1.0.180302.4**。 [KB 4131152 的现有虚拟机规模集可能会变得不可用]( https://support.microsoft.com/help/4131152) 
 
   此修补程序还可解决中详述的问题[KB 4103348-当你尝试安装 Azure 堆栈更新时的网络控制器 API 服务崩溃](https://support.microsoft.com/help/4103348)。
@@ -85,7 +85,9 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 - **增加了对多个容错域的支持**。  有关详细信息，请参阅 [Azure Stack 的高可用性](azure-stack-key-features.md#high-availability-for-azure-stack)。
 
-- **各种修复**的性能、 稳定性、 安全性和使用由 Azure 堆栈的操作系统。
+- **支持的物理内存升级**-现在可以在初始部署之后扩展集成的 Azure 堆栈系统的内存容量。 有关详细信息，请参阅[管理 Azure 堆栈的物理内存容量](azure-stack-manage-storage-physical-memory-capacity.md)。
+
+- 针对性能、稳定性、安全性以及 Azure Stack 所用操作系统的**各种修复**。
 
 <!--
 #### New features
@@ -133,7 +135,7 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
   解决方法是使用 PowerShell 运行 **Start-ResourceSynchronization.ps1** 脚本，以便重新可以访问存储帐户详细信息。 [GitHub 中提供了该脚本]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts)，必须在特权终结点上使用服务管理员凭据运行该脚本。 
 
-- **服务运行状况**边栏选项卡无法加载。 当你打开的服务运行状况边栏选项卡在管理员或用户门户中，Azure 堆栈会显示错误并不会加载信息。 这是预期的行为。 尽管你可以选择并打开服务运行状况，但此功能尚不可用，但将实现 Azure 堆栈的未来版本中。
+- “服务运行状况”边栏选项卡无法加载。 在管理员或用户门户中打开“服务运行状况”边栏选项卡时，Azure Stack 显示错误且不加载信息。 这是预期的行为。 尽管可以选择并打开“服务运行状况”，但此功能目前不可用，将来的 Azure Stack 版本中会实现此功能。
 
 
 #### <a name="health-and-monitoring"></a>运行状况和监视
@@ -147,7 +149,7 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 - <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 
 
-  版本 1803年中解决此问题。 若要解决版本 1802年此问题，安装 Azure 堆栈修补程序**1.0.180302.4**。 有关详细信息，请参阅[KB 4131152： 现有的虚拟机规模集可能会变得不可用]( https://support.microsoft.com/help/4131152)。 
+  版本 1803 中已解决此问题。 若要在版本 1802 中解决此问题，请安装 Azure Stack 修补程序 **1.0.180302.4**。 有关详细信息，请参阅 [KB 4131152：现有虚拟机规模集可能不可用]( https://support.microsoft.com/help/4131152)。 
 
 - Azure Stack 支持只使用固定类型的 VHD。 某些通过 Azure Stack 上的商城提供的映像使用动态 VHD，但这些映像已删除。 重设附加了动态磁盘的虚拟机 (VM) 的大小会导致该 VM 处于故障状态。
 

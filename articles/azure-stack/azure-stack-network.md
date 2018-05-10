@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/09/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: e6438c353d84510ee918df120e6d54df0607c89d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 752481186167fccb46d5bf3beb87c1507e0f4feb
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="network-connectivity"></a>网络连接
 本文提供 Azure Stack 网络基础架构信息，可帮助你确定如何以最佳方式将 Azure Stack 集成到现有的网络环境。 
@@ -40,7 +40,7 @@ Azure Stack 解决方案需有弹性且高度可用的物理基础结构才能�
 
 | 本地网络 | 说明 | 大小 | 
 | -------- | ------------- | ------------ | 
-| 公共 VIP | Azure 堆栈使用 32 个从此网络地址的总数。 八个公共 IP 地址用于 Azure 堆栈服务一小部分，其余由租户虚拟机。 如果打算使用应用服务和 SQL 资源提供程序，则还要额外使用 7 个地址。 | /26（62 台主机）- /22（1022 台主机）<br><br>建议使用 /24（254 台主机） | 
+| 公共 VIP | Azure Stack 总共使用此网络中的 32 个地址。 8 个公共 IP 地址由少量的 Azure Stack 服务使用，剩余的地址由租户虚拟机使用。 如果打算使用应用服务和 SQL 资源提供程序，则还要额外使用 7 个地址。 | /26（62 台主机）- /22（1022 台主机）<br><br>建议使用 /24（254 台主机） | 
 | 交换机基础结构 | 用于路由的专用交换机管理接口的点到点 IP 地址，以及分配给交换机的环回地址。 | /26 | 
 | 基础结构 | 用于通信的 Azure Stack 内部组件。 | /24 |
 | 专用 | 用于存储网络和专用 VIP。 | /24 | 
@@ -70,7 +70,7 @@ HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在
 此 /27 网络属于前面所述 Azure Stack 基础结构子网的较小范围，它无需公共 IP 地址，但确实需要通过 NAT 或透明代理进行 Internet 访问。 此网络将分配给紧急恢复控制台系统 (ERCS)。ERCS VM 在注册到 Azure 期间以及进行基础结构备份期间需要访问 Internet，。 ERCS VM 应可路由到管理网络，以便进行故障排除。
 
 ### <a name="public-vip-network"></a>公共 VIP 网络
-公共 VIP 网络分配给 Azure Stack 中的网络控制器。 它不是交换机上的逻辑网络。 SLB 针对租户工作负荷使用地址池并分配 /32 网络。 在交换机路由表中，这些 /32 IP 通过 BGP 播发为可用路由。 此网络包含外部可访问的 IP 地址或公共 IP 地址。 Azure 堆栈基础结构使用此公共 VIP 网络从 8 个地址，而其余部分由租户虚拟机。 此子网中的网络大小范围为最小 /26（64 台主机）到最大 /22（1022 台主机），我们建议规划 /24 网络。
+公共 VIP 网络分配给 Azure Stack 中的网络控制器。 它不是交换机上的逻辑网络。 SLB 针对租户工作负荷使用地址池并分配 /32 网络。 在交换机路由表中，这些 /32 IP 通过 BGP 播发为可用路由。 此网络包含外部可访问的 IP 地址或公共 IP 地址。 Azure 堆栈基础结构其余部分使用的租户 Vm 保留的第一次 31 从此公共 VIP 网络地址。 此子网中的网络大小范围为最小 /26（64 台主机）到最大 /22（1022 台主机），我们建议规划 /24 网络。
 
 ### <a name="switch-infrastructure-network"></a>交换机基础结构网络
 此 /26 网络是一个子网，其中包含可路由的点到点 IP /30（2 个主机 IP）子网和环回（专用于带内交换机管理和 BGP 路由器 ID 的 /32 子网）。 此 IP 地址范围必须可从 Azure Stack 解决方案外部路由到数据中心，可以是专用或公共 IP。

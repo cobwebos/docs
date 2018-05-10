@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: ff3fd8ea331c02aa2666ec20b56dbbaef473a4df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure 堆栈公钥基础结构证书要求
+# <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
 Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 Azure Stack 服务，并可能分配给租户 VM 的外部可访问公共 IP 地址。 在部署 Azure Stack 期间，需要使用这些 Azure Stack 公共基础结构终结点的、具有适当 DNS 名称的 PKI 证书。 本文提供以下方面的信息：
 
@@ -34,17 +34,18 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 
 ## <a name="certificate-requirements"></a>证书要求
 以下列表描述了部署 Azure Stack 时需要满足的证书要求： 
-- 证书必须由内部证书颁发机构或公共证书颁发机构颁发。 如果使用公共证书颁发机构，它必须作为 Microsoft 信任根颁发机构计划的一部分包含在基础操作系统映像中。 您可以找到完整的列表： https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
-- 你 Azure 堆栈的基础结构必须具有对用于对证书进行签名的证书颁发机构的网络访问
-- 旋转时证书，证书必须是可以从同一个用于在部署或上述任何公用证书颁发机构提供的证书进行签名的内部证书颁发机构颁发
+- 证书必须由内部证书颁发机构或公共证书颁发机构颁发。 如果使用公共证书颁发机构，它必须作为 Microsoft 信任根颁发机构计划的一部分包含在基础操作系统映像中。 在以下网页中查看完整列表：https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
+- 你 Azure 堆栈的基础结构必须具有网络访问权限的证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是一个 http 终结点
+- 轮换证书时，证书必须由签署部署时提供的证书的同一内部证书颁发机构颁发，或者由上述任何公共证书颁发机构颁发
 - 不支持使用自签名证书
-- 证书可以是单个通配符证书，其中涵盖使用者可选名称 (SAN) 字段中的所有命名空间。 或者，可以使用如终结点使用通配符的单个证书**acs**和它们所需的密钥保管库。 
+- 证书可以是单个通配符证书，其中涵盖使用者可选名称 (SAN) 字段中的所有命名空间。 或者，可以针对需要证书的终结点（例如 **acs**和 Key Vault）使用采用通配符的单个证书。 
 - 证书签名算法不能是 SHA1，因为算法必须更可靠。 
 - 证书格式必须是 PFX，因为安装 Azure Stack 时需要公钥和私钥。 
 - 证书 pfx 文件的“密钥用途”字段中必须包含“数字签名”和“KeyEncipherment”值。
 - 证书 pfx 文件的“增强型密钥使用”字段中必须包含“服务器身份验证(1.3.6.1.5.5.7.3.1)”和“客户端身份验证(1.3.6.1.5.5.7.3.2)”值。
-- 证书的"颁发给:"字段不得为与相同其"签发:"字段。
+- 证书的“颁发给:”字段不能与其“颁发者:”字段相同。
 - 部署时，所有证书 pfx 文件的密码都必须相同
+- 访问的证书 pfx 的密码必须是一个复杂的密码。
 - 确保所有证书的“使用者名称”和“使用者可选名称”匹配本文中所述的规范，以免部署失败。
 
 > [!NOTE]
@@ -61,21 +62,21 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 对于部署，[region] 和 [externalfqdn] 值必须与针对 Azure Stack 系统选择的区域和外部域名相匹配。 例如，如果区域名称为 *Redmond*，外部域名为 *contoso.com*，则 DNS 名称的格式为 *&lt;prefix>.redmond.contoso.com*。*&lt;prefix>* 值由 Microsoft 预先指定，描述证书保护的终结点。 此外，外部基础结构终结点的 *&lt;prefix>* 值取决于使用特定终结点的 Azure Stack 服务。 
 
 > [!note]  
-> 证书可以是提供终结点作为单个通配符证书涵盖复制到所有的目录的使用者和使用者备用名称 (SAN) 字段中的所有命名空间或每个单独的证书复制到相应的目录。 请记住，这两个选项要求你为终结点使用通配符证书，如**acs**和它们所需的密钥保管库。 
+> 可以提供证书作为已复制到所有目录的单个通配符证书，其中涵盖“使用者”和“使用者可选名称”(SAN) 字段中的所有命名空间；也可以作为每个终结点的、已复制到相应目录的单个证书。 请记住，这两个选项都要求对 **acs** 和 Key Vault 等需要通配符证书的终结点使用此类证书。 
 
 | 部署文件夹 | 所需的证书使用者和使用者可选名称 (SAN) | 范围（按区域） | 子域命名空间 |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
-| 公共门户 | 门户。&lt;区域 >。&lt;fqdn > | 门户 | &lt;区域 >。&lt;fqdn > |
-| 管理门户 | adminportal。&lt;区域 >。&lt;fqdn > | 门户 | &lt;区域 >。&lt;fqdn > |
-| Azure 资源管理器公共门户 | 管理。&lt;区域 >。&lt;fqdn > | Azure 资源管理器 | &lt;区域 >。&lt;fqdn > |
-| Azure 资源管理器管理门户 | adminmanagement。&lt;区域 >。&lt;fqdn > | Azure 资源管理器 | &lt;区域 >。&lt;fqdn > |
-| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Blob 存储 | blob。&lt;区域 >。&lt;fqdn > |
-| ACSTable | *.table。&lt;区域 >。&lt;fqdn ><br>（通配符 SSL 证书） | 表存储 | 表。&lt;区域 >。&lt;fqdn > |
-| ACSQueue | *.queue。&lt;区域 >。&lt;fqdn ><br>（通配符 SSL 证书） | 队列存储 | 队列。&lt;区域 >。&lt;fqdn > |
-| KeyVault | *.vault。&lt;区域 >。&lt;fqdn ><br>（通配符 SSL 证书） | Key Vault | 保管库。&lt;区域 >。&lt;fqdn > |
-| KeyVaultInternal | *.adminvault。&lt;区域 >。&lt;fqdn ><br>（通配符 SSL 证书） |  内部 Key Vault |  adminvault。&lt;区域 >。&lt;fqdn > |
+| 公共门户 | portal.&lt;region>.&lt;fqdn> | 门户 | &lt;region>.&lt;fqdn> |
+| 管理门户 | adminportal.&lt;region>.&lt;fqdn> | 门户 | &lt;region>.&lt;fqdn> |
+| Azure 资源管理器公共门户 | management.&lt;region>.&lt;fqdn> | Azure 资源管理器 | &lt;region>.&lt;fqdn> |
+| Azure 资源管理器管理门户 | adminmanagement.&lt;region>.&lt;fqdn> | Azure 资源管理器 | &lt;region>.&lt;fqdn> |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Blob 存储 | blob.&lt;region>.&lt;fqdn> |
+| ACSTable | *.table.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | 表存储 | table.&lt;region>.&lt;fqdn> |
+| ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | 队列存储 | queue.&lt;region>.&lt;fqdn> |
+| KeyVault | *.vault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Key Vault | vault.&lt;region>.&lt;fqdn> |
+| KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） |  内部 Key Vault |  adminvault.&lt;region>.&lt;fqdn> |
 
-### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Pre 1803 版本上的 Azure 堆栈环境
+### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>适用于 1803 以前版本上的 Azure Stack 环境
 
 |部署文件夹|所需的证书使用者和使用者可选名称 (SAN)|范围（按区域）|子域命名空间|
 |-----|-----|-----|-----|

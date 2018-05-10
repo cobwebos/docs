@@ -61,8 +61,22 @@
               href: azure-stack-prepare-pki-certs.md
             - name: 验证 PKI 证书
               href: azure-stack-validate-pki-certs.md
-        - name: 标识集成
-          href: azure-stack-integrate-identity.md
+            - name: 修正 PKI 证书
+              href: azure-stack-remediate-certs.md
+            - name: 部署资源
+              items:
+                - name: 开始 AzsReadiness cmdlet 参考
+                  href: azure-stack-azsreadiness-cmdlet.md
+                - name: 查看准备情况报表
+                  href: azure-stack-validation-report.md
+            - name: 标识集成
+              items:
+                - name: 选择标识提供程序
+                  href: azure-stack-integrate-identity.md
+                - name: 验证 Azure 标识
+                  href: azure-stack-validate-identity.md
+        - name: 验证 Azure 注册
+          href: azure-stack-validate-registration.md
         - name: 外部监视
           href: azure-stack-integrate-monitor.md
         - name: 安全集成
@@ -123,7 +137,7 @@
               href: azure-stack-manage-storage-accounts.md
             - name: 管理存储容量
               href: azure-stack-manage-storage-shares.md
-            - name: 管理 Azure Stack 的物理存储容量
+            - name: 管理物理内存容量
               href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: 更换硬件
           items:
@@ -253,6 +267,10 @@
               href: azure-stack-compute-add-scalesets.md
             - name: 提供 Linux 虚拟机
               href: azure-stack-linux.md
+            - name: 添加 Red Hat 虚拟机
+              href: azure-stack-redhat-create-upload-vhd.md
+            - name: 提供 Kubernetes 群集
+              href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: 使用情况和计费
           items:
             - name: 概述

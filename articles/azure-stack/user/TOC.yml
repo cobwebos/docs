@@ -91,10 +91,14 @@
               href: azure-stack-kv-push-secret-into-vm.md
             - name: KeyVault 示例应用
               href: azure-stack-kv-sample-app.md
+        - name: 解决方案模板
+          items:
             - name: 解决方案模板
               items:
                 - name: 部署 Service Fabric 群集
                   href: azure-stack-solution-template-service-fabric-cluster.md
+                - name: 部署实现 Kubernetes 群集
+                  href: azure-stack-solution-template-kubernetes-deploy.md
     - name: 生成应用
       items:
         - name: 为 Azure Stack 进行开发
@@ -116,7 +120,7 @@
                   href: azure-stack-version-profiles-powershell.md
                 - name: Azure CLI 2.0
                   href: azure-stack-version-profiles-azurecli2.md
-                - name: 转到
+                - name: 前往
                   href: azure-stack-version-profiles-go.md
                 - name: Ruby
                   href: azure-stack-version-profiles-ruby.md
@@ -142,13 +146,13 @@
               href: azure-stack-deploy-template-visual-studio.md
     - name: 启用云服务提供商
       href: azure-stack-csp-enable-billing-usage-tracking.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.10
     - name: Azure Stack CLI
       href: /cli/azure/reference-index?view=azure-cli-2017-03-09-profile
-- name: 相关
+- name: 相关内容
   items:
     - name: Azure Stack 操作员文档
       href: /azure/azure-stack/
@@ -164,7 +168,7 @@
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: 定价信息
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-stack'
     - name: 培训和认证
       href: 'https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert'
