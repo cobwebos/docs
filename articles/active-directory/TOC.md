@@ -174,10 +174,6 @@
 #### [创建快照报表](cloudappdiscovery-set-up-snapshots.md)
 #### [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [使用自定义日志分析器](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-#### 基于代理的发现
-##### [什么是 Cloud App Discovery？](active-directory-cloudappdiscovery-whatis.md)
-##### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-##### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [使用应用代理远程访问应用](active-directory-application-proxy-get-started.md)
@@ -328,7 +324,7 @@
 #### [常见问题](active-directory-identity-protection-faqs.md)
 #### [术语表](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
-### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
+### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
 ## [将其他服务与 Azure AD 集成]()
 ### [启用 LinkedIn 集成](linkedin-integration.md)

@@ -206,7 +206,7 @@
         - name: 下载模板
           href: download-template.md
         - name: Azure VM 代理
-          href: agent-user-guide.md
+          href: ../extensions/agent-windows.md
         - name: 计划内维护
           href: maintenance-notifications.md
         - name: 缓解推理执行
@@ -369,7 +369,7 @@
         - name: 网络观察程序代理
           href: extensions-nwa.md
         - name: 限制扩展安装
-          href: extensions-rmpolicy-howto-ps.md
+          href: ../extensions/extensions-rmpolicy-howto-ps.md
     - name: 迁移 VM
       items:
         - name: 迁移 AWS 和本地 VM
