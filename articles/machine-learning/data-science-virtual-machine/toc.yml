@@ -32,6 +32,16 @@
       href: use-deep-learning-dsvm.md
     - name: 使用地理 AI 数据科学 VM
       href: use-geo-ai-dsvm.md
+- name: 企业指南
+  items:
+    - name: 概述
+      href: dsvm-enterprise-overview.md
+    - name: 扩展
+      href: dsvm-pools.md
+    - name: Active Directory 集成
+      href: dsvm-common-identity.md
+    - name: 保护资源访问凭据
+      href: dsvm-secure-access-keys.md
 - name: 引用
   expanded: true
   items:

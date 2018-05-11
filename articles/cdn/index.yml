@@ -1,0 +1,85 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure CDN 文档
+metadata:
+  title: Azure CDN 文档 - 教程和 API 参考 | Microsoft 文档
+  description: Azure 内容分发网络 (CDN) 是一种用于分发高带宽内容的全球 CDN 解决方案。 它可以托管在 Azure 中，也可以托管到任何其他位置。 借助 Azure CDN，可以通过使用距离最近的接入点 (POP) 服务器来缓存从 Azure Blob 存储、Web 应用程序或任何可公开访问的 Web 服务器加载的静态对象。 Azure CDN 还可以通过 CDN POP 来利用各种网络优化措施，从而加速不能缓存的动态内容的分发。 例如，Azure CDN 可以使用路由优化来绕过边界网关协议 (BGP)。
+  services: cdn
+  author: czeumault
+  manager: carolz
+  ms.service: cdn
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/03/2018
+  ms.author: carolz
+  ms.openlocfilehash: 42d08e9a5893bf58ecf405cc5caf750ee3e1daf7
+  ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/11/2018
+abstract:
+  description: Azure 内容分发网络 (CDN) 是一种用于分发高带宽内容的全球 CDN 解决方案。 它可以托管在 Azure 中，也可以托管到任何其他位置。 借助 Azure CDN，可以通过使用距离最近的接入点 (POP) 服务器来缓存从 Azure Blob 存储、Web 应用程序或任何可公开访问的 Web 服务器加载的静态对象。 Azure CDN 还可以通过 CDN POP 来利用各种网络优化措施，从而加速不能缓存的动态内容的分发。 例如，Azure CDN 可以使用路由优化来绕过边界网关协议 (BGP)。
+sections:
+- title: 
+  items:
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/cdn.svg
+      text: 了解 Azure CDN
+      href: /azure/cdn/cdn-overview
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何通过创建 CDN 配置文件和 CDN 终结点来启用 Azure CDN。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/get-started.svg
+      text: Azure CDN 入门
+      href: /azure/cdn/cdn-create-new-endpoint
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何配置 Azure CDN 以满足需求。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/cdn/cdn-map-content-to-custom-domain">将自定义域添加到 CDN 终结点</a>
+    - html: <a href="/azure/cdn/cdn-custom-ssl">在自定义域上配置 HTTPS</a>
+    - html: <a href="/azure/cdn/cdn-caching-rules-tutorial">设置缓存规则</a>
+- title: 视频
+  items:
+  - type: paragraph
+    text: 观看演示 Azure CDN 工作原理的视频。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/video-library.svg
+      text: Azure CDN 视频库
+      href: https://azure.microsoft.com/documentation/videos/index/?services=cdn
+- title: 示例
+  items:
+  - type: paragraph
+    text: 查找脚本来管理常见任务。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cdn">代码示例</a>
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 命令行
+      html: <p><a href="/powershell/resourcemanager/azurerm.cdn/v2.3.0/azurerm.cdn">PowerShell</a></p>
+    - title: 语言
+      html: <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/cdn/">REST API 参考</a></p>

@@ -63,7 +63,13 @@
 
 # 资源
 ## [服务概述](https://azure.microsoft.com/services/key-vault/)
-## [关于键、密钥和证书](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
+## [关于键、机密和证书](about-keys-secrets-and-certificates.md)
+### [证书入门](certificate-scenarios.md)
+#### [证书创建方法](create-certificate.md)
+#### [监视和管理证书创建](create-certificate-scenarios.md)
+## [身份验证、请求和响应](authentication-requests-and-responses.md)
+## [常见参数和标头](common-parameters-and-headers.md)
+## [Key Vault 版本](key-vault-versions.md)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [博客](http://blogs.technet.com/b/kv/)
 ## [代码示例](https://www.microsoft.com/download/details.aspx?id=45343)
