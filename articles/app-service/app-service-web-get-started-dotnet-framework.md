@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: eb1d977dddce07b3deda7eeeeb3bc93d41339de1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 125377b91514b1615cfbb488f7ddfe59fbc016f5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/19/2018
 
 将应用程序命名为 _myFirstAzureWebApp_，然后选择“确定”。
    
-![“新建项目”对话框](./media/app-service-web-get-started-dotnet/new-project.png)
+![“新建项目”对话框](./media/app-service-web-get-started-dotnet-framework/new-project.png)
 
 可将任何类型的 ASP.NET Web 应用部署到 Azure。 在本快速入门教程中，请选择“MVC”模板，并确保将身份验证设置为“无身份验证”。
       
