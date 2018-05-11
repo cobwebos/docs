@@ -62,7 +62,7 @@
 ### [StorSimple 学习路线图](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [安全注意事项](storsimple-8000-security.md)
 ### [上市区域](storsimple-regions.md)
-### [常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)
+
 
 ## 入门
 
@@ -189,10 +189,11 @@
 ## 发行说明
 ### [Update 5 - 最新版](storsimple-update5-release-notes.md)
 ### [Update 4](storsimple-update4-release-notes.md)
-### [Update 3](storsimple-update3-release-notes.md)
-### [Update 2.2](storsimple-update21-release-notes.md)
+
 
 ### 存档
+#### [Update 3](storsimple-update3-release-notes.md)
+#### [Update 2.2](storsimple-update21-release-notes.md)
 #### [Update 2 ](storsimple-update2-release-notes.md)
 #### [Update 1 ](storsimple-update1-release-notes.md)
 #### [Update 0.3](storsimple-february-2015-release-notes.md)

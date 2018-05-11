@@ -76,7 +76,6 @@
         - name: 使用 IPv6 创建公共负载均衡器（模板）
           href: load-balancer-ipv6-internet-template.md
     - name: 配置内部负载均衡器
-      href: load-balancer-get-started-ilb-arm-portal.md
       items:
         - name: 配置内部负载均衡器 (PowerShell)
           href: load-balancer-get-started-ilb-arm-ps.md

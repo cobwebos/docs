@@ -142,6 +142,8 @@
       items:
         - name: X-EC-Debug 标头
           href: cdn-http-debug-headers.md
+    - name: HTTP 变量
+      href: cdn-http-variables.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET

@@ -91,6 +91,8 @@
       href: tutorial-url-route-powershell.md
     - name: 使用 Azure PowerShell 重定向 Web 流量
       href: tutorial-url-redirect-powershell.md
+    - name: 创建区域冗余的应用程序网关
+      href: create-zone-redundant.md
 - name: 引用
   items:
     - name: Azure CLI

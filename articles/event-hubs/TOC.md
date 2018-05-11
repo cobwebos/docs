@@ -28,6 +28,11 @@
 ### [可用性和一致性](event-hubs-availability-and-consistency.md)
 ### [自动缩放吞吐量单位](event-hubs-auto-inflate.md)
 ### [将 Apache Spark 与事件中心集成](event-hubs-spark-connector.md)
+## 用于 Kafka 的事件中心
+### [用于 Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+### [创建启用了 Kafka 的事件中心](event-hubs-create-kafka-enabled.md) 
+### [流式传输到用于 Kafka 生态系统的 Azure 事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+### [将 Kafka MirrorMaker 与用于 Kafka 生态系统的 Azure 事件中心配合使用](event-hubs-kafka-mirror-maker-tutorial.md)
 ## 开发
 ### [使用 .NET Framework 发送事件](event-hubs-dotnet-framework-getstarted-send.md)
 ### [使用 .NET Framework 接收事件](event-hubs-dotnet-framework-getstarted-receive-eph.md)

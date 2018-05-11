@@ -115,16 +115,14 @@
           href: automation-pass-json-string.md
     - name: 混合 Runbook 辅助角色
       items:
-        - name: 部署混合 Runbook 辅助角色
+        - name: 混合 Runbook 辅助角色概述
           href: automation-hybrid-runbook-worker.md
-        - name: Azure 自动化 Windows 混合 Runbook 辅助角色
+        - name: 部署 Windows 混合 Runbook 辅助角色
           href: automation-windows-hrw-install.md
-        - name: Azure 自动化 Linux 混合 Runbook 辅助角色
+        - name: 部署 Linux 混合 Runbook 辅助角色
           href: automation-linux-hrw-install.md
-        - name: 在辅助角色上运行 Runbook
+        - name: 在混合 Runbook 辅助角色中运行 Runbook
           href: automation-hrw-run-runbooks.md
-        - name: 删除 Azure 自动化混合 Runbook 辅助角色
-          href: automation-remove-hrw.md
     - name: 部署配置管理 (DSC)
       items:
         - name: Desired State Configuration (DSC) 概述

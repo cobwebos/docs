@@ -1,0 +1,95 @@
+- name: VM 扩展文档
+  href: ../index.md
+- name: 概述
+  items:
+    - name: 关于 Azure 扩展
+      href: overview.md
+    - name: Linux VM 代理
+      href: agent-linux.md
+    - name: Windows VM 代理
+      href: agent-windows.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 使用自定义脚本扩展
+      href: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      maintainContext: true
+- name: 概念
+  items:
+    - name: Linux
+      href: features-linux.md
+    - name: Windows
+      href: features-windows.md
+- name: 操作指南
+  items:
+    - name: 自定义脚本扩展
+      items:
+        - name: Linux - 版本 2
+          href: custom-script-linux.md
+        - name: Linux - 版本 1 (OSTC)
+          href: custom-script-linuxOstc.md
+        - name: Windows
+          href: custom-script-windows.md
+    - name: OMS 扩展
+      items:
+        - name: Linux
+          href: oms-linux.md
+        - name: Windows
+          href: oms-windows.md
+    - name: 诊断扩展
+      items:
+        - name: Linux
+          href: diagnostics-linux.md
+        - name: Windows
+          href: diagnostics-windows.md
+        - name: 使用模板
+          href: diagnostics-template.md
+    - name: 网络观察程序代理
+      items:
+        - name: Linux
+          href: network-watcher-linux.md
+        - name: Windows
+          href: network-watcher-windows.md
+    - name: PowerShell DSC 扩展
+      href: dsc-overview.md
+      items:
+        - name: DSC 和窗口
+          href: dsc-windows.md
+        - name: 处理凭据
+          href: dsc-credentials.md
+        - name: 使用模板
+          href: dsc-template.md
+    - name: 适用于 Windows 的 IaaS 反恶意软件
+      href: iaas-antimalware-windows.md
+    - name: Key Vault 扩展
+      href: key-vault-windows.md
+    - name: VM 快照扩展
+      items:
+        - name: Linux
+          href: vmsnapshot-linux.md
+        - name: Windows
+          href: vmsnapshot-windows.md
+    - name: 第三方扩展
+      items:
+        - name: Stackify Retrace
+          href: stackify-retrace-linux.md
+        - name: Symantec
+          href: symantec.md
+    - name: 已弃用的扩展
+      items:
+        - name: 日志收集器扩展
+          href: log-collector.md
+        - name: Trend Micro Deep Security
+          href: trend.md
+    - name: 限制扩展安装
+      items:
+        - name: Linux
+          href: extensions-rmpolicy-howto-cli.md
+        - name: Windows
+          href: extensions-rmpolicy-howto-ps.md
+    - name: 更新 Linux 代理
+      href: update-linux-agent.md
+    - name: 导出扩展
+      href: export-templates.md
+    - name: 故障排除
+      href: troubleshoot.md

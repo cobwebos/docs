@@ -406,19 +406,19 @@
       href: /python/api/overview/azure/datafactory?view=azure-python
 - name: 资源
   items:
-    - name: 常见问题
-      href: frequently-asked-questions.md
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=analytics'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
-    - name: 堆栈溢出
+    - name: 提出问题 - MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
+    - name: 提出问题 - Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 请求功能
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: 上市区域
-      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 常见问题
+      href: frequently-asked-questions.md
+    - name: 路线图
+      href: 'https://azure.microsoft.com/en-us/roadmap/?tag=data-factory'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
+    - name: 按区域列出的可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 支持选项
       href: 'https://azure.microsoft.com/support/options/'

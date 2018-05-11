@@ -7,10 +7,13 @@
     - name: 关于时序见解
       href: time-series-insights-overview.md
 - name: 快速入门
-  expanded: true
   items:
     - name: 探索时序见解
       href: time-series-quickstart.md
+- name: 教程
+  items:
+    - name: 探索 TSI JavaScript 客户端库
+      href: tutorial-explore-js-client-lib.md
 - name: 概念
   items:
     - name: 规划环境

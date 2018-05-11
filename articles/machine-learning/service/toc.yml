@@ -197,8 +197,6 @@
           href: ../desktop-workbench/data-prep-appendix10-sample-custom-column-transforms-python.md
         - name: 数据准备执行 API
           href: ../desktop-workbench/data-prep-python-execution-api.md
-        - name: 数据准备操作化
-          href: ../desktop-workbench/data-prep-operationalization.md
     - name: 试验
       items:
         - name: 试验服务配置

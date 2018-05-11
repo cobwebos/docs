@@ -379,6 +379,8 @@ items:
                 href: tutorial-query-table.md
               - name: 4 - 全局分布
                 href: tutorial-global-distribution-table.md
+              - name: 5 - 无服务器应用 - Node.js
+                href: 'https://docs.microsoft.com/learn/build-serverless-app/index'
           - name: 示例
             items:
               - name: .NET
