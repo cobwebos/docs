@@ -1,10 +1,10 @@
 - name: CDN 文档
-  href: index.md
+  href: index.yml
 - name: 概述
   items:
     - name: 什么是 Azure CDN？
       href: cdn-overview.md
-    - name: Azure CDN 产品特征
+    - name: 比较产品功能
       href: cdn-features.md
 - name: 快速入门
   items:
@@ -137,13 +137,13 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: 规则引擎功能
           href: cdn-rules-engine-reference-features.md
+        - name: HTTP 变量
+          href: cdn-http-variables.md
     - name: 特定于 Verizon 的 HTTP 标头
       href: cdn-verizon-http-headers.md
       items:
         - name: X-EC-Debug 标头
           href: cdn-http-debug-headers.md
-    - name: HTTP 变量
-      href: cdn-http-variables.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET

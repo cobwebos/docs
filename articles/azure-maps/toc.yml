@@ -34,6 +34,8 @@
       href: search-categories.md
     - name: 支持的语言
       href: supported-languages.md
+    - name: 消耗模型
+      href: consumption-model.md
 - name: 操作指南
   items:
     - name: 管理 Maps 帐户
@@ -115,7 +117,7 @@
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates'
     - name: 堆栈溢出
-      href: 'http://stackoverflow.com/questions/tagged/azure-location-based-services'
+      href: 'http://stackoverflow.com/questions/tagged/azure-maps'
     - name: 技术案例研究
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: 视频
