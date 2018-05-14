@@ -73,7 +73,7 @@ Azure 容器实例提供按需、可迸发的隔离环境用于运行容器化�
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
-让 SSH 会话和隧道保持运行，在浏览器中导航到 http://localhost:8080。 如下图所示，将初始管理员密码粘贴到字段中。 完成后选择“继续”。
+让 SSH 会话和隧道保持运行，在浏览器中导航到 http://localhost:8080 。 如下图所示，将初始管理员密码粘贴到字段中。 完成后选择“继续”。
 
 ![解锁 Jenkins](./media/container-instances-jenkins/jenkins-portal-05.png)
 

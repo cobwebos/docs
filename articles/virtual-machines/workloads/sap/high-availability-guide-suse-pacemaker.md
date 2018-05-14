@@ -461,8 +461,8 @@ sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
 sudo crm configure fencing_topology \
   stonith-sbd rsc_st_azure
 
-</code></pre>[1] 启用 STONITH 设备
-### ****
+</code></pre>
+### **[1]** 启用 STONITH 设备
 
 <pre><code>
 sudo crm configure property stonith-enabled=true 
