@@ -114,6 +114,8 @@
               href: active-directory-b2c-setup-qq-app.md
             - name: 微信
               href: active-directory-b2c-setup-wechat-app.md
+            - name: Azure AD（单租户）
+              href: active-directory-b2c-setup-oidc-azure-active-directory.md
             - name: 自定义 OpenID Connect
               href: active-directory-b2c-setup-oidc-idp.md
         - name: 设置自助密码重置
