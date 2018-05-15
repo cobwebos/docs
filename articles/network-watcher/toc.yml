@@ -39,8 +39,8 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: 网络安全组视图
       href: network-watcher-security-group-view-overview.md
-    - name: 查看网络拓扑
-      href: network-watcher-topology-overview.md
+    - name: 基于角色的访问控制权限
+      href: required-rbac-permissions.md
 - name: 操作指南
   items:
     - name: 配置网络观察程序
@@ -151,15 +151,7 @@
         - name: 通过 VPN 网关诊断本地连接
           href: network-watcher-diagnose-on-premises-connectivity.md
     - name: 查看网络拓扑
-      items:
-        - name: Azure PowerShell
-          href: network-watcher-topology-powershell.md
-        - name: Azure CLI
-          href: network-watcher-topology-cli.md
-        - name: Azure CLI 1.0
-          href: network-watcher-topology-cli-nodejs.md
-        - name: REST
-          href: network-watcher-topology-rest.md
+      href: view-network-topology.md
     - name: 确定位置和 Azure 区域之间的相对延迟
       href: view-relative-latencies.md
 - name: 引用

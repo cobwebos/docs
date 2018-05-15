@@ -22,7 +22,7 @@
       href: features-windows.md
 - name: 操作指南
   items:
-    - name: 自定义脚本扩展
+    - name: 自定义脚本
       items:
         - name: Linux - 版本 2
           href: custom-script-linux.md
@@ -30,13 +30,13 @@
           href: custom-script-linuxOstc.md
         - name: Windows
           href: custom-script-windows.md
-    - name: OMS 扩展
+    - name: Operations Management Suite
       items:
         - name: Linux
           href: oms-linux.md
         - name: Windows
           href: oms-windows.md
-    - name: 诊断扩展
+    - name: 诊断
       items:
         - name: Linux
           href: diagnostics-linux.md
@@ -50,7 +50,7 @@
           href: network-watcher-linux.md
         - name: Windows
           href: network-watcher-windows.md
-    - name: PowerShell DSC 扩展
+    - name: PowerShell DSC
       href: dsc-overview.md
       items:
         - name: DSC 和窗口
@@ -61,9 +61,9 @@
           href: dsc-template.md
     - name: 适用于 Windows 的 IaaS 反恶意软件
       href: iaas-antimalware-windows.md
-    - name: Key Vault 扩展
+    - name: Key Vault
       href: key-vault-windows.md
-    - name: VM 快照扩展
+    - name: VM 快照
       items:
         - name: Linux
           href: vmsnapshot-linux.md
@@ -77,7 +77,7 @@
           href: symantec.md
     - name: 已弃用的扩展
       items:
-        - name: 日志收集器扩展
+        - name: 日志收集器
           href: log-collector.md
         - name: Trend Micro Deep Security
           href: trend.md

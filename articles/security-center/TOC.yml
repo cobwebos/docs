@@ -153,6 +153,8 @@
           href: security-center-events-dashboard.md
         - name: 搜索
           href: security-center-search.md
+        - name: 查看符合性 (REST)
+          href: security-center-review-policy-compliance.md
     - name: 方案
       items:
         - name: 事件响应

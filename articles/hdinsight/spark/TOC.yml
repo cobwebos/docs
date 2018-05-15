@@ -19,6 +19,10 @@
   items:
     - name: 在 Spark 群集上运行查询
       href: apache-spark-load-data-run-query.md
+    - name: 使用 VSCode 运行 Spark 查询
+      href: ../hdinsight-for-vscode.md
+    - name: 使用 IntelliJ 运行 Spark 查询
+      href: apache-spark-intellij-tool-plugin.md
     - name: 使用 BI 工具分析数据
       href: apache-spark-use-bi-tools.md
     - name: 运行流式处理作业
@@ -47,10 +51,10 @@
           href: apache-spark-eclipse-tool-plugin.md
         - name: 使用 IntelliJ 创建应用
           href: apache-spark-intellij-tool-plugin.md
-        - name: 使用 IntelliJ 通过 VPN 远程调试 Spark 作业
-          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
         - name: 使用 IntelliJ 通过 SSH 远程调试 Spark 作业
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
+        - name: 使用 IntelliJ 通过 VPN 远程调试 Spark 作业
+          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
         - name: 创建非交互式身份验证 .NET HDInsight 应用程序
           href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
           maintainContext: true
@@ -316,6 +320,8 @@
       items:
         - name: 调试 Spark 作业
           href: apache-spark-job-debugging.md
+        - name: 使用 IntelliJ 调试 Spark 作业
+          href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: 排查 HDInsight 群集速度慢或故障问题
           href: ../hdinsight-troubleshoot-failed-cluster.md
           maintainContext: true

@@ -45,6 +45,8 @@
       href: ssl-overview.md
     - name: URL 重定向
       href: redirect-overview.md
+    - name: 运行状况监视
+      href: application-gateway-probe-overview.md
 - name: 操作指南
   items:
     - name: 创建应用程序网关
@@ -93,6 +95,20 @@
       href: tutorial-url-redirect-powershell.md
     - name: 创建区域冗余的应用程序网关
       href: create-zone-redundant.md
+    - name: 自定义探测
+      items:
+        - name: 门户
+          href: application-gateway-create-probe-portal.md
+        - name: 经典 PowerShell
+          href: application-gateway-create-probe-classic-ps.md
+        - name: 资源管理器 PowerShell
+          href: application-gateway-create-probe-ps.md
+    - name: 故障排除
+      items:
+        - name: 排查“错误的网关”(502) 错误
+          href: application-gateway-troubleshooting-502.md
+        - name: 诊断
+          href: application-gateway-diagnostics.md
 - name: 引用
   items:
     - name: Azure CLI

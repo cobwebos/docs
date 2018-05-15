@@ -10,6 +10,7 @@
 ## 如何
 ### [设置使用 STONITH 的 HA](ha-setup-with-stonith.md)
 ### [类型 II SKU 的 OS 备份](os-backup-type-ii-skus.md)
+### [HANA 大型实例的操作系统升级](os-upgrade-hana-large-instance.md)
 # Azure 虚拟机上的 SAP HANA
 ## [单实例 SAP HANA 安装](hana-get-started.md)
 ## [S/4 HANA 或 BW/4 HANA SAP CAL 部署指南](cal-s4h.md)

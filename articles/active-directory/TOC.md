@@ -16,6 +16,7 @@
 ## [将用户添加到 Azure AD](add-users-azure-active-directory.md)
 ## [将许可证分配给用户](license-users-groups.md)
 ## [配置自助服务密码重置](authentication/quickstart-sspr.md)
+## [在 Azure AD 中添加组织的隐私信息](active-directory-properties-area.md)
 
 
 # 如何
@@ -58,6 +59,7 @@
 #### [B2B 共享策略](active-directory-b2b-delegate-invitations.md)
 #### [将 B2B 用户添加到角色](active-directory-b2b-add-guest-to-role.md)
 #### [动态组和 B2B 用户](active-directory-b2b-dynamic-groups.md)
+#### [离开组织](active-directory-b2b-leave-the-organization.md)
 #### [审核和报表](active-directory-b2b-auditing-and-reporting.md)
 #### [适用于混合组织的 B2B](active-directory-b2b-hybrid-organizations.md)
 ##### [授予 B2B 用户对本地应用的访问权限](active-directory-b2b-hybrid-cloud-to-on-premises.md)
@@ -178,11 +180,11 @@
 
 ### [使用应用代理远程访问应用](manage-apps/application-proxy.md)
 #### 入门
-##### [启用应用代理](active-directory-application-proxy-enable.md)
-##### [发布应用](application-proxy-publish-azure-portal.md)
-##### [自定义域](active-directory-application-proxy-custom-domains.md)
-#### [单一登录](application-proxy-sso-overview.md)
-##### [使用 KCD 执行 SSO](active-directory-application-proxy-sso-using-kcd.md)
+##### [启用应用代理](manage-apps/application-proxy-enable.md)
+##### [发布应用](manage-apps/application-proxy-publish-azure-portal.md)
+##### [自定义域](manage-apps/application-proxy-configure-custom-domain.md)
+#### [单一登录](manage-apps/application-proxy-single-sign-on.md)
+##### [使用 KCD 执行 SSO](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 ##### [使用标头执行 SSO](application-proxy-ping-access.md)
 ##### [将 SSO 与密码保管配合使用](application-proxy-sso-azure-portal.md)
 #### 概念

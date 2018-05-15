@@ -25,7 +25,7 @@
       href: role-assignments-external-users.md
     - name: 活动日志
       href: change-history-report.md
-    - name: 提升租户管理员访问权限
+    - name: 为全局管理员提升访问权限
       href: elevate-access-global-admin.md
     - name: 故障排除
       href: troubleshooting.md

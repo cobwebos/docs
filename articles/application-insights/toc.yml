@@ -53,6 +53,8 @@
           href: app-insights-asp-net-core.md
         - name: 控制台
           href: application-insights-console.md
+        - name: 应用程序仪表板
+          href: app-insights-overview-dashboard.md
     - name: 监视 Java 应用
       items:
         - name: Web 应用
@@ -228,6 +230,8 @@
           href: app-insights-automate-with-flow.md
         - name: 使用 Azure 逻辑应用自动执行
           href: automate-with-logic-apps.md
+        - name: 自定义电子邮件报告
+          href: automate-custom-reports.md
     - name: 开发
       items:
         - name: 自定义事件和指标 API

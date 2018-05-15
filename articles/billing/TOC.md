@@ -43,6 +43,7 @@
 ### [更新支付信息](billing-how-to-change-credit-card.md)
 ### [按发票为订阅付款](billing-how-to-pay-by-invoice.md)
 ### [链接合作伙伴 ID](billing-partner-admin-link-started.md)
+### [查看计费帐户](billing-view-all-accounts.md)
 ## [管理保留 VM 实例](billing-manage-reserved-vm-instance.md)
 ## 故障排除
 ### [注册问题](https://support.microsoft.com/en-us/help/4042959)
