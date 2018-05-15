@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 内容交付网络中管理 Azure Blob 存储的到期时间 | Microsoft Docs
+title: 在 Azure 内容分发网络中管理 Azure Blob 存储的到期时间 | Microsoft Docs
 description: 了解用于控制 Azure CDN 缓存中 blob 生存时间的选项。
 services: cdn
 documentationcenter: ''
@@ -14,27 +14,27 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 6d2681ad05890fc5f9f2821245e0f0280bf45a5f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a0f89a272fa300f6acced2de02ba5465ab282079
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>在 Azure 内容交付网络中管理 Azure Blob 存储的到期时间
+# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 存储的到期时间
 > [!div class="op_single_selector"]
 > * [Azure Web 内容](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Blob 存储](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
-在多个与 Azure 内容交付网络 (CDN) 集成的基于 Azure 的源中，Azure 存储中的 [Blob 存储服务](../storage/common/storage-introduction.md#blob-storage)是其中一个。 任何可公开访问的 blob 内容均可在 Azure CDN 中进行缓存，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍了几种可以在 Azure 存储中的 Blob 上设置 `Cache-Control` 标头的方式。
+在多个与 Azure 内容分发网络 (CDN) 集成的基于 Azure 的源中，Azure 存储中的 [Blob 存储服务](../storage/common/storage-introduction.md#blob-storage)是其中一个。 任何可公开访问的 blob 内容均可在 Azure CDN 中进行缓存，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍了几种可以在 Azure 存储中的 Blob 上设置 `Cache-Control` 标头的方式。
 
 此外，还可以通过设置 [CDN 缓存规则](#setting-cache-control-headers-by-using-caching-rules)从 Azure 门户控制缓存设置。 如果创建了一个缓存规则并将其缓存行为设置为“替代”或“绕过缓存”，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
 
 > [!TIP]
 > 可以选择不对 blob 设置 TTL。 在这种情况下，Azure CDN 将自动应用默认 TTL（七天），除非已在 Azure 门户中设置了缓存规则。 此默认 TTL 仅适用于常规 Web 交付优化。 对于大型文件优化，默认 TTL 为一天；对于媒体流优化，默认 TTL 为一年。
 > 
-> 有关 Azure CDN 如何加速访问 blob 和其他文件的详细信息，请参阅 [Azure 内容交付网络概述](cdn-overview.md)。
+> 有关 Azure CDN 如何加速访问 blob 和其他文件的详细信息，请参阅 [Azure 内容分发网络概述](cdn-overview.md)。
 > 
 > 有关 Azure Blob 存储的详细信息，请参阅 [Blob 存储简介](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)。
  

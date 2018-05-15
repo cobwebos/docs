@@ -1,32 +1,31 @@
 ---
-title: "使用 Azure 资源管理器执行部署操作 | Microsoft Docs"
-description: "介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure 资源管理器部署操作。"
+title: 使用 Azure 资源管理器执行部署操作 | Microsoft Docs
+description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure 资源管理器部署操作。
 services: azure-resource-manager,virtual-machines
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
-ms.date: 01/13/2017
+ms.date: 04/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 26c2c333a97abff75f6b4caefb1e351dea826081
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署操作
 
-
 可以通过 Azure 门户查看部署操作。 在部署过程中收到错误时，可能最想要查看操作，因此本文将重点介绍如何查看已失败的操作。 该门户提供一个界面，可用于轻松查找错误并确定潜在修复。
 
-可以通过查看审核日志或部署操作来对部署进行故障排除。 本主题将演示这两种方法。 有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)。
+可以通过查看审核日志或部署操作来对部署进行故障排除。 本文介绍了这两种方法。 有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)。
 
 ## <a name="portal"></a>门户
 若要查看部署操作，请使用以下步骤 ：
@@ -136,21 +135,19 @@ ms.lasthandoff: 02/09/2018
 1. 使用 **azure group deployment show** 命令获取部署的总体状态。
 
   ```azurecli
-  azure group deployment show --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-  返回的值之一是 **correlationId**。 此值可用于跟踪相关事件，在与技术支持人员合作排查部署问题时非常有用。
+1. 返回的值之一是 **correlationId**。 此值可用于跟踪相关事件，在与技术支持人员合作排查部署问题时非常有用。
 
   ```azurecli
-  "properties": {
-    "provisioningState": "Failed",
-    "correlationId": "4002062a-a506-4b5e-aaba-4147036b771a",
+  az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-2. 若要查看部署操作，请使用：
+1. 若要查看部署操作，请使用：
 
   ```azurecli
-  azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment operation list -g ExampleGroup -n ExampleDeployment
   ```
 
 ## <a name="rest"></a>REST

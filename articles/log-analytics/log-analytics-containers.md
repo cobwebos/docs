@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 04/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d2c85225ab74c912183a0bb8d7f100d1354e6c5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6adde6a76a7675ef4d8b63757fc9419500872dd9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -34,8 +34,9 @@ ms.lasthandoff: 03/28/2018
 - Service Fabric
 - Red Hat OpenShift
 
+若要监视部署到 Kubernetes 环境的工作负荷的性能，而该环境托管在 AKS（Azure 容器服务）上，请参阅[监视 Azure 容器服务](../monitoring/monitoring-container-health.md)。  容器监视解决方案所提供的支持不包括监视该平台。  
 
-下图显示了 OMS 中各种容器主机和代理之间的关系。
+下图显示了 Log Analytics 中各种容器主机和代理之间的关系。
 
 ![容器关系图](./media/log-analytics-containers/containers-diagram.png)
 
@@ -91,7 +92,7 @@ ms.lasthandoff: 03/28/2018
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将容器监视解决方案添加到 OMS 工作区。
+1. 通过 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview)或[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将容器监视解决方案添加到 Log Analytics 工作区。
 
 2. 通过 OMS 代理安装和使用 Docker。 根据所用操作系统和 Docker Ochestrator，可使用下列方法来配置代理。
   - 对于独立主机：
@@ -116,15 +117,15 @@ ms.lasthandoff: 03/28/2018
 
 ### <a name="install-and-configure-linux-container-hosts"></a>安装和配置 Linux 容器主机
 
-安装 Docker 之后，请使用以下容器主机设置来配置代理以供 Docker 使用。 首先，需要 OMS 工作区 ID 和密钥，可在 Azure 门户中找到它们。 在工作区中，单击“快速启动” > “计算机”，查看工作区 ID和主键。  将它们复制并粘贴到喜爱的编辑器中。
+安装 Docker 之后，请使用以下容器主机设置来配置代理以供 Docker 使用。 首先，需要 Log Analytics 工作区 ID 和密钥，可在 Azure 门户中找到它们。 在工作区中，单击“快速启动” > “计算机”，查看工作区 ID和主键。  将它们复制并粘贴到喜爱的编辑器中。
 
 对于除了 CoreOS 之外的所有 Linux 容器主机：
 
-- 有关如何安装 OMS Agent for Linux 的详细信息和步骤，请参阅[将 Linux 计算机连接到 Operations Management Suite (OMS)](log-analytics-agent-linux.md)。
+- 有关如何安装 OMS Agent for Linux 的详细信息和步骤，请参阅[将 Linux 计算机连接到 Log Analytics](log-analytics-concept-hybrid.md)。
 
 对于包括 CoreOS 在内的所有 Linux 容器主机：
 
-启动想要监视的 OMS 容器。 修改并使用以下示例：
+启动要监视的容器。 修改并使用以下示例：
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
@@ -132,7 +133,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 
 对于包括 CoreOS 在内的所有 Azure 政府 Linux 容器主机：
 
-启动想要监视的 OMS 容器。 修改并使用以下示例：
+启动要监视的容器。 修改并使用以下示例：
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
@@ -144,7 +145,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 #### <a name="configure-an-oms-agent-for-docker-swarm"></a>配置适用于 Docker Swarm 的 OMS 代理
 
-可以在 Docker Swarm 中运行 OMS 代理作为全局服务。 使用以下信息创建 OMS 代理服务。 需要插入 OMS 工作区 ID 和主键。
+可以在 Docker Swarm 中运行 OMS 代理作为全局服务。 使用以下信息创建 OMS 代理服务。 需提供 Log Analytics 工作区 ID 和主键。
 
 - 在主节点上运行以下命令。
 
@@ -190,8 +191,8 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 本部分介绍安装 OMS 代理作为 OpenShift daemon-set 需要执行的步骤。  
 
-1. 登录到 OpenShift 主节点，从 GitHub 将 yaml 文件 [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml)复制到主节点，并使用 OMS 工作区 ID 和主键修改值。
-2. 运行以下命令，为 OMS 创建项目并设置用户帐户。
+1. 登录到 OpenShift 主节点，从 GitHub 将 yaml 文件 [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) 复制到主节点，并使用 Log Analytics 工作区 ID 和主键修改值。
+2. 运行以下命令，为 Log Analytics 创建项目并设置用户帐户。
 
     ```
     oadm new-project omslogging --node-selector='zone=default'
@@ -227,10 +228,10 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
     No events.  
     ```
 
-在使用 OMS 代理 daemon-set yaml 文件时，若要使用机密来保护 OMS 工作区 ID 和主键，请执行以下步骤。
+在使用 OMS 代理 daemon-set yaml 文件时，若要使用机密来保护 Log Analytics 工作区 ID 和主键，请执行以下步骤。
 
-1. 登录到 OpenShift 主节点并从 GitHub 复制 yaml 文件 [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) 和机密生成脚本 [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh)。  该脚本将为 OMS 工作区 ID 和主键生成机密 yaml 文件，用于保护机密信息。  
-2. 运行以下命令，为 OMS 创建项目并设置用户帐户。 机密生成脚本需要 OMS 工作区 ID <WSID> 和主键 <KEY>，并且会在完成时创建 ocp-secret.yaml 文件。  
+1. 登录到 OpenShift 主节点并从 GitHub 复制 yaml 文件 [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) 和机密生成脚本 [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh)。  该脚本将为 Log Analytics 工作区 ID 和主键生成机密 yaml 文件，用于保护机密信息。  
+2. 运行以下命令，为 Log Analytics 创建项目并设置用户帐户。 机密生成脚本需要 Log Analytics 工作区 ID <WSID> 和主键 <KEY>，并且会在完成时创建 ocp-secret.yaml 文件。  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  
@@ -314,7 +315,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
     1. 复制脚本和机密模板文件，并确保它们位于同一目录中。
         - 生成机密的脚本 - secret-gen.sh
         - 机密模板 - secret-template.yaml
-    2. 运行脚本，如下例所示。 脚本要求输入 OMS 工作区 ID 和主密钥，在输入这些值后，脚本将创建一个可运行的机密 .yaml 文件。   
+    2. 运行脚本，如下例所示。 脚本会要求你输入 Log Analytics 工作区 ID 和主密钥，而在你输入这些值后，脚本会创建一个可运行的机密 .yaml 文件。   
 
         ```
         #> sudo bash ./secret-gen.sh
@@ -561,7 +562,7 @@ KEY:    88 bytes
 
 
 ## <a name="monitor-containers"></a>监视容器
-在 OMS 门户中启用解决方案后，“容器”磁贴显示有关容器主机和在主机中运行的容器的摘要信息。
+在 Log Analytics 门户中启用解决方案后，“容器”磁贴显示有关容器主机和在主机中运行的容器的摘要信息。
 
 ![容器磁贴](./media/log-analytics-containers/containers-title.png)
 

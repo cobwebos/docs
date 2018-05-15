@@ -1,6 +1,6 @@
 ---
-title: 将 OpenFaaS 与 Azure 容器服务 (AKS) 配合使用
-description: 部署 OpenFaaS 并将其与 Azure 容器服务 (AKS) 配合使用
+title: 结合使用 OpenFaaS 与 Azure Kubernetes 服务 (AKS)
+description: 部署 OpenFaaS 并将其与 Azure Kubernetes 服务 (AKS) 配合使用
 services: container-service
 author: justindavies
 manager: timlt
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: d531bb40421716bf9fb3c253a3e76207b2806912
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 778fa5ddcdf8006d28c092746e4ac17a497baa5f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
-[OpenFaaS][open-faas] 是一个用于基于容器构建无服务器函数的框架。 作为一个开源项目，它在社区中获得了大规模的采用。 本文档详细介绍了如何在 Azure 容器服务 (AKS) 群集上安装和使用 OpenFaas。
+[OpenFaaS][open-faas] 是一个用于基于容器构建无服务器函数的框架。 作为一个开源项目，它在社区中获得了大规模的采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
 
 ## <a name="prerequisites"></a>先决条件
 
 为了完成本文中的步骤，需要具备以下各项。
 
 * 基本了解 Kubernetes。
-* 已在开发系统上配置了 Azure 容器服务 (AKS) 群集和 AKS 凭据。
+* 已在开发系统上配置了 Azure Kubernetes 服务 (AKS) 群集和 AKS 凭据。
 * 已在开发系统上安装 Azure CLI。
 * 已在系统上安装 Git 命令行工具。
 
@@ -39,7 +39,7 @@ git clone https://github.com/openfaas/faas-netes
 更改到已克隆的存储库的目录。
 
 ```azurecli-interactive
-cd faas-netes 
+cd faas-netes
 ```
 
 ## <a name="deploy-openfaas"></a>部署 OpenFaaS
@@ -54,7 +54,7 @@ kubectl create namespace openfaas
 
 为 OpenFaaS 函数创建另一个命名函数。
 
-```azurecli-interactive 
+```azurecli-interactive
 kubectl create namespace openfaas-fn
 ```
 
@@ -64,7 +64,7 @@ kubectl create namespace openfaas-fn
 helm install --namespace openfaas -n openfaas \
   --set functionNamespace=openfaas-fn, \
   --set serviceType=LoadBalancer, \
-  --set rbac=false chart/openfaas/ 
+  --set rbac=false chart/openfaas/
 ```
 
 输出：
@@ -95,7 +95,7 @@ To verify that openfaas has started, run:
 kubectl get service -l component=gateway --namespace openfaas
 ```
 
-输出： 
+输出：
 
 ```console
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
@@ -130,8 +130,8 @@ curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 输出：
 
 ```console
- _   _      _ _            _                        
-| | | | ___| | | ___      / \    _____   _ _ __ ___ 
+ _   _      _ _            _
+| | | | ___| | | ___      / \    _____   _ _ __ ___
 | |_| |/ _ \ | |/ _ \    / _ \  |_  / | | | '__/ _ \
 |  _  |  __/ | | (_) |  / ___ \  / /| |_| | | |  __/
 |_| |_|\___|_|_|\___/  /_/   \_\/___|\__,_|_|  \___|
@@ -140,7 +140,7 @@ curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 
 ## <a name="create-second-function"></a>创建第二个函数
 
-现在，创建另一个函数。 此示例将使用 OpenFaaS CLI 进行部署，包括一个自定义容器映像并从 Cosmos DB 检索数据。 在创建函数之前，需要配置多个项。 
+现在，创建另一个函数。 此示例将使用 OpenFaaS CLI 进行部署，包括一个自定义容器映像并从 Cosmos DB 检索数据。 在创建函数之前，需要配置多个项。
 
 首先，为 Cosmos DB 创建一个新的资源组。
 
@@ -148,13 +148,13 @@ curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 az group create --name serverless-backing --location eastus
 ```
 
-部署一个 `MongoDB` 类型的 CosmosDB 实例。 此实例需要一个唯一的名称，请将 `openfaas-cosmos` 更新为在你的环境中唯一的某个名称。 
+部署一个 `MongoDB` 类型的 CosmosDB 实例。 此实例需要一个唯一的名称，请将 `openfaas-cosmos` 更新为在你的环境中唯一的某个名称。
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
 ```
 
-获取 Cosmos 数据库连接字符串并将其存储在一个变量中。 
+获取 Cosmos 数据库连接字符串并将其存储在一个变量中。
 
 将 `--resource-group` 参数的值更新为你的资源组的名称，将 `--name` 参数的值更新为你的 Cosmos DB 的名称。
 
@@ -180,7 +180,7 @@ COSMOS=$(az cosmosdb list-connection-strings \
 }
 ```
 
-使用 *mongoimport* 工具加载具有数据的 CosmosDB 实例。 
+使用 *mongoimport* 工具加载具有数据的 CosmosDB 实例。
 
 如果需要，安装 MongoDB 工具。 以下示例使用 brew 安装这些工具，有关其他选项，请参阅 [MongoDB 文档][install-mongo]。
 
@@ -232,7 +232,7 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 
 ## <a name="next-steps"></a>后续步骤
 
-需要针对 OpenFaaS 网关和函数锁定 OpenFaas 的默认部署。 [Alex Ellis 的博客文章](https://blog.alexellis.io/lock-down-openfaas/)介绍了有关安全的配置选项的更多详细信息。 
+需要针对 OpenFaaS 网关和函数锁定 OpenFaas 的默认部署。 [Alex Ellis 的博客文章](https://blog.alexellis.io/lock-down-openfaas/)介绍了有关安全的配置选项的更多详细信息。
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT 中心术语词汇表 | Microsoft Docs"
-description: "开发人员指南 - 与 Azure IoT 中心相关的常用术语的术语表。"
+title: Azure IoT 中心术语词汇表 | Microsoft Docs
+description: 开发人员指南 - 与 Azure IoT 中心相关的常用术语的术语表。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7576077ede7c1c18bcba3853b3b4a2ee0b561968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: aae72618da42db53304075506b4969945ff0165f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
 
 ## <a name="advanced-message-queueing-protocol"></a>高级消息队列协议
 [高级消息队列协议 (AMQP)](https://www.amqp.org/) 是 [IoT 中心](#iot-hub)支持的一种消息传送协议，适用于与设备通信。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
+
+## <a name="automatic-device-management"></a>自动设备管理
+Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](../iot-edge/how-to-deploy-monitor.md)。
+
+## <a name="automatic-device-configuration"></a>自动设备配置
+解决方案后端可以使用[自动设备配置](iot-hub-auto-device-config.md)将所需属性分配到一组[设备孪生](#device-twin)，并使用系统指标和自定义指标来报告状态。 
 
 ## <a name="azure-cli"></a>Azure CLI
 [Azure CLI](../cli-install-nodejs.md) 是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此版本的 CLI 通过 Node.js 实现。
@@ -65,6 +71,9 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="cloud-to-device"></a>云到设备
 指从 IoT 中心发送到已连接设备的消息。 这些消息通常是命令，用于指示设备采取某项操作。 有关详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
+
+## <a name="configuration"></a>配置
+在使用[自动设备配置](iot-hub-auto-device-config.md)的情况下，可以通过 IoT 中心的配置为一组设备孪生定义所需的配置，并提供一组指标来报告状态和进度。
 
 ## <a name="connection-string"></a>连接字符串
 使用应用程序代码中的连接字符串来封装连接到终结点所需的信息。 连接字符串通常包含终结点的地址和安全信息，但连接字符串的格式因服务而异。 与 IoT 中心服务关联的连接字符串有两种：
@@ -110,6 +119,9 @@ ms.lasthandoff: 02/01/2018
 ## <a name="device-identity"></a>设备标识
 设备标识是分配给在[标识注册表](#identity-registry)中注册的每个设备的唯一标识符。
 
+## <a name="module-identity"></a>模块标识
+模块标识是分配给设备所属的每个模块的唯一标识符。 模块标识也注册到[标识注册表](#identity-registry)中。
+
 ## <a name="device-management"></a>设备管理
 设备管理包含在 IoT 解决方案中管理设备的完整生命周期，包括规划、预配、配置、监视和停用设备。
 
@@ -125,14 +137,17 @@ ms.lasthandoff: 02/01/2018
 ## <a name="device-twin"></a>设备孪生
 [设备孪生](iot-hub-devguide-device-twins.md)是存储设备状态信息（如元数据、配置和条件）的 JSON 文档。 [IoT 中心](#iot-hub)为在 IoT 中心预配的每台设备保留一个设备孪生。 借助设备孪生可以在设备和解决方案后端之间同步[设备条件](#device-condition)和配置。 可以通过查询设备孪生来定位特定设备和查询长时间运行的操作状态。
 
-## <a name="device-twin-queries"></a>设备孪生查询
-[设备孪生查询](iot-hub-devguide-query-language.md)使用类似于 SQL 的 IoT 中心查询语言从设备孪生中检索信息。 可以使用相同的 IoT 中心查询语言检索在 IoT 中心运行的[作业](#job)的信息。
+## <a name="module-twin"></a>模块孪生
+与设备孪生类似，模块孪生是存储模块状态信息（如元数据、配置和条件）的 JSON 文档。 IoT 中心为在 IoT 中心的设备标识下预配的每个模块实体保留一个模块孪生。 可以借助模块孪生在模块和解决方案后端之间同步模块条件和配置。 可以通过查询模块孪生来定位特定模块和查询长时间运行的操作状态。
+
+## <a name="twin-queries"></a>孪生查询
+[设备和模块孪生查询](iot-hub-devguide-query-language.md)使用类似于 SQL 的 IoT 中心查询语言从设备孪生或模块孪生中检索信息。 可以使用相同的 IoT 中心查询语言检索在 IoT 中心运行的[作业](#job)的信息。
 
 ## <a name="device-twin-rest-api"></a>设备孪生 REST API
 可从解决方案后端使用[设备孪生 REST API](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) 来管理设备孪生。 API 可用于检索和更新[设备孪生](#device-twin)属性并调用[直接方法](#direct-method)。 通常，应使用 IoT 中心教程中演示的一种较高级别的[服务 SDK](#azure-iot-service-sdks)。
 
-## <a name="device-twin-synchronization"></a>设备孪生同步
-设备孪生同步使用设备孪生中的[所需属性](#desired-properties)配置设备并检索设备中的[报告属性](#reported-properties)，以将其存储在设备孪生中。
+## <a name="twin-synchronization"></a>孪生同步
+孪生同步使用设备孪生或模块孪生中的[所需属性](#desired-properties)配置设备或模块，并检索其中的[报告属性](#reported-properties)，以将这些属性存储在孪生中。
 
 ## <a name="direct-method"></a>直接方法
 [直接方法](iot-hub-devguide-direct-methods.md)可让你通过在 IoT 中心调用 API 触发在设备上执行的方法。
@@ -175,8 +190,8 @@ IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解
 ## <a name="iot-hub-resource-provider-rest-api"></a>IoT 中心资源提供程序 REST API
 可以使用 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) 管理 [Azure 订阅](#subscription)中的 IoT 中心，以便执行一些操作，例如创建、更新和删除中心。
 
-## <a name="iot-suite"></a>IoT 套件
-Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。 利用这些预配置解决方案，能够快速开始使用常用 IoT 方案的端到端实现。 有关详细信息，请参阅[什么是 Azure IoT 套件？](../iot-suite/iot-suite-overview.md)
+## <a name="iot-solution-accelerators"></a>IoT 解决方案加速器
+Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案中。 利用这些解决方案，能够快速开始使用常用 IoT 方案的端到端实现。 有关详细信息，请参阅 [Azure IoT 解决方案加速器是什么？](../iot-suite/iot-suite-overview.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>适用于 Azure CLI 2.0 的 IoT 扩展
 [适用于 Azure CLI 2.0 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个跨平台的命令行工具。 使用该工具可以管理[标识注册表](#identity-registry)中的设备、向设备发送消息和文件和接收来自设备的消息和文件，以及监视 IoT 中心的操作。

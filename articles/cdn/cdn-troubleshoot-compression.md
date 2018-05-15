@@ -1,11 +1,11 @@
 ---
-title: "排查 Azure CDN 中的文件压缩问题 | Microsoft Docs"
-description: "排查 Azure CDN 文件压缩的问题。"
+title: 排查 Azure CDN 中的文件压缩问题 | Microsoft Docs
+description: 排查 Azure CDN 文件压缩的问题。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14d50cb7cac77af75dd4b7293812154d1f24e47c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>排查 CDN 文件压缩问题
 本文将帮助你排查 [CDN 文件压缩](cdn-improve-performance.md)问题。
@@ -61,9 +61,9 @@ ms.lasthandoff: 10/11/2017
 
 ![CDN 请求标头](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
-### <a name="verify-compression-settings-standard-cdn-profile"></a>验证压缩设置（标准 CDN 配置文件）
+### <a name="verify-compression-settings-standard-cdn-profiles"></a>验证压缩设置（标准 CDN 配置文件）
 > [!NOTE]
-> 仅在 CDN 配置文件为**来自 Verizon 的 Azure CDN** 或 **来自 Akamai 的 Azure CDN** 配置文件时，此步骤才适用。 
+> 仅当 CDN 配置文件为**来自 Microsoft 的标准 Azure CDN**、**来自 Verizon 的标准 Azure CDN** 或**来自 Akamai 的标准 Azure CDN** 配置文件时，此步骤才适用。 
 > 
 > 
 
@@ -74,9 +74,9 @@ ms.lasthandoff: 10/11/2017
 
 ![CDN 压缩设置](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
-### <a name="verify-compression-settings-premium-cdn-profile"></a>验证压缩设置（高级 CDN 配置文件）
+### <a name="verify-compression-settings-premium-cdn-profiles"></a>验证压缩设置（高级 CDN 配置文件）
 > [!NOTE]
-> 仅在 CDN 配置文件为**来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
+> 仅当 CDN 配置文件为**来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
 > 
 > 
 
@@ -88,9 +88,9 @@ ms.lasthandoff: 10/11/2017
 
 ![CDN 高级压缩设置](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached"></a>验证内容已缓存
+### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>验证内容是否已缓存（Verizon CDN 配置文件）
 > [!NOTE]
-> 仅在 CDN 配置文件为**来自 Verizon 的 Azure CDN** 配置文件（标准或高级）时，此步骤才适用。
+> 仅当 CDN 配置文件为**来自 Verizon 的标准 Azure CDN** 或**来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
 > 
 > 
 
@@ -101,9 +101,9 @@ ms.lasthandoff: 10/11/2017
 
 ![CDN 响应标头](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements"></a>验证该文件满足大小要求
+### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>验证该文件是否满足大小要求（Verizon CDN 配置文件）
 > [!NOTE]
-> 仅在 CDN 配置文件为**来自 Verizon 的 Azure CDN** 配置文件（标准或高级）时，此步骤才适用。
+> 仅当 CDN 配置文件为**来自 Verizon 的标准 Azure CDN** 或**来自 Verizon 的高级 Azure CDN** 配置文件时，此步骤才适用。
 > 
 > 
 

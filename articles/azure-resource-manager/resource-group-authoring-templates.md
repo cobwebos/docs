@@ -1,6 +1,6 @@
 ---
-title: "Azure 资源管理器模板的结构和语法 | Microsoft Docs"
-description: "使用声明性 JSON 语法描述 Azure 资源管理器模板的结构和属性。"
+title: Azure 资源管理器模板的结构和语法 | Microsoft Docs
+description: 使用声明性 JSON 语法描述 Azure 资源管理器模板的结构和属性。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2017
+ms.date: 05/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: b0bc5abd768be0fa5876aaef108cd71a15d94510
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 3b70817f973f0bfbdcec2aa8c76a431eec308bcf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 本文介绍 Azure 资源管理器模板的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。 模板中包含可用于为部署构造值的 JSON 和表达式。 有关创建模板的分步教程，请参阅[创建第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。
@@ -32,6 +32,7 @@ ms.lasthandoff: 12/15/2017
     "contentVersion": "",
     "parameters": {  },
     "variables": {  },
+    "functions": {  },
     "resources": [  ],
     "outputs": {  }
 }
@@ -43,6 +44,7 @@ ms.lasthandoff: 12/15/2017
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
 | parameters |否 |执行部署以自定义资源部署时提供的值。 |
 | variables |否 |在模板中用作 JSON 片段以简化模板语言表达式的值。 |
+| functions |否 |可在模板中使用的用户定义函数。 |
 | 资源 |是 |已在资源组中部署或更新的资源类型。 |
 | outputs |否 |部署后返回的值。 |
 
@@ -92,6 +94,25 @@ ms.lasthandoff: 12/15/2017
             }
         ]
     },
+    "functions": [
+      {
+        "namespace": "<namespace-for-your-function>",
+        "members": {
+          "<function-name>": {
+            "parameters": [
+              {
+                "name": "<parameter-name>",
+                "type": "<type-of-parameter-value>"
+              }
+            ],
+            "output": {
+              "type": "<type-of-output-value>",
+              "value": "<function-expression>"
+            }
+          }
+        }
+      }
+    ],
     "resources": [
       {
           "condition": "<boolean-value-whether-to-deploy>",
@@ -184,6 +205,59 @@ ms.lasthandoff: 12/15/2017
 ```
 
 有关定义变量的信息，请参阅 [Azure 资源管理器模板的变量部分](resource-manager-templates-variables.md)。
+
+## <a name="functions"></a>函数
+
+在模板中，可以创建自己的函数。 这些函数可在模板中使用。 通常，定义不想要在整个模板中重复执行的复杂表达式。 从模板中支持的表达式和[函数](resource-group-template-functions.md)创建用户定义函数。
+
+定义用户函数时，存在一些限制：
+
+* 该函数不能访问变量。
+* 该函数不能使用[引用函数](resource-group-template-functions-resource.md#reference)。
+* 该函数的参数不能具有默认值。
+
+函数需要一个命名空间值以避免命名与模板函数发生冲突。 下面的示例演示一个返回存储帐户名称的函数：
+
+```json
+"functions": [
+  {
+    "namespace": "contoso",
+    "members": {
+      "uniqueName": {
+        "parameters": [
+          {
+            "name": "namePrefix",
+            "type": "string"
+          }
+        ],
+        "output": {
+          "type": "string",
+          "value": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id))]"
+        }
+      }
+    }
+  }
+],
+```
+
+可以使用以下代码调用该函数：
+
+```json
+"resources": [
+  {
+    "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2016-01-01",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "location": "South Central US",
+    "tags": {},
+    "properties": {}
+  }
+]
+```
 
 ## <a name="resources"></a>资源
 在 resources 节，可以定义部署或更新的资源。 本部分可能比较复杂，因为必须了解所部署类型才能提供正确的值。

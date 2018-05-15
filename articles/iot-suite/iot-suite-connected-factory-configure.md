@@ -1,12 +1,12 @@
 ---
-title: "配置已连接的工厂拓扑 | Microsoft Docs"
-description: "如何配置已连接的工厂预配置解决方案的拓扑。"
-services: 
+title: 配置连接的工厂拓扑 | Microsoft Docs
+description: 如何配置连接的工厂解决方案加速器的拓扑。
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 19e0f48ab817428a1f953c80296b2e23effe5a8a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 4230914c6fb35201a8c162e2e7ecb31262d2bdca
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="configure-the-connected-factory-preconfigured-solution"></a>配置已连接的工厂预配置解决方案
+# <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
 
-已连接的工厂预配置解决方案显示了虚拟公司 Contoso 的模拟仪表板。 此公司在全球许多地方都设有工厂。
+连接的工厂解决方案加速器显示了虚拟公司 Contoso 的模拟仪表板。 此公司在全球许多地方都设有工厂。
 
-本文以 Contoso 为例，介绍如何配置已连接的工厂解决方案的拓扑。
+本文以 Contoso 为例，介绍如何配置连接的工厂解决方案的拓扑。
 
 ## <a name="simulated-factories-configuration"></a>模拟工厂配置
 
@@ -34,19 +34,19 @@ ms.lasthandoff: 01/02/2018
 * 测试工作站
 * 打包工作站
 
-这些 OPC UA 服务器具有 OPC UA 节点，并且 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)会将这些节点的值发送到已连接的工厂。 这包括：
+这些 OPC UA 服务器具有 OPC UA 节点，并且 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)会将这些节点的值发送到连接的工厂。 这包括：
 
 * 当前的操作状态，例如当前的功耗。
 * 生产信息，例如生产的产品数量。
 
-可以使用仪表板将 Contoso 工厂拓扑从全局视图向下钻取至工作站级别视图。 已连接的工厂仪表板实现：
+可以使用仪表板将 Contoso 工厂拓扑从全局视图向下钻取至工作站级别视图。 连接的工厂仪表板实现了以下功能：
 
 * 拓扑中每层的 OEE 和 KPI 图表数据的可视化效果。
 * 工作站中 OPC UA 节点当前值的可视化效果。
 * 从工作站级别到全局级别的 OEE 和 KPI 图表数据的聚合。
 * 当值达到特定阈值时要执行的警报和操作的可视化效果。
 
-## <a name="connected-factory-topology"></a>已连接的工厂拓扑
+## <a name="connected-factory-topology"></a>连接的工厂拓扑
 
 工厂、生产线和工作站的拓扑是分层的：
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="topology-configuration-file"></a>拓扑配置文件
 
-若要配置前一部分中列出的属性，已连接的工厂解决方案将使用名为 [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json) 的配置文件。
+若要配置上一部分中列出的属性，连接的工厂解决方案将使用名为 [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json) 的配置文件。
 
 可以在 `WebApp/Contoso/Topology` 文件夹的解决方案源代码中找到此文件。
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 01/02/2018
   * **CallOpcMethod**：以“父节点的 NodeId, 要调用的方法的 NodeId, OPC UA 服务器的 URI”格式调用的 OPC UA 方法的节点信息和参数。
   * **OpenWebPage**：要在浏览器窗口中显示的 URL。
 
-`<opc_node_description>` 包含一个工作站（OPC UA 服务器）中的 OPC UA 节点的信息。 具有以下特征的节点也有效：表示没有任何现有的 OPC UA 节点，但在已连接的工厂的计算逻辑中作为存储使用。 它具有以下属性：
+`<opc_node_description>` 包含一个工作站（OPC UA 服务器）中的 OPC UA 节点的信息。 具有以下特征的节点也有效：表示没有任何现有的 OPC UA 节点，但在连接的工厂的计算逻辑中作为存储使用。 它具有以下属性：
 
 * **NodeId**（字符串类型）
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 01/02/2018
 
   定义操作的集合，可执行这些操作以响应最大值警报。
 
-在工作站级别，还可以看到模拟对象。 这些对象仅用于配置已连接的工厂模拟，不应用于配置真正的拓扑。
+在工作站级别，还可以看到模拟对象。 这些对象仅用于配置连接的工厂模拟，不应用于配置真正的拓扑。
 
 ## <a name="how-the-configuration-data-is-used-at-runtime"></a>配置数据在运行时的使用方式
 
@@ -267,7 +267,7 @@ ms.lasthandoff: 01/02/2018
 
 ### <a name="visual-appearance"></a>可视外观
 
-此类别中的属性定义已连接的工厂仪表板的可视外观。 示例包括：
+此类别中的属性定义连接的工厂仪表板的可视外观。 示例包括：
 
 * 名称
 * 说明
@@ -282,18 +282,18 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 
 ### <a name="oeekpi-computation"></a>OEE/KPI 计算
 
-已连接的工厂模拟的 OEE/KPI 图表数据按以下内容参数化：
+连接的工厂模拟的 OEE/KPI 图表数据按以下内容参数化：
 
 * 要包括在计算中的 OPC UA 节点值。
 * 从遥测值计算图表数据的方式。
 
-已连接的工厂使用由 http://oeeindustrystandard.oeefoundation.org 发布的 OEE 公式。
+连接的工厂使用 http://oeeindustrystandard.oeefoundation.org 上发布的 OEE 公式。
 
 工作站中的 OPC UA 节点对象支持在 OEE/KPI 计算中使用标记。 Relevance 属性指示 OPC UA 节点值应用于的 OEE/KPI 图表数据。 OpCode 属性定义如何在计算中包含值。
 
 ### <a name="alert-handling"></a>警报处理
 
-已连接的工厂支持基于最小/最大阈值的简单警报生成机制。 可以配置大量的预定义操作以响应这些警报。 此机制由以下属性控制：
+连接的工厂支持基于最小/最大阈值的简单警报生成机制。 可以配置大量的预定义操作以响应这些警报。 此机制由以下属性控制：
 
 * 最大值
 * 最小值
@@ -302,7 +302,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 
 ## <a name="correlating-to-telemetry-data"></a>与遥测数据相关联
 
-对于某些操作（例如可视化最后一个值或创建时序见解查询），WebApp 需要一个用于引入的遥测数据的寻址方案。 发送到已连接的工厂的遥测还需要存储在内部数据结构中。 支持这些操作的两个属性位于工作站（OPC UA 服务器）和 OPC UA 节点级别：
+对于某些操作（例如可视化最后一个值或创建时序见解查询），WebApp 需要一个用于引入的遥测数据的寻址方案。 发送到连接的工厂的遥测数据还需要存储在内部数据结构中。 支持这些操作的两个属性位于工作站（OPC UA 服务器）和 OPC UA 节点级别：
 
 * **OpcUri**
 
@@ -312,13 +312,13 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 
   标识 OPC UA 服务器中的节点值。 此属性的格式必须在 OPC UA 规范中指定。 在引入的消息中，此属性作为 NodeId 发送。
 
-查看[此](https://github.com/Azure/iot-edge-opc-publisher) GitHub 页面，详细了解如何使用 OPC 发布服务器将遥测数据引入已连接的工厂。
+查看[此](https://github.com/Azure/iot-edge-opc-publisher) GitHub 页面，详细了解如何使用 OPC 发布服务器将遥测数据引入连接的工厂。
 
 ## <a name="example-how-kpi1-is-calculated"></a>示例：如何计算 KPI1
 
 `ContosoTopologyDescription.json` 文件中的配置控制 OEE/KPI 数据的计算方式。 以下示例显示此文件中的属性如何控制 KPI1 的计算。
 
-在已连接的工厂中，KPI1 用于测量最后一小时成功生产的产品数量。 已连接的工厂模拟中的每个工作站（OPC UA 服务器）提供 OPC UA 节点 (`NodeId: "ns=2;i=385"`)，它提供遥测以计算此 KPI。
+在连接的工厂中，KPI1 用于测量最后一小时成功生产的产品数量。 连接的工厂模拟中的每个工作站（OPC UA 服务器）都提供一个 OPC UA 节点 (`NodeId: "ns=2;i=385"`)，它提供遥测数据来计算此 KPI。
 
 此 OPC UA 节点的配置与以下代码片段类似：
 
@@ -339,10 +339,10 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 * 所有值的平均值。
 * 给定时间跨度中所有唯一的 OpcUri (ApplicationUri)、NodeId 对的所有值的总和。
 
-NumberOfManufactureredProducts 节点值的一个特征是它只会增加。 若要计算在时间跨度中生产的产品数量，已连接的工厂将使用 OpCode SubMaxMin。 此计算在时间跨度的开头检索最小值，在时间跨度的结尾检索最大值。
+NumberOfManufactureredProducts 节点值的一个特征是它只会增加。 若要计算在时间跨度中生产的产品数量，连接的工厂将使用 **OpCode** **SubMaxMin**。 此计算在时间跨度的开头检索最小值，在时间跨度的结尾检索最大值。
 
 配置中的 OpCode 配置计算逻辑以计算最大值和最小值差异的结果。 然后这些结果将由下而上累计到根（全局）级别并显示在仪表板中。
 
 ## <a name="next-steps"></a>后续步骤
 
-建议下一步了解如何[在 Windows 或 Linux 上为连接工厂预配置解决方案部署网关](iot-suite-connected-factory-gateway-deployment.md)。
+建议执行的下一步骤是了解如何[在 Windows 或 Linux 上为连接的工厂解决方案加速器部署网关](iot-suite-connected-factory-gateway-deployment.md)。

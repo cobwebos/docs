@@ -1,24 +1,24 @@
 ---
-title: "如何为应用服务应用程序配置 Google 身份验证"
-description: "了解如何为应用服务应用程序配置 Google 身份验证。"
+title: 如何为应用服务应用程序配置 Google 身份验证
+description: 了解如何为应用服务应用程序配置 Google 身份验证。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: mattchenderson
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: d6c1707f67d986487e5a45e76ffc9a02ddf16eb1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1a174913446c0a1d5e3e3b01123db8b40bfd172c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>如何将应用服务应用程序配置为使用 Google 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -30,11 +30,13 @@ ms.lasthandoff: 10/11/2017
 ## <a name="register"> </a>向 Google 注册应用程序
 1. 登录到 [Azure 门户]并导航到应用程序。 复制 **URL**，稍后将用此来配置 Google 应用。
 2. 导航到 [Google API](http://go.microsoft.com/fwlink/p/?LinkId=268303) 网站，使用 Google 帐户凭据登录，单击“创建项目”，提供“项目名称”，并单击“创建”。
-3. 在“社交 API”下，单击“Google+ API”，并单击“启用”。
-4. 在左侧导航中，单击“凭据” > “OAuth 许可屏幕”，选择“电子邮件地址”，输入“产品名称”，并单击“保存”。
-5. 在“凭据”选项卡中，单击“创建凭据” > “OAuth 客户端 ID”，并选择“Web 应用程序”。
-6. 将之前复制的应用服务 **URL** 粘贴到“已授权的 JavaScript 源”中，然后将重定向 URI 粘贴到“已授权的重定向 URI”中。 重定向 URI 是应用程序的 URL 加上路径 */.auth/login/google/callback*。 例如，`https://contoso.azurewebsites.net/.auth/login/google/callback`。 请务必使用 HTTPS 方案。 然后单击“创建”。
-7. 在下一个屏幕上，记下客户端 ID 和客户端密钥的值。
+3. 创建项目后，请选择它。 从项目仪表板中，单击“转到 API 概述”。
+4. 选择“启用 API 和服务”。 搜索 **Google + API**，然后选择它。 单击“启用”。
+6. 在左侧导航中，单击“凭据” > “OAuth 许可屏幕”，选择“电子邮件地址”，输入“产品名称”，并单击“保存”。
+7. 在“凭据”选项卡中，单击“创建凭据” > “OAuth 客户端 ID”。 单击“配置许可屏幕”，提供**产品名称**。 单击“保存”
+8. 在“创建客户端 ID”屏幕上，选择“Web 应用程序”。
+9. 将之前复制的应用服务 **URL** 粘贴到“已授权的 JavaScript 源”中，然后将重定向 URI 粘贴到“已授权的重定向 URI”中。 重定向 URI 是应用程序的 URL 加上路径 */.auth/login/google/callback*。 例如，`https://contoso.azurewebsites.net/.auth/login/google/callback`。 请务必使用 HTTPS 方案。 然后单击“创建”。
+10. 在下一个屏幕上，记下客户端 ID 和客户端密钥的值。
 
     > [!IMPORTANT]
     > 客户端密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或在客户端应用程序中分发它。
@@ -49,7 +51,7 @@ ms.lasthandoff: 10/11/2017
    
    默认情况下，应用服务提供身份验证但不限制对站点内容和 API 的已授权访问。 必须在应用代码中为用户授权。
 4. （可选）要限制只有通过 Google 帐户身份验证的用户可以访问站点，请将“请求未经身份验证时需执行的操作”设置为“Google”。 这会要求对所有请求进行身份验证，而所有未经身份验证的请求会被重定向到 Google 进行身份验证。
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 
 现在，可以在应用中使用 Google 进行身份验证了。
 

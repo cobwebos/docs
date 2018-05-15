@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 05/07/2018
 ms.author: sngun
-ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: bede91ed3ffc456740a0eb63ed7a15278e99ebe2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>为 Azure Cosmos DB 容器设置和获取吞吐量
 
-可在 Azure 门户中或使用客户端 SDK 为 Azure Cosmos DB 容器设置吞吐量。 
+可在 Azure 门户中或使用客户端 SDK 为 Azure Cosmos DB 容器或一组容器设置吞吐量。 
 
 下表列出了容器可用的吞吐量：
 
@@ -31,15 +31,18 @@ ms.lasthandoff: 04/18/2018
             <td valign="top"><p></p></td>
             <td valign="top"><p>单分区容器</p></td>
             <td valign="top"><p>分区容器</p></td>
+            <td valign="top"><p><strong>一组容器</strong></p></td>
         </tr>
         <tr>
             <td valign="top"><p>最小吞吐量</p></td>
             <td valign="top"><p>400 个请求单位/秒</p></td>
-            <td valign="top"><p>1000 个请求单位/秒</p></td>
+            <td valign="top"><p>1,000 个请求单位/秒</p></td>
+            <td valign="top"><p>50,000 个请求单位/秒</p></td>
         </tr>
         <tr>
             <td valign="top"><p>最大吞吐量</p></td>
             <td valign="top"><p>10,000 个请求单位/秒</p></td>
+            <td valign="top"><p>不受限制</p></td>
             <td valign="top"><p>不受限制</p></td>
         </tr>
     </tbody>
@@ -62,6 +65,7 @@ ms.lasthandoff: 04/18/2018
 
 ```csharp
 // Fetch the offer of the collection whose throughput needs to be updated
+// To change the throughput for a set of containers, use the database's selflink instead of the collection's selflink
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
@@ -82,6 +86,7 @@ await client.ReplaceOfferAsync(offer);
 
 ```Java
 // find offer associated with this collection
+// To change the throughput for a set of containers, use the database's resource id instead of the collection's resource id
 Iterator < Offer > it = client.queryOffers(
     String.format("SELECT * FROM r where r.offerResourceId = '%s'", collectionResourceId), null).getQueryIterator();
 assertThat(it.hasNext(), equalTo(true));
@@ -131,7 +136,7 @@ MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索给�
 ![MongoDB API 门户指标][1]
 
 ### <a id="RequestRateTooLargeAPIforMongoDB"></a>超过 MongoDB API 中保留的吞吐量限制
-如果应用程序超出针对某个容器预配的吞吐量，则会对该应用程序进行速率限制，直到使用速率降至预配的吞吐量速率。 进行速率限制时，后端会提前结束请求并返回 `16500` 错误代码 -`Too Many Requests`。 默认情况下，在返回`Too Many Requests`错误代码之前，MongoDB API 会自动重试最多 10 次。 如果收到大量的`Too Many Requests`错误代码，可能需要考虑在应用程序的错误处理例程中添加重试逻辑，或者[提高容器的预配吞吐量](set-throughput.md)。
+如果应用程序超出针对某个容器或一组容器预配的吞吐量，则会对该应用程序进行速率限制，直到使用速率降至低于预配的吞吐量速率。 进行速率限制时，后端会提前结束请求并返回 `16500` 错误代码 -`Too Many Requests`。 默认情况下，在返回`Too Many Requests`错误代码之前，MongoDB API 会自动重试最多 10 次。 如果收到大量的`Too Many Requests`错误代码，可能需要考虑在应用程序的错误处理例程中添加重试逻辑，或者[提高容器的预配吞吐量](set-throughput.md)。
 
 ## <a name="throughput-faq"></a>吞吐量常见问题
 
@@ -139,7 +144,7 @@ MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索给�
 
 400 RU/s 是 Cosmos DB 单个分区容器上可用的最小吞吐量（1000 RU/s 是分区容器的最小值）。 请求单位按 100 RU/s 间隔进行设置，但吞吐量不能设置为 100 RU/s 或小于 400 RU/s 的任何值。 如果在寻找一种经济高效的方法来开发和测试 Cosmos DB，则可以使用免费的 [ 模拟器](local-emulator.md)（可以在本地免费部署）。 
 
-如何使用 MongoDB API 设置吞吐量？
+**如何使用 MongoDB API 设置吞吐量？**
 
 没有可设置吞吐量的 MongoDB API 扩展。 建议使用 SQL API，如[使用 SQL API for .NET 设置吞吐量](#set-throughput-sdk)中所示。
 

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: dksimpson
 manager: akucer
 editor: ''
-ms.assetid: 289f8d9e-8839-4e21-b248-bef320f9dbfc
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/06/2018
-ms.author: mazha
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: dad9866a3d61421987bc4a62057498e004f65e7f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f57cfe19fd2eee0952a20fabcaa0d73ca96894ef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
@@ -28,9 +27,9 @@ ms.lasthandoff: 04/16/2018
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
-> - 创建 CNAME DNS 记录
-> - 将自定义域与 CDN 终结点相关联
-> - 验证自定义域
+> - 创建 CNAME DNS 记录。
+> - 将自定义域与 CDN 终结点相关联。
+> - 验证自定义域。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -211,16 +210,16 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-你已了解：
+本教程介绍了如何：
 
 > [!div class="checklist"]
-> - 创建 CNAME DNS 记录
-> - 将自定义域与 CDN 终结点相关联
-> - 验证自定义域
+> - 创建 CNAME DNS 记录。
+> - 将自定义域与 CDN 终结点相关联。
+> - 验证自定义域。
 
 转到下一教程，了解如何在 Azure CDN 自定义域上配置 HTTPS。
 
 > [!div class="nextstepaction"]
-> [在 Azure CDN 自定义域上配置 HTTPS](cdn-custom-ssl.md)
+> [教程：在 Azure CDN 自定义域上配置 HTTPS](cdn-custom-ssl.md)
 
 

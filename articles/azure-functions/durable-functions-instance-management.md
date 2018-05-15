@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 01a6fefc10dfd83997acc290dbd1c85ba86a4799
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0e573b4973ea30b990043b54c5cdcf0805135a40
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>在 Durable Functions 中管理实例 (Azure Functions)
 
@@ -50,7 +50,7 @@ public static async Task Run(
 }
 ```
 
-对于非 .NET 语言，也可以使用函数输出绑定来启动新实例。 在此情况下，可以使用将上述三个参数作为字段的任何 JSON 可序列化对象。 例如，考虑以下 Node.js 函数：
+对于非 .NET 语言，也可以使用函数输出绑定来启动新实例。 在此情况下，可以使用将上述三个参数作为字段的任何 JSON 可序列化对象。 例如，考虑以下 JavaScript 函数：
 
 ```js
 module.exports = function (context, input) {
@@ -77,6 +77,7 @@ module.exports = function (context, input) {
 * **CreatedTime**：业务流程协调程序函数开始运行的时间。
 * **LastUpdatedTime**：上次创建业务流程检查点的时间。
 * **Input**：函数的输入，采用 JSON 值形式。
+* **CustomStatus**：JSON 格式的自定义业务流程状态。 
 * **Output**：函数的输出，采用 JSON 值形式（如果该函数已完成）。 如果业务流程协调程序函数失败，此属性会包含失败详细信息。 如果业务流程协调程序函数已终止，此属性会包括提供的终止原因（如果有）。
 * **RuntimeStatus**：以下值之一：
     * **Running**：实例已开始运行。
@@ -99,9 +100,6 @@ public static async Task Run(
 }
 ```
 
-> [!NOTE]
-> 目前，只有 C# 业务流程协调程序函数支持实例查询。
-
 ## <a name="terminating-instances"></a>终止实例
 
 可以使用 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 类的 [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) 方法终止正在运行的业务流程实例。 两个参数为 `instanceId` 和 `reason` 字符串，将写入日志和实例状态。 终止的实例在达到下一个 `await` 点时会立即停止运行，或者已进入 `await` 点时会立即终止。 
@@ -116,9 +114,6 @@ public static Task Run(
     return client.TerminateAsync(instanceId, reason);
 }
 ```
-
-> [!NOTE]
-> 目前，只有 C# 业务流程协调程序函数支持实例终止。
 
 > [!NOTE]
 > 当前不传播实例终止。 无论调用活动函数和子业务流程的业务流程实例是否已终止，活动函数和子业务流程都将运行至完成状态。
@@ -145,9 +140,6 @@ public static Task Run(
     return client.RaiseEventAsync(instanceId, "MyEvent", eventData);
 }
 ```
-
-> [!NOTE]
-> 目前，只有 C# 业务流程协调程序函数支持引发事件。
 
 > [!WARNING]
 > 如果不存在具有指定实例 ID 的业务流程实例，或者该实例不在等待指定的事件名称，则会丢弃事件消息。 有关此行为的详细信息，请参阅 [GitHub 问题](https://github.com/Azure/azure-functions-durable-extension/issues/29)。

@@ -1,7 +1,7 @@
 ---
-title: "远程监视解决方案中的设备模拟 - Azure | Microsoft Docs"
-description: "本教程介绍如何在远程监视预配置解决方案中使用设备模拟器。"
-services: 
+title: 远程监视解决方案中的设备模拟 - Azure | Microsoft Docs
+description: 本教程介绍如何在远程监视解决方案加速器中使用设备模拟器。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,15 +12,19 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 563a5a1c177b1f18be18d9b3cc9f3f9a7ee8ae4a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 905e64d004c02db663634eb784cacf6fab805193
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-a-new-simulated-device"></a>创建新的模拟设备
 
-本教程介绍如何在远程监视预配置解决方案中自定义设备模拟器微服务。 为了演示设备模拟器的功能，本教程在 Contoso IoT 应用程序中使用了两个方案。
+本教程介绍如何在远程监视解决方案加速器中自定义设备模拟器微服务。 为了演示设备模拟器的功能，本教程在 Contoso IoT 应用程序中使用了两个方案。
+
+以下视频概述了用于自定义设备模拟器微服务的选项：
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
 在第一个方案中，Contoso 想要测试新的智能灯泡设备。 为了执行测试，我们创建了具有以下特征的新模拟设备：
 
@@ -68,7 +72,7 @@ ms.lasthandoff: 03/09/2018
 
 在第二个方案中，我们将新的遥测类型添加到 Contoso 的现有**冷却器**设备。
 
-本教程将介绍如何在远程监视预配置解决方案中使用设备模拟器：
+本教程介绍如何在远程监视解决方案加速器中使用设备模拟器：
 
 本教程介绍如何执行下列操作：
 
@@ -86,7 +90,7 @@ ms.lasthandoff: 03/09/2018
 
 若要学习本教程，需要：
 
-* 在 Azure 订阅中部署远程监视解决方案的实例。 如果尚未部署远程监视解决方案，应完成[部署远程监视预配置解决方案](iot-suite-remote-monitoring-deploy.md)教程。
+* 在 Azure 订阅中部署远程监视解决方案的实例。 如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](iot-suite-remote-monitoring-deploy.md)教程。
 
 * Visual Studio 2017。 如果尚未安装 Visual Studio 2017，可以下载免费的[Visual Studio Community Edition](https://www.visualstudio.com/free-developer-offers/)。
 
@@ -289,10 +293,10 @@ ms.lasthandoff: 03/09/2018
         "temperature_unit": "F",
         "status": "on"
       },
-      "Script": {
+      "Interval": "00:00:20",
+      "Scripts": {
         "Type": "javascript",
-        "Path": "lightbulb-01-state.js",
-        "Interval": "00:00:20"
+        "Path": "lightbulb-01-state.js"
       }
     },
     ```
@@ -474,7 +478,7 @@ ms.lasthandoff: 03/09/2018
 
     ![连接的设备数](media/iot-suite-remote-monitoring-test/connecteddevices.png)
 
-1. 在浏览器中，导航到远程监视解决方案的**仪表板**。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示两个模拟设备的温度：
+1. 在浏览器中，导航到远程监视解决方案的**仪表板**。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示所有模拟设备的温度：
 
     ![温度遥测](media/iot-suite-remote-monitoring-test/telemetry.png)
 

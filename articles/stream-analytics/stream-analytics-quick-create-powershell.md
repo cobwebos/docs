@@ -1,8 +1,7 @@
 ---
-title: 使用 Azure PowerShell 创建流分析作业 | Microsoft Docs
+title: 使用 Azure PowerShell 创建流分析作业
 description: 本快速入门详细介绍了如何使用 Azure PowerShell 模块来部署并运行 Azure 流分析作业。
 services: stream-analytics
-keywords: 流分析, 云作业, Azure PowerShell, 作业输入, 作业输出, 作业转换
 author: SnehaGunda
 ms.author: sngun
 ms.date: 03/16/2018
@@ -10,11 +9,11 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 8a1036531ea0e7c1426224bc4d42c83e9049cabf
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0be8cee9e6c7874282f4e8f43f75fa7f2490c14e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -34,9 +33,11 @@ Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 A
 # Log in to your Azure account
 Connect-AzureRmAccount
 
-# Select the Azure subscription you want to use to create the resource group.
-Get-AzureRmSubscription `
-  -SubscriptionName “<your subscription>” | Select-AzureRmSubscription
+# List all available subscriptions.
+Get-AzureRmSubscription
+
+# Select the Azure subscription you want to use to create the resource group and resources.
+Get-AzureRmSubscription -SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组

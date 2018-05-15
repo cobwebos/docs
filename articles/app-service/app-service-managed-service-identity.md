@@ -11,16 +11,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: 800105d29fa284531e02ce80db69eff3a9915652
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识（公共预览版）
 
 > [!NOTE] 
 > 应用服务和 Azure Functions 的托管服务标识目前提供预览版。 目前不支持 Linux 版应用服务和用于容器的 Web 应用。
+
+
+> [!Important] 
+> 如果应用跨订阅/租户迁移，应用服务和 Azure Functions 的托管服务标识将不会按预期工作。 应用将需要获取一个新标识，在未删除站点本身的情况下，现有标识将不会正确删除。 将需要使用新标识重新创建应用，下游资源将需要可以访问更新的策略，以便使用新标识。
+
 
 本主题介绍如何为应用服务和 Azure Functions 应用程序创建托管应用标识，以及如何使用它来访问其他资源。 借助 Azure Active Directory 的托管服务标识，应用可以轻松访问其他受 AAD 保护的资源（如 Azure Key Vault）。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关托管服务标识的详细信息，请参阅[托管服务标识概述](../active-directory/managed-service-identity/overview.md)。
 

@@ -1,12 +1,12 @@
 ---
-title: "了解 Azure Service Fabric 支持选项 | Microsoft Docs"
-description: "支持的 Azure Service Fabric 群集版本，以及文件支持票证的链接"
+title: 了解 Azure Service Fabric 支持选项 | Microsoft Docs
+description: 支持的 Azure Service Fabric 群集版本，以及文件支持票证的链接
 services: service-fabric
 documentationcenter: .net
 author: pkcsf
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/26/2018
 ms.author: pkc
-ms.openlocfilehash: 970f1ff59560beaf898f22eb4e701088a6d5902a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ec634dd19cf1e944c768e1d368f114f66e9c38a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/01/2018
 
 了解有关以下方面的详细信息：
  
-- [Microsoft 提供的 Azure 支持](https://azure.microsoft.com/en-us/support/plans/?b=16.44)。
+- [Microsoft 提供的 Azure 支持](https://azure.microsoft.com/support/plans/?b=16.44)。
 - [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)。
 
 <a id="getlivesitesupportonprem"></a>
@@ -77,7 +77,8 @@ ms.lasthandoff: 02/01/2018
 | 5.6.* | 5.4.164.* |低于或等于版本 2.6 |2017 年 10 月 13 日   |
 | 5.7.* | 5.4.164.* |低于或等于版本 2.7 |2017 年 12 月 15 日  |
 | 6.0.* | 5.6.205.* |版本 2.8 或更低版本 |2018 年 3 月 30 日     | 
-| 6.1.* | 5.7.221.* |版本 3.0 或更低版本 |最新版本，因此尚无结束日期 |
+| 6.1.* | 5.7.221.* |版本 3.0 或更低版本 |2018 年 6 月 15 日      |
+| 6.2.* | 6.0.232.* |版本 3.1 或更低版本 |最新版本，因此尚无结束日期 |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 预览版本 - 不支持在生产环境中使用。
 我们会不时发布包含重要功能的版本，希望用户对这些功能提供反馈，这些版本将作为预览版发布。 这些预览版本应仅用于测试目的。 生产群集应始终运行支持的稳定 Service Fabric 版本。 预览版本始终以主版本号和次版本号 255 开头。 例如，如果看到 Service Fabric 版本 255.255.5703.949，则该版本应仅在测试群集中使用且处于预览状态。 这些预览版本也在 [Service Fabric 团队博客](https://blogs.msdn.microsoft.com/azureservicefabric)上公布，并将提供有关包含的功能的详细信息。

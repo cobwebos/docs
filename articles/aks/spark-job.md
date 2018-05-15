@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 容器服务 (AKS) 运行 Apache Spark 作业
-description: 使用 Azure 容器服务 (AKS) 运行 Apache Spark 作业
+title: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
+description: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
 services: container-service
 author: lenadroid
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 627cb80a055fb4b66fcc428a1de87d754af6991e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fbeddb60ce968ff0d32e2ddb6a4f62d2036d80aa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
-[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-latest-release]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure 容器服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure 容器服务 (AKS) 群集上准备和运行 Apache Spark 作业。
+[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-latest-release]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-Spark 用于大规模数据处理，要求根据 Spark 资源的要求调整 Kubernetes 节点的大小。 我们建议对 Azure 容器服务 (AKS) 节点至少使用 `Standard_D3_v2` 大小。
+Spark 用于大规模数据处理，要求根据 Spark 资源的要求调整 Kubernetes 节点的大小。 我们建议对 Azure Kubernetes 服务 (AKS) 节点至少使用 `Standard_D3_v2` 大小。
 
 如果需要一个可以满足此最低建议要求的 AKS 群集，请运行以下命令。
 

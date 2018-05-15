@@ -3,8 +3,8 @@ title: Azure 诊断日志 | Microsoft Docs
 description: 客户可为 Azure CDN 启用日志分析。
 services: cdn
 documentationcenter: ''
-author: ''
-manager: ''
+author: dksimpson
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
-ms.author: v-deasim
-ms.openlocfilehash: c367cffa8f0453a0f7e230571d861d039122c291
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: rli
+ms.openlocfilehash: 73c19383b791438c2ae899b45e1b4635e9cd5802
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/19/2018
  - Azure 事件中心
  - [Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
-此功能适用于所有属于 Verizon（标准版和高级版）和 Akamai（标准版）CDN 配置文件的 CDN 终结点。 
+此功能在所有定价层的 CDN 终结点上提供。 
 
 通过 Azure 诊断日志，可将基本使用情况指标从 CDN 终结点导出到不同的源，以便以自定义方式使用它们。 例如，可执行以下类型的数据导出：
 
@@ -156,10 +156,10 @@ ms.lasthandoff: 04/19/2018
 
 字段说明：
 
-|值|description|
+|值|说明|
 |-------|---------|
 |订阅 ID    |Azure 订阅的 ID，采用 GUID 格式。|
-|资源 |组名称：CDN 资源所属资源组的名称。|
+|资源组名称 |CDN 资源所属资源组的名称。|
 |配置文件名称 |CDN 配置文件的名称|
 |终结点名称 |CDN 终结点的名称|
 |年龄|  年份的 4 位数表示形式，例如 2017|
@@ -276,47 +276,49 @@ Log Analytics 是 Azure 中的一个服务，用于监视云和本地环境，�
     
 ## <a name="log-data-delays"></a>日志数据延迟
 
-Verizon 日志数据延迟 | Akamai 日志数据延迟
---- | ---
-Verizon 日志数据延迟 1 小时，在终结点传播完成后长达 2 小时才开始显示。 | Akamai 日志数据延迟 24 小时；如果数据是在 24 小时以前创建的，则最长需要在 2 小时后才会开始显示。 如果是最近创建的，则可能需要长达 25 个小时才能开始显示日志。
+下表介绍 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 标准/高级版**的日志数据延迟。
+
+Microsoft 日志数据延迟 | Verizon 日志数据延迟 | Akamai 日志数据延迟
+--- | --- | ---
+延迟 1 小时。 | 延迟 1 小时，在终结点传播完成后可能需要长达 2 小时的时间才会开始显示。 | 延迟 24 小时；如果数据是在 24 小时以前创建的，则最长需要在 2 小时后才会开始显示。 如果是最近创建的，则可能需要长达 25 个小时才能开始显示日志。
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>CDN 核心分析的诊断日志类型
 
 目前只提供核心分析日志，其中包含一些显示 HTTP 响应统计信息和出口统计信息的指标（如 CDN POP/边缘中所见）。
 
 ### <a name="core-analytics-metrics-details"></a>核心分析指标详细信息
-下表显示了核心分析日志中可用指标的列表。 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 还介绍了某提供商的给定指标是否可用。 请注意，这些指标仅适用于在其上拥有流量的 CDN 终结点。
+下表显示了 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 标准/高级版**的核心分析日志中提供的一系列指标。 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 请注意，这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | 说明   | Verizon  | Akamai 
-|---------------------------|---------------|---|---|
-| RequestCountTotal         |在此期间请求命中的总次数| 是  |是   |
-| RequestCountHttpStatus2xx |导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数              | 是  |是   |
-| RequestCountHttpStatus3xx | 导致 3xx HTTP 代码（例如 300 和 302）的所有请求的计数              | 是  |是   |
-| RequestCountHttpStatus4xx |导致 4xx HTTP 代码（例如 400 和 404）的所有请求的计数               | 是   |是   |
-| RequestCountHttpStatus5xx | 导致 5xx HTTP 代码（例如 500 和 504）的所有请求的计数              | 是  |是   |
-| RequestCountHttpStatusOthers |  所有其他 HTTP 代码的计数（2xx-5xx 除外） | 是  |是   |
-| RequestCountHttpStatus200 | 导致 200 HTTP 代码响应的所有请求的计数              |否   |是   |
-| RequestCountHttpStatus206 | 导致 206 HTTP 代码响应的所有请求的计数              |否   |是   |
-| RequestCountHttpStatus302 | 导致 302 HTTP 代码响应的所有请求的计数              |否   |是   |
-| RequestCountHttpStatus304 |  导致 304 HTTP 代码响应的所有请求的计数             |否   |是   |
-| RequestCountHttpStatus404 | 导致 404 HTTP 代码响应的所有请求的计数              |否   |是   |
-| RequestCountCacheHit |导致缓存命中的所有请求的计数。 资产已直接从 POP 提供给客户端。               | 是  |否   |
-| RequestCountCacheMiss | 导致缓存未命中的所有请求的计数。 这意味着在最靠近客户端的 POP 上找不到资产，因此从源进行检索。              |是   | 否  |
-| RequestCountCacheNoCache | 因边缘上的用户配置而无法缓存的资产的所有请求计数。              |是   | 否  |
-| RequestCountCacheUncacheable | 因资产的 Cache-Control 和 Expires 标头而无法缓存的资产的所有请求计数，这些标头指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存                |是   |否   |
-| RequestCountCacheOthers | 上述未涵盖的具有缓存状态的所有请求的计数。              |是   | 否  |
-| EgressTotal | 出站数据传输量（按 GB 计）              |是   |是   |
-| EgressHttpStatus2xx | 针对状态代码为 2xx HTTP 的响应的出站数据传输量*（按 GB 计）            |是   |否   |
-| EgressHttpStatus3xx | 针对状态代码为 3xx HTTP 的响应的出站数据传输量（按 GB 计）              |是   |否   |
-| EgressHttpStatus4xx | 针对状态代码为 4xx HTTP 的响应的出站数据传输量（按 GB 计）               |是   | 否  |
-| EgressHttpStatus5xx | 针对状态代码为 5xx HTTP 的响应的出站数据传输量（按 GB 计）               |是   |  否 |
-| EgressHttpStatusOthers | 针对带其他 HTTP 状态代码的响应的出站数据传输量（按 GB 计）                |是   |否   |
-| EgressCacheHit |  针对直接从 CDN POP/边缘上 CDN 缓存传递的响应的出站数据传输量  |是   |  否 |
-| EgressCacheMiss | 针对未在最近的 POP 服务器上找到并从源服务器检索的响应的出站数据传输量              |是   |  否 |
-| EgressCacheNoCache | 针对因边缘上的用户配置而无法缓存的资源的出站数据传输量。                |是   |否   |
-| EgressCacheUncacheable | 针对因资产的 Cache-Control 和/或 Expires 标头而无法缓存的资产的出站数据传输量。 指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存。                   |是   | 否  |
-| EgressCacheOthers |  其他缓存方案的出站数据传输量。             |是   | 否  |
+|指标                     | 说明 | Microsoft | Verizon | Akamai |
+|---------------------------|-------------|----------|---------|--------|
+| RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
+| RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |
+| RequestCountHttpStatus3xx | 导致 3xx HTTP 代码（例如 300 和 302）的所有请求的计数。 | 是 | 是 |是 |
+| RequestCountHttpStatus4xx | 导致 4xx HTTP 代码（例如 400 和 404）的所有请求的计数。 | 是 | 是 |是 |
+| RequestCountHttpStatus5xx | 导致 5xx HTTP 代码（例如 500 和 504）的所有请求的计数。 | 是 | 是 |是 |
+| RequestCountHttpStatusOthers | 所有其他 HTTP 代码的计数（2xx-5xx 除外）。 | 是 | 是 |是 |
+| RequestCountHttpStatus200 | 导致 200 HTTP 代码响应的所有请求的计数。 | 是 | 否  |是 |
+| RequestCountHttpStatus206 | 导致 206 HTTP 代码响应的所有请求的计数。 | 是 | 否  |是 |
+| RequestCountHttpStatus302 | 导致 302 HTTP 代码响应的所有请求的计数。 | 是 | 否  |是 |
+| RequestCountHttpStatus304 | 导致 304 HTTP 代码响应的所有请求的计数。 | 是 | 否  |是 |
+| RequestCountHttpStatus404 | 导致 404 HTTP 代码响应的所有请求的计数。 | 是 | 否  |是 |
+| RequestCountCacheHit | 导致缓存命中的所有请求的计数。 资产已直接从 POP 提供给客户端。 | 是 | 是 | 否  |
+| RequestCountCacheMiss | 导致缓存未命中的所有请求的计数。 这意味着在最靠近客户端的 POP 上找不到资产，因此从源进行检索。 | 是 | 是 | 否 |
+| RequestCountCacheNoCache | 因边缘上的用户配置而无法缓存的资产的所有请求计数。 | 是 | 是 | 否 |
+| RequestCountCacheUncacheable | 因资产的 Cache-Control 和 Expires 标头而无法缓存的资产的所有请求计数，这些标头指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存。 | 是 | 是 | 否 |
+| RequestCountCacheOthers | 上述未涵盖的具有缓存状态的所有请求的计数。 | 否 | 是 | 否  |
+| EgressTotal | 出站数据传输量（按 GB 计） | 是 |是 |是 |
+| EgressHttpStatus2xx | 针对状态代码为 2xx HTTP 的响应的出站数据传输量*（按 GB 计）。 | 是 | 是 | 否  |
+| EgressHttpStatus3xx | 针对状态代码为 3xx HTTP 的响应的出站数据传输量（按 GB 计）。 | 是 | 是 | 否  |
+| EgressHttpStatus4xx | 针对状态代码为 4xx HTTP 的响应的出站数据传输量（按 GB 计）。 | 是 | 是 | 否  |
+| EgressHttpStatus5xx | 针对状态代码为 5xx HTTP 的响应的出站数据传输量（按 GB 计）。 | 是 | 是 | 否 |
+| EgressHttpStatusOthers | 针对带其他 HTTP 状态代码的响应的出站数据传输量（按 GB 计）。 | 是 | 是 | 否  |
+| EgressCacheHit | 针对直接从 CDN POP/边缘上 CDN 缓存传递的响应的出站数据传输量。 | 是 | 是 | 否 |
+| EgressCacheMiss。 | 针对未在最近的 POP 服务器上找到并从源服务器检索的响应的出站数据传输量。 | 是 | 是 | 否 |
+| EgressCacheNoCache | 针对因边缘上的用户配置而无法缓存的资源的出站数据传输量。 | 是 | 是 | 否 |
+| EgressCacheUncacheable | 针对因资产的 Cache-Control 和/或 Expires 标头而无法缓存的资产的出站数据传输量。 指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存。 | 是 | 是 | 否 |
+| EgressCacheOthers | 其他缓存方案的出站数据传输量。 | 否 | 是 | 否 |
 
 * 出站数据传输量是指从 CDN POP 服务器传递到客户端的流量。
 
@@ -368,7 +370,7 @@ Verizon 日志数据延迟 1 小时，在终结点传播完成后长达 2 小时
 }
 ```
 
-其中“time”表示报告统计信息的小时边界的开始时间。 如果 CDN 提供程序不支持指标，则返回 null 值，而不是双精度或整型值。 该 null 值表示不存在指标且与 0 值不同。 在终结点上配置的每个域都有其中一组指标。
+其中，*time* 表示报告统计信息的小时边界的开始时间。 如果 CDN 提供程序不支持指标，则返回 null 值，而不是双精度或整型值。 该 null 值表示不存在指标且与 0 值不同。 在终结点上配置的每个域都有其中一组指标。
 
 示例属性：
 

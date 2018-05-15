@@ -1,13 +1,13 @@
 ---
-title: "自定义已连接的工厂解决方案 - Azure | Microsoft Docs"
-description: "介绍如何自定义已连接的工厂预配置解决方案的行为。"
-services: 
+title: 自定义连接的工厂解决方案 - Azure | Microsoft Docs
+description: 介绍如何自定义连接的工厂解决方案加速器的行为。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: c#
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 48c8036d0bc9534ce94529b96d32b004769246c1
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5d074a5cf0dd5191b5d94531068341ad1b953391
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自定义已连接的工厂解决方案如何显示来自 OPC UA 服务器的数据
+# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自定义连接的工厂解决方案如何显示来自 OPC UA 服务器的数据
 
-已连接的工厂解决方案将聚合并显示来自连接到解决方案的 OPC UA 服务器的数据。 可以在解决方案中浏览命令并将其发送到 OPC UA 服务器。 有关 OPC UA 的详细信息，请参阅[连接工厂常见问题解答](iot-suite-faq-cf.md)。
+连接的工厂解决方案将聚合并显示来自连接到解决方案的 OPC UA 服务器的数据。 可以在解决方案中浏览命令并将其发送到 OPC UA 服务器。 有关 OPC UA 的详细信息，请参阅[连接的工厂常见问题解答](iot-suite-faq-cf.md)。
 
 解决方案中聚合数据的示例包括设备综合效率 (OEE) 和关键性能指标 (KPI)，可在工厂的仪表板、生产线和工作站级别查看这些数据。 以下屏幕截图显示慕尼黑工厂中生产线 1 上装配工作站的 OEE 和 KPI 值：
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/14/2017
 
 ## <a name="data-sources"></a>数据源
 
-已连接的工厂解决方案显示来自连接到解决方案的 OPC UA 服务器的数据。 默认安装包括运行工厂模拟的多台 OPC UA 服务器。 可将自己的 OPC UA 服务器（[通过网关连接][lnk-connect-cf]）添加到解决方案。
+连接的工厂解决方案显示来自连接到解决方案的 OPC UA 服务器的数据。 默认安装包括运行工厂模拟的多台 OPC UA 服务器。 可将自己的 OPC UA 服务器（[通过网关连接][lnk-connect-cf]）添加到解决方案。
 
 可以在仪表板中浏览已连接的 OPC UA 数据库可向解决方案发送的数据项目：
 
@@ -61,31 +61,31 @@ ms.lasthandoff: 12/14/2017
 
     ![已发布的项目][img-published]
 
-1. 如果你是解决方案中的管理员，可以选择发布数据项目，使其在已连接的工厂解决方案中可用。 管理员还可在 OPC UA 服务器中更改数据项目的值以及调用方法。
+1. 如果你是解决方案中的管理员，可以选择发布数据项，使其在连接的工厂解决方案中可用。 管理员还可在 OPC UA 服务器中更改数据项目的值以及调用方法。
 
 ## <a name="map-the-data"></a>映射数据
 
-已连接的工厂解决方案将 OPC UA 服务器中已发布的数据项目映射并集成到解决方案中的各种视图。 预配解决方案时，已连接的工厂解决方案会部署到 Azure 帐户。 Visual Studio 已连接的工厂解决方案中的 JSON 文件会存储此映射信息。 可以在已连接的工厂 Visual Studio 解决方案中查看和修改此 JSON 配置文件。 在进行更改后，可重新部署解决方案。
+连接的工厂解决方案将 OPC UA 服务器中已发布的数据项映射并聚合到解决方案中的各种视图。 预配解决方案时，连接的工厂解决方案会部署到 Azure 帐户。 Visual Studio 连接的工厂解决方案中的 JSON 文件会存储此映射信息。 可以在连接的工厂 Visual Studio 解决方案中查看和修改此 JSON 配置文件。 在进行更改后，可重新部署解决方案。
 
 配置文件可用于：
 
 - 编辑现有的模拟工厂、生产线和工作站。
 - 映射来自连接到解决方案的实际 OPC UA 服务器的数据。
 
-有关映射和聚合数据以满足特定要求的详细信息，请参阅[如何配置已连接的工厂预配置解决方案](iot-suite-connected-factory-configure.md)。
+有关映射和聚合数据以满足特定要求的详细信息，请参阅[如何配置连接的工厂解决方案加速器](iot-suite-connected-factory-configure.md)。
 
 ## <a name="deploy-the-changes"></a>部署更改
 
-完成对 ContosoTopologyDescription.json 文件的更改后，必须将已连接的工厂解决方案重新部署到 Azure 帐户。
+完成对 ContosoTopologyDescription.json 文件的更改后，必须将连接的工厂解决方案重新部署到 Azure 帐户。
 
 azure-iot-connected-factory 存储库包含 build.ps1 PowerShell 脚本，该脚本可用于重新构建并部署解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解已连接的工厂预配置解决方案，请阅读下列文章：
+通过阅读下列文章，详细了解连接的工厂解决方案加速器：
 
-* [连接工厂预配置解决方案演练][lnk-rm-walkthrough]
-* [为已连接的工厂部署网关][lnk-connect-cf]
+* [连接的工厂解决方案加速器演练][lnk-rm-walkthrough]
+* [为连接的工厂部署网关][lnk-connect-cf]
 * [azureiotsuite.com 站点权限][lnk-permissions]
 * [连接的工厂常见问题解答](iot-suite-faq-cf.md)
 * [常见问题解答][lnk-faq]

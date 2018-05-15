@@ -1,6 +1,6 @@
 ---
-title: 升级 Azure 容器服务 (AKS) 群集
-description: 升级 Azure 容器服务 (AKS) 群集
+title: 升级 Azure Kubernetes 服务 (AKS) 群集
+description: 升级 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 5f5cfc49bd7b5e1c06adf97bc6f6ba88fc81f77a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3fae465512501b0642d0215df7b73c9879a1a3a1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="upgrade-an-azure-container-service-aks-cluster"></a>升级 Azure 容器服务 (AKS) 群集
+# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
-使用 Azure 容器服务 (AKS) 可以轻松执行常见管理任务，包括升级 Kubernetes 群集。
+使用 Azure Kubernetes 服务 (AKS) 可以轻松执行常见管理任务，包括升级 Kubernetes 群集。
 
 ## <a name="upgrade-an-aks-cluster"></a>升级 AKS 群集
 

@@ -1,6 +1,6 @@
 ---
-title: 以 SSH 方式登录到 Azure 容器服务 (AKS) 群集节点
-description: 创建与 Azure 容器服务 (AKS) 群集节点的 SSH 连接
+title: 通过 SSH 登录到 Azure Kubernetes 服务 (AKS) 群集节点
+description: 创建与 Azure Kubernetes 服务 (AKS) 群集节点的 SSH 连接
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 085a2976443db8ece7a36dbfc133b173432ce4c8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c2b77e558db0e323370c24b87a75357235677f7e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="ssh-into-azure-container-service-aks-cluster-nodes"></a>以 SSH 方式登录到 Azure 容器服务 (AKS) 群集节点
+# <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>通过 SSH 登录到 Azure Kubernetes 服务 (AKS) 群集节点
 
-有时，你可能需要访问 Azure 容器服务 (AKS) 节点来进行维护、收集日志以及执行其他故障排除操作。 Azure 容器服务 (AKS) 节点不会公开给 Internet。 请使用本文档中详细介绍的步骤来创建与 AKS 节点的 SSH 连接。
+有时，可能需要访问 Azure Kubernetes 服务 (AKS) 节点来进行维护、收集日志以及执行其他故障排除操作。 Azure Kubernetes 服务 (AKS) 节点不会向 Internet 公开。 请使用本文档中详细介绍的步骤来创建与 AKS 节点的 SSH 连接。
 
 ## <a name="get-aks-node-address"></a>获取 AKS 节点地址
 

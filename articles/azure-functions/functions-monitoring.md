@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: cbdb4691bac01843a451c988e09d77dd10f97461
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -29,34 +29,46 @@ ms.lasthandoff: 03/30/2018
 
 ![Application Insights 指标资源管理器](media/functions-monitoring/metrics-explorer.png)
 
-Functions 还具有不使用 Application Insights 的内置监视。 我们建议使用 Application Insights，因为它提供更多的数据和更好的方式来分析数据。 有关内置监视的信息，请参阅[本文的上一部分](#monitoring-without-application-insights)。
+Functions 还具有[不使用 Application Insights 的内置监视](#monitoring-without-application-insights)。 我们建议使用 Application Insights，因为它提供更多的数据和更好的方式来分析数据。
 
-## <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
+## <a name="application-insights-pricing-and-limits"></a>Application Insights 定价和限制
 
-对于将数据发送到 Application Insights 的函数应用，它需要知道 Application Insights 实例的检测密钥。 在 [Azure 门户](https://portal.azure.com)中建立该连接的方法有两种：
+可以免费试用 Application Insights 与函数应用的集成。 但是，每日可以免费处理的数据量有限制，在测试期间可能会达到该限制。 即将达到每日限制时，Azure 会提供门户和电子邮件通知。  但是，如果未收到这些警报并达到限制，则新日志不会显示在 Application Insights 查询中。 因此请注意限制，以免在故障排除上花费不必要的时间。 有关详细信息，请参阅[在 Application Insights 中管理定价和数据量](../application-insights/app-insights-pricing.md)。
 
-* [在创建函数应用时创建连接的 Application Insights 实例](#new-function-app)。
-* [将 Application Insights 实例连接到现有的函数应用](#existing-function-app)。
+## <a name="enable-app-insights-integration"></a>启用 App Insights 集成
+
+对于将数据发送到 Application Insights 的函数应用，它需要知道 Application Insights 资源的检测密钥。 必须在名为 APPINSIGHTS_INSTRUMENTATIONKEY 的应用设置中提供该密钥。
+
+可以在 [Azure 门户](https://portal.azure.com)中设置此连接：
+
+* [为新函数应用自动连接](#new-function-app)
+* [手动连接 App Insights 资源](#manually-connect-an-app-insights-resource)
 
 ### <a name="new-function-app"></a>新建函数应用
 
-在 Function App 的“创建”页上启用 Application Insights：
+1. 转到函数应用的“创建”页。
 
 1. 将 Application Insights开关设置为“打开”。
 
 2. 选择一个 Application Insights 位置。
 
+   在要将数据存储到的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中，选择与函数应用所在区域最靠近的区域。
+
    ![在创建函数应用时启用 Application Insights](media/functions-monitoring/enable-ai-new-function-app.png)
 
-### <a name="existing-function-app"></a>现有的函数应用
+3. 输入其他所需信息。
 
-获取检测密钥并将其保存在函数应用中：
+1. 选择**创建**。
 
-1. 创建 Application Insights 实例。 将应用程序类型设置为“常规”。
+下一步是[禁用内置日志记录](#disable-built-in-logging)。
 
-   ![创建 Application Insights 实例，类型为“常规”](media/functions-monitoring/ai-general.png)
+### <a name="manually-connect-an-app-insights-resource"></a>手动连接 App Insights 资源 
 
-2. 从 Application Insights 实例的“Essentials”页复制检测密钥。 将鼠标悬停在显示的键值的末尾以获取“单击以复制”按钮。
+1. 创建 Application Insights 资源。 将应用程序类型设置为“常规”。
+
+   ![创建类型为“常规”的 Application Insights 资源](media/functions-monitoring/ai-general.png)
+
+2. 从 Application Insights 资源的“概要”页复制检测密钥。 将鼠标悬停在显示的键值的末尾以获取“单击以复制”按钮。
 
    ![复制 Application Insights 检测密钥](media/functions-monitoring/copy-ai-key.png)
 
@@ -70,13 +82,46 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
 如果启用 Application Insights，我们建议你禁用[使用 Azure 存储的内置日志记录](#logging-to-storage)。 内置日志记录对于使用轻工作负荷测试非常有用，但不适合在高负载生产环境中使用。 对于生产监视，建议使用 Application Insights。 如果在生产环境中使用内置日志记录，日志记录可能因 Azure 存储限制而不完整。
 
-若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”部分。
+若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”部分。 在删除应用设置之前，请确保同一函数应用中没有任何现有的函数将此设置用于 Azure 存储触发器或绑定。
 
-启用 Application Insights 并禁用内置日志记录时，Azure 门户中函数的“监视”选项卡会将你转到 Application Insights。
+## <a name="view-telemetry-in-monitor-tab"></a>在“监视”选项卡中查看遥测数据
 
-## <a name="view-telemetry-data"></a>查看遥测数据
+如前面部分中所述设置 Application Insights 集成之后，可以在“监视”选项卡中查看遥测数据。
 
-若要从门户中的函数应用导航到连接的 Application Insights 实例，请在函数应用的“概述”页上选择“Application Insights”链接。
+1. 在函数应用页中，选择在配置 Application Insights 之后至少运行过一次的函数，然后选择“监视”选项卡。
+
+   ![选择“监视”选项卡](media/functions-monitoring/monitor-tab.png)
+
+2. 定期选择“刷新”，直到显示函数调用列表。
+
+   该列表最长可能需要在 5 分钟之后才显示，因为遥测客户端会通过某种方式批处理数据，以传输到服务器。 （这种延迟不适用于[实时指标流](../application-insights/app-insights-live-stream.md)。 加载页面时，该服务会连接到 Functions 主机，因此，日志会直接流向页面。）
+
+   ![调用列表](media/functions-monitoring/monitor-tab-ai-invocations.png)
+
+2. 若要查看特定函数调用的日志，选择该调用对应的“日期”列链接。
+
+   ![调用详细信息链接](media/functions-monitoring/invocation-details-link-ai.png)
+
+   该调用的日志记录输出显示在新页中。
+
+   ![调用详细信息](media/functions-monitoring/invocation-details-ai.png)
+
+两个页面（调用列表和详细信息）链接到检索数据的 Application Insights Analytics 查询：
+
+![在 Application Insights 中运行](media/functions-monitoring/run-in-ai.png)
+
+![Application Insights Analytics 调用列表](media/functions-monitoring/ai-analytics-invocation-list.png)
+
+从这些查询中可以看到，调用列表限制为过去 30 天且不超过 20 行 (`where timestamp > ago(30d) | take 20`)，而调用详细信息列表针对过去 30 天且没有限制。
+
+有关详细信息，请参阅本文稍后的[查询遥测数据](#query-telemetry-data)。
+
+## <a name="view-telemetry-in-app-insights"></a>在 App Insights 中查看遥测数据
+
+若要在 Azure 门户中从某个函数应用打开 Application Insights，请在该函数应用的“概述”页的“已配置的功能”中选择“Application Insights”链接。
+
+![“概述”页上的“Application Insights”链接](media/functions-monitoring/ai-link.png)
+
 
 有关如何使用 Application Insights 的信息，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/application-insights/)。 本部分介绍如何在 Application Insights 中查看数据的一些示例。 如果已经熟悉 Application Insights，则可以直接转到[有关配置和自定义遥测数据的部分](#configure-categories-and-log-levels)。
 
@@ -256,7 +301,7 @@ host.json 中的类别值控制所有以相同值开头的类别的日志记录�
 
 ## <a name="configure-sampling"></a>配置采样
 
-Application Insights 具有[采样](../application-insights/app-insights-sampling.md)功能，可以防止在峰值负载时生成太多的遥测数据。 当遥测项的数目超过指定的速率时，Application Insights 开始随机忽略某些传入项。 可以在 host.json 中配置采样。  下面是一个示例：
+Application Insights 具有[采样](../application-insights/app-insights-sampling.md)功能，可以防止在峰值负载时生成太多的遥测数据。 当遥测项的数目超过指定的速率时，Application Insights 开始随机忽略某些传入项。 默认的每秒最大项数设置为 5。 可以在 host.json 中配置采样。  下面是一个示例：
 
 ```json
 {
@@ -489,13 +534,19 @@ module.exports = function (context, req) {
 
 ## <a name="monitoring-without-application-insights"></a>不使用 Application Insights 进行监视
 
-我们建议使用 Application Insights 监视函数，因为它提供更多的数据和更好的方式来分析数据。 但还可以在 Azure 门户页面中为函数应用查找日志和遥测数据。
+我们建议使用 Application Insights 监视函数，因为它提供更多的数据和更好的方式来分析数据。 但是，如果你偏爱使用 Azure 存储的内置日志记录系统，可以继续使用它。
 
 ### <a name="logging-to-storage"></a>记录到存储
 
-内置日志记录使用 `AzureWebJobsDashboard` 应用设置中的连接字符串所指定的存储帐户。 如果配置了该应用设置，可以在 Azure 门户中看到日志记录数据。 在“存储”资源中，转到“文件”，选择函数的文件服务，然后转到 `LogFiles > Application > Functions > Function > your_function` 来查看日志文件。 在函数应用页中，选择某个函数，然后选择“监视”选项卡，并获取函数执行的列表。 选择某个函数执行可查看持续时间、输入数据、错误和关联的日志文件。
+内置日志记录使用 `AzureWebJobsDashboard` 应用设置中的连接字符串所指定的存储帐户。 在函数应用页中选择某个函数，然后选择“监视”选项卡，并选择将此函数保留在经典视图中。
 
-如果使用 Application Insights 并[禁用了内置日志记录](#disable-built-in-logging)，“监视”选项卡会将你带到 Application Insights。
+![切换到经典视图](media/functions-monitoring/switch-to-classic-view.png)
+
+ 获取函数执行列表。 选择某个函数执行可查看持续时间、输入数据、错误和关联的日志文件。
+
+如果以前启用了 Application Insights，但现在想要恢复使用内置日志记录，请手动禁用 Application Insights，然后选择“监视”选项卡。若要禁用 Application Insights 集成，请删除 APPINSIGHTS_INSTRUMENTATIONKEY 应用设置。
+
+即使“监视”选项卡显示 Application Insights 数据，但如果未[禁用内置日志记录](#disable-built-in-logging)，也仍会看到文件系统中的日志数据。 在“存储”资源中，转到“文件”，选择函数的文件服务，然后转到 `LogFiles > Application > Functions > Function > your_function` 来查看日志文件。
 
 ### <a name="real-time-monitoring"></a>实时监视
 

@@ -12,30 +12,30 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
-ms.author: rli; v-deasim
-ms.openlocfilehash: 88c1b98a9dcaa1d22cdc1be3853b1fa7116c8a48
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/30/2018
+ms.author: v-deasim
+ms.openlocfilehash: bb0824995972b49febdb1695e41f45fbd0966cd1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-caching-works"></a>缓存工作原理
 
-本文概述了一般缓存概念以及 [Azure 内容交付网络 (CDN)](cdn-overview.md) 如何使用缓存来提高性能。 如果想了解如何在 CDN 终结点上自定义缓存行为，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)和[使用查询字符串控制 Azure CDN 缓存行为](cdn-query-string.md)。
+本文概述了一般缓存概念以及 [Azure 内容分发网络 (CDN)](cdn-overview.md) 如何使用缓存来提高性能。 如果想了解如何在 CDN 终结点上自定义缓存行为，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)和[使用查询字符串控制 Azure CDN 缓存行为](cdn-query-string.md)。
 
 ## <a name="introduction-to-caching"></a>缓存简介
 
 缓存即在本地存储数据的过程，以便将来可以更快地访问数据请求。 Web 浏览器缓存是最常见的缓存类型中，在此类缓存中，Web 浏览器将静态数据的副本本地存储在本地硬盘上。 通过使用缓存，Web 浏览器可避免多次往返服务器，而只需在本地访问相同的数据，从而节省时间和资源。 缓存非常适合用于在本地管理小型静态数据，如静态图像、CSS 文件和 JavaScript 文件。
 
-同样，内容交付网络在靠近用户的边缘服务器上使用缓存，以避免请求返回源服务器，从而减少用户延迟。 与仅适用于单个用户的 Web 浏览器缓存不同，CDN 具有共享缓存。 在 CDN 共享缓存中，其他用户稍后可访问某一用户请求的文件，这大大减少了对源服务器的请求数量。
+同样，内容分发网络在靠近用户的边缘服务器上使用缓存，以避免请求返回源服务器，从而减少用户延迟。 与仅适用于单个用户的 Web 浏览器缓存不同，CDN 具有共享缓存。 在 CDN 共享缓存中，其他用户稍后可访问某一用户请求的文件，这大大减少了对源服务器的请求数量。
 
-无法缓存频繁更改或单个用户的唯一动态资源。 不过，这些类型的资源可利用 Azure 内容交付网络上的动态站点加速 (DSA) 优化来提高性能。
+无法缓存频繁更改或单个用户的唯一动态资源。 不过，这些类型的资源可利用 Azure 内容分发网络上的动态站点加速 (DSA) 优化来提高性能。
 
 可在源服务器和最终用户之间的多个级别上进行缓存：
 
 - Web 服务器：使用共享缓存（适用于多个用户）。
-- 内容交付网络：使用共享缓存（适用于多个用户）。
+- 内容分发网络：使用共享缓存（适用于多个用户）。
 - Internet 服务提供商 (ISP)：使用共享缓存（适用于多个用户）。
 - Web 浏览器：使用专用缓存（适用于一个用户）。
 
@@ -71,12 +71,13 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 **Cache-Control：**
 - 在 HTTP 1.1 中引入，用于为 Web 发布者提供对其内容的更多控制权，并解决 `Expires` 标头的局限性。
 - 如果同时定义了 `Expires` 和 `Cache-Control` 标头，则将替代前一个标头。
-- 在 HTTP 请求中使用时，Azure CDN 默认会忽略 `Cache-Control`。
-- **Verizon 的 Azure CDN** 配置文件支持 HTTP 响应中使用的所有 `Cache-Control` 指令。
-- **Akamai 的 Azure CDN** 配置文件仅支持 HTTP 响应中使用的以下指令；其他所有指令将被忽略：
-   - `max-age`：缓存可存储指定秒数的内容。 例如，`Cache-Control: max-age=5`。 此指令指定了被视为最新内容的最长时间。
-   - `no-cache`：缓存内容，但每次传送缓存中的内容前会对其进行验证。 等效于 `Cache-Control: max-age=0`。
-   - `no-store`：从不缓存内容。 删除之前已存储的内容。
+- 在从客户端发往 CDN POP 的 HTTP 请求中使用时，`Cache-Control` 会被所有 CDN 配置文件默认忽略。
+- 在从客户端发往 CDN POP 的 HTTP 响应中使用时：
+     - **Verizon 推出的 Azure CDN 标准版/高级版**和 **Microsoft 推出的 Azure CDN 标准版**支持所有 `Cache-Control` 指令。
+     - **Akamai 推出的 Azure CDN 标准版**仅支持以下 `Cache-Control` 指令，将忽略所有其他指令：
+         - `max-age`：缓存可存储指定秒数的内容。 例如，`Cache-Control: max-age=5`。 此指令指定了被视为最新内容的最长时间。
+         - `no-cache`：缓存内容，但每次传送缓存中的内容前会对其进行验证。 等效于 `Cache-Control: max-age=0`。
+         - `no-store`：从不缓存内容。 删除之前已存储的内容。
 
 **Expires：**
 - HTTP 1.0 中引入的旧标头支持向后兼容性。
@@ -92,38 +93,40 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 
 ## <a name="validators"></a>验证程序
 
-当缓存过时时，使用 HTTP 缓存验证程序将文件的缓存版本与源服务器上的版本进行比较。 **Verizon 的 Azure CDN** 默认支持 `ETag` 和 `Last-Modified` 验证程序，而 **Akamai 的 Azure CDN** 默认仅支持 `Last-Modified`。
+当缓存过时时，使用 HTTP 缓存验证程序将文件的缓存版本与源服务器上的版本进行比较。 **Verizon 推出的 Azure CDN 标准版/高级版**默认支持 `ETag` 和 `Last-Modified` 验证程序，而 **Microsoft 推出的 Azure CDN 标准版**和 **Akamai 推出的 Azure CDN 标准版**默认仅支持 `Last-Modified`。
 
 **ETag：**
-- Verizon 提供的 Azure CDN 默认使用 `ETag`，而 Akamai 提供的 Azure CDN 则不使用。
+- **Verizon 推出的 Azure CDN 标准版/高级版**默认支持 `ETag`，而 **Microsoft 推出的 Azure CDN 标准版**和 **Akamai 推出的 Azure CDN 标准版**则不。
 - `ETag` 为每个文件和文件版本定义唯一字符串。 例如，`ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`。
 - 在 HTTP 1.1 中引入，并且比 `Last-Modified` 更新。 当很难确定上次修改日期时，会非常有用。
 - 支持强验证和弱验证，不过，Azure CDN 仅支持强验证。 对于强验证，两种资源表示形式的每个字节都必须相同。 
 - 缓存通过在请求中发送带有一个或多个 `ETag` 验证程序的 `If-None-Match` 标头来验证使用 `ETag` 的文件。 例如，`If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`。 如果服务器的版本与列表中的 `ETag` 验证程序相匹配，则在其响应中发送状态代码 304（未修改）。 如果版本不同，则服务器响应状态代码 200（确定）和更新后的资源。
 
 **Last-Modified：**
-- 仅对于 **Verizon 提供的 Azure CDN**，如果 `ETag` 不是 HTTP 响应的一部分，则使用 `Last-Modified`。 
+- 如果 `ETag` 不是 HTTP 响应的一部分，则使用 `Last-Modified`（仅限 **Verizon 推出的 Azure CDN 标准版/高级版**）。 
 - 指定源服务器已确定上次修改资源的日期和时间。 例如，`Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`。
 - 缓存通过在请求中发送带有日期和时间的 `If-Modified-Since` 标头来验证使用 `Last-Modified` 的文件。 源服务器将该日期与最新资源的 `Last-Modified` 标头进行比较。 如果自指定时间以来未修改该资源，则服务器在其响应中返回状态代码 304（未修改）。 如果已修改该资源，则服务器返回状态代码 200（确定）和更新后的资源。
 
 ## <a name="determining-which-files-can-be-cached"></a>确定可以缓存哪些文件
 
-并非所有资源均可缓存。 下表根据 HTTP 响应的类型显示了可缓存的资源。 无法缓存不满足所有条件的 HTTP 响应所提供的资源。 对于 **Verizon 的 Azure CDN 高级版（仅限）**，可使用规则引擎自定义上述某些条件。
+并非所有资源均可缓存。 下表根据 HTTP 响应的类型显示了可缓存的资源。 无法缓存不满足所有条件的 HTTP 响应所提供的资源。 可使用规则引擎自定义上述某些条件（仅限 **Verizon 推出的 Azure CDN 高级版**）。
 
-|                   | Verizon 的 Azure CDN | Akamai 的 Azure CDN            |
-|------------------ |------------------------|----------------------------------|
-| HTTP 状态代码 | 200                    | 200、203、300、301、302 和 401 |
-| HTTP 方法       | GET                    | GET                              |
-| 文件大小         | 300 GB                 | - 常规 Web 传递优化：1.8 GB<br />- 媒体流式处理优化：1.8 GB<br />- 大型文件优化：150 GB |
+|                   | Microsoft 推出的 Azure CDN          | Verizon 的 Azure CDN | Akamai 的 Azure CDN        |
+|-------------------|-----------------------------------|------------------------|------------------------------|
+| HTTP 状态代码 | 200、203、206、300、301、410、416 | 200                    | 200、203、300、301、302、401 |
+| HTTP 方法      | GET、HEAD                         | GET                    | GET                          |
+| 文件大小限制  | 300 GB                            | 300 GB                 | - 常规 Web 传递优化：1.8 GB<br />- 媒体流式处理优化：1.8 GB<br />- 大型文件优化：150 GB |
+
+若要在资源上使用 **Microsoft 推出的 Azure CDN 标准版**缓存，源服务器必须支持任何 HEAD 和 GET HTTP 请求，且资产的任何 HEAD 和 GET HTTP 响应的 content-length 值必须相同。 对于 HEAD 请求，源服务器必须支持 HEAD 请求，且必须使用接收 GET 请求时所使用的标头进行响应。
 
 ## <a name="default-caching-behavior"></a>默认缓存行为
 
 下表介绍了 Azure CDN 产品的默认缓存行为及其优化。
 
-|                    | Verizon：常规 Web 交付 | Verizon：DSA | Akamai：常规 Web 交付 | Akamai：DSA | Akamai：大型文件下载 | Akamai：常规或 VOD 媒体流式处理 |
-|--------------------|--------|------|-----|----|-----|-----|
-| **优先处理源**   | 是    | 否   | 是 | 否 | 是 | 是 |
-| **CDN 缓存持续时间** | 7 天 | 无 | 7 天 | 无 | 1 天 | 1 年 |
+|    | Microsoft：常规 Web 分发 | Verizon：常规 Web 分发 | Verizon：DSA | Akamai：常规 Web 分发 | Akamai：DSA | Akamai：大型文件下载 | Akamai：常规或 VOD 媒体流式处理 |
+|------------------------|--------|-------|------|--------|------|-------|--------|
+| **优先处理源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
+| **CDN 缓存持续时间** | 2 天 |7 天 | 无 | 7 天 | 无 | 1 天 | 1 年 |
 
 **优先处理源**：指定是否优先处理[支持的缓存指令标头](#http-cache-directive-headers)（如果它们存在于源服务器的 HTTP 响应中）。
 

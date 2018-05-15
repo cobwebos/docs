@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7361a71d9e178f47761c42cebe706246eb9d5e64
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>教程：向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 本教程是一个系列中的第三部分。  你将了解如何在 ASP.NET Core 服务（在 Service Fabric 上运行）中启用 HTTPS。 完成后，你会有一个通过已启用 HTTPS 的 ASP.NET Core Web 前端在端口 443 上进行侦听的投票应用程序。 如果不希望根据[生成 .NET Service Fabric 应用程序](service-fabric-tutorial-deploy-app-to-party-cluster.md)中的说明手动创建投票应用程序，可以[下载源代码](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)（适用于已完成的应用程序）。
@@ -274,7 +274,7 @@ Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>以管理员身份运行设置脚本
 默认情况下，服务设置入口点可执行文件运行时使用的凭据与 Service Fabric （通常为 NetworkService 帐户）使用的相同。 *SetCertAccess.ps1* 需要管理员特权。 在应用程序清单中，可以将安全权限更改为在本地管理员帐户下运行启动脚本。  
 
-在“解决方案资源管理器”中，打开 *Voting/ApplicationPackageRoot/ManifestManifest.xml*。 首先创建 **Principals** 节，然后添加新用户（例如，“SetupAdminUser”）。 向 Administrators 系统组添加 SetupAdminUser 用户帐户。
+在“解决方案资源管理器”中，打开 *Voting/ApplicationPackageRoot/ApplicationManifest.xml*。 首先创建 **Principals** 节，然后添加新用户（例如，“SetupAdminUser”）。 向 Administrators 系统组添加 SetupAdminUser 用户帐户。
 接下来，在 VotingWebPkg **ServiceManifestImport** 节中配置 **RunAsPolicy**，以便向设置入口点应用 SetupAdminUser 主体。 此策略告知 Service Fabric，Setup.bat 文件以 SetupAdminUser 身份（具有管理员特权）运行。 
 
 ```xml

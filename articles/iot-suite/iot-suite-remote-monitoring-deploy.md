@@ -1,33 +1,33 @@
 ---
-title: "部署远程监视解决方案 - Azure | Microsoft Docs"
-description: "本教程演示如何从 azureiotsuite.com 预配远程监视预配置解决方案。"
-services: 
+title: 部署远程监视解决方案 - Azure | Microsoft Docs
+description: 本教程演示如何从 azureiotsuite.com 预配远程监视解决方案加速器。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fa08817c870372488b1e03a2c282add2eaa85478
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: eb78ce91755c43f1c6fedf62a70238df911b940f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-the-remote-monitoring-preconfigured-solution"></a>部署远程监视预配置解决方案
+# <a name="deploy-the-remote-monitoring-solution-accelerator"></a>部署远程监视解决方案加速器
 
-本教程演示如何预配远程监视预配置解决方案。 从 azureiotsuite.com 部署解决方案。还可以使用 CLI 部署解决方案，若要了解此选项，请参阅[从命令行部署预配置解决方案](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#deploy-a-pcs-from-the-command-line)。
+本教程演示如何预配远程监视解决方案加速器。 从 azureiotsuite.com 部署解决方案。还可以使用 CLI 部署解决方案，若要了解此选项，请参阅[从命令行部署解决方案加速器](iot-suite-remote-monitoring-deploy-cli.md)。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 配置预配置解决方案
-> * 部署预配置解决方案
-> * 登录到预配置解决方案
+> * 配置解决方案加速器
+> * 部署解决方案加速器
+> * 登录到解决方案加速器
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,19 +35,17 @@ ms.lasthandoff: 02/23/2018
 
 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="deploy-the-preconfigured-solution"></a>部署预配置解决方案
+## <a name="deploy-the-solution-accelerator"></a>部署解决方案加速器
 
-将预配置解决方案部署到 Azure 订阅之前，必须选择一些配置选项：
+将解决方案加速器部署到 Azure 订阅之前，必须选择一些配置选项：
 
-1. 使用 Azure 帐户凭据登录 [azureiotsuite.com](https://www.azureiotsuite.com)，并单击“+”创建新的解决方案：
+1. 使用 Azure 帐户凭据登录到 [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators)。
 
-    ![创建新的解决方案](media/iot-suite-remote-monitoring-deploy/createnewsolution.png)
-
-1. 单击“远程监视预览”磁贴上的“选择”。
+1. 单击“远程监视”磁贴上的“立即试用”。
 
     ![选择远程监视](media/iot-suite-remote-monitoring-deploy/remotemonitoring.png)
 
-1. 在“创建远程监视解决方案”页上，为远程监视预配置解决方案输入**解决方案名称**。
+1. 在“创建远程监视解决方案”页上，为远程监视解决方案加速器输入**解决方案名称**。
 
 1. 选择“基本”或“标准”部署。 如果部署解决方案的目的是要了解其工作原理或运行演示，请选择“基本”选项，使成本降到最低。
 
@@ -63,9 +61,9 @@ ms.lasthandoff: 02/23/2018
 
 有关故障排除的信息，请参阅 GitHub 存储库中的[部署失败时该如何操作](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide#what-to-do-when-a-deployment-fails)。
 
-## <a name="sign-in-to-the-preconfigured-solution"></a>登录到预配置解决方案
+## <a name="sign-in-to-the-solution-accelerator"></a>登录到解决方案加速器
 
-预配过程完成后，可以登录到远程监视预配置解决方案。
+预配过程完成后，可以登录到远程监视解决方案加速器。
 
 1. 在“预配解决方案”页上，选择新的远程监视解决方案：
 
@@ -85,9 +83,9 @@ ms.lasthandoff: 02/23/2018
 本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 配置预配置解决方案
-> * 部署预配置解决方案
-> * 登录到预配置解决方案
+> * 配置解决方案加速器
+> * 部署解决方案加速器
+> * 登录到解决方案加速器
 
 现在已部署远程监视解决方案，下一步是[浏览解决方案仪表板的功能](./iot-suite-remote-monitoring-explore.md)。
 

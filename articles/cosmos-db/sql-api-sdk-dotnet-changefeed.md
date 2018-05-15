@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: maquaran
-ms.openlocfilehash: 24a1a04bf7170886b232611eefd7174192904ff0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6ae2ae9cdf018652b5ca81efc014c0c6ccb2e813
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -31,6 +31,8 @@ ms.lasthandoff: 04/23/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
@@ -40,6 +42,8 @@ ms.lasthandoff: 04/23/2018
 |**当前受支持的框架**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="stable-builds"></a>稳定版本
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 * 修复了待处理工作评估。
@@ -65,6 +69,23 @@ ms.lasthandoff: 04/23/2018
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
 * 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 及更低版本。
+
+### <a name="pre-release-builds"></a>预发布版本
+
+### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
+* 新 v2 API：
+  * 处理器的灵活构造生成器模式：ChangeFeedProcessorBuilder 类。
+    * 可以采用参数的任何组合。
+    * 可以采用用于监视的 DocumentClient 实例和/或租用集合（v1 中不可用）。
+  * IChangeFeedObserver.ProcessChangesAsync 现在采用 CancellationToken。
+  * IRemainingWorkEstimator - 剩余工作估计器可以与处理器分开使用。
+  * 新的扩展点：
+    * IParitionLoadBalancingStrategy - 用于对处理器实例之间的分区进行自定义负载均衡。
+    * ILease、ILeaseManager - 用于自定义租用管理。
+    * IPartitionProcessor - 用于对分区进行自定义处理更改。
+* 日志记录 - 使用 [LibLog](https://github.com/damianh/LibLog) 库。
+* 与 v1 API 100% 向后兼容。
+* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21.1 及更高版本。
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。

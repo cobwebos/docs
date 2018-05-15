@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 7d7cd8a197a89781a75f47bb4b4e2ec8fe7c3cb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/07/2018
+---
 # <a name="secure-your-iot-deployment"></a>保护 IoT 部署
 
 本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
@@ -12,7 +28,7 @@
 
 ## <a name="secure-device-provisioning-and-authentication"></a>安全的设备预配和身份验证
 
-Azure IoT 套件通过以下两种方式保护 IoT 设备：
+IoT 解决方案加速器通过以下两种方法保护 IoT 设备：
 
 * 为每个设备提供唯一标识密钥（安全令牌），设备可使用该密钥与 IoT 中心通信。
 * 使用设备内置 [X.509 证书][lnk-x509]和私钥作为一种向 IoT 中心验证设备的方式。 此身份验证方式可确保任何时候都无法在设备外部获知设备上的私钥，从而提供更高级别的安全性。
@@ -89,7 +105,7 @@ Azure IoT 中心引入的数据可供多种服务（例如 Azure 流分析、Azu
 [lnk-sas-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
 [lnk-identity-registry]: ../articles/iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-protocols]: ../articles/iot-hub/iot-hub-devguide-security.md
-[lnk-custom-auth]: ../articles/iot-hub/iot-hub-devguide-security.md#custom-device-authentication
+[lnk-custom-auth]: ../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication
 [lnk-x509]: http://www.itu.int/rec/T-REC-X.509-201210-I/en
 [lnk-use-x509]: ../articles/iot-hub/iot-hub-devguide-security.md
 [lnk-tls12]: https://tools.ietf.org/html/rfc5246

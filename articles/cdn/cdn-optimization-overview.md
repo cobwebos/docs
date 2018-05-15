@@ -1,12 +1,12 @@
 ---
-title: "针对方案优化 Azure 内容传送"
-description: "如何针对特定方案优化内容传送"
+title: 针对方案优化 Azure 内容传送
+description: 如何针对特定方案优化内容传送
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: rli
-ms.openlocfilehash: fa4cf306eeb1a8372da5b2a86ac73fbba2832666
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: de748f7fa33b0250b1572dd5ae55cddf15003a0e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>针对方案优化 Azure 内容传送
 
-向许多全球受众传送内容时，请务必优化内容传送。 Azure 内容传送网络可以根据内容类型优化传送体验。 内容可以是网站、实时传送视频流、视频或可供下载的大文件。 创建内容传送网络 (CDN) 终结点时，请在“优化针对方案”选项中指定方案。 选择哪个方案决定了对通过 CDN 终结点传送的内容应用哪种优化。
+向许多全球受众传送内容时，请务必优化内容传送。 Azure 内容分发网络 (CDN) 可以根据内容类型优化分发体验。 内容可以是网站、实时传送视频流、视频或可供下载的大文件。 创建 CDN 终结点时，请在“优化对象”选项中指定方案。 选择哪个方案决定了对通过 CDN 终结点传送的内容应用哪种优化。
 
 优化选项旨在通过最佳做法行为来提升内容传送性能和改进源卸载。 选择的方案会修改部分缓存、对象区块和源故障重试策略的配置，从而影响性能。 
 
@@ -33,7 +33,19 @@ ms.lasthandoff: 01/25/2018
 
 ## <a name="provider-options"></a>提供程序选项
 
-**Akamai 的 Azure 内容传送网络**支持以下优化：
+**Microsoft 推出的 Azure CDN 标准版**支持以下优化：
+
+* [常规 Web 分发](#general-web-delivery)。 此优化也用于媒体流式处理和大型文件下载。
+
+
+**Verizon 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 高版本**支持以下优化：
+
+* [常规 Web 分发](#general-web-delivery)。 此优化也用于媒体流式处理和大型文件下载。
+
+* [动态站点加速](#dynamic-site-acceleration) 
+
+
+**Akamai 推出的 Azure CDN 标准版**支持以下优化：
 
 * [常规 Web 传送](#general-web-delivery) 
 
@@ -45,23 +57,17 @@ ms.lasthandoff: 01/25/2018
 
 * [动态站点加速](#dynamic-site-acceleration) 
 
-**Verizon 的 Azure 内容传送网络**支持以下优化：
-
-* [常规 Web 传送](#general-web-delivery)（也可用于媒体流式处理和大文件下载内容）
-
-* [动态站点加速](#dynamic-site-acceleration) 
-
-强烈建议测试不同提供程序的性能差异，以选择最适合传送内容的提供程序。
+Microsoft 建议测试不同提供程序的性能差异，以选择最适合分发内容的提供程序。
 
 ## <a name="select-and-configure-optimization-types"></a>选择并配置优化类型
 
-若要新建终结点，请选择与方案和要通过终结点传送的内容类型最匹配的优化类型。 系统默认选择“常规 Web 传送”。 对于现有的 **Akamai 的 Azure 内容传送网络**终结点，可以随时更新优化选项。 此更改不会中断 CDN 内容传送。 
+若要新建终结点，请选择与方案和要通过终结点传送的内容类型最匹配的优化类型。 系统默认选择“常规 Web 传送”。 对于现有的 **Akamai 的 Azure 内容分发网络**终结点，可以随时更新优化选项。 此更改不会中断 Azure CDN 内容分发。 
 
-1. 在 **Akamai 的 Azure 内容传送网络**配置文件中，选择一个终结点。
+1. 在 **Akamai 推出的 Azure CDN 标准版**配置文件中，选择一个终结点。
 
     ![终结点选择 ](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. 在“设置”下，选择“优化”。 然后，在“优化针对方案”下拉列表中选择一种类型。
+2. 在“设置”下选择“优化”。 然后，在“优化针对方案”下拉列表中选择一种类型。
 
     ![优化和类型选择](./media/cdn-optimization-overview/02_Select.png)
 
@@ -76,7 +82,7 @@ ms.lasthandoff: 01/25/2018
 典型网站包含静态和动态内容。 静态内容包括可以缓存并传送给不同用户的图像、JavaScript 库和样式表。 动态内容针对各个用户进行个性化设置，如针对用户配置文件定制的新闻项。 由于对每个用户都是唯一的，因此动态内容不进行缓存，如购物车内容。 常规 Web 传送优化可以优化整个网站。 
 
 > [!NOTE]
-> 如果使用 **Akamai 的 Azure 内容传送网络**，建议在平均文件大小不到 10 MB 时使用此优化。 如果平均文件大小超过 10MB，请从“优化针对方案”下拉列表中选择“大文件下载”。
+> 如果使用 **Akamai 推出的 Azure CDN 标准版**，建议在平均文件大小不到 10 MB 时使用此优化。 如果平均文件大小超过 10MB，请从“优化针对方案”下拉列表中选择“大文件下载”。
 
 ### <a name="general-media-streaming"></a>常规媒体流式处理
 
@@ -86,7 +92,7 @@ ms.lasthandoff: 01/25/2018
 
 这种方案对 Azure 媒体服务客户很常见。 使用 Azure 媒体服务时，可获得一个用于实时传送视频流和点播视频流的流式处理终结点。 对于这种方案，客户在从实时传送视频流更改为点播视频流时，无需切换到其他终结点。 常规媒体流式处理优化支持这种类型的方案。
 
-**Verizon 的 Azure 内容传送网络**使用常规 Web 传送优化类型来传送流媒体内容。
+对于 **Microsoft 推出的 Azure CDN 标准版**、**Verizon 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 高级版**，请使用常规 Web 分发优化类型来分发常规流媒体内容。
 
 有关媒体流式处理优化的详细信息，请参阅[媒体流式处理优化](cdn-media-streaming-optimization.md)。
 
@@ -94,26 +100,24 @@ ms.lasthandoff: 01/25/2018
 
 点播视频媒体流式处理优化可优化点播视频流内容。 如果将终结点用于点播视频流，建议使用此选项。
 
-**Verizon 的 Azure 内容传送网络**使用常规 Web 传送优化类型来传送流媒体内容。
+对于 **Microsoft 推出的 Azure CDN 标准版**、**Verizon 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 高级版**，请使用常规 Web 分发优化类型来分发视频点播流媒体内容。
 
 有关媒体流式处理优化的详细信息，请参阅[媒体流式处理优化](cdn-media-streaming-optimization.md)。
 
 > [!NOTE]
-> 如果终结点主要用于点播视频内容，请使用此优化类型。 这种优化与常规媒体流式处理优化的主要区别在于连接重试超时。实时传送视频流方案的超时时间要短得多。
+> 如果 CDN 终结点主要用于视频点播内容，请使用此优化类型。 这种优化与常规媒体流式处理优化的主要区别在于连接重试超时。实时传送视频流方案的超时时间要短得多。
 
 ### <a name="large-file-download"></a>大文件下载
 
-如果使用 **Akamai 的 Azure 内容传送网络**，必须使用大文件下载来传送大于 1.8 GB 的文件。 如果是常规 Web 传送优化，**Verizon 的 Azure 内容传送网络**对文件下载大小没有限制。
+就 **Akamai 推出的 Azure CDN 标准版**来说，大型文件下载优化针对的是大于 10 MB 的内容。 如果平均文件大小不到 10 MB，请使用常规 Web 分发。 如果平均文件大小始终超过 10MB，为大文件单独创建终结点可能会更有效。 例如，固件或软件更新通常是大文件。 若要分发大于 1.8 GB 的文件，则需进行大型文件下载优化。
 
-如果使用 **Akamai 的 Azure 内容传送网络**，对大于 10 MB 的内容使用大文件下载优化。 如果平均文件大小不到 10MB，建议使用常规 Web 传送优化。 如果平均文件大小始终超过 10MB，为大文件单独创建终结点可能会更有效。 例如，固件或软件更新通常是大文件。
-
-**Verizon 的 Azure 内容传送网络**使用常规 Web 传送优化类型来传送大文件下载内容。
+对于 **Microsoft 推出的 Azure CDN 标准版**、**Verizon 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 高级版**，请使用常规 Web 分发优化类型来分发大型文件下载内容。 不限制文件下载大小。
 
 有关大文件优化的详细信息，请参阅[大文件优化](cdn-large-file-optimization.md)。
 
 ### <a name="dynamic-site-acceleration"></a>动态站点加速
 
- **Akamai 的 Azure 内容传送网络**和 **Verizon 的 Azure 内容传送网络**配置文件中均提供动态站点加速。 使用此优化涉及额外的费用；有关详细信息，请参阅[内容传送网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
+ 动态站点加速适用于 **Akamai 推出的 Azure CDN 标准版**、**Verizon 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 高级版**配置文件。 使用此优化涉及额外的费用；有关详细信息，请参阅[内容分发网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
 
 动态站点加速包括各种对动态内容延迟和性能有益的技术。 这些技术包括路由和网络优化、TCP 优化等。 
 

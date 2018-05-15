@@ -1,25 +1,25 @@
 ---
-title: 在 Azure 容器服务 (AKS) 群集中配置入口
-description: 在 Azure 容器服务 (AKS) 群集中安装和配置 NGINX 入口控制器。
+title: 在 Azure Kubernetes 服务 (AKS) 群集中配置入口
+description: 在 Azure Kubernetes 服务 (AKS) 群集中安装和配置 NGINX 入口控制器。
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 03/03/2018
+ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: dbb37c6fc2b5db8b2799eaacbfb4864c4e04fee7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a6c9036a85e1c979d649896a9361e401f6f7cc0a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="https-ingress-on-azure-container-service-aks"></a>Azure 容器服务 (AKS) 中的 HTTPS 入口
+# <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的 HTTPS 入口
 
 入口控制器是一个软件片段，为 Kubernetes 服务提供反向代理、可配置的流量路由和 TLS 终止。 Kubernetes 入口资源用于配置各个 Kubernetes 服务的入口规则和路由。 借助入口控制器和入口规则，可以使用单个外部地址中将流量路由到 Kubernetes 群集中的多个服务。
 
-本文档通过一个示例演示如何在 Azure 容器服务 (AKS) 群集中部署 [NGINX 入口控制器][nginx-ingress]。 此外，使用 [KUBE-LEGO][kube-lego] 项目自动生成并配置 [Let's Encrypt][lets-encrypt] 证书。 最后，在 AKS 群集中运行多个应用程序（可通过单个地址访问其中的每个应用程序）。
+本文档通过一个示例演示如何在 Azure Kubernetes 服务 (AKS) 群集中部署 [NGINX 入口控制器][nginx-ingress]。 此外，使用 [KUBE-LEGO][kube-lego] 项目自动生成并配置 [Let's Encrypt][lets-encrypt] 证书。 最后，在 AKS 群集中运行多个应用程序（可通过单个地址访问其中的每个应用程序）。
 
 ## <a name="prerequisite"></a>先决条件
 
@@ -46,9 +46,9 @@ helm install stable/nginx-ingress --namespace kube-system
 ```console
 $ kubectl get service -l app=nginx-ingress --namespace kube-system
 
-NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                      AGE
-eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   13.82.238.45   80:30920/TCP,443:30426/TCP   20m
-eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>         80/TCP                       20m
+NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   51.145.155.210  80:30920/TCP,443:30426/TCP   20m
+eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
 由于尚未创建入口规则，在浏览到公共 IP 地址时，会路由到 NGINX 入口控制器的默认 404 页。
@@ -63,7 +63,7 @@ eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none> 
 #!/bin/bash
 
 # Public IP address
-IP="52.224.125.195"
+IP="51.145.155.210"
 
 # Name to associate with public IP address
 DNSNAME="demo-aks-ingress"

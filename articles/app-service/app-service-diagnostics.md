@@ -1,12 +1,12 @@
 ---
-title: "Azure 应用服务诊断概述 | Microsoft Docs"
-description: "了解如何使用应用服务诊断排查 Web 应用的问题。"
-keywords: "应用服务, azure 应用服务, 诊断, 支持, web 应用, 故障排除, 自助服务"
+title: Azure 应用服务诊断概述 | Microsoft Docs
+description: 了解如何使用应用服务诊断排查 Web 应用的问题。
+keywords: 应用服务, azure 应用服务, 诊断, 支持, web 应用, 故障排除, 自助服务
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: jen7714
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 9526817ce7969edcd5e9c56ec153bb4e3ebaa501
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 50e0e9f5edc18aac42ee80e232f70e09736124bc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure 应用服务诊断概述 
 
@@ -26,11 +26,13 @@ ms.lasthandoff: 01/25/2018
  
 尽管此体验在 Web 应用过去 24 小时内出现问题时可发挥最大的作用，但是，我们随时可以使用所有诊断图形进行分析。 在右栏中可以找到其他故障排除工具，以及有用文档和论坛的链接。
 
+应用服务诊断不但适用于 Windows 上的应用，也适用于 [Linux/容器](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-intro)、[应用服务环境](https://docs.microsoft.com/en-us/azure/app-service/environment/intro)和 [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) 上的应用。 
+
 ## <a name="open-app-service-diagnostics"></a>打开应用服务诊断
 
-若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到自己的应用服务 Web 应用。 
+若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。 
 
-在左侧导航栏中，单击“诊断并解决问题”。
+对于 Azure Functions，请导航到你的函数应用，在顶部的导航栏中，单击“平台功能”并从“监视”部分中选择“诊断并解决问题”。 
 
 ![主页](./media/app-service-diagnostics/Homepage1.png)
 
@@ -46,13 +48,22 @@ ms.lasthandoff: 01/25/2018
 
 ## <a name="tile-shortcuts"></a>磁贴快捷方式
 
-如果你确切地知道需要查找哪种类型的故障排除信息，磁贴快捷方式会将你直接转到所需问题类别的完整诊断报告。 与运行状况检查相比，磁贴快捷方式更直接，但访问诊断指标时，其引导性较差。  
+如果你确切地知道需要查找哪种类型的故障排除信息，磁贴快捷方式会将你直接转到所需问题类别的完整诊断报告。 与运行状况检查相比，磁贴快捷方式更直接，但访问诊断指标时，其引导性较差。 作为磁贴快捷方式的一部分，还可以在此处找到**诊断工具**，它们是更高级的工具，可帮助调查与应用程序代码问题、速度缓慢、连接字符串以及其他内容相关的问题。 
 
 ![磁贴快捷方式](./media/app-service-diagnostics/TileShortcuts4.png)
 
 ## <a name="diagnostic-report"></a>诊断报告
 
-无论是在运行[运行状况检查](#health-checkup)之后想要查看详细信息，还是单击了某个[磁贴快捷方式](#tile-shortcuts)，完整诊断报告都会显示过去 24 小时内的相关图形化指标。 如果应用出现任何停机，时间线下面将以橙色条形的方式呈现此故障。 可以选择某个停机故障，获取有关该故障的分析观测值以及建议的解决方法。 
+无论是在运行[运行状况检查](#health-checkup)之后想要查看详细信息，还是单击了某个[磁贴快捷方式](#tile-shortcuts)，完整诊断报告都会显示过去 24 小时内的相关图形化指标。 如果应用出现任何停机，时间线下面将以橙色条形的方式呈现此故障。 可以选择橙色条形之一来选择故障时间以查看与该故障时间相关的观测数据以及建议的故障排除步骤。 
 
 ![诊断报告](./media/app-service-diagnostics/DiagnosticReport5.png)
+
+
+## <a name="investigating-application-code-issues"></a>调查应用程序代码问题
+
+因为许多应用问题与应用程序代码中的问题相关，所以应用服务诊断集成了 [Application Insights](https://azure.microsoft.com/services/application-insights/) 来突出显示异常和依赖项问题，以便与所选故障时间进行关联。 Application Insights 无需单独启用。 
+
+若要查看 Application Insights 异常和依赖项，请选择“Web 应用故障”或“Web 应用速度缓慢”磁贴快捷方式。 
+
+![Application insights](./media/app-service-diagnostics/AppInsights6.png)
 

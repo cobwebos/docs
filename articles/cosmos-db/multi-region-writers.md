@@ -1,322 +1,118 @@
 ---
-title: 使用 Azure Cosmos DB 的多主数据库结构 | Microsoft Docs
-description: 了解如何使用 Azure Cosmos DB 设计应用程序体系结构，实现跨多个地理区域的本地读取和写入。
+title: Azure Cosmos DB 的全球规模多主数据库 | Microsoft Docs
+description: ''
 services: cosmos-db
-documentationcenter: ''
-author: SnehaGunda
+author: rimman
 manager: kfile
-ms.assetid: 706ced74-ea67-45dd-a7de-666c3c893687
 ms.service: cosmos-db
-ms.devlang: multiple
+ms.workload: data-services
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/23/2017
-ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e8853d521173a9a8d3c925361e43ce469471918
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 05/07/2018
+ms.author: rimman
+ms.openlocfilehash: 2446fac7526015d11737529c26d54e910643b750
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 多主机全局复制数据库体系结构
-Azure Cosmos DB 支持统包的[全球复制](distribute-data-globally.md)，允许在工作负荷中的任意位置以低延迟的访问将数据分配到多个区域。 此模型常用于发布者/使用者工作负荷。在这些工作负荷中，单个地理区域具有作者，其他（读取）区域具有分布于全球的读者。 
+# <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Azure Cosmos DB 的全球规模多主数据库 
+ 
+开发能够以本地延迟做出响应，同时为全球数据保持一致视图的全球分布式应用程序具有一定的难度。 客户会使用全球分布式数据库，因为他们需要改善数据访问延迟、实现较高的数据可用性、提供灾难恢复保障并 (4) 满足其业务要求。 Azure Cosmos DB 中的多主数据库提供较高的可用性级别 (99.999%)、不到 10 毫秒的数据写入延迟和可伸缩性，并内置了全面且灵活的冲突解决方案支持。 这些功能极大地简化了全球分布式应用程序的开发。 对于全球分布式应用程序，多主数据库支持至关重要。 
 
-也可以使用 Azure Cosmos DB 的全球复制支持来生成应用程序，在这些应用程序中，作者和读者分布于全球。 本文档概述了使用 Azure Cosmos DB 实现分布于全球的作者的本地写入和本地读取访问的模式。
+![多主体系结构](./media/multi-region-writers/multi-master-architecture.png)
 
-## <a id="ExampleScenario"></a>内容发布 - 示例方案
-以下是一个实际方案，该方案介绍如何通过 Azure Cosmos DB 使用全球分布式多区域/多主读写模式。 假设在 Azure Cosmos DB 上构建一个内容发布平台。 为了向发布者和使用者提供良好的用户体验，此平台必须满足以下要求。
+借助 Azure Cosmos DB 的多主数据库支持，可以针对分布在世界各地的数据容器（例如集合、图形、表）执行写入。 可以在与数据库帐户关联的任何区域中更新数据。 这些数据更新可以异步传播。 除了降低数据访问和写入延迟以外，多主数据库还提供可行的解决方案来解决故障转移和负载均衡问题。 总而言之，借助 Azure Cosmos DB，在全球任何位置，在 99% 的时间内都能获得 10 毫秒以下的写入延迟、99.999% 的写入和读取可用性，以及缩放写入和读取吞吐量的能力。   
 
-* 作者和订户遍布全球 
-* 作者必须将文章发布（写入）到本地（最近）区域
-* 作者的文章拥有遍布全球的读者/订户。 
-* 新文章发布时，订户应收到通知。
-* 订户必须能从本地区域阅读文章。 订户还应能对这些文章添加评论。 
-* 包括文章作者在内的任何人都应能在本地区域查看文章所附的所有评论。 
+## <a name="a-simple-multi-master-example--content-publishing"></a>一个简单的多主数据库示例 – 内容发布  
 
-假设存在数百万的使用者和发布者以及数十亿篇文章，我们很快就必须面对扩展以及保证访问位置的问题。 和大多数可伸缩性问题一样，解决方案在于良好的分区策略。 接下来，让我们看看如何将文章、评论和通知作为文档建模、配置 Azure Cosmos DB 帐户以及实现数据访问层。 
+让我们通过一个真实的场景来了解如何使用 Azure Cosmos DB 的多主数据库支持。 假设在 Azure Cosmos DB 上构建一个内容发布平台。 为了向发布者和使用者提供良好的用户体验，此平台必须满足以下要求。 
 
-若要了解有关分区和分区键的详细信息，请参阅[在 Azure Cosmos DB 中进行分区和缩放](partition-data.md)。
+* 作者和订户遍布全球。  
 
-## <a id="ModelingNotifications"></a>通知建模
-通知是特定于用户的数据馈送。 因此，通知文档的访问模式总是在单个用户的背景中。 例如，可以“向某个用户发布通知”或“为某个给定用户获取所有通知”。 因此，对于此类型，分区键的最佳选择是 `UserId`。
+* 作者必须将文章发布（写入）到本地（最近）区域。  
 
-    class Notification 
-    { 
-        // Unique ID for Notification. 
-        public string Id { get; set; }
+* 作者的文章拥有遍布全球的读者/订户。  
 
-        // The user Id for which notification is addressed to. 
-        public string UserId { get; set; }
+* 新文章发布时，订户应收到通知。  
 
-        // The partition Key for the resource. 
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.UserId; 
-            }
-        }
+* 订户必须能从本地区域阅读文章。 订户还应能对这些文章添加评论。  
 
-        // Subscription for which this notification is raised. 
-        public string SubscriptionFilter { get; set; }
+* 包括文章作者在内的任何人都应能在本地区域查看文章所附的所有评论。  
 
-        // Subject of the notification. 
-        public string ArticleId { get; set; } 
-    }
+假设存在数百万的使用者和发布者以及数十亿篇文章，我们很快就必须面对扩展以及保证访问位置的问题。 此类用例极其适合使用 Azure Cosmos DB 多主数据库。 
 
-## <a id="ModelingSubscriptions"></a>订阅建模
-订阅可以根据各种标准创建，如感兴趣的特定类别的文章或特定的发布者。 因此，`SubscriptionFilter` 是很好的分区键选择。
+## <a name="benefits-of-having-multi-master-support"></a>多主数据库支持的优势 
 
-    class Subscriptions 
-    { 
-        // Unique ID for Subscription 
-        public string Id { get; set; }
+多主数据库支持对于全球分布式应用程序至关重要。 多主数据库由均等参与“随地写入”模型（主动-主动模式）的[多个主区域](distribute-data-globally.md)组成，用于确保数据在任何有需要的时候都保持可用。 对单个区域所做的更新会异步传播到其他所有区域（反过来这些区域本身又成了主区域）。 在多主配置中作为主区域运行的 Azure Cosmos DB 区域自动聚合所有副本的数据，并确保[全球一致性和数据完整性](consistency-levels.md)。 下图显示了单主和多主数据库的读/写复制。
 
-        // Subscription source. Could be Author | Category etc. 
-        public string SubscriptionFilter { get; set; }
+![单主和多主数据库](./media/multi-region-writers/single-vs-multi-master.png)
 
-        // subscribing User. 
-        public string UserId { get; set; }
+自行实施多主数据库会增大开发人员的负担。 尝试自行实施多主数据库的大型客户可能需要花费数百个小时来配置和测试一个全球范围的多主配置，其中许多客户专门组建了工程师团队，其唯一的任务就是监视和维护多主复制。 自行创建和管理多主设置会占用应用程序创新所需的时间和资源，并大幅提高成本。 Azure Cosmos DB 提供现成的多主数据库支持，可以消除开发人员的此项开销。  
 
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.SubscriptionFilter; 
-            } 
-        } 
-    }
+总之，多主数据库提供以下优势：
 
-## <a id="ModelingArticles"></a>文章建模
-通过通知标识一篇文章后，后续查询通常基于 `Article.Id`。 选择 `Article.Id` 作为分区键，从而为在 Azure Cosmos DB 集合内存储文章提供最佳分布。 
+* **改善灾难恢复、写入可用性和故障转移** - 多主数据库可将任务关键型数据库的高可用性保持在一个更高的程度。 例如，当服务中断或区域性灾难导致主要区域不可用时，多主数据库可将数据从一个区域复制到故障转移区域。 故障转移区域将充当完全正常运行的主要区域，为应用程序提供支持。 在出现自然灾害、断电和/或人为破坏等问题时，多主数据库可提供更好的“生存能力”保护，因为剩余的区域可以位于地理上不同的多主数据库范围内，其有保障的写入可用性超过 99.999%。 
 
-    class Article 
-    { 
-        // Unique ID for Article 
-        public string Id { get; set; }
-        
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.Id; 
-            } 
-        }
-        
-        // Author of the article
-        public string Author { get; set; }
+* **改善最终用户的写入延迟** - 数据（由你提供）越靠近最终用户，体验就越好。 例如，如果用户位于欧洲，而数据库位于美国或澳大利亚，则各自区域中的延迟会增加大约 140 毫秒和 300 毫秒。 许多流行游戏、银行业务或交互式应用程序（Web 或移动）根本不能接受延迟。 延迟在客户对优质体验的认知方面发挥着巨大作用，已证实会在很大程度上影响用户的行为。 随着技术的改进，尤其是需要更高沉浸感和逼真体验的 AR、VR 和 MR 的问世，开发人员需要根据严格的延迟要求生成软件系统。 因此，提供本地可用的应用程序和数据（应用内容）更加重要。 借助 Azure Cosmos DB 中的多主数据库，性能与普通的本地读写相当，另外还能通过异地分布进行全局增强。  
 
-        // Category/genre of the article
-        public string Category { get; set; }
+* **改善写入可伸缩性和写入吞吐量** - 多主数据库提供更高的吞吐量和更高的利用率，同时提供多个一致性模型和正确性保证，并有 SLA 的保障。 
 
-        // Tags associated with the article
-        public string[] Tags { get; set; }
+  ![使用多主数据库缩放写入吞吐量](./media/multi-region-writers/scale-write-throughput.png)
 
-        // Title of the article
-        public string Title { get; set; }
-        
-        //... 
-    }
+* **为离线环境（例如边缘设备）提供更好的支持** - 多主数据库可让用户将所有或一部分数据从边缘设备复制到离线环境中最靠近的区域。 这种场景在销售人员自动化系统中很常见，其中，个人笔记本电脑（离线设备）存储与单个销售人员相关的一部分数据。 位于世界任意位置的云中主区域可以从远程边缘设备作为复制目标运行。  
 
-## <a id="ModelingReviews"></a>评论建模
-和文章一样，评论通常在文章背景下写入和读取。 选择 `ArticleId` 作为分区键将为与文章相关的评论提供最佳分布和高效访问。 
+* **负载均衡** - 使用多主数据库时，可以通过将用户/工作负荷从使高负载区域转移到负载均匀分配的区域，来对整个应用程序中的负载进行重新均衡。 通过添加新区域，然后将某些写入操作切换到新区域，即可轻松扩展写入容量。 
 
-    class Review 
-    { 
-        // Unique ID for Review 
-        public string Id { get; set; }
+* **更好地利用预配容量** - 使用多主数据库时，对于写入密集型和混合工作负荷，可能会占满多个区域中的预配容量。  在某些情况下，可以更均匀地重新分配读取和写入操作，以减少预配的吞吐量，并为客户带来更大的成本节省。  
 
-        // Article Id of the review 
-        public string ArticleId { get; set; }
+* **更简单、更具弹性的应用体系结构** - 转移到多主配置的应用程序会获得有保障的数据复原能力。  Azure Cosmos DB 能够全面消除复杂性，并大幅简化应用程序设计和体系结构。 
 
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.ArticleId; 
-            } 
-        }
-        
-        //Reviewer Id 
-        public string UserId { get; set; }
-        public string ReviewText { get; set; }
-        
-        public int Rating { get; set; } }
-    }
+* **无风险的故障转移测试** - 故障转移测试不会导致写入吞吐量出现任何下降。 使用多主数据库时，其他所有区域完全是主区域，因此故障转移不会对写入吞吐量造成很大的影响。  
 
-## <a id="DataAccessMethods"></a>数据访问层方法
-现在让我们来看看需要实现的主要数据访问方法。 以下是 `ContentPublishDatabase` 需要的方法列表：
+* **降低总拥有成本 (TCO) 和 DevOps 成本** - 达到可伸缩性、性能、全局分发和恢复时间目标通常代价不菲，因为添置组件或者在灾难降临之前一直维护静态备份基础结构的成本高昂。 Azure Cosmos DB 的多主数据库有行业领先 SLA 的保障，开发人员不再需要自行构建和维护“后端粘附逻辑”，即可高枕无忧地运行其任务关键型工作负荷。 
 
-    class ContentPublishDatabase 
-    { 
-        public async Task CreateSubscriptionAsync(string userId, string category);
-    
-        public async Task<IEnumerable<Notification>> ReadNotificationFeedAsync(string userId);
-    
-        public async Task<Article> ReadArticleAsync(string articleId);
-    
-        public async Task WriteReviewAsync(string articleId, string userId, string reviewText, int rating);
-    
-        public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId); 
-    }
+## <a name="use-cases-where-multi-master-support-is-needed"></a>需要多主数据库支持的用例
 
-## <a id="Architecture"></a>Azure Cosmos DB 帐户配置
-若要保证本地读取和写入，数据分区不仅要基于分区键，还要基于不同区域的地理访问模式。 该模型依赖于每个区域具有异地复制的 Azure Cosmos DB 数据库帐户。 例如，对于两个区域，具有针对多区域写入的设置：
+有大量的用例需要用到 Azure Cosmos DB 中的多主数据库： 
 
-| 帐户名 | 写入区域 | 读取区域 |
-| --- | --- | --- |
-| `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |
-| `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |
+* **IoT** - 使用 Azure Cosmos DB 多主数据库可以简化 IoT 数据处理的分布式实施。 使用 CRDT（无冲突的复制数据类型）的异地分布式边缘部署通常需要从多个位置跟踪时序数据。 每个设备可以驻留到某个最靠近的区域，设备（例如汽车）可以移动，并可以动态重新驻留，以写入另一个区域。  
 
-下图显示了如何在使用此设置的典型应用程序中执行读取和写入：
+* **电子商务** - 在电子商务方案中确保卓越的用户体验需要提供高可用性，以及灵活应对故障场景的能力。 当某个区域发生故障时，需要由另一个区域无缝接管用户会话、购物车和活动意愿清单，且不会丢失状态。 在此期间，必须适当处理用户所做的更新（例如，必须转移在购物车中执行的添加和删除操作）。 使用多主数据库，Azure Cosmos DB 可以正常处理此类场景，并在活动区域之间平稳过渡，同时在用户的角度保持一致的视图。 
 
-![Azure Cosmos DB 多主体系结构](./media/multi-region-writers/multi-master.png)
+* **欺诈/异常检测** - 监视用户活动或帐户活动的应用程序通常分布在全球，必须同时跟踪多个事件。 创建和维护用户的评分时，在不同地理区域中执行的操作必须同时更新评分，以保留内联的风险指标。 Azure Cosmos DB 可以确保开发人员无需在应用程序级别处理冲突情况。 
 
-以下代码片段演示如何在 `West US` 区域中运行的 DAL 中初始化客户端。
-    
-    ConnectionPolicy writeClientPolicy = new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp };
-    writeClientPolicy.PreferredLocations.Add(LocationNames.WestUS);
-    writeClientPolicy.PreferredLocations.Add(LocationNames.NorthEurope);
+* **协作** - 适用于根据商品或消耗介质等项目的热门度排名的应用程序。跟踪不同地理区域中的热门度可能很复杂，尤其是需要支付会员费或实时做出广告决策时。 开发人员可以使用 Azure Cosmos DB 在全球许多区域中实时进行排名、排序和报告，轻松交付功能，且不会增大延迟。 
 
-    DocumentClient writeClient = new DocumentClient(
-        new Uri("https://contentpubdatabase-usa.documents.azure.com"), 
-        writeRegionAuthKey,
-        writeClientPolicy);
+* **计量** - 使用 Azure Cosmos DB 多主数据库能够轻松地在全球实现用量（例如 API 调用数、每秒事务数，以及使用的分钟数）统计和调控。 内置冲突解决方案确保实时统计和调控的准确性。 
 
-    ConnectionPolicy readClientPolicy = new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp };
-    readClientPolicy.PreferredLocations.Add(LocationNames.NorthEurope);
-    readClientPolicy.PreferredLocations.Add(LocationNames.WestUS);
+* **个性化** - 不管是维护地理分布式计数器（用于触发会员积分奖励等操作），还是实施个性化的用户会话视图，应用程序都可以使用 Azure Cosmos DB 提供的高可用性和简化的地理分布式计数，来轻松提供较高的性能。 
 
-    DocumentClient readClient = new DocumentClient(
-        new Uri("https://contentpubdatabase-europe.documents.azure.com"),
-        readRegionAuthKey,
-        readClientPolicy);
+## <a name="conflict-resolution-with-multi-master"></a>使用多主数据库解决冲突 
 
-通过上述设置，数据访问层可以根据其部署位置将所有写入转发到本地帐户。 通过从两个帐户读取来执行读取以获得数据的全局视图。 这种方法可以扩展到所需的任意多个区域。 例如，以下是三个地理区域的设置：
+使用多主数据库时，难点通常在于同一记录的两个（或更多个）副本可能同时由两个或更多个不同区域中的不同写入者更新。 同时写入可能导致同一记录出现两个不同的版本并且没有内置的冲突解决方案，应用程序本身必须执行冲突解决措施来解决这种不一致情况。  
 
-| 帐户名 | 写入区域 | 读取区域 1 | 读取区域 2 |
-| --- | --- | --- | --- |
-| `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |`Southeast Asia` |
-| `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |`Southeast Asia` |
-| `contentpubdatabase-asia.documents.azure.com` | `Southeast Asia` |`North Europe` |`West US` |
+**示例** - 假设我们使用 Azure Cosmos DB 作为某个购物车应用程序的持久性存储，此应用程序已部署在两个区域：美国东部和美国西部。  如果在大致相同的时间，旧金山的某位用户将一件商品（例如一本书）添加到其购物车，同时，为了响应发行日期延期的供应商通知，位于美国东部的库存管理进程将该用户购买的另一件购物车商品（例如一部新手机）下架。 在时间点 T1 处，两个区域中的购物车记录是不相同的。 数据库将使用其复制和冲突解决机制来解决这种不一致情况，最终选择两个购物车版本中的一个。 多主数据库往往应用冲突解决试探法（例如，以最后一次写入优先），用户或应用程序无法预测选择的版本。 在任一情况下，数据都会丢失，或出现意外的行为。 如果选择了东部区域的版本，则用户对新购买商品（即一本书）所做的选择将会丢失；如果选择西部区域，则以前选择的商品（即一部手机）仍在购物车中。 无论怎样，都会丢失信息。 最后，检查时间点 T1 与 T2 之间的购物车的另一个进程也会检查非确定性行为。 例如，选择履约仓库并更新购物车交货成本的后台进程会生成与购物车最终内容相冲突的结果。 如果该进程在西部区域中运行，而备选项 1 成为现实，则它会计算两件商品的交货成本，即使购物车中很快只会包含一件商品（书籍）。 
 
-## <a id="DataAccessImplementation"></a>数据访问层实现
-现在让我们看一下如何实现具有两个可写区域的应用程序的数据访问层 (DAL)。 DAL 必须执行以下步骤：
+Azure Cosmos DB 实现相应的逻辑来处理数据库引擎本身内部的写入冲突。 Azure Cosmos DB 为自动解决冲突提供多个冲突解决模型，包括“自动”（CRDT - 无冲突的复制数据类型），“最后一次写入优先”(LWW)、“自定义”（存储过程）和“手动”，以此提供**全面且灵活的冲突解决支持**。 冲突解决模型提供准确性和一致性保证，消除了开发人员考虑一致性、可用性、性能、复制延迟，以及异地故障转移时的事件与跨区域写入冲突的组合时所承受的负担。  
 
-* 为每个帐户创建多个 `DocumentClient` 实例。 在两个区域的情况下，每个 DAL 实例具有 1 个 `writeClient` 和 1 个 `readClient`。 
-* 根据应用程序的部署区域来配置 `writeclient` 和 `readClient` 的终结点。 例如，部署在 `West US` 中的 DAL 使用 `contentpubdatabase-usa.documents.azure.com` 进行写入。 部署在 `NorthEurope` 中的 DAL 使用 `contentpubdatabase-europ.documents.azure.com` 进行写入。
+  ![多主数据库冲突解决](./media/multi-region-writers/multi-master-conflict-resolution-blade.png)
 
-通过上述设置，可以实现数据访问方法。 写入操作将写入转发到相应的 `writeClient`。
+Azure Cosmos DB 提供 3 种冲突解决模型。 冲突解决模型的语义如下： 
 
-    public async Task CreateSubscriptionAsync(string userId, string category)
-    {
-        await this.writeClient.CreateDocumentAsync(this.contentCollection, new Subscriptions
-        {
-            UserId = userId,
-            SubscriptionFilter = category
-        });
-    }
+**自动** - 这是默认的冲突解决策略。 选择此策略会导致 Azure Cosmos DB 自动在服务器端解决有冲突的更新，并提供可靠的最终一致性保证。 在内部，Azure Cosmos DB 利用数据库引擎内部的无冲突复制数据类型 (CRDT) 实现自动冲突解决。  
 
-    public async Task WriteReviewAsync(string articleId, string userId, string reviewText, int rating)
-    {
-        await this.writeClient.CreateDocumentAsync(this.contentCollection, new Review
-        {
-            UserId = userId,
-            ArticleId = articleId,
-            ReviewText = reviewText,
-            Rating = rating
-        });
-    }
+**最后一次写入优先 (LWW)** - 选择此策略可以根据系统定义的同步时间戳属性，或者有冲突的记录版本中定义的自定义属性解决冲突。 冲突解决发生在服务器端，选择具有最新时间戳的版本作为优先版本。  
 
-对于读取通知和评论，必须从两个区域读取并合并结果，如以下代码片段所示：
+**自定义** - 可以通过注册存储过程来注册应用程序定义的冲突解决逻辑。 在服务器端检测到数据库事务造成的更新冲突时，将会调用该存储过程。 如果选择该选项但无法注册该存储过程（或者该存储过程在运行时引发异常），可以通过“冲突源”访问有冲突的所有版本，并逐个解决这些冲突。  
 
-    public async Task<IEnumerable<Notification>> ReadNotificationFeedAsync(string userId)
-    {
-        IDocumentQuery<Notification> writeAccountNotification = (
-            from notification in this.writeClient.CreateDocumentQuery<Notification>(this.contentCollection) 
-            where notification.UserId == userId 
-            select notification).AsDocumentQuery();
-        
-        IDocumentQuery<Notification> readAccountNotification = (
-            from notification in this.readClient.CreateDocumentQuery<Notification>(this.contentCollection) 
-            where notification.UserId == userId 
-            select notification).AsDocumentQuery();
+## <a name="next-steps"></a>后续步骤  
 
-        List<Notification> notifications = new List<Notification>();
+本文已了解如何使用 Azure Cosmos DB 的全球分布式多主数据库。 接下来请浏览以下资源： 
 
-        while (writeAccountNotification.HasMoreResults || readAccountNotification.HasMoreResults)
-        {
-            IList<Task<FeedResponse<Notification>>> results = new List<Task<FeedResponse<Notification>>>();
+* [了解 Azure Cosmos DB 如何支持全球分布](distribute-data-globally.md)  
 
-            if (writeAccountNotification.HasMoreResults)
-            {
-                results.Add(writeAccountNotification.ExecuteNextAsync<Notification>());
-            }
+* [了解 Azure Cosmos DB 中的自动和手动故障转移](regional-failover.md)  
 
-            if (readAccountNotification.HasMoreResults)
-            {
-                results.Add(readAccountNotification.ExecuteNextAsync<Notification>());
-            }
+* [了解 Azure Cosmos DB 的全球一致性](consistency-levels.md)  
 
-            IList<FeedResponse<Notification>> notificationFeedResult = await Task.WhenAll(results);
-
-            foreach (FeedResponse<Notification> feed in notificationFeedResult)
-            {
-                notifications.AddRange(feed);
-            }
-        }
-        return notifications;
-    }
-
-    public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId)
-    {
-        IDocumentQuery<Review> writeAccountReviews = (
-            from review in this.writeClient.CreateDocumentQuery<Review>(this.contentCollection) 
-            where review.ArticleId == articleId 
-            select review).AsDocumentQuery();
-        
-        IDocumentQuery<Review> readAccountReviews = (
-            from review in this.readClient.CreateDocumentQuery<Review>(this.contentCollection) 
-            where review.ArticleId == articleId 
-            select review).AsDocumentQuery();
-
-        List<Review> reviews = new List<Review>();
-        
-        while (writeAccountReviews.HasMoreResults || readAccountReviews.HasMoreResults)
-        {
-            IList<Task<FeedResponse<Review>>> results = new List<Task<FeedResponse<Review>>>();
-
-            if (writeAccountReviews.HasMoreResults)
-            {
-                results.Add(writeAccountReviews.ExecuteNextAsync<Review>());
-            }
-
-            if (readAccountReviews.HasMoreResults)
-            {
-                results.Add(readAccountReviews.ExecuteNextAsync<Review>());
-            }
-
-            IList<FeedResponse<Review>> notificationFeedResult = await Task.WhenAll(results);
-
-            foreach (FeedResponse<Review> feed in notificationFeedResult)
-            {
-                reviews.AddRange(feed);
-            }
-        }
-
-        return reviews;
-    }
-
-因此，通过选择合适的分区键和静态的基于帐户的分区，可以使用 Azure Cosmos DB 实现多区域本地写入和读取。
-
-## <a id="NextSteps"></a>后续步骤
-本文以内容发布作为示例方案，描述了如何通过 Azure Cosmos DB 使用全球分布式多区域读写模式。
-
-* 了解 Azure Cosmos DB 如何支持[全球分布](distribute-data-globally.md)
-* 了解 [Azure Cosmos DB 中的自动和手动故障转移](regional-failover.md)
-* 了解 [Azure Cosmos DB 的全局一致性](consistency-levels.md)
-* 使用 [Azure Cosmos DB - SQL API](tutorial-global-distribution-sql-api.md) 进行多个区域开发
-* 使用 [Azure Cosmos DB - MongoDB API](tutorial-global-distribution-MongoDB.md) 进行多个区域开发
-* 使用 [Azure Cosmos DB - 表 API](tutorial-global-distribution-table.md) 进行多个区域开发
+* 使用 Azure Cosmos DB 进行多个区域开发 - [SQL API](tutorial-global-distribution-sql-api.md)、[MongoDB API](tutorial-global-distribution-mongodb.md) 或[表 API](tutorial-global-distribution-table.md)  

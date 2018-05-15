@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 2c6f5cf2d89da0c2418ac58ca5d47a8aa05e732f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-best-practices"></a>物联网安全最佳实践
 
 保护物联网 (IoT) 基础结构需要严格的深度安全防御策略。 该策略要求保护云中的数据，在公共 Internet 中传输数据时保护数据的完整性以及安全预配设备。 在总体基础结构中的每一层构建更强的安全性保证。
@@ -7,7 +23,7 @@
 此深度安全保护可由制造、开发和部署 IoT 设备与基础结构所涉及的各个积极参与者来开发及执行。 下面是这些参与者的高级描述。
 
 * **IoT 硬件制造商/集成商**：通常这些参与者是要部署的 IoT 硬件的制造商、组装来自各个制造商的硬件的集成商，或针对其他供应商制造或集成的 IoT 部署提供硬件的供应商。
-* **IoT 解决方案开发人员**：IoT 解决方案的开发通常由解决方案开发人员完成。 此开发人员可能是内部团队成员或专门从事此活动的系统集成商 (SI)。 IoT 解决方案开发商可从头开始开发 IoT 解决方案的各个组件、集成各个现成或开源组件，或改编仅需轻微调整的预配置解决方案。
+* **IoT 解决方案开发人员**：IoT 解决方案的开发通常由解决方案开发人员完成。 此开发人员可能是内部团队成员或专门从事此活动的系统集成商 (SI)。 IoT 解决方案开发人员可从头开始开发 IoT 解决方案的各个组件、集成各个现成或开源组件，或改编仅需轻微调整的解决方案加速器。
 * **IoT 解决方案部署人员**：完成开发 IoT 解决方案之后，需要在现场部署解决方案。 此过程涉及硬件部署、设备互连以及在硬件设备或云中部署解决方案。
 * **IoT 解决方案操作员**：IoT 解决方案部署完成之后，需要长期的操作、监视、升级和维护。 这些任务可由内部团队来完成，该团队由信息技术专业人员、硬件操作和维护团队，以及负责监督整体 IoT 基础结构行为是否正常的领域专业人员组成。
 

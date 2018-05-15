@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 容器服务与 Kafka on HDInsight 配合使用 | Microsoft Docs
-description: 了解如何使用 Azure 容器服务 (AKS) 托管的容器映像中的 Kafka on HDInsight。
+title: 将 Azure Kubernetes 服务与 Kafka on HDInsight 配合使用 | Microsoft Docs
+description: 了解如何使用 Azure Kubernetes 服务 (AKS) 托管的容器映像中的 Kafka on HDInsight。
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 16513cbd775e200a0821e8786ae823b82c67e437
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 555115397d63652df53c3c5e2e85e9aa7a687623
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>将 Azure 容器服务与 Kafka on HDInsight 配合使用
+# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Kafka on HDInsight 配合使用
 
-了解如何将 Azure 容器服务 (AKS) 与 Kafka on HDInsight 群集配合使用。 本文档中的步骤使用 AKS 中托管的 Node.js 应用程序来验证与 Kafka 的连接。 此应用程序使用 [kafka-node](https://www.npmjs.com/package/kafka-node) 包来与 Kafka 通信。 它使用 [Socket.io](https://socket.io/) 在浏览器客户端与托管在 AKS 中的后端之间进行事件驱动的消息传送。
+了解如何将 Azure Kubernetes 服务 (AKS) 与 Kafka on HDInsight 群集配合使用。 本文档中的步骤使用 AKS 中托管的 Node.js 应用程序来验证与 Kafka 的连接。 此应用程序使用 [kafka-node](https://www.npmjs.com/package/kafka-node) 包来与 Kafka 通信。 它使用 [Socket.io](https://socket.io/) 在浏览器客户端与托管在 AKS 中的后端之间进行事件驱动的消息传送。
 
-[Apache Kafka](https://kafka.apache.org) 是一个分布式流式处理平台，以开源方式提供，可用于构建实时流式处理数据管道和应用程序。 Azure 容器服务管理托管的 Kubernetes 环境，使用它可以快速轻松地部署容器化应用程序。 使用 Azure 虚拟网络可以连接这两个服务。
+[Apache Kafka](https://kafka.apache.org) 是一个分布式流式处理平台，以开源方式提供，可用于构建实时流式处理数据管道和应用程序。 Azure Kubernetes 服务管理托管的 Kubernetes 环境，使用它可以快速轻松地部署容器化应用程序。 使用 Azure 虚拟网络可以连接这两个服务。
 
 > [!NOTE]
-> 本文重点讲解需要执行哪些步骤才能让 Azure 容器服务与 Kafka on HDInsight 通信。 示例本身只是一个用于演示配置工作原理的基本 Kafka 客户端。
+> 本文重点讲解需要执行哪些步骤才能让 Azure Kubernetes 服务与 Kafka on HDInsight 通信。 示例本身只是一个用于演示配置工作原理的基本 Kafka 客户端。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,10 +37,10 @@ ms.lasthandoff: 04/16/2018
 本文档假设读者熟悉如何创建和使用以下 Azure 服务：
 
 * Kafka on HDInsight
-* Azure 容器服务
+* Azure Kubernetes 服务
 * Azure 虚拟网络
 
-此外，本文档假设读者已学完了 [Azure 容器服务教程](../../aks/tutorial-kubernetes-prepare-app.md)。 本教程将创建一个容器服务、Kubernetes 群集和容器注册表，并配置 `kubectl` 实用工具。
+此外，本文档还假设读者已学完了 [Azure Kubernetes 服务教程](../../aks/tutorial-kubernetes-prepare-app.md)。 本教程将创建一个容器服务、Kubernetes 群集和容器注册表，并配置 `kubectl` 实用工具。
 
 ## <a name="architecture"></a>体系结构
 
@@ -56,12 +56,12 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 > [!IMPORTANT]
 > 未在对等网络之间启用名称解析，因此使用了 IP 寻址。 默认情况下，Kafka on HDInsight 配置为在客户端建立连接时返回主机名而不是 IP 地址。 本文档中的步骤会将 Kafka 修改为使用 IP 播发。
 
-## <a name="create-an-azure-container-service-aks"></a>创建 Azure 容器服务 (AKS)
+## <a name="create-an-azure-kubernetes-service-aks"></a>创建 Azure Kubernetes 服务 (AKS)
 
 如果还没有 AKS 群集，可以参考以下文档之一了解如何创建 AKS 群集：
 
-* [部署 Azure 容器服务 (AKS) 群集 - 门户](../../aks/kubernetes-walkthrough-portal.md)
-* [部署 Azure 容器服务 (AKS) 群集 - CLI](../../aks/kubernetes-walkthrough.md)
+* [部署 Azure Kubernetes 服务 (AKS) 群集 - 门户](../../aks/kubernetes-walkthrough-portal.md)
+* [部署 Azure Kubernetes 服务 (AKS) 群集 - CLI](../../aks/kubernetes-walkthrough.md)
 
 > [!NOTE]
 > AKS 在安装期间会创建虚拟网络。 此网络将与下一部分针对 HDInsight 创建的网络建立对等互连。
@@ -108,7 +108,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 使用以下步骤将 Kafka 配置为播发 IP 地址而不是域名：
 
-1. 使用 Web 浏览器，转到 https://CLUSTERNAME.azurehdinsight.net。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
+1. 使用 Web 浏览器转到 https://CLUSTERNAME.azurehdinsight.net。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
 
     出现提示时，使用群集的 HTTPS 用户名称密码。 将显示群集的 Ambari Web UI。
 
@@ -154,11 +154,11 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 ## <a name="test-the-configuration"></a>测试配置
 
-此时，Kafka 和 Azure 容器服务通过对等互连的虚拟网络通信。 若要测试此连接，请使用以下步骤：
+此时，Kafka 和 Azure Kubernetes 服务通过对等互连的虚拟网络进行通信。 若要测试此连接，请使用以下步骤：
 
 1. 创建测试应用程序使用的 Kafka 主题。 有关创建 Kafka 主题的信息，请参阅[创建 Kafka 群集](apache-kafka-get-started.md)文档。
 
-2. 从 [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) 下载示例应用程序。 
+2. 从 [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) 下载示例应用程序。
 
 3. 编辑 `index.js` 文件并更改以下行：
 
@@ -184,7 +184,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
     ```
 
     > [!NOTE]
-    > 如果不知道 Azure 容器注册表名称，或者不熟悉如何将 Azure CLI 与 Azure 容器服务配合使用，请参阅 [AKS 教程](../../aks/tutorial-kubernetes-prepare-app.md)。
+    > 如果不知道 Azure 容器注册表名称，或者不熟悉如何将 Azure CLI 与 Azure Kubernetes 服务配合使用，请参阅 [AKS 教程](../../aks/tutorial-kubernetes-prepare-app.md)。
 
 6. 使用 ACR 的 loginServer 标记本地 `kafka-aks-test` 映像。 另外，在末尾添加 `:v1` 以指示映像版本：
 

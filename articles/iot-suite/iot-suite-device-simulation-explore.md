@@ -1,6 +1,6 @@
 ---
 title: 设备模拟解决方案入门 - Azure | Microsoft Docs
-description: IoT 套件模拟解决方案是一项工具，可以用来协助开发和测试 IoT 解决方案。 模拟服务是一项独立的服务，可以与其他预配置的解决方案或自己的自定义解决方案配合使用。
+description: IoT 解决方案加速器模拟解决方案是一项工具，可以用来协助开发和测试 IoT 解决方案。 模拟服务是一项独立的服务，可以与其他解决方案加速器或自己的自定义解决方案结合使用。
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,15 +12,15 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7dfd56d06e180dd163fa84d4289e6daf4baefc51
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="device-simulation-walkthrough"></a>设备模拟演练
 
-Azure IoT 设备模拟是一项工具，可以用来协助开发和测试 IoT 解决方案。 设备模拟是一项独立的服务，可以与其他预配置的解决方案或自己的自定义解决方案配合使用。
+Azure IoT 设备模拟是一项工具，可以用来协助开发和测试 IoT 解决方案。 设备模拟是一项独立的服务，可以与其他解决方案加速器或自己的自定义解决方案结合使用。
 
 本教程演示设备模拟的部分功能， 并介绍其工作原理，让你能够使用它来测试自己的 IoT 解决方案。
 
@@ -39,7 +39,7 @@ Azure IoT 设备模拟是一项工具，可以用来协助开发和测试 IoT �
 
 ## <a name="configuring-device-simulation"></a>配置设备模拟
 
-在仪表板中即可配置和运行设备模拟。 从 IoT 套件的[预配的解决方案](https://www.azureiotsuite.com/)页打开仪表板。 在新的设备模拟部署下单击“启动”。
+在仪表板中即可配置和运行设备模拟。 从 IoT 解决方案加速器[预配的解决方案](https://www.azureiotsuite.com/)页打开仪表板。 在新的设备模拟部署下单击“启动”。
 
 ### <a name="target-iot-hub"></a>以 IoT 中心为目标
 

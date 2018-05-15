@@ -1,18 +1,18 @@
 ---
-title: "使用服务主体的 Azure 容器注册表身份验证"
-description: "了解如何使用 Azure Active Directory 服务主体访问专用容器注册表中的映像。"
+title: 使用服务主体的 Azure 容器注册表身份验证
+description: 了解如何使用 Azure Active Directory 服务主体访问专用容器注册表中的映像。
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 04/23/2018
 ms.author: marsma
-ms.openlocfilehash: 97036ecabceb12b87b76c6ecb7e521157cbef827
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 16af83522dd55744c485f6dd3696481e16da1b22
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服务主体的 Azure 容器注册表身份验证
 
@@ -38,16 +38,25 @@ Azure AD“服务主体”提供对订阅中的 Azure 资源的访问权限。 �
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
+## <a name="sample-scripts"></a>示例脚本
+
+可以在 GitHub 上找到前面的 Azure CLI 示例脚本以及 Azure PowerShell 所对应的版本：
+
+* [Azure CLI][acr-scripts-cli]
+* [Azure PowerShell][acr-scripts-psh]
+
 ## <a name="next-steps"></a>后续步骤
 
 在创建服务主体并向其授予对容器注册表的访问权限后，可以在应用程序和服务中使用其凭据进行注册表交互。
 
 虽然对个体应用程序进行配置以使用服务主体凭据不在本文的讨论范围内，但是可以在此处找到针对一些特定服务和平台的说明：
 
-* [使用 Azure 容器注册表从 Azure 容器服务 (AKS) 进行身份验证](container-registry-auth-aks.md)
+* [使用 Azure 容器注册表从 Azure Kubernetes 服务 (AKS) 进行身份验证](container-registry-auth-aks.md)
 * [使用 Azure 容器注册表从 Azure 容器实例 (ACI) 进行身份验证](container-registry-auth-aci.md)
 
 <!-- LINKS - External -->
+[acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry
+[acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
 [az-acr-login]: /cli/azure/acr#az_acr_login

@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT 中心 - 开始将 IoT 设备连接到云 | Microsoft Docs"
-description: "了解如何将 IoT 板和初学者工具包连接到 Azure IoT 中心。 设备可以将遥测数据发送到 IoT 中心，IoT 中心可以监视和管理设备。"
+title: Azure IoT 中心 - 开始将 IoT 设备连接到云 | Microsoft Docs
+description: 了解如何将 IoT 板和初学者工具包连接到 Azure IoT 中心。 设备可以将遥测数据发送到 IoT 中心，IoT 中心可以监视和管理设备。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-keywords: "Azure IoT 中心教程"
+editor: ''
+keywords: Azure IoT 中心教程
 ms.assetid: 24376318-5344-4a81-a1e6-0003ed587d53
 ms.service: iot-hub
 ms.devlang: na
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 34742208e9189eb31310b58770ee4a22e33f56d5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: dafb8aca34a5a41f45f76d526aa3b8f3b1b792c4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="azure-iot-hub-get-started-tutorials"></a>Azure IoT 中心入门教程
+# <a name="azure-iot-hub-get-started-with-real-devices"></a>Azure IoT 中心真实设备入门
 
 可以使用 Azure IoT 中心和 Azure IoT 设备 SDK 生成物联网 (IoT) 解决方案：
 
 * Azure IoT 中心是在云中完全托管的服务，可安全地连接、监视和管理 IoT 设备。 使用 Azure IoT 设备 SDK 实现 IoT 设备。
 * 在更复杂的 IoT 方案中使用 IoT 网关。 例如在这些方案中需要考虑一些因素，如旧设备、带宽成本、安全性和隐私策略或边缘数据处理等。 在这些方案中，使用 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) 实现用于将设备连接到 IoT 中心的网关。
 
-## <a name="what-the-tutorials-cover"></a>教程涵盖内容
+## <a name="what-the-how-to-articles-cover"></a>操作方法文章所涉及的内容
 
-这些教程介绍 Azure IoT 中心和设备 SDK。 这些教程介绍用于演示 IoT 中心功能的常见 IoT 方案。 这些教程还说明了如何将 IoT 中心与其他 Azure 服务和工具结合在一起，以构建更强大的 IoT 解决方案。 在这些教程中，可以选择是使用模拟 IoT 设备还是使用真实 IoT 设备。 此外，还可以了解如何使用网关使设备能够连接到 IoT 中心。
+这些文章介绍 Azure IoT 中心和设备 SDK。 这些文章介绍用于演示 IoT 中心功能的常见 IoT 方案。 这些文章还说明了如何将 IoT 中心与其他 Azure 服务和工具结合在一起，以构建更强大的 IoT 解决方案。 在这些文章中，将使用真实 IoT 设备。
 
 ## <a name="set-up-your-device"></a>设置设备
 
-将 IoT 设备或网关连接到 Azure IoT 中心。 可以选择是使用物理设备还是使用模拟设备开始：
+将 IoT 设备或网关连接到 Azure IoT 中心：
 
 | IoT 设备                       | 编程语言 |
 |----------------------------------|----------------------|
@@ -44,7 +44,6 @@ ms.lasthandoff: 02/01/2018
 | Adafruit Feather HUZZAH ESP8266  | [Arduino][Hu_Ard]              |
 | Sparkfun ESP8266 Thing Dev       | [Arduino][Th_Ard]              |
 | Adafruit Feather M0              | [Arduino][M0_Ard]              |
-| PC 上的模拟设备           | [.NET][Sim_NET]、[Java][Sim_Jav]、[Node.js][Sim_Nd]、[Python][Sim_Pyth] |
 | 联机设备模拟器         | [Raspberry Pi (Node.js)][Ol_Sim] |
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
@@ -58,11 +57,4 @@ ms.lasthandoff: 02/01/2018
 [Hu_Ard]: iot-hub-arduino-huzzah-esp8266-get-started.md
 [Th_Ard]: iot-hub-sparkfun-esp8266-thing-dev-get-started.md
 [M0_Ard]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md
-[Sim_NET]: iot-hub-csharp-csharp-getstarted.md
-[Sim_Jav]: iot-hub-java-java-getstarted.md
-[Sim_Nd]: iot-hub-node-node-getstarted.md
-[Sim_Pyth]: iot-hub-python-getstarted.md
-[NUC_Lnx]: iot-hub-gateway-kit-c-lesson1-set-up-nuc.md
-[Sim_Lnx]: iot-hub-linux-iot-edge-get-started.md
-[Sim_Win]: iot-hub-windows-iot-edge-get-started.md
 [Ol_Sim]: iot-hub-raspberry-pi-web-simulator-get-started.md

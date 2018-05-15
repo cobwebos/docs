@@ -1,6 +1,6 @@
 ---
 title: IoT DevKit 到云：将 IoT MXChip DevKit 连接到 Azure IoT 中心 | Microsoft Docs
-description: 本教程介绍了如何将 IoT DevKit AZ3166 上的传感器的状态发送到Azure IoT 套件以用于监视和可视化。
+description: 本教程介绍了如何将 IoT DevKit AZ3166 上的传感器的状态发送到 Azure IoT 远程监视解决方案加速器。
 services: iot-hub
 documentationcenter: ''
 author: liydu
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 17b24244180436c2d1f97433e13a530dae565a10
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d59a739e2222aca27993f6ae944a1d3bda567041
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>将 MXChip IoT DevKit 连接到 Azure IoT 套件以进行远程监视
+# <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>将 MXChip IoT DevKit 连接到 Azure IoT 远程监视解决方案加速器
 
-本教程介绍了如何在 DevKit 上运行示例应用来将传感器数据发送到 Azure IoT 套件。
+本教程介绍了如何在 DevKit 上运行示例应用，以便将传感器数据发送到 Azure IoT 远程监视解决方案加速器。
 
 [MXChip IoT DevKit](https://aka.ms/iot-devkit) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用[适用于 Arduino 的 Visual Studio Code 扩展](https://aka.ms/arduino)针对其进行开发。 它附带了一个不断增长的[项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)，指导你构建物联网 (IoT) 解决方案的原型，以利用 Microsoft Azure 服务。
 
@@ -38,12 +38,12 @@ ms.lasthandoff: 04/28/2018
 * 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/free/)
 * 声明你的 [Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（如果你是 MSDN 或 Visual Studio 订阅者）
 
-## <a name="create-an-azure-iot-suite"></a>创建 Azure IoT 套件
+## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>创建 Azure IoT 远程监视解决方案加速器
 
-1. 转到 [Azure IoT 套件站点](https://www.azureiotsuite.com/)并单击“创建新的解决方案”。
-  ![选择 Azure IoT 套件类型](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
+1. 转到 [Azure IoT 解决方案加速器站点](https://www.azureiotsuite.com/)并单击“创建新的解决方案”。
+  ![选择 Azure IoT 解决方案加速器类型](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
   > [!WARNING]
-  > 默认情况下，此示例将在创建一个 IoT 套件后创建 S2 IoT 中心。 如果此 IoT 中心不用于大量设备，强烈建议你将其从 S2 降级到 S1，并且在不再需要 IoT 套件时将其删除，以便也可以删除相关的 IoT 中心。 
+  > 默认情况下，此示例将在创建一个 IoT 远程监视解决方案加速器后创建 S2 IoT 中心。 如果此 IoT 中心不用于大量设备，强烈建议你将其从 S2 降级到 S1，并且在不再需要 IoT 远程监视解决方案加速器时将其删除，以便也可以删除相关的 IoT 中心。 
 
 2. 选择“远程监视”。
 
@@ -100,13 +100,13 @@ DevKit 将重新启动并开始运行代码。
 
 ## <a name="test-the-project"></a>测试项目
 
-在示例应用运行时，DevKit 将通过 Wi-Fi 将传感器数据发送到 Azure IoT 套件。 若要查看结果，请遵循以下步骤：
+在示例应用运行时，DevKit 会通过 Wi-Fi 将传感器数据发送到 Azure IoT 远程监视解决方案加速器。 若要查看结果，请遵循以下步骤：
 
-1. 转到你的 Azure IoT 套件，然后单击“仪表板”。
+1. 转到 Azure IoT 远程监视解决方案加速器，然后单击“仪表板”。
 
-2. 在 Azure IoT 套件解决方案控制台上，将会看到 DevKit 传感器状态。
+2. 在远程监视解决方案控制台上会看到 DevKit 传感器状态。
 
-![Azure IoT 套件中的传感器数据](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/sensor-status.png)
+![Azure IoT 远程监视解决方案加速器中的传感器数据](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/sensor-status.png)
 
 ## <a name="change-device-id"></a>更改设备 ID
 
@@ -121,7 +121,7 @@ DevKit 将重新启动并开始运行代码。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已学习了如何将 DevKit 设备连接到 Azure IoT 套件并将传感器数据可视化，下面是建议执行的后续步骤：
+了解如何将 DevKit 设备连接到 Azure IoT 远程监视解决方案加速器并将传感器数据可视化以后，建议接下来学习以下教程：
 
-* [Azure IoT 套件概述](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT 解决方案加速器概述](https://docs.microsoft.com/azure/iot-suite/)
 * [将 MXChip IoT DevKit 设备连接到 Microsoft IoT Central 应用程序](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions 中的任务中心 - Azure"
-description: "了解在 Azure Functions 的 Durable Functions 扩展中什么是任务中心。 了解如何配置任务中心。"
+title: Durable Functions 中的任务中心 - Azure
+description: 了解在 Azure Functions 的 Durable Functions 扩展中什么是任务中心。 了解如何配置任务中心。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: b241bad7b0060551eba5e78efbb1b729bf5d0098
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 563667684accf8b434052cd412bf6e93c77ea63a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
@@ -35,6 +35,7 @@ ms.lasthandoff: 10/18/2017
 * 一个或多个控制队列。
 * 一个工作项队列。
 * 一个历史记录表。
+* 一个实例表。
 * 一个包含一个或多个租用 blob 的存储容器。
 
 当业务流程协调程序或活动函数运行时或调度它们运行时，将自动在默认 Azure 存储帐户中创建所有这些资源。 [性能和缩放](durable-functions-perf-and-scale.md)一文介绍了如何使用这些资源。

@@ -1,24 +1,24 @@
 ---
-title: "如何为应用服务应用程序配置 Facebook 身份验证"
-description: "了解如何为应用服务应用程序配置 Facebook 身份验证。"
+title: 如何为应用服务应用程序配置 Facebook 身份验证
+description: 了解如何为应用服务应用程序配置 Facebook 身份验证。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: mattchenderson
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: c1b4c91d384c56c4f55bf8d31ced250f51c0d837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1d2b294fc0663770f9a699e300672695225dfdfd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>如何将应用服务应用程序配置为使用 Facebook 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -31,15 +31,16 @@ ms.lasthandoff: 10/11/2017
 1. 登录到 [Azure 门户]并导航到应用程序。 复制 **URL**。 在配置 Facebook 应用时会用到此信息。
 2. 在其他浏览器窗口中，导航到 [Facebook Developers]（Facebook 开发者）网站，并使用 Facebook 帐户凭据登录。
 3. （可选）如果尚未注册，请单击“应用” > “以开发者身份注册”，接受用户政策，并遵照注册步骤操作。
-4. 单击“我的应用” > “添加新应用” > “网站” > “跳过并创建应用程序 ID”。 
-5. 在“显示名称”中，为应用键入唯一的名称，并键入**联系人电子邮件**，选择应用的“类别”，接着单击“创建应用程序 ID”并完成安全性检查。 这会转到新 Facebook 应用的开发人员仪表板。
-6. 在“Facebook 登录”下，单击“入门”。 将应用程序的“重定向 URI”添加到“有效的 OAuth 重定向 URI”中，然后单击“保存更改”。 
+4. 单击“我的应用” > “添加新应用”。
+5. 在**显示名称**中，键入应用的唯一名称。 此外，还提供**联系人电子邮件**，然后单击“创建应用 ID”并完成安全检查。 这会转到新 Facebook 应用的开发人员仪表板。
+7. 在 **Facebook 登录**下，单击“设置”，在 **Facebook 登录**下左侧导航栏中选择“设置”。
+8. 将应用程序的“重定向 URI”添加到“有效的 OAuth 重定向 URI”中，然后单击“保存更改”。
    
    > [!NOTE]
    > 重定向 URI 是应用程序的 URL 加上路径 */.auth/login/facebook/callback*。 例如，`https://contoso.azurewebsites.net/.auth/login/facebook/callback`。 请务必使用 HTTPS 方案。
    > 
    > 
-7. 在左侧导航栏中，单击“设置”。 在“应用密钥”字段中，单击“显示”，在收到请求时提供密码，并记下“应用程序 ID”和“应用密钥”的值。 稍后会在 Azure 中使用这些值来配置应用程序。
+7. 在左侧导航栏中，单击“设置” > “基本”。 在“应用密钥”字段中，单击“显示”，在收到请求时提供密码，并记下“应用程序 ID”和“应用密钥”的值。 稍后会在 Azure 中使用这些值来配置应用程序。
    
    > [!IMPORTANT]
    > 应用程序密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或在客户端应用程序中分发它。

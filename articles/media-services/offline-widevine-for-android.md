@@ -1,12 +1,12 @@
 ---
-title: "配置帐户以对受 Widevine 保护的内容进行脱机流式处理 - Azure"
-description: "本主题演示如何配置 Azure 媒体服务帐户，以对受 Widevine 保护的内容进行脱机流式处理。"
+title: 配置帐户以对受 Widevine 保护的内容进行脱机流式处理 - Azure
+description: 本主题演示如何配置 Azure 媒体服务帐户，以对受 Widevine 保护的内容进行脱机流式处理。
 services: media-services
-keywords: "DASH, DRM, Widevine 脱机模式, ExoPlayer, Android"
-documentationcenter: 
+keywords: DASH, DRM, Widevine 脱机模式, ExoPlayer, Android
+documentationcenter: ''
 author: willzhan
 manager: steveng
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: b27ffcbf5749d612e63ba08df0adad72f357a83a
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 158b58c13aee4d6241900db4a5e2b3fe8a45cc3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理
 
@@ -148,7 +148,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 上面的开源 PWA 应用是在 Node.js 中编写的。 如果希望在 Ubuntu 服务器上托管自己的版本，请注意以下可能会阻止播放的常见问题：
 
-1. CORS 问题：示例应用中的示例视频托管在 https://storage.googleapis.com/biograf-video-files/videos/ 中。 Google 已为其托管在 Google 云存储桶中的所有测试示例设置了 CORS。 它们会使用 CORS 标头，显式指定 CORS 条目：https://biograf-155113.appspot.com（谷歌托管其示例的域），从而阻止任何其他站点的访问。 如果尝试访问，可看到以下 HTTP 错误：未能加载 https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: 请求的资源中未出现 "Access-Control-Allow-Origin" 标头。 因此不允许源“ https://13.85.80.81:8080 ”进行访问。 如果非跳转响应可满足需求，请将请求的模式设置为“no-cors”，以便在禁用 CORS 的情况下提取资源。
+1. CORS 问题：示例应用中的示例视频在 https://storage.googleapis.com/biograf-video-files/videos/ 中托管。 Google 已为其托管在 Google 云存储桶中的所有测试示例设置了 CORS。 它们会使用 CORS 标头，显式指定 CORS 条目：https://biograf-155113.appspot.com（google 托管其示例的域），从而阻止任何其他站点的访问。 如果尝试访问，将看到以下 HTTP 错误：未能加载 https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd:: 请求的资源中未出现 "Access-Control-Allow-Origin" 标头。 因此不允许源“https://13.85.80.81:8080”进行访问。 如果非跳转响应可满足需求，请将请求的模式设置为“no-cors”，以便在禁用 CORS 的情况下提取资源。
 2. 证书问题：从 Chrome v 58 开始，EME for Widevine 需要 HTTPS。 因此，需要使用 X509 证书通过 HTTPS 来托管示例应用。 常用的测试证书由于以下要求而无法使用：需要获取满足以下最低要求的证书：
     - Chrome 和 Firefox 要求证书中具备 SAN 使用者可选名称设置
     - 证书必须具备受信任的 CA，自签名开发证书无法使用
@@ -172,7 +172,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 ### <a name="question"></a>问题
 
-对于 Widevine 安全级别，在 Google 的 [Widevine DRM Architecture Overview doc](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)（Widevine DRM 体系结构概述文档）中，定义了三种不同的安全级别。 但是，在 [Widevine 许可证模板上的 Azure 媒体服务文档](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview)中，概述了五种不同的安全级别。 这两组不同安全级别之间的关系或映射是什么？
+对于 Widevine 安全级别，在 Google 的 [Widevine DRM Architecture Overview doc](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)（Widevine DRM 体系结构概述文档）中，定义了三种不同的安全级别。 但是，在 [Widevine 许可证模板上的 Azure 媒体服务文档](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)中，概述了五种不同的安全级别。 这两组不同安全级别之间的关系或映射是什么？
 
 ### <a name="answer"></a>Answer
 
@@ -182,7 +182,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 2.  安全级别 2：在 TEE 中执行加密（但不是视频处理）：已解密的缓冲区返回到应用程序域，并通过单独的视频硬件或软件进行处理。 但是，在级别 2，加密信息仍仅在 TEE 中处理。
 3.  安全级别 3：设备上没有 TEE。 可采取相应措施来保护主机操作系统中的加密信息和已解密内容。 级别 3 实现还包括硬件加密引擎，但只能增强性能，而不能增强安全性。
 
-同时，在 [Widevine 许可证模板上的 Azure 媒体服务文档](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview)中，content_key_specs 的 security_level 属性可以具有以下五个不同的值（播放的客户端稳定性要求）：
+同时，在 [Widevine 许可证模板上的 Azure 媒体服务文档](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)中，content_key_specs 的 security_level 属性可以具有以下五个不同的值（播放的客户端稳定性要求）：
 
 1.  需要基于软件的白盒加密。
 2.  需要软件加密和模糊处理解码器。

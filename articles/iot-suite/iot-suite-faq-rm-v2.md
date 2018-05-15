@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 套件远程监视 FAQ | Microsoft Docs
-description: 有关 IoT 套件远程监视预配解决方案的常见问题解答
+title: 远程监视解决方案加速器常见问题解答 | Microsoft Docs
+description: 远程监视解决方案加速器的常见问题解答
 services: iot-suite
 suite: iot-suite
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b0d6dbb567f66537c599d7ac3e4337988b3374c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1cc260710d025428a1ca77c41c104dc172447e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-remote-monitoring-preconfigured-solution"></a>有关 IoT 套件远程监视预配解决方案的常见问题解答
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>远程监视解决方案加速器的常见问题解答
 
 请同时参阅一般的[常见问题解答](iot-suite-faq.md)。
 
 ### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>预配新的远程监视解决方案的费用是多少？
 
-新的预配置解决方案提供两个部署选项：
+新的解决方案加速器提供两个部署选项：
 
 * 基本选项适用于寻求更低开发成本的开发人员，或想要生成演示或概念证明的客户。
 * 标准选项适用于想要部署生产就绪基础结构的企业。
@@ -44,15 +44,11 @@ ms.lasthandoff: 04/23/2018
 
 有关详细信息，请参阅 [Upgrade map key to see devices on a dynamic map](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map)（升级映射键，以查看动态映射上的设备）。
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>在订阅中可以设置多少个免费必应地图 API？
-
-两个。 在一个 Azure 订阅中，只能创建两个面向企业的内部事务级别 1 必应地图计划。 默认情况下，远程监视解决方案是使用内部事务级别 1 计划预配的。 因此，如果不进行修改，则在订阅中只能设置最多两个远程监视解决方案。
-
 ### <a name="next-steps"></a>后续步骤
 
-还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
+还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
-* [探索远程监视预配置解决方案的功能](iot-suite-remote-monitoring-explore.md)
-* [预见性维护预配置解决方案概述](iot-suite-predictive-overview.md)
-* [连接工厂预配置解决方案概述](iot-suite-connected-factory-overview.md)
+* [探索远程监视解决方案加速器的功能](iot-suite-remote-monitoring-explore.md)
+* [预测性维护解决方案加速器概述](iot-suite-predictive-overview.md)
+* [连接的工厂解决方案加速器概述](iot-suite-connected-factory-overview.md)
 * [从头保障 IoT 的安全](securing-iot-ground-up.md)

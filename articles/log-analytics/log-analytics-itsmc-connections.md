@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fdf3c7d1a6621437c414e2c1fe0628f2f585d98a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
@@ -271,7 +271,10 @@ ms.lasthandoff: 04/20/2018
 
 > [!NOTE]
 
-> ITSM 连接器无需在 ServiceNow 实例上安装任何其他模块即可向 ServiceNow 发送事件。 如果在 ServiceNow 实例中使用 EventManagement 模块且要使用该连接器在 ServiceNow 中创建事件或警报，请将以下角色添加到集成用户：- evt_mgmt_integration - evt_mgmt_operator  
+> ITSM 连接器无需在 ServiceNow 实例上安装任何其他模块即可向 ServiceNow 发送事件。 若要在 ServiceNow 实例中使用 EventManagement 模块且要使用连接器在 ServiceNow 中创建事件或警报，请将以下角色添加到集成用户：
+
+>    - evt_mgmt_integration
+>    - evt_mgmt_operator  
 
 
 ## <a name="connect-provance-to-it-service-management-connector-in-azure"></a>将 Provance 连接到 Azure 中的 IT 服务管理连接器

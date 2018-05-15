@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2017
 ms.author: dkshir
-ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e58096d4bde9c947f199b4696c0b5c28291956d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>用于管理 CA 签名的 X.509 证书的 PowerShell 脚本
 
@@ -33,7 +33,9 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 ## <a name="create-x509-certificates"></a>创建 X.509 证书
 以下步骤显示如何在本地创建 X.509 根证书的示例。 
 
-1. 以管理员身份打开 PowerShell 窗口。 
+1. 以管理员身份打开 PowerShell 窗口。  
+   **注意：** 必须在 PowerShell 本身（而不是 PowerShell ISE、Visual Studio Code 或包装基础 PowerShell 控制台的其他工具）中打开此窗口。  使用基于非控制台的 PowerShell 将导致下面的 `openssl` 命令挂起。
+
 2. 导航到工作目录。 运行以下脚本以设置全局变量。 
     ```PowerShell
     $openSSLBinSource = "<full_path_to_the_binaries>\OpenSSL\bin"

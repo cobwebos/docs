@@ -9,21 +9,32 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: e30943426ad68171e1464f828a9c8672b06c975a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1eb4e7859ae62fca4e4a11f69abda3f767ab9596
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure 机器学习新增功能
 
-本文介绍 [Azure 机器学习服务](../service/overview-what-is-azure-ml.md)的新版本。 
+本文介绍 [Azure 机器学习](../service/overview-what-is-azure-ml.md)的新版本。 
+
+
+## <a name="2018-05-sprint-5"></a>2018-05（冲刺 (sprint) 5）
+
+使用此版本的 Azure 机器学习，可以：
++ 使用量化版本 ResNet 50 将映像特征化，基于这些特征训练分类器，并[将该模型部署到 Azure 上的 FPGA](../service/how-to-deploy-fpga-web-service.md)，以便进行超低延迟推断。
+
++ 使用[自定义 Azure 机器学习包](../service/reference-python-package-overview.md)为以下域快速生成和部署高度准确的机器学习和深度学习模型：
+  + [计算机视觉](../service/how-to-build-deploy-image-classification-models.md)
+  + [文本分析](../service/how-to-build-deploy-text-classification-models.md)
+  + [预测](../service/how-to-build-deploy-forecast-models.md)
 
 ## <a name="2018-03-sprint-4"></a>2018-03（冲刺 (sprint) 4）
 **版本号**：0.1.1801.24353 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找版本](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
 
 
-欢迎使用 Azure Machine Learning Workbench 的第五个更新。 下面的许多更新就是针对你的反馈的直接结果。 请持续关注！
+下面的许多更新就是针对你的反馈的直接结果。 请持续关注！
 
 **值得注意的新功能和更改**
 
@@ -334,9 +345,9 @@ ms.lasthandoff: 04/19/2018
     - `iris.ipynb` Notebook 已经过修改，可在 HDInsight 群集中工作。
     - 运行历史记录已在 `iris.ipynb` Notebook 单元格中打开。
 - [_使用自行车共享数据的高级数据准备_](./tutorial-bikeshare-dataprep.md) 示例项目的 “处理错误值” 步骤已修复。
-- [_针对成人人口普查数据的 MMLSpark_](https://github.com/Azure/MachineLearningSamples-mmlspark) 示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
-- [_分布式超参数优化_](./scenario-distributed-tuning-of-hyperparameters.md) 示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
-- 新建示例项目 [_使用 CNTK 的图像分类_](./scenario-image-classification-using-cntk.md)。
+- [](https://github.com/Azure/MachineLearningSamples-mmlspark)“针对成人人口普查数据的 MMLSpark”示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
+- [](./scenario-distributed-tuning-of-hyperparameters.md)“分布式超参数优化”示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
+- 新建示例项目“使用 CNTK 的图像分类”[](./scenario-image-classification-using-cntk.md)。
 
 
 ## <a name="2017-10-sprint-0"></a>2017-10（冲刺 (sprint) 0） 

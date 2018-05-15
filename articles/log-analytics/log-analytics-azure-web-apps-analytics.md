@@ -12,17 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: b70b626ca618fbfb7cbe25a4fcbc9aae797ce157
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7b83b9de08d024b91ca7008a4f0bf970e8d00688
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>查看所有 Azure Web 应用资源的指标的分析数据
 
 ![Web 应用符号](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
+
+> [!NOTE]
+> Azure Web 应用分析解决方案已弃用。  已安装该解决方案的客户可以继续使用它，但 Azure Web 应用分析无法添加到任何新的工作区。
+
 Azure Web 应用分析（预览版）解决方案通过收集所有 Azure Web 应用资源的各种指标，深入剖析 [Azure Web 应用](../app-service/app-service-web-overview.md)。 借助该解决方案，可以分析和搜索 Web 应用资源指标数据。
 
 使用该解决方案可以查看：
@@ -53,7 +57,7 @@ Azure Web 应用分析（预览版）解决方案通过收集所有 Azure Web �
 执行以下步骤，为工作区配置 Azure Web 应用分析解决方案。
 
 1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) 或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
-2. [Enable Azure resource metrics logging to OMS using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell)（使用 PowerShell 启用 OMS 的 Azure 资源指标日志记录）。
+2. [Enable Azure resource metrics logging to Log Analytics using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell)（使用 PowerShell 启用 Log Analytics 的 Azure 资源指标日志记录）。
 
 Azure Web 应用分析解决方案从 Azure 中收集两组指标：
 
@@ -73,10 +77,6 @@ Azure Web 应用分析解决方案从 Azure 中收集两组指标：
   - 内存百分比
 
 仅当使用专用服务计划时，才收集应用服务计划指标。 这一点不适用于免费或共享的应用服务计划。
-
-如果使用 OMS 门户添加解决方案，将看到以下磁贴。 需要 [enable Azure resource metrics logging to OMS using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell)（使用 PowerShell 启用 OMS 的 Azure 资源指标日志记录）。
-
-![执行评估通知](./media/log-analytics-azure-web-apps-analytics/performing-assessment.png)
 
 配置解决方案后，数据应在 15 分钟内开始流向工作区。
 

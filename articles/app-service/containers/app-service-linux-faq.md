@@ -1,13 +1,13 @@
 ---
-title: "Linux 上的 Azure 应用服务常见问题解答 | Microsoft Docs"
-description: "Linux 上的 Azure 应用服务常见问题解答。"
-keywords: "Azure 应用服务, Web 应用, 常见问题解答, Linux, oss"
+title: Linux 上的 Azure 应用服务常见问题解答 | Microsoft Docs
+description: Linux 上的 Azure 应用服务常见问题解答。
+keywords: Azure 应用服务, Web 应用, 常见问题解答, Linux, oss
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: b22d5f3497c388192764aa6b4ee8c95fec568bd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -46,6 +46,10 @@ ms.lasthandoff: 12/08/2017
 **可以使用安全外壳 (SSH) 连接到应用容器虚拟机 (VM) 吗？**
 
 是的，可以通过源代码管理 (SCM) 站点实现此操作。
+
+> [!NOTE] 
+> 还可以使用 SSH、SFTP 或 Visual Studio Code（用于实时调试 Node.js 应用）直接从本地开发计算机连接到应用容器。 有关详细信息，请参阅[远程调试和通过 SSH 登录到 Linux 上的应用服务](https://aka.ms/linux-debug)。
+>
 
 **如何通过 SDK 或 Azure 资源管理器模板创建 Linux 应用服务计划？**
 

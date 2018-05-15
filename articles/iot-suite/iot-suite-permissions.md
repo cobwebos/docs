@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT 套件和 Azure Active Directory | Microsoft Docs"
-description: "介绍 Azure IoT 套件如何使用 Azure Active Directory 管理权限。"
-services: 
+title: Azure IoT 解决方案加速器和 Azure Active Directory | Microsoft Docs
+description: 介绍了 Azure IoT 解决方案加速器如何使用 Azure Active Directory 来管理权限。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: e5804cda921e9d598d0ed02c4fafccdb40fbe7a5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b7360ca4df63cac114b0eb1f93375367da6735cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>azureiotsuite.com 站点权限
 
@@ -29,35 +29,35 @@ ms.lasthandoff: 12/18/2017
 
 1. 站点首先从 Azure 查明用户所属的 AAD 租户以填充用户名旁显示的租户列表。 当前，站点一次只能获取一个租户的用户令牌。 因此，当使用右上角的下拉列表切换租户时，站点会使你登录到该租户，以获取该租户的令牌。
 
-2. 接下来，站点从 Azure 查明你已与所选租户关联的订阅。 创建新的预配置解决方案时，会看到可用订阅。
+2. 接下来，站点从 Azure 查明你已与所选租户关联的订阅。 创建新的解决方案加速器时，会看到可用订阅。
 
-3. 最后，站点检索标记为预配置解决方案的订阅和资源组中的所有资源，并填充主页上的磁贴。
+3. 最后，站点检索标记为解决方案加速器的订阅和资源组中的所有资源，并填充主页上的磁贴。
 
-下列各部分介绍用于控制对预配置解决方案的访问的角色。
+下列各部分介绍了用于控制对解决方案加速器的访问的角色。
 
 ## <a name="aad-roles"></a>AAD 角色
 
-AAD 角色可控制设置预配置解决方案以及在预配置解决方案中管理用户的能力。
+AAD 角色控制预配解决方案加速器以及在解决方案加速器中管理用户的能力。
 
-有关 AAD 中的管理员角色的详细信息，可参阅[在 Azure AD 中分配管理员角色][lnk-aad-admin]。 本文重点介绍预配置解决方案使用的**全局管理员**和**用户**目录角色。
+有关 AAD 中的管理员角色的详细信息，可参阅[在 Azure AD 中分配管理员角色][lnk-aad-admin]。 本文重点介绍解决方案加速器使用的**全局管理员**和**用户**目录角色。
 
 ### <a name="global-administrator"></a>全局管理员
 
 对于每个 AAD 租户，可以有多个全局管理员：
 
 * 在创建某个 AAD 租户时，默认情况下会成为该租户的全局管理员。
-* 全局管理员可设置基本和标准预配置解决方案。
+* 全局管理员可以预配基本和标准解决方案加速器。
 
 ### <a name="domain-user"></a>域用户
 
 每个 AAD 租户可以有多个域用户：
 
-* 域用户可以通过 [azureiotsuite.com][lnk-azureiotsuite] 站点设置基本预配置解决方案。
-* 域用户可使用 CLI 创建基本预配置解决方案。
+* 域用户可以通过 [azureiotsuite.com][lnk-azureiotsuite] 站点预配基本解决方案加速器。
+* 域用户可以使用 CLI 创建基本解决方案加速器。
 
 ### <a name="guest-user"></a>来宾用户
 
-每个 AAD 租户可以有多个来宾用户。 来宾用户在 AAD 租户中拥有有限的权利集。 因此，来宾用户无法在 AAD 租户中设置预配置解决方案。
+每个 AAD 租户可以有多个来宾用户。 来宾用户在 AAD 租户中拥有有限的权利集。 因此，来宾用户无法在 AAD 租户中预配解决方案加速器。
 
 有关 AAD 中用户及角色的详细信息，请参阅以下资源：
 
@@ -94,7 +94,7 @@ Azure 管理员角色可控制将 Azure 订阅映射到 AD 租户的能力。
 如果确定具有 Azure 订阅，请验证订阅的租户映射，并确保在下拉列表中选择正确租户。 如果验证了所需租户是正确的，请按照上图，验证订阅和此 AAD 租户的映射。
 
 ## <a name="next-steps"></a>后续步骤
-若要继续了解 IoT 套件，请参阅如何[自定义预配置解决方案][lnk-customize]。
+若要继续了解 IoT 解决方案加速器，请参阅如何[自定义解决方案加速器][lnk-customize]。
 
 [img-flowchart]: media/iot-suite-permissions/flowchart.png
 

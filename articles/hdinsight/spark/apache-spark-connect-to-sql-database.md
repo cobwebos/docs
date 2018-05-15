@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 6ef0b1ce589bd19693d45a9e4f579ef260530a40
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 63bf7d5a0ad988ff7a6b498b4e91e90de97b507b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 04/18/2018
 
     按 **SHIFT + ENTER** 运行代码单元。  
 
-2. 以下代码片段生成可以传递给 Spark 数据帧的 JDBC URL。API 将创建用于保存参数的 `Properties` 对象。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
+2. 使用以下代码片段生成可传递给 Spark 数据帧 API 的 JDBC URL，并创建用于保存参数的 `Properties` 对象。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
        import java.util.Properties
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 04/18/2018
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")         
 
-3. 以下代码片段创建一个数据帧，其中包含 Azure SQL 数据库的某个表中的数据。 此代码片段使用用作 **AdventureWorksLT** 数据库一部分的 **SalesLT.Address** 表。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
+3. 使用以下代码片段创建一个数据帧，其中包含 Azure SQL 数据库的某个表中的数据。 此代码片段使用用作 **AdventureWorksLT** 数据库一部分的 **SalesLT.Address** 表。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
        val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
 
@@ -141,7 +141,7 @@ ms.lasthandoff: 04/18/2018
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")
 
-3. 以下代码片段提取 HVAC.csv 中的数据架构，并使用该架构将 CSV 中的数据载入数据帧 `readDf`。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
+3. 使用以下代码片段提取 HVAC.csv 中的数据架构，并使用该架构将 CSV 中的数据载入数据帧 `readDf`。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -165,6 +165,10 @@ ms.lasthandoff: 04/18/2018
 
     ![使用 SSMS 连接到 SQL 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "使用 SSMS 连接到 SQL 数据库")
 
+7. 在 SSMS 中运行查询以查看表中的列。
+
+        SELECT * from hvactable
+
 ## <a name="stream-data-into-azure-sql-database"></a>将数据流式传输到 Azure SQL 数据库
 
 在本部分，我们要将数据流式传输到上一部分已在 Azure SQL 数据库中创建的 **hvactable**。
@@ -184,7 +188,7 @@ ms.lasthandoff: 04/18/2018
 3. 我们要将数据从 **HVAC.csv** 流式传输到 hvactable。 HVAC.csv 文件已在群集上提供，其路径为 */HdiSamples/HdiSamples/SensorSampleData/HVAC/*。 在以下代码片段中，我们先获取要流式传输的数据的架构。 然后，使用该架构创建流数据帧。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
-       val readStreamDf = spark.readStream.schema(userSchema1).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
+       val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
        readStreamDf.printSchema
 
 4. 输出显示 **HVAC.csv** 的架构。 **hvactable** 也有相同的架构。 输出列出表中的列。

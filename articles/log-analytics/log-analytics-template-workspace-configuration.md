@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 04/25/2018
 ms.author: richrund
-ms.openlocfilehash: 0d9848a6477dbf1b93a7f640bc44adf627b40a45
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 297f15430c64e5de3c10e6f38855664a50d11a8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
 可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
@@ -230,7 +230,7 @@ ms.lasthandoff: 04/18/2018
             "Category": "VMSS",
             "ETag": "*",
             "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == "ServiceFabricNodeBootstrapAgent" | summarize AggregatedValue = count() by Computer",
+            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
             "Version": 1
           }
         },
@@ -506,10 +506,9 @@ Azure 快速入门模板库包含 Log Analytics 的多个模板，其中包括�
 * [使用 Log Analytics VM 扩展部署运行 Linux 的虚拟机](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [使用现有的 Log Analytics 工作区监视 Azure Site Recovery](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [使用现有的 Log Analytics 工作区监视 Azure Web 应用](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [使用现有的 Log Analytics 工作区监视 SQL Azure](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
-* [部署 Service Fabric 群集并使用现有 Log Analytics 工作区进行监视](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-* [部署 Service Fabric 群集并创建 Log Analytics 工作区进行监视](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
+* [将现有存储帐户添加到 OMS](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Resource Manager 模板将代理部署到 Azure VM 中](log-analytics-azure-vm-extension.md)
+* [使用资源管理器模板将 Windows 代理部署到 Azure VM](../virtual-machines/windows/extensions-oms.md)。
+* [使用资源管理器模板将 Linux 代理部署到 Azure VM](../virtual-machines/linux/extensions-oms.md)。
 

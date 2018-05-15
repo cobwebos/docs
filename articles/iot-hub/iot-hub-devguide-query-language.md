@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure IoT 中心查询语言 | Microsoft Docs
-description: 开发人员指南 - 介绍类似 SQL 的 IoT 中心查询语言，该语言用于在 IoT 中心检索设备孪生和作业的相关信息。
+description: 开发人员指南 - 介绍了类似 SQL 的 IoT 中心查询语言，该语言用于在 IoT 中心检索设备/模块孪生和作业的相关信息。
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: ef0d135a744cd37d888496073c7959ddc815ec91
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 27ddc41c463c00a061a396098f0ccfaa6cec80a1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>用于设备孪生、作业和消息路由的 IoT 中心查询语言
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
 IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生][lnk-twins]、[作业][lnk-jobs]和[消息路由][lnk-devguide-messaging-routes]的信息。 本文内容：
 
@@ -29,9 +29,9 @@ IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生]
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-twin-queries"></a>设备孪生查询
-[设备孪生][lnk-twins]可以包含标记和属性形式的任意 JSON 对象。 通过 IoT 中心，可将设备孪生作为包含所有设备孪生信息的 JSON 文档进行查询。
-例如，假设 IoT 中心设备孪生采用以下结构：
+## <a name="device-and-module-twin-queries"></a>设备和模块孪生查询
+[设备孪生][lnk-twins]和模块孪生可以包含标记和属性形式的任意 JSON 对象。 通过 IoT 中心，可将设备孪生和模块孪生作为包含所有孪生信息的单个 JSON 文档进行查询。
+例如，假定 IoT 中心设备孪生具有以下结构（模块孪生将与之类似，只是具有附加的 moduleId）：
 
 ```json
 {
@@ -82,6 +82,8 @@ IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生]
     }
 }
 ```
+
+### <a name="device-twin-queries"></a>设备孪生查询
 
 IoT 中心将设备孪生公开为名为**设备**的文档集合。
 因此，以下查询将检索设备孪生的整个集：
@@ -158,6 +160,26 @@ GROUP BY properties.reported.telemetryConfig.status
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
+```
+
+### <a name="module-twin-queries"></a>模块孪生查询
+
+对模块孪生进行查询类似于对设备孪生进行查询，但使用你可以查询的一个不同集合/命名空间，即不“从设备”进行查询
+
+```sql
+SELECT * FROM devices.modules
+```
+
+不允许在 devices 与 devices.modules 集合之间进行联接。 如果要跨设备查询模块孪生，则需要基于标记来执行此操作。 以下查询将返回所有设备中具有扫描状态的所有模块孪生：
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning'
+```
+
+以下查询将仅返回指定的设备子集上具有扫描状态的所有模块孪生。
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>C# 示例

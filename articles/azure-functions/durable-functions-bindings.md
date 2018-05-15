@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions 的绑定 - Azure"
-description: "如何使用 Azure Functions 的 Durable Functions 扩展的触发器和绑定。"
+title: Durable Functions 的绑定 - Azure
+description: 如何使用 Azure Functions 的 Durable Functions 扩展的触发器和绑定。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8198fbe9f919638565357c61ba487e47a8f5229c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 370e6e2c569aaf6d9289bddccde2174b4dd2ee97
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
@@ -36,17 +36,12 @@ ms.lasthandoff: 02/21/2018
 {
     "name": "<Name of input parameter in function signature>",
     "orchestration": "<Optional - name of the orchestration>",
-    "version": "<Optional - version label of this orchestrator function>",
     "type": "orchestrationTrigger",
     "direction": "in"
 }
 ```
 
 * `orchestration` 是业务流程的名称。 这是客户端想要启动此业务流程协调程序函数的新实例时必须使用的值。 此属性是可选的。 如果未指定，则使用该函数的名称。
-* `version` 是业务流程的版本标签。 启动业务流程的新实例的客户端必须包含匹配的版本标签。 此属性是可选的。 如果未指定，则使用空字符串。 有关版本控制的详细信息，请参阅[版本控制](durable-functions-versioning.md)。
-
-> [!NOTE]
-> 此时不建议设置 `orchestration` 或 `version` 属性的值。
 
 本质上，此触发器绑定轮询函数应用的默认存储帐户中的一系列队列。 这些队列是扩展的内部实现详细信息，因此未在绑定属性中显式配置这些队列。
 
@@ -69,12 +64,11 @@ ms.lasthandoff: 02/21/2018
 * 输入 - 业务流程函数仅支持 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) 作为参数类型。 不支持在函数签名中直接反序列化输入。 代码必须使用 [GetInput\<T>](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) 方法提取业务流程协调程序函数输入。 这些输入必须是 JSON 可序列化类型。
 * 输出 - 业务流程触发器支持输出值以及输入。 函数的返回值用于分配输出值，且必须是 JSON 可序列化的。 如果函数返回 `Task` 或 `void`，则会将 `null` 值保存为输出。
 
-> [!NOTE]
-> 目前仅支持使用 C# 的业务流程触发器。
-
 ### <a name="trigger-sample"></a>触发器示例
 
-下面的示例显示了最简单的“Hello World”C# 业务流程协调程序函数的形式：
+下面的示例显示了最简单的“Hello World”业务流程协调程序函数的形式：
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -85,17 +79,45 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    return `Hello ${name}!`;
+});
+```
+
+> [!NOTE]
+> JavaScript 业务流程协调程序应使用 `return`。 `durable-functions` 库将负责调用 `context.done` 方法。
+
 大多数业务流程协调程序函数会调用活动函数，因此下面的“Hello World”示例演示了如何调用活动函数：
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
 public static async Task<string> Run(
     [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    string name = await context.GetInput<string>();
+    string name = context.GetInput<string>();
     string result = await context.CallActivityAsync<string>("SayHello", name);
     return result;
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    const result = yield context.df.callActivityAsync("SayHello", name);
+    return result;
+});
 ```
 
 ## <a name="activity-triggers"></a>活动触发器
@@ -110,17 +132,12 @@ public static async Task<string> Run(
 {
     "name": "<Name of input parameter in function signature>",
     "activity": "<Optional - name of the activity>",
-    "version": "<Optional - version label of this activity function>",
     "type": "activityTrigger",
     "direction": "in"
 }
 ```
 
 * `activity` 是活动的名称。 这是业务流程协调程序函数用来调用此活动函数的值。 此属性是可选的。 如果未指定，则使用该函数的名称。
-* `version` 是活动的版本标签。 调用活动的业务流程协调程序函数必须包含匹配的版本标签。 此属性是可选的。 如果未指定，则使用空字符串。 有关详细信息，请参阅[版本控制](durable-functions-versioning.md)。
-
-> [!NOTE]
-> 此时不建议设置 `activity` 或 `version` 属性的值。
 
 本质上，此触发器绑定轮询函数应用的默认存储帐户中的一个轮询队列。 这个队列是扩展的内部实现详细信息，因此未在绑定属性中显式配置此队列。
 
@@ -144,12 +161,11 @@ public static async Task<string> Run(
 * **输出** - 活动函数支持输出值以及输入。 函数的返回值用于分配输出值，且必须是 JSON 可序列化的。 如果函数返回 `Task` 或 `void`，则会将 `null` 值保存为输出。
 * 元数据 - 活动函数可以绑定到 `string instanceId` 参数，以获取父业务流程的实例 ID。
 
-> [!NOTE]
-> 目前，Node.js 函数中不支持活动触发器。
-
 ### <a name="trigger-sample"></a>触发器示例
 
-下面的示例显示了简单的“Hello World”C# 活动函数的形式：
+下面的示例显示了简单的“Hello World”活动函数的形式：
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
@@ -160,13 +176,69 @@ public static string SayHello([ActivityTrigger] DurableActivityContext helloCont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```javascript
+module.exports = function(context) {
+    context.done(null, `Hello ${context.bindings.name}!`);
+};
+```
+
 `ActivityTriggerAttribute` 绑定的默认参数类型是 `DurableActivityContext`。 但是，活动触发器还支持直接绑定到 JSON 可序列化类型（包括基元类型），因此相同的函数可以简化为如下所示：
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
 public static string SayHello([ActivityTrigger] string name)
 {
     return $"Hello {name}!";
+}
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```javascript
+module.exports = function(context, name) {
+    context.done(null, `Hello ${name}!`);
+};
+```
+
+### <a name="passing-multiple-parameters"></a>传递多个参数 
+
+不能直接将多个参数传递给活动函数。 建议在这种情况下传入对象数组或使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 对象。
+
+以下示例使用了 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 添加的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 的新功能：
+
+```csharp
+[FunctionName("GetCourseRecommendations")]
+public static async Task<dynamic> RunOrchestrator(
+    [OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    string major = "ComputerScience";
+    int universityYear = context.GetInput<int>();
+
+    dynamic courseRecommendations = await context.CallActivityAsync<dynamic>("CourseRecommendations", (major, universityYear));
+    return courseRecommendations;
+}
+
+[FunctionName("CourseRecommendations")]
+public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContext inputs)
+{
+    // parse input for student's major and year in university 
+    (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();
+
+    // retrieve and return course recommendations by major and university year
+    return new {
+        major = studentInfo.Major,
+        universityYear = studentInfo.UniversityYear,
+        recommendedCourses = new []
+        {
+            "Introduction to .NET Programming",
+            "Introduction to Linux",
+            "Becoming an Entrepreneur"
+        }
+    };
 }
 ```
 
@@ -264,9 +336,9 @@ public static Task<string> Run(string input, DurableOrchestrationClient starter)
 }
 ```
 
-#### <a name="nodejs-sample"></a>Node.js 示例
+#### <a name="javascript-sample"></a>JavaScript 示例
 
-下面的示例演示如何使用持久业务流程客户端绑定从 Node.js 函数启动新函数实例：
+下面的示例演示如何使用持久业务流程客户端绑定从 JavaScript 函数启动新函数实例：
 
 ```js
 module.exports = function (context, input) {

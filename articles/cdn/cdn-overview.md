@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/06/2018
-ms.author: rli
+ms.date: 04/20/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 2da919a880332be928c211a2493f2c0b09a0fcbb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 36de1011e48f274759c0aeebde74bd26c6604e19
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>什么是 Azure 上的内容交付网络？
 内容交付网络 (CDN) 是高效地向用户交付 Web 内容的分布式服务器网络。 CDN 将缓存的内容存储在 接入点 (POP) 位置（靠近最终用户的边缘服务器），以最大程度地降低延迟。 
@@ -50,7 +50,7 @@ Azure 内容交付网络 (CDN) 为开发人员提供了一个全局解决方案�
 6. 如果文件的 TTL 未过期，POP 边缘服务器会直接从缓存返回文件。 此过程会带来速度更快、响应更及时的用户体验。
 
 ## <a name="requirements"></a>要求
-需要拥有至少一个 Azure 订阅才能使用 Azure CDN。 还需创建至少一个 CDN 配置文件，该文件集合了 CDN 终结点。 每个 CDN 终结点表示对内容交付行为和访问权限的特定配置。 若要通过 Internet 域、Web 应用程序或某些其他条件来组织 CDN 终结点，可以使用多个配置文件。 由于 [Azure CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)是在 CDN 配置文件级别应用的，因此如果需要使用混合的定价层，则必须创建多个 CDN 配置文件。
+需要拥有至少一个 Azure 订阅才能使用 Azure CDN。 还需创建至少一个 CDN 配置文件，该文件集合了 CDN 终结点。 每个 CDN 终结点表示对内容交付行为和访问权限的特定配置。 若要通过 Internet 域、Web 应用程序或某些其他条件来组织 CDN 终结点，可以使用多个配置文件。 由于 [Azure CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)是在 CDN 配置文件级别应用的，因此如果需要使用混合的定价层，则必须创建多个 CDN 配置文件。 有关 Azure CDN 计费结构的信息，请参阅[了解 Azure CDN 计费](cdn-billing.md)。
 
 ### <a name="limitations"></a>限制
 每个 Azure 订阅都对以下资源设置了默认限制：
@@ -77,4 +77,5 @@ Azure CDN 提供以下重要功能：
 - 通过 [Microsoft Azure 门户](https://portal.azure.com)或 [PowerShell](cdn-manage-powershell.md) 管理 CDN 终结点。
 - 了解如何通过 [.NET](cdn-app-dev-net.md) 或 [Node.js](cdn-app-dev-node.md) 实现 Azure CDN 的自动化。
 - 若要在操作中了解 Azure CDN，请观看 [Azure CDN 视频](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest)。
+- 有关最新 Azure CDN 功能的信息，请参阅 [Azure CDN 博客](https://azure.microsoft.com/blog/tag/azure-cdn/)。
 

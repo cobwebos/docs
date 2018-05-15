@@ -1,6 +1,6 @@
 ---
-title: "删除 Azure 容器服务 (AKS) 群集"
-description: "使用 CLI 或 Azure 门户删除 AKS 群集。"
+title: 删除 Azure Kubernetes 服务 (AKS) 群集
+description: 使用 CLI 或 Azure 门户删除 AKS 群集。
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 78056288f45616eda427f8e708efc679f8a5202c
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: e006466d1450471900a8635c49d3bc6c3a73d476
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="delete-an-azure-container-service-aks-cluster"></a>删除 Azure 容器服务 (AKS) 群集
+# <a name="delete-an-azure-kubernetes-service-aks-cluster"></a>删除 Azure Kubernetes 服务 (AKS) 群集
 
-删除 Azure 容器服务群集时，将保留部署了群集的资源组，但将删除所有与 AKS 相关的资源。 本文档介绍如何使用 Azure CLI 和 Azure 门户删除 AKS 群集。 
+删除 Azure Kubernetes 服务群集时，将保留部署了群集的资源组，但将删除所有与 AKS 相关的资源。 本文档介绍如何使用 Azure CLI 和 Azure 门户删除 AKS 群集。
 
 除了删除群集之外，还可以删除部署了该群集的资源组，这也会删除 AKS 群集。
 
@@ -34,13 +34,13 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster
 | 参数 | 说明 | 必选 |
 |---|---|:---:|
 | `--name` `-n` | 托管群集的资源名称。 | 是 |
-| `--resource-group` `-g` | Azure 容器服务资源组的名称。 | 是 |
+| `--resource-group` `-g` | Azure Kubernetes 服务资源组的名称。 | 是 |
 | `--no-wait` | 不等待长时间运行的操作完成。 | 否 |
 | `--yes` `-y` | 不提示确认。 | 否 |
 
 ## <a name="azure-portal"></a>Azure 门户
 
-在 Azure 门户中时，浏览到包含 Azure 容器服务 (AKS) 资源的资源组，选择资源，然后单击“删除”。 系统会提示用户确认删除操作。
+在 Azure 门户中时，浏览到包含 Azure Kubernetes 服务 (AKS) 资源的资源组，选择资源，然后单击“删除”。 系统会提示用户确认删除操作。
 
 ![删除 AKS 群集门户](media/container-service-delete-cluster/delete-aks-portal.png)
 

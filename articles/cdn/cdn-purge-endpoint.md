@@ -1,11 +1,11 @@
 ---
-title: "清除 Azure CDN 终结点 | Microsoft Docs"
-description: "了解如何从 Azure CDN 终结点清除所有缓存的内容。"
+title: 清除 Azure CDN 终结点 | Microsoft Docs
+description: 了解如何从 Azure CDN 终结点清除所有缓存的内容。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b6157ddaf320f942a704d32f066b821425596308
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 262a8f7385ba5f74d21991772599540260a145fc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>清除 Azure CDN 终结点
 ## <a name="overview"></a>概述
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/22/2017
     ![“清除”按钮](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> 对于**来自 Verizon 的 Azure CDN**（标准和高级），清除请求需要 2-3 分钟的时间来处理；对于**来自 Akamai 的 Azure CDN** ，大约需要 7 分钟。  在任何给定时间，Azure CDN 在配置文件级别拥有最多 50 个并发清除请求的限制。 
+> 对于**来自 Verizon 的 Azure CDN**（标准和高级），清除请求需要大约 2-3 分钟的时间来处理；对于**来自 Akamai 的 Azure CDN** ，大约需要 7 分钟。  在任何给定时间，Azure CDN 在配置文件级别拥有最多 50 个并发清除请求的限制。 
 > 
 > 
 

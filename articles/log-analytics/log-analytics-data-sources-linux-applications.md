@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bfb9b62a8965fa1f7daf62d814665ca23491cc04
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>在 Log Analytics 中收集 Linux 应用程序的性能计数器 
 本文提供了有关对[用于 Linux 的 OMS 代理](https://github.com/Microsoft/OMS-Agent-for-Linux)进行配置以收集特定应用程序的性能计数器的详细信息。  本文中包括的应用程序有：  
@@ -78,9 +78,9 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 | Operation | 示例 | 说明
 |:--|:--|:--|
-| autoupdate *false\|true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否会自动更新身份验证文件。 |
+| autoupdate *false or true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否会自动更新身份验证文件。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 身份验证文件中设置默认实例。<br>应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的。 |
-| delete *default\|port_num* | mycimprovauth 3308 | 删除由默认值或端口号指定的实例。 |
+| delete *default or port_num* | mycimprovauth 3308 | 删除由默认值或端口号指定的实例。 |
 | help | mycimprov help | 输出可使用的命令列表。 |
 | print | mycimprov print | 输出易于阅读的 MySQL OMI 身份验证文件。 |
 | update port_num *bind-address username password* | mycimprov update 3307 127.0.0.1 root pwd | 更新指定的实例，或添加该实例（如果它不存在）。 |

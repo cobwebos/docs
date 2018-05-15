@@ -1,26 +1,18 @@
 ---
-title: "将来自 Azure 事件网格的事件接收到 HTTP 终结点中"
-description: "描述如何验证 HTTP 终结点，以及随后如何接收和反序列化来自 Azure 事件网格的事件"
+title: 将来自 Azure 事件网格的事件接收到 HTTP 终结点中
+description: 描述如何验证 HTTP 终结点，以及随后如何接收和反序列化来自 Azure 事件网格的事件
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 04/26/2018
 ms.author: babanisa
-<<<<<<< HEAD
-ms.openlocfilehash: 179f7c46186762eed2f7f8ac90620ac2fec9caf3
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: db79629c5f806fe50d22200574c29052a485dd06
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
-=======
-ms.openlocfilehash: da4d1aff45c39d8b4ce7cdd003dd4af35dcd33b3
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>将事件接收到 HTTP 终结点
 
@@ -35,10 +27,9 @@ ms.lasthandoff: 02/22/2018
 
 ## <a name="add-dependencies"></a>添加依赖项
 
-如果正在使用 .Net 进行开发，请[将依赖项添加](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)到 `Microsoft.Azure.EventGrid` [Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)的函数中。 可通过[发布 SDKs](./sdk-overview.md#publish-sdks) 引用将 SDK 用于其他语言。 这些包中具有用于本机事件类型（如 `EventGridEvent`、`StorageBlobCreatedEventData` 和 `EventHubCaptureFileCreatedEventData`）的模型。
+如果使用 .NET 进行开发，请在你的函数中针对 `Microsoft.Azure.EventGrid` [Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)[添加依赖项](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 可通过[发布 SDKs](./sdk-overview.md#data-plane-sdks) 引用将 SDK 用于其他语言。 这些包中具有用于本机事件类型（如 `EventGridEvent`、`StorageBlobCreatedEventData` 和 `EventHubCaptureFileCreatedEventData`）的模型。
 
-<<<<<<< HEAD
-为此，请在 Azure 函数中单击“查看文件”链接（Azure Functions 门户中最右侧的窗格），然后创建一个名为 project.json 的文件。 将以下代码添加到 `project.json` 文件并进行保存：
+在 Azure 函数中单击“查看文件”链接（Azure Functions 门户中最右侧的窗格），然后创建一个名为 project.json 的文件。 将以下代码添加到 `project.json` 文件并进行保存：
 
  ```json
 {
@@ -50,34 +41,17 @@ ms.lasthandoff: 02/22/2018
     }
    }
 }
-
-=======
-为此，请在 Azure 函数中单击“查看文件”链接（Azure Functions 门户中最右侧的窗格），然后创建一个名为 project.json 的文件。 将以下代码添加到 `project.json` 文件并进行保存： 
- 
- ```json
-{ 
-  "frameworks": { 
-    "net46":{ 
-      "dependencies": { 
-        "Microsoft.Azure.EventGrid": "1.1.0-preview" 
-      } 
-    } 
-   } 
-} 
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 ```
 
 ![所添加的 NuGet 包](./media/receive-events/add-dependencies.png)
 
 ## <a name="endpoint-validation"></a>终结点验证
 
-首先需要处理 `Microsoft.EventGrid.SubscriptionValidationEvent` 事件。 每次创建新的事件订阅时，事件网格都会使用数据负载中的 `validationCode` 向终结点发送一个验证事件。 终结点必须回显到响应正文中才能[证明此终结点有效且被你所拥有](security-authentication.md#webhook-event-delivery)。 如果使用的是[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)而不是触发了 WebHook 的函数，则由你进行终结点验证。
+首先需要处理 `Microsoft.EventGrid.SubscriptionValidationEvent` 事件。 每次有人订阅某个事件时，事件网格都会在数据有效负载中通过 `validationCode` 向终结点发送一个验证事件。 终结点必须回显到响应正文中才能[证明此终结点有效且被你所拥有](security-authentication.md#webhook-event-delivery)。 如果使用的是[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)而不是触发了 WebHook 的函数，则由你进行终结点验证。 如果使用第三方 API 服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式回显验证码。 对于这些服务，可以使用订阅验证事件中发送的验证 URL 手动验证订阅。 在 `validationUrl` 属性中复制该 URL 并通过 REST 客户端或 Web 浏览器发送 GET 请求。
 
-请使用以下代码来验证终结点：
+若要以编程方式回显验证码，请使用以下代码：
 
 ```csharp
-<<<<<<< HEAD
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -122,60 +96,10 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
     return req.CreateResponse(HttpStatusCode.OK, response);
 }
-=======
-using System.Net; 
-using Newtonsoft.Json; 
-using Newtonsoft.Json.Linq; 
-using Newtonsoft.Json.Serialization; 
-using Microsoft.Azure.EventGrid.Models; 
- 
-class SubscriptionValidationEventData 
-{ 
-    public string ValidationCode { get; set; } 
-} 
- 
-class SubscriptionValidationResponseData 
-{ 
-    public string ValidationResponse { get; set; } 
-} 
- 
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log) 
-{ 
-
-    log.Info($"C# HTTP trigger function begun");  
-    string response = string.Empty; 
-    const string SubscriptionValidationEvent = "Microsoft.EventGrid.SubscriptionValidationEvent"; 
- 
-    string requestContent = await req.Content.ReadAsStringAsync(); 
-    EventGridEvent[] eventGridEvents = JsonConvert.DeserializeObject<EventGridEvent[]>(requestContent); 
- 
-    foreach (EventGridEvent eventGridEvent in eventGridEvents) 
-    { 
-        JObject dataObject = eventGridEvent.Data as JObject; 
-       
-        // Deserialize the event data into the appropriate type based on event type 
-        if (string.Equals(eventGridEvent.EventType, SubscriptionValidationEvent, StringComparison.OrdinalIgnoreCase)) 
-        { 
-            var eventData = dataObject.ToObject<SubscriptionValidationEventData>(); 
-            log.Info($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}"); 
-            // Do any additional validation (as required) and then return back the below response 
-            var responseData = new SubscriptionValidationResponseData(); 
-            responseData.ValidationResponse = eventData.ValidationCode; 
-            return req.CreateResponse(HttpStatusCode.OK, responseData);    
-        }             
-    } 
-     
-    return req.CreateResponse(HttpStatusCode.OK, response);     
-} 
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 
 ```
 
 ```javascript
-<<<<<<< HEAD
-
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 var http = require('http');
 
 module.exports = function (context, req) {
@@ -184,11 +108,7 @@ module.exports = function (context, req) {
 
     for (var events in req.body) {
         var body = req.body[events];
-<<<<<<< HEAD
         // Deserialize the event data into the appropriate type based on event type
-=======
-        // Deserialize the event data into the appropriate type based on event type  
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
         if (body.data && body.eventType == validationEventType) {
             context.log("Got SubscriptionValidation event data, validation code: " + body.data.validationCode + " topic: " + body.topic);
 
@@ -198,12 +118,7 @@ module.exports = function (context, req) {
         }
     }
     context.done();
-<<<<<<< HEAD
 };
-
-=======
-}; 
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 ```
 
 ### <a name="test-validation-response"></a>测试验证响应
@@ -211,10 +126,6 @@ module.exports = function (context, req) {
 通过将样本事件粘贴到函数的测试字段，测试验证响应函数：
 
 ```json
-<<<<<<< HEAD
-
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 [{
   "id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -227,10 +138,6 @@ module.exports = function (context, req) {
   "metadataVersion": "1",
   "dataVersion": "1"
 }]
-<<<<<<< HEAD
-
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 ```
 
 单击“运行”时，输出应为“200 确定”且正文中显示 `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}`：
@@ -239,11 +146,9 @@ module.exports = function (context, req) {
 
 ## <a name="handle-blob-storage-events"></a>处理 Blob 存储事件
 
-现可扩展函数以处理 `Microsoft.Storage.BlobCreated`：
+现在，让我们对该函数进行扩展来处理 `Microsoft.Storage.BlobCreated`：
 
 ```cs
-<<<<<<< HEAD
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -294,68 +199,11 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     }
 
     return req.CreateResponse(HttpStatusCode.OK, response);
-=======
-using System.Net; 
-using Newtonsoft.Json; 
-using Newtonsoft.Json.Linq; 
-using Newtonsoft.Json.Serialization; 
-using Microsoft.Azure.EventGrid.Models; 
- 
-class SubscriptionValidationEventData 
-{ 
-    public string ValidationCode { get; set; } 
-} 
- 
-class SubscriptionValidationResponseData 
-{ 
-    public string ValidationResponse { get; set; } 
-} 
- 
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log) 
-{ 
-    log.Info($"C# HTTP trigger function begun");  
-    string response = string.Empty; 
-    const string SubscriptionValidationEvent = "Microsoft.EventGrid.SubscriptionValidationEvent";
-    const string StorageBlobCreatedEvent = "Microsoft.Storage.BlobCreated"; 
- 
- 
-    string requestContent = await req.Content.ReadAsStringAsync(); 
-    EventGridEvent[] eventGridEvents = JsonConvert.DeserializeObject<EventGridEvent[]>(requestContent); 
- 
-    foreach (EventGridEvent eventGridEvent in eventGridEvents) 
-    { 
-        JObject dataObject = eventGridEvent.Data as JObject; 
-       
-        // Deserialize the event data into the appropriate type based on event type 
-        if (string.Equals(eventGridEvent.EventType, SubscriptionValidationEvent, StringComparison.OrdinalIgnoreCase)) 
-        { 
-            var eventData = dataObject.ToObject<SubscriptionValidationEventData>(); 
-            log.Info($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
-
-            // Do any additional validation (as required) and then return back the below response 
-            var responseData = new SubscriptionValidationResponseData(); 
-            responseData.ValidationResponse = eventData.ValidationCode; 
-            return req.CreateResponse(HttpStatusCode.OK, responseData);    
-        }
-
-        else if (string.Equals(eventGridEvent.EventType, StorageBlobCreatedEvent, StringComparison.OrdinalIgnoreCase)) 
-        { 
-            var eventData = dataObject.ToObject<StorageBlobCreatedEventData>(); 
-            log.Info($"Got BlobCreated event data, blob URI {eventData.Url}"); 
-        }    
-    } 
-     
-    return req.CreateResponse(HttpStatusCode.OK, response);     
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 }
 
 ```
 
 ```javascript
-<<<<<<< HEAD
-
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 var http = require('http');
 
 module.exports = function (context, req) {
@@ -381,10 +229,7 @@ module.exports = function (context, req) {
     }
     context.done();
 };
-<<<<<<< HEAD
 
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 ```
 
 ### <a name="test-blob-created-event-handling"></a>测试能否处理“已处理 Blob”事件
@@ -392,10 +237,6 @@ module.exports = function (context, req) {
 通过将 [Blob 存储事件](./event-schema-blob-storage.md#example-event)放到测试字段中并运行以下项来测试函数的新功能：
 
 ```json
-<<<<<<< HEAD
-
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/xstoretestaccount",
   "subject": "/blobServices/default/containers/testcontainer/blobs/testfile.txt",
@@ -419,24 +260,21 @@ module.exports = function (context, req) {
   "dataVersion": "",
   "metadataVersion": "1"
 }]
-
 ```
 
 函数日志中应该会显示 Blob URL 输出：
 
 ![输出日志](./media/receive-events/blob-event-response.png)
 
-还可实时对其进行测试，方式是创建一个 Blob 存储帐户或通用版 V2 (GPv2) 存储帐户，[添加事件订阅](../storage/blobs/storage-blob-event-quickstart.md)，然后将终结点设置为函数 URL：
+还可以通过以下方式进行测试：创建一个 Blob 存储帐户或通用版 V2 (GPv2) 存储帐户，[添加事件订阅](../storage/blobs/storage-blob-event-quickstart.md)，然后将终结点设置为函数 URL：
 
 ![函数 URL](./media/receive-events/function-url.png)
 
 ## <a name="handle-custom-events"></a>处理自定义事件
 
-最后，再次扩展函数，使其还能够处理自定义事件。 为自己的事件 `Contoso.Items.ItemReceived` 添加一次检查。 最终代码应如下所示：
+最后，再次扩展函数，使其还能够处理自定义事件。 添加对事件 `Contoso.Items.ItemReceived` 的检查。 最终代码应如下所示：
 
 ```cs
-<<<<<<< HEAD
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -500,81 +338,11 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     }
 
     return req.CreateResponse(HttpStatusCode.OK, response);
-=======
-using System.Net; 
-using Newtonsoft.Json; 
-using Newtonsoft.Json.Linq; 
-using Newtonsoft.Json.Serialization; 
-using Microsoft.Azure.EventGrid.Models; 
- 
-class SubscriptionValidationEventData 
-{ 
-    public string ValidationCode { get; set; } 
-} 
- 
-class SubscriptionValidationResponseData 
-{ 
-    public string ValidationResponse { get; set; } 
-} 
-
-class ContosoItemReceivedEventData 
-{ 
-    public string id { get; set; }     
-    public string message { get; set; }   
-    public string time { get; set; }
-} 
- 
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log) 
-{ 
-    log.Info($"C# HTTP trigger function begun");
-    string response = string.Empty; 
-    const string SubscriptionValidationEvent = "Microsoft.EventGrid.SubscriptionValidationEvent";
-    const string StorageBlobCreatedEvent = "Microsoft.Storage.BlobCreated"; 
-    const string CustomTopicEvent = "Contoso.Items.ItemReceived";
- 
- 
-    string requestContent = await req.Content.ReadAsStringAsync(); 
-    EventGridEvent[] eventGridEvents = JsonConvert.DeserializeObject<EventGridEvent[]>(requestContent); 
- 
-    foreach (EventGridEvent eventGridEvent in eventGridEvents) 
-    { 
-        JObject dataObject = eventGridEvent.Data as JObject; 
-       
-        // Deserialize the event data into the appropriate type based on event type 
-        if (string.Equals(eventGridEvent.EventType, SubscriptionValidationEvent, StringComparison.OrdinalIgnoreCase)) 
-        { 
-            var eventData = dataObject.ToObject<SubscriptionValidationEventData>(); 
-            log.Info($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}"); 
-            // Do any additional validation (as required) and then return back the below response 
-            var responseData = new SubscriptionValidationResponseData(); 
-            responseData.ValidationResponse = eventData.ValidationCode; 
-            return req.CreateResponse(HttpStatusCode.OK, responseData);    
-        }
-
-        else if (string.Equals(eventGridEvent.EventType, StorageBlobCreatedEvent, StringComparison.OrdinalIgnoreCase)) 
-        { 
-            var eventData = dataObject.ToObject<StorageBlobCreatedEventData>(); 
-            log.Info($"Got BlobCreated event data, blob URI {eventData.Url}"); 
-        }
-
-        else if (string.Equals(eventGridEvent.EventType, CustomTopicEvent, StringComparison.OrdinalIgnoreCase)) 
-        { 
-            var eventData = dataObject.ToObject<ContosoItemReceivedEventData>(); 
-            log.Info($"Got ContosoItemReceived event data, item URI {eventData.id}"); 
-        } 
-    } 
-     
-    return req.CreateResponse(HttpStatusCode.OK, response);     
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 }
 
 ```
 
 ```javascript
-<<<<<<< HEAD
-
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 var http = require('http');
 var t = require('tcomb');
 
@@ -591,11 +359,7 @@ module.exports = function (context, req) {
 
     for (var events in req.body) {
         var body = req.body[events];
-<<<<<<< HEAD
         // Deserialize the event data into the appropriate type based on event type
-=======
-        // Deserialize the event data into the appropriate type based on event type  
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
         if (body.data && body.eventType == validationEventType) {
             context.log("Got SubscriptionValidation event data, validation code: " + body.data.validationCode + " topic: " + body.topic);
 
@@ -617,10 +381,7 @@ module.exports = function (context, req) {
     }
     context.done();
 };
-<<<<<<< HEAD
 
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 ```
 
 ### <a name="test-custom-event-handling"></a>测试能否处理自定义事件
@@ -628,10 +389,6 @@ module.exports = function (context, req) {
 最后，测试扩展后的函数现在能否处理自定义事件类型：
 
 ```json
-<<<<<<< HEAD
-
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 [{
     "subject": "Contoso/foo/bar/items",
     "eventType": "Microsoft.EventGrid.CustomEventType",
@@ -645,10 +402,6 @@ module.exports = function (context, req) {
     "dataVersion": "",
     "metadataVersion": "1"
 }]
-<<<<<<< HEAD
-
-=======
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 ```
 
 还可实时测试此功能，方式是[在门户中通过 CURL 发送自定义事件](./custom-event-quickstart-portal.md)，或者使用任何可通过 POST 发送到终结点（如 [Postman](https://www.getpostman.com/)）的服务或应用程序[发布到自定义主题](./post-to-custom-topic.md)。 使用终结点集作为函数 URL，创建自定义主题和事件订阅。

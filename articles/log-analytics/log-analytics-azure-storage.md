@@ -1,11 +1,11 @@
 ---
-title: "为 Log Analytics 收集 Azure 服务日志和指标 | Microsoft 文档"
-description: "在 Azure 资源上配置诊断，将日志和度量值写入 Log Analytics。"
+title: 为 Log Analytics 收集 Azure 服务日志和指标 | Microsoft 文档
+description: 在 Azure 资源上配置诊断，将日志和度量值写入 Log Analytics。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a3785e39f0d1cf849dbbf0d83d89eaed58c5b0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a748cb0e2a08ed5e8ada5db171d5ef12b2fe121e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>在 Log Analytics 中收集要使用的 Azure 服务日志和指标
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 1. 将 Azure 诊断定向到 Log Analytics（下表中的*诊断*）
 2. 将 Azure 诊断定向到 Azure 存储定向到 Log Analytics（下表中的*存储*）
 3. Azure 服务的连接器（下表中的*连接器*）
-4. 使用脚本收集，并将数据放入 Log Analytics 中（下表中的空白，用于未列出的服务）
+4. 使用脚本收集，然后将数据放入 Log Analytics 中（下表中的空白，用于未列出的服务）
 
 
 | 服务                 | 资源类型                           | 日志        | 度量值     | 解决方案 |
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | 诊断 |             | |
 | 事件中心命名空间     | Microsoft.EventHub/namespaces           | 诊断 | 诊断 | |
 | IoT 中心                | Microsoft.Devices/IotHubs               |             | 诊断 | |
-| 密钥保管库               | Microsoft.KeyVault/vaults               | 诊断 |             | [密钥保管库分析](log-analytics-azure-key-vault.md) |
+| Key Vault               | Microsoft.KeyVault/vaults               | 诊断 |             | [密钥保管库分析](log-analytics-azure-key-vault.md) |
 | 负载均衡器          | Microsoft.Network/loadBalancers         | 诊断 |             |  |
 | 逻辑应用              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | 诊断 | 诊断 | |
 | 网络安全组 | Microsoft.Network/networksecuritygroups | 诊断 |             | [Azure 网络安全组分析](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
@@ -68,6 +68,13 @@ ms.lasthandoff: 10/11/2017
 许多 Azure 资源都能将诊断日志和度量值直接写入到 Log Analytics，这是收集数据进行分析的首选方法。 使用 Azure 诊断时，数据将立即写入到 Log Analytics，而无需先将数据写入到存储。
 
 支持 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 的 Azure 资源可以直接向 Log Analytics 发送其日志和度量值。
+
+> [!NOTE]
+> 当前不支持通过诊断设置将多维指标发送到 Log Analytics。 多维指标将按平展后的单维指标导出，并跨维值聚合。
+>
+> 例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
+>
+>
 
 * 有关可用指标的详细信息，请参阅 [Azure 监视器支持的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)。
 * 有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md)。
@@ -145,7 +152,7 @@ Application Insights 有连接器，它允许 Application Insights 收集要发�
 
 对于未提供直接方式将日志和度量值发送到 Log Analytics 的 Azure 服务，可以使用 Azure 自动化脚本来收集日志和度量值。 然后，该脚本可以使用[数据收集器 API](log-analytics-data-collector-api.md) 将数据发送到 Log Analytics
 
-Azure 模板库有[使用 Azure 自动化的示例](https://azure.microsoft.com/en-us/resources/templates/?term=OMS)，可从服务收集数据并将数据发送到 Log Analytics。
+Azure 模板库有[使用 Azure 自动化的示例](https://azure.microsoft.com/resources/templates/?term=OMS)，可从服务收集数据并将数据发送到 Log Analytics。
 
 ## <a name="next-steps"></a>后续步骤
 

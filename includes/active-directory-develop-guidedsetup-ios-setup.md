@@ -2,7 +2,7 @@
 
 本部分提供分步说明，介绍如何创建新项目，用于演示如何将 iOS 应用程序 (Swift) 与“登录 Microsoft”集成，使其能查询需要令牌的 Web API。
 
-> 想要改为下载此示例的 XCode 项目？ [下载项目](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)并跳到[配置步骤](#create-an-application-express)，在执行前配置代码示例。
+> 想要改为下载此示例的 XCode 项目？ [下载项目](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)并跳到[配置步骤](#register-your-application)，在执行前配置代码示例。
 
 
 ## <a name="install-carthage-to-download-and-build-msal"></a>安装 Carthage 以下载和生成 MSAL

@@ -1,7 +1,7 @@
 ---
-title: "远程监视解决方案中的模拟设备行为 - Azure | Microsoft Docs"
-description: "本文介绍如何使用 JavaScript 来定义远程监视解决方案中模拟设备的行为。"
-services: 
+title: 远程监视解决方案中的模拟设备行为 - Azure | Microsoft Docs
+description: 本文介绍如何使用 JavaScript 来定义远程监视解决方案中模拟设备的行为。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e5846893166c3e65b75e84d02849c2b8ab78e079
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2a2cbe5379adbd2c4ad6534b621871ecc30bfc81
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="implement-the-device-model-behavior"></a>实现设备模型的行为
 
@@ -53,10 +53,10 @@ ms.lasthandoff: 02/09/2018
     "pressure_unit": "psig",
     "simulation_state": "normal_pressure"
   },
-  "Script": {
+  "Interval": "00:00:05",
+  "Scripts": {
     "Type": "javascript",
-    "Path": "chiller-01-state.js",
-    "Interval": "00:00:05"
+    "Path": "chiller-01-state.js"
   }
 }
 ```
@@ -66,7 +66,7 @@ ms.lasthandoff: 02/09/2018
 下面概要显示了典型的 `main` 函数：
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   // Use the previous device state to
   // generate the new device state
@@ -108,7 +108,7 @@ function restoreState(previousState) {
   }
 }
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   restoreState(previousState);
 
@@ -133,7 +133,7 @@ function vary(avg, percentage, min, max) {
 }
 
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     restoreState(previousState);
 
@@ -192,7 +192,7 @@ function main(context, previousState) {
 下面概要显示了典型的 `main` 函数：
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
 }
 ```
@@ -205,15 +205,18 @@ function main(context, previousState) {
 
 `state` 参数包含设备模拟服务维护的设备状态。
 
-可以借助两个全局函数来实现方法的行为：
+`properties` 参数包含作为报告属性写入到 IoT 中心设备孪生的设备属性。
+
+可以借助三个全局函数来实现方法的行为：
 
 - `updateState` 用于更新模拟服务保存的状态。
+- `updateProperty` 用于更新单个设备属性。
 - `sleep` 用于暂停执行，以模拟长时间运行的任务。
 
 以下示例演示模拟冷却器设备使用的 **IncreasePressure-method.js** 脚本的缩减版：
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     log("Starting 'Increase Pressure' method simulation (5 seconds)");
 

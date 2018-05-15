@@ -1,6 +1,6 @@
 ---
 title: 将 Azure CDN 与 CORS 一起使用 | Microsoft Docs
-description: 了解如何将 Azure 内容交付网络 (CDN) 与跨域资源共享 (CORS) 一起使用。
+description: 了解如何将 Azure 内容分发网络 (CDN) 与跨域资源共享 (CORS) 一起使用。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f9429e88525e27c0b6bad29d1927d53d05dfbcc8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>将 Azure CDN 与 CORS 一起使用
 ## <a name="what-is-cors"></a>什么是 CORS？
@@ -57,7 +57,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
 ## <a name="wildcard-or-single-origin-scenarios"></a>通配符或单个源场景
 当 **Access-Control-Allow-Origin** 标头设置为通配符 (*) 或单个源时，Azure CDN 上的 CORS 会自动工作，无需其他配置。  CDN 将缓存第一个响应，且后续请求将使用相同的标头。
 
-如果源上设置 CORS 之前已对 CDN 发出请求，则需要清除终结点内容上的内容，以使用 **Access-Control-Allow-Origin** 标头重新加载内容。
+如果在源上设置 CORS 之前已对 CDN 发出请求，则需要清除终结点内容上的内容，以使用 **Access-Control-Allow-Origin** 标头重新加载内容。
 
 ## <a name="multiple-origin-scenarios"></a>多个源场景
 如果需要 CORS 允许一个特定的源列表，情况会稍微复杂一些。 当 CDN 缓存第一个 CORS 源的 **Access-Control-Allow-Origin** 标头时，会出现问题。  当不同的 CORS 源发出后续请求时，CDN 将为缓存的 **Access-Control-Allow-Origin** 标头提供服务，但不匹配。  有多种方法可纠正此问题。
@@ -67,7 +67,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
 
 需要[创建规则](cdn-rules-engine.md)，以检查请求中的 **Origin** 标头。  如果是有效的源，规则将使用请求中提供的源设置 **Access-Control-Allow-Origin** 标头。  如果不允许使用在 **Origin** 标头中指定的源，规则应忽略 **Access-Control-Allow-Origin** 标头，这会导致浏览器拒绝请求。 
 
-有两种方法可以使用规则引擎来执行此操作。  在这两种情况下，来自文件的源服务器的 **Access-Control-Allow-Origin** 标头被完全忽略，并且 CDN 的规则引擎会完全管理允许的 CORS 源。
+有两种方法可以使用规则引擎来执行此操作。 在这两种情况下，来自文件的源服务器的 **Access-Control-Allow-Origin** 标头都会被忽略，并且 CDN 的规则引擎会完全管理允许的 CORS 源。
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>一个具有所有有效源的正则表达式
 在这种情况下，将创建一个正则表达式，其中包含要允许的所有源： 
@@ -75,7 +75,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Verizon 提供的 Azure CDN** 使用 [兼容 Perl 的正则表达式](http://pcre.org/)作为其正则表达式的引擎。  可以使用[正则表达式 101](https://regex101.com/) 等工具验证正则表达式。  请注意，“/”字符在正则表达式中有效且无需转义，但是转义该字符被认为是最佳实践，并且一些正则表达式验证器也期望对其进行转义。
+> **Verizon 的 Azure CDN 高级版**使用[兼容 Perl 的正则表达式](http://pcre.org/)作为其正则表达式的引擎。  可以使用[正则表达式 101](https://regex101.com/) 等工具验证正则表达式。  请注意，“/”字符在正则表达式中有效且无需转义，但是转义该字符被认为是最佳实践，并且一些正则表达式验证器也期望对其进行转义。
 > 
 > 
 
@@ -93,6 +93,6 @@ CORS 请求有两种类型：简单请求和复杂请求。
 > 
 > 
 
-### <a name="azure-cdn-standard"></a>标准 Azure CDN
-在标准 Azure CDN 配置文件中，允许多个源但不使用通配符源的唯一机制是使用[查询字符串缓存](cdn-query-string.md)。  需要为 CDN 终结点启用查询字符串设置，并对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
+### <a name="azure-cdn-standard-profiles"></a>Azure CDN 标准版配置文件
+在 Azure CDN 标准版配置文件（**Microsoft 的 Azure CDN 标准版**、**Akamai 的 Azure CDN 标准版**和 **Verizon 的 Azure CDN 标准版**）中，在不使用通配符源的情况下允许使用多个源的唯一机制是使用[查询字符串缓存](cdn-query-string.md)。 为 CDN 终结点启用查询字符串设置，并对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
 

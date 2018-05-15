@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0be2952dc39064eaf2814806e81f16e882a6a6fe
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure 事件网格简介
 
@@ -24,11 +24,15 @@ ms.lasthandoff: 04/03/2018
 
 * 亚洲东南部
 * 亚洲东部
+* 澳大利亚东部
+* 澳大利亚东南部
 * 美国中部
 *   美国东部
 *   美国东部 2
 * 西欧
 * 北欧
+* 日本东部
+* 日本西部
 *   美国中西部
 *   美国西部
 *   美国西部 2
@@ -45,10 +49,13 @@ ms.lasthandoff: 04/03/2018
 * 自定义主题
 * 事件中心
 * IoT 中心
+* 媒体服务
 * 资源组（管理操作）
 * 服务总线
 * 存储 Blob
 * 常规用途 v2 (GPv2) 存储
+
+有关演示如何使用每个事件源的文章的链接，请参阅 [Azure 事件网格中的事件源](event-sources.md)。
 
 ## <a name="event-handlers"></a>事件处理程序
 
@@ -57,11 +64,15 @@ ms.lasthandoff: 04/03/2018
 * Azure 自动化
 * Azure Functions
 * 事件中心
+* 混合连接
 * 逻辑应用
 * Microsoft Flow
+* 队列存储
 * Webhook
 
 使用 Azure Functions 作为处理程序时，请使用事件网格触发器而不是通用 HTTP 触发器。 事件网格会自动验证事件网格函数触发器。 使用泛型 HTTP 触发器时，必须实现[验证响应](security-authentication.md#webhook-event-delivery)。
+
+有关演示如何使用每个事件处理程序的文章的链接，请参阅 [Azure 事件网格中的事件处理程序](event-handlers.md)。
 
 ## <a name="concepts"></a>概念
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 4715384a0c6eb24a6a4208ca387b8c4a9871d5c7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 18465463e924c10ddc35d619992655773e12cc82
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 04/20/2018
    
    b. **大小**：
    
-   * 选择能满足功能需求和成本约束的服务器类型。 选择“查看全部”查看 VM 大小的更多选择。 选择 GPU 训练的 NC 类 VM。
+   * 选择能满足功能需求和成本约束的服务器类型。 选择“查看全部”查看 VM 大小的更多选择。 选择用于 GPU 训练的 NC 类或 ND 类 VM。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/) 页列出了具有 GPU 的区域。
    
    c. **设置**：
    

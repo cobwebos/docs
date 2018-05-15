@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 447c07a5a5e75c5f70a2310c596d52ce439f6033
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 27e7d5e26cf1705383faf38c4837f6dec0ecd2fb
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -33,8 +33,8 @@ ms.lasthandoff: 04/16/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 
@@ -54,6 +54,12 @@ ms.lasthandoff: 04/16/2018
 ## <a name="release-notes"></a>发行说明
 
 Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) 相同的功能。
+
+### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
+
+* 将 ConsistencyLevel 属性添加到了 FeedOptions。
+* 将 JsonSerializerSettings 添加到了 RequestOptions 和 FeedOptions。
+* 将 EnableReadRequestsFallback 添加到了 ConnectionPolicy。
 
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 

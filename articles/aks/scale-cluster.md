@@ -1,6 +1,6 @@
 ---
-title: "缩放 Azure 容器服务 (AKS) 群集"
-description: "缩放 Azure 容器服务 (AKS) 群集。"
+title: 缩放 Azure Kubernetes 服务 (AKS) 群集
+description: 缩放 Azure Kubernetes 服务 (AKS) 群集。
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: fbbc24c958152806964412b426aff81a894d4412
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 37f949e1e043e62b8bd8f73a2b40d0549f77adc3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="scale-an-azure-container-service-aks-cluster"></a>缩放 Azure 容器服务 (AKS) 群集
+# <a name="scale-an-azure-kubernetes-service-aks-cluster"></a>缩放 Azure Kubernetes 服务 (AKS) 群集
 
 可轻松将 AKS 群集缩放为不同的节点数。  选择所需的节点数，然后运行 `az aks scale` 命令。  节点数减少时，节点会被仔细[封锁和排除][kubernetes-drain]，尽量避免对正在运行的应用程序造成中断。  节点数增加时，`az` 命令将等待，直到 Kubernetes 群集将节点标记为 `Ready`。
 

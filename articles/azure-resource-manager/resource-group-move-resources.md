@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9e1cee4df8870886a2a10ac525d54eea5882c04f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 04/23/2018
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  如果源订阅和目标订阅的租户 ID 不相同，可使用以下方法协调租户 ID： 
+  如果源订阅和目标订阅的租户 ID 不相同，可使用以下方法协调租户 ID：
 
   * [将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
   * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
@@ -121,7 +121,8 @@ ms.lasthandoff: 04/23/2018
 * 认知服务
 * 内容审查器
 * 数据目录
-* 数据湖分析
+* 数据工厂 - 可以移动 V1 ，但不支持移动 V2（预览版）
+* Data Lake Analytics
 * Data Lake Store
 * DNS
 * 事件中心
@@ -147,7 +148,7 @@ ms.lasthandoff: 04/23/2018
 * 存储
 * 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 流分析 - 当流分析作业处于运行状态时，则无法进行移动。
-* SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。
+* SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 这包括 Azure SQL 数据库和 Azure SQL 数据仓库数据库。 
 * 流量管理器
 * 虚拟机 - 包含托管磁盘的 VM 无法移动。 请参阅[虚拟机限制](#virtual-machines-limitations)
 * 虚拟机（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
@@ -165,8 +166,7 @@ ms.lasthandoff: 04/23/2018
 * Azure Database for MySQL
 * BizTalk 服务
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
-* 容器服务
-* 数据工厂
+* Kubernetes 服务
 * 开发测试实验室 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * Dynamics LCS
 * Express Route
@@ -203,13 +203,13 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="app-service-limitations"></a>应用服务限制
 
-移动通过经典模型部署的资源时，其选项各不相同，具体取决于是在订阅内移动资源，还是将应用服务资源移到新的订阅。 
+移动通过经典模型部署的资源时，其选项各不相同，具体取决于是在订阅内移动资源，还是将应用服务资源移到新的订阅。
 
 这些部分中所述的限制适用于已上传的证书，不适用于应用服务证书。 可将应用服务证书移动到新的资源组或订阅，且不会存在任何限制。 如果你有多个使用相同应用服务证书的 Web 应用，请先移动所有这些 Web 应用，然后再移动证书。
 
 ### <a name="moving-within-the-same-subscription"></a>在同一订阅中移动
 
-_在同一订阅中_移动 Web 应用时，无法移动已上传的 SSL 证书。 不过，可以将 Web 应用移动到新的资源组而不移动其已上传的 SSL 证书，并且，应用的 SSL 功能仍然可以工作。 
+_在同一订阅中_移动 Web 应用时，无法移动已上传的 SSL 证书。 不过，可以将 Web 应用移动到新的资源组而不移动其已上传的 SSL 证书，并且，应用的 SSL 功能仍然可以工作。
 
 如果希望随 Web 应用移动 SSL 证书，请执行以下步骤：
 
@@ -227,7 +227,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
     - 上传或导入的 SSL 证书
     - 应用服务环境
 - 资源组中的所有应用服务资源必须一起移动。
-- 只能从最初创建应用服务资源的资源组中移动它们。 如果某个应用服务资源不再位于其原始资源组中，则必须首先将其移动回该原始资源组，然后才能将其在订阅之间移动。 
+- 只能从最初创建应用服务资源的资源组中移动它们。 如果某个应用服务资源不再位于其原始资源组中，则必须首先将其移动回该原始资源组，然后才能将其在订阅之间移动。
 
 ## <a name="classic-deployment-limitations"></a>经典部署限制
 

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 0ba379fb14945a59a6a1897118fd21d5f5dee758
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ad250ca2e641ebbf1e280e25aa53ff6f0ad6bd6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击“创建资源” > “数据库” > “Azure Cosmos DB”。
@@ -23,7 +23,7 @@ ms.lasthandoff: 04/16/2018
  
     设置|建议的值|说明
     ---|---|---
-    ID|*输入唯一名称*|输入标识此 Azure Cosmos DB 帐户的唯一名称。 由于 documents.azure.com 将附加到你提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。<br><br>ID 只能包含小写字母、数字和连字符 (-) 字符，并且必须包含 3 到 50 个字符。
+    ID|*输入唯一名称*|输入标识此 Azure Cosmos DB 帐户的唯一名称。 由于 cassandra.cosmosdb.azure.com 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。<br><br>ID 只能包含小写字母、数字和连字符 (-) 字符，并且必须包含 3 到 50 个字符。
     API|Cassandra|API 确定要创建的帐户的类型。 Azure Cosmos DB 提供了五种 API，用以满足应用程序的需求：SQL（文档数据库）、Gremlin（图形数据库）、MongoDB（文档数据库）、Azure 表和 Cassandra，每个目前都需要单独的帐户。 <br><br>之所以选择 Cassandra 的原因是，在本快速入门中将创建可使用 CQL 语法查询的宽列数据库。<br><br>如果 Cassandra（宽列）未显示在列表中，那么你需要[申请加入](../articles/cosmos-db/cassandra-introduction.md#sign-up-now) Cassandra API 预览计划。<br><br> [详细了解 Cassandra API](../articles/cosmos-db/cassandra-introduction.md)|
     订阅|用户的订阅|选择要用于此 Azure Cosmos DB 帐户的 Azure 订阅。 
     资源组|新建<br><br>然后输入上面在 ID 中提供的同一唯一名称|选择“新建”，然后输入帐户的新资源组名称。 为简单起见，可以使用与 ID 相同的名称。 

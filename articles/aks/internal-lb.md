@@ -1,6 +1,6 @@
 ---
-title: 创建 Azure 容器服务 (AKS) 内部负载均衡器
-description: 使用包含 Azure 容器服务 (AKS) 的内部负载均衡器。
+title: 创建 Azure Kubernetes 服务 (AKS) 内部负载均衡器
+description: 使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器。
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 3/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7b9ecdb5364f7c0f5bb68ce693e53bc2c5327337
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 6a657df82e1670f7a9d604dd5166ab53bb38bf74
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-an-internal-load-balancer-with-azure-container-service-aks"></a>使用包含 Azure 容器服务 (AKS) 的内部负载均衡器
+# <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
 
-内部负载均衡使得 Kubernetes 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 本文档详述如何创建包含 Azure 容器服务 (AKS) 的内部负载均衡器。
+内部负载均衡使得 Kubernetes 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 本文档详述如何创建包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器。
 
 ## <a name="create-internal-load-balancer"></a>创建内部负载均衡器
 
@@ -38,11 +38,11 @@ spec:
     app: azure-vote-front
 ```
 
-部署后，将会创建一个可在 AKS 群集所在的同一虚拟网络中使用的 Azure 负载均衡器。 
+部署后，将会创建一个可在 AKS 群集所在的同一虚拟网络中使用的 Azure 负载均衡器。
 
 ![AKS 内部负载均衡器图像](media/internal-lb/internal-lb.png)
 
-检索服务详细信息时，`EXTERNAL-IP` 列中的 IP 地址是内部负载均衡器的 IP 地址。 
+检索服务详细信息时，`EXTERNAL-IP` 列中的 IP 地址是内部负载均衡器的 IP 地址。
 
 ```console
 $ kubectl get service azure-vote-front
@@ -71,7 +71,7 @@ spec:
     app: azure-vote-front
 ```
 
-检索服务详细信息时，`EXTERNAL-IP` 中的 IP 地址应反映指定的 IP 地址。 
+检索服务详细信息时，`EXTERNAL-IP` 中的 IP 地址应反映指定的 IP 地址。
 
 ```console
 $ kubectl get service azure-vote-front

@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: ed87eab6250eea753bc3b0abd97182d1b869420c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c41cb3ef2939fe7271b1f8738fcf0cb95c4b1111
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>在 Azure 应用服务中自定义身份验证和授权
 
@@ -25,7 +25,8 @@ ms.lasthandoff: 04/16/2018
 
 若要快速入门，请参阅以下教程之一：
 
-* [教程：在 Azure 应用服务中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)
+* [教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)
+* [教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](containers/tutorial-auth-aad.md)
 * [如何将应用配置为使用 Azure Active Directory 登录](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [如何将应用配置为使用 Facebook 登录](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [如何将应用配置为使用 Google 登录](app-service-mobile-how-to-configure-google-authentication.md)
@@ -148,4 +149,5 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)
+> [教程：对用户进行端到端身份验证和授权 (Windows)](app-service-web-tutorial-auth-aad.md)
+> [教程：对用户进行端到端身份验证和授权 (Linux)](containers/tutorial-auth-aad.md)

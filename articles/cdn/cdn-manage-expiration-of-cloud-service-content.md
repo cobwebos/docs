@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 内容交付网络中管理 Web 内容的到期时间 | Microsoft Docs
+title: 管理 Azure CDN 中 Web 内容的过期问题 | Microsoft Docs
 description: 了解如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题。
 services: cdn
 documentationcenter: .NET
@@ -14,26 +14,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: d1a12e0d5bd5852cf8de3d5fec93f2bfdd3ab257
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ec5470587454a35bc7606a3518d61bd3491d653b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>在 Azure 内容交付网络中管理 Web 内容的到期时间
+# <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
 > * [Azure Web 内容](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Blob 存储](cdn-manage-expiration-of-blob-content.md)
 > 
 
-来自可公开访问的源 Web 服务器的文件均可缓存在 Azure 内容交付网络 (CDN) 中，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍如何为 Microsoft Azure 应用服务的 Web 应用功能、Azure 云服务、ASP.NET 应用程序和 Internet Information Services (IIS) 网站设置 `Cache-Control` 标头，所有标头的配置方式都类似。 可以使用配置文件或以编程方式设置 `Cache-Control` 标头。 
+来自可公开访问的源 Web 服务器的文件均可缓存在 Azure 内容分发网络 (CDN) 中，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍如何为 Microsoft Azure 应用服务的 Web 应用功能、Azure 云服务、ASP.NET 应用程序和 Internet Information Services (IIS) 网站设置 `Cache-Control` 标头，所有标头的配置方式都类似。 可以使用配置文件或以编程方式设置 `Cache-Control` 标头。 
 
 此外，还可以通过设置 [CDN 缓存规则](cdn-caching-rules.md)从 Azure 门户控制缓存设置。 如果创建了一个或多个缓存规则并将其缓存行为设置为“替代”或“绕过缓存”，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
 
 > [!TIP]
 > 可以选择不对文件设置 TTL。 在这种情况下，Azure CDN 将自动应用默认 TTL（七天），除非已在 Azure 门户中设置了缓存规则。 此默认 TTL 仅适用于常规 Web 交付优化。 对于大型文件优化，默认 TTL 为一天；对于媒体流优化，默认 TTL 为一年。
 > 
-> 有关 Azure CDN 如何加速访问文件和其他资源的详细信息，请参阅 [Azure 内容交付网络概述](cdn-overview.md)。
+> 有关 Azure CDN 如何加速访问文件和其他资源的详细信息，请参阅 [Azure 内容分发网络概述](cdn-overview.md)。
 > 
 
 ## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>使用 CDN 缓存规则设置 Cache-Control 标头

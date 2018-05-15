@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/02/2018
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3237ee41f8596ed3ce508857adf7dc29cee1ada
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 01e6c3a6fb922a649f0ae139af9c8515fcb8b2e0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -48,7 +48,7 @@ IoT 中心的标准层启用了所有功能，是任何需要使用双向通信�
 | [设备预配服务](../iot-dps/about-iot-dps.md) | 是 | 是 |
 | [监视和诊断](iot-hub-monitor-resource-health.md) | 是 | 是 |
 | [云到设备的消息传递](iot-hub-devguide-c2d-guidance.md) |   | 是 |
-| [设备孪生](iot-hub-devguide-device-twins.md)和[设备管理](iot-hub-device-management-overview.md) |   | 是 |
+| [设备孪生](iot-hub-devguide-device-twins.md)、[模块孪生](iot-hub-devguide-module-twins.md)和[设备管理](iot-hub-device-management-overview.md) |   | 是 |
 | [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | 是 |
 
 IoT 中心还提供一个免费层，用于测试和评估。 它具有标准层的所有功能，但消息传递有限额。 不能从免费层升级到基本层或标准层。 
@@ -61,19 +61,26 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 | --- | ---------- | ------------- |
 | [删除设备](https://docs.microsoft.com/rest/api/iothub/deviceapi/deletedevice) | 是 | 是 |
 | [获取设备](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice) | 是 | 是 |
+| 删除模块 | 是 | 是 |
+| 获取模块 | 是 | 是 |
 | [获取注册表统计信息](https://docs.microsoft.com/rest/api/iothub/deviceapi/getregistrystatistics) | 是 | 是 |
 | [获取服务统计信息](https://docs.microsoft.com/rest/api/iothub/deviceapi/getservicestatistics) | 是 | 是 |
 | [放置设备](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | 是 | 是 |
+| 放置模块 | 是 | 是 |
 | [查询设备](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | 是 | 是 |
+| 查询模块 | 是 | 是 |
 | [创建文件上传 SAS URI](https://docs.microsoft.com/rest/api/iothub/httpruntime/createfileuploadsasuri) | 是 | 是 |
 | [接收发往设备的通知](https://docs.microsoft.com/rest/api/iothub/httpruntime/receivedeviceboundnotification) | 是 | 是 |
 | [发送设备事件](https://docs.microsoft.com/rest/api/iothub/httpruntime/senddeviceevent) | 是 | 是 |
+| 发送模块事件 | 是 | 是 |
 | [更新文件上传状态](https://docs.microsoft.com/rest/api/iothub/httpruntime/updatefileuploadstatus) | 是 | 是 |
 | [批量设备操作](https://docs.microsoft.com/rest/api/iothub/deviceapi/bulkdeviceoperation) | 是的，IoT Edge 功能除外 | 是 | 
 | [清除命令队列](https://docs.microsoft.com/rest/api/iothub/deviceapi/purgecommandqueue) |   | 是 |
 | [获取设备孪生](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/getdevicetwin) |   | 是 |
+| 获取模块孪生 |   | 是 |
 | [调用设备方法](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/invokedevicemethod) |   | 是 |
 | [更新设备孪生](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/updatedevicetwin) |   | 是 | 
+| 更新模块孪生 |   | 是 | 
 | [放弃发往设备的通知](https://docs.microsoft.com/rest/api/iothub/httpruntime/abandondeviceboundnotification) |   | 是 |
 | [完成发往设备的通知](https://docs.microsoft.com/rest/api/iothub/httpruntime/completedeviceboundnotification) |   | 是 |
 | [取消作业](https://docs.microsoft.com/rest/api/iothub/jobapi/canceljob) |   | 是 |

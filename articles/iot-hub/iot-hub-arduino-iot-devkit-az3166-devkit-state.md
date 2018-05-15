@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 33d8a36cc88bd1c263f2c4a38a59e04e1253357c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ac013cf234fdc7249d4d71992435adcc27fcc64e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -90,10 +90,10 @@ ms.lasthandoff: 04/28/2018
 ## <a name="next-steps"></a>后续步骤
 
 我们现已了解以下操作：
-- 将 MXChip IoT DevKit 设备连接到 Azure IoT 套件。
+- 将 MXChip IoT DevKit 设备连接到 Azure IoT 远程监视解决方案加速器。
 - 使用 Azure IoT 设备孪生函数来感应和控制 DevKit 的 RGB LED 颜色。
 
 下面是建议的后续步骤：
 
-* [Azure IoT 套件概述](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT 远程监视解决方案加速器概述](https://docs.microsoft.com/azure/iot-suite/)
 * [将 MXChip IoT DevKit 设备连接到 Microsoft IoT Central 应用程序](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

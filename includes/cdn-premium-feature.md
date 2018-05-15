@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: ef947ada93e9520e53cecf2dfc26bb1ad01155c7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 54be18f2b114f4bb3ac9dd71e4517ee8806339bf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 > [!IMPORTANT]
-> 这是 Verizon 的 Azure CDN 高级版功能，不适用于 Azure CDN 标准版产品。 有关 CDN 功能的比较，请参阅 [Azure CDN 产品功能](../articles/cdn/cdn-features.md)。 
+> 这仅是**来自 Verizon 的高级 Azure CDN** 的功能，不适用于标准 Azure CDN 产品。 有关 CDN 功能的比较，请参阅 [Azure CDN 产品功能](../articles/cdn/cdn-features.md)。 
 > 
 > 
 

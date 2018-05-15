@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: c1c3191ba198b56386f813b6f9d2588b895633c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 50f95dc1af334468db25bce68f2ca00e0965a28b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>使用 IoT 中心进行设备到云和云到设备的消息传递
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/28/2018
 
 IoT 中心消息传送功能的核心属性是消息的可靠性和持久性。 这些属性可在设备端上恢复间歇性连接，以及在云恢复事件处理的负载高峰。 IoT 中心对从设备到云和从云到设备的消息传送实施*至少一次*传送保证。
 
-有关 IoT 中心功能的介绍，请参阅 [Azure 和物联网][lnk-azure-iot]及 [Azure IoT 中心服务概述][lnk-iot-hub-overview]。
+有关 IoT 中心功能的简介，请参阅 [Azure IoT 中心服务概述][lnk-iot-hub-overview]。
 
 ## <a name="when-to-use-iot-hub-messaging"></a>何时使用 IoT 中心消息传递
 

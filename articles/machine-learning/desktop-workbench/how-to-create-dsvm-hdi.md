@@ -1,6 +1,6 @@
 ---
-title: "如何创建 DSVM 和 HDI 作为 Azure 机器学习的计算目标"
-description: "创建 DSVM 和 HDI Spark 群集作为 Azure 机器学习试验的计算目标。"
+title: 如何创建 DSVM 和 HDI 作为 Azure 机器学习的计算目标
+description: 创建 DSVM 和 HDI Spark 群集作为 Azure 机器学习试验的计算目标。
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 15cdee0fb3994874c88b16bebec35f5eae9f8de2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1229a66ec84b4272337a5dd1e17942e46b25e9a0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>创建 DSVM 和 HDI Spark 群集作为计算目标
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/08/2018
 
 可以从 Azure 门户创建 DSVM。 
 
-1. 通过 https://portal.azure.com 登录到 Azure 门户
+1. 从 https://portal.azure.com 登录到 Azure 门户
 2. 单击“+新建”链接，搜索“适用于 Linux 的数据科学虚拟机”。
     ![Ubuntu](media/how-to-create-dsvm-hdi/ubuntu_dsvm.png)
 4. 在列表中选择“适用于 Linux (Ubuntu)的数据科学虚拟机”，并遵照屏幕说明创建 DSVM。
@@ -148,13 +148,13 @@ $ az vm start -g <resource group name> -n <vm name>
 ```
 
 ## <a name="expand-the-dsvm-os-disk"></a>扩展 DSVM OS 磁盘
-Azure 中的 Linux VM 通常附带 30-GB 操作系统磁盘。 如果将该磁盘用作 Azure 机器学习的计算目标，Docker 引擎会将 Docker 映像拉取到其中，并在其顶层生成 conda 层，因此很快就会耗尽其空间。 最好是将 OS 磁盘扩展到更大的大小（例如 200 GB），以免在执行的中途出现“磁盘已满”错误。 请参考[如何使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘](../../virtual-machines/linux/expand-disks.md)了解如何通过 azure-cli 轻松执行此操作。 
+Ubuntu DSVM 附带了 50GB OS 磁盘和 100GB 数据磁盘。 Docker 将其映像存储在数据磁盘上，因为该处有更多空间可用。 如果将该磁盘用作 Azure ML 的计算目标，Docker 引擎会将 Docker 映像拉取到其中，并在其顶层生成 conda 层，因此会用尽该磁盘。 可能需要将 OS 磁盘扩展到更大的大小（例如 200 GB），以免在执行的中途出现“磁盘已满”错误。 请参考[如何使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘](../../virtual-machines/linux/expand-disks.md)了解如何通过 azure-cli 轻松执行此操作。 
 
 ## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>在 Azure 门户中为 Azure HDInsight 群集创建 Apache Spark
 
 若要运行横向扩展 Spark 作业，需在 Azure 门户中为 Azure HDInsight 群集创建 Apache Spark。
 
-1. 通过 https://portal.azure.com 登录到 Azure 门户
+1. 从 https://portal.azure.com 登录到 Azure 门户
 2. 单击“+新建”链接，搜索“HDInsight”。
 
     ![查找 hdi](media/how-to-create-dsvm-hdi/hdi.png)

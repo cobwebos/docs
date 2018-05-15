@@ -1,12 +1,12 @@
 ---
-title: "远程监视解决方案的体系结构 - Azure | Microsoft Docs"
-description: "有关远程监视预配置解决方案的体系结构的演练。"
-services: 
+title: 远程监视解决方案的体系结构 - Azure | Microsoft Docs
+description: 有关远程监视解决方案加速器的体系结构的演练。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: e19ba9c88e4fbe4f065c45ce7029247436f7155c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 3eaaa1ec09e9bd593a2d14e4a3bc751c431869d0
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="remote-monitoring-preconfigured-solution-architecture"></a>远程监视预配置解决方案体系结构
+# <a name="remote-monitoring-solution-accelerator-architecture"></a>远程监视解决方案加速器体系结构
 
-IoT 套件远程监视[预配置解决方案](iot-suite-what-are-preconfigured-solutions.md)针对远程位置中的多个计算机实现端到端监视解决方案。 该解决方案结合了关键 Azure 服务来提供业务方案的通用实现。 可将其用作自己实现的起点，并可以根据特定的业务要求[自定义](iot-suite-remote-monitoring-customize.md)该解决方案。
+远程监视[解决方案加速器](iot-suite-what-are-solution-accelerators.md)针对远程位置中的多台计算机实现端到端监视解决方案。 该解决方案结合了关键 Azure 服务来提供业务方案的通用实现。 可将其用作自己实现的起点，并可以根据特定的业务要求[自定义](iot-suite-remote-monitoring-customize.md)该解决方案。
 
 本文将逐步讲解远程监视解决方案的一些关键要素，以帮助你了解其工作原理。 这一知识有助于：
 
@@ -33,13 +33,13 @@ IoT 套件远程监视[预配置解决方案](iot-suite-what-are-preconfigured-s
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
-下图描绘了叠加在 [IoT 体系结构](iot-suite-what-is-azure-iot.md)之上的远程监视预配置解决方案的逻辑组件：
+下图描绘了叠加在 [IoT 体系结构](iot-suite-what-is-azure-iot.md)之上的远程监视解决方案加速器的逻辑组件：
 
 ![逻辑体系结构](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
 ## <a name="why-microservices"></a>为何使用微服务？
 
-自 Microsoft 发布第一款预配置解决方案以来，云体系结构已有所演变。 [微服务](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)应运而生，经证实能够在不降低开发速度的情况下实现可伸缩性和灵活性。 有多种 Microsoft 服务在内部使用此体系结构模式，且获得了出色的可靠性和可伸缩性。 更新的预配置解决方案将这些知识付诸实践，使我们也能从中受益。
+自 Microsoft 发布第一款解决方案加速器以来，云体系结构已经演变。 [微服务](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)应运而生，经证实能够在不降低开发速度的情况下实现可伸缩性和灵活性。 有多种 Microsoft 服务在内部使用此体系结构模式，且获得了出色的可靠性和可伸缩性。 更新的解决方案加速器将这些知识付诸实践，使我们也能从中受益。
 
 > [!TIP]
 > 若要详细了解微服务体系结构，请参阅 [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture)（.NET 应用程序体系结构）和 [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)（微服务：由云推动的应用程序革命）。
@@ -67,7 +67,7 @@ IoT 套件远程监视[预配置解决方案](iot-suite-what-are-preconfigured-s
 
 ### <a name="iot-hub-and-the-iot-manager-microservice"></a>IoT 中心和 IoT 管理器微服务
 
-[IoT 中心](../iot-hub/index.md)引入从设备发送到云中的数据，并将其提供给 `telemetry-agent` 微服务使用。
+[IoT 中心](../iot-hub/index.yml)引入从设备发送到云中的数据，并将其提供给 `telemetry-agent` 微服务使用。
 
 此外，解决方案中的 IoT 中心还可以：
 
@@ -112,11 +112,11 @@ IoT 套件远程监视[预配置解决方案](iot-suite-what-are-preconfigured-s
 
 ### <a name="storage"></a>存储
 
-[storage-adapter](https://github.com/Azure/pcs-storage-adapter-dotnet) 微服务是预配置解决方案使用的主存储服务前面的适配器。 它提供简单的集合和键值存储。
+[storage-adapter](https://github.com/Azure/pcs-storage-adapter-dotnet) 微服务是解决方案加速器使用的主存储服务前面的适配器。 它提供简单的集合和键值存储。
 
-预配置解决方案的标准部署将 Cosmos DB 用作主存储服务。
+解决方案加速器的标准部署使用 Cosmos DB 作为其主存储服务。
 
-Cosmos DB 数据库在预配置解决方案中存储数据。 **storage-adapter** 微服务充当解决方案中其他微服务的适配器，用于访问存储服务。
+Cosmos DB 数据库将数据存储在解决方案加速器中。 **storage-adapter** 微服务充当解决方案中其他微服务的适配器，用于访问存储服务。
 
 ## <a name="presentation"></a>呈现
 
@@ -128,7 +128,7 @@ Cosmos DB 数据库在预配置解决方案中存储数据。 **storage-adapter*
 * 采用 CSS 样式。
 * 通过 AJAX 调用与面向公众的微服务交互。
 
-用户界面呈现预配置解决方案的所有功能，并与如下所述的其他服务交互：
+用户界面呈现了解决方案加速器的所有功能，并与如下所述的其他服务交互：
 
 * 用于保护用户数据的 [authentication](https://github.com/Azure/pcs-auth-dotnet) 微服务。
 * 用于列出和管理 IoT 设备的 [Iothub manager](https://github.com/Azure/iothub-manager-dotnet) 微服务。
@@ -139,8 +139,8 @@ Cosmos DB 数据库在预配置解决方案中存储数据。 **storage-adapter*
 
 如果想要浏览源代码和开发人员文档，请从以下两个主要 GitHub 存储库中的一个入手：
 
-* [使用 Azure IoT 的远程监视预配置解决方案 (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
-* [使用 Azure IoT 的远程监视预配置解决方案 (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
-* [远程监视预配置解决方案体系结构](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
+* [使用 Azure IoT 进行远程监视的解决方案加速器 (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
+* [使用 Azure IoT 进行远程监视的解决方案加速器 (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
+* [用于远程监视的解决方案加速器（体系结构）](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
 
-有关远程监视预配置解决方案的其他概念性信息，请参阅[自定义预配置解决方案](iot-suite-remote-monitoring-customize.md)。
+有关远程监视解决方案加速器的更多概念性信息，请参阅[自定义解决方案加速器](iot-suite-remote-monitoring-customize.md)。

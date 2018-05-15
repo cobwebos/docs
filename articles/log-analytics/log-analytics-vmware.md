@@ -1,28 +1,31 @@
 ---
-title: "Log Analytics 中的 VMware 监视解决方案 | Microsoft Docs"
-description: "了解 VMware 监视解决方案如何帮助管理日志和监视 ESXi 主机。"
+title: Log Analytics 中的 VMware 监视解决方案 | Microsoft Docs
+description: 了解 VMware 监视解决方案如何帮助管理日志和监视 ESXi 主机。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: f54d24659ad13aa02462938711482326c5bf763c
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
 
 ![VMware 符号](./media/log-analytics-vmware/vmware-symbol.png)
+
+> [!NOTE]
+> VMware 监视解决方案已弃用。  已安装该解决方案的客户可以继续使用它，但 VMware 监视无法添加到任何新的工作区。
 
 Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大型 VMware 日志的集中式日志记录和监视方法的解决方案。 本文介绍如何使用该解决方案在单个位置对 ESXi 主机进行故障排除、捕获和管理。 使用该解决方案，可以看到在单个位置中看到所有 ESXi 主机的详细数据。 可以看到通过 ESXi 主机日志提供的 VM 和 ESXi 主机的重要事件计数、状态及趋势。 可以通过查看和搜索集中式 ESXi 主机日志进行故障排除。 而且，可以基于日志搜索查询创建警报。
 
@@ -34,7 +37,7 @@ Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大�
 * 使用[添加管理解决方案](log-analytics-add-solutions.md#add-a-management-solution)中所述的进程将 VMware 监视解决方案添加到订阅。
 
 #### <a name="supported-vmware-esxi-hosts"></a>受支持的 VMware ESXi 主机
-vSphere ESXi 主机 5.5 和 6.0
+vSphere ESXi 主机 5.5、6.0 和 6.5
 
 #### <a name="prepare-a-linux-server"></a>准备一台 Linux 服务器
 创建 Linux 操作系统系统 VM，以接收来自 ESXi 主机的所有系统日志数据。 [OMS Linux 代理](log-analytics-linux-agents.md)是所有 ESXi 主机 syslog 数据的集合点。 可以使用多个 ESXi 主机将日志转发到一台 Linux 服务器，如以下示例所示。  
@@ -42,7 +45,7 @@ vSphere ESXi 主机 5.5 和 6.0
    ![系统日志流](./media/log-analytics-vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>配置系统日志收集
-1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.x 和 6.0 上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置” > “软件” > “高级设置” > “Syslog”。
+1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置” > “软件” > “高级设置” > “Syslog”。
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
 2. 在“Syslog.global.logHost”字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
 3. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置” > “软件” > “安全配置文件” > “防火墙”并打开“属性”。  
@@ -198,7 +201,7 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
 
     c. 验证适当的用户和组设置是否有效，类似于：`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
-    d.单击“下一步”。 如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
+    d. 如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Log Analytics 中的“[日志搜索](log-analytics-log-searches.md)”可查看详细的 VMware 主机数据。

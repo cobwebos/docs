@@ -9,15 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b929eaf17255210a5c813e3e91478f9202941b64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
+
 ## <a name="introduction"></a>介绍
-Azure 流分析中的查询以类似 SQL 的查询语言表示。 这些查询记录在[流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)指南中。 本文档概述了以真实情况为基础的多个常见查询模式的解决方案。 此项工作仍在进行，将继续使用新的模式不断进行更新。
+Azure 流分析中的查询以类似 SQL 的查询语言表示。 这些语言构造记录在[流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)指南中。 
+
+查询设计可以表达简单的传递逻辑，用于将事件数据从一个输入流移动到另一个输出数据存储中。 或者可以执行丰富的模式匹配和临时分析，以通过各种时间窗口计算聚合，如 TollApp 示例所示。 可以联接多个输入的数据，以合并流事件，并对静态参考数据进行查找，以丰富事件值。 此外，还可以将数据写入到多个输出。
+
+本文档概述了以真实情况为基础的多个常见查询模式的解决方案。 此项工作仍在进行，将继续使用新的模式不断进行更新。
 
 ## <a name="query-example-convert-data-types"></a>查询示例：转换数据类型
 **说明**：定义输入流中的属性类型。
@@ -571,7 +576,7 @@ WHERE
     AND t2.maxPower > 10
 ````
 
-**说明**：第一个查询 `max_power_during_last_3_mins` 使用[滑动窗口](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)查找在过去 3 分钟内每个设备的功率传感器最大值。 将第二个查询联接到第一个查询，以便在与当前事件有关的最近窗口中查找功率值。 然后，假如满足条件，将为设备生成警报。
+**说明**：第一个查询 `max_power_during_last_3_mins` 使用[滑动窗口](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)查找在过去 3 分钟内每个设备的功率传感器最大值。 将第二个查询联接到第一个查询，以便在与当前事件有关的最近窗口中查找功率值。 然后，假如满足条件，将为设备生成警报。
 
 
 ## <a name="get-help"></a>获取帮助

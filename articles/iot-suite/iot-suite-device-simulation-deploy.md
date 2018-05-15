@@ -1,6 +1,6 @@
 ---
-title: "部署设备模拟解决方案 - Azure | Microsoft Docs"
-description: "本教程展示了如何从 azureiotsuite.com 预配设备模拟解决方案。"
+title: 部署设备模拟解决方案 - Azure | Microsoft Docs
+description: 本教程展示了如何从 azureiotsuite.com 预配设备模拟解决方案。
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: da9fb95ed5d3387c98c3274a53769d3f5f945371
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 52890c51b06777a2d74fcf143bee4e5e8919ba75
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-the-azure-iot-device-simulation-solution"></a>部署 Azure IoT 设备模拟解决方案
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/20/2017
 
     ![选择“设备模拟”](media/iot-suite-device-simulation-deploy/select.png)
 
-1. 在“创建设备模拟解决方案”页面上，为设备模拟解决方案输入**解决方案名称**。
+1. 在“创建设备模拟解决方案”页上，为设备模拟解决方案输入**解决方案名称**。
 
 1. 选择要用于预配解决方案的“订阅”和“区域”。
 

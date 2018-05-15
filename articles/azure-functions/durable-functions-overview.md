@@ -1,5 +1,5 @@
 ---
-title: Durable Functions 概述 - Azure（预览版）
+title: Durable Functions 概述 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
 services: functions
 author: cgillum
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b5269bb51c787c927b4224b3520d5514b6d24501
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d253562e0ecb0d53739a4cdc5f9747e33d7e1171
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="durable-functions-overview-preview"></a>Durable Functions 概述（预览版）
+# <a name="durable-functions-overview"></a>Durable Functions 概述
 
 Durable Functions 是 [Azure Functions](functions-overview.md) 和 [Azure WebJobs](../app-service/web-sites-create-web-jobs.md) 的扩展，可用于在无服务器环境中编写有状态函数。 该扩展可用于管理状态、检查点和重启。
 
@@ -31,7 +31,7 @@ Durable Functions 是 [Azure Functions](functions-overview.md) 和 [Azure WebJob
 * 每当有函数处于等待状态时，可自动对进度执行检查点操作。 回收进程或重启 VM 时，从来不会丢失本地状态。
 
 > [!NOTE]
-> Durable Functions 处于预览状态，是 Azure Functions 的高级扩展，并非适用于所有应用程序。 本文其余部分假设用户已非常熟悉 [Azure Functions](functions-overview.md) 概念，以及在无服务器应用程序开发过程中面临的挑战。
+> Durable Functions 是 Azure Functions 的高级扩展，并不适用于所有应用程序。 本文其余部分假设用户已非常熟悉 [Azure Functions](functions-overview.md) 概念，以及在无服务器应用程序开发过程中面临的挑战。
 
 Durable Functions 的主要用例是简化无服务器应用程序中出现的复杂的有状态协调问题。 以下各节介绍可受益于 Durable Functions 的部分典型应用程序模式。
 
@@ -42,6 +42,8 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 ![函数链关系图](media/durable-functions-overview/function-chaining.png)
 
 借助 Durable Functions，可在代码中简明地实现此模式。
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task<object> Run(DurableOrchestrationContext ctx)
@@ -60,6 +62,19 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```js
+const df = require("durable-functions");
+
+module.exports = df(function*(ctx) {
+    const x = yield ctx.df.callActivityAsync("F1");
+    const y = yield ctx.df.callActivityAsync("F2", x);
+    const z = yield ctx.df.callActivityAsync("F3", y);
+    return yield ctx.df.callActivityAsync("F4", z);
+});
+```
+
 值“F1”、“F2”、“F3”和“F4”是函数应用中其他函数的名称。 控制流通过使用常规命令性编码构造实现。 即代码从上至下执行，并且可能涉及现有语言控制流语义，如条件语句和循环语句。  try/catch/finally 块中可包含错误处理逻辑。
 
 `ctx` 参数 ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)) 提供按名称、传递参数和返回函数输出调用其他函数的方法。 每当代码调用 `await` 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或 VM，函数实例从上一个 `await` 调用恢复。 后文详细介绍了这一重启行为。
@@ -71,6 +86,8 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
 ![扇出/扇入关系图](media/durable-functions-overview/fan-out-fan-in.png)
 
 对于普通函数，可通过使函数向一个队列发送多条消息来完成扇出。 但是，扇入回来更具挑战性。 需要编写代码，跟踪队列触发的函数何时结束，并存储函数输出。 Durable Functions 扩展可使用相对简单的代码处理这种模式。
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -91,6 +108,28 @@ public static async Task Run(DurableOrchestrationContext ctx)
     int sum = parallelTasks.Sum(t => t.Result);
     await ctx.CallActivityAsync("F3", sum);
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```js
+const df = require("durable-functions");
+
+module.exports = df(function*(ctx) {
+    const parallelTasks = [];
+
+    // get a list of N work items to process in parallel
+    const workBatch = yield ctx.df.callActivityAsync("F1");
+    for (let i = 0; i < workBatch.length; i++) {
+        parallelTasks.push(ctx.df.callActivityAsync("F2", workBatch[i]));
+    }
+
+    yield ctx.df.task.all(parallelTasks);
+
+    // aggregate all N outputs and send result to F3
+    const sum = parallelTasks.reduce((prev, curr) => prev + curr, 0);
+    yield ctx.df.callActivityAsync("F3", sum);
+});
 ```
 
 扇出操作会分发到函数 `F2` 的多个实例中，并且可通过使用动态任务列表跟踪这些操作。 将调用 .NET `Task.WhenAll` API，等待所有调用的函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
@@ -151,7 +190,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` 参数是 `orchestrationClient` 输出绑定中的值，该绑定是 Durable Functions 扩展的一部分。 它提供用于启用、终止和查询新的或现有业务流程协调程序函数实例以及向这些实例发送事件的方法。 在上面的示例中，由 HTTP 触发的函数采用传入的 URL 中的 `functionName` 值，并将该值传递给 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)。 然后，此绑定 API 返回包含 `Location` 标头和有关实例的其他信息的响应，这些信息稍后可用于查找已启动实例的状态或终止实例。
+[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` 参数是 `orchestrationClient` 输出绑定中的值，该绑定是 Durable Functions 扩展的一部分。 它提供用于启用、终止和查询新的或现有业务流程协调程序函数实例以及向这些实例发送事件的方法。 在上一示例中，HTTP 触发的函数采用传入的 URL 中的 `functionName` 值，并将该值传递给 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)。 然后，此绑定 API 返回包含 `Location` 标头和有关实例的其他信息的响应，这些信息稍后可用于查找已启动实例的状态或终止实例。
 
 ## <a name="pattern-4-monitoring"></a>模式 #4：监视
 
@@ -162,6 +201,8 @@ public static async Task<HttpResponseMessage> Run(
 ![监视器关系图](media/durable-functions-overview/monitor.png)
 
 使用 Durable Functions，可以通过几行代码创建观察任意终结点的多个监视器。 当某个条件满足时，监视器可以结束执行或由 [DurableOrchestrationClient](durable-functions-instance-management.md) 终止，可以基于某个条件更改其等待间隔（即指数回退）。下面的代码实现了基本的监视器。
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -189,6 +230,34 @@ public static async Task Run(DurableOrchestrationContext ctx)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```js
+const df = require("durable-functions");
+const df = require("moment");
+
+module.exports = df(function*(ctx) {
+    const jobId = ctx.df.getInput();
+    const pollingInternal = getPollingInterval();
+    const expiryTime = getExpiryTime();
+
+    while (moment.utc(ctx.df.currentUtcDateTime).isBefore(expiryTime)) {
+        const jobStatus = yield ctx.df.callActivityAsync("GetJobStatus", jobId);
+        if (jobStatus === "Completed") {
+            // Perform action when condition met
+            yield ctx.df.callActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration will sleep until this time
+        const nextCheck = moment.utc(ctx.df.currentUtcDateTime).add(pollingInterval, 's');
+        yield ctx.df.createTimer(nextCheck.toDate());
+    }
+
+    // Perform further work here, or let the orchestration end
+});
+```
+
 收到请求时，会为该作业 ID 创建新的业务流程实例。 该实例会一直轮询状态，直到满足条件退出循环。 持久计时器用于控制轮询间隔。 然后可以执行进一步的工作，也可以结束业务流程。 当 `ctx.CurrentUtcDateTime` 超过 `expiryTime` 时，监视结束。
 
 ## <a name="pattern-5-human-interaction"></a>模式 5：人机交互
@@ -200,6 +269,8 @@ public static async Task Run(DurableOrchestrationContext ctx)
 ![人机交互图](media/durable-functions-overview/approval.png)
 
 可使用业务流程协调程序函数实现此模式。 业务流程协调程序使用[持久计时器](durable-functions-timers.md)来请求审批，并在发生超时的情况下进行上报。 该程序等待一个[外部事件](durable-functions-external-events.md)，该事件为某个人机交互生成的通知。
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -224,7 +295,39 @@ public static async Task Run(DurableOrchestrationContext ctx)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```js
+const df = require("durable-functions");
+const moment = require('moment');
+
+module.exports = df(function*(ctx) {
+    yield ctx.df.callActivityAsync("RequestApproval");
+
+    const dueTime = moment.utc(ctx.df.currentUtcDateTime).add(72, 'h');
+    const durableTimeout = ctx.df.createTimer(dueTime.toDate());
+
+    const approvalEvent = ctx.df.waitForExternalEvent("ApprovalEvent");
+    if (approvalEvent === yield ctx.df.Task.any([approvalEvent, durableTimeout])) {
+        durableTimeout.cancel();
+        yield ctx.df.callActivityAsync("ProcessApproval", approvalEvent.result);
+    } else {
+        yield ctx.df.callActivityAsync("Escalate");
+    }
+});
+```
+
 持久计时器通过调用 `ctx.CreateTimer` 创建。 通知由 `ctx.WaitForExternalEvent` 接收。 还将调用 `Task.WhenAny`，确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
+
+外部客户端可以使用[内置 HTTP API](durable-functions-http-api.md#raise-event) 或通过另一个函数使用 [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API 将事件通知传递给正在等待的业务流程协调程序函数：
+
+```csharp
+public static async Task Run(string instanceId, DurableOrchestrationClient client)
+{
+    bool isApproved = true;
+    await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
+}
+```
 
 ## <a name="the-technology"></a>技术
 
@@ -244,7 +347,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 
 ## <a name="language-support"></a>语言支持
 
-目前，C# 是 Durable Functions 唯一支持的语言。 这包括业务流程协调程序函数和活动函数。 将来，我们将添加对 Azure Functions 支持的所有语言的支持。 若要查看其它语言支持工作的最新状态，请参阅 Azure Functions [GitHub 存储库问题列表](https://github.com/Azure/azure-functions-durable-extension/issues)。
+当前 C#（Functions v1 和 v2）和 JavaScript（仅限 Functions v2）是 Durable Functions 仅支持的语言。 这包括业务流程协调程序函数和活动函数。 将来，我们将添加对 Azure Functions 支持的所有语言的支持。 若要查看其它语言支持工作的最新状态，请参阅 Azure Functions [GitHub 存储库问题列表](https://github.com/Azure/azure-functions-durable-extension/issues)。
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断
 
@@ -275,7 +378,7 @@ Durable Functions 扩展使用 Azure 存储队列、表和 Blob 来持久保存�
 
 ## <a name="known-issues-and-faq"></a>已知问题和常见问题解答
 
-一般来说，可在 [GitHub 问题](https://github.com/Azure/azure-functions-durable-extension/issues)列表中跟踪所有已知问题。 如果遇到 GitHub 中未列出的问题，请打开“新问题”并提供问题的详细说明。 即便只是想要提问，也可随意打开一个 GitHub 问题并将其标记为提问。
+应在 [GitHub 问题](https://github.com/Azure/azure-functions-durable-extension/issues)列表中跟踪所有已知问题。 如果遇到 GitHub 中未列出的问题，请打开“新问题”并提供问题的详细说明。
 
 ## <a name="next-steps"></a>后续步骤
 

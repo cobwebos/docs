@@ -4,7 +4,7 @@ description: 了解有关 SQL .NET API 和 SDK 的所有信息，包括发布日
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: 8e239217-9085-49f5-b0a7-58d6e6b61949
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 662a1d1d0f13b64cc87ab6eb0eee6af94cd97c54
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 5e96c57151899a7365431d0f6f82382d56d81a40
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -33,8 +33,8 @@ ms.lasthandoff: 03/30/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 
@@ -52,10 +52,16 @@ ms.lasthandoff: 03/30/2018
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+### <a name="a-name12201220"></a><a name="1.22.0"/>1.22.0
+
+* 将 ConsistencyLevel 属性添加到了 FeedOptions。
+* 将 JsonSerializerSettings 添加到了 RequestOptions 和 FeedOptions。
+* 将 EnableReadRequestsFallback 添加到了 ConnectionPolicy。
+
 ### <a name="a-name12111211"></a><a name="1.21.1"/>1.21.1
 
 * 修复了临界情况下跨分区 order by 查询出现的 KeyNotFoundException。
-* 修复了在 LINQ 查询的 select 子句中不接受 JsonPropery 属性的 bug。
+* 修复了在 LINQ 查询的 select 子句中不接受 JsonProperty 属性的 bug。
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
@@ -293,6 +299,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.22.0](#1.22.0) |2018 年 4 月 19 日 |--- |
 | [1.21.1](#1.20.1) |2018 年 3 月 9 日 |--- |
 | [1.20.2](#1.20.1) |2018 年 2 月 21 日 |--- |
 | [1.20.1](#1.20.1) |2018 年 2 月 5 日 |--- |

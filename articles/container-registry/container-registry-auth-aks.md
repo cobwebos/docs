@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 容器注册表从 Azure 容器服务进行身份验证
-description: 了解如何使用 Azure Active Directory 服务主体从 Azure 容器服务访问专用容器注册表中的映像。
+title: 使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
+description: 了解如何使用 Azure Active Directory 服务主体从 Azure Kubernetes 服务访问专用容器注册表中的映像。
 services: container-service
 author: neilpeterson
 manager: jeconnoc
@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
-ms.openlocfilehash: 6f2f035015445ee1fb2009b64d20d654484d7775
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0888afbb9087251e2c9219e2eb32fbf0d5600304
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-container-service"></a>使用 Azure 容器注册表从 Azure 容器服务进行身份验证
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
-结合使用 Azure 容器注册表 (ACR) 和 Azure 容器服务 (AKS) 时，需要建立身份验证机制。 本文档详细介绍这两种 Azure 服务之间的建议身份验证配置。
+结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文档详细介绍这两种 Azure 服务之间的建议身份验证配置。
 
 ## <a name="grant-aks-access-to-acr"></a>向 ACR 授予 AKS 访问权限
 
-创建 AKS 群集时，还会创建一个服务主体，用于管理对 Azure 资源的群集可操作性。 此服务主体也可用于向 ACR 注册表进行身份验证。 若要实现此目的，需要创建一个角色分配，以向 ACR 资源授予服务主体的读取访问权限。 
+创建 AKS 群集时，还会创建一个服务主体，用于管理对 Azure 资源的群集可操作性。 此服务主体也可用于向 ACR 注册表进行身份验证。 若要实现此目的，需要创建一个角色分配，以向 ACR 资源授予服务主体的读取访问权限。
 
 可使用以下示例完成此操作。
 
@@ -46,7 +46,7 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 
 在某些情况下，AKS 使用的服务主体不适用于 ACR 注册表。 对于这些情况，可创建唯一的服务主体并将其限制为仅限 ACR 注册表。
 
-可使用以下脚本创建服务主体。 
+可使用以下脚本创建服务主体。
 
 ```bash
 #!/bin/bash
@@ -54,11 +54,11 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 ACR_NAME=myacrinstance
 SERVICE_PRINCIPAL_NAME=acr-service-principal
 
-# Populate the ACR login server and resource id. 
+# Populate the ACR login server and resource id.
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer --output tsv)
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
 
-# Create a contributor role assignment with a scope of the ACR resource. 
+# Create a contributor role assignment with a scope of the ACR resource.
 SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role Reader --scopes $ACR_REGISTRY_ID --query password --output tsv)
 
 # Get the service principle client id.
@@ -69,7 +69,7 @@ echo "Service principal ID: $CLIENT_ID"
 echo "Service principal password: $SP_PASSWD"
 ```
 
-服务主体凭据现在可存储在 Kubernetes [映像请求机密][image-pull-secret]中，当在 AKS 群集中运行容器时，会引用这些凭据。 
+服务主体凭据现在可存储在 Kubernetes [映像请求机密][image-pull-secret]中，当在 AKS 群集中运行容器时，会引用这些凭据。
 
 以下命令创建 Kubernetes 机密。 将服务器名称替换为 ACR 登录服务器，将用户名替换为服务主体 ID，将密码替换为服务主体密码。
 
@@ -77,7 +77,7 @@ echo "Service principal password: $SP_PASSWD"
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
-可通过使用 `ImagePullSecrets` 参数在 Pod 部署中使用 Kubernetes 机密。 
+可通过使用 `ImagePullSecrets` 参数在 Pod 部署中使用 Kubernetes 机密。
 
 ```yaml
 apiVersion: apps/v1beta1

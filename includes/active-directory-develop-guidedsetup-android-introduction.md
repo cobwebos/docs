@@ -1,11 +1,33 @@
-
-# <a name="call-the-microsoft-graph-api-from-an-android-app"></a>从 Android 应用调用 Microsoft Graph API
+---
+title: include 文件
+description: include 文件
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: aa21168f1e19ccddc190379b30e1b612d96b56d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/28/2018
+---
+# <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>从 Android 应用登录用户和所有 Microsoft Graph API
 
 本指南演示了本机 Android 应用程序如何从 Azure Active Directory v2 终结点获取访问令牌并调用 Microsoft Graph API 或其他需要访问令牌的 API。
 
 完成本指南后，应用程序将能够接受个人帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作和学校帐户进行登录。 然后，应用程序将调用由 Azure Active Directory v2 终结点保护的一个 API。  
 
-## <a name="how-this-sample-works"></a>此示例的工作原理
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 ![此示例的工作原理](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
 根据本指南创建的示例应用程序基于以下方案：使用一个 Android 应用程序来查询某个 Web API（在本例中为 Microsoft Graph API），该 Web API 接受来自 Azure Active Directory v2 终结点的令牌。 对于此方案，应用程序通过授权标头将所需的令牌添加到 HTTP 请求。 Microsoft 身份验证库 (MSAL) 替你处理令牌获取和续订。

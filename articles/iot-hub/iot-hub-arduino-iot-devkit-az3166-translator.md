@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: d17f117d71eb0616201df18aea6dc48749ae24a8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 20e5a5f4fb381dedc42d698464819a6098c3579b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>将 IoT DevKit AZ3166 与 Azure 函数和认知服务配合使用生成语言翻译
 
@@ -35,10 +35,10 @@ ms.lasthandoff: 04/03/2018
 
 一个有效的 Azure 订阅。 如果没有订阅，可以通过以下两种方法之一进行注册：
 
-* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/en-us/free/)
+* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/free/)
 * 声明你的 [Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（如果你是 MSDN 或 Visual Studio 订阅者）
 
-## <a name="step-1-open-the-project-folder"></a>步骤 1. 打开项目文件夹
+## <a name="step-1-open-the-project-folder"></a>步骤 1。 打开项目文件夹
 
 ### <a name="a-start-vs-code"></a>A. 启动 VS Code
 
@@ -46,17 +46,14 @@ ms.lasthandoff: 04/03/2018
 - 启动 VS Code
 - 将 DevKit 连接到计算机。
 
-VS Code 将自动查找 DevKit，并打开简介页：
-
-![“简介”页](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_start.png)
-
 ### <a name="b-open-the-arduino-examples-folder"></a>B. 打开 Arduino 示例文件夹
 
 展开左侧的“ARDUINO 示例”>“MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“DevKitTranslator”。 它将打开一个新的 VS Code 窗口，其中包含 DEVKITTRANSLATOR 项目文件夹。
 
 ![IoT DevKit 示例](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
 
-如果无意中关闭了窗格，可以重新打开它。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
+> [!NOTE]
+> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
 
 ## <a name="step-2-provision-azure-services"></a>步骤 2. 预配 Azure 服务
 
@@ -143,4 +140,4 @@ Arduino 草图会记录你的声音，然后发送 HTTP 请求以触发 Azure Fu
 继续学习其他教程：
 
 > [!div class="nextstepaction"]
-> [将 IoT DevKit AZ3166 连接到 Azure IoT 套件以进行远程监视](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [将 IoT DevKit AZ3166 连接到 Azure IoT 远程监视解决方案加速器](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)

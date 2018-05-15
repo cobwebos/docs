@@ -1,12 +1,12 @@
 ---
-title: "对 Linux 上的 Azure 应用服务的 SSH 支持 | Microsoft Docs"
-description: "了解如何将 SSH 与 Linux 上的 Azure 应用服务配合使用。"
-keywords: "azure 应用服务, web 应用, linux, oss"
+title: 对 Linux 上的 Azure 应用服务的 SSH 支持 | Microsoft Docs
+description: 了解如何将 SSH 与 Linux 上的 Azure 应用服务配合使用。
+keywords: azure 应用服务, web 应用, linux, oss
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 905c257ab40057f05081e54e8680bd818023d886
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: cf27e852f5ec9b7e12b0c678e9940596bc57b385
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>对 Linux 上的 Azure 应用服务的 SSH 支持
 
@@ -30,6 +30,10 @@ Linux 应用服务对应用容器提供了 SSH 支持，每个内置 Docker 映�
 ![运行时堆栈](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
 还可以通过以下方式将 SSH 与自定义 Docker 映像配合使用：将 SSH 服务器包括为映像的一部分并按本文中所述对其进行配置。
+
+> [!NOTE] 
+> 还可以使用 SSH、SFTP 或 Visual Studio Code（用于实时调试 Node.js 应用）直接从本地开发计算机连接到应用容器。 有关详细信息，请参阅[远程调试和通过 SSH 登录到 Linux 上的应用服务](https://aka.ms/linux-debug)。
+>
 
 ## <a name="making-a-client-connection"></a>建立客户端连接
 

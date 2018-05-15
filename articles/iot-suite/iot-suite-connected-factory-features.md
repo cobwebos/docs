@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: dobett
-ms.openlocfilehash: fea9ccc53bd019039cf1e989d72db7a218e4517c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e0bd023e73088897303fe0f9de47641cd6ea0389
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-azure-iot-suite-connected-factory"></a>什么是 Azure IoT 套件连接的工厂？
 
@@ -48,10 +48,10 @@ ms.lasthandoff: 04/23/2018
 - 在树拓扑以及互动地图中查看工业资产层次结构。
 - 从云仪表板中查看、确认和关闭警报。
 
-## <a name="azure-time-series-insights"></a>Azure 时序见解
+## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 - [Azure 时序见解](../time-series-insights/time-series-insights-overview.md)是为存储、可视化和查询大量时序数据而开发的服务。 连接的工厂利用了此服务。
-- 连接的工厂集成了此服务，因而可以对设备数据执行深入的实时分析。
+- 连接的工厂集成了此服务，从而可以对设备数据执行深入的实时分析。
 
 ## <a name="rules-and-alerts"></a>规则和警报
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解已连接的工厂预配置解决方案，请阅读下列文章：
+通过阅读下列文章，详细了解连接的工厂预配置解决方案：
 
 * [连接的工厂预配置解决方案演练](iot-suite-connected-factory-sample-walkthrough.md)
 * [为连接的工厂部署网关]( iot-suite-connected-factory-gateway-deployment.md)

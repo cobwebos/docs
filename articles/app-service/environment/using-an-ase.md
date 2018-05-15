@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 应用服务环境"
-description: "如何在 Azure 应用服务环境中创建、发布和缩放应用"
+title: 使用 Azure 应用服务环境
+description: 如何在 Azure 应用服务环境中创建、发布和缩放应用
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4aaef3fb6748eb974bc9d129b2bd8d42393e1cb8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -58,21 +58,30 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 4. 输入新资源组的名称，或选择“使用现有”并从下拉列表中选择一个资源组。
 
+5. 选择 OS。 
+
+    * 在 ASE 中托管 Linux 应用是一项新的预览功能，因此我们建议不要将 Linux 应用添加到当前正在运行生产工作负荷的 ASE 中。 
+    * 将 Linux 应用添加到 ASE 中意味着 ASE 也将处于预览模式。 
+
 5. 在 ASE 中选择现有的应用服务计划，或遵循以下步骤创建一个新的计划：
 
     a. 选择“新建”。
 
     b. 输入应用服务计划的名称。
 
-    c. 在“位置”下拉列表中选择自己的 ASE。
+    c. 在“位置”下拉列表中选择自己的 ASE。 在 ASE 中托管 Linux 应用的功能目前仅在 6 个区域中启用：**美国西部、美国东部、西欧、北欧、澳大利亚东部、东南亚**。 
 
-    d.单击“下一步”。 选择“隔离”定价层。 选择“选择”。
+    d. 选择“隔离”定价层。 选择“选择”。
 
     e. 选择“确定”。
     
     ![“隔离”定价层][2]
 
-6. 选择“创建”。
+    > [!NOTE]
+    > Linux Web 应用和 Windows Web 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
+    >
+
+6. 选择**创建**。
 
 ## <a name="how-scale-works"></a>缩放的工作原理 ##
 

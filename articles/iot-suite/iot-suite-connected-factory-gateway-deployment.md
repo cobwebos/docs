@@ -1,12 +1,12 @@
 ---
-title: "部署连接工厂网关 - Azure | Microsoft Docs"
-description: "如何在 Windows 或 Linux 上部署网关，以便连接到连接工厂预配置解决方案。"
-services: 
+title: 部署连接的工厂网关 - Azure | Microsoft Docs
+description: 如何在 Windows 或 Linux 上部署网关，以便连接到连接的工厂解决方案加速器。
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 4606cb676c3ab7c8c8511579f43d251ff7d2ae8a
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 956da99a5d67d7a2225ab3ea64b4e5a9d41ee3a1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>在 Windows 或 Linux 上为连接工厂预配置解决方案部署边缘网关
+# <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>在 Windows 或 Linux 上为连接的工厂解决方案加速器部署边缘网关
 
-需要为*连接工厂*预配置解决方案部署边缘网关的软件具有两个组件：
+要为连接的工厂解决方案加速器部署边缘网关，需要具有两个软件组件：
 
-- *OPC 代理*与连接工厂建立连接。 OPC 代理随后等待集成 OPC 浏览器发出命令和控制消息，该浏览器在连接工厂解决方案门户中运行。
+- *OPC 代理*与连接的工厂建立连接。 OPC 代理随后等待集成 OPC 浏览器发出命令和控制消息，该浏览器在连接的工厂解决方案门户中运行。
 
-- *OPC 发布服务器*连接到现有的本地 OPC UA 服务器，并将遥测消息从服务器转发到连接工厂。 可以通过[用于 OPC UA 的 OPC 经典适配器](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md)连接 OPC 经典设备。
+- *OPC 发布服务器*连接到现有的本地 OPC UA 服务器，并将遥测消息从服务器转发到连接的工厂。 可以通过[用于 OPC UA 的 OPC 经典适配器](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md)连接 OPC 经典设备。
 
 这两个组件为开源组件，在 GitHub 上可用作源，在 DockerHub 上可用作 Docker 容器：
 
@@ -37,14 +37,14 @@ ms.lasthandoff: 01/17/2018
 
 这两个组件都不需要网关防火墙中面向公众的 IP 地址或开放式入站端口。 OPC 代理和 OPC 发布服务器组件仅使用出站端口 443。
 
-本文中的步骤演示如何在 Windows 或 Linux 上使用 Docker 部署边缘网关。 使用网关可以连接到连接工厂预配置解决方案。 也可以使用不带连接工厂的组件。
+本文中的步骤演示如何在 Windows 或 Linux 上使用 Docker 部署边缘网关。 使用该网关可以连接到连接的工厂解决方案加速器。 也可以在没有连接的工厂的情况下使用这些组件。
 
 > [!NOTE]
 > 这两个组件都可用作 [Azure IoT Edge](https://github.com/Azure/iot-edge) 中的模块。
 
 ## <a name="choose-a-gateway-device"></a>选择网关设备
 
-如果还没有网关设备，Microsoft 建议从其中一个合作伙伴处购买商业网关。 有关与连接工厂解决方案兼容的网关设备的列表，请访问 [Azure IoT 设备目录](https://catalog.azureiotsuite.com/?q=opc)。 按照设备随附的说明操作，设置网关。
+如果还没有网关设备，Microsoft 建议从其中一个合作伙伴处购买商业网关。 有关与连接的工厂解决方案兼容的网关设备的列表，请访问 [Azure IoT 设备目录](https://catalog.azureiotsuite.com/?q=opc)。 按照设备随附的说明操作，设置网关。
 
 或者，使用以下说明手动配置一个现有网关设备。
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 01/17/2018
 
 安装 OPC 组件之前，先完成以下步骤准备好环境：
 
-1. 若要完成网关部署，需提供连接工厂部署中 IoT 中心的 **iothubowner** 连接字符串。 在 [Azure 门户](http://portal.azure.com/)中，导航到 IoT 中心中在部署连接工厂解决方案时创建的资源组。 单击“共享访问策略”，访问 iothubowner 连接字符串：
+1. 若要完成网关部署，需要提供连接的工厂部署中 IoT 中心的 **iothubowner** 连接字符串。 在 [Azure 门户](http://portal.azure.com/)中，导航到 IoT 中心中在部署连接的工厂解决方案时创建的资源组。 单击“共享访问策略”，访问 iothubowner 连接字符串：
 
     ![找到 IoT 中心连接字符串](./media/iot-suite-connected-factory-gateway-deployment/image2.png)
 
@@ -143,33 +143,33 @@ OPC 代理会在安装期间保存连接字符串。 后续运行时，应省略
 
 ## <a name="enable-your-gateway"></a>启用网关
 
-完成以下步骤，以便在连接工厂预配置解决方案中启用网关：
+完成以下步骤，以便在连接的工厂解决方案加速器中启用网关：
 
-1. 当两个组件都在运行时，浏览到连接工厂解决方案门户中的“连接自己的 OPC UA 服务器”页面。 只有解决方案中的管理员才能使用此页面。 输入发布服务器终结点 URL (opc.tcp://publisher:62222)，单击“连接”。
+1. 当两个组件都在运行时，浏览到连接的工厂解决方案门户中的“连接自己的 OPC UA 服务器”页面。 只有解决方案中的管理员才能使用此页面。 输入发布服务器终结点 URL (opc.tcp://publisher:62222)，单击“连接”。
 
-1. 在连接工厂门户与 OPC 发布服务器之间建立信任关系。 显示证书警告时单击“继续”。 接下来，将显示 OPC 发布服务器不信任 UA Web 客户端的错误。 若要解决此错误，请将 **UA Web 客户端**证书从网关上的 `<SharedFolder>/CertificateStores/rejected/certs` 文件夹复制到 `<SharedFolder>/CertificateStores/trusted/certs` 文件夹。 无需重启网关。
+1. 在连接的工厂门户与 OPC 发布服务器之间建立信任关系。 显示证书警告时单击“继续”。 接下来，将显示 OPC 发布服务器不信任 UA Web 客户端的错误。 若要解决此错误，请将 **UA Web 客户端**证书从网关上的 `<SharedFolder>/CertificateStores/rejected/certs` 文件夹复制到 `<SharedFolder>/CertificateStores/trusted/certs` 文件夹。 无需重启网关。
 
 现可从云连接到网关，并准备好将 OPC UA 服务器添加到解决方案中。
 
 ## <a name="add-your-own-opc-ua-servers"></a>添加自己的 OPC UA 服务器
 
-若要将自己的 OPC UA 服务器添加到连接工厂预配置解决方案中，请执行以下操作：
+若要将自己的 OPC UA 服务器添加到连接的工厂解决方案加速器中，请执行以下操作：
 
-1. 浏览到连接工厂解决方案门户中的“连接自己的 OPC UA 服务器”页面。
+1. 在连接的工厂解决方案门户中，浏览到“连接自己的 OPC UA 服务器”页面。
 
     1. 启动想要连接的 OPC UA 服务器。 确保可以通过容器中运行的 OPC 发布服务器和 OPC 代理来访问 OPC UA 服务器（请参阅之前有关名称解析的注释）。
     1. 输入 OPC UA 服务器 (`opc.tcp://<host>:<port>`) 的终结点 URL，然后单击“连接”。
-    1. 作为连接设置的一部分，已建立连接工厂门户（OPC UA 客户端）和尝试连接的 OPC UA 服务器之间的信任关系。 在连接的工厂仪表板中，将显示“无法验证要连接的服务器的证书”警告。 显示证书警告时单击“继续”。
-    1. 更难以设置的是尝试连接的 OPC UA 服务器的证书配置。 对于基于 PC 的 OPC UA 服务器，可能会在仪表板中显示一个你可确认的警告对话框。 对于嵌入式 OPC UA 服务器系统，请参阅 OPC UA 服务器的文档以查看完成该任务的方式。 若要完成此任务，可能需要连接工厂门户的 OPC UA 客户端的证书。 管理员可以在**连接你自己的 OPC UA 服务器**页面上下载此证书：
+    1. 作为连接设置的一部分，在连接的工厂门户（OPC UA 客户端）和尝试连接的 OPC UA 服务器之间已建立了信任关系。 在连接的工厂仪表板中，将显示“无法验证要连接的服务器的证书”警告。 显示证书警告时单击“继续”。
+    1. 更难以设置的是尝试连接的 OPC UA 服务器的证书配置。 对于基于 PC 的 OPC UA 服务器，可能会在仪表板中显示一个你可确认的警告对话框。 对于嵌入式 OPC UA 服务器系统，请参阅 OPC UA 服务器的文档以查看完成该任务的方式。 若要完成此任务，可能需要使用连接的工厂门户的 OPC UA 客户端的证书。 管理员可以在**连接你自己的 OPC UA 服务器**页面上下载此证书：
 
         ![解决方案门户](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
 
-1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击要将值发送到连接工厂的 OPC 节点，并选择“发布”。
+1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击要将值发送到连接的工厂的 OPC 节点，并选择“发布”。
 
-1. 遥测现从网关设备流入。 可在连接工厂门户中“新工厂”下的“工厂位置”视图中查看此遥测。
+1. 遥测数据现在从网关设备流入。 可在连接的工厂门户中“新工厂”下的“工厂位置”视图中查看遥测数据。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要深入了解预连接工厂预配置解决方案的体系结构，请参阅[连接工厂预配置解决方案演练](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough)。
+若要深入了解连接的工厂解决方案加速器的体系结构，请参阅[连接的工厂解决方案加速器演练](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough)。
 
 了解 [OPC 发布服务器引用实现](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher)。

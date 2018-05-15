@@ -1,22 +1,22 @@
 ---
-title: "使用 IoT 中心事件触发 Azure 逻辑应用 | Microsoft Docs"
-description: "使用 Azure 事件网格的事件路由服务创建自动化过程，用于根据 IoT 中心事件执行 Azure 逻辑应用操作。"
+title: 使用 IoT 中心事件触发 Azure 逻辑应用 | Microsoft Docs
+description: 使用 Azure 事件网格的事件路由服务创建自动化过程，用于根据 IoT 中心事件执行 Azure 逻辑应用操作。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: f54db95b0dfe5dc39c8e2a85375e56a93d1562ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4fed42a45f8d291bd3ba1e4fd5d636b7d0b0fbfc
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件
 
@@ -156,7 +156,7 @@ ms.lasthandoff: 02/01/2018
 本部分将 IoT 中心配置为在发生事件时发布事件。 
 
 1. 在 Azure 门户中导航到 IoT 中心。 
-2. 选择“事件网格”。
+2. 选择“事件”。
 
    ![打开事件网格详细信息](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
@@ -187,7 +187,7 @@ ms.lasthandoff: 02/01/2018
 创建新设备来触发事件通知电子邮件，以测试逻辑应用。 
 
 1. 在 IoT 中心选择“IoT 设备”。 
-2. 选择“添加”。
+2. 选择 **添加** 。
 3. 对于“设备 ID”，请输入 `Building1_Floor1_Room1_Temperature`。
 4. 选择“保存”。 
 5. 可以添加具有不同设备 ID 的多个设备来测试事件订阅筛选器。 尝试以下示例： 

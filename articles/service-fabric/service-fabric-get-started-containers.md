@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 679fb066441fd75d5e12f9374d012f50c6f65966
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fd706737491a4644b0730ea197f6a2a9ed5480e5
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -132,6 +132,11 @@ name 用于为运行的容器（而不是容器 ID）命名。
 容器启动以后，查找其 IP 地址，以便通过浏览器连接到正在运行的容器：
 ```
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
+```
+
+如果该命令未返回任何内容，请运行以下命令并检查 IP 地址的 **NetworkSettings**->**Networks** 元素：
+```
+docker inspect my-web-site
 ```
 
 连接到正在运行的容器。 打开 Web 浏览器并指向返回的 IP 地址，例如 “http://172.31.194.61”。 此时会看到标题“Hello World!” 显示在浏览器中。

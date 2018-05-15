@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 8187a4bc6278f917c28418baf3cda2d75ea4e3d8
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d1dec6f2da4f6fcbeb38585fc6a1cfcd9d622c4a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions 的 host.json 参考
 
@@ -142,6 +142,46 @@ ms.lasthandoff: 04/06/2018
 |isEnabled|是|启用或禁用采样。| 
 |maxTelemetryItemsPerSecond|5|开始采样所要达到的阈值。| 
 
+## <a name="durabletask"></a>durableTask
+
+[Durable Functions](durable-functions-overview.md) 的配置设置。
+
+```json
+{
+  "durableTask": {
+    "HubName": "MyTaskHub",
+    "ControlQueueBatchSize": 32,
+    "PartitionCount": 4,
+    "ControlQueueVisibilityTimeout": "00:05:00",
+    "WorkItemQueueVisibilityTimeout": "00:05:00",
+    "MaxConcurrentActivityFunctions": 10,
+    "MaxConcurrentOrchestratorFunctions": 10,
+    "AzureStorageConnectionStringName": "AzureWebJobsStorage",
+    "TraceInputsAndOutputs": false,
+    "EventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+    "EventGridKeySettingName":  "EventGridKey"
+  }
+}
+```
+
+任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则函数应用的默认任务中心名称是 **DurableFunctionsHub**。 有关详细信息，请参阅[任务中心](durable-functions-task-hubs.md)。
+
+|属性  |默认 | 说明 |
+|---------|---------|---------|
+|HubName|DurableFunctionsHub|可以使用备用[任务中心](durable-functions-task-hubs.md)名称将多个 Durable Functions 应用程序彼此隔离，即使这些应用程序使用同一存储后端。|
+|ControlQueueBatchSize|32|要从控制队列中一次性拉取的消息数。|
+|PartitionCount |4|控制队列的分区计数。 可以是 1 到 16 之间的正整数。|
+|ControlQueueVisibilityTimeout |5 分钟|已取消排队的控制队列消息的可见性超时。|
+|WorkItemQueueVisibilityTimeout |5 分钟|已取消排队的工作项队列消息的可见性超时。|
+|MaxConcurrentActivityFunctions |10 倍于当前计算机上的处理器数|可以在单个主机实例上并发处理的活动函数的最大数目。|
+|MaxConcurrentOrchestratorFunctions |10 倍于当前计算机上的处理器数|可以在单个主机实例上并发处理的活动函数的最大数目。|
+|AzureStorageConnectionStringName |AzureWebJobsStorage|应用设置的名称，其中的 Azure 存储连接字符串用于管理基础的 Azure 存储资源。|
+|TraceInputsAndOutputs |false|一个指示是否跟踪函数调用的输入和输出的值。 跟踪函数执行事件时的默认行为是在函数调用的序列化输入和输出中包括字节数。 这样提供的有关输入和输出情况的信息是最少的，不会导致日志膨胀，也不会无意中将敏感信息公开给日志。 将此属性设置为 true 会导致默认函数日志记录将函数输入和输出的整个内容都记录下来。|
+|EventGridTopicEndpoint ||Azure 事件网格自定义主题终结点的 URL。 设置此属性后，业务流程生命周期通知事件就会发布到此终结点。|
+|EventGridKeySettingName ||应用设置的名称，该设置包含的密钥用于在 `EventGridTopicEndpoint` 上通过 Azure 事件网格自定义主题进行身份验证。
+
+许多这样的项用于优化性能。 有关详细信息，请参阅[性能和缩放](durable-functions-perf-and-scale.md)。
+
 ## <a name="eventhub"></a>eventHub
 
 [事件中心触发器和绑定](functions-bindings-event-hubs.md)的配置设置。
@@ -150,7 +190,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="functions"></a>functions
 
-作业宿主要运行的函数列表。  空数组表示运行所有函数。  仅供在[本地运行](functions-run-local.md)时使用。 在函数应用中，请使用 *function.json* `disabled` 属性，而不要在 *host.json* 中使用此属性。
+作业宿主要运行的函数列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在函数应用中，请使用 *function.json* `disabled` 属性，而不要在 *host.json* 中使用此属性。
 
 ```json
 {
@@ -299,21 +339,6 @@ ms.lasthandoff: 04/06/2018
     "watchDirectories": [ "Shared" ]
 }
 ```
-
-## <a name="durabletask"></a>durableTask
-
-[Durable Functions](durable-functions-overview.md) 的[任务中心](durable-functions-task-hubs.md)名称。
-
-```json
-{
-  "durableTask": {
-    "HubName": "MyTaskHub"
-  }
-}
-```
-
-任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则函数应用的默认任务中心名称是 **DurableFunctionsHub**。 有关详细信息，请参阅[任务中心](durable-functions-task-hubs.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

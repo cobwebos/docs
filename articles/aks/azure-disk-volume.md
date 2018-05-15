@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a2f46aba80ad47335b7cd9b5e8d615c1d895cccb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 33d9a01f063ee8ad531a3f7e01dcfbf1c4ba8901
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="volumes-with-azure-disks"></a>含 Azure 磁盘的卷
 
-基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 Azure 磁盘可以用作此外部数据存储。 本文详细介绍使用 Azure 磁盘作为 Azure 容器服务 (AKS) 群集中的 Kubernetes 卷。
+基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 Azure 磁盘可以用作此外部数据存储。 本文详细介绍如何使用 Azure 磁盘作为 Azure Kubernetes 服务 (AKS) 群集中的 Kubernetes 卷。
 
 有关 Kubernetes 卷的详细信息，请参阅 [Kubernetes 卷][kubernetes-volumes]。
 
@@ -38,7 +38,7 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-使用 [az disk create][az-disk-create] 命令创建 Azure 磁盘。 
+使用 [az disk create][az-disk-create] 命令创建 Azure 磁盘。
 
 使用此示例，将 `--resource-group` 更新为资源组的名称，并将 `--name` 更新为你选择的名称。
 
@@ -58,7 +58,7 @@ az disk create \
 
 ## <a name="mount-disk-as-volume"></a>装载磁盘作为卷
 
-通过按容器规范配置卷，将 Azure 磁盘装载至 Pod。 
+通过按容器规范配置卷，将 Azure 磁盘装载至 Pod。
 
 使用以下内容创建名为 `azure-disk-pod.yaml` 的新文件。 将 `diskName` 更新为新创建的磁盘名称，并将 `diskURI` 更新为磁盘 ID。 此外，请记下 `mountPath`，这是 Azure 磁盘在 Pod 中的装载路径。
 

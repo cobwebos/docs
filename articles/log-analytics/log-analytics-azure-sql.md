@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: d6bc7824687f5418f1270e22b216f8637578aa6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 722a10e853f6d61bb5349e92754954e3bb199225
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>在 Log Analytics 中使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -136,7 +136,8 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ### <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
 
-可以使用来自 Azure SQL 数据库资源的数据轻松创建警报。 以下是部分有用的可用于警报的[日志搜索](log-analytics-log-searches.md)查询：
+可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。 以下是部分有用的可用于日志警报的[日志搜索](log-analytics-log-searches.md)查询：
+
 
 
 *Azure SQL 数据库上的高 DTU*
@@ -157,18 +158,7 @@ AzureMetrics
 | render timechart
 ```
 
-可以使用这些基于警报的查询，针对 Azure SQL 数据库和弹性池的特定阈值设置警报。 若要配置 Log Analytics 工作区的警报，请执行以下操作：
 
-#### <a name="to-configure-an-alert-for-your-workspace"></a>配置工作区警报
-
-1. 转到 [OMS 门户](http://mms.microsoft.com/)并登录。
-2. 打开为解决方案配置的工作区。
-3. 在“概览”页上，单击“Azure SQL Analytics (预览版)”磁贴。
-4. 运行示例查询之一。
-5. 在“日志搜索”中，单击“警报”。  
-![在搜索中创建警报](./media/log-analytics-azure-sql/create-alert01.png)
-6. 在“添加警报规则”页上，根据需要配置适当的属性和特定的阈值，并单击“保存”。 
-![添加警报规则](./media/log-analytics-azure-sql/create-alert02.png)
 
 ## <a name="next-steps"></a>后续步骤
 

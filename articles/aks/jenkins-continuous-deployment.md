@@ -1,6 +1,6 @@
 ---
-title: Jenkins 持续部署和 Azure 容器服务中的 Kubernetes
-description: 如何使用 Jenkins 自动完成持续部署过程，以便在 Azure 容器服务中的 Kubernetes 上部署和升级容器化应用
+title: Jenkins 持续部署与 Azure Kubernetes 服务中的 Kubernetes
+description: 如何使用 Jenkins 自动完成持续部署过程，以便在 Azure Kubernetes 服务中的 Kubernetes 上部署和升级容器化应用
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7ebe7a88fcb0a0785b72c512e64a2d9aeb5fc506
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: efdb89c5f4c6bdb9b007b7c0020cbdb8f6034eed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>使用 Jenkins 和 Azure 容器服务进行持续部署
+# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>使用 Jenkins 和 Azure Kubernetes 服务进行持续部署
 
-本文档演示如何在 Jenkins 与 Azure 容器服务 (AKS) 群集之间设置基本的持续部署工作流。
+本文档演示如何在 Jenkins 与 Azure Kubernetes 服务 (AKS) 群集之间设置基本的持续部署工作流。
 
 示例工作流包括以下步骤：
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/19/2018
 需要准备好以下各项才能完成本文中的步骤。
 
 - 基本了解 Kubernetes、Git、CI/CD 和 Azure 容器注册表 (ACR)。
-- 已在开发系统上配置了 [Azure 容器服务 (AKS) 群集][aks-quickstart]和 [AKS 凭据][aks-credentials]。
+- 已在开发系统上配置了 [Azure Kubernetes 服务 (AKS) 群集][aks-quickstart]和 [AKS 凭据][aks-credentials]。
 - [Azure 容器注册表 (ACR)][acr-quickstart]、ACR 登录服务器名称，以及拥有推送和提取访问权限的 [ACR 凭据][acr-authentication]。
 - 已在开发系统上安装 Azure CLI。
 - 已在开发系统上安装 Docker。

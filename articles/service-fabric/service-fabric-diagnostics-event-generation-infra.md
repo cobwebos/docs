@@ -12,21 +12,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 46ba7b6e638fafa512d4a3f291c49acc1ddf02e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1ba02afa775343f496a2b5fec98699e593a330ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-the-cluster-and-platform"></a>监视群集和平台
 
 在平台级别进行监视以确定硬件和群集的运行情况是否符合预期是非常重要的。 在硬件发生故障期间，Service Fabric 可保持应用程序运行，但用户仍需要诊断错误是在应用程序中还是底层基础结构中发生。 还应该监视群集以便更好地规划容量，帮助决定添加或删除硬件。
 
-Service Fabric 提供了以下现成可用的日志通道：
+Service Fabric 通过 EventStore 和各种现成的日志通道将多个结构化平台事件作为 [Service Fabric 事件](service-fabric-diagnostics-events.md)公开。 
 
-* **可操作**  
+使用 EventStore 可以按实体（实体包括群集、节点、应用程序、服务、分区、副本和容器）访问群集的事件，并通过 REST API 和 Service Fabric 客户端库将其公开。 使用 EventStore 监视开发/测试群集，并获取生产群集状态的时间点了解。 如需详细了解此信息，请参阅 [EventStore 概述](service-fabric-diagnostics-eventstore.md)。
+
+Service Fabric 还提供了以下现成的日志通道，用于设置管道来监视生产群集：
+
+* [**可操作**](service-fabric-diagnostics-event-generation-operational.md)  
 由 Service Fabric 和群集执行的高级操作，包括出现节点事件、部署新应用程序或升级回退等。
 
 * **可操作 - 详细信息**  

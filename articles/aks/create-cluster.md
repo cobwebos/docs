@@ -1,6 +1,6 @@
 ---
-title: "创建 Azure 容器服务 (AKS) 群集"
-description: "使用 CLI 或 Azure 门户创建 AKS 群集。"
+title: 创建 Azure Kubernetes 服务 (AKS) 群集
+description: 使用 CLI 或 Azure 门户创建 AKS 群集。
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 37d6dfc0aa6b3e4fcd88a53e83a3a3d7f2157681
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 46c2f718911f27ad8f51423589c6fdda100a68d2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="create-an-azure-container-service-aks-cluster"></a>创建 Azure 容器服务 (AKS) 群集
+# <a name="create-an-azure-kubernetes-service-aks-cluster"></a>创建 Azure Kubernetes 服务 (AKS) 群集
 
-可以使用 Azure CLI 或 Azure 门户创建 Azure 容器服务 (AKS) 群集。
+可以使用 Azure CLI 或 Azure 门户创建 Azure Kubernetes 服务 (AKS) 群集。
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -32,7 +32,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster
 | 参数 | 说明 | 必选 |
 |---|---|:---:|
 | `--name` `-n` | 托管群集的资源名称。 | 是 |
-| `--resource-group` `-g` | Azure 容器服务资源组的名称。 | 是 |
+| `--resource-group` `-g` | Azure Kubernetes 服务资源组的名称。 | 是 |
 | `--admin-username` `-u` | Linux 虚拟机的用户名。  默认值：azureuser。 | 否 |
 | ` --client-secret` | 与服务主体关联的机密。 | 否 |
 | `--dns-name-prefix` `-p` | 群集公共 IP 地址的 DNS 前缀。 | 否 |
@@ -48,7 +48,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="azure-portal"></a>Azure 门户
 
-有关使用 Azure 门户部署 AKS 群集的说明，请参阅 Azure 容器服务 (AKS) [Azure 门户快速入门][aks-portal-quickstart]。 
+有关使用 Azure 门户部署 AKS 群集的说明，请参阅 Azure Kubernetes 服务 (AKS) [Azure 门户快速入门][aks-portal-quickstart]。
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create

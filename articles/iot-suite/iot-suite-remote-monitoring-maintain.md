@@ -1,22 +1,22 @@
 ---
-title: "在远程监视解决方案中排查设备问题 - Azure | Microsoft Docs"
-description: "本教程介绍如何在远程监视解决方案中排查和修正设备问题。"
-services: 
+title: 在远程监视解决方案中排查设备问题 - Azure | Microsoft Docs
+description: 本教程介绍如何在远程监视解决方案中排查和修正设备问题。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: dd01246075a5c0db0ed49133ed51fb56d8fcf8e5
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: a959276ea61ec0e44ad45197019dfc80f26b768e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>排查和修正设备问题
 
@@ -34,7 +34,7 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 若要遵循本教程，需在 Azure 订阅中部署远程监视解决方案的实例。
 
-如果尚未部署远程监视解决方案，应完成[部署远程监视预配置解决方案](iot-suite-remote-monitoring-deploy.md)教程。
+如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](iot-suite-remote-monitoring-deploy.md)教程。
 
 ## <a name="use-the-maintenance-dashboard"></a>使用维护仪表板
 
@@ -46,29 +46,29 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 ![在仪表板中浏览警报](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
 
-警报的详细视图显示：
+警报的详细信息视图显示以下内容：
 
 * 警报的触发时间
 * 与警报关联的设备的状态信息
-* 与警报关联的设备发出的遥测数据
+* 从与警报关联的设备获得的遥测数据
 
 ![警报详细信息](media/iot-suite-remote-monitoring-maintain/maintenancealarmdetail.png)
 
-若要确认警报，请依次选择“警报出现”、“确认”。 此操作可让其他操作员知道你已看到该警报并正在进行处理。
+若要确认警报，请依次选择“警报实例”、“确认”。 此操作可让其他操作员知道你已看到该警报并正在进行处理。
 
 ![确认警报](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
 
-确认警报时，发生项的状态将更改为“已确认”。
+确认警报时，实例的状态将更改为“已确认”。
 
 在列表中，可以看到负责触发温度警报的**原型**设备：
 
-![导致生成警报的设备列表](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
+![列出导致警报的设备](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
 
 ## <a name="remediate-the-issue"></a>修正问题
 
 若要修正**原型**设备的问题，需在该设备上调用 **DecreaseTemperature** 方法。
 
-若要安排某个设备的操作，请在设备列表中将其选中，然后选择“计划”。 原型设备模型指定设备必须支持的四个方法：
+若要安排某个设备的操作，请在设备列表中将其选中，然后选择“作业”。 原型设备模型指定设备必须支持的六个方法：
 
 ![查看设备支持的方法](media/iot-suite-remote-monitoring-maintain/maintenancemethods.png)
 

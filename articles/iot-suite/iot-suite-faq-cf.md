@@ -1,13 +1,13 @@
 ---
-title: "连接工厂解决方案常见问题解答 - Azure | Microsoft Docs"
-description: "有关 IoT 套件连接工厂的常见问题"
-services: 
+title: 连接的工厂解决方案常见问题解答 - Azure | Microsoft Docs
+description: 连接的工厂解决方案加速器的常见问题解答
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ab72152fc937e3c4552147fce29c95ea0efcadf4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 12ebd8b8dfa90ab736190e842b35744dbf1c5b96
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>有关 IoT 套件连接工厂预配置解决方案的常见问题
+# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
-另请参阅 IoT 套件常规[常见问题解答](iot-suite-faq.md)。
+另请参阅 IoT 解决方案加速器的一般[常见问题解答](iot-suite-faq.md)。
 
-### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solution"></a>在哪里可以找到预配置解决方案的源代码？
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>在哪里可以找到此解决方案加速器的源代码？
 
 源代码存储在以下 GitHub 存储库中：
 
-* [连接工厂预配置解决方案](https://github.com/Azure/azure-iot-connected-factory)
+* [连接的工厂解决方案加速器](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-is-opc-ua"></a>OPC UA 是什么？
 
@@ -40,7 +40,7 @@ OPC 统一体系结构 (UA) 发布于 2008 年，是一种独立于平台、以�
 * 技术
 * 进程
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>为什么 Microsoft 为互联工厂预配置解决方案选择 OPC UA？
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Microsoft 为何为连接的工厂解决方案加速器选择 OPC UA？
 
 Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独立于平台、已获得行业认可和已经过验证的标准。 它是 Industrie 4.0 (RAMI4.0) 参考体系结构解决方案的必要条件，可确保大量制造流程和设备之间的互操作性。 Microsoft 看到了其客户对于构建工业 4.0 解决方案的需求。 OPC UA 支持有助于降低客户实现其目标的障碍，并为其提供即时业务价值。
 
@@ -100,7 +100,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 还可使用 Azure 门户查找此连接字符串。 在部署资源组中的 IoT 中心找到连接字符串设置。
 
-### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>连接工厂模拟使用哪些 IoT 中心设备？
+### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>连接的工厂模拟使用哪些 IoT 中心设备？
 
 模拟自己注册以下设备：
 
@@ -186,7 +186,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 若要将遥测数据从非 OPC UA 设备发送到连接的工厂，请执行以下操作：
 
-1. 在 `ContosoTopologyDescription.json` 文件中[在连接的工厂拓扑中配置一个新站](iot-suite-connected-factory-configure.md)。
+1. 在 `ContosoTopologyDescription.json` 文件中[在连接的工厂拓扑中配置一个新工作站](iot-suite-connected-factory-configure.md)。
 
 1. 以连接的工厂兼容的 JSON 格式引入遥测数据：
 
@@ -210,8 +210,8 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 ### <a name="next-steps"></a>后续步骤
 
-还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
+还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
-* [预见性维护预配置解决方案概述](iot-suite-predictive-overview.md)
-* [连接工厂预配置解决方案概述](iot-suite-connected-factory-overview.md)
+* [预测性维护解决方案加速器概述](iot-suite-predictive-overview.md)
+* [连接的工厂解决方案加速器概述](iot-suite-connected-factory-overview.md)
 * [从头保障 IoT 的安全](securing-iot-ground-up.md)

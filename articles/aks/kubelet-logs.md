@@ -1,6 +1,6 @@
 ---
-title: "从 Azure 容器服务 (AKS) 获取 kubelet 日志"
-description: "从 Azure 容器服务 (AKS) 群集节点获取 kubelet 日志"
+title: 从 Azure Kubernetes 服务 (AKS) 获取 kubelet 日志
+description: 从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 56e20a9f9d17eac01e6f85007db41dcc417f83e4
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0467be7e91fdbf4685fc41a375ea86a503e26009
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-kubelet-logs-from-azure-container-service-aks-cluster-nodes"></a>从 Azure 容器服务 (AKS) 群集节点获取 kubelet 日志
+# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
 
-有时，可能需要从 Azure 容器服务 (AKS) 节点获取 kubelet 日志以进行故障排除。 本文档详细介绍一个用于拉取这些日志的选项。
+有时，可能需要从 Azure Kubernetes 服务 (AKS) 节点获取 kubelet 日志以进行故障排除。 本文档详细介绍一个用于拉取这些日志的选项。
 
 ## <a name="create-an-ssh-connection"></a>创建 SSH 连接
 
-首先，与需要在其上拉取 kubelet 日志的节点建立 SSH 连接。 在[通过 SSH 登录到 Azure 容器服务 (AKS) 群集节点][aks-ssh]文档中详细介绍了此操作。
+首先，与需要在其上拉取 kubelet 日志的节点建立 SSH 连接。 在[通过 SSH 登录到 Azure Kubernetes 服务 (AKS) 群集节点][aks-ssh]文档中详细介绍了此操作。
 
 ## <a name="get-kubelet-logs"></a>获取 kubelet 日志
 

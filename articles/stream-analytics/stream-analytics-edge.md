@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 1c02f8f7b086d0441c2def0e92c54cce72fad85e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9a9608825cf041007c000729becb34e9a3063f92
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>IoT Edge 上的 Azure 流分析（预览版）
 
@@ -60,11 +60,10 @@ ASA 使用 IoT 中心将 Edge 作业部署到设备。 [可在此处查看有关
 
 
 #### <a name="create-an-asa-edge-job"></a>创建 ASA Edge 作业
-1. 在 Azure 门户创建一个新的“流分析作业”。 [在此处创建新的 ASA 作业的直接链接](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)。
-
 > [!Note]
-> 可以在 ASA 支持的所有区域（**“美国西部 2”区域除外**）中创建 Edge 作业。
-> 此限制很快将会取消。
+> 本教程重点介绍如何使用 Azure 门户创建 ASA 作业。 也可以[使用 Visual Studio 插件创建 ASA Edge 作业](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+
+1. 在 Azure 门户创建一个新的“流分析作业”。 [在此处创建新的 ASA 作业的直接链接](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)。
 
 2. 在“创建”屏幕中，选择“Edge”作为“宿主环境”（请参阅下图）![作业创建](media/stream-analytics-edge/ASAEdge_create.png)
 3. 作业定义
@@ -147,7 +146,6 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 * Azure ML 函数。
 * 在单个步骤中使用超过 14 个聚合。
 * 用于输入/输出的 AVRO 格式。 目前支持仅 CSV 和 JSON。
-* JSON 输入的压缩。
 * 以下 SQL 运算符：
     * AnomalyDetection
     * 地理空间运算符：
@@ -210,6 +208,7 @@ ASA Edge 作业可以从在 IoT Edge 设备上运行的其他模块获取输入�
 * [Azure IoT Edge 的详细信息](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [IoT Edge 教程上的 ASA ](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [使用此调查向团队发送反馈](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [使用 Visual Studio 工具开发流分析 Edge 作业](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

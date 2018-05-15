@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 017cb5850788bd230c4a4ba256997f2776c07bec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db16a4ba2177e92fa4500af0969c44471004ba73
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试 
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 04/19/2018
 
 ### <a name="failure-codes"></a>失败代码
 
-以下 HTTP 响应代码表示事件传送尝试失败。 事件网格会尝试再次发送事件。 
+以下 HTTP 响应代码表示事件传送尝试失败。 
 
 - 400 错误请求
 - 401 未授权
@@ -46,9 +46,9 @@ ms.lasthandoff: 04/19/2018
 - 503 服务不可用
 - 504 网关超时
 
-任何其他响应代码或未响应都表示出现失败。 事件网格会重试传送。 
+如果事件网格收到一个指示终结点不可用的错误，它将尝试重新发送事件。 
 
-## <a name="retry-intervals"></a>重试间隔
+## <a name="retry-intervals-and-duration"></a>重试间隔和持续时间
 
 对于事件传送，事件网格使用指数性的回退重试策略。 如果 webhook 未响应或返回失败代码，事件网格会按照以下计划重新尝试传送：
 
@@ -62,9 +62,7 @@ ms.lasthandoff: 04/19/2018
 
 事件网格允许所有重试间隔可以略微随机。 一个小时后，事件传送每小时重试一次。
 
-## <a name="retry-duration"></a>重试持续事时间
-
-Azure 事件网格会使所有未在 24 小时内发送的事件过期。
+默认情况下，事件网格会使所有未在 24 小时内发送的事件过期。
 
 ## <a name="next-steps"></a>后续步骤
 

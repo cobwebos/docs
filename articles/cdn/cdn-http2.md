@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b4751320af82a29fb13dc6012c1b197ebc2b1f9b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN 中的 HTTP/2 支持
 
@@ -54,7 +54,7 @@ HTTP/2 的优点包括：
 
 ## <a name="enabling-http2-support-in-azure-cdn"></a>在 Azure CDN 中启用 HTTP/2 支持
 
-目前，HTTP/2 支持对于**来自 Akamai 的 Azure CDN** 和**来自 Verizon 的 Azure CDN** 配置文件有效。 客户无需进一步执行操作。
+目前，HTTP/2 支持对于所有 Azure CDN 配置文件有效。 客户无需进一步执行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

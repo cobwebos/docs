@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f474921acbd3a5082afea03dd982bcfa9c52dcda
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-draft-with-azure-container-service-aks"></a>结合使用 Draft 与 Azure 容器服务 (AKS)
+# <a name="use-draft-with-azure-kubernetes-service-aks"></a>结合使用 Draft 与 Azure Kubernetes 服务 (AKS)
 
 Draft 是一种开源工具，有助于在 Kubernetes 群集中包含和部署这些容器，让用户专注于开发周期 -- 专注开发的“内部循环”。 在开发代码期间，但尚未将代码提交到版本控制之前，Draft 将会运行。 借助 Draft，可在代码发生更改时快速将应用程序重新部署到 Kubernetes。 有关 Draft 的详细信息，请参阅 [GitHub 上的 Draft 文档][draft-documentation]。
 
@@ -27,7 +27,7 @@ Draft 是一种开源工具，有助于在 Kubernetes 群集中包含和部署�
 
 还需在 Azure 容器注册表 (ACR) 中创建专用 Docker 注册表。 有关部署 ACR 实例的说明，请参阅 [Azure 容器注册表快速入门][acr-quickstart]。
 
-Helm 也必须安装在 AKS 群集中。 有关安装 Helm 的详细信息，请参阅[将 Helm 与 Azure 容器服务 (AKS) 配合使用][aks-helm]。
+Helm 也必须安装在 AKS 群集中。 有关安装 Helm 的详细信息，请参阅[将 Helm 与 Azure Kubernetes 服务 (AKS) 配合使用][aks-helm]。
 
 最后，必须安装 [Docker](https://www.docker.com)。
 

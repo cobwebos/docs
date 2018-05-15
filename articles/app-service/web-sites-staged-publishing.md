@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: a262ba335256878b03a9a2cce6f7ba6a3dae715c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2fabf0d61ffd2f526fab49816eab36a86497a358
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -30,11 +30,7 @@ ms.lasthandoff: 03/16/2018
 * 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 当不需要预交换验证时，可以通过配置[自动交换](#Auto-Swap)来自动化这整个工作流。
 * 交换后，具有以前分阶段应用的槽现在具有以前的生产应用。 如果交换到生产槽的更改与预期不同，可以立即执行同一交换来收回“上一已知的良好站点”。
 
-每种应用服务计划层支持不同数量的部署槽。 要了解应用层支持的槽数，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
-
-* 如果应用具有多个槽，则无法更改层。
-* 缩放不适用于非生产槽。
-* 非生产槽不支持链接的资源管理。 仅在 [Azure 门户](http://go.microsoft.com/fwlink/?LinkId=529715)中，可以通过暂时会非生产槽移到其他应用服务计划层避免对生产槽造成这种潜在影响。 请注意，非生产槽必须先再次与生产槽共享相同的层，才能交换这两个槽。
+每种应用服务计划层支持不同数量的部署槽。 若要了解应用层支持的槽数，请参阅[应用服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)。 若要将应用缩放到其他层，目标层必须支持应用业已使用的槽数。 例如，如果应用有 5 个以上的槽，则不能向下缩放到“标准”层，因为“标准”层只支持 5 个部署槽。
 
 <a name="Add"></a>
 
@@ -67,8 +63,8 @@ ms.lasthandoff: 03/16/2018
 
 <a name="AboutConfiguration"></a>
 
-## <a name="configuration-for-deployment-slots"></a>部署槽的配置
-从另一个部署槽克隆配置时，可以编辑克隆的配置。 此外，某些配置元素在交换时遵循内容（不特定于位置），而其他配置元素会在交换之后保留在同一个位置（特定于位置）。 以下列表显示交换槽时会更改的配置。
+## <a name="which-settings-are-swapped"></a>交换哪些设置？
+从另一个部署槽克隆配置时，可以编辑克隆的配置。 此外，某些配置元素在交换时遵循内容（不特定于位置），而其他配置元素会在交换之后保留在同一个位置（特定于位置）。 以下列表显示交换槽时会更改的设置。
 
 **已交换的设置**：
 
@@ -87,7 +83,7 @@ ms.lasthandoff: 03/16/2018
 * 缩放设置
 * Web 作业计划程序
 
-要将应用设置或连接字符串配置为停在某个槽中（不交换），请访问特定槽的“应用程序设置”边栏选项卡，然后针对应该位于该槽中的配置元素选中“槽设置”框。 请注意，如果将配置元素标记为特定于槽会在将该元素建立为无法在所有与该应用关联的部署槽之间进行交换时产生影响。
+要将应用设置或连接字符串配置为停在某个槽中（不交换），请访问特定槽的“应用程序设置”边栏选项卡，然后针对应该位于该槽中的配置元素选中“槽设置”框。 如果将配置元素标记为特定于槽，则无法在所有与该应用关联的部署槽之间交换该元素。
 
 ![槽设置][SlotSettings]
 
@@ -146,14 +142,14 @@ ms.lasthandoff: 03/16/2018
 > [!NOTE]
 > Linux 上的 Web 应用中不支持自动交换。
 
-为槽配置自动交换很容易。 请遵循以下步骤进行配置：
+为槽配置自动交换很容易。 执行以下步骤:
 
 1. 在“部署槽”中，选择非生产槽，并在该槽的资源边栏选项卡中选择“应用程序设置”。  
    
     ![][Autoswap1]
 2. 针对“自动交换”选择“打开”，在“自动交换槽”中选择所需的目标槽，并在命令栏中单击“保存”。 确保槽的配置与针对目标槽的配置完全相同。
    
-    操作完成后，“通知”选项卡将闪烁绿色的“成功”字样。
+    操作完成后，“通知”选项卡会闪烁并显示绿色的“成功”字样。
    
     ![][Autoswap2]
    
@@ -165,22 +161,32 @@ ms.lasthandoff: 03/16/2018
 
 <a name="Rollback"></a>
 
-## <a name="to-rollback-a-production-app-after-swap"></a>在交换后回滚生产应用的步骤
+## <a name="roll-back-a-production-app-after-swap"></a>在交换后回退生产应用
 如果在槽交换后在生产中发现任何错误，请立即通过交换相同的两个槽来将槽回滚到交换前状态。
 
 <a name="Warm-up"></a>
 
 ## <a name="custom-warm-up-before-swap"></a>交换前的自定义准备工作
-某些应用可能需要自定义的准备操作。 web.config 中的 `applicationInitialization` 配置元素允许指定收到请求之前要执行的自定义初始化操作。 交换操作将等待此自定义准备操作完成。 以下是 web.config 片段的示例。
+某些应用可能需要自定义的准备操作。 web.config 中的 `applicationInitialization` 配置元素允许指定收到请求之前要执行的自定义初始化操作。 交换操作会等待此自定义准备操作完成。 以下是 web.config 片段的示例。
 
     <applicationInitialization>
         <add initializationPage="/" hostName="[app hostname]" />
         <add initializationPage="/Home/About" hostname="[app hostname]" />
     </applicationInitialization>
 
+## <a name="monitor-swap-progress"></a>监视交换进度
+
+有时候（例如，进行交换的应用的预热时间长），交换操作需要一些时间才能完成。 有关交换操作的详细信息，可参阅 [Azure 门户](https://portal.azure.com)中的[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
+
+在门户的应用页的左侧导航中，选择“活动日志”。
+
+交换操作在日志查询中显示为 `Slotsswap`。 可以将其展开，然后选择一个子操作或错误来查看详细信息。
+
+![槽交换的活动日志](media/web-sites-staged-publishing/activity-log.png)
+
 <a name="Delete"></a>
 
-## <a name="to-delete-a-deployment-slot"></a>删除部署槽
+## <a name="delete-a-deployment-slot"></a>删除部署槽
 在部署槽的边栏选项卡中，打开部署槽的边栏选项卡，单击“概述”（默认页），并在命令栏中单击“删除”。  
 
 ![删除部署槽][DeleteStagingSiteButton]
@@ -189,41 +195,47 @@ ms.lasthandoff: 03/16/2018
 
 <a name="PowerShell"></a>
 
-## <a name="azure-powershell-cmdlets-for-deployment-slots"></a>适用于部署槽的 Azure PowerShell cmdlet
+## <a name="automate-with-azure-powershell"></a>使用 Azure PowerShell 进行自动化操作
+
 Azure PowerShell 是一个模块，可提供通过 Windows PowerShell 管理 Azure 的 cmdlet，包括对管理 Azure 应用服务的部署槽的支持。
 
 * 有关安装和配置 Azure PowerShell 的信息以及使用 Azure 订阅对 Azure PowerShell 进行身份验证的信息，请参阅[如何安装和配置 Microsoft Azure PowerShell](/powershell/azure/overview)。  
 
 - - -
 ### <a name="create-a-web-app"></a>创建 Web 应用
-```
+```PowerShell
 New-AzureRmWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="create-a-deployment-slot"></a>创建部署槽
-```
+```PowerShell
 New-AzureRmWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="initiate-a-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>启动带预览的交换（多阶段交换）并将目标槽配置应用到源槽
-```
+```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="cancel-a-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>取消挂起的交换（带预览的交换）并还原源槽配置
-```
+```PowerShell
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="swap-deployment-slots"></a>交换部署槽
-```
+```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
+```
+
+### <a name="monitor-swap-events-in-the-activity-log"></a>在活动日志中监视交换事件
+```PowerShell
+Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 - - -
@@ -237,52 +249,13 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 
 <a name="CLI"></a>
 
-## <a name="azure-command-line-interface-azure-cli-commands-for-deployment-slots"></a>用于部署槽的 Azure 命令行界面 (Azure CLI) 命令
-Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服务部署槽的支持。
+## <a name="automate-with-azure-cli"></a>使用 Azure CLI 进行自动化操作
 
-* 有关安装和配置 Azure CLI 的说明（包括有关如何将 Azure CLI 连接到 Azure 订阅的信息），请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)。
-* 若要在 Azure CLI 中列出可用于 Azure 应用服务的命令，请调用 `azure site -h`。
-
-> [!NOTE] 
-> 有关用于部署槽的 [Azure CLI 2.0](https://github.com/Azure/azure-cli) 命令，请参阅 [az webapp deployment slot](/cli/azure/webapp/deployment/slot)。
-
-- - -
-### <a name="azure-site-list"></a>azure site list
-若要了解当前订阅中的应用，请调用 **azure site list**，如以下示例所示。
-
-`azure site list webappslotstest`
-
-- - -
-### <a name="azure-site-create"></a>azure site create
-若要创建部署槽，请调用 **azure site create**，并指定现有应用的名称和要创建的槽的名称，如以下示例所示。
-
-`azure site create webappslotstest --slot staging`
-
-若要启用新槽源代码管理，请使用 **--git** 选项，如以下示例所示。
-
-`azure site create --git webappslotstest --slot staging`
-
-- - -
-### <a name="azure-site-swap"></a>azure site swap
-若要使更新的部署槽成为生产应用，请使用 **azure site swap** 命令执行交换操作，如以下示例所示。 生产应用将不会停机，也不会进行冷启动。
-
-`azure site swap webappslotstest`
-
-- - -
-### <a name="azure-site-delete"></a>azure site delete
-若要删除不再需要的部署槽，请使用 **azure site delete** 命令，如以下示例所示。
-
-`azure site delete webappslotstest --slot staging`
-
-- - -
-> [!NOTE]
-> 查看实际应用中的 Web 应用。 立即[试用应用服务](https://azure.microsoft.com/try/app-service/)，创建短期的入门级应用 — 无需信用卡，也无需做出任何承诺。
-> 
-> 
+有关用于部署槽的 [Azure CLI](https://github.com/Azure/azure-cli) 命令，请参阅 [az webapp deployment slot](/cli/azure/webapp/deployment/slot)。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Web App – block web access to non-production deployment slots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)（Azure 应用服务 Web 应用 – 阻止对非生产部署槽进行 Web 访问）
-[Linux 上的 应用服务简介](../app-service/containers/app-service-linux-intro.md)
+[Azure 应用服务 Web 应用 – 阻止对非生产部署槽的 Web 访问](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
+[Linux 应用服务简介](../app-service/containers/app-service-linux-intro.md)  
 [Microsoft Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)
 
 <!-- IMAGES -->

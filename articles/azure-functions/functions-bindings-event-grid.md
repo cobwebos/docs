@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a2d8f66b0364535cbb7e8cadd8067dd8f7facb2c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 52654704662b736811f429a811e10669a752b75a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -337,6 +337,9 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ## <a name="local-testing-with-requestbin"></a>使用 RequestBin 进行本地测试
 
+> [!NOTE]
+> RequestBin 站点当前不可用，但可以改为通过 https://hookbin.com 使用此方法。 如果该站点已关闭，则可以使用 [ngrok](#local-testing-with-ngrok)。
+
 若要在本地测试事件网格触发器，必须获取从云中的来源位置传送到本地计算机的事件网格 HTTP 请求。 实现此目的的方法之一是在线捕获请求，然后手动将其重新发送到本地计算机：
 
 2. [创建 RequestBin 终结点](#create-a-RequestBin-endpoint)。
@@ -348,7 +351,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ### <a name="create-a-requestbin-endpoint"></a>创建 RequestBin 终结点
 
-RequestBin 是一个开源工具，可接受 HTTP 请求并显示请求正文。 Azure 事件网格会对 http://requestb.in URL 进行特殊处理。 为便于测试，事件网格会将事件发送到 RequestBin URL，且无需正确响应订阅验证请求。 向另外两个测试工具提供相同的处理方式：http://webhookinbox.com 和 http://hookbin.com。
+RequestBin 是一个开源工具，可接受 HTTP 请求并显示请求正文。 Azure 事件网格会对 http://requestb.in URL 进行特殊处理。 为便于测试，事件网格会将事件发送到 RequestBin URL，且无需正确响应订阅验证请求。 向另一个测试工具提供相同的处理方式：http://hookbin.com。
 
 RequestBin 并不适合在高吞吐量方案中使用。 如果一次推送多个事件，可能不会在工具中看到所有事件。
 

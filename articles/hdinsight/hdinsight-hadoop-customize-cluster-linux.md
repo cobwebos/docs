@@ -4,7 +4,7 @@ description: 使用脚本操作将自定义组件添加到基于 Linux 的 HDIns
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
@@ -12,24 +12,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 05/01/2018
 ms.author: larryfr
-ms.openlocfilehash: ff8b8ffc66ea4c90ca2f11edc36aac670f24eac2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 856a94b0cf64a20fbe9267b76422c47d88d21f43
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
-HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用用于自定义群集的自定义脚本。 这些脚本用于安装附加组件和更改配置设置。 可以在创建群集期间或创建群集后使用脚本操作。
+HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用用于自定义群集的自定义脚本。 这些脚本用于安装附加组件和更改配置设置。 可以在创建群集期间或创建群集后使用脚本操作。
 
 > [!IMPORTANT]
 > 只有基于 Linux 的 HDInsight 群集能够在运行中的群集上使用脚本操作。
 >
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-还可以将脚本操作作为 HDInsight 应用程序发布到 Azure Marketplace。 本文档中的某些示例将演示如何使用 PowerShell 和 .NET SDK 的脚本操作命令来安装 HDInsight 应用程序。 有关 HDInsight 应用程序的详细信息，请参阅[将 HDInsight 应用程序发布到 Azure Marketplace 中](hdinsight-apps-publish-applications.md)。
+还可以将脚本操作作为 HDInsight 应用程序发布到 Azure Marketplace。 有关 HDInsight 应用程序的详细信息，请参阅[将 HDInsight 应用程序发布到 Azure Marketplace 中](hdinsight-apps-publish-applications.md)。
 
 ## <a name="permissions"></a>权限
 

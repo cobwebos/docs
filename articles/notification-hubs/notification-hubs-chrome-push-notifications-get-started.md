@@ -1,74 +1,85 @@
 ---
-title: "使用 Azure 通知中心向 Chrome 应用发送推送通知 | Microsoft Docs"
-description: "了解如何使用 Azure 通知中心将推送通知发送到 Chrome 应用。"
+title: 使用 Azure 通知中心向 Chrome 应用推送通知 | Microsoft Docs
+description: 了解如何使用 Azure 通知中心将推送通知发送到 Chrome 应用。
 services: notification-hubs
-keywords: "移动推送通知,推送通知,push notification,chrome 推送通知"
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+keywords: 移动推送通知,推送通知,push notification,chrome 推送通知
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 75d4ff59-d04a-455f-bd44-0130a68e641f
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-chrome
 ms.devlang: JavaScript
-ms.topic: hero-article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 33ef17f1556822c78783cc56b8ea7867eef2ec71
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 5754a537b8a0bf0a93d6d54ba0ba78e5957ac87f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="send-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>使用 Azure 通知中心向 Chrome 应用发送推送通知
+# <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Chrome 应用推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-本文说明如何使用 Azure 通知中心将推送通知发送到 Chrome 应用，然后，该通知会显示在 Google Chrome 浏览器的上下文中。 在本教程中，请创建一个 Chrome 应用，它使用 [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) 接收推送通知。 
-
-> [!NOTE]
-> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)。
-> 
-> 
-
-本教程指导完成启用推送通知的以下基本步骤：
-
-* [启用 Google Cloud Messaging](#register)
-* [配置通知中心](#configure-hub)
-* [将 Chrome 应用连接到通知中心](#connect-app)
-* [向 Chrome 应用发送推送通知](#send)
-* [其他功能](#next-steps)
+本教程详细介绍如何使用 [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) 创建通知中心并将推送通知发送到示例性的 Google Chrome 应用。 该 Chrome 应用在 Google Chrome 浏览器上下文中运行，并注册到通知中心。 
 
 > [!NOTE]
 > Chrome 应用的推送通知不是常规的浏览器中通知，而是特定于浏览器扩展模型（有关详细信息，请参阅 [Chrome Apps Overview] （Chrome 应用概述））。 Chrome 应用除了在桌面浏览器中运行以外，还可通过 Apache Cordova 在移动设备（Android 和 iOS）上运行。 有关详细信息，请参阅[移动设备上的 Chrome 应用]。
-> 
-> 
 
-配置 GCM 和 Azure 通知中心的方法与为 Android 配置相同，由于 [Google Cloud Messaging for Chrome] 已弃用，现在同一 GCM 同时支持 Android 设备和 Chrome 实例。
+在本教程中，请执行以下步骤：
+
+> [!div class="checklist"]
+> * [启用 Google Cloud Messaging](#register)
+> * [配置通知中心](#configure-hub)
+> * [将 Chrome 应用连接到通知中心](#connect-app)
+> * [向 Chrome 应用发送推送通知](#send)
+
+如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a id="register"></a>启用 Google Cloud Messaging
-1. 导航到 [Google Cloud Console] 网站，使用 Google 帐户凭据登录，然后单击“创建项目”按钮。 提供相应的**项目名称**，并单击“创建”按钮。
-   
-    ![Google 云控制台 - 创建项目][1]
-2. 在已创建项目的“项目”页上记下**项目编号**。 请使用项目编号作为 Chrome 应用中的 **GCM 发送器 ID**，以在 GCM 中进行注册。
-   
-    ![Google 云控制台 - 项目编号][2]
-3. 在左侧窗格中，单击“API 和身份验证”，向下滚动并单击开关以启用 **Google Cloud Messaging for Android**。 **Google Cloud Messaging for Chrome**。
-   
-    ![Google 云控制台 - 服务器密钥][3]
-4. 在左侧窗格中，单击“凭据” > “新建密钥” > “服务器密钥” > “创建”。
-   
-    ![Google 云控制台 - 凭据][4]
-5. 记下服务器 **API 密钥**。 请使用此值来配置下一部分的通知中心，使之能够将推送通知发送到 GCM。
-   
-    ![Google 云控制台 - API 密钥][5]
+1. 导航到 [Google Cloud Console](https://console.cloud.google.com/cloud-resource-manager) 网站，然后使用 Google 帐户凭据登录
+2. 在工具栏中选择“创建项目”。 
 
-## <a id="configure-hub"></a>配置通知中心
+    ![“创建项目”按钮](media/notification-hubs-chrome-get-started/create-project-button.png)
+1. 提供相应的**项目名称**，并单击“创建”按钮。
+2. 在工具栏上选择通知图标（铃铛），然后选择“创建项目”消息。 
+
+    ![项目创建通知](media/notification-hubs-chrome-get-started/project-creation-notification.png)
+1. 在已创建项目的“项目”页上记下**项目编号**。 请使用项目编号作为 Chrome 应用中的 **GCM 发送器 ID**，以在 GCM 中进行注册。
+   
+    ![Google 云控制台 - 项目编号](media/notification-hubs-chrome-get-started/gcm-project-number.png)
+3. 在仪表板中选择“转到 API 概述”。 
+
+    ![“转到 API 概述”按钮](media/notification-hubs-chrome-get-started/go-to-apis-overview-button.png)
+1. 在“API 和服务”页中，选择“启用 API 和服务”。 
+
+    ![启用 API 和服务](media/notification-hubs-chrome-get-started/enable-apis-and-services.png)
+1. 使用“cloud messaging”关键字搜索列表。 在筛选的列表中选择“Google Cloud Messaging”。 
+
+    ![Google Cloud Messaging API](media/notification-hubs-chrome-get-started/google-cloud-messaging-api.png)
+1. 在“Google Cloud Messaging”页中，选择“启用”。
+
+    ![启用 GCM](media/notification-hubs-chrome-get-started/enable-gcm.png)
+1. 在“API 和服务”页中，切换到“凭据”选项卡。选择“创建凭据”，然后选择“API 密钥”。 
+
+    ![“创建 API 密钥”按钮](media/notification-hubs-chrome-get-started/create-api-key-button.png)
+1. 在“创建的 API 密钥”对话框中选择复制按钮，将密钥复制到剪贴板。 将其保存在某个位置。 请使用此值来配置下一部分的通知中心，使之能够将推送通知发送到 GCM。
+
+    ![API 页](media/notification-hubs-chrome-get-started/api-created-page.png)
+12. 在“API 密钥”列表中选择 API 密钥。 在“API 密钥”页中选择“IP 地址(Web 服务器、cron 作业等)”，输入 **0.0.0.0/0** 作为 IP 地址，然后单击“保存”。 
+
+    ![启用 IP 地址](media/notification-hubs-chrome-get-started/enable-ip-addresses.png)
+
+## <a id="configure-hub"></a>创建通知中心
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-6.   在“设置”页中选择“通知服务”，然后选择“Google (GCM)”。 输入 API 密钥并保存。
+6. 在“通知设置”类别中选择“Google (GCM)”，输入 GCM 项目的 **API 密钥**，然后单击“保存”。
 
-        ![Azure 通知中心 - Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+      ![Azure 通知中心 - Google (GCM)](media/notification-hubs-chrome-get-started/configure-gcm-api-key.png)
 
 ## <a id="connect-app"></a>将 Chrome 应用连接到通知中心
 通知中心现在已配置为使用 GCM，并且你有连接字符串用于注册应用以接收和发送推送通知。
@@ -101,8 +112,7 @@ ms.lasthandoff: 03/02/2018
           "icons": { "128": "gcm_128.png" }
         }
    
-    请注意 `permissions` 元素，该元素指定此 Chrome 应用可以从 GCM 中接收推送通知。 此外，它还必须指定 Azure 通知中心 URI，其中的 Chrome 应用会进行注册所需的 REST 调用。
-    本示例应用还使用了图标文件 `gcm_128.png`，该文件可在原始 GCM 示例中重复使用的源中找到。 可以使用此图标文件来替换任何符合 [图标条件](https://developer.chrome.com/apps/manifest/icons)的图像。
+    请注意 `permissions` 元素，该元素指定此 Chrome 应用可以从 GCM 中接收推送通知。 本示例应用还使用了图标文件 `gcm_128.png`，该文件可在原始 GCM 示例中重复使用的源中找到。 可以使用此图标文件来替换任何符合 [图标条件](https://developer.chrome.com/apps/manifest/icons)的图像。
 4. 使用以下代码创建名为 `background.js` 的文件：
    
         // Returns a new notification ID used in the notification.
@@ -353,10 +363,10 @@ ms.lasthandoff: 03/02/2018
    * **registerWithNH** 是第二个按钮单击处理程序，会向通知中心进行注册。 它会获取用户已指定的 `hubName` 和 `connectionString`，并创建通知中心注册 REST API 调用。
    * **splitConnectionString** 和 **generateSaSToken** 是帮助程序，代表 SaS 令牌创建进程的 JavaScript 实现，必须在所有 REST API 调用中使用。 有关详细信息，请参阅 [基本概念](http://msdn.microsoft.com/library/dn495627.aspx)。
    * **sendNHRegistrationRequest** 是向 Azure 通知中心发出 HTTP REST 调用的函数。
-   * **registrationPayload** 定义注册 XML 负载。 有关详细信息，请参阅 [创建注册 NH REST API]。 需使用从 GCM 接收的值在其中更新注册 ID。
+   * **registrationPayload** 定义注册 XML 负载。 有关详细信息，请参阅 [创建注册 NH REST API]。 请使用从 GCM 接收的值在其中更新注册 ID。
    * **client** 是应用程序用于发出 HTTP POST 请求的 **XMLHttpRequest** 的实例。 使用 `sasToken` 更新 `Authorization` 标头。 成功完成此次调用就会在 Azure 通知中心注册此 Chrome 应用实例。
 
-此项目的整体文件夹结构应与下图类似：![Google Chrome 应用 - 文件夹结构][21]
+        此项目的整体文件夹结构应类似于以下结构：![Google Chrome 应用 - 文件夹结构][21]
 
 ### <a name="set-up-and-test-your-chrome-app"></a>设置并测试 Chrome 应用
 1. 打开 Chrome 浏览器。 打开“Chrome 扩展”并启用“开发人员模式”。
@@ -389,7 +399,7 @@ ms.lasthandoff: 03/02/2018
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-       This adds a reference to the Azure Service Bus SDK with the <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a>.
+   <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">带 WindowsAzure.ServiceBus NuGet 包的 Azure 服务总线 SDK 的引用将自动添加到项目</a>。
 4. 打开 `Program.cs` 并添加以下 `using` 语句：
    
         using Microsoft.Azure.NotificationHubs;
@@ -402,12 +412,10 @@ ms.lasthandoff: 03/02/2018
             await hub.SendGcmNativeNotificationAsync(message);
         }
    
-       Make sure to replace the `<hub name>` placeholder with the name of the notification hub that appears in the [portal](https://portal.azure.com) in your Notification Hub blade. Also, replace the connection string placeholder with the connection string called `DefaultFullSharedAccessSignature` that you obtained in the notification hub configuration section.
+    确保将 `<hub name>` 占位符替换为在[门户](https://portal.azure.com)的“通知中心”页中显示的通知中心名称。 此外，使用在配置通知中心部分中获取的名称为 `DefaultFullSharedAccessSignature` 的连接字符串替换连接字符串占位符。
    
-   > [!NOTE]
-   > 确保使用的是具有**完全**访问权限的连接字符串，而不是具有**侦听**访问权限的连接字符串。 **侦听**访问权限连接字符串不会授予发送推送通知的权限。
-   > 
-   > 
+    > [!NOTE]
+    > 确保使用的是具有**完全**访问权限的连接字符串，而不是具有**侦听**访问权限的连接字符串。 **侦听**访问权限连接字符串不会授予发送推送通知的权限。
 6. 在 `Main` 方法中添加以下调用：
    
          SendNotificationAsync();
@@ -426,15 +434,12 @@ ms.lasthandoff: 03/02/2018
 > 
 
 ## <a name="next-steps"></a>后续步骤
-在 [通知中心概述]中，了解有关通知中心的详细信息。
+本教程介绍了如何将广播通知发送到所有注册到后端的客户端。 若要了解如何向特定的设备推送通知，请转到以下教程： 
 
-若要针对特定用户，请参阅 [Azure 通知中心 - 通知用户] 教程。 
-
-如果要按兴趣组划分用户，可以遵循 [Azure 通知中心 - 突发新闻] 教程。
+> [!div class="nextstepaction"]
+>[向特定设备推送通知](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- Images. -->
-[1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
-[2]: ./media/notification-hubs-chrome-get-started/GoogleProjectNumber.png
 [3]: ./media/notification-hubs-chrome-get-started/EnableGCM.png
 [4]: ./media/notification-hubs-chrome-get-started/CreateServerKey.png
 [5]: ./media/notification-hubs-chrome-get-started/ServerKey.png
@@ -457,8 +462,7 @@ ms.lasthandoff: 03/02/2018
 
 <!-- URLs. -->
 [Chrome 应用通知中心示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
-[Google Cloud Console]: http://cloud.google.com/console
-[通知中心概述]: notification-hubs-push-notification-overview.md
+[Notification Hubs Overview]: notification-hubs-push-notification-overview.md
 [Chrome Apps Overview]: https://developer.chrome.com/apps/about_apps
 [Chrome 应用 GCM 示例]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
@@ -467,5 +471,5 @@ ms.lasthandoff: 03/02/2018
 [crypto-js 库]: http://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
-[Azure 通知中心 - 通知用户]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Azure 通知中心 - 突发新闻]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Azure Notification Hubs Notify Users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Azure Notification Hubs breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md

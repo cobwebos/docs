@@ -1,6 +1,6 @@
 ---
-title: "将静态 IP 地址用于 Azure 容器服务 (AKS) 负载均衡器"
-description: "将静态 IP 地址用于 Azure 容器服务 (AKS) 负载均衡器。"
+title: 将静态 IP 地址用于 Azure Kubernetes 服务 (AKS) 负载均衡器
+description: 将静态 IP 地址用于 Azure Kubernetes 服务 (AKS) 负载均衡器。
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 945132dd5f7e51f05ceda89a9cb16315aabbda8a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: da1fc4cd31a4b4f13da5b527e2a62e147799bfef
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-a-static-ip-address-with-the-azure-container-service-aks-load-balancer"></a>将静态 IP 地址用于 Azure 容器服务 (AKS) 负载均衡器
+# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>将静态 IP 地址用于 Azure Kubernetes 服务 (AKS) 负载均衡器
 
-在某些情况下，例如重新创建 Azure 容器服务 (AKS) 负载均衡器时，或重新创建 LoadBalancer 类型的 Kubernetes 服务时，Kubernetes 服务的公共 IP 地址可能改变。 本文档详细介绍如何为 Kubernetes 服务配置静态 IP 地址。
+在某些情况下，例如重新创建 Azure Kubernetes 服务 (AKS) 负载均衡器时，或重新创建 LoadBalancer 类型的 Kubernetes 服务时，Kubernetes 服务的公共 IP 地址可能改变。 本文档详细介绍如何为 Kubernetes 服务配置静态 IP 地址。
 
 ## <a name="create-static-ip-address"></a>创建静态 IP 地址
 
@@ -59,9 +59,11 @@ az network public-ip create --resource-group MC_myResourceGRoup_myAKSCluster_eas
 
  如果需要，可以使用 [az network public-ip list][az-network-public-ip-list] 命令检索地址。
 
-```console
-$ az network public-ip list --resource-group MC_myResourceGRoup_myAKSCluster_eastus --query [0].ipAddress --output tsv
+```azurecli-interactive
+az network public-ip list --resource-group MC_myResourceGRoup_myAKSCluster_eastus --query [0].ipAddress --output tsv
+```
 
+```console
 40.121.183.52
 ```
 
@@ -87,9 +89,11 @@ spec:
 
 如果尚未创建或在错误的资源组中创建了静态 IP 地址，服务创建将会失败。 若要排除此故障，请用 [kubectl describe][kubectl-describe] 命令返回服务创建事件。
 
-```console
-$ kubectl describe service azure-vote-front
+```azurecli-interactive
+kubectl describe service azure-vote-front
+```
 
+```console
 Name:                     azure-vote-front
 Namespace:                default
 Labels:                   <none>
@@ -112,7 +116,7 @@ Events:
 ```
 
 <!-- LINKS - External -->
-[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/ 
+[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

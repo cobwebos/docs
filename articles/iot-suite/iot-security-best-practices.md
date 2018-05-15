@@ -1,12 +1,12 @@
 ---
-title: "IoT 安全最佳做法 | Microsoft Docs"
-description: "保护 IoT 基础结构的安全最佳实践"
-services: 
+title: IoT 安全最佳做法 | Microsoft Docs
+description: 保护 IoT 基础结构的安全最佳实践
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 24e7bda2-5f7b-44e3-b8af-761abd3276ff
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: e21911d0b0748c50d6f93ff267b8d0283fd74400
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: f060f79ee7676909943bb0dbc4369d1cbff60b46
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 [!INCLUDE [iot-security-best-practices](../../includes/iot-security-best-practices.md)]
 
@@ -29,10 +29,10 @@ ms.lasthandoff: 01/18/2018
 * [IoT 安全体系结构][lnk-security-architecture]
 * [保护 IoT 部署][lnk-security-deployment]
 
-还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
+还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
-* [预见性维护预配置解决方案概述][lnk-predictive-overview]
-* [有关 Azure IoT 套件的常见问题][lnk-faq]
+* [预测性维护解决方案加速器概述][lnk-predictive-overview]
+* [Azure IoT 解决方案加速器的常见问题解答][lnk-faq]
 
 可以通过 IoT 中心开发人员指南中的[控制 IoT 中心的访问权限][lnk-devguide-security]详细了解 IoT 中心安全性。
 

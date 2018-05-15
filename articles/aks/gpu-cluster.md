@@ -1,6 +1,6 @@
 ---
-title: Azure 容器服务 (AKS) 上的 GPU
-description: 使用 Azure 容器服务 (AKS) 上的 GPU
+title: Azure Kubernetes 服务 (AKS) 上的 GPU
+description: 在 Azure Kubernetes 服务 (AKS) 上使用 GPU
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 6c30c966ad88f904ee652d88abd1717819077d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1e07845591583c7159958d4e2eb7eeb2f126b75f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-gpus-on-aks"></a>在 AKS 上使用 GPU
 
@@ -22,7 +22,7 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
 GPU 通常是计算密集型工作负荷（例如图形密集型工作负荷和可视化工作负荷）所需要的。 请参阅以下[文档](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu)，以便确定适合工作负荷的 VM 大小。
-我们建议对 Azure 容器服务 (AKS) 节点至少使用 `Standard_NC6` 大小。
+我们建议对 Azure Kubernetes 服务 (AKS) 节点至少使用 `Standard_NC6` 大小。
 
 > [!NOTE]
 > 启用 GPU 的 VM 包含专用硬件，这些硬件定价较高，其可用性受区域限制。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/)工具和[区域可用性](https://azure.microsoft.com/global-infrastructure/services/)站点。
@@ -50,7 +50,7 @@ az aks get-credentials --resource-group myGPUCluster --name myGPUCluster
 
 ## <a name="confirm-gpus-are-schedulable"></a>确认 GPU 是可计划的
 
-运行以下命令，确认 GPU 是可以通过 Kubernetes 来计划的。 
+运行以下命令，确认 GPU 是可以通过 Kubernetes 来计划的。
 
 获取当前的节点列表。
 
@@ -165,7 +165,7 @@ spec:
       volumes:
         - name: nvidia
           hostPath:
-            path: /usr/local/nvidia         
+            path: /usr/local/nvidia
 ```
 
 使用 [kubectl create][kubectl-create] 命令运行该作业。 此命令分析清单文件并创建定义的 Kubernetes 对象。

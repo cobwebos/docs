@@ -1,11 +1,11 @@
 ---
-title: "了解 Azure IoT 中心标识注册表 | Microsoft Docs"
-description: "开发人员指南 - 说明 IoT 中心标识注册表以及如何使用它来管理设备。 包括批量导入和导出设备标识的相关信息。"
+title: 了解 Azure IoT 中心标识注册表 | Microsoft Docs
+description: 开发人员指南 - 说明 IoT 中心标识注册表以及如何使用它来管理设备。 包括批量导入和导出设备标识的相关信息。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0706eccd-e84c-4ae7-bbd4-2b1a22241147
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,24 +15,24 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50020f007096b45b843515ff765e40c550fcf4e3
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 8c90bc4945b613f386f98178949e5451e8fe3673
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
-每个 IoT 中心都有一个标识注册表，存储允许连接到 IoT 中心的设备的相关信息。 IoT 中心的标识注册表中必须先有设备的条目，然后该设备才能连接到 IoT 中心。 设备还必须基于标识注册表中存储的凭据向 IoT 中心进行身份验证。
+每个 IoT 中心都有一个标识注册表，存储允许连接到 IoT 中心的设备和模块的相关信息。 IoT 中心的标识注册表中必须先有设备或模块的条目，然后该设备或模块才能连接到 IoT 中心。 设备或模块还必须基于标识注册表中存储的凭据向 IoT 中心进行身份验证。
 
-标识注册表中存储的设备 ID 区分大小写。
+标识注册表中存储的设备或模块 ID 区分大小写。
 
-概括地说，标识注册表是支持 REST 的设备标识资源集合。 在此标识注册表中添加条目时，IoT 中心会创建一组每设备资源，如包含未送达云到设备消息的队列。
+概括地说，标识注册表是支持 REST 的设备或模块标识资源集合。 在此标识注册表中添加条目时，IoT 中心会创建一组每设备资源，如包含未送达云到设备消息的队列。
 
 在需要时执行以下操作时可使用标识注册表：
 
-* 设置连接到 IoT 中心的设备。
-* 控制每个设备对中心的面向设备的终结点的访问。
+* 设置连接到 IoT 中心的设备或模块。
+* 控制每个设备/每个模块对中心的面向设备或模块的终结点的访问。
 
 > [!NOTE]
 > 标识注册表不包含任何应用程序特定的元数据。
@@ -41,13 +41,14 @@ ms.lasthandoff: 02/01/2018
 
 IoT 中心标识注册表公开以下操作：
 
-* 创建设备标识
-* 更新设备标识
-* 按 ID 检索设备标识
-* 删除设备标识
+* 创建设备或模块标识
+* 更新设备或模块标识
+* 按 ID 检索设备或模块标识
+* 删除设备或模块标识
 * 最多列出 1000 个标识
-* 将所有标识导出到 Azure Blob 存储
-* 从 Azure Blob 存储导入标识
+> 模块标识和模块孪生为公共预览版。 下面的有关模块标识的功能在公开发布后会受支持。
+* 将设备标识导出到 Azure Blob 存储
+* 将设备标识从 Azure Blob 存储导入
 
 上述所有操作均可以使用 [RFC7232][lnk-rfc7232] 中指定的乐观并发。
 
@@ -57,7 +58,7 @@ IoT 中心标识注册表公开以下操作：
 IoT 中心标识注册表：
 
 * 不包含任何应用程序元数据。
-* 可以将 **deviceId** 作为键进行访问，就像字典一样。
+* 可以将 **deviceId** 或 **moduleId** 作为键进行访问，就像字典一样。
 * 不支持表达性查询。
 
 IoT 解决方案通常具有不同的解决方案特定存储，其中包含应用程序特定的元数据。 例如，智能建筑物解决方案中的解决方案特定存储将记录部署温度感应器的房间信息。
@@ -71,6 +72,8 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 * 在预配协调过程中。 有关详细信息，请参阅[设备预配][lnk-guidance-provisioning]。
 * 出于任何原因认为设备遭到入侵或未经授权。
+
+此功能不适用于模块。
 
 ## <a name="import-and-export-device-identities"></a>导入和导出设备标识
 
@@ -99,29 +102,68 @@ IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和
 > [!NOTE]
 > 如果 IoT 解决方案只使用连接状态来决定是否发送云到设备的消息，并且没有把消息广播到大量设备，则考虑使用更简单的较短到期时间模式。 此模式达到的效果与使用检测信号模式维护设备连接状态注册表达到的效果一样，而且更加有效。 如果请求消息确认，则 IoT 中心可以通知你哪些设备可以接收消息以及哪些设备不能接收。
 
-## <a name="device-lifecycle-notifications"></a>设备生命周期通知
+## <a name="device-and-module-lifecycle-notifications"></a>设备和模块生命周期通知
 
-创建或删除设备标识时，IoT 中心可通过发送设备生命周期通知来通知 IoT 解决方案。 为此，IoT 解决方案需要创建一个路由，并将“数据源”设置为等于 DeviceLifecycleEvents。 默认情况下，不会发送生命周期通知，即无此类路由预先存在。 通知消息包括属性和正文。
+创建或删除标识时，IoT 中心可通过发送生命周期通知来通知 IoT 解决方案。 为此，IoT 解决方案需要创建一个路由，并将“数据源”设置为等于 *DeviceLifecycleEvents* 或 *ModuleLifecycleEvents*。 默认情况下，不会发送生命周期通知，即无此类路由预先存在。 通知消息包括属性和正文。
 
 属性：消息系统属性以 `'$'` 符号为前缀。
 
+设备的通知消息：
+
 | 名称 | 值 |
 | --- | --- |
-$content-type | application/json |
-$iothub-enqueuedtime |  发送通知的时间 |
-$iothub-message-source | deviceLifecycleEvents |
-$content-encoding | utf-8 |
-opType | **createDeviceIdentity** 或 **deleteDeviceIdentity** |
-hubName | IoT 中心的名称 |
-deviceId | 设备 ID |
-operationTimestamp | ISO8601 操作时间戳 |
-iothub-message-schema | deviceLifecycleNotification |
+|$content-type | application/json |
+|$iothub-enqueuedtime |  发送通知的时间 |
+|$iothub-message-source | deviceLifecycleEvents |
+|$content-encoding | utf-8 |
+|opType | **createDeviceIdentity** 或 **deleteDeviceIdentity** |
+|hubName | IoT 中心的名称 |
+|deviceId | 设备 ID |
+|operationTimestamp | ISO8601 操作时间戳 |
+|iothub-message-schema | deviceLifecycleNotification |
 
 正文：本部分采用 JSON 格式，表示创建的设备孪生的标识。 例如，
 
 ```json
 {
     "deviceId":"11576-ailn-test-0-67333793211",
+    "etag":"AAAAAAAAAAE=",
+    "properties": {
+        "desired": {
+            "$metadata": {
+                "$lastUpdated": "2016-02-30T16:24:48.789Z"
+            },
+            "$version": 1
+        },
+        "reported": {
+            "$metadata": {
+                "$lastUpdated": "2016-02-30T16:24:48.789Z"
+            },
+            "$version": 1
+        }
+    }
+}
+```
+模块的通知消息：
+
+| 名称 | 值 |
+| --- | --- |
+$content-type | application/json |
+$iothub-enqueuedtime |  发送通知的时间 |
+$iothub-message-source | moduleLifecycleEvents |
+$content-encoding | utf-8 |
+opType | **createModuleIdentity** 或 **deleteModuleIdentity** |
+hubName | IoT 中心的名称 |
+moduleId | 模块 ID |
+operationTimestamp | ISO8601 操作时间戳 |
+iothub-message-schema | moduleLifecycleNotification |
+
+正文：本部分采用 JSON 格式，表示创建的模块孪生的标识。 例如，
+
+```json
+{
+    "deviceId":"11576-ailn-test-0-67333793211",
+    "moduleId":"tempSensor",
     "etag":"AAAAAAAAAAE=",
     "properties": {
         "desired": {
@@ -160,6 +202,25 @@ iothub-message-schema | deviceLifecycleNotification |
 
 > [!NOTE]
 > 连接状态只能表示连接状态的 IoT 中心视图。 根据网络状态和配置，可能会延迟此状态的更新。
+
+## <a name="module-identity-properties"></a>模块标识属性
+
+设备识别表示为包含以下属性的 JSON 文档：
+
+| 属性 | 选项 | 说明 |
+| --- | --- | --- |
+| deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
+| moduleId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
+| generationId |必需，只读 |IoT 中心生成的区分大小写字符串，最长为 128 个字符。 删除并重新创建设备时，此值用于区分具有相同 **deviceId** 的设备。 |
+| etag |必需，只读 |一个字符串，根据 [RFC7232][lnk-rfc7232] 表示设备标识的弱 ETag。 |
+| auth |可选 |包含身份验证信息和安全材料的复合对象。 |
+| auth.symkey |可选 |包含主密钥和辅助密钥的复合对象，以 base64 格式存储。 |
+| status |必填 |访问指示器。 可以是**已启用**或**已禁用**。 如果是**已启用**，则允许设备连接。 如果是**已禁用**，则此设备无法访问任何面向设备的终结点。 |
+| statusReason |可选 |128 个字符的字符串，用于存储设备标识状态的原因。 允许所有 UTF-8 字符。 |
+| statusUpdateTime |只读 |临时指示器，显示上次状态更新的日期和时间。 |
+| connectionState |只读 |指示连接状态的字段：**已连接**或**已断开**。 此字段表示设备连接状态的 IoT 中心视图。 **重要说明**：此字段只用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如将设备报告为已连接，但实际上已断开连接。 |
+| connectionStateUpdatedTime |只读 |临时指示器，显示上次更新连接状态的日期和时间。 |
+| lastActivityTime |只读 |临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
 
 ## <a name="additional-reference-material"></a>其他参考资料
 

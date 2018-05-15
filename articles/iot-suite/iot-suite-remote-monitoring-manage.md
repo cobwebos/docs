@@ -1,22 +1,22 @@
 ---
-title: "远程监视解决方案中的设备管理 - Azure | Microsoft Docs"
-description: "本教程介绍如何管理与远程监视解决方案连接的设备。"
-services: 
+title: 远程监视解决方案中的设备管理 - Azure | Microsoft Docs
+description: 本教程介绍如何管理与远程监视解决方案连接的设备。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 66005b78a368c15a463844b3f098eac9fd64f621
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>管理和配置设备
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/27/2018
 
 Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。 在等待交付新机器期间，你想要运行一次模拟，以验证解决方案的行为。 操作员希望能够在远程监视解决方案中管理和配置设备。
 
-为了提供一种可扩展的方式来管理和配置设备，远程监视解决方案使用了[作业](../iot-hub/iot-hub-devguide-jobs.md)和[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)等 IoT 中心功能。 若要了解设备开发人员如何在物理设备上实现方法，请参阅[自定义远程监视预配置解决方案](iot-suite-remote-monitoring-customize.md)。
+为了提供一种可扩展的方式来管理和配置设备，远程监视解决方案使用了[作业](../iot-hub/iot-hub-devguide-jobs.md)和[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)等 IoT 中心功能。 若要了解设备开发人员如何在物理设备上实现方法，请参阅[自定义远程监视解决方案加速器](iot-suite-remote-monitoring-customize.md)。
 
 本教程介绍如何执行下列操作：
 
@@ -38,7 +38,7 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 若要遵循本教程，需在 Azure 订阅中部署远程监视解决方案的实例。
 
-如果尚未部署远程监视解决方案，应完成[部署远程监视预配置解决方案](iot-suite-remote-monitoring-deploy.md)教程。
+如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](iot-suite-remote-monitoring-deploy.md)教程。
 
 ## <a name="add-a-simulated-device"></a>添加模拟设备
 
@@ -50,7 +50,7 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 ![预配模拟引擎设备](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
-若要了解如何预配物理设备，请参阅[将设备连接到远程监视预配置解决方案](iot-suite-connecting-devices-node.md)。
+若要了解如何预配物理设备，请参阅[将设备连接到远程监视解决方案加速器](iot-suite-connecting-devices-node.md)。
 
 ## <a name="test-the-simulated-device"></a>测试模拟设备
 
@@ -68,11 +68,11 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 ## <a name="act-on-a-device"></a>安排设备操作
 
-若要对一个或多个设备执行操作，请在设备列表中将其选中，然后选择“计划”。 “引擎”设备模型指定设备必须支持的四个方法：
+若要对一个或多个设备执行操作，请在设备列表中将其选中，然后选择“作业”。 **引擎**设备模型指定设备必须支持的三个方法：
 
 ![引擎方法](media/iot-suite-remote-monitoring-manage/devicesmethods.png)
 
-选择“重启”，将作业名称设置为 **RestartEngine**，选择“应用”：
+选择 **FillTank**，将作业名称设置为 **FillEngineTank**，然后选择“应用”：
 
 ![计划重启方法](media/iot-suite-remote-monitoring-manage/devicesrestartengine.png)
 
@@ -84,11 +84,11 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 浏览不同的模拟设备类型时，可以看到其他设备类型支持不同的方法。 在包含物理设备的部署中，设备模型指定设备应该支持的方法。 通常，设备开发人员需负责开发可让设备对方法调用做出响应的代码。
 
-若要计划要在多个设备上运行的方法，可以在“设备”页上的列表中选择多个设备。 “计划”面板显示普遍适用于所有选定设备的方法类型。
+若要计划要在多个设备上运行的方法，可以在“设备”页上的列表中选择多个设备。 “作业”面板显示普遍适用于所有选定设备的方法类型。
 
 ## <a name="reconfigure-a-device"></a>重新配置设备
 
-若要更改某个设备的配置，请在“设备”页上的设备列表将其选中，然后选择“重新配置”。 “重新配置”面板显示选定设备的可更改属性值：
+若要更改某个设备的配置，请在“设备”页上的设备列表将其选中，选择“作业”，然后选择“重新配置”。 “作业”面板显示选定设备的可更改属性值：
 
 ![重新配置设备](media/iot-suite-remote-monitoring-manage/devicesreconfigure.png)
 
@@ -113,6 +113,6 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 * [排查和修正设备问题](iot-suite-remote-monitoring-maintain.md)。
 * [使用模拟设备测试解决方案](iot-suite-remote-monitoring-test.md)。
-* [将设备连接到远程监视预配置解决方案](iot-suite-connecting-devices-node.md)。
+* [将设备连接到远程监视解决方案加速器](iot-suite-connecting-devices-node.md)。
 
 <!-- Next tutorials in the sequence -->

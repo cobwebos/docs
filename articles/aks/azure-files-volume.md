@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 04380e5e9e0f1f9b0c88fdba8d21b3e7e8e8a358
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 163db8fdaecefbf51174392ba37039115cdb91c8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="volumes-with-azure-files"></a>含 Azure 文件的卷
 
-基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 Azure 文件可以用作此外部数据存储。 本文详细介绍使用 Azure 文件作为 Azure 容器服务中的 Kubernetes 卷。
+基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 Azure 文件可以用作此外部数据存储。 本文详细介绍使用 Azure 文件作为 Azure Kubernetes 服务中的 Kubernetes 卷。
 
 有关 Kubernetes 卷的详细信息，请参阅 [Kubernetes 卷][kubernetes-volumes]。
 

@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 04/23/2018
 ms.author: jgao
-ms.openlocfilehash: 6cb7bb982da36256707d080a7f5118127deb3a9c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 95ffc033a442fcf6074998398104ccb01e7a01a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Hadoop 群集上使用空边缘节点
 
@@ -73,12 +73,11 @@ ms.lasthandoff: 04/23/2018
 > 与群集一样，边缘节点也是通过修补程序托管的。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>将边缘节点添加到现有群集
-本部分介绍如何使用 Resource Manager 模板将边缘节点添加到现有 HDInsight 群集。  可以在 [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/) 中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。该脚本不执行任何操作。  它只是演示如何从 Resource Manager 模板调用脚本操作。
+本部分介绍如何使用 Resource Manager 模板将边缘节点添加到现有 HDInsight 群集。  可以在 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/) 中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。该脚本不执行任何操作。  它只是演示如何从 Resource Manager 模板调用脚本操作。
 
 **将空边缘节点添加到现有群集**
 
-1. 创建一个 HDInsight 群集（如果没有）。  请参阅 [Hadoop 教程：开始使用 HDInsight 中的 Hadoop](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
-2. 单击以下图像登录到 Azure，并在 Azure 门户中打开 Azure 资源管理器模板。 
+1. 单击以下图像登录到 Azure，并在 Azure 门户中打开 Azure 资源管理器模板。 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
 3. 配置以下属性：
@@ -98,7 +97,7 @@ ms.lasthandoff: 04/23/2018
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>创建群集时添加边缘节点
 本部分介绍如何使用 Resource Manager 模板创建包含边缘节点的 HDInsight 群集。  可以在 [Azure 快速启动模板库](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。该脚本不执行任何操作。  它只是演示如何从 Resource Manager 模板调用脚本操作。
 
-**将空边缘节点添加到现有群集**
+**创建包含边缘节点的 HDInsight 群集**
 
 1. 创建一个 HDInsight 群集（如果没有）。  请参阅 [开始使用 HDInsight 中的 Hadoop](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 2. 单击以下图像登录到 Azure，并在 Azure 门户中打开 Azure 资源管理器模板。 
@@ -132,7 +131,7 @@ ms.lasthandoff: 04/23/2018
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开包含边缘节点的 HDInsight 群集。
-3. 在群集边栏选项卡中单击“应用程序”。 此时会显示该边缘节点。  默认名称为 **new-edgenode**。
+3. 单击“**应用程序**”。 此时会显示该边缘节点。  默认名称为 **new-edgenode**。
 4. 单击该边缘节点。 此时会显示 SSH 终结点。
 
 **在边缘节点上使用 Hive**
@@ -153,7 +152,7 @@ ms.lasthandoff: 04/23/2018
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开包含边缘节点的 HDInsight 群集。
-3. 在群集边栏选项卡中单击“应用程序”。 此时会显示边缘节点的列表。  
+3. 单击“**应用程序**”。 此时会显示边缘节点的列表。  
 4. 右键单击要删除的边缘节点，并单击“删除”。
 5. 单击“是”确认。
 

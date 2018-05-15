@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 6e81f2cdd0cd3f62d93c85c1a073e0b9df542ec7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -249,6 +249,24 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 ## <a name="log-analytics-search"></a>Log Analytics 搜索 
 
 通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在 [Log Analytics 搜索](log-analytics-log-search-new.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的“常见查询”区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表 **** 。 
+
+## <a name="alerts"></a>警报
+
+网络性能监视器使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) 的警报功能。
+
+这意味着使用[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)管理所有警报。  
+
+如果你是通过 OMS 创建警报的 NPM 用户： 
+1. 你将看到一个链接，该链接可将你重定向到 Azure 门户。 单击该链接以访问门户。
+2. 单击“网络性能监视器解决方案”磁贴。 
+3. 导航到“配置”。  
+4. 选择要针对其创建警报的测试，并按照下述步骤进行操作。
+
+如果你是通过 Azure 门户创建警报的 NPM 用户：  
+1. 可以选择直接输入电子邮件，也可以选择通过操作组创建警报。
+2. 如果选择直接输入电子邮件，则将创建名为 **NPM Email ActionGroup** 的操作组，并将电子邮件 ID 添加到该操作组。
+3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
+4. 成功创建警报后，可以使用“管理警报”链接来管理警报。 
 
 ##<a name="pricing"></a>定价
 
