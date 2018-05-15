@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 流分析中对事件中心接收器进行故障排除
-description: 考虑到流分析作业中的事件中心使用者组时的查询最佳做法。
+description: 本文介绍了如何为流分析作业中的事件中心输入使用多个使用者组。
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -8,21 +8,45 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/20/2017
-ms.openlocfilehash: 20614986fc6c6afa9a92d163bf973a148e0517c0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/27/2018
+ms.openlocfilehash: aaa8c4e8d273b44f453d3f63f0be1d4baf980649
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
-# <a name="debug-azure-stream-analytics-with-event-hub-receivers"></a>使用事件中心接收器调试 Azure 流分析
+# <a name="troubleshoot-event-hub-receivers-in-azure-stream-analytics"></a>在 Azure 流分析中对事件中心接收器进行故障排除
 
 可以使用 Azure 流分析中的 Azure 事件中心来从作业中引入或输出作业。 使用事件中心的最佳做法是使用多个使用者组来确保作业的伸缩性。 其中一个原因是，对于特定的输入，流分析作业中读取器的数量会影响单个使用者组中的读取器数量。 接收器的精确数量取决于横向扩展的拓扑逻辑的内部实现详细信息。 接收器的数量不向外部公开。 读取器的数量会在作业启动时或作业升级期间发生更改。
+
+当接收器的数量超出了最大数量时显示的错误为：`The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
 
 > [!NOTE]
 > 当读取器的数量在作业升级期间发生更改时，暂时性警告会被写入到审核日志中。 流分析作业会自动从这些暂时性问题中恢复。
 
+## <a name="add-a-consumer-group-in-event-hubs"></a>在事件中心内添加使用者组
+若要在事件中心实例内添加新的使用者组，请执行以下步骤：
+
+1. 登录到 Azure 门户。
+
+2. 找到你的事件中心。
+
+3. 选择“实体”标题下的“事件中心”。
+
+4. 通过名称选择事件中心。
+
+5. 在“事件中心实例”页面上，在“实体”标题下，选择“使用者组”。 此时将列出名为 **$Default** 的使用者组。
+
+6. 选择“+ 使用者组”添加新的使用者组。 
+
+   ![在事件中心内添加使用者组](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
+
+7. 在流分析作业中创建输入以指向事件中心时，你在那里指定了使用者组。 未指定时将使用 $Default。 在创建新的使用者组后，编辑流分析作业中的事件中心输入并指定新使用者组的名称。
+
+
 ## <a name="number-of-readers-per-partition-exceeds-event-hubs-limit-of-five"></a>每个分区的读取器数超过事件中心限制（5 个）
+
+如果流式处理查询语法多次引用了同一输入事件中心资源，则作业引擎可以为每个查询使用来自该同一使用者组的多个读取器。 当存在对同一使用者组的太多引用时，作业可能会超出限制数 5 并引发错误。 在这些情况下，可以通过使用以下部分中介绍的解决方案，对多个使用者组使用多个输入，从而进行进一步划分。 
 
 每个分区的读取器数超过数据中心限制（5 个）的情况如下：
 
@@ -73,12 +97,6 @@ FROM data
 对于其中具有三个或以上的输入连接到同一事件中心的查询，请创建单独的使用者组。 这需要创建额外的流分析输入。
 
 
-## <a name="get-help"></a>获取帮助
-有关更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
-
 ## <a name="next-steps"></a>后续步骤
-* [流分析简介](stream-analytics-introduction.md)
-* [流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [扩展流分析作业](stream-analytics-scale-jobs.md)
 * [流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
