@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 报告通知"
-description: "如何将 Azure Active Directory 报告通知用于可疑登录。"
+title: Azure Active Directory 报告通知
+description: 如何将 Azure Active Directory 报告通知用于可疑登录。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ae6d4b0e-5931-4cb3-98bf-9be91b381c92
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 01/03/2018
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 99783eebb76363ca3fa96c6777906239f3de1131
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c279b923ed4e63d810861c579dd54b3a2b7f415e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Azure Active Directory 报告通知
 ## <a name="what-reports-generate-email-notifications"></a>哪些报告可生成电子邮件通知
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/05/2018
 单击该链接时，会重定向到 Azure 门户中的报告页。 要访问该报告，需要具备以下身份：
 
 * Azure 订阅的管理员或共同管理员
-* 目录中的全局管理员，并且已分配 Active Directory Premium 许可证。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
+* 目录中的全局管理员，并且已分配 Active Directory Premium 许可证。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-whatis.md)。
 
 ## <a name="can-i-turn-off-these-emails"></a>是否可以关闭这些电子邮件？
 是，要在 Azure 门户中关闭与异常登录相关的通知，请单击“配置”，并在“通知”部分下选择“已禁用”。

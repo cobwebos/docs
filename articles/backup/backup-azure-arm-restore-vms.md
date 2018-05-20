@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a25a2f40e93c291d4c69ee726c732468005d2cd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>使用 Azure 门户还原虚拟机
 可以通过按定义的间隔创建数据快照来保护数据。 这些快照称为恢复点，存储在恢复服务保管库中。 当需要修复或重新生成虚拟机 (VM) 时，可以从保存的任何恢复点还原 VM。 还原恢复点时，可以：
@@ -90,12 +90,12 @@ ms.lasthandoff: 04/28/2018
 
     “还原”边栏选项卡会显示已设置还原点。
 
-9. 如果尚未执行此操作，请转到“还原”边栏选项卡。 确保[已选择还原点](#select-restore-point-for-restore)，并选择“还原配置”。 “还原配置”边栏选项卡随即打开。
+9. 如果尚未执行此操作，请转到“还原”边栏选项卡。 确保[已选择还原点](#select-a-restore-point-for-restore)，并选择“还原配置”。 “还原配置”边栏选项卡随即打开。
 
 ## <a name="choose-a-vm-restore-configuration"></a>选择 VM 还原配置
 选择还原点后，请选择 VM 还原配置。 若要配置已还原 VM，可使用 Azure 门户或 PowerShell。
 
-1. 如果尚未执行此操作，请转到“还原”边栏选项卡。 确保[已选择还原点](#select-restore-point-for-restore)，并选择“还原配置”。 “还原配置”边栏选项卡随即打开。
+1. 如果尚未执行此操作，请转到“还原”边栏选项卡。 确保[已选择还原点](#select-a-restore-point-for-restore)，并选择“还原配置”。 “还原配置”边栏选项卡随即打开。
 
     ![还原配置向导](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
 2. 在“还原配置”边栏选项卡上，有两个选择：

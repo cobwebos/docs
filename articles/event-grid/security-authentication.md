@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 8c601d13f0f4d7c44db5735c2f89f570faa4f0c9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d539475d376e2c3e38c2cbd38de0a10645fcabe4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -26,7 +26,9 @@ Azure 事件网格包含三种类型的身份验证：
 
 Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，事件网格 WebHook 会向已配置的 HTTP 终结点发送 HTTP 请求，并在正文中包含该事件。
 
-当你向事件网格注册自己的 WebHook 终结点时，事件网格为证明终结点所有权，会向你发送 POST 请求，其中包含简单的验证代码。 应用需要通过回显验证代码，做出响应。 事件网格不会将事件传送到未通过验证的 WebHook 终结点。 如果使用第三方 API 服务（如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式回显验证码。 对于这些服务，可以使用订阅验证事件中发送的验证 URL 手动验证订阅。 通过 REST 客户端或 Web 浏览器复制该 URL 并发送 GET 请求。
+当你向事件网格注册自己的 WebHook 终结点时，事件网格为证明终结点所有权，会向你发送 POST 请求，其中包含简单的验证代码。 应用需要通过回显验证代码，做出响应。 事件网格不会将事件传送到未通过验证的 WebHook 终结点。 如果使用第三方 API 服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式回显验证码。 对于这些服务，可以使用订阅验证事件中发送的验证 URL 手动验证订阅。 通过 REST 客户端或 Web 浏览器复制该 URL 并发送 GET 请求。
+
+“手动验证”功能处于预览状态。 若要使用它，必须安装用于 [AZ CLI 2.0](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果使用 REST API，请确保使用 `api-version=2018-05-01-preview`。
 
 ### <a name="validation-details"></a>验证详细信息
 

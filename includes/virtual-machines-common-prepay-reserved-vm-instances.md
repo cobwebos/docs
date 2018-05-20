@@ -1,10 +1,10 @@
 ---
 ms.topic: include
-ms.openlocfilehash: b41b93db63038645257bc348d5a027fbc4f7fdc9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 31b0d0018129ee65bb124c8008759cc6c7c8510e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="prepay-for-virtual-machines-with-reserved-vm-instances"></a>通过保留 VM 实例预付虚拟机
 
@@ -13,6 +13,7 @@ ms.lasthandoff: 05/03/2018
 可以在 [Azure 门户](https://portal.azure.com)中购买保留虚拟机实例。 若要购买保留虚拟机实例，请执行以下操作：
 -   你必须至少具有一个企业或即用即付订阅的所有者角色。
 -   对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用预订购买。
+-   对于云解决方案提供商 (CSP) 计划，只有管理代理或销售代理可以购买预订。
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>购买保留虚拟机实例
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -50,3 +51,4 @@ ms.lasthandoff: 05/03/2018
 - [了解即用即付订阅的预订实例使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [了解企业许可登记表的预订实例使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [预订实例未包含的 Windows 软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+- [合作伙伴中心云解决方案提供商 (CSP) 计划中的保留实例](https://docs.microsoft.com/partner-center/azure-reservations)

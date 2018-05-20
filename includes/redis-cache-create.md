@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 55bc2bd4e065c301f11a5fc4d3b58aa443b83e2d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e035b49d9e386287baf67bba756f7b58a764acc5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 若要创建缓存，请先登录到 [Azure 门户](https://portal.azure.com)，并单击“创建资源” > “数据库” > “Redis 缓存”。
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 04/28/2018
 | ------------ |  ------- | -------------------------------------------------- |
 | **DNS 名称** | 全局唯一名称 | `-` 字符。 缓存名称的开头或末尾不能是 `-` 字符，并且连续的 `-` 字符无效。  | 
 | **订阅** | 订阅 | 要在其下创建此新 Azure Redis 缓存的订阅。 | 
-| **资源组** |  *TestResourceGroup* | 要在其中创建缓存的新资源组的名称。 通过将应用的所有资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除与该应用关联的所有资源。 | 
+| **资源组** |  TestResources | 要在其中创建缓存的新资源组的名称。 通过将应用的所有资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除与该应用关联的所有资源。 | 
 | **位置** | 美国东部 | 选择将使用缓存的其他服务附近的[区域](https://azure.microsoft.com/regions/)。 |
 | **[定价层](https://azure.microsoft.com/pricing/details/cache/)** |  基本 C0（250 MB 缓存） |  定价层决定可用于缓存的大小、性能和功能。 有关详细信息，请参阅 [Azure Redis 缓存概述](../articles/redis-cache/cache-overview.md)。 |
 | **固定到仪表板** |  选定 | 单击“将新缓存固定到仪表板”使其容易被找到。 |

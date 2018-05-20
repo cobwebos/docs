@@ -1,24 +1,26 @@
 ---
-title: "Azure AD 中的签名密钥滚动更新"
-description: "本文介绍 Azure Active Directory 的签名密钥滚动更新最佳实践"
+title: Azure AD 中的签名密钥滚动更新
+description: 本文介绍 Azure Active Directory 的签名密钥滚动更新最佳实践
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2016
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5396baa57fe0b49809d9fe06eb2b2feda2ed9ba8
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 29ac254bf3b0e8decb26452fc36112af0a3970af
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 中的签名密钥滚动更新
 本文介绍需要了解的有关 Azure Active Directory (Azure AD) 中用来为安全令牌签名的公钥的信息。 请务必注意，这些密钥会定期滚动更新，紧急情况下可立即滚动更新。 所有使用 Azure AD 的应用程序应该都能以编程方式处理密钥滚动更新过程，或建立定期手动滚动更新过程。 继续阅读，了解密钥工作方式、如何评估应用程序的滚动更新的影响以及如何更新应用程序，或者在必要时建立定期手动滚动更新过程来处理密钥滚动更新。
@@ -91,7 +93,7 @@ app.UseWsFederationAuthentication(
      });
 ```
 
-### <a name="owincore"></a>使用 .NET Core OpenID Connect 或 JwtBearerAuthentication 中间件保护资源的 Web 应用程序/API
+### <a name="owincore">使用 .NET Core OpenID Connect 或 JwtBearerAuthentication 中间件保护资源的 Web 应用程序/API</a>
 如果应用程序使用 .NET Core OWIN OpenID Connect 或 JwtBearerAuthentication 中间件，则它已包含必要的逻辑来自动处理密钥滚动更新。
 
 可以通过查看应用程序的 Startup.cs 或 Startup.Auth.cs 中的以下代码片段，来确认应用程序是否正在使用上述任何中间件

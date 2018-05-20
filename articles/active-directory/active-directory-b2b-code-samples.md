@@ -1,25 +1,20 @@
 ---
-title: "Azure Active Directory B2B 协作代码和 PowerShell 示例 | Microsoft 文档"
-description: "有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例"
+title: Azure Active Directory B2B 协作代码和 PowerShell 示例 | Microsoft 文档
+description: 有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 04/11/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 6006dde5ea34db9881a02550e7aff33e48c6498e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 53fba48725e0f4f496beee6eee96ff45847b633e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B 协作代码和 PowerShell 示例
 
@@ -233,15 +228,5 @@ namespace SampleInviteApp
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
+- [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-* [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B 协作用户属性](active-directory-b2b-user-properties.md)
-* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
-* [委托 B2B 协作邀请](active-directory-b2b-delegate-invitations.md)
-* [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
-* [为 B2B 协作配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
-* [B2B 协作用户令牌](active-directory-b2b-user-token.md)
-* [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
-* [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
-* [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)

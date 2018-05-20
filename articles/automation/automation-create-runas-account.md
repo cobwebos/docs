@@ -3,16 +3,17 @@ title: 创建 Azure 自动化运行方式帐户
 description: 本文介绍如何使用 PowerShell 或通过门户更新自动化帐户并创建运行方式帐户。
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 239478a9e697d9eed474a9bfcc0d12fb6a05faee
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 03a5cf6fd049e63616155a87bf112636b74be0a1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>使用运行方式帐户更新自动化帐户身份验证 
 在以下情况下，可以通过 Azure 门户或使用 PowerShell 更新现有自动化帐户：

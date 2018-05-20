@@ -7,17 +7,18 @@ author: daveba
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: f9dc1e87dee83aa3f10d5319ac3df3933b7d96a9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 0237d5ca5b8fece5c62013a0ce7633e74928c7bb
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>使用 Linux VM 的托管服务标识访问 Azure Data Lake Store
 
@@ -102,7 +103,7 @@ Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接
 3. 在终端窗口中，使用 cURL 向本地 MSI 终结点发出请求，获取访问 Data Lake Store 系统所需的访问令牌。 Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  请务必在资源标识符中包含尾部反斜杠。
     
    ```bash
-   curl http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F -H Metadata:true   
+   curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
    ```
     
    成功响应将返回对 Data Lake Store 进行身份验证需使用的访问令牌：

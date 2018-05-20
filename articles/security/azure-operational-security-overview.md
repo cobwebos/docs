@@ -4,7 +4,7 @@ description: 本文提供 Azure 操作安全性的概述。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: ca42e0cc76bc385f04cb2e010ff91dbb27bd627a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 20dfbd2c5c2c38abddf332dc6a20ddb271c95ace
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 [Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)是一个框架，它融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
@@ -27,7 +27,7 @@ Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据
 
 - Azure Operations Management Suite
 -   Azure 安全中心
--   Azure 监视器
+-   Azure Monitor
 -   Azure 网络观察程序
 -   Azure 存储分析
 -   Azure Active Directory
@@ -89,7 +89,7 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](https://docs.micros
 
 安全中心使用 Microsoft Monitoring Agent - Operations Management Suite 和 Log Analytics 服务同样使用此代理。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
 
-## <a name="azure-monitor"></a>Azure 监视器
+## <a name="azure-monitor"></a>Azure Monitor
 云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 应该立即知道这些问题，并使用工具来诊断和解决问题。
 
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) 是用于监视 Azure 中运行的服务的基本工具。 它可以提供有关服务吞吐量和周边环境的基础结构级数据。 如果在 Azure 中管理所有应用，并想要确定是否需要增加或减少资源，则 Azure Monitor 可以提供初始信息。
@@ -132,7 +132,7 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](https://docs.micros
 -   [IP 流验证](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) - 根据流信息和 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果数据包被安全组拒绝，则返回拒绝数据包的规则和组。
 -   [下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) - 确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何错误配置的用户定义路由。
 -   [安全组视图](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) - 获取在 VM 上应用的有效安全规则。
--   [NSG 流日志记录](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) - 使用网络安全组的流日志可以捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
+-   NSG 流日志记录[](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) - 使用网络安全组的流日志可以捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
 -   [虚拟网络网关和连接故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest) - 提供排查虚拟网络网关和连接问题的功能。
 -   [网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) - 用于查看网络资源用量与限制。
 -   [配置诊断日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) – 提供单个窗格来为资源组中的网络资源启用或禁用诊断日志。

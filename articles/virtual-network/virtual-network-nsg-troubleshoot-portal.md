@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: b053993bec74d358dd7a0a8889fa05885b563b16
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: be400d674068d89f60d3c999006bc9291944ab1c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户排查网络安全组问题
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/16/2018
 
 可以从 VM 本身查看 NIC 上的完整有效安全规则列表。 如果有相应的权限，也可以从有效规则的边栏选项卡添加、修改和删除 NIC 与子网的 NSG 规则。
 
-1. 在 https://portal.azure.com 上使用 Azure 帐户登录到 Azure 门户。 你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)。
+1. 在 https://portal.azure.com 上使用 Azure 帐户登录到 Azure 门户。 你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 2. 单击“所有服务”，然后在显示的列表中单击“虚拟机”。
 3. 在显示的列表中选择要进行故障排除的 VM，随后会显示一个包含选项的 VM 边栏选项卡。
 4. 单击“**诊断和解决问题**”，并选择一个常见问题。 本示例选择了“**无法连接到 Windows VM**”。 
@@ -63,12 +63,12 @@ ms.lasthandoff: 04/16/2018
    
     请注意图中的以下部分：
    
-   * **范围：**设置为 *VM1*，即步骤 3 中选择的 VM。
-   * **网络接口：**已选择 *VM1-NIC1*。 一个 VM 可以有多个网络接口 (NIC)。 每个 NIC 可以使用唯一的有效安全规则。 进行故障排除时，可能需要查看每个 NIC 的有效安全规则。
-   * **关联的 NSG：**可同时对 NIC 和 NIC 连接到的子网应用 NSG。 在图中，已同时对 NIC 及其连接到的子网应用 NSG。 可以单击 NSG 名称直接修改 NSG 中的规则。
-   * **VM1-nsg 选项卡：**图中显示的规则列表是对 NIC 应用的 NSG。 每当创建 NSG 时，Azure 就会创建几个默认的规则。 无法删除默认规则，但可以使用更高优先级的规则将其覆盖。 有关默认规则的详细信息，请阅读 [NSG 概述](virtual-networks-nsg.md#default-rules)一文。
-   * **DESTINATION 列：**该列中的某些规则带有文本，还有一些规则带有地址前缀。 这些文本是创建安全规则时应用的默认标记的名称。 标记是系统提供的标识符，代表多个前缀。 选择带有标记的规则，例如 *AllowInternetOutBound*，在“**地址前缀**”边栏选项卡中列出前缀。
-   * **下载：**规则的列表可能很长。 可以单击“**下载**”并保存文件，下载规则的 .csv 文件供脱机分析。
+   * **范围：** 设置为 *VM1*，即步骤 3 中选择的 VM。
+   * **网络接口：** 已选择 *VM1-NIC1*。 一个 VM 可以有多个网络接口 (NIC)。 每个 NIC 可以使用唯一的有效安全规则。 进行故障排除时，可能需要查看每个 NIC 的有效安全规则。
+   * **关联的 NSG：** 可同时对 NIC 和 NIC 连接到的子网应用 NSG。 在图中，已同时对 NIC 及其连接到的子网应用 NSG。 可以单击 NSG 名称直接修改 NSG 中的规则。
+   * **VM1-nsg 选项卡：** 图中显示的规则列表是对 NIC 应用的 NSG。 每当创建 NSG 时，Azure 就会创建几个默认的规则。 无法删除默认规则，但可以使用更高优先级的规则将其覆盖。 有关默认规则的详细信息，请阅读 [NSG 概述](virtual-networks-nsg.md#default-rules)一文。
+   * **DESTINATION 列：** 该列中的某些规则带有文本，还有一些规则带有地址前缀。 这些文本是创建安全规则时应用的默认标记的名称。 标记是系统提供的标识符，代表多个前缀。 选择带有标记的规则，例如 *AllowInternetOutBound*，在“**地址前缀**”边栏选项卡中列出前缀。
+   * **下载：** 规则的列表可能很长。 可以单击“**下载**”并保存文件，下载规则的 .csv 文件供脱机分析。
    * **AllowRDP** 入站规则：此规则允许通过 RDP 连接到 VM。
 7. 单击“**Subnet1-NSG**”选项卡可查看对子网应用的 NSG 有效规则，如下图所示： 
    
@@ -120,15 +120,15 @@ ms.lasthandoff: 04/16/2018
    
     请注意上图中的以下部分：
    
-   * **范围：**设置为选定的 NSG。
-   * **虚拟机：**向某个子网应用某个 NSG 时，会向附加到与该子网连接的所有 VM 的所有网络接口应用该 NSG。 此列表显示此 NSG 应用到的所有 VM。 可以从列表中选择任一 VM。
+   * **范围：** 设置为选定的 NSG。
+   * **虚拟机：** 向某个子网应用某个 NSG 时，会向附加到与该子网连接的所有 VM 的所有网络接口应用该 NSG。 此列表显示此 NSG 应用到的所有 VM。 可以从列表中选择任一 VM。
      
      > [!NOTE]
      > 如果只向空子网应用了 NSG，则不会列出 VM。 如果将 NSG 应用到不与 VM 相关联的 NIC，也不会列出这些 NIC。 
      > 
      > 
-   * **网络接口：**一个 VM 可以有多个网络接口。 可以选择附加到选定 VM 的网络接口。
-   * **AssociatedNSGs：**无论何时，一个 NIC 最多只能有两个有效 NSG，一个应用到 NIC，另一个应用到子网。 尽管选择的范围为 VM1-nsg，但如果 NIC 具有有效的子网 NSG，则输出会显示两个 NSG。
+   * **网络接口：** 一个 VM 可以有多个网络接口。 可以选择附加到选定 VM 的网络接口。
+   * **AssociatedNSGs：** 无论何时，一个 NIC 最多只能有两个有效 NSG，一个应用到 NIC，另一个应用到子网。 尽管选择的范围为 VM1-nsg，但如果 NIC 具有有效的子网 NSG，则输出会显示两个 NSG。
 4. 可以直接编辑与 NIC 或子网关联的 NSG 的规则。 若要了解操作方法，请阅读**查看虚拟机的有效安全规则**部分中的步骤 8。
 
 若要详细了解显示的其他信息，请阅读**查看虚拟机的有效安全规则**部分中的步骤 6。

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 49a80805c976e5584bb158965583a03eda68cc46
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 483122f5d2e39c8595d0f28a6b937772c4ea2e50
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>教程： 将应用部署到 Azure 和 Azure 堆栈
 
@@ -71,7 +71,7 @@ Azure Stack
     - 你可以找到有关部署在 ASDK 的详细的说明"[教程： 部署使用安装程序 ASDK](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy)"
     - 你可以自动执行的许多使用以下 PowerShell 脚本，你 ASDK 后期部署步骤[ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 )。
 
-    > [!note]  
+    > [!Note]  
     > ASDK 安装需要七个小时才能完成，因此请相应地计划。
 
  - 将[应用服务](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS 服务部署到 Azure Stack。 
@@ -87,7 +87,7 @@ Azure Stack
  - [安装 Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio)和[登录到 VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services)。
  - 连接到项目并在[本地克隆](https://www.visualstudio.com/docs/git/gitquickstart)。
  
- > [!note]  
+ > [!Note]  
  > 你需要 Azure 堆栈使用联合运行 （Windows Server 和 SQL） 并让部署应用程序服务的正确图像。
  
 ## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>准备 Visual Studio Team Services 集成的专用生成和版本的代理
@@ -207,7 +207,7 @@ Azure 基于角色的访问控制 (RBAC) 启用 Azure 的精细访问权限管�
 
 3. 将复制该令牌。
     
-    > [!note]  
+    > [!Note]  
     > 获取令牌的信息。 它不会显示在离开此屏幕后再次。 
     
     ![替换文字](media\azure-stack-solution-hybrid-pipeline\000_19.png)
@@ -268,7 +268,7 @@ Azure 基于角色的访问控制 (RBAC) 启用 Azure 的精细访问权限管�
 
 设置混合 CI/CD 来将 Web 应用部署到 Azure 和 Azure 堆栈，并自动将更改推送到这两个云。
 
-> [!note]  
+> [!Note]  
 > 你需要 Azure 堆栈使用联合运行 （Windows Server 和 SQL） 并让部署应用程序服务的正确图像。 查看有关 Azure 堆栈运算符要求的 App Service 文档"先决条件"部分。
 
 ### <a name="add-code-to-vsts-project"></a>将代码添加到 VSTS 项目
@@ -399,7 +399,7 @@ Visual Studio Team Services (VSTS) 和 Team Foundation Server (TFS) 提供高度
 
 21. 保存所有更改。
 
-> [!note]  
+> [!Note]  
 > 任务的某些设置可能自动已定义为[环境变量](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables)从模板创建的版本定义时。 任务设置;，无法修改这些设置而是必须选择要编辑这些设置的父环境项。
 
 ## <a name="create-a-release"></a>创建版本

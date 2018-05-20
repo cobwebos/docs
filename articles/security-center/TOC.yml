@@ -109,6 +109,8 @@
           href: security-center-just-in-time.md
         - name: 自适应应用程序控制
           href: security-center-adaptive-application.md
+        - name: 文件完整性监视
+          href: security-center-file-integrity-monitoring.md
     - name: 管理安全解决方案
       href: security-center-partner-integration.md
       items:

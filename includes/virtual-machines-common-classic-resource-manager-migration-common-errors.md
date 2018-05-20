@@ -4,9 +4,9 @@
 ## <a name="list-of-errors"></a>错误列表
 | 错误字符串 | 缓解措施 |
 | --- | --- |
-| 内部服务器错误 |在某些情况下，这是重试时会消失的暂时性错误。 如果该错误仍然存在，请[联系 Azure 支持人员](../articles/azure-supportability/how-to-create-azure-support-request.md)，因为它需要调查平台日志。 <br><br> **注意：**支持团队跟踪事件后，请不要尝试任何自我缓解措施，因为这可能会对环境造成意想不到的后果。 |
+| 内部服务器错误 |在某些情况下，这是重试时会消失的暂时性错误。 如果该错误仍然存在，请[联系 Azure 支持人员](../articles/azure-supportability/how-to-create-azure-support-request.md)，因为它需要调查平台日志。 <br><br> **注意：** 支持团队跟踪事件后，请不要尝试任何自我缓解措施，因为这可能会对环境造成意想不到的后果。 |
 | HostedService {hosted-service-name} 中的部署 {deployment-name} 不支持迁移，因为它是 PaaS 部署（Web/辅助角色）。 |当部署包含 Web/辅助角色时，会发生这种情况。 由于只有虚拟机才支持迁移，请从部署中删除 Web/辅助角色，并重试迁移。 |
-| 模板 {template-name} 部署失败。 CorrelationId={guid} |在迁移服务的后端，我们将使用 Azure 资源管理器模板在 Azure 资源管理器堆栈中创建资源。 由于模板是幂等的，通常可以安全地重试迁移操作，以通过此错误。 如果此错误仍然存在，请[联系 Azure 支持人员](../articles/azure-supportability/how-to-create-azure-support-request.md)，并向他们提供 CorrelationId。 <br><br> **注意：**支持团队跟踪事件后，请不要尝试任何自我缓解措施，因为这可能会对环境造成意想不到的后果。 |
+| 模板 {template-name} 部署失败。 CorrelationId={guid} |在迁移服务的后端，我们将使用 Azure 资源管理器模板在 Azure 资源管理器堆栈中创建资源。 由于模板是幂等的，通常可以安全地重试迁移操作，以通过此错误。 如果此错误仍然存在，请[联系 Azure 支持人员](../articles/azure-supportability/how-to-create-azure-support-request.md)，并向他们提供 CorrelationId。 <br><br> **注意：** 支持团队跟踪事件后，请不要尝试任何自我缓解措施，因为这可能会对环境造成意想不到的后果。 |
 | 虚拟网络 {virtual-network-name} 不存在。 |如果在新的 Azure 门户中创建虚拟网络，则可能会发生这种情况。 实际的虚拟网络名称遵循模式“Group * <VNET name>” |
 | 托管服务 {hosted-service-name} 中的 VM {vm-name} 包含 Azure 资源管理器不支持的扩展 {extension-name}。 建议从 VM 中卸载该扩展，再继续迁移。 |Azure 资源管理器不支持 XML 扩展，如 BGInfo 1.*。 因此，无法迁移这些扩展。 如果将这些扩展保留安装在虚拟机上，则在完成迁移之前会自动将其卸载。 |
 | HostedService {hosted-service-name} 中的 VM {vm-name} 包含当前不支持进行迁移的扩展 VMSnapshot/VMSnapshotLinux。 请从 VM 中卸载它，在迁移完成后再使用 Azure 资源管理器重新添加它 |这是为 Azure 备份配置虚拟机的方案。 由于这是当前不支持的方案，请按照 https://aka.ms/vmbackupmigration 中的解决方法进行操作 |
@@ -19,6 +19,7 @@
 | 在云服务 {云服务名称} 中使用媒体链接 {数据磁盘 URI} 为 VM {VM 名称} 验证数据磁盘 {数据磁盘名称} 时发生存储异常。 请确保该虚拟机可以访问 VHD 媒体链接 | 如果 VM 的磁盘已被删除或不再可访问，则可能发生此错误。 请确保 VM 磁盘存在。|
 | HostedService {cloud-service-name} 中的 VM {vm-name} 包含具有 blob 名称为 {vhd-blob-name} 的 MediaLink {vhd-uri} 的磁盘，这在 Azure 资源管理器中不受支持。 | 当 Blob 的名称包含“/”（这当前在计算资源提供程序中不支持）时，将出现此错误。 |
 | HostedService {cloud-service-name} 中的部署 {deployment-name} 不允许迁移，因为不在区域范围内。 请参阅 http://aka.ms/regionalscope，了解如何将该部署移至区域范围。 | 在 2014 年，Azure 宣布：网络资源将从群集级别范围移至区域范围。 有关详细信息，请参阅 [http://aka.ms/regionalscope] (http://aka.ms/regionalscope)。 当要迁移的部署尚未进行更新操作（自动将其移至区域范围）时，会发生此错误。 最好的解决办法是向 VM 添加终结点，或者向 VM 添加数据磁盘，并重试迁移。 <br> 请参阅[如何在 Azure 中的经典 Windows 虚拟机上设置终结点](../articles/virtual-machines/windows/classic/setup-endpoints.md#create-an-endpoint)或[将数据磁盘附加到使用经典部署模型创建的 Windows 虚拟机](../articles/virtual-machines/windows/classic/attach-disk.md)|
+| 虚拟网络 {vnet-name} 不支持迁移，因为它具有非网关 PaaS 部署。 | 当具有非网关 PaaS 部署（例如连接到虚拟网络的应用程序网关或 API 管理服务）时，将发生此错误。|
 
 
 ## <a name="detailed-mitigations"></a>详细的缓解措施

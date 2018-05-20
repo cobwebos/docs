@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 5569a7608a61b4e79a03264e0ccf62682782264b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6318b6aafda972242239ce91abb0f67a15721e1e
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 配置参考
 
@@ -491,5 +491,6 @@ ms.lasthandoff: 05/07/2018
 ```
 ## <a name="next-steps"></a>后续步骤
 
-[部署 Azure Blockchain Workbench](blockchain-workbench-deploy.md)
+> [!div class="nextstepaction"]
+> [部署 Azure Blockchain Workbench](blockchain-workbench-deploy.md)
 

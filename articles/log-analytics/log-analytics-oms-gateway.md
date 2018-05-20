@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 207b7ab0968f775dba99c2f48c1961d74b4f11c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>使用 OMS 网关连接无法访问 Internet 的计算机
 本文档介绍直接连接或 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 OMS 网关，配置与 Azure 自动化和 Log Analytics 的通信。  OMS 网关是使用 HTTP CONNECT 命令，支持 HTTP 隧道的 HTTP 转发代理，它可以收集数据，然后代表这些设备将数据发送到 Azure 自动化和 Log Analytics。  
@@ -36,7 +36,7 @@ OMS 网关支持：
 
 若要为通过网关与 Log Analytics 通信的直接连接的组或 Operations Management 组提供高可用性，可以使用网络负载均衡在多个网关服务器之间重定向和分配流量。  如果一台网关服务器发生故障，流量将重定向到另一个可用节点。  
 
-建议在运行 OMS 网关软件的计算机上安装 OMS 代理，用于监视 OMS 网关和分析性能或事件数据。 此外，该代理可帮助 OMS 网关标识它需要与之进行通信的服务终结点。
+运行 OMS 网关的计算机需要 OMS 代理，以便识别需要与之通信的服务终结点并监视用于分析其性能或事件数据的 OMS 网关。
 
 每个代理必须与其网关建立网络连接，这样，代理才能自动与网关相互传输数据。 建议不要在域控制器上安装网关。
 
@@ -56,6 +56,7 @@ OMS 网关支持：
 * Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 和 Windows Server 2008
 * .Net Framework 4.5
 * 4 核处理器，8 GB 内存（最低要求） 
+* 适用于 Windows 的 OMS 代理 
 
 ### <a name="language-availability"></a>语言可用性
 

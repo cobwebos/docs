@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 90fb659abfcff09eb715fcc29bbfb7e4facd3a6b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0cb37a29847e69dae4a0e0682591bae092b38360
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 检测到的漏洞
 漏洞是环境中可能由攻击者利用的弱点。 我们建议解决这些漏洞，以提高组织的安全状态并防止攻击者利用它们。
@@ -47,7 +47,7 @@ Azure 多重身份验证提供用户身份验证的第二层安全。 它可帮�
 
 我们建议组织部署 Cloud App Discovery，发现非托管的云应用程序并使用 Azure Active Directory 管理这些应用程序。
 
-有关更多详细信息，请参阅[使用 Cloud App Discovery 查找非托管的云应用程序](active-directory-cloudappdiscovery-whatis.md)。
+有关更多详细信息，请参阅[使用 Cloud App Discovery 查找非托管的云应用程序](manage-apps/cloud-app-discovery.md)。
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>来自 Privileged Identity Management 的安全警报
 此漏洞可帮助你发现和解决有关组织中特权标识的警报。  

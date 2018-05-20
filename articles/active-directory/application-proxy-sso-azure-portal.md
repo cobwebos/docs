@@ -1,33 +1,33 @@
 ---
-title: "使用 Azure AD 应用程序代理进行应用的单一登录 | Microsoft 文档"
-description: "在 Azure 门户中使用 Azure AD 应用程序代理为已发布的本地应用程序启用单一登录。"
+title: 使用 Azure AD 应用程序代理进行应用的单一登录 | Microsoft 文档
+description: 在 Azure 门户中使用 Azure AD 应用程序代理为已发布的本地应用程序启用单一登录。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 501017ae416cc8aa473077c98ae0a213db749547
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 77e7288060abd2577867023a777eb3bdd4331e88
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>使用应用程序代理通过密码存储进行单一登录
 
 Azure Active Directory 应用程序代理还可以发布本地应用程序供远程员工进行安全访问，从而提高工作效率。 在 Azure 门户中，还可以设置针对这些应用的单一登录 (SSO)。 用户只需使用 Azure AD 进行身份验证，无需再次登录便可访问企业应用程序。
 
-应用程序代理支持多种[单一登录模式](application-proxy-sso-overview.md)。 基于密码的登录适合使用用户名/密码组合进行身份验证的应用程序。 当你为应用程序配置基于密码的登录时，用户必须登录到本地应用程序一次。 之后，Azure Active Directory 会存储登录信息，并在用户远程访问应用程序时自动向应用程序提供该信息。 
+应用程序代理支持多种[单一登录模式](manage-apps/application-proxy-single-sign-on.md)。 基于密码的登录适合使用用户名/密码组合进行身份验证的应用程序。 当你为应用程序配置基于密码的登录时，用户必须登录到本地应用程序一次。 之后，Azure Active Directory 会存储登录信息，并在用户远程访问应用程序时自动向应用程序提供该信息。 
 
-应该已经通过应用程序代理发布和测试了应用。 否则，请执行[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)中的步骤，再返回到此处。 
+应该已经通过应用程序代理发布和测试了应用。 否则，请执行[使用 Azure AD 应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)中的步骤，再返回到此处。 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>为应用程序设置密码存储
 
@@ -55,5 +55,5 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何通过其他方式实现[通过应用程序代理进行的单一登录](application-proxy-sso-overview.md)
+- 了解如何通过其他方式实现[通过应用程序代理进行的单一登录](manage-apps/application-proxy-single-sign-on.md)
 - 了解[使用 Azure AD 应用程序代理远程访问应用时的安全注意事项](application-proxy-security-considerations.md)

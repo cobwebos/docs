@@ -10,17 +10,17 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ffc8be29cecac05fda440eaf72b51ffc6f024424
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 485f761e22871396dace71333868ba7712e41f67
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中创建区块链应用程序
 
 可以使用 Azure Blockchain Workbench 创建区块链应用程序，用于表示由配置和智能合同代码定义的多方工作流。
 
-将了解如何执行以下操作：
+学习如何：
 
 > [!div class="checklist"]
 > * 配置区块链应用程序
@@ -35,6 +35,8 @@ ms.lasthandoff: 05/07/2018
 * Blockchain Workbench 管理员帐户。 有关详细信息，请参阅[在 Azure Blockchain Workbench 中添加 Blockchain Workbench 管理员](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators)。
 
 让我们生成一个基本的应用程序，其中的请求方发送请求，响应方发送对请求的响应。 例如，请求可以是“你好吗？”，而响应可以是“我很好！”。 请求和响应都记录在底层区块链中。 
+
+按照创建应用程序文件的步骤进行操作，也可以[从 GitHub 下载示例](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain)。 
 
 ## <a name="configuration-file"></a>配置文件
 
@@ -398,4 +400,7 @@ contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') 
 
 ## <a name="next-steps"></a>后续步骤
 
-创建应用程序后，请尝试[使用区块链应用程序](blockchain-workbench-use.md)。
+在本操作指南文章中，已创建了一个基本的请求和响应应用程序。 若要了解如何使用应用程序，请继续学习下一篇操作指南文章。
+
+> [!div class="nextstepaction"]
+> [使用区块链应用程序](blockchain-workbench-use.md)

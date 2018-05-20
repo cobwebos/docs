@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: bced85abaf24beb0997ec906a68e5947f0e67cca
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c308b6626f9c37b3928107c4c03e9e0a5da12e6f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 元素
 一组用于选择新的或现有公用 IP 地址的控件。
@@ -54,7 +54,8 @@ ms.lasthandoff: 04/03/2018
   "options": {
     "hideNone": false,
     "hideDomainNameLabel": false,
-    "hideExisting": false
+    "hideExisting": false,
+    "zone": 3
   },
   "visible": true
 }
@@ -65,6 +66,7 @@ ms.lasthandoff: 04/03/2018
 - 如果 `options.hideNone` 设置为 **true**，则用于为公用 IP 地址选择 **None** 的选项会被隐藏。 默认值为 **false**。
 - 如果 `options.hideDomainNameLabel` 设置为 **true**，则域名标签的文本框会被隐藏。 默认值为 **false**。
 - 如果 `options.hideExisting` 为 true，则用户无法选择现有的公用 IP 地址。 默认值为 **false**。
+- 对于 `zone`，仅指定区域的公共 IP 地址或区域复原公共 IP 地址可用。
 
 ## <a name="sample-output"></a>示例输出
 如果用户未选择公用 IP 地址，则应当生成以下输出：

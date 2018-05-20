@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c17a406a0fd6f1172599ac0379c6afc139403148
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 80f20e438b1d923e688aeef9e6b353642bd74c27
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中管理用户
 
@@ -43,7 +43,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
 ## <a name="manage-blockchain-workbench-administrators"></a>管理 Blockchain Workbench 管理员
 
-将用户添加到目录以后，下一步是选择充当 Blockchain Workbench 管理员的用户。 “管理员”组中的用户与 Blockchain Workbench 中的 **“管理员”应用程序角色**相关联。 管理员可以添加或删除用户、为特定方案分配用户，以及创建新应用程序。
+将用户添加到目录以后，下一步是选择充当 Blockchain Workbench 管理员的用户。 “管理员”组中的用户与 Blockchain Workbench 中的“管理员”应用程序角色相关联。 管理员可以添加或删除用户、为特定方案分配用户，以及创建新应用程序。
 
 若要向 Azure AD 目录中的“管理员”组添加用户，请执行以下操作：
 
@@ -68,20 +68,18 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
 请使用 Blockchain Workbench 应用程序来管理隶属于联盟的用户和组织。 可以添加或删除应用程序和角色的用户。
 
-在浏览器中[打开 Blockchain Workbench](blockchain-workbench-deploy.md#blockchain-workbench-web-url)，以管理员身份登录。
+1. 在浏览器中[打开 Blockchain Workbench](blockchain-workbench-deploy.md#blockchain-workbench-web-url)，以管理员身份登录。
 
-![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
+    ![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
 
-### <a name="managing-members-in-applications"></a>在应用程序中管理成员
+    成员将添加到每个应用程序。 成员可以通过一个或多个应用程序角色来启动合同或执行操作。
 
-成员将添加到每个应用程序。 成员可以通过一个或多个应用程序角色来启动合同或执行操作。
+2. 若要管理应用程序的成员，请在“应用程序”窗格中选择应用程序磁贴。
 
-若要向应用程序添加成员，请在“应用程序”窗格中选择应用程序磁贴。
+    与所选应用程序关联的成员数反映在成员磁贴中。
 
-![选择应用程序](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
+    ![选择应用程序](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
 
-> [!NOTE]
-> 与所选应用程序关联的成员数反映在成员磁贴中。
 
 #### <a name="add-member-to-application"></a>将成员添加到应用程序
 
@@ -116,4 +114,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Blockchain Workbench 中创建区块链应用程序](blockchain-workbench-create-app.md)
+本操作指南文章介绍了如何管理 Azure Blockchain Workbench 的用户。 若要了解如何创建区块链应用程序，请继续学习下一篇操作指南文章。
+
+> [!div class="nextstepaction"]
+> [在 Azure Blockchain Workbench 中创建区块链应用程序](blockchain-workbench-create-app.md)

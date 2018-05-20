@@ -1,13 +1,13 @@
 ---
-title: "注册应用程序以使用 Azure Active Directory | Microsoft Docs"
-description: "本文专门为 IT 专业人员编写，提供有关将 Azure 应用程序与 Active Directory 集成的指导。"
+title: 注册应用程序以使用 Azure Active Directory | Microsoft Docs
+description: 本文专门为 IT 专业人员编写，提供有关将 Azure 应用程序与 Active Directory 集成的指导。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
-ms.assetid: dd69f2bc-37c5-457c-857d-27acb84267fb
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 514db22ad070fed20d89be442cecc2f3ee808ead
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 66102836b954bf4fafc4379cf573658d89e0d409
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南提供开发用于 Azure Active Directory (AD) 的业务线 (LoB) 应用程序的概述，目标受众为 Active Directory/Office 365 全局管理员。
@@ -77,7 +77,7 @@ ms.lasthandoff: 01/18/2018
 有关 Azure 中的用户同意和同意体验的详细信息，请参阅 [Integrating Applications with Azure Active Directory](active-directory-integrating-applications.md)（将应用程序与 Azure Active Directory 集成）。
 
 ## <a name="related-articles"></a>相关文章
-* [使用 Azure AD 应用程序代理启用对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)
+* [使用 Azure AD 应用程序代理启用对本地应用程序的安全远程访问](manage-apps/application-proxy.md)
 * [适用于 SaaS 应用的 Azure 条件性访问预览版](active-directory-conditional-access-azure-portal-get-started.md)
 * [使用 Azure AD 管理对应用的访问](active-directory-managing-access-to-apps.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)

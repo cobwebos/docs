@@ -3,23 +3,25 @@ title: Azure Active Directory v2.0 终结点局限和限制 | Microsoft Docs
 description: Azure AD v2.0 终结点的局限和限制列表。
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e026fd7021b39905d5392be55dbf3862cd307360
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>我是否应使用 v2.0 终结点？
 构建与 Azure Active Directory 集成的应用程序时，需确定 v2.0 终结点和身份验证协议是否满足需求。 Azure Active Directory 的原始终结点仍完全受支持，并且在某些方面比 v2.0 的功能更丰富。 但是，v2.0 终结点为开发人员[带来了极大的好处](active-directory-v2-compare.md)。
@@ -47,7 +49,7 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 此外，在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)中创建的应用注册具有以下注意事项：
 
 * 每个应用程序 ID 只允许有两个应用密码。
-* 对于用户使用个人 Microsoft 帐户注册的应用注册，只能使用一个开发人员帐户进行查看和管理。 不能在多个开发人员之间共享。  如果希望多名开发人员共享应用注册，可以通过使用 Azure AD 帐户登录注册门户来创建应用程序。
+* 对于用户使用个人 Microsoft 帐户注册的应用注册，只能使用一个开发人员帐户进行查看和管理。 不能在多个开发人员之间共享。 如果希望多名开发人员共享应用注册，可以通过使用 Azure AD 帐户登录注册门户来创建应用程序。
 * 允许的重定向 URI 格式存在一些限制。 有关重定向 URI 的详细信息，请参阅下一节。
 
 ## <a name="restrictions-on-redirect-uris"></a>重定向 URI 的限制
@@ -89,12 +91,12 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 当前，对 v2.0 终结点的库支持有所限制。 如果想要在生产应用程序中使用 v2.0 终结点，可使用以下选项：
 
 * 如果要构建 Web 应用程序，可以放心使用 Microsoft 正式版服务器端中间件来执行登录和令牌验证。 其中包括适用于 ASP.NET 的 OWIN Open ID Connect 中间件和 Node.js Passport 插件。 有关使用 Microsoft 中间件的代码示例，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)一节。
-* 如果要构建桌面或移动应用程序，可以使用一个预览版 Microsoft 身份验证库 (MSAL)。  这些库当前是支持生产的预览版，因此可在生产应用程序中放心使用。 有关预览版和可用库的术语的详细信息，请阅读[身份验证库参考](active-directory-v2-libraries.md)中的内容。
+* 如果要构建桌面或移动应用程序，可以使用一个预览版 Microsoft 身份验证库 (MSAL)。 这些库当前是支持生产的预览版，因此可在生产应用程序中放心使用。 有关预览版和可用库的术语的详细信息，请阅读[身份验证库参考](active-directory-v2-libraries.md)中的内容。
 * 对于 Microsoft 库不支持的平台，可以通过直接在应用程序代码中发送和接收协议消息来与 v2.0 终结点进行集成。 v2.0 OpenID Connect 和 OAuth 协议[有明确的说明文档](active-directory-v2-protocols.md)，可帮助执行此类集成。
 * 最后，可以使用开源 Open ID Connect 和 OAuth 库来与 v2.0 终结点集成。 v2.0 协议应与许多开源协议库兼容，不需要进行重大更改。 这些类型的库的可用性根据语言和平台而有所差异。 [Open ID Connect](http://openid.net/connect/) 和 [OAuth 2.0](http://oauth.net/2/) 网站将维护一份热门实现列表。 有关详细信息和经过 v2.0 终结点检验的开放源代码客户端库和示例列表，请参阅 [Azure Active Directory v2.0 身份验证库](active-directory-v2-libraries.md)。
 
 ## <a name="restrictions-on-protocols"></a>协议限制
-v2.0 终结点不支持 SAML 或 WS 联合身份验证；它仅支持 Open ID Connect 和 OAuth 2.0。  并非每个 OAuth 协议的所有特性与功能都已合并到 v2.0 终结点中。 以下协议的特性和功能目前在 v2.0 终结点中不可用：
+v2.0 终结点不支持 SAML 或 WS 联合身份验证；它仅支持 Open ID Connect 和 OAuth 2.0。 并非每个 OAuth 协议的所有特性与功能都已合并到 v2.0 终结点中。 以下协议的特性和功能目前在 v2.0 终结点中不可用：
 
 * 即使从用户获取了查看其电子邮件的权限，v2.0 终结点颁发的 ID 令牌也不包含该用户的 `email` 声明。
 * 未在 v2.0 终结点上实现 OpenID Connect UserInfo 终结点。 但是，在该终结点上可能收到的所有用户配置文件数据都可从 Microsoft Graph `/me` 终结点获取。

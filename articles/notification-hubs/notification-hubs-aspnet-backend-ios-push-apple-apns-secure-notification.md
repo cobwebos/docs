@@ -1,10 +1,10 @@
 ---
-title: "Azure 通知中心安全推送"
-description: "了解如何从 Azure 将安全推送通知发送到 iOS 应用。 代码示例是使用 .Objective-C 和 C# 编写的。"
+title: Azure 通知中心安全推送
+description: 了解如何从 Azure 将安全推送通知发送到 iOS 应用。 代码示例是使用 .Objective-C 和 C# 编写的。
 documentationcenter: ios
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: e5f09fb3716303bb21fe7442aa6fa8832174838e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/25/2018
+ms.author: dimazaid
+ms.openlocfilehash: d3ba967a164a35af5bf66f7e74d5f95b5dc2a37f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure 通知中心安全推送
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/21/2017
    * 此设备将联系请求安全有效负载的后端。
    * 此应用可以将有效负载显示为设备上的通知。
 
-请务必注意，在之前的流程（以及本教程中）中，我们假设此设备会在用户登录后在本地存储中存储身份验证令牌。 这可以保证完全无缝的体验，因为该设备可以使用此令牌检索通知的安全有效负载。 如果应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，此设备应用在收到通知时应显示提示用户启动应用的通用通知。 然后应用会对用户进行身份验证，并显示通知有效负载。
+请务必注意，在之前的流程（以及本教程中）中，我们假设此设备会在用户登录后在本地存储中存储身份验证令牌。 这可以保证无缝的体验，因为该设备可以使用此令牌检索通知的安全有效负载。 如果应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，此设备应用在收到通知时应显示提示用户启动应用的通用通知。 然后应用会对用户进行身份验证，并显示通知有效负载。
 
 本安全推送教程演示如何安全地发送推送通知。 本教程以[通知用户](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)教程为基础，因此应先完成该教程中的步骤。
 
@@ -54,11 +54,11 @@ ms.lasthandoff: 12/21/2017
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 项目
-现在，将应用后端修改为只发送通知的 *ID*，必须更改 iOS 应用来处理该通知并回调后端以检索要显示的安全消息。
+现在，将应用后端修改为只发送通知的 ID，必须更改 iOS 应用来处理该通知并回调后端以检索要显示的安全消息。
 
 若要实现此目标，我们必须编写逻辑来从应用后端检索安全内容。
 
-1. 在 **AppDelegate.m** 中，请确保该应用将注册无提示通知，以便它可以处理从后端发送的通知 ID。 添加 didFinishLaunchingWithOptions 中的 **UIRemoteNotificationTypeNewsstandContentAvailability** 选项：
+1. 在 AppDelegate.m 中，请确保该应用将注册无提示通知，以便它可以处理从后端发送的通知 ID。 添加 didFinishLaunchingWithOptions 中的 **UIRemoteNotificationTypeNewsstandContentAvailability** 选项：
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
 2. 在 **AppDelegate.m** 中，通过以下声明在顶部添加实现部分：

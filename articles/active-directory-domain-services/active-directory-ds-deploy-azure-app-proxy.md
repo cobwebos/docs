@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory 域服务：部署 Azure Active Directory 应用程序代理 | Microsoft 文档"
-description: "在 Azure Active Directory 域服务托管域上使用 Azure AD 应用程序代理"
+title: Azure Active Directory 域服务：部署 Azure Active Directory 应用程序代理 | Microsoft 文档
+description: 在 Azure Active Directory 域服务托管域上使用 Azure AD 应用程序代理
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: bd79644c6a13ccaab8eb7e14131465cc7c3165d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eee20271c27f596ee6aefd0b7280c7862c53b289
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。
 
-如果不熟悉 Azure AD 应用程序代理，可通过[如何提供对本地应用程序的安全远程访问](../active-directory/active-directory-application-proxy-get-started.md)一文详细了解此功能。
+如果不熟悉 Azure AD 应用程序代理，可通过[如何提供对本地应用程序的安全远程访问](../active-directory/manage-apps/application-proxy.md)一文详细了解此功能。
 
 
 ## <a name="before-you-begin"></a>开始之前
@@ -93,9 +93,9 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 ## <a name="next-steps"></a>后续步骤
 已设置 Azure AD 应用程序代理，并已将其集成到 Azure AD 域服务托管域。
 
-* **将应用程序迁移到 Azure 虚拟机：**可以将应用程序从本地服务器提升并转移到已加入托管域的 Azure 虚拟机。 这样做可帮助免除在本地运行服务器的基础结构成本。
+* **将应用程序迁移到 Azure 虚拟机：** 可以将应用程序从本地服务器提升并转移到已加入托管域的 Azure 虚拟机。 这样做可帮助免除在本地运行服务器的基础结构成本。
 
-* **使用 Azure AD 应用程序代理发布应用程序：**使用 Azure AD 应用程序代理发布在 Azure 虚拟机上运行的应用程序。 有关详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](../active-directory/application-proxy-publish-azure-portal.md)
+* **使用 Azure AD 应用程序代理发布应用程序：** 使用 Azure AD 应用程序代理发布在 Azure 虚拟机上运行的应用程序。 有关详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>部署说明 - 使用 Azure AD 应用程序代理发布 IWA（集成 Windows 身份验证）应用程序

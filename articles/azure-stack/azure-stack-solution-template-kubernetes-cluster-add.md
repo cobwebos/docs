@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: c66b0d7ea5ade90c6bb8f88006f2a09bd407deaa
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f74d378359ec66b76fd53b95ab898f1cec9b07f7
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
@@ -77,6 +77,9 @@ ms.lasthandoff: 05/10/2018
     - **SKU**: 16.04 LTS
     - **版本**: 16.04.201802220
 
+    > [!Note]  
+    > 可能列出多个版本的 Ubuntu Server 16.04 LTS。 你将需要添加与匹配的版本。 Kubernetes 群集需要该项目的确切版本。
+
 6. 选择**下载。**
 
 ## <a name="add-a-custom-script-for-linux"></a>添加适用于 Linux 的自定义脚本
@@ -95,6 +98,9 @@ ms.lasthandoff: 05/10/2018
     - **提供**： 适用于 Linux 2.0 的自定义脚本
     - **版本**: 2.0.3
     - **发布服务器**: Microsoft Corp
+
+    > [!Note]  
+    > 可能列出多个版本的适用于 Linux 的自定义脚本。 你将需要添加与匹配的版本。 Kubernetes 群集需要该项目的确切版本。
 
 6. 选择**下载。**
 
@@ -138,6 +144,8 @@ ms.lasthandoff: 05/10/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-[将实现 Kubernetes 群集部署到 Azure 的堆栈](/user/azure-stack-solution-template-kubernetes-deploy.md)
+[将实现 Kubernetes 群集部署到 Azure 的堆栈](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
+
+
 
 [在 Azure Stack 中提供服务概述](azure-stack-offer-services-overview.md)

@@ -3,23 +3,25 @@ title: Azure AD Node.js Web 应用 入门 | Microsoft Docs
 description: 了解如何构建用于登录的与 Azure AD 集成的 Node.js Express MVC Web 应用。
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e92c50525efdf2854710d7e62781a5c6efb2cf3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8068e193ac267ef23bdaab1fc23bc7bf9b0d330b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web 应用 入门
 此处，我们使用 Passport 进行以下操作：
@@ -37,7 +39,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 3. 使用 Passport 向 Azure AD 发出登录和注销请求。
 4. 打印有关用户的数据。
 
-本教程的代码 [在 GitHub 上](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS)维护。  若要遵照该代码，可以[下载 .zip 文件格式的应用骨架](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)，或克隆该骨架：
+本教程的代码 [在 GitHub 上](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS)维护。 若要遵照该代码，可以[下载 .zip 文件格式的应用骨架](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)，或克隆该骨架：
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
@@ -55,7 +57,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 5. 根据提示创建一个 **Web 应用程序**和/或 **WebAPI**。
   * 应用程序的“名称”向用户描述应用程序。
 
-  * “登录 URL”是应用的基本 URL。  框架的默认值为 `http://localhost:3000/auth/openid/return`。
+  * “登录 URL”是应用的基本 URL。 框架的默认值为 `http://localhost:3000/auth/openid/return`。
 
 6. 注册后，Azure AD 会为应用分配唯一的应用程序 ID。 在后续部分中需用到此值，因此，请从应用程序页复制此值。
 7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 “应用程序 ID URI”是应用程序的唯一标识符。 约定使用的格式是 `https://<tenant-domain>/<app-name>`，例如：`https://contoso.onmicrosoft.com/my-first-aad-app`。
@@ -78,7 +80,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 这会安装 `passport-azure-ad` 依赖的库。
 
 ## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>步骤 3：将应用设置为使用 passport-node-js 策略
-此处，我们将 Express 配置为使用 OpenID Connect 身份验证协议。  Passport 用于执行各种操作，包括发出登录和注销请求、管理用户的会话和获取有关用户的信息。
+此处，我们将 Express 配置为使用 OpenID Connect 身份验证协议。 Passport 用于执行各种操作，包括发出登录和注销请求、管理用户的会话和获取有关用户的信息。
 
 1. 首先，打开位于项目根目录中的 `config.js` 文件，然后在 `exports.creds` 部分输入应用的配置值。
 
@@ -181,7 +183,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
             };
     ```
 
-5.  接下来，让我们添加可加载 Express 引擎的代码。 在此处，我们使用了 Express 提供的默认 /views 和 /routes 模式。
+5. 接下来，让我们添加可加载 Express 引擎的代码。 在此处，我们使用了 Express 提供的默认 /views 和 /routes 模式。
 
     ```JavaScript
 
@@ -252,7 +254,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
 
 
 ## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>步骤4：使用 Passport 向 Azure AD 发出登录和注销请求
-现在，应用已正确配置为使用 OpenID Connect 身份验证协议与终结点通信。  `passport-azure-ad` 已处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的所有细节。 剩下的就是为用户提供登录和注销方式，以及收集有关已登录用户的其他信息。
+现在，应用已正确配置为使用 OpenID Connect 身份验证协议与终结点通信。 `passport-azure-ad` 已处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的所有细节。 剩下的就是为用户提供登录和注销方式，以及收集有关已登录用户的其他信息。
 
 1. 首先，让我们向 `app.js` 文件添加默认方法、登录方法、帐户方法和注销方法：
 
@@ -282,7 +284,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
 
     ```
 
-2.  我们详细探讨一下：
+2. 我们详细探讨一下：
 
   * `/` 路由将重定向到 index.ejs 视图，并在请求中传递用户（如果存在）。
   * `/account` 路由首先确保*我们已经过身份验证*（我们会在以下示例进行实现），然后在请求中传递用户，以便我们可以获取有关该用户的其他信息。

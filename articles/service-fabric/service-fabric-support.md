@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/26/2018
+ms.date: 5/14/2018
 ms.author: pkc
-ms.openlocfilehash: ec634dd19cf1e944c768e1d368f114f66e9c38a9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 503bc07ff904dcb5952a13f12296f14fdd1999c0
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 04/28/2018
 | 5.6.* | 5.4.164.* |低于或等于版本 2.6 |2017 年 10 月 13 日   |
 | 5.7.* | 5.4.164.* |低于或等于版本 2.7 |2017 年 12 月 15 日  |
 | 6.0.* | 5.6.205.* |版本 2.8 或更低版本 |2018 年 3 月 30 日     | 
-| 6.1.* | 5.7.221.* |版本 3.0 或更低版本 |2018 年 6 月 15 日      |
+| 6.1.* | 5.7.221.* |版本 3.0 或更低版本 |2018 年 7 月 15 日      |
 | 6.2.* | 6.0.232.* |版本 3.1 或更低版本 |最新版本，因此尚无结束日期 |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 预览版本 - 不支持在生产环境中使用。

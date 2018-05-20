@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: e593f58f6b92e562067401381cfce06d5fb18e29
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 78f29cd4a20861e40bb7f7f398979b8d93387a7b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -302,7 +302,7 @@ module.exports = function(context) {
 应当在  Function App 的根目录下定义一个 `package.json` 文件。 定义该文件将允许应用中的所有函数共享所缓存的相同包，从而获得最佳性能。 如果发生版本冲突，可以通过在具体函数的文件夹中添加一个 `package.json` 文件来解决冲突。  
 
 ## <a name="environment-variables"></a>环境变量
-若要获取环境变量或应用设置值，请使用 `process.env`，如以下代码示例所示：
+若要获取环境变量或应用设置值，请使用 `process.env`，如此处的 `GetEnvironmentVariable` 函数中所示：
 
 ```javascript
 module.exports = function (context, myTimer) {

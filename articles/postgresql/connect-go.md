@@ -1,6 +1,6 @@
 ---
-title: "使用 Go 语言连接到 Azure Database for PostgreSQL"
-description: "本快速入门提供了一个 Go 编程语言示例，你可以使用它来连接到 Azure Database for PostgreSQL 并查询其中的数据。"
+title: 使用 Go 语言连接到 Azure Database for PostgreSQL
+description: 本快速入门提供了一个 Go 编程语言示例，你可以使用它来连接到 Azure Database for PostgreSQL 并查询其中的数据。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 305a9ad066ad504b7564945d8ccce1be19a4135a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d3bcfb3369510bdbcf325eab41fb7eacf3e2a228
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Go 语言进行连接并查询数据
 本快速入门演示如何使用以 [Go](https://golang.org/) 语言 (golang) 编写的代码连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Go 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
@@ -213,6 +213,7 @@ func main() {
     sql_statement := "SELECT * from inventory;"
     rows, err := db.Query(sql_statement)
     checkError(err)
+    defer rows.Close()
 
     for rows.Next() {
         switch err := rows.Scan(&id, &name, &quantity); err {

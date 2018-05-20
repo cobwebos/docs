@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 17737c2b272f2a123df3d58c62c471b3da5bebe1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 69a4529e009d9fdd7081bc4d4b53c468befd8e6d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 证书签名请求生成
 
@@ -68,10 +68,10 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
     > [!note]  
     > 如果提供公用名 (CN)，此值将被证书请求的第一个 DNS 名称覆盖。
 
-3.  声明已存在的输出目录：
+3.  声明的输出目录中已存在。 例如：
 
     ````PowerShell  
-    $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
+    $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ````
 4.  声明标识系统
 
@@ -95,7 +95,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
     ````
 
     > [!note]  
-    > `<regionName>.<externalFQDN>` 构成了 Azure Stack 中所有外部 DNS 名称创建位置的基础，在此示例中，门户是 `portal.east.azurestack.contoso.com`。
+    > `<regionName>.<externalFQDN>` 构成了 Azure Stack 中所有外部 DNS 名称创建位置的基础，在此示例中，门户是 `portal.east.azurestack.contoso.com`。  
 
 6. 若要生成多个使用者备用名称的单个证书请求：
 

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Tableau Online 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Tableau Online 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Tableau Online 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 Tableau Online 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ae9dbde509726065da7eaee2c7aec491389f45
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9e7de7946769eb2aeeac1c8b21448efa142728bb
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>教程：Azure Active Directory 与 Tableau Online 集成
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Tableau Online 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Tableau Online 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 Tableau Online，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 12/11/2017
     
     a. 在“登录 URL”文本框中，键入 URL：`https://sso.online.tableau.com`
 
-    b. 在“标识符”文本框中，键入 URL：`https://sso.online.tableau.com/public/sp/<instancename>`
+    b. 在“标识符”文本框中，键入 URL：`https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -161,10 +161,6 @@ ms.lasthandoff: 12/11/2017
    
    ![配置单一登录](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_14.png)
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
@@ -190,11 +186,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-tableau-online-test-user"></a>创建 Tableau Online 测试用户
 
@@ -206,7 +202,7 @@ ms.lasthandoff: 12/11/2017
 2. 选择“添加要进行单一登录(SSO)身份验证的用户”。 在“输入电子邮件地址”文本框中添加 britta.simon@contoso.com
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_11.png)
-3. 单击“创建” 。
+3. 单击“创建”。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -247,7 +243,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -262,4 +258,3 @@ ms.lasthandoff: 12/11/2017
 [201]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_203.png
-

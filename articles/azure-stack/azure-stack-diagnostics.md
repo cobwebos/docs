@@ -1,57 +1,55 @@
 ---
-title: "Azure Stack 中的诊断"
-description: "如何收集诊断 Azure 堆栈中的日志文件"
+title: Azure Stack 中的诊断
+description: 如何收集日志文件以在 Azure Stack 中进行诊断
 services: azure-stack
 author: jeffgilb
 manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 04/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: e823aeb4291b3e765b35181c24b41fa58c170cca
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 28e1939d3c9cb5a9b9080e60230ad5600ad8a6a3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="azure-stack-diagnostics-tools"></a>Azure 堆栈诊断工具
+# <a name="azure-stack-diagnostics-tools"></a>Azure Stack 诊断工具
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
- 
-Azure 堆栈为协同工作，并且彼此交互的组件的大型集合。 所有这些组件都会生成其自己唯一的日志。 这会使诊断问题具有挑战性的任务，尤其是对于来自多个交互 Azure 堆栈组件的错误。 
+Azure Stack 是一个大型集合，其中的组件可以一起工作并互相交互。 所有这些组件会生成自己独特的日志。 这样一来，问题可能就难以诊断，尤其是在错误来自多个交互的 Azure Stack 组件的情况下。 
 
-我们的诊断工具帮助确保日志回收机制很容易也很有效。 下图显示如何在 Azure 堆栈工作中日志收集工具：
+我们的诊断工具有助于确保日志收集机制易用且高效。 下图演示了如何在 Azure Stack 中使用日志收集工具：
 
-![Azure 堆栈诊断工具](media/azure-stack-diagnostics/get-azslogs.png)
+![Azure Stack 诊断工具](media/azure-stack-diagnostics/get-azslogs.png)
  
  
 ## <a name="trace-collector"></a>跟踪收集器
  
-跟踪收集器默认启用的并在后台以从 Azure 堆栈组件服务收集所有事件跟踪的 Windows (ETW) 日志持续运行。 ETW 日志存储在具有五个天期限限制的常见本地共享。 一旦达到此限制，如创建新的被删除最旧的文件。 每个文件允许的默认最大大小为 200 MB。 大小检查发生每 2 分钟，并且当前文件是 > = 200 MB 时，将其保存并生成一个新文件。 生成每个事件会话的总文件大小上也没有 8 GB 的限制。 
+跟踪收集器默认启用，可以在后台持续运行，以便从 Azure Stack 组件服务收集所有 Windows 事件跟踪 (ETW) 日志。 ETW 日志存储在一个常用的本地共享中，其时间限制为五天。 一旦达到此限制，就会在创建新文件时删除最旧的文件。 每个文件默认允许的最大大小为 200 MB。 每 2 分钟进行一次大小检查，如果当前文件 >= 200 MB，则会保存该文件并生成新文件。 按事件会话生成的文件的总大小也存在 8 GB 的限制。 
 
-## <a name="log-collection-tool"></a>日志收集工具
+## <a name="log-collection-tool"></a>日志集合工具
  
-PowerShell cmdlet **Get AzureStackLog**可以用于从 Azure 堆栈环境中的所有组件中收集日志。 它将它们保存在用户定义的位置中的 zip 文件中。 如果 Azure 堆栈技术支持团队需要你日志来帮助解决问题，它们可能会要求你运行此工具。
+可以使用 PowerShell cmdlet **Get-AzureStackLog** 从 Azure Stack 环境中的所有组件收集日志。 此工具将日志以 zip 文件形式保存在用户定义的位置。 如果 Azure Stack 技术支持团队需要日志来排查问题，他们可能要求你运行此工具。
 
 > [!CAUTION]
-> 这些日志文件可能包含个人身份信息 (PII)。 考虑到这种之前你公开发布的任何日志文件。
+> 这些日志文件可能包含个人身份信息 (PII)。 在公开发布任何日志文件之前，请考虑到这一因素。
  
-收集某些示例日志类型如下：
-*   **Azure 堆栈部署日志**
+下面是一些收集的示例日志类型：
+*   **Azure Stack 部署日志**
 *   **Windows 事件日志**
 *   **Panther 日志**
 *   **群集日志**
 *   **存储诊断日志**
 *   **ETW 日志**
 
-这些文件收集，并在共享中保存的跟踪收集器。 **Get AzureStackLog**然后可以使用 PowerShell cmdlet 收集它们在必要时。
+这些文件由跟踪收集器收集并保存在共享中。 然后，可以根据需要使用 **Get-AzureStackLog** PowerShell cmdlet 来收集它们。
  
-### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>若要在 Azure 堆栈开发工具包 (ASDK) 的系统上运行 Get AzureStackLog
-1. 以登录**AzureStack\CloudAdmin**主机上。
+### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>在 Azure Stack 开发工具包 (ASDK) 系统上运行 Get-AzureStackLog
+1. 在主机上以 **AzureStack\CloudAdmin** 身份登录。
 2. 以管理员身份打开 PowerShell 窗口。
-3. 运行**Get AzureStackLog** PowerShell cmdlet。
+3. 运行 **Get-AzureStackLog** PowerShell cmdlet。
 
 **示例：**
 
@@ -61,27 +59,56 @@ PowerShell cmdlet **Get AzureStackLog**可以用于从 Azure 堆栈环境中的�
   Get-AzureStackLog -OutputPath C:\AzureStackLogs
   ```
 
-  从 VirtualMachines 和 BareMetal 角色收集的日志：
+  从 VirtualMachines 和 BareMetal 角色收集日志：
 
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal
   ```
 
-  与过去 8 小时内筛选日志文件的日期，从 VirtualMachines 和 BareMetal 角色中收集日志：
+  从 VirtualMachines 和 BareMetal 角色收集日志，通过日期筛选功能筛选出过去 8 小时的日志文件：
     
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
   ```
 
-  收集从 VirtualMachines 和 BareMetal 角色，日期为 8 小时前到 2 小时前之间的时间段筛选日志文件日志：
+  从 VirtualMachines 和 BareMetal 角色收集日志，通过日期筛选功能筛选出 8 小时前到 2 小时前这个时间段的日志文件：
 
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-### <a name="to-run-get-azurestacklog-on-an-azure-stack-integrated-system"></a>若要在 Azure 堆栈上运行 Get AzureStackLog 集成系统
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1804-and-later"></a>若要在 Azure 堆栈上运行 Get AzureStackLog 集成系统版本 1804年及更高版本
 
-若要在一个集成的系统上运行日志收集工具，你需要能够访问到特权终结点 (PEP)。 下面是你可以运行使用 PEP 以在集成的系统上收集的日志的一个示例脚本：
+若要在集成系统上运行日志收集工具，需访问特权终结点 (PEP)。 下面是一个可以通过 PEP 来运行的示例脚本，用于在集成系统上收集日志：
+
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+ 
+$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+ 
+$shareCred = Get-Credential
+ 
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+ 
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+
+if($s)
+{
+    Remove-PSSession $s
+}
+```
+
+- 参数**OutputSharePath**和**OutputShareCredential**用于将日志上载到外部的共享文件夹。
+- 如上一示例所示，可以使用 **FromDate** 和 **ToDate** 参数来收集特定时间段的日志。 在某些情况下（例如，在集成系统上应用更新包以后收集日志），可以使用这种方法。
+
+
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1803-and-earlier"></a>若要在 Azure 堆栈上运行 Get AzureStackLog 集成系统版本 1803年及更早版本
+
+若要在集成系统上运行日志收集工具，需访问特权终结点 (PEP)。 下面是一个可以通过 PEP 来运行的示例脚本，用于在集成系统上收集日志：
 
 ```powershell
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
@@ -104,58 +131,68 @@ if($s)
 }
 ```
 
-- 当从 PEP 收集日志时，请指定**OutputPath**参数是硬件生命周期主机 (HLH) 计算机上的位置。 另外，请确保位置进行加密。
-- 参数**OutputSharePath**和**OutputShareCredential**是可选的将日志上载到外部的共享文件夹时使用。 使用这些参数*此外*到**OutputPath**。 如果**OutputPath**未指定，则日志收集工具用于存储 PEP VM 的系统驱动器。 这可能会导致脚本失败，因为驱动器空间有限制。
-- 在前面的示例所示**FromDate**和**ToDate**参数可以用于在特定时间段内收集日志。 这可以上用场的各种方案，例如在集成的系统上应用的更新包后收集日志。
+- 从 PEP 收集日志时，请将 **OutputPath** 参数指定为硬件生命周期主机 (HLH) 计算机上的一个位置。 另外，请确保该位置已加密。
+- 参数 **OutputSharePath** 和 **OutputShareCredential** 为可选参数，在将日志上传到外部共享文件夹时使用。 请在 **OutputPath** 的基础上使用这些参数。 如果 **OutputPath** 未指定，日志收集工具会使用 PEP VM 的系统驱动器进行存储。 这可能导致脚本故障，因为驱动器空间有限。
+- 如上一示例所示，可以使用 **FromDate** 和 **ToDate** 参数来收集特定时间段的日志。 在某些情况下（例如，在集成系统上应用更新包以后收集日志），可以使用这种方法。
 
-### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>参数注意事项 ASDK 和集成的系统
 
-- 如果**FromDate**和**ToDate**不指定参数，默认情况下过去的四个小时内收集日志。
-- 你可以使用**TimeOutInMinutes**参数来设置日志收集的超时。 它是默认设置为 150 （2.5 小时数）。
+### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>ASDK 系统和集成系统的参数考虑事项
 
-- 目前，你可以使用**FilterByRole**参数的以下角色的筛选器日志收集：
+- 如果未指定 **FromDate** 和 **ToDate** 参数，则默认收集过去四小时的日志。
+- 可以使用 **TimeOutInMinutes** 参数设置日志收集的超时。 它默认设置为 150（2.5 小时）。
+
+- 目前，可以使用 **FilterByRole** 参数按以下角色筛选日志收集：
 
    |   |   |   |
    | - | - | - |
-   | ACSMigrationService     | ACSMonitoringService   | ACSSettingsService |
-   | ACS                     | ACSFabric              | ACSFrontEnd        |
-   | ACSTableMaster          | ACSTableServer         | ACSWac             |
-   | ADFS                    | ASAppGateway           | BareMetal          |
-   | BRP                     | CA                     | CPI                |
-   | CRP                     | DeploymentMachine      | DHCP               |
-   | 域                  | ECE                    | ECESeedRing        | 
-   | FabricRing              | FabricRingServices     | FRP                |
-   | 网关                 | HealthMonitoring       | HRP                |   
-   | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
-   | KeyVaultControlPlane    | KeyVaultDataPlane      | NC                 |   
-   | NonPrivilegedAppGateway | NRP                    | SeedRing           |
-   | SeedRingServices        | SLB                    | SQL                |   
-   | SRP                     | 存储                | StorageController  |
-   | URP                     | UsageBridge            | VirtualMachines    |  
-   | WAS                     | WASPUBLIC              | WDS                |
+   | ACS                    | DeploymentMachine                | NC                         |
+   | ACSBlob                | DiskRP                           | 网络                    |
+   | ACSFabric              | 域                           | NonPrivilegedAppGateway    |
+   | ACSFrontEnd            | ECE                              | NRP                        |
+   | ACSMetrics             | 外部 Dns                      | OEM                        |
+   | ACSMigrationService    | Fabric                           | PXE                        |
+   | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
+   | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
+   | ACSTableMaster         | FRP                              | SLB                        |   
+   | ACSTableServer         | 库                          | SlbVips                    |
+   | ACSWac                 | 网关                          | SQL                        |   
+   | ADFS                   | HealthMonitoring                 | SRP                        |
+   | ASAppGateway           | HRP                              | 存储                    |   
+   | NCAzureBridge          | IBC                              | StorageAccounts            |    
+   | AzurePackConnector     | IdentityProvider                 | StorageController          |  
+   | AzureStackBitlocker    | Idn                             | 租户                     |
+   | BareMetal              | InfraServiceController           | TraceCollector             |
+   | BRP                    | 基础结构                   | URP                        |
+   | CA                     | KeyVaultAdminResourceProvider    | UsageBridge                |
+   | 云                  | KeyVaultControlPlane             | VirtualMachines            |
+   | 群集                | KeyVaultDataPlane                | WAS                        |
+   | 计算                | KeyVaultInternalControlPlane     | WASBootstrap               |
+   | CPI                    | KeyVaultInternalDataPlane        | WASPUBLIC                  |
+   | CRP                    | KeyVaultNamingService            |                            |
+   | DatacenterIntegration  | MonitoringAgent                  |                            |
+   |                        |                                  |                            |
 
+### <a name="bkmk_gui"></a>使用图形用户界面收集日志
+而不是提供 Get AzureStackLog cmdlet 来检索 Azure 堆栈日志所需的参数，你还可以利用位于主 Azure 堆栈工具 GitHub 工具存储库在可用的开放源代码 Azure 堆栈工具http://aka.ms/AzureStackTools。
 
-### <a name="bkmk_gui"></a>收集日志使用图形用户界面
-而不是提供 Get AzureStackLog cmdlet 来检索 Azure 堆栈日志所需的参数，你还可以利用位于主 Azure 堆栈工具 GitHub 工具存储库在 http://aka.ms/AzureStackTools 可用的开放源代码 Azure 堆栈工具。
-
-**ERCS_AzureStackLogs.ps1** PowerShell 脚本存储在 GitHub 工具存储库，并定期更新。 若要确保你有可用的最新版本，您应直接从 http://aka.ms/ERCS 下载它。 从管理的 PowerShell 会话中启动，此脚本连接到特权终结点，并使用提供的参数运行 Get AzureStackLog。 如果未不提供任何参数，该脚本将默认为提示输入通过图形用户界面的参数。
+**ERCS_AzureStackLogs.ps1** PowerShell 脚本存储在 GitHub 工具存储库中，并定期进行更新。 若要确保你有可用的最新版本，你应下载它直接从http://aka.ms/ERCS。 从 PowerShell 管理会话启动以后，此脚本会连接到特权终结点并使用提供的参数运行 Get-AzureStackLog。 如果未提供参数，此脚本会默认通过图形用户界面提示你提供参数。
 
 若要了解有关 ERCS_AzureStackLogs.ps1 PowerShell 脚本的详细信息，你可以观看[简短视频](https://www.youtube.com/watch?v=Utt7pLsXEBc)或查看脚本的[自述文件](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md)位于 Azure 堆栈工具 GitHub 存储库。 
 
 ### <a name="additional-considerations"></a>其他注意事项
 
-* 该命令需要一些时间，以基于收集日志的角色运行。 相关因素还包括日志收集和 Azure 堆栈环境中的节点数目为指定的持续时间。
-* 日志收集完成后，检查中创建的新文件夹**OutputPath**命令中指定的参数。
-* 每个角色具有在单个 zip 文件内的其日志。 根据收集的日志的大小，一个角色可拥有其拆分为多个 zip 文件中的日志。 对于此类角色，如果你想要解压缩到的单个文件夹中的所有日志文件，使用一种工具，可以将解压缩成批 （如 7zip)。 选择用于角色中，所有的压缩的文件，然后选择**此处提取**。 这会解压缩单个合并文件夹中的角色的所有日志的文件。
-* 文件调用**Get AzureStackLog_Output.log**也在包含压缩的日志文件的文件夹中创建。 此文件是命令输出中，可以用于日志收集过程中的疑难解答问题的日志。
-* 若要调查特定的失败，日志可能需要从多个组件。
-    -   系统和基础结构的所有 Vm 的事件日志中收集*VirtualMachines*角色。
-    -   系统和所有主机的事件日志中收集*BareMetal*角色。
-    -   故障转移群集和 HYPER-V 事件日志中收集*存储*角色。
-    -   在收集 ACS 日志*存储*和*ACS*角色。
+* 此命令需要一些时间来运行，具体取决于日志所收集的角色。 影响因素还包括指定用于日志收集的时限，以及 Azure Stack 环境中的节点数。
+* 记录集合运行，请检查中创建的新文件夹**OutputSharePath**命令中指定的参数。
+* 每个角色的日志位于各个 zip 文件中。 根据所收集日志的大小，一个角色的日志可能会拆分成多个 zip 文件。 对于此类角色，如果需要将所有日志文件解压缩到单个文件夹中，请使用可以批量解压缩的工具（例如 7zip）。 选择角色的所有压缩文件，然后选择“解压缩到此处”。 这样就会将该角色的所有日志文件解压缩到单个合并的文件夹中。
+* 在压缩的日志文件所在的文件夹中，还会创建名为 **Get-AzureStackLog_Output.log** 的文件。 此文件是一个命令输出日志，可以用来排查日志收集过程中的问题。
+* 调查某个特定的故障时，可能需要多个组件中的日志。
+    -   所有基础结构 VM 的系统和事件日志收集在 *VirtualMachines* 角色中。
+    -   所有主机的系统和事件日志收集在 *BareMetal* 角色中。
+    -   故障转移群集和 Hyper-V 事件日志收集在“存储”角色中。
+    -   ACS 日志收集在“存储”角色和 *ACS* 角色中。
 
 > [!NOTE]
-> 请务必确保高效利用你的存储空间，以确保它不获取淹没日志将会根据收集的日志会强制实施大小和保留时间限制。 但是，在诊断问题时你有时需要可能不再存在由于这些限制的日志。 因此，它是**强烈建议**卸载你的日志传输到的外部存储空间 （Azure 中的存储帐户，一个其他本地存储设备等） 每隔 8 至 12 个小时，并使其存在 1-3 个月，具体取决于你要求。 此外，确保此存储位置进行加密。
+> 会对收集的日志强制实施大小和保留时间限制，因为必须确保对存储空间进行有效的利用，从而确保该空间不会充斥着日志。 但是，在诊断问题时，有时可能需要某些日志，但这些日志可能因为这些限制而不再存在了。 因此，**强烈建议**你每隔 8 到 12 小时就将日志卸载到外部存储空间（Azure 中的存储帐户、其他本地存储设备，等等）并在该处保留 1 - 3 月，具体取决于你的要求。 另外，请确保该存储位置已加密。
 
 ## <a name="next-steps"></a>后续步骤
 [Microsoft Azure Stack 故障排除](azure-stack-troubleshooting.md)

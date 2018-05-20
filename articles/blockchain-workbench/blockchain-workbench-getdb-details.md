@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: bf7cc85e823e6630dbd3278bc91fba85f404059f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 63b718bcb8722c5fd501891d162eadfae9fb8ec2
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>获取有关 Azure Blockchain Workbench 数据库的信息
 
@@ -48,4 +48,5 @@ ms.lasthandoff: 05/08/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Blockchain Workbench 中的数据库视图](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Azure Blockchain Workbench 中的数据库视图](blockchain-workbench-database-views.md)

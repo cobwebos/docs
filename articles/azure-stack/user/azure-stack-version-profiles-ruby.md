@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 98d285bf8ec92e7b6baf709d4796ce2f4420c4f2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd8130ac12f9c7c2095f9329dc4ce8a34187cf62
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>使用 Ruby Azure 堆栈中的 API 版本配置文件
 
@@ -36,7 +36,7 @@ API 配置文件是资源提供程序和服务版本的组合。 API 配置文�
  - 若要使用最新的 api 版本的服务，使用**最新**特定 gem 的配置文件。 例如，如果你想要使用最新的 api 版本的单独的计算服务，则使用**最新**配置文件的**计算**gem。
  - 若要使用的服务特定的 api 版本，请使用 gem 内部定义的特定 API 版本。
 
-> [!note] 
+> [!Note]   
 > 你可以组合所有相同的应用程序中的选项。
 
 ## <a name="install-the-azure-ruby-sdk"></a>安装 Azure Ruby SDK
@@ -96,10 +96,11 @@ Gem，azure_sdk，是 Ruby SDK 中所有受支持的 gem 的汇总。 此 gem �
 Microsoft Azure 资源管理器是一个管理框架，允许管理员部署、 管理和监视 Azure 资源。 Azure 资源管理器可以处理这些任务，作为一个组，而不是单独进行，在单个操作中。
 
 你可以从资源管理器终结点获取元数据信息。 终结点返回的 JSON 文件与运行你的代码所需的信息。
-  > [!note]  
-  > **ResourceManagerUrl**中 Azure 堆栈开发工具包 (ASDK) 是： `https://management.local.azurestack.external/`  
-  > **ResourceManagerUrl**在集成的系统都是： `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
-  > 若要检索所需的元数据： `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+
+  > [!Note]  
+  > Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`  
+  > 集成系统中的 **ResourceManagerUrl** 为：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
+  > 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
   示例 JSON 文件：
 
@@ -208,7 +209,7 @@ end
 
 若要运行示例，请确保你已安装 Ruby。 如果你使用的 Visual Studio Code，作为扩展以及下载 Ruby SDK。 
 
-> [!note]  
+> [!Note]  
 > 获取在示例存储库"[管理 Azure 资源和资源组与 Ruby](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)"。
 
 1. 克隆存储库。
@@ -243,7 +244,7 @@ end
   - 导出 AZURE_SUBSCRIPTION_ID = {你的订阅 id}
   - 导出 ARM_ENDPOINT = {你 AzureStack 资源管理器 url}
 
-  > [!note]  
+  > [!Note]  
   > 在 Windows 上，而不是导出中使用组。
 
 4. 请确保位置变量设置为你 AzureStack 的位置。 例如本地 ="local"

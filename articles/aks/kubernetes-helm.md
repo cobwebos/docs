@@ -3,17 +3,17 @@ title: 使用 Helm 在 Kubernetes on Azure 中部署容器
 description: 使用 Helm 打包工具在 AKS 中的 Kubernetes 群集上部署容器
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/24/2018
+ms.date: 05/13/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c46bd64b3fec06e4ba4050542f27ba3e70862e45
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 70e13fb377be3ec501cce5170ed391aac8cb6e5d
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-helm-with-azure-kubernetes-service-aks"></a>结合使用 Helm 与 Azure Kubernetes 服务 (AKS)
 
@@ -53,7 +53,7 @@ Bash completion has been installed to:
 [helm init][helm-init] 命令用来在 Kubernetes 群集中安装 Helm 组件和配置客户端。 运行以下命令在 AKS 群集安装 Helm 并配置 Helm 客户端。
 
 ```azurecli-interactive
-helm init
+helm init --upgrade --service-account default
 ```
 
 输出：
@@ -118,7 +118,7 @@ Update Complete. ⎈ Happy Helming!⎈
 若要部署 NGINX 入口控制器，请使用 [helm install][helm-install] 命令。
 
 ```azurecli-interactive
-helm install stable/nginx-ingress
+helm install stable/nginx-ingress --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
 ```
 
 输出看起来类似于以下内容，但包括更多信息，例如有关如何使用 Kubernetes 部署的说明。

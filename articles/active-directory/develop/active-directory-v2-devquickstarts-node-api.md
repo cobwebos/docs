@@ -1,25 +1,27 @@
 ---
-title: "使用 Node.js 保护 Azure Active Directory v2.0 Web API | Microsoft Docs"
-description: "了解如何构建一个可从个人 Microsoft 帐户及公司或学校帐户接受令牌的 Node.js Web API。"
+title: 使用 Node.js 保护 Azure Active Directory v2.0 Web API | Microsoft Docs
+description: 了解如何构建一个可从个人 Microsoft 帐户及公司或学校帐户接受令牌的 Node.js Web API。
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0b572fc1-2aaf-4cb6-82de-63010fb1941d
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 05/13/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f07e421feedf3c82da7be16434891cdbe6069038
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19ad25c7b08ff073097cacf3be359772ca0a327f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>使用 Node.js 保护 Web API
 > [!NOTE]

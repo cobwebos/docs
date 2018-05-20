@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 5/04/2018
 ms.author: deguhath
-ms.openlocfilehash: 03104b497034ef92ddb2c6216d6e9200e65168b0
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ce349aedc6b733d34ab61eb2e23b378727e01800
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>将数据转移到 Azure SQL 数据库以便在 Azure 机器学习中处理
 本主题概述了用于将数据从平面文件（CSV 或 TSV 格式）或从本地 SQL Server 中存储的数据移到 Azure SQL 数据库的选项。 将数据移到云中的这些任务是“团队数据科学流程”的一部分。
@@ -33,8 +33,8 @@ ms.lasthandoff: 05/03/2018
 
 | <b>源</b> | <b>目标：Azure SQL 数据库</b> |
 | --- | --- |
-| <b>平面文件（CSV 或 TSV 格式）</b> |<a href="#bulk-insert-sql-query">批量插入 SQL 查询 |
-| <b>本地 SQL Server</b> |1.<a href="#export-flat-file">导出到平面文件<br> 2.<a href="#insert-tables-bcp">SQL 数据库迁移向导<br> 3.<a href="#db-migration">数据库备份和还原<br> 4.<a href="#adf">Azure 数据工厂 |
+| <b>平面文件（CSV 或 TSV 格式）</b> |[批量插入 SQL 查询](#bulk-insert-sql-query) |
+| <b>本地 SQL Server</b> |1. [导出到平面文件](#export-flat-file)<br> 2.[SQL 数据库迁移向导](#insert-tables-bcp)<br> 3.[数据库备份和还原](#db-migration)<br> 4.[Azure 数据工厂](#adf) |
 
 ## <a name="prereqs"></a>先决条件
 此处所述的过程要求具有：

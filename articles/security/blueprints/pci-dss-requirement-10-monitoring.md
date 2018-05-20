@@ -3,7 +3,7 @@ title: Azure 付款处理蓝图 - 监视要求
 description: PCI DSS 要求 10
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 293a1673-54bc-478c-9400-231074004eee
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 708c57c1d7b79d3fd3c129de9a7ce4099ab6ac36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: d3d26d31c592c34d1e51c3e2c2d6501edefa8dce
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="monitoring-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的监视要求 
 ## <a name="pci-dss-requirement-10"></a>PCI DSS 要求 10
@@ -288,7 +288,7 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="pci-dss-requirement-108"></a>PCI DSS 要求 10.8
 
-**10.8** **仅适用于服务提供商的其他要求：**实施一个流程来及时检测和报告关键安全控制系统的故障，包括但不限于以下系统的故障：
+**10.8** **仅适用于服务提供商的其他要求：** 实施一个流程来及时检测和报告关键安全控制系统的故障，包括但不限于以下系统的故障：
 - 防火墙
 - IDS/IPS
 - FIM
@@ -314,7 +314,7 @@ ms.lasthandoff: 04/16/2018
 
 ### <a name="pci-dss-requirement-1081"></a>PCI DSS 要求 10.8.1
 
-**10.8.1** **仅适用于服务提供商的其他要求：**及时响应任何关键安全控制的故障。 响应安全控制中的故障时，相关流程必须包括：
+**10.8.1** **仅适用于服务提供商的其他要求：** 及时响应任何关键安全控制的故障。 响应安全控制中的故障时，相关流程必须包括：
 - 还原安全功能
 - 确定并记录安全故障的时长（从开始到结束的日期和时间）
 - 确定并记录故障原因，包括根本原因，并记录解决根本原因需要采取的修正措施

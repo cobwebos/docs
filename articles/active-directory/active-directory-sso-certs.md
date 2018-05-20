@@ -1,24 +1,24 @@
 ---
-title: "在 Azure AD 中管理联合身份验证证书 | Microsoft Docs"
-description: "了解如何自定义联合证书的过期日期，以及如何续订即将过期的证书。"
+title: 在 Azure AD 中管理联合身份验证证书 | Microsoft Docs
+description: 了解如何自定义联合证书的过期日期，以及如何续订即将过期的证书。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jeevansd
 manager: mtillman
-editor: 
-ms.assetid: f516f7f0-b25a-4901-8247-f5964666ce23
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 2247b668584c7bb501043917f98e77c7c5cecfdc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 97a70781adaaaa5fd661474336373e70a3923ef5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
 本文包含 Azure Active Directory (Azure AD) 为了与 SaaS 应用程序建立联合单一登录 (SSO) 而创建的证书的相关常见问题和信息。 从 Azure AD 应用库或使用非库应用程序模板添加应用程序。 使用联合 SSO 选项配置应用程序。
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/11/2017
 
     ![生成新证书](./media/active-directory-sso-certs/create_new_certficate.png)
 
-5. “新建证书”链接将打开日历控件。 可设置任意日期和时间（自当前日期起三年内）。 所选日期和时间即为新证书的到期日期和时间。 单击“保存” 。
+5. “新建证书”链接将打开日历控件。 可设置任意日期和时间（自当前日期起三年内）。 所选日期和时间即为新证书的到期日期和时间。 单击“ **保存**”。
 
     ![下载然后上传证书](./media/active-directory-sso-certs/certifcate_date_selection.PNG)
 

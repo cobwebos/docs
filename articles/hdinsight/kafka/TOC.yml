@@ -40,6 +40,8 @@
   items:
     - name: 启用自动创建主题功能
       href: apache-kafka-auto-create-topics.md
+    - name: 将 Kafka 与 IoT 中心配合使用
+      href: apache-kafka-connector-iot-hub.md
     - name: 安装 HDInsight 应用
       href: ../hdinsight-apps-install-applications.md
       maintainContext: true

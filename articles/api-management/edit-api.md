@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 门户编辑 API | Microsoft Docs"
-description: "本教程演示如何使用 API 管理 (APIM) 编辑 API。"
+title: 使用 Azure 门户编辑 API | Microsoft Docs
+description: 本教程演示如何使用 API 管理 (APIM) 编辑 API。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 362c36181da706e3fe0a27cc5ab262271c2a1e57
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: b39259fcfc93cb0a2a1a2dc600e5235da8cc6930
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="edit-an-api"></a>编辑 API
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/04/2017
 ![编辑 API](./media/edit-api/edit-api001.png)
 
 1. 单击 **API** 选项卡。
-2. 选择以前导入的一个 API。
+2. 选择以前导入的某个 API。
 3. 选择“设计”选项卡。
 4. 选择要编辑的操作。
 5. 若要重命名该操作，请在“前端”窗口中选择“铅笔”。

@@ -3,24 +3,24 @@ title: Azure 上的 Kubernetes 教程 - 准备应用
 description: AKS 教程 - 准备应用
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8a2c2e53ed04cf00cc02135c5e5f82ded18fc2bc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 50c302ddc7bad9cd2de666c1b99d1fbc6d5a62a8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-prepare-application-for-azure-container-service-aks"></a>教程：准备用于 Azure 容器服务 (AKS) 的应用程序
+# <a name="tutorial-prepare-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
-在本教程的第 1 部分（共 8 部分）中，将准备一个要在 Kubernetes 中使用的多容器应用程序。 已完成的步骤包括：  
+在本教程的第 1 部分（共 8 部分）中，将准备一个要在 Kubernetes 中使用的多容器应用程序。 已完成的步骤包括：
 
 > [!div class="checklist"]
-> * 克隆 GitHub 中的应用程序源  
+> * 克隆 GitHub 中的应用程序源
 > * 根据应用程序源创建容器映像
 > * 在本地 Docker 环境中测试应用程序
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程假定基本了解核心 Docker 的概念，如容器、容器映像和基本的 Docker 命令。 如有需要，请参阅 [Docker 入门][docker-get-started]，了解容器基本知识。 
+本教程假定基本了解核心 Docker 的概念，如容器、容器映像和基本的 Docker 命令。 如有需要，请参阅 [Docker 入门][docker-get-started]，了解容器基本知识。
 
 若要完成本教程，需要 Docker 开发环境。 Docker 提供的包可在任何 [Mac][docker-for-mac]、[Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系统上轻松配置 Docker。
 
@@ -40,7 +40,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 ## <a name="get-application-code"></a>获取应用程序代码
 
-本教程使用的示例应用程序是一个基本的投票应用。 该应用程序由前端 Web 组件和后端 Redis 实例组成。 Web 组件打包到自定义容器映像中。 Redis 实例使用 Docker 中心提供的未修改的映像。  
+本教程使用的示例应用程序是一个基本的投票应用。 该应用程序由前端 Web 组件和后端 Redis 实例组成。 Web 组件打包到自定义容器映像中。 Redis 实例使用 Docker 中心提供的未修改的映像。
 
 使用 git 可将应用程序的副本下载到开发环境。
 
@@ -54,7 +54,7 @@ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 cd azure-voting-app-redis
 ```
 
-目录内包含应用程序源代码、预创建的 Docker Compose 文件和 Kubernetes 清单文件。 整套教程都会使用这些文件。 
+目录内包含应用程序源代码、预创建的 Docker Compose 文件和 Kubernetes 清单文件。 整套教程都会使用这些文件。
 
 ## <a name="create-container-images"></a>创建容器映像
 
@@ -97,7 +97,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>在本地测试应用程序
 
-浏览到 http://localhost:8080 查看正在运行的应用程序。
+浏览到 http://localhost:8080查看正在运行的应用程序。
 
 ![Azure 上的 Kubernetes 群集映像](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
@@ -124,7 +124,7 @@ docker-compose down
 本教程测试了应用程序并针对应用程序创建了容器映像。 已完成以下步骤：
 
 > [!div class="checklist"]
-> * 克隆 GitHub 中的应用程序源  
+> * 克隆 GitHub 中的应用程序源
 > * 根据应用程序源创建容器映像
 > * 在本地 Docker 环境中测试应用程序
 

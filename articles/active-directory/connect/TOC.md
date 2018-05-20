@@ -83,7 +83,8 @@
 
 
 ## 故障排除
-### [连接](active-directory-aadconnect-troubleshoot-connectivity.md)
+### [Azure AD 与 Azure AD Connect 的连接](active-directory-aadconnect-troubleshoot-connectivity.md)
+### [SQL 连接](active-directory-aadconnect-tshoot-sql-connectivity.md)
 ### [同步过程中出错](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [对象不同步](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [使用故障排除任务进行对象同步](active-directory-aadconnect-troubleshoot-objectsync.md)

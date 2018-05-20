@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Bambu by Sprout Social 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Bambu by Sprout Social 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Bambu by Sprout Social 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Bambu by Sprout Social 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 7cc057263f2b2fc5f83201b2edcb519e682b2ffc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4fe3c9d3a603ef822a53031d0fda866efc4aaded
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>教程：Azure Active Directory 与 Bambu by Sprout Social 集成
 
@@ -27,17 +27,9 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在 Azure AD 中控制哪些人有权访问 Bambu by Sprout Social
 - 用户可以使用其 Azure AD 帐户自动登录到 Bambu by Sprout Social（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
-
-<!--## Overview
-
-To enable single sign-on with Bambu by Sprout Social, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Bambu by Sprout Social.
-
->[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,25 +39,25 @@ To enable single sign-on with Bambu by Sprout Social, it must be configured to u
 - 已启用 Bambu by Sprout Social 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
-- 不应使用生产环境，除非有此必要。
+- 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Bambu by Sprout Social
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-bambu-by-sprout-social-from-the-gallery"></a>从库中添加 Bambu by Sprout Social
 要配置 Bambu by Sprout Social 与 Azure AD 的集成，需要从库中将 Bambu by Sprout Social 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Bambu by Sprout Social，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -178,7 +170,7 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-bambu-by-sprout-social-test-user"></a>创建 Bambu by Sprout Social 测试用户
 
@@ -223,7 +215,7 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

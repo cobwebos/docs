@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: b6de4f1df56d1ec80ed74c98f4e3a1db9d206612
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 35a45947c2766ccc5e64f4c3523ce163a9680680
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中使用应用程序
 
@@ -80,4 +80,5 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-[如何排查 Azure Blockchain Workbench 问题](blockchain-workbench-troubleshooting.md)
+> [!div class="nextstepaction"]
+> [如何排查 Azure Blockchain Workbench 问题](blockchain-workbench-troubleshooting.md)

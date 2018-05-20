@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: d71f9fc2b69e1a99b518c2317cccde712ab40fec
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2d3219f6f2617fec941e308febb2e47efa184170
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>使用 Azure 媒体服务实时传送视频流概述
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 05/07/2018
   > 当需要长时间处理多个事件，并且已经在本地编码器上进行了投入时，则可使用直通这种最经济的方法来实时传送视频流。 请参阅 [定价](https://azure.microsoft.com/pricing/details/media-services/) 详细信息。
   > 
   > 
-* 本地实时编码器（采用以下格式之一：RTMP 或平滑流式处理（分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。 还支持 RTP (MPEG-TS)，但前提是拥有到 Azure 数据中心的专用连接。 以下提供 RTMP 输出的实时编码器可以使用此类型的通道：Telestream Wirecast、FMLE。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
+* 本地实时编码器（采用以下格式之一：RTMP 或平滑流式处理（分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。 以下提供 RTMP 输出的实时编码器可以使用此类型的通道：Telestream Wirecast、FMLE。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
 
 从媒体服务2.10 发行版开始，在创建频道时，可以指定你想要频道接收输入流的方式，以及是否想要频道对流执行实时编码。 可以使用两个选项：
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 05/07/2018
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 最大分辨率，层数 |1080p，8 层，60+fps |720p，6 层，30 fps |
-| 输入协议 |RTMP、平滑流 |RTMP、平滑流和 RTP |
+| 输入协议 |RTMP、平滑流 |RTMP、平滑流 |
 | 价格 |请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡 |请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/) |
 | 最长运行时间 |全天候运行 |8 小时 |
 | 支持插入静态图像 |否 |是 |

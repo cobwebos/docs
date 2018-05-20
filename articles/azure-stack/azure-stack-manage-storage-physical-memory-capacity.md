@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: 7dc4cfe580246b0f34073113f790ca3b5057995d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: dc572353c2e27ddfbae2398f1aece56586955e26
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
+<!---Loc Comment: Please, check the comment in coversation section---> 
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>管理 Azure Stack 的物理内存容量
 
 *适用于：Azure Stack 集成系统*
@@ -28,7 +29,7 @@ ms.lasthandoff: 05/10/2018
 若要增加 Azure Stack 的总可用内存容量，可以添加更多内存。 在 Azure Stack 中，物理服务器也称为*缩放单位节点*。 所有属于单一缩放单位的缩放单位节点都必须具有相同的内存量。
 
 > [!note]  
-> 在继续之前，请查阅你硬件制造商的文档，请参阅如果你的供应商支持的物理内存升级。 OEM 硬件供应商支持协定可能需要他们执行的物理服务器机架布局和设备的固件更新。
+> 在继续之前，请参考硬件制造商提供的文档，了解如果您的制造商支持物理内存升级。 OEM 硬件供应商支持合同可能会要求供应商进行物理服务器机架放置和设备固件更新。
 
 以下流程图显示将内存添加到每个缩放单位节点的一般过程。
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 70b07cae9a1dc8b45e27f95e19fbc84f06a0b6d3
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 20b289c16a73bd20ed020987116975c8abe893f0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 SQL 数据库
 使用 Azure 堆栈 SQL Server 资源提供程序作为 Azure 堆栈的服务公开 SQL 数据库。 在 SQL 资源提供程序 VM，这是 Windows Server 内核的虚拟机上运行的 SQL 资源提供程序服务。
@@ -73,6 +73,8 @@ SQL 资源提供程序部署开始，并创建 system.local.sqladapter 资源组
 | **卸载** | 删除资源提供程序和所有关联的资源（请参阅下面的注释）。 | 否 |
 | **DebugMode** | 防止在失败时自动清除。 | 否 |
 
+>[!NOTE]
+> SKU 最长可能需要在一小时后才显示在门户中。 在创建 SKU 之前，无法创建数据库。
 
 
 ## <a name="deploy-the-sql-resource-provider-using-a-custom-script"></a>部署 SQL 资源提供程序使用自定义脚本

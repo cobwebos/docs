@@ -6,19 +6,19 @@
       href: cache-overview.md
 - name: 快速入门
   items:
-    - name: ASP.NET
+    - name: 创建 ASP.NET 应用
       href: cache-web-app-howto.md
-    - name: .NET
+    - name: 创建 .NET 应用
       href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: 节点
+    - name: 创建 Node.js 应用
       href: cache-nodejs-get-started.md
-    - name: Java
+    - name: 创建 Java 应用
       href: cache-java-get-started.md
-    - name: Python
+    - name: 创建 Python 应用
       href: cache-python-get-started.md
 - name: 教程
   items:
-    - name: 缓存排行榜
+    - name: 将缓存用于排名
       href: cache-web-app-cache-aside-leaderboard.md
 - name: 示例
   items:

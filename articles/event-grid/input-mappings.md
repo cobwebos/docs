@@ -6,17 +6,19 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08d1e1ad93eb69d6749860348d13a64078ed1993
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e809f83b43c32031b66c8f470575da6e9fcdc56
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>将自定义字段映射到事件网格架构
 
 即使事件数据与预期的[事件网格架构](event-schema.md)不匹配，也仍然可以使用事件网格将事件路由到订阅服务器。 本文介绍如何将你的架构映射到事件网格架构。
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="original-event-schema"></a>原始事件架构
 
@@ -47,6 +49,10 @@ ms.lasthandoff: 05/07/2018
 以下示例创建包含某些映射字段和默认字段的自定义主题：
 
 ```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create \
   -n demotopic \
   -l eastus2 \

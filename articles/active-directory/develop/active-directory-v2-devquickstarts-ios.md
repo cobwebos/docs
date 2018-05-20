@@ -1,25 +1,25 @@
 ---
-title: "使用 Azure AD v2.0 终结点将登录添加到 iOS 应用程序 | Microsoft Docs"
-description: "如何通过第三方库生成一个使用个人 Microsoft 帐户和工作或学校帐户来登录用户的 iOS 应用。"
+title: 使用 Azure AD v2.0 终结点将登录添加到 iOS 应用程序 | Microsoft Docs
+description: 如何通过第三方库生成一个使用个人 Microsoft 帐户和工作或学校帐户来登录用户的 iOS 应用。
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: CelesteDG
 manager: mtillman
-editor: 
 ms.assetid: fd3603c0-42f7-438c-87b5-a52d20d6344b
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: celested
+ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 398ddbd004b4a12f4aa79ed64cc85f0e5bc5407a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7476417e6585976ea2404a83602a6d9aa77d9c7a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>使用 v2.0 终结点，通过图形 API 将登录添加到使用第三方库的 iOS 应用
 Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect。 开发人员可以使用任何想要的库来与我们的服务集成。 为了帮助开发人员将我们的平台与其他库结合使用，我们撰写了数篇演练（例如本演练），演示如何配置第三方库，使其连接到 Microsoft 标识平台。 大部分实施 [RFC6749 OAuth2 规范](https://tools.ietf.org/html/rfc6749)的库都能连接到 Microsoft 标识平台。
@@ -41,7 +41,7 @@ v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。
 > 
 
 ## <a name="download-code-from-github"></a>从 GitHub 下载代码
-本教程的代码 [在 GitHub 上](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2)维护。  若要遵照该代码，可以[下载 .zip 格式的应用骨架](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip)，或克隆该骨架：
+本教程的代码 [在 GitHub 上](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2)维护。 若要遵照该代码，可以[下载 .zip 格式的应用骨架](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip)，或克隆该骨架：
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.git
@@ -54,7 +54,7 @@ git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.g
 ```
 
 ## <a name="register-an-app"></a>注册应用程序
-在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)创建新应用，或按照 [如何使用 v2.0 终结点注册应用](active-directory-v2-app-registration.md)中的详细步骤操作。  请确保：
+在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)创建新应用，或按照 [如何使用 v2.0 终结点注册应用](active-directory-v2-app-registration.md)中的详细步骤操作。 请确保：
 
 * 复制分配给应用的**应用程序 ID**，因为稍后将要用到。
 * 为应用添加**移动**平台。
@@ -124,7 +124,7 @@ NXOAuth2Client 库要求设置一些值。 完成该任务之后，可以使用�
 
 让我们看看关于代码的详细信息。
 
-第一个字符串用于 `scopes`。  通过 `User.Read` 值可读取已登录用户的基本配置文件。
+第一个字符串用于 `scopes`。 通过 `User.Read` 值可读取已登录用户的基本配置文件。
 
 可在 [Microsoft Graph 权限范围](https://graph.microsoft.io/docs/authorization/permission_scopes)中了解有关所有可用范围的详细信息。
 

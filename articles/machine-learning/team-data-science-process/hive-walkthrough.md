@@ -1,9 +1,9 @@
 ---
-title: "了解 Hadoop 群集中的数据以及如何在 Azure 机器学习中创建模型 | Microsoft 文档"
-description: "对于采用 HDInsight Hadoop 群集的端到端方案，使用 Team Data Science Process 来构建和部署模型。"
+title: 了解 Hadoop 群集中的数据以及如何在 Azure 机器学习中创建模型 | Microsoft 文档
+description: 对于采用 HDInsight Hadoop 群集的端到端方案，使用 Team Data Science Process 来构建和部署模型。
 services: machine-learning,hdinsight
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: e9e76c91-d0f6-483d-bae7-2d3157b86aa0
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 4671493c23bfed72517e436dd6922f4ef8a213b0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: deguhath
+ms.openlocfilehash: 6f16b7524bc8c268ed3a2314b8b88d25eb2f4325
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process 的工作原理：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](http://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
@@ -723,7 +723,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 下面是有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
-**HCatalog 服务器 URI**：如果群集名为 **abc123**，则其 URI 为：https://abc123.azurehdinsight.net。
+**HCatalog 服务器 URI**：如果群集名称为“abc123”，则其 URI 即为：https://abc123.azurehdinsight.net。
 
 **Hadoop 用户帐户名称**：为群集选择的用户名（不是远程访问用户名）。
 
@@ -761,7 +761,7 @@ Azure 容器名称：这是群集的默认容器名称，通常与群集名称�
 
 - **二元分类**：预测某个行程是否支付小费。
 
-  **使用的学习器：**双类逻辑回归
+  **使用的学习器：** 双类逻辑回归
 
   a. 对于此问题，目标（或类）标签为 **tipped**。 原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 具体而言，**tip\_class**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列，不将其纳入考虑。
 
@@ -781,7 +781,7 @@ Azure 容器名称：这是群集的默认容器名称，通常与群集名称�
 
 - **多类分类**：使用以前定义的类预测为行程支付的小费金额范围。
 
-  **使用的学习器：**多类逻辑回归
+  **使用的学习器：** 多类逻辑回归
 
   a. 对于此问题，我们的目标（或类）标签为 **tip\_class**，其取值有五种选择（0、1、2、3、4）。 与二元分类的情况类似，我们也具有几个作为此实验的目标泄漏的列。 具体而言，**tipped**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
 
@@ -801,7 +801,7 @@ Azure 容器名称：这是群集的默认容器名称，通常与群集名称�
 
 - **回归任务**：预测为行程支付的小费数量。
 
-  **使用的学习器：**提升决策树
+  **使用的学习器：** 提升决策树
 
   a. 对于此问题，目标（或类）标签为 **tip\_amount**。 在本例中，目标泄漏为：**tipped**、**tip\_class** 和 **total\_amount**。 所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
 

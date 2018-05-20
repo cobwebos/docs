@@ -1,8 +1,8 @@
 ---
-title: "最终用户身份验证：通过 Azure Active Directory 将 Python 与 Data Lake Store 配合使用 | Microsoft Docs"
-description: "了解如何通过 Python 使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证"
+title: 最终用户身份验证：通过 Azure Active Directory 将 Python 与 Data Lake Store 配合使用 | Microsoft Docs
+description: 了解如何通过 Python 使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 1fa8df760ac22ae915765895b498f21d628eea76
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 7f582683245505fe1ff161e4461dd34690a1ab0a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-python"></a>使用 Python 进行 Data Lake Store 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/10/2018
 
 本文将讨论这两个选项。 有关使用 Python 的 Data Lake Store 服务到服务身份验证，请参阅[使用 Python 通过 Data Lake Store 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-python.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/10/2018
 若要通过 Python 使用 Data Lake Store，需要安装三个模块。
 
 * `azure-mgmt-resource` 模块，包括用于 Active Directory 的 Azure 模块，等等。
-* `azure-mgmt-datalake-store`模块，包括 Azure Data Lake Store 帐户管理操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Store 管理模块参考](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)。
+* `azure-mgmt-datalake-store`模块，包括 Azure Data Lake Store 帐户管理操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Store 管理模块参考](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)。
 * `azure-datalake-store` 模块，包括 Azure Data Lake Store 文件系统操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Store 文件系统模块参考](http://azure-datalake-store.readthedocs.io/en/latest/)。
 
 使用以下命令安装这些模块。

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ns
 ms.date: 04/20//2018
 ms.author: kgremban
-ms.openlocfilehash: 8b95bb18f2e8941c10f7bcdf6a60e7fda6ab0ea5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0f1d3a5f714a2202836f477e78a30aa080947239
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="send-telemetry-from-a-device-to-an-iot-hub-swift"></a>将遥测数据从设备发送到 IoT 中心 (Swift)
 
@@ -80,6 +80,8 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id myiOSdevice
    ```
 
+    如果为设备选择不同名称，则在运行示例应用程序之前，请在其中更新设备名称。
+
 1. 运行以下命令，获取刚注册设备的设备连接字符串：
 
    ```azurecli-interactive
@@ -110,7 +112,7 @@ CocoaPods 管理那些使用第三方库的 iOS 项目的依赖项。
 cd quickstart/sample-device
 ```
 
-确保 XCode 已关闭，然后运行以下命令，以便安装在 **podfile** 文件中声明的 CocoaPods：
+确保 XCode 已关闭，运行以下命令，以便安装在 **podfile** 文件中声明的 CocoaPods：
 
 ```sh
 pod install

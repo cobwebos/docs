@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric 安全性清单 | Microsoft Docs"
-description: "本文介绍了一组 Azure Service Fabric 安全性清单。"
+title: Azure Service Fabric 安全性清单 | Microsoft Docs
+description: 本文介绍了一组 Azure Service Fabric 安全性清单。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 526f10bab30b7d0fae796e47f5a27a58428b9a3b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ef404b106d600f5cb25a46319d75c8978148b466
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Azure Service Fabric 安全性清单
 本文提供的易用清单有助于保护 Azure Service Fabric 环境。
@@ -43,7 +43,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 |ClientCertificateThumbprints| <ul><li>这是需要在经过身份验证的客户端上安装的一组证书。 </li></ul>|
 |ClientCertificateCommonNames| <ul><li>在 CertificateCommonName 中设置第一个客户端证书的通用名称。 CertificateIssuerThumbprint 是此证书的颁发者的指纹。 </li></ul>|
 |ReverseProxyCertificate| <ul><li>如果想要保护[反向代理](https://docs.microsoft.com/en-in/azure/service-fabric/service-fabric-reverseproxy)，可以选择指定此证书。 </li></ul>|
-|密钥保管库| <ul><li>用于管理 Azure 中 Service Fabric 群集的证书。  </li></ul>|
+|Key Vault| <ul><li>用于管理 Azure 中 Service Fabric 群集的证书。  </li></ul>|
 
 
 ## <a name="next-steps"></a>后续步骤

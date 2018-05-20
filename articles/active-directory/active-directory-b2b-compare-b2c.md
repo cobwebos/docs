@@ -2,25 +2,19 @@
 title: 在 Azure Active Directory 中比较 B2B 协作和 B2C | Microsoft Docs
 description: Azure Active Directory B2B 协作和 Azure AD B2C 之间的区别是什么？
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 03/15/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 32d7d135e67a05b59279e647c1fb2aa8c9686cef
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0e8781fcf2710b00ba352bff29a370cbb73e0648
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>在 Azure Active Directory 中比较 B2B 协作和 B2C
 
@@ -41,16 +35,6 @@ B2B 协作功能 |     Azure AD B2C 独立产品/服务
 
 ### <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
+- [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [B2B 协作用户属性](active-directory-b2b-user-properties.md)
 
-* [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B 协作用户属性](active-directory-b2b-user-properties.md)
-* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
-* [委托 B2B 协作邀请](active-directory-b2b-delegate-invitations.md)
-* [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
-* [为 B2B 协作配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
-* [B2B 协作用户令牌](active-directory-b2b-user-token.md)
-* [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
-* [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
-* [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)
-* [获取对 B2B 协作的支持](active-directory-b2b-support.md)

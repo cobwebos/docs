@@ -73,6 +73,16 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 4- 部署 API 管理与 Service Fabric
           href: service-fabric-tutorial-deploy-api-management.md
+    - name: 在 AWS 上创建独立群集
+      items:
+        - name: 1- 在 AWS 上创建基础结构
+          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 2 - 设置 Service Fabric
+          href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
+        - name: 3- 将应用程序部署到群集
+          href: service-fabric-tutorial-standalone-install-an-application.md
+        - name: 4- 清理群集和删除基础结构
+          href: service-fabric-tutorial-standalone-clean-up.md
 - name: 示例
   items:
     - name: 代码示例

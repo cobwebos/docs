@@ -1,9 +1,9 @@
 ---
-title: "Azure 付款处理蓝图 - 高级概述"
-description: "Azure 付款处理蓝图 - 客户责任矩阵（概述）"
+title: Azure 付款处理蓝图 - 高级概述
+description: Azure 付款处理蓝图 - 客户责任矩阵（概述）
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 23cf68d8-bebd-4ac4-a194-39e052281c0e
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 49acce706f09fe08b257ce8a8554de5da20060a1
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 4c36f50b5c4ceba911003ec7a633dcab8724c6e0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="pci-dss-requirements---high-level-overview"></a>PCI DSS 要求 - 高级概述
 
@@ -34,5 +34,5 @@ ms.lasthandoff: 11/16/2017
 | **维护漏洞<br/>管理程序** | 5.[保护所有系统免受恶意软件威胁，并定期更新防病毒软件或程序](pci-dss-requirement-5-malware.md)<br/><br/> 6.[开发并维护安全系统和应用程序](pci-dss-requirement-6-secure-system.md) |
 | **实现强访问<br/>控制措施** | 7.[按需要知道的业务限制对持卡人数据的访问](pci-dss-requirement-7-access.md)<br/><br/> 8.[标识并验证对系统组件的访问](pci-dss-requirement-8-identity.md) <br/><br/> 9.[限制对持卡人数据的物理访问](pci-dss-requirement-9-physical-access.md) |
 | **定期监视和<br/>测试网络** | 10.[跟踪并监视对网络资源和持卡人数据的所有访问](pci-dss-requirement-10-monitoring.md) <br/><br/> 11.[定期测试安全系统和进程](pci-dss-requirement-11-testing.md) |
-| **维护信息<br/>安全策略** | 12.[维护用于处理所有人员的信息安全性的策略](pci-dss-requirement-12-policy.md) |
+| **维护信息<br/>安全策略** | 12.[维护用于解决所有人员的信息安全性问题的策略](pci-dss-requirement-12-policy.md) |
 

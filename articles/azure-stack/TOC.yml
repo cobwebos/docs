@@ -6,14 +6,14 @@
       href: azure-stack-poc.md
     - name: 发行说明
       items:
+        - name: 1804 更新
+          href: azure-stack-update-1804.md
         - name: 1803 更新
           href: azure-stack-update-1803.md
         - name: 1802 更新
           href: azure-stack-update-1802.md
         - name: 1712 更新
           href: azure-stack-update-1712.md
-        - name: 1711 更新
-          href: azure-stack-update-1711.md
 - name: 快速入门
   expanded: true
   items:
@@ -111,8 +111,6 @@
               href: azure-stack-powershell-download.md
             - name: 配置 PowerShell - 云操作员
               href: azure-stack-powershell-configure-admin.md
-            - name: 使用 PowerShell 启动并运行
-              href: azure-stack-powershell-configure-quickstart.md
         - name: 特权终结点
           href: azure-stack-privileged-endpoint.md
         - name: 管理更新

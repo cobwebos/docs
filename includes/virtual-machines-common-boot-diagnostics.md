@@ -1,4 +1,4 @@
-Azure 现在提供对两种调试功能的支持：控制台输出和屏幕截图支持，适用于 Azure 虚拟机 Resource Manager 部署模型。 
+Azure 现在提供对两种调试功能的支持：控制台输出和屏幕截图支持，适用于 Azure 虚拟机资源管理器部署模型。 
 
 将自己的映像加载到 Azure 或者启动某个平台映像时，可能会因为许多原因而导致虚拟机进入无法启动状态。 有了这些功能，就可以轻松进行诊断，将虚拟机从启动故障恢复。
 
@@ -29,15 +29,20 @@ Azure 现在提供对两种调试功能的支持：控制台输出和屏幕截�
 - [启动故障或 INACCESSIBLE_BOOT_DEVICE](https://support.microsoft.com/help/4010143)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>对新虚拟机启用诊断
-1. 从预览门户创建新的虚拟机时，请从部署模型下拉列表中选择 **Azure Resource Manager** ：
+1. 从 Azure 门户创建新的虚拟机时，请从部署模型下拉列表中选择“Azure 资源管理器”：
  
-    ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot3.jpg)
+    ![资源管理器](./media/virtual-machines-common-boot-diagnostics/screenshot3.jpg)
 
-2. 配置“监视”选项，选择要在其中放置这些诊断文件的存储帐户。
+2. 在“设置”中启用“启动诊断”，然后选择要在其中放置这些诊断文件的存储帐户。
  
-    ![创建 VM](./media/virtual-machines-common-boot-diagnostics/screenshot4.jpg)
+    ![创建 VM](./media/virtual-machines-common-boot-diagnostics/create-storage-account.png)
 
-3. 要从 Azure Resource Manager 模板进行部署，请导航到虚拟机资源，并追加诊断配置文件部分。 记得使用“2015-06-15”API 版本标头。
+    > [!NOTE]
+    > 启动诊断功能不支持高级存储帐户。 如果使用高级存储帐户进行启动诊断，则可能会在启动 VM 时收到 StorageAccountTypeNotSupported 错误。
+    >
+    > 
+
+3. 若要从 Azure 资源管理器模板进行部署，请导航到虚拟机资源，并追加诊断配置文件部分。 记得使用“2015-06-15”API 版本标头。
 
     ```json
     {
@@ -61,9 +66,16 @@ Azure 现在提供对两种调试功能的支持：控制台输出和屏幕截�
 
 若要部署启用了启动诊断功能的示例虚拟机，请在此处查看我们的存储库。
 
-## <a name="update-an-existing-virtual-machine"></a>更新现有虚拟机 ##
+## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>在现有的虚拟机上启用启动诊断 
 
-为了通过门户启用启动诊断功能，还可以通过门户更新现有虚拟机。 选择“启动诊断”选项，并选择“保存”。 重新启动 VM，使设置生效。
+若要在现有的虚拟机上启用启动诊断，请执行以下步骤：
 
-![更新现有 VM](./media/virtual-machines-common-boot-diagnostics/screenshot5.png)
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择虚拟机。
+2. 在“支持 + 故障排除”中选择“启动诊断” > “设置”，将状态更改为“启用”，然后选择一个存储帐户。 
+4. 确保选中“启动诊断”选项，然后保存所做的更改。
+
+    ![更新现有 VM](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
+
+3. 重新启动 VM，使设置生效。
+
 

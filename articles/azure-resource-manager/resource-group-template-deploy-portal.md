@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure 门户部署 Azure 资源 | Microsoft Docs"
-description: "使用 Azure 门户和 Azure Resource Manager 来部署资源。"
+title: 使用 Azure 门户部署 Azure 资源 | Microsoft Docs
+description: 使用 Azure 门户和 Azure Resource Manager 来部署资源。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 39680d4e70cc47cfa119b3a46e8d51ea87fa618d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0174f688cb3fd04fdd41714d54a7371319bae951
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>使用 Resource Manager 模板和 Azure 门户部署资源
 
 本主题演示了如何将 [Azure 门户](https://portal.azure.com)与 [Azure 资源管理器](resource-group-overview.md)配合使用，以部署 Azure 资源。 若要了解有关管理资源的信息，请参阅[通过门户管理 Azure 资源](resource-group-portal.md)。
+
+[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="create-resource-group"></a>创建资源组
 
@@ -83,7 +85,7 @@ ms.lasthandoff: 02/21/2018
 
    ![搜索模板部署](./media/resource-group-template-deploy-portal/search-template.png)
 
-1. 选择“创建”。
+1. 选择**创建**。
 
    ![选择“创建”](./media/resource-group-template-deploy-portal/show-template-option.png)
 

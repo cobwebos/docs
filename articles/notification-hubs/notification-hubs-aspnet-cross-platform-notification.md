@@ -1,24 +1,24 @@
 ---
-title: "使用 Azure 通知中心向用户发送跨平台通知 (ASP.NET)"
-description: "了解如何使用通知中心模板在单个请求中发送针对所有平台的平台未知通知。"
+title: 使用 Azure 通知中心向用户发送跨平台通知 (ASP.NET)
+description: 了解如何使用通知中心模板在单个请求中发送针对所有平台的平台未知通知。
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 3c6dde338cb154f0cbe02642e4ff0f81d070aa25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 95793aac3c25563e3af39f3c47cebdd06e25e35f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>使用通知中心向用户发送跨平台通知
 在上一教程[使用通知中心通知用户]中，我们了解了如何向注册给经过身份验证的特定用户的所有设备推送通知。 在该教程中，需要使用多个请求将通知发送到每个支持的客户端平台。 Azure 通知中心支持模板，可以通过模板指定特定设备要如何接收通知。 此方法简化了发送跨平台通知的方式。 
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/11/2017
 5. 再次运行客户端应用并验证注册是否已成功。
 
 6. （可选）将客户端应用部署到第二个设备，然后运行该应用。
-    请注意通知会显示在每个设备上。
+    通知会显示在每个设备上。
 
 ## <a name="next-steps"></a>后续步骤
 现在，已完成本教程，请从以下主题中查找有关通知中心和模板的更多信息：

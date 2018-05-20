@@ -45,14 +45,14 @@
           href: delete-cluster.md
     - name: 配置数据卷
       items:
-        - name: Kubernetes 卷 - 磁盘
-          href: azure-disk-volume.md
-        - name: Kubernetes 卷 - 文件
-          href: azure-files-volume.md
-        - name: 永久性卷 - 磁盘
+        - name: AzureDisk 动态预配
           href: azure-disks-dynamic-pv.md
-        - name: 永久性卷 - 文件
+        - name: AzureDisk 静态预配
+          href: azure-disk-volume.md
+        - name: AzureFile 动态预配
           href: azure-files-dynamic-pv.md
+        - name: AzureFile 静态预配
+          href: azure-files-volume.md
     - name: 配置网络
       items:
         - name: 网络概述

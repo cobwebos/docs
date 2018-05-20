@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 7290c12e7d96ac01c66d97103920793f98120b38
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0aa87aeaf852d7309c29c1298e326c101a944904
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 
@@ -48,81 +48,6 @@ Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满�
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
 > 
-
-## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>指定 Azure Cosmos DB 中的请求单位容量
-
-可以指定希望为一个或一组容器保留的每秒请求单位数（每秒 RU 数）。 Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容器并拆分/重新均衡分区中不断增长的数据。
-
-在单个容器级别分配 RU/秒时，可以将容器创建为*固定*或*无限制*模式。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 若要创建无限制容器，必须指定最低 1,000 RU/秒的吞吐量和一个[分区键](partition-data.md)。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（一百到几百万个非重复值）的分区键。 通过选择具有大量非重复值的分区键，可以确保 Azure Cosmos DB 能够统一缩放容器/表/图形与请求。 
-
-在一组容器中分配 RU/秒时，会将属于该组的容器视为“无限制”容器，必须指定一个分区键。
-
-![预配一个容器和一组容器的请求单位数][6]
-
-> [!NOTE]
-> 分区键是一个逻辑边界而不是物理边界。 因此，不需要限制非重复分区键值的数目。 事实上，分区键值宁多勿少，因为 Azure Cosmos DB 提供的负载均衡选项较多。
-
-以下代码片段使用 SQL API 的 .NET SDK 创建每秒 3,000 个请求单位（适用于单个容器）的容器：
-
-```csharp
-DocumentCollection myCollection = new DocumentCollection();
-myCollection.Id = "coll";
-myCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(
-    UriFactory.CreateDatabaseUri("db"),
-    myCollection,
-    new RequestOptions { OfferThroughput = 3000 });
-```
-
-以下代码片段使用 SQL API 的 .NET SDK 为一组容器预配每秒 100,000 个请求单位的吞吐量：
-
-```csharp
-// Provision 100,000 RU/sec at the database level. 
-// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
-// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
-Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
-
-DocumentCollection sharedCollection1 = new DocumentCollection();
-sharedCollection1.Id = "sharedCollection1";
-sharedCollection1.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
-
-DocumentCollection sharedCollection2 = new DocumentCollection();
-sharedCollection2.Id = "sharedCollection2";
-sharedCollection2.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
-
-DocumentCollection dedicatedCollection = new DocumentCollection();
-dedicatedCollection.Id = "dedicatedCollection";
-dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
-```
-
-
-Azure Cosmos DB 运行一个保留模型来预配吞吐量。 也就是说，用户需要根据保留的吞吐量付费，不管实际使用的吞吐量是多少。 随着应用程序的负载、数据和使用模式的更改，可以通过 SDK 或 [Azure 门户](https://portal.azure.com)轻松增加和减少保留的 RU 数。
-
-每个或每组容器都会映射到 Azure Cosmos DB 中的 `Offer` 资源，该资源包含有关预配吞吐量的元数据。 可以通过查找容器的相应服务资源，并使用新的吞吐量值来对它进行更新，来更改分配的吞吐量。 以下代码片段使用 .NET SDK 将容器的吞吐量更改为每秒 5,000 个请求单位：
-
-```csharp
-// Fetch the resource to be updated
-// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
-Offer offer = client.CreateOfferQuery()
-                .Where(r => r.ResourceLink == collection.SelfLink)    
-                .AsEnumerable()
-                .SingleOrDefault();
-
-// Set the throughput to 5000 request units per second
-offer = new OfferV2(offer, 5000);
-
-// Now persist these changes to the database by replacing the original resource
-await client.ReplaceOfferAsync(offer);
-```
-
-更改吞吐量不会影响一个或一组容器的可用性。 通常，新的保留吞吐量在几秒内就会在应用程序上生效。
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>全局分布式数据库中的吞吐量隔离
 
@@ -347,6 +272,11 @@ await client.ReplaceOfferAsync(offer);
 如果存在多个高于请求速率的请求操作，则默认重试行为可能无法满足需要，这时客户端就会向应用程序引发 `DocumentClientException`，其状态代码为 429。 在这种情况下，可以考虑处理应用程序错误处理例程中的重试行为和逻辑，或为一个（或一组）容器增加预配的吞吐量。
 
 ## <a name="next-steps"></a>后续步骤
+ 
+若要了解如何使用 Azure 门户和 SDK 设置和获取吞吐量，请参阅：
+
+* [在 Azure Cosmos DB 中设置和获取吞吐量](set-throughput.md)
+
 若要了解有关 Azure Cosmos DB 数据库的保留吞吐量的详细信息，请浏览以下资源：
 
 * [Azure Cosmos DB 定价](https://azure.microsoft.com/pricing/details/cosmos-db/)
@@ -360,4 +290,4 @@ await client.ReplaceOfferAsync(offer);
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
-[6]: ./media/request-units/provisioning_set_containers.png
+

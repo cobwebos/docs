@@ -7,17 +7,18 @@ author: daveba
 manager: mtillman
 editor: daveba
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 1237040b32975f3481fb7750d4878651932b74cc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 9c5b1270f93c1c6331b8e18db8b5137f19bc18d3
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>使用 Windows VM 托管服务标识通过访问密钥访问 Azure 存储
 
@@ -56,7 +57,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
 
-通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
+通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，和在 VM 上配置该标识。
 
 1. 导航到新虚拟机的资源组，并选择已在上一步中创建的虚拟机。
 2. 在左侧的 VM“设置”下，单击“配置”。
@@ -115,7 +116,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
 4. 使用 Powershell 的 Invoke-WebRequest，向本地 MSI 终结点发出请求以获取 Azure 资源管理器的访问令牌。
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F -Method GET -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]

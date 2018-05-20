@@ -1,23 +1,23 @@
 ---
-title: "Azure 通知中心中 APNS 的基于令牌的 (HTTP/2) 身份验证 | Microsoft Docs"
-description: "本主题说明如何利用 APNS 的新令牌身份验证"
+title: Azure 通知中心中 APNS 的基于令牌的 (HTTP/2) 身份验证 | Microsoft Docs
+description: 本主题说明如何利用 APNS 的新令牌身份验证
 services: notification-hubs
 documentationcenter: .net
-author: kpiteira
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/17/2017
-ms.author: kapiteir
-ms.openlocfilehash: 5a21bcd9f12fc3f96b17a556ba15526c35ababe2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: ca86130e9c184576fc44119190d6224a363c6561
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS 的基于令牌的 (HTTP/2) 身份验证
 ## <a name="overview"></a>概述
@@ -75,8 +75,8 @@ ms.lasthandoff: 10/11/2017
 可以使用我们的[管理 API](https://msdn.microsoft.com/library/azure/dn495827.aspx) 将通知中心更新为使用基于令牌的身份验证。
 根据要配置的应用程序是“沙盒”应用还是“生产”应用（在 Apple 开发人员帐户中指定），使用相应终结点之一：
 
-- “沙盒”终结点：[https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
-- “生产”终结点：[https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
+- 沙盒终结点：[https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
+- 生产终结点：[https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
 
 > [!IMPORTANT]
 > 基于令牌的身份验证需要的 API 版本为：2017-04 或更高版本。

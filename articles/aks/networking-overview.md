@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: marsma
-ms.openlocfilehash: 80d12d1f5d6b388c46ed90eb84b7bc00250e17ff
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 818bae2e05f6a3256ccbf0cbcc901dd337b9a260
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络配置
 
@@ -86,7 +86,7 @@ Pod 和群集节点的 IP 地址是从 VNet 中指定的子网分配的。 为�
 
   不会。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一 VNet 中，但必须部署在不同的子网中。
 
-* *是否可以配置基于 Pod 的网络策略？
+* *是否可以配置基于 Pod 的网络策略？*
 
   不会。 目前不支持基于 Pod 的网络策略。
 

@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -114,6 +114,7 @@ ms.lasthandoff: 05/07/2018
 * Application Insights
 * 自动化
 * Azure Cosmos DB
+* Azure 中继
 * Batch
 * 必应地图
 * CDN
@@ -130,6 +131,7 @@ ms.lasthandoff: 05/07/2018
 * IoT 中心
 * Key Vault
 * 负载均衡器 - 请参阅[负载均衡器限制](#lb-limitations)
+* Log Analytics
 * 逻辑应用
 * 机器学习 - 机器学习工作室 Web 服务可以移动到同一订阅中的资源组，但不能移动到不同订阅中。 其他机器学习资源可以跨订阅进行移动。
 * 媒体服务
@@ -137,7 +139,7 @@ ms.lasthandoff: 05/07/2018
 * 通知中心
 * 操作见解
 * 操作管理
-* Power BI
+* Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
 * Redis 缓存
 * 计划程序
@@ -148,7 +150,7 @@ ms.lasthandoff: 05/07/2018
 * 存储
 * 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 流分析 - 当流分析作业处于运行状态时，则无法进行移动。
-* SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 这包括 Azure SQL 数据库和 Azure SQL 数据仓库数据库。 
+* SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。 
 * 流量管理器
 * 虚拟机 - 包含托管磁盘的 VM 无法移动。 请参阅[虚拟机限制](#virtual-machines-limitations)
 * 虚拟机（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
@@ -164,6 +166,8 @@ ms.lasthandoff: 05/07/2018
 * AD 混合运行状况服务
 * 应用程序网关
 * Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure Migrate
 * BizTalk 服务
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
 * Kubernetes 服务
@@ -189,6 +193,11 @@ ms.lasthandoff: 05/07/2018
 * 基于托管磁盘创建的快照
 * 包含托管磁盘的虚拟机的可用性集
 
+虽然不能移动托管磁盘，但可以创建一个副本，然后从现有的托管磁盘创建新的虚拟机。 有关详细信息，请参阅：
+
+* 使用 [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) 或 [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md) 将托管磁盘复制到同一订阅或不同订阅
+* 通过将现有托管 OS 磁盘与 [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) 或 [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md) 配合使用来创建虚拟机。
+
 无法资源组或订阅之间移动基于附加了计划的 Marketplace 资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 
 证书存储在 Key Vault 中的虚拟机可以移动到同一订阅中的新资源组，但无法跨订阅进行移动。
@@ -200,6 +209,8 @@ ms.lasthandoff: 05/07/2018
 若要移动对等的虚拟网络，必须首先禁用虚拟网络对等互连。 在禁用后，可以移动虚拟网络。 在移动后，重新启用虚拟网络对等互连。
 
 如果虚拟网络的任何子网包含资源导航链接，则无法将虚拟网络移动到其他订阅。 例如，如果 Redis 缓存资源部署到某个子网，则该子网具有资源导航链接。
+
+如果虚拟网络包含自定义 DNS 服务器，则无法将虚拟网络移动到其他订阅。 若要移动虚拟网络，请将它设置为默认的（Azure 提供的）DNS 服务器。 移动以后，请重新配置自定义 DNS 服务器。
 
 ## <a name="app-service-limitations"></a>应用服务限制
 

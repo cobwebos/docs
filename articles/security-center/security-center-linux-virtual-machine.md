@@ -4,7 +4,7 @@ description: 本文档可帮助理解 Azure 安全中心如何能够保护 Azure
 services: security-center
 documentationcenter: na
 author: terrylan
-manager: swadhwa
+manager: mbaldwin
 editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: e08444cbfdb095c79d164de06dda078c6a242b3f
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d75750372c240edfa821c692cd6254f4ad60f4c4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure 安全中心与 Azure Linux 虚拟机
 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。

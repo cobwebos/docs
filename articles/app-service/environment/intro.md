@@ -11,26 +11,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6be6bb3b6b75b278a7c28307d93d6273c5bb18d6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  
 ## <a name="overview"></a>概述 ##
 
-Azure 应用服务环境是一项 Azure 应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用。 此功能可托管 Web 应用、[移动应用][mobileapps]、API 应用和 [Functions][Functions]。
+Azure 应用服务环境是一项 Azure 应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用。 此功能可以托管：
+
+* Windows Web 应用
+* Linux Web 应用（预览版）
+* Docker 容器（预览版）
+* 移动应用
+* 函数
 
 应用服务环境 (ASE) 适用于有以下要求的应用程序工作负荷：
 
-- 极高的缩放性。
-- 隔离和安全网络访问。
-- 高内存利用率。
+* 极高的缩放性。
+* 隔离和安全网络访问。
+* 高内存利用率。
 
 客户可以在单个 Azure 区域或多个 Azure 区域创建多个 ASE。 这种灵活性使得 ASE 非常适合用于水平缩放无状态应用程序层，以支持高 RPS 工作负荷。
 
@@ -39,7 +45,7 @@ ASE 可在隔离后只运行单个客户的应用程序，并可始终部署到�
 * ASE 通过安全网络访问可以实现大规模应用托管。 有关详细信息，请参阅 ASE上的 [AzureCon 深入探讨](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/)。
 * 可使用多个 ASE 进行水平缩放。 有关详细信息，请参阅[如何设置异地分布式应用布局](app-service-app-service-environment-geo-distributed-scale.md)。
 * 可使用 ASE 配置安全体系结构，如“AzureCon 深入探讨”中所示。 若要查看“AzureCon 深入探讨”中所示的安全体系结构的配置方式，请参阅有关如何使用应用服务环境实现[分层安全体系结构](app-service-app-service-environment-layered-security.md)的文章。
-* 在 ASE 中运行的应用的访问权限可能受到 Web 应用程序防火墙 (WAF) 等上游设备的管制。 有关详细信息，请参阅[为应用服务环境配置 WAF](app-service-app-service-environment-web-application-firewall.md)。
+* 在 ASE 中运行的应用的访问权限可能受到 Web 应用程序防火墙 (WAF) 等上游设备的管制。 有关详细信息，请参阅[借助 Azure 应用程序网关集成 ILB 应用服务环境][AppGW]。
 
 ## <a name="dedicated-environment"></a>专用环境 ##
 
@@ -59,7 +65,7 @@ ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的�
 
 ## <a name="virtual-network-support"></a>虚拟网络支持 ##
 
-只能在 Azure 资源管理器虚拟网络中创建 ASE。 若要了解有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络常见问题解答](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/)。 ASE 始终存在于虚拟网络之中，更准确地说，是在虚拟网络的子网内。 可使用虚拟网络的安全功能为应用控制入站和出站网络通信。
+ASE 功能直接将 Azure 应用服务部署到客户的 Azure 资源管理器虚拟网络。 若要了解有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络常见问题解答](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/)。 ASE 始终存在于虚拟网络之中，更准确地说，是在虚拟网络的子网内。 可使用虚拟网络的安全功能为应用控制入站和出站网络通信。
 
 ASE 既可以是面向 Internet 的（使用公共 IP 地址），也可以是面向内部的（只使用 Azure 内部负载均衡器 (ILB) 地址）。
 

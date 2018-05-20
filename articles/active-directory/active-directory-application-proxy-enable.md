@@ -3,28 +3,28 @@ title: Azure AD 应用代理 - 开始安装连接器| Microsoft Docs
 description: 在 Azure 门户中，打开应用程序代理并为反向代理安装连接器。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2c2e0f977cdf0d31da19f71d9260b500184858e9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d636542c788aff43acf9e35583b4c0615fe0c7db
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>开始使用应用程序代理并安装连接器
 本文指导完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
 
-如果你尚未意识到应用程序代理给你的组织带来的安全性和工作效率优势，请详细了解[如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)。
+如果你尚未意识到应用程序代理给你的组织带来的安全性和工作效率优势，请详细了解[如何提供对本地应用程序的安全远程访问](manage-apps/application-proxy.md)。
 
 ## <a name="application-proxy-prerequisites"></a>应用程序代理先决条件
 在启用和使用应用程序代理服务之前，需要：

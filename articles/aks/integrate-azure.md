@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: a29a3f27f7c9ab41724d400c9eb787e6888bedc4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdc97e9e28dd2af090c82378457b3c93b276cc58
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/16/2018
 
 * 使用 Azure 订阅上的参与者角色创建服务主体的权限
 
-* 现有的 Azure 容器服务 (AKS) 群集。 如果需要 AKS 群集，请参照[创建 AKS 群集][create-aks-cluster]操作，以便快速入门。
+* 现有 Azure Kubernetes 服务 (AKS) 群集。 如果需要 AKS 群集，请参照[创建 AKS 群集][create-aks-cluster]操作，以便快速入门。
 
 ## <a name="install-service-catalog"></a>安装服务目录
 
@@ -182,7 +182,7 @@ kubectl get secrets -n wordpress -o yaml
 
 ## <a name="next-steps"></a>后续步骤
 
-遵照此文章的说明，已将服务目录部署到 Azure 容器服务 (AKS) 群集。 并使用 Open Service Broker for Azure 部署了 WordPress 安装，后者使用 Azure 托管服务（在此例中为 Azure Database for MySQL）。
+遵照此文章的说明，已将服务目录部署到 Azure Kubernetes 服务 (AKS) 群集。 并使用 Open Service Broker for Azure 部署了 WordPress 安装，后者使用 Azure 托管服务（在此例中为 Azure Database for MySQL）。
 
 请参阅 [Azure/helm-charts][helm-charts] 存储库，以访问其他已更新的基于 OSBA 的 Helm 图表。 如需了解如何创建适用于 OSBA 的图表，请参阅[创建新图表][helm-create-new-chart]。
 

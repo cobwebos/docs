@@ -1,24 +1,24 @@
 ---
-title: "使用 PowerShell 部署和管理通知中心"
-description: "如何使用自动化 PowerShell 创建和管理通知中心"
+title: 使用 PowerShell 部署和管理通知中心
+description: 如何使用自动化 PowerShell 创建和管理通知中心
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 7c58f2c8-0399-42bc-9e1e-a7f073426451
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 4db058e4bd91dc287b14e887abc6c378c65c4a2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: d2350d8021925278d6362c8227d408476a569319
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 部署和管理通知中心
 ## <a name="overview"></a>概述
@@ -32,7 +32,6 @@ ms.lasthandoff: 10/11/2017
 不支持直接使用 Azure PowerShell 随附的 cmdlet 来管理通知中心。 在 PowerShell 中，最佳方法是引用 Microsoft.Azure.NotificationHubs.dll 程序集。 该程序集是随 [Microsoft Azure 通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)一起分发的。
 
 ## <a name="prerequisites"></a>先决条件
-在开始阅读本文前，必须具有：
 
 * Azure 订阅。 Azure 是基于订阅的平台。 有关获取订阅的详细信息，请参阅[购买选项]、[成员优惠]或[免费试用]。
 * 配备 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell]。
@@ -73,7 +72,7 @@ catch [System.Exception]
 ## <a name="create-the-namespacemanager-class"></a>创建 NamespaceManager 类
 若要预配通知中心，请从 SDK 创建 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) 类的实例。 
 
-可以使用 Azure PowerShell 随附的 [Get-AzureSBAuthorizationRule] cmdlet 检索用于提供连接字符串的授权规则。 我们会在 `$NamespaceManager` 变量中存储对 `NamespaceManager` 实例的引用。 我们将使用 `$NamespaceManager` 设置通知中心。
+可以使用 Azure PowerShell 随附的 [Get-AzureSBAuthorizationRule] cmdlet 检索用于提供连接字符串的授权规则。 对 `NamespaceManager` 实例的引用存储于 `$NamespaceManager` 变量中。 `$NamespaceManager` 用于设置通知中心。
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -87,7 +86,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 ## <a name="provisioning-a-new-notification-hub"></a>设置新通知中心
 若要预配新的通知中心，请使用[通知中心的 .NET API]。
 
-将在脚本的这个部分设置四个本地变量。 
+该脚本的此部分会设置四个本地变量。 
 
 1. `$Namespace`：将此变量设置为要创建通知中心的命名空间的名称。
 2. `$Path`：将此路径设置为新通知中心的名称。  例如“MyHub”。    
@@ -97,7 +96,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 这些变量可用于连接命名空间，以及创建配置为使用 Windows 应用 Windows 通知中心 (WNS) 凭据处理 WNS 通知的新通知中心。 有关获取包 SID 和机密密钥的信息，请参阅[通知中心入门](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程。 
 
 * 脚本代码段使用 `NamespaceManager` 对象来检查 `$Path` 标识的通知中心是否存在。
-* 如果不存在，脚本将使用 WNS 凭据创建 `NotificationHubDescription`，并将其传递给 `NamespaceManager` 类 `CreateNotificationHub` 方法。
+* 如果不存在，则脚本会使用 WNS 凭据创建 `NotificationHubDescription`，并将其传递给 `NamespaceManager` 类 `CreateNotificationHub` 方法。
 
 ``` powershell
 

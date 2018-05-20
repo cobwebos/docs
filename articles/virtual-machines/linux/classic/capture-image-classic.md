@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 29a1d5bc839fcf533973271638bf283d6e48e93b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6071e025352199c5ec559598a580a918c2e9c666
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>How to capture a classic Linux virtual machine as an image（如何捕获用作映像的经典 Linux 虚拟机）
 > [!IMPORTANT]
@@ -107,7 +107,7 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
 
 此外，也可以使用 [Azure 门户](http://portal.azure.com)创建自定义 VM，方法是使用**映像**方法并选择所创建的映像。 有关详细信息，请参阅[如何创建自定义 VM][How to Create a Custom Virtual Machine]。
 
-**另请参阅：**[Azure Linux 代理用户指南](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+**另请参阅：**[Azure Linux 代理用户指南](../../extensions/agent-linux.md)
 
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom-classic.md

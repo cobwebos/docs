@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/19/2018
 ms.author: sngun
-ms.openlocfilehash: a63a8577bda951613f60102475396f72ea1a4bdf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bab2728db7cdb410e995c30d69642c968ef6567d
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB：使用 .NET 和 Azure 门户生成 MongoDB API Web 应用
 
@@ -104,6 +104,24 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     ```cs
     collection.Find(new BsonDocument()).ToList();
     ```
+
+* 创建任务并将其插入到 MongoDB 集合
+
+   ```csharp
+    public void CreateTask(MyTask task)
+    {
+        var collection = GetTasksCollectionForEdit();
+        try
+        {
+            collection.InsertOne(task);
+        }
+        catch (MongoCommandException ex)
+        {
+            string msg = ex.Message;
+        }
+    }
+   ```
+   同样，可以使用 [collection.UpdateOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.updateOne/index.html) 和 [collection.DeleteOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.deleteOne/index.html) 方法更新和删除文档。 
 
 ## <a name="update-your-connection-string"></a>更新连接字符串
 

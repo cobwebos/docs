@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 79059fbd088d15ca62b39dacba766726119e6048
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d37913caa94dc4cf79aef9c2c12a7aacce7c03ce
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 体系结构
 
@@ -83,7 +83,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 区块链事�
 
 如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。 事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。 汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
 
-目前，Azure Key Vault 不支持对 Key Vault 中的区块链事务进行软件签名。 Blockchain Workbench 从 Key Vault 检索相应的私钥，并对 Key Vault 外部的事务签名。 签名后，事务将发送到事务路由器和账本。
+ Blockchain Workbench 从 Key Vault 检索相应的私钥，并对 Key Vault 外部的事务签名。 签名后，事务将发送到事务路由器和账本。
 
 ## <a name="transaction-routers-and-ledgers"></a>事务路由器和账本
 
@@ -118,4 +118,5 @@ Azure Monitor 提供有关区块链网络运行状况的信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署 Azure Blockchain Workbench](blockchain-workbench-deploy.md)
+> [!div class="nextstepaction"]
+> [部署 Azure Blockchain Workbench](blockchain-workbench-deploy.md)

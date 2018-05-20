@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 66f0d0064fe59c6e1d249eb69c1b433fe661c513
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a442b6c3c8e2b8a781ee54f41a2e0db5b44b7395
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用图形 API 进行开发
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
@@ -110,7 +110,7 @@ Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { I
 DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync( 
     UriFactory.CreateDatabaseUri("graphdb"), 
     new DocumentCollection { Id = "graphcollz" }, 
-    new RequestOptions { OfferThroughput = 1000 }); 
+    new RequestOptions { OfferThroughput = 400 }); 
 ``` 
 
 ## <a id="serializing"></a>序列化 .NET 对象的顶点和边缘
@@ -121,7 +121,7 @@ Azure Cosmos DB 使用 [GraphSON 传输格式](gremlin-support.md)，后者定�
 `Microsoft.Azure.Graphs.Elements` 命名空间提供 `Vertex`、`Edge`、`Property` 和 `VertexProperty` 类，用于反序列化对明确定义的 .NET 对象的 GraphSON 响应。
 
 ## <a name="run-gremlin-using-creategremlinquery"></a>使用 CreateGremlinQuery 运行 Gremlin
-SQL 等 Gremlin 支持读取、写入和查询操作。 作为示例，以下代码片段演示如何创建顶点、边缘，如何使用 `CreateGremlinQuery<T>` 执行一些示例查询并以异步方式使用 `ExecuteNextAsync` 和 `HasMoreResults 循环访问这些结果。
+SQL 等 Gremlin 支持读取、写入和查询操作。 作为示例，以下代码片段演示如何创建顶点、边缘，如何使用 `CreateGremlinQuery<T>` 执行一些示例查询并以异步方式使用 `ExecuteNextAsync` 和 `HasMoreResults` 循环访问这些结果。
 
 ```cs
 Dictionary<string, string> gremlinQueries = new Dictionary<string, string>

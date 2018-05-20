@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 073ac7cf2d8d8d5dac6a5a4f9b9d4e3d1af6f095
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 62fdd3dae9513973d0284eda5250d9eb29bfde91
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
 
@@ -94,4 +94,4 @@ ms.lasthandoff: 05/07/2018
 现在，你已学习了如何将 MXChip Iot DevKit 配置为 MQTT 客户端以及如何使用 MQTT 客户端库向 MQTT 代理发送消息，下面是建议的后续步骤：
 
 * [Azure IoT 远程监视解决方案加速器概述](https://docs.microsoft.com/azure/iot-suite/)
-* [将 MXChip IoT DevKit 设备连接到 Microsoft IoT Central 应用程序](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

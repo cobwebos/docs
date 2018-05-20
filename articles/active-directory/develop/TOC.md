@@ -41,7 +41,7 @@
 ### [OAuth 2.0 授权代码授予](active-directory-protocols-oauth-code.md)
 ### [OAuth 2.0 隐式授予](active-directory-dev-understanding-oauth2-implicit-grant.md)
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
-### [配置角色声明](active-directory-enterprise-app-role-management.md)
+### [配置角色声明](../active-directory-enterprise-app-role-management.md)
 ### [自定义声明](active-directory-saml-claims-customization.md)
 ### [调试基于 SAML 的 SSO](active-directory-saml-debugging.md)
 ### [单一登录 SAML 协议](active-directory-single-sign-on-protocol-reference.md)

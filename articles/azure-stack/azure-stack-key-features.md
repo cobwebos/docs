@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/10/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 958b1757dd773f8c46185b13c84f766ce4f827ee
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 851530910c702d388cd4dc8607bf09ecb5fa44e0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack 中的重要功能和概念
 如果不太熟悉 Microsoft Azure Stack，本文的术语和功能说明可能会有所帮助。
@@ -86,14 +86,15 @@ Azure Stack 区域是规模与管理的基本要素。 组织可以创建多个�
 
 订阅可帮助提供者组织和访问云资源与服务。
 
-对于管理员而言，默认提供程序订阅是在部署期间创建的。 此订阅可用于管理 Azure Stack、部署其他资源提供程序，以及为租户创建计划和产品。 不应使用此订阅来运行客户工作负荷和应用程序。 
-
+对于管理员而言，默认提供程序订阅是在部署期间创建的。 此订阅可用于管理 Azure Stack、部署其他资源提供程序，以及为租户创建计划和产品。 不应使用此订阅来运行客户工作负荷和应用程序。 从版本 1804年开始，两个其他订阅补充默认提供程序订阅;计量订阅，并使用订阅。 这些添加促进分隔的核心基础结构、 其他资源提供程序和工作负荷管理。  
 
 ## <a name="azure-resource-manager"></a>Azure 资源管理器
 借助 Azure 资源管理器，可在基于模板的声明性模型中使用基础结构资源。   资源管理器提供单个界面用于部署和管理解决方案组件。 有关完整信息和指南，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
 ### <a name="resource-groups"></a>资源组
 资源组是资源、服务和应用程序的集合 — 每个资源都有一种类型，例如虚拟机、虚拟网络、公共 IP、存储帐户和网站。 每个资源必须在资源组中，因此，资源组有助于以逻辑方式组织资源，例如，按工作负荷或位置进行组织。  在 Microsoft Azure Stack 中，计划和产品等资源也资源组中管理。
+
+与不同[Azure](../azure-resource-manager/resource-group-move-resources.md)，能资源组之间移动资源。 在 Azure 堆栈管理员门户中，查看的资源或资源组的属性时*移动*按钮将灰显且不可用。 
  
 ### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 使用 Azure 资源管理器可以创建一个模板（采用 JSON 格式），用于定义应用程序的部署和配置。 此模板称为 Azure 资源管理器模板，让你以声明性方式定义部署。 使用模板可以在整个应用程序生命周期内反复部署该应用程序，并确保以一致的状态部署资源。
@@ -101,7 +102,7 @@ Azure Stack 区域是规模与管理的基本要素。 组织可以创建多个�
 ## <a name="resource-providers-rps"></a>资源提供程序 (RP)
 资源提供程序属于 Web 服务，构成了所有基于 Azure 的 IaaS 和 PaaS 服务的基础。 Azure 资源管理器依赖使用不同的 RP 来提供对服务的访问。
 
-有四个基础 RP：网络、存储、计算和 KeyVault。 其中的每个 RP 可帮助配置和控制其各自的资源。 服务管理员还可以添加新的自定义资源提供程序。
+有四个基本 RPs： 网络、 存储、 计算和 KeyVault。 其中的每个 RP 可帮助配置和控制其各自的资源。 服务管理员还可以添加新的自定义资源提供程序。
 
 ### <a name="compute-rp"></a>计算 RP
 Azure Stack 租户可以使用计算资源提供程序 (CRP) 创建自己的虚拟机。 CRP 包括创建虚拟机和虚拟机扩展的功能。 虚拟机扩展服务可帮助提供适用于 Windows 和 Linux 虚拟机的 IaaS 功能。  例如，可以使用 CRP 预配一个 Linux 虚拟机，并在部署期间运行 Bash 脚本来配置该 VM。
@@ -115,7 +116,7 @@ Azure Stack 租户可以使用计算资源提供程序 (CRP) 创建自己的虚�
 #### <a name="blob-storage"></a>Blob 存储
 Blob 存储可存储任意数据集。 Blob 可以是任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 表存储可存储结构化数据集。 表存储是一个 NoSQL“键-属性”数据存储，可以用于实现快速开发以及快速访问大量数据。 队列存储为云服务的各个组件之间的工作流处理和通信提供可靠的消息传送。
 
-每个 Blob 组织在容器中。 容器还提供了一种有用的方式来向对象组分配安全策略。 一个存储帐户可以包含任意数目的容器，一个容器可以包含任意数目的 Blob，直至达到存储帐户的容量限制 500 TB。 Blob 存储提供三种类型的 Blob：块 Blob、追加 Blob 和页 Blob（磁盘）。 块 Blob 进行了相应的优化来流化和存储云对象，并且是用于存储文档、介质文件和备份等对象的不错选择。追加 Blob 类似于块 Blob，但针对追加追加操作进行了优化。 追加 Blob 仅可以通过将新的块添加到末尾来进行更新。 对于需要新数据只能写入到 Blob 结尾的情况，例如日志记录，追加 Blob 是一个不错的选择 。 页 Blob 进行了相应的优化来表示 IaaS 磁盘和支持随机写入，并且最大可以为 1 TB。 Azure 虚拟机网络连接的 IaaS 磁盘是一个 VHD，存储为页 Blob。
+每个 Blob 组织在容器中。 容器还提供了一种有用的方式来向对象组分配安全策略。 存储帐户可以包含任意数量的容器，和一个容器可以包含任意数目的 blob，直至达到存储帐户的 500 TB 的容量极限。 Blob 存储提供三种类型的 Blob：块 Blob、追加 Blob 和页 Blob（磁盘）。 块 Blob 进行了相应的优化来流化和存储云对象，并且是用于存储文档、介质文件和备份等对象的不错选择。追加 Blob 类似于块 Blob，但针对追加追加操作进行了优化。 追加 Blob 仅可以通过将新的块添加到末尾来进行更新。 对于需要新数据只能写入到 Blob 结尾的情况，例如日志记录，追加 Blob 是一个不错的选择 。 页 Blob 进行了相应的优化来表示 IaaS 磁盘和支持随机写入，并且最大可以为 1 TB。 Azure 虚拟机网络连接的 IaaS 磁盘是一个 VHD，存储为页 Blob。
 
 #### <a name="table-storage"></a>表存储
 表存储是 Microsoft 的 NoSQL 键/属性存储 – 它采用无架构设计，因此不同于传统的关系数据库。 由于数据存储没有架构，因此可以随着应用程序需求的变化，使数据适应存储。 表存储易于使用，因此开发人员可以快速创建应用程序。 表存储是一种“键-属性”存储，这意味着表中的每个值都是随所键入的一个属性名称存储的。 属性名称可以用来筛选和指定选择条件。 属性集合及其值构成了实体。 由于表存储没有架构，因此同一表中的两个实体可以包含不同的属性集合，并且这些属性可以属于不同的类型。 可以使用表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，以及服务需要的任何其他类型的元数据。 可以在表中存储任意数量的实体，并且一个存储帐户可以包含任意数量的表，直至达到存储帐户的容量极限。
@@ -126,24 +127,24 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 ### <a name="keyvault"></a>KeyVault
 KeyVault RP 针对密码和证书等机密提供管理与审核。 例如，在 VM 部署期间，租户可以使用 KeyVault RP 来提供管理员密码或密钥。
 
-## <a name="high-availability-for-azure-stack"></a>Azure 堆栈的高可用性
-*适用范围： Azure 堆栈 1802年或更高版本*
+## <a name="high-availability-for-azure-stack"></a>Azure Stack 的高可用性
+适用于：Azure Stack 1802 或更高版本
 
-若要实现多 VM 生产系统在 Azure 中的高可用性，Vm 放置在一个可用性集，其中会将它们分布在多个容错域和更新域中。 这种方式，[在可用性集中部署的 Vm](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)是以物理方式相互隔离的单独服务器架下图中所示的情况下以便故障复原上：
+若要实现在 Azure 中的多 VM 生产系统的高可用性，Vm 放置在一个可用性集，其中会将它们分布在多个容错域和更新域中。 这种方式，[在可用性集中部署的 Vm](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)是以物理方式相互隔离的单独服务器架下图中所示的情况下以便故障复原上：
 
-  ![Azure 堆栈高可用性](media/azure-stack-key-features/high-availability.png)
+  ![Azure Stack 高可用性](media/azure-stack-key-features/high-availability.png)
 
-### <a name="availablity-sets-in-azure-stack"></a>Azure 堆栈中的可用性集
-已能够弹性应对故障 Azure 堆栈的基础结构时，基础技术 （故障转移群集） 仍会产生停机一段时间的 Vm 在受影响的物理服务器上出现硬件故障时。 Azure 堆栈支持具有可用性集最多为三个容错域与 Azure 相一致。
+### <a name="availability-sets-in-azure-stack"></a>在 Azure 堆栈中的可用性集
+已能够弹性应对故障 Azure 堆栈的基础结构时，基础技术 （故障转移群集） 仍会产生停机一段时间的 Vm 在受影响的物理服务器上发生硬件故障时。 为了与 Azure 保持一致，Azure Stack 支持的可用性集最多有三个容错域。
 
-- **故障域**。 通过使它们尽可能均匀地分布于多个容错域 （Azure 堆栈节点），会以物理方式相互隔离的 Vm 放在一个可用性集中。 出现硬件故障，从失败的容错域的 Vm 将在其他容错域上，重新启动，但是，如果可能，在同一可用性集中其他 vm 保留在单独的容错域中。 当硬件重新联机时，Vm 将重新平衡，以维持高可用性。 
+- **容错域**。 置于可用性集中的 VM 在物理上是彼此隔离的，换句话说，会尽可能均衡地让其分散到多个容错域（Azure Stack 节点）中。 如果没有硬件故障，从失败的容错域的 Vm 将在其他容错域上，重新启动，但是，如果可能，在同一可用性集中其他 vm 保留在单独的容错域中。 当硬件重新联机时，会对 VM 重新进行均衡操作，以维持高可用性。 
  
-- **更新域**。 更新域是提供在可用性集中的高可用性的另一个 Azure 概念。 更新域是可以在同一时间执行维护的基础硬件的逻辑组。 计划内维护期间，将在一起启 Vm 位于同一更新域。 租户创建 Vm 在可用性集中，Azure 平台会自动将分布 Vm 到这些更新域。 在 Azure 堆栈 Vm 是实时更新其基础主机之前，在群集中其他联机主机之间迁移。 由于主机更新的过程中没有不租户停机的情况，Azure 堆栈上的更新域功能将仅存在于与 Azure 的模板兼容。 
+- **更新域**。 更新域是另一可以在可用性集中提供高可用性的 Azure 概念。 更新域是可以同时维护的基础硬件逻辑组。 同一个更新域中的 VM 会在计划内维护期间一起重启。 当租户在可用性集内创建 VM 时，Azure 平台会自动将 VM 分布到这些更新域。 在 Azure Stack 中，VM 会先跨群集中的其他联机主机进行实时迁移，然后其基础主机才会进行更新。 由于在主机更新期间不会造成租户停机，因此 Azure Stack 上存在更新域功能只是为了确保与 Azure 实现模板兼容。 
 
 ### <a name="upgrade-scenarios"></a>升级方案 
-Vm 在可用性集中创建之前 Azure 堆栈版本 1802年提供容错和更新域默认数 (1 和 1 分别)。 若要在这些预先存在的可用性集的 Vm 中实现高可用性，你必须首先删除现有的 Vm，然后将它们重新部署到新的可用性集与正确的容错和更新域计数中所述[更改为 Windows 的 VM 设置可用性](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set)。 
+在 Azure 堆栈版本 1802年提供容错和更新域默认数之前创建的可用性集中的虚拟机 (1 和 1 分别)。 若要在这些预先存在的可用性集的 Vm 中实现高可用性，你必须首先删除现有的 Vm，然后将它们重新部署到新的可用性集与正确的容错和更新域计数中所述[更改为 Windows 的 VM 设置可用性](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set)。 
 
-VM 缩放集，可用性集内部创建与默认容错域和更新域计数 (3 和 5 分别)。 任何 VM 缩放集创建之前 1802年更新将被放入可用性集与默认容错和更新域计数 (1 和 1 分别)。 若要更新这些 VM 缩放集实例，以实现较新的跨页，通过向外扩展 VM 缩放集的 1802年更新之前存在，然后删除 VM 缩放集的较旧实例的实例数。 
+对于虚拟机缩放集，可用性集内部创建与默认容错域和更新域计数 (3 和 5 分别)。 之前 1802年更新将被放入可用性集与创建任何虚拟机规模集的默认容错和更新域计数 (1 和 1 分别)。 更新这些虚拟机规模集实例，以实现较新的跨页，通过 1802年更新之前存在的实例数扩展虚拟机规模集，然后删除虚拟机规模集的较旧实例。 
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 可以使用 RBAC 向已获授权的用户、组和服务授予系统访问权限：在订阅、资源组或单个资源的级别为其分配角色即可。 每个角色定义了用户、组或服务对 Microsoft Azure Stack 资源拥有的访问级别。
@@ -162,5 +163,5 @@ Microsoft Azure 堆栈收集和使用数据聚合跨所有资源提供程序，�
 - 其他改进
 
 ## <a name="next-steps"></a>后续步骤
-[评估 Azure 堆栈开发工具包](azure-stack-deploy-overview.md)
+[评估 Azure Stack 开发工具包](azure-stack-deploy-overview.md)
 

@@ -12,18 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/24/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: f7398945efe6b9b5ad148f6fa0d303363da9abaa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1d90be043affcab422f8e59e6bac1c76ec923d48
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 可将 Azure Stack 开发工具包 (ASDK) 安装注册到 Azure，以便从 Azure 下载 Marketplace 项，并设置向 Microsoft 报告商务数据的功能。 之所以建议注册，是因为这样可以测试重要的 Azure Stack 功能，例如 Marketplace 联合和使用情况报告。 注册 Azure Stack 之后，使用情况将报告给 Azure 商业组件。 用于注册的订阅下会显示此信息。 但是，ASDK 用户无需付费，不管他们报告的用量是多少。
 
+如果不注册你 ASDK，你可能会看到**所需的激活**建议您注册你的 Azure 堆栈开发工具包的警告性警报。 这是预期的行为。
 
 ## <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure 
 遵循以下步骤将 ASDK 注册到 Azure。

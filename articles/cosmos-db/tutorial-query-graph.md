@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: efeee797a537a16b1b44174ed2d6f7ea3348a25a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 449821d6121f8fec40b151ae06f687586133c3d1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>教程：使用 Gremlin 查询 Azure Cosmos DB 图形 API
 
@@ -85,4 +85,4 @@ g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabe
 现在可继续学习下一教程，了解如何全局发布数据。
 
 > [!div class="nextstepaction"]
-> [全局分发数据](tutorial-global-distribution-sql-api.md)
+> [全局分发数据](tutorial-global-distribution-graph.md)

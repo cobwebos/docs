@@ -3,23 +3,23 @@ title: Azure Kubernetes 服务常见问题解答
 description: 提供有关 Azure Kubernetes 服务的某些常见问题的解答。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 2/14/2018
+ms.date: 05/09/2018
 ms.author: nepeters
-ms.openlocfilehash: 55006a3f0193c96849c52f87ab01dc13ac0c7a16
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3152dc69bc8fb9a94111f85976e5d999c4b18261
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
 本文解答有关 Azure Kubernetes 服务 (AKS) 的常见问题。
 
 > [!IMPORTANT]
-> Azure Kubernetes 服务 (AKS) 目前以**预览版**提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> Azure Kubernetes 服务 (AKS) 目前提供“预览版”。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
 >
 
 ## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>哪些 Azure 区域现在可提供 Azure Kubernetes 服务 (AKS)？
@@ -28,9 +28,7 @@ ms.lasthandoff: 05/07/2018
 - 加拿大东部
 - 美国中部
 - 美国东部
-- 东南亚
 - 欧洲西部
-- 美国西部 2
 
 ## <a name="when-will-additional-regions-be-added"></a>何时将添加更多的地区？
 
@@ -62,7 +60,7 @@ ACS 将弃用围绕 AKS 变得提供 GA 版。 必须将群集迁移到 AKS 该�
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>是否可以将 AKS 部署到现有虚拟网络？
 
-否，此操作尚不可用，但不久将会提供。
+可以，通过[高级网络功能](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md)支持此操作。
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>不是，它没有与 Azure Key Vault 集成。
 
@@ -70,7 +68,7 @@ ACS 将弃用围绕 AKS 变得提供 GA 版。 必须将群集迁移到 AKS 该�
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>是否可以在 AKS 上运行 Windows Server 容器？
 
-否，AKS 当前不提供基于 Windows Server 的代理节点，因此无法运行 Windows Server 容器。 如果需要在 Azure 中的 Kubernetes 上运行 Windows Server 容器，请参阅 [acs-engine 文档](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md)。
+若要运行 Windows Server 容器，需要运行基于 Windows Server 的节点。 基于 Windows Server 的节点目前提供[个人预览版](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/)。 如果需要通过非预览版在 Azure 中的 Kubernetes 上运行 Windows Server 容器，请参阅 [acs-engine 文档](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md)。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>为什么使用 AKS 创建两个资源组？
 

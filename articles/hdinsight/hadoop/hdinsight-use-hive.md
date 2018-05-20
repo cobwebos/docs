@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 9f67bc93758b98060efbef2cb7f1c200a62d7e65
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e418411cc6b681e304cc1ba66f0c815ad0d4db64
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -43,11 +43,11 @@ HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 
 
 | **使用此方法**，如果想要... | ...**交互式**查询 | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
 |:--- |:---:|:---:|:--- |:--- |
+| [Visual Studio Code 的 HDInsight 工具](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux、Unix、Mac OS X 或 Windows |
+| [用于 Visual Studio 的 HDInsight 工具](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux 或 Windows* |Windows |
 | [Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任何（基于浏览器） |
 | [Beeline 客户端](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
 | [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux 或 Windows* |Linux、Unix、Mac OS X 或 Windows |
-| [Visual Studio Code 的 HDInsight 工具](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux、Unix、Mac OS X 或 Windows |
-| [用于 Visual Studio 的 HDInsight 工具](../hadoop/apache-hadoop-use-hive-visual-studio.md) |&nbsp; |✔ |Linux 或 Windows* |Windows |
 | [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux 或 Windows* |Windows |
 
 > [!IMPORTANT]

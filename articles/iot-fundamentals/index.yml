@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/20/2018
   ms.author: bryanla
-  ms.openlocfilehash: 80c88340e31ef6650dee13819dda316b4d9bcb4d
-  ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+  ms.openlocfilehash: 0a5f1d482b0298ddd65746783e3744728b1a5da5
+  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/08/2018
+  ms.lasthandoff: 05/16/2018
 abstract:
   description: 欢迎使用 Microsoft Azure 与物联网 (IoT)。 Azure IoT 汇集了各种服务和解决方案，专用于在 Azure 上创建端到端 IoT 应用程序。 Azure IoT 提供各种适合行业需求以及公司技能和资源的选项和工具，既有完全承载和托管的软件即服务 (SaaS) 解决方案，又有独特且专用的平台即服务 (PaaS) 产品/服务，还有构建智能边缘所需的技术。
 sections:
@@ -100,4 +100,4 @@ sections:
     - title: 语言
       html: <p><a href="/azure/iot-hub/iot-hub-devguide-sdks">用于 .Net、C、Java、Node.js、Python 的 Azure IoT SDK</a></p>
     - title: REST
-      html: <p><a href="/rest/api/iothub">IoT 中心</a></p><p><a href="/rest/api/iot-dps">IoT 中心设备预配服务</a></p><p><a href="/rest/api/location-based-services-management/">Maps 管理</a></p><p><a href="/rest/api/location-based-services/">Maps 功能</a></p><p><a href="/rest/api/time-series-insights-management/">时序见解管理</a></p><p><a href="/rest/api/time-series-insights/">时序见解</a></p>
+      html: <p><a href="/rest/api/iothub">IoT 中心</a></p><p><a href="/rest/api/iot-dps">IoT 中心设备预配服务</a></p><p><a href="/rest/api/maps-management/">Maps 管理</a></p><p><a href="/rest/api/maps/">Maps 功能</a></p><p><a href="/rest/api/time-series-insights-management/">时序见解管理</a></p><p><a href="/rest/api/time-series-insights/">时序见解</a></p>

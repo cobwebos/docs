@@ -1,19 +1,21 @@
 ---
-title: "排查 Azure 虚拟机上的更改错误 | Microsoft Docs"
-description: "使用更改跟踪排查 Azure 虚拟机上的更改错误。"
+title: 排查 Azure 虚拟机上的更改错误 | Microsoft Docs
+description: 使用更改跟踪排查 Azure 虚拟机上的更改错误。
 services: automation
-keywords: "更改, 跟踪, 自动化"
+ms.service: automation
+ms.component: change-inventory-management
+keywords: 更改, 跟踪, 自动化
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 05/08/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f5bee7b85a423ba7a1b0b36b4b6910275551849c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c4d5533c443d27afa56471ce048efc5a375f6780
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/07/2018
 ## <a name="overview"></a>概述
 在 Azure 媒体服务 (AMS) 中，**频道**表示用于处理实时传送视频流内容的管道。 **频道**通过以下两种方式之一接收实时输入流：
 
-* 本地实时编码器（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流式处理（分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
+* 本地实时编码器采用 RTMP 或平滑流式处理（分片 MP4）格式将单比特率流发送至能够使用媒体服务执行实时编码的频道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
 * 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（零碎的 MP4）发送到无法通过 AMS 进行实时编码的频道。 引入流将通过**频道**，而不会进行任何进一步处理。 这种方法称为**直通**。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek 和 Tricaster 编码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
   
   > [!NOTE]
@@ -79,7 +79,7 @@ ms.lasthandoff: 05/07/2018
 未使用期限的阈值通常为 12 个小时，但随时会变化。
 
 ## <a name="live-encoding-workflow"></a>实时编码工作流
-下图表示了实时流式处理工作流，其中频道通过以下协议之一接收单比特率流：RTMP、平滑流式处理或 RTP (MPEG-TS)；然后，将该流编码为多比特率流。 
+下图呈现了实时流式处理工作流，其中频道通过以下协议之一接收单比特率流：RTMP 或平滑流式处理；然后，将该流编码为多比特率流。 
 
 ![实时工作流][live-overview]
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 05/07/2018
 > 
 > 
 
-1. 将视频摄像机连接到计算机。 启动并配置可以通过以下协议之一输出**单**比特率流的本地实时编码器：RTMP、平滑流式处理或 RTP (MPEG-TS)。 
+1. 将视频摄像机连接到计算机。 启动并配置一个可通过以下协议之一输出**单**比特率流的本地实时编码器：RTMP 或平滑流式处理。 
    
     此步骤也可以在创建频道后执行。
 2. 创建并启动频道。 
@@ -125,48 +125,8 @@ ms.lasthandoff: 05/07/2018
 ### <a id="Ingest_Protocols"></a>引入流式传输协议
 如果“编码器类型”设为“标准”，则有效选项为：
 
-* **RTP** (MPEG-TS)：RTP 上的 MPEG-2 传输流。  
 * 单比特率 **RTMP**
 * 单比特率**零碎的 MP4**（平滑流式处理）
-
-#### <a name="rtp-mpeg-ts---mpeg-2-transport-stream-over-rtp"></a>RTP (MPEG-TS) - RTP 上的 MPEG-2 传输流。
-典型用例： 
-
-专业广播者通常使用供应商提供的高端本地实时编码器（如 Elemental Technologies、Ericsson、Ateme、Imagine 或 Envivio）来发送流。 通常与 IT 部门和专用网络配合使用。
-
-注意事项：
-
-* 强烈建议使用单节目传输流 (SPTS) 输入。 
-* 使用 MPEG-2 TS over RTP 最多可以输入 8 个音频流。 
-* 视频流应具有小于 15 Mbps 的平均比特率
-* 音频流的聚合平均比特率应小于 1 Mbps
-* 以下是支持的编解码器：
-  
-  * MPEG-2/H.262 Video 
-    
-    * Main Profile (4:2:0)
-    * High Profile (4:2:0, 4:2:2)
-    * 422 Profile (4:2:0, 4:2:2)
-  * MPEG-4 AVC/H.264 Video  
-    
-    * Baseline、Main、High Profile（8 位 4:2:0）
-    * High 10 Profile（10 位 4:2:0）
-    * High 422 Profile（10 位 4:2:2）
-  * MPEG-2 AAC-LC Audio 
-    
-    * Mono、Stereo、Surround (5.1, 7.1)
-    * MPEG-2 样式 ADTS 打包
-  * Dolby Digital (AC-3) Audio 
-    
-    * Mono、Stereo、Surround (5.1, 7.1)
-  * MPEG Audio（层 II 和层 III） 
-    
-    * Mono、Stereo
-* 建议的广播编码器包括：
-  
-  * Imagine Communications Selenio ENC 1
-  * Imagine Communications Selenio ENC 2
-  * Elemental Live
 
 #### <a id="single_bitrate_RTMP"></a>单比特率 RTMP
 注意事项：
@@ -232,36 +192,21 @@ ms.lasthandoff: 05/07/2018
 本部分介绍当频道的“编码类型”设为“标准”时，如何调整频道内的实时编码器的设置。
 
 > [!NOTE]
-> 在 Azure 中输入多个语言轨迹和执行实时编码时，多语言输入仅支持 RTP。 使用 MPEG-2 TS over RTP 最多可以定义 8 个音频流。 当前不支持使用 RTMP 或平滑流引入多个音频轨迹。 使用[本地实时编码](media-services-live-streaming-with-onprem-encoders.md)执行实时编码时，不存在这种限制，因为发送到 AMS 的任何数据都会通过频道，而不做进一步的处理。
+> 你的贡献源只能包含单个音频曲目 – 当前不支持引入多个音频曲目。 使用[本地实时编码](media-services-live-streaming-with-onprem-encoders.md)进行实时编码时，可以通过平滑流式处理协议发送包含多个音频曲目的贡献源。
 > 
 > 
 
 ### <a name="ad-marker-source"></a>Ad 标记源
 可以指定 Ad 标记信号源。 默认值是 **Api**，它指示频道内的实时编码器应侦听异步 **Ad 标记 API**。
 
-另一个有效选项是 **Scte35**（仅当引入流式处理协议设为 RTP (MPEG-TS) 时允许）。 当指定了 Scte35 时，实时编码器将分析输入 RTP (MPEG-TS) 流中的 SCTE-35 信号。
-
 ### <a name="cea-708-closed-captions"></a>CEA 708 关闭字幕
 一个可选的标志，它指示实时编码器忽略传入视频中嵌入的任何 CEA 708 字幕数据。 当该标志设为 false（默认值）时，编码器将检测 CEA 708 数据并将该数据重新插入到输出视频流中。
-
-### <a name="video-stream"></a>视频流
-可选。 描述输入视频流。 如果未指定此字段，则使用默认值。 仅当输入流协议设为 RTP (MPEG-TS) 时，才允许使用此设置。
-
-#### <a name="index"></a>索引
-一个从零开始的索引，它指定哪个输入视频流应由频道内的实时编码器处理。 仅当引入流协议是 RTP (MPEG-TS) 时，此设置才适用。
-
-默认值为 0。 建议在单节目传输流 (SPTS) 中发送。 如果输入流包含多个节目，实时编码器将分析输入中的节目映射表 (PMT)，标识流类型名称为 MPEG-2 Video 或 H.264 的输入并以 PMT 中指定的顺序安排这些输入。 然后，将使用从零开始的索引选取该安排中的第 n 个条目。
-
-### <a name="audio-stream"></a>音频流
-可选。 描述输入音频流。 如果未指定此字段，则将应用指定的默认值。 仅当输入流协议设为 RTP (MPEG-TS) 时，才允许使用此设置。
 
 #### <a name="index"></a>索引
 建议在单节目传输流 (SPTS) 中发送。 如果输入流包含多个节目，频道中的实时编码器将分析输入中的节目映射表 (PMT)，标识流类型名称为 MPEG-2 AAC ADTS、AC-3 System-A、AC-3 System-B、MPEG-2 Private PES、MPEG-1 Audio 或 MPEG-2 Audio 的输入并以 PMT 中指定的顺序安排这些输入。 然后，将使用从零开始的索引选取该安排中的第 n 个条目。
 
 #### <a name="language"></a>语言
 音频流的符合 ISO 639-2 的语言标识符，如 ENG。 如果不存在，则默认为 UND（未定义）。
-
-如果频道的输入为 MPEG-2 TS over RTP，则最多可以指定 8 个音频流集。 但是，不能有两个具有相同索引值的条目。
 
 ### <a id="preset"></a>系统预设
 指定此频道内的实时编码器要使用的预设。 目前，唯一允许的值是 **Default720p**（默认值）。
@@ -387,13 +332,11 @@ ms.lasthandoff: 05/07/2018
 * 仅当频道处于“正在运行”状态时才会向你收费。 有关详细信息，请参阅[此](media-services-manage-live-encoder-enabled-channels.md#states)部分。
 * 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amslived@microsoft.com。
 * 确保使要从中流式传输内容的流式处理终结点处于“正在运行”状态。
-* 在 Azure 中输入多个语言轨迹和执行实时编码时，多语言输入仅支持 RTP。 使用 MPEG-2 TS over RTP 最多可以定义 8 个音频流。 当前不支持使用 RTMP 或平滑流引入多个音频轨迹。 使用[本地实时编码](media-services-live-streaming-with-onprem-encoders.md)执行实时编码时，不存在这种限制，因为发送到 AMS 的任何数据都会通过频道，而不做进一步的处理。
 * 编码预设使用“最大帧速率”30 fps 的思路。 因此，如果输入为 60fps/59.97i，则输入帧将修剪/反交错为 30/29.97 fps。 因此，如果输入为 50fps/50i，则输入帧将修剪/反交错为 25 fps。 如果输入为 25 fps，则输出将保持为 25 fps。
 * 完成后请不要忘记关闭通道。 否则会继续计费。
 
 ## <a name="known-issues"></a>已知问题
 * 通道启动时间已改善为平均 2 分钟，但有时因为需求提高，可能仍然需要长达 20 分钟以上的时间。
-* RTP 支持迎合专业的广播装置。 请查看[此](https://azure.microsoft.com/blog/2015/04/13/an-introduction-to-live-encoding-with-azure-media-services/)博客中有关 RTP 的说明。
 * 盖板图像应符合[此处](media-services-manage-live-encoder-enabled-channels.md#default_slate)所述的限制。 如果想要尝试创建默认静态图像大于 1920x1080 的频道，最终请求会出错。
 * 再次强调，完成流式处理后请不要忘记关闭通道。 否则会继续计费。
 

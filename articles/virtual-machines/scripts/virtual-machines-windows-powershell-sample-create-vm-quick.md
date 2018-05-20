@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell 脚本示例 - 创建 Windows VM | Microsoft 文档"
-description: "Azure PowerShell 脚本示例 - 创建 Windows VM"
+title: Azure PowerShell 脚本示例 - 创建 Windows VM | Microsoft 文档
+description: Azure PowerShell 脚本示例 - 创建 Windows VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: 2c1e86b0ef3dabdea8220747e3ada98d888a8593
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>使用 PowerShell 创建虚拟机
 

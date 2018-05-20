@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: 6303fdce65e460489c9f66e388c28383b9942627
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 93282f3d4a7ca84e59fa8831d5eb650a643d1e83
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>将 AD FS 本地应用迁移到 Azure 
 
@@ -234,6 +234,6 @@ SAML 2.0 应用程序可以通过 Marketplace 中的 Azure AD 应用程序库与
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
+- [使用 Azure Active Directory 管理应用程序](manage-apps/what-is-application-management.md)
 - [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 - [Azure AD Connect 联合身份验证](active-directory-aadconnectfed-whatis.md)

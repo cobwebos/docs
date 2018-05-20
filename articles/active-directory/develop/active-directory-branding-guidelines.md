@@ -3,23 +3,25 @@ title: 适用于应用程序的品牌准则 | Microsoft Docs
 description: 介绍面向开发人员的 Azure Active Directory 资源的综合性指南
 services: active-directory
 documentationcenter: dev-center-name
-author: skwan
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
-ms.author: skwan
+ms.author: celested
+ms.reviewer: skwan
 ms.custom: aaddev
-ms.openlocfilehash: e5ce970913d767dbf6b13381cf18c1f7b05d252f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7794388a067cb8fb876d70b7186bc555e6ff2975
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 本文讨论在使用 Azure Active Directory (Azure AD) 开发应用程序时应使用的品牌准则。 在客户需要使用 Azure AD 中托管的工作或学校帐户，或使用其个人帐户进行注册和登录到应用程序时，这些准则将帮助指导客户进行相关操作。

@@ -3,16 +3,17 @@ title: 在 Azure 自动化中创建或导入 Runbook
 description: 本文介绍了如何在 Azure 自动化中创建新的 Runbook，或如何从文件中导入 Runbook。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c49b2f19da7f59e413dedbd757ca8b6fc6c7e674
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f3d372938a4efb8701ab6916cd391794dbddd1f1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>在 Azure 自动化中创建或导入 Runbook
 可以通过以下方法将 Runbook 添加到 Azure 自动化：[创建新的 Runbook](#creating-a-new-runbook)；从文件或 [Runbook 库](automation-runbook-gallery.md)导入现有 Runbook。 本文介绍如何通过文件创建和导入 Runbook。  可以在 [Azure 自动化的 Runbook 和模块库](automation-runbook-gallery.md)中获取有关如何访问社区 Runbook 和模块的所有详细信息。

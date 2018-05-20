@@ -9,11 +9,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 2446fac7526015d11737529c26d54e910643b750
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 12306b7868fa7fb2321f26657aab81beabb9db35
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Azure Cosmos DB 的全球规模多主数据库 
  
@@ -22,6 +22,25 @@ ms.lasthandoff: 05/07/2018
 ![多主体系结构](./media/multi-region-writers/multi-master-architecture.png)
 
 借助 Azure Cosmos DB 的多主数据库支持，可以针对分布在世界各地的数据容器（例如集合、图形、表）执行写入。 可以在与数据库帐户关联的任何区域中更新数据。 这些数据更新可以异步传播。 除了降低数据访问和写入延迟以外，多主数据库还提供可行的解决方案来解决故障转移和负载均衡问题。 总而言之，借助 Azure Cosmos DB，在全球任何位置，在 99% 的时间内都能获得 10 毫秒以下的写入延迟、99.999% 的写入和读取可用性，以及缩放写入和读取吞吐量的能力。   
+
+> [!IMPORTANT]
+> 多主数据库支持目前提供个人预览版，立即[注册](#sign-up-for-multi-master-support)以使用预览版。
+
+## <a name="sign-up-for-multi-master-support"></a>注册多主数据库支持
+
+如果已经有 Azure 订阅，则可以在 Azure 门户中注册加入多主数据库预览计划。 如果是 Azure 新手，请注册[免费试用版](https://azure.microsoft.com/free)，获取对 Azure Cosmos DB 12 个月的免费访问权限。 请完成以下步骤，请求访问多主数据库预览版计划。
+
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源” > “数据库” > “Azure Cosmos DB”。  
+
+2. 在“新建帐户”页中，为 Azure Cosmos DB 帐户提供名称，并选择 API、订阅、资源组和位置。  
+
+3. 然后选择“多主数据库预览版”字段下方的“立即注册预览版”。  
+
+   ![注册多主数据库预览版](./media/multi-region-writers/sign-up-for-multi-master-preview.png)
+
+4. 在“立即注册预览版”窗格中，单击“确定”。 提交请求后，帐户创建边栏选项卡中的状态将更改为“等待审批”。  
+
+提交请求后，你会收到一封请求已获得批准的电子邮件通知。 由于提交请求的用户很多，应该会在一周内收到通知。 你无需创建完成请求的支持票证。 我们将按照收到请求的顺序来审阅请求。
 
 ## <a name="a-simple-multi-master-example--content-publishing"></a>一个简单的多主数据库示例 – 内容发布  
 
@@ -93,7 +112,7 @@ ms.lasthandoff: 05/07/2018
 
 **示例** - 假设我们使用 Azure Cosmos DB 作为某个购物车应用程序的持久性存储，此应用程序已部署在两个区域：美国东部和美国西部。  如果在大致相同的时间，旧金山的某位用户将一件商品（例如一本书）添加到其购物车，同时，为了响应发行日期延期的供应商通知，位于美国东部的库存管理进程将该用户购买的另一件购物车商品（例如一部新手机）下架。 在时间点 T1 处，两个区域中的购物车记录是不相同的。 数据库将使用其复制和冲突解决机制来解决这种不一致情况，最终选择两个购物车版本中的一个。 多主数据库往往应用冲突解决试探法（例如，以最后一次写入优先），用户或应用程序无法预测选择的版本。 在任一情况下，数据都会丢失，或出现意外的行为。 如果选择了东部区域的版本，则用户对新购买商品（即一本书）所做的选择将会丢失；如果选择西部区域，则以前选择的商品（即一部手机）仍在购物车中。 无论怎样，都会丢失信息。 最后，检查时间点 T1 与 T2 之间的购物车的另一个进程也会检查非确定性行为。 例如，选择履约仓库并更新购物车交货成本的后台进程会生成与购物车最终内容相冲突的结果。 如果该进程在西部区域中运行，而备选项 1 成为现实，则它会计算两件商品的交货成本，即使购物车中很快只会包含一件商品（书籍）。 
 
-Azure Cosmos DB 实现相应的逻辑来处理数据库引擎本身内部的写入冲突。 Azure Cosmos DB 为自动解决冲突提供多个冲突解决模型，包括“自动”（CRDT - 无冲突的复制数据类型），“最后一次写入优先”(LWW)、“自定义”（存储过程）和“手动”，以此提供**全面且灵活的冲突解决支持**。 冲突解决模型提供准确性和一致性保证，消除了开发人员考虑一致性、可用性、性能、复制延迟，以及异地故障转移时的事件与跨区域写入冲突的组合时所承受的负担。  
+Azure Cosmos DB 实现相应的逻辑来处理数据库引擎本身内部的写入冲突。 Azure Cosmos DB 为自动解决冲突提供多个冲突解决模型，包括“自动”（CRDT - 无冲突的复制数据类型），“最后一次写入优先”(LWW) 和“自定义”（存储过程），以此提供全面且灵活的冲突解决支持。 冲突解决模型提供准确性和一致性保证，消除了开发人员考虑一致性、可用性、性能、复制延迟，以及异地故障转移时的事件与跨区域写入冲突的组合时所承受的负担。  
 
   ![多主数据库冲突解决](./media/multi-region-writers/multi-master-conflict-resolution-blade.png)
 
@@ -111,7 +130,7 @@ Azure Cosmos DB 提供 3 种冲突解决模型。 冲突解决模型的语义如
 
 * [了解 Azure Cosmos DB 如何支持全球分布](distribute-data-globally.md)  
 
-* [了解 Azure Cosmos DB 中的自动和手动故障转移](regional-failover.md)  
+* [了解 Azure Cosmos DB 中的自动故障转移](regional-failover.md)  
 
 * [了解 Azure Cosmos DB 的全球一致性](consistency-levels.md)  
 

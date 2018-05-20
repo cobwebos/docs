@@ -12,36 +12,39 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/12/2018
-ms.author: rli
+ms.date: 05/01/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: a8f2da5a68552c35a55a7bbb764afc7b36af6962
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95f73dd702b3fffcefbdea28d58ad36bf8eb7eb5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域上配置 HTTPS
 
-[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+> [!IMPORTANT]
+> 此功能不适用于 Akamai 的 Azure CDN 标准版产品。 有关 CDN 功能的比较，请参阅 [Azure CDN 概述](cdn-features.md)。
 
-本教程展示了如何为与 Azure 内容分发网络 (CDN) 终结点关联的自定义域启用 HTTP 协议。 通过在自定义域上使用 HTTPS 协议（例如 https:\//www.contoso.com），可以确保敏感数据在通过 Internet 发送时可以通过 SSL 加密安全地进行分发。 HTTPS 提供信任、身份验证并保护 Web 应用程序免受攻击。 借助一键式启用和完整的证书管理，用来启用 HTTPS 的工作流得以简化，所有这些都不会增加成本。
+本教程演示如何为与 Azure 内容分发网络 (CDN) 终结点关联的自定义域启用 HTTPS 协议。 通过在自定义域上使用 HTTPS 协议（例如 https:\//www.contoso.com），可以确保敏感数据在通过 Internet 发送时可以通过 SSL 加密安全地进行分发。 HTTPS 提供信任、身份验证并保护 Web 应用程序免受攻击。 
 
 默认情况下，Azure CDN 支持对 CDN 终结点主机名使用 HTTPS。 例如，如果创建 CDN 终结点（例如 https:\//contoso.azureedge.net），则会自动启用 HTTPS。  
 
-HTTPS 功能的一些关键属性包括：
+自定义 HTTPS 功能的一些关键属性包括：
 
 - 无需额外付费：证书获取或续订不收取费用，对于 HTTPS 流量不另外收费。 只需为从 CDN 出口的 GB 数付费。
 
 - 简单启用：可从 [Azure 门户](https://portal.azure.com)进行一键式预配。 还可以使用 REST API 或其他开发人员工具启用该功能。
 
-- 完整的证书管理：处理所有证书获取和管理。 证书在过期之前将自动进行设置并续订，这可消除由于证书过期而导致服务中断的风险。
+- 提供完整的证书管理：为你处理所有证书获取和管理。 证书在过期之前将自动进行设置并续订，这可消除由于证书过期而导致服务中断的风险。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
-> - 在自定义域上启用 HTTPS 协议
+> - 在自定义域上启用 HTTPS 协议。
+> - 使用 CDN 托管的证书 
+> - 使用自己的证书
 > - 验证域
-> - 在自定义域上禁用 HTTPS 协议
+> - 在自定义域上禁用 HTTPS 协议。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,11 +52,13 @@ HTTPS 功能的一些关键属性包括：
 
 此外，还必须在 CDN 终结点上关联一个 Azure CDN 自定义域。 有关详细信息，请参阅[教程：将自定义域添加到 Azure CDN 终结点](cdn-map-content-to-custom-domain.md)
 
-## <a name="enable-the-https-feature"></a>启用 HTTPS 功能
+## <a name="option-1-default-enable-the-https-feature-with-a-cdn-managed-certificate"></a>选项 1（默认）：使用 CDN 托管的证书启用 HTTPS 功能  
+
+借助此选项，仅需单击几次即可打开自定义 HTTPS 功能。 Azure CDN 可处理所有证书管理任务，如获取和续订。 启用此功能后，进程将立即启动。 如果自定义域已映射到 CDN 终结点，则不需要进一步操作。 Azure CDN 将自动执行步骤并完成请求。 但是，如果自定义域映射到其他位置，则必须使用电子邮件来验证域所有权。
 
 若要在自定义域上启用 HTTPS，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** CDN 配置文件。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Microsoft 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件。
 
 2. 在 CDN 终结点列表中，选择包含自定义域的终结点。
 
@@ -67,19 +72,95 @@ HTTPS 功能的一些关键属性包括：
 
     此时将显示“自定义域”页。
 
-4. 选择“打开”以启用 HTTPS，然后选择“应用”。
+4. 在证书管理类型下，选择“CDN 托管”。
 
-    ![自定义域 HTTPS 状态](./media/cdn-custom-ssl/cdn-enable-custom-ssl.png)
+5. 选择“打开”，启用 HTTPS。
+
+    ![自定义域 HTTPS 状态](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
+
+6. 继续[验证域](#validate-the-domain)。
+
+
+## <a name="option-2-enable-the-https-feature-with-your-own-certificate"></a>选项 2：使用自己的证书启用 HTTPS 功能 
+
+> [!IMPORTANT]
+> 目前只有“Microsoft 的 Azure CDN 标准版”配置文件支持此功能。 
+>
+ 
+
+可以在 Azure CDN 上使用自己的证书通过 HTTPS 传递内容。 可通过与 Azure Key Vault 集成完成此过程。 Azure Key Vault 可以让客户安全地存储自己的证书。 Azure CDN 服务利用此安全机制获取证书。 使用自己的证书需要一些附加步骤。
+
+### <a name="step-1-prepare-your-azure-key-vault-account-and-certificate"></a>步骤 1：准备 Azure Key Vault 帐户和证书
+ 
+1. Azure Key Vault：在要启用自定义 HTTPS 的 Azure CDN 配置文件和 CDN 终结点的同一订阅下，必须具有正在运行的 Azure Key Vault 帐户。 创建 Azure Key Vault 帐户（如果还没有帐户）。
+ 
+2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴证书授权机构 (CA) 之一创建新的证书。 
+
+### <a name="step-2-register-azure-cdn"></a>步骤 2：注册 Azure CDN
+
+通过 PowerShell 将 Azure CDN 注册为 Azure Active Directory 中的应用。
+
+1. 根据需要在本地计算机上的 PowerShell 中安装 [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0)。
+
+2. 在 PowerShell 中运行以下命令：
+
+     `New-AzureRmADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
+
+    ![在 PowerShell 中注册 Azure CDN](./media/cdn-custom-ssl/cdn-register-powershell.png)
+              
+
+### <a name="step-3-grant-azure-cdn-access-to-your-key-vault"></a>步骤 3：为 Azure CDN 授予密钥保管库的访问权限
+ 
+在 Azure Key Vault 帐户中为 Azure CDN 授予证书（机密）的访问权限。
+
+1. 在密钥保管库帐户的“设置”下，选择“访问策略”，然后选择“添加新策略”以创建新策略。
+
+    ![创建新的访问策略](./media/cdn-custom-ssl/cdn-new-access-policy.png)
+
+    ![访问策略设置](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
+
+2. 在“选择主体”中，搜索并选择“Azure CDN”。
+
+3. 在“选择权限”中，选择“获取”以允许 CDN 执行这些权限来获取并列出证书。 
+
+4. 选择“确定”。 
+
+    Azure CDN 现在可以访问此密钥保管库和存储在其中的证书（机密）。
+ 
+### <a name="step-4-select-the-certificate-for-azure-cdn-to-deploy"></a>步骤 4：选择要部署的 Azure CDN 证书
+ 
+1. 返回 Azure CDN 门户，选择想要启用自定义 HTTPS 的配置文件和 CDN 终结点。 
+
+2. 在自定义域列表中，选择要为其启用 HTTPS 的自定义域。
+
+    此时将显示“自定义域”页。
+
+3. 在证书管理类型下，选择“使用我自己的证书”。 
+
+    ![配置证书](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+
+4. 选择密钥保管库，证书（机密）和证书版本。
+
+    Azure CDN 会列出下列信息： 
+    - 订阅 ID 的密钥保管库帐户。 
+    - 所选密钥保管库下的证书（机密）。 
+    - 可用证书版本。 
+ 
+5. 选择“打开”，启用 HTTPS。
+  
+6. 使用自己的证书时，不需要对域进行验证。 转至[等待传播](#wait-for-propagation)。
 
 
 ## <a name="validate-the-domain"></a>验证域
 
-如果你已有正在使用的通过 CNAME 记录映射到自定义终结点的自定义域，请转至  
+如果已使用一个自定义域且该自定义域通过 CNAME 记录映射到自定义终结点，或使用的是自己的证书，请转至  
 [自定义域已映射到 CDN 终结点](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record)。 否则，如果终结点的 CNAME 记录条目不再存在或者它包含 cdnverify 子域，请转至[自定义域未映射到 CDN 终结点](#custom-domain-is-not-mapped-to-your-cdn-endpoint)。
 
 ### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>自定义域已通过 CNAME 记录映射到 CDN 终结点
 
-将自定义域添加到终结点时，会在域注册机构的 DNS 表中创建一条 CNAME 记录，以将其映射到 CDN 终结点主机名。 如果该 CNAME 记录仍然存在，并且不包含 cdnverify 子域，则 DigiCert 证书颁发机构 (CA) 将使用它来验证自定义域的所有权。 
+将自定义域添加到终结点时，会在域注册机构的 DNS 表中创建一条 CNAME 记录，以将其映射到 CDN 终结点主机名。 如果该 CNAME 记录仍然存在，并且不包含 cdnverify 子域，则 DigiCert 证书颁发机构 (CA) 将使用它来自动验证自定义域的所有权。 
+
+如果使用的是自己的证书，则不需要对域进行验证。
 
 CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 CDN 终结点主机名：
 
@@ -87,7 +168,7 @@ CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* �
 |-----------------|-------|-----------------------|
 | www.contoso.com | CNAME | contoso.azureedge.net |
 
-有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records)。
+有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records)。
 
 如果 CNAME 记录采用正确的格式，DigiCert 会自动验证自定义域名，并将其添加到使用者可选名称 (SAN) 证书。 DigitCert 不会向你发送验证电子邮件，并且你无需批准请求。 该证书会在一年内有效，并会在过期前自动续订。 转至[等待传播](#wait-for-propagation)。 
 
@@ -160,13 +241,15 @@ postmaster@&lt;your-domain-name.com&gt;
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+
+
 ## <a name="clean-up-resources---disable-https"></a>清理资源 - 禁用 HTTPS
 
 在前面的步骤中，你在自定义域上启用了 HTTPS 协议。 如果不再希望为自定义域使用 HTTPS，可以通过执行下列步骤来禁用 HTTPS：
 
 ### <a name="disable-the-https-feature"></a>禁用 HTTPS 功能 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** CDN 配置文件。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Microsoft 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件。
 
 2. 在终结点的列表中，单击包含自定义域的终结点。
 
@@ -198,11 +281,11 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 1. *谁是证书提供商？使用哪种类型的证书？*
 
-    Microsoft 使用 DigiCert 提供的使用者可选名称 (SAN) 证书。 SAN 证书可以使用一个证书保护多个完全限定域名。
+    对于 Verizon 的 Azure CDN，使用 DigiCert 提供的使用者可选名称 (SAN) 证书。 SAN 证书可以使用一个证书保护多个完全限定域名。 对于 Microsoft 的 Azure CDN 标准版，使用 DigiCert 提供的单个证书。
 
-2. *能否使用我的专用证书？*
-    
-    目前不能，但它在规划之中。
+2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？
+
+    Verizon 的 Azure CDN 标准版使用基于 IP 的 TLS/SSL。 Microsoft 的 Azure CDN 标准版使用 SNI TLS/SSL。
 
 3. *如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？*
 
@@ -214,7 +297,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 5. *能否将自定义域 HTTPS 用于 Akamai 的 Azure CDN？*
 
-    目前，只有 Verizon 的 Azure CDN 提供此功能。 Microsoft 正在努力在未来几个月内对 Akamai 的 Azure CDN 支持此功能。
+    目前，此功能不适用于 Akamai 的 Azure CDN 标准版配置文件。 Microsoft 正在努力在未来几个月内提供对此功能的支持。
 
 6. *我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？*
 
@@ -223,15 +306,17 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="next-steps"></a>后续步骤
 
-你已了解：
+本教程介绍了如何：
 
 > [!div class="checklist"]
-> - 在自定义域上启用 HTTPS 协议
-> - 验证域
-> - 在自定义域上禁用 HTTPS 协议
+> - 在自定义域上启用 HTTPS 协议。
+> - 使用 CDN 托管的证书 
+> - 使用自己的证书
+> - 验证域。
+> - 在自定义域上禁用 HTTPS 协议。
 
 继续学习下一教程，了解如何在 CDN 终结点上配置缓存。
 
 > [!div class="nextstepaction"]
-> [使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)
+> [教程：设置 Azure CDN 缓存规则](cdn-caching-rules-tutorial.md)
 

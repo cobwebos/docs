@@ -6,13 +6,13 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/20/2017
+ms.date: 04/10/2018
 ms.author: marsma
-ms.openlocfilehash: c993e55193ffb140f6c3aabfa7626b501ab24b9d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1272a4b547a4ba650678ce083a44bde3a5a3e583
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="geo-replicate-multi-region-deployments"></a>异地复制多区域部署
 
-如果将容器部署到多个区域，请使用 Azure 容器注册表的[异地复制](container-registry-geo-replication.md)功能。 无论是为本地数据中心的全局客户提供服务还是开发团队处于不同位置，都可以通过异地复制注册表来简化注册表管理并最小化延迟。 此功能当前处于预览状态，可与[高级](container-registry-skus.md)注册表一起使用。
+如果将容器部署到多个区域，请使用 Azure 容器注册表的[异地复制](container-registry-geo-replication.md)功能。 无论是为本地数据中心的全局客户提供服务还是开发团队处于不同位置，都可以通过异地复制注册表来简化注册表管理并最小化延迟。 异地复制仅适用于[高级](container-registry-skus.md)注册表。
 
 若要了解如何使用异地复制，请参阅 [Azure 容器注册表中的异地复制](container-registry-tutorial-prepare-registry.md)教程，该教程分为三部分。
 

@@ -14,11 +14,11 @@ ms.date: 08/17/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 373983413ea83e5924b52fbbcbc666aa1a188d80
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4fa93e4bf64e01b44b0826b2182b125004c49609
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Azure AD 中的管理单元管理 - 公共预览
 本文介绍管理单元，这是一个新的 Azure Active Directory 资源容器，可用于向部分用户委托管理权限，以及向部分用户应用策略。 在 Azure Active Directory 中，利用管理单元，中心管理员能够将权限委派给区域管理员或以粒度级别设置策略。
@@ -38,4 +38,4 @@ ms.lasthandoff: 05/07/2018
 有关软件要求和安装 Azure AD 模块的详细信息，以及有关用于管理管理单元的 Azure AD 模块 cmdlet 的信息（包括语法、参数说明和示例），请参阅 [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Active Directory 版本](active-directory-editions.md)
+[Azure Active Directory 版本](active-directory-whatis.md)

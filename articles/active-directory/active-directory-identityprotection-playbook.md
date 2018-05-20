@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 210d097f0719725a0ecf145ce536875a383b04e6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 29d8afb54ffbbed2178c8af611c0c0bb77fbe915
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 04/23/2018
 漏洞是 Azure AD 环境中可能由危险分子利用的弱点。 Azure AD Identity Protection 中当前显示了 3 种类型的漏洞，这些漏洞会利用 Azure AD 的其他功能。 设置这些功能后，这些漏洞会自动显示在 Identity Protection 仪表板上。
 
 * Azure AD [多重身份验证](authentication/multi-factor-authentication.md)
-* Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)。
+* Azure AD [Cloud App Discovery](manage-apps/cloud-app-discovery.md)。
 * Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)。 
 
 

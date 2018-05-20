@@ -3,7 +3,7 @@ title: Azure API 管理策略 | Microsoft Docs
 description: 了解可在 Azure API 管理中使用的策略。
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 7304ade9c47034b6cb76eb87126f09fb5af65c8b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f617abc164761b4839b188822585eaa4eb0aacd6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  

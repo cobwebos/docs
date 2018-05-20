@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: b8df65c969a37eb22589c297ecb9b0d0b840a52c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4bc41727c30d4dd213baca1d7c56cdfdf741692d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/07/2018
 >- 使用及时或直接（基于时间）的分配，分配给 Azure 资源角色  
 >- 分配给访问审查
 >
->有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
+>有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-whatis.md)。
 
 组织希望尽量减少拥有访问权限的人员以保护信息或资源安全，因为这样做可以减小恶意用户获得相应访问权限，或者已授权用户无意中影响敏感资源的可能性。  但是，用户仍需在 Azure AD、Azure、Office 365 或 SaaS 应用中执行特权操作。 组织可能会授予用户对订阅和 Azure AD 等 Azure 资源的特许访问权限。 在这种情况下，需要监督这些用户使用其管理特权执行了哪些操作。 Azure AD Privileged Identity Management 有助于缓解访问权限过度、不必要或滥用的风险。
 

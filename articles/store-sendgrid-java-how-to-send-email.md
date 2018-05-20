@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: c9f7d4841846e41eacb66125bcdeeb29466bb0b8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dbd9d01a00522a0a55828284cd6c0e78a26d9102
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何通过 Java 使用 SendGrid 发送电子邮件
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 示例使用 Java 编写。 涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。

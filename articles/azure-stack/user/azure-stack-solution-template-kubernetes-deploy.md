@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 71d920ea1c143ed65510b77e1804e9c5e38cc180
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7cf865f0ce75d8308d6d42306e8e05852f763cae
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
@@ -24,7 +24,7 @@ ms.lasthandoff: 05/10/2018
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-> [!note]  
+> [!Note]  
 > Azure 堆栈上的 Azure 容器服务 (ACS) Kubernetes 是处于特邀预览阶段。 Azure 堆栈运算符将需要请求对 Kubernetes 应用商店项执行本文中的说明所需的访问。
 
 以下文章查看使用 Azure 资源管理器解决方案模板来部署和设置的资源为 Kubernetes 在单个协调的操作。 你将需要收集有关你的 Azure 堆栈安装所需的信息生成模板，并随后部署到云。
@@ -121,7 +121,7 @@ ms.lasthandoff: 05/10/2018
 
 6. 输入**主配置文件的 DNS 前缀**区域中唯一。 这必须是一个区域唯一的名称，如`k8s-12345`。 尝试选择相同作为资源组的名称，作为最佳做法。
 
-    > [!note]  
+    > [!Note]  
     > 对于每个群集中，使用新的和独特的主配置文件的 DNS 前缀。
 
 7. 在群集中输入的代理的数量。 此值称为**代理池配置文件计数**。 可以有从 1 到 32

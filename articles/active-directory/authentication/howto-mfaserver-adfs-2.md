@@ -2,26 +2,22 @@
 title: 将 Azure MFA 服务器与 AD FS 2.0 配合使用 | Microsoft Docs
 description: 这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何将 Azure MFA 与 AD FS 2.0 配合使用。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: 96168849-241a-4499-a224-d829913caa7e
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 06/14/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: a638992c37a5af9fc8433ae6afc25d01aa6b49d9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 71591bb543eedc200cb47bc5871d157f4d5ff2c5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>将 Azure 多重身份验证服务器配置为与 AD FS 2.0 配合使用
+
 本文适用于联合使用 Azure Active Directory 以及希望保护本地或云中资源的组织。 通过使用 Azure 多重身份验证服务器，并将其配置为使用 AD FS，为重要的终结点触发双重验证，从而保护资源。
 
 本文介绍如何将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用。 有关 AD FS 的详细信息，请参阅[将 Azure 多重身份验证服务器与 Windows Server 2012 R2 AD FS 配合使用来保护云和本地资源](howto-mfaserver-adfs-2012.md)。

@@ -7,17 +7,18 @@ author: daveba
 manager: mtillman
 editor: daveba
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 88d09bac87c474359f5ece93b6fe0340d9565833
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 203e53cb21e1a2b4b0e31bcb5b8213d9e8cb01c7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>使用 Windows VM 托管服务标识通过 SAS 凭据访问 Azure 存储
 
@@ -58,7 +59,7 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
 
-通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
+通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，和在 VM 上配置该标识。
 
 1. 导航到新虚拟机的资源组，并选择已在上一步中创建的虚拟机。
 2. 在左侧面板上，在 VM“设置”下，单击“配置”。

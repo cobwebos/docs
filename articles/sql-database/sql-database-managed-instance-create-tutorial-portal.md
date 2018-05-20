@@ -8,14 +8,14 @@ ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 04/10/2018
+ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1e04b12241121d3894e2d71df423bae4f000a60d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 198a637fcfc2268e393a63b27a153b163dc4331e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库托管实例
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 04/19/2018
    |**订阅**|你的订阅|有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。|
    |**资源组**|选择在前述过程中创建的资源组|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**位置**|选择在前面的过程中指定的位置| 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
-   |**禁用 BCP 路由传播**|已禁用||
+   |**禁用 BCP 路由传播**|已启用||
    ||||
 
    ![路由表创建窗体](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)

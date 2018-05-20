@@ -1,11 +1,11 @@
 ---
-title: "H264 多比特率 4x3 (iOS) | Microsoft 文档"
-description: "本主题概述了 **H264 多比特率 4x3 (iOS)** 任务预设。"
+title: H264 多比特率 4x3 (iOS) | Microsoft 文档
+description: 本主题概述了“H264 多比特率 4x3 (iOS)”任务预设。
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 7f587c46-bda5-49e6-abad-203380e1d1ab
 ms.service: media-services
 ms.workload: media
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
 ms.openlocfilehash: 0f7c07f504b5ca4461a93c31a85b632d37fc328d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>H264 多比特率 4x3 (iOS)
 `Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
   
- 本主题展示了 XML 和 JSON 格式的 `H264 Multiple Bitrate 4x3 for iOS` 预设。  
+ 本主题介绍 XML 和 JSON 格式的 `H264 Multiple Bitrate 4x3 for iOS` 预设。  
   
  此预设产生一组 8 GOP 对齐的 MP4 文件，范围从 8500 kbps 到 200 kbps，以及立体声 AAC 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
   

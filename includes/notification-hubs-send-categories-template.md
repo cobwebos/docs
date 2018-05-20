@@ -1,11 +1,20 @@
-
-本部分说明如何从 .NET 控制台应用以标记模板通知的形式发送突发新闻。
-
-如果使用的是 Microsoft Azure 应用服务的移动应用功能，请参阅[为移动应用添加推送通知]教程，并选择顶层的平台。
-
-如果要使用 Java 或 PHP，请参阅[如何通过 Java 或 PHP 使用通知中心]。 可使用[通知中心 REST 接口]通过任何后端发送通知。
-
-如果在完成[通知中心入门]时创建了用于发送通知的控制台应用，则跳过步骤 1-3。
+---
+title: include 文件
+description: include 文件
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 03/30/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/07/2018
+---
+本部分说明如何从 .NET 控制台应用以标记模板通知的形式发送突发新闻。 
 
 1. 在 Visual Studio 中创建新的 Visual C# 控制台应用程序：
    
@@ -20,33 +29,34 @@
 
 4. 打开文件 Program.cs 并添加以下 `using` 语句：
    
-        using Microsoft.Azure.NotificationHubs;
+    ```csharp
+    using Microsoft.Azure.NotificationHubs;
+    ```
 
 5. 在 `Program` 类中，添加以下方法，或替换此方法（如果已存在）：
    
-        private static async void SendTemplateNotificationAsync()
+    ```csharp
+    private static async void SendTemplateNotificationAsync()
+    {
+        // Define the notification hub.
+        NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
+
+        // Create an array of breaking news categories.
+        var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
+
+        // Send the notification as a template notification. All template registrations that contain
+        // "messageParam" and the proper tags will receive the notifications.
+        // This includes APNS, GCM, WNS, and MPNS template registrations.
+
+        Dictionary<string, string> templateParams = new Dictionary<string, string>();
+
+        foreach (var category in categories)
         {
-            // Define the notification hub.
-            NotificationHubClient hub =
-                NotificationHubClient.CreateClientFromConnectionString(
-                    "<connection string with full access>", "<hub name>");
-   
-            // Create an array of breaking news categories.
-            var categories = new string[] { "World", "Politics", "Business",
-                                            "Technology", "Science", "Sports"};
-   
-            // Send the notification as a template notification. All template registrations that contain
-            // "messageParam" and the proper tags will receive the notifications.
-            // This includes APNS, GCM, WNS, and MPNS template registrations.
-   
-            Dictionary<string, string> templateParams = new Dictionary<string, string>();
-   
-            foreach (var category in categories)
-            {
-                templateParams["messageParam"] = "Breaking " + category + " News!";
-                await hub.SendTemplateNotificationAsync(templateParams, category);
-            }
-         }
+            templateParams["messageParam"] = "Breaking " + category + " News!";
+            await hub.SendTemplateNotificationAsync(templateParams, category);
+        }
+    }
+    ```   
    
     此代码将针对字符串数组中的所有 6 个标记发送模板通知。 使用标记是为了确保设备仅接收已注册类别的通知。
 
@@ -54,8 +64,10 @@
 
 6. 在 **Main** 方法中添加以下行：
    
-         SendTemplateNotificationAsync();
-         Console.ReadLine();
+    ```csharp
+    SendTemplateNotificationAsync();
+    Console.ReadLine();
+    ```
 
 7. 生成控制台应用。
 
@@ -63,8 +75,8 @@
 [13]: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
 
 <!-- URLs. -->
-[通知中心入门]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[通知中心 REST 接口]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
-[为移动应用添加推送通知]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
-[如何通过 Java 或 PHP 使用通知中心]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
+[Get started with Notification Hubs]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
+[Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
+[How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
 [Microsoft.Azure.Notification Hubs NuGet 包]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

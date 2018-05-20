@@ -1,11 +1,11 @@
 ---
-title: "如何配置 Azure AD 库应用程序的密码单一登录 | Microsoft Docs"
-description: "应用程序已在 Azure AD 应用程序库中列出后，如何对其配置安全的基于密码的单一登录"
+title: 如何配置 Azure AD 库应用程序的密码单一登录 | Microsoft Docs
+description: 应用程序已在 Azure AD 应用程序库中列出后，如何对其配置安全的基于密码的单一登录
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: aa02bfd22a656024d8638226dc1c5551b63e6d42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8e1d8471d2feb838a6ba3eb08eedc3ca4d30ab07
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的密码单一登录
 
@@ -132,11 +132,11 @@ ms.lasthandoff: 02/21/2018
 
 11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”列表。
 
-12. **可选：**如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
+12. **可选：** 如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
-14. **可选：**单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选用户。
+14. **可选：** 单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选用户。
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 
@@ -168,15 +168,15 @@ ms.lasthandoff: 02/21/2018
 
 11. 将鼠标悬停在列表中的**组**上以显示**复选框**。 单击组头像或徽标旁边的复选框以将用户添加到“已选择”列表。
 
-12. **可选：**如果想要**添加多个组**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**完整组名**，然后单击复选框以将此组添加到“已选择”列表。
+12. **可选：** 如果想要**添加多个组**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**完整组名**，然后单击复选框以将此组添加到“已选择”列表。
 
 13. 选择完所有组后，单击“选择”按钮将所有已选择的组添加到要分配给应用程序的用户和组的列表中。
 
-14. **可选：**单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选组。
+14. **可选：** 单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选组。
 
 15. 单击“分配”按钮，将应用程序分配给所选组。
 
 在很短一段时间后，所选用户便能够在访问面板中启动这些应用程序。
 
 ## <a name="next-steps"></a>后续步骤
-[使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
+[使用应用程序代理为应用提供单一登录](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

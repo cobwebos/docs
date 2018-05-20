@@ -14,14 +14,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2017
+ms.date: 05/11/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fa9f9ae4ef2bd39f3c6d3ec7c6d757aa50b2fd1
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b18f568fdeead10fadad0e403ce0ca7fe4b3213a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
 可以从 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)下载发票，也可通过电子邮件发送发票。 若要下载每日使用情况，请转到 [Azure 帐户中心](https://account.azure.com/Subscriptions)。 只有特定角色有权获取帐单发票和使用情况信息，如帐户管理员。 若要详细了解如何获取计费信息，请参阅[使用角色管理对 Azure 计费的访问](billing-manage-access.md)。

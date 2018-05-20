@@ -1,22 +1,22 @@
 ---
-title: "Azure 容器服务 (AKS) 配额和区域可用性"
-description: "Azure 容器服务 (AKS) 的默认配额和区域可用性。"
+title: Azure Kubernetes 服务 (AKS) 配额和区域可用性
+description: Azure Kubernetes 服务 (AKS) 的默认配额和区域可用性。
 services: container-service
-author: david-stanford
+author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: overview
-ms.date: 01/16/2018
-ms.author: dastanfo
-ms.openlocfilehash: eddfab874501fd045820d7da3c968d340fdffe93
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.date: 04/26/2018
+ms.author: nepeters
+ms.openlocfilehash: 4fb03df470972a2920854ec18554d1cb4b310e88
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="quotas-and-region-availability-for-azure-container-service-aks"></a>Azure 容器服务 (AKS) 的配额和区域可用性
+# <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的配额和区域可用性
 
-所有 Azure 服务都包括某些针对资源和功能的默认限制和配额。 以下部分详述了多个 Azure 容器服务 (AKS) 资源的默认资源限制，以及 Azure 区域中 AKS 服务的可用性。
+所有 Azure 服务都包括某些针对资源和功能的默认限制和配额。 以下各节详述了多个 Azure Kubernetes 服务 (AKS) 资源的默认资源限制，以及 Azure 区域中 AKS 服务的可用性。
 
 ## <a name="service-quotas-and-limits"></a>服务配额和限制
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/18/2018
 
 ## <a name="region-availability"></a>上市区域
 
-Azure 容器服务 (AKS) 在以下区域中可供预览：
+Azure Kubernetes 服务 (AKS) 在以下区域提供预览版：
 - 美国东部
 - 欧洲西部
 - 美国中部

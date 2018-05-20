@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ba73f386a19cc8bedb8879e6f7eea316154b7a57
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fcbeb6bbd090fc31febb326d3cbef90187d3e7e3
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。 
 
@@ -26,9 +26,11 @@ ms.lasthandoff: 04/23/2018
 
 * Ev3 系列在超线程配置中采用 E5-2673 v4 2.3 GHz (Broadwell) 处理器，针对最常规用途的工作负荷提供了更好的价值主张，因此 Ev3 适用于大多数其他云的常规用途 VM。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存也得到了扩展（从 7 GiB/vCPU 到 8 GiB/vCPU）。  Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
 
-## <a name="esv3-series-sup1sup"></a>Esv3 系列 <sup>1</sup>
+* Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。  这些虚拟机大小非常适合于与其他客户的工作负荷（涉及符合性和法规要求等元素）高度隔离的工作负荷。  客户还可以选择利用[对嵌套虚拟机的 Azure 支持](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/)，对这些独立的虚拟机资源进一步细分。  请参阅下面的虚拟机系列表，了解独立 VM 选项。
 
-ACU：160-190
+## <a name="esv3-series"></a>Esv3 系列 
+
+ACU：160-190 <sup>1</sup>
 
 ESv3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，可通过 Intel Turbo Boost Technology 2.0 达到 3.5 GHz，并使用高级存储。 Ev3 系列实例适用于内存密集型企业应用程序。
 
@@ -51,9 +53,9 @@ ESv3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，
 <sup>3</sup> 实例与专用于单个客户的硬件隔离。
 
 
-## <a name="ev3-series-sup1sup"></a>Ev3 系列 <sup>1</sup>
+## <a name="ev3-series"></a>Ev3 系列 
 
-ACU：160 - 190 
+ACU：160 - 190 <sup>1</sup>
 
 Ev3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，可通过 Intel Turbo Boost Technology 2.0 达到 3.5 GHz。 Ev3 系列实例适用于内存密集型企业应用程序。
 
@@ -75,9 +77,9 @@ Ev3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，�
 <sup>2</sup> 受约束的可用核心大小。 
 
 
-## <a name="m-series-sup1sup"></a>M 系列 <sup>1</sup>
+## <a name="m-series"></a>M 系列 
 
-ACU：160-180
+ACU：160-180 <sup>1</sup>
 
 | 大小            | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
@@ -95,9 +97,9 @@ ACU：160-180
 <sup>4</sup> 实例与专用于单个客户的硬件隔离。
 <br>
 
-## <a name="gs-series-sup1sup"></a>GS 系列 <sup>1</sup>
+## <a name="gs-series"></a>GS 系列 
 
-ACU：180 - 240
+ACU：180 - 240 <sup>1</sup>
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 |---|---|---|---|---|---|---|---|
@@ -131,9 +133,9 @@ ACU：180 - 240
 <br>
 
 
-## <a name="dsv2-series-sup1sup"></a>DSv2 系列 <sup>1</sup>
+## <a name="dsv2-series"></a>DSv2-series 
 
-ACU：210 - 250
+ACU：210 - 250 <sup>1</sup>
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -174,9 +176,9 @@ ACU：210 - 250
 
 <br>
 
-## <a name="ds-series-sup1sup"></a>DS 系列 <sup>1</sup>
+## <a name="ds-series"></a>DS 系列 
 
-ACU：160
+ACU：160 <sup>1</sup>
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: b36c9150ef251939c9c484da93bc8a086b869676
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 62f5ae4a9152d3f1b1641cc69136bf472527ba2a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
@@ -44,6 +44,10 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+## <a name="may-2018"></a>2018 年 5 月 
+
+自 2018 年 5 月 12 日起，实时频道将不再支持 RTP/MPEG-2 传输流引入协议。 请从 RTP/MPEG-2 迁移到 RTMP 或分段 MP4（平滑流式处理）引入协议。
 
 ## <a name="october-2017-release"></a>2017 年 10 月版本
 > [!IMPORTANT] 

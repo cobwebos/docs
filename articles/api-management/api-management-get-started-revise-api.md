@@ -3,7 +3,7 @@ title: 在 Azure API 管理中使用修订安全做出非重大更改 | Microsof
 description: 遵循本教程中的步骤了解如何在 API 管理中使用修订进行非重大更改。
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: b4812ea8d93e4bfb784370e3a3196a5d20e47519
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 864c269da61bcea885249021a44fe0259ca83e90
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>使用修订安全做出非重大更改
 当 API 准备就绪并即将供开发人员使用时，我们通常需要谨慎地对该 API 进行更改，同时避免干扰 API 的调用方。 另一种有效的做法是让开发人员知道所做的更改。 可以在 Azure API 管理中使用**修订**实现此目的。 有关详细信息，请参阅[版本和修订](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)以及[使用 Azure API 管理进行 API 版本控制](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/)。

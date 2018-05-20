@@ -1,22 +1,23 @@
 ---
-title: "使用主领域发现策略为应用程序配置登录自动加速 | Microsoft Docs"
-description: "介绍什么是 Azure AD 租户，以及如何通过 Azure Active Directory 管理 Azure。"
+title: 使用主领域发现策略为应用程序配置登录自动加速 | Microsoft Docs
+description: 介绍什么是 Azure AD 租户，以及如何通过 Azure Active Directory 管理 Azure。
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: barbkess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: it-pro
 ms.date: 11/09/2017
-ms.author: billmath
-ms.openlocfilehash: deaa52a062eb01450f760324e01e520fcbe894e1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.openlocfilehash: 5df12f905595c9b3e8caa8f372b9ba7b54672f81
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-sign-in-auto-acceleration-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置登录自动加速
 
@@ -158,7 +159,7 @@ MSDN 中的[策略操作](https://msdn.microsoft.com/library/azure/ad/graph/api/
 
 #### <a name="step-1-create-an-hrd-policy"></a>步骤 1：创建 HRD 策略
 ``` powershell
-New-AzureADPoly -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
+New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 如果使用单个联合域对应用程序的用户进行身份验证，则只需创建一个 HRD 策略。  

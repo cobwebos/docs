@@ -2,26 +2,22 @@
 title: RDG 和 Azure MFA 服务器（使用 RADIUS）| Microsoft 文档
 description: 本 Azure 多重身份验证页面会帮助你部署使用 RADIUS 的远程桌面 (RD) 网关和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: f2354ac4-a3a7-48e5-a86d-84a9e5682b42
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 06/27/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 5bec531d1d14bf3aaac3950762fc8d2ed545fb4b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ef090b51141e8d77f23472058f9c3a8d096ca171
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器
+
 通常情况下，远程桌面 (RD) 网关使用本地网络策略服务 (NPS) 进行身份验证。 本文介绍如何将来自远程桌面网关（通过本地 NPS）的 RADIUS 请求路由到多重身份验证服务器。 将 Azure MFA 与 RD 网关结合使用意味着，用户可以从任何地方访问其工作环境，同时进行强身份验证。 
 
 由于 Server 2012 R2 不支持对终端服务使用 Windows 身份验证，请通过 RD 网关和 RADIUS 与 MFA 服务器集成。 

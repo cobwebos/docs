@@ -15,11 +15,11 @@ ms.date: 02/16/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5e99fba2f226e1e9b401bd8ef5b3b85a5e8c6a7c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: a3df15743b4918d72fac5f8769a2d3ee721a452f
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="gdpr-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的 GDPR  
 
@@ -80,5 +80,5 @@ Azure Active Directory (Azure AD) 应用程序代理与 GDPR 以及其他所有 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure AD 应用程序代理的概述，请参阅[如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)。
+有关 Azure AD 应用程序代理的概述，请参阅[如何提供对本地应用程序的安全远程访问](manage-apps/application-proxy.md)。
 

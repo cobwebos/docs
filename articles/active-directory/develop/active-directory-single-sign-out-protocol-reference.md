@@ -1,13 +1,14 @@
 ---
-title: "Azure 单一注销 SAML 协议 | Microsoft Docs"
-description: "本文介绍 Azure Active Directory 中的单一注销 SAML 协议"
+title: Azure 单一注销 SAML 协议 | Microsoft Docs
+description: 本文介绍 Azure Active Directory 中的单一注销 SAML 协议
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: c77bf15d69a4c7749567f53df96c91a1d329a466
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9ec99ffc64138cf1cd94e0f11077cdc5d86dbc57
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
 Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配置文件。 要使单一注销正常工作，必须在应用程序注册期间向 Azure AD 显式注册应用程序的 **LogoutURL**。 Azure AD 使用 LogoutURL 在用户注销后重定向。

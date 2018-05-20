@@ -15,15 +15,15 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: ebea5662017672ccbe911d4b9e7471aa081dd1bb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ea6817f80925c1989db13488472457e44801e7a8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序 
 
-Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如果其中许多的许多应用程序需要相同的设置，则可能很快就会变得难以管理，并引入不必要的配置错误风险。 使用 [Azure AD 应用程序代理](active-directory-application-proxy-get-started.md)，可以通过通配符应用程序发布功能一次性发布和管理多个应用程序，从而解决此问题。 使用此解决方案可以：
+Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如果其中许多的许多应用程序需要相同的设置，则可能很快就会变得难以管理，并引入不必要的配置错误风险。 使用 [Azure AD 应用程序代理](manage-apps/application-proxy.md)，可以通过通配符应用程序发布功能一次性发布和管理多个应用程序，从而解决此问题。 使用此解决方案可以：
 
 -   简化管理开销
 -   减少潜在的配置错误
@@ -48,14 +48,14 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 如果其他应用程序采用不同的配置设置，则必须将这些例外的应用程序发布为单独的应用程序，以覆盖通配符的默认值设置。 没有通配符的应用程序始终优先于通配符应用程序。 从配置角度讲，前者“只是”普通的应用程序。
 
-创建通配符应用程序的过程基于适用于其他所有应用程序的相同[应用程序发布流](application-proxy-publish-azure-portal.md)。 唯一的区别在于，需在 URL 中包含通配符，有时可以在 SSO 配置中包含通配符。
+创建通配符应用程序的过程基于适用于其他所有应用程序的相同[应用程序发布流](manage-apps/application-proxy-publish-azure-portal.md)。 唯一的区别在于，需在 URL 中包含通配符，有时可以在 SSO 配置中包含通配符。
 
 
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="custom-domains"></a>自定义域
 
-尽管[自定义域](active-directory-application-proxy-custom-domains.md)对于其他所有应用程序是可选的，但它们是通配符应用程序的先决条件。 创建自定义域时需要：
+尽管[自定义域](manage-apps/application-proxy-configure-custom-domain.md)对于其他所有应用程序是可选的，但它们是通配符应用程序的先决条件。 创建自定义域时需要：
 
 1. 在 Azure 中创建已验证的域 
 2. 将 PFX 格式的 SSL 证书上传到应用程序代理。
@@ -112,12 +112,12 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 在 [MyApps 面板](https://myapps.microsoft.com)中，通配符应用程序只是以一个磁贴表示。 此磁贴默认已隐藏。 若要显示该磁贴并让用户首先看到特定的页面：
 
-1. 遵照有关[设置主页 URL](application-proxy-office365-app-launcher.md) 的指导。
+1. 遵照有关[设置主页 URL](manage-apps/application-proxy-configure-custom-home-page.md) 的指导。
 2. 在应用程序属性页上将“显示应用程序”设置为“true”。
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos 约束委派
 
-对于[使用 Kerberos 约束委派 (KCD) 作为 SSO 方法](active-directory-application-proxy-sso-using-kcd.md)的应用程序，针对 SSO 方法列出的 SPN 可能也需要通配符。 例如，SPN 可能是：`HTTP/*.adventure-works.com`。 仍需要在后端服务器上配置各个 SPN（例如 `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`）。
+对于[使用 Kerberos 约束委派 (KCD) 作为 SSO 方法](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)的应用程序，针对 SSO 方法列出的 SPN 可能也需要通配符。 例如，SPN 可能是：`HTTP/*.adventure-works.com`。 仍需要在后端服务器上配置各个 SPN（例如 `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`）。
 
 
 
@@ -136,7 +136,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 - 具有相同的属性
 
 
-可以使用[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)中所述的步骤发布通配符应用程序。 此方案假设：
+可以使用[使用 Azure AD 应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)中所述的步骤发布通配符应用程序。 此方案假设：
 
 - 具有以下 ID 租户：`000aa000-11b1-2ccc-d333-4444eee4444e` 
 
@@ -144,7 +144,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 - 已创建将 `*.adventure-works.com` 指向 `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` 的 **CNAME** 条目。
 
-可以遵照[所述的步骤](application-proxy-publish-azure-portal.md)，在租户中创建新的应用程序代理应用程序。 在此示例中，通配符位于以下字段中：
+可以遵照[所述的步骤](manage-apps/application-proxy-publish-azure-portal.md)，在租户中创建新的应用程序代理应用程序。 在此示例中，通配符位于以下字段中：
 
 - 内部 URL：
 
@@ -183,7 +183,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 需确保有一条 CNAME 记录将 `finance.adventure-works.com` 指向应用程序的应用程序代理页上指定的应用程序特定终结点。 对于此方案，`finance.adventure-works.com` 指向 `https://finance-awcycles.msappproxy.net/`。 
 
-根据[所述的步骤](application-proxy-publish-azure-portal.md)，此方案需要以下设置：
+根据[所述的步骤](manage-apps/application-proxy-publish-azure-portal.md)，此方案需要以下设置：
 
 
 - 在“内部 URL”中，设置 **finance** 而不是通配符。 
@@ -212,8 +212,8 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 详细信息：
 
-- 有关**自定义域**的信息，请参阅[使用 Azure AD 应用程序代理中的自定义域](active-directory-application-proxy-custom-domains.md)。
+- 有关**自定义域**的信息，请参阅[使用 Azure AD 应用程序代理中的自定义域](manage-apps/application-proxy-configure-custom-domain.md)。
 
-- 有关**发布应用程序**的信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)
+- 有关**发布应用程序**的信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)
 
 

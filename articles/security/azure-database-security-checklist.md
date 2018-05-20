@@ -1,12 +1,12 @@
 ---
-title: "Azure 数据库安全性清单 | Microsoft Docs"
-description: "本文提供有关 Azure 数据库安全性的一组清单。"
+title: Azure 数据库安全性清单 | Microsoft Docs
+description: 本文提供有关 Azure 数据库安全性的一组清单。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 37523506369ece144183dba76feb8b23b6c1acb2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7712196caefeea8a62045d432d762fbd16f42011
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-database-security-checklist"></a>Azure 数据库安全性清单
 

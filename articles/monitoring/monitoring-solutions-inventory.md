@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/09/2018
 ms.author: bwren
-ms.openlocfilehash: cab92187c6c36dc4670e202b15b35db8ad510239
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ab07a11883b3462c4b9d0f9adab6c55e4fe49d78
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure 中的管理解决方案的数据收集详细信息
 本文包括了 Microsoft 提供的[管理解决方案](monitoring-solutions.md)的列表以及指向其详细文档的链接。  它还提供了这些解决方案将数据收集到 Log Analytics 中时采用的方法和频率的相关信息。  可以使用本文中的信息来了解可用的各种解决方案，并了解各种管理解决方案的数据流和连接要求。 
@@ -54,7 +54,7 @@ ms.lasthandoff: 05/03/2018
 | **管理解决方案** | 平台 | **Microsoft Monitoring Agent** | **Operations Manager 代理** | **Azure 存储** | **是否需要 Operations Manager？** | **通过管理组发送 Operations Manager 代理数据** | **收集频率** |
 | [Azure 网络安全组分析](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | 通知时 |
 | [Azure SQL Analytics（预览版）](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 分钟 |
-| [备份](../backup/backup-introduction-to-azure-backup.md) | Azure |  |  |  |  |  | 不适用 |
+| [备份](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | 通知时 |
 | [容量和性能（预览版）](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |到达时 |
 | [更改跟踪](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |每小时 |
 | [更改跟踪](../log-analytics/log-analytics-change-tracking.md) |Linux |&#8226; | | | | |每小时 |

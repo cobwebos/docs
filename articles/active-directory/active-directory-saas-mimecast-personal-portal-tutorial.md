@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Mimecast Personal Portal 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Mimecast Personal Portal 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Mimecast Personal Portal 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Mimecast Personal Portal 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 4f2c5f7323d9d10b6a784da8f45577ccf774b78f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7d8a746df9bea22970da9dc47b5e436a94335f49
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>教程：Azure Active Directory 与 Mimecast Personal Portal 的集成
 
@@ -36,11 +36,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Mimecast Personal Portal 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 启用了 Mimecast Personal Portal 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 若要从库中添加 Mimecast Personal Portal，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中键入 Mimecast Personal Portal，在结果面板中选择“Mimecast Personal Portal”，并单击“添加”按钮添加该应用程序。
 
@@ -79,8 +79,6 @@ ms.lasthandoff: 12/11/2017
 在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Mimecast Personal Portal 的 Azure AD 单一登录。
 
 为使单一登录能正常工作，Azure AD 需要知道与 Azure AD 用户相对应的 Mimecast Personal Portal 用户。 换句话说，需要在 Azure AD 用户与 Mimecast Personal Portal 中相关用户之间建立链接关系。
-
-将 Azure AD 中“用户名”的值指定为 Mimecast Personal Portal 中“用户名”的值，从而建立此链接关系。
 
 若要配置和测试 Mimecast Personal Portal 的 Azure AD 单一登录，需要完成以下构建基块：
 
@@ -127,6 +125,16 @@ ms.lasthandoff: 12/11/2017
     | 南非    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | 澳大利亚       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | 海外        | `https://jer-api.mimecast.com/sso/<accountcode>`|
+
+    c. 在“回复 URL”文本框中键入 URL： 
+
+    | 区域  |  值 | 
+    | --------------- | --------------- | 
+    | 欧洲          | `https://eu-api.mimecast.com/login/saml`|
+    | 美国   | `https://us-api.mimecast.com/login/saml`|
+    | 南非    | `https://za-api.mimecast.com/login/saml`|
+    | 澳大利亚       | `https://au-api.mimecast.com/login/saml`|
+    | 海外        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
     > 标识符非实际值。 请使用实际标识符更新此值。 请联系 [Mimecast Personal Portal 客户端支持团队](http://www.mimecast.com/customer-success/technical-support/)来获取这些值。 
@@ -167,9 +175,9 @@ ms.lasthandoff: 12/11/2017
    
     c. 对于“提供程序”，选择“Azure Active Directory”。
    
-    d.单击“下一步”。 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”的值。
+    d. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”的值。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”的值。
+    e. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”的值。
    
     f. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”的值。
 
@@ -177,11 +185,7 @@ ms.lasthandoff: 12/11/2017
 
     h. 选择“允许单一登录”。
    
-    i. 单击“保存” 。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    i. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -207,13 +211,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-mimecast-personal-portal-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-a-mimecast-personal-portal-test-user"></a>创建 Mimecast Personal Portal 测试用户
 
@@ -247,7 +251,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 在“密码”和“确认密码”文本框中，键入用户的“密码”。
    
-    b. 单击“保存” 。
+    b. 单击“ **保存**”。
 
 >[!NOTE]
 >可以使用 Mimecast Personal Portal 提供的任何其他 Mimecast Personal Portal 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
@@ -292,7 +296,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

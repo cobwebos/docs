@@ -8,11 +8,11 @@ ms.author: tomfitz
 ms.date: 05/04/2018
 ms.topic: article
 ms.service: event-grid
-ms.openlocfilehash: 42b3e88d4bf411aa8a0d3bb129795f0d8ab98525
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c95cfee787244367688b82959474e2a8028b7ff6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>使用 Azure CLI 和事件网格将自定义事件路由到 Azure 中继混合连接
 
@@ -21,6 +21,8 @@ Azure 事件网格是针对云的事件处理服务。 Azure 中继混合连接�
 ## <a name="prerequisites"></a>先决条件
 
 本文假定已有混合连接和侦听器应用程序。 若要开始使用混合连接，请参阅[中继混合连接入门 - .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) 或[中继混合连接入门 - Node](../service-bus-relay/relay-hybrid-connections-node-get-started.md)。
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -39,6 +41,10 @@ az group create --name gridResourceGroup --location westus2
 事件网格主题提供用户定义的终结点，可向其发布事件。 以下示例在资源组中创建自定义主题。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它由 DNS 条目表示。
 
 ```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 
@@ -75,7 +81,7 @@ endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --qu
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-在本文中，为简便起见，请使用要发送到主题的示例事件数据。 通常情况下，应用程序或 Azure 服务会发送事件数据。 CURL 是发送 HTTP 请求的实用工具。 本文使用 CURL 向主题发送事件。  以下示例会将三个事件发送到事件网格主题：
+在本文中，为简便起见，请使用要发送到主题的示例事件数据。 通常情况下，应用程序或 Azure 服务会发送事件数据。 CURL 是发送 HTTP 请求的实用工具。 本文使用 CURL 向主题发送事件。  以下示例将三个事件发送到事件网格主题：
 
 ```azurecli-interactive
 body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")

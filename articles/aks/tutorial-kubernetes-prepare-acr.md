@@ -3,17 +3,17 @@ title: Azure 上的 Kubernetes 教程 - 准备 ACR
 description: AKS 教程 - 准备 ACR
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ef1e126001d40bd18acfd28efab48461e40c56e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1ffa6ed801f5e261e79b0f7ca505d869fa3b2532
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署和使用 Azure 容器注册表
 

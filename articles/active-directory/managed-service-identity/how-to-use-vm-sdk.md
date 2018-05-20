@@ -1,23 +1,24 @@
 ---
-title: "如何将 Azure VM 托管服务标识与 Azure SDK 配合使用"
-description: "将 Azure SDK 与 Azure VM MSI 配合使用的代码示例。"
+title: 如何将 Azure VM 托管服务标识与 Azure SDK 配合使用
+description: 将 Azure SDK 与 Azure VM MSI 配合使用的代码示例。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 6b3f5ab86b06675c4b50ee6bab1f81a538ee7185
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 389b9967003c681b974f4580264701d22c103b7e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-with-azure-sdks"></a>如何将 Azure VM 托管服务标识 (MSI) 与 Azure SDK 配合使用 
 

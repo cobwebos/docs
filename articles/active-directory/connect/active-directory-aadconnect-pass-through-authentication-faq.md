@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect：传递身份验证 - 常见问题 | Microsoft Docs"
-description: "有关 Azure Active Directory 直通身份验证的常见问题的解答"
+title: Azure AD Connect：传递身份验证 - 常见问题 | Microsoft Docs
+description: 有关 Azure Active Directory 直通身份验证的常见问题的解答
 services: active-directory
-keywords: "Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
+keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 077a60949b5eed24cb9a1c56008a0073693f121e
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 7a817092581ef0be0b6be063282f7484c46ff094
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/05/2018
 
 不会。 直通身份验证不自动故障转移到密码哈希同步。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。
 
-## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在传递身份验证代理所在的同一台服务器上安装 [Azure AD 应用程序代理](../active-directory-application-proxy-get-started.md)连接器？
+## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在传递身份验证代理所在的同一台服务器上安装 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)连接器？
 
 是的。 直通身份验证代理的更名版本（版本 1.5.193.0 或更高版本）支持此配置。
 

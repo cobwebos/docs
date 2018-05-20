@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 33b958b97a5883d585bbfda167db35107c0c5997
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: db0117b0b4ddee002fc69d71e78eca2b9008e4f6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -58,7 +58,7 @@ ms.lasthandoff: 05/07/2018
 
 令牌受限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 格式和 JSON Web 令牌 (JWT) 格式的令牌。 有关详细信息，请参阅 [JWT 身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
 
-媒体服务不提供 STS。 可以创建自定义 STS 或使用 Azure 访问控制服务来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。 有关详细信息，请参阅[使用 Azure 访问控制服务颁发令牌](http://mingfeiy.com/acs-with-key-services)。
+媒体服务不提供 STS。 可以创建自定义 STS 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
 
 配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的 STS。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 

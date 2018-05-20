@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: cfc8ac74f626ada30dda72b58e4b4bc7f0d9e806
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f9d51869b9a6ba63c73637c50f5a19e864bc23e4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念
 本部分概述最重要的媒体服务概念。
@@ -108,7 +108,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 在 Azure 媒体服务中，通道表示用于处理实时流内容的管道。 通道通过以下两种方式之一接收实时输入流：
 
 * 本地实时编码器将多比特率 RTMP 或平滑流（分片 MP4）发送到通道。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Live Encoder、Telestream Wirecast、Teradek、Haivision 和 Tricaster 编码器。 引入的流会直接通过通道，而不会经过任何进一步的转码和编码。 收到请求时，媒体服务会将该流传递给客户。
-* 将单比特率流（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流（分片 MP4）发送到能够使用媒体服务执行实时编码的通道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
+* 将单比特率流（采用以下某种格式：RTMP 或平滑流式处理（分片 MP4））发送到能够使用媒体服务执行实时编码的通道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
 
 ### <a name="channel"></a>通道
 在媒体服务中，[频道](https://docs.microsoft.com/rest/api/media/operations/channel)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），然后要将该终结点提供给实时转码器。 通道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 通道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。

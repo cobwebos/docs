@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: “Azure 上的 Chef Software”文档
+metadata:
+  title: “Azure 上的 Chef Software”文档 - 教程、示例、参考和资源
+  meta.description: Chef Software provides a DevOps automation platform for Linux and Windows that enables the management of both physical and virtual server configurations. Learn how to use Chef Software products to automate infrastructure as code (IaC) recipes and manage and deploy virtual machines on Azure with quickstarts and tutorials.
+  services: chef
+  author: tomarcher
+  manager: jeconnoc
+  ms.service: chef
+  ms.tgt_pltfrm: na
+  ms.devlang: devops
+  ms.topic: landing page
+  ms.date: 05/15/2018
+  ms.author: tarcher
+  ms.openlocfilehash: 644b50455ac4e7e7aba818ae31f95c736ae5d632
+  ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/17/2018
+abstract:
+  description: Chef Software 为 Linux 和 Windows 提供了一个 DevOps 自动化平台，用于管理物理服务器配置和虚拟服务器配置。 使用快速入门和教程，了解如何使用 Chef Software 产品自动执行“基础结构即代码 (IaC)”脚本并在 Azure 上管理和部署虚拟机。
+  aside:
+    image:
+      alt: Chef 徽标
+      height: 133
+      width: 48
+      src: media/chef.png
+    title: 
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 安装并配置 Chef，然后使用它在 Azure 中创建 Linux 虚拟机。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/media/index/azure_dev-9.svg
+      text: 安装并配置 Chef
+      href: ./chef-extension-portal.md
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何使用 Chef Software 工具创建并管理 Azure 计算和网络基础结构。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/virtual-machines/windows/chef-automation">使用 Chef 自动执行 Azure 虚拟机部署</a>。
+- title: 资源和工具
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Chef Automate
+      html: <p><a href="https://docs.chef.io/chef_automate.html">Chef Automate 概述</a></p> <p><a href="https://docs.chef.io/install_chef_automate.html">Chef Automate 安装指南</a></p> <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate">Azure Marketplace 上的 Chef Automate</a></p>
+    - title: Chef Software 工具
+      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Chef Visual Studio Team Services 扩展</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Habitat Visual Studio Team Services 扩展</a></p>
+    - title: Chef Software 新闻
+      html: <p><a href="https://blog.chef.io/">Chef Software 博客</a></p>

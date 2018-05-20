@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: dda444e77f588cd1ba5989b393e9a3987241ef9a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: faa28a6b28c721e4088ccfbb00514be7f605f3e2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>准备与 cloud-init 配合使用的现有 Linux Azure VM 映像
 本文介绍如何选择一个现有的 Azure 虚拟机，使其准备好重新部署并可使用 cloud-init。 生成的映像可用于部署新的虚拟机或虚拟机规模集 - 然后，可以在部署时通过 cloud-init 进一步对其进行自定义。  Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -136,7 +136,7 @@ sudo waagent -deprovision+user -force
 sudo waagent -deprovision+user -force
 ```
 
-有关 Azure Linux 代理取消预配命令的详细信息，请参阅 [Azure Linux 代理](agent-user-guide.md)。
+有关 Azure Linux 代理取消预配命令的详细信息，请参阅 [Azure Linux 代理](../extensions/agent-linux.md)。
 
 退出 SSH 会话，然后从 bash shell 运行以下 AzureCLI 命令，以解除分配、通用化并创建新的 Azure VM 映像。  请将 `myResourceGroup` 和 `sourceVmName` 替换为反映源 VM 的相应信息。
 

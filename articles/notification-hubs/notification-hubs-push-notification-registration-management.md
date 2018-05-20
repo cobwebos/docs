@@ -3,22 +3,22 @@ title: 注册管理
 description: 本主题介绍如何使用通知中心注册设备，以接收推送通知。
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 969f6b9654200b7f742b6405faa2cff2b13ba537
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 7f9052da066fcc0021151bf3b547484859cf216d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="registration-management"></a>注册管理
 ## <a name="overview"></a>概述
@@ -37,9 +37,9 @@ ms.lasthandoff: 04/16/2018
 
 * 创建或更新安装是完全幂等的。 因此可以重试该操作，而不需要顾虑重复注册的情况。
 * 使用安装模型可轻松完成单个推送 - 针对特定设备。 每次执行基于安装的注册时，都会自动添加一个系统标记 **"$InstallationId:[installationId]"**。 因此，无需编写任何额外的代码，就能对此标记调用 send 以针对特定的设备。
-* 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法特别有用。 不需要删除整个注册，并重新发送前面的所有标记。
+* 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法很有用。 不需要删除整个注册，并重新发送前面的所有标记。
 
-安装可以包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](https://msdn.microsoft.com/library/azure/mt621153.aspx)或[安装属性](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)。
+安装可包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](https://msdn.microsoft.com/library/azure/mt621153.aspx)或[安装属性](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)。
 
     // Example installation format to show some supported properties
     {,
@@ -84,10 +84,10 @@ ms.lasthandoff: 04/16/2018
 #### <a name="templates"></a>模板
 如果要使用[模板](notification-hubs-templates-cross-platform-push-messages.md)，则设备安装还会保存与设备关联的、采用 JSON 格式的所有模板（请参阅上面的示例）。 模板名称有助于将目标指向相同设备的不同模板。
 
-请注意，每个模板名称将映射到一个模板主体和一组可选的标记。 此外，每个平台可能有附加的模板属性。 对于 Windows 应用商店（使用 WNS）和 Windows Phone 8（使用 MPNS），模板中还可能会有一组附加标头。 对于 APNs，可以将过期属性设为常量或模板表达式。 有关完整的安装属性列表，请参阅[使用 REST 创建或覆盖安装](https://msdn.microsoft.com/library/azure/mt621153.aspx)主题。
+每个模板名称会映射到一个模板主体和一组可选标记。 此外，每个平台可能有附加的模板属性。 对于 Windows 应用商店（使用 WNS）和 Windows Phone 8（使用 MPNS），模板中还可能会有一组附加标头。 对于 APNs，可以将过期属性设为常量或模板表达式。 有关完整的安装属性列表，请参阅[使用 REST 创建或覆盖安装](https://msdn.microsoft.com/library/azure/mt621153.aspx)主题。
 
 #### <a name="secondary-tiles-for-windows-store-apps"></a>Windows 应用商店应用的辅助磁贴
-对于 Windows 应用商店客户端应用程序，将通知发送到辅助磁贴与将通知发送到主磁贴相同。 安装中也支持此行为。 请注意，辅助磁贴具有不同的 ChannelUri，客户端应用上的 SDK 会在后台处理此 ChannelUri。
+对于 Windows 应用商店客户端应用程序，将通知发送到辅助磁贴与将通知发送到主磁贴相同。 安装中也支持此行为。 辅助磁贴具有不同的 ChannelUri，客户端应用上的 SDK 会以透明方式处理此 ChannelUri。
 
 SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建 SecondaryTiles 时使用的 TileId 相同。
 与主 ChannelUri 一样，辅助磁贴的 ChannelUri 可随时更改。 为了使通知中心中的安装保持更新，设备必须使用辅助磁贴的当前 ChannelUri 刷新这些安装。
@@ -98,7 +98,7 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
 设备先从 PNS 中检索 PNS 句柄，然后直接注册到通知中心。 注册成功之后，应用后端即可发送以该注册为目标的通知。 有关如何发送通知的详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
-请注意，在此情况下，将只使用“侦听”权限从设备访问通知中心。 有关详细信息，请参阅[安全性](notification-hubs-push-notification-security.md)。
+在此情况下，只可使用“侦听”权限从设备访问通知中心。 有关详细信息，请参阅[安全性](notification-hubs-push-notification-security.md)。
 
 从设备注册是最简单的方法，但存在一些缺点。
 第一个缺点是客户端应用只能在它处于活动状态时更新其标记。 例如，如果用户有两台设备要注册与体育团队相关的标记，则当第一台设备注册附加标记（例如，Seahawks）时，第二台设备将不会收到有关 Seahawks 的通知，直到第二次在第二台设备上执行应用程序为止。 更概括地说，如果标记受多个设备的影响，则从后端管理标记是理想的选择。

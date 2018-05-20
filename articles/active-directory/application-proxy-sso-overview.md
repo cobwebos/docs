@@ -1,25 +1,25 @@
 ---
-title: "管理 Azure AD 应用程序代理的 SSO | Microsoft Docs"
-description: "了解有关使用应用程序代理进行单一登录的基础知识"
+title: 管理 Azure AD 应用程序代理的 SSO | Microsoft Docs
+description: 了解有关使用应用程序代理进行单一登录的基础知识
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: barbkess
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 60422b4c8256df024bbc870fc43ec6b491f674f1
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 24578ba933b56517053ecfa434a0a58ba6c863a6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Azure AD 应用程序代理如何提供单一登录？
 

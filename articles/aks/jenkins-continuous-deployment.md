@@ -3,17 +3,17 @@ title: Jenkins 持续部署与 Azure Kubernetes 服务中的 Kubernetes
 description: 如何使用 Jenkins 自动完成持续部署过程，以便在 Azure Kubernetes 服务中的 Kubernetes 上部署和升级容器化应用
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: efdb89c5f4c6bdb9b007b7c0020cbdb8f6034eed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 376d3b916c4e01ea6111e6c1db63e976dd1ea320
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>使用 Jenkins 和 Azure Kubernetes 服务进行持续部署
 
@@ -112,10 +112,10 @@ containers:
   image: microsoft/azure-vote-front:v1
 ```
 
-接下来，使用 [kubectl create][kubectl-create] 命令运行该应用程序。 此命令分析清单文件并创建定义的 Kubernetes 对象。
+接下来，使用 [kubectl apply][kubectl-apply] 命令运行该应用程序。 此命令分析清单文件并创建定义的 Kubernetes 对象。
 
 ```bash
-kubectl create -f azure-vote-all-in-one-redis.yaml
+kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
 创建向 Internet 公开应用程序的 [Kubernetes 服务][kubernetes-service]。 此过程可能需要几分钟。
@@ -297,7 +297,7 @@ SHOWHOST = 'false'
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [git-access-token]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 

@@ -3,16 +3,17 @@ title: 在空闲时间启动/停止 VM 解决方案（预览）
 description: VM 管理解决方案可按计划启动和停止 Azure 资源管理器虚拟机，并通过 Log Analytics 进行主动监视。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 41a5ff2613706b7454a96daa52c7cb20c734c394
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 410f76d406ab65ff1732525a501fe007eeeb5f6a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案（预览）
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-* Runbook 使用 [Azure 运行方式帐户](automation-offering-get-started.md#authentication-methods)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
+* Runbook 使用 [Azure 运行方式帐户](automation-create-runas-account.md)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
 * 此解决方案只能管理与 Azure 自动化帐户位于同一订阅中的 VM。
 * 此解决方案只能部署到以下 Azure 区域：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部和西欧。
 
@@ -80,8 +81,8 @@ ms.lasthandoff: 04/19/2018
    * 选择“计划”。 这是启动和停止目标资源组中 VM 的周期性日期和时间。 默认情况下，该计划配置为 UTC 时区。 无法选择其他区域。 若要在配置解决方案后将计划配置为特定时区，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedule)。
    * 要从 SendGrid 接收“电子邮件通知”，请接受默认值“是”，并提供有效的电子邮件地址。 如果选择了 **No**，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新 **External_EmailToAddress**，然后使用值 **Yes** 修改变量 **External_IsSendEmail**。
 
-> [!IMPORTANT]
-> “目标资源组名称”的默认值是 &ast;。 这面向订阅中的所有 VM。 如果不希望解决方案面向订阅中的所有 VM，则需要在启用计划前，将此值更新到资源组名称列表。
+    > [!IMPORTANT]
+    > “目标资源组名称”的默认值是 &ast;。 这面向订阅中的所有 VM。 如果不希望解决方案面向订阅中的所有 VM，则需要在启用计划前，将此值更新到资源组名称列表。
 
 1. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。 系统会验证所有设置，然后在订阅中部署该解决方案。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。
 
@@ -218,7 +219,7 @@ ms.lasthandoff: 04/19/2018
 
 ### <a name="schedules"></a>计划
 
-下表列出了在自动化帐户中创建的每个默认计划。  你可以修改默认计划或创建自己的自定义计划。 默认情况下，除了 **Scheduled_StartVM** 和 **Scheduled-StopVM**，这些计划都是禁用的。
+下表列出了在自动化帐户中创建的每个默认计划。 你可以修改默认计划或创建自己的自定义计划。 默认情况下，除了 **Scheduled_StartVM** 和 **Scheduled-StopVM**，这些计划都是禁用的。
 
 不应启用所有计划，因为这可能会创建重叠的计划操作。 最好确定希望执行哪些优化，然后再进行相应的修改。 请参阅概述部分的示例方案以查看进一步解释。
 
@@ -226,7 +227,7 @@ ms.lasthandoff: 04/19/2018
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 每隔 8 小时 | 每隔 8 小时运行一次 AutoStop_CreateAlert_Parent Runbook，它将基于 Azure 自动化变量中的 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 的值依次停止 VM。 或者，可以使用 VMList 参数指定用逗号分隔的 VM 列表。|
 |Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 *Stop* 参数的 Scheduled_Parent Runbook。 自动停止所有满足通过资产变量定义的规则 VM。 应启用相关计划 **Scheduled-StartVM**。|
-|Scheduled_StartVM | 用户定义，每天 | 每天在给定的时间运行带有 *Start* 参数的 Scheduled_Parent Runbook。  自动启动所有满足相应变量定义的规则的 VM。 应启用相关计划 **Scheduled-StopVM**。|
+|Scheduled_StartVM | 用户定义，每天 | 每天在给定的时间运行带有 *Start* 参数的 Scheduled_Parent Runbook。 自动启动所有满足相应变量定义的规则的 VM。 应启用相关计划 **Scheduled-StopVM**。|
 |Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 每星期五在指定的时间运行带有 *Stop* 参数的 Sequenced_Parent Runbook。 将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的更多详细信息，请参阅“Runbook”部分。 应启用相关计划 **Sequenced-StartVM**。|
 |Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 每星期一在给定的时间运行带有 Start 参数的 Sequenced_Parent runbook。 按顺序（降序）启动具有相应变量定义的 **SequenceStart** 标记的所有 VM。 有关标记值和资产变量的更多详细信息，请参阅“Runbook”部分。 应启用相关计划 **Sequenced-StopVM**。|
 

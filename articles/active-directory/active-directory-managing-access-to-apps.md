@@ -1,24 +1,24 @@
 ---
-title: "使用 Azure AD 管理对应用的访问 | Microsoft Docs"
-description: "介绍 Azure Active Directory 如何使组织能够指定每个用户有权访问的应用。"
+title: 使用 Azure AD 管理对应用的访问 | Microsoft Docs
+description: 介绍 Azure Active Directory 如何使组织能够指定每个用户有权访问的应用。
 services: active-directory
-documentationcenter: 
-author: femila
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-editor: 
-ms.assetid: b0829f18-9e57-4107-925d-5f0457d81671
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
-ms.author: markvi
-ms.openlocfilehash: 363478cb1bb2637a8c4f9cf36505817b163df781
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.openlocfilehash: 41b5eaf0fabcc57349df6694696cd8b8b11b9447
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 将应用集成到组织的标识系统之后，进行中的访问管理、使用评估和报告将持续成为一项挑战。 在许多情况下，IT 管理员或支持人员需要对应用访问管理持续采取主动措施。 有时，分配由一般或分部 IT 小组执行。 分配决策往往由业务决策人委派，在 IT 人员进行分配之前需要其批准。  其他组织会投资来与现有自动化标识与访问管理系统集成，例如基于角色的访问控制 (RBAC) 或基于属性的访问控制 (ABAC)。 集成与规则开发往往是针对性的且费用高昂。 对任一管理方式进行监视或报告本身是一项独立、昂贵且复杂的投资。

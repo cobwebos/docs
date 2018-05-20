@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 5b0d7eb0767bb18cd74c545dc386aa16be487dae
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 75bba953a7a5737f0388e53a9f6f38dd8324eb83
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上优化 Linux VM
 通过命令行或门户创建运行 Linux 虚拟机 (VM) 是一项很简单的操作。 本教程说明如何在 Microsoft Azure 平台上设置 VM 以确保优化其性能。 本主题使用 Ubuntu Server VM，不过你也可以[将自己的映像作为模板](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来创建 Linux 虚拟机。  
@@ -132,6 +132,6 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 其他有用资源的链接： 
 
 * [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](premium-storage.md)
-* [Azure Linux 代理用户指南](agent-user-guide.md)
+* [Azure Linux 代理用户指南](../extensions/agent-linux.md)
 * [优化 Azure Linux VM 上的 MySQL 性能](classic/optimize-mysql.md)
 * [在 Linux 上配置软件 RAID](configure-raid.md)

@@ -1,25 +1,48 @@
-- name: Chef 文档
-  href: index.md
+- name: “Azure 上的 Chef Software”文档
+  href: ./index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure 上的 Chef
+      href: ./chef-overview.md
+    - name: 关于 Azure 上的 Habitat
+      href: ./chef-habitat-overview.md
+    - name: 关于 Azure 上的 InSpec
+      href: ./chef-inspec-overview.md
 - name: 快速入门
   expanded: true
   items:
-    - name: 自动执行：快速入门模板
-      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview'
+    - name: Chef
+      expanded: true
+      items:
+        - name: 使用 Azure 门户安装 Chef
+          href: ./chef-extension-portal.md
 - name: 教程
   items:
-    - name: 自动运行 VM
-      href: /azure/virtual-machines/windows/chef-automation
+    - name: Chef
+      items:
+        - name: 创建 Windows VM
+          href: /azure/virtual-machines/windows/chef-automation
+- name: 引用
+  items:
+    - name: Azure Chef 扩展
+      href: 'https://docs.chef.io/azure_portal.html#azure-chef-extension'
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 博客：VSTS 和 Chef
-      href: 'https://blog.chef.io/2017/05/10/integrate-chef-into-your-build-and-release-pipelines-with-microsoft-visual-studio-team-services/'
-    - name: Chef 和 Azure PS
-      href: 'https://docs.microsoft.com/powershell/module/azure/get-azurevmchefextension?view=azuresmps-4.0.0'
-    - name: Chef 和 VSTS
-      href: 'https://github.com/chef-partners/vsts-chef/wiki/Getting-Started'
-    - name: Chef 站点
-      href: 'https://www.chef.io'
-    - name: 视频：Chef 和 VSTS
-      href: 'https://channel9.msdn.com/Events/TechDaysOnline/UK-TechDays-Online-2016/Release-Management-with-VSTS--integration-with-Azure--Chef-Deployment'
+    - name: Chef Automate
+      items:
+        - name: Chef Automate 概述
+          href: 'https://docs.chef.io/chef_automate.html'
+        - name: Chef Automate 安装指南
+          href: 'https://docs.chef.io/install_chef_automate.html'
+        - name: Azure Marketplace 上的 Chef Automate
+          href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate'
+    - name: Chef Software 新闻
+      items:
+        - name: Chef Software 博客
+          href: 'https://blog.chef.io/'
+- name: 工具
+  items:
+    - name: Chef Visual Studio Team Services 扩展
+      href: 'https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks'
+    - name: Habitat Visual Studio Team Services 扩展
+      href: 'https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks'

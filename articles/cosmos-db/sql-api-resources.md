@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20af4611920328ddcaa6e658101184451217a011
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 69ee7baeda524647dd259ea22bb948b0168fd913
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 分层资源模型和核心概念
 
@@ -50,7 +50,7 @@ Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都�
 ![Azure Cosmos DB 分层资源模型][1]  
 **分层资源模型**   
 
-若要开始使用资源，必须使用 Azure 订阅[创建数据库帐户](create-sql-api-dotnet.md)。 数据库帐户可以包含的一组数据库，每个数据库都包含多个集合，每个集合又包含存储过程、触发器、UDF、文档及相关附件。 数据库也有关联的用户，每个用户都有一组权限，用于访问集合、存储过程、触发器、UDF、文档或附件。 而数据库、用户、权限和集合就是系统定义的资源，其中已知的架构、文档和附件包含用户定义的任意 JSON 内容。  
+若要开始使用资源，必须使用 Azure 订阅[创建数据库帐户](create-sql-api-dotnet.md)。 数据库帐户可以包含一组数据库，每个数据库都包含多个集合，每个集合又包含存储过程、触发器、UDF、文档及相关附件。 数据库也有关联的用户，每个用户都有一组权限，用于访问集合、存储过程、触发器、UDF、文档或附件。 而数据库、用户、权限和集合就是系统定义的资源，其中已知的架构、文档和附件包含用户定义的任意 JSON 内容。  
 
 | 资源 | 说明 |
 | --- | --- |

@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: a6ed74de159593003e8a18daefce2eb9a5945481
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 528832473d68fa90e6383873b1e0491f5abe09c7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用 SQL API 进行开发
 
@@ -155,7 +155,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 2500 });
 ```
 
-此方法可对 Azure Cosmos DB 进行 REST API 调用，且该服务基于所请求的吞吐量设置分区数。 根据性能需求的发展，可以使用 SDK 或 [Azure 门户](set-throughput.md)更改集合的吞吐量。
+此方法可对 Azure Cosmos DB 进行 REST API 调用，且该服务基于所请求的吞吐量设置分区数。 根据性能需求的发展，可以使用 SDK 或 [Azure 门户](set-throughput.md)更改集合或一组集合的吞吐量。
 
 ## <a id="CreateDoc"></a>创建 JSON 文档
 现在 Azure Cosmos DB 中插入一些 JSON 文档。 可以通过使用 **DocumentClient** 类的 [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) 方法创建[文档](sql-api-resources.md#documents)。 文档是用户定义的（任意）JSON 内容。 此示例类包含设备读取和对 CreateDocumentAsync 的调用，可将新设备读数插入到集合。

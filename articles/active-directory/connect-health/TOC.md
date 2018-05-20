@@ -10,6 +10,7 @@
 ## [安装 Azure AD Connect Health 代理](active-directory-aadconnect-health-agent-install.md)
 ## [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)
 ## [同步过程中出错](../active-directory-aadconnect-troubleshoot-sync-errors.md)
+## [诊断重复的属性同步错误](active-directory-aadconnect-health-diagnose-sync-errors.md)
 
 # 故障排除
 ## [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)

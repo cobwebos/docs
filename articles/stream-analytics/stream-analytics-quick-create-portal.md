@@ -2,69 +2,68 @@
 title: 使用 Azure 门户创建流分析作业 | Microsoft Docs
 description: 本快速入门介绍如何开始创建流分析作业、配置输入和输出，以及定义查询。
 services: stream-analytics
-keywords: 流分析, 云作业, Azure 门户, 作业输入, 作业输出, 作业转换
-author: SnehaGunda
-ms.author: sngun
-ms.date: 03/16/2018
+author: mamccrea
+ms.author: mamccrea
+ms.date: 05/11/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: c421ab96585da011cdaef9933ceb8a78ffe356a9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 86d4bab282db0ffc7b48813b9817eed0b45c3199
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
-本快速入门介绍如何开始创建流分析作业。 在本快速入门中，请定义一个流分析作业，以便每隔 30 秒读取一次示例传感器数据并筛选出平均温度超过 100 的行。 在本文中，请从 Blob 存储读取数据，对数据进行转换，然后将其写回到同一 Blob 存储中的另一容器。
+本快速入门介绍如何开始创建流分析作业。 在本快速入门中，请定义一个流分析作业，以便每隔 30 秒读取一次示例传感器数据并筛选出平均温度超过 100 的行。 在本文中，请从 Blob 存储读取数据，对数据进行转换，然后将数据写回到同一 Blob 存储中的另一容器。 在本快速入门中使用的输入数据文件包含的静态数据仅供说明之用。 在实际方案中，请将流式处理输入数据用于流分析作业。
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 * 登录到 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="prepare-the-input-data"></a>对输入数据进行准备
 
-在定义流分析作业之前，应该对已配置为作业输入的数据进行准备。 请运行以下步骤，对作业所需的输入数据进行准备：
+在定义流分析作业之前，应该对已配置为作业输入的数据进行准备。 若要对作业所需的输入数据进行准备，请运行以下步骤：
 
-1. 从 GitHub 下载[示例传感器数据](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json)。 示例数据包含下述 JSON 格式的传感器信息：  
+1. 从 GitHub 下载[示例传感器数据](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json)。 示例数据包含下述 JSON 格式的传感器信息：  
 
    ```json
    {
-     "time": "2016-01-26T21:18:52.0000000",
+     "time": "2018-01-26T21:18:52.0000000",
      "dspl": "sensorC",
      "temp": 87,
      "hmdt": 44
    }
    ```
-2. 登录到 Azure 门户  
+2. 登录到 Azure 门户。  
 
-3. 从 Azure 门户的左上角选择“创建资源” > “存储” > “存储帐户”。 填充“存储帐户作业”边栏选项卡，将“名称”设置为“myasastorageaccount”，将“位置”设置为“美国西部 2”，将“资源组”设置为“MyRG”（请将存储帐户托管在流式处理作业所在的资源组中，以便提高性能）。 余下设置可以保留默认值。  
+3. 从 Azure 门户的左上角选择“创建资源” > “存储” > “存储帐户”。 填充“存储帐户作业”页，将“名称”设置为“myasastorageaccount”，将“位置”设置为“美国西部 2”，将“资源组”设置为“MyRG”（请将存储帐户托管在流式处理作业所在的资源组中，以便提高性能）。 余下设置可以保留默认值。  
 
    ![创建存储帐户](./media/stream-analytics-quick-create-portal/create-a-storage-account.png)
 
-4. 在“所有资源”边栏选项卡中找到上一步创建的存储帐户。 打开“概览”边栏选项卡，然后打开“Blob”磁贴。  
+4. 在“所有资源”页中找到上一步创建的存储帐户。 打开“概览”页，然后打开“Blob”磁贴。  
 
-5. 从“Blob 服务”边栏选项卡中选择“容器”，为容器提供一个**名称**（例如 *container1*），然后将“公共访问级别”更改为“Blob”（匿名读取访问权限仅适用于 Blob），然后选择“确定”。  
+5. 从“Blob 服务”页中选择“容器”，为容器提供一个**名称**（例如 *container1*），然后将“公共访问级别”更改为“Blob”（匿名读取访问权限仅适用于 Blob），然后选择“确定”。  
 
    ![创建容器](./media/stream-analytics-quick-create-portal/create-a-storage-container.png)
 
-6. 转到上一步创建的容器，选择“上传”，然后上传从步骤 1 获取的传感器数据。  
+6. 转到上一步创建的容器。 选择“上传”，然后上传从第一步获取的传感器数据。  
 
    ![将示例数据上传到 Blob](./media/stream-analytics-quick-create-portal/upload-sample-data-to-blob.png)
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-1. 登录到 Azure 门户  
+1. 登录到 Azure 门户。
 
 2. 在 Azure 门户的左上角选择“创建资源”。  
 
 3. 从结果列表中选择“数据+分析” > “流分析作业”。  
 
-4. 使用以下信息填写“流分析作业”边栏选项卡：
+4. 使用以下信息填写“流分析作业”页：
 
    |**设置**  |建议的值  |**说明**  |
    |---------|---------|---------|
@@ -91,7 +90,7 @@ ms.lasthandoff: 04/16/2018
 
 2. 选择“输入” > “添加流输入” > “Blob 存储”。  
 
-3. 使用以下值填写“Blob 存储”边栏选项卡：
+3. 使用以下值填写“Blob 存储”页：
 
    |**设置**  |建议的值  |**说明**  |
    |---------|---------|---------|
@@ -110,7 +109,7 @@ ms.lasthandoff: 04/16/2018
 
 2. 选择“输出”>“添加”>“Blob 存储”。  
 
-3. 使用以下值填写“Blob 存储”边栏选项卡：
+3. 使用以下值填写“Blob 存储”页：
 
    |**设置**  |建议的值  |**说明**  |
    |---------|---------|---------|
@@ -135,9 +134,9 @@ ms.lasthandoff: 04/16/2018
    dspl AS SensorName,
    Avg(temp) AS AvgTemperature
    INTO
-     MyBlobOutput
+     BlobOutput
    FROM
-     MyBlobInput TIMESTAMP BY time
+     BlobInput TIMESTAMP BY time
    GROUP BY TumblingWindow(second,30),dspl
    HAVING Avg(temp)>100
    ```
@@ -148,9 +147,9 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>启动流分析作业并检查输出
 
-1. 返回到作业概览边栏选项卡，然后选择“启动”。  
+1. 返回到作业概览页，然后选择“启动”。
 
-2. 在“启动作业”下，请针对“启动时间”字段选择“自定义”。 选择将文件上传到 Blob 存储之前的一天，因为进行文件上传的这个时间早于当前时间。 完成后，选择“启动”。  
+2. 在“启动作业”下，请针对“启动时间”字段选择“自定义”。 选择 `2018-01-24` 作为起始日期，但请勿更改时间。 之所以选择此起始日期，是因为它比示例数据中的事件时间戳要早。 完成后，选择“启动”。
 
    ![启动作业](./media/stream-analytics-quick-create-portal/start-the-job.png)
 
@@ -168,7 +167,7 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已部署了简单的流分析作业。若要了解如何配置其他输入源并执行实时检测，请继续阅读以下文章：
+在本快速入门中，你部署了一个简单的流分析作业。 若要了解如何配置其他输入源并执行实时检测，请继续阅读以下文章：
 
 > [!div class="nextstepaction"]
 > [使用 Azure 流分析实时检测欺诈行为](stream-analytics-real-time-fraud-detection.md)

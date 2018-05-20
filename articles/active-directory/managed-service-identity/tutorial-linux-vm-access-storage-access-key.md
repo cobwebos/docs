@@ -7,17 +7,18 @@ author: daveba
 manager: mtillman
 editor: daveba
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 99c66c6f03b72e5894a47edcd12acb59c9482df3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6ca43f86943a0dd90369d285c6bb3356ae7e0b5f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>使用 Linux VM 托管服务标识通过访问密钥访问 Azure 存储
 
@@ -117,7 +118,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
     下面是用于获取访问令牌的 CURL 请求和响应：
     
     ```bash
-    curl http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F -H Metadata:true    
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true
     ```
     
     > [!NOTE]

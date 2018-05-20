@@ -3,7 +3,7 @@ title: Azure PowerShell 脚本示例 - 保护后端 | Microsoft Docs
 description: Azure PowerShell 脚本示例 - 保护后端
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,11 +13,11 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: e10949cb6f5501353488f7e1677e979cd3e709ee
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8603e17f905a37cbfeb87be4190c403fda3cbe0b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="secure-back-end"></a>保护后端
 

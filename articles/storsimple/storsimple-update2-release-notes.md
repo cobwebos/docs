@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 8000 系列 Update 2 发行说明 | Microsoft Docs"
-description: "介绍 StorSimple 8000 系列 Update 2 的新功能、问题和解决方法。"
+title: StorSimple 8000 系列 Update 2 发行说明 | Microsoft Docs
+description: 介绍 StorSimple 8000 系列 Update 2 的新功能、问题和解决方法。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e2c8bffd-7fc5-4b77-b632-a4f59edacc3a
 ms.service: storsimple
 ms.devlang: NA
@@ -14,15 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 285c5abf574544737f3d30981a6c5b8f9548922a
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 0667c62e2ee2039c2b96b8c4ba81619969c3611b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>StorSimple 8000 系列 Update 2 发行说明
-> [!NOTE]
-> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
 
 ## <a name="overview"></a>概述
 以下发行说明描述 StorSimple 8000 系列 Update 2 的新功能，并标识重要的待解决问题。 其中还包含此版本随附的 StorSimple 软件、驱动程序和磁盘固件更新的列表。 
@@ -65,19 +63,19 @@ Update 2 推出以下新功能。
 ## <a name="issues-fixed-in-update-2"></a>在 Update 2 中修复的问题
 下表提供在 Updates 2 中已修复问题的摘要。    
 
-| 否。 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 不会。 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |网络接口 |升级到 Update 1 之后，StorSimple Manager 服务报告在一个控制器上报告 Data2 和 Data3 端口出现故障。 现在已修复此问题。 |是 |否 |
-| #N/A |更新 |升级到 Update 1 之后，在多个设备上的 Azure 经典门户中出现有声警报通知。 现在已修复此问题。 |是 |否 |
+| 2 |更新 |升级到 Update 1 之后，在多个设备上的 Azure 经典门户中出现有声警报通知。 现在已修复此问题。 |是 |否 |
 | 3 |Openstack 身份验证 |使用 Openstack 作为云服务提供商时，可能会收到一条显示云身份验证字符串过长的错误。 此问题已解决。 |是 |否 |
 
 ## <a name="known-issues-in-update-2"></a>Update 2 中的已知问题
-下表提供此版本中已知问题的摘要。
+下表提供了此版本中已知问题的摘要。
 
-| 否。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 不会。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，则会使存储池脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
-| #N/A |控制器 ID 错误 |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
+| 2 |控制器 ID 错误 |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
 | 3 |存储帐户 |此版本不支持使用存储服务删除存储帐户， 否则会导致无法检索用户数据。 | |是 |是 |
 | 4 |设备故障转移 |不支持从同一源设备将某个卷容器多次故障转移到不同的目标设备。 从单个不活动的设备故障转移到多个设备，会使第一个故障转移设备上卷容器丢失数据所有权。 进行此类故障转移后，在 Azure 经典门户中查看这些卷容器时，会发现它们的显示或表现有所不同。 | |是 |否 |
 | 5 |安装 |安装 StorSimple Adapter for SharePoint 期间，需要提供设备 IP 才能成功完成安装。 | |是 |否 |

@@ -3,19 +3,19 @@ title: 快速入门 - 适用于 Linux 的 Azure Kubernetes 群集
 description: 快速学习在 AKS 中使用 Azure CLI 为 Linux 容器创建 Kubernetes 群集。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 03/14/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 90ac873fd552058e3f7d538560efa46d33ea52a5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3bcdd4ba935b0fe9fe891503999c907aa1667abd
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>快速入门：部署 Azure 容器服务 (AKS) 群集
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>快速入门：部署 Azure Kubernetes 服务 (AKS) 群集
 
 在本快速入门中，将使用 Azure CLI 部署 AKS 群集。 然后，在群集上运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
 
@@ -173,10 +173,10 @@ spec:
     app: azure-vote-front
 ```
 
-使用 [kubectl create][kubectl-create] 命令运行该应用程序。
+使用 [kubectl apply][kubectl-apply] 命令运行该应用程序。
 
 ```azurecli-interactive
-kubectl create -f azure-vote.yaml
+kubectl apply -f azure-vote.yaml
 ```
 
 输出：
@@ -241,7 +241,7 @@ az group delete --name myResourceGroup --yes --no-wait
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 [kubernetes-documentation]: https://kubernetes.io/docs/home/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

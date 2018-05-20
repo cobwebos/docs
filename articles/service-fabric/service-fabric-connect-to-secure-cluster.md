@@ -1,11 +1,11 @@
 ---
-title: "安全连接 Azure Service Fabric 群集 | Microsoft Docs"
-description: "介绍如何对访问 Service Fabric 群集的客户端进行身份验证，以及如何保护客户端与群集之间的通信。"
+title: 安全连接 Azure Service Fabric 群集 | Microsoft Docs
+description: 介绍如何对访问 Service Fabric 群集的客户端进行身份验证，以及如何保护客户端与群集之间的通信。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 15ea4cbc02a0311b26e75ae7156c42f6bc2b9b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 2ddb72f267fc46d7980007d41c5d512f50eaf47e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 
@@ -89,25 +89,32 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用客户端证书连接到安全群集
-运行以下 PowerShell 命令，连接到使用客户端证书对管理员访问授权的安全群集。 提供群集证书指纹，以及已被授予群集管理权限的客户端证书的指纹。 证书详细信息必须与群集节点上的证书匹配。
+运行以下 PowerShell 命令，连接到使用客户端证书对管理员访问授权的安全群集。 
+
+#### <a name="connect-using-certificate-common-name"></a>使用证书公用名称连接
+提供群集证书公用名称，以及已被授予群集管理权限的客户端证书的公用名称。 证书详细信息必须与群集节点上的证书匹配。
 
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-          -StoreLocation CurrentUser -StoreName My
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName <certificate common name>  `
+    -FindType FindBySubjectName `
+    -FindValue <certificate common name> `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
-
-*ServerCertThumbprint* 是群集节点上安装的服务器证书的指纹。 *FindValue* 是管理客户端证书的指纹。
-填充参数以后，命令将如以下示例所示： 
-
+ServerCommonName 是群集节点上安装的服务器证书的公用名称。 FindValue 是管理客户端证书的公用名称。 填充参数以后，命令将如以下示例所示：
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint A8136758F4AB8962AF2BF3F27921BE1DF67F4326 `
-          -FindType FindByThumbprint -FindValue 71DE04467C9ED0544D021098BCD44C71E183414E `
-          -StoreLocation CurrentUser -StoreName My
+$ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
+$certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
+
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName $certCN  `
+    -FindType FindBySubjectName `
+    -FindValue $certCN `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>使用 Windows Active Directory 连接到安全群集

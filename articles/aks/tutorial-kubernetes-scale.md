@@ -3,19 +3,19 @@ title: Kubernetes on Azure 教程 - 缩放应用程序
 description: AKS 教程 - 缩放应用程序
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 5e35be84df53386398deaca19d60d4a93f53e541
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7b962ccd8349996cd33cc3960391cba8fce549ad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-scale-application-in-azure-container-service-aks"></a>教程：在 Azure 容器服务 (AKS) 中缩放应用程序
+# <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
 如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了 Azure 投票应用。
 

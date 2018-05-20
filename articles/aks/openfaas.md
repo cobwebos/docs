@@ -3,17 +3,17 @@ title: 结合使用 OpenFaaS 与 Azure Kubernetes 服务 (AKS)
 description: 部署 OpenFaaS 并将其与 Azure Kubernetes 服务 (AKS) 配合使用
 services: container-service
 author: justindavies
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 778fa5ddcdf8006d28c092746e4ac17a497baa5f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e26f1c298b05153736edd2b2efd0f1b27162bc3d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 

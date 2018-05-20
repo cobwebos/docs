@@ -68,6 +68,7 @@
 ### [证书创建方法](create-certificate.md)
 ### [监视和管理证书创建](create-certificate-scenarios.md)
 ## [身份验证、请求和响应](authentication-requests-and-responses.md)
+## [客户数据功能](key-vault-customer-data.md)
 ## [常见参数和标头](common-parameters-and-headers.md)
 ## [Key Vault 版本](key-vault-versions.md)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)

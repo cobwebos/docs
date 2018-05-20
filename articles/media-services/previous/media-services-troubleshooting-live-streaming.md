@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 7e2fe84c51f93bdeb6cd99e23624d1796aff6c1f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 84e3e9fc18671d7199eeaf638377a6681cf09fb4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>实时流式处理故障排除指南
-本主题提供有关如何排查某些实时流式处理问题的建议。
+本文提供有关如何排查某些实时流式处理问题的建议。
 
 ## <a name="issues-related-to-on-premises-encoders"></a>与本地编码器相关的问题
 本部分提供有关如何排查本地编码器相关问题的建议，这些编码器配置为向启用了实时编码的 AMS 通道发送单比特率流。
@@ -44,23 +44,10 @@ ms.lasthandoff: 05/07/2018
     **故障排除步骤**：确保编码器不再推送到 AMS，停止并重置该频道。 再次运行后，尝试使用新的设置连接到编码器。 如果这样仍无法更正问题，请尝试创建全新的通道，因为有时通道在经过几次失败的尝试后可能会损坏。  
 * **潜在问题**：GOP 大小或关键帧设置不是最佳。 
   
-    **故障排除步骤**：建议的 GOP 大小或关键帧间隔为 2 秒。 有些编码器以帧数计算此设置，而有些则以秒计算。 例如：输出 30fps 时，GOP 大小是 60 帧，相当于 2 秒。  
+    **故障排除步骤**：建议的 GOP 大小或关键帧间隔为 2 秒。 有些编码器以帧数计算此设置，而有些则以秒计算。 例如：输出 30 fps 时，GOP 大小是 60 帧，相当于 2 秒。  
 * **潜在问题**：关闭的端口阻止流。 
   
-    **故障排除步骤**：通过 RTMP 流式处理时，检查防火墙和/或代理设置，确认出站端口 1935 和 1936 已打开。 使用 RTP 流式处理时，请确认出站端口 2010 已打开。 
-
-### <a name="problem-when-configuring-the-encoder-to-stream-with-the-rtp-protocol-there-is-no-place-to-enter-a-host-name"></a>问题：在配置编码器以使用 RTP 协议流式处理时，没有可用于输入主机名的位置。
-* **潜在问题**：许多 RTP 编码器不允许使用主机名，需要获取 IP 地址。  
-  
-    **故障排除步骤**：若要查找 IP 地址，可在任一计算机上打开命令提示符。 若要在 Windows 中执行此操作，请打开“运行”启动器 (WIN + R) 并键入“cmd”。  
-  
-    打开命令提示符后，键入“Ping [AMS 主机名]”。 
-  
-    通过在 Azure 引入 URL 中省略端口号来派生主机名，如以下示例中突出显示的部分所示： 
-  
-    rtp://test2-amstest009.rtp.channel.mediaservices.windows.net:2010/ 
-  
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
+    **故障排除步骤**：通过 RTMP 流式处理时，检查防火墙和/或代理设置，确认出站端口 1935 和 1936 已打开。 
 
 > [!NOTE]
 > 如果按照故障排除步骤执行操作后，仍然无法成功进行流式处理，可使用 Azure 门户提交支持票证。

@@ -3,19 +3,19 @@ title: Azure 上的 Kubernetes 教程 - 部署应用程序
 description: AKS 教程 - 部署应用程序
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9fad9627be453fb00508d1f6ec9594bd2bde6fad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e992d7ca455ad4d95d0f10a94c6c9ce8055f8286
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="tutorial-run-applications-in-azure-container-service-aks"></a>教程：在 Azure 容器服务 (AKS) 中运行应用程序
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中运行应用程序
 
 在本教程第 4 部分（共 8 部分）中，会将示例应用程序部署到 Kubernetes 群集中。 已完成的步骤包括：
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="before-you-begin"></a>开始之前
 
-在前面的教程中，我们已将应用程度打包到容器映像中，将此映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。 
+在前面的教程中，我们已将应用程度打包到容器映像中，将此映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。
 
 必须先预创建 `azure-vote-all-in-one-redis.yaml` Kubernetes 清单文件，然后才能完成本教程。 此文件是在上一教程中与应用程序源代码一同下载。 验证是否已克隆存储库，并且是否已将目录更改为克隆的存储库。
 
@@ -72,10 +72,10 @@ containers:
 
 ## <a name="deploy-application"></a>部署应用程序
 
-使用 [kubectl create][kubectl-create] 命令运行该应用程序。 此命令分析清单文件并创建定义的 Kubernetes 对象。
+使用 [kubectl apply][kubectl-apply] 命令运行该应用程序。 此命令分析清单文件并创建定义的 Kubernetes 对象。
 
 ```azurecli
-kubectl create -f azure-vote-all-in-one-redis.yaml
+kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
 输出：
@@ -89,7 +89,7 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>测试应用程序
 
-创建向 Internet 公开应用程序的 [Kubernetes 服务][kubernetes-service]。 此过程可能需要几分钟。 
+创建向 Internet 公开应用程序的 [Kubernetes 服务][kubernetes-service]。 此过程可能需要几分钟。
 
 若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
 
@@ -98,12 +98,12 @@ kubectl get service azure-vote-front --watch
 ```
 
 azure-vote-front 服务的 EXTERNAL-IP 一开始显示为“挂起”。
-  
+
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-EXTERNAL-IP 地址从“挂起”变为 IP 地址以后，请使用 `CTRL-C` 停止 kubectl 监视进程。 
+EXTERNAL-IP 地址从“挂起”变为 IP 地址以后，请使用 `CTRL-C` 停止 kubectl 监视进程。
 
 ```
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
@@ -115,23 +115,24 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 
 如果应用程序未加载，可能是因为映像注册表存在授权问题。
 
-请遵循这些步骤，以便[通过 Kubernetes 机密启用访问权限](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)。
+请遵循这些步骤，以便[通过 Kubernetes 机密启用访问权限](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已将 Azure 投票应用程序部署到 AKS 中的 Kubernetes 群集。 已完成的任务包括：  
+在本教程中，已将 Azure 投票应用程序部署到 AKS 中的 Kubernetes 群集。 已完成的任务包括：
 
 > [!div class="checklist"]
 > * 下载 Kubernetes 清单文件
 > * 在 Kubernetes 中运行应用程序
 > * 已测试应用程序
 
-前进到下一个教程，以了解如何缩放 Kubernetes 应用程序和底层 Kubernetes 基础结构。 
+前进到下一个教程，以了解如何缩放 Kubernetes 应用程序和底层 Kubernetes 基础结构。
 
 > [!div class="nextstepaction"]
 > [缩放 Kubernetes 应用程序和基础结构][aks-tutorial-scale]
 
 <!-- LINKS - external -->
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-documentation]: https://kubernetes.io/docs/home/

@@ -3,17 +3,17 @@ title: 创建 Azure Kubernetes 服务 (AKS) 群集
 description: 使用 CLI 或 Azure 门户创建 AKS 群集。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 46c2f718911f27ad8f51423589c6fdda100a68d2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 00672b6272ce9c775621e519c327c0b8368bc220
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster"></a>创建 Azure Kubernetes 服务 (AKS) 群集
 

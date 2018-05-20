@@ -3,16 +3,17 @@ title: 使用 Azure 自动化自动删除资源组
 description: Azure 自动化方案的 PowerShell 工作流版本，包括用于删除订阅中所有资源组的 Runbook。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 1d54e03c1b5518dece4e11d76593b12fe83dc8c2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c8fcb7abbc28aef06c43b6ece89eb7bd6916694e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure 自动化方案 - 自动删除资源组
 许多客户会创建多个资源组。 有些资源组专门用于管理生产应用程序，还有一些资源组可能用于开发、测试和过渡环境。 自动部署这些资源是一回事，但按一下鼠标就能取消配置资源组则是另一回事。 使用 Azure 自动化可以简化这种常见的管理任务。 如果使用的 Azure 订阅由于会员优惠制度（例如 MSDN 或 Microsoft Partner Network Cloud Essentials 计划）而实施支出限制，则使用自动化就很有帮助。

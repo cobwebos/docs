@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 36d4cd910f841a323dfada49d65f7acb4bdf3138
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 2fdb77c133d5d8955ad6ae15864cbe0c78bc4e2f
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新
 
@@ -34,12 +34,12 @@ ms.lasthandoff: 05/08/2018
 Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 
-## <a name="before-you-begin"></a>准备阶段    
+## <a name="before-you-begin"></a>开始之前    
 > [!IMPORTANT]    
 > 在安装此更新的过程中，请勿尝试创建虚拟机。 有关如何管理更新的详细信息，请参阅[在 Azure Stack 中管理更新的概述](azure-stack-updates.md#plan-for-updates)。
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 - 在应用 Azure Stack 1803 更新之前安装 Azure Stack [1802 更新](azure-stack-update-1802.md)。   
 
 - 安装**AzS 修补程序 – 1.0.180312.1-生成 20180222.2**应用 Azure 堆栈 1803年更新前。 此修补程序更新了 Windows Defender，在下载 Azure Stack 的更新后即可使用。
@@ -56,7 +56,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 ### <a name="post-update-steps"></a>更新后步骤
 - 安装 1803 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。
 
-  - [KB 4103348 - 尝试安装 Azure Stack 更新时，网络控制器 API 服务崩溃](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4294441-针对租户资源失败和意外的共享的操作是在同一租户或基础结构卷上创建](https://support.microsoft.com/en-us/help/4294441)
 
 - 在安装此更新之后, 查看你的防火墙配置，以确保[必要的端口](azure-stack-integrate-endpoints.md)处于打开状态。 例如，此更新引入了 Azure 监视器包括到活动日志的审核日志的更改。 进行此更改后，端口 13012 现在使用，还必须打开。  
 
@@ -118,8 +118,6 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 - 无法在管理员门户中查看计算或存储资源。 此问题的原因是更新安装过程中出错，导致系统错误地将更新报告为成功。 如果发生此问题，请联系 Microsoft 客户支持服务部门以寻求帮助。
 
 - 可能会在门户中看到空白的仪表板。 若要恢复仪表板，请选择门户右上角的齿轮图标，然后选择“还原默认设置”。
-
-- 查看资源或资源组的属性时，发现“移动”按钮已禁用。 这是预期的行为。 目前不支持在资源组或订阅之间移动资源或资源组。
 
 - 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
 
@@ -244,6 +242,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 - 只有资源提供程序才能在托管 SQL 或 MySQL 的服务器上创建项目。 如果在不是由资源提供程序创建的主机服务器上创建项目，则此类项目可能导致状态不匹配。  
 
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
 
 > [!NOTE]  
 > 更新到 Azure Stack 1803 以后，可以继续使用以前部署的 SQL 和 MySQL 资源提供程序。  建议在新版本发布后更新 SQL 和 MySQL。 与 Azure Stack 一样，请将更新按顺序应用到 SQL 和 MySQL 资源提供程序。  例如，如果使用版本 1711，请先应用版本 1712，然后应用 1802,，再应用 1803 的更新。      

@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 445a5f10eac0959dab57e10680659c0792ad6fba
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3279dbc2eeecd3a3f0f36a47d8dd51ef4f3f503f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="install-the-mobility-service"></a>安装移动服务 
 
@@ -27,7 +27,7 @@ Azure Site Recovery 移动服务安装在要复制到 Azure 的 VMware VM 和物
 
 
 >[!IMPORTANT]
-> 从版本 9.7.0.0 开始，在 Windows VM 上，移动服务安装程序还会安装最新可用的 [Azure VM 代理](../virtual-machines/windows/extensions-features.md#azure-vm-agent)。 当计算机故障转移到 Azure 时，该计算机满足使用任何 VM 扩展所需的代理安装先决条件。
+> 从版本 9.7.0.0 开始，在 Windows VM 上，移动服务安装程序还会安装最新可用的 [Azure VM 代理](../virtual-machines/extensions/features-windows.md#azure-vm-agent)。 当计算机故障转移到 Azure 时，该计算机满足使用任何 VM 扩展所需的代理安装先决条件。
 
 ## <a name="prerequisites"></a>先决条件
 在服务器上手动安装移动服务之前，请完成以下先决条件步骤：

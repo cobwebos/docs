@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: f9a3eeff7a44c98228f89a7519117b043217eefd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 17043ef3450554dd4ea272a4b7732367bae8e369
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure 数据工厂中的数据集和链接服务 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -193,7 +193,7 @@ typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属
 名称 | 列的名称。 | 是
 type | 列的数据类型。 数据工厂支持将以下临时数据类型作为允许的值：Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 和 Timespan | 否
 culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 | 否
-格式 | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否
+格式 | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否
 
 ### <a name="example"></a>示例
 在下面的示例中，假设源 Blob 数据采用 CSV 格式，并且包含三列： userid、name 和 lastlogindate。 它们的类型分别为 Int64、String 和 Datetime，并采用使用星期几的缩写法语名称的自定义日期时间格式。

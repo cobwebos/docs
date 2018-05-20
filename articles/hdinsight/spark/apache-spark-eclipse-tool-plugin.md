@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 4e3edc74350bb31e73e21455a221baf9c8b87015
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd54c4abeaa58c1b78f67c55eb5e8856dc5bb0c4
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 Eclipse 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
 
@@ -229,13 +229,15 @@ ms.lasthandoff: 04/19/2018
    ![Spark 应用程序本地运行结果](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
 ## <a name="known-problems"></a>已知问题
-若要将应用程序提交到 Azure Data Lake Store，请在 Azure 登录过程中选择“交互”模式。 如果选择“自动”模式，可能会收到错误。
+链接群集时，建议提供存储的凭据。
 
-![交互式登录](./media/apache-spark-eclipse-tool-plugin/interactive-authentication.png)
+![交互式登录](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
-可以选择 Azure Data Lake 群集以使用任何登录方法提交应用程序。
+可通过两种模式提交作业。 如果提供存储凭据，则将使用批处理模式提交作业。 否则，将使用交互模式。 如果群集正忙，可能会收到以下错误。
 
-目前不支持直接查看 Spark 输出。
+![eclipse 在群集忙时收到错误](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+
+![eclipse 在群集忙时收到错误](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback"></a>反馈
 如果有任何反馈，或使用此工具时遇到任何问题，请向 hdivstool@microsoft.com 发送电子邮件。

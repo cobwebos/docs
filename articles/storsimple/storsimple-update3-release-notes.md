@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 8000 系列 Update 3 发行说明 | Microsoft Docs"
-description: "介绍 StorSimple 8000 系列 Update 3 的新功能、问题和解决方法。"
+title: StorSimple 8000 系列 Update 3 发行说明 | Microsoft Docs
+description: 介绍 StorSimple 8000 系列 Update 3 的新功能、问题和解决方法。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 2158aa7a-4ac3-42ba-8796-610d1adb984d
 ms.service: storsimple
 ms.devlang: NA
@@ -15,16 +15,13 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c22e3859fad55a8632d62aaf5f656081d6d662bd
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 9308602b77903e553e26d6f0586d963a4c58230d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 3 发行说明
-> [!NOTE]
-> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 如有任何与移动相关的问题，请参阅[常见问题解答：移动到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
-
 
 ## <a name="overview"></a>概述
 以下发行说明描述 StorSimple 8000 系列 Update 3 的新功能，并标识其重要的待解决问题。 其中也包含此版本中随附的 StorSimple 软件更新列表。 

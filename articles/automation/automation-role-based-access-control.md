@@ -4,16 +4,17 @@ description: 基于角色的访问控制 (RBAC) 可用于对 Azure 资源进行�
 keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f8b7062f85a7130c73c6493f6f0c277c90374f11
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 93a4befce1f54dcc06d9a8faf31b04e5c0280276
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/23/2018
 | 所有者 |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
 | 参与者 |“参与者”角色允许管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
 | 读取器 |“读者”角色允许查看自动化帐户中的所有资源，但不能进行任何更改。 |
-| 自动化操作员 |自动化操作员角色允许针对某个自动化帐户中的所有 Runbook 查看 Runbook 名称和属性，以及为其创建和管理作业。 如果想要防止他人查看或修改自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。 |
+| 自动化运算符 |自动化操作员角色允许针对某个自动化帐户中的所有 Runbook 查看 Runbook 名称和属性，以及为其创建和管理作业。 如果想要防止他人查看或修改自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。 |
 |自动化作业操作员|自动化作业操作员角色允许针对某个自动化帐户中的所有 Runbook 创建和管理作业。|
 |自动化 Runbook 操作员|自动化 Runbook 操作员角色允许查看某个 Runbook 的名称和属性。|
 | Log Analytics 参与者 | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志集合、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。|
@@ -337,7 +338,7 @@ AssignableScopes : {/}
 ```
 
 [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) 列出指定作用域中的 Azure AD RBAC 角色分配。 在没有任何参数的情况下，此命令返回在订阅下进行的所有角色分配。 使用 **ExpandPrincipalGroups** 参数可列出针对指定用户和该用户所在组的访问权限分配。
-    **示例：**使用以下命令列出自动化帐户中的所有用户及其角色。
+    **示例：** 使用以下命令列出自动化帐户中的所有用户及其角色。
 
 ```azurepowershell-interactive
 Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -358,7 +359,7 @@ ObjectType         : User
 ```
 
 [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx) 为特定范围内的用户、组和应用程序分配访问权限。
-    **示例：**使用以下命令为“自动化帐户”范围中的用户分配“自动化操作员”角色。
+    **示例：** 使用以下命令为“自动化帐户”范围中的用户分配“自动化操作员”角色。
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -379,7 +380,7 @@ ObjectType         : User
 ```
 
 使用 [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx) 从特定范围中删除指定用户、组或应用程序的访问权限。
-    **示例：**使用以下命令从“自动化帐户”范围的“自动化操作员”角色中删除用户。
+    **示例：** 使用以下命令从“自动化帐户”范围的“自动化操作员”角色中删除用户。
 
 ```azurepowershell-interactive
 Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'

@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8340ca9d95e7600e2500755de252e7f6c6de9343
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 22513ed9c6f726f2d3dd5d8b3327fedfa6d3ca04
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-upgrade-kubernetes-in-azure-container-service-aks"></a>教程：在 Azure 容器服务 (AKS) 中升级 Kubernetes
+# <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 
-可使用 Azure CLI 升级 Azure 容器服务 (AKS) 群集。 在升级过程中，Kubernetes 节点会被仔细[封锁和排除][kubernetes-drain]以尽量减少对正在运行的应用程序造成中断。
+可使用 Azure CLI 升级 Azure Kubernetes 服务 (AKS) 群集。 在升级过程中，Kubernetes 节点会被仔细[封锁和排除][kubernetes-drain]以尽量减少对正在运行的应用程序造成中断。
 
 在本教程的第 8 部分（共 8 部分）中，升级了 Kubernetes 群集。 要完成的任务包括：
 
@@ -115,7 +115,7 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 
 ## <a name="validate-upgrade"></a>验证升级
 
-现在可以使用 `az aks show` 命令确认升级是否成功。
+使用 `az aks show` 命令确认升级已成功。
 
 ```azurecli
 az aks show --name myAKSCluster --resource-group myResourceGroup --output table

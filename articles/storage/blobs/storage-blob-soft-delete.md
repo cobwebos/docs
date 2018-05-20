@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: mihauss
-ms.openlocfilehash: 649838af1d4c753ac1d82a66c855ef313f14e85b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="soft-delete-for-azure-storage-blobs-preview"></a>Azure 存储 blob 的软删除（预览版）
 
@@ -51,7 +51,7 @@ Azure 存储现提供 blob 对象软删除（预览版），从而可在应用�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照。
+软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照*。
 
 > [!NOTE]
 > 对目标 blob 的帐户启用软删除时，软删除仅对复制操作提供覆盖保护。
@@ -63,13 +63,13 @@ Azure 存储现提供 blob 对象软删除（预览版），从而可在应用�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。调用 Snapshot Blob 时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除。
+软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。调用 Snapshot Blob 时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除*。
 
 如果对基础 blob（本身不是快照的任何 blob）调用“删除 Blob”，该 blob 将被标记为软删除。 与以前的行为一致，对具有活动快照的 blob 调用“删除 Blob”将返回错误。 对具有软删除快照的 blob 调用“删除 Blob”不会返回错误。 启用软删除后，仍可在单个操作中删除 blob 及其所有快照。 执行该操作会将基础 blob 和快照标记为软删除。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除。
+软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除*。
 
 > [!NOTE]
 > 覆盖软删除 blob 时，将自动生成写入操作前 blob 状态的软删除快照。 新 blob 将继承被覆盖 blob 的层级。
@@ -102,7 +102,7 @@ Azure 存储现提供 blob 对象软删除（预览版），从而可在应用�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。此处对 blob B 调用了撤销删除 Blob，从而将基础 blob B1 和所有相关快照（此处仅为 B0）还原为活动状态。第二步中将 B0 复制到了基础 blob。此复制操作将生成 B1 的软删除快照。
+软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。此处对 blob B 调用了撤销删除 Blob，从而将基础 blob B1 和所有相关快照（此处仅为 B0）还原为活动状态。第二步中将 B0 复制到了基础 blob。此复制操作将生成 B1 的软删除快照*。
 
 若要查看软删除 blob 和 blob 快照，可选择将已删除数据包含在列表 Blob 中。 可选择仅查看软删除的基础 blob，或者也将软删除的 blob 快照包含在内。 对于所有软删除数据，可以查数据删除的时间以及数据永久过期的剩余天数。
 
@@ -292,7 +292,7 @@ blockBlob.StartCopy(copySource);
 
 **如果在启用软删除的情况下删除整个帐户或容器，是否会保存所有相关 blob？**
 
-不会，如果删除整个帐户或容器，将永久删除所有相关 blob。 若要了解如何防止意外删除存储帐户，请参阅 Azure 资源管理器文章[锁定资源以防止意外更改](/azure-resource-manager/resource-group-lock-resources.md)。
+不会，如果删除整个帐户或容器，将永久删除所有相关 blob。 若要了解如何防止意外删除存储帐户，请参阅 Azure 资源管理器文章[锁定资源以防止意外更改](../../azure-resource-manager/resource-group-lock-resources.md)。
 
 **能否查看已删除数据的容量指标？**
 

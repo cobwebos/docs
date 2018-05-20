@@ -1,9 +1,9 @@
 ---
-title: "Azure 付款处理蓝图 - 加密要求"
-description: "PCI DSS 要求 4"
+title: Azure 付款处理蓝图 - 加密要求
+description: PCI DSS 要求 4
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 43f75ba9-cb4e-49ab-b3f4-09e48310bc18
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 3eb5b663558c2a68c13368b179ff942dd3c53716
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 6de3290fc2147e3c8ed63642b6e8470093898ef6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="encryption-requirements-for-pci-dss-compliant-environments"></a>符合 PCI DSS 的环境的加密要求 
 ## <a name="pci-dss-requirement-4"></a>PCI DSS 要求 4
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 是一种针对部署实现强加密的 PaaS 解决方案，如下所示：<br /><br />为了满足加密静态数据的要求，[Azure 存储](https://azure.microsoft.com/services/storage/)使用以下项：<br /><br /><ul><li>[静态数据的 Azure 存储服务加密 (SSE)](/azure/storage/storage-service-encryption)</li><li>SQL 数据库：PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。</li><li>[Azure 磁盘加密 (Bitlocker)](/azure/security/azure-security-disk-encryption)</li></ul>使用 Azure Key Vault 符合 Azure 政府、PCI DSS 和 HIPAA 要求。|
 
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 解决方案中未实现无线和 SNMP。|
 
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 不实现任何可能会发送未受保护的主帐号 (PAN) 数据的消息传送解决方案。|
 
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责记录和加密包含持卡人数据的传输。|
 
 

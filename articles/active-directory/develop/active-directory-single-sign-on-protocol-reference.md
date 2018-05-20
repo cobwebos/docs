@@ -1,13 +1,14 @@
 ---
-title: "Azure 单一登录 SAML 协议 | Microsoft Docs"
-description: "本文介绍 Azure Active Directory 中的单一登录 SAML 协议"
+title: Azure 单一登录 SAML 协议 | Microsoft Docs
+description: 本文介绍 Azure Active Directory 中的单一登录 SAML 协议
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: 096a250685bf023f789f98e16d2bea13bf448e3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddd5fa6f2ed0878afd8bbd6399471e92dfa30385
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 本文介绍了 Azure Active Directory (Azure AD) 针对单一登录支持的 SAML 2.0 身份验证请求和响应。
@@ -93,7 +94,7 @@ Azure AD 将忽略 `AllowCreate` 属性。
 ### <a name="signature"></a>签名
 请不要在 `AuthnRequest` 元素中包含 `Signature` 元素，因为 Azure AD 不支持签名的身份验证请求。
 
-### <a name="subject"></a>使用者
+### <a name="subject"></a>主题
 Azure AD 将忽略 `AuthnRequest` 元素的 `Subject` 元素。
 
 ## <a name="response"></a>响应
@@ -198,7 +199,7 @@ Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字�
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>使用者
+#### <a name="subject"></a>主题
 指定断言中语句主题的主体。 它包含 `NameID` 元素，用于表示经过身份验证的用户。 `NameID` 值是一个目标标识符，它只定向到作为令牌受众的服务提供者。 它是持久性的 - 可吊销，但永远不可重新分配。 它也是不透明的，因为它不会透露有关用户的信息，也不能用作属性查询的标识符。
 
 `SubjectConfirmation` 元素的 `Method` 属性始终设置为 `urn:oasis:names:tc:SAML:2.0:cm:bearer`。

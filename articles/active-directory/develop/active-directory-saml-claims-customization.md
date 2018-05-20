@@ -1,25 +1,27 @@
 ---
-title: "在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明"
+title: 在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明
 services: active-directory
-documentationcenter: 
-author: jeevansd
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: jeedes
+ms.author: celested
+ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 7394857f55493b072e6ea549c8eeec54a808f5e5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 485e4c52751b390ebd440718e7a55de7b5b5ffd7
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明
 目前，Azure Active Directory 支持使用大多数企业应用程序进行单一登录，包括 Azure AD 应用库中预集成的两个应用程序以及自定义应用程序。 当用户通过 Azure AD 使用 SAML 2.0 协议向应用程序进行身份验证时，Azure AD 会将令牌发送到应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关用户的信息片段（称为“声明”）。
@@ -40,7 +42,7 @@ ms.lasthandoff: 12/11/2017
 
 ![编辑用户属性][2]
 
-可通过单击“...”图标打开上下文菜单，然后使用该菜单删除声明（而不是 NameIdentifier）。  还可使用“添加属性”按钮添加新声明。
+可通过单击“...”图标打开上下文菜单，然后使用该菜单删除声明（而不是 NameIdentifier）。 还可使用“添加属性”按钮添加新声明。
 
 ![编辑用户属性][3]
 

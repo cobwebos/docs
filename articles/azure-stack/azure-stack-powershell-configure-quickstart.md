@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 6846791b50140f849217fe7071cfde58159e0bf8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 66598bda7ca1fcf5c6e05ab47232236b740177a6
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>在 Azure Stack 中使用 PowerShell 启动并运行
 
@@ -172,7 +172,7 @@ New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 ```
 
 > [!note]  
-> 若要指定资源组，你将需要在订阅中有一个资源组。 有关订阅的详细信息，请参阅[计划、 优惠、 配额和订阅的概述](azure-stack-plan-offer-quota-overview.md)
+> 若要指定资源组，订阅中需有一个资源组。 有关订阅的详细信息，请参阅[计划、产品/服务、配额和订阅概述](azure-stack-plan-offer-quota-overview.md)
 
 创建资源组后，“Provisioning state”属性会设置为“Succeeded”。
 

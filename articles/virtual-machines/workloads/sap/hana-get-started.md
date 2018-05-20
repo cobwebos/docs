@@ -1,13 +1,13 @@
 ---
-title: "快速入门：在 Azure 虚拟机上手动安装单实例 SAP HANA | Microsoft Docs"
-description: "有关在 Azure 虚拟机上手动安装单实例 SAP HANA 的快速入门指南"
+title: 快速入门：在 Azure 虚拟机上手动安装单实例 SAP HANA | Microsoft Docs
+description: 有关在 Azure 虚拟机上手动安装单实例 SAP HANA 的快速入门指南
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 321a86d6ce355273820617e6de9df2b0816c73fa
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 45c7e1b76f64db142fc8fdca85b1e1fa9aca6a42
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>快速入门：在 Azure VM 上手动安装单实例 SAP HANA
 ## <a name="introduction"></a>介绍
@@ -114,7 +114,7 @@ Azure VM 类型和配合 SAP HANA 使用的 SAP 支持的工作负荷方案记�
 10. 根据使用的 Linux OS 版本设置 Linux 内核参数。 有关详细信息，请参阅本指南中探讨 HANA 的相应 SAP 说明以及“内核参数”部分。
 11. 添加交换空间。
 12. （可选）在测试 VM 上安装图形桌面。 否则，请使用远程 SAPinst 安装。
-13. 从 SAP 服务应用商店下载 SAP 软件。
+13. 从 SAP Service Marketplace 下载 SAP 软件。
 14. 在应用服务器 VM 上安装 SAP ASCS 实例。
 15. 使用 NFS 在测试 VM 之间共享 /sapmnt 目录。 应用程序服务器 VM 是 NFS 服务器。
 16. 使用 SWPM 在 DB 服务器 VM 上安装数据库实例（包括 HANA）。
@@ -136,7 +136,7 @@ Azure VM 类型和配合 SAP HANA 使用的 SAP 支持的工作负荷方案记�
 10. 根据使用的 Linux OS 版本设置内核参数。 有关详细信息，请参阅本指南中探讨 HANA 的相应 SAP 说明以及“内核参数”部分。
 11. 添加交换空间。
 12. （可选）在测试 VM 上安装图形桌面。 否则，请使用远程 SAPinst 安装。
-13. 从 SAP 服务应用商店下载 SAP 软件。
+13. 从 SAP Service Marketplace 下载 SAP 软件。
 14. 在 HANA DB 服务器 VM 上创建组 ID 为 1001 的组 sapsys。
 15. 使用 HANA 数据库生命周期管理器 (HDBLCM) 在 DB 服务器 VM 上安装 SAP HANA。
 16. 在应用服务器 VM 上安装 SAP ASCS 实例。
@@ -251,7 +251,7 @@ SLES for SAP Applications 12 GA 和 SLES for SAP Applications 12 SP1 具有替�
 
 在标准 SLES/SLES for SAP Applications 12 Azure 库映像中安装 SAP NetWeaver 时，将显示一条消息，指出没有交换空间，如下面的屏幕截图所示。 若要消除此消息，可通过使用 dd、mkswap 和 swapon 手动添加交换文件。 若要了解如何操作，请在 SUSE 文档的[使用 YaST 分区程序](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)部分中搜索“手动添加交换文件”。
 
-另一种选择是使用 Linux VM 代理配置交换空间。 有关详细信息，请参阅 [Azure Linux Agent User Guide](../../linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Azure Linux 代理用户指南）。
+另一种选择是使用 Linux VM 代理配置交换空间。 有关详细信息，请参阅 [Azure Linux Agent User Guide](../../extensions/agent-linux.md)（Azure Linux 代理用户指南）。
 
 ![通知交换空间不足的弹出消息](./media/hana-get-started/image010.jpg)
 
@@ -444,7 +444,7 @@ SLES for SAP Applications 12 GA 和 SLES for SAP Applications 12 SP1 具有替�
 
 
 ## <a name="sap-software-downloads"></a>SAP 软件下载
-可以从 SAP 服务应用商店下载软件，如以下屏幕截图中所示。
+可以从 SAP Service Marketplace 下载软件，如以下屏幕截图中所示。
 
 下载适用于 Linux/HANA 的 NetWeaver 7.5：
 

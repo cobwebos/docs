@@ -3,16 +3,17 @@ title: 创建独立的 Azure 自动化帐户
 description: 本文逐步讲解如何在 Azure 自动化中创建、测试和使用示例安全主体身份验证。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 619b0a12122fcd6b51a4e34a3021bc99047f9251
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: acd1ea95f4ef2717e315d9a247cd2fed54a02bf3
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 

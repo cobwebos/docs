@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: e15016da271d512fd9b87d5c14091305a92770b5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/10/2018
+---
 ## <a name="specify-the-behavior-of-the-iot-device"></a>指定 IoT 设备的行为
 
 IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心交换的消息的格式。
@@ -78,7 +94,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
 
 现在添加实现模型中定义的行为的代码。
 
-1. 添加以下回调处理程序，当设备向预配置解决方案发送新的报告属性值后将运行该处理程序：
+1. 添加以下回调处理程序，当设备向解决方案加速器发送新的报告属性值后将运行该处理程序：
 
     ```c
     /* Callback after sending reported properties */
@@ -124,7 +140,8 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
       }
       ThreadAPI_Sleep(5000);
 
-      chiller->Firmware = _strdup(chiller->new_firmware_version);
+    #pragma warning(suppress : 4996)
+      chiller->Firmware = strdup(chiller->new_firmware_version);
       chiller->FirmwareUpdateStatus = "waiting";
       /* Send reported properties to IoT Hub */
       if (IoTHubDeviceTwin_SendReportedStateChiller(chiller, deviceTwinCallback, NULL) != IOTHUB_CLIENT_OK)
@@ -171,8 +188,10 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
       }
       else
       {
-        chiller->new_firmware_version = _strdup(Firmware);
-        chiller->new_firmware_URI = _strdup(FirmwareUri);
+    #pragma warning(suppress : 4996)
+        chiller->new_firmware_version = strdup(Firmware);
+    #pragma warning(suppress : 4996)
+        chiller->new_firmware_URI = strdup(FirmwareUri);
         THREAD_HANDLE thread_apply;
         THREADAPI_RESULT t_result = ThreadAPI_Create(&thread_apply, do_firmware_update, chiller);
         if (t_result == THREADAPI_OK)
@@ -221,7 +240,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
     }
     ```
 
-1. 添加以下函数以便使用属性向预配置解决方案发送消息：
+1. 添加以下函数以便使用属性向解决方案加速器发送消息：
 
     ```c
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size, char* schema)
@@ -260,7 +279,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
     }
     ```
 
-1. 添加以下函数，将设备连接到云中的预配置解决方案，并交换数据。 此函数执行以下步骤：
+1. 添加以下函数，将设备连接到云中的解决方案加速器，并交换数据。 此函数执行以下步骤：
 
     - 初始化平台。
     - 向序列化库注册 Contoso 命名空间。
@@ -396,7 +415,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
     }
     ```
 
-    下面提供发送到预配置解决方案的示例**遥测数据**消息，以供参考：
+    下面提供发送到解决方案加速器的示例**遥测数据**消息，以供参考：
 
     ```
     Device: [myCDevice],

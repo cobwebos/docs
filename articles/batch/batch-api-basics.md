@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a202efd08de69e6e766c9c42047c01a03be4d96
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3423103de774faaf9e7884626a9a1a102e351b68
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -72,10 +72,7 @@ ms.lasthandoff: 04/18/2018
 
 可以在单个批处理帐户中运行多个批处理工作负荷，或者在相同订阅的不同 Azure 区域的批处理帐户之间分散工作负荷。
 
-> [!NOTE]
-> 创建 Batch 帐户时，通常应选择默认的“Batch 服务”模式。使用此模式时，池在 Azure 托管的订阅中以幕后方式分配。 在备用的“用户订阅”模式（对于大多数方案不再推荐使用）下，会在创建池时直接在订阅中创建 Batch VM 和其他资源。 若要在用户订阅模式下创建 Batch 帐户，还需将订阅注册到 Azure Batch 中，并将该帐户与 Azure Key Vault 相关联。
->
-
+[!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
 ## <a name="azure-storage-account"></a>Azure 存储帐户
 

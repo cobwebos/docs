@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/10/2018
 ms.author: juliako
-ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e51439ec0a6c6658b28ae0f02ff3eaeb4c551e4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户
 > [!div class="op_single_selector"]
@@ -87,11 +87,11 @@ ms.lasthandoff: 05/07/2018
     ```
 4. 在“Postman”窗口的左侧，单击“1.获取 AAD 身份验证令牌” -> “获取服务主体的 Azure AD 令牌”。
 
-    URL 部分中已填充 **AzureADSTSEndpoint** 环境变量（本教程前面已设置其值）。
-    
-5. 按“发送”。
+    URL 部分填入 **AzureADSTSEndpoint** 环境变量（在本教程的前面部分，设置了支持[集合](#configure-the-collection)的[环境变量](#configure-the-environment)的值）。
 
     ![上传文件](./media/media-services-rest-upload-files/postment-get-token.png)
+
+5. 按“发送”。
 
     可以看到包含“access_token”的响应。 “test”脚本采用此值，并设置 **AccessToken** 环境变量（如前所述）。 如果检查环境变量的话，将会看到，此变量现在包含剩余操作中使用的访问令牌（持有者令牌）值。 
 

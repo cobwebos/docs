@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 140779ca1786bc9fa2afcfd08fdac0857580e8cf
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -215,7 +215,7 @@ ms.lasthandoff: 04/20/2018
 |-------------------|-----------------|  
 |int|将参数转换为整数。 例如，以下表达式返回数字而不是字符串形式的 100：`int('100')`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为整数的值。|  
 |字符串|将参数转换为字符串。 例如，以下表达式返回 `'10'`:  `string(10)`。你还可以将对象转换为字符串，例如，如果 foo 参数是一个具有属性 `bar : baz` 的对象，那么以下表达式将返回 `{"bar" : "baz"}` `string(pipeline().parameters.foo)`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为字符串的值。|  
-|json|将参数转换为 JSON 类型值。 它与 string() 相反。 例如，以下表达式返回数组而不是字符串形式的 `[1,2,3]`：<br /><br /> `parse('[1,2,3]')`<br /><br /> 同样，可以将字符串转换为对象。 例如，`json('{"bar" : "baz"}')` 返回：<br /><br /> `{ "bar" : "baz" }`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要转换为本机类型值的字符串。<br /><br /> json 函数也支持 xml 输入。 例如，以下对象的参数值：<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> 被转换为以下 json：<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
+|json|将参数转换为 JSON 类型值。 它与 string() 相反。 例如，以下表达式返回数组而不是字符串形式的 `[1,2,3]`：<br /><br /> `json('[1,2,3]')`<br /><br /> 同样，可以将字符串转换为对象。 例如，`json('{"bar" : "baz"}')` 返回：<br /><br /> `{ "bar" : "baz" }`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要转换为本机类型值的字符串。<br /><br /> json 函数也支持 xml 输入。 例如，以下对象的参数值：<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> 被转换为以下 json：<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |float|将参数自变量转换为浮点数。 例如，以下表达式返回 `10.333`:  `float('10.333')`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为浮点数的值。|  
 |bool|将参数转换为布尔值。 例如，以下表达式返回 `false`:  `bool(0)`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为布尔值的值。|  
 |coalesce|返回传入的参数中的第一个非 null 对象。 注意：空字符串不为 null。 例如，如果未定义参数 1 和 2，则此函数返回 `fallback`:  `coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **参数数目**：1 ... *n*<br /><br /> **名称**：Object*n*<br /><br /> **说明**：必需。 要检查是否为 `null` 的对象。|  

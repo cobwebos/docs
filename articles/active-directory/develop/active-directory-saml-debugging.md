@@ -2,24 +2,25 @@
 title: 如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录 | Microsoft Docs
 description: '了解如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录 '
 services: active-directory
-author: asmalser-msft
+author: CelesteDG
 documentationcenter: na
 manager: mtillman
 ms.assetid: edbe492b-1050-4fca-a48a-d1fa97d47815
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/20/2017
-ms.author: asmalser
+ms.author: celested
 ms.custom: aaddev
-ms.reviewer: dastrock
-ms.openlocfilehash: f94889c234299c2dceb49c0ab554c1eb4b68d2c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.reviewer: dastrock; smalser
+ms.openlocfilehash: 1a33b5ab9e26ed497e3be2d430f66ef41402733d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录
 
@@ -95,7 +96,7 @@ ms.lasthandoff: 04/23/2018
 
 请访问[登录后应用程序页中出现错误](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)故障排除指南，详细了解 SAML 响应中可能缺少或错误的内容。
 
-有关如何查看 SAML 响应的信息，请访问[单一登录 SAML 协议](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML#response)一文。
+有关如何查看 SAML 响应的信息，请访问[单一登录 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML#response)一文。
 
 
 ## <a name="related-articles"></a>相关文章

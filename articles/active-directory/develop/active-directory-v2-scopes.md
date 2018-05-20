@@ -1,25 +1,27 @@
 ---
-title: "Azure Active Directory v2.0 的范围、权限和同意 | Microsoft Docs"
-description: "介绍 Azure AD v2.0 终结点中的授权，包括范围、权限和同意。"
+title: Azure Active Directory v2.0 的范围、权限和同意 | Microsoft Docs
+description: 介绍 Azure AD v2.0 终结点中的授权，包括范围、权限和同意。
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8f98cbf0-a71d-4e34-babf-e644ad9ff423
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b35e4a7619c23660d93d91219a92be7e93a35139
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f001751c9401b88d9bfaf35444882d3d5ccbfef3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 终结点中的范围、权限和同意
 与 Azure Active Directory (Azure AD) 集成的应用遵循一种授权模型，该模型可让用户控制应用访问其数据的方式。 此授权模型的 v2.0 实现已更新，其中更改了应用程序必须与 Azure AD 交互的方式。 本文涵盖此授权模型的基本概念，包括范围、权限和同意。
@@ -199,6 +201,6 @@ Content-Type: application/json
 }
 ```
 
-可以在对资源的 HTTP 请求中使用生成的访问令牌。 它会向资源可靠地指示应用具有执行特定任务的适当权限。  
+可以在对资源的 HTTP 请求中使用生成的访问令牌。 它会向资源可靠地指示应用具有执行特定任务的适当权限。 
 
 有关 OAuth 2.0 协议以及如何获取访问令牌的详细信息，请参阅 [v2.0 终结点协议参考](active-directory-v2-protocols.md)。

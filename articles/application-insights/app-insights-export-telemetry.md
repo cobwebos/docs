@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: mbullwin
-ms.openlocfilehash: 05d271eb7d046819bb8fc2be20623cba0000d8f4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 942cc355c186b73e0b8802bfbf79ef8b4b39191a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
 
-使用连续导出可能会产生额外费用。 检查[定价模型](http://azure.microsoft.com/pricing/details/application-insights/)。
+使用连续导出可能会产生额外费用。 检查[定价模型](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 在设置连续导出之前，请考虑一些备选方法：
 

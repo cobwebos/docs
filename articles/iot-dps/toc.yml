@@ -155,6 +155,8 @@
       href: 'https://catalog.azureiotsuite.com/'
     - name: Azure IoT 开发人员中心
       href: 'https://azure.microsoft.com/develop/iot/'
+    - name: 客户数据请求
+      href: iot-dps-customer-data-requests.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
     - name: 设备资源管理器工具

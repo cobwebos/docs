@@ -1,13 +1,13 @@
 ---
-title: "为 Azure Functions 中的函数应用自动执行资源部署 | Microsoft Docs"
-description: "了解如何生成用于部署函数应用的 Azure 资源管理器模板。"
+title: 为 Azure Functions 中的函数应用自动执行资源部署 | Microsoft Docs
+description: 了解如何生成用于部署函数应用的 Azure 资源管理器模板。
 services: Functions
 documtationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "azure functions, functions 无服务体系结构, 基础结构即代码, azure resource manager"
+editor: ''
+tags: ''
+keywords: azure functions, functions 无服务体系结构, 基础结构即代码, azure resource manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.server: functions
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 6f31ba7b43c70f52bdd67d27512a322ec6258608
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 28b2f5aba69e5c058feb7119eb31352220922998
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -56,7 +56,9 @@ ms.lasthandoff: 01/19/2018
 }
 ```
 
-此外，在站点配置中，必须将属性 `AzureWebJobsStorage` 和 `AzureWebJobsDashboard` 指定为应用设置。 Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内部队列。 连接字符串 `AzureWebJobsDashboard` 用于向 Azure 表存储记录日志以及为门户中的“监视器”选项卡提供支持。
+此外，在站点配置中，必须将属性 `AzureWebJobsStorage` 指定为应用设置。 如果函数应用未使用 Application Insights 进行监视，还应将 `AzureWebJobsDashboard` 指定为应用设置。
+
+Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内部队列。  未启用 Application Insights 时，运行时使用 `AzureWebJobsDashboard` 连接字符串登录到 Azure 表存储并启动门户中的“监视”选项卡。
 
 这些属性在 `siteConfig` 对象中的 `appSettings` 集合中指定：
 
@@ -260,7 +262,7 @@ ms.lasthandoff: 01/19/2018
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Azure 门户](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮

@@ -13,16 +13,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/11/2018
 ms.author: jeffgo
-ms.openlocfilehash: d7b79962822dcfec96c7087100b1537d8046ab46
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 524c3b3b86e43b56e1d1f2a1653bdf7b82061022
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>为 Azure 堆栈准备基于 Red Hat 的虚拟机
 在本文中，你将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机在 Azure 堆栈中使用。 本文中涉及的 RHEL 的版本是 7.1 +。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。
+
+有关 Red Hat Enterprise Linux 支持信息，请参阅[Red Hat 和 Azure 堆栈： Frequently Asked Questions](https://access.redhat.com/articles/3413531)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 

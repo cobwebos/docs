@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric 安全性最佳做法 | Microsoft Docs"
-description: "本文提供有关 Azure Service Fabric 安全性的一套最佳做法。"
+title: Azure Service Fabric 安全性最佳做法 | Microsoft Docs
+description: 本文提供有关 Azure Service Fabric 安全性的一套最佳做法。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: tomsh
-ms.openlocfilehash: a8b76e2895edcdbbddafbee7116e163d1789c06d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b908589903d243b2d284e2a23b6111785229c16f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 将云应用程序部署到生产环境前，请先查看有必要遵照和建议的最佳做法列表，了解最好应如何在应用程序中实现群集安全性。

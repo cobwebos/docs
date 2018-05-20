@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 91e85fb25f9324f9b8d83884fe34a014f280de0b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9de8119cbde486800639bc5f3559a1a2859ec204
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -335,7 +335,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 ## <a name="referencing-custom-assemblies"></a>引用自定义程序集
 
 若要引用自定义程序集，可使用共享程序集或私有程序集：
-- 共享程序集在函数应用内的所有函数中共享。 若要引用自定义程序集，请将程序集上传到函数应用，例如函数应用根中的 `bin` 文件夹。 
+- 共享程序集在函数应用内的所有函数中共享。 若要引用自定义程序集，请将程序集上传到[函数应用根文件夹`bin` (wwwroot) 中名为 ](functions-reference.md#folder-structure) 的文件夹。 
 - 私有程序集是给定函数上下文的一部分，支持不同版本的旁加载。 私有程序集应上传到函数目录中的 `bin` 文件夹。 使用文件名（例如 `#r "MyAssembly.dll"`）引用程序集。 
 
 有关如何将文件上传到函数文件夹的信息，请参阅有关[程序包管理](#using-nuget-packages)的部分。

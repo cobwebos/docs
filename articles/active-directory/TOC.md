@@ -185,27 +185,27 @@
 ##### [自定义域](manage-apps/application-proxy-configure-custom-domain.md)
 #### [单一登录](manage-apps/application-proxy-single-sign-on.md)
 ##### [使用 KCD 执行 SSO](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
-##### [使用标头执行 SSO](application-proxy-ping-access.md)
-##### [将 SSO 与密码保管配合使用](application-proxy-sso-azure-portal.md)
+##### [使用标头执行 SSO](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md)
+##### [将 SSO 与密码保管配合使用](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 #### 概念
-##### [连接器](application-proxy-understand-connectors.md)
-##### [安全性](application-proxy-security-considerations.md)
-##### [网络](application-proxy-network-topology-considerations.md)
+##### [连接器](manage-apps/application-proxy-connectors.md)
+##### [安全性](manage-apps/application-proxy-security.md)
+##### [网络](manage-apps/application-proxy-network-topology.md)
 
 
-##### [从 TMG 或 UAG 升级](application-proxy-transition-from-uag-tmg.md)
+##### [从 TMG 或 UAG 升级](manage-apps/application-proxy-migration.md)
 
 #### 高级配置
-##### [在单独的网络上发布](active-directory-application-proxy-connectors-azure-portal.md)
-##### [代理服务器](application-proxy-working-with-proxy-servers.md)
-##### [声明感知应用](active-directory-application-proxy-claims-aware-apps.md)
-##### [本机客户端应用](active-directory-application-proxy-native-client.md)
-##### [无提示安装](active-directory-application-proxy-silent-installation.md)
-##### [自定义主页](application-proxy-office365-app-launcher.md)
-##### [转换内联链接](application-proxy-link-translation.md)
+##### [在单独的网络上发布](manage-apps/application-proxy-connector-groups.md)
+##### [代理服务器](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
+##### [声明感知应用](manage-apps/application-proxy-configure-for-claims-aware-applications.md)
+##### [本机客户端应用](manage-apps/application-proxy-configure-native-client-application.md)
+##### [无提示安装](manage-apps/application-proxy-register-connector-powershell.md)
+##### [自定义主页](manage-apps/application-proxy-configure-custom-home-page.md)
+##### [转换内联链接](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
 #### 发布演练
-##### [远程桌面](application-proxy-publish-remote-desktop.md)
-##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [远程桌面](manage-apps/application-proxy-integrate-with-remote-desktop-services.md)
+##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 ##### [Tableau](active-directory-application-proxy-tableau.md)
 

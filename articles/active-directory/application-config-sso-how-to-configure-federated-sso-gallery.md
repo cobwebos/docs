@@ -1,11 +1,11 @@
 ---
-title: "如何配置 Azure AD 库应用程序的联合单一登录 | Microsoft Docs"
-description: "如何配置现有 Azure AD 库应用程序的联合单一登录和如何使用教程以快速入门"
+title: 如何配置 Azure AD 库应用程序的联合单一登录 | Microsoft Docs
+description: 如何配置现有 Azure AD 库应用程序的联合单一登录和如何使用教程以快速入门
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: e71480910432c6475ca97d20853a72b864195faa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 47aab24702be966beeb41371201c6966497dc35a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的联合单一登录
 
@@ -90,11 +90,11 @@ ms.lasthandoff: 02/21/2018
 
    2. 要将应用程序配置为 IdP 启动的 SSO，“回复 URL”是必需值。 对于某些应用程序，“标识符”也是必需值。
 
-10. **可选：**如果要查看非必需值，请单击“显示高级 URL 设置”。
+10. **可选：** 如果要查看非必需值，请单击“显示高级 URL 设置”。
 
 11. 在“用户属性”的“用户标识符”下拉列表中，为用户选择唯一标识符。
 
-12. **可选：**单击“查看和编辑其他所有用户属性”，以编辑在用户登录时要发送至应用程序（位于 SAML 令牌中）的属性。
+12. **可选：** 单击“查看和编辑其他所有用户属性”，以编辑在用户登录时要发送至应用程序（位于 SAML 令牌中）的属性。
 
   若要添加属性：
    
@@ -104,7 +104,7 @@ ms.lasthandoff: 02/21/2018
 
 13. 单击“配置 &lt;应用程序名称&gt;”以访问关于了解如何在应用程序中配置单一登录的文档。 此外，你还拥有通过应用程序设置 SSO 所需的元数据 URL 和证书。
 
-14. 单击“保存”以保存配置。
+14. 单击 **保存** 以保存配置。
 
 15. 将用户分配到应用程序。
 
@@ -195,11 +195,11 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”列表。
 
-12. **可选：**如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
+12. **可选：** 如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
-14. **可选：**单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选用户。
+14. **可选：** 单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选用户。
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 
@@ -210,7 +210,7 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)获取详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-[使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
+[使用应用程序代理为应用提供单一登录](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 
 
 

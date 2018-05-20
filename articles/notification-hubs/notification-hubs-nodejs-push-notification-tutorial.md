@@ -1,25 +1,25 @@
 ---
-title: "使用 Azure 通知中心和 Node.js 发送推送通知"
-description: "了解如何使用通知中心从 Node.js 应用程序发送推送通知。"
-keywords: "推送通知,push notification,node.js 推送,ios 推送"
+title: 使用 Azure 通知中心和 Node.js 发送推送通知
+description: 了解如何使用通知中心从 Node.js 应用程序发送推送通知。
+keywords: 推送通知,push notification,node.js 推送,ios 推送
 services: notification-hubs
 documentationcenter: nodejs
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: yuaxu
-ms.openlocfilehash: ff2dd0c2ededa3664c48b5ff77b05466fceb4b3f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 7463d41382c59e4f7f03b58dbcbc3f5c45e9d15c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/12/2017
 > 
 > 
 
-本指南演示如何借助 Azure 通知中心，直接从 Node.js 应用程序发送推送通知。 
+本指南介绍如何借助 Azure 通知中心，直接从 Node.js 应用程序发送推送通知。 
 
 涵盖的方案包括在下列平台将推送通知发送到应用程序：
 
@@ -65,12 +65,12 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
     var azure = require('azure');
 
-### <a name="setup-an-azure-notification-hub-connection"></a>设置 Azure 通知中心连接
-可以通过 **NotificationHubService** 对象使用通知中心。 以下代码为名为 **hubname** 的通知中心创建一个 **NotificationHubService** 对象。 将它添加到靠近 **server.js** 文件顶部、用于导入 azure 模块的语句之后的位置：
+### <a name="set-up-an-azure-notification-hub-connection"></a>设置 Azure 通知中心连接
+可以通过 **NotificationHubService** 对象使用通知中心。 以下代码为名为“hubname”的通知中心创建一个 NotificationHubService 对象。 将它添加到靠近 **server.js** 文件顶部、用于导入 azure 模块的语句之后的位置：
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-可通过执行以下步骤从 [Azure 门户]获取连接 **connectionstring** 值：
+可通过执行以下步骤从 [Azure 门户]获取连接 connectionstring 值：
 
 1. 在左侧导航窗格中，单击“浏览”。
 2. 选择“通知中心”，并找到要用于示例的中心。 如果在创建新通知中心时需要获得帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
@@ -95,7 +95,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>如何：向 Android 应用程序发送推送通知
 **GcmService** 对象提供 **send** 方法，该方法可用于将推送通知发送到 Android 应用程序。 该 **send** 方法接受以下参数：
 
-* **Tags** — 标记标识符。 如果没有提供任何标记，通知将发送给所有客户端。
+* **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
 * **Payload** — 消息的 JSON 或原始字符串的有效负载。
 * **Callback** — 回调函数。
 
@@ -117,7 +117,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>如何：向 iOS 应用程序发送推送通知
 与上述 Android 应用程序一样，**ApnsService** 对象提供可用于将推送通知发送到 iOS 应用程序的 **send** 方法。 该 **send** 方法接受以下参数：
 
-* **Tags** — 标记标识符。 如果没有提供任何标记，通知将发送给所有客户端。
+* **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
 * **Payload** — 消息的 JSON 或字符串的有效负载。
 * **Callback** — 回调函数。
 
@@ -137,7 +137,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 ### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>如何：向 Windows Phone 应用程序发送推送通知
 **MpnsService** 对象提供可用于将推送通知发送到 Windows Phone 应用程序的 **send** 方法。 该 **send** 方法接受以下参数：
 
-* **Tags** — 标记标识符。 如果没有提供任何标记，通知将发送给所有客户端。
+* **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
 * **Payload** — 消息的 XML 有效负载。
 * **TargetName** - `toast` 用于 toast 通知。 `token` 用于磁贴通知。
 * **NotificationClass** — 通知的优先级。 有关该参数的有效值，请参阅 [Push notifications from a server](http://msdn.microsoft.com/library/hh221551.aspx)（从服务器推送通知）文档中的 **HTTP Header Elements**（HTTP 标头元素）部分。
@@ -158,7 +158,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 ### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>如何：向通用 Windows 平台 (UWP) 应用程序发送推送通知
 **WnsService** 对象提供可用于将推送通知发送到通用 Windows 平台应用程序的 **send** 方法。  该 **send** 方法接受以下参数：
 
-* **Tags** — 标记标识符。 如果没有提供任何标记，通知将发送给所有已注册的客户端。
+* **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有已注册的客户端。
 * **Payload** — XML 消息有效负载。
 * **Type** — 通知类型。
 * **Options** — 可选的请求标头。

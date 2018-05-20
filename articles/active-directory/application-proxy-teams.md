@@ -1,25 +1,25 @@
 ---
-title: "在 Teams 中访问 Azure AD 应用代理应用 | Microsoft Docs"
-description: "使用 Azure AD 应用程序通过 Microsoft Teams 代理访问本地应用程序。"
+title: 在 Teams 中访问 Azure AD 应用代理应用 | Microsoft Docs
+description: 使用 Azure AD 应用程序通过 Microsoft Teams 代理访问本地应用程序。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a8dca307bb97898f229b39710a3b566ee913fcca
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 974c364588d34631c8214352be7821c69e5f7aa7
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>通过 Microsoft Teams 访问本地应用程序
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/05/2018
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>安装应用程序代理连接器并发布应用
 
-如果尚未执行，请[为租户配置应用程序代理并安装连接器](active-directory-application-proxy-enable.md)。 然后[发布进行远程访问的本地应用程序](application-proxy-publish-azure-portal.md)。 发布应用时，请记下外部 URL，用于将应用添加到 Teams。
+如果尚未执行，请[为租户配置应用程序代理并安装连接器](manage-apps/application-proxy-enable.md)。 然后[发布进行远程访问的本地应用程序](manage-apps/application-proxy-publish-azure-portal.md)。 发布应用时，请记下外部 URL，用于将应用添加到 Teams。
 
 如果已发布应用，但忘记了其外部 URL，请在 [Azure 门户](https://portal.azure.com)中查找。 登录，然后导航到“Azure Active Directory” > “企业应用程序” > “所有应用程序”>选择应用>“应用程序代理”。
 
@@ -54,5 +54,5 @@ ms.lasthandoff: 01/05/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用应用程序代理[发布本地 SharePoint 站点](application-proxy-enable-remote-access-sharepoint.md)。
-- 将应用配置为使用[自定义域](active-directory-application-proxy-custom-domains.md)作为其外部 URL。 
+- 了解如何使用应用程序代理[发布本地 SharePoint 站点](manage-apps/application-proxy-integrate-with-sharepoint-server.md)。
+- 将应用配置为使用[自定义域](manage-apps/application-proxy-configure-custom-domain.md)作为其外部 URL。 

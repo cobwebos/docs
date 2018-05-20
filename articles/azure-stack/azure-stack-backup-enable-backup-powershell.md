@@ -6,84 +6,49 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 7DFEFEBE-D6B7-4BE0-ADC1-1C01FB7E81A6
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 5/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 15c916d2374d941c15190ef3bde3bfe1f60d27b4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.reviewer: hectorl
+ms.openlocfilehash: 4faa6930c37f9d491a3efa4b34519dbb13761a9d
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>使用 PowerShell 为 Azure Stack 启用备份
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-使用 Windows PowerShell 启用基础结构备份服务，以便出现故障时可以还原 Azure Stack。 可以访问 PowerShell cmdlet 以启用备份、启动备份，以及通过操作员管理终结点获取备份信息。
+因此，启用基础结构备份服务使用 Windows PowerShell 执行定期备份：
+ - 内部标识服务和根证书
+ - 用户计划、 产品/服务、 订阅
+ - Keyvault 机密
+ - 用户 RBAC 角色和策略
 
-## <a name="download-azure-stack-tools"></a>下载 Azure Stack 工具
+可以访问 PowerShell cmdlet 以启用备份、启动备份，以及通过操作员管理终结点获取备份信息。
 
-安装并配置适用于 Azure Stack 的 PowerShell 和 Azure Stack 工具。 请参阅[在 Azure Stack 中启动并运行 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart)。
+## <a name="prepare-powershell-environment"></a>准备 PowerShell 环境
 
-##  <a name="load-the-connect-and-infrastructure-modules"></a>加载连接和基础结构模块
+有关配置 PowerShell 环境的说明，请参阅[安装适用于 Azure 堆栈的 PowerShell ](azure-stack-powershell-install.md)。
 
-使用权限提升的提示符打开 Windows PowerShell，并运行以下命令：
-
-   ```powershell
-    cd C:\tools\AzureStack-Tools-master\Connect
-    Import-Module .\AzureStack.Connect.psm1
-    
-    cd C:\tools\AzureStack-Tools-master\Infrastructure
-    Import-Module .\AzureStack.Infra.psm1 
-    
-   ```
-
-##  <a name="setup-rm-environment-and-log-into-the-operator-management-endpoint"></a>设置 Rm 环境并登录到操作员管理终结点
-
-在同一 PowerShell 会话中，通过添加环境变量编辑以下 PowerShell 脚本。 运行更新的脚本以设置 RM 环境并登录到操作员管理终结点。
-
-| 变量    | 说明 |
-|---          |---          |
-| $TenantName | Azure Active Directory 租户名称。 |
-| 操作员帐户名称        | Azure Stack 操作员帐户名称。 |
-| Azure 资源管理器终结点 | Azure 资源管理器的 URL。 |
-
-   ```powershell
-   # Specify Azure Active Directory tenant name
-    $TenantName = "contoso.onmicrosoft.com"
-    
-    # Set the module repository and the execution policy
-    Set-PSRepository `
-      -Name "PSGallery" `
-      -InstallationPolicy Trusted
-    
-    Set-ExecutionPolicy RemoteSigned `
-      -force
-    
-    # Configure the Azure Stack operator’s PowerShell environment.
-    Add-AzureRMEnvironment `
-      -Name "AzureStackAdmin" `
-      -ArmEndpoint "https://adminmanagement.seattle.contoso.com"
-    
-    Set-AzureRmEnvironment `
-      -Name "AzureStackAdmin" `
-      -GraphAudience "https://graph.windows.net/"
-    
-    $TenantID = Get-AzsDirectoryTenantId `
-      -AADTenantName $TenantName `
-      -EnvironmentName AzureStackAdmin
-    
-    # Sign-in to the operator's console.
-    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID 
-    
-   ```
 ## <a name="generate-a-new-encryption-key"></a>生成新加密密钥
 
+安装并配置适用于 Azure Stack 的 PowerShell 和 Azure Stack 工具。
+ - 请参阅[在 Azure Stack 中启动并运行 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart)。
+ - 请参阅[从 GitHub 下载 Azure 堆栈工具](azure-stack-powershell-download.md)
+
+使用权限提升的提示符打开 Windows PowerShell，并运行以下命令：
+   
+   ```powershell
+    cd C:\tools\AzureStack-Tools-master\Infrastructure
+    Import-Module .\AzureStack.Infra.psm1 
+   ```
+   
 在同一 PowerShell 会话中，运行以下命令：
 
    ```powershell
@@ -136,4 +101,4 @@ ms.lasthandoff: 05/10/2018
 ## <a name="next-steps"></a>后续步骤
 
  - 了解如何运行备份，请参阅[备份 Azure Stack](azure-stack-backup-back-up-azure-stack.md )。  
-- 了解如何验证备份是否已运行，请参阅[在管理门户中确认已完成的备份](azure-stack-backup-back-up-azure-stack.md )。
+ - 了解如何验证备份是否已运行，请参阅[在管理门户中确认已完成的备份](azure-stack-backup-back-up-azure-stack.md )。

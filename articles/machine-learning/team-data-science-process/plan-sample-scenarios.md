@@ -1,9 +1,9 @@
 ---
-title: "识别 Azure 机器学习的高级分析方案 | Microsoft 文档"
-description: "选择适当的方案，用于执行具有团队数据科学过程的高级预测分析。"
+title: 识别 Azure 机器学习的高级分析方案 | Microsoft 文档
+description: 选择适当的方案，用于执行具有团队数据科学过程的高级预测分析。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 53aecc1e-5089-42cf-8d44-77678653f92d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 3b6a92f4f4615954902124c59adca25560182de6
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: 7b1b8f00e109776a3a5d3cc8c2224e8160b85704
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -132,9 +132,9 @@ ms.lasthandoff: 11/13/2017
    
    c.  运行 SQL Server Management Studio。
    
-   d.单击“下一步”。  创建数据库和目标表。
+   d.  创建数据库和目标表。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。  使用某个大容量导入方法加载数据。
+   e.  使用某个大容量导入方法加载数据。
    
    f.  如果需要表联接，可创建索引以加快联接。
    
@@ -168,9 +168,9 @@ ms.lasthandoff: 11/13/2017
    
    c.  运行 SQL Server Management Studio。
    
-   d.单击“下一步”。  创建数据库和目标表。
+   d.  创建数据库和目标表。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。  使用某个大容量导入方法加载数据。
+   e.  使用某个大容量导入方法加载数据。
    
    f.  如果需要表联接，可创建索引以加快联接。
    
@@ -220,7 +220,7 @@ ms.lasthandoff: 11/13/2017
    
    c.  按照 Hadoop 命令行中的命令 `cd %hive_home%\bin` 输入 Hive 根目录。
    
-   d.单击“下一步”。  运行 Hive 查询以创建数据库和表，并将数据从 Blob 存储加载到 Hive 表。
+   d.  运行 Hive 查询以创建数据库和表，并将数据从 Blob 存储加载到 Hive 表。
    
    > [!NOTE]
    > 如果数据太大，用户可以使用分区创建 Hive 表。 然后，用户可以使用头节点上 Hadoop 命令行中的 `for` 循环，将数据加载到由分区进行分区的 Hive 表中。
@@ -234,7 +234,7 @@ ms.lasthandoff: 11/13/2017
    
    c.  按照 Hadoop 命令行中的命令 `cd %hive_home%\bin` 输入 Hive 根目录。
    
-   d.单击“下一步”。  在 Hadoop 群集的头节点上的 Hadoop 命令行中运行 Hive 查询，可浏览数据并根据需要创建功能。
+   d.  在 Hadoop 群集的头节点上的 Hadoop 命令行中运行 Hive 查询，可浏览数据并根据需要创建功能。
 7. 如果需要和/或想要，对数据进行采样以满足 Azure 机器学习工作室。
 8. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
 9. 使用[导入数据][import-data]模块直接从 `Hive Queries` 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。

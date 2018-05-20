@@ -4,7 +4,7 @@ description: 本文档介绍 Azure 安全中心检测功能的机制。
 services: security-center
 documentationcenter: na
 author: terrylan
-manager: swadhwa
+manager: mbaldwin
 editor: ''
 ms.assetid: 4c5599cc-99a1-430f-895f-601615ef12a0
 ms.service: security-center
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: yurid
-ms.openlocfilehash: 636f81361a59c1bfe1ba778722b79564609fb02a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 699903ff874ace4991c5c4b0584d4661d3e45f33
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure 安全中心检测功能
 本文档讨论 Azure 安全中心的高级检测功能，帮助用户确定以 Microsoft Azure 资源为目标的活跃威胁，了解进行快速响应所需的知识。

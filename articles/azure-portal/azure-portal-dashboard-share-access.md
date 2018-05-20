@@ -9,16 +9,16 @@ editor: tysonn
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: 75f06e49aa317fc887831a9e04861d9a7989bdb2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 17d57a809bcbd4c299675c07756b55423a160ed1
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>通过使用基于角色的访问控制来共享 Azure 仪表板
 配置仪表板后，可将其发布，并与组织中的其他用户共享。 通过使用 Azure [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)，允许他人查看仪表板。 将一个用户或一组用户分配到某角色，该角色定义这些用户是否可以查看或修改已发布的仪表板。 

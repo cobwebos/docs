@@ -9,6 +9,7 @@ editor: ''
 tags: ''
 ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,11 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: d195d808e07b872c11379f13b6e89794da39f70e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d4e06c7332c12ed26afbf71d1b307c6a6fb2a55b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-for-the-azure-ad-graph-api"></a>Azure AD 图形 API 快速入门
 Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程访问权限。 应用程序可以使用 Azure AD 图形 API 对目录数据和对象执行创建、读取、更新和删除 (CRUD) 操作。 例如，可以使用 Azure AD 图形 API 创建新用户、查看或更新用户的属性、更改用户的密码、检查基于角色的访问的组成员身份、禁用或删除用户。 有关 Azure AD 图形 API 功能和应用方案的详细信息，请参阅 [Azure AD 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) 和 [Azure AD 图形 API 先决条件](https://msdn.microsoft.com/library/hh974476.aspx)。 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 3e590df66f84cd88ba7ba251373c14a44a94ca77
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: dfd29e0956793cf776b9c0ea5ddbd4689ebcb015
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>故障排除：Azure 站点到站点 VPN 连接无法建立连接并停止工作
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/30/2018
     
     ![网关概述](media\vpn-gateway-troubleshoot-site-to-site-cannot-connect\gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>步骤 1. 检查是否已验证本地 VPN 设备
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>步骤 1。 检查是否已验证本地 VPN 设备
 
 1. 检查是否使用的是[已验证的 VPN 设备和操作系统版本](vpn-gateway-about-vpn-devices.md#devicetable)。 如果设备是未经验证的 VPN 设备，你可能需要与设备制造商联系，了解是否存在兼容性问题。
 

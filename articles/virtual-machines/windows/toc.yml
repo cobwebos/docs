@@ -102,14 +102,6 @@
           href: disk-scalability-targets.md
         - name: 磁盘的备份和灾难恢复
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: 如何启用写入加速器
-          href: how-to-enable-write-accelerator.md
-        - name: 对附加的 VHD 进行故障排除
-          items:
-            - name: 存储资源删除错误
-              href: storage-resource-deletion-errors.md
-            - name: 附加 VHD 的 VM 意外重启
-              href: unexpected-reboots-attached-vhds.md
     - name: 网络
       href: network-overview.md
     - name: 自动缩放应用程序
@@ -306,6 +298,8 @@
           href: mount-azure-file-storage.md
         - name: 使用模板部署磁盘
           href: using-managed-disks-template-deployments.md
+        - name: 启用写入加速器
+          href: how-to-enable-write-accelerator.md
         - name: 迁移到托管磁盘
           href: migrate-to-managed-disks.md
           items:
@@ -449,6 +443,12 @@
           href: troubleshoot-vm-by-use-nested-virtualization.md
         - name: 在脱机模式下安装 VM 代理
           href: install-vm-agent-offline.md
+        - name: 对附加的 VHD 进行故障排除
+          items:
+            - name: 存储资源删除错误
+              href: storage-resource-deletion-errors.md
+            - name: 附加 VHD 的 VM 意外重启
+              href: unexpected-reboots-attached-vhds.md
 - name: 引用
   items:
     - name: Azure CLI

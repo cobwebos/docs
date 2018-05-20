@@ -102,6 +102,7 @@
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
+## [管理个人数据](resource-manager-personal-data.md)
 ## [限制请求](resource-manager-request-limits.md)
 ## [跟踪异步操作](resource-manager-async-operations.md)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)

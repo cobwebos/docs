@@ -1,13 +1,13 @@
 ---
-title: "连接工厂解决方案概述 - Azure | Microsoft Docs"
-description: "介绍 Azure IoT 套件连接工厂预配置解决方案。"
-services: 
+title: 连接工厂解决方案概述 - Azure | Microsoft Docs
+description: 介绍了 Azure IoT 连接工厂解决方案加速器。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: hero-article
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: bd68859e3837f7e5adbe911518631cb7abc2c2ce
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c5fe6cf6dff6fd8951a949761739cb12f98834bf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>连接工厂预配置解决方案入门
+# <a name="get-started-with-the-connected-factory-solution-accelerator"></a>连接工厂解决方案加速器入门
 
-Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多项 Azure IoT 服务，提供可实现常见 IoT 商业应用场景的端到端解决方案。 连接工厂预配置解决方案可连接并监视工业设备。 可以使用此解决方案分析来自设备的数据流并提高运营效率和盈利率。
+Azure IoT IoT 解决方案加速器[解决方案加速器][lnk-preconfigured-solutions]结合了多项 Azure IoT 服务，提供了可实现常见 IoT 商业应用场景的端到端解决方案。 连接工厂解决方案加速器可连接并监视工业设备。 可以使用此解决方案分析来自设备的数据流并提高运营效率和盈利率。
 
-本教程演示如何预配连接工厂预配置解决方案。 此外还将逐步讲解预配置解决方案的基本功能。 可以通过随预配置解决方案一起部署的解决方案*仪表板* 来访问其中的多项功能：
+本教程演示如何预配连接工厂解决方案加速器。 此外还将逐步讲解解决方案加速器的基本功能。 可以通过随解决方案加速器一起部署的解决方案仪表板来访问其中的多项功能：
 
-![连接工厂预配置解决方案仪表板][img-cf-home]
+![连接工厂解决方案加速器仪表板][img-cf-home]
 
-若要完成本教程，需要一个有效的 Azure 订阅。
+需要有效的 Azure 订阅才能完成此教程。
 
 > [!NOTE]
 > 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用][lnk_free_trial]。
@@ -38,7 +38,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 1. 使用 Azure 帐户凭据登录 azureiotsuite.com，并单击“+”创建解决方案。
 2. 在“连接工厂”磁贴上单击“选择”。
-3. 为连接工厂预配置解决方案输入**解决方案名称**。
+3. 为连接工厂解决方案加速器输入“解决方案名称”。
 4. 选择要用于预配解决方案的“订阅”和“区域”。
 5. 单击“创建解决方案”  开始预配过程。 此过程通常需要数分钟的运行时间。
 
@@ -50,13 +50,13 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 4. 单击磁贴，会在右边窗格中看到解决方案的详细信息。
 
 > [!NOTE]
-> 如果在部署预配置解决方案时遇到问题，请查看 [azureiotsuite.com 站点上的权限][lnk-permissions]和[连接工厂常见问题](iot-suite-faq-cf.md)。 如果问题仍然存在，请在[门户][lnk-portal]中创建服务票证。
+> 如果在部署解决方案加速器时遇到问题，请查看 [azureiotsuite.com 站点上的权限][lnk-permissions]和[连接工厂常见问题解答](iot-suite-faq-cf.md)。 如果问题仍然存在，请在[门户][lnk-portal]中创建服务票证。
 
 是否有你预期会看到但没有列出的解决方案详细信息？ 请在[用户之声](https://feedback.azure.com/forums/321918-azure-iot)中提供功能建议。
 
 ## <a name="scenario-overview"></a>方案概述
 
-部署连接工厂预配置解决方案时，可以通过预先填充在其中的资源来逐步执行常见的工业方案。 在本方案中，数个连接到解决方案的工厂将报告计算设备综合效率 (OEE) 和关键性能指标 (KPI) 所需的数据值。 以下部分介绍了如何：
+部署连接工厂解决方案加速器时，可以通过预先填充在其中的资源来逐步执行常见的工业方案。 在本方案中，数个连接到解决方案的工厂将报告计算设备综合效率 (OEE) 和关键性能指标 (KPI) 所需的数据值。 以下部分介绍了如何：
 
 * 监视工厂、生产线、装配站 OEE 和 KPI 值
 * 使用 Azure 时序见解分析从这些设备生成的遥测数据
@@ -68,13 +68,13 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 该解决方案仪表板用于管理部署的解决方案。 它以分层方式表示全局工厂配置。 例如，可以查看 OEE 和 KPI，并针对遥测和操作警报发布新节点。
 
-1. 当预配完成且预配置解决方案的磁贴指示“就绪”时，请选择“启动”，在新的选项卡中打开连接工厂解决方案门户。
+1. 当预配完成且解决方案加速器的磁贴指示“就绪”时，请选择“启动”，在新的选项卡中打开连接工厂解决方案门户。
 
-    ![启动预配置解决方案][img-launch-solution]
+    ![启动解决方案加速器][img-launch-solution]
 
 1. 默认情况下，此解决方案门户会显示*仪表板*。 若要导航到门户的其他区域，请使用页面左侧的菜单。
 
-    ![连接工厂预配置解决方案仪表板][cf-img-menu]
+    ![连接工厂解决方案加速器仪表板][cf-img-menu]
 
 仪表板会显示以下信息：
 
@@ -88,7 +88,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 “工厂位置”面板显示解决方案中所有工厂的地理位置、状态以及当前的生产配置。 可以从位置列表导航到解决方案层次结构中的其他级别。 列表中的行是超链接，链接该位置的生产线的详细信息。 然后，可以通过这些超链接深入了解生产线详细信息，最深可达装配站级别视图。 也可对列表进行筛选。
 
-![连接工厂预配置解决方案工厂][cf-img-factories]
+![连接工厂解决方案加速器工厂][cf-img-factories]
 
 1. “工厂面板”显示此解决方案的工厂列表。
 
@@ -106,7 +106,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 如果订阅可以访问必应地图 API，则“工厂”视图会显示解决方案中所有工厂的地理位置和状态。 单击地图上显示的位置即可了解位置详细信息。
 
-![连接工厂预配置解决方案地图][cf-img-map]
+![连接工厂解决方案加速器地图][cf-img-map]
 
 ## <a name="view-alarms"></a>查看警报
 
@@ -121,10 +121,10 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 * 通过在设备上调用 OPC UA 方法来消除警报原因。
 * 阻止使用默认操作。
 
-    ![连接工厂预配置解决方案警报][cf-img-alerts]
+    ![连接工厂解决方案加速器警报][cf-img-alerts]
 
 > [!NOTE]
-> 这些警报是根据规则生成的，而这些规则是在预配置解决方案的配置文件中指定的。 这些规则可以在 OEE 或 KPI 数据或 OPC UA 节点值超出其配置的阈值时生成警报。
+> 这些警报是根据规则生成的，而这些规则是在解决方案加速器的配置文件中指定的。 这些规则可以在 OEE 或 KPI 数据或 OPC UA 节点值超出其配置的阈值时生成警报。
 
 1. “警报”面板显示在此解决方案中生成的警报。
 
@@ -138,23 +138,23 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 OEE 使用与生产相关的关键运营参数来评价制造过程的效率。 OEE 是一项工业标准度量指标，其计算方式是将可用率、性能等级和成品率相乘：OEE = 可用率 x 性能等级 x 成品率。
 
-![连接工厂预配置解决方案 OEE][cf-img-oee]
+![连接工厂解决方案加速器 OEE][cf-img-oee]
 
 1. 若要查看层次结构中任意级别的 OEE，请导航到所需的特定视图。 该视图的 OEE 以及组成 OEE 百分比的每个元素会显示在面板中。
 
 2. 若要进一步分析层次结构数据中任意级别的 OEE，请单击 OEE、可用性、性能或成品百分比。 此时会出现一个带时序见解可视化效果的上下文面板，其中会显示过去 1 小时、过去 24 小时以及过去 7 天的数据。
 
-    ![连接工厂预配置解决方案 TSI 可视化效果][cf-img-tsi-visualization]
+    ![连接工厂解决方案加速器 TSI 可视化效果][cf-img-tsi-visualization]
 
 3. 若要进一步分析警报数据，请单击警报面板中的图。 此操作会打开时序见解资源管理器环境。
 
-    ![连接工厂预配置解决方案 TSI 资源管理器][cf-img-tsi-explorer]
+    ![连接工厂解决方案加速器 TSI 资源管理器][cf-img-tsi-explorer]
 
 ## <a name="view-key-performance-indicators"></a>查看关键性能指标
 
 此解决方案提供两个关键性能指标：“每小时生产的设备数”和“能耗（千瓦时）”。
 
-![连接工厂预配置解决方案 KPI][cf-img-kpi]
+![连接工厂解决方案加速器 KPI][cf-img-kpi]
 
 1. 若要查看层次结构中任意级别的“每小时生产的设备数”或“能耗”，请导航到所需的特定视图。 在面板中显示的“每小时生产的设备数”和“能耗”。
 
@@ -174,13 +174,13 @@ OEE 使用与生产相关的关键运营参数来评价制造过程的效率。 
 
 2. 此时会显示筛选器面板。
 
-    ![连接工厂预配置解决方案筛选器][cf-img-alert-filter]
+    ![连接工厂解决方案加速器筛选器][cf-img-alert-filter]
 
 3. 选择所需的筛选器。 也可在筛选字段中键入自定义文本。
 
 4. 然后应用筛选器。 筛选器状态也通过漏斗图显示在仪表板中，漏斗图在工厂和警报表中显示。
 
-    ![连接工厂预配置解决方案筛选器][cf-img-alert-filter-funnel]
+    ![连接工厂解决方案加速器筛选器][cf-img-alert-filter-funnel]
 
     > [!NOTE]
     > 活动筛选器不影响显示的 OEE 和 KPI 值，仅筛选列表内容。
@@ -189,27 +189,27 @@ OEE 使用与生产相关的关键运营参数来评价制造过程的效率。 
 
 ## <a name="browse-an-opc-ua-server"></a>浏览 OPC UA 服务器
 
-部署预配置的解决方案时，会自动预配模拟 OPC UA 服务器，此类服务器可以通过解决方案浏览器进行浏览。 这些服务器是模拟 OPC UA 服务器。 模拟服务器可让你试验预配置解决方案，而不需要部署实际的物理服务器。 若要将实际 OPC UA 服务器连接到解决方案，请参阅[将 OPC UA 设备连接到连接工厂预配置解决方案][lnk-connect-cf]教程。
+部署解决方案加速器时，会自动预配模拟 OPC UA 服务器，此类服务器可以通过解决方案浏览器进行浏览。 这些服务器是模拟 OPC UA 服务器。 模拟服务器可让你轻松试验解决方案加速器，而不需要部署实际的物理服务器。 要将实际 OPC UA 服务器连接到解决方案，请参阅教程[将 OPC UA 设备连接到连接工厂解决方案加速器][lnk-connect-cf]。
 
 1. 单击仪表板导航栏中的**浏览器图标**。
 
-    ![连接工厂预配置解决方案服务器浏览器][cf-img-server-browser]
+    ![连接工厂解决方案加速器服务器浏览器][cf-img-server-browser]
 
-2. 从预配置的列表中选择一台服务器。 该列表显示在预配置解决方案中部署的服务器。
+2. 从预配置的列表中选择一台服务器。 此列表显示在解决方案加速器中部署的服务器。
 
-    ![连接工厂预配置解决方案服务器选择][cf-img-server-choice]
+    ![连接工厂解决方案加速器服务器选择][cf-img-server-choice]
 
 3. 单击“连接”，此时会显示一个安全对话框。 就此模拟来说，可以安全地单击“继续”
 
 4. 单击服务器树中的任意节点即可将其展开。 正在发布遥测的节点旁边有一个对勾标记。
 
-    ![连接工厂预配置解决方案服务器树][cf-img-server-tree]
+    ![连接工厂解决方案加速器服务器树][cf-img-server-tree]
 
 5. 右键单击某个项，对该节点执行读取、写入、发布或调用操作。 能够使用哪些操作取决于权限和节点的属性。 读取选项会显示一个上下文面板，其中显示特定节点的值。 写入选项会显示一个上下文面板，可以在其中输入新值。 调用选项会显示一个节点，可以在其中输入调用的参数。
 
 ## <a name="publish-a-node"></a>发布节点
 
-浏览“模拟 OPC UA 服务器”时，还可选择发布新节点。 可以在解决方案中分析这些节点的遥测。 使用这些模拟 OPC UA 服务器，可以轻松地试验预配置解决方案，不需部署实际的物理设备。
+浏览“模拟 OPC UA 服务器”时，还可选择发布新节点。 可以在解决方案中分析这些节点的遥测。 使用这些模拟 OPC UA 服务器，可以轻松地试验解决方案加速器，不需部署实际的物理设备。
 
 1. 浏览到要发布的 OPC UA 服务器浏览器树中的某个节点。
 
@@ -225,7 +225,7 @@ OEE 使用与生产相关的关键运营参数来评价制造过程的效率。 
 
 ## <a name="command-and-control"></a>命令和控制
 
-连接工厂允许直接从云对工业设备发出命令并进行控制。 可以通过此功能来响应设备生成的警报。 例如，可以从云向设备发送命令。 可以在 OPC UA 服务器浏览器树的 **StationCommands** 节点中查找可用命令。 在本方案中，需打开慕尼黑生产线装配站的泄压阀。 若要使用命令和控制功能，必须通过“管理员”角色完成预配置解决方案的部署。
+连接工厂允许直接从云对工业设备发出命令并进行控制。 可以通过此功能来响应设备生成的警报。 例如，可以从云向设备发送命令。 可以在 OPC UA 服务器浏览器树的 **StationCommands** 节点中查找可用命令。 在本方案中，需打开慕尼黑生产线装配站的泄压阀。 要使用命令和控制功能，必须具有“管理员”角色，可部署解决方案加速器。
 
 1. 浏览到 OPC UA 服务器浏览器树中的 **StationCommands** 节点。
 
@@ -235,39 +235,39 @@ OEE 使用与生产相关的关键运营参数来评价制造过程的效率。 
 
 4. 选择“调用”。
 
-    ![连接工厂预配置解决方案调用命令][cf-img-call-command]
+    ![连接工厂解决方案加速器调用命令][cf-img-call-command]
 
 5. 此时会显示一个上下文面板，告知要调用的具体方法，以及适用的参数详细信息。
 
 6. 选择“调用”。
 
-    ![连接工厂预配置解决方案调用上下文][cf-img-call-context]
+    ![连接工厂解决方案加速器调用上下文][cf-img-call-context]
 
 7. 上下文面板会进行更新，告知你该方法调用成功。 可以通过读取压力节点的值（在调用后已更新）来验证调用是否成功。
 
-    ![连接工厂预配置解决方案调用成功][cf-img-call-success]
+    ![连接工厂解决方案加速器调用成功][cf-img-call-success]
 
 ## <a name="behind-the-scenes"></a>幕后
 
-部署预配置解决方案时，部署过程会在选择的 Azure 订阅中创建多个资源。 可以在 Azure [门户][lnk-portal]中查看这些资源。 部署过程会创建一个 **资源组**，其名称基于为预配置解决方案选择的名称：
+部署解决方案加速器时，部署过程会在所选 Azure 订阅中创建多个资源。 可以在 Azure [门户][lnk-portal]中查看这些资源。 部署过程会创建一个“资源组”，其名称基于为解决方案加速器选择的名称：
 
-![Azure 门户中的预配置解决方案][img-cf-portal]
+![Azure 门户中的解决方案加速器][img-cf-portal]
 
 可以查看每个资源的设置，方法是在资源组中的资源列表中选择该资源。
 
-也可以查看预配置解决方案的源代码。 连接工厂预配置解决方案源代码位于 [azure-iot-connected-factory][lnk-cfgithub] GitHub 存储库中：
+也可以查看解决方案加速器的源代码。 连接工厂解决方案加速器源代码位于 [azure-iot-connected-factory][lnk-cfgithub] GitHub 存储库中：
 
-完成后，可在 [azureiotsuite.com][lnk-azureiotsuite] 站点的 Azure 订阅中删除预配置解决方案。 利用该站点，可以轻松地删除在创建预配置解决方案时预配的所有资源。
+完成后，可在 [azureiotsuite.com][lnk-azureiotsuite] 站点的 Azure 订阅中删除解决方案加速器。 利用该站点，可以轻松地删除在创建解决方案加速器时预配的所有资源。
 
 > [!NOTE]
-> 要确保删除与预配置解决方案相关的所有内容，请在 [azureiotsuite.com][lnk-azureiotsuite] 站点中将其删除。 不要删除门户中的资源组。
+> 要确保删除与解决方案加速器相关的所有内容，请在 [azureiotsuite.com][lnk-azureiotsuite] 站点中将其删除。 不要删除门户中的资源组。
 
 ## <a name="next-steps"></a>后续步骤
 
-部署正常工作的预配置解决方案后，可以继续通过阅读以下文章开始使用 IoT 套件：
+部署正常工作的解决方案加速器后，可以继续通过阅读以下文章开始使用 IoT 解决方案加速器：
 
-* [连接工厂预配置解决方案演练][lnk-rm-walkthrough]
-* [将设备连接到连接工厂预配置解决方案][lnk-connect-cf]
+* [连接工厂解决方案加速器演练][lnk-rm-walkthrough]
+* [将设备连接到连接工厂解决方案加速器][lnk-connect-cf]
 * [azureiotsuite.com 站点权限][lnk-permissions]
 
 [img-cf-home]:media/iot-suite-connected-factory-overview/cf-dashboard.png
@@ -293,7 +293,7 @@ OEE 使用与生产相关的关键运营参数来评价制造过程的效率。 
 [cf-img-alert-filter-funnel]:media/iot-suite-connected-factory-overview/cf-filter-funnel.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfigured-solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-portal]: http://portal.azure.com/
 [lnk-cfgithub]: https://github.com/Azure/azure-iot-connected-factory

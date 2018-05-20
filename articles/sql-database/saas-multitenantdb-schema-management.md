@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.reviewers: billgib
 ms.author: genemi
-ms.openlocfilehash: 474b7842c8295be0dd30c2c03b92dc68ce40630d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dc70fe43c63d6b77d4a122f196f59fe51573b7aa
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>在使用分片多租户 SQL 数据库的 SaaS 应用程序中管理架构
 
@@ -172,5 +172,5 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 > * 更新所有租户数据库中的引用数据
 > * 在所有租户数据库中的表上创建索引
 
-接下来，试用 [临时报表教程] (saas-multitenantdb-adhoc-reporting.md) 了解如何跨租户数据库运行分布式查询。
+接下来，请试用[临时报表教程](saas-multitenantdb-adhoc-reporting.md)，了解如何跨租户数据库运行分布式查询。
 

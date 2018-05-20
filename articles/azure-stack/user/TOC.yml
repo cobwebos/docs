@@ -93,12 +93,10 @@
               href: azure-stack-kv-sample-app.md
         - name: 解决方案模板
           items:
-            - name: 解决方案模板
-              items:
-                - name: 部署 Service Fabric 群集
-                  href: azure-stack-solution-template-service-fabric-cluster.md
-                - name: 部署实现 Kubernetes 群集
-                  href: azure-stack-solution-template-kubernetes-deploy.md
+            - name: 部署 Service Fabric 群集
+              href: azure-stack-solution-template-service-fabric-cluster.md
+            - name: 部署实现 Kubernetes 群集
+              href: azure-stack-solution-template-kubernetes-deploy.md
     - name: 生成应用
       items:
         - name: 为 Azure Stack 进行开发

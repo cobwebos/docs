@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 70a2118ef0e26043f9f6a9cceb9d4a533d343556
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 9d09fb60722865a75ea0825f5ca54f792642980a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure Stack 的 PowerShell  
+# <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure Stack 的 PowerShell
 
-需要安装与 Azure Stack 兼容的 Azure PowerShell 模块才能使用 Azure Stack。 本指南逐步演示安装适用于 Azure Stack 的 PowerShell 的步骤。 可以通过 Azure Stack 开发工具包或者基于 Windows 的外部客户端（如果已通过 VPN 建立连接）执行本文中所述的步骤。
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-本文提供有关安装适用于 Azure Stack 的 PowerShell 的详细说明。 但是，若要快速安装和配置 PowerShell，可以使用“通过 PowerShell 启动和运行”一文中提供的脚本。 
+需要安装与 Azure Stack 兼容的 Azure PowerShell 模块才能使用 Azure Stack。 本文将指导您完成安装适用于 Azure 堆栈 PowerShell 所需的步骤。 可以通过 Azure Stack 开发工具包或者基于 Windows 的外部客户端（如果已通过 VPN 建立连接）执行本文中所述的步骤。
+
+本文提供了有关安装 PowerShell 的详细的说明。 但是，如果你想要快速安装和配置 PowerShell，你可以使用"使用 PowerShell 获取启动并正在运行"文章中提供的脚本。
 
 > [!NOTE]
 > 以下步骤需要 PowerShell 5.0。 若要检查版本，请运行 $PSVersionTable.PSVersion 并比较“Major”（主要）版本。
@@ -41,24 +43,22 @@ Set-PSRepository `
 
 在安装所需版本之前，请务必卸载任何现有 Azure PowerShell 模块。 可使用以下两种方法之一卸载现有版本：
 
-* 若要卸载现有的 PowerShell 模块，请登录到开发工具包或基于 Windows 的外部客户端（如果打算建立 VPN 连接）。 关闭所有活动的 PowerShell 会话，然后运行以下命令： 
+* 若要卸载现有的 PowerShell 模块，请登录到开发工具包或基于 Windows 的外部客户端（如果打算建立 VPN 连接）。 关闭所有活动的 PowerShell 会话，然后运行以下命令：
 
    ```powershell
    Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
    ```
 
-* 登录到开发工具包或基于 Windows 的外部客户端（如果打算建立 VPN 连接）。 从 `C:\Program Files (x86)\WindowsPowerShell\Modules` 和 `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` 文件夹中删除以“Azure”开头的所有文件夹。 删除这些文件夹会从“AzureStackAdmin”和“global”用户范围中删除所有现有的 PowerShell 模块。 
+* 登录到开发工具包或基于 Windows 的外部客户端（如果打算建立 VPN 连接）。 从 `C:\Program Files (x86)\WindowsPowerShell\Modules` 和 `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` 文件夹中删除以“Azure”开头的所有文件夹。 删除这些文件夹会从“AzureStackAdmin”和“global”用户范围中删除所有现有的 PowerShell 模块。
 
-以下部分介绍安装适用于 Azure Stack 的 PowerShell 所要执行的步骤。 可在已联网、部分联网或离线场景中运行的 Azure Stack 上安装 PowerShell。 
+以下部分介绍安装适用于 Azure Stack 的 PowerShell 所要执行的步骤。 可在已联网、部分联网或离线场景中运行的 Azure Stack 上安装 PowerShell。
 
-## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>在联网场景中（已建立 Internet 连接）安装 PowerShell
+## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>在连接方案中安装 PowerShell （具有 Internet 连接）
 
 通过 API 版本配置文件安装与 Azure Stack 兼容的 AzureRM 模块。 Azure Stack 需要 **2017-03-09-profile** API 版本配置文件（可通过安装 AzureRM.Bootstrapper 模块获取）。 有关 API 版本配置文件及其提供的 cmdlet 的详细信息，请参阅[管理 API 版本配置文件](azure-stack-version-profiles-powershell.md)。 除了 AzureRM 模块以外，还应安装 Azure Stack 特定的 Azure PowerShell 模块。 运行以下 PowerShell 脚本，在开发工作站上安装这些模块：
 
-
-
   ```powershell
-  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
+  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
   Install-Module `
     -Name AzureRm.BootStrapper
 
@@ -77,6 +77,7 @@ Set-PSRepository `
   Get-Module `
     -ListAvailable | where-Object {$_.Name -like “Azure*”}
   ```
+
   如果安装成功，输出中会显示 AzureRM 和 Azure Stack 模块。
 
 ## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>在离线或部分联网的场景中（Internet 连接受到限制）安装 PowerShell
@@ -102,12 +103,12 @@ Set-PSRepository `
      -Name AzureStack `
      -Path $Path `
      -Force `
-     -RequiredVersion 1.2.11 
+     -RequiredVersion 1.2.11
    ```
 
 2. 将下载的包复制到 USB 设备。
 
-3. 登录到开发工具包，将包从 USB 设备复制到开发工具包中的某个位置。 
+3. 登录到开发工具包，将包从 USB 设备复制到开发工具包中的某个位置。
 
 4. 接下来，必须将此位置注册为默认存储库，并从此存储库安装 AzureRM 和 AzureStack 模块：
 
@@ -125,11 +126,11 @@ Set-PSRepository `
      -Repository $RepoName
 
    Install-Module AzureStack `
-     -Repository $RepoName 
+     -Repository $RepoName
    ```
 
 ## <a name="next-steps"></a>后续步骤
 
-* [从 GitHub 下载 Azure Stack 工具](azure-stack-powershell-download.md)  
-* [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)  
-* [在 Azure Stack 中管理 API 版本配置文件](azure-stack-version-profiles-powershell.md)  
+* [从 GitHub 下载 Azure Stack 工具](azure-stack-powershell-download.md)
+* [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)
+* [在 Azure Stack 中管理 API 版本配置文件](azure-stack-version-profiles-powershell.md)

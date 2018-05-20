@@ -1,62 +1,63 @@
 ---
-title: "Azure 基础结构备份服务堆栈的备份和数据恢复 |Microsoft 文档"
-description: "你可以备份和还原配置和使用基础结构备份服务的服务数据。"
+title: 使用基础结构备份服务对 Azure Stack 进行备份和数据恢复 | Microsoft Docs
+description: 可以使用基础结构备份服务备份和还原配置和服务数据。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 9B51A3FB-EEFC-4CD8-84A8-38C52CFAD2E4
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 4/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 84ce0d72ff826ecb3f5deff165db00a1e50ae89d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.reviewer: hectorl
+ms.openlocfilehash: 8c8037fe3936485082299250e603b2f3ea3859b9
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Azure 基础结构备份服务堆栈的备份和数据恢复
+# <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>使用基础结构备份服务对 Azure Stack 进行备份和数据恢复
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-你可以备份和还原配置和使用基础结构备份服务的服务数据。 每个 Azure 堆栈安装包含该服务的实例。 你可以使用由 Azure 堆栈云重新部署的服务创建的备份还原标识、 安全性和 Azure 资源管理器数据。
+可以使用基础结构备份服务备份和还原配置和服务数据。 每个 Azure Stack 安装均包含该服务的实例。 可以使用该服务创建的备份重新部署 Azure Stack 云，以还原标识、安全性和 Azure 资源管理器数据。
 
-当你准备好你的云投入生产，你可以启用备份。 不要启用备份，如果您计划执行测试和验证的时间很长时间。
+准备好将云投入生产后，可以启用备份。 如果计划执行测试和验证很长时间，则不要启用备份。
 
-使备份服务之前，请确保你有[就地要求](#verify-requirements-for-the-infrastructure-backup-service)。
+在启用备份服务之前，请确保已[符合要求](#verify-requirements-for-the-infrastructure-backup-service)。
 
 > [!Note]  
-> 基础结构备份服务不包括用户数据和应用程序。 请参阅以下文章获得说明备份和还原[应用程序服务](https://aka.ms/azure-stack-app-service)， [SQL](https://aka.ms/azure-stack-ms-sql)，和[MySQL](https://aka.ms/azure-stack-mysql)资源提供程序和关联的用户数据...
+> 基础结构备份服务不包括用户数据和应用程序。 请参阅以下文章，获取有关备份和还原[应用服务](https://aka.ms/azure-stack-app-service)、[SQL](https://aka.ms/azure-stack-ms-sql) 和 [MySQL](https://aka.ms/azure-stack-mysql) 资源提供程序及关联的用户数据的说明。
 
 ## <a name="the-infrastructure-backup-service"></a>基础结构备份服务
 
-服务包含以下功能。
+该服务包含以下功能。
 
 | 功能                                            | 说明                                                                                                                                                |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 备份基础结构服务                     | 跨 Azure 堆栈中的基础结构服务的子集协调备份。 如果没有灾难，则可以重新部署的一部分还原数据。 |
-| 压缩和加密的导出的备份数据 | 备份数据进行压缩和加密系统之前导出到由管理员提供的外部存储位置。                |
-| 监视备份作业                              | 系统通知时备份作业的失败和修正步骤。                                                                                                |
+| 备份基础结构服务                     | 协调 Azure Stack 中基础结构服务的一个子集的备份。 如果发生灾难，可以在重新部署过程中还原数据。 |
+| 压缩和加密导出的备份数据 | 将备份数据导出到管理员提供的外部存储位置之前，系统会对其进行压缩和加密。                |
+| 备份作业监视                              | 当备份作业失败和需要修正步骤时，系统会发出通知。                                                                                                |
 | 备份管理体验                       | 备份 RP 支持启用备份。                                                                                                                         |
-| 云恢复                                     | 如果没有灾难性数据丢失，可以使用备份还原作为部署的一部分的核心 Azure 堆栈信息。                                 |
+| 云恢复                                     | 如果发生灾难性数据丢失，可以在部署过程中使用备份还原核心 Azure Stack 信息。                                 |
 
 ## <a name="verify-requirements-for-the-infrastructure-backup-service"></a>验证基础结构备份服务的要求
 
 - **存储位置**  
-  你需要从 Azure 堆栈中可以包含七个备份可访问文件共享。 每个备份都约为 10 GB。 你的共享应能够存储 140 GB 的备份。 有关 Azure 堆栈基础结构备份服务选择的存储位置的详细信息，请参阅[备份控制器要求](azure-stack-backup-reference.md#backup-controller-requirements)。
+  需要可从 Azure Stack 访问的文件共享，其中可以包含七个备份。 每个备份大约为 10 GB。 共享应能够存储 140 GB 的备份。 有关为 Azure Stack 基础结构备份服务选择存储位置的详细信息，请参阅[备份控制器要求](azure-stack-backup-reference.md#backup-controller-requirements)。
 - **凭据**  
-  你需要的域用户帐户和凭据，例如，你可能使用 Azure 堆栈管理员凭据。
+  需要域用户帐户和凭据，例如，可以使用 Azure Stack 管理员凭据。
 - **加密密钥**  
-  使用此密钥加密备份文件。 请确保将此密钥存储在安全的位置。 一旦你首次设置此项，或在将来轮换密钥，你无法查看此接口从此密钥。 若要生成预共享的密钥的详细说明，请按照脚本在[使用 PowerShell 的 Azure 堆栈启用备份](http://azure-stack-backup-enable-backup-powershell.md)。
+  使用此密钥加密备份文件。 请确保将此密钥存储在安全位置。 首次设置此密钥或将来轮换密钥后，都无法从此界面查看此密钥。 有关生成预共享密钥的详细说明，请按照[使用 PowerShell 为 Azure Stack 启用备份](http://azure-stack-backup-enable-backup-powershell.md)中的脚本进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[从管理门户的 Azure 堆栈启用备份](azure-stack-backup-enable-backup-console.md)。
-- 了解如何[使用 PowerShell 的 Azure 堆栈启用备份](azure-stack-backup-enable-backup-powershell.md)。
-- 了解如何[备份 Azure 堆栈](azure-stack-backup-back-up-azure-stack.md )
+- 了解如何[从管理门户为 Azure Stack 启用备份](azure-stack-backup-enable-backup-console.md)。
+- 了解如何[使用 PowerShell 为 Azure Stack 启用备份](azure-stack-backup-enable-backup-powershell.md)。
+- 了解如何[备份 Azure Stack](azure-stack-backup-back-up-azure-stack.md )
 - 了解如何[从灾难性数据丢失中恢复](azure-stack-backup-recover-data.md)

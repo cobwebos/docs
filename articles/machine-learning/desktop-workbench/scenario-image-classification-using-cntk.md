@@ -237,7 +237,6 @@ Azure 机器训练 Workbench 将每次运行的历史记录存储在 Azure 上�
 <img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/> </p>
 
 <p align="center">
-
 <img src="media/scenario-image-classification-using-cntk/run_comparison2b.jpg" alt="alt text" width="700"/>
 </p>
 

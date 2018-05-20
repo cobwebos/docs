@@ -3,17 +3,17 @@ title: 将 Azure 文件与 AKS 配合使用
 description: 将 Azure 磁盘与 AKS 配合使用
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 163db8fdaecefbf51174392ba37039115cdb91c8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e0e62d37fbcc8f296deaee8e0f6658c0f72321ad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="volumes-with-azure-files"></a>含 Azure 文件的卷
 

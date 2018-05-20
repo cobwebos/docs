@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell 示例 | Microsoft Docs"
-description: "了解可用于 Azure API 管理的 Azure PowerShell 脚本。"
+title: Azure PowerShell 示例 | Microsoft Docs
+description: 了解可用于 Azure API 管理的 Azure PowerShell 脚本。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: sample
 ms.date: 10/09/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: a24428db2e7b7058d8a662896e16fd6ada1d2155
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 6356eb7ce7d34e973607b0588a9dc2854726f5d3
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>适用于 API 管理的 Azure PowerShell 示例
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure API 管理中的 API 模板 | Microsoft 文档"
-description: "了解如何在 Azure API 管理中自定义开发人员门户中的 API 页面的内容。"
+title: Azure API 管理中的 API 模板 | Microsoft 文档
+description: 了解如何在 Azure API 管理中自定义开发人员门户中的 API 页面的内容。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 2317047165f49de8c42c41dc864f0752df4af068
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 9abbdda2300fd8d51bec372624f0349455cf2b01
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |apis|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体的集合。|对当前用户可见的 API。|  
   
@@ -339,7 +339,7 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |apiId|字符串|当前 API 的 ID。|  
 |apiName|字符串|API 的名称。|  

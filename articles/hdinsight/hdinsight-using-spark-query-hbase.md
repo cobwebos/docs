@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: acad1058cbff2099a67603cc547a19d6cac022be
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7cfc7f586e8a92c29736a7c4cff0b12796be430a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-spark-to-read-and-write-hbase-data"></a>使用 Spark 读取和写入 HBase 数据
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 04/16/2018
 1. 使用 SSH 连接到 Spark 集群的头节点。
 2. 启动 spark shell，指定 Spark HBase 连接器包：
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11
+        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/coroups/public/
 
 3. 保持此 Spark Shell 实例处于打开状态，并继续执行下一步操作。
 

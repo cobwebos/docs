@@ -11,6 +11,7 @@
 ## [在 Azure 门户（预览）中创建模型](analysis-services-create-model-portal.md)
 
 # 概念
+## [使用服务主体进行自动化](analysis-services-service-principal.md)
 ## [支持的数据源](analysis-services-datasource.md)
 ## [连接到本地数据源](analysis-services-gateway.md)
 ## [连接到服务器](analysis-services-connect.md)

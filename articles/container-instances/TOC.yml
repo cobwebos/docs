@@ -21,6 +21,12 @@
       href: container-instances-tutorial-prepare-acr.md
     - name: 3 - 部署应用程序
       href: container-instances-tutorial-deploy-app.md
+- name: 示例
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+    - name: 资源管理器模板
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance'
 - name: 概念
   items:
     - name: 配额和区域限制
@@ -31,22 +37,28 @@
       href: container-instances-container-groups.md
 - name: 操作指南
   items:
-    - name: 部署多容器组
-      href: container-instances-multi-container-group.md
-    - name: 从 Azure 容器注册表部署
-      href: container-instances-using-azure-container-registry.md
-    - name: 执行命令 (exec)
-      href: container-instances-exec.md
-    - name: 运行容器化任务
-      href: container-instances-restart-policy.md
-    - name: 设置环境变量 (env)
-      href: container-instances-environment-variables.md
-    - name: 对部署进行故障排除
-      href: container-instances-troubleshooting.md
-    - name: ACI 上的 Jenkins 生成代理
-      href: container-instances-jenkins.md
-    - name: 监视 CPU 和内存使用情况
-      href: container-instances-monitor.md
+    - name: 部署
+      items:
+        - name: 部署多容器组
+          href: container-instances-multi-container-group.md
+        - name: 从 Azure 容器注册表部署
+          href: container-instances-using-azure-container-registry.md
+        - name: 设置环境变量 (env)
+          href: container-instances-environment-variables.md
+        - name: 对部署进行故障排除
+          href: container-instances-troubleshooting.md
+    - name: 管理
+      items:
+        - name: 执行命令 (exec)
+          href: container-instances-exec.md
+        - name: 监视 CPU 和内存使用情况
+          href: container-instances-monitor.md
+    - name: 运行工作负荷
+      items:
+        - name: 运行容器化任务
+          href: container-instances-restart-policy.md
+        - name: ACI 上的 Jenkins 生成代理
+          href: container-instances-jenkins.md
     - name: 配置数据卷
       items:
         - name: Azure 文件

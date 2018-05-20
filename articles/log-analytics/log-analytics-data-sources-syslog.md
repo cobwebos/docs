@@ -1,8 +1,8 @@
 ---
-title: "收集和分析 OMS Log Analytics 中的 Syslog 消息 | Microsoft Docs"
-description: "Syslog 是普遍适用于 Linux 的事件日志记录协议。 本文介绍如何在 Log Analytics 中配置 Syslog 消息集合以及它们在 OMS 存储库中创建的记录的详细信息。"
+title: 收集和分析 OMS Log Analytics 中的 Syslog 消息 | Microsoft Docs
+description: Syslog 是普遍适用于 Linux 的事件日志记录协议。 本文介绍如何在 Log Analytics 中配置 Syslog 消息集合以及它们在 OMS 存储库中创建的记录的详细信息。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 061c32fe39530f8b67899b1b9e1104e7fe006380
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 011eaf1a4705f9078225b9b871f81b4333b05ee8
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics 中的 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。  安装适用于 Linux 的 OMS 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。  然后，此代理将消息发送到 Log Analytics，其中相应的记录会在 OMS 存储库中创建。  
@@ -31,10 +31,10 @@ Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将�
 ![Syslog 收集](media/log-analytics-data-sources-syslog/overview.png)
 
 ## <a name="configuring-syslog"></a>配置 Syslog
-针对 Linux 的 OMS 代理将仅收集在其配置中指定设施和严重级别的事件。  通过 OMS 门户或通过管理 Linux 代理的配置文件来配置 Syslog。
+针对 Linux 的 OMS 代理将仅收集在其配置中指定设施和严重级别的事件。  通过 Azure 门户或通过管理 Linux 代理的配置文件来配置 Syslog。
 
-### <a name="configure-syslog-in-the-oms-portal"></a>配置 OMS 门户中的 Syslog
-可以从 [Log Analytics 的“设置”中的“数据”](log-analytics-data-sources.md#configuring-data-sources)菜单配置 Syslog。  此配置将传递到每个 Linux 代理上的配置文件。
+### <a name="configure-syslog-in-the-azure-portal"></a>在 Azure 门户中配置 Syslog
+从 [Log Analytics 高级设置中的“数据”菜单](log-analytics-data-sources.md#configuring-data-sources)配置 Syslog。  此配置将传递到每个 Linux 代理上的配置文件。
 
 通过键入设施名称并单击 **+** 可添加新设施。  对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。  不能向筛选消息提供任何其他条件。
 
@@ -185,7 +185,7 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 计算机 |从中收集事件的计算机。 |
+| Computer |从中收集事件的计算机。 |
 | 设施 |定义生成消息的系统部分。 |
 | HostIP |发送消息的系统的 IP 地址。 |
 | HostName |发送消息的系统的名称。 |

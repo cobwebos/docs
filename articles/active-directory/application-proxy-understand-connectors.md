@@ -3,23 +3,23 @@ title: 了解 Azure AD 应用程序代理连接器 | Microsoft 文档
 description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
-ms.author: billmath
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c7f27d3fd8a5785017d580df02007abaac503c39
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/05/2018
 
 若要成功部署应用程序代理，至少需要一个连接器，但我们建议部署两个或更多个连接器来提高弹性。 在 Windows Server 2012 R2 或 2016 计算机上安装连接器。 连接器需要能够与应用程序代理服务以及发布的本地应用程序通信。 
 
-有关连接器服务器的网络要求的详细信息，请参阅[开始使用应用程序代理和安装连接器](active-directory-application-proxy-enable.md)。
+有关连接器服务器的网络要求的详细信息，请参阅[开始使用应用程序代理和安装连接器](manage-apps/application-proxy-enable.md)。
 
 ## <a name="maintenance"></a>维护
 连接器和服务负责处理所有的高可用性任务。 可以动态添加或删除这些连接器和服务。 每当有新请求抵达时，该请求会路由到当前可用的连接器之一。 如果某个连接器暂时不可用，它不会对此流量做出响应。
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="automatic-updates"></a>自动更新
 
-Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代理连接器更新程序服务保持运行，连接器就会自动更新。 如果在服务器上未看到连接器更新程序服务，需要[重新安装连接器](active-directory-application-proxy-enable.md)才能获得所有更新。 
+Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代理连接器更新程序服务保持运行，连接器就会自动更新。 如果在服务器上未看到连接器更新程序服务，需要[重新安装连接器](manage-apps/application-proxy-enable.md)才能获得所有更新。 
 
 如果不想等连接器自动更新，可以执行手动升级。 转到连接器所在服务器上的[连接器下载页](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)，选择“下载”。 此过程启动本地连接器升级。 
 
@@ -123,7 +123,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 通常，连接器部署直截了当，无需经过特殊的配置。 但应当考虑一些特殊条件：
 
-* 限制出站流量的组织必须[打开所需端口](active-directory-application-proxy-enable.md#open-your-ports)。
+* 限制出站流量的组织必须[打开所需端口](manage-apps/application-proxy-enable.md#open-your-ports)。
 * 符合 FIPS 规范的计算机可能需要更改其配置才能允许连接器进程生成和存储证书。
 * 根据网络请求发出过程锁定其环境的组织必须确保启用这两个连接器服务，以访问全部所需的端口和 IP。
 * 在某些情况下，出站正向代理可能会中断双向证书身份验证，导致通信失败。

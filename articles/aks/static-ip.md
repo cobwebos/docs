@@ -3,17 +3,17 @@ title: 将静态 IP 地址用于 Azure Kubernetes 服务 (AKS) 负载均衡器
 description: 将静态 IP 地址用于 Azure Kubernetes 服务 (AKS) 负载均衡器。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 2/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: da1fc4cd31a4b4f13da5b527e2a62e147799bfef
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c250ef3520079f58eea2362212d861fdb134e1af
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>将静态 IP 地址用于 Azure Kubernetes 服务 (AKS) 负载均衡器
 

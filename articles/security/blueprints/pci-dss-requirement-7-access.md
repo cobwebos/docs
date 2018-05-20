@@ -1,9 +1,9 @@
 ---
-title: "Azure 付款处理蓝图 - 访问要求"
-description: "PCI DSS 要求 7"
+title: Azure 付款处理蓝图 - 访问要求
+description: PCI DSS 要求 7
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: ac3afee9-0471-465d-a115-67488a1635a6
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 5a3c9eac552fb96309cfa791a2e72a7102662e60
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: fb16a7973022421525e13313f53f615120caa38a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="access-requirements-for-pci-dss-compliant-environments"></a>符合 PCI DSS 的环境的访问要求 
 ## <a name="pci-dss-requirement-7"></a>PCI DSS 要求 7
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Azure 针对以下项强制实施现有 ISMS 策略：Azure 人员对 Azure 系统组件的访问，验证访问控制的有效性，提供实时管理访问权限，不再需要时撤消访问权限，以及确保访问 Azure 平台环境的工作人员具有业务需要。 严格限制 Azure 访问客户环境，仅在客户批准的情况下允许。<br /><br />已建立相关规程，将对数据中心的物理访问仅限于授权的员工、供应商、承包商和访问者。 需要对内部数据中心设施进行临时访问的人员需要进行安全验证和签入。 Azure 团队每个季度都会检查物理访问日志。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Azure 针对以下项强制实施现有 ISMS 策略：Azure 人员对 Azure 系统组件的访问，验证访问控制的有效性，提供实时管理访问权限，不再需要时撤消访问权限，以及确保访问 Azure 平台环境的工作人员具有业务需要。 严格限制 Azure 访问客户环境，仅在客户批准的情况下允许。<br /><br />已建立相关规程，将对数据中心的物理访问仅限于授权的员工、供应商、承包商和访问者。 需要对内部数据中心设施进行临时访问的人员需要进行安全验证和签入。 Azure 团队每个季度都会检查物理访问日志。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责将对系统组件和持卡人数据的访问限制为只有那些其工作需要进行此类访问的个人可以访问。 这包括限制对 Azure 管理门户的访问以及指定有权创建、修改或删除 PaaS 服务的帐户或角色。|
 
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责定义和记录用户 ID 审批过程、定义最少特权、限制对持卡人数据的访问、使用唯一 ID、提供职责分离，以及在不再需要时撤消用户访问权限。|
 
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 已采用适用的公司和组织安全策略，包括信息安全策略。 这些策略已经批准、发布并传送到 Windows Azure。 Microsoft Azure 信息安全策略要求基于业务理由及“需要知道”和“最小特权”原则，通过资产所有者授权授予对 Microsoft Azure 资产的访问权限。 该策略还满足访问管理生命周期的要求，包括访问权限预配、访问授权、访问权限的身份验证去除和定期访问审核。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 已采用适用的公司和组织安全策略，包括信息安全策略。 这些策略已经批准、发布并传送到 Windows Azure。 Microsoft Azure 信息安全策略要求基于业务理由及“需要知道”和“最小特权”原则，通过资产所有者授权授予对 Microsoft Azure 资产的访问权限。 该策略还满足访问管理生命周期的要求，包括访问权限预配、访问授权、访问权限的身份验证去除和定期访问审核。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 在部署期间创建三个帐户：admin、sqladmin 和 edna（执行演示期间登录到 Web 应用的默认用户）。 用户角色仅限于基于记录的演示方案的职责。|
 
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 在部署期间创建三个帐户：admin、sqladmin 和 edna（执行演示期间登录到 Web 应用的默认用户）。 用户角色仅限于基于记录的演示方案的职责。|
 
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责将对系统组件和持卡人数据的访问限制为只有那些其工作需要进行此类访问的个人可以访问。 这包括限制对 Azure 管理门户的访问以及指定有权创建、修改或删除 PaaS 服务的帐户或角色。|
 
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Active Directory 将访问限制为只能指定用户才能访问。 有关详细信息，请参阅 [PCI 指南 - 标识管理](payment-processing-blueprint.md#identity-management)。|
 
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 文档就谁使用 CHD 以及如何使用 CHD 提供用例和说明。|
 
 

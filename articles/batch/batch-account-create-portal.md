@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6374e49f3f682d022613e3e5244d273337213311
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b1c8c981c0b1c3b599d2dd737b680390a52888eb
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -37,8 +37,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="create-a-batch-account"></a>创建批处理帐户
 
-> [!NOTE]
-> 创建 Batch 帐户时，通常应选择默认的“Batch 服务”模式。使用此模式时，池在 Azure 托管的订阅中以幕后方式分配。 在备用的“用户订阅”模式（对于大多数方案不再推荐使用）下，会在创建池时直接在订阅中创建 Batch VM 和其他资源。 若要在用户订阅模式下创建 Batch 帐户，还需将订阅注册到 Azure Batch 中，并将该帐户与 Azure Key Vault 相关联。
+[!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
 1. 登录到 [Azure 门户][azure_portal]。
 2. 单击“创建资源”，搜索 Marketplace 中是否有“Batch 服务”。

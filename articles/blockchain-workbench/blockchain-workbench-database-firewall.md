@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: dc22f212c014ab1d6622eff3491d669b21ca6f47
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: afeea143f73fa4f7d3e373535007846a668616ab
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>配置 Azure Blockchain Workbench 数据库防火墙
 
@@ -57,4 +57,5 @@ ms.lasthandoff: 05/08/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Blockchain Workbench 中的数据库视图](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Azure Blockchain Workbench 中的数据库视图](blockchain-workbench-database-views.md)

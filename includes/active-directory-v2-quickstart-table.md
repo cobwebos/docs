@@ -1,7 +1,31 @@
+---
+title: include 文件
+description: include 文件
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 05/01/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 9954be8b96b8915cd176a6a5d80647f467fb4d99
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/03/2018
+---
 | 移动和本机应用 | Web 应用和 Web API | 直接与协议集成 |
 | --- | --- | --- |
 | [向 iOS 应用程序添加登录](../articles/active-directory/develop/GuidedSetups/active-directory-ios.md) | [向 JavaScript 单页应用程序 (SPA) 添加登录](../articles/active-directory/develop/GuidedSetups/active-directory-javascriptspa.md) |[注册应用程序](../articles/active-directory/develop/active-directory-v2-app-registration.md) | 
-| [向 Android 应用程序添加登录](../articles/active-directory/develop/guidedsetups/active-directory-mobileanddesktopapp-android-intro.md) | [向 .NET 模型-视图-控制器 (MVC) 应用程序添加登录](../articles/active-directory/develop/guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) |[使用 OAuth 2.0 协议的移动应用程序](../articles/active-directory/develop/active-directory-v2-protocols-oauth-code.md) |
-| [向 Windows 桌面应用程序添加登录](../articles/active-directory/develop/guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |[向 Node.js Web 应用程序添加登录](../articles/active-directory/develop/active-directory-v2-devquickstarts-node-web.md) |[使用 OpenID Connect 协议的 Web 应用程序](../articles/active-directory/develop/active-directory-v2-protocols-oidc.md) |
-| [向多平台 Xamarin 应用程序添加登录](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)|  |[使用 OpenID Connect 协议的 JavaScript SPA](../articles/active-directory/develop/active-directory-v2-protocols-implicit.md) |
-|  |  | [使用 OAuth 2.0 客户端凭据流的守护应用程序](../articles/active-directory/develop/active-directory-v2-protocols-oauth-client-creds.md) |
+| [向 Android 应用程序添加登录](../articles/active-directory/develop/guidedsetups/active-directory-android.md) | [将登录添加到 ASP.NET 应用程序](../articles/active-directory/develop/guidedsetups/active-directory-aspnetwebapp.md) |[使用 OAuth 2.0 协议的移动应用程序](../articles/active-directory/develop/active-directory-v2-protocols-oauth-code.md) |
+| [向 Windows 桌面应用程序添加登录](../articles/active-directory/develop/guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  [将登录添加到 ASP.NET Core Web 应用程序](https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2) | [使用 OpenID Connect 协议的 Web 应用程序](../articles/active-directory/develop/active-directory-v2-protocols-oidc.md) |
+| [向多平台 Xamarin 应用程序添加登录](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)| [向 Node.js Web 应用程序添加登录](../articles/active-directory/develop/active-directory-v2-devquickstarts-node-web.md) |[使用 OpenID Connect 协议的 JavaScript SPA](../articles/active-directory/develop/active-directory-v2-protocols-implicit.md) |
+|  | [保护 ASP.NET Web API](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet) | [使用 OAuth 2.0 客户端凭据流的守护应用程序](../articles/active-directory/develop/active-directory-v2-protocols-oauth-client-creds.md) |
+|  | [保护 ASP.NET Core Web API](https://azure.microsoft.com/en-us/resources/samples/active-directory-dotnet-native-aspnetcore-v2) | |

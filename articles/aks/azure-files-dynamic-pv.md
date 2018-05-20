@@ -3,17 +3,17 @@ title: 将 Azure 文件与 AKS 配合使用
 description: 将 Azure 磁盘与 AKS 配合使用
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ab118cd43f1e3e57627d940072e50405cd85ca58
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 21245688076cf0a21164b549eb68bc6f55d6ec6c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>含 Azure 文件的持久卷
 
@@ -66,10 +66,10 @@ parameters:
   storageAccount: mystorageaccount
 ```
 
-使用 [kubectl create][kubectl-create] 命令创建存储类。
+使用 [kubectl apply][kubectl-apply] 命令创建存储类。
 
 ```azurecli-interactive
-kubectl create -f azure-file-sc.yaml
+kubectl apply -f azure-file-sc.yaml
 ```
 
 ## <a name="create-persistent-volume-claim"></a>创建永久性卷声明
@@ -94,10 +94,10 @@ spec:
       storage: 5Gi
 ```
 
-使用 [kubectl create][kubectl-create] 命令创建永久性卷声明。
+使用 [kubectl apply][kubectl-apply] 命令创建永久性卷声明。
 
 ```azurecli-interactive
-kubectl create -f azure-file-pvc.yaml
+kubectl apply -f azure-file-pvc.yaml
 ```
 
 完成此步骤后，文件共享即创建完毕。 同时还会创建一个包含连接信息和凭据的 Kubernetes 机密。
@@ -126,10 +126,10 @@ spec:
         claimName: azurefile
 ```
 
-使用 [kubectl create][kubectl-create] 命令创建 Pod。
+使用 [kubectl apply][kubectl-apply] 命令创建 Pod。
 
 ```azurecli-interactive
-kubectl create -f azure-pvc-files.yaml
+kubectl apply -f azure-pvc-files.yaml
 ```
 
 现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。
@@ -174,7 +174,7 @@ parameters:
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 [kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/

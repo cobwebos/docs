@@ -1,26 +1,20 @@
 ---
-title: "Azure Active Directory B2B 协作的限制 | Microsoft 文档"
-description: "Azure Active Directory B2B 协作的当前限制"
+title: Azure Active Directory B2B 协作的限制 | Microsoft 文档
+description: Azure Active Directory B2B 协作的当前限制
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7d455b587c013e7a03fe640406e751910456665d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d4efa6ad1d2768a41a670fae4c490942b5a814ad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure Active Directory B2B 协作的限制
 Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制。
@@ -33,15 +27,8 @@ Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
+请参阅以下有关 Azure AD B2B 协作的文章：
 
-* [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B 协作用户属性](active-directory-b2b-user-properties.md)
-* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
-* [委派 B2bB 协作邀请](active-directory-b2b-delegate-invitations.md)
-* [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
-* [B2B 协作代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
-* [为 B2B 协作配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
-* [B2B 协作用户令牌](active-directory-b2b-user-token.md)
-* [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
-* [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
+- [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [委派 B2bB 协作邀请](active-directory-b2b-delegate-invitations.md)
+

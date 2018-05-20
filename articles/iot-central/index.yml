@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure IoT Central（预览版）文档
+metadata:
+  title: Azure IoT Central（预览版）文档 - 教程和 API 参考 | Microsoft Docs
+  description: Azure IoT Central 是完全托管的 SaaS（软件即服务）解决方案，借助此解决方案可轻松连接、监视以及管理大规模的 IoT 资产。 Azure IoT Central 简化了 IoT 解决方案的初始设置，并减少了典型 IoT 项目的管理负担、运营成本和开销。 通过我们的快速入门和教程了解如何创建、自定义、管理和使用 Azure IoT Central 应用程序。
+  services: iot-central
+  author: czeumault
+  manager: carolz
+  ms.prod: microsoft-iot-central
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/08/2017
+  ms.author: carolz
+  ms.openlocfilehash: 3e443a4ba2de76971ef856b67fdeb1f8836f68e1
+  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/16/2018
+abstract:
+  description: Azure IoT Central 是完全托管的 SaaS（软件即服务）解决方案，借助此解决方案可轻松连接、监视以及管理大规模的 IoT 资产。 Azure IoT Central 简化了 IoT 解决方案的初始设置，并减少了典型 IoT 项目的管理负担、运营成本和开销。 通过我们的快速入门和教程了解如何创建、自定义、管理和使用 Azure IoT Central 应用程序。
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何<a href="quick-deploy-iot-central">创建新的 Azure IoT Central 应用程序</a>。
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何自定义并使用 Azure IoT Central 应用程序。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="tutorial-define-device-type">定义新设备类型</a>
+    - html: <a href="tutorial-configure-rules">配置规则</a>
+    - html: <a href="tutorial-customize-operator">自定义操作员的视图</a>
+    - html: <a href="tutorial-monitor-devices">监视设备</a>
+    - html: <a href="tutorial-add-device">添加真实设备</a>

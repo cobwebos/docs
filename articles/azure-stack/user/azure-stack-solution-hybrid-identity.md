@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 9a025716c2bb6266c1c1c552a2d0791b39429cac
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5224fe4682509f92e1f18d865e5cc5afb1218ad1
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-with-azure-and-azure-stack-applications"></a>教程： 配置混合云标识与 Azure 和 Azure 堆栈的应用程序
 
@@ -60,7 +60,7 @@ Azure 堆栈安装连接到 Azure Active Directory 与可以访问的订阅。 �
 
 若要连接到 Azure 堆栈使用代码，使用 Azure 资源管理器终结点 API 的身份验证和 graph 终结点获取你 Azure 堆栈的安装，并使用 REST 请求然后进行身份验证。 你可以找到示例应用程序[此处](https://github.com/shriramnat/HybridARMApplication)。
 
-> [!note]  
+> [!Note]  
 Azure SDK for 所用语言的支持的 Azure API 配置文件，除非 SDK 可能无法用于 Azure 堆栈。 若要了解有关 Azure API 配置文件的详细信息，请转[此处](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles)。
 
 ## <a name="next-steps"></a>后续步骤

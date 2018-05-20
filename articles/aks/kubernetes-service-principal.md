@@ -3,19 +3,19 @@ title: Azure Kubernetes 群集的服务主体
 description: 在 AKS 中为 Kubernetes 群集创建和管理 Azure Active Directory 服务主体
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 81f455668e81c2a6c21b66d85199da3f475e7265
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5e6e24d132598e3f79e4fe76c13ee0ae6a82424d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="service-principals-with-azure-container-service-aks"></a>使用 Azure 容器服务 (AKS) 的服务主体
+# <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
 AKS 群集需要 [Azure Active Directory 服务主体][aad-service-principal]才能与 Azure API 交互。 需要服务主体才能动态创建和管理资源，例如 [Azure 负载均衡器][azure-load-balancer-overview]。
 

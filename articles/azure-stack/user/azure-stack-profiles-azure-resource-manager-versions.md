@@ -10,14 +10,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 54de948597a5eddfcc808371c61e36d45089abc4
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: ee4321b905396f78e7dad9248b9e377dad250a13
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack 中的配置文件支持的资源提供程序 API 版本
 
@@ -30,7 +30,7 @@ API 配置文件使用三个命名约定：
 
 有关 Azure 堆栈的 API 配置文件和版本发布节奏说明，请参阅[管理 API 版本 Azure 堆栈中的配置文件](azure-stack-version-profiles.md)。
 
-> [!note]  
+> [!Note]  
 > **最新**API 配置文件包含最新的资源提供程序 API 版本，并且不在本文中列出。
 
 ## <a name="overview-of-2018--03-01-hybrid"></a>2018-03-01-混合的概述

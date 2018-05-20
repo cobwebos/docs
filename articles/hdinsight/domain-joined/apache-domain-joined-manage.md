@@ -11,11 +11,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: omidm
-ms.openlocfilehash: 9875d9884f04d26ebfbd44e858beb272c2306958
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 31b58176a75918cf68cda695f27216031670493e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>管理已加入域的 HDInsight 群集
 了解已加入域的 HDInsight 中的用户和角色以及如何管理已加入域的 HDInsight 群集。
@@ -101,6 +101,8 @@ ms.lasthandoff: 04/19/2018
 |交互式查询 (LLAP)|交互|<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |任意|安装自定义应用程序|<ul><li>[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
+   > [!NOTE]
+   > 企业安全性套餐中未安装/支持 Jupyter。
 
 使用标准 API 从安全角度获得帮助。 此外，可获得以下优势：
 

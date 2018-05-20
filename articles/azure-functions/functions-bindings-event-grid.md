@@ -15,17 +15,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 52654704662b736811f429a811e10669a752b75a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f12cdf2fc8a1aa3b7e8bc3c5eeb338601a8f2ffe
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
 本文介绍如何处理 Azure Functions 中的[事件网格](../event-grid/overview.md)事件。
 
-事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。 发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是一个发布方，而 Blob 上传或删除是一个事件。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。 
+事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。 发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是发布方，而 [Blob 上传或删除是事件](../storage/blobs/storage-blob-event-overview.md)。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。 
 
 事件处理程序接收并处理事件。 Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 本文将会介绍在收到事件网格发出的事件时，如何使用事件网格触发器调用某个函数。
 

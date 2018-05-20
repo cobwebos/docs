@@ -1,12 +1,12 @@
 ---
-title: "Azure 高级威胁检测 | Microsoft Docs"
-description: "了解标识保护及其功能。"
+title: Azure 高级威胁检测 | Microsoft Docs
+description: 了解标识保护及其功能。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d2fab26d8ff9f006cfed82685a738b791d0b0624
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: eb1bf9f6465a8a94fd2de75f581817887c333289
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 ## <a name="introduction"></a>介绍

@@ -4,16 +4,17 @@ description: 本文介绍如何为 Azure 自动化中的 Runbook 创建 Azure AD
 keywords: azure active directory 用户, azure 服务管理, azure ad 用户帐户
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 43490b8ec2139b5e9f62def614dc67e4274304c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 07fb9284372020ba2aadb3758d0ab46682b50831
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>使用 Azure 经典部署和 Resource Manager 部署对 Runbook 进行身份验证
 本文介绍在为针对 Azure 经典部署模型或 Azure 资源管理器资源运行的 Azure 自动化 Runbook 配置 Azure AD 用户帐户时所要执行的步骤。 尽管这仍是基于 Azure 资源管理器的 Runbook 支持的身份验证标识，但建议的方法是使用 Azure 运行方式帐户。       
@@ -32,7 +33,7 @@ ms.lasthandoff: 03/23/2018
 
 1. 以要管理的 Azure 订阅的服务管理员身份登录到 Azure 门户。
 2. 选择“自动化帐户”。
-3. 选择“添加”。<br><br>![添加自动化帐户](media/automation-create-aduser-account/add-automation-acct-properties.png)
+3. 选择 **添加** 。<br><br>![添加自动化帐户](media/automation-create-aduser-account/add-automation-acct-properties.png)
 4. 在“添加自动化帐户”边栏选项卡的“名称”框中，键入新自动化帐户的名称。
 5. 如果有多个订阅，请为新帐户指定一个订阅，并指定一个新的或现有的**资源组**以及 Azure 数据中心**位置**。
 6. 针对“创建 Azure 运行方式帐户”选项选择“是”值，并单击“创建”按钮。  

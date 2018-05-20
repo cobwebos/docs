@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 533a80edbb115dfd324db9e4488e5c66dc36667e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 77effb7892e6d59087d07109958f4682886f12db
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>针对通过 SSH 连接到 Azure Linux VM 时发生的失败、错误或被拒绝问题进行故障排除
 尝试连接到 Linux 虚拟机 (VM) 时，有多种原因可能会导致安全外壳 (SSH) 错误、SSH 连接失败或被拒绝。 本文将帮助用户找出原因并更正问题。 可以使用 Azure 门户、Azure CLI 或适用于 Linux 的 VM 访问扩展来排查和解决连接问题。
@@ -80,7 +80,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="use-the-azure-cli-20"></a>使用 Azure CLI 2.0
 安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户（如果尚未这样做）。
 
-如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
+如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../extensions/agent-windows.md) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
 
 ### <a name="reset-ssh-configuration"></a>重置 SSH 配置
 最初可尝试将 SSH 配置重置为默认值，然后重新启动 VM 上的 SSH 服务器。 请注意，此操作不会更改用户帐户名、密码或 SSH 密钥。
@@ -155,7 +155,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 azure config mode arm
 ```
 
-如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
+如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../extensions/agent-windows.md) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
 
 ### <a name="reset-ssh-configuration"></a>重置 SSH 配置
 SSHD 配置本身可能有误或服务遇到错误。 可以重置 SSHD 以确保 SSH 配置本身是有效的。 要执行的第一个故障排除步骤应该是重置 SSHD。

@@ -6,11 +6,11 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 58a05642ebbbce0773d20720903964a1ed3ab06c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: f26493662453390328a483fafb5cd71c9c6dd3a8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1378,9 +1378,9 @@ Terraform </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://docs.microsoft.com/azure/location-based-services/">
+                                            <a href="/azure/azure-maps/">
                                                 <img src="media/index/azure-lbs-icon.svg" alt="" />
-                                                <p>Azure Location Based Services</p>
+                                                <p>Azure Maps</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1393,27 +1393,9 @@ Terraform </a>
                                     <h3>安全</h3>
                                     <ul>
                                         <li>
-                                            <a href="/azure/active-directory/">
-                                                <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                <p>Azure Active Directory</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/information-protection/">
-                                                <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
-                                                <p>Azure 信息保护</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/active-directory-domain-services">
-                                                <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                <p>Azure Active Directory 域服务</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/key-vault/">
-                                                <img src="media/index/KeyVault.svg" alt="" />
-                                                <p>Key Vault</p>
+                                            <a href="/azure/security/">
+                                                <img src="media/index/SecurityCenter.svg" alt="" />
+                                                <p>安全信息</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1423,15 +1405,9 @@ Terraform </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/vpn-gateway/">
-                                                <img src="media/index/VPNGateway.svg" alt="" />
-                                                <p>VPN 网关</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/application-gateway/">
-                                                <img src="media/index/ApplicationGateway.svg" alt="" />
-                                                <p>应用程序网关</p>
+                                            <a href="/azure/key-vault/">
+                                                <img src="media/index/KeyVault.svg" alt="" />
+                                                <p>Key Vault</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1447,9 +1423,33 @@ Terraform </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/security/">
-                                                <img src="media/index/SecurityCenter.svg" alt="" />
-                                                <p>安全信息</p>
+                                            <a href="/information-protection/">
+                                                <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
+                                                <p>Azure 信息保护</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/active-directory/">
+                                                <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                <p>Azure Active Directory</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/active-directory-domain-services">
+                                                <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                <p>Azure Active Directory 域服务</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/application-gateway/">
+                                                <img src="media/index/ApplicationGateway.svg" alt="" />
+                                                <p>应用程序网关</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/vpn-gateway/">
+                                                <img src="media/index/VPNGateway.svg" alt="" />
+                                                <p>VPN 网关</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2485,7 +2485,7 @@ Terraform </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://docs.microsoft.com/azure/location-based-services/">
+                                <a href="/azure/azure-maps">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2495,7 +2495,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Location Based Services</h3>
+                                                    <h3>Azure Maps</h3>
                                                     <p>简单且安全的定位 API 为数据提供地理空间上下文</p>
                                                 </div>
                                             </div>
@@ -4092,75 +4092,18 @@ Terraform </a>
                         <a href="#security">安全性</a>
                         <ul id="security" class="cardsA">
                             <li>
-                                <a href="/azure/active-directory/">
+                                <a href="/azure/security/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                        <img src="media/index/SecurityCenter.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Active Directory</h3>
-                                                    <p>同步本地目录并启用单一登录</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/information-protection/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure 信息保护</h3>
-                                                    <p>生成和部署用于控制敏感信息的组织策略</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/active-directory-domain-services">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>用于域服务的 Active Directory</h3>
-                                                    <p>将 Azure 虚拟机加入到没有域控制器的域</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/key-vault/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/KeyVault.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Key Vault</h3>
-                                                    <p>保护密钥和其他机密并始终对其进行控制</p>
+                                                    <h3>安全信息</h3>
+                                                    <p>了解 Azure 如何提供安全基础结构用于构建云解决方案</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4187,37 +4130,18 @@ Terraform </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/vpn-gateway/">
+                                <a href="/azure/key-vault/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/VPNGateway.svg" alt="" />
+                                                        <img src="media/index/KeyVault.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>VPN 网关</h3>
-                                                    <p>建立安全的跨界连接</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/application-gateway/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/ApplicationGateway.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>应用程序网关</h3>
-                                                    <p>在 Azure 中生成安全、可缩放且高度可用的 Web 前端</p>
+                                                    <h3>Key Vault</h3>
+                                                    <p>保护密钥和其他机密并始终对其进行控制</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4263,18 +4187,94 @@ Terraform </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/security/">
+                                <a href="/information-protection/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/SecurityCenter.svg" alt="" />
+                                                        <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>安全信息</h3>
-                                                    <p>了解 Azure 如何提供安全基础结构用于构建云解决方案</p>
+                                                    <h3>Azure 信息保护</h3>
+                                                    <p>生成和部署用于控制敏感信息的组织策略</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/active-directory/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Active Directory</h3>
+                                                    <p>同步本地目录并启用单一登录</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/active-directory-domain-services">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>用于域服务的 Active Directory</h3>
+                                                    <p>将 Azure 虚拟机加入到没有域控制器的域</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/application-gateway/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/ApplicationGateway.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>应用程序网关</h3>
+                                                    <p>在 Azure 中生成安全、可缩放且高度可用的 Web 前端</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/vpn-gateway/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/VPNGateway.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>VPN 网关</h3>
+                                                    <p>建立安全的跨界连接</p>
                                                 </div>
                                             </div>
                                         </div>

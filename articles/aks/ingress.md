@@ -3,17 +3,17 @@ title: 在 Azure Kubernetes 服务 (AKS) 群集中配置入口
 description: 在 Azure Kubernetes 服务 (AKS) 群集中安装和配置 NGINX 入口控制器。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a6c9036a85e1c979d649896a9361e401f6f7cc0a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9246fccb1713f69d2c6c655b09f0daf51055596f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的 HTTPS 入口
 

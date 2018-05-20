@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: cd9c5888724b634002d3029cccd42cfda4a433af
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a14dbaffe6bfa68e7606d117823195144250c230
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB：数据迁移工具
 
@@ -43,6 +43,8 @@ ms.lasthandoff: 05/07/2018
 在按照本文中的说明操作之前，请确保已安装下列项：
 
 * [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) 或更高版本。
+
+* 增加吞吐量：数据迁移的持续时间取决于为单个集合或一组集合设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 Azure 门户中增加吞吐量的详细信息，请参阅 Azure Cosmos DB 中的性能级别和定价层。
 
 ## <a id="Overviewl"></a>概述
 数据迁移工具是一种开源解决方案，可将数据从各种源导入 Azure Cosmos DB 中，包括：

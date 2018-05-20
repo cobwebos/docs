@@ -3,19 +3,19 @@ title: 快速入门 - Azure Kubernetes 群集门户快速入门
 description: 快速了解如何使用 Azure 门户在 AKS 中为 Linux 容器创建 Kubernetes 群集。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 02/24/2018
+ms.date: 04/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5bb758637d7b23f206f78d1604f985c2985d4410
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: cd17d2732bf44e3f4b46878d6a416579b9e2f970
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>快速入门：部署 Azure 容器服务 (AKS) 群集
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>快速入门：部署 Azure Kubernetes 服务 (AKS) 群集
 
 本快速入门介绍如何使用 Azure 门户部署 AKS 群集。 然后，在群集上运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
 
@@ -27,53 +27,43 @@ ms.lasthandoff: 04/18/2018
 
 通过 http://portal.azure.com 登录到 Azure 门户。
 
-## <a name="create-service-principal"></a>创建服务主体
 
-在 Azure 门户中创建 AKS 群集之前，需要创建服务主体。 Azure 使用此服务主体来管理与 AKS 群集关联的基础结构。
-
-选择“Azure Active Directory” > “应用注册” > “新建应用程序注册”。
-
-输入应用程序的名称，可以是任何值。 选择“Web 应用/API”作为应用程序类型。 输入“登录 URL”的值；这可以是采用有效 URL 格式的任何值，而不需要是实际的终结点。
-
-完成后，选择“创建”。
-
-![创建服务主体步骤 1](media/container-service-walkthrough-portal/create-sp-one.png)
-
-选择新建的应用程序注册，并记下应用程序 ID。 创建 AKS 群集时需要此值。
-
-![创建服务主体步骤 2](media/container-service-walkthrough-portal/create-sp-two.png)
-
-接下来，必须为服务主体创建密码。 选择“所有设置” > “密钥”，输入任意值作为密钥说明。 选择服务主体的有效持续时间。
-
-单击“保存”，并记下密码值。 创建 AKS 群集时需要此密码。
-
-![创建服务主体步骤 3](media/container-service-walkthrough-portal/create-sp-three.png)
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-选择“创建资源” > “容器” > “Azure 容器服务 -AKS (预览版)”。
+选择“创建资源”，搜索“Kubernetes”，选择“Azure Kubernetes 服务(预览)” > “创建”。
 
-提供群集的群集名称、DNS 前缀、资源组名称、位置和 Kubernetes 版本。 记下群集名称和资源组名称，连接到群集时需要这些信息。
+在创建 AKS 群集窗体的每个标题下完成以下步骤。
 
-完成后选择“确定”。
+- **项目详细信息**：选择 Azure 订阅和一个新的或现有的 Azure 资源组。
+- **群集详细信息**：输入 AKS 群集的名称、区域、版本和 DNS 名称前缀。
+- **身份验证**：创建新的或使用现有的服务主体。 使用现有 SPN 时，需要提供 SPN 客户端 ID 和密码。
+- **缩放**：选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。 此外，选择要部署到群集的节点数。 部署群集后，可以调整节点计数。
 
-![创建 AKS 群集步骤 1](media/container-service-walkthrough-portal/create-aks-portal-one.png)
+完成时选择“下一步: 网络”。
 
-在配置窗体中，输入以下信息:
+![创建 AKS 群集步骤 1](media/container-service-walkthrough-portal/aks-portal-1.png)
 
-- 用户名 - 为群集节点上的管理帐户指定的名称。
-- SSH 公钥 - 与用于访问群集节点的密钥关联。
-- 服务主体客户端 ID - 在本文档前面创建的服务主体的应用程序 ID。
-- 服务主体客户端机密 - 在本文档前面创建的服务主体密码。
-- 节点计数 - 要创建的 AKS 节点数。
-- 节点虚拟机大小 - AKS 节点的 VM 大小
-- OS 磁盘大小 - AKS 节点 OS 磁盘的大小。
+配置以下网络选项：
 
-完成后选择“确定”，完成验证后再次选择“确定”。
+- **Http 应用程序路由** - 配置创建自动公共 DNS 名称的集成入口控制器。 有关 Http 路由的详细信息，请参阅 [AKS HTTP 路由和 DNS][http-routing]。
+- **网络配置** - 在使用 [kubenet][kubenet] Kubernetes 插件的基本网络配置和使用 [Azure CNI][azure-cni] 的高级网络配置之间进行选择。 有关网络选项的详细信息，请参阅 [AKS 网络概述][aks-network]。
 
-![创建 AKS 群集步骤 2](media/container-service-walkthrough-portal/create-aks-portal-two.png)
+完成时选择“下一步: 监视”。
 
-片刻之后，ASK 群集即可完成部署并可供使用。
+![创建 AKS 群集步骤 1](media/container-service-walkthrough-portal/aks-portal-2.png)
+
+部署 AKS 群集时，可以将 Azure 容器见解配置为监视 AKS 群集以及群集上运行的 Pod 的运行状况。 有关容器运行状况监视的详细信息，请参阅[监视 Azure Kubernetes 服务运行状况][aks-monitor]。
+
+选择“是”启用容器监视并选择一个现有的或创建一个新的 Log Analytics。
+
+完成时依次选择“评审 + 创建”、“创建”。
+
+![创建 AKS 群集步骤 1](media/container-service-walkthrough-portal/aks-portal-3.png)
+
+片刻之后，ASK 群集即可完成部署并可供使用。 浏览到 AKS 群集资源组，选择 AKS 资源，然后应看到 AKS 群集仪表板。
+
+![创建 AKS 群集步骤 1](media/container-service-walkthrough-portal/aks-portal-5.png)
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 
@@ -82,11 +72,6 @@ ms.lasthandoff: 04/18/2018
 使用 Azure 门户右上角的按钮打开 Cloud Shell。
 
 ![Cloud Shell](media/container-service-walkthrough-portal/kubectl-cs.png)
-
-指定订阅（如果尚未指定）
-```azurecli-interactive
-az account set -s SUBSCRIPTION_NAME
-```
 
 使用 [az aks get-credentials][az-aks-get-credentials] 命令将 kubectl 配置为连接到 Kubernetes 群集。
 
@@ -106,14 +91,14 @@ kubectl get nodes
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     6m        v1.8.1
-aks-agentpool-14693408-1   Ready     agent     6m        v1.8.1
-aks-agentpool-14693408-2   Ready     agent     7m        v1.8.1
+aks-agentpool-11482510-0   Ready     agent     9m        v1.9.6
+aks-agentpool-11482510-1   Ready     agent     8m        v1.9.6
+aks-agentpool-11482510-2   Ready     agent     9m        v1.9.6
 ```
 
 ## <a name="run-the-application"></a>运行应用程序
 
-Kubernetes 清单文件用于定义群集的所需状态，例如，应该运行什么容器图像。 就此示例来说，清单用于创建运行 Azure Vote 应用程序所需的所有对象。
+Kubernetes 清单文件用于定义群集的所需状态，例如，应该运行什么容器映像。 就此示例来说，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 这些对象包括两个 [Kubernetes 部署][kubernetes-deployment]，一个用于 Azure Vote 前端，另一个用于 Redis 实例。 此外，还创建了两个 [Kubernetes 服务][kubernetes-service]，一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。
 
 创建名为 `azure-vote.yaml` 的文件，并将以下 YAML 代码复制到其中。 如果在 Azure Cloud Shell 中操作，则可使用 vi 或 Nano 来创建此文件，就像在虚拟或物理系统中操作一样。
 
@@ -195,7 +180,7 @@ service "azure-vote-front" created
 
 ## <a name="test-the-application"></a>测试应用程序
 
-在应用程序运行以后，将创建 [Kubernetes 服务][kubernetes-service]，向 Internet 公开应用程序前端。 此过程可能需要几分钟才能完成。
+在应用程序运行以后，将创建 [Kubernetes 服务][kubernetes-service]，向 Internet 公开应用程序。 此过程可能需要几分钟才能完成。
 
 若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
 
@@ -220,12 +205,24 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
+## <a name="monitor-health-and-logs"></a>监视运行状况和日志
+
+如果已启用容器见解监视，那么 AKS 群集仪表板将提供 AKS 群集以及群集上运行的 Pod 的运行状况指标。 有关容器运行状况监视的详细信息，请参阅[监视 Azure Kubernetes 服务运行状况][aks-monitor]。
+
+若要查看 Azure Vote Pod 的当前状态、运行时间和资源使用情况，请浏览回到 AKS 资源，选择“监视容器运行状况”，选择“默认”命名空间，选择“容器”。 在 Azure 门户中填充此数据可能需要几分钟。
+
+![创建 AKS 群集步骤 1](media/container-service-walkthrough-portal/aks-portal-6.png)
+
+若要查看 `azure-vote-front` Pod 的日志，请选择“查看日志”链接。 这些日志包括容器中的 stdout 和 stderr 流。
+
+![创建 AKS 群集步骤 1](media/container-service-walkthrough-portal/aks-portal-7.png)
+
 ## <a name="delete-cluster"></a>删除群集
 
-不再需要群集时，可以删除群集资源组，这会一并删除所有关联的资源。 可在 Azure 门户中完成此操作：选择资源组并单击删除按钮即可。 或者，可以在 Cloud Shell 中使用 [az group delete][az-group-delete] 命令。
+不再需要群集时，可以删除群集资源，这会一并删除所有关联的资源。 通过选择 AKS 群集仪表板上的“删除”按钮，可以在 Azure 门户中完成此操作。 或者，可以在 Cloud Shell 中使用 [az aks delete][az-aks-delete] 命令。
 
 ```azurecli-interactive
-az group delete --name myAKSCluster --no-wait
+az aks delete --resource-group myAKSCluster --name myAKSCluster --no-wait
 ```
 
 ## <a name="get-the-code"></a>获取代码
@@ -236,7 +233,7 @@ az group delete --name myAKSCluster --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。
+在本快速入门中，部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。
 
 若要详细了解 AKS 并演练部署示例的完整代码，请继续阅读“Kubernetes 群集”教程。
 
@@ -245,15 +242,19 @@ az group delete --name myAKSCluster --no-wait
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
+[azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 [kubernetes-documentation]: https://kubernetes.io/docs/home/
 [kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
-[az-group-delete]: /cli/azure/group#delete
+[az-aks-delete]: /cli/azure/aks#az-aks-delete
+[aks-monitor]: ../log-analytics/log-analytics-containers.md
+[aks-network]: ./networking-overview.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-
-
+[http-routing]: ./http-application-routing.md

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 165464bd6851bf5fa76632731455722c393060c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d3ca9983eee4db09a68bf772b80c9ef841117872
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 群集的日志
 
@@ -105,17 +105,6 @@ Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、�
 HDInsight 将其日志文件同时存储在群集文件系统和 Azure 存储中。 若要检查群集中的日志文件，可与群集建立 SSH 连接并浏览文件系统，或者在远程头节点服务器上使用 Hadoop YARN 状态门户。 使用可以访问和下载 Azure 存储中的数据的任何工具，即可检查 Azure 存储中的日志文件。 这些工具包括 AZCopy、CloudXplorer 和 Visual Studio 服务器资源管理器。 此外，可以使用 PowerShell 和 Azure 存储客户端库或 Azure.NET SDK 访问 Azure Blob 存储中的数据。
 
 Hadoop 在群集中的各个节点上以“任务尝试”的形式运行作业。 HDInsight 可以发起推理任务尝试，并终止一开始就无法完成的其他任何任务尝试。 这会即时生成大量的活动并将其记录到控制器、stderr 和 syslog 日志文件。 此外，多个任务尝试会同时运行，但日志文件只能以线性方式显示结果。
-
-#### <a name="hdinsight-logs-written-to-azure-tables"></a>写入 Azure 表的 HDInsight 日志
-
-通过写入 Azure 表的日志，可以深入了解 HDInsight 群集中发生的事件。 创建基于 Linux 的 HDInsight 群集时，会自动在默认表存储中群集创建六个表：
-
-* hdinsightagentlog
-* syslog
-* daemonlog
-* hadoopservicelog
-* ambariserverlog
-* ambariagentlog
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>写入 Azure Blob 存储的 HDInsight 日志
 

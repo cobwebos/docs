@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 7b1579b84f3ee3c24c087c481fab7eb702f20afc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+featureFlags: clicktale
+ms.openlocfilehash: 8540f483c15c8ca00e17bc147a8623928cb0da23
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>快速入门：使用 SQL API 和 Azure 门户生成包含 Azure Cosmos DB 的 .NET Web 应用
 
@@ -101,7 +102,6 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     ```csharp
     await client.CreateDocumentCollectionAsync(
         UriFactory.CreateDatabaseUri(DatabaseId),
-        new DocumentCollection { Id = CollectionId },
         new DocumentCollection
             {
                Id = CollectionId

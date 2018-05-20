@@ -1,24 +1,20 @@
 ---
-title: "B2B 协作邀请电子邮件的元素 - Azure Active Directory | Microsoft Docs"
-description: "Azure Active Directory B2B 协作邀请电子邮件模板"
+title: B2B 协作邀请电子邮件的元素 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory B2B 协作邀请电子邮件模板
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.custom: seohack1
 ms.service: active-directory
+ms.component: B2B
 ms.topic: article
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0d26fc4758b2defc3f1b8b5643daafdac4d2baac
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3767a2ce457f7aa976620fb2df217d7f0823fe99
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
@@ -72,16 +68,10 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
+请参阅以下有关 Azure AD B2B 协作的文章：
 
-* [什么是 Azure AD B2B 协作](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Azure Active Directory 管理员如何添加 B2B 协作用户？](active-directory-b2b-admin-add-users.md)
-* [信息工作者如何添加 B2B 协作用户？](active-directory-b2b-iw-add-users.md)
-* [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
-* [Azure AD B2B 协作授权](active-directory-b2b-licensing.md)
-* [Azure Active Directory B2B 协作疑难解答](active-directory-b2b-troubleshooting.md)
-* [Azure Active Directory B2B 协作常见问题 (FAQ)](active-directory-b2b-faq.md)
-* [Azure Active Directory B2B 协作 API 和自定义](active-directory-b2b-api.md)
-* [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
-* [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
-* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+- [什么是 Azure AD B2B 协作](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Azure Active Directory 管理员如何添加 B2B 协作用户？](active-directory-b2b-admin-add-users.md)
+- [信息工作者如何添加 B2B 协作用户？](active-directory-b2b-iw-add-users.md)
+- [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
+- [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)

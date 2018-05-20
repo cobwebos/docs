@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3966de95233f32a09d4799630632c2bb6a490d78
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a38a5461e96d741b3a0d556990418e022afdb305
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 元素
 一个用于为一个或多个虚拟机实例选择大小的控件。
@@ -39,7 +39,9 @@ ms.lasthandoff: 04/03/2018
   ],
   "constraints": {
     "allowedSizes": [],
-    "excludedSizes": []
+    "excludedSizes": [],
+    "numAvailabilityZonesRequired": 3,
+    "zone": "3"
   },
   "osPlatform": "Windows",
   "imageReference": {
@@ -60,6 +62,7 @@ ms.lasthandoff: 04/03/2018
 - 必须指定 `osPlatform`，它可以是 **Windows** 或 **Linux**。 它用来确定虚拟机的硬件成本。
 - 对于第一方映像，将省略 `imageReference`，对于第三方映像，将提供此参数。 它用来确定虚拟机的软件成本。
 - `count` 用来为元素设置合适的乘数。 它支持静态值（例如 **2**），也支持来自其他元素的动态值（例如 `[steps('step1').vmCount]`）。 默认值为 **1**。
+- `numAvailabilityZonesRequired` 可以是 1、2 或 3。
 
 ## <a name="sample-output"></a>示例输出
 ```json

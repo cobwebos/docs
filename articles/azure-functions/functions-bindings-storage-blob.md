@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 447f9867649c7c3a44c8a0ba894e037040023f79
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a3d1ca210d490e7a8c634fbfb2a2e11f4e82fae4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -31,23 +31,42 @@ ms.lasthandoff: 04/23/2018
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-> [!NOTE]
-> blob 触发器不支持[仅限 Blob 的存储帐户](../storage/common/storage-create-storage-account.md#blob-storage-accounts)。 Blob 存储触发器需要使用常规用途存储帐户。 对于输入和输出绑定，可以使用仅限 blob 的存储帐户。
-
 ## <a name="packages"></a>包
 
 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
+> [!NOTE]
+> 将事件网格触发器而非 Blob 存储触发器用于仅限 Blob 的存储帐户、大规模，或者用于避免冷启动延迟。 有关详细信息，请参阅下面的**触发器**部分。 
+
 ## <a name="trigger"></a>触发器
 
-检测到新的或更新的 Blob 时，可以使用 Blob 存储触发器来启动某个函数。 Blob 内容会作为输入提供给函数。
+检测到新的或更新的 Blob 时，Blob 存储触发器会启动某个函数。 Blob 内容会作为输入提供给函数。
 
-> [!NOTE]
-> 在消耗计划中使用 Blob 触发器时，函数应用处于空闲状态后，处理新 Blob 的过程中可能会出现长达 10 分钟的延迟。 函数应用运行后，就会立即处理 Blob。 若要避免此初始延迟，请考虑以下选项之一：
-> - 使用已启用“始终可用”的应用服务计划。
-> - 使用另一种机制来触发 Blob 处理，例如包含 Blob 名称的队列消息。 有关示例，请参阅[本文后面部分的 blob 输入/输出绑定示例](#input---example)。
+[事件网格触发器](functions-bindings-event-grid.md)提供对 [Blob 事件](../storage/blobs/storage-blob-event-overview.md)的内置支持，也可用来在检测到新的或更新的 Blob 时启动函数。 如需示例，请参阅[使用事件网格调整图像大小](../event-grid/resize-images-on-storage-blob-upload-event.md)教程。
+
+以下方案请使用事件网格而不是 Blob 存储触发器：
+
+* 仅限 Blob 的存储帐户
+* 大规模
+* 冷启动延迟
+
+### <a name="blob-only-storage-accounts"></a>仅限 Blob 的存储帐户
+
+[仅限 Blob 的存储帐户](../storage/common/storage-create-storage-account.md#blob-storage-accounts)适用于 Blob 输入和输出绑定，但不适用于 Blob 触发器。 Blob 存储触发器需要使用常规用途存储帐户。
+
+### <a name="high-scale"></a>大规模
+
+大规模可以宽松地定义为包含 100,000 个以上的 Blob 的容器，或者定义为每秒进行 100 个以上 Blob 更新的存储帐户。
+
+### <a name="cold-start-delay"></a>冷启动延迟
+
+如果函数应用基于消耗计划，则当函数应用处于空闲状态时，处理新 Blob 会出现长达 10 分钟的延迟。 若要避免此冷启动延迟，可以切换到启用 Always On 的应用服务计划，或者使用其他触发器类型。
+
+### <a name="queue-storage-trigger"></a>队列存储触发器
+
+除了事件网格，还可以使用其他方法来处理 Blob，例如使用队列存储触发器，但后者没有针对 Blob 事件的内置支持。 在创建或更新 Blob 时，必须创建队列消息。 如需假定你已完成该操作的示例，请参阅[本文后面部分的 Blob 输入绑定示例](#input---example)。
 
 ## <a name="trigger---example"></a>触发器 - 示例
 

@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: df118a2b5bd8e31bd3fe6101d1d3f631092b6f24
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>教程：在 Azure 容器服务 (AKS) 中更新应用程序
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
 
-在 Kubernetes 中部署应用程序后，可以指定新的容器映像或映像版本，从而更新应用程序。 这样做时，更新会进行暂存，因此只有一部分部署会同时更新。 借助这种暂存更新，可以让应用程序在更新期间继续运行。 如果发生部署故障，还可以利用它的回滚机制。 
+在 Kubernetes 中部署应用程序后，可以指定新的容器映像或映像版本，从而更新应用程序。 这样做时，更新会进行暂存，因此只有一部分部署会同时更新。 借助这种暂存更新，可以让应用程序在更新期间继续运行。 如果发生部署故障，还可以利用它的回滚机制。
 
 在本教程的第 6 部分（共 8 部分），便完成了对 Azure Vote 应用示例的更新。 要完成的任务包括：
 
@@ -31,15 +31,15 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="before-you-begin"></a>开始之前
 
-在前面的教程中，已将应用程度打包到容器映像中，将该映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。 应用程序随后在 Kubernetes 群集上运行。 
+在前面的教程中，已将应用程度打包到容器映像中，将该映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。 应用程序随后在 Kubernetes 群集上运行。
 
 还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 其中包含 `azure-vote` 目录和 `docker-compose.yaml` 文件。
 
-如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。 
+如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
 ## <a name="update-application"></a>更新应用程序
 
-本教程将更改应用程序，并将更新后的应用程序部署到 Kubernetes 群集。 
+本教程将更改应用程序，并将更新后的应用程序部署到 Kubernetes 群集。
 
 应用程序源代码位于 `azure-vote` 目录中。 使用任意代码或文本编辑器打开 `config_file.cfg` 文件。 此示例使用 `vi`。
 
@@ -69,13 +69,13 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>在本地测试应用程序
 
-转到 http://localhost:8080 ，查看更新后的应用程序。
+浏览到 http://localhost:8080 查看更新的应用程序。
 
 ![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
 ## <a name="tag-and-push-images"></a>标记和推送映像
 
-使用容器注册表的 loginServer 标记 `azure-vote-front` 映像。 
+使用容器注册表的 loginServer 标记 `azure-vote-front` 映像。
 
 运行 [az acr list](/cli/azure/acr#az_acr_list) 命令，获取登录服务器名称。
 

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 11/16/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 9bde8657e435f1c759eceb26682e650605012a89
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 12172c53e8e5077f9690a2459bf5ccf3c3a05507
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
@@ -86,7 +86,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 使用 AzCopy 将大型 .csv 文件上传到 Azure 存储。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
 
-**我必须每天将驱动器 D 中的日志移动到我的 Azure 存储帐户。**如何自动执行该操作？
+**我必须每天将驱动器 D 中的日志移动到我的 Azure 存储帐户。** 如何自动执行该操作？
 
 你可以使用 AzCopy，并在任务计划程序中创建任务。 使用 AzCopy 批处理脚本将文件上传到 Azure 存储帐户。 有关详细信息，请参阅[如何配置和运行云服务的启动任务](../../cloud-services/cloud-services-startup-tasks.md)。
 

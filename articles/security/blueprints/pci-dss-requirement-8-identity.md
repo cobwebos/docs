@@ -1,9 +1,9 @@
 ---
-title: "Azure 付款处理蓝图 - 标识要求"
-description: "PCI DSS 要求 8"
+title: Azure 付款处理蓝图 - 标识要求
+description: PCI DSS 要求 8
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 1a398601-8c48-4f8e-b3d4-eba94edad61c
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: f77cc3c9926b5316913c70e5f4412383e55c5193
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: a83040a6b5174307ea73e5473165835458d217f6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="identity-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的标识要求 
 ## <a name="pci-dss-requirement-8"></a>PCI DSS 要求 8
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 对于如何正确使用管理员进行示例部署，Contoso Webstore 提供了一个用例和说明。|
 
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 实施 Azure Active Directory 和基于 Azure Active Directory 角色的访问控制 (RBAC)，确保所有用户都有唯一 ID。 有关详细信息，请参阅 [PCI 指南 - 标识管理](payment-processing-blueprint.md#identity-management)。<br /><br />|
 
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 实施 Azure Active Directory 和基于 Azure Active Directory 角色的访问控制 (RBAC)，确保所有用户都有唯一 ID。 有关详细信息，请参阅 [PCI 指南 - 标识管理](payment-processing-blueprint.md#identity-management)。<br /><br />|
 
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Active Directory 进行用户管理。 可以在 Active Directory 中吊销用户。|
 
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Active Directory 进行用户管理。 可对 `-enableADDomainPasswordPolicy` 选项进行设置，确保密码在 90 天内过期。|
 
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 已采用适用的公司和组织安全策略，包括信息安全策略。 这些策略已经批准、发布并传送到 Microsoft Azure。 信息安全策略要求基于业务理由通过资产所有者授权授予对 Microsoft Azure 资产的访问权限，并基于“需要知道”和“最小特权”原则对访问权限进行限制。 该策略还满足访问管理生命周期的要求，包括访问权限预配、身份验证、访问授权、删除访问权限、以及定期进行访问审核。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 已采用适用的公司和组织安全策略，包括信息安全策略。 这些策略已经批准、发布并传送到 Microsoft Azure。 信息安全策略要求基于业务理由通过资产所有者授权授予对 Microsoft Azure 资产的访问权限，并基于“需要知道”和“最小特权”原则对访问权限进行限制。 该策略还满足访问管理生命周期的要求，包括访问权限预配、身份验证、访问授权、删除访问权限、以及定期进行访问审核。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 演示版已实施 Azure Active Directory 和基于 Azure Active Directory 角色的访问控制，目的是管理用户对安装内容的访问。 有关详细信息，请参阅 [PCI 指南 - 标识管理](payment-processing-blueprint.md#identity-management)。<br /><br />|
 
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 对所有演示版用户实施明确的职责划分 (SOD)。 有关详细信息，请参阅 [PCI 指南 - 标识管理](payment-processing-blueprint.md#identity-management)中的“Azure Active Directory Identity Protection”。|
 
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责创建、强制和监视符合 PCI DSS 要求的密码策略。|
 
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责创建、强制和监视符合 PCI DSS 要求的密码策略。|
 
 
@@ -164,7 +164,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 已禁用 Contoso Webstore 实施多重身份验证，目的是方便用户使用演示版。 可以使用 [Azure 多重身份验证](https://azure.microsoft.com/services/multi-factor-authentication/)来实施多重身份验证。|
 
 
@@ -177,7 +177,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 已建立密钥管理过程，在整个生命周期（例如，生成、分发、吊销）中管理加密密钥。 Microsoft Azure 使用 Microsoft 的公司 PKI 基础结构。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 已建立密钥管理过程，在整个生命周期（例如，生成、分发、吊销）中管理加密密钥。 Microsoft Azure 使用 Microsoft 的公司 PKI 基础结构。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 根据部署指南中的记述强制实施强密码。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。<br /><br />|
 
 
@@ -191,7 +191,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 已建立密钥管理过程，在整个生命周期（例如，生成、分发、吊销）中管理加密密钥。 Microsoft Azure 使用 Microsoft 的公司 PKI 基础结构。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 已建立密钥管理过程，在整个生命周期（例如，生成、分发、吊销）中管理加密密钥。 Microsoft Azure 使用 Microsoft 的公司 PKI 基础结构。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 根据部署指南中的记述强制实施强密码。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -207,7 +207,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 根据部署指南中的记述强制实施强密码。|
 
 
@@ -220,7 +220,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Active Directory 进行用户管理。 可对 `-enableADDomainPasswordPolicy` 选项进行设置，确保密码每 90 天至少过期一次。|
 
 
@@ -233,7 +233,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 根据部署指南中的记述强制实施强密码。 有关详细信息，请参阅 [PCI 指南 - 标识管理](payment-processing-blueprint.md#identity-management)。<br /><br />|
 
 
@@ -246,7 +246,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 根据部署指南中的记述强制实施强密码。 有关详细信息，请参阅 [PCI 指南 - 标识管理](payment-processing-blueprint.md#identity-management)。<br /><br />|
 
 
@@ -263,7 +263,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Azure 管理员在对 Azure 系统和服务器进行维护和管理时，必须使用多重身份验证进行访问。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Azure 管理员在对 Azure 系统和服务器进行维护和管理时，必须使用多重身份验证进行访问。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 在部署期间创建三个帐户：admin、sqladmin 和 edna（执行演示期间登录到 Web 应用的默认用户）。 不对演示版实施多重身份验证。|
 
 
@@ -279,7 +279,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Azure 管理员在对 Azure 系统和服务器进行维护和管理时，必须使用多重身份验证进行访问。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Azure 管理员在对 Azure 系统和服务器进行维护和管理时，必须使用多重身份验证进行访问。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 在部署期间创建三个帐户：admin、sqladmin 和 edna（执行演示期间登录到 Web 应用的默认用户）。 不对演示版实施多重身份验证。|
 
 
@@ -293,7 +293,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Azure 管理员在对 Azure 系统和服务器进行维护和管理时，必须使用多重身份验证进行访问。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Azure 管理员在对 Azure 系统和服务器进行维护和管理时，必须使用多重身份验证进行访问。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 在部署期间创建三个帐户：admin、sqladmin 和 edna（执行演示期间登录到 Web 应用的默认用户）。 不对演示版实施多重身份验证。|
 
 
@@ -310,7 +310,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户有责任遵循相关指南以及记录身份验证过程和策略，并将其传达给所有用户。|
 
 
@@ -326,14 +326,14 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 在部署期间创建三个帐户：admin、sqladmin 和 edna（执行演示期间登录到 Web 应用的默认用户）。 不对演示版实施多重身份验证。|
 
 
 
 ### <a name="pci-dss-requirement-851"></a>PCI DSS 要求 8.5.1
 
-**8.5.1** **仅适用于服务提供商的其他要求：**可以远程访问客户端进行相关操作（例如，对 POS 系统或服务器提供支持）的服务提供商必须对每个客户使用唯一身份验证凭据（例如密码/通行短语）。 
+**8.5.1** **仅适用于服务提供商的其他要求：** 可以远程访问客户端进行相关操作（例如，对 POS 系统或服务器提供支持）的服务提供商必须对每个客户使用唯一身份验证凭据（例如密码/通行短语）。 
 
 > [!NOTE]
 > 此要求不适用于共享托管提供商访问其自己的托管环境，此类环境中会托管多个客户环境。
@@ -342,7 +342,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用于 Microsoft Azure 客户。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用于 Microsoft Azure 客户。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用于 Microsoft Azure 客户。|
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 在部署期间创建三个帐户：admin、sqladmin 和 edna（执行演示期间登录到 Web 应用的默认用户）。 不对演示版实施多重身份验证。 所有访问都通过 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 进行管理，后者有助于保护云应用程序和服务使用的加密密钥和机密。 |
 
 
@@ -373,7 +373,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 通过 Azure Key Vault 保护所有持卡人数据，而记录加密则在部署中有概述。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。<br /><br />|
 
 
@@ -386,7 +386,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责确保记录在进行标识和身份验证时使用过哪些安全策略和操作过程，并将其告知受影响的各方。|
 
 

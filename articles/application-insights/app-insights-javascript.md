@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a2cb3d504abcd3f9c50df2427884d478ad2240c4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c3c5a3029916b91b65a5bd0f6efa5c83f5dfcb66
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 了解网页或应用的性能和使用情况。 如果将 [Application Insights](app-insights-overview.md) 添加到页面脚本，可以获取页面加载和 AJAX 调用的时间、浏览器异常和 AJAX 失败的计数和详细信息，以及用户和会话计数。 所有这些信息可按页面、客户端 OS 和浏览器版本、地理位置和其他维度细分。 可以针对失败计数或页面加载缓慢情况设置警报。 并且通过在 JavaScript 代码中插入跟踪调用，可以跟踪网页应用程序的不同功能的使用情况。
@@ -113,11 +113,8 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
     // Time page load up to execution of first trackPageView().
     overridePageViewDuration: boolean,
 
-    // Set these dynamically for an authenticated user.
-    appUserId: string,
+    // Set dynamically for an authenticated user.
     accountId: string,
-
-
 
 ## <a name="run"></a>运行应用
 运行 Web 应用，使用它生成遥测数据，并等待几秒钟。 可以在开发计算机上使用 **F5** 键运行应用，或者发布应用供用户操作。

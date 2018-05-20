@@ -1,25 +1,25 @@
 ---
-title: "使用 Azure AD 应用代理发布远程桌面 | Microsoft Docs"
-description: "介绍有关 Azure AD 应用程序代理连接器的基础知识。"
+title: 使用 Azure AD 应用代理发布远程桌面 | Microsoft Docs
+description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: daveba
+ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 44b54ad4331d48202044316486a5b1d1ef9202d2
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c24781ad432a4682ebb0afcb95390bdcf8962d90
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 01/05/2018
 
 - RD Web 和 RD 网关终结点必须位于同一台计算机上，并且有一个共用的根。 RD Web 和 RD 网关将作为具有应用程序代理的单个应用程序发布，因此，可以在两个应用程序之间体验单一登录。
 
-- 应该[已部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) 并[已启用应用程序代理](active-directory-application-proxy-enable.md)。
+- 应该[已部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) 并[已启用应用程序代理](manage-apps/application-proxy-enable.md)。
 
 - 此方案假定你的最终用户通过 Windows 7 或 Windows 10 桌面版（通过 RD 网页连接）上的 Internet Explorer 进行访问。 如果需要支持其他操作系统，请参阅[对其他客户端配置的支持](#support-for-other-client-configurations)。
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/05/2018
 
 ### <a name="publish-the-rd-host-endpoint"></a>发布 RD 主机终结点
 
-1. 使用以下值[发布新的应用程序代理应用程序](application-proxy-publish-azure-portal.md)：
+1. 使用以下值[发布新的应用程序代理应用程序](manage-apps/application-proxy-publish-azure-portal.md)：
    - 内部 URL：https://\<rdhost\>.com/，其中，\<rdhost\> 是 RD Web 和 RD 网关共享的共用根。
    - 外部 URL：系统会根据应用程序的名称自动填充此字段，但可以修改它。 用户访问 RDS 时，会转到此 URL。
    - 预身份验证方法：Azure Active Directory

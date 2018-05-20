@@ -3,16 +3,16 @@ title: 将 Azure 磁盘与 AKS 配合使用
 description: 将 Azure 磁盘与 AKS 配合使用
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 5c82659e4dd980b9285d81d51eb17b227ec33035
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 858961db439b28a71d3475d2608073287e02f2fd
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>含 Azure 磁盘的永久性卷
 
@@ -60,10 +60,10 @@ spec:
       storage: 5Gi
 ```
 
-使用 [kubectl create][kubectl-create] 命令创建永久性卷声明。
+使用 [kubectl apply][kubectl-apply] 命令创建永久性卷声明。
 
 ```azurecli-interactive
-kubectl create -f azure-premimum.yaml
+kubectl apply -f azure-premimum.yaml
 ```
 
 ## <a name="using-the-persistent-volume"></a>使用永久性卷
@@ -90,10 +90,10 @@ spec:
         claimName: azure-managed-disk
 ```
 
-使用 [kubectl create][kubectl-create] 命令创建 Pod。
+使用 [kubectl apply][kubectl-apply] 命令创建 Pod。
 
 ```azurecli-interactive
-kubectl create -f azure-pvc-disk.yaml
+kubectl apply -f azure-pvc-disk.yaml
 ```
 
 现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。
@@ -107,7 +107,7 @@ kubectl create -f azure-pvc-disk.yaml
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-disk]: https://kubernetes.io/docs/concepts/storage/storage-classes/#new-azure-disk-storage-class-starting-from-v172
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/

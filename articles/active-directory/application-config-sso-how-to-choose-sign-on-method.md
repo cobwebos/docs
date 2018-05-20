@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 4363f308f9bfa685b0f4e946cdd97d34b6ece197
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 52f4045ebb30bf32989e9f7b946fd03d468a9de2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>如何确定要使用哪种单一登录方法
 
@@ -80,5 +80,5 @@ ms.lasthandoff: 04/05/2018
 7.  加载应用程序后，在应用程序的左侧导航菜单中，单击“单一登录”。
 
 ## <a name="next-steps"></a>后续步骤
-[使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
+[使用应用程序代理为应用提供单一登录](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

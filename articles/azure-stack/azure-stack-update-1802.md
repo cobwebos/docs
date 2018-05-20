@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: d0641e1c7c09ac081e4dc024d6e231b88bcb58d2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5cf61ccaadc40a5f250dcf477de5b446052aba9a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新
 
@@ -115,8 +115,6 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 - 无法在管理员门户中查看计算或存储资源。 此问题的原因是更新安装过程中出错，导致系统错误地将更新报告为成功。 如果发生此问题，请联系 Microsoft 客户支持服务部门以寻求帮助。
 
 - 可能会在门户中看到空白的仪表板。 若要恢复仪表板，请选择门户右上角的齿轮图标，然后选择“还原默认设置”。
-
-- 查看资源或资源组的属性时，发现“移动”按钮已禁用。 这是预期的行为。 目前不支持在资源组或订阅之间移动资源或资源组。
 
 - 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
 
@@ -262,6 +260,7 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 - 只有资源提供程序才能在托管 SQL 或 MySQL 的服务器上创建项目。 如果在不是由资源提供程序创建的主机服务器上创建项目，则此类项目可能导致状态不匹配。  
 
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
 
 > [!NOTE]  
 > 更新到 Azure Stack 1802 以后，可以继续使用以前部署的 SQL 和 MySQL 资源提供程序。  建议在新版本发布后更新 SQL 和 MySQL。 与 Azure Stack 一样，请将更新按顺序应用到 SQL 和 MySQL 资源提供程序。  例如，如果使用版本 1710，请先应用版本 1711，然后应用 1712，再应用 1802 的更新。      

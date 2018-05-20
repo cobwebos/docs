@@ -1,11 +1,11 @@
 ---
-title: "在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权 | Microsoft 文档"
-description: "了解如何在 API 管理中使用 OAuth 2.0 为用户授权。"
+title: 在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权 | Microsoft 文档
+description: 了解如何在 API 管理中使用 OAuth 2.0 为用户授权。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 47011bf2cfde268bb6248e54e98930f3a0b522e4
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: f3611fa4da571dd74d844c7fad45788ece372be4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
 许多 API 支持使用 [OAuth 2.0](http://oauth.net/2/) 维护 API 的安全，并确保仅有效用户具有访问权限且只能访问有权访问的资源。 要将 Azure API 管理的交互式开发人员门户与此类 API 配合使用，需通过该服务对服务实例进行配置，使之适用于支持 OAuth 2.0 的 API。

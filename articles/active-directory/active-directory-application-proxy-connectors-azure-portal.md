@@ -1,25 +1,25 @@
 ---
-title: "在 Azure AD 应用代理中使用连接器组在单独的网络和位置上发布应用程序 | Microsoft Docs"
-description: "介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。"
+title: 在 Azure AD 应用代理中使用连接器组在单独的网络和位置上发布应用程序 | Microsoft Docs
+description: 介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 58886fc8d1b713207d8cd2c5547d2f99420ba6eb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3ffc453c98f8d21f1cd6f7025387031bdacf073a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/01/2018
 >如果有大型应用程序代理部署，则不向默认连接器组分配任何应用程到。 这样一来，将新连接器分配给活动的连接器组之前，新连接器不接收任何实时流量。 此配置还可以通过将连接器移回默认组，让它们处于空闲模式，从而你可以在不会影响用户的状态下执行维护。
 
 ## <a name="prerequisites"></a>先决条件
-为了为连接器分组，必须先确保[已安装多个连接器](active-directory-application-proxy-enable.md)。 安装新的连接器时，该连接器会自动加入**默认**连接器组。
+为了为连接器分组，必须先确保[已安装多个连接器](manage-apps/application-proxy-enable.md)。 安装新的连接器时，该连接器会自动加入**默认**连接器组。
 
 ## <a name="create-connector-groups"></a>创建连接器组
 使用以下步骤创建任意数量的连接器组。 
@@ -126,6 +126,6 @@ ms.lasthandoff: 02/01/2018
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
-* [启用单一登录](application-proxy-sso-overview.md)
+* [启用单一登录](manage-apps/application-proxy-single-sign-on.md)
 
 

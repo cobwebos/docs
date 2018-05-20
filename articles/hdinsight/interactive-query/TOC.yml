@@ -138,6 +138,8 @@
         - name: 使用 Zeppelin
           href: ../hdinsight-apache-spark-zeppelin-notebook.md
           maintainContext: true
+        - name: 使用 Grafana
+          href: ./hdinsight-grafana.md
         - name: 构建 HDInsight 应用程序
           items:
             - name: 安装自定义应用

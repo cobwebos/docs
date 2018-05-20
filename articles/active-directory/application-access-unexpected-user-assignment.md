@@ -1,11 +1,11 @@
 ---
-title: "如何将用户分配给应用程序 | Microsoft Docs"
-description: "了解如何将用户分配给租户中的应用程序"
+title: 如何将用户分配给应用程序 | Microsoft Docs
+description: 了解如何将用户分配给租户中的应用程序
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 6681131f24dd36ccc5881d50f3efdf9806b15c58
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eff24ddcb02f4aa4cac28d722e73222ca2e686e4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-assign-users-to-applications"></a>如何将用户分配给应用程序
 
@@ -58,4 +58,4 @@ ms.lasthandoff: 12/11/2017
 10. 通过登录应用程序，用户自己[同意使用应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
+[使用 Azure Active Directory 管理应用程序](manage-apps/what-is-application-management.md)

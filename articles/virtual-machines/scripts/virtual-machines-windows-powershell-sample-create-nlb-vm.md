@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell 脚本示例 - 创建 Windows VM NLB | Microsoft Docs"
-description: "Azure PowerShell 脚本示例 - 创建 Windows VM NLB"
+title: Azure PowerShell 脚本示例 - 创建 Windows VM NLB | Microsoft Docs
+description: Azure PowerShell 脚本示例 - 创建 Windows VM NLB
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -17,10 +17,10 @@ ms.date: 06/05/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: 25bcbbcd1615e01a384825d7bd1582a528e91f71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>对高度可用的虚拟机之间的流量进行负载均衡
 

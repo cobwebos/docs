@@ -3,16 +3,17 @@ title: 使用 Chocolatey 进行 Azure 自动化 DSC 持续部署
 description: 使用 Azure Automation DSC 和 Chocolatey 包管理器进行 DevOps 持续部署。  包含完整 JSON ARM 模板和 PowerShell 源代码的示例。
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: bf535dfae4c5f710a423343bc3d76c81d83df2ae
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9c3cb5a00433a76e8cc444cc48c648cb2749a2ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>用例：使用 Automation DSC 和 Chocolatey 持续部署到虚拟机
 DevOps 领域中有许多工具可帮助你处理持续集成管道中的各个点。  Azure Automation Desired State Configuration (DSC) 是 DevOps 团队可以采用的新选项。  本文演示如何为 Windows 计算机设置持续部署 (CD)。  可以轻松扩展技术，在角色（例如网站）中按需要添加更多 Windows 计算机，还能从该角色扩展到其他角色。

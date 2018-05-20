@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: acfe066d9ad4882bcff85b7fd51dc7d3b2278235
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 887ed316605ab423159ef0d2e07f0960c702ed8b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
@@ -42,7 +42,6 @@ ms.lasthandoff: 03/16/2018
 要完成本教程，需要：
 
 * [Git](https://git-scm.com/downloads)
-* 一个有效的 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Docker](https://docs.docker.com/get-started/#setup)
 * 一个 [Docker 中心帐户](https://docs.docker.com/docker-id/)
 
@@ -125,6 +124,10 @@ docker run -p 2222:8000 <docker-ID>/mydockerimage:v1.0.0
 浏览到 `http://localhost:2222`，验证 Web 应用和容器是否正常运行。
 
 ![在本地测试 Web 应用](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
+
+> [!NOTE] 
+> 还可以使用 SSH、SFTP 或 Visual Studio Code（用于实时调试 Node.js 应用）直接从本地开发计算机连接到应用容器。 有关详细信息，请参阅[远程调试和通过 SSH 登录到 Linux 上的应用服务](https://aka.ms/linux-debug)。
+>
 
 ## <a name="push-the-docker-image-to-docker-hub"></a>将 Docker 映像推送到 Docker 中心
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/04/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 3a7c7663bc13b7169ec9d31aa21365219ec39059
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ef7517e91965b0d7444d158f041b1d2bddea6bd2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
@@ -32,7 +32,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 ## <a name="monitoring-in-app-insights"></a>App Insights 中的监视
 
-Application Insights 以多样化的方式与 Service Fabric 集成。 在概述页中，AI 提供有关服务的重要信息，例如响应时间和处理的请求数。 单击顶部的“搜索”按钮可以看到应用程序中最近请求的列表。 此外，可在此处查看失败的请求数，以及诊断可能发生的错误。
+使用 Service Fabric 时，可以直接使用 Application Insights。 在概述页中，AI 提供有关服务的重要信息，例如响应时间和处理的请求数。 单击顶部的“搜索”按钮可以看到应用程序中最近请求的列表。 此外，可在此处查看失败的请求数，以及诊断可能发生的错误。
 
 ![AI 概述](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
@@ -109,7 +109,7 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 建议使用 EventFlow 和 WAD 作为聚合解决方案，因为它们允许使用更加模块化的方法，方便诊断和监视。例如，若要从 EventFlow 更改输出，不需要更改实际检测，仅需对配置文件进行简单修改。 然而，若决定投资使用 Application Insights，且不太可能更改到其他平台，则应使用 AI 的新 SDK 以聚合事件并将它们发送到 AI。 这意味着不再非得配置 EventFlow 将数据发送到 AI，而是安装 Application Insight 的 Service Fabric NuGet 包。 可在[此处](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)找到此包的详细信息。
 
-[微服务和容器的 Application Insights 支持](https://azure.microsoft.com/en-us/blog/app-insights-microservices/)会显示一些开发中的新功能（当前仍为 beta 版本），通过它们可以使用更加丰富的现成 AI 监视选项。 这包含依赖项跟踪（用于生成群集中所有服务和应用程序的 AppMap 以及它们之间的通信），以及服务的更好跟踪关联（有助于更好地查明应用或服务的工作流中的问题）。
+[微服务和容器的 Application Insights 支持](https://azure.microsoft.com/blog/app-insights-microservices/)会显示一些开发中的新功能（当前仍为 beta 版本），通过它们可以使用更加丰富的现成 AI 监视选项。 这包含依赖项跟踪（用于生成群集中所有服务和应用程序的 AppMap 以及它们之间的通信），以及服务的更好跟踪关联（有助于更好地查明应用或服务的工作流中的问题）。
 
 若在 .NET 中进行开发，将来可能会使用一些 Service Fabric 编程模型，且愿意使用 AI 作为可视化和分析事件和日志数据的平台，那我们建议选取 AI SDK 途径作为监视和诊断工作流。 请参阅[本文](../application-insights/app-insights-asp-net-more.md)和[本文](../application-insights/app-insights-asp-net-trace-logs.md)，开始使用 AI 收集和显示日志。
 

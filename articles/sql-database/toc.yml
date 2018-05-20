@@ -104,6 +104,16 @@
       items:
         - name: 概述
           href: sql-database-security-overview.md
+        - name: 高级威胁防护
+          href: sql-advanced-threat-protection.md
+        - name: 数据发现和分类
+          href: sql-database-data-discovery-and-classification.md
+        - name: 漏洞评估
+          href: sql-vulnerability-assessment.md
+        - name: 威胁检测 - SQL 数据库
+          href: sql-database-threat-detection.md
+        - name: 威胁检测 - 托管实例
+          href: sql-database-managed-instance-threat-detection.md
         - name: 防火墙规则
           href: sql-database-firewall-configure.md
         - name: 防火墙虚拟网络规则
@@ -120,18 +130,10 @@
           href: sql-database-auditing.md
         - name: 审核 - 托管实例
           href: sql-database-managed-instance-auditing.md
-        - name: 威胁检测 - SQL 数据库
-          href: sql-database-threat-detection.md
-        - name: 威胁检测 - 托管实例
-          href: sql-database-managed-instance-threat-detection.md
         - name: 表审核和 TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: 动态数据掩码
           href: sql-database-dynamic-data-masking-get-started.md
-        - name: 漏洞评估
-          href: sql-vulnerability-assessment.md
-        - name: 数据发现和分类
-          href: sql-database-data-discovery-and-classification.md
     - name: 业务连续性
       items:
         - name: 概述

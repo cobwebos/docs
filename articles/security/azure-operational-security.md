@@ -1,12 +1,12 @@
 ---
-title: "Azure 操作安全性 |Microsoft Docs"
-description: "了解 Microsoft Operations Management Suite (OMS) 及其服务，以及它的工作原理。"
+title: Azure 操作安全性 |Microsoft Docs
+description: 了解 Microsoft Operations Management Suite (OMS) 及其服务，以及它的工作原理。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8528eeb4eac8397beaa3d0dca37ce9eb33167b32
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d5bea758a0b2a950f51ec443707d9d32dee9cbc4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>介绍
@@ -161,7 +161,7 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 -   **Azure 安全中心存储**：有关安全警报（包括合作伙伴警报）、建议和安全运行状况的信息将集中存储，存储位置目前位于美国。 该信息可能包括根据需要从用户虚拟机收集的相关配置信息和安全事件，目的是为用户提供安全警报、建议或安全运行状况。
 
 
-## <a name="azure-monitor"></a>Azure 监视器
+## <a name="azure-monitor"></a>Azure Monitor
 
 [OMS 安全](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)和审核解决方案允许 IT 人员主动监视所有资源，这有助于最大程度地降低安全事件的影响。 OMS 安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
 
@@ -171,7 +171,7 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 
 Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 Azure 基础结构（活动日志）和每个单独 Azure 资源（诊断日志）的数据提供可视化、查询、路由、警报、自动缩放和自动化功能。
 
-![Azure 监视器](./media/azure-operational-security/azure-operational-security-fig6.png)
+![Azure Monitor](./media/azure-operational-security/azure-operational-security-fig6.png)
 
 
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。

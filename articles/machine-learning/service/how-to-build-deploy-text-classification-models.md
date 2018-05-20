@@ -9,11 +9,11 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
-ms.openlocfilehash: 66d316f50f161c2e905c3f76da30580b44a63a23
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a970bd889e6994833b2e34adc90af594f9db4d6b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署文本分类模型
 
@@ -420,13 +420,14 @@ text_classifier.fit(df_train)
             text_callable_list=None, text_cols=['text'], text_regex_list=None,
             weight_col=None)
 
-### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>检查并设置不同管道步骤的参数
 
-尽管拟合了 scikit-learn 模型，但预处理是在使用预处理器和特征化器（转换）步骤管道拟合之前执行的。 因此，本文提到了使用“管道”进行训练。 在评估过程中，整个管道（包括预处理和 scikit-learn 模型预测）将应用到测试数据集。
+训练期间必须具有文本和标签列。 但预测只需要使用文本列。 
+
+### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>检查并设置不同管道步骤的参数
+    
+通常在拟合模型之前设置参数。 
 
 ***显示示例和 text_word_ngrams*** 
-
-通常在拟合模型之前设置参数。 
 
 以下代码示例演示如何使用默认管道和模型参数训练模型。 
 

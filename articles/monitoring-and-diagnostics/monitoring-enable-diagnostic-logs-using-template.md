@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 76021642073c7463254f51e84efd9af459af2244
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5b372ae5a7ff2ad26e4bb83675f592df3f08931b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>在创建资源时使用 Resource Manager 模板自动启用诊断设置
 本文介绍如何使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这样可以让用户在创建资源时自动将诊断日志和指标流式传输到事件中心、将其存档在存储帐户中，或者发送到 Log Analytics。
@@ -259,7 +259,7 @@ ms.lasthandoff: 05/03/2018
 3. 将 WADCfg XML 文件的内容添加到 XMLCfg 属性中，对所有 XML 字符进行适当的转义。
 
 > [!WARNING]
-> 这最后一步操作起来比较复杂。 请[参阅此文](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables)获取相关示例，了解如何将诊断配置架构拆分成进行了正确转义和格式化操作的变量。
+> 这最后一步操作起来比较复杂。 请[参阅此文](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables)获取相关示例，了解如何将诊断配置架构拆分成进行了正确转义和格式化操作的变量。
 > 
 > 
 

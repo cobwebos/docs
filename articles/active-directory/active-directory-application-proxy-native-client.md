@@ -3,23 +3,23 @@ title: 发布本机客户端应用 - Azure AD | Microsoft Docs
 description: 介绍如何使本机客户端应用与 Azure AD 应用程序代理连接器通信，以提供本地应用的安全远程访问。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: f0cae145-e346-4126-948f-3f699747b96e
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 823939e76bcf982d37b58595795dca84c1830e19
-ms.sourcegitcommit: 4bc2aa08a116a0acca0af3b02b5c1d144d3cf9b1
+ms.openlocfilehash: 79ee3aca783d7c29959c2730696a313bf821b3bc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本机客户端应用与代理应用程序交互
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/30/2018
 本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。 
 
 ## <a name="step-1-publish-your-application"></a>步骤 1：发布应用程序
-像发布任何其他应用程序一样发布代理应用程序，并分配可访问该应用程序的用户。 有关详细信息，请参阅[使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
+像发布任何其他应用程序一样发布代理应用程序，并分配可访问该应用程序的用户。 有关详细信息，请参阅[使用应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)。
 
 ## <a name="step-2-configure-your-application"></a>步骤 2：配置应用程序
 按如下方式配置本机应用程序：
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/30/2018
    ![创建新的应用注册](./media/active-directory-application-proxy-native-client/create.png)
 5. 选择**创建**。
 
-有关创建新应用注册的更多详细信息，请参阅[将应用程序与 Azure Active Directory 集成](.//develop/active-directory-integrating-applications.md)。
+有关创建新应用注册的更多详细信息，请参阅[将应用程序与 Azure Active Directory 集成](./develop/active-directory-integrating-applications.md)。
 
 
 ## <a name="step-3-grant-access-to-other-applications"></a>步骤 3：向其他应用程序授予访问权限
@@ -97,4 +97,4 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
 
-了解如何设置[应用程序代理的单一登录](application-proxy-sso-overview.md)
+了解如何设置[应用程序代理的单一登录](manage-apps/application-proxy-single-sign-on.md)

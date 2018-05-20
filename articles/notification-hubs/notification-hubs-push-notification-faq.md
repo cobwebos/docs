@@ -1,25 +1,25 @@
 ---
-title: "Azure 通知中心：常见问题解答 (FAQ) | Microsoft Docs"
-description: "关于设计/实现有关通知中心的解决方案的常见问题"
+title: Azure 通知中心：常见问题解答 (FAQ) | Microsoft Docs
+description: 关于设计/实现有关通知中心的解决方案的常见问题
 services: notification-hubs
 documentationcenter: mobile
-author: ysxu
-manager: erikre
-keywords: "推送通知, 推送通知, iOS 推送通知, android 推送通知, ios 推送, android 推送"
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
+keywords: 推送通知, 推送通知, iOS 推送通知, android 推送通知, ios 推送, android 推送
 ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/19/2017
-ms.author: yuaxu
-ms.openlocfilehash: d19a1b7c8d50ef0fde3cf65c9fd469bc34a27adc
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: fbdb52b1b2dee682021fd822d584551f41f723ff
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题解答
 ## <a name="general"></a>常规
@@ -34,7 +34,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 * **免费**：此层是探索推送功能的极佳起点。 不建议对生产应用使用此层。 在每个命名空间中，每个月可以预配 500 个设备和执行 100 万次推送，但无法享受服务级别协议 (SLA) 保证。
 * **基本**：建议将此层（或标准层）用于较小型的生产应用。 在每个命名空间中，每个月可以预配 200,000 个设备和执行 1000 万次推送（基准）。 提供配额增长选项。
-* **标准：**建议将此层用于中型、大型生产应用。 在每个命名空间中，每个月可以预配 1000 万个设备和执行 1000 万次推送（基准）。 提供配额增长选项，以及丰富的遥测功能。
+* **标准：** 建议将此层用于中型、大型生产应用。 在每个命名空间中，每个月可以预配 1000 万个设备和执行 1000 万次推送（基准）。 提供配额增长选项，以及丰富的遥测功能。
 
 标准层功能：
 * **丰富的遥测功能**：可以使用通知中心的消息遥测来跟踪所有推送请求和用于调试的平台通知系统反馈。
@@ -82,7 +82,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>如果通过通知中心发送推送通知，可以支持多少个设备？
 有关支持的设备数目的详细信息，请参阅[通知中心定价]页。
 
-如果需要支持超过 1000 万台已注册的设备，请直接[与我们联系](https://azure.microsoft.com/overview/contact-us/)，我们将帮你扩展解决方案。
+如果需要支持 1000 万台以上的已注册设备，请直接[与我们联系](https://azure.microsoft.com/overview/contact-us/)，我们将帮你扩展解决方案。
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>我可以发送多少推送通知？
 Azure 通知中心根据系统中通过的通知数量自动向上扩展，具体取决于所选的层。

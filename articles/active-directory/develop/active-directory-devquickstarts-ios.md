@@ -3,11 +3,12 @@ title: Azure AD iOS 入门 | Microsoft Docs
 description: 如何构建与 Azure AD 相集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 iOS 应用程序。
 services: active-directory
 documentationcenter: ios
-author: celestedg
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 42303177-9566-48ed-8abb-279fcf1e6ddb
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 598771eb12d0608ef424c08401b04191a2cc3ee8
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1ceae59cca5790d9d74f72ce644e31fb0949cd49
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-ios-getting-started"></a>Azure AD iOS 入门
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -67,12 +68,12 @@ ms.lasthandoff: 05/04/2018
 4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建新的“本机客户端应用程序”。
   * 应用程序的**名称**向最终用户描述该应用程序。
-  * **重定向 URI** 是 Azure AD 用来返回令牌响应的方案与字符串组合。  请输入特定于应用程序并基于之前的重定向 URI 信息的一个值。
-6. 完成注册后，Azure AD 将为应用分配一个唯一的应用程序 ID。  在后面的部分中会用到此值，因此，请从应用程序选项卡中复制此值。
-7. 在“设置”页上，选择“所需权限”，并选择“添加”。 选择“Microsoft Graph”作为 API，并在“委派的权限”下添加“读取目录数据”权限。  这会设置应用程序以在 Azure AD Graph API 中查询用户。
+  * **重定向 URI** 是 Azure AD 用来返回令牌响应的方案与字符串组合。 请输入特定于应用程序并基于之前的重定向 URI 信息的一个值。
+6. 完成注册后，Azure AD 将为应用分配一个唯一的应用程序 ID。 在后面的部分中会用到此值，因此，请从应用程序选项卡中复制此值。
+7. 在“设置”页上，选择“所需权限”，并选择“添加”。 选择“Microsoft Graph”作为 API，并在“委派的权限”下添加“读取目录数据”权限。 这会设置应用程序以在 Azure AD Graph API 中查询用户。
 
 ## <a name="3-install-and-configure-adal"></a>3.安装并配置 ADAL
-将应用程序注册到 Azure AD 后，可以安装 ADAL 并编写标识相关的代码。  为了使 ADAL 能够与 Azure AD 进行通信，需要为 ADAL 提供一些有关应用注册的信息。
+将应用程序注册到 Azure AD 后，可以安装 ADAL 并编写标识相关的代码。 为了使 ADAL 能够与 Azure AD 进行通信，需要为 ADAL 提供一些有关应用注册的信息。
 
 1. 首先，使用 CocoaPods 将 ADAL 添加到 DirectorySearcher 项目。
 
@@ -97,15 +98,15 @@ ms.lasthandoff: 05/04/2018
     $ open QuickStart.xcworkspace
     ```
 
-4. 在快速入门项目中，打开 plist 文件 `settings.plist`。  替换节中的元素值，以反映你在 Azure 门户中输入的值。 每当使用 ADAL 时，代码都会引用这些值。
+4. 在快速入门项目中，打开 plist 文件 `settings.plist`。 替换节中的元素值，以反映你在 Azure 门户中输入的值。 每当使用 ADAL 时，代码都会引用这些值。
   * `tenant` 是 Azure AD 租户的域，例如 contoso.onmicrosoft.com。
   * `clientId` 是从门户复制的应用程序的客户端 ID。
   * `redirectUri` 是你在门户中注册的重定向 URL。
 
-## <a name="4----use-adal-to-get-tokens-from-azure-ad"></a>4.  使用 ADAL 从 Azure AD 获取令牌
-ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只需调用 completionBlock `+(void) getToken : `，ADAL 就会负责其余的工作。  
+## <a name="4-use-adal-to-get-tokens-from-azure-ad"></a>4.使用 ADAL 从 Azure AD 获取令牌
+ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只需调用 completionBlock `+(void) getToken : `，ADAL 就会负责其余的工作。 
 
-1. 在 `QuickStart` 项目中，打开 `GraphAPICaller.m` 并找到靠近顶部位置的 `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` 注释。  将在此处通过 CompletionBlock 传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
+1. 在 `QuickStart` 项目中，打开 `GraphAPICaller.m` 并找到靠近顶部位置的 `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` 注释。 将在此处通过 CompletionBlock 传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
 
     ```ObjC
     +(void) getToken : (BOOL) clearCache
@@ -146,7 +147,7 @@ ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只
 
     ```
 
-2. 现在，我们需要使用此令牌在图形中搜索用户。 找到 `// TODO: implement SearchUsersList` 注释。 此方法将向 Azure AD Graph API 发出 GET 请求，以查询其 UPN 以给定搜索词开头的用户。  要查询 Azure AD Graph API，需要在请求的 `Authorization` 标头中包含 access_token。 这是 ADAL 的进入位置。
+2. 现在，我们需要使用此令牌在图形中搜索用户。 找到 `// TODO: implement SearchUsersList` 注释。 此方法将向 Azure AD Graph API 发出 GET 请求，以查询其 UPN 以给定搜索词开头的用户。 要查询 Azure AD Graph API，需要在请求的 `Authorization` 标头中包含 access_token。 这是 ADAL 的进入位置。
 
     ```ObjC
     +(void) searchUserList:(NSString*)searchString
@@ -218,7 +219,7 @@ ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只
     ```
 
 
-3. 当应用通过调用 `getToken(...)` 来请求令牌时，ADAL 会尝试返回一个令牌，而不要求用户输入凭据。  如果 ADAL 确定用户需要登录以获取令牌，它会显示一个用于登录的对话框，收集用户的凭据，并在身份验证成功后返回一个令牌。  如果 ADAL 出于任何原因无法返回令牌，则会引发 `AdalException`。
+3. 当应用通过调用 `getToken(...)` 来请求令牌时，ADAL 会尝试返回一个令牌，而不要求用户输入凭据。 如果 ADAL 确定用户需要登录以获取令牌，它会显示一个用于登录的对话框，收集用户的凭据，并在身份验证成功后返回一个令牌。 如果 ADAL 出于任何原因无法返回令牌，则会引发 `AdalException`。
 
 > [!Note] 
 > `AuthenticationResult` 对象包含一个 `tokenCacheStoreItem` 对象，后者可用于收集应用可能需要的信息。 在此快速入门中，`tokenCacheStoreItem` 用于确定身份验证是否已发生。
@@ -226,14 +227,14 @@ ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只
 >
 
 ## <a name="5-build-and-run-the-application"></a>5.构建并运行应用程序
-祝贺你！ 现在，已有了一个可正常工作的 iOS 应用程序，它可以对用户进行身份验证，使用 OAuth 2.0 安全地调用 Web API，并获取有关用户的基本信息。  如果尚未这样做，可以在租户中填充一些用户。  启动快速入门应用，并使用这些用户之一进行登录。  根据用户的 UPN 搜索其他用户。  关闭应用，然后重新启动它。  请注意，用户的会话将保持不变。
+祝贺你！ 现在，已有了一个可正常工作的 iOS 应用程序，它可以对用户进行身份验证，使用 OAuth 2.0 安全地调用 Web API，并获取有关用户的基本信息。 如果尚未这样做，可以在租户中填充一些用户。 启动快速入门应用，并使用这些用户之一进行登录。 根据用户的 UPN 搜索其他用户。 关闭应用，然后重新启动它。 请注意，用户的会话将保持不变。
 
-使用 ADAL 可以方便地将所有这些常见标识功能合并到应用程序中。  它会负责所有的繁琐工作，例如缓存管理、OAuth 协议支持、向用户显示用于登录的 UI，以及刷新过期令牌。  只需要真正了解一个 API 调用，即 `getToken`。
+使用 ADAL 可以方便地将所有这些常见标识功能合并到应用程序中。 它会负责所有的繁琐工作，例如缓存管理、OAuth 协议支持、向用户显示用于登录的 UI，以及刷新过期令牌。 只需要真正了解一个 API 调用，即 `getToken`。
 
-[GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip) 上提供了一个完整示例（不包含配置值）供参考。  
+[GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip) 上提供了一个完整示例（不包含配置值）供参考。 
 
 ## <a name="next-steps"></a>后续步骤
-现在，可以转到其他方案。  可能想要尝试：
+现在，可以转到其他方案。 可能想要尝试：
 
 * [使用 Azure AD 保护 Node.JS Web API](active-directory-devquickstarts-webapi-nodejs.md)
 * 了解[如何使用 ADAL 在 iOS 上启用跨应用 SSO](active-directory-sso-ios.md)  

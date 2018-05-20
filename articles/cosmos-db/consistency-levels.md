@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 512f9e22d01e3bdb90210402aaf123ac6326759a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0f38d05dc720dd596c81a51abf7040ac062e8158
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的可优化数据一致性级别
 Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每个数据模型的全局分发。 它旨在提供可预测的低延迟保证以及多个完善定义的宽松一致性模型。 Azure Cosmos DB 当前提供 5 种一致性级别：非常、有限过期、会话、一致前缀和最终级别。 有限过期、会话、一致性前缀和最终级别称为“宽松一致性模型”，因为它们提供的一致性比非常一致性更差，后者是可用的最高一致性模型。 
@@ -44,7 +44,7 @@ Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每�
 | 一致性级别 | 保证 |
 | --- | --- |
 | 非常 | 可线性化。 保证读取操作返回项的最新版本。|
-| 有限过期 | 一致前缀。 读取操作落后写入操作 k 个前缀或 t 时间间隔 |
+| 有限过期 | 一致前缀。 读取操作落后写入操作最多 k 个前缀或 t 时间间隔 |
 | 会话   | 一致前缀。 单调读取、单调写入、读取写入、写入跟随读取 |
 | 一致前缀 | 返回的更新是全部更新的某些前缀，不带间隔 |
 | 最终  | 失序读取 |

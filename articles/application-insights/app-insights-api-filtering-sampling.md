@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbullwin; borooji
-ms.openlocfilehash: 06f116fc5096fe4bda9c8433c3a33726acb67eea
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 987ae184a0812f24df99a0b6e6543c8be55a9e79
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 04/18/2018
 >
 >
 
-**或者，**可以在代码中初始化筛选器。 在合适的初始化类（例如，Global.asax.cs 中的 AppStart）中，将处理器插入链：
+**或者，** 可以在代码中初始化筛选器。 在合适的初始化类（例如，Global.asax.cs 中的 AppStart）中，将处理器插入链：
 
 ```csharp
 
@@ -135,17 +135,6 @@ ms.lasthandoff: 04/18/2018
 ```
 
 在此点后创建的 TelemetryClients 将使用处理器。
-
-以下代码显示了如何在 ASP.NET Core 中添加遥测初始化表达式。
-
-```csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-    var initializer = new SuccessfulDependencyFilter();
-    var configuration = app.ApplicationServices.GetService<TelemetryConfiguration>();
-    configuration.TelemetryInitializers.Add(initializer);
-}
-```
 
 ### <a name="example-filters"></a>示例筛选器
 #### <a name="synthetic-requests"></a>综合请求
@@ -273,7 +262,7 @@ public void Process(ITelemetry item)
       </TelemetryInitializers>
     </ApplicationInsights>
 
-*或者，*可以在代码中实例化初始值设定项，例如在 Global.aspx.cs 中：
+*或者，* 可以在代码中实例化初始值设定项，例如在 Global.aspx.cs 中：
 
 ```csharp
     protected void Application_Start()

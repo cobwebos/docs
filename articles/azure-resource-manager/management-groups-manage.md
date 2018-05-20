@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/1/2018
+ms.date: 5/10/2018
 ms.author: rithorn
-ms.openlocfilehash: b69dce94e2e0bfaa413af9a95c5ef858f766ff1c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b68223830ca6c4e178447074bfbebd1322cb9477
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源 
 管理组是一些容器，可以帮助跨多个订阅管理访问权限、策略和符合性。 可以更改、删除和管理这些容器来构建可与 [Azure 策略](../azure-policy/azure-policy-introduction.md)和 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 配合使用的层次结构。 有关管理组的详细信息，请参阅[使用 Azure 管理组来组织资源](management-groups-overview.md)。
@@ -103,9 +103,9 @@ C:\> az account management-group delete --group-name Contoso
 ### <a name="view-in-the-portal"></a>在门户中查看
 1. 登录到 [Azure 门户](https://portal.azure.com)
 2. 选择“所有服务” > “管理组” 
-3. 此时会加载管理组层次结构页，其中显示了你有权访问的所有组。 
+3. 此时将加载“管理组”层次结构页，可以在其中浏览有权访问的所有管理组和订阅。 选择组名会将你带到层次结构中的下一级别。 导航的工作方式与文件资源管理器一样。 
     ![主页](media/management-groups/main.png)
-4. 选择单个管理组可查看其详细信息  
+4. 若要查看管理组的详细信息，请选择管理组标题旁边的“(详细信息)”链接。 如果此链接不可用，则表示你无权查看该管理组。  
 
 ### <a name="view-in-powershell"></a>在 PowerShell 中查看
 使用 Get-AzureRmManagementGroup 命令可检索所有组。  

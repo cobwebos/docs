@@ -10,14 +10,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 84ca616856f363e4d3d68ab1cc45b97f7c589185
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Go 配合使用
 
@@ -61,7 +61,8 @@ GO SDK 依赖 Azure Go-AutoRest 模块将 REST 请求发送到 Azure 资源管�
 在 Azure Stack 上运行 Go 代码的示例：
   1. 安装 Azure SDK for Go 及其依赖项。 有关说明，请参阅上一部分[安装 Azure SDK for Go](#install-azure-sdk-for-go)。
   2. 从资源管理器终结点获取元数据信息。 该终结点返回 JSON 文件，以及运行 Go 代码所需的信息。
-  > [!note]  
+
+  > [!Note]  
   > Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`  
   > 集成系统中的 **ResourceManagerUrl** 为：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
   > 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
@@ -176,7 +177,8 @@ Authorizer 必须设置为资源客户端的授权者。 可通过不同的方�
 ## <a name="example"></a>示例
 
 本部分演示用于在 Azure Stack 中创建虚拟网络的 Go 代码示例。 有关 Go SDK 的完整示例，请参阅 [Azure Go SDk 示例存储库](https://github.com/Azure-Samples/azure-sdk-for-go-samples)。 可从该存储库的服务文件夹中的 hybrid/ 路径下获取 Azure Stack 示例。
-> [!note]  
+
+> [!Note]  
 > 若要运行此示例中的代码，请验证使用的订阅是否具有列为“已注册”的“网络”资源提供程序。 若要验证，请在 Azure Stack 门户中找到该订阅，然后单击“资源提供程序”。
 
 1. 在代码中导入所需的包。 应该使用 Azure Stack 上最新的可用配置文件来导入网络模块。 
@@ -194,7 +196,7 @@ Authorizer 必须设置为资源客户端的授权者。 可通过不同的方�
   )
   ````
 
-2. 定义环境变量。 请注意，若要创建虚拟网络，需有一个资源组。 
+2. 定义环境变量。 若要创建虚拟网络，你需要有一个资源组。 
 
   ````go
   var (

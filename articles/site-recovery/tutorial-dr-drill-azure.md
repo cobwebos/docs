@@ -1,17 +1,17 @@
 ---
-title: "使用 Azure Site Recovery 对 Azure 本地计算机运行灾难恢复演练 | Microsoft 文档"
-description: "了解使用 Azure Site Recovery 对从 Azure 本地计算机运行灾难恢复演练的相关信息"
+title: 使用 Azure Site Recovery 对 Azure 本地计算机运行灾难恢复演练 | Microsoft 文档
+description: 了解使用 Azure Site Recovery 对从 Azure 本地计算机运行灾难恢复演练的相关信息
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 2ac15e4da411efa6f018a3e3fb620023bc8964cc
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 98612730405e63c251bbba2daf770b5394db1514
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 

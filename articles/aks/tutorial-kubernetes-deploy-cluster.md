@@ -3,19 +3,19 @@ title: Kubernetes on Azure 教程 - 部署群集
 description: AKS 教程 - 部署群集
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 99b65ba5e5f0be40e464fd6565db40fda4170a0f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c793aa02e614ead146806888d26a18867ff2eebb
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>教程：部署 Azure 容器服务 (AKS) 群集
+# <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
 Kubernetes 为容器化应用程序提供一个分布式平台。 通过 AKS，使预配生产就绪的 Kubernetes 群集变得简单快捷。 在本教程的第 3 部分（共 8 部分）中，在 AKS 中部署了 Kubernetes 群集。 已完成的步骤包括：
 

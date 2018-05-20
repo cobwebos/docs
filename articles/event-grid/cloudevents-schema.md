@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/09/2018
 ms.author: babanisa
-ms.openlocfilehash: a882073fce28be1b93a6c9118c40398062f61bc5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 31af59fd7057bef6e427f08cef695688dc2111d1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>将 CloudEvents 架构与事件网格配合使用
 
@@ -23,6 +23,8 @@ CloudEvents 提供的常用事件架构适合发布和使用基于云的事件�
 CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Compute Foundation](https://www.cncf.io/) 构建的。 它目前的发布版本为 0.1。
 
 本文介绍如何将 CloudEvents 架构与事件网格配合使用。
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="cloudevent-schema"></a>CloudEvent 架构
 
@@ -74,12 +76,6 @@ CloudEvents v0.1 提供以下属性：
 
 目前，Azure 事件网格为**美国中西部**、**美国中部**和**北欧**的 CloudEvents JSON 格式输入和输出提供预览版支持。
 
-若要使用 CloudEvent，必须为 Azure CLI 启用扩展：
-
-```azurecli
-az extension add –-name eventgrid
-```
-
 可以将事件网格用于 CloudEvents 架构的事件的输入和输出。 可以将 CloudEvents 用于系统事件（例如 Blob 存储事件和 IoT 中心事件）和自定义事件。 它还可以将网络上的这些事件来回转换。
 
 
@@ -99,6 +95,10 @@ az extension add –-name eventgrid
 若要创建事件网格主题，请使用：
 
 ```azurecli
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
@@ -116,7 +116,7 @@ CloudEvents 的当前版本不支持对事件进行批处理。 若要使用 Clo
 
 ```azurecli
 az eventgrid event-subscription create \
-  --name <event_subscription_name> \  
+  --name <event_subscription_name> \
   --topic-name <topic_name> \
   -g gridResourceGroup \
   --endpoint <endpoint_URL> \

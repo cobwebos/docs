@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: virtual-machines-linux, virtual-machines-windows
+author: dlepow
+ms.service: multiple
+ms.topic: include
+ms.date: 05/11/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/12/2018
+---
 组织具有大规模计算需求。 这些大型计算工作负荷包括工程设计和分析、财务风险计算、图像渲染、复杂建模、Monte Carlo 仿真等。 
 
 使用 Azure 云可以高效运行计算密集型的 Linux 和 Windows 工作负荷（从并行批处理作业到传统的 HPC 仿真）。 在 Azure 基础结构上运行 HPC 和批处理工作负荷，并可以选择计算服务、网格管理器、Marketplace 解决方案和供应商托管的 (SaaS) 应用程序。 Azure 提供灵活的解决方案用于分配工作，以及扩展到数千个 VM 或核心，并在资源需求量减少时进行缩减。 
@@ -21,6 +37,7 @@
 * **大型计算解决方案即服务**
     * 使用 [Azure Batch](#azure-batch) 与相关的 [Azure 服务](#related-azure-services)开发自定义的大型计算解决方案和工作流。
     * 运行 [Altair](http://www.altair.com/)、[Rescale](https://www.rescale.com/azure/) 和 [Cycle Computing](https://cyclecomputing.com/)（现已[与 Microsoft 合并](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)）等供应商提供的支持 Azure 的工程与仿真解决方案。
+    * 使用 [Cray supercomputer](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) 作为 Azure 中托管的服务。
 * **Marketplace 解决方案**
     * 使用 [Azure Marketplace](https://azuremarketplace.microsoft.com/) 中提供的大量 [HPC 应用程序](#hpc-applications)和[解决方案](#marketplace-solutions)。 
     
@@ -107,17 +124,18 @@ SaaS 提供商或开发商可以使用 Batch SDK 和工具将 HPC 应用程序�
 * [使用 Azure Batch 代码示例](https://github.com/Azure/azure-batch-samples)
 * [将低优先级 VM 与 Batch 配合使用](../articles/batch/batch-low-pri-vms.md)
 * [使用 Batch Shipyard 运行容器化的 HPC 工作负荷](https://github.com/Azure/batch-shipyard)
-* [将 R 语言与 Batch 配合使用](https://github.com/Azure/doAzureParallel)
-* [在 Batch 中运行 Azure 分布式数据工程工具包](https://github.com/Azure/aztk)
+* [在 Batch 上运行并行 R 工作负荷](https://github.com/Azure/doAzureParallel)
+* [在 Batch 上运行按需 Spark 作业](https://github.com/Azure/aztk)
 
 ## <a name="workload-managers"></a>工作负荷管理器
 
 下面是可在 Azure 基础结构中运行的群集和工作负荷管理器示例。 在 Azure VM 中创建独立的群集，或从本地群集迸发到 Azure VM。 
+* [Alces Flight Compute](https://azuremarketplace.microsoft.com/marketplace/apps/alces-flight-limited.alces-flight-compute-solo?tab=Overview)
 * [TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/) 
 * [Bright Cluster Manager](http://www.brightcomputing.com/technology-partners/microsoft)
 * [IBM Spectrum Symphony 和 Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/)
 * [PBS Pro](http://pbspro.org)
-* [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029(v=ws.11).aspx) - 查看可在 [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 和 [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM 中运行的选项 
+* [Microsoft HPC Pack](https://technet.microsoft.com/library/mt744885.aspx) - 查看可在 [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 和 [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM 中运行的选项 
 
 
 
@@ -127,7 +145,7 @@ SaaS 提供商或开发商可以使用 Batch SDK 和工具将 HPC 应用程序�
 
 了解更多：
 
-* [Azure 上用于 HPC 存储的并行文件系统](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
+* [Azure 上的并行虚拟文件系统](https://azure.microsoft.com/resources/parallel-virtual-file-systems-on-microsoft-azure/)
 * 从高性能云存储解决方案[Avere](http://www.averesystems.com/about-us/about-avere) (现在[加入与 Microsoft](https://blogs.microsoft.com/blog/2018/01/03/microsoft-to-acquire-avere-systems-accelerating-high-performance-computing-innovation-for-media-and-entertainment-industry-and-beyond/))
 
 
@@ -144,11 +162,13 @@ Azure 虚拟机、虚拟机规模集、Batch 和相关的计算服务是大多�
 * [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
-* [机器学习](../articles/machine-learning/machine-learning-what-is-machine-learning.md)
+* [Databricks](../articles/azure-databricks/what-is-azure-databricks.md)
 * [SQL 数据库](../articles/sql-database/sql-database-technical-overview.md)
 
-### <a name="ai-and-cognitive-services"></a>AI 和认知服务
+### <a name="ai-and-machine-learning"></a>AI 和机器学习
+* [机器学习服务](../articles/machine-learning/service/overview-what-is-azure-ml.md)
 * [Batch AI](../articles/batch-ai/overview.md)
+* [基因组学](../articles/genomics/overview-what-is-genomics.md)
 
 ### <a name="networking"></a>网络
 * [虚拟网络](../articles/virtual-network/virtual-networks-overview.md)
@@ -156,18 +176,20 @@ Azure 虚拟机、虚拟机规模集、Batch 和相关的计算服务是大多�
 
 ### <a name="containers"></a>容器
 * [容器服务](../articles/container-service/dcos-swarm/container-service-intro.md)
+* [Azure Kubernetes 服务 (AKS)](../articles/aks/intro-kubernetes.md)
 * [容器注册表](../articles/container-registry/container-registry-intro.md)
 
 
 
 ## <a name="customer-stories"></a>客户案例
 
-以下是已解决 Azure HPC 解决方案的业务问题的客户示例：
+已解决 Azure HPC 解决方案的业务问题的客户示例：
 
 * [ANEO](https://customers.microsoft.com/story/it-provider-finds-highly-scalable-cloud-based-hpc-redu) 
 * [AXA Global P&C](https://customers.microsoft.com/story/axa-global-p-and-c)
 * [Axioma](https://customers.microsoft.com/story/axioma-delivers-fintechs-first-born-in-the-cloud-multi-asset-class-enterprise-risk-solution)
 * [d3View](https://customers.microsoft.com/story/big-data-solution-provider-adopts-new-cloud-gains-thou)
+* [EFS](https://customers.microsoft.com/story/efs-professionalservices-azure)
 * [Hymans Robertson](https://customers.microsoft.com/story/hymans-robertson)
 * [MetLife](https://enterprise.microsoft.com/en-us/customer-story/industries/insurance/metlife/)
 * [Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
@@ -178,7 +200,7 @@ Azure 虚拟机、虚拟机规模集、Batch 和相关的计算服务是大多�
 
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解用于[工程仿真](https://simulation.azure.com/)、[渲染](https://simulation.azure.com/)、[银行和资本市场](https://finance.azure.com/)以及[基因组学](https://enterprise.microsoft.com/en-us/industries/health/genomics/)的大型计算解决方案。
+* 详细了解用于[工程仿真](https://simulation.azure.com/)、[渲染](https://azure.microsoft.com/solutions/big-compute/rendering/)、[银行和资本市场](https://finance.azure.com/)以及[基因组学](https://enterprise.microsoft.com/en-us/industries/health/genomics/)的大型计算解决方案。
 * 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](https://azure.microsoft.com/blog/tag/hpc/)。
 
 * 使用托管的可缩放 Azure [Batch](https://azure.microsoft.com/services/batch/) 服务运行计算密集型工作负荷，而无需管理基础结构 [了解详细信息](https://azure.microsoft.com/solutions/architecture/hpc-big-compute-saas/)

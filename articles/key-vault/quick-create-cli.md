@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/16/2018
+ms.date: 04/27/2018
 ms.author: barclayn
-ms.openlocfilehash: aaf8b93a41399b7754fb458d7d1d278a64f82139
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 64a092de1ae6c005355063d43541a20fa9076395
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>快速入门：使用 CLI 创建 Azure Key Vault
 
-Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全地存储密钥、密码、证书和其他机密。 有关 Key Vault 的详细信息，可以参阅[概述](key-vault-overview.md)。 Azure CLI 用于通过命令或脚本创建和管理 Azure 资源。 在本文中，请创建一个 Key Vault。 在本快速入门中，请创建一个密钥保管库。 完成该操作后，即可存储机密。
+Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全地存储密钥、密码、证书和其他机密。 有关 Key Vault 的详细信息，可以参阅[概述](key-vault-overview.md)。 Azure CLI 用于通过命令或脚本创建和管理 Azure 资源。 在本快速入门中，请创建一个密钥保管库。 完成该操作后，即可存储机密。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -63,7 +63,7 @@ az keyvault create --name 'Contoso-Vault2' --resource-group 'ContosoResourceGrou
 - **保管库名称**：在本示例中为 **Contoso-Vault2**。 将在其他 Key Vault 命令中使用此名称。
 - **保管库 URI**：在本示例中，此项为 https://contoso-vault2.vault.azure.net/。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
-目前，你的 Azure 帐户是有权对这个新的保管库执行任何操作的唯一帐户。
+目前，只有你的 Azure 帐户才有权对这个新保管库执行任何操作。
 
 ## <a name="add-a-secret-to-key-vault"></a>向 Key Vault 添加机密
 
@@ -99,4 +99,4 @@ az group delete --name ContosoResourceGroup
 在本快速入门中，你已创建 Key Vault 并在其中存储了一个机密。 若要详细了解 Key Vault 以及如何将它与应用程序配合使用，请继续学习有关如何将 Web 应用程序与 Key Vault 配合使用的教程。
 
 > [!div class="nextstepaction"]
-> [从 Web 应用程序使用 Azure Key Vault](key-vault-use-from-web-application.md) 若要了解如何使用 Web 应用程序通过[托管服务标识](/active-directory/managed-service-identity/overview.md)从 Key Vault 读取机密，请继续学习以下教程：[配置 Azure Web 应用程序以从 Key Vault 读取机密](tutorial-web-application-keyvault.md)
+> 若要了解如何使用 Web 应用程序通过托管服务标识从 Key Vault 读取机密，请继续学习以下教程：[将 Azure Web 应用程序配置为从 Key Vault 读取机密](tutorial-web-application-keyvault.md)

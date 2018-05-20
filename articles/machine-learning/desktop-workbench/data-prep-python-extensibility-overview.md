@@ -4,19 +4,17 @@ description: 本文提供有关如何使用 Python 代码来扩展数据准备�
 services: machine-learning
 author: euangMS
 ms.author: euang
-manager: lanceo
-ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 02/01/2018
-ms.openlocfilehash: cc1aef7ed7c4a7d03a7fa63e71c8c27aca10095a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 05/09/2018
+ms.openlocfilehash: 6363d39b2dfbd36ccebff6780e35caf58ca84dda
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-preparations-python-extensions"></a>数据准备 Python 扩展
 作为一种填补内置功能之间功能差距的方法，Azure 机器学习数据准备包含多个级别的扩展性。 在本文档中，我们将通过 Python 脚本概述扩展性。 
@@ -24,14 +22,10 @@ ms.lasthandoff: 04/19/2018
 ## <a name="custom-code-steps"></a>自定义代码步骤 
 数据准备中包括下列自定义步骤，用户可以在其中编写代码：
 
-* 文件读取器*
-* 写入器*
 * 添加列
 * 高级筛选器
 * 转换数据流
 * 转换分区
-
-*这些步骤当前在 Spark 执行过程中不受支持。
 
 ## <a name="code-block-types"></a>代码块类型 
 对于每个步骤，我们支持两个代码块类型。 首先，我们支持以原样执行的空 Python 表达式。 其次，我们支持 Python 模块，其中我们在你提供的代码中调用具有已知签名的特定函数。
@@ -158,74 +152,6 @@ def newvalue(row):
     row.ColumnA + row.ColumnB  
     row["ColumnA"] + row["ColumnB"]
 ```
-
-## <a name="file-reader"></a>文件读取器 
-### <a name="purpose"></a>目的 
-“文件读取器”扩展点允许完全控制将文件读取到数据流的过程。 系统调用代码，在应处理的文件列表中传递。 代码需要创建并返回一个 Pandas 数据帧。 
-
->[!NOTE]
->此扩展点在 Spark 中无效。 
-
-
-### <a name="how-to-use"></a>如何使用 
-从“打开数据源”向导访问此扩展点。 选择第一页上的“文件”，然后选择文件位置。 在“选择文件参数”页上的“文件类型”下拉列表中，选择“自定义文件(脚本)”。 
-
-将为代码提供名为“df”的 Pandas 数据帧，其中包含需要读取的文件信息。 如果选择打开包含多个文件的目录，则数据帧包含多个行。  
-
-此数据帧具有以下列：
-
-- 路径：要读取的文件。
-- PathHint：指示该文件的所在位置。 值：Local、AzureBlobStorage 和 AzureDataLakeStorage。
-- AuthenticationType：用于访问该文件的身份验证类型。 值：None、SasToken 和 OAuthToken。
-- AuthenticationValue：包含 None 或要使用的令牌。
-
-### <a name="syntax"></a>语法 
-表达式 
-
-```python
-    paths = df['Path'].tolist()  
-    df = pd.read_csv(paths[0])
-```
-
-
-模块  
-```python
-PathHint = Local  
-def read(df):  
-    paths = df['Path'].tolist()  
-    filedf = pd.read_csv(paths[0])  
-    return filedf  
-```
- 
-
-## <a name="writer"></a>写入器 
-### <a name="purpose"></a>目的 
-此“写入器”扩展点允许完全控制从数据流写入数据的过程。 系统调用代码，在数据帧中传递。 代码可以使用数据帧按照需要写入数据。 
-
->[!NOTE]
->“写入器”扩展点在 Spark 中无效。
-
-
-### <a name="how-to-use"></a>如何使用 
-可以使用“写入数据流(脚本)”块来添加此扩展点。 顶级“转换”菜单中已提供此块。
-
-### <a name="syntax"></a>语法 
-表达式
-
-```python
-    df.to_csv('c:\\temp\\output.csv')
-```
-
-模块
-
-```python
-def write(df):  
-    df.to_csv('c:\\temp\\output.csv')  
-    return df
-```
- 
- 
-此自定义写入块可以存在于一个步骤列表中间。 如果使用模块，则写入函数必须返回作为后续步骤的输入的数据帧。 
 
 ## <a name="add-column"></a>添加列 
 ### <a name="purpose"></a>目的

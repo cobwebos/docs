@@ -1,18 +1,18 @@
 ---
-title: "关于使用 Site Recovery 进行 Hyper-V VM（使用 VMM）复制到 Azure 的网络映射 | Microsoft Docs"
-description: "介绍了如何设置网络映射，以便使用 Azure Site Recovery 复制 VMM 云中托管的 Hyper-V VM。"
+title: 关于使用 Site Recovery 进行 Hyper-V VM（使用 VMM）复制到 Azure 的网络映射 | Microsoft Docs
+description: 介绍了如何设置网络映射，以便使用 Azure Site Recovery 复制 VMM 云中托管的 Hyper-V VM。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fa596bf4941ac791fa1bc697399a4591d97ba68f
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>准备网络映射以将 Hyper-V VM 复制到 Azure
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 02/24/2018
 纽约 | VMM-NewYork| VMNetwork1-NewYork | 映射到 VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | 未映射
 芝加哥 | VMM-Chicago| VMNetwork1-Chicago | 映射到 VMNetwork1-NewYork
- | | VMNetwork1-Chicago | 未映射
+ | | VMNetwork2-Chicago | 未映射
 
 在本示例中：
 

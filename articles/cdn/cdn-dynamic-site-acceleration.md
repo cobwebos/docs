@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>通过 Azure CDN 进行动态站点加速
 
 随着社交媒体、电子商务和超个性化 web 的迅速发展，实时生成了提供给最终用户的不断增长的内容。 用户希望获得独立于其浏览器、位置、设备或网络的快速、可靠且个性化的 Web 体验。 然而，使得这些体验极具吸引力的创新却会使页面下载变慢，很可能会影响使用者体验质量。 
 
-标准内容交付网络 (CDN) 功能包括更接近于最终用户缓存文件，以加快静态文件的交付这一功能。 但是，使用动态 web 应用程序无法在边缘位置缓存该内容，因为服务器将生成内容以响应用户行为。 加快此类内容交付比传统边缘缓存更加复杂，需要沿着从开始到交付的整个数据路径微调每个元素的端到端解决方案。 通过 Azure CDN 动态站点加速 (DSA) 优化，显著改进了包含动态内容的网页性能。
+标准内容分发网络 (CDN) 功能包括更接近于最终用户缓存文件，以加快静态文件的分发这一功能。 但是，使用动态 web 应用程序无法在边缘位置缓存该内容，因为服务器将生成内容以响应用户行为。 加快此类内容交付比传统边缘缓存更加复杂，需要沿着从开始到交付的整个数据路径微调每个元素的端到端解决方案。 通过 Azure CDN 动态站点加速 (DSA) 优化，显著改进了包含动态内容的网页性能。
 
 在终结点创建期间，Akamai 的 Azure CDN 和 Verizon 的 Azure CDN 都通过“优化对象”菜单提供 DSA 优化。
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 04/05/2018
 3. 在“优化对象”下，选择“动态站点加速”，然后选择“保存”。
 
 > [!Note]
-> DSA 会产生额外费用。 有关详细信息，请参阅[内容交付网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
+> DSA 会产生额外费用。 有关详细信息，请参阅[内容分发网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
 
 ## <a name="dsa-optimization-using-azure-cdn"></a>使用 Azure CDN 进行 DSA 优化
 
@@ -183,9 +183,6 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 或者，可以使用两个 CDN 终结点：一个终结点使用 DSA 进行优化，用于传送动态资产，另一个终结点使用静态优化类型进行优化（例如常规 Web 交付），用于传送可缓存的资产。 修改网页 URL 以直接链接到计划使用的 CDN 终结点上的资产。 
 
 例如：`mydynamic.azureedge.net/index.html` 是动态页面，从 DSA 终结点进行加载。  HTML 页面引用多个静态资产，如 JavaScript 库或从静态 CDN 终结点加载的图像，如 `mystatic.azureedge.net/banner.jpg` 和 `mystatic.azureedge.net/scripts.js`。 
-
-有关如何在 ASP.NET Web 应用程序中使用控制器通过特定 CDN URL 提供内容的示例，请参阅[通过 Azure CDN 的控制器操作提供内容](https://docs.microsoft.com/azure/cdn/cdn-cloud-service-with-cdn#controller)。
-
 
 
 

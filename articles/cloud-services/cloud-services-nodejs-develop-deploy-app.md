@@ -1,11 +1,11 @@
 ---
-title: "Node.js 入门指南"
-description: "了解如何创建简单的 Node.js Web 应用程序并将其部署到 Azure 云服务。"
+title: Node.js 入门指南
+description: 了解如何创建简单的 Node.js Web 应用程序并将其部署到 Azure 云服务。
 services: cloud-services
 documentationcenter: nodejs
-author: craigshoemaker
-manager: routlaw
-editor: 
+author: thraka
+manager: timlt
+editor: ''
 ms.assetid: 50951a87-fed4-48e0-bcfa-453b9e50452e
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
-ms.author: cshoe
-ms.openlocfilehash: d498fc09112c0df7b6ecb81a492b180765fdf883
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.author: adegeo
+ms.openlocfilehash: 5d69f83aed9160f94260b71e60fcf0e15b435569
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/07/2017
 > [!TIP]
 > 想要构建一个简单的网站？ 如果方案只涉及一个简单的网站前端，则可以考虑[使用轻型 Web 应用]。 随着 Web 应用的不断扩大和需求的变化，可以轻松升级到云服务。
 
-通过学习本教程，将可以生成一个托管在 Web 角色中的简单 Web 应用程序。 将使用计算模拟器在本地测试应用程序，然后使用 PowerShell 命令行工具来部署该应用程序。
+通过学习本教程，将可以生成一个托管在 Web 角色中的简单 Web 应用程序。 将使用计算模拟器在本地测试你的应用程序，并使用 PowerShell 命令行工具来部署该应用程序。
 
 该应用程序是一个简单的“hello world”应用程序：
 

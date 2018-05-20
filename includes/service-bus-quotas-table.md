@@ -5,14 +5,14 @@ services: service-bus-messaging
 author: sethmanheim
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 02/12/2018
+ms.date: 05/10/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 74732008b336dc1b95ec96e8550d218105973ca4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3be379c2513fa20c1a84b547333a4ef2139bb45d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 下表列出了特定于服务总线消息的配额信息。 有关服务总线的定价及其他配额的信息，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)概述。
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 04/05/2018
 | --- | --- | --- | --- | --- |
 | 每个 Azure 订阅的基本/标准命名空间数上限 |命名空间 |后续请求更多基本/标准命名空间会被门户拒绝。 |100|
 | 每个 Azure 订阅的高级命名空间数上限 |命名空间 |后续请求更多高级命名空间会被门户拒绝。 |10 |
-| 队列/主题大小 |实体 |创建队列/主题时定义。 <br/><br/> 系统将拒绝后续传入消息，且调用代码将收到异常。 |1、2、3、4 或 5 GB。<br /><br />如果已启用[分区](../articles/service-bus-messaging/service-bus-partitioning.md)，最大队列/主题大小是 80 GB。 |
+| 队列/主题大小 |实体 |创建队列/主题时定义。 <br/><br/> 系统将拒绝后续传入消息，且调用代码将收到异常。 |1、2、3、4 或 5 GB。<br /><br />在高级 SKU 以及启用了[分区](../articles/service-bus-messaging/service-bus-partitioning.md)的标准 SKU 中，最大队列/主题大小是 80 GB。 |
 | 命名空间上的并发连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 REST 操作不计入并发 TCP 连接数。 |NetMessaging：1,000<br /><br />AMQP：5,000 |
 | 队列/主题/订阅实体上的并发接收请求数 |实体 |系统将拒绝后续的接收请求，且调用代码将收到异常。 此配额适用于一个主题上所有订阅的并发接收操作总数。 |5,000 |
 | 每个服务命名空间的主题/队列数 |命名空间 |系统将拒绝后续的在服务命名空间中创建新主题或队列的请求。 因此，如果是通过 [Azure 门户][Azure portal]配置的，将生成错误消息。 如果是通过管理 API 调用的，调用代码将收到异常。 |10,000<br /><br />服务命名空间中主题和队列的数目之和必须小于或等于 10,000。<br/>这不适用于高级层，因为其中的所有实体已分区。 |

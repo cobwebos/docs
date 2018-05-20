@@ -1,11 +1,11 @@
 ---
-title: "Azure 事件中心常见问题 | Microsoft Docs"
-description: "Azure 事件中心常见问题 (FAQ)"
+title: Azure 事件中心常见问题 | Microsoft Docs
+description: Azure 事件中心常见问题 (FAQ)
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 6bdcbbe37613d5384017409f3be2772085e276ae
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -112,7 +112,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 事件中心支持两种类型的[诊断日志](event-hubs-diagnostic-logs.md) - 捕获错误日志和操作日志 - 这两种日志都用 json 表示并可以通过 Azure 门户启用。
 
 ### <a name="support-and-sla"></a>支持和 SLA
-事件中心的技术支持可通过[社区论坛](https://social.msdn.microsoft.com/forums/azure/home)获得。 计费和订阅管理支持免费提供。
+事件中心的技术支持可通过[社区论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)获得。 计费和订阅管理支持免费提供。
 
 若要详细了解我们的 SLA，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)页面。
 

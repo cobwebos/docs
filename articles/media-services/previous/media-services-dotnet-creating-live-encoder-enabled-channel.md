@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 672628ced506ae4c26b69e935e1cee3f78bd1a6b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 946de42c499182f8785866f362677779b105760d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ ms.lasthandoff: 05/07/2018
 > 
 > 
 
-1. 将视频摄像机连接到计算机。 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP、平滑流式处理或 RTP (MPEG-TS)。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
+1. 将视频摄像机连接到计算机。 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
 
     此步骤也可以在创建频道后执行。
 
@@ -228,18 +228,18 @@ namespace EncodeLiveStreamWithAmsClear
         {
             return new ChannelInput
             {
-                StreamingProtocol = StreamingProtocol.RTPMPEG2TS,
+                StreamingProtocol = StreamingProtocol.FragmentedMP4,
                 AccessControl = new ChannelAccessControl
                 {
                     IPAllowList = new List<IPRange>
-                {
-                    new IPRange
                     {
-                    Name = "TestChannelInput001",
-                    Address = IPAddress.Parse("0.0.0.0"),
-                    SubnetPrefixLength = 0
+                        new IPRange
+                        {
+                        Name = "TestChannelInput001",
+                        Address = IPAddress.Parse("0.0.0.0"),
+                        SubnetPrefixLength = 0
+                        }
                     }
-                }
                 }
             };
         }
@@ -277,9 +277,7 @@ namespace EncodeLiveStreamWithAmsClear
             {
                 SystemPreset = "Default720p",
                 IgnoreCea708ClosedCaptions = false,
-                AdMarkerSource = AdMarkerSource.Api,
-                // You can only set audio if streaming protocol is set to StreamingProtocol.RTPMPEG2TS.
-                AudioStreams = new List<AudioStream> { new AudioStream { Index = 103, Language = "eng" } }.AsReadOnly()
+                AdMarkerSource = AdMarkerSource.Api
             };
         }
 

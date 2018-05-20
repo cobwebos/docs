@@ -1,0 +1,163 @@
+- name: 虚拟机规模集文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是虚拟机规模集？
+      href: overview.md
+- name: 快速入门
+  items:
+    - name: 在 Azure 门户中创建
+      href: quick-create-portal.md
+    - name: 使用 Azure CLI 2.0 创建
+      href: quick-create-cli.md
+    - name: 使用 Azure PowerShell 创建
+      href: quick-create-powershell.md
+    - name: 使用模板创建
+      items:
+        - name: Linux 规模集
+          href: quick-create-template-linux.md
+        - name: Windows 规模集
+          href: quick-create-template-windows.md
+- name: 教程
+  items:
+    - name: 1 - 创建/管理规模集
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-create-and-manage-cli.md
+        - name: Azure PowerShell
+          href: tutorial-create-and-manage-powershell.md
+    - name: 2 - 使用数据磁盘
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-use-disks-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-disks-powershell.md
+    - name: 3 - 使用自定义 VM 映像
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-use-custom-image-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-custom-image-powershell.md
+    - name: 4 - 将应用部署到规模集
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-install-apps-cli.md
+        - name: Azure PowerShell
+          href: tutorial-install-apps-powershell.md
+        - name: 模板
+          href: tutorial-install-apps-template.md
+    - name: 5 - 自动缩放规模集
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-autoscale-cli.md
+        - name: Azure PowerShell
+          href: tutorial-autoscale-powershell.md
+        - name: 模板
+          href: tutorial-autoscale-template.md
+    - name: 使用自定义 Packer 映像将应用部署到 Azure 虚拟机规模集
+      items:
+        - name: Azure CLI 2.0
+          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
+- name: 示例
+  items:
+    - name: Azure CLI 2.0
+      href: cli-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
+- name: 如何
+  items:
+    - name: 规划和设计
+      items:
+        - name: 设计注意事项
+          href: virtual-machine-scale-sets-design-overview.md
+        - name: 了解实例 ID
+          href: virtual-machine-scale-sets-instance-ids.md
+    - name: 创建模板
+      items:
+        - name: 了解规模集模板
+          href: virtual-machine-scale-sets-mvss-start.md
+        - name: 使用现有虚拟网络
+          href: virtual-machine-scale-sets-mvss-existing-vnet.md
+        - name: 使用自定义映像
+          href: virtual-machine-scale-sets-mvss-custom-image.md
+        - name: 将基于来宾的自动缩放与 Linux 规模集模板配合使用
+          href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
+    - name: 部署
+      items:
+        - name: 使用 Visual Studio 进行创建
+          href: virtual-machine-scale-sets-vs-create.md
+        - name: 使用可用性区域
+          href: virtual-machine-scale-sets-use-availability-zones.md
+        - name: 自动缩放规模集
+          href: virtual-machine-scale-sets-autoscale-overview.md
+          items:
+            - name: 使用 Azure 门户
+              href: virtual-machine-scale-sets-autoscale-portal.md
+            - name: 高级自动缩放
+              href: ../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md
+        - name: 规模集中的应用程序
+          href: virtual-machine-scale-sets-deploy-app.md
+        - name: 将数据磁盘与规模集配合使用
+          href: virtual-machine-scale-sets-attached-disks.md
+        - name: 加密规模集中的磁盘
+          items:
+            - name: 使用 PowerShell
+              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+            - name: 使用 Azure CLI 2.0
+              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+        - name: 使用大型规模集
+          href: virtual-machine-scale-sets-placement-groups.md
+        - name: 将规模集模板转换为使用托管磁盘
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: 使用低优先级
+          href: virtual-machine-scale-sets-use-low-priority.md
+    - name: 管理
+      items:
+        - name: 常见管理任务
+          items:
+            - name: 使用 Azure CLI 2.0
+              href: virtual-machine-scale-sets-manage-cli.md
+            - name: 使用 Azure PowerShell
+              href: virtual-machine-scale-sets-manage-powershell.md
+        - name: 规模集中的纵向缩放
+          href: virtual-machine-scale-sets-vertical-scale-reprovision.md
+        - name: 自动 OS 升级
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: 修改规模集
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: 使用 DSC 和规模集
+          href: virtual-machine-scale-sets-dsc.md
+        - name: 规模集网络
+          href: virtual-machine-scale-sets-networking.md
+        - name: 将模板转换为托管磁盘
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+    - name: 故障排除
+      items:
+        - name: 自动缩放
+          href: virtual-machine-scale-sets-troubleshoot.md
+    - name: 常见问题
+      items:
+        - name: 规模集常见问题解答
+          href: virtual-machine-scale-sets-faq.md
+- name: 引用
+  items:
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: Azure CLI
+      href: ../virtual-machines/azure-cli-arm-commands.md
+    - name: REST
+      href: /rest/api/virtualmachinescalesets/
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 定价
+      items:
+        - name: Linux
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
+        - name: Windows
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-vm-scale-set'

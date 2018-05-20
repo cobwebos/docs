@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory PoC 演练手册的实现 | Microsoft Docs"
-description: "研究并快速实现标识和访问管理方案"
+title: Azure Active Directory PoC 演练手册的实现 | Microsoft Docs
+description: 研究并快速实现标识和访问管理方案
 services: active-directory
-keywords: "azure active directory, 操作手册, 概念证明, PoC"
-documentationcenter: 
+keywords: azure active directory 操作手册, 概念证明, PoC
+documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: dstefan
-ms.openlocfilehash: e26dfe4aaa374f5587038a0de66c0bd8703c9a41
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f01bdee5ffcc9e2f48278c7209da40ef64cc030
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-implementation"></a>Azure Active Directory 概念证明演练手册：实现
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 混合标识是已部署本地目录的大部分企业客户的基础。 混合标识的目标是有意地尽量花费最少的时间来展示实际标识和访问方案的价值。 
 
-| 方案 | 构建基块| 
+| 场景 | 构建基块| 
 | --- | --- |  
 | [将本地标识扩展到云](#extending-your-on-premises-identity-to-the-cloud) | [目录同步 - 密码哈希同步](active-directory-playbook-building-blocks.md#directory-synchronization---password-hash-sync-phs---new-installation) <br/>**注意**：如果已安装 DirSync/ADSync 或旧版的 Azure AD Connect，则此步骤是可选的。 本指南中的某些方案可能需要更新版本的 Azure AD Connect。  <br/>[品牌](active-directory-playbook-building-blocks.md#branding) | 
 | [使用组分配 Azure AD 许可证](#assigning-azure-ad-licenses-using-groups) | [基于组的许可](active-directory-playbook-building-blocks.md#group-based-licensing) |
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="theme---lots-of-apps-one-identity"></a>主题 - 多个应用，一个标识
 
-| 方案 | 构建基块| 
+| 场景 | 构建基块| 
 | --- | --- |  
 | [集成 SaaS 应用程序 - 联合 SSO](#integrate-saas-applications---federated-sso) | [SaaS 联合 SSO 配置](active-directory-playbook-building-blocks.md#saas-federated-sso-configuration) <br/>[组 - 委派的所有权](active-directory-playbook-building-blocks.md#groups---delegated-ownership) |
 | [集成 SaaS 应用程序 - 密码 SSO](#integrate-saas-applications---password-sso) | [SaaS 密码 SSO 配置](active-directory-playbook-building-blocks.md#saas-password-sso-configuration) |
@@ -87,7 +87,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="secure-remote-access-to-on-premises-applications"></a>对本地应用程序的安全远程访问
 
-1. Bob（Azure AD 全局管理员）收到了大量请求，请他想办法让远程办公的员工访问一些有用的本地资源，例如开支应用程序。 他根据[应用程序代理文档](active-directory-application-proxy-enable.md)安装了连接器，并将 Expenses 发布为应用程序代理应用程序。 
+1. Bob（Azure AD 全局管理员）收到了大量请求，请他想办法让远程办公的员工访问一些有用的本地资源，例如开支应用程序。 他根据[应用程序代理文档](manage-apps/application-proxy-enable.md)安装了连接器，并将 Expenses 发布为应用程序代理应用程序。 
 2. Bob 向 Susie（一名需要远程访问权限的员工）共享了外部 Expenses 应用程序的 URL。 她访问该链接，针对 AAD 进行身份验证后，可以访问 Expenses 应用程序并继续在远程高效地工作。 
 3. 然后，Bob 继续使用相同的过程发布其他本地应用程序，并根据需要向用户提供访问权限。 对于发布的较敏感应用程序，他添加了条件访问和多重身份验证，确保提高安全性。
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="theme---increase-your-security"></a>主题 - 增强安全性 
 
-| 方案 | 构建基块| 
+| 场景 | 构建基块| 
 | --- | --- |  
 | [确保管理员帐户访问安全](#secure-administrator-account-access) | [使用电话呼叫执行 Azure MFA](active-directory-playbook-building-blocks.md#azure-multi-factor-authentication-with-phone-calls) |
 | [保护对应用程序的访问](#secure-access-to-applications) | [SaaS 应用程序的条件访问](active-directory-playbook-building-blocks.md#mfa-conditional-access-for-saas-applications) |
@@ -150,7 +150,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="theme---scale-with-self-service"></a>主题 - 使用自助服务进行缩放
 
-| 方案 | 构建基块| 
+| 场景 | 构建基块| 
 | --- | --- |  
 | [自助密码重置](#self-service-password-reset) | [自助密码重置](active-directory-playbook-building-blocks.md#self-service-password-reset) |
 | [对应用程序进行自助访问](#self-service-access-to-applications) | [对应用程序进行自助访问](active-directory-playbook-building-blocks.md#self-service-access-to-application-management) |

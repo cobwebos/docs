@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5f3c3bbb23b9d4439188286342d80eb1cc1d0833
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>教程：Azure Active Directory 与 Workday 的集成
 
@@ -174,19 +174,17 @@ ms.lasthandoff: 04/16/2018
 
     ![SAML 标识提供者](./media/active-directory-saas-workday-tutorial/IC7829272.png "SAML 标识提供者")
    
-    c. 选择“启用 idp 发起的注销”。
-   
-    d. 在 Azure 门户的“配置登录”窗口中，复制“注销 URL”值，然后将其粘贴到“注销响应 URL”文本框中。
+    c. 在 Azure 门户的“配置登录”窗口中，复制“注销 URL”值，然后将其粘贴到“注销响应 URL”文本框中。
 
-    e. 在 Azure 门户的“配置登录”窗口中，复制“SAML 单一登录服务 URL”值，然后将其粘贴到“IdP SSO 服务 URL”文本框。
+    d. 在 Azure 门户的“配置登录”窗口中，复制“SAML 单一登录服务 URL”值，然后将其粘贴到“IdP SSO 服务 URL”文本框。
 
-    f. 在“用于环境”文本框中，选择环境名称。
+    e. 在“用于环境”文本框中，选择环境名称。
 
-    g. 单击“标识提供者公钥证书”，并单击“创建”。 
+    f. 单击“标识提供者公钥证书”，并单击“创建”。 
 
     ![创建](./media/active-directory-saas-workday-tutorial/IC782928.png "创建")
 
-    h. 单击“创建 x509 公钥”。 
+    g. 单击“创建 x509 公钥”。 
 
     ![创建](./media/active-directory-saas-workday-tutorial/IC782929.png "创建")
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 27ed94b3ce14c57e369b0c80d4c53b72a5ae40a8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: cec2ab862a34a8753601dfeef3081ae9e9ca9fd9
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>使用 Azure Blockchain Workbench REST API 
 
@@ -306,4 +306,5 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Blockchain Workbench REST API 参考](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)
+> [!div class="nextstepaction"]
+> [Azure Blockchain Workbench REST API 参考](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)

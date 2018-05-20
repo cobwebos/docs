@@ -350,16 +350,18 @@
           href: data-factory-service-identity.md
     - name: 监视和管理
       items:
-        - name: 使用 SDK
-          href: monitor-programmatically.md
-        - name: 使用 Azure Monitor
-          href: monitor-using-azure-monitor.md
         - name: 直观地监视
           href: monitor-visually.md
-        - name: 管理 Azure-SSIS 集成运行时
-          href: manage-azure-ssis-integration-runtime.md
+        - name: 使用 Azure Monitor 进行监视
+          href: monitor-using-azure-monitor.md
+        - name: 使用 SDK 进行监视
+          href: monitor-programmatically.md
         - name: 监视集成运行时
           href: monitor-integration-runtime.md
+        - name: 监视 Azure-SSIS 集成运行时
+          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+        - name: 管理 Azure-SSIS 集成运行时
+          href: manage-azure-ssis-integration-runtime.md
     - name: 创建集成运行时
       items:
         - name: Azure 集成运行时
@@ -370,24 +372,22 @@
           href: create-azure-ssis-integration-runtime.md
     - name: 在 Azure 中运行 SSIS 包
       items:
-        - name: Azure-SSIS Integration Runtime 的自定义设置
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: 预配用于 Azure-SSIS Integration Runtime 的企业版
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: 将 Azure-SSIS 集成运行时加入 VNET
           href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: 管理 Azure-SSIS 集成运行时
-          href: manage-azure-ssis-integration-runtime.md
-        - name: 配置 Azure-SSIS Integration Runtime 的性能设置
+        - name: 为 Azure-SSIS 集成运行时配置高性能
           href: configure-azure-ssis-integration-runtime-performance.md
+        - name: 预配用于 Azure-SSIS Integration Runtime 的企业版
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: 为 Azure-SSIS 集成运行时自定义设置
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: 开发用于 Azure-SSIS 集成运行时的许可组件
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
         - name: 使用 SSIS 活动运行 SSIS 包
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: 使用存储过程活动运行 SSIS 包
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: 计划 Azure-SSIS 集成运行时
           href: how-to-schedule-azure-ssis-integration-runtime.md
-        - name: 开发用于 Azure-SSIS Integration Runtime 的许可组件
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
     - name: 创建触发器
       items:
         - name: 创建计划触发器

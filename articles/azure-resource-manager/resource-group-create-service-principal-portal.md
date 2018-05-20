@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: bbda406633f97d9a6c90bc49374268df28b68f2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e5d93963dddb4acb1147042ae338b32cb5d7646f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 04/16/2018
 
    ![添加应用](./media/resource-group-create-service-principal-portal/select-add-app.png)
 
-1. 为应用提供名称和 URL。 选择“Web 应用/API”作为要创建的应用类型。 无法创建[本机应用程序](../active-directory/active-directory-application-proxy-native-client.md)的凭据，因此这种类型不适用于自动化应用程序。 设置这些值后，选择“创建”。
+1. 为应用提供名称和 URL。 选择“Web 应用/API”作为要创建的应用类型。 无法创建[本机应用程序](../active-directory/manage-apps/application-proxy-configure-native-client-application.md)的凭据，因此这种类型不适用于自动化应用程序。 设置这些值后，选择“创建”。
 
    ![命名应用程序](./media/resource-group-create-service-principal-portal/create-app.png)
 

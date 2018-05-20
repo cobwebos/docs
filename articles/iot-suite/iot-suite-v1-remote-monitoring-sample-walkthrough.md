@@ -1,12 +1,12 @@
 ---
-title: "远程监视预配置解决方案演练 | Microsoft Docs"
-description: "介绍 Azure IoT 预配置解决方案远程监视及其体系结构。"
-services: 
+title: 远程监视预配置解决方案演练 | Microsoft Docs
+description: 介绍 Azure IoT 预配置解决方案远程监视及其体系结构。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 7cef60998cf9e46a8d89f8ad53edd0382e3ce76e
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 3aa9bb9c785bb69c80d9bb33e595393a5a1d220a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>远程监视预配置解决方案演练
 
@@ -35,7 +35,17 @@ IoT 套件远程监视[预配置解决方案][lnk-preconfigured-solutions]是适
 
 下图概述该预配置解决方案的逻辑组件：
 
-![逻辑体系结构](media/iot-suite-v1-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
+![逻辑体系结构](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture-updated.png)
+
+## <a name="microservices--docker-containers"></a>微服务和 Docker 容器
+远程监视是利用微服务体系结构的第一个预配置解决方案。 [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) 和 [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) 中均可使用该解决方案。
+微服务已成为实现缩放和灵活性的一种流行模式（通过允许容器单独缩放），不会影响开发速度。
+微服务可隔离代码并提供定义明确的接口，使解决方案更易于理解并更加淡化整体性。 它还进一步扩大了合作伙伴的选择范围，使他们能够扩展当前的解决方案加速器，构建可货币化的成熟解决方案。
+
+**详细了解 Docker 容器**
+* [安装 Docker](https://docs.docker.com/engine/installation/)
+* [用于远程监视的常见 Docker 命令](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#common-docker-commands)
+* [Docker 入门](https://docs.docker.com/get-started/)
 
 ## <a name="simulated-devices"></a>模拟设备
 

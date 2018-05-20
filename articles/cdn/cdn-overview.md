@@ -1,10 +1,10 @@
 ---
-title: 什么是内容交付网络 (CDN)？ - Azure | Microsoft Docs
-description: 了解什么是 Azure 内容交付网络 (CDN)，以及如何使用它来交付高带宽内容。
+title: 什么是内容分发网络 (CDN)？ - Azure | Microsoft Docs
+description: 了解什么是 Azure 内容分发网络 (CDN)，以及如何使用它来分发高带宽内容。
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
 ms.service: cdn
@@ -12,19 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/20/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 36de1011e48f274759c0aeebde74bd26c6604e19
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2f760c1b47da7273827ce2a980cdc9b4db943904
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="what-is-a-content-delivery-network-on-azure"></a>什么是 Azure 上的内容交付网络？
-内容交付网络 (CDN) 是高效地向用户交付 Web 内容的分布式服务器网络。 CDN 将缓存的内容存储在 接入点 (POP) 位置（靠近最终用户的边缘服务器），以最大程度地降低延迟。 
+# <a name="what-is-a-content-delivery-network-on-azure"></a>什么是 Azure 上的内容分发网络？
+内容分发网络 (CDN) 是高效地向用户分发 Web 内容的分布式服务器网络。 CDN 将缓存的内容存储在 接入点 (POP) 位置（靠近最终用户的边缘服务器），以最大程度地降低延迟。 
 
-Azure 内容交付网络 (CDN) 为开发人员提供了一个全局解决方案，通过在世界各地按特定策略放置的物理节点缓存内容来快速交付高带宽内容。 Azure CDN 还可以通过 CDN POP 来利用各种网络优化措施，从而加速不能缓存的动态内容的交付。 例如，可以绕过边界网关协议 (BGP) 的路由优化。
+Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案，通过在世界各地按特定策略放置的物理节点缓存内容来快速分发高带宽内容。 Azure CDN 还可以通过 CDN POP 来利用各种网络优化措施，从而加速不能缓存的动态内容的交付。 例如，可以绕过边界网关协议 (BGP) 的路由优化。
 
 使用 Azure CDN 来交付网站资产的优点包括：
 
@@ -50,7 +50,7 @@ Azure 内容交付网络 (CDN) 为开发人员提供了一个全局解决方案�
 6. 如果文件的 TTL 未过期，POP 边缘服务器会直接从缓存返回文件。 此过程会带来速度更快、响应更及时的用户体验。
 
 ## <a name="requirements"></a>要求
-需要拥有至少一个 Azure 订阅才能使用 Azure CDN。 还需创建至少一个 CDN 配置文件，该文件集合了 CDN 终结点。 每个 CDN 终结点表示对内容交付行为和访问权限的特定配置。 若要通过 Internet 域、Web 应用程序或某些其他条件来组织 CDN 终结点，可以使用多个配置文件。 由于 [Azure CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)是在 CDN 配置文件级别应用的，因此如果需要使用混合的定价层，则必须创建多个 CDN 配置文件。 有关 Azure CDN 计费结构的信息，请参阅[了解 Azure CDN 计费](cdn-billing.md)。
+若要使用 Azure CDN，必须至少拥有一个 Azure 订阅。 还需创建至少一个 CDN 配置文件，该文件集合了 CDN 终结点。 每个 CDN 终结点表示对内容交付行为和访问权限的特定配置。 若要通过 Internet 域、Web 应用程序或某些其他条件来组织 CDN 终结点，可以使用多个配置文件。 由于 [Azure CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)是在 CDN 配置文件级别应用的，因此如果需要使用混合的定价层，则必须创建多个 CDN 配置文件。 有关 Azure CDN 计费结构的信息，请参阅[了解 Azure CDN 计费](cdn-billing.md)。
 
 ### <a name="limitations"></a>限制
 每个 Azure 订阅都对以下资源设置了默认限制：
@@ -70,7 +70,7 @@ Azure CDN 提供以下重要功能：
 - [文件压缩](cdn-improve-performance.md)
 - [地理筛选](cdn-restrict-access-by-country.md)
 
-如需每个 Azure CDN 产品支持的功能的完整列表，请参阅 [Azure CDN 产品功能](cdn-features.md)。
+如需每个 Azure CDN 产品支持的功能的完整列表，请参阅[比较 Azure CDN 产品功能](cdn-features.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - 若要进行 CDN 入门，请参阅[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。

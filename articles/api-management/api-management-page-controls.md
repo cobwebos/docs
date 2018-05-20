@@ -1,11 +1,11 @@
 ---
-title: "Azure API 管理页面控件 | Microsoft 文档"
-description: "了解适用于 Azure API 管理中的开发人员门户模板的页面控件。"
+title: Azure API 管理页面控件 | Microsoft 文档
+description: 了解适用于 Azure API 管理中的开发人员门户模板的页面控件。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: 4fd91ae079ff054932f4572874001dd69dd848e7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: da68c9b7ebbb1880e35bd60b12db9f920f51e13c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理页面控件
 Azure API 管理提供以下控件，适用于开发人员门户模板。  

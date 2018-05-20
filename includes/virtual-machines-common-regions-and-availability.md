@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: include file
-ms.openlocfilehash: a6b75b3804e7736fe5203caecb8c6badcfbf9ab4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 99e429a2f82d1a9b8d9a87fb3eb4102183c19fe8
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure 中虚拟机的区域和可用性
 Azure 在世界各地的多个数据中心运行。 这些数据中心分组到地理区域，让用户可灵活选择构建应用程序的位置。 请务必了解 Azure 中虚拟机 (VM) 运行的方式和位置，以及最大化性能、可用性和冗余的选项。 本文提供了 Azure 的可用性和冗余功能的概述。
@@ -106,7 +106,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 ## <a name="availability-zones"></a>可用性区域
 
-[可用性区域](../articles/availability-zones/az-overview.md)是可用性集的替代方案，提高了在保持 VM 上应用程序和数据可用性时的控制度。 可用性区域是 Azure 区域中的物理独立区域。 每个受支持的 Azure 区域有三个可用性区域。 每个可用性区域有独立的电源、网络和散热设备，在逻辑上与 Azure 区域中的其他可用性区域保持独立。 通过将解决方案构建为使用区域中复制的 VM，可以在数据中心服务中断时保护应用和数据。 如果一个区域发生故障，另一个区域会立即提供复制的应用和数据。 
+[可用性区域](../articles/availability-zones/az-overview.md)是可用性集的替代方案，提高了在保持 VM 上应用程序和数据可用性时的控制度。 可用性区域是 Azure 区域中的物理独立区域。 每个受支持的 Azure 区域有三个可用性区域。 每个可用性区域有独立的电源、网络和散热设备。 通过将解决方案构建为使用区域中复制的 VM，可以在数据中心服务中断时保护应用和数据。 如果一个区域发生故障，另一个区域会立即提供复制的应用和数据。 
 
 ![可用性区域](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 

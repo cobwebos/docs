@@ -4,17 +4,18 @@ description: 本文概述了 Azure 自动化中自动化帐户的自动化安全
 keywords: 自动化安全性, 安全的自动化; 自动化身份验证
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: article
 manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4280c0de3f5c38aa8a72bad391544b03116e26c9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e8ea60899f907793b804d86cf0750a73b23d46fd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自动化中的身份验证简介  
 Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (AWS)）针对 Azure、本地中的资源来自动执行任务。  为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。

@@ -3,16 +3,17 @@ title: 通过 Webhook 启动 Azure 自动化 Runbook
 description: 一个可供客户端通过 HTTP 调用在 Azure 自动化中启动 Runbook 的 Webhook。  本文介绍了如何创建 Webhook，以及如何通过调用 Webhook 来启动 Runbook。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 4ea7366a02dd95fac5c1a7307e6156a0481fa16d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: bb64d0c5d94bb198b6ece2ea50a7fc248b93c7dd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
 Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。 这样，外部服务（例如 Visual Studio Team Services、GitHub、Azure Log Analytics 或自定义应用程序）就可以在不通过 Azure 自动化 API 实现完整解决方案的情况下启动 Runbook。  
@@ -69,7 +70,7 @@ Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会
 > 所有输入参数的值都会通过 Runbook 作业进行记录。  这意味着，客户端在 Webhook 请求中提供的任何输入都将记录下来，并可供有权访问自动化作业的任何人使用。  因此，在 Webhook 调用中包括敏感信息时，应该特别小心。
 >
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含的安全令牌来调用它。 如果请求是向正确的 URL 发出的，Azure 自动化不对请求进行任何身份验证。 因此，不应将 Webhook 用于执行敏感性很高的功能却不使用替代方法来验证请求的 Runbook。
 
 可以将逻辑包括在 Runbook 中，以便确定它是否是通过 Webhook 调用的，只需检查 $WebhookData 参数的 **WebhookName** 属性即可。 该 Runbook 还可以执行进一步的验证，只需在 **RequestHeader** 或 **RequestBody** 属性中查找特定信息即可。

@@ -1,23 +1,24 @@
 ---
-title: "如何使用 Azure CLI 授予 MSI 对 Azure 资源的访问权限"
-description: "逐步介绍了如何使用 Azure CLI 授予一个资源上的 MSI 对另一个资源的访问权限。"
+title: 如何使用 Azure CLI 授予 MSI 对 Azure 资源的访问权限
+description: 逐步介绍了如何使用 Azure CLI 授予一个资源上的 MSI 对另一个资源的访问权限。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: daveba
-ms.openlocfilehash: ca228a99eec1d376e456f5730aaaf8c569620f43
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 947e0140c7943954be5eb285bb7ec514b74e9022
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>使用 Azure CLI 授予托管服务标识 (MSI) 对资源的访问权限
 

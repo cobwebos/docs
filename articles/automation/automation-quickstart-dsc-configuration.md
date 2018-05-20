@@ -1,19 +1,21 @@
 ---
-title: "Azure 快速入门 - 使用 DSC 配置 VM | Microsoft Docs"
-description: "使用 Desired State Configuration 在 Linux 虚拟机上配置 LAMP 堆栈"
+title: Azure 快速入门 - 使用 DSC 配置 VM | Microsoft Docs
+description: 使用 Desired State Configuration 在 Linux 虚拟机上配置 LAMP 堆栈
 services: automation
-keywords: "dsc, 配置, 自动化"
+ms.service: automation
+ms.component: dsc
+keywords: dsc, 配置, 自动化
 author: KrisBash
 ms.author: krbash
 ms.date: 12/17/2017
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7f35acc0d8d553a3f5d1576ae18cbafd1dcbb225
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 Linux 虚拟机
 
@@ -28,7 +30,7 @@ ms.lasthandoff: 01/12/2018
 * 运行 Red Hat Enterprise Linux、CentOS 或 Oracle Linux 的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Linux 虚拟机](../virtual-machines/linux/quick-create-portal.md)
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-通过 https://portal.azure.com 登录 Azure
+在 https://portal.azure.com 中登录 Azure
 
 ## <a name="onboard-a-virtual-machine"></a>载入虚拟机
 可以通过多种不同的方法载入计算机并启用 Desired State Configuration。 本快速入门介绍如何通过自动化帐户进行载入。 可以阅读此[载入](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)文章，详细了解如何通过不同的方法将计算机载入到 Desired State Configuration。

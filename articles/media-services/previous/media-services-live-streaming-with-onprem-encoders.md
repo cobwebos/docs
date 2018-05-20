@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: e1a7c3cec7925c6fb01aafba152dde2383cee442
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>使用本地编码器实时传送视频流以创建多比特率流
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 05/07/2018
   > 实时传送视频流时，使用直通方法是最经济的。
 
 
-* 本地实时编码器采用以下格式之一将单比特率流发送至能够使用媒体服务执行实时编码的频道：RTP (MPEG-TS)、RTMP 或平滑流式处理（分片 MP4）。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 媒体服务会将流传送给请求它的客户。
+* 本地实时编码器采用 RTMP 或平滑流式处理（分片 MP4）格式将单比特率流发送至能够使用媒体服务执行实时编码的频道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 媒体服务会将流传送给请求它的客户。
 
 从媒体服务 2.10 版开始，创建频道时，可以指定频道接收输入流的方式。 还可以指定是否想要频道对流执行实时编码。 可以使用两个选项：
 

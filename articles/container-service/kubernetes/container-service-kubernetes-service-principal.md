@@ -1,19 +1,19 @@
 ---
-title: "Azure Kubernetes 群集的服务主体"
-description: "在 Azure 容器服务中为 Kubernetes 群集创建和管理 Azure Active Directory 服务主体"
+title: Azure Kubernetes 群集的服务主体
+description: 在 Azure 容器服务中为 Kubernetes 群集创建和管理 Azure Active Directory 服务主体
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 02588ca770ae519615360ce3e8935231aa74f8cf
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 84215daac950f602c815e1ffc5ae6dd5269d9bdf
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>在容器服务中为 Kubernetes 群集设置 Azure AD 服务主体
 

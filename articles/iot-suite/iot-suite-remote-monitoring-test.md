@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 905e64d004c02db663634eb784cacf6fab805193
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d2523502c20a7cdc4fb4ec388f167f1640919717
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-new-simulated-device"></a>创建新的模拟设备
 
@@ -225,7 +225,7 @@ ms.lasthandoff: 05/07/2018
 1. 若要克隆 .NET 版本的 **storage-adapter** 存储库，请运行以下命令：
 
     ```cmd
-    git clone https://github.com/Azure/storage-adapter.git
+    git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
     设备模拟服务使用存储适配器服务连接到 Azure 中的 Cosmos DB 服务。 远程监视解决方案将模拟设备配置数据存储在 Cosmos DB 数据库中。
@@ -258,7 +258,11 @@ ms.lasthandoff: 05/07/2018
 
 1. 在“环境变量”部分，将 **PCS\_IOTHUB\_CONNSTRING** 变量的值编辑成前面记下的 IoT 中心连接字符串。 保存更改。
 
-1. 在解决方案资源管理器中，右键单击“device-simulation”解决方案并选择“设置启动项目”。 依次选择“单启动项目”、“SimulationAgent”。 然后单击“确定”。
+1. 在解决方案资源管理器中，右键单击“WebService”项目，并依次选择“属性”、“调试”。
+
+1. 在“环境变量”部分，将 **PCS\_IOTHUB\_CONNSTRING** 变量的值编辑成前面记下的 IoT 中心连接字符串。 保存更改。
+
+1. 在解决方案资源管理器中，右键单击“device-simulation”解决方案并选择“设置启动项目”。 依次选择“单启动项目”、“WebService”。 然后单击“确定”。
 
 1. 每种设备类型都有一个 JSON 模型文件，并且在 **Services/data/devicemodels** 文件夹中具有关联的脚本。 在解决方案资源管理器中，如下表中所示，复制**冷却器**文件以创建**灯泡**文件：
 
@@ -294,10 +298,12 @@ ms.lasthandoff: 05/07/2018
         "status": "on"
       },
       "Interval": "00:00:20",
-      "Scripts": {
-        "Type": "javascript",
-        "Path": "lightbulb-01-state.js"
-      }
+      "Scripts": [
+        {
+          "Type": "javascript",
+          "Path": "lightbulb-01-state.js"
+        }
+      ]
     },
     ```
 
@@ -468,7 +474,7 @@ ms.lasthandoff: 05/07/2018
 
 现在，可以通过在本地运行设备模拟项目，来测试新的模拟灯泡类型。
 
-1. 在解决方案资源管理器中，右键单击“SimulationAgent”，并依次选择“调试”、“启动新实例”。
+1. 在解决方案资源管理器中，右键单击“WebService”，并依次选择“调试”、“启动新实例”。
 
 1. 若要检查两个模拟设备是否已连接到 IoT 中心，请在浏览器中打开 Azure 门户。
 

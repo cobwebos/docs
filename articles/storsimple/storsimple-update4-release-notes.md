@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 系列 Update 4 发行说明 | Microsoft Docs"
-description: "介绍 StorSimple 8000 系列 Update 4 的新功能、问题和解决方法。"
+title: StorSimple 8000 系列 Update 4 发行说明 | Microsoft Docs
+description: 介绍 StorSimple 8000 系列 Update 4 的新功能、问题和解决方法。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,16 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: f1c0734b07287d95a2f5031e010f0e407d3a816f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f4db5a49b71b0c384da7af2b90bd5426a4f35c72
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 发行说明
-> [!NOTE]
-> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 如有任何与移动相关的问题，请参阅[常见问题解答：移动到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
-
 
 ## <a name="overview"></a>概述
 
@@ -71,7 +68,7 @@ Update 4 中进行了以下重大改进和 bug 修复。
 | 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |故障转移 |在早期版本中，当故障转移后，会在客户站点观察到与清理相关的问题。 在此版本中已修复了此问题。 |是 |是 |
-| #N/A |本地固定卷 |在之前版本中，为本地固定卷创建卷时会出现导致卷创建失败的问题。 在此版本中已找到此问题的根本原因并进行了修复。 |是 |否 |
+| 2 |本地固定卷 |在之前版本中，为本地固定卷创建卷时会出现导致卷创建失败的问题。 在此版本中已找到此问题的根本原因并进行了修复。 |是 |否 |
 | 3 |支持包 |之前版本中存在与支持包相关的问题，该问题会导致 System.OutOfMemory 异常，或支持包创建失败的其他错误。 在此版本中已修复这些 bug。 |是 |是 |
 | 4 |监视 |在之前版本中，当监视本地固定卷的图表时会出现占用量显示在 EB 中的问题。 在此版本中已修复了此 bug。 |是 |是 |
 | 5 |迁移 |在之前版本中，当从 5000-7000 系列迁移到 8000 系列设备时，会出现若干与迁移可靠性相关的问题。 此版本中已解决这些问题。 |是 |是 |

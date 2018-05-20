@@ -1,9 +1,9 @@
 ---
-title: "Azure 付款处理蓝图 - 策略要求"
-description: "PCI DSS 要求 12"
+title: Azure 付款处理蓝图 - 策略要求
+description: PCI DSS 要求 12
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: a79d59d8-20e3-4efe-8686-c8f4ed80e220
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 05e9ed7c886d37a024db1eedbc541705b7d8a9a9
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 2fb238e9b95180d6156159c87ec008a71943e698
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="policy-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的策略要求  
 ## <a name="pci-dss-requirement-12"></a>PCI DSS 要求 12
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护信息安全策略。|
 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责至少每年更新一次其信息安全策略，或者在更改其持卡人数据环境 (CDE) 时进行更新。|
 
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责实施风险评估流程，解决要求 12.2 中列出的所有威胁。|
 
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -163,7 +163,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责确定对基于云的 VM、存储和支持服务来说，哪些网络位置可以接受。|
 
 
@@ -176,7 +176,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责确定对基于云的 VM、存储和支持服务来说，哪些网络位置可以接受。|
 
 
@@ -189,7 +189,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 使用 Microsoft 公司的 AD 会话锁定功能，在一段时间的不活动后强制会话锁定。 不活动时间超过 30 分钟就会终止网络连接。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 使用 Microsoft 公司的 AD 会话锁定功能，在一段时间的不活动后强制会话锁定。 不活动时间超过 30 分钟就会终止网络连接。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -202,7 +202,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责确保当个人通过远程访问技术访问持卡人数据时，不得将持卡人数据复制、移动和存储到本地硬盘和可移动电子介质，除非因特定的业务需要已获得明确授权。|
 
 
@@ -229,7 +229,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -247,7 +247,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 身为服务提供商的客户负责记录其 PCI 符合性计划。|
 
 
@@ -260,7 +260,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责为其员工定义和指定信息安全责任。|
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责为其员工定义和指定信息安全责任。|
 
 
@@ -286,7 +286,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责为其员工定义和指定信息安全责任。|
 
 
@@ -299,7 +299,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -312,7 +312,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -325,7 +325,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定和维护策略，要求对其 CDE 中的关键技术进行正确的使用、实施和身份验证。|
 
 
@@ -338,7 +338,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责针对有权访问 CDE 的人员，围绕安全意识制定和维护相关策略。|
 
 
@@ -354,7 +354,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责确保相关人员接受并确认信息安全和 PCI-DSS 意识的培训，至少每年一次。|
 
 
@@ -367,7 +367,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责确保相关人员接受并确认信息安全和 PCI-DSS 意识的培训，至少每年一次。|
 
 
@@ -383,7 +383,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责确保对能够访问 CDE 的人员进行全面的背景调查。|
 
 
@@ -396,7 +396,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 对于与之共享持卡人数据的服务提供商或能够对 CDE 的安全性造成影响的服务提供商，客户负责监视其遵循 PCI 的情况。 客户必须保留一个列表，列出在其 CDE 中使用的所有服务提供商。|
 
 
@@ -410,7 +410,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 对于与之共享持卡人数据的服务提供商或能够对 CDE 的安全性造成影响的服务提供商，客户负责监视其遵循 PCI 的情况。 客户必须保留一个列表，列出在其 CDE 中使用的所有服务提供商。|
 
 
@@ -426,7 +426,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责与服务提供商签署书面协议，确认维护持卡人数据安全的责任。|
 
 
@@ -439,7 +439,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责确保在相关人员的努力下，通过既定的流程促使服务提供商参与安全维护。|
 
 
@@ -452,7 +452,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责保留一个计划，对服务提供商遵从 PCI DSS 的情况进行监视，至少每年一次。|
 
 
@@ -465,7 +465,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责保留一份[责任摘要表](https://aka.ms/pciblueprintcrm32)，其中概述了客户负责的 PCI DSS 要求以及 Microsoft Azure 负责的相应要求。|
 
 
@@ -481,7 +481,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 身为服务提供商的客户负责确认其有责任始终遵循 PCI。 |
 
 
@@ -494,7 +494,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定 IR 计划并进行测试，在测试过程中要考虑到任何与共享触摸点相关的客户控件，以及任何可利用 Azure 基础结构的客户应用程序。 客户有责任向 Azure 提供准确的联系人信息，因为在发生可能影响其应用程序或数据的事件时，需向其报告该事件。|
 
 
@@ -514,7 +514,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定 IR 计划并进行测试，在测试过程中要考虑到任何与共享触摸点相关的客户控件，以及任何可利用 Azure 基础结构的客户应用程序。 客户有责任向 Azure 提供准确的联系人信息，因为在发生可能影响其应用程序或数据的事件时，需向其报告该事件。|
 
 
@@ -528,7 +528,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定 IR 计划并进行测试，在测试过程中要考虑到任何与共享触摸点相关的客户控件，以及任何可利用 Azure 基础结构的客户应用程序。 客户有责任向 Azure 提供准确的联系人信息，因为在发生可能影响其应用程序或数据的事件时，需向其报告该事件。|
 
 
@@ -541,7 +541,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定 IR 计划并进行测试，在测试过程中要考虑到任何与共享触摸点相关的客户控件，以及任何可利用 Azure 基础结构的客户应用程序。 客户有责任向 Azure 提供准确的联系人信息，因为在发生可能影响其应用程序或数据的事件时，需向其报告该事件。|
 
 
@@ -554,7 +554,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定 IR 计划并进行测试，在测试过程中要考虑到任何与共享触摸点相关的客户控件，以及任何可利用 Azure 基础结构的客户应用程序。 客户有责任向 Azure 提供准确的联系人信息，因为在发生可能影响其应用程序或数据的事件时，需向其报告该事件。|
 
 
@@ -567,7 +567,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定 IR 计划并进行测试，在测试过程中要考虑到任何与共享触摸点相关的客户控件，以及任何可利用 Azure 基础结构的客户应用程序。 客户有责任向 Azure 提供准确的联系人信息，因为在发生可能影响其应用程序或数据的事件时，需向其报告该事件。|
 
 
@@ -580,14 +580,14 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 客户负责制定 IR 计划并进行测试，在测试过程中要考虑到任何与共享触摸点相关的客户控件，以及任何可利用 Azure 基础结构的客户应用程序。 客户有责任向 Azure 提供准确的联系人信息，因为在发生可能影响其应用程序或数据的事件时，需向其报告该事件。|
 
 
 
 ## <a name="pci-dss-requirement-1211"></a>PCI DSS 要求 12.11
 
-**12.11** **仅适用于服务提供商的其他要求：**至少按季进行审核，确认相关人员是否遵守安全策略和操作过程。
+**12.11** **仅适用于服务提供商的其他要求：** 至少按季进行审核，确认相关人员是否遵守安全策略和操作过程。
 审核必须涵盖以下流程：
 - 每日日志审核
 - 防火墙规则集审核
@@ -603,7 +603,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 身为服务提供商的客户负责记录其对相关流程的审核情况，确认在 PCI 符合性方面的控制性能。|
 
 
@@ -622,7 +622,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 身为服务提供商的客户负责记录其对相关流程的审核情况，确认在 PCI 符合性方面的控制性能。|
 
 

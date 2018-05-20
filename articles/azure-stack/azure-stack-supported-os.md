@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: 819d8a9580de435536bf184b10ffbc23c32b247b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d90ac726ae689cf299ee41d4e7ff4c17769e7455
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack 支持的来宾操作系统
 
@@ -37,7 +37,7 @@ Azure 堆栈支持下表中列出的 Windows 来宾操作系统：
 | Windows Server 2012 | 64 位 |  数据中心 |
 | Windows Server 2008 R2 SP1 | 64 位 |  数据中心 |
 | Windows Server 2008 SP2 | 64 位 |  将你自己的映像 |
-| Windows 10*（请参见注释 1）* | 64 位，Pro 和 Enterprise | 将你自己的映像 |
+| Windows 10 *（请参见注释 1）* | 64 位，Pro 和 Enterprise | 将你自己的映像 |
 
 ***注释 1:*** *要部署 Azure 堆栈上的 Windows 10 客户端操作系统，必须拥有[每用户许可 Windows](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx)或购买一个限定的多租户托管商通过 ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)).*
 
@@ -70,3 +70,5 @@ Azure 堆栈支持下表中列出的 Windows 来宾操作系统：
 | Ubuntu 18.04 LTS | 64 位 | Canonical | 是 |
 
 将来可能支持其他 Linux 发行版。
+
+有关 Red Hat Enterprise Linux 支持信息，请参阅[Red Hat 和 Azure 堆栈： Frequently Asked Questions](https://access.redhat.com/articles/3413531)。

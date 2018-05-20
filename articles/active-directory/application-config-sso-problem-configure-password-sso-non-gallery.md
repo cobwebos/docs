@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: e5c8562b89b70236d9d65a5f8765ae386d6831b4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7b671089bfac04b359717874928d6a342c44b3d4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序密码单一登录时遇到的问题
 
@@ -235,7 +235,7 @@ ms.lasthandoff: 04/05/2018
 
 ### <a name="detailed-notification-items"></a>详细通知项
 
--   **显示名称** - **（可以为空）**错误的更详细的显示名称
+-   **显示名称** - **（可以为空）** 错误的更详细的显示名称
 
     -   示例 * - **应用程序代理设置**
 
@@ -243,7 +243,7 @@ ms.lasthandoff: 04/05/2018
 
     -   示例 * - **失败**
 
--   **对象 ID** – **（可能为空）**对其执行了操作的对象 ID
+-   **对象 ID** – **（可能为空）** 对其执行了操作的对象 ID
 
     -   示例 – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
@@ -256,5 +256,5 @@ ms.lasthandoff: 04/05/2018
     -   示例 - ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>后续步骤
-[使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
+[使用应用程序代理为应用提供单一登录](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

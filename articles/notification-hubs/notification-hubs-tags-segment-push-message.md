@@ -1,24 +1,24 @@
 ---
-title: "路由和标记表达式"
-description: "本主题介绍 Azure 通知中心的路由和标记表达式。"
+title: 路由和标记表达式
+description: 本主题介绍 Azure 通知中心的路由和标记表达式。
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 0fffb3bb-8ed8-4e0f-89e8-0de24a47f644
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: c3266698a6077e85806286fadf1f48b7194a4d88
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: e08fca0b6b57d654f2b2ff7b935f38d8c517487b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-and-tag-expressions"></a>路由和标记表达式
 ## <a name="overview"></a>概述
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/28/2018
 3. **标记表达式**：其标记集匹配指定表达式的所有注册将收到通知。
 
 ## <a name="tags"></a>标记
-标记可以是任意字符串，最多 120 个字符，可以包含字母数字和以下非字母数字字符：“_”、“@”、“#”、“.”、“:”、“-”。 以下示例显示了一个应用程序，可以从中接收有关特定乐队的 toast 通知。 在此方案中，路由通知的一种简便方法是使用代表不同乐队的标记（如下图所示）为注册添加标签。
+标记可以是任意字符串，最多 120 个字符，可以包含字母数字和以下非字母数字字符：“_”、“@”、“#”、“.”、“:”、“-”。 以下示例显示了一个应用程序，可以从中接收有关特定乐队的 toast 通知。 在此方案中，路由通知的一种简便方法是使用代表不同乐队的标记（如下图所示）为注册添加标签：
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/28/2018
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-在此图中，标记为 uid:Alice 的消息将传到标记为 uid:Alice 的所有注册，也即 Alice 的所有设备。
+在此图中，标记为 uid:Alice 的消息将传到标记为 uid:Alice 的所有注册，即 Alice 的所有设备。
 
 ## <a name="tag-expressions"></a>标记表达式
 存在这样的情况：通知必须定向到一个注册集，该注册集不由单个标记标识，而是由标记上的布尔表达式进行标识。

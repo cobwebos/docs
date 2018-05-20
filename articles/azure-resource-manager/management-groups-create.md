@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 31249584891a1bb07628fde56e445fda9b2bb467
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1592e47509f2537bef9cbcefd3cf49618561edcc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 管理组是一些容器，可以帮助你跨多个订阅管理访问权限、策略和符合性。 可以创建这些容器来构建可以与 [Azure 策略](../azure-policy/azure-policy-introduction.md)和 [Azure 基于角色的访问控制](../role-based-access-control/overview.md)配合使用的有效且高效的层次结构。 有关管理组的详细信息，请参阅[使用 Azure 管理组来组织资源](management-groups-overview.md)。 
@@ -34,7 +34,7 @@ ms.lasthandoff: 05/04/2018
 2. 选择“所有服务” > “管理组”。
 3. 在主页上，选择“新建管理组”。 
 
-    ![创建组](media/management-groups/create_main.png) 
+    ![主要组](media/management-groups/main.png) 
 4.  填写管理组 ID 字段。 
     - “管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符在创建后不可编辑，因为它用来在整个 Azure 系统中标识此组。 
     - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，并且可以随时更改。  

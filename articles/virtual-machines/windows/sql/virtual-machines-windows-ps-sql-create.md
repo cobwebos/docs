@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2f0d9c42e32f2dd1181eac8d74c324b5ff2b0c53
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>如何使用 Azure PowerShell 预配 SQL Server 虚拟机
 
@@ -246,7 +246,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>设置虚拟机的操作系统属性
-现在，我们可以使用 [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) cmdlet 设置虚拟机的操作系统属性了，将操作系统的类型设置为 Windows，要求安装[虚拟机代理](../agent-user-guide.md)，指定该 cmdlet 允许使用前面初始化的变量自动更新和设置虚拟机名称、计算机名称和凭据。
+现在，我们可以使用 [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) cmdlet 设置虚拟机的操作系统属性了，将操作系统的类型设置为 Windows，要求安装[虚拟机代理](../../extensions/agent-windows.md)，指定该 cmdlet 允许使用前面初始化的变量自动更新和设置虚拟机名称、计算机名称和凭据。
 
 执行以下 cmdlet 来设置虚拟机的操作系统属性。
 

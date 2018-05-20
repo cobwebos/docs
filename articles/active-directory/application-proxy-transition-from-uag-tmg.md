@@ -1,25 +1,25 @@
 ---
-title: "升级到 Azure AD 应用程序代理 | Microsoft Docs"
-description: "如果要从 Microsoft Forefront 或 Unified Access Gateway 升级，请选择哪个代理解决方案最佳。"
+title: 升级到 Azure AD 应用程序代理 | Microsoft Docs
+description: 如果要从 Microsoft Forefront 或 Unified Access Gateway 升级，请选择哪个代理解决方案最佳。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5323a9225adb9a9bfca2dccec5c84f288c4fd25d
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: e6764a0eeb27b8bff24140ff2c12e9e66b06b48b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
@@ -62,5 +62,5 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure AD 应用程序提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)
+- [使用 Azure AD 应用程序提供对本地应用程序的安全远程访问](manage-apps/application-proxy.md)
 - [从 Forefront TMG 和 UAG 转换为应用程序代理](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/)。

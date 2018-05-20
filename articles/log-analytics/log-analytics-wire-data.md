@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/09/2018
 ms.author: magoedte
-ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c86d1274ed46ff725c9db3093a8852fbae7f67ff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics 中的 Wire Data 2.0（预览版）解决方案
 
@@ -379,7 +379,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="using-the-wire-data-20-solution"></a>使用 Wire Data 2.0 解决方案
 
-在 OMS 门户中，单击“Wire Data 2.0”磁贴以打开“Wire Data”仪表板。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题，运行返回所有记录的日志搜索。
+在 Azure 门户的 Log Analytics 工作区的“概览”页中，单击“Wire Data 2.0”磁贴打开 Wire Data 仪表板。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题，运行返回所有记录的日志搜索。
 
 | **边栏选项卡** | **说明** |
 | --- | --- |

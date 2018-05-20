@@ -1,5 +1,19 @@
-
-
+---
+title: include 文件
+description: include 文件
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 03/28/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: c718fa972b9d6cba13a13edd3c7e8df29fa63207
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/07/2018
+---
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 选择“创建资源” > “Web + 移动” > “通知中心”。
@@ -14,14 +28,13 @@
 
     a. 在“命名空间”区域中，选择“选择现有”链接。 
    
-    b. 选择“创建”。
+    b. 选择**创建**。
    
       ![Azure 门户 - 设置通知中心属性](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-4. 创建命名空间和通知中心以后，请将其打开，方法是先选择“所有资源”，然后从列表中选择创建的通知中心。 
-   
-      ![Azure 门户 - 通知中心门户页](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-resources.png)
+4. 选择“通知”（钟形图标），然后选择“转到资源”。 
 
+      ![Azure 门户 - 通知 -> 转到资源](./media/notification-hubs-portal-create-new-hub/notification-go-to-resource.png)    
 5. 从列表中选择“访问策略”。 记下向你提供的两个连接字符串。 稍后在处理推送通知时需要它们。
 
       >[!IMPORTANT]

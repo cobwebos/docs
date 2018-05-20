@@ -1,11 +1,11 @@
 ---
-title: "Azure Web 应用的部署常见问题解答 | Microsoft Docs"
-description: "获取有关 Azure 应用服务的 Web 应用功能的部署常见问题解答。"
+title: Azure Web 应用的部署常见问题解答 | Microsoft Docs
+description: 获取有关 Azure 应用服务的 Web 应用功能的部署常见问题解答。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 318a236652229c4e093ca33886ac1831686aed73
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 54c99cc9dde6a9706c75401dd75b98f8f5de7cec
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/04/2017
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>如何在尝试通过 FTP 传输文件时解决“FTP 错误 550 - 磁盘空间不足”？
 
-如果看到此消息，则可能是遇到服务计划中针对 Web 应用的磁盘配额。 可能需要基于磁盘空间需求增加到较高服务层。 有关定价计划和资源限制的详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
+如果看到此消息，则可能是遇到服务计划中针对 Web 应用的磁盘配额。 可能需要基于磁盘空间需求提升到较高服务层。 有关定价计划和资源限制的详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>如何为应用服务 Web 应用程序设置持续部署？
 

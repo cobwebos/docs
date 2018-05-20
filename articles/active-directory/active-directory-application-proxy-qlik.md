@@ -12,11 +12,11 @@ ms.date: 04/03/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e10fefdd3bd46aeb90fd2cfc82d4fee3b17d867b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ab029420ab9aa81b585c9b0315537bff2d9aaa6d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="application-proxy-and-qlik-sense"></a>应用程序代理和 Qlik Sense 
 Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保可轻松使用应用程序代理来提供对 Qlik Sense 部署的远程访问。  
@@ -25,13 +25,13 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 此方案的剩余部分假定你已完成以下操作：
  
 - 配置 [Qlik Sense](https://community.qlik.com/docs/DOC-19822)。 
-- [安装应用程序代理连接器](active-directory-application-proxy-enable.md#install-and-register-a-connector) 
+- [安装应用程序代理连接器](manage-apps/application-proxy-enable.md#install-and-register-a-connector) 
  
 ## <a name="publish-your-applications-in-azure"></a>在 Azure 中发布应用程序 
 若要发布 QlikSense，需要在 Azure 中发布两个应用程序。  
 
 ### <a name="application-1"></a>应用程序 1： 
-按以下步骤发布应用。 有关步骤 1-8 更详细的演练，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。 
+按以下步骤发布应用。 有关步骤 1-8 更详细的演练，请参阅[使用 Azure AD 应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)。 
 
 
 1. 以全局管理员身份登录到 Azure 门户。 
@@ -50,7 +50,7 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 按照应用程序 1 的相同步骤操作，但存在以下例外： 
 
 **步骤 5**：外部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 HTTPS 的默认端口为 4244，HTTP 的默认端口为 4248。 例如：**https&#58;//demo.qlik.com:4244**</br></br> 
-**步骤 10：**请勿设置 SSO，并使“单一登录”****处于禁用状态
+**步骤 10：** 请勿设置 SSO，并使“单一登录”**** 处于禁用状态
  
  
 ## <a name="testing"></a>测试 
@@ -58,5 +58,5 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)
-- [使用应用程序代理连接器](active-directory-application-proxy-connectors-azure-portal.md)。
+- [使用应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)
+- [使用应用程序代理连接器](manage-apps/application-proxy-connector-groups.md)。

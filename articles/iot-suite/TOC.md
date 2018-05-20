@@ -78,6 +78,7 @@
 #### [Node.js（通用）](iot-suite-connecting-devices-node.md)
 #### [Raspberry Pi 上的 Node.js](iot-suite-connecting-pi-node.md)
 #### [Raspberry Pi 上的 C](iot-suite-connecting-pi-c.md)
+#### [MX Chip AZ3166 DevKit](iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
 ### 概念
 #### [远程监视实现详细信息](iot-suite-remote-monitoring-sample-walkthrough.md)
@@ -119,6 +120,6 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [常见问题](iot-suite-faq.md)
 ## [远程监视常见问题解答](iot-suite-faq-rm-v2.md)
-## [连接工厂常见问题解答](iot-suite-faq-cf.md)
+## [连接的工厂常见问题解答](iot-suite-faq-cf.md)
 ## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-iot-suite)
 ## [IoT 解决方案加速器学习路径](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)

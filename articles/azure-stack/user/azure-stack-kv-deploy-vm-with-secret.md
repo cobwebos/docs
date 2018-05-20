@@ -1,46 +1,55 @@
 ---
-title: "部署 Azure 堆栈上的安全地存储密码的虚拟机 |Microsoft 文档"
-description: "了解如何使用 Azure 堆栈密钥保管库中存储的密码部署 VM"
+title: 使用安全地存放在 Azure Stack 上的密码部署 VM | Microsoft Docs
+description: 了解如何使用存储在 Azure Stack Key Vault 中的密码部署 VM
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/08/2017
+ms.date: 05/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: 8d9a2cebd7a28ca13cf88518a7c83b217af4c0e1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>通过检索密钥保管库中存储的密码创建虚拟机
+# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>创建使用 Azure 堆栈密钥保管库中存储的安全密码的虚拟机
 
-当你需要在部署期间将安全的值，如密码时，可以将该值存储在 Azure 堆栈密钥保管库中的机密形式，并在 Azure 资源管理器模板中引用它。 进行不需要手动输入机密部署的资源中，每次还可以指定哪些用户或服务主体可以访问机密。 
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-在本文中，我们引导你完成通过检索密钥保管库中存储的密码中部署 Azure 堆栈中的 Windows 虚拟机所需的步骤。 因此密码永远不会放在模板参数文件中的纯文本。 如果你通过 VPN 连接，你可以使用以下步骤从 Azure 堆栈开发工具包中，或者从外部客户端。
+此文章逐句通过部署 Windows Server 虚拟机使用 Azure 堆栈密钥保管库中存储的密码。 使用密钥保管库密码是比传递纯文本密码更安全。
+
+## <a name="overview"></a>概述
+
+可以将如密码的值存储为 Azure 堆栈密钥保管库中的机密。 创建密钥后，您可以在 Azure 资源管理器模板中引用它。 使用与资源管理器的机密提供以下好处：
+
+* 你无需手动输入机密每次部署资源。
+* 你可以指定哪些用户或服务主体可以访问机密。
 
 ## <a name="prerequisites"></a>必备组件
- 
-* 您必须订阅服务关联，它包含密钥保管库服务。  
-* [安装适用于 Azure 堆栈 PowerShell。](azure-stack-powershell-install.md)  
-* [配置 Azure 堆栈用户 PowerShell 环境。](azure-stack-powershell-configure-user.md)
 
-以下步骤说明通过检索密钥保管库中存储的密码创建虚拟机所需的过程：
+* 必须订阅包含 Key Vault 服务的产品/服务。
+* [安装适用于 Azure Stack 的 PowerShell。](azure-stack-powershell-install.md)
+* [配置 Azure Stack 用户的 PowerShell 环境。](azure-stack-powershell-configure-user.md)
 
-1. 创建密钥保管库密钥。
+以下步骤说明通过检索 Key Vault 中存储的密码创建虚拟机所需的过程：
+
+1. 创建 Key Vault 机密。
 2. 更新 azuredeploy.parameters.json 文件。
 3. 部署模板。
 
-## <a name="create-a-key-vault-secret"></a>创建密钥保管库密钥
+>[注意]如果你通过 VPN 连接，你可以使用以下步骤从 Azure 堆栈开发工具包中，或者从外部客户端。
 
-以下脚本创建密钥保管库，并将密码存储在密钥保管库的机密形式。 使用`-EnabledForDeployment`参数在创建密钥保管库时。 此参数可确保密钥保管库可以从 Azure 资源管理器模板来引用。
+## <a name="create-a-key-vault-secret"></a>创建 Key Vault 机密
+
+以下脚本创建密钥保管库，并将密码作为机密存储在密钥保管库中。 创建密钥保管库时，请使用 `-EnabledForDeployment` 参数。 此参数可确保能够从 Azure 资源管理器模板引用密钥保管库。
 
 ```powershell
 
@@ -68,13 +77,13 @@ Set-AzureKeyVaultSecret `
 
 ```
 
-运行前面的脚本时，输出中包括的机密的 URI。 记下此 URI。 你必须引用在[密钥保管库模板中具有密码的部署 Windows 虚拟机](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv)。 下载[101-vm 的安全的密码](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv)到开发计算机上的文件夹。 此文件夹包含`azuredeploy.json`和`azuredeploy.parameters.json`文件，你将需要在下面的步骤。
+运行前面的脚本时，输出会包括机密 URI。 请记下此 URI。 在[使用密钥保管库模板中的密码部署 Windows 虚拟机](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv)中，必须引用此 URI。 将 [101-vm-secure-password](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) 文件夹下载到开发计算机上。 此文件夹包含 `azuredeploy.json` 和 `azuredeploy.parameters.json`文件，在后续步骤中将需要这些文件。
 
-修改`azuredeploy.parameters.json`根据你环境的值的文件。 参数感兴趣的是保管库名称、 保管库资源组和机密 URI （如由前面的脚本生成）。 下面的文件是参数文件的示例：
+根据环境值，修改 `azuredeploy.parameters.json` 文件。 要注意的参数是保管库名称、保管库资源组和机密 URI（由前面的脚本生成）。 以下文件是参数文件的示例：
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>更新 azuredeploy.parameters.json 文件
 
-更新使用 KeyVault 的 URI、 secretName，根据你的环境的虚拟机值 adminUsername azuredeploy.parameters.json 文件。 下面的 JSON 文件显示模板参数文件的示例： 
+根据环境，以 KeyVault URI、secretName、虚拟机 adminUsername 的值更新 azuredeploy.parameters.json 文件。 以下 JSON 文件显示模板参数文件的示例：
 
 ```json
 {
@@ -105,7 +114,7 @@ Set-AzureKeyVaultSecret `
 
 ## <a name="template-deployment"></a>模板部署
 
-现在使用以下 PowerShell 脚本部署模板：
+现在，使用以下 PowerShell 脚本部署模板：
 
 ```powershell
 New-AzureRmResourceGroupDeployment `
@@ -114,13 +123,13 @@ New-AzureRmResourceGroupDeployment `
   -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
-已成功部署模板时，这会导致下面的输出：
+
+成功部署模板后，会生成以下输出：
 
 ![部署输出](media/azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
 
-
 ## <a name="next-steps"></a>后续步骤
-[部署包含密钥保管库的示例应用程序](azure-stack-kv-sample-app.md)
 
-[将使用密钥保管库证书 VM 部署](azure-stack-kv-push-secret-into-vm.md)
+[使用 Key Vault 部署示例应用](azure-stack-kv-sample-app.md)
 
+[使用 Key Vault 证书部署 VM](azure-stack-kv-push-secret-into-vm.md)

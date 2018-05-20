@@ -3,22 +3,24 @@ title: 从 Azure 访问控制服务迁移 | Microsoft Docs
 description: 从 Azure 访问控制服务迁移应用和服务的方法
 services: active-directory
 documentationcenter: dev-center-name
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
-ms.author: dastrock
-ms.openlocfilehash: 6c22f85d3e76a005c45a4679ddfd8948a46acffc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: celested
+ms.reviewer: dastrock
+ms.openlocfilehash: c1c86f21d5a99cf251b0b83f41576c2cdaf96dfb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>从 Azure 访问控制服务迁移
 
@@ -252,7 +254,7 @@ Possible nameIdentifiers from Access Control (via AAD or AD FS):
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持多种与 ACS 相同的功能，PingFederate 是一个类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持多种与 ACS 相同的功能，PingFederate 是一个类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 
@@ -277,7 +279,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 - 支持以下令牌格式：JWT、SAML 1.1、SAML 2.0 和 SWT。
 - 简单令牌转换规则。
 
-访问控制中的服务标识通常用于实现服务器间身份验证。  
+访问控制中的服务标识通常用于实现服务器间身份验证。 
 
 #### <a name="migrate-to-azure-active-directory"></a>迁移到 Azure Active Directory
 
@@ -314,7 +316,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持多种与 ACS 相同的功能，PingFederate 是一个类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持多种与 ACS 相同的功能，PingFederate 是一个类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 

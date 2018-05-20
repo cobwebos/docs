@@ -1,123 +1,122 @@
 ---
-title: "缩放 Azure 堆栈中的单元节点操作 |Microsoft 文档"
-description: "了解如何查看节点状态和使用开机、 关机，排出，并恢复节点在集成的 Azure 堆栈的系统上的操作。"
+title: Azure Stack 中的缩放单位节点操作 | Microsoft Docs
+description: 了解如何在 Azure Stack 集成系统中查看节点状态，以及使用开机、关机、清空和恢复节点操作。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: dbb68b10-c721-4188-aa07-584d0cd63138
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 55cc0eb3cc187d87e0d2ae96e2433cb9682ab370
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 202854157dee28f3ab3dc73c6f22508a8bf510b3
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="scale-unit-node-actions-in-azure-stack"></a>Azure 堆栈中的缩放单元节点操作
+# <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack 中的缩放单位节点操作
 
-*适用范围： Azure 堆栈集成系统*
+*适用于：Azure Stack 集成系统*
 
-本文介绍如何查看缩放单位和其关联的节点的状态以及如何使用的可用节点操作。 节点的操作包括开机电源关闭、 排出、 继续和修复。 通常情况下，字段更换部件，或节点恢复方案的过程中使用这些节点的操作。
+本文介绍如何查看缩放单位及其关联节点的状态，以及如何使用可用的节点操作。 节点操作包括开机、关机、清空、恢复和修复。 通常，在现场更换组件期间或者在节点恢复场合下会使用这些节点操作。
 
 > [!Important]  
-> 本文中所述的所有节点操作一次都应目标一个节点。
+> 本文中所述的所有节点操作每次应该针对一个节点。
 
 
-## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>查看缩放单位和及其节点的状态
+## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>查看缩放单位及其节点的状态
 
-在管理员门户中，你可以轻松地查看缩放单位和其关联的节点的状态。
+在管理员门户中，可以轻松查看缩放单位及其关联节点的状态。
 
-若要查看扩展单位的状态：
+查看缩放单位的状态：
 
-1. 上**区域管理**磁贴中，选择的区域。
-2. 在左侧下,**基础结构资源**，选择**缩放单元**。
-3. 在结果中，选择的缩放单位。
+1. 在“区域管理”磁贴中选择区域。
+2. 在左侧的“基础结构资源”下，选择“缩放单位”。
+3. 在结果中选择缩放单位。
  
-在这里，你可以查看以下信息：
+可在此处查看以下信息：
 
 - 区域名称
 - 系统类型
-- 总逻辑内核数
-- 总内存
-- 各个节点和它们的状态; 的列表请运行或停止。
+- 逻辑核心总数
+- 总内存量
+- 各个节点的列表及其状态：“正在运行”或“已停止”。
 
-![缩放单元磁贴显示每个节点的运行状态](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
+![显示每个节点运行状态的缩放单位磁贴](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
-## <a name="view-information-about-a-scale-unit-node"></a>查看有关缩放单元节点信息
+## <a name="view-information-about-a-scale-unit-node"></a>查看缩放单位节点的相关信息
 
-如果你选择的单个节点，你可以查看以下信息：
+如果选择单个节点，可以查看以下信息：
 
 - 区域名称
 - 服务器模型
 - 基板管理控制器 (BMC) 的 IP 地址
-- 操作状态
-- 总内核数
-- 内存总量
+- 工作状态
+- 内核总数
+- 总内存量
  
-![缩放单元磁贴显示每个节点的运行状态](media/azure-stack-node-actions/NodeActions.PNG)
+![显示每个节点运行状态的缩放单位磁贴](media/azure-stack-node-actions/NodeActions.PNG)
 
-你还可以从此处执行缩放单元节点操作。
+还可以在此处执行缩放单位节点操作。
 
-## <a name="scale-unit-node-actions"></a>缩放单元节点操作
+## <a name="scale-unit-node-actions"></a>缩放单位节点操作
 
-当你查看有关缩放单元节点的信息时，你还可以如执行节点操作：
+查看缩放单位节点的相关信息时，也可以执行节点操作，例如：
 
 - 开机和关机
-- 漏和恢复
+- 清空和恢复
 - 修复
 
-节点的操作的状态确定了可用的选项。
+节点的工作状态确定了哪些选项可用。
 
-### <a name="power-off"></a>关闭电源
+### <a name="power-off"></a>关机
 
-**关闭电源**操作将关闭节点。 它是相同的就像你按下电源按钮。 与其**不**向操作系统发送关闭信号。 对于计划关闭操作，请确保首先排出缩放单元节点。
+“关机”操作会关闭节点。 它的作用如同按下电源按钮。 它**不会**向操作系统发送关机信号。 执行计划的关机操作之前，请确保先清空缩放单位节点。
 
-当节点处于挂起状态且不再响应请求，通常使用此操作。
+当节点处于挂起状态，不再响应请求时，通常使用此操作。
 
 > [!Important] 
-> 此功能仅可通过 PowerShell。 再次在更高版本时，它将是 Azure 堆栈管理员门户中提供。
+> 只能通过 PowerShell 使用此功能。 今后会在 Azure Stack 管理员门户中再次提供此功能。
 
 
-若要运行关闭通过 PowerShell 的操作：
+通过 PowerShell 运行关机操作：
 
 ````PowerShell
   Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
 ```` 
 
-在可能的情况下，关闭操作不起作用，请改用 BMC web 界面。
+在关机操作不起作用的罕见情况下，请改用 BMC Web 界面。
 
 ### <a name="power-on"></a>开机
 
-**开启**操作会将在节点上。 它是相同的就像你按下电源按钮。 
+“开机”操作会打开节点。 它的作用如同按下电源按钮。 
 
 > [!Important] 
-> 此功能仅可通过 PowerShell。 再次在更高版本时，它将是 Azure 堆栈管理员门户中提供。
+> 只能通过 PowerShell 使用此功能。 今后会在 Azure Stack 管理员门户中再次提供此功能。
 
-对操作通过 PowerShell 运行幂：
+通过 PowerShell 运行开机操作：
 
 ````PowerShell
   Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
 ````
 
-在可能的情况下，在开启操作不起作用，请改用 BMC web 界面。
+在开机操作不起作用的罕见情况下，请改用 BMC Web 界面。
 
 ### <a name="drain"></a>清空
 
-**排出**操作 evacuates 方法是将它们分布在该特定缩放单位中的剩余节点之间的所有活动的工作负荷。
+“清空”操作会逐出所有活动的工作负荷：将它们分配到该特定缩放单位的剩余节点上。
 
-字段的部件，例如整个节点替换的更换过程中通常使用此操作。
+在现场更换组件期间（例如，更换整个节点），通常使用此操作。
 
 > [!IMPORTANT]
-> 请确保你仅在计划的维护窗口，其中用户已接到通知期间排出节点。 在某些情况下活动的工作负荷可能会遇到中断。
+> 确保只在已通知用户后执行计划内维护期间才清空节点。 在某些情况下，活动的工作负荷可能遇到中断。
 
-若要运行通过 PowerShell 排出操作：
+通过 PowerShell 运行清空操作：
 
   ````PowerShell
   Disable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
@@ -125,9 +124,9 @@ ms.lasthandoff: 01/10/2018
 
 ### <a name="resume"></a>恢复
 
-**恢复**操作恢复已用完的节点，并将其标记为活动状态的工作负荷放置。 早期节点运行的工作负荷不会返回失败。 （如果你排出节点，然后关机，重新打开电源节点时，它未标记为活动状态工作负载放置。 准备就绪时，你必须用于恢复操作将标记为活动节点。）
+“恢复”操作可恢复已清空的节点，并将其标记为活动，可用于放置工作负荷。 之前在节点上运行的工作负荷不会故障回复。 （如果清空节点然后关机，在重新打开节点时，系统不会将它标记为活动，可用于放置工作负荷。 准备就绪后，必须使用恢复操作将节点标记为活动。）
 
-若要运行通过 PowerShell 恢复操作：
+通过 PowerShell 运行恢复操作：
 
   ````PowerShell
   Enable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
@@ -135,17 +134,17 @@ ms.lasthandoff: 01/10/2018
 
 ### <a name="repair"></a>修复
 
-**修复**操作修复节点。 它仅用于以下方案之一：
+“修复”操作可修复节点。 请只在出现以下情况时才使用此操作：
 
-- 完整节点替换 （有或没有新数据磁盘）
-- 后硬件组件故障和替换 （如果建议字段可更换部件 (FRU) 文档中）。
+- 更换整个节点（不管是否包含新数据磁盘）时
+- 硬件组件发生故障并予以更换之后（如果现场可更换单元 (FRU) 文档中建议更换）。
 
 > [!IMPORTANT]
-> 当你需要替换的节点或单独的硬件组件时，请参阅具体的步骤的 OEM 硬件供应商的 FRU 文档。 FRU 文档将指定是否需要运行替换的硬件组件后修复操作。  
+> 需要更换节点或单个硬件组件时，请参阅 OEM 硬件供应商的 FRU 文档，以了解确切的步骤。 FRU 文档将指定在更换硬件组件之后是否需要运行修复操作。  
 
-运行修复操作时，你需要指定的 BMC IP 地址。 
+运行修复操作时，需要指定 BMC IP 地址。 
 
-若要运行通过 PowerShell 修复操作：
+通过 PowerShell 运行修复操作：
 
   ````PowerShell
   Repair-AzsScaleUnitNode -Region <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>

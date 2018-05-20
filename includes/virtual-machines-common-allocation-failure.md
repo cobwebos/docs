@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 6377b79d986d32fba8f84c670d6b69d5eda98b8a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 24d89b617c347bc9443b437c92cb034acb3e05cb
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 创建虚拟机 (VM)、重新启动已停止（解除分配）的 VM 和重设 VM 大小时，Microsoft Azure 会为订阅分配计算资源。 我们会不断投入其他基础结构和功能，确保始终提供可用于支持客户需求的所有 VM 类型。 但是，偶尔可能因特定区域中前所未有的 Azure 服务需求增长而遇到资源分配失败的情况。 当尝试在区域中创建或启动 VM，同时 VM 显示以下错误代码和消息时，会出现此问题：
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 04/18/2018
 |----------------------|----------------------------|--------------------|
 |Av1 系列|[Av2 系列](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 DSv3 系列](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 或 DSv1 系列（D11 到 D14）|[Ev3 或 ESv3 系列](../articles/virtual-machines/windows/sizes-memory.md#esv3-series-sup1sup)|
+|Dv1 或 DSv1 系列（D11 到 D14）|[Ev3 或 ESv3 系列](../articles/virtual-machines/windows/sizes-memory.md#ev3-series)|
 |D15v2 或 DS15v2|如果你使用资源管理器部署模型以便充分利用更大的 VM 大小，请考虑移动到 D16v3/DS16v3 或 D32v3/DS32v3。 这些为在最新硬件上运行而设计。 如果使用资源管理器部署模型以确保你的 VM 实例独立于单个客户专用的硬件，请考虑移动到新的独立 VM 大小 E64i_v3 或 E64is_v3，它们为在最新硬件上运行而设计。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大型部署（超过 500 个内核）的分配失败

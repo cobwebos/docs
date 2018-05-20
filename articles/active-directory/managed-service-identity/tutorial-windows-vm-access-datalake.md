@@ -7,17 +7,18 @@ author: daveba
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 5f410b6c0c1f24a9f9d453c833074cbd515f46b2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 57b60e0cf9374a6bd503b160e22eb3aa0a9ba911
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI 
 
-通过 VM MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 启用 MSI 会告诉 Azure 为 VM 创建托管标识。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
+通过 VM MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 启用 MSI 会告诉 Azure 为 VM 创建托管标识。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，和在 VM 上配置该标识。
 
 1. 选择要在其上启用 MSI 的虚拟机。  
 2. 在左侧导航栏中，单击“配置”。 
@@ -102,7 +103,7 @@ Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接
 4. 使用 PowerShell 的 `Invoke-WebRequest` 向本地 MSI 终结点发出请求，获取 Azure Data Lake Store 的访问令牌。  Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  Data Lake 对资源标识符执行完全匹配，因此尾部反斜杠非常重要。
 
    ```powershell
-   $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F -Method GET -Headers @{Metadata="true"}
+   $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
    ```
     
    将响应从 JSON 对象转换为 PowerShell 对象。 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ac956d638be1e79547ff931ba5b0c7e5de1ae65
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2597b434bc6db0d5639709a9ce869462c3e47f56
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>使用 Log Analytics 从环境中的计算机收集数据
 
@@ -40,7 +40,7 @@ Azure Log Analytics 可以从驻留在以下环境中的 Windows 或 Linux 计�
 
 如果使用 System Center 2016（Operations Manager 或 Operations Manager 2012 R2）监视计算机，该计算机可以与 Log Analytics 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 [Operations Manager](log-analytics-om-agents.md) 监视。 受 Operations Manager 管理组监视并与 Log Analytics 集成的 Linux 计算机不通过管理组接收数据源配置，也不转发收集的数据。 Windows 代理最多可以向四个工作区报告，而 Linux 代理只支持向单个工作区报告。  
 
-适用于 Linux 和 Windows 的代理不仅可连接到 Log Analytics，还支持使用 Azure 自动化来托管混合 Runbook 辅助角色和管理解决方案（例如更改跟踪和更新管理）。  有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../automation/automation-offering-get-started.md#automation-architecture-overview)。  
+适用于 Linux 和 Windows 的代理不仅可连接到 Log Analytics，还支持使用 Azure 自动化来托管混合 Runbook 辅助角色和管理解决方案（例如更改跟踪和更新管理）。  有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../automation/automation-hybrid-runbook-worker.md)。
 
 ## <a name="prerequisites"></a>先决条件
 开始之前，请查看以下详细信息，验证是否满足最低系统要求。

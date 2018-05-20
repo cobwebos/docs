@@ -11,14 +11,14 @@ ms.assetid: 73304272-6c8b-482e-af7c-cd25d95dab4d
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: d663756c52a23096888b9ee568fea23163d33aa9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cb78808b515bb3385f7cf56725441a2b228f0aba
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
 
@@ -283,11 +283,15 @@ ms.lasthandoff: 05/07/2018
 ![将选项添加到 IntelliJ 中的“VM 选项”对话框](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>常见问题
-若要将应用程序提交到 Azure Data Lake Store，请在 Azure 登录过程中选择“交互”模式。 如果选择“自动”模式，可能会收到错误。
+链接群集时，我将建议你提供存储的凭据。
 
-![interative-signin](./media/apache-spark-intellij-tool-plugin/interative-signin.png)
+![链接群集, 提供存储凭据](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
 
-此问题现已解决。 可以选择 Azure Data Lake 群集以使用任何登录方法提交应用程序。
+可通过两种模式提交作业。 如果提供存储凭据，则将使用批处理模式提交作业。 否则，将使用交互模式。 如果群集正忙，可能会收到以下错误。
+
+![Intellij 在群集忙时收到错误](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
+
+![Intellij 在群集忙时收到错误](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback-and-known-issues"></a>反馈和已知问题
 目前不支持直接查看 Spark 输出。

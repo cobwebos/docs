@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 1/4/2018
+ms.date: 5/8/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84e9e3b486e3c825e98530a30850e9f21ef41b91
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 28c8ec09ad02e5c1175312f2735cd6f900f88cab
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -52,6 +52,9 @@ ms.lasthandoff: 05/07/2018
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
+* 添加了对连接问题的默认重试的支持。
+
 ### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
 * 将文档更新为了引用 Azure Cosmos DB 而非 Azure DocumentDB。
 
@@ -138,6 +141,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |2018 年 5 月 8 日 |--- |
 | [2.3.1](#2.3.1) |2017 年 12 月 21 日 |--- |
 | [2.3.0](#2.3.0) |2017 年 11 月 10 日 |--- |
 | [2.2.1](#2.2.1) |2017 年 9 月 29 日 |--- |

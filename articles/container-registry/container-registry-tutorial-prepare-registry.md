@@ -3,17 +3,17 @@ title: Azure 容器注册表教程 - 准备异地复制的 Azure 容器注册表
 description: 创建 Azure 容器注册表，配置异地复制，准备 Docker 映像，并将该映像部署到注册表。 由三个部分构成的系列教程的第一部分。
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/26/2017
+ms.date: 04/30/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 3463acc3db3dae9633635aaf7410d876aacf9b38
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: afdee938145dacf50538ceb186957933fe7ec3bd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
 
@@ -31,17 +31,13 @@ Azure 容器注册表是部署在 Azure 中的专用 Docker 注册表，能使�
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程要求运行 Azure CLI 2.0.20 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+本教程需要本地安装 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
-本教程假定基本了解核心 Docker 的概念，如容器、容器映像和基本的 Docker 命令。 如需要，请参阅 [Docker 入门]( https://docs.docker.com/get-started/)，了解容器基本知识。
+要求熟悉 Docker 的核心概念，如容器、容器映像和基本的 Docker CLI 命令。 有关容器的入门基础知识，请参阅 [Docker 入门]( https://docs.docker.com/get-started/)。
 
-若要完成本教程，需要 Docker 开发环境。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
+要完成本教程，需要本地安装 Docker。 Docker 提供适用于 [macOS](https://docs.docker.com/docker-for-mac/)[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统的安装说明。
 
 Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。 因此，我们建议在本地安装 Azure CLI 和 Docker 开发环境。
-
-> [!IMPORTANT]
-> Azure 容器注册表中的异地复制功能当前位于“预览”中。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
->
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -91,9 +87,9 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 ## <a name="container-registry-login"></a>容器注册表登录
 
-配置异地复制后，生成一个容器映像并将其推送到注册表。 在将映像推送到 ACR 实例之前，必须先登录到 ACR 实例。 通过[基本、标准和高级 SKU](container-registry-skus.md)，可以使用 Azure 标识进行身份验证。
+配置异地复制后，生成一个容器映像并将其推送到注册表。 在将映像推送到 ACR 实例之前，必须先登录到 ACR 实例。
 
-使用 [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) 命令进行身份验证，并缓存注册表的凭据。 将 `<acrName>` 替换为在前面步骤中创建的注册表的名称。
+使用 [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) 命令进行身份验证，并缓存注册表的凭据。 将 `<acrName>` 替换为之前创建的注册表的名称。
 
 ```azurecli
 az acr login --name <acrName>
@@ -103,7 +99,7 @@ az acr login --name <acrName>
 
 ## <a name="get-application-code"></a>获取应用程序代码
 
-本教程中的示例包括使用 [ASP.NET Core](http://dot.net) 生成的小型 Web 应用程序。 该应用提供一个 HTML 页面，其中显示了 Azure 容器注册表已从中部署映像的区域。
+本教程中的示例包括使用 [ASP.NET Core][aspnet-core] 生成的小型 Web 应用程序。 该应用提供一个 HTML 页面，其中显示了 Azure 容器注册表已从中部署映像的区域。
 
 ![显示在浏览器中的教程应用][tut-app-01]
 
@@ -114,11 +110,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
+如果没有安装 `git`，可直接从 GitHub [下载 ZIP 存档][acr-helloworld-zip]。
+
 ## <a name="update-dockerfile"></a>更新 Dockerfile
 
-示例中包含的 Dockerfile 演示如何生成容器。 它首先创建一个正式的 [aspnetcore](https://store.docker.com/community/images/microsoft/aspnetcore) 映像，将应用程序文件复制到容器，安装依赖项，使用正式的 [aspnetcore-build](https://store.docker.com/community/images/microsoft/aspnetcore-build) 映像编译输出，最后生成优化的 aspnetcore 映像。
+示例中包含的 Dockerfile 演示如何生成容器。 它首先创建一个正式的 [aspnetcore][dockerhub-aspnetcore] 映像，将应用程序文件复制到容器，安装依赖项，使用正式的 [aspnetcore-build][dockerhub-aspnetcore-build] 映像编译输出，最后生成优化的 aspnetcore 映像。
 
-在克隆的源中，Dockerfile 位于 `./AcrHelloworld/Dockerfile`。
+在克隆的源中，[Dockerfile][dockerfile] 位于 `./AcrHelloworld/Dockerfile`。
 
 ```dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -146,9 +144,9 @@ COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "AcrHelloworld.dll"]
 ```
 
-*acr-helloworld* 映像中的应用程序尝试通过在 DNS 中查询有关注册表登录服务器的信息，确定其容器的部署源区域。 必须在 Dockerfile 中的 `DOCKER_REGISTRY` 环境变量内指定注册表的登录服务器 URL。
+*acr-helloworld* 映像中的应用程序尝试通过在 DNS 中查询有关注册表登录服务器的信息，确定其容器的部署源区域。 必须在 Dockerfile 中的 `DOCKER_REGISTRY` 环境变量内指定注册表登录服务器的完全限定的域名 (FQDN)。
 
-首先，使用 `az acr show` 命令获取注册表的登录服务器 URL。 将 `<acrName>` 替换为在前面步骤中创建的注册表的名称。
+首先，使用 `az acr show` 命令获取注册表的登录服务器。 将 `<acrName>` 替换为在前面步骤中创建的注册表的名称。
 
 ```azurecli
 az acr show --name <acrName> --query "{acrLoginServer:loginServer}" --output table
@@ -162,7 +160,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-接下来，使用注册表的登录服务器 URL 更新 `DOCKER_REGISTRY` 行。 在此示例中，我们更新了该行以反映示例注册表名称 *uniqueregistryname*：
+接下来，使用注册表登录服务器的 FQDN 更新 `ENV DOCKER_REGISTRY` 行。 本示例体现了示例注册表名称，uniqueregistryname：
 
 ```dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -170,7 +168,7 @@ ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
 
 ## <a name="build-container-image"></a>生成容器映像
 
-使用注册表的 URL 更新 Dockerfile 之后，可以使用 `docker build` 来创建容器映像。 运行以下命令生成映像，并使用标记将它包含在专用注册表的 URL 中；同样，请将 `<acrName>` 替换为自己的注册表的名称：
+使用注册表登录服务器的 FQDN 更新 Dockerfile 之后，可以使用 `docker build` 来创建容器映像。 运行以下命令生成映像，并使用标记将它包含在专用注册表的 URL 中；同样，请将 `<acrName>` 替换为自己的注册表的名称：
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -183,7 +181,9 @@ Sending build context to Docker daemon  523.8kB
 Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
 2.0: Pulling from microsoft/aspnetcore
 3e17c6eae66c: Pulling fs layer
-...
+
+[...]
+
 Step 18/18 : ENTRYPOINT dotnet AcrHelloworld.dll
  ---> Running in 6906d98c47a1
  ---> c9ca1763cfb1
@@ -192,23 +192,18 @@ Successfully built c9ca1763cfb1
 Successfully tagged uniqueregistryname.azurecr.io/acr-helloworld:v1
 ```
 
-使用 `docker images` 命令查看生成的映像：
+使用 `docker images` 查看生成和标记的映像：
 
-```bash
-docker images
-```
-
-输出：
-
-```bash
+```console
+$ docker images
 REPOSITORY                                      TAG    IMAGE ID        CREATED               SIZE
 uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a minute ago    284MB
-...
+[...]
 ```
 
 ## <a name="push-image-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-最后，使用 `docker push` 命令将 *acr-helloworld* 映像推送到注册表。 将 `<acrName>` 替换为注册表的名称。
+然后，使用 `docker push` 命令将 *acr-helloworld* 映像推送到注册表。 将 `<acrName>` 替换为注册表的名称。
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -216,9 +211,8 @@ docker push <acrName>.azurecr.io/acr-helloworld:v1
 
 由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“美国西部”和“美国东部”区域。
 
-输出：
-
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 cd54739c444b: Pushed
 d6803756744a: Pushed
@@ -232,15 +226,9 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们创建了一个专用的异地复制容器注册表，生成了容器映像，然后将该图像推送到了该注册表。 我们已遵循本教程中的步骤执行以下操作：
+在本教程中，我们创建了一个专用的异地复制容器注册表，生成了容器映像，然后将该图像推送到了该注册表。
 
-> [!div class="checklist"]
-> * 创建了异地复制的 Azure 容器注册表
-> * 克隆了 GitHub 中的应用程序源代码
-> * 基于应用程序源代码生成了 Docker 容器映像
-> * 将容器映像推送到了注册表
-
-请继续学习下一教程，了解如何将容器部署到多个用于容器的 Web 应用实例，并使用异地复制在本地提供映像。
+请前往下一教程，了解如何将容器部署到多个用于容器的 Web 应用实例，并使用异地复制在本地提供映像。
 
 > [!div class="nextstepaction"]
 > [从 Azure 容器注册表部署 Web 应用](container-registry-tutorial-deploy-app.md)
@@ -253,3 +241,10 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 [tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
 [tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
 [tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
+
+<!-- LINKS - External -->
+[acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
+[aspnet-core]: http://dot.net
+[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
+[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
+[dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

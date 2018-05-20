@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 79161d0be407a5b5692e1ad0ee25c609aefb2fb5
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: MT
+ms.openlocfilehash: f5812e071046935b0a1a3ee3f14525ede336954a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure Marketplace 项
 
@@ -220,5 +220,6 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店虚拟机和解决方案模
 | ![NooBaa 混合 AWS S3 兼容-Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa Hybrid AWS S3 compatible - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | 兼容 S3 的存储服务，涵盖公用的和本地的容量资源。 | NooBaa |
 | ![PT 应用程序防火墙](media/azure-stack-marketplace-azure-items/pt.png) | [PT 应用程序防火墙](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT 应用程序防火墙检测已知和未知漏洞，并可防止在 web apps 上的攻击。 <b>下载这两个 PT 应用商店项。</b> | 正技术 |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | 使用 Puppet Enterprise 可以实现 Azure Stack 基础结构整个生命周期的自动化。 <b>下载两种 Puppet Marketplace 项。</b> | Puppet |
+| ![请求实现快速恢复](media/azure-stack-marketplace-azure-items/quest.png) | [请求实现快速恢复核心](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | 高级数据保护的快速恢复统一备份、 复制和恢复在一个易于使用软件解决方案中。 | 请求软件 |
 | ![SUSE Manager 3.0 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 代理 (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | 同类最佳开源基础结构管理。 | SUSE |
 | ![ZeroDown 软件工具](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Tool ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown Software Tool v7.1 - 迁移 + 高可用性。 | ZeroDown Software |

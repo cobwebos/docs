@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: d73869d1371247a269b6601c35b1a938d89176c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd8579fe29282f3875ecfddf67a34444e3de9ef5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>深度学习和人工智能框架
 [数据科学虚拟机](http://aka.ms/dsvm) (DSVM) 和[深度学习 VM](http://aka.ms/dsvm/deeplearning) 支持多个深度学习框架，可帮助生成具有预测分析和认知功能（例如图像和语言理解）的人工智能 (AI) 应用程序。 
@@ -80,6 +80,7 @@ ms.lasthandoff: 04/20/2018
 | 它是什么？   | 深度学习框架      |
 | 支持的 DSVM 版本      | Ubuntu     |
 | 如何在 DSVM 上配置/安装它？  | Caffe 在 `/opt/caffe` 中安装。    |
+| 如何切换到 Python 2.7 | 运行 `source activate root` |
 | 示例链接      | `/opt/caffe/examples` 中包含示例。      |
 | DSVM 上的相关工具      | Caffe2      |
 ### <a name="how-to-use--run-it"></a>如何使用/运行它？  
@@ -88,12 +89,15 @@ ms.lasthandoff: 04/20/2018
 
 ```
 cd /opt/caffe/examples
+source activate root
 jupyter notebook
 ```
 
 系统将打开显示示例笔记本的新浏览器窗口。
 
-二进制文件安装在 /opt/caffe/build/install/bin 中。 
+二进制文件安装在 /opt/caffe/build/install/bin 中。
+
+已安装的 Caffe 版本需要 Python 2.7，不会使用默认激活的 Python 3.5。 运行 `source activate root` 切换 Anaconda 环境。 
 
 ## <a name="caffe2"></a>Caffe2
 

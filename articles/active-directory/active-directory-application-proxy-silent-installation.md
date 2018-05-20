@@ -1,12 +1,12 @@
 ---
-title: "以无提示方式安装 Azure AD 应用代理连接器 | Microsoft Docs"
-description: "介绍如何执行 Azure AD 应用程序代理连接器的无提示安装，以提供本地应用的安全远程访问权限。"
+title: 以无提示方式安装 Azure AD 应用代理连接器 | Microsoft Docs
+description: 介绍如何执行 Azure AD 应用程序代理连接器的无提示安装，以提供本地应用的安全远程访问权限。
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 3aa1c7f2-fb2a-4693-abd5-95bb53700cbb
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dbda2448c5bf2b6998d120a082e036d7e0125a1f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b9d8535be51601f2ca438f2d22c18656c5ff0dc0
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器创建无人参与安装脚本
 
@@ -127,8 +127,8 @@ ms.lasthandoff: 03/08/2018
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
 ## <a name="next-steps"></a>后续步骤 
-* [使用自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
-* [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
+* [使用自己的域名发布应用程序](manage-apps/application-proxy-configure-custom-domain.md)
+* [启用单一登录](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [解决使用应用程序代理时遇到的问题](active-directory-application-proxy-troubleshoot.md)
 
 

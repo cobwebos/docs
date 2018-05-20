@@ -1,7 +1,6 @@
 ---
-title: 使用 Azure HDInsight 上的数据可视化工具的 Spark BI | Microsoft Docs
-description: 在 HDInsight 群集上使用 Apache Spark BI 使用数据可视化工具进行分析
-keywords: apache spark bi,spark bi, spark 数据可视化, spark 业务智能
+title: 教程：使用 Power BI 在 Azure HDInsight 中分析 Apache Spark 数据 | Microsoft Docs
+description: 使用 Microsoft Power BI 来可视化存储在 HDInsight 群集中的 Spark 数据
 services: hdinsight
 documentationcenter: ''
 author: mumian
@@ -10,28 +9,34 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 1448b536-9bc8-46bc-bbc6-d7001623642a
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,mvc
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 02/14/2018
+ms.topic: tutorial
+ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 0e728e17a64acd990b301bac8139c7bb395a3098
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ece0132573f25f4d288309d2e7bb6710f8fd9519
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>使用 Azure HDInsight 上的数据可视化工具的 Apache Spark BI
+# <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Spark 数据 
 
-了解如何使用 [Microsoft Power BI](http://powerbi.microsoft.com) 在 Azure HDInsight 上直观显示 Apache Spark 群集中的数据。
+了解如何使用 Microsoft Power BI 在 Azure HDInsight 中可视化 Apache Spark 群集中的数据。
+
+本教程介绍如何执行下列操作：
+> [!div class="checklist"]
+> * 使用 Power BI 可视化 Spark 数据
+
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **完成学习[在 HDInsight 中的 Spark 群集上运行交互式查询](./apache-spark-load-data-run-query.md)一文**。
+* 完成[教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](./apache-spark-load-data-run-query.md)一文。
 * **Power BI**[：Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) 和 [Power BI 试用订阅](https://app.powerbi.com/signupredirect?pbi_source=web)（可选）。
 
 
-## <a name="hivetable"></a>验证数据
+## <a name="verify-the-data"></a>验证数据
 
 [上一教程](apache-spark-load-data-run-query.md)中创建的 Jupyter 笔记本包含用于创建 `hvac` 表的代码。 此表基于在所有 HDInsight Spark 群集上均可用的 CSV 文件（位于 \HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv）。 使用以下过程验证数据。
 
@@ -46,8 +51,7 @@ ms.lasthandoff: 04/18/2018
 
     ![在 Spark 中显示表](./media/apache-spark-use-bi-tools/show-tables.png)
 
-    如果在开始本教程之前关闭笔记本，这会清除 `hvactemptable`，使其不包含在输出中。
-    只有元存储中存储的 Hive 表（由“isTemporary”列下的“False”表示）可从 BI 工具中进行访问。 在本教程中，将连接到创建的 hvac 表。
+    如果在开始本教程之前关闭笔记本，这会清除 `hvactemptable`，使其不包含在输出中。  只有元存储中存储的 Hive 表（由“isTemporary”列下的“False”表示）可从 BI 工具中进行访问。 在本教程中，将连接到创建的 hvac 表。
 
 2. 将以下代码粘贴到空白单元格中，然后按 Shift+Enter。 该代码验证表中的数据。
 
@@ -62,21 +66,7 @@ ms.lasthandoff: 04/18/2018
 
 3. 请在 Notebook 的“文件”菜单中单击“关闭并停止”。 关闭笔记本以释放资源。 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## <a name="powerbi"></a>使用 Power BI
+## <a name="visualize-the-data"></a>可视化数据
 
 在本部分，将使用 Power BI 从 Spark 群集数据创建可视化效果、报表和仪表板。 
 
@@ -226,8 +216,11 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
 ## <a name="next-steps"></a>后续步骤
 
-到目前为止，已学习如何创建群集、创建用于查询数据的 Spark 数据帧，然后从 BI 工具访问这些数据。 现在可以查看有关如何管理群集资源，以及调试在 HDInsight Spark 群集中运行的作业的说明。
+本教程介绍了如何：
 
-* [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)
+- 使用 Power BI 可视化 Spark 数据。
+
+请前进到下一篇文章，了解如何将在 Spark 中注册的数据拉取到 Power BI 等 BI 分析工具中。 
+> [!div class="nextstepaction"]
+> [运行 Spark 流式处理作业](apache-spark-eventhub-streaming.md)
 

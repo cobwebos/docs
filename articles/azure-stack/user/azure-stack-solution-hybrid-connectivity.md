@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 8b5f59d3fea402efa50bdafd7fc0439a93051e69
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 048e2636aabe406728c8fe1b93ef861f13346256
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>教程： 使用 Azure 和 Azure 堆栈配置混合云连接
 
@@ -93,7 +93,7 @@ Azure OEM/硬件合作伙伴可以部署生产 Azure 堆栈和所有用户可能
 
 ## <a name="create-a-virtual-network-in-global-azure-and-azure-stack"></a>在全局 Azure 和 Azure 堆栈中创建虚拟网络
 
-> [!note]  
+> [!Note]  
 > 你必须确保不存在的 Ip 在 Azure 或 Azure 堆栈 vNet 地址空间重叠。 
 
 若要通过使用 Azure 门户，在资源管理器部署模型创建 vNet。 如果是在教程中使用这些步骤，请使用[示例值](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values)。 如果并非在教程中使用这些步骤，请务必将其中的值替换为自己的值。 
@@ -129,7 +129,7 @@ Azure OEM/硬件合作伙伴可以部署生产 Azure 堆栈和所有用户可能
         - 单击 **+ 创建新**以打开**创建公共 IP 地址**页。
         - 输入**名称**对公共 IP 地址。 将保留为 SKU**基本**，然后选择**确定**底部的此页后，可以保存所做的更改。
 
-    > [!note]  
+    > [!Note]  
     > VPN 网关当前仅支持动态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 
 4. 验证设置。 

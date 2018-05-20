@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: f3110e81a7229f8f279609a64949c7f0ce78d338
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b867976c637cdd4dd9b696382103c63f1af2e8b3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到设备
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -176,7 +176,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 ## <a name="next-steps"></a>后续步骤
 在本教程中，已学习如何发送和接收云到设备的消息。 
 
-若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 套件]。
+若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 远程监视解决方案加速器]。
 
 若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南]。
 
@@ -195,5 +195,5 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 [IoT 中心开发人员指南]: iot-hub-devguide.md
 [IoT 中心入门]: iot-hub-csharp-csharp-getstarted.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[Azure IoT 套件]: https://docs.microsoft.com/azure/iot-suite/
+[Azure IoT 远程监视解决方案加速器]: https://docs.microsoft.com/azure/iot-suite/
 [Azure IoT 设备 SDK]: iot-hub-devguide-sdks.md

@@ -1,26 +1,20 @@
 ---
-title: "Azure Active Directory B2B 协作用户的属性 | Microsoft 文档"
-description: "Azure Active Directory B2B 协作用户属性是可配置的"
+title: Azure Active Directory B2B 协作用户的属性 | Microsoft 文档
+description: Azure Active Directory B2B 协作用户属性是可配置的
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/25/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7e1eb709124262d55fc4c6a5bfd8c1ccb33fa8bb
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 401c001f897a926de1b7d68403b6945164f3333b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
@@ -93,16 +87,6 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
-
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
-* [委托 B2B 协作邀请](active-directory-b2b-delegate-invitations.md)
-* [B2B 协作用户审核和报告](active-directory-b2b-auditing-and-reporting.md)
-* [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
-* [B2B 协作代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
-* [为 B2B 协作配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
 * [B2B 协作用户令牌](active-directory-b2b-user-token.md)
 * [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
-* [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
-* [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)

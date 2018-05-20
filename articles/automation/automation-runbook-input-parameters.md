@@ -3,16 +3,17 @@ title: Runbook 输入参数
 description: Runbook 输入参数可让你将数据传递到启动的 Runbook，以增加 Runbook 的弹性。 本文介绍在 Runbook 中使用输入参数的不同方案。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 19b0e17807adc0e7a4522fd13cd85779cdbcafd6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3e1e00f81fe7761494ae73b2c8ac7419cb5ffa32
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="runbook-input-parameters"></a>Runbook 输入参数
 
@@ -171,7 +172,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 
 #### <a name="start-a-runbook-by-using-an-sdk-and-assign-parameters"></a>使用 SDK 启动 Runbook 并分配参数
 
-* **Azure 资源管理器方法：**可使用编程语言的 SDK 来启动 Runbook。 以下 C# 代码段用于在自动化帐户中启动 Runbook。 可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。  
+* **Azure 资源管理器方法：** 可使用编程语言的 SDK 来启动 Runbook。 以下 C# 代码段用于在自动化帐户中启动 Runbook。 可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。  
   
   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -190,7 +191,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
       return response.Job;
       }
   ```
-* **Azure 经典部署模型方法：**可使用编程语言的 SDK 启动 Runbook。 以下 C# 代码段用于在自动化帐户中启动 Runbook。 可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。
+* **Azure 经典部署模型方法：** 可使用编程语言的 SDK 启动 Runbook。 以下 C# 代码段用于在自动化帐户中启动 Runbook。 可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。
   
   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -230,15 +231,15 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 
 在请求 URI 中替换以下参数：
 
-* **subscription-id：**Azure 订阅 ID。  
-* **cloud-service-name：**请求所要发送到的云服务的名称。  
-* **automation-account-name：**托管在指定云服务中的自动化帐户的名称。  
-* **job-id：**作业的 GUID。 使用 **[GUID]::NewGuid().ToString()** 命令可以创建 PowerShell 中的 GUID。
+* **subscription-id：** Azure 订阅 ID。  
+* **cloud-service-name：** 请求所要发送到的云服务的名称。  
+* **automation-account-name：** 托管在指定云服务中的自动化帐户的名称。  
+* **job-id：** 作业的 GUID。 使用 **[GUID]::NewGuid().ToString()** 命令可以创建 PowerShell 中的 GUID。
 
 要将参数传递到 Runbook 作业，请使用请求正文。 它采用两个以 JSON 格式提供的属性：
 
-* **名称：**必需。 作业要启动的 Runbook 的名称。  
-* **Runbook 参数：**可选。 参数列表的字典；列表必须采用 (名称, 值) 格式，其中的名称应为字符串类型，值可以是任何有效的 JSON 值。
+* **名称：** 必需。 作业要启动的 Runbook 的名称。  
+* **Runbook 参数：** 可选。 参数列表的字典；列表必须采用 (名称, 值) 格式，其中的名称应为字符串类型，值可以是任何有效的 JSON 值。
 
 如果想要启动之前以 **VMName** 和 **resourceGroupName** 作为参数创建的 **Get-AzureVMTextual Runbook**，请使用以下 JSON 格式的请求正文。
 

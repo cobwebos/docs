@@ -39,7 +39,7 @@
           href: search-fiddler.md
 - name: 教程
   items:
-    - name: 使用认知搜索编制索引
+    - name: 认知搜索开发
       href: cognitive-search-tutorial-blob.md
     - name: 编制 Azure SQL 数据库索引
       href: search-indexer-tutorial.md
@@ -73,11 +73,11 @@
   items:
     - name: 规划和设计
       items:
-        - name: 选择 SKU
+        - name: 选择层
           href: search-sku-tier.md
         - name: 服务限制
           href: search-limits-quotas-capacity.md
-        - name: 服务伸缩性
+        - name: 分配分区和副本
           href: search-capacity-planning.md
         - name: 多租户的设计模式
           href: search-modeling-multitenant-saas-applications.md

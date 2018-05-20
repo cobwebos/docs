@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: v-masebo;kgremban
-ms.openlocfilehash: c6182f878076bae27b18d0556a77c8d95677e9c1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 98216328e970af5f8acf04c7e7c3ca855f7065f1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-messages-with-iot-hub-python"></a>使用 IoT 中心路由消息 (Python)
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 04/05/2018
 
 在本教程中，介绍了如何使用 IoT 中心的消息路由功能可靠地分派设备到云的消息。
 
-若要查看使用 IoT 中心的完整端到端解决方案的示例，请参阅 [Azure IoT 套件][lnk-suite]。
+若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 远程监视解决方案加速器][lnk-suite]。
 
 若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南]。
 
@@ -294,5 +294,5 @@ ms.lasthandoff: 04/05/2018
 
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-free-trial]: https://azure.microsoft.com/free/
-[lnk-storage]: https://docs.microsoft.com/en-us/azure/storage/
+[lnk-storage]: https://docs.microsoft.com/azure/storage/
 [lnk-python-service-bus]: https://pypi.python.org/pypi/azure-servicebus

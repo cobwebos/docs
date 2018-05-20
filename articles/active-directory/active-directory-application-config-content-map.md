@@ -1,22 +1,23 @@
 ---
-title: "添加或配置应用程序时出现问题"
-description: "添加或配置应用程序时出现问题"
+title: 添加或配置应用程序时出现问题
+description: 添加或配置应用程序时出现问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: b3b3ba7a0e42ec06abc72c6641aede370a76c8fd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: adea9682db8f8b57771f1688309c1ebb325843f5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="problems-adding-or-configuring-applications"></a>添加或配置应用程序时出现问题
 

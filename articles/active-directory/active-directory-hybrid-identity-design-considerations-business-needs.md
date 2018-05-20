@@ -1,11 +1,11 @@
 ---
-title: "混合云标识设计的标识要求 Azure |Microsoft 文档"
-description: "识别公司的业务需求，引导读者定义混合标识设计的要求。"
-documentationcenter: 
+title: 混合云标识设计的标识要求 Azure |Microsoft 文档
+description: 识别公司的业务需求，引导读者定义混合标识设计的要求。
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: de690978-84ef-41ad-9dfe-785722d343a1
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 90c65ca22ff384bd22819eb589b3f781f8992a4e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5741a5024b5f5105a71d9404191601b951a301e4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的标识要求
 设计混合标识解决方案的第一个步骤是确定要利用此解决方案的企业组织有何要求。  混合标识最初是一个支持角色（通过提供身份验证来支持其他所有云解决方案），并提供一些新奇的功能，为用户解锁新的工作负荷。  要为用户采用的这些工作负荷或服务指明了混合标识设计的要求。  这些服务和工作负荷在本地和云中都需要利用混合标识。  
@@ -56,7 +56,7 @@ ms.lasthandoff: 01/18/2018
 * 此集成目前已投入使用，还是在试运行期？
 
 > [!NOTE]
-> 如果无法正确映射所有应用与云服务，可以使用 Cloud App Discovery 工具。 IT 部门可以使用此工具深入了解组织的所有业务云应用与使用者云应用。 发现组织中的影子 IT 将变得前所未有的轻松，就连使用模式的详细信息，以及正在访问云应用程序的用户都能发现。 若要开始，请参阅 [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)。
+> 如果无法正确映射所有应用与云服务，可以使用 Cloud App Discovery 工具。 IT 部门可以使用此工具深入了解组织的所有业务云应用与使用者云应用。 发现组织中的影子 IT 将变得前所未有的轻松，就连使用模式的详细信息，以及正在访问云应用程序的用户都能发现。 若要开始，请参阅 [Cloud App Discovery](manage-apps/cloud-app-discovery.md)。
 > 
 > 
 

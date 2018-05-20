@@ -4,7 +4,7 @@ description: 了解 Azure 安全性以及其服务和工作原理。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 51d0f1f6d2689e37c1c39bf4a5e8078a2482c76d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a7b8c480291360cb50af1ce4ae36cd406f0ddc21
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -90,7 +90,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 
 如果出现崩溃、故障或性能问题，可以搜索详细的遥测数据来诊断原因。 此外，如果应用的可用性和性能有任何变化，该服务还会向用户发送电子邮件。 Application Insight 就是这样因其有助于实现保密性、完整性和可用性安全三元素的可用性而成为有价值的安全工具。
 
-### <a name="azure-monitor"></a>Azure 监视器
+### <a name="azure-monitor"></a>Azure Monitor
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 对来自 Azure 基础结构（[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)）和每个单独的 Azure 资源（[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)）的数据提供可视化效果、查询、路由、警报、自动缩放和自动化功能。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
 
 ### <a name="log-analytics"></a>Log Analytics

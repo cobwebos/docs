@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 05/11/2018
 ms.author: jgao
-ms.openlocfilehash: c28c48b5842deec9d9c3898c5742c3d4d473094e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 56b2b5ae9d3e4a0e682ec3dd47cd5cc30ebf6d58
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 HBase 群集复制
 
@@ -52,51 +52,18 @@ ms.lasthandoff: 04/18/2018
 - 两个 HBase 群集位于同一区域的两个不同虚拟网络中。
 - 两个 HBase 群集位于两个不同区域的两个不同虚拟网络中（异地复制）。
 
+本文介绍异地复制方案。
+
 为了帮助设置环境，我们创建了一些 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-overview.md)。 如果想要使用其他方法设置环境，请参阅：
 
 - [在 HDInsight 中创建 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)
 - [在 Azure 虚拟网络中创建 HBase 群集](apache-hbase-provision-vnet.md)
 
-### <a name="set-up-one-virtual-network"></a>设置一个虚拟网络
-
-若要在同一虚拟网络中创建两个 HBase 群集，请选择下图。 模板存储在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-one-vnet/)中。
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
-
-### <a name="set-up-two-virtual-networks-in-the-same-region"></a>在同一区域中设置两个虚拟网络
-
-若要在同一区域中创建两个使用虚拟网络对等互连的虚拟网络和两个 HBase 群集，请选择下图。 模板存储在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/)中。
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
-
-
-
-此方案需要[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)。 模板启用虚拟网络对等互连。   
-
-HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper 节点设置静态 IP 地址。
-
-**配置静态 IP 地址**
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单上，选择“资源组”。
-3. 选择包含目标 HBase 群集的资源组。 这是使用 Resource Manager 模板创建环境时指定的资源组。 可以使用筛选器减少列表中的结果。 可以看到包含两个虚拟网络的资源的列表。
-4. 选择包含目标 HBase 群集的虚拟网络。 例如，选择 **xxxx-vnet2**。 会列出名称以 **nic-zookeepermode-** 开头的三个设备。 这些设备是三个 ZooKeeper VM。
-5. 选择其中一个 ZooKeeper VM。
-6. 选择“IP 配置”。
-7. 在列表中，选择 **ipConfig1**。
-8. 选择“静态”，复制或记下实际 IP 地址。 运行脚本操作启用复制时，需要用到该 IP 地址。
-
-  ![HDInsight HBase 复制 ZooKeeper 静态 IP 地址](./media/apache-hbase-replication/hdinsight-hbase-replication-zookeeper-static-ip.png)
-
-9. 重复步骤 6，为另外两个 ZooKeeper 节点设置静态 IP 地址。
-
-对于跨虚拟网络方案，调用 `hdi_enable_replication.sh` 脚本操作时必须使用 **-ip** 开关。
-
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>在两个不同的区域中设置两个虚拟网络
 
-若要在两个不同区域创建两个虚拟网络和在 VNet 之间创建 VPN 连接，请单击下图。 模板存储在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)中。
+若要在两个不同区域创建两个虚拟网络并在 VNet 之间创建 VPN 连接，请选择下图来创建。 模板存储在[公共 Blob 存储]](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)中。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-geo%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 模板中的某些硬编码值：
 
@@ -116,11 +83,6 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 | 网关 VPN 类型 | RouteBased |
 | 网关 SKU | 基本 |
 | 网关 IP | vnet1gwip |
-| 群集名称 | &lt;ClusterNamePrefix>1 |
-| 群集版本 | 3.6 |
-| 群集类型 | hbase |
-| 群集工作节点计数 | 2 |
-
 
 **VNet 2**
 
@@ -138,14 +100,176 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 | 网关 VPN 类型 | RouteBased |
 | 网关 SKU | 基本 |
 | 网关 IP | vnet1gwip |
-| 群集名称 | &lt;ClusterNamePrefix>2 |
-| 群集版本 | 3.6 |
-| 群集类型 | hbase |
-| 群集工作节点计数 | 2 |
 
-HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper 节点设置静态 IP 地址。 若要设置静态 IP，请参阅本文的[在同一区域中设置两个虚拟网络](#set-up-two-virtual-networks-in-the-same-region)。
+## <a name="setup-dns"></a>设置 DNS
 
-对于跨虚拟网络方案，调用 `hdi_enable_replication.sh` 脚本操作时必须使用 **-ip** 开关。
+在上一部分，模板在两个虚拟网络的每一个中创建 Ubuntu 虚拟机。  在此部分，请先在两个 DNS 虚拟机上安装 Bind，然后在两个虚拟机上配置 DNS 转发。
+
+若要安装 Bind，需找到两个 DNS 虚拟机的公共 IP 地址。
+
+1. 打开 [Azure 门户](https://portal.azure.com)。
+2. 打开 DNS 虚拟机，方法是选择“资源组”> [资源组名称] > [vnet1DNS]。  资源组名称是在上一过程中创建的。 默认的 DNS 虚拟机名称为 *vnet1DNS* 和 *vnet2NDS*。
+3. 选择“属性”，打开虚拟网络的属性页。
+4. 记下“公共 IP 地址”，并验证“专用 IP 地址”。  vnet1DNS 的专用 IP 地址应该是 **10.1.0.4**，vnet2DNS 的专用 IP 地址应该是 **10.2.0.4**。  
+
+若要安装 Bind，请执行以下过程：
+
+1. 使用 SSH 连接到 DNS 虚拟机的公共 IP 地址。 以下示例将在 40.68.254.142 连接到虚拟机：
+
+    ```bash
+    ssh sshuser@40.68.254.142
+    ```
+
+    将 `sshuser` 替换为创建 DNS 虚拟机时指定的 SSH 用户帐户。
+
+    > [!NOTE]
+    > 可通过多种方法获取 `ssh` 实用工具。 在 Linux、Unix 和 macOS 上，操作系统会附带此实用工具。 如果使用的是 Windows，请考虑以下选项之一：
+    >
+    > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
+    > * [Windows 10 版 Bash on Ubuntu](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [Git (https://git-scm.com/)](https://git-scm.com/)
+    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+
+2. 若要安装 Bind，请从 SSH 会话中使用以下命令：
+
+    ```bash
+    sudo apt-get update -y
+    sudo apt-get install bind9 -y
+    ```
+
+3. 若要配置 Bind 将名称解析请求转发至本地 DNS 服务器，请使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
+
+    ```
+    acl goodclients {
+        10.1.0.0/16; # Replace with the IP address range of the virtual network 1
+        10.2.0.0/16; # Replace with the IP address range of the virtual network 2
+        localhost;
+        localhost;
+    };
+    
+    options {
+        directory "/var/cache/bind";
+        recursion yes;
+        allow-query { goodclients; };
+
+        forwarders {
+            168.63.129.16 #This is the Azure DNS server
+        };
+
+        dnssec-validation auto;
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+    };
+    ```
+    
+    > [!IMPORTANT]
+    > 将 `goodclients` 节中的值替换为两个虚拟网络的 IP 地址范围。 本部分定义此 DNS 服务器从其中接受请求的地址。
+
+    若要编辑此文件，请使用以下命令：
+
+    ```bash
+    sudo nano /etc/bind/named.conf.options
+    ```
+
+    若要保存文件，请使用 Ctrl+X、Ctrl+Y，然后按 Enter。
+
+4. 在 SSH 会话中，请使用以下命令：
+
+    ```bash
+    hostname -f
+    ```
+
+    此命令会返回类似于以下文本的值：
+
+        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是该虚拟网络的 DNS 后缀。 请保存该值，因为稍后会使用它。
+
+    还必须从其他 DNS 服务器中找出 DNS 后缀。 因为下一步骤需要用到。
+
+5. 若要配置 Bind 以在虚拟网络中解析资源的 DNS 名称，请使用以下文本作为 `/etc/bind/named.conf.local` 文件的内容：
+
+    ```
+    // Replace the following with the DNS suffix for your virtual network
+    zone "v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net" {
+            type forward;
+            forwarders {10.2.0.4;}; # The Azure recursive resolver
+    };
+    ```
+
+    > [!IMPORTANT]
+    > 必须将 `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` 替换为另一个虚拟网络的 DNS 后缀。 转发器 IP 是另一虚拟网络中 DNS 服务器的专用 IP 地址。
+
+    若要编辑此文件，请使用以下命令：
+
+    ```bash
+    sudo nano /etc/bind/named.conf.local
+    ```
+
+    若要保存文件，请使用 Ctrl+X、Ctrl+Y，然后按 Enter。
+
+6. 若要启动 Bind，请使用以下命令：
+
+    ```bash
+    sudo service bind9 restart
+    ```
+
+7. 若要验证绑定是否可以解析另一虚拟网络中的资源名称，请使用以下命令：
+
+    ```bash
+    sudo apt install dnsutils
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net 10.2.0.4
+    ```
+
+    > [!IMPORTANT]
+    > 将 `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` 替换为另一网络中 DNS 虚拟机的完全限定的域名 (FQDN)。
+    >
+    > 将 `10.2.0.4` 替换为另一虚拟网络中自定义 DNS 服务器的内部 IP 地址。
+
+    显示的响应如下文所示：
+
+    ```
+    Server:         10.2.0.4
+    Address:        10.2.0.4#53
+    
+    Non-authoritative answer:
+    Name:   vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
+    Address: 10.2.0.4
+    ```
+
+    到目前为止，如果不指定 DNS 服务器 IP 地址，则无法查找另一网络中的 IP 地址。
+
+### <a name="configure-the-virtual-network-to-use-the-custom-dns-server"></a>配置虚拟网络以使用自定义 DNS 服务器
+
+若要配置虚拟网络以使用自定义 DNS 服务器，而不是 Azure 递归解析程序，请使用以下步骤：
+
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“虚拟网络”，然后选择“DNS 服务器”。
+
+2. 选择“自定义”，然后输入自定义 DNS 服务器的内部 IP 地址。 最后，选择“保存”。
+
+6. 打开 vnet1 中的 DNS 服务器虚拟机，然后单击“重启”。  必须重启虚拟网络中的所有虚拟机才能使 DNS 配置生效。
+7. 重复这些步骤即可为 vnet2 配置自定义 DNS 服务器。
+
+若要测试 DNS 配置，可以使用 SSH 连接到这两个 DNS 虚拟机，然后使用其主机名称 ping 另一虚拟网络的 DNS 服务器。 如果不起作用，请使用以下命令来检查 DNS 状态：
+
+```bash
+sudo service bind9 status
+```
+
+## <a name="create-hbase-clusters"></a>创建 HBase 群集
+
+使用以下配置在这两个虚拟网络的每一个中创建 HBase 群集：
+
+- **资源组名称**：使用的资源组名称与创建虚拟网络时所用的相同。
+- **群集类型**：HBase
+- **版本**：HBase 1.1.2 (HDI 3.6)
+- **位置**：与虚拟网络使用同一位置。  默认情况下，vnet1 为“美国西部”，vnet2 为“美国东部”。
+- **存储**：为群集创建新的存储帐户。
+- **虚拟网络**（在门户的“高级”设置中）：选择在上一过程中创建的 vnet1。
+- **子网**：模板中所用的默认名称为 **subnet1**。
+
+若要确保正确配置环境，必须能够在两个群集之间 ping 头节点的 FQDN。
 
 ## <a name="load-test-data"></a>加载测试数据
 
@@ -195,7 +319,6 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-t、--table-list | 指定要复制的表。 例如：--table-list="table1;table2;table3"。 如果不指定表，将复制所有现有的 HBase 表。|
 |-m、--machine | 指定要在其中运行脚本操作的头节点。 值为 **hn1** 或 **hn0**。 由于 **hn0** 头节点通常较为繁忙，因此我们建议使用 **hn1**。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
-|-ip | 在两个虚拟网络之间启用复制时，需使用此参数。 此参数充当一个开关，它使用副本群集中 ZooKeeper 节点的静态 IP 地址而不是 FQDN 名称。 在启用复制之前，需要预先配置静态 IP 地址。 |
 |-cp、-copydata | 在启用复制的情况下，允许迁移表中的现有数据。 |
 |-rpm、-replicate-phoenix-meta | 针对 Phoenix 系统表启用复制。 <br><br>*请谨慎使用此选项。* 建议在使用此脚本之前，在副本群集上重新创建 Phoenix 表。 |
 |-h、--help | 显示用法信息。 |

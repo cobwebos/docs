@@ -1,12 +1,12 @@
 ---
-title: "连接工厂解决方案演练 - Azure | Microsoft Docs"
-description: "介绍了 Azure IoT 预配置解决方案已连接好的工厂及其体系结构。"
-services: 
+title: 连接工厂解决方案演练 - Azure | Microsoft Docs
+description: 介绍了 Azure IoT 解决方案加速器连接工厂及其体系结构。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 10497097bfda36a0a8a2b6b677ac26394217d8b4
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65eb24cf5f995570b7b1752fc850b596209ea59a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connected-factory-preconfigured-solution-walkthrough"></a>已连接好的工厂预配置解决方案演练
+# <a name="connected-factory-solution-accelerator-walkthrough"></a>连接工厂解决方案加速器演练
 
-IoT 套件已连接好的工厂[预配置解决方案][lnk-preconfigured-solutions]是端到端工业解决方案的实现，具有以下功能：
+连接工厂[解决方案加速器][lnk-preconfigured-solutions]是端到端工业解决方案的实现，它具有以下功能：
 
 * 同时连接到在模拟工厂生产线中运行 OPC UA 服务器的模拟工业设备以及真实的 OPC UA 服务器设备。 有关 OPC UA 的详细信息，请参阅[连接工厂常见问题解答](iot-suite-faq-cf.md)。
 * 显示那些设备和生产线的运行 KPI 和 OEE。
@@ -34,7 +34,7 @@ IoT 套件已连接好的工厂[预配置解决方案][lnk-preconfigured-solutio
 
 可以将其用作自己实现的起点，并可以根据特定的业务要求[自定义][lnk-customize]该解决方案。
 
-本文将分步讲解已连接好的工厂解决方案的一些关键要素，以帮助你了解其工作原理。 本文还介绍数据如何流经解决方案。 这一知识有助于：
+本文将介绍连接工厂解决方案的一些关键要素，帮助用户了解其工作原理。 本文还介绍数据如何流经解决方案。 这一知识有助于：
 
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。
@@ -44,9 +44,9 @@ IoT 套件已连接好的工厂[预配置解决方案][lnk-preconfigured-solutio
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
-下图概述该预配置解决方案的逻辑组件：
+下图概述该解决方案加速器的逻辑组件：
 
-![已连接好的工厂逻辑体系结构][connected-factory-logical]
+![连接工厂逻辑体系结构][connected-factory-logical]
 
 ## <a name="communication-patterns"></a>通信模式
 
@@ -122,7 +122,7 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 该解决方案使用 Azure blob 存储作为 VM 的磁盘存储并存储部署数据。
 
 ## <a name="web-app"></a>Web 应用
-作为预配置解决方案的一部分部署的 Web 应用包括集成的 OPC UA 客户端以及警报处理和遥测可视化功能。
+作为解决方案加速器的一部分部署的 Web 应用包括集成的 OPC UA 客户端以及警报处理和遥测可视化功能。
 
 ## <a name="telemetry-data-flow"></a>遥测数据流
 
@@ -162,17 +162,17 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 
 9. 数据在 TSI 中作为静态数据存储。
 
-10. Azure AppService 中的连接工厂 WebApp 从 TSI 查询所需数据。
+10. Azure 应用服务中的连接工厂 Web 应用从 TSI 查询所需数据。
     - 使用受 TCP/TLS 保护的通信。
     - 此步骤在数据中心内部执行。
 
-11. Web 浏览器连接到连接工厂 WebApp。
+11. Web 浏览器连接到连接工厂 Web 应用。
     - 呈现连接工厂仪表板。
     - 通过 HTTPS 进行连接。
     - 访问连接工厂应用需要通过 Azure Active Directory 对用户进行身份验证。
-    - 对连接工厂应用进行的任何 WebApi 调用均受防伪令牌保护。
+    - 对连接工厂应用进行的任何 WebApi 调用均受防伪标记保护。
 
-12. 进行数据更新时，连接工厂 WebApp 将更新的数据发送到 Web 浏览器。
+12. 进行数据更新时，连接工厂 Web 应用将更新的数据发送到 Web 浏览器。
     - 使用 SignalR 协议。
     - 受 TCP/TLS 保护。
 
@@ -190,16 +190,16 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
     - 从 IoT 中心读取其所有的已知设备。
     - 通过基于套接字或安全 Websocket 的 TLS 使用 MQTT。
 
-3. Web 浏览器连接到连接工厂 WebApp 并呈现连接工厂仪表板。
+3. Web 浏览器连接到连接工厂 Web 应用并呈现连接工厂仪表板。
     - 使用 HTTPS。
     - 用户选择要连接到的 OPC UA 服务器。
 
-4. 连接工厂 WebApp 建立一个到所选 OPC UA 服务器的 OPC UA 会话。
+4. 连接工厂 Web 应用建立一个到所选 OPC UA 服务器的 OPC UA 会话。
     - 使用 OPC UA 堆栈。
 
 5. OPC 代理传输收到一个来自 OPC UA 堆栈的请求，请求建立到 OPC UA 服务器的 TCP 套接字连接。
     - 它直接检索 TCP 有效负载并原封不动地使用。
-    - 此步骤在连接工厂 WebApp 内部执行。
+    - 此步骤在连接工厂 Web 应用内部执行。
 
 6. OPC 代理（客户端组件）在 IoT 中心设备注册表中查找 OPC 代理（服务器组件）设备， 然后在 IoT 中心调用 OPC 代理（服务器组件）设备的设备方法。
     - 使用基于 TCP/TLS 的 HTTPS 查找 OPC 代理。
@@ -215,29 +215,29 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 
 10. 响应由 OPC 代理（服务器组件）的套接字接收。
     - OPC 代理将数据作为设备方法的返回值发送到 IoT 中心和 OPC 代理（客户端组件）。
-    - 此数据在连接工厂应用中传送到 OPC UA 堆栈。
+    - 在连接工厂应用中将此数据传送到 OPC UA 堆栈。
 
-11. 连接工厂 WebApp 将 OPC 浏览器 UX（包含特定于 OPC UA 的信息，是从 OPC UA 服务器接收的）返回到 Web 浏览器来呈现。
-    - 在浏览 OPC 地址空间并将函数应用到 OPC 地址空间中的节点时，OPC 浏览器 UX 客户端部件使用基于 HTTPS 且受防伪令牌保护的 AJAX 调用从连接工厂 WebApp 获取数据。
+11. 连接工厂 Web 应用将 OPC 浏览器 UX（包含从 OPC UA 服务器接收的特定于 OPC UA 的信息）返回到 Web 浏览器进行呈现。
+    - 在浏览 OPC 地址空间并将函数应用到 OPC 地址空间中的节点时，OPC 浏览器 UX 客户端部件使用通过 HTTPS 且受防伪标记保护的 AJAX 调用从连接工厂 Web 应用获取数据。
     - 必要时，客户端会使用步骤 4-10 中说明过的通信与 OPC UA 服务器交换信息。
 
 > [!NOTE]
 > 对于与 OPC UA 通信相关的所有 TCP 通信，OPC 代理（服务器组件）和 OPC 代理（客户端组件）都会完成步骤 4-10。
 
 > [!NOTE]
-> 对于连接工厂 WebApp 中的 OPC UA 服务器和 OPC UA 堆栈来说，OPC 代理通信是透明的，所有用于身份验证和加密的 OPC UA 安全功能均适用。
+> 对于连接工厂 Web 应用中的 OPC UA 服务器和 OPC UA 堆栈，OPC 代理通信是透明的，所有用于身份验证和加密的 OPC UA 安全功能均适用。
 
 ## <a name="next-steps"></a>后续步骤
 
-可以通过阅读以下文章继续开始使用 IoT 套件：
+可通过阅读以下文章继续了解 IoT 解决方案加速器：
 
 * [azureiotsuite.com 站点权限][lnk-permissions]
-* [在 Windows 或 Linux 上为连接工厂预配置解决方案部署网关](iot-suite-connected-factory-gateway-deployment.md)
+* [在 Windows 或 Linux 上为连接工厂解决方案加速器部署网关](iot-suite-connected-factory-gateway-deployment.md)
 * [OPC 发布服务器引用实现](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)。
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfigured-solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md

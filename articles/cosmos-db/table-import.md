@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 7a8eaaaaa8bbfa8cf9397ce52dfa93d71b0df30c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b6e912d450e1a2fed98fab5b18ba835396257ac9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>导入要在 Azure Cosmos DB 表 API 中使用的数据
 
@@ -29,6 +29,10 @@ ms.lasthandoff: 04/16/2018
 > * 使用数据迁移工具导入数据
 > * 使用 AzCopy 导入数据
 > * 从表 API（预览版）迁移到表 API 
+
+## <a name="prerequisites"></a>先决条件
+
+* 增加吞吐量：数据迁移的持续时间取决于为单个集合或一组集合设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 Azure 门户中增加吞吐量的详细信息，请参阅 Azure Cosmos DB 中的性能级别和定价层。
 
 ## <a name="data-migration-tool"></a>数据迁移工具
 

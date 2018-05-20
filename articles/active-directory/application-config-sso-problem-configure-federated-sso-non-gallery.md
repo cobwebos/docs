@@ -1,11 +1,11 @@
 ---
-title: "配置非库应用程序的联合单一登录时遇到的问题 | Microsoft Docs"
-description: "解决在为 Azure AD 应用程序库中所列且为自定义 SAML 的应用程序配置联合单一登录时可能遇到的常见问题"
+title: 配置非库应用程序的联合单一登录时遇到的问题 | Microsoft Docs
+description: 解决在为 Azure AD 应用程序库中所列且为自定义 SAML 的应用程序配置联合单一登录时可能遇到的常见问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 77f4bf0fc38043afd7a6634bcf16a0f10f7ddfeb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1990f6595be86d7f3a50f6c764a855aedf2cbcbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序的联合单一登录时遇到的问题
 
@@ -68,4 +68,4 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
+[使用 Azure Active Directory 管理应用程序](manage-apps/what-is-application-management.md)

@@ -175,6 +175,8 @@ items:
                 href: bulk-executor-dot-net.md
               - name: BulkExecutor - Java
                 href: bulk-executor-java.md
+              - name: 使用存储资源管理器进行管理
+                href: storage-explorer.md
               - name: 查询
                 items:
                   - name: 执行 SQL 查询
@@ -263,6 +265,8 @@ items:
                 href: sql-api-sql-query-reference.md
           - name: 资源
             items:
+              - name: 使用存储资源管理器进行管理
+                href: storage-explorer.md
               - name: Visual Studio Code 扩展
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
               - name: SQL 演练
@@ -325,8 +329,12 @@ items:
                 href: mongodb-indexing.md
               - name: 使用 Power BI 直观显示数据
                 href: powerbi-visualize.md
+              - name: 使用存储资源管理器进行管理
+                href: storage-explorer.md
           - name: 资源
             items:
+              - name: 使用存储资源管理器进行管理
+                href: storage-explorer.md
               - name: Visual Studio Code 扩展
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: 图形 API 文档
@@ -349,6 +357,8 @@ items:
             items:
               - name: Graph 分区
                 href: graph-partitioning.md
+              - name: 使用存储资源管理器进行管理
+                href: storage-explorer.md
               - name: 集成
                 items:
                   - name: 连接到 Spark GraphX
@@ -359,6 +369,8 @@ items:
                 href: graph-sdk-dotnet.md
           - name: 资源
             items:
+              - name: 使用存储资源管理器进行管理
+                href: storage-explorer.md
               - name: Visual Studio Code 扩展
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: 表 API 文档
@@ -415,6 +427,8 @@ items:
                 href: table-sdk-python.md
           - name: 资源
             items:
+              - name: 使用存储资源管理器进行管理
+                href: storage-explorer.md
               - name: 表存储概述
                 href: table-storage-overview.md
               - name: 表存储设计指南
@@ -457,8 +471,12 @@ items:
         href: key-value-store-cost.md
       - name: 使数据自动过期
         href: time-to-live.md
+      - name: 使用存储资源管理器进行管理
+        href: storage-explorer.md
   - name: 资源
     items:
+      - name: 使用存储资源管理器进行管理
+        href: storage-explorer.md
       - name: 查询备忘单
         href: query-cheat-sheet.md
       - name: 20 天的提示

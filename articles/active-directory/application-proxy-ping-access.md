@@ -1,29 +1,29 @@
 ---
-title: "使用 PingAccess for Azure AD 应用程序代理进行基于标头的身份验证 | Microsoft Docs"
-description: "使用 PingAccess 和应用代理发布应用程序，以支持基于标头的身份验证。"
+title: 使用 PingAccess for Azure AD 应用程序代理进行基于标头的身份验证 | Microsoft Docs
+description: 使用 PingAccess 和应用代理发布应用程序，以支持基于标头的身份验证。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bfff8ebff87b6c3c501202e95c463a0f4e235ffc
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 5554260ad2b47cf4c66046c95007c95e44f188bd
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
-将 Azure Active Directory 应用程序代理与 PingAccess 配合使用可让 Azure Active Directory 客户访问更多的应用程序。 PingAccess 扩充了[现有的应用程序代理产品/服务](active-directory-application-proxy-get-started.md)，即，增加了对使用标头进行身份验证的应用程序的单一登录访问功能。
+将 Azure Active Directory 应用程序代理与 PingAccess 配合使用可让 Azure Active Directory 客户访问更多的应用程序。 PingAccess 扩充了[现有的应用程序代理产品/服务](manage-apps/application-proxy.md)，即，增加了对使用标头进行身份验证的应用程序的单一登录访问功能。
 
 ## <a name="what-is-pingaccess-for-azure-ad"></a>什么是 PingAccess for Azure AD？
 
@@ -50,7 +50,7 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
 如果已经启用应用程序代理，并且安装了连接器，则可以跳过此部分，转到[使用应用程序代理将应用添加到 Azure AD](#add-your-app-to-azure-ad-with-application-proxy)。
 
-应用程序代理连接器是一个 Windows Server 服务，可将远程员工的流量定向到已发布的应用。 有关详细的安装说明，请参阅[在 Azure 门户中启用应用程序代理](active-directory-application-proxy-enable.md)。
+应用程序代理连接器是一个 Windows Server 服务，可将远程员工的流量定向到已发布的应用。 有关详细的安装说明，请参阅[在 Azure 门户中启用应用程序代理](manage-apps/application-proxy-enable.md)。
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “应用程序代理”。
@@ -65,7 +65,7 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
 需要在 Azure 门户中执行两项操作。 首先，需要使用应用程序代理发布应用程序。 然后，需要收集一些有关应用的信息，以便在执行 PingAccess 步骤期间使用。
 
-按以下步骤发布应用。 有关步骤 1-8 更详细的演练，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。
+按以下步骤发布应用。 有关步骤 1-8 更详细的演练，请参阅[使用 Azure AD 应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)。
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)（如果在上一部分中未登录）。
 2. 选择“Azure Active Directory” > “企业应用程序”。
@@ -108,7 +108,7 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
   ![选择“所需的权限”](./media/application-proxy-ping-access/required-permissions.png)
 
-16. 选择“添加”。 对于 API，请选择“Windows Azure Active Directory”，并单击“选择”。 对于权限，请选择“读取和写入所有应用程序”和“登录并读取用户配置文件”，并依次单击“选择”和“完成”。  
+16. 选择 **添加** 。 对于 API，请选择“Windows Azure Active Directory”，并单击“选择”。 对于权限，请选择“读取和写入所有应用程序”和“登录并读取用户配置文件”，并依次单击“选择”和“完成”。  
 
   ![选择权限](./media/application-proxy-ping-access/select-permissions.png)
 
@@ -181,5 +181,5 @@ Ping Identity 文档 [Configure PingAccess for Azure AD](https://docs.pingidenti
 ## <a name="next-steps"></a>后续步骤
 
 - [配置 PingAccess for Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
-- [Azure AD 应用程序代理如何提供单一登录？](application-proxy-sso-overview.md)
+- [Azure AD 应用程序代理如何提供单一登录？](manage-apps/application-proxy-single-sign-on.md)
 - [排查应用程序代理问题](active-directory-application-proxy-troubleshoot.md)

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
 ms.author: carolz
-ms.openlocfilehash: 0ac4dd450f1aca1da916ff3c95f5429e50cba4fd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: dd74a0997e450c95ed93efdbb46f31e04735b888
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory 文档
 
@@ -65,7 +65,7 @@ Azure Active Directory (Azure AD) 是多租户、基于云的目录和标识管�
                     <div class="cardText">
                         <h3>外部用户</h3>
                         <p>
-                        <a href="/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b">企业对企业 (B2B)</a><br/>
+                        <a href="/azure/active-directory/b2b/what-is-b2b">企业对企业 (B2B)</a><br/>
                         <a href="/azure/active-directory-b2c/">企业对客户 (B2C)</a>
                         </p>
                     </div>

@@ -1,103 +1,101 @@
 ---
-title: "使用门户管理 Azure 堆栈中的密钥保管库 |Microsoft 文档"
-description: "了解如何通过使用门户管理 Azure 堆栈中的密钥保管库"
+title: 使用门户管理 Azure Stack 中的 Key Vault | Microsoft Docs
+description: 了解如何使用门户管理 Azure Stack 中的 Key Vault
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: D4300668-461F-45F6-BF3B-33B502C39D17
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 05/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: d76a1e188c5a5bf008ac2fba9b43741a6a8d97b1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e387e365b2de3412c23c995939f75400a03eeb80
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>使用门户管理 Azure 堆栈中的密钥保管库
+# <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>使用门户管理 Azure Stack 中的 Key Vault
 
-你可以通过使用 Azure 堆栈门户管理 Azure 堆栈中的密钥保管库。 本文可帮助你开始创建和管理 Azure 堆栈中的密钥保管库。 
+可以使用 Azure Stack 门户管理 Azure Stack 中的 Key Vault。 本文可帮助你开始在 Azure Stack 中创建和管理密钥保管库。
 
-## <a name="prerequisites"></a>必备组件  
+## <a name="prerequisites"></a>必备组件
 
-您必须订阅服务关联，它包含 Azure 密钥保管库服务。
- 
-## <a name="create-a-key-vault"></a>创建 key vault 
+必须订阅包含 Azure Key Vault 服务的产品/服务。
 
-1. 登录到[用户门户](https://portal.local.azurestack.external)。  
+## <a name="create-a-key-vault"></a>创建 key vault
 
-2. 从仪表板中，选择**新建** > **安全性 + 标识** > **密钥保管库**。  
+1. 登录到[用户门户](https://portal.local.azurestack.external)。
 
-    ![密钥保管库屏幕](media/azure-stack-kv-manage-portal/image1.png)  
+2. 从仪表板中选择“新建” > “安全 + 标识” > “密钥保管库”。
 
-3. 在**创建密钥保管库**窗格中，将分配**名称**你的保管库。 保管库名称只能包含字母数字字符和特殊字符连字符 （-）。 它们不应以数字开头。  
+    ![“密钥保管库”屏幕](media/azure-stack-kv-manage-portal/image1.png)
 
-4. 选择**订阅**从可用订阅列表。 下拉列表中显示提供密钥保管库服务的所有订阅。  
+3. 在“创建密钥保管库”窗格中，为保管库分配**名称**。 保管库名称只能包含字母数字字符和特殊字符连字符 (-)。 它们不得以数字开头。
 
-5. 选择现有**资源组**或创建一个新。  
+4. 从可用订阅列表中选择**订阅**。 下拉列表中将显示提供 Key Vault 服务的所有订阅。
 
-6. 选择**定价层**。  
+5. 选择现有的**资源组**或创建一个新资源组。
+
+6. 选择“定价层”。
     >[!NOTE]
-    > 密钥保管库中的 Azure 堆栈开发工具包支持**标准**仅 Sku。
+    > Azure Stack 开发工具包中的密钥保管库仅支持**标准** SKU。
 
-7. 选择一个现有**访问策略**或创建一个新。 访问策略，可授予用户、 应用程序或安全组，以执行与此保管库操作的权限。  
+7. 选择一个现有**访问策略**或创建一个新访问策略。 使用访问策略，可授予用户、应用程序或安全组对此保管库执行操作的权限。
 
-8. （可选） 选择**高级访问权限策略**若要启用功能，用于部署的虚拟机 (Vm) 的访问，如访问到资源管理器模板部署，并访问 Azure 磁盘加密 for 卷加密。 
-  
-9.  配置设置后，选择**确定**，然后选择**创建**。 这将启动密钥保管库部署。 
+8. （可选） 选择**高级访问权限策略**以允许访问功能。 例如： 对于部署，资源管理器模板部署，以及对 Azure 磁盘加密卷加密的访问权限的虚拟机 (Vm)。
+
+9. 配置设置后，请选择“确定”，然后选择“创建”。 这将启动密钥保管库部署。
 
 ## <a name="manage-keys-and-secrets"></a>管理密钥和机密
 
-创建保管库后，使用以下步骤来创建和管理密钥和机密在保管库中。
+创建保管库后，使用以下步骤来创建并管理保管库中的密钥和机密。
 
 ### <a name="create-a-key"></a>创建密钥
 
-1. 登录到[用户门户](https://portal.local.azurestack.external)。  
+1. 登录到[用户门户](https://portal.local.azurestack.external)。
 
-2. 从仪表板中，选择**的所有资源**，选择你以前创建的密钥保管库，然后选择**密钥**磁贴。  
+2. 从仪表板中选择“所有资源”，选择先前创建的密钥保管库，然后选择“密钥”磁贴。
 
-3. 在**密钥**窗格中，选择**添加**。 
+3. 在“密钥”窗格中，选择“添加”。
 
-4. 在**创建密钥**窗格中，从列表中**选项**，选择你想要用于创建密钥的方法。 你可以**生成**新密钥，**上载**现有键，或使用**备份还原**选择密钥的备份。  
+4. 在“创建密钥”窗格中，从“选项”列表中，选择要用于创建密钥的方法。 可以**生成**新密钥、**上传**现有密钥，或使用“备份还原”选择密钥的备份。
 
-5. 输入**名称**你的密钥。 密钥名称只能包含字母数字字符和特殊字符连字符 （-）。  
+5. 输入密钥的**名称**。 密钥名称只能包含字母数字字符和特殊字符连字符 (-)。
 
-6. （可选） 配置**设置激活日期**和**设置过期日期**密钥值。  
+6. （可选）为密钥配置**设置激活日期**和**设置到期日期**值。
 
-7. 选择**创建**启动部署。  
+7. 选择“创建”以开始部署。
 
-已成功创建密钥后，可以选择其在**密钥**和查看或修改其属性。 属性部分包含**密钥标识符**，即外部应用程序可以访问此密钥统一资源标识符 (URI)。 若要限制对此项操作，配置下的设置**允许的操作**。
+成功创建密钥后，可以在“密钥”下选择该密钥，并查看或修改其属性。 属性部分包含**密钥标识符**，即外部应用程序用于访问此密钥统一资源标识符 (URI)。 若要限制对此密钥的操作，请在“允许的操作”下配置设置。
 
-![URI 的密钥](media/azure-stack-kv-manage-portal/image4.png)  
+![密钥 URI](media/azure-stack-kv-manage-portal/image4.png)
 
-### <a name="create-a-secret"></a>创建机密 
+### <a name="create-a-secret"></a>创建机密
 
-1. 登录到[用户门户](https://portal.local.azurestack.external)。  
-2. 从仪表板中，选择**的所有资源**，选择你以前创建的密钥保管库，然后选择**机密**磁贴。  
+1. 登录到[用户门户](https://portal.local.azurestack.external)。
+2. 从仪表板中选择“所有资源”，选择先前创建的密钥保管库，然后选择“机密”磁贴。
 
-3. 下**机密**，选择**添加**。  
+3. 在“机密”下，选择“添加”。
 
-4. 下**创建密钥**，从列表中**上载选项**，选择你想要创建密钥的一个选项。 你可以创建一个机密**手动**如果机密或上载输入值**证书**来自本地计算机。  
+4. 在“创建机密”下，从“上传选项”列表中，选择要用于创建机密的选项。 如果输入机密的值或从本地计算机上传**证书**，即可**手动**创建机密。
 
-5. 输入**名称**的机密。 机密的名称只能包含字母数字字符和特殊字符连字符 （-）。  
+5. 输入机密的**名称**。 机密名称只能包含字母数字字符和特殊字符连字符 (-)。
 
-6. （可选） 指定**内容类型**，和配置的值**设置激活日期**和**设置过期日期**的机密。  
+6. （可选）指定**内容类型**，并为机密配置**设置激活日期**和**设置到期日期**的值。
 
-7. 选择**创建**启动部署。  
+7. 选择“创建”以开始部署。
 
-已成功创建密钥后，可以选择其在**机密**和查看或修改其属性。 属性部分包含**机密标识符**，即外部应用程序可以访问此密钥的 URI。 
+成功创建机密后，可以在“机密”下选择该机密，并查看或修改其属性。 **机密标识符**是外部应用程序可用于访问此密钥的 URI。
 
-![URI 机密](media/azure-stack-kv-manage-portal/image5.png) 
-
+![机密 URI](media/azure-stack-kv-manage-portal/image5.png)
 
 ## <a name="next-steps"></a>后续步骤
-* [将 VM 部署通过检索密钥保管库中存储的密码](azure-stack-kv-deploy-vm-with-secret.md) 
-* [使用证书存储在密钥保管库中部署 VM](azure-stack-kv-push-secret-into-vm.md)     
 
-
+* [检索 Key Vault 中存储的密码来部署 VM](azure-stack-kv-deploy-vm-with-secret.md)
+* [使用 Key Vault 中存储的证书来部署 VM](azure-stack-kv-push-secret-into-vm.md)

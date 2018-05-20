@@ -1,26 +1,26 @@
 ---
-title: "在 Azure Active Directory 中删除企业应用的用户或组分配 | Microsoft Docs"
-description: "如何在 Azure Active Directory 的企业应用中删除对用户或组的访问权限分配"
+title: 在 Azure Active Directory 中删除企业应用的用户或组分配 | Microsoft Docs
+description: 如何在 Azure Active Directory 的企业应用中删除对用户或组的访问权限分配
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-editor: 
-ms.assetid: 7b2d365b-ae92-477f-9702-353cc6acc5ea
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 084ffcbe473290a8734b1c8b8847b517dac4f6b6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b3c5c6c4bc1cfd5a9b68277e21fc06f37fa18f3b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中删除企业应用的用户或组分配
 可以轻松地在 Azure Active Directory (Azure AD) 中删除用户或组对企业应用程序的已分配访问权限。 必须具有适当的权限才能管理企业应用，并且必须是目录的全局管理员。

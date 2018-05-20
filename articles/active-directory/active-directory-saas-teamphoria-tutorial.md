@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Teamphoria 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Teamphoria 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Teamphoria 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Teamphoria 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 260c85b14032e17def01ded4a461e6337d66239b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 724d1624a3ba86aba3665169a14115b2a90e0069
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>教程：Azure Active Directory 与 Teamphoria 集成
 
@@ -31,14 +31,6 @@ ms.lasthandoff: 12/11/2017
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-<!--## Overview
-
-To enable single sign-on with Teamphoria, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Teamphoria.
-
->[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
-
-
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Teamphoria 的集成，需要以下项：
@@ -47,25 +39,25 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 - 已启用 Teamphoria 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
-- 不应使用生产环境，除非有此必要。
+- 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Teamphoria
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-teamphoria-from-the-gallery"></a>从库中添加 Teamphoria
 要配置 Teamphoria 与 Azure AD 的集成，需要从库中将 Teamphoria 添加到托管的 SaaS 应用列表。
 
 **若要从库中添加 Teamphoria，请执行以下步骤：**
 
-1. 在 **[Azure 管理门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 管理门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -157,7 +149,7 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 
     d. **入口点**：粘贴之前从 Azure 门户中复制的“SAML 单一登录服务 URL”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 将选项切换为“打开”，然后单击“保存”。   
+    e. 将选项切换为“打开”，然后单击“保存”。   
 
 <!--### Next steps
 
@@ -197,11 +189,11 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-teamphoria-test-user"></a>创建 Teamphoria 测试用户
 
@@ -270,7 +262,7 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

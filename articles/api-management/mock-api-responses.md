@@ -3,7 +3,7 @@ title: 教程：使用 Azure 门户模拟 API 响应 | Microsoft Docs
 description: 本教程介绍如何使用 API 管理 (APIM) 对 API 设置一个策略，使该 API 返回模拟响应。 当后端不可用于发送实际响应时，开发人员可以使用此方法继续实现和测试 API 管理实例。
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: f3209edb23577d656e228aa0d75d852f35cd93ef
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4383ce3788f6fade5299d69ef99b80221c58d9e7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="mock-api-responses"></a>模拟 API 响应
 

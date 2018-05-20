@@ -16,15 +16,15 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 079eb7b89ff3d6c1e4ec0de6136cd934ba3a1f70
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0707835cf4d6891397579cc41de49fc0462b4521
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>使用 Linux 应用服务创建 Ruby 应用
 
-[Linux 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门将介绍如何创建一个基本的 Ruby on Rails 应用程序并将其部署到 Azure 上，以作为 Linux 上的一个 Web 应用程序。
+[Linux 上的 Azure 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门介绍如何创建一个基本的 [Ruby on Rails](https://rubyonrails.org/) 应用程序并将其部署到 Azure 上，以作为 Linux 上的 Web 应用。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">安装 Ruby 2.4.1 或更高版本</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">安装 Ruby 2.3 或更高版本</a>
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 
 ## <a name="download-the-sample"></a>下载示例
@@ -45,7 +45,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 ## <a name="run-the-application-locally"></a>在本地运行应用程序
 
-运行 rails 服务器以使应用程序正常运作。 切换到“hello-world”目录，`rails server` 命令将启动服务器。
+需要运行 rails 服务器才能使应用程序正常工作。 更改到 `hello-world` 目录，然后使用 `rails server` 命令启动该服务器。
 
 ```bash
 cd hello-world\bin

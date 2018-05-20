@@ -5,18 +5,18 @@ services: key-vault
 documentationcenter: ''
 author: barclayn
 manager: mbaldwin
-ms.assetid: ''
+ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4a765b314b9879877bb6ff926e4a6584456b7823
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b4e317a82b93513c6161d9da0c55883e99580cbb
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>教程：将 Azure Web 应用程序配置为从 Key Vault 读取机密
 

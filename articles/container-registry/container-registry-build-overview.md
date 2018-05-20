@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: marsma
-ms.openlocfilehash: 7506351c0d65fb167136478d2dc383cdabd81835
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3ef91270bceb5865bdbdf9c436e4519595a3dc09
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>使用 ACR Build 自动执行 OS 和框架修补
 
@@ -20,8 +20,7 @@ ms.lasthandoff: 05/04/2018
 
 **ACR Build** 是 Azure 容器注册表中的功能套件，它不仅提供本机容器映像生成功能，而且还能自动为 Docker 容器执行 [OS 和框架修补](#automate-os-and-framework-patching)。
 
-> [!IMPORTANT]
-> ACR Build 目前为预览版，仅在**美国东部**和**西欧**区域的 Azure 容器注册表中受支持。 需同意[补充使用条款][terms-of-use]才能使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
 ## <a name="what-is-acr-build"></a>什么是 ACR Build？
 
@@ -73,7 +72,6 @@ ACR Build 旨在用作容器生命周期基元。 例如，将 ACR Build 集成�
 [base-node]: https://hub.docker.com/_/node/
 [base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

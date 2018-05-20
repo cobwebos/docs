@@ -1,121 +1,121 @@
 ---
-title: "Azure 堆栈遥测 |Microsoft 文档"
-description: "描述如何配置使用 PowerShell 的 Azure 堆栈遥测设置。"
+title: Azure Stack 遥测 | Microsoft Docs
+description: 介绍如何使用 PowerShell 配置 Azure Stack 遥测设置。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 05/17/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: d48b6a02666348f2ef7c1b2a73982d219c79bf54
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: bfd16901c5ce036719a1ed19e9a5b5c6ef52be93
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/17/2018
 ---
-# <a name="azure-stack-telemetry"></a>Azure 堆栈遥测
+# <a name="azure-stack-telemetry"></a>Azure Stack 遥测
 
-Azure 堆栈系统数据或遥测，会自动上载到 Microsoft 通过连接的用户体验。 Microsoft 团队主要是为了提高我们客户体验，以及对安全、 运行状况、 质量和性能分析使用从 Azure 堆栈遥测收集的数据。
+Azure Stack 系统数据或遥测数据通过互连用户体验自动上传到 Microsoft。 Microsoft 团队主要使用从 Azure Stack 遥测收集的数据来改善客户体验，以及进行安全、运行状况、质量和性能方面的分析。
 
-作为 Azure 堆栈操作员，遥测可以提供有价值见解企业部署，并为你提供可帮助形状以后版本的 Azure 堆栈的声音。
-
-> [!NOTE]
-> 计费之前，还可以将 azure 堆栈配置为到 Azure 的正向使用情况信息。 这是必需的多节点 Azure 堆栈用户选择为你的使用付费计费。 使用情况报告遥测从独立控制，不需要为选择的容量模型的多节点客户还是 Azure 堆栈开发工具包用户。 对于这些方案中，使用情况报告可关闭[使用注册脚本](https://docs.microsoft.com/azure/azure-stack/azure-stack-usage-reporting)。 
-
-上的 Windows Server 2016 连接用户体验和遥测的组件，它使用基于 azure 的堆栈遥测[事件跟踪的 Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx)跟踪日志记录技术，用于收集和存储遥测事件和数据。 Azure 堆栈组件使用相同的日志记录技术来发布事件和通过使用公共操作系统事件日志记录和跟踪 Api 收集的数据。 Azure 堆栈组件的示例包括网络资源提供程序、 存储资源提供程序、 监视资源提供程序中，和更新资源提供程序。 连接的用户体验和遥测组件对数据使用 SSL 进行加密，并使用固定证书通过 HTTPS 的遥测数据传输到 Microsoft 数据管理服务。
+遥测可为 Azure Stack 操作员提供宝贵的见解来让他们洞察企业部署，并提供有助于构思 Azure Stack 新版本的看法。
 
 > [!NOTE]
-> 若要支持遥测数据流，必须在你的网络中打开端口 443 (HTTPS)。 连接的用户体验和遥测组件连接到 Microsoft 数据管理服务在https://v10.vortex-win.data.microsoft.com。连接的用户体验和遥测组件还链接到https://settings-win.data.microsoft.com下载配置信息。
+> Azure Stack 还可以配置为将用量信息转发到 Azure 进行计费。 选择即用即付计费模式的多节点 Azure Stack 客户一定要这样做。 用量报告通过遥测单独进行控制，选择容量模式的多节点 Azure Stack 客户或 Azure Stack 开发工具包用户无需使用此功能。 对于上述方案，可以[使用注册脚本](https://docs.microsoft.com/azure/azure-stack/azure-stack-usage-reporting)来关闭用量报告。
+
+Azure Stack 遥测基于 Windows Server 2016 互连用户体验与遥测组件，该组件使用 [Windows 事件跟踪 (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) 跟踪日志记录技术来收集和存储遥测事件与数据。 Azure Stack 组件使用相同的日志记录技术，发布使用公共操作系统事件日志记录和跟踪 API 收集的事件与数据。 Azure Stack 组件的示例包括网络资源提供程序、存储资源提供程序、监视资源提供程序和更新资源提供程序。 互连用户体验与遥测组件使用 SSL 加密数据，并使用证书关联通过 HTTPS 将遥测数据传输到 Microsoft 数据管理服务。
+
+> [!NOTE]
+> 若要支持遥测数据流，必须在网络中开放端口 443 (HTTPS)。 互连用户体验与遥测组件连接到 Microsoft 数据管理服务（位于 https://v10.vortex-win.data.microsoft.com）。互连用户体验与遥测组件还连接到 https://settings-win.data.microsoft.com 来下载配置信息。
 
 ## <a name="privacy-considerations"></a>隐私注意事项
-ETW 服务将返回到受保护的云存储路由遥测数据。 遥测数据的最小特权指南访问权限原则。 仅 Microsoft 人员具有有效的业务需要允许对遥测数据的访问。 Microsoft 客户的决定中所述的有限目的; 二是不共享个人数据与第三方客户的除[Azure 堆栈隐私声明](http://windows.microsoft.com/windows/preview-privacy-statement)。 我们并与 Oem 和包含聚合的匿名信息的遥测信息的合作伙伴共享业务报表。 内部 Microsoft 团队包括隐私、 法律和数据管理利益干系人进行共享决策的数据。
+ETW 服务将遥测数据发回到受保护的云存储。 最小特权原则支配遥测数据的访问。 只有具有有效业务需求的 Microsoft 人员才能访问遥测数据。 除非客户自行要求，或者符合 [Azure Stack 隐私声明](https://privacy.microsoft.com/PrivacyStatement)中所述的受限目的，否则 Microsoft 不会第三方共享客户个人数据。 我们与 OEM 和合作伙伴共享业务报告，其中包含匿名的聚合遥测信息。 数据共享决策由 Microsoft 内部团队（包括隐私、法律和数据管理利益干系人）做出。
 
-Microsoft 认为中和实践信息最小化。 我们努力收集仅和的信息，我们需要我们将其存储为仅只要它需要提供服务或分析。 很多有关如何工作的 Azure 堆栈系统和 Azure 服务的信息是在六个月内删除。 汇总或聚合的数据保留更长一段。
+Microsoft 相信并实践信息最小化。 我们尽量只收集所需的信息，并且只在服务所需或进行分析时才存储这些信息。 许多有关 Azure Stack 系统和 Azure 服务工作原则的信息在六个月内删除。 汇总或聚合的数据保留更长一段时间。
 
-我们了解隐私和安全的客户的信息非常重要。 我们已经仔细和全面的方法与客户隐私和与 Azure 堆栈的客户数据的保护。 IT 管理员可以控制以在任何时候自定义功能和隐私设置。 我们致力于透明度和信任十分明显：
-- 我们已打开与客户有关我们收集到的数据类型。
-- 我们将在控件中的企业客户-它们可以自定义他们自己的隐私设置。
-- 首先我们将客户隐私和安全性。
-- 我们是有关如何使用遥测获取透明。
+我们了解客户信息的隐私和安全都很重要。 我们采用深思熟虑的综合方法，通过 Azure Stack 保护客户隐私和客户数据。 IT 管理员随时可以控制功能和隐私的自定义设置。 我们对于透明度和信任的承诺很明确：
+- 我们向客户公开我们收集的数据类型。
+- 企业客户有控制权 — 他们可以自定义自己的隐私设置。
+- 我们将客户隐私和安全放在第一位。
+- 我们以公开透明的方式使用遥测。
 - 我们使用遥测来改善客户体验。
 
-Microsoft 不会收集敏感信息，如信用卡号、 用户名和密码、 电子邮件地址或其他同样敏感信息。 如果我们确定已无意中收到敏感信息，我们将其删除。
+Microsoft 无意收集敏感信息，例如信用卡号、用户名和密码、电子邮件地址或其他同样敏感的信息。 如果我们确定敏感信息是无意中收集到的，我们会予以删除。
 
-## <a name="examples-of-how-microsoft-uses-the-telemetry-data"></a>Microsoft 使用遥测数据的方式的示例
-遥测发挥重要作用，帮助我们能够快速确定并修复客户部署和配置中的关键可靠性问题。 深入了解我们收集的遥测数据帮助我们快速确定与服务或硬件配置问题。 Microsoft 的能够从客户和到生态系统的驱动器改进获取此数据可帮助提高我们集成的 Azure 堆栈解决方案的质量的门槛。 
+## <a name="examples-of-how-microsoft-uses-the-telemetry-data"></a>Microsoft 如何使用遥测数据的示例
+遥测起着重要作用，可帮助我们快速找到并解决客户部署和配置的严重可靠性问题。 洞察我们收集的遥测数据可帮助我们快速找到服务或硬件配置的问题。 Microsoft 向客户获取此数据以及推动生态系统改进的能力，有助于提高我们的集成式 Azure Stack 解决方案的质量。
 
-遥测还有助于 Microsoft 能够更好地了解客户部署组件的方式、 使用的功能，并使用服务来实现业务目标。 可帮助确定该数据中获取信息的优先级客户体验和工作负荷会直接影响的区域中的工程投资。
+遥测还能帮助 Microsoft 进一步了解客户如何部署组件、使用功能以及使用服务来实现业务目标。 从数据获取见解可帮助我们在直接影响客户体验和工作负荷的领域中指定工程投资的优先级。
 
-一些示例包括客户使用情况的容器、 存储和与 Azure 堆栈角色相关联的网络配置。 我们还使用到驱动器改进和智能到我们的管理和监视解决方案的一些见解。 这可帮助客户诊断质量问题并保存通过使更少的支持的 money 调用到 Microsoft。
+示例包括：与 Azure Stack 角色关联的容器、存储用量和网络配置的客户用量。 我们还使用见解来推动某些管理和监视解决方案的改善与智能化。 这可以帮助客户诊断质量问题，减少向 Microsoft 拨打支持电话的次数，从而节省资金。
 
-## <a name="manage-telemetry-collection"></a>管理遥测数据收集
-我们不建议关闭遥测组织中根据遥测提供驱动器改进的产品功能和稳定性的数据。 我们知道，但是，，在某些情况下这可能有必要。 
+## <a name="manage-telemetry-collection"></a>管理遥测数据的收集
+我们不建议在组织中关闭遥测，因为遥测可以提供推动产品功能和稳定性改进的数据。 但我们认识到，在某些情况下有必要关闭遥测。
 
-在这些情况下，你可以配置通过使用注册表设置预部署或使用遥测终结点后期部署发送给 Microsoft 的遥测级别。
+在这种情况下，可以使用部署前的注册表设置或使用部署后的遥测终结点，配置发送给 Microsoft 的遥测级别。
 
 ### <a name="set-telemetry-level-in-the-windows-registry"></a>在 Windows 注册表中设置遥测级别
-Windows 注册表编辑器用于部署 Azure 堆栈之前的物理主机计算机上手动设置遥测级别。 如果管理策略已存在，如组策略，它将重写此注册表设置。 
+在部署 Azure Stack 之前，可以使用 Windows 注册表编辑器在物理主计算机上手动设置遥测级别。 如果管理策略（例如组策略）已存在，它会覆盖此注册表设置。
 
-在开发工具包主机上部署 Azure 堆栈，启动进入 CloudBuilder.vhdx 前后在提升的 PowerShell 窗口中运行以下脚本：
+在开发工具包主机上部署 Azure Stack 之前，请先引导至 CloudBuilder.vhdx，然后在权限提升的 PowerShell 窗口中运行以下脚本：
 
 ```powershell
 ### Get current AllowTelmetry value on DVM Host
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
-### Set & Get updated AllowTelemetry value for ASDK-Host 
+### Set & Get updated AllowTelemetry value for ASDK-Host
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name "AllowTelemetry" -Value '0' # Set this value to 0,1,2,or3.  
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
 ```
 
-遥测级别是累积和分类划分为四个级别 (0-3):
+遥测级别可累积，分类为四个级别 (0-3)：
 
-**0 （安全性）**。 仅限安全数据。 信息将帮助保持操作系统所需安全，包括有关连接的用户体验和遥测组件设置和 Windows Defender 的数据。 在此级别发出没有 Azure 堆栈特定遥测。
+**0（安全）**。 仅限安全数据。 帮助保护操作系统所需的信息，包括互连用户体验与遥测组件设置和 Windows Defender 相关的数据。 在此级别不会发出任何 Azure Stack 特定的遥测数据。
 
-**1 （基本）**。 安全数据和基本运行状况和质量的数据。 基本设备信息，包括： 质量相关数据、 应用程序兼容性，应用程序使用情况数据和中的安全级别的数据。 将遥测级别设置为基本启用 Azure 堆栈遥测。 在此级别收集的数据包括：
+**1（基本）**。 安全数据，以及基本运行状况和质量数据。 基本设备信息，包括：质量相关的数据、应用兼容性、应用用量数据，以及来自安全级别的数据。 将遥测级别设置为“基本”可启用 Azure Stack 遥测。 在此级别收集的数据包括：
 
-- **基本的设备信息**有助于提供了解类型和生态系统中的本机和虚拟化 Windows Server 2016 实例的配置包括：
- - 机属性，例如 OEM，模型， 
- - 网络属性，例如的数量和速度的网络适配器
- - 处理器和内存属性，例如内核数，内存大小 
- - 存储特性，如驱动器、 类型和大小的数量。
-- **遥测功能**，包括 %的已上载的事件、 已删除的事件和上次上载时间。
-- **质量相关信息**，它可帮助 Microsoft 开发 Azure 堆栈的执行方式的基本了解。 一个示例是在特定硬件配置的严重警报的计数。
-- * * 兼容性数据，它有助于提供的了解哪些资源提供程序系统和虚拟机上安装并标识潜在的兼容性问题。
+- **基本设备信息**，帮助了解生态系统中本机和虚拟化 Windows Server 2016 实例的类型与配置，其中包括：
+ - 计算机属性，例如 OEM、型号。
+ - 网络属性，例如网络适配器的数目和速度。
+ - 处理器和内存属性，例如核心数、内存大小。
+ - 存储属性，例如驱动器数目、类型和大小。
+- **遥测功能**，包括已上传事件、已删除事件的百分比，以及上次上传时间。
+- **质量相关的信息**，帮助 Microsoft 初步了解 Azure Stack 的运行情况。 示例是针对特定硬件配置发出的严重警报计数。
+- **兼容性数据，帮助了解系统和虚拟机上已安装哪些资源提供程序，以及识别潜在的兼容性问题。
 
-**2 （增强）**。 其他见解，包括： 如何使用操作系统和其他 Azure 堆栈服务、 如何执行方法、 高级的可靠性数据和从基本和安全级别的数据。 
+**2（增强）**。 其他见解，包括：操作系统和其他 Azure Stack 服务的用法、工作原理、高级可靠性数据，以及来自“基本”和“安全”级别的数据。
 
-**3 （完整）**。 所有识别并帮助解决问题，所需的数据以及从数据**安全**，**基本**，和**增强**级别。
+**3（完整）**。 识别及帮助解决问题所需的全部数据，加上来自“安全”、“基本”和“增强”级别的数据。
 
 > [!NOTE]
-> 默认遥测级别值为 2 （增强型）。
+> 默认遥测级别值为 2（增强）。
 
-关闭 Windows 和 Azure 堆栈遥测禁用 SQL 遥测。 有关 Windows Server 遥测设置的影响的其他信息，引用[Windows 遥测白皮书](https://aka.ms/winservtelemetry)。 
+关闭 Windows 和 Azure Stack 遥测会禁用 SQL 遥测。 有关 Windows Server 遥测设置的含义的详细信息，请参阅 [Windows 遥测白皮书](https://aka.ms/winservtelemetry)。
 
 > [!IMPORTANT]
-> 这些遥测级别仅适用于 Microsoft Azure 堆栈组件。 非 Microsoft 软件组件和从 Azure 堆栈硬件合作伙伴的硬件生命周期主机中运行的服务可能会超过这些遥测水平与其云服务进行通信。 你应使用 Azure 堆栈硬件解决方案供应商以了解其遥测策略，以及如何选择加入或退出。 
+> 这些遥测级别仅适用于 Microsoft Azure 堆栈组件。 Azure Stack 硬件合作伙伴在硬件生命周期主机中运行的非 Microsoft 软件组件和服务可能与这些遥测级别以外的云服务通信。 应该咨询 Azure Stack 硬件解决方案提供商，以了解其遥测策略，以及如何启用或禁用。
 
-### <a name="enable-or-disable-telemetry-after-deployment"></a>启用或禁用部署后的遥测
+### <a name="enable-or-disable-telemetry-after-deployment"></a>在部署后启用或禁用遥测
 
-若要启用或禁用遥测部署后，你需要能够访问到特权终结点 (PEP) ERCS Vm 上公开。
-1.  若要启用： `Set-Telemetry -Enable`
-2.  若要禁用： `Set-Telemetry -Disable`
+若要在部署之后启用或禁用遥测，必须能够访问 ERCS VM 上公开的特权终结点 (PEP)。
+1.  若要启用：`Set-Telemetry -Enable`
+2.  若要禁用：`Set-Telemetry -Disable`
 
-参数的详细信息： 
-> .参数启用-启用遥测数据上载 
+PARAMETER 详细信息：
+> .PARAMETER Enable - 启用遥测数据上传
 
-> .参数禁用-关闭遥测数据上载  
+> .PARAMETER Disable - 禁用遥测数据上传  
 
-**若要启用遥测的脚本：**
+**用于启用遥测的脚本：**
 ```powershell
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
 $pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
@@ -128,7 +128,7 @@ if($psSession)
 }
 ```
 
-**若要禁用遥测的脚本：**
+**用于禁用遥测的脚本：**
 ```powershell
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
 $pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
@@ -142,5 +142,4 @@ if($psSession)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-[添加应用商店项](asdk-marketplace-item.md)
-
+[添加 Marketplace 项](asdk-marketplace-item.md)

@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: nisoneji
-ms.openlocfilehash: d7b65771555fcada741b594c14b98e87e7448b24
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1d9fa845171ffa5a40ce569170dfbb577ea4e8c8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>运行适用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。

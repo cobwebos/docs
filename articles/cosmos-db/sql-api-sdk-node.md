@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 1/4/2018
+ms.date: 5/3/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4c219820fd5b8d5502bae394142dfbe80db1f59
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ef80c99225a9045686ba8de3fe8fd7cf7070b5cd
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -61,6 +61,16 @@ ms.lasthandoff: 05/07/2018
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="1.14.4"/>1.14.4</a>
+* npm 文档已修复。
+
+### <a name="1.14.3"/>1.14.3</a>
+* 添加了对连接问题的默认重试的支持。
+* 添加了对读取集合更改源的支持。
+* 修复了间歇性导致“读取会话不可用”的会话一致性 bug。
+* 添加了对查询指标的支持。
+* 修改了 http 代理的最大连接数。
 
 ### <a name="1.14.2"/>1.14.2</a>
 * 将文档更新为了引用 Azure Cosmos DB 而非 Azure DocumentDB。
@@ -193,6 +203,8 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.14.4](#1.14.4) |2018 年 5 月 3 日 |--- |
+| [1.14.3](#1.14.3) |2018 年 5 月 3 日 |--- |
 | [1.14.2](#1.14.2) |2017 年 12 月 21 日 |--- |
 | [1.14.1](#1.14.1) |2017 年 11 月 10 日 |--- |
 | [1.14.0](#1.14.0) |2017 年 11 月 9 日 |--- |

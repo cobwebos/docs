@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 6bd4e9f6bbc5bba73b2c169b7f3c5931f30029e6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2c16c0414ddf023e7055a8b57c514fc069f3112a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>实施 Azure 企业基架的示例
-本主题通过示例介绍企业如何实施 [Azure 企业基架](resource-manager-subscription-governance.md)的建议事项。 其中使用一家虚构公司 Contoso 来演示常见方案的最佳实践。
+本文通过示例介绍企业如何实施 [Azure 企业基架](resource-manager-subscription-governance.md)的建议事项。 其中使用一家虚构公司 Contoso 来演示常见方案的最佳实践。
 
 ## <a name="background"></a>背景
-Contoso 是一家跨国公司，为各行业的客户提供供应链解决方案，服务范围从“软件即服务”模型到本地部署的打包模型。  他们在全球开发软件，在印度、美国和加拿大设立了先进的开发中心。
+Contoso 是一家跨国公司，为各行业的客户提供供应链解决方案， 服务范围从“软件即服务”模型到本地部署的打包模型，应有尽有。  他们在全球开发软件，在印度、美国和加拿大设立了先进的开发中心。
 
 该公司的 ISV 分部划分为多个独立业务单位，管理重要业务领域的产品。 每个业务单位都有自身的开发人员、产品经理和架构师。
 
 企业技术服务 (ETS) 业务单位提供集中式 IT 功能，管理托管各个业务部门应用程序的多个数据中心。 除了管理数据中心以外，ETS 组织还提供和管理集中式协作（如电子邮件和网站）以及网络/电话服务。 针对未配备操作人员的小型业务单位，他们还要管理面向客户的工作负荷。
 
-本主题涉及以下人物：
+本文涉及以下人物：
 
 * Dave 是 ETS Azure 管理员。
 * Alice 是 Contoso 供应链业务单位的开发总监。
 
-Contoso 需要构建业务线应用和面向客户的应用。 该公司决定在 Azure 上运行这些应用。 Dave 阅读了[出于合规目的监管订阅](resource-manager-subscription-governance.md)主题，现已准备好实施其中的建议。
+Contoso 需要构建业务线应用和面向客户的应用。 该公司决定在 Azure 上运行这些应用。 Dave 阅读了[出于合规目的监管订阅](resource-manager-subscription-governance.md)一文，现已准备好实施其中的建议。
 
 ## <a name="scenario-1-line-of-business-application"></a>方案 1：业务线应用程序
 Contoso 正在构建由世界各地的开发人员使用的源代码管理系统 (BitBucket)。  该应用程序使用基础结构即服务 (IaaS) 来托管软件，由 Web 服务器和一个数据库服务器组成。 开发人员需要访问其开发环境中的服务器，但不需要访问 Azure 中的服务器。 Contoso ETS 希望应用程序所有者和团队能够管理该应用程序。 该应用程序只能在 Contoso 的企业网络中使用。 Dave 需要为此应用程序设置订阅。 该订阅将来还要托管其他与开发人员相关的软件。  
 
 ### <a name="naming-standards--resource-groups"></a>命名标准和资源组
-Dave 需要创建一个订阅，用于支持所有业务单位常用的开发人员工具。 他需要为订阅和资源组（用于应用程序和网络）创建有意义的名称。 他创建了以下订阅和资源组：
+Dave 需要创建一个订阅，用于支持所有业务单位常用的开发人员工具。 Dave 需要为订阅和资源组（用于应用程序和网络）创建有意义的名称。 他创建了以下订阅和资源组：
 
 | Item | 名称 | 说明 |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ Dave 为订阅分配了以下角色：
 | 角色 | 已分配到 | 说明 |
 | --- | --- | --- |
 | [所有者](../role-based-access-control/built-in-roles.md#owner) |Contoso AD 中的托管 ID |此 ID 是通过 Contoso 的标识管理工具，配合适时使用 (JIT) 访问权限控制的，可确保订阅所有者的访问完全受到审核 |
-| [安全经理](../role-based-access-control/built-in-roles.md#security-manager) |安全与风险管理部门 |此角色允许用户查看 Azure 安全中心及资源状态 |
+| [安全读者](../role-based-access-control/built-in-roles.md#security-reader) |安全与风险管理部门 |此角色允许用户查看 Azure 安全中心及资源状态 |
 | [网络参与者](../role-based-access-control/built-in-roles.md#network-contributor) |网络团队 |此角色允许 Contoso 的网络团队管理站点到站点 VPN 和虚拟网络 |
 | *自定义角色* |应用程序所有者 |Dave 创建了一个可授权修改资源组中资源的角色。 有关详细信息，请参阅 [Custom Roles in Azure RBAC](../role-based-access-control/custom-roles.md)（Azure RBAC 中的自定义角色） |
 
@@ -115,7 +115,7 @@ Dave 没有为此应用程序设置自动化。 虽然他创建了 Azure 自动�
 ### <a name="azure-security-center"></a>Azure 安全中心
 Contoso IT 服务管理部门需要快速识别和处理威胁。 他们还希望了解可能存在哪些问题。  
 
-为了满足这些要求，Dave 启用了 [Azure 安全中心](../security-center/security-center-intro.md)，并向“安全经理”角色提供了访问权限。
+为了满足这些要求，Dave 启用了 [Azure 安全中心](../security-center/security-center-intro.md)，并向“安全读者”角色提供了访问权限。
 
 ## <a name="scenario-2-customer-facing-app"></a>方案 2：面向客户的应用
 供应链业务单位的业务领导发现，他们可以借助多种机会，使用会员卡来提高 Contoso 客户的参与度。 Alice 的团队必须创建此应用程序，他们认定，Azure 能够帮助实现该业务需求。 Alice 与来自 ETS 的 Dave 合作，配置了两个订阅用于开发和运行此应用程序。

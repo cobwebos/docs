@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 备份来备份和还原已加密的 VM"
-description: "本文介绍如何备份和还原使用 Azure 磁盘加密功能加密的 VM。"
+title: 使用 Azure 备份来备份和还原已加密的 VM
+description: 本文介绍如何备份和还原使用 Azure 磁盘加密功能加密的 VM。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: 8387f186-7d7b-400a-8fc3-88a85403ea63
 ms.service: backup
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 10/13/2017
 ms.author: pajosh;markgal;trinadhk; sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a1a3c5eb5550967e0a0e045ec508a86cd80ee03
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c788720e046c2efef954ef77f7b52854439b7515
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>使用 Azure 备份来备份和还原已加密的虚拟机
 本文介绍使用 Azure 备份来备份和还原虚拟机 (VM) 的步骤。 此外，提供有关受支持的方案、先决条件以及针对错误案例的疑难解答步骤的详细信息。
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/21/2018
 
 * 已创建恢复服务保管库，并已遵循[为备份准备环境](backup-azure-arm-vms-prepare.md)中的步骤设置存储复制。
 
-* 备份功能已获得 [Key Vault 的访问权限](#provide-permissions-to-azure-backup)，其中包含加密 VM 的秘钥和机密。
+* 备份功能已获得 [Key Vault 的访问权限](#provide-permissions-to-backup)，其中包含加密 VM 的秘钥和机密。
 
 ## <a name="backup-encrypted-vm"></a>备份加密的 VM
 使用以下步骤设置备份目标、定义策略、配置项目和触发备份。
