@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: overview
-ms.date: 04/12/2018
+ms.date: 04/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: da2ab7b0d8b83238def346790362b680cd8eda23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2a2818be8ef609946e53f585aadb0a5b4ac0f3a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-analysis-services-overview"></a>Azure Analysis Services 概述
+# <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Azure Analysis Services 在云中提供企业级数据建模。 它是完全托管的平台即服务 (PaaS)，与 Azure 数据平台服务集成。 
 
-使用 Analysis Services 时，可以混合和组合使用多个源的数据、定义指标，以及在单个受信任的语义数据模型中保护数据。 有了数据模型，用户就可以使用客户端应用程序（例如 Power BI、Excel、Reporting Services、第三方应用和自定义应用）更加便捷地浏览大量数据。
+使用 Analysis Services 时，可以在单个受信任的语义数据模型中糅合和合并多个数据源中的数据、定义指标以及保护数据。 有了数据模型，用户就可以使用客户端应用程序（例如 Power BI、Excel、Reporting Services、第三方应用和自定义应用）更加便捷地浏览大量数据。
 
 ![数据源](./media/analysis-services-overview/aas-overview-data-sources.png)
 
@@ -134,4 +134,5 @@ Analysis Services 拥有一个充满活力的用户社区。 参与 [Azure Analy
 有关于文档的建议？ 可使用 Livefyre 在每篇文章底部添加意见。
 
 ## <a name="next-steps"></a>后续步骤
-现在已详细了解了 Azure Analysis Services，可以开始使用了。 了解如何在 Azure 中[创建服务器](analysis-services-create-server.md)。 服务器就绪以后，请逐步学习 [Adventure Works 教程](tutorials/aas-adventure-works-tutorial.md)，了解如何创建完全正常运行的表格模型并将其部署到服务器。
+了解如何在 Azure 中[创建服务器](analysis-services-create-server.md)。   
+创建服务器后，便可[添加示例模型](analysis-services-create-sample-model.md)。   

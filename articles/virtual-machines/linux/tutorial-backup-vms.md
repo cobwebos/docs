@@ -1,6 +1,6 @@
 ---
-title: 备份 Azure Linux VMs | Microsoft Docs
-description: 使用 Azure 备份来备份 Linux VM，从而为其提供保护。
+title: 教程 - 在 Azure 门户中备份 Linux 虚拟机 | Microsoft Docs
+description: 本教程介绍如何在 Azure 门户中使用 Azure 备份保护 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,22 +16,20 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4bd532a570a978715ba61880047f3a7e49b446ba
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c91e2b1380e5048fa1dfb7a0e028c88e589cbaa4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="back-up-linux--virtual-machines-in-azure"></a>在 Azure 中备份 Linux 虚拟机
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Linux 虚拟机的文件
 
-可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，或只是还原特定的文件。 本文介绍如何将单个文件还原到运行 nginx 的 Linux VM。 如果没有可用的 VM，可以参考 [Linux 快速入门](quick-create-cli.md)创建一个 VM。 本教程介绍如何执行下列操作：
+可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以仅还原特定的文件。 本文介绍如何将单个文件还原到运行 nginx 的 Linux VM。 如果没有可用的 VM，可以参考 [Linux 快速入门](quick-create-cli.md)创建一个 VM。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 VM 的备份
 > * 计划每日备份
 > * 从备份还原文件
-
-
 
 ## <a name="backup-overview"></a>备份概述
 
@@ -43,7 +41,7 @@ ms.lasthandoff: 04/06/2018
 
 
 ## <a name="create-a-backup"></a>创建备份
-在恢复服务保管库中创建一个简单的已计划每日备份。 
+在恢复服务保管库中创建计划每日备份：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中选择“虚拟机”。 
@@ -62,7 +60,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="restore-a-file"></a>还原文件
 
-如果意外删除或更改了某个文件，可以使用文件恢复从备份保管库恢复该文件。 文件恢复使用一个在 VM 上运行的脚本将恢复点装载为本地驱动器。 这些驱动器将保持装载 12 小时，以便可以从恢复点复制文件并将其还原到 VM。  
+如果意外删除或更改了某个文件，可以使用文件恢复从备份保管库恢复该文件。 文件恢复使用一个在 VM 上运行的脚本将恢复点装载为本地驱动器。 这些驱动器会保持装载 12 小时，以便可以从恢复点复制文件并将其还原到 VM。  
 
 本示例演示如何恢复默认 nginx 网页 /var/www/html/index.nginx-debian.html。 本示例中的 VM 的公共 IP 地址为 *13.69.75.209*。 可使用以下命令找到 VM 的 IP 地址：
 

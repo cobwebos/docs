@@ -1,25 +1,25 @@
 ---
-title: "Azure 策略 json 示例 - 已批准的 VM 映像 | Microsoft Docs"
-description: "此 json 示例策略需要在环境中仅部署已批准的自定义映像。"
+title: Azure 策略 json 示例 - 已批准的 VM 映像 | Microsoft Docs
+description: 此 json 示例策略需要在环境中仅部署已批准的自定义映像。
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: dcf43b5b820b41ec8722d843f1484c1607cfbde8
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: f20fc596783e348805977e2a8dceb29cd5cf6fb8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="approved-vm-images"></a>已批准的 VM 映像
 
@@ -76,4 +76,5 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-- 其他 Azure 策略模板示例位于 [Azure 策略模板](../json-samples.md)。
+- 其他 Azure 策略模板示例可在 [Azure 策略模板](../json-samples.md)中找到
+- 适用于虚拟机的其他 Azure 策略示例可在[将策略应用于 Windows VM](/azure/virtual-machines/windows/policy) 中找到

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 38550d42e9b567f9f9b02657b5a67b9d012ebd62
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e8dc12d41d3369bd95c2953607b8efce94f39d46
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/23/2018
 本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 中的管道](v1/data-factory-create-pipelines.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 中的管道](v1/data-factory-create-pipelines.md)。
 > 
 > 本文假定已浏览 [Azure 数据工厂简介](introduction.md)和[快速入门教程](quickstart-create-data-factory-powershell.md)。
 
@@ -354,7 +354,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 ## <a name="multiple-activities-in-a-pipeline"></a>管道中的多个活动
 前两个示例管道中只有一个活动。 可在管道中添加多个活动。 如果在管道中具有多个活动且后续活动不依赖于以前的活动，则活动可能并行运行。 
 
-可以使用[活动依赖项](#activity-dependency)将两个活动进行链接，以定义后续活动对以前活动的依赖方式，确定是否继续执行下一个任务的条件。 活动可以保护具有不同依赖项条件的一个或多个以前的活动。 
+可以使用[活动依赖项](#activity-dependency)将两个活动进行链接，以定义后续活动对以前活动的依赖方式，确定是否继续执行下一个任务的条件。 活动可以依赖于具有不同依赖项条件的一个或多个以前的活动。 
 
 ## <a name="scheduling-pipelines"></a>计划管道
 管道由触发器计划 有不同类型的触发器（允许管道在时钟计划上触发的计划触发器，以及按需触发管道的手动触发器）。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)一文。 

@@ -1,6 +1,6 @@
 ---
-title: Azure 虚拟网络和 Linux 虚拟机 | Microsoft Docs
-description: 教程 - 使用 Azure CLI 管理 Azure 虚拟网络和 Linux 虚拟机
+title: 教程 - 为 Linux VM 创建和管理 Azure 虚拟网络 | Microsoft Docs
+description: 本教程介绍如何使用 Azure CLI 2.0 为 Linux 虚拟机创建和管理 Azure 虚拟网络
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4fc6779472a0c680c53d7f25e6fe412ab386fc32
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 306d33dd5b5910e990caf80dae4c37fee020f7a1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 虚拟网络和 Linux 虚拟机
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli-20"></a>教程：使用 Azure CLI 2.0 为 Linux 虚拟机创建和管理 Azure 虚拟网络
 
 Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程会指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 本教程介绍如何执行下列操作：
 
@@ -33,7 +33,15 @@ Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程
 > * 保护网络流量的安全
 > * 创建后端 VM
 
-完成本教程时，可以看到创建了以下资源：
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+
+## <a name="vm-networking-overview"></a>VM 网络概述
+
+Azure 虚拟网络在虚拟机、Internet 与其他 Azure 服务（例如 Azure SQL 数据库）之间实现安全网络连接。 虚拟网络分解为称作“子网”的逻辑段。 子网用于控制网络流，并充当安全边界。 部署 VM 时，该 VM 通常包含一个附加到子网的虚拟网络接口。
+
+完成本教程后，会创建以下虚拟网络资源：
 
 ![包含两个子网的虚拟网络](./media/tutorial-virtual-network/networktutorial.png)
 
@@ -46,15 +54,6 @@ Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程
 - *myBackendSubnet* - 与 *myBackendNSG* 关联且供后端资源使用的子网。
 - *myBackendNic* - *myBackendVM* 用于与 *myFrontendVM* 进行通信的网络接口。
 - *myBackendVM* - 使用端口 22 和 3306 与 *myFrontendVM* 进行通信的 VM。
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
-
-## <a name="vm-networking-overview"></a>VM 网络概述
-
-Azure 虚拟网络在虚拟机、Internet 与其他 Azure 服务（例如 Azure SQL 数据库）之间实现安全网络连接。 虚拟网络分解为称作“子网”的逻辑段。 子网用于控制网络流，并充当安全边界。 部署 VM 时，该 VM 通常包含一个附加到子网的虚拟网络接口。
 
 ## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
 

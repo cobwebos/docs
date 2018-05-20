@@ -1,27 +1,27 @@
 ---
-title: Azure 搜索中的同义词（预览版）教程 | Microsoft Docs
-description: 向 Azure 搜索中的索引添加同义词（预览版）功能。
+title: Azure 搜索中的同义词教程 | Microsoft Docs
+description: 向 Azure 搜索中的索引添加同义词功能。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/31/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 0f082397f832883b272a2ca38850a340b618adde
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="synonym-preview-c-tutorial-for-azure-search"></a>适用于 Azure 搜索的同义词（预览版）C# 教程
+# <a name="synonym-c-tutorial-for-azure-search"></a>适用于 Azure 搜索的同义词 C# 教程
 
 使用同义词进行搜索时，在语义上被视为与输入字词等效的字词也属于匹配项，从而扩展了查询的范围。 例如，使用“car”进行搜索时，也可将包含“automobile”或“vehicle”字词的文档视为匹配项。
 
 在 Azure 搜索中，同义词在“同义词映射”中通过可将等效字词关联在一起的“映射规则”进行定义。 可以创建多个同义词映射，将其发布为在服务范围内可供任何索引使用的资源，然后引用要在字段级别使用的资源。 在查询时，除了搜索索引，Azure 搜索还会查看同义词映射（如果在查询所用的字段上指定了该映射）。
 
 > [!NOTE]
-> 同义词功能目前为预览版，仅支持最新的预览版 API 和 SDK（api-version 为 2016-09-01-Preview，SDK 版本为 4.x-preview）。 目前不提供 Azure 门户支持。 预览版 API 不在 SLA 下且预览版功能可能会更改，因此不建议在生产应用程序中使用。
+> 最新的 API 和 SDK 版本（api-version=2017-11-11，SDK 版本为 5.0.0）支持同义词功能。 此次没有 Azure 门户支持。 如果 Azure 门户支持同义词将对你很有用，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上提供反馈
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/23/2018
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 搜索服务](search-create-service-portal.md)
-* [预览版 Microsoft.Azure.Search .NET 库](https://aka.ms/search-sdk-preview)
+* [Microsoft.Azure.Search .NET 库](https://aka.ms/search-sdk)
 * [如何使用 .NET 应用程序中的 Azure 搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>概述

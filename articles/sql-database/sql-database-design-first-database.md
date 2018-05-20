@@ -1,5 +1,5 @@
 ---
-title: 使用 SSMS 设计第一个 Azure SQL 数据库 | Microsoft Docs
+title: 教程：使用 SSMS 设计第一个 Azure SQL 数据库 | Microsoft Docs
 description: 了解如何使用 SQL Server Management Studio 设计第一个 Azure SQL 数据库。
 services: sql-database
 author: CarlRabeler
@@ -7,28 +7,30 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 1415edf8ea70b3835e99daa1691d278fe833b950
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ba14208e971d712184052e7470757ce48ac26879
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="design-your-first-azure-sql-database-using-ssms"></a>使用 SSMS 设计第一个 Azure SQL 数据库
+# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>教程：使用 SSMS 设计第一个 Azure SQL 数据库
 
 Azure SQL 数据库与 Microsoft 云 (Azure) 中的数据库即服务 (DBaaS) 相关。 在本教程中，了解如何使用 Azure 门户 SQL 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) 执行以下操作： 
 
 > [!div class="checklist"]
-> * 在 Azure 门户中创建数据库
+> * 在 Azure 门户中创建数据库*
 > * 在 Azure 门户中设置服务器级防火墙规则
 > * 使用 SSMS 连接到数据库
 > * 使用 SSMS 创建表
 > * 使用 BCP 大容量加载数据
 > * 使用 SSMS 查询这些数据
-> * 在 Azure 门户中将数据库还原到之前的[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+
+   >[!NOTE]
+   > 就本教程来说，我们使用的是[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)，但你也可以选择[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,13 +44,13 @@ Azure SQL 数据库与 Microsoft 云 (Azure) 中的数据库即服务 (DBaaS) �
 
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 
-创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](sql-database-service-tiers.md)。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](sql-database-features.md)中创建。 
+创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](sql-database-service-tiers-dtu.md)。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](sql-database-features.md)中创建。 
 
 按照以下步骤创建空的 SQL 数据库。 
 
 1. 在 Azure 门户的左上角单击“创建资源”。
 
-2. 从“新建”页中选择“数据库”，然后从“新建”页的“SQL 数据库”中选择“创建”。
+2. 在“新建”页上的“Azure Marketplace”部分中选择“数据库”，然后在“特别推荐”部分中单击“SQL 数据库”。
 
    ![创建空数据库](./media/sql-database-design-first-database/create-empty-database.png)
 
@@ -74,7 +76,7 @@ Azure SQL 数据库与 Microsoft 云 (Azure) 中的数据库即服务 (DBaaS) �
 
 5. 单击“选择”。
 
-6. 单击“定价层”，指定服务层、DTU 或 vCore 数，以及存储量。 浏览相关选项，了解适用于每个服务层的 DTU/vCore 数和存储量。 
+6. 单击“定价层”，指定服务层、DTU 或 vCore 数，以及存储量。 浏览相关选项，了解适用于每个服务层的 DTU/vCore 数和存储量。 就本教程来说，我们使用的是[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)，但你也可以选择[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。 
 
 7. 对于本教程，请选择“标准”服务层，然后使用滑块选择“100 DTU (S3)”和“400”GB 存储。
 
@@ -83,10 +85,9 @@ Azure SQL 数据库与 Microsoft 云 (Azure) 中的数据库即服务 (DBaaS) �
 8. 若要使用“附加存储”选项，请接受预览版条款。 
 
    > [!IMPORTANT]
-   > \* 超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 
-   >
-   >\* 在高级层中，以下区域目前提供的存储超出 1 TB：澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、法国中部、德国中部、日本东部、日本西部、韩国中部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、美国东部 2、美国西部、美国弗吉尼亚州政府和西欧。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
-   > 
+   > -  超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 
+   >-  在高级层中，以下区域目前提供的存储超出 1 TB：澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、法国中部、德国中部、日本东部、日本西部、韩国中部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、美国东部 2、美国西部、US Gov 弗吉尼亚州和西欧。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+
 
 9. 选择服务器层、DTU 数和存储量后，单击“应用”。  
 
@@ -108,7 +109,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“mySampleDatabase”。 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 mynewserver-20170824.database.windows.net），并提供了其他配置的选项。 
 
-2. 在后续的快速入门中，请复制此完全限定的服务器名称，将其用于连接到服务器及其数据库。 
+2. 复制此完全限定的服务器名称，以便在后续的教程和快速入门中用来连接到服务器及其数据库。 
 
    ![服务器名称](./media/sql-database-get-started-portal/server-name.png) 
 
@@ -147,7 +148,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
    | 设置       | 建议的值 | 说明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | 服务器类型 | 数据库引擎 | 此值是必需的。 |
+   | 服务器类型 | 数据库引擎 | 此值是必需的 |
    | 服务器名称 | 完全限定的服务器名称 | 该名称应类似于 mynewserver20170824.database.windows.net。 |
    | 身份验证 | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
    | 登录 | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
@@ -297,26 +298,6 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time"></a>将数据库还原到以前的时间点
-
-假设你意外删除了某个表。 这是你不能轻易还原的内容。 借助 Azure SQL 数据库，可返回到最近 35 天内的任意时间点并将此时间点还原到新的数据库。 可以通过此数据库恢复已删除的数据。 以下步骤将示例数据库还原到添加这些表之前的时间点。
-
-1. 在数据库的“SQL 数据库”页上，单击工具栏上的“还原”。 将打开“还原”页面。
-
-   ![还原](./media/sql-database-design-first-database/restore.png)
-
-2. 使用必需信息填充“还原”窗体：
-    * 数据库名称：提供数据库名称 
-    * 时间点：选择“还原”窗体上的“时间点”选项卡 
-    * 还原点：选择更改数据库前的时间
-    * 目标服务器：还原数据库时不能更改此值 
-    * 弹性数据库池：选择“无”  
-    * 定价层：选择“20 个 DTU”和“40 GB”的存储。
-
-   ![还原点](./media/sql-database-design-first-database/restore-point.png)
-
-3. 单击“确定”，将数据库[还原到添加这些表之前的时间点](sql-database-recovery-using-backups.md#point-in-time-restore)。 只要在[服务层](sql-database-service-tiers.md)的保留期限内，将数据库还原到不同的时间点就会在与指定时间点的原始数据库相同的服务器中创建一个重复的数据库。
-
 ## <a name="next-steps"></a>后续步骤 
 本教程介绍了基本数据库任务，例如创建数据库和表、负载和查询数据，以及将数据库还原到以前的时间点。 你已了解如何：
 > [!div class="checklist"]
@@ -326,7 +307,6 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 > * 创建表
 > * 批量加载数据
 > * 查询该数据
-> * 使用 SQL 数据库的[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能将数据库还原到上一个时间点
 
 转向下一教程，了解如何使用 Visual Studio 和 C# 设计数据库。
 

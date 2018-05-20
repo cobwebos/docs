@@ -2,35 +2,29 @@
 title: Windows 10 登录屏幕中的 Azure AD SSPR | Microsoft Docs
 description: 配置 Windows 10 登录屏幕的“Azure AD 密码重置”和“我忘记了自己的 PIN”
 services: active-directory
-keywords: ''
-documentationcenter: ''
+ms.service: active-directory
+ms.component: authentication
+ms.topic: get-started-article
+ms.date: 04/27/2018
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: ''
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 01/11/2018
-ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: a85cb6aea1027d657d38007a397321de10e16d07
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>登录屏幕中的“Azure AD 密码重置”
 
 你已经部署了 Azure AD 自助密码重置 (SSPR)，但你的用户仍会在忘记密码时呼叫帮助台。 他们之所以呼叫帮助台，是因为不能通过 Web 浏览器来访问 SSPR。
 
-安装新的 Windows 10 Fall Creators Update 后，其设备加入了 Azure AD 的用户可以在其登录屏幕上看到“重置密码”链接。 单击该链接后，用户就会体验到熟悉的与以前相同的自助密码重置 (SSPR)。
+安装新的 Windows 10 April 2018 Update 后，其设备**已加入 Azure AD** 或**已加入混合 Azure AD** 的用户可以在其登录屏幕上看到和使用“重置密码”链接。 单击该链接后，用户就会体验到熟悉的与以前相同的自助密码重置 (SSPR)。
 
 若要使用户能够从 Windows 10 登录屏幕重置其 Azure AD 密码，需满足以下要求：
 
-* Windows 10 版本 1709，或者[已加入 Azure AD](../device-management-azure-portal.md) 的更新客户端。
+* 安装了 Windows 10 April 2018 Update 或使用[已加入 Azure AD](../device-management-azure-portal.md) 或[已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md) 的更新客户端。
 * 必须启用 Azure AD 自助密码重置。
 * 配置和部署设置，通过下述某个方法启用“重置密码”链接：
    * [Intune 设备配置文件](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
@@ -66,7 +60,7 @@ ms.lasthandoff: 04/23/2018
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，单击“Azure Active Directory”。
 2. 浏览到“用户和组” > “所有组” > “新建组”
-3. 为组提供一个名称，然后在“成员身份类型”下选择“已分配”。 
+3. 为组提供一个名称，然后在“成员身份类型”下选择“已分配”。
    * 在“成员”下选择加入 Azure AD 的 Windows 10 设备，需向该设备应用策略。
    * 单击“选择”
 4. 单击“创建” 
@@ -117,6 +111,7 @@ ms.lasthandoff: 04/23/2018
 * 目前不支持从远程桌面进行密码重置。
 
 ## <a name="next-steps"></a>后续步骤
+
 以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
 * [如何部署 SSPR？](howto-sspr-deployment.md)

@@ -1,145 +1,101 @@
 ---
-title: Azure 网络观察程序简介 | Microsoft 文档
-description: 本页面概述可在 Azure 中监视和可视化联网资源的网络观察程序服务
+title: Azure 网络观察程序 | Microsoft Docs
+description: 了解 Azure 网络观察程序针对虚拟网络中的资源提供的监视、诊断、指标和日志记录功能。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2017
+ms.date: 04/24/2018
 ms.author: jdial
-ms.openlocfilehash: a546296749ba9373355cfe2b857b83d8af94d5a1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.custom: mvc
+ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="azure-network-monitoring-overview"></a>Azure 网络监视概述
+# <a name="what-is-azure-network-watcher"></a>Azure 网络观察程序是什么？
 
-客户在 Azure 中通过协调与组建 VNet、ExpressRoute、应用程序网关、负载均衡器等各种网络资源来构建端到端网络。 监视适用于每个网络资源。 我们将这种监视称作资源级监视。
+Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。
 
-端到端网络可能采用了复杂的配置并要求在资源之间交互，创建的复杂方案需要通过网络观察程序进行基于方案的监视。
+## <a name="monitoring"></a>监视
 
-本文介绍方案和资源级的监视。 Azure 中的网络监视是一个综合性的功能，包括两大类别：
+### <a name = "connection-monitor"></a>监视虚拟机与终结点之间的通信
 
-* [**网络观察程序**](#network-watcher) - 网络观察程序中的功能提供基于方案的监视。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
-* [**资源监视**](#network-resource-level-monitoring) - 资源级监视包括四项功能：诊断日志、指标、故障排除和资源运行状况。 所有这些功能都在网络资源级别构建。
+终结点可以是另一个虚拟机 (VM)、完全限定的域名 (FQDN)、统一资源标识符 (URI) 或 IPv4 地址。 连接监视器功能定期监视通信，并告知 VM 与终结点之间的可访问性、延迟和网络拓扑变化。 例如，你使用了一个 Web 服务器 VM 来与数据库服务器 VM 通信。 组织中你不认识的某个人可能对 Web 服务器、数据库服务器 VM 或子网应用了自定义的路由或网络安全规则。
 
-## <a name="network-watcher"></a>网络观察程序
+如果某个终结点不可访问，连接故障排除机制会告知原因。 原因可能在于 DNS 名称解析问题、CPU、内存、VM 操作系统中的防火墙、自定义路由的跃点类型、VM 的安全规则，或出站连接的子网。 详细了解 Azure 中的[安全规则](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules)和[路由跃点类型](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
-网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。
+连接监视器还提供在不同时间段观察到的最小、平均和最大延迟。 了解连接的延迟后，你可能会发现，将 Azure 资源移到不同的 Azure 区域能够降低延迟。 详细了解如何确定 [Azure 区域与 Internet 服务提供商之间的相对延迟](#determine-relative-latencies-between-azure- regions-and-internet-service-providers)，以及如何使用[连接监视器](connection-monitor.md)监视 VM 与终结点之间的通信。 若要测试某个时间点的连接，而不是监视各时间段的连接（像使用连接监视器所做的那样），请使用[连接故障排除](#connection-troubleshoot)功能。
 
-网络观察程序目前提供以下功能：
+### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>查看虚拟网络中的资源及其关系
 
-* **[拓扑](network-watcher-topology-overview.md)** - 提供网络级视图，显示资源组中网络资源之间的各种互连和关联。
-* **[可变数据包捕获](network-watcher-packet-capture-overview.md)** - 捕获传入和传出虚拟机的数据包数据。 高级筛选选项和精细控制（例如设置时间与大小限制）提供了多样性。 数据包数据可以存储在 Blob 存储中，或者以 .cap 格式存储在本地磁盘上。
-* **[IP 流验证](network-watcher-ip-flow-verify-overview.md)** - 根据流信息的 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果数据包被安全组拒绝，则返回拒绝数据包的规则和组。
-* **[下一跃点](network-watcher-next-hop-overview.md)** - 确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何错误配置的用户定义路由。
-* **[安全组视图](network-watcher-security-group-view-overview.md)** - 获取在 VM 上应用的有效安全规则。
-* **[NSG 流日志](network-watcher-nsg-flow-logging-overview.md)** - 使用网络安全组的流日志可以捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
-* **[虚拟网络网关和连接故障排除](network-watcher-troubleshoot-manage-rest.md)** - 提供排查虚拟网络网关和连接问题的功能。
-* **[网络订阅限制](#network-subscription-limits)** - 用于查看网络资源用量与限制。
-* **[配置诊断日志](#diagnostic-logs)** – 提供单个窗格来为资源组中的网络资源启用或禁用诊断日志。
-* **[连接故障排除](network-watcher-connectivity-overview.md)** - 验证从虚拟机到给定终结点（已使用 Azure 上下文充实）建立直接 TCP 连接的可能性。
-* **[连接监视器](connection-monitor.md)** - 使用源和目标 IP 地址及端口，监视 Azure 虚拟机与 IP 地址之间的延迟和配置问题。
+将资源添加到虚拟网络后，可能难以了解哪些资源位于虚拟网络中，以及它们彼此之间的关系。 使用拓扑功能可以生成虚拟网络中的资源及其相互关系的视觉图示。 下图显示了某个虚拟网络的示例拓扑图示，其中包含三个子网、两个 VM、网络接口、公共 IP 地址、网络安全组、路由表和资源之间的关系：
 
-### <a name="role-based-access-control-rbac-in-network-watcher"></a>网络观察程序中基于角色的访问控制 (RBAC)
+![拓扑视图](./media/network-watcher-monitoring-overview/topology.png)
 
-网络观察程序使用 [Azure 基于角色的访问控制 (RBAC) 模型](../role-based-access-control/overview.md)。 网络观察程序需要以下权限。 请务必确保用于启动网络观察程序 API 或者在门户中使用网络观察程序的角色具有所需的权限。
+可以下载 svg 格式的可编辑图片版本。 详细了解[拓扑视图](view-network-topology.md)。
 
-|资源| 权限|
-|---|---| 
-|Microsoft.Storage/ |读取|
-|Microsoft.Authorization/| 读取| 
-|Microsoft.Resources/subscriptions/resourceGroups/| 读取|
-|Microsoft.Storage/storageAccounts/listServiceSas/ | 操作|
-|Microsoft.Storage/storageAccounts/listAccountSas/ |操作|
-|Microsoft.Storage/storageAccounts/listKeys/ | 操作|
-|Microsoft.Compute/virtualMachines/ |读取|
-|Microsoft.Compute/virtualMachines/ |写入|
-|Microsoft.Compute/virtualMachineScaleSets/ |读取|
-|Microsoft.Compute/virtualMachineScaleSets/ |写入|
-|Microsoft.Network/networkWatchers/packetCaptures/ |读取|
-|Microsoft.Network/networkWatchers/packetCaptures/| 写入|
-|Microsoft.Network/networkWatchers/packetCaptures/| 删除|
-|Microsoft.Network/networkWatchers/ |写入 |
-|Microsoft.Network/networkWatchers/| 读取 |
-|Microsoft.Insights/alertRules/ |*|
-|Microsoft.Support/ | *|
+## <a name="diagnostics"></a>诊断
 
-### <a name="network-subscription-limits"></a>网络订阅限制
+### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>诊断传入或传出 VM 的网络流量筛选问题
 
-网络订阅限制提供区域中订阅内每个网络资源的用量详细信息，以及可用资源数上限。
+部署 VM 时，Azure 会向 VM 应用多个默认安全规则，以允许或拒绝传入/传出 VM 的流量。 可以替代 Azure 的默认规则，或创建其他规则。 有时，VM 可能会由于安全规则而无法与其他资源通信。 使用 IP 流验证功能可以指定源和目标 IPv4 地址、端口、协议（TCP 或 UDP）和流量方向（入站或出站）。 然后，IP 流验证会测试通信，并告知连接是成功还是失败。 如果连接失败，IP 流验证会告知哪个安全规则允许或拒绝了通信，以便可以解决问题。 详细了解 [IP 流验证](network-watcher-ip-flow-verify-overview.md)。
 
-![网络订阅限制][nsl]
+### <a name="diagnose-network-routing-problems-from-a-vm"></a>诊断 VM 的网络路由问题
 
-## <a name="network-resource-level-monitoring"></a>网络资源级监视
+创建虚拟网络时，Azure 将为网络流量创建多个默认出站路由。 来自虚拟网络中部署的所有资源（例如 VM）的出站流量将会根据 Azure 的默认路由进行路由。 可以替代 Azure 的默认路由，或创建其他路由。 你可能发现，特定的路由导致 VM 不再能够与其他资源通信。 使用下一个跃点功能可以指定源和目标 IPv4 地址。 下一跃点会测试通信，并告知使用了哪种类型的下一跃点来路由流量。 然后，可以删除、更改或添加路由，以解决路由问题。 详细了解[下一跃点](network-watcher-next-hop-overview.md?)功能。
 
-提供以下功能进行资源级监视：
+### <a name="connection-troubleshoot"></a>诊断 VM 的出站连接
 
-### <a name="audit-log"></a>审核日志
+使用连接故障排除功能可以测试 VM 与另一个 VM、FQDN、URI 或 IPv4 地址之间的连接。 该项测试返回的信息与使用[连接监视器](#connection-monitor)功能返回的信息类似，但测试的是某个时间点的连接，而不是像连接监视器那样监视各时间段的连接。 详细了解如何使用[连接故障排除](network-watcher-connectivity-overview.md)来排查连接问题。
 
-记录网络配置过程中执行的操作。 可在 Azure 门户中查看，或者使用 Power BI 等 Microsoft 工具或第三方工具检索这些日志。 可通过门户、PowerShell、CLI 和 REST API 获取审核日志。 有关审核日志的详细信息，请参阅 [Audit operations with Resource Manager](../resource-group-audit.md)（使用 Resource Manager 执行审核操作）。
+### <a name="capture-packets-to-and-from-a-vm"></a>捕获传入和传出 VM 的数据包
 
-针对所有网络资源执行的操作都有相应的审核日志。
+高级筛选选项和精细控制（例如设置时间与大小限制的功能）提供了多样性。 可将捕获的数据存储在 Azure 存储和/或 VM 磁盘中。 然后，可以使用多种标准网络捕获分析工具来分析捕获文件。 详细了解[数据包捕获](network-watcher-packet-capture-overview.md)。
 
-### <a name="metrics"></a>度量值
+### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>诊断 Azure 虚拟网络网关和连接的问题
 
-指标是在一段时间内收集的性能度量值与计数器。 指标目前适用于应用程序网关。 使用指标可以基于阈值触发警报。 请参阅 [Application Gateway Diagnostics](../application-gateway/application-gateway-diagnostics.md)（应用程序网关诊断），了解如何使用指标创建警报。
+虚拟网络网关在本地资源与 Azure 虚拟网络之间提供连接。 监视网关及其连接对于确保通信不中断至关重要。 使用 VPN 诊断功能可以诊断网关和连接。 VPN 诊断功能诊断网关或网关连接的运行状况，并告知网关和网关连接是否可用。 如果网关或连接不可用，VPN 诊断会告知原因，以便可以解决问题。 详细了解 [VPN 诊断](network-watcher-troubleshoot-overview.md)。
 
-![指标视图][metrics]
+### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>确定 Azure 区域与 Internet 服务提供商之间的相对延迟
 
-### <a name="diagnostic-logs"></a>诊断日志
+可以在网络观察程序中查询 Azure 区域之间以及不同 Internet 服务提供商之间的延迟信息。 了解 Azure 区域之间以及不同 Internet 服务提供商之间的延迟后，可以部署 Azure 资源来优化网络响应时间。 详细了解[相对延迟](view-relative-latencies.md)。
 
-定期和自发性事件由网络资源创建，记录在存储帐户中并发送到事件中心或 Log Analytics。 这些日志提供资源运行状况的见解。 可在 Power BI 和 Log Analytics 等工具中查看这些日志。 若要了解如何查看诊断日志，请访问 [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)。
+### <a name="view-security-rules-for-a-network-interface"></a>查看网络接口的安全规则
 
-诊断日志适用于[负载均衡器](../load-balancer/load-balancer-monitor-log.md)、[网络安全组](../virtual-network/virtual-network-nsg-manage-log.md)、路由和[应用程序网关](../application-gateway/application-gateway-diagnostics.md)。
+网络接口的有效安全规则是应用到网络接口以及网络接口所在子网的所有安全规则的组合。  安全组视图功能显示应用到网络接口、网络接口所在的子网和两者的聚合的所有安全规则。 了解已将哪些规则应用到网络接口后，可以添加、删除规则，或者更改规则（如果这些规则允许或拒绝所要更改的流量）。 详细了解[安全组视图](network-watcher-security-group-view-overview.md)。
 
-网络观察程序提供诊断日志视图。 此视图包含所有支持诊断日志记录的网络资源。 从此视图中，可以快速方便地启用和禁用网络资源。
+## <a name="metrics"></a>度量值
 
-![日志][logs]
+在一个 Azure 订阅和区域中可以创建的网络资源数有[限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 如果超过了限制，则无法在该订阅或区域中创建更多的资源。 网络订阅限制功能汇总每个网络资源在某个订阅和区域中部署的数目，以及该资源的限制。 下图显示了在美国东部区域为某个示例订阅部署的网络资源的部分输出：
 
-### <a name="troubleshooting"></a>故障排除
+![订阅限制](./media/network-watcher-monitoring-overview/subscription-limit.png)
 
-现已针对网络资源提供了故障排除边栏选项卡，这是门户中的一个体验，可以诊断与单个资源相关的常见问题。 此体验适用于以下网络资源 - ExpressRoute、VPN 网关、应用程序网关、网络安全日志、路由、DNS、负载均衡器和流量管理器。 若要详细了解资源级故障排除，请访问 [Diagnose and resolve issues with Azure Troubleshooting](https://azure.microsoft.com/blog/azure-troubleshoot-diagonse-resolve-issues/)（使用 Azure 故障排除诊断和解决问题）
+在规划将来的资源部署时，此信息非常有用。
 
-![故障排除信息][TS]
+## <a name="logs"></a>日志
 
-### <a name="resource-health"></a>资源运行状况
+### <a name="analyze-traffic-to-or-from-a-network-security-group"></a>分析传入或传出网络安全组的流量
 
-将定期提供网络资源的运行状况。 此类资源包括 VPN 网关和 VPN 隧道。 可在 Azure 门户中访问资源运行状况。 若要详细了解资源运行状况，请访问 [Resource Health Overview](../resource-health/resource-health-overview.md)（资源运行状况概述）
+网络安全组 (NSG) 允许或拒绝 VM 中网络接口的入站或出站流量。 使用 NSG 流日志功能可以记录源和目标 IP 地址、端口、协议，以及 NSG 是允许还是拒绝了流量。 可以使用各种工具（例如 PowerBI）和流量分析功能来分析日志。 流量分析提供写入 NSG 流日志的数据的丰富可视化效果。 下图显示了流量分析功能在处理 NSG 流日志数据后显示的部分信息和可视化效果：
+
+![流量分析](./media/network-watcher-monitoring-overview/traffic-analytics.png)
+
+详细了解 [NSG 流日志](network-watcher-nsg-flow-logging-overview.md)和[流量分析](traffic-analytics.md)。
+
+### <a name="view-diagnostic-logs-for-network-resources"></a>查看网络资源的诊断日志
+
+可以针对网络安全组、公共 IP 地址、负载均衡器、虚拟网络网关和应用程序网关等 Azure 网络资源启用诊断日志记录。 诊断日志功能提供单个界面，用于针对生成诊断日志的任何现有网络资源启用和禁用网络资源诊断日志。 可以使用 Microsoft Power BI 和 Azure Log Analytics 等工具查看诊断日志。 若要详细了解如何分析 Azure 网络诊断日志，请参阅 [Log Analytics 中的 Azure 网络解决方案](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解网络观察程序后，可以继续学习以下知识：
-
-访问 [Variable packet capture in the Azure portal](network-watcher-packet-capture-manage-portal.md)（Azure 门户中的可变数据包捕获），在 VM 上执行数据包捕获
-
-使用[警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)执行主动监视和诊断。
-
-在开源工具中[使用 Wireshark 分析数据包捕获](network-watcher-deep-packet-inspection.md)来检测安全漏洞。
-
-了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
-
-<!--Image references-->
-[TS]: ./media/network-watcher-monitoring-overview/troubleshooting.png
-[logs]: ./media/network-watcher-monitoring-overview/logs.png
-[metrics]: ./media/network-watcher-monitoring-overview/metrics.png
-[nsl]: ./media/network-watcher-monitoring-overview/nsl.png
-
-
-
-
-
-
-
-
-
-
-
+上面就是 Azure 网络观察程序的概述。 若要开始使用网络观察程序，请使用 IP 流验证来诊断与虚拟机之间的常见通信问题。 有关操作方法，请参阅[诊断虚拟机网络流量筛选问题](diagnose-vm-network-traffic-filtering-problem.md)快速入门。

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 7112b8af792dc245c1a2a68e130328d82b4958b3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 73baef03f7b240e7bb33f3d5f827b1fc72c985f2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>将本地目录与 Azure Active Directory 集成
 Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 本主题介绍计划、部署和操作步骤。 其中统合了与这些操作相关的主题的链接。
@@ -60,11 +60,11 @@ Azure Active Directory Connect 由三个主要组件构成：同步服务、可�
 
 可以在 [Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=615771)找到 Azure AD Connect 的下载文件。
 
-| 解决方案 | 方案 |
+| 解决方案 | 场景 |
 | --- | --- |
 | 开始之前 - [硬件和先决条件](active-directory-aadconnect-prerequisites.md) |<li>开始安装 Azure AD Connect 之前所要完成的步骤。</li> |
 | [快速设置](active-directory-aadconnect-get-started-express.md) |<li>如果只有一个林 AD，我们建议使用此选项。</li> <li>使用密码同步以同一密码进行用户登录。</li> |
-| [自定义设置](active-directory-aadconnect-get-started-custom.md) |<li>有多个林时使用。 支持许多本地[拓扑](active-directory-aadconnect-topologies.md)。</li> <li>自定义登录选项，例如用于联合身份验证的 ADFS，或使用第三方标识提供者。</li> <li>自定义同步功能，例如筛选和写回。</li> |
+| [自定义设置](active-directory-aadconnect-get-started-custom.md) |<li>有多个林时使用。 支持许多本地[拓扑](active-directory-aadconnect-topologies.md)。</li> <li>自定义登录选项，例如直通身份验证、用于联合身份验证的 ADFS，或使用第三方标识提供者。</li> <li>自定义同步功能，例如筛选和写回。</li> |
 | [从 DirSync 升级](active-directory-aadconnect-dirsync-upgrade-get-started.md) |<li>在已有 DirSync 服务器运行的情况下使用。</li> |
 | [从 Azure AD Sync 或 Azure AD Connect 升级](active-directory-aadconnect-upgrade-previous-version.md) |<li>可以根据偏好选择多种不同的方法。</li> |
 

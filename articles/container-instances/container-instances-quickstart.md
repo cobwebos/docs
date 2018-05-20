@@ -3,17 +3,17 @@ title: 快速入门 - 创建首个 Azure 容器实例容器
 description: 在本快速入门中，我们将使用 Azure CLI 在 Azure 容器实例中部署一个容器
 services: container-instances
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/19/2018
+ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: b85c38bb561e4f1dc9a0545595590719ce1883e4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b68468cd8174d658d04d8e67433a8f18884493bd
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中创建第一个容器
 
@@ -64,19 +64,21 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-在容器的状态变成“成功”后，即可在浏览器中通过导航到其 FQDN 来访问它：
+在容器的状态变成“成功”后，即可在浏览器中导航到其 FQDN：
 
 ![浏览器屏幕截图，显示应用程序在 Azure 容器实例中运行][aci-app-browser]
 
 ## <a name="pull-the-container-logs"></a>拉取容器日志
 
-可以使用 [az container logs][az-container-logs] 命令拉取所创建容器的日志：
+当排查容器或其运行的应用程序的问题时，查看容器实例的日志非常有用。
+
+使用 [az container logs][az-container-logs] 命令拉取容器的日志：
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-应会看到如下所示的输出：
+此输出显示容器的日志，并应显示在浏览器中查看应用程序时生成的 HTTP GET 请求。
 
 ```console
 $ az container logs --resource-group myResourceGroup -n mycontainer
@@ -113,7 +115,7 @@ listening on port 80
 ::ffff:10.240.255.107 - - [15/Mar/2018:21:18:47 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
 ```
 
-## <a name="delete-the-container"></a>删除容器
+## <a name="clean-up-resources"></a>清理资源
 
 完成容器的操作后，可使用 [az container delete][az-container-delete] 命令将其删除：
 
@@ -131,19 +133,19 @@ mycontainer 容器不应出现在命令的输出中。 如果资源组中没有�
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门中使用的容器的所有代码及其 Dockerfile 均可在 [GitHub][app-github-repo] 上获取。 若要尝试使用 Azure 容器注册表来自行生成容器并将其部署到 Azure 容器实例，请继续阅读 Azure 容器实例教程。
+在本快速入门中，从公共 Docker 中心注册表中的映像创建了 Azure 容器实例。 若要从专用 Azure 容器注册表自行生成容器映像并将其部署到 Azure 容器实例，请继续阅读 Azure 容器实例教程。
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程](./container-instances-tutorial-prepare-app.md)
 
-若要 Azure 上尝试用于运行业务流程系统中的容器的选项，请参阅 [Service Fabric][service-fabric] 或 [Azure 容器服务 (AKS)][container-service] 快速入门。
+若要 Azure 上尝试用于运行业务流程系统中的容器的选项，请参阅 [Service Fabric][service-fabric] 或 [Azure Kubernetes Service (AKS)][container-service] 快速入门。
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git
-[azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F
+[azure-account]: https://azure.microsoft.com/free/
 [node-js]: http://nodejs.org
 
 <!-- LINKS - Internal -->

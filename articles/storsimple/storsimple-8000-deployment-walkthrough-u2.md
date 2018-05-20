@@ -1,24 +1,24 @@
 ---
-title: "在 Azure 门户中部署 StorSimple 8000 系列设备 | Microsoft Docs"
-description: "介绍了部署 StorSimple 8000 系列设备（运行 Update 3 及更高版本）和 StorSimple 设备管理器服务的步骤和最佳做法。"
+title: 在 Azure 门户中部署 StorSimple 8000 系列设备 | Microsoft Docs
+description: 介绍了部署 StorSimple 8000 系列设备（运行 Update 3 及更高版本）和 StorSimple 设备管理器服务的步骤和最佳做法。
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2017
+ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 85a493e05fb87292f303bccdcef65d119223bc76
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>部署本地 StorSimple 设备（Update 3 及更高版本）
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/03/2017
 需要有管理员权限才能完成安装和配置过程。 建议在开始之前查看配置清单。 部署和配置过程可能需要一些时间才能完成。
 
 > [!NOTE]
-> Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 如需 7000 系列设备的完整信息，请转到： [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列的部署信息，请参阅 [StorSimple 系统快速入门指南](http://onlinehelp.storsimple.com/111_Appliance/)。 
+> Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 如需 7000 系列设备的完整信息，请转到：[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列的部署信息，请参阅 [StorSimple 系统快速入门指南](http://onlinehelp.storsimple.com/111_Appliance/)。 
 
 
 ## <a name="deployment-steps"></a>部署步骤
@@ -130,7 +130,7 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 完成最低要求的设备设置以后，最好能够[扫描并应用最新更新](#scan-for-and-apply-updates)。
 
 ## <a name="step-5-create-a-volume-container"></a>步骤 5：创建卷容器
-卷容器具有其中所包含的所有卷的存储帐户、带宽和加密设置。 需要创建卷容器后才可以开始在 StorSimple 设备上预配卷。
+卷容器具有其中所包含的所有卷的存储帐户、带宽和加密设置。 需要创建卷容器后才可以开始在 StorSimple 设备上设置卷。
 
 在 Azure 门户中执行以下步骤来创建卷容器。
 
@@ -195,6 +195,19 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 在 Azure 门户中执行以下步骤，在 StorSimple 设备上为单个卷创建按需手动备份。
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-8000-create-manual-backup.md)]
+
+## <a name="view-the-pinout-diagram-for-serial-cable-for-storsimple"></a>查看 StorSimple 串行电缆的引出线图
+以下引出线图可用于 StorSimple 串行控制台电缆。
+
+在此图中，DB9 插孔连接器为 P1，3.5 mm 连接器为 P2。
+
+![StorSimple 串行控制台电缆的引出线图 1](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram1.png)
+
+立体声插孔的尖端被认为是 PIN 3 RX，中间是 PIN 2 TX，底座是 PIN 1 GND，如下图所示。
+
+![StorSimple 串行控制台电缆的引出线图 2](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram2.png)
+
+
 
 ## <a name="next-steps"></a>后续步骤
 * [配置 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。

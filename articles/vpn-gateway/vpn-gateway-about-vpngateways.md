@@ -7,7 +7,7 @@ author: cherylmc
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
-Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
+Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
 ms.service: vpn-gateway
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 30a2029fdf169747570d8c07915270ffae8ef8f5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 01052d8058d1b1e3a03f584ad66da2ad79f4c425
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 
@@ -28,9 +28,9 @@ VPN 网关是特定类型的虚拟网关，用于跨公共 Internet 在 Azure �
 
 ## <a name="whatis"></a>什么是虚拟网关？
 
-虚拟网关由两个或多个部署到名为“网关子网”的特定子网的虚拟机组成。 创建虚拟网关时，将创建位于网关子网中的 VM。 虚拟网络网关 VM 配置为包含特定于该网关的路由表和网关服务。 无法直接配置属于虚拟网关的 VM，且绝不应该将其他资源部署到网关子网。
+虚拟网关由两个或更多虚拟机组成，这些虚拟机会部署到所创建的名为“网关子网”的特定子网。 创建虚拟网关时，将创建位于网关子网中的 VM。 虚拟网络网关 VM 配置为包含特定于该网关的路由表和网关服务。 无法直接配置属于虚拟网关的 VM，且绝不应该将其他资源部署到网关子网。
 
-创建 VPN 网关可能需要多达 45 分钟才能完成。 在创建 VPN 网关时，请将网关 VM 部署到网关子网，并使用指定的设置进行配置。 在创建 VPN 网关以后，即在一个 VPN 网关和另一个 VPN 网关之间（VNet 到 VNet）创建 IPsec/IKE VPN 隧道连接，或者在 VPN 网关和本地 VPN 设备（站点到站点）之间创建跨界 IPsec/IKE VPN 隧道连接。 也可创建点到站点 VPN 连接（基于 IKEv2 或 SSTP 的 VPN），以便从远程位置（例如从会议或家）连接到虚拟网络。
+创建虚拟网关可能需要多达 45 分钟才能完成。 创建虚拟网关时，会将网关 VM 部署到网关子网，并使用指定的设置进行配置。 配置的设置之一是网关类型。 网关类型“vpn”指定创建的虚拟网关类型为 VPN 网关。 在创建 VPN 网关以后，即在一个 VPN 网关和另一个 VPN 网关之间（VNet 到 VNet）创建 IPsec/IKE VPN 隧道连接，或者在 VPN 网关和本地 VPN 设备（站点到站点）之间创建跨界 IPsec/IKE VPN 隧道连接。 也可创建点到站点 VPN 连接（基于 IKEv2 或 SSTP 的 VPN），以便从远程位置（例如从会议或家）连接到虚拟网络。
 
 ## <a name="configuring"></a>配置 VPN 网关
 

@@ -1,108 +1,83 @@
 ---
-title: "Azure 应用程序网关简介 | Microsoft Docs"
-description: "此页提供第 7 层负载均衡的应用程序网关服务概述，包括网关的大小、HTTP 负载均衡、基于 cookie 的会话相关性和 SSL 卸载。"
-documentationcenter: na
+title: Azure 应用程序网关的定义
+description: 了解如何使用 Azure 应用程序网关管理应用程序的 Web 流量。
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: b37a2473-4f0e-496b-95e7-c0594e96f83e
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.custom: H1Hack27Feb2017
+ms.topic: overview
+ms.custom: mvc
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: 33968b72d0da71577428937e5d293a40d62989f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/9/2018
+ms.author: victorh
+ms.openlocfilehash: 3824eacb355c323a1850f6863ae2b99970c62cfb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="overview-of-application-gateway"></a>应用程序网关概述
+# <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
-Microsoft Azure 应用程序网关是以服务形式提供应用程序传递控制器 (ADC) 的专用虚拟设备。 它为应用程序提供第 7 层的各种负载均衡功能。 它使客户能够通过将 CPU 密集型 SSL 终端的负载卸载到应用程序网关上来优化 Web 场生产率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Web 应用程序防火墙 (WAF) 也作为应用程序网关 WAF SKU 的一部分提供。 它为 Web 应用程序提供保护，帮助抵御常见 Web 漏洞和攻击。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 
+Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。 
 
-![方案](./media/application-gateway-introduction/scenario.png)
+传统负载均衡器在传输层（OSI 层 4 - TCP 和 UDP）进行操作，并基于源 IP 地址和端口将流量路由到目标 IP 地址和端口。 但在使用应用程序网关时，可以实现更具体的操作。 例如，可以基于传入 URL 路由流量。 因此，如果 `/images` 在传入 URL 中，则可将流量路由到为映像配置的一组特定服务器（称为池）中。 如果 `/video` 在 URL 中，则可将该流量路由到为视频优化的另一个池中。
 
-## <a name="features"></a>功能
+![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
-应用程序网关目前提供以下功能：
+这种类型的路由称为应用程序层（OSI 层 7）负载均衡。 Azure 应用程序网关可以执行基于 URL 的路由等操作。 以下功能是 Azure 应用程序网关附带的： 
+
+## <a name="url-based-routing"></a>基于 URL 的路由
+
+基于 URL 路径的路由用于根据请求的 URL 路径，将流量路由到后端服务器池。 方案之一是将不同内容类型的请求路由到不同的池。
+
+例如，将 `http://contoso.com/video/*` 的请求路由到 VideoServerPool，将 `http://contoso.com/images/*` 的请求路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
+
+## <a name="redirection"></a>重定向
+
+为确保应用程序与其用户之间的所有通信都通过加密路径进行，适用于许多 Web 应用程序的常见方案是支持 HTTP 到 HTTPS 自动重定向。 
+
+你可能过去用过创建专用池等技术，其唯一目的是将通过 HTTP 接收的请求重定向到 HTTPS。 应用程序网关支持重定向应用程序网关流量的功能。 这样可以简化应用程序配置、优化资源使用情况，并支持全局重定向和基于路径的重定向等新的重定向方案。 应用程序网关重定向支持并不仅限于 HTTP 到 HTTPS 的重定向。 这是一种通用重定向机制，因此可以针对使用规则定义的任何端口进行双向重定向。 它还支持重定向到外部站点。
+
+应用程序网关重定向支持具有以下功能：
+
+- 在网关上进行的从一个端口到另一个端口的全局重定向。 这样可实现站点上的 HTTP 到 HTTPS 重定向。
+- 基于路径的重定向。 这种类型的重定向只能在特定站点区域（例如 `/cart/*` 表示的购物车区域）中进行 HTTP 到 HTTPS 的重定向。
+- 重定向到外部站点。
+
+## <a name="multiple-site-hosting"></a>多站点托管
+
+使用多站点托管可以在同一应用程序网关实例上配置多个网站。 此功能可以将多达 20 个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的池。 例如，应用程序网关可以通过两个名为 ContosoServerPool 和 FabrikamServerPool 的服务器池分别处理 `contoso.com` 和 `fabrikam.com` 的流量。
+
+对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool。
+
+同样，可以将同一父域的两个子域托管在同一应用程序网关部署中。 例如，在单个应用程序网关部署中托管的 `http://blog.contoso.com` 和 `http://app.contoso.com` 都是使用子域。
+
+## <a name="session-affinity"></a>会话相关性
+
+需要在同一服务器上保留用户会话时，可以使用基于 Cookie 的会话相关性功能。 借助网关托管的 Cookie，应用程序网关可以将来自用户会话的后续流量定向到同一服务器进行处理。 在用户会话的会话状态在服务器上进行本地保存的情况下，此功能十分重要。
+
+## <a name="secure-sockets-layer-ssl-termination"></a>安全套接字层 (SSL) 终止
+
+应用程序网关支持在网关上终止 SSL，之后，流量通常会以未加密状态流到后端服务器。 此功能让 Web 服务器不用再负担昂贵的加密和解密开销。 但有时，与服务器进行未加密的通信不是可以接受的选项。 这可能是因为安全要求、符合性要求，或者应用程序可能仅接受安全连接。 对于此类应用程序，应用程序网关支持端到端 SSL 加密。
+
+## <a name="web-application-firewall"></a>Web 应用程序防火墙
+
+Web 应用程序防火墙 (WAF) 是应用程序网关的功能，可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。 WAF 基于 [OWASP（开放 Web 应用程序安全项目）核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则。 
+
+Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击、跨站点脚本攻击等。 防止应用程序代码中的此类攻击颇具挑战性，可能需要在应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可将现有应用程序网关轻松转换为支持 Web 应用程序防火墙的应用程序网关。
+
+## <a name="websocket-and-http2-traffic"></a>Websocket 和 HTTP/2 流量
+
+应用程序网关为 WebSocket 和 HTTP/2 协议提供本机支持。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 可以通过 Azure PowerShell 启用 HTTP/2 支持。
+ 
+WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 不同于 HTTP，这些协议的开销很低，并且可以对多个请求/响应重复使用同一 TCP 连接，从而提高资源利用率。 这些协议设计为通过传统 HTTP 端口 80 和 443 运行。
 
 
-* [Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md) - Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 保护 Web 应用程序免受基于 Web 的常见攻击，例如 SQL 注入、跨站点脚本攻击、会话劫持。
-* **HTTP 负载均衡** - 应用程序网关提供轮循机制负载均衡。 负载均衡在第 7 层完成，仅用于 HTTP(S) 流量。
-* 基于 Cookie 的会话相关性 - 想要在同一后端保留用户会话时，此基于 Cookie 的会话相关性功能十分有用。 借助受网关管理的 Cookie，应用程序网关能够将来自用户会话的后续流量转到同一后端进行处理。 在会话状态是为用户会话而本地保存在后端服务器的情况下，此功能十分重要。
-* [安全套接字层 (SSL) 卸载](application-gateway-ssl-arm.md) - 此功能让 Web 服务器免于执行解密 HTTPS 流量的高成本任务。 通过在应用程序网关终止 SSL 连接，并将请求转发到未加密的服务器，Web 服务器不用承担解密的负担。  应用程序网关会重新加密响应，再将它发回客户端。 在后端与 Azure 中的应用程序网关位于同一安全虚拟网络中的情况下，此功能十分有用。
-* [端到端 SSL](application-gateway-backend-ssl.md) - 应用程序网关支持对流量进行端到端加密。 应用程序网关通过在应用程序网关上终止 SSL 连接来完成此任务。 网关随后将路由规则应用于流量、重新加密数据包，并根据定义的路由规则将数据包转发到适当的后端。 来自 Web 服务器的任何响应都会经历相同的过程返回最终用户。
-* [基于 URL 的内容路由](application-gateway-url-route-overview.md) - 此功能能够使用不同的后端服务器来处理不同的流量。 可以将 Web 服务器上某个文件夹的流量或 CDN 的流量路由到其他后端。 对于不处理特定内容的后端，此功能可以减少其上的不必要负载。
-* [多站点路由](application-gateway-multi-site-overview.md) - 应用程序网关允许在单个应用程序网关上合并最多 20 个网站。
-* [WebSocket 支持](application-gateway-websocket.md) - 应用程序网关的另一个重要功能是对 WebSocket 的本机支持。
-* [运行状况监视](application-gateway-probe-overview.md) - 应用程序网关提供默认的后端资源运行状况监视，以及用于监视更多特定方案的自定义探测。
-* [SSL 策略和密码](application-gateway-ssl-policy-overview.md) - 此功能可以限制受支持的 SSL 协议版本和密码套件，以及其处理顺序。
-* [请求重定向](application-gateway-redirect-overview.md) - 使用此功能可将 HTTP 请求重定向到 HTTPS 侦听器。
-* [多租户后端支持](application-gateway-web-app-overview.md) - 应用程序网关支持将多租户后端服务（例如 Azure Web 应用和 API 网关）配置为后端池成员。 
-* [高级诊断](application-gateway-diagnostics.md) - 应用程序网关提供完整的诊断和访问日志。 防火墙日志可用于已启用 WAF 的应用程序网关资源。
-
-## <a name="benefits"></a>优点
-
-应用程序网关可用于：
-
-* 需要使用来自同一用户/客户端会话的请求来访问相同后端虚拟机的应用程序。 这些应用程序的示例包括购物车应用程序和 Web 邮件服务器。
-* 消除 Web 服务器场的 SSL 终端开销。
-* 要求长时间运行的同一 TCP 连接上多个 HTTP 请求路由到或负载均衡到不同后端服务器的应用程序（例如内容交付网络）。
-* 支持 WebSocket 流量的应用程序
-* 保护 Web 应用程序，使其免受常见 Web 攻击的威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。
-* 根据不同的路由标准（例如 URL 路径或域标头）对流量进行逻辑分配。
-
-应用程序网关完全由 Azure 托管，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。 创建应用程序网关时，将与一个终结点（公共 VIP 或内部 ILB IP）相关联并将其用于流入网络流量。 此 VIP 或 ILB IP 由在传输层 (TCP/UDP) 工作并将所有传入的网络流量负载均衡到应用程序网关辅助角色实例的 Azure 负载均衡器提供。 然后，应用程序网关根据其配置（是虚拟机、云服务还是内部或外部 IP 地址）来路由 HTTP/HTTPS 流量。
-
-Azure 托管服务形式的应用程序网关负载均衡允许在 Azure 软件负载均衡器的后面预配第 7 层负载均衡器。 流量管理器可用于完成下图中所示的方案，其中流量管理器为到不同区域中的多个应用程序网关资源的流量提供重定向和可用性，而应用程序网关则提供跨区域第 7 层负载均衡。 此方案的示例可以在[在 Azure 云中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)中找到
-
-![流量管理器和应用程序网关方案](./media/application-gateway-introduction/tm-lb-ag-scenario.png)
-
-[!INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
-
-## <a name="gateway-sizes-and-instances"></a>网关大小和实例
-
-应用程序网关目前有三种大小：**小型**、**中型**和**大型**。 小型实例大小适用于开发和测试方案。
-
-最多可为每个订阅创建 50 个应用程序网关，每个应用程序网关最多可有 10 个实例。 每个应用程序网关可以包含 20 个 http 侦听器。 有关应用程序网关限制的完整列表，请参阅[应用程序网关服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)。
-
-下表显示了已启用 SSL 卸载的每个应用程序网关实例的平均性能吞吐量：
-
-| 后端页面响应 | 小型 | 中型 | 大型 |
-| --- | --- | --- | --- |
-| 6K |7.5 Mbps |13 Mbps |50 Mbps |
-| 100K |35 Mbps |100 Mbps |200 Mbps |
-
-> [!NOTE]
-> 这些值是应用程序网关吞吐量的大约值。 实际吞吐量取决于平均页面大小、后端实例的位置、提供页面所需的处理时间等各种环境详细信息。 如需确切的性能数字，则应运行自己的测试。 提供的这些值仅适用于容量规划指南。
-
-## <a name="health-monitoring"></a>运行状况监视
-
-Azure 应用程序网关会通过基本或自定义运行状况探测，自动监视后端实例的运行状况。 使用运行状况探测可确保只有正常的主机才会响应流量。 有关详细信息，请参阅[应用程序网关运行状况监视概述](application-gateway-probe-overview.md)。
-
-## <a name="configuring-and-managing"></a>配置和管理
-
-对于其终结点，应用程序网关在配置时可以拥有公共 IP、专用 IP 或同时拥有两者。 应用程序网关在其自己的子网中的虚拟网络内进行配置。 为应用程序网关创建或使用的子网不能包含任何其他类型的资源，子网中唯一允许使用的资源是其他应用程序网关。 要保护后端资源，可以将后端服务器放在与应用程序网关位于同一虚拟网络中的其他子网内。 对于后端应用程序来说，此子网不是必需的。 只要可以访问 IP 地址，应用程序网关就能够为后端服务器提供 ADC 功能。 
-
-可以使用 REST API、PowerShell cmdlet、Azure CLI 或 [Azure 门户](https://portal.azure.com/)来创建和管理应用程序网关。 有关应用程序网关的其他问题，请查看[应用程序网关常见问题](application-gateway-faq.md)中所列的常见问题列表。
-
-## <a name="pricing"></a>定价
-
-定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 收费。 [应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)中提供了此定价信息。 数据处理费保持不变。
-
-## <a name="faq"></a>常见问题
-
-有关应用程序网关的常见问题，请参阅[应用程序网关常见问题](application-gateway-faq.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解应用程序网关后，可以[创建应用程序网关](application-gateway-create-gateway-portal.md)，也可以[创建应用程序网关 SSL 卸载](application-gateway-ssl-arm.md)，以便对 HTTPS 连接进行负载均衡。
+可以根据自己的需求和环境，使用 Azure 门户、Azure PowerShell 或 Azure CLI 创建测试性应用程序网关：
 
-若要详细了解如何使用基于 URL 的内容路由创建应用程序网关，请转到[使用基于 URL 的路由创建应用程序网关](application-gateway-create-url-route-arm-ps.md)。
-
-若要了解 Azure 的一些其他关键网络功能，请参阅 [Azure 网络](../networking/networking-overview.md)。
+- [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户](quick-create-portal.md)。
+- [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure PowerShell](quick-create-powershell.md)
+- [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI](quick-create-cli.md)

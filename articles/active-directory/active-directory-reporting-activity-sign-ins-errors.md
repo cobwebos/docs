@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/02/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ebad9304c38333173cec66c6b5574a9b45b17cd1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的登录活动报告错误代码
 
@@ -67,14 +67,21 @@ ms.lasthandoff: 04/23/2018
 |50058|在提供的凭据中找不到有关用户标识的信息，或者在租户中找不到用户，或者已发送无提示登录请求，但没有用户登录，或者服务无法对用户进行身份验证。|
 |50072|用户需注册进行双重身份验证（交互式）。|
 |50074|用户未通过 MFA 质询。|
+|50076|用户未通过 MFA 质询（非交互式）|
 |50079|用户需注册进行双重身份验证。|
 |50089|流令牌验证因流令牌到期而失败。|
 |50097|设备未经身份验证。|
 |50105|未为已登录的用户分配此应用程序的角色。|
+|50125|由于密码重置或密码注册项，登录已中断|
 |50126|用户名或密码无效，或者本地用户名或密码无效。|
+|50127|用户需要安装中转站应用，才能访问此内容。|
+|50129|设备未加入工作区 - 需要加入工作区才能注册设备。|
 |50131|用于各种条件性访问错误。 例如，Windows 设备状态不正确，请求因活动、访问策略和安全策略决策可疑而被阻止。|
 |50133|会话因过期或最近更改了密码而无效。|
+|50140|系统提示用户同意，才能使用户在设备上保持登录状态|
 |50144|用户的 Active Directory 密码已过期。|
+|53000|条件访问策略需要符合的设备，该设备不符合。|
+|53003|访问因条件访问策略而被阻止。|
 |65001|应用程序 X 无权访问应用程序 Y，或者权限已被吊销。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请代表应用 Y 向租户管理员发送针对资源 Z 的授权请求。|
 |65005|应用程序所需的资源访问列表不包含可以通过资源来发现的应用程序，或者客户端应用程序请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。|
 |70001|在名为 Y 的租户中找不到名为 X 的应用程序。如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。|
@@ -98,8 +105,7 @@ ms.lasthandoff: 04/23/2018
 |81013|根据用户的 Kerberos 票证中的信息，找不到用户对象。|
 |90014|用于凭据中不存在预期字段的各种情况。|
 |90093|Graph 返回了针对请求的禁止访问错误代码。|
-
-
+|90094|需要管理员同意。|
 ## <a name="next-steps"></a>后续步骤
 
 如需更多详细信息，请参阅 [Azure Active Directory 门户中的登录活动报告](active-directory-reporting-activity-sign-ins.md)。

@@ -1,25 +1,20 @@
 ---
 title: Azure MFA 服务器的用户门户 | Microsoft 文档
-description: 这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何开始使用 Azure MFA 和用户门户。
+description: 开始使用 Azure MFA 和用户门户。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: 06b419fa-3507-4980-96a4-d2e3960e1772
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 08/23/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 68053f3bed9eeaff686c2c161e703206128db347
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 38f75b8fc48f6fdcafd4c6ae25ec0f52641b2c05
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 

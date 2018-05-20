@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 01/04/2018
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 6108e0061c4a8de3000de7f7a07cca313803e80d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>使用 Fiddler 或 Postman 探索 Azure 搜索 REST API
 
@@ -48,14 +48,14 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 每个工具都会持久保留会话的请求标头信息，这意味着只需输入 URL 终结点、api-version、api-key 和 content-type 一次。
 
-完整的 URL 应类似于以下示例，唯一区别是，应对 **`my-app`** 占位符名称 `https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01` 进行有效的替换。
+完整的 URL 应类似于以下示例，唯一区别是，应对 **`my-app`** 占位符名称 `https://my-app.search.windows.net/indexes/hotels?api-version=2017-11-11` 进行有效的替换。
 
 服务 URL 组合包括以下元素：
 
 + HTTPS 前缀。
 + 从门户获取的服务 URL。
 + 资源：一项操作，用于创建基于服务的对象。 在此步骤中，它是名为“hotels”的索引。
-+ api-version，一个必需的小写字符串，已针对当前版本指定为“?api-version=2016-09-01”。 [API 版本](search-api-versions.md)定期更新。 将 api-version 包括在每个请求中即可完全控制要使用的版本。  
++ api-version，一个必需的小写字符串，已针对当前版本指定为“?api-version=2017-11-11”。 [API 版本](search-api-versions.md)定期更新。 将 api-version 包括在每个请求中即可完全控制要使用的版本。  
 
 请求标头组合包括 content-type 和 api-key 这两个元素，如前一部分所述：
 
@@ -124,7 +124,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 创建索引和填充索引是分开的步骤。 在 Azure 搜索中，索引包含所有可搜索数据，这些数据可以作为 JSON 文档提供。 若要查看此操作的 API，请参阅 [Add, update, or delete documents (REST)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)（添加、更新或删除文档 (REST)）。
 
 + 将谓词更改为 POST（适用于此步骤）。
-+ 更改终结点，使之包括 `/docs/index`。 完整的 URL 应类似于 `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01`
++ 更改终结点，使之包括 `/docs/index`。 完整的 URL 应类似于 `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
 + 按原样保留请求标头。 
 
 请求正文包含四个要添加到 hotels 索引的文档。
@@ -213,7 +213,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 现在，已加载索引和文档，可以针对它们发出查询了。 有关此 API 的详细信息，请参阅 [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents)（搜索文档 (REST)）  
 
 + 将谓词更改为 GET（适用于此步骤）。
-+ 更改终结点，使之包括查询参数（包括搜索字符串）。 查询 URL 可能类似于 `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2016-09-01`
++ 更改终结点，使之包括查询参数（包括搜索字符串）。 查询 URL 可能类似于 `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
 + 按原样保留请求标头
 
 此查询针对“motel”一词进行搜索，在搜索结果中返回文档的计数。 在单击“发送”后，请求和响应应该类似于以下针对 Postman 的屏幕截图。 状态代码应为 200。
@@ -222,18 +222,18 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ### <a name="tips-for-running-our-sample-queries-in-fiddler"></a>在 Fiddler 中运行示例查询的提示
 
-以下示例查询取自 [Search Index operation (Azure Search API)](http://msdn.microsoft.com/library/dn798927.aspx)（搜索索引操作（Azure 搜索 API））一文。 本问中的许多示例查询包含空格，这在 Fiddler 中是不允许的。 在粘贴查询字符串前，请将每个空格替换为“+”字符，然后再在 Fiddler 中尝试查询。
+以下示例查询取自 [Search Index operation (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)（搜索索引操作（Azure 搜索 API））一文。 本问中的许多示例查询包含空格，这在 Fiddler 中是不允许的。 在粘贴查询字符串前，请将每个空格替换为“+”字符，然后再在 Fiddler 中尝试查询。
 
 替换空格之前 (lastRenovationDate desc)：
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
 
 将空格替换为 + 之后 (lastRenovationDate+desc)：
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 
 ## <a name="query-index-properties"></a>查询索引属性
-还可以查询系统信息，获取文档计数和存储使用量：`https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01`
+还可以查询系统信息，获取文档计数和存储使用量：`https://my-app.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 在 Postman 中，请求应如下所示，响应包括文档计数和所用空间（以字节为单位）。
 

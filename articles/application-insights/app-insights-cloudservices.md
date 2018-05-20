@@ -1,9 +1,9 @@
 ---
-title: "Azure 云服务的 Application Insights | Microsoft Docs"
-description: "使用 Application Insights 有效监视 Web 角色和辅助角色"
+title: Azure 云服务的 Application Insights | Microsoft Docs
+description: 使用 Application Insights 有效监视 Web 角色和辅助角色
 services: application-insights
-documentationcenter: 
-keywords: "WAD2AI, Azure 诊断"
+documentationcenter: ''
+keywords: WAD2AI, Azure 诊断
 author: mrbullwinkle
 manager: carmonm
 editor: alancameronwills
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: dd35ef2239469be6ecf478f44a7e97389e5c5dd3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f36a9e21478d2629d705d90179a6db5175c78299
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 可以通过 [Application Insights][start] 来监视 [Microsoft Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障情况和使用情况，只需将 Application Insights 的 SDK 提供的数据与云服务提供的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)数据进行组合分析即可。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
@@ -223,7 +223,7 @@ Application Insights 提供丰富的诊断体验，可让用户查明请求失�
 
 如果系统使用其他 Azure 服务（例如流分析），也可以包含这些服务的监视图表。 
 
-如果在使用客户端移动应用，可以插入一些代码来发送有关重要用户操作的自定义事件，并创建 [HockeyApp 桥](app-insights-hockeyapp-bridge-app.md)。 在 [Analytics](app-insights-analytics.md) 中创建查询来显示事件计数，并将事件固定到仪表板。
+如果有客户端移动应用，请使用 [App Center](app-insights-mobile-center-quickstart.md)。 在 [Analytics](app-insights-analytics.md) 中创建查询来显示事件计数，并将事件固定到仪表板。
 
 ## <a name="example"></a>示例
 [该示例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)监视包含一个 Web 角色和两个辅助角色的服务。

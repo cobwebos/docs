@@ -1,19 +1,19 @@
 ---
-title: 快速入门 - 使用 PowerShell 创建策略分配以识别 Azure 环境中的不合规资源 | Microsoft Docs
+title: 快速入门 - 使用 PowerShell 创建策略分配以识别 Azure 环境中的不合规资源
 description: 本快速入门介绍如何使用 PowerShell 创建 Azure 策略分配以识别不合规的资源。
 services: azure-policy
 keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/10/2018
+ms.date: 05/07/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: f39177f5a2e5878570ed750a42009c2203257b13
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f24dc2a28acfbd3fd80578fed17c6d57275366f0
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-the-azure-rm-powershell-module"></a>快速入门：使用 Azure RM PowerShell 模块创建策略分配以识别不合规资源
 
@@ -29,8 +29,8 @@ AzureRM PowerShell 模块用于从命令行或脚本创建和管理 Azure 资源
 - 将 AzureRM PowerShell 模块更新到最新版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 - 使用 Azure PowerShell 注册 Policy Insights 资源提供程序。 注册此资源提供程序可确保订阅能够使用它。 若要注册资源提供程序，必须具有为资源提供程序执行注册操作的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
-  ```
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.PolicyInsights
+  ```azurepowershell-interactive
+  Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
   ```
 
   有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)
@@ -41,10 +41,10 @@ AzureRM PowerShell 模块用于从命令行或脚本创建和管理 Azure 资源
 
 运行以下命令创建新的策略分配：
 
-```powershell
-$rg = Get-AzureRmResourceGroup -Name "<resourceGroupName>"
-$definition = Get-AzureRmPolicyDefinition | where {$_.properties.displayName -eq "Audit VMs that do not use managed disks"}
-New-AzureRMPolicyAssignment -Name "Audit Virtual Machines without Managed Disks" -Scope $rg.ResourceId -PolicyDefinition $definition -Sku @{Name='A1';Tier='Standard'}
+```azurepowershell-interactive
+$rg = Get-AzureRmResourceGroup -Name '<resourceGroupName>'
+$definition = Get-AzureRmPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs that do not use managed disks' }
+New-AzureRmPolicyAssignment -Name 'Audit Virtual Machines without Managed Disks' -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
 上述命令使用以下信息：
@@ -52,8 +52,6 @@ New-AzureRMPolicyAssignment -Name "Audit Virtual Machines without Managed Disks"
 - **名称** - 策略分配的显示名称。 本例使用了“审核不带托管磁盘分配的虚拟机”。
 - **定义** - 策略定义，用作创建分配的依据。 在本例中，此值为策略定义“审核不带托管磁盘的虚拟机”。
 - **范围** - 范围确定在其中实施策略分配的资源或资源组。 它可以从订阅延伸至资源组。 请务必将 &lt;scope&gt; 替换为资源组的名称。
-- **SKU** – 此命令创建使用标准层的策略分配。 使用标准层可以实现大规模管理、符合性评估和补救。 有关定价层的其他详细信息，请参阅 [Azure 策略定价](https://azure.microsoft.com/pricing/details/azure-policy)。
-
 
 你现已准备好识别不合规的资源，了解环境的符合性状态。
 
@@ -61,58 +59,53 @@ New-AzureRMPolicyAssignment -Name "Audit Virtual Machines without Managed Disks"
 
 使用以下信息来识别不符合所创建的策略分配的资源。 运行以下命令：
 
-```powershell
-$policyAssignment = Get-AzureRmPolicyAssignment | where {$_.properties.displayName -eq "Audit Virtual Machines without Managed Disks"}
-```
-
-```powershell
+```azurepowershell-interactive
+$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks' }
 $policyAssignment.PolicyAssignmentId
 ```
 
-有关策略分配 ID 的详细信息，请参阅 [Get-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/get-azurermpolicyassignment)。
+有关策略分配 ID 的详细信息，请参阅 [Get-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/get-azurermpolicyassignment)。
 
 接下来，运行以下命令，获取输出到 JSON 文件中的不合规资源的资源 ID：
 
-```powershell
+```
 armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
+
 结果应如以下示例所示：
 
+```json
+{
+    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
+    "@odata.count": 3,
+    "value": [{
+            "@odata.id": null,
+            "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+            "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachineId>"
+        },
+        {
+            "@odata.id": null,
+            "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+            "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine2Id>"
+        },
+        {
+            "@odata.id": null,
+            "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+            "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine3ID>"
+        }
 
-```
-{
-"@odata.context":"https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
-"@odata.count": 3,
-"value": [
-{
-    "@odata.id": null,
-    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-      "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachineId>"
-    },
-    {
-      "@odata.id": null,
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-      "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine2Id>"
-         },
-{
-      "@odata.id": null,
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-      "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine3ID>"
-         }
-
-]
+    ]
 }
 ```
 
 这些结果与 Azure 门户视图中“不合规资源”下通常所列的结果类似。
 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 本教程系列中的后续指南建立在本快速入门的基础之上。 如何打算继续学习其他教程，请不要清除本快速入门中创建的资源。 如果不打算继续，可运行以下命令删除创建的分配：
 
-```powershell
-Remove-AzureRmPolicyAssignment -Name "Audit Virtual Machines without Managed Disks Assignment" -Scope /subscriptions/<subscriptionID>/<resourceGroupName>
+```azurepowershell-interactive
+Remove-AzureRmPolicyAssignment -Name 'Audit Virtual Machines without Managed Disks Assignment' -Scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -122,4 +115,4 @@ Remove-AzureRmPolicyAssignment -Name "Audit Virtual Machines without Managed Dis
 若要详细了解如何分配策略并确保**将来**创建的资源合规，请继续学习以下教程：
 
 > [!div class="nextstepaction"]
-> [创建和管理策略](./create-manage-policy.md)
+> [创建和管理策略](create-manage-policy.md)

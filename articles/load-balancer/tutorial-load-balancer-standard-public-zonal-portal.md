@@ -1,29 +1,41 @@
 ---
-title: 区域中的负载均衡器 VM - Azure 门户 | Microsoft Docs
-description: 使用 Azure 门户创建包含区域前端的标准负载均衡器，以便对可用性区域中的 VM 进行负载均衡
+title: 教程：区域中的负载均衡器 VM - Azure 门户 | Microsoft Docs
+description: 本教程演示如何使用 Azure 门户创建包含区域前端的标准负载均衡器，以便对可用性区域中的 VM 进行负载均衡
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: ''
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/18/2018
+ms.date: 04/20/2018
 ms.author: kumud
-ms.openlocfilehash: 41a33436cb0d2c4c2bbfef4888bb704c62e2b91e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: mvc
+ms.openlocfilehash: 9067ea350997ed0c4fc5c65dccb72f403adfa774
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="load-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>在 Azure 门户中使用标准负载均衡器对可用性区域中的 VM 进行负载均衡
+# <a name="tutorialload-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对可用性区域中的 VM 进行负载均衡
 
-本文逐步讲解如何在 Azure 门户中使用公共 IP 标准地址创建具有区域性前端的公共[负载均衡器标准](https://aka.ms/azureloadbalancerstandard)。 在此场景中，我们将为前端和后端实例指定一个特定的区域，使数据路径和资源与特定的区域相符。
+本教程逐步讲解如何在 Azure 门户中使用公共 IP 标准地址创建具有区域前端的公共[标准负载均衡器](https://aka.ms/azureloadbalancerstandard)。 在此场景中，我们将为前端和后端实例指定一个特定的区域，使数据路径和资源与特定的区域相符。 学习如何：
+
+> [!div class="checklist"]
+> * 创建具有区域前端的 Azure 标准负载均衡器
+> * 创建网络安全组以定义传入流量规则
+> * 创建区域 VM 并其附加到负载均衡器
+> * 创建负载均衡器运行状况探测
+> * 创建负载均衡器流量规则
+> * 创建基本 IIS 站点
+> * 查看运行中的负载均衡器
+
 有关对标准负载均衡器使用可用性区域的详细信息，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
 
 如果需要，也可以使用 [Azure CLI](load-balancer-standard-public-zonal-cli.md) 完成本教程中的步骤。

@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 门户将 API 应用导入为 API | Microsoft Docs"
-description: "本教程演示如何使用 API 管理 (APIM) 将 API 应用导入为 API。"
+title: 使用 Azure 门户将 API 应用导入为 API | Microsoft Docs
+description: 本教程演示如何使用 API 管理 (APIM) 将 API 应用导入为 API。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: d0e1aa6763d96b5a84bbc5fba7dcae690c051eb3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 717ce40caccd1114f8bae762fe38ce986421a4c9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="import-an-api-app-as-an-api"></a>将 API 应用导入为 API
 
-本文演示如何将 API 应用导入为 API。 本文还演示如何测试 APIM API。
+本文演示如何将 API 应用导入为 API。 此外，介绍如何测试 APIM API。
 
 在本文中，学习如何：
 
@@ -47,8 +47,8 @@ ms.lasthandoff: 12/04/2017
 4. 选择应用。 APIM 找到与所选应用关联的 swagger 后，将其提取并导入。 
 
     如果 APIM 未找到 swagger，则会将 API 公开为“传递”API。 
-5. 添加 API URL 后缀。 后缀是用于在该 APIM 实例中标识此特定 API 的名称。 它在此 APIM 实例中必须是唯一的。
-6. 通过关联 API 与产品来发布 API。 在这种情况下，使用“不受限制”产品。  如果希望发布 API 并使其对开发人员可用，请将其添加到产品中。 可在 API 创建期间执行此操作，或稍后进行设置。
+5. 添加 API URL 后缀。 后缀是用于在该 APIM 实例中标识此特定 API 的名称。 它在此 APIM 实例中必须唯一。
+6. 通过关联 API 与产品来发布 API。 本例中使用了“无限制”产品。  如果想要发布 API 并使其对开发人员可用，请将其添加到产品中。 可在 API 创建期间执行此操作，或稍后进行设置。
 
     产品是一个或多个 API 的关联。 可包含多个 API，并通过开发人员门户将其提供给开发人员。 开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 12/04/2017
 
     * **入门**
     * **不受限制**   
-7. 选择“创建” 。
+7. 选择**创建**。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 APIM API
 
@@ -73,14 +73,14 @@ ms.lasthandoff: 12/04/2017
 
 ## <a name="call-operation"> </a>从开发人员门户调用操作
 
-此外，也可从“开发人员门户”将操作调用到测试 API。 
+此外，也可从“开发人员门户”调用操作来测试 API。 
 
-1. 选中在“导入和发布后端 API”步骤中创建的 API。
+1. 选择在“导入和发布后端 API”步骤中创建的 API。
 2. 按“开发人员门户”。
 
     “开发人员门户”站点随即打开。
-3. 选择创建的“API”。
-4. 单击要进行测试的操作。
+3. 选择创建的 **API**。
+4. 单击要测试的操作。
 5. 按“试用”。
 6. 按“发送”。
     

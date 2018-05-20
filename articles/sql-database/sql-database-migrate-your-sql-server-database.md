@@ -1,6 +1,6 @@
 ---
-title: 使用 DMS 将 SQL Server DB 迁移到 Azure SQL 数据库 | Microsoft Docs
-description: 了解如何使用 DMS 将 SQL Server 数据库迁移到 Azure SQL 数据库。
+title: 使用 DMA 将 SQL Server DB 迁移到 Azure SQL 数据库 | Microsoft Docs
+description: 了解如何使用 DMA 将 SQL Server 数据库迁移到 Azure SQL 数据库。
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,13 +9,13 @@ ms.custom: mvc,migrate
 ms.topic: tutorial
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 36548e4d088b809f4fb16d89aaa3ef0a802d6d5c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e714667183704670807fd2f62767b75f62978a38
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>使用 DMS 将 SQL Server 数据库迁移到 Azure SQL 数据库
+# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>使用 DMA 将 SQL Server 数据库迁移到 Azure SQL 数据库
 
 将 SQL Server 数据库移至 Azure SQL 数据库的单个数据库，与在 Azure 中创建空 SQL 数据库然后使用[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) 将数据库导入到 Azure 一样简单。 有关其他迁移选项，请参阅[将数据库迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 
-创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](sql-database-service-tiers.md)。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](sql-database-features.md)中创建。 
+创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](sql-database-service-tiers-dtu.md)。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](sql-database-features.md)中创建。 
 
 按照以下步骤创建空的 SQL 数据库。 
 
@@ -87,9 +87,9 @@ ms.lasthandoff: 04/23/2018
 8. 若要使用“附加存储”选项，请接受预览版条款。 
 
    > [!IMPORTANT]
-   > \* 超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 
+   > - 超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 
    >
-   >\* 在高级层中，以下区域目前提供的存储超出 1 TB：巴西南部、加拿大中部、加拿大东部、美国中部、法国中部、德国中部、日本东部、日本西部、韩国中部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、美国东部 2、美国西部、美国弗吉尼亚州政府和西欧。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+   > - 在高级层中，以下区域目前提供的存储超出 1 TB：巴西南部、加拿大中部、加拿大东部、美国中部、法国中部、德国中部、日本东部、日本西部、韩国中部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、美国东部 2、美国西部、US Gov 弗吉尼亚州和西欧。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
    > 
 
 9. 选择服务器层、DTU 数和存储量后，单击“应用”。  

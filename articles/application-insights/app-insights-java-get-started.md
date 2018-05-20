@@ -3,7 +3,7 @@ title: 使用 Azure Application Insights 进行 Java Web 应用分析 | Microsof
 description: '使用 Application Insights 监视 Java Web 应用的应用程序性能。 '
 services: application-insights
 documentationcenter: java
-author: harelbr
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: e1c4ea08b71c2e99b6c8e839e1fddc3172ca251d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a1212befd1cc6aaf74bc596459aa5be1ef689813
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -178,7 +178,7 @@ package devCamp.WebApp.configurations;
 
     import javax.servlet.Filter;
 
-    import org.springframework.boot.context.embedded.FilterRegistrationBean;
+    import org.springframework.boot.web.servlet.FilterRegistrationBean;
     import org.springframework.context.annotation.Bean;
     import org.springframework.core.Ordered;
     import org.springframework.beans.factory.annotation.Value;
@@ -217,6 +217,11 @@ package devCamp.WebApp.configurations;
             return new WebRequestTrackingFilter(applicationName);
         }   
     }
+```
+
+[!NOTE] 如果使用的是 Spring Boot 1.3.8 或更旧版本，请将 FilterRegistrationBean 替换为下面的行
+```Java
+    import org.springframework.boot.context.embedded.FilterRegistrationBean;
 ```
 
 此类会将 `WebRequestTrackingFilter` 配置为 http 筛选器链上的第一个筛选器。 它还会从操作系统环境变量中拉取检测密钥（如果可用）。

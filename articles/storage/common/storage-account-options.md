@@ -2,18 +2,18 @@
 title: Azure 存储帐户选项 | Microsoft Docs
 description: 了解使用 Azure 存储的选项。
 services: storage
-author: jirwin
+author: hux
 manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 01/17/2018
-ms.author: jirwin
-ms.openlocfilehash: 75d1580df5e36b2c88939fde9077c5a1948f6348
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.date: 05/02/2018
+ms.author: hux
+ms.openlocfilehash: 69da15b98e6c519a3a8352cc7ca7212286cb4e52
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-storage-account-options"></a>Azure 存储帐户选项
 
@@ -32,7 +32,7 @@ Azure 存储提供三个不同的帐户选项，支持不同的定价和功能�
 
 常规用途 v2 (GPv2) 帐户是存储帐户，支持适用于 Blob、文件、队列和表的所有最新功能。 GPv2 帐户支持在 GPv1 和 Blob 存储帐户中受支持的所有 API 和功能， 同时还支持在这些帐户类型中提供的持续性、可用性、可伸缩性和性能。 设计 GPv2 帐户定价的目的是为了提供最低的单 GB 价格和具有行业竞争优势的事务价格。
 
-可以使用 PowerShell 或 Azure CLI 将 GPv1 帐户升级为 GPv2 帐户。 
+可以使用 Azure 门户、PowerShell 或 Azure CLI 将 GPv1 帐户升级为 GPv2 帐户。 
 
 对于 GPv2 存储帐户中的块 Blob，可以根据访问模式在帐户级别选择热或冷存储层，或者在 Blob 级别选择热、冷或存档层。 可以将经常访问的、不常访问的和很少访问的数据分别存储在热、冷和存档存储层中，以便优化成本。 
 
@@ -72,8 +72,6 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 ### <a name="blob-storage-accounts"></a>Blob 存储帐户
 
 Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局限性是只支持块 Blob。 定价大部分与常规用途 v2 帐户的定价类似。 客户应先了解 Blob 存储帐户和 GPv2 帐户的定价差异，然后再考虑是否升级到 GPv2。 此升级不能撤消。
-
-将 Blob 存储帐户升级为 GPv2 的功能即将推出。
 
 > [!NOTE]
 > Blob 存储帐户仅支持块 blob 和追加 blob，不支持页 blob。
@@ -115,9 +113,10 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 本部分使用 Azure 门户演示以下方案：
 
-* 如何创建 GPv2 存储帐户。
-* 如何将 GPv1 或 Blob 存储帐户转换为 GPv2 存储帐户。
-* 如何在 GPv2 存储帐户中设置帐户和 Blob 层。
+* [如何创建 GPv2 存储帐户](#create-a-gpv2-storage-account-using-the-azure-portal)。
+* [如何将 GPv1 或 Blob 存储帐户转换为 GPv2 存储帐户](#convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal)。
+* [如何在 GPv2 存储帐户中设置帐户](#change-the-storage-tier-of-a-gpv2-storage-account-using-the-azure-portal)。
+* [如何在 Blob 存储或 GPv2 存储帐户中设置 Blob 层](#change-the-storage-tier-of-a-blob-using-the-azure-portal)。
 
 在以下示例中，不能将访问层设置为存档，因为该设置适用于整个存储帐户。 只能在特定 Blob 上设置存档。
 
@@ -141,7 +140,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 6. 选择存储帐户的复制选项：**LRS**、**ZRS**、**GRS** 或 **RA-GRS**。 默认值为“RA-GRS”。
 
-    LRS = 本地冗余存储；ZRS = 区域冗余存储；GRS = 异地冗余存储（两个区域）；RA-GRS 是可以进行读取访问的异地冗余存储（两个区域，可以对第二个区域进行读取访问）。
+    LRS = 本地冗余存储；ZRS = 区域冗余存储；GRS = 异地冗余存储（两个区域）；RA-GRS = 可进行读取访问的异地冗余存储（两个区域，可以对第二个区域进行读取访问）。
 
     有关 Azure 存储复制选项的更多详细信息，请参阅 [Azure 存储复制](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
@@ -155,7 +154,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 11. 单击“创建”以创建存储帐户。
 
-### <a name="convert-a-gpv1-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>使用 Azure 门户将 GPv1 转换为 GPv2 存储帐户
+### <a name="convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>使用 Azure 门户将 GPv1 或 Blob 存储帐户转换为 GPv2 存储帐户
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -315,7 +314,7 @@ GPv2 存储帐户的特点是，单 GB 存储成本最低，而且事务和数�
 
 **是否可以将现有存储帐户升级为 GPv2 存储帐户？**
 
-是的。 可以在门户中或者使用 PowerShell 或 CLI 轻松地将 GPv1 升级为 GPv2。 可以使用 PowerShell 或 CLI 将 Blob 存储帐户升级为 GPv2。 在门户中将 Blob 存储帐户升级为 GPv2 的功能即将推出。
+是的。 可以在门户中或者使用 PowerShell 或 CLI 轻松地将 GPv1 或 Blob 存储帐户升级为 GPv2。 
 
 不支持从 GPv2 降级，因此，在将帐户升级为 GPv2 之前，请考虑所有价格方面的影响。
 
@@ -329,7 +328,7 @@ GPv2 存储帐户的特点是，单 GB 存储成本最低，而且事务和数�
 
 **我可以多频繁地更改我的 Blob 存储帐户的存储层？**
 
-虽然我们不会强制限制更改存储层的频率，但请注意，将存储层从“冷”更改为“热”可能产生大量费用。 不建议频繁地更改存储层。
+虽然没有强制限制更改存储层的频率，但请注意，将存储层从“冷”更改为“热”可能产生大量费用。 不建议频繁地更改存储层。
 
 冷存储层中 Blob 的行为方式是否与热存储层中的不同？
 

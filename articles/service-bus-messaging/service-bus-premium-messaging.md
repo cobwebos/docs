@@ -1,30 +1,30 @@
 ---
-title: "Azure 服务总线高级和标准消息传送定价层概述 | Microsoft Docs"
-description: "服务总线高级和标准消息传送层"
+title: Azure 服务总线高级和标准消息传送定价层概述 | Microsoft Docs
+description: 服务总线高级和标准消息传送层
 services: service-bus-messaging
 documentationcenter: .net
 author: djrosanova
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e211774d-821c-4d79-8563-57472d746c58
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/10/2017
+ms.date: 04/30/2018
 ms.author: sethm
-ms.openlocfilehash: 613bb074063e436cdbd54fe5aee9c49109a2d8f2
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1b2c9b3a0b7565e7de40d4dc0e623a62313b79db
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
 服务总线消息传送（包括队列和主题等实体）将企业消息传送功能与丰富的云规模发布-订阅语义结合在一起。 对于许多完善的云解决方案，服务总线消息传送会用作通信基础结构。
 
-服务总线消息传送的*高级*层将解决有关任务关键应用程序的规模、性能和可用性的常见客户请求。 虽然功能集几乎完全相同，但这两个层的服务总线消息传送旨在用于满足不同的使用情形。
+服务总线消息传送的*高级*层将解决有关任务关键应用程序的规模、性能和可用性的常见客户请求。 高级层建议用于生产方案。 虽然功能集几乎完全相同，但这两个层的服务总线消息传送旨在用于满足不同的使用情形。
 
 下表突出显示了部分高层差异。
 
@@ -46,11 +46,7 @@ ms.lasthandoff: 11/11/2017
 
 ### <a name="partitioned-queues-and-topics"></a>分区的队列和主题
 
-高级消息传送支持分区的队列和主题；实际上，这些实体始终分区（且不能禁用）。 但是，高级层中分区的队列和主题的工作方式不同于服务总线消息传送的标准层。 高级消息传送不使用 SQL 作为数据存储，并且也不再具有与共享平台相关联的可能的资源竞争。 因此，不需要为提高性能而分区。 此外，分区计数已从标准消息传送的 16 个减少到高级中的 2 个分区。 使用两个分区可确保可用性并且更适合高级运行时环境所要求的分区数。 
-
-使用高级消息传送时，当将实体大小指定为 [MaxSizeInMegabytes](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxsizeinmegabytes#Microsoft_ServiceBus_Messaging_QueueDescription_MaxSizeInMegabytes) 时，该大小在 2 个分区之间平均拆分，这不同于[标准分区实体](service-bus-partitioning.md#standard)，在这种实体中，总大小是指定大小的 16 倍。 
-
-有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
+高级消息传送不支持分区队列和主题。 有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
 
 ### <a name="express-entities"></a>快速实体
 
@@ -64,7 +60,7 @@ ms.lasthandoff: 11/11/2017
 
 ![create-premium-namespace][create-premium-namespace]
 
-也可以[使用 Azure 资源管理器模板创建高级命名空间](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/)。
+也可以[使用 Azure 资源管理器模板创建高级命名空间](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/)。
 
 ## <a name="next-steps"></a>后续步骤
 

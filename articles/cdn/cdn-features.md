@@ -1,10 +1,10 @@
 ---
-title: Azure 内容分发网络 (CDN) 产品功能 | Microsoft Docs
+title: 比较 Azure 内容分发网络 (CDN) 产品功能 | Microsoft Docs
 description: 了解每个 Azure 内容分发网络 (CDN) 产品支持的功能。
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,20 +12,22 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/25/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: ae57d4e9feb23f67bb4f05148d87fec96f055a7f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 01396ceba142a91a88040ac28c51275734476e5d
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="azure-cdn-product-features"></a>Azure CDN 产品特征
+# <a name="compare-azure-cdn-product-features"></a>比较 Azure CDN 产品功能
 
-Azure 内容分发网络 (CDN) 包括四种产品：“来自 Microsoft 的 Azure CDN Standard”、“来自 Akamai 的 Azure CDN Standard”、“来自 Verizon 的 Azure CDN Standard”和“来自 Verizon 的 Azure CDN Premium”。 下表比较了每个产品的可用功能。
+Azure 内容分发网络 (CDN) 包括四种产品：“来自 Microsoft 的标准 Azure CDN”（处于预览状态）、“来自 Akamai 的标准 Azure CDN”、“来自 Verizon 的标准 Azure CDN”和“来自 Verizon 的高级 Azure CDN”。 
 
-| **性能特色和优化** | **标准版 Microsoft** | **标准 Akamai** | **标准 Verizon** | **高级 Verizon** |
+下表比较了每个产品的可用功能。
+
+| **性能特色和优化** | **标准 Microsoft（预览）** | **标准 Akamai** | **标准 Verizon** | **高级 Verizon** |
 | --- | --- | --- | --- | --- |
 | [动态站点加速](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  |  | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[动态站点加速 - 自适应图像压缩](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-akamai-only)  |  | **&#x2713;**  |  |  |
@@ -61,7 +63,7 @@ Azure 内容分发网络 (CDN) 包括四种产品：“来自 Microsoft 的 Azur
 | [实时警报](cdn-real-time-alerts.md)  |  | | |**&#x2713;** |
 ||||
 | **易于使用** | **标准版 Microsoft** | **标准 Akamai** | **标准 Verizon** | **高级 Verizon** | 
-| 与[存储](cdn-create-a-storage-account-with-cdn.md)、[云服务](cdn-cloud-service-with-cdn.md)、[Web 应用](../app-service/app-service-web-tutorial-content-delivery-network.md)和[媒体服务](../media-services/media-services-portal-manage-streaming-endpoints.md)等 Azure 服务轻松集成  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| 轻松与[存储](cdn-create-a-storage-account-with-cdn.md)、[Web 应用](app-service-web-tutorial-content-delivery-network.md)和[媒体服务](../media-services/media-services-portal-manage-streaming-endpoints.md)等 Azure 服务集成  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | 通过 [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md) 或 [PowerShell](cdn-manage-powershell.md) 进行管理  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [可自定义的、基于规则的内容传送引擎](cdn-rules-engine.md)  |  | | |**&#x2713;** |
 | URL 重定向/重写（使用[规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |

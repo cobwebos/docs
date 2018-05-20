@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: ''
-ms.openlocfilehash: 9071caedd9ab3b63527c2c0bdab38db2efadb17c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>什么是 Azure IoT Edge - 预览
 
 Azure IoT Edge 将云分析和自定义业务逻辑移到设备，这样你的组织就可以专注于业务见解而非数据管理。 你可以配置 IoT 软件，通过标准容器将其部署到设备，然后对其进行监视，这一切都可以从云中操作，使解决方案能够真正地缩放。
 
 >[!NOTE]
->Azure IoT Edge 仅在 IoT 中心的标准层中提供。 有关基本和标准层的详细信息，请参阅[如何选择合适的 IoT 中心层](../iot-hub/iot-hub-scaling.md)。
+>Azure IoT Edge 在 IoT 中心的免费层和标准层中提供。 免费层仅用于测试和评估。 有关基本和标准层的详细信息，请参阅[如何选择合适的 IoT 中心层](../iot-hub/iot-hub-scaling.md)。
 
 分析可以提升 IoT 解决方案中的业务价值，但并非所有分析都需要在云中进行。 如果希望设备能够尽快响应突发事件，可以在设备上执行异常情况检测。 同样，如果希望减少带宽费用，避免传输数 TB 的原始数据，则可在本地执行数据清理和聚合， 然后再将见解发送到云中。 
 

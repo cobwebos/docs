@@ -1,36 +1,36 @@
 ---
-title: Azure 安全中心和 Azure 中的 Windows 虚拟机 | Microsoft Docs
-description: 通过 Azure 安全中心了解 Azure Windows 虚拟机的安全性。
+title: 教程 - 使用 Azure 安全中心保护 Azure 中的 Windows VM | Microsoft Docs
+description: 本教程介绍如何使用 Azure 安全中心功能保护 Azure 中的 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35b6c8910b0dd5e8d1c388ee83223ce77a08f6d1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b573208107b07b47b471d9c5247b362ef144099e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>使用 Azure 安全中心监视虚拟机安全
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>教程：使用 Azure 安全中心监视 Windows 虚拟机
 
 Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全中心提供了集成的安全监视功能。 它可以检测到在其他方式下可能不会注意到的风险。 本教程介绍 Azure 安全中心，以及如何执行以下操作：
- 
+
 > [!div class="checklist"]
 > * 设置数据收集
 > * 设置安全策略
 > * 查看和修复配置运行状况问题
-> * 查看检测到的威胁  
+> * 查看检测到的威胁
 
 ## <a name="security-center-overview"></a>安全中心概述
 

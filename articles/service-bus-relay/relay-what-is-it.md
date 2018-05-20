@@ -1,34 +1,36 @@
 ---
-title: "概述：什么是 Azure 中继？为何使用 Azure 中继 | Microsoft 文档"
-description: "Azure 中继概述"
+title: 概述：什么是 Azure 中继？为何使用 Azure 中继 | Microsoft 文档
+description: Azure 中继概述
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1e3e971d-2a24-4f96-a88a-ce3ea2b1a1cd
 ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 12/20/2017
+ms.date: 05/02/2018
 ms.author: sethm
-ms.openlocfilehash: d1b1c0661458669dc8f05a49037943320de2ecb3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2b179f8f5de9a0020ea6457c11bb6f48f3a51320
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
 
 Azure 中继服务简化了混合应用程序，通过允许安全地向公有云公开位于企业网络内的服务，无需打开防火墙连接，也无需对企业网络基础结构进行彻底更改。 中继支持各种不同的传输协议和 Web 服务标准。
 
-中继服务支持传统的单向流量、请求/响应流量和对等流量。 它还支持 Internet 范围的事件分发，以实现发布/订阅方案和双向套接字通信，从而提高点到点通信效率。 
+中继服务支持传统的单向流量、请求/响应流量和对等流量。 它还支持 Internet 范围的事件分发，以实现发布/订阅方案和双向套接字通信，从而提高点到点通信效率。
 
 在中继数据传输模式中，本地服务会通过出站端口连接至中继服务，并创建双向套接字用于绑定至特定集合地址的通信。 客户端然后可以通过将流量发送到抵达会合地址的中继服务来与本地服务通信。 中继服务接着通过每个客户端专用的双向套接字将数据“中继”到本地服务。 客户端不需要与本地服务建立直接连接，也不需要了解服务所在的位置，并且本地服务无需在防火墙上打开任何入站端口。
 
-中继提供的关键功能要素是使用类似于 TCP 的限制、终结点发现、连接状态和叠加的终结点安全性，跨网络边界实现双向非缓冲通信。 中继功能与 VPN 等网络级集成技术的不同之处在于，中继可以划归到单个计算机上的单个应用程序终结点，而 VPN 技术的侵入性则要大得多，因为它依赖于改变网络环境。
+中继提供的关键功能要素是使用类似于 TCP 的限制、终结点发现、连接状态和叠加的终结点安全性，跨网络边界实现双向非缓冲通信。
+
+中继功能与 VPN 等网络级集成技术的不同之处在于，中继可以划归到单个计算机上的单个应用程序终结点，而 VPN 技术的侵入性则要大得多，因为它依赖于改变网络环境。
 
 Azure 中继具有两项功能：
 
@@ -48,7 +50,9 @@ Azure 中继具有两项功能：
 
 ## <a name="hybrid-connections"></a>混合连接
 
-[Azure 中继混合连接](relay-hybrid-connections-protocol.md)功能是在现有中继功能的基础上演进的安全开放协议，可在包含基本 WebSocket 功能（明确包括常用 Web 浏览器中的 WebSocket API）的任何平台和任何语言中实现。 混合连接基于 HTTP 和 WebSocket。
+“Azure 中继混合连接”功能是在现有中继功能的基础上演进的安全开放协议，可在任何平台中以任何语言实现。 混合连接可以中继 WebSocket 以及 HTTP(S) 请求和响应。 这些功能在常见的 Web 浏览器中与 WebSocket API 兼容。 混合连接基于 HTTP 和 WebSocket。
+
+该协议在[混合连接协议指南](relay-hybrid-connections-protocol.md)中完全记录，从而允许将混合连接中继与几乎任何运行时和语言的任何 Websocket 库一起使用。
 
 ### <a name="service-history"></a>服务历史记录
 
@@ -70,6 +74,8 @@ WCF 中继适用于整个 .NET Framework (NETFX) 和 WCF。 可以使用一套 W
 
 * [中继常见问题](relay-faq.md)
 * [创建命名空间](relay-create-namespace-portal.md)
-* [.NET 入门](relay-hybrid-connections-dotnet-get-started.md)
-* [节点入门](relay-hybrid-connections-node-get-started.md)
+* [.NET Websocket 入门](relay-hybrid-connections-dotnet-get-started.md)
+* [.NET HTTP 请求入门](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+* [Node Websocket 入门](relay-hybrid-connections-node-get-started.md)
+* [Node HTTP 请求入门](relay-hybrid-connections-http-requests-node-get-started.md)
 

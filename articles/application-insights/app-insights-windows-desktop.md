@@ -1,6 +1,6 @@
 ---
-title: "监视 Windows 桌面应用的使用情况和性能"
-description: "使用 Application Insights 分析 Windows 桌面应用的使用情况和性能。"
+title: 监视 Windows 桌面应用的使用情况和性能
+description: 使用 Application Insights 分析 Windows 桌面应用的使用情况和性能。
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -11,25 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/26/2016
+ms.date: 04/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b91996c12a27847befcacf6daf14457a0e066aa
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5b325fd4326f2594a7386c65dea17a3da19abde8
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="monitoring-usage-and-performance-in-windows-desktop-apps"></a>监视 Windows 桌面应用中的使用情况和性能
 
-
-[Azure Application Insights](app-insights-overview.md) 和 [HockeyApp](https://hockeyapp.net) 允许监视已部署应用程序的使用情况和性能。
-
-> [!IMPORTANT]
-> 我们建议使用 [HockeyApp](https://hockeyapp.net) 分配和监视桌面和设备应用。 借助 HockeyApp，可管理分配、实时测试和用户反馈以及监视使用情况和崩溃报表。 还可以[使用分析导出和查询遥测](app-insights-hockeyapp-bridge-app.md)。
-> 
-> 尽管遥测可以从桌面应用程序发送到 Application Insights，但这主要适用于调试和实验目的。
-> 
-> 
+尽管遥测可以从桌面应用程序发送到 Application Insights，但这主要适用于调试和实验目的。
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-windows-application"></a>将遥测从 Windows 应用程序发送到 Application Insights
 1. 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](app-insights-create-new-resource.md)。 对于应用程序类型，选择 ASP.NET 应用。

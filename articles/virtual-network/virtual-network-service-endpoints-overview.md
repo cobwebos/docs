@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/07/2018
+ms.date: 05/04/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: e91e27da5ef80236768d19c5870ac96f19f6b074
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -27,14 +27,12 @@ ms.lasthandoff: 04/16/2018
 
 此功能针对以下 Azure 服务和区域提供：
 
-- **Azure 存储**：已正式发布。 Azure 公有云和 Azure 政府中的所有区域。
-- **Azure SQL 数据库**：在所有 Azure 区域正式发布。 
-- **Azure SQL 数据仓库**：预览版。 Azure 公有云中的所有区域。
+- **Azure 存储**：在所有 Azure 区域正式发布
+- **Azure SQL 数据库**：在所有 Azure 区域正式发布
+- **Azure Cosmos DB**：在所有 Azure 公有云区域正式发布 
+- **Azure SQL 数据仓库**：在所有 Azure 公有云区域以预览版提供
 
-有关预览版的最新通知，请查看 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
-
->[!NOTE]
-> 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+有关最新通知，请查看 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -50,7 +48,7 @@ ms.lasthandoff: 04/16/2018
 
 - 该功能仅适用于使用 Azure 资源管理器部署模型部署的虚拟网络。
 - 终结点在 Azure 虚拟网络中配置的子网上启用。 终结点不可用于从本地发往 Azure 服务的流量。 有关详细信息，请参阅[保护从本地进行的 Azure 服务访问](#securing-azure-services-to-virtual-networks)
-- 服务终结点仅适用于虚拟网络区域中的 Azure 服务流量。 为了支持 Azure 存储的 RA-GRS 和 GRS 流量，终结点还经过扩展，包括虚拟网络所部署到的配对区域。 详细了解 [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
+- 对于 Azure SQL，服务终结点仅适用于虚拟网络区域中的 Azure 服务流量。 对于 Azure 存储，为了支持 RA-GRS 和 GRS 流量，终结点还进行扩展以包括虚拟网络所部署到的配对区域。 详细了解 [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>在虚拟网络中保护 Azure 服务
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 04/16/2018
 
 - 服务终结点在虚拟网络中的子网上配置。 终结点可以处理该子网中运行的任何类型的计算实例。
 - 可以针对子网中的所有受支持 Azure 服务（例如 Azure 存储或 Azure SQL 数据库）配置多个服务终结点。
-- 虚拟网络应与 Azure 服务资源位于同一区域。 如果使用 GRS 和 RA-GRS Azure 存储帐户，则主帐户必须与虚拟网络位于同一区域。
+- 对于 Azure SQL，虚拟网络必须与 Azure 服务资源位于同一区域。 如果使用 GRS 和 RA-GRS Azure 存储帐户，则主帐户必须与虚拟网络位于同一区域。 对于所有其他服务，可在任何区域的虚拟网络中保护 Azure 服务资源。 
 - 配置了终结点的虚拟网络可与 Azure 服务资源位于相同或不同的订阅中。 有关设置终结点和保护 Azure 服务时所需的权限的详细信息，请参阅[预配](#Provisioning)。
 - 对于受支持的服务，可以使用服务终结点在虚拟网络中保护新的或现有的资源。
 
@@ -112,7 +110,7 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="pricing-and-limits"></a>定价和限制
 
-使用服务终结点不会产生额外的费用。 Azure 服务（Azure 存储和 Azure SQL 数据库）的当前定价模型保持不变。
+使用服务终结点不会产生额外的费用。 目前，Azure 服务（Azure 存储、Azure SQL 数据库等）的当前定价模型按原样应用。
 
 虚拟网络中的服务终结点总数没有限制。
 
@@ -124,5 +122,5 @@ ms.lasthandoff: 04/16/2018
 - 了解如何[在虚拟网络中保护 Azure 存储帐户](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - 了解如何[在虚拟网络中保护 Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - 了解[虚拟网络中的 Azure 服务集成](virtual-network-for-azure-services.md)
--  快速入门：[Azure 资源管理器模板](https://azure.microsoft.com/en-us/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)，用于在 VNet 的子网上设置服务终结点，并保护访问该子网的 Azure 存储帐户。
+-  快速入门：[Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)，用于在 VNet 的子网上设置服务终结点，并保护访问该子网的 Azure 存储帐户。
 

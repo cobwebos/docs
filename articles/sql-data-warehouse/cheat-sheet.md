@@ -10,11 +10,11 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 172780512dd179d91300459987ad0ba683727859
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a22aadff2d58ace60a980a138035e30a638b08fa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库速查表
 此速查表提供有关生成 Azure SQL 数据仓库解决方案的有用提示和最佳做法。 在开始之前，请阅读 [Azure SQL 数据仓库的工作负荷模式和对立模式](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns)中的每个详细步骤，其中解释了 SQL 数据仓库的定义。
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="data-migration"></a>数据迁移
 
-首先，请将数据载入 [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) 或 Azure Blob 存储。 接下来，使用 PolyBase 将数据载入 SQL 数据仓库的临时表中。 使用以下配置：
+首先，请将数据载入 [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) 或 Azure Blob 存储。 接下来，使用 PolyBase 将数据载入 SQL 数据仓库的临时表中。 使用以下配置：
 
 | 设计 | 建议 |
 |:--- |:--- |
@@ -43,7 +43,7 @@ ms.lasthandoff: 04/18/2018
 | 分区 | 无 |
 | 资源类 | largerc 或 xlargerc |
 
-详细了解[数据迁移]、[数据加载]以及[提取、加载和转换 (ELT) 过程](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading)。 
+详细了解[数据迁移]、[数据加载]以及[提取、加载和转换 (ELT) 过程](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading)。 
 
 ## <a name="distributed-or-replicated-tables"></a>分布式表或复制表
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 04/18/2018
 **提示：**
 * 除了聚集索引，可能还需要向经常用于筛选的列添加非聚集索引。 
 * 注意如何使用 CCI 管理表上的内存。 加载数据时，你希望用户（或查询）受益于大型资源类。 确保避免剪裁和创建许多经过压缩的小型行组。
-* 已使用 CCI 针对计算层障碍进行优化。
+* 在第 2 代上，CCI 表在计算节点上本地缓存，以最大限度地提高性能。
 * 对于 CCI，可能因行组压缩不当而出现性能下降的情况。 如果发生此情况，请重新生成或重新整理 CCI。 你希望每个压缩后的行组包含至少 10 万行。 理想状态为一个行组 100 万行。
 * 基于增量加载频率和大小，你想自动执行索引的重新整理或重新生成操作。 彻底清理操作始终有用。
 * 想要剪裁行组时应更具战略性。 打开的行组有多大？ 未来几天希望加载多少数据？
@@ -111,7 +111,7 @@ SQL 数据仓库使用资源组作为将内存分配给查询的一种方式。 
 
 如果发现查询所需时间过长，请确保用户未在大型资源类中运行。 大型资源类会占用许多并发槽。 它们可能导致其他查询排队等待。
 
-最后，相比弹性优化层，使用计算优化层时每个资源类获得的内存要多 2.5 倍。
+最后，通过使用第 2 代的 SQL 数据仓库，每个资源类可比第 1 代获得多 2.5 倍的内存。
 
 详细了解如何使用[资源类和并发]。
 

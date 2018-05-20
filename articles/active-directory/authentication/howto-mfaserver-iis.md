@@ -1,25 +1,20 @@
 ---
 title: IIS 身份验证和 Azure MFA 服务器 | Microsoft Docs
-description: 本 Azure 多重身份验证页面会帮助你部署 IIS 身份验证和 Azure 多重身份验证服务器。
+description: 部署 IIS 身份验证和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: d1bf1c8a-2c10-4ae6-9f4b-75f0c3df43eb
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 06/16/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: H1Hack27Feb2017,it-pro
-ms.openlocfilehash: 00d40b27d9cdbc1ad157ddbfc029da68542b09b8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 1cf75d498c8a6c8d54fd832f17f5db1580c18286
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>配置适用于 IIS Web 应用的 Azure 多重身份验证服务器
 

@@ -7,13 +7,13 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 12/04/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: f24777fe5bb482eb74aba4acbd7313665f22c38b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9ee88b254131b40fdf1e01b771afa92127734e18
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>在门户中创建、查询和筛选 Azure 搜索索引
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/23/2018
 + 在“搜索浏览器”中测试查询和分析器语法
 + 查看已发布到服务的现有索引并查找其属性
 
-**估计所需时间：**大约 15 分钟，但如果还需要注册帐户或服务，则所需时间会更长。 
+**估计所需时间：** 大约 15 分钟，但如果还需要注册帐户或服务，则所需时间会更长。 
 
 也可参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)来加强相关知识。
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 04/23/2018
 
    ![索引和 API 命令][6]
 
-3. 在命令栏中单击“设置 API 版本”，查看有哪些 REST API 可用。 使用预览 API 可以访问尚未正式发布的新功能。 对于以下查询，除非有明确的指示，否则请使用正式版 (2016-09-01)。 
+3. 在命令栏中单击“设置 API 版本”，查看有哪些 REST API 可用。 使用预览 API 可以访问尚未正式发布的新功能。 对于以下查询，除非有明确的指示，否则请使用正式版 (2017-11-11)。 
 
     > [!NOTE]
     > [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 与 [.NET 库](search-howto-dotnet-sdk.md#core-scenarios)完全相同，但**搜索浏览器**只适合处理 REST 调用。 搜索浏览器接受[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作中使用的所有搜索参数。

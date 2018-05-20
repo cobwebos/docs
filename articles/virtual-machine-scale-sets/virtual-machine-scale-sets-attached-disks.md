@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: ec11a2d66530129fb61d97681e6882b887c8654c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4dd13f1feedf53255daa351bd087845ec5cc845a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 虚拟机规模集和附加数据磁盘
 为了扩展可用存储，Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)支持包含附加数据磁盘的 VM 实例。 可以在创建规模集时附加数据磁盘，也可以将数据磁盘附加到现有规模集。
@@ -91,21 +91,12 @@ ms.lasthandoff: 03/28/2018
 ```
 
 
-## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>将预先填充的数据磁盘添加到现有规模集 
-> 根据设计，在向现有的规模集模型添加磁盘时，创建的磁盘始终为空。 此方案还包括规模集创建的新实例。 之所以出现这样的行为，是因为规模集定义有一个空的数据磁盘。 若要为现有的规模集模型创建预先填充的数据驱动器，可以从后续的两个选项中随意选择一个：
-
-* 通过运行自定义脚本，将数据从实例 0 VM 复制到其他 VM 中的数据磁盘。
-* 使用 OS 磁盘和数据磁盘（以及必需的数据）创建一个托管映像，然后使用该映像创建新的规模集。 这样一来，每个新创建的 VM 都有一个数据磁盘，该磁盘是在规模集的定义中规定的。 由于该定义引用带数据磁盘的映像，且该磁盘包含自定义数据，因此规模集中每个虚拟机都带有这些更改。
-
-> 若要创建自定义映像，可参阅以下方法：[在 Azure 中创建通用 VM 的托管映像](/azure/virtual-machines/windows/capture-image-resource/) 
-
-> 用户需捕获包含必需数据的实例 0 VM，然后将该 vhd 用于映像定义。
+## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>将预先填充的数据磁盘添加到现有规模集
+规模集模型中指定的数据磁盘始终为空。 但是，可以将现有数据磁盘附加到规模集中的特定 VM。 此功能处于预览状态，其示例在 [github](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk) 上提供。 如果想要在规模集中的所有 VM 上传播数据，可以复制数据磁盘并将其附加到规模集中的每个 VM 上，可以创建包含数据的自定义映像，并通过此自定义映像预配规模集，也可以使用 Azure 文件或类似的数据存储产品/服务。
 
 
 ## <a name="additional-notes"></a>附加说明
 Microsoft.Compute API [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) 或更高版本中提供了对 Azure 托管磁盘和规模集附加数据磁盘的支持。
-
-在一开始实施对规模集的附加磁盘支持时，不能对规模集中的各个 VM 执行数据磁盘的附加或分离操作。
 
 Azure 门户对规模集中附加数据磁盘的支持一开始是受限的。 可以根据需要使用 Azure 模板、CLI、PowerShell、SDK 和 REST API 管理附加磁盘。
 

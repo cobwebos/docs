@@ -1,6 +1,6 @@
 ---
-title: "在门户中创建SQL Server Windows VM | Microsoft Docs"
-description: "本教程介绍如何在 Azure 门户中创建 Windows SQL Server 2017 虚拟机。"
+title: 在门户中创建SQL Server Windows VM | Microsoft Docs
+description: 本教程介绍如何在 Azure 门户中创建 Windows SQL Server 2017 虚拟机。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 05/11/2018
 ms.author: jroth
-ms.openlocfilehash: 080fecc7e89d9a76a9b160ba2ff4ba9dc31d0925
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: aeeee58242a5f6ea41b9ba354efc4f5d5087151c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/08/2018
 > 本快速入门提供的路径适用于快速预配并连接到 SQL VM。 若要详细了解其他 SQL VM 预配选择，请参阅 [Azure 门户中的 Windows SQL Server VM 预配指南](virtual-machines-windows-portal-sql-server-provision.md)。
 
 > [!TIP]
-> 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题](virtual-machines-windows-sql-server-iaas-faq.md)。
+> 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md)。
 
 ## <a id="subscription"></a> 获取 Azure 订阅
 
@@ -72,11 +72,9 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="choose-virtual-machine-size"></a>选择虚拟机大小
 
-执行“大小”设置步骤时，请在“选择大小”窗口中选择虚拟机大小。 窗口最初会根据所选映像显示建议的计算机大小。 
+1. 执行“大小”设置步骤时，请在“选择大小”窗口中选择虚拟机大小。
 
-1. 单击“查看所有”查看所有可用的计算机大小。
-
-1. 对于本快速入门，请选择“D2S_V3”。 门户中会显示计算机的每月连续使用估算费用（不包括 SQL Server 许可费用）。 请注意，Developer Edition 不会收取额外的 SQL Server 许可费用。 有关更具体的定价信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。
+   对于本快速入门，请选择“D2S_V3”。 门户中会显示计算机的每月连续使用估算费用（不包括 SQL Server 许可费用）。 请注意，Developer Edition 不会收取额外的 SQL Server 许可费用。 有关更具体的定价信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。
 
    > [!TIP]
    > 在测试时，**D2S_V3** 计算机大小可以节省资金。 但是，对于生产工作负荷，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](virtual-machines-windows-sql-performance.md)中建议的计算机大小和配置。
@@ -85,7 +83,14 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="configure-optional-features"></a>配置可选功能
 
-在“设置”窗口中，单击“确定”以选择默认值。
+1. 如果想要通过远程桌面连接到 VM，请在“设置”窗口中，从“选择公共入站端口”列表中选择“RDP (3389)”端口。
+
+   ![入站端口](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
+
+   > [!NOTE]
+   > 可以选择“MS SQL (1433)”端口以远程访问 SQL Server。 但是，这不必要，因为 **SQL Server 设置**步骤也提供此选项。 如果在此步骤中选择了端口 1433，则无论在 **SQL Server 设置**步骤中选择了哪一项，都会打开该端口。
+
+1. 单击“确定”保存所做的更改并继续。
 
 ## <a name="sql-server-settings"></a>SQL Server 设置
 

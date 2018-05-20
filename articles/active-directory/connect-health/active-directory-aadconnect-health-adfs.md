@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2017
+ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d416c8953f1e41c04a39141c79e0b1568c1dccb3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5b17b4e8581daa5b19aaafd911765d843a9f3fe4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect（同步）的信息，请参阅 [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
@@ -116,7 +116,7 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 >
 >
 
-## <a name="risky-ip-report"></a>有风险的 IP 报表 
+## <a name="risky-ip-report-public-preview"></a>风险 IP 报表（公共预览版）
 AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为最终用户提供身份验证服务，方便他们访问 Office 365 之类的 SaaS 应用程序。 在这种情况下，恶意参与者可能会尝试登录 AD FS 系统，用猜测最终用户密码的方式获得应用程序资源的访问权限。 AD FS 提供 Extranet 帐户锁定功能，可以防止这些类型的攻击，自 AD FS 出现在 Windows Server 2012 R2 中以后就是这样。 如果所用版本较低，强烈建议将 AD FS 系统升级到 Windows Server 2016。 <br />
 另外，单个 IP 地址可能会尝试针对多个用户进行多次登录。 在这些情况下，每个用户的尝试次数必须在 AD FS 中的帐户锁定保护阈值以下。 Azure AD Connect Health 现在提供“风险 IP 报表”来检测这种情况，并在发生这种情况时通知管理员。 下面是此报表的主要优点： 
 - 检测超出基于密码的登录失败次数阈值的 IP 地址
@@ -152,10 +152,12 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 > - 此警报报表不显示 Exchange IP 地址或专用 IP 地址。 它们仍包括在导出列表中。 
 >
 
-
 ![Azure AD Connect Health 门户](./media/active-directory-aadconnect-health-adfs/report4c.png)
 
-### <a name="download-risky-ip-report"></a>下载“风险 IP”报表
+### <a name="load-balancer-ip-addresses-in-the-list"></a>列表中的负载均衡器 IP 地址
+负载均衡器聚合失败的登录活动并命中警报阈值。 如果出现负载均衡器 IP 地址，很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。 请正确配置负载均衡器，使之传递转发客户端 IP 地址。 
+
+### <a name="download-risky-ip-report"></a>下载“风险 IP”报表 
 使用**下载**功能，可以将过去 30 天的整个风险 IP 地址列表从 Connect Health 门户导出 导出结果将包括每个检测时段所有失败的 AD FS 登录活动，因此可以在导出后自定义筛选功能。 除了门户中突出显示的聚合，导出结果还显示有关已失败登录活动（按 IP 地址划分）的更多详细信息：
 
 |  报告项  |  说明  | 
@@ -196,12 +198,14 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 
 3. 如何才能阻止 IP 地址？  <br />
 应该将标识的恶意 IP 地址添加到防火墙，或者在 Exchange 中进行阻止。   <br />
-对于 AD FS 2016 + 1803.C+ QFE，可以直接在 AD FS 中阻止 IP 地址。 
 
 4. 为何此报表中看不到任何项目？ <br />
    - 失败的登录活动数未超出阈值设置。 
    - 确保在 AD FS 服务器列表中没有活动的“运行状况服务不是最新的”警报。  详细了解[如何排查此警报问题](active-directory-aadconnect-health-data-freshness.md)。
    - AD FS 场中未启用审核。
+ 
+5. 为何会看到无权访问该报表？  <br />
+需要全局管理员或[安全读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)权限。 请联系全局管理员以获得访问权限。
 
 
 ## <a name="related-links"></a>相关链接

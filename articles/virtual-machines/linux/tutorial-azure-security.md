@@ -1,12 +1,12 @@
 ---
-title: Azure 安全中心和 Azure 中的 Linux 虚拟机 | Microsoft Docs
-description: 通过 Azure 安全中心了解 Azure Linux 虚拟机的安全性。
+title: 教程 - 使用 Azure 安全中心保护 Azure 中的 Linux VM | Microsoft Docs
+description: 本教程介绍如何使用 Azure 安全中心功能保护 Azure 中的 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/07/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 41fb802dd8f5dd7bec2c481f3719f304b0c8d0ac
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e049bed6336f87d8077726843bbc870be90c633f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>使用 Azure 安全中心监视虚拟机安全
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教程：使用 Azure 安全中心监视 Linux 虚拟机
 
 Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全中心提供了集成的安全监视功能。 它可以检测到在其他方式下可能不会注意到的风险。 本教程介绍 Azure 安全中心，以及如何执行以下操作：
  
@@ -30,7 +30,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 > * 设置数据收集
 > * 设置安全策略
 > * 查看和修复配置运行状况问题
-> * 查看检测到的威胁  
+> * 查看检测到的威胁
 
 ## <a name="security-center-overview"></a>安全中心概述
 

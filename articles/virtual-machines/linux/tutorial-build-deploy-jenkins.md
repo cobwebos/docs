@@ -1,11 +1,11 @@
 ---
-title: "使用 Team Services 通过 Jenkins 实现到 Azure VM 的 CI/CD | Microsoft Docs"
-description: "从 Visual Studio Team Services 或 Microsoft Team Foundation Server 中的 Release Management，通过使用 Jenkins 将 Node.js 应用设置为持续集成 (CI) 和持续部署 (CD) 到 Azure VM"
+title: 教程 - 使用 Team Services 通过 Jenkins 实现到 Azure VM 的 CI/CD | Microsoft Docs
+description: 本教程介绍如何从 Visual Studio Team Services 或 Microsoft Team Foundation Server 中的 Release Management，通过使用 Jenkins 将 Node.js 应用设置为持续集成 (CI) 和持续部署 (CD) 到 Azure VM
 author: ahomer
 manager: douge
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
@@ -14,19 +14,17 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: bfda0475b58556db1236c8b051c59393384720f7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: fc301edf13f8e6874f0b77440e2b0dc01b2a55fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="deploy-your-app-to-linux-vms-by-using-jenkins-and-team-services"></a>通过使用 Jenkins 和 Team Services 将应用部署到 Linux VM
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>教程：使用 Jenkins 和 Visual Studio Team Services 将应用部署到 Azure 中的 Linux 虚拟机
 
 持续集成 (CI) 和持续部署 (CD) 可形成一个管道，用于生成、发布和部署代码。 Visual Studio Team Services 提供一套完整的全功能 CI/CD 自动化工具，用于部署到 Azure。 Jenkins 是一款常用的基于服务器的第三方 CI/CD 工具，也提供 CI/CD 自动化。 你可以结合使用 Team Services 和 Jenkins 来自定义交付云应用或服务的方式。
 
-在本教程中，将使用 Jenkins 生成 Node.js Web 应用。 随后，使用 Team Services 或 Team Foundation Server 将其部署到包含 Linux 虚拟机 (VM) 的[部署组](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/)。
-
-将能够：
+在本教程中，将使用 Jenkins 生成 Node.js Web 应用。 随后，使用 Team Services 或 Team Foundation Server 将其部署到包含 Linux 虚拟机 (VM) 的[部署组](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/)。 学习如何：
 
 > [!div class="checklist"]
 > * 获取示例应用。

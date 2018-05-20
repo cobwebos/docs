@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: fb455fe6f1b481ad2dc855d147860cb2c7898779
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c0261b4f89647a8db3b7bf452a8827d40fdc1911
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -23,7 +23,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="configuring-the-backup-job-for-azure-files"></a>为 Azure 文件配置备份作业
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>为什么我看不到需要保护的部分存储帐户？这些帐户中包含的 Azure 文件共享都是有效的。 <br/>
-在预览期间，Azure 文件共享的备份并不支持所有类型的存储帐户。 请参阅[此处](troubleshoot-azure-files.md#preview-boundaries)的列表，了解一系列受支持的存储帐户。
+在预览期间，Azure 文件共享的备份并不支持所有类型的存储帐户。 请参阅[此处](troubleshoot-azure-files.md#preview-boundaries)的列表，了解一系列受支持的存储帐户。 还有一种可能是，要查找的存储帐户已受保护或已注册到另一保管库中。 从保管库中[注销](troubleshoot-azure-files.md#configuring-backup)可发现其他保管库中要保护的存储帐户。
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>尝试配置备份时，为什么看不到存储帐户中的部分 Azure 文件共享？ <br/>
 检查是否已在同一恢复服务保管库中对 Azure 文件共享进行保护，或者已在最近将其删除。
@@ -52,6 +52,7 @@ Azure 文件共享备份目前为预览版，只在以下地理区域提供：
 - 日本西部 (JPW)
 -   印度中部 (INC) 
 - 印度南部 (INS)
+- 韩国中部 (KRC)
 - 韩国南部 (KRS)
 -   美国中北部 (NCUS) 
 -   北欧 (NE) 

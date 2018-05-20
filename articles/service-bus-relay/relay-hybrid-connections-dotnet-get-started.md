@@ -1,11 +1,11 @@
 ---
-title: "开始在 .NET 中使用 Azure 中继混合连接 | Microsoft 文档"
-description: "为 Azure 中继混合连接编写 C# 控制台应用程序。"
+title: 开始在 .NET 中使用 Azure 中继混合连接 Websocket | Microsoft Docs
+description: 为 Azure 中继混合连接 Websocket 编写 C# 控制台应用程序。
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
 ms.service: service-bus-relay
 ms.devlang: tbd
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 3667d7f4a74ac7c43f8f443aed2beacafd909dbd
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5b900f70721f8642e27daf242295fbda77d7df6f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="get-started-with-relay-hybrid-connections"></a>中继混合连接入门
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>开始在 .NET 中使用中继混合连接 Websocket
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
 本教程简单介绍了 [Azure 中继混合连接](relay-what-is-it.md#hybrid-connections)。 了解如何使用 Microsoft .NET 创建客户端应用程序，以便将消息发送到相应的侦听器应用程序。 

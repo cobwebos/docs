@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 071b209ffa8ffeb8ef6d998f08bcd68868e29911
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -179,7 +179,7 @@ Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行�
 * [存储服务 REST API](https://docs.microsoft.com/rest/api/storageservices/)
 * [适用于 .NET 的存储客户端库](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [适用于 Java/Android 的存储空间客户端库](https://docs.microsoft.com/java/api/overview/azure/storage)
-* [适用于 Node.js 的存储空间客户端库](https://docs.microsoft.com/en-us/javascript/api/azure-storage)
+* [适用于 Node.js 的存储空间客户端库](https://docs.microsoft.com/javascript/api/azure-storage)
 * [适用于 Python 的存储空间客户端库](https://github.com/Azure/azure-storage-python)
 * [适用于 PHP 的存储空间客户端库](https://github.com/Azure/azure-storage-php)
 * [适用于 Ruby 的存储空间客户端库](https://github.com/Azure/azure-storage-ruby)

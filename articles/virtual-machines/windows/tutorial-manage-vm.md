@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 模块创建和管理 Windows VM | Microsoft Docs
-description: 教程 - 使用 Azure PowerShell 模块创建和管理 Windows VM
+title: 教程 - 使用 Azure PowerShell 创建和管理 Windows VM | Microsoft Docs
+description: 本教程介绍如何使用 Azure PowerShell 在 Azure 中创建和管理 Windows VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cce3fd003888c76490cb402b658f5c3aa76ab11e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8eeba3b38e4a78bc33b995ee06f76116601c4d12
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建和管理 Windows VM
+# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
 
 Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
 
@@ -33,10 +33,9 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 > * 调整 VM 的大小
 > * 查看并了解 VM 状态
 
-
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.3 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。 
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-resource-group"></a>创建资源组
 
@@ -98,7 +97,7 @@ Azure 应用商店包括许多可用于新建虚拟机的虚拟机映像。 在�
 
 使用 [Get AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) 命令返回映像发布者的列表：
 
-```powersehll
+```powershell
 Get-AzureRmVMImagePublisher -Location "EastUS"
 ```
 
@@ -157,12 +156,12 @@ New-AzureRmVm `
     -AsJob
 ```
 
-`-AsJob` 参数以后台任务的方式创建 VM，因此 PowerShell 提示符会返回到你所在的位置。 可以通过 `Job` cmdlet 查看后台作业的详细信息。
+`-AsJob` 参数以后台任务的方式创建 VM，因此 PowerShell 提示符会返回到你所在的位置。 可以通过 `Get-Job` cmdlet 查看后台作业的详细信息。
 
 
 ## <a name="understand-vm-sizes"></a>了解 VM 大小
 
-虚拟机大小决定虚拟机可用计算资源（如 CPU、GPU 和内存）的数量。 创建的虚拟机大小需适合预期的工作负荷。 如果工作负荷增加，可调整现有虚拟机的大小。
+虚拟机大小决定虚拟机可用计算资源（如 CPU、GPU 和内存）的数量。 创建的虚拟机大小需适合预期的工作负荷。 如果工作负荷增加，则可调整现有虚拟机的大小。
 
 ### <a name="vm-sizes"></a>VM 大小
 

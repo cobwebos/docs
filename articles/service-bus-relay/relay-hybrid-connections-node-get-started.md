@@ -1,30 +1,30 @@
 ---
-title: "开始在 Node 中使用 Azure 中继混合连接 | Microsoft 文档"
-description: "为 Azure 中继混合连接编写 Node.js 控制台应用程序。"
+title: 开始在 Node 中使用 Azure 中继混合连接 Websocket | Microsoft Docs
+description: 为 Azure 中继混合连接 Websocket 编写 Node.js 控制台应用程序
 services: service-bus-relay
 documentationcenter: node
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
 ms.service: service-bus-relay
 ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 05/02/2018
 ms.author: sethm
-ms.openlocfilehash: d79c05253da568d3a9b2f2912d22eab2df586821
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 1e0b76b96029e1a7ed84f1c8cd895090e8acbc6f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="get-started-with-relay-hybrid-connections"></a>中继混合连接入门
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-node"></a>开始在 Node 中使用中继混合连接 Websocket
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-本教程简单介绍了 [Azure 中继混合连接](relay-what-is-it.md#hybrid-connections)，同时介绍了如何使用 Node.js 创建客户端应用程序，以便将消息发送到相应的侦听器应用程序。 
+本教程简单介绍了 [Azure 中继混合连接](relay-what-is-it.md#hybrid-connections) Websocket 功能，同时介绍了如何使用 Node.js 创建客户端应用程序，以便将 Websocket 消息发送到相应的侦听器应用程序。
 
 ## <a name="what-will-be-accomplished"></a>将要完成的任务
 
