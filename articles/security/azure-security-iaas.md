@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1a6ff01274c4a47730ffe45275aed9d122994260
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
@@ -106,7 +106,7 @@ Azure 开发测试实验室的功能包括：
 
 在 Azure 中承载实验室或生产系统意味着可从 Internet 访问系统。 默认情况下，新的 Windows 虚拟机的 RDP 端口可从 Internet 访问，并且 Linux 虚拟机的 SSH 端口打开。 为了将未经授权访问的风险降至最低，有必要采取措施限制公开的终结点。
 
-Azure 中的一些技术可有助于限制对这些管理终结点的访问。 在 Azure 中，可以使用[网络安全组](../virtual-network/virtual-networks-nsg.md) (NSG)。 在使用 Azure 资源管理器进行部署时，NSG 将限制从所有网络访问此管理终结点（RDP 或 SSH）。 考虑 NSG 时，请考虑路由器 ACL。 可以使用它们紧密控制 Azure 网络的各个部分之间的网络通信。 这类似于在外围网络或其他隔离的网络中创建网络。 它们不检查流量，但它们将有助于网络分段。
+Azure 中的一些技术可有助于限制对这些管理终结点的访问。 在 Azure 中，可以使用[网络安全组](../virtual-network/security-overview.md) (NSG)。 在使用 Azure 资源管理器进行部署时，NSG 将限制从所有网络访问此管理终结点（RDP 或 SSH）。 考虑 NSG 时，请考虑路由器 ACL。 可以使用它们紧密控制 Azure 网络的各个部分之间的网络通信。 这类似于在外围网络或其他隔离的网络中创建网络。 它们不检查流量，但它们将有助于网络分段。
 
 
 在 Azure 中，可以从本地网络配置[站点到站点 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。 站点到站点 VPN 将本地网络扩展到云。 这样就会提供另一个使用 NSG 的机会，因为还可以将 NSG 修改为不允许从除本地网络外的任何其他位置进行访问。 然后，可以要求首先通过 VPN 连接到 Azure 网络来进行此管理。

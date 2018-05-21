@@ -1,23 +1,23 @@
 ---
-title: "Azure 云服务定义NetworkTrafficRules 架构 | Microsoft Docs"
-ms.custom: 
+title: Azure 云服务定义NetworkTrafficRules 架构 | Microsoft Docs
+ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
-caps.latest.revision: "17"
+caps.latest.revision: 17
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 37ec6c771ad83be680d95e9b5597d8da3cace9ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 779d3b42aeab04bb93756439a0482f32ade6557e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure 云服务定义 NetworkTrafficRules 架构
 `NetworkTrafficRules` 节点是服务定义文件中的一个可选元素，用于指定角色如何彼此进行通信。 它限制哪些角色可以访问特定角色的内部终结点。 `NetworkTrafficRules` 不是一个独立的元素；它在服务定义文件中与两个或更多角色结合使用。
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="RoleEndpoint"></a> RoleEndpoint 元素
 `RoleEndpoint` 元素描述角色上允许与之进行通信的终结点。 如果角色上有多个终结点，可以指定多个 `RoleEndpoint` 元素。
 
-| 属性      | 类型     | 说明 |
+| 属性      | Type     | 说明 |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | 必需。 允许将流量发送到的终结点的名称。|
 | `roleName`     | `string` | 必需。 允许与之进行通信的 web 角色的名称。|
@@ -86,14 +86,14 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="WhenSource"></a> WhenSource 元素
 `WhenSource` 元素描述可以与 `Destinations` 节点中定义的终结点进行通信的角色的集合。
 
-| 属性 | 类型     | 说明 |
+| 属性 | Type     | 说明 |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必需。 指定允许通信时要应用的规则。 目前唯一有效的值是 `AnyRule`。|
   
 ##  <a name="FromRole"></a> FromRole 元素
 `FromRole` 元素指定可以与 `Destinations` 节点中定义的终结点进行通信的角色。 如果有多个可以与终结点进行通信的角色，可以指定多个 `FromRole` 元素。
 
-| 属性  | 类型     | 说明 |
+| 属性  | Type     | 说明 |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必需。 允许从中进行通信的角色的名称。|
 

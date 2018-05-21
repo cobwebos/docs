@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 929caab0aafdad24062e372e458f16a5f36cce73
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a6a7861b95f82180b72045f10db99d5bc45eed73
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>教程：Azure Active Directory 与多个 Amazon Web Services (AWS) 帐户的集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/18/2018
 - 可以让用户使用其 Azure AD 帐户自动登录到 Amazon Web Services (AWS)（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 04/18/2018
 
     ![结果列表中的 Amazon Web Services (AWS)](./media/active-directory-saas-aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
 
-5. 添加应用程序后，立即转到“属性”页并复制“对象 ID”。
+5. 添加应用程序后，转到“属性”页并复制“对象 ID”。
 
     ![结果列表中的 Amazon Web Services (AWS)](./media/active-directory-saas-aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_properties.png)
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 04/18/2018
     
     ![Graph 浏览器对话框](./media/active-directory-saas-aws-multi-accounts-tutorial/graph-explorer-new1.png)
     
-    f. 从提取的服务主体列表中，获取需要修改的服务主体。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 可以使用从“Azure AD 属性”页复制的“对象 ID”运行以下查询，转到相应的服务主体。
+    f. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 可以使用从“Azure AD 属性”页复制的“对象 ID”运行以下查询，转到相应的服务主体。
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`。
 
@@ -257,7 +257,7 @@ ms.lasthandoff: 04/18/2018
 
     h. 现在需要为应用程序生成新角色。 
 
-    i. 以下 JSON 是 appRoles 对象的示例。 创建类似的对象，以添加应用程序所需的角色。 
+    i. 下面 JSON 是 appRoles 对象的示例。 创建类似的对象，以添加应用程序所需的角色。 
 
     ```
     {
@@ -299,7 +299,7 @@ ms.lasthandoff: 04/18/2018
     ```
 
     > [!Note]
-    > 只能在完成修补操作的 **msiam_access** 之后添加新角色。 此外，可以根据组织的需要添加任意数量的角色。 Azure AD 将在 SAML 响应中作为声明值发送这些角色的**值**。
+    > 只能在完成修补操作的 **msiam_access** 之后添加新角色。 此外，可以根据组织的需要添加任意数量的角色。 Azure AD 将在 SAML 响应中将这些角色的**值**作为声明值进行发送。
     
     j. 返回到 Graph 浏览器，将方法从 **GET** 更改为 **PATCH**。 通过更新 appRoles 属性（类似于上面示例中所示的属性）来修补服务主体对象以获取所需的角色。 单击“运行查询”执行此修补操作。 随后会显示一条成功消息，确认已创建 Amazon Web Services 应用程序的角色。
 
@@ -337,7 +337,7 @@ ms.lasthandoff: 04/18/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

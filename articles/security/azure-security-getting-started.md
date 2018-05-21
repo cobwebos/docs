@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: d0443128064332a37c95d5c39cd73b759a002cca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a908c242b5d41d5cd61d8775bdbe53f3cdddd3ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure 安全入门
 
@@ -136,7 +136,7 @@ IP 筛选器可以防止来宾虚拟机执行以下操作：
 
 可以使用以下 Azure 虚拟网络技术来帮助实现虚拟网络上的安全通信：
 
-* [**网络安全组 (NSG)**](../virtual-network/virtual-networks-nsg.md)。 可以在虚拟网络中使用 NSG 控制流向一个或多个虚拟机实例的流量。 NSG 包含根据流量方向、协议、源地址和端口以及目标地址和端口允许或拒绝流量的访问控制规则。
+* [**网络安全组 (NSG)**](../virtual-network/security-overview.md)。 可以在虚拟网络中使用 NSG 控制流向一个或多个虚拟机实例的流量。 NSG 包含根据流量方向、协议、源地址和端口以及目标地址和端口允许或拒绝流量的访问控制规则。
 * [**用户定义的路由**](../virtual-network/virtual-networks-udr-overview.md)。 可以创建用户定义的路由来指定下一跃点，方便数据包流向特定的子网并转到虚拟网络安全设备，从而控制数据包通过虚拟设备进行的路由。
 * [**IP 转发**](../virtual-network/virtual-networks-udr-overview.md)。 虚拟网络安全设备必须能够接收不发送给自身的传入流量。 若要允许虚拟机接收发送到其他目标的流量，可为该虚拟机启用 IP 转发。
 * [**强制隧道**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。 借助强制隧道，可以通过站点间 VPN 隧道，将虚拟网络中虚拟机生成的所有 Internet 绑定流量重定向或“强制”返回到本地位置，以便于检查和审核

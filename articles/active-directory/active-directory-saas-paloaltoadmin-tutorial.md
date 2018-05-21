@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c5be53f06e009cb2d5180e43318c8670139a68db
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aa3366810a40b004fe510cb2909f8da0f3513ddb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>将 Azure Active Directory 与 Palo Alto Networks - Admin UI 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/16/2018
 - 可让用户使用其 Azure AD 帐户自动登录到 Palo Alto Networks - Admin UI（单一登录或 SSO）。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -267,7 +267,7 @@ ms.lasthandoff: 03/16/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 选择“创建”。
+    d. 选择**创建**。
  
 ### <a name="create-a-palo-alto-networks---admin-ui-test-user"></a>创建 Palo Alto Networks - 管理 UI 测试用户
 
@@ -312,7 +312,7 @@ Palo Alto Networks - Admin UI 支持实时用户预配。 如果用户尚不存�
 ## <a name="additional-resources"></a>其他资源
 
 * [有关将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

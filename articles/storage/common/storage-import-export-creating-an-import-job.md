@@ -1,11 +1,11 @@
 ---
-title: "为 Azure 导入/导出创建导入作业 | Microsoft Docs"
-description: "了解如何为 Microsoft Azure 导入/导出服务创建导入作业。"
+title: 为 Azure 导入/导出创建导入作业 | Microsoft Docs
+description: 了解如何为 Microsoft Azure 导入/导出服务创建导入作业。
 author: muralikk
 manager: syadav
 editor: syadav
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 8b886e83-6148-4149-9d0f-5d48ec822475
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: d373d2a0e601f2796719fc5efb8761f276ab24d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a80d2169f346238f997c727f0e9d82666897b608
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导入作业
 
@@ -103,6 +103,8 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>使用寄送信息更新导入作业
 获取跟踪号后，请调用[更新作业属性](/api/storageimportexport/jobs#Jobs_Update)操作更新承运人名称、作业跟踪号以及运送回邮的承运人帐号。 可以选择性地指定驱动器数量和寄送日期。
+
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

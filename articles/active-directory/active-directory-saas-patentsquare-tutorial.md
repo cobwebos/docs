@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 PatentSQUARE 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 PatentSQUARE 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 PatentSQUARE 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 PatentSQUARE 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 47ba146d18a20cf6c7e7480d74a02ba354486988
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 97121dbdef9d3c3cd8b765ccf034fcafed7b3811
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>教程：Azure Active Directory 与 PatentSQUARE 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/01/2018
 - 可以让用户通过其 Azure AD 帐户自动登录到 PatentSQUARE（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 02/01/2018
 
 **若要从库中添加 PatentSQUARE，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -154,7 +154,7 @@ ms.lasthandoff: 02/01/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-patentsquare-test-user"></a>创建 PatentSQUARE 测试用户
 
@@ -200,7 +200,7 @@ ms.lasthandoff: 02/01/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 
