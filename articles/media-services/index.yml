@@ -14,36 +14,71 @@ metadata:
   ms.topic: landing-page
   ms.date: 04-21-2018
   ms.author: juliako
-  ms.openlocfilehash: 6bee2f17db6d1f79dd2ba84a278ff6a82b871a9e
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 781cd8eb2796062b3cebb6b848ee5f1fe204f460
+  ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/07/2018
+  ms.lasthandoff: 05/20/2018
 abstract:
   description: Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。
 sections:
-- title: 
-  items:
+- items:
   - type: list
     style: cards
-    className: cardsA
+    className: cardsM
+    columns: 2
     items:
-    - html: <a href="/azure/media-services/latest/"> <br><strong>Azure 媒体服务 v3（预览）</strong></a> <p>了解如何使用媒体服务 v3 进行按需流式处理、实时广播和视频分析。</p>
-    - html: <a href="/azure/media-services/previous/"> <br><strong>Azure 媒体服务 v2 (GA)</strong></a> <p>了解如何使用媒体服务 v2 进行按需流式处理、实时广播和视频分析。</p>
+    - href: /azure/media-services/latest/
+      html: <p>了解如何使用媒体服务 v3 对视频进行编码、按需流式处理、实时直播和分析。</p>
+      image:
+        src: media/index/media-services-v3.png
+      title: Azure 媒体服务 v3（预览）
+    - href: /azure/media-services/previous/
+      html: <p>了解如何使用媒体服务 v2 对视频进行编码、按需流式处理和实时直播。</p>
+      image:
+        src: media/index/media-services-v2.png
+      title: Azure 媒体服务 v2 (GA)
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 了解如何创建媒体服务帐户，如何开始视频编码，然后如何使用 Azure Media Player 来播放视频：
-  - type: list
-    style: ordered
-    items:
-    - html: 流式处理文件：<a href="/azure/media-services/latest/stream-files-dotnet-quickstart">v3</a> | <a href="/azure/media-services/previous/media-services-portal-vod-get-started">v2</a>
+    text: 了解如何使用媒体服务进行实时按需流式处理：
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/stream.png
+      title: 实时流式处理
+    - image:
+        src: media/index/stream.png
+      title: 对文件进行流式处理
+    rows:
+    - title: 媒体服务 v3
+      values:
+      - href: https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live
+      - href: /azure/media-services/latest/stream-files-dotnet-quickstart
+    - title: 媒体服务 v2
+      values:
+      - href: /azure/media-services/previous/media-services-portal-live-passthrough-get-started
+      - href: /azure/media-services/previous/media-services-portal-vod-get-started
 - title: 分步教程
   items:
   - type: paragraph
     text: 了解如何使用媒体服务进行文件流式处理和视频分析：
-  - type: list
-    style: ordered
-    items:
-    - html: 上传、编码、流式处理视频：<a href="/azure/media-services/latest/stream-files-tutorial-with-api">v3</a> | <a href="/azure/media-services/previous/media-services-dotnet-get-started">v2</a>
-    - html: 分析视频：<a href="/azure/media-services/latest/analyze-videos-tutorial-with-api">v3</a> | <a href="/azure/media-services/previous/media-services-analytics-overview">v2</a>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/encode.png
+      title: 编码和流式处理
+    - image:
+        src: media/index/analyze.png
+      title: 分析视频
+    rows:
+    - title: 媒体服务 v3
+      values:
+      - href: /azure/media-services/latest/stream-files-tutorial-with-api
+      - href: /azure/media-services/latest/analyze-videos-tutorial-with-api
+    - title: 媒体服务 v2
+      values:
+      - href: /azure/media-services/previous/media-services-dotnet-get-started
+      - href: 

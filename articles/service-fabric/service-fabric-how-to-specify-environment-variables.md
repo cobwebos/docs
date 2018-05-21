@@ -1,22 +1,22 @@
 ---
-title: "在 Azure Service Fabric 中指定服务的环境变量的操作说明 | Microsoft Docs"
-description: "演示如何在 Service Fabric 中使用应用程序的环境变量"
+title: 在 Azure Service Fabric 中指定服务的环境变量的操作说明 | Microsoft Docs
+description: 演示如何在 Service Fabric 中使用应用程序的环境变量
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: d487eeadde9f9a45549763863f8fe5b06b2945a4
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 4325b3acd3cbc73ee5976021bebe96c267b2a6dd
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>如何在 Service Fabric 中指定服务的环境变量
 

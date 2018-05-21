@@ -57,7 +57,7 @@
           href: howto-create-event-rules.md
         - name: 准备和上传图像
           href: howto-prepare-images.md
-    - name: 操作员
+    - name: 运算符
       items:
         - name: 管理设备
           href: howto-manage-devices.md
@@ -105,5 +105,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 资源
   items:
+    - name: 客户数据请求
+      href: iot-central-customer-data-requests.md
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-central'
