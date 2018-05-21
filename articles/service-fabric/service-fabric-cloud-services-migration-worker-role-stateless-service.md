@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: bb8f2f8a6f0905716c34796a5b16c38f406ae64c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c6bdd6f88c9008a8d9c15d22bdcf263190424649
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
 本文说明如何将云服务的 Web 角色和辅助角色迁移到 Service Fabric 无状态服务。 对于整体体系结构大致保持相同的应用程序来说，这是最简单的云服务到 Service Fabric 迁移路径。
@@ -109,8 +109,8 @@ namespace Stateless1
 
 辅助角色和 Service Fabric 服务的生命周期与生存期之间有几个主要差异：
 
-* **生命周期：**最大的差异为辅助角色是 VM，因此其生命周期绑定到 VM，且包含 VM 启动和停止时的事件。 Service Fabric 服务的生命周期与 VM 的生命周期不同，因此不包含主机 VM 或计算机启动和停止时的事件，因为它们彼此不相关。
-* **生存期：**如果 `Run` 方法退出，辅助角色实例将回收。 但是，Service Fabric 服务中的 `RunAsync` 方法可以运行到完成为止，服务实例将保持运行状态。 
+* **生命周期：** 最大的差异为辅助角色是 VM，因此其生命周期绑定到 VM，且包含 VM 启动和停止时的事件。 Service Fabric 服务的生命周期与 VM 的生命周期不同，因此不包含主机 VM 或计算机启动和停止时的事件，因为它们彼此不相关。
+* **生存期：** 如果 `Run` 方法退出，辅助角色实例将回收。 但是，Service Fabric 服务中的 `RunAsync` 方法可以运行到完成为止，服务实例将保持运行状态。 
 
 Service Fabric 为侦听客户端请求的服务提供可选的通信设置入口点。 RunAsync 和通信入口点都是 Service Fabric 服务中的可选重写（服务可选择只侦听客户端请求和/或只运行处理循环），这就是 RunAsync 方法无需重新启动服务实例就可退出的原因，因为它可以继续侦听客户端请求。
 
@@ -128,9 +128,9 @@ Service Fabric 为侦听客户端请求的服务提供可选的通信设置入�
 ## <a name="configuration-settings"></a>配置设置
 云服务中的配置设置是针对 VM 角色设置的，将应用到该 VM 角色的所有实例。 这些设置是 ServiceConfiguration.*.cscfg 文件中设置的键-值对，可直接通过 RoleEnvironment 进行访问。 在 Service Fabric 中，设置单独应用到每个服务和每个应用程序，而不是应用到 VM，因为 VM 可以托管多个服务和应用程序。 服务由三个包组成：
 
-* **代码：**包含服务的可执行文件、二进制文件、DLL 和服务需要运行的任何其他文件。
-* **配置：**服务的所有配置文件和设置。
-* **数据：**与服务关联的静态数据文件。
+* **代码：** 包含服务的可执行文件、二进制文件、DLL 和服务需要运行的任何其他文件。
+* **配置：** 服务的所有配置文件和设置。
+* **数据：** 与服务关联的静态数据文件。
 
 其中每个包可独立设置版本和进行升级。 与云服务类似，可通过 API 以编程方式访问配置包。发生配置包更改时，系统会提供事件来通知服务。 Settings.xml 文件可用于键-值配置和编程访问，这与 App.config 文件的应用设置部分类似。 但是，与云服务不同的是，Service Fabric 配置包可以包含任何格式的任何配置文件，不管是 XML、JSON、YAML 还是自定义的二进制格式。 
 

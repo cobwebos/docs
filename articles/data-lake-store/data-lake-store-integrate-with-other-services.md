@@ -1,7 +1,7 @@
 ---
-title: "集成 Data Lake Store 和其他 Azure 服务 | Microsoft Docs"
-description: "了解 Data Lake Store 如何与其他 Azure 服务集成"
-documentationcenter: 
+title: 集成 Data Lake Store 和其他 Azure 服务 | Microsoft Docs
+description: 了解 Data Lake Store 如何与其他 Azure 服务集成
+documentationcenter: ''
 services: data-lake-store
 author: nitinme
 manager: jhubbard
@@ -9,16 +9,14 @@ editor: cgronlun
 ms.assetid: 48a5d1f4-3850-4c22-bbc4-6d1d394fba8a
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: d43459b900232612d83506438e6a70daa893eb80
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: e11100118f599b4fee6362625aff05c50bb07c87
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>集成 Data Lake Store 和其他 Azure 服务
 Azure Data Lake Store 可和其他 Azure 服务结合使用来提供更多的方案。 下面的文章列出了可和 Data Lake Store 集成的服务。

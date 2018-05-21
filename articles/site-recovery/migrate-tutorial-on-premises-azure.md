@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 将本地计算机迁移到 Azure | Microsoft 文档"
-description: "本文将介绍如何使用 Azure Site Recovery 将本地计算机迁移到 Azure。"
+title: 使用 Azure Site Recovery 将本地计算机迁移到 Azure | Microsoft 文档
+description: 本文将介绍如何使用 Azure Site Recovery 将本地计算机迁移到 Azure。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 656ba02401d9ba610d0ebe33a683164af0b871f0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3e82983ff171e638415d6e7cafe0cb034dd978af
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/28/2018
 此教程为系列教程中的第三个教程。 本教程假设你已完成前面教程中的以下任务：
 
 1. [准备 Azure](tutorial-prepare-azure.md)
-2. 准备本地 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 服务器或 Hyper-V 服务器。
+2. 在本地准备 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 或 [Hyper-V] (hyper-v-prepare-on-premises-tutorial.md) 服务器。
 
 在开始之前，查看用于灾难恢复的 [VMware](vmware-azure-architecture.md) 或 [Hyper-V](hyper-v-azure-architecture.md) 体系结构会有所帮助。
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="run-a-test-migration"></a>运行测试迁移
 
-运行[测试故障转移](tutorial-dr-drill-azure.md)，确保一切如预期正常运行。
+运行“测试故障转移”[](tutorial-dr-drill-azure.md)，确保一切如预期正常运行。
 
 
 ## <a name="migrate-to-azure"></a>迁移到 Azure

@@ -4,13 +4,13 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
-ms.date: 03/19/2018
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: bba52534c534ea33c2939d0d9b76b7b4138e13cd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a878bab2bef31ff853dbad503a706e1a8d5803fe
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/16/2018
 2. 若要检查时区，请运行 w32tm /tz。
 3. 若要同步时间，请运行 w32tm /resync。
 
-我的项目密钥在末端有“==”符号。这些符号通过收集器编码为其他字母数字字符。这是正常情况吗？
+我的项目密钥在末端有“==”符号。这些符号通过收集器编码为其他字母数字字符。** 这是正常情况吗？
 
 是的，每个项目密钥均以“==”结尾。 收集器在处理项目密钥前会对其进行加密。
 

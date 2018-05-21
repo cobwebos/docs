@@ -64,7 +64,7 @@ ms.lasthandoff: 04/16/2018
 
 1. 更新应用程序代码中的访问密钥以引用 Azure Cosmos DB 帐户的辅助访问密钥。
 2. 再生成 Azure Cosmos DB 帐户的主访问密钥。 在 [Azure 门户](https://portal.azure.com/)中，访问 Azure Cosmos DB 帐户。
-3. 在“Azure Cosmos DB 帐户”页上，单击“密钥”（或 MongoDB 帐户的“连接字符串”\**）。
+3. 在“Azure Cosmos DB 帐户”页上，单击“密钥”（或 MongoDB 帐户的“连接字符串”\*\*）。
 4. 在“密钥”/“连接字符串”页上，单击“重新生成”按钮，并单击“确定”确认要生成新密钥。
     ![重新生成访问密钥](./media/manage-account/regenerate-keys.png)
 5. 确认新的密钥可供使用后（大约在重新生成后的五分钟），请更新应用程序代码中的访问密钥以引用新的主访问密钥。
