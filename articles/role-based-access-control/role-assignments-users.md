@@ -5,20 +5,20 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: jeffsta
+editor: ''
 ms.assetid: e6f9e657-8ee3-4eec-a21c-78fe1b52a005
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: rolyon
-ms.openlocfilehash: 35838ed0f86dc4e063c943087c88d19195df72fd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 94662c99ace749f50deccf4c8cbcd9d42fee75e1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>在 Azure 门户中查看用户和组的访问权限分配
 > [!div class="op_single_selector"]
@@ -29,8 +29,8 @@ ms.lasthandoff: 04/16/2018
 
 使用 RBAC 分配的访问权限非常精准，因为有两种方法可供你限制权限：
 
-* **作用域：**RBAC 角色分配的作用域为特定订阅、资源组或资源。 授予对单个资源访问权限的用户无法访问同一订阅中的任何其他资源。
-* **角色：**在分配范围内，通过分配角色可进一步收窄访问权限。 角色可以是高级别的（如所有者），也可以是特定的（如虚拟机阅读器）。
+* **作用域：** RBAC 角色分配的作用域为特定订阅、资源组或资源。 授予对单个资源访问权限的用户无法访问同一订阅中的任何其他资源。
+* **角色：** 在分配范围内，通过分配角色可进一步收窄访问权限。 角色可以是高级别的（如所有者），也可以是特定的（如虚拟机阅读器）。
 
 只可以在订阅、资源组或资源（即分配范围）内分配角色。 不过可以在单个位置查看给定用户或组的所有访问权限分配。 每个订阅中最多可以拥有 2000 个角色分配。 
 

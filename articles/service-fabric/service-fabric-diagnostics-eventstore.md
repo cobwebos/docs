@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 7e401a310ce9a5f59473353227a9ce36767aac3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1d235d5a75975c8d58cad1bbde0f16df2b1b3e7a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="eventstore-service-overview"></a>事件存储服务概述
 
 >[!NOTE]
->从 Service Fabric 版本 6.2 开始。 EventStore API 当前为预览版，且仅适用于在 Azure 上运行的 Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
+>从 Service Fabric 版本 6.2 开始。 EventStore API 当前为预览版，仅可用于在 Azure 中运行的 Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
 
 ## <a name="overview"></a>概述
 
