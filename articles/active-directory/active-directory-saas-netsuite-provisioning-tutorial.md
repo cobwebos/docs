@@ -1,6 +1,6 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Netsuite 配置自动用户预配 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Netsuite 之间配置单一登录。"
+title: 教程：使用 Azure Active Directory 为 Netsuite 配置自动用户预配 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Netsuite 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6ffec33ba922fc59fa68f2c39a1d5b587e816d0b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 18c6c632131a7e83d4cf1587282192345d8c72f2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教程：为 Netsuite 配置自动用户预配
 
@@ -93,5 +93,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](active-directory-saas-netsuite-tutorial.md)

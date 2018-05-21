@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 IriusRisk 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 IriusRisk 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 IriusRisk 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 IriusRisk 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
-ms.openlocfilehash: e33d584b3e7eb939d669253e8c6ef40fd4f963c9
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: bdf46ff504a450b0c12183df911be6f0fd956f2a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>教程：Azure Active Directory 与 IriusRisk 的集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/22/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 IriusRisk（单一登录）
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/22/2017
 
 **若要从库中添加 IriusRisk，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -159,11 +159,11 @@ ms.lasthandoff: 12/22/2017
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-iriusrisk-test-user"></a>创建 IriusRisk 测试用户
 
-本部分的目的是在 IriusRisk 中创建名为“Britta Simon”的用户。 IriusRisk 支持在默认情况下启用的实时预配。 在本部分中，你不需要执行任何操作。 如果尚不存在用户，在尝试访问 IriusRisk 期间将创建一个新用户。
+本部分的目的是在 IriusRisk 中创建名为“Britta Simon”的用户。 IriusRisk 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果尚不存在用户，在尝试访问 IriusRisk 期间将创建一个新用户。
 
 > [!Note]
 > 如果需要手动创建用户，请联系 [IriusRisk 支持团队](mailto:info@continuumsecurity.net)。
@@ -208,7 +208,7 @@ ms.lasthandoff: 12/22/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

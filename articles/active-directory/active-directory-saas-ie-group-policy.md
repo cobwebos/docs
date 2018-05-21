@@ -1,8 +1,8 @@
 ---
-title: "使用 GPO 为 IE 部署 Azure 访问面板扩展 | Microsoft 文档"
-description: "如何使用组策略为我的应用门户部署 Internet Explorer 加载项。"
+title: 使用 GPO 为 IE 部署 Azure 访问面板扩展 | Microsoft 文档
+description: 如何使用组策略为我的应用门户部署 Internet Explorer 加载项。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 7c2d49c8-5be0-4e7e-abac-332f9dfda736
@@ -15,14 +15,14 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a203548575eacb2d0eb0d09a4aaf239b11caad3c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a39e454bd0993f07efd1168404df453f3013e0fa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何使用组策略部署 Internet Explorer 的访问面板扩展
-本教程说明如何使用组策略在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。 需要登录到使用[基于密码的单一登录](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)配置的应用程序的 Internet Explorer 用户必须使用此扩展。
+本教程说明如何使用组策略在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。 需要登录到使用[基于密码的单一登录](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)配置的应用程序的 Internet Explorer 用户必须使用此扩展。
 
 建议管理员将此扩展的部署自动化。 否则，用户必须自行下载并安装扩展，这样很容易出现用户错误，并且需要管理员权限。 本教程介绍使用组策略自动化软件部署的一种方法。 [了解有关组策略的详细信息。](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -162,6 +162,6 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-* [Azure Active Directory 的应用程序访问与单一登录](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录](manage-apps/what-is-single-sign-on.md)
 * [Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md)
 

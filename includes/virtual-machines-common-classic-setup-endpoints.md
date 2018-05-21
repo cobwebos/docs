@@ -1,4 +1,19 @@
-
+---
+title: include 文件
+description: include 文件
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: cfe675ca269a69c7c2bfa67638acd0afbcd1c8ea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/20/2018
+---
 每个终结点都拥有*公用端口*和*专用端口*：
 
 * Azure 负载均衡器使用公用端口侦听从 Internet 传入的虚拟机流量。
@@ -6,7 +21,7 @@
 
 使用 Azure 门户创建终结点时，将为 IP 协议和众所周知的网络协议的 TCP 或 UDP 端口提供默认值。 对于自定义终结点，需要指定正确的 IP 协议（TCP 或 UDP），以及公用和专用端口。 要将传入流量随机分布到多个虚拟机，需要创建包含多个终结点的负载均衡集。
 
-创建终结点后，可以使用访问控制列表 (ACL) 定义规则，根据传入流量的源 IP 地址允许或拒绝终结点的公用端口的传入流量。 但是，如果虚拟机位于 Azure 虚拟网络中，则应改为使用网络安全组。 有关详细信息，请参阅[关于网络安全组](../articles/virtual-network/virtual-networks-nsg.md)。
+创建终结点后，可以使用访问控制列表 (ACL) 定义规则，根据传入流量的源 IP 地址允许或拒绝终结点的公用端口的传入流量。 但是，如果虚拟机位于 Azure 虚拟网络中，则应改为使用网络安全组。 有关详细信息，请参阅[关于网络安全组](../articles/virtual-network/security-overview.md)。
 
 > [!NOTE]
 > 将对与 Azure 自动设置的远程连接终结点关联的端口自动完成 Azure 虚拟机的防火墙配置。 对于为所有其他终结点指定的端口，不会自动对虚拟机防火墙进行任何配置。 为虚拟机创建终结点时，需要确保虚拟机的防火墙也允许与终结点配置对应的协议和专用端口的流量。 若要配置防火墙，请参阅有关在虚拟机上运行的操作系统的文档或联机帮助。
@@ -39,7 +54,7 @@
 >
 >
 
-如果虚拟机位于 Azure 虚拟网络中，则建议使用网络安全组（而不是 ACL）。 有关详细信息，请参阅[关于网络安全组](../articles/virtual-network/virtual-networks-nsg.md)。
+如果虚拟机位于 Azure 虚拟网络中，则建议使用网络安全组（而不是 ACL）。 有关详细信息，请参阅[关于网络安全组](../articles/virtual-network/security-overview.md)。
 
 1. 如果尚未登录 Azure 门户，请先登录。
 2. 单击“虚拟机”，并单击要配置的虚拟机的名称。

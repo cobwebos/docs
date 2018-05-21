@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: baf437294dbbca7f63f9d4cdc80ac1cb33a67e42
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 548bd4ca9e8ec66e4c50ea078dc0bccc1788095a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>管理适用于企业应用的单一登录
 
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)管理企业应用程序的单一登录设置。 企业应用是在组织内部署和使用的应用。 本文特别适用于从 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)添加的应用。 
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)管理企业应用程序的单一登录设置。 企业应用是在组织内部署和使用的应用。 本文特别适用于从 [Azure Active Directory 应用程序库](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)添加的应用。 
 
 ## <a name="finding-your-apps-in-the-portal"></a>在门户中查找应用
 可以在 Azure 门户中查看和管理所有设置为单一登录的企业应用。 这些应用程序可在门户的“所有服务”&gt;“企业应用程序”部分中找到。 
@@ -43,7 +43,7 @@ ms.lasthandoff: 05/11/2018
 * **基于密码的登录** - 如果 Azure AD 允许对此应用程序使用密码来填写表单，则会提供此选项。
 * **链接登录** - 以前称为“现有单一登录”。此选项允许管理员在其用户的 Azure AD 访问面板或 Office 365 应用程序启动程序中放置一个此应用程序的链接。
 
-有关这些模式的详细信息，请参阅 [How does single sign-on with Azure Active Directory work](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
+有关这些模式的详细信息，请参阅 [How does single sign-on with Azure Active Directory work](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
 
 ## <a name="saml-based-sign-on"></a>基于 SAML 的登录
 “基于 SAML 的登录”选项分为四部分：
@@ -79,12 +79,12 @@ ms.lasthandoff: 05/11/2018
 ![嵌入式文档](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.png)
 
 ## <a name="password-based-sign-on"></a>基于密码的登录
-如果应用程序支持，可选择基于密码的 SSO 模式，然后选择“保存”，这样即可将其配置为进行基于密码的 SSO。 如需详细了解如何部署基于密码的 SSO，请参阅 [How does single sign-on with Azure Active Directory work](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
+如果应用程序支持，可选择基于密码的 SSO 模式，然后选择“保存”，这样即可将其配置为进行基于密码的 SSO。 如需详细了解如何部署基于密码的 SSO，请参阅 [How does single sign-on with Azure Active Directory work](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
 
 ![基于密码的登录](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.png)
 
 ## <a name="linked-sign-on"></a>联合登录
-如果应用程序支持，可选择联合 SSO 模式，并即可输入一个 URL，该 URL 是用户单击此应用时，Azure AD 访问面板或 Office 365 的重定向目标。 有关联合 SSO（以前称为“现有 SSO”）的详细信息，请参阅 [How does single sign-on with Azure Active Directory work](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
+如果应用程序支持，可选择联合 SSO 模式，并即可输入一个 URL，该 URL 是用户单击此应用时，Azure AD 访问面板或 Office 365 的重定向目标。 有关联合 SSO（以前称为“现有 SSO”）的详细信息，请参阅 [How does single sign-on with Azure Active Directory work](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
 
 ![联合登录](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.png)
 

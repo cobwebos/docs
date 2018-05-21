@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Hackerone 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Hackerone 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Hackerone 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Hackerone 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 3f8a4b6b3b089ce075b3398ac36fe5bd1979c366
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2d82b4cae516b88a01c4a31c8a72c82203e91630
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教程：Azure Active Directory 与 HackerOne 集成
 
@@ -27,19 +27,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 HackerOne
 - 可使用户通过其 Azure AD 帐户自动登录 HackerOne（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 HackerOne 的集成，需要以下项目：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 HackerOne 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 HackerOne，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 12/11/2017
     b. 在“标识符”文本框中，键入 URL：`https://hackerone.com/users/saml/metadata`
     
     > [!NOTE] 
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [HackerOne 支持团队](mailto:support@hackerone.com)获取此值。 
+    > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [HackerOne 支持团队](mailto:support@hackerone.com)获取此值。 
  
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 在记事本中打开从 Azure 门户下载的“证书文件”，将内容复制到剪贴板，然后粘贴到“X509 证书”文本框。
     
-    d. 单击“保存” 。
+    d. 单击“ **保存**”。
 
 11. 在“身份验证设置”对话框中，执行以下步骤：
    
@@ -189,17 +189,17 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-hackerone-test-user"></a>创建 HackerOne 测试用户
 
 接下来，在 HackerOne 中创建名为“Britta Simon”的用户。 HackerOne 支持在默认情况下启用的实时预配。
 
-本部分不存在任何操作项。 访问 HackerOne 时，如果还没有新用户，则会创建新用户。
+此部分不存在任何操作项。 访问 HackerOne 时，如果还没有新用户，则会创建新用户。
 
 >[!NOTE]
 >如果需要手动创建用户，则需联系 HackerOne 支持团队。 
@@ -244,7 +244,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

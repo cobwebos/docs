@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Asana 配置自动用户预配 | Microsoft Docs"
-description: "了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Asana 和取消其预配。"
+title: 教程：使用 Azure Active Directory 为 Asana 配置自动用户预配 | Microsoft Docs
+description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Asana 和取消其预配。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: sakula
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c2c9588e6c452714edcc594c05c59ed05f3c6666
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c7e33a46940c9bf0cda5e48c07d42db9f0c7cd96
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教程：为 Asana 配置自动用户预配
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 *   Azure AD 租户
 *   启用了[企业](https://www.asana.com/pricing)计划或更佳计划的 Asana 租户 
@@ -75,7 +75,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
     c. 导航到“服务帐户”选项卡。
 
-    d.单击“下一步”。 单击“添加服务帐户”。
+    d. 单击“添加服务帐户”。
 
     e. 根据需要更新“姓名”、“关于”和个人资料照片。 复制中的令牌**令牌**，并选择在**保存更改**。
 
@@ -100,5 +100,5 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](active-directory-saas-asana-tutorial.md)

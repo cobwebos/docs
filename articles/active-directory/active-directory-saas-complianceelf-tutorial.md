@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 32cb676393558079baad9bb0fc26d2c4daaa3519
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 66ee9f82d202537849491acda01e3e55ee7968ed
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>教程：Azure Active Directory 与 Compliance ELF 的集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/19/2018
 - 可以让用户通过其 Azure AD 帐户自动登录到 Compliance ELF（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 04/19/2018
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新这些值。 请联系 [Compliance ELF 客户端支持团队](mailto:support@complianceelf.com)获取此值。
 
-5. 在“SAML 签名证书”部分上，单击”复制”按钮，复制“应用联合元数据 URL”并将其粘贴到记事本。
+5. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
     
     ![配置单一登录](./media/active-directory-saas-complianceelf-tutorial/tutorial_metadataurl.png)
      
@@ -205,7 +205,7 @@ ms.lasthandoff: 04/19/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

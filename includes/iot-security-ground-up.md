@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 103cdd24ca5f47ee12196cd153d528f19bb35b20
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c1ba6cb5b01c86c64fd6134c592829050bbb226d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>物联网安全基础知识
 
@@ -44,7 +44,7 @@ Microsoft 的系统提供持续的入侵检测和防护、服务攻击预防、�
 
 这些解决方案加速器使用内置于 Azure 平台中的安全和隐私功能，以及针对所有 Microsoft 软件的安全开发和操作提供的 SDL 和 OSA 过程。 这些过程提供基础结构保护、网络保护，以及标识与管理功能，作为任何解决方案安全的基础。
 
-[IoT 解决方案加速器](../articles/iot-suite/iot-suite-what-is-azure-iot.md)内的 [Azure IoT 中心](../articles/iot-hub/iot-hub-what-is-iot-hub.md)提供完全托管的服务，使用每一设备的安全凭据和访问控制，在 IoT 设备与 Azure 服务（例如 [Azure 机器学习](../articles/machine-learning/studio/what-is-machine-learning.md)和 [Azure 流分析](../articles/stream-analytics/stream-analytics-introduction.md)）之间启用可靠且安全的双向通信。
+[IoT 解决方案加速器](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md)内的 [Azure IoT 中心](../articles/iot-hub/iot-hub-what-is-iot-hub.md)提供完全托管的服务，使用每一设备的安全凭据和访问控制，在 IoT 设备与 Azure 服务（例如 [Azure 机器学习](../articles/machine-learning/studio/what-is-machine-learning.md)和 [Azure 流分析](../articles/stream-analytics/stream-analytics-introduction.md)）之间启用可靠且安全的双向通信。
 
 为了以最佳方式传达内置于 Azure IoT 解决方案加速器的安全和隐私功能，本文将套件细分为三个主要安全领域。
 

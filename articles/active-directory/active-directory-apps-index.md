@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/14/2018
 | 文章指南 |  |
 |:---:| --- |
 | 介绍 Azure AD 解决的应用程序管理问题	 |[使用 Azure Active Directory (AD) 管理应用程序](manage-apps/what-is-application-management.md) |
-| Azure AD 中与启用单一登录、定义有权访问应用程序的人员，以及用户如何启动应用程序相关的各种功能概述 |[Azure Active Directory 中的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md) |
+| Azure AD 中与启用单一登录、定义有权访问应用程序的人员，以及用户如何启动应用程序相关的各种功能概述 |[Azure Active Directory 中的应用程序访问和单一登录](manage-apps/what-is-single-sign-on.md) |
 | 探讨将应用程序集成到 Azure AD 时所涉及的不同步骤 |[将 Azure Active Directory 与应用程序集成](manage-apps/plan-an-application-integration.md)<br /><br />[启用对 SaaS 应用的单一登录](active-directory-enterprise-apps-manage-sso.md)<br /><br />[管理对应用的访问](active-directory-managing-access-to-apps.md) |
 | 如何在 Azure AD 中表示应用程序的技术说明 |[如何以及为何将应用程序添加到 Azure AD](active-directory-how-applications-are-added.md) |
 
@@ -52,8 +52,8 @@ ms.lasthandoff: 05/14/2018
 
 | 文章指南 |  |
 |:---:| --- |
-| 联合身份验证和其他登录类型简介 |[使用 Azure AD 进行单一登录](active-directory-appssoaccess-whatis.md) |
-| 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure AD 应用程序库入门](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](active-directory-saas-tutorial-list.md)<br /><br />[如何将应用程序添加到 Azure AD 应用库](active-directory-app-gallery-listing.md) |
+| 联合身份验证和其他登录类型简介 |[使用 Azure AD 进行单一登录](manage-apps/what-is-single-sign-on.md) |
+| 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure AD 应用程序库入门](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](active-directory-saas-tutorial-list.md)<br /><br />[如何将应用程序添加到 Azure AD 应用库](active-directory-app-gallery-listing.md) |
 | 超过 150 个应用教程，讲解如何为 [Salesforce](active-directory-saas-salesforce-tutorial.md)、[ServiceNow](active-directory-saas-servicenow-tutorial.md)、[Google Apps](active-directory-saas-google-apps-tutorial.md)、[Workday](active-directory-saas-workday-tutorial.md) 等应用配置单一登录 |[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md) |
 | 如何手动设置和自定义单一登录配置 |[如何为不在 Azure Active Directory 应用程序库中的应用配置联合单一登录](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md) |
 | 使用 SAML 协议的联合应用的故障排除指南 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
@@ -66,7 +66,7 @@ ms.lasthandoff: 05/14/2018
 
 | 文章指南 |  |
 |:---:| --- |
-| 基于密码的 SSO 工作原理简介以及简要的技术概述 |[使用 Azure AD 进行基于密码的单一登录](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) |
+| 基于密码的 SSO 工作原理简介以及简要的技术概述 |[使用 Azure AD 进行基于密码的单一登录](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | 与共享帐户相关的方案以及 Azure AD 如何解决这些问题的摘要 |[使用 Azure AD 共享帐户](active-directory-sharing-accounts.md) |
 | 自动定期更改特定应用的密码 |[自动密码滚动更新（预览版）](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Internet Explorer 版本的 Azure AD 密码管理扩展功能的部署和故障排除指南 |[如何使用组策略部署 Internet Explorer 的访问面板扩展](active-directory-saas-ie-group-policy.md)<br /><br />[Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md) |
@@ -183,11 +183,11 @@ B2B 协作目前适用于[所有版本的 Azure Active Directory](https://azure.
 
 | 文章指南 |  |
 |:---:| --- |
-| 用于将单一登录应用部署到用户的各种选项比较 |[为用户部署 Azure AD 集成的应用程序](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) |
+| 用于将单一登录应用部署到用户的各种选项比较 |[为用户部署 Azure AD 集成的应用程序](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
 | 访问面板及其移动对应产品 MyApps 的概述 |[访问面板和 MyApps 简介](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | 如何从 Office 365 网站访问 Azure AD 应用 |[使用 Office 365 应用启动程序](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | 如何从 Intune Managed Browser 移动应用访问 Azure AD 应用 |[Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
-| 如何使用深层链接访问 Azure AD 应用和启动单一登录 |[获取应用的直接登录链接](active-directory-appssoaccess-whatis.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
+| 如何使用深层链接访问 Azure AD 应用和启动单一登录 |[获取应用的直接登录链接](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 访问面板适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。
 

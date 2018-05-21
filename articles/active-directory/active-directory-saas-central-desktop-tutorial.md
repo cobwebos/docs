@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Central Desktop 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Central Desktop 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Central Desktop 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Central Desktop 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 94c67bef7a0c6ba60fc9c7a60c79a23bf7984fb1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 92c24688cf3d9baefcedcf22c915752b2d29b53c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教程：Azure Active Directory 与 Central Desktop 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/21/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Central Desktop。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 12/21/2017
     
     c. 在“SSO 登录 URL”框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
     
-    d.单击“下一步”。 在“SSO 注销 URL”框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    d. 在“SSO 注销 URL”框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
 10. 在“消息签名验证方法”部分执行以下步骤：
 
@@ -159,9 +159,9 @@ ms.lasthandoff: 12/21/2017
     
     c. 在记事本中打开已下载的证书。 然后将证书内容复制并粘贴到“SSO 证书”字段。
         
-    d.单击“下一步”。 选择“显示 SAMLv2 登录页的链接”。
+    d. 选择“显示 SAMLv2 登录页的链接”。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 选择“更新”。
+    e. 选择“更新”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了。 从“Active Directory” > “企业应用程序”部分添加该应用后，选择“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
@@ -196,7 +196,7 @@ ms.lasthandoff: 12/21/2017
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 选择“创建”。
+    d. 选择**创建**。
  
 ### <a name="create-a-central-desktop-test-user"></a>创建 Central Desktop 测试用户
 
@@ -268,7 +268,7 @@ ms.lasthandoff: 12/21/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
