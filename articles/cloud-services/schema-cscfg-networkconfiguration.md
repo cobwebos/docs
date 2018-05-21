@@ -1,23 +1,23 @@
 ---
-title: "Azure 云服务 NetworkConfiguration 架构 | Microsoft Docs"
-ms.custom: 
+title: Azure 云服务 NetworkConfiguration 架构 | Microsoft Docs
+ms.custom: ''
 ms.date: 12/07/2016
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: c1b94a9e-46e8-4a18-ac99-343c94b1d4bd
-caps.latest.revision: "28"
+caps.latest.revision: 28
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 2438876e210363e9918e700397d4181990a3983f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebe81b2e4dea347eb22b173ff1e9baf1ee6bb75d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 云服务的配置 NetworkConfiguration 架构
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 </ServiceConfiguration>
 ```
 
-下表介绍 `NetworkConfiguration` 元素的子元素。
+下表介绍了 `NetworkConfiguration` 元素的子元素。
 
 | 元素       | 说明 |
 | ------------- | ----------- |

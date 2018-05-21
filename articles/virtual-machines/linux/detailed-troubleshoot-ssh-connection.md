@@ -1,12 +1,12 @@
 ---
-title: "Azure VM 的详细 SSH 故障排除 | Microsoft Docs"
-description: "对 Azure 虚拟机连接问题进行较详细 SSH 故障排除的步骤"
-keywords: "ssh 连接被拒绝,ssh 错误,azure ssh,SSH 连接失败"
+title: Azure VM 的详细 SSH 故障排除 | Microsoft Docs
+description: 对 Azure 虚拟机连接问题进行较详细 SSH 故障排除的步骤
+keywords: ssh 连接被拒绝,ssh 错误,azure ssh,SSH 连接失败
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 66fc8bac46decacdd2214475e94980c447045935
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 88f3ca3202359f9f45f5b9a5054ab95b40558520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>对连接到 Azure 中 Linux VM 时出现的问题进行 SSH 故障排除的具体步骤
 有许多可能的原因会导致 SSH 客户端无法连接到 VM 上的 SSH 服务。 如果已经执行了较[常规的 SSH 故障排除步骤](troubleshoot-ssh-connection.md)，则需要进一步排查连接问题。 本文将指导用户完成详细的故障排除步骤，以确定 SSH 连接失败的位置及其解决方法。
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/22/2018
 
 2. 选择“设置”检查终结点、IP 地址、网络安全组和其他设置。
 
-   VM 必须有为 SSH 流量定义的终结点，可以在“终结点”或“[网络安全组](../../virtual-network/virtual-networks-nsg.md)”查看 SSH 流量。 将 VM 中使用 Resource Manager 创建的终结点存储在网络安全组中。 请验证对网络安全组应用的规则，以及子网中是否引用了这些规则。
+   VM 必须有为 SSH 流量定义的终结点，可以在“终结点”或“[网络安全组](../../virtual-network/security-overview.md)”查看 SSH 流量。 将 VM 中使用 Resource Manager 创建的终结点存储在网络安全组中。 请验证对网络安全组应用的规则，以及子网中是否引用了这些规则。
 
 要验证网络连接，请检查所配置的终结点，并了解是否可通过其他协议（例如 HTTP 或其他服务）连接到该 VM。
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 01/22/2018
 
 ## <a name="source-4-network-security-groups"></a>来源 4：网络安全组
 通过使用网络安全组，可以对允许的入站和出站流量进行更精细的控制。 可以创建跨 Azure 虚拟网络中的子网和云服务的规则。 检查网络安全组规则，以确保允许来自和去往 Internet 的 SSH 流量。
-有关详细信息，请参阅[关于网络安全组](../../virtual-network/virtual-networks-nsg.md)。
+有关详细信息，请参阅[关于网络安全组](../../virtual-network/security-overview.md)。
 
 还可使用 IP Verify 验证 NSG 配置。 有关详细信息，请参阅 [Azure network monitoring overview](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)（Azure 网络监视概述）。 
 

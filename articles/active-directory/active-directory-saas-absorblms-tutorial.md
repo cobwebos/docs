@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Absorb LMS 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 Absorb LMS 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Absorb LMS 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Absorb LMS 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 4231b5e72ea0852de344e7484bdf20997243cee6
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: f877d8fee4a94207fc01f4a5e0e7919f1286f2e4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 的集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/20/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Absorb LMS（通过单一登录）。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-如果想要深入了解软件型服务 (SaaS) 应用与 Azure AD 集成，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
+如果想要深入了解软件型服务 (SaaS) 应用与 Azure AD 集成，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -145,9 +145,9 @@ ms.lasthandoff: 12/20/2017
     
     c. 在“ID 属性”框中，选择在 Azure AD 中配置为用户标识符的属性。 例如，如果在已 Azure AD 中选择“userPrincipalName”，请选择“用户名”。
 
-    d.单击“下一步”。 在“登录 URL”框中，粘贴 Azure 门户应用程序的“属性”页中的“用户访问 URL”。
+    d. 在“登录 URL”框中，粘贴 Azure 门户应用程序的“属性”页中的“用户访问 URL”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“注销 URL”中，粘贴从 Azure 门户的“配置登录”窗口中复制的“注销 URL”值。
+    e. 在“注销 URL”中，粘贴从 Azure 门户的“配置登录”窗口中复制的“注销 URL”值。
 
 12. 将“仅允许 SSO 登录”切换为“启用”。
 
@@ -188,7 +188,7 @@ ms.lasthandoff: 12/20/2017
 
     c. 选择“显示密码”复选框，然后记下“密码”框中的值。
 
-    d.单击“下一步”。 选择“创建”。
+    d. 选择**创建**。
 
 ### <a name="create-an-absorb-lms-test-user"></a>创建 Absorb LMS 测试用户
 
@@ -222,9 +222,9 @@ ms.lasthandoff: 12/20/2017
     
     c. 在“用户名”框中键入全名，例如 Britta Simon。
 
-    d.单击“下一步”。 在“密码”框中，键入 Britta Simon 的密码。
+    d. 在“密码”框中，键入 Britta Simon 的密码。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“确认密码”框中，重新键入该密码。
+    e. 在“确认密码”框中，重新键入该密码。
     
     f. 将“是否活动”设置切换为“活动”。  
 
@@ -269,7 +269,7 @@ ms.lasthandoff: 12/20/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

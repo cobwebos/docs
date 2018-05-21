@@ -225,7 +225,7 @@
 ### [使用 HRD 策略配置登录自动加速](active-directory-auto-acceleration-using-hrd.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
-#### [SSO 访问](active-directory-appssoaccess-whatis.md)
+#### [SSO 访问](manage-apps/what-is-single-sign-on.md)
 #### [SSO 证书](active-directory-sso-certs.md)
 #### [租户限制](active-directory-tenant-restrictions.md)
 #### [使用 SCIM 预配用户](active-directory-scim-provisioning.md)

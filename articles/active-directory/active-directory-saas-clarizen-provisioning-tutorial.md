@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Clarizen 配置自动用户预配 | Microsoft Docs"
-description: "了解如何配置 Azure Active Directory 来自动将用户帐户预配到 Asana 以及取消其预配。"
+title: 教程：使用 Azure Active Directory 为 Clarizen 配置自动用户预配 | Microsoft Docs
+description: 了解如何配置 Azure Active Directory 来自动将用户帐户预配到 Asana 以及取消其预配。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant-msft
-ms.openlocfilehash: 3e75ce17f2806e4cb66f90f233b265398cdd0878
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 779fa09781b5ea6e13450d609703bec0c08e38e4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-clarizen-for-automatic-user-provisioning"></a>教程：为 Clarizen 配置自动用户预配
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/12/2018
 
 **若要从 Azure AD 应用程序库中添加 Clarizen，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -162,7 +162,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

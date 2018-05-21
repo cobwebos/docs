@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 OpenAthens 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 OpenAthens 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 OpenAthens 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 OpenAthens 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jeedes
-ms.openlocfilehash: af26e007c953c4157f5ee7a4251a52e9c45a6eac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3b19f3c7ed84a63f48320a2c7af8d06a9cc5deb4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>教程：Azure Active Directory 与 OpenAthens 集成
 
@@ -30,13 +30,13 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 OpenAthens（单一登录）。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 OpenAthens 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 OpenAthens 单一登录的订阅
 
 测试本教程中的步骤应遵循以下建议：
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 OpenAthens
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-openathens-from-the-gallery"></a>从库中添加 OpenAthens
 若要配置 OpenAthens 与 Azure AD 的集成，需要从库中将 OpenAthens 添加到托管 SaaS 应用列表。
@@ -65,7 +65,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“OpenAthens”，在结果面板中选择“OpenAthens”，并选择“添加”按钮。
 
@@ -137,9 +137,9 @@ ms.lasthandoff: 12/11/2017
     
     c. 在“唯一用户映射”中，选择“使用属性”。
 
-    d.单击“下一步”。 在“唯一用户属性”文本框中，输入值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    d. 在“唯一用户属性”文本框中，输入值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“状态”中，选中所有三个复选框。
+    e. 在“状态”中，选中所有三个复选框。
 
     f. 在“创建本地帐户”中，选择“自动”。
 
@@ -178,7 +178,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 选中“显示密码”复选框，然后记下“密码”文本框中显示的值。
 
-    d.单击“下一步”。 选择“创建” 。
+    d. 选择**创建**。
   
 ### <a name="create-an-openathens-test-user"></a>创建 OpenAthens 测试用户
 
@@ -224,7 +224,7 @@ OpenAthens 支持实时预配，并在成功身份验证后自动创建用户。
 ## <a name="additional-resources"></a>其他资源
 
 * 有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表，请参阅[有关配合 Azure AD 使用 SaaS 应用集成的教程](active-directory-saas-tutorial-list.md)。
-* 有关 Azure Active Directory 的应用程序访问和单一登录的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+* 有关 Azure Active Directory 的应用程序访问和单一登录的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 <!--Image references-->
 

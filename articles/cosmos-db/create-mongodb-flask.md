@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: d089dd24df3308994aab0cf135da8be9a3e28d79
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 095cc724beb9f35896bd02e299523839a9f43f4b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB：借助 MongoDB API 构建 Flask 应用
 
 Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
 
-本快速入门指南使用以下 [Flask 示例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)并演示如何借助 [Azure Cosmos DB 模拟器](/local-emulator.md)和 Azure Cosmos DB [MongoDB API](mongodb-introduction.md) 而不是 MongoDB 构建简单的待办事项 Flask 应用。
+本快速入门指南使用以下 [Flask 示例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)并演示如何借助 [Azure Cosmos DB 模拟器](local-emulator.md)和 Azure Cosmos DB [MongoDB API](mongodb-introduction.md) 而不是 MongoDB 构建简单的待办事项 Flask 应用。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 下载 [Azure Cosmos DB 模拟器](/local-emulator.md)。 当前只有 Windows 支持模拟器。 此示例演示如何借助 Azure 中的生产密钥使用示例，此操作可在任何平台上完成。
+- 下载 [Azure Cosmos DB 模拟器](local-emulator.md)。 当前只有 Windows 支持模拟器。 此示例演示如何借助 Azure 中的生产密钥使用示例，此操作可在任何平台上完成。
 
 - 如果尚未安装 Visual Studio Code，可为平台（Windows、Mac、Linux）快速安装 [VS Code](https://code.visualstudio.com/Download)。
 

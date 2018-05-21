@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 BambooHR 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 BambooHR 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 BambooHR 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 BambooHR 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 081144a645683d4d00ed0d464e23558378dc1b38
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c63a625c1eca7008c751d6904f182f76ee5f343b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>教程：Azure Active Directory 与 BambooHR 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/09/2018
 - 可以让用户使用其 Azure AD 帐户以单一登录 (SSO) 方式自动登录到 BambooHR。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 02/09/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 选择“创建”。
+    d. 选择**创建**。
  
 ### <a name="create-a-bamboohr-test-user"></a>创建 BambooHR 测试用户
 
@@ -239,7 +239,7 @@ ms.lasthandoff: 02/09/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

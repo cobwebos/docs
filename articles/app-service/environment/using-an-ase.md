@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 4aaef3fb6748eb974bc9d129b2bd8d42393e1cb8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 66ef20616df77dc809a79e516a53133a80759dc7
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -60,7 +60,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 5. 选择 OS。 
 
-    * 在 ASE 中托管 Linux 应用是一项新的预览功能，因此我们建议不要将 Linux 应用添加到当前正在运行生产工作负荷的 ASE 中。 
+    * 在 ASE 中托管 Linux 应用是一项新的预览功能，因此建议不要将 Linux 应用添加到当前正在运行生产工作负荷的 ASE 中。 
     * 将 Linux 应用添加到 ASE 中意味着 ASE 也将处于预览模式。 
 
 5. 在 ASE 中选择现有的应用服务计划，或遵循以下步骤创建一个新的计划：
@@ -177,7 +177,7 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可�
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml

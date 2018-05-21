@@ -1,23 +1,23 @@
 ---
-title: "Azure 保留资源名称错误 | Microsoft 文档"
-description: "描述了如何解决提供的资源名称包括保留字的错误。"
+title: Azure 保留资源名称错误 | Microsoft 文档
+description: 描述了如何解决提供的资源名称包括保留字的错误。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2f06b7bc65ea309bc5374b41f402f8e7bc4d2a38
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: b91a53d17d64afb0a56f745505f10e8cabbc22cc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>解决保留资源名称错误
 
