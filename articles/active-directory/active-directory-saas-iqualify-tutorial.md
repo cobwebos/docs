@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 iQualify LMS 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 iQualify LMS 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 iQualify LMS 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 iQualify LMS 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f8a7b7fd155a6ad0df7cb1f9026b4acca2401cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 341f2175d283c08496534f3ac0d946dd8671f63c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>教程：Azure Active Directory 与 iQualify LMS 集成
 
@@ -30,17 +30,17 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 iQualify LMS（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 iQualify LMS 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 iQualify LMS 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -51,14 +51,14 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 iQualify LMS
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-iqualify-lms-from-the-gallery"></a>从库中添加 iQualify LMS
 要配置 iQualify LMS 与 Azure AD 的集成，需要将库中的 iQualify LMS 添加到托管的 SaaS 应用列表。
 
 **若要从库中添加 iQualify LMS，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“iQualify LMS”，在结果面板中选择“iQualify LMS”，然后单击“添加”按钮添加该应用程序。
 
@@ -141,7 +141,7 @@ ms.lasthandoff: 12/11/2017
     
     | 属性名称 | 属性值 |
     | --- | --- |    
-    | email | user.userprincipalname |
+    | 电子邮件 | user.userprincipalname |
     | first_name | user.givenname |
     | last_name | user.surname |
     | person_id | "your attribute" | 
@@ -152,13 +152,13 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-iqualify-tutorial/atb3.png)
     
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
     d. 单击“确定”
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 针对后面的表行重复步骤“a”到“d”。 
+    e. 针对后面的表行重复步骤“a”到“d”。 
 
     > [!Note]
     > 为 person_id 属性重复步骤“a”到“d”，此操作为可选操作
@@ -198,9 +198,9 @@ ms.lasthandoff: 12/11/2017
     
     c. 在记事本中打开下载的证书文件，复制其内容，然后将其粘贴到“公共证书”框中。
     
-    d.单击“下一步”。 在“登录按钮标签”中输入要在登录页上显示的按钮的名称。
+    d. 在“登录按钮标签”中输入要在登录页上显示的按钮的名称。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存”。
+    e. 单击“保存”。
 
     f. 单击“更新”。
 
@@ -231,13 +231,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-iqualify-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-an-iqualify-lms-test-user"></a>创建 iQualify LMS 测试用户
 
@@ -290,7 +290,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Andromeda 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Andromeda 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Andromeda 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Andromeda 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e2a140ba6dc4825283801ed4f3435136b307153
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: cdceb81319529a3db8b5c9809818d024acc3f80b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教程：Azure Active Directory 与 Andromeda 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/08/2018
 - 可以让用户通过其 Azure AD 帐户自动登录到 Andromeda（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/08/2018
 
 **若要从库中添加 Andromeda，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 03/08/2018
 
     c. 在“值”列表中，选择为该行显示的属性值。
 
-    d.单击“下一步”。 将“命名空间”留空。
+    d. 将“命名空间”留空。
     
     e. 单击“确定” 。
 
@@ -183,7 +183,7 @@ ms.lasthandoff: 03/08/2018
 
     c. 复制“使用者 URL”值，并将其粘贴到“Andromeda 域和 URL”部分的“回复 URL”文本框中。
 
-    d.单击“下一步”。 复制“登录 URL”值，并将其粘贴到“Andromeda 域和 URL”部分的“登录 URL”文本框中。
+    d. 复制“登录 URL”值，并将其粘贴到“Andromeda 域和 URL”部分的“登录 URL”文本框中。
 
     e. 在“SAML 标识提供者”部分下，键入 IDP 名称。
 
@@ -230,7 +230,7 @@ ms.lasthandoff: 03/08/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-an-andromeda-test-user"></a>创建 Andromeda 测试用户
 
@@ -279,7 +279,7 @@ ms.lasthandoff: 03/08/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Zscaler Private Access Administrator 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Zscaler Private Access Administrator 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Zscaler Private Access Administrator 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Zscaler Private Access Administrator 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: bf0b7cbd8047dfdbc1a4503775e6d36f8e8a67c1
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: c3918e4b54d60d6f609e99e24ed2f4b2995bf80c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Private Access Administrator 的集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/13/2018
 - 可以让用户使用其 Azure AD 帐户自动登录到 Zscaler Private Access Administrator（单一登录）
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 02/13/2018
 
 **若要从库中添加 Zscaler Private Access Administrator，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 02/13/2018
 
     c. 选中“显示高级 URL 设置”
 
-    d.单击“下一步”。 在“RelayState”文本框中，键入一个值：`idpadminsso`
+    d. 在“RelayState”文本框中，键入一个值：`idpadminsso`
 
 4.  如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 02/13/2018
 
     c. 在“单一登录”中选择“管理员”。
 
-    d.单击“下一步”。 从“域”字段中选择域。
+    d. 从“域”字段中选择域。
     
     e. 单击“ **保存**”。
 
@@ -188,7 +188,7 @@ ms.lasthandoff: 02/13/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
   
 ### <a name="create-a-zscaler-private-access-administrator-test-user"></a>Create a Zscaler Private Access Administrator 测试用户
 
@@ -220,7 +220,7 @@ ms.lasthandoff: 02/13/2018
 
     c. 在“确认密码”文本框中，再次键入该密码。
 
-    d.单击“下一步”。 在“角色”中选择“Zscaler Private Access Administrator”。
+    d. 在“角色”中选择“Zscaler Private Access Administrator”。
 
     e. 在“电子邮件”文本框中，输入用户的电子邮件地址（如 BrittaSimon@contoso.com）。
 
@@ -270,7 +270,7 @@ ms.lasthandoff: 02/13/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

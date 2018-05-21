@@ -45,13 +45,13 @@
           href: delete-cluster.md
     - name: 配置数据卷
       items:
-        - name: AzureDisk 动态预配
+        - name: Azure 磁盘 - 动态
           href: azure-disks-dynamic-pv.md
-        - name: AzureDisk 静态预配
+        - name: Azure 磁盘 - 静态
           href: azure-disk-volume.md
-        - name: AzureFile 动态预配
+        - name: Azure 文件 - 动态
           href: azure-files-dynamic-pv.md
-        - name: AzureFile 静态预配
+        - name: Azure 文件 - 静态
           href: azure-files-volume.md
     - name: 配置网络
       items:

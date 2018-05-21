@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Palo Alto Networks - GlobalProtect 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 与 Palo Alto Networks - GlobalProtect 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Palo Alto Networks - GlobalProtect 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 与 Palo Alto Networks - GlobalProtect 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c851c056095ef8e7fb40d7d2ead76457495b2118
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 43355374436cb9efac82cf118fce285c01a59175
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>教程：Azure Active Directory 与 Palo Alto Networks - GlobalProtect 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/19/2018
 - 可以让用户通过其 Azure AD 帐户自动登录到 Palo Alto Networks - GlobalProtect（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/19/2018
 
 若要从库中添加 Palo Alto Networks - GlobalProtect，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 01/19/2018
     
     c. 在“值”列表中，选择为该行显示的属性值。 我们使用 user.userprincipalname 的值作为一个映射示例，你也可以使用适当的值进行映射。 
     
-    d.单击“下一步”。 单击“确定”
+    d. 单击“确定”
 
 
 6. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
@@ -200,7 +200,7 @@ ms.lasthandoff: 01/19/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-palo-alto-networks---globalprotect-test-user"></a>创建 Palo Alto Networks - GlobalProtect 测试用户
 
@@ -246,7 +246,7 @@ Palo Alto Networks - GlobalProtect 支持实时用户设置，因此，在成功
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

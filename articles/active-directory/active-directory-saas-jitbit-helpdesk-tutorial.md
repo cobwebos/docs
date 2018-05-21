@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Jitbit Helpdesk 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Jitbit Helpdesk 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Jitbit Helpdesk 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Jitbit Helpdesk 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 31d3295fa8d75aa72c8e9967b7ca81f4e98e5608
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c8e387bb98ad2e23c667ba058ff8ab5dbfedffbf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>教程：Azure Active Directory 与 Jitbit Helpdesk 集成
 
@@ -27,19 +27,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Jitbit Helpdesk
 - 可使用户使用其 Azure AD 帐户自动登录到 Jitbit Helpdesk（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Jitbit Helpdesk 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Jitbit Helpdesk 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库添加 Jitbit Helpdesk，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 12/11/2017
     | |
     
     > [!NOTE] 
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Jitbit Helpdesk 客户端支持团队](https://www.jitbit.com/support/)获取此值。 
+    > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Jitbit Helpdesk 客户端支持团队](https://www.jitbit.com/support/)获取此值。 
     
     b.  在“标识符”文本框中，键入以下 URL：`https://www.jitbit.com/web-helpdesk/`
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-jitbit-helpdesk-test-user"></a>创建 Jitbit Helpdesk 测试用户
 
@@ -227,7 +227,7 @@ ms.lasthandoff: 12/11/2017
 
    d. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。
    
-   e. 单击“创建” 。
+   e. 单击“创建”。
 
 >[!NOTE]
 >可以使用任何其他 Jitbit Helpdesk 用户帐户创建工具或 Jitbit Helpdesk 提供的 API 来预配 Azure AD 用户帐户。
@@ -274,7 +274,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

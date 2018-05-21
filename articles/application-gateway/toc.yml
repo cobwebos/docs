@@ -102,6 +102,8 @@
       href: tutorial-restrict-web-traffic-powershell.md
     - name: 使用 Azure PowerShell 的 SSL 终止
       href: tutorial-ssl-powershell.md
+    - name: 续订证书
+      href: renew-certificates.md
     - name: 使用 Azure PowerShell 托管多个站点
       href: tutorial-multiple-sites-powershell.md
     - name: 使用 Azure PowerShell 路由 Web 流量

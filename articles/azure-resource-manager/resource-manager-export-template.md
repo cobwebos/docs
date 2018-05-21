@@ -1,8 +1,8 @@
 ---
-title: "导出 Azure 资源管理器模板 | Microsoft Docs"
-description: "使用 Azure Resource Manager 从现有资源组导出模板。"
+title: 导出 Azure 资源管理器模板 | Microsoft Docs
+description: 使用 Azure Resource Manager 从现有资源组导出模板。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -11,14 +11,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7ac553a3608df41548f845e27c545ff63886e37c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 14aa54277cac3369df739a1d84580624f2d3b401
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>从现有资源导出 Azure 资源管理器模板
 本文介绍如何从订阅中的现有资源导出 Resource Manager 模板。 可以使用该生成的模板更好地了解模板语法。
@@ -40,11 +40,11 @@ ms.lasthandoff: 02/27/2018
    
       ![搜索 Web 应用和 SQL](./media/resource-manager-export-template/webapp-sql.png)
 
-3. 选择“创建”。
+3. 选择**创建**。
 
       ![选择“创建”](./media/resource-manager-export-template/create.png)
 
-4. 为 Web 应用和 SQL 数据库提供所需值。 选择“创建”。
+4. 为 Web 应用和 SQL 数据库提供所需值。 选择**创建**。
 
       ![提供 Web 和 SQL 值](./media/resource-manager-export-template/provide-web-values.png)
 
