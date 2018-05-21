@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: 0afb1259465189034a69ab7197cdea6fc0f517a3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: be2b6e27e097ea5206e1faceed75ec212406d330
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-excel-to-hadoop-by-using-power-query"></a>使用 Power Query 将 Excel 连接到 Hadoop
 Microsoft 大数据解决方案的一个关键功能是，将 Microsoft 商业智能 (BI) 组件与 Azure HDInsight 中的 Hadoop 群集相集成。 一个主要的例子是能够使用 Microsoft Power Query for Excel 加载项将 Excel 连接到包含 Hadoop 群集关联数据的 Azure 存储帐户。 本文将逐步说明如何设置和使用 Power Query 来查询与 HDInsight 管理的 Hadoop 群集关联的数据。
@@ -56,9 +56,9 @@ Power Query 可以导入已输出的数据，或者导入由在 HDInsight 群集
    
         ![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
        
-        **注意：**如果未看到“Power Query”菜单，请转到“文件” > “选项” > “外接程序”，从页面底部的下拉“管理器”框中选择“COM 外接程序”。 选择“转到...”按钮，并且确认已选中 Power Query for Excel 外接程序所对应的框。
+        **注意：** 如果未看到“Power Query”菜单，请转到“文件” > “选项” > “外接程序”，从页面底部的下拉“管理器”框中选择“COM 外接程序”。 选择“转到...”按钮，并且确认已选中 Power Query for Excel 外接程序所对应的框。
        
-        **注意：**Power Query 还允许通过单击“来自其他源”从 HDFS 中导入数据。
+        **注意：** Power Query 还允许通过单击“来自其他源”从 HDFS 中导入数据。
 4. 对于“帐户名称”，请输入与群集相关联的 Azure Blob 存储帐户名称，并单击“确定”。 此帐户可以是[默认存储帐户](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)或链接的存储帐户。  格式为 *https://&lt;StorageAccountName>.blob.core.windows.net/*。
 5. 对于“帐户密钥”，请输入 Blob 存储帐户的密钥，并单击“保存”。 （只有在第一次访问此存储时才需要输入帐户信息。）
 6. 在“查询编辑器”左侧的“导航器”窗格中，双击 Blob 存储容器名称。 默认情况下，该容器名称与群集名称相同。

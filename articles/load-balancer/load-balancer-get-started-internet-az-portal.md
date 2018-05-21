@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1f1c8d0305334d85500b501aee5a71664bb49050
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9a51638ea6d85178e6631ac278c116e4c7e05d61
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>使用 Azure 门户通过区域冗余的公共 IP 地址前端创建公共负载均衡器标准
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="create-a-zone-redundant-load-balancer"></a>创建区域冗余的负载均衡器
 
-1. 从浏览器导航到 Azure 门户：[](http://portal.azure.com)http://portal.azure.com 并使用 Azure 帐户登录。
+1. 从浏览器导航到 Azure 门户：[http://portal.azure.com](http://portal.azure.com) 并使用 Azure 帐户登录。
 2. 在屏幕的左上方，选择**创建资源** > **网络** > **负载均衡器**。
 3. 在“创建负载均衡器”页面中，在“名称”下，键入 **myLoadBalancer**。
 4. 在“类型”下，选择“公共”。
@@ -45,9 +45,6 @@ ms.lasthandoff: 04/03/2018
     >[!NOTE] 
     > 默认情况下，在此步骤中创建的公用 IP 是标准 SKU 并且具有区域冗余性。 
 8. 在“位置”下，选择“美国东部 2”，然后单击“确定”。 然后，负载均衡器将开始部署，成功完成部署需要几分钟的时间。
-
-    ![使用 Azure 门户创建区域冗余的负载均衡器标准](./media/load-balancer-get-started-internet-az-portal/create-zone-redundant-load-balancer-standard.png)
-
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
