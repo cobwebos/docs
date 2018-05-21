@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 26b58724-6a43-4f20-b965-2da3f086cf8a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2017
 ms.author: aljo
-ms.openlocfilehash: f60b428ba7fe93713af68851a3e9d246a3b1641b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ac288575d29699d03728e74b73ed7359dd7252e2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 Azure Service Fabric 群集是你拥有的资源。 你应保护群集，防止未经授权的用户与其连接。 当在群集上运行生产工作负荷时，安全的群集环境尤为重要。 尽管可以创建不安全的群集，但当该群集向公共 Internet 公开管理终结点时，匿名用户可与它建立连接。 生产工作负荷不支持不安全群集。 

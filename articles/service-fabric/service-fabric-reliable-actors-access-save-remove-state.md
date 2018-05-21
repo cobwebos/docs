@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: c00805fc5d8515fb743256e35a75be1546483245
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ac3afe144b9cf9e2fb307087edb175a603ffe4e9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>访问、保存和删除 Reliable Actors 状态
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 是可封装逻辑与状态并稳定维护状态的单线程对象。 每个执行组件实例都有其自身的[状态管理器](service-fabric-reliable-actors-state-management.md)：一种类似于字典的数据结构，能够可靠地存储密钥/值对。 状态管理器是围绕状态提供程序的包装。 无论使用哪个[持久性设置](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)，都可以使用它来存储数据。

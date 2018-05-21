@@ -1,24 +1,24 @@
 ---
-title: "有关 Azure Service Fabric 与 API 管理的概述 | Microsoft Docs"
-description: "本文介绍了如何将 Azure API 管理用作 Service Fabric 应用程序的网关。"
+title: 有关 Azure Service Fabric 与 API 管理的概述 | Microsoft Docs
+description: 本文介绍了如何将 Azure API 管理用作 Service Fabric 应用程序的网关。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: ea3b1f50bada3c1301f8661f8f0b4866cb1c732c
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 6bf7ea90bb5351411984110fd8fb05c2f8cb0650
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>有关 Azure Service Fabric 与 API 管理的概述
 

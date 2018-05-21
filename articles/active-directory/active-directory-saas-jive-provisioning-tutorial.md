@@ -1,6 +1,6 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Jive 配置自动用户预配 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Jive 之间配置单一登录。"
+title: 教程：使用 Azure Active Directory 为 Jive 配置自动用户预配 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Jive 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 4190b1cbc7e32b1471795e29a211f7a7e5831648
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 09eceb3cfed4bc96a38c28582a1205958766a4ac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教程：为 Jive 配置自动用户预配
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 *   Azure Active Directory 租户。
 *   已启用 Jive 单一登录的订阅。
@@ -100,5 +100,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](active-directory-saas-jive-tutorial.md)
