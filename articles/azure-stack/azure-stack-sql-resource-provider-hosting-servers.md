@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/18/2018
 ms.author: jeffgilb
-ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e08c0bfd3cbed64f5042e469801e20c913c2f70e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>将宿主服务器添加为 SQL 资源提供程序
 可以使用 [Azure Stack](azure-stack-poc.md) 内部 VM 上的 SQL 实例，或者 Azure Stack 环境外部的实例，前提是资源提供程序能够连接到这些实例。 一般要求为：
@@ -96,25 +96,21 @@ ms.lasthandoff: 05/04/2018
 > [!NOTE]
 > 对于 Always On，SQL 适配器 RP 仅支持 SQL 2016 SP1 企业版或更高版本的实例，因为它需要新的 SQL 功能，例如自动种子设定。 除了上面所列的一般要求以外，还必须满足以下要求：
 
-* 除了 SQL Always On 计算机以外，还必须提供一个文件服务器。 有一个 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2016-ha)可以创建此环境。 该模板还能引导你构建自己的实例。
+具体而言，必须启用[自动种子设定](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)上每个可用性组的每个 SQL Server 实例：
 
-* 必须设置 SQL 服务器。 具体而言，必须在每个 SQL Server 实例的每个可用性组上启用[自动种子设定](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)。
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>]
+      MODIFY REPLICA ON 'InstanceName'
+      WITH (SEEDING_MODE = AUTOMATIC)
+  GO
+  ```
 
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>]
-    MODIFY REPLICA ON 'InstanceName'
-    WITH (SEEDING_MODE = AUTOMATIC)
-GO
-```
+在辅助实例上使用这些 SQL 命令：
 
-在辅助实例上
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
-GO
-
-```
-
-
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+  GO
+  ```
 
 若要添加 SQL Always On 宿主服务器，请遵循以下步骤：
 
@@ -124,14 +120,16 @@ GO
 
     在“SQL 宿主服务器”边栏选项卡上，可将 SQL 服务器资源提供程序连接到充当资源提供程序后端的实际 SQL 服务器实例。
 
-
-3. 在表单中填写 SQL Server 实例的连接详细信息，并确保使用 Always On 侦听器的 FQDN 或 IPv4 地址（和可选的端口号）。 提供配置的、拥有系统管理员特权的帐户的帐户信息。
+3. 使用 SQL Server 实例，确保使用始终在侦听器 （和可选端口号） 的 FQDN 地址的连接详细信息来填充窗体。 提供配置的、拥有系统管理员特权的帐户的帐户信息。
 
 4. 选中此框可启用 SQL Always On 可用性组实例的支持。
 
     ![宿主服务器](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
-5. 将 SQL Always On 实例添加到 SKU。 不能在同一 SKU 中混合使用独立服务器与 Always On 实例。 在添加第一个宿主服务器时需确定其中的一项。 之后尝试混合使用类型会导致出错。
+5. 将 SQL Always On 实例添加到 SKU。 
+
+> [!IMPORTANT]
+> 不能在同一 SKU 中混合使用独立服务器与 Always On 实例。 尝试在错误中添加的第一个托管服务器结果后混合类型。
 
 
 ## <a name="making-sql-databases-available-to-users"></a>将 SQL 数据库提供给用户使用

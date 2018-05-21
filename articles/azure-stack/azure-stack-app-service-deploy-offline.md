@@ -12,20 +12,20 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 7907056635049ce90a2653b0d58ef6299b77c71e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5b4281de4a6c2efee8e96f98a3cd46fec191fe22
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 请应用针对 Azure Stack 集成系统的 1802 更新，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务。
+> 将 1804年更新应用于你的 Azure 堆栈集成系统，或在部署 Azure 应用程序服务 1.2 之前部署的最新的 Azure 堆栈开发工具包。
 >
 >
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 04/20/2018
 7. 在下一页上执行以下操作：
     1. 单击“Azure Stack 订阅”框旁边的“连接”按钮。
         - 提供管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，并单击“登录”。
-    2. 在“Azure Stack 订阅”框中，选择订阅。
+    2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
     3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
     4. 单击“下一步”。
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 04/20/2018
 
     ![应用服务安装程序][11]
 
-12. 为用于托管应用服务资源提供程序数据库的服务器实例输入 SQL Server 详细信息，然后单击“下一步”。 安装程序将验证 SQL 连接属性。
+12. 为用于托管应用服务资源提供程序数据库的服务器实例输入 SQL Server 详细信息，然后单击“下一步”。 安装程序将验证 SQL 连接属性。 你**必须**输入的内部 ip 或 SQL Server 名称的完全限定的域名。
 
 > [!NOTE]
 > 在继续下一步之前，安装程序会尝试测试与 SQL Server 的连接。  但是，如果前面已选择部署到现有虚拟网络，则安装程序可能无法连接到 SQL Server，并显示警告来询问是否继续。  请检查 SQL Server 信息，如果正确，则继续。

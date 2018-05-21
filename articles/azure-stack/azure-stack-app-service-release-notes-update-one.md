@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: fedf511e06243d5c0652e422b397bb00da3b42c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 80bd865b7a08d9488c0fb6a1a5b60445b9c6eaaa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>基于 Azure Stack 的应用服务 Update 1 发行说明
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-这些发行说明介绍了基于 Azure Stack 的 Azure 应用服务 Update 1 中的改进和修复，以及任何已知问题。 已知问题分为与部署、更新过程直接相关的问题，以及内部版本（安装后）的问题。
+这些发行说明介绍了基于 Azure Stack 的 Azure 应用服务 Update 1 中的改进和修复，以及任何已知问题。 已知的问题划分为与部署、 更新过程和生成 （安装后） 的问题直接相关的问题。
 
 > [!IMPORTANT]
 > 请应用针对 Azure Stack 集成系统的 1802 更新，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务。
@@ -39,7 +39,7 @@ ms.lasthandoff: 04/28/2018
 ### <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
-> 基于 Azure Stack 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为目前在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新使用者为 ** *.sso.appservice.<region>.<domainname>.<extension>**
+> 基于 Azure Stack 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为目前在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新的使用者是 **\*。 sso.appservice。\<区域\>。\<domainname\>。\<扩展\>**
 >
 >
 
