@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Halogen Software 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Halogen Software 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Halogen Software 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Halogen Software 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: af9c9d4b9bd562169bfe6c9158254beec5c3e1e7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fd2a45d34d93f1233302c89c502fb171da2873e9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>教程：Azure Active Directory 与 Halogen Software 集成
 
@@ -27,19 +27,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在 Azure AD 中控制谁有权访问 Halogen Software
 - 可以让用户使用其 Azure AD 帐户自动登录到 Halogen Software（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Halogen Software 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Halogen Software 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 Halogen Software，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -149,12 +149,12 @@ ms.lasthandoff: 12/11/2017
   
      c. 要上载已下载的元数据文件，请单击“浏览”选择该文件，并单击“上载文件”。
  
-     d.单击“下一步”。 若要测试配置，请单击“运行测试”。 
+     d. 若要测试配置，请单击“运行测试”。 
     
     >[!NOTE]
     >需要等待消息“*SAML 测试已完成。请关闭此窗口*”。 然后，关闭打开的浏览器窗口。 仅在测试完成的情况下，才会启用“启用 SAML”复选框。 
      
-     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 选择“启用 SAML”。
+     e. 选择“启用 SAML”。
     
      f. 单击“保存更改”。 
 
@@ -192,7 +192,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-halogen-software-test-user"></a>创建 Halogen Software 测试用户
 
@@ -218,7 +218,7 @@ ms.lasthandoff: 12/11/2017
 
     d. 在“密码”文本框中，键入 Britta 的密码。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存” 。
+    e. 单击“ **保存**”。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Palo Alto Networks - Aperture 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 Palo Alto Networks - Aperture 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Palo Alto Networks - Aperture 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Palo Alto Networks - Aperture 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 75633cbf13756b4b2be3e4be055b12021cc396d2
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 29b37b34271680cdd4d1f660ea6eb6172df8b06d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>教程：Azure Active Directory 与 Palo Alto Networks - Aperture 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/14/2018
 - 可以让用户通过其 Azure AD 帐户自动登录到 Palo Alto Networks - Aperture（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 02/14/2018
 
 若要从库中添加 Palo Alto Networks - Aperture，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -152,7 +152,7 @@ ms.lasthandoff: 02/14/2018
 
     c. 在“标识提供者证书”字段中单击“选择文件”，上传从 Azure AD 下载的证书。
 
-    d.单击“下一步”。 在“标识提供者 SSO URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    d. 在“标识提供者 SSO URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     e. 查看“Aperture 信息”部分中的 IdP 信息，并从“Aperture 密钥”字段下载证书。
 
@@ -191,7 +191,7 @@ ms.lasthandoff: 02/14/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-palo-alto-networks---aperture-test-user"></a>创建 Palo Alto Networks - Aperture 测试用户
 
@@ -237,7 +237,7 @@ ms.lasthandoff: 02/14/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,24 +1,24 @@
 ---
-title: "使用 SAS 令牌和 PowerShell 部署 Azure 模板 | Microsoft Docs"
-description: "使用 Azure Resource Manager 和 Azure PowerShell 从使用 SAS 令牌保护的模板将资源部署到 Azure。"
+title: 使用 SAS 令牌和 PowerShell 部署 Azure 模板 | Microsoft Docs
+description: 使用 Azure 资源管理器和 Azure PowerShell 从使用 SAS 令牌保护的模板将资源部署到 Azure。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: 1e3cea027b599e2b1af1ced0fdf14e2cc8a0db82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2dbf7f9ac5a735ec0c70f4daefa721509212a84b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-powershell"></a>使用 SAS 令牌和 Azure PowerShell 部署专用 Resource Manager 模板
 
@@ -61,7 +61,7 @@ New-AzureRmResourceGroup -Name ExampleGroup -Location "South Central US"
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri $templateuri
 ```
 
-有关将 SAS 令牌与链接模板配合使用的示例，请参阅[将已链接的模版与 Azure Resource Manager 配合使用](resource-group-linked-templates.md)。
+有关将 SAS 令牌与链接模板配合使用的示例，请参阅[将已链接的模版与 Azure 资源管理器配合使用](resource-group-linked-templates.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

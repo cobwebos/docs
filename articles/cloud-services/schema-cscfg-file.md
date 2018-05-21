@@ -1,23 +1,23 @@
 ---
-title: "Azure 云服务定义架构（.cscfg 文件）| Microsoft Docs"
-ms.custom: 
+title: Azure 云服务定义架构（.cscfg 文件）| Microsoft Docs
+services: cloud-services
+ms.custom: ''
 ms.date: 12/07/2016
-ms.prod: azure
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 3ddc7fea-3339-4fc0-bdf9-853c32b25f69
-caps.latest.revision: "35"
+caps.latest.revision: 35
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: bba02688e443d4b5bde89691ca0b74b3597b453a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6347314e7f279356f4f3944f3238deda84f10fc0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure 云服务配置架构（.cscfg 文件）
 服务配置文件指定要为服务中每个角色部署的角色实例数、任何配置设置的值，以及与角色关联的任何证书的缩略图。 如果服务属于虚拟网络，必须在服务配置文件以及虚拟网络配置文件中提供网络的配置信息。 服务配置文件的默认扩展名为 .csdef。
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="ServiceConfiguration"></a> ServiceConfiguration 元素
 `ServiceConfiguration` 元素是服务配置文件的顶层元素。
 
-下表描述 `ServiceConfiguration` 元素的属性。 所有属性值均为字符串类型。
+下表介绍了 `ServiceConfiguration` 元素的属性。 所有属性值均为字符串类型。
 
 | 属性 | 说明 |
 | --------- | ----------- |
