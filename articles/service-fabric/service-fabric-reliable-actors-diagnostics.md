@@ -1,6 +1,6 @@
 ---
-title: "执行组件诊断和监视 | Microsoft Docs"
-description: "本文描述了 Service Fabric Reliable Actors 运行时中的诊断和性能监视功能，包括由其发出的事件和性能计数器。"
+title: 执行组件诊断和监视 | Microsoft Docs
+description: 本文描述了 Service Fabric Reliable Actors 运行时中的诊断和性能监视功能，包括由其发出的事件和性能计数器。
 services: service-fabric
 documentationcenter: .net
 author: abhishekram
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 5fbef8a3fb32f4bc47856ef6c6b459ae389dd541
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 9b4825be7ce7fb05b109310f21cd65cfe3819ae8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors 的诊断和性能监视
 Reliable Actors 运行时发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件和[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解运行时的运行状况以及进行故障排除和性能监视。
@@ -62,7 +62,7 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet
 
 *ActorRuntimeInternalID* 是由 Fabric 执行组件运行时生成的供内部使用的 64 位整数的字符串表示。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
-下面的示例展示了属于 `Service Fabric Actor` 类别的计数器的计数器实例名称：
+下面是属于 `Service Fabric Actor` 类别的计数器的计数器实例名称的示例：
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046`
 
@@ -77,7 +77,7 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet
 
 *ActorsRuntimeMethodId* 是由 Fabric 执行组件运行时生成的供内部使用的 32 位整数的字符串表示。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
-*ServiceFabricPartitionID* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成的。
+*ServiceFabricPartitionID* 是与性能计数器实例关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成的。
 
 *ActorRuntimeInternalID* 是由 Fabric 执行组件运行时生成的供内部使用的 64 位整数的字符串表示。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
@@ -141,7 +141,7 @@ Reliable Actors 运行时发出以下与[执行组件副本](service-fabric-reli
 | 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |信息性 |0x1 |执行组件副本将角色更改为“主要”。 这意味着在此副本内创建此分区的执行组件。 |
-| ReplicaChangeRoleFromPrimary |#N/A |信息性 |0x1 |执行组件副本将角色更改为“非主要”。 这意味着不再在此副本内创建此分区的执行组件。 不会将任何新请求传送到此副本中已创建的执行组件。 正在进行中的任何请求完成后会销毁执行组件。 |
+| ReplicaChangeRoleFromPrimary |2 |信息性 |0x1 |执行组件副本将角色更改为“非主要”。 这意味着不再在此副本内创建此分区的执行组件。 不会将任何新请求传送到此副本中已创建的执行组件。 正在进行中的任何请求完成后会销毁执行组件。 |
 
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>执行组件激活和停用事件以及性能计数器
 Reliable Actors 运行时发出以下与[执行组件激活和停用](service-fabric-reliable-actors-lifecycle.md)相关的事件。

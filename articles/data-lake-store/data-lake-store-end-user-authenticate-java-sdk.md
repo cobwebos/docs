@@ -1,23 +1,21 @@
 ---
-title: "最终用户身份验证：通过 Azure Active Directory 将 Java 与 Data Lake Store 配合使用 | Microsoft Docs"
-description: "了解如何通过 Java 使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证"
+title: 最终用户身份验证：通过 Azure Active Directory 将 Java 与 Data Lake Store 配合使用 | Microsoft Docs
+description: 了解如何通过 Java 使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: b1fbf3c1e0e5715ff7effcdac45ff03f2b55f9ee
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: b638860dbdab7e3b5a747a4ddd82e7247f24845f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-java"></a>使用 Java 进行 Data Lake Store 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -30,7 +28,7 @@ ms.lasthandoff: 01/10/2018
 
 本文介绍如何使用 Java SDK 进行 Azure Data Lake Store 最终用户身份验证。 有关使用 Java SDK 的 Data Lake Store 服务到服务身份验证，请参阅[使用 Java 进行 Data Lake Store 的服务到服务身份验证](data-lake-store-service-to-service-authenticate-java.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **创建 Azure Active Directory“本机”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)中的步骤。

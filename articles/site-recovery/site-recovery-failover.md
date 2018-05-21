@@ -1,18 +1,18 @@
 ---
-title: "Site Recovery 中的故障转移 | Microsoft Docs"
-description: "Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。"
+title: Site Recovery 中的故障转移 | Microsoft Docs
+description: Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: ponatara
-ms.openlocfilehash: f7a60cd82508629ad3cf46882564aa68995ba3e6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 40f35cde2b55da0763f6ee65b065f5dd8a55b9c6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="failover-in-site-recovery"></a>Site Recovery 中的故障转移
 本文介绍如何故障转移受 Site Recovery 保护的虚拟机和物理服务器。
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/12/2018
 
 通过下表了解 Azure Site Recovery 提供的故障转移选项。 所列选项针对不同的故障转移方案。
 
-| 方案 | 应用程序恢复要求 | Hyper V 工作流 | VMware 工作流
+| 场景 | 应用程序恢复要求 | Hyper V 工作流 | VMware 工作流
 |---|--|--|--|
 |由于即将到来的数据中心故障时间而计划的故障转移| 执行计划活动时应用程序的零数据丢失| 对于 Hyper-V，ASR 以用户指定的复制频率复制数据。 使用计划的故障转移在启动故障转移之前覆盖频率并复制最终更改。 <br/> <br/> 1.  根据你的业务变更管理流程规划维护时段。 <br/><br/> 2.通知用户即将到来的故障时间。 <br/><br/> 3.使面向用户的应用程序脱机运行。<br/><br/>4.使用 ASR 门户启动计划的故障转移。 本地虚拟机将自动关闭。<br/><br/>有效的应用程序数据丢失 = 0 <br/><br/>对于希望使用较早恢复点的用户，还可以提供保留期内的恢复点日志。 （对于 HYPER-V，保留期为 24 小时）。| 对于 VMware，ASR 使用 CDP 持续复制数据。 故障转移可以让用户选择故障转移到最新数据（包括应用程序关闭后）<br/><br/> 1.根据变更管理流程规划维护时段 <br/><br/>2.通知用户即将到来的故障时间 <br/><br/>3.  使面向用户的应用程序脱机运行。 <br/><br/>4.在应用程序脱机后，使用 ASR 门户启动到最新点的计划故障转移。 使用门户上的“计划外的故障转移”选项，并选择最新点进行故障转移。 本地虚拟机将自动关闭。<br/><br/>有效的应用程序数据丢失 = 0 <br/><br/>对于希望使用较早恢复点的用户，可以提供保留期内的恢复点日志。 （对于 VMware，保留期为 72 小时）。
 |由于计划外的数据中心故障时间（自然或 IT 灾难）而执行的故障转移 | 应用程序的最小数据丢失 | 1.启动组织的 BCP 计划 <br/><br/>2.使用 ASR 门户启动到最新点或保留期（日志）内的某个点的计划外故障转移。| 1.启动组织的 BCP 计划。 <br/><br/>2.使用 ASR 门户启动到最新点或保留期（日志）内的某个点的计划外故障转移。

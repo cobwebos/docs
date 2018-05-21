@@ -1,9 +1,9 @@
 ---
-title: "在 Azure Application Insights 中使用交互式工作簿调查和共享使用情况数据 | Microsoft docs"
-description: "对 Web 应用的用户进行人口统计学分析。"
+title: 在 Azure Application Insights 中使用交互式工作簿调查和共享使用情况数据 | Microsoft docs
+description: 对 Web 应用的用户进行人口统计学分析。
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3edaefa942b834a070c55fe28daf60c74ea9f59d
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.author: mbullwin; daviste
+ms.openlocfilehash: a871378b3e2cc0b34c925593c6f01952de3aa08e
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>在 Application Insights 中使用交互式工作簿调查和共享使用情况数据
 

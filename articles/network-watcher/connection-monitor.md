@@ -1,72 +1,167 @@
 ---
-title: 使用 Azure 网络观察程序监视网络连接 - Azure 门户 | Microsoft Docs
-description: 了解如何使用 Azure 门户通过 Azure 网络观察程序监视网络连接。
+title: 监视网络通信 - 教程 - Azure 门户 | Microsoft Docs
+description: 了解如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+tags: azure-resource-manager
+Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/16/2018
+ms.date: 04/27/2018
 ms.author: jdial
-ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.custom: mvc
+ms.openlocfilehash: bfd9552a0d7c3b1e631fcc1a25d240608754c6a3
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>使用 Azure 门户通过 Azure 网络观察程序监视网络连接
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
-了解如何使用连接监视器来监视 Azure 虚拟机 (VM) 与 IP 地址之间的网络连接。 连接监视器在源和目标 IP 地址与端口之间提供监视。 通过端口 1433，连接监视器支持以下方案，例如监视从虚拟网络中的 VM 到同一或不同虚拟网络中运行 SQL Server 的 VM 间的连接。 连接监视器提供连接延迟作为 Azure Monitor 指标，每 60 秒记录一次。 它还提供逐跳拓扑，并确定影响连接的配置问题。
+在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 本教程介绍如何执行下列操作：
 
-## <a name="prerequisites"></a>先决条件
+> [!div class="checklist"]
+> * 创建两个 VM
+> * 使用网络观察程序的连接监视器功能监视 VM 之间的通信
+> * 诊断两个 VM 之间的通信问题，并了解如何解决该问题
 
-必须满足以下必备项，才可完成本文中的步骤：
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 要监视其连接的区域中的网络观察程序的实例。 如果尚不具备实例，可通过完成[创建 Azure 网络观察程序实例](network-watcher-create.md)中的步骤来创建一个。
-* 要监视的源 VM。 若要了解如何创建 VM，请参阅“创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) VM”。
-* 要从中监视连接的 VM 中装有 `AzureNetworkWatcherExtension`。 若要在 Windows VM 中安装扩展项，请参阅 [适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)；若在 Linux VM 中安装扩展项，请参阅[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。 要监视的目标终结点上不需要该扩展。
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-## <a name="sign-in-to-azure"></a>登录 Azure 
+登录到 [Azure 门户](https://portal.azure.com)。
 
-登录到 [Azure 门户](http://portal.azure.com)。
+## <a name="create-vms"></a>创建 VM
+
+创建两个 VM。
+
+### <a name="create-the-first-vm"></a>创建第一个 VM
+
+1. 选择 Azure 门户左上角的“+ 创建资源”。
+2. 选择“计算”，然后选择操作系统。 在本教程中，使用的是 **Windows Server 2016 Datacenter**。
+3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”：
+
+    |设置|值|
+    |---|---|
+    |名称|myVM1|
+    |用户名| 输入所选用户名。|
+    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    |订阅| 选择订阅。|
+    |资源组| 选择“新建”，并输入 myResourceGroup|
+    |Location| 选择“美国东部”|
+
+4. 选择 VM 的大小，然后选择“选择”。
+5. 在“设置”下选择“扩展”。 选择“添加扩展”，然后选择“用于 Windows 的网络观察程序代理”，如下图所示：
+
+    ![网络观察程序代理扩展](./media/connection-monitor/nw-agent-extension.png)
+
+6. 在“用于 Windows 的网络观察程序代理”下选择“创建”，在“安装扩展”下选择“确定”，，然后在“扩展”下选择“确定”。
+7. 接受其余“设置”的默认值，然后选择“确定”。
+8. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署。
+
+### <a name="create-the-second-vm"></a>创建第二个 VM
+
+再次完成[创建第一个 VM](#create-the-first-vm) 中的步骤，并做出以下更改：
+
+|步骤|设置|值|
+|---|---|---|
+| 1 | 选择“Ubuntu Server 17.10 VM” |                                                                         |
+| 3 | 名称                              | myVm2                                                                   |
+| 3 | 身份验证类型               | 粘贴 SSH 公钥，或者在选择“密码”后输入密码。 |
+| 3 | 资源组                    | 选择“使用现有资源组”，再选择“myResourceGroup”。                 |
+| 6 | 扩展                        | **适用于 Linux 的网络代理**                                             |
+
+部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
 
 ## <a name="create-a-connection-monitor"></a>创建连接监视器
 
-以下步骤可通过端口 80 和 1433 启用对目标 VM 的连接监视：
+创建一个连接监视器，监视通过 TCP 端口 22 进行的从 *myVm1* 到 *myVm2* 的通信。
 
 1. 在门户左侧选择“所有服务”。
 2. 首先在“筛选”框中键入“网络观察程序”。 搜索结果中出现“网络观察程序”后，将其选中。
 3. 在“监视”下选择“连接监视器”。
 4. 选择“+ 添加”。
-5. 输入或选择要监视的连接信息，然后选择“添加”。 在下图所示的示例中，将通过端口 80 监视从 *MultiTierApp0* VM 到 *Database0* VM 的连接：
+5. 输入或选择要监视的连接信息，然后选择“添加”。 在下图所示的示例中，将通过端口 22 监视从 *myVm1* VM 到 *myVm2* VM 的连接：
+
+    | 设置                  | 值               |
+    | ---------                | ---------           |
+    | 名称                     | myVm1-myVm2(22)     |
+    | Source                   |                     |
+    | 虚拟机          | myVM1               |
+    | 目标              |                     |
+    | 选择一个虚拟机 |                     |
+    | 虚拟机          | myVm2               |
+    | 端口                     | 22                  |
 
     ![添加连接监视器](./media/connection-monitor/add-connection-monitor.png)
 
-    开始监视。 连接监视器每 60 秒探测一次。
-6. 再次完成步骤 5，并指定相同的源和目标 VM 与以下值：
-    
-    |设置  |值          |
-    |---------|---------      |
-    |名称     | AppToDB(1433) |
-    |端口     | 1433          |
+## <a name="view-a-connection-monitor"></a>查看连接监视器
 
-## <a name="view-connection-monitoring"></a>查看连接监视
+1. 完成[创建连接监视器](#create-a-connection-monitor)中的步骤 1-3 以查看连接监视。 可以看到现有连接监视器的列表，如下图所示：
 
-1. 完成[创建连接监视器](#create-a-connection-monitor)中的步骤 1-3 以查看连接监视。
-2. 下图显示 *AppToDB(80)* 连接的详细信息。 可访问“状态”。 “图形视图”显示“平均往返时间”和“失败的探测百分比”。 该图提供了逐跳信息，并显示没有问题影响着目标可访问性。
+    ![连接监视器](./media/connection-monitor/connection-monitors.png)
 
-    ![图形视图](./media/connection-monitor/view-graph.png)
+2. 选择名为 **myVm1-myVm2(22)** 的监视器（如上图所示），以便查看监视器的详细信息（如下图所示）：
 
-3. 查看下图中显示的 *AppToDB(1433)* 连接，可以发现，对于相同的源 VM 和目标 VM，无法通过端口 1433 访问状态。 本方案中的“网格视图”提供了逐跳信息和影响可访问性的问题。 在此情况下，NSG 规则阻止第二跃点上端口 1433 上的所有流量。
+    ![监视器详细信息](./media/connection-monitor/vm-monitor.png)
 
-    ![网格视图](./media/connection-monitor/view-grid.png)
+    请注意以下信息：
+
+    | Item                     | 值                      | 详细信息                                                     |
+    | ---------                | ---------                  |--------                                                     |
+    | 状态                   | 可访问                  | 指示终结点是否可以访问。|
+    | 平均 往返时间          | 指示进行连接所需的往返时间，以毫秒为单位。 连接监视器每 60 秒探测一次连接，因此可以监视一段时间的延迟情况。                                         |
+    | Hops                     | 连接监视器指示两个终结点之间的跃点数。 在此示例中，连接是在同一虚拟网络中的两个 VM 之间进行的，因此只有一个到 IP 地址 10.0.0.5 的跃点。 如果在 VM 之间存在通过其他方式（例如 VPN 网关或网络虚拟设备）完成的系统的或自定义的路由、路由流量，则会列出其他跃点。                                                                                                                         |
+    | 状态                   | 终结点出现绿色复选标记指示该终结点是正常的。    ||
+
+## <a name="view-a-problem"></a>查看问题
+
+默认情况下，Azure 允许在同一虚拟网络中的 VM 之间通过所有端口进行通信。 一段时间之后，你或者组织中的其他人可能会覆盖 Azure 的默认规则，无意中引发通信故障。 完成下述用于制造通信问题的步骤，然后再次查看连接监视器：
+
+1. 在门户顶部的搜索框中输入“myResourceGroup”。 当“myResourceGroup”资源组出现在搜索结果中时，将其选中。
+2. 选择 **myVm2-nsg** 网络安全组。
+3. 选择“入站安全规则”，然后选择“添加”，如下图所示：
+
+    ![入站安全规则](./media/connection-monitor/inbound-security-rules.png)
+
+4. 允许在一个虚拟网络的所有 VM 之间通信的默认规则是名为 **AllowVnetInBound** 的规则。 创建一项优先级高于（数字较小）**AllowVnetInBound** 规则（拒绝通过端口 22 进行的入站通信）的规则。 选择或输入以下信息，接受剩下的默认设置，然后选择“添加”：
+
+    | 设置                 | 值          |
+    | ---                     | ---            |
+    | 目标端口范围 | 22             |
+    | 操作                  | 拒绝           |
+    | Priority                | 100            |
+    | 名称                    | DenySshInbound |
+
+5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。 如下图所示，现在的结果有所不同：
+
+    ![监视器详述错误情况](./media/connection-monitor/vm-monitor-fault .png)
+
+    可以看到在 **myvm2529** 网络接口的状态列中有一个红色感叹号。
+
+6. 若要了解状态变化的原因，请选择上图中的“10.0.0.5”。 连接监视器指示通信故障的原因是：流量被以下网络安全组规则阻止: UserRule_DenySshInbound。
+
+    如果你并不知道某人已实施你在步骤 4 中创建的安全规则，则可以从连接监视器中了解到，该规则是引发通信问题的原因。 然后，你就可以更改、覆盖或删除该规则，以便还原 VM 之间的通信。
+
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要资源组时，可将资源组及其包含的所有资源一并删除：
+
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”。 当在搜索结果中看到“myResourceGroup”时，将其选中。
+2. 选择“删除资源组”。
+3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何通过[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)利用 VM 警报来自动捕获数据包。
-- 通过 [IP 流验证](network-watcher-check-ip-flow-verify-portal.md)确定某个流量是传入还是传出 VM。
+本教程介绍了如何监视两个 VM 之间的连接， 同时还介绍了如何通过网络安全组规则阻止到 VM 的通信。 若要了解连接监视器可能返回的所有不同的响应，请参阅[响应类型](network-watcher-connectivity-overview.md#response)。 还可以监视 VM、完全限定的域名、统一资源标识符或 IP 地址之间的连接。
+
+有时候，你可能会发现某个虚拟网络中的资源无法与通过 Azure 虚拟网关连接的其他网络中的资源通信。 请转到下一教程，了解如何诊断虚拟网关的问题。
+
+> [!div class="nextstepaction"]
+> [诊断网络之间的通信问题](diagnose-communication-problem-between-networks.md)

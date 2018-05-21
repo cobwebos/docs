@@ -1,24 +1,22 @@
 ---
-title: "使用 Distcp 将数据复制到 WASB 和从 WASB 复制到 Data Lake Store | Microsoft Docs"
-description: "使用 Distcp 工具将数据复制到 Azure 存储 Blob 和从 Azure 存储 Blob 复制到 Data Lake Store"
+title: 使用 Distcp 将数据复制到 WASB 和从 WASB 复制到 Data Lake Store | Microsoft Docs
+description: 使用 Distcp 工具将数据复制到 Azure 存储 Blob 和从 Azure 存储 Blob 复制到 Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: ae2e9506-69dd-4b95-8759-4dadca37ea70
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 8a5052f69eee7f53bb304524fc3ea4d375c76227
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: c682ff56f4850638d3cad6e327c1237a0492c4d3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-store"></a>使用 Distcp 在 Azure 存储 Blob 和 Data Lake Store 之间复制数据
 > [!div class="op_single_selector"]
@@ -29,7 +27,7 @@ ms.lasthandoff: 01/10/2018
 
 如果拥有具有 Data Lake Store 访问权限的 HDInsight 群集，则可使用 Distcp 等 Hadoop 生态系统工具将数据复制到 HDInsight 群集存储 (WASB) 和从 HDInsight 群集存储 (WASB) 复制到 Data Lake Store 帐户。 本文提供如何使用 Distcp 工具的说明。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)

@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights 遥测数据模型 - 依赖项遥测 | Microsoft Docs"
-description: "适用于依赖项遥测的 Application Insights 数据模型"
+title: Azure Application Insights 遥测数据模型 - 依赖项遥测 | Microsoft Docs
+description: 适用于依赖项遥测的 Application Insights 数据模型
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: aa305c30dc358997420be6802d43fa69e45f4a5f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 019b24839c20e7f8f46eeccf4a7b9622d18b0ad6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
 [Application Insights](app-insights-overview.md) 中的依赖项遥测表示受监视组件与远程组件（如 SQL 或 HTTP 终结点）的交互。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名称
 
 通过此依赖项调用启动的命令的名称。 低基数值。 示例包括存储过程名称和 URL 路径模板。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/01/2017
 
 此依赖项调用启动的命令。 示例包括使用所有查询参数的 SQL 语句和 HTTP URL。
 
-## <a name="type"></a>类型
+## <a name="type"></a>Type
 
 依赖项类型名称。 低基数值，用于对依赖项进行逻辑分组和解释 commandName 和 resultCode 等其他字段。 示例包括 SQL、Azure 表和 HTTP。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/01/2017
 
 依赖项调用的目标站点。 示例包括服务器名称、主机地址。 有关详细信息，请参阅[关联](application-insights-correlation.md)页。
 
-## <a name="duration"></a>持续时间
+## <a name="duration"></a>Duration
 
 请求持续时间，格式为：`DD.HH:MM:SS.MMMMMM`。 必须小于 `1000` 天。
 
