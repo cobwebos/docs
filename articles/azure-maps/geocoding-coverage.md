@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: b668ff70d627a63fb34012b07d9b41fc6f6ecb6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a7dc7a1dbf024b6d334ec374f78d5e912db3835c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps 地理编码覆盖区域
 
@@ -297,7 +297,7 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Maps 地理编码的详细信息，请参阅[搜索](https://docs.microsoft.com/rest/api/azure-maps/search)参考页面。
+有关 Azure Maps 地理编码的详细信息，请参阅[搜索](https://docs.microsoft.com/rest/api/maps/search)参考页面。
 
 了解[地图交通服务的覆盖区域](traffic-coverage.md)。 
 
