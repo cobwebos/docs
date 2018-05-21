@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 05/02/2018
 ms.author: billmath
-ms.openlocfilehash: 14d2a29e65bf2f3a974f2713f36d9b9fa497ee1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
 如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。 如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](active-directory-aadconnect-get-started-express.md)不能满足部署或拓扑的所有情况。
@@ -45,13 +45,14 @@ ms.lasthandoff: 04/23/2018
 ### <a name="user-sign-in"></a>用户登录
 在安装所需的组件后，需要选择用户单一登录方法。 下表提供了可用选项的简短说明。 有关登录方法的完整说明，请参阅[用户登录](active-directory-aadconnect-user-signin.md)。
 
-![用户登录](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
+![用户登录](./media/active-directory-aadconnect-get-started-custom/usersignin4.png)
 
 | 单一登录选项 | 说明 |
 | --- | --- |
 | 密码哈希同步 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。 用户密码将作为密码哈希同步到 Azure AD，并在云中进行身份验证。 有关详细信息，请参阅[密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)。 |
 |直通身份验证|用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户密码会传递到本地 Active Directory 域控制器进行验证。
 | 使用 AD FS 进行联合身份验证 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户被重定向到他们的本地 AD FS 实例以进行登录，并在本地完成身份验证。 |
+| 使用 PingFederate 进行联合身份验证|用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户被重定向到他们的本地 PingFederate 实例以进行登录，并在本地完成身份验证。 |
 | 不要配置 |不安装和配置用户登录功能。 如果已有第三方联合服务器或部署了另一个现有解决方案，请选择此选项。 |
 |启用单一登录|此选项适用于密码同步和传递身份验证，为企业网络中的桌面用户提供单一登录体验。 有关详细信息，请参阅[单一登录](active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。</br>
 
@@ -301,6 +302,39 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 >
 >
 
+## <a name="configuring-federation-with-pingfederate"></a>配置使用 PingFederate 的联合身份验证
+只需单击几下鼠标，便可使用 Azure AD Connect 配置 PingFederate。 配置之前需要做好以下准备。  但是，以下必备组件是必需的
+- PingFederate 8.4 或更高版本。  有关详细信息，请参阅 [PingFederate 与 Azure Active Directory 和 Office 365 的集成](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)
+- 想要使用的联合身份验证服务名称（例如 sts.contoso.com）的 SSL 证书
+
+### <a name="verify-the-domain"></a>验证域
+选择使用 PingFederate 进行联合身份验证之后，会要求你要验证要进行联合身份验证的域。  从下拉框中选择域。
+
+![验证域](./media/active-directory-aadconnect-get-started-custom/ping1.png)
+
+### <a name="export-the-pingfederate-settings"></a>导出 PingFederate 设置
+
+
+必须将 PingFederate 配置为每个联合 Azure 域的联合服务器。  单击“导出设置”按钮并与 PingFederate 管理员共享此信息。  联合服务器管理员将更新配置，然后提供 PingFederate 服务器 URL 和端口号，以便 Azure AD Connect 可以验证元数据设置。  
+
+![验证域](./media/active-directory-aadconnect-get-started-custom/ping2.png)
+
+与 PingFederate 管理员联系以解决任何验证问题。  下面是与 Azure 之间没有有效的信任关系的 PingFederate 服务器的示例：
+
+![信任](./media/active-directory-aadconnect-get-started-custom/ping5.png)
+
+
+
+
+### <a name="verify-federation-connectivity"></a>验证联合身份验证连接性
+Azure AD Connect 将尝试验证从上一步中的 PingFederate 元数据检索的身份验证终结点。  Azure AD Connect 将首先尝试使用本地 DNS 服务器解析终结点。  接下来，它将尝试使用外部 DNS 提供程序解析终结点。  与 PingFederate 管理员联系以解决任何验证问题。  
+
+![验证连接性](./media/active-directory-aadconnect-get-started-custom/ping3.png)
+
+### <a name="verify-federation-login"></a>验证联合登录
+最后，可以通过登录到联合域来验证新配置的联合登录流。 如果此操作成功，则说明已成功配置了使用 PingFederate 的联合身份验证。
+![验证登录](./media/active-directory-aadconnect-get-started-custom/ping4.png)
+
 ## <a name="configure-and-verify-pages"></a>配置和验证页面
 在此页上进行配置。
 
@@ -308,6 +342,7 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 > 在继续安装之前，如果配置了联合服务器，请确保已配置[联合服务器的名称解析](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)。
 >
 >
+
 
 ![已准备好配置](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -336,8 +371,9 @@ Extranet 连接检查
 
 ![验证](./media/active-directory-aadconnect-get-started-custom/adfs7.png)
 
-此外，请执行以下验证步骤：
+若要验证端到端身份验证是否成功，应当手动执行下列一个或多个测试：
 
+* 在同步完成后，使用 Azure AD Connect 中的”验证联合登录”附加任务来验证你选择的本地用户帐户的身份验证。
 * 在 Intranet 上，通过已加入域的计算机上的浏览器验证是否能够登录：连接到 https://myapps.microsoft.com，并使用登录帐户验证登录。 内置的 AD DS 管理员帐户未同步，因此无法用于验证。
 * 验证是否可以从 Extranet 中的设备登录。 在家庭计算机或移动设备上连接到 https://myapps.microsoft.com，并提供凭据。
 * 验证富客户端登录。 连接到 https://testconnectivity.microsoft.com，选择“Office 365”选项卡，并选择“Office 365 单一登录测试”。

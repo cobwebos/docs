@@ -8,18 +8,17 @@ editor: cgronlun
 ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 9591da6826c0bdd369792e8a9fe125619a091f29
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4c08dac95a2d2b52f1a1d28f6933b94ad4db10b7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>使用 Azure PowerShell 创建具有 Data Lake Store 的 HDInsight 群集（作为其他存储）
+
 > [!div class="op_single_selector"]
 > * [使用门户](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [使用 PowerShell（对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -122,6 +121,7 @@ ms.lasthandoff: 04/19/2018
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>对 Data Lake Store 设置基于角色访问的身份验证
+
 每个 Azure 订阅都会与 Azure Active Directory 关联。 使用 Azure 门户或 Azure 资源管理器 API 访问订阅资源的用户和服务必须首先进行 Azure Active Directory 身份验证。 通过在 Azure 资源上为这些用户和服务分配相应角色，向其授予访问权限。  对于服务，服务主体会识别 Azure Active Directory (AAD) 中的服务。 本部分介绍如何通过创建应用程序服务主体和通过 Azure PowerShell 向应用程序服务主体分配角色，向 HDInsight 等应用程序服务授予 Azure 资源（先前创建的 Azure Data Lake Store 帐户）访问权限。
 
 若要设置 Azure Data Lake 的 Active Directory 身份验证，必须执行以下任务。
@@ -130,6 +130,7 @@ ms.lasthandoff: 04/19/2018
 * 在 Azure Active Directory 中创建应用程序和服务主体
 
 ### <a name="create-a-self-signed-certificate"></a>创建自签名证书
+
 继续进行本部分中的步骤前，请确保已安装有 [Windows SDK](https://dev.windows.com/en-us/downloads)。 还必须创建一个目录（该证书会在其中创建），例如 **C:\mycertdir**。
 
 1. 在 PowerShell 窗口中，导航到安装 Windows SDK 的位置（通常为 `C:\Program Files (x86)\Windows Kits\10\bin\x86`），并使用 [MakeCert][makecert] 实用工具创建一个自签名证书和私钥。 使用以下命令。
@@ -147,13 +148,14 @@ ms.lasthandoff: 04/19/2018
     出现提示时，输入先前指定的私钥密码。 为 **-po** 参数指定的值即是与此 .pfx 文件关联的密码。 此命令成功完成后，指定的证书目录中也应会出现 CertFile.pfx。
 
 ### <a name="create-an-azure-active-directory-and-a-service-principal"></a>创建 Azure Active Directory 和服务主体
+
 此部分中将执行以下用于创建 Azure Active Directory 应用程序的服务主体、将角色分配给服务主体，通过提供证书作为服务主体进行身份验证的步骤。 运行以下命令在 Azure Active Directory 中创建应用程序。
 
 1. 将以下 cmdlet 粘贴到 PowerShell 控制台窗口中。 请确保为 **-DisplayName** 属性指定的值唯一。 此外，**-HomePage** 和 **-IdentiferUris** 的值是占位符值，且未进行验证。
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 

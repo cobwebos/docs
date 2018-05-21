@@ -3,7 +3,7 @@ title: Azure Application Insights 中的应用程序映射 | Microsoft 文档
 description: 使用应用程序映射监视复杂的应用程序拓扑
 services: application-insights
 documentationcenter: ''
-author: SoubhagyaDash
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: mbullwin
-ms.openlocfilehash: 4b95cd947cd977208dee32d18fbc6a1fb099ff3b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: mbullwin; Soubhagya.Dash
+ms.openlocfilehash: a02d345c0f624f2d1694b4b9622bf3c82c009429
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 应用程序映射可帮助你发现的性能瓶颈或热点失败的所有组件的分布式应用程序。 在地图上的每个节点表示应用程序组件或其依赖项;并且有运行状况 KPI 和警报状态。 可从任何组件单击以获得更详细的诊断，如 Application Insights 事件。 如果应用使用了 Azure 服务，还可以单击获得 Azure 诊断，如 SQL 数据库顾问建议。

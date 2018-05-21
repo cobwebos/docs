@@ -1,9 +1,9 @@
 ---
-title: "使用流分析从 Azure Application Insights 进行导出 | Microsoft Docs"
-description: "流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。"
+title: 使用流分析从 Azure Application Insights 进行导出 | Microsoft Docs
+description: 流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 31594221-17bd-4e5e-9534-950f3b022209
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: ddaf7bf12854aa5f80c1d292613c3049850ca3ff
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c898e43cb1334bf7fb1836554fb92708033d3f7d
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](app-insights-export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
