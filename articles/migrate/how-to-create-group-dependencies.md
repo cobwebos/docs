@@ -4,13 +4,13 @@ description: 介绍如何在 Azure Migrate 服务中使用组依赖项映射优�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/22/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: a7c1dcae5708164252fa04a0fd1471eb1ae9bf90
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 690231b938f60f16dcd10656b9a1f99c8c8f29cb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
@@ -55,12 +55,12 @@ ms.lasthandoff: 04/16/2018
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[详细了解](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)依赖项代理支持的操作系统。 
+[详细了解](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)依赖项代理支持的操作系统。 
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>通过依赖项可视化优化组
 在组中的所有计算机上都安装代理后，可以可视化该组的依赖项，并通过执行以下步骤优化该组。
 
-1. 在 Azure Migrate 项目中，在**“管理”**下，单击 **“组”**，然后选择组。
+1. 在 Azure Migrate 项目中，在 **“管理”** 下，单击 **“组”**，然后选择组。
 2. 在组页面上，单击 **“查看依赖项”**，打开组依赖项映射。
 3. 组的依赖项映射显示了以下详细信息：
     - 与组中包含的所有计算机的入站（客户端）和出站（服务器）TCP 连接
