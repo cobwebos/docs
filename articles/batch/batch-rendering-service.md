@@ -1,22 +1,22 @@
 ---
-title: "Azure Batch 渲染服务 - 云规模的渲染 | Microsoft Docs"
-description: "直接从 Maya 渲染 Azure 虚拟机上的作业，按使用付费。"
+title: Azure Batch 渲染服务 - 云规模的渲染 | Microsoft Docs
+description: 直接从 Maya 渲染 Azure 虚拟机上的作业，按使用付费。
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: hero-article
-ms.date: 09/14/2017
+ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: f1aa8de26afd8b54746c706047a6b6b21cbf311c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: df1b2da7628e6c3f9f4bcbb02a936c33aad49698
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Batch 渲染服务入门
 
-Azure Batch 渲染服务提供云规模的渲染功能，按使用付费。 Batch 渲染服务处理作业计划和队列、管理失败和重试，以及针对渲染作业自动缩放。 Batch 渲染服务支持 [Autodesk Maya](https://www.autodesk.com/products/maya/overview)、[3ds Max](https://www.autodesk.com/products/3ds-max/overview)、[Arnold](https://www.autodesk.com/products/arnold/overview) 和 [V-Ray](https://www.chaosgroup.com/vray/maya)。 使用用于 Maya 2017 的 Batch 插件，可以直接从桌面轻松启动 Azure 上的渲染作业。
+Azure Batch 渲染服务提供云规模的渲染功能，按使用付费。 Batch 渲染服务处理作业计划和队列、管理失败和重试，以及针对渲染作业自动缩放。 Batch 渲染服务支持 [Autodesk Maya](https://www.autodesk.com/products/maya/overview)、[3ds Max](https://www.autodesk.com/products/3ds-max/overview)、[Arnold](https://www.autodesk.com/products/arnold/overview) 和 [V-Ray](https://www.chaosgroup.com/vray/maya) 等渲染应用。 使用用于 Maya 2017 的 Batch 插件，可以直接从桌面轻松启动 Azure 上的渲染作业。
 
 有了 Maya 和 3ds Max，即可使用 [BatchLabs](https://github.com/Azure/BatchLabs) 桌面应用程序或 [Batch 模板 CLI](batch-cli-templates.md) 运行作业。 使用 Azure Batch CLI，可在不编写代码的情况下运行 Batch 作业。 可以改用模板文件来创建 Batch 池、作业和任务。 有关详细信息，请参阅[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)。
 
@@ -25,16 +25,35 @@ Azure Batch 渲染服务提供云规模的渲染功能，按使用付费。 Batc
 
 Batch 渲染服务目前支持以下应用程序：
 
-•   Autodesk Maya I/O 2017 Update 4（17.4.5459 版）•   Autodesk 3ds Max I/O 2018 Update 1（20.1.0.238 版）•   Autodesk Arnold for Maya（5.0.1.1 版）•   Autodesk Arnold for 3ds Max（1.0.836 版）•   Chaos Group V-Ray for Maya（3.52.03 版）•   Chaos Group V-Ray for 3ds Max（3.60.02 版）
+在 CentOS 7 渲染节点上：
+- Autodesk Maya I/O 2017 更新 5 (cut 201708032230)
+- Autodesk Maya I/O 2018 更新 2 (cut 201711281015)
+- Autodesk Arnold for Maya 2017（Arnold 版本 5.0.1.1）MtoA-2.0.1.1-2017
+- Autodesk Arnold for Maya 2018（Arnold 版本 5.0.1.4）MtoA-2.1.0.3-2018
+- Chaos Group V-Ray for Maya 2017（版本 3.60.04） 
+- Chaos Group V-Ray for Maya 2018（版本 3.60.04） 
+- Blender (2.68)
+
+在 Windows Server 2016 渲染节点上：
+- Autodesk Maya I/O 2017 更新 5（版本 17.4.5459） 
+- Autodesk Maya I/O 2018 更新 2（版本 18.2.0.6476） 
+- Autodesk 3ds Max I/O 2018 更新 4（版本 20.4.0.4254） 
+- Autodesk Arnold for Maya（Arnold 版本 5.0.1.1）MtoA-2.0.1.1-2017
+- Autodesk Arnold for Maya（Arnold 版本 5.0.1.4）MtoA-2.0.2.3-2018
+- Autodesk Arnold for 3ds Max（Arnold 版本 5.0.2.4）（版本 1.2.926） 
+- Chaos Group V-Ray for Maya（版本 3.52.03） 
+- Chaos Group V-Ray for 3ds Max（版本 3.60.02）
+- Blender (2.79)
 
 
 ## <a name="prerequisites"></a>先决条件
 
 若要使用 Batch 渲染服务，你需要：
 
-- 一个 [Azure 帐户](https://azure.microsoft.com/free/)。
-- 一个 Azure Batch 帐户。 有关在 Azure 门户中创建 Batch 帐户的指南，请参阅[使用 Azure 门户创建 Batch 帐户](batch-account-create-portal.md)。
-- 一个 Azure 存储帐户。 用于渲染作业的资产存储在 Azure 存储中。 可以在设置 Batch 帐户时自动创建存储帐户。 也可以使用现有的存储帐户。 若要详细了解存储帐户，请参阅[如何在 Azure 门户中创建、管理或删除存储帐户](https://docs.microsoft.com/azure/storage/storage-create-storage-account)。
+- [Azure 帐户](https://azure.microsoft.com/free/)。
+- **Azure Batch 帐户**。 有关在 Azure 门户中创建 Batch 帐户的指南，请参阅[使用 Azure 门户创建 Batch 帐户](batch-account-create-portal.md)。
+- **Azure 存储帐户**。 用于渲染作业的资产通常存储在 Azure 存储中。 可以在设置 Batch 帐户时自动创建存储帐户。 也可以使用现有的存储帐户。 有关 Batch 中的存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。
+- **环境变量**。 如果你的解决方案修改了环境变量，请确保在调用上述任何经许可的应用程序时 `AZ_BATCH_ACCOUNT_URL` 和 `AZ_BATCH_SOFTWARE_ENTITLEMENT_TOKEN` 的值保持不变并存在。 否则，可能会遇到软件激活问题。
 - BatchLabs（可选）。 [BatchLabs](https://azure.github.io/BatchLabs) 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 虽然不是使用渲染服务所必需的，但它是一个有用的选项，可以开发和调试 Batch 解决方案。
 
 若要使用用于 Maya 的 Batch 插件，你需要：
@@ -54,7 +73,7 @@ Batch 是一项平台服务，用于在计算节点池中运行计算密集型�
 
 ### <a name="jobs"></a>作业
 
-Batch 作业是在池中计算节点上运行的任务的集合。 当你提交渲染作业时，Batch 会将该作业分成多个任务，然后将这些任务分发到池中的计算节点上运行。
+Batch 作业是在池中计算节点上运行的任务的集合。 当提交渲染作业时，Batch 会将该作业分解为多个任务，然后分发这些任务以在池中的计算节点上运行。
 
 可以使用 [Azure 门户](https://ms.portal.azure.com/)来监视作业和诊断失败的任务，只需下载应用程序日志以及使用 RDP 或 SSH 以远程方式连接到各个 VM 即可。 也可使用 [BatchLabs 工具](https://azure.github.io/BatchLabs)进行管理、监视和调试。
 
@@ -72,18 +91,11 @@ Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 
 
 ![选择 Batch 帐户的映像类型](./media/batch-rendering-service/add-pool.png)
 
-向下滚动，单击“图形和渲染许可”打开“选择许可证”边栏选项卡，然后选择一个或多个软件许可证：
+向下滚动，在“图形和渲染许可”下，单击“选择软件和定价”。 选择一个或多个软件许可证：
 
 ![为池选择图形和渲染许可证](./media/batch-rendering-service/graphics-licensing.png)
 
-提供的特定许可证版本如下所示：
-
-- Maya 2017
-- 3ds Max 2018
-- Arnold for Maya 5.0.1.1
-- Arnold for 3ds Max 1.0.836
-- V-Ray for Maya 3.52.03
-- V-Ray for 3ds Max 3.60.01
+提供的特定许可证版本与上面的“支持的应用程序”部分中的版本匹配。
 
 ### <a name="custom-images"></a>自定义映像
 
@@ -175,12 +187,12 @@ Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 
 
 |操作系统  |映像  |
 |---------|---------|
-|Linux     |Batch CentOS 预览版 |
-|Windows     |Batch Windows 预览版 |
+|Linux     |Batch CentOS |
+|Windows     |Batch Windows |
 
 #### <a name="choose-a-vm-size"></a>选择 VM 大小
 
-可以在“Env”选项卡上指定 VM 大小。有关可用 VM 大小的详细信息，请参阅 [Azure 中 Linux VM 的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)和 [Azure 中 Windows VM 的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。 
+可以在“Env”选项卡上指定 VM 大小。有关可用 VM 大小的详细信息，请参阅 [Azure 中 Linux VM 的大小](../virtual-machines/linux/sizes.md)和 [Azure 中 Windows VM 的大小](../virtual-machines/windows/sizes.md)。 
 
 ![在“Env”选项卡上指定 VM OS 映像和大小](./media/batch-rendering-service/environment.png)
 

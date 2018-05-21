@@ -282,7 +282,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 **2.Key Vault** 请求获取与请求的令牌关联的机密。
 
-**3. Azure 角色验证请求，并对向 Key Vault 发出的访问请求授权。
+\*\*3. Azure 角色验证请求，并对向 Key Vault 发出的访问请求授权。
 
 **4.Key Vault** 返回机密。在此示例中，该机密为 SQL DB 连接字符串。
 

@@ -543,6 +543,8 @@
               href: service-fabric-cluster-delete.md
             - name: 远程连接到群集节点 VM
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+            - name: 升级/迁移 VMSS SKU
+              href: service-fabric-update-vmss-sku.md
         - name: 独立群集
           items:
             - name: 创建

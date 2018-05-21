@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric 群集 Resource Manager 中的限制 | Microsoft 文档"
-description: "了解如何配置 Service Fabric 群集 Resource Manager 提供的限制。"
+title: Service Fabric 群集 Resource Manager 中的限制 | Microsoft 文档
+description: 了解如何配置 Service Fabric 群集 Resource Manager 提供的限制。
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4a44678b-a5aa-4d30-958f-dc4332ebfb63
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 22223923f6783f11178b44c3c3087f17eb8dc41b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9db1070066a2a02b72b5cc051e59d8b04dc9928
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>限制 Service Fabric 群集资源管理器
 即使已正确配置群集 Resource Manager，但群集有时也会中断。 例如，可能同时发生节点和容错域故障 - 升级时如果发生这种情况会怎么样？ 群集资源管理器始终尝试修复所有问题，同时占用群集的资源，尝试重新整理和修复群集。 限制有助于提供一个停止机制，让群集可以使用资源进行稳定 - 节点恢复正常、网络分区修复、部署已更正的部分。

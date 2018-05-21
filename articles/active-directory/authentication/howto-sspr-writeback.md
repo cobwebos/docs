@@ -2,25 +2,19 @@
 title: Azure AD SSPR 与密码写回 | Microsoft Docs
 description: 使用 Azure AD 和 Azure AD Connect 将密码写回本地目录
 services: active-directory
-keywords: Active Directory 密码管理, 密码管理, Azure AD 自助密码重置
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: dd297f844fc1a8275930c58593402d0ee9e1814f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 1c44b2738fb21450c5a37f715c995a3e7aecc4a6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="password-writeback-overview"></a>密码写回概述
 
