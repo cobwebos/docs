@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 99cf9e341edf0acee434e2d01f6346291cbcea5a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 1e6c74b5c952d5a387dbdac4d6e81d691758fb36
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>排查和修正设备问题
 
@@ -34,17 +34,17 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 若要遵循本教程，需在 Azure 订阅中部署远程监视解决方案的实例。
 
-如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)教程。
+如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](iot-accelerators-remote-monitoring-deploy.md)教程。
 
 ## <a name="use-the-maintenance-dashboard"></a>使用维护仪表板
 
 在“仪表板”页上，我们注意到与**原型**设备关联的规则发出了意外的温度警报：
 
-![仪表板上显示的警报](media/iot-suite-remote-monitoring-maintain/dashboardalarm.png)
+![仪表板上显示的警报](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm.png)
 
 若要进一步调查此问题，请选择警报旁边的“浏览警报”选项：
 
-![在仪表板中浏览警报](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
+![在仪表板中浏览警报](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm.png)
 
 警报的详细信息视图显示以下内容：
 
@@ -52,17 +52,17 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 * 与警报关联的设备的状态信息
 * 从与警报关联的设备获得的遥测数据
 
-![警报详细信息](media/iot-suite-remote-monitoring-maintain/maintenancealarmdetail.png)
+![警报详细信息](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail.png)
 
 若要确认警报，请依次选择“警报实例”、“确认”。 此操作可让其他操作员知道你已看到该警报并正在进行处理。
 
-![确认警报](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
+![确认警报](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge.png)
 
 确认警报时，实例的状态将更改为“已确认”。
 
 在列表中，可以看到负责触发温度警报的**原型**设备：
 
-![列出导致警报的设备](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
+![列出导致警报的设备](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice.png)
 
 ## <a name="remediate-the-issue"></a>修正问题
 
@@ -70,19 +70,19 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 若要安排某个设备的操作，请在设备列表中将其选中，然后选择“作业”。 原型设备模型指定设备必须支持的六个方法：
 
-![查看设备支持的方法](media/iot-suite-remote-monitoring-maintain/maintenancemethods.png)
+![查看设备支持的方法](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods.png)
 
 选择“DecreaseTemperature”，将作业名称设置为 **DecreaseTemperature**。 然后选择“应用”：
 
-![创建用于降低温度的作业](media/iot-suite-remote-monitoring-maintain/maintenancecreatejob.png)
+![创建用于降低温度的作业](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob.png)
 
 若要在“维护”页上跟踪作业的状态，请选择“作业”。 使用“作业”视图跟踪解决方案中的所有作业和方法调用：
 
-![监视用于降低温度的作业](media/iot-suite-remote-monitoring-maintain/maintenancerunningjob.png)
+![监视用于降低温度的作业](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob.png)
 
 若要查看特定作业或方法调用的详细信息，请在“作业”视图中的列表内将其选中：
 
-![查看作业详细信息](media/iot-suite-remote-monitoring-maintain/maintenancejobdetail.png)
+![查看作业详细信息](./media/iot-accelerators-remote-monitoring-maintain/maintenancejobdetail.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -93,6 +93,6 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 > * 使用“维护”页调查警报
 > * 调用设备方法来修正问题
 
-了解如何处理设备问题后，我们建议接下来了解如何[使用模拟设备测试解决方案](iot-suite-remote-monitoring-test.md)。
+了解如何处理设备问题后，我们建议接下来了解如何[使用模拟设备测试解决方案](iot-accelerators-remote-monitoring-test.md)。
 
 <!-- Next tutorials in the sequence -->

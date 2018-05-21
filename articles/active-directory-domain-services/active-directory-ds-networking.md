@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b40aa0e105c0e9fac9c9cab63a5b0a2a6116c4c9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD 域服务的网络注意事项
 ## <a name="how-to-select-an-azure-virtual-network"></a>如何选择 Azure 虚拟网络
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/30/2018
 ### <a name="requirements-for-the-virtual-network"></a>虚拟网络的要求
 * **与 Azure 工作负荷的邻近性**：选择当前正在托管/将要托管需要访问 Azure AD 域服务的虚拟机的虚拟网络。 如果工作负载部署在与托管域不同的虚拟网络中，则还可以选择连接虚拟网络。
 * **自定义/自带 DNS 服务器**：确保未针对虚拟网络配置自定义 DNS 服务器。 自定义 DNS 服务器的一个示例是在虚拟网络中部署的 Windows Server VM 上运行的 Windows Server DNS 实例。 Azure AD 域服务不会与任何在虚拟网络内部署的自定义 DNS 服务器集成。
-* **域名相同的现有域：**确保现有域的名称与该虚拟网络上使用的域名不同。 例如，假设名为“contoso.com”的域已在选定的虚拟网络上使用。 然后，尝试在该虚拟网络上启用具有相同域名（即“contoso.com”）的 Azure AD 域服务托管域。 尝试启用 Azure AD 域服务会失败。 发生这种失败的原因是该名称与该虚拟网络上的域名冲突。 在此情况下，必须使用不同的名称来设置 Azure AD 域服务托管域。 或者，可以取消预配现有的域，并继续启用 Azure AD 域服务。
+* **域名相同的现有域：** 确保现有域的名称与该虚拟网络上使用的域名不同。 例如，假设名为“contoso.com”的域已在选定的虚拟网络上使用。 然后，尝试在该虚拟网络上启用具有相同域名（即“contoso.com”）的 Azure AD 域服务托管域。 尝试启用 Azure AD 域服务会失败。 发生这种失败的原因是该名称与该虚拟网络上的域名冲突。 在此情况下，必须使用不同的名称来设置 Azure AD 域服务托管域。 或者，可以取消预配现有的域，并继续启用 Azure AD 域服务。
 
 > [!WARNING]
 > 启用域服务之后，无法将其转移到其他虚拟网络。
@@ -95,7 +95,7 @@ Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保�
 
 
 ## <a name="network-security-groups"></a>网络安全组
-[网络安全组 (NSG)](../virtual-network/virtual-networks-nsg.md) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。 另外，可以通过将 NSG 直接关联到单个 VM，对流向该 VM 的流量进行进一步的限制。
+[网络安全组 (NSG)](../virtual-network/security-overview.md) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。 另外，可以通过将 NSG 直接关联到单个 VM，对流向该 VM 的流量进行进一步的限制。
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>具有 Azure AD 域服务的虚拟网络的示例 SNG
 下表介绍一个示例 NSG，可为具有 Azure AD 域服务托管域的虚拟网络配置该 NSG。 此规则允许来自所需端口的入站流量，以确保托管域保持修补和更新，并可由 Microsoft 进行监视。 默认的“DenyAll”规则适用于来自 Internet 的所有其他入站流量。
@@ -124,13 +124,13 @@ Azure AD 域服务托管域只能在 Azure 中的单个虚拟网络中启用。
 ![Resource Manager 到经典虚拟网络的连接](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
 
 ### <a name="network-connection-options"></a>网络连接选项
-* **使用虚拟网络对等互连的 VNet 到 VNet 连接：**虚拟网络对等互连是通过 Azure 主干网络在同一区域连接两个虚拟网络的一种机制。 对等互连后，出于所有连接目的，两个虚拟网络会显示为一个。 这两个虚拟网络仍作为单独资源管理，但这些虚拟网络中的虚拟机可直接通过专用 IP 地址彼此通信。
+* **使用虚拟网络对等互连的 VNet 到 VNet 连接：** 虚拟网络对等互连是通过 Azure 主干网络在同一区域连接两个虚拟网络的一种机制。 对等互连后，出于所有连接目的，两个虚拟网络会显示为一个。 这两个虚拟网络仍作为单独资源管理，但这些虚拟网络中的虚拟机可直接通过专用 IP 地址彼此通信。
 
     ![使用对等互连的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
     [详细信息 - 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
 
-* **使用站点到站点 VPN 连接的 VNet 到 VNet 连接：**将虚拟网络连接到虚拟网络（VNet 到 VNet）类似于将虚拟网络连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。
+* **使用站点到站点 VPN 连接的 VNet 到 VNet 连接：** 将虚拟网络连接到虚拟网络（VNet 到 VNet）类似于将虚拟网络连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。
 
     ![使用 VPN 网关的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
@@ -141,5 +141,5 @@ Azure AD 域服务托管域只能在 Azure 中的单个虚拟网络中启用。
 ## <a name="related-content"></a>相关内容
 * [Azure 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
 * [为经典部署模型配置 VNet 到 VNet 连接](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-* [Azure 网络安全组](../virtual-network/virtual-networks-nsg.md)
+* [Azure 网络安全组](../virtual-network/security-overview.md)
 * [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)

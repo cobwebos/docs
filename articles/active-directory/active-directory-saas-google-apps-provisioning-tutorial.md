@@ -1,6 +1,6 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Google Apps 配置自动用户预配 | Microsoft Docs"
-description: "了解如何将用户帐户从 Azure AD 自动预配到 Google Apps 及如何取消预配。"
+title: 教程：使用 Azure Active Directory 为 Google Apps 配置自动用户预配 | Microsoft Docs
+description: 了解如何将用户帐户从 Azure AD 自动预配到 Google Apps 及如何取消预配。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a90fe2c919e0c5452072c4129dcb7a1135d9ec25
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d5c68e709b72e4032eca76dd35103df50030ccca
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>教程：配置 Google Apps 实现自动用户预配
 
@@ -83,7 +83,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
      
      ![域名](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_3.png)
 
-    d.单击“下一步”。 选择“下一步”转到验证页。 要验证是否拥有该域，请根据此页所提供的值编辑域的 DNS 记录。 可选择使用“MX 记录”验证，或使用“TXT 记录”验证，具体取决于“记录类型”选项的选择。 
+    d. 选择“下一步”转到验证页。 要验证是否拥有该域，请根据此页所提供的值编辑域的 DNS 记录。 可选择使用“MX 记录”验证，或使用“TXT 记录”验证，具体取决于“记录类型”选项的选择。 
     
     有关如何向 Azure AD 验证域名的更全面说明，请参阅[将自己的域名添加到 Azure AD](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409)。
      
@@ -109,7 +109,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
      
      ![键入域名][22]
 
-    d.单击“下一步”。 选择“继续验证域所有权”。 然后按步骤验证所拥有的域名。 有关如何验证域与 Google Apps 的完整说明，请参阅[验证站点所有权与 Google Apps ](https://support.google.com/webmasters/answer/35179)。
+    d. 选择“继续验证域所有权”。 然后按步骤验证所拥有的域名。 有关如何验证域与 Google Apps 的完整说明，请参阅[验证站点所有权与 Google Apps ](https://support.google.com/webmasters/answer/35179)。
 
     e. 对所有要添加到 Google Apps 的其他域重复上述步骤。
      
@@ -164,7 +164,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](active-directory-saas-google-apps-tutorial.md)
 
 

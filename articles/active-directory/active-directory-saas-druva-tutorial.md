@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Druva 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Druva 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Druva 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Druva 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 5be9f384d9e8c0871d26ccb5d35a49e9387ad753
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 43b09ebaac70cceb5fdee8589ef70bd9531574dd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>教程：Azure Active Directory 与 Druva 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Druva（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 - 启用了 Druva 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 若要从库中添加 Druva，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Druva”，在结果面板中选择“Druva”，然后单击“添加”按钮添加应用程序。
 
@@ -136,11 +136,11 @@ ms.lasthandoff: 12/11/2017
     
     ![配置单一登录](./media/active-directory-saas-druva-tutorial/tutorial_attribute_05.png)
     
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。 本教程后面部分将介绍令牌生成的值。
     
-    d.单击“下一步”。 单击“确定” 。    
+    d. 单击“确定” 。    
 
 8. 单击“保存”按钮。
 
@@ -164,9 +164,9 @@ ms.lasthandoff: 12/11/2017
         
     b. 在“ID 提供程序注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”的值。
         
-    c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，再粘贴到“ID 提供者证书”文本框中。
+    c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后再粘贴到“ID 提供者证书”文本框中。
      
-    d.单击“下一步”。 若要打开“设置”页，请单击“保存”。
+    d. 若要打开“设置”页，请单击“保存”。
 
 13. 在“设置”页上，单击“生成 SSO 令牌”。
 
@@ -178,7 +178,7 @@ ms.lasthandoff: 12/11/2017
     
     a. 单击“复制”，在 Azure 门户的“添加属性”部分的“值”文本框中，粘贴复制的值。
     
-    b. 单击“**关闭**”。
+    b. 单击“关闭”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -208,13 +208,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-druva-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-a-druva-test-user"></a>创建 Druva 测试用户
 
@@ -285,7 +285,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Mimecast Admin Console 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Mimecast Admin Console 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Mimecast Admin Console 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Mimecast Admin Console 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 64bb18caa046f8a08be8f229e4c82a34306a8f72
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bef0312a3ee44a441f44eb2ae7e4292b966cec3f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>教程：Azure Active Directory 与 Mimecast Admin Console 的集成
 
@@ -30,17 +30,17 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Mimecast Admin Console（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 要配置 Azure AD 与 Mimecast Admin Console 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 启用了 Mimecast Admin Console 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -51,14 +51,14 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Mimecast Admin Console
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>从库中添加 Mimecast Admin Console
 要配置 Mimecast Admin Console 与 Azure AD 的集成，需要从库中将 Mimecast Admin Console 添加到托管 SaaS 应用列表。
 
 **要从库中添加 Mimecast Admin Console，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中键入 Mimecast Admin Console，在结果面板中选择“Mimecast Admin Console”，并单击“添加”按钮添加该应用程序。
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-mimecast-admin-console-tutorial/tutorial_general_400.png)
 
-6. 在“Mimecast Admin Console 配置”部分中，单击“配置 Mimecast Admin Console”以打开“配置登录”窗口。 从“快速参考”部分中复制 SAML 实体 ID 和 SAML 单一登录服务 URL。
+6. 在“Mimecast Admin Console 配置”部分中，单击“配置 Mimecast Admin Console”以打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![Mimecast Admin Console 配置](./media/active-directory-saas-mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_configure.png) 
 
@@ -153,9 +153,9 @@ ms.lasthandoff: 12/11/2017
     
     c. 对于“提供程序”，选择“Azure Active Directory”。
     
-    d.单击“下一步”。 将从 Azure 门户复制的 SAML 实体 ID 粘贴到“颁发者 URL”文本框。
+    d. 将从 Azure 门户复制的 SAML 实体 ID 粘贴到“颁发者 URL”文本框。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“登录 URL”文本框中。
+    e. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“登录 URL”文本框中。
 
     f. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“注销 URL”文本框中。
     
@@ -166,7 +166,7 @@ ms.lasthandoff: 12/11/2017
     
     h. 选择“允许单一登录”。
     
-    i. 单击“保存” 。
+    i. 单击“ **保存**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985) 
@@ -195,13 +195,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-mimecast-admin-console-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-a-mimecast-admin-console-test-user"></a>创建 Mimecast Admin Console 测试用户
 
@@ -209,7 +209,7 @@ ms.lasthandoff: 12/11/2017
 
 * 需要注册一个域，才能创建用户。
 
-**若要配置用户预配，请执行以下步骤：**
+**若要配置用户设置，请执行以下步骤：**
 
 1. 以管理员身份登录到 **Mimecast Admin Console**。
 2. 转到“目录”\>“内部”。
@@ -227,7 +227,7 @@ ms.lasthandoff: 12/11/2017
    
    a. 将要预配的有效 Azure AD 帐户的“电子邮件地址”、“全局名称”、“密码”和“确认密码”属性键入到相关文本框中。
 
-   b. 单击“保存” 。
+   b. 单击“ **保存**”。
 
 >[!NOTE]
 >可以使用 Mimecast Admin Console 提供的任何其他 Mimecast Admin Console 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。 
@@ -272,7 +272,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

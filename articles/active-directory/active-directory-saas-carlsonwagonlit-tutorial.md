@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Carlson Wagonlit Travel 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Carlson Wagonlit Travel 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Carlson Wagonlit Travel 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Carlson Wagonlit Travel 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 26d141d73dfee5dd47ba09a32262343488487ad1
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 80873f9dfe94a5e83865b3617ad8dba3198a2dd7
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>教程：Azure Active Directory 与 Carlson Wagonlit Travel 的集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/24/2018
 - 可以让用户通过其 Azure AD 帐户自动登录到 Carlson Wagonlit Travel（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/24/2018
 
 **若要从库中添加 Carlson Wagonlit Travel，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -154,7 +154,7 @@ ms.lasthandoff: 01/24/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-carlson-wagonlit-travel-test-user"></a>创建 Carlson Wagonlit Travel 测试用户
 
@@ -200,7 +200,7 @@ ms.lasthandoff: 01/24/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

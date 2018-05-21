@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Lesson.ly 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Lesson.ly 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Lesson.ly 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Lesson.ly 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 01e4395d5b2baaaf130f7a0fa7aaa29d611559b7
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: b5295b2c4294141cc2217a35eb943316e190b77d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>教程：Azure Active Directory 与 Lesson.ly 的集成
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/23/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Lesson.ly（单一登录）
 - 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/23/2017
 
 **若要从库中添加 Lesson.ly，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 12/23/2017
 
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d.单击“下一步”。 单击“确定” 。     
+    d. 单击“确定” 。     
 
 7. 单击“保存”按钮。
 
@@ -199,7 +199,7 @@ ms.lasthandoff: 12/23/2017
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="creating-a-lessonly-test-user"></a>创建 Lesson.ly 测试用户
 
@@ -249,7 +249,7 @@ ms.lasthandoff: 12/23/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

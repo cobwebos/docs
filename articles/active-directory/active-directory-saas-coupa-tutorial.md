@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Coupa 的集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Coupa 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Coupa 的集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 Coupa 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 30149f181d8b0ebdc1ae6820da5d561f3a942fa3
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 3e87502cbcdb0eff4310ad154083c7682d752e13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>教程：Azure Active Directory 与 Coupa 的集成
 
@@ -30,17 +30,17 @@ ms.lasthandoff: 12/12/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Coupa（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Coupa 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 启用了 Coupa 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -51,14 +51,14 @@ ms.lasthandoff: 12/12/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Coupa
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-coupa-from-the-gallery"></a>从库中添加 Coupa
 若要配置 Coupa 与 Azure AD 的集成，需要从库中将 Coupa 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Coupa，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/12/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Coupa”，在结果面板中选择“Coupa”，然后单击“添加”按钮添加该应用程序。
 
@@ -141,7 +141,7 @@ ms.lasthandoff: 12/12/2017
     
     c. 单击“浏览”上传从 Azure 门户下载的元数据。
     
-    d.单击“下一步”。 单击“保存” 。
+    d. 单击“ **保存**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -171,13 +171,13 @@ ms.lasthandoff: 12/12/2017
 
     ![“用户”对话框](./media/active-directory-saas-coupa-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-a-coupa-test-user"></a>创建 Coupa 测试用户
 
@@ -185,7 +185,7 @@ ms.lasthandoff: 12/12/2017
 
 * 对于 Coupa，需要手动执行预配。
 
-**若要配置用户预配，请执行以下步骤：**
+**若要配置用户设置，请执行以下步骤：**
 
 1. 以管理员身份登录到 **Coupa** 公司站点。
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 12/12/2017
    
    ![用户](./media/active-directory-saas-coupa-tutorial/ic791908.png "用户")
 
-3. 单击“创建” 。
+3. 单击“创建”。
    
    ![创建用户](./media/active-directory-saas-coupa-tutorial/ic791909.png "创建用户")
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 12/12/2017
    
    a. 将要预配的有效 Azure Active Directory 帐户的**登录名**、**名字**、**姓氏**、**单一登录 ID**、**电子邮件**属性键入到相关文本框中。
 
-   b. 单击“创建” 。   
+   b. 单击“创建”。   
    
    >[!NOTE]
    >Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。 
@@ -252,7 +252,7 @@ ms.lasthandoff: 12/12/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

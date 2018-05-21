@@ -1,11 +1,11 @@
 ---
-title: "为 Azure 导入/导出创建导出作业 | Microsoft Docs"
-description: "了解如何为 Microsoft Azure 导入/导出服务创建导出作业。"
+title: 为 Azure 导入/导出创建导出作业 | Microsoft Docs
+description: 了解如何为 Microsoft Azure 导入/导出服务创建导出作业。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 613d480b-a8ef-4b28-8f54-54174d59b3f4
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 70f74b685f4d5b902b6f6780f7c1de4d357164b8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 3fb3f2af5e5cebcac21f4372bc9d9dc9ee837202
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导出作业
 使用 REST API 为 Microsoft Azure 导入/导出服务创建导出作业的过程包括以下步骤：
@@ -91,6 +91,8 @@ ms.lasthandoff: 12/14/2017
 
 ## <a name="receiving-the-package"></a>接收包裹
  处理导出作业后，驱动器将连同加密的数据一起回邮给你。 可以通过调用[获取作业](/rest/api/storageimportexport/jobs#Jobs_Get)操作检索每个驱动器的 BitLocker 密钥。 然后，可以使用该密钥解锁驱动器。 每个驱动器上的驱动器清单文件包含驱动器上的文件列表以及每个文件的原始 Blob 地址。
+
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

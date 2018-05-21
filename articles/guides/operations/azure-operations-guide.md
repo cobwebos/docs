@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 231e8110dc6e1844108502e5c2277edc3ba77132
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>云计算和 Microsoft Azure 简介
 
@@ -132,7 +132,7 @@ Azure 在其云计算平台中提供多种服务。 这些服务包括：
 
 -   Azure 流量管理器
 
--   Azure 内容交付网络
+-   Azure 内容分发网络
 
 有关 Azure 服务的详细文档，请参阅 [Azure 服务文档](https://docs.microsoft.com/azure)。
 
@@ -509,7 +509,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 ### <a name="access-and-security-for-virtual-networks"></a>虚拟网络的访问和安全性
 
-可使用网络安全组来保护 Azure 虚拟网络。 NSG 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。 可将 NSG 与任一子网或该子网内的单个 VM 实例关联。 将 NSG 与子网关联时，ACL 规则将应用到该子网中的所有 VM 实例。 另外，可通过将 NSG 与单个 VM 直接关联，对流向该 VM 的流量进行进一步的限制。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../../virtual-network/virtual-networks-nsg.md)。
+可使用网络安全组来保护 Azure 虚拟网络。 NSG 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。 可将 NSG 与任一子网或该子网内的单个 VM 实例关联。 将 NSG 与子网关联时，ACL 规则将应用到该子网中的所有 VM 实例。 另外，可通过将 NSG 与单个 VM 直接关联，对流向该 VM 的流量进行进一步的限制。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../../virtual-network/security-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

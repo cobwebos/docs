@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 IBM Kenexa Survey Enterprise 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 IBM Kenexa Survey Enterprise 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 929ae8b780c0e18074832adfefb9a7674097fd08
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 88e0072adeeebaf6c9e964db28a45f6fe038fddf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 集成
 
@@ -29,13 +29,13 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户通过其 Azure AD 帐户使用单一登录 (SSO) 自动登录到 IBM Kenexa Survey Enterprise。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-如果想要深入了解软件型服务 (SaaS) 应用与 Azure AD 集成，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
+如果想要深入了解软件型服务 (SaaS) 应用与 Azure AD 集成，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 IBM Kenexa Survey Enterprise 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 IBM Kenexa Survey Enterprise SSO 的订阅
 
 > [!NOTE]
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加一个应用程序，请点击“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“IBM Kenexa Survey Enterprise”。
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 12/11/2017
     
     ![“用户属性”对话框](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_attribute.png)   
 
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_400.png)
 
@@ -158,13 +158,13 @@ ms.lasthandoff: 12/11/2017
  
     ![“用户”对话框](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_04.png) 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-an-ibm-kenexa-survey-enterprise-test-user"></a>创建 IBM Kenexa Survey Enterprise 测试用户
 
@@ -211,7 +211,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

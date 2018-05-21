@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 ScaleX Enterprise 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 ScaleX Enterprise 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 ScaleX Enterprise 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 ScaleX Enterprise 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: f83d817647a5339176260bfcf73005045f9ead54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 94c30d39a5d72a022dd77d65141f1af679cf3dd3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 与 ScaleX Enterprise 的集成
 
@@ -27,19 +27,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在 Azure AD 中控制谁有权访问 ScaleX Enterprise
 - 可以让用户使用其 Azure AD 帐户自动登录到 ScaleX Enterprise（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [Azure Active Directory](active-directory-appssoaccess-whatis.md) 的应用程序访问与单一登录是什么。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [Azure Active Directory](manage-apps/what-is-single-sign-on.md) 的应用程序访问与单一登录是什么。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 ScaleX Enterprise 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 启用了 ScaleX Enterprise 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 ScaleX Enterprise，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 12/11/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置并测试 Azure AD 单一登录
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 ScaleX Enterprise 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 ScaleX Enterprise 用户。 换句话说，需要在 Azure AD 用户与 ScaleX Enterprise 中的相关用户之间建立链接关系。
@@ -170,11 +170,11 @@ ms.lasthandoff: 12/11/2017
 
     c. **ACS 响应中的标识提供者名称电子邮件字段**：粘贴 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值
 
-    d. **标识提供者 EntityDescriptor 实体 ID：**粘贴从 Azure 门户复制的 **SAML 实体 ID**。
+    d. **标识提供者 EntityDescriptor 实体 ID：** 粘贴从 Azure 门户复制的 **SAML 实体 ID**。
 
-    e. **标识提供者 SingleSignOnService URL：**粘贴 Azure 门户中的 **SAML 单一登录服务 URL**。
+    e. **标识提供者 SingleSignOnService URL：** 粘贴 Azure 门户中的 **SAML 单一登录服务 URL**。
 
-    f. **标识提供者公共 X509 证书：**在记事本中打开从 Azure 下载的 X509 证书并将内容粘贴到此框中。 请确保证书内容的中间没有换行符。
+    f. **标识提供者公共 X509 证书：** 在记事本中打开从 Azure 下载的 X509 证书并将内容粘贴到此框中。 请确保证书内容的中间没有换行符。
     
     g. 选中以下复选框：“已启用”、“加密 NameID”和“对 AuthnRequest 进行签名”。
 
@@ -209,11 +209,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-scalex-enterprise-test-user"></a>创建 ScaleX Enterprise 测试用户
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Pingboard 配置自动用户预配 | Microsoft Docs"
-description: "了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Pingboard 和取消其预配。"
+title: 教程：使用 Azure Active Directory 为 Pingboard 配置自动用户预配 | Microsoft Docs
+description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Pingboard 和取消其预配。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: sakula
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: b1d2e5468aa5b6a10b93ea118969d66789a17f50
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8fa98ff4cee206894c35f84cca3f3b4c43e2e5ce
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教程：为 Pingboard 配置自动用户预配
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 *   Azure AD 租户
 *   Pingboard 租户[专业版帐户](https://pingboard.com/pricing) 
@@ -75,7 +75,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
     c. 选择**外接程序** > **集成** > **Azure Active Directory**。
 
-    d.单击“下一步”。 单击“配置”选项卡并选择“从 Azure 启用用户预配”。
+    d. 单击“配置”选项卡并选择“从 Azure 启用用户预配”。
 
     e. 复制中的令牌**OAuth 持有者令牌**，并在输入中**机密令牌**。
 
@@ -100,5 +100,5 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](active-directory-saas-pingboard-tutorial.md)

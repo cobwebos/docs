@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Palo Alto Networks - 强制网络门户集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 与 Palo Alto Networks - 强制网络门户之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Palo Alto Networks - 强制网络门户集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 与 Palo Alto Networks - 强制网络门户之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 32b3a45d9baf0b53e05708abab78a462c6780daa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aaa2adc30d1d798312b50370d4b635d0d8a123e9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---captive-portal"></a>教程：Azure Active Directory 与 Palo Alto Networks - 强制网络门户集成
 
@@ -30,17 +30,17 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户通过其 Azure AD 帐户自动登录到 Palo Alto Networks - 强制网络门户（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Palo Alto Networks - 强制网络门户的集成，需具有以下项目：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 启用了 Palo Alto Networks - 强制网络门户单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -51,14 +51,14 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Palo Alto Networks - 强制网络门户
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-palo-alto-networks---captive-portal-from-the-gallery"></a>从库添加 Palo Alto Networks - 强制网络门户
 若要配置 Palo Alto Networks - 强制网络门户与 Azure AD 的集成，需要从库中将 Palo Alto Networks - 强制网络门户添加到托管的 SaaS 应用列表。
 
 若要从库中添加 Palo Alto Networks - 强制网络门户，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Palo Alto Networks - 强制网络门户”，从结果面板选择“Palo Alto Networks - 强制网络门户”，然后单击“添加”按钮来添加应用程序。
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 12/11/2017
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall Hostname>/SAML20/SP/ACS`
 
     > [!NOTE] 
-    > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Palo Alto Networks - 强制网络门户支持团队](https://support.paloaltonetworks.com/support)。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Palo Alto Networks - 强制网络门户支持团队](https://support.paloaltonetworks.com/support)。
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -170,13 +170,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-paloaltonetworks-captiveportal-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
   
 ### <a name="create-a-palo-alto-networks---captive-portal-test-user"></a>创建 Palo Alto Networks - 强制网络门户测试用户
 
@@ -222,7 +222,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

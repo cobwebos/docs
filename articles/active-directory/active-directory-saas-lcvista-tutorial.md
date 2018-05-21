@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 LCVista 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 LCVista 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 LCVista 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 LCVista 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 367e1416fb6c1d1b710c7e47240951ee46cf9f5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8ab0bb9bce6c3c714878edf1db2819beeaf9f51a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>教程：Azure Active Directory 与 LCVista 集成
 
@@ -27,9 +27,9 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在 Azure AD 中控制谁有权访问 LCVista
 - 可以让用户使用其 Azure AD 帐户自动登录到 LCVista（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 12/11/2017
 - 已启用 LCVista 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 LCVista，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -141,15 +141,15 @@ ms.lasthandoff: 12/11/2017
 
     c. 从已从 Azure 门户下载的元数据 (XML) 中，复制值 **X509Certificate**，并将其粘贴到“x509 证书”部分中。
 
-    d.单击“下一步”。 在“名字属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
+    d. 在“名字属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“姓氏属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
+    e. 在“姓氏属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
 
     f. 在“电子邮件属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
     g. 在“用户名属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存”保存这些设置。
+    e. 单击“保存”保存这些设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -180,11 +180,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-lcvista-test-user"></a>创建 LCVista 测试用户
 
@@ -227,7 +227,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

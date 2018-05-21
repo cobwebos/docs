@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 0b1d990337c7c5caaee79bc8e3280c2690fc47b0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ba70357b34e8a0e78b9fe6fb89dad58a969ada55
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>教程：Azure Active Directory 与 Form.com 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/19/2018
 - 可以让用户使用其 Azure AD 帐户自动登录到 Form.com（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 04/19/2018
     
     ![配置单一登录](./media/active-directory-saas-formcom-tutorial/tutorial_metadataurl.png)
 
-    a. 单击“复制”按钮，复制“应用联合元数据 URL”并将其粘贴到记事本。
+    a. 单击“复制”按钮，复制**应用联合元数据 URL** 并将其粘贴到记事本。
 
     b. 单击“证书(Base64)”，并在计算机上保存证书文件。
      
@@ -215,7 +215,7 @@ ms.lasthandoff: 04/19/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

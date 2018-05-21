@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: 4d6177fe0a50c531ba6c4b3e87eaa08299af2ddd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f6dc104470ca2bfd738ca9bfc334a1c1325f7318
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>使用 Microsoft Azure 导入/导出服务将数据传输到 Azure 存储中
 本文分步介绍如何使用 Azure 导入/导出服务将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure 存储传输到硬盘驱动器，然后再寄送到本地站点。 可将单个内部 SATA 磁盘驱动器中的数据导入 Azure Blob 存储或 Azure 文件。 
@@ -125,7 +125,7 @@ WAImportExport 工具仅兼容 64 位 Windows 操作系统。 请参阅[操作�
 下载最新版本的 [WAImportExport 工具](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExportV2.zip)。 有关使用 WAImportExport 工具的详细信息，请参阅[使用 WAImportExport 工具](storage-import-export-tool-how-to.md)。
 
 >[!NOTE]
->**以前的版本：**可以[下载 WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) 版本的工具，并参考 [WAImportExpot V1 使用指南](storage-import-export-tool-how-to-v1.md)。 WAImportExpot V1 版本的工具支持**在已将数据预先写入磁盘的情况下准备磁盘**。 如果唯一可用的密钥是 SAS 密钥，则也需要 WAImportExpot V1 工具。
+>**以前的版本：** 可以[下载 WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) 版本的工具，并参考 [WAImportExpot V1 使用指南](storage-import-export-tool-how-to-v1.md)。 WAImportExpot V1 版本的工具支持**在已将数据预先写入磁盘的情况下准备磁盘**。 如果唯一可用的密钥是 SAS 密钥，则也需要 WAImportExpot V1 工具。
 
 >
 
@@ -569,6 +569,9 @@ WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <Targ
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
 ```
+
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
 * [设置 WAImportExport 工具](storage-import-export-tool-how-to.md)
