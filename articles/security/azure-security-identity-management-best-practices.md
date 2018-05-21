@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: af01676276232f4dba5a11c219a3b83259945dfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 04/28/2018
 
 如果要管理多个目录，则不仅会给 IT 人员造成管理问题，而且最终用户还必须记住多个密码。 通过使用 [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)，可让用户能够使用相同凭据集登录并访问所需资源，无需考虑此资源是位于本地还是云中。
 
-用户可使用 SSO 基于 Azure AD 中的组织帐户访问 [SaaS 应用程序](../active-directory/active-directory-appssoaccess-whatis.md)。 这不仅适用于 Microsoft SaaS 应用，还适用于其他应用，例如 [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) 和 [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md)。 可将应用程序配置为使用 Azure AD 作为[基于 SAML 的标识](../active-directory/fundamentals-identity.md)提供者。 作为安全控制机制，Azure AD 不会发出可让用户登录应用程序的令牌，除非使用 Azure AD 向他们授予了访问权限。 可以直接或者通过他们所属的组授予访问权限。
+用户可使用 SSO 基于 Azure AD 中的组织帐户访问 [SaaS 应用程序](../active-directory/manage-apps/what-is-single-sign-on.md)。 这不仅适用于 Microsoft SaaS 应用，还适用于其他应用，例如 [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) 和 [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md)。 可将应用程序配置为使用 Azure AD 作为[基于 SAML 的标识](../active-directory/fundamentals-identity.md)提供者。 作为安全控制机制，Azure AD 不会发出可让用户登录应用程序的令牌，除非使用 Azure AD 向他们授予了访问权限。 可以直接或者通过他们所属的组授予访问权限。
 
 > [!NOTE]
 > 是否使用 SSO 的决定会影响到如何将本地目录与云目录集成。 如果要使用 SSO，则需要使用联合，因为目录同步只提供[相同登录体验](../active-directory/active-directory-aadconnect.md)。

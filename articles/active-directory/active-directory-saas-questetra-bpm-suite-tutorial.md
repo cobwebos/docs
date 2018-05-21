@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Questetra BPM Suite 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Questetra BPM Suite 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Questetra BPM Suite 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Questetra BPM Suite 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: e2515d571aa1615f14b597ef82b1087df3827f82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 122473da723cb101e0f0f9226b34aa3294477657
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>教程：Azure Active Directory 与 Questetra BPM Suite 集成
 
@@ -28,19 +28,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Questetra BPM Suite
 - 可以让用户使用其 Azure AD 帐户自动登录 Questetra BPM Suite（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Questetra BPM Suite 的集成，需备齐以下项目：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Questetra BPM Suite 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 Questetra BPM Suite，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -152,13 +152,13 @@ ms.lasthandoff: 12/11/2017
     
     c. 在“登录页 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
     
-    d.单击“下一步”。 在“注销页 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    d. 在“注销页 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“NameID 格式”文本框中，键入 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
+    e. 在“NameID 格式”文本框中，键入 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
 
     f. 在记事本中打开从 Azure 门户下载的 Base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“验证证书”文本框中。 
 
-    g. 单击“保存” 。
+    g. 单击“ **保存**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -189,11 +189,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-a-questetra-bpm-suite-test-user"></a>创建 Questetra BPM Suite 测试用户
 
@@ -213,7 +213,7 @@ ms.lasthandoff: 12/11/2017
    
     c. 在“密码”文本框中，键入用户的密码。
     
-    d.单击“下一步”。 单击“添加新用户”。
+    d. 单击“添加新用户”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -255,7 +255,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

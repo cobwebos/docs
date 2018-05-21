@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Adobe Experience Manager 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 Adobe Experience Manager 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Adobe Experience Manager 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Adobe Experience Manager 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: c366e314b77cd3344a90826b22b96a45e35b0b4e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: d63ee16df9b49517c93cdc405cd2525f578d2a7f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>教程：Azure Active Directory 与 Adobe Experience Manager 的集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/13/2018
 - 可让用户使用 Azure AD 帐户自动登录到 Adobe Experience Manager。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/13/2018
 
     c. 在“IDP 证书别名”框中，输入在信任存储中添加的“证书别名”值。
 
-    d.单击“下一步”。 在“安全提供的实体 ID”文本框中，输入已在 Azure 门户中配置的唯一“SAML 实体 ID”值。
+    d. 在“安全提供的实体 ID”文本框中，输入已在 Azure 门户中配置的唯一“SAML 实体 ID”值。
 
     e. 在“断言使用者服务 URL”框中，输入已在 Azure 门户中配置的“回复 URL”值。
 
@@ -232,7 +232,7 @@ ms.lasthandoff: 02/13/2018
 
     c. 选中“显示密码”复选框。 然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 选择“创建”。
+    d. 选择**创建**。
   
 ### <a name="create-an-adobe-experience-manager-test-user"></a>创建 Adobe Experience Manager 测试用户
 
@@ -281,7 +281,7 @@ ms.lasthandoff: 02/13/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

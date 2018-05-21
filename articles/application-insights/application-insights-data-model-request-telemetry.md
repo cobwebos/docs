@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights 遥测数据模型 - 请求遥测 | Microsoft Docs"
-description: "适用于请求遥测的 Application Insights 数据模型"
+title: Azure Application Insights 遥测数据模型 - 请求遥测 | Microsoft Docs
+description: 适用于请求遥测的 Application Insights 数据模型
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0073f38097ffbebd669754eac5f2d48a620941bf
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: e0bdaf132474d8e5eaac6a9c65093d27d673d343
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/01/2017
 
 请求遥测使用自定义的 `properties` 和 `measurements` 支持标准可扩展性模型。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名称
 
 请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
 
@@ -44,13 +44,13 @@ ms.lasthandoff: 11/01/2017
 
 最大长度：2048 个字符
 
-## <a name="source"></a>源
+## <a name="source"></a>Source
 
 请求的源。 示例包括调用方的检测密钥或调用方的 IP 地址。 有关详细信息，请参阅[关联](application-insights-correlation.md)页。
 
 最大长度：1024 个字符
 
-## <a name="duration"></a>持续时间
+## <a name="duration"></a>Duration
 
 采用 `DD.HH:MM:SS.MMMMMM` 格式的请求持续时间。 必须是正数且小于 `1000` 天。 此字段是必填的，因为请求遥测表示具有开始和结束时间的操作。
 

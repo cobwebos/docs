@@ -14,3 +14,4 @@
 ### [使用手机登录](microsoft-authenticator-app-phone-signin-faq.md)
 ### [备份和恢复帐户凭据](microsoft-authenticator-app-backup-and-recovery.md)
 ### [常见问题](microsoft-authenticator-app-faq.md)
+### [登录体验更新](sign-in-experience-updates.md)

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Cisco Webex 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Cisco Webex 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Cisco Webex 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Cisco Webex 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 42632dcf8997ec5e987ac8a6615aae24e903399a
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 527d74910244058506e8435d431e239968896cd9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>教程：Azure Active Directory 与 Cisco Webex 的集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/16/2017
 - 可以让用户使用他们的 Azure AD 帐户自动登录到 Cisco Webex。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -151,9 +151,9 @@ ms.lasthandoff: 12/16/2017
 
     c. 在记事本中打开下载的证书，然后复制内容。
 
-    d.单击“下一步”。 选择“导入 SAML 元数据”，然后粘贴已复制的证书内容。
+    d. 选择“导入 SAML 元数据”，然后粘贴已复制的证书内容。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“SAML 的颁发者(IdP ID)”框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+    e. 在“SAML 的颁发者(IdP ID)”框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
     f. 在“客户 SSO 服务登录 URL”框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
 
@@ -198,7 +198,7 @@ ms.lasthandoff: 12/16/2017
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 选择“创建”。
+    d. 选择**创建**。
  
 ### <a name="create-a-cisco-webex-test-user"></a>创建 Cisco Webex 测试用户
 
@@ -222,15 +222,15 @@ ms.lasthandoff: 12/16/2017
 
     c. 在“姓氏”框中，键入用户的姓氏（在此示例中为“Simon”）。
 
-    d.单击“下一步”。 在“用户名”框中，键入用户的电子邮件（在此示例中为 Brittasimon@contoso.com）。
+    d. 在“用户名”框中，键入用户的电子邮件（在此示例中为 Brittasimon@contoso.com）。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“电子邮件”框中，键入用户的电子邮件地址（在此示例中为 Brittasimon@contoso.com）。
+    e. 在“电子邮件”框中，键入用户的电子邮件地址（在此示例中为 Brittasimon@contoso.com）。
 
     f. 在“密码”框中，键入用户的密码。
 
     g. 在“确认密码”框中，重新输入用户的密码。
 
-    h. 选择“添加”。
+    h. 选择 **添加** 。
 
 >[!NOTE]
 >可以使用 Cisco Webex 提供的任何其他 Cisco Webex 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。 
@@ -278,7 +278,7 @@ ms.lasthandoff: 12/16/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

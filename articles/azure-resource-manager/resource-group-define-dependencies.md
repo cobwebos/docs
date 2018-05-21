@@ -1,26 +1,26 @@
 ---
-title: "设置 Azure 资源的部署顺序 | Microsoft Docs"
-description: "介绍如何在部署期间将一个资源设置为依赖于另一个资源，以确保按正确的顺序部署资源。"
+title: 设置 Azure 资源的部署顺序 | Microsoft Docs
+description: 介绍如何在部署期间将一个资源设置为依赖于另一个资源，以确保按正确的顺序部署资源。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 34ebaf1e-480c-4b4d-9bf6-251bd3f8f2cf
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3d6a46116ae9d7d940bc10dfa832540f42c0af7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1bb3827036f0d8957ac0830f707da71dd4cd373
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
-# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定义 Azure Resource Manager 模板中部署资源的顺序
+# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定义 Azure 资源管理器模板中部署资源的顺序
 对于给定的资源，可能有部署资源之前必须存在的其他资源。 例如，SQL Server 必须存在，才能尝试部署 SQL 数据库。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。 
 
 Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，Resource Manager 将并行部署资源。 只需为在同一模板中部署的资源定义依赖关系。 
@@ -48,7 +48,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 }
 ```
 
-在前面的示例中，通过名为 **storageLoop** 的复制循环创建的资源上包含一个依赖关系。 有关示例，请参阅[在 Azure Resource Manager 中创建多个资源实例](resource-group-create-multiple.md)。
+在前面的示例中，通过名为 **storageLoop** 的复制循环创建的资源上包含一个依赖关系。 有关示例，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)。
 
 定义依赖关系时，可以包括资源提供程序命名空间和资源类型，以避免模糊。 例如，为明确表示可能与其他资源同名的负载均衡器和虚拟网络，可使用以下格式：
 
@@ -152,10 +152,10 @@ Resource Manager 可在模板验证过程中确定循环依赖项。 如果收�
 3. vm1 上的扩展依赖于 vm1 和 vm2。 扩展在 vm1 上设置的值是从 vm2 获取的。
 4. vm2 上的扩展依赖于 vm1 和 vm2。 扩展在 vm2 上设置的值是从 vm1 获取的。
 
-有关评估部署顺序和解决依赖项错误的信息，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
+有关评估部署顺序和解决依赖项错误的信息，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解如何在部署期间排查依赖项故障，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
-* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](resource-group-authoring-templates.md)。 
+* 若要了解如何在部署期间排查依赖项故障，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
+* 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](resource-group-authoring-templates.md)。 
 * 有关模板的可用函数列表，请参阅[模板函数](resource-group-template-functions.md)。
 

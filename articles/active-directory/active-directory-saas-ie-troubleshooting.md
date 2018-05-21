@@ -1,11 +1,11 @@
 ---
-title: "适用于 IE 的 Azure 访问面板扩展故障排除 | Microsoft 文档"
-description: "如何使用组策略为我的应用门户部署 Internet Explorer 加载项。"
+title: 适用于 IE 的 Azure 访问面板扩展故障排除 | Microsoft 文档
+description: 如何使用组策略为我的应用门户部署 Internet Explorer 加载项。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f56b3230-26fd-42ec-9e3d-2c12daf15479
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff6d0b299c45d89ee8d3a79fa98ce4a542174a5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a4f1538cf598da8b5b9aa19def2d5f86ceaca0a0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 访问面板扩展故障排除
 本文将帮助用户解决以下问题：
@@ -92,6 +92,6 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-* [Azure Active Directory 的应用程序访问与单一登录](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录](manage-apps/what-is-single-sign-on.md)
 * [如何使用组策略部署 Internet Explorer 的访问面板扩展](active-directory-saas-ie-group-policy.md)
 
