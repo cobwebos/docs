@@ -16,8 +16,21 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
     - name: 使用管理组组织资源
       href: billing-enterprise-mgmt-group-overview.md
-    - name: 借助保留 VM 实例节省资金
+    - name: 通过使用 Azure 保留实例节省资金
       href: billing-save-compute-costs-reservations.md
+      items:
+        - name: 通过使用保留实例为虚拟机预付资金
+          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: 管理保留实例
+          href: billing-manage-reserved-vm-instance.md
+        - name: 了解保留实例折扣应用程序
+          href: billing-understand-vm-reservation-charges.md
+        - name: 针对即用即付订阅了解保留实例使用情况
+          href: billing-understand-reserved-instance-usage.md
+        - name: 针对 Enterprise 注册了解保留实例使用情况
+          href: billing-understand-reserved-instance-usage-ea.md
+        - name: 保留实例 Windows成本
+          href: billing-reserved-instance-windows-software-costs.md
     - name: 限制和配额
       href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: 如何
@@ -38,20 +51,12 @@
           href: billing-understand-your-azure-marketplace-charges.md
         - name: 了解免费服务计量映射
           href: billing-understand-free-service-meter-mapping.md
-        - name: 保留 VM 实例 Windows成本
-          href: billing-reserved-instance-windows-software-costs.md
-        - name: 了解保留 VM 实例折扣应用程序
-          href: billing-understand-vm-reservation-charges.md
         - name: 了解支出限制
           href: billing-spending-limit.md
         - name: 设置计费警报
           href: billing-set-up-alerts.md
         - name: 处理逾期未付余额
           href: billing-azure-subscription-past-due-balance.md
-        - name: 针对即用即付订阅了解保留实例使用情况
-          href: billing-understand-reserved-instance-usage.md
-        - name: 针对 Enterprise 注册了解保留实例使用情况
-          href: billing-understand-reserved-instance-usage-ea.md
     - name: 管理订阅
       items:
         - name: 查找订阅或管理组
@@ -82,8 +87,6 @@
           href: billing-partner-admin-link-started.md
         - name: 查看计费帐户
           href: billing-view-all-accounts.md
-    - name: 管理保留 VM 实例
-      href: billing-manage-reserved-vm-instance.md
     - name: 故障排除
       items:
         - name: 注册问题
