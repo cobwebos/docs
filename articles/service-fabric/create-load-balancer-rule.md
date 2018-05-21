@@ -1,24 +1,24 @@
 ---
-title: "为群集创建 Azure 负载均衡器规则"
-description: "配置 Azure 负载均衡器，为 Azure Service Fabric 群集打开端口。"
+title: 为群集创建 Azure 负载均衡器规则
+description: 配置 Azure 负载均衡器，为 Azure Service Fabric 群集打开端口。
 services: service-fabric
 documentationcenter: na
 author: thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 71dbc2b5f6c3c37e432f5318169a088c5607f083
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 53dcd6c0705faa94e83d6e44f813fa9c575843e8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>为 Service Fabric 群集打开端口
 

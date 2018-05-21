@@ -1,24 +1,24 @@
 ---
-title: "使用指标管理 Azure 微服务负载 | Microsoft Docs"
-description: "了解如何在 Service Fabric 中配置和使用指标管理服务资源消耗。"
+title: 使用指标管理 Azure 微服务负载 | Microsoft Docs
+description: 了解如何在 Service Fabric 中配置和使用指标管理服务资源消耗。
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5c291ef864518b2366c61c9e5c11fac9e8468a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用指标管理资源消耗和负载
 指标是服务关切的、由群集中的节点提供的资源。 指标是要进行管理以提升或监视服务性能的任何信息。 例如，可能需要监视内存消耗量以了解服务是否过载。 另一个用途是确定服务是否可以移动到内存较少受限的其他位置，以便获得更佳性能。
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |
 | ReplicaCount |0 |1 |1 |
-| 计数 |1 |1 |1 |
+| Count |1 |1 |1 |
 
 对于脚本工作负荷，默认指标实现群集中的适当工作分布。 在下面的示例中，让我们看看创建两个服务并依赖默认指标进行平衡时会发生什么情况。 第一个服务是具有 3 个分区的有状态服务，目标副本集大小为 3。 第二个服务是具有 1 个分区的无状态服务，实例数为 3。
 

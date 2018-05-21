@@ -95,7 +95,7 @@ ms.lasthandoff: 03/23/2018
 4.  对于“选项”，使用“上传”。
 5.  使用 `ADFSSamlCert` 作为“名称”。  
     可能会自动添加前缀 `B2C_1A_`。
-6.  在“文件上传”中，**选择带有私钥的证书 .pfx 文件。 注意：此证书（带私钥）应与为 ADFS 信赖方颁发和供其使用的证书相同。
+6.  在“文件上传”中，\*\*选择带有私钥的证书 .pfx 文件。 注意：此证书（带私钥）应与为 ADFS 信赖方颁发和供其使用的证书相同。
 ![上传策略密钥](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-cert.png)
 7.  单击“创建” 
 8.  确认已创建密钥 `B2C_1A_ADFSSamlCert`。

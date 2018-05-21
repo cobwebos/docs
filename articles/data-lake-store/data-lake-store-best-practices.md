@@ -9,15 +9,13 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: 7493c10407bfe83bdc7277c49dae1a7e9d7c39f2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>使用 Azure Data Lake Store 的最佳做法
 本文介绍 Azure Data Lake Store 使用方面的最佳做法和注意事项。 本文介绍 Data Lake Store 的安全性、性能、复原和监视。 在 Data Lake Store 出现之前，在 Azure HDInsight 之类的服务中使用真正大型的数据是很复杂的事情。 必须将数据在多个 Blob 存储帐户中分片，才能实现 PB 级的存储以及在该规模下的性能优化。 使用 Data Lake Store 时，大部分针对大小和性能的硬性限制都会去除。 但是，若要充分利用 Data Lake Store 的性能，仍有一些需要本文讨论的注意事项。 
@@ -100,7 +98,7 @@ Azure Data Lake Store 去除了对 Blob 存储帐户的硬性 IO 限制。 但�
 
 |  |Distcp  |Azure 数据工厂  |AdlCopy  |
 |---------|---------|---------|---------|
-|**规模限制**     | 受工作节点数限制        | 受最大云数据移动单位数限制        | 受分析单位数限制        |
+|**规模限制**     | 受辅助角色节点数限制        | 受最大云数据移动单位数限制        | 受分析单位数限制        |
 |**支持复制增量数据**     |   是      | 否         | 否         |
 |**内置业务流程**     |  否（使用 Oozie Airflow 或 cron 作业）       | 是        | 否（使用 Azure 自动化或 Windows 任务计划程序）         |
 |**支持的文件系统**     | ADL、HDFS、WASB、S3、GS、CFS        |很多，请参阅[连接器](../data-factory/connector-azure-blob-storage.md)。         | ADL 到 ADL、WASB 到 ADL（仅限同一区域）        |

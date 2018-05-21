@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric 模式和方案 | Microsoft Docs"
-description: "了解用于在 Service Fabric 上设计、开发和操作微服务的最佳实践以及经验证的可重用模式。"
+title: Azure Service Fabric 模式和方案 | Microsoft Docs
+description: 了解用于在 Service Fabric 上设计、开发和操作微服务的最佳实践以及经验证的可重用模式。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d5aa75ff-98b9-4573-a2e5-7f5ab288157a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: d0b385c10df61e9719d95b29b60e0f92766b2637
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 5c2cd38001a9645011bbab84cff3b9366aa64b1d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Service Fabric 模式和方案
 如果希望使用 Azure Service Fabric 构建大规模微服务，可向设计和构建了此平台即服务 (PaaS) 的专家学习。 从正确的体系结构开始，了解如何针对应用程序优化资源。 [Service Fabric 模式和实践](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344)课程回答了实际客户在 Service Fabric 方案和应用程序领域方面的最常见问题。
