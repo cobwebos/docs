@@ -7,15 +7,15 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
 tags: top-support-issue
 keywords: 自动化错误, 故障排除, 问题
-ms.openlocfilehash: d8bf617aaef463121abe76cd85a98615c83f11ae
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 990422cb686c84501127c3fcf233f96aec5bc065
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure 自动化中的常见问题解答 
 本文介绍如何排除会在 Azure 自动化中遇到的常见错误，并提供可能的解决方案建议。
