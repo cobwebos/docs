@@ -61,12 +61,10 @@
           href: virtual-networks-acl.md
 - name: 操作指南
   items:
-    - name: 规划和设计
+    - name: 计划
       items:
         - name: 虚拟网络
           href: virtual-network-vnet-plan-design-arm.md
-        - name: 网络安全组
-          href: virtual-networks-nsg.md
     - name: 部署
       items:
         - name: 网络安全组
