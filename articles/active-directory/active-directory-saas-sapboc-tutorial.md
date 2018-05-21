@@ -1,6 +1,6 @@
 ---
-title: "教程：将 Azure Active Directory 与 SAP Business Object Cloud 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 SAP Business Object Cloud 之间配置单一登录。"
+title: 教程：将 Azure Active Directory 与 SAP Business Object Cloud 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 SAP Business Object Cloud 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: b0ea48aea2e13027c5af273a416489e48987b44a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a56a892ac3b28c4e90ec2ea6360da3d2eff2581
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>教程：将 Azure Active Directory 与 SAP Business Object Cloud 集成
 
@@ -30,13 +30,13 @@ ms.lasthandoff: 12/11/2017
 - 可以通过使用单一登录和用户的 Azure AD 帐户使用户自动登录到 SAP Business Object Cloud。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要设置 Azure AD 与 SAP Business Object Cloud 的集成，需备齐以下各项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用单一登录的 SAP Business Object Cloud
 
 > [!NOTE]
@@ -70,7 +70,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新的应用程序，请选择“新建应用程序”。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，输入“SAP Business Object Cloud”。
 
@@ -199,7 +199,7 @@ ms.lasthandoff: 12/11/2017
 
     3. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    4. 选择“创建” 。
+    4. 选择**创建**。
 
         ![“用户”对话框](./media/active-directory-saas-sapboc-tutorial/create_aaduser_04.png) 
 
@@ -258,7 +258,7 @@ ms.lasthandoff: 12/11/2017
 
     ![选择“用户和组”][202] 
 
-4. 选择“添加”。 然后，在“添加分配”页上，选择“用户和组”。
+4. 选择 **添加** 。 然后，在“添加分配”页上，选择“用户和组”。
 
     ![“添加分配”页][203]
 
@@ -281,7 +281,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

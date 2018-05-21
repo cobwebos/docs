@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Adobe Creative Cloud 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Adobe Creative Cloud 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Adobe Creative Cloud 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Adobe Creative Cloud 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: c34d6bddb733c5979bc2006738e950cf7a185c4e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 808debcee11eb83f7e6afa1f3443a35c9f6767c4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>教程：Azure Active Directory 与 Adobe Creative Cloud 集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/24/2018
 - 可以让用户使用其 Azure AD 帐户自动登录到 Adobe Creative Cloud（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/24/2018
 
 **若要从库中添加 Adobe Creative Cloud，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 01/24/2018
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d.单击“下一步”。 单击“确定” 。
+    d. 单击“确定” 。
     
 8. 单击“保存”按钮。
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 01/24/2018
     
     c. 在“IDP 登录 URL”文本框中，放置从 Azure 门户中的“配置登录”部分复制的“SAML SSO 服务 URL”的值。
     
-    d.单击“下一步”。 选择“HTTP - 重定向”作为“IDP 绑定”。
+    d. 选择“HTTP - 重定向”作为“IDP 绑定”。
     
     e. 选择“电子邮件地址”作为“用户登录设置”。
     
@@ -216,7 +216,7 @@ ms.lasthandoff: 01/24/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-an-adobe-creative-cloud-test-user"></a>创建 Adobe Creative Cloud 测试用户
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 01/24/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 * [设置域 (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
 * [配置 Azure 以用于 Adobe SSO (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
 

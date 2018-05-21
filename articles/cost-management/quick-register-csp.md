@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: 839f99153e0b7458d205c1afb61a05c75cbe0fb7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b9dc2064a4d90b924730e2615378892b17340baf
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>注册 CSP 合作伙伴计划并查看成本数据
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 04/28/2018
 
 若要为间接 CSP 客户或合作伙伴启用访问权限，请按照[创建试用注册](#create-a-trial-registration)中的步骤设置试用注册。 接下来，请完成以下步骤，以使用 Cloudyn 实体组将间接 CSP 数据分段。 然后，向实体组分配适当的用户权限。
 
-1. 使用[创建实体](tutorial-user-access.md#create-entities)上的信息创建实体组。
+1. 使用[创建实体](tutorial-user-access.md#create-and-manage-entities)上的信息创建实体组。
 2. 按照[将订阅分配到费用实体](https://support.cloudyn.com/hc/en-us/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities)上的步骤操作。 将间接 CSP 客户的帐户及其 Azure 订阅与之前创建的实体关联。
 3. 按照[创建具有管理员权限的用户](tutorial-user-access.md#create-a-user-with-admin-access)上的步骤创建具有管理员权限的用户帐户。 然后，确保该用户帐户拥有之前为间接帐户创建的特定实体的管理员权限。
 

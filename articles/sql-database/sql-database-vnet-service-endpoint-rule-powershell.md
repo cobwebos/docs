@@ -3,18 +3,18 @@ title: SQL 中适用于虚拟网络服务终结点和规则的 PowerShell | Micr
 description: 提供 PowerShell 脚本，用于创建和管理 Azure SQL 数据库的虚拟服务终结点。
 services: sql-database
 author: MightyPen
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: VNet Service endpoints
 ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 5fcf33d3d54b118c1c25f1467a496da3644a2345
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2c53eaa0ff6a866f6a061ec1613630ad9626ac9b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>使用 PowerShell 创建 Azure SQL 数据库的虚拟服务终结点和规则
 

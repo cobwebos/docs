@@ -1,23 +1,23 @@
 ---
-title: "使用 Azure CLI 管理资源 | Microsoft Docs"
-description: "使用 Azure 命令行接口 (CLI) 管理 Azure 资源和组"
-editor: 
+title: 使用 Azure CLI 管理资源 | Microsoft Docs
+description: 使用 Azure 命令行接口 (CLI) 管理 Azure 资源和组
+editor: ''
 manager: timlt
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: c68f2a8b6e18dc2d51d8bbb5cd05bc037dc2fadb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90dd1b6b7e65178f6b339e4ac0bb781fb74a25a6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>使用 Azure CLI 管理 Azure 资源和资源组
 
@@ -204,7 +204,7 @@ az lock create --lock-type CanNotDelete --resource-name myuniquestorage --resour
 az lock delete --name storagelock --resource-group TestRG1 --resource-type Microsoft.Storage/storageAccounts --resource-name myuniquestorage
 ```
 
-有关设置锁的详细信息，请参阅[使用 Azure Resource Manager 锁定资源](resource-group-lock-resources.md)。
+有关设置锁的详细信息，请参阅[使用 Azure 资源管理器锁定资源](resource-group-lock-resources.md)。
 
 ## <a name="remove-resources-or-resource-group"></a>删除资源或资源组
 可以删除资源或资源组。 删除资源组时，还会删除该资源组中的所有资源。
@@ -224,7 +224,7 @@ az lock delete --name storagelock --resource-group TestRG1 --resource-type Micro
 使用这两个命令，都会要求确认是否要删除资源或资源组。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解如何创建 Resource Manager 模板，请参阅[创作 Azure Resource Manager 模板](resource-group-authoring-templates.md)。
-* 若要了解如何部署模板，请参阅[使用 Azure Resource Manager 模板部署应用程序](resource-group-template-deploy-cli.md)。
+* 若要了解如何创建资源管理器模板，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
+* 若要了解如何部署模板，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy-cli.md)。
 * 可以将现有资源移动到新的资源组。 有关示例，请参阅[将资源移动到新的资源组或订阅中](resource-group-move-resources.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。

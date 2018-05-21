@@ -1,20 +1,20 @@
 ---
-title: "通过门户发布 Azure 托管应用程序 | Microsoft Docs"
-description: "演示如何使用 Azure 门户创建适用于组织成员的 Azure 托管应用程序。"
+title: 通过门户发布 Azure 托管应用程序 | Microsoft Docs
+description: 演示如何使用 Azure 门户创建适用于组织成员的 Azure 托管应用程序。
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 764eb479733a7d4acdb6e6c3eee721cb4a161c88
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 69d31a7199347574e8866b275ec17ba3997d80c2
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>通过 Azure 门户发布服务目录应用程序
 

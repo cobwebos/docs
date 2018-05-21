@@ -4,7 +4,7 @@ description: 本文提供一系列有关使用内置 Azure 功能提高网络安
 services: security
 documentationcenter: na
 author: TomShinder
-manager: swadhwa
+manager: mbaldwin
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d6d723f40cdc0382fa41a51eb32e7b59f0798627
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5ebeadd9c0805ac5f6ac543a49cb9ff63d8ded3f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-network-security-best-practices"></a>Azure 网络安全最佳实践
 Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从而将它们连接到其他网络设备。 Azure 虚拟网络这一构造，可让你将虚拟网络接口卡连接到虚拟网络，允许有网络功能的设备之间进行基于 TCP/IP 的通信。 连接到 Azure 虚拟网络的 Azure 虚拟机能够连接到相同 Azure 虚拟网络、不同 Azure 虚拟网络、Internet 甚至自己的本地网络上的设备。
@@ -56,7 +56,7 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 
 子网之间的路由会自动发生，不需要手动配置路由表。 但是，默认设置是 Azure 虚拟网络上创建的子网之间没有任何网络访问控制。 若要创建子网之间的网络访问控制，必须在子网之间添加某项设置。
 
-可用于实现此任务的设置之一是[网络安全组](../virtual-network/virtual-networks-nsg.md) (NSG)。 NSG 是简单的有状态数据包检查设备，使用 5 个元组（源 IP、源端口、目标 IP、目标端口和第 4 层协议）的方法来创建网络流量的允许/拒绝规则。 可以允许或拒绝单个 IP 地址、多个 IP 地址甚至整个子网的流量。
+可用于实现此任务的设置之一是[网络安全组](../virtual-network/security-overview.md) (NSG)。 NSG 是简单的有状态数据包检查设备，使用 5 个元组（源 IP、源端口、目标 IP、目标端口和第 4 层协议）的方法来创建网络流量的允许/拒绝规则。 可以允许或拒绝单个 IP 地址、多个 IP 地址甚至整个子网的流量。
 
 将 NSG 用于子网之间的网络访问控制，可将属于同一安全区域或角色的资源置于其本身的子网中。 例如，简单的 3 层式应用程序具有 Web 层、应用程序逻辑层和数据库层。 可将属于上述各层的虚拟机置于其自身的子网中。 然后，使用 NSG 控制子网之间的流量：
 
@@ -64,7 +64,7 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 * 应用程序逻辑虚拟机只能发起与数据库层的连接，并且只可接受来自 Web 层的连接
 * 数据库层虚拟机只能发起与其本身子网外部任何组件的连接，并且只可接受来自应用程序逻辑层的连接
 
-若要了解网络安全组以及如何使用它们以逻辑方式分段 Azure 虚拟网络的详细信息，请参阅[什么是网络安全组](../virtual-network/virtual-networks-nsg.md) (NSG)。
+若要了解网络安全组以及如何使用它们以逻辑方式分段 Azure 虚拟网络的详细信息，请参阅[什么是网络安全组](../virtual-network/security-overview.md) (NSG)。
 
 ## <a name="control-routing-behavior"></a>控制路由行为
 将虚拟机置于 Azure 虚拟网络时，会注意到虚拟机可以连接到同一 Azure 虚拟网络上的任何其他虚拟机，即使其他虚拟机位于不同的子网。 这种情况的可能原因是默认将启用一些允许这种通信类型的系统路由。 这些默认路由可让相同 Azure 虚拟网络上的虚拟机彼此发起连接，以及与 Internet 连接（仅适用于 Internet 的出站通信）。
@@ -159,7 +159,7 @@ Azure 网络安全设备可通过网络级别控件提供的功能来提供增�
 
 * 需要使用来自同一用户/客户端会话的请求来访问相同后端虚拟机的应用程序。 此类应用程序的示例包括购物车应用程序和 Web 邮件服务器。
 * 希望使用应用程序网关的 [SSL 卸载](https://f5.com/glossary/ssl-offloading)功能消除 Web 服务器场的 SSL 终端开销的应用程序。
-* 要求长时间运行的同一 TCP 连接上多个 HTTP 请求路由到或负载均衡到不同后端服务器的应用程序（例如内容交付网络）。
+* 要求长时间运行的同一 TCP 连接上多个 HTTP 请求路由到或负载均衡到不同后端服务器的应用程序（例如内容分发网络）。
 
 若要详细了解 Azure 应用程序网关的工作原理及其在部署中的使用方式，请参阅[应用程序网关概述](../application-gateway/application-gateway-introduction.md)。
 

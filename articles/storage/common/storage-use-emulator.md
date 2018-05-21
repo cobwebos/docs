@@ -2,23 +2,17 @@
 title: 使用 Azure 存储模拟器进行开发和测试 | Microsoft Docs
 description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。 了解如何对请求进行身份验证、如何从应用程序连接到模拟器以及如何使用命令行工具。
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: f480b059-df8a-4a63-b05a-7f2f5d1f5c2a
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -44,17 +38,10 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>启动和初始化存储模拟器
 
-### <a name="run-the-azure-storage-emulator-in-dockerhttpshubdockercomrmicrosoftazure-storage-emulator"></a>[在 Docker 中运行 Azure 存储模拟器](https://hub.docker.com/r/microsoft/azure-storage-emulator/)
-```
-docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-emulator
-```
-
-### <a name="using-sdk"></a>使用 SDK
-
 若要启动 Azure 存储模拟器：
 1. 选择“开始”按钮或按“Windows”键。
-1. 开始键入 `Azure Storage Emulator`。
-1. 从所示应用程序的列表中选择该模拟器。
+2. 开始键入 `Azure Storage Emulator`。
+3. 从所示应用程序的列表中选择该模拟器。
 
 存储模拟器启动时，会显示“命令提示符”窗口。 可使用此控制台窗口启动和停止存储模拟器、清除数据、获取状态和初始化模拟器。 有关详细信息，请参阅本文后面的[存储模拟器命令行工具参考](#storage-emulator-command-line-tool-reference)部分。
 
@@ -71,6 +58,7 @@ docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>初始化存储模拟器以使用其他的 SQL 数据库
+
 可以使用存储模拟器命令行工具初始化存储模拟器，使其指向默认 LocalDB 实例以外的其他 SQL 数据库实例：
 
 1. 如[启动和初始化存储模拟器](#start-and-initialize-the-storage-emulator)部分中所述，打开“存储模拟器”控制台窗口。

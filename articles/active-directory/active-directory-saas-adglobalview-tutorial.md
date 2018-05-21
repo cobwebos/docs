@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 ADP Globalview 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 ADP Globalview 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 ADP Globalview 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 ADP Globalview 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 7271efe4a1cd943f84d322e7333c92d6f60b62aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5471a4edfc6830367d120580c1c36f30f87a8f90
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>教程：Azure Active Directory 与 ADP Globalview 集成
 
@@ -27,19 +27,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权限访问 ADP Globalview
 - 可使用户通过其 Azure AD 帐户自动登录 ADP Globalview（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 ADP Globalview 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 ADP Globalview 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 若要从库中添加 ADP Globalview，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 12/11/2017
 
 5. ADP GlobalView 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 
 
-6. 以下屏幕截图显示了一个示例。 声明名称始终是“PersonImmutableID”和映射到包含用户 EmployeeID 的 ExtensionAttribute2 的值。 在此将用户从 Azure AD 映射到 ADP GlobalView 是在 EmployeeID 上完成的，但可将其映射到同样基于应用程序设置的其他值。 首先可与 ADP GlobalView 团队合作，使用用户的正确标识符，并将该值与**“PersonImmutableID”**声明一起映射。 也可映射电子邮件和 UserID 声明，如图中所示。
+6. 以下屏幕截图显示了一个示例。 声明名称始终是“PersonImmutableID”和映射到包含用户 EmployeeID 的 ExtensionAttribute2 的值。 在此将用户从 Azure AD 映射到 ADP GlobalView 是在 EmployeeID 上完成的，但可将其映射到同样基于应用程序设置的其他值。 首先可与 ADP GlobalView 团队合作，使用用户的正确标识符，并将该值与 **“PersonImmutableID”** 声明一起映射。 也可映射电子邮件和 UserID 声明，如图中所示。
 
     ![配置单一登录](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_attribute.png)
 
@@ -130,7 +130,7 @@ ms.lasthandoff: 12/11/2017
     | 属性名称 | 属性值 |
     | ------------------- | -------------------- |    
     | personalimmutableid | user.extensionattribute2 |
-    | email               | user.mail |
+    | 电子邮件               | user.mail |
     | userid              | user.userprincipalname|
     
     a. 单击“添加属性”，打开“添加属性”对话框。
@@ -139,7 +139,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-adglobalview-tutorial/tutorial_attribute_05.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。
     
@@ -186,11 +186,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-an-adp-globalview-test-user"></a>创建 ADP Globalview 测试用户
 
@@ -235,7 +235,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

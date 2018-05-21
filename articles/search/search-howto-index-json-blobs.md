@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 64d16182ce1992ec312ad1620d9d5cf11e0ddea8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 752df29200a5e020ccf10f511ae2f02c0d72bd48
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>使用 Azure 搜索 Blob 索引器对 JSON blob 编制索引
 本文介绍如何配置 Azure 搜索 Blob 索引器，以从 Azure Blob 存储中的 JSON Blob 提取结构化内容。
@@ -23,7 +23,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
 | JSON 文档 | parsingMode | 说明 | 可用性 |
 |--------------|-------------|--------------|--------------|
 | 每个 Blob 各有一个 | `json` | 将 JSON Blob 分析为单个文本区块。 每个 JSON Blob 成为单个 Azure 搜索文档。 | 已在 [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API 中正式发布。 |
-| 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 搜索文档。  | 在预览版中，采用 [REST api-version=`2016-09-01-Preview`](search-api-2016-09-01-preview.md) 和 [.NET SDK 预览](https://aka.ms/search-sdk-preview)格式。 |
+| 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 搜索文档。  | 在预览版中，采用 [REST api-version=`2017-11-11-Preview`](search-api-2017-11-11-preview.md) 和 [.NET SDK 预览](https://aka.ms/search-sdk-preview)格式。 |
 
 > [!Note]
 > 预览 API 用于测试和评估，不应在生产环境中使用。
@@ -116,7 +116,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
 
 对于 JSON 数组，索引器请求将会使用预览 API 和 `jsonArray` 分析器。 为 JSON Blob 编制索引时，只需满足与数组相关的这两项要求。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -129,6 +129,8 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
     }
 
 同样请注意，字段映射不是必需的。 假设某个索引包含“id”和“text”字段，则不需要字段映射列表，Blob 索引器就能推断正确的映射。
+
+<a name="nested-json-arrays"></a>
 
 ### <a name="nested-json-arrays"></a>嵌套的 JSON 数组
 假设你想要对一个 JSON 对象数组编制索引，但该数组嵌套在文档的某个位置，该怎么办？ 可以使用 `documentRoot` 配置属性选取包含该数组的属性。 例如，如果 blob 如下所示：

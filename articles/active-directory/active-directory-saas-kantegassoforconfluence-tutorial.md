@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Kantega SSO for Confluence 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Kantega SSO for Confluence 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Kantega SSO for Confluence 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Kantega SSO for Confluence 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: d98aad7d2b4bb26dbd04088ffd133fe96ffe0dd5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a2ad73f3635c9f6f938c0e62db49ce00cc5031e3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>教程：Azure Active Directory 与 Kantega SSO for Confluence 集成
 
@@ -27,19 +27,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在 Azure AD 中控制谁有权访问 Kantega SSO for Confluence
 - 可以让用户通过其 Azure AD 帐户自动登录到 Kantega SSO for Confluence（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Kantega SSO for Confluence 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Kantega SSO for Confluence 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 若要从库中添加 Kantega SSO for Confluence，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/addon3.png)
 
-12. 安装完成后。 单击“**关闭**”。
+12. 安装完成后。 单击“关闭”。
 
     ![配置单一登录](./media/active-directory-saas-kantegassoforconfluence-tutorial/addon33.png)
 
@@ -179,7 +179,7 @@ ms.lasthandoff: 12/11/2017
 
     a. 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Confluence 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
 
-    b. 单击“下一步”。
+    b. 单击“资源组名称” 的 Azure 数据工厂。
 
 19. 在“元数据导入”部分，执行以下步骤： 
 
@@ -187,7 +187,7 @@ ms.lasthandoff: 12/11/2017
 
     a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
-    b. 单击“下一步”。
+    b. 单击“资源组名称” 的 Azure 数据工厂。
 
 20. 在“名称和 SSO 位置”部分，执行以下步骤：
 
@@ -195,7 +195,7 @@ ms.lasthandoff: 12/11/2017
     
     a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
-    b. 单击“下一步”。
+    b. 单击“资源组名称” 的 Azure 数据工厂。
 
 21. 验证签名证书，然后单击“下一步”。
 
@@ -207,7 +207,7 @@ ms.lasthandoff: 12/11/2017
 
     a. 选择“根据需要在 Confluence 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
-    b. 单击“下一步”。
+    b. 单击“资源组名称” 的 Azure 数据工厂。
 
 23. 单击“完成” 。   
 
@@ -221,7 +221,7 @@ ms.lasthandoff: 12/11/2017
 
     b. 在“已知域”文本框中输入域名。
 
-    c. 单击“保存” 。 
+    c. 单击“ **保存**”。 
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -252,11 +252,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-kantega-sso-for-confluence-test-user"></a>创建 Kantega SSO for Confluence 测试用户
 
@@ -326,7 +326,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

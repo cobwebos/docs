@@ -5,14 +5,14 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: overview
-ms.date: 04/23/2018
+ms.date: 05/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2a2818be8ef609946e53f585aadb0a5b4ac0f3a9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27b394a6b2d2f85afeb809fcad3b88564f3054e7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -57,7 +57,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 | 美洲 | 欧洲 | 亚太区 |
 |----------|--------|--------------|
-|  巴西南部<br> 加拿大中部<br> 美国东部 2<br> 美国中北部<br> 美国中南部<br> 美国中西部<br> 美国西部 | 北欧<br> 英国南部<br> 欧洲西部 |   澳大利亚东南部<br> 日本东部<br> 东南亚<br> 印度西部  |
+|  巴西南部<br> 加拿大中部<br> 美国东部<br> 美国东部 2<br> 美国中北部<br> 美国中部<br> 美国中南部<br> 美国中西部<br> 美国西部<br> 美国西部 2 | 北欧<br> 英国南部<br> 欧洲西部 |   澳大利亚东南部<br> 日本东部<br> 东南亚<br> 印度西部  |
 
 将会不断添加新区域，因此此列表可能并不完整。 通过 Azure 门户或 Azure 资源管理器模板创建服务器时，需选择位置。 若要获得最佳性能，请选择最接近最大用户群的位置。 请在多个区域的冗余服务器上部署模型，确保[高可用性](analysis-services-bcdr.md)。
 

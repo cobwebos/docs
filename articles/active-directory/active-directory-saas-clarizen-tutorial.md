@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Clarizen 的集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Clarizen 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Clarizen 的集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 Clarizen 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 2925f0a9f582d0dfeca9832ca032b0d847f23f6b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8af9e7023142077fdeed0262e5f39921b158a14f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>教程：Azure Active Directory 与 Clarizen 的集成
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/11/2017
 1. 从库中添加 Clarizen。
 2. 配置和测试 Azure AD 单一登录。
 
-如果想要了解有关软件即服务 (SaaS) 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
+如果想要了解有关软件即服务 (SaaS) 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要配置 Azure AD 与 Clarizen 的集成，需要以下项：
@@ -153,7 +153,7 @@ ms.lasthandoff: 12/11/2017
 
     e. 选择“使用 POST”。
 
-    f. 单击“保存” 。
+    f. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 在 Azure 门户中，创建一个名为 Britta Simon 的测试用户。
@@ -243,7 +243,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

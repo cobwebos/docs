@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 vxMaintain 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 vxMaintain 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 vxMaintain 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 vxMaintain 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 66165b2586304f3726f5d712fb334fe67e2cd02b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c30d59a2bd903a5578caf376957a22bb270455f9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>教程：Azure Active Directory 与 vxMaintain 集成
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/29/2018
 - 可以让用户使用其 Azure AD 帐户通过单一登录 (SSO) 自动登录到 vxMaintain。
 - 在一个中心位置（Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 01/29/2018
 
     c. 选择“显示密码”复选框，然后记下“密码”框中生成的值。
 
-    d.单击“下一步”。 选择“创建”。
+    d. 选择**创建**。
  
 ### <a name="create-a-vxmaintain-test-user"></a>创建 vxMaintain 测试用户
 
@@ -198,7 +198,7 @@ ms.lasthandoff: 01/29/2018
 ## <a name="next-steps"></a>后续步骤
 
 * [有关将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
