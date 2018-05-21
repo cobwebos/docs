@@ -1,23 +1,21 @@
 ---
-title: "使用 Azure Active Directory 在 Data Lake Store 中进行身份验证 | Microsoft Docs"
-description: "了解如何使用 Azure Active Directory 进行 Data Lake Store 身份验证"
+title: 使用 Azure Active Directory 在 Data Lake Store 中进行身份验证 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory 进行 Data Lake Store 身份验证
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 7e6e37c0f5c8447b0e6d147a297b460d323b8894
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 061a44540cb618074764ae02fecb3f43d47fe5dd
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 身份验证
 

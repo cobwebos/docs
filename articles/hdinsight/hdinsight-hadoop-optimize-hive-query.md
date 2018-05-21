@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 8fc4a1c1759ad857502a540d6c3be11b0f607c79
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e844b4f1e9898347da6af589dbfe41bf2ad3ab69
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Hive 查询
 
@@ -171,7 +171,7 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
 ## <a name="other-optimization-methods"></a>其他优化方法
 还可以考虑使用其他一些高级优化方法，例如：
 
-* **Hive 存储桶：**将大型数据集群集化或分段以优化查询性能的技术。
+* **Hive 存储桶：** 将大型数据集群集化或分段以优化查询性能的技术。
 * **联接优化**：Hive 的查询执行计划优化，可改善联接的效率并减少用户提示的需要。 有关详细信息，请参阅[联接优化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
 * **增加化简器**。
 
