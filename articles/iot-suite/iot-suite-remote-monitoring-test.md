@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d2523502c20a7cdc4fb4ec388f167f1640919717
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9b4f7f9a9c501204d48b738089dc3cbd015a744c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="create-a-new-simulated-device"></a>创建新的模拟设备
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 05/10/2018
 
 若要学习本教程，需要：
 
-* 在 Azure 订阅中部署远程监视解决方案的实例。 如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](iot-suite-remote-monitoring-deploy.md)教程。
+* 在 Azure 订阅中部署远程监视解决方案的实例。 如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)教程。
 
 * Visual Studio 2017。 如果尚未安装 Visual Studio 2017，可以下载免费的[Visual Studio Community Edition](https://www.visualstudio.com/free-developer-offers/)。
 

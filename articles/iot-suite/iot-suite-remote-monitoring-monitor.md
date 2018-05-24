@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 63d5d8de82d97e7f8ca65ad04cdd4357cace0be1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e6bf1962115c4ee9212ae73eb98f664efa3b6a2d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>使用远程监视解决方案执行高级监视
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 05/07/2018
 
 若要遵循本教程，需在 Azure 订阅中部署远程监视解决方案的实例。
 
-如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](iot-suite-remote-monitoring-deploy.md)教程。
+如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)教程。
 
 ## <a name="choose-the-devices-to-display"></a>选择要显示的设备
 
@@ -115,7 +115,7 @@ To view the device details, pan and zoom the map to locate the devices, then cli
 
 了解如何监视设备后，我们建议接下来了解以下操作：
 
-* [使用基于阈值的规则检测问题](./iot-suite-remote-monitoring-automate.md)。
+* [使用基于阈值的规则检测问题](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md)。
 * [管理和配置设备](./iot-suite-remote-monitoring-manage.md)。
 * [排查和修正设备问题](./iot-suite-remote-monitoring-maintain.md)。
 * [使用模拟设备测试解决方案](iot-suite-remote-monitoring-test.md)。

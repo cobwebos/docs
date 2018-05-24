@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 599f8327e9939f400ca18c87fa6193ac3c1e4a61
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>管理和配置设备
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 05/07/2018
 
 Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。 在等待交付新机器期间，你想要运行一次模拟，以验证解决方案的行为。 操作员希望能够在远程监视解决方案中管理和配置设备。
 
-为了提供一种可扩展的方式来管理和配置设备，远程监视解决方案使用了[作业](../iot-hub/iot-hub-devguide-jobs.md)和[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)等 IoT 中心功能。 若要了解设备开发人员如何在物理设备上实现方法，请参阅[自定义远程监视解决方案加速器](iot-suite-remote-monitoring-customize.md)。
+为了提供一种可扩展的方式来管理和配置设备，远程监视解决方案使用了[作业](../iot-hub/iot-hub-devguide-jobs.md)和[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)等 IoT 中心功能。 若要了解设备开发人员如何在物理设备上实现方法，请参阅[自定义远程监视解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。
 
 本教程介绍如何执行下列操作：
 
@@ -38,7 +38,7 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 若要遵循本教程，需在 Azure 订阅中部署远程监视解决方案的实例。
 
-如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](iot-suite-remote-monitoring-deploy.md)教程。
+如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)教程。
 
 ## <a name="add-a-simulated-device"></a>添加模拟设备
 
