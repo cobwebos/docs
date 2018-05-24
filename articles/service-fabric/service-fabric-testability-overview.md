@@ -1,6 +1,6 @@
 ---
-title: "故障分析服务概述 |Microsoft 文档"
-description: "本文介绍 Service Fabric 中用于针对服务引入故障和运行测试方案的故障分析服务。"
+title: 故障分析服务概述 |Microsoft 文档
+description: 本文介绍 Service Fabric 中用于针对服务引入故障和运行测试方案的故障分析服务。
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: f275fa5d3d6d727b016e55c188321d7e68091a33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 807e4588e23ea01c5ce435282d7af59bb108e6c6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>故障分析服务介绍
 故障分析服务是在 Microsoft Azure Service Fabric 基础上专为测试服务构建的。 借助故障分析服务，可以引入有意义的故障，并对应用程序运行完整的测试方案。 这些故障和方案将执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
@@ -98,7 +98,7 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 ## <a name="next-steps"></a>后续步骤
 若要创建真正的云级服务，必须确保在部署之前和之后，服务能够承受现实的故障。 在当今的服务世界中，能够快速创新以及将代码投入生产环境非常重要。 故障分析服务能够帮助服务开发人员确切实现该目的。
 
-使用内置[测试方案](service-fabric-testability-scenarios.md)开始测试应用程序和服务，或使用由故障分析服务提供的[故障操作](service-fabric-testability-actions.md)编写自己的测试方案。
+使用内置[测试方案](service-fabric-testability-scenarios.md)测试应用程序和服务，或使用由故障分析服务提供的[故障操作](service-fabric-testability-actions.md)编写自己的测试方案。
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png

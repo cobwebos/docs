@@ -1,7 +1,6 @@
 - name: Azure Blockchain Workbench（公共预览版）
   href: index.yml
 - name: 概述
-  expanded: true
   items:
     - name: 关于 Azure Blockchain Workbench
       href: blockchain-workbench-overview.md
@@ -12,7 +11,6 @@
     - name: 集成模式
       href: blockchain-workbench-integration-patterns.md
 - name: 操作指南
-  expanded: true
   items:
     - name: 部署 Workbench
       href: blockchain-workbench-deploy.md

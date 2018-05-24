@@ -5,20 +5,20 @@ services: service-fabric
 documentationcenter: .net
 author: radicmilos
 manager: ''
-editor: ''
+editor: nipuzovi
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
-ms.author: miradic,nipuzovi
-ms.openlocfilehash: 741d77998e9f3405ca6d3863e80cb9125705eefe
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: miradic
+ms.openlocfilehash: cd19c0e51ca1ac7863058d7c3944400719508f9b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-auto-scaling"></a>自动缩放简介
 自动扩展是 Service Fabric 的附加功能，可根据服务正在报告的负载或基于资源的使用情况来动态扩展服务。 自动缩放提供了很大的弹性，并可实现按需配置服务的其他实例或分区。 整个自动缩放过程是自动且透明的，一旦在服务上设置策略，就无需在服务级别进行手动缩放操作。 可在创建服务时启用自动缩放，也可在任何时候通过更新服务启用。

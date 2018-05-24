@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Blackboard Learn 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Blackboard Learn 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Blackboard Learn 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Blackboard Learn 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 0c0cd547a9a33ee83883058623e4905ea0af4031
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 52cb6eccc85dd6c00ee1ab3b97f7410c43aef91d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>教程：Azure Active Directory 与 Blackboard Learn 的集成
 
@@ -27,19 +27,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制哪些人有权访问 Blackboard Learn
 - 可使用户使用其 Azure AD 帐户自动登录到 Blackboard Learn（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Blackboard Learn 的集成，需要以下各项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Blackboard Learn 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库添加 Blackboard Learn，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -134,7 +134,7 @@ ms.lasthandoff: 12/11/2017
     
     ![配置单一登录](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_attribute_05.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。
     
@@ -186,12 +186,12 @@ ms.lasthandoff: 12/11/2017
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-blackboard-learn-test-user"></a>创建 Blackboard Learn 测试用户
 在本部分中，在 Blackboard Learn 中创建名为 Britta Simon 的用户。 
 
-Blackboard Learn 应用程序支持准时用户预配。 请确保已按照**[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)**部分中所述配置声明
+Blackboard Learn 应用程序支持准时用户预配。 请确保已按照**[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** 部分中所述配置声明
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 Blackboard Learn 的访问权限支持她使用 Azure 单一登录。
@@ -231,7 +231,7 @@ Blackboard Learn 应用程序支持准时用户预配。 请确保已按照**[�
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

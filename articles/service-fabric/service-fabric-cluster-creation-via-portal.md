@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: aljo
-ms.openlocfilehash: d3efc14886d82290241e9868ea9b0e8262efddea
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: fbe3dde48fa1be79356ff1cb9e47c46832d8cdaa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -45,8 +45,8 @@ ms.lasthandoff: 04/16/2018
 #### <a name="cluster-and-server-certificate-required"></a>群集和服务器证书（必需）
 需要使用此证书来保护群集以及防止未经授权访问群集。 此证书通过多种方式保护群集：
 
-* **群集身份验证：**在群集联合的情况下对节点间的通信进行身份验证。 只有可以使用此证书自我证明身份的节点才能加入群集。
-* **服务器身份验证：**在管理客户端上对群集管理终结点进行身份验证，使管理客户端知道它正在与真正的群集通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供 SSL。
+* **群集身份验证：** 在群集联合的情况下对节点间的通信进行身份验证。 只有可以使用此证书自我证明身份的节点才能加入群集。
+* **服务器身份验证：** 在管理客户端上对群集管理终结点进行身份验证，使管理客户端知道它正在与真正的群集通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供 SSL。
 
 为满足这些用途，该证书必须符合以下要求：
 

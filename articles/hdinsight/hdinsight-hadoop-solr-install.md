@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: d263f6255eedb9b45b7f0b232e1595197556b7c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: caabe0fea6286c9439e8929b054d771868dcb6f1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Solr
 
@@ -157,7 +157,7 @@ ms.lasthandoff: 04/16/2018
              </lst>
              <str name="status">OK</str>
            </response>
-   2. 在远程会话中，导航到 {SOLR_HOME}\{Collection}\data。 对于通过示例脚本创建的群集，该目录应该是 **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**。 在此位置，应该会看到使用类似于 **snapshot.*timestamp*** 的名称创建的快照文件夹。
+   2. 在远程会话中，导航到 {SOLR_HOME}\{Collection}\data。 对于通过示例脚本创建的群集，该目录应该是 **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**。 在此位置，应该会看到使用类似于 **snapshot.* timestamp*** 的名称创建的快照文件夹。
    3. 压缩快照文件夹，并将其上传到 Azure Blob 存储。 从 Hadoop 命令行，通过使用以下命令导航到快照文件夹所在的位置：
 
              hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
@@ -176,11 +176,9 @@ ms.lasthandoff: 04/16/2018
 * [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关使用脚本操作自定义 HDInsight 群集的一般信息。
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)。
 * [在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]：有关安装 Spark 的脚本操作示例。
-* [在 HDInsight 群集上安装 R][hdinsight-install-r]：有关安装 R 的脚本操作示例。
 * [在 HDInsight 群集上安装 Giraph](hdinsight-hadoop-giraph-install.md)：有关如何安装 Giraph 的脚本操作示例。
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

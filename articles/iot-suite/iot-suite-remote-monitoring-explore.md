@@ -1,24 +1,24 @@
 ---
-title: "远程监视解决方案入门 - Azure | Microsoft Docs"
-description: "本教程使用模拟方案来介绍远程监视预配置解决方案。 这些方案是首次部署远程监视预配置解决方案时创建的。"
-services: 
+title: 远程监视解决方案入门 - Azure | Microsoft Docs
+description: 本教程使用模拟方案来介绍远程监视解决方案加速器。 这些方案是首次部署远程监视解决方案加速器时创建的。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 96d701860abcc645b37d0420fe352da2adeb992f
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 6a38098dc2bbcfc6ff59b9f8c96d1e947c637ab1
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/18/2018
 ---
-# <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>探索远程监控预配置解决方案的功能
+# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>探索远程监视解决方案加速器的功能
 
 本教程介绍远程监视解决方案的重要功能。 这了介绍这些功能，本教程将会针对一家名为 Contoso 的公司使用模拟 IoT 应用程序，以此展示常见的客户方案。
 
@@ -41,21 +41,21 @@ ms.lasthandoff: 02/23/2018
 
 若要完成本教程，需在 Azure 订阅中部署远程监视解决方案的实例。
 
-如果尚未部署远程监视解决方案，应完成[部署远程监视预配置解决方案](iot-suite-remote-monitoring-deploy.md)教程。
+如果尚未部署远程监视解决方案，应完成[部署远程监视解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)教程。
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Contoso 示例 IoT 部署
 
 可以使用 Contoso 示例 IoT 部署来了解远程监视解决方案现成提供的基本方案。 这些方案基于真实的 IoT 部署。 我们很可能会选择自定义远程监视解决方案来满足自己的具体要求，但 Contoso 示例可帮助我们了解基础知识。
 
 > [!NOTE]
-> 如果使用 CLI 部署了预配置解决方案，文件 `deployment-{your deployment name}-output.json` 包含有关部署的信息，例如用于访问已部署示例的 URL。
+> 如果使用 CLI 部署了解决方案加速器，则文件 `deployment-{your deployment name}-output.json` 会包含有关部署的信息，例如用于访问已部署示例的 URL。
 
 Contoso 示例将会预配一组要操作的模拟设备和规则。 了解基本方案后，可在[使用远程监视解决方案执行高级设备监视](iot-suite-remote-monitoring-monitor.md)中继续探索其他解决方案功能。
 
 Contoso 公司在不同的环境中管理各种资源。 Contoso 打算使用基于云的 IoT 应用程序的强大功能，通过一个中心应用程序远程监视和管理多个资产。 以下部分提供了 Contoso 示例的初始配置摘要：
 
 > [!NOTE]
-> Contoso 示例仅演示了预配模拟设备和创建规则的一种方式。 其他预配选项包括创建自己的自定义设备。 若要详细了解如何创建自己的设备和规则，请参阅[管理和配置设备](iot-suite-remote-monitoring-manage.md)以及[使用基于阈值的规则检测问题](iot-suite-remote-monitoring-automate.md)。
+> Contoso 示例仅演示了预配模拟设备和创建规则的一种方式。 其他预配选项包括创建自己的自定义设备。 若要详细了解如何创建自己的设备和规则，请参阅[管理和配置设备](iot-suite-remote-monitoring-manage.md)以及[使用基于阈值的规则检测问题](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md)。
 
 ### <a name="contoso-devices"></a>Contoso 设备
 
@@ -67,7 +67,7 @@ Contoso 使用不同类型的智能设备。 这些设备在公司中发挥不�
 | ------------------ | ------------------------------------------ | ------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
 | 冷却器            | 温度、湿度、压力            | 类型、固件版本、型号               | 位置、楼层、园区 | 重新启动、固件更新、紧急阀门释放、增大压力                          |
 | 原型制作设备 | 温度、压力、地理位置        | 类型、固件版本、型号               | 位置、模式          | 重新启动、固件更新、转移设备、停止设备、温度释放、温度提高 |
-| 引擎             | 燃油水平、冷却剂传感器、振动 | 类型、固件版本、型号               | 位置、楼层、园区 | 重启、固件更新、排空油箱、加满油箱                                              |
+| 引擎             | 燃油水平、冷却剂传感器、振动 | 类型、固件版本、型号               | 位置、楼层、园区 | 固件更新、排空油箱、加满油箱                                              |
 | 卡车              | 地理位置、速度、货物温度     | 类型、固件版本、型号               | 位置、负载          | 货物温度低、提高货物温度、固件更新                         |
 | 升降机           | 楼层、振动、温度              | 类型、固件版本、型号、地理位置 | 位置、园区        | 停止升降机、启动升降机、固件更新                                               |
 
@@ -88,33 +88,25 @@ Contoso 的操作员知道哪些阈值确定了设备是否正常工作。 例�
 
 ### <a name="operate-the-contoso-sample-deployment"></a>操作 Contoso 示例部署
 
-现已了解 Contoso 示例中的初始设置。 以下部分介绍 Contoso 示例中的三个方案，演示操作员可以如何使用预配置解决方案。
+现已了解 Contoso 示例中的初始设置。 以下部分介绍 Contoso 示例中的三个方案，演示操作员可以如何使用解决方案加速器。
 
-## <a name="respond-to-a-pressure-alarm"></a>响应压力警报
+## <a name="respond-to-a-pressure-alert"></a>响应压力警报
 
 此方案演示如何识别冷却器设备触发的警报并对其做出响应。 冷却器位于 Redmond 的 43 栋 2 楼。
 
 操作员在仪表板中看到一条与冷却器压力相关的警报。 可以平移和缩放地图来查看更多详细信息。
 
-1. 在“仪表板”页上的“系统警报”网格中，可以看到“冷却器压力过高”警报。 地图上也突出显示了该冷却器：
+1. 在“仪表板”页上的“警报”网格中，可以看到“冷却器压力过高”警报。 地图上也突出显示了该冷却器：
 
     ![仪表板在地图中显示压力警报和设备](media/iot-suite-remote-monitoring-explore/dashboardalarm.png)
 
-1. 若要查看设备详细信息和遥测数据，请单击地图上突出显示的冷却器。 遥测数据显示了压力峰值：
+1. 若要导航到“维护”页，请在导航菜单上选择“维护”。 在“维护”页上，可以查看触发冷却器压力警报的规则的详细信息。
 
-    ![在地图上选择设备可查看详细信息](media/iot-suite-remote-monitoring-explore/dashboarddetail.png)
-
-1. 关闭“设备详细信息”。
-
-1. 若要导航到“维护”页，请在导航菜单上选择“维护”。
-
-在“维护”页上，可以查看触发冷却器压力警报的规则的详细信息。
-
-1. 通知列表显示警报的触发次数、警报确认，以及已打开和关闭的警报：
+1. 警报列表显示警报的触发次数、警报确认，以及已打开和关闭的警报：
 
     ![“维护”页显示已触发的警报列表](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
-1. 列表中的第一条警报是最近发出的警报。 单击“冷却器压力过高”警报可查看关联的设备和遥测数据。 遥测数据显示了冷却器的压力峰值：
+1. 列表中的最后一条警报是最近发出的警报。 单击“冷却器压力过高”警报可查看关联的设备和遥测数据。 遥测数据显示了冷却器的压力峰值：
 
     ![“维护”页显示所选警报的遥测数据](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
 
@@ -124,7 +116,7 @@ Contoso 的操作员知道哪些阈值确定了设备是否正常工作。 例�
 
     ![选择并确认警报](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
 
-1. 若要处理冷却器，请将它选中，并选择“计划”。 选择“EmergencyValveRelease”，添加名为 **ChillerPressureRelease** 的作业，再选择“应用”。 这些设置会创建一个可立即执行的作业：
+1. 若要处理冷却器，请将它选中，然后选择“作业”。 选择“运行方法”，然后选择“EmergencyValveRelease”，添加名为 **ChillerPressureRelease** 的作业，再选择“应用”。 这些设置会创建一个可立即执行的作业：
 
     ![选择设备并计划操作](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
@@ -159,7 +151,7 @@ Contoso 正在现场测试某个新型设备。 在测试周期中，需确保�
 
     ![在“设备”页上选择设备](media/iot-suite-remote-monitoring-explore/devicesselect.png)
 
-1. 单击“计划”按钮，选择“固件更新”。 输入“作业名称”、“固件版本”和“固件 URI”的值。 选择“应用”，将作业计划为立即运行：
+1. 单击“作业”按钮，选择“运行方法”，然后选择“固件更新”。 输入“作业名称”、“固件版本”和“固件 URI”的值。 选择“应用”，将作业计划为立即运行：
 
     ![在设备上计划固件更新](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
@@ -176,17 +168,18 @@ Contoso 正在现场测试某个新型设备。 在测试周期中，需确保�
 
 1. 找到与所创建的作业相关的事件。 验证固件更新过程是否已正常启动。
 
-可以创建一个筛选器来正确验证更新的固件版本。
+<!-- 05/01 broken 
+You can create a filter to verify the firmware version updated correctly.
 
-1. 若要创建筛选器，请导航到“设备”页并选择“管理筛选器”：
+1. To create a filter, navigate to the **Devices** page and select **Manage device groups**:
 
-    ![管理设备筛选器](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Manage device groups](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
-1. 创建一个仅包含具有新固件版本的设备的筛选器：
+1. Create a filter that includes only devices with the new firmware version:
 
-    ![创建设备筛选器](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
+    ![Create device filter](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
 
-1. 返回“设备”页，验证该设备是否具有新的固件版本。
+1. Return to the **Devices** page and verify that the device has the new firmware version. -->
 
 ## <a name="organize-your-assets"></a>组织资产
 
@@ -203,7 +196,7 @@ Contoso 设立了两个不同的团队来从事现场服务活动：
 
     ![显示所有设备](media/iot-suite-remote-monitoring-explore/devicesalldevices.png)
 
-1. 选择“卡车”和“原型制作”设备。 然后选择“标记”：
+1. 选择“卡车”和“原型制作”设备。 然后选择“作业”：
 
     ![选择原型制作和卡车设备](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
@@ -211,19 +204,19 @@ Contoso 设立了两个不同的团队来从事现场服务活动：
 
     ![将标记添加到原型制作和卡车设备](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
-1. 选择“冷却器”、“升降机”和“引擎”设备。 然后选择“标记”：
+1. 选择“冷却器”、“升降机”和“引擎”设备。 然后选择“作业”：
 
     ![选择冷却器、引擎和升降机设备](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. 选择“标记”，创建名为 **FieldService**、值为 **SmartBuilding** 的新文本标记。 选择作业的名称。 然后单击“保存”：
+1. 选择“标记”，创建名为 **FieldService**、值为 **SmartBuilding** 的新文本标记。 选择作业的名称。 然后单击“应用”：
 
     ![将标记添加到冷却器、引擎和升降机设备](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 
 可以使用标记值创建筛选器。
 
-1. 在“设备”页上，选择“管理筛选器”：
+1. 在“设备”页上，选择“管理设备组”：
 
-    ![管理设备筛选器](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![管理设备组](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
 1. 创建使用标记名称 **FieldService** 和值 **SmartBuilding** 的新筛选器。 将该筛选器另存为“智能建筑”。
 
@@ -237,9 +230,17 @@ Contoso 设立了两个不同的团队来从事现场服务活动：
 
 1. 选择“设置”图标。
 
-1. 然后将“正在运行”切换到打开或关闭：
+1. 然后将“流动”切换到打开或关闭：
 
     ![“设置”菜单](media/iot-suite-remote-monitoring-explore/settings.png)
+
+## <a name="customize-the-ui"></a>自定义 UI
+
+在设置菜单中，可以将基本的自定义应用到远程监视解决方案加速器。 可以：
+
+- 在明暗主题之间进行切换。
+- 更改解决方案的名称。
+- 上传自定义徽标。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -256,5 +257,5 @@ Contoso 设立了两个不同的团队来从事现场服务活动：
 
 * [监视设备](./iot-suite-remote-monitoring-monitor.md)。
 * [管理设备](./iot-suite-remote-monitoring-manage.md)。
-* [使用规则自动化解决方案](./iot-suite-remote-monitoring-automate.md)。
+* [使用规则自动化解决方案](./../iot-accelerators/iot-accelerators-remote-monitoring-automate.md)。
 * [维护解决方案](./iot-suite-remote-monitoring-maintain.md)。

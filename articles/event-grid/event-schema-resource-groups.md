@@ -1,18 +1,18 @@
 ---
-title: "Azure 事件网格资源组事件架构"
-description: "介绍针对 Azure 事件网格中的资源组事件提供的属性"
+title: Azure 事件网格资源组事件架构
+description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 109f5af5cc1647cebee805c3141f4bc83c73bcfc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 163c32bdb8a3fdc278404b9e26fdc3097797d16c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>资源组的 Azure 事件网格事件架构
 

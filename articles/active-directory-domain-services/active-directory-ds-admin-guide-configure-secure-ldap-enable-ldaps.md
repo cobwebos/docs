@@ -1,8 +1,8 @@
 ---
-title: "在 Azure AD 域服务中配置安全 LDAP (LDAPS) | Microsoft 文档"
-description: "为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)"
+title: 在 Azure AD 域服务中配置安全 LDAP (LDAPS) | Microsoft 文档
+description: 为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 8b6c1dec6f97311e5fb92f2adef8685b59cbeb2c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 8da03990ace37b527553b0fe3ff0032515e1b812
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 02/24/2018
 
 ![通过 Internet 进行安全 LDAPS 访问的示例 NSG](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
-**详细信息** - [网络安全组](../virtual-network/virtual-networks-nsg.md)。
+**详细信息** - [网络安全组](../virtual-network/security-overview.md)。
 
 <br>
 
@@ -128,5 +128,5 @@ ms.lasthandoff: 02/24/2018
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [管理 Azure AD 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)
 * [管理 Azure AD 域服务托管域上的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
-* [网络安全组](../virtual-network/virtual-networks-nsg.md)
+* [网络安全组](../virtual-network/security-overview.md)
 * [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)

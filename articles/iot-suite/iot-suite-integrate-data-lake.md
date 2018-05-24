@@ -9,11 +9,11 @@ description: 了解如何使用 Azure 流分析作业将远程监视解决方案
 +ms.date: 04/029/2018
 +ms.topic: article
 +ms.service: iot-suite
-ms.openlocfilehash: 701dd51d13ec1880f23c48cc5e8b368b15d0deca
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 75ad9e9ac79dca4db902d7e72511a384dd769463
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>将远程监视解决方案与 Azure Data Lake Store 集成
 
@@ -25,11 +25,11 @@ ms.lasthandoff: 05/07/2018
 
 若要完成本操作指南，需要满足以下条件：
 
-* [部署远程监视预配置解决方案](/iot-suite/iot-suite-remote-monitoring-deploy)。
+* [部署远程监视预配置解决方案](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)。
   * 远程监视解决方案会将本文中使用的 IoT 中心和 Azure 流分析作业部署到 Azure 订阅。
-* [部署 Azure Data Lake Store](/data-lake-store/data-lake-store-get-started-portal)
+* [部署 Azure Data Lake Store](/data-lake-store/data-lake-store-get-started-portal.md)
   * 应将 Data Lake Store 部署到远程监视解决方案所在的同一区域。
-  * 在帐户中[创建](/data-lake-store/data-lake-store-get-started-portal#createfolder)名为“streaming”的文件夹。
+  * 在帐户中[创建](/data-lake-store/data-lake-store-get-started-portal.md#createfolder)名为“streaming”的文件夹。
 
 ## <a name="create-a-consumer-group"></a>创建使用者组
 

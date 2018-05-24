@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Dealpath 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Dealpath 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Dealpath 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Dealpath 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 268df1b91f458279b7d79d963fe1ab318d759f65
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 2df638c8c75e07b9df9ace9fc420f0d36920bf8f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>教程：Azure Active Directory 与 Dealpath 的集成
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/15/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Dealpath（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/15/2017
 
 **若要从库中添加 Dealpath，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -143,7 +143,7 @@ ms.lasthandoff: 12/15/2017
 
     c. 复制已下载的“证书(Base64)”文件的内容，并将其粘贴到“公用证书”文本框中。
 
-    d.单击“下一步”。 单击“更新设置”。
+    d. 单击“更新设置”。
 
 
 > [!TIP]
@@ -180,7 +180,7 @@ ms.lasthandoff: 12/15/2017
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-dealpath-test-user"></a>创建 Dealpath 测试用户
 
@@ -226,7 +226,7 @@ ms.lasthandoff: 12/15/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

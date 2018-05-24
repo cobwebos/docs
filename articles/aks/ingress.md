@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9246fccb1713f69d2c6c655b09f0daf51055596f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b999792876f82de9500dccf9e6263f85e3e3105e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的 HTTPS 入口
 
@@ -38,7 +38,7 @@ helm repo update
 安装 NGINX 入口控制器。 本示例将控制器安装在 `kube-system` 命名空间中，可将其修改为所需的命名空间。
 
 ```
-helm install stable/nginx-ingress --namespace kube-system
+helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
 ```
 
 在安装过程中，将为入口控制器创建一个 Azure 公共 IP 地址。 若要获取公共 IP 地址，请使用 kubectl get service 命令。 将 IP 地址分配到服务可能需要一段时间。
