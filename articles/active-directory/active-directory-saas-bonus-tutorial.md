@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Bonusly 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Bonusly 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Bonusly 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Bonusly 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: b69cf1c42cbc6aedb064378271e2c631b4be39f3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8133ec95bf0cbf6a9ce4ca1ad224d03ac593c940
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>教程：Azure Active Directory 与 Bonusly 集成
 
@@ -28,19 +28,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Bonusly
 - 可以让用户使用其 Azure AD 帐户自动登录到 Bonusly（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Bonusly 的集成，需具备以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Bonusly 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 Bonusly，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Bonusly”，在结果面板中选择“Bonusly”，然后单击“添加”按钮添加该应用程序。
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-bonus-tutorial/tutorial_general_400.png)
 
-6. 在“Bonusly 配置”部分，单击“配置 Bonusly”打开“配置登录”窗口。 从“快速参考”部分中复制 SAML 实体 ID 和 SAML 单一登录服务 URL。
+6. 在“Bonusly 配置”部分，单击“配置 Bonusly”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![Bonusly 配置](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_configure.png) 
 
@@ -141,9 +141,9 @@ ms.lasthandoff: 12/11/2017
 
     c. 在“IdP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
-    d.单击“下一步”。 将从 Azure 门户复制的“指纹”值粘贴到“证书指纹”文本框中。
+    d. 将从 Azure 门户复制的“指纹”值粘贴到“证书指纹”文本框中。
    
-11. 单击“保存” 。
+11. 单击“ **保存**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -174,11 +174,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-a-bonusly-test-user"></a>创建 Bonusly 测试用户
 
@@ -188,7 +188,7 @@ ms.lasthandoff: 12/11/2017
 >可使用其他任何 Bonusly 用户帐户创建工具或 Bonusly 提供的 API 预配 AAD 用户帐户。
 >  
 
-**若要配置用户预配，请执行以下步骤：**
+**若要配置用户设置，请执行以下步骤：**
 
 1. 在 Web 浏览器窗口中，登录到 Bonusly 租户。
 
@@ -218,7 +218,7 @@ ms.lasthandoff: 12/11/2017
  
     c. 在“电子邮件”文本框中，输入用户的电子邮件地址（如 brittasimon@contoso.com）。
 
-    d. 单击“保存” 。
+    d. 单击“ **保存**”。
    
      >[!NOTE]
      >Azure AD 帐户持有者会收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
@@ -263,7 +263,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric 反向代理 | Microsoft 文档"
-description: "使用 Service Fabric 的反向代理从群集内部和外部与微服务通信"
+title: Azure Service Fabric 反向代理 | Microsoft 文档
+description: 使用 Service Fabric 的反向代理从群集内部和外部与微服务通信
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 55b201842503a879725fa77328a72c83fe0bbade
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 21e1e3041d7b1f4dc205355f6c0b8d4fd2e82775
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
 借助 Azure Service Fabric 中内置的反向代理，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
@@ -68,20 +68,20 @@ Service Fabric 中的微服务在群集中的部分节点上运行，可以出�
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http(s)：**可以将反向代理配置为接受 HTTP 或 HTTPS 流量。 对于 HTTPS 转发，在设置反向代理侦听 HTTPS 后，请参阅[使用反向代理连接到安全服务](service-fabric-reverseproxy-configure-secure-communication.md)。
-* **群集的完全限定域名 (FQDN) | 内部 IP：**对于外部客户端，可以配置反向代理，以便可以通过群集域（例如 mycluster.eastus.cloudapp.azure.com）访问反向代理。默认情况下，反向代理在每个节点上运行。 对于内部流量，可在本地主机或任意内部节点 IP（例如 10.0.0.1）上访问反向代理。
+* **http(s)：** 可以将反向代理配置为接受 HTTP 或 HTTPS 流量。 对于 HTTPS 转发，在设置反向代理侦听 HTTPS 后，请参阅[使用反向代理连接到安全服务](service-fabric-reverseproxy-configure-secure-communication.md)。
+* **群集的完全限定域名 (FQDN) | 内部 IP：** 对于外部客户端，可以配置反向代理，以便可以通过群集域（例如 mycluster.eastus.cloudapp.azure.com）访问反向代理。默认情况下，反向代理在每个节点上运行。 对于内部流量，可在本地主机或任意内部节点 IP（例如 10.0.0.1）上访问反向代理。
 * Port：为反向代理指定的端口，例如 19081。
-* **ServiceInstanceName：**在不使用“fabric:/”方案的情况下尝试访问的已部署服务实例的完全限定名称。 例如，若要访问 *fabric:/myapp/myservice/* 服务，可以使用 *myapp/myservice*。
+* **ServiceInstanceName：** 在不使用“fabric:/”方案的情况下尝试访问的已部署服务实例的完全限定名称。 例如，若要访问 *fabric:/myapp/myservice/* 服务，可以使用 *myapp/myservice*。
 
     服务实例名称要区分大小写。 若 URL 中的服务实例名称大小写不同，则会导致请求失败，并显示 404（未找到）。
-* **后缀路径：**要连接到的服务的实际 URL 路径，例如 *myapi/values/add/3*。
-* **PartitionKey：**对于分区服务，这是针对要访问的分区计算出的分区键。 请注意，这*不*是分区 ID GUID。 对于使用单独分区方案的服务，此参数不是必需的。
-* **PartitionKind：**服务分区方案。 该方案可以是“Int64Range”或“Named”。 对于使用单独分区方案的服务，此参数不是必需的。
+* **后缀路径：** 要连接到的服务的实际 URL 路径，例如 *myapi/values/add/3*。
+* **PartitionKey：** 对于分区服务，这是针对要访问的分区计算出的分区键。 请注意，这*不*是分区 ID GUID。 对于使用单独分区方案的服务，此参数不是必需的。
+* **PartitionKind：** 服务分区方案。 该方案可以是“Int64Range”或“Named”。 对于使用单独分区方案的服务，此参数不是必需的。
 * **ListenerName** 服务中的终结点采用以下形式：{"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}}。 当服务公开了多个终结点时，此参数标识应将客户端请求转发到的终结点。 如果服务只有一个侦听器，则可以省略此项。
 * **TargetReplicaSelector** 这指定应当如何选择目标副本或实例。
   * 当目标服务为有状态服务时，TargetReplicaSelector 可以是下列其中一项：“PrimaryReplica”、“RandomSecondaryReplica”或“RandomReplica”。 如果未指定此参数，默认值为“PrimaryReplica”。
   * 当目标服务为无状态服务时，反向代理将选择服务分区的一个随机实例来将实例转发到其中。
-* **Timeout：**此参数指定反向代理针对服务创建的 HTTP 请求（代表客户端请求）的超时。 默认值为 60 秒。 这是一个可选参数。
+* **Timeout：** 此参数指定反向代理针对服务创建的 HTTP 请求（代表客户端请求）的超时。 默认值为 60 秒。 这是一个可选参数。
 
 ### <a name="example-usage"></a>用法示例
 以 *fabric:/MyApp/MyService* 服务为例，该服务可针对以下 URL 打开一个 HTTP 侦听器：

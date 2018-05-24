@@ -17,11 +17,11 @@ ms.date: 08/03/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 72516ce84fc9a4cf2657548be4ef98e75e46d550
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 844c19803f57987f4435d013cd12aa3d1ef8aeb8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
 [Microsoft AppSource](https://appsource.microsoft.com/) 是一个可供业务用户发现、尝试和管理业务线 SaaS 应用程序（独立 SaaS 和现有 Microsoft SaaS 产品的加载项）的目的地。
@@ -43,7 +43,7 @@ ms.lasthandoff: 05/14/2018
 有关多租户的详细信息，请参阅：[如何使用多租户应用程序模式登录任意 Azure Active Directory (AD) 用户](./active-directory-devhowto-multi-tenant-overview.md)。
 
 ### <a name="single-tenant-applications"></a>单租户应用程序
-如果应用程序仅接受来自定义的 Azure Active Directory 实例的用户的登录，这样的应用程序便称为单租户应用程序。 将每个用户作为来宾帐户添加到应用程序注册的 Azure Active Directory 实例后，外部用户（包括来自其他组织的工作或学校帐户，或个人帐户）可以登录到单租户应用程序。 可通过 [Azure AD B2B 协作](../active-directory-b2b-what-is-azure-ad-b2b.md)将用户作为来宾帐户添加到 Azure Active Directory - 此操作可[以编程方式](../active-directory-b2b-code-samples.md)完成。 在将用户作为来宾帐户添加到 Azure Active Directory 时，会向用户发送一封邀请电子邮件，用户必须单击邀请电子邮件中的链接来接受邀请。 不需要发送给邀请组织（也属于合作伙伴组织一员）中另一用户的邀请，便可接受邀请以登录。
+如果应用程序仅接受来自定义的 Azure Active Directory 实例的用户的登录，这样的应用程序便称为单租户应用程序。 将每个用户作为来宾帐户添加到应用程序注册的 Azure Active Directory 实例后，外部用户（包括来自其他组织的工作或学校帐户，或个人帐户）可以登录到单租户应用程序。 可通过 [Azure AD B2B 协作](../b2b/what-is-b2b.md)将用户作为来宾帐户添加到 Azure Active Directory - 此操作可[以编程方式](../b2b/code-samples.md)完成。 在将用户作为来宾帐户添加到 Azure Active Directory 时，会向用户发送一封邀请电子邮件，用户必须单击邀请电子邮件中的链接来接受邀请。 不需要发送给邀请组织（也属于合作伙伴组织一员）中另一用户的邀请，便可接受邀请以登录。
 
 单租户应用程序可启用“与我联系”体验，但若要启用 AppSource 建议的单击/免费试用体验，则请改为在应用程序上启用多租户。
 

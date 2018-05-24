@@ -5,14 +5,14 @@ services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: d539475d376e2c3e38c2cbd38de0a10645fcabe4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 783766c3e12da2c6fd77f919cf0ec44aea7db3b7
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 

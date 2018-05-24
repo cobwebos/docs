@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric 应用程序部署 | Microsoft Docs"
-description: "如何在 Service Fabric 中使用 PowerShell 部署和删除应用程序。"
+title: Azure Service Fabric 应用程序部署 | Microsoft Docs
+description: 如何在 Service Fabric 中使用 PowerShell 部署和删除应用程序。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: cd3c97bc95fb7ccfaa0dbf2d7ca76ae598a4b320
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 0fa7bd1135c099f853b9a3bb66661c0a57a0f7eb
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>部署和删除使用 PowerShell 的应用程序
 > [!div class="op_single_selector"]
@@ -178,7 +178,7 @@ PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -Appl
 当包以前已复制到映像存储区时，注册操作会指定映像存储区中的相对路径。
 
 ```powershell
-PS C:\> Register-ServiceFabricApplicationType -ApplicationPackagePathInImageStore MyApplicationV1
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPathInImageStore MyApplicationV1
 Register application type succeeded
 ```
 
