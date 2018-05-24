@@ -7,13 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: ''
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: xiwu
-ms.openlocfilehash: 46849d551b6996caaf020caec1ab8104d5388c8f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 393af463c4145e1d865c14f2ace7d5123ab12cfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187379"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>通过适用于 Azure SQL 数据库和 SQL Server 的 Spark 连接器，加速实时大数据分析
 
@@ -38,6 +39,10 @@ ms.lasthandoff: 04/19/2018
 1. Spark 主节点连接到 SQL Server 或 Azure SQL 数据库，并从特定的表中或使用特定的 SQL 查询加载数据
 2. Spark 主节点将数据分发到辅助角色节点以进行转换。 
 3. 辅助角色节点连接到 SQL Server 或 Azure SQL 数据库并将数据写入数据库。 用户可选择使用逐行插入或批量插入。
+
+下图演示了此数据流。
+
+   ![体系结构](./media/sql-database-spark-connector/architecture.png)
 
 ### <a name="build-the-spark-to-sql-db-connector"></a>构建 Spark 到 SQL DB 的连接器
 目前，连接器项目使用 maven。 若要构建不带依赖项的连接器，可以运行：
@@ -153,7 +158,7 @@ collection.show()
 #### <a name="setup-requirement"></a>安装程序要求
 如果使用基于访问令牌的身份验证模式，则需要下载 [azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) 及其依赖项，并将他它们包含在 Java 生成路径中。
 
-请参阅[通过 SQL 数据库使用 Azure Active Directory 身份验证进行身份验证](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication)，了解如何获取到 Azure SQL 数据库的访问令牌。
+请参阅[通过 SQL 数据库使用 Azure Active Directory 身份验证进行身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)，了解如何获取到 Azure SQL 数据库的访问令牌。
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -211,5 +216,5 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 -   [示例 Azure Databricks 笔记本](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [示例脚本 (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-此外，还可以查看 [Apache Spark SQL、数据框架和数据集指南](http://spark.apache.org/docs/latest/sql-programming-guide.html)以及 [Azure Databricks 文档](https://docs.microsoft.com/en-us/azure/azure-databricks/)。
+此外，还可以查看 [Apache Spark SQL、数据框架和数据集指南](http://spark.apache.org/docs/latest/sql-programming-guide.html)以及 [Azure Databricks 文档](https://docs.microsoft.com/azure/azure-databricks/)。
 

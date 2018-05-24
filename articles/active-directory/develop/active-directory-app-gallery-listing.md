@@ -1,25 +1,27 @@
 ---
-title: 在 Azure Active Directory 应用程序库中列出你的应用程序 | Microsoft Docs
-description: 如何在 Azure Active Directory 应用库中列出支持单一登录的应用程序
+title: 在 Azure Active Directory 应用程序库中列出应用程序 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 应用库中列出支持单一登录的应用程序
 services: active-directory
 documentationcenter: dev-center-name
-author: bryanla
-manager: mbaldwin
+author: CelesteDG
+manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2018
-ms.author: bryanla
+ms.date: 05/09/2018
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: e02c60d46fe709c8d418ea4743ba383147e9ddac
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34354446"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -49,9 +51,27 @@ Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD
 
 *   **OpenID Connect**：在 Azure AD 中创建多租户应用程序并为应用程序实现 [Azure AD 许可框架](active-directory-integrating-applications.md#overview-of-the-consent-framework)。 将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。 若要将应用程序与 Azure AD 集成，请遵循[开发人员说明](active-directory-authentication-scenarios.md)。
 
+    ![将 OpenID Connect 应用程序列到库中的时间线](./media/active-directory-app-gallery-listing/openid.png)
+
+    * 如果想要使用 OpenID Connect 将你的应用程序添加到库中的列表，请如上所述选择“OpenID Connect & OAuth 2.0”。
+
+    * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
+
 *   **SAML 2.0** 或 **WS-Fed**：应用程序需要能够以 SP 或 IDP 模式执行 SAML/WS-Fed SSO 集成。 如果你的应用支持 SAML 2.0，则可以根据[用来添加自定义应用程序的说明](../active-directory-saas-custom-apps.md)将其直接与 Azure AD 租户集成。
 
-*   **密码 SSO**：创建具有 HTML 登录页面的 Web 应用程序来配置[基于密码的单一登录](../active-directory-appssoaccess-whatis.md)。 基于密码的 SSO 也称为密码保管，可用于管理不支持标识联合的 Web 应用程序中的用户访问权限和密码。 如果有多个用户需要共享单个帐户（例如共享组织的社交媒体应用帐户），此功能也很有用。
+    ![将 SAML 2.0 或 WS-Fed 应用程序列到库中的时间线](./media/active-directory-app-gallery-listing/saml.png)
+
+    * 如果想要使用 SAML 2.0 或 WS-Fed 将你的应用程序添加到库中的列表，请如上所述选择“SAMl 2.0/WS-Fed”。
+
+    * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
+
+*   **密码 SSO**：创建具有 HTML 登录页面的 Web 应用程序来配置[基于密码的单一登录](../manage-apps/what-is-single-sign-on.md)。 基于密码的 SSO 也称为密码保管，可用于管理不支持标识联合的 Web 应用程序中的用户访问权限和密码。 如果有多个用户需要共享单个帐户（例如共享组织的社交媒体应用帐户），此功能也很有用。
+
+    ![将 Password SSO 应用程序列到库中的时间线](./media/active-directory-app-gallery-listing/passwordsso.png)
+
+    * 如果想要使用 Password SSO 将你的应用程序添加到库中的列表，请如上所述选择“Password SSO”。
+
+    * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
 ##  <a name="updateremove-existing-listing"></a>更新/删除现有列表
 
@@ -60,7 +80,7 @@ Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD
 * 从下图中选择合适的选项
 
     ![将 SAML 应用程序列到库中的时间线](./media/active-directory-app-gallery-listing/updateorremove.png)
-
+    
     * 如果要更新现有应用程序，请选择“更新现有应用程序列表”。
 
     * 如果要从 Azure AD 库中删除现有应用程序，请选择“删除现有应用程序列表”
@@ -86,6 +106,10 @@ Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD
 在库中列出 OpenID Connect 应用程序这一过程的时间线是 2-5 个工作日。
 
    ![将 SAML 应用程序列到库中的时间线](./media/active-directory-app-gallery-listing/timeline2.png)
+
+通过用户预配支持在库中列出应用程序这一过程的时间线是 40-45 个工作日。
+
+   ![将 SAML 应用程序列到库中的时间线](./media/active-directory-app-gallery-listing/provisioningtimeline.png)
 
 ## <a name="escalations"></a>升级
 

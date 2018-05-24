@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 6531e6c8c97bfadac898c4aa4943855dcd32bdfe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b7529b0942cd86b0d9e657d8d0f61313aa7f0a66
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140489"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>教程：Azure Active Directory 与 Clever 的集成
 
@@ -110,12 +111,12 @@ ms.lasthandoff: 04/23/2018
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://clever.com/in/<companyname>`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://clever.com/<companyname>`
+    b. 在“标识符”文本框中，键入 URL：`https://clever.com/oauth/saml/metadata.xml`
 
     > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Clever 客户端支持团队](https://clever.com/about/contact/)来获取这些值。
+    > 登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Clever 客户端支持团队](https://clever.com/about/contact/)来获取此值。
 
-4. 在“SAML 签名证书”部分上，单击”复制”按钮，复制**应用联合元数据 URL**并将其粘贴到记事本。
+4. 在“SAML 签名证书”部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本。
     
     ![配置单一登录](./media/active-directory-saas-clever-tutorial/tutorial_metadataurl.png)
 
@@ -129,7 +130,8 @@ ms.lasthandoff: 04/23/2018
     
     | 属性名称  | 属性值 |
     | --------------- | -------------------- |
-    | clever.student.credentials.district\_username  | user.userprincipalname |
+    | clever.teacher.credentials.district_username|user.userprincipalname|
+    | clever.student.credentials.district_username| user.userprincipalname |
     | 名  | user.givenname |
     | Lastname  | user.surname |
 
@@ -157,19 +159,22 @@ ms.lasthandoff: 04/23/2018
 
     ![即时登录](./media/active-directory-saas-clever-tutorial/ic798984.png "Instant Login")
 
+    > [!NOTE]
+    > 在可以测试单一登录之前，你必须联系 [Clever 客户支持团队](https://clever.com/about/contact/)，以在后端启用 Office 365 SSO。
+
 10. 在“即时登录”页上，执行以下步骤：
-      
+    
       ![即时登录](./media/active-directory-saas-clever-tutorial/ic798985.png "Instant Login")
-      
+    
       a. 键入“登录 URL”。
-      
+    
       >[!NOTE]
       >“登录 URL”是一个自定义值。 请联系 [Clever 客户端支持团队](https://clever.com/about/contact/)来获取此值。
-      
+    
       b. 对于“标识系统”，选择“ADFS”。
 
       c. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值。
-      
+    
       d. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户

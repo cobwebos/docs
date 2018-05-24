@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8f0c6e6567e82f885bb5cd0c6b6af797b393969c
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32309600"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -38,7 +39,8 @@ ms.lasthandoff: 04/03/2018
 ## <a name="types-of-sampling"></a>采样类型
 有三种备用采样方法：
 
-* **自适应采样**自动调整从 ASP.NET 应用的 SDK 所发送的遥测量。 从 SDK v 2.0.0-beta3 开始，这是默认的采样方法。 自适应采样目前仅适用于 ASP.NET 服务器端遥测。 
+* **自适应采样**自动调整从 ASP.NET 应用的 SDK 所发送的遥测量。 从 SDK v 2.0.0-beta3 开始，这是默认的采样方法。 自适应采样目前仅适用于 ASP.NET 服务器端遥测。 对于面向完整 Framework 的 Asp.NET Core 应用程序，自 Microsoft.ApplicationInsights.AspNetCore SDK 的版本 1.0.0 开始均支持自适应采样。 对于面向 NetCore 的 Asp.NET Core 应用程序，自 Microsoft.ApplicationInsights.AspNetCore SDK 的 2.2.0-beta1 开始均支持自适应采样。
+
 * 固定速率采样会减少从 ASP.NET 或 Java 服务器和用户浏览器发送的遥测量。 用户设定速率。 客户端和服务器将同步其采样，以便在“搜索”中可以在多个相关页面视图和请求之间导航。
 * **引入采样**在 Azure 门户中正常工作。 它会以设置的采样率丢弃一些来自应用的遥测数据。 它不会减少应用发送的遥测流量，但可帮助保持在每月配额内。 引入采样的大优点是，无需重新部署应用就可设置它，并且它统一适用于所有服务器和客户端。 
 
@@ -335,7 +337,7 @@ ASP.NET 版本 2.0.0 和 Java SDK 版本 2.0.1 及以上版本中 SDK 的固定�
 
 采样算法决定要删除哪些遥测项，以及要保留哪些遥测项（无论它是在 SDK 中还是在 Application Insights 服务中）。 采样决策取决于多个规则，目标是保留所有相互关联的数据点不变，同时在 Application Insights 中保持可操作和可靠而且即使有精简数据集的诊断体验。 例如，如果有失败的请求，应用汇发送其他遥测项（例如此请求记录的异常和跟踪），采样将不会拆分此请求和其他遥测数据。 采样会将它们一起保留或删除。 因此，在 Application Insights 中查看请求详细信息时，始终可以看到请求以及其关联的遥测项。 
 
-对于定义“用户”的应用程序（即，最典型的 Web 应用程序），采样决定取决于用户 id 哈希值，这表示任何特定用户的所有遥测都不保留或删除。 对于未定义应用的的应用程序类型（如 Web 服务），采样决定取决于请求的操作 id。 最后，对于既未设定用户 id 也未设定操作 id 的遥测项（例如异步线程报告的且没有 http 上下文的遥测项），采样仅捕获每个类型的遥测项百分比。 
+采样决定取决于请求的操作 ID，这意味着属于特定操作的所有遥测项不是被保留就是被删除。 对于未设定操作 ID 的遥测项（例如，异步线程报告的且没有 http 上下文的遥测项），采样仅捕获每个类型的遥测项百分比。 对于 .NET SDK 的 2.5.0-beta2 之前版本以及 ASP.NET Core SDK 的 2.2.0-beta3 之前版本，采样决定基于定义“用户”的应用程序用户 ID 的哈希代码（即最典型 web 应用程序）。 对于未定义用户的应用程序类型（如 Web 服务），采样决定取决于请求的操作 ID。
 
 当遥测发回给用户时，Application Insights 服务会以收集时所使用的同一采样百分比来调整指标，以补偿缺失的数据点。 因此，当用户在 Application Insights 中查看遥测数据，会看到统计的正确近似值非常接近于实际值。
 

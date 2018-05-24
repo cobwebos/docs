@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中使用 Team Services 创建 CI/CD 管道 | Microsoft Docs
-description: 了解如何创建 Visual Studio Team Services 管道，用于将 Web 应用部署到 Windows VM 上的 IIS，实现持续集成和持续交付
+title: 教程 - 在 Azure 中使用 Team Services 创建 CI/CD 管道 | Microsoft 文档
+description: 本教程介绍如何创建 Visual Studio Team Services 管道，用于将 Web 应用部署到 Azure 中 Windows VM 上的 IIS，实现持续集成和持续交付。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d017f2453bbd757c16e2df034f5879f24ffe42f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192214"
 ---
-# <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>使用 Visual Studio Team Services 和 IIS 创建持续集成管道
+# <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>教程：使用 Visual Studio Team Services 和 IIS 创建持续集成管道
 要将应用程序开发的生成、测试和部署阶段自动化，可以使用持续集成和部署 (CI/CD) 管道。 本教程介绍如何在 Azure 中使用 Visual Studio Team Services 和 Windows 虚拟机 (VM) 创建一个运行 IIS 的 CI/CD 管道。 学习如何：
 
 > [!div class="checklist"]
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/06/2018
 > * 创建发布定义，用于将新的 Web 部署包发布到 IIS
 > * 测试 CI/CD 管道
 
-本教程需要 Azure PowerShell 模块 3.6 或更高版本。 可以运行 `Get-Module -ListAvailable AzureRM` 来查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 
 ## <a name="create-project-in-team-services"></a>在 Team Services 中创建项目
@@ -94,29 +95,30 @@ ms.lasthandoff: 04/06/2018
 ## <a name="create-virtual-machine"></a>创建虚拟机
 若要提供一个平台来运行 ASP.NET Web 应用，需要一个运行 IIS 的 Windows 虚拟机。 提交提交代码和触发生成时，Team Services 使用代理来与 IIS 实例交互。
 
-使用[此脚本示例](../scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)创建 Windows Server 2016 VM。 该脚本需要花费几分钟来运行和创建 VM。 创建 VM 后，请使用 [Add-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermresourcegroup) 为 Web 流量打开端口 80，如下所示：
+使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 创建 Windows Server 2016 VM。 以下示例在“East US”位置创建一个名为 myVM 的 VM。 此外，还会创建资源组 myResourceGroupVSTS 和受支持的网络资源。 要允许 Web 流量，可向虚拟机打开 TCP 端口 80。 出现提示时，请提供用作 VM 登录凭据的用户名和密码：
 
 ```powershell
-Get-AzureRmNetworkSecurityGroup `
-  -ResourceGroupName $resourceGroup `
-  -Name "myNetworkSecurityGroup" | `
-Add-AzureRmNetworkSecurityRuleConfig `
-  -Name "myNetworkSecurityGroupRuleWeb" `
-  -Protocol "Tcp" `
-  -Direction "Inbound" `
-  -Priority "1001" `
-  -SourceAddressPrefix "*" `
-  -SourcePortRange "*" `
-  -DestinationAddressPrefix "*" `
-  -DestinationPortRange "80" `
-  -Access "Allow" | `
-Set-AzureRmNetworkSecurityGroup
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a virtual machine
+New-AzureRmVM `
+  -ResourceGroupName "myResourceGroupVSTS" `
+  -Name "myVM" `
+  -Location "East US" `
+  -ImageName "Win2016Datacenter" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -SecurityGroupName "myNetworkSecurityGroup" `
+  -PublicIpAddressName "myPublicIp" `
+  -Credential $cred `
+  -OpenPorts 80
 ```
 
 若要连接到 VM，请使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取公共 IP 地址，如下所示：
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup | Select IpAddress
+Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
 ```
 
 与 VM 建立远程桌面会话。

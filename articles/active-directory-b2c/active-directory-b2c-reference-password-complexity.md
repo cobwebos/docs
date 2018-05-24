@@ -11,16 +11,17 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: b89a404d583e9d495b65180e145295e6a106b3ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 78d90dce350282e4e7671104b5ee8ca9756897c6
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200376"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C：配置密码复杂性要求
 
 > [!NOTE]
-> **此功能为预览版。**  联系 [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) 为测试租户启用此功能。  不要对生产租户测试此功能。
+> 此功能目前以公共预览版提供。
 
 Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建帐户时提供的密码复杂性要求。  默认情况下，Azure AD B2C 使用 `Strong` 密码。  此外，Azure AD B2C 还支持用于控制客户可以使用的密码复杂性的配置选项。
 

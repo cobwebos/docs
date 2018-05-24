@@ -1,8 +1,8 @@
 ---
-title: "使用 Application Insights Profiler 探查 Azure 上的实时 Web 应用 | Microsoft Docs"
-description: "使用一个精简的探查器识别 Web 服务器代码中的热路径。"
+title: 使用 Application Insights Profiler 探查 Azure 上的实时 Web 应用 | Microsoft Docs
+description: 使用一个精简的探查器识别 Web 服务器代码中的热路径。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c65ef9141898369b8fcadd4c52972b767aca7cfe
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 34824401ec8d21949c5c5036a11197a09e240bd7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936719"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
 
-Azure Application Insights 的此功能已分别面向 Azure 应用服务的 Web 应用功能和 Azure 计算资源提供正式版和预览版。
+Azure Application Insights 的此功能已分别面向 Azure 应用服务的 Web 应用功能和 Azure 计算资源提供正式版和预览版。有关[在本地使用探查器](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers)的信息。
 
 本文介绍了使用 [Application Insights](app-insights-overview.md) 时在实时 Web 应用程序的每个方法上花费的时间。 Application Insights Profiler 工具显示了由应用处理的实时请求的详细配置文件。 Profiler 突出显示使用时间最多的热路径。 将会根据采样分析响应时间各不相同的请求。 可以通过各种技术尽量降低与应用程序相关联的开销。
 
@@ -63,7 +64,7 @@ ASP.NET Core 应用程序需要安装 Microsoft.ApplicationInsights.AspNetCore N
 
 ## <a name="view-profiler-data"></a>查看探查器数据
 
-确保应用程序可以接收流量。 如果正在进行试验，可以通过 [Application Insights 性能测试](https://docs.microsoft.com/en-us/vsts/load-test/app-service-web-app-performance-test)生成针对 Web 应用的请求。 如果最近启用了 Profiler，则可以运行简短的负载测试大约 15 分钟，这样就会生成探查器跟踪。 如果已启用 Profiler 相当长一段时间，请记住，Profiler 每小时会随机运行两次，每次运行两分钟。 建议运行负载测试一个小时，确保获取探查器跟踪样本。
+确保应用程序可以接收流量。 如果正在进行试验，可以通过 [Application Insights 性能测试](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)生成针对 Web 应用的请求。 如果最近启用了 Profiler，则可以运行简短的负载测试大约 15 分钟，这样就会生成探查器跟踪。 如果已启用 Profiler 相当长一段时间，请记住，Profiler 每小时会随机运行两次，每次运行两分钟。 建议运行负载测试一个小时，确保获取探查器跟踪样本。
 
 应用程序收到一些流量后，请转到“性能”窗格，选择“采取措施”，以查看 Profiler 跟踪，然后选择“Profiler 跟踪”按钮。
 
@@ -311,7 +312,7 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 * Web 应用的 Web 作业功能是独特的。 当它运行 Web 作业时，可以确保进程使用的环境变量和应用设置，与网站将使用的环境变量和应用设置相同。 这意味着，不需要通过命令行将检测密钥传递给 Profiler。 Profiler 会从环境中拾取检测密钥。 但是，如果想要在 Web 应用外部的开发机箱或计算机上运行 Profiler，则需要提供检测密钥。 为此，可以传入参数 `--ikey <instrumentation-key>`。 请注意，此值必须与应用程序正使用的检测密钥匹配。 Profiler 的日志输出会告知你 Profiler 是使用哪个 ikey 启动的，以及在探查时，我们是否通过该检测密钥检测到活动。
 
-* 手动触发的 Web 作业可以通过 Web 挂钩来触发。 可以右键单击仪表板上的 Web 作业，然后查看属性来获取此 URL。 也可以先在表中选择 Web 作业，然后在工具栏中选择“属性”。 此方法会开启无限的可能，例如从 CI/CD 管道（例如 VSTS）或 Microsoft Flow (https://flow.microsoft.com/en-us/) 之类的应用程序触发 Profiler。 从根本上讲，具体选择取决于你想要使 *run.cmd* 文件（也可以是 *run.ps1* 文件）达到多复杂的程度，但不管怎样，你可以很灵活地进行操作。
+* 手动触发的 Web 作业可以通过 Web 挂钩来触发。 可以右键单击仪表板上的 Web 作业，然后查看属性来获取此 URL。 也可以先在表中选择 Web 作业，然后在工具栏中选择“属性”。 此方法会开启无限的可能，例如，从 CI/CD 管道（如 VSTS）或 Microsoft Flow (https://flow.microsoft.com/en-us/) 之类的应用触发 Profiler。 从根本上讲，具体选择取决于你想要使 *run.cmd* 文件（也可以是 *run.ps1* 文件）达到多复杂的程度，但不管怎样，你可以很灵活地进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

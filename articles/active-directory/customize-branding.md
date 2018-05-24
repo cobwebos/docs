@@ -1,25 +1,25 @@
 ---
-title: "自定义 Azure Active Directory 租户的登录页 | Microsoft Docs"
-description: "了解如何在 Azure 登录页中添加公司品牌元素"
+title: 自定义 Azure Active Directory 租户的登录页 | Microsoft Docs
+description: 了解如何在 Azure 登录页中添加公司品牌元素
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 03a6b82f769ed9a36c5d3ff9934de75d1536e1ae
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ac8562b77ba43dbb07e886dfa235586198027796
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33764438"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>快速入门：在 Azure AD 登录页中添加公司品牌元素
 许多公司想要在他们管理的所有网站和服务上应用一致的外观，以免用户感到困惑。 Azure Active Directory (Azure AD) 提供了此功能，允许用户使用自己的公司徽标和自定义的颜色方案来自定义登录页外观。 登录到使用 Azure AD 作为标识提供者的基于 Web 的应用程序（例如 Office 365）时将显示登录页。 用户与此页进行交互以输入其凭据。
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/24/2018
 
 <!--You can customize the following elements on the sign-in page: <attach image>-->
 
-当用户访问特定于租户的 URL（例如 [https://outlook.com/contoso.com](https://outlook.com/contoso.com)）时，公司品牌自定义就会显示在 Azure AD 登录页上。
+当用户访问特定于租户的 URL（如 [*https://outlook.com/contoso.com*](https://outlook.com/contoso.com)）时，公司品牌自定义就会显示在 Azure AD 登录页上。
 
 例如，当用户访问 www.office.com 时，登录页不会显示任何公司品牌自定义项，因为用户尚未输入凭据。 在用户输入其用户 ID 或选择一个用户磁贴后，将会显示公司品牌。
 

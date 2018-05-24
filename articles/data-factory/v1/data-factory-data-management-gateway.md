@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 07d720db85a152f08cfeb278b91cce3b10d73800
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c1db81594f44f805cf50523b449af62d76099a08
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771042"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -276,30 +277,30 @@ ms.lasthandoff: 04/19/2018
 
 [适用于单节点网关]
 1. 在网关计算机上启动 Windows PowerShell。
-2. 切换到 C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript 文件夹。
+2. 切换到 C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。   
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off
     ```
 4. 若要重新打开，请执行以下操作：
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on  
+    .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
 [对于多节点高度可用且可伸缩的网关（预览）](data-factory-data-management-gateway-high-availability-scalability.md)
 1. 在网关计算机上启动 Windows PowerShell。
-2. 切换到 C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript 文件夹。
+2. 切换到 C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。   
 
     对于具有高可用性功能（预览）的网关，需要额外的 AuthKey 参数。
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```
 4. 若要重新打开，请执行以下操作：
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
     ```
 
 ## <a name="configuration-manager"></a>配置管理器

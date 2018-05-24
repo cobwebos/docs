@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 72d2eb9e6cf235a90c5b1cf1c125fb6719c65317
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fe68797090926f2e0e0e2fbb66ba2bb7f6d940e7
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770955"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure 数据工厂从 Cassandra 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +29,7 @@ ms.lasthandoff: 03/23/2018
 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Cassandra 连接器](v1/data-factory-onprem-cassandra-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Cassandra 连接器](v1/data-factory-onprem-cassandra-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -91,7 +92,7 @@ Cassandra 链接的服务支持以下属性：
 
 有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 Cassandra 数据集支持的属性列表。
 
-要从 Cassandra 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+要从 Cassandra 复制数据，请将数据集的 type 属性设置为“CassandraTable”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

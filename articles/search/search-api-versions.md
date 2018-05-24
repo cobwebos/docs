@@ -7,13 +7,14 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: dfa3e1996ecbd3d78fef9f85facb7da1c209fafa
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7754242aa79a2ba7931a6d80a7a12a0858c6f260
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33776390"
 ---
 # <a name="api-versions-in-azure-search"></a>Azure 搜索中的 API 版本
 Azure 搜索会定期发布功能更新。 有时，但并非总是，这些更新需要发布 API 的新版本，以保持向后兼容性。 发布新版本使你可以控制何时以及如何在代码中集成搜索服务更新。
@@ -30,16 +31,17 @@ Azure 搜索会定期发布功能更新。 有时，但并非总是，这些更�
 
 | 接口 | 最新的主要版本 | 状态 |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |3.0 |正式版，2016 年 11 月发布 |
+| [.NET SDK](https://aka.ms/search-sdk) |5.0 |正式版，2018 年 4 月发布 |
 | [.NET SDK 预览版](https://aka.ms/search-sdk-preview) |4.0.1 - 预览版 |预览版，2017 年 5 月发布 |
 | [服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) |2016-09-01 |正式版 |
-| [服务 REST API 预览版](search-api-2016-09-01-preview.md) |2016-09-01-预览版 |预览 |
+| [服务 REST API 2016-09-01-预览版](search-api-2016-09-01-preview.md) |2016-09-01-预览版 |预览 |
+| [服务 REST API 2017-11-11-预览版](search-api-2017-11-11-preview.md) |2017-11-11-预览版 |预览 |
 | [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |2.0 |正式版 |
 | [管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |正式版 |
 
 对于 REST API，每次调用都必须包括 `api-version`。 这使适配特定版本（如预览版 API）变得非常容易。 以下示例演示了如何指定 `api-version` 参数：
 
-    GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2016-09-01
+    GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2017-11-11
 
 > [!NOTE]
 > 尽管每个请求都带有 `api-version`，我们还是建议对所有 API 请求使用相同版本。 当新的 API 版本引入了以前版本无法识别的属性或操作时，尤其如此。 混用 API 版本可能产生意想不到的后果，应该避免混用。

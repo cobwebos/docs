@@ -10,11 +10,12 @@ ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4585e563d59d29ba0a026c992d277e5b0607e681
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: de75a7ab907655d84873949460692a921c8d3186
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166091"
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>使用 SQL Server 数据库存储边缘中的数据
 
@@ -95,7 +96,7 @@ x64 处理器体系结构中的 Windows 和 Linux 容器适用于本教程。 SQ
         }
    ```
 
-3. 将 `<docker registry address>` 替换为在已完成本教程[将 Azure Functions 作为 IoT Edge 模块进行部署 - 预览版](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function)中填写的地址
+3. 将 `<docker registry address>` 替换为在已完成教程[将 Azure Functions 作为 IoT Edge 模块进行部署](tutorial-deploy-function.md)中填写的地址。
 
    >[!NOTE]
    >容器注册表地址与从注册表复制的登录服务器相同。 它应采用 `<your container registry name>.azurecr.io` 格式

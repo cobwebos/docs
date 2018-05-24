@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2018
+ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362305"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure 负载均衡器标准版概述
 
@@ -119,7 +120,7 @@ ms.lasthandoff: 04/05/2018
 
 标准负载均衡器已完全载入虚拟网络。  虚拟网络是封闭的专用网络。  标准负载均衡器和标准公共 IP 地址旨在允许从虚拟网络外部访问该虚拟网络，因此，这些资源现在默认处于关闭状态，除非手动打开。 这意味着网络安全组 (NSG) 现在可用于显式允许并将允许的流量添加到允许列表。  可以创建整个虚拟数据中心，并通过 NSG 决定其提供的内容和可用的时间。  如果虚拟机资源的子网或 NIC 上没有 NSG，系统将不允许流量访问此资源。
 
-若要详细了解 NSG 以及如何将其应用于自己的方案，请参阅[网络安全组](../virtual-network/virtual-networks-nsg.md)。
+若要详细了解 NSG 以及如何将其应用于自己的方案，请参阅[网络安全组](../virtual-network/security-overview.md)。
 
 ### <a name="outbound"></a>出站连接
 
@@ -218,11 +219,14 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 ## <a name="limitations"></a>限制
 
-- 负载均衡器后端实例目前不能位于对等互连的虚拟网络中。 所有后端实例必须位于同一区域中。
 - SKU 不可变。 无法更改现有资源的 SKU。
 - 独立的虚拟机资源、可用性集资源或虚拟机规模集资源可以引用一个 SKU，绝不能同时引用两个。
-- 目前不支持 [Azure Monitor 警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
+- 负载均衡器规则不能跨越两个虚拟网络。  前端及其相关的后端实例必须位于相同的虚拟网络中。  
+- 负载均衡器前端不能通过全局虚拟网络对等互连访问。
 - 标准 SKU LB 和 PIP 资源不支持[移动订阅操作](../azure-resource-manager/resource-group-move-resources.md)。
+- 由于 VNet 之前的服务和其他平台服务功能的副作用，如果仅使用内部标准负载均衡器，则可以访问没有 VNet 和其他 Microsoft 平台服务的辅助角色。 请勿依赖此服务，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建[出站连接](load-balancer-outbound-connections.md)。
+- 负载均衡器属于 TCP 或 UDP 产品，用于对这些特定的 IP 协议进行负载均衡和端口转发。  负载均衡规则和入站 NAT 规则支持 TCP 和 UDP，但不支持其他 IP 协议（包括 ICMP）。 负载均衡器不会终止、响应 UDP 或 TCP 流的有效负载，也不与之交互。 它不是一个代理。 必须使用负载均衡或入站 NAT 规则（TCP 或 UDP）中所用的同一协议在带内成功验证与前端的连接，并且必须至少有一个虚拟机为客户端生成了响应，这样才能看到前端发出的响应。  未从前端负载均衡器收到带内响应表明没有任何虚拟机能够做出响应。  在虚拟机都不能做出响应的情况下，无法与负载均衡器前端交互。  这一点也适用于出站连接，其中的[端口伪装 SNAT](load-balancer-outbound-connections.md#snat) 仅支持 TCP 和 UDP；其他任何 IP 协议（包括 ICMP）也会失败。  分配实例级公共 IP 地址即可缓解问题。
+- 公共负载均衡器在将虚拟网络中的专用 IP 地址转换为公共 IP 地址时提供[出站连接](load-balancer-outbound-connections.md)，而内部负载均衡器则与此不同，它不会将出站发起连接转换为内部负载均衡器的前端，因为两者都位于专用的 IP 地址空间中。  这可以避免不需要转换的唯一内部 IP 地址空间内发生 SNAT 耗尽。  负面影响是，如果来自后端池中 VM 的出站流尝试流向该 VM 所在池中内部负载均衡器的前端，并映射回到自身，则这两个流的分支不会匹配，并且该流将会失败。  如果该流未映射回到后端池中的同一 VM（在前端中创建了流的 VM），则该流将会成功。   如果流映射回到自身，则出站流显示为源自 VM 并发往前端，并且相应的入站流显示为源自 VM 并发往自身。 从来宾 OS 的角度看，同一流的入站和出站部分在虚拟机内部不匹配。 TCP 堆栈不会将同一流的这两半看作是同一流的组成部分，因为源和目标不匹配。  当流映射到后端池中的其他任何 VM 时，流的两半将会匹配，而 VM 可以成功响应流。  此方案的症状是间歇性的连接超时。 可通过几种常用解决方法来可靠地实现此方案（从后端池发起流，并将其传送到后端池的相应内部负载均衡器前端），包括在内部负载均衡器的后面插入第三方代理，或[使用 DSR 式规则](load-balancer-multivip-overview.md)。  尽管可以使用公共负载均衡器来缓解问题，但最终的方案很容易导致 [SNAT 耗尽](load-balancer-outbound-connections.md#snat)，除非有精心的管理，否则应避免这种做法。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -234,7 +238,7 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 了解有关[具有 HA 端口负载均衡规则的标准负载均衡器](load-balancer-ha-ports-overview.md)的信息
 - 了解如何使用[具有多个前端的负载均衡器](load-balancer-multivip-overview.md)
 - 了解有关[虚拟网络](../virtual-network/virtual-networks-overview.md)的信息。
-- 详细了解[网络安全组](../virtual-network/virtual-networks-nsg.md)。
+- 详细了解[网络安全组](../virtual-network/security-overview.md)。
 - 了解 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
 - 详细了解[负载均衡器](load-balancer-overview.md)。

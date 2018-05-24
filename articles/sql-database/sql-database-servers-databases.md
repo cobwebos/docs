@@ -9,18 +9,19 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 829cedea9752fe41ad24427339d3f13c2f3e371a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3ffae541020a2672affab774ee6da2a8c707745f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195526"
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>创建并管理 Azure SQL 数据库服务器和数据库
 
 SQL 数据库提供了三种类型的数据库：
 
-- 可以使用定义的一组[用于不同工作负载的计算和存储资源](sql-database-service-tiers.md)，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建单个数据库。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
-- 使用定义的一组[用于不同工作负载的计算和存储资源](sql-database-service-tiers.md)（这些计算和存储资源由池中的所有数据库共享）在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建数据库，作为[数据库池](sql-database-elastic-pool.md)的部分。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
+- 可以使用[一组组合计算和存储资源](sql-database-service-tiers-dtu.md)或[独立的计算和存储资源规模](sql-database-service-tiers-vcore.md)，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建单个数据库。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
+- 使用[一组组合计算和存储资源（基于 DTU）](sql-database-service-tiers-dtu.md)或[由池中所有数据库共享的独立计算和存储资源规模（基于 vCore）](sql-database-service-tiers-vcore.md)，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建数据库，作为[数据库池](sql-database-elastic-pool.md)的一部分。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
 - 使用定义的一组用于服务器实例上所有数据库的计算和存储资源，在 [Azure 资源](../azure-resource-manager/resource-group-overview.md)组中创建 [SQL 服务器的实例](sql-database-managed-instance.md)（托管实例）。 一个托管实例同时包含系统和用户数据库。 使用托管实例可将数据库即时转移到完全托管的 PaaS，而无需重新设计应用程序。 托管实例与本地 SQL Server 编程模型高度兼容，支持大多数 SQL Server 功能，并支持随附的工具和服务。  
 
 Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7.3 版或更高版本，并仅允许加密的 TCP/IP 连接。
@@ -52,7 +53,7 @@ Azure 数据库逻辑服务器：
 - 为数据库访问提供连接终结点 (<serverName>.database.windows.net)
 - 连接到 master 数据库通过 DMV 提供对与包含资源相关的元数据的访问 
 - 提供应用于数据库的管理策略的作用域，即登录名、防火墙、审核、威胁检测等。 
-- 受父订阅中的配额限制（默认情况下，每个订阅二十台服务器，[请单击此处了解订阅限制](../azure-subscription-service-limits.md)）
+- 受父订阅中的配额限制（默认情况下，每个订阅六个服务器，[请单击此处了解订阅限制](../azure-subscription-service-limits.md)）
 - 提供所含资源的数据库配额和 DTU 或 vCore 配额范围（例如，45,000 个 DTU）
 - 是在包含资源上启用的功能的版本控制作用域 
 - 服务器级主体登录名可以管理服务器上的所有数据库
@@ -65,11 +66,11 @@ Azure 数据库逻辑服务器：
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>使用 Azure 门户管理 Azure SQL 服务器、数据库和防火墙
 
-可以提前创建 Azure SQL 数据库的资源组，也可以在创建服务器本身期间创建。 
+可以提前创建 Azure SQL 数据库的资源组，也可以在创建服务器本身期间创建。 转到新 SQL 服务器表单的方法有多种，可以通过新建 SQL 服务器，也可以在新建数据库期间。 
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>创建空白 SQL 服务器（逻辑服务器）
 
-若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库服务器（不含数据库），请转到一个空白 SQL（逻辑）服务器表单。  
+若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库服务器（不含数据库），请转到空白 SQL 服务器（逻辑服务器）表单。  
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>创建空白或示例 SQL 数据库
 
@@ -78,7 +79,7 @@ Azure 数据库逻辑服务器：
   ![创建数据库 - 1](./media/sql-database-get-started-portal/create-database-1.png)
 
 > [!IMPORTANT]
-> 有关如何选择数据库定价层的信息，请参阅[服务层](sql-database-service-tiers.md)。
+> 有关为数据库选择定价层的信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
 
 要创建托管实例，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)
 
@@ -91,7 +92,7 @@ Azure 数据库逻辑服务器：
    ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> 若要配置数据库的性能属性，请参阅[服务层](sql-database-service-tiers.md)。
+> 要配置数据库的性能属性，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
 >
 
 > [!TIP]

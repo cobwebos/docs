@@ -15,11 +15,12 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 8d1b24708380aeed6055912fcf3538f0e5319e2d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 30b3fbd415fac1e11a77b3905cb01e5935a62839
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34350859"
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Azure Active Directory 中企业应用程序管理的新增功能 
 
@@ -34,11 +35,11 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 
 ## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>对 Azure Active Directory 应用程序库做出改进
 
-添加常用的应用程序，无论这些应用程序是来自[应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)的应用程序、正在扩展到云中的自定义应用程序，还是正在开发的新应用程序。  在“企业应用程序”概述边栏选项卡或“所有应用程序”边栏选项卡上单击“添加”，即可开始使用这种新体验。
+添加常用的应用程序，无论这些应用程序是来自[应用程序库](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)的应用程序、正在扩展到云中的自定义应用程序，还是正在开发的新应用程序。  在“企业应用程序”或“所有应用程序”下单击“添加”，即可开始使用这种新体验。
  
   ![添加应用程序](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
-进入库后，首先会看到所有支持用户预配的特色应用程序。  可以浏览各种不同的类别，深入到所关注的应用程序，或者使用搜索体验快速找到想要集成的应用程序。
+进入库后，首先会看到所有支持用户预配的特色应用程序。 可以浏览各种不同的类别，深入到所关注的应用程序，或者使用搜索体验快速找到想要集成的应用程序。
 
   ![应用程序库](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
 
@@ -64,7 +65,7 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 ### <a name="developing-new-applications"></a>开发新应用程序
 
 1. 若要开发新应用程序，可以轻松地从库直接转到应用程序注册表：
-2. 在应用程序库中单击“添加自己的应用程序”，选择“开发现有应用程序”选项，应用程序添加体验的右侧会显示一个快速链接。
+2. 在应用程序库中单击“添加自己的应用程序”选项，选择“开发现有应用程序”，应用程序添加体验的右侧会显示一个快速链接。
 
   ![单击几下鼠标即可添加新开发的应用程序](./media/active-directory-enterprise-apps-whats-new-azure-portal/05.png)
 
@@ -75,7 +76,7 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
   ![管理对企业应用程序下的新应用程序的访问](./media/active-directory-enterprise-apps-whats-new-azure-portal/06.png)
 
 
-## <a name="quick-start-get-going-with-your-new-application-right-away"></a>快速启动：立即开始使用新应用程序 
+## <a name="quickstart-get-going-with-your-new-application-right-away"></a>快速启动：立即开始使用新应用程序 
 
 添加应用程序后（无论是预先集成的应用程序还是自己的应用程序），可以使用我们创建的定制快速启动体验，快速着手新应用程序的体验。 有条不紊地遵循每个选项时，我们将引导完成 UI，并演示如何尽快开始试运行新应用程序。 
  
@@ -87,13 +88,13 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 ## <a name="updated-application-proxy-configuration"></a>更新的应用程序代理配置
 假设你在本地环境中运行了一个添加的新应用程序，并想要将它与 Azure AD 集成。  在新的 Azure AD 门户中，有关新应用程序配置体验的一个很棒的新功能是，通过从应用程序代理配置中拆分应用程序登录模式，可以直接向云公开企业网络中运行的密码 SSO 或联合应用程序，而无需创建多个应用程序实例。
 
-除此之外，现在还可以通过新门户配置添加的用于 Azure AD 应用程序代理的任何新应用程序，包括支持本机 Windows 身份验证体验的应用程序。
+此外，你还可以通过新门户配置添加的用于 Azure AD 应用程序代理的任何新应用程序，包括支持本机 Windows 身份验证体验的应用程序。
 
   ![将应用程序配置为使用 Windows 集成身份验证登录选项](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
  
 
 若要开始使用应用程序代理配置本机 Windows 身份验证应用程序：
-1. 单击“单一登录”导航项，在登录设置边栏选项卡中选择“Windows 集成身份验证”并根据需要配置设置。
+1. 单击“单一登录”导航项，在登录设置下选择“集成 Windows 身份验证”并根据需要配置设置。
 2. 由于支持这些新的身份验证模式，现在还可以从自定义域上传证书，为组织中的安全终结点上运行的应用程序提供支持。  
  
    ![上传用于应用程序代理的证书](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
@@ -102,28 +103,28 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 
 ## <a name="advanced-federated-single-sign-on-configuration"></a>高级联合单一登录配置
 
-针对使用联合应用程序的用户，基于 SAML 的登录配置边栏选项卡中提供了许多新功能。 现在，可以完全自定义、添加、删除和映射在 SAML 令牌中作为声明颁发的现有用户属性。
+针对使用联合应用程序的用户，基于 SAML 的登录配置中提供了许多新功能。 现在，可以完全自定义、添加、删除和映射在 SAML 令牌中作为声明颁发的现有用户属性。
  
   ![自定义传递给联合应用程序的 SAML 令牌用户属性](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
 
 
 启用新的联合 SSO 配置：
-1. 在左侧导航菜单中打开联合应用程序的“单一登录”边栏选项卡，并确保“基于 SAML 的登录”模式处于选中状态。 
+1. 在左侧导航菜单中打开联合应用程序的“单一登录”，并确保“基于 SAML 的登录”模式处于选中状态。 
 2. 然后，启用“用户属性”标题下面的复选框，修改传递给该应用程序的 SAML 令牌中包含的所有属性。
 
-还可以创建、滚动更新和管理用于联合单一登录的证书，以及编辑证书即将过期时收到通知的人员。 在同一个“单一登录”边栏选项卡上的“证书”标题下面可以看到这些新选项。
+还可以创建、滚动更新和管理用于联合单一登录的证书，以及编辑证书即将过期时收到通知的人员。 你将在同一“单一登录”窗格上的“证书”标题下看到这些新选项。
  
   ![创建新证书、自定义过期通知电子邮件和证书签名选项](./media/active-directory-enterprise-apps-whats-new-azure-portal/11.png)
 
-### <a name="relay-state-paramenter"></a>中继状态参数
-最后，我们还扩展了支持的 SAML URL 参数集以包含**中继状态参数**，即，用户在联合应用程序内部完成登录后看到的第一个页面。 如果希望将用户定向到应用程序中的特定位置，使其快速开始使用应用程序，则配置此项设置将十分有用。
+### <a name="relay-state-parameter"></a>中继状态参数
+最后，我们还扩展了支持的 SAML URL 参数集以包含**中继状态参数**，即，用户在联合应用程序内部完成登录后看到的第一个页面。 如果你希望将用户发送到应用程序中的特定位置，以使他们快速进入工作，这是非常有用的配置设置。
 
   ![设置 SAML 中继状态参数](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
  
 **设置中继状态参数**：
 
-1. 启用单一登录配置边栏选项卡上“域和 URL”标题下面的“显示高级 URL 设置”复选框。 
-2. 执行此操作后，会显示一组新的 URL 输入框，用于指定此项设置以及其他 SAML URL 设置。
+1. 启用单一登录配置窗格中“域和 URL”标题下面的“显示高级 URL 设置”复选框。 
+2. 将显示一组新的 URL 输入框，用于设置此参数以及其他 SAML URL 设置。
 
 ## <a name="bring-your-own-password-sso-applications"></a>引入自己的密码 SSO 应用程序
 
@@ -133,7 +134,8 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 
 **启用“引入自己的应用程序”功能**：
 
-1. 为添加到“基于密码的登录”的新自定义应用程序设置单一登录模式后，请输入应用程序显示其登录屏幕时所用的 URL，并单击“保存”。  
+1. 为添加到“基于密码的登录”的新自定义应用程序设置单一登录模式后，请输入应用程序呈现其登录屏幕时所用的 URL，并 
+2. 单击“ **保存**”。  
 2. 执行该操作后，系统会自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。
 
 ## <a name="configure-self-service-application-access"></a>配置自助应用程序访问
@@ -145,7 +147,7 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 **配置和管理自助应用程序访问**：
 
 1. 要开始，可以在应用程序的左侧导航菜单中选择“自助服务”选项，并将“允许用户请求访问此应用程序?”选项设为“是”。 
-2. 这样，便可以配置允许谁批准访问此应用程序，以及要添加哪个自助服务用户组。 此外，如果为密码单一登录配置了应用程序，还会看到另一个选项，用于根据需要允许这些审批人管理分配给应用程序的密码。
+2. 这样，便可以配置允许谁批准访问此应用程序，以及要添加哪个自助服务用户组。 此外，如果为密码单一登录配置了应用程序，则还会看到另一个选项，用于根据需要让这些审批人管理分配给应用程序的密码。
 
 ## <a name="feedback"></a>反馈
 
@@ -153,7 +155,7 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Managing Applications with Azure Active Directory](active-directory-enable-sso-scenario.md)（使用 Azure Active Directory 管理应用程序）。
+有关详细信息，请参阅 [Managing Applications with Azure Active Directory](manage-apps/what-is-application-management.md)（使用 Azure Active Directory 管理应用程序）。
 
 
 

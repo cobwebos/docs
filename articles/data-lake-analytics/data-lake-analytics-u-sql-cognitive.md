@@ -1,8 +1,8 @@
 ---
-title: "在 Azure Data Lake Analytics 中使用 U-SQL 认知功能 | Microsoft 文档"
-description: "了解如何使用 U-SQL 的认知功能智能"
+title: 在 Azure Data Lake Analytics 中使用 U-SQL 认知功能 | Microsoft 文档
+description: 了解如何使用 U-SQL 的认知功能智能
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: ec48a07af0aba78f2e508bad232f34102f0c2073
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: cd06e1ae56efdfdcfcd4fec5b2c17ee843d9e9dd
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311108"
 ---
 # <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>教程：U-SQL 的认知功能入门
 
@@ -37,8 +38,8 @@ U-SQL 的认知功能使开发人员可以在其大数据程序中使用智能�
 
 整个过程很简单：
 
-* 使用 REFERENCE ASSEMBLY 语句为 U-SQL 脚本启用认知功能
-* 借助认知 UDO 在输入行集上使用 PROCESS 以生成输出行集
+* 使用 `REFERENCE ASSEMBLY` 语句为 U-SQL 脚本启用认知功能
+* 借助认知 UDO 在输入行集上使用 `PROCESS` 来生成输出行集
 
 ### <a name="detecting-objects-in-images"></a>在图像中检测对象
 
@@ -84,5 +85,5 @@ OUTPUT @tags_serialized
 
 ## <a name="next-steps"></a>后续步骤
 * [U-SQL/认知示例](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
-* [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
+* [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)

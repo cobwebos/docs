@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 03/22/2018
 ms.author: migreene
-ms.openlocfilehash: 095b0cba8f7d22920203e5e3c4bcd83666188023
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0a39cabeb35450e98cc7d7d64645642959aacde0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194982"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/06/2018
 
 将以下代码片段放入模板的 **Resource** 节。
 DSC 扩展继承默认扩展属性。
-有关详细信息，请参阅 [VirtualMachineExtension 类](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.)。
+有关详细信息，请参阅 [VirtualMachineExtension 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.)。
 
 ```json
 {
@@ -83,7 +84,7 @@ DSC 扩展继承默认扩展属性。
 在“扩展”下，添加 DSC 扩展的详细信息。
 
 DSC 扩展继承默认扩展属性。
-有关详细信息，请参阅 [VirtualMachineScaleSetExtension 类](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)。
+有关详细信息，请参阅 [VirtualMachineScaleSetExtension 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)。
 
 ```json
 "extensionProfile": {
@@ -197,7 +198,7 @@ DSC 扩展继承默认扩展属性。
 
 ## <a name="default-configuration-script"></a>默认配置脚本
 
-有关以下值的详细信息，请参阅[本地配置管理器基本设置](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings)。
+有关以下值的详细信息，请参阅[本地配置管理器基本设置](https://docs.microsoft.com/powershell/dsc/metaconfig#basic-settings)。
 使用 DSC 扩展默认配置脚本只能配置下表中列出的 LCM 属性。
 
 | 属性名称 | Type | 说明 |
@@ -342,7 +343,7 @@ DSC 扩展继承默认扩展属性。
 
 “Privacy.dataCollection 为‘{0}’。
 可能的值只有 ''、'Enable' 和 'Disable'”。
-“WmfVersion 为 ‘{0}’。
+“WmfVersion 为‘{0}’。
 唯一的可能值为 ... 和 'latest'”。
 
 **问题**：不允许使用提供的值。
@@ -370,7 +371,7 @@ DSC 扩展继承默认扩展属性。
 
 ### <a name="duplicate-configurationarguments"></a>重复的 ConfigurationArguments
 
-“在公共和受保护的 configurationArguments 中找到重复的参数‘{0}’”
+“在公共和受保护的 configurationArguments 中发现重复的参数‘{0}’”
 
 **问题**：公共设置中的 *ConfigurationArguments* 和受保护设置中的 *ConfigurationArguments* 包含同名属性。
 

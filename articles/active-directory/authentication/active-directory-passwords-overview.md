@@ -2,24 +2,20 @@
 title: Azure AD 自助服务密码重置概述 | Microsoft Docs
 description: Azure AD 自助服务密码重置对组织有什么用处？
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: e084db41cd199a9609e3edaf8b427a85ab2366b4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 77d26d860462b1a82315bf1385bccf62047e3da3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33866662"
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>面向 IT 专业人员的 Azure AD 自助服务密码重置
 
@@ -32,6 +28,8 @@ ms.lasthandoff: 04/23/2018
    * 向已验证的辅助电子邮件帐户发送电子邮件。
    * 回答其安全问题。
 * **自助帐户解锁**：用户无法使用其密码登录，并且已锁定。用户想要使用其身份验证方法解锁其帐户而无需管理员干预。
+
+> [!VIDEO https://www.youtube.com/embed/hc97Yx5PJiM]
 
 ## <a name="why-choose-azure-ad-sspr"></a>为什么选择 Azure AD SSPR
 
@@ -50,7 +48,7 @@ Azure AD SSPR 在三个层中可用，具体取决于订阅：
 
 * **Azure AD Free**：仅限云的管理员可以重置其自己的密码。
 * **Azure AD Basic** 或任何**付费 Office 365 订阅**：仅限云的用户可以重置其自己的密码。
-* **Azure AD Premium**：任何用户或管理员（包括仅限云、联合或密码同步的用户）都可以重置其自己的密码。 本地密码要求启用密码写回。
+* **Azure AD Premium**：任何用户或管理员（包括仅限云、联合、传递身份验证或密码哈希同步的用户）都可以重置自己的密码。 本地密码要求启用密码写回。
 
 ## <a name="azure-ad-pricing-sla-updates-and-roadmap"></a>Azure AD 定价、SLA、更新和路线图
 

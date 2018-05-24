@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e38b7db2699cd3e4cf76d4a8e8fc558b133dd35b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8271c4c88245e98fd3709c7279904d36ad009682
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770717"
 ---
 # <a name="access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制 
 
@@ -75,13 +76,13 @@ ms.lasthandoff: 04/03/2018
 
 ### <a name="compliant-device"></a>合规的设备
 
-可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从受信任的设备授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是可信任设备的选项。 如果选择了此选项，则条件访问策略会授权访问通过加入到 Azure Active Directory 并由你的 MDM 解决方案标记为兼容的设备所做的尝试。
+可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](active-directory-conditional-access-policy-connected-applications.md#managed-devices)授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是受管理设备的选项。 如果选择了此选项，则条件访问策略会授权访问通过[已注册](device-management-introduction.md) Azure Active Directory 并由你的 MDM 解决方案标记为兼容的设备所做的尝试。
 
 有关详细信息，请参阅[设置 Azure Active Directory 基于设备的条件访问策略](active-directory-conditional-access-policy-connected-applications.md)。
 
-### <a name="domain-joined-device"></a>已加入域的设备
+### <a name="hybrid-azure-ad-joined-device"></a>混合 Azure AD 加入设备
 
-若要配置基于设备的条件访问策略，还可以要求必须为已加入域的设备。 此要求是指已加入本地 Active Directory 的 Windows 台式机、笔记本电脑和企业平板电脑。 如果选择了此选项，则条件访问策略会授权访问通过加入到本地 Active Directory 和 Azure Active Directory 的设备所做的尝试。  
+若要配置基于设备的条件访问策略，还可以要求必须为混合 Azure AD 加入设备。 此要求是指已加入本地 Active Directory 的 Windows 台式机、笔记本电脑和企业平板电脑。 如果选择了此选项，则条件访问策略会授权访问通过加入到本地 Active Directory 和 Azure Active Directory 的设备所做的尝试。  
 
 有关详细信息，请参阅[设置 Azure Active Directory 基于设备的条件访问策略](active-directory-conditional-access-policy-connected-applications.md)。
 

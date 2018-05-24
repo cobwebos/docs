@@ -13,14 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2017
+ms.date: 04/24/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cb715960a516c6b2ca16376c12cb6f796e0b395
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 959a483d293caa45180c946e92ac824fc56db084
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195033"
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>Azure 上的 SAP HANA 操作指南
 本文档提供有关操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -177,7 +178,7 @@ Azure 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有�
 - M128xx VM 限制为 16 个 VHD
 - M64xx VM 限制为 8 个 VHD
 
-在[用于 SAP 部署的 Azure 写入加速器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator)一文中可以找到有关如何启用 Azure 写入加速器的更多详细说明。
+在[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)一文中可以找到有关如何启用 Azure 写入加速器的更多详细说明。
 
 此文中还介绍了 Azure 写入加速器的详细信息和限制。
 

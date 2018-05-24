@@ -9,11 +9,12 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3367ecc48ee8da7aaf657b5278acb19df5a96e75
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d534e138af7a22b32fbf64e2200016091beac62f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194965"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批处理来改善 SQL 数据库应用程序的性能
 对 Azure SQL 数据库执行批处理操作可以大幅改善应用程序的性能和缩放性。 为了帮助你了解优点，本文的第一部分包含一些示例测试结果用于比较对 SQL 数据库发出的顺序请求和分批请求。 本文的余下部分介绍了帮助你在 Azure 应用程序中成功使用批处理的方法、方案和注意事项。
@@ -32,9 +33,9 @@ ms.lasthandoff: 04/06/2018
 本文的第一部分比较了使用 SQL 数据库的 .NET 应用程序可用的各种批处理方法。 最后两个部分介绍批处理准则和方案。
 
 ## <a name="batching-strategies"></a>批处理策略
-### <a name="note-about-timing-results-in-this-topic"></a>有关本主题中计时结果的注意事项
+### <a name="note-about-timing-results-in-this-article"></a>请注意本文中的执行时间结果
 > [!NOTE]
-> 结果并不是基准，而是用于显示**相对性能**。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试会在 V12 以前的版本中测量，不一定对应于在使用新[服务层](sql-database-service-tiers.md)的 V12 数据库中可能会获得的吞吐量。 批处理技术的相对优势应该类似。
+> 结果并不是基准，而是用于显示**相对性能**。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试会在 V12 以前的版本中测量，不一定对应于在使用新 [DTU 服务层](sql-database-service-tiers-dtu.md)或 [vCore 服务层](sql-database-service-tiers-vcore.md)的 V12 数据库中可能获得的吞吐量。 批处理技术的相对优势应该类似。
 > 
 > 
 
@@ -209,7 +210,7 @@ SQL 批量复制是另一种向目标数据库中插入大量数据的方法。 
         }
     }
 
-在某些情况下，批量复制的效果好于表值参数。 请参阅主题[表值参数](https://msdn.microsoft.com/library/bb510489.aspx)中表值参数与 BULK INSERT 操作的对比表。
+在某些情况下，批量复制的效果好于表值参数。 请参阅文章[表值参数](https://msdn.microsoft.com/library/bb510489.aspx)中“表值参数与 BULK INSERT 操作的对比表”。
 
 以下即席测试结果显示具有 **SqlBulkCopy** 的批处理性能（毫秒）。
 
@@ -592,7 +593,7 @@ OrderID 表中的 PurchaseOrderDetail 列必须引用 PurchaseOrder 表的订单
 有关详细信息，请参阅 MERGE 语句的文档和示例。 尽管可以在包含单独 INSERT 和 UPDATE 操作的多步骤存储过程调用中完成同样的工作，但是 MERGE 语句更有效。 数据库代码还可以构造直接使用 MERGE 语句的 Transact-SQL 调用而无需对 INSERT 和 UPDATE 使用两个数据库调用。
 
 ## <a name="recommendation-summary"></a>建议摘要
-以下列表提供了本主题中讨论的批处理建议的摘要：
+以下列表提供了本文中讨论的批处理建议的摘要：
 
 * 使用缓冲和批处理可提高 SQL 数据库应用程序的性能和缩放性。
 * 了解批处理/缓冲和弹性之间的权衡问题。 在角色失败期间，可能遗失一批尚未处理的商务关键数据，这种风险超过批处理带来的性能优点。

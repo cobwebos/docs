@@ -1,45 +1,42 @@
 ---
-title: 使用 Azure 策略以编程方式创建策略和查看符合性数据 | Microsoft Docs
+title: 使用 Azure 策略以编程方式创建策略和查看符合性数据
 description: 本文逐步讲解如何以编程方式创建和管理适用于 Azure 策略的策略。
 services: azure-policy
-keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/28/2018
-ms.topic: article
+ms.date: 05/07/2018
+ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: ''
-ms.openlocfilehash: bd0dbb1b6b44b34fc86b8c73fa586b1b4cf880f3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5405566b5254c553eac584acc1653449b51ddffc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195873"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>以编程方式创建策略和查看符合性数据
 
-本文逐步讲解如何以编程方式创建和管理策略。 此外，还介绍如何查看资源符合性状态和策略。 策略定义对资源强制实施不同的规则和操作。 强制实施可确保资源始终符合企业标准和服务级别协议。
+本文逐步讲解如何以编程方式创建和管理策略。 此外，还介绍如何查看资源符合性状态和策略。 策略定义对资源强制实施不同的规则和效果。 强制实施可确保资源始终符合企业标准和服务级别协议。
 
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保满足以下先决条件：
 
 1. 安装 [ARMClient](https://github.com/projectkudu/ARMClient)（如果尚未安装）。 该工具可将 HTTP 请求发送到基于 Azure 资源管理器的 API。
-2. 将 AzureRM PowerShell 模块更新到最新版本。 有关最新版本的详细信息，请参阅 Azure PowerShell https://github.com/Azure/azure-powershell/releases。
+2. 将 AzureRM PowerShell 模块更新到最新版本。 有关最新版本的详细信息，请参阅 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。
 3. 使用 Azure PowerShell 注册策略见解资源提供程序，以确保订阅可使用资源提供程序。 若要注册资源提供程序，必须具有为资源提供程序执行注册操作的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.PolicyInsights
+  Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
   ```
 
   有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)。
-4. 安装 Azure CLI（如果尚未安装）。 可以通过[在 Windows 上安装 Azure CLI 2.0](/azure/install-azure-cli-windows?view=azure-cli-latest) 获取最新版本。
+4. 安装 Azure CLI（如果尚未安装）。 可以通过[在 Windows 上安装 Azure CLI 2.0](/cli/azure/install-azure-cli-windows) 获取最新版本。
 
 ## <a name="create-and-assign-a-policy-definition"></a>创建并分配策略定义
 
 更清晰地洞察资源的第一步是针对资源创建并分配策略。 下一步是了解如何以编程方式创建和分配策略。 示例策略使用 PowerShell、Azure CLI 和 HTTP 请求来审核向所有公共网络开放的存储帐户。
-
-以下命令创建适用于标准层的策略定义。 标准层有助于实现大规模管理、符合性评估和补救。 有关定价层的详细信息，请参阅 [Azure 策略定价](https://azure.microsoft.com/pricing/details/azure-policy)。
 
 ### <a name="create-and-assign-a-policy-definition-with-powershell"></a>使用 PowerShell 创建并分配策略定义
 
@@ -68,7 +65,7 @@ ms.lasthandoff: 04/28/2018
 2. 运行以下命令，使用 AuditStorageAccounts.json 文件创建策略定义。
 
   ```azurepowershell-interactive
-  New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy AuditStorageAccounts.json
+  New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
   ```
 
   该命令创建名为 _Audit Storage Accounts Open to Public Networks_ 的策略定义。 有关可用的其他参数的详细信息，请参阅 [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition)。
@@ -76,10 +73,8 @@ ms.lasthandoff: 04/28/2018
 
   ```azurepowershell-interactive
   $rg = Get-AzureRmResourceGroup -Name 'ContosoRG'
-
   $Policy = Get-AzureRmPolicyDefinition -Name 'AuditStorageAccounts'
-
-  New-AzureRmPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId –Sku @{Name='A1';Tier='Standard'}
+  New-AzureRmPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
   ```
 
   将 _ContosoRG_ 替换为所需资源组的名称。
@@ -140,10 +135,6 @@ ms.lasthandoff: 04/28/2018
           "parameters": {},
           "policyDefinitionId": "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks",
           "scope": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>"
-      },
-      "sku": {
-          "name": "A1",
-          "tier": "Standard"
       }
   }
   ```
@@ -192,7 +183,7 @@ az policy definition create --name 'audit-storage-accounts-open-to-public-networ
 3. 使用以下命令创建策略分配。 请将 &lt;&gt; 符号中的示例信息替换为自己的值。
 
   ```azurecli-interactive
-  az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>' --sku 'standard'
+  az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
   ```
 
 可以在 PowerShell 中使用以下命令获取策略定义 ID：
@@ -211,38 +202,37 @@ az policy definition show --name 'Audit Storage Accounts with Open Public Networ
 
 ## <a name="identify-non-compliant-resources"></a>识别不合规的资源
 
-在分配中，如果某个资源不遵循策略或计划规则，则该资源不合规。 下表显示对于生成的符合性状态，不同的策略操作是如何与条件评估配合使用的：
+在分配中，如果某个资源不遵循策略或计划规则，则该资源不合规。 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的：
 
-| **资源状态** | **Action** | **策略评估** | **符合性状态** |
+| 资源状态 | 效果 | 策略评估 | 符合性状态 |
 | --- | --- | --- | --- |
 | Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不合规 |
 | Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 符合 |
 | 新建 | Audit、AuditIfNotExist\* | True | 不合规 |
 | 新建 | Audit、AuditIfNotExist\* | False | 符合 |
 
-\* Append、DeployIfNotExist 和 AuditIfNotExist 操作要求 IF 语句为 TRUE。 这些操作还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
+\*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
 
 为了更好地理解如何将资源标记为不合规，让我们使用前面创建的策略分配示例。
 
 例如，假设有一个资源组 ContsoRG，其中包含一些向公共网络公开的存储帐户（以红色突出显示）。
 
-![向公共网络公开的存储帐户](./media/policy-insights/resource-group01.png)
+![向公共网络公开的存储帐户](media/policy-insights/resource-group01.png)
 
 在此示例中，需要慎重考虑安全风险。 创建策略分配后，将会针对 ContosoRG 资源组中的所有存储帐户评估该分配。 系统会审核三个不合规的存储帐户，因而将其状态更改为“不合规”。
 
-![已审核不合规的存储帐户](./media/policy-insights/resource-group03.png)
+![已审核不合规的存储帐户](media/policy-insights/resource-group03.png)
 
 使用以下过程来识别资源组中不符合策略分配的资源。 在该示例中，资源是 ContosoRG 资源组中的存储帐户。
 
 1. 运行以下命令获取策略分配 ID：
 
   ```azurepowershell-interactive
-  $policyAssignment = Get-AzureRmPolicyAssignment | Where-Object {$_.Properties.displayName -eq 'Audit Storage Accounts with Open Public Networks'}
-
+  $policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.displayName -eq 'Audit Storage Accounts with Open Public Networks' }
   $policyAssignment.PolicyAssignmentId
   ```
 
-  有关获取策略分配 ID 的详细信息，请参阅 [Get-AzureRMPolicyAssignment](https://docs.microsoft.com/powershell/module/azurerm.resources/Get-AzureRmPolicyAssignment)。
+  有关获取策略分配 ID 的详细信息，请参阅 [Get-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/Get-AzureRmPolicyAssignment)。
 
 2. 运行以下命令，获取已复制到 JSON 文件中的不合规资源的资源 ID：
 
@@ -302,16 +292,6 @@ armclient POST "/subscriptions/<subscriptionId>/providers/Microsoft.Authorizatio
 ```
 
 与处理策略状态时一样，只能使用 HTTP 请求查看策略事件。 有关查询策略事件的详细信息，请参阅[策略事件](/rest/api/policy-insights/policyevents)参考文章。
-
-## <a name="change-a-policy-assignments-pricing-tier"></a>更改策略分配的定价层
-
-可以使用 *Set-AzureRmPolicyAssignment* PowerShell cmdlet 将现有策略分配的定价层更新为“标准”或“免费”。 例如：
-
-```azurepowershell-interactive
-Set-AzureRmPolicyAssignment -Id '/subscriptions/<subscriptionId/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/<policyAssignmentID>' -Sku @{Name='A1';Tier='Standard'}
-```
-
-有关该 cmdlet 的详细信息，请参阅 [Set-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/Set-AzureRmPolicyAssignment)。
 
 ## <a name="next-steps"></a>后续步骤
 

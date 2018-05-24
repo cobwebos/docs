@@ -1,19 +1,20 @@
 ---
-title: "部署 Azure IoT Edge 模块 | Microsoft Docs"
-description: "了解如何将模块部署到边缘设备"
+title: 部署 Azure IoT Edge 模块 | Microsoft Docs
+description: 了解如何将模块部署到边缘设备
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0fb8c55937c1f4c29c542204673a2f41e3ae29db
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: ffd3a8e6bde7310f6bdbed0e0f87419c73fcd6fc
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166329"
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>了解单设备 IoT Edge 部署或大规模 IoT Edge 部署 - 预览
 
@@ -59,7 +60,7 @@ Azure IoT Edge 提供两种方法来配置在 IoT Edge 设备上运行的模块�
 
 持续评估目标条件，以包括满足要求的任何新设备或者删除在部署生存期内不再满足要求的设备。 如果服务检测到任何目标条件更改，将重新激活部署。 例如，部署 A 具有目标条件 tags.environment = 'prod'。 启动该部署时，共有 10 个生产设备。 这 10 个设备都成功安装了模块。 IoT Edge 代理状态显示为总共 10 个设备，10 个成功响应，0 个失败响应，以及 0 个挂起响应。 现在，又添加 5 个 tags.environment = 'prod' 的设备。 服务检测到更改，当它尝试部署到这 5 个新设备时，IoT Edge 代理状态变为总共 15 个设备，10 个成功响应，0 个失败响应，以及 5 个挂起响应。
 
-使用设备孪生标记或 deviceId 上的任意布尔条件来选择目标设备。 如果想将条件与标记结合使用，则需在设备孪生中与属性相同的级别下添加 "tags":{} 节。 [深入了解设备孪生中的标记](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)
+使用设备孪生标记或 deviceId 上的任意布尔条件来选择目标设备。 如果想将条件与标记结合使用，则需在设备孪生中与属性相同的级别下添加 "tags":{} 节。 [深入了解设备孪生中的标记](../iot-hub/iot-hub-devguide-device-twins.md)
 
 目标条件示例：
 * deviceId ='linuxprod1'

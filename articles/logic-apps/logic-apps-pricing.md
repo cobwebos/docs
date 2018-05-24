@@ -1,24 +1,25 @@
 ---
-title: "定价和计费 - Azure 逻辑应用 | Microsoft Docs"
-description: "了解 Azure 逻辑应用的定价和计费原理"
-author: kevinlam1
-manager: anneta
-editor: 
+title: 定价和计费 - Azure 逻辑应用 | Microsoft Docs
+description: 了解 Azure 逻辑应用的定价和计费原理
 services: logic-apps
-documentationcenter: 
+author: kevinlam1
+manager: cfowler
+editor: ''
+documentationcenter: ''
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 11/11/2017
-ms.author: LADocs; klam
-ms.openlocfilehash: 096fdd5a6604ed8cecc931da2169194b777664d2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 05/11/2018
+ms.author: klam
+ms.openlocfilehash: 3f01ac12bb3987d564f8d9f70706ae6aabd0a0ee
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166278"
 ---
 # <a name="logic-apps-pricing-model"></a>逻辑应用定价模型
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="integration-account-usage"></a>集成帐户使用情况
 
-基于消耗量的使用情况包括一个用于浏览、开发和测试逻辑应用的 [B2B/EDI](logic-apps-enterprise-integration-b2b.md) 和 [XML 处理](logic-apps-enterprise-integration-xml.md)功能，且不额外收费的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 可在每个区域中使用其中一个集成帐户，最多可以存储 10 个协议和 25 个映射。 可以创建并上传无限数目的合作伙伴、架构和证书。
+基于消耗量的使用情况包括一个[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)，可用于免费浏览、开发和测试逻辑应用中的 [B2B/EDI](logic-apps-enterprise-integration-b2b.md) 和 [XML 处理](logic-apps-enterprise-integration-xml.md)功能。 你可以为每个区域配置一个集成帐户，并存储[特定数量的项目](../logic-apps/logic-apps-limits-and-config.md)，如 EDI 贸易合作伙伴和协议、地图、架构、程序集、证书和批处理配置。
 
 逻辑应用还以支持的逻辑应用 SLA 提供基本和标准集成帐户。 如果只想使用消息处理，或要充当与大型企业实体建立贸易合作关系的小型企业合作伙伴，可以使用基本集成帐户。 标准集成帐户支持更复杂的 B2B 关系，并增加了可以管理的实体数。 有关详细信息，请参阅 [Azure 定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 

@@ -1,26 +1,20 @@
 ---
-title: "策略模板示例 | Microsoft Docs"
-description: "用于 Azure 策略的 JSON 示例"
+title: 策略模板示例
+description: 用于 Azure 策略的 JSON 示例
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+author: DCtheGeek
 manager: carmonm
-editor: 
-tags: 
-ms.assetid: 
 ms.service: azure-policy
-ms.devlang: na
-ms.topic: samples
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.topic: sample
 ms.date: 01/17/2018
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 19641f3b1f2781cf23955743bf65172ff84fb544
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 4b9096c1fb0d9ee74849e259a6e0af2486c5d29b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195118"
 ---
 # <a name="templates-for-azure-policy"></a>Azure 策略模板
 
@@ -79,6 +73,9 @@ ms.lasthandoff: 01/29/2018
 | [允许的资源类型](scripts/allowed-res-types.md) | 确保仅部署已批准的资源类型。 指定一个允许的资源类型的数组。  |
 | [允许的存储帐户 SKU](scripts/allowed-stor-acct-skus.md) | 要求存储帐户使用批准的 SKU。 指定一个已批准的 SKU 的数组。 |
 | [应用标记及其默认值](scripts/apply-tag-def-val.md) | 如果未提供标记，追加指定的标记名称和值。 由你指定要应用的标记名称和值。  |
+| [审核 SQL 数据库加密](scripts/sql-database-encryption-audit.md) | 如果 SQL 数据库未启用透明数据加密，则会进行审核。 |
+| [审核 SQL Server 审核设置](scripts/sql-server-audit.md) | 基于是否启用了审核设置审核 SQL Server。 |
+| [强制执行 Data Lake Store 加密](scripts/enforce-datalakestore-encryption.md) | 拒绝任何未启用加密的 Data Lake Store 帐户。 |
 | [强制实施标记和值](scripts/enforce-tag-val.md) | 需要指定的标记名称和值。 指定要强制实施的标记名称和值。  |
 | [不允许的资源类型](scripts/not-allowed-res-type.md) | 禁止部署指定的资源类型。 指定一个阻止使用的资源类型的数组。  |
 | [需要 SQL Server 版本 12.0](scripts/req-sql-12.md) | 要求 SQL 服务器使用版本 12.0。  |

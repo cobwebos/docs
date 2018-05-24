@@ -12,11 +12,12 @@ ms.topic: article
 ms.workload: big-data
 ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: 22774511720173915207da80a6ca33d5dbc83e19
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c6c39fb0810a7ea8b6facec1ca80da25d2253329
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311125"
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Azure Data Lake Analytics 配额限制
 
@@ -24,20 +25,24 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="azure-subscriptions-limits"></a>Azure 订阅限制
 
-**每个订阅的最大 ADLA 帐户数：**5
+每个区域每个订阅的最大 ADLA 帐户数：5
 
-这是可为每个区域的每个订阅创建的最大 ADLA 帐户数。 如果尝试创建第 6 个 ADLA 帐户，将收到错误“已达到订阅名称区域中允许的 Data Lake Analytics 帐户的最大数量 (5)”。 在此情况下，可以选择另一个区域（如果合适）或删除同一区域中任何未使用的 ADLA 帐户，或通过[开具支持票证](#increase-maximum-quota-limits)联系 Azure 支持以请求增加配额。
+如果尝试创建第 6 个 ADLA 帐户，将收到错误“已达到订阅名称区域中允许的 Data Lake Analytics 帐户的最大数量 (5)”。 
+
+如果你想超越此限制，可以尝试以下选项：
+* 选择其他区域（如果适用）
+* 通过[创建支持票证](#increase-maximum-quota-limits)，联系 Azure 客户支持人员，请求增加配额。
 
 ## <a name="adla-account-limits"></a>ADLA 帐户限制
 
-**每个帐户的最大分析单位数 (AU)：**250
+**每个帐户的最大分析单位数 (AU)：** 250
 
 这是可在帐户中同时运行的最大 AU 数。 如果所有作业上正在运行的 AU 总数超出此限制，较新的作业将自动排队。 例如：
 
 * 如果正在以 250 AU 运行一个作业，当提交第二个作业时，该作业会在作业队列中等待，直到第一个作业完成。
 * 如果有五个作业正在运行，每个作业使用 50 AU，提交需要 20 AU 的第六个作业时，该作业会在作业队列中等待，直到有 20 AU 可用。
 
-**每个帐户的最大并发 U-SQL 作业数：**20
+**每个帐户的最大并发 U-SQL 作业数：** 20
 
 这是可在帐户中同时运行的最大作业数。 大于此值时，较新的作业将自动排队。
 

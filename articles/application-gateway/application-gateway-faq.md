@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 37d069b1be86d59d0b1f79c382dc494b067cb934
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32309464"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -53,7 +54,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 **问：该服务已在哪些区域推出？**
 
-应用程序网关已在国际版 Azure 的所有区域推出。 在 [Azure 中国区](https://www.azure.cn/)和 [Azure 政府版](https://azure.microsoft.com/en-us/overview/clouds/government/)中也已推出
+应用程序网关已在国际版 Azure 的所有区域推出。 在 [Azure 中国区](https://www.azure.cn/)和 [Azure 政府版](https://azure.microsoft.com/overview/clouds/government/)中也已推出
 
 **问：应用程序网关是订阅专门的部署，还是在所有客户之间共享？**
 
@@ -178,6 +179,11 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 **问：手动扩展/缩减是否导致停机？**
 
 不会出现停机，实例将跨升级域和容错域分布。
+
+**问：应用程序网关是否支持连接排出？**
+
+是的。 可配置连接排出以更改后端池内的成员，而无需中断操作。 这将允许继续将现有连接发送到其以前的目标，直到该连接被关闭或可配置超时到期。 请注意，连接排出仅等待当前未完成的连接完成。 应用程序网关不了解应用程序会话状态。
+
 
 **问：是否可以在不造成中断的情况下，将实例大小从中型更改为大型？**
 
@@ -329,4 +335,4 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关应用程序网关的详细信息，请访问 [Introduction to Application Gateway](application-gateway-introduction.md)（应用程序网关简介）。
+若要了解有关应用程序网关的详细信息，请访问[什么是 Azure 应用程序网关？](overview.md)

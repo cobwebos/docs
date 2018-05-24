@@ -3,7 +3,7 @@ title: Azure 安全性和符合性蓝图 - 符合 PCI DSS 的付款处理环境
 description: Azure 安全性和符合性蓝图 - 符合 PCI DSS 的付款处理环境
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 2f1e00a8-0dd6-477f-9453-75424d06a1df
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
-ms.author: frasim
-ms.openlocfilehash: 5851d5499c61cf99d7f85d07642a292f3b8c19d2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895477"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure 安全性和符合性蓝图 - 符合 PCI DSS 的付款处理环境
 
@@ -43,7 +44,7 @@ PCI DSS 遵从环境的支付处理提供有关部署适合用于处理敏感支
 - **部署模板**。 在此部署中，[Azure 资源管理器模板](/azure/azure-resource-manager/resource-group-overview#template-deployment)通过在安装期间指定配置参数，将体系结构的组件自动部署到 Microsoft Azure。
 - **自动化部署脚本**。 这些脚本帮助部署端到端解决方案。 脚本包括：
     - 一个模块安装和[全局管理员](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)设置脚本，用于安装所需的 PowerShell 模块，并验证是否已正确配置全局管理员角色。
-    - 一个用于部署端到端解决方案的 PowerShell 安装脚本，通过一个 .zip 文件和一个 .bacpac 文件提供，其中包含预建的演示 Web 应用程序和 [SQL 数据库示例](https://github.com/Microsoft/azure-sql-security-sample)。 内容。 可在[蓝图代码存储库][code-repo]中查看此解决方案的源代码。 
+    - 一个用于部署端到端解决方案的 PowerShell 安装脚本，通过一个 .zip 文件和一个 .bacpac 文件提供，其中包含预建的演示 Web 应用程序和 [SQL 数据库示例](https://github.com/Microsoft/azure-sql-security-sample)。 内容。 可在 [蓝图代码存储库][代码存储库] 中查看此解决方案的源代码。 
 
 ## <a name="architectural-diagram"></a>体系结构图
 
@@ -207,8 +208,8 @@ Azure SQL 数据库实例使用以下数据库安全措施：
 
 - **活动日志：**[活动日志](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。
 - **诊断日志：**[诊断日志](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
-- **防火墙日志：**应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
-- **日志存档：**所有诊断日志已配置为写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 然后，日志会连接到 Azure Log Analytics 进行处理、存储以及在仪表板中显示。 [Log Analytics](https://azure.microsoft.com/services/log-analytics) 是一项服务，可帮助收集和分析云与本地环境中资源生成的数据。
+- **防火墙日志：** 应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
+- **日志存档：** 所有诊断日志已配置为写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 然后，日志会连接到 Azure Log Analytics 进行处理、存储以及在仪表板中显示。 [Log Analytics](https://azure.microsoft.com/services/log-analytics) 是一项服务，可帮助收集和分析云与本地环境中资源生成的数据。
 
 ### <a name="encryption-and-secrets-management"></a>加密和机密管理
 
@@ -299,7 +300,7 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[PCI 蓝图代码存储库][code-repo]中提供了用于部署此解决方案的组件。 基础体系结构的部署需要通过 Microsoft PowerShell v5 执行多个步骤。 若要连接到网站，必须提供自定义域名（例如 contoso.com）。 此域名是在步骤 2 中使用 `-customHostName` 开关指定的。 有关详细信息，请参阅[购买 Azure Web 应用的自定义域名](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)。 成功部署和运行解决方案不需要自定义域名，但如果不使用，则无法连接到网站进行演示。
+[PCI 蓝图代码存储库][代码存储库] 中提供了用于部署此解决方案的组件。 基础体系结构的部署需要通过 Microsoft PowerShell v5 执行多个步骤。 若要连接到网站，必须提供自定义域名（例如 contoso.com）。 此域名是在步骤 2 中使用 `-customHostName` 开关指定的。 有关详细信息，请参阅[购买 Azure Web 应用的自定义域名](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)。 成功部署和运行解决方案不需要自定义域名，但如果不使用，则无法连接到网站进行演示。
 
 脚本将域用户添加到指定的 Azure AD 租户。 我们建议创建一个用于测试的新 Azure AD 租户。
 
@@ -384,11 +385,3 @@ Coalfire systems, Inc.（PCI-DSS 合格安全评审机构）已评审本解决�
 - 本页面上的所有客户名称、事务记录和相关数据均是针对本基础体系结构虚构的信息，仅供演示。 这些信息不存在实际的关联或联系，不应妄加推断。  
 - 本解决方案由 Microsoft 和 Avyan Consulting 联合开发，在 [MIT 授权](https://opensource.org/licenses/MIT)下提供。
 - 本解决方案已由 Microsoft 的 PCI-DSS 审核员 Coalfire 评审。 [PCI 符合性评审](https://aka.ms/pciblueprintcrm32)针对本解决方案以及需要处理的组件提供独立的第三方评审。 
-
-### <a name="document-authors"></a>文档作者
-
-- *Frank Simorjay (Microsoft)*  
-- *Gururaj Pandurangi (Avyan Consulting)*
-
-
-[code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "代码存储库"

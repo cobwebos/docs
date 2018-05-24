@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 168301bbd0e7a59330ee6c87d1821db3fca39f67
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770615"
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件 
 
@@ -38,24 +39,32 @@ ms.lasthandoff: 04/23/2018
 
 ![控制](./media/active-directory-conditional-access-conditions/61.png)
 
-本文概述条件，以及如何在条件访问策略中使用条件。 
 
+不会应用未在条件访问策略中配置的条件。 某些条件对于将条件访问策略应用到环境是[必需的](active-directory-conditional-access-best-practices.md#whats-required-to-make-a-policy-work)。 
+
+本文概述条件，以及如何在条件访问策略中使用条件。 
 
 ## <a name="users-and-groups"></a>用户和组
 
 用户和组条件在条件访问策略中是必需的。 在策略中，可以选择**所有用户**或选择特定的用户和组。
 
-![控制](./media/active-directory-conditional-access-conditions/02.png)
+![控制](./media/active-directory-conditional-access-conditions/111.png)
 
 如果选择：
 
-- **所有用户**，则策略将应用到目录中的所有用户。 这包括来宾用户。
+- 所有用户：策略将应用到目录中的所有用户。 这包括来宾用户。
 
-- **特定的用户和组**，则可将目标指定为特定的用户集。 例如，将某个人力资源应用选作云应用时，可以选择包含人力资源部所有成员的组。 
+- 选择用户和组：你可以设置以下选项：
 
-- 某个组，它可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。
+    - 所有来宾用户 - 可使你将策略面向 B2B 来宾用户。 此条件与将 *userType* 属性设置为“来宾”的所有用户帐户匹配。 如果一旦在 Azure AD 的邀请流中创建帐户后需要应用策略，则可以使用此设置。
 
-还可以从策略中排除特定的用户或组。 如果策略强制实施多重身份验证，则往往会排除服务帐户。 
+    - 目录角色 - 可使你基于用户的角色分配定位策略。 此条件支持目录角色，如“全局管理员”或“密码管理员”。
+
+    - 用户和组 - 可使你定位特定的用户集。 例如，将某个人力资源应用选作云应用时，可以选择包含人力资源部所有成员的组。
+
+某个组，它可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。
+
+此外，你还可以从策略中排除特定的用户或组。 例如，在策略强制实施多重身份验证 (MFA) 的情况下，往往会排除服务帐户。 
 
 若要部署新策略，面向特定的用户集十分有用。 在新策略中，应该只将初始用户集用作目标来验证策略行为。 
 
@@ -104,7 +113,18 @@ ms.lasthandoff: 04/23/2018
 有关所支持设备平台的完整列表，请参阅[设备平台条件](active-directory-conditional-access-technical-reference.md#device-platform-condition)。
 
 
-此条件的一个常见用例是策略将云应用的访问权限限制给[受信任的设备](active-directory-conditional-access-policy-connected-applications.md#trusted-devices)。 有关包含设备平台条件的其他方案，请参阅 [Azure Active Directory 基于应用的条件访问](active-directory-conditional-access-mam.md)。
+此条件的一个常见用例是，策略将云应用的访问权限制为[托管设备](active-directory-conditional-access-policy-connected-applications.md#managed-devices)。 有关包含设备平台条件的其他方案，请参阅 [Azure Active Directory 基于应用的条件访问](active-directory-conditional-access-mam.md)。
+
+
+
+## <a name="device-state"></a>设备状态
+
+设备状态条件允许已加入混合 Azure AD 的设备和标记为符合的设备从条件访问策略中排除。 当策略应仅应用于非托管设备以使会话更安全时，此条件非常有用。 例如，当设备处于非托管状态时，仅强制执行 Microsoft Cloud App Security 会话控制。 
+
+
+![条件](./media/active-directory-conditional-access-conditions/112.png)
+
+如果想要阻止对非托管设备的访问，则应实现[基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)。
 
 
 ## <a name="locations"></a>位置

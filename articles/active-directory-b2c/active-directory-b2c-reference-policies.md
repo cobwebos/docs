@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: ce65b9b532ca6f594334f3eb0194d700aca1c735
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 424186a0acfe17cd7cb96f3ba7f8201e8b2b38ec
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200342"
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C：内置策略
 
@@ -81,6 +82,10 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 ## <a name="create-a-password-reset-policy"></a>创建密码重置策略
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
+
+## <a name="preview-policies"></a>预览策略
+
+因为我们将发布新功能，所以其中的某些功能可能在现有策略中不可用。  在这些策略供常规使用后，我们计划将较早版本替换为具有同一类型的最新版本。  你的现有策略将不会更改，为了利用这些新功能，必须创建新策略。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

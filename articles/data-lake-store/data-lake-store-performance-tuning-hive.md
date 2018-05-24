@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store Hive 性能优化指南 | Microsoft 文档"
-description: "Azure Data Lake Store Hive 性能优化指南"
+title: Azure Data Lake Store Hive 性能优化指南 | Microsoft 文档
+description: Azure Data Lake Store Hive 性能优化指南
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 57bd8758c2ae24922a959c9ce3893aad90dfe7e1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168905"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Hive on HDInsight 和 Azure Data Lake Store 性能优化指南
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 12/08/2017
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Store 帐户访问权限的**Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
-* **在 HDInsight 上运行 Hive**。  要了解如何在 HDInsight 上运行 Hive 作业，请参阅 [在 HDInsight 上使用 Hive] (https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
+* **在 HDInsight 上运行 Hive**。  要了解有关在 HDInsight 上运行 Hive 作业的信息，请参阅 [在 HDInsight 上使用 Hive] (https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
 * **ADLS 性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Store 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>parameters
@@ -88,6 +89,6 @@ ms.lasthandoff: 12/08/2017
 ## <a name="further-information-on-hive-tuning"></a>有关 Hive 优化的详细信息
 
 下面是将帮助优化 Hive 查询的几个博客：
-* [在 Hdinsight 中优化 Hadoop 的 Hive 查询](https://azure.microsoft.com/en-us/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [在 Hdinsight 中优化 Hadoop 的 Hive 查询](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
 * [Hive 查询性能故障排除](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 * [有关优化 Hive on HDInsight 的 Ignite 讨论](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

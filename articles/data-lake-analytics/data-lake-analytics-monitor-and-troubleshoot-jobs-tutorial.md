@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户对 Azure Data Lake Analytics 作业进行故障排除 | Microsoft Docs
+title: 使用 Azure 门户监视 Azure Data Lake Analytics 中的作业 | Microsoft Docs
 description: '了解如何使用 Azure 门户对 Data Lake Analytics 作业进行疑难解答。 '
 services: data-lake-analytics
 documentationcenter: ''
@@ -14,42 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: f6168997c449be5354bd223c516d4f929a1bf894
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 14b1f4ec9dff78e4b5d2480755a4b1f2579ec135
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33884773"
 ---
-# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>使用 Azure 门户对 Azure Data Lake Analytics 作业进行故障排除
-了解如何使用 Azure 门户对 Data Lake Analytics 作业进行故障排除。
-
-在本教程中，将设置缺少源文件问题，并使用 Azure 门户解决该问题。
-
-## <a name="submit-a-data-lake-analytics-job"></a>提交 Data Lake Analytics 作业
-
-提交以下 U-SQL 作业：
-
-```
-@searchlog =
-   EXTRACT UserId          int,
-           Start           DateTime,
-           Region          string,
-           Query           string,
-           Duration        int?,
-           Urls            string,
-           ClickedUrls     string
-   FROM "/Samples/Data/SearchLog.tsv1"
-   USING Extractors.Tsv();
-
-OUTPUT @searchlog   
-   TO "/output/SearchLog-from-adls.csv"
-   USING Outputters.Csv();
-```
-    
-此脚本中定义的源文件是 **/Samples/Data/SearchLog.tsv1**，它应在 **/Samples/Data/SearchLog.tsv** 中。
-
-
-## <a name="troubleshoot-the-job"></a>解决作业问题
+# <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户监视 Azure Data Lake Analytics 中的作业
 
 **查看所有作业**
 
@@ -81,5 +53,4 @@ OUTPUT @searchlog
 ## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [通过使用 Azure PowerShell 实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
-* [通过 Visual Studio 实现 Azure Data Lake Analytics U-SQL 入门](data-lake-analytics-u-sql-get-started.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)

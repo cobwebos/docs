@@ -4,14 +4,15 @@ description: 概述了收集器设备及其配置方法。
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 05/15/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d0dd310a1f6dff389a4d3dd41dc389b7117272fe
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203662"
 ---
 # <a name="collector-appliance"></a>收集器设备
 
@@ -89,7 +90,7 @@ Azure Migrate 收集器是一种轻量设备，可以用来发现本地 vCenter 
 
 Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计算机启动时自动启动。 如果服务未运行，可以通过控制面板启动 Azure Migrate 收集器服务。 收集器服务负责连接到 vCenter Server，收集计算机元数据和性能数据，然后将其发送到服务。
 
-### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5 
+### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5
 
 需安装 VMware PowerCLI powershell 模块，这样收集器才能与 vCenter Server 通信，并查询计算机详细信息及其性能数据。 powershell 模块在进行先决条件检查的过程中自动下载并安装。 自动下载要求将一些 URL 加入允许列表中。如果下载失败，则需通过加入允许列表来提供访问权限，或者手动安装模块。
 
@@ -103,7 +104,7 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 
 收集器应该连接到 vCenter Server 并能够查询虚拟机及其元数据和性能计数器。 此数据可供项目用来对评估进行计算。
 
-1. 若要连接到 vCenter Server，可以使用一个只读帐户来运行发现，该帐户的权限已在下表中给出。 
+1. 若要连接到 vCenter Server，可以使用一个只读帐户来运行发现，该帐户的权限已在下表中给出。
 
     |任务  |所需角色/帐户  |权限  |
     |---------|---------|---------|
@@ -118,13 +119,13 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 > 仅正式支持 vCenter Server 5.5、6.0 和 6.5 版。
 
 > [!IMPORTANT]
-> 建议将统计信息级别设置为最高常用级别 (3)，以便正确收集所有计数器。 如果将 vCenter 设置的级别较低，则可能只完整收集几个计数器，而其他的计数器的收集数为 0。 这样，评估可能会显示不完整的数据。 
+> 建议将统计信息级别设置为最高常用级别 (3)，以便正确收集所有计数器。 如果将 vCenter 设置的级别较低，则可能只完整收集几个计数器，而其他的计数器的收集数为 0。 这样，评估可能会显示不完整的数据。
 
 ### <a name="selecting-the-scope-for-discovery"></a>选择发现的范围
 
 连接到 vCenter 以后，可以选择一个可供发现的范围。 选择一个范围后，即可通过指定的 vCenter 清单路径发现所有虚拟机。
 
-1. 范围可以是数据中心、文件夹，也可以是 ESXi 主机。 
+1. 范围可以是数据中心、文件夹，也可以是 ESXi 主机。
 2. 一次只能选择一个范围。 若要选择更多虚拟机，可以先完成一个发现，然后使用新的范围重启发现过程。
 3. 只能选择虚拟机数不到 1500 的范围。
 
@@ -141,14 +142,15 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 
 ### <a name="what-data-is-collected"></a>收集什么数据？
 
-收集作业发现与所选虚拟机相关的以下静态元数据。 
+收集作业发现与所选虚拟机相关的以下静态元数据。
 
 1. VM 显示名称（在 vCenter 上）
 2. VM 的清单路径（vCenter 中的主机/文件夹）
 3. IP 地址
 4. MAC 地址
+5. 操作系统
 5. 核心数、磁盘数、NIC 数
-6. RAM、磁盘大小
+6. 内存大小、磁盘大小
 7. VM、磁盘和网络的性能计数器，如下表中所列出的那样。
 
 下表列出了所收集的性能计数器，并且还列出了在未收集特定计数器的情况下受影响的评估结果。
@@ -190,7 +192,7 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 2. 若要确保下载的修补程序安全，请打开管理员命令窗口并运行以下命令生成 ZIP 文件的哈希。 生成的哈希应与针对特定版本提到的哈希匹配：
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    
+
     （用法示例 C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256）
 3. 将 zip 文件复制到 Azure Migrate 收集器虚拟机（收集器设备）。
 4. 右键单击 zip 文件并选择“全部提取”。

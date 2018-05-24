@@ -7,40 +7,49 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/22/2017
+ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: b50dda3847431299d7a2ffac84ecd89f3c4a586d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e8a492a0786281bdc1d7c2123a7188c32a124e13
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194118"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>如何使用 .NET 应用程序中的 Azure 搜索
 文本介绍了如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)。 可以使用 .NET SDK，在应用程序中使用 Azure 搜索实现丰富的搜索体验。
 
 ## <a name="whats-in-the-azure-search-sdk"></a>什么是 Azure 搜索 SDK
-该 SDK 包含一个客户端库 `Microsoft.Azure.Search`。 借助它，不仅可以管理索引、数据源和索引器，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。
+SDK 包括一些客户端库。借助它，不仅可以管理索引、数据源、索引器和同义词映射，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。 这些客户端库全部作为 NuGet 包进行分发。
 
-客户端库会定义 `Index`、`Field` 和 `Document` 之类的类，还会定义 `SearchServiceClient` 和 `SearchIndexClient` 类中的 `Indexes.Create` 和 `Documents.Search` 之类的操作。 这些类已组织成以下命名空间：
+主 NuGet 包是 `Microsoft.Azure.Search`，它是一个元包，包括所有作为依赖关系的其他程序包。 如果你刚入门，或者如果你知道应用程序将需要 Azure 搜索的所有功能，请使用此程序包。
+
+SDK 中的其他 NuGet 程序包有：
+ 
+  - `Microsoft.Azure.Search.Data`：如果你使用 Azure 搜索开发 .NET 应用程序，则可使用此程序包，并且只需查询或更新索引中的文档。 如果还需要创建或更新索引、同义词映射或其他服务级资源，请改用 `Microsoft.Azure.Search` 程序包。
+  - `Microsoft.Azure.Search.Service`：如果在 .NET 中开发自动化以管理 Azure 搜索索引、同义词映射、索引器、数据源或其他服务级资源，请使用此程序包。 如果只需要查询或更新索引中的文档，请改用 `Microsoft.Azure.Search.Data` 程序包。 如果需要 Azure 搜索的所有功能，请改用 `Microsoft.Azure.Search` 程序包。
+  - `Microsoft.Azure.Search.Common`：Azure 搜索 .NET 库需要的常见类型。 无需直接在应用程序中使用此程序包，它仅作为依赖使用。
+
+各种客户端库定义 `Index`、`Field` 和 `Document` 等类，以及 `SearchServiceClient` 和 `SearchIndexClient` 类中的 `Indexes.Create` 和 `Documents.Search` 等操作。 这些类已组织成以下命名空间：
 
 * [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Azure 搜索 .NET SDK 的当前版本现已正式发布。 如果想要提供反馈，供我们包含到下一个版本中，请访问我们的[反馈页](https://feedback.azure.com/forums/263029-azure-search/)。
 
-.NET SDK 支持版本 `2016-09-01` 的 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 此版本现在包括对自定义分析器和 Azure Blob 的支持以及 Azure 表索引器支持。 不属于此版本的预览功能（如对 JSON 和 CSV 文件编制索引的支持）处于[预览](search-api-2016-09-01-preview.md)状态，可通过 [.NET SDK 的 4.0.1-preview 版](https://aka.ms/search-sdk-preview)使用。
+.NET SDK 支持版本 `2017-11-11` 的 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 该版本现在包括对同义词的支持，以及对索引器的逐步改进。 不属于此版本的预览功能（如对 JSON 数组和 CSV 文件编制索引的支持）处于[预览](search-api-2016-09-01-preview.md)状态，可通过 [.NET SDK 的 4.0-preview 版](https://aka.ms/search-sdk-preview)使用。
 
 此 SDK 不支持[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)（如创建和缩放搜索服务以及管理 API 密钥）。 如果需要从 .NET 应用程序管理搜索资源，可以使用 [Azure 搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)。
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>升级到最新版本的 SDK
-如果已在使用较旧版本的 Azure 搜索 .NET SDK，并且想要升级到最新的正式发布版本，[文本](search-dotnet-sdk-migration.md)介绍了操作方法。
+如果已在使用较旧版本的 Azure 搜索 .NET SDK，并且想要升级到最新的正式发布版本，[文本](search-dotnet-sdk-migration-version-5.md)介绍了操作方法。
 
 ## <a name="requirements-for-the-sdk"></a>SDK 的要求
 1. Visual Studio 2017。
 2. 自己的 Azure 搜索服务。 要使用 SDK，需要服务的名称以及一个或多个 API 密钥。 [在门户中创建服务](search-create-service-portal.md)将帮助你完成这些步骤。
-3. 在 Visual Studio 中，通过使用“管理 NuGet 程序包”来下载 Azure 搜索 .NET SDK [NuGet 程序包](http://www.nuget.org/packages/Microsoft.Azure.Search)。 只需在 NuGet.org 上搜索程序包名称 `Microsoft.Azure.Search`。
+3. 在 Visual Studio 中，通过使用“管理 NuGet 程序包”来下载 Azure 搜索 .NET SDK [NuGet 程序包](http://www.nuget.org/packages/Microsoft.Azure.Search)。 只需在 NuGet.org 上搜索程序包名称 `Microsoft.Azure.Search`（或者如果你只需要其中一部分功能，则可以搜索上述其中一个其他程序包名称）。
 
-Azure 搜索 .NET SDK 支持面向 .NET Framework 4.6 和 .NET Core 的应用程序。
+Azure 搜索 .NET SDK 支持面向 .NET Framework 4.5.2 及更高版本，以及 .NET Core 的应用程序。
 
 ## <a name="core-scenarios"></a>核心方案
 需要在搜索应用程序中完成几项操作。 在本教程中，我们介绍以下核心方案：
