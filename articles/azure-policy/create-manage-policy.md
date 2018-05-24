@@ -2,18 +2,19 @@
 title: 使用 Azure 策略来创建和管理策略以强制实施组织符合性
 description: 使用 Azure 策略强制执行标准、满足法规遵从性、审核需求、控制成本、维护安全和性能的一致性，并实施企业范围的设计原则。
 services: azure-policy
-keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 2e04e08d22890246e2b68a55d79e82864201ef9d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+manager: carmonm
+ms.openlocfilehash: 1d13c5c0099b8e4c9ed83221edf6a2ee92fc3c8e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194863"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
@@ -42,9 +43,9 @@ ms.lasthandoff: 05/10/2018
 
 4. 在“分配策略”页上，单击省略号并选择订阅（必需）和资源组（可选），然后选择“范围”。 范围用于确定对其强制执行策略分配的资源或资源组。  然后在“范围”页的底部单击“选择”。
 
-   本示例使用“Contoso 订阅”。 你的订阅将有所不同。
+   此示例使用 **Contoso 订阅**。 你的订阅将有所不同。
 
-5. 若要排除一个或多个资源组（如果只是以某个订阅作为范围）或者某个资源组中的特定资源（使用任一范围），可以配置策略分配中的“排除项”。 暂时请将此字段留空。
+5. 若要排除一个或多个资源组（如果只是以某个订阅作为范围）或者某个资源组中的特定资源（使用任一范围），可以配置策略分配中的“排除项”。 暂时将此字段留空。
 
 6. 选择“策略定义”旁边的省略号打开可用定义的列表。 可以使用“内置”来筛选策略定义的**类型**，以查看所有相关策略定义及其说明。
 

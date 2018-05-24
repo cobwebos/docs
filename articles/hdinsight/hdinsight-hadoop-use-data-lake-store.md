@@ -1,9 +1,9 @@
 ---
-title: "在 Azure HDInsight 中配合使用 Data Lake Store 和 Hadoop | Microsoft Docs"
-description: "了解如何从 Azure Data Lake Store 查询数据并存储分析结果。"
-keywords: "Blob 存储, hdfs, 结构化数据, 非结构化数据, Data Lake Store"
+title: 在 Azure HDInsight 中配合使用 Data Lake Store 和 Hadoop | Microsoft Docs
+description: 了解如何从 Azure Data Lake Store 查询数据并存储分析结果。
+keywords: Blob 存储, hdfs, 结构化数据, 非结构化数据, Data Lake Store
 services: hdinsight,storage
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -14,13 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/20/2017
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: e14de80dc1fdf82c57f2a38d4ae2719ec83e01ed
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 0d0fb9bad8c6120100ae3ee766aea7620dd6105f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34201751"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>配合使用 Data Lake Store 和 HDInsight 群集
 

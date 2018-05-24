@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358653"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>使用 Visual Studio Code 扩展创建 Azure 资源管理器模板
 本文介绍在 Visual Studio Code 中安装和使用 Azure 资源管理器工具扩展有哪些好处。 可以在 VS Code 中创建不带扩展的资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 它会为用户建议可以在模板中使用的模板函数、参数和变量。

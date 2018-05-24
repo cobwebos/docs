@@ -15,17 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 65eb24cf5f995570b7b1752fc850b596209ea59a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 68ed75a9ef2faee408e65c0991182b7d95bb17a8
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303498"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>连接工厂解决方案加速器演练
 
 连接工厂[解决方案加速器][lnk-preconfigured-solutions]是端到端工业解决方案的实现，它具有以下功能：
 
-* 同时连接到在模拟工厂生产线中运行 OPC UA 服务器的模拟工业设备以及真实的 OPC UA 服务器设备。 有关 OPC UA 的详细信息，请参阅[连接工厂常见问题解答](iot-suite-faq-cf.md)。
+* 同时连接到在模拟工厂生产线中运行 OPC UA 服务器的模拟工业设备以及真实的 OPC UA 服务器设备。 有关 OPC UA 的详细信息，请参阅[连接的工厂常见问题解答](iot-suite-faq-cf.md)。
 * 显示那些设备和生产线的运行 KPI 和 OEE。
 * 演示如何使用基于云的应用程序来与 OPC UA 服务器系统进行交互。
 * 允许连接自己的 OPC UA 服务器设备。
@@ -237,7 +238,7 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]: iot-suite-what-are-solution-accelerators.md
+[lnk-preconfigured-solutions]:../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
 [lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
