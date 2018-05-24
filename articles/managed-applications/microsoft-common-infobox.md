@@ -1,23 +1,23 @@
 ---
 title: Azure TextBox UI 元素 | Microsoft Docs
 description: 介绍了 Azure 门户的 Microsoft.Common.TextBlock UI 元素。
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2d0e64364ae7f14a7bfc7772d31f6c2ba1104c51
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9507280bf5df1e63c81f0b2488b9676784c69812
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI 元素
 可添加信息框的控件。

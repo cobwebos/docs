@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 18549a8606285238f26d2c8cec54793e26e3e8d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d53305aae3b12c0de983dced85a9626cf98c6309
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>设置 Linux RDMA 群集以运行 MPI 应用程序
 了解如何在 Azure 中使用[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)设置 Linux RDMA 群集，以运行并行消息传递接口 (MPI) 应用程序。 本文提供准备 Linux HPC 映像以便在群集上运行 Intel MPI 的步骤。 准备映像后，使用此映像和支持 RDMA 的 Azure VM 大小（当前为 H16r、H16mr、A8 或 A9）之一来部署 VM 群集。 可以使用该群集来运行通过基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络有效进行通信的 MPI 应用程序。
@@ -210,7 +210,7 @@ done
 
 [GitHub](https://github.com/tanewill/utils/blob/master/user_authentication.sh) 中提供了社区所贡献的示例脚本，以便在基于 CentOS 的 HPC 群集上启用方便的用户身份验证。 可以使用以下步骤来下载和使用此脚本。 还可以修改此脚本，或使用任何其他方法在群集计算节点之间建立无密码 SSH 身份验证。
 
-    wget https://raw.githubusercontent.com/tanewill/utils/master/ user_authentication.sh
+    wget https://raw.githubusercontent.com/tanewill/utils/master/user_authentication.sh
 
 若要运行此脚本，需要知道子网 IP 地址的前缀。 可以通过在某个群集节点上运行以下命令来获取此前缀。 输出看起来应类似于 10.1.3.5，其中的 10.1.3 部分就是前缀。
 

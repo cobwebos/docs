@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 65185a2d594a4a251cf87ece6f758ab3db223d7d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3cb7fdf309c935c21f4e80c1d1ba529838935acc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上托管 Node.js 应用程序
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/16/2018
 将应用程序命名为“MyGuestApp”，然后按“确定”。
 
 >[!IMPORTANT]
->Node.js 可能会轻松突破针对 Windows 路径的 260 字符限制。 请对项目本身使用短路径，例如 c:\code\svc1。 （可选）可以按照**[这些说明](https://stackoverflow.com/a/41687101/1664231)**在 Windows 10 中启用长文件路径。
+>Node.js 可能会轻松突破针对 Windows 路径的 260 字符限制。 请对项目本身使用短路径，例如 c:\code\svc1。 （可选）可以按照**[这些说明](https://stackoverflow.com/a/41687101/1664231)** 在 Windows 10 中启用长文件路径。
    
 ![Visual Studio 中的新建项目对话框][new-project]
 

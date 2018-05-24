@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 1a832bfdf09fbaa5c0e083b1263393285492795c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2fdbb8730d350023035038d60d17a5ad12c98bc0
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
@@ -135,12 +135,10 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 * [在 HDInsight 中创建 Hadoop 群集][hdinsight-provision-cluster]提供了有关如何使用其他自定义选项创建 HDInsight 群集的说明。
 * [为 HDInsight 开发脚本操作脚本][hdinsight-write-script]
 * [在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]
-* [在 HDInsight 群集上安装并使用 R][hdinsight-install-r]
 * [在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install.md)。
 * [在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install.md)。
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
 [hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
