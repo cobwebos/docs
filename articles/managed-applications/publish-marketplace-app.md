@@ -1,20 +1,21 @@
 ---
 title: Marketplace 中的 Azure 托管应用程序 | Microsoft 文档
 description: 介绍通过 Marketplace 提供的 Azure 托管应用程序。
-services: azure-resource-manager
+services: managed-applications
 author: tfitzmac
 manager: timlt
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 753e13ea0dbfc7fe0c74987e1383f71329b76a63
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 39797bb4fe2b0576cd5696d7111826dcf807ff5c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304525"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace 中的 Azure 托管应用程序
 
@@ -102,7 +103,7 @@ SKU 在 Marketplace 中显示在父级产品/服务下。 它在 Azure 门户中
 
    * 当前版本：输入你上传的程序包的版本。 它应采用格式 `{number}.{number}.{number}{number}`。
    * 选择程序包文件：此程序包中包含压缩为 .zip 包的两个必需文件。 其中一个文件是资源管理器模板，用于定义要为托管应用程序部署的资源。 另一个文件定义[用户界面](create-uidefinition-overview.md)，以便使用者通过门户部署托管应用程序。 在用户界面中，可以指定让使用者能够提供参数值的元素。
-   * **PrincipalId：**此属性是针对客户订阅中的资源被授予了访问权限的用户、用户组或应用程序的 Azure Active Directory (Azure AD) 标识符。 Role Definition 描述权限。
+   * **PrincipalId：** 此属性是针对客户订阅中的资源被授予了访问权限的用户、用户组或应用程序的 Azure Active Directory (Azure AD) 标识符。 Role Definition 描述权限。
    * Role Definition：此属性是 Azure AD 提供的所有基于角色的访问控制 (RBAC) 内置角色的列表。 你可以选择最合适的角色用于代表客户管理资源。
 
 可以添加多个授权。 我们建议你创建 AD 用户组，并在“PrincipalId”中指定其 ID。 以此，可以将更多的用户添加到用户组，而无需更新 SKU。

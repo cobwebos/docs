@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a07e3ed3363ad968156aab2233073406d05b7dba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364601"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>教程：向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 本教程是一个系列中的第三部分。  你将了解如何在 ASP.NET Core 服务（在 Service Fabric 上运行）中启用 HTTPS。 完成后，你会有一个通过已启用 HTTPS 的 ASP.NET Core Web 前端在端口 443 上进行侦听的投票应用程序。 如果不希望根据[生成 .NET Service Fabric 应用程序](service-fabric-tutorial-deploy-app-to-party-cluster.md)中的说明手动创建投票应用程序，可以[下载源代码](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)（适用于已完成的应用程序）。
@@ -49,7 +50,7 @@ ms.lasthandoff: 05/03/2018
 - [安装 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>获取证书或创建自签名开发证书
-需要数字证书。  对于生产应用程序，请使用[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 提供的证书。 出于开发和测试目的，可以创建并使用自签名证书。 Service Fabric SDK 提供的 *CertSetup.ps1* 脚本可创建自签名证书并将其导入 `Cert:\LocalMachine\My` 证书存储。 以管理员身份打开命令提示符并运行以下命令即可创建使用者为“CN=localhost”的证书：
+对于生产应用程序，请使用[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 提供的证书。 出于开发和测试目的，可以创建并使用自签名证书。 Service Fabric SDK 提供的 *CertSetup.ps1* 脚本可创建自签名证书并将其导入 `Cert:\LocalMachine\My` 证书存储。 以管理员身份打开命令提示符并运行以下命令即可创建使用者为“CN=localhost”的证书：
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost

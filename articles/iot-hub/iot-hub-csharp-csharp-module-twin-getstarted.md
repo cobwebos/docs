@@ -15,11 +15,12 @@ ms.workload: na
 ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea22106a41e7e440cb3e76f02814b76a64627279
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f71ac333aeb73df00856dde279b56f94464127b5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361108"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-backup-and-net-device"></a>使用 .NET 备份和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
 
@@ -77,7 +78,7 @@ ms.lasthandoff: 05/03/2018
 
     ```csharp
     private const string ModuleConnectionString = "<Your module connection string>";
-    private static DeviceClient Client = null;
+    private static ModuleClient Client = null;
     static void ConnectionStatusChangeHandler(ConnectionStatus status, ConnectionStatusChangeReason reason)
     {
         Console.WriteLine("Connection Status Changed to {0}; the reason is {1}", status, reason);
@@ -110,7 +111,7 @@ ms.lasthandoff: 05/03/2018
 
         try
         {
-            Client = DeviceClient.CreateFromConnectionString(ModuleConnectionString, transport);
+            Client = ModuleClient.CreateFromConnectionString(ModuleConnectionString, transport);
             Client.SetConnectionStatusChangesHandler(ConnectionStatusChangeHandler);
             Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, null).Wait();
 

@@ -16,11 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f0f577e2ff18645cfa93763f2345ef4230907e09
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6f3c0e93b20bbc570f4715318a49b502549ff295
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257543"
 ---
 # <a name="azure-active-directory-for-developers"></a>针对开发人员的 Azure Active Directory
 
@@ -55,7 +56,6 @@ Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以�
 |[应用程序注册](active-directory-integrating-applications.md)           | 如何在 Azure AD 中注册应用程序。 |
 |[多租户应用程序](active-directory-devhowto-multi-tenant-overview.md)    | 如何登录任何 Microsoft 工作帐户。 |
 |[OAuth 和 OpenID Connect 协议](active-directory-protocols-openid-connect-code.md)| 如何使用 Microsoft 身份验证协议让用户登录并调用 Web API。 |
-|[附加指南](active-directory-developers-guide-index.md#guides)        |  一系列适用于 Azure AD 的指南。 |
 |  |  |
 
 ## <a name="reference-topics"></a>参考主题
@@ -66,7 +66,6 @@ Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以�
 | [身份验证库 (ADAL)](active-directory-authentication-libraries.md)   | Azure AD 提供的库和 SDK 的概述。 |
 | [代码示例](active-directory-code-samples.md)                                  | 所有 Azure AD 代码示例的列表。 |
 | [术语表](active-directory-dev-glossary.md)                                      | 本文档通篇使用的术语和单词定义。 |
-| [其他参考主题](active-directory-developers-guide-index.md#reference)| 一系列适用于 Azure AD 的参考主题。 |
 |  |  |
 
 
