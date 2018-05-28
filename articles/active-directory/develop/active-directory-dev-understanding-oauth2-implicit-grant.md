@@ -29,7 +29,7 @@ OAuth2 隐式授权是 OAuth2 规范中安全疑虑最多的授权方式，因�
 ## <a name="what-is-the-oauth2-implicit-grant"></a>什么是 OAuth2 隐式授权？
 典型的 [OAuth2 授权代码授予](https://tools.ietf.org/html/rfc6749#section-1.3.1)是使用两个单独终结点的授权授予。 授权终结点用于用户交互阶段，此阶段会生成授权代码。 然后，客户端会通过令牌终结点用该代码交换访问令牌，通常还会交换刷新令牌。 Web 应用程序必须向令牌终结点提交自身的应用程序凭据，授权服务器才能对客户端进行身份验证。
 
-[OAuth2 隐式授权](https://tools.ietf.org/html/rfc6749#section-1.3.2)是其他授权的变体。 它可以让客户端直接从授权终结点获取访问令牌（使用 [OpenId Connect](http://openid.net/specs/openid-connect-core-1_0.html) 时，还会获取 id_token），不必联系令牌终结点，也不必验证客户端。 此变体特别针对在 Web 浏览器中运行的基于 JavaScript 的应用程序所设计：在原始 OAuth2 规范中，令牌在 URI 片段中返回。 这样，令牌位便可供客户端中的 JavaScript 代码使用，但可以保证令牌位不包含在朝向服务器的重定向中。 通过浏览器返回令牌即可直接从授权终结点重定向。 另一优点是消除跨越调用的任何要求，在需要通过 JavaScript 应用程序联系令牌终结点的情况下，这些要求是必需的。
+[OAuth2 隐式授权](https://tools.ietf.org/html/rfc6749#section-1.3.2)是其他授权的变体。 它可以让客户端直接从授权终结点获取访问令牌（使用 [OpenId Connect](http://openid.net/specs/openid-connect-core-1_0.html) 时，还会获取 id_token），不必联系令牌终结点，也不必验证客户端。 此变体特别针对在 Web 浏览器中运行的基于 JavaScript 的应用程序所设计：在原始 OAuth2 规范中，令牌在 URI 片段中返回。 这样，令牌位便可供客户端中的 JavaScript 代码使用，但可以保证令牌位不包含在朝向服务器的重定向中。 通过浏览器返回令牌即可直接从授权终结点重定向。 另一优点是消除跨域调用的任何要求，在需要通过 JavaScript 应用程序联系令牌终结点的情况下，这些要求是必需的。
 
 OAuth2 隐式授权的重要特征是，此类流程绝对不会将刷新令牌返回到客户端。 如下一部分所述，这实际上是不必要的，反而会造成安全问题。
 
