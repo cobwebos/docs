@@ -1,30 +1,40 @@
 ---
-title: "在 Azure API 管理中使用 Azure 托管服务标识 | Microsoft Docs"
-description: "了解如何在 API 管理中使用 Azure 托管服务标识"
+title: 在 Azure API 管理中使用 Azure 托管服务标识 | Microsoft Docs
+description: 了解如何在 API 管理中使用 Azure 托管服务标识
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: miaojiang
 manager: anneta
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: 55fac34a5eae169a3a4fd8c64c90c552fdb5df5a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 98aa70935a3efbbe2edb07aade85fa3ea17ce786
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32150424"
 ---
 # <a name="use-azure-managed-service-identity-in-azure-api-management"></a>在 Azure API 管理中使用 Azure 托管服务标识
 
-> [!Note]
-> Azure API 管理的托管服务标识目前提供预览版。
-
 本文说明如何创建 API 管理服务实例的托管服务标识以及如何访问其他资源。 借助 Azure Active Directory (Azure AD) 生成的托管服务标识，API 管理实例可以轻松、安全访问其他受 Azure AD 保护的资源（如 Azure Key Vault）。 此托管服务标识由 Azure 托管，无需设置或转交任何机密。 有关 Azure 托管服务标识的详细信息，请参阅 [Azure 资源的托管服务标识](../active-directory/msi-overview.md)。
 
-## <a name="create-an-api-management-instance-with-an-identity-by-using-a-resource-manager-template"></a>使用资源管理器模板创建具有标识的 API 管理实例
+## <a name="create-a-managed-service-identity-for-an-api-management-instance"></a>为 API 管理实例创建托管服务标识
+
+### <a name="using-the-azure-portal"></a>使用 Azure 门户
+
+若要在门户中设置托管服务标识，需先按常规创建 API 管理实例，然后启用该功能。
+
+1. 按常规在门户中创建 API 管理实例。 在门户中导航到该应用。
+2. 选择“托管服务标识”。
+3. 将“使用 Azure Active Directory 注册”切换至“打开”。 单击“保存”。
+
+![启用 MSI](./media/api-management-msi/enable-msi.png)
+
+### <a name="using-the-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 
 在资源定义中包括以下属性，可以创建具有标识的 API 管理实例： 
 
@@ -34,72 +44,29 @@ ms.lasthandoff: 12/04/2017
 }
 ```
 
-此属性将告知 Azure 为 API 管理实例创建和管理标识。 
+这将告知 Azure 为 API 管理实例创建和管理标识。 
 
 例如，完整的 Azure 资源管理器模板可能如下所示：
 
 ```json
 {
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "0.9.0.0",
-    "parameters": {
-        "serviceName": {
-            "type": "string",
-            "minLength": 1,
-            "metadata": {
-                "description": "The name of the api management service"
-            }
-        },
-        "publisherEmail": {
-            "type": "string",
-            "minLength": 1,
-            "defaultValue": "admin@contoso.com",
-            "metadata": {
-                "description": "The email address of the owner of the service"
-            }
-        },
-        "publisherName": {
-            "type": "string",
-            "minLength": 1,
-            "defaultValue": "Contoso",
-            "metadata": {
-                "description": "The name of the owner of the service"
-            }
-        },
-        "sku": {
-            "type": "string",
-            "allowedValues": [
-                "Developer",
-                "Standard",
-                "Premium"
-            ],
-            "defaultValue": "Developer",
-            "metadata": {
-                "description": "The pricing tier of this API Management service"
-            }
-        },
-        "skuCount": {
-            "type": "int",
-            "defaultValue": 1,
-            "metadata": {
-                "description": "The instance size of this API Management service."
-            }
-        }
+    "contentVersion": "0.9.0.0"
     },
     "resources": [
         {
             "apiVersion": "2017-03-01",
-            "name": "[parameters('serviceName')]",
+            "name": "contoso",
             "type": "Microsoft.ApiManagement/service",
             "location": "[resourceGroup().location]",
             "tags": {},
             "sku": {
-                "name": "[parameters('sku')]",
-                "capacity": "[parameters('skuCount')]"
+                "name": "Developer",
+                "capacity": "1"
             },
             "properties": {
-                "publisherEmail": "[parameters('publisherEmail')]",
-                "publisherName": "[parameters('publisherName')]"
+                "publisherEmail": "admin@contoso.com",
+                "publisherName": "Contoso"
             },
             "identity": { 
                 "type": "systemAssigned" 
@@ -108,16 +75,17 @@ ms.lasthandoff: 12/04/2017
     ]
 }
 ```
+## <a name="use-the-managed-service-identity-to-access-other-resources"></a>使用托管服务标识访问其他资源
 
-## <a name="obtain-a-certificate-from-azure-key-vault"></a>从 Azure Key Vault 中获取证书
+> [!NOTE]
+> 目前，托管服务标识可用于从 Azure Key Vault 为 API 管理自定义域名获取证书。 不久后会支持更多方案。
+> 
+>
 
-以下示例演示如何从 Azure Key Vault 中获取证书。 它包含以下步骤：
 
-1. 创建具有标识的 API 管理实例。
-2. 更新 Azure Key Vault 实例的访问策略，并允许 API 管理实例从中获取机密。
-3. 通过 Key Vault 实例中的证书设置自定义域名来更新 API 管理实例。
+### <a name="obtain-a-certificate-from-azure-key-vault"></a>从 Azure Key Vault 中获取证书
 
-### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>先决条件
 1. 包含 pfx 证书的 Key Vault 必须与 API 管理服务在同一 Azure 订阅和同一资源组中。 这是 Azure 资源管理器模板的要求。 
 2. 机密的内容类型必须是 *application/x-pkcs12*。 可以使用以下脚本上传证书：
 
@@ -137,6 +105,12 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 > [!Important]
 > 如果未提供证书的对象版本，在将证书的较新版本上传到 Key Vault 后，API 管理将自动获取该版本。 
+
+以下示例显示包含以下步骤的 Azure 资源管理器模板：
+
+1. 创建含托管服务标识的 API 管理实例。
+2. 更新 Azure Key Vault 实例的访问策略，并允许 API 管理实例从中获取机密。
+3. 通过 Key Vault 实例中的证书设置自定义域名来更新 API 管理实例。
 
 ```json
 {

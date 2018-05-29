@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 NetSuite 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Netsuite 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 NetSuite 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Netsuite 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 04/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 23e39f20f5b3faa4f6cfba57508d1649e2bbdaa3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ecbadd45f964e4d4d36dcf67cf85cd878f012150
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140251"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>教程：Azure Active Directory 与 NetSuite 集成
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Netsuite
 - 可让用户使用其 Azure AD 帐户自动登录到 Netsuite（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +36,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Netsuite 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Netsuite 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 若要从库中添加 Netsuite，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -183,19 +184,19 @@ ms.lasthandoff: 12/11/2017
 
     c. 单击“新建角色”。
 
-    d. 输入新角色的“名称”，并选中“仅限单一登录”复选框。
+    d. 键入新角色的“名称”。
       
       ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-new-role.png)
 
-    e. 单击“保存” 。
+    e. 单击“ **保存**”。
 
     f. 在顶部菜单中，单击“权限”。 然后单击“设置”。
       
        ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-sso.png)
 
-    g. 选择“设置 SAM 单一登录”，并单击“添加”。
+    g. 选择“设置 SAML 单一登录”，并单击“添加”。
 
-    h. 单击“保存” 。
+    h. 单击“ **保存**”。
 
     i. 在顶部导航菜单中单击“设置”，并单击“设置管理员”。
       
@@ -213,12 +214,8 @@ ms.lasthandoff: 12/11/2017
       
        ![配置单一登录](./media/active-directory-saas-Netsuite-tutorial/ns-add-role.png)
 
-    m. 单击“保存” 。
+    m. 单击“ **保存**”。
     
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
@@ -244,11 +241,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。 
+    d. 单击“创建”。 
 
 ### <a name="creating-a-netsuite-test-user"></a>创建 Netsuite 测试用户
 
@@ -290,12 +287,12 @@ ms.lasthandoff: 12/11/2017
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-要测试单一登录设置，请打开“访问面板”（网址为 [https://myapps.microsoft.com](https://myapps.microsoft.com/)），登录到测试帐户，并单击“Netsuite”。
+若要测试单一登录设置，请打开“访问面板”（网址为 [https://myapps.microsoft.com](https://myapps.microsoft.com/)），登录测试帐户，并单击“Netsuite”。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置用户预配](active-directory-saas-netsuite-provisioning-tutorial.md)
 
 <!--Image references-->

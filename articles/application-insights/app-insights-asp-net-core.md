@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2245fcdaa8b7e85ea37e9af9c939cd188c4d7ed9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32157136"
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 
@@ -193,7 +194,7 @@ Application Insights 的系统开销很低。 通过添加 Application Insights 
 
 Application Insights 产品小组一直在努力使[完整版 .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) 与 .Net Core SDK 的功能尽量接近。 适用于 Application Insights 的 [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) 版本 2.2.0 已经基本填补了两者的功能差距。
 
-了解 [.NET 与 .NET Core](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server) 之间的差异与利弊。
+了解 [.NET 与 .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) 之间的差异与利弊。
 
    | SDK 比较 | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
   |:-- | :-------------: |:------------------------:|:----------------------:|
@@ -203,7 +204,7 @@ Application Insights 产品小组一直在努力使[完整版 .NET Framework SDK
    | **SQL 依赖项调用**     | **+** |**-** | **+**|
    | **性能计数器*** | **+** | **-**| **-**|
 
-在此上下文中，_性能计数器_是指[服务器端性能计数器](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters)，例如处理器、内存和磁盘利用率。
+在此上下文中，_性能计数器_是指[服务器端性能计数器](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters)，例如处理器、内存和磁盘利用率。
 
 ## <a name="open-source-sdk"></a>开源 SDK
 [阅读代码或为其做出贡献](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)

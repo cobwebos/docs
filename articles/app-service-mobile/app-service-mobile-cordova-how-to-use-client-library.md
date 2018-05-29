@@ -1,11 +1,11 @@
 ---
-title: "如何使用适用于 Azure 移动应用的 Apache Cordova 插件"
-description: "如何使用适用于 Azure 移动应用的 Apache Cordova 插件"
+title: 如何使用适用于 Azure 移动应用的 Apache Cordova 插件
+description: 如何使用适用于 Azure 移动应用的 Apache Cordova 插件
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: f166d2e533dc49ca7779b45f3dec57a53c22fc40
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32152580"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -105,7 +106,7 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
              "https://localhost:3000"
          ],
 
-    将 URL 替换为自己服务的 URL。  示例包括 “ http://localhost:3000 ” （适用于 Node.js 示例服务）或 “ http://localhost:4400 ” （适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
+    将 URL 替换为自己服务的 URL。  示例包括“http://localhost:3000”（适用于 Node.js 示例服务）或“http://localhost:4400”（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
 8. 单击屏幕右上角的“读/写”按钮。
 9. 单击绿色的“PUT”按钮。
 
@@ -180,4 +181,4 @@ pushHandler.on('error', function (error) {
 [phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

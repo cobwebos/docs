@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: v-ant
-ms.openlocfilehash: 8d612012505ea43a3635650c6a38fe993b8e57f6
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c7ec58b0da3a918729733809d326e6f2e5916c9d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32139968"
 ---
 # <a name="tutorial-configure-replicon-for-automatic-user-provisioning"></a>教程：为 Replicon 配置自动用户预配
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 03/08/2018
 
 **若要从 Azure AD 应用程序库中添加 Replicon，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -105,7 +106,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分下，输入 Replicon 帐户的“管理员用户名”、“管理员密码”、“CompanyId”和“域”。 这些值的示例如下：
 
-    *   在“管理员用户名”字段中，填入 Replicon 租户的管理员帐户的用户名。 例如：contosoadmin。
+    *   在“管理员用户名”字段中，填入 Replicon 租户上管理员帐户的用户名。 例如：contosoadmin。
 
     *   在“管理员密码”字段中，填入管理员用户名所对应的密码。
 

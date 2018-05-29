@@ -1,19 +1,20 @@
 ---
-title: "监视 Azure DC/OS 群集 - Dynatrace"
-description: "通过 Dynatrace 监视 Azure 容器服务 DC/OS 群集。 使用 DC/OS 仪表板部署 Dynatrace OneAgent。"
+title: 监视 Azure DC/OS 群集 - Dynatrace
+description: 通过 Dynatrace 监视 Azure 容器服务 DC/OS 群集。 使用 DC/OS 仪表板部署 Dynatrace OneAgent。
 services: container-service
 author: MartinGoodwell
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 52a8a05f050017f5062ff986bad7ec2e6a650aa5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 3d1bfc3bb61781d487c40831edd5da6fcb5a7df9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32162035"
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>通过 Dynatrace SaaS/托管监视 Azure 容器服务 DC/OS 群集
 
@@ -27,7 +28,7 @@ Dynatrace 是用于高动态容器和群集环境的云-本机监视解决方案
 ![Dynatrace UI](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
 ## <a name="prerequisites"></a>先决条件 
-[部署](container-service-deployment.md)和[连接](./../container-service-connect.md)由 Azure 容器服务配置的群集。 探究 [Marathon UI](container-service-mesos-marathon-ui.md)。 转到 [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/)，设置 Dynatrace SaaS 帐户。  
+[部署](container-service-deployment.md)和[连接](./../container-service-connect.md)由 Azure 容器服务配置的群集。 探究 [Marathon UI](container-service-mesos-marathon-ui.md)。 转到 [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/) 设置 Dynatrace SaaS 帐户。  
 
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>通过 Marathon 配置 Dynatrace 部署
 这些步骤将演示如何通过 Marathon 将 Dynatrace 应用程序配置和部署到群集中。

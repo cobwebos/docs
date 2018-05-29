@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: efee0842a2fca2afac28f179bba07c3b6682ee57
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e3e59395b7066169b8a7863f45a446051b830a71
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159266"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>PowerShell in Azure Cloud Shell（预览版）快速入门
 
@@ -274,13 +275,13 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>使用自定义配置文件持久保存 GIT 和 SSH 设置
 
-由于会话在注销后不会持久保留，因此请将 `$env:USERPROFILE\.ssh` 目录保存到 `CloudDrive`，或者在启动 Cloud Shell 时创建符号链接。
-在 profile.ps1 中添加以下代码片段以创建 CloudDrive 的符号链接。
+由于会话在注销后不会持久保留，因此请将 `$env:USERPROFILE\.ssh` 目录保存到 `clouddrive`，或者在启动 Cloud Shell 时创建符号链接。
+在 profile.ps1 中添加以下代码片段可创建 `clouddrive` 的符号链接。
 
 ``` PowerShell
 # Check if the .ssh directory exists
-if( -not (Test-Path $home\CloudDrive\.ssh)){
-    mkdir $home\CloudDrive\.ssh
+if( -not (Test-Path $home\clouddrive\.ssh)){
+    mkdir $home\clouddrive\.ssh
 }
 
 # .ssh path relative to this script
@@ -347,21 +348,21 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 ## <a name="use-azure-files-to-store-your-data"></a>使用 Azure 文件存储数据
 
-可以创建一个脚本（例如 `helloworld.ps1`）并将其保存到 `CloudDrive`，以便在不同的 shell 会话中使用该脚本。
+可以创建一个脚本（例如 `helloworld.ps1`）并将其保存到 `clouddrive`，以便在不同的 shell 会话中使用该脚本。
 
 ``` PowerShell
-cd C:\users\ContainerAdministrator\CloudDrive
-PS C:\users\ContainerAdministrator\CloudDrive> vim .\helloworld.ps1
+cd C:\users\ContainerAdministrator\clouddrive
+PS C:\users\ContainerAdministrator\clouddrive> vim .\helloworld.ps1
 # Add the content, such as 'Hello World!'
-PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
+PS C:\users\ContainerAdministrator\clouddrive> .\helloworld.ps1
 Hello World!
 ```
 
-下次使用 Cloud Shell 中的 PowerShell 时，`helloworld.ps1` 文件将出现在装载 Azure 文件共享的 `CloudDrive` 目录下。
+下次使用 Cloud Shell 中的 PowerShell 时，`helloworld.ps1` 文件将出现在装载 Azure 文件共享的 `clouddrive` 目录下。
 
 ## <a name="use-custom-profile"></a>使用自定义配置文件
 
-可以创建 PowerShell 配置文件 `profile.ps1` 或 `Microsoft.PowerShell_profile.ps1` 来自定义 PowerShell 环境。 将配置文件保存在 `CloudDrive` 下，以便启动 Cloud Shell 时可将其载入每个 PowerShell 会话。
+可以创建 PowerShell 配置文件 `profile.ps1` 或 `Microsoft.PowerShell_profile.ps1` 来自定义 PowerShell 环境。 将配置文件保存在 `clouddrive` 下，以便启动 Cloud Shell 时可将其载入每个 PowerShell 会话。
 
 有关如何创建配置文件，请参阅[关于配置文件][profile]。
 
@@ -373,7 +374,7 @@ Hello World!
   git clone https://<your-access-token>@github.com/username/repo.git
 
 ```
-由于注销或会话超时时，Cloud Shell 中的会话不会保留，因此下次登录时 Git 配置文件将不会存在。 若要持久保存 Git 配置，必须将 .gitconfig 保存到 `CloudDrive` 并将其复制，或者在启动 Cloud Shell 时创建符号链接。 在 profile.ps1 中使用以下代码片段可创建 `CloudDrive` 的符号链接。
+由于注销或会话超时时，Cloud Shell 中的会话不会保留，因此下次登录时 Git 配置文件将不会存在。 若要持久保存 Git 配置，必须将 .gitconfig 保存到 `clouddrive` 并将其复制，或者在启动 Cloud Shell 时创建符号链接。 在 profile.ps1 中使用以下代码片段可创建 `clouddrive` 的符号链接。
 
  ``` PowerShell
  

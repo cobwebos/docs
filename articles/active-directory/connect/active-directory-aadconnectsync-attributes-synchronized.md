@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: billmath
-ms.openlocfilehash: d3c1c080c1198fd75916a119d4bb08c8db50a05d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 506206d3e0a28f2ffc0e9e029ec27546bc332754
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32160049"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
 本主题列出通过 Azure AD Connect 同步进行同步的属性。  
@@ -42,7 +43,7 @@ ms.lasthandoff: 03/08/2018
 | cn |X | |
 | displayName |X | |
 | objectSID |X |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
-| pwdLastSet |X |机械属性。 用于了解使已颁发令牌失效的时间。 由密码同步和联合使用。 |
+| pwdLastSet |X |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | sourceAnchor |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
 | usageLocation |X |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
 | userPrincipalName |X |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
@@ -234,7 +235,7 @@ ms.lasthandoff: 03/08/2018
 | postOfficeBox |X |X | |SharePoint Online 当前不使用此属性。 |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码同步和联合使用。 |
+| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
 | securityEnabled | | |X |派生自 groupType |
@@ -289,7 +290,7 @@ ms.lasthandoff: 03/08/2018
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码同步和联合使用。 |
+| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | securityEnabled | | |X |派生自 groupType |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
@@ -331,7 +332,7 @@ ms.lasthandoff: 03/08/2018
 | member | | |X | |
 | objectSID |X | |X |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码同步和联合使用。 |
+| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | securityEnabled | | |X |派生自 groupType |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
 | usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
@@ -359,7 +360,7 @@ ms.lasthandoff: 03/08/2018
 | physicalDeliveryOfficeName |X |X | | |
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
-| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码同步和联合使用。 |
+| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | securityEnabled | | |X |派生自 groupType |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
@@ -390,7 +391,7 @@ ms.lasthandoff: 03/08/2018
 | member | | |X | |
 | objectSID |X | | |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码同步和联合使用。 |
+| pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
 | usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |

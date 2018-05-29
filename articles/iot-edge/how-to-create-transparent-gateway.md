@@ -1,19 +1,20 @@
 ---
-title: "使用 Azure IoT Edge 创建透明网关设备 | Microsoft 文档"
-description: "使用 Azure IoT Edge 创建可为多个设备处理信息的透明网关设备"
+title: 使用 Azure IoT Edge 创建透明网关设备 | Microsoft 文档
+description: 使用 Azure IoT Edge 创建可为多个设备处理信息的透明网关设备
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0ea4d8ec51211f1208083d3f93c3c100dc54e6b0
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0378cb2964a496a2bfe5a0bc08296cbab462a409
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32170704"
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>创建充当透明网关的 IoT Edge 设备 -预览版
 
@@ -73,10 +74,10 @@ ms.lasthandoff: 02/21/2018
 
 ### <a name="bash"></a>Bash
 
-创建新的设备证书：
+创建新的设备证书。  请勿将 `myGatewayCAName` 命名为与你的网关主机名相同的名称。  这样做会导致客户端对这些证书的认证失败。
 
    ```bash
-   ./certGen.sh create_edge_device_certificate myGateway
+   ./certGen.sh create_edge_device_certificate myGatewayCAName
    ```
 
 创建新文件：.\certs\new-edge-device.* 包含公钥和 PFX，.\private\new-edge-device.key.pem 包含设备私钥。
@@ -84,6 +85,7 @@ ms.lasthandoff: 02/21/2018
 在 `certs` 目录中运行以下命令，以获取完整的设备公钥链：
 
    ```bash
+   cd ./certs
    cat ./new-edge-device.cert.pem ./azure-iot-test-only.intermediate.cert.pem ./azure-iot-test-only.root.ca.cert.pem > ./new-edge-device-full-chain.cert.pem
    ```
 
@@ -116,11 +118,11 @@ ms.lasthandoff: 02/21/2018
 在 Linux 中，使用 Bash 输出：
 
    ```bash
-   sudo iotedgectl setup --connection-string {device connection string}
-        --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
-        --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
-        --device-ca-chain-cert-file {full path}/certs/new-edge-device-full-chain.cert.pem
-        --device-ca-private-key-file {full path}/private/new-edge-device.key.pem
+   sudo iotedgectl setup --connection-string {device connection string} \
+        --edge-hostname {gateway hostname, e.g. mygateway.contoso.com} \
+        --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem \
+        --device-ca-chain-cert-file {full path}/certs/new-edge-device-full-chain.cert.pem \
+        --device-ca-private-key-file {full path}/private/new-edge-device.key.pem \
         --owner-ca-cert-file {full path}/certs/azure-iot-test-only.root.ca.cert.pem
    ```
 

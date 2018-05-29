@@ -1,6 +1,6 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Salesforce 配置自动用户预配 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Salesforce 之间配置单一登录。"
+title: 教程：使用 Azure Active Directory 为 Salesforce 配置自动用户预配 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Salesforce 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d300eb397b58b4e1f8c8a6516e0a279980d8d09
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b5a85dd7d4ac6bdabcbab49f654ebfe4adae73cd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140455"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
@@ -25,11 +26,15 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
-*   Azure Active Directory 租户。
-*   必须拥有 Salesforce for Work 或 Salesforce for Education 的有效租户。 免费试用帐户可用于任一服务。
-*   在 Salesforce 中具有团队管理员权限的用户帐户。
+*   Azure Active Directory 租户
+*   Salesforce.com 租户
+
+>[!IMPORTANT] 
+>如果使用的是 Salesforce.com 试用帐户，则无法配置自动化的用户预配。 试用帐户没有所需的 API 访问权限，而只有在付费之后才拥有这种权限。 可使用免费的[开发人员帐户](https://developer.salesforce.com/signup)绕过此项限制，以完成本教程。
+
+如果使用 Salesforce 沙盒环境，请参阅 [Salesforce 沙箱集成教程](https://go.microsoft.com/fwLink/?LinkID=521879)。
 
 ## <a name="assigning-users-to-salesforce"></a>将用户分配到 Salesforce
 
@@ -89,7 +94,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”字段中。
 
-11. 如果 Salesforce 实例在 Salesforce 政府云中，则应输入**租户 URL**。 否则，它是可选项。 使用格式 https://your-instance.my.salesforce.com 输入租户 URL，并将“your-instance”替换为 Salesforce 实例的名称。
+11. 如果 Salesforce 实例在 Salesforce 政府云中，则应输入**租户 URL**。 否则，它是可选项。 使用 https://your-instance.my.salesforce.com 格式输入租户 URL，并将“your-instance”替换为 Salesforce 实例的名称。
 
 12. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce 应用。
 

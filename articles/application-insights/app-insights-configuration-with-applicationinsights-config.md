@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 62ecacb16c891905eb67a6bae08cf81ac2cdb173
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32158555"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
@@ -30,7 +31,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 本文档说明配置文件中显示的节、控制 SDK 组件的方式，以及哪些 NuGet 包会加载这些组件。
 
 > [!NOTE]
-> ApplicationInsights.config 和 .xml 指令不适用于 .NET Core SDK。 对于 .NET Core 应用程序的更改，我们通常使用 appsettings.json 文件。 可在 [Snapshot Debugger 文档](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)中找到此示例。
+> ApplicationInsights.config 和 .xml 指令不适用于 .NET Core SDK。 对于 .NET Core 应用程序的更改，我们通常使用 appsettings.json 文件。 可在 [Snapshot Debugger 文档](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)中找到此示例。
 
 ## <a name="telemetry-modules-aspnet"></a>遥测模块 (ASP.NET)
 每个遥测模块收集特定类型的数据，并使用核心 API 来发送数据。 不同的 NuGet 包会安装这些模块，同时在 .config 文件中添加所需的行。
@@ -294,7 +295,7 @@ public interface IApplicationIdProvider
 
 此类有一个可选属性 `ProfileQueryEndpoint`。
 默认情况下，这设置为 `https://dc.services.visualstudio.com/api/profiles/{0}/appId`。
-如果需要为此配置配置一个代理，建议为基址使用代理并包括“/api/profiles/{0}/appId”。 注意，“{0}”将在运行时根据请求替换为检测密钥。
+如果需要为此配置来配置一个代理，建议为基址使用代理并包括“/api/profiles/{0}/appId”。 注意，“{0}”将在运行时根据请求替换为检测密钥。
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>通过 ApplicationInsights.config 实现的示例配置：
 ```xml
