@@ -1,36 +1,33 @@
 ---
-title: "Azure AD Connect Health 和一般数据保护条例 | Microsoft Docs"
-description: "本文介绍如何保证 Azure AD Connect 符合 GDPR 的规定。"
+title: Azure AD Connect Health 和用户隐私 | Microsoft Docs
+description: 本文档介绍 Azure AD Connect Health 的用户隐私。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: d66f717f546271a5e5c3c49d6cbaef1c190d18d8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5fedbac439636b56da217e7babd30820bce7b342
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33931752"
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect-health"></a>GDPR 符合性和 Azure AD Connect Health 
+# <a name="user-privacy-and-azure-ad-connect-health"></a>用户隐私和 Azure AD Connect Health 
 
-[一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 针对向欧盟居民提供产品及服务，或收集和分析欧盟居民相关信息的公司、政府机构、非营利组织和其他组织制定了新的规则。 
-
-Microsoft 产品和服务可立即用于帮助你满足 GDPR 要求。 请访问[信任中心](https://www.microsoft.com/trustcenter)，深入了解 Microsoft 隐私策略。
-
-Azure AD Connect Healt 可监视本地标识基础结构和同步服务。 它还提供见解并显示警报。 自 GDPR 于 2018 年 5 月开始实施以来，Microsoft 始终致力于保证云服务符合 GDPR，同时在合同承诺中提供 GDPR 相关保证。 
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
-> 本文概述了 Azure AD Connect Health 中的 GDPR 符合性情况。 若要了解 Azure AD Connect 中的 GDPR 符合性情况，请参阅 [GDPR 符合性和 Azure AD Connect](../../active-directory/connect/active-directory-aadconnect-gdpr.md)。
+>本文介绍 Azure AD Connect Health 和用户隐私。  有关 Azure AD Connect 和用户隐私的信息，请参阅[此处](../../active-directory/connect/active-directory-aadconnect-gdpr.md)的文章。
 
-## <a name="gdpr-classification"></a>GDPR 分类
+## <a name="user-privacy-classification"></a>用户隐私分类
 Azure AD Connect Health 属于 GDPR 的数据处理器类别。 该服务作为数据处理器管道，向关键合作伙伴和最终客户提供数据处理服务。 Azure AD Connect Health 不生成用户数据，且不独立控制要收集的个人数据类型及其使用方式。 Azure AD Connect Health 基于现有本地数据进行数据检索、聚合、分析和报告。 
 
 ## <a name="data-retention-policy"></a>数据保留策略
@@ -54,18 +51,50 @@ Azure AD Connect Health 不生成报告、不进行分析，也不提供 30 天�
 - 如果在执行此步骤之前未卸载 Health 代理，则可能会在与 Health 代理相关的服务器上看到错误事件。
 - 按照 Microsoft Azure 数据保留策略删除所监视服务的实例中的所有数据。
 
-### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>对所监视服务器禁用数据收集和监视
-请参阅[如何从 Azure AD Connect Health 中删除服务器](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service)。
-
 ### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>对所监视服务的实例禁用数据收集和监视
 请参阅[如何删除 Azure AD Connect Health 中的服务实例](active-directory-aadconnect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service)。
 
+### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>对所监视服务器禁用数据收集和监视
+请参阅[如何从 Azure AD Connect Health 中删除服务器](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service)。
+
+### <a name="disable-data-collection-and-monitoring-for-all-monitored-services-in-azure-ad-connect-health"></a>在 Azure AD Connect Health 中对所有受监视服务禁用数据收集和监视
+Azure AD Connect Health 还提供对租户中的**所有**已注册服务停止收集数据的选项。 建议在慎重考虑并得到所有全局管理员的确认之后再执行该操作。 一旦开始此过程，Connect Health 服务就会停止接收、处理和报告所有服务的任何数据。 Connect Health 服务中现有数据的保留期不超过 30 天。
+如果你想停止特定服务器的数据收集，请按照删除特定服务器的步骤进行操作。 若要停止租户范围内的数据收集，请按照以下步骤停止数据收集并删除租户的所有服务。
+
+1.  在主要边栏选项卡的配置下单击“常规设置”。 
+2.  单击边栏选项卡顶部的“停止收集数据”按钮。 一旦开始此过程，系统就会禁用租户配置设置的其他选项。  
+ 
+ ![停止收集数据](./media/active-directory-aadconnect-health-gdpr/gdpr4.png)
+  
+3.  确定因停止收集数据而受影响的已载入服务的列表。 
+4.  输入确切的租户名称以启用“删除”操作按钮
+5.  单击“删除”触发删除所有服务的操作。 Connect Health 将停止接收、处理和报告从已载入服务发送的任何数据。 整个过程可能需要长达 24 小时。 注意此步骤是不可逆的。 
+6.  完成此过程后，Connect Health 不会再显示任何已注册的服务。 
+
+ ![停止收集数据之后](./media/active-directory-aadconnect-health-gdpr/gdpr5.png)
 
 ## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>重新在 Azure AD Connect Health 中启用数据收集和监视
 对于之前已删除的被监视服务，若要在 Azure AD Connect Health 中重新启用监视，必须在所有服务器上卸载再[重新安装运行状况代理r](active-directory-aadconnect-health-agent-install.md)。
 
+### <a name="re-enable-data-collection-and-monitoring-for-all-monitored-services"></a>对所有受监视服务重新启用数据收集和监视
+
+可以在 Azure AD Connect Health 中恢复租户范围内的数据收集。 建议在慎重考虑并得到所有全局管理员的确认之后再执行该操作。
+
+>[!IMPORTANT]
+> 禁用操作 24 小时后可执行以下步骤。
+> 启用数据收集后，Connect Health 中提供的见解和监测数据不会显示之前收集的任何旧数据。 
+
+1.  在主要边栏选项卡的配置下单击“常规设置”。 
+2.  单击边栏选项卡顶部的“启用数据收集”按钮。 
+ 
+ ![启用数据收集](./media/active-directory-aadconnect-health-gdpr/gdpr6.png)
+ 
+3.  输入确切的租户名称以激活“启用”按钮。
+4.  单击“启用”按钮以便授权在 Connect Health 服务中收集数据。 系统将立即应用此更改。 
+5.  按照[安装过程](active-directory-aadconnect-health-agent-install.md)在要监视的服务器中重新安装代理，服务将显示在门户中。  
+
 
 ## <a name="next-steps"></a>后续步骤
 * [查看信任中心上的 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)
-* [Azure AD Connect 和 GDPR](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
-* [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)
+* [Azure AD Connect 和用户隐私](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
+

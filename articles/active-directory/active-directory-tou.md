@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: ea68bad3a2c5e905ccf705404dff0049b451268e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 428d70474ba928a9e0c774aeb16395ef6a4cea2e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192949"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  可以通过这样的呈现方式确保用户看到法律要求或合规性要求的相关免责声明。
@@ -39,7 +40,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 使用以下步骤配置 Azure AD 使用条款：
 
 1. 使用你想要为其配置 Azure AD 使用条款的目录的全局管理员、安全管理员或条件访问管理员身份登录到 Azure AD。
-2. 请确保此目录具有 Azure AD Premium P1、P2、EMS E3 或 EMS E5 订阅。  如果没有此订阅，请[获取 Azure AD Premium](active-directory-get-started-premium.md) 或[开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。
+2. 请确保此目录具有 Azure AD Premium P1、P2、EMS E3 或 EMS E5 订阅。  如果没有，请[获取 Azure AD Premium](active-directory-get-started-premium.md) 或[开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。
 3. 可在 [https://aka.ms/catou](https://aka.ms/catou) 上查看 Azure AD 用户条款仪表板。
 
 >[!IMPORTANT]
@@ -56,7 +57,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 4. 输入“显示名称”。  此标题是用户登录时会看到的内容。
 5. 浏览到已完成的使用条款 (PDF)，并选择它。  建议的字号是 24。
 6. **选择**使用条款的语言。  可以通过语言选项上传多个版本的使用条款，每个版本的语言各不相同。  最终用户看到的使用条款版本取决于其浏览器首选项。
-7. 对于“要求用户展开使用条款”这一功能，可选择“启用”或“禁用”。  如果将此功能设置为“启用”，则最终用户在接受使用条款之前必须先进行查看。
+7. 对于“要求用户展开使用条款”这一功能，可选择“启用”或“禁用”。  如果此设置设为“启用”，则最终用户在接受使用条款之前必须先进行查看。
 8. 可以在“条件访问”下从下拉列表中选择模板，或者选择自定义条件访问策略，以便**强制执行**已上传的使用条款。  可以使用自定义条件访问条款策略将使用条款细化，可向下细化到特定云应用程序或用户组。  有关详细信息，请参阅[配置条件访问策略](active-directory-conditional-access-best-practices.md)
 9. 单击“创建”。
 10. 选择自定义条件访问模板后，将出现新的屏幕，可以通过此屏幕自定义 CA 策略。
@@ -120,6 +121,13 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 
 4.  可以在其中查看已接受的使用条款。 
 
+## <a name="removing-users-from-an-active-terms-of-use"></a>从活动使用条款中删除用户
+
+[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
+
+默认情况下，删除的用户将在 Azure AD 中保持删除状态 30 天，在此期间，管理员可以根据需要还原这些用户。  30 天后，该用户将被永久删除。  此外，使用 Azure Active Directory 门户，全局管理员可以在达到该时间段之前，显式地[永久删除最近删除的用户](active-directory-users-restore.md)。  某个用户被永久删除后，随后有关该用户的数据将从活动使用条款中删除。  有关已删除用户的审核信息仍保留在审核日志中。
+
+
 
 ## <a name="additional-information"></a>其他信息
 以下信息是需要注意的事项，可帮助你使用使用条款。
@@ -138,7 +146,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 ## <a name="frequently-asked-questions"></a>常见问题
 
 **问：如何查看用户何时/是否接受了使用条款？**</br>
-答：可以直接单击使用条款旁边“已接受”下的数字。  有关详细信息，请参阅[查看当前的用户状态](#viewing-current-user-status)。  另外，已将接受了使用条款的用户写入审核日志。 可以搜索 Azure AD 审核日志来查看结果。  
+答：可以单击使用条款旁边“已接受”下的数字。  有关详细信息，请参阅[查看当前的用户状态](#viewing-current-user-status)。  另外，已将接受了使用条款的用户写入审核日志。 可以搜索 Azure AD 审核日志来查看结果。  
 
 **问：更改使用条款后，是否需要用户重新接受该条款？**</br>
 答：是的，管理员可以更改使用条款的条款，这需要用户重新接受新的条款。

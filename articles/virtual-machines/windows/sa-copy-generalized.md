@@ -16,11 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3737ea08e593ae1018489633e23e80e1099296ae
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b416acd9a2a3b03502b7eca11eade9dbd56f3afe
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072043"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>如何从 Azure VM 创建非托管 VM 映像
 
@@ -78,6 +79,11 @@ ms.lasthandoff: 04/19/2018
     ```
 
 ## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>解除分配 VM 并将状态设置为通用化
+
+> [!IMPORTANT] 
+> 一旦 VM 标为通用，则不能在其中添加、编辑或删除标记。 如果想要将标记添加到 VM，请确保先添加标记，然后再将 VM 标为通用。
+> 
+
 1. 解除分配 VM 资源。
    
     ```powershell

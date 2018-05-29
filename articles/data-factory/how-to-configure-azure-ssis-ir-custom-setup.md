@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: b377b5ca9d46d66fe99a8f60383076920b098a7d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ff47060ddfee458279c9fed0fd3fcafcf35229d2
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33769709"
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885432"
 ---
 # <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 集成运行时的自定义安装
 
@@ -33,6 +33,10 @@ ms.locfileid: "33769709"
 -   如果想要使用 `gacutil.exe` 将程序集安装到全局程序集缓存 (GAC) 中，则需要在自定义安装过程中提供该工具，或使用公共预览版容器中提供的副本。
 
 -   如果需要使用自定义安装程序将 Azure-SSIS IR 加入 VNet，仅支持 Azure 资源管理器 VNet。 不支持经典 VNet。
+
+-   Azure-SSIS IR 目前不支持管理共享。
+
+-   如果想要在自定义设置中将文件共享映射到驱动器，则 `net use` 命令当前不受支持。 因此，不能使用像 `net use d: \\fileshareserver\sharename` 这样的命令。 请改用 `cmdkey` 命令（例如，`cmdkey /add:fileshareserver /user:yyy /pass:zzz`）直接在包中访问 `\\fileshareserver\folder`。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -136,15 +140,15 @@ ms.locfileid: "33769709"
 
        4. 一个 `MSDTC` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上修改 Microsoft 分布式事务处理协调器 (MSDTC) 实例的网络和安全配置的自定义安装。
 
-       5. 一个 `ORACLE ENTERPRISE` 文件夹，其中包含用于在 Azure-SSIS IR 企业版（个人预览版）的每个节点上安装 Oracle OCI 驱动程序的自定义安装脚本 (`main.cmd`) 和无提示安装配置文件 (`client.rsp`)。 此安装程序允许使用 Oracle 连接管理器、源和目标。 首先，必须从 [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) 下载 `winx64_12102_client.zip`，然后将其连同 `main.cmd` 和 `client.rsp` 一起上传到容器中。 如果使用 TNS 连接到 Oracle，则还需要下载 `tnsnames.ora`，对其进行编辑，然后将其上传到容器，以便在安装期间将其复制到 Oracle 安装文件夹中。
+       5. 一个 `ORACLE ENTERPRISE` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 Oracle OCI 驱动程序的自定义安装脚本 (`main.cmd`) 和无提示安装配置文件 (`client.rsp`)。 此安装程序允许使用 Oracle 连接管理器、源和目标。 首先，从 [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) 下载最新的 Oracle 客户端（例如 `winx64_12102_client.zip`），然后将其与 `main.cmd` 和 `client.rsp` 一起上传到容器中。 如果使用 TNS 连接到 Oracle，则还需要下载 `tnsnames.ora`，对其进行编辑，然后将其上传到容器，以便在安装期间将其复制到 Oracle 安装文件夹中。
 
-       6. 一个 `ORACLE STANDARD` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Oracle ODP.NET 驱动程序的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 ADO.NET 连接管理器、源和目标。 首先，请从 [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) 下载 `ODP.NET_Managed_ODAC122cR1.zip`，然后将其连同 `main.cmd` 一起上传到容器中。
+       6. 一个 `ORACLE STANDARD` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Oracle ODP.NET 驱动程序的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 ADO.NET 连接管理器、源和目标。 首先，从 [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) 下载最新的 Oracle ODP.NET 驱动程序（例如 `ODP.NET_Managed_ODAC122cR1.zip`），然后将其与 `main.cmd` 一起上传到容器中。
 
-       7. 一个 `SAP BW` 文件夹，其中包含用于在 Azure-SSIS IR 企业版（个人预览版）的每个节点上安装 SAP .NET 连接器程序集 (`librfc32.dll`) 的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 SAP BW 连接管理器、源和目标。 首先，将 64 位或 32 位版本的 `librfc32.dll` 连同 `main.cmd` 一起从 SAP 安装文件夹上传到容器中。 然后，该脚本会在安装期间将 SAP 程序集复制到 `%windir%\SysWow64` 或 `%windir%\System32` 文件夹中。
+       7. 一个 `SAP BW` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 SAP .NET 连接器程序集 (`librfc32.dll`) 的自定义安装脚本 (`main.cmd`)。 此安装程序允许使用 SAP BW 连接管理器、源和目标。 首先，将 64 位或 32 位版本的 `librfc32.dll` 连同 `main.cmd` 一起从 SAP 安装文件夹上传到容器中。 然后，该脚本会在安装期间将 SAP 程序集复制到 `%windir%\SysWow64` 或 `%windir%\System32` 文件夹中。
 
        8. 一个 `STORAGE` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Azure PowerShell 的自定义安装程序。 此安装程序允许部署并运行 SSIS 包，以便运行 [PowerShell 脚本来操作 Azure 存储帐户](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)。 将 `main.cmd`、示例 `AzurePowerShell.msi`（或安装最新版本）和 `storage.ps1` 复制到容器。 使用 PowerShell.dtsx 作为包的模板。 包模板中合并了 [Azure Blob 下载任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)（包括可修改 PowerShell 脚本形式的 `storage.ps1`）和[执行进程任务](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)（在每个节点上执行脚本）。
 
-       9. 一个 `TERADATA` 文件夹，其中包含自定义安装脚本 (`main.cmd)`)、其关联的文件 (`install.cmd`) 和安装程序包 (`.msi`)。 这些文件将在 Azure-SSIS IR 企业版（个人预览版）的每个节点上安装 Teradata 连接器、TPT API 和 ODBC 驱动程序。 此安装程序允许使用 Teradata 连接管理器、源和目标。 首先，从 [Teradata](http://partnerintelligence.teradata.com) 下载 Teradata 工具和实用工具 (TTU) 15.x zip 文件（例如 `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`），然后将其连同上述 `.cmd` 和 `.msi` 文件一起上传到容器中。
+       9. 一个 `TERADATA` 文件夹，其中包含自定义安装脚本 (`main.cmd)`)、其关联的文件 (`install.cmd`) 和安装程序包 (`.msi`)。 这些文件将在 Azure-SSIS IR 企业版的每个节点上安装 Teradata 连接器、TPT API 和 ODBC 驱动程序。 此安装程序允许使用 Teradata 连接管理器、源和目标。 首先，从 [Teradata](http://partnerintelligence.teradata.com) 下载 Teradata 工具和实用工具 (TTU) 15.x zip 文件（例如 `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`），然后将其连同上述 `.cmd` 和 `.msi` 文件一起上传到容器中。
 
     ![用户方案文件夹中的文件夹](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

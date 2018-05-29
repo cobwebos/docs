@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 285ee0c4e7f963c372c4f95face73864ba2a4f68
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33931258"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>排查有关访问和使用“我的应用”门户的问题
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 01/29/2018
 - **Edge**：Windows 10 周年纪念版或更高版本上。
 - **Chrome**：在 Windows 7 或更高版本上，以及在 Mac OS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
-- **Internet Explorer 8、9、10、11**：在 Windows 7 或更高版本上（支持受限）。
+- **Internet Explorer 11**：在 Windows 7 或更高版本上（支持受限）。
 
 也可以直接从以下站点下载适用于 Chrome 和 Microsoft Edge 的扩展：
 

@@ -1,9 +1,9 @@
 ---
-title: "使用 Analytics - Azure Application Insights 的强大搜索工具 | Microsoft Docs"
-description: "使用 Analytics - Application Insights 的强大诊断搜索工具。 "
+title: 使用 Analytics - Azure Application Insights 的强大搜索工具 | Microsoft Docs
+description: '使用 Analytics - Application Insights 的强大诊断搜索工具。 '
 services: application-insights
-documentationcenter: 
-author: danhadari
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: c3b34430-f592-4c32-b900-e9f50ca096b3
 ms.service: application-insights
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
-ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5a49d38ddc9d2181f9b35ac948c44df70bad831b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869880"
 ---
 # <a name="using-analytics-in-application-insights"></a>使用 Application Insights 中的 Analytics
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
@@ -149,9 +150,9 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 在某些情况下，将图表固定到仪表板时，图表会应用特定的简化功能。
 
-**时间限制：**查询自动限定为过去 14 天。 这种效果就相当于在查询中包含 `where timestamp > ago(14d)`。
+**时间限制：** 查询自动限定为过去 14 天。 这种效果就相当于在查询中包含 `where timestamp > ago(14d)`。
 
-**Bin 计数限制：**如果显示的图表包含许多离散的 Bin（通常为条形图），所占比例较少的 Bin 将自动分组到单个“其他”Bin。 例如，以下查询：
+**Bin 计数限制：** 如果显示的图表包含许多离散的 Bin（通常为条形图），所占比例较少的 Bin 将自动分组到单个“其他”Bin。 例如，以下查询：
 
     requests | summarize count_search = count() by client_CountryOrRegion
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/11/2018
 ms.author: adigan,markgal
-ms.openlocfilehash: 99ac43efa5d3211bbe2d790f28532e682058313c
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 19067b40e8e87c160515d13bb490e7c1604788b6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075871"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196706"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>在 Azure Stack 上备份文件和应用程序
 可以使用 Azure 备份保护（或备份）Azure Stack 上的文件和应用程序。 若要备份文件和应用程序，请将 Microsoft Azure 备份服务器安装为 Azure Stack 上运行的虚拟机。 可以保护同一虚拟网络中任何 Azure Stack 服务器上运行的任何应用程序。 安装 Azure 备份服务器后，可添加 Azure 磁盘以增加可用于短期备份数据的本地存储。 Azure 备份服务器将 Azure 存储用于长期保留。
@@ -65,7 +65,7 @@ Azure备份服务器将备份数据存储在附加到虚拟机的 Azure 磁盘�
 
 在 Azure 中存储备份数据会缩减 Azure Stack 上的备份基础结构。 如果数据的存在已超过五天，应将其存储在 Azure 中。
 
-若要将备份数据存储在 Azure 中，请创建或使用恢复服务保管库。 准备备份 Azure 备份服务器工作负荷时，请[配置恢复服务保管库](backup-azure-microsoft-azure-backup.md#recovery-services-vault)。 配置后，每次运行备份作业时，都会在保管库中创建恢复点。 每个恢复服务保管库最多可容纳 9999 个恢复点。 根据所创建的恢复点数量以及保留期限，可以将备份数据保留多年。 例如，可以每月创建恢复点，并将其保留五年。
+若要将备份数据存储在 Azure 中，请创建或使用恢复服务保管库。 准备备份 Azure 备份服务器工作负荷时，请[配置恢复服务保管库](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault)。 配置后，每次运行备份作业时，都会在保管库中创建恢复点。 每个恢复服务保管库最多可容纳 9999 个恢复点。 根据所创建的恢复点数量以及保留期限，可以将备份数据保留多年。 例如，可以每月创建恢复点，并将其保留五年。
  
 ### <a name="using-sql-server"></a>使用 SQL Server
 如果要使用远程 SQL Server 作为 Azure 备份服务器数据库，请仅选择运行 SQL Server 的 Azure Stack VM。

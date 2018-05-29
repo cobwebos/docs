@@ -3,8 +3,8 @@ title: 通过为 Azure 虚拟机预付款来节省资金 - Azure | Microsoft Doc
 description: 了解 Azure 保留虚拟机实例，以便节省虚拟机成本。
 services: billing
 documentationcenter: ''
-author: vikramdesai01
-manager: vikramdesai01
+author: yashesvi
+manager: yashesvi
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
-ms.author: vikdesai
-ms.openlocfilehash: 7d85d3500014962a90ae596598332a95f4aa557e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: yashar
+ms.openlocfilehash: 9c73102f09e252b449f78603debaf707b3c89c3b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34056680"
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>通过保留虚拟机实例节省虚拟机资金 
 使用保留虚拟机实例时，需预付一年或三年的计算能力款项，以便获得所用虚拟机的折扣。 它可以显著减少虚拟机成本，最多可以降低 72% 的即用即付价格，前提是提前承诺使用一年或三年的服务。 保留虚拟机实例是一种计费折扣，不影响虚拟机的运行时状态。
@@ -35,6 +36,7 @@ ms.lasthandoff: 05/03/2018
 -   企业协议订阅产品/服务类型 (MS-AZR-0017P)。
 -   [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅产品/服务类型 (MS-AZR-003P)。
 必须是订阅的“所有者”角色才能购买保留实例。 若要在企业注册时购买保留虚拟机实例，企业管理员必须在 EA 门户中允许购买保留虚拟机实例。默认情况下，该设置是启用的。
+-   云解决方案提供商 (CSP) 合作伙伴可以使用 Azure 管理门户或[合作伙伴中心](https://docs.microsoft.com/partner-center/azure-reservations)购买保留项。
 
 ## <a name="how-is-a-reserved-virtual-machine-instances-purchase-billed"></a>购买保留虚拟机实例时如何付款？
 购买保留虚拟机实例时，可以通过与订阅绑定的付款方式付款。 如果订阅为“企业”订阅，则保留虚拟机实例费用会从货币承诺余额中扣除。 如果货币承诺余额不足以支付保留虚拟机实例的费用，则还会向你收取所欠费用。
@@ -69,5 +71,7 @@ ms.lasthandoff: 05/03/2018
 - [了解即用即付订阅的预订实例使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业许可登记表的预订实例使用情况](billing-understand-reserved-instance-usage-ea.md)
 - [预订实例未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+- [合作伙伴中心云解决方案提供商 (CSP) 计划中的保留实例](https://docs.microsoft.com/partner-center/azure-reservations)
 
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 如果需要帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

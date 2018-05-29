@@ -15,11 +15,12 @@ ms.topic: quickstart
 ms.date: 03/13/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: 91bb23b2790ed23c831bb1680f6f2bb2cdecc38f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 87216a861aa150c5f9a16f6193f2abf2af6d57d1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198701"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>快速入门：创建 Azure CDN 配置文件和终结点
 在本快速入门中，请通过创建新的 Azure 内容分发网络 (CDN) 配置文件和 CDN 终结点来启用 CDN。 创建配置文件和终结点以后，即可将内容交付给客户。
@@ -70,7 +71,7 @@ ms.lasthandoff: 05/14/2018
    ![CDN 终结点](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
    终结点不会立即可供使用，因为注册传播需花时间： 
-   - 对于 Microsoft 的 Azure CDN 标准版配置文件，传播通常可在 10 分钟内完成。 
+   - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
    - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
    - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成。 
 
@@ -87,6 +88,6 @@ ms.lasthandoff: 05/14/2018
 若要了解如何向 CDN 终结点添加自定义域，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [教程：将 Azure CDN 添加到 Web 应用](app-service-web-tutorial-content-delivery-network.md)
+> [教程：将自定义域添加到 Azure CDN 终结点](cdn-map-content-to-custom-domain.md)
 
 

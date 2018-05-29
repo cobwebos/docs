@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure 门户进行开发运营 | Microsoft Docs"
-description: "了解 Azure 门户中的各种 DevOps 工作流。"
+title: 教程：使用 Azure 门户中的 DevOps | Microsoft 文档
+description: 了解 Azure 门户中的各种 DevOps 工作流。
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
 editor: mlearned
@@ -11,17 +11,18 @@ ms.service: azure-portal
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: d2c059fe415b743e4b2265d6dda492878307be93
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 7fb3de72e28b19f9ca30968b267bf985ae384275
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164833"
 ---
-# <a name="tutorial-devops-with-the-azure-portal"></a>教程：使用 Azure 门户进行开发运营
-Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在本教程中，将了解如何利用 Azure 门户功能来开发、测试、部署、监视和管理正在运行的应用程序以及对其进行故障排除。 本教程着重于以下内容：
+# <a name="tutorial-devops-with-the-azure-portal"></a>教程：使用 Azure 门户中的 DevOps
+Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在本教程中，将了解如何利用 Azure 门户功能来开发、测试、部署、监控和管理正在运行的应用程序，以及对其进行故障排除。 本教程着重于以下内容：
 
 1. 创建 Web 应用程序和启用连续部署
 2. 开发和测试应用
@@ -29,12 +30,12 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在
 4. 常规应用程序管理任务
 
 ## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>创建 Web 应用程序和启用连续部署
-创建一个要在本教程余下部分中使用的、包含 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)的 Web 应用。 首先，要启用从源代码存储库到正在运行的 Azure 环境的连续部署。
+创建一个要在本教程余下部分中使用的、包含 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)的 Web 应用。 首先，你要将源代码存储库持续部署到正在运行 Azure 的环境中。
 
 1. 登录到 Azure 门户
 2. 依次选择“应用服务”&gt;“添加图标”并输入名称、选择订阅，并创建要用作该服务容器的新资源组。
    
-   可以通过资源组来管理解决方案的各个方面，例如通过 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)将所有资源以单个组的方式进行计费、部署和监视。
+   有了资源组之后，你可以通过 [Azure资源管理器](../azure-resource-manager/resource-group-overview.md)将解决方案的各个方面（如计费、部署和监控等）全部纳入一个组进行管理。
    
    ![image1][image1]
 3. 片刻之后即可创建应用服务。 请花几分钟时间在门户中了解服务的各个菜单选项。
@@ -43,7 +44,7 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在
 4. 单击 URL。 请注意工具和存储库的各个可用选项。 也可以使用自己选择的语言和框架，包括 .NET、Java 和 Ruby。
    
    ![image3][image3]    
-5. Azure 门户能使连续部署变成只需执行几个简单步骤的轻松过程。 在 Azure 门户中，通过刚刚创建的应用服务对应的图标选择设置。
+5. Azure 门户能使连续部署变成只需执行几个简单步骤的轻松过程。 在 Azure 门户中，从你创建的应用服务对应的图标中选择设置。
    
    ![Image4][image4]
    
@@ -53,7 +54,7 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在
 6. 接下来，将某些设置配置为允许对应用进行持续部署。 单击“部署源”，并单击“选择源”。 请注意针对存储库源提供的各个选项。
    
    ![image6][image6]
-7. 对于本示例，请选择“GitHub”。 （可选）选择所需的存储库，并设置授权凭据。
+7. 对于本示例，请选择 GitHub。 另外，还可选择所需的存储库，并设置授权凭据。
    
    ![image7][image7]
 8. 在授予存储库权限之后，可以选择想要部署的项目和分支。 下面列出了几个虚构的示例。
@@ -62,7 +63,7 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在
 9. 选择项目和分支后，单击“确定”。 应会看到部署通知。
    
    ![image9][image9]
-10. 浏览回到 GitHub，以查看为了将源代码管理存储库与 Azure 集成而创建的 Webhook。 只需执行一些简单的步骤，即可通过 Azure 门户与 GitHub 集成。
+10. 浏览回到 GitHub，以查看为了将源代码管理存储库与 Azure 集成而创建的 Webhook。 只需简单几步，即可通过 Azure 门户与 GitHub 集成。
     
     ![image10][image10]
 11. 为了演示连续部署，请将一些内容快速添加到存储库。 为了创建一个简单示例，请将一个示例文本文件添加到 GitHub 存储库。 可以任意将 .NET、Ruby、Python 或其他某种类型的应用程序与应用服务配合使用。 在所选的存储库中任意添加文本文件、ASP.NET MVC、Java 或 Ruby 应用程序。
@@ -81,12 +82,12 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在
     
     ![image15][image15]
     
-    通过 Azure 门户启用连续部署是很轻松的体验。 还可以构建更复杂的发布管道，并配合现有源代码管理和连续集成系统使用其他许多技术来部署到 Azure，例如利用自动化构建和发布管理系统。
+    通过 Azure 门户进行持续部署是一种很轻松的体验。 还可以构建更复杂的发布管道，并配合现有源代码管理和连续集成系统使用其他许多技术来部署到 Azure，例如利用自动化构建和发布管理系统。
 
 ## <a name="develop-and-test-an-app"></a>开发和测试应用
-接下来，对代码基进行一些更改，并快速部署这些更改。 此外，针对 Web 应用设置一些性能测试。
+接下来，对代码基进行一些更改，并快速部署这些更改。 此外，还将针对 Web 应用设置一些性能测试。
 
-1. 在 Azure 门户中，从导航窗格选择“应用程序服务”，并找到应用服务。
+1. 在 Azure 门户中，从导航窗格选择“应用程序服务”，并找到你的应用服务。
    
    ![image16][image16]
 2. 单击“工具”
@@ -141,7 +142,7 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在
     测试完成后，请单击结果以显示更多详细信息。
     
     ![image33][image33]
-16. 在本示例中，创建了一个小型测试运行，因此可供分析的数据有限，但可以查看各项指标，以及从此视图重新运行测试。 在 Azure 门户中可以轻松创建、运行和分析 Web 性能测试。 以下屏幕截图显示了性能数据。
+16. 在本示例中，创建了一个小型测试运行，因此可供分析的数据有限，但可以查看各项指标，以及从此视图重新运行测试。 在 Azure 门户中可以轻松创建、执行和分析 Web 性能测试。 以下屏幕截图显示了性能数据。
     
     ![image34][image34]
     
@@ -152,7 +153,7 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在
 ## <a name="monitoring-and-troubleshooting-an-app"></a>对应用进行监视和故障排除
 Azure 提供了许多功能用于对正在运行的应用程序进行监视和故障排除。
 
-1. 在 Web 应用的 Azure 门户中选择“工具”。
+1. 在用于 Web 应用的 Azure 门户中选择“工具”。
    
    ![image37][image37]
 2. 在“故障排除”类别下可以看到多种选项，使我们能够使用工具针对运行中应用程序的潜在问题进行故障排除。 可以执行各种操作，例如，监视实时 HTTP 流量、启用自我修复、查看日志，等等。
@@ -196,7 +197,7 @@ Azure 提供了许多功能用于对正在运行的应用程序进行监视和�
 12. 在应用的 Azure 门户中返回到工具部分。 滚动到“工具”部分，并选择“进程资源管理器”。
     
     ![image50][image50]
-13. 选择“进程资源管理器”可以查看有关正在运行的进程的详细信息。 请注意，可以深入到各个进程，甚至可以删除进程，所有这些操作都可通过 Azure 门户完成。
+13. 选择“进程资源管理器”可以查看有关正在运行的进程的详细信息。 请注意，下面你可以深入到各个进程，甚至可以从 Azure 门户中终止所有进程。
     
     ![image51][image51]
     
@@ -204,13 +205,13 @@ Azure 提供了许多功能用于对正在运行的应用程序进行监视和�
 14. 返回到左侧的“设置”边栏选项卡。 单击“新建支持请求”。
     
     ![image53][image53]
-15. 在右侧的边栏选项卡中，可以填写问题详细信息、输入联系信息，甚至上传诊断数据。 可以通过 Azure 门户获得与 Microsoft 支持部门协作的无缝体验。
+15. 在右侧的边栏选项卡中，可以填写问题详细信息、输入联系信息，甚至上传诊断数据。 通过 Azure 门户可获得与 Microsoft 支持部门协作的无缝体验。
     
     ![image54][image54]
     
     ![image55][image55]
     
-    Azure 门户提供强大且熟悉的工具体验，有助于监视和排查所运行应用程序的问题。 还可以通过执行各种任务（例如回收进程、启用和禁用各种数据收集，甚至与 Microsoft 专家支持相集成）来快速采取措施。
+    Azure 门户提供了强大且熟悉的工具体验，有助于监控和排查所运行应用程序的问题。 还可以通过执行各种任务（例如回收进程、启用和禁用各种数据收集，甚至与 Microsoft 专家支持相集成）来快速采取措施。
 
 ## <a name="general-application-management"></a>常规应用程序管理
 在管理应用程序时，经常需要执行各种活动，例如配置备份策略、实施和管理标识提供者，以及配置基于角色的访问控制。 与其他 DevOps 体验一样，Azure 平台将这些任务直接集成到门户中。
@@ -248,13 +249,13 @@ Azure 提供了许多功能用于对正在运行的应用程序进行监视和�
 11. 在右侧边栏选项卡中，选择“应用服务身份验证”。 请注意可以在热门提供程序中配置的各种选项。
     
      ![image66][image66]
-12. 选择所需的提供程序，并注意范围选项。 可以提供“应用 ID”和“应用机密”，并快速为应用启用 Facebook 身份验证。 在 Azure 门户中，可以使用身份验证作为应用的周全解决方案。
+12. 选择所需的提供程序，并注意范围选项。 可以提供“应用 ID”和“应用机密”，并快速为应用启用 Facebook 身份验证。 在 Azure 门户中，可以使用身份验证作为应用的统包解决方案。
     
      ![image67][image67]
 13. 返回到“设置”边栏选项卡，并选择“资源管理”类别下面的“用户”。
     
      ![image68][image68]
-14. 在右侧边栏选项卡中，检查用于添加角色和用户的各种选项。 可以通过Azure 门户轻松地为应用程序控制 RBAC（基于角色的访问控制）。
+14. 在右侧边栏选项卡中，检查用于添加角色和用户的各种选项。 通过 Azure 门户，可轻松为应用程序控制 RBAC（基于角色的访问控制）。
     
      ![image69][image69]
 

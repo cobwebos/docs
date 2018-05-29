@@ -1,11 +1,11 @@
 ---
-title: "以本地方式部署和升级 Azure 微服务 | Microsoft 文档"
-description: "了解如何设置本地 Service Fabric 群集，在其中部署现有的应用程序，并升级该应用程序。"
+title: 以本地方式部署和升级 Azure 微服务 | Microsoft 文档
+description: 了解如何设置本地 Service Fabric 群集，在其中部署现有的应用程序，并升级该应用程序。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 60a1f6a5-5478-46c0-80a8-18fe62da17a8
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
-ms.author: ryanwi;mikhegn
-ms.openlocfilehash: 9d547039491f6b0c0d308c64d11e9c54b4b4e3d5
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.author: ryanwi
+ms.openlocfilehash: ca19b70e3651f72d6fe87fcb3cd2ace2eecf3402
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205240"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>在本地群集上部署和升级应用程序入门
 Azure Service Fabric SDK 包含完整的本地开发环境，可让你快速地在本地群集上开始部署和管理应用程序。 在本文中，会从 Windows PowerShell 创建本地群集、将现有应用程序部署到该群集，然后将该应用程序升级为新版本。
@@ -85,7 +86,7 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
     如果一切正常，应会看到下面的输出：
    
     ![将应用程序部署到本地群集][deploy-app-to-local-cluster]
-7. 若要查看应用程序的操作情况，请启动浏览器并导航到 [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html)。 应会看到：
+7. 若要查看运行中的应用程序，请启动浏览器并导航到 [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html)。 应会看到：
    
     ![已部署的应用程序 UI][deployed-app-ui]
    
@@ -124,7 +125,7 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
    
     使用的命令集（例如所有 Service Fabric PowerShell 命令）可用于任何可以连接的群集（本地或远程）。
    
-    若要以更直观的方式来与群集交互，可以在浏览器中导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) ，以使用基于 Web 的 Service Fabric Explorer 工具。
+    若要以更直观的方式与群集交互，可以在浏览器中导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)，以使用基于 Web 的 Service Fabric Explorer 工具。
    
     ![在 Service Fabric 资源管理器中查看应用程序详细信息][sfx-service-overview]
    

@@ -1,48 +1,56 @@
 ---
-title: "访问 Azure AD 报告 API 的先决条件 | Microsoft Docs"
-description: "了解有关访问 Azure AD 报告 API 的先决条件"
+title: 访问 Azure Active Directory 报告 API 的先决条件 | Microsoft 文档
+description: 了解有关访问 Azure AD 报告 API 的先决条件
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 05/07/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1f4d79b59d44bc1c151391290e79026051fe1df
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ab05907f1f23c3856b41a941c1b95992ed5a79a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33929976"
 ---
-# <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>访问 Azure AD 报告 API 的先决条件
+# <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
-[Azure AD 报告 API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) 通过一组基于 REST 的 API，让你以编程方式访问数据。 可从各种编程语言和工具中调用这些 API。
+[Azure Active Directory (Azure AD) 报告 API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) 通过一组基于 REST 的 API，可让你以编程方式访问数据。 可从各种编程语言和工具中调用这些 API。
 
-报告 API 使用 [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) 授权访问 Web API。 
+报告 API 使用 [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) 授权访问 Web API。
+
+若要准备访问报告 API，需要执行以下操作：
+
+1. 分配角色
+2. 注册应用程序
+3. 授予权限
+4. 收集配置设置
+
+
+
+## <a name="assign-roles"></a>分配角色
 
 若要通过 API 访问报告数据，需分配以下角色之一：
 
 - 安全读取者
+
 - 安全管理员
+
 - 全局管理员
 
 
-要准备访问报告 API，必须执行以下操作：
 
-1. 注册应用程序 
-2. 授予权限 
-3. 收集配置设置 
 
-有关疑问、问题或反馈，请[提交支持票证](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)。
-
-## <a name="register-an-azure-active-directory-application"></a>注册 Azure Active Directory 应用程序
+## <a name="register-an-application"></a>注册应用程序
 
 即使是在使用脚本来访问报告 API，也需要注册一个应用。 该操作会提供一个**应用程序 ID**，该 ID 是进行授权调用所必需的，代码也通过该 ID 来接收令牌。
 
@@ -59,15 +67,15 @@ ms.lasthandoff: 12/11/2017
    
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. 在“Azure Active Directory”边栏选项卡中，单击“应用注册”。
+2. 在“Azure Active Directory”页中，单击“应用注册”。
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/02.png) 
 
-3. 在“应用注册”边栏选项卡的顶部工具栏中，单击“新建应用程序注册”。
+3. 在“应用注册”页顶部的工具栏中，单击“新建应用程序注册”。
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/03.png)
 
-4. 在“创建”边栏选项卡中执行以下步骤：
+4. 在“创建”页中，执行以下步骤：
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/04.png)
 
@@ -77,33 +85,42 @@ ms.lasthandoff: 12/11/2017
 
     c. 在“登录 URL”文本框中，键入 `https://localhost`。
 
-    d. 单击“创建” 。 
+    d. 单击“创建”。 
 
 
 ## <a name="grant-permissions"></a>授予权限 
 
-此步骤的目的是授予应用程序对 **Windows Azure Active Directory** API 的“读取目录数据”权限。
+根据想要访问的 API，你需要向应用授予以下权限：  
 
-![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/16.png)
+| API | 权限 |
+| --- | --- |
+| Microsoft Azure Active Directory | 读取目录数据 |
+| Microsoft Graph | 读取所有审核日志数据 |
+
+
+![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/36.png)
+
+
+以下部分列出适用于这两个 API 的步骤。 如果你不想访问其中一个 API，可以跳过相关步骤。
  
 
 **若要授予应用程序使用 API 的权限，请执行以下操作：**
 
-1. 在“应用注册”边栏选项卡的应用列表中，单击“Reporting API 应用程序”。
+1. 在“应用注册”页的应用列表中，单击“报告 API 应用程序”。
 
-2. 在“Reporting API 应用程序”边栏选项卡的顶部工具栏中，单击“设置”。 
+2. 在“报告 API 应用程序”页顶部的工具栏中，单击“设置”。 
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/05.png)
 
-3. 在“设置”边栏选项卡中，单击“所需的权限”。 
+3. 在“设置”页中，单击“所需权限”。 
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/06.png)
 
-4. 在“所需的权限”边栏选项卡的“API”列表中，单击“Windows Azure Active Directory”。 
+4. 在“所需的权限”页的“API”列表中，单击“Windows Azure Active Directory”。 
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/07.png)
 
-5. 在“启用访问权限”边栏选项卡中，选择“读取目录数据”。 
+5. 在“启用访问”页上，选择“读取目录数据”并取消选择“登录并读取用户个人资料”。 
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/08.png)
 
@@ -111,17 +128,37 @@ ms.lasthandoff: 12/11/2017
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/15.png)
 
-7. 单击“授予权限”，并单击“是”。
+7. 在“所需权限”页顶部的工具栏中，单击“添加”。
+
+    ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/32.png)
+
+8. 在“添加 API 访问权限”页中，单击“选择 API”。
+
+    ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/31.png)
+
+9. 在“选择 API”页上，单击“Microsoft Graph”，然后单击“选择”。
+
+    ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/33.png)
+
+10. 在“启用访问”页上，选择“读取所有审核日志数据”，然后单击“选择”。  
+
+    ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/34.png)
+
+
+11. 在“添加 API 访问权限”页中，单击“完成”。  
+
+12. 在“所需权限”页顶部的工具栏中， 单击“授予权限”，然后单击“是”。
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/17.png)
 
 
 ## <a name="gather-configuration-settings"></a>收集配置设置 
+
 本部分介绍了如何从目录中获取以下设置：
 
-* 域名
-* 客户端 ID
-* 客户端机密
+- 域名
+- 客户端 ID
+- 客户端机密
 
 在配置对报告 API 的调用时需要这些值。 
 
@@ -133,7 +170,7 @@ ms.lasthandoff: 12/11/2017
    
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. 在“Azure Active Directory”边栏选项卡中，单击“自定义域名”。
+2. 在“Azure Active Directory”页上，单击“自定义域名”。
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/09.png) 
 
@@ -148,9 +185,9 @@ ms.lasthandoff: 12/11/2017
    
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. 在“应用注册”边栏选项卡的应用列表中，单击“Reporting API 应用程序”。
+2. 在“应用注册”页的应用列表中，单击“报告 API 应用程序”。
 
-3. 在“Reporting API 应用程序”边栏选项卡中，指向“应用程序 ID”，并单击“单击复制”。
+3. 在“报告 API 应用程序”页中，指向“应用程序 ID”，并单击“单击复制”。
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/11.png) 
 
@@ -165,19 +202,19 @@ ms.lasthandoff: 12/11/2017
    
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. 在“应用注册”边栏选项卡的应用列表中，单击“Reporting API 应用程序”。
+2. 在“应用注册”页的应用列表中，单击“报告 API 应用程序”。
 
 
-3. 在“Reporting API 应用程序”边栏选项卡的顶部工具栏中，单击“设置”。 
+3. 在“报告 API 应用程序”页顶部的工具栏中，单击“设置”。 
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/05.png)
 
-4. 在“设置”边栏选项卡的“APIR 访问”部分，单击“密钥”。 
+4. 在“设置”页的“APIR 访问”部分，单击“密钥”。 
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/12.png)
 
 
-5. 在“密钥”边栏选项卡中执行以下步骤：
+5. 在“密钥”页中执行以下步骤：
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/14.png)
 
@@ -185,12 +222,16 @@ ms.lasthandoff: 12/11/2017
 
     b. 选择“2 年内”作为“过期时间”。
 
-    c. 单击“保存” 。
+    c. 单击“ **保存**”。
 
     d. 复制密钥值。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 是否要以编程方式从 Azure AD 报告 API 中访问数据？ 请查看 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
-* 如果要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  
+
+- [使用具有证书的 Azure Active Directory 报告 API 获取数据](active-directory-reporting-api-with-certificates.md)。
+
+- [获取报告 API 的第一印象](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+
+- [创建自己的解决方案](active-directory-reporting-api-getting-started-azure-portal.md#customize)
 

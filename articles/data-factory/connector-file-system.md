@@ -11,23 +11,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: e765c5b0240eb1b0311210dc466d1bc0a43ae58f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2484ed3f1a03fe0cc20fe5b818ff8a9d73804c69
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011165"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从文件系统复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - 正式版](v1/data-factory-onprem-file-system-connector.md)
 > * [版本 2 - 预览版](connector-file-system.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从/向文件系统复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从/向文件系统复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的文件系统连接器](v1/data-factory-onprem-file-system-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的文件系统连接器](v1/data-factory-onprem-file-system-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -63,10 +64,13 @@ ms.lasthandoff: 03/23/2018
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>链接服务和数据集定义示例
 
-| 方案 | 链接服务定义中的“主机” | 数据集定义中的“folderPath” |
+| 场景 | 链接服务定义中的“主机” | 数据集定义中的“folderPath” |
 |:--- |:--- |:--- |
-| 集成运行时计算机上的本地文件夹： <br/><br/>示例：D:\\\* 或 D:\folder\subfolder\\\* |D:\\\\ |.\\\\ 或 folder\\\\subfolder |
-| 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
+| 集成运行时计算机上的本地文件夹： <br/><br/>示例：D:\\\* 或 D:\folder\subfolder\\\* |在 JSON 中：`D:\\`<br/>在 UI 上：`D:\` |在 JSON 中：`.\\` 或 `folder\\subfolder`<br>在 UI 上：`.\` 或 `folder\subfolder` |
+| 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\\* |在 JSON 中：`\\\\myserver\\share`<br/>在 UI 上：`\\myserver\share` |在 JSON 中：`.\\` 或 `folder\\subfolder`<br/>在 UI 上：`.\` 或 `folder\subfolder` |
+
+>[!NOTE]
+>通过 UI 创作时，无需输入双反斜杠 (`\\`) 即可转义就像通过 JSON 操作一样，请指定单个反斜杠。
 
 **示例：**
 
@@ -100,12 +104,16 @@ ms.lasthandoff: 03/23/2018
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：FileShare |是 |
-| folderPath | 文件夹路径。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |是 |
-| fileName | 如果需要向/从特定文件复制，则在 folderPath 中指定文件名。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件作为源，并自动生成文件名。<br/><br/>**接收器的 fileName 自动生成：**如果没有为输出数据集指定 fileName，并且没有在活动接收器中指定 preserveHierarchy，则复制活动会生成采用以下模式的文件名： <br/>- `Data_[activity run id]_[GUID].[format].[compression if configured]`. 例如： `Data_0a405f8a-93ff-4c6f-b3be-f69616f1df7a_0d143eda-d5b8-44df-82ec-95c50895ff80.txt.gz` <br/>- 或 `[Table name].[format].[compression if configured]` 用作关系源（如果未指定查询）。 例如：MySourceTable.orc。 |否 |
-| fileFilter | 指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。 仅当未指定 fileName 时应用。 <br/><br/>允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"fileFilter": "*.log"`<br/>- 示例 2：`"fileFilter": 2017-09-??.txt"` |否 |
+| folderPath | 文件夹路径。 不支持通配符筛选器。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |是 |
+| fileName | 指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且在活动接收器中没有指定 **preserveHierarchy**，则复制活动会自动生成采用以下格式的文件名：“*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*”。 例如，“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”。 |否 |
 | 格式 | 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果想要分析或生成具有特定格式的文件，则下面是支持的文件格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为：**最佳**和**最快**。 |否 |
 
+>[!TIP]
+>如需复制文件夹下的所有文件，请仅指定 **folderPath**。<br>如需复制具有给定名称的单个文件，请指定文件夹部分的 **folderPath** 和文件名部分的 **fileName**。<br>如需复制文件夹下的文件子集，请指定文件夹部分的 **folderPath** 和通配符筛选器部分的 **fileName**。
+
+>[!NOTE]
+>如果文件筛选器使用“fileFilter”属性，则在建议你今后使用添加到“fileName”的新筛选器功能时，仍按原样支持该属性。
 
 **示例：**
 

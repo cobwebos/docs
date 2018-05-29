@@ -9,11 +9,12 @@ ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 750f09c91a086b22df5e7557e4b6fc6a763499e2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a9cb627c4d8eff2226717dd675d24349730e90d5
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068715"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux 或 Mac 设备 - 预览
 
@@ -27,6 +28,15 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 在本主题中�
 
 * Python pip，用于安装 IoT Edge 运行时。
    * Linux：`sudo apt-get install python-pip`。
+      
+      > [!Note]
+      > 在某些分发版（如 Raspbian）上，可能还需要升级特定 pip 包并安装其他依赖项：
+      
+        ```
+        sudo pip install --upgrade setuptools pip
+        sudo apt-get install python2.7-dev libffi-dev libssl-dev
+        ```
+        
    * MacOS：`sudo easy_install pip`。
 * Docker，用于运行 IoT Edge 模块
    * [安装适用于 Linux 的 Docker][lnk-docker-ubuntu] 并确保其正在运行。 

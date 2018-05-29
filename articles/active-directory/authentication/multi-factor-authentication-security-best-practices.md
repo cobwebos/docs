@@ -1,33 +1,29 @@
 ---
-title: MFA 安全最佳实践 | Microsoft 文档
-description: 本文档提供有关配合使用 Azure MFA 与 Azure 帐户的最佳实践
+title: Azure 多重身份验证的安全指南
+description: 本文档提供有关配合使用 Azure MFA 与 Azure 帐户的指导
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: 3be7d968-96bb-4320-8701-869fd04a2595
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 0fd90c4e59fa64c24ecfa6d7d8f23e025210e078
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 76e622f500ee954852d7b42268318d35bb2133a4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868792"
 ---
-# <a name="security-best-practices-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>将 Azure 多重身份验证与 Azure AD 帐户配合使用时的安全最佳实践
+# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>将 Azure 多重身份验证与 Azure AD 帐户配合使用时的安全指南
 
 对于希望增强其身份验证过程的大多数组织来说，双重验证是其首选。 Azure 多重身份验证 (MFA) 可帮助公司满足其安全和法规遵从要求，同时为用户提供简单的登录体验。 本文介绍了计划采用 Azure MFA 时应考虑的一些提示。
 
 ## <a name="deploy-azure-mfa-in-the-cloud"></a>在云中部署 Azure MFA
 
-可通过两种方法为所有用户启用 Azure MFA。
+可通过两种方法[为所有用户启用 Azure MFA](howto-mfa-getstarted.md)。
 
 * 为每个用户购买许可证（Azure MFA、Azure AD Premium 或企业移动性 + 安全性）
 * 创建一个多重身份验证提供程序并按用户或按身份验证付费
@@ -46,12 +42,12 @@ ms.lasthandoff: 04/23/2018
 ### <a name="multi-factor-auth-provider"></a>Multi-Factor Auth 提供程序
 ![Multi-Factor Auth 提供程序](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-如果没有包含 Azure MFA 的许可证，可以创建 MFA 身份验证提供程序。 
+如果没有包含 Azure MFA 的许可证，可以[创建 MFA 身份验证提供程序](concept-mfa-authprovider.md)。
 
 创建身份验证提供程序时，需要选择一个目录并考虑以下详细信息：
 
-* 无需拥有 Azure AD 目录，即可创建多重身份验证提供程序；但如果有，可以使用更多功能。 将身份验证提供程序与 Azure AD 目录关联后会实现以下功能：  
-  * 将双重验证功能扩展到所有用户  
+* 无需拥有 Azure AD 目录，即可创建多重身份验证提供程序；但如果有，可以使用更多功能。 将身份验证提供程序与 Azure AD 目录关联后会实现以下功能：
+  * 将双重验证功能扩展到所有用户
   * 为全局管理员提供其他功能，如管理门户、自定义问候语和报告。
 * 若要将本地 Active Directory 环境与 Azure AD 目录同步，需要有 DirSync 或 AAD Sync。如果使用不与 Active Directory 的本地实例同步的 Azure AD 目录，则不需要 DirSync 或 AAD 同步。
 * 选择最适合业务的消耗模型。 使用模型一旦选择之后，就无法对其更改。 有以下两个模型：
@@ -65,7 +61,7 @@ ms.lasthandoff: 04/23/2018
 * 可以考虑使用 Azure MFA 中的[受信任的 IP 功能](howto-mfa-mfasettings.md#trusted-ips)来尽量减少双重验证。 使用此功能，托管或联合租户的管理员可以对从公司本地 Intranet 登录的用户免除双重验证。 这些功能适用于拥有 Azure AD Premium、Enterprise Mobility Suite 或 Azure 多重身份验证许可证的 Azure AD 租户。
 
 ## <a name="best-practices-for-an-on-premises-deployment"></a>本地部署的最佳做法
-如果公司决定利用自己的基础结构来启用 MFA，则需要在本地部署 Azure 多重身份验证服务器。 下图显示了 MFA 服务器的组件：
+如果公司决定利用自己的基础结构来启用 MFA，则需要[在本地部署 Azure 多重身份验证服务器](howto-mfaserver-deploy.md)。 下图显示了 MFA 服务器的组件：
 
 ![默认 MFA 服务器组件：控制台、同步引擎、管理门户、云服务](./media/multi-factor-authentication-security-best-practices/server.png) \*默认未安装 \**默认安装但未启用
 
@@ -112,4 +108,3 @@ Azure 多重身份验证服务器可以使用联合身份验证来保护云资�
 * [Azure 多重身份验证中的报告](howto-mfa-reporting.md)
 * [双重验证注册体验](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
 * [Azure 多重身份验证常见问题](multi-factor-authentication-faq.md)
-

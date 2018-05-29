@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: delhan
-ms.openlocfilehash: 0183da348a515787d9382df6db3df8524d584d93
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 38cc806cb77af60cda10f3aeac2e5ed13b445b8c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33941847"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-linux-virtual-machines-in-azure"></a>如何使用启用诊断功能来解决 Azure 中 Linux 虚拟机的问题
 
@@ -44,15 +45,20 @@ Azure 现在提供对两种调试功能的支持：控制台输出和屏幕截�
 - [FSTAB 错误](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>对新虚拟机启用诊断
-1. 从预览门户创建新的虚拟机时，请从部署模型下拉列表中选择 **Azure 资源管理器**：
+1. 从 Azure 门户创建新的虚拟机时，请从部署模型下拉列表中选择“Azure 资源管理器”：
  
     ![资源管理器](./media/boot-diagnostics/screenshot3.jpg)
 
-2. 配置“监视”选项，选择要在其中放置这些诊断文件的存储帐户。
+2. 在“设置”中启用“启动诊断”，然后选择要在其中放置这些诊断文件的存储帐户。
  
-    ![创建 VM](./media/boot-diagnostics/screenshot4.jpg)
+    ![创建 VM](./media/boot-diagnostics/create-storage-account.png)
 
-3. 要从 Azure 资源管理器模板进行部署，请导航到虚拟机资源，并追加诊断配置文件部分。 记得使用“2015-06-15”API 版本标头。
+    > [!NOTE]
+    > 启动诊断功能不支持高级存储帐户。 如果使用高级存储帐户进行启动诊断，则可能会在启动 VM 时收到 StorageAccountTypeNotSupported 错误。 
+    >
+    > 
+
+3. 若要从 Azure 资源管理器模板进行部署，请导航到虚拟机资源，并追加诊断配置文件部分。 记得使用“2015-06-15”API 版本标头。
 
     ```json
     {
@@ -74,11 +80,19 @@ Azure 现在提供对两种调试功能的支持：控制台输出和屏幕截�
         }
     ```
 
-## <a name="update-an-existing-virtual-machine"></a>更新现有虚拟机
+若要部署启用了启动诊断功能的示例虚拟机，请在此处查看我们的存储库。
 
-为了通过门户启用启动诊断功能，还可以通过门户更新现有虚拟机。 选择“启动诊断”选项，并选择“保存”。 重新启动 VM，使设置生效。
+## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>在现有的虚拟机上启用启动诊断 
 
-![更新现有 VM](./media/boot-diagnostics/screenshot5.png)
+若要在现有的虚拟机上启用启动诊断，请执行以下步骤：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择虚拟机。
+2. 在“支持 + 故障排除”中选择“启动诊断” > “设置”，将状态更改为“启用”，然后选择一个存储帐户。 
+4. 确保选中“启动诊断”选项，然后保存所做的更改。
+
+    ![更新现有 VM](./media/boot-diagnostics/enable-for-existing-vm.png)
+
+3. 重新启动 VM，使设置生效。
 
 ## <a name="next-steps"></a>后续步骤
 

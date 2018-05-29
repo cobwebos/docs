@@ -7,22 +7,27 @@ author: daveba
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 541055eeae5e2c0eaff2fb88d8e83fdc43ba08b0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2f24eaa65781eb56b641ed179536867ee514f668
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165445"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>如何使用 Azure VM 托管服务标识 (MSI) 获取令牌 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-本文提供有关获取令牌的各种代码和脚本示例，以及有关处理令牌过期和 HTTP 错误等重要主题的指导。 我们建议你为 IMDS 终结点使用托管服务标识，因为 VM 扩展终结点将被弃用。
+
+托管服务标识为 Azure 服务提供了 Azure Active Directory 中的自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
+
+本文提供有关获取令牌的各种代码和脚本示例，以及有关处理令牌过期和 HTTP 错误等重要主题的指导。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,14 +37,14 @@ ms.lasthandoff: 04/23/2018
 
 
 > [!IMPORTANT]
-> - 本文中的所有示例代码/脚本假设客户端在已启用 MSI 的虚拟机上运行。 在 Azure 门户中使用 VM 的“连接”功能远程连接到 VM。 有关在 VM 上启用 MSI 的详细信息，请参阅[使用 Azure 门户配置 VM 托管服务标识 (MSI)](qs-configure-portal-windows-vm.md)，或有关在不同的工具中（使用 PowerShell、CLI、模板或 Azure SDK）执行此操作的文章之一。 
+> - 本文中的所有示例代码/脚本假设客户端在具有托管服务标识的虚拟机上运行。 在 Azure 门户中使用 VM 的“连接”功能远程连接到 VM。 有关在 VM 上启用 MSI 的详细信息，请参阅[使用 Azure 门户配置 VM 托管服务标识 (MSI)](qs-configure-portal-windows-vm.md)，或有关在不同的工具中（使用 PowerShell、CLI、模板或 Azure SDK）执行此操作的文章之一。 
 
 > [!IMPORTANT]
-> - 托管标识的安全边界是资源。 在启用了 MSI 的虚拟机上运行的所有代码/脚本都可以请求和检索令牌。 
+> - 托管服务标识的安全边界是正被使用的资源。 虚拟机上运行的所有代码/脚本都可以请求和检索虚拟机上可用的任何托管服务标识的令牌。 
 
 ## <a name="overview"></a>概述
 
-客户端应用程序可以请求 MSI [仅限应用的访问令牌](../develop/active-directory-dev-glossary.md#access-token)用于访问给定的资源。 该令牌[基于 MSI 服务主体](overview.md#how-does-it-work)。 因此，客户端无需注册自身即可使用自己的服务主体获取访问令牌。 该令牌适合在[需要客户端凭据的服务到服务调用](../develop/active-directory-protocols-oauth-service-to-service.md)中用作持有者令牌。
+客户端应用程序可以请求托管服务标识[仅限应用的访问令牌](../develop/active-directory-dev-glossary.md#access-token)用于访问给定的资源。 该令牌[基于 MSI 服务主体](overview.md#how-does-it-work)。 因此，客户端无需注册自身即可使用自己的服务主体获取访问令牌。 该令牌适合在[需要客户端凭据的服务到服务调用](../develop/active-directory-protocols-oauth-service-to-service.md)中用作持有者令牌。
 
 |  |  |
 | -------------- | -------------------- |
@@ -48,7 +53,7 @@ ms.lasthandoff: 04/23/2018
 | [使用 Go 获取令牌](#get-a-token-using-go) | 从 Go 客户端使用 MSI REST 终结点的示例 |
 | [使用 Azure PowerShell 获取令牌](#get-a-token-using-azure-powershell) | 从 PowerShell 客户端使用 MSI REST 终结点的示例 |
 | [使用 CURL 获取令牌](#get-a-token-using-curl) | 从 Bash/CURL 客户端使用 MSI REST 终结点的示例 |
-| [处理令牌过期](#handling-token-expiration) | 有关处理过期访问令牌的指导 |
+| [处理令牌缓存](#handling-token-caching) | 有关处理过期访问令牌的指导 |
 | [错误处理](#error-handling) | 有关处理从 MSI 令牌终结点返回的 HTTP 错误的指导 |
 | [Azure 服务的资源 ID](#resource-ids-for-azure-services) | 在何处获取受支持 Azure 服务的资源 ID |
 
@@ -56,10 +61,10 @@ ms.lasthandoff: 04/23/2018
 
 用于获取访问令牌的基本接口基于 REST，因此，在 VM 上运行的、可发出 HTTP REST 调用的任何客户端应用程序都可以访问该接口。 此接口类似于 Azure AD 编程模型，不同的是，客户端使用虚拟机上的终结点（而不是使用 Azure AD 终结点）。
 
-使用 MSI 实例元数据服务 (IMDS) 终结点*（推荐使用）*的示例请求：
+使用 Azure 实例元数据服务 (IMDS) 终结点（推荐使用）的示例请求：
 
 ```
-GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1 Metadata: true
+GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
 | 元素 | 说明 |
@@ -70,7 +75,7 @@ GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01
 | `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 https://management.azure.com/ 的令牌。 |
 | `Metadata` | 一个 HTTP 请求标头字段，MSI 需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。
 
-使用 MSI VM 扩展终结点（即将弃用）的示例请求：
+使用托管服务标识 (MSI) VM 扩展终结点（即将弃用）的示例请求：
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -264,23 +269,25 @@ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sy
 echo The MSI access token is $access_token
 ```
 
-## <a name="token-expiration"></a>令牌过期 
+## <a name="token-caching"></a>令牌缓存
 
-如果将令牌缓存在代码中，应该准备好处理资源指出令牌已过期的情况。 
+正在使用的托管服务标识 (MSI) 子系统（IMDS/MSI VM 扩展）缓存令牌时，我们还建议在代码中实现令牌缓存。 因此，应准备资源指示令牌已过期的方案。 
 
-注意：因为 IMDS MSI 子系统会缓存令牌，所以仅在下列情况下会对 Azure AD 结果进行在线调用：
-- 由于缓存中没有令牌，发生了缓存未命中
-- 令牌已过期
+仅在下列情况下会对 Azure AD 结果进行在线调用：
+- 由于 MSI 子系统缓存中没有令牌，发生了缓存未命中
+- 缓存令牌已过期
 
 ## <a name="error-handling"></a>错误处理。
 
-MSI 终结点通过 HTTP 响应消息标头的状态代码字段，以 4xx 或 5xx 错误的形式指示错误：
+托管服务标识终结点通过 HTTP 响应消息标头的状态代码字段，以 4xx 或 5xx 错误的形式指示错误：
 
 | 状态代码 | 错误原因 | 处理方式 |
 | ----------- | ------------ | ------------- |
+| 404 未找到。 | 正在更新 IMDS 终结点。 | 使用指数补偿重试。 请参阅下面的指南。 |
 | 429 请求过多 |  达到 IMDS 节流限制。 | 使用指数补偿重试。 请参阅下面的指南。 |
 | 请求中出现 4xx 错误。 | 一个或多个请求参数不正确。 | 请勿重试。  查看错误详细信息了解更多信息。  4xx 错误属于设计时错误。|
 | 服务出现 5xx 暂时性错误。 | MSI 子系统或 Azure Active Directory 返回了暂时性错误。 | 至少等待 1 秒后可以安全重试。  如果重试过快或过于频繁，IMDS 和/或 Azure AD 可能会返回速率限制错误 (429)。|
+| timeout | 正在更新 IMDS 终结点。 | 使用指数补偿重试。 请参阅下面的指南。 |
 
 如果发生错误，相应的 HTTP 响应正文将包含 JSON 和错误详细信息：
 
@@ -303,11 +310,11 @@ MSI 终结点通过 HTTP 响应消息标头的状态代码字段，以 4xx 或 5
 |           | access_denied | 资源所有者或授权服务器拒绝了请求。 |  |
 |           | unsupported_response_type | 授权服务器不支持使用此方法获取访问令牌。 |  |
 |           | invalid_scope | 请求的范围无效、未知或格式不正确。 |  |
-| 500 内部服务器错误 | 未知 | 无法从 Active Directory 检索令牌。 有关详细信息，请参阅 \<文件路径\> 中的日志 | 检查是否已在 VM 上启用 MSI。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户配置 VM 托管服务标识 (MSI)](qs-configure-portal-windows-vm.md)。<br><br>另请检查是否已正确设置 HTTP GET 请求 URI 的格式，尤其是查询字符串中指定的资源 URI。 有关示例，请参阅[前面 REST 部分](#rest)中的“示例请求”；有关服务的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](overview.md#azure-services-that-support-azure-ad-authentication)。
+| 500 内部服务器错误 | 未知 | 无法从 Active Directory 检索令牌。 有关详细信息，请参阅 \<文件路径\> 中的日志 | 检查是否已在 VM 上启用 MSI。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户配置 VM 托管服务标识 (MSI)](qs-configure-portal-windows-vm.md)。<br><br>另请检查是否已正确设置 HTTP GET 请求 URI 的格式，尤其是查询字符串中指定的资源 URI。 有关示例，请参阅[前面 REST 部分](#rest)中的“示例请求”；有关服务的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](services-support-msi.md)。
 
-## <a name="throttling-guidance"></a>限制指南 
+## <a name="retry-guidance"></a>重试指南 
 
-限制适用于对 MSI IMDS 终结点所做的调用次数。 当超出限制阈值时，MSI IMDS 终结点在限制有效时限制任何后续请求。 在此期间，MSI IMDS 终结点将返回 HTTP 状态码 429（“请求过多”），并且请求失败。 
+限制适用于对 IMDS 终结点所做的调用次数。 当超出限制阈值时，IMDS 终结点在限制有效时限制任何后续请求。 在此期间，IMDS 终结点将返回 HTTP 状态码 429（“请求过多”），并且请求失败。 
 
 若要重试，建议使用以下策略： 
 
@@ -317,7 +324,7 @@ MSI 终结点通过 HTTP 响应消息标头的状态代码字段，以 4xx 或 5
 
 ## <a name="resource-ids-for-azure-services"></a>Azure 服务的资源 ID
 
-有关支持 Azure AD 且已使用 MSI 进行测试的资源列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](overview.md#azure-services-that-support-azure-ad-authentication)。
+有关支持 Azure AD 且已使用 MSI 进行测试的资源列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](services-support-msi.md)。
 
 
 ## <a name="related-content"></a>相关内容

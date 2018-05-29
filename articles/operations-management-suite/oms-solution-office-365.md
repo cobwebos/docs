@@ -1,35 +1,36 @@
 ---
-title: "Operations Management Suite (OMS) 中的 Office 365 解决方案 | Microsoft Docs"
-description: "本文详细介绍如何配置和使用 OMS 中的 Office 365 解决方案。  包括详细阐释 Log Analytics 中创建的 Office 365 记录。"
+title: Azure 中的 Office 365 管理解决方案 | Microsoft Docs
+description: 本文详细介绍如何配置和使用 Azure 中的 Office 365 解决方案。  包括详细阐释 Log Analytics 中创建的 Office 365 记录。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 711071eaff7ab5e5199793663aa3cbb36a1e8d8a
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 8797e08ad942687b7d2defd765f4fe3f9765812f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777842"
 ---
-# <a name="office-365-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) 中的 Office 365 解决方案
+# <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览）
 
 ![Office 365 徽标](media/oms-solution-office-365/icon.png)
 
-通过 Operations Management Suite (OMS) 的 Office 365 解决方案，可在 Log Analytics 中监视 Office 365 环境。  
+通过 Office 365 管理解决方案，可在 Log Analytics 中监视 Office 365 环境。
 
 - 监视 Office 365 帐户的用户活动，以分析使用模式和确定行为趋势。 例如，可提取特定使用方案，例如组织外共享的文件或最常用的 SharePoint 网站。
 - 监视管理员活动，以跟踪配置更改或高特权操作。
 - 检测并调查多余的用户行为，此操作可根据组织需求进行自定义。
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
-- 通过对组织的 Office 365 活动数据使用 OMS 搜索，执行操作故障排除。
+- 通过对组织的 Office 365 活动数据使用[日志搜索](../log-analytics/log-analytics-log-search.md)，执行操作故障排除。
 
 ## <a name="prerequisites"></a>先决条件
 需要以下各项才能安装和配置此解决方案。
@@ -47,7 +48,7 @@ ms.lasthandoff: 10/16/2017
 ## <a name="configuration"></a>配置
 [向订阅添加 Office 365 解决方案](../log-analytics/log-analytics-add-solutions.md)后，必须将其连接到 Office 365 订阅。
 
-1. 使用[添加解决方案](../log-analytics/log-analytics-add-solutions.md)中所述的过程，将警报管理解决方案添加到 OMS 工作区。
+1. 使用[“添加解决方案”](../log-analytics/log-analytics-add-solutions.md)中所述的流程，将警报管理解决方案添加到 Log Analytics 工作区。
 2. 在 OMS 门户中，转到“设置”。
 3. 在“连接的源”下，选择“Office 365”。
 4. 单击“连接 Office 365”。<br>![连接 Office 365](media/oms-solution-office-365/configure.png)
@@ -63,7 +64,7 @@ Office 365 解决方案不会从任何 [OMS 代理](../log-analytics/log-analyti
 每次创建一条记录时，Office 365 都会向 Log Analytics 发送带详细数据的 [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)。
 
 ## <a name="using-the-solution"></a>使用解决方案
-向 OMS 工作区添加 Office 365 解决方案时，“Office 365”磁贴将添加到 OMS 仪表板。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
+向 Log Analytics 工作区添加 Office 365 解决方案时，“Office 365”磁贴将添加到你的仪表板。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
 ![Office 365 摘要磁贴](media/oms-solution-office-365/tile.png)  
 
 单击“Office 365”磁贴，打开“Office 365”仪表板。
@@ -100,7 +101,7 @@ Office 365 解决方案在 Log Analytics 工作区中创建的所有记录都具
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
 | UserId | 执行使系统记下记录的操作的用户的 UPN（用户主体名称），例如 my_name@my_domain_name。 请注意，还包括系统帐户（例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM）执行的活动的记录。 | 
 | UserKey | UserId 属性中标识的用户的备用 ID。  例如，此属性由 SharePoint、OneDrive for Business 和 Exchange 中用户执行的事件的 Passport 唯一 ID (PUID) 进行填充。 此属性还可为其他服务中发生的事件以及系统帐户执行的事件指定与 UserID 属性相同的值|
-| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
+| UserType | 执行操作的用户的类型。<br><br>管理员<br>Application<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
@@ -170,7 +171,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | ModifiedObjectResolvedName |  这是由 cmdlet 修改的对象的用户友好名称。 仅在 cmdlet 修改对象时才记录此信息。 |
 | OrganizationName | 租户的名称。 |
 | OriginatingServer | 从中执行 cmdlet 的服务器的名称。 |
-| Parameters | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
+| parameters | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
 
 
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
@@ -294,9 +295,9 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 | 状态 | 说明 |
 |:--|:--|
-| 活动 | Office 365 订阅处于活动状态，且工作负荷已成功连接到 OMS 工作区。 |
-| 挂起 | Office 365 订阅处于活动状态，但工作负荷尚未成功连接到 OMS 工作区。 首次连接 Office 365 订阅时，所有工作负荷都将处于此状态直至成功连接。 请等待 24 小时，待所有工作负荷切换为“活动”。 |
-| 非活动 | Office 365 订阅处于非活动状态。 请查看 Office 365 管理员页面了解详细信息。 激活 Office 365 订阅后，从 OMS 工作区取消链接它，再重新链接开始接收数据。 |
+| 活动 | Office 365 订阅处于活动状态，且工作负荷已成功连接到 Log Analytics 工作区。 |
+| 挂起的 | Office 365 订阅处于活动状态，但工作负荷尚未成功连接到 Log Analytics 工作区。 首次连接 Office 365 订阅时，所有工作负荷都将处于此状态直至成功连接。 请等待 24 小时，待所有工作负荷切换为“活动”。 |
+| 非活动 | Office 365 订阅处于非活动状态。 请查看 Office 365 管理员页面了解详细信息。 激活 Office 365 订阅后，从 Log Analytics 工作区取消链接它，再重新链接以开始接收数据。 |
 
 
 

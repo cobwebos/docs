@@ -1,19 +1,20 @@
 ---
-title: "使用 Azure Site Recovery 保护 Active Directory 和 DNS | Microsoft 文档"
-description: "本文介绍如何使用 Azure Site Recovery 为 Active Directory 实现灾难恢复解决方案。"
+title: 使用 Azure Site Recovery 保护 Active Directory 和 DNS | Microsoft 文档
+description: 本文介绍如何使用 Azure Site Recovery 为 Active Directory 实现灾难恢复解决方案。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 97923af5ed4191f66434166c4743e398f8ac635a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072600"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>使用 Azure Site Recovery 保护 Active Directory 和 DNS
 
@@ -57,16 +58,16 @@ ms.lasthandoff: 03/08/2018
 在辅助站点上创建域控制器。 将服务器提升为域控制器角色时，请指定在主站点中使用的同一域名。 可以使用 **Active Directory 站点和服务**管理单元来配置站点要添加到的站点链接对象的设置。 通过在站点链接上配置设置，可以控制何时在两个或更多站点之间进行复制，以及复制的频率。 有关详细信息，请参阅[计划站点之间的复制](https://technet.microsoft.com/library/cc731862.aspx)。
 
 ### <a name="site-to-azure-protection"></a>站点到 Azure 的保护
-首先，[在 Azure 虚拟网络中创建域控制器](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)。 将服务器提升为域控制器角色时，请指定主站点中使用的同一域名。
+首先，在 Azure 虚拟网络中创建域控制器。 将服务器提升为域控制器角色时，请指定主站点中使用的同一域名。
 
-然后，[重新配置虚拟网络的 DNS 服务器](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network)，以便在 Azure 中使用 DNS 服务器。
+然后，为虚拟网络重新配置 DNS 服务器以在 Azure 中使用 DNS 服务器。
 
 ![Azure 网络](./media/site-recovery-active-directory/azure-network.png)
 
 ### <a name="azure-to-azure-protection"></a>Azure 到 Azure 的保护
-首先，[在 Azure 虚拟网络中创建域控制器](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)。 将服务器提升为域控制器角色时，请指定主站点中使用的同一域名。
+首先，在 Azure 虚拟网络中创建域控制器。 将服务器提升为域控制器角色时，请指定主站点中使用的同一域名。
 
-然后，[重新配置虚拟网络的 DNS 服务器](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network)，以便在 Azure 中使用 DNS 服务器。
+然后，为虚拟网络重新配置 DNS 服务器以在 Azure 中使用 DNS 服务器。
 
 ## <a name="test-failover-considerations"></a>测试故障转移注意事项
 为避免对生产工作负荷造成影响，测试故障转移在与生产网络隔离的网络中进行。

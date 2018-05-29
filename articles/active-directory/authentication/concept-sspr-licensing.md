@@ -2,29 +2,24 @@
 title: 许可证自助密码重置 - Azure Active Directory
 description: Azure AD 自助密码重置的授权要求
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: cebfc1dcaca562d26eb9e85d9b8bf0fa14e5edc9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 78d4d721f2821a8365185c0bad6d795c67a75292
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33864648"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD 自助密码重置的授权要求
 
-要使 Azure Active Directory (Azure AD) 密码重置正常工作，*必须在组织中至少分配一个许可证*。 我们不对密码重置体验强制实施每用户授权。 为了遵守 Microsoft 许可协议，需要向使用高级功能的所有用户分配许可证。
+要使 Azure Active Directory (Azure AD) 密码重置正常工作，*必须在组织中至少分配一个许可证*。 我们不对密码重置体验强制实施每用户授权。 如果用户从该许可证覆盖的任意功能中受益（无论间接还是直接），都需要相应的许可证。
 
 * **仅限云用户**：Office 365 任何付费 SKU 或 Azure AD Basic
 * **云**或**本地用户**：Azure AD Premium P1 或 P2、企业移动性 + 安全性 (EMS) 或 Microsoft 365
@@ -37,8 +32,9 @@ ms.lasthandoff: 04/23/2018
 * Azure AD Premium P2
 * 企业移动性 + 安全性 E3
 * 企业移动性 + 安全性 E5
-* Microsoft 365（计划 E3）
-* Microsoft 365（计划 E5）
+* Microsoft 365 E3
+* Microsoft 365 E5
+* Microsoft 365 F1
 
 > [!WARNING]
 > 独立 Office 365 许可计划*不支持密码写回*，要使此功能正常工作，需要使用上述计划之一。

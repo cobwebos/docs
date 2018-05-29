@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940181"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
@@ -120,7 +121,7 @@ ms.lasthandoff: 03/29/2018
 
 4. 选择要将前端 IP 池添加到的负载均衡器 (**mylb**)。
 
-5. 在“设置”下，选择“前端池”。 在下一个窗格中的顶部附近，选择“添加”。
+5. 在“设置”下，选择“前端 IP 配置”。 在下一个窗格中的顶部附近，选择“添加”。
 
 6. 键入前端 IP 地址的名称（例如 **contosofe** 或 **fabrikamfe**）。
 
@@ -128,7 +129,7 @@ ms.lasthandoff: 03/29/2018
 
 8. 重复本部分中的<a href="#step3-3">步骤 3</a> 至<a href="#step3-7">步骤 7</a>，创建第二个前端 IP 地址。
 
-配置前端池后，IP 地址会显示在负载均衡器的“前端 IP 池”设置下。 
+配置前端池后，IP 地址会显示在负载均衡器的“前端 IP 配置”设置下。 
     
 ### <a name="step-4-configure-the-back-end-pool"></a>步骤 4：配置后端池
 

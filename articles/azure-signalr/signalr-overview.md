@@ -12,13 +12,16 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/17/2018
 ms.author: wesmc
-ms.openlocfilehash: e24091b017a1c6c82cfe8d12873223b98c165c63
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bc144fb1d7db9251871e7e181b012417a32de7e6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868103"
 ---
 # <a name="what-is-azure-signalr-service"></a>什么是 Azure SignalR 服务
+
+Microsoft Azure SignalR 服务目前提供[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure SignalR 服务是基于 [ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction) 的 Azure 服务。 ASP.NET Core SignalR 是一个[开源库](https://github.com/aspnet/signalr)，可简化通过 HTTP 向应用程序添加实时 Web 功能的过程。 此实时功能允许 Web 服务器将内容更新推送到连接的客户端。 因此，无需轮询服务器，或提交针对更新的新 HTTP 请求，即可更新客户端。
 
@@ -37,7 +40,7 @@ Azure SignalR 服务是基于 [ASP.NET Core SignalR](https://docs.microsoft.com/
 
 ## <a name="developing-signalr-apps"></a>开发 SignalR 应用
 
-目前，可在 Web 应用程序中使用两个版本的 SignalR：SignalR for ASP.NET 和 ASP.NET Core SignalR（此为最新版）。 Azure SignalR 服务（也称 SignalR 服务）是在 ASP.NET Core SignalR 上构建的 Azure 托管服务。 
+目前，可在 Web 应用程序中使用两个版本的 SignalR：SignalR for ASP.NET 和 ASP.NET Core SignalR（此为最新版）。 Azure SignalR 服务是在 ASP.NET Core SignalR 上构建的 Azure 托管服务。 
 
 ASP.NET Core SignalR 是以前版本的重写。 因此，ASP.NET Core SignalR 不与早期的 SignalR 版本后向兼容。 API 和行为不同。 ASP.NET Core SignalR SDK 是 .NET Standard，因此仍可在 .NET Framework 中使用。 但是，必须改用新的 API（而不是旧的 API）。 如果正在使用 SignalR 并且想要迁移到 ASP.NET Core SignalR 或 Azure SignalR 服务，那么需要更改代码来处理 API 差异。
 

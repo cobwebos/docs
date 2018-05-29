@@ -1,11 +1,11 @@
 ---
-title: "应用程序代理应用程序加载耗时过长 | Microsoft Docs"
-description: "对 Azure AD 应用程序代理的页面加载性能问题进行故障排除"
+title: 应用程序代理应用程序加载耗时过长 | Microsoft Docs
+description: 对 Azure AD 应用程序代理的页面加载性能问题进行故障排除
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,27 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d02c29fa6239cb36cb5fb95da4d325cca57952aa
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 34422cb42768ddbc2997da3eec3d35c11e272855
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158500"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>应用程序代理应用程序加载耗时过长
 
-本文可帮助了解 Azure AD 应用程序代理应用程序加载耗时过长的原因，以及解决此问题的方法。
+本文可帮助了解 Azure AD 应用程序代理应用程序加载耗时过长的原因。 另外，还介绍了可以执行哪些操作来解决此问题。
 
 ## <a name="overview"></a>概述
-如果应用程序可以运行但存在长延迟，可以考虑对网络拓扑进行一些微调来提高速度。 有关不同拓扑的评估，请参阅[网络注意事项文档](https://docs.microsoft.com/azure/active-directory/application-proxy-network-topology-considerations)。
+尽管你的应用程序正在运行，也可能会发生长时间延迟。 你可能需要进行网络拓扑调整以提高速度。 有关不同拓扑的评估，请参阅[网络注意事项文档](manage-apps/application-proxy-network-topology.md)。
 
-如果这些注意事项并未奏效，很遗憾，我们当前无法提供进一步的性能调整建议。 随着应用程序代理服务扩展到更多数据中心并且可能更贴近用户，用户可直观地看到延迟得以改善。 若要查看 Azure 数据中心的完整列表，可以查看[延迟测试页](http://www.azurespeed.com/Azure/Latency)。 
+除了网络拓扑之外，目前还没有关于性能调整的更多建议。 随着应用程序代理服务的扩展，可能会有物理上更为接近的数据中心。 距离上的接近可能有助于缓解延迟。 有关 Azure 数据中心列表，请参阅[延迟测试页](http://www.azurespeed.com/Azure/Latency)。 
 
 具有应用程序代理服务的数据中心可以在[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)上找到。 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>有关应用程序代理数据中心位置的反馈 
-到目前为止，可能有 Azure 数据中心未包含应用程序代理，但会带来很大的延迟改进。 请通过电子邮件将数据中心位置发送至 <aadapfeedback@microsoft.com>，以便我们可以在扩展时使用反馈进行规划。
+可能有的 Azure 数据中心尚未包含应用程序代理，但会为你带来很大的延迟改进。 将数据中心位置发送到 aadapfeedback@microsoft.com。Microsoft 将根据你的反馈来扩展计划。
 
-我们正致力于推出一些附加功能，以帮助当前面临长延迟的租户改善延迟，并确保一旦可用，便会共享文档。
+Microsoft 正在致力研究改进延迟的附加功能。 这些改进一旦推出，就会及时更新文档。
 
 ## <a name="next-steps"></a>后续步骤
-[使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md)
+[使用现有的本地代理服务器](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)

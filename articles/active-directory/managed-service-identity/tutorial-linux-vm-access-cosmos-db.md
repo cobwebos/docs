@@ -7,19 +7,21 @@ author: daveba
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: skwan
-ms.openlocfilehash: 692bc5eb401ccda36ef42006de509144170f7757
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b84426ad28dbc2264bd9b28fe0697a88390bb58d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304124"
 ---
-# <a name="use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>使用 Linux VM MSI 访问 Azure Cosmos DB 
+# <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>教程：使用 Linux VM MSI 访问 Azure Cosmos DB 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -72,29 +74,30 @@ ms.lasthandoff: 04/23/2018
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
+   ```
 
-## Create a Cosmos DB account 
+## <a name="create-a-cosmos-db-account"></a>创建 Cosmos DB 帐户 
 
-If you don't already have one, create a Cosmos DB account. You can skip this step and use an existing Cosmos DB account. 
+如果还没有 Cosmos DB 帐户，请创建一个。 可以跳过此步骤，使用现有的 Cosmos DB 帐户。 
 
-1. Click the **+/Create new service** button found on the upper left-hand corner of the Azure portal.
-2. Click **Databases**, then **Azure Cosmos DB**, and a new "New account" panel  displays.
-3. Enter an **ID** for the Cosmos DB account, which you use later.  
-4. **API** should be set to "SQL." The approach described in this tutorial can be used with the other available API types, but the steps in this tutorial are for the SQL API.
-5. Ensure the **Subscription** and **Resource Group** match the ones you specified when you created your VM in the previous step.  Select a **Location** where Cosmos DB is available.
-6. Click **Create**.
+1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
+2. 单击“数据库”，然后单击“Azure Cosmos DB”，新的“新建帐户”面板便会显示。
+3. 输入 Cosmos DB 帐户的 **ID**，供以后使用。  
+4. **API** 应设置为“SQL”。 本教程中介绍的方法可以与其他可用的 API 类型配合使用，但本教程中的步骤是针对 SQL API 的。
+5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。  选择提供 Cosmos DB 的“位置”。
+6. 单击“创建”。
 
-## Create a collection in the Cosmos DB account
+## <a name="create-a-collection-in-the-cosmos-db-account"></a>在 Cosmos DB 帐户中创建集合
 
-Next, add a data collection in the Cosmos DB account that you can query in later steps.
+接下来，在 Cosmos DB 帐户中添加数据集合，以便在后续步骤中进行查询。
 
-1. Navigate to your newly created Cosmos DB account.
-2. On the **Overview** tab click the **+/Add Collection** button, and an "Add Collection" panel slides out.
-3. Give the collection a database ID, collection ID, select a storage capacity, enter a partition key, enter a throughput value, then click **OK**.  For this tutorial, it is sufficient to use "Test" as the database ID and collection ID, select a fixed storage capacity and lowest throughput (400 RU/s).  
+1. 导航到新创建的 Cosmos DB 帐户。
+2. 在“概览”选项卡中单击“+/添加集合”按钮，此时“添加集合”面板就会滑出。
+3. 为集合提供数据库 ID、集合 ID，选择存储容量，输入分区键，输入吞吐量值，然后单击“确定”。  就本教程来说，使用“测试”作为数据库 ID 和集合 ID，选择固定的存储容量和最低吞吐量（400 RU/秒）就可以了。  
 
-## Retrieve the `principalID` of the Linux VM's MSI
+## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>检索 Linux VM 的 MSI 的 `principalID`
 
-To gain access to the Cosmos DB account access keys from the Resource Manager in the following section, you need to retrieve the `principalID` of the Linux VM's MSI.  Be sure to replace the `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (resource group in which you VM resides), and `<VM NAME>` parameter values with your own values.
+若要在下一节中从资源管理器获得对 Cosmos DB 帐户访问密钥的访问，需要检索 Linux VM 的 MSI 的 `principalID`。  请务必将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`（VM 所在的资源组）和 `<VM NAME>` 参数值替换为你自己的值。
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01

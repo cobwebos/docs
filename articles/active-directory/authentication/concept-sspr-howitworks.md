@@ -2,25 +2,20 @@
 title: 自助密码重置工作原理 - Azure Active Directory
 description: Azure AD 自助密码重置深入探讨
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: 618c5908-5bf6-4f0d-bf88-5168dfb28a88
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: 5933448b40a590b39df5ae4cf07fd858bebcd28f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868598"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -49,7 +44,7 @@ ms.lasthandoff: 04/23/2018
        * 如果未配置用户质询，则建议用户联系其管理员重置其密码。
      * 如果策略要求两次质询，则确保用户具有针对由管理员策略启用的至少两个质询定义的适当数据。
        * 如果未配置用户质询，则建议用户联系其管理员重置其密码。
-   * 检查是否在本地管理用户密码（联合或密码哈希同步）。
+   * 检查是否在本地管理用户密码（联合、直通身份验证或密码哈希同步）。
      * 如果已部署写回且在本地管理用户密码，则允许用户继续进行身份验证并重置其密码。
      * 如果未部署写回且在本地管理用户密码，则要求用户联系其管理员重置其密码。
 4. 如果确定用户能够成功重置其密码，则将指导用户完成重置过程。
@@ -224,8 +219,8 @@ ms.lasthandoff: 04/23/2018
 
 此控制机制确定是否为此目录启用了密码写回。 如果已启用写回，则指示本地写回服务的状态。 如果想要暂时禁用密码写回且无需重新配置 Azure AD Connect，此设置将很有用。
 
-* 如果此开关设置为“是”，则会启用写回，因此联合用户和已进行密码哈希同步的用户能够重置其密码。
-* 如果此开关设置为“否”，则会禁用写回，因此联合用户和已进行密码哈希同步的用户无法重置其密码。
+* 如果此开关设置为“是”，则会启用写回，因此联合用户、直通身份验证用户或已进行密码哈希同步的用户能够重置其密码。
+* 如果此开关设置为“否”，则会禁用写回，因此联合用户、直通身份验证用户或已进行密码哈希同步的用户无法重置其密码。
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>允许用户在不重置密码的情况下解锁帐户
 

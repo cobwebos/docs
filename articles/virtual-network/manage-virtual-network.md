@@ -15,20 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ce858553a67bce714ceae43a5bb2f86839d9c507
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 56839c38de135a805c51bb96ad5d7abc41ebcad7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895352"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
-了解如何创建和删除虚拟网络以及更改现有虚拟网络的设置，如 DNS 服务器和 IP 地址空间。
-
-虚拟网络是你自己的网络在云中的表示形式。 虚拟网络是对专用于 Azure 订阅的 Azure 云进行的逻辑隔离。 对于所创建的每个虚拟网络，可以：
-- 选择要分配的地址空间。 地址空间由通过无类别域际路由选择 (CIDR) 表示法定义的一个或多个地址范围组成，如 10.0.0.0/16。
-- 选择使用 Azure 提供的 DNS 服务器，或使用自己的 DNS 服务器。 连接到虚拟网络的所有资源都会分配有此 DNS 服务器，以便解析虚拟网络内的名称。
-- 将虚拟网络分段为子网，每个子网在虚拟网络的地址空间内都有其自己的地址范围。 若要了解如何创建、更改和删除子网，请阅读[添加、更改或删除子网](virtual-network-manage-subnet.md)。
+了解如何创建和删除虚拟网络以及更改现有虚拟网络的设置，如 DNS 服务器和 IP 地址空间。 如果不熟悉虚拟网络，可在[虚拟网络概述](virtual-networks-overview.md)中或通过完成[教程](quick-create-portal.md)了解相关详细信息。 虚拟网络包含子网。 若要了解如何创建、更改和删除子网，请阅读[管理子网](virtual-network-manage-subnet.md)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -36,8 +32,9 @@ ms.lasthandoff: 04/28/2018
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 5.2.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
-- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.26 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
+- 必须将登录或连接到 Azure 所用的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[权限](#permissions)”中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -76,7 +73,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="view-virtual-networks-and-settings"></a>查看虚拟网络和设置
 
-1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请选择它。
+1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请将其选中。
 2. 在虚拟网络列表中，选择要查看其设置的虚拟网络。
 3. 将列出所选虚拟网络的以下设置：
     - 概述：提供有关虚拟网络的信息，包括地址空间和 DNS 服务器。 以下屏幕截图显示了名为 **MyVNet** 的虚拟网络的概述设置：
@@ -94,7 +91,7 @@ ms.lasthandoff: 04/28/2018
     - 常见 Azure 设置：若要详细了解常见的 Azure 设置，请参阅以下信息：
         *   [活动日志](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
         *   [访问控制 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-        *   [标记](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+        *   [标记](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [锁](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [自动化脚本](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -115,7 +112,7 @@ ms.lasthandoff: 04/28/2018
 
 添加或删除地址范围：
 
-1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请选择它。
+1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请将其选中。
 2. 在虚拟网络列表中，单击要为其添加或删除地址范围的虚拟网络。
 3. 选择“设置”下的“地址空间”。
 4. 完成以下选项之一：
@@ -132,7 +129,7 @@ ms.lasthandoff: 04/28/2018
 
 所有连接到虚拟网络的 VM 都会注册为虚拟网络指定的 DNS 服务器。 它们还使用指定的 DNS 服务器进行名称解析。 VM 中的每个网络接口 (NIC) 可以有自己的 DNS 服务器设置。 如果 NIC 有自己的 DNS 服务器设置，它们将替代虚拟网络的 DNS 服务器设置。 若要了解有关 NIC DNS 设置的详细信息，请参阅[网络接口任务和设置](virtual-network-network-interface.md#change-dns-servers)。 若要详细了解 Azure 云服务中 VM 和角色实例的名称解析，请参阅 [VM 和角色实例的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)。 添加、更改或删除 DNS 服务器：
 
-1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请选择它。
+1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请将其选中。
 2. 在虚拟网络列表中，选择要更改其 DNS 服务器的虚拟网络。
 3.  选择“设置”下的“DNS 服务器”。
 4. 选择以下选项之一：
@@ -154,7 +151,7 @@ ms.lasthandoff: 04/28/2018
 
 只有在没有资源连接到虚拟网络的情况下，才能删除该虚拟网络。 如果还有资源连接到虚拟网络中的任何子网，则必须首先删除已连接到虚拟网络中所有子网的资源。 删除资源所采取的步骤因资源而异。 若要了解如何删除已连接到子网的资源，请阅读针对要删除的每种资源类型的相关文档。 删除虚拟网络：
 
-1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请选择它。
+1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请将其选中。
 2. 从虚拟网络列表中，选择要删除的虚拟网络。
 3. 在“设置”下单击“已连接的设备”，以确认没有设备连接到该虚拟网络。 如果有连接的设备，则必须先删除它们，然后才能删除虚拟网络。 如果没有连接的设备，请选择“概述”。
 4. 选择“删除”。
@@ -167,17 +164,15 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="permissions"></a>权限
 
-若要在虚拟网络上执行任务，必须向帐户分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配到下表中列出适当的权限[自定义](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
+若要在虚拟网络上执行任务，必须将你的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：
 
-|Operation                                    |   操作名称                    |
-|-------------------------------------------  |   --------------------------------  |
-|Microsoft.Network/virtualNetworks/read       |   获取虚拟网络               |
-|Microsoft.Network/virtualNetworks/write      |   创建或更新虚拟网络  |
-|Microsoft.Network/virtualNetworks/delete     |   删除虚拟网络            |
+| 操作                                  |   名称                                |
+|---------------------------------------- |   --------------------------------    |
+|Microsoft.Network/virtualNetworks/read   |   读取虚拟网络              |
+|Microsoft.Network/virtualNetworks/write  |   创建或更新虚拟网络  |
+|Microsoft.Network/virtualNetworks/delete |   删除虚拟网络            |
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要创建 VM 然后将其连接到虚拟网络，请参阅[创建虚拟网络并连接 VM](quick-create-portal.md#create-virtual-machines)。
-- 若要筛选虚拟网络内子网之间的网络流量，请参阅[创建网络安全组](virtual-networks-create-nsg-arm-pportal.md)。
-- 若要将虚拟网络对等互连到另一个虚拟网络，请参阅[创建虚拟网络对等互连](tutorial-connect-virtual-networks-portal.md)。
-- 若要了解用于将虚拟网络连接到本地网络的选项，请参阅[关于 VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)。
+- 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建虚拟网络
+- 为虚拟网络创建并应用 [Azure 策略](policy-samples.md)

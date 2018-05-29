@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Citrix ShareFile 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Citrix ShareFile 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Citrix ShareFile 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Citrix ShareFile 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2017
+ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 8473c262f98e77708f01d17419e935979a533307
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f633206c03a9639a375535ed7c8f5c84aa334ebf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34054194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教程：Azure Active Directory 与 Citrix ShareFile 的集成
 
@@ -36,11 +37,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Citrix ShareFile 的集成，需备齐以下项目：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 启用了 Citrix ShareFile 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -58,7 +59,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 Citrix ShareFile，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -68,7 +69,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中键入“Citrix ShareFile”，在结果面板中选择“Citrix ShareFile”，并单击“添加”按钮添加该应用程序。
 
@@ -108,14 +109,33 @@ ms.lasthandoff: 12/11/2017
 
     ![Citrix ShareFile 域和 URL 单一登录信息](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_url.png)
     
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`
 
-    > [!NOTE] 
-    > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Citrix ShareFile 客户端支持团队](https://www.citrix.co.in/products/sharefile/support.html)获取此值。 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+
+    | |
+    |---|
+    | `https://<tenant-name>.sharefile.com`|
+    | `https://<tenant-name>.sharefile.com/saml/info`|
+    | `https://<tenant-name>.sharefile1.com/saml/info`|
+    | `https://<tenant-name>.sharefile1.eu/saml/info`|
+    | `https://<tenant-name>.sharefile.eu/saml/info`|
+    | |
+    
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：
+    | |
+    |---|
+    | `https://<tenant-name>.sharefile.com/saml/acs`|
+    | `https://<tenant-name>.sharefile.eu/saml/<URL path>`|
+    | `https://<tenant-name>.sharefile.com/saml/<URL path>`|
+    | |
+
+    > [!NOTE]
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Citrix ShareFile 客户端支持团队](https://www.citrix.co.in/products/sharefile/support.html)获取这些值。
 
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
-    ![证书下载链接](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png) 
+    ![证书下载链接](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png)
 
 5. 单击“保存”按钮。
 
@@ -123,7 +143,7 @@ ms.lasthandoff: 12/11/2017
 
 6. 在“Citrix ShareFile 配置”部分中，单击“配置 Citrix ShareFile”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
-    ![Citrix ShareFile 配置](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_configure.png) 
+    ![Citrix ShareFile 配置](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_configure.png)
 
 7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **Citrix ShareFile** 公司站点。
 
@@ -143,15 +163,11 @@ ms.lasthandoff: 12/11/2017
 
     c. 单击“X.509 证书”字段旁边的“更改”，并上传从 Azure 门户下载的证书。
     
-    d.单击“下一步”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    d. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    e. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
 11. 在 Citrix ShareFile 管理门户中单击“保存”。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -177,13 +193,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-sharefile-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="create-a-citrix-sharefile-test-user"></a>创建 Citrix ShareFile 测试用户
 
@@ -252,9 +268,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-
-
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -269,4 +283,3 @@ ms.lasthandoff: 12/11/2017
 [201]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_203.png
-

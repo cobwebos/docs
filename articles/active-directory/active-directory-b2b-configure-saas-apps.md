@@ -1,26 +1,21 @@
 ---
-title: "在 Azure Active Directory 中为 B2B 协作配置 SaaS 应用 | Microsoft 文档"
-description: "有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例"
+title: 在 Azure Active Directory 中为 B2B 协作配置 SaaS 应用 | Microsoft 文档
+description: 有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: e2206ca8ddee867b9ea48911f70793010989ad69
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 36fe82311b180a1dbe4fb81b78f10482cb8bb4ac
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33928790"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>为 B2B 协作配置 SaaS 应用
 
@@ -84,14 +79,14 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 
   ![配置 Box 单一登录](media/active-directory-b2b-configure-saas-apps/configure-box-sso.png)
 
- a. 在“登录 URL”框中，确保登录 URL 是在 Azure 门户中为 Box 适当设置的 URL。 此 URL 是 Box.com 租户的 URL。 它应该遵循 *https://.box.com* 中所述的命名约定。  
+ a. 在“登录 URL”框中，确保登录 URL 是在 Azure 门户中为 Box 适当设置的 URL。 此 URL 是 Box.com 租户的 URL。 它应该遵循命名约定 *https://.box.com*。  
  “标识符”不适用于此应用，但仍显示为必填字段。
 
  b. 在“用户标识符”框中输入 **user.mail**（适用于来宾帐户 SSO）。
 
  c. 在“SAML 签名证书”下面，单击“创建新证书”。
 
- d.单击“下一步”。 要开始将 Box.com 租户配置为使用 Azure AD 作为标识提供者，请下载元数据文件并将其保存到本地驱动器。
+ d. 要开始将 Box.com 租户配置为使用 Azure AD 作为标识提供者，请下载元数据文件并将其保存到本地驱动器。
 
  e. 将元数据文件转发给 Box 支持团队，他们将为你配置单一登录。
 
@@ -105,13 +100,8 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 
 请参阅以下有关 Azure AD B2B 协作的文章：
 
-* [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B 协作用户属性](active-directory-b2b-user-properties.md)
-* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
-* [委托 B2B 协作邀请](active-directory-b2b-delegate-invitations.md)
-* [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
-* [B2B 协作代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
-* [B2B 协作用户令牌](active-directory-b2b-user-token.md)
-* [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
-* [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
-* [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)
+- [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
+- [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
+- [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
+

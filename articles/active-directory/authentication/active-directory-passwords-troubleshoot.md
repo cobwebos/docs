@@ -2,25 +2,20 @@
 title: 自助密码重置疑难解答 - Azure Active Directory
 description: 排查 Azure AD 自助密码重置问题
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: 53afdfd3286a224a824b58287fb835c3b98ede3d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: d3e43d3484d321c93b4ac3b0e2b947b69af5d2c6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869948"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -83,14 +78,14 @@ ms.lasthandoff: 04/23/2018
 
 | 错误 | 解决方案 |
 | --- | --- |
-| 密码重置服务无法在本地启动。 Azure AD Connect 计算机的应用程序事件日志中出现错误 6800。 <br> <br> 在登记后，联合的或密码哈希同步的用户无法重置其密码。 | 当启用了密码写回时，同步引擎将调用写回库通过与云登记服务进行通信来执行配置（登记）。 在登记期间或者为密码写回启动 Windows Communication Foundation (WCF) 终结点时遇到任何错误都将导致在 Azure AD Connect 计算机的事件日志中生成错误。 <br> <br> 在重启 Azure AD Sync (ADSync) 服务期间，如果配置了写回，则 WCF 终结点将启动。 但是，如果终结点启动失败，我们将记录事件 6800 并允许同步服务启动。 存在此事件意味着密码写回终结点未启动。 此事件 6800 的事件日志详细信息以及 PasswordResetService 组件生成的事件日志条目将指明终结点无法启动的原因。 请查看这些事件日志错误，如果密码写回仍不能正常工作，请尝试重启 Azure AD Connect。 如果问题仍然存在，请尝试禁用并重新启用密码写回。
+| 密码重置服务无法在本地启动。 Azure AD Connect 计算机的应用程序事件日志中出现错误 6800。 <br> <br> 加入后，联合身份验证、直通身份验证或密码哈希同步的用户无法重置其密码。 | 当启用了密码写回时，同步引擎将调用写回库通过与云登记服务进行通信来执行配置（登记）。 在登记期间或者为密码写回启动 Windows Communication Foundation (WCF) 终结点时遇到任何错误都将导致在 Azure AD Connect 计算机的事件日志中生成错误。 <br> <br> 在重启 Azure AD Sync (ADSync) 服务期间，如果配置了写回，则 WCF 终结点将启动。 但是，如果终结点启动失败，我们将记录事件 6800 并允许同步服务启动。 存在此事件意味着密码写回终结点未启动。 此事件 6800 的事件日志详细信息以及 PasswordResetService 组件生成的事件日志条目将指明终结点无法启动的原因。 请查看这些事件日志错误，如果密码写回仍不能正常工作，请尝试重启 Azure AD Connect。 如果问题仍然存在，请尝试禁用并重新启用密码写回。
 | 如果用户尝试重置密码或解锁启用了密码写回功能的帐户，则操作会失败。 <br> <br> 此外，解锁操作发生后，会在 Azure AD Connect 事件日志中看到一个事件，其中包含：“同步引擎返回了一条错误 hr=800700CE，消息=文件名或扩展太长”。 | 查找用于 Azure AD Connect 的 Active Directory 帐户并重置密码，使其包含的字符数不超过 127 个。 然后，从“开始”菜单打开“同步服务”。 浏览到“连接器”并找到“Active Directory 连接器”。 选择它，然后选择“属性”。 浏览到“凭据”页，并输入新密码。 选择“确定”关闭页面。 |
 | 在 Azure AD Connect 安装过程的最后一步，看到了一个错误，它指出无法配置密码写回。 <br> <br> Azure AD Connect 应用程序事件日志包含错误 32009，其文本为“获取身份验证令牌时出错”。 | 在以下两种情况下会发生此错误： <br><ul><li>为在 Azure AD Connect 安装过程开始时指定的全局管理员帐户指定了错误的密码。</li><li>试图将联合用户用于在 Azure AD Connect 安装过程开始时指定的全局管理员帐户。</li></ul> 若要解决此问题，请确保未将联合帐户用于在安装过程开始时指定的全局管理员帐户。 另请确保指定的密码正确。 |
 | Azure AD Connect 计算机事件日志包含运行 PasswordResetService 时引发的错误 32002。 <br> <br> 错误如下：“连接到 ServiceBus 出错。 令牌提供程序无法提供安全令牌。” | 本地环境无法连接到云中的 Azure 服务总线终结点。 此错误是由于防火墙规则阻止了到特定端口或 web 地址的出站连接导致的。 有关详细信息，请参阅[连接先决条件](./../connect/active-directory-aadconnect-prerequisites.md)。 在更新这些规则后，重新启动 Azure AD Connect 计算机，密码写回应当会再次开始工作。 |
-| 在工作一段时间后，联合用户或密码哈希同步的用户无法重置其密码。 | 在某些极少见的情况下，当 Azure AD Connect 已重启时，密码写回服务可能无法重启。 在这些情况下，首先，请检查是否已在本地启用了密码写回。 可以使用 Azure AD Connect 向导或 PowerShell 执行检查（请参阅上面的“操作说明”部分）。 如果此功能显示为已启用，请尝试通过 UI 或 PowerShell 再次启用或禁用此功能。 如果这不起作用，请尝试完全卸载并重新安装 Azure AD Connect。 |
-| 尝试重置其密码的联合用户或密码哈希同步的用户在尝试提交密码后看到了一个错误。 该错误指示存在服务问题。 <br ><br> 除此问题以外，在密码重置期间，可能会在本地事件日志中看到有关管理代理被拒绝访问的消息。 | 如果在事件日志中看到这些错误，请确认 Active Directory 管理代理 (ADMA) 帐户（在配置时在向导中指定的帐户）具有进行密码写回所需的权限。 <br> <br> 请注意，在授予此权限后，权限可能需要最多一小时来通过域控制器 (DC) 上的 `sdprop` 后台任务进行渗透。 <br> <br> 要使密码重置工作，需要将此权限标记在为其重置密码的用户对象的安全描述符上。 在此权限显示在用户对象上之前，密码重置将持续失败并出现“访问被拒绝”消息。 |
-| 尝试重置其密码的联合用户或密码哈希同步的用户在提交密码后看到了一个错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个表示“找不到对象”错误的错误。 | 此错误通常表示同步引擎无法找到 Azure AD 连接器空间中的用户对象或者无法找到链接的 Metaverse (MV) 或 Azure AD 连接器空间对象。 <br> <br> 若要解决此问题，请确保用户确实已通过当前的 Azure AD Connect 实例从本地同步到了 Azure AD，并检查连接器空间和 MV 中的对象的状态。 通过“Microsoft.InfromADUserAccountEnabled.xxx”规则确认 Active Directory 证书服务 (AD CS) 对象是 MV 对象的连接器。|
-| 尝试重置其密码的联合用户或密码哈希同步的用户在提交密码后看到了一个错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个错误，指出发生“找到多个匹配项”错误。 | 这表示同步引擎通过“Microsoft.InfromADUserAccountEnabled.xxx”检测到 MV 对象连接到了多个 AD CS 对象。 这意味着用户在多个林具有已启用的帐户。 请注意，密码写回不支持此方案。 |
+| 工作一段时间后，联合身份验证、直通身份验证或密码哈希同步的用户无法重置其密码。 | 在某些极少见的情况下，当 Azure AD Connect 已重启时，密码写回服务可能无法重启。 在这些情况下，首先，请检查是否已在本地启用了密码写回。 可以使用 Azure AD Connect 向导或 PowerShell 执行检查（请参阅上面的“操作说明”部分）。 如果此功能显示为已启用，请尝试通过 UI 或 PowerShell 再次启用或禁用此功能。 如果这不起作用，请尝试完全卸载并重新安装 Azure AD Connect。 |
+| 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在尝试提交密码后看到错误。 该错误指示存在服务问题。 <br ><br> 除此问题以外，在密码重置期间，可能会在本地事件日志中看到有关管理代理被拒绝访问的消息。 | 如果在事件日志中看到这些错误，请确认 Active Directory 管理代理 (ADMA) 帐户（在配置时在向导中指定的帐户）具有进行密码写回所需的权限。 <br> <br> 请注意，在授予此权限后，权限可能需要最多一小时来通过域控制器 (DC) 上的 `sdprop` 后台任务进行渗透。 <br> <br> 要使密码重置工作，需要将此权限标记在为其重置密码的用户对象的安全描述符上。 在此权限显示在用户对象上之前，密码重置将持续失败并出现“访问被拒绝”消息。 |
+| 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在提交密码后看到错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个表示“找不到对象”错误的错误。 | 此错误通常表示同步引擎无法找到 Azure AD 连接器空间中的用户对象或者无法找到链接的 Metaverse (MV) 或 Azure AD 连接器空间对象。 <br> <br> 若要解决此问题，请确保用户确实已通过当前的 Azure AD Connect 实例从本地同步到了 Azure AD，并检查连接器空间和 MV 中的对象的状态。 通过“Microsoft.InfromADUserAccountEnabled.xxx”规则确认 Active Directory 证书服务 (AD CS) 对象是 MV 对象的连接器。|
+| 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在提交密码后看到错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个错误，指出发生“找到多个匹配项”错误。 | 这表示同步引擎通过“Microsoft.InfromADUserAccountEnabled.xxx”检测到 MV 对象连接到了多个 AD CS 对象。 这意味着用户在多个林具有已启用的帐户。 请注意，密码写回不支持此方案。 |
 | 密码操作因为发生配置错误而失败。 应用程序事件日志包含 Azure AD Connect 错误 6329，文本为：“0x8023061f (操作失败，因为未在此管理代理上启用密码同步)”。 | 如果在启用密码写回功能之后将 Azure AD Connect 配置更改为添加新的 Active Directory 林（或者更改为删除现有林之后再重新添加），则会发生此错误。 在这些最近添加的林中，用户的密码操作会失败。 要解决此问题，请在林配置更改完成后，先禁用密码写回功能，再重新启用它。 |
 
 ## <a name="password-writeback-event-log-error-codes"></a>密码写回事件日志错误代码
@@ -109,15 +104,15 @@ ms.lasthandoff: 04/23/2018
 
 | 代码 | 名称或消息 | 说明 |
 | --- | --- | --- |
-| 31001 | PasswordResetStart | 此事件表示本地服务检测到从云中发起了联合用户或密码哈希同步的用户的密码重置请求。 此事件是每个密码重置写回操作中的第一个事件。 |
+| 31001 | PasswordResetStart | 此事件表示本地服务检测到从云端发出联合身份验证、直通身份验证或密码哈希同步的用户的密码重置请求。 此事件是每个密码重置写回操作中的第一个事件。 |
 | 31002 | PasswordResetSuccess | 此事件表示用户在密码重置操作过程中选择了一个新密码。 我们确定该密码满足企业密码要求。 该密码已成功写回到本地 Active Directory 环境。 |
 | 31003 | PasswordResetFail | 此事件表示用户选择了一个密码，并且该密码已成功到达本地环境。 但是，当我们尝试在本地 Active Directory 环境中设置该密码时发生失败。 失败的原因可能包括： <br><ul><li>用户的密码不满足域在期限、历史记录、复杂性或筛选器方面的要求。 若要解决此问题，请创建新密码。</li><li>ADMA 服务帐户没有合适的权限在相关的用户帐户上设置新密码。</li><li>该用户的帐户位于不允许密码设置操作的受保护组中（例如，域管理员或企业管理员组）。</li></ul>|
 | 31004 | OnboardingEventStart | 如果为 Azure AD Sync 启用了密码写回，并且我们已开始将组织登记到密码写回 Web 服务，则会发生此事件。 |
 | 31005 | OnboardingEventSuccess | 此事件表示加入过程成功，并且密码写回功能已就绪可用。 |
-| 31006 | ChangePasswordStart | 此事件表示本地服务检测到从云中发起了联合用户或密码哈希同步的用户的密码更改请求。 此事件是每个密码更改写回操作中的第一个事件。 |
+| 31006 | ChangePasswordStart | 此事件表示本地服务检测到从云端发出联合身份验证、直通身份验证或密码哈希同步的用户的密码更改请求。 此事件是每个密码更改写回操作中的第一个事件。 |
 | 31007 | ChangePasswordSuccess | 此事件表示用户在密码更改操作过程中选择了一个新密码，我们确定该密码满足公司密码要求，并且该密码已成功写回到本地 Active Directory 环境。 |
 | 31008 | ChangePasswordFail | 此事件表示用户选择了一个密码，并且该密码已成功到达本地环境，但当我们尝试在本地 Active Directory 环境中设置该密码时出现错误。 失败的原因可能包括： <br><ul><li>用户的密码不满足域在期限、历史记录、复杂性或筛选器方面的要求。 若要解决此问题，请创建新密码。</li><li>ADMA 服务帐户没有合适的权限在相关的用户帐户上设置新密码。</li><li>该用户的帐户位于不允许密码设置操作的受保护组中（例如，域管理员或企业管理员）。</li></ul> |
-| 31009 | ResetUserPasswordByAdminStart | 本地服务检测到管理员代表某个用户发起了联合用户或密码哈希同步的用户的密码重置请求。 此事件是每个由管理员启动的密码重置写回操作中的第一个事件。 |
+| 31009 | ResetUserPasswordByAdminStart | 本地服务检测到管理员代表某用户发出联合身份验证、直通身份验证或密码哈希同步的用户的密码重置请求。 此事件是每个由管理员启动的密码重置写回操作中的第一个事件。 |
 | 31010 | ResetUserPasswordByAdminSuccess | 管理员在管理员启动的密码重置操作过程中选择了一个新密码。 我们确定该密码满足企业密码要求。 该密码已成功写回到本地 Active Directory 环境。 |
 | 31011 | ResetUserPasswordByAdminFail | 管理员代表用户选择了一个密码。 密码已成功到达本地环境。 但是，当我们尝试在本地 Active Directory 环境中设置该密码时发生失败。 失败的原因可能包括： <br><ul><li>用户的密码不满足域在期限、历史记录、复杂性或筛选器方面的要求。 尝试使用新密码来解决此问题。</li><li>ADMA 服务帐户没有合适的权限在相关的用户帐户上设置新密码。</li><li>该用户的帐户位于不允许密码设置操作的受保护组中（例如，域管理员或企业管理员）。</li></ul>  |
 | 31012 | OffboardingEventStart | 如果为 Azure AD Sync 禁用了密码写回，则会发生此事件，它表示我们已开始将组织卸载到密码写回 web 服务。 |
@@ -283,6 +278,7 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 * **日期、时间和时区**：请包含发生错误时的确切日期和时间与时区。
 * **用户 ID**：哪个用户看到了该错误？ 例如 *user@contoso.com*。
     * 是否是联合用户？
+    * 是否是直通身份验证用户？
     * 是否是密码哈希同步的用户？
     * 是否是仅限云的用户？
 * **许可**：该用户是否分配有 Azure AD Premium 或 Azure AD Basic 许可证？

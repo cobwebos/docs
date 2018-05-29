@@ -3,23 +3,26 @@ title: Azure Active Directory v2.0 令牌引用 | Microsoft Docs
 description: Azure AD v2.0 终结点发出的令牌和声明类型
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: hirsin
+ms.date: 04/22/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 071e0c2b802b1bb6ef68092362c61bf3960fd45a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d7b9ad5c76b0e20a3c58bddcc4947482b237fb8f
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164452"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0 令牌引用
 Azure Active Directory (Azure AD) v2.0 在每个[身份验证流](active-directory-v2-flows.md)中发出多种安全令牌。 此引用说明每种令牌的格式、安全特征和内容。
@@ -49,7 +52,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 ```
 
 > [!TIP]
-> 练习时，要检查示例 ID 令牌中的声明，请将示例 ID 令牌粘贴到 [calebb.net](http://calebb.net/)。
+> 练习时，要检查示例 ID 令牌中的声明，请将示例 ID 令牌粘贴到 [jwt.ms](http://jwt.ms/)。
 >
 >
 
@@ -69,8 +72,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | 名称 |`name` |`Babe Ruth` |此名称声明提供了标识令牌使用者的用户可读值。 此值不一定唯一，它是可变的，旨在仅用于显示目的。 需要 `profile` 范围才能接收此声明。 |
 | 电子邮件 |`email` |`thegreatbambino@nyy.onmicrosoft.com` |与用户帐户关联的主要电子邮件地址（如果有）。 其值可变，并可能随时间而不断改变。 需要 `email` 范围才能接收此声明。 |
 | 首选用户名 |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |表示 v2.0 终结点中用户的主用户名。 它可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值可变，并可能随时间而不断改变。 由于此值是可变的，因此它不能用于做出授权决定。 需要 `profile` 范围才能接收此声明。 |
-| subject |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查（例如，使用令牌访问资源时），并可将它用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 但是，使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。  因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。  这不一定是所需的，具体取决于体系结构和隐私要求。 |
-| 对象 ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | 在 Microsoft 标识系统中，对象的不可变标识符在这种情况下是用户帐户。  还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。  这意味着，对 Microsoft Online Services（如 Microsoft Graph）进行查询时可以使用它。  Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。  因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
+| subject |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查（例如，使用令牌访问资源时），并可将它用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 但是，使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。 因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 |
+| 对象 ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | 在 Microsoft 标识系统中，对象的不可变标识符在这种情况下是用户帐户。 还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 这意味着，对 Microsoft Online Services（如 Microsoft Graph）进行查询时可以使用它。 Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。 因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
 
 ### <a name="access-tokens"></a>访问令牌
 
@@ -83,7 +86,7 @@ v2.0 终结点允许向 Azure AD 进行了注册的第三方应用为受保护�
 
 刷新令牌属于多资源令牌。 在一个资源的令牌请求期间收到的刷新令牌可兑换为完全不同资源的访问令牌。
 
-若要在令牌响应中接收刷新，应用必须请求并获得 `offline_acesss` 范围。 若要了解有关 `offline_access` 范围的详细信息，请参阅[许可和范围](active-directory-v2-scopes.md)一文。
+若要在令牌响应中接收刷新，应用必须请求并获得 `offline_access` 范围。 若要了解有关 `offline_access` 范围的详细信息，请参阅[许可和范围](active-directory-v2-scopes.md)一文。
 
 刷新令牌永远对应用程序完全不透明。 它们由 Azure AD v2.0 终结点颁发，并只能由 v2.0 终结点检查和解译。 它们属于长效令牌，但你不应将应用编写成预期刷新令牌将持续任何一段时间。 刷新令牌可能由于各种原因而随时失效 - 有关详细信息，请参阅[令牌吊销](active-directory-token-and-claims.md#token-revocation)。 让应用知道刷新令牌是否有效的唯一方式就是对 v2.0 终结点发出令牌请求以尝试兑换。
 
@@ -123,7 +126,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 >
 >
 
-此元数据文档是一个 JSON 对象，其中包含一些有用信息，例如执行 OpenID Connect 身份验证所需各种终结点的位置。  文档还包含 *jwks_uri*，其提供用于对令牌签名的公钥集位置。 位于 jwks_uri 中的 JSON 文档包含当前正使用的所有公钥信息。 应用可使用 JWT 标头中的 `kid` 声明选择本文档中已用于对令牌签名的公钥。 然后可以使用正确的公钥和指定的算法来执行签名验证。
+此元数据文档是一个 JSON 对象，其中包含一些有用信息，例如执行 OpenID Connect 身份验证所需各种终结点的位置。 文档还包含 *jwks_uri*，其提供用于对令牌签名的公钥集位置。 位于 jwks_uri 中的 JSON 文档包含当前正使用的所有公钥信息。 应用可使用 JWT 标头中的 `kid` 声明选择本文档中已用于对令牌签名的公钥。 然后可以使用正确的公钥和指定的算法来执行签名验证。
 
 本文档未说明如何执行签名验证。 许多开源代码库均提供了此说明。
 

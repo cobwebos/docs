@@ -11,20 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 0896f2b23f9b74e12935c0a8b073b64dc743e6a8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940131"
 ---
 # <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Netezza 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Netezza 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 > [!IMPORTANT]
 > 此连接器目前处于 Beta 版本。 欢迎试用并提供反馈。 请勿在生产环境中使用该版本。
@@ -50,6 +51,13 @@ Netezza 链接服务支持以下属性：
 | type | type 属性必须设置为：**Netezza** | 是 |
 | connectionString | 用于连接到 Netezza 的 ODBC 连接字符串。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+
+典型的连接字符串为 `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |:--- |
+| SecurityLevel | 驱动程序用于连接到数据存储区的安全级别 (SSL/TLS)。 例如 `SecurityLevel=preferredSecured`。 支持的值是：<br/>- 仅不安全 (**onlyUnSecured**)：驱动程序不使用 SSL。<br/>- 首选不安全 (preferredUnSecured)（默认）：如果服务器提供了选择，则驱动程序不使用 SSL。 <br/>- 首选安全 (preferredSecured)：如果服务器提供了选择，则驱动程序使用 SSL。 <br/>- 仅安全 (onlySecured)：除非有 SSL 连接，否则驱动程序不会连接。 | 否 |
+| CaCertFile | 服务器使用的 SSL 证书的完整路径。 例如 `UseSystemTrustStore=<cert path>;`| 是，如果启用了 SSL |
 
 **示例：**
 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: e6fd51cb2550549e14934c3f4774a40d42281247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3d7c94e8b1415a24427e1f90f5613d8c181608a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197987"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF
 
@@ -151,6 +152,21 @@ ms.lasthandoff: 05/07/2018
 可以修改该存储过程，将文档主体的数组作为输入并在同一存储过程执行中全部创建它们，而不用执行多个请求以单独创建它们中的每一个。 此存储过程可以用来实现 Cosmos DB 的高效批量导入程序（本教程稍后会进行讨论）。   
 
 所述的示例演示了如何使用存储过程。 接下来，教程会介绍触发器和用户定义的函数 (UDF)。
+
+### <a name="known-issues"></a>已知问题
+
+使用 Azure 门户定义存储过程时，输入参数始终作为字符串发送到存储过程。 即使将字符串数组作为输入传递，该数组也会转换为字符串发送到存储过程。 若要解决此问题，可以在存储过程中定义一个函数来将字符串解析为数组。 以下代码是将字符串解析为数组的示例： 
+
+``` 
+function sample(arr) {
+    if (typeof arr === "string") arr = JSON.parse(arr);
+    
+    arr.forEach(function(a) {
+        // do something here
+        console.log(a);
+    });
+}
+```
 
 ## <a name="database-program-transactions"></a>数据库程序事务
 典型数据库中的事务可以定义为一系列作为单个逻辑单元工作执行的操作。 每个事务提供 **ACID 保证**。 ACID 是已知的代表四个属性（Atomicity、Consistency、Isolation 和 Durability）的缩写词。  

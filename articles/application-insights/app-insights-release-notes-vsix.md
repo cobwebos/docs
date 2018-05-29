@@ -1,9 +1,9 @@
 ---
-title: "用于开发人员分析的 Visual Studio 扩展发行说明"
-description: "用于开发人员分析的 Visual Studio 工具的最新更新。"
+title: 用于开发人员分析的 Visual Studio 扩展发行说明
+description: 用于开发人员分析的 Visual Studio 工具的最新更新。
 services: application-insights
-documentationcenter: 
-author: acearun
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: mbullwin
-ms.openlocfilehash: b1181698deee265e4b6b2df8bb18e2297cdc8599
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; aruna
+ms.openlocfilehash: 53a4d7fe1d92826b92866e170fd731edbd5ba1bf
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869540"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>开发人员分析工具发行说明
 
@@ -167,7 +168,7 @@ ASP.NET 5 RC1 和 ASP.NET Core RC2 项目还在“诊断工具”窗口中有新
 
 ![通用 Windows 应用的上传对话框](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
 
-选择要上载的内容（.appxbundle 或 .appx 文件），并在向导中选择发布选项。 或者，可以在下一页上添加发行说明。 选择“完成”开始上传。
+选择要上传的内容（.appxbundle 或 .appx 文件），并在向导中选择发布选项。 或者，可以在下一页上添加发行说明。 选择“完成”开始上传。
 
 上传完成后，将出现具有确认信息的 HockeyApp 通知和指向 HockeyApp 门户中应用的链接。
 
@@ -289,8 +290,3 @@ Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将
 
 ![“新建项目”对话框](./media/app-insights-release-notes-vsix/newproject.png)
 
-### <a name="device-support"></a>设备支持
-在 *Connect();* 2015 中，我们已[宣布](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/)设备的移动开发人员体验即为 HockeyApp。 HockeyApp 可帮助将 Beta 版本分发给测试人员、收集和分析应用中的所有故障，并直接从客户那里收集反馈。
-在选择用来生成应用的任何一个平台（无论是 iOS、Android、Windows 还是 Xamarin、Cordova 或 Unity 之类的跨平台解决方案）上，HockeyApp 都支持该应用。
-
-在将来版本的 Application Insights 扩展中，我们会在 HockeyApp 和 Visual Studio 之间引入更加集成的体验。 现在，可以通过简单地添加 NuGet 引用来开始操作。 有关详细信息，请参阅[文档](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)。

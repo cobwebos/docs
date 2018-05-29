@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 48beb0d1c70b0f9c524ba91934a1a0a7b5e8505d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157664"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -40,8 +41,8 @@ ms.lasthandoff: 05/03/2018
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 使用有效的 Azure 订阅定义的 Azure AD 租户 | [如何获取 Azure Active Directory 租户](active-directory-howto-tenant.md)<br/>**请注意：**如果环境中已经具备 Azure AD Premium 许可证，则可以通过导航到 https://aka.ms/accessaad 来获取零上限订阅 <br/>请访问 https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ 和 https://technet.microsoft.com/library/dn832618.aspx 了解详细信息 |
-| 已定义和验证域 | [将自定义域名添加到 Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**注意：**Power BI 等工作负荷可能已经预配了其包含的 Azure AD 租户。 要检查给定域是否与租户关联，请导航到 https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration。 如果收到成功的相应，则域已经分配给租户，并且可能需要接管。 在这种情况下，请联系 Microsoft 获取更多指导。 如需了解有关接管选项的详细信息，请参阅[什么是 Azure 自助式服务注册？](active-directory-self-service-signup.md) |
+| 使用有效的 Azure 订阅定义的 Azure AD 租户 | [如何获取 Azure Active Directory 租户](active-directory-howto-tenant.md)<br/>**请注意：** 如果环境中已经具备 Azure AD Premium 许可证，则可以通过导航到 https://aka.ms/accessaad 来获取零上限订阅 <br/>请访问 https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ 和 https://technet.microsoft.com/library/dn832618.aspx 了解详细信息 |
+| 已定义和验证域 | [将自定义域名添加到 Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**注意：** Power BI 等工作负荷可能已经预配了其包含的 Azure AD 租户。 要检查给定域是否与租户关联，请导航到 https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration。 如果收到成功的相应，则域已经分配给租户，并且可能需要接管。 在这种情况下，请联系 Microsoft 获取更多指导。 如需了解有关接管选项的详细信息，请参阅[什么是 Azure 自助式服务注册？](active-directory-self-service-signup.md) |
 | 已启用 Azure AD Premium 或 EMS 试用版 | [Azure Active Directory Premium 免费使用一个月](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | 已经向 PoC 用户分配了 Azure AD Premium 或 EMS 许可证 | [向你自己以及 Azure Active Directory 中用户分配许可证](active-directory-licensing-get-started-azure-portal.md) |
 | Azure AD 全局管理员凭据 | [在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md) |
@@ -162,7 +163,7 @@ ms.lasthandoff: 05/03/2018
 
 ### <a name="considerations"></a>注意事项
 
-1. 以上[教程](active-directory-saas-servicenow-tutorial.md)涉及到了旧版的 Azure AD 管理体验。 而 PoC 以[快速启动](active-directory-enterprise-apps-whats-new-azure-portal.md#quick-start-get-going-with-your-new-application-right-away)体验为基础。
+1. 以上[教程](active-directory-saas-servicenow-tutorial.md)涉及到了旧版的 Azure AD 管理体验。 但是 PoC 是以[快速入门](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away)体验为基础的。
 2. 如果库中没有目标应用程序，则可以使用“提供自己的应用”。 有关详细信息，请参阅 [Azure Active Directory 中企业应用程序管理的新增功能：从一个位置添加自定义应用程序](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
 ## <a name="saas-password-sso-configuration"></a>SaaS 密码 SSO 配置
@@ -241,27 +242,27 @@ ms.lasthandoff: 05/03/2018
 
 | 先决条件 | 资源 |
 | --- | --- |
-| Microsoft Azure AD 基本或高级版订阅以及本人为全局管理员的 Azure AD 目录 | [Azure Active Directory 版本](active-directory-editions.md) |
+| Microsoft Azure AD 基本或高级版订阅以及本人为全局管理员的 Azure AD 目录 | [Azure Active Directory 版本](active-directory-whatis.md) |
 | 想配置远程访问的本地托管 Web 应用程序 |  |
-| 可以安装应用程序代理连接器，运行 Windows Server 2012 R2 或 Windows 8.1 或更高版本的服务器 | [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md) |
-| 如果路径中有防火墙，请确保防火墙已打开，以便连接器向应用程序代理发出 HTTPS (TCP) 请求 | [在 Azure 门户中启用应用程序代理：应用程序代理先决条件](active-directory-application-proxy-enable.md#application-proxy-prerequisites) |
-| 如果组织使用代理服务器连接 Internet，请查看博客文章《使用现有本地代理服务器》了解配置方法的详细信息 | [使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md) |
+| 可以安装应用程序代理连接器，运行 Windows Server 2012 R2 或 Windows 8.1 或更高版本的服务器 | [了解 Azure AD 应用程序代理连接器](manage-apps/application-proxy-connectors.md) |
+| 如果路径中有防火墙，请确保防火墙已打开，以便连接器向应用程序代理发出 HTTPS (TCP) 请求 | [在 Azure 门户中启用应用程序代理：应用程序代理先决条件](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
+| 如果组织使用代理服务器连接 Internet，请查看博客文章《使用现有本地代理服务器》了解配置方法的详细信息 | [使用现有的本地代理服务器](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md) |
 
 
 ### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
-| 在服务器上安装连接器 | [在 Azure 门户中启用应用程序代理：安装并注册连接器](active-directory-application-proxy-enable.md#install-and-register-a-connector) |
-| 在 Azure AD 中将本地应用程序发布为“应用程序代理”应用程序 | [使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md) |
-| 分配测试用户 | [使用 Azure AD 应用程序代理（公共预览版）发布应用程序：添加测试用户](application-proxy-publish-azure-portal.md#add-a-test-user) |
-| 或者也可以为用户配置单一登录体验 | [通过 Azure AD 应用程序代理提供单一登录](application-proxy-sso-azure-portal.md) |
+| 在服务器上安装连接器 | [在 Azure 门户中启用应用程序代理：安装并注册连接器](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
+| 在 Azure AD 中将本地应用程序发布为“应用程序代理”应用程序 | [使用 Azure AD 应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md) |
+| 分配测试用户 | [使用 Azure AD 应用程序代理（公共预览版）发布应用程序：添加测试用户](manage-apps/application-proxy-publish-azure-portal.md#add-a-test-user) |
+| 或者也可以为用户配置单一登录体验 | [通过 Azure AD 应用程序代理提供单一登录](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) |
 | 使用已分配用户的身份登录 MyApps 门户，以便测试应用 | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>注意事项
 
-1. 虽然我们建议将连接器放在公司网络中，但有时将其放在云中会有更好的性能。 有关详细信息：[使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项](application-proxy-network-topology-considerations.md)
-2. 如需深入了解安全性和此方式如何通过只维护出站连接来提供特定的安全远程访问解决方案，请参阅[使用 Azure AD 应用程序代理远程访问应用时的安全注意事项](application-proxy-security-considerations.md)
+1. 虽然我们建议将连接器放在公司网络中，但有时将其放在云中会有更好的性能。 有关详细信息：[使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项](manage-apps/application-proxy-network-topology.md)
+2. 如需深入了解安全性和此方式如何通过只维护出站连接来提供特定的安全远程访问解决方案，请参阅[使用 Azure AD 应用程序代理远程访问应用时的安全注意事项](manage-apps/application-proxy-security.md)
 
 ## <a name="generic-ldap-connector-configuration"></a>泛型 LDAP 连接器配置
 
@@ -451,7 +452,7 @@ ms.lasthandoff: 05/03/2018
 | 步骤 | 资源 |
 | --- | --- |
 | 转到 Azure AD 管理门户：“条件访问”边栏选项卡 | [Azure AD 管理门户：条件访问](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
-| 创建条件访问策略：<br/>- 指向“用户和组”下的 PoC 用户<br/>- 指向“云应用”下的 PoC 应用程序<br/>- 指向所有位置，“条件”->“位置”下的受信任位置除外。**注意：**在 [MFA 门户](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)中配置受信任的 IP<br/>- 在“授权”下要求进行多重身份验证 | [Azure Active Directory 中的条件访问入门：策略配置步骤](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
+| 创建条件访问策略：<br/>- 指向“用户和组”下的 PoC 用户<br/>- 指向“云应用”下的 PoC 应用程序<br/>- 指向所有位置，“条件”->“位置”下的受信任位置除外。**注意：** 在 [MFA 门户](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)中配置受信任的 IP<br/>- 在“授权”下要求进行多重身份验证 | [Azure Active Directory 中的条件访问入门：策略配置步骤](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
 | 从公司网络内部访问应用程序 | [Azure Active Directory 中的条件访问入门：测试策略](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
 | 从公共网络访问应用程序 | [Azure Active Directory 中的条件访问入门：测试策略](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
 

@@ -7,13 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 59b6efd8459f675bc44891d7b04251260fdd38e9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072583"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
@@ -87,12 +88,13 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="indexer-limits"></a>索引器限制
 
-2017 年底后创建的基本服务增加了限制，即 15 个索引、数据源和索引器。
+2017 年底后创建的基本服务的上限已增大为 15 个索引、数据源、技能集和索引器。
 
 | 资源 | 免费&nbsp;<sup>1</sup> | 基本&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | 最大索引器数 |3 |5 或 15|50 |200 |200 |不适用 |
 | 最大数据源数 |3 |5 或 15 |50 |200 |200 |不适用 |
+| 最大技能集数 |3 |5 或 15 |50 |200 |200 |不适用 |
 | 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |不适用 |
 | 最长运行时间 | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |不适用  |
 | Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不适用  |

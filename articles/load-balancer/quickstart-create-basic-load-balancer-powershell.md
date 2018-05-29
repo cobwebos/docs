@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: 2e80a090d003770f47d28dfaacf7ba5140f7b41f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bc9883ee64f2d682a6b7b69bd1fb168cddd60001
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304559"
 ---
 # <a name="get-started"></a>快速入门：使用 Azure PowerShell 创建公用负载均衡器
 本快速入门介绍了如何使用 Azure PowerShell 创建基本负载均衡器。 为了测试负载均衡器，需要部署两台运行 Windows 服务器的虚拟机 (VM)，并在 VM 之间对一个 Web 应用进行负载均衡。
@@ -38,8 +39,8 @@ New-AzureRmResourceGroup `
   -ResourceGroupName "myResourceGroupLB" `
   -Location "EastUS"
 ```
-## <a name="create-a-public-ip-address"></a>创建公用 IP 地址
-若要通过 Internet 访问应用，需要负载均衡器的一个公用 IP 地址。 使用 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) 创建一个公用 IP 地址。 以下示例在 *myResourceGroupLB* 资源组中创建名为 *myPublicIP* 的公用 IP 地址：
+## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
+若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) 创建一个公共 IP 地址。 以下示例在 *myResourceGroupLB* 资源组中创建名为 *myPublicIP* 的公用 IP 地址：
 
 ```azurepowershell-interactive
 $publicIP = New-AzureRmPublicIpAddress `
@@ -307,7 +308,7 @@ for ($i=1; $i -le 2; $i++)
 6. 通过运行 `mstsc /v:PublicIpAddress:4222` 命令创建与 *myVM2* 的 RDP 连接，并为 *VM2* 重复步骤 4。
 
 ## <a name="test-load-balancer"></a>测试负载均衡器
-使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取负载均衡器的公用 IP 地址。 以下示例获取前面创建的“myPublicIP”的 IP 地址：
+使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”的 IP 地址：
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress `
@@ -315,7 +316,7 @@ Get-AzureRmPublicIPAddress `
   -Name "myPublicIP" | select IpAddress
 ```
 
-然后，可将公用 IP 地址输入 web 浏览器中。 随即显示网站，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
+然后，可将公共 IP 地址输入 web 浏览器中。 随即显示网站，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
 
 ![测试负载均衡器](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
@@ -331,4 +332,8 @@ Remove-AzureRmResourceGroup -Name myResourceGroupLB
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [详细了解 Azure 负载均衡器](load-balancer-overview.md)
+
+本快速入门介绍了如何创建基本负载均衡器，向其附加 VM，配置负载均衡器流量规则、运行状况探测，然后测试负载均衡器。 若要了解有关 Azure 负载均衡器的详细信息，请继续学习 Azure 负载均衡器教程。
+
+> [!div class="nextstepaction"]
+> [Azure 负载均衡器教程](tutorial-load-balancer-basic-internal-portal.md)

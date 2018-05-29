@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: de6c56df201e5f22c5c5884d0d8fffc1f07ec625
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: eb824913a4b3482879ccc45e2f660342695b1618
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258940"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -34,6 +35,64 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](./active-directory-aadconnect-accounts-permissions.md#upgrade)。
 
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
+
+## <a name="118190"></a>1.1.819.0
+
+### <a name="release-status"></a>版本状态
+
+5/14/2018：已发布，用于自动升级和下载。
+
+### <a name="new-features-and-improvements"></a>新增功能和改进
+
+新增功能和改进
+
+- 此版本包含 Azure AD Connect 中 PingFederate 集成的公共预览。 借助此版本，客户可以轻松可靠地配置其 Azure Active Directory 环境，以使用 PingFederate 作为其联合提供程序。 若要了解有关如何使用此新功能的详细信息，请访问我们的[在线文档](active-directory-aadconnect-user-signin.md#federation-with-pingfederate)。 
+- 我们更新了 Azure AD Connect 向导疑难解答实用工具，我们现在在其中对更多错误场景进行了分析，例如链接邮箱和 AD 动态组。 在[此处](active-directory-aadconnect-troubleshoot-objectsync.md)阅读有关疑难解答实用工具的详细信息。
+- 设备写回配置现在仅在 Azure AD Connect 向导中进行管理。
+- 添加了名为 ADSyncTools.psm1 的新 PowerShell 模块，可用于 SQL 连接问题故障排除和各种其他疑难解答实用工具。 在[此处](active-directory-aadconnect-tshoot-sql-connectivity.md)阅读有关 ADSyncTools 模块的详细信息。 
+- 添加了新的“配置设备选项”任务。 可使用该任务来配置以下两个操作： 
+    -   **混合 Azure AD 加入**：如果你的环境具有本地 AD 占用空间并且你希望利用 Azure Active Directory 提供的功能所带来的优势，则可选择实现混合 Azure AD 加入设备。 这些设备同时加入到本地 Active Directory 和 Azure Active Directory。
+    -   **设备写回**：设备写回用于在设备上启用对 AD FS（2012 R2 或更高版本）保护设备的基于条件的访问
+
+   >[!NOTE] 
+   > - 通过自定义同步选项启用设备写回的选项将灰显。 
+   > -  适用于 ADPrep 的 PowerShell 模块在此版本中弃用。
+
+
+
+### <a name="fixed-issues"></a>修复的问题 
+
+- 此版本将 SQL Server Express 安装更新为 SQL Server 2012 SP4，该版本及其他一些版本针对多个安全漏洞提供修补程序。  有关 SQL Server 2012 SP4 的详细信息，请参阅[此处](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information)。
+- 同步规则处理：如果父同步规则不再适用，则应取消应用没有联接条件的出站联接同步规则
+- 多个可访问性修补程序已应用于 Synchronization Service Manager UI 和同步规则编辑器
+- Azure AD Connect 向导：Azure AD Connect 位于工作组中时，创建 AD 连接器帐户出错
+- Azure AD Connect 向导：AD 域和 Azure AD 验证域存在任何不匹配时，在 Azure AD 登录页面上显示验证复选框
+- 自动升级 PowerShell 修补程序，以在尝试自动升级后的某些情况下正确设置自动升级状态。
+- Azure AD Connect 向导：更新遥测以捕获之前缺失的信息
+- Azure AD Connect 向导：当使用**更改用户登录**任务从 AD FS 切换到直通身份验证时，已进行以下更改：
+    - 在我们将域从联盟域转换为托管域之前，直通身份验证代理已安装在 Azure AD Connect 服务器上，并且直通身份验证功能处于已启用状态。
+    - 用户不再从联盟用户转换为托管用户。 只有域会被转换。
+- Azure AD Connect 向导：当用户 UPN 更新 ' 特殊字符正则表达式以支持特殊字符时，AD FS 多域正则表达式不正确
+- Azure AD Connect 向导：在无更改时删除虚假的“配置源定位点属性”消息 
+- Azure AD Connect 向导：对双联合方案的 AD FS 支持
+- Azure AD Connect 向导：在将托管域转换为联合域时，AD FS 声明未针对添加的域进行更新
+- Azure AD Connect 向导：在检测已安装的程序包期间，我们发现过时的 Dirsync/Azure AD Sync/Azure AD Connect 相关产品。 我们现在将尝试卸载过时的产品。
+- Azure AD Connect 向导：更正安装传递身份验证代理失败时的错误消息映射
+- Azure AD Connect 向导：从域 OU 筛选页面删除“配置”容器
+- 同步引擎安装：移除偶尔因同步引擎安装 msi 而失败的不必要的旧逻辑
+- Azure AD Connect 向导：修复密码哈希同步的可选功能页面中的弹出帮助文本
+- 同步引擎运行时：修复 CS 对象具有导入的删除并且同步规则尝试重新预配对象的情况。
+- 同步引擎运行时：为导入错误事件日志添加联机连接疑难解答指南帮助链接
+- 同步引擎运行时：枚举连接器时减少同步计划程序的内存使用量
+- Azure AD Connect 向导：解决解析无 AD 读取特权的自定义同步服务帐户时出现的问题
+- Azure AD Connect 向导：改进对域和 OU 筛选选择的日志记录
+- Azure AD Connect 向导：AD FS 将默认声明添加到为 MFA 方案创建的联合信任
+- Azure AD Connect 向导：AD FS 部署 WAP：添加服务器时未能使用新证书
+- Azure AD Connect 向导：未针对域初始化 onPremCredentials 时出现 DSSO 异常 
+- 优先从活动用户对象中流动 AD distinguishedName 属性。
+- 修复了第一个 OOB 同步规则的优先级设置为 99 而不是 100 的表面错误
+
+
 
 ## <a name="117510"></a>1.1.751.0
 状态：2018 年 4 月 12 日发布，仅供下载

@@ -11,44 +11,30 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b6c2e2b685855455550612abb58ada6a694bbdff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011520"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
-可使用查找活动从任何外部源读取或查找记录、表名称或值。 此输出可进一步由后续活动引用。 
 
-当你想要从配置文件或数据源动态检索文件、记录或表列表时，查找活动会很有帮助。 活动输出可以进一步供其他活动使用，仅对这些项执行特定处理。
+查找活动可用于从任何 ADF 支持的数据源检索数据集。  它可在以下情况下使用：
+- 动态确定哪些对象（文件、表等）在后续活动中工作，而不是针对对象名称进行硬编码
+
+查找活动可以读取并返回配置文件、配置表的内容，或执行查询或存储过程的结果。  查找活动的输出可用于后续复制或转换活动（如果它是单一实例值），或者可用于 ForEach 活动（如果它是属性数组）。
 
 > [!NOTE]
 > 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-以下数据源当前支持查找：
+支持查找以下数据源。 查找活动可返回的最大行数是 **5000**，最大大小为 **2MB**。 目前，查找活动在超时前的最大持续时间为 1 小时。
 
-- Amazon Redshift
-- Azure Blob 存储
-- Azure Cosmos DB
-- Azure Data Lake Store
-- Azure 文件存储
-- Azure SQL 数据库
-- Azure SQL 数据仓库
-- Azure 表存储
-- Dynamics 365
-- Dynamics CRM
-- 文件系统
-- PostgreSQL
-- Salesforce
-- Salesforce 服务云
-- SFTP
-- SQL Server
-
-查找活动返回的最大行数是 **5000**，最大大小为 **10MB**。
+[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
 ## <a name="syntax"></a>语法
 
@@ -77,10 +63,11 @@ dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的
 源 | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
 firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔 | 不会。 默认为 `true`。
 
-请注意以下几点：
+**请注意以下几点：**
 
 1. 不支持 ByteArray 类型的源列。
 2. 数据集定义不支持结构。 对于文本格式化文件，可以使用标头行提供列名。
+3. 如果查找源是 JSON 文件，则不支持重新调整 JSON 对象的 `jsonPathDefinition` 设置，将检索整个对象。
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>在后续活动中使用查找活动结果
 

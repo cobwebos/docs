@@ -3,23 +3,26 @@ title: Azure Active Directory v2.0 和 OpenID Connect 协议 | Microsoft Docs
 description: 通过使用 OpenID Connect 身份验证协议的 Azure AD v2.0 实现，构建 Web 应用程序。
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
-ms.author: dastrock
+ms.date: 04/18/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3f5b6a68cf6ee38d1dc2317381ec33f035c57569
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a0cd077b1c6530c5794c92f131dffb814f5b341d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157711"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 和 OpenID Connect 协议
 OpenID Connect 是在 OAuth 2.0 基础上构建的身份验证协议，可用于将用户安全登录到 Web 应用程序。 使用 OpenID Connect 的 v2.0 终结点的实现时，可以将登录和 API 访问权限添加到基于 Web 的应用中。 本文将演示执行此操作的方法（无论何种语言）。 本文介绍在不使用任何 Microsoft 开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -42,6 +45,9 @@ OpenID Connect 描述了元数据文档，该文档包含了应用执行登录�
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
+> [!TIP] 
+> 试试看！ 单击 [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) 可查看 `common` 租户配置。 
+>
 
 `{tenant}` 可采用四个值的其中之一：
 
@@ -52,7 +58,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 | `consumers` |仅拥有 Microsoft 个人帐户的用户可以登录到应用程序。 |
 | `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` 或 `contoso.onmicrosoft.com` |仅拥有工作/学校帐户的用户可以从特定 Azure AD 租户登录到应用程序。 可以使用 Azure AD 租户的友好域名或租户的 GUID 标识符。 |
 
-元数据是简单的 JavaScript 对象表示法 (JSON) 文档。 有关示例，请参阅下面的代码段。 [OpenID Connect 规范](https://openid.net)对该代码段的内容进行了完整描述。
+元数据是简单的 JavaScript 对象表示法 (JSON) 文档。 有关示例，请参阅下面的代码段。 [OpenID Connect 规范](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)对该代码段的内容进行了完整描述。
 
 ```
 {
@@ -78,6 +84,9 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 * `response_type` 参数必须包含 `id_token`。
 * 请求必须包含 `nonce` 参数。
 
+> [!IMPORTANT]
+> 为了成功请求 ID 令牌，[注册门户](https://apps.dev.microsoft.com)中的应用注册必须已为 Web 客户端启用**[隐式授权](active-directory-v2-protocols-implicit.md)**。 如果未启用，将返回 `unsupported_response` 错误：“输入参数“response_type”提供的值不允许用于此客户端。 预期值为“code””
+
 例如：
 
 ```
@@ -94,8 +103,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 https://localhost/myapp/，且地址栏中有一个 ID 令牌。 请注意，此请求使用 `response_mode=query`（仅用于演示）。 建议使用 `response_mode=form_post`。
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=query&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 https://localhost/myapp/，且地址栏中有一个 ID 令牌。 请注意，此请求使用 `response_mode=fragment`（仅用于演示）。 建议使用 `response_mode=form_post`。
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 
@@ -107,11 +116,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri |建议 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
 | 作用域 |必选 |范围的空格分隔列表。 针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“你将登录”权限。 也可以在此请求中包含其他范围，以请求同意。 |
 | nonce |必选 |应用生成并包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可验证此值，以减少令牌重放攻击。 此值通常是随机的唯一字符串，可用于识别请求的来源。 |
-| response_mode |建议 |指定应用于将生成的授权代码发送回应用的方法。 可以是 `query`、`form_post` 或 `fragment` 之一。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
+| response_mode |建议 |指定应用于将生成的授权代码发送回应用的方法。 可以是 `form_post` 或 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
 | state |建议 |同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](http://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于身份验证请求出现前（例如用户所在页面或视图），对有关用户在应用中状态的信息进行编码。 |
 | prompt |可选 |表示需要的用户交互类型。 此时唯一有效值为 `login``none` 和 `consent`。 `prompt=login` 声明将强制用户在该请求上输入凭据，从而取消单一登录。 而 `prompt=none` 声明截然相反。 此声明将确保无论如何都不会向用户显示任何交互提示。 如果请求无法通过单一登录静默完成，则 v2.0 终结点将返回一个错误。 `prompt=consent` 声明会在用户登录后触发 OAuth 同意对话框。 该对话框要求用户向应用授予权限。 |
 | login_hint |可选 |如果事先知道用户名，可使用此参数预先填充用户登录页面的用户名和电子邮件地址字段。 通常，应用在已经使用 `preferred_username` 声明从前次登录提取用户名后，会在重新身份验证时使用此参数。 |
-| domain_hint |可选 |此值可为 `consumers` 或 `organizations`。 如果已包含在内，它将跳过用户在 v2.0 登录页面上经历的基于电子邮件的发现过程，从而实现更加流畅的用户体验。 通常，应用在重新身份验证时使用此参数，方法是从 ID 令牌提取 `tid` 声明。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，请使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。 |
+| domain_hint |可选 |此值可为 `consumers` 或 `organizations`。 如果已包含在内，它将跳过用户在 v2.0 登录页面上经历的基于电子邮件的发现过程，从而实现更加流畅的用户体验。 通常，应用在重新身份验证时使用此参数，方法是从 ID 令牌提取 `tid` 声明。 如果 `tid` 声明值为 `9188040d-6c67-4c5b-b112-36a304b66dad`（Microsoft 帐户使用者租户），则使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。 |
 
 此时，系统会提示用户输入凭据并完成身份验证。 v2.0 终结点会验证用户是否已经同意 `scope` 查询参数中指示的权限。 如果用户尚未同意这些权限中的任何一项，v2.0 终结点会提示用户同意所需权限。 可以深入了解[权限、许可和多租户应用](active-directory-v2-scopes.md)。
 
@@ -190,12 +199,12 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | 参数 | 条件 | 说明 |
 | ----------------------- | ------------------------------- | ------------ |
-| post_logout_redirect_uri | 建议 | 用户在成功注销后将重定向到的 URL。如果不包括参数，将向用户显示一条 v2.0 终结点生成的常规消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。  |
+| post_logout_redirect_uri | 建议 | 用户在成功注销后将重定向到的 URL。如果不包括参数，将向用户显示一条 v2.0 终结点生成的常规消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。 |
 
 ## <a name="single-sign-out"></a>单一登录
-将用户重定向到 `end_session_endpoint` 时，v2.0 终结点将从浏览器中清除用户的会话。 但是，用户可能仍登录到其他使用 Microsoft 帐户进行身份验证的应用程序。 要使这些应用程序能够同时注销用户，v2.0 终结点会将 HTTP GET 请求发送到用户当前登录到的所有应用程序的注册 `LogoutUrl`。 应用程序必须通过清除任何标识用户的会话并返回 `200` 响应来响应此请求。  如果要在应用程序中支持单一注销，必须在应用程序代码中实现此类 `LogoutUrl`。  可以从应用注册门户设置 `LogoutUrl`。
+将用户重定向到 `end_session_endpoint` 时，v2.0 终结点将从浏览器中清除用户的会话。 但是，用户可能仍登录到其他使用 Microsoft 帐户进行身份验证的应用程序。 要使这些应用程序能够同时注销用户，v2.0 终结点会将 HTTP GET 请求发送到用户当前登录到的所有应用程序的注册 `LogoutUrl`。 应用程序必须通过清除任何标识用户的会话并返回 `200` 响应来响应此请求。 如果要在应用程序中支持单一注销，必须在应用程序代码中实现此类 `LogoutUrl`。 可以从应用注册门户设置 `LogoutUrl`。
 
-## <a name="protocol-diagram-token-acquisition"></a>协议图：令牌获取
+## <a name="protocol-diagram-access-token-acquisition"></a>协议图：访问令牌获取
 许多 Web 应用不仅需要登录用户，还需要代表该用户使用 OAuth 访问 Web 服务。 如果要使用 OAuth 授权代码流，此方案合并了用于对用户进行身份验证的 OpenID Connect，同时将获取授权代码，用户可以使用该代码获取访问令牌。
 
 完整的 OpenID Connect 登录和令牌获取流与下图类似。 本文以下各节将详细介绍各步骤。
@@ -212,7 +221,7 @@ GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application ID
 &response_type=id_token%20code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F       // Your registered redirect URI, URL encoded
-&response_mode=form_post                              // 'query', 'form_post', or 'fragment'
+&response_mode=form_post                              // 'form_post' or 'fragment'
 &scope=openid%20                                      // Include both 'openid' and scopes that your app needs  
 offline_access%20                                         
 https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
@@ -221,8 +230,8 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 ```
 
 > [!TIP]
-> 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 https://localhost/myapp/，且地址栏中有一个 ID 令牌和一个代码。 请注意，此请求使用 `response_mode=query`（仅用于演示）。 建议使用 `response_mode=form_post`。
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 https://localhost/myapp/，且地址栏中有一个 ID 令牌和一个代码。 请注意，此请求使用 `response_mode=fragment`（仅用于演示）。 建议使用 `response_mode=form_post`。
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 

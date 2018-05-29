@@ -1,11 +1,11 @@
 ---
-title: "排查应用程序代理的 Kerberos 约束委派配置问题 | Microsoft Docs"
-description: "排查应用程序代理的 Kerberos 约束委派配置问题。"
+title: 排查应用程序代理的 Kerberos 约束委派配置问题 | Microsoft Docs
+description: 排查应用程序代理的 Kerberos 约束委派配置问题。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: harshja
-ms.openlocfilehash: a580b0afbd34623986ea8a3f60147a937c423e5e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 3ba089123198631c443a759ad62cb0ae5ca40ad3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068262"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 02/22/2018
 
 本文作出以下假设：
 
--   Azure 应用程序代理的部署遵循[文档](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)，对非 KCD 应用程序的常规访问按预期方式进行。
+-   Azure 应用程序代理的部署遵循[文档](manage-apps/application-proxy-enable.md)，对非 KCD 应用程序的常规访问按预期方式进行。
 
 -   发布的目标应用程序以 Kerberos 的 IIS 和 Microsoft 实现为基础。
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 02/22/2018
 
 Azure 应用程序代理可部署到许多类型的基础结构或环境中，而体系结构无疑会因组织的不同而不同。 引发与 KCD 相关的问题的一个最常见原因不是环境本身，而是简单的配置错误或疏忽大意。
 
-有鉴于此，最好是在开始排除故障前始终确保满足在[将 KCD SSO 与应用程序代理配合使用](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)一文中列出的所有先决条件。
+有鉴于此，最好是在开始排除故障前始终确保满足在[将 KCD SSO 与应用程序代理配合使用](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)一文中列出的所有先决条件。
 
 尤其是关于在 2012R2 上配置 KCD 一节中列出的先决条件，因为此配置采用完全不同的方法在以前版本的 Windows 上配置 KCD，但同时请记住其他几个注意事项：
 
@@ -68,13 +69,13 @@ Azure 应用程序代理可部署到许多类型的基础结构或环境中，�
 
 ## <a name="troubleshooting"></a>故障排除
 
-如何排除故障取决于问题和观察到的症状。 在进行进一步操作之前，请浏览以下链接，因为它们包含可能尚未发现的有用信息：
+如何排除故障要取决于问题和观察到的症状。 在进行进一步操作之前，请浏览以下链接，因为它们包含可能尚未发现的有用信息：
 
--   [应用程序代理问题和错误消息故障排除](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
+-   [应用程序代理问题和错误消息故障排除](active-directory-application-proxy-troubleshoot.md)
 
--   [Kerberos 错误和症状](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#kerberos-errors)
+-   [Kerberos 错误和症状](active-directory-application-proxy-troubleshoot.md#kerberos-errors)
 
--   [在本地标识和云标识不相同的情况下使用 SSO](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd#working-with-sso-when-on-premises-and-cloud-identities-are-not-identical)
+-   [在本地标识和云标识不相同的情况下使用 SSO](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
 如果已进行到这步，则一定存在主要问题。 先将流分为可进行故障排除的三个不同阶段。
 
@@ -98,7 +99,7 @@ Azure 应用程序代理可部署到许多类型的基础结构或环境中，�
 
 -   将内部 DNS 中的 A 记录用于应用程序地址，而非 CName。
 
--   再次确认已向连接器主机授予对指定目标帐户 SPN 进行委派的权利，并已选择“使用任何身份验证协议”。 有关此主题的详细信息，请参阅 [SSO 配置文章](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)
+-   再次确认已向连接器主机授予对指定目标帐户 SPN 进行委派的权利，并已选择“使用任何身份验证协议”。 有关此主题的详细信息，请参阅 [SSO 配置文章](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 
 -   通过从任意域成员主机上的 cmd 提示符发布 `setspn -x`，验证 AD 中只存在一个 SPN 实例。
 
@@ -122,7 +123,7 @@ Azure 应用程序代理可部署到许多类型的基础结构或环境中，�
 
      ![浏览器网络检查窗口](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
 
-    *图：*因为它不以“TIRMTVNTUAAB”开头，所以此示例表示 Kerberos 可用。 这是不以“YII”开头的 Kerberos Blob 的示例。
+    *图：* 因为它不以“TIRMTVNTUAAB”开头，所以此示例表示 Kerberos 可用。 这是不以“YII”开头的 Kerberos Blob 的示例。
 
 2.  暂时从 IIS 站点的提供程序列表中删除 NTLM，并从连接器主机上的 IE 直接访问应用。 当 NTLM 不在提供程序列表中时，应仅能够通过 Kerberos 访问应用程序。 如果此操作失败，则表示应用程序配置存在问题，并且 Kerberos 身份验证不起作用。
 
@@ -179,4 +180,4 @@ Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'N
 -   双跃点身份验证 - 常用于应用程序分层的情形，具有都需要验证身份的后端和前端，例如 SQL 报告服务。
 
 ## <a name="next-steps"></a>后续步骤
-[在托管域上配置 Kerberos 约束委派 (KCD)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-enable-kcd)
+[在托管域上配置 Kerberos 约束委派 (KCD)](../active-directory-domain-services/active-directory-ds-enable-kcd.md)

@@ -8,27 +8,25 @@ manager: mtillman
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
+ms.component: msi
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 552f9e7cae4d7f46ea1548cfe7d9482bff79e5bc
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33930980"
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory 的托管服务标识 (MSI) 的常见问题解答和已知问题
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 ## <a name="frequently-asked-questions-faqs"></a>常见问题解答 (FAQ)
-
-### <a name="is-there-a-private-preview-available-for-additional-features"></a>是否有针对其他功能可用的个人预览版？
-
-是的。 如果想申请注册个人预览版，请[访问我们的注册页面](https://aka.ms/azuremsiprivatepreview)。
 
 ### <a name="does-msi-work-with-azure-cloud-services"></a>MSI 能否用于 Azure 云服务？
 
@@ -42,10 +40,24 @@ ms.lasthandoff: 03/16/2018
 
 标识的安全边界是标识所附加到的资源。 例如，虚拟机 MSI 的安全边界是虚拟机。 在该 VM 上运行的任何代码都可以调用 MSI 终结点和请求令牌。 这与支持 MSI 的其他资源类似的体验。
 
+### <a name="should-i-use-the-msi-vm-imds-endpoint-or-the-msi-vm-extension-endpoint"></a>是应使用 MSI VM IMDS 终结点还是应使用 MSI VM 扩展终结点？
+
+将 MSI 与 VM 配合使用时，建议使用 MSI IMDS 终结点。 Azure 实例元数据服务是一个 REST 终结点，可供通过 Azure 资源管理器创建的所有 IaaS VM 使用。 下面是使用 MSI 时相对于 IMDS 的一些优势：
+
+1. 所有支持 Azure IaaS 的操作系统都可以使用 MSI 而不是 IMDS。 
+2. 不再需要在 VM 上安装扩展来启用 MSI。 
+3. 供 MSI 使用的证书不再存在于 VM 中。 
+4. IMDS 终结点是一个已知不可路由的 IP 地址，该地址只能在 VM 中访问。 
+
+MSI VM 扩展目前仍可使用，但在以后，我们会默认使用 IMDS 终结点。 MSI VM 扩展很快会启动弃用计划。 
+
+有关 Azure 实例元数据服务的详细信息，请参阅 [IMDS 文档](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+
 ### <a name="what-are-the-supported-linux-distributions"></a>有哪些受支持的 Linux 发行版？
 
-以下 Linux 发行版支持 MSI： 
+Azure IaaS 支持的所有 Linux 发行版都可以通过 IMDS 终结点与 MSI 配合使用。 
 
+注意：MSI VM 扩展仅支持以下 Linux 发行版：
 - CoreOS Stable
 - CentOS 7.1
 - RedHat 7.2
@@ -77,7 +89,7 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 
 托管服务标识 VM 扩展当前不支持将其架构导出到资源组模板的功能。 因此，生成的模板不显示用于在资源上启用托管服务标识的配置参数。 可以按照[使用模板配置 VM 托管服务标识](qs-configure-template-windows-vm.md)中的示例，手动添加这些节。
 
-当 MSI VM 扩展的架构导出功能变为可用时，它将在[导出包含 VM 扩展的资源组](../../virtual-machines/windows/extensions-export-templates.md#supported-virtual-machine-extensions)中列出。
+当 MSI VM 扩展的架构导出功能变为可用时，它将在[导出包含 VM 扩展的资源组](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions)中列出。
 
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>Azure 门户中不显示“配置”边栏选项卡
 
@@ -108,3 +120,16 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
+
+## <a name="known-issues-with-user-assigned-identities"></a>用户分配标识的已知问题
+
+- 用户分配标识分配仅用于 VM 和 VMSS。 重要提示：用户分配的标识分配将在未来几个月内发生更改。
+- 在同一 VM/VMSS 上复制用户分配标识将导致 VM/VMSS 失败。 这包括使用不同大小写添加的标识。 例如 MyUserAssignedIdentity 和 myuserassignedidentity。 
+- 由于 DNS 查找失败，配置 VM 的 VM 扩展可能失败。 重新启动 VM，然后重试。 
+- 添加“不存在”的用户分配标识将会导致 VM 失败。 
+- 不支持在名称中使用特殊字符（即下划线）创建用户分配的标识。
+- 用于端到端方案中的用户分配标识名称限制为 24 个字符。 名称长度超过 24 个字符的用户分配标识将无法进行分配。  
+- 当添加第二个用户分配的标识时，clientID 可能无法用于 VM 扩展的请求令牌。 使用以下两个 bash 命令重新启动 MSI VM 扩展可缓解此问题：
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
+- 如果 VM 有用户分配的标识，但没有系统分配的标识，则门户 UI 会显示已禁用 MSI。 若要启用系统分配的标识，请使用 Azure 资源管理器模板、Azure CLI 或 SDK。

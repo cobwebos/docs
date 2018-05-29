@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights 中使用情况分析的疑难解答"
-description: "故障排除指南 - 通过 Application Insights 分析站点和应用使用情况。"
+title: Azure Application Insights 中使用情况分析的疑难解答
+description: 故障排除指南 - 通过 Application Insights 分析站点和应用使用情况。
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: mbullwin
-ms.openlocfilehash: cb5f3052301b23eb10cd6b84ab6fae98bcc7ea18
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: mbullwin;daviste
+ms.openlocfilehash: 654b99085c406f13fe95476457234761bf840422
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33867562"
 ---
 # <a name="troubleshoot-usage-analytics-in-application-insights"></a>Application Insights 中使用情况分析的疑难解答
 是否对 [Application Insights 中的使用情况分析工具](app-insights-usage-overview.md)[用户、会话、事件](app-insights-usage-segmentation.md)、[漏斗图](usage-funnels.md)、[用户流](app-insights-usage-flows.md)、[保留](app-insights-usage-retention.md)或队列存在疑问？ 请参考下面的解答。
@@ -37,7 +38,7 @@ Application Insights 中的所有遥测事件都具有[匿名用户 ID](applicat
 ## <a name="naming-events"></a>命名事件
 **我的应用具有数千个不同的页面视图和自定义事件名称。很难对其进行区分，并且使用情况分析工具经常反应迟钝。应如何解决这些命名问题？**
 
-使用情况分析工具中会频繁使用页面视图和自定义事件名称。 若要从这些工具中获取值，为事件提供合适的名称至关重要。 其目标是过于宽泛的名称（“单击‘按钮’”）和过于具体的名称（“单击 http://www.contoso.com/index 上的‘编辑’按钮”）的数量应达到一个平衡。
+使用情况分析工具中会频繁使用页面视图和自定义事件名称。 若要从这些工具中获取值，为事件提供合适的名称至关重要。 目标是在具有太少过于宽泛的名称（“单击‘按钮’”）和具有太多过于具体的名称（“单击 http://www.contoso.com/index 上的‘编辑’按钮”）之间取得平衡。
 
 若要对应用发送的页面视图和自定义事件名称进行更改，需要更改应用的源代码并重新部署。 Application Insights 中的所有遥测数据均存储 90 天，且无法删除，因此对事件名称所做的更改需要 90 天才能完全生效。 名称更改后的 90 天中，新旧事件名称都会显示在遥测中，因此请相应调整查询并在团队内进行相应传达。
 

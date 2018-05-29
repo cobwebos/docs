@@ -10,11 +10,12 @@ ms.custom: security
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 18afebefaee9117244767e0a00e293a297bbf9af
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 375142b0e55c741e6ab914e969751833f989d2fb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161067"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL 数据库数据发现和分类
 数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 & 
@@ -22,6 +23,9 @@ ms.lasthandoff: 03/16/2018
 * 帮助满足数据隐私标准和法规符合性要求，如 GDPR。
 * 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
 * 控制对包含高度敏感数据的数据库的访问并强化其安全性。
+
+> [!NOTE]
+> 本文档仅与 Azure SQL 数据库相关。 对于 SQL Server（本地），请参阅 [SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
 
 ## <a id="subheading-1"></a>概述
 数据发现和分类引入了一套高级的服务和新的 SQL 功能，形成了新的 SQL 信息保护模式，旨在保护数据，而不仅仅是数据库：

@@ -1,32 +1,36 @@
 ---
-title: "Azure Active Directory 登录活动报告 API 参考 |Microsoft 文档"
-description: "Azure Active Directory 登录活动报告 API 的参考信息"
+title: Azure Active Directory 登录活动报告 API 参考 |Microsoft 文档
+description: Azure Active Directory 登录活动报告 API 的参考信息
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 859459bbce6b81e2e855201d5c310233d88d0393
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 3831146caad4fe922e482ce782d5d41fb70338f4
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155790"
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Azure Active Directory 登录活动报告 API 参考
-本主题包含在有关 Azure Active Directory 报告 API 的主题集合中。  
-Azure AD 报告提供一个用于通过代码或相关工具访问登录活动报告数据的 API。
-本主题提供有关**登录活动报告 API** 的参考信息。
 
-请参阅:
+> [!TIP] 
+> 签出用于报告的新 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)，这最终将取代此 API。 
+
+本文包含在有关 Azure Active Directory (Azure AD) 报告 API 的文章集中。 Azure AD 报告向你提供了一个允许使用代码或相关工具访问审核数据的 API。
+本文主要提供有关**审核 API** 的参考信息。
+
+请参阅：
 
 * [登录活动](active-directory-reporting-azure-portal.md#activity-reports)，其中介绍了详细的概念信息
 * [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)，获取有关报告 API 的详细信息。
@@ -37,7 +41,7 @@ Azure AD 报告提供一个用于通过代码或相关工具访问登录活动�
 * 全局管理员
 * 有权访问 API 的任何应用（仅可根据全局管理员的权限设置应用授权）
 
-要为应用程序配置访问安全 API（如登录事件）的权限，请使用以下 PowerShell 将应用程序服务主体添加到“安全读者”角色中
+若要为应用程序配置访问安全 API（如登录事件）的权限，请使用以下 PowerShell 将应用程序服务主体添加到“安全读者”角色中
 
 ```PowerShell
 Connect-MsolService
@@ -49,11 +53,11 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 ## <a name="prerequisites"></a>先决条件
 若要通过报告 API 访问此报告，必须满足以下条件：
 
-* 拥有 [Azure Active Directory Premium P1 或 P2 版本](active-directory-editions.md)
+* 拥有 [Azure Active Directory Premium P1 或 P2 版本](active-directory-whatis.md)
 * 完成了[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)。 
 
 ## <a name="accessing-the-api"></a>访问 API
-可以通过[“Graph 浏览器”](https://graphexplorer2.cloudapp.net)访问此 API，或以编程方式使用 PowerShell 等访问此 API。 为了使 PowerShell 正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法，必须使用反撇号字符（也称为重音符）对 $ 字符进行“转义”。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（即 $filter）。
+可以通过[“Graph 浏览器”](https://graphexplorer2.cloudapp.net)访问此 API，或以编程方式使用 PowerShell 等访问此 API。 使用反撇号字符（也称为重音符）对 $ 字符进行“转义”，以确保 PowerShell 能够正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（例如 $filter）。
 
 本主题着重介绍了 Graph 浏览器。 有关 PowerShell 示例，请参阅此 [PowerShell 脚本](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script)。
 
@@ -64,10 +68,9 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 
 
 
-由于数据量的原因，此 API 限制为一百万条返回的记录。 
+由于数据量的原因，此 API 限制为返回 1,000,000 条记录。 
 
-此调用批量返回数据。 每一批中最多有 1000 条记录。  
-若要获取下一批记录，请使用“下一个”链接。 从第一组返回的记录中获取 [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) 信息。 跳过标记会在结果集的末尾。  
+此调用分批返回数据。 每一批中最多有 1000 条记录。 若要获取下一批记录，请使用“下一个”链接。 从第一组返回的记录中获取 [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) 信息。 跳过标记会在结果集的末尾。  
 
     https://graph.windows.net/$tenantdomain/activities/signinEvents?api-version=beta&%24skiptoken=-1339686058
 
@@ -76,7 +79,7 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 可以缩小显示在筛选器窗体中的 API 调用所返回记录的范围。  
 对于与登录 API 相关的数据，支持以下筛选器：
 
-* **$top=\<要返回的记录数\>** - 限制返回的记录数。 此操作成本高昂。 如果想要返回数以千计的对象，则不应使用此筛选器。  
+* **$top=\<要返回的记录数\>** - 限制返回的记录数。 此操作成本高昂。 如果想要返回数以千计的对象，请不要使用此筛选器。  
 * **$filter=\<筛选语句\>** - 根据受支持的筛选字段，指定所关注的记录类型
 
 ## <a name="supported-filter-fields-and-operators"></a>支持的筛选字段和运算符
@@ -94,7 +97,7 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 > 
 > 
 
-若要缩小返回的数据范围，可以创建支持的筛选器和筛选器字段组合。 例如，以下语句返回 2016 年 7 月 1 日与 2016 年 7 月 6 日之间的前 10 条记录：
+若要缩小返回的数据范围，可以创建支持的筛选器和筛选器字段组合。 例如，以下语句将返回 2016 年 7 月 1 日与 2016 年 7 月 6 日之间的前 10 条记录：
 
     https://graph.windows.net/contoso.com/activities/signinEvents?api-version=beta&$top=10&$filter=signinDateTime+ge+2016-07-01T17:05:21Z+and+signinDateTime+le+2016-07-07T00:00:00Z
 

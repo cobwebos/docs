@@ -1,11 +1,11 @@
 ---
-title: "配置 Azure AD 库应用程序的联合单一登录时遇到的问题 | Microsoft Docs"
-description: "解决在使用 SAML 配置 Azure AD 应用程序库中所列应用程序的联合单一登录时可能遇到的一些常见问题"
+title: 配置 Azure AD 库应用程序的联合单一登录时遇到的问题 | Microsoft Docs
+description: 解决在使用 SAML 配置 Azure AD 应用程序库中所列应用程序的联合单一登录时可能遇到的一些常见问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 86ddb91ae16da797e32c6e1a8a8b2cd8fca989a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 581b3c4ff7cc7b25f238602560f30280efa34edd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053303"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序的联合单一登录时遇到的问题
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 02/21/2018
 
 10. 有三种方法可以了解应用程序支持的模式：
 
-   * 在文本框中，可以看到受支持的模式（作为一个占位符）。*示例：*<https://contoso.com>。
+   * 在文本框中，可以看到受支持的模式作为一个占位符。*示例：*<https://contoso.com>。
 
    * 如果此模式不受支持，当在文本框中试图输入值时会看到一个红色感叹号。 将鼠标悬停在红色感叹号上，就能看到受支持的模式。
 
@@ -71,7 +72,7 @@ ms.lasthandoff: 02/21/2018
 
 -   与应用程序供应商沟通以获取与 Azure AD 上预配置的模式匹配的值
 
--   或者，也可以通过 <aadapprequest@microsoft.com> 联系 Azure AD 团队或在教程中留言要求更新为应用程序支持的模式
+-   或者，也可以通过 <aadapprequest@microsoft.com> 联系 Azure AD 团队或在教程中留言，请求更新为应用程序支持的模式
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>我在何处设置 EntityID（用户标识符）格式
 
@@ -81,7 +82,7 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 ## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>无法找到 Azure AD 元数据来完成应用程序的配置
 
-若要从 Azure AD 下载应用程序元数据或证书，请按照以下步骤操作：
+若要从 Azure AD 下载应用程序元数据或证书，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
@@ -108,4 +109,4 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
+[使用 Azure Active Directory 管理应用程序](manage-apps/what-is-application-management.md)

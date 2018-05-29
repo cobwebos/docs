@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions 的应用设置参考"
-description: "有关 Azure Functions 应用设置或环境变量的参考文档。"
+title: Azure Functions 的应用设置参考
+description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2017
 ms.author: tdykstra
-ms.openlocfilehash: ce7bf2cf650b0df7e8998766b2d3f5a37c4a1b72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd5603b8f0e15eeae9dd3799d4e10952e115680f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194261"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -44,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true` 表示禁用针对函数应用根 URL 显示的默认登录页。 默认值为 `false`。
+`true` 表示禁用针对函数应用根 URL 显示的默认登录页。 默认为 `false`。
 
 |密钥|示例值|
 |---|------------|
@@ -56,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true` 表示在编译 .NET 代码时使用“发布”模式；`false` 表示使用“调试”模式。 默认值为 `true`。
+`true` 表示在编译 .NET 代码时使用“发布”模式；`false` 表示使用“调试”模式。 默认为 `true`。
 
 |密钥|示例值|
 |---|------------|
@@ -155,8 +156,8 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [了解如何更新应用设置](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
+[了解如何更新应用设置](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
 
-> [!div class="nextstepaction"]
-> [查看 host.json 文件中的全局设置](functions-host-json.md)
+[查看 host.json 文件中的全局设置](functions-host-json.md)
+
+[查看应用服务应用的其他应用设置](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

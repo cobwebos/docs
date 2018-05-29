@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: 54ae18b9a802fe078d307f4d36400adf806b233f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193757"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步排查对象同步问题
 本文档按步骤介绍了如何使用故障排除任务来排查对象同步问题。
@@ -34,6 +35,7 @@ ms.lasthandoff: 03/23/2018
 4.  导航到“其他任务”页面，选择“故障排除”，然后单击“下一步”。
 5.  在“故障排除”页上，单击“启动”以在 PowerShell 中启动故障排除菜单。
 6.  在主菜单中，选择“排查对象同步问题”。
+![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>排查输入参数问题
 以下输入参数是故障排除任务所需的：
@@ -47,6 +49,8 @@ ms.lasthandoff: 03/23/2018
 1.  在对象已同步到 Azure Active Directory 的情况下检测 UPN 不匹配的情况
 2.  检查对象是否已因域筛选而被筛选出来
 3.  检查对象是否已因 OU 筛选而被筛选出来
+4.  检查对象同步是否由于链接的邮箱而被阻止
+5. 检查对象是否是不应该同步的动态通讯组
 
 本部分的剩余内容说明了此任务返回的具体结果。 在每个示例中，此任务都提供了分析以及解决问题所需的建议操作。
 
@@ -76,9 +80,19 @@ Azure Active Directory 不允许将 UserPrincipalName (UPN)/备用登录 ID 后�
 对象不在范围内，因为域缺少运行配置文件/运行步骤。 在下面的示例中，对象不在范围内，因为其所属的域缺少“完全导入”运行配置文件的运行步骤。
 ![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch6.png)
 
-### <a name="object-is-filtered-due-to-ou-filtering"></a>对象已因 OU 筛选而被筛选出来
-对象因 OU 筛选配置而不在同步范围内。 在下面的示例中，对象属于 OU=NoSync,DC=bvtadwbackdc,DC=com。此 OU 不包括在同步范围内。
-![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+## <a name="object-is-filtered-due-to-ou-filtering"></a>对象已因 OU 筛选而被筛选出来
+对象因 OU 筛选配置而不在同步范围内。 在下面的示例中，对象属于 OU=NoSync,DC=bvtadwbackdc,DC=com。此 OU 不包括在同步范围内。</br>
+
+![OU](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+
+## <a name="linked-mailbox-issue"></a>链接邮箱问题
+链接邮箱假设与位于另一个受信任帐户林中的外部主帐户相关联。 如果没有此类外部主帐户，则 Azure AD Connect 不会将 Exchange 林中对应于链接邮箱的用户帐户与 Azure AD 租户同步。</br>
+![链接邮箱](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch12.png)
+
+## <a name="dynamic-distribution-group-issue"></a>动态通讯组问题
+由于本地 Active Directory 和 Azure Active Directory 之间的各种差异，Azure AD Connect 不会将动态通讯组与 Azure AD 租户同步。
+
+![动态通讯组](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch13.png)
 
 ## <a name="html-report"></a>HTML 报表
 除了分析对象，故障排除任务还会生成 HTML 报表，其中包含有关该对象的一切已知内容。 此 HTML 报表可以与支持团队共享，以便根据需要进行进一步的故障排除。

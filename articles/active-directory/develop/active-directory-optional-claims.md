@@ -2,23 +2,26 @@
 title: 了解如何向 Azure AD 应用程序提供可选声明 | Microsoft Docs
 description: 有关如何将自定义或附加的声明添加到 Azure Active Directory 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 的指南。
 documentationcenter: na
-author: hpsin
+author: CelesteDG
 services: active-directory
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/15/2018
-ms.author: hirsin
+ms.date: 04/24/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f9cc4f900428e1337fc9b9d428879d6527c60017
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c4670a7e957970acea54ff69d56edcd45092c8fe
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157225"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD 中的可选声明（预览版）
 
@@ -65,7 +68,9 @@ ms.lasthandoff: 04/03/2018
 | `fwd`                      | IP 地址。  添加请求方客户端（如果位于 VNET 中）的原始 IPv4 地址                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `ctry`                     | 用户所在的国家/地区                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_ctry`              | 资源租户所在的国家/地区                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
+| `acct`    | 租户中的用户帐户状态。  如果用户是租户的成员，则该值为 `0`。  如果他们是来宾，则该值为 `1`。  | JWT、SAML | | |
 | `upn`                      | UserPrincipalName 声明。  尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。 | JWT、SAML  |           | 附加属性： <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
+
 ### <a name="v20-optional-claims"></a>V2.0 可选声明
 这些声明始终包含在 v1.0 令牌中，但除非提出请求，否则会从 v2.0 令牌中删除。  这些声明仅适用于 JWT（ID 令牌和访问令牌）。  
 
@@ -200,7 +205,7 @@ ms.lasthandoff: 04/03/2018
 -   可以修改应用程序清单。 以下示例将使用此方法来执行配置。 请先阅读[了解 Azure AD 应用程序清单文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)中的清单简介。
 -   也可以编写使用[图形 API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) 的应用程序来更新应用程序。 图形 API 参考指南中的[实体和复杂类型参考](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type)可帮助你配置可选声明。
 
-**示例：**在以下示例中，我们将修改某个应用程序的清单，以便将声明添加到用于该应用程序的访问、ID 和 SAML 令牌。
+**示例：** 在以下示例中，我们将修改某个应用程序的清单，以便将声明添加到用于该应用程序的访问、ID 和 SAML 令牌。
 1.  登录到 [Azure 门户](https://portal.azure.com)。
 2.  通过身份验证后，在页面右上角选择 Azure AD 租户。
 3.  在左侧导航窗格中选择“Azure AD 扩展”扩展，并单击“应用注册”。

@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 0fe4816dbafc28974796c7d9cd307b04fdb9d6d4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a6a44e30fe58617b43c5491a72fc882015bc9591
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886057"
 ---
 # <a name="smart-contract-integration-patterns"></a>智能合同集成模式
 
@@ -213,7 +214,7 @@ Azure Blockchain Workbench REST API 提供发送身份验证的请求，以查�
 
 ## <a name="storage-integration"></a>存储集成
 
-许多方案可能需要合并可证实的文件。 出于多种原因，将文件放在区块链中并不合适。 一种常见方法是针对文件执行单向哈希，并在分布式账本中共享该哈希。 将来再次执行该哈希应返回相同的结果。 如果文件被修改（即使只是修改了图像中的一个像素），该哈希将返回不同的值。
+许多方案可能需要合并可证实的文件。 出于多种原因，将文件放在区块链中并不合适。 一种常见方法是针对文件执行加密哈希（例如，SHA-256），并在分布式账本中共享该哈希。 将来再次执行该哈希应返回相同的结果。 如果文件被修改（即使只是修改了图像中的一个像素），该哈希将返回不同的值。
 
 ![存储集成](media/blockchain-workbench-integration-patterns/storage-integration.png)
 

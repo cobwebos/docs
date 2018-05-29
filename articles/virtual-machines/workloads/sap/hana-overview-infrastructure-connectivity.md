@@ -14,24 +14,25 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 51089ffa05168d2309bd2a96ec44b2ce0fed75f9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778284"
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure 上的 SAP HANA（大型实例）的基础结构和连接 
 
 阅读本指南前，请先了解一些定义。 在 [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)中，我们引入了两类不同的 HANA 大型实例单元，其中包括：
 
-- 称为“I 类”SKU 的S72、S72m、S144、S144m、S192 和 S192m。
-- 称为“II 类”SKU 的 S384、S384m、S384xm、S576、S768 和 S960。
+- 称为“I 类”SKU 的 S72、S72m、S144、S144m、S192 和 S192m。
+- 称为“II 类”SKU 的 S384、S384m、S384xm、S576m、S768m 和 S960m。
 
 将在整个 HANA 大型实例文档中使用类说明符，最终用于根据 HANA 大型实例 SKU 指代不同的功能和要求。
 
 我们还经常用到其他定义，如下所述：
-- **大型实例模具：**已通过 SAP HANA TDI 认证的硬件基础结构堆栈，专门用于在 Azure 中运行 SAP HANA 实例。
-- **Azure 上的 SAP HANA（大型实例）：**用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
+- **大型实例模具：** 已通过 SAP HANA TDI 认证的硬件基础结构堆栈，专门用于在 Azure 中运行 SAP HANA 实例。
+- **Azure 上的 SAP HANA（大型实例）：** 用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
  
 
 在你与 Microsoft 企业帐户团队之间达成“Azure 上的 SAP HANA（大型实例）”的采购协议后，Microsoft 会要求提供以下信息来部署 HANA 大型实例单元：
@@ -119,18 +120,18 @@ ms.lasthandoff: 04/06/2018
 
 在前面的部分中，我们已介绍了部署 HANA 大型实例所必需的一些 IP 地址范围。 不过，还有一些 IP 地址范围也很重要。 让我们更详细地了解。 在发送初始部署请求之前，需要定义以下 IP 地址（这些地址并非全部都要提交给 Microsoft）：
 
-- **VNet 地址空间：**如前所述，这是已分配（或打算分配）给要连接到 SAP HANA 大型实例环境的 Azure 虚拟网络 (VNet) 中的地址空间参数的一个或多个 IP 地址范围。 建议将此地址空间参数指定为多行值，其中包括 Azure VM 子网范围和 Azure 网关子网范围，如上图所示。 此范围不得与本地或服务器 IP 池或 ER-P2P 地址范围重叠。 如何获取这一个或多个 IP 地址范围？ 企业网络团队或服务提供程序应提供网络内部未使用的一个或多个 IP 地址范围。 例如，如果上面的 Azure VM 子网为 10.0.1.0/24，下面的 Azure 网关子网为 10.0.2.0/28，建议为 Azure VNet 地址空间指定两行：10.0.1.0/24 和 10.0.2.0/28。 尽管地址空间值可以聚合，仍建议将它们与子网范围匹配，以免将来在网络中的其他位置意外重用较大地址空间内的 IP 地址范围。 VNET 地址空间是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围
+- **VNet 地址空间：** 如前所述，这是已分配（或打算分配）给要连接到 SAP HANA 大型实例环境的 Azure 虚拟网络 (VNet) 中的地址空间参数的一个或多个 IP 地址范围。 建议将此地址空间参数指定为多行值，其中包括 Azure VM 子网范围和 Azure 网关子网范围，如上图所示。 此范围不得与本地或服务器 IP 池或 ER-P2P 地址范围重叠。 如何获取这一个或多个 IP 地址范围？ 企业网络团队或服务提供程序应提供网络内部未使用的一个或多个 IP 地址范围。 例如，如果上面的 Azure VM 子网为 10.0.1.0/24，下面的 Azure 网关子网为 10.0.2.0/28，建议为 Azure VNet 地址空间指定两行：10.0.1.0/24 和 10.0.2.0/28。 尽管地址空间值可以聚合，仍建议将它们与子网范围匹配，以免将来在网络中的其他位置意外重用较大地址空间内的 IP 地址范围。 VNET 地址空间是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围
 
-- **Azure VM 子网 IP 地址范围：**如前所述，这是已分配（或打算分配）给要连接到 SAP HANA 大型实例环境的 Azure VNET 中的 Azure VNet 子网参数的 IP 地址范围。 此 IP 地址范围用于向 Azure VM 分配 IP 地址。 此范围外的 IP 地址可以连接到 SAP HANA 大型实例服务器。 如果需要，可以使用多个 Azure VM 子网。 Microsoft 建议对每个 Azure VM 子网使用一个 /24 CIDR 块。 此地址范围必须是 Azure VNet 地址空间中使用的值的一部分。 如何获取此 IP 地址范围？ 企业网络团队或服务提供程序应提供网络内部当前未使用的 IP 地址范围。
+- **Azure VM 子网 IP 地址范围：** 如前所述，这是已分配（或打算分配）给要连接到 SAP HANA 大型实例环境的 Azure VNET 中的 Azure VNet 子网参数的 IP 地址范围。 此 IP 地址范围用于向 Azure VM 分配 IP 地址。 此范围外的 IP 地址可以连接到 SAP HANA 大型实例服务器。 如果需要，可以使用多个 Azure VM 子网。 Microsoft 建议对每个 Azure VM 子网使用一个 /24 CIDR 块。 此地址范围必须是 Azure VNet 地址空间中使用的值的一部分。 如何获取此 IP 地址范围？ 企业网络团队或服务提供程序应提供网络内部当前未使用的 IP 地址范围。
 
-- **VNet 网关子网 IP 地址范围：**根据想要使用的功能，建议的大小为：
+- **VNet 网关子网 IP 地址范围：** 根据想要使用的功能，建议的大小为：
    - 超高性能 ExpressRoute 网关：/26 地址块 - II 类 SKU 所必需
    - 通过高性能 ExpressRoute 网关同时使用 VPN 和 ExpressRoute（或更小的规模）：/27 地址块
    - 其他所有情况：/28 地址块。 此地址范围必须是“VNet 地址空间”值中使用的值的一部分。 此地址范围必须是需要提交给 Microsoft 的“Azure VNet 地址空间”值中使用的值的一部分。 如何获取此 IP 地址范围？ 企业网络团队或服务提供程序应提供网络内部当前未使用的 IP 地址范围。 
 
-- **用于 ER-P2P 连接的地址范围：**这是 SAP HANA 大型实例 ExpressRoute (ER) P2P 连接所需的 IP 范围。 此 IP 地址范围必须是 /29 CIDR IP 地址范围。 此范围不得与本地或其他 Azure IP 地址范围重叠。 此 IP 地址范围用于设置从 Azure VNet ExpressRoute 网关到 SAP HANA 大型实例服务器的 ER 连接。 如何获取此 IP 地址范围？ 企业网络团队或服务提供程序应提供网络内部当前未使用的 IP 地址范围。 这是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围
+- **用于 ER-P2P 连接的地址范围：** 这是 SAP HANA 大型实例 ExpressRoute (ER) P2P 连接所需的 IP 范围。 此 IP 地址范围必须是 /29 CIDR IP 地址范围。 此范围不得与本地或其他 Azure IP 地址范围重叠。 此 IP 地址范围用于设置从 Azure VNet ExpressRoute 网关到 SAP HANA 大型实例服务器的 ER 连接。 如何获取此 IP 地址范围？ 企业网络团队或服务提供程序应提供网络内部当前未使用的 IP 地址范围。 这是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围
   
-- **服务器 IP 池地址范围：**此 IP 地址范围用于向 HANA 大型实例服务器分配单个 IP 地址。 建议的子网大小为 /24 CIDR 块 - 但如果需要，可将它缩小到提供 64 个 IP 地址的最小规模。 此范围内的前 30 个 IP 地址保留给 Microsoft 使用。 选择范围大小时，请务必考虑到这一事实。 此范围不得与本地或其他 Azure IP 地址重叠。 如何获取此 IP 地址范围？ 企业网络团队或服务提供商应会提供网络内部当前未使用的 IP 地址范围。 /24（推荐）唯一 CIDR 块，用于为 Azure 上的 SAP HANA（大型实例）分配所需的特定 IP 地址。 这是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围
+- **服务器 IP 池地址范围：** 此 IP 地址范围用于向 HANA 大型实例服务器分配单个 IP 地址。 建议的子网大小为 /24 CIDR 块 - 但如果需要，可将它缩小到提供 64 个 IP 地址的最小规模。 此范围内的前 30 个 IP 地址保留给 Microsoft 使用。 选择范围大小时，请务必考虑到这一事实。 此范围不得与本地或其他 Azure IP 地址重叠。 如何获取此 IP 地址范围？ 企业网络团队或服务提供商应会提供网络内部当前未使用的 IP 地址范围。 /24（推荐）唯一 CIDR 块，用于为 Azure 上的 SAP HANA（大型实例）分配所需的特定 IP 地址。 这是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围
  
 尽管需要定义和规划上述 IP 地址范围，但不需要将它们全部传输到 Microsoft。 概括而言，需要提交到 Microsoft 的 IP 地址范围包括：
 
@@ -213,7 +214,7 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 此示例使用了 HighPerformance 网关 SKU。 选项包括 HighPerformance 或 UltraPerformance，因为 Azure 上的 SAP HANA（大型实例）仅支持这两个网关 SKU。
 
 > [!IMPORTANT]
-> 对于 SKU 类型 S384、S384m、S384xm、S576、S768 和 S960（II 类 SKU）的 HANA 大型实例，必须使用 UltraPerformance 网关 SKU。
+> 对于 SKU 类型 S384、S384m、S384xm、S576m、S768m 和 S960m（II 类 SKU）的 HANA 大型实例，必须使用 UltraPerformance 网关 SKU。
 
 ### <a name="linking-vnets"></a>链接 VNet
 

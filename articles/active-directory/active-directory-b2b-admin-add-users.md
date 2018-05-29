@@ -2,29 +2,29 @@
 title: 在 Azure 门户中添加 B2B 协作用户 - Azure Active Directory | Microsoft Docs
 description: 介绍如何使用 Azure Active Directory (Azure AD) B2B 协作将来宾用户从合作伙伴组织添加到其目录。
 services: active-directory
-documentationcenter: ''
+ms.service: active-directory
+ms.component: B2B
+ms.topic: article
+ms.date: 05/11/2018
+ms.author: twooley
 author: twooley
 manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: active-directory
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
-ms.date: 04/02/2018
-ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 34bd5b51089045c4cd20f29d179bb230e5e3fac2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9d0565468d953c83ca5fee864b3079fbfee9bbf1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076759"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
 全局管理员或者获得了任何有限管理员目录角色的用户可以使用 Azure 门户邀请 B2B 协作用户。 可将来宾用户邀请到目录、组或应用程序。 通过上述任一方法邀请用户后，受邀用户的帐户将添加到 Azure Active Directory (Azure AD)，其用户类型为“来宾”。 然后，来宾用户必须兑换其邀请才能访问资源。
+
+将来宾用户添加到目录后，你可以向来宾用户发送指向共享应用程序的直接链接，或者来宾用户可以单击邀请电子邮件中的兑换 URL。 有关兑换过程的详细信息，请参阅 [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)。
+
+> [!IMPORTANT]
+> 应按照[操作指南：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
 
 ## <a name="add-guest-users-to-the-directory"></a>将来宾用户添加到目录
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 04/03/2018
  
 ## <a name="resend-invitations-to-guest-users"></a>向来宾用户重新发送邀请
 
-如果来宾用户尚未兑换其邀请，你可以重新发送邀请。
+如果来宾用户尚未兑换其邀请，你可以重新发送邀请电子邮件。
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
@@ -111,6 +111,4 @@ ms.lasthandoff: 04/03/2018
 
 - 若要了解非 Azure AD 管理员如何添加 B2B 来宾用户，请参阅[信息工作者如何添加 B2B 协作用户？](active-directory-b2b-iw-add-users.md)
 - 有关邀请电子邮件的信息，请参阅 [B2B 协作邀请电子邮件的元素](active-directory-b2b-invitation-email.md)。
-- 有关邀请兑换过程的信息，请参阅 [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)。
-
 

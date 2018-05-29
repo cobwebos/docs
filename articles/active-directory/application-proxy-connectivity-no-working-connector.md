@@ -1,11 +1,11 @@
 ---
-title: "找不到应用程序代理应用程序的工作连接器组 | Microsoft Docs"
-description: "对于使用 Azure AD 应用程序代理的应用程序，解决连接器组中没有工作连接器时可能会遇到的问题"
+title: 找不到应用程序代理应用程序的工作连接器组 | Microsoft Docs
+description: 对于使用 Azure AD 应用程序代理的应用程序，解决连接器组中没有工作连接器时可能会遇到的问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 7aad43be4dc411215a4b54c21a16c4cbb949c7ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 679b8654ad926ddb80747ad4c93064946c9bc82b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155416"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>找不到应用程序代理应用程序的工作连接器组
 
@@ -38,11 +39,11 @@ ms.lasthandoff: 12/11/2017
 
     -   将活动连接器移入该组
 
-若想知道这些问题是哪一个，请在应用程序中打开“应用程序代理”菜单，查看连接器组警告消息。 警告消息会指定组至少需要一个连接器（如果组中没有任何连接器）或组没有活动连接器（尽管可能存在处于不活动状态的连接器）。
+若想解决问题，请在应用程序中打开“应用程序代理”菜单，查看连接器组警告消息。 如果组中没有任何连接器，将会出现警告消息，指定组至少需要一个连接器。 如果没有任何活动的连接器，会显示警告消息来说明这一点。 拥有非活动状态的连接器是很常见的。 
 
    ![Azure 门户中的连接器组选择](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-关于这些选项的详细信息，请参阅以下相应部分。 每个选项都假定从连接器管理页开始操作。 如果想要查看上述错误消息，可以通过单击警告消息转到此页。 或者，还可以通过转到“Azure Active Directory”，单击“企业应用程序”，并单击“应用程序代理”找到上述错误消息。
+关于这些选项的详细信息，请参阅以下相应部分。 说明假定从连接器管理页开始操作。 如果想要查看上述错误消息，可以通过单击警告消息转到此页。 还可以通过转到“Azure Active Directory”，单击“企业应用程序”，并单击“应用程序代理”到达该页。
 
    ![Azure 门户中的连接器组管理](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 
 若要下载新连接器，请使用该页顶部的“下载连接器”按钮。
 
-请注意，连接器需要安装在直接可见后端应用程序的计算机上，通常置于应用程序所在的服务器上。 下载后，连接器应显示在此菜单中。 单击该连接器，并使用“连接器组”下拉列表以确保其属于正确的组。 保存更改。
+在计算机上安装连接器，可以直接看到后端应用程序。 通常，需要在应用程序所在的同一台服务器上安装连接器。 下载后，连接器应显示在此菜单中。 单击该连接器，并使用“连接器组”下拉列表以确保其属于正确的组。 保存更改。
 
    ![从 Azure 门户下载连接器](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
    
@@ -65,6 +66,6 @@ ms.lasthandoff: 12/11/2017
 有关调查此问题的详细信息，请参阅端口故障排除文档。
 
 ## <a name="next-steps"></a>后续步骤
-[了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
+[了解 Azure AD 应用程序代理连接器](manage-apps/application-proxy-connectors.md)
 
 

@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 7679fd253370d8ca9ca9ac57dc080806050f5c3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f6452d8f88b91fe0cbf144ce951b84ba4cec0047
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939815"
 ---
 # <a name="outbound-connections-classic"></a>出站连接（经典）
 
@@ -37,11 +38,11 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 
 Azure 提供三种不同的方法来实现出站连接经典部署。  并非所有经典部署都可使用这三种方案：
 
-| 场景 | 方法 | 说明 | Web 辅助角色 | IaaS | 
-| --- | --- | --- | --- | --- |
-| [1.具有实例级公共 IP 地址的 VM](#ilpip) | SNAT，不使用端口伪装 |Azure 使用分配了公共 IP 的虚拟机。 此实例具有所有可用的临时端口。 | 否 | 是 |
-| [2. 公共负载均衡终结点](#publiclbendpoint) | 使用端口伪装 (PAT) 通过 SNAT 连接到公共终结点 |Azure 与多个专用终结点共享公共 IP 地址公共终结点。 Azure 使用公共终结点的临时端口进行 PAT。 | 是 | 是 |
-| [3.独立 VM](#defaultsnat) | 使用端口伪装 (PAT) 的 SNAT | Azure 自动指定用于 SNAT 的公共 IP 地址，与整个部署共享此公共 IP 地址，并使用公共终结点 IP 地址的临时端口进行 PAT。 此方案是前述方案的回退方案。 如果需要可见性和控制，则我们不建议采用。 | 是 | 是|
+| 场景 | 方法 | IP 协议 | 说明 | Web 辅助角色 | IaaS | 
+| --- | --- | --- | --- | --- | --- |
+| [1.具有实例级公共 IP 地址的 VM](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配了公共 IP 的虚拟机。 此实例具有所有可用的临时端口。 | 否 | 是 |
+| [2. 公共负载均衡终结点](#publiclbendpoint) | 使用端口伪装 (PAT) 通过 SNAT 连接到公共终结点 | TCP、UDP | Azure 与多个专用终结点共享公共 IP 地址公共终结点。 Azure 使用公共终结点的临时端口进行 PAT。 | 是 | 是 |
+| [3.独立 VM](#defaultsnat) | 使用端口伪装 (PAT) 的 SNAT | TCP、UDP | Azure 自动指定用于 SNAT 的公共 IP 地址，与整个部署共享此公共 IP 地址，并使用公共终结点 IP 地址的临时端口进行 PAT。 此方案是前述方案的回退方案。 如果需要可见性和控制，则我们不建议采用。 | 是 | 是 |
 
 这是适用于 Azure 中资源管理器部署的一部分出站连接功能。  
 

@@ -9,11 +9,12 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95c5793bec228e2da8c98ea9263475f55de739d9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072161"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
@@ -73,11 +74,11 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
     ![导航窗格][3]
 5. 若要打开“审核日志存储”边栏选项卡，请选择“存储详细信息”。 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 将删除旧日志。 然后单击“确定”。
-   >[!TIP]
-   >若要充分利用审核报告模板，请为所有审核的数据库使用相同的存储帐户。
+    >[!TIP]
+    >若要充分利用审核报告模板，请为所有审核的数据库使用相同的存储帐户。
 
     <a id="storage-screenshot"></a> ![导航窗格][4]
-6. 若要自定义已审核的事件，可通过 PowerShell 或 REST API 执行此操作。
+6. 若要自定义已审核的事件，可通过 [PowerShell cmdlet](#subheading-7) 或 [REST API](#subheading-9) 执行此操作。
 7. 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](sql-database-threat-detection-get-started.md)。
 8. 单击“ **保存**”。
 
@@ -149,8 +150,8 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
    * 必须在主数据库本身上启用 blob 审核，而不要在服务器上启用。
    * 在主数据库上启用 blob 审核后，也会在辅助数据库上启用 blob 审核。
 
-     >[!IMPORTANT]
-     >在数据库级审核中，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
+    >[!IMPORTANT]
+    >在数据库级审核中，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
 <br>
 
 ### <a id="subheading-6">重新生成存储密钥</a>
@@ -169,33 +170,41 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
 
 * 有关日志格式、存储文件夹的层次结构和命名约定的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
 
-   > [!IMPORTANT]
-   > Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符的数据。 当可审核操作返回的**语句**或 **data_sensitivity_information** 值包含超过 4000 个的字符时，超出前 4000 个字符的任何数据将**被截去不进行审核**。
+    > [!IMPORTANT]
+    > Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符的数据。 当可审核操作返回的**语句**或 **data_sensitivity_information** 值包含超过 4000 个的字符时，超出前 4000 个字符的任何数据将**被截去不进行审核**。
 
 * 审核日志会写入 Azure 订阅的 Azure Blob 存储中的追加 Blob。
-   * 追加 Blob 目前不支持高级存储。
-   * 目前不支持 VNet 中的存储。
+    * 追加 Blob 目前不支持高级存储。
+    * 目前不支持 VNet 中的存储。
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>使用 Azure PowerShell 管理 SQL 数据库审核
+* 默认审核策略包括所有操作和下列操作组集合，将用于审核针对数据库执行的所有查询和存储过程以及成功和失败的登录：
 
-* **PowerShell cmdlet**：
+    BATCH_COMPLETED_GROUP<br>
+    SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP<br>
+    FAILED_DATABASE_AUTHENTICATION_GROUP
 
-   * [Get-AzureRMSqlDatabaseAuditing][101]
-   * [Get-AzureRMSqlServerAuditing][102]
-   * [Set-AzureRMSqlDatabaseAuditing][105]
-   * [Set-AzureRMSqlServerAuditing][106]
+    可以按照[使用 Azure PowerShell 管理 SQL 数据库审核](#subheading-7)部分中所述，使用 PowerShell 配置不同类型的操作和操作组的审核。
 
-   有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
+## <a id="subheading-7"></a>使用 Azure PowerShell 管理 SQL 数据库审核
 
-## <a name="manage-sql-database-auditing-using-rest-api"></a>使用 REST API 管理 SQL 数据库审核
+**PowerShell cmdlet**：
 
-* **REST API - Blob 审核**：
+* [创建或更新数据库 Blob 审核策略 (Set-AzureRMSqlDatabaseAuditing)][105]
+* [创建或更新服务器 Blob 审核策略 (Set-AzureRMSqlServerAuditing)][106]
+* [获取数据库审核策略 (Get-AzureRMSqlDatabaseAuditing)][101]
+* [获取服务器 Blob 审核策略 (Get-AzureRMSqlServerAuditing)][102]
 
-   * [创建或更新数据库 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-   * [创建或更新服务器 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-   * [获取数据库 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-   * [获取服务器 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt771860.aspx)
-   * [获取服务器 Blob 审核操作结果](https://msdn.microsoft.com/library/azure/mt771862.aspx)
+有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
+
+## <a id="subheading-9"></a>使用 REST API 管理 SQL 数据库审核
+
+**REST API - Blob 审核**：
+
+* [创建或更新数据库 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt695939.aspx)
+* [创建或更新服务器 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt771861.aspx)
+* [获取数据库 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt695938.aspx)
+* [获取服务器 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [获取服务器 Blob 审核操作结果](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
 
 <!--Anchors-->
@@ -204,8 +213,9 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Automation (PowerShell / REST API)]: #subheading-7
+[Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
+[Manage SQL database auditing using REST API]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

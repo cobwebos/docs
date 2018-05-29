@@ -3,23 +3,25 @@ title: Azure Active Directory 开发人员词汇表 | Microsoft Docs
 description: 常用的 Azure Active Directory 开发人员概念和功能术语列表。
 services: active-directory
 documentationcenter: ''
-author: bryanla
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/16/2017
-ms.author: bryanla
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d32858c89c59ef8240eddca42824374132255fe7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 12c1a4b2b1f3e433721b9c8a335c6b55de746643
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158143"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 开发人员词汇表
 本文包含一些核心 Azure Active Directory (AD) 开发人员概念的定义，帮助你了解 Azure AD 的应用程序开发。
@@ -35,7 +37,7 @@ ms.lasthandoff: 04/28/2018
 如需更多详细信息，请参阅 [Azure AD 令牌参考][AAD-Tokens-Claims]。
 
 ## <a name="application-id-client-id"></a>应用程序 ID（客户端 ID）
-Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应用程序及相关联的配置。  执行身份验证请求时将使用此应用程序 ID（[客户端 ID](https://tools.ietf.org/html/rfc6749#page-15)），开发时会向身份验证库提供它。 应用程序 ID（客户端 ID）不是密钥。 
+Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应用程序及相关联的配置。 执行身份验证请求时将使用此应用程序 ID（[客户端 ID](https://tools.ietf.org/html/rfc6749#page-15)），开发时会向身份验证库提供它。 应用程序 ID（客户端 ID）不是密钥。 
 
 ## <a name="application-manifest"></a>应用程序清单
 [Azure 门户][AZURE-portal]提供的一项功能，可生成以 JSON 表示的应用程序标识配置，作为其关联 [Application][AAD-Graph-App-Entity] 实体和 [ServicePrincipal][AAD-Graph-Sp-Entity] 实体的更新机制。 如需更多详细信息，请参阅[了解 Azure Active Directory 应用程序清单][AAD-App-Manifest]。
@@ -85,7 +87,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 如需更多详细信息，请参阅 [Azure AD 令牌参考][AAD-Tokens-Claims]。
 
 ## <a name="client-application"></a>客户端应用程序
-根据 [OAuth2 授权框架][OAuth2-Role-Def]的定义，这是代表[资源所有者](#resource-owner)发出受保护资源请求的应用程序。 “客户端”一词并不代表任何特定的硬件实现特征（例如，应用程序是在服务器、台式机还是其他设备上执行）。  
+根据 [OAuth2 授权框架][OAuth2-Role-Def]的定义，这是代表[资源所有者](#resource-owner)发出受保护资源请求的应用程序。 “客户端”一词并不代表任何特定的硬件实现特征（例如，应用程序是在服务器、台式机还是其他设备上执行）。 
 
 客户端应用程序向资源所有者请求[授权](#authorization)，以参与 [OAuth2 授权](#authorization-grant)流程，并可代表资源所有者访问 API/数据。 OAuth2 授权框架根据客户端是否能够维护其凭据的机密性[定义两种类型的客户端][OAuth2-Client-Types]：“机密”和“公共”。 应用程序可实现在 Web 服务器上运行的 [Web 客户端（机密）](#web-client)、安装在设备上的[本机客户端（公共）](#native-client)，或者在设备浏览器中运行的[基于用户代理的客户端（公共）](#user-agent-based-client)。
 
@@ -121,7 +123,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 ## <a name="resource-server"></a>资源服务器
 根据 [OAuth2 授权框架][OAuth2-Role-Def]的定义，这是托管受保护资源的服务器，能够接受并响应出示[访问令牌](#access-token)的[客户端应用程序](#client-application)所发出的受保护资源请求。 它也称为受保护的资源服务器或资源应用程序。
 
-资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括可访问 Azure AD 租户数据的 Azure AD Graph API，以及可访问邮件和日历等数据的 Office 365 API。 这两项也可通过 [Microsoft 图形 API][Microsoft-Graph] 进行访问。  
+资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括可访问 Azure AD 租户数据的 Azure AD Graph API，以及可访问邮件和日历等数据的 Office 365 API。 这两项也可通过 [Microsoft 图形 API][Microsoft-Graph] 进行访问。 
 
 与客户端应用程序一样，资源应用程序的标识配置是通过 Azure AD 租户中的[注册](#application-registration)来建立的，可提供应用程序和服务主体对象。 Microsoft 提供的某些 API（例如 Azure AD 图形 API）在预配期间将预先注册的服务主体设置为在所有租户中可用。
 
@@ -177,7 +179,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 一类[客户端应用程序](#client-application)，可在 Web 服务器上执行所有代码，并可将凭据安全地存储在服务器上，充当“机密”客户端。 如需更多详细信息，请参阅 [OAuth2 客户端类型和配置文件][OAuth2-Client-Types]。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure AD 开发人员指南][AAD-Dev-Guide]是用于所有 Azure AD 开发相关主题的登陆页，包括[应用程序集成][AAD-How-To-Integrate]的概述和 [Azure AD 身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基本知识。  另外，还可在 [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) 上找到关于如何快速启动和运行的代码示例及教程。
+[Azure AD 开发人员指南][AAD-Dev-Guide]是用于所有 Azure AD 开发相关主题的登陆页，包括[应用程序集成][AAD-How-To-Integrate]的概述和 [Azure AD 身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基本知识。 另外，还可在 [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) 上找到关于如何快速启动和运行的代码示例及教程。
 
 请使用以下评论部分提供反馈，帮助我们改进和编写内容，包括有关新定义或更新现有定义的要求！
 

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Zoom 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Zoom 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Zoom 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Zoom 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 5a6d9ea9de1035bf9c84cf3c451cc1121f04a82a
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 16fca9c8d1ab18ffe6d156d6bf4549d9a687b164
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34354208"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>教程：Azure Active Directory 与 Zoom 的集成
 
@@ -30,9 +31,9 @@ ms.lasthandoff: 01/05/2018
 - 可以让用户使用其 Azure AD 帐户自动登录到 Zoom（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Zoom 的集成，需要具有以下项：
 
@@ -58,7 +59,7 @@ ms.lasthandoff: 01/05/2018
 
 **若要从库中添加 Zoom，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -139,9 +140,9 @@ ms.lasthandoff: 01/05/2018
 
     c. 在“值”列表中，选择为该行显示的属性值。
 
-    d.单击“下一步”。 在“命名空间”文本框中，键入为该行显示的命名空间值。
+    d. 在“命名空间”文本框中，键入为该行显示的命名空间值。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“确定” 。 
+    e. 单击“确定” 。 
  
 6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -173,12 +174,12 @@ ms.lasthandoff: 01/05/2018
      
     c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，再粘贴到“标识提供者证书”文本框中。
 
-    d.单击“下一步”。 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。 
+    d. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。 
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“ **保存**”。
+    e. 单击“ **保存**”。
 
     > [!NOTE] 
-    > 有关详细信息，请访问 zoom 文档 [https://zoomus.zendesk.com/hc/zh-cn/articles/115005887566](https://zoomus.zendesk.com/hc/en-us/articles/115005887566)
+    > 有关详细信息，请访问 zoom 文档 [https://zoomus.zendesk.com/hc/en-us/articles/115005887566](https://zoomus.zendesk.com/hc/en-us/articles/115005887566)
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -214,7 +215,7 @@ ms.lasthandoff: 01/05/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-zoom-test-user"></a>创建 Zoom 测试用户
 
@@ -282,7 +283,7 @@ ms.lasthandoff: 01/05/2018
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

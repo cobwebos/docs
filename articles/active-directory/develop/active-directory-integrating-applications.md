@@ -3,23 +3,25 @@ title: 将应用程序与 Azure Active Directory 集成
 description: 如何在 Azure Active Directory (Azure AD) 中添加、更新或删除应用程序。
 services: active-directory
 documentationcenter: ''
-author: PatAltimore
+author: CelesteDG
 manager: mtillman
-editor: mbaldwin
+editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/04/2017
-ms.author: bryanla
+ms.date: 04/18/2018
+ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: f08e7327e266c342fe7f869f0b7a6a251792a071
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 76c6ef7d4cf53872dda308628790994b35d8431c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157990"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>将应用程序与 Azure Active Directory 集成
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -42,12 +44,12 @@ ms.lasthandoff: 01/29/2018
 
 4. 出现“创建”页后，请输入应用程序的注册信息： 
 
-  - **名称：**输入一个有意义的应用程序名称
+  - **名称：** 输入一个有意义的应用程序名称
   - **应用程序类型：** 
     - 为安装在设备本地的[客户端应用程序](active-directory-dev-glossary.md#client-application)选择“本机”。 此设置用于 OAuth 公共[本机客户端](active-directory-dev-glossary.md#native-client)。
     - 为安装在安全服务器上的[客户端应用程序](active-directory-dev-glossary.md#client-application)和[资源/API 应用程序](active-directory-dev-glossary.md#resource-server)选择“Web 应用/API”。 此设置用于 OAuth 机密性 [Web 客户端](active-directory-dev-glossary.md#web-client)和公共的[基于用户代理的客户端](active-directory-dev-glossary.md#user-agent-based-client)。 相同的应用程序还可以公开客户端和资源/API。
-  - **登录 URL：**对于“Web 应用/API”应用程序，请提供应用的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 
-  - **重定向 URI：**对于“本机”应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 `http://MyFirstAADApp`
+  - **登录 URL：** 对于“Web 应用/API”应用程序，请提供应用的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 
+  - **重定向 URI：** 对于“本机”应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 `http://MyFirstAADApp`
 
    ![注册新应用程序 - 创建](./media/active-directory-integrating-applications/add-app-registration-create.png)
 
@@ -56,7 +58,7 @@ ms.lasthandoff: 01/29/2018
 5. 完成后，单击“创建”。 Azure AD 会将唯一的应用程序 ID 分配给应用程序，同时你会转到应用程序的注册主页。 根据应用程序是 Web 应用程序还是本机应用程序，会提供不同的选项用于将更多功能添加到应用程序。 请参阅下一部分了解许可概述，以及有关在应用程序注册中启用更多配置功能（凭据、权限、使用户能够从其他租户登录）的详细信息。
 
   > [!NOTE]
-  > 默认情况下，新注册的应用程序配置为**只**允许同一租户中的用户登录到应用程序。
+  > 默认情况下，新注册的 Web 应用程序配置为只允许同一租户中的用户登录到应用程序。
   > 
   > 
 
@@ -65,7 +67,7 @@ ms.lasthandoff: 01/29/2018
 
 ### <a name="overview-of-the-consent-framework"></a>同意框架概述
 
-使用 Azure AD 许可框架可以轻松开发多租户 Web 应用程序和本机客户端应用程序，包括多层应用程序。 这些应用程序允许与应用程序所注册到的租户不同的 Azure AD 租户中的用户帐户登录。 这些帐户除了需要访问你自己的 Web API 以外，可能还需要访问 Microsoft 图形 API 等 Web API（以访问 Azure Active Directory、Intune，以及 Office 365 中的服务）和其他 Microsoft 服务 API。 该框架基于某个用户或管理员，该用户或管理员允许某个应用程序在其目录中注册，这可能涉及到访问目录数据。
+使用 Azure AD 许可框架可以轻松开发多租户 Web 应用程序和本机客户端应用程序。 这些应用程序允许与应用程序所注册到的租户不同的 Azure AD 租户中的用户帐户登录。 这些帐户除了需要访问你自己的 Web API 以外，可能还需要访问 Microsoft 图形 API 等 Web API（以访问 Azure Active Directory、Intune，以及 Office 365 中的服务）和其他 Microsoft 服务 API。 该框架基于某个用户或管理员，该用户或管理员允许某个应用程序在其目录中注册，这可能涉及到访问目录数据。
 
 例如，如果某个 Web 客户端应用程序需要从 Office 365 中读取关于用户的日历信息，则该用户首先需要许可该客户端应用程序。 同意后，该客户端应用程序能够代表该用户调用 Microsoft Graph API，并根据需要使用日历信息。 [Microsoft Graph API](https://graph.microsoft.io) 可用来访问 Office 365 中的数据（例如日历、来自 Exchange 的邮件、来自 SharePoint 的站点和列表、来自 OneDrive 的文档、来自 OneNote 的笔记本、来自 Planner 的任务、来自 Excel 的工作簿，等等）、Azure AD 中的用户和组以及更多 Microsoft 云服务中的其他数据对象。 
 
@@ -93,17 +95,17 @@ ms.lasthandoff: 01/29/2018
 
 5. 用户授予许可后，授权代码会返回到应用程序，应用程序可凭此获取访问令牌和刷新令牌。 有关此流程的详细信息，请参阅[“Azure AD 的身份验证方案”中的“从 Web 应用程序到 Web API”部分](active-directory-authentication-scenarios.md#web-application-to-web-api)。
 
-6. 作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框，可在 [Azure 门户](https://portal.azure.com)上的应用程序页中执行。 在应用程序的“设置”页，单击“所需权限”，再单击“授予权限”按钮。 
+6. 作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框，可通过具有管理员角色的用户在 [Azure 门户](https://portal.azure.com)中执行。 在应用程序的“设置”页，单击“所需权限”，再单击“授予权限”按钮。 
 
   ![授予显式管理许可权限](./media/active-directory-integrating-applications/grantpermissions.png)
     
   > [!NOTE]
-  > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。   
+  > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>将客户端应用程序配置为访问 Web API
 为使 Web/机密客户端应用程序能够参与要求身份验证的授权流程（以及获取访问令牌），必须建立安全凭据。 Azure 门户支持的默认身份验证方法为“客户端 ID + 机密密钥”。 本部分介绍需要执行哪些配置步骤来提供客户端凭据的机密密钥。
 
-此外，在客户端可以访问资源应用程序公开的 Web API（例如 Microsoft 图形 API）之前，许可框架可确保客户端根据请求的权限获取所需的授权。 默认情况下，所有应用程序可以从“Windows Azure Active Directory”（图形 API）和“Windows Azure 服务管理 API”中选择权限。 此外，默认已选择[图形 API 的“登录并读取用户配置文件”权限](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails)。 如果正在某个租户中注册客户端，并且该租户包含已订阅 Office 365 的帐户，则可以选择 SharePoint 与 Exchange Online 的 Web API 和权限。 可以从每个所需 Web API 的[两种类型的权限](active-directory-dev-glossary.md#permissions)中进行选择：
+此外，在客户端可以访问资源应用程序公开的 Web API（例如 Microsoft Graph API）之前，许可框架可确保客户端根据请求的权限获取所需的授权。 默认情况下，所有应用程序可以从“Windows Azure Active Directory”（图形 API）和“Windows Azure 服务管理 API”中选择权限。 此外，默认已选择[图形 API 的“登录并读取用户配置文件”权限](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails)。 如果正在某个租户中注册客户端，并且该租户包含已订阅 Office 365 的帐户，则可以选择 SharePoint 与 Exchange Online 的 Web API 和权限。 可以从每个所需 Web API 的[两种类型的权限](active-directory-dev-glossary.md#permissions)中进行选择：
 
 - 应用程序权限：客户端应用程序需要亲自直接访问 Web API（无用户上下文）。 此类型的权限需要管理员同意，并且不可用于本机客户端应用程序。
 
@@ -120,7 +122,7 @@ ms.lasthandoff: 01/29/2018
    ![更新应用程序的注册](./media/active-directory-integrating-applications/update-app-registration.png)
 
 4. 随后会转到应用程序的注册主页，并打开应用程序的“设置”页。 若要添加 Web 应用程序凭据的机密密钥，请执行以下操作：
-  - 在“设置”页上单击“密钥”部分。  
+  - 在“设置”页上单击“密钥”部分。 
   - 添加密钥的说明。
   - 选择一年或两年持续时间。
   - 单击“ **保存**”。 保存配置更改后，最右边的列将包含密钥值。 **请务必复制密钥**以便在客户端应用程序代码中使用，因为退出此页后无可访问此密钥。
@@ -141,7 +143,7 @@ ms.lasthandoff: 01/29/2018
 6. 完成后，在“启用访问权限”页上单击“选择”按钮，并在“添加 API 访问权限”页上单击“完成”按钮。 随后会返回到“所需权限”页，其中的新资源已添加到 API 列表。
 
   > [!NOTE]
-  > 单击“完成”按钮还会基于配置的“对其他应用程序的权限”自动为目录中的应用程序设置权限。  可以在应用程序“设置”页上查看这些应用程序权限。
+  > 单击“完成”按钮还会基于配置的“对其他应用程序的权限”自动为目录中的应用程序设置权限。 可以在应用程序“设置”页上查看这些应用程序权限。
   > 
   > 
 
@@ -182,7 +184,7 @@ ms.lasthandoff: 01/29/2018
   > 以后可以根据需要公开其他范围。 请考虑 Web API 可能要公开与各种不同功能关联的多个范围。 在运行时，资源可以通过评估所收到的 OAuth 2.0 访问令牌中的范围 (`scp`) 声明，来控制对 Web API 的访问。
   > 
 
-6. 完成后，单击“保存”。 现在，Web API 已配置为可供目录中的其他应用程序使用。  
+6. 完成后，单击“保存”。 现在，Web API 已配置为可供目录中的其他应用程序使用。 
 
   ![更新应用程序的注册](./media/active-directory-integrating-applications/update-app-registration-manifest.png)
 
@@ -210,7 +212,7 @@ ms.lasthandoff: 01/29/2018
 
 如前所述，除了在自己的应用程序上公开/访问 API 以外，还可以注册客户端应用程序以访问 Microsoft 资源公开的 API。 Microsoft 图形 API（在门户的资源/API 列表中称为“Microsoft Graph”）可供注册到 Azure AD 的所有应用程序使用。 如果要将客户端应用程序注册到包含已注册 Office 365 订阅的租户中，也可以访问各种 Office 365 资源公开的范围。
 
-有关 Microsoft 图形 API 公开的范围的完整讨论，请参阅[权限范围 | Microsoft 图形 API 概念](https://graph.microsoft.io/docs/authorization/permission_scopes)一文。
+有关 Microsoft Graph API 公开的范围的完整讨论，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference)一文。
 
 > [!NOTE]
 > 由于当前存在的限制，如果本机客户端应用程序使用“访问组织的目录”权限，则它们只能调用 Azure AD 图形 API。 此限制不适用于 Web 应用程序。
@@ -307,7 +309,7 @@ Web 应用程序还可以：
 6. 在确认消息中单击“是”。
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>删除其他组织授权的多租户应用程序
-在租户的“应用注册”主页上的“所有应用”筛选器下面显示的一部分应用程序（“所有应用”注册除外）是多租户应用程序。 从技术上讲，这些多租户应用程序来自另一个租户，并已在许可过程中注册到你的租户。 更具体地说，它们仅由租户中的服务主体对象表示，没有相应的应用程序对象。 有关应用程序对象与服务主体对象之间的差别的详细信息，请参阅 [Azure AD 中的应用程序对象和服务主体对象](active-directory-application-objects.md)。
+在租户的“应用注册”主页上的“所有应用”筛选器下面显示的一部分应用程序（“我的应用”注册除外）是多租户应用程序。 从技术上讲，这些多租户应用程序来自另一个租户，并已在许可过程中注册到你的租户。 更具体地说，它们仅由租户中的服务主体对象表示，没有相应的应用程序对象。 有关应用程序对象与服务主体对象之间的差别的详细信息，请参阅 [Azure AD 中的应用程序对象和服务主体对象](active-directory-application-objects.md)。
 
 若要删除多租户应用程序对目录的访问权限（在授予许可后），公司管理员必须删除该应用程序的服务主体。 管理员必须拥有全局管理员访问权限，并可以通过 Azure 门户或使用 [Azure AD PowerShell Cmdlet](http://go.microsoft.com/fwlink/?LinkId=294151) 删除访问权限。
 
@@ -316,6 +318,6 @@ Web 应用程序还可以：
 - 有关应用的视觉指南的提示，请参阅[集成应用的品牌准则](active-directory-branding-guidelines.md)。
 - 有关应用程序的应用程序对象与服务主体对象之间关系的详细信息，请参阅[应用程序对象和服务主体对象](active-directory-application-objects.md)。
 - 若要了解有关应用程序清单扮演的角色的详细信息，请参阅[了解 Azure Active Directory 应用程序清单](active-directory-application-manifest.md)
-- 请参阅 [Azure AD developer glossary](active-directory-dev-glossary.md)（Azure AD 开发人员术语表），了解某些核心的 Azure Active Directory (AD) 开发人员概念的定义。
+- 请参阅 [Azure AD 开发人员术语表](active-directory-dev-glossary.md)，了解某些核心的 Azure AD 开发人员概念的定义。
 - 请访问 [Active Directory 开发人员指南](active-directory-developers-guide.md)，了解与所有开发人员相关内容的概述。
 

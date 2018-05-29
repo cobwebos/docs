@@ -1,30 +1,31 @@
 ---
-title: "管理 Azure AD 访问评审的程序和控件| Microsoft Docs"
-description: "可以为组织中每个监管、风险管理和合规性计划创建其他计划，以便以控件形式收集并组织 Azure Active Directory 访问评审。"
+title: 管理 Azure AD 访问评审的程序和控件| Microsoft Docs
+description: 可以为组织中每个监管、风险管理和合规性计划创建其他计划，以便以控件形式收集并组织 Azure Active Directory 访问评审。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/14/2018
 ms.author: billmath
-ms.openlocfilehash: f322bff427384e6432fcc0c288704f6bb605c900
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a3fb812623b490e27907f63c1f7c6610ae754fb8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192874"
 ---
 # <a name="manage-programs-and-their-controls"></a>管理程序及其控件 
 
 Azure Active Directory (Azure AD) 包括组成员和应用程序访问权限的访问评审。 这些示例控件可确保对有权访问组织的组成员资格和应用程序的用户进行有效监督。 组织可以使用这些控件有效地解决其监管、风险管理和合规性要求。
 
 ## <a name="create-and-manage-programs-and-their-controls"></a>创建和管理计划及其控件
-可以将访问评审组织为计划，以便针对不同目的简化跟踪和收集访问评审的方式。 可以将每个访问评审链接到一个计划。 当准备报表以供审核员进行审核时，将仅显示属于特定目的范围的访问评审。
+可以将访问评审组织为计划，以便针对不同目的简化跟踪和收集访问评审的方式。 可以将每个访问评审链接到一个计划。 然后，在为审核员准备报告时，可以将重点放在特定计划范围内的访问评审。  “全局管理员”、“安全管理员”或“安全读者”角色中的用户可以看到计划和访问评审结果。
 
 若要查看计划列表，请转到[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)，选择“计划”。
 
@@ -34,5 +35,5 @@ Azure Active Directory (Azure AD) 包括组成员和应用程序访问权限的�
 
 ## <a name="next-steps"></a>后续步骤
 
-[创建对组成员的访问评审或对应用程序的访问](active-directory-azure-ad-controls-create-access-review.md)
-
+- [创建对组成员的访问评审或对应用程序的访问](active-directory-azure-ad-controls-create-access-review.md)
+- [检索访问评审结果](active-directory-azure-ad-controls-retrieve-access-review.md)

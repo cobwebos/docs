@@ -1,28 +1,23 @@
 ---
 title: 将远程桌面网关与 Azure MFA NPS 扩展进行集成 |Microsoft 文档
-description: 本文讨论如何使用 Microsoft Azure 的网络策略服务器 (NPS) 扩展将远程桌面网关基础结构与Azure MFA 进行集成。
-services: active-directory
-keywords: Azure MFA 集成了远程桌面网关、Azure Active Directory、网络策略服务器扩展
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ''
+description: 使用 Microsoft Azure 的网络策略服务器扩展将远程桌面网关基础结构与 Azure MFA 进行集成
+services: multi-factor-authentication
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 0c050ee237650be7d43be2454a2bc3c07f096b8c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fbca491e845ad96ecafc6afb5f40d46b99c047bf
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33932092"
 ---
-#  <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
+# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
 本文将详细介绍如何使用 Microsoft Azure 的网络策略服务器 (NPS) 扩展集成远程桌面网关基础结构与 Azure 多重身份验证 (MFA)。 
 
@@ -150,8 +145,8 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 要使用该脚本，请提供 Azure AD 管理员凭据和之前复制的 Azure AD 租户 ID 的扩展。 在安装 NPS 扩展的每个 NPS 服务器上运行脚本。 然后执行以下操作：
 
 1. 打开管理 Windows PowerShell 提示符。
-2. 在 PowerShell 提示符处，键入 cd ‘c:\Program Files\Microsoft\AzureMfa\Config’，然后按 ENTER。
-3. 键入 .\AzureMfsNpsExtnConfigSetup.ps1，然后按 ENTER。 该脚本将检查是否已安装 Azure Active Directory PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
+2. 在 PowerShell 命令提示符处，键入 `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’` 并按 ENTER。
+3. 键入 `.\AzureMfsNpsExtnConfigSetup.ps1`，然后按 ENTER。 该脚本将检查是否已安装 Azure Active Directory PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
 
   ![Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   

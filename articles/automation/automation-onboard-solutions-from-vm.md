@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f8c9cb33eb90232f5eb241add284f7ea7b64bc05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39febc947f4ab6dc406290273e5e1fc1c58a59e2
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053418"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>从 Azure 虚拟机载入更新管理、更改跟踪和清单解决方案
 
@@ -42,7 +43,13 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 每个解决方案在工作区中使用作用域配置来确定获取解决方案的计算机。 作用域配置是包含一个或多个已保存搜索的组，该组用来将解决方案的作用域限制为特定计算机。 若要访问作用域配置，在你的自动化帐户中，在“相关资源”下选择“工作区”，然后在工作区中，在“工作区数据源”下选择“作用域配置”。
 
-默认情况下创建的两个作用域配置是 **MicrosoftDefaultScopeConfig-ChangeTracking** 和 **MicrosoftDefaultScopeConfig-Updates**。
+如果所选工作区中没有“更新管理”或“更改跟踪”解决方案，将创建以下范围配置：
+
+* **MicrosoftDefaultScopeConfig-ChangeTracking**
+
+* **MicrosoftDefaultScopeConfig-Updates**
+
+如果所选工作区已有解决方案， 则不会重新部署该解决方案，而且范围配置也不会添加到其中。
 
 单击任何配置上的省略号 (...) 并选择“编辑”。 在“编辑作用域配置”页面上，选择“选择计算机组”以打开“计算机组”页面。 此页面显示用来创建作用域配置的已保存搜索。
 

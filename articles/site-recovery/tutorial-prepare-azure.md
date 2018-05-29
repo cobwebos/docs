@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 852c854de9feb9bcc98fc89aa9340b93f2c4e8d3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d6673acaf3cbac2098ac7ae30114696f477045
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212783"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>准备 Azure 资源以进行本地计算机复制
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 05/08/2018
 已复制计算机的映像保存在 Azure 存储中。 在从本地故障转移到 Azure 时，会从该存储中创建 Azure VM。
 
 1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“新建” > “存储” > “存储帐户”。
-2. 在“创建存储帐户”中，输入帐户的名称。 对于这些教程，请使用名称 contosovmsacct1910171607。 该名称在 Azure 中必须唯一，长度介于 3-24 个字符，且仅包含数字和小写字母。
+2. 在“创建存储帐户”中，输入帐户的名称。 对于这些教程，我们使用 **contosovmsacct1910171607**。 所选名称在 Azure 中必须唯一，长度介于 3-24 个字符，且仅包含数字和小写字母。
 3. 在“部署模型”中，选择“资源管理器”。
 4. 在“帐户类型”中，选择“常规用途”。 在“性能”中，选择“标准”。 请不要选择 blob 存储。
 5. 在“复制”中，选择默认的“读取访问异地冗余存储”作为存储冗余。
@@ -62,7 +63,7 @@ ms.lasthandoff: 05/08/2018
 ## <a name="create-a-vault"></a>创建保管库
 
 1. 在 Azure 门户中，选择“创建资源” > “监视 + 管理” > “备份和站点恢复”。
-2. 在“名称”中，输入一个友好名称以标识此保管库。 在本教程中，请使用 ContosoVMVault。
+2. 在“名称”中，输入一个友好名称以标识此保管库。 对于这组教程，我们使用 **ContosoVMVault**。
 3. 在“资源组”中，选择名为 contosoRG 的现有资源组。
 4. 在“位置”中，输入在本教程系列中使用的 Azure 地区“西欧”。
 5. 若要从仪表板快速访问保管库，请选择“固定到仪表板” > “创建”。

@@ -12,13 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9a9c18bfe9073e5af94c7bd8f0fbb91651387731
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34071658"
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>为 Azure 虚拟机故障转移保留 IP 地址
 
@@ -34,20 +35,20 @@ Azure Site Recovery 支持对 Azure VM 进行灾难恢复。 在从一个 Azure 
 
 下面是故障转移之前网络体系结构的外观：
 - 应用程序 VM 托管在 Azure 东亚，利用地址空间为 10.1.0.0/16 的 Azure 虚拟网络。 此虚拟网络名为**源 VNet**。
-- 应用程序工作负荷在以下三个子网之间拆分 – 10.1.0.0/24、10.1.1.0/24 和 10.1.2.0/24，它们分别名为**子网 1**、**子网 2** 和**子网 3**。
+- 应用程序工作负载在以下三个子网之间拆分 – 10.1.1.0/24、10.1.2.0/24 和 10.1.3.0/24，它们分别名为**子网 1**、**子网 2** 和**子网 3**。
 - Azure 东南亚是目标区域，包含一个用于模仿源中地址空间和子网配置的恢复虚拟网络。 此虚拟网络名为**恢复 VNet**。
-- 副本节点（例如 Always On、域控制器等组件所需的节点）放置在地址为 20.1.0.0/24 的子网 4 中地址空间为 20.1.0.0/16 的虚拟网络内。 此虚拟网络名为 **Azure VNet**，位于 Azure 东南亚。
+- 副本节点（如 Always On、域控制器等组件所需的节点）放置在地址为 10.2.4.0/24 的子网 4 中地址空间为 10.2.0.0/16 的虚拟网络内。 此虚拟网络名为 **Azure VNet**，位于 Azure 东南亚。
 - **源 VNet** 和 **Azure VNet** 通过 VPN 站点到站点连接建立连接。
 - **恢复 VNet** 未与其他任何虚拟网络相连接。
 - **公司 A** 分配/验证复制项的目标 IP 地址。 在此示例中，每个 VM 的目标 IP 与源 IP 相同。
 
-![故障转移之前的 Azure 到 Azure 连接](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover.png)
+![故障转移之前的 Azure 到 Azure 连接](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>整个区域的故障转移
 
 在发生区域性服务中断时，**公司 A** 可以使用 Azure Site Recovery 的强大[恢复计划](site-recovery-create-recovery-plans.md)快速轻松地恢复其整个部署。 由于在故障转移之前已经为每个 VM 设置了目标 IP 地址，**公司 A** 可以在恢复 VNet 与 Azure VNet 之间协调故障转移和自动建立连接，如下图所示。
 
-![Azure 到 Azure 连接 - 整个区域的故障转移](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover.png)
+![Azure 到 Azure 连接 - 整个区域的故障转移](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
 根据应用程序的要求，可以在故障转移之前、期间（作为中间步骤）或之后，在目标区域中的两个 VNet 之间建立连接。 使用[恢复计划](site-recovery-create-recovery-plans.md)可以添加脚本和定义故障转移顺序。
 
@@ -62,23 +63,23 @@ Azure Site Recovery 支持对 Azure VM 进行灾难恢复。 在从一个 Azure 
 若要构建具有复原能力的单个应用程序，我们建议将应用程序托管在其自身的专用虚拟网络中，并根据需要这些虚拟网络之间建立连接。 这样，便可以实现隔离的应用程序故障转移，同时保留原始专用 IP 地址。
 
 故障转移之前的配置如下所示：
-- 应用程序 VM 托管在 Azure 东亚，对第一个和第二个应用程序分别使用地址空间为 10.1.0.0/16 和 15.1.0.0/16 的 Azure 虚拟网络。 第一个和第二个应用程序的虚拟网络分别名为**源 VNet1** 和**源 VNet2**。
+- 应用程序 VM 托管在 Azure 东亚，对第一个和第二个应用程序分别使用地址空间为 10.1.0.0/16 和 10.2.0.0/16 的 Azure 虚拟网络。 第一个和第二个应用程序的虚拟网络分别名为**源 VNet1** 和**源 VNet2**。
 - 每个 VNet 进一步划分为两个子网。
 - Azure 东南亚是目标区域，包含恢复虚拟网络“恢复 VNet1”和“恢复 VNet2”。
-- 副本节点（例如 Always On、域控制器等组件所需的节点）放置在地址为 20.1.0.0/24 的**子网 4** 中地址空间为 20.1.0.0/16 的虚拟网络内。 此虚拟网络名为 Azure VNet，位于 Azure 东南亚。
+- 副本节点（如 Always On、域控制器等组件所需的节点）放置在地址为 10.3.4.0/24 的**子网 4** 中地址空间为 10.3.0.0/16 的虚拟网络内。 此虚拟网络名为 Azure VNet，位于 Azure 东南亚。
 - **源 VNet1** 和 **Azure VNet** 通过 VPN 站点到站点连接建立连接。 同样，**源 VNet2** 和 **Azure VNet** 也通过 VPN 站点到站点连接建立连接。
 - 本示例中的**源 VNet1** 和**源 VNet2** 还通过 S2S VPN 建立连接。 由于两个 VNet 位于同一个区域，因此还使用了 VNet 对等互连，而未使用 S2S VPN。
 - **恢复 VNet1** 和**恢复 VNet2** 未与其他任何虚拟网络相连接。
 - 为了降低恢复时间目标 (RTO)，在故障转移之前，可在**恢复 VNet1** 和**恢复 VNet2** 上配置 VPN 网关。
 
-![Azure 到 Azure 连接 - 故障转移之前隔离的应用程序](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover.png)
+![Azure 到 Azure 连接 - 故障转移之前隔离的应用程序](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
 
 如果发生了只影响一个应用程序（在本示例中，该应用程序托管在源 VNet2 中），公司 A 可按如下所述恢复受影响的应用程序：
 - 断开**源 VNet1** 与**源 VNet2**，以及**源 VNet2** 与 **Azure VNet** 之间的 VPN 连接。
 - 在**源 VNet1** 与**恢复 VNet2**，以及**恢复 VNet2** 与 **Azure VNet** 之间建立 VPN 连接。
 - 将 VM 从**源 VNet2** 故障转移到**恢复 VNet2**。
 
-![Azure 到 Azure 连接 - 故障转移之后隔离的应用程序](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover.png)
+![Azure 到 Azure 连接 - 故障转移之后隔离的应用程序](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
 
 可以延伸上述隔离故障转移示例，以包括更多的应用程序和网络连接。 从源故障转移到目标时，我们建议尽可能地遵循相似性连接模式。
 
@@ -92,13 +93,13 @@ VPN 网关利用公共 IP 地址和网关跃点建立连接。 如果不想使�
 
 下面是故障转移之前网络体系结构的外观：
 - 应用程序 VM 托管在 Azure 东亚，利用地址空间为 10.1.0.0/16 的 Azure 虚拟网络。 此虚拟网络名为**源 VNet**。
-- 应用程序工作负荷在以下三个子网之间拆分 – 10.1.0.0/24、10.1.1.0/24 和 10.1.2.0/24，它们分别名为**子网 1**、**子网 2** 和**子网 3**。
+- 应用程序工作负载在以下三个子网之间拆分 – 10.1.1.0/24、10.1.2.0/24 和 10.1.3.0/24，它们分别名为**子网 1**、**子网 2** 和**子网 3**。
 - Azure 东南亚是目标区域，包含一个用于模仿源中地址空间和子网配置的恢复虚拟网络。 此虚拟网络名为**恢复 VNet**。
 - Azure 东亚的 VM 通过 ExpressRoute 或站点到站点 VPN 连接到本地数据中心。
 - 为了降低恢复时间目标 (RTO)，公司 B 在故障转移之前，在 Azure 东南亚的恢复 VNet 中预配了网关。
 - **公司 B** 分配/验证复制项的目标 IP 地址。 在此示例中，每个 VM 的目标 IP 与源 IP 相同
 
-![故障转移之前的本地到 Azure 连接](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover.png)
+![故障转移之前的本地到 Azure 连接](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>整个区域的故障转移
 
@@ -106,7 +107,7 @@ VPN 网关利用公共 IP 地址和网关跃点建立连接。 如果不想使�
 
 在 Azure 东南亚与本地数据中心之间之间建立连接之前，应断开 Azure 东亚与本地数据中心之间的原始连接。 此外，本地路由重新配置为在故障转移之后指向目标区域和网关。
 
-![故障转移之后的本地到 Azure 连接](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover.png)
+![故障转移之后的本地到 Azure 连接](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover2.png)
 
 ### <a name="subnet-failover"></a>子网故障转移
 

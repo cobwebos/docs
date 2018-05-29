@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 9af1a82530d6e2d694f56322b7107796df73a2d5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ebfa7da32859f8d2d0ff3778af3b5cca99bdf1f4
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077668"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>规划 Azure 文件同步（预览版）部署
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -46,7 +47,14 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>服务器终结点
-服务器终结点代表已注册服务器上的特定位置，例如服务器卷中的文件夹。 如果命名空间不重叠（例如 `F:\sync1` 和 `F:\sync2`），多个服务器终结点可存在于同一个卷。 可为每个服务器终结点单独配置云分层策略。 当前不可为卷的根目录（例如 `F:\` 或 `C:\myvolume`，如果将卷作为装入点装入）创建服务器终结点。
+服务器终结点代表已注册服务器上的特定位置，例如服务器卷中的文件夹。 如果命名空间不重叠（例如 `F:\sync1` 和 `F:\sync2`），多个服务器终结点可存在于同一个卷。 可为每个服务器终结点单独配置云分层策略。 
+
+你可以通过装入点创建服务器终结点。 请注意，服务器终结点中的装入点将被跳过。  
+
+你可以在系统卷上创建服务器终结点，但这样做有两个限制：
+* 无法启用云分层。
+* 不执行快速命名空间还原（其中系统快速关闭整个命名空间，然后启动以撤回内容）。
+
 
 > [!Note]  
 > 仅支持不可删除的卷。  服务器终结点路径不支持通过远程共享映射的驱动器。  此外，服务器终结点可能位于 Windows 系统卷，然而系统卷上不支持云分层。
@@ -105,7 +113,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 | ~$\*.\* | Office 临时文件 |
 | \*.tmp | 临时文件 |
 | \*.laccdb | Access DB 锁定文件|
-| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| 635D02A9D91C401B97884B82B3BCDAEA.* | 内部同步文件|
 | \\系统卷信息 | 特定于卷的文件夹 |
 | $RECYCLE.BIN| 文件夹 |
 | \\SyncShareState | 用于同步的文件夹 |

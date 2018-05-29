@@ -10,15 +10,14 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 488a9954cef210b727518375e218fe084129a6f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1199eca457c3f06fdd6a4b68a05da3210ea9a2c9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197233"
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>跨区域迁移 Data Lake Store
 
@@ -33,7 +32,7 @@ Azure Data Lake Store 在新区域中推出后，用户可以选择执行一次�
 
 ## <a name="migration-considerations"></a>迁移注意事项
 
-首先，确定最适合在 Data Lake Store 中写入、读取或处理数据的应用程序的迁移策略。 选择策略时，应考虑应用程序的可用性要求，以及迁移期间的停机时间。 例如，最简单的方法可能是使用“即时转移”云迁移模型。 使用此方法时，可以暂停现有区域中的应用程序，同时将所有数据复制到新区域。 复制过程完成后，可以恢复新区域中的应用程序，并删除旧的 Data Lake Store 帐户。 迁移过程中需要停机。
+首先，确定最适合在 Data Lake Store 中写入、读取或处理数据的应用程序的迁移策略。 选择策略时，应考虑应用程序的可用性要求，以及迁移期间的停机时间。 例如，最简单的方法可能是使用“直接迁移”云迁移模型。 使用此方法时，可以暂停现有区域中的应用程序，同时将所有数据复制到新区域。 复制过程完成后，可以恢复新区域中的应用程序，并删除旧的 Data Lake Store 帐户。 迁移过程中需要停机。
 
 为了减少停机时间，可以立即开始在新区域中引入新数据。 获得所需的少量数据后，在新区域中运行应用程序。 在后台可以继续将现有 Data Lake Store 帐户中的旧数据复制到新区域中的新 Data Lake Store 帐户。 使用这种方法可以在造成极短停机时间的情况下切换到新区域。 复制所有旧数据后，可以删除旧的 Data Lake Store 帐户。
 

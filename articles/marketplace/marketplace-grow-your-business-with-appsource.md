@@ -14,11 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: f0d9739dda608b7c49ff9a8fbd93d08b301c0b9c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0af34a725849acf6fbb6523f03e90a85ce5ba719
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940360"
 ---
 # <a name="grow-your-business-with-appsource"></a>通过 AppSource 发展业务
 Azure Marketplace 和 AppSource 都是与 Microsoft 联合进行市场推广活动的起点，也是加速业务增长的飞轮。 通过提供推广支持、刺激需求和联合进行市场营销，Marketplace 产品/服务可成为云业务引擎的核心。 加入不收取任何费用。 Microsoft 客户每天访问我们的云商城，查找有助于发展业务的适当应用和服务。 我们的目标是实现组织与 Microsoft 中的解决方案和服务以及我们的伙伴生态系统之间的连接。 
@@ -45,7 +46,7 @@ Azure Marketplace 和 AppSource 都是与 Microsoft 联合进行市场推广活�
 * **请注意《Microsoft 商标和品牌指南》。** 命名应用和参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守[《Microsoft 商标和品牌指南》](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx)以及相关的产品特定指南。 
 * **为应用启用“立即获得”体验、免费试用版产品/服务或体验版体验。** 业务用户希望首先体验你的应用。 
 * **形成强价值主张。** 发现潜在客户，识别你的解决方案提供的操作方法与用户当前某些操作方法之间的差异。
-* **使应用列表脱颖而出。**应用登陆页面是业务用户获得的第一印象。 他们将基于应用列表决定是否要深入了解并试用你的应用。 
+* **使应用列表脱颖而出。** 应用登陆页面是业务用户获得的第一印象。 他们将基于应用列表决定是否要深入了解并试用你的应用。 
 * **优化列表以帮助提升搜索引擎排名。** 请确保在应用名称、摘要和列表中包含搜索关键字，并在 3 个搜索关键字中包含这些信息。
 * **业务用户看重客户反馈。** 提醒客户提交评分和评论。 开始试用后，用户将收到提示分享试用体验的电子邮件。
 * **针对 AppSource 中上市的应用进行推广。** 在网站中使用 AppSource 徽章链接到 AppSource 中的应用列表，并且每次链接到应用时都使用 URL 标记。
@@ -88,7 +89,7 @@ AppSource 中的列表可能是你与潜在客户的第一次互动。 你希望
 **店面详细信息 - 营销项目**
 | 店面设置       | 最佳实践          | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **产品/服务徽标（.png 格式，58x48）**    | 徽标应面向数字媒体进行设计和优化。<br>在产品/服务的搜索页面以 PNG 格式上传徽标。 |
+| 产品/服务徽标（.png 格式，48x48）    | 徽标应面向数字媒体进行设计和优化。<br>在产品/服务的搜索页面以 PNG 格式上传徽标。 |
 | **产品/服务徽标 (.png.216 x 216)**     | 徽标应面向数字媒体进行设计和优化。 <br>在产品/服务的应用详细信息列表页面以 PNG 格式上传徽标。 |
 | **了解详细信息**   | 在“了解更多”下包含支持的市场营销资产，例如白皮书、手册、清单和 PowerPoint 等。 所有文件都应采用 PDF 格式。 不要将前景作为销售内容，而是要宣传前景。 <br>将应用登陆页面的链接添加到所有文档，并添加 URL 参数来跟踪访问量和试用量。 |
 | **视频**       | 至少上传一个视频，最多允许上传 4 个视频。 视频应传达产品/服务的价值。 请确保将前景（而不是公司）作为中心内容。 视频应阐述核心决策者所面临的主要挑战及其目标。 <br>建议长度：60-90 秒。 在视频名称中包含搜索关键字。<br>请考虑添加其他视频，例如操作方法视频、入门视频或客户褒奖视频。 |
@@ -98,7 +99,7 @@ AppSource 中的列表可能是你与潜在客户的第一次互动。 你希望
 
 AppSource 中列出你的产品/服务后，你便获得了在网站上显示“在 AppSource 中上市”徽标的权利。 
 
-    ![AppSource badge](./media/marketplace-appsource/appsourcebadge.png)
+ ![AppSource 徽章](./media/marketplace-appsource/appsourcebadge.png)
     
 在网站中添加此徽章可为你在 AppSource 上的产品/服务进行推广，你可以直接将潜在客户链接到列表页。 AppSource 徽章提供三种尺寸。 可从 [Promote your app's availability on Microsoft AppSource](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource)（针对 AppSource 中上市的应用进行推广）下载徽章和相关使用指南。
 
@@ -111,7 +112,7 @@ AppSource 中列出你的产品/服务后，你便获得了在网站上显示“
 
 https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12 
 
-**重要提示：**准备 URL 时，不要包含语言代码，如 /zh-cn/。 
+**重要提示：** 准备 URL 时，不要包含语言代码，如 /zh-cn/。 
 
 通过在 AppSource URL 中添加这些参数，你可以在云合作伙伴门户中的分析仪表板中查看营销活动的效果。 
 

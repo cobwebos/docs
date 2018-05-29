@@ -1,6 +1,6 @@
 ---
-title: "为应用程序配置 Azure AD SSO | Microsoft 文档"
-description: "了解如何使用 SAML 和基于密码的 SSO 通过自助方式将应用连接到 Azure Active Directory"
+title: 为应用程序配置 Azure AD SSO | Microsoft 文档
+description: 了解如何使用 SAML 和基于密码的 SSO 通过自助方式将应用连接到 Azure Active Directory
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -15,18 +15,19 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e161bb308f08e2a7c137c696e77bf1dfb86e8d31
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158024"
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录
-本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 此功能已在 2015 年 11 月 18 日技术预览中发布，并且已包含在 [Azure Active Directory Premium](active-directory-editions.md) 中。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
+本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 此功能已在 2015 年 11 月 18 日技术预览中发布，并且已包含在 [Azure Active Directory Premium](active-directory-whatis.md) 中。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
 
 如[此文](active-directory-appssoaccess-whatis.md)中所述，Azure Active Directory 应用程序库提供了一份已知能够支持 Azure Active Directory 单一登录的应用程序列表。 IT 专业人员或组织中的系统集成人员找到所要连接的应用程序后，可以遵循 Azure 门户中提供的分步说明启用单一登录。
 
-具有 [Azure Active Directory Premium](active-directory-editions.md) 许可证的客户还会额外获得以下功能：
+具有 [Azure Active Directory Premium](active-directory-whatis.md) 许可证的客户还会额外获得以下功能：
 
 * 通过自助方式集成支持 SAML 2.0 标识提供者的任何应用程序（SP 发起或 IdP 发起）
 * 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) 的任何 Web 应用程序

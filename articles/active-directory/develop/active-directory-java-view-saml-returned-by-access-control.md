@@ -1,5 +1,5 @@
 ---
-title: 查看 Access Control 服务返回的 SAML (Java)
+title: 查看访问控制服务返回的 SAML (Java)
 description: 了解如何通过 Azure 上托管的 Java 应用程序查看 Access Control 服务返回的 SAML。
 services: active-directory
 documentationcenter: java
@@ -7,6 +7,7 @@ author: rmcmurray
 manager: mbaldwin
 ms.assetid: 6cd216f9-eb43-46b4-b30d-f194d0ae2d48
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
@@ -14,11 +15,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: 28c43b27d58d78036dd832fb4f95f2bc9958441c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f6cdb2877541bd584f881b9dfeff38500d19ab82
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155552"
 ---
 # <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>如何查看 Azure Access Control 服务返回的 SAML
 本指南演示如何查看 Azure Access Control 服务 (ACS) 返回到应用程序的基础安全声明标记语言 (SAML)。 本指南基于[如何使用 Eclipse 通过 Azure 访问控制服务对 Web 用户进行身份验证](active-directory-java-authenticate-users-access-control-eclipse.md)主题，并提供了用于显示 SAML 信息的代码。 完整的应用程序与下图中所示类似。

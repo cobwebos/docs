@@ -1,24 +1,23 @@
 ---
-title: "将数据从 Azure 存储 Blob 复制到 Data Lake Store | Microsoft Docs"
-description: "使用 AdlCopy 工具从 Azure 存储 blob 复制数据到 Data Lake Store"
+title: 将数据从 Azure 存储 Blob 复制到 Data Lake Store | Microsoft Docs
+description: 使用 AdlCopy 工具从 Azure 存储 blob 复制数据到 Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dc273ef8-96ef-47a6-b831-98e8a777a5c1
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 33bfd200f72cb56b391cab52bf90f19b568893a9
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 964ba0eb9c619fa226b0704a6c83c05186a95261
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197148"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>从 Azure 存储 blob 复制数据到 Data Lake Store
 > [!div class="op_single_selector"]
@@ -37,7 +36,7 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 * **独立**，此时该工具使用 Data Lake Store 资源执行此任务。
 * **使用 Data Lake Analytics 帐户**，此时使用分配给 Data Lake Analytics 帐户的单位执行复制操作。 以可预测方式执行复制任务时，你可能希望使用此选项。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -156,7 +155,7 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 此部分介绍如何使用 AdlCopy 以模式匹配从源（下面的示例使用的是 Azure 存储 Blob）将数据复制到目标 Data Lake Store 帐户。 例如，可使用以下步骤从源 blob 中将所有具有 .csv 扩展名的文件复制到目标。
 
 1. 打开命令提示符，并导航到 AdlCopy 的安装目录（通常是 `%HOMEPATH%\Documents\adlcopy`）。
-2. 运行以下命令从源容器的特定 blob 中将所有具有 *.csv 扩展名的文件复制到 Data Lake Store：
+2. 运行以下命令从源容器的特定 blob 中将所有具有 .csv 扩展名的文件复制到 Data Lake Store：
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
 

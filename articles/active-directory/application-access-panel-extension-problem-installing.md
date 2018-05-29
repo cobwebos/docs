@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 5/4/18
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8db0c28b0ea6b6f78ef86c773ff24f9d22fe3ecd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34353868"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
 
@@ -83,6 +84,12 @@ ms.lasthandoff: 04/28/2018
    3. 在“我的应用”门户中搜索可用的应用。
    4. 在搜索结果列表中，选择应用。  
        最近使用的三个应用会显示在“最近使用”快捷方式列表中。
+       
+* 若要在进行远程操作时使用内部公司 URL，请执行以下操作：
+    1. 在租户上[配置应用程序代理](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable)
+    2. 通过应用程序代理[发布应用程序](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal)和 URL
+    3. 安装该扩展，并通过选择“登录以开始使用”登录到该扩展
+    4. 现在，即使在执行远程操作时也可以浏览内部公司 URL
 
 > [!NOTE]
 > 上述选项仅适用于 Microsoft Edge、 Chrome 和 Firefox。
@@ -118,4 +125,4 @@ ms.lasthandoff: 04/28/2018
 -   Fiddler 跟踪
 
 ## <a name="next-steps"></a>后续步骤
-[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)

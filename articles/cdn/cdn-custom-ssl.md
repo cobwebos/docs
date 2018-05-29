@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 95f73dd702b3fffcefbdea28d58ad36bf8eb7eb5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 86b20e0f317a14db415feff68b17aa99e1e42cb4
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258421"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域上配置 HTTPS
 
@@ -52,9 +53,15 @@ ms.lasthandoff: 05/08/2018
 
 此外，还必须在 CDN 终结点上关联一个 Azure CDN 自定义域。 有关详细信息，请参阅[教程：将自定义域添加到 Azure CDN 终结点](cdn-map-content-to-custom-domain.md)
 
-## <a name="option-1-default-enable-the-https-feature-with-a-cdn-managed-certificate"></a>选项 1（默认）：使用 CDN 托管的证书启用 HTTPS 功能  
+---
 
-借助此选项，仅需单击几次即可打开自定义 HTTPS 功能。 Azure CDN 可处理所有证书管理任务，如获取和续订。 启用此功能后，进程将立即启动。 如果自定义域已映射到 CDN 终结点，则不需要进一步操作。 Azure CDN 将自动执行步骤并完成请求。 但是，如果自定义域映射到其他位置，则必须使用电子邮件来验证域所有权。
+## <a name="ssl-certificates"></a>SSL 证书数
+若要启用 HTTPS 协议以在 Azure CDN 自定义域上安全传送内容，必须使用 SSL 证书。 可以选择是使用由 Azure CDN 托管的证书还是使用自己的证书。
+
+
+# <a name="option-1-default-enable-https-with-a-cdn-managed-certificatetaboption-1-default-enable-https-with-a-cdn-managed-certificate"></a>[选项 1（默认）：使用 CDN 托管的证书启用 HTTPS](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
+
+使用 CDN 托管的证书时，只需单击几下即可启用 HTTPS 功能。 Azure CDN 可处理所有证书管理任务，如获取和续订。 启用此功能后，进程将立即启动。 如果自定义域已映射到 CDN 终结点，则不需要进一步操作。 Azure CDN 将自动执行步骤并完成请求。 但是，如果自定义域映射到其他位置，则必须使用电子邮件来验证域所有权。
 
 若要在自定义域上启用 HTTPS，请执行以下步骤：
 
@@ -81,22 +88,21 @@ ms.lasthandoff: 05/08/2018
 6. 继续[验证域](#validate-the-domain)。
 
 
-## <a name="option-2-enable-the-https-feature-with-your-own-certificate"></a>选项 2：使用自己的证书启用 HTTPS 功能 
+# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[选项 2：使用自己的证书启用 HTTPS](#tab/option-2-enable-https-with-your-own-certificate)
 
 > [!IMPORTANT]
-> 目前只有“Microsoft 的 Azure CDN 标准版”配置文件支持此功能。 
+> 目前只有“Microsoft 的 Azure CDN 标准版”配置文件支持此选项。 
 >
  
+可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure CDN 使用此安全机制来获得你的证书，并且需要一些额外的步骤。
 
-可以在 Azure CDN 上使用自己的证书通过 HTTPS 传递内容。 可通过与 Azure Key Vault 集成完成此过程。 Azure Key Vault 可以让客户安全地存储自己的证书。 Azure CDN 服务利用此安全机制获取证书。 使用自己的证书需要一些附加步骤。
-
-### <a name="step-1-prepare-your-azure-key-vault-account-and-certificate"></a>步骤 1：准备 Azure Key Vault 帐户和证书
+### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
 1. Azure Key Vault：在要启用自定义 HTTPS 的 Azure CDN 配置文件和 CDN 终结点的同一订阅下，必须具有正在运行的 Azure Key Vault 帐户。 创建 Azure Key Vault 帐户（如果还没有帐户）。
  
 2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴证书授权机构 (CA) 之一创建新的证书。 
 
-### <a name="step-2-register-azure-cdn"></a>步骤 2：注册 Azure CDN
+### <a name="register-azure-cdn"></a>注册 Azure CDN
 
 通过 PowerShell 将 Azure CDN 注册为 Azure Active Directory 中的应用。
 
@@ -109,7 +115,7 @@ ms.lasthandoff: 05/08/2018
     ![在 PowerShell 中注册 Azure CDN](./media/cdn-custom-ssl/cdn-register-powershell.png)
               
 
-### <a name="step-3-grant-azure-cdn-access-to-your-key-vault"></a>步骤 3：为 Azure CDN 授予密钥保管库的访问权限
+### <a name="grant-azure-cdn-access-to-your-key-vault"></a>向 Azure CDN 授予密钥保管库的访问权限
  
 在 Azure Key Vault 帐户中为 Azure CDN 授予证书（机密）的访问权限。
 
@@ -127,7 +133,7 @@ ms.lasthandoff: 05/08/2018
 
     Azure CDN 现在可以访问此密钥保管库和存储在其中的证书（机密）。
  
-### <a name="step-4-select-the-certificate-for-azure-cdn-to-deploy"></a>步骤 4：选择要部署的 Azure CDN 证书
+### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>选择要部署的 Azure CDN 证书
  
 1. 返回 Azure CDN 门户，选择想要启用自定义 HTTPS 的配置文件和 CDN 终结点。 
 
@@ -150,6 +156,7 @@ ms.lasthandoff: 05/08/2018
   
 6. 使用自己的证书时，不需要对域进行验证。 转至[等待传播](#wait-for-propagation)。
 
+---
 
 ## <a name="validate-the-domain"></a>验证域
 

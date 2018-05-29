@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 001488a8c7e22db595cd9f929bc0f3d631da0715
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207200"
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>快速入门：在 Azure 中创建 .NET Service Fabric 应用程序
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理可缩放的可靠微服务和容器。 
@@ -109,6 +110,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
     - 最后，将后端服务的响应返回到客户端 (3)。
 
 4. 按 F5 以继续操作
+    - 在浏览器提示时，授予 ServiceFabricAllowedUsers 组读取和执行权限（适用于调试模式）。
     - 此时，到达后端服务中的断点。
     
     ![添加投票后端服务](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
@@ -175,13 +177,15 @@ Thumbprint                                Subject
 ## <a name="scale-applications-and-services-in-a-cluster"></a>在群集中缩放应用程序和服务
 可以跨群集轻松缩放 Service Fabric 服务，以便适应服务负载变化。 可以通过更改群集中运行的实例数量来缩放服务。 服务缩放方式有多种，可以使用 PowerShell 或 Service Fabric CLI (sfctl) 脚本/命令。 在此示例中，使用 Service Fabric Explorer。
 
-Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过浏览器进行访问，访问方法是转到群集 HTTP 管理端口 19080（例如，`http://zwin7fh14scd.westus.cloudapp.azure.com:19080`）。 
+Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过浏览器进行访问，访问方法是转到群集 HTTP 管理端口 19080（例如，`https://zwin7fh14scd.westus.cloudapp.azure.com:19080`）。 
 
-可能会收到浏览器警告，指出该位置不可信。 这是因为证书是自签名的。 可以选择忽略该警告并继续。 出现浏览器提示时，请选择要连接的已安装证书。 
+可能会收到浏览器警告，指出该位置不可信。 这是因为证书是自签名的。 可以选择忽略该警告并继续。
+1. 出现浏览器提示时，请选择要连接的已安装证书。 从列表中选择的合作群集证书必须与尝试访问的合作群集匹配。 例如 win243uja6w62r.westus.cloudapp.azure.com。
+2. 在浏览器提示时，授予对此会话的 CryptoAPI 私钥的访问权限。
 
 若要缩放 Web 前端服务，请按照以下步骤操作：
 
-1. 在群集中打开 Service Fabric Explorer（例如，`http://zwin7fh14scd.westus.cloudapp.azure.com:19080`）。 
+1. 在群集中打开 Service Fabric Explorer（例如，`https://zwin7fh14scd.westus.cloudapp.azure.com:19080`）。 
 2. 在树状视图中，展开“应用程序”->“VotingType”->“fabric:/Voting”。 单击树视图中 fabric:/Voting/VotingWeb 节点旁边的省略号（三个点），再选择“缩放服务”。
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
