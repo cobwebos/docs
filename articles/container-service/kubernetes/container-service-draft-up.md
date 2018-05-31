@@ -1,19 +1,20 @@
 ---
-title: "将 Draft 与 Azure 容器服务及 Azure 容器注册表配合使用"
-description: "创建 ACS Kubernetes 群集和 Azure 容器注册表，使用 Draft 在 Azure 中创建首个应用程序。"
+title: 将 Draft 与 Azure 容器服务及 Azure 容器注册表配合使用
+description: 创建 ACS Kubernetes 群集和 Azure 容器注册表，使用 Draft 在 Azure 中创建首个应用程序。
 services: container-service
 author: squillace
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: de1e8ec1b712aeb5572c7972b22412f2ae90b7b9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 68ad44bae0856ff000f2847049a15a946d83c0a3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168531"
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
@@ -99,8 +100,8 @@ waiting for AAD role to propagate.done
 ## <a name="install-and-configure-draft"></a>安装并配置 Draft
 
 
-1. 在 https://github.com/Azure/draft/releases 中为环境下载 Draft 并安装到 PATH 中，以便可以使用该命令。
-2. 在 https://github.com/kubernetes/helm/releases 中为环境下载 Helm 并[安装到 PATH 中，以便可以使用该命令](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client)。
+1. 在 https://github.com/Azure/draft/releases 为环境下载 Draft 并安装到路径中，以便可使用此命令。
+2. 在 https://github.com/kubernetes/helm/releases 为环境下载 Helm 并[安装到路径中，以便可使用此命令](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client)。
 3. 配置 Draft 来使用注册表并为所创建的每个 Helm 图表创建子域。 若要配置 Draft，需要：
   - Azure 容器注册表名称（此示例中为 `draftacsdemo`）
   - `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` 中的注册表项或密码。

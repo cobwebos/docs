@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 66032a68634be5b52bbfa544d0a3bcd3d1090652
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359979"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>通过 Azure CDN 进行动态站点加速
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 05/14/2018
 >   
 > 对于“Verizon 的 Azure CDN”配置文件，无法在创建 CDN 终结点后更改其优化设置。
 
-## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>配置 CDN 终结点，以加速动态文件的交付
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>配置 CDN 终结点，以加速动态文件的交付
 
 若要将 CDN 终结点配置为优化动态文件的交付，可以使用 Azure 门户、REST API 或任何客户端 SDK 以编程方式执行相同的操作。 
 

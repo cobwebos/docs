@@ -1,8 +1,8 @@
 ---
-title: "配置 Azure 存储防火墙和虚拟网络 | Microsoft Docs"
-description: "配置存储帐户的分层网络安全性。"
+title: 配置 Azure 存储防火墙和虚拟网络 | Microsoft Docs
+description: 配置存储帐户的分层网络安全性。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: cbrooksmsft
 manager: cbrooks
 editor: cbrooks
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: fc13b7cc164c948f25a6908bdf71124a5be02fb9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 52d904e7a7e8e5d520d2abd799ef0ae7e99b9894
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192870"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
@@ -37,11 +38,9 @@ Azure 存储提供一种分层安全模型，用于保护存储帐户，使其�
 
 虚拟机磁盘流量（包括装载和卸载操作以及磁盘 IO）**不**受网络规则影响。  对页 blob 的 REST 访问受网络规则保护。
 
-> [!NOTE]
-> 当前不支持通过应用网络规则，在存储帐户中备份和还原使用非托管磁盘的虚拟机。  有关详细信息，请参阅[备份和还原 VM 时的限制](/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)
->
-
 经典存储帐户**不**支持防火墙和虚拟网络。
+
+如本文[例外情况](/storage/common/storage-network-security#exceptions)部分所述，通过创建例外内容，可在应用网络规则的存储帐户中使用非托管磁盘备份和还原虚拟机。  防火墙例外不适用于托管磁盘，因为它们已由 Azure 托管。
 
 ## <a name="change-the-default-network-access-rule"></a>更改默认网络访问规则
 默认情况下，存储帐户接受来自任何网络上客户端的连接。  若要限制为仅允许选定网络访问，必须先更改默认操作。
@@ -291,6 +290,7 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 
 |服务|资源提供程序名称|目的|
 |:------|:---------------------|:------|
+|Azure 备份|Microsoft.Backup|在 IAAS 虚拟机中备份和还原非托管磁盘。 （不是托管磁盘的必需操作）。 [了解详细信息](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup)。|
 |Azure 开发测试实验室|Microsoft.DevTestLab|自定义映像创建和项目安装。  [了解详细信息](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview)。|
 |Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布。  [了解详细信息](https://docs.microsoft.com/azure/event-grid/overview)。|
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。  [了解详细信息](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)。|

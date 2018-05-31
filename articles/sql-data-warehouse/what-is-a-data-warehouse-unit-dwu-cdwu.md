@@ -10,11 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: a83a9f9332d81e02a83efc019ad56027316301ab
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 94791e4dc3d3c841dde4685d34d4e3fdaf7d9af7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32185954"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 针对选择理想数目的数据仓库单位（DWU、cDWU）来优化价格和性能以及如何更改单位数提供了建议。 
@@ -36,19 +37,19 @@ ms.lasthandoff: 04/18/2018
 - 增加并发查询和并发槽的最大数量。
 
 ## <a name="service-level-objective"></a>服务级别目标
-服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 “计算优化”性能层规模的服务级别以计算数据仓库单位 (cDWU) 计量，例如 DW2000c。 “弹性优化”服务级别以 DWU 计量，例如 DW2000。 
+服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 第 2 代服务级别以计算数据仓库单位 (cDWU) 计量，例如 DW2000c。 第 1 代服务级别以 DWU 计量，例如 DW2000。 
 
 在 T-SQL 中，SERVICE_OBJECTIVE 设置确定了数据仓库的服务级别和性能层。
 
 ```sql
---Optimized for Elasticity
+--Gen1
 CREATE DATABASE myElasticSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000'
 )
 ;
 
---Optimized for Compute
+--Gen2
 CREATE DATABASE myComputeSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000c'
@@ -60,12 +61,12 @@ WITH
 
 每个性能层用于其数据仓库单位测量的单位都略有不同。 当规模单位直接转换为计费时，这种差异会反映在发票上。
 
-- 弹性优化性能层通过数据仓库单位 (DWU) 进行计量。
-- 计算优化性能层通过计算数据仓库单位 (cDWU) 进行计量。 
+- 第 1 代数据仓库以数据仓库单位计量 (DWU)。
+- 第 2 代数据仓库以计算数据仓库单位计量 (cDWU)。 
 
-DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 计算优化性能层还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
+DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
 
-增加数据库单位时，将以线性方式增加计算资源。 计算优化性能层可提供最佳查询性能和最大规模，但入门价格也更高。 它专为对性能有持续需求的企业而设计。 这些系统最大限度利用缓存。 
+增加数据库单位时，将以线性方式增加计算资源。 第 2 代可提供最佳查询性能和最大规模，但入门价格也更高。 它专为对性能有持续需求的企业而设计。 这些系统最大限度利用缓存。 
 
 ### <a name="capacity-limits"></a>容量限制
 每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../sql-database/sql-database-what-is-a-dtu.md) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
@@ -76,10 +77,9 @@ DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库�
 
 查找最适合工作负荷的 DWU 的步骤：
 
-1. 开发期间，首先使用弹性优化性能层选择较小的 DWU。  由于此阶段的问题在于功能验证，因此选择弹性优化性能层是合理的。 DW200 是一个好的起点。 
+1. 首先选择一个较小的 DWU。 
 2. 在测试数据加载到系统中时，监视应用程序性能，将所选 DWU 数目与观测到的性能变化进行比较。
-3. 确认峰值活动周期的其他要求。 如果工作负荷在活动中显示出重要的峰值和谷值，则有充分理由进行频繁缩放，然后选择弹性优化性能层。
-4. 如果所需 DWU 超过 1000，则选择计算优化性能层，因为这可提供最佳性能。
+3. 确认峰值活动周期的其他要求。 如果工作负荷在活动中显示出重要的峰值和谷值，则有充分理由进行频繁缩放。
 
 SQL 数据仓库是一个向外扩展系统，可预配大量计算和查询大量数据。 要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
 

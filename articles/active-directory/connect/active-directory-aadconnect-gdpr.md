@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 和一般数据保护条例 | Microsoft Docs
+title: Azure AD Connect 和用户隐私 | Microsoft Docs
 description: 本文介绍如何保证 Azure AD Connect 符合 GDPR 的规定。
 services: active-directory
 documentationcenter: ''
@@ -11,36 +11,35 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a1fa7f58040b420bf52d89a57b1234416c2fb939
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32149383"
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect"></a>GDPR 符合性和 Azure AD Connect 
+# <a name="user-privacy-and-azure-ad-connect"></a>用户隐私和 Azure AD Connect 
 
-欧洲隐私法律——[一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)将于 2018 年 5 月生效。 GDPR 针对向欧盟 (EU) 居民提供产品及服务，或收集和分析欧盟居民相关信息的公司、政府机构、非营利组织和其他组织制定了新的规则。 无论你身在何处，均需遵守 GDPR。 
-
-Microsoft 产品和服务可立即用于帮助你满足 GDPR 要求。 请访问[信任中心](https://www.microsoft.com/trustcenter)，深入了解 Microsoft 隐私策略
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->本文介绍 Azure AD Connect 和 GDPR 符合性。  有关 Azure AD Connect Health 和 GDPR 符合性的详细信息，请参阅[此处](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)的文章。
+>本文介绍 Azure AD Connect 和用户隐私。  有关 Azure AD Connect Health 和用户隐私的信息，请参阅[此处](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)的文章。
 
-在安装 Azure AD Connect 时，可在以下两方面符合一般数据保护条例的规定：
+安装 Azure AD Connect 时，可通过两种方式实现用户隐私符合性：
 
 1.  根据请求提取用户的数据以及从安装项中删除该用户的数据
 2.  确保数据保留时长均不超过 48 小时。
 
 Azure AD Connect 团队建议使用第二个选项，因为它更易于实施和维护。
 
-Azure AD Connect 同步服务器会存储符合 GDPR 的以下数据：
+Azure AD Connect 同步服务器可存储以下用户隐私数据：
 1.  Azure AD Connect 数据库中的用户相关数据
 2.  Windows 事件日志文件中可能包含用户相关信息的数据
 3.  Azure AD Connect 安装日志文件中可能包含用户信息的数据
 
-为保证符合 GDPR，Azure AD Connect 客户须采用以下准则：
+删除用户数据时，Azure AD Connect 客户应遵循以下准则：
 1.  定期删除包含 Azure AD Connect 安装日志文件的文件夹中的内容——至少每 48 小时删除一次
 2.  此产品还可创建事件日志。  要深入了解事件日志，请参阅[此处的文档](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx)。
 
@@ -82,5 +81,5 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 
 
 ## <a name="next-steps"></a>后续步骤
-- [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
-- [Azure AD Connect Health 和 GDPR](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)
+* [查看信任中心上的 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)
+- [Azure AD Connect Health 和用户隐私](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)

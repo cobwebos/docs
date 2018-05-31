@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2018
+ms.date: 05/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 22eee6c2253e6b1ff92de0cebf4fea451a0a8fe5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e293f085eb6c4c90b26ac6035d50d74f5cdd7269
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366882"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/16/2018
 
 暴力攻击通常以攻击管理端口为手段来获取对 VM 的访问权限。 如果成功，则攻击者可以获得对 VM 的控制权并建立通向你的环境的据点。
 
-降低遭受暴力攻击的可能性的一种方法是限制端口处于打开状态的时间量。 管理端口不需要始终处于打开状态。 它们只需要在特定的时间打开，例如在你连接到 VM 来执行管理或维护任务时。 当启用了恰时功能时，安全中心会使用[网络安全组](../virtual-network/virtual-networks-nsg.md) (NSG) 规则，这些规则将限制对管理端口的访问以使其不会成为攻击者的目标。
+降低遭受暴力攻击的可能性的一种方法是限制端口处于打开状态的时间量。 管理端口不需要始终处于打开状态。 它们只需要在特定的时间打开，例如在你连接到 VM 来执行管理或维护任务时。 当启用了恰时功能时，安全中心会使用[网络安全组](../virtual-network/security-overview.md#security-rules) (NSG) 规则，这些规则将限制对管理端口的访问以使其不会成为攻击者的目标。
 
 ![恰时方案][1]
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/16/2018
 
 当启用了恰时访问时，安全中心会通过创建 NSG 规则来锁定发往 Azure VM 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口将受恰时解决方案控制。
 
-当用户请求访问 VM 时，安全中心会检查该用户是否具有为 VM 提供写入访问的[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果用户具有写入权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为在你指定的时间内允许发往管理端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。
+当用户请求访问 VM 时，安全中心会检查该用户是否具有为 VM 提供写入访问的[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果用户具有写入权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为：在你指定的时间内允许发往选定端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。
 
 > [!NOTE]
 > 安全中心恰时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 若要了解有关经典部署模型和资源管理器部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
@@ -119,6 +120,16 @@ ms.lasthandoff: 04/16/2018
 
 4. 在“请求访问权限”下，为每个 VM 配置要打开的端口、要为其打开该端口的源 IP 以及将打开该端口的时间范围。 只能请求对在恰时策略中配置的端口的访问权限。 每个端口都有一个从恰时策略派生的最大允许时间。
 5. 选择“打开端口”。
+
+> [!NOTE]
+> 当用户请求访问 VM 时，安全中心会检查该用户是否具有为 VM 提供写入访问的[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果用户具有写入权限，则会批准请求。
+>
+>
+
+> [!NOTE]
+> 如果请求访问的用户使用代理，则“我的 IP”选项可能无法使用。 可能需要定义组织的完整范围。
+>
+>
 
 ## <a name="editing-a-just-in-time-access-policy"></a>编辑恰时访问策略
 

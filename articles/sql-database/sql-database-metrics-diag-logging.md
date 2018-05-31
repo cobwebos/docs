@@ -10,11 +10,12 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: b6ecedac8e5d040c2e75d28e1dc8e8309f359a1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c18d4d175bace79fefedc09fb887e707b8c066d9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365757"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
@@ -51,6 +52,7 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监�
 - [超时](sql-database-metrics-diag-logging.md#time-outs-dataset)：包含有关数据库超时的信息。
 - [阻塞](sql-database-metrics-diag-logging.md#blockings-dataset)：包含有关在数据库上发生的阻塞事件的信息。
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset)：包含 Intelligent Insights。 [详细了解 Intelligent Insights](sql-database-intelligent-insights.md)。
+- Audit / SQLSecurityAuditEvents当前不可用。
 
 如果选择事件中心或存储帐户，可以指定保留策略。 此策略删除早于选定时间段的数据。 如果指定 Log analytics，保留策略将取决于所选的定价层。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。 
 
@@ -154,7 +156,7 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监�
 
 ### <a name="rest-api"></a>REST API
 
-阅读有关如何[使用 Azure Monitor REST API 更改诊断设置](https://msdn.microsoft.com/library/azure/dn931931.aspx)的信息。 
+阅读有关如何[使用 Azure Monitor REST API 更改诊断设置](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)的信息。 
 
 ### <a name="resource-manager-template"></a>资源管理器模板
 

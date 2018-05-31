@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30186329"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>在 Azure 机器学习中创作自定义 R 模块
 本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块。 本主题解释什么是自定义 R 模块以及要使用什么文件来定义该模块。 本主题举例说明如何构建定义模块的文件以及如何在机器学习工作区中注册用于部署的模块。 随后本主题详细描述了定义自定义模块所使用的元素和属性。 本主题还讨论了如何使用辅助功能和文件以及多个输出。 
@@ -125,7 +126,7 @@ ms.lasthandoff: 03/23/2018
 * **描述**元素的内容长度不能超过 128 个字符。
 * **所有者**元素的内容长度不能超过 32 个字符。
 
-模块结果可以是确定或不确定的。**默认情况下，所有模块都被视为是确定的。 也就是说，给定一组不变的输入参数和数据，模块应返回相同的结果 eacRAND 或返回其运行的时间。 考虑到此种情况，如果参数或输入数据发生改变，Azure 机器学习工作室只会重新运行标记为确定的模块。 通过返回已缓存的结果也可大幅提高实验执行速度。
+模块结果可以是确定或不确定的。\*\*默认情况下，所有模块都被视为是确定的。 也就是说，给定一组不变的输入参数和数据，模块应返回相同的结果 eacRAND 或返回其运行的时间。 考虑到此种情况，如果参数或输入数据发生改变，Azure 机器学习工作室只会重新运行标记为确定的模块。 通过返回已缓存的结果也可大幅提高实验执行速度。
 
 存在不确定的函数，例如 RAND 或返回当前日期或时间的函数。 如果模块使用不确定的函数，则可将可选 **isDeterministic** 属性设置为 **FALSE**，将模块指定为不确定。 这可确保无论何时运行实验，都可重新运行模块，即使模块输入和参数发生了改变。 
 
@@ -146,7 +147,7 @@ XML 定义文件中的**语言**元素用于指定自定义模块的语言。 �
 ### <a name="input-elements"></a>输入元素
 通过输入端口可向 R 函数和工作区传送数据。 输入端口支持的**数据类型**如下： 
 
-**DataTable：**此类数据会作为 data.frame 传送到 R 函数。 事实上，所有机器学习支持的类型（例如，CSV 文件或 ARFF 文件）和所有与 **DataTable** 兼容的类型都将自定转换为 data.frame。 
+**DataTable：** 此类数据会作为 data.frame 传送到 R 函数。 事实上，所有机器学习支持的类型（例如，CSV 文件或 ARFF 文件）和所有与 **DataTable** 兼容的类型都将自定转换为 data.frame。 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
@@ -155,7 +156,7 @@ XML 定义文件中的**语言**元素用于指定自定义模块的语言。 �
 与每个 **DataTable** 输入端口相关联的**ID** 属性必须拥有一个唯一的值且此值必须与 R 函数中其相应的命名参数相匹配。
 未作为输入传送到实验的可选 **DataTable** 端口拥有传送到 R 函数的 **NULL** 值，且如果未连接输入，则会忽略可选 zip 端口。 **DataTable** 和 **ZIP** 类型均可选择 **isOptional** 属性，属性默认为 FALSE。
 
-**Zip：**自定义模块可接受 zip 文件作为输入。 此输入会解压缩到函数的 R 工作目录中
+**Zip：** 自定义模块可接受 zip 文件作为输入。 此输入会解压缩到函数的 R 工作目录中
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
@@ -173,7 +174,7 @@ XML 定义文件中的**语言**元素用于指定自定义模块的语言。 �
 * 不需要**输入**元素的 **isOptional** 属性（且未指定时，默认为 false ）；但如果指定，则属性必须为 true 或 false。
 
 ### <a name="output-elements"></a>输出元素
-**标准输出端口：**输出端口被映射到 R 函数返回的值上，可用于后续模块。 DataTable 是当前支持的唯一标准输出端口类型。 （随后会支持 Learners 和 Transforms。）按此定义的 *DataTable* 输出：
+**标准输出端口：** 输出端口被映射到 R 函数返回的值上，可用于后续模块。 DataTable 是当前支持的唯一标准输出端口类型。 （随后会支持 Learners 和 Transforms。）按此定义的 *DataTable* 输出：
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -211,7 +212,7 @@ XML 定义文件中的**语言**元素用于指定自定义模块的语言。 �
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**可视化输出：**还可以指定*可视化*类型的输出端口，端口可显示 R 图形设备输出和控制台输出。 此端口不包含在 R 函数输出中且不会干扰其他输出端口类型的顺序。 若要添加可视化端口到自定义模块，向其 **type** 属性添加一个带有可视化值的**输出**元素：
+**可视化输出：** 还可以指定*可视化*类型的输出端口，端口可显示 R 图形设备输出和控制台输出。 此端口不包含在 R 函数输出中且不会干扰其他输出端口类型的顺序。 若要添加可视化端口到自定义模块，向其 **type** 属性添加一个带有可视化值的**输出**元素：
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>

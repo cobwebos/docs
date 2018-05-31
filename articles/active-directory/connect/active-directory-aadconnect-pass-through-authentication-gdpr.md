@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect - 直通身份验证 - GDPR 符合性 | Microsoft Docs
+title: 用户隐私和 Azure Active Directory 直通身份验证 | Microsoft Docs
 description: 本文介绍如何处理 Azure Active Directory (Azure AD) 直通身份验证和 GDPR 符合性。
 services: active-directory
 keywords: Azure AD Connect 直通身份验证, GDPR, Azure AD 所需的组件, SSO, 单一登录
@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/28/2018
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 21874c961163e3efba45c2ee8557c03135987f95
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32150617"
 ---
-# <a name="azure-active-directory-pass-through-authentication-gdpr-compliance"></a>Azure Active Directory 直通身份验证：GDPR 符合性
+# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>用户隐私和 Azure Active Directory 直通身份验证
+
+
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>概述
-
-欧洲隐私法律——[一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)将于 2018 年 5 月生效。 GDPR 针对向欧盟 (EU) 居民提供产品及服务，或收集和分析欧盟居民相关信息的公司、政府机构、非营利组织和其他组织制定了新的规则。 无论你身在何处，均需遵守 GDPR。 
-
-Microsoft 产品和服务可立即用于帮助你满足 GDPR 要求。 请访问[信任中心](https://www.microsoft.com/trustcenter)，深入了解 Microsoft 隐私策略。
 
 Azure AD 直通身份验证创建可以包含 EUII 的以下日志类型：
 
@@ -35,7 +35,7 @@ Azure AD 直通身份验证创建可以包含 EUII 的以下日志类型：
 - 身份验证代理跟踪日志文件。
 - Windows 事件日志文件。
 
-可通过两种方式实现直通身份验证的 GDPR 符合性：
+可通过两种方式实现直通身份验证的用户隐私：
 
 1.  根据请求提取用户的数据以及从安装项中删除该用户的数据。
 2.  确保数据保留时长均不超过 48 小时。
@@ -104,4 +104,5 @@ Foreach ($file in $files) {
 如果启用了审核日志，此产品可能会为域控制器生成安全日志。 若要了解有关配置审核策略的详细信息，请阅读[此文](https://technet.microsoft.com/library/dd277403.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
+* [查看信任中心上的 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)
 - [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。

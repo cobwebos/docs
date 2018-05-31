@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: virtual-machines
+author: jpconnock
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 05/18/2018
+ms.author: jeconnoc
+ms.custom: include file
+ms.openlocfilehash: 15cbfb9babe38ba6acaf4312735ab839af3f2d99
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371297"
+---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
@@ -32,14 +49,24 @@
 
 在迁移期间，资源从经典资源转换为 Resource Manager 资源。 因此，建议计划需要在迁移之后进行的 RBAC 策略更新。
 
-## <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>我已在备份保管库中备份了经典 VM。 是否可以将 VM 从经典模式迁移到 Resource Manager 模式并在恢复服务保管库中保护它们？
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>我已在保管库中备份了经典 VM。 是否可以将 VM 从经典模式迁移到 Resource Manager 模式并在恢复服务保管库中保护它们？
 
-将 VM 从经典模式迁移到资源管理器模式时，备份保管库中的<a name="vault">经典</a> VM 恢复点不会自动迁移到恢复服务保管库。 可以按照以下步骤传输 VM 备份：
+<a name="vault">当</a>将 VM 从经典模式移到资源管理器模式时，在迁移之前进行的备份不会迁移到新迁移的资源管理器 VM 中。 但是，如果希望保留经典 VM 的备份，请在迁移之前执行以下步骤。 
 
-1. 在备份保管库中，转到“受保护的项”选项卡并选择 VM。 单击[停止保护](../articles/backup/backup-azure-manage-vms.md#stop-protecting-virtual-machines)。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
-2. 从 VM 中删除备份/快照扩展。
-3. 将虚拟机从经典模式迁移到 Resource Manager 模式。 确保与虚拟机对应的存储和网络信息也已迁移到 Resource Manager 模式。
-4. 创建一个恢复服务保管库，并使用保管库仪表板顶部的“备份”操作在迁移的虚拟机上配置备份。 有关将 VM 备份到恢复服务保管库的详细信息，请参阅文章[使用恢复服务保管库保护 Azure VM](../articles/backup/backup-azure-vms-first-look-arm.md)。
+1. 在恢复服务保管库中，转到“受保护的项”选项卡并选择 VM。 
+2. 单击[停止保护](../articles/backup/backup-azure-manage-vms.md#stop-protecting-virtual-machines)。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
+
+> [!NOTE]
+> 在保留数据前将收取备份实例成本。 备份副本将按保持期进行删除。 但是，最后的备份副本会始终保留，直至你显式删除备份数据。 建议检查虚拟机的保留期，并在保留期结束后对保管库中受保护项触发“删除备份数据”。 
+>
+>
+
+若要将虚拟机迁移到资源管理器模式， 
+
+1. 从 VM 中删除备份/快照扩展。
+2. 将虚拟机从经典模式迁移到 Resource Manager 模式。 确保与虚拟机对应的存储和网络信息也已迁移到 Resource Manager 模式。
+
+此外，如果想要备份迁移的 VM，请转至“虚拟机管理”边栏选项卡，以[启用备份](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm)。
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>我是否可以验证订阅或资源，以查看其是否能够迁移？ 
 
@@ -61,6 +88,6 @@
 
 不停机无法自动迁移使用跨订阅授权链接的 ExpressRoute 线路。 我们提供了有关如何使用手动步骤迁移这些线路的指南。 有关步骤和详细信息，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../articles/expressroute/expressroute-migration-classic-resource-manager.md)。
 
-## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>我收到消息，指出*“VM 报告总体代理状态为‘未就绪’。因此，此 VM 无法迁移。请确保 VM 代理报告总体代理状态为‘就绪’”*或*“VM 包含未报告其状态的扩展。因此，此 VM 无法迁移。”*
+## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>我收到消息，指出 *“VM 报告总体代理状态为‘未就绪’。因此，此 VM 无法迁移。请确保 VM 代理报告总体代理状态为‘就绪’”* 或 *“VM 包含未报告其状态的扩展。因此，此 VM 无法迁移。”*
 
 当 VM 未建立到 Internet 的出站连接时，将收到此消息。 VM 代理使用出站连接访问 Azure 存储帐户，每隔五分钟更新一次代理状态。

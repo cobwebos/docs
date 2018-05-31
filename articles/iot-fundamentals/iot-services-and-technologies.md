@@ -14,31 +14,32 @@ ms.workload: na
 ms.date: 03/30/2018
 ms.author: bryanla; v-clay
 ms.custom: ''
-ms.openlocfilehash: 04b4079038ab0ef3f87cfceea521a1424e93cce1
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 56410b040ac14a2a46927cac8ed41218fc709888
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886189"
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT 技术和解决方案：PaaS 和 SaaS
 
 Microsoft 构建的项目组合支持所有客户的需求，让所有人都能够获得数字化转型带来的好处。 Azure IoT 产品组合概述了可用的 PaaS/SaaS 技术和解决方案。 它提供两种适用于生成你自己的解决方案的途径：
-- 平台即服务 (PaaS)：使用 [Azure IoT 套件](https://www.azureiotsuite.com/)开发应用程序，该套件集合了企业级的预配置解决方案，可以加速自定义 IoT 解决方案的开发。
+- 平台即服务 (PaaS)：使用 [Azure IoT 解决方案加速器](https://www.azureiotsuite.com/)开发应用程序，该加速器集合了企业级的预配置解决方案，可以加速自定义 IoT 解决方案的开发。
 - 软件即服务 (SaaS)：通过 [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) 这种新的 SaaS 解决方案进行快速入门，以便开发 IoT 应用程序，不需接触复杂的 IoT 解决方案。 如果因组织缺少相关的资源而无法生成你自己的 IoT 解决方案，则可使用 Azure IoT Central 这种无代码的 IoT 解决方案，在数分钟内创建设备模型、仪表板和规则。
 
-![行业最全面的技术和解决方案组合][img-paas-saas-technologies-solutions]
+![Azure IoT 技术和解决方案][img-paas-saas-technologies-solutions]
 
 ## <a name="solutions"></a>解决方案
 
-Azure IoT 套件和 SaaS 产品/服务快速入门。 从预配置的解决方案中进行选择，以便通过常见的 IoT 方案（例如远程监视、预测性维护、连接工厂）创建可完全自定义的解决方案。 也可使用 Azure IoT Central 这种可完全托管的端到端解决方案，在不需云解决方案专业知识的情况下打造出强大的 IoT 方案。
+通过解决方案加速器和 SaaS 产品/服务进行快速入门。 从预配置的解决方案中进行选择，以便通过常见的 IoT 方案（例如远程监视、预测性维护、连接工厂）创建可完全自定义的解决方案。 也可使用 Azure IoT Central 这种可完全托管的端到端解决方案，在不需云解决方案专业知识的情况下打造出强大的 IoT 方案。
 
-### <a name="azure-iot-suite-paas"></a>Azure IoT 套件 (PaaS)
+### <a name="azure-iot-solution-accelerators-paas"></a>Azure IoT 解决方案加速器 (PaaS)
 
-Azure IoT 套件是一种企业级的集合，其中包含的可自定义 PaaS 解决方案可以对 IoT 解决方案进行高级控制。 如果你的企业所实现的 IoT 是针对连接操作的，或者所实施的特定自定义要求是针对连接产品的，则可使用 Azure IoT 套件，因为它提供你所需要的控制。 
+Azure IoT 解决方案加速器是可自定义 PaaS 解决方案，可以对 IoT 解决方案进行高级控制。 如果你的企业所实现的 IoT 是针对连接操作的，或者所实施的特定自定义要求是针对连接产品的，则可使用 Azure IoT 解决方案加速器，因为它提供你所需要的控制。 
 
-公司（例如设备或设备模型数量多的组织以及寻求连接工厂解决方案的制造商）可以充分利用 Azure IoT 套件。 IoT 套件创建可以根据复杂需求进行高度自定义的解决方案，并提供：
+公司（例如设备或设备模型数量多的组织以及寻求连接工厂解决方案的制造商）可以充分利用 IoT 解决方案加速器。 IoT 解决方案加速器创建可以根据复杂需求进行高度自定义的解决方案，并提供： 
 
-- 预配置解决方案
+- 预生成的解决方案
     - 远程监视
     - 连接工厂
     - 预见性维护
@@ -58,26 +59,26 @@ Azure IoT Central 是完全托管的 SaaS 解决方案，可以让你在没有�
 - 可以按需配置
 - 适合直截了当的 IoT 需求
 
-### <a name="compare-azure-iot-suite-and-azure-iot-central"></a>比较 Azure IoT 套件和 Azure IoT Central
+### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>比较 Azure IoT 解决方案加速器和 Azure IoT Central
 
-若要实现典型的 [IoT 解决方案体系结构](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture)，可使用 Azure IoT 提供的几个选项（[Azure IoT 套件](/azure/iot-suite)和 [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)），每个选项适用于不同组合的客户需求。
+若要实现典型的 [IoT 解决方案体系结构](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture)，可使用 Azure IoT 提供的几个选项（[Azure IoT 解决方案加速器](/azure/iot-suite)和 [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)），每个选项适用于不同组合的客户需求。
 
-[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)是核心的 Azure PaaS，可供 Azure IoT Central 和 Azure IoT 套件使用。 可以通过 IoT 中心在数百万个 IoT 设备和一个云解决方案之间实现安全可靠的双向通信。 可以借助 IoT 中心克服 IoT 实现难题，例如：
+[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)是核心的 Azure PaaS，可供 Azure IoT Central 和 Azure IoT 解决方案加速器使用。 可以通过 IoT 中心在数百万个 IoT 设备和一个云解决方案之间实现安全可靠的双向通信。 可以借助 IoT 中心克服 IoT 实现难题，例如：
 
 * 大容量设备连接和管理。
 * 大容量遥测引入。
 * 设备的命令和控制。
 * 设备安全措施实施。
 
-选择 Azure IoT 产品是规划 IoT 解决方案的重要一环。 IoT 中心是单项 Azure 服务，其本身不提供端到端 IoT 解决方案。 任何 IoT 解决方案都可以从 IoT 中心入手，不需使用 Azure IoT 套件或 Azure IoT Central 即可使用它。 Azure IoT 套件和 Azure IoT Central 都使用 IoT 中心以及其他 Azure 服务。 下表汇总了 Azure IoT 套件和 Azure IoT Central 之间的主要差异，你可以根据要求进行正确的选择：
+选择 Azure IoT 产品是规划 IoT 解决方案的重要一环。 IoT 中心是单项 Azure 服务，其本身不提供端到端 IoT 解决方案。 任何 IoT 解决方案都可以从 IoT 中心入手，不需使用 Azure IoT 解决方案加速器或 Azure IoT Central 即可使用它。 Azure IoT 解决方案加速器和 Azure IoT Central 都使用 IoT 中心以及其他 Azure 服务。 下表汇总了 Azure IoT 解决方案加速器和 Azure IoT Central 之间的主要差异，有助于根据要求进行正确的选择：
 
-|                        | Azure IoT 套件 | Azure IoT Central |
+|                        | Azure IoT 解决方案加速器 | Azure IoT Central |
 | ---------------------- | --------- | ----------- |
 | 主要用途 | 加速开发需要最大灵活性的自定义 IoT 解决方案。 | 缩短不需深层服务自定义的直观 IoT 解决方案的面市时间。 |
 | 访问基础 PaaS 服务          | 有权访问基础 Azure 服务，根据需要对其进行管理或替换。 | SaaS。 完全托管的解决方案，基础服务不公开。 |
 | 灵活性            | 高。 微服务的代码是开源的，可以任意修改。 此外还可以自定义部署基础结构。| 中。 可以根据内置的基于浏览器的用户体验来自定义解决方案模型和 UI 的各个方面。 基础结构不可自定义，因为未公开各种不同的组件。|
 | 技能级别                 | 中-高。 需要 Java 或 .NET 技能才能自定义解决方案后端。 需要 JavaScript 技能才能自定义可视化效果。 | 低。 需要建模技能才能自定义解决方案。 不需编码技能。 |
-| 入门体验 | 预配置解决方案可实现常见的 IoT 方案。 可以在数分钟内部署。 | 应用程序模板和设备模板提供预建的模型。 可以在数分钟内部署。 |
+| 入门体验 | 解决方案加速器可实现常见的 IoT 方案。 可以在数分钟内部署。 | 应用程序模板和设备模板提供预建的模型。 可以在数分钟内部署。 |
 | 定价                | 可以通过微调服务来控制成本。 | 简单且可预测的定价结构。 |
 
 使用哪种产品来生成 IoT 解决方案最终取决于：

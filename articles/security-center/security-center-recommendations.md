@@ -1,11 +1,11 @@
 ---
-title: "管理 Azure 安全中心的安全建议 | Microsoft Docs"
-description: "本文档介绍 Azure 安全中心中的建议如何帮助你保护 Azure 资源并保持符合安全策略。"
+title: 管理 Azure 安全中心的安全建议 | Microsoft Docs
+description: 本文档介绍 Azure 安全中心中的建议如何帮助你保护 Azure 资源并保持符合安全策略。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 2cb4a1c944d6893ca7913eef4e93620059f2a839
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 72070f46309adb526901192752fe421a3846398b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364244"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>管理 Azure 安全中心的安全建议
 本文档介绍如何使用 Azure 安全中心中的建议帮助你保护 Azure 资源。
@@ -39,7 +40,7 @@ ms.lasthandoff: 01/08/2018
 * 启用数据收集。
 * 选择视作安全策略的一部分的建议。
 
-当前的策略建议以系统更新、基线规则、反恶意程序、子网和网络接口的[网络安全组](../virtual-network/virtual-networks-nsg.md)、SQL 数据库审核、SQL 数据库透明数据加密和 Web 应用程序防火墙为中心。  [设置安全策略](security-center-policies.md)提供每个建议选项的说明。
+当前的策略建议以系统更新、基线规则、反恶意程序、子网和网络接口的[网络安全组](../virtual-network/security-overview.md)、SQL 数据库审核、SQL 数据库透明数据加密和 Web 应用程序防火墙为中心。  [设置安全策略](security-center-policies.md)提供每个建议选项的说明。
 
 ### <a name="monitor-recommendations"></a>监视建议
 设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 通过“概述”下的“建议”磁贴，可以知道安全中心定义的建议总数。

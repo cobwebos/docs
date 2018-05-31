@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 534e4e6d8b6ea2bfc059383e3e55c0352678ee04
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: eb2a670735db8a72163967d89d0359b4b89a3e2f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32150339"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
 Azure AD Connect 的同步功能有两个组件：
@@ -56,7 +57,7 @@ Azure AD Connect 的同步功能有两个组件：
 | DeviceWriteback |[Azure AD Connect：启用设备写回](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect 同步：目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |如果某些属性是另一个对象的副本而不会在导出期间导致整个对象失败，则允许隔离该属性。 |
-| PasswordSync |[使用 Azure AD Connect 同步实现密码同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+| PasswordSync |[使用 Azure AD Connect 同步实现密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
 | UnifiedGroupWriteback |[预览：组写回](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |目前不支持。 |
 
@@ -88,7 +89,7 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 有关详细信息，请参阅 [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)。
 
-如果 userPrincipalName 在本地发生更改并且你使用密码同步，则启用此功能可允许同步引擎对其进行更新。如果使用联合身份验证，此功能不受支持。
+如果 userPrincipalName 在本地发生更改并且你使用密码哈希同步，则启用此功能后，同步引擎可将其更新。如果使用联合身份验证，此功能不受支持。
 
 在新建的 Azure AD 目录中，默认已打开此功能。 可以运行以下命令查看是否已启用此功能：  
 

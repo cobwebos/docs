@@ -2,20 +2,26 @@
 title: 自助密码重置工作原理 - Azure Active Directory
 description: Azure AD 自助密码重置深入探讨
 services: active-directory
-ms.service: active-directory
-ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
-ms.author: joflore
+keywords: ''
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.assetid: 618c5908-5bf6-4f0d-bf88-5168dfb28a88
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/11/2018
+ms.author: joflore
+ms.custom: it-pro;seohack1
+ms.openlocfilehash: 602f4c9b7108c0116e83e302bd73838e0902a7f0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868598"
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32157715"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 

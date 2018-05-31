@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2018
+ms.date: 05/18/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d8ef36e001aaf417b84efaf99a992fd64f01b6f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366335"
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>方案 1：评估要迁移到 Azure 的本地工作负荷
 
@@ -22,9 +23,9 @@ ms.lasthandoff: 04/28/2018
 
 **技术** | **说明** | **成本**
 --- | --- | ---
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | DMA 评估和检测可能会影响 Azure 中数据库功能的兼容性问题。 此外，它还评估 SQL Server 源和目标之间的功能奇偶一致性，并为目标环境提供性能和可靠性方面的改进建议。 | 它是可以免费下载的工具。 
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | DMA 评估和检测可能会影响 Azure 中数据库功能的兼容性问题。 此外，它还评估 SQL Server 源和目标之间的功能奇偶一致性，并为目标环境提供性能和可靠性方面的改进建议。 | 它是可以免费下载的工具。
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | 此服务用于评估要迁移到 Azure 的本地计算机。 它评估计算机是否适合迁移，并对在 Azure 中运行时的大小和成本进行估算。 目前，Azure Migrate 服务可以评估要迁移到 Azure 的本地 VMware VM。 | 目前（2018 年 4 月），使用此服务不需付费。
-[服务地图](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate 使用服务映射来显示要迁移的计算机之间的依赖关系。 |  服务映射是 Azure Log Analytics 的一部分。 它目前可以免费使用 180 天。 
+[服务地图](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate 使用服务映射来显示要迁移的计算机之间的依赖关系。 |  服务映射是 Azure Log Analytics 的一部分。 它目前可以免费使用 180 天。
 
 在此方案中，我们将下载并运行 DMA，以便评估旅游应用的本地 SQL Server 数据库。 我们将使用带有依赖关系映射功能的 Azure Migrate 来评估应用 VM，然后再将其迁移到 Azure。
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 04/28/2018
 下面是部署此方案所需的项：
 
 - 运行 5.5、6.0 或 6.5 版本的本地 vCenter Server。
-- vCenter Server 中的一个只读帐户，或者创建该帐户的权限。 
+- vCenter Server 中的一个只读帐户，或者创建该帐户的权限。
 - 在 vCenter Server 上使用 .OVA 模板创建 VM 的权限。
 - 至少一个运行 5.0 或更高版本的 ESXi 主机。
 - 至少两个本地 VMware VM，一个 VM 运行一个 SQL Server 数据库。
@@ -106,15 +107,15 @@ ms.lasthandoff: 04/28/2018
       目前，DMA 不支持迁移到 SQL 托管实例所需的评估。 为了解决此问题，我们将“Azure VM 上的 SQL Server”用作评估的假定目标。
 
 1.  在“选择目标版本”中，指定要在 Azure 中运行的 SQL Server 的目标版本，以及要在评估中发现的内容：
-    - “兼容性问题”会指出那些可能会妨碍迁移的更改，或者需要在迁移之前进行微小调整的更改。 它还会指出目前使用的任何已弃用的功能。 问题按兼容性级别进行组织。 
-    - “新功能的建议”会指出目标 SQL Server 平台中可以在迁移后用于数据库的新功能。 这些功能按“性能”、“安全性”和“存储”进行组织。 
+    - “兼容性问题”会指出那些可能会妨碍迁移的更改，或者需要在迁移之前进行微小调整的更改。 它还会指出目前使用的任何已弃用的功能。 问题按兼容性级别进行组织。
+    - “新功能的建议”会指出目标 SQL Server 平台中可以在迁移后用于数据库的新功能。 这些功能按“性能”、“安全性”和“存储”进行组织。
 
     ![选择目标](./media/migrate-scenarios-assessment/dma-assessment-2.png)
 
 2. 在“连接到服务器”中，请指定运行 SQL Server 实例的计算机的名称、身份验证类型以及连接详细信息。 然后单击“连接”。
 
     ![选择目标](./media/migrate-scenarios-assessment/dma-assessment-3.png)
-    
+
 3. 在“添加源”中，选择要评估的数据库，然后单击“添加”。
 4. 此时会创建名称已指定的评估。
 
@@ -126,7 +127,7 @@ ms.lasthandoff: 04/28/2018
 
 ### <a name="analyze-the-database-assessment"></a>分析数据库评估
 
-结果一旦生成，就会显示在助手中。 
+结果一旦生成，就会显示在助手中。
 
 1. 在“兼容性问题”报表中，检查数据库的每个兼容性级别是否存在问题，如果有，如何修正。 兼容性级别会映射到 SQL Server 版本，如下所示：
     - 100：SQL Server 2008/Azure SQL 数据库
@@ -141,7 +142,7 @@ ms.lasthandoff: 04/28/2018
 
     ![功能建议](./media/migrate-scenarios-assessment/dma-assessment-6.png)
 
-3. 如果修复了任何问题，请单击“重启评估”来重新运行评估。 
+3. 如果修复了任何问题，请单击“重启评估”来重新运行评估。
 4. 单击“导出报表”可以获取 JSON 或 CSV 格式的评估报表。
 
 如果运行更大规模的评估，请执行以下操作：
@@ -182,8 +183,8 @@ ms.lasthandoff: 04/28/2018
     - 对于存储，Azure Migrate 建议使用 Azure 中的标准磁盘，其大小与本地磁盘一样。
     - 对于网络，只要有一个本地网络适配器，就应在 Azure 中有一个对应的网络适配器。
     - 对于计算，Azure Migrate 会查看 VM 核心数和内存大小，并会建议 Azure VM 使用相同的配置。 如果有多个合格的 Azure VM 大小，建议选择成本最低的那一个。
-   
-    
+
+
 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing)级别 3 对应的大小。
 
 将级别设置如下：
@@ -215,7 +216,7 @@ ms.lasthandoff: 04/28/2018
     ![Azure Migrate](./media/migrate-scenarios-assessment/project-1.png)
 
 
-    
+
 
 ### <a name="download-the-collector-appliance"></a>下载收集器设备
 
@@ -225,7 +226,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 2. 在“发现计算机”中，单击“下载”以下载 .OVA 文件。
 3. 在“复制项目凭据”中，复制项目 ID 和密钥。 在配置收集器时要使用这些信息。
 
-    ![下载 .ova 文件](./media/migrate-scenarios-assessment/download-ova.png) 
+    ![下载 .ova 文件](./media/migrate-scenarios-assessment/download-ova.png)
 
 ### <a name="verify-the-collector-appliance"></a>验证收集器设备
 
@@ -235,14 +236,14 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 2. 运行以下命令以生成 OVA 的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成的哈希应与这些设置匹配（版本 1.0.9.7）。
-    
+3. 生成的哈希应与这些设置匹配（版本 1.0.9.8）
+
     **算法** | **哈希值**
     --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-    
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
 
 ### <a name="create-the-collector-appliance"></a>创建收集器设备
 
@@ -250,14 +251,14 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 1. 在 vSphere 客户端控制台中，单击“文件” > “部署 OVF 模板”。
 
-    ![部署 OVF](./media/migrate-scenarios-assessment/vcenter-wizard.png) 
+    ![部署 OVF](./media/migrate-scenarios-assessment/vcenter-wizard.png)
 
 2. 在“部署 OVF 模板向导”>“源”中，指定 .OVA 文件的位置，然后单击“下一步”。
 3. 在“OVF 模板详细信息”中，单击“下一步”。 在“最终用户许可协议”中单击“接受”，接受许可协议的条款，然后单击“下一步”。
 4. 在“名称和位置”中，为收集器 VM 指定一个友好名称，以及要托管 VM 的库存位置，然后单击“下一步”。 指定要在其上运行收集器应用程序的主机或群集。
 5. 在“存储”中指定要为设备存储文件的位置，然后单击“下一步”。
 6. 在“磁盘格式”中指定需要以何种方式预配存储。
-7. 在“网络映射”中，指定收集器 VM 要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure 发送元数据。 
+7. 在“网络映射”中，指定收集器 VM 要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure 发送元数据。
 8. 在“准备完成”中查看设置，选择“部署后打开”，然后单击“完成”。
 
 在创建设备以后，系统会发出一条消息，确认已成功完成。
@@ -270,22 +271,22 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 2. 提供设备的语言、时区和密码首选项。
 3. 在桌面上，单击“运行收集器”快捷方式。
 
-    ![收集器快捷方式](./media/migrate-scenarios-assessment/collector-shortcut.png) 
-    
+    ![收集器快捷方式](./media/migrate-scenarios-assessment/collector-shortcut.png)
+
 4. 在 Azure Migrate 收集器中，打开“设置必备组件”。
     - 接受许可条款，并阅读第三方信息。
-    - 收集器会检查 VM 是否可以访问 Internet、时间是否已同步，，以及收集器服务是否正在运行（此服务默认安装在 VM 上）。 它还会检查 VMWare PowerCLI 是否已安装。 
-    
+    - 收集器会检查 VM 是否可以访问 Internet、时间是否已同步，，以及收集器服务是否正在运行（此服务默认安装在 VM 上）。 它还会检查 VMWare PowerCLI 是否已安装。
+
     > [!NOTE]
     > 我们假定此 VM 可以直接访问 Internet，不需使用代理。
 
     ![验证先决条件](./media/migrate-scenarios-assessment/collector-verify-prereqs.png)
-    
+
 
 5. 在“指定 vCenter Server 详细信息”中，执行以下操作：
     - 指定 vCenter 服务器的名称 (FQDN) 或 IP 地址。
     - 在“用户名”和“密码”中，指定收集器用来发现 vCenter Server 上的 VM 的只读帐户凭据。
-    - 在“选择范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1500 台 VM。 
+    - 在“选择范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1500 台 VM。
 
     ![连接到 vCenter](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 
@@ -296,7 +297,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 7. 在“查看收集进度”中，监视发现过程，并检查从 VM 中收集的元数据是否在范围内。 收集器提供一个近似的发现时间。
 
     ![正在进行收集](./media/migrate-scenarios-assessment/collector-collection-process.png)
-   
+
 
 
 ### <a name="verify-vms-in-the-portal"></a>在门户中验证 VM
@@ -309,7 +310,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     ![已发现的计算机](./media/migrate-scenarios-assessment/discovery-complete.png)
 
 3. 请注意，这些计算机目前尚未安装 Azure Migrate 代理。 需安装这些代理，然后才能查看依赖关系。
-    
+
     ![已发现的计算机](./media/migrate-scenarios-assessment/machines-no-agent.png)
 
 
@@ -322,7 +323,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 如果需要在修改 VM 之前获得其副本，请在安装代理之前生成一个快照。
 
-![计算机快照](./media/migrate-scenarios-assessment/snapshot-vm.png) 
+![计算机快照](./media/migrate-scenarios-assessment/snapshot-vm.png)
 
 
 ### <a name="download-and-install-the-vm-agents"></a>下载并安装 VM 代理
@@ -331,7 +332,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 2.  在每个 VM 的“发现计算机”页中，下载并安装 Microsoft Monitoring Agent (MMA) 和依赖关系代理。
 3.  复制工作区 ID 和密钥。 在安装 MMA 时需要这些。
 
-    ![代理下载](./media/migrate-scenarios-assessment/download-agents.png) 
+    ![代理下载](./media/migrate-scenarios-assessment/download-agents.png)
 
 
 
@@ -339,12 +340,12 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 1. 双击下载的代理。
 2. 在“欢迎”页面上，单击“下一步”。 在“许可条款”页面上，单击“我接受”以接受许可协议。
-3. 在“目标文件夹”中，保留默认安装文件夹，然后单击“下一步”。 
-4. 在“代理安装选项”中，选择“将代理连接到 Azure Log Analytics” > “下一步”。 
+3. 在“目标文件夹”中，保留默认安装文件夹，然后单击“下一步”。
+4. 在“代理安装选项”中，选择“将代理连接到 Azure Log Analytics” > “下一步”。
 
-    ![MMA 安装](./media/migrate-scenarios-assessment/mma-install.png) 
+    ![MMA 安装](./media/migrate-scenarios-assessment/mma-install.png)
 5. 在 **Azure Log Analytics** 中，粘贴从门户复制的工作区 ID 和密钥。 单击“资源组名称” 的 Azure 数据工厂。
-    ![MMA 安装](./media/migrate-scenarios-assessment/mma-install2.png) 
+    ![MMA 安装](./media/migrate-scenarios-assessment/mma-install2.png)
 
 6. 在“准备安装”中，安装 MMA。
 
@@ -356,10 +357,10 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 2.  在“许可条款”页面上，单击“我同意接受许可协议”。
 3.  在“正在进行安装”页中，等待安装完成。 然后单击“下一步”。
 
-    ![依赖关系代理](./media/migrate-scenarios-assessment/dependency-agent.png) 
+    ![依赖关系代理](./media/migrate-scenarios-assessment/dependency-agent.png)
 
 
-       
+
 ## <a name="step-7-run-and-analyze-the-vm-assessment"></a>步骤 7：运行和分析 VM 评估
 
 验证计算机依赖关系并创建一个组。 然后，运行评估。
@@ -368,7 +369,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 1.  在“计算机”页面中，对于要分析的 VM，请单击“查看依赖关系”。
 
-    ![查看计算机依赖项](./media/migrate-scenarios-assessment/view-machine-dependencies.png) 
+    ![查看计算机依赖项](./media/migrate-scenarios-assessment/view-machine-dependencies.png)
 
 2. SQLVM 的依赖关系映射显示了以下详细信息：
 
@@ -376,8 +377,8 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     - 与所有依赖关系计算机的入站（客户端）和出站（服务器）TCP 连接。
     - 安装了 Azure Migrate 代理的依赖关系计算机显示为单独的框
     - 没有安装代理的计算机会显示端口和 IP 地址信息。
-    
- 3. 对于安装了代理的计算机 (WEBVM)，请单击计算机框以查看更多信息，包括 FQDN、操作系统、MAC 地址。 
+
+ 3. 对于安装了代理的计算机 (WEBVM)，请单击计算机框以查看更多信息，包括 FQDN、操作系统、MAC 地址。
 
     ![查看组依赖项](./media/migrate-scenarios-assessment/sqlvm-dependencies.png)
 
@@ -385,7 +386,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 5. 单击“创建组”，然后指定名称 (smarthotelapp)。
 
 > [!NOTE]
-    > 若要查看更细致的依赖关系，可以展开时间范围。 可以选择一个具体的时段，或者选择开始日期和结束日期。 
+    > 若要查看更细致的依赖关系，可以展开时间范围。 可以选择一个具体的时段，或者选择开始日期和结束日期。
 
 
 ### <a name="run-an-assessment"></a>运行评估
@@ -409,7 +410,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     **设置** | **详细信息** | **默认**
     --- | --- | ---
     **目标位置** | 要迁移到的 Azure 位置 | 无默认设置。
-    **存储冗余** | Azure VM 要在迁移后使用的存储冗余类型。 | 默认值为[本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md)。 Azure Migrate 仅支持基于托管磁盘的评估，而托管磁盘仅支持 LRS，因此只有 LRS 选项。 
+    **存储冗余** | Azure VM 要在迁移后使用的存储冗余类型。 | 默认值为[本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md)。 Azure Migrate 仅支持基于托管磁盘的评估，而托管磁盘仅支持 LRS，因此只有 LRS 选项。
     **“大小调整”条件** | Azure Migrate 用来对 Azure 的 VM 进行大小调整的条件。 可执行基于性能的大小调整或将 VM 的大小设置为本地大小，而不用考虑性能历史记录。 | 默认选项为基于性能的大小调整。
     **性能历史记录** | 评估 VM 性能时要考虑的时长。 此属性仅在“大小调整”条件为基于性能调整大小时才适用。 | 默认时长为一天。
     **百分位使用率** | 进行适当大小调整时要考虑的性能样本集的百分位值。 此属性仅在“大小调整”条件为基于性能调整大小时才适用。  | 默认值为第 95 个百分位。
@@ -425,7 +426,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 ### <a name="analyze-the-vm-assessment"></a>分析 VM 评估
 
-Azure Migrate 评估包括以下信息：本地 VM 是否兼容 Azure、建议的适用于 Azure VM 的大小，以及估算的每月 Azure 成本。 
+Azure Migrate 评估包括以下信息：本地 VM 是否兼容 Azure、建议的适用于 Azure VM 的大小，以及估算的每月 Azure 成本。
 
 ![评估报告](./media/migrate-scenarios-assessment/assessment-overview.png)
 
@@ -470,12 +471,12 @@ Azure Migrate 评估包括以下信息：本地 VM 是否兼容 Azure、建议�
 
 #### <a name="review-monthly-cost-estimates"></a>查看每月估算的成本
 
-此视图显示在 Azure 中运行 VM 的总计算和存储成本以及每台计算机的详细信息。 
+此视图显示在 Azure 中运行 VM 的总计算和存储成本以及每台计算机的详细信息。
 
-![评估就绪](./media/migrate-scenarios-assessment/azure-costs.png) 
+![评估就绪](./media/migrate-scenarios-assessment/azure-costs.png)
 
 - 成本估算是根据计算机的大小建议进行计算的。
-- 将会对于组中的所有 VM 合计计算和存储的每月估算费用。 
+- 将会对于组中的所有 VM 合计计算和存储的每月估算费用。
 
 
 ## <a name="conclusion"></a>结束语
@@ -490,6 +491,3 @@ Azure Migrate 评估包括以下信息：本地 VM 是否兼容 Azure、建议�
 ## <a name="next-steps"></a>后续步骤
 
 让我们继续学习下一方案，完成从本地 VM 和数据库到 Azure 的[直接迁移](migrate-scenarios-lift-and-shift.md)。
-
-
-

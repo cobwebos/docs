@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: d0092f57c162cc8727cfed33218e440d4da11f1c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: aec29ac1ccf9386615e7603898f071fe9cda44cf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364329"
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>集成安全中心安全策略与 Azure 策略
 本文介绍如何配置 Azure 策略所支持的 Azure 安全中心安全策略。
@@ -76,7 +77,7 @@ ms.lasthandoff: 05/03/2018
 | 安全配置 |每天分析操作系统配置，确定可能导致虚拟机受攻击的问题。 此策略还建议通过配置更改解决这些漏洞。 若要详细了解受监视的具体配置，请参阅[建议的基准配置列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 （目前不对 Windows Server 2016 提供完全支持。） |
 | 终结点保护 |建议为所有 Windows 虚拟机 (VM) 设置终结点保护，以便确定并删除病毒、间谍软件以及其他恶意软件。 |
 | 磁盘加密 |建议在所有虚拟机中启用磁盘加密，增强静态数据保护。 |
-| 网络安全组 |建议配置 [网络安全组](../virtual-network/virtual-networks-nsg.md) ，控制具有公共终结点的 VM 的入站和出站流量。 除非另行指定，否则，为子网配置的网络安全组会被所有虚拟机网络接口继承。 除了查看网络安全组是否已配置，此策略还会评估入站安全规则，确定允许传入流量的规则。 |
+| 网络安全组 |建议配置 [网络安全组](../virtual-network/security-overview.md) ，控制具有公共终结点的 VM 的入站和出站流量。 除非另行指定，否则，为子网配置的网络安全组会被所有虚拟机网络接口继承。 除了查看网络安全组是否已配置，此策略还会评估入站安全规则，确定允许传入流量的规则。 |
 | Web 应用程序防火墙 |建议以下之一为 true 时在虚拟机上设置 Web 应用程序防火墙： <ul><li>使用了[实例层级公共 IP](../virtual-network/virtual-networks-instance-level-public-ip.md)，配置了关联网络安全组的入站安全规则以允许访问端口 80/443。</li><li>使用了负载均衡 IP，配置了关联负载均衡和入站网络地址转换 (NAT) 规则以允许访问端口 80/443。 有关详细信息，请参阅 [Azure 资源管理器对负载均衡器的支持](../load-balancer/load-balancer-arm.md)。</li> |
 | 下一代防火墙 |将网络保护扩展到内置到 Azure 中的网络安全组以外。 安全中心会发现那些需要安装下一代防火墙的部署，并允许你设置虚拟设备。 |
 | SQL 审核和威胁检测 |建议允许审核对 Azure 数据库的访问权限，确保合规性；并启用高级威胁检测以便进行调查。 |

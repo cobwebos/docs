@@ -7,13 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/23/2018
 ms.author: sashan
-ms.openlocfilehash: 26204d5bd61d193a3d08e26f98faf77ecc367a94
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d2472867c71aedf35e537a29d3912b9e423de2e2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32185420"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>使用只读副本对只读的查询工作负荷进行负载均衡（预览版）
 
@@ -21,18 +22,20 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="overview-of-read-scale-out"></a>读取横向扩展的概述
 
-“高级”层（[基于 DTU 的购买模型](sql-database-service-tiers.md#dtu-based-purchasing-model)）或“业务关键”层（[基于 vCore 的购买模型](sql-database-service-tiers.md#vcore-based-purchasing-model-preview)）中的每个数据库中已自动预配多个 Always ON 副本，以支持可用性 SLA。 为这些副本预配的性能级别与常规数据库连接使用的读写副本相同。 **读取横向扩展**功能允许使用只读副本的容量而不是共享读写副本，对 SQL 数据库只读工作负荷进行负载均衡。 这样，只读工作负荷将与主要读写工作负荷相互隔离，并且不会影响后者的性能。此功能面向包含逻辑隔离只读工作负荷（例如分析）的应用程序，因此可以使用这些额外的容量来获得性能优势，且无需额外付费。
+“高级”层（[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)）或“业务关键”层（[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)）中的每个数据库中已自动预配多个 Always ON 副本，以支持可用性 SLA。 为这些副本预配的性能级别与常规数据库连接使用的读写副本相同。 **读取横向扩展**功能允许使用只读副本的容量而不是共享读写副本，对 SQL 数据库只读工作负荷进行负载均衡。 这样，只读工作负荷将与主要的读写工作负荷相隔离，不会影响其性能。 该功能适用于其中包括逻辑上独立的只读工作负荷（例如分析）的应用程序，因此可以在不增加成本的情况下使用此额外容量来获得性能优势。
 
 若要将读取横向扩展功能用于特定的数据库，必须在创建数据库时或者在之后通过更改其配置来显式启用此功能，可以采用以下方式执行此操作：使用 PowerShell 调用 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) 命令，或者通过 Azure 资源管理器 REST API 使用[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)方法。 
 
 为某个数据库启用读取横向扩展后，会根据在应用程序的连接字符串中配置的 `ApplicationIntent` 属性将连接到该数据库的应用程序定向到该数据库的读写副本或只读副本。 有关 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
+
+如果禁用了“读取扩展”或在不支持的服务层中设置了 ReadScale 属性，则所有连接都将定向到读写副本，而与 `ApplicationIntent` 属性无关。
 
 > [!NOTE]
 > 在预览期，查询数据存储和扩展事件不受只读副本的支持。
 
 ## <a name="data-consistency"></a>数据一致性
 
-AlwasyON 的优势之一是，副本始终处于事务一致状态，但在不同的时间点，不同的副本之间可能存在较小的延迟。 读取横向扩展支持会话级一致性。 这意味着，如果只读会话在由于副本不可用而出现连接错误后重新连接，可以使用读写副本将其重定向到并非完全处于最新状态的副本。 同样，如果应用程序使用读写会话写入数据，并立即使用只读会话读取该数据，则最新的更新可能不会立即可见。 这是因为，对副本执行的事务日志重做是异步进行的。
+Always ON 的优势之一是，副本始终处于事务一致状态，但在不同的时间点，不同的副本之间可能存在较小的延迟。 读取横向扩展支持会话级一致性。 这意味着，如果只读会话在由于副本不可用而出现连接错误后重新连接，可以使用读写副本将其重定向到并非完全处于最新状态的副本。 同样，如果应用程序使用读写会话写入数据，并立即使用只读会话读取该数据，则最新的更新可能不会立即可见。 这是因为，对副本执行的事务日志重做是异步进行的。
 
 > [!NOTE]
 > 区域中的复制延迟较低，且这种情况很少见。
@@ -54,6 +57,12 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadWrite;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
+```
+
+可通过运行以下查询来验证是否连接到只读副本。 连接到只读副本时，它将返回 READ_ONLY。
+
+```SQL
+SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
 ## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>使用 Azure PowerShell 启用和禁用读取横向扩展
@@ -96,7 +105,7 @@ Body:
 } 
 ```
 
-有关更多信息，请参阅[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)。
+有关详细信息，请参阅[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)。
 
 ## <a name="next-steps"></a>后续步骤
 
