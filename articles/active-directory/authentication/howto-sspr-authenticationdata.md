@@ -2,25 +2,20 @@
 title: Azure AD SSPR 数据要求 | Microsoft Docs
 description: Azure AD 自助密码重置的数据要求，以及如何满足这些要求
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: 790ca2ccb2d365876e15ca57e1aa199ac519fd73
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 5409bf198d0e3f6537619ef4698d9f2e31bd27c5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257581"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
@@ -39,16 +34,27 @@ ms.lasthandoff: 04/23/2018
 
 如果在 Azure AD Connect 中使用默认设置，将进行以下映射：
 
-| 本地 Active Directory | Azure AD | Azure AD 身份验证联系信息 |
-| --- | --- | --- |
-| telephoneNumber | 办公电话 | 备用号码 |
-| mobile | 移动电话 | 电话 |
+| 本地 Active Directory | Azure AD |
+| --- | --- |
+| telephoneNumber | 办公电话 |
+| mobile | 移动电话 |
 
-在用户确认其身份验证数据之前，这些字段可能显示为空。
+用户验证其移动电话号码后，Azure AD 中身份验证联系人信息下的“电话”字段也将填充该号码。
+
+## <a name="authentication-contact-info"></a>身份验证联系人信息
 
 全局管理员可以手动为用户设置身份验证联系人信息，如以下屏幕截图中所示。
 
 ![联系人][Contact]
+
+如果“电话”字段已填充且在 SSPR 策略中启用了“移动电话”，则用户将在密码重置注册页和密码重置工作流中看到该号码。 
+
+“备用电话”字段不用于密码重置。
+
+如果“电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户将在密码重置注册页和密码重置工作流中看到该电子邮件。
+
+如果“备用电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户将**不**会在密码重置注册页上看到该电子邮件，但会将在密码重置工作流中看到该电子邮件。 
+
 
 ## <a name="security-questions-and-answers"></a>安全问题和答案
 

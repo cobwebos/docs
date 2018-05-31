@@ -1,9 +1,9 @@
 ---
-title: "从 Azure Application Insights 导出到 Power BI | Microsoft Docs"
-description: "可以在 Power BI 中显示分析查询。"
+title: 从 Azure Application Insights 导出到 Power BI | Microsoft Docs
+description: 可以在 Power BI 中显示分析查询。
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: 19595983ba49a88d9139c85afbf38d3106d4a81d
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c9b53c26eea0a5eced32acf196204aef3c3bb125
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869047"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](http://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](app-insights-overview.md) 的数据。
@@ -121,8 +122,8 @@ ms.lasthandoff: 11/29/2017
 
 1. 创建 [API 密钥](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 2. 通过将 Azure 资源管理器 URL 替换为 Application Insights API，更新从分析中导出的 Power BI M 脚本。
-   * 将 https://management.azure.com/subscriptions/...
-   * 替换为 https://api.applicationinsights.io/beta/apps/...
+   * 将 **https://management.azure.com/subscriptions/...** 替换
+   * 为 **https://api.applicationinsights.io/beta/apps/...**
 3. 最后，将凭据更新为基本凭据，再使用 API 密钥。
   
 

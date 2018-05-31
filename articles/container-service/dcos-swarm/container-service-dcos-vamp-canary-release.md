@@ -1,19 +1,20 @@
 ---
-title: "在 Azure DC/OS 群集上使用 Vamp 进行 Canary 发布"
-description: "如何在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布服务以及应用智能流量筛选"
+title: 在 Azure DC/OS 群集上使用 Vamp 进行 Canary 发布
+description: 如何在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布服务以及应用智能流量筛选
 services: container-service
 author: gggina
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: e23b316311ff88d1587da8d5ef777b91bfe0a2e9
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 339864f6261d031a21b138f880654bcd6ef51855
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32177795"
 ---
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 12/06/2017
 
 ## <a name="set-up-vamp"></a>安装 Vamp
 
-运行 DC/OS 群集后，可以从 DC/OS UI (http://localhost:80) 安装 Vamp。 
+运行 DC/OS 群集后，即可从 DC/OS UI (http://localhost:80)) 安装 Vamp。 
 
 ![DC/OS UI](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
@@ -151,7 +152,7 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
               webport: 8080/http # cluster endpoint, used for canary releasing
   ```
 
-4. 单击“保存” 。 Vamp 将启动部署。
+4. 单击“ **保存**”。 Vamp 将启动部署。
 
 该部署将列在“部署”页上。 单击该部署监视其状态。
 
@@ -212,7 +213,7 @@ Vamp 在 DC/OS 代理节点上部署了 sava 服务，从而在端口 9050 上�
               webport: 8080/http # cluster endpoint to update
   ```
   
-3. 单击“保存” 。 该蓝图会存储，并列在“蓝图”页上。
+3. 单击“ **保存**”。 该蓝图会存储，并列在“蓝图”页上。
 
 4. 在 sava:1.1 蓝图中打开操作菜单，并单击“合并到”。
 
@@ -236,7 +237,7 @@ Vamp 会在正在运行的部署的 **sava_cluster** 中，连同 sava:1.0.0 一
 
 1. 单击“权重”旁边的“Vamp UI - 编辑”。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)
 
-2. 将权重分配设置为 50%/50%，并单击“保存”。
+2. 将权重分配设置为 50%/50%，然后单击“保存”。
 
   ![Vamp UI - 网关权重滑块](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
@@ -265,7 +266,7 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 
 3. 单击“Vamp UI - 编辑”更改应用到条件的**强度**。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)
  
-4. 将“强度”设置为 100%，并单击“Vamp UI - 保存”以保存该设置。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)
+4. 将“强度”设置为 100%，然后单击“Vamp UI - 保存”以保存该设置。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)
 
   现在，Vamp 会将与该条件的所有流量（所有 Firefox 用户）发送到 sava:1.0.0。
 
@@ -283,7 +284,7 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 
 本文是有关在 DC/OS 群集上使用 Vamp 的快速简介。 其中介绍了初学者如何在 Azure 容器服务 DC/OS 群集上启动和运行 Vamp，使用 Vamp 蓝图部署服务，以及在公开的终结点（网关）上访问该服务。
 
-此外，还大致讲解了 Vamp 的一些强大功能：将新的服务变体合并到正在运行的部署并以增量方式引入该变体，并筛选流量以解决已知的不兼容性。
+此外，还大致讲解了 Vamp 的一些强大功能：将新的服务变体合并到正在运行的部署并以增量方式引入该变体，然后筛选流量以解决已知的不兼容性。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,19 +1,20 @@
 ---
-title: "使用 Marathon REST API 管理 Azure DC/OS 群集"
-description: "使用 Marathon REST API 将容器部署到 Azure 容器服务 DC/OS 群集。"
+title: 使用 Marathon REST API 管理 Azure DC/OS 群集
+description: 使用 Marathon REST API 将容器部署到 Azure 容器服务 DC/OS 群集。
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c9322756c30011305ebe6f4f2fd38554f275a1b3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: edd66be25bf2571a7315372898300476fec101ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32165599"
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>通过 Marathon REST API 管理 DC/OS 容器
 
@@ -120,7 +121,7 @@ Nginx 服务器的输出与下面类似：
 从隧道连接运行以下命令来扩大应用程序。
 
 > [!NOTE]
-> URI 为 http://localhost/marathon/v2/apps/，其后接要缩放的应用程序 ID。 如果使用了此处提供的 Nginx 示例，则 URI 将为 http://localhost/marathon/v2/apps/nginx。
+> URI 为 http://localhost/marathon/v2/apps/，后接要缩放的应用程序 ID。 如果使用此处提供的 Nginx 示例，URI 将为 http://localhost/marathon/v2/apps/nginx。
 > 
 > 
 
@@ -179,7 +180,7 @@ Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentTy
 运行以下命令来扩大应用程序：
 
 > [!NOTE]
-> URI 为 http://localhost/marathon/v2/apps/，其后接要缩放的应用程序 ID。 如果使用了此处提供的 Nginx 示例，则 URI 将为 http://localhost/marathon/v2/apps/nginx。
+> URI 为 http://localhost/marathon/v2/apps/，后接要缩放的应用程序 ID。 如果使用此处提供的 Nginx 示例，URI 将为 http://localhost/marathon/v2/apps/nginx。
 > 
 > 
 

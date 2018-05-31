@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9c6417e069bbed38b1f6e9317636a10834ce7197
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f1cc563cc13a9102dbdac7bd505b4dd844ff8247
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32149257"
 ---
-# <a name="add-a-service-principle-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
+# <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
  若要自动执行无人参与的 PowerShell 任务，服务主体在托管的 Analysis Services 服务器上必须具备“服务器管理员”权限。 本文介绍如何将服务主体添加到 Azure AS 服务器上的服务器管理员角色。
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/16/2018
 ## <a name="required-permissions"></a>所需的权限
 若要完成此项任务，在 Azure AS 服务器上必须具备[服务器管理员](analysis-services-server-admins.md)权限。 
 
-## <a name="add-service-principle-to-server-administrators-role"></a>将服务主体添加到服务器管理员角色
+## <a name="add-service-principal-to-server-administrators-role"></a>将服务主体添加到服务器管理员角色
 
 1. 在 SSMS 中连接至 Azure AS 服务器。
 2. 在“服务器属性” > “安全性”中，单击“添加”。
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/16/2018
 
 
 > [!NOTE]
-> 对于使用 AzureRm cmdlet 进行的服务器操作，运行计划程序的服务主体还必须属于 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中资源的所有者角色。 
+> 对于使用 AzureRm cmdlet 进行的服务器操作，运行计划程序的服务主体还必须属于 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中资源的“所有者”角色。 
 
 ## <a name="related-information"></a>相关信息
 

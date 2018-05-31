@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/2/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: cec2ab862a34a8753601dfeef3081ae9e9ca9fd9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 63e87c59a2e560b5a78708482c2ed89f5f8fb127
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257897"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>使用 Azure Blockchain Workbench REST API 
 
@@ -26,12 +27,14 @@ ms.lasthandoff: 05/12/2018
 * 列出可用于合同的操作
 * 执行适用于合同的操作
 
+上述场景中使用的示例区块链应用程序可以[从 GitHub 下载](https://github.com/Azure-Samples/blockchain)。 
+
 ## <a name="list-applications"></a>列出应用程序
 
-当用户登录到区块链客户端以后，第一个任务是为该用户检索所有 Blockchain Workbench 区块链应用程序。 在这种情况下，用户可以访问两个应用程序：
+当用户登录到区块链客户端以后，第一个任务是为该用户检索所有 Blockchain Workbench 应用程序。 在这种情况下，用户可以访问两个应用程序：
 
-1.  资产转移
-2.  冷藏运输
+1.  [资产转移](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+2.  [冷藏运输](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
 使用 [Applications GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget)：
 
@@ -74,7 +77,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>列出应用程序的工作流
 
-一旦用户选择了适当的区块链应用程序（在本示例中为“资产转移”），区块链客户端就会检索该特定区块链应用程序的所有工作流。 然后，用户可以在工作流的所有智能合同实例显示之前选择适当的工作流。 每个区块链应用程序有一个或多个工作流，每个工作流有零个或多个智能合同实例。 开发区块链客户端应用程序时，建议在只有一个工作流适用于区块链应用程序的情况下跳过允许用户选择适当工作流的用户体验流。 在本示例中，资产转移只有一个工作流，也称“资产转移”。
+一旦用户选择了适当的区块链应用程序（在本示例中为“资产转移”），区块链客户端就会检索该特定区块链应用程序的所有工作流。 然后，用户可以在工作流的所有智能合同实例显示之前选择适当的工作流。 每个区块链应用程序有一个或多个工作流，每个工作流有零个或多个智能合同实例。 开发区块链客户端应用程序时，建议在只有一个工作流适用于区块链应用程序的情况下跳过允许用户选择适当工作流的用户体验流。 在本示例中，资产转移只有一个工作流，也称为“资产转移”。
 
 使用 [Applications Workflows GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget)：
 

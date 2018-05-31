@@ -1,13 +1,13 @@
 ---
-title: "在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库 | Microsoft Docs"
-description: "了解怎样在 Azure 环境中备份和恢复 Oracle Database 12c 数据库。"
+title: 在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库 | Microsoft Docs
+description: 了解怎样在 Azure 环境中备份和恢复 Oracle Database 12c 数据库。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 5/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 9a2293f13b90e9a4cb11b4169fad969dd622a9a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e804fd17c3dbe9df9e9dc258e67b8f9192c1f8ad
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32193098"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
 
-可从命令提示符使用 Azure CLI 或通过脚本来创建和管理 Azure 资源。 在本文中，我们使用 Azure CLI 脚本从 Azure 应用商店库映像部署 Oracle Database 12c 数据库。
+可从命令提示符使用 Azure CLI 或通过脚本来创建和管理 Azure 资源。 在本文中，我们使用 Azure CLI 脚本从 Azure Marketplace 库映像部署 Oracle Database 12c 数据库。
 
 在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -262,7 +263,7 @@ ms.lasthandoff: 10/11/2017
     # /etc/azure/post_script.sh
     ```
 
-有关详细信息，请参阅 [Linux VM 的应用程序一致性备份](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/)。
+有关详细信息，请参阅 [Linux VM 的应用程序一致性备份](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/)。
 
 
 ### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>步骤 5：使用 Azure 恢复服务保管库备份 VM
@@ -283,11 +284,11 @@ ms.lasthandoff: 10/11/2017
 
     ![恢复服务保管库“备份”页](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”。 单击 **“确定”**。
+5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”。 单击“确定”。
 
     ![恢复服务保管库“详细信息”页](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”。 单击 **“确定”**。
+6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”。 单击“确定”。
 
     ![恢复服务保管库“备份策略详细信息”页](./media/oracle-backup-recovery/recovery_service_06.png)
 

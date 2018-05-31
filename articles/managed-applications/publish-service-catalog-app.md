@@ -1,20 +1,21 @@
 ---
-title: "创建和发布 Azure 服务目录托管应用程序 | Microsoft Docs"
-description: "演示如何创建适用于组织中成员的 Azure 托管应用程序。"
+title: 创建和发布 Azure 服务目录托管应用程序 | Microsoft Docs
+description: 演示如何创建适用于组织中成员的 Azure 托管应用程序。
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 11/02/2017
+ms.date: 05/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 46adcdf39625c85dc962a7541b68c5500cf920ee
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: b7f8bbcad39000e7e71149824535a6a82b26c758
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305304"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>发布托管应用程序供内部使用
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 12/19/2017
         }
     },
     "variables": {
-        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString('storage'))]"
+        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
@@ -138,7 +139,7 @@ Azure 门户使用 **createUiDefinition.json** 文件为创建托管应用程序
 }
 ```
 
-保存 createUIDefinition.json 文件。
+保存 createUiDefinition.json 文件。
 
 ## <a name="package-the-files"></a>将文件打包
 
@@ -152,8 +153,7 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
-  -Kind Storage `
-  -EnableEncryptionService Blob
+  -Kind Storage
 
 $ctx = $storageAccount.Context
 
@@ -173,7 +173,9 @@ Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
 
 需要提供用户组的对象 ID 以用于管理资源。 
 
-![获取组 ID](./media/publish-service-catalog-app/get-group-id.png)
+```powershell
+$groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
+```
 
 ### <a name="get-the-role-definition-id"></a>获取角色定义 ID
 
@@ -203,41 +205,69 @@ New-AzureRmManagedApplicationDefinition `
   -LockLevel ReadOnly `
   -DisplayName "Managed Storage Account" `
   -Description "Managed Azure Storage Account" `
-  -Authorization "<group-id>:$ownerID" `
+  -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
-## <a name="create-the-managed-application-by-using-the-portal"></a>使用门户创建托管应用程序
+## <a name="create-the-managed-application"></a>创建托管应用程序
+
+可以通过门户、PowerShell 或 Azure CLI 部署托管应用程序。
+
+### <a name="powershell"></a>PowerShell
+
+首先，让我们使用 PowerShell 部署托管应用程序。
+
+```powershell
+# Create resource group
+New-AzureRmResourceGroup -Name applicationGroup -Location westcentralus
+
+# Get ID of managed application definition
+$appid=(Get-AzureRmManagedApplicationDefinition -ResourceGroupName appDefinitionGroup -Name ManagedStorage).ManagedApplicationDefinitionId
+
+# Create the managed application
+New-AzureRmManagedApplication `
+  -Name storageApp `
+  -Location westcentralus `
+  -Kind ServiceCatalog `
+  -ResourceGroupName applicationGroup `
+  -ManagedApplicationDefinitionId $appid `
+  -ManagedResourceGroupName "InfrastructureGroup" `
+  -Parameter "{`"storageAccountNamePrefix`": {`"value`": `"demostorage`"}, `"storageAccountType`": {`"value`": `"Standard_LRS`"}}"
+```
+
+托管应用程序和托管基础结构现已存在于订阅中。
+
+### <a name="portal"></a>门户
 
 现在，让我们使用门户部署托管应用程序。 可看到包中创建的用户界面。
 
-1. 转到 Azure 门户。 选择“+ 新建”并搜索“服务目录”。
+1. 转到 Azure 门户。 选择“+ 创建资源”并搜索“服务目录”。
 
-   ![搜索“服务目录”](./media/publish-service-catalog-app/select-new.png)
+   ![搜索“服务目录”](./media/publish-service-catalog-app/create-new.png)
 
 1. 选择“服务目录托管应用程序”。
 
-   ![选择“服务目录”](./media/publish-service-catalog-app/select-service-catalog.png)
+   ![选择“服务目录”](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
 
-1. 选择“创建”。
+1. 选择**创建**。
 
    ![选择“创建”](./media/publish-service-catalog-app/select-create.png)
 
-1. 从可用解决方案列表中查找要创建的托管应用程序并选择它。 选择“创建”。
+1. 从可用解决方案列表中查找要创建的托管应用程序并选择它。 选择**创建**。
 
    ![查找托管应用程序](./media/publish-service-catalog-app/find-application.png)
 
 1. 提供托管应用程序所需的基本信息。 指定订阅和要包含托管应用程序的新资源组。 对于位置，选择“美国中西部”。 完成后，选择“确定”。
 
-   ![提供托管应用程序参数](./media/publish-service-catalog-app/provide-basics.png)
+   ![提供托管应用程序参数](./media/publish-service-catalog-app/add-basics.png)
 
 1. 提供特定于托管应用程序中的资源的值。 完成后，选择“确定”。
 
-   ![提供资源参数](./media/publish-service-catalog-app/provide-resource-values.png)
+   ![提供资源参数](./media/publish-service-catalog-app/add-storage-settings.png)
 
 1. 模板会验证你提供的值。 如果验证成功，请选择“确定”启动部署。
 
-   ![验证托管应用程序](./media/publish-service-catalog-app/validate.png)
+   ![验证托管应用程序](./media/publish-service-catalog-app/view-summary.png)
 
 部署完成后，托管应用程序将存在于名为 applicationGroup 的资源组中。 存储帐户将存在于名为 applicationGroup 加上哈希字符串值的资源组中。
 

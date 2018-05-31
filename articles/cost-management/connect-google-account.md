@@ -1,20 +1,21 @@
 ---
-title: "将 Google Cloud Platform 帐户连接到 Azure 成本管理 | Microsoft Docs"
-description: "连接 Google Cloud Platform 帐户以便在成本管理报表中查看成本和用量数据。"
+title: 将 Google Cloud Platform 帐户连接到 Azure 成本管理 | Microsoft Docs
+description: 连接 Google Cloud Platform 帐户以便在成本管理报表中查看成本和用量数据。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 8f8c157be0a369817099afa211015ba7587017e3
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: b7141d028c496b75b061c17aa19ad6c73c0588c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32164408"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>连接 Google Cloud Platform 帐户
 
@@ -59,7 +60,7 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="add-a-google-cloud-account-to-cost-management"></a>将 Google Cloud 帐户添加到成本管理
 
-1. 可以从 Azure 门户打开 Cloudyn 门户，或者导航到 [https://azure.cloudyn.com](https://azure.cloudyn.com/) 并登录。
+1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 [https://azure.cloudyn.com](https://azure.cloudyn.com/) 并进行登录。
 2. 单击“设置”（齿轮符号），然后选择“云帐户”。
 3. 在“帐户管理”中选择“Google 帐户”选项卡，然后单击“新增 +”。
 4. 在“Google 帐户名称”中，输入计费帐户的电子邮件地址，然后单击“下一步”。
@@ -73,4 +74,4 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 Azure 成本管理的详细信息，请继续学习成本管理的[查看使用量和成本](./tutorial-review-usage.md)教程。
+- 若要详细了解 Azure 成本管理，请继续学习成本管理的[查看使用量和成本](./tutorial-review-usage.md)教程。

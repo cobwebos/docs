@@ -11,17 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d0f1f2ffd02873df2e2e7eab9894d9c3421b0f7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 097033b78e3e4f640e7bf4008fd970c53315d5d7
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200546"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的语言自定义
-
->[!NOTE]
->此功能目前以公共预览版提供。
->
 
 策略可以使用 Azure Active Directory B2C (Azure AD B2C) 中的语言自定义来适应不同的语言以满足客户需求。  Microsoft 提供 [36 种语言](#supported-languages)的翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。  
 
@@ -49,7 +46,7 @@ ms.lasthandoff: 04/03/2018
 5. 阅读对话框中的信息，选择“是”。
 
 ## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>选择要在用户旅程中启用哪些语言 
-为用户旅程启用一组语言，以便在未提供 `ui_locales` 参数时翻译成这些语言。
+为用户旅程启用一组语言，以便在无 `ui_locales` 参数的浏览器提出请求时翻译成这些语言。
 1. 确保已根据前面的说明为策略启用语言自定义。
 2. 在“编辑策略”页中，选择“语言自定义”。
 3. 选择想要支持的语言。
@@ -102,7 +99,7 @@ ms.lasthandoff: 04/03/2018
 将 `<ExtensionAttributeValue>` 替换为要显示的新字符串。
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>使用 LocalizedCollections 提供值列表
-若要为响应提供一组值列表，需要创建 `LocalizedCollections` 属性。  `LocalizedCollections` 是 `Name` 和 `Value` 对的数组。 若要添加 `LocalizedCollections`，请使用以下格式：
+若要为响应提供一组值列表，需要创建 `LocalizedCollections` 属性。  `LocalizedCollections` 是 `Name` 和 `Value` 对的数组。 项目的顺序将是它们显示的顺序。  若要添加 `LocalizedCollections`，请使用以下格式：
 
 ```JSON
 {
@@ -153,9 +150,9 @@ https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.h
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="add-custom-locales"></a>添加自定义区域设置
+## <a name="add-custom-languages"></a>添加自定义语言
 
-还可以添加 Microsoft 目前未为其提供翻译的语言。 需要为策略中的所有字符串提供翻译。
+还可以添加 Microsoft 目前未为其提供翻译的语言。 需要为策略中的所有字符串提供翻译。  语言和区域设置代码仅限于 ISO 639-1 标准中的代码。 
 
 1. 在“编辑策略”页中，选择“语言自定义”。
 2. 从页面顶部选择“添加自定义语言”。
@@ -165,6 +162,10 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 6. 选择“启用”，然后，策略即可为用户显示该语言。
 7. 保存语言。
 
+>[!IMPORTANT]
+>在保存之前，你需要启用自定义语言或上传替代语言。
+>
+
 ## <a name="additional-information"></a>其他信息
 
 ### <a name="page-ui-customization-labels-as-overrides"></a>页面 UI 自定义标签保留为重写
@@ -172,7 +173,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ### <a name="up-to-date-translations"></a>最新的翻译
 Microsoft 致力于提供最新的翻译以供使用。 Microsoft 会持续改进翻译，使其符合需要。 Microsoft 将识别 bug 和全局术语的更改，并在用户旅程中进行无缝更新。
 ### <a name="support-for-right-to-left-languages"></a>对从右向左书写的语言的支持
-Microsoft 目前不支持从右向左书写的语言。 如果需要此功能，请在 [Azure 反馈](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag)中为此功能投票。
+Microsoft 目前不支持从右向左书写的语言。 你可以通过使用自定义区域设置并使用 CSS 更改字符串的显示方式来实现此目的。  如果需要此功能，请在 [Azure 反馈](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag)中为此功能投票。
 ### <a name="social-identity-provider-translations"></a>社交标识提供者翻译
 Microsoft 为社交登录名提供 `ui_locales` OIDC 参数。 但某些社交标识提供者（包括 Facebook 和 Google）并不遵循此参数。 
 ### <a name="browser-behavior"></a>浏览器行为

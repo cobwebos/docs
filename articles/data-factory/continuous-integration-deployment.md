@@ -10,19 +10,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: e021403cd5544f0570e8ea3c73a17a57b241a65f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 16eec117514d040dc91b5d18b73d4cc6025c901e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32310972"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和部署
 
 持续集成是这样一种做法：自动地尽早测试对代码库所做的每项更改。 在测试之后进行的持续部署可将更改推送到过渡或生产系统，而测试发生在持续集成期间。
 
 对于 Azure 数据工厂，持续集成和部署意味着将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 若要进行持续集成和部署，可以将数据工厂 UI 集成与 Azure 资源管理器模板配合使用。 选择“ARM 模板”选项时，数据工厂 UI 可以生成资源管理器模板。 选择“导出 ARM 模板”时，门户会为数据工厂生成资源管理器模板，并生成一个包含所有连接字符串和其他参数的配置文件。 然后，需为每个环境（开发、测试、生产）创建一个配置文件。 所有环境的主资源管理器模板文件始终相同。
+
+有关此功能的 9 分钟介绍和演示，请观看以下视频：
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>为每个环境创建资源管理器模板
 选择“导出 ARM 模板”，在开发环境中导出数据工厂的资源管理器模板。
@@ -62,6 +67,8 @@ ms.lasthandoff: 04/03/2018
 
 可以使用下面的步骤来设置 VSTS 版本，以便将数据工厂自动部署到多个环境。
 
+![与 VSTS 的持续集成示意图](media/continuous-integration-deployment/continuous-integration-image12.png)
+
 ### <a name="requirements"></a>要求
 
 -   一项使用 [Azure 资源管理器服务终结点](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)链接到 Team Foundation Server 或 VSTS 的 Azure 订阅。
@@ -90,7 +97,7 @@ ms.lasthandoff: 04/03/2018
 
     a.  将机密添加到参数文件：
 
-        -   创建上传到 publish 分支的参数文件的副本，并使用以下格式设置需要从密钥保管库获取的参数的值：
+       -   创建上传到 publish 分支的参数文件的副本，并使用以下格式设置需要从密钥保管库获取的参数的值：
 
         ```json
         {
@@ -100,24 +107,24 @@ ms.lasthandoff: 04/03/2018
                         "keyVault": {
                             "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
                         },
-                        "secretName": " &lt secret - name &gt "
+                        "secretName": " < secret - name > "
                     }
-                }        
+                }
             }
         }
         ```
 
-        -   使用此方法时，会自动从密钥保管库拉取机密。
+       -   使用此方法时，会自动从密钥保管库拉取机密。
 
-        -   参数文件也需位于 publish 分支中。
+       -   参数文件也需位于 publish 分支中。
 
     b.  添加 [Azure Key Vault 任务](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)：
 
-        -   选择“任务”选项卡，创建新的任务，然后搜索并添加“Azure Key Vault”。
+       -   选择“任务”选项卡，创建新的任务，然后搜索并添加“Azure Key Vault”。
 
-        -   在 Key Vault 任务中，选择在其中创建了密钥保管库的订阅，根据需要提供凭据，然后选择密钥保管库。
+       -   在 Key Vault 任务中，选择在其中创建了密钥保管库的订阅，根据需要提供凭据，然后选择密钥保管库。
 
-            ![](media/continuous-integration-deployment/continuous-integration-image8.png)
+       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  添加 Azure 资源管理器部署任务：
 
@@ -127,7 +134,7 @@ ms.lasthandoff: 04/03/2018
 
     c.  选择“创建或更新资源组”操作。
 
-    d.  在“模板”字段中 选择“…”。 以浏览方式查找在门户中通过发布操作创建的资源管理器模板 (*ARMTemplateForFactory.json*)。 在 `adf\_publish` 分支的根文件夹中查找该文件。
+    d.  在“替代模板参数”字段旁边 选择“…”。 以浏览方式查找在门户中通过发布操作创建的资源管理器模板 (*ARMTemplateForFactory.json*)。 在 `adf\_publish` 分支的根文件夹中查找该文件。
 
     e.  针对参数文件执行相同的操作。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
 

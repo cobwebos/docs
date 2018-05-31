@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 HR2day by Merces 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 HR2day by Merces 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 HR2day by Merces 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 HR2day by Merces 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: fae6a376d4a53a23e22e585c63d97f22ca76c66d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b6f839ace5d80d41b242992feba8dea546b51c2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34340866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 集成
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 HR2day by Merces。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -150,7 +151,7 @@ ms.lasthandoff: 12/11/2017
 
     d. 从“String1”列表中，选择“user.mail”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“String2”中，键入 HR2day 团队提供的唯一标识符。
+    e. 在“String2”中，键入 HR2day 团队提供的唯一标识符。
 
     f. 在“分隔符”框中，键入 **@**。
     
@@ -202,7 +203,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 选择“显示密码”并记下密码。
 
-    d.单击“下一步”。 选择“创建” 。
+    d. 选择**创建**。
  
 ### <a name="create-an-hr2day-by-merces-test-user"></a>创建 HR2day by Merces 测试用户
 
@@ -250,7 +251,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

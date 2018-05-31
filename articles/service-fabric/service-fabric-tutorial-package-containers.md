@@ -1,14 +1,14 @@
 ---
-title: "打包和部署 Service Fabric 容器应用程序 | Microsoft Docs"
-description: "本教程介绍如何使用 Yeoman 生成 Azure Service Fabric 应用程序定义并将应用程序打包。"
+title: 打包和部署 Service Fabric 容器应用程序 | Microsoft Docs
+description: 本教程介绍如何使用 Yeoman 生成 Azure Service Fabric 应用程序定义并将应用程序打包。
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, 容器, 微服务, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, 容器, 微服务, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 6e3200676807bbd9a15c5c7b19312a2e0c18d77a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365353"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>教程：将容器打包并部署为 Service Fabric 应用程序
 
@@ -45,7 +46,8 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
 1. 在计算机上安装 nodejs 和 NPM。 请注意，Mac OSX 用户将需要使用程序包管理器 Homebrew
 
     ```bash
-    sudo apt-get install npm && sudo apt install nodejs-legacy
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
+    sudo apt-get install -y nodejs 
     ```
 2. 通过 NPM 在计算机上安装 Yeoman 模板生成器 
 
@@ -247,11 +249,11 @@ sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19
 ./install.sh
 ```
 
-打开浏览器并导航到 Service Fabric Explorer，其网址为 http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer。 展开应用程序节点，注意有一个条目是用于应用程序类型，另一个条目用于实例。
+打开 Web 浏览器，并导航到 Service Fabric Explorer (http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer)。 展开应用程序节点，注意有一个条目是用于应用程序类型，另一个条目用于实例。
 
 ![Service Fabric Explorer][sfx]
 
-若要连接到运行的应用程序，请打开 Web 浏览器并转到群集 url，例如 http://lin0823ryf2he.cloudapp.azure.com:80 。 在 Web UI 中应会显示投票应用程序。
+若要连接到正在运行的应用程序，请打开 Web 浏览器并转到群集 url，例如 http://lin0823ryf2he.cloudapp.azure.com:80。 在 Web UI 中应会显示投票应用程序。
 
 ![votingapp][votingapp]
 

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 3d1928428915d3ea5f9f28dc400f251b9f90679f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: edbf76ef5dcf581acfec17970becdf698445cbeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365434"
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>使用 Azure PowerShell 排查网络安全组问题
 > [!div class="op_single_selector"]
@@ -30,9 +31,9 @@ ms.lasthandoff: 05/14/2018
 
 如果在虚拟机 (VM) 上配置网络安全组 (NSG) 时遇到 VM 连接问题，可以借助本文中概述的 NSG 诊断功能进行故障排除。
 
-使用 NSG 可以控制流入和流出虚拟机 (VM) 的流量类型。 可对 Azure 虚拟网络 (VNet) 中的子网和/或网络接口 (NIC) 应用 NSG。 对 NIC 应用的有效规则是对 NIC 应用的 NSG 以及对 NIC 所连接到的子网应用的 NSG 的规则聚合。 这些 NSG 的规则有时互相冲突，影响 VM 的网络连接。  
+使用 NSG 可以控制流入和流出虚拟机 (VM) 的流量类型。 可对 Azure 虚拟网络 (VNet) 中的子网和/或网络接口 (NIC) 应用 NSG。 对 NIC 应用的有效规则是对 NIC 应用的 NSG 以及对 NIC 所连接到的子网应用的 NSG 的规则聚合。 这些 NSG 的规则有时互相冲突，影响 VM 的网络连接。
 
-可以查看 NSG 中对 VM NIC 应用的所有有效安全规则。 本文说明如何在 Azure 资源管理器部署模型中使用这些规则来排查 VM 连接问题。 如果不熟悉 VNet 与 NSG 的概念，请参阅[虚拟网络](virtual-networks-overview.md)和[网络安全组](virtual-networks-nsg.md)概述文章。
+可以查看 NSG 中对 VM NIC 应用的所有有效安全规则。 本文说明如何在 Azure 资源管理器部署模型中使用这些规则来排查 VM 连接问题。 如果不熟悉 VNet 与 NSG 的概念，请参阅[虚拟网络概述](virtual-networks-overview.md)和[网络安全组概述](security-overview.md)。
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>使用有效的安全规则排查 VM 流量流问题
 以下情景是常见连接问题的示例：
@@ -159,8 +160,7 @@ ms.lasthandoff: 05/14/2018
    
    * 有两个 **NetworkSecurityGroup** 部分：一个与子网 (*Subnet1*) 相关联，另一个与 NIC (*VM1-NIC1*) 相关联。 在本示例中，两个都已应用 NSG。
    * **Association** 显示与给定的 NSG 相关联的资源（子网或 NIC）。 如果在移动 NSG 资源/解除 NSG 资源的关联之后紧接着运行此命令，可能需要等待几秒钟时间，更改才会反映在命令输出中。 
-   * 以 *defaultSecurityRules* 开头的规则名称：创建 NSG 时，也会在其中创建几个默认安全规则。 无法删除默认规则，但可以使用更高优先级的规则将其覆盖。
-     请参阅 [NSG 概述](virtual-networks-nsg.md#default-rules)一文，详细了解 NSG 默认安全规则。
+   * 以 *defaultSecurityRules* 开头的规则名称：创建 NSG 时，也会在其中创建几个默认安全规则。 无法删除默认规则，但可以使用更高优先级的规则将其覆盖。 详细了解[默认安全规则](security-overview.md#default-security-rules)。
    * **ExpandedAddressPrefix** 扩展 NSG 默认标记的地址前缀。 标记代表多个地址前缀。 对 VM 与特定地址前缀的连接进行故障排除时，扩展标记很有用。 例如，如果有 VNET 对等互连，VIRTUAL_NETWORK 标记会在上述输出中扩展，显示对等互连的 VNet 前缀。
      
      > [!NOTE]

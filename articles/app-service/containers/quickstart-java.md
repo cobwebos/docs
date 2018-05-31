@@ -1,6 +1,6 @@
 ---
-title: 在 Linux 上的 Azure 应用服务中创建 Java Web 应用
-description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Java Hello World。
+title: 在 Linux 上的 Azure 应用服务中创建 Java Web 应用的快速入门
+description: 本快速入门介绍如何在数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Java Hello World。
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,23 +15,22 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 657a5a72650b330323406703d2c479c96c096f2e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2018f5b7051f2b6906372dad3319c763974b93b1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34355179"
 ---
-# <a name="preview-create-a-java-web-app-in-app-service-on-linux"></a>预览版：在 Linux 上的应用服务中创建 Java Web 应用
+# <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>快速入门：在 Linux 上的应用服务中创建 Java Web 应用
 
-Linux 上的应用服务目前提供一项支持 Java Web 应用的预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [使用用于 IntelliJ 的 Azure 工具包将 Java Web 应用部署到云中的 Linux 容器](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-hello-world-web-app-linux)是一种替代方法，适用于将 Java 应用部署到你自己的容器。
+Linux 上的应用服务目前提供一项支持 Java Web 应用的预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
-> [!NOTE]
-> 本文将 Java Web 应用部署到基于 Linux 的应用服务。
->
-
-[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门演示如何使用内置映像将 Java 应用部署到 Linux 上的应用服务。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建包含内置映像的 Web 应用，然后将 Java 应用部署到 Web 应用。
+[Linux 上的应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门介绍如何将 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 与[用于 Azure Web 应用（预览版）的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)配合使用，以便使用内置的 Linux 映像部署 Java Web 应用。
 
 ![在 Azure 中运行应用的示例](media/quickstart-java/java-hello-world-in-browser.png)
+
+[使用用于 IntelliJ 的 Azure 工具包将 Java Web 应用部署到云中的 Linux 容器](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-hello-world-web-app-linux)是一种替代方法，适用于将 Java 应用部署到你自己的容器。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,152 +39,85 @@ Linux 上的应用服务目前提供一项支持 Java Web 应用的预览版功�
 
 完成本快速入门教程： 
 
-* 必须拥有 Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [安装 Git](https://git-scm.com/)。
-* 安装 [Eclipse](https://www.eclipse.org/downloads/)。
+* 在本地安装 [Azure CLI 2.0 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Apache Maven](http://maven.apache.org/)。
 
 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+## <a name="create-a-java-app"></a>创建 Java 应用
 
-[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
+使用 Maven 执行以下命令，以便创建新的 *helloworld* Web 应用：  
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
+    mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
+转到新的 *helloworld* 项目目录，然后使用以下命令生成所有模块：
 
+    mvn verify
 
-## <a name="create-a-web-app"></a>创建 Web 应用
-
-在 Cloud Shell 的 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../app-service-web-overview.md)。 可以通过使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令完成此操作。 在以下示例中，将 \<app_name> 替换为全局唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`）。 
-
-```azurecli-interactive
-# Bash
-az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --runtime "TOMCAT|8.5-jre8"
-# PowerShell
-az --% webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --runtime "TOMCAT|8.5-jre8"
-```
-
-对于 **runtime** 参数，请使用以下某个运行时：
- * TOMCAT|8.5-jre8
- * TOMCAT|9.0-jre8
-
-
-创建 Web 应用后，Azure CLI 会显示类似于以下示例的信息：
-
-```json
-{
-  "additionalProperties": {},
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<your web app name>.azurewebsites.net",
-  "enabled": true,
-  "enabledHostNames": [
-    "<your web app name>.azurewebsites.net",
-    "<your web app name>.scm.azurewebsites.net"
-  ],
-  "ftpPublishingUrl": "ftp://<your ftp URL>",  
-  < JSON data removed for brevity. >
-}
-```
-
-复制 **ftpPublishingUrl** 的值。 如果选择 FTP 部署，则稍后会用到它。
-
-浏览到新建的 Web 应用。
-
-```
-http://<app_name>.azurewebsites.net
-```
-
-如果 Web 应用启动并运行，则会出现一个默认的屏幕，类似于下图：
-
-![在部署前浏览到 Web 应用](media/quickstart-java/browse-web-app-not-deployed.png)
-
-
-## <a name="download-the-sample-java-app"></a>下载示例 Java 应用
-
-在计算机的终端窗口中，运行以下命令，将示例应用存储库克隆到本地计算机。 将在后面的步骤中部署此示例应用。
-
-```bash
-git clone https://github.com/Azure-Samples/java-docs-hello-world
-```
+此命令将验证并创建所有模块，包括 *helloworld/target* 子目录中的 *helloworld.war* 文件。
 
 
 ## <a name="deploying-the-java-app-to-app-service-on-linux"></a>将 Java 应用部署到基于 Linux 的应用服务
 
-在 [Eclipse](https://www.eclipse.org/downloads/) 中打开示例项目，[将 Java 应用导出到名为 `helloworld.war` 的 Web 存档 (WAR) 文件](http://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.wst.webtools.doc.user%2Ftopics%2Ftwcrewar.html)。
+可以通过多个部署选项将 Java Web 应用部署到 Linux 上的应用服务。 这些选项包括：
 
-若要部署 Java 应用 WAR 文件，可以使用 WarDeploy（目前为[预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)）或 FTP。
+* [通过适用于 Azure Web 应用的 Maven 插件进行部署](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)
+* [通过 ZIP 或 WAR 进行部署](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip)
+* [通过 FTP 进行部署](https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp)
 
-根据所用部署方法的不同，浏览到 Java Web 应用所需的相对路径也会稍有不同。
+在本快速入门中，需使用适用于 Azure Web 应用的 Maven 插件。 它的优势在于，它可以很容易地通过 Maven 来使用，并且可以为你创建必需的 Azure 资源（资源组、应用服务计划和 Web 应用）。
 
-### <a name="deploy-with-wardeploy"></a>使用 WarDeploy 进行部署 
+### <a name="deploy-with-maven"></a>使用 Maven 部署
 
-若要通过 WarDeploy 来部署 WAR 文件，请使用以下 cURL 示例命令行将 POST 请求发送到 *https://<your app name>.scm.azurewebsites.net/api/wardeploy*。 POST 请求必须在消息正文中包含此 .war 文件。 应用的部署凭据是通过使用 HTTP BASIC 身份验证在请求中提供的。 有关 WarDeploy 的详细信息，请参阅[使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务](../app-service-deploy-zip.md)。
+若要通过 Maven 进行部署，请在 *pom.xml* 文件的 `<build>` 元素中添加以下插件定义：
 
-```bash
-curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
-```
+```xml
+    <plugins>
+      <plugin>
+        <groupId>com.microsoft.azure</groupId> 
+        <artifactId>azure-webapp-maven-plugin</artifactId> 
+        <version>1.1.0</version>
+        <configuration> 
+          <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup> 
+          <appName>YOUR_WEB_APP</appName> 
+          <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+          <deploymentType>ftp</deploymentType> 
+          <resources> 
+              <resource> 
+                  <directory>${project.basedir}/target</directory> 
+                  <targetPath>webapps</targetPath> 
+                  <includes> 
+                      <include>*.war</include> 
+                  </includes> 
+                  <excludes> 
+                      <exclude>*.xml</exclude> 
+                  </excludes> 
+              </resource> 
+          </resources> 
+        </configuration>
+      </plugin>
+    </plugins>
+```    
 
-更新以下项目：
+更新插件配置中的以下占位符：
 
-* `username` - 使用以前创建的部署凭据用户名。
-* `war_file_path` - 使用本地 WAR 文件路径。
-* `app_name` - 使用以前创建的应用名称。
+| 占位符 | 说明 |
+| ----------- | ----------- |
+| `YOUR_RESOURCE_GROUP` | 要在其中创建 Web 应用的新资源组的名称。 通过将应用的所有资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除与该应用关联的所有资源。 使用唯一的新资源组名称（例如 *TestResources*）更新此值。 将在后面的部分使用此资源组名称来清除所有 Azure 资源。 |
+| `YOUR_WEB_APP` | 应用名称是部署到 Azure (YOUR_WEB_APP.azurewebsites.net) 时 Web 应用的主机名的一部分。 使用将用于托管 Java 应用的新 Azure Web 应用的唯一名称（例如 *contoso*）更新此值。 |
 
-执行此命令。 出现 cURL 提示时，键入部署凭据的密码。
+配置的 `linuxRuntime` 元素控制可以与应用程序配合使用的内置 Linux 映像。
 
-在 Web 浏览器中使用以下 URL 浏览到已部署的应用程序。
+请执行以下命令，然后按照全部说明使用 Azure CLI 进行身份验证：
 
-```bash
-http://<app_name>.azurewebsites.net
-```
+    az login
 
-Java 示例代码在包含内置映像的 Web 应用中运行。
+请使用以下命令将 Java 应用部署到 Web 应用：
 
-![在 Azure 中运行应用的示例](media/quickstart-java/java-hello-world-in-browser.png)
-
-使用 Web 浏览器浏览到 Servlet。
-
-```bash
-http://<app_name>.azurewebsites.net/HelloWorldServlet
-```
-
-Servlet 在包含内置映像的 Web 应用中运行。
-
-![在 Azure 中运行应用的示例](media/quickstart-java/java-hello-world-servlet-in-browser.png)
-
-
-
-**祝贺你！** 现已将第一个 Java 应用部署到 Linux 应用服务。
-
-
-
-### <a name="ftp-deployment"></a>FTP 部署
-
-也可使用 FTP 来部署 WAR 文件。 
-
-通过 FTP 将文件上传到 Web 应用的 */home/site/wwwroot/webapps* 目录。 以下示例命令行使用 cURL：
-
-```bash
-curl -T war_file_path -u "app_name\username" ftp://webappFTPURL/site/wwwroot/webapps/
-```
-
-更新以下项目：
-
-* `war_file_path` - 使用本地 WAR 文件路径。
-* `app_name` - 使用以前创建的应用名称。
-* `username` - 使用以前创建的部署凭据用户名。
-* `webappFTPURL` - 将 **FTP 主机名**值用于以前复制的 Web 应用。 FTP 主机名也列在 **Azure 门户**的 Web 应用的“概览”边栏选项卡中。[](https://portal.azure.com/)
-
-执行此命令。 出现 cURL 提示时，键入部署凭据的密码。
+    mvn clean package azure-webapp:deploy
 
 
-在 Web 浏览器中使用以下 URL 浏览到已部署的应用程序。
+部署完成 以后，请在 Web 浏览器中使用以下 URL 浏览到已部署的应用程序。
 
 ```bash
 http://<app_name>.azurewebsites.net/helloworld
@@ -195,20 +127,7 @@ Java 示例代码在包含内置映像的 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-java/java-hello-world-in-browser-curl.png)
 
-使用 Web 浏览器浏览到 Servlet。
-
-```bash
-http://<app_name>.azurewebsites.net/helloworld/HelloWorldServlet
-```
-
-Java 示例代码在包含内置映像的 Web 应用中运行。
-
-![在 Azure 中运行应用的示例](media/quickstart-java/java-hello-world-servlet-in-browser-curl.png)
-
-
-
 **祝贺你！** 现已将第一个 Java 应用部署到 Linux 应用服务。
-
 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
@@ -216,8 +135,8 @@ Java 示例代码在包含内置映像的 Web 应用中运行。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何将 Java 与 Azure 配合使用，请参阅以下链接：
+本快速入门介绍了如何使用 Maven 创建 Java Web 应用，然后将 Java Web 应用部署到 Linux 上的应用服务。 若要详细了解如何将 Java 与 Azure 配合使用，请单击下面的链接。
 
-* [面向 Java 开发人员的 Azure](https://docs.microsoft.com/java/azure/)
-* [使用用于 IntelliJ 的 Azure 工具包将 Hello World Web 应用部署到云中的 Linux 容器](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-hello-world-web-app-linux)
-* [用于 Visual Studio Team Services 的 Java 工具](https://java.visualstudio.com/)
+> [!div class="nextstepaction"]
+> [面向 Java 开发人员的 Azure](https://docs.microsoft.com/java/azure/)
+

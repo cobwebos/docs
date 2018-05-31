@@ -9,26 +9,27 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: ca9e2935f3d44952235a1669b3f5bebc7708f4bf
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c84104ac9094980d0e6d16b535dcf13c462a645a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195441"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>优化 Azure SQL 数据库性能
 
 借助 Azure SQL 数据库提供的[建议](sql-database-advisor.md)，可以提升数据库性能，也可以让 Azure SQL 数据库[自动适应应用程序](sql-database-automatic-tuning.md)并应用更改来提升工作负载性能。
 
 如果没有任何适用的建议，但仍有性能问题，可以使用下列方法来提升性能：
-1. 增加[服务层](sql-database-service-tiers.md)并向数据库提供更多资源。
-2. 优化应用程序，并应用一些可以提升性能的最佳做法。 
-3. 通过更改索引和查询来优化数据库，以便更有效地处理数据。
+- 在[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)中增加服务层，为数据库提供更多资源。
+- 优化应用程序，并应用一些可以提升性能的最佳做法。 
+- 通过更改索引和查询来优化数据库，以便更有效地处理数据。
 
-这些都是手动方法，因为需要决定选择或需要哪些[服务层](sql-database-service-tiers.md)，以便重写应用程序或数据库代码，并部署所做的更改。
+这些是手动方法，因为你需要决定哪些[基于 DTU 的模型资源限制](sql-database-dtu-resource-limits.md)和[基于 vCore 的模型资源限制（预览版）](sql-database-vcore-resource-limits.md)满足你的需求。 否则，你需要重写应用程序或数据库代码并部署更改。
 
 ## <a name="increasing-performance-tier-of-your-database"></a>增加数据库性能层
 
-Azure SQL 数据库提供两种购买模型：基于 DTU 的购买模型和基于 V 核心的购买模型。 每个模型都有多个[服务层](sql-database-service-tiers.md)可供选择。 每个服务层可严格隔离 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化应用程序以充分利用 Azure SQL 数据库。
+Azure SQL 数据库提供了两种购买模型：即[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)，你可以从中进行选择。 每个服务层可严格隔离 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化应用程序以充分利用 Azure SQL 数据库。
 
 > [!NOTE]
 > 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性池的性能指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。 不过，请注意，也可以将本文中的多项优化建议应用于弹性池中的数据库，获得类似的性能优势。
@@ -48,7 +49,7 @@ SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要�
 
 ### <a name="service-tier-capabilities-and-limits"></a>服务层功能和限制
 
-在每个服务层，由你设置性能级别，因此可以灵活地只为所需的容量付费。 可以根据工作负荷变化向上或向下[调整容量](sql-database-service-tiers.md)。 例如，如果数据库工作负荷在返校购物季期间很高，则可在设定的时间内（七月到九月）提高数据库的性能级别， 而在高峰季结束之后降低性能级别。 可以按业务的季节性因素优化云环境，将支出降至最低。 此模型也很适合软件产品发布环节。 测试团队可在进行测试运行时分配容量，一旦完成测试，即释放该容量。 在容量请求模型中，只为所需容量付费，而避免在很少使用的专用资源上支出。
+在每个服务层，由你设置性能级别，因此可以灵活地只为所需的容量付费。 可以根据工作负荷变化向上或向下[调整容量](sql-database-service-tiers-dtu.md)。 例如，如果数据库工作负荷在返校购物季期间很高，则可在设定的时间内（七月到九月）提高数据库的性能级别， 而在高峰季结束之后降低性能级别。 可以按业务的季节性因素优化云环境，将支出降至最低。 此模型也很适合软件产品发布环节。 测试团队可在进行测试运行时分配容量，一旦完成测试，即释放该容量。 在容量请求模型中，只为所需容量付费，而避免在很少使用的专用资源上支出。
 
 ### <a name="why-service-tiers"></a>为什么使用服务层？
 尽管每个数据库工作负荷可能各不相同，但服务层的目的就是在不同的性能级别下提供性能可预测性。 数据库资源要求繁杂的客户可以在更专用的计算环境中运行其数据库。
@@ -270,7 +271,8 @@ SQL Server 用户经常将许多功能集中在单一数据库内。 例如，�
 某些数据库应用程序包含具有大量读取操作的工作负荷。 缓存层可减少数据库上的负载，还有可能降低支持使用 Azure SQL 数据库的数据库所需的性能级别。 如果读取工作负荷较重，通过 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)，只需读取数据一次（也许只需对每个应用层计算机读取一次，具体取决于其配置方式），然后将该数据存储在 SQL 数据库外部。 这样可降低数据库负载（CPU 和读取 IO），但对于事务一致性有影响，因为从缓存读取的数据可能与数据库中数据不同步。 虽然许多应用程序可接受一定的不一致，但并非所有工作负荷都是这样。 应该先完全了解任何应用程序要求，再实施应用程序层缓存策略。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关服务层的详细信息，请参阅 [SQL 数据库选项和性能](sql-database-service-tiers.md)
+* 有关基于 DTU 的服务层的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 DTU 的模型资源限制](sql-database-dtu-resource-limits.md)
+* 有关基于 vCore 的服务层的详细信息，请参阅[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)和[基于 vCore 的资源限制（预览版）](sql-database-vcore-resource-limits.md)
 * 有关弹性池的详细信息，请参阅[什么是 Azure 弹性池？](sql-database-elastic-pool.md)
 * 有关性能和弹性池的信息，请参阅[何时考虑弹性池](sql-database-elastic-pool-guidance.md)
 

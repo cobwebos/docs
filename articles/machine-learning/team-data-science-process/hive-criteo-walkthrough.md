@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778268"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
 
@@ -46,7 +47,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 在此数据集的数值列和分类列中都有缺失值。 本文介绍一种处理缺失值的简单方法。 将缺失值存储到 Hive 表中时，将浏览数据的其他详细信息。
 
-**定义：** *点击率 (CTR)：*是数据中的点击次数所占的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
+**定义：** *点击率 (CTR)：* 是数据中的点击次数所占的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
 
 ## <a name="mltasks"></a>预测任务示例
 本演练中涉及两个示例预测问题：
@@ -58,7 +59,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 2. **回归**：预测来自用户功能的广告点击概率。
 
 ## <a name="setup"></a>为数据科学设置 HDInsight Hadoop 群集
-**注意：**这通常是**管理员**任务。
+**注意：** 这通常是**管理员**任务。
 
 通过三个步骤设置 Azure Data Science 环境，以构建具有 HDInsight 群集的预测分析解决方案：
 
@@ -456,7 +457,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 ![将数据集拖放到主面板上](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
-> 对定型和测试数据集都执行此操作。 此外，请记住使用为此目的提供的数据库名称和表名称。 图中使用的值仅用于说明目的。**
+> 对定型和测试数据集都执行此操作。 此外，请记住使用为此目的提供的数据库名称和表名称。 图中使用的值仅用于说明目的。\*\*
 > 
 > 
 

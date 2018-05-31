@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 8d564d59a2e20d1ccc35ba7801154a6dbcb9070d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a64e2bbe1bb784f0b6032980d6f212470549cdf4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366913"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 门户打开虚拟机端口
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -66,4 +67,4 @@ ms.lasthandoff: 04/03/2018
 在本示例中，创建了简单的规则来允许 HTTP 流量。 可以从下列文章中，找到有关创建更详细环境的信息：
 
 * [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)
-* [什么是网络安全组 (NSG)？](../../virtual-network/virtual-networks-nsg.md)
+* [什么是网络安全组？](../../virtual-network/security-overview.md)

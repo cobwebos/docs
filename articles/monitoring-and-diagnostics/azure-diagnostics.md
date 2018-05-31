@@ -1,11 +1,11 @@
 ---
-title: "Azure 诊断概述 | Microsoft Docs"
-description: "使用 Azure 诊断在云服务、虚拟机和 Service Fabric 中进行调试、性能度量、监视和流量分析"
+title: Azure 诊断概述 | Microsoft Docs
+description: 使用 Azure 诊断在云服务、虚拟机和 Service Fabric 中进行调试、性能度量、监视和流量分析
 services: multiple
 documentationcenter: .net
 author: rboucher
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
 ms.service: multiple
 ms.workload: na
@@ -14,14 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0231a6c1d78818b948bb24d0c406fb2f2da17a0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32169129"
 ---
 # <a name="what-is-azure-diagnostics"></a>什么是 Azure 诊断
-Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用于自许多不同源的诊断扩展。 目前支持的有 Azure 云服务 Web 和辅助角色、运行 Microsoft Windows 的 Azure 虚拟机，以及 Service Fabric。 其他 Azure 服务都有自身不同的诊断扩展。
+Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用于自许多不同源的诊断扩展。 目前支持 Azure 云服务（经典）Web 和辅助角色、虚拟机、虚拟机规模集，以及 Service Fabric。 其他 Azure 服务具有不同的诊断方法。 请参阅 [Azure 中的监控概述](monitoring-overview.md)。 
 
 ## <a name="data-you-can-collect"></a>可以收集的数据
 Azure 诊断可以收集以下类型的数据：
@@ -38,16 +39,13 @@ Azure 诊断可以收集以下类型的数据：
 | 自定义错误日志 |应用程序或服务创建的日志 |
 | Azure Diagnostics基础结构日志 |有关诊断自身的信息 |
 
-Azure 诊断扩展可将此数据传输到 Azure 存储帐户，或者发送到 [Application Insights](../application-insights/app-insights-cloudservices.md) 等服务。 可以将这些数据用于调试和故障排除、度量性能、监视资源使用状况、进行流量分析和容量规划以及进行审核。
+Azure 诊断扩展可将此数据传输到 Azure 存储帐户，或者发送到 [Application Insights](../application-insights/app-insights-cloudservices.md)。 此外，你还可以将其流式传输到[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)，然后就可将其发送到非 Azure 监控服务。 可以将这些数据用于调试和故障排除、度量性能、监视资源使用状况、进行流量分析和容量规划以及进行审核。
 
 ## <a name="versioning"></a>版本控制
 请参阅 [Azure 诊断版本控制历史记录](azure-diagnostics-versioning-history.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请选择要尝试在哪个服务上收集诊断数据，并使用以下文章来入门。 有关具体任务的参考，请使用一般的 Azure 诊断链接。
-
-## <a name="web-apps"></a>Web 应用
-请注意，Web 应用不使用 Azure 诊断。 请在 [Web 应用](../app-service/web-sites-enable-diagnostic-log.md)中查找相应的信息
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>使用 Azure 诊断的云服务
 * 如果使用 Visual Studio，请参阅[使用 Visual Studio 跟踪云服务应用程序](../vs-azure-tools-debug-cloud-services-virtual-machines.md)帮助自己入门。 否则，请参阅

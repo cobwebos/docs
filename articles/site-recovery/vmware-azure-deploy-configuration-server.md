@@ -1,6 +1,6 @@
 ---
-title: "通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复 | Microsoft Docs"
-description: "本文介绍如何通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复"
+title: 通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复 | Microsoft Docs
+description: 本文介绍如何通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 99b368ca364bd7c5bebfc00c2df0f04333293388
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2389ff6824a005db46c04bd1b45eabfd5ce50481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188474"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -108,6 +109,11 @@ Site Recovery 提供可下载的模板，以将配置服务器设置为高度可
 8. 在“配置虚拟机凭据”中，输入用于在计算机上自动安装 Azure Site Recovery 移动服务的用户名和密码（如果已启用复制）。 对于 Windows 计算机，该帐户在要复制的计算机上需有本地管理员特权。 对于 Linux，请提供根帐户的详细信息。
 9. 选择“完成配置”以完成注册。 
 10. 注册完成后，请在 Azure 门户中确认配置服务器和 VMware 服务器是否已在保管库中的“源”页上列出。 然后，选择“确定”以配置目标设置。
+
+
+## <a name="upgrade-the-configuration-server"></a>升级配置服务器
+
+要将配置服务器升级到最新版本，请阅读[此处](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)提供的步骤
 
 
 ## <a name="troubleshoot-deployment-issues"></a>排查部署问题

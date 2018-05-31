@@ -1,11 +1,11 @@
 ---
-title: "VM 上的 SQL Server 应用程序模式 | Microsoft Docs"
-description: "本文介绍 Azure VM 上的 SQL Server 的应用程序模式。 这些模式可帮助解决方案架构师和开发人员奠定良好的应用程序体系结构和设计基础。"
+title: VM 上的 SQL Server 应用程序模式 | Microsoft Docs
+description: 本文介绍 Azure VM 上的 SQL Server 的应用程序模式。 这些模式可帮助解决方案架构师和开发人员奠定良好的应用程序体系结构和设计基础。
 services: virtual-machines-windows
 documentationcenter: na
 author: ninarn
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 41863c8d-f3a3-4584-ad86-b95094365e05
 ms.service: virtual-machines-sql
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 9a306dc5676bb98baf0c9aa000c4c518279bd932
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: eaeff1e57042b2e6a98559c19dc1dabebbf92ed4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195101"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -31,9 +32,9 @@ ms.lasthandoff: 02/21/2018
 
 对于每种应用程序模式，都将找到本地方案及其相应的云解决方案，还可以找到相关的技术建议。 此外，本文还讨论了 Azure 特定开发策略，方便用户正确设计应用程序。 由于各种应用程序模式千变万化，建议架构师和开发人员为其应用程序和用户选择最合适的模式。
 
-**技术供稿人：**Luis Carlos Vargas Herring、Madhan Arumugam Ramakrishnan
+**技术供稿人：** Luis Carlos Vargas Herring、Madhan Arumugam Ramakrishnan
 
-**技术审校：**Corey Sanders、Drew McDaniel、Narayan Annamalai、Nir Mashkowski、Sanjay Mishra、Silvano Coriani、Stefan Schackow、Tim Hickey、Tim Wieman、Xin Jin
+**技术审校：** Corey Sanders、Drew McDaniel、Narayan Annamalai、Nir Mashkowski、Sanjay Mishra、Silvano Coriani、Stefan Schackow、Tim Hickey、Tim Wieman、Xin Jin
 
 ## <a name="introduction"></a>介绍
 可以通过将不同应用程序层级的组件放入不同计算机以及不同的组件中，开发多种类型的 n 层应用程序。 例如，可将客户端应用程序和业务规则组件放置在一台计算机中，而将前端 Web 层和数据访问层组件放置在另一台计算机中，再将后端数据库层放置在另一台计算机中。 这种类型的结构有助于将每个层相互隔离。 如果更改了数据来源，则无需更改客户端或 Web 应用程序，而只需更改数据访问层组件。
@@ -57,7 +58,7 @@ ms.lasthandoff: 02/21/2018
 * 需要与本地 SQL Server 完全兼容，并希望将现有应用程序按现状迁移至 Azure。
 * 希望充分利用 Azure 环境的功能，但 Azure SQL 数据库不支持应用程序需要的全部功能。 这可能包括以下方面：
   
-  * **数据库大小**：在更新这篇文章时，SQL 数据库支持最多包含 1 TB 数据的数据库。 如果应用程序需要 1 TB 以上的数据，但用户不希望实现自定义分片解决方案，则建议在 Azure 虚拟机中使用 SQL Server。 有关最新信息，请参阅[向外缩放 Azure SQL 数据库](https://msdn.microsoft.com/library/azure/dn495641.aspx)和 [Azure SQL 数据库服务层和性能级别](../../../sql-database/sql-database-service-tiers.md)。
+  * **数据库大小**：在更新这篇文章时，SQL 数据库支持最多包含 1 TB 数据的数据库。 如果应用程序需要 1 TB 以上的数据，但用户不希望实现自定义分片解决方案，则建议在 Azure 虚拟机中使用 SQL Server。 有关最新信息，请参阅[扩展 Azure SQL 数据库](https://msdn.microsoft.com/library/azure/dn495641.aspx)、[基于 DTU 的购买模型](../../../sql-database/sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](../../../sql-database/sql-database-service-tiers-vcore.md)（预览版）。
   * **HIPAA 合规性**：医疗保健客户和独立软件供应商 (ISV) 可能选择 [Azure 虚拟机中的 SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) 而不选择 [Azure SQL 数据库](../../../sql-database/sql-database-technical-overview.md)，原因是 Azure 虚拟机中的 SQL Server 已纳入 HIPAA 商业伙伴协议 (BAA)。 有关合规性的信息，请参阅 [Microsoft Azure 信任中心：合规性](https://azure.microsoft.com/support/trust-center/compliance/)。
   * **实例级功能**：目前，SQL 数据库不支持数据库外部的功能（如链接服务器、代理作业，FileStream、Service Broker 等）。 有关详细信息，请参阅 [Azure SQL 数据库指导原则和限制](https://msdn.microsoft.com/library/azure/ff394102.aspx)。
 

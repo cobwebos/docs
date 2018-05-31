@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 94b3c1e812bdf3345d5fb1f7308fb7a55be8f922
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 860a09d004c16de992093e79c0dbda4c469bb775
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771358"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -28,11 +29,13 @@ ms.lasthandoff: 03/29/2018
 > [!NOTE]
 > 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[在版本 2 中监控和管理数据工厂管道](../monitor-visually.md)。
 
+本文介绍如何使用 Azure 门户和 PowerShell 监视、管理和调试管道。
+
 > [!IMPORTANT]
 > 通过监视和管理应用程序，可更好地监视和管理数据管道并解决出现的任何问题。 有关使用此应用的详细信息，请参阅[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
 
-
-本文介绍如何使用 Azure 门户和 PowerShell 监视、管理和调试管道。
+> [!IMPORTANT]
+> Azure 数据工厂版本 1 现在使用新的 [Azure Monitor 警报基础结构](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。 旧警报基础结构已弃用。 因此，为版本 1 数据工厂配置的现有警报不再有效。 v1 数据工厂的现有警报不会自动迁移。 你必须在新的警报基础结构上重新创建这些警报。 登录到 Azure门户并选择“监视器”，针对指标（如失败的运行或成功的运行）为版本 1 数据工厂创建新的警报。
 
 ## <a name="understand-pipelines-and-activity-states"></a>了解管道和活动状态
 使用 Azure 门户，可以：
@@ -196,7 +199,8 @@ Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName produc
 ## <a name="debug-pipelines"></a>调试管道
 Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排查管道问题的丰富功能。
 
-> [!NOTE} 使用“监视和管理”应用来排查错误要简便得多。 有关使用此应用的详细信息，请参阅文章[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
+> [!NOTE] 
+> 使用“监视和管理”应用来排查错误要简便得多。 有关使用此应用的详细信息，请参阅文章[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
 
 ### <a name="find-errors-in-a-pipeline"></a>在管道中查找错误
 如果活动在管道中运行失败，则管道所生成数据集将因此故障而处于错误状态。 可以在 Azure 数据工厂中使用以下方法调试和解决错误。
@@ -296,6 +300,35 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 ```powershell
 Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
+## <a name="create-alerts-in-the-azure-portal"></a>在 Azure 门户中创建警报
+
+1.  登录到 Azure 门户，然后依次选择“监视器”->“警报”以打开“警报”页。
+
+    ![打开“警报”页。](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
+
+2.  选择“+ 创建新的预警规则”，创建新的警报。
+
+    ![新建警报](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
+
+3.  定义警报条件。 （请务必在“按资源类型筛选”字段中选择“数据工厂”。）你还可以指定维度的值。
+
+    ![定义警报条件 - 选择目标](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
+
+    ![定义警报条件 - 添加警报条件](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
+
+    ![定义警报条件 - 添加警报逻辑](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
+
+4.  定义警报详细信息。
+
+    ![定义警报详细信息](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
+
+5.  定义操作组。
+
+    ![定义操作组 - 新建操作组](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
+
+    ![定义操作组 - 设置属性](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
+
+    ![定义操作组 - 创建的新操作组](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
 
 ## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>将数据工厂移到其他资源组或订阅
 通过使用数据工厂主页上的“移动”命令栏按钮，可以将数据工厂移动到其他资源组或其他订阅。

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: ce03ee0e0936cea4b96e48fbc949f40ee0fe83a0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2336277a960925a92af3578850453ba6ae78abda
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33201260"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>排查托管域的无效网络配置问题
 本文可帮助你排查和解决导致以下警报消息的与网络相关的配置错误：
@@ -28,6 +29,13 @@ ms.lasthandoff: 04/19/2018
 
 无效的 NSG 配置是导致 Azure AD 域服务网络错误的最常见原因。 为虚拟网络配置的网络安全组 (NSG) 必须允许访问[特定端口](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)。 如果已阻止这些端口，Microsoft 将无法监视或更新托管域。 此外，Azure AD 目录与托管域之间的同步也会受到影响。 创建 NSG 时，请保持这些端口处于打开状态，以避免服务中断。
 
+### <a name="checking-your-nsg-for-compliance"></a>检查 NSG 的合规性
+
+1. 在 Azure 门户中导航到[网络安全组](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)页面
+2. 从表中选择与启用了托管域的子网关联的 NSG。
+3. 在左侧面板的“设置”下，单击“入站安全规则”
+4. 就地检查规则并识别是哪些规则阻止了对[这些端口](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)的访问。
+5. 通过删除规则、添加规则来编辑 NSG，或创建一个全新的 NSG，以确保合规性。 转到[添加规则](#add-a-rule-to-a-network-security-group-using-the-azure-portal)或[创建一个新的合规性 NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell)，如下所示。
 
 ## <a name="sample-nsg"></a>示例 NSG
 下表描述了一个示例 NSG，它将在允许 Microsoft 监视、管理和更新信息的同时保持托管域的安全。
@@ -47,7 +55,7 @@ ms.lasthandoff: 04/19/2018
 5. 通过在规则表中查找已创建的规则来验证规则。
 
 
-## <a name="create-an-nsg-for-azure-ad-domain-services-using-powershell"></a>使用 PowerShell 为 Azure AD 域服务创建 NSG
+## <a name="create-a-nsg-for-azure-ad-domain-services-using-powershell"></a>使用 PowerShell 为 Azure AD 域服务创建 NSG
 此 NSG 将配置为允许 Azure AD 域服务所需的端口的入站流量，同时拒绝任何其他不需要的入站访问。
 
 **先决条件：安装并配置 Azure PowerShell** 请按照说明[安装 Azure PowerShell 模块并连接到 Azure 订阅](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)。

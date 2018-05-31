@@ -1,25 +1,26 @@
 ---
-title: "安装本地数据网关 - Azure 逻辑应用 | Microsoft 文档"
-description: "访问本地数据源之前，请在本地数据源与逻辑应用之间安装用于快速数据传输和加密的本地数据网关"
-keywords: "访问数据, 本地, 数据传输, 加密, 数据源"
+title: 安装本地数据网关 - Azure 逻辑应用 | Microsoft 文档
+description: 访问本地数据源之前，请在本地数据源与逻辑应用之间安装用于快速数据传输和加密的本地数据网关
+keywords: 访问数据, 本地, 数据传输, 加密, 数据源
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 47e3024e-88a0-4017-8484-8f392faec89d
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: e061f24f3160de82548c4debf6da5821318ad2fb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6c1c954209c08c4ce1262bdc1620755e4a3a6d7e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32179004"
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -242,6 +243,11 @@ TcpTestSucceeded       : True
 6. 结果将从数据源发回给网关，并发送到网关云服务。 网关云服务随后使用结果。
 
 <a name="faq"></a>
+
+## <a name="tenant-level-administration"></a>租户级管理 
+
+目前没有单独的位置可让租户管理员管理其他用户安装和配置的所有网关。  如果你是租户管理员，建议要求组织中的用户将你以管理员身份添加到他们安装的每个网关。 这样，你可以通过“网关设置”页面或通过 [PowerShell 命令](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters)来管理组织中的所有网关。 
+
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

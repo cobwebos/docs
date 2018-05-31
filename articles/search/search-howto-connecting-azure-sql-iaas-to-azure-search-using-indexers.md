@@ -8,16 +8,17 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 34c5d1999625d1728e884adb794af235ba415c26
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366454"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接
 如[使用索引器将 Azure SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，针对 **Azure VM 上的 SQL Server**（或简称 **SQL Azure VM**）创建索引器受 Azure 搜索支持，但首先需要满足一些与安全性相关的先决条件。 
 
-**任务持续时间：**大约 30 分钟，假设已在 VM 上安装了证书。
+**任务持续时间：** 大约 30 分钟，假设已在 VM 上安装了证书。
 
 ## <a name="enable-encrypted-connections"></a>启用加密连接
 对于所有通过公共 Internet 连接的索引器请求，Azure 搜索都需要使用加密通道。 本部分列出了实现此目的的步骤。
@@ -55,11 +56,11 @@ ms.lasthandoff: 04/23/2018
 下面的链接提供了有关 VM 部署的 NSG 配置的说明。 使用这些说明，根据其 IP 地址为 Azure 搜索终结点配置 ACL。
 
 > [!NOTE]
-> 有关背景知识，请参阅[什么是网络安全组？](../virtual-network/virtual-networks-nsg.md)
+> 有关背景知识，请参阅[什么是网络安全组？](../virtual-network/security-overview.md)
 > 
 > 
 
-* 有关 **Resource Manager** VM，请参阅[如何为 ARM 部署创建 NSG](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)。 
+* 有关 **Resource Manager** VM，请参阅[如何为 ARM 部署创建 NSG](../virtual-network/tutorial-filter-network-traffic.md)。 
 * 有关**经典** VM，请参阅[如何为经典部署创建 NSG](../virtual-network/virtual-networks-create-nsg-classic-ps.md)。
 
 IP 寻址会产生一些挑战，如果了解问题和潜在解决方法，则可以轻松应对。 剩余部分提供了有关处理 ACL 中与 IP 地址相关的问题的建议。

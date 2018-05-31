@@ -1,11 +1,28 @@
+---
+title: include 文件
+description: include 文件
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 500e335d0b2eddc56cdfb9828236bc4676d9b6aa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371161"
+---
 > [!div class="op_single_selector"]
-> * [Windows 上的 C](../articles/iot-suite/iot-suite-connecting-devices.md)
-> * [Linux 上的 C](../articles/iot-suite/iot-suite-connecting-devices-linux.md)
-> * [Node.js（通用）](../articles/iot-suite/iot-suite-connecting-devices-node.md)
-> * [Raspberry Pi 上的 Node.js](../articles/iot-suite/iot-suite-connecting-pi-node.md)
-> * [Raspberry Pi 上的 C](../articles/iot-suite/iot-suite-connecting-pi-c.md)
+> * [Windows 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
+> * [Linux 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-devices-linux.md)
+> * [Node.js（通用）](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
+> * [Raspberry Pi 上的 Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
+> * [Raspberry Pi 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 
-本教程实施一个可将以下遥测数据发送到远程监视[预配置解决方案](../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md)的**冷却器**设备：
+本教程实施一个可将以下遥测数据发送到远程监视[解决方案加速器](../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)的“冷却器”设备：
 
 * 温度
 * 压力
@@ -23,11 +40,11 @@
 
 ## <a name="before-you-start"></a>开始之前
 
-在为设备编写任何代码之前，部署远程监视预配置解决方案，并向该解决方案添加一个新的物理设备。
+在为设备编写任何代码之前，部署远程监视解决方案加速器，并向该解决方案添加一个新的物理设备。
 
-### <a name="deploy-your-remote-monitoring-preconfigured-solution"></a>部署远程监视预配置解决方案
+### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>部署远程监视解决方案加速器
 
-本教程中创建的**冷却器**设备会将数据发送到[远程监视](../articles/iot-suite/iot-suite-remote-monitoring-explore.md)预配置解决方案的实例中。 如果尚未在 Azure 帐户中预配远程监视预配置解决方案，请参阅[部署远程监视预配置解决方案](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
+本教程中创建的“冷却器”设备会将数据发送到[远程监视](../articles/iot-suite/iot-suite-remote-monitoring-explore.md)解决方案加速器的实例中。 如果尚未在 Azure 帐户中预配远程监视解决方案加速器，请参阅[部署远程监视解决方案加速器](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 当远程监视解决方案的部署过程完成后，单击“启动”，以在浏览器中打开解决方案仪表板。
 
@@ -38,7 +55,7 @@
 > [!NOTE]
 > 如果已在解决方案中添加了设备，则可以跳过此步骤。 不过，下一步骤需要设备连接字符串。 可以从 [Azure 门户](https://portal.azure.com)或使用 [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI 工具检索设备的连接字符串。
 
-对于连接到预配置解决方案的设备，该设备必须使用有效的凭据将自身标识到 IoT 中心。 将设备添加到解决方案时，有机会保存包含这些凭据的设备连接字符串。 在本教程中，稍后会在客户端应用程序中添加设备连接字符串。
+对于连接到解决方案加速器的设备，该设备必须使用有效的凭据将自身标识到 IoT 中心。 将设备添加到解决方案时，有机会保存包含这些凭据的设备连接字符串。 在本教程中，稍后会在客户端应用程序中添加设备连接字符串。
 
 若要在远程监视解决方案中添加设备，请在解决方案中的“设备”页上完成以下步骤：
 
@@ -54,9 +71,9 @@
 
     ![检索凭据](media/iot-suite-selector-connecting/credentials.png)
 
-现在，你已向远程监视预配置解决方案添加了物理设备，并记下了其设备连接字符串。 在以下各部分中，你将实现使用设备连接字符串连接到解决方案的客户端应用程序。
+现在，你已向远程监视解决方案加速器添加了物理设备，并记下了其设备连接字符串。 在以下各部分中，你将实现使用设备连接字符串连接到解决方案的客户端应用程序。
 
-客户端应用程序实现内置的**冷却器**设备模型。 预配置解决方案设备模型指定有关设备的以下信息：
+客户端应用程序实现内置的**冷却器**设备模型。 解决方案加速器设备模型指定有关设备的以下信息：
 
 * 设备报告给解决方案的属性。 例如，**冷却器**设备报告有关其固件和位置的信息。
 * 由设备发送到解决方案的遥测数据类型。 例如，**冷却器**设备发送温度、湿度和压力值。

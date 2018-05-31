@@ -1,19 +1,20 @@
 ---
-title: "使用 Marathon API 管理 Azure DC/OS 群集"
-description: "使用 Marathon Web UI 将容器部署到 Azure 容器服务群集服务。"
+title: 使用 Marathon API 管理 Azure DC/OS 群集
+description: 使用 Marathon Web UI 将容器部署到 Azure 容器服务群集服务。
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b1c5fc223105b1dae0ce07f242a6b42b34fd2ab3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 43407d40db0aab2772cb1baeab3471be68aee2ab
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32166977"
 ---
 # <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>通过 Marathon Web UI 管理 Azure 容器服务 DC/OS 群集
 
@@ -38,7 +39,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 ![DC/OS UI](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>探索 Marathon UI
-若要查看 Marathon UI，请浏览到 http://localhost/marathon。 在此屏幕中，可以在 Azure 容器服务 DC/OS 群集上启动新容器或其他应用程序。 还可以查看有关正在运行的容器和应用程序的信息。  
+要查看 Marathon UI，请转到 http://localhost/marathon。 在此屏幕中，可以在 Azure 容器服务 DC/OS 群集上启动新容器或其他应用程序。 还可以查看有关正在运行的容器和应用程序的信息。  
 
 ![Marathon UI](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -82,7 +83,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
 ![Marathon 主页 UI - 容器部署状态](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-切换回 DC/OS Web UI (http://localhost/) 后，会看到任务在 DC/OS 群集上运行，此情况下为 Docker 格式容器任务。
+切换回 DC/OS Web UI (http://localhost/)) 后，会看到 DC/OS 群集上运行着任务（本例中为 Docker 格式的容器）。
 
 ![DC/OS Web UI - 任务在群集上运行](./media/container-service-mesos-marathon-ui/dcos8.png)
 

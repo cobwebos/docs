@@ -1,24 +1,25 @@
 ---
-title: "Azure AD v1 ASP.NET Web 服务器入门 | Microsoft Docs"
-description: "通过基于传统 Web 浏览器的使用 OpenID Connect 标准的应用程序，对 ASP.NET 解决方案实现 Microsoft 登录"
+title: Azure AD v1 ASP.NET Web 服务器入门 | Microsoft Docs
+description: 通过基于传统 Web 浏览器的使用 OpenID Connect 标准的应用程序，对 ASP.NET 解决方案实现 Microsoft 登录
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/08/2017
+ms.date: 04/09/2018
 ms.author: andret
-ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 00fef27529dd1d69c13ceaf22e16d2b7cd47801f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32156455"
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
@@ -280,7 +281,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>对访问具有 [Authorize] 属性的方法进行测试（可选）
 此步骤测试作为匿名用户对 Claims 控制器的访问：<br/>
 选择注销用户的链接并完成注销过程。<br/>
-现在在浏览器中键入 http://localhost:{port}/claims，访问受 `[Authorize]` 属性保护的控制器
+现在浏览器中键入 http://localhost:{port}/claims，访问受 `[Authorize]` 属性保护的控制器
 
 #### <a name="expected-results"></a>预期结果
 应收到提示，要求进行身份验证以查看视图。

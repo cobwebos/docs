@@ -14,11 +14,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: billmath
-ms.openlocfilehash: f47cf18f70572ad93f5075c2f2c883d80af8220e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2f72f2dd3dbaaf17494d09a36159afc464cc64d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32154284"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
 本文介绍使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
@@ -44,7 +45,7 @@ ms.lasthandoff: 04/18/2018
 ## <a name="single-forest-single-azure-ad-tenant"></a>单个林，单个 Azure AD 租户
 ![单个林和单个租户的拓扑](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
 
-最常见的拓朴是包含一个或多个域的单个本地林，以及单个 Azure AD 租户。 Azure AD 身份验证使用密码同步。 Azure AD Connect 的快速安装仅支持此拓扑。
+最常见的拓朴是包含一个或多个域的单个本地林，以及单个 Azure AD 租户。 Azure AD 身份验证使用密码哈希同步。 Azure AD Connect 的快速安装仅支持此拓扑。
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>单个林，多个同步服务器连接到一个 Azure AD 租户
 ![单个林不支持的筛选拓扑](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
@@ -64,7 +65,7 @@ Azure AD Connect 安装向导提供多个选项用于合并多个林中显示的
 
 Azure AD Connect 同步中的默认配置假设：
 
-* 每个用户只有一个已启用的帐户并且此帐户所在的林用于对用户进行身份验证。 这种假设适用于密码同步和联合。 UserPrincipalName 和 sourceAnchor/immutableID 来自此林。
+* 每个用户只有一个已启用的帐户并且此帐户所在的林用于对用户进行身份验证。 此假设针对的是密码哈希同步、直通身份验证和联合身份严重。 UserPrincipalName 和 sourceAnchor/immutableID 来自此林。
 * 每个用户只有一个邮箱。
 * 托管用户邮箱的林具有 Exchange 全局地址列表 (GAL) 中可见属性的最佳数据质量。 如果用户没有邮箱，则任何林都可以用于提供这些属性值。
 * 如果有链接邮箱，则还有其他林中的某个帐户用于登录。
@@ -157,7 +158,7 @@ DNS 域只能在单个 Azure AD 租户中注册。 本地 Active Directory 实�
 
 * 只有一个 Azure AD 租户可以使用本地 Active Directory 实例启用 Exchange 混合部署。
 * Windows 10 设备只能与一个 Azure AD 租户相关联。
-* 用于密码同步和传递身份验证的单一登录 (SSO) 选项只能用于一个 Azure AD 租户。
+* 用于密码哈希同步和直通身份验证的单一登录 (SSO) 选项只能由一个 Azure AD 租户使用。
 
 对象互斥集的要求也适用于写回。 此拓扑不支持某些写回功能，因为这些功能采用单个本地配置。 这些功能包括：
 

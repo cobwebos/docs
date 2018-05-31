@@ -20,6 +20,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33776825"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>通知中心入门（Kindle 应用）
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -82,7 +83,7 @@ ms.lasthandoff: 05/07/2018
 将 ADM 库添加到 Eclipse 项目：
 
 1. 若要获取 ADM 库，请 [下载 SDK]。 解压缩 SDK zip 文件。
-2. 在 Eclipse 中右键单击项目，然后单击“属性”。 在左侧选择“Java 生成路径”，并选择顶部的“库”选项卡。**** 单击“添加外部 Jar”，并从提取 Amazon SDK 的目录中选择文件 `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar`。
+2. 在 Eclipse 中右键单击项目，然后单击“属性”。 在左侧选择“Java 生成路径”，并选择顶部的“库”选项卡。 单击“添加外部 Jar”，并从提取 Amazon SDK 的目录中选择文件 `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar`。
 3. 下载 NotificationHubs Android SDK（链接）。
 4. 解压缩该包，然后在 Eclipse 中将文件 `notification-hubs-sdk.jar` 拖放到 `libs` 文件夹中。
 

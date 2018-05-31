@@ -3,7 +3,7 @@ title: Microsoft Azure 静态数据加密 | Microsoft Docs
 description: 本文概述了 Microsoft Azure 静态数据加密及其整体功能和一般注意事项。
 services: security
 documentationcenter: na
-author: YuriDio
+author: barclayn
 manager: mbaldwin
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 54dc97c0d20f90d3b57b715fb21714a11e5a1525
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312570"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 Microsoft Azure 中有多种工具，可以根据贵公司的安全性和符合性需求来保护数据。 本白皮书重点介绍：
@@ -236,10 +237,10 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 #### <a name="azure-storage"></a>Azure 存储
 
-Azure Blob 和 Azure 文件支持将静态加密用于服务器端加密方案和客户加密数据（客户端加密）。
+所有 Azure 存储服务（Blob 存储、队列存储、表存储和 Azure 文件）均支持静态服务器端加密，其中某些服务支持客户托管的密钥和客户端加密。  
 
-- 服务器端：使用 Azure Blob 存储的客户可以在每个 Azure 存储资源帐户上启用静态加密。 启用后，服务器端加密即可透明地（相对于应用程序来说）进行。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。
-- 客户端：支持 Azure Blob 的客户端加密。 使用客户端加密时，客户会加密数据并将数据作为加密的 blob 上传。 密钥管理由客户执行。 有关详细信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)。
+- 服务器端：默认情况下，所有 Azure 存储服务都使用服务托管的密钥来启用服务器端加密（对应用程序而言是透明的）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。 Azure Blob 存储和 Azure 文件也支持 Azure Key Vault 中客户托管的密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption-customer-managed-keys)。
+- 客户端：Azure Blob、表和队列支持客户端加密。 使用客户端加密时，客户会加密数据并将数据作为加密的 blob 上传。 密钥管理由客户执行。 有关详细信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)。
 
 
 #### <a name="sql-azure"></a>SQL Azure
@@ -257,10 +258,10 @@ SQL Azure 目前支持将静态加密用于 Microsoft 托管的服务器端和�
 | **存储和数据库**            |                |                     |                              |                              |        |
 | 磁盘 (IaaS)                      |                | -                   | 是                          | 是*                         | -      |
 | SQL Server (IaaS)                |                | 是                 | 是                          | 是                          | 是    |
-| SQL Azure (PaaS)                 |                | 是                 | 预览                      | -                            | 是    |
-| Azure 存储（块/页 Blob） |                | 是                 | 预览                      | -                            | 是    |
-| Azure 存储（文件）            |                | 是                 | -                            | -                            | -      |
-| Azure 存储（表、队列）   |                | -                   | -                            | -                            | 是    |
+| SQL Azure (PaaS)                 |                | 是                 | 是                          | -                            | 是    |
+| Azure 存储（块/页 Blob） |                | 是                 | 是                          | -                            | 是    |
+| Azure 存储（文件）            |                | 是                 | 是                          | -                            | -      |
+| Azure 存储（表、队列）   |                | 是                 | -                            | -                            | 是    |
 | Cosmos DB (Document DB)          |                | 是                 | -                            | -                            | -      |
 | StorSimple                       |                | 是                 | -                            | -                            | 是    |
 | 备份                           |                | -                   | -                            | -                            | 是    |
@@ -275,7 +276,7 @@ SQL Azure 目前支持将静态加密用于 Microsoft 托管的服务器端和�
 | Power BI                         |                | 是                 | -                            | -                            | -      |
 | IoT 服务                     |                |                     |                              |                              |        |
 | IoT 中心                          |                | -                   | -                            | -                            | 是    |
-| 服务总线                      |                | 是（高级层）              | -                            | -                            | 是    |
+| 服务总线                      |                | 是              | -                            | -                            | 是    |
 | 事件中心                       |                | 是             | -                            | -                            | -      |
 
 

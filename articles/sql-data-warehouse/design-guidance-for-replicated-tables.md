@@ -7,21 +7,18 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: b1d60cc0a83c95c5e33fbaae6083572af3e183ad
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1cc796061056ff017e3d778ebb2e50e13d55a4c1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32189558"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中使用复制表的设计指南
 本文提供在 SQL 数据仓库架构中设计复制表的建议。 使用这些建议，可减少数据移动并降低查询复杂性，从而提高查询性能。
-
-> [!NOTE]
-> 复制表功能当前以公共预览版提供。 某些行为随时会变化。
-> 
 
 ## <a name="prerequisites"></a>先决条件
 本文假设读者熟悉 SQL 数据仓库中的数据分布和数据移动概念。  有关详细信息，请参阅[体系结构](massively-parallel-processing-mpp-architecture.md)一文。 
@@ -44,20 +41,13 @@ ms.lasthandoff: 04/18/2018
 在以下情况下，考虑使用复制表：
 
 - 磁盘上的表小于 2 GB，无论行数。 若要确定表大小，可以使用 [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) 命令：`DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`。 
-- 在联接中使用表，否则需要数据移动。 例如，当联接列不是相同的分布列时，哈希分布表上的联接需要数据移动。 如果其中一个哈希分布表较小，请考虑使用复制表。 轮循表上的联接需要数据移动。 在大多数情况下，我们建议使用复制表，而不是轮循表。 
-
-
-在以下情况下，考虑将现有分布式表转换为复制表：
-
-- 查询计划使用将数据广播到所有计算节点的数据移动操作。 BroadcastMoveOperation 成本高昂，并且会降低查询性能。 要查看查询计划中的数据移动操作，请使用 [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)。
+- 在联接中使用表，否则需要数据移动。 连接未分布在同一列上的表（如将哈希分布式表连接到轮循机制表）时，需要进行数据移动才能完成此查询。  如果其中一个表较小，请考虑使用复制表。 在大多数情况下，我们建议使用复制表，而不是轮循表。 要查看查询计划中的数据移动操作，请使用 [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)。  BroadcastMoveOperation 是典型的数据移动操作，可通过使用复制的表来消除。  
  
 在以下情况下，复制表可能无法实现最好的查询性能：
 
 - 对表进行频繁的插入、更新和删除操作。 这些数据操作语言 (DML) 操作需要重新生成复制表。 经常重新生成可能会降低性能。
 - 数据仓库缩放频繁。 缩放数据仓库会更改计算节点的数量，这会导致重新生成。
-- 表中包含大量列，但数据操作通常只访问少量列。 在这种情况下，与复制表相比，对表进行哈希分布，然后在经常访问的列上创建索引可能更为高效。 当查询需要数据移动时，SQL 数据仓库仅移动请求列中的数据。 
-
-
+- 表中包含大量列，但数据操作通常只访问少量列。 在这种情况下，与复制整个表相比，将表分发，然后对经常访问的列创建索引可能更为高效。 当查询需要进行数据移动时，SQL 数据仓库仅移动所请求列中的数据。 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>对简单查询谓词使用复制表
 在选择分布或复制表之前，请先考虑计划对表运行的查询类型。 只要有可能，
@@ -67,7 +57,7 @@ ms.lasthandoff: 04/18/2018
 
 在工作分布在所有计算节点上时，CPU 密集型查询的效果最好。 例如，对于在表的每一行上运行计算的查询，针对分布式表进行查询比针对复制表进行查询效果更好。 由于复制表完整存储在每个计算节点上，因此对复制表的 CPU 密集型查询会针对每个计算节点上的整个表运行。 额外的计算可能会降低查询性能。
 
-例如，此查询包含一个复制谓词。  供应商为分布式表而不是复制表时，它的运行速度更快。 在此示例中，供应商可以是哈希分布表或轮循分布表。
+例如，此查询包含一个复制谓词。  供应商为分布式表而不是复制表时，它的运行速度更快。 在此示例中，供应商可以是轮循机制分布表。
 
 ```sql
 
@@ -132,7 +122,7 @@ WHERE d.FiscalYear = 2004
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>修改复制表的性能注意事项
-SQL 数据仓库通过维护表的主版本来实现复制表。 它将主版本复制到每个计算节点上的某个分发数据库。 发生更改时，SQL 数据仓库会首先更新主表。 然后需要在每个计算节点上重新生成表。 重新生成复制表包括将表复制到每个计算节点，然后重新生成索引。
+SQL 数据仓库通过维护表的主版本来实现复制表。 它将主版本复制到每个计算节点上的某个分发数据库。 发生更改时，SQL 数据仓库会首先更新主表。 然后需要在每个计算节点上重新生成表。 重新生成复制表包括将表复制到每个计算节点，然后生成索引。  例如，DW400 上的复制表有 5 份数据副本。  每个计算节点上均存在主控副本和完整副本。  所有数据均存储在分发数据库中。 SQL 数据仓库使用此模型来支持更快的数据修改语句和灵活的缩放操作。 
 
 执行以下操作后需要重新生成：
 - 加载或修改数据
@@ -143,7 +133,7 @@ SQL 数据仓库通过维护表的主版本来实现复制表。 它将主版本
 - 暂停操作
 - 恢复操作
 
-修改数据后不会立即重新生成。 而是在查询首次从表中进行选择时触发重新生成。  表的初始 Select 语句中包含重新生成复制表的步骤。  因为重新生成是在查询内完成的，所以对初始 Select 语句的影响可能会很大，具体取决于表的大小。  如果需要重新生成多个复制表，将按语句中的步骤连续重新生成每个副本。  为了在重新生成复制表期间保持数据一致性，会在表上使用排他锁。  在重新生成期间，该锁可防止对表的所有访问。 
+修改数据后不会立即重新生成。 而是在查询首次从表中进行选择时触发重新生成。  触发重新生成的查询将立即从表的主版本读取，同时将数据异步复制到每个计算节点。 在数据完成复制之前，后续查询将继续使用表的主版本。  如果强制执行其他重新生成操作的复制表发生任何活动，则数据复制将失效，并且下一个 select 语句将触发再次复制数据操作。 
 
 ### <a name="use-indexes-conservatively"></a>谨慎使用索引
 标准索引适用于复制表。 SQL 数据仓库在重新生成的过程中重新生成每个复制表索引。 仅当重新生成索引带来的好处超出了相关成本时，才使用索引。  
@@ -172,7 +162,7 @@ SQL 数据仓库通过维护表的主版本来实现复制表。 它将主版本
 
 
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>批量加载后重新生成复制表
-为了确保查询执行时间一致，建议在批量加载后强制刷新复制表。 否则，第一个查询必须等待表刷新，包括重新生成索引。 受影响的复制表的大小和数量可显著影响性能。  
+为了确保查询执行时间一致，建议在批量加载后强制生成复制表。 否则，第一个查询仍将使用数据移动来完成查询。 
 
 此查询使用 [sys.pdw_replicated_table_cache_state ](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV列出已修改但未重新生成的复制表。
 
@@ -187,7 +177,7 @@ SELECT [ReplicatedTable] = t.[name]
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
  
-若要强制重新生成，请在上一个输出中的每个表上运行以下语句。 
+若要触发重新生成，请在上一个输出中的每个表上运行以下语句。 
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]

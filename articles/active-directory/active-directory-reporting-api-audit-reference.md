@@ -1,30 +1,35 @@
 ---
-title: "Azure Active Directory 审核 API 参考 | Microsoft 文档"
-description: "如何开始使用 Azure Active Directory 审核 API"
+title: Azure Active Directory 审核 API 参考 | Microsoft 文档
+description: 如何开始使用 Azure Active Directory 审核 API
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5cdf80ff1cc49b1582302d411ee6fcc8f193c021
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: e620a7f488e51a60bff6943135831eea0d12816d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158041"
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory 审核 API 参考
-本主题包含在有关 Azure Active Directory 报告 API 的主题集合中。  
-Azure AD 报告向你提供了一个允许使用代码或相关工具访问审核数据的 API。
-本主题用于向你提供有关**审核 API** 的参考信息。
+
+> [!TIP] 
+> 签出用于报告的新 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)，这最终将取代此 API。 
+
+
+本文包含在有关 Azure Active Directory (Azure AD) 报告 API 的文章集中。 Azure AD 报告向你提供了一个允许使用代码或相关工具访问审核数据的 API。
+本文主要提供有关**审核 API** 的参考信息。
 
 请参阅：
 
@@ -35,9 +40,9 @@ Azure AD 报告向你提供了一个允许使用代码或相关工具访问审�
 
 对于：
 
-- 常见问题解答，请参阅我们的[常见问题解答](active-directory-reporting-faq.md) 
+- 常见问题，请参阅[常见问题解答](active-directory-reporting-faq.md) 
 
-- 问题，请[提交支持票证](active-directory-troubleshooting-support-howto.md) 
+- 其他问题，请[提交支持票证](active-directory-troubleshooting-support-howto.md) 
 
 
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
@@ -46,26 +51,25 @@ Azure AD 报告向你提供了一个允许使用代码或相关工具访问审�
 * 有权访问 API 的任何应用（仅可根据全局管理员的权限设置应用授权）
 
 ## <a name="prerequisites"></a>先决条件
-为了通过报告 API 访问此报告，必须具备：
+若要通过报告 API 访问此报告，必须满足以下条件：
 
-* [Azure Active Directory 免费版或更高版本](active-directory-editions.md)
+* [Azure Active Directory 免费版或更高版本](active-directory-whatis.md)
 * 完成了[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)。 
 
 ## <a name="accessing-the-api"></a>访问 API
-可以通过[“Graph 浏览器”](https://graphexplorer2.cloudapp.net)访问此 API，或以编程方式使用 PowerShell 等访问此 API。 为了使 PowerShell 正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法，必须使用反撇号字符（也称为重音符）对 $ 字符进行“转义”。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（即 $filter）。
+可以通过[“Graph 浏览器”](https://graphexplorer2.cloudapp.net)访问此 API，或以编程方式使用 PowerShell 等访问此 API。 使用反撇号字符（也称为重音符）对 $ 字符进行“转义”，以确保 PowerShell 能够正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（例如 $filter）。
 
-本主题着重介绍了 Graph 浏览器。 有关 PowerShell 示例，请参阅此 [PowerShell 脚本](active-directory-reporting-api-audit-samples.md#powershell-script)。
+本文将重点介绍 Graph 浏览器。 有关 PowerShell 示例，请参阅此 [PowerShell 脚本](active-directory-reporting-api-audit-samples.md#powershell-script)。
 
 ## <a name="api-endpoint"></a>API 终结点
+
 可以使用以下 URI 访问此 API：  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta
 
-Azure AD 审核 API（使用 OData 分页）返回的记录数没有任何限制。
-有关报告数据的保留限制，请查看[报告保留策略](active-directory-reporting-retention.md)。
+Azure AD 审核 API（使用 OData 分页）返回的记录数没有任何限制。 有关报告数据的保留限制，请参阅[报告保留策略](active-directory-reporting-retention.md)。
 
-此调用分批返回数据。 每一批中最多有 1000 条记录。  
-若要获取下一批记录，请使用“下一个”链接。 从第一组返回的记录中获取 skiptoken 信息。 跳过标记会在结果集的末尾。  
+该调用分批返回数据。 每一批中最多有 1000 条记录。 若要获取下一批记录，请使用“下一批”链接。 从第一组返回的记录中获取跳过标记信息。 跳过标记会在结果集的末尾。  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta&%24skiptoken=-1339686058
 
@@ -73,10 +77,11 @@ Azure AD 审核 API（使用 OData 分页）返回的记录数没有任何限制
 
 
 ## <a name="supported-filters"></a>支持的筛选器
-可以缩小显示在筛选器窗体中的 API 调用所返回记录的范围。  
+
+可以使用筛选器缩减 API 调用返回的记录数。  
 对于与登录 API 相关的数据，支持以下筛选器：
 
-* **$top=\<要返回的记录数\>** - 限制返回的记录数。 此操作成本高昂。 如果想要返回数以千计的对象，则不应使用此筛选器。     
+* **$top=\<要返回的记录数\>** - 限制返回的记录数。 此操作成本高昂。 如果想要返回数以千计的对象，请不要使用此筛选器。     
 * **$filter=\<筛选语句\>** - 根据受支持的筛选字段，指定所关注的记录类型
 
 ## <a name="supported-filter-fields-and-operators"></a>支持的筛选字段和运算符
@@ -213,7 +218,7 @@ Azure AD 审核 API（使用 OData 分页）返回的记录数没有任何限制
 **注释**：
 
 * 不区分大小写
-* 在查询 Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity 时，需要添加完整命名空间
+* 在查询 Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity 时，添加完整命名空间
 
 - - -
 ### <a name="targetobjectid"></a>target/objectId
@@ -234,10 +239,12 @@ Azure AD 审核 API（使用 OData 分页）返回的记录数没有任何限制
 **注释**：
 
 * 不区分大小写 
-* 在查询 Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity 时，需要添加完整命名空间
+* 在查询 Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity 时，添加完整命名空间
 
 - - -
 ## <a name="next-steps"></a>后续步骤
-* 是否要查看筛选的系统活动的示例？ 请查看 [Azure Active Directory 审核 API 示例](active-directory-reporting-api-audit-samples.md)。
-* 是否要了解有关 Azure AD 报告 API 的详细信息？ 请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
+
+- 是否要查看筛选的系统活动的示例？ 请查看 [Azure Active Directory 审核 API 示例](active-directory-reporting-api-audit-samples.md)。
+
+- 是否要了解有关 Azure AD 报告 API 的详细信息？ 请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
 
