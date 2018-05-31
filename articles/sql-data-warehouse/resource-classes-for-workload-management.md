@@ -1,45 +1,109 @@
 ---
-title: "用于工作负荷管理的资源类 - Azure SQL 数据仓库 | Microsoft Docs"
-description: "有关使用资源类管理并发性以及计算 Azure SQL 数据仓库中查询的资源的指导。"
+title: 用于工作负荷管理的资源类 - Azure SQL 数据仓库 | Microsoft Docs
+description: 有关使用资源类管理并发性以及计算 Azure SQL 数据仓库中查询的资源的指导。
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/23/2017
-ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: c76fb73c9beda93c407d1af29e157682c7fe58c0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/26/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 09fd39865a52767195ebf7dad13f24d883af476a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192775"
 ---
-# <a name="resource-classes-for-workload-management"></a>用于工作负荷管理的资源类
-有关使用资源类来管理并发运行的并发查询数，以及计算 Azure SQL 数据仓库中查询的资源的指导。
+# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
+有关在 Azure SQL 数据仓库中使用资源类管理查询内存和并发性的指导。  
  
 ## <a name="what-is-workload-management"></a>什么是工作负荷管理？
-工作负荷管理是指优化所有查询的整体性能的功能。 适当优化的工作负荷能够有效地运行查询和负载操作，而不管这些查询和操作是计算密集型还是 IO 密集型。 
+工作负荷管理是指优化所有查询的整体性能的功能。 适当优化的工作负荷能够有效地运行查询和负载操作，而不管这些查询和操作是计算密集型还是 IO 密集型。  SQL 数据仓库为多用户环境提供工作负荷管理功能。 数据仓库不适用于多租户工作负荷。
 
-SQL 数据仓库为多用户环境提供工作负荷管理功能。 数据仓库不适用于多租户工作负荷。
+数据仓库的性能容量由[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)决定。 
+
+- 若要查看所有性能配置文件的内存和并发限制，请参阅[内存和并发限制](memory-and-concurrency-limits.md)。
+- 若要调整性能容量，可以[纵向扩展或缩减](quickstart-scale-compute-portal.md)。
+
+查询的性能容量由查询的资源类决定。 本文的余下内容介绍什么是资源类以及如何对其进行调整。
 
 ## <a name="what-are-resource-classes"></a>什么是资源类？
-资源类是预先确定的资源限制，用于控制查询的执行。 SQL 数据仓库根据资源类限制每个查询的计算资源。 
+查询的性能容量由用户的资源类决定。  资源类是 Azure SQL 数据仓库中预先确定的资源限制，控制查询执行的计算资源和并发性。 资源类可以针对并发运行的查询数以及分配给每个查询的计算资源量设置限制，从而帮助管理工作负荷。 我们需要在内存和并发性之间进行权衡。
 
-资源类可帮助管理数据仓库工作负荷的整体性能。借助资源类，可以通过针对并发运行的查询数以及分配给每个查询的计算资源设置限制，来有效地管理工作负荷。 
+- 较小的资源类可以减少每个查询的最大内存量，但同时会提高并发性。
+- 较大的资源类可以增加每个查询的最大内存量，但同时会降低并发性。 
 
-- 资源类越小，其使用的计算资源就越少，但实现的整体查询并发性就越高
-- 资源类越大，其提供计算资源就越多，但会限制查询并发性
+有两种类型的资源类：
 
-资源类是针对数据管理和操作活动设计的。 如果存在大型的联接和排序操作，以致系统必须在内存中执行查询而不是将查询溢出到磁盘，则某些极复杂的查询也会从资源类受益。
+- 静态资源类：非常适用于在数据集大小固定的情况下提高并发性。
+- 动态资源类：非常适用于大小和性能随着服务级别的扩展而增加和提升的数据集。   
 
-资源类控制以下操作：
+资源类使用并发性槽位来测量资源消耗。  本文稍后将介绍[并发性槽位](#concurrency-slots)。 
+
+- 若要查看资源类的资源利用率，请参阅[内存和并发性限制](memory-and-concurrency-limits.md#concurrency-maximums)。
+- 若要调整资源类，可以使用不同的用户身份运行查询，或[更改当前用户的资源类](#change-a-users-resource-class)成员身份。 
+
+### <a name="static-resource-classes"></a>静态资源类
+不管当前性能级别是什么，静态资源类都会分配相同的内存量（以[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)表示）。 由于不管性能级别是什么，查询都会获得相同的内存分配，因此，[横向扩展数据仓库](quickstart-scale-compute-portal.md)可以在资源类中运行更多的查询。  如果数据量已知且保持不变，则最理想的选择是静态资源类。
+
+静态资源类是使用以下预定义的数据库角色实现的：
+
+- staticrc10
+- staticrc20
+- staticrc30
+- staticrc40
+- staticrc50
+- staticrc60
+- staticrc70
+- staticrc80
+
+### <a name="dynamic-resource-classes"></a>动态资源类
+动态资源类根据当前服务级别分配可变内存量。 静态资源类适用于较高的并发性和静态数据量，而动态资源类更适合数据量会增长或有所变化的情况。  提升到更高的服务级别时，查询可自动获得更多的内存。  
+
+动态资源类是使用以下预定义的数据库角色实现的：
+
+- smallrc
+- mediumrc
+- largerc
+- xlargerc 
+
+### <a name="gen2-dynamic-resource-classes-are-truly-dynamic"></a>第 2 代动态资源类真正地实现了动态
+第 1 代挖掘动态资源类的详细信息时，有些详细信息会让理解其行为变得更加复杂：
+
+- Smallrc 资源类和静态资源类相似，也是通过固定的内存模型进行操作。  Smallrc 查询的内存不会随着服务级别的提高而动态增高。
+- 服务级别更改时，可用的查询并发性可能会上下浮动。
+- 缩放服务级别不会让分配至相同资源类的内存产生对应比例的变化。
+
+只有第 2 代动态资源类真正实现了动态处理上述几点。  小型-中型-大型-超大型资源类对应的内存百分比分配的新规则为 3-10-22-70，与服务级别无关。  下表综合了内存分配百分比的详细信息以及运行的并发查询的最小数量，与服务级别无关。
+
+| 资源类 | 内存百分比 | 最小并发查询数 |
+|:--------------:|:-----------------:|:----------------------:|
+| smallrc        | 3%                | 32                     |
+| mediumrc       | 10%               | 10                     |
+| largerc        | 22%               | 4                      |
+| xlargerc       | 70%               | 1                      |
+
+
+### <a name="default-resource-class"></a>默认资源类
+默认情况下，每个用户都是动态资源类 (**smallrc**) 的成员。 
+
+服务管理员的资源类是固定的，不可更改。  服务管理员是预配过程中创建的用户。
+
+> [!NOTE]
+> 定义为 Active Directory 管理员的用户或组也是服务管理员。
+>
+>
+
+## <a name="resource-class-operations"></a>资源类操作
+
+资源类旨在改进数据管理和操作活动设计的性能。 复杂的查询在大型资源类下运行也能受益。 例如，如果资源类足够大，使查询能够在内存中执行，则针对大型联接和排序的查询的性能可以得到改善。
+
+### <a name="operations-governed-by-resource-classes"></a>资源类控制的操作
+
+以下操作由资源类控制：
 
 * INSERT-SELECT、UPDATE、DELETE
 * SELECT（查询用户表时）
@@ -56,50 +120,7 @@ SQL 数据仓库为多用户环境提供工作负荷管理功能。 数据仓库
 > 
 > 
 
-## <a name="static-and-dynamic-resource-classes"></a>静态和动态资源类
-
-有两种类型的资源类：动态和静态。
-
-- 不管当前服务级别是什么，**静态资源类**都会分配相同的内存量（以[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)表示）。 这种静态分配意味着在使用更高的服务级别时，可在每个资源类中运行更多的查询。  静态资源类名为 staticrc10、staticrc20、staticrc30、staticrc40、staticrc50、staticrc60、staticrc70 和 staticrc80。 这些资源类最适合用于可提高资源类来获取更多计算资源的解决方案。
-
-- **动态资源类**根据当前服务级别分配可变内存量。 提升到更高的服务级别时，查询可自动获得更多的内存。 动态资源类命名为 smallrc、mediumrc、largerc 和 xlargerc。 这些资源类最适合用于可提高计算规模来获取更多资源的解决方案。 
-
-[性能层](performance-tiers.md)使用相同的资源类名称，但具有不同的[内存和并发性规范](performance-tiers.md)。 
-
-
-## <a name="assigning-resource-classes"></a>分配资源类
-
-资源类是通过将用户分配到数据库角色来实现的。 当用户运行查询时，该查询将使用该用户的资源类来运行。 例如，如果某个用户是 smallrc 或 staticrc10 数据库角色的成员，则其查询将使用较小的内存量来运行。 如果某个数据库用户是 xlargerc 或 staticrc80 数据库角色的成员，则其查询将使用较大的内存量来运行。 
-
-若要提高用户的资源类，可使用存储过程 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。 
-
-```sql
-EXEC sp_addrolemember 'largerc', 'loaduser';
-```
-
-若要降低资源类，可使用 [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)。  
-
-```sql
-EXEC sp_droprolemember 'largerc', 'loaduser';
-```
-
-服务管理员的资源类是固定的，不可更改。  服务管理员是预配过程中创建的用户。
-
-> [!NOTE]
-> 定义为 Active Directory 管理员的用户或组也是服务管理员。
->
->
-
-### <a name="default-resource-class"></a>默认资源类
-默认情况下，每个用户都是小型资源类 (**smallrc**) 的成员。 
-
-### <a name="resource-class-precedence"></a>资源类优先顺序
-用户可以是多个资源类的成员。 如果用户属于多个资源类：
-
-- 动态资源类优先于静态资源类。 例如，如果某个用户是 mediumrc（动态）和 staticrc80（静态）的成员，则查询将使用 mediumrc 来运行。
-- 更大的资源类优先于更小的资源类。 例如，如果某个用户是 mediumrc 和 largerc 的成员，则查询将使用 largerc 来运行。 同样，如果某个用户是 staticrc20 和 statirc80 的成员，则查询将使用 staticrc80 资源分配来运行。
-
-### <a name="queries-exempt-from-resource-classes"></a>资源类中的查询例外情况
+### <a name="operations-not-governed-by-resource-classes"></a>资源类不会控制的操作
 某些查询始终在 smallrc 资源类中运行，即使用户是更大资源类的成员。 这些例外的查询不会计入并发性限制。 例如，如果并发性限制为 16，则许多用户都可以从系统视图中进行选择，而不影响可用的并发性槽位。
 
 以下语句属于资源类的例外情况，始终在 smallrc 中运行：
@@ -127,6 +148,46 @@ Removed as these two are not confirmed / supported under SQLDW
 - REDISTRIBUTE
 -->
 
+## <a name="concurrency-slots"></a>并发槽位
+使用并发槽位可以方便地跟踪可用于执行查询的资源。 这些槽位就像是演唱会的门票，因为席位有限，必须预订。 每个数据仓库的并发性槽位总数由服务级别决定。 在查询可以开始执行之前，必须预留足够的并发槽位。 查询完成后，会释放其并发槽位。  
+
+- 使用 10 个并发槽位运行的查询可以访问的计算资源，是使用 2 个并发槽位运行的查询的 5 倍。
+- 如果每个查询需要 10 个并发槽位并且有 40 个并发槽位，则只有 4 个查询可以并发运行。
+ 
+只有受资源控制的查询消耗并发槽位。 系统查询和一些不重要的查询不消耗任何槽位。消耗的确切并发槽位数由查询的资源类决定。
+
+## <a name="view-the-resource-classes"></a>查看资源类
+
+资源类实现为预定义的数据库角色。 有两种类型的资源类：动态和静态。 若要查看资源类列表，请使用以下查询：
+
+```sql
+SELECT name 
+FROM   sys.database_principals
+WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
+```
+
+## <a name="change-a-users-resource-class"></a>更改用户的资源类
+
+资源类是通过将用户分配到数据库角色来实现的。 当用户运行查询时，该查询将使用该用户的资源类来运行。 例如，如果某个用户是 smallrc 或 staticrc10 数据库角色的成员，则其查询将使用较小的内存量来运行。 如果某个数据库用户是 xlargerc 或 staticrc80 数据库角色的成员，则其查询将使用较大的内存量来运行。 
+
+若要提高用户的资源类，可使用存储过程 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。 
+
+```sql
+EXEC sp_addrolemember 'largerc', 'loaduser';
+```
+
+若要降低资源类，可使用 [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)。  
+
+```sql
+EXEC sp_droprolemember 'largerc', 'loaduser';
+```
+
+## <a name="resource-class-precedence"></a>资源类优先顺序
+用户可以是多个资源类的成员。 如果用户属于多个资源类：
+
+- 动态资源类优先于静态资源类。 例如，如果某个用户是 mediumrc（动态）和 staticrc80（静态）的成员，则查询将使用 mediumrc 来运行。
+- 更大的资源类优先于更小的资源类。 例如，如果某个用户是 mediumrc 和 largerc 的成员，则查询将使用 largerc 来运行。 同样，如果某个用户是 staticrc20 和 statirc80 的成员，则查询将使用 staticrc80 资源分配来运行。
+
 ## <a name="recommendations"></a>建议
 我们建议创建一个专门用于运行特定类型的查询或负载操作的用户。 然后，为该用户提供永久性的资源类，而不是频繁更改资源类。 此外，既然静态资源类对工作负荷提供的整体控制度更高，我们建议先使用静态资源类，然后再考虑动态资源类。
 
@@ -153,7 +214,7 @@ Removed as these two are not confirmed / supported under SQLDW
 
 ## <a name="example-code-for-finding-the-best-resource-class"></a>用于找出最佳资源类的示例代码
  
-可以使用以下存储过程，根据给定的 SLO 推算每个资源类的并发性和内存授予，以及根据给定的资源类推算对非分区 CCI 表执行内存密集型 CCI 操作时可用的尽量最佳资源类：
+可以使用以下存储过程（仅适用于第 1 代），根据给定的 SLO 推算每个资源类的并发性和内存授予，以及根据给定的资源类推算对非分区 CCI 表执行内存密集型 CCI 操作时可用的尽量最佳资源类：
 
 下面是此存储过程的用途：  
 1. 用于查看每个资源类的、根据给定 SLO 推算的并发性和内存授予。 如此示例中所示，用户需要为架构和表名提供 NULL。  
@@ -184,6 +245,10 @@ EXEC dbo.prc_workload_management_by_DWU NULL, 'dbo', 'Table1';
 EXEC dbo.prc_workload_management_by_DWU 'DW6000', NULL, NULL;  
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
+> [!NOTE]
+> 此版本的存储过程中定义的值仅适用于第 1 代。
+>
+>
 
 以下语句创建前面示例中所用的 Table1。
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
@@ -250,7 +315,7 @@ AS
   UNION ALL
     SELECT 'DW400', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
-     SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+    SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
     SELECT 'DW600', 24, 24, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
@@ -262,7 +327,7 @@ AS
   UNION ALL
     SELECT 'DW2000', 32, 80, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
   UNION ALL
-   SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
+    SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
   UNION ALL
     SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
 )

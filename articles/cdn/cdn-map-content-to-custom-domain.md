@@ -4,21 +4,22 @@ description: 在本教程中，请将 Azure CDN 终结点内容映射到自定�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/06/2018
+ms.date: 05/15/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f57cfe19fd2eee0952a20fabcaa0d73ca96894ef
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d20dca9a1248cfb2915ebbc456fba80aadcf81f5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196498"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
@@ -112,19 +113,28 @@ ms.lasthandoff: 04/28/2018
     
 2. 在“CDN 配置文件”页上，选择要与自定义域关联的 CDN 终结点。
 
-    此时会打开“终结点”页。
+   此时会打开“终结点”页。
     
 3. 选择“自定义域”。 
 
    ![CDN“自定义域”按钮](./media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png)
 
-4. 对于“自定义主机名”，请输入自定义域，包括子域。 例如，www.contoso.com 或 cdn.contoso.com。请勿使用 cdnverify 子域名称。
+   此时会打开“添加自定义域”页。
+
+4. 对于**终结点主机名**，用作 CNAME 记录的目标域的终结点主机名已预先填好，并源自 CDN 终结点 URL：*&lt;终结点主机名&gt;*.azureedge.net。 无法进行更改。
+
+5. 对于**自定义主机名**，请输入自定义域（包括子域），以用作 CNAME 记录的源域。 例如，www.contoso.com 或 cdn.contoso.com。请勿使用 cdnverify 子域名称。
 
    ![CDN“自定义域”对话框](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
-5. 选择 **添加** 。
+6. 选择 **添加** 。
 
-   Azure 会验证所输入的自定义域名是否存在 CNAME 记录。 如果该 CNAME 正确，会验证自定义域。 将 CNAME 记录传播到名称服务器可能需要一段时间。 如果域并没有立即获得验证，请验证 CNAME 记录是正确，然后等待几分钟重试。 对于**来自 Verizon 的 Azure CDN** 终结点，最长可能需要 90 分钟才能将自定义域的设置传播到所有 CDN 边缘节点。  
+   Azure 会验证所输入的自定义域名是否存在 CNAME 记录。 如果该 CNAME 正确，会验证自定义域。 
+
+   新的自定义域设置传播到所有 CDN 边缘节点可能需要一些时间： 
+    - 对于 Microsoft 的 Azure CDN 标准版配置文件，传播通常可在 10 分钟内完成。 
+    - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
+    - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成。   
 
 
 ## <a name="verify-the-custom-domain"></a>验证自定义域
@@ -133,7 +143,7 @@ ms.lasthandoff: 04/28/2018
  
 1. 确保在终结点缓存了公共内容。 例如，如果 CDN 终结点与某个存储帐户相关联，则 Azure CDN 会将内容缓存在公共容器中。 若要测试自定义域，请验证容器是否已设置为允许公共访问，并至少包含一个文件。
 
-2. 在浏览器中，使用自定义域导航到文件的地址。 例如，如果自定义域为 cdn.contoso.com，则指向已缓存文件的 URL 应该类似于以下 URL：http:\//cdn.contoso.com/my-public-container/my-file.jpg。
+2. 在浏览器中，使用自定义域导航到文件的地址。 例如，如果自定义域为 cdn.contoso.com，则指向已缓存文件的 URL 应该类似于以下 URL：http:\//cdn.contoso.com/my-public-container/my-file.jpg。 验证结果是否与直接在 *&lt;终结点主机名&gt;*.azureedge.net 上访问 CDN 终结点时的结果相同。
 
 
 ## <a name="map-the-permanent-custom-domain"></a>映射永久自定义域

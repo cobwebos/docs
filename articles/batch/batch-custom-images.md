@@ -1,18 +1,19 @@
 ---
-title: "根据自定义映像预配 Azure Batch 池 | Microsoft Docs"
-description: "可根据自定义映像创建 Batch 池，以预配包含应用程序所需的软件和数据的计算节点。 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。"
+title: 根据自定义映像预配 Azure Batch 池 | Microsoft Docs
+description: 可根据自定义映像创建 Batch 池，以预配包含应用程序所需的软件和数据的计算节点。 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 63a567e9fdfef8dfceb275953cc0ac606355ea30
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 78bc50a1189d8f42281f81643a5e907d94480082
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32158606"
 ---
 # <a name="use-a-managed-custom-image-to-create-a-pool-of-virtual-machines"></a>使用托管的自定义映像创建虚拟机池 
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 02/01/2018
 
     
 ## <a name="prepare-a-custom-image"></a>准备自定义映像
-可以从 VHD、包含托管磁盘的 Azure VM 或 VM 快照准备托管映像。 
+可以从 VHD、包含托管磁盘的 Azure VM 或 VM 快照准备托管映像。 对于 Batch，建议使用托管磁盘或 VM 快照从 VM 创建托管映像。 应存在托管映像和基础资源，以便池可以纵向扩展，并且可在删除池后将其删除。 
 
 准备映像时，请记住以下要点：
 

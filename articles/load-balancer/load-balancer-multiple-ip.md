@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2fbf7bd736a59cbcd6231fa8325a084f54927467
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940181"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261449"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
@@ -173,7 +173,7 @@ ms.locfileid: "33940181"
 
 针对每个网站（contoso.com 和 fabrikam.com），请配置负载均衡规则：
     
-1. <a name="step6-1"></a>在“设置”下，选择“运行状况探测”。 在下一个窗格中的顶部附近，选择“添加”。 
+1. <a name="step6-1"></a>在“设置”下，选择“负载均衡规则”。 在下一个窗格中的顶部附近，选择“添加”。 
 
 2. 对于“名称”，请键入负载均衡规则的名称（例如，为 contoso.com 键入 **HTTPc**，为 fabrikam.com 键入 **HTTPf**）。
 

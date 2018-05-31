@@ -4,7 +4,7 @@ description: 了解如何利用日志记录数据深入了解应用程序的情�
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 130bb7f20c030433741a9b9ecebe740fb44f5f81
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2b8b5095fceaa369ae8b7a426ca04685c2d86109
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057916"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 ## <a name="introduction"></a>介绍
@@ -70,7 +71,7 @@ Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下
 |[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure 资源管理器资源上的控制平面事件|   提供相关信息，方便用户了解对订阅中的资源执行的操作。| Rest API 和 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|关于订阅中 Azure 资源管理器资源操作频繁生成的数据| 提供相关信息，以便深入了解资源本身执行的操作| Azure Monitor，[Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[AAD 报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|日志和报告|关于用户和组管理的用户登录活动和系统活动信息|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[虚拟机和云服务](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows 事件日志和 Linux Syslog|    在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中使用 [WAD](https://docs.microsoft.com/azure/azure-diagnostics)（Windows Azure 诊断存储）的 Windows 和 Linux|
+|[虚拟机和云服务](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows 事件日志和 Linux Syslog| 在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中使用 [WAD](https://docs.microsoft.com/azure/azure-diagnostics)（Windows Azure 诊断存储）的 Windows 和 Linux|
 |[存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。|    REST API 或[客户端库](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG（网络安全组）流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|采用 JSON 格式，并根据规则显示出站和入站流|查看有关通过网络安全组的入口和出口 IP 流量的信息|[网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|日志、异常和自定义诊断|    多个平台上面向 Web 开发人员的应用程序性能管理 (APM) 服务。| REST API，[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
@@ -131,7 +132,7 @@ Azure 诊断日志提供了多个配置选项，即 Azure 门户可使用 PowerS
 |Key Vault|[Azure 密钥保管库日志记录](https://docs.microsoft.com/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
 |Azure 搜索|[允许并使用搜索流量分析](https://docs.microsoft.com/azure/search/search-traffic-analytics)|Microsoft.Search/searchServices|OperationLogs|
 |Data Lake Store|[访问 Azure Data Lake Store 的诊断日志](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|审核|
-|数据湖分析|[访问 Azure Data Lake Analytics 的诊断日志](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|审核|
+|Data Lake Analytics|[访问 Azure Data Lake Analytics 的诊断日志](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|审核|
 |||Microsoft.DataLakeAnalytics/accounts|Requests|
 |||Microsoft.DataLakeStore/accounts|Requests|
 |逻辑应用|[逻辑应用 B2B 自定义跟踪架构](https://docs.microsoft.com/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|WorkflowRuntime|
