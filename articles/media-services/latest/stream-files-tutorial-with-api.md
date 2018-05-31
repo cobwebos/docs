@@ -12,11 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 7e5054d6f59bb3e06e4148bd9cfb3caed9fec970
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: eefe59da69eb60f2ac9e266389fa7f68e6139215
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362181"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>教程：使用 API 上传、编码和流式传输视频
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 05/14/2018
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>创建输入资产并将本地文件上传到该资产 
 
-CreateInputAsset 函数创建新的输入资产并将指定的本地视频文件上传到该资产。 此资产用作编码作业的输入。 在媒体服务 v3 中，作业输入可以是资产，也可以是可通过 HTTPS URL 使用媒体服务帐户访问的内容。 如果想要了解如何从 HTTPS URL 进行编码，请参阅[此](job-input-from-http-how-to.md)文章。  
+CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/rest/api/media/assets)并将指定的本地视频文件上传到该资产。 此资产用作编码作业的输入。 在媒体服务 v3 中，作业输入可以是资产，也可以是可通过 HTTPS URL 使用媒体服务帐户访问的内容。 如果想要了解如何从 HTTPS URL 进行编码，请参阅[此](job-input-from-http-how-to.md)文章。  
 
 在媒体服务 v3 中，使用 Azure 存储 API 上传文件。 以下 .NET 片段显示如何上传。
 
@@ -84,7 +85,7 @@ CreateInputAsset 函数创建新的输入资产并将指定的本地视频文件
 
 ### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>创建输出资产用于存储作业结果 
 
-输出资产会存储作业编码的结果。 项目定义 DownloadResults 函数，该函数将结果从此输出资产中下载到**输出**文件夹中，便于用户查看获取的内容。
+输出[资产](https://docs.microsoft.com/rest/api/media/assets)会存储作业编码的结果。 项目定义 DownloadResults 函数，该函数将结果从此输出资产中下载到**输出**文件夹中，便于用户查看获取的内容。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
@@ -93,17 +94,17 @@ CreateInputAsset 函数创建新的输入资产并将指定的本地视频文件
 
 #### <a name="transform"></a>转换
 
-创建新转换实例时，需要指定希望生成的输出内容。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
+创建新转换实例时，需要指定希望生成的输出内容[](https://docs.microsoft.com/rest/api/media/transforms)。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
 
-可以使用其他内置 EncoderNamedPreset 或使用自定义预设。 
+可以使用内置 EncoderNamedPreset 或使用自定义预设。 
 
-创建转换时，首先应使用 Get 方法检查是否已存在转换，如以下代码所示。  在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
+在创建时[转换](https://docs.microsoft.com/rest/api/media/transforms)，首先应检查是否其中一个已存在使用**获取**方法，如下面的代码中所示。  在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#EnsureTransformExists)]
 
 #### <a name="job"></a>作业
 
-如上所述，转换对象为脚本，作业则是对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。
+如上所述，转换对象为脚本，作业则是对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容[](https://docs.microsoft.com/rest/api/media/transforms)[](https://docs.microsoft.com/rest/api/media/jobs)。 作业指定输入视频位置和输出位置等信息。
 
 在此示例中，已从本地计算机上传输入视频。 如果想要了解如何从 HTTPS URL 进行编码，请参阅[此](job-input-from-http-how-to.md)文章。
 
@@ -111,7 +112,7 @@ CreateInputAsset 函数创建新的输入资产并将指定的本地视频文件
 
 ### <a name="wait-for-the-job-to-complete"></a>等待作业完成
 
-以下代码示例显示如何轮询服务以获取作业状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。
+以下代码示例显示如何轮询服务以获取[作业](https://docs.microsoft.com/rest/api/media/jobs)状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。
 
 事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。  请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
@@ -121,14 +122,14 @@ CreateInputAsset 函数创建新的输入资产并将指定的本地视频文件
 
 ### <a name="get-a-streaminglocator"></a>获取 StreamingLocator
 
-完成编码后，下一步是让客户端能够播放输入资产中的视频。 可通过两个步骤完成此操作：首先，创建 StreamingLocator，然后，生成客户端可以使用的流式 URL。 
+完成编码后，下一步是让客户端能够播放输入资产中的视频。 可通过两个步骤完成此操作：首先，创建 StreamingLocator，然后，生成客户端可以使用的流式 URL[](https://docs.microsoft.com/rest/api/media/streaminglocators)。 
 
 创建 StreamingLocator 的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，StreamingLocator 立即生效，并持续到其被删除为止。 
 
-创建 StreamingLocator 时，需要指定所需的 StreamingPolicyName。 在此示例中，将流式传输采用明码或未加密的内容，以便使用预定义的明确的流式传输策略 PredefinedStreamingPolicy.ClearStreamingOnly。
+创建 StreamingLocator 时，需要指定所需的 StreamingPolicyName[](https://docs.microsoft.com/rest/api/media/streaminglocators)。 在此示例中，将流式传输采用明码或未加密的内容，以便使用预定义的明确的流式传输策略 PredefinedStreamingPolicy.ClearStreamingOnly。
 
 > [!IMPORTANT]
-> 使用自定义的 StreamingPolicy 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个 StreamingLocator 创建新的 StreamingPolicy。
+> 使用自定义的 [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个 StreamingLocator 创建新的 StreamingPolicy。
 
 以下代码假定使用唯一的 locatorName 调用该函数。
 
@@ -138,7 +139,7 @@ CreateInputAsset 函数创建新的输入资产并将指定的本地视频文件
 
 ### <a name="get-streaming-urls"></a>获取流式 URL
 
-现已创建 StreamingLocator，可以获取流式 URL，如 GetStreamingURLs 中所示。 若要生成 URL，需要连接 StreamingEndpoint 主机名称和 StreamingLocator 路径。 在此示例中，使用默认的 StreamingEndpoint。 首次创建媒体服务帐户时，默认 StreamingEndpoint 处于停止状态，因此需要调用 Start。
+现已创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)，可以获取流式 URL，如 GetStreamingURLs 中所示。 若要生成 URL，需要连接 StreamingEndpoint 主机名称和 StreamingLocator 路径[](https://docs.microsoft.com/rest/api/media/streamingendpoints)。 在此示例中，使用默认的 StreamingEndpoint。 首次创建媒体服务帐户时，默认 StreamingEndpoint 处于停止状态，因此需要调用 Start。
 
 > [!NOTE]
 > 在此方法中，需要在创建输出资产的 StreamingLocator 时所使用的 locatorName。

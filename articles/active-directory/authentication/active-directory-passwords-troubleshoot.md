@@ -2,20 +2,26 @@
 title: 自助密码重置疑难解答 - Azure Active Directory
 description: 排查 Azure AD 自助密码重置问题
 services: active-directory
-ms.service: active-directory
-ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
-ms.author: joflore
+keywords: ''
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: d3e43d3484d321c93b4ac3b0e2b947b69af5d2c6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.assetid: ''
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/11/2018
+ms.author: joflore
+ms.custom: it-pro;seohack1
+ms.openlocfilehash: b6f201c7c4aab477b2dbd7462653494f956ecc61
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869948"
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159896"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -277,7 +283,7 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
     * 如果所在页面的底部没有支持代码，请按 F12，搜索 SID 和 CID，然后将这两个结果发送给支持工程师。
 * **日期、时间和时区**：请包含发生错误时的确切日期和时间与时区。
 * **用户 ID**：哪个用户看到了该错误？ 例如 *user@contoso.com*。
-    * 是否是联合用户？
+    * 是否是联合身份验证用户？
     * 是否是直通身份验证用户？
     * 是否是密码哈希同步的用户？
     * 是否是仅限云的用户？

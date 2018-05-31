@@ -10,11 +10,12 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 85a0157751a1c26fb7f37152d7c12f56b1c423d1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32193278"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>什么是托管实例（预览版）？
 
@@ -67,9 +68,9 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 
 ![单一登录](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
+## <a name="vcore-based-purchasing-model-preview"></a>基于 vCore 的购买模型（预览版）
 
-基于 vCore 的购买模型提供了灵活性、控制力和透明性，并且还提供了一种简单明了的方法来将本地工作负荷要求转换到云。 此模型允许根据工作负荷需求来缩放计算、内存和存储资源。 此外，借助[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，vCore 模型能够节省高达 30% 的费用。
+基于 vCore 的购买模型（预览版）提供了灵活性、控制力和透明性，并且还提供了一种简单明了的方法来将本地工作负荷要求转换到云。 此模型允许根据工作负荷需求来缩放计算、内存和存储资源。 此外，借助[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，vCore 模型能够节省高达 30% 的费用。
 
 虚拟核心表示逻辑 CPU，提供不同代的硬件供客户选择。
 - 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器。
@@ -186,7 +187,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 迁移方法利用从 SQL 到 Azure Blob 存储的备份。 可将 Azure 存储 Blob 中存储的备份直接还原到托管实例。 若要将现有 SQL 数据库还原到托管实例，可以：
 
 - 使用[数据迁移服务 (DMS)](/sql/dma/dma-overview)。 有关教程，请参阅[使用 Azure 数据库迁移服务 (DMS) 迁移到托管实例](../dms/tutorial-sql-server-to-managed-instance.md)，以从数据库备份文件还原
-- 使用 [T-SQL RESTORE 命令](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql)。 
+- 使用 [T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)。 
   - 有关介绍如何还原 Wide World Importers - 标准数据库备份文件的教程，请参阅[将备份文件还原到托管实例](sql-database-managed-instance-restore-from-backup-tutorial.md)。 本教程介绍如何将备份文件上传到 Azure 博客存储并使用共享访问签名 (SAS) 密钥进行保护。
   - 有关从 URL 还原的信息，请参阅[从 URL 本机还原](sql-database-managed-instance-migrate.md#native-restore-from-url)。
 - [从 BACPAC 文件导入](sql-database-import.md)
