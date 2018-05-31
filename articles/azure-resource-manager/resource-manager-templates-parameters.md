@@ -1,6 +1,6 @@
 ---
-title: "Azure 资源管理器模板 parameters 节 | Microsoft Docs"
-description: "介绍了使用声明性 JSON 语法的 Azure 资源管理器模板的 parameters 节。"
+title: Azure 资源管理器模板 parameters 节 | Microsoft Docs
+description: 介绍了使用声明性 JSON 语法的 Azure 资源管理器模板的 parameters 节。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,17 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/19/2018
+ms.date: 05/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a519908f43193e41da9237a236d720fe2db58eb
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 193e74d94017cf0ca8ec0600c7e5a3dc4b7a6dea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359197"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Azure 资源管理器模板的 Parameters 节
 在模板的 parameters 节中，可以指定在部署资源时能够输入的值。 提供针对特定环境（例如开发、测试和生产环境）定制的参数值可以自定义部署。 无需在模板中提供参数，但如果没有参数，模板始终部署具有相同名称、位置和属性的相同资源。
@@ -85,13 +86,13 @@ ms.lasthandoff: 01/22/2018
 | 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | parameterName |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
-| type |是 |参数值的类型。 允许的类型和值为 **string**、**secureString**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
+| type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
 | defaultValue |否 |参数的默认值，如果没有为参数提供任何值。 |
 | allowedValues |否 |用来确保提供正确值的参数的允许值数组。 |
 | minValue |否 |int 类型参数的最小值，此值是包容性的。 |
 | maxValue |否 |int 类型参数的最大值，此值是包容性的。 |
-| minLength |否 |string、secureString 和 array 类型参数的最小长度，此值是包容性的。 |
-| maxLength |否 |string、secureString 和 array 类型参数的最大长度，此值是包容性的。 |
+| minLength |否 |string、securestring 和 array 类型参数的最小长度，此值是包容性的。 |
+| maxLength |否 |string、securestring 和 array 类型参数的最大长度，此值是包容性的。 |
 | description |否 |通过门户向用户显示的参数的说明。 |
 
 ## <a name="template-functions-with-parameters"></a>包含参数的模板函数
@@ -225,7 +226,7 @@ ms.lasthandoff: 01/22/2018
    }
    ```
 
-* 对所有密码和机密使用 **SecureString**。 要将敏感数据传入 JSON 对象，请使用 **secureObject** 类型。 部署资源后，无法读取 secureString 或 secureObject 类型的模板参数。 
+* 为所有密码和机密使用 **securestring**。 要将敏感数据传入 JSON 对象，请使用 **secureObject** 类型。 部署资源后，无法读取 securestring 或 secureObject 类型的模板参数。 
    
    ```json
    "parameters": {

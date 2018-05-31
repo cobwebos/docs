@@ -2,34 +2,35 @@
 title: 为 Azure SQL 数据库启动自动优化 | Microsoft Docs
 description: 可轻松对 Azure SQL 数据库启用自动优化。
 services: sql-database
-author: veljko-msft
-manager: drasumic
+author: danimir
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: vvasic
-ms.openlocfilehash: f29a7c883450cbc0f1f2b5a230a6c6e081222906
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e4c3a2c1f21bf14bfc75f20dd18cefca68fd2067
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364465"
 ---
 # <a name="enable-automatic-tuning"></a>启用自动优化
 
 Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识别可为改善工作负荷性能执行的操作。 可查看建议并手动应用，或让 Azure SQL 数据库自动应用正确的操作 - 这称为“自动优化模式”。 可在服务器或数据库级别启用自动优化。
 
 ## <a name="enable-automatic-tuning-on-server"></a>对服务器启用自动优化
-在服务器级别上，可选择从“Azure 默认值”继承自动优化配置，或选择不继承配置。 Azure 默认值启用了 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用了 DROP_INDEX。
-
-## <a name="configure-automatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
-
-请参阅[自动优化电子邮件通知](sql-database-automatic-tuning-email-notifications.md)
+在服务器级别上，可选择从“Azure 默认值”继承自动优化配置，或选择不继承配置。 Azure 默认值为启用 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用 DROP_INDEX。
 
 ### <a name="azure-portal"></a>Azure 门户
-若要对 Azure SQL 数据库服务器启用自动优化，请在 Azure 门户中导航到该服务器，然后选择菜单中的“自动优化”。 选择想要启用的自动优化选项，然后选择“应用”：
+若要对 Azure SQL 数据库服务器启用自动优化，请在 Azure 门户中导航到该服务器，然后选择菜单中的“自动优化”。 选择想要启用的自动优化选项，然后选择“应用”。
 
 ![服务器](./media/sql-database-automatic-tuning-enable/server.png)
+
+> [!NOTE]
+> 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下打开。
+>
 
 服务器上的自动优化选项将应用到服务器上的所有数据库。 默认情况下，所有数据库将从其父服务器继承配置，但可替代此配置并为每个数据库单独指定配置。
 
@@ -51,6 +52,8 @@ Azure SQL 数据库支持为每个数据库单独指定自动优化配置。 在
 ![数据库](./media/sql-database-automatic-tuning-enable/database.png)
 
 选择相应配置后，单击“应用”。
+
+请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下打开。
 
 ### <a name="rest-api"></a>REST API
 [单击此处，详细了解如何通过 REST API 在单个数据库上启用自动优化](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning)
@@ -75,6 +78,10 @@ Azure SQL 数据库支持为每个数据库单独指定自动优化配置。 在
 
 ## <a name="disabled-by-the-system"></a>已被系统禁用
 自动优化监视着自身在数据库上进行的一切操作，在某些情况下，它可以判断自身在数据库中无法正常运行。 在此情况下，系统将禁用自动优化。 造成此情况的主要原因是未启用查询数据存储，或在指定数据库中查询数据存储处于只读状态。
+
+## <a name="configure-automatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
+
+请参阅[自动优化电子邮件通知](sql-database-automatic-tuning-email-notifications.md)
 
 ## <a name="next-steps"></a>后续步骤
 * 请阅读[自动优化文章](sql-database-automatic-tuning.md)，详细了解自动优化及其如何帮助提高性能。

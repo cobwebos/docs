@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 05/16/2018
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1d8c1dee087abdc13ff1b1a0a9595d1e5b29d9f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 62941b3654204533d982b11f56b6ca08d591a72f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360142"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -54,6 +55,22 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
+* 添加了对唯一索引的支持。
+* 在源选项中添加了对限制继续标记大小的支持。
+* 修复了 Json 序列化（时间戳）中的一个 bug。
+* 修复了 Json 序列化（枚举）中的一个 bug。
+* com.fasterxml.jackson.core:jackson-databind 的依赖项升级到了 2.9.5。
+
+### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
+* 改进了直接模式的连接池。
+* 改进了非 orderby 跨分区查询的预提取。
+* 改进了 UUID 生成。
+* 改进了会话一致性逻辑。
+* 添加了对多多边形的支持。
+* 添加了对集合的分区键范围统计信息的支持。
+* 修复了多区域支持方面的一个 bug。
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * 改进了 Json 序列化性能。
@@ -184,6 +201,8 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.16.1](#1.16.1) |2018 年 5 月 16日 |--- |
+| [1.16.0](#1.16.0) |2018 年 3 月 15 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 11 月 14 日 |--- |
 | [1.14.0](#1.14.0) |2017 年 10 月 28日 |--- |
 | [1.13.0](#1.13.0) |2017 年 8 月25 日 |--- |

@@ -11,14 +11,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6c0e9c96840995c7d5a067e60264c66ce987af93
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360081"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -156,6 +157,7 @@ ms.lasthandoff: 05/14/2018
 * 虚拟机（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 虚拟机规模集 - 请参阅[虚拟机限制](#virtual-machines-limitations)
 * 虚拟网络 - 请参阅[虚拟网络限制](#virtual-networks-limitations)
+* Visual Studio Team Services - 具有非 Microsoft 扩展购买的 VSTS 帐户必须先[取消其购买](https://go.microsoft.com/fwlink/?linkid=871160)，然后才能跨订阅移动帐户。
 * VPN 网关
 
 ## <a name="services-that-cannot-be-moved"></a>无法移动的服务
@@ -170,10 +172,10 @@ ms.lasthandoff: 05/14/2018
 * Azure Migrate
 * BizTalk 服务
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
-* Kubernetes 服务
 * 开发测试实验室 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * Dynamics LCS
 * Express Route
+* Kubernetes 服务
 * 负载均衡器 - 请参阅[负载均衡器限制](#lb-limitations)
 * 托管应用程序
 * 托管磁盘 - 请参阅[虚拟机限制](#virtual-machines-limitations)

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: jroth
-ms.openlocfilehash: b91638b6b76675711150323bee4aa9ad9d9a73d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bba9f62a78dea4db1d88f877029796739b023e46
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365196"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的安全注意事项
 
@@ -46,7 +47,7 @@ Azure 遵守多个行业法规和标准，使你能够使用在虚拟机中运�
 
 为了获得最佳安全性，请为方案选择限制性最强的选项。 例如，如果要运行的应用程序需要访问同一个 VM 的 SQL Server，则“本地”是最安全的选项。 如果要运行的 Azure 应用程序需要访问 SQL Server，则“专用”选项只能保护与指定的 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)中的 SQL Server 之间的通信。 如果需要使用“公共(Internet)”选项访问 SQL Server VM，请确保遵照本主题中的其他最佳做法，以减小受攻击面。
 
-在门户中选择的选项使用 VM [网络安全组](../../../virtual-network/virtual-networks-nsg.md) (NSG) 上的入站安全规则来允许或拒绝发往虚拟机的网络流量。 可以修改或创建新的入站 NSG 规则，以允许发往 SQL Server 端口（默认为 1433）的流量。 此外，还可以指定被允许通过此端口通信的特定 IP 地址。
+在门户中选择的选项使用 VM [网络安全组](../../../virtual-network/security-overview.md) (NSG) 上的入站安全规则来允许或拒绝发往虚拟机的网络流量。 可以修改或创建新的入站 NSG 规则，以允许发往 SQL Server 端口（默认为 1433）的流量。 此外，还可以指定被允许通过此端口通信的特定 IP 地址。
 
 ![网络安全组规则](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 409ed4618b8ddf022cfc3457851cf434ba810b94
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e0c823982bb799e324dc6fb0fb811fd9ace37878
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364397"
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM 安全最佳做法
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 04/28/2018
 
 - [虚拟机参与者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)：可管理 VM，但无法管理虚拟机连接的虚拟网络或存储帐户。
 - [经典虚拟机参与者](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor)：可管理使用经典部署模型创建的 VM，但无法管理这些 VM 连接到的虚拟网络或存储帐户。
-- [安全管理员](../role-based-access-control/built-in-roles.md#security-manager)：可管理安全组件、安全策略和 VM。
+- [安全管理员](../role-based-access-control/built-in-roles.md#security-admin)：可管理安全组件和安全策略。
 - [开发测试实验室用户](../role-based-access-control/built-in-roles.md#devtest-labs-user)：可查看所有内容，以及连接、启动、重新启动和关闭 VM。
 
 不要在管理员之间共享帐户和密码，或在多个用户帐户或服务之间重复使用密码，特别是用于社交媒体或其他非管理活动的密码。 最好是使用 [Azure 资源管理器](../azure-resource-manager/resource-group-authoring-templates.md)模板来安全设置 VM。 通过此方法可以增强部署选项并在整个部署中实施安全设置。
@@ -68,7 +69,7 @@ ms.lasthandoff: 04/28/2018
 
 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)还要求负载均衡 VM 属于同一可用性集。 如果必须通过 Internet 访问 VM，则必须配置[面向 Internet 的负载均衡器](../load-balancer/load-balancer-internet-overview.md)。
 
-对 Internet 公开 VM 后，请务必[使用网络安全组 (NSG) 控制网络流量](../virtual-network/virtual-networks-nsg.md)。 由于 NSG 可以应用于子网，因此可以通过按子网来组合资源以及将 NSG 应用到子网来尽量减少 NSG 的数量。 其目的是创建一个网络隔离层（可通过在 Azure 中正确配置[网络安全](../best-practices-network-security.md)功能来适当实现）。
+对 Internet 公开 VM 后，请务必[使用网络安全组 (NSG) 控制网络流量](../virtual-network/security-overview.md)。 由于 NSG 可以应用于子网，因此可以通过按子网来组合资源以及将 NSG 应用到子网来尽量减少 NSG 的数量。 其目的是创建一个网络隔离层（可通过在 Azure 中正确配置[网络安全](../best-practices-network-security.md)功能来适当实现）。
 
 还可在 Azure 安全中心使用适时 (JIT) VM 访问功能来控制谁可远程访问特定 VM 及其访问持续时间。
 
@@ -124,6 +125,6 @@ Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新�
 
 通过分析 [Azure 诊断日志文件](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)，可以监视 VM 资源并识别可能会损害性能与可用性的潜在问题。 Azure 诊断扩展在基于 Windows 的 VM 上提供监视和诊断功能。 在 [Azure 资源管理器模板](../virtual-machines/windows/extensions-diagnostics-template.md)中包含该扩展即可启用这些功能。
 
-还可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) 来洞察资源的运行状况。
+还可使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) 来洞察资源的运行状况。
 
 不监视 VM 性能的组织无法确定性能模式的某些变化是正常还是异常。 如果 VM 消耗的资源超过平常，这种异常可能意味着存在来自外部资源的潜在攻击，或者此 VM 中有不安全的进程正在运行。

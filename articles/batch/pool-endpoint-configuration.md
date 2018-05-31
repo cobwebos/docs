@@ -1,6 +1,6 @@
 ---
-title: "在 Azure Batch 池中配置节点终结点 | Microsoft Docs"
-description: "如何在 Azure Batch 池中的计算节点上配置或禁用对 SSH 或 RDP 端口的访问。"
+title: 在 Azure Batch 池中配置节点终结点 | Microsoft Docs
+description: 如何在 Azure Batch 池中的计算节点上配置或禁用对 SSH 或 RDP 端口的访问。
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -8,11 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: danlep
-ms.openlocfilehash: fdc68744406c3e995a2764f93d4474b807337ff5
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 5898206761e5029f94b6d1f1b48223481ae2ca13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358721"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>配置或禁用对 Azure Batch 池中计算节点的远程访问
 
@@ -23,7 +24,7 @@ ms.lasthandoff: 02/14/2018
 ## <a name="about-the-pool-endpoint-configuration"></a>关于池终结点配置
 终结点配置由一个或多个前端端口的[网络地址转换 (NAT) 池](/rest/api/batchservice/pool/add#inboundnatpool)构成。 （请不要将 NAT 池与计算节点的 Batch 池相混淆。）将每个 NAT 池设置为覆盖此池的计算节点上的默认连接设置。 
 
-每个 NAT 池配置包括一个或多个[网络安全组 (NSG) 规则](/rest/api/batchservice/pool/add#networksecuritygrouprule)。 每个 NSG 规则允许或拒绝特定的网络流量流向终结点。 可以选择允许或拒绝所有流量、由[默认标记](../virtual-network/virtual-networks-nsg.md#default-tags)（例如“Internet”）标识的流量，或者来自特定 IP 地址或子网的流量。
+每个 NAT 池配置包括一个或多个[网络安全组 (NSG) 规则](/rest/api/batchservice/pool/add#networksecuritygrouprule)。 每个 NSG 规则允许或拒绝特定的网络流量流向终结点。 可以选择允许或拒绝所有流量、由[服务标记](../virtual-network/security-overview.md#service-tags)（例如“Internet”）标识的流量，或者来自特定 IP 地址或子网的流量。
 
 ### <a name="considerations"></a>注意事项
 * 池终结点配置是池的[网络配置](/rest/api/batchservice/pool/add#NetworkConfiguration)的一部分。 网络配置可以选择性地包含用于将池加入 [Azure 虚拟网络](batch-virtual-network.md)的设置。 如果在虚拟网络中设置池，可以创建使用虚拟网络中的地址设置的 NSG 规则。
@@ -124,7 +125,7 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure 中 NSG 规则的详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-networks-nsg.md)。
+- 有关 Azure 中 NSG 规则的详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/security-overview.md)。
 
 - 有关 Batch 深入概述的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)。
 

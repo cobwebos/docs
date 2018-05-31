@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Slack 配置自动用户预配 | Microsoft Docs"
-description: "了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Slack 和取消其预配。"
+title: 教程：使用 Azure Active Directory 为 Slack 配置自动用户预配 | Microsoft Docs
+description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Slack 和取消其预配。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: b0bbc310edddcc461633e57340950a0f4050f66a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 897121e0dcaaf417430b892c501a243303ae9b6e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34344341"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 *   Azure Active Directory 租户
 *   启用了[加法计划](https://aadsyncfabric.slack.com/pricing)或更佳计划的 Slack 租户 
@@ -55,7 +56,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 本部分指导完成将 Azure AD 连接到 Slack 的用户帐户预配 API 和配置预配服务，以便在 Slack 中根据 Azure AD 中的用户和组分配创建、更新和禁用分配的用户帐户。
 
-**提示：**还可以选择按照（Azure 门户）[https://portal.azure.com] 中提供的说明为 Slack 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
+**提示：** 还可选择按照 (Azure 门户)[https://portal.azure.com] 中提供的说明为 Slack 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>若要在 Azure AD 中为 Slack 配置自动用户帐户预配，请执行以下操作：
@@ -115,4 +116,4 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)

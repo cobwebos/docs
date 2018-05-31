@@ -1,24 +1,25 @@
 ---
-title: "使用 cloud-init 在 Azure 的 Linux VM 中更新和安装包 | Microsoft Docs"
-description: "在使用 Azure CLI 2.0 创建期间如何使用 cloud-init 在 Linux VM 中更新和安装包"
+title: 使用 cloud-init 在 Azure 的 Linux VM 中更新和安装包 | Microsoft Docs
+description: 在使用 Azure CLI 2.0 创建期间如何使用 cloud-init 在 Linux VM 中更新和安装包
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 04/20/2018
 ms.author: rclaus
-ms.openlocfilehash: e45bec2a71f94c66ce3044fb81bd2d7cefdf53a5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8d5835b5d1b0c2f77bdf5e1a2b808478b8f4de22
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186148"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>使用 cloud-init 在 Azure 的 Linux VM 中更新和安装包
 本文演示如何在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时间更新 Linux 虚拟机 (VM) 或虚拟机规模集 (VMSS) 上的包。 Azure 配置资源后，这些 cloud-init 脚本将在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -58,23 +59,22 @@ az vm create \
 ssh <publicIpAddress>
 ```
 
-运行包管理工具并检查更新。 以下示例在 Ubuntu VM 上使用 `apt-get`。
+运行包管理工具并检查更新。
 
 ```bash
-sudo apt-get upgrade
+sudo yum update
 ```
 
-由于 cloud-init 在启动时已检查和安装更新，因此应该没有要应用的更新，如下例输出所示：
+由于 cloud-init 在启动时已检查和安装更新，因此，应没有要应用的其他更新。  你可以通过运行 `yum history` 来查看更新过程、更改的程序包数量以及 `httpd` 的安装，并查看类似于以下内容的输出。
 
 ```bash
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Calculating upgrade... Done
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Loaded plugins: fastestmirror, langpacks
+ID     | Command line             | Date and time    | Action(s)      | Altered
+-------------------------------------------------------------------------------
+     3 | -t -y install httpd      | 2018-04-20 22:42 | Install        |    5
+     2 | -t -y upgrade            | 2018-04-20 22:38 | I, U           |   65
+     1 |                          | 2017-12-12 20:32 | Install        |  522
 ```
-
-还可以通过运行 `yum history` 查看是否已安装 `httpd`，并查看引用 `httpd` 的输出。 
 
 ## <a name="next-steps"></a>后续步骤
 有关配置更改的其他 cloud-init 示例，请参阅以下文章：
