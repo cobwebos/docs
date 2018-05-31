@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 412098ad6b8a6620b165b6cecaa0d0b3ee05f63e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 674f4ec53300643450d8a576db6fcb50e86dd9d2
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161152"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 
@@ -108,7 +109,7 @@ ms.lasthandoff: 04/19/2018
 
 ![查看 RBAC 角色](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
-有关详细信息，请转到[使用 PowerShell 创建自定义 RBAC 角色](../role-based-access-control/role-assignments-external-users.md#create-a-custom-rbac-role-to-open-support-requests-using-powershell)。
+有关详细信息，请转到[客户角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>通过 PowerShell 创建自定义角色的示例输出
 

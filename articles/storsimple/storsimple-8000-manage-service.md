@@ -1,24 +1,25 @@
 ---
-title: "部署 StorSimple 设备管理器服务 | Microsoft Docs"
-description: "说明如何在 Azure 门户中创建和删除 StorSimple 设备管理器服务，并介绍了如何管理服务注册密钥。"
+title: 部署 StorSimple 设备管理器服务 | Microsoft Docs
+description: 说明如何在 Azure 门户中创建和删除 StorSimple 设备管理器服务，并介绍了如何管理服务注册密钥。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012737"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
 
@@ -29,7 +30,9 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 本教程介绍了创建、删除和迁移此服务以及管理服务注册密钥所需执行的步骤。 本文中包含的信息仅适用于 StorSimple 8000 系列设备。 有关 StorSimple 虚拟阵列的详细信息，请转到[为 StorSimple 虚拟阵列部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
 
 > [!NOTE]
-> 所有经典 StorSimple 设备管理器已自动移到新的 Azure 门户。 如果你有任何问题，请参阅[常见问题解答：移至 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。 移至新的 Azure 门户后，将不再支持 Azure 服务管理 (ASM) PowerShell cmdlet。 更新脚本以管理设备，然后转到[使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备](storsimple-8000-automation-azurerm-scripts.md)了解详细信息。 新的 Azure 门户支持运行 Update 5.0 或更高版本的设备。 如果设备不是最新的，请立即安装 Update 5。 有关详细信息，请转到[安装 Update 5](storsimple-8000-install-update-5.md)。 如果使用的是 StorSimple 云设备 (8010/8020)，则无法更新云设备。 请使用最新版本的软件新建运行 Update 5.0 的云设备，然后故障转移到新建的云设备。 运行 Update 4.0 或更早版本的所有设备将会体验[简化的管理功能](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0)。 
+> -  Azure 门户支持运行 Update 5.0 或更高版本的设备。 如果设备不是最新的，请立即安装 Update 5。 有关详细信息，请转到[安装 Update 5](storsimple-8000-install-update-5.md)。 
+> - 如果使用的是 StorSimple 云设备 (8010/8020)，则无法更新云设备。 请使用最新版本的软件新建运行 Update 5.0 的云设备，然后故障转移到新建的云设备。 
+> - 运行 Update 4.0 或更早版本的所有设备将会体验[简化的管理功能](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0)。 
 
 ## <a name="create-a-service"></a>创建服务
 若要创建 StorSimple 设备管理器服务，需要具有：
@@ -38,11 +41,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 * 一个活动的 Microsoft Azure 存储帐户
 * 用于访问管理的帐单信息
 
-仅允许使用具有企业协议的订阅。 Azure 门户中不支持 Azure 经典门户中过去允许使用的 Microsoft 赞助订阅。 使用不受支持的订阅时将会看到以下消息：
-
-![订阅无效](./media/storsimple-8000-manage-service/subscription-not-valid.jpg)
-
-在创建服务时，还可以选择生成默认存储帐户。
+仅允许使用具有企业协议的订阅。 在创建服务时，还可以选择生成默认存储帐户。
 
 单个服务可以管理多台设备。 但是，一台设备不能跨越多个服务。 大型企业可以具有多个服务实例，以便使用不同的订阅、组织，甚至是部署位置。 
 
@@ -149,8 +148,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
 > [!NOTE]
 > 除非已完成密钥的滚动更新，否则无法在 StorSimple Manager 服务的 Azure 门户中执行任何操作。
-> 
-> 
+
 
 如果使用设备串行控制台连接到 Windows PowerShell 界面，请执行以下步骤。
 

@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9ff0b53f6c6f10a2e97bd3158f874fa5cfe33bb6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5ec1cc42a0c932e47c08493fa632495426abc4c7
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304454"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -38,6 +39,8 @@ ms.lasthandoff: 04/28/2018
 
 有关对标准负载均衡器使用可用性区域的详细信息，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
 
+如果需要，也可以使用 [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) 完成本教程中的步骤。
+
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -46,13 +49,13 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 
-标准负载均衡器仅支持标准公用 IP 地址。 在创建负载均衡器过程中创建新的公共 IP 时，该负载均衡器会自动配置为标准 SKU 版本，并自动实现区域冗余。
+标准负载均衡器仅支持标准公共 IP 地址。 在创建负载均衡器过程中创建新的公共 IP 时，该负载均衡器会自动配置为标准 SKU 版本，并自动实现区域冗余。
 
 1. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
 2. 在“创建负载均衡器”页中，输入负载均衡器的以下值：
     - *myLoadBalancer* - 负载均衡器的名称。
     - **公共** - 负载均衡器的类型。
-     - *myPublicIP* - 创建的新公用 IP 地址。 为此，请依次单击“选择公用 IP 地址”、“新建”。 键入 *myPublicIP* 作为名称，SKU 默认为 Standard，为“可用性区域”选择“区域冗余”。
+     - *myPublicIP* - 创建的新公共 IP 地址。 为此，请依次单击“选择公共 IP 地址”、“新建”。 键入 *myPublicIP* 作为名称，SKU 默认为 Standard，为“可用性区域”选择“区域冗余”。
     - *myResourceGroupLBAZ* - 创建的新资源组的名称。
     - **westeurope** - 位置。
 3. 单击“创建”以创建负载均衡器。
@@ -141,18 +144,21 @@ ms.lasthandoff: 04/28/2018
 1. 在左侧菜单中单击“所有资源”，在资源列表中，单击位于 *myResourceGroupLBAZ* 资源组中的“myVM1”。
 2. 在“概览”页上单击“连接”，以便通过 RDP 连接到 VM 中。
 3. 使用用户名 *azureuser* 登录到 VM。
-4. 在服务器桌面上导航到“Windows 管理工具”>“服务器管理器”。
-5. 在服务器管理器快速启动页中，单击“添加角色和功能”。
-
-   ![添加到后端地址池 - ](./media/load-balancer-standard-public-availability-zones-portal/servermanager.png)    
-
-1. 在“添加角色和功能向导”中使用以下值：
-    - 在“选择安装类型”页中，单击“基于角色或基于功能的安装”。
-    - 在“选择目标服务器”页中，单击“myVM1”。
-    - 在“选择服务器角色”页中，单击“Web 服务器(IIS)”。
-    - 遵照说明完成向导中的剩余步骤。
-2. 关闭与虚拟机 *myVM1* 建立的 RDP 会话。
-3. 重复步骤 1 到 7，在 VM *myVM2* 和 *myVM3* 上安装 IIS。
+4. 在服务器桌面上，导航到“Windows 管理工具”>“Windows PowerShell”。
+5. 在 PowerShell 窗口中，运行以下命令安装 IIS 服务器，删除默认 iisstart.htm 文件，然后添加显示 VM 名称的新 iisstart.htm 文件：
+   ```azurepowershell-interactive
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
+   ```
+6. 关闭与 *myVM1* 之间的 RDP 会话。
+7. 重复步骤 1 到步骤 6，在 *myVM2* 和 *myVM3* 上安装 IIS 和已更新的 iisstart.htm 文件。
 
 ## <a name="create-load-balancer-resources"></a>创建负载均衡器资源
 
@@ -211,11 +217,11 @@ ms.lasthandoff: 04/28/2018
     ![添加负载均衡规则](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 
 ## <a name="test-the-load-balancer"></a>测试负载均衡器
-1. 在“概览”屏幕上找到负载均衡器的公用 IP 地址。 单击“所有资源”，然后单击“myPublicIP”。
+1. 在“概览”屏幕上找到负载均衡器的公共 IP 地址。 单击“所有资源”，然后单击“myPublicIP”。
 
-2. 复制该公用 IP 地址，并将其粘贴到浏览器的地址栏。 IIS Web 服务器的默认页会显示在浏览器上。
+2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 IIS Web 服务器的默认页会显示在浏览器上。
 
-      ![IIS Web 服务器](./media/load-balancer-standard-public-availability-zones-portal/9-load-balancer-test.png)
+      ![IIS Web 服务器](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
 若要查看负载均衡器如何在分布在各个区域中的 VM 之间分配流量，可以强制刷新 Web 浏览器。
 
