@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 04/17/2018
 ms.author: sujayt
-ms.openlocfilehash: 55eed1afa9d9dbf2c16643cf9186a7e6dafa847e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e3acedf4135166f5239b95eb21eb5dfd66d6100f
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211015"
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312621"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
 
@@ -32,7 +32,7 @@ ms.locfileid: "34211015"
 
 ![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
-如果使用 Azure ExpressRoute 或从本地网络到 Azure 的 VPN 连接，则环境如下：
+如果使用 Azure ExpressRoute 或从本地网络到 Azure 的 VPN 连接，则环境如下所示：
 
 ![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
