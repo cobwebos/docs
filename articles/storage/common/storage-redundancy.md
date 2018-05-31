@@ -8,11 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 2b105cd05ace9be6ad24d092f2b12c7ad092188e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6c2c6979d56eb19ff2ba4fb647c7c51e52e51ac6
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076208"
 ---
 # <a name="azure-storage-replication"></a>Azure 存储复制
 
@@ -31,14 +32,14 @@ ms.lasthandoff: 04/28/2018
 
 下表简要概述了每种复制策略为给定类型的事件（或具有类似影响性的事件）提供的持久性和可用性范围。
 
-| 场景 | LRS | ZRS | GRS | RA-GRS |
-|:--- |:--- |:--- |:--- |:--- |
-| 数据中心内的节点不可用 |是 |是 |是 |是
-| 整个数据中心（区域性或非区域性）不可用 |否 |是 |是 |是 |
-| 区域范围的服务中断 |否 |否 |是 |是 |
-| 整个区域不可用时对数据进行读取访问（远程异地复制区域中） |否 |否 |否 |是 |
-| 旨在给定年份为对象提供 ___ 的持续性 |至少为 99.999999999% (11 9's)|至少为 99.9999999999% (12 9's)|至少为 99.99999999999999% (16 9's)|至少为 99.99999999999999% (16 9's)|
-| 提供 ___ 种存储帐户类型 |GPv1、GPv2、Blob |GPv2 |GPv1、GPv2、Blob |GPv1、GPv2、Blob
+| 场景                                                                                                 | LRS                             | ZRS                              | GRS                                  | RA-GRS                               |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| 数据中心内的节点不可用                                                                 | 是                             | 是                              | 是                                  | 是                                  |
+| 整个数据中心（区域性或非区域性）不可用                                           | 否                              | 是                              | 是                                  | 是                                  |
+| 区域范围的服务中断                                                                                     | 否                              | 否                               | 是                                  | 是                                  |
+| 整个区域不可用时对数据进行读取访问（远程异地复制区域中） | 否                              | 否                               | 否                                   | 是                                  |
+| 旨在给定年份为对象提供 ___ 的持续性                                          | 至少为 99.999999999% (11 9's) | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少为 99.99999999999999% (16 9's) |
+| 支持的存储帐户类型                                                                   | GPv1、GPv2、Blob                | GPv2                             | GPv1、GPv2、Blob                     | GPv1、GPv2、Blob                     |
 
 有关不同冗余选项的定价信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
@@ -49,7 +50,7 @@ ms.lasthandoff: 04/28/2018
 我们允许使用 [Azure 门户](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 或众多的 [Azure 客户端库](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools)之一来更改存储帐户的复制策略。 更改存储帐户的复制类型不会导致停机。
 
    > [!NOTE]
-   > 目前，无法使用门户或 API 将帐户转换为 ZRS。 但是，我们已计划在推出 ZRS 正式版后，支持从 LRS、GRS 和 RA-GRS 迁移到 ZRS。 有关详细信息，请参阅[区域冗余存储 (ZRS)](storage-redundancy-zrs.md)。
+   > 目前，无法使用门户或 API 将帐户转换为 ZRS。 如果想要将帐户的复制转换为 ZRS，请参阅[区域冗余存储 (ZRS)](storage-redundancy-zrs.md) 以了解详细信息。
     
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>更改帐户的复制策略是否产生任何费用？
 这取决于转换路径。 从最便宜到最昂贵的冗余产品/服务依次为 LRS、ZRS、GRS 和 RA-GRS。 例如，从 LRS 转移到其他任何存储会产生额外的费用，因为这是转移到更高级的冗余级别。 转移到 GRS 或 RA-GRS 会产生出口带宽费用，因为（主要区域中的）数据将复制到远程次要区域。 这是在初始设置期间收取的一次性费用。 复制数据后，无需进一步支付转换费用。 只有在复制任何新数据，或者复制现有数据的更新时才要付费。 有关带宽费用的详细信息，请参阅 [Azure 存储定价页面](https://azure.microsoft.com/pricing/details/storage/blobs/)。

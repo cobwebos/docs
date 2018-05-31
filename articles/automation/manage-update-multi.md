@@ -3,16 +3,18 @@ title: 管理多个 Azure 虚拟机的更新
 description: 本主题介绍如何管理 Azure 虚拟机的更新。
 services: automation
 ms.service: automation
+ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 04/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c227af1afa95243390152918a6b81015dbaceaeb
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ae5d2e38f11abfabda067e9affbf81159002cb99
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34054796"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -27,9 +29,9 @@ ms.lasthandoff: 03/30/2018
 
 若要使用更新管理，需要具备以下条件：
 
-* Azure 自动化运行方式帐户。 有关如何创建帐户的说明，请参阅 [Azure 自动化入门](automation-offering-get-started.md)。
+- Azure 自动化运行方式帐户。 有关如何创建帐户的说明，请参阅 [Azure 自动化入门](automation-offering-get-started.md)。
 
-* 一个安装了某个受支持的操作系统的虚拟机或计算机。
+- 一个安装了某个受支持的操作系统的虚拟机或计算机。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -37,11 +39,11 @@ ms.lasthandoff: 03/30/2018
 
 ### <a name="windows"></a>Windows
 
-* Windows Server 2008 及更高版本，以及针对 Windows Server 2008 R2 SP1 及更高版本的更新部署。 不支持 Nano Server。
+- Windows Server 2008 及更高版本，以及针对 Windows Server 2008 R2 SP1 及更高版本的更新部署。 不支持 Nano Server。
 
   若要提供相关支持，以便将更新部署到 Windows Server 2008 R2 SP1，需要 .NET Framework 4.5 和 Windows Management Framework 5.0 或更高版本。
 
-* 不支持 Windows 客户端操作系统。
+- 不支持 Windows 客户端操作系统。
 
 Windows 代理也必须配置为与 Windows Server Update Services (WSUS) 服务器通信或有权访问 Microsoft 更新。
 
@@ -51,12 +53,15 @@ Windows 代理也必须配置为与 Windows Server Update Services (WSUS) 服务
 
 ### <a name="linux"></a>Linux
 
-* CentOS 6 (x86/x64) 和 7 (x64)  
-* Red Hat Enterprise 6 (x86/x64) 和 7 (x64)  
-* SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)  
-* Ubuntu 12.04 LTS 和更高版本 (x86/x64)   
+- CentOS 6 (x86/x64) 和 7 (x64)
 
-> [!NOTE]  
+- Red Hat Enterprise 6 (x86/x64) 和 7 (x64)
+
+- SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)
+
+- Ubuntu 12.04 LTS 和更高版本 (x86/x64)
+
+> [!NOTE]
 > 若要防止在 Ubuntu 上的维护时段外应用更新，请重新配置无人参与升级包，禁用自动更新。 有关详细信息，请参阅[“Ubuntu 服务器指南”中的“自动更新”主题](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)。
 
 Linux 代理必须具有访问更新存储库的权限。
@@ -65,16 +70,15 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>启用 Azure 虚拟机的更新管理
 
-1. 在 Azure 门户中，打开自动化帐户。
-2. 在左窗格中，选择“更新管理”。
-3. 在窗口顶部，选择“添加 Azure VM”。
-   ![“添加 Azure VM”选项卡](./media/manage-update-multi/update-onboard-vm.png)
-4. 选择要上架的虚拟机。 此时会显示“启用更新管理”对话框。
-5. 选择“启用”。
+在 Azure 门户中，打开自动化帐户，然后选择“更新管理”。
 
-   ![“启用更新管理”对话框](./media/manage-update-multi/update-enable.png)
+在窗口顶部，选择“添加 Azure VM”。
 
-为虚拟机启用了更新管理。
+![“添加 Azure VM”选项卡](./media/manage-update-multi/update-onboard-vm.png)
+
+选择要上架的虚拟机。 此时会显示“启用更新管理”对话框。 选择“启用”以载入虚拟机。 载入完成后，为虚拟机启用了更新管理。
+
+![“启用更新管理”对话框](./media/manage-update-multi/update-enable.png)
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>启用非 Azure 虚拟机和计算机的更新管理
 
@@ -83,14 +87,22 @@ Linux 代理必须具有访问更新存储库的权限。
 如需如何为非 Azure Linux 虚拟机和计算机启用更新管理的说明，请参阅[将 Linux 计算机连接到 Log Analytics](../log-analytics/log-analytics-agent-linux.md)。
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>查看附加到自动化帐户的计算机
-启用计算机的更新管理以后，单击“计算机”即可查看其信息。 提供“名称”、“符合性”、“环境”、“OS 类型”、“关键更新和安全更新”、“其他更新”等计算机信息。 
+
+启用计算机的更新管理以后，单击“计算机”即可查看其信息。 提供“名称”、“符合性”、“环境”、“OS 类型”、“关键更新和安全更新”、“其他更新”和“更新代理准备”等计算机信息。
 
   ![查看“计算机”选项卡](./media/manage-update-multi/update-computers-tab.png)
 
 最近启用了更新管理的计算机可能尚未进行评估。 这些计算机的符合性状态将会是“未评估”。  下面是一个列表，其中包含符合性状态的值：
-* 符合 - 计算机不缺少关键更新或安全更新。
-* 不符合 - 计算机缺少至少一项关键更新或安全更新。
-* 未评估 - 未在预期的时间范围内收到计算机的更新评估数据。  对于 Linux 计算机，这是指过去 3 小时；对于 Windows 计算机，这是指过去 12 小时。  
+
+- 符合 - 计算机不缺少关键更新或安全更新。
+
+- 不符合 - 计算机缺少至少一项关键更新或安全更新。
+
+- 未评估 - 未在预期的时间范围内收到计算机的更新评估数据。  对于 Linux 计算机，这是指过去 3 小时；对于 Windows 计算机，这是指过去 12 小时。
+
+要查看代理的状态，请单击“更新代理准备”列中的链接。 这会打开“混合辅助角色”页面，其中显示了混合辅助角色的状态。 下图显示了长时间未连接到更新管理的代理的示例。
+
+![查看“计算机”选项卡](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>查看更新评估
 
@@ -122,29 +134,30 @@ Linux 代理必须具有访问更新存储库的权限。
 若要安装更新，请计划一个遵循你的发布时间和服务窗口的部署。
 可选择在部署中包括哪种更新类型。 例如，可包括关键或安全更新，排除更新汇总。
 
-选择“更新管理”对话框顶部的“计划更新部署”，计划用于一个或多个虚拟机的新的更新部署。 在“新建更新部署”窗格中，指定以下信息：
+选择“更新管理”对话框顶部的“计划更新部署”，计划用于一个或多个虚拟机的新的更新部署。
+在“新建更新部署”窗格中，指定以下信息：
 
-* **名称**：提供用于标识更新部署的唯一名称。
-* **OS 类型**：选择“Windows”或“Linux”。
-* **要更新的计算机**：选择要更新的虚拟机。
+- **名称**：提供用于标识更新部署的唯一名称。
+- **OS 类型**：选择“Windows”或“Linux”。
+- **要更新的计算机**：选择要更新的虚拟机。 计算机的就绪情况显示在**更新代理准备**列中。 这样可以在计划更新部署之前查看计算机的运行状况状态。
 
   ![“新建更新部署”窗格](./media/manage-update-multi/update-select-computers.png)
 
-* **更新分类**：选择更新部署包含的软件的类型。 分类类型：
-  * 关键更新
-  * 安全更新
-  * 更新汇总
-  * 功能包
-  * 服务包
-  * 定义更新
-  * 工具
-  * 更新
-* **计划设置**：可以接受默认的日期和时间，即当前时间后 30 分钟。 也可以指定其他时间。
+- **更新分类**：选择更新部署包含的软件的类型。 有关分类类型的说明，请参阅[更新分类](automation-update-management.md#update-classifications)。 分类类型：
+  - 关键更新
+  - 安全更新
+  - 更新汇总
+  - 功能包
+  - 服务包
+  - 定义更新
+  - 工具
+  - 更新
+- **计划设置**：可以接受默认的日期和时间，即当前时间后 30 分钟。 也可以指定其他时间。
    还可以指定是一次性部署还是按计划定期部署。 若要设置定期计划，请选择“重复周期”下的“重复执行”选项。
 
    ![“计划设置”对话框](./media/manage-update-multi/update-set-schedule.png)
 
-* **维护时段(分钟)**：指定要进行更新部署的时间段。 此设置有助于确保在定义的服务时段内执行更改。
+- **维护时段(分钟)**：指定要进行更新部署的时间段。 此设置有助于确保在定义的服务时段内执行更改。
 
 配置完计划后，请选择“创建”按钮，返回到状态仪表板。 “已计划”表显示刚创建的部署计划。
 
@@ -164,9 +177,9 @@ Linux 代理必须具有访问更新存储库的权限。
 “更新结果”窗格显示虚拟机上更新和部署结果的总数。
 右侧的表格详细列出了每个更新的细目以及安装结果。 安装结果可能是以下值之一：
 
-* 未尝试：由于定义的维护时段时长不足，因而未安装更新。
-* 成功：更新成功。
-* 失败：更新失败。
+- 未尝试：由于定义的维护时段时长不足，因而未安装更新。
+- 成功：更新成功。
+- 失败：更新失败。
 
 若要查看部署创建的所有日志条目，请选择“所有日志”。
 
@@ -176,5 +189,4 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解更新管理（包括日志、输出和错误），请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
-
+- 若要详细了解更新管理（包括日志、输出和错误），请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
