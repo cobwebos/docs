@@ -1,24 +1,25 @@
 ---
-title: "Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Microsoft 文档"
-description: "Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南"
+title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Microsoft 文档
+description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
-ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 4e1fa9db3b4801103069163c55a9b342a27d00ac
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.date: 04/30/2018
+ms.author: clemensv
+ms.openlocfilehash: e124ea3f932a81634191785e7ee69c2492cb32fa
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312536"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -143,49 +144,49 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 #### <a name="create-message-receiver"></a>创建消息接收者
 
-| 客户端 | 服务总线 |
+| Client | 服务总线 |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link id}<br/>) |客户端作为接收者附加到实体 |
 | 附加到链接末尾的服务总线回复 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link id}<br/>) |
 
 #### <a name="create-message-sender"></a>创建消息发送者
 
-| 客户端 | 服务总线 |
+| Client | 服务总线 |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |无操作 |
 | 无操作 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link id},<br/>target={entity name}<br/>) |
 
 #### <a name="create-message-sender-error"></a>创建消息发送者（错误）
 
-| 客户端 | 服务总线 |
+| Client | 服务总线 |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |无操作 |
 | 无操作 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>) |
 
 #### <a name="close-message-receiversender"></a>关闭消息接收者/发送者
 
-| 客户端 | 服务总线 |
+| Client | 服务总线 |
 | --- | --- |
 | --> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |无操作 |
 | 无操作 |<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |
 
 #### <a name="send-success"></a>发送（成功）
 
-| 客户端 | 服务总线 |
+| Client | 服务总线 |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |无操作 |
 | 无操作 |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
 #### <a name="send-error"></a>发送（错误）
 
-| 客户端 | 服务总线 |
+| Client | 服务总线 |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |无操作 |
 | 无操作 |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>) |
 
 #### <a name="receive"></a>接收
 
-| 客户端 | 服务总线 |
+| Client | 服务总线 |
 | --- | --- |
 | --> flow(<br/>link-credit=1<br/>) |无操作 |
 | 无操作 |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -193,7 +194,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 #### <a name="multi-message-receive"></a>多消息接收
 
-| 客户端 | 服务总线 |
+| Client | 服务总线 |
 | --- | --- |
 | --> flow(<br/>link-credit=3<br/>) |无操作 |
 | 无操作 |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -205,6 +206,8 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 以下部分说明服务总线使用标准 AMQP 消息部分中的哪些属性，以及它们如何映射到服务总线 API 集。
 
+任何应用程序需要定义的属性都应映射至 AMQP 的 `application-properties` 映射。
+
 #### <a name="header"></a>标头的值开始缓存响应
 
 | 字段名称 | 使用情况 | API 名称 |
@@ -215,7 +218,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
-#### <a name="properties"></a>properties
+#### <a name="properties"></a>属性
 
 | 字段名称 | 使用情况 | API 名称 |
 | --- | --- | --- |
@@ -233,6 +236,80 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 | group-sequence |用于标识消息在会话内的相对序列号的计数器。 服务总线会将其忽略。 |无法通过服务总线 API 访问。 |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
+#### <a name="message-annotations"></a>消息注释
+
+存在几个不属于 AMQP 消息属性的其他服务总线消息属性，且它们在消息上作为 `MessageAnnotations` 传递。
+
+| 注释映射键 | 使用情况 | API 名称 |
+| --- | --- | --- |
+| x-opt-scheduled-enqueue-time | 声明消息应于何时出现在实体上 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
+| x-opt-partition-key | 应用程序定义的键，指示消息应进入哪个分区。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x-opt-via-partition-key | 应用程序定义的分区键值，指示某个事务在何时用于通过传输队列发送消息。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-enqueued-time | 服务定义的 UTC 时间，代表将消息加入队列的实际时间。 输入时忽略。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt-sequence-number | 服务定义的唯一编号，用于分配给消息。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
+| x-opt-offset | 服务定义的消息的排队序列号。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-opt-locked-until | 服务定义。 日期和时间，在此之前消息将在队列/订阅中被锁定。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
+| x-opt-deadletter-source | 服务定义。 原始消息的来源，前提是从死信队列中接收消息。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+
+### <a name="transaction-capability"></a>事务功能
+
+一个事务将两个或更多操作组合成执行作用域。 就本质而言，此类事务必须确保所有操作属于给定的操作组，无论联合成功还是失败。
+操作按标识符 `txn-id` 分组。
+
+对于事务性交互，客户端充当 `transaction controller`，控制着应该一起被分组的操作。 服务总线服务充当 `transactional resource` 并根据 `transaction controller` 的请求执行工作。
+
+客户端和服务通过该客户端建立的 `control link` 进行通信。 `declare` 和 `discharge` 消息由控制器通过控制链接发送，从而各自分配并完成事务（它们不代表事务性工作的划分）。 实际的发送/接收工作并不是在此链接上执行的。 所请求的每个事务性操作通过所需 `txn-id` 显式标识，因此可能出现于连接上的任何链接。 如果关闭了控制链接，但是还存在它所创建的未释放事务，则所有此类事务都将立即回滚，且针对它们执行进一步的事务性工作的尝试都将导致失败。 不能预先确定控制链接上的消息。
+
+每个连接都需要启动自己的控制链接，才能开始并结束事务。 该服务定义一个充当 `coordinator` 的特殊目标。 客户端/控制器建立了指向该目标的控制链接。 控制链接不受单个实体限制，即同样的控制链接可用于启动并释放多个实体的事务。
+
+#### <a name="starting-a-transaction"></a>启动事务
+
+开始事务性工作。 控制器必须从协调器获取一个 `txn-id`。 通过发送 `declare` 类型消息完成此操作。 如果声明成功，协调器会响应一个 `declared` 的处置结果，其中包含分配的 `txn-id`。
+
+| 客户端（控制器） | | 服务总线（协调器） |
+| --- | --- | --- |
+| attach(<br/>name={link name},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
+|  | <------ | attach(<br/>name={link name},<br/>... ,<br/>target=Coordinator()<br/>) |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()**)}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={transaction id}<br/>）|
+
+#### <a name="discharging-a-transaction"></a>释放事务
+
+控制器会通过向协调器发送 `discharge` 消息来推断事务性工作。 控制器通过在释放正文上设置 `fail` 标志，指示它希望提交或回滚该事务性工作。 如果协调器无法完成释放操作，消息将被拒绝且结果中带有 `transaction-error`。
+
+> 请注意：fail=true 表示事务回滚，fail=false 表示提交。
+
+| 客户端（控制器） | | 服务总线（协调器） |
+| --- | --- | --- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>）|
+| | 。 。 。 <br/>其他链接上的<br/>事务性工作<br/> 。 。 。 |
+| transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
+| | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()**)|
+
+#### <a name="sending-a-message-in-a-transaction"></a>在事务中发送消息
+
+所有事务性工作都是通过包含 txn-id 的事务性传递状态 `transactional-state` 完成的。在发送消息时，transactional-state 位于消息的传输框架中。 
+
+| 客户端（控制器） | | 服务总线（协调器） |
+| --- | --- | --- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>）|
+| transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{ payload }| ------> |  |
+| | <------ | disposition( <br/> first=1, last=1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))|
+
+#### <a name="disposing-a-message-in-a-transaction"></a>在事务中处置消息
+
+消息处置包括类似 `Complete` / `Abandon` / `DeadLetter` / `Defer` 的操作。 若要在事务中执行这些操作，请通过 disposition 传递 `transactional-state`。
+
+| 客户端（控制器） | | 服务总线（协调器） |
+| --- | --- | --- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>）|
+| | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ payload }|  
+| disposition( <br/> first=11, last=11, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))| ------> |
+
+
 ## <a name="advanced-service-bus-capabilities"></a>高级服务总线功能
 
 本部分介绍 Azure 服务总线的高级功能，这些功能基于 AMQP 的 OASIS 技术委员会目前正在开发的 AMQP 草稿扩展。 服务总线实现这些草稿的最新版本，并且采用这些草稿达到标准状态时所引进的更改。
@@ -248,7 +325,7 @@ AMQP 管理规范是本文中介绍的第一个草稿扩展。 此规范定义�
 
 上述所有手势都需要客户端与消息传送基础结构之间的请求/响应交互，因此此规范定义如何制作 AMQP 上交互模式的模型：客户端连接到消息传送基础结构、启动会话，并创建一组链接。 在某一个链接上，客户端扮演发送者，而在其他链接上扮演接收者，因此创建一组可作为双向通道的链接。
 
-| 逻辑运算 | 客户端 | 服务总线 |
+| 逻辑运算 | Client | 服务总线 |
 | --- | --- | --- |
 | 创建请求响应路径 |--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>) |无操作 |
 | 创建请求响应路径 |无操作 |\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>) |
@@ -282,7 +359,7 @@ CBS 定义由消息传送基础结构所提供的虚拟管理节点（名为 $cb
 
 请求消息具有以下应用程序属性：
 
-| 键 | 可选 | 值类型 | 值内容 |
+| 密钥 | 可选 | 值类型 | 值内容 |
 | --- | --- | --- | --- |
 | operation |否 |字符串 |**put-token** |
 | type |否 |字符串 |正在放置的令牌类型。 |
@@ -301,7 +378,7 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 
 回复消息具有以下 application-properties 值
 
-| 键 | 可选 | 值类型 | 值内容 |
+| 密钥 | 可选 | 值类型 | 值内容 |
 | --- | --- | --- | --- |
 | status-code |否 |int |HTTP 响应代码 **[RFC2616]**。 |
 | status-description |是 |字符串 |状态的说明。 |
@@ -315,6 +392,19 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 创建连接和会话后，将链接附加到 $cbs 节点和发送 put-token 请求是唯一允许的操作。 必须在创建连接后的 20 秒内使用对某个实体节点的 put-token 请求成功创建有效的令牌，否则服务总线将单方面断开连接。
 
 客户端后续负责跟踪令牌过期时间。 令牌过期时，服务总线将立即删除相应实体连接上的所有链接。 若要避免这种情况，客户端随时可以通过具有相同 put-token 手势的虚拟 $cbs 管理节点，使用新的令牌来替换节点的令牌，且不干扰在不同链接上流动的有效负载流量。
+
+### <a name="send-via-functionality"></a>发送方式功能
+
+[发送方式/传输发送者](service-bus-transactions.md#transfers-and-send-via)功能让服务总线能通过另一个实体将给定消息转发到目标实体。 这主要用于在单个事务中执行跨实体的操作。
+
+借助此项功能，可以创建发送程序并建立指向 `via-entity` 的链接。 在建立链接时，会传递其他信息以建立此链接上的消息/传输的正确目标。 附加成功后，此链接上发送的所有消息都将自动通过 via-entity 转发到 destination-entity。 
+
+> 请注意：在建立此链接前，via-entity 和 destination-entity 都需要通过身份验证。
+
+| Client | | 服务总线 |
+| --- | --- | --- |
+| attach(<br/>name={link name},<br/>role=sender,<br/>source={client link id},<br/>target=**{via-entity}**,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
+| | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link id},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>后续步骤
 

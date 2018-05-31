@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 48253b68a329d17f213369e8e4ee2e06bdf17992
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 84988c815759a726abe93d931f73c284d771a5ba
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365818"
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33786706"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
@@ -186,19 +186,20 @@ OCR 技能会从图像文件中提取文本。 支持的文件格式包括：
 以上技能集示例假设存在标准化的图像字段。 要生成此字段，请将索引器定义中的 imageAction 配置设置为 generateNormalizedImages，如下所示：
 
 ```json
-{  
-   //...rest of your indexer definition goes here ... 
-  "parameters":{  
-      "configuration":{  
-         "dataToExtract":"contentAndMetadata",
-         "imageAction":"generateNormalizedImages"
-      }
-   }
+{
+  //...rest of your indexer definition goes here ...
+  "parameters":
+  {
+    "configuration": 
+    {
+        "dataToExtract": "contentAndMetadata",
+        "imageAction": "generateNormalizedImages"
+        }
+  }
 }
 ```
 
 ## <a name="see-also"></a>另请参阅
-+ [预定义技能](cognitive-search-predefined-skills.md)
++ [预定义的技能](cognitive-search-predefined-skills.md)
 + [TextMerger 技能](cognitive-search-skill-textmerger.md)
-+ [如何定义技术集](cognitive-search-defining-skillset.md)
-+ [创建索引器 (REST)](ref-create-indexer.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)

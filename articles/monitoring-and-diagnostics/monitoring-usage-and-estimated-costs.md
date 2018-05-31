@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: f25c39b602449be3ab9d1cd7e67d6fcfc78afb17
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 08991565d56ffbf7d798944f108a1b86e4463c58
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32176280"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>监视使用情况和预估成本
 
@@ -39,12 +40,11 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="new-pricing-model"></a>新定价模型
 
-2018 年 4 月发布了新的监视定价模型。 它采用适合云的基于消耗的定价。 客户只需为使用的资源付费，且无需基于节点做出承诺。 我们已提供适用于[警报、指标和通知](https://azure.microsoft.com/pricing/details/monitor/)、[Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) 及 [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) 的新定价模型的详细信息。
+2018 年 4 月[发布了新的监控定价模型](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。  此模型采用适合云的基于消耗的定价。 客户只需为使用的资源付费，且无需基于节点做出承诺。 我们已提供适用于[警报、指标和通知](https://azure.microsoft.com/pricing/details/monitor/)、[Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) 及 [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) 的新定价模型的详细信息。 
 
-对于在 2018 年 4 月 2 日之后开始使用 Log Analytics 或 Application Insights 的客户，新定价模型是唯一选项。 对于已使用这些服务的客户，可以选择性地转移到新定价模型。
+对于在 2018 年 4 月 2 日之后加入 Log Analytics 或 Application Insights 的客户，新定价模型是唯一选项。 对于已使用这些服务的客户，可以选择性地转移到新定价模型。
 
 ## <a name="assessing-the-impact-of-the-new-pricing-model"></a>评估新定价模型的影响
-
 新定价模型对每个客户造成的影响因客户的监视使用模式而异。 在 2018 年 4 月 2 日之前使用过 Log Analytics 或 Application Insights 的客户可以通过 Azure Monitor 中的“使用情况和预估成本”页来评估改用新定价模型后的成本变化。 可以通过该页将订阅移到新模型中。 对于大多数客户来说，新定价模型是有利的。 对于数据使用量大的客户或所在区域成本较高的客户来说，情况可能不是这样。
 
 若要查看在“使用情况和预估成本”页上选择的订阅的预估成本，请选择页面顶部附近的蓝色横幅。 最好是一次针对一个订阅执行此操作，因为只能这样采用新定价模型。
@@ -71,11 +71,30 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>新定价模型和 Operations Management Suite 订阅权利
 
-购买了 Microsoft Operations Management Suite E1 和 E2 的客户有资格享受 [Log Analytics](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite) 和 [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-pricing#the-price-plans) 的每节点数据引入权利。 若要在给定的订阅中享受 Log Analytics 工作区或 Application Insights 资源的这些权利，该订阅的定价模型必须保持为 2018 年 4 月之前的定价模型， 该定价模型中提供了 Log Analytics“每节点 (OMS)”定价层和 Application Insights“企业”定价计划。 根据组织所购套件的节点数，将某些订阅转移到新定价模型可能还是有利的， 但这需要仔细考虑。
+购买了 Microsoft Operations Management Suite E1 和 E2 的客户有资格享受 [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) 和 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans) 的每节点数据引入权利。 若要在给定的订阅中享受 Log Analytics 工作区或 Application Insights 资源的这些权利： 
+
+- 该订阅的定价模型必须保持为 2018 年 4 月之前的定价模型。
+- Log Analytics 工作区应使用“按节点 (OMS)”定价层。
+- Application Insights 资源应使用“企业”定价计划。
+
+根据组织所购买套件的节点数，将某些订阅转移到新定价模型可能是有利的，但这需要仔细考虑。 通常情况下，建议保持为上面所述的 2018 年 4 月之前的定价模型即可。
+
+> [!WARNING]
+> 如果组织已购买 Microsoft Operations Management Suite E1 和 E2，通常最好将订阅保持为 2018 年 4 月之前的定价模型。 
+>
 
 ## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>转移到新定价模型时的变化
 
-将订阅移到新定价模型会将每个 Log Analytics 的定价层更改为新的“按 GB”层（在 Azure 资源管理器中称作“pergb2018”）。 这种转移还会将企业计划中的所有 Application Insights 资源更改到“基本”计划。 成本估算显示了这些变化造成的影响。
+新定价模型将 Log Analytics 和 Application Insights 定价选项简化为仅包含一个单层（或计划）。 将订阅转移到新定价模型会：
+
+- 将每个 Log Analytics 的定价层更改为新的“按 GB”层（在 Azure 资源管理器中称为“按 GB 2018”）
+- 将“企业”计划中的任何 Application Insights 资源更改为“基本”计划。
+
+成本估算显示了这些变化造成的影响。
+
+> [!WARNING]
+> 要注意的重要一点是，如果使用 Azure 资源管理器或 PowerShell 在订阅中部署 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) 或 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell)，则你已转移到新的定价模型。 如果为 Log Analytics 指定“按 GB 2018”以外的定价层/计划，或为 Application Insights 指定“基本”以外的定价层/计划，此操作也不会由于指定了无效的定价层/计划就失败，相反，此操作会成功，但它将仅使用有效的定价层/计划。 
+>
 
 ## <a name="moving-to-the-new-pricing-model"></a>转移到新定价模型
 

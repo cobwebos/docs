@@ -1,8 +1,8 @@
 ---
-title: "添加/删除 Azure 文件同步（预览版）服务器终结点 | Microsoft Docs"
-description: "了解规划 Azure 文件部署时应考虑的问题。"
+title: 添加/删除 Azure 文件同步（预览版）服务器终结点 | Microsoft Docs
+description: 了解规划 Azure 文件部署时应考虑的问题。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 26e4af814bad988da02d4e0cf36f17e1beec872e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187736"
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>添加/删除 Azure 文件同步（预览版）服务器终结点
 借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -27,7 +28,7 @@ ms.lasthandoff: 01/11/2018
 
 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步（预览版）](storage-sync-files-deployment-guide.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 若要创建服务器终结点，必须首先确保满足以下条件： 
 - 服务器安装了 Azure 文件同步代理并已注册。 有关安装 Azure 文件同步代理的说明可以在[向 Azure 文件同步（预览版）注册/注销服务器](storage-sync-files-server-registration.md)一文中找到。 
 - 确保已部署存储同步服务。 有关如何部署存储同步服务的详细信息，请参阅[如何部署 Azure 文件同步（预览版）](storage-sync-files-deployment-guide.md)。 
@@ -49,7 +50,7 @@ ms.lasthandoff: 01/11/2018
 选择“创建”以添加服务器终结点。 同步组命名空间中的文件现在会保持同步。 
 
 ## <a name="remove-a-server-endpoint"></a>删除服务器终结点
-为服务器终结点启用时，云分层会将文件分层到 Azure 文件共享。 这使本地文件共享可以充当缓存（而不是数据集的完整副本），以便高效使用文件服务器上的空间。 但是，如果在分层文件仍处于服务器本地的情况下删除服务器终结点，则这些文件会不可访问。 因此，如果需要继续进行文件访问，则必须从 Azure 文件召回所有分层文件，然后再继续进行注销。 
+为服务器终结点启用时，云分层会将文件分层到 Azure 文件共享。 这使本地文件共享可以充当缓存（而不是数据集的完整副本），以便高效使用文件服务器上的空间。 但是，如果在分层文件仍处于服务器本地的情况下删除服务器终结点，则这些文件将不可访问。 因此，如果本地文件共享需要继续进行文件访问，则必须先从 Azure 文件召回所有分层文件，然后再继续删除服务器终结点。 
 
 这可以使用 PowerShell cmdlet 完成，如下所示：
 

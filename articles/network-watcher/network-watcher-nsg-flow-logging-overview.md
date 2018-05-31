@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 网络观察程序针对网络安全组进行流日志记录简介 | Microsoft 文档"
-description: "此页说明如何使用 Azure 网络观察程序的 NSG 流日志功能"
+title: 使用 Azure 网络观察程序针对网络安全组进行流日志记录简介 | Microsoft 文档
+description: 本文说明如何使用 Azure 网络观察程序的 NSG 流日志功能
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,33 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4eaffba08ccf601e440709d804891668340a376d
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: c6a24fbca37d6aa1d775a70c708a139dfb70b813
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182419"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
-网络安全组流日志是网络观察程序的一项功能，用于查看通过网络安全组的入口和出口 IP 流量的信息。 这些流日志以 json 格式编写，并根据规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
+网络安全组 (NSG) 流日志是网络观察程序的一项功能，可用于查看有关通过 NSG 的入口和出口 IP 流量的信息。 流日志以 JSON 格式编写，并基于每个规则显示出站和入站流、流所适用的网络接口 (NIC)、有关流的 5 元组信息（源/目标 IP 地址、源/目标端口和协议），以及是允许还是拒绝流量。
 
-![流日志概览][1]
+![流日志概述](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
-流日志针对的是网络安全组，但其显示方式不同于其他日志。 流日志仅存储在一个存储帐户中，其采用的日志记录路径如以下示例所示：
+流日志针对的是 NSG，但其显示方式不同于其他日志。 流日志仅存储在一个存储帐户中，其采用的日志记录路径如以下示例所示：
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-适用于其他日志的保留策略也适用于流日志。 日志的保留策略可以设置为 1 到 365 天。 如果未设置保留策略，则会永久保留日志。
+适用于其他日志的保留策略也适用于流日志。 你可以设置日志保留策略，时间范围为 1 天至 365 天。 如果未设置保留策略，则会永久保留日志。
 
 ## <a name="log-file"></a>日志文件
 
-流日志具有多个属性。 以下列表列出了在 NSG 流日志中返回的属性：
+流日志包含以下属性：
 
 * **time** - 记录事件的时间
 * **systemId** - 网络安全组资源 ID
-* **category** - 事件的类别，始终为 NetworkSecurityGroupFlowEvent
+* 类别 - 事件的类别。 类别始终是 NetworkSecurityGroupFlowEvent
 * **resourceid** - NSG 的资源 ID
 * **operationName** - 始终为 NetworkSecurityGroupFlowEvents
 * **properties** - 流属性的集合
@@ -59,15 +60,14 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
                     * **Traffic Flow** - 流的方向。 有效值为 **I**（表示入站）和 **O**（表示出站）。
                     * **Traffic** - 是允许了还是拒绝了流。 有效值为 **A**（表示已允许）和 **D**（表示已拒绝）。
 
-
-下面是流日志的示例。 可以看到，有多个记录遵循前一部分描述的属性列表。 
+以下文本是流日志的示例。 可以看到，有多个记录遵循前一部分描述的属性列表。
 
 > [!NOTE]
-> flowTuples 属性中的值为逗号分隔列表。
+> **flowTuples* 属性中的值为逗号分隔列表。
  
 ```json
 {
-    "records": 
+    "records":
     [
         
         {
@@ -102,12 +102,6 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="next-steps"></a>后续步骤
 
-访问[启用流日志记录](network-watcher-nsg-flow-logging-portal.md)，了解如何启用流日志。
-
-访问[网络安全组 (NSG) 的日志分析](../virtual-network/virtual-network-nsg-manage-log.md)，了解 NSG 日志记录。
-
-访问[使用“IP 流验证”验证流量](network-watcher-check-ip-flow-verify-portal.md)，了解是允许还是拒绝流
-
-<!-- Image references -->
-[1]: ./media/network-watcher-nsg-flow-logging-overview/figure1.png
-
+- 要了解如何启用流日志，请参阅[启用 NSG 流日志记录](network-watcher-nsg-flow-logging-portal.md)。
+- 如需详细了解 NSG 日志记录，请参阅[网络安全组 (NSG) 的日志分析](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- 如需确定是允许还是拒绝流量进出 VM，请参阅[诊断 VM 网络流量筛选器问题](diagnose-vm-network-traffic-filtering-problem.md)
