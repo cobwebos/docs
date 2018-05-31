@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 身份验证和 Resource Manager | Microsoft Docs"
-description: "指导开发人员使用 Azure 资源管理器 API 和 Azure Active Directory 进行身份验证，将应用集成到其他 Azure 订阅。"
+title: Azure Active Directory 身份验证和 Resource Manager | Microsoft Docs
+description: 指导开发人员使用 Azure 资源管理器 API 和 Azure Active Directory 进行身份验证，将应用集成到其他 Azure 订阅。
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -9,16 +9,17 @@ editor: tysonn
 ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
-ms.author: dugill;tomfitz
-ms.openlocfilehash: 0b7ddaa7e8a98cdff0e92c87f8a1f7e24efbd67e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: dugill
+ms.openlocfilehash: 1dea8d173432b05a72de72e8b17db4c97ea7924d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359856"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>使用 Resource Manager 身份验证 API 访问订阅
 ## <a name="introduction"></a>介绍
@@ -29,7 +30,7 @@ ms.lasthandoff: 11/16/2017
 1. **用户 + 应用访问**：适用于代表登录用户访问资源的应用。 此方法适用于仅处理“交互式管理”Azure 资源的应用，例如 Web 应用和命令行工具。
 2. **仅限应用的访问**：适用于运行守护程序服务和计划作业的应用。 应用的标识获得资源的直接访问权限。 此方法适用于需要长期无提示（无人参与）访问 Azure 的应用。
 
-本文提供创建应用来利用这两种授权方法的逐步说明。 其中说明如何使用 REST API 或 C# 执行每个步骤。 完整的 ASP.NET MVC 应用程序可在 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense) 中找到。
+本文提供创建应用来利用这两种授权方法的逐步说明。 其中说明如何使用 REST API 或 C# 执行每个步骤。 完整的 ASP.NET MVC 应用程序位于 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense)。
 
 ## <a name="what-the-web-app-does"></a>Web 应用的功能
 Web 应用：
@@ -85,7 +86,7 @@ Web 应用：
 结果包含 AppId，以应用程序的形式进行身份验证时需要此数据。
 
 ### <a name="optional-configuration---certificate-credential"></a>可选配置 - 证书凭据
-Azure AD 还支持应用程序的证书凭据：创建自签名证书、保留私钥，以及将公钥添加到 Azure AD 应用程序注册。 对于身份验证，应用程序会使用私钥将小负载发送到签名的 Azure AD，然后 Azure AD 使用注册的公钥来验证签名。
+Azure AD 还支持应用程序的证书凭据：创建自签名证书、保留私钥，以及将公钥添加到 Azure AD 应用程序注册。 对于身份验证，应用程序会使用私钥将小负载发送到签名的 Azure AD，Azure AD 会使用注册的公钥来验证签名。
 
 若要了解如何使用证书创建 AD 应用，请参阅[使用 Azure PowerShell 创建服务主体来访问资源](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)或[使用 Azure CLI 创建服务主体来访问资源](resource-group-authenticate-service-principal-cli.md)。
 

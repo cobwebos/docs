@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 9d643a9ad6dd2b19fc3b8932b80d416fbc62d7a3
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 57cdd0d8a58fd88ab1dda63d32397e726c7a2eb2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34056221"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34350247"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>教程：Azure Active Directory 与 O.C. Tanner - AppreciateHub
 
@@ -30,7 +30,7 @@ ms.locfileid: "34056221"
 - 可以让用户通过其 Azure AD 帐户自动登录到 O.C. Tanner - AppreciateHub（单一登录）
 - 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -70,11 +70,11 @@ ms.locfileid: "34056221"
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“O.C. Tanner - AppreciateHub”。
+4. 在搜索框中，键入“O.C. Tanner - AppreciateHub”。**
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_search.png)
 
-5. 在结果面板中，选择“O.C. Tanner - AppreciateHub”**，然后单击“添加”** 按钮添加该应用程序。
+5. 在结果面板中，选择“O.C. Tanner - AppreciateHub”****，然后单击“添加”** 按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_addfromgallery.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "34056221"
 
     ![配置单一登录](./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_400.png)
 
-6. 要在 O.C.Tanner-AppreciateHub 端配置单一登录，需要将下载的元数据 XML 发送到 [O.C.Tanner - AppreciateHub 支持团队](mailto:sso@octanner.com)。
+6. 要在 O.C.Tanner-AppreciateHub** 端配置单一登录，需要将下载的元数据 XML 发送到 [O.C.Tanner - AppreciateHub 支持团队](mailto:sso@octanner.com)。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -217,7 +217,7 @@ ms.locfileid: "34056221"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
