@@ -1,30 +1,27 @@
 ---
-title: "Azure Active Directory 基于证书的身份验证 | Microsoft Docs"
-description: "了解如何在环境中配置基于证书的身份验证"
-author: MarkusVi
-documentationcenter: na
-manager: mtillman
-ms.assetid: c6ad7640-8172-4541-9255-770f39ecce0e
+title: Azure Active Directory 基于证书的身份验证入门
+description: 了解如何在环境中配置基于证书的身份验证
+services: active-directory
 ms.service: active-directory
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 01/15/2018
-ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 5c96f33b8f678155dc4b7a84718e5eadc541f441
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: annaba
+ms.openlocfilehash: db2c19bdc303f6f7773772dd7873878ceb892cc3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33882845"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
 如果使用基于证书的身份验证，在 Windows、Android 或 iOS 设备上将 Exchange Online 帐户连接到以下对象时，由 Azure Active Directory 使用客户端证书对你进行身份验证：
 
-- Microsoft 移动应用程序，例如 Microsoft Outlook 和 Microsoft Word   
-
+- Microsoft 移动应用程序，例如 Microsoft Outlook 和 Microsoft Word
 - Exchange ActiveSync (EAS) 客户端
 
 如果配置了此功能，就无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。
@@ -32,43 +29,31 @@ ms.lasthandoff: 01/16/2018
 本主题内容：
 
 - 提供为 Office 365 企业版、商业版和教育版以及美国政府计划中租户的用户配置并使用基于证书的身份验证的步骤。 可在 Office 365 China（Office 365 中国版）、Office 365 US Government Defense（Office 365 美国政府国防版）和 Office 365 US Government Federal（Office 365 美国政府联邦版）计划中使用此功能。
-
-- 假设已配置一个[公钥基础结构 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) 和 [AD FS](connect/active-directory-aadconnectfed-whatis.md)。    
-
+- 假设已配置一个[公钥基础结构 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) 和 [AD FS](connect/active-directory-aadconnectfed-whatis.md)。
 
 ## <a name="requirements"></a>要求
 
-若要配置基于证书的身份验证，必须满足以下条件：  
+若要配置基于证书的身份验证，以下语句必须为真：
 
-- 仅使用新式身份验证 (ADAL) 的浏览器应用程序或本机客户端的联合环境支持基于证书的身份验证 (CBA)。 Exchange Active Sync (EAS) for EXO 除外，其可用于联盟帐户和托管帐户这两者。
-
-- 必须在 Azure Active Directory 中配置根证书颁发机构和任何中间证书颁发机构。  
-
-- 每个证书颁发机构必须有一个可通过面向 Internet 的 URL 引用的证书吊销列表 (CRL)。  
-
-- 必须在 Azure Active Directory 中至少配置一个证书颁发机构。 可以在[配置证书颁发机构](#step-2-configure-the-certificate-authorities)部分中查找相关步骤。  
-
-- 对于 Exchange ActiveSync 客户端，客户端证书的“使用者可选名称”字段的主体名称或 RFC822 名称必须为 Exchange Online 中用户的可路由电子邮件地址。 Azure Active Directory 会将 RFC822 值映射到目录中的“代理地址”属性。  
-
-- 客户端设备必须至少可以访问一个颁发客户端证书的证书颁发机构。  
-
-- 用于客户端身份验证的客户端证书必须已颁发给客户端。  
-
-
-
+- 仅使用新式身份验证 (ADAL) 的浏览器应用程序或本机客户端的联合环境支持基于证书的身份验证 (CBA)。 用于 Exchange Online (EXO) 的 Exchange Active Sync (EAS) 除外，它可用于联合帐户和托管帐户。
+- 必须在 Azure Active Directory 中配置根证书颁发机构和任何中间证书颁发机构。
+- 每个证书颁发机构必须有一个可通过面向 Internet 的 URL 引用的证书吊销列表 (CRL)。
+- 必须在 Azure Active Directory 中至少配置一个证书颁发机构。 可以在[配置证书颁发机构](#step-2-configure-the-certificate-authorities)部分中查找相关步骤。
+- 对于 Exchange ActiveSync 客户端，客户端证书的“使用者可选名称”字段的主体名称或 RFC822 名称必须为 Exchange Online 中用户的可路由电子邮件地址。 Azure Active Directory 会将 RFC822 值映射到目录中的“代理地址”属性。
+- 客户端设备必须至少可以访问一个颁发客户端证书的证书颁发机构。
+- 用于客户端身份验证的客户端证书必须已颁发给客户端。
 
 ## <a name="step-1-select-your-device-platform"></a>步骤 1：选择设备平台
 
 第一步，对于关注的设备平台，需了解以下内容：
 
 - Office 移动应用程序支持
-- 特定的实现要求  
+- 特定的实现要求
 
 针对以下设备平台，需要注意的相关信息：
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
-
 
 ## <a name="step-2-configure-the-certificate-authorities"></a>步骤 2：配置证书颁发机构
 
@@ -81,7 +66,7 @@ ms.lasthandoff: 01/16/2018
 
     class TrustedCAsForPasswordlessAuth
     {
-       CertificateAuthorityInformation[] certificateAuthorities;    
+       CertificateAuthorityInformation[] certificateAuthorities;
     }
 
     class CertificateAuthorityInformation
@@ -93,7 +78,7 @@ ms.lasthandoff: 01/16/2018
         string deltaCrlDistributionPoint;
         string trustedIssuer;
         string trustedIssuerSKI;
-    }                
+    }
 
     enum CertAuthorityType
     {
@@ -101,10 +86,10 @@ ms.lasthandoff: 01/16/2018
         IntermediateAuthority = 1
     }
 
-可使用 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0) 进行配置：  
+可使用 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0) 进行配置：
 
 1. 使用管理员特权启动 Windows PowerShell。
-2. 安装 Azure AD 模块。 需要安装版本 [2.0.0.33 ](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 或更高版本。  
+2. 安装 Azure AD 模块 [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 或更高版本。
 
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
 
@@ -116,13 +101,11 @@ ms.lasthandoff: 01/16/2018
 
     Connect-AzureAD
 
-
 ### <a name="retrieve"></a>检索
 
 若要检索目录中定义的受信任的证书颁发机构，请使用 [Get AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet。
 
     Get-AzureADTrustedCertificateAuthority
-
 
 ### <a name="add"></a>添加
 
@@ -135,7 +118,6 @@ ms.lasthandoff: 01/16/2018
     $new_ca.crlDistributionPoint=”<CRL Distribution URL>”
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-
 ### <a name="remove"></a>删除
 
 若要删除受信任的证书颁发机构，请使用 [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet：
@@ -143,15 +125,13 @@ ms.lasthandoff: 01/16/2018
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
 
-
-### <a name="modfiy"></a>修改
+### <a name="modify"></a>修改
 
 若要修改受信任的证书颁发机构，请使用 [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet：
 
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
-
 
 ## <a name="step-3-configure-revocation"></a>步骤 3：配置吊销
 
@@ -181,7 +161,6 @@ ms.lasthandoff: 01/16/2018
 
 所设日期必须属于将来。 如果日期不属于将来，则不设置 **StsRefreshTokensValidFrom** 属性。 如果日期属于将来，则将 **StsRefreshTokensValidFrom** 设置为当前时间（而不是由 Set-MsolUser 命令指示的日期）。
 
-
 ## <a name="step-4-test-your-configuration"></a>步骤 4：测试配置
 
 ### <a name="testing-your-certificate"></a>测试证书
@@ -191,8 +170,7 @@ ms.lasthandoff: 01/16/2018
 如果登录成功，则表示：
 
 - 已向测试设备预配用户证书
-- AD FS 已正确配置  
-
+- AD FS 已正确配置
 
 ### <a name="testing-office-mobile-applications"></a>测试 Office 移动应用程序
 
@@ -214,11 +192,17 @@ EAS 配置文件必须包含以下信息：
 
 - EAS 终结点（例如 outlook.office365.com）
 
-通过使用 Intune 等移动设备管理 (MDM) 或者手动将 EAS 配置文件中的证书放置在设备上，可以配置 EAS 配置文件并将其放置在设备上。  
+通过使用 Intune 等移动设备管理 (MDM) 或者手动将 EAS 配置文件中的证书放置在设备上，可以配置 EAS 配置文件并将其放置在设备上。
 
 ### <a name="testing-eas-client-applications-on-android"></a>在 Android 上测试 EAS 客户端应用程序
 
-**测试证书身份验证：**  
+**测试证书身份验证：**
 
-1. 在应用程序中配置满足上述要求的 EAS 配置文件。  
+1. 在应用程序中配置满足上一部分中要求的 EAS 配置文件。
 2. 打开应用程序，验证邮件是否正在同步。
+
+## <a name="next-steps"></a>后续步骤
+
+[有关 Android 设备上基于证书的身份验证的其他信息。](active-directory-certificate-based-authentication-android.md)
+
+[有关 iOS 设备上基于证书的身份验证的其他信息。](active-directory-certificate-based-authentication-ios.md)

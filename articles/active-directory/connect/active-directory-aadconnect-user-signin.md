@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/08/2018
 ms.author: billmath
-ms.openlocfilehash: 6a6e83ad73f561cd8aa4fc629fb9b48449af6d0a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055080"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
 Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，帮助选择登录到 Azure AD 时需要使用的标识。
@@ -28,6 +29,7 @@ Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登�
 * 使用[无缝单一登录 (SSO)](active-directory-aadconnect-sso.md) 的[密码哈希同步](#password-hash-synchronization)
 * 使用[无缝单一登录 (SSO) ](active-directory-aadconnect-sso.md)的[直通身份验证](active-directory-aadconnect-pass-through-authentication.md)
 * [（使用 Active Directory 联合身份验证服务 (AD FS)）联合的 SSO](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+* [使用 PingFederate 进行联合身份验证](#federation-with-pingfederate)
 
 > [!NOTE] 
 > 请记住，通过为 Azure AD 配置联合，可以建立 Azure AD 租户和联合域之间的信任，这一点很重要。 拥有此信任的联合域用户将有权访问该租户内的 Azure AD 云资源。  
@@ -88,6 +90,13 @@ Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登�
 * 在其中运行向导的计算机能够通过 Windows 远程管理连接到要安装 AD FS 或 Web 应用程序代理的任何其他计算机。
 
 有关详细信息，请参阅[使用 AD FS 配置 SSO](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs)。
+
+### <a name="federation-with-pingfederate"></a>使用 PingFederate 进行联合身份验证
+凭借联合登录，用户可以使用其本地密码登录到 Azure 基于 AD 的服务。 当用户处于企业网络上时，他们甚至无需输入其密码。
+
+有关配置 PingFederate 以与 Azure Active Directory 一起使用的详细信息，请参阅 [PingFederate 与 Azure Active Directory 和 Office 365 的集成](https://www.pingidentity.com/AzureADConnect)
+
+有关使用 PingFederate 设置 Azure AD Connect 的信息，请参阅 [Azure AD Connect 自定义安装](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-pingfederate)
 
 #### <a name="sign-in-by-using-an-earlier-version-of-ad-fs-or-a-third-party-solution"></a>使用早期版本的 AD FS 或第三方解决方案登录
 如果已使用早期版本的 AD FS（例如 AD FS 2.0）或第三方联合身份验证提供程序配置了云登录，则可以通过 Azure AD Connect 选择跳过用户登录配置。 这样，便可以获取最新的同步和 Azure AD Connect 的其他功能，同时仍可使用现有的解决方案进行登录。

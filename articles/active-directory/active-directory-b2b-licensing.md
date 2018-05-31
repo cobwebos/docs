@@ -1,27 +1,21 @@
 ---
-title: "Azure Active Directory B2B 协作授权指南 | Microsoft 文档"
-description: "Azure Active Directory B2B 协作无需付费的 Azure AD 许可证，但你仍然可以为 B2B 来宾用户获取付费功能"
+title: Azure Active Directory B2B 协作授权指南 | Microsoft 文档
+description: Azure Active Directory B2B 协作无需付费的 Azure AD 许可证，但你仍然可以为 B2B 来宾用户获取付费功能
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 08/09/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.custom: it-pro
-ms.openlocfilehash: d4a739e5cb4dc4a6ccafac683fe913592f985ce2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5709c6db422a2357589f35fd77a2b1681a3e446a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33928841"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B 协作授权指南
 
@@ -71,16 +65,7 @@ B2B 来宾用户属于合作伙伴组织，并且被邀请与主机组织进行�
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
+请参阅以下有关 Azure AD B2B 协作的文章：
 
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Azure Active Directory 管理员如何添加 B2B 协作用户？](active-directory-b2b-admin-add-users.md)
-* [信息工作者如何添加 B2B 协作用户？](active-directory-b2b-iw-add-users.md)
-* [B2B 协作邀请电子邮件的元素](active-directory-b2b-invitation-email.md)
-* [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
-* [Azure Active Directory B2B 协作疑难解答](active-directory-b2b-troubleshooting.md)
 * [Azure Active Directory B2B 协作常见问题 (FAQ)](active-directory-b2b-faq.md)
-* [Azure Active Directory B2B 协作 API 和自定义](active-directory-b2b-api.md)
-* [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
-* [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
-* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)

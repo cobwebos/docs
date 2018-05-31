@@ -2,25 +2,20 @@
 title: 动态组和 Azure Active Directory B2B 协作 | Microsoft 文档
 description: 说明如何将 Azure AD 动态组与 Azure Active Directory B2B 协作一起使用
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 12/14/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: d96fefb859cba5db65382801fb1ac143df12b647
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 751502c2be84e9454c507f09a47b609d003ce2c5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33927845"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>动态组和 Azure Active Directory B2B 协作
 
@@ -47,12 +42,7 @@ Azure Active Directory (Azure AD) 的安全组成员身份动态配置在 [Azure
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
-
-* [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B 协作用户属性](active-directory-b2b-user-properties.md)
-* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
-* [委托 B2B 协作邀请](active-directory-b2b-delegate-invitations.md)
-* [B2B 协作代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
-* [为 B2B 协作配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
+- [B2B 协作用户属性](active-directory-b2b-user-properties.md)
+- [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
+- [B2B 协作用户的条件访问](active-directory-b2b-mfa-instructions.md)
 

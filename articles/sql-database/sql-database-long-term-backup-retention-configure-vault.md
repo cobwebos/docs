@@ -7,18 +7,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0154ec9f08f81d2aa47c607c05f09309f7c23c7e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f26f9b6f1b0ddef348c39df5aa4badc5df93b725
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942422"
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>使用 Azure 恢复服务保管库配置 Azure SQL 数据库长期备份保留和从其中进行还原
 
 可配置 Azure 恢复服务保管库来存储 Azure SQL 数据库备份，并通过 Azure 门户或 PowerShell 使用保管库中保留的备份恢复数据库。
+
+> [!NOTE]
+> 在 2016 年 10 月首次发行的长期备份保留的预览版中，备份存储在 Azure 服务恢复服务保管库中。 此次更新删除了此依赖关系，但是，为了实现向后兼容性，原始 API 在 2018 年 5 月 31 之前仍受支持。 如果需要与 Azure 服务恢复保管库中的备份进行交互，请参阅[使用 Azure 服务恢复服务保管库的长期备份保留](sql-database-long-term-backup-retention-configure-vault.md)。 
+
 
 ## <a name="azure-portal"></a>Azure 门户
 

@@ -11,23 +11,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 132242e7f1eb516d53b6a31a24095094eed58668
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e64d5ac33f96c06ddca29dd4ee001896c7cd131
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011233"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - 正式版](v1/data-factory-ftp-connector.md)
 > * [版本 2 - 预览版](connector-ftp.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 FTP 服务器复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 FTP 服务器复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 FTP 连接器](v1/data-factory-ftp-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 FTP 连接器](v1/data-factory-ftp-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -59,6 +60,9 @@ FTP 链接服务支持以下属性：
 | userName | 指定有权访问 FTP 服务器的用户。 | 否 |
 | password | 指定用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+
+>[!NOTE]
+>FTP 连接器支持在不使用加密或使用显式 SSL/TLS 加密的情况下访问 FTP 服务器；不支持隐式 SSL/TLS 加密。
 
 **示例 1：使用 Anonymous 身份验证**
 
@@ -118,12 +122,17 @@ FTP 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：FileShare |是 |
-| folderPath | 文件夹路径。 例如：folder/subfolder/ |是 |
-| fileName | 如果需要从特定文件复制，则在“folderPath”中指定文件名。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件作为源。 |否 |
-| fileFilter | 指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。 仅当未指定 fileName 时应用。 <br/><br/>允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"fileFilter": "*.log"`<br/>- 示例 2：`"fileFilter": 2017-09-??.txt"` |否 |
+| folderPath | 文件夹路径。 不支持通配符筛选器。 例如：folder/subfolder/ |是 |
+| fileName | 指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。 |否 |
 | 格式 | 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果需要分析具有特定格式的文件，支持分析以下文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为：**最佳**和**最快**。 |否 |
 | useBinaryTransfer | 指定是否使用二进制传输模式。 这些值在二进制模式下为 true（默认），在 ASCII 模式下为 false。 |否 |
+
+>[!TIP]
+>如需复制文件夹下的所有文件，请仅指定 **folderPath**。<br>如需复制具有给定名称的单个文件，请指定文件夹部分的 **folderPath** 和文件名部分的 **fileName**。<br>如需复制文件夹下的文件子集，请指定文件夹部分的 **folderPath** 和通配符筛选器部分的 **fileName**。
+
+>[!NOTE]
+>如果文件筛选器使用“fileFilter”属性，则在建议你今后使用添加到“fileName”的新筛选器功能时，仍按原样支持该属性。
 
 **示例：**
 

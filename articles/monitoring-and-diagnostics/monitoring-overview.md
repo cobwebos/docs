@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 16478d0223f59abb239d39fa27453e41b6980727
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777546"
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>监视 Azure 应用程序和资源
 
@@ -55,7 +56,7 @@ Azure 包括多项可以在监视空间单独执行特定角色或任务的服�
 ## <a name="core-monitoring"></a>核心监视
 核心监视提供对 Azure 资源的基本必要的监视。 这些服务有一个最低配置要求，并收集高级监视服务所使用的核心遥测数据。    
 
-### <a name="azure-monitor"></a>Azure 监视器
+### <a name="azure-monitor"></a>Azure Monitor
 使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) 可收集[指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)、[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)和[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)，为 Azure 服务启用核心监视。 例如，可以通过活动日志了解新资源的创建或修改时间。
 
 可通过指标获取不同资源（甚至包括虚拟机中的操作系统）的性能统计信息。 可以使用 Azure 门户中的某个资源管理器查看此数据，还可以基于这些指标创建警报。 Azure Monitor 提供最快的指标管道（5 分钟乃至 1 分钟），因此应将其用于时间关键型警报和通知。

@@ -1,23 +1,21 @@
 ---
 title: 适用于混合组织的 B2B 协作 - Azure Active Directory | Microsoft Docs
-description: 使用 Azure AD B2B 协作授予合作伙伴对本地资源和云资源的访问权限
+description: 使用 Azure AD B2B 协作授予合作伙伴对本地资源和云资源的访问权限。
 services: active-directory
-documentationcenter: ''
+ms.service: active-directory
+ms.component: B2B
+ms.topic: article
+ms.date: 04/26/2018
+ms.author: twooley
 author: twooley
 manager: mtillman
-editor: ''
-tags: ''
-ms.service: active-directory
-ms.topic: article
-ms.workload: identity
-ms.date: 04/20/2018
-ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 0ccf3eb381f42849b48f3d149942be13380b3670
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 943ccadbc87cd8d2345078405e2a27930634668e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33928090"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>适用于混合组织的 Azure Active Directory B2B 协作
 
@@ -31,8 +29,8 @@ ms.lasthandoff: 04/23/2018
 
 对于结合 Kerberos 约束委派 (KCD) 使用 Windows 集成身份验证 (IWA) 的应用，还可以使用 Azure AD 代理进行身份验证。 但是，要进行授权，需要在本地 Windows Server Active Directory 中创建一个用户对象。 可以使用两种方法创建表示 B2B 来宾用户的本地用户对象。
 
-- 可以使用 Microsoft Identity Manager (MIM) 2016 SP1 和 Microsoft Graph 的 MIM 管理代理。 （这需要 Azure AD Premium 1 订阅。）
-- 可以使用 PowerShell 脚本。 （此解决方案不需要 MIM 或 AD Premium。）
+- 可以使用 Microsoft Identity Manager (MIM) 2016 SP1 和 Microsoft Graph 的 MIM 管理代理。
+- 可以使用 PowerShell 脚本。 （此解决方案不需要 MIM。）
 
 有关如何实施这些解决方案的详细信息，请参阅[向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限](active-directory-b2b-hybrid-cloud-to-on-premises.md)。
 
@@ -40,7 +38,7 @@ ms.lasthandoff: 04/23/2018
 
 在 Azure AD 推出之前，使用本地标识系统的组织一贯是在其本地目录中管理合作伙伴帐户。 如果你就在这样的一家组织，则需要确保在将应用和其他资源转移到云时，合作伙伴仍旧拥有访问权限。 最好是让这些用户使用相同的凭据集来访问云资源和本地资源。 
 
-我们现在提供了相应的方法，让你使用 Azure AD Connect 将这些本地帐户作为“来宾用户”同步到云，在云中，这些帐户的行为与 Azure AD B2B 用户相同。 即使本地标识系统允许合作伙伴使用其自己的外部电子邮件地址作为登录名，也能正常运行此解决方案。
+我们现在提供了相应的方法，让你使用 Azure AD Connect 将这些本地帐户作为“来宾用户”同步到云，在云中，这些帐户的行为与 Azure AD B2B 用户相同。
 
 为帮助保护公司数据，可将访问范围控制为适当的资源，并配置授权策略，以区分对待这些来宾用户和本公司的员工。
 
@@ -49,5 +47,6 @@ ms.lasthandoff: 04/23/2018
 ## <a name="next-steps"></a>后续步骤
 
 - [向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限](active-directory-b2b-hybrid-cloud-to-on-premises.md)
-- [使用 Azure AD B2B 协作向本地托管的合作伙伴帐户授予对云资源的访问权限](active-directory-b2b-hybrid-on-premises-to-cloud.md)。
+- [使用 Azure AD B2B 协作向本地托管的合作伙伴帐户授予对云资源的访问权限](active-directory-b2b-hybrid-on-premises-to-cloud.md)
+
 

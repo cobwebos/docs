@@ -1,46 +1,75 @@
 ---
-title: "Azure AD 报告 API 入门 | Microsoft 文档"
-description: "如何开始使用 Azure Active Directory 报告 API"
+title: Azure AD 报告 API 入门 | Microsoft Docs
+description: 如何开始使用 Azure Active Directory 报告 API
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 05/07/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9c858b8f2d5a4a348bc0b4443ddbe0000a5b62f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a818c9b0e2c9097f45d2fdd39676ef6807d06ca5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33929080"
 ---
-# <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
+# <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
-Azure Active Directory 可向你提供各种报告。 对于应用程序（如 SIEM 系统、审核）和商业智能工具，这些报告的数据可能非常有用。 Azure AD 报告 API 通过一组基于 REST 的 API，可提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。
+Azure Active Directory 向你提供了各种[报告](active-directory-reporting-azure-portal.md)。 对于应用程序（如 SIEM 系统、审核）和商业智能工具，这些报告的数据可能非常有用。 
 
-本文介绍了开始使用 Azure AD 报告 API 所需的信息。
-在下一部分中，可以找到有关使用审核和登录 API 的更多详细信息。 
+使用 Azure AD 报告 API，可通过一组基于 REST 的 API 以编程方式访问数据。 可从各种编程语言和工具中调用这些 API。
 
-有关常见问题解答，请参阅我们的[常见问题解答](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-faq)。 有关问题，请[提交支持票证](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+本文为你提供了使用相关 API 访问报告数据的路线图。
 
-## <a name="learning-map"></a>学习路线图
-1. **准备** - 需要先完成[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites-azure-portal.md)，才能测试 API 示例。
-2. **探索** - 获取报告 API 的第一印象：
+如果遇到问题，请参阅[如何获取对 Azure Active Directory 的支持](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)。
+
+
+## <a name="prerequisites"></a>先决条件
+
+若要访问报告 API，即使你打算使用脚本访问该 API，也需要：
+
+1. 分配角色（安全读者、安全管理员、全局管理员）
+2. 注册应用程序
+3. 授予权限
+4. 收集配置设置
+
+
+ 
+有关详细说明，请参阅[访问 Azure Active Directory 报告 API 的先决条件](active-directory-reporting-api-prerequisites-azure-portal.md)。
+
+
+## <a name="recommendation"></a>建议 
+
+如果你打算检索报告数据而无需用户干预，应考虑使用具有证书的 Azure AD Reporting API。
+
+有关详细说明，请参阅[使用具有证书的 Azure AD Reporting API 获取数据](active-directory-reporting-api-with-certificates.md)。
+
+
+## <a name="explore"></a>探究
+
+获得报告 API 的第一印象：
    
-   * [使用审核 API 的示例](active-directory-reporting-api-audit-samples.md) 
-   * [使用登录活动报告 API 的示例](active-directory-reporting-api-sign-in-activity-samples.md)
-3. **自定义** - 创建自己的解决方案： 
-   
-   * [使用审核 API 参考](active-directory-reporting-api-audit-reference.md) 
-   * [使用登录活动报告 API 参考](active-directory-reporting-api-sign-in-activity-reference.md)
+   - [使用审核 API 的示例](active-directory-reporting-api-audit-samples.md) 
+ 
+   - [使用登录活动报告 API 的示例](active-directory-reporting-api-sign-in-activity-samples.md)
 
-## <a name="next-steps"></a>后续步骤
-如果想要查看所有可用的 Azure AD 图形 API 终结点，请使用此链接：[https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta)。
+
+## <a name="customize"></a>自定义  
+
+创建自己的解决方案： 
+   
+   - [使用审核 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+
+   - [使用登录活动报告 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+
+
 

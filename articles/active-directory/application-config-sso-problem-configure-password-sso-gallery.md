@@ -1,11 +1,11 @@
 ---
-title: "配置 Azure AD 库应用程序密码单一登录时遇到的问题 | Microsoft Docs"
-description: "了解在为 Azure AD 应用程序库中所列应用程序配置密码单一登录时人们面对的常见问题"
+title: 配置 Azure AD 库应用程序密码单一登录时遇到的问题 | Microsoft Docs
+description: 了解在为 Azure AD 应用程序库中所列应用程序配置密码单一登录时人们面对的常见问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,31 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 9550b28b373a59a6d41cee487aed9afc6c464479
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f19b684a6c7426134844a2657b886280af2f061c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067055"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序密码单一登录时遇到的问题
 
-阅读本文有助于了解在配置 Azure AD 库应用程序**密码单一登录**时人们面对的常见问题。
+阅读本文有助于了解在配置 Azure AD 库应用程序密码单一登录时经常会遇到的常见问题。
 
 ## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>凭据已填写，但扩展却未提交凭据
 
-这种问题通常发生在以下情景中：应用程序供应商为了添加字段而在近期变更了他们的登录页面、改变我们用于检测用户名和密码字段的基础标识符，或改变登录体验作用于应用程序的方式。 幸运的是，在许多情况下，Microsoft 能够与应用程序供应商合作来快速解决这些问题。
+这种问题通常发生在以下情景中：应用程序供应商为了添加字段而在近期更改了他们的登录页面、改变了用于检测用户名和密码字段的标识符，或修改了登录体验作用于应用程序的方式。 幸运的是，在许多情况下，Microsoft 能够与应用程序供应商合作来快速解决这些问题。
 
-但是，尽管 Microsoft 的技术能够在这些集成中断时进行自动检测，但是有时我们仍然无法立即找到这些问题，或者这些问题需要一些时间去解决。 如果其中一个集成无法正确工作，而你们能够打开支持案例来帮助我们尽快解决这一问题，我们将不胜感激。
+但是，尽管 Microsoft 的技术能够在集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题需要一些时间才能解决。 如果其中一个集成无法正确工作，请打开支持案例以尽快解决这一问题。
 
-除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+如果与该应用程序的供应商联系，请向他们发送我们的方法，这样，Microsoft 就可以与他们合作，将其应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](./develop/active-directory-app-gallery-listing.md)来让他们开始工作。
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>凭据已填写并提交，但页面却显示凭据不正确
 
-若要解决这一问题，请先检查以下内容：
+若要解决此问题，请先尝试以下操作：
 
 -   先让用户使用为他们保存的凭据尝试**直接登录应用程序网站**。
 
-  * 如果这种方法有效，再让用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”，以将凭据更新为大家所知的最新有效的用户名和密码。
+  * 如果登录有效，再让用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分的“应用程序磁贴”上，单击“更新凭据”，以将凭据更新为最新的已知用户名和密码。
 
    * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
 
@@ -53,11 +54,11 @@ ms.lasthandoff: 12/11/2017
 
 -   确保用户未在 **incognito、inPrivate 或私有模式**下试图从访问面板登录应用程序。 在这些模式下访问面板扩展不受支持。
 
-如果此方法无效，可能是应用程序端已发生变更，已暂时中断了应用程序与 Azure AD 的集成。 例如，当应用程序供应商在页面上引入与手动和自动化输入表现不同的脚本，从而导致自动集成（就像我们这样的）中断时，就会发生这样情况。 幸运的是，在许多情况下，Microsoft 能够与应用程序供应商合作来快速解决这些问题。
+如果前面的建议无效，可能是应用程序端已发生变更，已暂时中断了应用程序与 Azure AD 的集成。 例如，当应用程序供应商在页面上引入与手动和自动化输入表现不同的脚本，从而导致自动集成（就像我们这样的）中断时，就会发生这样情况。 幸运的是，在许多情况下，Microsoft 能够与应用程序供应商合作来快速解决这些问题。
 
-但是，尽管 Microsoft 的技术能够在这些集成中断时进行自动检测，但是有时我们仍然无法立即找到这些问题，或者这些问题需要一些时间去解决。 如果其中一个集成无法正确工作，而你们能够打开支持案例来帮助我们尽快解决这一问题，我们将不胜感激。
+但是，尽管 Microsoft 的技术能够在应用程序集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题可能需要一些时间才能解决。 当集成无法正常工作时，可以打开支持案例以尽快解决这一问题。 
 
-除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](./develop/active-directory-app-gallery-listing.md)来让他们开始工作。
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>扩展在 Chrome 和 Firefox 中有效，但在 Internet Explorer 中无效
 
@@ -71,15 +72,15 @@ ms.lasthandoff: 12/11/2017
 
    * 不幸的是，这种情况会根据浏览器的版本、计算机的速度或被访问的站点而有所变化。 在这种情况下，我们建议联系支持，这样可以解决具体应用程序的集成。
 
-除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](./develop/active-directory-app-gallery-listing.md)来让他们开始工作。
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>检查应用程序的登录页面近期是否已变更，或需要其他字段
 
 如果应用程序的登录页面已彻底变更，有时这会导致我们的集成中断。 例如，当应用程序供应商向体验添加登录字段、验证码或多重身份验证时就会出现这种情况。 幸运的是，在许多情况下，Microsoft 能够与应用程序供应商合作来快速解决这些问题。
 
-尽管 Microsoft 的技术能够在这些集成中断时进行自动检测，可有时我们仍然无法立即找到这些问题。 否则，这些问题只需一些时间即可解决。 如果其中一个集成无法正确工作，而你们能够打开支持案例来帮助我们尽快解决这一问题，我们将不胜感激。
+但是，尽管 Microsoft 的技术能够在应用程序集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题可能需要一些时间才能解决。 当集成无法正常工作时，可以打开支持案例以尽快解决这一问题。 
 
-除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
+除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](./develop/active-directory-app-gallery-listing.md)来让他们开始工作。
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
 
@@ -91,7 +92,7 @@ ms.lasthandoff: 12/11/2017
 
 3.  在出现询问是否安装该软件的提示时，选择“立即安装”。
 
-4.  根据浏览器的情况，用户将定向到下载链接。 将扩展“添加”到浏览器中。
+4.  将根据所用的浏览器将你定向到下载链接。 将扩展“添加”到浏览器中。
 
 5.  如果浏览器出现提示，选择“启用”或“允许”扩展。
 
@@ -106,5 +107,5 @@ ms.lasthandoff: 12/11/2017
 -   [Firefox 访问面板扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
 ## <a name="next-steps"></a>后续步骤
-[使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
+[使用应用程序代理为应用提供单一登录](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

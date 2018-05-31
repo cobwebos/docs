@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010918"
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>对 Azure 文件同步（预览版）进行故障排除
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -34,6 +35,14 @@ ms.lasthandoff: 03/08/2018
 如果从一个订阅中将资源移动到另一订阅，会阻止文件同步（存储同步服务）资源进行移动。 
 
 ## <a name="agent-installation-and-server-registration"></a>代理安装和服务器注册
+### <a name="during-server-registration-get-the-error-the-term-find-azurermresource-is-not-recognized-as-the-name"></a>在服务器注册过程中，收到错误“术语‘查找 AzureRMResource’未被识别为名称...”
+问题是在 AzureRM v6 中更改了 cmdlet find-AzureRMResource。  将修复同步代理的下一个版本，以支持 AzureRM v6。  届时可以通过以下方法解决此问题：
+1. 通过任务管理器停止当前 ServerRegistration.exe
+2. 以管理员身份打开 PowerShell 命令提示符
+3. PS C:\> Uninstall-Module AzureRM
+4. PS C:\> install-module -name AzureRM -RequiredVersion 5.7.0
+5. 启动 C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe。
+
 <a id="agent-installation-failures"></a>**排查代理安装失败问题**  
 如果 Azure 文件同步代理安装失败，请在安装代理的过程中，在权限提升的命令提示符下运行以下命令，以启用日志记录：
 
