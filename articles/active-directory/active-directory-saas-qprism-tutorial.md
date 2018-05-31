@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 QPrism 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 QPrism 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 QPrism 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 QPrism 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f697b95074e0fc9dbb3e8c7800e69f8ece9e0b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ffd7c828087162f83812da445b0eeb71545b59db
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34348978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>教程：Azure Active Directory 与 QPrism 集成
 
@@ -30,13 +31,13 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 QPrism（单一登录）。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 QPrism 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 QPrism 单一登录的订阅
 
 若要测试本教程中的步骤，请遵循以下建议：
@@ -48,7 +49,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 QPrism
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-qprism-from-the-gallery"></a>从库中添加 QPrism
 若要配置 QPrism 与 Azure AD 的集成，需要从库中将 QPrism 添加到托管 SaaS 应用列表。
@@ -65,7 +66,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请在对话框顶部选择“新建应用程序”。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“QPrism”，在结果面板中选择“QPrism”。 然后，单击“添加”按钮以添加该应用程序。
 
@@ -110,34 +111,15 @@ ms.lasthandoff: 12/11/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际的标识符和登录 URL 更新这些值。 请联系 [QPrism 客户端支持团队](mailto:qsupport-ce@quatrro.com)获取这些值。 
 
-4. 若要生成**元数据 URL**，请执行以下步骤：
+4. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
 
-    a. 选择“应用注册”。
-    
-    ![配置单一登录应用注册](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appregistrations.png)
-   
-    b. 选择“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录终结点](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpointicon.png)
-
-    c. 选择复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录终结点](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpoint.png)
-     
-    d.单击“下一步”。 现在，转到 **QPrism** 的属性页，使用“复制”来复制**应用程序 ID**。 然后将其粘贴到记事本。
- 
-    ![配置单一登录应用程序 ID](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appid.png)
-
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`。 
+     ![证书下载链接](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_certificate.png)
 
 5. 选择“保存”。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-qprism-tutorial/tutorial_general_400.png)
     
-6. 若要在 **QPrism** 端配置单一登录，请将**元数据 URL** 发送给 [QPrism 支持团队](mailto:qsupport-ce@quatrro.com)。 他们将确保在两端都正确设置了 SAML 单一登录连接。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了。 从“Active Directory” > “企业应用程序”部分添加该应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)。
+6. 若要在“QPrism”端配置单一登录，需将应用联合元数据 URL 发送给 [QPrism 支持团队](mailto:qsupport-ce@quatrro.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -163,13 +145,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-qprism-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 选择“创建” 。
+    d. 选择**创建**。
  
 ### <a name="create-a-qprism-test-user"></a>创建 QPrism 测试用户
 
@@ -195,7 +177,7 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户和组”链接][202]
 
-4. 选择“添加”。 然后，在“添加分配”下，选择“用户和组”。
+4. 选择 **添加** 。 然后，在“添加分配”下，选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
@@ -215,7 +197,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

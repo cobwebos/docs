@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195001"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
@@ -360,7 +361,7 @@ search=Spacious, air-condition* +"Ocean view"
 在 Azure 搜索中，可以使用两种方法优化相关性评分：
 
 1. **评分配置文件**可以根据一组规则提升结果排名列表中的文档。 在本示例中，我们可以认为标题字段中匹配的文档的相关性高于说明字段中匹配的文档。 此外，如果索引包含每家酒店的价格字段，我们可以根据较低的价格提升文档。 详细了解如何[将评分配置文件添加到搜索索引](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)。
-2. **字词提升**（只能在完整 Lucene 查询语法中使用）提供可应用到查询树任何部分的提升运算符 `^`。 在本示例中，我们可以不搜索前缀 *air-condition*\*，而是搜索确切的字词 *air-condition* 或前缀，但是，由于在字词查询中应用了提升运算符，与该确切字词匹配的文档会获得更高的排名：*air-condition^2||air-condition**。 详细了解[字词提升](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)。
+2. **字词提升**（只能在完整 Lucene 查询语法中使用）提供可应用到查询树任何部分的提升运算符 `^`。 在本示例中，我们可以不搜索前缀 *air-condition*\*，而是搜索确切的字词 *air-condition* 或前缀，但是，由于在字词查询中应用了提升运算符，与该确切字词匹配的文档会获得更高的排名：*air-condition^2||air-condition*\*。 详细了解[字词提升](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)。
 
 
 ### <a name="scoring-in-a-distributed-index"></a>在分布式索引评分

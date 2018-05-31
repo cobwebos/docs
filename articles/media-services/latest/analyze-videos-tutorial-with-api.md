@@ -12,11 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 54c49645722b6545d8ae872151b9b82674d44523
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0fdc8c6dc9fae96a79e2ab2b05b7db3012834c1e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362288"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>教程：使用 Azure 媒体服务分析视频 
 
@@ -66,7 +67,7 @@ ms.lasthandoff: 05/14/2018
 
 ### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>创建输出资产用于存储作业结果 
 
-输出资产会存储作业结果。 项目定义 DownloadResults 函数，该函数将结果从此输出资产中下载到“输出”文件夹中，便于用户查看获取的内容。
+输出[资产](https://docs.microsoft.com/rest/api/media/assets)会存储作业结果。 项目定义 DownloadResults 函数，该函数将结果从此输出资产中下载到**输出**文件夹中，便于用户查看获取的内容。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 05/14/2018
 
 #### <a name="transform"></a>转换
 
-创建新转换实例时，需要指定希望生成的输出内容。 所需参数是 TransformOutput 对象，如上述代码所示。 每个 TransformOutput 包含一个预设。 预设介绍视频和/或音频处理操作的各个步骤，这些操作可生成所需 TransformOutput。 在此示例中，使用了 VideoAnalyzerPreset 预设，且将语言 (“en-US”) 传递给了其构造函数。 凭借此预设，可以从视频提取多个音频和视频见解。 如需从视频提取多个音频见解，可以使用**AudioAnalyzerPreset** 预设。 
+创建新转换实例时，需要指定希望生成的输出内容[](https://docs.microsoft.com/rest/api/media/transforms)。 所需参数是 TransformOutput 对象，如上述代码所示。 每个 TransformOutput 包含一个预设。 预设介绍视频和/或音频处理操作的各个步骤，这些操作可生成所需 TransformOutput。 在此示例中，使用了 VideoAnalyzerPreset 预设，且将语言 (“en-US”) 传递给了其构造函数。 凭借此预设，可以从视频提取多个音频和视频见解。 如需从视频提取多个音频见解，可以使用**AudioAnalyzerPreset** 预设。 
 
 在创建时**转换**，首先应检查是否其中一个已存在使用**获取**方法，如下面的代码中所示。  在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
@@ -84,7 +85,7 @@ ms.lasthandoff: 05/14/2018
 
 #### <a name="job"></a>作业
 
-如上所述，转换对象为脚本，作业则是对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。 可使用以下方法指定视频位置：HTTPS URL、SAS URL 或媒体服务帐户中的资产。 
+如上所述，转换对象为脚本，作业则是对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容[](https://docs.microsoft.com/rest/api/media/transforms)[](https://docs.microsoft.com/en-us/rest/api/media/jobs)。 作业指定输入视频位置和输出位置等信息。 可使用以下方法指定视频位置：HTTPS URL、SAS URL 或媒体服务帐户中的资产。 
 
 在此示例中，作业输入是一个本地视频。  
 
@@ -92,7 +93,7 @@ ms.lasthandoff: 05/14/2018
 
 ### <a name="wait-for-the-job-to-complete"></a>等待作业完成
 
-此作业需要一些时间才能完成，完成时可发出通知。 可通过不同选项在作业完成后获取通知。 最简单的选项（如下所示）是使用轮询。 
+此作业需要一些时间才能完成，完成时可发出通知。 可通过不同选项获取有关[作业](https://docs.microsoft.com/en-us/rest/api/media/jobs)完成情况的通知。 最简单的选项（如下所示）是使用轮询。 
 
 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。
 
@@ -104,7 +105,7 @@ ms.lasthandoff: 05/14/2018
 
 ### <a name="download-the-result-of-the-job"></a>下载作业结果
 
-以下函数将输出资产的结果下载到“输出”文件夹中，以便检查作业结果。 
+以下函数将输出[资产](https://docs.microsoft.com/rest/api/media/assets)的结果下载到“输出”文件夹中，以便检查作业结果。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory B2C：使用自定义策略添加 Azure AD 提供程序 | Microsoft Docs"
-description: "了解 Azure Active Directory B2C 自定义策略"
+title: Azure Active Directory B2C：使用自定义策略添加 Azure AD 提供程序 | Microsoft Docs
+description: 了解 Azure Active Directory B2C 自定义策略
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: parakhj
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: f34326bcb8a7cbf5b5cf75e8f18f2843abc0b3ab
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40943c135746925929daf7ebae4714ef70eeda51
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140217"
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C：使用 Azure AD 帐户登录
 
@@ -46,12 +47,12 @@ ms.lasthandoff: 12/11/2017
 > 我们在以下说明中将“contoso.com”用于组织 Azure AD 租户，并将“fabrikamb2c.onmicrosoft.com”用作 Azure AD B2C 租户。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部栏中选择帐户。 在“目录”列表中，选择要注册应用程序的组织 Azure AD 租户 (contoso.com)。
-1. 在左侧窗格中选择“更多服务”，并搜索“应用注册”。
-1. 选择“新建应用程序注册”。
-1. 输入应用程序的名称（例如 `Azure AD B2C App`）。
-1. 选择“Web 应用/API”作为应用程序类型。
-1. 对于“登录 URL”，输入以下 URL，其中 `yourtenant` 替换为 Azure AD B2C 租户的名称 (`fabrikamb2c.onmicrosoft.com`)：
+2. 在顶部栏中选择帐户。 在“目录”列表中，选择要注册应用程序的组织 Azure AD 租户 (contoso.com)。
+3. 在左侧窗格中选择“更多服务”，并搜索“应用注册”。
+4. 选择“新建应用程序注册”。
+5. 输入应用程序的名称（例如 `Azure AD B2C App`）。
+6. 选择“Web 应用/API”作为应用程序类型。
+7. 对于“登录 URL”，输入以下 URL，其中 `yourtenant` 替换为 Azure AD B2C 租户的名称 (`fabrikamb2c.onmicrosoft.com`)：
 
     >[!NOTE]
     >“登录 URL”中“yourtenant”的值必须全小写。
@@ -60,10 +61,10 @@ ms.lasthandoff: 12/11/2017
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. 保存应用程序 ID。
-1. 选择新建的应用程序。
-1. 在“设置”边栏选项卡下，选择“密钥”。
-1. 创建新密钥，然后保存。 在下一部分的步骤中将使用它。
+8. 保存应用程序 ID。
+9. 选择新建的应用程序。
+10. 在“设置”边栏选项卡下，选择“密钥”。
+11. 输入密钥说明，选择持续时间，然后单击“保存”。 随即会显示密钥的值。 复制密钥值，便于在下一部分的步骤中使用。
 
 ## <a name="add-the-azure-ad-key-to-azure-ad-b2c"></a>将 Azure AD 密钥添加到 Azure AD B2C
 
@@ -75,7 +76,7 @@ ms.lasthandoff: 12/11/2017
    * 对于“名称”，选择与 Azure AD 租户名称匹配的名称（例如 `ContosoAppSecret`）。  前缀 `B2C_1A_` 会自动添加到密钥名称。
    * 将应用程序密钥粘贴到“机密”文本框中。
    * 选择“签名”。
-1. 选择“创建” 。
+1. 选择**创建**。
 1. 确认已创建密钥 `B2C_1A_ContosoAppSecret`。
 
 

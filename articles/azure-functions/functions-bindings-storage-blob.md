@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: a3d1ca210d490e7a8c634fbfb2a2e11f4e82fae4
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f74a44ed1b26458ad77e5de43a67a961aee70ec1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356403"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -31,14 +32,18 @@ ms.lasthandoff: 05/11/2018
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+> [!NOTE]
+> 将事件网格触发器而非 Blob 存储触发器用于仅限 Blob 的存储帐户、大规模，或者用于避免冷启动延迟。 有关详细信息，请参阅[触发器](#trigger)部分。 
+
 ## <a name="packages"></a>包
 
 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-> [!NOTE]
-> 将事件网格触发器而非 Blob 存储触发器用于仅限 Blob 的存储帐户、大规模，或者用于避免冷启动延迟。 有关详细信息，请参阅下面的**触发器**部分。 
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="trigger"></a>触发器
 
@@ -769,7 +774,7 @@ public static void Run(
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup> function.json 中需有 "in" 绑定 `direction` 或 C# 类库中需有 `FileAccess.Read`。
+<sup>1</sup> function.json 中需有 "in" 绑定 `direction` 或 C# 类库中需有 `FileAccess.Read`。 但是，可以使用运行时提供的容器对象来执行写入操作，例如将 Blob 上传到容器。
 
 <sup>2</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
 

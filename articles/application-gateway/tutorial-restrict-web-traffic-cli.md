@@ -1,5 +1,5 @@
 ---
-title: 使用 Web 应用程序防火墙限制 Web 流量 - Azure CLI
+title: 启用 Web 应用程序防火墙 - Azure CLI
 description: 了解如何通过 Azure CLI 在应用程序网关上使用 Web 应用程序防火墙限制 Web 流量。
 services: application-gateway
 author: vhorne
@@ -10,13 +10,14 @@ ms.workload: infrastructure-services
 ms.date: 4/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 64de501c2e7912cb4cbbae4b194d6c686a1efe67
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ca00dd3b359d9aff1b987a3bef5b27732678b0a3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356216"
 ---
-# <a name="tutorial-restrict-web-traffic-with-a-web-application-firewall-using-the-azure-cli"></a>教程：通过 Azure CLI 使用 Web 应用程序防火墙限制 Web 流量
+# <a name="tutorial-enable-web-application-firewall-using-the-azure-cli"></a>教程：使用 Azure CLI 启用 Web 应用程序防火墙
 
 在[应用程序网关](overview.md)上使用 [Web 应用程序防火墙](waf-overview.md) (WAF) 限制流量。 WAF 使用 [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 规则保护应用程序。 这些规则包括针对各种攻击（例如 SQL 注入、跨站点脚本攻击和会话劫持）的保护。 
 
@@ -134,7 +135,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>创建存储帐户和配置诊断

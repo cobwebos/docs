@@ -12,13 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/18/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: fd706737491a4644b0730ea197f6a2a9ed5480e5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366522"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -198,6 +199,8 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
 ```
 
 定义终结点后，Service Fabric 即可将该终结点发布到命名服务。 在群集中运行的其他服务可以解析此容器。 还可以使用[反向代理](service-fabric-reverseproxy.md)进行容器到容器通信。 将 HTTP 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式进行通信。
+
+该服务在特定端口（本例中为 8081）上进行侦听。 当应用程序部署到 Azure 中的群集时，该群集和应用程序都在 Azure 负载均衡器之后运行。 应用程序端口必须在 Azure 负载均衡器中打开，以便入站流量能够通过该服务。  可以在 Azure 负载均衡器中使用 [PowerShell 脚本](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)来打开此端口，也可以在 [Azure 门户](https://portal.azure.com)中将其打开。
 
 ## <a name="configure-and-set-environment-variables"></a>配置和设置环境变量
 可以针对服务清单中的每个代码包指定环境变量。 此功能适用于所有服务，不管它们是作为容器、进程还是来宾可执行文件部署的。 可以替代应用程序清单中的环境变量值，或者在部署期间将其指定为应用程序参数。

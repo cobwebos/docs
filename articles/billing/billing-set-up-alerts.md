@@ -4,8 +4,8 @@ description: 介绍如何对 Azure 帐单设置警报，以免帐单出乎意料
 keywords: 信用额度警报, 计费警报
 services: ''
 documentationcenter: ''
-author: vikdesai
-manager: tonguyen
+author: adpick
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/9/2017
-ms.author: vikdesai
+ms.author: adpick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8606efc4e0d3050ddd72b6bf8ec87f6ddd84fa2e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: fa7d1853226647917925e8c75e01a1c83d84daeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359044"
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>为 Microsoft Azure 订阅设置计费或信用额度警报
 如果用户是 Azure 订阅的帐户管理员，可以使用 Azure 计费警报服务来创建自定义的计费警报，以便监控和管理 Azure 帐户的计费活动。
 
 此服务为预览功能，因此需要先在预览功能页面中启用它。
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="set-the-alert-threshold-and-email-recipients"></a>设置警报阈值和电子邮件收件人
 1. 访问[预览功能页](https://account.windowsazure.com/PreviewFeatures)并启用**账单警报服务**。
@@ -49,7 +52,7 @@ Azure 支持任何电子邮件地址并且不验证电子邮件地址是否可�
 在设置警报后，帐户中心会列出它们并显示你还可以设置多少警报。 对于每个警报，可以看到其发送日期和时间，是针对帐单合计的警报还是针对资金信用的警报，以及设置的限制。 日期和时间格式为 24 小时制通用协调时间 (UTC)，日期为 yyyy-mm-dd 格式。 单击列表中某个警报的加号可对其进行编辑，单击垃圾桶可将其删除。
 
 ## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>用于企业协议 (EA) 客户的账单警报
-EA 客户可以通过设置支出配额为注册的每个部门获取警报。 若要快速入门，请参阅 EA 门户中的[部门支出配额](https://ea.azure.com/helpdocs/departmentSpendingQuotas)。
+此服务不支持 EA 订阅，但是，EA 客户可以通过设置支出配额为注册的每个部门获取警报。 若要快速入门，请参阅 EA 门户中的[部门支出配额](https://ea.azure.com/helpdocs/departmentSpendingQuotas)。
 
 ## <a name="learn-more-about-azure-cost-management"></a>详细了解 Azure 成本管理
 - 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)、[总体拥有成本计算器](https://aka.ms/azure-tco-calculator)和添加服务时估计成本。

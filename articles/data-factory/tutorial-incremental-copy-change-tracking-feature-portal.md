@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30189862"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -57,10 +58,10 @@ ms.lasthandoff: 03/23/2018
 ## <a name="high-level-solution"></a>高级解决方案
 在本教程中，请创建两个管道来执行下述两项操作：  
 
-1. **首次加载：**创建一个包含复制活动的管道，将完整数据从源数据存储（Azure SQL 数据库）复制到目标数据存储（Azure Blob 存储）。
+1. **首次加载：** 创建一个包含复制活动的管道，将完整数据从源数据存储（Azure SQL 数据库）复制到目标数据存储（Azure Blob 存储）。
 
     ![完整地加载数据](media/tutorial-incremental-copy-change-tracking-feature-portal/full-load-flow-diagram.png)
-1.  **增量加载：**创建一个包含以下活动的管道并定期运行。 
+1.  **增量加载：** 创建一个包含以下活动的管道并定期运行。 
     1. 创建**两项查找活动**，从 Azure SQL 数据库获取旧的和新的 SYS_CHANGE_VERSION，然后将其传递至复制活动。
     2. 创建**一项复制活动**，将两个 SYS_CHANGE_VERSION 值之间的插入/更新/删除数据从 Azure SQL 数据库复制到 Azure Blob 存储。
     3. 创建**一项存储过程活动**，更新 SYS_CHANGE_VERSION 的值，以便进行下一次的管道运行。
@@ -404,7 +405,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 11. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。 将活动的名称设置为 **StoredProceduretoUpdateChangeTrackingActivity**。 此活动更新 **table_store_ChangeTracking_version** 表中的更改跟踪版本。
 
     ![存储过程活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. 切换到“SQL 帐户”选项卡，为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
+12. 切换到“SQL 帐户”\*选项卡，为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
 
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. 切换到“存储过程”选项卡，然后执行以下步骤： 

@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure Active Directory 为LinkedIn Elevate 配置自动用户预配 | Microsoft Docs"
-description: "了解如何配置 Azure Active Directory 以便自动将用户帐户预配到 LinkedIn Elevate 以及取消其预配。"
+title: 教程：使用 Azure Active Directory 为LinkedIn Elevate 配置自动用户预配 | Microsoft Docs
+description: 了解如何配置 Azure Active Directory 以便自动将用户帐户预配到 LinkedIn Elevate 以及取消其预配。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: af922aaae21ab87c7e8d9354bcbae64fc97c6f02
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d0e390cb76888960dbc52c1c5015d1cb9a6c169c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34345769"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>教程：为 LinkedIn Elevate 配置自动用户预配
 
@@ -55,7 +56,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 本部分指导完成以下操作：将 Azure AD 连接到 LinkedIn Elevate 的 SCIM 用户帐户预配 API，配置预配服务以便基于 Azure AD 中的用户和组分配在 LinkedIn Elevate 中创建、更新和禁用所分配的用户帐户。
 
-**提示：**还可以选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 LinkedIn Elevate 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
+**提示：** 还可以选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 LinkedIn Elevate 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>若要在 Azure AD 中配置 LinkedIn Elevate 的自动用户帐户预配，请执行以下操作：
@@ -124,4 +125,4 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)

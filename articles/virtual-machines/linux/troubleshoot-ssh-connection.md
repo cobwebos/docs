@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 77effb7892e6d59087d07109958f4682886f12db
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e5d9fb76f66ffb98addab24e9e8bf8b82a82af7a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365672"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>针对通过 SSH 连接到 Azure Linux VM 时发生的失败、错误或被拒绝问题进行故障排除
 尝试连接到 Linux 虚拟机 (VM) 时，有多种原因可能会导致安全外壳 (SSH) 错误、SSH 连接失败或被拒绝。 本文将帮助用户找出原因并更正问题。 可以使用 Azure 门户、Azure CLI 或适用于 Linux 的 VM 访问扩展来排查和解决连接问题。
@@ -34,7 +35,7 @@ ms.lasthandoff: 05/10/2018
 
 1. 重置 SSH 配置。
 2. 重置用户的凭据。
-3. 确认[网络安全组](../../virtual-network/virtual-networks-nsg.md)规则是否允许 SSH 流量。
+3. 验证[网络安全组](../../virtual-network/security-overview.md)规则是否允许 SSH 流量。
    * 确保有一条网络安全组规则允许 SSH 流量（默认为 TCP 端口 22）。
    * 在不使用 Azure 负载均衡器的情况下无法使用端口重定向/映射。
 4. 查看 [VM 资源运行状况](../../resource-health/resource-health-overview.md)。 

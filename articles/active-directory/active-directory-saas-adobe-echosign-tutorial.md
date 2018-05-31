@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Adobe Sign 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Adobe Sign 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Adobe Sign 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Adobe Sign 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2017
+ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f68701cc345ee1bb04cde265ac4e2d6a402da557
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c3b7e7178ef68475f331edf058ca0f23661af3ea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34338867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
 
@@ -27,19 +28,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Adobe Sign
 - 可以让用户使用其 Azure AD 帐户自动登录到 Adobe Sign（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Adobe Sign 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Adobe Sign 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 Adobe Sign，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -103,7 +104,7 @@ ms.lasthandoff: 12/11/2017
     ![配置单一登录][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
 
 3. 在“Adobe Sign 域和 URL”部分中，执行以下步骤：
@@ -115,8 +116,8 @@ ms.lasthandoff: 12/11/2017
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.echosign.com`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。 
- 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。
+
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
@@ -127,42 +128,52 @@ ms.lasthandoff: 12/11/2017
 
 6. 在“Adobe Sign 配置”部分，单击“配置 Adobe Sign”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
-    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
+    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png)
 
+7. 在配置之前，需要联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，以便将你的域添加到 Adobe Sign 的允许列表中。 请按照以下步骤来添加域：
 
-7. 在其他 Web 浏览器窗口中，以管理员身份登录 Adobe Sign 公司站点。
+    a. [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)将向你发送随机生成的令牌。 对于你的域，令牌将如下所示：**adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 
-8. 在顶部菜单中，单击“帐户”，然后在左侧的导航窗格中，单击“帐户设置”下的“SAML 设置”。
-   
-   ![帐户](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "Account")
-
-9. 在“SAML 设置”部分中执行以下步骤：
-   
-   ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML 设置")
-   
-   a. 对于“SAML 模式”，选择“SAML 强制”。
-   
-   b. 选择“允许 EchoSign 帐户管理员使用 EchoSign 凭据登录”。
-   
-   c. 对于“用户创建”，选择“自动添加通过 SAML 验证了身份的用户”。
-
-10. 继续执行以下步骤：
-
-       ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/ic789522.png "SAML 设置")
-
-    a. 将从 Azure 门户复制的“SAML 实体 ID”粘贴到“IdP 实体 ID”文本框中。
+    b. 你将需要在 DNS 文本记录中发布该验证令牌并通知 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)。
     
-    b. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“IDP 登录 URL”文本框中。
+    > [!NOTE]
+    > 这可能需要花费几天或更长时间。 请注意，DNS 传播延迟意味着 DNS 中发布的值可能在一小时或更长时间内不可见。 我们希望你的 IT 管理员应具备有关如何在 DNS 文本记录中发布此令牌的丰富知识。
+    
+    c. 一旦你在令牌发布后通过支持票证通知[Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，他们将验证该域并将其添加到你的帐户。
+    
+    d. 在 DNS 记录上发布该令牌时执行的常规步骤 -
+
+    * 登录到域帐户
+    * 查找用于更新 DNS 记录的页面。 此页面可能称为“DNS 管理”、“名称服务器管理”或“高级设置”。
+    * 查找你的域的 TXT 记录。
+    * 添加带有 Adobe 提供的完整令牌值的 TXT 记录。
+    * 保存所做更改。
+
+8. 在其他 Web 浏览器窗口中，以管理员身份登录 Adobe Sign 公司站点。
+
+9. 在 SAML 菜单中，单击“帐户设置”，然后单击“SAML 设置”。
    
-    c. 将从 Azure 门户复制的“注销 URL”粘贴到“IdP 注销 URL”文本框中。
+    ![帐户](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "Account")
 
-    d. 在记事本中打开下载的“证书(Base64)”**)**文件，将其内容复制到剪贴板，然后将其粘贴到“IdP 证书”文本框中
+10. 在“SAML 设置”部分执行以下步骤：
+  
+    ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML 设置")
+   
+    a. 对于“SAML 模式”，选择“SAML 强制”。
+   
+    b. 选择“允许 Adobe Sign 帐户管理员使用 Adobe Sign 凭据登录”。
+   
+    c. 对于“用户创建”，选择“自动添加通过 SAML 验证了身份的用户”。
 
-    e. 单击“保存更改”。
+    d. 将从 Azure 门户复制的“SAML 实体 ID”粘贴到“实体 ID/颁发者 URL”文本框中。
+    
+    e. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“登录 URL/SSO 终结点”文本框中。
+   
+    f. 将从 Azure 门户复制的“注销 URL”粘贴到“注销 URL/SLO 终结点”文本框中。
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    g. 在记事本中打开下载的“证书(Base64)”**)** 文件，将其内容复制到剪贴板，然后将其粘贴到“IdP 证书”文本框中
+
+    h. 单击“保存更改”。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -189,11 +200,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-an-adobe-sign-test-user"></a>创建 Adobe Sign 测试用户
 
@@ -208,15 +219,15 @@ ms.lasthandoff: 12/11/2017
 
 2. 在顶部菜单中，单击“帐户”，然后在左侧的导航窗格中，单击“用户和组”，再单击“创建新用户”。
    
-   ![帐户](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "Account")
+    ![帐户](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "Account")
    
 3. 在“创建新用户”部分中，执行以下步骤：
    
-   ![创建用户](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "创建用户")
+    ![创建用户](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "创建用户")
    
-   a. 键入希望在相关文本框中预配的有效 AAD 帐户的“电子邮件地址”、“名字”和“姓氏”。
+    a. 键入希望在相关文本框中预配的有效 AAD 帐户的“电子邮件地址”、“名字”和“姓氏”。
    
-   b. 单击“创建用户”。
+    b. 单击“创建用户”。
 
 >[!NOTE]
 >Azure Active Directory 帐户持有者收到一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。 
@@ -259,7 +270,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -274,4 +285,3 @@ ms.lasthandoff: 12/11/2017
 [201]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_203.png
-

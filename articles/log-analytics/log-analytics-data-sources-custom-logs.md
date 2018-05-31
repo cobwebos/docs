@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e4e2edeb6703e8c55a16b488175fbcdb0dfe56a9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361883"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics 中的自定义日志
 Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。  收集后，使用 Log Analytics 的[自定义字段](log-analytics-custom-fields.md)功能可将日志中的每个记录解析到各个字段中。
@@ -29,7 +30,7 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
 - 每行日志必须有单个条目，或在每个条目的开头使用时间戳，时间戳可匹配以下任一种格式。
 
-    YYYY-MM-DD HH:MM:SS<br>M/D/YYYY HH:MM:SS AM/PM <br>Mon DD,YYYY HH:MM:SS
+    YYYY-MM-DD HH:MM:SS<br>M/D/YYYY HH:MM:SS AM/PM<br>Mon DD, YYYY HH:MM:SS<br />yyMMdd HH:mm:ss<br />ddMMyy HH:mm:ss<br />MMM d hh:mm:ss<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
 
 - 日志文件不允许会以新条目覆盖文件的循环日志记录或日志轮换。
 - 日志文件必须使用 ASCII 或 UTF-8 编码。  不支持其他格式，如 UTF-16。

@@ -1,8 +1,8 @@
 ---
-title: "在 Azure Application Insights 中监视 Docker 应用程序 | Microsoft Docs"
-description: "Docker 性能计数器、事件和异常可连同容器化应用发送的遥测数据一起显示在 Application Insights 中。"
+title: 在 Azure Application Insights 中监视 Docker 应用程序 | Microsoft Docs
+description: Docker 性能计数器、事件和异常可连同容器化应用发送的遥测数据一起显示在 Application Insights 中。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 68f408f18b767ed9c5aba8fed8c97f021cdeb123
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a0476e2f0bf08f76b45e1342ec38137e46008cb1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153687"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>在 Application Insights 中监视 Docker 应用程序
-[Docker](https://www.docker.com/) 容器中的生命周期事件和性能计数器可以在 Application Insights 上绘制成图表。 在主机的容器中安装 [Application Insights](app-insights-overview.md) 映像，该映像会显示主机及其他映像的性能计数器。
+[Docker](https://www.docker.com/) 容器中的生命周期事件和性能计数器可以在 Application Insights 上绘制成图表。 在主机的容器中安装 [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) 映像，该映像会显示主机及其他映像的性能计数器。
 
 借助 Docker，可连同所有依赖项在轻量级容器中分配应用。 它们会在运行 Docker 引擎的任何主机计算机上运行。
 
@@ -43,6 +44,10 @@ ms.lasthandoff: 11/01/2017
 2. 添加“Docker”磁贴：选择“添加磁贴”，从库中拖出“Docker”磁贴，并单击“完成”。 
    
     ![示例](./media/app-insights-docker/03.png)
+
+> [!NOTE]
+> Application Insights 中的“概述”窗格现已锁定，不允许从库中添加磁贴。 仍可通过 Azure 仪表板接口添加上述 Docker 磁贴。
+
 3. 单击“概要”下拉列表，并复制检测密钥。 使用此密钥告知 SDK 要将遥测数据发送到哪个位置。
 
     ![示例](./media/app-insights-docker/02-props.png)

@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Cerner Central 配置自动用户预配 | Microsoft Docs"
-description: "了解如何将 Azure Active Directory 配置为自动将用户预配到 Cerner Central 中的名单内。"
+title: 教程：使用 Azure Active Directory 为 Cerner Central 配置自动用户预配 | Microsoft Docs
+description: 了解如何将 Azure Active Directory 配置为自动将用户预配到 Cerner Central 中的名单内。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: a4aca2db0190b97d209fc6769b9db55b0ad468d9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 060686089634eda5d15345da9668ff294d350012
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34337106"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>教程：为 Cerner Central 配置自动用户预配
 
@@ -57,7 +58,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 本部分将指导完成以下操作：使用 Cerner 的 SCIM 用户帐户预配 API 将 Azure AD 连接到 Cerner Central 的用户名单，配置预配服务以便基于 Azure AD 中的用户和组在 Cerner Central 中创建、更新和禁用分配的用户帐户。
 
 > [!TIP]
-> 还可以选择按照 [Azure 门户 (https://portal.azure.com) 中提供的说明为 Cerner Central 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。 有关详细信息，请参阅 [Cerner Central 单一登录教程](active-directory-saas-cernercentral-tutorial.md)。
+> 还可选择按照 [Azure 门户 (https://portal.azure.com) 中提供的说明为 Cerner Central 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。 有关详细信息，请参阅 [Cerner Central 单一登录教程](active-directory-saas-cernercentral-tutorial.md)。
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>若要在 Azure AD 中为 Cerner Central 配置自动用户帐户预配，请执行以下操作：
@@ -87,7 +88,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
    * 生产：https://cernercentral.com/system-accounts/
 
-4. 最后，需要获取 Cerner 中沙盒与生产环境的用户名单领域 ID，以完成配置。 有关如何获取的信息，请参阅：https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM。 
+4. 最后，需要获取 Cerner 中沙盒与生产环境的用户名单领域 ID，以完成配置。 有关如何获取此项的信息，请参阅：https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM。 
 
 5. 现可以配置 Azure AD 向 Cerner 预配用户帐户。 登录到[Azure 门户](https://portal.azure.com)，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
@@ -130,7 +131,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 * [Cerner Central：使用 Azure AD 发布标识数据](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [教程：使用 Azure Active Directory 为 Cerner Central 配置单一登录](active-directory-saas-cernercentral-tutorial.md)
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 * [了解如何查看日志并获取有关预配活动的报表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)。

@@ -1,24 +1,21 @@
 ---
-title: 通过 Azure 门户开始使用 Azure Data Lake Analytics | Microsoft Docs
-description: '了解如何使用 Azure 门户创建 Data Lake Analytics 帐户，使用 U-SQL 创建 Data Lake Analytics 作业，并提交该作业。 '
+title: 通过 Azure 门户开始使用 Azure Data Lake Analytics
+description: 了解如何使用 Azure 门户创建 Data Lake Analytics 帐户，使用 U-SQL 创建 Data Lake Analytics 作业，并提交该作业。
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
+ms.author: saveenr
 manager: kfile
-editor: cgronlun
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
-ms.author: saveenr
-ms.openlocfilehash: 34967a9853f907c61494e72229d75af1c625ea8f
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 63fc4272dc4b26e9eb4846118bc57cd6aa5bf361
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358279"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -64,11 +61,11 @@ OUTPUT @a
 
 ## <a name="submit-a-u-sql-job"></a>提交 U-SQL 作业
 
-1. 从 Data Lake Analytics 帐户单击“新建作业”。
-2. 粘贴在上面所示的 U-SQL 脚本文本中。 
-3. 单击“提交”。   
-4. 请等到作业状态变为“成功”。
-5. 单击“输出”选项卡，然后单击 `data.csv`。 
+1. 从 Data Lake Analytics 帐户中选择“新建作业”。
+2. 粘贴前面的 U-SQL 脚本的文本。 命名此作业。 
+3. 选择“提交”按钮以启动作业。   
+4. 监视作业的**状态**，并等到作业状态更改为“成功”。
+5. 选择“数据”选项卡，然后选择“输出”选项卡。选择名为 `data.csv` 的输出文件并查看输出数据。
 
 ## <a name="see-also"></a>另请参阅
 

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Shmoop For Schools 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Shmoop For Schools 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Shmoop For Schools 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Shmoop For Schools 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 48db70834f96adbb7097457caca8489ea1a57da5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e824fe7a74c4adc619f7fa324aa6fa28dacecf24
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>教程：Azure Active Directory 与 Shmoop For Schools 的集成
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Shmoop For Schools 的集成，需备齐以下项目：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Shmoop For Schools 单一登录的订阅
 
 > [!NOTE]
@@ -51,7 +52,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Shmoop For Schools
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-shmoop-for-schools-from-the-gallery"></a>从库中添加 Shmoop For Schools
 要配置 Shmoop For Schools 与 Azure AD 的集成，需要从库中将 Shmoop For Schools 添加到托管 SaaS 应用列表。
@@ -68,7 +69,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入 **Shmoop For Schools**。 在结果中选择“Shmoop For Schools”，然后选择“添加”按钮添加该应用程序。
 
@@ -79,8 +80,6 @@ ms.lasthandoff: 12/11/2017
 在本部分中，根据名为“Britta Simon”的测试用户的指示配置和测试 Shmoop For Schools 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Shmoop For Schools 用户。 换句话说，需要在 Azure AD 用户与 Shmoop For Schools 中的相关用户之间建立链接。
-
-在“Shmoop For Schools”中，提供与 Azure AD 中的“用户名”值相同的“用户名”值。 现已建立链接关系。
 
 若要配置和测试 Shmoop For Schools 的 Azure AD 单一登录，请完成以下构建基块：
 
@@ -138,39 +137,19 @@ ms.lasthandoff: 12/11/2017
     
     c. 在“值”列表中，选择为该行显示的属性值。
 
-    d.单击“下一步”。 将“命名空间”框留空。
+    d. 将“命名空间”框留空。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 选择“确定”。
+    e. 选择“确定”。
 
 6. 选择“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. 若要生成“元数据”URL，请执行以下步骤：
+7. 在“SAML 签名证书”部分上，单击”复制”按钮，复制“应用联合元数据 URL”并将其粘贴到记事本。
 
-    a. 选择“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appregistrations.png)
-   
-    b. 若要打开“终结点”对话框，请选择“终结点”。  
-    
-    ![配置单一登录](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpointicon.png)
+    ![证书下载链接](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
-    c. 选择复制按钮以复制“联合元数据文档”URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpoint.png)
-     
-    d.单击“下一步”。 转到 **Shmoop For Schools** 的属性页。 然后使用“复制”按钮复制**应用程序 ID**。 将此 ID 粘贴到记事本中。
- 
-    ![配置单一登录](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appid.png)
-
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`。   
-
-8. 若要在“Shmoop For Schools”端配置单一登录，需要将**元数据 URL** 发送给 [Shmoop For Schools 支持团队](mailto:support@shmoop.com)。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了。 从“Active Directory” > “企业应用程序”部分添加该应用后，选择“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
-> 
+8. 若要在“Shmoop For Schools”端配置单一登录，需要将“应用联合元数据 URL”发送给 [Shmoop For Schools 支持团队](mailto:support@shmoop.com)。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -196,13 +175,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-shmoopforschools-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 选择“创建” 。
+    d. 选择**创建**。
  
 ### <a name="create-a-shmoop-for-schools-test-user"></a>创建 Shmoop For Schools 测试用户
 
@@ -252,7 +231,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

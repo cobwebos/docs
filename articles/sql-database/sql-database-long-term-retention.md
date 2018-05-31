@@ -7,14 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 51f00984a8f0d750bdb478ae4bc8093adad8108e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce78201e3f87b9687ced181f90d352d73aa29431
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366056"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>将 Azure SQL 数据库备份存储 10 年之久
 
@@ -54,8 +55,13 @@ W=12 周（84 天）、M=12 个月（365 天）、Y=10 年（3650 天）、WeekO
 
 
  
-如果你打算修改以上策略并设置 W=0（无每周备份），则备份副本的节奏将更改，如上表中突出显示的日期所示。 保留这些备份所需的存储量将相应减少。 注意：LTR 副本是由 Azure 存储服务创建的，因此，复制过程对现有数据库的性能没有影响。
-若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。   数据库可以还原到原始数据库所在的订阅中的任何现有服务器。 
+如果你打算修改以上策略并设置 W=0（无每周备份），则备份副本的节奏将更改，如上表中突出显示的日期所示。 保留这些备份所需的存储量将相应减少。 
+
+> [!NOTE]
+1. LTR 副本是由 Azure 存储服务创建的，因此，复制过程对现有数据库的性能没有影响。
+2. 将策略应用到将来的备份。 例如 如果配置策略时指定的 WeekOfYear 在过去，则将在明年创建第一个 LTR 备份。 
+3. 若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。   数据库可以还原到原始数据库所在的订阅中的任何现有服务器。 
+> 
 
 ## <a name="configure-long-term-backup-retention"></a>配置长期备份保留
 

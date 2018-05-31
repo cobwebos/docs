@@ -1,32 +1,28 @@
 ---
-title: "Azure Active Directory Connect 同步：在 Office 365 中为多地域功能配置首选数据位置 | Microsoft Docs"
-description: "介绍了如何使用 Azure Active Directory Connect 同步将 Office 365 用户资源放在靠近用户的位置。"
+title: Azure Active Directory Connect 同步：在 Office 365 中为多地域功能配置首选数据位置 | Microsoft Docs
+description: 介绍了如何使用 Azure Active Directory Connect 同步将 Office 365 用户资源放在靠近用户的位置。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 04/16/2018
 ms.author: billmath
-ms.openlocfilehash: a5ebd61539af7116b8f92cdf9404cd2b5cdea193
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0020ed42baaa32fbc5ae2d62b37558e491842d67
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32157401"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Office 365 中的多地域功能时，你使用此属性来指定用户的 Office 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
-
-> [!IMPORTANT]
-> 多地域目前以预览版提供。 若要加入预览版计划，请与你的 Microsoft 代表联系。
->
->
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>启用首选数据位置的同步
 默认情况下，用户使用的 Office 365 资源位于你的 Azure AD 租户所在区域。 例如，如果你的租户位于北美，则用户的 Exchange 邮箱也位于北美。 对于跨国组织而言，这可能不是最佳情况。
@@ -34,7 +30,7 @@ ms.lasthandoff: 03/02/2018
 通过设置属性 **preferredDataLocation**，可以定义用户的地域。 可以将用户的 Office 365 资源（例如邮箱和 OneDrive）放在用户所在的同一区域，同时仍对整个组织使用一个租户。
 
 > [!IMPORTANT]
-> 若要满足多地域的条件，Office 365 订阅中必须至少有 5,000 个席位。
+> Office 365 服务订阅数大于等于 5,000 个 的客户现可使用多地理位置功能。 有关详细信息，请咨询 Microsoft 代表。
 >
 >
 
@@ -55,7 +51,7 @@ Office 365 中支持多地域的区域包括：
 | 美国 | NAM |
 
 * 如果某个地域未在此表中列出（例如南美），则它无法用于多地域。
-* 印度和韩国地域仅可供账单地址和购买的许可证在这些地域中的客户使用。
+* 印度地域仅供帐单邮寄地址属于此地域且在此地域购买许可证的客户使用。
 * 并非所有 Office 365 工作负荷都支持设置用户的地域。
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect 对同步的支持
@@ -220,7 +216,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
         a. 将“范围”设置为“挂起的导出”。<br>
         b. 选择所有三个复选框，包括“添加”、“修改”和“删除”。<br>
         c. 若要查看包含要导出的更改的对象列表，请选择“搜索”。 若要检查给定对象的更改，请双击该对象。<br>
-        d.单击“下一步”。 验证更改是否符合需要。
+        d. 验证更改是否符合需要。
 
 6. 在 **Azure AD 连接器**上运行**导出**
 

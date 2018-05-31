@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Jobscience 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Jobscience 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Jobscience 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Jobscience 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: a2840968cadb3d78dee9d35fd0048d5941508cd3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cf6dccf02fa56b90ea4737e1d1c7b9a5e9d1d4af
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34346224"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教程：Azure Active Directory 与 Jobscience 集成
 
@@ -27,19 +28,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Jobscience
 - 可以让用户使用其 Azure AD 帐户自动登录到 Jobscience（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Jobscience 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Jobscience 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 若要从库中添加 Jobscience，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -173,7 +174,7 @@ ms.lasthandoff: 12/11/2017
 
     h. 在“标识提供者注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    i. 单击“保存” 。
+    i. 单击“ **保存**”。
 
 14. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，并单击“我的域”，打开“我的域”页。 
     
@@ -191,7 +192,7 @@ ms.lasthandoff: 12/11/2017
 
     ![安全性控制](./media/active-directory-saas-jobscience-tutorial/ic784368.png "安全性控制")
     
-    单击上一步中创建的 SSO 配置文件。 此页显示公司的单一登录 URL（例如 [https://companyname.my.salesforce.com?so=companyid](https://companyname.my.salesforce.com?so=companyid)）。    
+    单击上一步中创建的 SSO 配置文件。 此页显示你公司的单一登录 URL（例如，[https://companyname.my.salesforce.com?so=companyid](https://companyname.my.salesforce.com?so=companyid)）。    
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -222,11 +223,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-jobscience-test-user"></a>创建 Jobscience 测试用户
 
@@ -236,7 +237,7 @@ ms.lasthandoff: 12/11/2017
 >可以使用 Jobscience 提供的任何其他 Jobscience 用户帐户创建工具或 API 来预配 Azure Active Directory 用户帐户。
 >  
         
-**若要配置用户预配，请执行以下步骤：**
+**若要配置用户设置，请执行以下步骤：**
 
 1. 以管理员身份登录到 **Jobscience** 公司站点。
 
@@ -265,7 +266,7 @@ ms.lasthandoff: 12/11/2017
 
    f. 在“昵称”文本框中，键入用户的昵称（例如 Simon）。
 
-   g. 单击“保存” 。
+   g. 单击“ **保存**”。
 
     
 > [!NOTE]
@@ -311,7 +312,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

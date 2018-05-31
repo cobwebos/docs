@@ -9,11 +9,12 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: 1f5f4a4ece116503c8ddb5eaa4998b5b1a407bb1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5451046eb2bfc611db863d18cee93a248e651f88
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194243"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>使用 SQL 数据库、托管实例或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/23/2018
 1. 通过将目录设为托管数据库的 Azure 订阅的一个受信任目录，将 Azure 订阅关联到 Azure Active Directory。 有关详细信息，请参阅 [Azure 订阅与 Azure AD 的关联方式](../active-directory/active-directory-how-subscriptions-associated-directory.md)。
 2. 在 Azure 门户中使用目录切换器切换到与域关联的订阅。
 
-   **其他信息：**每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。 这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。 多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。 订阅与目录之间的这种信任关系不同于订阅与 Azure 中所有其他资源（网站、数据库等）之间的信任关系，在后一种关系中，这些资源更像是订阅的子资源。 如果某个订阅过期，则对该订阅关联的其他那些资源的访问权限也将终止。 但是，目录将保留在 Azure 中，并且可以将另一个订阅与该目录相关联，然后继续管理目录用户。 有关资源的详细信息，请参阅[了解 Azure 中的资源访问](../active-directory/active-directory-b2b-admin-add-users.md)。 若要详细了解此受信任关系，请参阅[如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)。
+   **其他信息：** 每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。 这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。 多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。 订阅与目录之间的这种信任关系不同于订阅与 Azure 中所有其他资源（网站、数据库等）之间的信任关系，在后一种关系中，这些资源更像是订阅的子资源。 如果某个订阅过期，则对该订阅关联的其他那些资源的访问权限也将终止。 但是，目录将保留在 Azure 中，并且可以将另一个订阅与该目录相关联，然后继续管理目录用户。 有关资源的详细信息，请参阅[了解 Azure 中的资源访问](../active-directory/active-directory-b2b-admin-add-users.md)。 若要详细了解此受信任关系，请参阅[如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>为 Azure SQL Server 创建 Azure AD 管理员
 每个托管 SQL 数据库或 SQL 数据仓库的 Azure SQL Server 开始时只使用单个服务器管理员帐户，即整个 Azure SQL Server 的管理员。 必须创建第二个 SQL Server 管理员，这是一个 Azure AD 帐户。 此主体在 master 数据库中作为包含的数据库用户创建。 作为管理员，服务器管理员帐户是每个用户数据库中 **db_owner** 角色的成员，并且以 **dbo** 用户身份输入每个用户数据库。 有关服务器管理员帐户的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
@@ -50,7 +51,7 @@ ms.lasthandoff: 04/23/2018
 
 托管实例需要权限来读取 Azure AD，以成功完成诸如通过安全组成员资格验证用户身份或创建新用户等任务。 为此，需要授予托管实例读取 Azure AD 的权限。 有两种方法来完成此操作：从门户和 PowerShell。 以下是两种方法的步骤。
 
-1. 在 Azure 门户右上角，单击相关连接以下拉包含可能 Active Directory 的列表。 
+1. 在 Azure 门户右上角，选择你的连接，以下拉可能的 Active Directory 列表。 
 2. 选择正确的 Active Directory 作为默认的 Azure AD。 
 
    此步骤将与 Active Directory 关联的订阅链接到托管实例，确保为 Azure AD 和托管实例使用相同的订阅。
@@ -58,7 +59,7 @@ ms.lasthandoff: 04/23/2018
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
-4.  单击 Active Directory 管理员页顶端的横幅。 如果在 Azure AD 中以全局/公司管理员身份登录，则可以通过 Azure 门户或使用 PowerShell 来完成。
+4.  选择 Active Directory 管理员页顶端的横幅。 如果在 Azure AD 中以全局/公司管理员身份登录，则可以通过 Azure 门户或使用 PowerShell 来完成。
 
     ![授予权限 - 门户](./media/sql-database-aad-authentication/grant-permissions.png)
 
@@ -70,17 +71,17 @@ ms.lasthandoff: 04/23/2018
 
     ![成功](./media/sql-database-aad-authentication/success.png)
 
-6.  现在即可为托管实例选择 Azure AD 管理员。 为此，请在“Active Directory 管理员”页上单击“设置管理员”命令。
+6.  现在即可为托管实例选择 Azure AD 管理员。 为此，请在“Active Directory 管理员”页上选择“设置管理员”命令。
 
     ![设置管理员](./media/sql-database-aad-authentication/set-admin.png)
 
-7. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，并单击“选择”。 
+7. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 
 
    “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 请参阅 [Azure AD 功能和限制](sql-database-aad-authentication.md#azure-ad-features-and-limitations)中受支持的管理员列表。 基于角色的访问控制 (RBAC) 仅适用于 Azure 门户，不会传播到 SQL Server。
 
     ![添加管理员](./media/sql-database-aad-authentication/add-admin.png)
 
-8. 在“Active Directory 管理员”页顶部，单击“保存”。
+8. 在“Active Directory 管理员”页顶部，选择“保存”。
 
     ![保存](./media/sql-database-aad-authentication/save.png)
 
@@ -90,7 +91,7 @@ ms.lasthandoff: 04/23/2018
 > 设置 Azure AD 管理员时，此新的管理员名称（用户或组）不能已作为 SQL Server 身份验证用户存在于虚拟 master 数据库中。 如果存在，Azure AD 管理员设置会失败；将回滚其创建，并指示此管理员（名称）已存在。 由于这种 SQL Server 身份验证用户不是 Azure AD 的一部分，因此使用 Azure AD 身份验证连接到服务器的任何尝试都会失败。
 
 > [!TIP]
-> 之后要删除管理员，请在“Active Directory 管理员”页顶部，单击“删除管理员”，并单击“保存”。
+> 之后如需删除管理员，请在“Active Directory 管理员”页顶部，选择“删除管理员”，然后选择“保存”。
  
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>为 Azure SQL 数据库服务器预配 Azure Active Directory 管理员
 
@@ -100,17 +101,24 @@ ms.lasthandoff: 04/23/2018
 以下两个过程演示如何使用 PowerShell 在 Azure 门户中为 Azure SQL Server 预配 Azure Active Directory 管理员。
 
 ### <a name="azure-portal"></a>Azure 门户
-1. 在 [Azure 门户](https://portal.azure.com/)右上角，单击相关连接以下拉包含可能 Active Directory 的列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL Server 托管的可能是 Azure SQL 数据库或 Azure SQL 数据仓库。）   
+1. 在 [Azure 门户](https://portal.azure.com/)右上角，选择你的连接，以下拉可能的 Active Directory 列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL Server 托管的可能是 Azure SQL 数据库或 Azure SQL 数据仓库。）   
     ![选择-AD][8]   
     
-2. 在左侧标题中，选择“SQL Server”、选择你的“SQL Server”，然后在“SQL Server”页中，单击“Active Directory 管理员”。   
-3. 在“Active Directory 管理员”页中，单击“设置管理员”。   
+2. 在左侧横幅中选择“所有服务”，然后在筛选器中键入“SQL Server”。 选择“SQL 服务器”。 
+
+    ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)    
+
+    >[!NOTE]
+    > 在此页面上，在选择“SQL 服务器”前，可选择名称旁边的星号标记以收藏该类别，并将“SQL 服务器”添加到左侧导航栏。 
+
+1. 在“SQL Server”页上，选择“Active Directory 管理员”。   
+2. 在“Active Directory 管理员”页中，选择“设置管理员”。   
     ![选择 Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  
     
-4. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，并单击“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 SQL 数据仓库进行身份验证结合使用](sql-database-aad-authentication.md)的“Azure AD 功能和限制”部分中支持的管理员列表。）基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。   
+4. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 SQL 数据仓库进行身份验证结合使用](sql-database-aad-authentication.md)的“Azure AD 功能和限制”部分中支持的管理员列表。）基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。   
     ![选择管理员](./media/sql-database-aad-authentication/select-admin.png)  
     
-5. 在“Active Directory 管理员”页顶部，单击“保存”。   
+5. 在“Active Directory 管理员”页顶部，选择“保存”。   
     ![保存管理员](./media/sql-database-aad-authentication/save-admin.png)   
 
 更改管理员的过程可能需要几分钟时间。 然后，新管理员将出现在“Active Directory 管理员”框中。
@@ -120,7 +128,7 @@ ms.lasthandoff: 04/23/2018
    > 
 
 
-之后要删除管理员，请在“Active Directory 管理员”页顶部，单击“删除管理员”，并单击“保存”。
+之后如需删除管理员，请在“Active Directory 管理员”页顶部，选择“删除管理员”，然后选择“保存”。
 
 ### <a name="powershell"></a>PowerShell
 若要运行 PowerShell cmdlet，需要已安装并运行 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
@@ -219,7 +227,7 @@ CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
 
 *Azure_AD_principal_name* 可以是 Azure AD 用户的用户主体名称，也可以是 Azure AD 组的显示名称。
 
-**示例：**若要创建代表 Azure AD 联合或托管域用户的包含的数据库用户：
+**示例：** 若要创建代表 Azure AD 联合或托管域用户的包含的数据库用户：
 ```
 CREATE USER [bob@contoso.com] FROM EXTERNAL PROVIDER;
 CREATE USER [alice@fabrikam.onmicrosoft.com] FROM EXTERNAL PROVIDER;
@@ -273,7 +281,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 1. 启动 Management Studio 或 Data Tools 后，在“连接到服务器”（或“连接到数据库引擎”）对话框的“身份验证”框中，选择“Active Directory - 集成”。 由于会为连接提供现有凭据，因此无需密码，也无法输入密码。   
 
     ![选择 AD 集成身份验证][11]
-2. 单击“选项”按钮，在“连接属性”页上的“连接到数据库”框中，键入你所要连接的用户数据库的名称。 （仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”，否则它处于灰显状态。）  
+2. 选择“选项”按钮，在“连接属性”页上的“连接到数据库”框中，键入所要连接的用户数据库的名称。 （仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”，否则它处于灰显状态。）  
 
     ![选择数据库名称][13]
 
@@ -289,7 +297,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 3. 在“密码”框中，为 Azure Active Directory 帐户或联合域帐户键入用户密码。
 
     ![选择 AD 密码身份验证][12]
-4. 单击“选项”按钮，在“连接属性”页上的“连接到数据库”框中，键入你所要连接的用户数据库的名称。 （请参阅前一选项的图。）
+4. 选择“选项”按钮，在“连接属性”页上的“连接到数据库”框中，键入所要连接的用户数据库的名称。 （请参阅前一选项的图。）
 
 ## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>使用 Azure AD 标识从客户端应用程序进行连接
 

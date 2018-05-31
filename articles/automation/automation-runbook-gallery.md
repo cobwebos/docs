@@ -7,13 +7,14 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a33bc9ea1750d9db34c0fad678118dc81f294c61
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 61d267898bab5e5df394d4097eacb33ada809518
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34355944"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure 自动化的 Runbook 和模块库
 无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的各种方案。  可以在不加以修改的情况下直接使用这些方案，或者使用它们作为起点并根据具体的要求进行编辑。
@@ -90,6 +91,9 @@ PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [Pow
 9. 在“导入”页上，单击“确定”导入模块。 Azure 自动化将模块导入帐户时，它提取有关该模块和 cmdlet 的元数据。 这可能需要几分钟才能完成，因为需要提取每个活动。
 10. 将收到正在部署该模块的初始通知；完成此过程后，还会收到另一通知。
 11. 导入模块后，会看到可用的活动，并可以在 Runbook 和 Desired State Configuration 中使用其资源。
+
+> [!NOTE]
+> 仅支持 PowerShell 核心的模块将在 Azure 自动化中不受支持，无法在 Azure 门户中导入，或直接从 PowerShell 库部署。
 
 ## <a name="requesting-a-runbook-or-module"></a>请求 Runbook 或模块
 可以将请求发送到[用户之声](https://feedback.azure.com/forums/246290-azure-automation/)。  如果需要 Runbook 编写帮助，或对 PowerShell 存有疑问，请将问题发布到我们的[论坛](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)。

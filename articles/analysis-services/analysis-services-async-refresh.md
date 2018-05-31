@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ff48d70a19e99531dcc90a81f8c7c723133ba8a0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d1862c5ed83033eb8de74459f26260864c646dfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192857"
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153120"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
@@ -98,7 +98,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 |名称  |Type  |说明  |默认  |
 |---------|---------|---------|---------|
-|Type     |  枚举       |  要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
+|Type     |  枚举       |  要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic、add 和 defragment。       |   automatic      |
 |CommitMode     |  枚举       |  确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
 |MaxParallelism     |   int      |  此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
 |RetryCount    |    int     |   指示操作在失败之前要重试的次数。      |     0    |
