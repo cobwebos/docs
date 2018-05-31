@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361941"
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940218"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -236,9 +236,9 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
     nslookup myip.opendns.com resolver1.opendns.com
 
 ## <a name="preventoutbound"></a>阻止出站连接
-有时允许 VM 创建出站流是不可取的。 或者，可能需要管理哪些目标可以通过出站流访问或哪些目标可以启动入站流。 在此情况下，可以使用[网络安全组](../virtual-network/security-overview.md)管理 VM 可访问的目标。 还可以使用 NSG 来管理可启动入站流的公共目标。
+有时允许 VM 创建出站流是不可取的。 或者，可能需要管理哪些目标可以通过出站流访问或哪些目标可以启动入站流。 在此情况下，可以使用[网络安全组](../virtual-network/virtual-networks-nsg.md)管理 VM 可访问的目标。 还可以使用 NSG 来管理可启动入站流的公共目标。 
 
-将 NSG 应用于负载均衡的 VM 时，需要注意[服务标记](../virtual-network/security-overview.md#service-tags)和[默认安全规则](../virtual-network/security-overview.md#default-security-rules)。 必须确保 VM 可以接收来自 Azure 负载均衡器的运行状况探测请求。 
+将 NSG 应用于负载均衡的 VM 时，需要注意[默认标记](../virtual-network/virtual-networks-nsg.md#default-tags)和[默认规则](../virtual-network/virtual-networks-nsg.md#default-rules)。 必须确保 VM 可以接收来自 Azure 负载均衡器的运行状况探测请求。 
 
 如果 NSG 阻止来自 AZURE_LOADBALANCER 默认标记的运行状况探测请求，那么 VM 的运行状况探测程序会失败，并且 VM 被标记为停机。 负载均衡器停止向此 VM 发送新流。
 
@@ -250,5 +250,5 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 
 - 详细了解[负载均衡器](load-balancer-overview.md)。
 - 详细了解[标准负载均衡器](load-balancer-standard-overview.md)。
-- 详细了解[网络安全组](../virtual-network/security-overview.md)。
+- 详细了解[网络安全组](../virtual-network/virtual-networks-nsg.md)。
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
