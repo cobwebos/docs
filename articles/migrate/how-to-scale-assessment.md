@@ -4,13 +4,14 @@ description: 介绍如何使用 Azure Migrate 服务访问大量本地计算机�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 01/08/2018
+ms.date: 05/18/2018
 ms.author: raynew
-ms.openlocfilehash: 934f32228d2c37db58c52cf4820ccc331fccd1d3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c8943aec1c81abb34b646180df48bcc55764ca24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365325"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -33,13 +34,13 @@ ms.lasthandoff: 04/06/2018
 | 发现  | 1,500             |
 | 评估 | 1,500             |
 
-<!-- 
-- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
+<!--
+- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments.
 - If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
 - If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
 - If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
     - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
-    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
+    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one.
       -->
 
 ## <a name="plan-multiple-discoveries"></a>计划多次发现
@@ -88,6 +89,14 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 3. 确保生成的哈希与以下设置匹配。
 
+    适用于 OVA 版本 1.0.9.8
+
+    **算法** | **哈希值**
+    --- | ---
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
     适用于 OVA 版本 1.0.9.7
 
     **算法** | **哈希值**
@@ -112,30 +121,6 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-    适用于 OVA 版本 1.0.8.59
-
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | 71139e24a532ca67669260b3062c3dad
-    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
-    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
-
-    适用于 OVA 版本 1.0.8.49
-
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | cefd96394198b92870d650c975dbf3b8
-    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
-    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
-
-    适用于 OVA 版本 1.0.8.40：
-
-    **算法** | **哈希值**
-    --- | ---
-    MD5 |afbae5a2e7142829659c21fd8a9def3f
-    SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
-    SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
-
 ## <a name="create-the-collector-vm"></a>创建收集器 VM
 
 将下载的文件导入 vCenter Server：
@@ -149,7 +134,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 4. 在“主机/群集”中，指定要在其上运行收集器 VM 的主机或群集。
 5. 在存储中，指定收集器 VM 的存储目标。
 6. 在“磁盘格式”中，指定磁盘类型和大小。
-7. 在“网络映射”中，指定收集器 VM 要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure 发送元数据。 
+7. 在“网络映射”中，指定收集器 VM 要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure 发送元数据。
 8. 检查并确认设置，然后选择“完成”。
 
 ## <a name="identify-the-id-and-key-for-each-project"></a>标识每个项目的 ID 和密钥
@@ -157,13 +142,13 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 如果拥有多个项目，请务必标识每个项目的 ID 和密钥。 运行收集器来发现 VM 时，需要使用密钥。
 
 1. 在项目中，选择“入门” > “发现和评估” > “发现计算机”。
-2. 在“复制项目凭据”中，请复制项目的 ID 和密钥。 
+2. 在“复制项目凭据”中，请复制项目的 ID 和密钥。
     ![复制项目凭据](./media/how-to-scale-assessment/copy-project-credentials.png)
 
 ## <a name="set-the-vcenter-statistics-level"></a>设置 vCenter 统计信息级别
-下面是发现期间收集的性能计数器的列表。 这些计数器在 vCenter Server 中的各种级别默认可用。 
+下面是发现期间收集的性能计数器的列表。 这些计数器在 vCenter Server 中的各种级别默认可用。
 
-建议将统计信息级别设置为最高常用级别 (3)，以便正确收集所有计数器。 如果将 vCenter 设置的级别较低，则可能只完整收集几个计数器，而其他的计数器的收集数为 0。 这样，评估可能会显示不完整的数据。 
+建议将统计信息级别设置为最高常用级别 (3)，以便正确收集所有计数器。 如果将 vCenter 设置的级别较低，则可能只完整收集几个计数器，而其他的计数器的收集数为 0。 这样，评估可能会显示不完整的数据。
 
 下表还列出了不收集特定计数器时将受到影响的评估结果。
 
@@ -203,7 +188,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 5.  在“指定 vCenter Server 详细信息”中，执行以下操作：
     - 指定 vCenter Server 的名称 (FQDN) 或 IP 地址。
     - 在“用户名称”和“密码”中，指定收集器用来发现 vCenter Server 中 VM 的只读帐户凭据。
-    - 在“选择范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1000 台 VM。 
+    - 在“选择范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1000 台 VM。
 
 6.  在“指定迁移项目”中，指定项目的 ID 和密钥。 如果未复制这些信息，请从收集器 VM 中打开 Azure 门户。 在项目“概述”页中，选择“发现计算机”，然后复制结果。  
 7.  在“查看收集进度”中，监视发现过程，并检查从 VM 中收集的元数据是否在范围内。 收集器提供一个近似的发现时间。
@@ -211,7 +196,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 ### <a name="verify-vms-in-the-portal"></a>在门户中验证 VM
 
-发现所需的时间取决于所发现的 VM 数。 一般情况下，发现 100 台 VM 的进程会在收集器完成运行后约一小时内完成。 
+发现所需的时间取决于所发现的 VM 数。 一般情况下，发现 100 台 VM 的进程会在收集器完成运行后约一小时内完成。
 
 1. 在 Migration Planner 项目中，选择“管理” > “计算机”。
 2. 检查想要发现的 VM 是否出现在门户中。

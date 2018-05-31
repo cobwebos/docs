@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 7bbe0945981370c15fd10e93498fcc3ee0bf1a39
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d5a9f2ba68574ba8cb99b01ce426ec77a5eecd3d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363955"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
 此 FAQ 解答有关 Azure 安全中心的问题。Azure 安全中心可帮助预防、检测和响应威胁，同时增加 Microsoft Azure 资源的可见性和安全方面的可控性。
@@ -51,16 +52,18 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](security-center-permissions.md)。
 
 ## <a name="data-collection"></a>数据收集
-安全中心会收集来自虚拟机的数据，进而评估其安全状态、提供安全建议并发出威胁警报。 初次访问安全中心时，会在订阅中的所有虚拟机上启用数据收集。 也可在安全中心策略中启用数据收集。
+安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。
 
 ### <a name="how-do-i-disable-data-collection"></a>如何禁用数据收集？
-如果使用 Azure 安全中心免费层，可随时通过虚拟机禁用数据收集。 标准层上的订阅需启用数据收集。 可在安全策略中对订阅禁用数据收集。 （[登录到 Azure 门户](https://portal.azure.com)，选择“浏览”，选择“安全中心”，并选择“策略”。）选中一个订阅后，会打开一个新的边栏选项卡，可在其选项中关闭“数据收集”。
+默认情况下自动设置处于关闭状态。 可以随时禁用安全策略中的此设置，禁用资源的自动设置。 强烈建议使用自动设置，以获取有关系统更新、OS 漏洞和终结点保护的安全警报和建议。
+
+若要禁用数据收集，请[登录到 Azure 门户](https://portal.azure.com)，依次选择“浏览”、“安全中心”和“策略”。 选择希望禁用自动设置的订阅。 选择订阅时，“安全策略 - 数据收集”将打开。 在“自动设置”下，选择“关闭”。
 
 ### <a name="how-do-i-enable-data-collection"></a>如何启用数据收集？
-可在安全中心策略中对 Azure 订阅启用数据收集。 启用数据收集。 [登录 Azure 门户](https://portal.azure.com)，选择“浏览”、“安全中心”，然后选择“策略”。 将“数据收集”设置为“开”。
+可在安全中心策略中对 Azure 订阅启用数据收集。 启用数据收集。 [登录到 Azure 门户](https://portal.azure.com)，依次选择“浏览”、“安全中心”和“策略”。 选择希望启用自动设置的订阅。 选择订阅时，“安全策略 - 数据收集”将打开。 在“自动设置”下，选择“打开”。
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>启用数据收集之后会发生什么？
-启用数据收集后，将在订阅中部署的所有现有以及新的受支持虚拟机上置备 Microsoft Monitoring Agent。
+启动自动设置后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Microsoft Monitoring Agent。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Microsoft Monitoring Agent 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。
 
 该代理可启用进程创建事件 4688 和事件 4688 内的 *CommandLine* 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。 若要了解针对每个新进程记录的详细信息，请参阅 [4688 中的说明字段](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)。 该代理还收集 VM 上创建的 4688 事件，并将这些事件存储在搜索中。
 
@@ -86,8 +89,8 @@ Azure 安全中心中启用的安全策略将使用安全建议和监视。 若�
 ### <a name="what-is-a-security-recommendation"></a>什么是安全建议？
 Azure 安全中心可分析 Azure 资源的安全状态。 发现潜在的安全漏洞后会生成建议。 建议会对所需控件的整个配置过程提供指导。 示例如下：
 
-* 设置反恶意软件可帮助识别和删除恶意软件
-* 配置[网络安全组](../virtual-network/virtual-networks-nsg.md)和规则来控制发送到虚拟机的流量
+* 预配反恶意软件可帮助识别和删除恶意软件
+* 配置[网络安全组](../virtual-network/security-overview.md)和规则来控制发送到虚拟机的流量
 * 设置 web 应用程序防火墙，帮助抵御针对 web 应用程序的攻击
 * 部署缺少的系统更新
 * 解决与推荐基线不匹配的操作系统配置
