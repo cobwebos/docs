@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: b8c2ff527328fe5f486362db416a99a1c711c9c2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fa90d406313d756f3dd852305a6d61db29815192
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203403"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>使用 Azure CLI 配置网络安全组流日志
 
@@ -51,7 +52,7 @@ az provider register --namespace Microsoft.Insights
 az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
 ```
 
-你指定的存储帐户不能配置有仅限 Microsoft 服务或特定虚拟网络进行网络访问的网络规则。
+你指定的存储帐户不能配置有仅限 Microsoft 服务或特定虚拟网络进行网络访问的网络规则。 存储帐户可以与启用流日志的 NSG 使用相同或不同的 Azure 订阅。 如果使用不同的订阅，它们必须都与同一 Azure Active Directory 租户相关联。 用于每个订阅的帐户必须有[必要的权限](required-rbac-permissions.md)。
 
 ## <a name="disable-network-security-group-flow-logs"></a>禁用网络安全组流日志
 

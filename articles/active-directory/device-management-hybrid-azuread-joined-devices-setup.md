@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157786"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -83,8 +84,20 @@ Azure AD Connect：
 
 - https://device.login.microsoftonline.com
 
-如果组织需要通过出站代理访问 Internet，必须实现 Web 代理自动发现 (WPAD)，使 Windows 10 计算机可以注册到 Azure AD。
+- 组织的 STS（联盟域）
 
+如果尚未执行此操作，组织的 STS（对于联盟域）应包含在用户的本地 Intranet 设置中。
+
+如果组织计划使用无缝 SSO，则必须可从组织内的计算机访问以下 URL，并且还必须将这些 URL 添加到用户的本地 Intranet 区域：
+
+- https://autologon.microsoftazuread-sso.com
+
+- https://aadg.windows.net.nsatc.net
+
+- 此外，应在用户的 Intranet 区域中启用以下设置：“允许通过脚本对状态栏进行更新”。
+
+
+如果组织需要通过出站代理访问 Internet，则必须实现 Web 代理自动发现 (WPAD)，使 Windows 10 计算机可以注册到 Azure AD。
 
 ## <a name="configuration-steps"></a>配置步骤
 
@@ -94,7 +107,7 @@ Azure AD Connect：
 
 
 
-| Steps                                      | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
+| 步骤                                      | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
 | :--                                        | :-:                                    | :-:                            | :-:                |
 | 步骤 1：配置服务连接点 | ![勾选标记][1]                            | ![勾选标记][1]                    | ![勾选标记][1]        |
 | 步骤 2：设置声明颁发           |                                        | ![勾选标记][1]                    | ![勾选标记][1]        |
@@ -549,8 +562,6 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 ### <a name="remarks"></a>备注
 
 - 可以使用组策略对象来控制推出已加入域的 Windows 10 和 Windows Server 2016 计算机的自动注册。 如果不想将这些设备自动注册到 Azure AD 或想要控制注册，则在开始配置步骤之前，必须首先推出对所有这些设备禁用自动注册的组策略。 配置完成后，在测试准备就绪时，必须推出仅对测试设备启用自动注册，然后再对选择的所有其他设备启用自动注册的组策略。
-
-- 仅当已设置实施组策略对象时，Windows 10 2015 年 11 月更新才会自动联接到 Azure AD。
 
 - 要实施 Windows 下层计算机，可将 [Windows Installer 包](#windows-installer-packages-for-non-windows-10-computers)部署到所选计算机。
 

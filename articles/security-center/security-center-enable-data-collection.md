@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/03/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 90a73545afa82276256a021588eaa594b95ee8da
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 847127c96f23bbeb3cf3a5d1c9768af6e0cc0dc4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203965"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址、已登录用户、租户 ID。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>启用 Microsoft Monitoring Agent 的自动设置     
-启动自动设置后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Microsoft Monitoring Agent。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Microsoft Monitoring Agent 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。
+默认情况下自动设置处于关闭状态。 启动自动设置后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Microsoft Monitoring Agent。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Microsoft Monitoring Agent 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。
 
 > [!NOTE]
 > 禁用自动设置会限制对资源的安全监视。 若要了解详细信息，请参阅本文中的[禁用自动设置](security-center-enable-data-collection.md#disable-automatic-provisioning)。 即使禁用了自动设置，也仍可以启用 VM 磁盘快照和项目收集。
@@ -34,11 +35,14 @@ ms.lasthandoff: 04/05/2018
 启用 Microsoft Monitoring Agent 自动设置的步骤：
 1. 在“安全中心”主菜单下，选择“安全策略”。
 2. 选择订阅。
+
+  ![选择订阅][7]
+
 3. 在“安全策略”下，选择“数据收集”。
-4. 在“载入”下，选择“打开”以启用自动设置。
+4. 在“自动设置”下，选择“打开”以启用自动设置。
 5. 选择“保存”。
 
-![启用自动设置][1]
+  ![启用自动设置][1]
 
 ## <a name="default-workspace-configuration"></a>默认工作区配置
 安全中心收集的数据存储在 Log Analytics 工作区中。  可以选择从存储在安全中心创建的工作区或创建的现有工作区中的 Azure VM 收集数据。
@@ -49,16 +53,16 @@ ms.lasthandoff: 04/05/2018
 
 选择现有 Log Analytics 工作区的具体步骤：
 
-1. 在“安全策略 – 数据收集”下，选择“使用其他工作区”。
+1. 在“默认工作区配置”下，选择“使用其他工作区”。
 
    ![选择现有工作区][2]
 
 2. 从下拉菜单中，选择一个工作区，用于存储所收集的数据。
 
-> [!NOTE]
-> 下拉菜单中只显示用户有权访问且 Azure 订阅包含的工作区。
->
->
+  > [!NOTE]
+  > 下拉菜单提供跨所有订阅的所有工作区。 请参阅[跨订阅工作区选择](security-center-enable-data-collection.md#cross-subscription-workspace-selection)以获取详细信息。
+  >
+  >
 
 3. 选择“保存”。
 4. 选择“保存”后，系统就会询问是否要重新配置受监视的 VM。
@@ -73,7 +77,15 @@ ms.lasthandoff: 04/05/2018
 
    - 选择“取消”，以取消该操作。
 
-   ![选择现有工作区][3]
+     ![选择现有工作区][3]
+
+## <a name="cross-subscription-workspace-selection"></a>跨订阅工作区选择
+选择工作区来存储数据时，跨所有订阅的所有工作区可用。 通过跨订阅工作区选择，可以从不同订阅中运行的虚拟机收集数据并将其存储在选择的工作区中。 此功能适用于 Linux 和 Windows 上运行的虚拟机。
+
+> [!NOTE]
+> 跨订阅工作区选择是 Azure 安全中心免费层的一部分。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
+>
+>
 
 ## <a name="data-collection-tier"></a>数据收集层
 安全中心可以减少事件数量，同时保留足够数量的事件用于调查、审核和威胁检测。 可以从代理要收集的四个事件集中为订阅和工作区选择权限筛选策略。
@@ -84,7 +96,8 @@ ms.lasthandoff: 04/05/2018
 - 无 – 从安全和 App Locker 日志禁用安全事件收集。 如果客户选择此选项，他们的安全仪表板只包含 Windows 防火墙日志和主动评估，如反恶意软件、基线和更新评估。
 
 > [!NOTE]
-> 这些集合专门用于典型应用场景。 请务必先评估哪个事件集适合你的需求，再进行实现。
+> 这些安全事件集仅在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
+这些集合专门用于典型应用场景。 请务必先评估哪个事件集适合你的需求，再进行实现。
 >
 >
 
@@ -115,7 +128,7 @@ ms.lasthandoff: 04/05/2018
 >
 
 选择筛选策略的具体步骤：
-1. 在“安全策略和设置”边栏选项卡上，选择“安全事件”下的筛选策略。
+1. 在“安全策略数据收集”边栏选项卡上，选择“安全事件”下的筛选策略。
 2. 选择“保存”。
 
    ![选择筛选策略][5]
@@ -129,12 +142,13 @@ ms.lasthandoff: 04/05/2018
 >
 
 1. 返回到“安全中心”主菜单，选择“安全策略”。
-
-   ![禁用自动设置][6]
-
 2. 选择希望禁用自动设置的订阅。
-3. 在“安全策略 – 数据收集”边栏选项卡的“载入”下，选择“关闭”，禁用自动设置。
-4. 选择“保存”。  
+3. 在“安全策略 - 数据收集”边栏选项卡的“自动预配”下，选择“关闭”。
+4. 选择“保存”。
+
+  ![禁用自动预配][6]
+
+自动预配处于禁用状态（关闭）时，不显示默认工作区配置部分。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了数据收集和自动设置在安全中心中的工作方式。 若要了解有关安全中心的详细信息，请参阅以下文章：
@@ -153,4 +167,5 @@ ms.lasthandoff: 04/05/2018
 [2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[6]: ./media/security-center-enable-data-collection/disable-automatic-provisioning.png
+[6]: ./media/security-center-enable-data-collection/disable-data-collection.png
+[7]: ./media/security-center-enable-data-collection/select-subscription.png

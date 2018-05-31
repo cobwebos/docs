@@ -1,24 +1,25 @@
 ---
-title: "创建独立的 Azure Service Fabric 群集 | Microsoft Docs"
-description: "在运行 Windows Server 的任何本地或任意云计算机（物理或虚拟）上创建 Azure Service Fabric 群集。"
+title: 创建独立的 Azure Service Fabric 群集 | Microsoft Docs
+description: 在运行 Windows Server 的任何本地或任意云计算机（物理或虚拟）上创建 Azure Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: dekapur;chackdan;maburlik
-ms.openlocfilehash: 7d65845d21205e22a3e5b0868acb637ff614fb42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: dekapur
+ms.openlocfilehash: efa48aa90806b45c99237404af24cb8aba762d15
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209148"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
 可以使用 Azure Service Fabric 在运行 Windows Server 的任何虚拟机或计算机上创建 Service Fabric 群集。 这意味着可以在包含一组相互连接的 Windows Server 计算机的任何环境（无论是本地环境还是任何云提供商所提供的环境）中部署和运行 Service Fabric 应用程序。 Service Fabric 提供了一个安装程序包，用于创建名为“Windows Server 独立包”的 Service Fabric 群集。
@@ -154,9 +155,9 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>收集遥测数据以及如何选择不使用它
-默认情况下，产品收集 Service Fabric 使用情况的遥测数据来改进产品。 作为安装程序一部分运行的最佳实践分析工具检查与 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) 的连接。 如果不可访问，安装会失败，除非选择不使用遥测。
+默认情况下，产品收集 Service Fabric 使用情况的遥测数据来改进产品。 安装过程中，分析器运行的最佳做法检查与 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) 的连接。 如果不可访问，安装会失败，除非选择不使用遥测。
 
-1. 遥测管道尝试每日一次将以下数据上传到 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)。 这是尽力而为的上传，不会影响群集功能。 仅从运行故障转移管理器的主节点发送遥测数据。 其他节点不发送遥测数据。
+1. 遥测管道尝试每天一次将以下数据上传到 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)。 这是尽力而为的上传，不会影响群集功能。 仅从运行故障转移管理器的主节点发送遥测数据。 其他节点不发送遥测数据。
 2. 遥测数据由以下项组成：
 
 * 服务数量

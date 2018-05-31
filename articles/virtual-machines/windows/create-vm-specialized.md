@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 专用 VHD 中创建 Windows VM | Microsoft Docs"
-description: "在 Resource Manager 部署模型中，通过将专用托管磁盘附加为 OS 磁盘来创建新 Windows VM。"
+title: 在 Azure 专用 VHD 中创建 Windows VM | Microsoft Docs
+description: 在 Resource Manager 部署模型中，通过将专用托管磁盘附加为 OS 磁盘来创建新 Windows VM。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
@@ -13,13 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 01/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 578d31aef5ddeafbd806d0bae4231c135968f78a
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: be7933b038fb5a648249e9b0c73415bff778930b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012778"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 01/11/2018
 如果使用 PowerShell，请确保使用最新版本的 AzureRM.Compute PowerShell 模块。 
 
 ```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM -RequiredVersion 6.0.0
 ```
 有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
 
@@ -137,7 +138,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>从 VHD 创建托管磁盘
 
-使用 [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk)，从存储帐户的专用 VHD 创建托管磁盘。 此示例使用“myOSDisk1”作为磁盘名称，将磁盘置于“StandardLRS”存储中并使用 *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* 作为源 VHD 的 URI。
+使用 [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk)，从存储帐户的专用 VHD 创建托管磁盘。 此示例使用“myOSDisk1”作为磁盘名称，将磁盘放置在“Standard_LRS”存储中，并使用 *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* 作为源 VHD 的 URI。
 
 创建适用于新 VM 的新资源组。
 
@@ -153,7 +154,7 @@ New-AzureRmResourceGroup -Location $location `
 $sourceUri = (https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
 $osDiskName = 'myOsDisk'
 $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
-    (New-AzureRmDiskConfig -AccountType StandardLRS  `
+    (New-AzureRmDiskConfig -AccountType Standard_LRS  `
     -Location $location -CreateOption Import `
     -SourceUri $sourceUri) `
     -ResourceGroupName $destinationResourceGroup
@@ -337,7 +338,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 使用 [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) 向配置添加 OS 磁盘。 此示例将磁盘大小设置为 *128 GB* 并附加托管磁盘作为 *Windows* OS 磁盘。
  
 ```powershell
-$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType StandardLRS `
+$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
     -DiskSizeInGB 128 -CreateOption Attach -Windows
 ```
 
@@ -367,5 +368,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>后续步骤
-要登录到新虚拟机，请在[门户](https://portal.azure.com)中浏览到该 VM，单击“连接”，并打开远程桌面 RDP 文件。 使用原始虚拟机的帐户凭据登录到新虚拟机。 有关详细信息，请参阅 [How to connect and log on to an Azure virtual machine running Windows](connect-logon.md)（如何连接并登录到运行 Windows 的 Azure 虚拟机）。
+登录新虚拟机。 有关详细信息，请参阅 [How to connect and log on to an Azure virtual machine running Windows](connect-logon.md)（如何连接并登录到运行 Windows 的 Azure 虚拟机）。
 
