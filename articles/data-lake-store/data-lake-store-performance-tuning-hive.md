@@ -10,16 +10,14 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c46eb1b2da62d70337e60066ed0706c3a4fdedcf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168905"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198963"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Hive on HDInsight 和 Azure Data Lake Store 性能优化指南
 
@@ -47,9 +45,9 @@ ms.locfileid: "32168905"
 
 **hive.tez.container.size** - 容器大小确定可供每个任务使用的内存量。  这是用于控制 Hive 中的并发性的主要输入。  
 
-**tez.grouping.min-size** - 使用此参数可以设置每个映射器的最小大小。  如果 Tez 选择的映射器数小于此参数的值，则 Tez 将使用此处设置的值。  
+**tez.grouping.min-size** - 使用此参数可以设置每个映射器的最小大小。  如果 Tez 选择的映射器数小于此参数的值，则 Tez 将使用此处设置的值。
 
-**tez.grouping.max-size** - 使用此参数可以设置每个映射器的最大大小。  如果 Tez 选择的映射器数大于此参数的值，则 Tez 将使用此处设置的值。  
+**tez.grouping.max-size** - 使用此参数可以设置每个映射器的最大大小。  如果 Tez 选择的映射器数大于此参数的值，则 Tez 将使用此处设置的值。
 
 **hive.exec.reducer.bytes.per.reducer** - 此参数设置每个化简器的大小。  默认情况下，每个化简器为 256 MB。  
 
@@ -76,9 +74,10 @@ ms.locfileid: "32168905"
     # of YARN containers = 768GB / 3072MB = 256
 
 ## <a name="limitations"></a>限制
+
 **ADLS 限制** 
 
-如果达到 ADLS 所提供的带宽限制，将开始看到任务失败。 这可以通过观察任务日志中的限制错误来确定。  可以通过增加 Tez 容器大小来减少并行度。  如果作业需要更多并发性，请与我们联系。   
+如果达到 ADLS 所提供的带宽限制，将开始看到任务失败。 这可以通过观察任务日志中的限制错误来确定。  可以通过增加 Tez 容器大小来减少并行度。  如果作业需要更多并发性，请与我们联系。
 
 若要查看是否受到限制，需要在客户端上启用调试日志记录。 下面介绍执行该操作的方法：
 

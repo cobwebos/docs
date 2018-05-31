@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f7806e1155a0129d67f8848b9ba8c4d07cb126d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33770923"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360319"
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>如何计划 Azure SSIS 集成运行时的启动和停止 
 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 下面是本文所述的概要步骤：
@@ -71,9 +71,6 @@ ms.locfileid: "33770923"
 ### <a name="import-data-factory-modules"></a>导入数据工厂模块
 
 1. 在“共享资源”部分的左侧菜单中选择“模块”，确认模块列表中是否包含“AzureRM.Profile”和“AzureRM.DataFactoryV2”。
-
-    > [!IMPORTANT]
-    > 目前，只能使用 AzureRM.DataFactoryV2 0.5.2 和 AzureRM.Profile 4.5.0 模块。
 
     ![验证所需的模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 

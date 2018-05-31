@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure
-ms.date: 04/24/2018
+ms.date: 05/14/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 867a1c55c0f96b17f77049d7f24d47f41a90d9f9
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 0f10384e7e21d65b3a16869a10f8294b9643c74c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210192"
 ---
 # <a name="create-and-manage-vpn-gateway-with-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建和管理 VPN 网关
 
@@ -35,8 +36,9 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 ![VNet 和 VPN 网关](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
+### <a name="azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell 和 Azure PowerShell
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [working with cloudshell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.3 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。 
 
@@ -86,7 +88,7 @@ $vnet   = New-AzureRmVirtualNetwork `
             -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-## <a name="request-a-public-ip-address-for-the-vpn-gateway"></a>为 VPN 网关请求一个公用 IP 地址
+## <a name="request-a-public-ip-address-for-the-vpn-gateway"></a>为 VPN 网关请求一个公共 IP 地址
 
 Azure VPN 网关通过 Internet 与本地 VPN 设备进行通信来执行 IKE（Internet 密钥交换）协商并建立 IPsec 隧道。 使用 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) 和 [New-AzureRmVirtualNetworkGatewayIpConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayipconfig) 创建一个公用 IP 地址并将其分配给 VPN 网关，如以下示例中所示：
 
@@ -169,7 +171,7 @@ Remove-AzureRmResourceGroup -Name $RG1
 > * 调整 VPN 网关大小
 > * 重置 VPN 网关
 
-转到以下教程来了解 S2S、VNet 到 VNet 和 P2S 连接。
+若要了解 S2S 连接、VNet 到 VNet 连接和 P2S 连接，请转到以下教程。
 
 > [!div class="nextstepaction"]
 > * [创建 S2S 连接](vpn-gateway-tutorial-vpnconnection-powershell.md)

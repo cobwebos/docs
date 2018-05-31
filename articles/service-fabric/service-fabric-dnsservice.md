@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric DNS 服务 | Microsoft Docs"
-description: "使用 Service Fabric 的 DNS 服务从群集内部发现微服务。"
+title: Azure Service Fabric DNS 服务 | Microsoft Docs
+description: 使用 Service Fabric 的 DNS 服务从群集内部发现微服务。
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -9,30 +9,42 @@ editor: vturecek
 ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/27/2017
 ms.author: msfussell
-ms.openlocfilehash: 9871bc5aa4e74ab0faef401d67c4e9558eb5e14b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 656aed1f1fbd3294c4318520058ace480fd2219c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204988"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
-DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。
+DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。 
 
 许多服务（特别是容器化服务）可以拥有一个现有的 URL 名称，因此能够使用标准 DNS 协议（而不是命名服务协议）解析这些名称就很有必要，尤其是在应用程序“提升和转移”方案中。 借助 DNS 服务，可将 DNS 名称映射到服务名称，进而解析终结点 IP 地址。 
 
-DNS 服务将 DNS 名称映射到服务名称，命名服务将服务名称进行解析并将其发送回服务终结点。 在创建时提供服务的 DNS 名称。 
+DNS 服务将 DNS 名称映射到服务名称，命名服务将服务名称进行解析并将其发送回服务终结点。 在创建时提供服务的 DNS 名称。
 
-![服务终结点][0]
+![服务终结点](./media/service-fabric-dnsservice/dns.png)
+
+DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，请使用[反向代理服务](./service-fabric-reverseproxy.md)。
 
 ## <a name="enabling-the-dns-service"></a>启用 DNS 服务
-首先，需要在群集中启用 DNS 服务。 获取要部署的群集的模板。 可以使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)，也可以创建 Resource Manager 模板。 可通过以下步骤启用 DNS 服务：
+使用门户创建群集时，默认情况下，在“群集配置”菜单的“包括 DNS 服务”复选框中启用 DNS 服务：
 
-1. 检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 资源设置为 `2017-07-01-preview`，如果没有，请按以下代码片段所示进行更新：
+![通过门户启用 DNS 服务][2]
+
+如果不使用门户创建群集或者要更新现有群集，则需要在模板中启用 DNS 服务：
+
+- 若要部署新的群集，可以使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建自己的资源管理器模板。 
+- 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源当前状态的模板。 若要了解详细信息，请参阅[从资源组导出模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group)。
+
+有了模板后，可以通过以下步骤启用 DNS 服务：
+
+1. 检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 设置为 `2017-07-01-preview` 或更高版本，如果没有，请按以下代码片段所示进行更新：
 
     ```json
     {
@@ -55,15 +67,13 @@ DNS 服务将 DNS 名称映射到服务名称，命名服务将服务名称进�
         ],
     ```
 
-3. 通过前述更改更新群集模板后，应用更改并等待升级完成。 完成后，DNS 系统服务开始在群集中运行，该服务在 Service Fabric Explorer 中的系统服务部分下称为 `fabric:/System/DnsService`。 
-
-或者，可在创建群集时通过门户启用 DNS 服务。 可通过在 `Cluster configuration` 菜单中选中 `Include DNS service` 的框来启用 DNS 服务，如以下屏幕截图所示：
-
-![通过门户启用 DNS 服务][2]
+3. 通过前述更改更新群集模板后，应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它。 
 
 
 ## <a name="setting-the-dns-name-for-your-service"></a>设置服务的 DNS 名称
-DNS 服务在群集中运行后，可使用声明方式在 `ApplicationManifest.xml` 中为默认服务设置 DNS 名称，或通过 Powershell 命令设置服务的 DNS 名称。
+DNS 服务在群集中运行后，可使用声明方式在 `ApplicationManifest.xml` 中为默认服务设置 DNS 名称，或通过 PowerShell 命令设置服务的 DNS 名称。
+
+可以在整个群集中解析服务的 DNS 名称。 强烈建议使用 `<ServiceDnsName>.<AppInstanceName>` 命名方案；例如 `service1.application1`。 这样做可以确保 DNS 名称在整个群集中的唯一性。 如果使用 Docker Compose 部署应用程序，服务会自动分配使用此命名方案的 DNS 名称。
 
 ### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>在 ApplicationManifest.xml 中为默认服务设置 DNS 名称
 在 Visual Studio 中或选择的编辑器中打开项目，并打开 `ApplicationManifest.xml` 文件。 转到默认服务部分，为每个服务添加 `ServiceDnsName` 属性。 以下示例说明如何将服务的 DNS 名称设置为 `service1.application1`
@@ -94,7 +104,7 @@ DNS 服务在群集中运行后，可使用声明方式在 `ApplicationManifest.
 ```
 
 ## <a name="using-dns-in-your-services"></a>在服务中使用 DNS
-如果部署多个服务，则可使用 DNS 名称找到用于通信的其他服务的终结点。 DNS 服务仅适用于无状态服务，因为 DNS 协议无法与有状态服务通信。 对于有状态服务，可使用 HTTP 调用的内置反向代理调用特定服务分区。
+如果部署多个服务，则可使用 DNS 名称找到用于通信的其他服务的终结点。 DNS 服务仅适用于无状态服务，因为 DNS 协议无法与有状态服务通信。 对于有状态服务，可使用 HTTP 调用的内置[反向代理服务](./service-fabric-reverseproxy.md)调用特定服务分区。 DNS 服务不支持动态端口。 反向代理可用于解析使用动态端口的服务。
 
 以下代码显示如何调用其他服务，这只是一个常规 HTTP 调用，需提供端口和任意可选路径作为 URL 的一部分。
 

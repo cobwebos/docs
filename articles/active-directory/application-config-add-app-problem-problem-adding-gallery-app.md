@@ -1,11 +1,11 @@
 ---
-title: "添加 Azure AD 库应用程序时的问题 | Microsoft Docs"
-description: "了解添加 Azure AD 库应用程序时常见的问题，以及可以执行哪些操作来解决这些问题"
+title: 添加 Azure AD 库应用程序时的问题 | Microsoft Docs
+description: 了解添加 Azure AD 库应用程序时常见的问题，以及可以执行哪些操作来解决这些问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 79713cd343e1b876cd7a1b6653bbe00b43272a55
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5cb43976c17bfd46d1f16f0bdaff1c164bdc0fb6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053753"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>添加 Azure AD 库应用程序时的问题
 
-本文可帮助你了解添加 Azure AD 库应用程序时常见的问题，以及可以执行哪些操作来解决这些问题。
+本文帮助你了解当添加 Azure AD 库应用程序时面临的常见问题以及如何加以解决。
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>单击“添加”按钮后，应用程序要很长时间才显示
 
@@ -54,9 +55,7 @@ ms.lasthandoff: 12/11/2017
     >
     >
 
-3.  这会打开“通知的详细信息”边栏选项卡。
-
-4.  请使用此信息了解有关问题的详细信息。
+4.  使用“通知详细信息”**下的信息了解有关问题的详细信息。
 
 5.  如果仍需要帮助，还可以与支持工程师或产品组共享此信息以获取有关问题的帮助。
 
@@ -68,7 +67,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="notification-details-explained"></a>介绍通知详细信息
 
-下面详细介绍每个通知项的含义，并提供每项的示例。
+有关通知的更多详细信息，请参阅以下说明。
 
 ### <a name="essential-notification-items"></a>基本通知项
 
@@ -84,7 +83,7 @@ ms.lasthandoff: 12/11/2017
 
     -   示例 - **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **客户请求 ID** – 浏览器发出的特定请求 ID
+-   **客户端请求 ID** – 由浏览器发出的特定请求 ID
 
     -   示例 – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
@@ -92,7 +91,7 @@ ms.lasthandoff: 12/11/2017
 
     -   示例 – **2017-03-23T19:50:43.7583681Z**
 
--   **内部事务 ID** – 可用于在系统中查找错误的内部 ID
+-   **内部事务 ID** – 可用于在我们系统中查找错误的内部 ID
 
     -   示例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
@@ -110,7 +109,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="detailed-notification-items"></a>详细通知项
 
--   **显示名称** – **（可以为空）**错误的更详细的显示名称
+-   **显示名称** – **（可以为空）** 错误的更详细的显示名称
 
     -   示例 – **应用程序代理设置**
 
@@ -118,17 +117,18 @@ ms.lasthandoff: 12/11/2017
 
     -   示例 – **失败**
 
--   **对象 ID** – **（可以为空）**对其执行了操作的对象 ID
+-   **对象 ID** – **（可能为空）** 对其执行了操作的对象 ID
 
     -   示例 – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
 -   **详细信息** – 由操作导致的所发生情况的详细说明
 
-    -   示例 – **内部 URL“http://bing.com/”无效，因为它已在使用中**
+    -   示例 - **内部 URL“http://bing.com/”无效，因为它已在使用中**
 
--   **复制错误** – 单击“复制错误”文本框右侧的“复制”图标，复制所有通知详细详细以与支持工程师或产品组工程师共享
+-   **复制错误** – 单击“复制错误”文本框右侧的复制图标，可复制所有通知详细信息以便与支持小组或产品小组共享 
+-   工程师
 
     -   示例 ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
+[使用 Azure Active Directory 管理应用程序](manage-apps/what-is-application-management.md)

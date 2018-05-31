@@ -1,6 +1,6 @@
 ---
-title: "在 Azure Application Insights 中跟踪依赖项 | Microsoft Docs"
-description: "通过 Application Insights 分析本地或 Microsoft Azure Web 应用程序的使用情况、可用性和性能。"
+title: 在 Azure Application Insights 中跟踪依赖项 | Microsoft Docs
+description: 通过 Application Insights 分析本地或 Microsoft Azure Web 应用程序的使用情况、可用性和性能。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 060f1c9d2c74ed45e8077ec99503a1d7b885d325
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010458"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
 *依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](app-insights-overview.md) 可以度量应用程序等待依赖项的时长以及依赖项调用失败的频率。 可以调查特定的调用，并将其与请求和异常相关联。
@@ -200,9 +201,12 @@ ms.lasthandoff: 01/24/2018
 
 *SQL 查询未完整显示。*
 
-* 升级到最新版本的 SDK。 如果 .NET 版本低于 4.6：
-  * IIS 主机：在主机服务器上安装 [Application Insights 代理](app-insights-monitor-performance-live-website-now.md)。
-  * Azure Web 应用：在 Web 应用控制面板中打开“Application Insights”选项卡，并安装 Application Insights。
+* 升级到最新稳定版本的 Application Insights SDK。
+
+ 如果 .NET 版本低于 4.6：
+
+* IIS 主机：在主机服务器上安装 [Application Insights 代理](app-insights-monitor-performance-live-website-now.md)。
+* Azure Web 应用：在 Web 应用控制面板中打开“Application Insights”选项卡，并安装 Application Insights。
 
 ## <a name="video"></a>视频
 
