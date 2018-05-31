@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: cb85971d6d3d4dade69b9dc04e070c67341533a5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cd4313efb5d08842ba12ec00e6e5160214800d56
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055611"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>如何填写自定义开发应用程序的特定字段
 
@@ -54,8 +55,8 @@ ms.lasthandoff: 04/05/2018
 | 注销 URL      | 这是单一注销的注销 URL。 用户使用任何其他注册的应用程序清除与 Azure AD 的会话时，Azure AD 将向此 URL 发送注销请求。                                                                                                                                       |
 | 多租户  | 此开关指定多个租户是否可以使用应用程序。 通常情况下，这意味着外部组织可以通过在其租户中注册，并授予对其组织数据的访问权限来使用应用程序。                                                                   |
 | 回复 URL      | 回复 URL 是 Azure AD 会在其中返回应用程序请求的任何令牌的终结点。                                                                                                                                                                                                          |
-| 重定向 URI   | 对于本机应用程序，会在其中发送用户以获得以下成功授权。 Azure AD 会检查应用程序在 OAuth 2.0 请求中提供的重定向 URI 是否与门户中的某个注册值相匹配。                                                            |
+| 重定向 URI   | 对于本机应用程序，会在成功授权后向其中发送用户。 Azure AD 会检查应用程序在 OAuth 2.0 请求中提供的重定向 URI 是否与门户中的某个注册值相匹配。                                                            |
 | 密钥            | 可以创建密钥以编程方式访问由 Azure AD 保护的 Web API，而无需任何用户交互。 在\*\*密钥\*\*页中，输入密钥说明和到期日期并保存以生成密钥。 请确保将其保存在安全位置，不然在以后将无法访问它。             |
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
+[使用 Azure Active Directory 管理应用程序](manage-apps/what-is-application-management.md)

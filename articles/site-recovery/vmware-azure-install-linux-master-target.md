@@ -7,13 +7,14 @@ author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072430"
 ---
 # <a name="install-a-linux-master-target-server"></a>安装 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -240,18 +241,13 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
 1. 将新的 1-TB 磁盘附加到 Linux 主目标虚拟机，并启动计算机。
 
-2. 通过 multipath -ll 命令了解保留磁盘的多路径 ID。
-    
-     `multipath -ll`
+2. 通过 multipath -ll 命令了解保留磁盘的多路径 I：multipath -ll
 
-        ![The multipath ID of the retention disk](./media/vmware-azure-install-linux-master-target/media/image22.png)
+    ![多路径 ID](./media/vmware-azure-install-linux-master-target/image22.png)
 
-3. 格式化驱动器并在新驱动器上创建文件系统。
-
+3. 格式化驱动器，然后在新驱动器上创建文件系统：mkfs.ext4 /dev/mapper/<保留磁盘的多路径 id>。
     
-    `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
-    
-    ![在驱动器上创建文件系统](./media/vmware-azure-install-linux-master-target/image23-centos.png)
+    ![文件系统](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. 创建文件系统后，请装载保留磁盘。
 
@@ -335,9 +331,9 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
      等到脚本执行完成。 如果成功注册主目标，门户中的“Site Recovery 基础结构”页上会列出该主目标。
 
 
-### <a name="install-vmware-tools-on-the-master-target-server"></a>在主目标服务器上安装 VMware 工具
+### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>在主目标服务器上安装 VMware 工具 / open-vm-tools
 
-需将 VMware 工具安装在主目标上，使其可发现数据存储。 若未安装这些工具，则数据存储中不会列出重新保护屏幕。 安装 VMware 工具后，需重启计算机。
+需将 VMware 工具或 open-vm-tools 安装在主目标上，使其可发现数据存储。 若未安装这些工具，则数据存储中不会列出重新保护屏幕。 安装 VMware 工具后，需重启计算机。
 
 ### <a name="upgrade-the-master-target-server"></a>升级主目标服务器
 

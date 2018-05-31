@@ -1,11 +1,11 @@
 ---
-title: "Azure AD 中的自动 SaaS 应用用户预配 | Microsoft Docs"
-description: "介绍可以如何使用 Azure AD 进行自动化设置、取消设置，并不断跨多个第三方 SaaS 应用程序更新用户帐户。"
+title: Azure AD 中的自动 SaaS 应用用户预配 | Microsoft Docs
+description: 介绍可以如何使用 Azure AD 进行自动化设置、取消设置，并不断跨多个第三方 SaaS 应用程序更新用户帐户。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: e14ba62ce2d6c48e47a6b75387bcede68bb1a5b0
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069884"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>什么是 SaaS 应用的自动化用户预配？
@@ -78,9 +79,9 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>如何设置为自动预配到应用程序？
 
-可以在 **[Azure 门户](https://portal.azure.com)**中开始针对选定的应用程序配置 Azure AD 预配服务。 在“Azure Active Directory”>“企业应用程序”部分中，依次选择“添加”、“所有”，并根据情况添加以下项之一：
+可以在 **[Azure 门户](https://portal.azure.com)** 中开始针对选定的应用程序配置 Azure AD 预配服务。 在“Azure Active Directory”>“企业应用程序”部分中，依次选择“添加”、“所有”，并根据情况添加以下项之一：
 
-* “特色应用程序”部分中的所有应用程序支持自动预配。 有关其他应用程序，请参阅 [支持用户预配的应用程序列表教程](active-directory-saas-tutorial-list.md)。
+* “特色应用程序”部分中的所有应用程序支持自动预配。 有关其他应用程序，请参阅[支持用户预配的应用程序列表教程](active-directory-saas-tutorial-list.md)。
 
 * 使用“非库应用程序”选项进行定制开发的 SCIM 集成
 
@@ -176,7 +177,7 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 
 根据预配作业执行的是初始同步还是增量同步，性能会有所不同。
 
-完成初始同步所需的时间直接取决于源系统中的用户、组和组成员身份数量。 包含几百个对象的极小型源系统只需几分钟就能完成初始同步。 但是，包含几十万甚至几百万个组合对象的源系统可能需要很长时间才能完成初步同步。
+完成初始同步所需的时间直接取决于源系统中的用户、组和组成员身份数量。 包含几百个对象的极小型源系统只需几分钟就能完成初始同步。 但是，包含几十万甚至几百万个组合对象的源系统将需要更长时间才能完成初始同步。
 
 完成增量同步所需的时间取决于在该同步周期中检测到的更改数量。 如果检测到 5,000 个以下的用户或组成员身份更改，则同步周期通常在 40 分钟内即可完成。 
 
@@ -220,4 +221,5 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 * [用于用户预配的作用域筛选器](active-directory-saas-scoping-filters.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md)
 * [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [应用程序的出站用户预配的分步部署计划](https://aka.ms/userprovisioningdeploymentplan)
 
