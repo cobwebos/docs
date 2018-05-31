@@ -4,7 +4,7 @@ description: 了解如何在 Azure 门户中以迭代方式开发和调试数据
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 04/16/2018
+ms.date: 05/14/2018
 ms.topic: article
 ms.service: data-factory
 services: data-factory
@@ -12,15 +12,20 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: b6a6fbd721e4f0af977fe7fa03adc4459de7611f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e403afa5c870b2d007a8c5e1d46162cd899ead29
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164816"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>使用 Azure 数据工厂进行迭代开发和调试
 
 Azure 数据工厂允许以迭代方式开发和调试数据工厂管道。
+
+有关此功能的 8 分钟简介和演示，请观看以下视频：
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
 ## <a name="iterative-debugging-features"></a>迭代的调试功能
 使用管道画布中的**调试**功能创建管道并执行测试运行，不需要编写一行代码。

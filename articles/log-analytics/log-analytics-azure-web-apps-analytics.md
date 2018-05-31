@@ -12,20 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 7b83b9de08d024b91ca7008a4f0bf970e8d00688
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c44546ffe65a0849b485fb0d2dd169e4216ae80a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261362"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>查看所有 Azure Web 应用资源的指标的分析数据
 
 ![Web 应用符号](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
 
 > [!NOTE]
-> Azure Web 应用分析解决方案已弃用。  已安装该解决方案的客户可以继续使用它，但 Azure Web 应用分析无法添加到任何新的工作区。
+> Azure Web 应用分析解决方案已弃用。  已安装该解决方案的客户可以继续使用它，但 Azure Web 应用分析无法添加到任何新的工作区。  若要监视 Web 应用程序，建议使用 [Application Insights](../application-insights/app-insights-overview.md)。 
 
 Azure Web 应用分析（预览版）解决方案通过收集所有 Azure Web 应用资源的各种指标，深入剖析 [Azure Web 应用](../app-service/app-service-web-overview.md)。 借助该解决方案，可以分析和搜索 Web 应用资源指标数据。
 

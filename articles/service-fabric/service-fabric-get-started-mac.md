@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: f6813d98782d31dc780da21f78aafbbfdfc5e688
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3046e944726bf049b7a6771d626fea357a5abf30
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305195"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]
@@ -123,6 +124,11 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     docker rm -f sftestcluster
     ```
 
+### <a name="known-limitations"></a>已知限制 
+ 
+ 以下是在 Mac 的容器中运行的本地群集的已知限制： 
+ 
+ * DNS 服务无法运行且不受支持 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>在 Mac 上设置 Service Fabric CLI (sfctl)
 

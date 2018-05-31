@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: c4cd3c79b64ef6ba86c7764f0ae27e29418e9ee5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2335872bcd7d3ea64e449d8b1a43f360d86bb4a0
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304624"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 ## <a name="overview"></a>概述
@@ -34,6 +35,8 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 * Windows 10（推荐）
 * Windows 8
 * Windows 7
+
+对于所有 Windows 版本，都需要 .NET Framework 4.6.2 或更高版本。
 
 [下载并安装存储资源管理器](http://www.storageexplorer.com)
 
