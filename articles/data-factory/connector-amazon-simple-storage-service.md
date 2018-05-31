@@ -8,23 +8,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 82d46d29b1e75995c5436b985717f45104dad955
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b2f87c965a7c69614d476f0d931802587f0f1297
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011232"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - 正式版](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [版本 2 - 预览版](connector-amazon-simple-storage-service.md)
 
-本文概述如何使用 Azure 数据工厂中的复制活动向/从 Azure Blob 存储复制数据。 本文基于说明复制活动总体概述的[复制活动概述](copy-activity-overview.md)一文构建。
+本文概述如何使用 Azure 数据工厂中的复制活动向/从 Azure Blob 存储复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅 [V1 中的 Amazon S3 连接器](v1/data-factory-amazon-simple-storage-service-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅 [V1 中的 Amazon S3 连接器](v1/data-factory-amazon-simple-storage-service-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -93,15 +94,15 @@ Amazon S3 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AmazonS3Object** |是 |
-| bucketName | S3 存储桶的名称。 |是 |
-| key | S3 对象键。 仅当未指定前缀时应用。 |否 |
-| 前缀 | S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当未指定键时应用。 |否 |
+| bucketName | S3 存储桶的名称。 不支持通配符筛选器。 |是 |
+| key | 指定存储桶下的 S3 对象键的“名称或通配符筛选器”。 仅当未指定“prefix”属性时应用。 <br/><br/>仅文件名部分（而不是文件夹部分）支持通配符筛选器。 允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"key": "rootfolder/subfolder/*.csv"`<br/>- 示例 2：`"key": "rootfolder/subfolder/???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。 |否 |
+| 前缀 | S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当未指定“key”属性时应用。 |否 |
 | 版本 | 启用 S3 版本控制时 S3 对象的版本。 |否 |
 | 格式 | 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果想要分析或生成具有特定格式的文件，则下面是支持的文件格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为：**最佳**和**最快**。 |否 |
 
-> [!NOTE]
-> **bucketName + key** 指定S3 对象的位置，其中存储桶是 S3 对象的根容器，key 是 S3 对象的完整路径。
+>[!TIP]
+>要复制文件夹下的所有文件，请指定存储桶的 **bucketName** 和文件夹部分的 **prefix**。<br>要复制具有给定名称的单个文件，请指定存储桶的 **bucketName** 和文件夹部分及文件名的 **key**。<br>要复制文件夹下的文件子集，请指定存储桶的 **bucketName** 和文件夹部分及通配符筛选器的 **key**。
 
 **示例：使用前缀**
 

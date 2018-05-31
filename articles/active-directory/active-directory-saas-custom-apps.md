@@ -15,24 +15,24 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5316cca9d3c944735355d7912a0f1e044c585001
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158024"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34339802"
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录
 本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 此功能已在 2015 年 11 月 18 日技术预览中发布，并且已包含在 [Azure Active Directory Premium](active-directory-whatis.md) 中。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
 
-如[此文](active-directory-appssoaccess-whatis.md)中所述，Azure Active Directory 应用程序库提供了一份已知能够支持 Azure Active Directory 单一登录的应用程序列表。 IT 专业人员或组织中的系统集成人员找到所要连接的应用程序后，可以遵循 Azure 门户中提供的分步说明启用单一登录。
+如[此文](manage-apps/what-is-single-sign-on.md)中所述，Azure Active Directory 应用程序库提供了一份已知能够支持 Azure Active Directory 单一登录的应用程序列表。 IT 专业人员或组织中的系统集成人员找到所要连接的应用程序后，可以遵循 Azure 门户中提供的分步说明启用单一登录。
 
 具有 [Azure Active Directory Premium](active-directory-whatis.md) 许可证的客户还会额外获得以下功能：
 
 * 通过自助方式集成支持 SAML 2.0 标识提供者的任何应用程序（SP 发起或 IdP 发起）
-* 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) 的任何 Web 应用程序
+* 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) 的任何 Web 应用程序
 * 以自助方式连接使用 SCIM 协议进行用户预配的应用程序（如[此处所述](active-directory-scim-provisioning.md)）
-* 可在 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)中添加任何应用程序的链接
+* 可在 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)中添加任何应用程序的链接
 
 这不仅包括正在使用、但尚未登记到 Azure AD 应用程序库中的 SaaS 应用程序，也包括组织已部署到控制的服务器（在云中或本地）的第三方 Web 应用程序。
 
@@ -116,18 +116,18 @@ ms.locfileid: "34158024"
 有关调试提示，请参阅这篇[有关如何调试对应用程序进行基于 SAML 的单一登录的文章](active-directory-saml-debugging.md) 
 
 ## <a name="password-single-sign-on"></a>密码单一登录
-选择此选项可为包含 HTML 登录页的 Web 应用程序配置[基于密码的单一登录](active-directory-appssoaccess-whatis.md)。 基于密码的 SSO 也称为密码保管，可用于管理不支持标识联合的 Web 应用程序中的用户访问权限和密码。 如果有多个用户需要共享单个帐户（例如共享组织的社交媒体应用帐户），此功能也很有用。 
+选择此选项可为包含 HTML 登录页的 Web 应用程序配置[基于密码的单一登录](manage-apps/what-is-single-sign-on.md)。 基于密码的 SSO 也称为密码保管，可用于管理不支持标识联合的 Web 应用程序中的用户访问权限和密码。 如果有多个用户需要共享单个帐户（例如共享组织的社交媒体应用帐户），此功能也很有用。 
 
 选择“下一步”后，系统会提示输入应用程序的 Web 登录页的 URL。 请注意，此登录页必须是包含用户名和密码输入字段的页面。 输入此信息后，Azure AD 将启动在登录页中分析用户名输入和密码输入的过程。 如果该过程不成功，系统将引导完成另一个过程，安装一个浏览器扩展（需要使用 Internet  Explorer、Chrome 或 Firefox）来手动捕获字段值。
 
-捕获登录页后，可以分配用户和组，并且可以像在[密码 SSO 应用](active-directory-appssoaccess-whatis.md)中一样设置凭据策略。
+捕获登录页后，可以分配用户和组，并且可以像在[密码 SSO 应用](manage-apps/what-is-single-sign-on.md)中一样设置凭据策略。
 
 注意：可以在应用程序的“配置”选项卡中使用“上传徽标”按钮来上传应用程序的磁贴徽标。 
 
 ## <a name="existing-single-sign-on"></a>现有的单一登录
 选择此选项可将应用程序的链接添加到组织的 Azure AD 访问面板或 Office 365 门户。 可以使用此选项来添加当前正在使用 Azure Active Directory 联合身份验证服务（或其他联合身份验证服务）而不是 Azure AD 进行身份验证的自定义 Web 应用的链接。 或者，可以添加特定 SharePoint 页面或想要在用户访问面板上显示的其他网页的深层链接。 
 
-选择“下一步”后，系统会提示输入要链接到的应用程序的 URL。 完成上述操作后，可将用户和组分配到应用程序，使应用程序显示在这些用户的 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)中。
+选择“下一步”后，系统会提示输入要链接到的应用程序的 URL。 完成上述操作后，可将用户和组分配到应用程序，使应用程序显示在这些用户的 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)中。
 
 注意：可以在应用程序的“配置”选项卡中使用“上传徽标”按钮来上传应用程序的磁贴徽标。
 

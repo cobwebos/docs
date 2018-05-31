@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2c06c2220d3a3ed0a27b4f0febb4de95b2137ddc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771392"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>在 Application Insights 中管理定价和数据量
 
@@ -34,17 +35,14 @@ Application Insights 提供两种定价计划：基本和企业计划。 基本�
 有关在你所在区域中以适合你的货币计价的当前价格，请参阅 [Application Insights 定价][pricing]
 
 > [!NOTE]
-> 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 深入了解[新的定价模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)，如何根据使用情况模式[评估移到此模型的影响](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)以及[如何选择加入该新模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)。
+> 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 深入了解[新的定价模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)、如何根据使用情况模式[评估移到此模型的影响](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)以及[如何选择加入该新模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)。
 
 ### <a name="basic-plan"></a>基本计划
 
 创建新的 Application Insights 资源时，基本计划是默认的定价计划。 基本计划适用于除具有 Operations Management Suite 订阅外的所有客户。
 
-* 在基本计划中，会按数据量收费。 数据量是 Application Insights 收到的遥测数据的字节数。 
-    
-    数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。
-
-    对于[导入到 Analytics 中的表格数据](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)，数据量的衡量标准是发送到 Application Insights 的文件的未压缩大小。
+* 在基本计划中，会按数据量收费。 数据量是 Application Insights 收到的遥测数据的字节数。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。 对于[导入到 Analytics 中的表格数据](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)，数据量的衡量标准是发送到 Application Insights 的文件的未压缩大小。
+* 自 2018 年 4 月起，应用程序的数据量费用将在名为“数据引入”的新计费表中报告。 这种新型仪表将通过诸如 Applications Insights 和 Log Analytics 等监视技术进行共享，目前位于服务名称“应用程序服务”（即将更改为 Log Analytics）下。 
 * 定价未考虑[实时指标流](app-insights-live-stream.md)数据。
 * [连续导出](app-insights-export-telemetry.md)和 [Azure Log Analytics 连接器](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)已推出，在 2018 年 4 月之前的基本计划中不额外收费。
 
@@ -84,8 +82,8 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ## <a name="data-rate"></a>数据速率
 通过三种方式限制发送数据量：
 
-* **采样：**可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](app-insights-sampling.md)的详细信息。 
-* **每日上限：**在 Azure 门户中创建 Application Insights 资源时，每日上限设置为 100 GB/天。 在 Visual Studio 中创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天）。 设置每日上限默认值，以便进行测试。 可预期用户在将应用部署到生产环境之前，会提高每日上限。 
+* **采样：** 可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](app-insights-sampling.md)的详细信息。 
+* **每日上限：** 在 Azure 门户中创建 Application Insights 资源时，每日上限设置为 100 GB/天。 在 Visual Studio 中创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天）。 设置每日上限默认值，以便进行测试。 可预期用户在将应用部署到生产环境之前，会提高每日上限。 
 
     除非为高流量应用程序请求了更高的最大值，否则最大上限是 1000 GB/天。 
 

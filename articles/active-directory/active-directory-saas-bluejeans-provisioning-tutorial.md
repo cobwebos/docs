@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure Active Directory 为 BlueJeans 配置自动用户预配 | Microsoft Docs"
-description: "了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 BlueJeans 和取消其预配。"
+title: 教程：使用 Azure Active Directory 为 BlueJeans 配置自动用户预配 | Microsoft Docs
+description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 BlueJeans 和取消其预配。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
-ms.openlocfilehash: 55a907bdab57ce73533361782a3890466e3076ea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 522d94e2a6fbd8e7eb32941e2cab59de7b28384c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34337242"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教程：为 BlueJeans 配置自动用户预配
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 03/08/2018
 
 若要从 Azure AD 应用程序库中添加 BlueJeans，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -104,7 +105,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分下，输入 BlueJeans 帐户的“管理员用户名”和“管理员密码”。 这些值的示例如下：
 
-    *   在“管理员用户名”字段中，填入 BlueJeans 租户的管理员帐户的用户名。 示例：admin@contoso.com。
+    *   在“管理员用户名”字段中，填入 BlueJeans 租户上管理员帐户的用户名。 示例：admin@contoso.com。
 
     *   在“管理员密码”字段中，填入管理员用户名所对应的密码。
 
@@ -144,10 +145,14 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](./active-directory-saas-provisioning-reporting.md)。
 
+## <a name="connector-limitations"></a>连接器限制
+
+* Bluejeans 不允许超过 30 个字符的用户名。
+
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

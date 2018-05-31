@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: e824fe7a74c4adc619f7fa324aa6fa28dacecf24
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 799a88344d6c348061af19bfbbd9022025d2d66b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153154"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34350604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>教程：Azure Active Directory 与 Shmoop For Schools 的集成
 
@@ -31,7 +31,7 @@ ms.locfileid: "32153154"
 - 可以让用户使用其 Azure AD 帐户自动登录到 Shmoop For Schools。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -145,7 +145,7 @@ ms.locfileid: "32153154"
 
     ![配置单一登录](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. 在“SAML 签名证书”部分上，单击”复制”按钮，复制“应用联合元数据 URL”并将其粘贴到记事本。
+7. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
 
     ![证书下载链接](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
@@ -231,7 +231,7 @@ ms.locfileid: "32153154"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

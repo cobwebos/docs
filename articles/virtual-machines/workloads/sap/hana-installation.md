@@ -14,24 +14,25 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef85c098058c97e5ec6d758fcf1dab5b1a87786
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778590"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安装和配置 SAP HANA（大型实例）
 
 下面介绍了在阅读本指南之前要了解的一些重要定义。 在 [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)中，我们引入了两类不同的 HANA 大型实例单元，其中包括：
 
-- 称为“I 类”SKU 的S72、S72m、S144、S144m、S192 和 S192m。
-- 称为“II 类”SKU 的 S384、S384m、S384xm、S576、S768 和 S960。
+- 称为“I 类”SKU 的 S72、S72m、S144、S144m、S192 和 S192m。
+- 称为“II 类”SKU 的 S384、S384m、S384xm、S576m、S768m 和 S960m。
 
 将在整个 HANA 大型实例文档中使用类说明符，最终用于根据 HANA 大型实例 SKU 指代不同的功能和要求。
 
 我们还经常用到其他定义，如下所述：
-- **大型实例模具：**已通过 SAP HANA TDI 认证的硬件基础结构堆栈，专门用于在 Azure 中运行 SAP HANA 实例。
-- **Azure 上的 SAP HANA（大型实例）：**用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
+- **大型实例模具：** 已通过 SAP HANA TDI 认证的硬件基础结构堆栈，专门用于在 Azure 中运行 SAP HANA 实例。
+- **Azure 上的 SAP HANA（大型实例）：** 用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
 
 
 用户有责任安装 SAP HANA，可以在切换 Azure 上的 SAP HANA（大型实例）新服务器后启动活动。 也可以在连接 Azure VNet 与 HANA 大型实例单元后启动活动。 
@@ -234,7 +235,7 @@ echo "export NCURSES_NO_UTF8_ACS=1" >> .bashrc
 ![YAST 中的 SMT](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-接受 smtserver 上的安装选择。 安装完成后，立即转到 SMT 服务器配置，并输入之前从 SUSE 客户中心获取的组织凭据。 此外，还请输入 Azure VM 主机名，作为 SMT 服务器 URL。 在此示例中，URL 为 https://smtserver，如下图所示。
+接受 smtserver 上的安装选择。 安装完成后，立即转到 SMT 服务器配置，并输入之前从 SUSE 客户中心获取的组织凭据。 此外，还请输入 Azure VM 主机名，作为 SMT 服务器 URL。 在此示例中，它是 https://smtserver，如下图所示。
 
 ![SMT 服务器配置](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

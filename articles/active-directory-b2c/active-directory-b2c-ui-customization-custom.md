@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: f92629a3a5d20cce050aa7f124b140b1f4eb32d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 41b756855ea91db291f4fdb5a963993de4b9cd7e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200852"
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C：在自定义策略中配置 UI 自定义
 
@@ -143,7 +144,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
 
-1. 在“Azure AD B2C”边栏选项卡上，转到“所有策略”。
+1. 在“Azure AD B2C”边栏选项卡上，转到“全部策略”。
 2. 选择上传的自定义策略，并单击“立即运行”按钮。
 3. 现在，应该可以使用电子邮件地址进行注册了。
 

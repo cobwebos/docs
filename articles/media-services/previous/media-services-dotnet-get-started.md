@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33780222"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -154,7 +155,7 @@ ms.lasthandoff: 05/07/2018
 
 下面定义的 **UploadFile** 方法调用 **CreateFromFile**（在 .NET SDK Extensions 中定义）。 **CreateFromFile** 创建指定的源文件所要上传到的新资产。
 
-**CreateFromFile** 方法采用 **AssetCreationOptions，可用于指定以下任一资产创建选项：
+**CreateFromFile** 方法采用 \*\*AssetCreationOptions，可用于指定以下任一资产创建选项：
 
 * **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
   如果计划使用渐进式下载交付 MP4，则使用此选项。

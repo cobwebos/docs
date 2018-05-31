@@ -2,25 +2,20 @@
 title: Azure Active Directory B2B 协作常见问题解答 | Microsoft Docs
 description: 获取有关 Azure Active Directory B2B 协作的常见问题的解答。
 services: active-directory
-documentationcenter: ''
+ms.service: active-directory
+ms.component: B2B
+ms.topic: article
+ms.date: 05/11/2018
+ms.author: twooley
 author: twooley
 manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: active-directory
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
-ms.date: 03/06/2018
-ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 2f039361bce9615e8b8b9aa62dc152db504a6dc1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 77dc239385261c9544b00cf2cf2e450136dce0ae
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076567"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -37,9 +32,6 @@ ms.lasthandoff: 04/28/2018
 
 ### <a name="how-can-i-customize-my-invitation-emails"></a>我能否自定义邀请电子邮件？
 使用 [B2B 邀请 API](active-directory-b2b-api.md)，几乎可以自定义有关邀请者过程的所有内容。
-
-### <a name="can-an-invited-external-user-leave-the-organization-after-being-invited"></a>受邀的外部用户在受邀后能否离开组织？
-邀请方组织管理员可以从其目录中删除 B2B 协作来宾用户，但来宾用户不能自行离开邀请组织目录。 
 
 ### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>来宾用户是否可以重置其多重身份验证方法？
 是的。 来宾用户可以像普通用户一样重置其多重身份验证方法。
@@ -105,9 +97,7 @@ Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样�
 我们还力邀你在 [B2B 协作意见](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas)中提交意见并为未来的功能投票。
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>是否可以发送自动兑换的邀请，以便用户只需“准备前往”即可？ 或者，用户始终需要单击到达兑换 URL？
-如果邀请方组织中发出邀请的用户同时也是合作伙伴组织的成员，则该邀请无需 B2B 用户兑换。
-
-建议在合作伙伴组织中邀请一个用户加入邀请方组织。 [在资源组织中将此用户添加到来宾邀请者角色。](active-directory-b2b-add-guest-to-role.md) 该用户可以使用登录 UI、PowerShell 脚本或 API 邀请合作伙伴组织中的其他用户。 之后，该组织的 B2B 协作用户无需兑换其邀请。
+邀请者可以使用 UI、PowerShell 脚本或 API 邀请合作伙伴组织中的其他用户。 然后，邀请者可以向来宾用户发送指向共享应用的直接链接。 在大多数情况下，不再需要打开电子邮件邀请并单击兑换 URL。 有关详细信息，请参阅 [Azure Active Directory B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)。
 
 ### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>受邀合作伙伴使用联合添加自己的本地身份验证时，B2B 协作如何工作？
 如果合作伙伴具有联合到本地身份验证基础架构的 Azure AD 租户，则会自动实现本地单一登录 (SSO)。 如果合作伙伴没有 Azure AD 租户，则会为新用户创建 Azure AD 帐户。 
@@ -129,16 +119,5 @@ Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样�
 
 ### <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
+- [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-* [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Azure AD 管理员如何添加 B2B 协作用户？](active-directory-b2b-admin-add-users.md)
-* [信息工作者如何添加 B2B 协作用户？](active-directory-b2b-iw-add-users.md)
-* [B2B 协作邀请电子邮件的元素](active-directory-b2b-invitation-email.md)
-* [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
-* [Azure AD B2B 协作授权](active-directory-b2b-licensing.md)
-* [排查 Azure AD B2B 协作问题](active-directory-b2b-troubleshooting.md)
-* [Azure AD B2B 协作 API 和自定义](active-directory-b2b-api.md)
-* [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
-* [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
-* [有关 Azure AD 中应用程序管理的文章索引](active-directory-apps-index.md)

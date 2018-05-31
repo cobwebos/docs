@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: sedusch
-ms.openlocfilehash: b1a7b962d07b64aaa662aab937feed1782851a7b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 53bc4a6f4ecca8ffe3575a038b86192a8663c35c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261477"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -129,12 +130,11 @@ Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applic
 1. 创建可用性集  
    设置最大更新域
 1. 创建虚拟机 1   
-   请至少使用 SLES4SAP 12 SP1，此示例使用了 SLES4SAP 12 SP1 BYOS 映像 https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   使用 SLES For SAP Applications 12 SP1 (BYOS)  
+   请至少使用 SLES4SAP 12 SP3，本例使用 SLES4SAP 12 SP3 BYOS 映像 SLES For SAP Applications 12 SP3 (BYOS)  
    选择前面创建的可用性集  
 1. 创建虚拟机 2   
-   请至少使用 SLES4SAP 12 SP1，此示例使用了 SLES4SAP 12 SP1 BYOS 映像 https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   使用 SLES For SAP Applications 12 SP1 (BYOS)  
+   请至少使用 SLES4SAP 12 SP3，本示例使用 SLES4SAP 12 SP3 BYOS 映像  
+   SLES For SAP Applications 12 SP3 (BYOS)  
    选择前面创建的可用性集  
 1. 向两台虚拟机中为每个 SAP 系统添加一个数据磁盘。
 1. 创建负载均衡器（内部）  
@@ -218,7 +218,7 @@ Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applic
    sudo service nfsserver restart
    </code></pre>
 
-1. **[A]** 安装 drbd 组件
+1. [A] 安装 drbd 组件
 
    <pre><code>
    sudo zypper install drbd drbd-kmp-default drbd-utils

@@ -3,28 +3,32 @@ title: Azure Active Directory v2.0 身份验证库 | Microsoft Docs
 description: Azure Active Directory v2.0 终结点的兼容客户端库和服务器中间件库，以及相关的库、源代码和示例链接。
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/22/2017
-ms.author: dastrock
+ms.date: 04/13/2018
+ms.author: celested
+ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0d9e2831f9d8676eb3e7fac91c58f3977f2e0f32
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8fe3db09acbdec606f25d0bc81300bc4f5e87411
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157367"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 身份验证库
-[Azure Active Directory (Azure AD) v2.0 终结点](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)支持行业标准 OAuth 2.0 和 OpenID Connect 1.0 协议。 可以对 v2.0 终结点使用 Microsoft 和其他组织提供的各种库。
 
-在构建使用 v2.0 终结点的应用程序时，建议使用协议领域的专家根据安全开发生命周期 (SDL) 方法（例如 [Microsoft 遵循的方法][Microsoft-SDL]）编写的库。 如果决定手动编写协议支持，建议遵循 SDL 方法并认真对待每个协议的标准规范中的安全注意事项。
+[Azure Active Directory (Azure AD) v2.0 终结点](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)支持行业标准 OAuth 2.0 和 OpenID Connect 1.0 协议。 Microsoft 身份验证库 (MSAL) 设计为适用于 Azure AD v2.0 终结点。 还可以使用支持 OAuth 2.0 和 OpenID Connect 1.0 的开放源代码库。
+
+建议使用协议领域的专家根据安全开发生命周期 (SDL) 方法（例如 [Microsoft 遵循的方法][Microsoft-SDL]）编写的库。 如果决定手动编写协议支持，请遵循 Microsoft 的 SDL 等方法并认真对待每个协议的标准规范中的安全注意事项。
 
 > [!NOTE]
 > 是否在寻找 Azure AD v1.0 库 (ADAL)？ 请查看 [ADAL 库指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)。
@@ -32,26 +36,27 @@ ms.lasthandoff: 04/28/2018
 >
 
 ## <a name="types-of-libraries"></a>库的类型
+
 Azure AD v2.0 终结点适用于两种类型的库：
 
 * **客户端库**。 本机客户端和服务器使用客户端库获取用于调用某个资源（例如 Microsoft Graph）的访问令牌。
 * **服务器中间件库**。 Web 应用使用服务器中间件库进行用户登录。 Web API 使用服务器中间件库验证本机客户端或其他服务器发送的令牌。
 
 ## <a name="library-support"></a>库支持
-可以在使用 v2.0 终结点时选择任何符合标准的库，此时必须知道可从何处寻求支持。 有关库代码中的问题和功能请求，请联系库所有者。 有关服务端协议实现中的问题和功能请求，请联系 Microsoft。
+
+可以在使用 v2.0 终结点时选择任何符合标准的库，此时必须知道可从何处寻求支持。 有关库代码中的问题和功能请求，请联系库所有者。 有关服务端协议实现中的问题和功能请求，请联系 Microsoft。 有关要在协议中看到的其他功能，请[提出功能请求](https://feedback.azure.com/forums/169401-azure-active-directory)。 如果发现 Azure AD v2.0 终结点与 OAuth 2.0 或 OpenID Connect 1.0 不兼容的问题，请[创建支持请求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)。
 
 库的支持类型有两种：
 
-* **Microsoft 支持**。 Microsoft 为这些库提供修补程序，并对这些库进行 SDL 相关工作。
+* **Microsoft 支持**。 Microsoft 为这些库提供修补程序，并对这些库进行 SDL 审慎调查。
 * **兼容**。 Microsoft 已在基本方案中测试这些库并确认它们适用于 v2.0 终结点。 Microsoft 不提供这些库的修复程序，且尚未审查这些库。 问题和功能请求应重定向到库的开源项目。
 
 有关适用于 V2.0 终结点的库列表，请参阅本文的后续部分。
 
-
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft 支持的客户端库
 
 > [!IMPORTANT]
-> MSAL 预览库适用于生产环境。 我们为这些库提供与当前生产库 (ADAL) 相同的生产级别支持。 在预览期间，我们可能会更改这些库的 MSAL API、内部缓存格式和其他机制，恕不另行通知，将因此需要使用 bug 修复程序和功能改进。 这可能会影响应用程序。 例如，对缓存格式的更改可能会影响用户，例如要求他们重新登录。 API 更改可能要求更新代码。 我们提供通用版时，会要求用户在六个月内更新到通用版，因为使用早期版本库编写的应用程序可能无法再正常运行。
+> MSAL 预览库适用于生产环境。 Microsoft 为这些库提供与当前生产库 (ADAL) 相同的生产级别支持。 在预览期间，预期会更改这些库的 MSAL API、内部缓存格式和其他机制，恕不另行通知，因此将需要使用 bug 修复或功能改进。 这可能会影响应用程序。 例如，对缓存格式的更改可能会要求用户重新登录。 API 更改可能要求更新代码。 正式发布 (GA) 版本变得可用时，使用预览版的库的所有应用程序都必须在六个月内更新，否则可能会停止工作。
 
 | 平台 | 库 | 下载 | 源代码 | 示例 | 引用
 | --- | --- | --- | --- | --- | --- |
@@ -64,22 +69,23 @@ Azure AD v2.0 终结点适用于两种类型的库：
 
 | 平台 | 库 | 下载 | 源代码 | 示例 | 引用
 | --- | --- | --- | --- | --- | --- |
-| .NET 4.x | OWIN OpenID Connect 中间件 |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[CodePlex](http://katanaproject.codeplex.com) |[MVC 应用](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
-| .NET 4.x | 适用于 AzureAD 的 OWIN OAuth Bearer 中间件 |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[CodePlex](http://katanaproject.codeplex.com) |  | |
+| .NET 4.x | OWIN OpenID Connect 中间件 |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHub](https://github.com/aspnet/AspNetKatana/) |[MVC 应用](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
+| .NET 4.x | 适用于 AzureAD 的 OWIN OAuth Bearer 中间件 |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHub](https://github.com/aspnet/AspNetKatana/) |  | |
 | .NET 4.x | 适用于 .NET 4.5 的 JWT 处理程序 | [NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/4.0.4.403061554) | [GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
 | .NET Core | ASP.NET OpenID Connect 中间件 |[Microsoft.AspNetCore.Authentication.OpenIdConnect (NuGet)][ServerLib-NetCore-Owin-Oidc-Lib] |[ASP.NET 安全性 (GitHub)][ServerLib-NetCore-Owin-Oidc-Repo] |[MVC 应用](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-v2) |
 | .NET Core | ASP.NET OAuth Bearer 中间件 |[Microsoft.AspNetCore.Authentication.OAuth (NuGet)][ServerLib-NetCore-Owin-Oauth-Lib] |[ASP.NET 安全性 (GitHub)][ServerLib-NetCore-Owin-Oauth-Repo] |  |
 | .NET Core | 适用于 .NET Core 的 JWT 处理程序  |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| Node.js |Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web 应用](active-directory-v2-devquickstarts-node-web.md)| |
+| Node.js |Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web 应用](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)| |
 
 ## <a name="compatible-client-libraries"></a>兼容的客户端库
+
 | 平台 | 库名称 | 测试的版本 | 源代码 | 示例 |
 |:---:|:---:|:---:|:---:|:---:|
-| Android |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib/wiki) |0.2.1 |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib) |[本机应用示例](active-directory-v2-devquickstarts-android.md) |
+| Android |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib/) |0.2.1 |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib) |[本机应用示例](active-directory-v2-devquickstarts-android.md) |
 | iOS |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |1.2.8 |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |[本机应用示例](active-directory-v2-devquickstarts-ios.md) |
 | JavaScript |[Hello.js](https://adodson.com/hello.js/) |1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-| Java | [Scribe Java scribejava](https://github.com/scribejava/scribejava) | [版本 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/archive/scribejava-3.2.0.zip) | |
-| PHP | [The PHP League oauth2-client](https://github.com/thephpleague/oauth2-client) | [版本 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | |
+| Java | [Scribe Java scribejava](https://github.com/scribejava/scribejava) | [版本 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
+| PHP | [The PHP League oauth2-client](https://github.com/thephpleague/oauth2-client) | [版本 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/) | |
 | Ruby |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1</br>omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)</br>[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 
 ## <a name="related-content"></a>相关内容
