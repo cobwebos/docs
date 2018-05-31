@@ -1,9 +1,9 @@
 ---
-title: "智能检测 - 性能异常 | Microsoft 文档"
-description: "Application Insights 执行应用遥测的智能分析，并在有潜在问题时发出警告。 此功能不需要任何设置。"
+title: 智能检测 - 性能异常 | Microsoft 文档
+description: Application Insights 执行应用遥测的智能分析，并在有潜在问题时发出警告。 此功能不需要任何设置。
 services: application-insights
 documentationcenter: windows
-author: antonfrMSFT
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
 ms.service: application-insights
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3310239b5569ca5b63bd39acb4d192a4e54780e4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.author: mbullwin; antonfr
+ms.openlocfilehash: 59b88a940e83ed89e8638b62680a57ca1514f8b0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868928"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -88,7 +89,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 
 * *如果不执行任何操作来响应通知，是否会收到提醒？*
-  * 否，仅会收到关于每个问题的消息一次。 如果问题持续出现，它会在智能检测的源边栏选项卡中更新。
+  * 否，仅会收到关于每个问题的消息一次。 如果问题持续出现，它会在“智能检测源”边栏选项卡中更新。
 * *我丢失了电子邮件。在哪里可以找到门户中的通知？*
   * 在应用的 Application Insights 概述中，单击“智能检测”磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
 
@@ -132,7 +133,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * 帮助你诊断问题的链接。
   * 帮助你查看哪些地方需要花费操作时间的探查器跟踪（如果在检测期间已收集此操作的探查器跟踪示例，则会提供链接）。 
   * 指标资源管理器中的性能报告，可在其中分解此操作的时间范围/筛选器。
-  * 搜索此调用以查看特定的调用属性。
+  * 搜索此调用以查看特定调用属性。
   * 失败报告 - 如果计数大于 1，则表示此操作可能由于性能下降而发生失败。
 
 ## <a name="dependency-duration-degradation"></a>依赖项持续时间延长
@@ -152,7 +153,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * 帮助你诊断问题的链接
   * 指标资源管理器中为此依赖项提供的性能报告
   * 搜索此依赖项调用以查看调用属性
-  * 失败报告 - 如果计数大于 1，则表示在检测期间可能由于持续时间延长而导致依赖项调用失败 
+  * 失败报告 - 如果计数大于 1，则表示在检测期间可能由于持续时间延长而导致依赖项调用失败。 
   * 打开 Analytics，其中包含用于计算此依赖项持续时间和计数的查询  
 
 ## <a name="smart-detection-of-slow-performing-patterns"></a>智能检测执行模式速度缓慢问题 

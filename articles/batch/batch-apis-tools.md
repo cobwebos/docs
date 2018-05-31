@@ -1,18 +1,19 @@
 ---
-title: "面向开发人员的 Azure Batch API 和工具 | Microsoft Docs"
-description: "了解通过 Azure Batch 服务开发解决方案时可以使用的 API 和工具。"
+title: 面向开发人员的 Azure Batch API 和工具 | Microsoft Docs
+description: 了解通过 Azure Batch 服务开发解决方案时可以使用的 API 和工具。
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: get-started-article
-ms.date: 02/26/2018
+ms.date: 05/15/2018
 ms.author: danlep
-ms.openlocfilehash: 0d3720d33de2237b0d8cce2ae56bcc7ccf6acc43
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a47c7355e8dfea97f7dee6787da87444a7642c3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359316"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>批处理 API 和工具概述
 
@@ -26,11 +27,10 @@ ms.lasthandoff: 03/09/2018
 > 
 
 ## <a name="azure-accounts-for-batch-development"></a>用于批处理开发的 Azure 帐户
-开发 Batch 解决方案时，请在 Microsoft Azure 中使用以下帐户。
+开发 Batch 解决方案时，请在 Azure 订阅中使用以下帐户：
 
-* **Azure 帐户和订阅** - 如果还没有 Azure 订阅，可以激活 [Visual Studio 订户权益][msdn_benefits]或注册 [Azure 免费帐户][free_account]。 创建帐户时，系统为用户创建默认订阅。
-* **批处理帐户** - Azure Batch 资源（包括池、计算节点、作业和任务）与 Azure Batch 帐户相关联。 当应用程序针对 Batch 服务提出请求时，会使用 Azure Batch 帐户名称、帐户的 URL 以及访问密钥或 Azure Active Directory 令牌对请求进行身份验证。 可以通过 Azure 门户或编程方式[创建 Batch 帐户](batch-account-create-portal.md)。
-* **存储帐户** - 批处理提供的内置支持允许处理 [Azure 存储][azure_storage]中的文件。 几乎每个批处理方案都使用 Azure Blob 存储来暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 若要创建存储帐户，请参阅 [关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
+* **Batch 帐户** - Azure Batch 资源（包括池、计算节点、作业和任务）与 Azure [Batch 帐户](batch-api-basics.md#account)相关联。 当应用程序针对 Batch 服务提出请求时，会使用 Azure Batch 帐户名称、帐户的 URL 以及访问密钥或 Azure Active Directory 令牌对请求进行身份验证。 可以通过 Azure 门户或编程方式[创建 Batch 帐户](batch-account-create-portal.md)。
+* **存储帐户** - 批处理提供的内置支持允许处理 [Azure 存储][azure_storage]中的文件。 几乎每个批处理方案都使用 Azure Blob 存储来暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 有关 Batch 中的存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。
 
 ## <a name="batch-service-apis"></a>批处理服务 API
 

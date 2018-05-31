@@ -1,11 +1,11 @@
 ---
-title: "Azure 网络安全最佳实践 | Microsoft 文档"
-description: "了解 Azure 中用于帮助创建安全网络环境的某些重要功能"
+title: Azure 网络安全最佳实践 | Microsoft 文档
+description: 了解 Azure 中用于帮助创建安全网络环境的某些重要功能
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: d169387a-1243-4867-a602-01d6f2d8a2a1
 ms.service: virtual-network
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf015f4857a22b755813d0be1af5a55a8b7b6535
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360466"
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Microsoft 云服务和网络安全性
 Microsoft 云服务提供超大规模的服务和基础结构、企业级的功能，以及许多混合连接选项。 客户可以选择通过 Internet 或 Azure ExpressRoute（提供专用网络连接）访问这些服务。 Microsoft Azure 平台可让客户无缝地将基础结构扩展到云中并构建多层体系结构。 此外，第三方可以提供安全服务和虚拟设备，以启用增强的功能。 本白皮书概述了当客户使用通过 ExpressRoute 访问的 Microsoft 云服务创建安全服务时应该考虑的安全和体系结构问题。 此外，还介绍了如何在 Azure 虚拟网络中创建其他安全服务。
@@ -92,7 +93,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 * **跨界连接**：客户可以在虚拟网络和多个本地站点或 Azure 中的其他虚拟网络之间创建跨界连接。 客户可以使用 VNet 对等互连、Azure VPN 网关、第三方网络虚拟设备或 ExpressRoute 来构造连接。 Azure 支持使用标准 IPsec/IKE 协议和 ExpressRoute 专用连接的站点到站点 (S2S) VPN。
 * **NSG** 允许客户根据所需的粒度（网络接口、单个 VM 或虚拟子网）创建规则 (ACL)。 客户可以从客户网络上的系统，通过跨界连接或直接 Internet 通信来允许或拒绝虚拟网络内的工作负荷，以控制访问。
 * **UDR** 和 **IP 转发**允许客户定义虚拟网络中不同层之间的通信路径。 客户可以部署防火墙、IDS/IPS 和其他虚拟设备，并通过这些安全设备来路由网络流量，以实施安全边界策略、审核和检查。
-* Azure 应用商店中的**网络虚拟设备**：Azure 应用商店和 VM 映像库中提供了防火墙、负载均衡器和 IDS/IPS 等安全设备。 客户可将这些设备部署到其虚拟网络，特别是安全边界（包括外围网络子网），以实现多层安全网络环境。
+* Azure Marketplace 中的网络虚拟设备：Azure Marketplace 和 VM 映像库中提供了防火墙、负载均衡器和 IDS/IPS 等安全设备。 客户可将这些设备部署到其虚拟网络，特别是安全边界（包括外围网络子网），以实现多层安全网络环境。
 
 下图演示了如何使用这些功能在 Azure 中构造外围网络体系结构：
 
@@ -121,11 +122,11 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 ### <a name="perimeter-network-requirements"></a>外围网络要求
 若要实现这些特征，请遵循有关需要满足哪些虚拟网络要求才能实现成功外围网络的指导：
 
-* **子网体系结构：**指定虚拟网络，使整个子网专门作为外围网络，与相同虚拟网络中的其他子网分开。 这样分隔可确保外围网络与其他内部或专用子网层之间的流量流经防火墙或 IDS/IPS 虚拟设备。  要将此流量转发到虚拟设备，需在边界子网上使用用户定义的路由。
-* **NSG：**外围网络子网本身应该打开以允许与 Internet 通信，但这不表示客户应该绕过 NSG。 请遵循常用的安全实践，将曝露于 Internet 的网络接触面减到最小。 管制允许访问部署的远程地址范围，或特定的应用程序协议和打开的端口。 但在某些情况下，不可能实现完全锁定。 例如，如果客户在 Azure 中有外部网站，则外围网络应该允许从任何公共 IP 地址传入的 Web 请求，但只应该打开以下 Web 应用程序端口：TCP:80 和/或 TCP:443。
-* **路由表：**外围网络子网本身必须能够直接与 Internet 通信，但不应该允许未通过防火墙或安全设备，就直接与后端或本地网络之间相互通信。
-* **安全设备配置：**为了路由和检查外围网络与受保护网络其余部分之间的数据包，安全设备（例如防火墙、IDS 和 IPS 设备）可以有多重主目录。 外围网络和后端子网可能有独立的 NIC。 外围网络中的 NIC 将使用相应的 NSG 和路由表直接与 Internet 相互通信。 对于相应的后端子网，连接到后端子网的 NIC 有更受限制的 NSG 和路由表。
-* **安全设备功能：**部署在外围网络中的安全设备通常执行以下功能：
+* **子网体系结构：** 指定虚拟网络，使整个子网专门作为外围网络，与相同虚拟网络中的其他子网分开。 这样分隔可确保外围网络与其他内部或专用子网层之间的流量流经防火墙或 IDS/IPS 虚拟设备。  要将此流量转发到虚拟设备，需在边界子网上使用用户定义的路由。
+* **NSG：** 外围网络子网本身应该打开以允许与 Internet 通信，但这不表示客户应该绕过 NSG。 请遵循常用的安全实践，将曝露于 Internet 的网络接触面减到最小。 管制允许访问部署的远程地址范围，或特定的应用程序协议和打开的端口。 但在某些情况下，不可能实现完全锁定。 例如，如果客户在 Azure 中有外部网站，则外围网络应该允许从任何公共 IP 地址传入的 Web 请求，但只应该打开以下 Web 应用程序端口：TCP:80 和/或 TCP:443。
+* **路由表：** 外围网络子网本身必须能够直接与 Internet 通信，但不应该允许未通过防火墙或安全设备，就直接与后端或本地网络之间相互通信。
+* **安全设备配置：** 为了路由和检查外围网络与受保护网络其余部分之间的数据包，安全设备（例如防火墙、IDS 和 IPS 设备）可以有多重主目录。 外围网络和后端子网可能有独立的 NIC。 外围网络中的 NIC 将使用相应的 NSG 和路由表直接与 Internet 相互通信。 对于相应的后端子网，连接到后端子网的 NIC 有更受限制的 NSG 和路由表。
+* **安全设备功能：** 部署在外围网络中的安全设备通常执行以下功能：
   * 防火墙：对传入请求实施防火墙规则或访问控制策略。
   * 威胁检测和预防：检测并缓解来自 Internet 的恶意攻击。
   * 审核和日志记录：维护详细记录供审核和分析。
@@ -207,7 +208,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 - 一个代表 DNS 服务器的 Windows Server（“DNS01”）
 - 与应用程序 Web 服务器关联的公共 IP
 
-有关脚本和 Azure Resource Manager 模板，请参阅[详细构建说明][Example1]。
+有关脚本和 Azure 资源管理器模板，请参阅[详细构建说明][Example1]。
 
 #### <a name="nsg-description"></a>NSG 描述
 此示例将构建一个 NSG 组，然后加载六个规则。
@@ -228,13 +229,13 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 
 将这些规则绑定到每个子网后，如果有从 Internet 到 Web 服务器的入站 HTTP 请求，将应用规则 3（允许）和规则 5（拒绝）。 但由于规则 3 具有较高的优先级，因此只应用规则 3 并忽略规则 5。 这样就会允许 HTTP 请求传往 Web 服务器。 如果相同的流量尝试传往 DNS01 服务器，则会先应用规则 5（拒绝），因此不允许该流量传递到服务器。 规则 6（拒绝）阻止前端子网与后端子网对话（规则 1 和 4 允许的流量除外）。 此规则集可在攻击者入侵前端的 Web 应用程序时保护后端网络。 攻击者只能对后端的“受保护”网络进行有限度的访问（只能访问 AppVM01 服务器上公开的资源）。
 
-有一个默认出站规则可允许流量外流到 Internet。 在此示例中，我们允许出站流量，且未修改任何出站规则。 如果两个方向的流量都要锁定，则需要用户定义的路由（参阅示例 3）。
+有一个默认出站规则可允许流量外流到 Internet。 在本示例中，我们允许出站流量，且未修改任何出站规则。 如果两个方向的流量都要锁定，则需要用户定义的路由（参阅示例 3）。
 
 #### <a name="conclusion"></a>结束语
 此示例是一种隔离后端子网与输入流量的方式，相当直截了当。 有关详细信息，请参阅[详细构建说明][Example1]。 这些说明包括：
 
 * 如何使用经典 PowerShell 脚本构建此外围网络。
-* 如何使用 Azure Resource Manager 模板构建此外围网络。
+* 如何使用 Azure 资源管理器模板构建此外围网络。
 * 每个 NSG 命令的详细描述。
 * 展示如何在每一层允许或拒绝流量的详细流量传送方案。
 
@@ -255,7 +256,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 * 两个代表应用程序后端服务器的 Windows Server（“AppVM01”、“AppVM02”）
 * 一个代表 DNS 服务器的 Windows Server（“DNS01”）
 
-有关脚本和 Azure Resource Manager 模板，请参阅[详细构建说明][Example2]。
+有关脚本和 Azure 资源管理器模板，请参阅[详细构建说明][Example2]。
 
 #### <a name="nsg-description"></a>NSG 描述
 此示例将构建一个 NSG 组，然后加载六个规则。
@@ -276,7 +277,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 
 将这些规则绑定到每个子网后，如果有从 Internet 到防火墙的入站 HTTP 请求，将应用规则 3（允许）和规则 5（拒绝）。 但由于规则 3 具有较高的优先级，因此只应用规则 3 并忽略规则 5。 这样就会允许 HTTP 请求传往防火墙。 如果相同的流量尝试传往 IIS01 服务器，即使是在前端子网上，也会应用规则 5（拒绝），因此不允许该流量传递到服务器。 规则 6（拒绝）阻止前端子网与后端子网对话（规则 1 和 4 允许的流量除外）。 此规则集可在攻击者入侵前端的 Web 应用程序时保护后端网络。 攻击者只能对后端的“受保护”网络进行有限度的访问（只能访问 AppVM01 服务器上公开的资源）。
 
-有一个默认出站规则可允许流量外流到 Internet。 在此示例中，我们允许出站流量，且未修改任何出站规则。 如果两个方向的流量都要锁定，则需要用户定义的路由（参阅示例 3）。
+有一个默认出站规则可允许流量外流到 Internet。 在本示例中，我们允许出站流量，且未修改任何出站规则。 如果两个方向的流量都要锁定，则需要用户定义的路由（参阅示例 3）。
 
 #### <a name="firewall-rule-description"></a>防火墙规则描述
 应在防火墙上创建转发规则。 本示例只将 Internet 流量入站路由到防火墙，再传送到 Web 服务器，因此只需要一个转发网络地址转换 (NAT) 规则。
@@ -287,7 +288,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 此示例是一种使用防火墙保护应用程序并隔离后端子网与输入流量的方式，相当直截了当。 有关详细信息，请参阅[详细构建说明][Example2]。 这些说明包括：
 
 * 如何使用经典 PowerShell 脚本构建此外围网络。
-* 如何使用 Azure Resource Manager 模板构建此示例。
+* 如何使用 Azure 资源管理器模板构建此示例。
 * 每个 NSG 命令和防火墙规则的详细描述。
 * 展示如何在每一层允许或拒绝流量的详细流量传送方案。
 
@@ -306,7 +307,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 * 两个代表应用程序后端服务器的 Windows Server（“AppVM01”、“AppVM02”）
 * 一个代表 DNS 服务器的 Windows Server（“DNS01”）
 
-有关脚本和 Azure Resource Manager 模板，请参阅[详细构建说明][Example3]。
+有关脚本和 Azure 资源管理器模板，请参阅[详细构建说明][Example3]。
 
 #### <a name="udr-description"></a>UDR 描述
 默认情况下，以下系统路由定义为：
@@ -410,7 +411,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 与前面的示例相比，此示例是以更复杂但更完整的方式来保护和隔离网络的方法。 （示例 2 只保护应用程序，示例 1 只隔离子网）。 这项设计允许同时监视两个方向的流量，而不只是保护入站应用程序服务器，同时还对此网络上的所有服务器实施网络安全策略。 此外，根据使用的设备，还能实现全面的流量审核和感知。 有关详细信息，请参阅[详细构建说明][Example3]。 这些说明包括：
 
 * 如何使用经典 PowerShell 脚本构建此示例外围网络。
-* 如何使用 Azure Resource Manager 模板构建此示例。
+* 如何使用 Azure 资源管理器模板构建此示例。
 * 每个 UDR、NSG 命令和防火墙规则的详细描述。
 * 展示如何在每一层允许或拒绝流量的详细流量传送方案。
 
@@ -447,7 +448,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 将站点到站点 VPN 混合网络连接添加到 Azure 虚拟网络能够安全地将本地网络扩展到 Azure。 使用 VPN 连接时，流量会加密并通过 Internet 路由。 本示例中的 NVA 提供一个中心位置用于实施和管理安全策略。 有关详细信息，请参阅详细构建说明（即将发布）。 这些说明包括：
 
 * 如何使用 PowerShell 脚本构建此示例外围网络。
-* 如何使用 Azure Resource Manager 模板构建此示例。
+* 如何使用 Azure 资源管理器模板构建此示例。
 * 展示此设计中流量如何传送的详细流量方案。
 
 ### <a name="example-5-add-a-hybrid-connection-with-a-site-to-site-azure-vpn-gateway"></a>示例 5：使用站点到站点 Azure VPN 网关添加混合连接
@@ -477,7 +478,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 将站点到站点 VPN 混合网络连接添加到 Azure 虚拟网络能够安全地将本地网络扩展到 Azure。 使用本机 Azure VPN 网关时，流量由 IPSec 加密并通过 Internet 路由。 此外，使用 Azure VPN 网关的成本也较低（不像第三方 NVA 一样需要额外的许可成本）。 在不使用任何 NVA 的示例 1 中，此选项是最经济实惠的方案。 有关详细信息，请参阅详细构建说明（即将发布）。 这些说明包括：
 
 * 如何使用 PowerShell 脚本构建此示例外围网络。
-* 如何使用 Azure Resource Manager 模板构建此示例。
+* 如何使用 Azure 资源管理器模板构建此示例。
 * 展示此设计中流量如何传送的详细流量方案。
 
 ### <a name="example-6-add-a-hybrid-connection-with-expressroute"></a>示例 6：使用 ExpressRoute 添加混合连接
@@ -507,15 +508,15 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 添加 ExpressRoute 专用对等网络连接能够以安全、低延迟、高性能的方式将本地网络扩展到 Azure。 此外，如本示例中所示，使用本机 Azure 网关还能降低成本（不像第三方 NVA 一样需要额外的许可）。 有关详细信息，请参阅详细构建说明（即将发布）。 这些说明包括：
 
 * 如何使用 PowerShell 脚本构建此示例外围网络。
-* 如何使用 Azure Resource Manager 模板构建此示例。
+* 如何使用 Azure 资源管理器模板构建此示例。
 * 展示此设计中流量如何传送的详细流量方案。
 
 ## <a name="references"></a>参考
 ### <a name="helpful-websites-and-documentation"></a>有用的网站和文档
-* 使用 Azure Resource Manager 访问 Azure
+* 使用 Azure 资源管理器访问 Azure
 * 使用 PowerShell 访问 Azure：[https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
 * 虚拟网络文档：[https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
-* 网络安全组文档：[https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/virtual-networks-nsg.md)
+* 网络安全组文档：[https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/security-overview.md)
 * 用户定义的路由文档：[https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
 * Azure 虚拟网关：[https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway/)
 * 站点到站点 VPN：[https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell](vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)

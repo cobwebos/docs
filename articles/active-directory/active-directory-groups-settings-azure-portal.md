@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33760477"
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中管理组的设置
 本文介绍如何在 Azure Active Directory (Azure AD) 中更改组的设置。
@@ -32,7 +33,7 @@ ms.lasthandoff: 05/07/2018
 
    ![打开“所有组”边栏选项卡](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
 4. 在“用户和组 - 所有组”边栏选项卡中，选择一个组。
-5. 在“组 - 组名”边栏选项卡中，选择“属性”。
+5. 在**组 - *组名*** 边栏选项卡中，选择“属性”。
 
    ![打开“属性”边栏选项卡](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
 6. 完成组的属性更改后，请选择“保存”。    

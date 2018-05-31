@@ -9,11 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 8526988685faec0318d0f048b10971712942eef5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2a16e346e508b96338bb1c216ad6a64c013895f2
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312315"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 04/18/2018
 
 | **Azure 区域** | **第 4 代** | **第 5 代** |
 |:---|:----------:|:--------------------:|
-| 美国中部 |  | X |
+| 美国中部 | X |  |
 | 美国东部 | X | X |
 | 美国东部 2 | X | X |
 | 美国中北部 | X |  |
@@ -56,14 +57,16 @@ ms.lasthandoff: 04/18/2018
 | 加拿大东部 | X | X |
 | 巴西南部 | X | X |
 | 北欧 | X | X |
-| 欧洲西部 | X | X |
+| 欧洲西部 |  | X |
 | 英国西部 |  | X |
 | 英国南部 |  | X |
 | 东亚 | X |  |
 | 东南亚 | X | X |
 | 澳大利亚东部 |  | X |
+| 澳大利亚东南部 |  | X |
 | 印度中部 | X |  |
 | 印度西部 | X |  |
+| 印度南部 |  | X |
 | 日本东部 | X | X |
 | 日本西部 | X | X |
 | 韩国南部 |  | X |

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Promapp 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Promapp 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Promapp 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 Promapp 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4a0630bf015361833ed3a6949ea7b29450d53701
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 02deefa82abc7d776e64de7a5a78c46b971f9ee5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34352491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>教程：Azure Active Directory 与 Promapp 的集成
 
@@ -27,19 +28,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Promapp
 - 可以让用户通过其 Azure AD 帐户自动登录到 Promapp（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Promapp 的集成，需备齐以下项目：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Promapp 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -50,14 +51,14 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Promapp
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-promapp-from-the-gallery"></a>从库中添加 Promapp
 要配置 Promapp 与 Azure AD 的集成，需要从库中将 Promapp 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Promapp，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -113,15 +114,14 @@ ms.lasthandoff: 12/11/2017
     a. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     |--|
-    | `https://demo.promapp.com/TENANTNAME`|
-    | `https://go.promapp.com/TENANTNAME`|
-    | `https://demoau.promapp.com/TENANTNAME`|
-    | `https://au.promapp.com/TENANTNAME`|
-    | `https://demous.promapp.com/TENANTNAME`|
-    | `https://us.promapp.com/TENANTNAME`|
-    | `https://dev.promapp.com/TENANTNAME`|
-    | `https://test.promapp.com/TENANTNAME`|
-    | `https://staging.promapp.com/TENANTNAME`|
+    | `https://go.promapp.com/TENANTNAME/`|
+    | `https://au.promapp.com/TENANTNAME/`|
+    | `https://us.promapp.com/TENANTNAME/`|
+    | `https://eu.promapp.com/TENANTNAME/`|
+    | `https://ca.promapp.com/TENANTNAME/`|
+    
+    > [!NOTE] 
+    > 目前，Azure AD 与 Promapp 的集成仅被配置用于服务发起的身份验证，例如，转到 Promapp URL 启动身份验证过程。 但是，“回复 URL”是必填字段。
     
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
 
@@ -198,11 +198,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-promapp-test-user"></a>创建 Promapp 测试用户
 
@@ -240,16 +240,12 @@ Promapp 应用程序支持实时预配。 这意味着，在尝试使用访问�
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-本部分旨在使用“访问面板”测试 Azure AD SSO 配置。
-
-若要在 **IDP** 发起的模式下测试应用程序，单击访问面板中的“Promapp”磁贴时，用户应自动登录到 Promapp 应用程序。
-
-若要在 **SP** 发起的模式下测试应用程序，需要从 Promapp 站点启动身份验证。 为此，需要在登录时将密码字段留空，同时启用“可选”模式。
+若要在 **SP** 发起的模式下测试应用程序，需要从 Promapp 站点启动身份验证。 这可以通过单击登录页上的“使用单一登录登录”按钮完成，同时启用“可选”模式。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

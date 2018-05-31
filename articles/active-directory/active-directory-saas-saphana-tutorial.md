@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 SAP HANA 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 SAP HANA 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 SAP HANA 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 SAP HANA 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 855525e2c1d3c33cc7134bbc1cd9b53ca59e1a70
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 626dfe07c13c90686157dea710715b333a378136
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34352882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教程：将 Azure Active Directory 与 SAP HANA 集成
 
@@ -30,13 +31,13 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 SAP HANA。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 SAP HANA 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用单一登录 (SSO) 的 SAP HANA 订阅
 - 一个在任何公共 IaaS、本地、Azure VM 或 Azure 中的 SAP 大型实例上运行的 HANA 实例
 - XSA 管理 Web 接口以及安装在 HANA 实例上的 HANA Studio
@@ -53,7 +54,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 SAP HANA
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-sap-hana-from-the-gallery"></a>从库中添加 SAP HANA
 若要配置 SAP HANA 与 Azure AD 的集成，请从库中将 SAP HANA 添加到托管 SaaS 应用列表。
@@ -152,7 +153,7 @@ ms.lasthandoff: 12/11/2017
 
     ![添加标识提供者设置](./media/active-directory-saas-saphana-tutorial/sap2.png)
 
-    b. 如果 XML 文档的内容有效，则分析过程会提取“常规数据”屏幕区域中的“使用者、实体 ID 和颁发者”字段所需的信息。 此外，还会提取“目标”屏幕区域中的 URL 字段（例如，“基 URL 和单一登录 URL ( * )”字段）所需的信息。
+    b. 如果 XML 文档的内容有效，则分析过程会提取“常规数据”屏幕区域中的“使用者、实体 ID 和颁发者”字段所需的信息。 此外，还会提取“目标”屏幕区域中的 URL 字段（例如，“基 URL”和“单一登录 URL (*)”字段）所需的信息。
 
     ![添加标识提供者设置](./media/active-directory-saas-saphana-tutorial/sap3.png)
 
@@ -196,13 +197,13 @@ ms.lasthandoff: 12/11/2017
  
     ![“用户”对话框](./media/active-directory-saas-saphana-tutorial/create_aaduser_04.png) 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入 BrittaSimon 的**电子邮件地址**。
 
     c. 选择“显示密码”并记下密码。
 
-    d.单击“下一步”。 选择“创建” 。
+    d. 选择**创建**。
  
 ### <a name="create-a-sap-hana-test-user"></a>创建 SAP HANA 测试用户
 
@@ -276,7 +277,7 @@ SAP HANA 支持默认启用的实时预配。
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

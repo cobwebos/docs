@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: f4b0758ed6f1a0d11aeb1061cac34f1e9084ef53
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 271f3231078b8842b040509ccf0406ed2415e5ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786876"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363938"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
@@ -40,9 +40,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入     | 说明 |
-|--------------------|-------------|
-| url | 图像的唯一定位符。 它可以是一个 Web URL 或 Blob 存储的位置。|
+| 输入名称      | 说明                                          |
+|---------------|------------------------------------------------------|
+| 图像         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为 ```generateNormalizedImages``` 时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
 
 
 
@@ -63,8 +63,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
     "defaultLanguageCode": "en",
     "inputs": [
         {
-            "name": "url",
-            "source": "/document/metadata_storage_path"
+            "name": "image",
+            "source": "/document/normalized_images/*"
         }
     ],
     "outputs": [
@@ -249,3 +249,4 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 + [预定义技能](cognitive-search-predefined-skills.md)
 + [如何定义技能组合](cognitive-search-defining-skillset.md)
++ [创建索引器 (REST)](ref-create-indexer.md)

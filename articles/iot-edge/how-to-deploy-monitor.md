@@ -1,25 +1,26 @@
-﻿---
-title: "部署并监控 Azure IoT Edge 的模块 | Microsoft Docs"
-description: "管理在边缘设备上运行的模块"
+---
+title: 部署并监控 Azure IoT Edge 的模块 | Microsoft Docs
+description: 管理在边缘设备上运行的模块
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/07/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: cc7d1e290465d9254cbd7fe9e8ba71cc740b0368
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 6d024dfdd661d6bebe7d163b96659d6e169cc5cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33770600"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>大规模部署和监控 IoT Edge 模块 - 预览
 
 使用 Azure IoT Edge 可以将分析移至边缘并提供云接口，以便能够无需实际访问每个设备即可管理和监控 IoT Edge 设备。 随着物联网解决方案日益庞大和复杂，远程管理设备功能变得越来越重要。 Azure IoT Edge 旨在支持业务目标，不管添加的设备数量。
 
-可以管理单独的设备并一次性将模块部署到设备中。 但如果想要大规模更改设备，可以创建 IoT Edge 部署。 部署是允许同时将多个模块部署到多个设备、跟踪模块的状态和运行状况以及在必要时做出更改的动态过程。 
+可以管理单独的设备并一次性将模块部署到设备中。 但是，如果想大规模更改设备，则可以创建一个 IoT Edge 自动部署，该部署是 IoT 中心中自动设备管理的一部分。 部署是允许同时将多个模块部署到多个设备、跟踪模块的状态和运行状况以及在必要时做出更改的动态过程。 
 
 ## <a name="identify-devices-using-tags"></a>使用标记标识设备
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 12/15/2017
 
 ## <a name="create-a-deployment"></a>创建部署
 
-1. 登录 [Azure 门户][lnk-portal]，并导航到 IoT 中心。 
+1. 在 [Azure 门户][lnk-portal]中，转到 IoT 中心。 
 1. 选择“IoT Edge (预览版)”。
 1. 选择“添加 IoT Edge 部署”。
 
@@ -75,7 +76,7 @@ ms.lasthandoff: 12/15/2017
    * 始终 - 如果模块因任何原因关闭，该模块将始终重启。
    * 从不 - 如果模块因任何原因关闭，该模块将不再重启。
    * 运行故障时 - 如果模块发生故障，它将重启，但如果完全关闭，则不重启。 
-   * 运行不正常时 - 如果模块发生故障或者返回不正常状态，它将重启。 这取决于每个执行运行状况监控功能的模块。 
+   * 运行不正常时 - 如果模块发生故障或者返回不正常状态，它将重启。 这取决于每个执行运行状况监控功能的模块。 
 1. 使用下拉菜单选择模块的所需状态。 从以下选项中选择：
    * 正在运行 - 这是默认选项。 该模块在部署之后将立即开始运行。
    * 已停止 - 部署之后，模块将保持空闲状态，直到你或另一个模块要求启动。

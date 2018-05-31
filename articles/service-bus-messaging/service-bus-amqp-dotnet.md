@@ -1,11 +1,11 @@
 ---
-title: "服务总线与 .NET 和 AMQP 1.0 | Microsoft 文档"
-description: "在 .NET 中使用支持 AMQP 的 Azure 服务总线"
+title: .NET 和 AMQP 1.0 中的 Azure 服务总线 | Microsoft Docs
+description: 在 .NET 中使用支持 AMQP 的 Azure 服务总线
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 0eb68c97ca26a862a79de9ffb83b1fc630ba2af4
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 28b8d7a71f01d8633d020b99fbe6bc5c16f272b4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188491"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
@@ -94,14 +95,9 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
 | TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
-## <a name="unsupported-features-restrictions-and-behavioral-differences"></a>不支持的功能、限制和行为差异
+## <a name="behavioral-differences"></a>行为差异
 
-在使用 AMQP 时，服务总线 .NET API 的以下功能目前不受支持：
-
-* 事务
-* 通过传输目标发送
-
-在使用 AMQP 时，与默认协议相比，在服务总线 .NET API 的行为方面也有一些细微的差异：
+与默认协议相比，使用 AMQP 时在服务总线 .NET API 的行为方面也有一些细微的差异：
 
 * 忽略 [OperationTimeout][OperationTimeout] 属性。
 * `MessageReceiver.Receive(TimeSpan.Zero)` 以 `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` 的形式实现。

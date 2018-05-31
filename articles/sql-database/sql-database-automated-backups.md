@@ -11,11 +11,12 @@ ms.workload: Active
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ab1793621950fd57d3f0be545772d85b32f5d7b8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 37bbbf8ea5a5d8439b300d0740e4f1a048e98e91
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32189062"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>了解 SQL 数据库自动备份
 
@@ -44,14 +45,17 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 备份存储异地复制根据 Azure 存储复制计划执行。
 
 ## <a name="how-long-do-you-keep-my-backups"></a>备份的保留时间有多长？
-每个 SQL 数据库备份都有一个保留期，该期限基于数据库的[服务层](sql-database-service-tiers.md)。 各服务层中数据库的保留期如下：
+每个 SQL 数据库备份都有一个基于数据库服务层的保留期，并且[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)之间存在差异。 
 
+
+### <a name="database-retention-for-dtu-based-purchasing-model"></a>基于 DTU 的购买模型的数据保留
+在基于 DTU 的购买模型中，数据库的保留期取决于服务层。 各服务层中数据库的保留期如下：
 
 * 基本服务层为 7 天。
 * 标准服务层为 35 天。
 * 高级服务层为 35 天。
-* 常规用途层是可配置的，最长为 35 天（默认为 7 天）*
-* 业务关键层（预览版）是可配置的，最长为 35 天（默认为 7 天）*
+* 常规用途层最多可配置为 35 天（默认为 7 天）*
+* 业务关键层（预览版）最多可配置为 35 天（默认为 7 天）*
 
 \* 在预览版期间，备份保留期不可配置，固定为 7 天。
 
@@ -63,20 +67,26 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 
 > [!IMPORTANT]
 > 如果删除了托管 SQL 数据库的 Azure SQL 服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 无法还原已删除的服务器。
-> 
+
+### <a name="database-retention-for-the-vcore-based-purchasing-model-preview"></a>基于 vCore 的购买模型（预览版）的数据保留
+
+为数据库备份分配存储，以支持 SQL 数据库的时间点还原 (PITR) 和长期保留 (LTR) 功能。 此存储空间针对每个数据库单独分配，并根据数据库费用分开计费。 
+
+- **PITR**：自动将各个数据库备份复制到 RA-GRS 存储。 创建新备份时，存储大小动态递增。  存储由每周完整备份、每日差异备份和 5 分钟复制一次的事务日志备份使用。 存储消耗量取决于数据库变化率和保留期。 可单独为每个数据库配置 7 到 35 天的保留期。 提供与 1 倍数据库大小相等的最小存储量，不收取额外费用。 对于大多数数据库而言，此容量足以将备份存储 7 天。 有关详细信息，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)
+- **LTR**：SQL 数据库提供相应的选项用于将完整备份的长期保留期配置为最多 10 年。 如果启用了 LTR 策略，则这些备份将自动存储在 RA-GRS 存储中，但你可以控制复制备份的频率。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 此配置将定义要为 LTR 备份使用多少存储。 可以使用 LTR 定价计算器来估算 LTR 存储成本。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>如何延长备份保留期？
 
 如果应用程序要求备份在比最长 PITR 备份保留期更长的时间期限内可用，可以为各个数据库配置长期备份保留策略（LTR 策略）。 允许将内置保留期从最长 35 天延长为最多 10 年。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
 
-使用 Azure 门户或 API 向数据库添加 LTR 策略后，每周完整数据库备份将自动复制到一个单独的用于长期保留的 RA-GRS 存储容器（LTR 存储）。 如果使用 TDE 加密数据库，备份会在静止时自动加密。 SQL 数据库会根据时间戳和 LTR 策略自动删除过期的备份。 在设置策略后，你无需管理备份计划，也不用担心旧文件的清除工作。 可以使用 Azure 门户或 PowerShell 查看、还原或删除这些备份。
+使用 Azure 门户或 API 向数据库添加 LTR 策略后，每周完整数据库备份将自动复制到一个单独的用于长期保留的 RA-GRS 存储容器（LTR 存储）。 如果使用 TDE 加密数据库，备份会在静止时自动加密。 SQL 数据库会根据时间戳和 LTR 策略自动删除过期的备份。 在设置策略后，你无需管理备份计划，也不用担心旧文件的清除工作。 可使用 Azure 门户或 PowerShell 查看、还原或删除这些备份。
 
 ## <a name="are-backups-encrypted"></a>备份已加密？
 
 为 Azure SQL 数据库启用 TDE 时，也会加密备份。 默认情况下，将所有新的 Azure SQL 数据库都配置为启用 TDE。 有关 TDE 的详细信息，请参阅[使用 Azure SQL 数据库进行透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
 
 ## <a name="are-the-automatic-backups-compliant-with-gdpr"></a>自动备份是否遵守 GDPR？
-如果备份包含受常规数据保护法规 (GDPR) 制约的个人数据，则会要求你应用增强的安全措施来保护数据免受未经授权的访问。 为了遵守 GDPR，你需要采用不必访问备份的方法来管理数据所有者的数据请求。  对于短期备份，一种解决方案是将备份时段缩短为 30 天以下，这是允许用来完成数据访问请求的时间。  如果需要长期备份，则建议仅在备份中存储“使用假名的”数据。 例如，如果需要删除或更新有关某人的数据，不需要删除或更新现有备份。 可以在[针对 GDPR 符合性的数据治理](https://info.microsoft.com/DataGovernanceforGDPRCompliancePrinciplesProcessesandPractices-Registration.html)中找到有关 GDPR 最佳做法的更多信息。
+如果备份包含受常规数据保护法规 (GDPR) 制约的个人数据，则会要求你应用增强的安全措施来保护数据免受未经授权的访问。 为了遵守 GDPR，你需要采用不必访问备份的方法来管理数据所有者的数据请求。  对于短期备份，一种解决方案是将备份时段缩短到 30 天以下（此为完成数据访问请求所允许的时长）。  如果需要长期备份，则建议仅在备份中存储“使用假名的”数据。 例如，如果需要删除或更新有关某人的数据，不需要删除或更新现有备份。 可以在[针对 GDPR 符合性的数据治理](https://info.microsoft.com/DataGovernanceforGDPRCompliancePrinciplesProcessesandPractices-Registration.html)中找到有关 GDPR 最佳做法的更多信息。
 
 ## <a name="next-steps"></a>后续步骤
 

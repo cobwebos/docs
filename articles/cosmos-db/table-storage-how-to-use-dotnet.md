@@ -13,11 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: ff26ab122e920d6ca8dbf837a2229f8728a471ce
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9f8175742adc5c543b637ab69b3a9583f251da04
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360183"
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>通过 .NET 开始使用 Azure 表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -102,7 +103,7 @@ Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，�
 >
 
 ### <a name="determine-your-target-environment"></a>确定目标环境
-可从两个环境中选择用于运行本指南中示例的环境：
+可从三个环境中选择用于运行本指南中示例的环境：
 
 * 可针对云中的 Azure 存储帐户运行代码。 
 * 可针对云中的 Azure Cosmos DB 帐户运行代码。

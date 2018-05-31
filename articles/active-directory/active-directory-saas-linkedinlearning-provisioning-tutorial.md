@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure Active Directory 为 LinkedIn Learning 配置自动用户预配 | Microsoft Docs"
-description: "了解如何配置 Azure Active Directory 以便自动将用户帐户预配到 LinkedIn Learning 以及取消其预配。"
+title: 教程：使用 Azure Active Directory 为 LinkedIn Learning 配置自动用户预配 | Microsoft Docs
+description: 了解如何配置 Azure Active Directory 以便自动将用户帐户预配到 LinkedIn Learning 以及取消其预配。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: f2ef582bd3a5ecd837dd053067cae6c1ea47b6f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: da39a31777323535c90b4d57e316741295aa873a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34344926"
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>教程：为 LinkedIn Learning 配置自动用户预配
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 *   一个 Azure Active Directory 租户
 *   LinkedIn Learning 租户 
@@ -124,4 +125,4 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)

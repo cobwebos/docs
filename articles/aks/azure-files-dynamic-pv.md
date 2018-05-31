@@ -6,24 +6,25 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/17/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 21245688076cf0a21164b549eb68bc6f55d6ec6c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 991db1fc32ae89ab04ca040cfb6e8d59ffe5262f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356437"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>含 Azure 文件的持久卷
 
-永久性卷表示已经过预配的可以在 Kubernetes 群集中使用的存储块。 永久性卷可供一个或多个 Pod 使用，并可动态或静态预配。 本文档详述了如何在 AKS 群集中将 Azure 文件共享动态预配为 Kubernetes 永久性卷。
+永久性卷是创建用于 Kubernetes 群集的一块存储。 永久性卷可供一个或多个 Pod 使用，并可动态或静态创建。 本文档详细介绍如何将 Azure 文件共享**动态创建**为永久性卷。
 
-有关 Kubernetes 永久性卷的详细信息，请参阅 [Kubernetes 永久性卷][kubernetes-volumes]。
+有关 Kubernetes 永久性卷（包括静态创建）的详细信息，请参阅 [Kubernetes 永久性卷][kubernetes-volumes]。
 
 ## <a name="create-storage-account"></a>创建存储帐户
 
-将 Azure 文件共享动态预配为 Kubernetes 卷时，可以使用任何存储帐户，只要该帐户与 AKS 群集包含在同一资源组中。 根据需要在 AKS 群集所在的资源组中创建一个存储帐户。
+将 Azure 文件共享动态创建为 Kubernetes 卷时，可以使用任何存储帐户，只要该帐户与 AKS 群集在同一资源组中。 根据需要在 AKS 群集所在的资源组中创建一个存储帐户。
 
 若要标识正确的资源组，请使用 [az group list][az-group-list] 命令。
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 05/11/2018
 az group list --output table
 ```
 
-你在查找名称类似 `MC_clustername_clustername_locaton` 的资源组，其中 clustername 为 AKS 群集的名称，location 为部署群集的 Azure 区域。
+查找名称类似于 `MC_clustername_clustername_locaton` 的资源组。
 
 ```
 Name                                 Location    Status
@@ -76,9 +77,9 @@ kubectl apply -f azure-file-sc.yaml
 
 永久性卷声明 (PVC) 使用存储类对象来动态预配 Azure 文件共享。
 
-可以使用以下清单创建大小为 `5GB`、访问权限为 `ReadWriteOnce` 的永久性卷声明。
+可以使用以下 YAML 创建大小为 `5GB`、访问权限为 `ReadWriteOnce` 的永久性卷声明。 有关访问模式的详细信息，请参阅 [Kubernetes 永久性卷][access-modes]文档。
 
-创建名为 `azure-file-pvc.yaml` 的文件，并将其复制到以下清单中。 请确保 `storageClassName` 与上一步骤中创建的存储类匹配。
+创建名为 `azure-file-pvc.yaml` 的文件，并将其复制到以下 YAML 中。 请确保 `storageClassName` 与上一步骤中创建的存储类匹配。
 
 ```yaml
 apiVersion: v1
@@ -104,9 +105,9 @@ kubectl apply -f azure-file-pvc.yaml
 
 ## <a name="using-the-persistent-volume"></a>使用永久性卷
 
-以下清单创建的 Pod 使用永久性卷声明 `azurefile` 将 Azure 文件共享装载到 `/mnt/azure` 路径。
+以下 YAML 创建的 Pod 使用永久性卷声明 `azurefile` 将 Azure 文件共享装载到 `/mnt/azure` 路径。
 
-创建名为 `azure-pvc-files.yaml` 的文件，并将其复制到以下清单中。 请确保 `claimName` 与上一步骤中创建的 PVC 匹配。
+创建名为 `azure-pvc-files.yaml` 的文件，并将其复制到以下 YAML 中。 请确保 `claimName` 与上一步骤中创建的 PVC 匹配。
 
 ```yaml
 kind: Pod
@@ -146,7 +147,7 @@ kubectl apply -f azure-pvc-files.yaml
 | v1.9.0 | 0700 |
 | v1.9.1 或更高版本 | 0755 |
 
-如果使用 1.8.5 或更高版本的群集，则可在存储类对象上指定装载选项。 以下示例设置 `0777`。
+如果使用版本 1.8.5 或更高版本的群集并使用存储类动态创建永久性卷，则可以在存储类对象上指定装载选项。 以下示例设置 `0777`。
 
 ```yaml
 kind: StorageClass
@@ -163,6 +164,29 @@ parameters:
   skuName: Standard_LRS
 ```
 
+如果使用版本 1.8.5 或更高版本的群集并静态创建永久性卷对象，则需要在 `PersistentVolume` 对象上指定装载选项。 有关静态创建永久性卷的详细信息，请参阅[静态永久性卷][pv-static]。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: azurefile
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  azureFile:
+    secretName: azure-secret
+    shareName: azurefile
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  ```
+
 如果使用版本为 1.8.0 - 1.8.4 的群集，则可在指定安全性上下文时，将 `runAsUser` 值设置为 `0`。 有关 Pod 安全性上下文的详细信息，请参阅[配置安全性上下文][kubernetes-security-context]。
 
 ## <a name="next-steps"></a>后续步骤
@@ -173,7 +197,7 @@ parameters:
 > [用于 Azure 文件的 Kubernetes 插件][kubernetes-files]
 
 <!-- LINKS - external -->
-[access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
+[access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 [kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
@@ -181,6 +205,7 @@ parameters:
 [kubernetes-security-context]: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-file
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+[pv-static]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#static
 
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az_group_create

@@ -6,14 +6,15 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 69d004ae4c2408e5749d0a7d21b996cec8dba722
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e541513890d357587e5c1e792165123c2beb5d96
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777005"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 自 Azure SQL 数据库 PaaS 服务推出以来，Microsoft 已向客户承诺在该服务中内置高可用性 (HA)，客户无需操作和添加特殊的逻辑，或者围绕 HA 做出决策。 Microsoft 对 HA 系统的配置和操作保持完全控制，并为客户提供 SLA。 HA SLA 适用于区域中的 SQL 数据库，对于超出 Microsoft 可合理控制的因素（例如，自然灾害、战争、恐怖活动、暴动、政府措施，或者 Microsoft 数据中心外部（包括客户站点，或者客户站点与 Microsoft 数据中心之间的位置）的网络或设备故障）所造成的整个区域范围的故障，它不能提供保护。
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/05/2018
 
 SQL 数据库使用基于直接附加磁盘/VHD 的本地存储 (LS) 和基于 Azure 高级存储页 Blob 的远程存储 (RS) 来存储数据。 
 - 本地存储在针对具有较高 IOPS 要求的任务关键型 OLTP 应用程序设计的“高级”或“业务关键（预览版）”数据库和弹性池中使用。 
-- 远程存储用于基本和标准服务层，这些层针对要求存储和计算能力可单独缩放的预算导向型业务工作负载而设计。 这些层使用用于存储数据库和日志文件的单个页 Blob，并使用内置的存储复制和故障转移机制。
+- 远程存储用于“基本”、“标准”和“常规用途”三个服务层，这些层针对要求存储和计算能力可单独缩放的预算导向型业务工作负载而设计。 这些层使用用于存储数据库和日志文件的单个页 Blob，并使用内置的存储复制和故障转移机制。
 
 在这两种情况下，SQL 数据库的复制、故障检测和故障转移机制完全自动化，无需人工干预即可运行。 此体系结构旨在确保已提交的数据永远不会丢失，并且数据持久性优先于其他所有要求。
 
@@ -46,7 +47,7 @@ SQL 数据库使用基于直接附加磁盘/VHD 的本地存储 (LS) 和基于 A
 
 ## <a name="data-redundancy"></a>数据冗余
 
-SQL 数据库中的高可用性解决方案基于 SQL Server 的 [AlwaysON 可用性组](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)技术，同时适用于 LS 和 RS 数据库，在两者中的差异很小。 在 LS 配置中，AlwaysON 可用性组技术用于实现持久性；在 RS 中，它用于实现可用性（降低 RTO）。 
+SQL 数据库中的高可用性解决方案基于 SQL Server 的 [AlwaysON 可用性组](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)技术，同时适用于 LS 和 RS 数据库，在两者中的差异很小。 在 LS 配置中，AlwaysON 可用性组技术用于实现持久性；在 RS 中，它用于实现可用性（通过活动异地复制降低 RTO）。 
 
 ## <a name="local-storage-configuration"></a>本地存储配置
 
@@ -56,7 +57,7 @@ SQL 数据库中的高可用性解决方案基于 SQL Server 的 [AlwaysON 可�
 
 ## <a name="remote-storage-configuration"></a>远程存储配置
 
-对于远程存储配置（基本和标准层），只会在远程 Blob 存储中维护一个副本，使用存储系统的功能来实现持久性、冗余和位衰减检测。 
+对于远程存储配置（“基本”、“标准”或“常规用途”层），只会在远程 Blob 存储中维护一个副本，使用存储系统的功能来实现持久性、冗余和位衰减检测。 
 
 下图演示了这种高可用性体系结构：
  
@@ -87,9 +88,14 @@ SQL 数据库中的高可用性解决方案基于 SQL Server 的 [AlwaysON 可�
 ## <a name="read-scale-out"></a>读取横向扩展
 如上所述，在单区域和区域冗余配置中，“高级”和“业务关键（预览版）”服务层都利用仲裁集和 AlwaysON 技术来实现高可用性。 AlwasyON 的优势之一是副本始终处于事务一致状态。 因为副本具有与主数据库相同的性能级别，因此，应用程序可以利用该额外容量为只读工作负荷提供服务（读取横向扩展），不需要额外付费。 这样，只读查询将与主要的读写工作负荷相隔离，不会影响其性能。 读取横向扩展功能适用于其中包括逻辑上独立的只读工作负荷（例如分析）的应用程序，因此可以利用此额外的容量而不需要连接到主数据库。 
 
-若要将读取横向扩展功能用于特定的数据库，必须在创建数据库时或者在之后通过更改其配置来显式启用此功能，可以采用以下方式执行此操作：使用 PowerShell 调用 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) 命令，或者通过 Azure 资源管理器 REST API 使用[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)方法。
+若要将读取扩展功能用于特定的数据库，必须在创建数据库时或者在之后通过更改其配置来显式激活此功能，可以采用以下方式执行此操作：使用 PowerShell 调用 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) cmdlet，或者通过 Azure 资源管理器 REST API 使用[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)方法。
 
-为某个数据库启用读取横向扩展后，会根据在应用程序的连接字符串中配置的 `ApplicationIntent` 属性将连接到该数据库的应用程序定向到该数据库的读写副本或只读副本。 有关 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent) 
+为某个数据库启用读取横向扩展后，会根据在应用程序的连接字符串中配置的 `ApplicationIntent` 属性将连接到该数据库的应用程序定向到该数据库的读写副本或只读副本。 有关 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。 
+
+如果禁用了“读取扩展”，或在不支持的服务层中设置了 ReadScale 属性，则所有连接都将定向到读写副本，而与 `ApplicationIntent` 属性无关。  
+
+> [!NOTE]
+> 可以在标准或常规用途数据库上激活读取扩展，即使不会导致只读的预期会话路由到单独副本也是如此。 这样做是为了支持在“标准/常规用途”和“高级/业务关键”层之间横向扩展和纵向扩展的现有应用程序。  
 
 读取横向扩展功能支持会话级一致性。 如果只读会话在由于副本不可用而出现连接错误后重新连接，则可以将其重定向到另一个副本。 它可能会导致处理陈旧的数据集，虽然可能性不大。 同样，如果应用程序使用读写会话写入数据，并立即使用只读会话读取该数据，则新数据可能不会立即可见。
 
