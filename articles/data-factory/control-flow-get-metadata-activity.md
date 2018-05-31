@@ -12,34 +12,80 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: e8e40b763f0c6f1f994535ab2ff335cfcbf02cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4698f2e4c75456de7387ee7fe3bfa9b2ab4dd406
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011384"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的获取元数据活动
-获取元数据活动可用于检索 Azure 数据工厂中任何数据的元数据。 仅版本 2 的数据工厂支持此活动。 它可用于以下方案：
+GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的**元数据**。 仅版本 2 的数据工厂支持此活动。 它可用于以下方案：
 
 - 验证任何数据的元数据信息
 - 数据就绪/可用时触发管道
 
 控制流中有以下功能：
+
 - 获取元数据活动的输出可用于条件表达式以执行验证。
 - 满足条件时可通过 Do-Until 循环触发管道
 
-获取元数据活动将数据集作为必要输入，并输出可用作输出的元数据信息。 目前，仅支持 Azure Blob 数据集。 支持的元数据字段为大小、结构和最后修改时间。  
-
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
 
+## <a name="supported-capabilities"></a>支持的功能
+
+GetMetadata 活动将数据集作为必要输入，并输出可用作活动输出的元数据信息。 目前支持以下连接器，这些连接器具有可检索的相应元数据：
+
+>[!NOTE]
+>如果在自承载 Integration Runtime 上运行 GetMetadata 活动，3.6 或更高版本将支持该最新功能。 
+
+### <a name="supported-connectors"></a>受支持的连接器
+
+**文件存储：**
+
+| 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | size<br>（文件） | created<br>（文件/文件夹） | lastModified<br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | structure<br/>（文件） | columnCount<br>（文件） | exists<br>（文件/文件夹） |
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
+| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Azure 文件存储 | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| 文件系统 | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+
+**关系数据库：**
+
+| 连接器/元数据 | structure | columnCount | exists |
+|:--- |:--- |:--- |:--- |
+| Azure SQL 数据库 | √ | √ | √ |
+| Azure SQL 数据仓库 | √ | √ | √ |
+| SQL Server | √ | √ | √ |
+
+### <a name="metadata-options"></a>元数据选项
+
+可以在 GetMetadata 活动字段列表中指定检索以下元数据类型：
+
+| 元数据类型 | 说明 |
+|:--- |:--- |
+| itemName | 文件或文件夹的名称。 |
+| itemType | 文件或文件夹的类型。 输出值为 `File` 或 `Folder`。 |
+| size | 文件大小，以字节为单位。 仅适用于文件。 |
+| created | 文件或文件夹的创建日期时间。 |
+| lastModified | 文件或文件夹的上次修改日期时间。 |
+| childItems | 给定文件夹内子文件夹和文件的列表。 仅适用于文件夹。 输出值为每个子项的名称和类型的列表。 |
+| contentMD5 | 文件的 MD5。 仅适用于文件。 |
+| structure | 文件或关系数据库表内的数据结构。 输出值为列名称和列类型列表。 |
+| columnCount | 文件或关系表内的列数。 |
+| exists| 是否存在某个文件/文件夹/表。 请注意，如果在 GetaMetadata 字段列表中指定了“exists”，那么即使不存在该项（文件/文件夹/表），活动也不会失败，而是在输出中返回 `exists: false`。 |
+
+>[!TIP]
+>如果要验证是否存在某个文件/文件夹/表，请在 GetMetadata 活动字段列表中指定 `exists`，然后可以检查活动输出中的 `exists: true/false` 结果。 如果未在该字段列表中配置 `exists`，则当找不到对象时，GetMetadata 活动将失败。
 
 ## <a name="syntax"></a>语法
 
-### <a name="get-metadata-activity-definition"></a>获取元数据活动定义：
-在以下示例中，获取元数据活动将返回 MyDataset 所表示的数据的元数据。 
+**GetMetadata 活动：**
 
 ```json
 {
@@ -54,7 +100,8 @@ ms.lasthandoff: 03/23/2018
     }
 }
 ```
-### <a name="dataset-definition"></a>数据集定义：
+
+**数据集：**
 
 ```json
 {
@@ -67,37 +114,74 @@ ms.lasthandoff: 03/23/2018
         },
         "typeProperties": {
             "folderPath":"container/folder",
-            "Filename": "file.json",
+            "filename": "file.json",
             "format":{
                 "type":"JsonFormat"
-                "nestedSeperator": ","
             }
         }
     }
 }
 ```
 
-### <a name="output"></a>输出
+## <a name="type-properties"></a>Type 属性
+
+目前，GetMetadata 活动可以提取以下类型的元数据信息。
+
+属性 | 说明 | 必选
+-------- | ----------- | --------
+fieldList | 列出了所需元数据信息的类型。 有关受支持的元数据，请参阅[元数据选项](#metadata-options)部分中的详细信息。 | 是 
+dataset | 引用数据集，其元数据活动将由获取源数据活动检索。 有关受支持的连接器，请参阅[支持的功能](#supported-capabilities)部分；有关数据集语法详细信息，请参考连接器主题。 | 是
+
+## <a name="sample-output"></a>示例输出
+
+GetMetadata 结果显示在活动输出中。 下面两个示例在字段列表中选择了详尽的元数据选项作为参考。 若要在后续活动中使用该结果，请使用 `@{activity('MyGetMetadataActivity').output.itemName}` 模式。
+
+### <a name="get-a-files-metadata"></a>获取文件的元数据
+
 ```json
 {
-    "size": 1024,
-    "structure": [
-        {
-            "name": "id",
-            "type": "Int64"
-        }, 
-    ],
-    "lastModified": "2016-07-12T00:00:00Z"
+  "exists": true,
+  "itemName": "test.csv",
+  "itemType": "File",
+  "size": 104857600,
+  "lastModified": "2017-02-23T06:17:09Z",
+  "created": "2017-02-23T06:17:09Z",
+  "contentMD5": "cMauY+Kz5zDm3eWa9VpoyQ==",
+  "structure": [
+    {
+        "name": "id",
+        "type": "Int64"
+    },
+    {
+        "name": "name",
+        "type": "String"
+    }
+  ],
+  "columnCount": 2
 }
 ```
 
-## <a name="type-properties"></a>Type 属性
-目前，获取元数据活动可以从 Azure 存储数据集中提取以下类型的元数据信息。
+### <a name="get-a-folders-metadata"></a>获取文件夹的元数据
 
-属性 | 说明 | 允许值 | 必选
--------- | ----------- | -------------- | --------
-fieldList | 列出了所需元数据信息的类型。  | <ul><li>size</li><li>structure</li><li>lastModified</li></ul> |    否<br/>如果为空，则活动将返回所有支持的 3 个元数据信息。 
-dataset | 引用数据集，其元数据活动将由获取源数据活动检索。 <br/><br/>当前支持的数据集类型是 Azure Blob。 两个子属性为： <ul><li><b>referenceName</b>：引用现有的 Azure Blob 数据集</li><li><b>type</b>：由于数据集用于引用，它的类型为“DatasetReference”</li></ul> |    <ul><li>String</li><li>DatasetReference</li></ul> | 是
+```json
+{
+  "exists": true,
+  "itemName": "testFolder",
+  "itemType": "Folder",
+  "lastModified": "2017-02-23T06:17:09Z",
+  "created": "2017-02-23T06:17:09Z",
+  "childItems": [
+    {
+      "name": "test.avro",
+      "type": "File"
+    },
+    {
+      "name": "folder hello",
+      "type": "Folder"
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 查看数据工厂支持的其他控制流活动： 
