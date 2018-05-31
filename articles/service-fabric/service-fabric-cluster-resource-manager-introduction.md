@@ -1,24 +1,25 @@
 ---
-title: "Service Fabric 群集 Resource Manager 简介 | Microsoft 文档"
-description: "介绍 Service Fabric 群集 Resource Manager。"
+title: Service Fabric 群集 Resource Manager 简介 | Microsoft 文档
+description: 介绍 Service Fabric 群集 Resource Manager。
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3e8cd4dc8e960e38ba0e4a9a195b2f61d9ec1924
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f25a422385abfcdb7020eb7477c0ae2ee55cd8fb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210590"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric 群集 Resource Manager 简介
 在传统上，管理 IT 系统或联机服务意味着将特定物理机或虚拟机专用于这些特定的服务或系统。 服务构建为层级形式。 这些层级分为“ Web”层和“数据”（或“存储”）层。 应用程序会有消息传送层（请求在其中流入和流出）以及一组专用于缓存的计算机。 每个层级或每种类型的工作负荷都有特定的专用计算机：数据库需要一些专用计算机，Web 服务器也需要一些。 如果特定类型的工作负荷导致运行它的计算机运行温度过高，则可以向该层添加更多具有该相同配置的计算机。 但是，并非所有工作负荷都可以如此轻松地进行横向扩展 - 尤其是在数据层中，通常需要将计算机替换为更大的计算机。 这很容易理解。 如果某台计算机发生故障，则在还原该计算机之前，整个应用程序中的该部件以较低容量来运行。 这仍然很容易理解（但不一定有趣）。

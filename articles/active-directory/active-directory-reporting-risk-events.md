@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory 风险事件 | Microsoft Docs"
-description: "本主题详细概述了风险事件。"
+title: Azure Active Directory 风险事件 | Microsoft Docs
+description: 本文详细概述了风险事件。
 services: active-directory
-keywords: "azure active directory identity protection , 安全性, 风险, 风险级别, 漏洞, 安全策略"
+keywords: azure active directory identity protection , 安全性, 风险, 风险级别, 漏洞, 安全策略
 author: MarkusVi
 manager: mtillman
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 05/14/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 59c8932f7676a5388413baf2edb5d9e259769f93
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: e883caa63bde26e13234dde949ce4517b328e3a5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195312"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -39,12 +40,13 @@ ms.lasthandoff: 01/06/2018
 从检测到的风险事件获得的见解会绑定到 Azure AD 订阅。 使用 Azure AD Premium P2 版本时，可以获取有关所有基础检测的最详细的信息。 使用 Azure AD Premium P1 版本时，许可证未涵盖的检测项会显示为风险事件“登录时检测到其他风险”。
 
 
-本主题介绍哪些风险事件的详细概述，以及如何使用它们来保护 Azure AD 标识。
+本文详细介绍有哪些风险事件，以及如何使用它们来保护 Azure AD 标识。
 
 
 ## <a name="risk-event-types"></a>风险事件类型
 
-风险事件类型属性是已创建风险事件记录的可疑操作的标识符。  
+风险事件类型属性是已创建风险事件记录的可疑操作的标识符。
+
 Microsoft 对检测过程的持续投入使得：
 
 - 现有风险事件的检测精度有所改进 
@@ -76,6 +78,8 @@ Microsoft 对检测过程的持续投入使得：
 
 这一风险事件类型可根据过去的登录位置（IP、纬度/经度和 ASN）来确定新的/不熟悉的登录位置。 系统会存储用户以前的登录位置信息，并将其视为“熟悉”位置。 当从尚未在熟悉位置列表中列出的位置登录时，将触发此风险事件。 系统具有 30 天的初始学习期间，在此期间它不会将任何新位置标记为不熟悉的位置。 系统还会忽略从常用设备和接近熟悉位置的地理位置进行登录。 
 
+Identity Protection 检测来自不熟悉位置的登录，也用于基本身份验证/旧版协议。 由于这些协议没有熟悉的新型特性（如客户端 ID），因此没有足够的遥测数据来减少误报。 若要减少检测到的风险事件数，应该转向新型身份验证。   
+
 ### <a name="sign-ins-from-infected-devices"></a>从受感染的设备登录
 
 此风险事件类型可标识从感染了恶意软件的设备（即主动与僵尸服务器通信）登录。 这通过分析用户设备的 IP 地址与连接过僵尸服务器的 IP 地址之间的相互关系可得以确定。 
@@ -86,8 +90,7 @@ Microsoft 对检测过程的持续投入使得：
 
 ## <a name="detection-type"></a>检测类型
 
-检测类型属性是风险事件检测时间范围的指示器（实时、脱机）。  
-目前，大多数风险事件是在风险事件发生后，在后处理操作中脱机检测出的。
+检测类型属性是风险事件检测时间范围的指示器（实时、脱机）。 目前，大多数风险事件是在风险事件发生后，在后处理操作中脱机检测出的。
 
 下表列出了不同检测类型显示在相关报表中时所用的时间：
 
@@ -113,8 +116,7 @@ Microsoft 对检测过程的持续投入使得：
 
 风险事件的风险级别属性是风险事件严重性和置信度的指示器（高、中或低）。 此属性可帮助确定必须执行的操作的优先级。 
 
-风险事件的严重性表示标识入侵预测的信号强度。  
-置信度是误报可能性的指示器。 
+风险事件的严重性表示标识入侵预测的信号强度。 置信度是误报可能性的指示器。 
 
 例如， 
 
@@ -132,8 +134,7 @@ Microsoft 对检测过程的持续投入使得：
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>从匿名 IP 地址登录
 
-此风险事件类型的风险级别为“中等”，因为使用匿名 IP 无法明显指示帐户受到威胁。  
-我们建议立即联系用户，验证他们是否使用了匿名 IP 地址。
+此风险事件类型的风险级别为“中等”，因为使用匿名 IP 无法明显指示帐户受到威胁。 我们建议立即联系用户，验证他们是否使用了匿名 IP 地址。
 
 
 ### <a name="impossible-travel-to-atypical-locations"></a>不可能前往异常位置
@@ -179,7 +180,7 @@ Microsoft 对检测过程的持续投入使得：
 可在其中找到已检测到环境中的风险事件？
 有两个位置可以查看报告的风险事件：
 
- - **Azure AD 报告** - 风险事件属于 Azure AD 的安全报告。 有关详细信息，请参阅[用户风险安全报告](active-directory-reporting-security-user-at-risk.md)和[有风险的登录安全报告](active-directory-reporting-security-risky-sign-ins.md)。
+ - **Azure AD 报告** - 风险事件属于 Azure AD 的安全报告。 有关详细信息，请参阅[风险用户安全报告](active-directory-reporting-security-user-at-risk.md)和[有风险的登录安全报告](active-directory-reporting-security-risky-sign-ins.md)。
 
  - **Azure AD Identity Protection** - 风险事件也属于 [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 的报告功能。
     

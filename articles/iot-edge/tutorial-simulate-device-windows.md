@@ -10,11 +10,12 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ae974162a460289a34443879a9e78224684d94ed
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 213a0e7cebda6a8b89ef460799cbec477b487a64
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166108"
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>在 Windows 的模拟设备上部署 Azure IoT Edge - 预览
 
@@ -42,7 +43,7 @@ Azure IoT Edge 使你可在设备上执行分析和数据处理，而无需推�
    * Windows 10 
    * Windows Server
 2. 安装[适用于 Windows 的 Docker][lnk-docker] 并确保其正在运行。
-3. 安装 [Windows 上的 Python 2.7][lnk-python] 并确保可以使用 pip 命令。
+3. 安装[适用于 Windows 的 Python][lnk-python] 并确保可以使用 pip 命令。 本教程已使用 Python 2.7.9（含）以上版本 和 3.5.4（含）以上版本测试过。  
 4. 运行以下命令，下载 IoT Edge 控制脚本。
 
    ```cmd
