@@ -13,13 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/11/2018
+ms.date: 5/9/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 9dfd600a0e3271afff0dd7ce634c78bf87ab314f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d16991d15d76caa496b2923c8d0210b6ccb10a9a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939192"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
 本文回答有关 Azure 备份组件的常见问题。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -67,12 +68,19 @@ ms.lasthandoff: 04/19/2018
 ### <a name="can-i-register-my-dpm-server-to-multiple-vaults-br"></a>是否可以向多个保管库注册 DPM 服务器？ <br/>
 不会。 一个 DPM 或 MABS 服务器只能注册到一个保管库。
 
-### <a name="which-version-of-system-center-data-protection-manager-is-supported-br"></a>支持哪个版本的 System Center Data Protection Manager？ <br/>
-建议在适用于 System Center Data Protection Manager (DPM) 的最新更新汇总版本 (UR) 上安装[最新](http://aka.ms/azurebackup_agent)的 Azure 备份代理。 到 2016 年 8 月为止，更新汇总版本 11 是最新的更新。
+### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>支持哪个版本的 System Center Data Protection Manager？
 
-### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-system-center-dpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>我已安装 Azure 备份代理来保护我的文件和文件夹。 现在可以安装 System Center DPM 来与 Azure 备份代理配合使用，以便在 Azure 中保护本地应用程序/VM 工作负荷吗？ <br/>
-要将 Azure 备份与 System Center Data Protection Manager (DPM) 一起使用，请先安装 DPM，然后再安装 Azure 备份代理。 按此顺序安装 Azure 备份组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装 Azure 备份代理。
+建议在适用于 System Center Data Protection Manager (DPM) 的最新更新汇总版本 (UR) 上安装[最新](http://aka.ms/azurebackup_agent)的 Azure 备份代理。 
+- 对于 System Center DPM 2012 R2，[更新汇总 14](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) 是最新的更新。
+- 对于 System Center DPM 2016，[更新汇总 2](https://support.microsoft.com/en-us/help/3209593) 是最新的更新。
 
+### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>我已安装 Azure 备份代理来保护我的文件和文件夹。 可以安装 System Center DPM 以在 Azure 中保护本地应用程序/VM 工作负荷吗？
+
+是的。 但是，若要将 Azure 备份与 System Center Data Protection Manager (DPM) 一起使用，请先安装 DPM，然后再安装 Azure 备份代理。 按此顺序安装 Azure 备份组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装 Azure 备份代理。
+
+### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>可以使用 DPM 来备份 Azure Stack 中的应用吗？
+
+不会。 虽然你可以使用 Azure 备份来保护 Azure Stack，但 Azure 备份当前不支持使用 DPM 来备份 Azure Stack 中的应用。
 
 ## <a name="how-azure-backup-works"></a>Azure 备份工作原理
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？ <br/>

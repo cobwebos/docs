@@ -1,25 +1,26 @@
 ---
-title: "如何使用 Packer 创建 Linux Azure VM 映像 | Microsoft Docs"
-description: "了解如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像"
+title: 如何使用 Packer 创建 Linux Azure VM 映像 | Microsoft Docs
+description: 了解如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 49a3e7f3aab3ae95c6f40b167880bb48d0fc851b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7d7ba6a493cca3dd14829e6527136af6df424c05
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778178"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 Azure 中的每个虚拟机 (VM) 都创建至定义 Linux 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure Marketplace 为最常见的分发和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
@@ -210,6 +211,8 @@ az vm create \
     --admin-username azureuser \
     --generate-ssh-keys
 ```
+
+如果你希望在与 Packer 映像不同的资源组或区域中创建虚拟机，请指定映像 ID 而不是映像名称。 可以使用 [az image show](/cli/azure/image#az-image-show) 获取映像 ID。
 
 创建 VM 需要几分钟时间。 创建 VM 后，请记下 Azure CLI 显示的 `publicIpAddress`。 此地址将用于通过 Web 浏览器访问 NGINX 站点。
 

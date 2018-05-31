@@ -10,15 +10,16 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 648b67f4b782b2a2318170ae2b655af40b7bd2a5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6e9340e5db78315470052e0c0c70eeef6bf6dafa
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885513"
 ---
 # <a name="use-bulkexecutor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 BulkExecutor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
-本教程提供有关使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档的说明。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos DB 集合。 导入后，我们将批量更新文档的某些属性。 
+本教程提供有关使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档的说明。 若要了解 BulkExecutor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [ BulkExecutor 库概述](bulk-executor-overview.md)一文。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos DB 集合。 导入后，我们将批量更新文档的某些属性。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -91,7 +92,7 @@ ms.lasthandoff: 05/07/2018
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
 ```
-   批量导入 API 接受 JSON 序列化文档的集合并使用以下语法，有关更多详细信息，请参阅 [API 文档](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client/async)：
+   批量导入 API 接受 JSON 序列化文档的集合并使用以下语法，有关更多详细信息，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
 
    ```java
    public BulkImportResponse importAll(
@@ -135,9 +136,9 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中批量更新数据
 
-可以使用 BulkUpdateAsync API 更新现有文档。 此示例将 Name 字段设置为新值，并从现有文档中删除 Description 字段。 有关完整的受支持字段更新操作集，请参阅 [API 文档](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client/async)。 
+可以使用 BulkUpdateAsync API 更新现有文档。 此示例将 Name 字段设置为新值，并从现有文档中删除 Description 字段。 有关完整的受支持字段更新操作集，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)。 
 
-1. 定义更新项以及相应的字段更新操作。 此示例使用 SetUpdateOperation 更新 Name 字段，并使用 UnsetUpdateOperation 删除所有文档中的 Description 字段。 还可以执行其他操作，例如，根据特定的值递增文档字段、将特定的值推送到数组字段，或者从数组字段中删除特定的值。 若要了解批量更新 API 提供的不同方法，请参阅 [API 文档](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client/async)。  
+1. 定义更新项以及相应的字段更新操作。 此示例使用 SetUpdateOperation 更新 Name 字段，并使用 UnsetUpdateOperation 删除所有文档中的 Description 字段。 还可以执行其他操作，例如，根据特定的值递增文档字段、将特定的值推送到数组字段，或者从数组字段中删除特定的值。 若要了解批量更新 API 提供的不同方法，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)。  
 
    ```java
    SetUpdateOperation<String> nameUpdate = new SetUpdateOperation<>("Name","UpdatedDocValue");
@@ -159,7 +160,7 @@ ms.lasthandoff: 05/07/2018
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
    ```
 
-   批量更新 API 接受一系列可更新的项。 每个更新项指定要针对 ID 和分区键值标识的文档执行的字段更新操作列表。 有关更多详细信息，请参阅 [API 文档](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client/async)：
+   批量更新 API 接受一系列可更新的项。 每个更新项指定要针对 ID 和分区键值标识的文档执行的字段更新操作列表。 有关更多详细信息，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
 
    ```java
    public BulkUpdateResponse updateAll(

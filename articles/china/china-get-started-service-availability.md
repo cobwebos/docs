@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: 9738689a8822c8d5af7426657f5c9134edf918a7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 661ef414784ad7593f616ea1a06a6af29e2aadc2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940164"
 ---
 # <a name="azure-service-availability-in-china"></a>在中国可用的 Azure 服务
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 04/05/2018
 | Azure 批处理                | GA                                                                                                                                                                                 | GA                                                                                                                           |
 | Azure Service Fabric       | GA                                                                                                                                              | GA                                                                                      |
 | Azure Functions            | GA                                                                                                                                                                                 | *不可用*                                                                                                              |
-| Azure 容器服务 (AKS)    | GA                                                                                                                                                                                 | *不可用*                                                                                                              |
+| Azure Kubernetes 服务 (AKS)    | GA                                                                                                                                                                                 | *不可用*                                                                                                              |
 | Azure 容器注册表   | GA                                                                                                                                                                                 | *不可用*                                                                                                              |
 | Azure 容器实例  | 预览                                                                                                                                                                            | *不可用*                                                                                                              |
 
@@ -62,7 +63,7 @@ ms.lasthandoff: 04/05/2018
 | 虚拟网络          | GA                 | GA                |
 | Azure ExpressRoute        | GA | GA |
 | Azure DNS                 | GA                                                                                                   | *不可用*                                                                                     |
-| CDN       | GA | GA   |
+| CDN       | 由 Microsoft、Verizon 或 Akamai 提供 | GA   |
 | Azure 流量管理器     | GA                                                                                                   | GA                                                                                                  |
 | Azure 负载均衡器       | GA                                                                                                   | GA                                                                                                  |
 | Azure 网络观察程序     | GA                                                                                                   | GA                                                                                    |
@@ -101,7 +102,7 @@ ms.lasthandoff: 04/05/2018
 | Azure HDInsight           | Hadoop, HBase, Storm, Spark, R Server, Kafka, Interactive Hive | Hadoop, HBase, Storm, Spark, Kafka, Interactive Hive |
 | Azure 机器学习    | GA                                                                                                                                  | *不可用*                                                                                                                                    |
 | Azure 流分析    | GA                                                                                                                                             | GA                                                                                                                                                 |
-| Azure Bot 服务         | GA                                                                                                                                        | *不可用*                                                                                                                                    |
+| Azure 机器人服务         | GA                                                                                                                                        | *不可用*                                                                                                                                    |
 | Azure 数据工厂        | GA                                                                                                                   | *不可用*                                                                                                                                    |
 | Azure Data Lake Store     | GA                                                                                                                                             | *不可用*                                                                                                                                    |
 | Azure Data Lake Analytics | GA                                                                                                                                             | *不可用*                                                                                                                                    |
@@ -160,11 +161,11 @@ ms.lasthandoff: 04/05/2018
 |------------------------|----------------------------------------------|--------------------------|
 | Azure 门户           | GA                                           | GA                       |
 | Azure 资源管理器 | GA                                           | GA                       |
-| Marketplace            | GA                                           | 预览                  |
+| Marketplace            | GA                                           | GA                  |
 | 计划程序              | GA                        | GA    |
 | 自动化             | GA | GA               |
 | Log Analytics          | GA                              | *不可用*          |
-| Azure 监视器          | GA                                           | *不可用*          |
+| Azure Monitor          | GA                                           | GA          |
 | Azure 顾问          | GA                                         | *不可用*          |
 
 

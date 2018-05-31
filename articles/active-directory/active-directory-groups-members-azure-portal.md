@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33760001"
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>在 Azure Active Directory 租户中管理用户的组成员身份
 本文介绍如何在 Azure Active Directory (Azure AD) 中管理组的成员。
@@ -32,7 +33,7 @@ ms.lasthandoff: 05/07/2018
 
    ![打开“组”边栏选项卡](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
 4. 在“用户和组 - 所有组”边栏选项卡中，选择一个组。
-5. 在“组 - 组名”边栏选项卡中，选择“成员”。
+5. 在**组 - \*组名\*** 边栏选项卡中，选择“成员”。
 
    ![打开“成员”边栏选项卡](./media/active-directory-groups-members-azure-portal/view-group-members.png)
 6. 要将成员添加到组，请在“组 - 成员”边栏选项卡中，选择“添加成员”。

@@ -14,11 +14,12 @@ ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
 ms.custom: end-user
-ms.openlocfilehash: 0b76d2debb9814188e5551252e52bd0dae38eb50
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e25ccdad5285bfaa96f538aca415746942523d85
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896259"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
 **适用于：**
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/23/2018
 Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例如帐户顺序）备份到云中。 备份后，还可以使用该应用在新设备上恢复信息，从而避免潜在的锁定或重新创建帐户。
 
 >[!IMPORTANT]
-> 对于每个备份存储位置，都需要一个个人 Microsoft 帐户和一个 iCloud 帐户。 但在该存储位置中，可以备份多个帐户。 例如，你可以拥有一个个人帐户、一个学校帐户和一个第三方帐户（例如 Facebook、Google 等）。<br><br>我们只会存储你的帐户凭据，包括用于在 Microsoft Authenticator 应用中证明你的身份的用户名和 8 位数帐户验证码。 我们不会存储与你的帐户相关的其他任何信息，包括电子邮件或文件。 以外，我们不会以任何方式或者与其他任何产品或服务关联或共享你的帐户。 最后，IT 管理员不会获得有关上述任何帐户的任何信息。
+> 对于每个备份存储位置，都需要一个个人 Microsoft 帐户和一个 iCloud 帐户。 但在该存储位置中，可以备份多个帐户。 例如，你可以拥有一个个人帐户、一个学校帐户和一个第三方帐户（例如 Facebook、Google 等）。<br><br>我们只会存储你的个人和第三方帐户凭据，包括用于证明你身份的用户名和帐户验证码。 我们不会存储与你的帐户相关的其他任何信息，包括电子邮件或文件。 以外，我们不会以任何方式或者与其他任何产品或服务关联或共享你的帐户。 最后，IT 管理员不会获得有关上述任何帐户的任何信息。
 
 ## <a name="back-up-your-account-credentials"></a>备份帐户凭据
 在备份凭据之前，必须具有：
@@ -104,4 +105,4 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 - [Microsoft Authenticator 应用常见问题解答](microsoft-authenticator-app-faq.md)
 
-- [多重身份验证](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)
+- [多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/)

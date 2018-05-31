@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证 | Microsoft Docs"
-description: "了解如何使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证"
+title: 使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 0b3f19bb92d1eeb214150bf118d546cd1c67cd78
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 58f269fa9c153a37a792d9d4efdaf0bd74eb265a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771307"
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -35,7 +36,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 本文讨论如何为服务到服务身份验证创建 Azure AD Web 应用程序。 有关最终用户身份验证的 Azure AD 应用程序配置的说明，请参阅[使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="step-1-create-an-active-directory-web-application"></a>步骤 1：创建 Active Directory Web 应用程序
@@ -77,6 +78,9 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 7. 在“添加自定义访问”边栏选项卡中，单击“确定”。 “访问”边栏选项卡中列出新添加的组以及相关的权限。
    
     ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "分配权限给组")
+
+> [!NOTE]
+> 如果计划将 Azure Active Directory 应用程序限制到特定文件夹，则还需要为相同的 Azure Active Directory 应用程序提供对根的执行权限，以便通过 .NET SDK 启用文件创建访问。
 
 > [!NOTE]
 > 要使用 SDK 创建 Data Lake Store 帐户，必须将 Azure AD Web 应用程序作为角色分配给要在其中创建 Data Lake Store 帐户的资源组。

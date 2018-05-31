@@ -11,20 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 4aea42bd20f01b4dae9e940b0ed101020d64c00c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 365775f840f85efe1792f376880145c7e7db1312
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33205323"
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure Database for PostgreSQL 复制数据 
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure Database for PostgreSQL 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure Database for PostgreSQL 复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -47,6 +48,13 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 | type | type 属性必须设置为：**AzurePostgreSql** | 是 |
 | connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+
+典型的连接字符串为 `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>`。 你可以根据自己的情况设置更多属性：
+
+| 属性 | 说明 | 选项 | 必选 |
+|:--- |:--- |:--- |:--- |:--- |
+| EncryptionMethod (EM)| 驱动程序用于加密在驱动程序和数据库服务器之间发送的数据的方法。 例如 `ValidateServerCertificate=<0/1/6>;`| 0 (No Encryption) **(Default)** / 1 (SSL) / 6 (RequestSSL) | 否 |
+| ValidateServerCertificate (VSC) | 启用 SSL 加密后，确定驱动程序是否验证数据库服务器发送的证书（加密方法=1）。 例如 `ValidateServerCertificate=<0/1>;`| 0 (Disabled) **(Default)** / 1 (Enabled) | 否 |
 
 **示例：**
 

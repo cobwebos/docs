@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 中的设备管理简介 | Microsoft Docs"
-description: "了解设备管理如何有助于控制访问环境中的资源的设备。"
+title: Azure Active Directory 中的设备管理简介 | Microsoft Docs
+description: 了解设备管理如何有助于控制访问环境中的资源的设备。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: faea960d2b6207aab5a2f5df8dc65fddc9ba5b54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33202127"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory 中的设备管理简介
 
@@ -73,7 +74,7 @@ Azure AD 加入设备旨在简化：
 
 
 通过向用户提供自助体验，使工作所有设备受到 Azure AD 控制，可以实现这些目标。  
-Azure AD Join 面向云优先/仅使用云的组织。 这些组织通常是不具备本地 Windows Server Active Directory 基础结构的中小型企业。 
+Azure AD 联接 面向希望成为云优先/仅使用云的组织。 对可以部署 Azure AD 联接的组织的大小或类型没有限制。 Azure AD 联接即使在混合环境中也可以良好运行，并且可以访问本地应用程序和资源。
 
 实现 Azure AD 加入设备具有以下优势：
 
@@ -81,11 +82,14 @@ Azure AD Join 面向云优先/仅使用云的组织。 这些组织通常是不�
 
 - 以符合企业规范的方式在加入设备间漫游用户设置。 用户无需连接 Microsoft 帐户（例如 Hotmail）即可查看设备间的设置。
 
-- 使用 AD 帐户访问适用于企业的 Windows 应用商店。 用户可从组织预选的应用程序清单中进行选择。
+- 使用 Azure AD 帐户访问适用于企业的 Microsoft Store。 用户可从组织预选的应用程序清单中进行选择。
 
 - 支持 Windows Hello，可安全便捷地访问工作资源。
 
 - 仅限使用满足符合性策略的设备访问应用。
+
+- 当设备对本地域控制器具有视觉线时，可以无缝访问本地资源。
+
 
 虽然 Azure AD Join主要面向不具有本地 Windows Server Active Directory 基础结构的组织，但是也可用于以下方案：
 
