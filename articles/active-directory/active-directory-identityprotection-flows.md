@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Identity Protection 中的登录体验 | Microsoft 文档"
-description: "根据当 Identity Protection 缓解或补救某个用户问题，或者当某个策略要求使用多重身份验证时，用户如何操作。"
+title: Azure AD Identity Protection 中的登录体验 | Microsoft 文档
+description: 根据当 Identity Protection 缓解或补救某个用户问题，或者当某个策略要求使用多重身份验证时，用户如何操作。
 services: active-directory
-keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略"
-documentationcenter: 
+keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 558d1e04e352d5f33201bb15cb7a2dd1c18f524f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164197"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 中的登录体验
 使用 Azure Active Directory Identity Protection 时，可以：
@@ -49,10 +50,7 @@ ms.lasthandoff: 01/16/2018
 ## <a name="multi-factor-authentication-registration"></a>多重身份验证注册
 在实施遭到入侵的帐户恢复流程和有风险的登录流程时，最佳用户体验就是用户能够自行恢复。 如果用户已注册多重身份验证，则其帐户已有一个关联的电话号码，可用于通过安全质询。 帐户遭到入侵后，无需技术支持人员或管理员的介入即可恢复正常。 因此，强烈建议要求用户注册多重身份验证。 
 
-管理员可以：
-
-* 设置一个策略，要求用户为其帐户设置其他安全验证。 
-* 允许跳过多重身份验证注册最多 30 天，为用户提供一个宽限期来注册。
+管理员可设置一个策略，要求用户为其帐户设置附加安全验证。 此策略允许用户最多在 14 天内跳过多重身份验证注册。 这 14 天的宽限期是不可配置的。
 
 **多重身份验证注册包括三个步骤：**
 

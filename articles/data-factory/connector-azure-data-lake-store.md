@@ -10,23 +10,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: f346accd318689bbaa10080111d07e3fedd84556
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 522a285d16901f1237a2ed5463e64d0cbf4bb8c9
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011571"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Store 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - 正式版](v1/data-factory-azure-datalake-connector.md)
 > * [版本 2 - 预览版](connector-azure-data-lake-store.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动向/从 Azure Data Lake Store 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动向/从 Azure Data Lake Store 复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Data Lake Store 连接器](v1/data-factory-azure-datalake-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Data Lake Store 连接器](v1/data-factory-azure-datalake-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -155,10 +156,13 @@ Azure Data Lake Store 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AzureDataLakeStoreFile** |是 |
-| folderPath | 到文件存储中的容器和文件夹的路径。 例如：rootfolder/subfolder/ |是 |
-| fileName | 如果需要向/从特定文件复制，则在 folderPath 中指定文件名。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，并且没有在活动接收器中指定“preserveHierarchy”，则复制活动会自动生成采用以下格式的文件名：`Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]`。 例如：`Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz`。 |否 |
+| folderPath | Data Lake Store 中的文件夹的路径。 不支持通配符筛选器。 例如：rootfolder/subfolder/ |是 |
+| fileName | 指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（多个字符）和 `?`（单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且在活动接收器中没有指定 **preserveHierarchy**，则复制活动会自动生成采用以下格式的文件名：“*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*”。 例如，“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”。 |否 |
 | 格式 | 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果想要分析或生成具有特定格式的文件，则下面是支持的文件格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为：**最佳**和**最快**。 |否 |
+
+>[!TIP]
+>如需复制文件夹下的所有文件，请仅指定 **folderPath**。<br>如需复制具有给定名称的单个文件，请指定文件夹部分的 **folderPath** 和文件名部分的 **fileName**。<br>如需复制文件夹下的文件子集，请指定文件夹部分的 **folderPath** 和通配符筛选器部分的 **fileName**。 
 
 **示例：**
 

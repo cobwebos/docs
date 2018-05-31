@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: b81f3719f8781cf6cdb724108f4dd730f3380c86
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33943575"
 ---
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>手动将经典 VM 从 VHD 迁移到新的 ARM 托管磁盘 VM 
 
@@ -92,6 +93,8 @@ ms.lasthandoff: 04/28/2018
 
 让应用程序做好停机准备。 为了执行净迁移，必须停止当前系统中的所有处理。 只有这样才能使其处于一致状态，可以将该状态迁移到新的平台。 停机持续时间取决于要迁移的磁盘中的数据量。
 
+本部分需要 Azure PowerShell 模块 6.0.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 此外，还需要运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+
 
 1.  首先，设置公共参数：
 
@@ -121,11 +124,11 @@ ms.lasthandoff: 04/28/2018
 
 2.  使用经典 VM 中的 VHD 创建托管 OS 磁盘。
 
-    确保已为 $osVhdUri 参数提供 OS VHD 的完整 URI。 此外，根据要迁移到的磁盘类型（高级或标准），输入 **-AccountType** 作为 **PremiumLRS** 或 **StandardLRS**。
+    确保已为 $osVhdUri 参数提供 OS VHD 的完整 URI。 此外，根据要迁移到的磁盘类型（高级或标准），输入“-AccountType”作为“Premium_LRS”或“Standard_LRS”。
 
     ```powershell
     $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
+    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
     -ResourceGroupName $resourceGroupName
     ```
 
@@ -134,14 +137,14 @@ ms.lasthandoff: 04/28/2018
     ```powershell
     $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
     $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType PremiumLRS -DiskSizeInGB 128 -CreateOption Attach -Windows
+    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
     ```
 
 4.  从数据 VHD 文件中创建托管数据磁盘，并将其添加到新的 VM。
 
     ```powershell
     $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreationDataCreateOption Import '
+    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
     -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
     
     $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '

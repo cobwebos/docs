@@ -7,19 +7,20 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: 9b4fbb34686a12f992b344ac61420c9ba99ee405
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0168849c01add3f714b139c7984e3def74f40a5b
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34071757"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>使用 CSP 将 VMware 复制到 Azure 的多租户支持的概述
 
-[Azure Site Recovery](site-recovery-overview.md) 支持适用于租户订阅的多租户环境。 它还支持适用于租户订阅的多租户，这些租户订阅通过 Microsoft 云解决方案提供商 (CSP) 计划创建和管理。 
+[Azure Site Recovery](site-recovery-overview.md) 支持适用于租户订阅的多租户环境。 它还支持适用于租户订阅的多租户，这些租户订阅通过 Microsoft 云解决方案提供商 (CSP) 计划创建和管理。
 
-本文提供了实现和管理多租户 VMware 到 Azure 复制的概述。 
+本文提供了实现和管理多租户 VMware 到 Azure 复制的概述。
 
 ## <a name="multi-tenant-environments"></a>多租户环境
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="shared-hosting-services-provider-hsp"></a>共享托管服务提供程序 (HSP)
 
- 另外两种方案也属于共享托管方案，并使用相同的原则。 共享托管指南结尾对其中的差异进行了说明。
+另外两种方案也属于共享托管方案，并使用相同的原则。 共享托管指南结尾对其中的差异进行了说明。
 
 在多租户方案中，基本的要求是必须隔离租户。 不允许一个租户观察到另一个租户托管的内容。 在由合作伙伴管理的环境中，此要求不那么重要，而在自助服务环境中，此要求相当重要。 本文假定租户隔离是必需的。
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 03/08/2018
 
 数据隔离要求表示所有敏感的基础结构信息（例如访问凭据）始终不能披露给租户。 因此，建议将管理服务器的所有组件交由合作伙伴全权控制。 管理服务器组件包括：
 
-* 配置服务器）
+* 配置服务器
 * 进程服务器
 * 主目标服务器
 
@@ -63,7 +64,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="vcenter-account-requirements"></a>vCenter 帐户要求
 
-必须使用已向其分配了特定角色的帐户来配置配置服务器。 
+使用已向其分配了特定角色的帐户对配置服务器进行配置。
 
 - 角色分配需应用到每个 vCenter 对象的 vCenter 访问帐户，不能传播到子对象。 此配置可确保租户隔离，因为传播访问权限可能会导致意外访问其他对象。
 
@@ -108,22 +109,36 @@ vCenter 帐户访问现已完成。 此步骤可满足完成故障回复操作�
 - 仅将 Read-Only 角色分配给该账户，而没有将 Azure_Site_Recovery 角色分配给 vCenter 访问帐户。 此权限集允许 VM 复制和故障转移，不允许故障回复。
 - 前述进程中的所有其他内容保留原样。 每个权限仍然只在对象级别分配，不传播到子对象，以便确保租户隔离并限制 VM 发现。
 
+### <a name="deploy-resources-to-the-tenant-subscription"></a>将资源部署到租户订阅
+
+1. 在 Azure 门户中，按照常规过程创建资源组，然后部署恢复服务保管库。
+2. 下载保管库注册密钥。
+3. 使用保管库注册密钥为租户注册 CS。
+4. 为两个访问帐户输入凭据，一个是用于访问 vCenter 服务器的帐户，另一个是用于访问 VM 的帐户。
+
+    ![管理配置服务器帐户](./media/vmware-azure-multi-tenant-overview/config-server-account-display.png)
+
+### <a name="register-servers-in-the-vault"></a>在保管库中注册服务器
+
+1. 在 Azure 门户中，在之前创建的保管库中，使用你创建的 vCenter 帐户将 vCenter 服务器注册到配置服务器。
+2. 按照常规过程完成 Site Recovery 的“准备基础结构”过程。
+3. VM 现在可以进行复制了。 在“复制” > “选择虚拟机”中验证是否仅显示了该租户的 VM。
 
 ## <a name="dedicated-hosting-solution"></a>专用托管解决方案
 
-如下图所示，专用托管解决方案中的体系结构差异在于，每个租户的基础结构是专为该租户设置的。 由于租户是通过单独的 vCenter 隔离的，因此托管提供者仍需遵循为共享托管提供的 CSP 步骤，但不需担心租户隔离。 CSP 安装程序保持不变。
+如下图所示，专用托管解决方案中的体系结构差异在于，每个租户的基础结构是专为该租户设置的。
 
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
 **多个 vCenter 的专用托管方案**
 
 ## <a name="managed-service-solution"></a>托管服务解决方案
 
-如下图所示，托管服务解决方案中的体系结构差异在于，每个租户的基础结构在物理上也是与其他租户的基础结构分隔开的。 当租户拥有基础结构但需解决方案提供商管理灾难恢复时，通常使用此方案。 由于租户是通过不同的基础结构进行物理隔离的，因此合作伙伴仍需遵循为共享托管提供的 CSP 步骤，但不需担心租户隔离。 CSP 预配保持不变。
+如下图所示，托管服务解决方案中的体系结构差异在于，每个租户的基础结构在物理上也是与其他租户的基础结构分隔开的。 当租户拥有基础结构但需解决方案提供商管理灾难恢复时，通常使用此方案。
 
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
 **多个 vCenter 的托管服务方案**
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解](site-recovery-role-based-linked-access-control.md) Site Recovery 中基于角色的访问控制。
-了解如何[将 VMware VM 的灾难恢复设置到 Azure](vmware-azure-tutorial.md)
-[通过具有 CSP 的多租户为 VMWare VM 设置灾难恢复](vmware-azure-multi-tenant-csp-disaster-recovery.md)
+- [详细了解](site-recovery-role-based-linked-access-control.md) Site Recovery 中基于角色的访问控制。
+- 了解如何[设置 VMware VM 到 Azure 的灾难恢复](vmware-azure-tutorial.md)。
+- 了解有关[使用 CSP 且适用于 VMWare VM 的多租户](vmware-azure-multi-tenant-csp-disaster-recovery.md)的详细信息。
