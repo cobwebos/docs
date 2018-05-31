@@ -1,13 +1,13 @@
 ---
-title: "在 Azure 中使用 Ansible 创建完整的 Linux VM | Microsoft Docs"
-description: "了解如何在 Azure 中使用 Ansible 创建和管理完整的 Linux 虚拟机环境"
+title: 在 Azure 中使用 Ansible 创建完整的 Linux VM | Microsoft Docs
+description: 了解如何在 Azure 中使用 Ansible 创建和管理完整的 Linux 虚拟机环境
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 5efb666652bf124160df836b5d12305903d907ba
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 22b580e74ec412763b9c34a7fa2fea97c8a277d0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896174"
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>在 Azure 中使用 Ansible 创建完整的 Linux 虚拟机环境
 使用 Ansible 可以在环境中自动部署和配置资源。 可以在 Azure 中使用 Ansible 管理虚拟机 (VM)，管理其他任意资源也一样。 本文介绍了如何使用 Ansible 创建完整的 Linux 环境和支持资源。 还可以了解如何[使用 Ansible 创建基本 VM](ansible-create-vm.md)。
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/12/2018
 若要使用 Ansible 管理 Azure 资源，需要以下条件：
 
 - 安装在主机系统上的 Ansible 和 Azure Python SDK 模块。
-    - 在 [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts)、[CentOS 7.3](ansible-install-configure.md#centos-73) 和 [SLES 12 SP2](ansible-install-configure.md#sles-12-sp2) 上安装 Ansible
+    - 在 [CentOS 7.4](ansible-install-configure.md#centos-74)、[Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts) 和 [SLES 12 SP2](ansible-install-configure.md#sles-12-sp2) 上安装 Ansible
 - Azure 凭据和配置后使用 Azure 凭据的 Ansible。
     - [创建 Azure 凭据和配置 Ansible](ansible-install-configure.md#create-azure-credentials)
 - Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 

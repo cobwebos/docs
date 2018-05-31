@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 05/01/2018
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 38556392624e87611d59e3b96ae63ce8ea30afbd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1b598dc19882a91143515e954f7dc9cdce7c384
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770247"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -117,9 +118,9 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 可以在 Azure 中[禁用不受支持的身份验证方法](howto-mfa-mfasettings.md#selectable-verification-methods)。
 
-### <a name="enable-users-for-mfa"></a>允许用户使用 MFA
+### <a name="register-users-for-mfa"></a>用户注册 MFA
 
-在部署完整的 NPS 扩展前，需要为想要执行双重验证的用户启用 MFA。 更直接的是，若要在部署扩展时测试扩展，则至少需要一个已针对多重身份验证进行完全注册的测试帐户。
+在部署和使用 NPS 扩展之前，需要执行双重验证的用户需要注册 MFA。 更直接的是，若要在部署扩展时测试扩展，则至少需要一个已针对多重身份验证进行完全注册的测试帐户。
 
 使用以下步骤以启动一个测试帐户：
 1. 通过测试帐户登录 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 

@@ -1,6 +1,6 @@
 ---
-title: "输入验证 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "针对威胁建模工具中暴露的威胁采取的缓解措施"
+title: 输入验证 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: c416ae23565870223abc3f2db1ac460e8bea77f6
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d26d869748283718375e35ae4183eef0e51a96ed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778573"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架：输入验证 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -38,7 +39,7 @@ ms.lasthandoff: 01/24/2018
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [XSLT 安全](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx)、[XsltSettings.EnableScript 属性](http://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **步骤** | XSLT 支持使用 `<msxml:script>` 元素在样式表内编写脚本。 这样，便可以在 XSLT 转换中使用自定义函数。 该脚本在执行转换的进程的上下文中执行。 在不受信任的环境中必须禁用 XSLT 脚本，防止执行不受信任的代码。 *如果使用.NET：*XSLT 脚本默认已禁用；但是，必须确保未通过 `XsltSettings.EnableScript` 属性显式将它启用。|
+| **步骤** | XSLT 支持使用 `<msxml:script>` 元素在样式表内编写脚本。 这样，便可以在 XSLT 转换中使用自定义函数。 该脚本在执行转换的进程的上下文中执行。 在不受信任的环境中必须禁用 XSLT 脚本，防止执行不受信任的代码。 *如果使用.NET：* XSLT 脚本默认已禁用；但是，必须确保未通过 `XsltSettings.EnableScript` 属性显式将它启用。|
 
 ### <a name="example"></a>示例 
 
@@ -340,7 +341,7 @@ using System.Data.SqlClient;
 using (SqlConnection connection = new SqlConnection(connectionString))
 { 
 DataSet userDataset = new DataSet(); 
-SqlDataAdapter myCommand = new SqlDataAdapter(LoginStoredProcedure", connection); 
+SqlDataAdapter myCommand = new SqlDataAdapter("LoginStoredProcedure", connection); 
 myCommand.SelectCommand.CommandType = CommandType.StoredProcedure; 
 myCommand.SelectCommand.Parameters.Add("@au_id", SqlDbType.VarChar, 11); 
 myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text; 
@@ -643,7 +644,7 @@ using System.Data.SqlClient;
 using (SqlConnection connection = new SqlConnection(connectionString))
 { 
 DataSet userDataset = new DataSet(); 
-SqlDataAdapter myCommand = new SqlDataAdapter(LoginStoredProcedure", connection); 
+SqlDataAdapter myCommand = new SqlDataAdapter("LoginStoredProcedure", connection); 
 myCommand.SelectCommand.CommandType = CommandType.StoredProcedure; 
 myCommand.SelectCommand.Parameters.Add("@au_id", SqlDbType.VarChar, 11); 
 myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text; 

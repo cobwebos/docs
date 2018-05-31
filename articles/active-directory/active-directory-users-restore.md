@@ -10,15 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 05/09/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 9e28184000964564bcf170a2c8015f3b4c220209
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8dbb546954f8eee0bf997b3d2f4f92d67c0b7869
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33930868"
 ---
 # <a name="restore-a-deleted-user-in-azure-active-directory"></a>在 Azure Active Directory 中还原已删除的用户
 
@@ -31,17 +32,15 @@ ms.lasthandoff: 05/07/2018
 ## <a name="how-to-restore-a-recently-deleted-user"></a>如何还原最近删除的用户
 如果最近删除了某个用户，将保留该用户所有目录信息。 如果还原该用户，也会还原这些信息。
 
-1. 在 [Azure AD 管理中心](https://aad.portal.azure.com)中，选择“用户和组”&gt;“所有用户”。 
-2. 在“显示”下，筛选页以显示“最近删除的用户”。 
-3. 选择一个或多个最近删除的用户。
-4. 选择“还原用户”。
+1. 在“[Azure AD 管理中心](https://aad.portal.azure.com)”内，选择“用户”&gt;“已删除的用户”。 
+2. 选择一个或多个最近删除的用户。
+3. 选择“还原用户”。
 
 ## <a name="how-to-permanently-delete-a-recently-deleted-user"></a>如何永久删除最近删除的用户
 
-1. 在 [Azure AD 管理中心](https://aad.portal.azure.com)中，选择“用户和组”&gt;“所有用户”。 
-2. 在“显示”下，筛选页以显示“最近删除的用户”。 
-3. 选择一个或多个最近删除的用户。
-4. 选择“永久删除”。
+1. 在“[Azure AD 管理中心](https://aad.portal.azure.com)”内，选择“用户”&gt;“已删除的用户”。 
+2. 选择一个或多个最近删除的用户。
+3. 选择“永久删除”。
 
 ## <a name="required-permissions"></a>所需的权限
 以下权限足以还原用户。
