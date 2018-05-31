@@ -6,14 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 05/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c94652017216bd9c8ff319e0b19fa3597c75e81c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5d4c2b3bc55b94b08287a06125e15ac61013834a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362033"
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>将 Azure 流分析作为 IoT Edge 模块进行部署 - 预览版
 
@@ -57,7 +58,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
 1. 在 Azure 门户中，转到“创建资源”，在搜索框输入“存储帐户”，选择“存储帐户 - Blob、文件、表、队列”。
 
-2. 在“创建存储帐户”窗格中，输入存储帐户的名称，选择存储 IoT 中心的同一位置，然后选择“创建”。 请记下该名称供稍后使用。
+2. 在“创建存储帐户”窗格中，输入存储帐户的名称，选择存储 IoT 中心的同一位置，选择 IoT 中心所在的资源组，然后选择“创建”。 请记下该名称供稍后使用。
 
     ![创建存储帐户][1]
 
@@ -84,32 +85,25 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
 3. 选择**创建**。
 
-4. 在所创建作业中的“作业拓扑”下，依次选择“输入”、“添加”。
-
-5. 在“新建输入”窗格中执行以下操作：
-
-    a. 在“输入别名”框中，输入 **temperature**。
-    
-    b. 在“源类型”框中，选择“数据流”。
-    
-    c. 在剩余字段中使用默认值。
+4. 在创建的作业中，在“作业拓扑”下，打开“输入”。
 
    ![Azure 流分析输入](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-6. 选择**创建**。
+5. 选择“添加流输入”，然后选择“Edge 中心”。
 
-7. 在“作业拓扑”下，依次选择“输出”、“添加”。
+5. 在“新建输入”窗格中，输入 **temperature** 作为输入别名。 
 
-8. 在“新建输出”窗格中执行以下操作：
+6. 选择“保存”。
 
-    a. 在“输出别名”框中，键入 **alert**。
-    
-    b. 在剩余字段中使用默认值。 
-    
-    c. 选择**创建**。
+7. 在“作业拓扑”下，打开“输出”。
 
    ![Azure 流分析输出](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
+8. 选择“添加”，然后选择“Edge 中心”。
+
+8. 在“新建输出”窗格中，输入 **alert** 作为输出别名。 
+
+9. 选择**创建**。
 
 9. 在“作业拓扑”下，选择“查询”，然后将默认文本替换为以下查询：
 

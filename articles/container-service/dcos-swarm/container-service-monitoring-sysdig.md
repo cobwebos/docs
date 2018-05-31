@@ -1,19 +1,20 @@
 ---
-title: "通过 Sysdig 监视 Azure 容器服务群集"
-description: "通过 Sysdig 监视 Azure 容器服务群集。"
+title: 通过 Sysdig 监视 Azure 容器服务群集
+description: 通过 Sysdig 监视 Azure 容器服务群集。
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: d694744665ef6399560fc12c6976c2d88d232148
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0c0f4fd1f3a8242061e198d7b5447656f9008e96
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32162130"
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>通过 Sysdig 监视 Azure 容器服务群集
 
@@ -30,7 +31,7 @@ Sysdig 是允许监视群集中容器的监视服务。 大家都知道 Sysdig �
 ## <a name="configure-a-sysdig-deployment-with-marathon"></a>通过 Marathon 配置 Sysdig 部署
 这些步骤将演示如何通过 Marathon 将 Sysdig 应用程序配置和部署到群集中。 
 
-在 DC/OS UI 中导航至 "Universe"（位于左下角）并搜索 "Sysdig" 后，通过 [http://localhost:80/](http://localhost:80/) 访问 DC/OS UI。
+通过 [http://localhost:80/](http://localhost:80/) 访问 DC/OS UI，然后从此处导航到左下角的“Universe”，再搜索“Sysdig”。
 
 ![DC/OS Universe 中的 Sysdig](./media/container-service-monitoring-sysdig/sysdig1.png)
 

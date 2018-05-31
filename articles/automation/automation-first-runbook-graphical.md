@@ -4,16 +4,18 @@ description: 本教程指导完成创建、 测试和发布一个简单图形 Ru
 keywords: runbook, runbook 模板, runbook 自动化, azure runbook
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6893d3c79a5f827f214b12ce1dc5f5af7bbc2891
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7804c67871de546d217d85a4215c817f9c08f6b8
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055738"
 ---
 # <a name="my-first-graphical-runbook"></a>我的第一个图形 Runbook
 
@@ -117,6 +119,10 @@ ms.lasthandoff: 04/23/2018
 1. 由于不再需要**将 Hello World 写入到输出**，因此请单击省略号 (...)，然后选择“删除”。
 1. 在“库”控件中展开“资产”、“连接”，然后通过选择“添加到画布”将“AzureRunAsConnection”添加到画布。
 1. 在“库”控件的搜索文本框中，键入“Connect-AzureRmAccount”。
+
+   > [!IMPORTANT]
+   > Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块。
+
 1. 将 Connect-AzureRmAccount 添加到画布。
 1. 将鼠标悬停在“获取运行方式连接”上方，直到在该形状的底部显示一个圆圈。 单击该圆圈并将箭头拖至 Connect-AzureRmAccount。 创建的箭头是*链接*。 该 Runbook 会首先运行“获取运行方式连接”，然后运行 Connect-AzureRmAccount。<br> ![创建活动之间的链接](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
 1. 在画布上选择“Connect-AzureRmAccount”，并在“配置控件”窗格的“标签”文本框中键入“登录到 Azure”。
@@ -135,9 +141,6 @@ ms.lasthandoff: 04/23/2018
 1. 选择参数集后，这些参数会显示在“活动参数配置”页中。 单击 **SubscriptionID**
 1. 在“参数值”页中，选择“变量资产”作为“数据源”，从列表中选择“AzureSubscriptionId”，并单击“确定”两次。
 1. 将鼠标悬停在“登录到 Azure”上方，直到在该形状的底部显示一个圆圈。 **Specify Subscription Id**。
-
-> [!IMPORTANT]
-> Connect-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Connect-AzureRmAccount，或更新自动化帐户中的模块。
 
 此时，Runbook 看起来将如下所示： <br>![Runbook 身份验证配置](media/automation-first-runbook-graphical/runbook-auth-config.png)
 

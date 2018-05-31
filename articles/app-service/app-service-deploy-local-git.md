@@ -18,6 +18,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31587752"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 
@@ -44,12 +45,12 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 | 运行时 | 根目录文件 |
 |-|-|
-| ASP.NET（仅限 Windows） | *.sln、*.csproj 或 default.aspx |
-| ASP.NET Core | *.sln 或 *.csproj |
+| ASP.NET（仅限 Windows） | _\*.sln_、 _\*.csproj_ 或 _default.aspx_ |
+| ASP.NET Core | _\*.sln_ 或 _\*.csproj_ |
 | PHP | index.php |
 | Ruby（仅限 Linux） | Gemfile |
 | Node.js | server.js、app.js 或具有启动脚本的 package.json |
-| Python（仅限 Windows） | \*.py、requirements.txt 或 runtime.txt |
+| Python（仅限 Windows） | _\*.py_ 、 _requirements.txt_ 或 _runtime.txt_ |
 | HTML | default.htm、default.html、default.asp、index.htm、index.html 或 iisstart.htm |
 | Web 作业 | App\_Data/jobs/continuous（适用于连续的 WebJobs）或 App\_Data/jobs/triggered（适用于触发的 WebJobs）下的 \<job_name>/run.\<extension>。 有关详细信息，请参阅 [Kudu WebJobs 文档](https://github.com/projectkudu/kudu/wiki/WebJobs) |
 | 函数 | 请参阅 [Azure Functions 的连续部署](../azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements)。 |

@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797693"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>教程：在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 本教程是系列教程的第五部分， 介绍了使用 Application Insights 针对 Service Fabric 群集上运行的 ASP.NET Core 应用程序设置监视和诊断的步骤。 我们会从本教程第一部分（即[构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)）开发的应用程序中收集遥测数据。 
@@ -237,7 +238,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-进行这些更改以后，请启动应用程序，以便生成和部署最新版本。 应用程序部署完以后，请访问 [localhost:8080](localhost:8080)，添加和删除一些投票选项。 然后回到 Application Insights 资源，查看最新运行的跟踪（与前面一样，跟踪可能需要 1-2 分钟才会显示在 Application Insights 中）。 不管是添加的还是删除的投票，此时都会看到一个“自定义事件”，以及所有响应遥测。 
+进行这些更改以后，请启动应用程序，以便生成和部署最新版本。 应用程序部署完以后，请访问 [localhost:8080](localhost:8080)，添加和删除一些投票选项。 然后回到 Application Insights 资源，查看最新运行的跟踪（与前面一样，跟踪可能需要 1-2 分钟才会显示在 Application Insights 中）。 不管是添加的还是删除的投票，此时都会看到一个“自定义事件”\*，以及所有响应遥测。 
 
 ![自定义事件](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 

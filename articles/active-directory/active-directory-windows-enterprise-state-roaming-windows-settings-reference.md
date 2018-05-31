@@ -1,9 +1,9 @@
 ---
-title: "Windows 10 漫游设置参考 | Microsoft Docs"
-description: "将在 Windows 10 中漫游或备份的所有设置的完整列表。"
+title: Windows 10 漫游设置参考 | Microsoft Docs
+description: 将在 Windows 10 中漫游或备份的所有设置的完整列表。
 services: active-directory
-keywords: "企业状态漫游, Windows 云"
-documentationcenter: 
+keywords: 企业状态漫游, Windows 云
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 21d21c945b622c1695d8856c4baff02c098218cf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 741b76935b5a6d9b2a6869ef57caa0ac0dc6351a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159071"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
 以下为会在 Windows 10 中漫游或备份的所有设置的完整列表。 
@@ -47,11 +48,15 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 * 轻松访问：讲述人、屏幕键盘、放大镜 
 * 其他 Windows 设置：请参阅 Windows 设置详细信息
 
-![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-individual-sync-settings.png)
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 最终用户可通过 Microsoft Edge 浏览器的“设置”菜单选项来启用或禁用 Microsoft Edge 浏览器设置组（收藏夹、读取列表）同步。
 
-![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-sync-content.png)
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-edge.png)
+
+对于 Windows 10 版本 1803 或更高版本，最终用户可通过 Internet Explorer 的“设置”菜单选项启用或禁用 Internet Explorer 设置组（收藏夹、键入的 URL）同步。 
+
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Windows 设置详细信息
 在下表中，“设置组”列中的“其他”项是指，可通过转到“设置”>“帐户”>“同步设置”>“其他 Windows 设置”来禁用的设置。 

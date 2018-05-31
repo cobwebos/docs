@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 TrackVia 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 TrackVia 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 TrackVia 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 TrackVia 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 51b040e1dfaba8fff8136e8947edf716919f53b0
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 54e830f2ead2887c941d81a97ed619ae5cb1c750
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33202552"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>教程：Azure Active Directory 与 TrackVia 的集成
 
@@ -58,7 +59,7 @@ ms.lasthandoff: 01/20/2018
 
 **若要从库中添加 TrackVia，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -126,11 +127,22 @@ ms.lasthandoff: 01/20/2018
 6. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-trackvia-tutorial/tutorial_general_400.png)
-    
-7. 若要在 **TrackVia** 端配置单一登录，需要将下载的**元数据 XML** 发送给 [TrackVia 支持团队](mailto:support@trackvia.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. 在“TrackVia 配置”部分中，单击“配置 TrackVia”打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。
+
+    ![TrackVia 配置](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_configure.png)
+    
+8. 在不同的浏览器窗口中，以管理员身份登录到 TrackVia 公司站点。
+
+9. 单击 Trackvia“我的帐户”设置，然后选择“单一登录”选项卡，执行以下步骤：
+
+    ![TrackVia 配置](./media/active-directory-saas-trackvia-tutorial/configure1.png)
+
+    a. 在“标识提供者实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+
+    b. 选中“选择文件”，上传从 Azure 门户下载的元数据文件。
+
+    c. 单击“保存”
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -162,7 +174,7 @@ ms.lasthandoff: 01/20/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-trackvia-test-user"></a>创建 TrackVia 测试用户
 
@@ -212,8 +224,6 @@ ms.lasthandoff: 01/20/2018
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_01.png
@@ -227,4 +237,3 @@ ms.lasthandoff: 01/20/2018
 [201]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_203.png
-

@@ -1,25 +1,26 @@
 ---
-title: "应用程序代理故障排除 | Microsoft 文档"
-description: "介绍如何对 Azure AD 应用程序代理中的错误进行故障排除。"
+title: 应用程序代理故障排除 | Microsoft 文档
+description: 介绍如何对 Azure AD 应用程序代理中的错误进行故障排除。
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 970caafb-40b8-483c-bb46-c8b032a4fb74
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 6fcf360df6da36919c251bef0a8214deba6b5605
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 838bdccb06e5763d33f63208cb6f941a55778b32
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155807"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>应用程序代理问题和错误消息故障排除
 如果在访问已发布应用程序或发布应用程序时出现错误，请检查以下选项，查看 Microsoft Azure AD 应用程序代理是否正确工作：
@@ -27,14 +28,14 @@ ms.lasthandoff: 02/21/2018
 * 打开 Windows 服务控制台并验证 **Microsoft AAD 应用程序代理连接器**服务已启用并且正在运行。 另请查看应用程序代理服务属性页，如下图所示：  
   ![Microsoft AAD 应用程序代理连接器属性窗口屏幕截图](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 * 打开事件查看器，并在**应用程序和服务日志** > **Microsoft** > **AadApplicationProxy** > **Connector** > **Admin** 中查找应用程序代理连接器事件。
-* 如果需要，可通过[打开应用程序代理连接器会话日志](application-proxy-understand-connectors.md#under-the-hood)获取更详细的日志。
+* 如果需要，可通过[打开应用程序代理连接器会话日志](manage-apps/application-proxy-connectors.md#under-the-hood)获取更详细的日志。
 
 有关 Azure AD 故障排除工具的详细信息，请参阅[用于验证连接器网络先决条件的故障排除工具](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites)。
 
 ## <a name="the-page-is-not-rendered-correctly"></a>页面未正确呈现
 即使没有收到特定的错误消息，应用程序也可能存在绘制或运行不正常的问题。 如果发布了文章路径，但应用程序需要存在于该路径外的内容时，可能发生此情况。
 
-例如，如果发布路径 https://yourapp/app，但应用程序调用 https://yourapp/media 中的图像，则这些图像无法呈现。 确保使用包含所有相关内容所需的最高级路径发布应用程序。 在本示例中为 http://yourapp/。
+例如，如果发布路径 https://yourapp/app，但应用程序调用 https://yourapp/media 中的图像，则这些图像无法呈现。 确保使用包含所有相关内容所需的最高级路径发布应用程序。 在此示例中，它是 http://yourapp/。
 
 如果更改路径以包含引用内容，但仍然需要用户登陆路径中更深的链接，请参阅博客文章 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)（在 Azure AD 访问面板和 Office 365 应用启动器中为应用程序代理应用程序设置正确的链接）。
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 02/21/2018
 
 | 错误 | 建议的步骤 |
 | ----- | ----------------- |
-| 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：“发生了一个或多个错误。” | 如果关闭了注册窗口但没有登录到 Azure AD，请再次运行连接器向导并注册连接器。 <br><br> 如果注册窗口打开后立即关闭，无法进行登录，则可能看到此错误。 当系统上存在网络错误时，可能出现此错误。 确保可从浏览器连接到公共网站，并且端口以[应用程序代理先决条件](active-directory-application-proxy-enable.md)中所指定的方式打开。 |
+| 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：“发生了一个或多个错误。” | 如果关闭了注册窗口但没有登录到 Azure AD，请再次运行连接器向导并注册连接器。 <br><br> 如果注册窗口打开后立即关闭，无法进行登录，则可能看到此错误。 当系统上存在网络错误时，可能出现此错误。 确保可从浏览器连接到公共网站，并且端口以[应用程序代理先决条件](manage-apps/application-proxy-enable.md)中所指定的方式打开。 |
 | 注册窗口中出现明确错误。 无法继续 | 如果看到此错误，然后窗口关闭，这意味着输入的用户名或密码错误。 重试。 |
 | 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：AADSTS50059: 未在请求中找到或所提供的任何凭据均未暗示任何租户识别信息，并且服务主体 URI 的搜索已失败。 | 正尝试使用 Microsoft 帐户登录，而不是使用作为正尝试登录的目录组织 ID 一部分的域进行登录。 确保管理员是租户域的相同域名的一部分，例如，如果 Azure AD 域为 contoso.com，则管理员应为 admin@contoso.com。 |
 | 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装已失败，请检查确保 PowerShell 执行策略未禁用。 <br><br>1.打开组策略编辑器。<br>2.依次转到“计算机配置” > “管理模板” > “Windows 组件” > **“Windows PowerShell”** ，并双击“打开脚本执行”。<br>3.可将执行策略设置为“未配置”或“已启用”。 如果设置为“已启用”，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”或“允许所有脚本”。 |
@@ -87,10 +88,10 @@ ms.lasthandoff: 02/21/2018
 如果遇到的 Azure AD 应用程序代理的错误或问题未在此故障排除指南中列出，请告知我们。 请将遇到的错误的详细信息通过电子邮件发送到我们的[反馈团队](mailto:aadapfeedback@microsoft.com)。
 
 ## <a name="see-also"></a>另请参阅
-* [启用 Azure Active Directory 的应用程序代理](active-directory-application-proxy-enable.md)
-* [使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)
-* [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
-* [启用条件性访问](application-proxy-enable-remote-access-sharepoint.md)
+* [启用 Azure Active Directory 的应用程序代理](manage-apps/application-proxy-enable.md)
+* [使用应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)
+* [启用单一登录](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+* [启用条件性访问](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

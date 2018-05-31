@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Mixpanel 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Mixpanel 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Mixpanel 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 Mixpanel 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e48a192ada32a764b7f23634c0728c04c226b3d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0dec216ea2bc01c3ee3f5afae0ec4966c51afe00
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34338384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>教程：Azure Active Directory 与 Mixpanel 的集成
 
@@ -27,19 +28,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在 Azure AD 中控制谁有权访问 Mixpanel
 - 可以让用户使用其 Azure AD 帐户自动登录到 Mixpanel（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Mixpanel 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Mixpanel 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -50,14 +51,14 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Mixpanel
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-mixpanel-from-the-gallery"></a>从库中添加 Mixpanel
 要配置 Mixpanel 与 Azure AD 的集成，需要从库中将 Mixpanel 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Mixpanel，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -113,7 +114,7 @@ ms.lasthandoff: 12/11/2017
      在“登录 URL”文本框中，键入 URL `https://mixpanel.com/login/`
 
     > [!NOTE] 
-    > 请在 [https://mixpanel.com/register/](https://mixpanel.com/register/) 注册，然后设置登录凭据并联系 [Mixpanel 支持团队](mailto:support@mixpanel.com)为你的租户启用 SSO 设置。 如果需要，还可以从 Mixpanel 支持团队获取登录 URL。 
+    > 请在 [https://mixpanel.com/register/](https://mixpanel.com/register/) 注册以设置登录凭据并联系 [Mixpanel 支持团队](mailto:support@mixpanel.com)来为租户启用 SSO 设置。 如果需要，还可以从 Mixpanel 支持团队获取登录 URL。 
  
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -175,11 +176,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-mixpanel-test-user"></a>创建 Mixpanel 测试用户
 
@@ -232,7 +233,7 @@ ms.lasthandoff: 12/11/2017
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-在本部分中，将使用访问面板测试 Azure AD 单一登录配置。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Mixpanel 磁贴时，应当会自动登录到 Mixpanel 应用程序。
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
@@ -240,7 +241,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

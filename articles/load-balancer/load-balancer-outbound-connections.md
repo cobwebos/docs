@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 990abc5c4e546d72d093bcd9e8f37932e93cbeb4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940218"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -40,11 +41,11 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 
 Azure 负载均衡器和相关资源是使用 [Azure 资源管理器](#arm)时显式定义的。  Azure 目前提供三种不同的方法实现 Azure 资源管理器资源的出站连接。 
 
-| 方案 | 方法 | 说明 |
-| --- | --- | --- |
-| [1.具有实例级公共 IP 地址的 VM（有或没有负载均衡器）](#ilpip) | SNAT，不使用端口伪装 |Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 |
-| [2.与 VM 关联的公共负载均衡器（实例上没有实例级公共 IP 地址）](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 |
-| [3.独立 VM（无负载均衡器，无实例级公共 IP 地址）](#defaultsnat) | 使用端口伪装 (PAT) 的 SNAT | Azure 自动指定用于 SNAT 的公共 IP 地址，与可用性集的多个专用 IP 地址共享此公共 IP 地址，并使用此公共 IP 地址的临时端口。 此方案是前述方案的回退方案。 如果需要可见性和控制，则我们不建议采用。 |
+| 场景 | 方法 | IP 协议 | 说明 |
+| --- | --- | --- | --- |
+| [1.具有实例级公共 IP 地址的 VM（有或没有负载均衡器）](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 |
+| [2.与 VM 关联的公共负载均衡器（实例上没有实例级公共 IP 地址）](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT | TCP、UDP |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 |
+| [3.独立 VM（无负载均衡器，无实例级公共 IP 地址）](#defaultsnat) | 使用端口伪装 (PAT) 的 SNAT | TCP、UDP | Azure 自动指定用于 SNAT 的公共 IP 地址，与可用性集的多个专用 IP 地址共享此公共 IP 地址，并使用此公共 IP 地址的临时端口。 此方案是前述方案的回退方案。 如果需要可见性和控制，则我们不建议采用。 |
 
 如果不希望 VM 与 Azure 外部的公共 IP 地址空间中的终结点通信，则可以根据需要使用网络安全组 (NSG) 来阻止访问。 [阻止出站连接](#preventoutbound)部分详细介绍了 NSG。 本文不会介绍有关在无任何出站访问权限的情况下，如何设计和管理虚拟网络的设计和实施指导。
 
@@ -119,7 +120,7 @@ SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 
 ### <a name="pat"></a>端口伪装 SNAT (PAT)
 
-公共负载均衡器资源与 VM 实例相关联时，将重写每个出站连接源。 出站连接源从虚拟网络专用 IP 地址空间重新写入负载均衡器的前端公共 IP 地址。 在公共 IP 地址空间中，流的 5 元组（源 IP 地址、源端口、IP 转换协议、目标 IP 地址、目标端口）必须唯一。  
+公共负载均衡器资源与 VM 实例相关联时，将重写每个出站连接源。 出站连接源从虚拟网络专用 IP 地址空间重新写入负载均衡器的前端公共 IP 地址。 在公共 IP 地址空间中，流的 5 元组（源 IP 地址、源端口、IP 转换协议、目标 IP 地址、目标端口）必须唯一。  端口伪装 SNAT 可与 TCP 或 UDP IP 协议一起使用。
 
 重写专用源 IP 地址后，临时端口（SNAT 端口）用于实现此目的，因为多个流源自单个公共 IP 地址。 
 
@@ -166,8 +167,8 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 
 ### <a name="tcp-snat-port-release"></a>TCP SNAT 端口释放
 
-- 如果两个服务器/客户端均发送 FIN/ACK，则 SNAT 端口将在 240 秒后释放。
-- 如果出现 RST，则 SNAT 端口将在 15 秒后释放。
+- 如果两个服务器/客户端均发送 FIN/ACK，则 SNAT 端口在 240 秒后释放。
+- 如果出现 RST，则 SNAT 端口在 15 秒后释放。
 - 已达到空闲超时
 
 ### <a name="udp-snat-port-release"></a>UDP SNAT 端口释放
@@ -201,7 +202,7 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 临时端口有 4 分钟的空闲超时（不可调整）。 如果重试太过积极，则消耗没有机会进行自行清除。 因此，应用程序停用事务的方式和频率对于设计至关重要。
 
 #### <a name="assignilpip"></a>将实例级公共 IP 分配给每个 VM
-分配 ILPIP 会将方案更改为 [VM 的实例级公共 IP](#ilpip)。 用于各 VM 的公共 IP 的所有临时端口都可供 VM 使用。 （与以下方案相反：公共 IP 的临时端口与同相应后端池关联的 VM 的所有临时端口共享）。需要作出一些权衡，比如公共 IP 地址的额外成本和将大量个人 IP 地址列入允许列表所产生的潜在影响。
+分配 ILPIP 会将方案更改为 [VM 的实例级公共 IP](#ilpip)。 用于各 VM 的公共 IP 的所有临时端口都可供 VM 使用。 （与以下方案相反：公共 IP 的临时端口与同相应后端池关联的 VM 的所有临时端口共享）。需要作出一些权衡，比如公共 IP 地址的额外成本和将大量个人 IP 地址列入白名单所产生的潜在影响。
 
 >[!NOTE] 
 >此选项不适用于 Web 辅助角色。
@@ -243,6 +244,7 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 
 ## <a name="limitations"></a>限制
 - 在门户中配置负载均衡规则时，不能将 DisableOutboundSnat 用作选项。  请改用 REST、模板或客户端工具。
+- 如果仅使用内部标准负载均衡器，由于 VNet 之前的服务和其他平台服务功能的副作用，则可以访问没有 VNet 和其他 Microsoft 平台服务的辅助角色。 请勿依赖此副作用，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建出站连接。 本文中所述的[默认 SNAT](#defaultsnat) 方案 3 不可用。
 
 ## <a name="next-steps"></a>后续步骤
 

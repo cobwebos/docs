@@ -3,7 +3,7 @@ title: 适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展 | Micro
 description: 使用虚拟机扩展在 Linux 虚拟机上部署网络观察程序代理。
 services: virtual-machines-linux
 documentationcenter: ''
-author: dennisg
+author: gurudennis
 manager: amku
 editor: ''
 tags: azure-resource-manager
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 83e2c726228e43612caf94bd8564abc9df3882f9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5a33f183470ec3879344f0cfe335bab38f9ff30f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778659"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>适用于 Linux 的网络观察程序代理虚拟机扩展
 
@@ -39,11 +40,12 @@ ms.lasthandoff: 04/18/2018
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS 和 12.04 LTS |
 | Debian | 7 和 8 |
-| RedHat | 6.x 和 7.x |
-| Oracle Linux | 7x |
-| Suse | 11 和 12 |
-| OpenSuse | 7.0 |
-| CentOS | 7.0 |
+| RedHat | 6 和 7 |
+| Oracle Linux | 6.8+ 和 7 |
+| SUSE Linux Enterprise Server | 11 和 12 |
+| OpenSUSE Leap | 42.3+ |
+| CentOS | 6.5+ 和 7 |
+| CoreOS | 899.17.0+ |
 
 请注意，目前不支持 CoreOS。
 
@@ -112,4 +114,4 @@ azure vm extension get myResourceGroup1 myVM1
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容不了解，可以参阅网络观察程序文档或联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/en-us/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/en-us/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/en-us/support/faq/)。
+如果对本文中的任何内容不了解，可以参阅网络观察程序文档或联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

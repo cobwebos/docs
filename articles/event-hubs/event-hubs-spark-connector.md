@@ -12,18 +12,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
-ms.author: shvija;sethm;sagrewal
-ms.openlocfilehash: b430b731bdb38f6fe8af347e082fdfb1ef36a945
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: shvija
+ms.openlocfilehash: 09790852d28f2f68e854b37256ca1c8edba992e6
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311288"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>将 Apache Spark 与 Azure 事件中心集成
 
-Azure 事件中心与 [Apache Spark](https://spark.apache.org/) 无缝集成，可轻松构建分布式流式处理应用程序。 此集成支持 [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html)、[Spark 流式处理](http://spark.apache.org/docs/latest/streaming-programming-guide.html)、[结构化流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)。 Apache Spark 事件中心连接器可在 [GitHub](https://github.com/Azure/azure-event-hubs-spark) 上使用。 此库还可用于 [Maven 中央存储库](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C)中的 Marven 项目。
+Azure 事件中心与 [Apache Spark](https://spark.apache.org/) 无缝集成，可构建分布式流式处理应用程序。 此集成支持 [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html)、[Spark 流式处理](http://spark.apache.org/docs/latest/streaming-programming-guide.html)、[结构化流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)。 Apache Spark 事件中心连接器可在 [GitHub](https://github.com/Azure/azure-event-hubs-spark) 上使用。 此库还可用于 [Maven 中央存储库](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C)中的 Marven 项目。
 
-本文演示如何在 [Azure Databrick](https://azure.microsoft.com/services/databricks/) 中生成持续应用程序。 虽然本文使用 [Azure Databricks](https://azure.microsoft.com/services/databricks/)，但 [HDInsight](../hdinsight/spark/apache-spark-overview.md) 还提供了 Spark 群集。
+本文演示如何在 [Azure Databrick](https://azure.microsoft.com/services/databricks/) 中创建持续应用程序。 虽然本文使用 [Azure Databricks](https://azure.microsoft.com/services/databricks/)，但 [HDInsight](../hdinsight/spark/apache-spark-overview.md) 还提供了 Spark 群集。
 
 以下示例使用两个 Scala notebook：一个用于流式处理来自事件中心的事件，另一个用于将事件发送回事件中心。
 

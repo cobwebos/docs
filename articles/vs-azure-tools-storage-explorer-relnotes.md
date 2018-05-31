@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Azure 存储资源管理器（预览版）发行说明"
-description: "Microsoft Azure 存储资源管理器（预览版）发行说明"
+title: Microsoft Azure 存储资源管理器发行说明
+description: Microsoft Azure 存储资源管理器发行说明
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,113 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 0e5523e297979a89ffd4b4ed51c8476fb1354419
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778999"
 ---
-# <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure 存储资源管理器（预览版）发行说明
+# <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
-本文包含 Azure 存储资源管理器 0.9.6（预览版）及先前版本的发行说明。
+本文包含 Azure 存储资源管理器 1.0.0 发行版及以前版本的发行说明。
 
-[Microsoft Azure 存储资源管理器（预览版）](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
+[Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
+
+## <a name="version-100"></a>版本 1.0.0
+04/16/2018
+
+### <a name="download-azure-storage-explorer-100"></a>下载 Azure 存储资源管理器 1.0.0
+- [适用于 Windows 的 Azure 存储资源管理器 1.0.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 1.0.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 1.0.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新建
+* 增强的身份验证，允许存储资源管理器使用与 Visual Studio 2017 相同的帐户存储。 若要使用此功能，需要重新登录到帐户并重置已筛选的订阅。
+* 对于由 AAD 提供支持的 Azure Stack 帐户，当已启用“目标 Azure Stack”时，存储资源管理器现在会检索 Azure Stack 订阅。 不再需要创建自定义登录环境。
+* 添加了几个快捷方式以启用更快的导航。 这些快捷方式包括切换各种面板和在编辑器之间移动。 有关更多详细信息，请参阅“视图”菜单。
+* 存储资源管理器反馈现在位于 GitHub 上。 可以通过单击左下方的“反馈”按钮或通过转到 [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) 来访问我们的问题页面。 请随意提出建议、报告问题、提出问题或留下任何其他形式的反馈。
+* 如果遇到 SSL 证书问题但找不到有问题的证书，现在可以从命令行使用 `--ignore-certificate-errors`标志启动存储资源管理器。 使用此标志启动时，存储资源管理器会忽略 SSL 证书错误。
+* 现在，在 blob 和文件项的上下文菜单中将出现“下载”选项。
+* 改进了辅助功能和屏幕阅读器支持。 如果依赖于辅助功能，请参阅我们的[辅助功能文档](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility)了解详细信息。
+* 存储资源管理器现在使用 Electron 1.8.3
+
+### <a name="breaking-changes"></a>重大更改
+* 存储资源管理器已切换到新的身份验证库。 在切换到该库的过程中，需要重新登录到帐户并重置已筛选的订阅
+* 用于加密敏感数据的方法已更改。 这可能会导致需要重新添加某些快速访问项，并且/或者需要重新附加某些附加资源。
+
+### <a name="fixes"></a>修复项
+* 代理后面的某些用户的组 blob 上传或下载操作会被“无法解析”错误消息中断。 此问题已解决。
+* 如果使用直接链接时需要登录，单击“登录”提示符会弹出一个空白对话框。 此问题已解决。
+* 在 Linux 上，如果存储资源管理器因 GPU 进程故障而无法启动，现在会通知你发生故障，并让你使用“--disable-gpu”开关，然后存储资源管理器会在启用该开关的情况下自动重启。
+* 在“访问策略”对话框中难以识别无效访问策略。 为提高可见性，现在无效访问策略 ID 的边框为红色。
+* 活动日志在活动的不同部分之间有时有大面积的空格。 此问题已解决。
+* 在表查询编辑器中，如果让 timestamp 子句处于无效状态，然后尝试修改另一个子句，编辑器会冻结。 现在，如果检测到另一个子句中的更改，编辑器会将 timestamp 子句还原为其上一个有效状态。
+* 如果在树视图中键入搜索查询时暂停，搜索会开始并且焦点会从文本框中消失。 现在，必须通过按 Enter 键，或通过单击“开始搜索”按钮来显式启动搜索。
+* 右键单击“文件共享”中的文件时，有时“获取共享访问签名”命令会处于禁用状态。 此问题已解决。
+* 如果在搜索期间筛选掉具有焦点的资源树节点，将无法使用 tab 键访问资源树，也无法使用箭头键在资源树中导航。 现在，如果具有焦点的资源树节点被隐藏，资源树中的第一个节点将自动获得焦点。
+* 有时会在编辑器工具栏中看到额外的分隔符。 此问题已解决。
+* 痕迹导航文本框有时会溢出。 此问题已解决。
+* 一次上传多个文件时，Blob 编辑器和文件共享编辑器有时会不断刷新。 此问题已解决。
+* “文件夹统计信息”功能在“文件共享快照管理”视图中没有任何用途。 现在该功能已禁用。
+* 在 Linux 上，“文件”菜单未显示。 此问题已解决。
+* 将文件夹上传到“文件共享”时，默认情况下，只上传了该文件夹的内容。 现在，默认行为是将该文件夹的内容上传到“文件共享”中的相应文件夹。
+* 几个对话框中的按钮的顺序是相反的。 此问题已解决。
+* 各种与安全相关的修复。
+
+### <a name="known-issues"></a>已知问题
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。 
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>以前的版本
+
+* [版本 0.9.6](#version-096)
+* [版本 0.9.5](#version-095)
+* [版本 0.9.4 和 0.9.3](#version-094-and-093)
+* [版本 0.9.2](#version-092)
+* [版本 0.9.1 和 0.9.0](#version-091-and-090)
+* [版本 0.8.16](#version-0816)
+* [版本 0.8.14](#version-0814)
+* [版本 0.8.13](#version-0813)
+* [版本 0.8.12、0.8.11 和 0.8.10](#version-0812-and-0811-and-0810)
+* [版本 0.8.9 和 0.8.8](#version-089-and-088)
+* [版本 0.8.7](#version-087)
+* [版本 0.8.6](#version-086)
+* [版本 0.8.5](#version-085)
+* [版本 0.8.4](#version-084)
+* [版本 0.8.3](#version-083)
+* [版本 0.8.2](#version-082)
+* [版本 0.8.0](#version-080)
+* [版本 0.7.20160509.0](#version-07201605090)
+* [版本 0.7.20160325.0](#version-07201603250)
+* [版本 0.7.20160129.1](#version-07201601291)
+* [版本 0.7.20160105.0](#version-07201601050)
+* [版本 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-096"></a>版本 0.9.6
 2018/02/28
@@ -66,30 +162,6 @@ ms.lasthandoff: 03/02/2018
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>以前的版本
-
-* [版本 0.9.5](#version-095)
-* [版本 0.9.4 和 0.9.3](#version-094-and-093)
-* [版本 0.9.2](#version-092)
-* [版本 0.9.1 和 0.9.0](#version-091-and-090)
-* [版本 0.8.16](#version-0816)
-* [版本 0.8.14](#version-0814)
-* [版本 0.8.13](#version-0813)
-* [版本 0.8.12、0.8.11 和 0.8.10](#version-0812-and-0811-and-0810)
-* [版本 0.8.9 和 0.8.8](#version-089-and-088)
-* [版本 0.8.7](#version-087)
-* [版本 0.8.6](#version-086)
-* [版本 0.8.5](#version-085)
-* [版本 0.8.4](#version-084)
-* [版本 0.8.3](#version-083)
-* [版本 0.8.2](#version-082)
-* [版本 0.8.0](#version-080)
-* [版本 0.7.20160509.0](#version-07201605090)
-* [版本 0.7.20160325.0](#version-07201603250)
-* [版本 0.7.20160129.1](#version-07201601291)
-* [版本 0.7.20160105.0](#version-07201601050)
-* [版本 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-095"></a>版本 0.9.5
 2018/02/06
@@ -227,7 +299,7 @@ ms.lasthandoff: 03/02/2018
 * 过去，如果尝试下载具有无效 Windows 文件名的 blob，则操作将失败。 现在，存储资源管理器将检测 blob 名称是否有效，并且会询问你是要对其进行编码还是跳过该 blob。 存储资源管理器还会检测文件名看起来是否已编码并且在上传前会询问是否要对其进行解码。
 * 在上传 blob 期间，目标 blob 容器的编辑器有时候不能正确刷新。 此问题已解决。
 * 支持多种形式的连接字符串和回归的 SAS URI。 我们已解决了所有已知问题，但是如果遇到了进一步的问题，请向我们发送反馈。
-* 在 0.9.0 版中，对于某些用户，更新通知损坏。 此问题已修复，并且受此 bug 影响的用户可[从此处](https://azure.microsoft.com/en-us/features/storage-explorer/)手动下载最新版本的存储资源管理器。
+* 在 0.9.0 版中，对于某些用户，更新通知损坏。 此问题已修复，并且受此 bug 影响的用户可[从此处](https://azure.microsoft.com/features/storage-explorer/)手动下载最新版本的存储资源管理器。
 
 ### <a name="known-issues"></a>已知问题
 * 存储资源管理器不支持 ADFS 帐户。
@@ -281,7 +353,7 @@ ms.lasthandoff: 03/02/2018
 * 过去，如果尝试下载具有无效 Windows 文件名的 blob，则操作将失败。 现在，存储资源管理器将检测 blob 名称是否有效，并且会询问你是要对其进行编码还是跳过该 blob。 存储资源管理器还会检测文件名看起来是否已编码并且在上传前会询问是否要对其进行解码。
 * 在上传 blob 期间，目标 blob 容器的编辑器有时候不能正确刷新。 此问题已解决。
 * 支持多种形式的连接字符串和回归的 SAS URI。 我们已解决了所有已知问题，但是如果遇到了进一步的问题，请向我们发送反馈。
-* 在 0.9.0 版中，对于某些用户，更新通知损坏。 此问题已修复，对于受此 bug 影响的那些用户，可以手动[从此处](https://azure.microsoft.com/en-us/features/storage-explorer/)下载最新版本的存储资源管理器。
+* 在 0.9.0 版中，对于某些用户，更新通知损坏。 此问题已修复，对于受此 bug 影响的那些用户，可以手动[从此处](https://azure.microsoft.com/features/storage-explorer/)下载最新版本的存储资源管理器。
 
 ### <a name="known-issues"></a>已知问题
 * 存储资源管理器不支持 ADFS 帐户。

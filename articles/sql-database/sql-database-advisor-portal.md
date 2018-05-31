@@ -3,17 +3,18 @@ title: 应用性能建议 - Azure SQL 数据库 | Microsoft Docs
 description: 可以使用 Azure 门户查找可优化 Azure SQL 数据库性能的性能建议。
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3361519c260fe842ae362814cbee62aa9257b9f8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364346"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -98,7 +99,11 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
     ![索引顾问设置](./media/sql-database-advisor-portal/settings.png)
 2. 选择要自动执行的操作：
    
-    ![建议的索引](./media/sql-database-advisor-portal/automation.png)
+    ![建议的索引](./media/sql-database-automatic-tuning-enable/server.png)
+
+> [!NOTE]
+> 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下打开。
+>
 
 ### <a name="manually-run-the-recommended-t-sql-script"></a>手动运行建议的 T-SQL 脚本
 选择任意建议，并单击“查看脚本”。 针对数据库运行此脚本以手动应用建议。

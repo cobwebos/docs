@@ -12,13 +12,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: ea5b19abed0b9d2a2b8131f2be3be14e94e17405
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 90261e090f87a5ca0d92b86c33addce2449cfd24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361965"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 
@@ -125,7 +126,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
    * **默认数据源**：默认的群集文件系统。
    * 辅助角色节点大小：辅助角色节点的所选 VM 大小。
    * 头节点大小：头节点的所选 VM 大小。
-   * 虚拟网络：群集将要部署到的虚拟网络和子网的名称（如果部署时选择）。
+   * **虚拟网络**：群集将要部署到的虚拟网络的名称（如果已在部署时选择）。
 
 ## <a name="delete-clusters"></a>删除群集
 删除群集不会删除默认存储帐户或任何链接的存储帐户。 可以使用相同的存储帐户和相同的元存储来重新创建群集。 建议在重新创建群集时使用新的默认 Blob 容器。

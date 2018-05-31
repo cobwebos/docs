@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 安全中心中添加下一代防火墙 | Microsoft 文档"
-description: "本文档演示如何实现 Azure 安全中心建议**添加下一代防火墙** 和**仅通过 NGFW 路由流量**。"
+title: 在 Azure 安全中心中添加下一代防火墙 | Microsoft 文档
+description: 本文档演示如何实现 Azure 安全中心建议**添加下一代防火墙**和**仅通过 NGFW 路由流量**。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 48b99015-4db8-4ce8-85e4-b544c0fa203e
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f70cb03a26fd5bea7e1e034c653ece8e0b8c349
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363683"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>在 Azure 安全中心中添加下一代防火墙
 Azure 安全中心可能会建议从 Microsoft 合作伙伴添加下一代防火墙 (NGFW)，以增强安全保护。 本文档将举例说明如何执行此操作。
@@ -49,7 +50,7 @@ Azure 安全中心可能会建议从 Microsoft 合作伙伴添加下一代防火
    ![仅通过 NGFW 路由流量][7]
 2. 这会打开“仅通过 NGFW 路由流量”边栏选项卡，它列出了可以将流量路由到的 VM。 从列表中选择 VM。
    ![选择 VM][8]
-3. 此时会打开所选 VM 的边栏选项卡，并显示相关的入站规则。 说明提供了可能的后续步骤的详细信息。 选择“编辑入站规则”以继续进行编辑入站规则。 预期结果是与 NGFW 链接的面向 Internet 的终结点的**源**未设置为**任何**。 若要了解有关的入站规则的属性的详细信息，请参阅 [NSG 规则](../virtual-network/virtual-networks-nsg.md#nsg-rules)。
+3. 此时会打开所选 VM 的边栏选项卡，并显示相关的入站规则。 说明提供了可能的后续步骤的详细信息。 选择“编辑入站规则”以继续进行编辑入站规则。 预期结果是与 NGFW 链接的面向 Internet 的终结点的**源**未设置为**任何**。 若要深入了解入站规则的属性，请参阅 [安全规则](../virtual-network/security-overview.md#security-rules)。
    ![配置规则，以便限制访问][9]
    ![编辑入站规则][10]
 

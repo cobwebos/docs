@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 731ff24fe9cc1b5dbf0c597139a96ae80b863cc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140025"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD Graph API
 
@@ -29,16 +30,16 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 * 对于一次性运行的交互式任务，用户应在执行这些任务时充当 B2C 租户中的管理员帐户。 此模式需要管理员使用凭据登录，才能执行对图形 API 的任何调用。
 * 对于自动化的连续任务，应该使用提供有所需特权的某些类型的服务帐户来执行管理任务。 在 Azure AD 中，可以通过注册应用程序并向 Azure AD 进行身份验证来执行此操作。 这通过利用使用 [OAuth 2.0 客户端凭据授予](../active-directory/develop/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)的**应用程序 ID** 来完成。 在这种情况下，应用程序作为其本身而不是用户来调用图形 API。
 
-在本文中，我们将讨论如何执行自动使用案例。 为了演示，我们将构建一个执行用户创建、读取、更新和删除 (CRUD) 操作的 .NET 4.5 `B2CGraphClient`。 客户端将拥有一个 Windows 命令行接口 (CLI)，允许用户调用各种方法。 然而，代码被编写为以非交互式自动化的方式表现。
+本文介绍如何执行自动使用案例。 构建一个执行用户创建、读取、更新和删除 (CRUD) 操作的 .NET 4.5 `B2CGraphClient`。 客户端将拥有一个 Windows 命令行接口 (CLI)，允许用户调用各种方法。 然而，代码被编写为以非交互式自动化的方式表现。
 
 ## <a name="get-an-azure-ad-b2c-tenant"></a>获取 Azure AD B2C 租户
-租户中需要有一个 Azure AD B2C 租户和一个全局管理员帐户，才可创建应用程序或用户之前，或与 Azure AD 进行交互之前。 如果尚没有租户，请参阅 [Azure AD B2C 入门](active-directory-b2c-get-started.md)。
+创建应用程序或用户前，需要一个 Azure AD B2C 租户。 如果尚没有租户，请参阅 [Azure AD B2C 入门](active-directory-b2c-get-started.md)。
 
 ## <a name="register-your-application-in-your-tenant"></a>在租户中注册应用程序
-拥有 B2C 租户后，需要通过 [Azure 门户](https://portal.azure.com)注册应用程序。
+拥有 B2C 租户后，需通过 [Azure 门户](https://portal.azure.com)注册应用程序。
 
 > [!IMPORTANT]
-> 要将图形 API 用于 B2C 租户，需要使用 Azure 门户中的通用“应用注册”菜单（而非 Azure AD B2C 的“应用程序”菜单）注册专用应用程序。 不能重复使用在 Azure AD B2C 的“应用程序”菜单中已注册的现有 B2C 应用程序。
+> 若要将图形 API 用于 B2C 租户，需使用 Azure 门户中的“应用注册”服务（而非 Azure AD B2C 的“应用程序”菜单）注册应用程序。 根据以下介绍进入相应菜单。 不能重复使用在 Azure AD B2C 的“应用程序”菜单中注册的现有 B2C 应用程序。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 通过在页面右上角选择帐户，选择 Azure AD B2C 租户。
@@ -47,7 +48,8 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
     1. 选择“Web 应用/API”作为应用程序类型。    
     2. 提供任一登录 URL（例如 https://B2CGraphAPI) ，它与此示例不相关）。  
 5. 应用程序现在会显示在应用程序列表中，单击它以获取**应用程序 ID**（也称为客户端 ID）。 复制它，因为会在后面的部分用到它。
-6. 在“设置”菜单中，单击“密钥”并添加新密钥（也称为客户端密码）。 也复制它以便在后面部分中使用。
+6. 在“设置”菜单中，单击“密钥”。
+7. 在“密码”部分输入密钥说明，并选择持续时间，然后单击“保存”。 复制该密钥值（也称为客户端密码），便于在之后的章节中使用。
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>为应用程序配置创建、读取和更新权限
 现在，需要配置应用程序，以获取所有所需的创建、读取、更新和删除用户的权限。

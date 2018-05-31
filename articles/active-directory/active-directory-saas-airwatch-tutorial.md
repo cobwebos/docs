@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 AirWatch 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 AirWatch 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 AirWatch 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 AirWatch 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: a0e314aaf59a70107058829ea84dde362f097274
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 89d9bc6a40a6ee814f92cdb4c5a26e660007e64e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34344538"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>教程：Azure Active Directory 与 AirWatch 集成
 
@@ -28,19 +29,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 AirWatch
 - 可以让用户使用其 Azure AD 帐户自动登录到 AirWatch（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 AirWatch 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 AirWatch 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -58,7 +59,7 @@ ms.lasthandoff: 12/11/2017
 
 若要从库添加 AirWatch，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -168,7 +169,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 对于“NameID 格式”，请选择“电子邮件地址”。
 
-    d. 单击“保存” 。
+    d. 单击“ **保存**”。
 
 14. 再次单击“用户”选项卡。
     
@@ -178,19 +179,19 @@ ms.lasthandoff: 12/11/2017
     
     ![属性](./media/active-directory-saas-airwatch-tutorial/ic791927.png "属性")
 
-    a. 在“对象标识符”文本框中，键入“http://schemas.microsoft.com/identity/claims/objectidentifier”。
+    a. 在“对象标识符”文本框中，键入 **http://schemas.microsoft.com/identity/claims/objectidentifier**。
 
-    b. 在“用户名”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress”。
+    b. 在“用户名”文本框中，键入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**。
 
-    c. 在“显示名称”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”。
+    c. 在“显示名称”文本框中，键入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**。
 
-    d. 在“名字”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”。
+    d. 在“名字”文本框中，键入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**。
 
-    e. 在“姓氏”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”。
+    e. 在“姓氏”文本框中，键入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**。
 
-    f. 在“电子邮件”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress”。
+    f. 在“电子邮件”文本框中，键入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**。
 
-    g. 单击“保存” 。
+    g. 单击“ **保存**”。
 
 <CE>
 
@@ -223,7 +224,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-airwatch-test-user"></a>创建 AirWatch 测试用户
 
@@ -244,7 +245,7 @@ ms.lasthandoff: 12/11/2017
 
    ![添加用户](./media/active-directory-saas-airwatch-tutorial/ic791931.png "添加用户")   
    1. 键入希望在相关文本框中预配的有效 Azure Active Directory 帐户的“用户名”、“密码”、“确认密码”、“名字”、“姓氏”、“电子邮件地址”。
-   2. 单击“保存” 。
+   2. 单击“ **保存**”。
 
 >[!NOTE]
 >可使用其他任何 AirWatch 用户帐户创建工具或 AirWatch 提供的 API 预配 AAD 用户帐户。
@@ -290,7 +291,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771229"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
@@ -232,8 +233,8 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 
 | 类 | 不支持的方法 |
 |-------|-------- |
-| CloudTableClient | \*ServiceProperties* |
-|                  | \*ServiceStats* |
+| CloudTableClient | \*ServiceProperties\* |
+|                  | \*ServiceStats\* |
 | CloudTable | SetPermissions* |
 |            | GetPermissions* |
 | TableServiceContext | *（实际上此类已弃用） |

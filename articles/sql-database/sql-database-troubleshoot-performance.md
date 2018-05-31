@@ -11,11 +11,12 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: v-shysun
-ms.openlocfilehash: 440f3bf41cd2dcedf964e7476323d7b3a1527624
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 710d517621cb9d4d9d2e9bf29e4facf7d75ab481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187790"
 ---
 # <a name="monitoring-and-performance-tuning"></a>监视和性能优化
 
@@ -49,8 +50,8 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 
 ## <a name="improving-database-performance-with-more-resources"></a>使用更多的资源提高数据库的性能
 
-最后，如果没有可行的措施可以提高数据库的性能，可以更改 Azure SQL 数据库中可用的资源量。 随时可以通过更改独立数据库的[服务层](sql-database-service-tiers.md)或者增加弹性池的 eDTU 数目，来分配更多的资源。
-1. 对于独立数据库，可以根据需要[更改服务层](sql-database-service-tiers.md)以提高数据库性能。
+最后，如果没有可行的措施可以提高数据库的性能，可以更改 Azure SQL 数据库中可用的资源量。 随时可以通过更改独立数据库的 [DTU 服务层](sql-database-service-tiers-dtu.md)或者增加弹性池的 eDTU 数目，来分配更多的资源。 或者，如果使用[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)，则可更改服务层或增加分配给数据库的资源。 
+1. 对于独立数据库，可以根据需要[更改服务层](sql-database-service-tiers-dtu.md)或[计算资源](sql-database-service-tiers-vcore.md)以提高数据库性能。
 2. 对于多个数据库，请考虑使用[弹性池](sql-database-elastic-pool-guidance.md)自动缩放资源。
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>优化和重构应用程序或数据库代码

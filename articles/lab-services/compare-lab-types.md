@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/30/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3b2fd59444f50f4ac5da6bf569cb0247f3a36943
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22a1c90dd1a1ca305431d91a801e5293a6d08703
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361176"
 ---
-# <a name="compare-managed-and-custom-labs-in-azure-lab-services"></a>比较 Azure 实验室服务中的托管实验室和自定义实验室
+# <a name="compare-managed-and-devtest-labs-in-azure-lab-services"></a>比较 Azure 实验室服务中的托管实验室和开发测试实验室
 可以创建两种类型的实验室，使用 Azure 实验室服务创建的托管实验室和使用 Azure 开发测试实验室创建的自定义实验室。 如果希望仅向实验室中输入所需内容，并让服务设置和管理实验室所需基础结构，请选择一个托管实验室。 目前，教室实验室是唯一可使用 Azure 实验室服务创建的托管实验室。 如果希望管理自己的基础结构，请使用 Azure 开发测试实验室创建自定义实验室。
 
 以下各节提供了有关这些实验室的更多详细信息。 
@@ -37,10 +38,10 @@ ms.lasthandoff: 05/07/2018
 - 快速配置虚拟机实验室，托管编程马拉松。 完成后单击即可删除实验室。 
 
 
-## <a name="custom-labs"></a>自定义实验室
+## <a name="devtest-labs"></a>开发测试实验室
 有时用户可能希望在自己的订阅中自行管理所有基础结构和配置。 若要执行此操作，可以在 Azure 门户中使用 Azure 开发测试实验室创建自定义实验室。 对于这些实验室，无需创建实验室帐户。 这些实验不会出现在实验室帐户（为托管实验室而创建）中。  
 
-下面是一些自定义实验室的用例: 
+下面是一些**开发测试实验室用例**： 
 
 - 快速配置虚拟机实验室，托管编程马拉松或会议中的实践环节。 完成后单击即可删除实验室。 
 - 创建一个已配置应用程序的 VM 池，让团队可轻松使用虚拟机修复 bug。  
@@ -50,10 +51,10 @@ ms.lasthandoff: 05/07/2018
 - 使用配置有最新版产品的实验室为客户提供培训课程。 向每位客户提供一定的实验室使用时长。 
 
 
-## <a name="managed-labs-vs-custom-labs"></a>托管实验室与自定义实验室
+## <a name="managed-labs-vs-devtest-labs"></a>托管实验室与开发测试实验室
 下表比较了 Azure 实验室服务支持的两种类型的实验室： 
 
-| 功能 | 托管实验室 | 自定义实验室 |
+| 功能 | 托管实验室 | 开发测试实验室 |
 | -------- | ----------------  | ---------- |
 | 实验室中 Azure 基础结构的管理。 |  由服务自动管理 | 用户自行管理  |
 | 针对基础结构问题的内置复原能力 | 由服务自动处理 | 用户自行管理  |

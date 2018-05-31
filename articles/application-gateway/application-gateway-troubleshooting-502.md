@@ -1,11 +1,11 @@
 ---
-title: "排查 Azure 应用程序网关的网关无效 (502) 错误 | Microsoft Docs"
-description: "了解如何排查应用程序网关 502 错误"
+title: 排查 Azure 应用程序网关的网关无效 (502) 错误 | Microsoft Docs
+description: 了解如何排查应用程序网关 502 错误
 services: application-gateway
 documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 1d431ead-d318-47d8-b3ad-9c69f7e08813
 ms.service: application-gateway
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: e0099734a81cd8b1edf5cf80cb56b5c322a5feee
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4eca6a588d2c95189f0ba995b8db195907e9dc39
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356029"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
 
@@ -92,7 +93,7 @@ DhcpOptions            : {
 * 对 http://127.0.0.1:port 的调用应返回 HTTP 结果代码 200。 应在 30 秒超时期限内返回此代码。
 * 确保配置的端口已打开，并且没有任何防火墙或 Azure 网络安全组在配置的端口上阻止传入或传出流量。
 * 如果对 Azure 经典 VM 或云服务使用 FQDN 或公共 IP，请确保打开相应的[终结点](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)。
-* 如果 VM 是通过 Azure 资源管理器配置的并且位于应用程序网关部署所在的 VNet 的外部，则必须将[网络安全组](../virtual-network/virtual-networks-nsg.md)配置为允许在所需端口上进行访问。
+* 如果 VM 是通过 Azure 资源管理器配置的并且位于应用程序网关部署所在的 VNet 的外部，则必须将[网络安全组](../virtual-network/security-overview.md)配置为允许在所需端口上进行访问。
 
 ## <a name="problems-with-custom-health-probe"></a>自定义运行状况探测出现问题
 
@@ -102,7 +103,7 @@ DhcpOptions            : {
 
 | 探测属性 | 说明 |
 | --- | --- |
-| 名称​​ |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅当应用程序网关上配置了多站点时才适用。 这与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 将探测发送到 \<protocol\>://\<host\>:\<port\>\<path\> |

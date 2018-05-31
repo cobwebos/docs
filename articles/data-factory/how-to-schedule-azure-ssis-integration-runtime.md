@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 3e69c147201ab7f3c5e2cf61e72bdb8073354e67
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360319"
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>如何计划 Azure SSIS 集成运行时的启动和停止 
 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 下面是本文所述的概要步骤：
@@ -69,21 +70,17 @@ ms.lasthandoff: 04/19/2018
 
 ### <a name="import-data-factory-modules"></a>导入数据工厂模块
 
-1. 在“共享资源”部分的左侧菜单中选择“模块”，确认模块列表中是否包含“AzureRM.Profile”和“AzureRM.DataFactoryV2”。 如果没有，请在工具栏上选择“浏览库”。
+1. 在“共享资源”部分的左侧菜单中选择“模块”，确认模块列表中是否包含“AzureRM.Profile”和“AzureRM.DataFactoryV2”。
 
-    ![自动化主页](./media/how-to-schedule-azure-ssis-integration-runtime/automation-modules.png)
-2. 在“浏览库”窗口上的搜索窗口中键入 **AzureRM.Profile**，并按 **ENTER**。 在列表中选择“AzureRM.Profile”。 然后，在工具栏上单击“导入”。 
+    ![验证所需的模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-    ![选择“AzureRM.Profile”](./media/how-to-schedule-azure-ssis-integration-runtime/select-azurerm-profile.png)
-1. 在“导入”窗口中，选择“我同意更新所有 Azure 模块”选项，然后单击“确定”。  
+2.  转到 [AzureRM.DataFactoryV2 0.5.2 模块](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/0.5.2)的 PowerShell 库，选择“部署到 Azure 自动化”，选择“自动化帐户”，然后选择“确定”。 返回查看左侧菜单“共享资源”部分中的“模块”并等待，直到看到 AzureRM.DataFactoryV2 0.5.2 模块的“状态”更改为“可用”。
 
-    ![导入 AzureRM.Profile](./media/how-to-schedule-azure-ssis-integration-runtime/import-azurerm-profile.png)
-4. 关闭该窗口返回到“模块”窗口。 列表中应会显示导入状态。 选择“刷新”可刷新列表。 请等到“状态”变为“可用”。
+    ![验证数据工厂模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-    ![导入状态](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-profile.png)
-1. 重复上述步骤导入 **AzureRM.DataFactoryV2** 模块。 确认此模块的状态设置为“可用”，然后继续下一步。 
+3.  转到 [AzureRM.Profile 4.5.0 模块](https://www.powershellgallery.com/packages/AzureRM.profile/4.5.0)的 PowerShell 库，单击“部署到 Azure 自动化”，选择“自动化帐户”，然后选择“确定”。 返回查看左侧菜单“共享资源”部分中的“模块”并等待，直到看到 AzureRM.Profile 4.5.0 模块的“状态”更改为“可用”。
 
-    ![最终导入状态](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-datafactoryv2.png)
+    ![验证配置文件模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
 ### <a name="create-a-powershell-runbook"></a>创建 PowerShell Runbook
 以下过程提供创建 PowerShell Runbook 的步骤。 与 Runbook 关联的脚本会根据针对“操作”参数指定的命令来启动/停止 Azure SSIS IR。 本部分不提供有关创建 Runbook 的所有细节。 有关详细信息，请参阅[创建 Runbook](../automation/automation-quickstart-create-runbook.md) 一文。

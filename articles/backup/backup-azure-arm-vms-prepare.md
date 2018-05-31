@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: caf2c54c986f8c4dd951628fd6908d42e7ddd281
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 489875e595c9f28a1e30cbb29cde078f1b716f7f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940564"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
 
@@ -55,8 +56,8 @@ ms.lasthandoff: 04/19/2018
 * 备份数据不包括连接到 VM 的网络挂载驱动器。
 * 不支持在恢复过程中替换现有虚拟机。 如果在 VM 存在时尝试还原 VM，还原操作会失败。
 * 不支持跨区域备份和还原。
-* 如果客户使用旧的 VM 备份堆栈，则不支持在应用了网络规则的存储帐户中备份和还原使用非托管磁盘的虚拟机。 
 * 配置备份时，请确保“防火墙和虚拟网络”存储帐户设置允许从“所有网络”进行访问。
+* 对于所选的网络，为你的存储帐户配置防火墙和虚拟网络设置后，请选择“允许受信任的 Microsoft 服务访问此存储帐户”作为例外，以允许 Azure 备份服务访问网络受限的存储帐户。 网络受限的存储帐户不支持项级别的恢复。
 * 可以在 Azure 的所有公共区域中备份虚拟机。 （请参阅支持区域的[清单](https://azure.microsoft.com/regions/#services)。）在创建保管库期间，如果要寻找的区域目前不受支持，则不会在下拉列表中显示它。
 * 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 (DC) VM。 有关详细信息，请参阅[还原多 DC 域控制器](backup-azure-arm-restore-vms.md#restore-domain-controller-vms)。
 * 仅支持通过 PowerShell 还原采用以下特殊网络配置的虚拟机。 还原操作完成后，在 UI 中通过还原工作流创建的 VM 将不采用这些网络配置。 若要了解详细信息，请参阅[还原采用特殊网络配置的 VM](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)。
@@ -172,7 +173,7 @@ ms.lasthandoff: 04/19/2018
 如果注册虚拟机出现问题，请参阅以下信息，了解安装 VM 代理的方法和网络连接的相关信息。 如果要保护在 Azure 中创建的虚拟机，则可能不需要以下信息。 但是，如果已将虚拟机迁移到 Azure，请确保已正确安装 VM 代理，并且虚拟机可与虚拟网络通信。
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>在虚拟机上安装 VM 代理
-要正常运行备份扩展，必须在 Azure 虚拟机上安装 Azure [VM 代理](../virtual-machines/windows/agent-user-guide.md)。 如果 VM 是从 Azure Marketplace 创建的，则虚拟机上已安装 VM 代理。 
+要正常运行备份扩展，必须在 Azure 虚拟机上安装 Azure [VM 代理](../virtual-machines/extensions/agent-windows.md)。 如果 VM 是从 Azure Marketplace 创建的，则虚拟机上已安装 VM 代理。 
 
 以下信息适用于不是使用从 Azure Marketplace 创建的 VM 的情况。 例如，你从本地数据中心迁移了某个 VM。 在这种情况下，需要安装 VM 代理才能保护该虚拟机。
 
@@ -180,9 +181,9 @@ ms.lasthandoff: 04/19/2018
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
-| 安装 VM 代理 |下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要管理员权限才能完成安装。 |安装最新的 [Linux 代理](../virtual-machines/linux/agent-user-guide.md)。 需要管理员权限才能完成安装。 我们建议从分发存储库安装代理。 我们*不建议*直接从 GitHub 安装 Linux VM 代理。  |
-| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br><br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的说明进行操作。 我们建议从分发存储库更新代理。 我们不建议直接从 GitHub 更新 Linux VM 代理。<br><br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
-| 验证 VM 代理安装 |1.浏览到 Azure VM 中的 C:\WindowsAzure\Packages 文件夹。 <br><br>2.找到 WaAppAgent.exe 文件。 <br><br>3.右键单击该文件，转到“**属性**”，并选择“**详细信息**”选项卡。“产品版本”字段应为 2.6.1198.718 或更高版本。 |不适用 |
+| 安装 VM 代理 |下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。 |<li> 安装最新的 [Linux 代理](../virtual-machines/extensions/agent-linux.md)。 需要有管理员权限才能完成安装。 我们建议从分发存储库安装代理。 我们**不建议**直接从 github 安装 Linux VM 代理。  |
+| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的说明进行操作。 我们建议从分发存储库更新代理。 我们**不建议**直接从 github 更新 Linux VM 代理。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
+| 验证 VM 代理安装 |<li>导航到 Azure VM 中的 *C:\WindowsAzure\Packages* 文件夹。 <li>应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“**属性**”，并选择“**详细信息**”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。 |不适用 |
 
 ### <a name="backup-extension"></a>备份扩展
 在虚拟机上安装 VM 代理后，Azure 备份服务会将备份扩展安装到 VM 代理上。 备份服务会无缝升级和修补备份扩展。

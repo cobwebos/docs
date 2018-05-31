@@ -1,6 +1,6 @@
 ---
-title: "教程：将 Azure Active Directory 与 SAP Cloud Platform Identity Authentication 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 SAP Cloud Platform Identity Authentication 之间配置单一登录。"
+title: 教程：将 Azure Active Directory 与 SAP Cloud Platform Identity Authentication 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 SAP Cloud Platform Identity Authentication 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 0c7dd884eaadd1fba4fcbc19b6c9cf92c68a59ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e7cc1df5e550dec62869c2a6f68cdc2a84167142
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34352406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform Identity Authentication 集成
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 12/11/2017
 - 可以支持用户使用 Azure AD 帐户自动登录 SAP 应用。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要详细了解 SaaS 应用与 Azure AD 集成，请参阅 [Azure Active Directory 的应用访问与单一登录是什么](active-directory-appssoaccess-whatis.md)一文。
+若要详细了解 SaaS 应用与 Azure AD 集成，请参阅 [Azure Active Directory 的应用访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)一文。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +52,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 SAP Cloud Platform Identity Authentication
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 深入了解技术细节前，先理解后面将会遇到的概念至关重要。 通过 SAP Cloud Platform Identity Authentication 和 Active Directory 联合身份验证服务，可以使用受 SAP Cloud Platform Identity Authentication 保护的 SAP 应用和服务，跨受 Azure AD（可用作 IdP）保护的应用或服务实现 SSO。
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用，请选择对话框顶部的“新建应用”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“SAP Cloud Platform Identity Authentication”。 
 
@@ -126,21 +127,25 @@ ms.lasthandoff: 12/11/2017
  
     ![“单一登录”对话框](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_samlbase.png)
 
-3. 若要为应用配置 IDP 启动模式，请在“SAP Cloud Platform Identity Authentication 域和 URL”部分的“标识符”框中，键入采用以下模式的 URL：`https://<entity-id>.accounts.ondemand.com`。  
+3. 如果要在“IDP”发起的模式下配置应用程序，请在“SAP Cloud Platform Identity Authentication 域和 URL”部分中执行下列步骤：  
 
     ![SAP Cloud Platform Identity Authentication 域和 URL 单一登录信息](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url.png)
 
-    > [!NOTE] 
-    > 此值不是真实值。 请将此值更新为实际标识符。 若要获取此值，请联系 [SAP Cloud Platform Identity Authentication 客户支持团队](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)。 如果不理解此值，请阅读有关[租户 SAML 2.0 配置](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)的 SAP Cloud Platform Identity Authentication 文档。
+    a. 在“标识符”框中，使用以下模式键入 URL：`<IAS-tenant-id>.accounts.ondemand.com`
 
-4. 若要为应用配置 SP 启动模式，请选中“显示高级 URL 设置”。 
+    b. 在“回复 URL”框中，使用以下模式键入 URL：`https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
+
+    > [!NOTE]
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [SAP Cloud Platform Identity Authentication 客户支持团队](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)获取这些值。 如果不了解标识符值，请阅读有关[租户 SAML 2.0 配置](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)的 SAP Cloud Platform Identity Authentication 文档。
+
+4. 若要为应用配置 SP 启动模式，请选中“显示高级 URL 设置”。
 
     ![SAP Cloud Platform Identity Authentication 域和 URL 单一登录信息](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url1.png)
 
-    在“登录 URL”框中，键入采用以下模式的 URL：`https://<entity-id>.accounts.ondemand.com/admin`。
+    在“登录 URL”框中，键入采用以下模式的 URL：`{YOUR BUSINESS APPLICATION URL}`。
 
-    > [!NOTE] 
-    > 此值不是真实值。 请将此值更新为实际登录 URL。 若要获取此值，请联系 [SAP Cloud Platform Identity Authentication 客户支持团队](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)。
+    > [!NOTE]
+    > 此值不是真实值。 请将此值更新为实际登录 URL。 请使用特定业务应用程序登录 URL。 如果有任何疑问，请联系 [SAP Cloud Platform Identity Authentication 客户支持团队](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)。
 
 5. 在“SAML 签名证书”部分中，选择“元数据 XML”。 然后，将元数据文件保存到计算机。
 
@@ -162,7 +167,7 @@ ms.lasthandoff: 12/11/2017
     
     c. 在“值”列表中，选择属性值“user.givenname”。
     
-    d.单击“下一步”。 选择“确定”。
+    d. 选择“确定”。
 
 8. 选择“保存”按钮。
 
@@ -215,13 +220,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-sapcloudauth-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 选择“创建” 。
+    d. 选择**创建**。
  
 ### <a name="create-an-sap-cloud-platform-identity-authentication-test-user"></a>创建 SAP Cloud Platform Identity Authentication 测试用户
 
@@ -274,7 +279,7 @@ SAP Cloud Platform Identity Authentication 支持“联合身份验证”选项�
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -289,4 +294,3 @@ SAP Cloud Platform Identity Authentication 支持“联合身份验证”选项�
 [201]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_203.png
-
