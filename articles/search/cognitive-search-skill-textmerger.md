@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: f349158873acca9d50d4d6e5fdfa3539f26207fe
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e288748d7433f4b3c7da7db1ab1ef2ee487318df
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362561"
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33786736"
 ---
 #    <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
@@ -129,19 +129,20 @@ Microsoft.Skills.Util.TextMerger
 以上示例假设存在规范化的图像字段。 要获取规范化的图像字段，请将索引器定义中的 imageAction 配置设置为 generateNormalizedImages，如下所示：
 
 ```json
-{  
-   //...rest of your indexer definition goes here ... 
-  "parameters":{  
-      "configuration":{  
-         "dataToExtract":"contentAndMetadata",
-         "imageAction":"generateNormalizedImages"
+{
+    "values": [
+      {
+        "recordId": "1",
+        "data":
+           {
+             "mergedText": "The quick brown fox jumps over the lazy dog" 
+           }
       }
-   }
+    ]
 }
 ```
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义技能](cognitive-search-predefined-skills.md)
-+ [如何定义技术集](cognitive-search-defining-skillset.md)
-+ [创建索引器 (REST)](ref-create-indexer.md)
++ [预定义的技能](cognitive-search-predefined-skills.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)
