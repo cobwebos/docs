@@ -3,16 +3,18 @@ title: Onboarding machines for management by Azure Automation DSC（登记由 Az
 description: 如何设置可使用 Azure 自动化 DSC 管理的计算机
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c1090751db4df54e36e5263c4036d447c95d7b50
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055515"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Onboarding machines for management by Azure Automation DSC（登记由 Azure 自动化 DSC 管理的计算机）
 
@@ -62,6 +64,7 @@ $AutomationAccountName = ""
 $AutomationAccountResourceGroup = ""
 
 # fill in the name of a Node Configuration in Azure Automation DSC, for this VM to conform to
+# NOTE: DSC Node Configuration names are case sensitive in the portal.
 $NodeConfigName = ""
 
 # get Azure Automation DSC registration info
@@ -111,6 +114,9 @@ $VM = Set-AzureVMExtension `
 
 $VM | Update-AzureVM
 ```
+
+> [!NOTE]
+> DSC 节点配置名称在门户中区分大小写。 如果大小写不匹配，节点将不会显示在“DSC 节点”下。
 
 ## <a name="azure-virtual-machines"></a>Azure 虚拟机
 
@@ -205,6 +211,9 @@ Azure Automation DSC 可让你使用 Azure 门户、Azure 资源管理器模板�
 1. 在本地环境中，以计算机管理员身份打开 PowerShell ISE。 计算机上必须已安装最新版本的 [WMF 5](http://aka.ms/wmf5latest)。
 2. 在本地复制以下脚本。 此脚本包含用于创建元配置的 PowerShell DSC 配置，以及用于开始执行元配置创建操作的命令。
 
+> [!NOTE]
+> DSC 节点配置名称在门户中区分大小写。 如果大小写不匹配，节点将不会显示在“DSC 节点”下。
+
     ```powershell
     # The DSC configuration that will generate metaconfigurations
     [DscLocalConfigurationManager()]
@@ -296,6 +305,7 @@ Azure Automation DSC 可让你使用 Azure 门户、Azure 资源管理器模板�
     }
 
     # Create the metaconfigurations
+    # NOTE: DSC Node Configuration names are case sensitive in the portal.
     # TODO: edit the below as needed for your use case
     $Params = @{
         RegistrationUrl = '<fill me in>';

@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: cynthn
-ms.openlocfilehash: 708cf186267f25d0f22d71959b6aeceed643d536
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 384203134d1588053f91b66d32e9b0bf1ec69306
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33943943"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/19/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 6.0.0 版或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
 
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>将空数据磁盘添加到虚拟机
@@ -44,7 +45,7 @@ ms.lasthandoff: 04/19/2018
 $rgName = 'myResourceGroup'
 $vmName = 'myVM'
 $location = 'East US' 
-$storageType = 'PremiumLRS'
+$storageType = 'Premium_LRS'
 $dataDiskName = $vmName + '_datadisk1'
 
 $diskConfig = New-AzureRmDiskConfig -SkuName $storageType -Location $location -CreateOption Empty -DiskSizeGB 128
@@ -64,7 +65,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 $rgName = 'myResourceGroup'
 $vmName = 'myVM'
 $location = 'East US 2' 
-$storageType = 'PremiumLRS'
+$storageType = 'Premium_LRS'
 $dataDiskName = $vmName + '_datadisk1'
 
 $diskConfig = New-AzureRmDiskConfig -SkuName $storageType -Location $location -CreateOption Empty -DiskSizeGB 128 -Zone 1

@@ -1,25 +1,28 @@
 ---
-title: "使用 OAuth2.0 代理草案规范的 Azure AD 服务到服务身份验证 | Microsoft Docs"
-description: "本文介绍如何使用 OAuth2.0 代理流通过 HTTP 消息实现服务到服务身份验证。"
+title: 使用 OAuth2.0 代理草案规范的 Azure AD 服务到服务身份验证 | Microsoft Docs
+description: 本文介绍如何使用 OAuth2.0 代理流通过 HTTP 消息实现服务到服务身份验证。
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: bb3e01b1b8741253a459a41cfff27da558573551
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f7566bc696d07ad3a8003b3493a382f494c4599
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157208"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委派用户标识的服务到服务调用
 OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服务/web API，而后者又需要调用另一个服务/web API。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，该服务需要代表用户保护 Azure Active Directory (Azure AD) 提供的访问令牌。
@@ -112,7 +115,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | assertion |必填 | 请求中使用的令牌值。 |
 | client_id |必填 | 注册到 Azure AD 期间分配给调用服务的应用 ID。 若要查找应用 ID，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、应用程序名称。 |
 | client_assertion_type |必填 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |必填 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。  有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)。|
+| client_assertion |必填 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)。|
 | resource |必填 | 接收服务（受保护资源）的应用 ID URI。 若要查找应用 ID URI，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、应用程序名称、“所有设置”、“属性”。 |
 | requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
 | 作用域 |必填 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
@@ -120,7 +123,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 
 #### <a name="example"></a>示例
-以下 HTTP POST 使用证书请求 https://graph.windows.net Web API 的访问令牌。 `client_id` 标识请求访问令牌的服务。
+以下 HTTP POST 请求具有证书的 https://graph.windows.net Web API 的访问令牌。 `client_id` 标识请求访问令牌的服务。
 
 ```
 // line breaks for legibility only
@@ -154,7 +157,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | refresh_token |所请求的访问令牌的刷新令牌。 当前访问令牌过期后，调用方服务可以使用此令牌请求另一个访问令牌。 |
 
 ### <a name="success-response-example"></a>成功响应示例
-以下示例演示对 https://graph.windows.net web API 的访问令牌请求的成功响应。
+以下示例演示对 https://graph.windows.net Web API 的访问令牌请求的成功响应。
 
 ```
 {

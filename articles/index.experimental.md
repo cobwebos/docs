@@ -1,13 +1,14 @@
 ---
 layout: HubPage
-hide_bc: ''
+hide_bc: true
 title: Microsoft Azure 文档
 description: 了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。
-ms.openlocfilehash: 5084e6f9ab8d73e2c8ffefc95a376bc85222320c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c7f46f9b22bd3696b7d281815687cca2b90b22b3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070051"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -136,7 +137,8 @@ ms.lasthandoff: 03/09/2018
                                                 </div>
                                                 <div class="ico48Link">
                                                     <a href="/go/azure/">
-                                                        <span>转到</span>
+                                                        <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt=""/>
+                                                        <span>Go</span>
                                                     </a>
                                                 </div>
                                                 <div>
@@ -738,7 +740,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/data-lake-analytics/">
                                                 <img src="media/index/DataLakeStore.svg" alt="" />
-                                                <p>数据湖分析</p>
+                                                <p>Data Lake Analytics</p>
                                             </a>
                                         </li>
                                         <li>
@@ -768,7 +770,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="https://docs.botframework.com/en-us/azure-bot-service/">
                                                 <img src="media/index/bot-service.svg" alt="" />
-                                                <p>Azure Bot 服务</p>
+                                                <p>Azure 机器人服务</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1001,7 +1003,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/monitoring-and-diagnostics/">
                                                 <img src="media/index/AzureMonitoring.svg" alt="" />
-                                                <p>Azure 监视器</p>
+                                                <p>Azure Monitor</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2183,7 +2185,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>数据湖分析</h3>
+                                                    <h3>Data Lake Analytics</h3>
                                                     <p>简化大数据分析的分布式分析服务</p>
                                                 </div>
                                             </div>
@@ -2278,7 +2280,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Bot 服务</h3>
+                                                    <h3>Azure 机器人服务</h3>
                                                     <p>可按需缩放的智能无服务器 bot 服务</p>
                                                 </div>
                                             </div>
@@ -2949,7 +2951,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure 监视器</h3>
+                                                    <h3>Azure Monitor</h3>
                                                     <p>针对任何 Azure 资源的高精度和实时监视数据</p>
                                                 </div>
                                             </div>
@@ -3068,7 +3070,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Microsoft Azure Germany</h3>
+                                                    <h3>Microsoft Azure 德国</h3>
                                                     <p>在符合德国法规及主要国际标准并受到数据受托人其他控制的情况下，构建和托管应用程序</p>
                                                 </div>
                                             </div>
@@ -3254,6 +3256,7 @@ ms.lasthandoff: 03/09/2018
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
@@ -3577,7 +3580,7 @@ ms.lasthandoff: 03/09/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>云设计模式</h3>
-                                                    <p>云的设计模式 每种模式描述了一个问题、用于解决该问题的模式，以及基于 Azure 的示例。</p>
+                                                    <p>云的设计模式。 每种模式描述了一个问题、用于解决该问题的模式，以及基于 Azure 的示例。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3595,7 +3598,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>云应用程序最佳实践</h3>
+                                                    <h3>云应用程序最佳做法</h3>
                                                     <p>适用于云应用程序的一套最佳实践，涉及自动缩放、缓存、数据分区、API 设计和监视等多个方面。</p>
                                                 </div>
                                             </div>

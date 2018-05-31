@@ -5,9 +5,9 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: ''
+editor: kgremban
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 084594b637f813c110e4e0b2e9df2b9103d58efc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: dc0d91482637e3ade1147083b6d9c890e2798036
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203880"
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160370"
 ---
 # <a name="manage-role-assignments-for-external-users"></a>管理外部用户的角色分配
 

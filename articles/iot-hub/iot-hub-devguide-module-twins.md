@@ -15,11 +15,12 @@ ms.workload: na
 ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fbbce06653e60cd914c2ed4d5990aac78ef53a8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 1e6f52da6f7524828cef928c2ee5d5cd92a1de1e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34201068"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 05/03/2018
 
 在设备端，可以使用 IoT 中心设备 SDK 创建模块，其中每个模块与 IoT 中心单独建立连接。 这样，便可对设备上的不同组件使用不同的命名空间。 例如，某个自动贩卖机包含三个不同的传感器。 每个传感器由公司的不同部门控制。 可为每个传感器创建一个模块。 这样，每个部门只能向他们控制的传感器发送作业或直接方法，避免发生冲突和用户失误。
 
- 模块标识和模块孪生提供的功能与设备标识和设备孪生相同，但前者的粒度级更高。 这种更高的粒度级可让有能力的设备（例如基于操作系统的设备，或管理多个组件的固件设备）隔离其中每个组件的配置和状态。 与包含模块化软件组件的 IoT 设备结合使用时，模块标识和模块孪生能够提供管理关注点分离。 推出模块孪生的正式版后，我们将会支持模块孪生级别的所有设备孪生功能。 
+ 模块标识和模块孪生提供的功能与设备标识和设备孪生相同，但前者的粒度更细。 这种更高的粒度级可让有能力的设备（例如基于操作系统的设备，或管理多个组件的固件设备）隔离其中每个组件的配置和状态。 与包含模块化软件组件的 IoT 设备结合使用时，模块标识和模块孪生能够提供管理关注点分离。 推出模块孪生的正式版后，我们将会支持模块孪生级别的所有设备孪生功能。 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

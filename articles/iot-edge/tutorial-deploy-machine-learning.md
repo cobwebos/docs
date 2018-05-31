@@ -9,17 +9,18 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d0a508f6430bd97e7c76aee686f4837acf246ad3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6062d8193ce8cf7edaff3187f5c0f7dd9968658b
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165734"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>将 Azure 机器学习作为 IoT Edge 模块进行部署 - 预览版
 
-可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程将逐步演示部署 Azure 机器学习模块的过程，该模块可根据 IoT Edge 模拟设备（该设备是在 [Windows][lnk-tutorial1-win] 或 [Linux][lnk-tutorial1-lin] 教程“在模拟设备上部署 Azure IoT Edge”中创建的）上的传感器数据预测设备何时出现故障。 
+可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程将逐步演示部署 Azure 机器学习模块的过程，该模块可根据 IoT Edge 模拟设备（该设备是在 [Windows][lnk-tutorial1-win] 或 [Linux][lnk-tutorial1-lin] 教程“在模拟设备上部署 Azure IoT Edge”中创建的）上的传感器数据预测设备何时出现故障。
 
-本教程介绍如何执行下列操作： 
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 Azure 机器学习模块
@@ -27,28 +28,28 @@ ms.lasthandoff: 04/19/2018
 > * 将 Azure 机器学习模块部署到 loT Edge 设备
 > * 查看生成的数据
 
-本教程中创建的 Azure 机器学习模块将读取设备生成的环境数据，并将消息标记为异常或正常。 
+本教程中创建的 Azure 机器学习模块将读取设备生成的环境数据，并将消息标记为异常或正常。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 已通过快速入门或第一个教程创建 Azure IoT Edge 设备。
 * IoT 中心连接字符串适用于 IoT Edge 设备连接到的 IoT 中心。
 * 一个 Azure 机器学习帐户。 若要创建帐户，请按照[创建 Azure 机器学习帐户和安装 Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts) 中的说明进行操作。 对于本教程，不需要安装 Workbench 应用程序。 
-* 计算机上的“Azure ML 模块管理”。 若要设置环境并创建帐户，请按照[模型管理设置](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration)中的说明进行操作。
+* 计算机上的“Azure ML 模块管理”。 若要设置环境并创建帐户，请按照[模型管理设置](../machine-learning/desktop-workbench/deployment-setup-configuration.md)中的说明进行操作。
 
-Azure 机器学习模块不支持 ARM 处理器。 
+Azure 机器学习模块不支持 ARM 处理器。
 
 ## <a name="create-the-azure-ml-container"></a>创建 Azure ML 容器
-在本部分中，你将下载已训练的模型文件并将它们转换为 Azure ML 容器。  
+在本部分中，你将下载已训练的模型文件并将它们转换为 Azure ML 容器。
 
-在运行“Azure ML 模块管理”的计算机上，从 GitHub 上的 Azure ML IoT Toolkit 下载并保存 [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) 和 [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl)。 这些文件定义了将部署到 Iot Edge 设备的已训练的机器学习模型。 
+在运行“Azure ML 模块管理”的计算机上，从 GitHub 上的 Azure ML IoT Toolkit 下载并保存 [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) 和 [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl)。 这些文件定义了将部署到 Iot Edge 设备的已训练的机器学习模型。
 
 使用已训练的模型创建可以部署到 IoT Edge 设备的容器。 使用以下命令：
 
    * 注册模型。
    * 创建清单。
    * 创建名为 *machinelearningmodule* 的 Docker 容器映像。
-   * 将映像部署到 Azure 容器服务 (AKS) 群集。
+   * 将映像部署到 Azure Kubernetes 服务 (AKS) 群集。
 
 ```cmd
 az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
@@ -72,12 +73,12 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 
 Linux：
    ```cmd
-   sudo iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password> 
+   sudo iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
    ```
 
 Windows:
    ```cmd
-   iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password> 
+   iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
    ```
 
 ## <a name="run-the-solution"></a>运行解决方案
@@ -96,7 +97,7 @@ Windows:
     1. 在“映像”字段中，输入映像地址；例如 `<registry_name>.azurecr.io/machinelearningmodule:1`。
     1. 选择“保存”。
 1. 返回到“添加模块”步骤，选择“下一步”。
-1. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 第一个路由通过“amlInput”终结点将消息从温度传感器传输到机器学习模块，这是所有 Azure 机器学习模块都使用的终结点。 第二个路由会将消息从机器学习模块传输到 IoT 中心。 在此路由中，“amlOutput”是所有 Azure 机器学习模块用来输出数据的终结点，“$upstream”表示 IoT 中心。 
+1. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 第一个路由通过“amlInput”终结点将消息从温度传感器传输到机器学习模块，这是所有 Azure 机器学习模块都使用的终结点。 第二个路由会将消息从机器学习模块传输到 IoT 中心。 在此路由中，“amlOutput”是所有 Azure 机器学习模块用来输出数据的终结点，“$upstream”表示 IoT 中心。
 
     ```json
     {
@@ -105,24 +106,24 @@ Windows:
             "machineLearningToIoTHub": "FROM /messages/modules/machinelearningmodule/outputs/amlOutput INTO $upstream"
         }
     }
-    ``` 
+    ```
 
-1. 选择“**下一步**”。 
-1. 在“审阅模板”步骤中，选择“提交”。 
+1. 选择“**下一步**”。
+1. 在“审阅模板”步骤中，选择“提交”。
 1. 返回到“设备详细信息”页，并选择“刷新”。  你应该会看到新的“machinelearningmodule”在与“tempSensor”模块和 IoT Edge 运行时模块同时运行。
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-可以使用 [IoT 中心资源管理器](https://github.com/azure/iothub-explorer)或 Visual Studio Code 的 Azure IoT Toolkit 扩展查看 IoT Edge 设备发送的设备到云消息。 
+可以使用 [IoT 中心资源管理器](https://github.com/azure/iothub-explorer)或 Visual Studio Code 的 Azure IoT Toolkit 扩展查看 IoT Edge 设备发送的设备到云消息。
 
-1. 在 Visual Studio Code 中，选择“IoT 中心设备”。 
-2. 选择 **...**，然后从菜单中选择“设置 IoT 中心连接字符串”。 
+1. 在 Visual Studio Code 中，选择“IoT 中心设备”。
+2. 选择 **...**，然后从菜单中选择“设置 IoT 中心连接字符串”。
 
    ![IoT 中心设备“更多”菜单](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. 在页面顶部打开的文本框中，输入你的 IoT 中心的 iothubowner 连接字符串。 你的 IoT Edge 设备应当会出现在“IoT 中心设备”列表中。
 4. 再次选择 **...**，然后选择“开始监视 D2C 消息”。
-5. 观察每五秒来自 tempSensor 的消息。 消息正文包含 machinelearningmodule 提供的名为 **anomaly**、值为 true 或 false 的属性。 如果模型成功运行，**AzureMLResponse** 属性包含值“OK”。 
+5. 观察每五秒来自 tempSensor 的消息。 消息正文包含 machinelearningmodule 提供的名为 **anomaly**、值为 true 或 false 的属性。 如果模型成功运行，**AzureMLResponse** 属性包含值“OK”。
 
    ![消息正文中的 Azure ML 响应](./media/tutorial-deploy-machine-learning/ml-output.png)
 

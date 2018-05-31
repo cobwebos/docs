@@ -12,13 +12,14 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: d02ecc3293d0607dd3e19ade3c1d9087b544703b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 072e3bc2e1a13476b43fb72c8631453e2ffa3b27
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34071599"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>使用基于角色的访问控制管理 Azure Site Recovery
 
@@ -45,7 +46,7 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 > [!IMPORTANT]
 >确保根据用于资源部署的部署模型（Resource Manager/经典）添加相关权限。
 
-| **资源类型** | 部署模型 | 权限 |
+| **资源类型** | **部署模型** | **权限** |
 | --- | --- | --- |
 | 计算 | 资源管理器 | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |

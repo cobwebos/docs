@@ -1,11 +1,11 @@
 ---
-title: "登录到访问面板网站时出现问题 | Microsoft Docs"
-description: "指导解决尝试登录以使用访问面板时可能会遇到的问题"
+title: 登录到访问面板网站时出现问题 | Microsoft Docs
+description: 指导解决尝试登录以使用访问面板时可能会遇到的问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 83c3a893fe18f2de2acc4fdbc9b048c92cc71d15
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1820ab1e2295e6e0c7795c9d014d001d294bb337
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069606"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>登录到访问面板网站时出现问题
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="general-issues-to-check-first"></a>首先要检查的常规问题 
 
--   确保用户尝试登录到**正确的 URL**：<https://myapps.microsoft.com>
+-   确保用户登录到正确的 URL：<https://myapps.microsoft.com>
 
 -   确保用户的浏览器已将该 URL 添加到其**受信任的站点**
 
@@ -289,4 +290,4 @@ ms.lasthandoff: 02/21/2018
 -   Fiddler 跟踪
 
 ## <a name="next-steps"></a>后续步骤
-[使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
+[使用应用程序代理为应用提供单一登录](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
