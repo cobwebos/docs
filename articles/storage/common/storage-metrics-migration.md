@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 03/30/2018
 ms.author: fryu
-ms.openlocfilehash: c4dc9b231668315af16c625314c737fee99d672d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: da8eb0b9e2e5aba60b61a36d83f525c7ce4a7958
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32776255"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure 存储指标迁移
 
@@ -117,7 +118,7 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 
 * 新指标数据是否会默认存储在同一存储帐户中？
 
-答：没有。 如果需要将指标数据存档到存储帐户，可以使用 [Azure Monitor 中的诊断设置](https://azure.microsoft.com/blog/azure-monitor-multiple-diagnostic-settings/)
+答：没有。 如果需要将指标数据存档到存储帐户，可以使用 [Azure Monitor 诊断设置 API](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate)
 
 ## <a name="next-steps"></a>后续步骤
 

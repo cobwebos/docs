@@ -10,11 +10,12 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: 3220c538e08753ed3515f42a5b8110df71745a63
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ef35bbb28f5b13068f92f4bf07c7807b4a5d407a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33941888"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>多租户 SaaS 数据库租户模式
 
@@ -88,7 +89,7 @@ Azure SQL 数据库提供所需的工具用于配置、监视和管理共享。 
 
 #### <a name="operations-scale-for-database-per-tenant"></a>“每个租户各有数据库”模型的操作规模
 
-Azure SQL 数据库平台提供许多管理功能用于大规模管理大量的数据库，例如，100,000 以上的数据库。  这些功能使“每个租户各有数据库”模式变得合理。
+Azure SQL 数据库平台提供多种管理功能，用于大规模管理大量数据库（例如 100,000 以上的数据库）。  这些功能使“每个租户各有数据库”模式变得合理。
 
 例如，假设某个系统使用一个包含 1000 个租户的数据库作为其唯一的数据库。  该数据库可能包含 20 个索引。  如果该系统改用 1000 个单租户数据库，则索引数量会提高到 20,000 个。  在[自动优化][docu-sql-db-automatic-tuning-771a]过程中，默认会在 SQL 数据库中启用自动索引功能。  自动索引会自动管理所有 20,000 个索引，以及这些索引的持续创建和删除优化操作。  这些自动操作发生在单个数据库内部，不受其他数据库中类似操作的协调或限制。  自动索引在繁忙数据库中处理索引的方式与在不太繁忙的数据库中不同。  如果必须手动完成这种异常繁重的管理任务，则以“每个租户各有数据库”规模进行这种索引管理自定义是不切实际的。
 

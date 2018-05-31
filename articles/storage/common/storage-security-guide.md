@@ -8,11 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: 2debe3bb06f00741100883ff7c9978f11f5be799
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4145f7edb93801aa6f98df7e9cff34ae7370fc52
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32768007"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
@@ -294,7 +295,7 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 
 针对所有存储帐户启用 SSE，并且不能禁用。 将数据写入 Azure 存储时，SSE 自动加密数据。 从 Azure 存储读取数据时，Azure 存储会在返回数据之前将其解密。 SSE 帮助保护数据，而无需修改代码或将代码添加到任何应用程序。
 
-用于 SSE 的密钥由 Microsoft 管理。 Microsoft 最初将生成密钥，并根据 Microsoft 内部策略的定义管理安全存储和定期轮转密钥。 最终会提供客户托管密钥，以及从 Microsoft 托管密钥到客户托管密钥的迁移路径。
+你可以使用 Microsoft 托管的密钥或你自己的自定义密钥。 Microsoft 生成托管密钥，并根据 Microsoft 内部策略的定义管理其安全存储和定期轮转。 有关使用自定义密钥的详细信息，请参阅[在 Azure 密钥保管库中使用客户托管密钥进行存储服务加密](storage-service-encryption-customer-managed-keys.md)。
 
 SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azure 资源管理器和经典）、所有 Azure 存储服务（Blob、队列、表和文件）中的数据。 
 

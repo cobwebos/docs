@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: e0337a7ce1392d78eba9791095f5d7a9c7d4afdd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 785ba078669886cf16041752bd7af5a957899d28
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33205765"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>有关 Azure VM 备份服务的问题
 本文提供常见问题的解答，有助于快速了解 Azure VM 备份组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -54,6 +55,9 @@ ms.lasthandoff: 04/19/2018
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>我在备份的托管磁盘 VM 上启用了资源组锁定。 我的备份是否继续有效？
 如果用户锁定了资源组，则备份服务将无法删除较早的还原点。 由于这一原因，新备份将开始失败，因为从后端施加了最多 18 个还原点的限制。 如果 RG 锁定后备份失败并显示内部错误，请按照以下[删除还原点集合的步骤](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)进行操作。
+
+### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>备份策略是否考虑夏令时 (DST)？
+不会。 请注意，本地计算机上的日期和时间会显示当地时间以及当前夏令时偏差。 因此，由于 DST，计划备份的配置时间可能与当地时间不同。
 
 ## <a name="restore"></a>还原
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>如何决定是进行磁盘还原，还是进行完整的 VM 还原？

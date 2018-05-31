@@ -1,6 +1,6 @@
 ---
-title: "Application Insights 和 Log Analytics 使用的 IP 地址 | Microsoft Docs"
-description: "Application Insights 所需的服务器防火墙例外"
+title: Application Insights 和 Log Analytics 使用的 IP 地址 | Microsoft Docs
+description: Application Insights 所需的服务器防火墙例外
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -11,13 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 05/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b48b17b214f6ff22c7c68421ba8c89104c8b4b1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4ed0c84dfab58f8a92e0f366bb65634b9e3dab82
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33935625"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
 [Azure Application Insights](app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，可能需要知道这些 IP 地址。
@@ -48,12 +49,7 @@ ms.lasthandoff: 03/05/2018
 | 配置 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | 配置 |`auth.gfx.ms` | |`443` |
 | 配置 |`login.live.com` | |`443` |
-| 安装 |`packages.nuget.org`、`nuget.org`、`api.nuget.org` | |`443` |
-
-## <a name="hockeyapp"></a>HockeyApp
-| 目的 | 代码 | IP | 端口 |
-| --- | --- | --- | --- |
-| 崩溃数据 |gate.hockeyapp.net |104.45.136.42 |80、443 |
+| 安装 |`packages.nuget.org`、`nuget.org`、`api.nuget.org`、`az320820.vo.msecnd.net`（NuGet 下载） | |`443` |
 
 ## <a name="availability-tests"></a>可用性测试
 这是用于运行[可用性 Web 测试](app-insights-monitor-web-app-availability.md)的地址列表。 如果想要对应用运行 Web 测试，但 Web 服务器局限于为特定的客户端提供服务，则必须允许来自可用性测试服务器的传入流量。
@@ -236,14 +232,17 @@ East US
 
 | 目的 | URI | IP | 端口 |
 | --- | --- | --- | --- |
-| 代理 | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71 | 443
+| 代理 | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71<br/>52.230.124.46<br/>52.230.122.9 | 443
 | 门户 | gateway.azureserviceprofiler.net | 动态 | 443
 | 存储 | *.core.windows.net | 动态 | 443
 
 ## <a name="snapshot-debugger"></a>快照调试器
 
+> [!NOTE]
+> 探查器和快照调试器共享同一组 IP 地址。
+
 | 目的 | URI | IP | 端口 |
 | --- | --- | --- | --- |
-| 代理 | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 23.101.68.84<br/>52.174.44.101<br/>52.250.121.195<br/>51.143.88.187<br/> | 443
+| 代理 | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71<br/>52.230.124.46<br/>52.230.122.9 | 443
 | 门户 | ppe.gateway.azureserviceprofiler.net | 动态 | 443
 | 存储 | *.core.windows.net | 动态 | 443

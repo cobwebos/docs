@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2018
+ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 0bc24fb0206455c723acf5e6f4b82d82002f727c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9ba48a9072a85e7d8e6e9fb17957efbf27711df8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886832"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -103,7 +104,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
     - 应用程序密钥
     - 租户 ID
 
-2. 使用 Azure 门户为 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**（如果尚未这样做）。 AAD 管理员可以是 AAD 用户或 AAD 组。 如果你向具有 MSI 的组授予了管理员角色，请跳过下面的步骤 3 和 4，因为管理员对 DB 具有完全访问权限。
+2. 使用 Azure 门户为 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 AAD 管理员可以是 AAD 用户或 AAD 组。 如果你向具有 MSI 的组授予了管理员角色，请跳过下面的步骤 3 和 4，因为管理员对 DB 具有完全访问权限。
 
 3. **为服务主体创建包含的数据库用户**：使用至少具有 ALTER ANY USER 权限的 AAD 标识，通过 SSMS 之类的工具连接到要从中复制或要将数据复制到的数据仓库，并执行以下 T-SQL。 可从[此处](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)了解有关包含的数据库用户的详细信息。
     
@@ -114,7 +115,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 4. 像通常对 SQL 用户所做的那样**向服务主体授予所需的权限**，例如，通过执行以下命令：
 
     ```sql
-    EXEC sp_addrolemember '[your application name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your application name];
     ```
 
 5. 在 ADF 中，配置 Azure SQL 数据仓库链接服务。
@@ -151,6 +152,9 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 可将数据工厂与代表此特定数据工厂的[托管服务标识 (MSI)](data-factory-service-identity.md) 相关联。 可以使用此服务标识进行 Azure SQL 数据仓库身份验证，这允许此指定的工厂访问数据仓库并从中复制数据或将数据复制到其中。
 
+> [!IMPORTANT]
+> 请注意，目前 MSI 身份验证不支持 PolyBase。
+
 若要使用基于 MSI 的 AAD 应用程序令牌身份验证，请执行以下步骤：
 
 1. **在 Azure AD 中创建一个组，并使工厂 MSI 成为该组的成员**。
@@ -163,7 +167,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. 使用 Azure 门户为 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**（如果尚未这样做）。
+2. 使用 Azure 门户为 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。
 
 3. **为 AAD 组创建包含的数据库用户**：使用至少具有 ALTER ANY USER 权限的 AAD 标识，通过 SSMS 之类的工具连接到要从中复制或要将数据复制到的数据仓库，并执行以下 T-SQL。 可从[此处](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)了解有关包含的数据库用户的详细信息。
     
@@ -174,7 +178,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 4. 像通常对 SQL 用户所做的那样**向 AAD 组授予所需的权限**，例如，通过执行以下命令：
 
     ```sql
-    EXEC sp_addrolemember '[your AAD group name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your AAD group name];
     ```
 
 5. 在 ADF 中，配置 Azure SQL 数据仓库链接服务。
@@ -378,10 +382,10 @@ GO
 使用 **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** 是将大量数据加载到高吞吐量的 Azure SQL 数据仓库的有效方法。 可通过使用 PolyBase 而非默认 BULKINSERT 机制实现吞吐量的巨大增加。 请参阅[复制性能参考数量](copy-activity-performance.md#performance-reference)了解详细比较。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md)。
 
 * 如果源数据位于 **Azure Blob 或 Azure Data Lake Store** 中，并且格式与 PolyBase 兼容，则可使用 PolyBase 直接复制到 Azure SQL 数据仓库。 有关详细信息，请参阅**[使用 PolyBase 直接复制](#direct-copy-using-polybase)**。
-* 如果 PolyBase 最初不支持源数据存储和格式，可改用**[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)**功能。 通过自动将数据转换为 PolyBase 兼容的格式并将数据存储在 Azure Blob 存储中，它还可提供更高的吞吐量。 然后，它会将数据载入 SQL 数据仓库。
+* 如果 PolyBase 最初不支持源数据存储和格式，可改用**[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)** 功能。 通过自动将数据转换为 PolyBase 兼容的格式并将数据存储在 Azure Blob 存储中，它还可提供更高的吞吐量。 然后，它会将数据载入 SQL 数据仓库。
 
 > [!IMPORTANT]
-> 请注意，PolyBase 仅支持 Azure SQL 数据仓库 SQL 身份验证，不支持 Azure Active Directory 身份验证。
+> 请注意，基于托管服务标识 (MSI) 的 AAD 应用程序令牌身份验证目前不支持 PolyBase。
 
 ### <a name="direct-copy-using-polybase"></a>使用 PolyBase 直接复制
 

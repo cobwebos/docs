@@ -10,11 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5659e8f29d87c48c447a5cb81c836b0be9dabd45
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0ad8a599065a44469a3151813972b3d2561782c6
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774652"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的存储过程
 有关在开发解决方案时实现 Azure SQL 数据仓库中的存储过程的技巧。
@@ -76,7 +77,6 @@ SQL 数据仓库中未实现 Transact-SQL 存储过程的某些方面。
 * 编号的存储过程
 * 扩展的存储过程
 * CLR 存储过程
-* 
 * 加密选项
 * 复制选项
 * 表值参数
