@@ -11,16 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/14/2018
 ms.author: vinagara
-ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166176"
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>如何将警报从 OMS 扩展（复制）到 Azure
 从 **2018 年 5 月 14 日**开始，使用在 [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 中配置的警报的所有客户都将扩展到 Azure。 扩展到 Azure 的警报的行为与在 OMS 中相同。 监视功能保持不变。 将 OMS 中创建的警报扩展到 Azure 可带来许多好处。 有关将警报从 OMS 扩展到 Azure 的优势和过程的详细信息，请参阅[将警报从 OMS 扩展到 Azure](monitoring-alerts-extend.md)。
+
+> [!NOTE]
+> 从 2018 年 5 月 14 日开始，Microsoft 将开始自动将警报扩展到 Azure 的过程。 并非所有工作区和警报都将在这一天扩展；相反，Microsoft 将开始在未来的几周内自动分批扩展警报。 因此，OMS 门户中的警报不会在 2018 年 5 月 14 日当天自动扩展到 Azure，用户仍可以使用以下选项详细信息手动扩展其警报。
 
 想要立即将警报从 OMS 移到 Azure 的客户可以使用本文所述的选项之一。
 
@@ -236,6 +240,14 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
     a. 当启用了作用域锁时，不允许在包含 Log Analytics (OMS) 工作区的订阅或资源组中执行新更改；系统无法将警报扩展（复制）到 Azure 中并创建所需的操作组。
     
     b. 若要解决此问题，请使用 Azure 门户、Powershell、Azure CLI 或 API 删除包含该工作区的订阅或资源组上的“只读”锁。 若要了解详细信息，请查看有关[资源锁用法](../azure-resource-manager/resource-group-lock-resources.md)的文章。 
+    
+    c. 按照文章中介绍的步骤解决问题后，OMS 将在下一天的计划运行内将你的警报扩展到 Azure，不需要执行任何操作或启动。
+
+3. **错误：在订阅/资源组级别存在策略**：![其中包含了策略错误消息的 OMS 门户警报设置页](./media/monitor-alerts-extend/ErrorPolicy.png)
+
+    a. 当启用了 [Azure 策略](../azure-policy/azure-policy-introduction.md)时，限制包含 Log Analytics (OMS) 工作区的订阅或资源组中的任何新资源；系统无法将警报扩展（复制）到 Azure 中并创建所需的操作组。
+    
+    b. 若要解决此问题，请编辑导致 *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* 错误的策略，从而防止在包含工作区的订阅或资源组上创建新资源。 使用 Azure 门户、Powershell、Azure CLI 或 API；可以审核操作以查找导致故障的相应策略。 若要了解详细信息，请查看[查看活动日志以审核操作](../azure-resource-manager/resource-group-audit.md)上的文章。 
     
     c. 按照文章中介绍的步骤解决问题后，OMS 将在下一天的计划运行内将你的警报扩展到 Azure，不需要执行任何操作或启动。
 
