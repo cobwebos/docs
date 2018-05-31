@@ -11,19 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/01/2018
 ms.author: shlo
-ms.openlocfilehash: e6846661370fcad139730fc0443d9df54fa12a70
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 58faed48f5031b26f1340f3766fdd8bdc6bd2ccb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770751"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="syntax"></a>语法
 
@@ -78,6 +79,16 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 
 > [!NOTE]
 > Web 活动调用的 REST 终结点必须返回 JSON 类型的响应。 如果活动在 1 分钟内未收到终结点的响应，则会超时并显示错误。
+
+下表显示了 JSON 上下文的要求：
+
+| 值类型 | 请求正文 | 响应正文 |
+|---|---|---|
+|JSON 对象 | 支持 | 支持 |
+|JSON 数组 | 支持 <br/>（目前，JSON 数组不作为错误结果使用。 正在运行修补程序。） | 不支持 |
+| JSON 值 | 支持 | 不支持 |
+| 非 JSON 类型 | 不支持 | 不支持 |
+||||
 
 ## <a name="authentication"></a>身份验证
 
