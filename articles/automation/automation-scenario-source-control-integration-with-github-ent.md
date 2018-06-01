@@ -6,14 +6,14 @@ ms.service: automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/17/2018
-ms.topic: conceptual
+ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 685d434affd0561658ae99c50bbe7b1fc27a5572
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 65894e40b192c6a5a226fa7a1dfb5cb0cfabb972
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195516"
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936141"
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure 自动化方案 - 与 GitHub Enterprise 集成的自动化源代码管理
 

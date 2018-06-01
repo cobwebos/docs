@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
-ms.openlocfilehash: 08bf4675378918097e177228ee1be4e4e690c63b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 89c4c5c986375177918f14417c6b5a9a24925908
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271736"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
 如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Linux VM 来修复所有错误，然后重新创建原始 VM。
@@ -31,6 +32,7 @@ ms.lasthandoff: 04/06/2018
 4. 从故障排除 VM 卸载并分离虚拟硬盘。
 5. 使用原始虚拟硬盘创建 VM。
 
+有关使用托管磁盘的 VM，请参阅[通过附加新的操作系统磁盘对托管磁盘 VM 进行故障排除](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk)。
 
 ## <a name="determine-boot-issues"></a>确定启动问题
 检查启动诊断信息和 VM 屏幕截图，确定 VM 不能正常启动的原因。 一个常见的例子是 `/etc/fstab` 中存在无效条目，或底层虚拟硬盘已删除或移动。
@@ -170,6 +172,13 @@ ms.lasthandoff: 04/06/2018
 从现有虚拟硬盘创建 VM 时，启动诊断可能不会自动启用。 要检查启动诊断的状态并根据需要打开启动诊断，请在门户中选择 VM。 在“监视”下面，单击“诊断设置”。 确保状态为“打开”，并检查“启动诊断”旁边的复选标记是否为选中状态。 如果做了任何更改，请单击“保存”：
 
 ![更新启动诊断设置](./media/troubleshoot-recovery-disks-portal/reenable-boot-diagnostics.png)
+
+## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>通过附加新的操作系统磁盘对托管磁盘 VM 进行故障排除
+1. 停止受影响的托管磁盘 Windows VM。
+2. [创建托管磁盘 VM 的操作系统磁盘的托管磁盘快照](../windows/snapshot-copy-managed-disk.md)。
+3. [从快照创建托管磁盘](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)。
+4. [将托管磁盘附加为 VM 的数据磁盘](../windows/attach-disk-ps.md)。
+5. [将步骤 4 中的数据磁盘更改为操作系统磁盘](../windows/os-disk-swap.md)。
 
 ## <a name="next-steps"></a>后续步骤
 如果在连接到 VM 时遇到问题，请参阅[排查 Azure VM 的 SSH 连接问题](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果在访问 VM 上运行的应用时遇到问题，请参阅 [Troubleshoot application connectivity issues on a Linux VM](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（排查 Linux VM 上的应用程序连接问题）。
