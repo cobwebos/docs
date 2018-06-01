@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/15/2018
+ms.date: 05/07/2018
 ms.author: billmath
-ms.openlocfilehash: eb824913a4b3482879ccc45e2f660342695b1618
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 4d5bd28f6e2831ef7bcecc6e5cb80cb28736ec27
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258940"
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165479"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -38,13 +38,14 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ## <a name="118190"></a>1.1.819.0
 
-### <a name="release-status"></a>版本状态
+2018 年 5 月 4 日：作为自动升级发布，即将可供下载。
 
-5/14/2018：已发布，用于自动升级和下载。
+
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 
 新增功能和改进
+
 
 - 此版本包含 Azure AD Connect 中 PingFederate 集成的公共预览。 借助此版本，客户可以轻松可靠地配置其 Azure Active Directory 环境，以使用 PingFederate 作为其联合提供程序。 若要了解有关如何使用此新功能的详细信息，请访问我们的[在线文档](active-directory-aadconnect-user-signin.md#federation-with-pingfederate)。 
 - 我们更新了 Azure AD Connect 向导疑难解答实用工具，我们现在在其中对更多错误场景进行了分析，例如链接邮箱和 AD 动态组。 在[此处](active-directory-aadconnect-troubleshoot-objectsync.md)阅读有关疑难解答实用工具的详细信息。
@@ -62,16 +63,14 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ### <a name="fixed-issues"></a>修复的问题 
 
-- 此版本将 SQL Server Express 安装更新为 SQL Server 2012 SP4，该版本及其他一些版本针对多个安全漏洞提供修补程序。  有关 SQL Server 2012 SP4 的详细信息，请参阅[此处](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information)。
+
 - 同步规则处理：如果父同步规则不再适用，则应取消应用没有联接条件的出站联接同步规则
-- 多个可访问性修补程序已应用于 Synchronization Service Manager UI 和同步规则编辑器
 - Azure AD Connect 向导：Azure AD Connect 位于工作组中时，创建 AD 连接器帐户出错
 - Azure AD Connect 向导：AD 域和 Azure AD 验证域存在任何不匹配时，在 Azure AD 登录页面上显示验证复选框
 - 自动升级 PowerShell 修补程序，以在尝试自动升级后的某些情况下正确设置自动升级状态。
 - Azure AD Connect 向导：更新遥测以捕获之前缺失的信息
-- Azure AD Connect 向导：当使用**更改用户登录**任务从 AD FS 切换到直通身份验证时，已进行以下更改：
-    - 在我们将域从联盟域转换为托管域之前，直通身份验证代理已安装在 Azure AD Connect 服务器上，并且直通身份验证功能处于已启用状态。
-    - 用户不再从联盟用户转换为托管用户。 只有域会被转换。
+- Azure AD Connect 向导：在将域转换为托管状态前安装 PTA 代理
+- Azure AD Connect 向导：不要为 PTA 将用户转换为托管状态（仅转换域）
 - Azure AD Connect 向导：当用户 UPN 更新 ' 特殊字符正则表达式以支持特殊字符时，AD FS 多域正则表达式不正确
 - Azure AD Connect 向导：在无更改时删除虚假的“配置源定位点属性”消息 
 - Azure AD Connect 向导：对双联合方案的 AD FS 支持

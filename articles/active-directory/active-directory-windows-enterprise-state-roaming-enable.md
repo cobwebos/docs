@@ -1,9 +1,9 @@
 ---
-title: "在 Azure Active Directory 中启用企业状态漫游 | Microsoft Docs"
-description: "有关 Windows 设备中的企业状态漫游设置的常见问题。 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。"
+title: 在 Azure Active Directory 中启用企业状态漫游 | Microsoft Docs
+description: 有关 Windows 设备中的企业状态漫游设置的常见问题。 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。
 services: active-directory
-keywords: "企业状态漫游, Windows 云, 如何启用企业状态漫游"
-documentationcenter: 
+keywords: 企业状态漫游, Windows 云, 如何启用企业状态漫游
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -13,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 05/14/2018
 ms.author: markvi
-ms.openlocfilehash: 3a8714ddbda10d8e1b4a8de35711101f4c8a0106
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dba749b6d85898e6438ce1160b9bf6eaff6f4ac9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257965"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 企业状态漫游可供任何拥有Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅 [Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。
 
-启用企业状态漫游时，会自动授予组织对 Azure Rights Management 的免费受限使用许可证。 此免费订阅仅限用于加密和解密企业设置，以及由企业状态漫游同步的应用程序数据。 必须拥有[付费版订阅](https://azure.microsoft.com/pricing/details/active-directory/)才能使用 Azure Rights Management 的完整功能。
+启用企业状态漫游时，会自动授予组织对 Azure Rights Management 保护的免费受限使用许可证，该许可证来自 Azure 信息保护。 此免费订阅仅限用于加密和解密企业设置，以及由企业状态漫游同步的应用程序数据。 必须拥有[付费版订阅](https://azure.microsoft.com/pricing/details/information-protection/)才能使用 Azure Rights Management 服务的完整功能。
 
 ## <a name="to-enable-enterprise-state-roaming"></a>启用企业状态漫游
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: c54454dd2e7b56820834e4f3cd7452be10d5ddca
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6d07bd333e4d1663e37a840975cde2d9c73cec9c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211712"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
 
@@ -30,7 +31,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 
 * **协议**。 选择 HTTP、HTTPS 或 TCP，作为流量管理器用于探测终结点并检查其运行状况的协议。 HTTPS 监视并不验证 SSL 证书是否有效，它只检查是否有证书。
 * **端口**。 选择用于请求的端口。
-* **路径**。 此配置设置仅对需要指定路径设置的 HTTP 和 HTTPS 协议有效。 为 TCP 监视协议提供此设置会导致错误。 对于 TCP 协议，指定监视功能要访问的网页或文件的相对路径和名称。 正斜杠 (/) 是相对路径的有效条目。 此值表示文件位于根目录中（默认设置）。
+* **路径**。 此配置设置仅对需要指定路径设置的 HTTP 和 HTTPS 协议有效。 为 TCP 监视协议提供此设置会导致错误。 对于 HTTP 和 HTTPS 协议，指定监视功能要访问的网页或文件的相对路径和名称。 正斜杠 (/) 是相对路径的有效条目。 此值表示文件位于根目录中（默认设置）。
 * **探测间隔**。 此值指定通过流量管理器探测代理检查终结点运行状况的频率。 此处可指定两个值：30 秒（常规探测）和 10 秒（快速探测）。 如果未提供值，配置文件将设置默认值 30 秒。 有关快速探测定价的详细信息，请访问[流量管理器定价](https://azure.microsoft.com/pricing/details/traffic-manager)。
 * **容许的失败次数**。 此值指定在将终结点标记为不正常之前，流量管理器探测代理容许的失败次数。 该值可介于 0 到 9 之间。 值为 0 表示监视失败一次就将该终结点标记为不正常。 如果未指定任何值，则使用默认值 3。
 * **监视超时**。 此属性指定在将运行状况检查探测发送到终结点时，流量管理器探测代理应等待多长时间才可认为检查失败。 如果探测间隔设置为 30 秒，可将超时值设置为 5 - 10 秒。 如果未指定任何值，使用默认值 10 秒。 如果探测间隔设置为 10 秒，可将超时值设置为 5 - 9 秒。 如果未指定任何超时值，使用默认值 9 秒。
