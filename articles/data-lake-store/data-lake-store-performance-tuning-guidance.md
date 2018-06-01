@@ -10,15 +10,14 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 29b662aa2f30083b444483554a78d53f0d05cb7f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196978"
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>优化 Azure Data Lake Store 性能
 
@@ -66,7 +65,7 @@ Azure Data Lake Store 可进行缩放，以便为所有分析方案提供必要�
 
 通常可将数据组织到较大文件中，以获得更佳性能。  一般来说，可将数据集组织到 256 MB 或更大的文件中。 对于图像和二进制数据等情况，不能并行处理它们。  在这些情况下，建议以低于 2GB 的容量保存单个文件。
 
-有时，数据管道对原始数据（含有多个小文件）的控制有限。  建议执行“烹调”过程来生成更大的文件，以供下游应用程序使用。  
+有时，数据管道对原始数据（含有多个小文件）的控制有限。  建议执行“烹调”过程来生成更大的文件，以供下游应用程序使用。
 
 ### <a name="organizing-time-series-data-in-folders"></a>将时序数据组织到文件夹中
 
@@ -123,7 +122,7 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 
 始终需要最小的 YARN 容器，具体取决于工作负荷。 如果选取的容器太小，作业会出现内存不足的问题。 YARN 容器通常不应小于 1 GB。 YARN 容器一般为 3 GB。 对于某些工作负荷，可能需要更大的 YARN 容器。  
 
-增加每个 YARN 容器的核心数。  增加分配给每个容器的核心数，以提高每个容器中运行的并行任务数。  这适用于每个容器运行多个任务的应用程序，例如 Spark。  对于在每个容器中运行单个线程的应用程序（如 Hive），最好分配多个容器，而不是为每个容器分配多个核心。   
+增加每个 YARN 容器的核心数。  增加分配给每个容器的核心数，以提高每个容器中运行的并行任务数。  这适用于每个容器运行多个任务的应用程序，例如 Spark。  对于在每个容器中运行单个线程的应用程序（如 Hive），最好分配多个容器，而不是为每个容器分配多个核心。
 
 ### <a name="workload-layer"></a>工作负荷层
 

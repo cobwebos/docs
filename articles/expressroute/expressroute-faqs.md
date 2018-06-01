@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2018
+ms.date: 05/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4c61cdc504306d4e28d1d8c03fce4e479a0bfd34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f68a4d699d1ad6592fe5481cd69795b06e7d8fca
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160863"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -156,7 +157,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>在相同市内是否可以有多条 ExpressRoute 线路？ 是否可以将这些线路链接到同一虚拟网络？
 
-是的。 可以具有多条包含相同或不同服务提供商的 ExpressRoute 线路。 如果市内具有多个 ExpressRoute 对等位置，并且在各个对等位置创建线路，则可以将这些线路链接到同一虚拟网络。 如果在相同对等位置创建线路，则不能将这些线路链接到同一虚拟网络。
+是的。 可以具有多条包含相同或不同服务提供商的 ExpressRoute 线路。 如果城区内有多个 ExpressRoute 对等位置，并且线路创建在了不同的对等位置，则可以将这些线路链接到同一虚拟网络。 如果在相同对等位置创建线路，则不能将这些线路链接到同一虚拟网络。 Azure 门户或 PowerShell/CLI API 中的每个位置名称都代表一个对等互连位置。 例如，你可以选择对等互连位置“Singapore”和“Singapore2”，并将来自每个位置的线路连接到同一虚拟网络。 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>如何将我的虚拟网络连接到 ExpressRoute 线路
 

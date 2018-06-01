@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 0e860c1f1db77026e775191c76350333aa66dc7f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f633206c03a9639a375535ed7c8f5c84aa334ebf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34345871"
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34054194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教程：Azure Active Directory 与 Citrix ShareFile 的集成
 
@@ -31,7 +31,7 @@ ms.locfileid: "34345871"
 - 可以让用户使用其 Azure AD 帐户自动登录到 Citrix ShareFile（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -268,7 +268,7 @@ ms.locfileid: "34345871"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

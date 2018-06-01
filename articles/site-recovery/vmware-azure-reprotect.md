@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0946d5234292cfb69a7e9b5bc7846e6acf94dff4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072617"
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的计算机
 
@@ -39,6 +40,8 @@ ms.lasthandoff: 04/16/2018
 - 请确保打开以下端口以便进行故障转移和故障回复。
 
     ![用于故障转移和故障回复的端口](./media/vmware-azure-reprotect/failover-failback.png)
+
+- 你可以在[此处](vmware-azure-deploy-configuration-server.md#prerequisites)阅读有关端口和 URL 白名单的所有先决条件
 
 ## <a name="deploy-a-process-server-in-azure"></a>在 Azure 中部署进程服务器
 
@@ -77,7 +80,7 @@ ms.lasthandoff: 04/16/2018
     - Windows 的默认保留卷是 R 卷。
     - Linux 的默认保留卷是 /mnt/retention。
 - 如果使用的是现有进程服务器/配置服务器计算机或者是规模或进程服务器/主目标服务器计算机，则需要添加新驱动器。 新驱动器应满足上述要求。 如果保留驱动器不存在，则它不会显示在门户上的选择下拉列表中。 将驱动器添加到本地主目标后，该驱动器最多将需要 15 分钟才会显示在门户上的选择项中。 如果 15 分钟后未显示该驱动器，还可以刷新配置服务器。
-- 在主目标服务器上安装 VMware 工具。 没有 VMware 工具，将无法检测到主目标的 ESXi 主机上的数据存储。
+- 在主目标服务器上安装 VMware 工具或 open-vm-tools。 没有这些工具，将无法检测到主目标的 ESXi 主机上的数据存储。
 - 在 VMware 中的主目标虚拟机的配置参数中设置 `disk.EnableUUID=true` 设置。 如果此行不存在，请添加此行。 若要为虚拟机磁盘 (VMDK) 提供一致的 UUID，以便能够正确进行装载，则必须指定此设置。
 - 在创建了主目标的 ESX 主机应至少附加了一个 VMFS 数据存储。 如果未附加任何数据存储，则重新保护页上的“数据存储”输入将为空，你将无法继续操作。
 - 主目标服务器在磁盘上不能具有任何快照。 如果具有快照，则重新保护和故障回复会失败。
