@@ -1,13 +1,14 @@
 ---
-title: "Azure AD SAML 协议参考 | Microsoft Docs"
-description: "本文概述 Azure Active Directory 中的单一登录和单一注销 SAML 配置文件。"
+title: Azure AD SAML 协议参考 | Microsoft Docs
+description: 本文概述 Azure Active Directory 中的单一登录和单一注销 SAML 配置文件。
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 88125cfc-45c1-448b-9903-a629d8f31b01
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +17,12 @@ ms.date: 07/21/2017
 ms.author: priyamo
 ms.custom: aaddev
 ms.reviewer: dastrock
-ms.openlocfilehash: 84bd6ae5e1624ade18dc7ee2b73fe1c94914978e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3a38d5e7a33a681c2e6d4964863d25f5cfbd6725
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157616"
 ---
 # <a name="how-azure-active-directory-uses-the-saml-protocol"></a>Azure Active Directory 如何使用 SAML 协议
 Azure Active Directory (Azure AD) 使用 SAML 2.0 协议，使应用程序能够为其用户提供单一登录体验。 Azure AD 的[单一登录](active-directory-single-sign-on-protocol-reference.md)和[单一注销](active-directory-single-sign-out-protocol-reference.md) SAML 配置文件说明了如何在标识提供者服务中使用 SAML 断言、协议和绑定。
@@ -33,7 +35,7 @@ Azure AD 使用云服务的**元数据 URI** 来检索云服务的签名密钥�
 
 Azure Active Directory 公开特定于租户的和公用的（独立于租户的）单一登录和单一注销终结点。 这些 URL 表示可寻址位置（不只是标识符），方便你转到终结点读取元数据。
 
-* 特定于租户的终结点位于 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`。  <TenantDomainName> 占位符表示 Azure AD 租户的已注册域名或 TenantID GUID。 例如，contoso.com 租户的联合元数据位于：https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* 特定于租户的终结点位于 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`。 <TenantDomainName> 占位符表示 Azure AD 租户的已注册域名或 TenantID GUID。 例如，contoso.com 租户的联合元数据位于： https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 * 独立于租户的终结点位于 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。此终结点地址中显示 **common**，而不是租户域名或 ID。
 

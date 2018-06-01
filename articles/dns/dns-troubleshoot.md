@@ -1,11 +1,11 @@
 ---
-title: "Azure DNS 疑难解答指南 | Microsoft Docs"
-description: "如何排查 Azure DNS 的常见问题"
+title: Azure DNS 疑难解答指南 | Microsoft Docs
+description: 如何排查 Azure DNS 的常见问题
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: carmonm
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
 ms.service: dns
 ms.devlang: na
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
-ms.author: jonatul
-ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 816ad6c0079e9272286cdc072ff71bf15313eb8e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069093"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南
 
@@ -39,8 +40,8 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="recommended-documents"></a>**建议的文档**
 
-[DNS zones and records](dns-zones-records.md)
-（DNS 区域和记录）<br>
+[DNS 区域和记录](dns-zones-records.md)
+<br>
 [创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>无法创建 DNS 记录
@@ -56,8 +57,8 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="recommended-documents"></a>**建议的文档**
 
-[DNS zones and records](dns-zones-records.md)
-（DNS 区域和记录）<br>
+[DNS 区域和记录](dns-zones-records.md)
+<br>
 [创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
 
 
@@ -92,8 +93,8 @@ Azure DNS 以记录集方式管理记录，记录集是具有相同名称和类�
 
 ### <a name="recommended-documents"></a>**建议的文档**
 
-[DNS zones and records](dns-zones-records.md)
-（DNS 区域和记录）<br>
+[DNS 区域和记录](dns-zones-records.md)
+<br>
 [使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)
 <br>
 [SRV 记录类型 (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)

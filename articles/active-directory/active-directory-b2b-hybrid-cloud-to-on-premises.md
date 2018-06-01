@@ -2,22 +2,20 @@
 title: 向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限 | Microsoft Docs
 description: 介绍如何使用 Azure AD B2B 协作向云 B2B 用户授予本地应用的访问权限。
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
 ms.service: active-directory
+ms.component: B2B
 ms.topic: article
-ms.workload: identity
 ms.date: 04/20/2018
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0eb567c8587b0eec367160facc86f163ef6b3c15
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 028bbb28c7091db3c3ebea321ca2e167b999949d
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068790"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 
@@ -30,7 +28,7 @@ ms.lasthandoff: 04/23/2018
 必须执行以下两个操作：
 
 - 根据[针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](active-directory-saas-custom-apps.md)中所述，使用非库应用程序模板集成 SAML 应用。 请务必记下所用的“登录 URL”值。
--  在将 **Azure Active Directory** 配置为身份验证源的情况下，使用 Azure AD 应用程序代理发布本地应用。 有关说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。 
+-  在将 **Azure Active Directory** 配置为身份验证源的情况下，使用 Azure AD 应用程序代理发布本地应用。 有关说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)。 
 
    配置“内部 URL”设置时，请使用非库应用程序模板中指定的登录 URL。 这样，用户便可以从组织边界以外访问该应用。 应用程序代理对本地应用执行 SAML 单一登录。
  
@@ -40,13 +38,13 @@ ms.lasthandoff: 04/23/2018
 
 若要向 B2B 用户提供对 Windows 集成身份验证和 Kerberos 约束委派保护的本地应用程序的访问权限，需要以下组件：
 
-- **通过 Azure AD 应用程序代理的身份验证**。 B2B 用户必须能够在本地应用程序中进行身份验证。 为此，必须通过 Azure AD 应用程序代理发布本地应用。 有关详细信息，请参阅[开始使用应用程序代理并安装连接器](active-directory-application-proxy-enable.md)和[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。
-- **通过本地目录中的 B2B 用户对象授权**。 应用程序必须能够执行用户访问权限检查，并授予对正确资源的访问权限。 IWA 和 KCD 要求本地 Windows Server Active Directory 中有一个用户对象才能完成此授权。 根据 [KCD 的单一登录工作原理](active-directory-application-proxy-sso-using-kcd.md#how-single-sign-on-with-kcd-works)中所述，应用程序代理需要使用此用户对象来模拟用户并获取应用程序的 Kerberos 令牌。 
+- **通过 Azure AD 应用程序代理的身份验证**。 B2B 用户必须能够在本地应用程序中进行身份验证。 为此，必须通过 Azure AD 应用程序代理发布本地应用。 有关详细信息，请参阅[开始使用应用程序代理并安装连接器](manage-apps/application-proxy-enable.md)和[使用 Azure AD 应用程序代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)。
+- **通过本地目录中的 B2B 用户对象授权**。 应用程序必须能够执行用户访问权限检查，并授予对正确资源的访问权限。 IWA 和 KCD 要求本地 Windows Server Active Directory 中有一个用户对象才能完成此授权。 根据 [KCD 的单一登录工作原理](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)中所述，应用程序代理需要使用此用户对象来模拟用户并获取应用程序的 Kerberos 令牌。 
 
    对于 B2B 用户方案，可以使用两种方法在本地目录中创建授权所需的来宾用户对象：
 
-   - [Microsoft Identity Manager (MIM) 和 Microsoft Graph 的 MIM 管理代理](#create-b2b-guest-user-objects-through-mim-preview)。 此解决方案要求具有 Azure AD Premium P1 订阅。 
-   - [PowerShell 脚本](#create-b2b-guest-user-objects-through-a-script-preview)。 使用脚本是一种更简便的解决方案，因为不需要 MIM 或 Azure AD Premium。 
+   - Microsoft Identity Manager (MIM) 和 [Microsoft Graph 的 MIM 管理代理](#create-b2b-guest-user-objects-through-mim-preview)。 
+   - [PowerShell 脚本](#create-b2b-guest-user-objects-through-a-script-preview)。 使用脚本是一种更轻便的解决方案，因为不需要 MIM。 
 
 下图从较高层面描绘了 Azure AD 应用程序代理如何结合本地目录中生成的 B2B 用户对象，向 B2B 用户授予对本地 IWA 和 KCD 应用的访问权限。 下图详细描述了带编号的步骤。
 
@@ -86,6 +84,6 @@ ms.lasthandoff: 04/23/2018
 ## <a name="next-steps"></a>后续步骤
 
 - [适用于混合组织的 Azure Active Directory B2B 协作](active-directory-b2b-hybrid-organizations.md)
-- [使用 Azure AD B2B 协作向本地托管的合作伙伴帐户授予对云资源的访问权限](active-directory-b2b-hybrid-on-premises-to-cloud.md)
+
 - 有关 Azure AD Connect 的概述，请参阅[将本地目录与 Azure Active Directory 进行集成](connect/active-directory-aadconnect.md)。
 
