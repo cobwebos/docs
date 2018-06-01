@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9067ea350997ed0c4fc5c65dccb72f403adfa774
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 52d0aeabab173caf4460827ca0d5984070688f0e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304719"
 ---
 # <a name="tutorialload-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对可用性区域中的 VM 进行负载均衡
 
@@ -95,7 +96,7 @@ ms.lasthandoff: 04/28/2018
     - *TCP* - **协议**
     - 允许 - **操作**
     - *100* - **优先级**
-    - *myHTTPRule* - **名称**
+    - 在“名称”中输入 *myHTTPRule*
     - *允许 HTTP* - **说明**
 4. 单击“确定”。
  
@@ -139,7 +140,7 @@ ms.lasthandoff: 04/28/2018
 2. 在“概览”页上单击“连接”，以便通过 RDP 连接到 VM 中。
 3. 使用在创建 VM 时指定的用户名和密码登录到 VM（可能需要选择“更多选项”，然后选择“使用其他帐户”指定创建 VM 时输入的凭据），然后选择“确定”。 你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。
 4. 在服务器桌面上，导航到“Windows 管理工具”>“Windows PowerShell”。
-6. 在 PowerShell 窗口中，运行以下命令安装 IIS 服务器，删除 default.htm 文件，然后添加显示 VM 名称的新 default.htm 文件：
+6. 在 PowerShell 窗口中，运行以下命令安装 IIS 服务器，删除默认 iisstart.htm 文件，然后添加显示 VM 名称的新 iisstart.htm 文件：
 
    ```azurepowershell-interactive
     # install IIS server role
@@ -147,10 +148,10 @@ ms.lasthandoff: 04/28/2018
     # remove default htm file
      remove-item  C:\inetpub\wwwroot\iisstart.htm
     # Add a new htm file that displays server name
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
    ```
-8. 关闭与 *myVM1* 之间的 RDP 会话
-9. 重复步骤 1 到 8，在 *myVM2* 上安装 IIS。
+7. 关闭与 *myVM1* 之间的 RDP 会话
+8. 重复步骤 1 到 7，在 *myVM2* 上安装 IIS。
 
 ## <a name="create-load-balancer-resources"></a>创建负载均衡器资源
 
