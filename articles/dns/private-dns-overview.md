@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 1c805819a22d26e650d13b0e41ebac00c4e52d91
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 677fc66b66d6c17806a313f2fac3a15e8e1775ba
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261573"
 ---
 # <a name="using-azure-dns-for-private-domains"></a>将 Azure DNS 用于专用域
 域名系统（或称为 DNS）负责将服务名称转换（或解析）为其 IP 地址。 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。  除了面向 Internet 的 DNS 域之外，作为一项预览版功能，Azure DNS 现在还支持专用 DNS 域。  
@@ -54,7 +55,7 @@ Azure DNS 提供了可靠、安全的 DNS 服务来管理和解析虚拟网络�
 
 ## <a name="limitations"></a>限制
 * 每个专用区域 1 个“注册”虚拟网络
-* 每个专用区域最多 10 个“解析”虚拟网络
+* 每个专用区域最多包含 10 个解析虚拟网络
 * 一个给定的虚拟网络只能作为注册虚拟网络链接到一个专用区域
 * 一个给定的虚拟网络可以作为解析虚拟网络链接到最多 10 个专用区域
 * 如果指定了注册虚拟网络，则无法通过 Powershell/CLI/API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录，但是，VM 记录确实已注册并且会成功解析
