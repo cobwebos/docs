@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2018
+ms.date: 05/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 652f9867b7423ce4307dba1c77e8f38fcd596c67
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ec330570604494503de2fa3f5484a1e41ddf4603
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943987"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271954"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Linux 虚拟机
 
@@ -35,6 +35,7 @@ ms.locfileid: "33943987"
   - 减少对本地管理员帐户的依赖以后，就不需要担心凭据丢失/失窃、用户配置的凭据过弱，等等。
   - 针对 Azure AD 目录配置的密码复杂性和密码生存期策略也有助于维护 Linux VM 安全性。
   - 若要进一步确保 Azure 虚拟机的登录安全性，可以配置多重身份验证。
+  - 使用 Azure Active Directory 登录 Linux VM 这一功能也适用于使用[联合身份验证服务](../../active-directory/connect/active-directory-aadconnectfed-whatis.md)的客户。
 
 - **无缝协作：** 可以使用基于角色的访问控制 (RBAC)，指定能够以常规用户或管理员特权用户身份登录到给定 VM 的人员。 当用户加入或离开你的团队时，你可以更新 VM 的 RBAC 策略，根据需要授予访问权限。 与必须通过清理 VM 来删除不必要的 SSH 公钥相比，这种体验要简单得多。 员工在离开你的组织时，其用户帐户会被禁用或从 Azure AD 中删除，然后他们就再也不能访问你的资源。
 
@@ -50,7 +51,7 @@ ms.locfileid: "33943987"
 
 下面是目前（此功能的预览期间）受支持的 Azure 区域：
 
-- 所有公共的 Azure 区域
+- 所有全局 Azure 区域
 
 >[!IMPORTANT]
 > 若要使用此预览版功能，请只部署受支持的 Linux 发行版，并且只在受支持的 Azure 区域部署。 此功能在 Azure 政府版或主权云中不受支持。
@@ -167,6 +168,10 @@ Access denied
 - 验证在 SSH 提示符窗口中指定的登录名是否正确。 登录名拼写错误可能导致在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 例如，键入了 *azuresuer@contoso.onmicrosoft.com* 而非 *azureuser@contoso.onmicrosoft.com*。
 - 如果有多个用户帐户，请确保登录到 Azure AD 时在浏览器窗口中提供的用户帐户是相同的。
 - Linux 是区分大小写的操作系统。 “Azureuser@contoso.onmicrosoft.com”和“azureuser@contoso.onmicrosoft.com”是不同的，会导致不匹配。 请确保在 SSH 提示符窗口中使用正确的大小写指定 UPN。
+
+## <a name="preview-feedback"></a>预览功能反馈
+
+在 [Azure AD 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上分享此预览功能的反馈或报告使用时存在的问题
 
 ## <a name="next-steps"></a>后续步骤
 

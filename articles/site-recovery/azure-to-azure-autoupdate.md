@@ -1,23 +1,23 @@
 ---
 title: Azure 到 Azure 灾难恢复中的移动服务自动更新 | Microsoft Docs
-description: 提供移动服务自动更新概述，此服务用于通过 Azure Site Recovery 复制 Azure VM。
+description: 提供在通过 Azure Site Recovery 复制 Azure VM 时使用的移动服务自动更新概述。
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: rajanaki
-ms.openlocfilehash: 45f2e2927f699769bb385038c04d4dd23e075a9a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779631"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209825"
 ---
-# <a name="automatic-update-of-mobility-service-extension-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务扩展自动更新
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务自动更新
 
-Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增强功能，并对已知问题（如果存在）进行修复。 这就意味着，若要保持服务最新状态，需计划每月部署一次这些修补程序。 为避免产生与升级相关的开销，用户可改为选择允许 Site Recovery 管理组件更新。 如 Azure 到 Azure 灾难恢复的[体系结构参考](azure-to-azure-architecture.md)中所述，如果 Azure 虚拟机在将虚拟机从一个 Azure 区域复制到另一个 Azure 区域的同时启用了复制，则在所有此类 Azure 虚拟机上安装移动服务。 本文档详述了以下内容：
+Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增强功能，并对已知问题（如果存在）进行修复。 这就意味着，若要使服务保持最新状态，需每月计划这些修补程序的部署。 为避免产生与升级相关的开销，用户可改为选择允许 Site Recovery 管理组件更新。 如 Azure 到 Azure 灾难恢复的[体系结构参考](azure-to-azure-architecture.md)中所述，如果 Azure 虚拟机在将虚拟机从一个 Azure 区域复制到另一个 Azure 区域的同时启用了复制，则在所有此类 Azure 虚拟机上安装移动服务。 启用自动更新后，移动服务扩展将随每个新版本更新。 本文档详述了以下内容：
 
 - 自动更新的工作原理
 - 启用自动更新
@@ -26,6 +26,9 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
 ## <a name="how-does-automatic-update-work"></a>自动更新的工作原理
 
 一旦允许 Site Recovery 管理更新，则将通过自动化帐户（与保管库在同一订阅中创建）部署 Azure 服务使用的全局 runbook。 一个自动化帐户用于一个特定保管库。 runbook 检查保管库中每个已启用自动更新的 VM，并在新版本可用时启动移动服务拓展升级。 根据复制虚拟机地区的时区，runbook 默认计划在每天上午 12:00 重复。 如有必要，用户还可通过自动化帐户修改 runbook 计划。 
+
+> [!NOTE]
+> 启用自动更新不需要重新启动 Azure VM，并且不影响正在进行的复制。
 
 ## <a name="enable-automatic-updates"></a>启用自动更新
 

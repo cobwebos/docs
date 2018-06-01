@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f0604007255d829cab0502e93895ca541da3b93a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33931258"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260503"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>排查有关访问和使用“我的应用”门户的问题
 
@@ -58,10 +58,11 @@ ms.locfileid: "33931258"
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
 - **Internet Explorer 11**：在 Windows 7 或更高版本上（支持受限）。
 
-也可以直接从以下站点下载适用于 Chrome 和 Microsoft Edge 的扩展：
+还可以直接从以下站点下载扩展：
 
-- [Chrome 扩展](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Edge 扩展](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 如果已安装扩展但仍遇到问题，请尝试以下解决方法：
 
@@ -78,7 +79,7 @@ ms.locfileid: "33931258"
    4. 单击该扩展图标。
    5. 若要登录到该扩展，请选择“登录以开始使用”。
 
-* 若要从浏览器登录直接到应用，请执行以下操作：
+* 若要从浏览器直接登录到应用，请执行以下操作：
    1. 安装该扩展后，通过选择“登录以开始使用”登录到该扩展。
    2. 使用登录 URL 登录到应用。  
        登录 URL 通常是显示登录表单的应用的 URL。
