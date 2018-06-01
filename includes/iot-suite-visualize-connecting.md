@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 5eca35141544e8ea451dfc7471a83e3e1e980360
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34307611"
+---
 ## <a name="view-device-telemetry"></a>查看设备遥测数据
 
 可以在解决方案中的“设备”页上查看从设备发送的遥测数据。
@@ -24,7 +41,7 @@
 
     ![选择物理设备](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. 若要显示可对设备调用的方法列表，请选择“计划”。 若要计划要在多个设备上运行的方法，可以在列表中选择多个设备。 “计划”面板将显示普遍适用于所选择的所有设备的方法类型。
+1. 若要显示可在设备上调用的方法列表，请选择“作业”，然后选择“运行方法”。 若要计划在多个设备上运行的作业，可以在列表中选择多个设备。 “作业”面板会显示普遍适用于所有选定设备的方法类型。
 
 1. 选择 **FirmwareUpdate**，将作业名称设置为 **UpdatePhysicalChiller**。 将“固件版本”设置为 **2.0.0**，将“固件 URI”设置为 **http://contoso.com/updates/firmware.bin**，然后选择“应用”：
 
@@ -41,4 +58,4 @@
 
 ## <a name="next-steps"></a>后续步骤
 
-[自定义远程监视预配置的解决方案](../articles/iot-suite/iot-suite-remote-monitoring-customize.md)一文中介绍了自定义预配置的解决方案的一些方法。
+[自定义远程监视解决方案加速器](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md)一文中介绍了自定义解决方案加速器的一些方法。

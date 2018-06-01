@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c3b7e7178ef68475f331edf058ca0f23661af3ea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32140370"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34338867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "32140370"
 - 可以让用户使用其 Azure AD 帐户自动登录到 Adobe Sign（单一登录）
 - 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -104,7 +104,7 @@ ms.locfileid: "32140370"
     ![配置单一登录][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
 
 3. 在“Adobe Sign 域和 URL”部分中，执行以下步骤：
@@ -116,8 +116,8 @@ ms.locfileid: "32140370"
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.echosign.com`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。 
- 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。
+
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
@@ -128,15 +128,34 @@ ms.locfileid: "32140370"
 
 6. 在“Adobe Sign 配置”部分，单击“配置 Adobe Sign”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
-    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
+    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png)
 
-7. 在其他 Web 浏览器窗口中，以管理员身份登录 Adobe Sign 公司站点。
+7. 在配置之前，需要联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，以便将你的域添加到 Adobe Sign 的允许列表中。 请按照以下步骤来添加域：
 
-8. 在 SAML 菜单中，单击“帐户设置”，然后单击“SAML 设置”。
+    a. [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)将向你发送随机生成的令牌。 对于你的域，令牌将如下所示：**adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
+
+    b. 你将需要在 DNS 文本记录中发布该验证令牌并通知 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)。
+    
+    > [!NOTE]
+    > 这可能需要花费几天或更长时间。 请注意，DNS 传播延迟意味着 DNS 中发布的值可能在一小时或更长时间内不可见。 我们希望你的 IT 管理员应具备有关如何在 DNS 文本记录中发布此令牌的丰富知识。
+    
+    c. 一旦你在令牌发布后通过支持票证通知[Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，他们将验证该域并将其添加到你的帐户。
+    
+    d. 在 DNS 记录上发布该令牌时执行的常规步骤 -
+
+    * 登录到域帐户
+    * 查找用于更新 DNS 记录的页面。 此页面可能称为“DNS 管理”、“名称服务器管理”或“高级设置”。
+    * 查找你的域的 TXT 记录。
+    * 添加带有 Adobe 提供的完整令牌值的 TXT 记录。
+    * 保存所做更改。
+
+8. 在其他 Web 浏览器窗口中，以管理员身份登录 Adobe Sign 公司站点。
+
+9. 在 SAML 菜单中，单击“帐户设置”，然后单击“SAML 设置”。
    
     ![帐户](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "Account")
 
-9. 在“SAML 设置”部分执行以下步骤：
+10. 在“SAML 设置”部分执行以下步骤：
   
     ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML 设置")
    
@@ -251,7 +270,7 @@ ms.locfileid: "32140370"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -266,4 +285,3 @@ ms.locfileid: "32140370"
 [201]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_203.png
-
