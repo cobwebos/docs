@@ -7,14 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 05/09/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8d91714e6864ff0a9816f5ec518878334f6ba84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011758"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>创建、更新 Azure SQL 数据仓库中表的统计信息
 用于创建和更新 Azure SQL 数据仓库中表的查询优化统计信息的建议和示例。
@@ -22,26 +23,48 @@ ms.lasthandoff: 04/19/2018
 ## <a name="why-use-statistics"></a>为何使用统计信息？
 Azure SQL 数据仓库对数据了解得越多，其针对数据执行查询的速度就越快。 收集有关数据的统计信息，然后将其载入 SQL 数据仓库是优化查询时能够做的最重要事情之一。 这是因为，SQL 数据仓库查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划，该计划也应该是执行速度最快的计划。 例如，如果优化器估计你在查询中筛选的日期会返回一行数据，则与该优化器估计你选择的日期会返回 1 百万行数据的情况相比，其选择的计划可能会有很大的不同。
 
-目前，创建和更新统计信息只能手动进行，但操作起来很简单。  不仅之后，我们就能基于单个列和索引自动创建和更新统计信息。  使用以下信息可大大加强数据统计信息的自动化管理。 
+## <a name="automatic-creation-of-statistics"></a>自动创建统计信息
+当启用自动创建统计信息选项 AUTO_CREATE_STATISTICS 时，SQL 数据仓库将对传入用户查询进行分析，其中会为丢失统计信息的列创建单列统计信息。 查询优化器在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。 默认情况下，自动创建统计信息目前处于开启状态。
 
-## <a name="scenarios"></a>方案
-创建每个列的模板统计信息是入门的简单方式。 过期的统计信息会导致查询性能欠佳。 但是，随着数据的增长，基于所有列更新统计信息可能会消耗内存。 
+你可以通过运行以下命令检查数据仓库是否已配置此属性：
 
-下面是针对不同方案的一些建议：
-| **方案** | 建议 |
-|:--- |:--- |
-| **入门** | 迁移到 SQL 数据仓库之后更新所有列 |
-| **用于统计的最重要列** | 哈希分发键 |
-| **用于统计的第二重要列** | 分区键 |
-| **用于统计的其他重要列** | 日期、常用的 JOIN、GROUP BY、HAVING 和 WHERE |
-| **统计信息更新频率**  | 保守：每日 <br></br> 加载或转换数据之后 |
-| **采样** |  低于 10 亿行，使用默认采样 (20%) <br></br> 对于包含 10 亿行以上的表，最好是根据 2% 的范围生成统计信息 |
+```sql
+SELECT name, is_auto_create_stats_on 
+FROM sys.databases
+```
+如果数据仓库未配置 AUTO_CREATE_STATISTICS，建议通过运行以下命令启用此属性：
+
+```sql
+ALTER DATABASE <yourdatawarehousename> 
+SET AUTO_CREATE_STATISTICS ON
+```
+当检测到包含联接存在谓词时，以下语句将触发自动创建统计信息：SELECT、INSERT-SELECT、CTAS、UPDATE、DELETE 和 EXPLAIN。 
+
+> [!NOTE]
+> 不在临时或外部表上创建“自动创建统计信息”。
+> 
+
+自动创建统计信息是同步生成的，因此，如果列还没有为其创建的统计信息，则可能会导致轻微的查询性能下降。 在单个列上创建统计信息可能需要几秒钟，具体要取决于表的大小。 为了避免测量性能降低（尤其是在性能基准检验中），应确保在分析系统之前先通过执行基准检验工作负载来创建统计信息。
+
+> [!NOTE]
+> 统计信息的创建还会记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) 中。
+> 
+
+在创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 你可以通过运行以下命令查看已创建的统计信息：
+
+```sql
+DBCC SHOW_STATISTICS (<tablename>, <targetname>)
+```
 
 ## <a name="updating-statistics"></a>更新统计信息
 
 最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些操作会更改数据分布情况并使统计信息过时。 相反地，有关客户表中的国家/地区列的统计信息可能永远不需要更新，因为值的分布通常不会变化。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。 但是，如果数据仓库只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
 
-在排查查询问题时，首先要询问的问题之一就是**“统计信息是最新的吗？”**
+下面是关于更新统计信息的建议：
+
+| **统计信息更新频率** | 保守：每日 <br></br> 在加载或转换数据后 | | **采样** | 小于 10 亿行，使用默认采样率 (20%) <br></br> 对于包含 10 亿行以上的表，最好是根据 2% 的范围生成统计信息 |
+
+在排查查询问题时，首先要询问的问题之一就是 **“统计信息是最新的吗？”**
 
 此问题不可以根据数据期限提供答案。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。 如果行数有明显变化或给定列的值分布有重大变化，则需要更新统计信息。
 
