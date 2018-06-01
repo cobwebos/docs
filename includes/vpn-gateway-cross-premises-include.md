@@ -5,20 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 05/16/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fa9c27457b1da4d233aaea2a6621af9f5d01149d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 55ac7e055c972a9b18ef374ac8498b418c5d56af
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34307577"
 ---
 |  | **点到站点** | **站点到站点** | **ExpressRoute** |
 | --- | --- | --- | --- |
 | **Azure 支持的服务** |云服务和虚拟机 |云服务和虚拟机 |[服务列表](../articles/expressroute/expressroute-faqs.md#supported-services) |
-| **典型带宽** |通常 < 100 Mbps（总计） |通常 < 1 Gbps（总计） |50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、2 Gbps、5 Gbps、10 Gbps |
-| **支持的协议** |安全套接字隧道协议 (SSTP) |IPsec |通过 VLAN、NSP 的 VPN 技术（MPLS、VPLS...）直接连接 |
+| **典型带宽** |基于网关 SKU |通常 < 1 Gbps（总计） |50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、2 Gbps、5 Gbps、10 Gbps |
+| **支持的协议** |安全套接字隧道协议 (SSTP) 和 IPsec |IPsec |通过 VLAN、NSP 的 VPN 技术（MPLS、VPLS...）直接连接 |
 | **路由** |基于路由（动态） |支持基于策略（静态路由）和基于路由（动态路由 VPN） |BGP |
 | **连接复原能力** |主动-被动 |主动-被动或主动-主动 |主动-主动 |
 | **典型用例** |云服务和虚拟机的原型设计、开发/测试/实验方案 |云服务和虚拟机的开发/测试/实验方案和小规模生产工作负荷 |访问所有 Azure 服务（已验证列表）、企业级和任务关键型工作负荷、备份、大数据、Azure 即 DR 站点 |
