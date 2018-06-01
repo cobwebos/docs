@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: b964f5c127d627ede6d3ff671ac695e1b33e4558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072583"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203386"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
@@ -45,10 +45,13 @@ ms.locfileid: "34072583"
 | -------- | ---- | ------------------- | --- | --- | --- | --- |
 | 最大索引数 |3 |5 或 15 |50 |200 |200 |每个分区 1000，或者每个服务 3000 |
 | 每个索引的最大字段 |1000 |100 |1000 |1000 |1000 |1000 |
-| 每个索引的最大计分配置文件 |100 |100 |100 |100 |100 |100 |
+| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |1 |1 |1 |1 |1 |1 |
+| 每个索引的最大[计分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)数 |100 |100 |100 |100 |100 |100 |
 | 每个配置文件的最大函数数量 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> 2017 年底后创建的基本服务的上限已增大为 15 个索引、数据源和索引器。 之前创建的服务的上限为 5。 基本层是唯一具有下限（每个索引 100 个字段）的 SKU。
+
+<a name="document-limits"></a>
 
 ## <a name="document-limits"></a>文档限制 
 
@@ -94,7 +97,7 @@ ms.locfileid: "34072583"
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | 最大索引器数 |3 |5 或 15|50 |200 |200 |不适用 |
 | 最大数据源数 |3 |5 或 15 |50 |200 |200 |不适用 |
-| 最大技能集数 |3 |5 或 15 |50 |200 |200 |不适用 |
+| 最大技能集数<sup>4</sup> |3 |5 或 15 |50 |200 |200 |不适用 |
 | 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |不适用 |
 | 最长运行时间 | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |不适用  |
 | Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不适用  |
@@ -105,6 +108,8 @@ ms.locfileid: "34072583"
 <sup>2</sup> 2017 年底后创建的基本服务的上限已增大为 15 个索引、数据源和索引器。 之前创建的服务的上限为 5。
 
 <sup>3</sup> S3 HD 服务未包括索引器支持。
+
+<sup>4</sup> 每个技能集最多拥有 30 项技能。
 
 ## <a name="queries-per-second-qps"></a>每秒查询次数 (QPS)
 

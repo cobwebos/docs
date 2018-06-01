@@ -4,14 +4,15 @@ description: 介绍如何发现和评估要使用 Azure Migrate 迁移到 Azure 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 05/03/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 268ec150dbd4b15ad00a56b62b84e268c4469ebd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 695298be6cb9f56de26b8682c556285aba22d4a6
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34272057"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -84,6 +85,14 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. 生成的哈希应匹配这些设置。
+
+  适用于 OVA 版本 1.0.9.8
+
+    **算法** | **哈希值**
+    --- | ---
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
 
     适用于 OVA 版本 1.0.9.7
 

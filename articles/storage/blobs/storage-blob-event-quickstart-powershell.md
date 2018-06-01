@@ -8,11 +8,12 @@ ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 6d7ccd94243d7064008197518f6194d5837b17be
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9ea51f6ea55c62fdd01efb155d26fade3941ce41
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261432"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>使用 PowerShell 将 Blob 存储事件路由到自定义 Web 终结点
 
@@ -21,7 +22,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 为了简化本文中的示例，将事件发送到仅收集消息的 URL。 可以使用 [Hookbin](https://hookbin.com/) 提供的第三方工具创建此 URL。
 
 > [!NOTE]
-> **Hookbin** 不应在高吞吐量方案中使用。 使用此工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
+> **Hookbin** 不应在高吞吐量方案中使用。 使用此工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。 此外，请记住，Hookbin 通过 Azure 事件网格获取[特殊处理](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid#create-a-requestbin-endpoint)。 为便于测试，事件网格会将事件发送到那里，且无需正确响应订阅验证请求（[否则](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#validation-details)会发生什么）。
 
 完成本文所述步骤后，即可看到事件数据已发送到某个终结点。
 

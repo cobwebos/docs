@@ -9,23 +9,24 @@ editor: ''
 ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4987cc271a3e3d8a1a69c4c7fbd213d73ca2eb96
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9a7ab3881cd1058a60ff7d5f6e50c296f042e76e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206073"
 ---
 # <a name="deploy-multiple-guest-executables"></a>部署多个来宾可执行文件
 本文介绍了如何将多个来宾可执行文件打包并部署到 Azure Service Fabric。 要生成并部署单个 Service Fabric 包，请参阅如何[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md)。
 
 虽然本演练演示的是如何部署将 MongoDB 用作数据存储并具有 Node.js 前端的应用程序，但是可以将这些步骤套用于任何与另一个应用程序具有依赖关系的应用程序。   
 
-可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 请参阅[使用 Visual Studio 打包现有应用程序](service-fabric-deploy-existing-app.md)。 添加第一个来宾可执行文件后，右键单击应用程序项目，并依次选择**“添加”->“新建 Service Fabric 服务”**，将第二个来宾可执行文件项目添加到解决方案中。 请注意，如果选择在 Visual Studio 项目中链接源，在生成的 Visual Studio 解决方案中可确保应用程序包与源中的更改保持同步。 
+可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 请参阅[使用 Visual Studio 打包现有应用程序](service-fabric-deploy-existing-app.md)。 添加第一个来宾可执行文件后，右键单击应用程序项目，并依次选择 **“添加”->“新建 Service Fabric 服务”**，将第二个来宾可执行文件项目添加到解决方案中。 请注意，如果选择在 Visual Studio 项目中链接源，在生成的 Visual Studio 解决方案中可确保应用程序包与源中的更改保持同步。 
 
 ## <a name="samples"></a>示例
 * [打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -203,7 +204,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-将应用程序成功发布到本地群集之后，便可以在我们在 Node.js 应用程序的服务清单中输入的端口（例如 http://localhost:3000 ）上访问 Node.js 应用程序。
+将应用程序成功发布到本地群集之后，便可以在我们在 Node.js 应用程序的服务清单中输入的端口（例如 http://localhost:3000）上访问 Node.js 应用程序。
 
 在本教程中，学习了如何轻松地将两个现有应用程序打包成一个 Service Fabric 应用程序。 你也了解了如何将其部署到 Service Fabric，以便让它能够从一些 Service Fabric 功能（例如高可用性和运行状况系统整合）中获益。
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8dbe995ac3c6799c2fa17d9faa8be0cb74d6ee23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258991"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -804,20 +805,13 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 * 以前存在的，审核日志在位于欧盟的 Azure AD 租户中不显示的问题现已得到解决。 但是，需要对欧盟的 Azure AD 租户进行附加的代理配置。 有关详细信息，请参阅[第 3 部分：配置本地同步代理](#Part 3: Configure the on-premises synchronization agent)
 
-## <a name="gdpr-compliance"></a>GDPR 符合性
+## <a name="gdpr-information"></a>GDPR 信息
 
 [一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 针对向欧盟居民提供产品及服务，或收集和分析欧盟居民相关信息的公司、政府机构、非营利组织和其他组织制定了规则。 
 
-Azure AD 预配服务与 Microsoft 的其他服务和功能一样，都符合 GDPR。 若要详细了解 Microsoft 的 GDPR 案例，请参阅[服务条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)。
+若要详细了解 Microsoft 的 GDPR 案例，请参阅[服务条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)。
 
-但是，由于 Active Directory 的 Workday 预配解决方案需要在加入域的服务器上安装同步代理，因此需要监视某些事件以保证符合 GDPR。
- 
-此代理在 Windows 事件日志中创建日志，其中可以包含个人身份信息。
-
-以下是保证符合 GDPR 的两种方式：
-
-1. 根据请求提取用户的数据，并从 Windows 事件日志项中删除该用户的数据。 
-2. 将源自 AADSyncAgent 进程的 Windows 事件日志保留时间控制在 48 小时以内
+请注意，Active Directory 的 Workday 预配解决方案需要在加入域的服务器上安装同步代理，并且此代理会在 **Windows 事件日志**中创建可包含个人身份信息的日志。
 
 有关如何为 Windows 事件日志配置数据保留的详细信息，请参阅[事件日志的设置](https://technet.microsoft.com/library/cc952132.aspx)。 有关 Windows 事件日志的常规信息，请参阅[本文](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx)。
 
@@ -827,4 +821,3 @@ Azure AD 预配服务与 Microsoft 的其他服务和功能一样，都符合 GD
 * [了解如何查看日志并获取有关预配活动的报告](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
 * [了解如何在 Workday 和 Azure Active Directory 之间配置单一登录](active-directory-saas-workday-tutorial.md)
 * [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](active-directory-saas-tutorial-list.md)
-
