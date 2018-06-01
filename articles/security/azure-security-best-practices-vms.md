@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e0c823982bb799e324dc6fb0fb811fd9ace37878
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160540"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364397"
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM 安全最佳做法
 
@@ -69,7 +69,7 @@ ms.locfileid: "34160540"
 
 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)还要求负载均衡 VM 属于同一可用性集。 如果必须通过 Internet 访问 VM，则必须配置[面向 Internet 的负载均衡器](../load-balancer/load-balancer-internet-overview.md)。
 
-对 Internet 公开 VM 后，请务必[使用网络安全组 (NSG) 控制网络流量](../virtual-network/virtual-networks-nsg.md)。 由于 NSG 可以应用于子网，因此可以通过按子网来组合资源以及将 NSG 应用到子网来尽量减少 NSG 的数量。 其目的是创建一个网络隔离层（可通过在 Azure 中正确配置[网络安全](../best-practices-network-security.md)功能来适当实现）。
+对 Internet 公开 VM 后，请务必[使用网络安全组 (NSG) 控制网络流量](../virtual-network/security-overview.md)。 由于 NSG 可以应用于子网，因此可以通过按子网来组合资源以及将 NSG 应用到子网来尽量减少 NSG 的数量。 其目的是创建一个网络隔离层（可通过在 Azure 中正确配置[网络安全](../best-practices-network-security.md)功能来适当实现）。
 
 还可在 Azure 安全中心使用适时 (JIT) VM 访问功能来控制谁可远程访问特定 VM 及其访问持续时间。
 
@@ -125,6 +125,6 @@ Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新�
 
 通过分析 [Azure 诊断日志文件](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)，可以监视 VM 资源并识别可能会损害性能与可用性的潜在问题。 Azure 诊断扩展在基于 Windows 的 VM 上提供监视和诊断功能。 在 [Azure 资源管理器模板](../virtual-machines/windows/extensions-diagnostics-template.md)中包含该扩展即可启用这些功能。
 
-还可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) 来洞察资源的运行状况。
+还可使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) 来洞察资源的运行状况。
 
 不监视 VM 性能的组织无法确定性能模式的某些变化是正常还是异常。 如果 VM 消耗的资源超过平常，这种异常可能意味着存在来自外部资源的潜在攻击，或者此 VM 中有不安全的进程正在运行。
