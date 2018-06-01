@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD B2C 中使用年龄门控 | Microsoft Docs
-description: 了解如何标识使用应用程序的未成年人。
+title: 在 Azure AD B2C 中使用年龄限制 | Microsoft Docs
+description: 学习如何辨别使用应用程序的未成年人。
 services: active-directory-b2c
 documentationcenter: ''
 author: davidmu1
@@ -18,7 +18,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 05/17/2018
 ms.locfileid: "34261276"
 ---
-#<a name="using-age-gating-in-azure-ad-b2c"></a>在 Azure AD B2C 中使用年龄门控
+#<a name="using-age-gating-in-azure-ad-b2c"></a>在 Azure AD B2C 中使用年龄限制
 
 >[!IMPORTANT]
 >此功能在个人预览版中提供。  当此功能变得可用时，请参阅我们的[服务博客](https://blogs.msdn.microsoft.com/azureadb2c/)了解详细信息，或联系 AADB2CFeedback@microsoft.com。在我们正式发布前，请勿将此功能用于生产目录，使用这些新功能可能会导致数据丢失，并可能会出现意外的行为更改。  
