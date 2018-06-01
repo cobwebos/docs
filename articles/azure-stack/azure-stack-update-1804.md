@@ -1,6 +1,6 @@
 ---
-title: Azure 堆栈 1804年更新 |Microsoft 文档
-description: 了解什么是 Azure 堆栈 1804年更新中集成的系统、 已知的问题和下载更新的位置。
+title: Azure Stack 1804 更新 | Microsoft Docs
+description: 了解 Azure Stack 集成系统 1804 更新的功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,38 +12,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: a7ba5f1947da09177e7d2d9d0e9e926d858dff7e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2c2813a7f2d909a23c8f5d4f5ac0280b3f932ba6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34700118"
 ---
-# <a name="azure-stack-1804-update"></a>Azure 堆栈 1804年更新
+# <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新
 
 *适用于：Azure Stack 集成系统*
 
-本文介绍改进和 1804年更新包的已知问题有关此版本中，以及在何处下载此更新中修复。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
+本文介绍了 1804 更新包中的改进与修复、此版本的已知问题，以及更新的下载位置。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]        
 > 此更新包仅适用于 Azure Stack 集成系统。 请勿将此更新包应用于 Azure Stack 开发工具包。
 
 ## <a name="build-reference"></a>内部版本参考    
-Azure 堆栈 1804年更新生成号是**20180513.1**。   
+Azure Stack 1804 更新内部版本号为 **20180513.1**。   
 
 ### <a name="new-features"></a>新增功能
-此更新包括针对 Azure 堆栈的以下改进。
+此更新包含对 Azure Stack 的以下改进。
 
 - <!-- 15028744 - IS -->  **Visual Studio support for disconnected Azure Stack deployments using AD FS**. Within Visual Studio you now can add subscriptions and authenticate using AD FS federated User credentials. 
  
 - <!-- 1779474, 1779458 - IS --> **Use Av2 and F series virtual machines**. Azure Stack can now use virtual machines based on the Av2-series and F-series virtual machine sizes. For more information see [Virtual machine sizes supported in Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes). 
 
-- <!-- 1759172 - IS, ASDK --> **More granular administrative subscriptions**. With version 1804 and later, the Default Provider subscription is now complemented with two additional subscriptions. The additions facilitate separating the management of core infrastructure, additional resource providers, and workloads. The following three subscriptions are available after the update installs:
-  - *默认提供程序订阅*。 使用此订阅的核心基础结构。 不要部署资源或资源提供程序在此订阅上。
-  - *计数订阅*。 资源提供程序部署中使用此订阅。 在此订阅上部署的资源不会收费。
-  - *消耗订阅*。 为你想要部署的任何其他工作负载使用此订阅。 此处部署资源的费率收取正常使用价格。
+- <!-- 1759172 - IS, ASDK --> **New administrative subscriptions**. With 1804 there are two new subscription types available in the portal. These new subscription types are in addition to the Default Provider subscription and visible with new Azure Stack installations beginning with version 1804. *Do not use these new subscription types with this version of Azure Stack*. We will announce the availability to use these subscription types in with a future update. 
+
+  如果你更新到版本 1804 Azure 堆栈，则两个新的订阅类型不可见。 但是，Azure 堆栈的新部署集成系统，并且 Azure 堆栈开发工具包版本 1804年或更高版本的安装有权访问所有三个订阅类型。  
+
+  这些新的订阅类型是更改的更大，若要保护的默认提供程序订阅，并以使其更轻松地部署共享的资源，如 SQL 托管服务器的一部分。 我们将此更大的更改以及将来的更新的更多部件添加到 Azure 堆栈时，部署在这些新的订阅类型下的资源可能会丢失。 
+
+  现在可见的三个订阅类型包括：  
+  - 默认提供程序订阅： 继续同时使用这种订阅类型。 
+  - 计数订阅：*不使用此订阅类型。*
+  - 消耗订阅：*不使用此订阅类型*
+
+  
+
 
 
 ## <a name="fixed-issues"></a>修复的问题
@@ -56,35 +66,46 @@ Azure 堆栈 1804年更新生成号是**20180513.1**。
 
 - 针对性能、稳定性、安全性以及 Azure Stack 所用操作系统的**各种修复**。
 
-## <a name="additional-releases-timed-with-this-update"></a>利用此更新已超时的其他发行版本  
-以下现已提供，但不需要 Azure 堆栈更新 1804年。
-- **更新到 Microsoft Azure 堆栈 System Center Operations Manager 监视包**。 Microsoft System Center Operations Manager 监视包 Azure 堆栈的新版本 (1.0.3.0) 是可用于[下载](https://www.microsoft.com/download/details.aspx?id=55184)。 对于此版本，你可以添加连接的 Azure 堆栈部署时使用服务主体。 此版本还提供了允许你采取修正措施直接从 Operations Manager 中的更新管理体验。 也有显示资源提供程序、 缩放单位，和缩放单元节点的新仪表板。
+## <a name="additional-releases-timed-with-this-update"></a>随此更新一起推出的其他发行版  
+以下版本现在可用，但不需要 Azure Stack 更新 1804。
+- **更新到 Microsoft Azure 堆栈 System Center Operations Manager 监视包**。 适用于 Azure Stack 的 Microsoft System Center Operations Manager 监视包的新版本 (1.0.3.0) 已可供[下载](https://www.microsoft.com/download/details.aspx?id=55184)。 使用此版本，可以在添加连接的 Azure Stack 部署时使用服务主体。 此版本还提供更新管理体验，可让你直接从 Operations Manager 中执行修正操作。 还有新的仪表板，用于显示资源提供程序、缩放单元和缩放单元节点。
 
-- **新的 Azure 堆栈管理员 PowerShell 版本 1.3.0**。  Azure 堆栈 PowerShell 1.3.0 现已可供安装。 此版本提供了所有的管理资源提供程序来管理 Azure 堆栈的命令。  此版本中，将从 Azure 堆栈工具 GitHub 弃用某些内容[存储库](https://github.com/Azure/AzureStack-Tools)。 
+- **新的 Azure Stack 管理 PowerShell 版本 1.3.0**。  Azure Stack PowerShell 1.3.0 现已可供安装。 此版本针对所有管理资源提供程序提供了用来管理 Azure Stack 的命令。  在此版本中，某些内容将从 Azure Stack 工具 GitHub [存储库](https://github.com/Azure/AzureStack-Tools)中弃用。 
 
-   安装详细信息，请按照[说明](azure-stack-powershell-install.md)或[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0)Azure 堆栈模块 1.3.0 内容。 
+   有关安装的详细信息，请遵循 Azure Stack 模块 1.3.0 的[说明](azure-stack-powershell-install.md)或[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0)内容。 
 
-- **初始版本的 Azure 堆栈 API Rest 参考**。 [所有 Azure 堆栈管理员资源提供程序的 API 参考](https://docs.microsoft.com/rest/api/azure-stack/)现已发布。 
+- **Azure Stack API Rest 参考的初始版本**。 [所有 Azure Stack 管理资源提供程序的 API 参考](https://docs.microsoft.com/rest/api/azure-stack/)现已发布。 
 
 
 ## <a name="before-you-begin"></a>开始之前    
 
 ### <a name="prerequisites"></a>必备组件
-- 安装 Azure 堆栈[1803年更新](azure-stack-update-1803.md)应用 Azure 堆栈 1804年更新前。    
+- 在应用 Azure Stack 1804 更新之前安装 Azure Stack [1803 更新](azure-stack-update-1803.md)。    
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题   
-- 在安装期间 1804年更新，你可能会看到警报标题*错误 – FaultType UserAccounts.New 模板是缺失。*  你可以放心地忽略这些警报。 对 1804年更新完成后，这些警报将自动关闭。   
+- 在安装期间 1804年更新，你可能会看到警报标题*错误 – FaultType UserAccounts.New 模板是缺失。*  可以放心地忽略这些警报。 更新到 1804 后，这些警报将自动关闭。   
  
 - <!-- TBD - IS --> Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](azure-stack-updates.md#plan-for-updates).
+
+
 ### <a name="post-update-steps"></a>更新后步骤
-*有更新 1804年无更新后的步骤。*
+*对于 1804 更新，更新后不需要执行任何步骤。*
 
 
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
-以下是安装后的生成的已知的问题**20180513.1**。
+下面是内部版本 **20180513.1** 的安装后已知问题。
 
 #### <a name="portal"></a>门户
+- <!-- 1272111 - IS --> After you install or update to this version of Azure Stack, you might not be able to view Azure Stack scale units in the Admin portal.  
+  解决方法： 使用 PowerShell，若要查看有关扩展单位的信息。 有关详细信息，请参阅[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0)Azure 堆栈模块 1.3.0 内容。 
+
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  解决方法： 若要解决此问题，在安装此更新后，使用从步骤 3[触发器的自动化功能来配置声明提供方信任 Azure 堆栈中的](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程重新设置默认提供程序订阅的所有者。   
+
+- <!-- TBD - IS ASDK --> Some administrative subscription types are not available.  When you upgrade Azure Stack to this version, the two subscription types that were [introduced with version 1804](#new-features) are not visible in the console. This is expected. The unavailable subscription types are *Metering subscription*, and *Consumption subscription*. These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the *Default Provider* subscription type.  
+
+
 - <!-- TBD -  IS ASDK -->The ability [to open a new support request from the dropdown](azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn’t available. Instead, use the following link:     
     - 对于 Azure Stack 集成系统，请使用 https://aka.ms/newsupportrequest。
 
@@ -105,11 +126,29 @@ Azure 堆栈 1804年更新生成号是**20180513.1**。
   可以放心地忽略此警报。 
 
 
+#### <a name="health-and-monitoring"></a>运行状况和监视
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   警报 # 1:
+   - 名称： 基础结构角色不正常
+   - 严重性： 警告
+   - 组件： 运行状况控制器
+   - 描述： 检测信号扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。  
+
+  警报 # 2:
+   - 名称： 基础结构角色不正常
+   - 严重性： 警告
+   - 组件： 运行状况控制器
+   - 描述： 错误扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。
+
+  可放心忽略这两个警报。 它们将自动关闭随着时间的推移。  
+ 
+
 #### <a name="compute"></a>计算
 - <!-- TBD - IS --> When selecting a virtual machine size for a virtual machine deployment, some F-Series VM sizes are not visible as part of the size selector when you create a VM. The following VM sizes do not appear in the selector: *F8s_v2*, *F16s_v2*, *F32s_v2*, and *F64s_v2*.  
-  解决方法是，使用以下方法之一部署 VM。 在每个方法中，你需要指定你想要使用的 VM 大小。
+  解决方法是，使用下列方法之一部署 VM。 在每种方法中，都需要指定要使用的 VM 大小。
 
-  - **Azure 资源管理器模板：** 时使用模板时，将设置*vmSize*模板等于所需的 VM 大小中。 例如，以下用于部署的 VM，使用*F32s_v2*大小：  
+  - **Azure 资源管理器模板：** 使用模板时，请将模板中的 *vmSize* 设置为所需的 VM 大小。 例如，以下内容用来部署使用 *F32s_v2* 大小的 VM：  
 
     ```
         "properties": {
@@ -117,16 +156,16 @@ Azure 堆栈 1804年更新生成号是**20180513.1**。
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI:** 可以使用[az vm 创建](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create)命令并作为参数，类似于指定的 VM 大小`--size "Standard_F32s_v2"`。
+  - **Azure CLI：** 可以使用 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) 命令并将 VM 大小指定为参数，类似于 `--size "Standard_F32s_v2"`。
 
-  - **PowerShell:** 使用 PowerShell 可以使用[新建 AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0)与参数中指定的 VM 大小，类似于`-VMSize "Standard_F32s_v2"`。
+  - **PowerShell：** 通过 PowerShell，可以将 [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) 与指定了 VM 大小的参数一起使用，类似于 `-VMSize "Standard_F32s_v2"`。
 
 
 - <!-- TBD - IS ASDK --> Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
 
 - <!-- TBD - IS --> When you create an availability set in the portal by going to **New** > **Compute** > **Availability set**, you can only create an availability set with a fault domain and update domain of 1. As a workaround, when creating a new virtual machine, create the availability set by using PowerShell, CLI, or from within the portal.
 
-- <!-- TBD - IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a DS series VM. DS series VMs can accommodate as many data disks as the Azure configuration.
+- <!-- TBD - IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a D series VM. All supported D series VMs can accommodate as many data disks as the Azure configuration.
 
 - <!-- TBD - IS ASDK --> When a VM image fails to be created, a failed item that you cannot delete might be added to the VM images compute blade.
 
@@ -150,7 +189,7 @@ Azure 堆栈 1804年更新生成号是**20180513.1**。
 
 - <!-- 2292271 - IS ASDK --> If you raise a Quota limit for a Network resource that is part of an Offer and Plan that is associated with a tenant subscription, the new limit is not applied to that subscription. However, the new limit does apply to new subscriptions that are created after the quota is increased. 
 
-  若要解决此问题，请使用外接程序计划来提高网络配额时该计划已与订阅相关联。 有关详细信息，请参阅如何[提供外接程序计划](azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available)。
+  当计划已与某个订阅相关联时，若要解决此问题，请使用加载项计划来增大网络配额。 有关详细信息，请参阅如何[提供加载项计划](azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available)。
 
 - <!-- 2304134 IS ASDK --> You cannot delete a subscription that has DNS Zone resources or Route Table resources associated with it. To successfully delete the subscription, you must first delete DNS Zone and Route Table resources from the tenant subscription. 
   
@@ -234,28 +273,28 @@ Azure 堆栈 1804年更新生成号是**20180513.1**。
 > [!NOTE]  
 > <!-- TBD - IS --> After you update to Azure Stack 1804, you can continue to use the SQL and MySQL resource providers that you previously deployed.  We recommend you update SQL and MySQL when a new release becomes available. Like Azure Stack, apply updates to SQL and MySQL resource providers sequentially.  For example, if you use version 1802, first apply version 1803, and then update to 1804.      
 >   
-> 更新 1804年安装不影响当前使用的 SQL 或 MySQL 资源提供程序由你的用户。
+> 安装更新 1804 不会影响用户当前对 SQL 或 MySQL 资源提供程序的使用。
 > 不管所用资源提供程序的版本如何，在其数据库中的用户数据不会受到影响，仍然可用。    
 
 
 
 #### <a name="app-service"></a>应用服务
-- <!-- TBD - IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
+- <!-- 2352906 - IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
 
 - <!-- TBD - IS ASDK --> In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
 
+- <!-- TBD - IS ASDK --> App Service can only be deployed into the **Default Provider Subscription** at this time.  In a future update App Service will deploy into the new Metering Subscription introduced in Azure Stack 1804 and all existing deployments will be migrated to this new subscription also.
 
 #### <a name="usage"></a>使用情况  
 - <!-- TBD - IS ASDK --> Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
 
 
 <!-- #### Identity -->
-<!-- #### Health and monitoring --> 
 <!-- #### Marketplace --> 
 
 
 ## <a name="download-the-update"></a>下载更新
-你可以下载 Azure 堆栈 1804年更新包从[此处](https://aka.ms/azurestackupdatedownload)。
+可从[此处](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1804 更新包。
 
 
 ## <a name="see-also"></a>另请参阅
