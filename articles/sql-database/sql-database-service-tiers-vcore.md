@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 1424ae2d9ffe7308fe85b7eb8ed6b0062d59ce31
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9abe7743906064d182453fea403ff94a097c3558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057915"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212375"
 ---
 # <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>Azure SQL 数据库的基于 vCore 的购买模型（预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "34057915"
 |**购买模型**|**说明**|**最适用于**|
 |---|---|---|
 |基于 DTU 的模型|此模型基于计算、存储和 IO 资源的捆绑度量。 单一数据库的性能级别以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU 和 eDTU？](sql-database-what-is-a-dtu.md)|最适合希望获得简单预配置资源选项的客户。| 
-|基于 vCore 的模型|此模型允许单独缩放计算和存储资源。 此外，它还允许使用面向 SQL Server 的 Azure 混合权益来节省成本。|最适合注重灵活性、控制度和透明度的客户。|
+|基于 vCore 的模型|此模型允许单独缩放计算和存储资源，最高可达 80 个 vCore，4 TB 的数据存储和 200000 IOPS。 此外，它还允许使用面向 SQL Server 的 Azure 混合权益来节省成本。|最适合注重灵活性、控制度和透明度的客户。|
 ||||  
 
 ![定价模型](./media/sql-database-service-tiers/pricing-model.png)
@@ -66,10 +66,10 @@ ms.locfileid: "34057915"
 ||**常规用途**|**业务关键**|
 |---|---|---|
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。|IO 要求高的业务应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|
-|计算|1 到 16 个 vCore|1 到 16 个 vCore|
+|计算|1 到 80 个 vCore，第 4 代和第 5 代 |1 到 80 个 vCore，第 4 代和第 5 代|
 |内存|每个核心 7 GB |每个核心 7 GB |
-|存储|高级远程存储，5 GB – 4 TB|本地 SSD 存储，5 GB – 1 TB|
-|IO 吞吐量（近似）|每个 vCore 提供 500 IOPS，最大 7500 IOPS|每个核心提供 5000 IOPS|
+|存储|高级远程存储，5 GB – 4 TB|本地 SSD 存储，5 GB – 4 TB|
+|IO 吞吐量（近似）|每个 vCore 提供 500 IOPS，最大 7000 IOPS|每个 vCore 提供 5000 IOPS，最大 200000 IOPS|
 |可用性|1 个副本，无读取缩放组|3 个副本，1 个[读取缩放](sql-database-read-scale-out.md)组，区域冗余高可用性|
 |备份|RA-GRS，7-35 天（默认为 7 天）|RA-GRS，7-35 天（默认为 7 天）*|
 |内存中|不适用|支持|

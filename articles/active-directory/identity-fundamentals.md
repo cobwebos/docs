@@ -13,11 +13,12 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3603a1e91bc6bcf8a472b41bb0d0a276bf231d7c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302852"
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure 标识管理基础知识
 
@@ -30,17 +31,17 @@ Azure AD Premium 是基于云的标识和访问管理解决方案，提供的高
 请观看以下短视频，快速了解 Azure AD 标识管理和保护：
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]
 
-Microsoft 不仅提供各处通用的标识，而且提供一套可以在组织中实现 IT 自动化、确保 IT 安全性以及进行 IT 管理的工具。 即使在出现云计算以后，也仍然需要管理和控制各种 IT 任务，例如通过呼叫支持人员来重置用户密码、进行用户组管理，以及提出应用程序请求。 让情况更为复杂的是，员工现在会将其个人设备带到工作中，并且会使用随时可用的 SaaS 应用程序。 这就使得跨公司数据中心和公有云平台维持对应用程序的控制极具挑战性。
+Microsoft 不仅提供各处通用的标识，而且提供一套可以在组织中实现 IT 自动化、确保 IT 安全性以及进行 IT 管理的工具。 即使在出现云计算以后，也仍然需要管理和控制各种 IT 任务，例如通过呼叫支持人员来重置用户密码、进行用户组管理，以及提出应用程序请求。 让事情变得更加复杂的是，员工们现在将他们的个人设备带到了工作中，并使用现成的 SaaS 应用程序，这使得在公司数据中心和公共云平台上保持对其应用程序的控制成为一项重大挑战。
 
 [!INCLUDE [identity](../../includes/azure-ad-licenses.md)]
 
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>通过 Azure AD 和 Office 365 连接本地 Active Directory
-对本地 Active Directory 进行了大量投资的组织可以将这些投资扩展到云，只需将其本地目录和 Azure AD 集成到[混合标识管理](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview)中即可。 这样做可以为用户提供一个通用标识，用于访问各个位置的资源，从而提高工作效率。 因此，用户和组织可以使用单一登录 (SSO) 来访问本地资源和云服务（例如 Office 365）。
+对本地 Active Directory 进行了大量投资的组织可以将这些投资扩展到云，只需将其本地目录和 Azure AD 集成到[混合标识管理](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview)中即可。 这样做可以为用户提供一个通用标识，用于访问各个位置的资源，从而提高工作效率。 然后，用户和组织可以使用单一登录 (SSO) 来访问本地资源和云服务（例如 Office 365）。
 
 若要完成集成，只需使用 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 工具。 Azure AD Connect 提供满足标识同步需求的功能，并替换旧版标识集成工具（例如 DirSync 和 Azure AD Sync）。有了 Azure AD Connect，即可通过以下方式进行标识管理并在本地和 Azure AD 之间实现同步：
 
 - 同步 - 此组件负责创建用户、组和其他对象。 它还负责确保本地用户和组的标识信息与云匹配。 也可启用密码写回，这样当用户在 Azure AD 中更新其密码时，就能保持本地目录同步。
-- AD FS - 联合身份验证是 Azure AD Connect 提供的可选功能，可用于通过本地 AD FS 基础结构配置混合环境。 组织可以使用联合身份验证来解决复杂的部署，例如单一登录、实施 AD 登录策略和智能卡或第三方 MFA。
+- AD FS - 联合身份验证是 Azure AD Connect 提供的可选功能，可用于通过本地 AD FS 基础结构配置混合环境。 组织可以使用联合身份验证来解决复杂的部署，例如智能卡或第三方 MFA。
 - 运行状况监视 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health) 提供可靠监视，并在 Azure 门户中提供一个中心位置，用于查看此活动。
 
 ## <a name="increase-productivity-and-reduce-helpdesk-costs-with-self-service-and-single-sign-on-experiences"></a>通过自助服务和单一登录体验提高工作效率，降低支持人员成本

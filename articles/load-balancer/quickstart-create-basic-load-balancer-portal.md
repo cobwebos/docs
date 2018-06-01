@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 610aa8d5652b89f36aeb2a6ae517d378c5bfa666
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304872"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共基本负载均衡器
 
@@ -194,4 +195,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，我们创建了资源组、网络资源和后端服务器。 然后使用这些资源创建了负载均衡器。 若要详细了解负载均衡器及其关联的资源，请继续阅读教程文章。
+在本快速入门中，我们创建了资源组、网络资源和后端服务器。 然后使用这些资源创建基本负载均衡器。 若要了解有关 Azure 负载均衡器的详细信息，请继续学习 Azure 负载均衡器教程。
+
+> [!div class="nextstepaction"]
+> [Azure 负载均衡器教程](tutorial-load-balancer-basic-internal-portal.md)

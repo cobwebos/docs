@@ -9,22 +9,18 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: heidist
-ms.openlocfilehash: ea05cd34e5ba3f55b2f5400f1252f729401c5d6a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 722f1eb989fb8c160def4024b1aa967a47b87697
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203863"
 ---
 # <a name="create-an-azure-search-index-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 搜索索引
-> [!div class="op_single_selector"]
-> * [概述](search-what-is-an-index.md)
-> * [门户](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
-> 
-> 
 
 使用 Azure 门户中内置的索引设计器创建要在 Azure 搜索服务上运行的[搜索索引](search-what-is-an-index.md)或构建其原型。 
+
+也可使用 [.NET](search-create-index-dotnet.md) 或 [REST](search-create-index-rest-api.md) API 创建索引。
 
 ## <a name="prerequisites"></a>先决条件
 

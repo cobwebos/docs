@@ -1,6 +1,6 @@
 ---
-title: Azure 保留 VM 实例 Windows 软件成本 | Microsoft Docs
-description: 了解预订虚拟机实例成本中不包含哪些 Windows 软件计量。
+title: Azure 预留实例 Windows 软件成本 - Azure 计费 | Microsoft Docs
+description: 了解 Azure 虚拟机预留实例成本中不包含哪些 Windows 软件计量。
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/03/2017
+ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 20fd3c6c118b33ca91d717d30d77bb9c7843f4e6
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b526ca578a72d7d35fb4198affeb02db4d308b20
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303345"
 ---
-# <a name="windows-software-costs-not-included-with-reserved-instances"></a>保留实例未包含的 Windows 软件成本
+# <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>Azure 预留实例未包含的 Windows 软件成本
 
 如果你对预订实例虚拟机没有 Azure 混合使用权益，则会针对以下部分中列出的 Windows 软件计量向你收取费用。
 
@@ -52,11 +53,18 @@ ms.lasthandoff: 05/04/2018
 可以通过 Azure RateCard API 来获取上述每个计量的成本。 有关如何获取 azure 计量的费率的信息，请参阅[获取 Azure 订阅中使用的资源的价格和元数据信息](https://msdn.microsoft.com/library/azure/mt219004)。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关预订虚拟机实例的详细信息，请参阅以下文章。
+若要了解有关 Azure 预留实例的详细信息，请参阅以下文章：
 
-- [通过预订 VM 实例预付虚拟机](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [管理预订虚拟机实例](billing-manage-reserved-vm-instance.md)
-- [通过预订虚拟机实例节省虚拟机资金](billing-save-compute-costs-reservations.md)
-- [了解如何应用预订虚拟机实例折扣](billing-understand-vm-reservation-charges.md)
+- [通过 Azure 预留实例节省虚拟机资金](billing-save-compute-costs-reservations.md)
+- [通过预留实例为虚拟机预付资金](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [管理预留实例](billing-manage-reserved-vm-instance.md)
+- [了解如何应用预留实例折扣](billing-understand-vm-reservation-charges.md)
 - [了解即用即付订阅的预订实例使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业许可登记表的预订实例使用情况](billing-understand-reserved-instance-usage-ea.md)
+
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+
+如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+
+
+
