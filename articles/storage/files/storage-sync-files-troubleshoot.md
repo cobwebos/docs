@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 8526918630189824e26b95df7f0560c96392e55d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010918"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213259"
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>对 Azure 文件同步（预览版）进行故障排除
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -155,7 +155,7 @@ Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -Vo
     2. 验证 Azure 文件同步服务是否正在服务器上运行。 为此，请打开服务 MMC 管理单元，然后验证存储同步代理服务 (FileSyncSvc) 是否正在运行。
 
 <a id="replica-not-ready"></a>**同步失败，并出现以下错误：“0x80c8300f - 副本未准备就绪，无法执行所需的操作”**  
-如果创建云终结点并使用包含数据的 Azure 文件共享，则可能会出现此问题。 在 Azure 文件共享上完成更改检测作业后（最长可能需要 24 小时），同步应会开始正常工作。
+如果创建云终结点并使用包含数据的 Azure 文件共享，则可能会出现此问题。 扫描 Azure 文件共享中更改的更改检测作业计划为每 24 小时执行一次。  完成时间取决于 Azure 文件共享中命名空间的大小。  完成后，此错误应会得到解决。
 
 
     > [!NOTE]

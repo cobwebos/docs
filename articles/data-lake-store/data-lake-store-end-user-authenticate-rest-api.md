@@ -1,23 +1,22 @@
 ---
-title: "最终用户身份验证：通过 Azure Active Directory 将 REST API 与 Data Lake Store 配合使用 | Microsoft Docs"
-description: "了解如何使用 REST API 通过 Azure Active Directory 进行 Data Lake Store 最终用户身份验证"
+title: 最终用户身份验证：通过 Azure Active Directory 将 REST API 与 Data Lake Store 配合使用 | Microsoft Docs
+description: 了解如何使用 REST API 通过 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 5ee13756e4276055a8c9bdd9642d0766c3ca7e5c
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 7bebe1948d26b26716262cafb92e3563f5c6b349
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198946"
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-rest-api"></a>使用 REST API 进行 Data Lake Store 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -30,7 +29,7 @@ ms.lasthandoff: 01/10/2018
 
 本文介绍如何使用 REST API 执行 Azure Data Lake Store 最终用户身份验证。 有关使用 REST API 的 Data Lake Store 服务到服务身份验证，请参阅[使用 REST API 通过 Data Lake Store 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-rest-api.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 

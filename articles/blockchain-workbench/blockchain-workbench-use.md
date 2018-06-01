@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/26/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 35a45947c2766ccc5e64f4c3523ce163a9680680
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: b15d4980875b805b49f7dc1cdb941e607232f3cb
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258033"
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中使用应用程序
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="create-new-contract"></a>创建新合同 
 
-若要创建新合同，你需要是 **AllowedInstanceRoles** 角色的成员。 
+若要创建新合同，需要成为指定为合同**发起人**的成员。 有关定义应用程序角色和合同发起人的信息，请参阅[配置中的工作流概述](blockchain-workbench-configuration-overview.md#workflows)。 有关将成员分配给应用程序角色的信息，请参阅[将成员添加到应用程序](blockchain-workbench-manage-users.md#add-member-to-application)。
 
 1. 在 Blockchain Workbench 应用程序部分，选择包含要创建的合同的应用程序磁贴。 此时会显示有效合同的列表。
 
@@ -51,15 +52,10 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="take-action-on-contract"></a>对合同执行操作
 
+根据合同的状态，成员可以采取行动转换到合同的下一个状态。 操作定义为[状态](blockchain-workbench-configuration-overview.md#states)内的[转换](blockchain-workbench-configuration-overview.md#transitions)。 属于转换允许的应用程序或实例角色的成员可以执行操作。 
+
 1. 在 Blockchain Workbench 应用程序部分，选择包含要采取操作的合同的应用程序磁贴。
-
-    ![应用程序列表](media/blockchain-workbench-use/apps-list.png)
-
-2. 在列表中选择合同。
-
-    ![合同列表](media/blockchain-workbench-use/select-contract.png)
-
-    有关合同的详细信息显示在不同部分。 
+2. 在列表中选择合同。 有关合同的详细信息显示在不同部分。 
 
     ![合同详细信息](media/blockchain-workbench-use/contract-details.png)
 
@@ -74,9 +70,14 @@ ms.lasthandoff: 05/12/2018
 
 4. 有关合同当前状态的详细信息显示在窗格中。 在下拉列表中选择要执行的操作。 
 
+    ![选择操作](media/blockchain-workbench-use/choose-action.png)
+
+5. 选择“执行操作”以启动操作。
+6. 如果操作需要参数，请指定操作的值。
+
     ![执行操作](media/blockchain-workbench-use/take-action.png)
 
-5. 选择“执行”以执行操作。
+7. 选择“执行操作”以执行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

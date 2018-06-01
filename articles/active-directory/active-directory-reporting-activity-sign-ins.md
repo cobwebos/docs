@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 579af89c0d6d184b517ecb9e8a53be9d76cf1c93
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 78d3399aab8e3c3b1d98946cb3ac6ffab353d95c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257707"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -36,10 +37,10 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 本主题概述登录活动。
 
-## <a name="pre-requisite"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
-* 安全管理员或安全读者角色中的用户
+* 具有“安全管理员”、“安全读者”或“报告读者”角色的用户
 * 全局管理员
 * 任何用户（非管理员）都可以访问自己的登录活动 
 
@@ -47,7 +48,7 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 * 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告
 
 
-## <a name="signs-in-activities"></a>登录活动
+## <a name="sign-in-activities"></a>登录活动
 
 通过用户登录报表提供的信息，可以找到一些问题的答案，例如：
 
@@ -80,12 +81,12 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 ![登录活动](./media/active-directory-reporting-activity-sign-ins/02.png "登录活动")
 
-通过单击列表视图中的项，可以在水平视图中获得为该项提供的所有相关详情。
+通过单击列表视图中的项，可以在水平视图中获得有关该项的所有可用详细信息。
 
 ![登录活动](./media/active-directory-reporting-activity-sign-ins/03.png "登录活动")
 
 
-## <a name="filtering-sign-in-activities"></a>筛选登录活动
+## <a name="filter-sign-in-activities"></a>筛选登录活动
 
 若要将所报告数据的范围缩小到适当的级别，可以使用以下默认字段筛选登录数据：
 
@@ -141,6 +142,19 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 ![登录活动](./media/active-directory-reporting-activity-sign-ins/12.png "登录活动")
 
 
+> [!TIP] 
+> 除了默认筛选器外，你添加到登录视图中的所有其他字段也都将成为筛选字段。
+
+
+## <a name="download-sign-in-activities"></a>下载登录活动
+
+如果想要在 Azure 门户之外使用登录活动数据，可以将其下载。 除了“下载”按钮外，Azure 门户还为你提供了一个生成用于下载数据的脚本的选项。  
+
+![下载](./media/active-directory-reporting-activity-sign-ins/71.png "下载")
+
+单击“下载”会创建一个包含最近 5K 条记录的 CSV 文件。 如果需要更大的灵活性，可以使用脚本解决方案。 单击“脚本”会创建一个脚本，其中包含已设置的所有筛选器。 除了技术实现外，可以下载的记录数还受到 [Azure Active Directory 报告保留策略](active-directory-reporting-retention.md)的限制。  
+
+
 
 ## <a name="sign-in-activities-shortcuts"></a>登录活动快捷方式
 
@@ -168,7 +182,6 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 单击登录图中的某一天时，可以获得该天的登录活动的概览。
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/07.png "登录活动")
 
 登录活动列表中的每一行显示以下内容：
 
@@ -223,7 +236,6 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 单击应用程序使用情况图中的某一天时，可以获取登录活动的详细列表。
 
 
-![登录活动](./media/active-directory-reporting-activity-sign-ins/48.png "登录活动")
 
 
 **登录** 选项可提供应用程序的所有登录事件的完整概览。

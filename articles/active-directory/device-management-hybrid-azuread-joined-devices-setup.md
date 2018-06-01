@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157786"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258306"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -96,6 +96,7 @@ Azure AD Connect：
 
 - 此外，应在用户的 Intranet 区域中启用以下设置：“允许通过脚本对状态栏进行更新”。
 
+如果组织对本地 AD 使用托管（非联合）设置并且不使用 ADFS 与 Azure AD 联合，则 Windows 10 上的混合 Azure AD 加入依赖于 AD 中要同步到 Azure AD 的计算机对象。 确保包含需要加入混合 Azure AD 的计算机对象的任何组织单位 (OU) 都启用了 Azure AD Connect 同步配置中的同步。
 
 如果组织需要通过出站代理访问 Internet，则必须实现 Web 代理自动发现 (WPAD)，使 Windows 10 计算机可以注册到 Azure AD。
 
@@ -187,6 +188,14 @@ cmdlet：
 
     $deSCP.CommitChanges()
 
+在上面的脚本中，
+
+- `$verifiedDomain = "contoso.com"` 是一个占位符，需要将其替换为 Azure AD 中已验证域名之一。 需要先拥有域，然后才能使用它。
+
+有关已验证的域名的详细信息，请参阅 [Add a custom domain name to Azure Active Directory](active-directory-domains-add-azure-portal.md)（向 Azure Active Directory 添加自定义域名）。  
+若要获取已验证的公司域的列表，可以使用 [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) cmdlet。 
+
+![Get-AzureADDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
 ## <a name="step-2-setup-issuance-of-claims"></a>步骤 2：设置声明颁发
 
@@ -330,6 +339,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 
 有关已验证的域名的详细信息，请参阅 [Add a custom domain name to Azure Active Directory](active-directory-domains-add-azure-portal.md)（向 Azure Active Directory 添加自定义域名）。  
+
 若要获取已验证的公司域的列表，可以使用 [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) cmdlet。 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)

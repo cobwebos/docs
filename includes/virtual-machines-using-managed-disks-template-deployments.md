@@ -216,4 +216,4 @@
 * 请访问 [Azure 托管磁盘概述](../articles/virtual-machines/windows/managed-disks-overview.md)文档，了解有关托管磁盘的详细信息。
 * 请访问 [Microsoft.Compute/virtualMachines 模板参考](/azure/templates/microsoft.compute/virtualmachines)文档，查看虚拟机资源的模板参考文档。
 * 请访问 [Microsoft.Compute/disks 模板参考](/azure/templates/microsoft.compute/disks)文档，查看磁盘资源的模板参考文档。
- 
+* 有关如何使用 Azure VM 规模集中的托管磁盘的信息，请访问[将数据磁盘与规模集配合使用](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md)文档。
