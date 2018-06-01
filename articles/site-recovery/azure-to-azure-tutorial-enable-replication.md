@@ -1,23 +1,24 @@
 ---
-title: 使用 Azure Site Recovery（预览版）为 Azure VM 设置到辅助 Azure 区域的灾难恢复
+title: 使用 Azure Site Recovery 为 Azure VM 设置到 Azure 次要区域的灾难恢复
 description: 了解如何使用 Azure Site Recovery 服务为 Azure VM 设置到其他 Azure 区域的灾难恢复。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca1f8fcd3a69e3f2e287c3d627f41c0f493bea1f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d707122f79b37dd6b979be09693011dead988156
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211661"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>为 Azure VM 设置到辅助 Azure 区域的灾难恢复（预览版）
+# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
-[Azure Site Recovery](site-recovery-overview.md) 服务有助于实施灾难恢复策略，因为它可以管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复。
+[Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复，进而有利于灾难恢复策略。
 
 本教程演示了如何为 Azure VM 设置到辅助 Azure 区域的灾难恢复。 本教程介绍如何执行下列操作：
 
@@ -27,6 +28,7 @@ ms.lasthandoff: 05/08/2018
 > * 为 VM 设置出站访问
 > * 为虚拟机启用复制
 
+Azure 到 Azure 复制当前处于预览状态。
 ## <a name="prerequisites"></a>先决条件
 
 完成本教程：
@@ -109,7 +111,7 @@ Azure Site Recovery 提供了三个用于控制 Site Recovery 管理操作的内
 ### <a name="select-the-source"></a>选择源
 
 1. 在“恢复服务保管库”中，单击保管库名称 >“+复制”。
-2. 在“源”中，选择“Azure - 预览版”。
+2. 在“源”中，选择“Azure”。
 3. 在“源位置”中，选择当前运行 VM 的 Azure 源区域。
 4. 为 VM 选择 Azure 虚拟机部署模型：“资源管理器”或“经典”。
 5. 为资源管理器 VM 选择“源资源组”，为经典 VM 选择“云服务”。

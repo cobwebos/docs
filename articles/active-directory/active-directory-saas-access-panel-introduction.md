@@ -15,12 +15,12 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 982e2cb6780e5285dc5849d655efdf830f76cf13
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e25bd3e5c47667a711c53711f9823fb231dbcd86
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34347493"
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158265"
 ---
 # <a name="what-is-the-access-panel"></a>访问面板是什么？
 
@@ -61,7 +61,7 @@ ms.locfileid: "34347493"
 
 如果拥有 Azure 或 Office 365 订阅并一直在使用 Azure 门户或 Office 365 应用程序，则可以看到应用程序列表，而无需再次登录。 如果未执行身份验证，系统会提示使用 Azure AD 中的帐户用户名和密码登录。 如果组织已配置联合，只需键入用户名即可。
 
-执行身份验证后，可与管理员已集成到目录的应用程序交互。 要了解如何将应用程序与 Azure AD 集成，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](manage-apps/what-is-single-sign-on.md)
+执行身份验证后，可与管理员已集成到目录的应用程序交互。 要了解如何将应用程序与 Azure AD 集成，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 ## <a name="web-browser-requirements"></a>Web 浏览器要求
 
@@ -216,7 +216,7 @@ Azure 门户提供了第三个选项（名为“现有的单一登录”）用�
  
 - 若要了解如何将 SaaS 应用集成到 Azure AD，请参阅[有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)。
  
-- 若要详细了解如何使用 Azure AD 管理应用，请参阅[使用 Azure Active Directory 进行单一登录和应用访问权限管理简介](manage-apps/what-is-single-sign-on.md)。
+- 若要详细了解如何使用 Azure AD 管理应用，请参阅[使用 Azure Active Directory 进行单一登录和应用访问权限管理简介](active-directory-appssoaccess-whatis.md)。
  
 - 有关详细了解用户预配，请参阅[在 SaaS 应用程序中自动预配和取消预配用户](active-directory-saas-app-provisioning.md)。
 
