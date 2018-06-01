@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: b924ea1df926518ba1d86909f8e6a78deabd5468
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ffd7c828087162f83812da445b0eeb71545b59db
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32140042"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34348978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>教程：Azure Active Directory 与 QPrism 集成
 
@@ -31,7 +31,7 @@ ms.locfileid: "32140042"
 - 可以让用户使用其 Azure AD 帐户自动登录到 QPrism（单一登录）。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -111,7 +111,7 @@ ms.locfileid: "32140042"
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际的标识符和登录 URL 更新这些值。 请联系 [QPrism 客户端支持团队](mailto:qsupport-ce@quatrro.com)获取这些值。 
 
-4. 在“SAML 签名证书”部分上，单击”复制”按钮，复制“应用联合元数据 URL”并将其粘贴到记事本。
+4. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
 
      ![证书下载链接](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_certificate.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "32140042"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 
 
