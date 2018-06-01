@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: arluca
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 83203737706b859bfbdfc1b356bbaca6d0b65dc0
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 6d4f7378ccd24af4281793dbc93df40830a1b31a
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33931391"
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34300795"
 ---
-# <a name="use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>使用 Linux VM 上的用户分配标识访问 Azure 资源管理器
+# <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>教程：使用 Linux VM 上的用户分配标识访问 Azure 资源管理器
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -33,16 +33,16 @@ ms.locfileid: "33931391"
 学习如何：
 
 > [!div class="checklist"]
-> * 创建用户分配标识
+> * 创建用户分配的标识
 > * 将用户分配标识分配给 Linux VM 
 > * 向用户分配标识授予对 Azure 资源管理器中资源组的访问权限 
-> * 使用用户分配标识获取访问令牌，并用它调用 Azure 资源管理器 
+> * 使用用户分配的标识获取访问令牌，并用它调用 Azure 资源管理器 
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉托管服务标识，请查阅[概述](overview.md)部分。 **请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)**。
+- 如果不熟悉托管服务标识，请查阅[概述](overview.md)部分。 请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
-- 若要执行本教程中必需的资源创建和角色管理步骤，帐户在相应的范围（订阅或资源组）需要“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](/azure/role-based-access-control/role-assignments-portal)。
+- 若要执行本教程中必需的资源创建和角色管理步骤，你的帐户需要在相应范围（订阅或资源组）具有“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](/azure/role-based-access-control/role-assignments-portal)。
 
 如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "33931391"
 5. 若要在新资源组中创建虚拟机，请选择“资源组”中的“新建”。 完成后，单击“确定”。
 6. 选择 VM 大小。 若要查看更多大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在设置边栏选项卡中保留默认值，然后单击“确定”。
 
-## <a name="create-a-user-assigned-identity"></a>创建用户分配标识
+## <a name="create-a-user-assigned-identity"></a>创建用户分配的标识
 
 1. 如果使用的是 CLI 控制台（而不是 Azure Cloud Shell 会话），则先登录到 Azure。 使用与要在其下新建用户分配标识的 Azure 订阅关联的帐户：
 
@@ -75,13 +75,13 @@ ms.locfileid: "33931391"
 2. 使用 [az identity create](/cli/azure/identity#az_identity_create) 创建用户分配标识。 `-g` 参数指定要创建 MSI 的资源组，`-n` 参数指定其名称。 请务必将 `<RESOURCE GROUP>` 和 `<MSI NAME>` 参数值替换为自己的值：
     
     > [!IMPORTANT]
-    > 创建用户分配标识时仅支持字母数字和连字符（0-9 或 a-z 或 A-Z 或 -）字符。 另外，分配给 VM/VMSS 的名称长度应限制为 24 个字符，否则它无法正常工作。 稍后返回查看更新。 有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
+    > 创建用户分配标识时仅支持字母数字和连字符（0-9 或 a-z 或 A-Z 或 -）字符。 另外，分配给 VM/VMSS 的名称长度应限制为 24 个字符，否则它无法正常工作。 请关注后续更新。 有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
 
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <MSI NAME>
     ```
 
-    响应包含所创建的用户分配标识的详细信息，与以下示例类似。 记下用户分配标识的 `id` 值，因为下一步会用到它：
+    该响应包含已创建的用户分配标识的详细信息，与以下示例类似。 记下用户分配标识的 `id` 值，因为下一步会用到它：
 
     ```json
     {
@@ -100,7 +100,7 @@ ms.locfileid: "33931391"
 
 ## <a name="assign-a-user-assigned-identity-to-your-linux-vm"></a>将用户分配标识分配给 Linux VM
 
-用户分配标识可以由多个 Azure 资源上的客户端使用。 使用以下命令将用户分配标识分配给单个 VM。 将上一步返回的 `Id` 属性用于 `-IdentityID` 参数。
+用户分配标识可以由多个 Azure 资源上的客户端使用。 使用以下命令将用户分配的标识分配给单个 VM。 将上一步返回的 `Id` 属性用于 `-IdentityID` 参数。
 
 使用 [az vm assign-identity](/cli/azure/vm#az_vm_assign_identity) 将用户分配的 MSI 分配给 Linux VM。 请务必将 `<RESOURCE GROUP>` 和 `<VM NAME>` 参数值替换为自己的值。 将上一步返回的 `id` 属性用于 `--identities` 参数值。
 
