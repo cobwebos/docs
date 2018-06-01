@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: d256d87548d54951cb77beffb88bba26a1a3de49
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b755e0573098d3dbed1bea18a40af634be609f76
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34272074"
 ---
 # <a name="transforms-and-jobs"></a>转换和作业
 
@@ -26,6 +27,40 @@ Azure 媒体服务 REST API (v3) 的最新版本引入了用于对视频进行�
 转换对象是脚本，作业是针对 Azure 媒体服务的实际请求，将该转换应用到给定的输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。 可以使用以下方法指定视频位置：HTTP URL、SAS URL 或位于本地或 Azure Blob 存储中的文件的路径。 Azure 媒体服务帐户中最多可具有 100 个转换，并能在这些转换下提交作业。 然后可以使用通知订阅事件（如作业状态更改），其中通知直接与 Azure 事件网格通知系统集成。 
 
 由于此 API 通过 Azure 资源管理器驱动，因此可以使用资源管理器模板来创建和部署媒体服务帐户中的转换。 还可以在此 API 中以资源级别设置基于角色的访问控制，从而锁定对特定资源（如转换）的访问。
+
+## <a name="transform-definition"></a>转换定义
+
+下表显示了转换的属性并给出了它们的定义。
+
+|名称|Type|说明|
+|---|---|---|
+|ID|字符串|资源的完全限定的资源 ID。|
+|名称|字符串|资源的名称。|
+|properties.created |字符串|创建转换时的 UTC 日期和时间，格式为“YYYY-MM-DDThh:mm:ssZ”。|
+|properties.description |字符串|转换的可选详细说明。|
+|properties.lastModified |字符串|上次更新转换的 UTC 日期和时间，格式为“YYYY-MM-DDThh:mm:ssZ”。|
+|properties.outputs |TransformOutput[]|转换应该生成的一个或多个 TransformOutput 的数组。|
+|type|字符串|资源的类型。|
+
+有关完整定义，请参阅[转换](https://docs.microsoft.com/rest/api/media/transforms)。
+
+## <a name="job-definition"></a>作业定义
+
+下表显示了作业的属性并给出了它们的定义。
+
+|名称|Type|说明|
+|---|---|---|
+|ID|字符串|资源的完全限定的资源 ID。|
+|名称|字符串|资源的名称。|
+|properties.created |字符串|创建转换时的 UTC 日期和时间，格式为“YYYY-MM-DDThh:mm:ssZ”。|
+|properties.description |字符串|作业的可选详细说明。|
+|properties.lastModified |字符串|上次更新转换的 UTC 日期和时间，格式为“YYYY-MM-DDThh:mm:ssZ”。|
+|properties.outputs |JobOutput[]:JobOutputAsset[] |作业的输出。|
+|properties.priority |Priority |处理作业的优先级。 较高优先级的作业在较低优先级的作业之前处理。 如果未设置，则默认为正常。
+|properties.state |JobState |作业的当前状态。
+|type|字符串|资源的类型。|
+
+有关完整定义，请参阅[作业](https://docs.microsoft.com/rest/api/media/jobs)。
 
 ## <a name="typical-workflow-and-example"></a>典型工作流和示例
 

@@ -1,31 +1,32 @@
 ---
-title: "在 Azure 安全中心中添加 web 应用程序防火墙 | Microsoft 文档"
-description: "本文档演示如何实现 Azure 安全中心建议“添加 web 应用程序防火墙”和完成应用程序保护”。"
+title: 在 Azure 安全中心中添加 web 应用程序防火墙 | Microsoft 文档
+description: 本文档演示如何实现 Azure 安全中心建议“添加 web 应用程序防火墙”和完成应用程序保护”。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2018
+ms.date: 05/15/2018
 ms.author: terrylan
-ms.openlocfilehash: 4454d18893d698e49f118048eca0bfc94df315a5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e28a1f6b865dae3abe2cb9dfac2921c6a2034491
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203515"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>在 Azure 安全中心中添加 web 应用程序防火墙
 为保护 web 应用程序，Azure 安全中心可能会建议从 Microsoft 合作伙伴添加 web 应用程序防火墙 (WAF)。 本文档将举例说明如何应用此建议。
 
 为任何面向公众的 IP（实例级 IP 或负载均衡 IP）显示 WAF 建议，该 IP 具有与开放入站 Web 端口 (80,443) 关联的网络安全组。
 
-安全中心建议预配 WAF，以帮助防范针对虚拟机和外部应用服务环境上 Web 应用程序的攻击。 应用服务环境 (ASE) 是 Azure 应用服务的[高级](https://azure.microsoft.com/pricing/details/app-service/)服务计划选项，可提供完全隔离和专用的环境，以便安全地运行 Azure 应用服务应用。 若要了解有关 ASE 的详细信息，请参阅[应用服务环境文档](../app-service/environment/intro.md)。
+安全中心建议预配 WAF，以帮助防范针对虚拟机和在[独立](https://azure.microsoft.com/pricing/details/app-service/windows/)服务计划下部署的外部应用服务环境 (ASE) 上 Web 应用程序的攻击。 独立计划在私有专用 Azure 环境中托管应用，对于需要与本地网络或其他性能和规模安全连接的应用而言，这是理想选择。 除应用需要处于独立环境，应用还需要有外部 IP 地址负载均衡器。 若要了解有关 ASE 的详细信息，请参阅[应用服务环境文档](../app-service/environment/intro.md)。
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。  本文档不是一份分步指南。
@@ -39,7 +40,7 @@ ms.lasthandoff: 02/03/2018
    ![添加 Web 应用程序防火墙][2]
 3. 可选择使用现有的 web 应用程序防火墙（如果可用）或创建新的防火墙。 此示例中没有任何现有可用的 WAF，因此需要创建 WAF。
 4. 若要创建 WAF，请从集成合作伙伴列表中选择一个解决方案。 在此示例中，选择“Barracuda Web 应用程序防火墙”。
-5. “Barracuda Web 应用程序防火墙”会打开，提供有关该合作伙伴解决方案的信息。 选择“创建”。
+5. “Barracuda Web 应用程序防火墙”会打开，提供有关该合作伙伴解决方案的信息。 选择**创建**。
 
    ![防火墙信息边栏选项卡][3]
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索的容量规划 | Microsoft Docs
+title: 为 Azure 搜索中的查询和索引分配分区和副本 | Microsoft Docs
 description: 在 Azure 搜索中调整分区和副本计算机资源，其中每个资源按照可计费搜索单位定价。
 author: HeidiSteen
 manager: cgronlun
@@ -8,13 +8,14 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 08ae64aa92d7262b462ad105aa8e776bdaef15c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b6c2c8283d5a60013c525db296bf84cc50d76617
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203087"
 ---
-# <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>在 Azure 搜索中缩放用于查询和索引工作负荷的资源级别
+# <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>为 Azure 搜索中的查询和索引工作负载分配分区和副本
 [选择定价层](search-sku-tier.md)并[预配搜索服务](search-create-service-portal.md)后，下一步是有选择性地增加服务使用的副本或分区数目。 每一层提供固定数量的计费单位。 本文介绍如何通过分配这些单位来实现最佳配置，根据查询执行、索引和存储的要求做出平衡。
 
 在[基本层](http://aka.ms/azuresearchbasic)或某个[标准层](search-limits-quotas-capacity.md)中设置服务时，可以使用资源配置。 对于这些层中的服务，购买的容量以*搜索单位* (SU) 为增量，其中每个分区和副本被视为一个 SU。 

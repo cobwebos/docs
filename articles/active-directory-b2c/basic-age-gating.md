@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d6804f7e546547d734f966656362111b31078a4
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9186579126525cc269f7e3f9e778e06902b30eb4
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206223"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261276"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>在 Azure AD B2C 中使用年龄门控
 
@@ -51,22 +51,19 @@ ms.locfileid: "33206223"
 可以选择让 Azure AD B2C 阻止未征得家长同意的未成年人，或者允许他们并让应用程序决定如何处理他们。  
 
 ###<a name="allowing-minors-without-parental-consent"></a>允许未征得家长同意的未成年人
-对于具有注册和/或登录功能的用户流，可以选择允许未经同意的未成年人进入应用程序。  对于未征得家长同意的未成年人，允许他们照常登录或注册，并颁发一个带有 `legalAgeGroupClassification` 声明的 ID 令牌。  通过使用此声明，可以选择这些用户将拥有的体验，例如完成征得家长同意（并更新 `consentProvidedForMinor` 字段）的体验。
+对于允许注册和/或登录的用户流，可以选择允许未经同意的未成年人进入应用程序。  对于未征得家长同意的未成年人，允许他们照常登录或注册，并且 Azure AD B2C 会颁发一个带有 `legalAgeGroupClassification` 声明的 ID 令牌。  通过使用此声明，可以选择这些用户将拥有的体验，例如完成征得家长同意（并更新 `consentProvidedForMinor` 字段）的体验。
 
 ###<a name="blocking-minors-without-parental-consent"></a>阻止未征得家长同意的未成年人
-对于具有注册和/或登录功能的用户流，可以选择阻止未经同意的未成年人进入应用程序。  在 Azure AD B2C 中有两个用于处理被阻止用户的选项：
+对于允许注册和/或登录的用户流，可以选择阻止未经同意的未成年人进入应用程序。  在 Azure AD B2C 中有两个用于处理被阻止用户的选项：
 * 将 JSON 发送回应用程序 - 此选项会将响应发送回阻止了未成年人的应用程序。
 * 显示错误页 - 向用户显示一个页面，通知他们不能访问该应用程序
 
 ##<a name="known-issues"></a>已知问题
-###<a name="customization-unavailable-for-new-pages"></a>自定义设置不可用于新页
-启用“年龄门控”后可以在用户流中使用两个新页。  这些页用于在登录时收集国家/地区和出生日期，并且错误页不能与页面布局或语言自定义设置一起使用。  此选项将在未来的更新中可用。
-
 ###<a name="format-for-the-response-when-a-minor-is-blocked"></a>未成年人被阻止时响应的格式。
 响应的格式目前不正确，此 bug 将在未来的更新中解决。
 
 ###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>删除在设置过程中添加的特定属性可能会使目录无法使用年龄门控。
-在年龄门控的设置过程中，你通过 `Properties` 中的一个选项配置了目录。  如果删除 `legalCountry` 或 `dateOfBirth`，则租户将无法再使用年龄门控，并且这些属性无法重新创建。
+在年龄门控的设置过程中，你通过 `Properties` 中的一个选项配置了目录。  如果通过图形删除 `legalCountry` 或 `dateOfBirth`，则你的目录将无法再使用年龄门控，并且这些属性无法重新创建。
 
 ###<a name="list-of-countries-is-incomplete"></a>国家/地区列表不完整
 legalCountry 的国家/地区列表目前不完整，我们将在未来的更新中添加其余的国家/地区。

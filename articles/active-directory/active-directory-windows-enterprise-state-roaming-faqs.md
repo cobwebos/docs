@@ -1,9 +1,9 @@
 ---
-title: "设置和数据漫游常见问题 | Microsoft Docs"
-description: "就 IT 管理员可能会遇到的一些设置和应用数据同步问题提供解答。"
+title: 设置和数据漫游常见问题 | Microsoft Docs
+description: 就 IT 管理员可能会遇到的一些设置和应用数据同步问题提供解答。
 services: active-directory
-keywords: "企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答"
-documentationcenter: 
+keywords: 企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -13,16 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 05/14/2018
 ms.author: markvi
-ms.openlocfilehash: 0aac3a9d3595ea0e761ba14070bf7cff4d4b264c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f33376d5f68d64495a7a90e62870f3ec14f73246
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258708"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
-本主题将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。
+本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。
 
 ## <a name="what-data-roams"></a>什么样的数据可以漫游？
 **Windows 设置**：内置于 Windows 操作系统的电脑设置。 通常，这些是对电脑进行个性化的设置，包括以下三大类：
@@ -70,12 +71,12 @@ ms.lasthandoff: 02/22/2018
 在 Windows 10 的 2015 年 11 月版本或更高版本中，一次仅对一个帐户支持企业状态漫游。 如果使用 Azure AD 工作或学校帐户登录到 Windows，则所有数据通过 Azure AD 同步。 如果使用个人 Microsoft 帐户登录到 Windows，则所有数据将通过 Microsoft 帐户同步。 通用应用数据仅通过设备上的主登录帐户进行漫游，且仅当该主帐户拥有应用许可证时才能漫游。 不会对任何辅助帐户拥有的应用的通用应用数据进行同步。
 
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>是否对来自多个租户的 Azure AD 帐户进行设置同步？
-当同一设备上有来自不同 Azure AD 租户的多个 Azure AD 帐户时，必须更新设备的注册表，才可与每个 Azure AD 租户的 Azure 权限管理 (Azure RMS) 进行通信。  
+当同一设备上有来自不同 Azure AD 租户的多个 Azure AD 帐户时，必须更新设备的注册表，才能与每个 Azure AD 租户的 Azure Rights Management 服务进行通信。  
 
-1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 门户并选择 Azure AD 租户。 所选租户的 GUID 位于该租户的“属性”页上 (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)，标签为“目录 ID”。 
+1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 门户并选择 Azure AD 租户。 租户的 GUID 位于所选租户的“属性”页上（https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)，标记为**目录 ID**）。 
 2. 获取 GUID 后，需要添加注册表项 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>**。
    从“租户 ID GUID”键中，新建名为 **AllowedRMSServerUrls** 的多字符串值 (REG-MULTI-SZ)。 对于其数据，指定设备访问的其他 Azure 租户的授权分发点 URL。
-3. 可以通过运行 **Get-AadrmConfiguration** cmdlet 找到授权分发点 URL。 如果 **LicensingIntranetDistributionPointUrl** 和 **LicensingExtranetDistributionPointUrl** 的值不同，则指定这两个值。 如果值相同，则指定该值一次。
+3. 可以通过从 AADRM 模块运行 **Get-AadrmConfiguration** cmdlet 找到授权分发点 URL。 如果 **LicensingIntranetDistributionPointUrl** 和 **LicensingExtranetDistributionPointUrl** 的值不同，则指定这两个值。 如果值相同，则指定该值一次。
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>现有 Windows 桌面应用程序的漫游设置选项有哪些？
 漫游仅适用于通用 Windows 应用。 有两种选项可用于在现有 Windows 桌面应用程序上启用漫游：
@@ -95,9 +96,9 @@ ms.lasthandoff: 02/22/2018
 企业状态漫游将所有已同步的数据存储在 Azure 云中。 UE-V 提供本地漫游解决方案。
 
 ## <a name="who-owns-the-data-thats-being-roamed"></a>谁拥有正在进行漫游的数据？
-企业拥有通过企业状态漫游进行漫游的数据。 数据存储在 Azure 数据中心。 使用 Azure RMS 对所有正在传输中和云中静态的用户数据进行加密。 与基于 Microsoft 帐户的设置同步（仅在离开设备之前加密某些敏感数据，如用户凭据）相比，这是一个进步。
+企业拥有通过企业状态漫游进行漫游的数据。 数据存储在 Azure 数据中心。 使用来自 Azure 信息保护的 Azure Rights Management 服务，云中的所有用户数据都在传输中或静止状态下加密。 与基于 Microsoft 帐户的设置同步（仅在离开设备之前加密某些敏感数据，如用户凭据）相比，这是一个进步。
 
-Microsoft 致力于保护客户数据。 企业用户的设置数据离开 Windows 10 设备前，会自动由 Azure RMS 进行加密，从而让其他用户无法读取此数据。 如果组织拥有 Azure RMS 的付费订阅，则可以使用其他 Azure RMS 功能，例如跟踪和撤销文档、自动保护包含敏感信息的电子邮件以及管理自己的密钥（“自带密钥”解决方案，也称为 BYOK）。 有关这些功能和 Azure RMS 工作原理的详细信息，请参阅 [Azure 权限管理是什么](https://technet.microsoft.com/jj585026.aspx)。
+Microsoft 致力于保护客户数据。 企业用户的设置数据离开 Windows 10 设备前，会自动由 Azure Rights Management 服务进行加密，以便让其他用户无法读取此数据。 如果组织拥有 Azure Rights Management 服务的付费订阅，则可以使用其他保护功能，例如跟踪和撤销文档、自动保护包含敏感信息的电子邮件以及管理自己的密钥（“自带密钥”解决方案，也称为 BYOK）。 有关这些功能和此保护服务工作原理的详细信息，请参阅 [Azure Rights Management 是什么](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection)。
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>是否可以管理特定应用或设置的同步？
 在 Windows 10 中，没有用于禁用单个应用程序漫游的 MDM 或组策略设置。 租户管理员可以在托管设备上禁用所有应用的应用数据同步，但在每个应用或应用内级别没有更精细的控制。
@@ -116,8 +117,8 @@ Microsoft 提供几种不同的设置漫游解决方案，包括漫游用户配�
 ## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>企业状态漫游如何支持虚拟桌面基础结构 (VDI)？
 Windows 10 客户端 SKU 支持企业状态漫游，但服务器 SKU 不支持。 如果客户端 VM 托管在虚拟机监控程序计算机上，并远程登录到虚拟机，数据将漫游。 如果多个用户共享相同的操作系统，且用户远程登录到服务器以获取完整的桌面体验，漫游可能无法工作。 不正式支持后一种基于会话的方案。
 
-## <a name="what-happens-when-my-organization-purchases-azure-rms-after-using-roaming"></a>组织在使用漫游后购买 Azure RMS 会发生什么情况？
-如果组织已在 Windows 10 中使用漫游（通过 Azure RMS 使用受限的免费订阅），购买付费 Azure RMS 订阅不会对漫游功能产生任何影响，且无需 IT 管理员对配置进行任何更改。
+## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>当组织在使用漫游后购买包含 Azure Rights Management 的订阅时会发生什么情况？
+如果组织已在 Windows 10 中使用漫游（通过 Azure Rights Management 使用受限的免费订阅），则购买包含 Azure Rights Management 保护服务的[付费订阅](https://azure.microsoft.com/pricing/details/information-protection/)将不会对漫游功能产生任何影响，并且 IT 管理员不需要更改配置。
 
 ## <a name="known-issues"></a>已知问题
 请参阅[疑难解答](active-directory-windows-enterprise-state-roaming-troubleshooting.md)一节中的文档，查看已知问题列表。 

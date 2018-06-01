@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b8b61f2a512cca2a88274b93d04a1fdc8893a88f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34222907"
 ---
 ## <a name="about-vhds"></a>关于 VHD
 
@@ -20,15 +21,14 @@ Azure 中使用的 VHD 是在 Azure 的标准或高级存储帐户中作为页 B
 
 Azure 支持固定的磁盘 VHD 格式。 固定格式在文件内对逻辑磁盘以线性方式布局，使磁盘偏移量 X 存储在 Blob 偏移量 X 的位置。在 Blob 末尾有一小段脚注，描述了 VHD 的属性。 通常，由于大多数磁盘中都有较大的未使用区域，因此固定格式会浪费空间。 不过，Azure 以稀疏格式存储 .vhd 文件，因此可兼获固定和动态格式磁盘的优点。 有关更多详细信息，请参阅[虚拟硬盘入门](https://technet.microsoft.com/library/dd979539.aspx)。
 
-Azure 中想要用作源创建磁盘或映像的所有 .vhd 文件都是只读的，但用户已上传或复制到 Azure 存储的 .vhd 文件除外（可以是读写的或只读的）。 创建磁盘或映像时，Azure 将生成源 .vhd 文件的副本。 这些副本可以是只读文件，也可以是读写文件，具体取决于使用 VHD 的方式。
+Azure 中想要用作磁盘或映像创建源的所有 .VHD 文件都是只读的，但用户已上传或复制到 Azure 存储的 .vhd 文件除外（可以是读写的或只读的）。 创建磁盘或映像时，Azure 将生成源 .vhd 文件的副本。 这些副本可以是只读文件，也可以是读写文件，具体取决于使用 VHD 的方式。
 
 基于映像创建虚拟机时，Azure 将为虚拟机创建磁盘，该磁盘是源 .vhd 文件的副本。 为避免被意外删除，Azure 对任何用于创建映像、操作系统磁盘或数据磁盘的源 .vhd 文件设置了租约。
 
 在删除源 .vhd 文件之前，需要先通过删除磁盘或映像来解除租约。 若要删除由虚拟机当前用作操作系统磁盘的 .vhd 文件，可以通过删除虚拟机并删除所有关联的磁盘，一次性删除虚拟机、操作系统磁盘和源 .vhd 文件。 但是，删除作为数据磁盘源的 .vhd 文件需要按一定顺序执行几个步骤。 首先从虚拟机分离该磁盘，然后删除该磁盘，再删除 .vhd 文件。
+
 > [!WARNING]
 > 如果从存储空间删除了源 .vhd 文件或删除了存储帐户，Microsoft 无法恢复数据。
-> 
-> 根据设计，高级存储中的页 Blob 只用作 VHD。 Microsoft 建议不要在高级存储的页 Blob 中存储其他类型的数据，因为成本可能显著过高。 使用块 Blob 存储不在 VHD 中的数据。
 
 ## <a name="types-of-disks"></a>磁盘类型 
 

@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/9/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 485f761e22871396dace71333868ba7712e41f67
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: e4e2866e18c508c0df7a9a9e85a22c98e4372661
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302147"
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中创建区块链应用程序
 
@@ -33,6 +34,8 @@ ms.lasthandoff: 05/12/2018
 * Blockchain Workbench 部署。 有关部署详细信息，请参阅 [Azure Blockchain Workbench 部署](blockchain-workbench-deploy.md)。
 * 与 Blockchain Workbench 关联的租户中的 Azure Active Directory 用户。 有关详细信息，请参阅[在 Azure Blockchain Workbench 中添加 Azure AD 用户](blockchain-workbench-manage-users.md#add-azure-ad-users)。
 * Blockchain Workbench 管理员帐户。 有关详细信息，请参阅[在 Azure Blockchain Workbench 中添加 Blockchain Workbench 管理员](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators)。
+
+## <a name="hello-blockchain"></a>你好，Blockchain！
 
 让我们生成一个基本的应用程序，其中的请求方发送请求，响应方发送对请求的响应。 例如，请求可以是“你好吗？”，而响应可以是“我很好！”。 请求和响应都记录在底层区块链中。 
 

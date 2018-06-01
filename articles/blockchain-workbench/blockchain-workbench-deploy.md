@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/22/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 85a627678f862d783d47013d82bae8b485d7d4e9
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303937"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>部署 Azure Blockchain Workbench
 
@@ -23,6 +24,25 @@ Azure Blockchain Workbench 是使用 Azure Marketplace 中的解决方案模板�
 有关 Blockchain Workbench 组件的详细信息，请参阅 [Azure Blockchain Workbench 体系结构](blockchain-workbench-architecture.md)。
 
 ## <a name="prepare-for-deployment"></a>准备部署
+
+使用 Blockchain Workbench，可部署区块链账本以及最常用于构建基于区块链的应用程序的一组相关 Azure 服务。 部署 Blockchain Workbench 会导致在 Azure 订阅的资源组内预配以下 Azure 服务。
+
+* 1 个事件网格主题
+* 1 个服务总线命名空间
+* 1 个 Application Insights
+* 1 个 SQL 数据库（标准 S0）
+* 2 个应用程序服务（标准）
+* 2 个 Azure Key Vault
+* 2 个 Azure 存储帐户（标准 LRS）
+* 2 个虚拟机规模集（用于验证程序和工作节点）
+* 2 个虚拟网络（每个虚拟网络包括负载均衡器、网络安全组和公共 IP 地址）
+* 可选：Azure Monitor
+
+以下是在 **myblockchain** 资源组中创建的示例部署。
+
+![示例部署](media/blockchain-workbench-deploy/example-deployment.png)
+
+Blockchain Workbench 的成本是基础 Azure 服务成本的总和。 Azure 服务的定价信息可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)进行计算。
 
 在部署之前，Azure Blockchain Workbench 要求满足几项先决条件。 先决条件包括 Azure AD 配置和应用程序注册。
 
@@ -253,6 +273,15 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
     ![回复 URL](media/blockchain-workbench-deploy/configure-reply-url.png)
 
 7. 选择“保存”更新客户端注册。
+
+## <a name="remove-a-deployment"></a>删除部署
+
+不再需要部署时，可以通过删除 Blockchain Workbench 资源组来删除部署。
+
+1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”，然后选择要删除的资源组。 
+2. 选择“删除资源组”。 输入资源组名称确认删除并选择“删除”。
+
+    ![删除资源组](media/blockchain-workbench-deploy/delete-resource-group.png)
 
 ## <a name="next-steps"></a>后续步骤
 
