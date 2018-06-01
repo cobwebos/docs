@@ -7,14 +7,14 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/25/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e95f5d585fa97a62b709e73b6ed6eacafe69a2b3
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: aca68b6e8d0e6b80a1504b16b9b3462f20fdc6c4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158719"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195652"
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>如何部署 Linux 混合 Runbook 辅助角色
 
@@ -132,7 +132,7 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
 ```
 
-有关如何对更新管理问题进行故障排除的其他步骤，请参阅[更新管理 — 疑难解答](automation-update-management.md#troubleshooting)
+有关如何对更新管理问题进行故障排除的其他步骤，请参阅[更新管理 - 故障排除](automation-update-management.md#troubleshooting)
 
 ## <a name="next-steps"></a>后续步骤
 
