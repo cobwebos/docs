@@ -1,5 +1,5 @@
 ---
-title: 将 Azure Web 应用程序配置为从 Key Vault 读取机密 | Microsoft Docs
+title: “将 Azure Web 应用程序配置为从 Key Vault 读取机密”教程 | Microsoft Docs
 description: 教程：将 ASP.Net Core 应用程序配置为从 Key Vault 读取机密
 services: key-vault
 documentationcenter: ''
@@ -8,15 +8,16 @@ manager: mbaldwin
 ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.date: 04/16/2018
+ms.topic: tutorial
+ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: b4e317a82b93513c6161d9da0c55883e99580cbb
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 146ea04081a4adebe4a6e9249bb1fe34ba76e3a4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305168"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>教程：将 Azure Web 应用程序配置为从 Key Vault 读取机密
 
@@ -48,24 +49,22 @@ az login
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli
-az group create --name ContosoResourceGroup --location eastus
+# To list locations: az account list-locations --output table
+az group create --name "ContosoResourceGroup" --location "East US"
 ```
 
 刚刚创建的资源组将在整篇教程中使用。
 
 ## <a name="create-an-azure-key-vault"></a>创建 Azure Key Vault
 
-接下来，在上一步骤创建的资源组中创建 Key Vault。 必须提供某些信息：
-
->[!NOTE]
-> 必须对 Key Vault 使用唯一的名称。整篇教程使用“ContosoKeyVault”作为 Key Vault 的名称。
+接下来，在上一步骤创建的资源组中创建 Key Vault。 尽管本教程中使用“ContosoKeyVault”作为密钥保管库的名称，但你必须使用唯一名称。 提供以下信息：
 
 * 保管库名称 **ContosoKeyVault**。
 * 资源组名称 **ContosoResourceGroup**。
 * 位置“美国东部”。
 
 ```azurecli
-az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceGroup --location eastus
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East US"
 ```
 
 此命令的输出显示新建的 Key Vault 的属性。 请记下下面列出的两个属性：
@@ -78,20 +77,20 @@ az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceG
 
 目前，只有你的 Azure 帐户才有权对这个新保管库执行任何操作。
 
-## <a name="add-a-secret-to-key-vault"></a>向 Key Vault 添加机密
+## <a name="add-a-secret-to-key-vault"></a>向密钥保管库添加机密
 
-我们将添加一个机密，以帮助演示工作原理。 可以存储需要安全保存的，但同时也要提供给应用程序使用的 SQL 连接字符串或其他任何信息。 在本教程中，密码名为 **AppSecret**，将存储 **MySecret** 的值。
+我们将添加机密以帮助说明这是如何工作的。 可以存储需要安全保存的，但同时也要提供给应用程序使用的 SQL 连接字符串或其他任何信息。 在本教程中，密码名为 **AppSecret**，将在其中存储 **MySecret** 的值。
 
 键入以下命令，在 Key Vault 中创建名为 **AppSecret** 的机密，用于存储 **MySecret** 值：
 
 ```azurecli
-az keyvault secret set --vault-name '<YourKeyVaultName>' --name 'AppSecret' --value 'MySecret'
+az keyvault secret set --vault-name "ContosoKeyVault" --name "AppSecret" --value "MySecret"
 ```
 
 若要查看机密中包含的纯文本形式的值，请执行以下命令：
 
 ```azurecli
-az keyvault secret show --name 'AppSecret' --vault-name '<YourKeyVaultName>'
+az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
 ```
 
 此命令显示机密信息，包括 URI。 完成这些步骤后，Azure Key Vault 中应会出现某个机密的 URI。 请记下此信息， 后面的步骤需要用到。
@@ -212,9 +211,9 @@ az keyvault secret show --name 'AppSecret' --vault-name '<YourKeyVaultName>'
 ## <a name="publish-the-web-application-to-azure"></a>将 Web 应用程序发布到 Azure
 
 1. 在编辑器上方，选择“WebKeyVault”。
-2. 选择“发布”。
-3. 再次选择“发布”。
-4. 选择“创建”。
+2. 依次选择“发布”、“启动”。
+3. 创建新的**应用服务**，选择“发布”。
+4. 选择**创建**。
 
 >[!IMPORTANT]
 > 此时会打开一个浏览器窗口，其中显示了“502.5 - 进程失败”消息。 这是正常情况。 需要向应用程序标识授予从 Key Vault 读取机密的权限。
@@ -227,11 +226,11 @@ az keyvault secret show --name 'AppSecret' --vault-name '<YourKeyVaultName>'
 2. 运行 assign-identity 命令，为此应用程序创建标识：
 
 ```azurecli
-az webapp assign-identity --name WebKeyVault --resource-group ContosoResourcegroup
+az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResourcegroup"
 ```
 
 >[!NOTE]
->这相当于转到门户并在 Web 应用程序属性中将“托管服务标识”切换为“打开”。
+>此命令等同于转到门户并在 Web 应用程序属性中将“托管服务标识”切换为“打开”。
 
 ## <a name="grant-rights-to-the-application-identity"></a>向应用程序标识授予权限
 
@@ -241,16 +240,16 @@ az webapp assign-identity --name WebKeyVault --resource-group ContosoResourcegro
 2. 选择“访问策略”。
 3. 选择“新增”，在“机密权限”部分选择“获取”和“列出”。
 4. 选择“选择主体”，并添加应用程序标识。 该标识的名称与应用程序相同。
-5. 选择“确定”
+5. 选择“确定”。
 
-现在，Azure 中的帐户和应用程序标识都有权从 Key Vault 读取信息。 如果刷新页面，应会看到站点的登陆页。 如果选择“关于”， 会看到 Key Vault 中存储的值。
+现在，Azure 中的帐户和应用程序标识都有权从 Key Vault 读取信息。 如果刷新页面，应会看到站点的登陆页。 如果选择“关于”，则会看到 Key Vault 中存储的值。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 若要删除资源组及其所有资源，请使用 **az group delete** 命令。
 
   ```azurecli
-  az group delete -n ContosoResourceGroup
+  az group delete -n "ContosoResourceGroup"
   ```
 
 ## <a name="next-steps"></a>后续步骤
