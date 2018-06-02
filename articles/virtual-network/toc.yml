@@ -205,17 +205,9 @@
     - name: 故障排除
       items:
         - name: 网络安全组
-          items:
-            - name: Azure 门户
-              href: virtual-network-nsg-troubleshoot-portal.md
-            - name: Azure PowerShell
-              href: virtual-network-nsg-troubleshoot-powershell.md
+          href: diagnose-network-traffic-filter-problem.md
         - name: 路由
-          items:
-            - name: Azure 门户
-              href: virtual-network-routes-troubleshoot-portal.md
-            - name: Azure PowerShell
-              href: virtual-network-routes-troubleshoot-powershell.md
+          href: diagnose-network-routing-problem.md
         - name: 吞吐量测试
           href: virtual-network-bandwidth-testing.md
         - name: 无法删除虚拟网络

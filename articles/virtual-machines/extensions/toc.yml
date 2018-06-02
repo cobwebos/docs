@@ -30,6 +30,8 @@
           href: custom-script-linuxOstc.md
         - name: Windows
           href: custom-script-windows.md
+    - name: 虚拟机访问
+      href: vmaccess.md
     - name: Operations Management Suite
       items:
         - name: Linux
@@ -61,8 +63,6 @@
           href: dsc-template.md
     - name: 适用于 Windows 的 IaaS 反恶意软件
       href: iaas-antimalware-windows.md
-    - name: Key Vault
-      href: key-vault-windows.md
     - name: VM 快照
       items:
         - name: Linux

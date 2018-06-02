@@ -23,13 +23,12 @@
 ### [Site Recovery 概述](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## 安全
-### [监视资源](oms-security-monitoring-resources.md)
-### [响应安全警报](oms-security-responding-alerts.md)
-### [基线评估](oms-security-baseline.md)
-### [恶意软件评估](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [系统更新评估](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [连接安全产品](oms-security-connect-products.md)
-### [Web 基线评估](oms-security-web-baseline-assessment.md)
+### [监视资源](../security-center/security-center-monitoring.md)
+### [响应安全警报](../security-center/security-center-managing-and-responding-alerts.md)
+### [基线评估](../security-center/security-center-customize-os-security-config.md)
+### [恶意软件评估](../security-center/security-center-install-endpoint-protection.md)
+### [连接安全产品](../security-center/quick-security-solutions.md)
+### [Web 基线评估](../security-center/security-center-customize-os-security-config.md)
 
 ## 使用解决方案
 ### [管理解决方案](../monitoring/monitoring-solutions.md)

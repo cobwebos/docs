@@ -378,7 +378,7 @@
           topicHref: /azure/machine-learning/team-data-science-process/overview
         - name: 数据科学虚拟机
           tocHref: /azure/machine-learning/data-science-virtual-machine
-          topicHref: /azure/machine-learning/data-science-virtual-machine/virtual-machine-overview
+          topicHref: /azure/machine-learning/data-science-virtual-machine/
     - name: Marketplace 消费者
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/
@@ -521,6 +521,9 @@
         - name: 队列
           tocHref: /azure/storage/queues/
           topicHref: /azure/storage/queues/storage-queues-introduction
+        - name: 表
+          tocHref: /azure/storage/tables/
+          topicHref: /azure/storage/tables/table-storage-overview
     - name: StorSimple
       tocHref: /azure/storsimple/
       topicHref: /azure/storsimple/
