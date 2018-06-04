@@ -28,7 +28,7 @@ ms.locfileid: "33206223"
 使用年龄限制可通过 Azure AD B2C 辨别应用程序中的未成年人。  可以选择阻止用户登录到应用程序，或者允许他们带着辨别用户的年龄组及其家长同意状态附加声明返回到应用程序。  
 
 >[!NOTE]
->可在名为 `consentProvidedForMinor` 的用户属性中跟踪家长同意状态。  可以通过Graph API 更新此属性，它将在更新 `legalAgeGroupClassification` 时使用此字段。
+>可在名为 `consentProvidedForMinor` 的用户属性中跟踪家长同意状态。 可以通过图形 API 更新此属性，它将在更新 `legalAgeGroupClassification` 时使用此字段。
 >
 
 ##<a name="setting-up-your-directory-for-age-gating"></a>为年龄限制设置目录
