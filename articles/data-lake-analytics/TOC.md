@@ -22,7 +22,9 @@
 #### [Python](data-lake-analytics-manage-use-python-sdk.md)
 #### [Java](data-lake-analytics-manage-use-java-sdk.md)
 #### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### [添加用户](data-lake-analytics-add-users.md)
 ### [策略](data-lake-analytics-policies.md)
+### [保护作业文件夹](data-lake-analytics-secure.md)
 ### [访问诊断日志](data-lake-analytics-diagnostic-logs.md)
 ### [调整配额限制](data-lake-analytics-quota-limits.md)
 
@@ -38,6 +40,10 @@
 #### [认知扩展](data-lake-analytics-u-sql-cognitive.md)
 #### [可编程性指南](data-lake-analytics-u-sql-programmability-guide.md)
 
+### U-SQL SDK
+#### [本地运行和调试](data-lake-analytics-data-lake-tools-local-run.md)
+#### [运行和测试](data-lake-analytics-u-sql-sdk.md) 
+
 ### Visual Studio
 #### [安装](data-lake-analytics-data-lake-tools-install.md)
 #### [浏览和查看作业](data-lake-analytics-data-lake-tools-view-jobs.md)
@@ -46,6 +52,7 @@
 #### [顶点执行详细信息](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 #### [导出 U-SQL 数据库](data-lake-analytics-data-lake-tools-export-database.md)
 #### [分析网站日志](data-lake-analytics-analyze-weblogs.md)
+#### [解决数据倾斜问题](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
 #### [作业的监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ### Visual Studio Code
@@ -64,7 +71,7 @@
 # 资源
 ## [Azure Data Lake 博客](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
-## [在 UserVoice 上提供反馈](https://feedback.azure.com/forums/327234-data-lake)
+## [请求更改](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [定价](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

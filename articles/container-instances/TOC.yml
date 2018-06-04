@@ -26,7 +26,7 @@
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
     - name: 资源管理器模板
-      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance'
+      href: container-instances-samples-rm.md
 - name: 概念
   items:
     - name: 配额和区域限制
@@ -45,8 +45,6 @@
           href: container-instances-using-azure-container-registry.md
         - name: 设置环境变量 (env)
           href: container-instances-environment-variables.md
-        - name: 对部署进行故障排除
-          href: container-instances-troubleshooting.md
     - name: 管理
       items:
         - name: 执行命令 (exec)
@@ -69,6 +67,12 @@
           href: container-instances-volume-gitrepo.md
         - name: secret
           href: container-instances-volume-secret.md
+    - name: 故障排除
+      items:
+        - name: 获取容器日志和事件
+          href: container-instances-get-logs.md
+        - name: 排查常见问题
+          href: container-instances-troubleshooting.md
 - name: 引用
   items:
     - name: Azure CLI
@@ -78,7 +82,7 @@
     - name: PowerShell
       href: '/powershell/module/azurerm.containerinstance#container_instances'
     - name: .NET
-      href: /dotnet/api/overview/azure/containerinstances
+      href: /dotnet/api/overview/azure/containerinstance
     - name: Python
       href: /python/api/overview/azure/containerinstance
     - name: Java

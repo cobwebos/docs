@@ -137,24 +137,20 @@
           href: log-analytics-powerbi.md
     - name: 创建警报
       items:
-        - name: 了解警报
-          href: log-analytics-alerts.md
-        - name: 警报操作
-          href: log-analytics-alerts-actions.md
-        - name: 创建警报规则
-          items:
-            - name: OMS 门户
-              href: log-analytics-alerts-creating.md
-            - name: REST API
-              href: log-analytics-api-alerts.md
-            - name: 资源管理器模板
-              href: ../monitoring/monitoring-solutions-resources-searches-alerts.md
-        - name: Webhook 操作示例
-          href: log-analytics-alerts-webhooks.md
-        - name: 警报管理解决方案
-          href: log-analytics-solution-alert-management.md
+        - name: 了解日志警报
+          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md
+        - name: 创建日志警报
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md
+        - name: 用于日志警报的 Webhook 操作
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md
+        - name: 使用资源管理器模板创建日志警报
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-template.md
+        - name: 将警报从 Log Analytics 复制到 Azure 警报
+          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md
     - name: 管理
       items:
+        - name: 个人数据处理
+          href: log-analytics-personal-data-mgmt.md
         - name: 代理管理
           href: log-analytics-agent-manage.md
         - name: 管理工作区成本
@@ -218,8 +214,6 @@
               href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
             - name: 逻辑应用 B2B 自定义跟踪架构
               href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: 恶意软件评估
-          href: log-analytics-malware.md
         - name: 网络分析
           href: log-analytics-azure-networking-analytics.md
         - name: 网络性能监视器
@@ -239,7 +233,7 @@
         - name: SCOM 运行状况检查
           href: log-analytics-scom-assessment.md
         - name: 安全审核
-          href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../security-center/security-center-intro.md
         - name: 将 Service Fabric 与 Azure PowerShell 配合使用
           href: log-analytics-service-fabric.md
           items:

@@ -1,5 +1,7 @@
 - name: 数据工厂 V2 文档
   href: index.yml
+- name: 切换到版本 1 文档
+  href: v1/data-factory-introduction.md
 - name: 概述
   items:
     - name: 数据工厂简介
@@ -374,15 +376,17 @@
       items:
         - name: 将 Azure-SSIS 集成运行时加入 VNET
           href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: 为 Azure-SSIS 集成运行时启用 Azure AD 身份验证
+          href: enable-aad-authentication-azure-ssis-ir.md
         - name: 为 Azure-SSIS 集成运行时配置高性能
           href: configure-azure-ssis-integration-runtime-performance.md
-        - name: 预配用于 Azure-SSIS Integration Runtime 的企业版
+        - name: 预配 Azure-SSIS 集成运行时的企业版
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: 为 Azure-SSIS 集成运行时自定义设置
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: 开发用于 Azure-SSIS 集成运行时的许可组件
           href: how-to-develop-azure-ssis-ir-licensed-components.md
-        - name: 使用 SSIS 活动运行 SSIS 包
+        - name: 使用“执行 SSIS 包”活动运行 SSIS 包
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: 使用存储过程活动运行 SSIS 包
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
