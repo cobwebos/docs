@@ -1,4 +1,4 @@
----
+﻿---
 title: 在 Azure AD B2C 中使用年龄限制 | Microsoft Docs
 description: 学习如何辨别使用应用程序的未成年人。
 services: active-directory-b2c
@@ -28,7 +28,7 @@ ms.locfileid: "34261276"
 使用年龄限制可通过 Azure AD B2C 辨别应用程序中的未成年人。  可以选择阻止用户登录到应用程序，或者允许他们带着辨别用户的年龄组及其家长同意状态附加声明返回到应用程序。  
 
 >[!NOTE]
->可在名为 `consentProvidedForMinor` 的用户属性中跟踪家长同意状态。  可以通过图形 API 更新此属性，它将在更新 `legalAgeGroupClassification` 时使用此字段。
+>可在名为 `consentProvidedForMinor` 的用户属性中跟踪家长同意状态。 可以通过图形 API 更新此属性，它将在更新 `legalAgeGroupClassification` 时使用此字段。
 >
 
 ##<a name="setting-up-your-directory-for-age-gating"></a>为年龄限制设置目录
@@ -59,11 +59,12 @@ ms.locfileid: "34261276"
 * 显示错误页 - 向用户显示一个页面，通知他们不能访问该应用程序
 
 ##<a name="known-issues"></a>已知问题
+启用“年龄限制”后可以在用户流中使用两个新页。  这些页用于在登录时收集国家/地区和出生日期，并且错误页不能与页面布局或语言自定义设置一起使用。  此选项将在未来的更新中可用。
 ###<a name="format-for-the-response-when-a-minor-is-blocked"></a>未成年人被阻止时响应的格式。
 响应的格式目前不正确，此 bug 将在未来的更新中解决。
 
 ###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>删除在设置过程中添加的特定属性可能会使目录无法使用年龄限制。
-在年龄限制的设置过程中，你通过 `Properties` 中的一个选项配置了目录。  如果通过图形删除 `legalCountry` 或 `dateOfBirth`，则租户将无法再使用年龄限制，并且这些属性无法重新创建。
+在年龄限制的设置过程中，你通过 `Properties` 中的一个选项配置了目录。  如果删除 `legalCountry` 或 `dateOfBirth`，则租户将无法再使用年龄限制，并且这些属性无法重新创建。
 
 ###<a name="list-of-countries-is-incomplete"></a>国家/地区列表不完整
 legalCountry 的国家/地区列表目前不完整，我们将在未来的更新中添加其余的国家/地区。
