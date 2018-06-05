@@ -16,6 +16,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30161313"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-wechat-accounts"></a>Azure Active Directory B2C：向用户提供使用微信帐户的注册和登录功能
 
@@ -23,7 +24,7 @@ ms.lasthandoff: 03/23/2018
 > 此功能为预览版。
 > 
 
-## <a name="create-a-wechat-application"></a>创建微信应用程序
+## <a name="create-a-wechat-application"></a>创建 WeChat 应用程序
 
 要将微信用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建微信应用程序并向其提供合适的参数。 需要使用微信帐户来完成此操作。 如果没有帐户，可以通过其移动应用之一或使用 QQ 号注册来获得一个。 之后，获得已向微信开发人员计划注册的帐户。 可以在[此处](http://kf.qq.com/faq/161220Brem2Q161220uUjERB.html)查看详细信息。
 
