@@ -1,12 +1,12 @@
 ---
-title: "为 Bash in Azure Cloud Shell 持久保存文件 | Microsoft Docs"
-description: "演练 Azure Cloud Shell 中的 Bash 如何持久保存文件。"
+title: 为 Bash in Azure Cloud Shell 持久保存文件 | Microsoft Docs
+description: 演练 Azure Cloud Shell 中的 Bash 如何持久保存文件。
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919536"
 ---
 [!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 

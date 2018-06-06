@@ -18,6 +18,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32787410"
 ---
 ## <a name="prepare-for-akv-integration"></a>准备 AKV 集成
 若要使用 Azure 密钥保管库集成来配置 SQL Server VM，有以下几个先决条件： 
