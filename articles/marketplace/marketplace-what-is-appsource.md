@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
 ms.openlocfilehash: 5f963e9ef6f0a19599f372b196dc75a327b92b5a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "32178230"
 ---
 # <a name="what-is-appsource"></a>AppSource 简介
 借助 AppSource，Microsoft 合作伙伴可使客户通过支持 Microsoft 的在线店面发现其技术和服务。 AppSource 发布者可以推动 AppSource 上的业务用户查找、试用以及获取业务线 SaaS 应用程序和实现服务，以帮助推动业务成果，减少创造价值所需的时间： 

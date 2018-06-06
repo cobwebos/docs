@@ -9,10 +9,11 @@ ms.date: 05/11/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34152217"
 ---
 组织具有大规模计算需求。 这些大型计算工作负荷包括工程设计和分析、财务风险计算、图像渲染、复杂建模、Monte Carlo 仿真等。 
 

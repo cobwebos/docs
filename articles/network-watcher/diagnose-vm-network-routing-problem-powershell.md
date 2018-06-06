@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: f793a201b3fbf57ac2f420c4f4e57a230bc11468
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "32182167"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>诊断虚拟机网络路由问题 - Azure PowerShell
@@ -102,7 +102,7 @@ Get-AzureRmNetworkWatcherNextHop `
   -DestinationIPAddress 172.31.0.100
 ```
 
-输出结果指示“NextHopType”为“无”，“RouteTableId”仍为“系统路由”。 此结果指示，虽然存在有效的通往目标的系统路由，但是没有将流量路由到目标的下一个跃点。
+输出结果指示“NextHopType”为“无”，“RouteTableId”仍为“系统路由”。 此结果指示，虽然存在有效的通往目标的系统路由，但是没有将流量路由到目标的下一跃点。
 
 ## <a name="view-details-of-a-route"></a>查看路由详细信息
 
@@ -127,7 +127,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-正如在之前输出中所看到的，带有 0.0.0.0/0 的 AaddressPrefix 的路由会将未指定给地址的所有流量路由到以 Internet 的下一个跃点为前缀的其他路由地址内。 同时还可在输出结果中看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”。 Azure 会创建到 172.16.0.0/12 的默认路由，但不会无故指定下一个跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。 此时进行检查会显示“nextHopType”为“虚拟网络”。
+正如在之前输出中所看到的，带有 0.0.0.0/0 的 AaddressPrefix 的路由会将未指定给地址的所有流量路由到以 Internet 的下一个跃点为前缀的其他路由地址内。 同时还可在输出结果中看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”。 Azure 会创建到 172.16.0.0/12 的默认路由，但不会无故指定下一个跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。 此时进行检查会将“nextHopType”显示为“虚拟网络”。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -139,6 +139,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建 VM 并根据该 VM 诊断网络路由问题， 同时还会了解到 Azure 可以创建多个默认路由，并且测试到两个不同目标的路由。 详细了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，以及如何[创建自定义路由](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)。
+本文介绍了如何创建 VM 并根据该 VM 诊断网络路由问题。 同时说明了 Azure 可以创建多个默认路由，并且还测试了到两个不同目标的路由。 详细了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，以及如何[创建自定义路由](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)。
 
-对于出站 VM 连接，还可以使用网络观察程序的[连接故障排除](network-watcher-connectivity-powershell.md)功能来确定延迟、VM 和终结点之间获得允许的和被拒绝的网络流量。 你可以使用网络观察程序的连接监视器功能监视 VM 和终结点（例如 IP 地址或 URL）之间在某段时间的通信情况。 如需了解如何操作，请参阅[监控网络连接](connection-monitor.md)
+对于出站 VM 连接，还可以使用网络观察程序的[连接故障排除](network-watcher-connectivity-powershell.md)功能来确定延迟、VM 和终结点之间获得允许的和被拒绝的网络流量。 可以使用网络观察程序的连接监视器功能监视 VM 和终结点（例如 IP 地址或 URL）之间在某段时间的通信情况。 如需了解如何操作，请参阅[监视网络连接](connection-monitor.md)。

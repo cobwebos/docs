@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
 ms.openlocfilehash: 6981c0f917fb7175f444ceca8c55c0df186774db
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "33932313"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>使用 PowerShell 配置 VM 托管服务标识 (MSI)
@@ -32,7 +32,7 @@ ms.locfileid: "33932313"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。 **请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)**。
+- 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 安装[最新版本的 Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM)（如果尚未安装）。
 
@@ -154,7 +154,7 @@ ms.locfileid: "33932313"
 2. 使用 [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) cmdlet 创建用户分配标识。  记下输出中的 `Id`，因为下一步会用到它。
 
     > [!IMPORTANT]
-    > 创建用户分配标识时仅支持字母数字和连字符（0-9 或 a-z 或 A-Z 或 -）字符。 另外，分配给 VM/VMSS 的名称长度应限制为 24 个字符，否则它无法正常工作。 稍后返回查看更新。 有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
+    > 创建用户分配标识时仅支持字母数字和连字符（0-9 或 a-z 或 A-Z 或 -）字符。 另外，分配给 VM/VMSS 的名称长度应限制为 24 个字符，否则它无法正常工作。 请关注后续更新。 有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
 
 
   ```powershell

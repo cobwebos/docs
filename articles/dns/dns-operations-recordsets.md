@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: kumud
 ms.openlocfilehash: 511af342727dc46369ae70d60a7e9a3171bf986d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "32778829"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录和记录集

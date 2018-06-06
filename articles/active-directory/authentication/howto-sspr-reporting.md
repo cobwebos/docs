@@ -11,10 +11,11 @@ author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
 ms.openlocfilehash: 45183e51e9071647e07cfd0738522f0dfa28bd7b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33868996"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 

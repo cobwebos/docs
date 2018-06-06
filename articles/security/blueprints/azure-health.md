@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
 ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33894307"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
@@ -282,7 +283,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 **2.Key Vault** 请求获取与请求的令牌关联的机密。
 
-\*\*3. Azure 角色验证请求，并对向 Key Vault 发出的访问请求授权。
+**3. Azure 角色验证请求，并对向 Key Vault 发出的访问请求授权。
 
 **4.Key Vault** 返回机密。在此示例中，该机密为 SQL DB 连接字符串。
 

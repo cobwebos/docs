@@ -16,10 +16,11 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: larryfr
 ms.openlocfilehash: e418411cc6b681e304cc1ba66f0c815ad0d4db64
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34069703"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
 ms.openlocfilehash: 6a755ef4d933046377a6a25be76655b44f4bf508
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "34361363"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>基于数据科学虚拟机的团队分析和 AI 环境 

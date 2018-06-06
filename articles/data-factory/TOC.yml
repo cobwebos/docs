@@ -340,7 +340,7 @@
           href: control-flow-expression-language-functions.md
         - name: 系统变量
           href: control-flow-system-variables.md
-    - name: 安全
+    - name: “安全”
       items:
         - name: 数据移动安全注意事项
           href: data-movement-security-considerations.md
@@ -380,7 +380,7 @@
           href: enable-aad-authentication-azure-ssis-ir.md
         - name: 为 Azure-SSIS 集成运行时配置高性能
           href: configure-azure-ssis-integration-runtime-performance.md
-        - name: 预配 Azure-SSIS 集成运行时的企业版
+        - name: 预配用于 Azure-SSIS Integration Runtime 的企业版
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: 为 Azure-SSIS 集成运行时自定义设置
           href: how-to-configure-azure-ssis-ir-custom-setup.md

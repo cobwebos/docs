@@ -10,6 +10,8 @@
   items:
     - name: 2018 年 5 月
       href: release-notes-may-2018.md
+    - name: 2018 年 4 月
+      href: release-notes-april-2018.md
 - name: 快速入门
   expanded: true
   items:
@@ -55,7 +57,7 @@
           href: service-maintenance.md
         - name: 常见问题
           href: sql-data-warehouse-overview-faq.md
-    - name: 安全
+    - name: “安全”
       items:
         - name: 概述
           href: sql-data-warehouse-overview-manage-security.md
@@ -175,7 +177,7 @@
           href: sql-data-warehouse-restore-database-powershell.md
         - name: REST API
           href: sql-data-warehouse-restore-database-rest-api.md
-    - name: 安全
+    - name: “安全”
       items:
         - name: 启用加密 - 门户
           href: sql-data-warehouse-encryption-tde.md

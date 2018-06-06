@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: deguhath
 ms.openlocfilehash: 187171d75a6bcc54a48c891aa2eafd8408b06ddb
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "32778268"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
@@ -457,7 +457,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 ![将数据集拖放到主面板上](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
-> 对定型和测试数据集都执行此操作。 此外，请记住使用为此目的提供的数据库名称和表名称。 图中使用的值仅用于说明目的。\*\*
+> 对定型和测试数据集都执行此操作。 此外，请记住使用为此目的提供的数据库名称和表名称。 图中使用的值仅用于说明目的。**
 > 
 > 
 

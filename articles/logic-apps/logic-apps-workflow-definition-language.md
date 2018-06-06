@@ -3,7 +3,7 @@ title: 工作流定义语言架构 - Azure 逻辑应用 | Microsoft Docs
 description: 使用工作流定义语言编写 Azure 逻辑应用的自定义工作流定义
 services: logic-apps
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 14b273841d1fc15df635eb3b41b02ad77cbef90d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775275"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33886795"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>采用工作流定义语言架构的逻辑应用工作流定义
 
@@ -220,7 +220,8 @@ ms.locfileid: "33775275"
 
 ## <a name="functions"></a>函数
 
-某些表达式从运行时操作获取其值，而这些操作在逻辑应用开始执行时可能不存在。 若要引用或使用表达式中的这些值，可以使用函数。 可以使用数学函数进行计算。例如，[add()](../logic-apps/workflow-definition-language-functions-reference.md#add) 函数会从整数或浮点数返回总和。 
+某些表达式从运行时操作获取其值，而这些操作在逻辑应用开始执行时可能不存在。 若要引用或使用表达式中的这些值，可以使用[函数](../logic-apps/workflow-definition-language-functions-reference.md)。 可以使用数学函数进行计算。例如，[add()](../logic-apps/workflow-definition-language-functions-reference.md#add) 函数会从整数或浮点数返回总和。 有关每个函数的详细信息，请参阅[字母顺序参考文章](../logic-apps/workflow-definition-language-functions-reference.md)。
+或者，继续学习函数及其一般用途。
 
 下面是可以使用函数执行的几个示例任务： 
 
@@ -282,7 +283,7 @@ ms.locfileid: "33775275"
 | [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | 返回字符串中的字符，从指定的位置开始。 | 
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | 返回小写格式的字符串。 | 
 | [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | 返回大写格式的字符串。 | 
-| [trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | 从字符串中删除前导和尾随空格，并返回更新的字符串。 | 
+| [trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | 从字符串中删除前导和尾随空格，并返回更新后的字符串。 | 
 ||| 
 
 <a name="collection-functions"></a>
@@ -300,8 +301,8 @@ ms.locfileid: "33775275"
 | [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | 返回一个字符串，其中包含某个数组中的所有项并以指定的分隔符分隔每个项。 | 
 | [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | 返回集合中的最后一个项。 | 
 | [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | 返回字符串或数组中的项数。 | 
-| [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | 删除集合前面的项，并返回其他所有项。 | 
-| [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | 返回集合前面的项。 | 
+| [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | 删除集合开头的项，并返回所有其他项。 | 
+| [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | 返回集合开头的项。 | 
 | [union](../logic-apps/workflow-definition-language-functions-reference.md#union) | 返回一个集合，其中包含指定集合中的所有项。 | 
 ||| 
 
@@ -348,7 +349,7 @@ ms.locfileid: "33775275"
 | [encodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | 返回一个字符串，并将其中的 URL 不安全字符替换为转义字符。 | 
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | 返回输入值的浮点数。 | 
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | 返回字符串的整数版本。 | 
-| [json](../logic-apps/workflow-definition-language-functions-reference.md#json) | 返回字符串或 XML的 JavaScript 对象表示法 (JSON) 类型的值或对象。 | 
+| [json](../logic-apps/workflow-definition-language-functions-reference.md#json) | 返回字符串或 XML 的 JavaScript 对象表示法 (JSON) 类型的值或对象。 | 
 | [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | 返回输入值的字符串版本。 | 
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | 通过将 URL 不安全字符替换为转义字符来返回输入值的 URI 编码版本。 | 
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | 返回 URI 编码字符串的二进制版本。 | 
@@ -371,8 +372,8 @@ ms.locfileid: "33775275"
 | [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | 返回将两个数字相除后的余数。 | 
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | 返回将两个数字相乘得到的乘积。 | 
 | [rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | 返回指定范围内的随机整数。 | 
-| [range](../logic-apps/workflow-definition-language-functions-reference.md#range) | 返回从指定整数开始的整数数组。 | 
-| [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | 返回第一个数减第二个数后的结果。 | 
+| [range](../logic-apps/workflow-definition-language-functions-reference.md#range) | 返回以指定整数开头的一个整数数组。 | 
+| [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | 返回第一个数字减去第二个数字得到的结果。 | 
 ||| 
 
 <a name="date-time-functions"></a>
@@ -470,7 +471,7 @@ ms.locfileid: "33775275"
 | [coalesce](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | 返回一个或多个参数中的第一个非 null 值。 | 
 | [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | 从 JSON 对象中删除某个属性，并返回更新的对象。 | 
 | [setProperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | 设置 JSON 对象的属性值并返回更新的对象。 | 
-| [xpath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | 检查节点的 XML 或与 XPath（XML 路径语言）表达式匹配的值，并返回匹配的节点或值。 | 
+| [xpath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | 检查 XML 中是否存在与 XPath（XML 路径语言）表达式匹配的节点或值，并返回匹配的节点或值。 | 
 ||| 
 
 ## <a name="next-steps"></a>后续步骤

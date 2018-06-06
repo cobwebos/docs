@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: d586ca18953b12045fbbaa4a656d78a7192eb88e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "34371229"
 ---
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -40,7 +40,7 @@ ms.locfileid: "34371229"
 
 2. 选择“下一步: 大小和规模”，以便继续创建 IoT 中心。 
 
-3. 选择**定价和缩放层**。 就本文来说，请选择“F1 - 免费”层（如果此层在订阅上仍然可用）。 有关详细信息，请参阅[定价和缩放层][lnk-pricing]。
+3. 选择“定价和缩放层”。 就本文来说，请选择“F1 - 免费”层（前提是此层在订阅上仍然可用）。 有关详细信息，请参阅[定价和缩放层][lnk-pricing]。
 
    ![IoT 中心大小和规模窗口][3]
 

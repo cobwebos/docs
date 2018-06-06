@@ -9,10 +9,11 @@ ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: e484dac645ff2e5867d2e652c389a9950e8bac12
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "30196434"
 ---
 Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 此类更新包括修补宿主环境（例如操作系统、虚拟机监控程序以及主机上部署的各种代理）中的软件组件、升级网络组件以及硬件解除授权等多项内容。 大多数此类更新在执行时不会影响托管的虚拟机。 但是，也会存在更新产生影响的情况：
 

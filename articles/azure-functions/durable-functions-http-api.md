@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
 ms.openlocfilehash: aa5c46a4d0ca55339e8f26a3e577d03bf4b504b2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "32309974"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions 中的 HTTP API (Azure Functions)
 

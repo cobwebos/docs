@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 53ed914a3890aab1dd49536856feeb8975986e00
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33934802"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理用户帐户
 在 API 管理（预览版）中，开发人员是公开使用 API 管理的 API 的用户。 本指南演示如何进行创建并邀请开发人员使用 API 和产品，向 API 管理实例提供。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](https://msdn.microsoft.com/library/azure/dn776326.aspx)参考中的[用户实体](https://msdn.microsoft.com/library/azure/dn776330.aspx)文档。

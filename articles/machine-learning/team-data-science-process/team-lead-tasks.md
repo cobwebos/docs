@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
 ms.openlocfilehash: d17c6c7543416d3f279b7e25152a421dd233a806
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "32777945"
 ---
 # <a name="team-lead-tasks"></a>团队主管任务
 
@@ -357,7 +358,7 @@ ms.lasthandoff: 05/03/2018
 
 ![34](./media/team-lead-tasks/team-leads-34-attach-s3.png)
 
-**如何手动输入 Azure 文件存储信息：**如果没有包含 Azure 文件存储信息的文本文件，可以按照以下屏幕上的说明键入必需的订阅、存储帐户和 Azure 文件存储信息：
+**如何手动输入 Azure 文件存储信息：** 如果没有包含 Azure 文件存储信息的文本文件，可以按照以下屏幕上的说明键入必需的订阅、存储帐户和 Azure 文件存储信息：
 
 ![35](./media/team-lead-tasks/team-leads-35-attach-s4.png)
 
@@ -386,7 +387,7 @@ ms.lasthandoff: 05/03/2018
 
 ![40](./media/team-lead-tasks/team-leads-40-attach-s4-linux.png)
 
-**如何手动输入 Azure 文件存储信息：**如果没有包含 Azure 文件存储信息的文本文件，可以按照以下屏幕上的说明键入必需的订阅、存储帐户和 Azure 文件存储信息：
+**如何手动输入 Azure 文件存储信息：** 如果没有包含 Azure 文件存储信息的文本文件，可以按照以下屏幕上的说明键入必需的订阅、存储帐户和 Azure 文件存储信息：
 
 - 输入 n。
 - 选择在上一步骤中在其中创建了 Azure 文件存储的订阅名称的索引：

@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
 ms.openlocfilehash: 808f25ee2c0b72f557ec72d159318e25cb7387ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33786126"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>使用 Azure 媒体包装器完成静态打包任务
 > [!NOTE]

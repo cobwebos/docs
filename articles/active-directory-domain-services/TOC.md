@@ -1,4 +1,4 @@
-# [Azure AD 域服务文档](index.md)
+# [Azure AD 域服务文档](index.yml)
 
 # 概述
 ## [什么是 Azure AD 域服务？](active-directory-ds-overview.md)

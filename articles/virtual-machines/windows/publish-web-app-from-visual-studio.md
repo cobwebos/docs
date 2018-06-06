@@ -13,10 +13,11 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: d9e2c1a941c25aedd9048f2784350106b8739dba
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "31797187"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>通过 Visual Studio 将 ASP.NET Web 应用发布到 Azure VM
 

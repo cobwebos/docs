@@ -13,11 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/08/2017
   ms.author: tamram
-  ms.openlocfilehash: f19fc44c2d8f4a8af7f757983020eaee6f94b241
-  ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+  ms.openlocfilehash: de0672c3f4f06dd20081e401121f1cbbe2d77c9f
+  ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 06/05/2018
+  ms.locfileid: "34763164"
 abstract:
   description: Microsoft Azure 存储是 Microsoft 托管的云服务，其提供的存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Blob 存储、文件存储和队列存储。  使用快速入门和教程了解如何在应用程序中利用 Azure 存储。
 sections:
@@ -125,6 +126,6 @@ sections:
     - title: 命令行
       html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
     - title: 语言
-      html: <p><a href="/java/api/">Java</a></p><p><a href="http://azure.github.io/azure-storage-node">Node.js</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
+      html: <p><a href="/dotnet/api/">.NET</a></p><p><a href="/java/api/">Java</a></p><p><a href="/javascript/api/overview/azure/">Node.js</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
     - title: REST
       html: <p><a href="/rest/api/storageservices">Blob、队列、表和文件</a></p><p><a href="/rest/api/storagerp">资源提供程序</a></p><p><a href="/rest/api/storageimportexport">导入/导出</a></p>

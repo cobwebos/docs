@@ -15,17 +15,18 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: dimazaid
 ms.openlocfilehash: 36d70c40e3de7bd38cdfc566da37060cdcea9060
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33777529"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户推送通知
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。 ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。
 
-在本教程中，会执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * 创建 WebAPI 项目

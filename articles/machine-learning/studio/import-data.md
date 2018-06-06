@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.openlocfilehash: 0ecc2262aee34cd3bcc70785915918414eab3ccd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "30176816"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>将训练数据从各种数据源导入 Azure 机器学习工作室
 若要在机器学习工作室中，使用自己的数据来开发和训练预测分析，可执行以下操作： 

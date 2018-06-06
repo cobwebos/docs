@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: iainfou
 ms.openlocfilehash: 91138ffad0fd906061e0b0ce5cdb251f402d3341
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "32776102"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell-preview"></a>通过 Azure PowerShell（预览版）对虚拟机规模集中的操作系统和附加的数据磁盘进行加密

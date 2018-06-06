@@ -15,10 +15,10 @@ ms.topic: reference
 ms.date: 5/8/2018
 ms.author: klam; LADocs
 ms.openlocfilehash: 88ee3d810a80bed418e8dbafa4f3e35ccf5e85b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "33886776"
 ---
 # <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义的触发器和操作

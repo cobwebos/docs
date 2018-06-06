@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 12/10/2017
 ms.author: juliako
 ms.openlocfilehash: a685043f0bc9841d2cc86f2c49469e8287a03b78
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "33780222"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容

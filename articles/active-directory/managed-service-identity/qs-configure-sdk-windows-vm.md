@@ -15,10 +15,11 @@ ms.workload: identity
 ms.date: 09/28/2017
 ms.author: daveba
 ms.openlocfilehash: 781f332b2892d9af536bf9a6f81642842285927b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33930801"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>使用 Azure SDK 配置 VM 托管服务标识 (MSI)
 
