@@ -12,20 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/22/2018
 ms.author: anwestg
-ms.openlocfilehash: 5b4281de4a6c2efee8e96f98a3cd46fec191fe22
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7084243c0fc84429b585c3e8fd9e5c64df469ec4
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604278"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 将 1804年更新应用于你的 Azure 堆栈集成系统，或在部署 Azure 应用程序服务 1.2 之前部署的最新的 Azure 堆栈开发工具包。
+> 请将 1804 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.2。
 >
 >
 
@@ -73,7 +74,7 @@ ms.lasthandoff: 05/20/2018
 
 5. 查看并接受第三方许可条款，然后单击“下一步”。
 
-6. 请确保应用服务云配置信息正确无误。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，或者要部署到集成系统，则必须在此窗口中编辑相应的值，以反映自己的需要。 例如，如果使用域后缀 mycloud.com，则必须将“Azure Stack 租户”Azure 资源管理器终结点更改为 management.<region>.mycloud.com。确认信息后，单击“下一步”。
+6. 请确保应用服务云配置信息正确无误。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，或者要部署到集成系统，则必须在此窗口中编辑相应的值，以反映自己的需要。 例如，如果使用域后缀 mycloud.com，则必须将“Azure Stack 租户”Azure 资源管理器终结点更改为 management.<region>.mycloud.com。 确认信息后，单击“下一步”。
 
     ![应用服务安装程序][3]
 
@@ -81,6 +82,12 @@ ms.lasthandoff: 05/20/2018
     1. 单击“Azure Stack 订阅”框旁边的“连接”按钮。
         - 提供管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，并单击“登录”。
     2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
+    
+    > [!NOTE]
+    > 仅可以将应用程序服务部署到**默认提供程序订阅**在此时间。  在未来的更新 App Service 将部署到新计数的订阅中 Azure 堆栈 1804年引入和所有现有部署将迁移到此新订阅还。
+    >
+    >
+    
     3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
     4. 单击“下一步”。
 
@@ -96,12 +103,12 @@ ms.lasthandoff: 05/20/2018
 
     ![应用服务安装程序][5]
 
-9. 输入文件共享的信息，然后单击“下一步”。 文件共享的地址必须使用文件服务器的完全限定域名或 IP 地址。 例如 \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或 \\\10.0.0.1\websites。
+9. 输入文件共享的信息，然后单击“下一步”。 文件共享的地址必须使用文件服务器的完全限定域名或 IP 地址。 例如， \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或\\\10.0.0.1\websites
 
-> [!NOTE]
-> 在继续下一步之前，安装程序会尝试测试与文件共享的连接。  但是，如果前面已选择部署到现有虚拟网络，则安装程序可能无法连接到文件共享，并显示警告来询问是否继续。  请检查文件共享信息，如果正确，则继续。
->
->
+    > [!NOTE]
+    > 在继续下一步之前，安装程序会尝试测试与文件共享的连接。  但是，如果你选择要在现有虚拟网络中部署，安装程序将可能无法连接到文件共享，并显示一条警告，询问您是否要继续。  请检查文件共享信息，如果正确，则继续。
+    >
+    >
 
    ![应用服务安装程序][8]
 
@@ -126,12 +133,12 @@ ms.lasthandoff: 05/20/2018
 
     ![应用服务安装程序][11]
 
-12. 为用于托管应用服务资源提供程序数据库的服务器实例输入 SQL Server 详细信息，然后单击“下一步”。 安装程序将验证 SQL 连接属性。 你**必须**输入的内部 ip 或 SQL Server 名称的完全限定的域名。
+12. 为用于托管应用服务资源提供程序数据库的服务器实例输入 SQL Server 详细信息，然后单击“下一步”。 安装程序将验证 SQL 连接属性。 **必须**输入内部 IP 或完全限定域名作为 SQL Server 名称。
 
-> [!NOTE]
-> 在继续下一步之前，安装程序会尝试测试与 SQL Server 的连接。  但是，如果前面已选择部署到现有虚拟网络，则安装程序可能无法连接到 SQL Server，并显示警告来询问是否继续。  请检查 SQL Server 信息，如果正确，则继续。
->
->
+    > [!NOTE]
+    > 在继续下一步之前，安装程序会尝试测试与 SQL Server 的连接。  但是，如果前面已选择部署到现有虚拟网络，则安装程序可能无法连接到 SQL Server，并显示警告来询问是否继续。  请检查 SQL Server 信息，如果正确，则继续。
+    >
+    >
    
    ![应用服务安装程序][12]
 
@@ -186,16 +193,16 @@ ms.lasthandoff: 05/20/2018
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
     
 > [!NOTE]
-> 如果你选择要部署到一个现有的虚拟网络和 conenct 到你的文件服务器的内部 IP 地址，你必须添加出站安全规则，启用辅助子网和文件服务器之间的 SMB 流量。  若要执行此操作，请转到在管理门户中 WorkersNsg 并添加出站安全规则具有以下属性：
-> * 源： 任何
-> * 源端口范围: *
-> * 目标： IP 地址
-> * 目标 IP 地址范围： Ip 范围为你的文件服务器
-> * 目标端口范围： 445
-> * 协议： TCP
-> * 操作： 允许
-> * 优先级： 700
-> * 名称： Outbound_Allow_SMB445
+> 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。  为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
+> * 源：任何
+> * 源端口范围：*
+> * 目标：IP 地址
+> * 目标 IP 地址范围：文件服务器的 IP 范围
+> * 目标端口范围：445
+> * 协议：TCP
+> * 操作：允许
+> * 优先级：700
+> * 名称：Outbound_Allow_SMB445
 >
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>体验 Azure Stack 上的应用服务

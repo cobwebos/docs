@@ -1,5 +1,5 @@
 ---
-title: 使用模板验证工具检查 Azure 堆栈模板 |Microsoft 文档
+title: 使用模板验证工具检查 Azure Stack 的模板 | Microsoft Docs
 description: 检查要部署到 Azure Stack 的模板
 services: azure-stack
 documentationcenter: ''
@@ -15,24 +15,25 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 88fac41ce2c9fa0c5569beae02ab90a507c89a34
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1800db8cd25aa37bffb76adf00901e11c75d49fe
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604074"
 ---
-# <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>使用模板验证工具 Azure 堆栈检查你的模板
+# <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>使用模板验证工具检查 Azure Stack 的模板
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-你可以使用模板验证工具用于检查你的 Azure 资源管理器[模板](azure-stack-arm-templates.md)准备好部署到 Azure 堆栈。 模板验证工具是 Azure Stack 工具的一部分。 使用[从 GitHub 下载工具](azure-stack-powershell-download.md)一文中所述的步骤下载 Azure Stack 工具。
+可以使用模板验证工具检查 Azure 资源管理器[模板](azure-stack-arm-templates.md)是否已准备好部署到 Azure Stack。 模板验证工具是 Azure Stack 工具的一部分。 使用[从 GitHub 下载工具](azure-stack-powershell-download.md)一文中所述的步骤下载 Azure Stack 工具。
 
 ## <a name="overview"></a>概述
 
-若要验证模板，你必须构建云的功能，文件第一个，然后运行验证工具。 使用以下 PowerShell 模块从 Azure 堆栈工具：
+若要验证模板，必须先生成云功能文件，然后运行验证工具。 使用 Azure Stack 工具中的以下 PowerShell 模块：
 
-- 在**TemplateValidator**文件夹：<br>         AzureRM.CloudCapabilities.psm1 创建云功能 JSON 文件表示的服务和 Azure 堆栈云中的版本。
-- 在**CloudCapabilities**文件夹：<br>
+- 在 **TemplateValidator** 文件夹中：<br>         AzureRM.CloudCapabilities.psm1 会创建云功能 JSON 文件，该文件表示 Azure Stack 云中的服务和版本。
+- 在 **CloudCapabilities** 文件夹中：<br>
 AzureRM.TemplateValidator.psm1 使用云功能 JSON 文件来测试要在 Azure Stack 中部署的模板。
 
 ## <a name="build-the-cloud-capabilities-file"></a>生成云功能文件
@@ -40,7 +41,7 @@ AzureRM.TemplateValidator.psm1 使用云功能 JSON 文件来测试要在 Azure 
 使用模板验证程序之前，先运行 AzureRM.CloudCapabilities PowerShell 模块以生成 JSON 文件。
 
 >[!NOTE]
->如果你更新你的集成的系统，或添加任何新服务或虚拟扩展时，应再次运行此模块。
+>如果更新集成系统，或添加任何新服务或虚拟扩展，应重新运行该模块。
 
 1. 请确保已连接到 Azure Stack。 这些步骤可从 Azure Stack 开发工具包主机执行，也可以使用 [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 从工作站连接。
 2. 导入 AzureRM.CloudCapabilities PowerShell 模块：
@@ -49,7 +50,7 @@ AzureRM.TemplateValidator.psm1 使用云功能 JSON 文件来测试要在 Azure 
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. 使用 Get-CloudCapabilities cmdlet 检索服务版本，并创建云功能 JSON 文件。 如果没有指定 **-OutputPath**，AzureCloudCapabilities.Json 创建当前目录中的文件。 使用实际位置：
+3. 使用 Get-CloudCapabilities cmdlet 检索服务版本，并创建云功能 JSON 文件。 如果未指定 **-OutputPath**，则将在当前目录中创建文件 AzureCloudCapabilities.Json。 使用实际位置：
 
     ```PowerShell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -57,7 +58,7 @@ AzureRM.TemplateValidator.psm1 使用云功能 JSON 文件来测试要在 Azure 
 
 ## <a name="validate-templates"></a>验证模板
 
-使用以下步骤来验证通过使用 AzureRM.TemplateValidator PowerShell 模块的模板。 可以使用自己的模板，或验证 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。
+按照这些步骤，使用 AzureRM.TemplateValidator PowerShell 模块验证模板。 可以使用自己的模板，或验证 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。
 
 1. 导入 AzureRM.TemplateValidator.psm1 PowerShell 模块：
 
@@ -74,7 +75,7 @@ AzureRM.TemplateValidator.psm1 使用云功能 JSON 文件来测试要在 Azure 
     -Verbose
     ```
 
-模板验证警告或错误记录到 PowerShell 控制台和源目录中的 HTML 文件。 以下屏幕截图显示了一份验证报告的示例：
+模板验证警告或错误会记录到 PowerShell 控制台和源目录中的 HTML 文件。 以下屏幕截图显示了验证报告的示例：
 
 ![模板验证报告](./media/azure-stack-validate-templates/image1.png)
 
@@ -94,11 +95,11 @@ AzureRM.TemplateValidator.psm1 使用云功能 JSON 文件来测试要在 Azure 
 
 ### <a name="examples"></a>示例
 
-此示例将验证的所有[Azure 堆栈快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)下载到本地存储区。 该示例还将验证虚拟机大小和针对 Azure 堆栈开发工具包功能的扩展。
+此示例验证下载到本地存储的所有 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。 此示例还根据 Azure Stack 开发工具包功能验证虚拟机大小和扩展。
 
 ```PowerShell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
--CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json.json `
+-CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json `
 -TemplatePattern MyStandardTemplateName.json`
 -IncludeComputeCapabilities`
 -Report TemplateReport.html

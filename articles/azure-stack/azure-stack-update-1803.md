@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 2fdb77c133d5d8955ad6ae15864cbe0c78bc4e2f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 1186776742562566be893c411a642d2feb819a86
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603938"
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新
 
@@ -56,9 +57,9 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 ### <a name="post-update-steps"></a>更新后步骤
 - 安装 1803 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。
 
-  - [KB 4294441-针对租户资源失败和意外的共享的操作是在同一租户或基础结构卷上创建](https://support.microsoft.com/en-us/help/4294441)
+  - [KB 4294441 - 针对租户资源的操作失败，并且在同一租户或基础结构卷上创建了意外共享](https://support.microsoft.com/en-us/help/4294441)
 
-- 在安装此更新之后, 查看你的防火墙配置，以确保[必要的端口](azure-stack-integrate-endpoints.md)处于打开状态。 例如，此更新引入了 Azure 监视器包括到活动日志的审核日志的更改。 进行此更改后，端口 13012 现在使用，还必须打开。  
+- 安装此更新后，请查看防火墙配置以确保[必需的端口](azure-stack-integrate-endpoints.md)处于打开状态。 例如，此更新引入了 Azure Monitor，其中包括将审核日志更改为活动日志。 由于此更改，端口 13012 现在已使用，并且也必须处于打开状态。  
 
 ### <a name="new-features"></a>新增功能 
 此更新包含以下适用于 Azure Stack 的改进和修复。
@@ -110,6 +111,9 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 下面是内部版本 **20180323.2** 的安装后已知问题。
 
 #### <a name="portal"></a>门户
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  解决方法： 若要解决此问题，在安装此更新后，使用从步骤 3[触发器的自动化功能来配置声明提供方信任 Azure 堆栈中的](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程重新设置默认提供程序订阅的所有者。   
+
 - 在管理员门户中[从下拉列表提交新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 请改用以下链接：     
     - 对于 Azure Stack 集成系统，请使用 https://aka.ms/newsupportrequest。
 
@@ -131,7 +135,23 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
   可以放心地忽略此警报。 
 
 
-<!-- #### Health and monitoring --> 
+#### <a name="health-and-monitoring"></a>运行状况和监视
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   警报 # 1:
+   - 名称： 基础结构角色不正常
+   - 严重性： 警告
+   - 组件： 运行状况控制器
+   - 描述： 检测信号扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。  
+
+  警报 # 2:
+   - 名称： 基础结构角色不正常
+   - 严重性： 警告
+   - 组件： 运行状况控制器
+   - 描述： 错误扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。
+
+  可放心忽略这两个警报。 它们将自动关闭随着时间的推移。  
+
 
 #### <a name="marketplace"></a>Marketplace
 - 用户无需订阅就能浏览整个商城，并且能看到计划和产品/服务等管理项。 对用户而言，这些项是非功能性的。
@@ -143,7 +163,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 - 通过转到“新建” > “计算” > “可用性集”在门户中创建可用性集时，只能创建一个包含一个容错域和 1 个更新域的可用性集。 解决方法是在创建新的虚拟机时，通过 PowerShell、CLI 或门户来创建可用性集。
 
-- 在 Azure Stack 用户门户中创建虚拟机时，该门户显示的可以附加到 DS 系列 VM 的数据磁盘数不正确。 DS 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
+- 在 Azure Stack 用户门户中创建虚拟机时，该门户显示的可以附加到 D 系列 VM 的数据磁盘数不正确。 所有受支持的 D 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
 
 - 无法创建 VM 映像时，可能会向 VM 映像计算边栏选项卡添加一个无法删除的故障项。
 
@@ -264,6 +284,8 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 <!--
 #### Identity
 -->
+
+
 
 #### <a name="downloading-azure-stack-tools-from-github"></a>从 GitHub 下载 Azure Stack 工具
 - 使用 *invoke-webrequest* PowerShell cmdlet 从 Github 下载 Azure Stack 工具时，收到一个错误：     

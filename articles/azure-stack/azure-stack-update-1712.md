@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/24/2018
 ms.author: brenduns
-ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b4c5b53a46792e31316f752f8902d7a05554b57d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604142"
 ---
 # <a name="azure-stack-1712-update"></a>Azure Stack 1712 更新
 
@@ -43,11 +44,11 @@ Azure Stack 1712 更新内部版本号为 **180106.1**。 如果客户以前已�
 在应用此更新之前，必须先安装 Azure Stack [1711 更新](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1711)。
 
 ### <a name="post-update-steps"></a>更新后步骤
-- 安装之后 1712年，安装任何适用的修补程序。 有关详细信息中，查看以下知识库文章，以及我们[维护策略](azure-stack-servicing-policy.md)。  
-  - [KB 4103348-网络控制器 API 服务崩溃时尝试安装 Azure 堆栈更新](https://support.microsoft.com/help/4103348)
+- 安装 1712 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
+  - [KB 4103348 - 尝试安装 Azure Stack 更新时，网络控制器 API 服务崩溃](https://support.microsoft.com/help/4103348)
 
 
-- 更新 1712年还要求你安装固件更新从 OEM 合作伙伴 1712 Azure 堆栈更新安装完成后。
+- 更新 1712 还要求在完成 1712 Azure Stack 更新安装之后安装 OEM 合作伙伴提供的固件更新。
 
   > [!NOTE]
   > 请参阅 OEM 合作伙伴网站来下载更新。
@@ -83,13 +84,13 @@ Azure Stack 1712 更新内部版本号为 **180106.1**。 如果客户以前已�
 
 本部分描述在安装 1712 更新期间可能会遇到的已知问题。
 
-1. **症状：**Azure Stack 操作员在更新过程中可能会看到以下错误：*“角色 'VirtualMachines' 的类型 'CheckHealth' 引发了异常:\n\n-ACS01 的虚拟机运行状况检查生成了以下错误。\n从主机获取 VM 信息时出错。异常详细信息:\nGet-VM: 计算机 'Node03' 上的操作失败: WS-Management 服务无法处理请求。WMI \nservice 或 WMI 提供程序返回了未知的错误: HRESULT 0x8004106c”。*
-    1. **原因：**此问题是由某个 Windows Server 问题造成的，后续的 Windows Server 更新中会解决此问题。
-    2. **解决方法：**请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
+1. **症状：** Azure Stack 操作员在更新过程中可能会看到以下错误：*“角色 'VirtualMachines' 的类型 'CheckHealth' 引发了异常:\n\n-ACS01 的虚拟机运行状况检查生成了以下错误。\n从主机获取 VM 信息时出错。异常详细信息:\nGet-VM: 计算机 'Node03' 上的操作失败: WS-Management 服务无法处理请求。WMI \nservice 或 WMI 提供程序返回了未知的错误: HRESULT 0x8004106c”。*
+    1. **原因：** 此问题是由某个 Windows Server 问题造成的，后续的 Windows Server 更新中会解决此问题。
+    2. **解决方法：** 请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
 <br><br>
-2. **症状：**Azure Stack 操作员在更新过程中可能会看到以下错误：“在 Host-Node03 节点上启用种子环 VM 失败，并出现以下错误: [Host-Node03] 连接到远程服务器 Host-Node03 失败，并出现以下错误消息: WinRM 客户端收到 HTTP 服务器错误状态 (500)，但远程服务并不包含有关失败原因的其他任何信息。”
-    1. **原因：**此问题是由某个 Windows Server 问题造成的，后续的 Windows Server 更新中会解决此问题。 
-    2. **解决方法：**请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
+2. **症状：** Azure Stack 操作员在更新过程中可能会看到以下错误：“在 Host-Node03 节点上启用种子环 VM 失败，并出现以下错误: [Host-Node03] 连接到远程服务器 Host-Node03 失败，并出现以下错误消息: WinRM 客户端收到 HTTP 服务器错误状态 (500)，但远程服务并不包含有关失败原因的其他任何信息。”
+    1. **原因：** 此问题是由某个 Windows Server 问题造成的，后续的 Windows Server 更新中会解决此问题。 
+    2. **解决方法：** 请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
 <br><br>
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
@@ -112,11 +113,29 @@ Azure Stack 1712 更新内部版本号为 **180106.1**。 如果客户以前已�
 
 - 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
 - 无法使用 Azure Stack 门户查看订阅的权限。 解决方法是使用 PowerShell 验证权限。
-- **服务运行状况**边栏选项卡无法加载。 当你打开的服务运行状况边栏选项卡在管理员或用户门户中，Azure 堆栈会显示错误并不会加载信息。 这是预期的行为。 尽管你可以选择并打开服务运行状况，但此功能尚不可用，但将实现 Azure 堆栈的未来版本中。
+- “服务运行状况”边栏选项卡无法加载。 在管理员或用户门户中打开“服务运行状况”边栏选项卡时，Azure Stack 显示错误且不加载信息。 这是预期的行为。 尽管可以选择并打开“服务运行状况”，但此功能目前不可用，将来的 Azure Stack 版本中会实现此功能。
 
 #### <a name="health-and-monitoring"></a>运行状况和监视
 
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   警报 # 1:
+   - 名称： 基础结构角色不正常
+   - 严重性： 警告
+   - 组件： 运行状况控制器
+   - 描述： 检测信号扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。  
+
+  警报 # 2:
+   - 名称： 基础结构角色不正常
+   - 严重性： 警告
+   - 组件： 运行状况控制器
+   - 描述： 错误扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。
+
+  可放心忽略这两个警报。 它们将自动关闭随着时间的推移。  
+
 - 如果重新启动基础结构角色实例，可能会收到一条消息，指出重新启动失败。 但实际上重新启动已成功。
+
+
 
 #### <a name="marketplace"></a>Marketplace
 - 出于兼容性考虑，此版本中将会删除一些 Marketplace 项。 在进一步验证后，会重新启用这些项。

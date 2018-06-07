@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 69a4529e009d9fdd7081bc4d4b53c468befd8e6d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: cfac573bc9f1bdec3fd884f8090e11514f1e93b3
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604703"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 证书签名请求生成
 
@@ -30,7 +31,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
  - **标准证书请求**  
     根据[为 Azure Stack 部署生成 PKI 证书](azure-stack-get-pki-certs.md)执行请求。
  - **请求类型**  
-    指定证书签名请求将单个请求或多个请求。
+    指定证书签名请求是单个请求还是多个请求。
  - **平台即服务**  
     （可选）根据 [Azure Stack 公钥基础结构证书要求 - 可选的 PaaS 证书](azure-stack-pki-certs.md#optional-paas-certificates)中的规定，请求证书的平台即服务 (PaaS) 名称。
 
@@ -48,7 +49,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
  - Windows 10 或 Windows Server 2016
  
   > [!NOTE]
-  > 当你收到证书后从证书颁发机构中的步骤[准备 Azure 堆栈 PKI 证书](azure-stack-prepare-pki-certs.md)将需要在同一系统上完成 ！
+  > 从证书颁发机构收回证书时，需要在同一个系统上完成[准备 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)中的步骤！
 
 ## <a name="generate-certificate-signing-requests"></a>生成证书签名请求
 
@@ -68,7 +69,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
     > [!note]  
     > 如果提供公用名 (CN)，此值将被证书请求的第一个 DNS 名称覆盖。
 
-3.  声明的输出目录中已存在。 例如：
+3.  声明已存在的输出目录。 例如：
 
     ````PowerShell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
@@ -97,21 +98,21 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
     > [!note]  
     > `<regionName>.<externalFQDN>` 构成了 Azure Stack 中所有外部 DNS 名称创建位置的基础，在此示例中，门户是 `portal.east.azurestack.contoso.com`。  
 
-6. 若要生成多个使用者备用名称的单个证书请求：
+6. 若要使用多个使用者可选名称生成单个证书请求：
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-    若要包括 PaaS 服务指定交换机 ```-IncludePaaS```
+    若要包括 PaaS 服务，请指定开关 ```-IncludePaaS```
 
-7. 若要生成单个证书签名请求每个 DNS 名称：
+7. 若要为每个 DNS 名称生成单个证书签名请求：
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-    若要包括 PaaS 服务指定交换机 ```-IncludePaaS```
+    若要包括 PaaS 服务，请指定开关 ```-IncludePaaS```
 
 8. 查看输出：
 

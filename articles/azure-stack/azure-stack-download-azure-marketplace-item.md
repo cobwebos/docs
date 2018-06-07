@@ -1,6 +1,6 @@
 ---
 title: 从 Azure 下载 Marketplace 项 | Microsoft Docs
-description: 云操作员可以从 Azure 下载到我的 Azure 堆栈部署应用商店项。
+description: 云操作员可将 Marketplace 项从 Azure 下载到 Azure Stack 部署。
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -15,85 +15,86 @@ ms.topic: get-started-article
 ms.date: 05/16/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 69148a0ac9a5761eeee0ab47d83862724583619a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 5d403f7c1d0fff466f6c0fb9942ec777ab820eab
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604526"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将 Marketplace 项从 Azure 下载到 Azure Stack
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-作为云操作员，从 Azure 应用商店下载的项目，并提供 Azure 堆栈中。 你可以选择各项是从预测试和支持使用 Azure 堆栈的 Azure 应用商店项策展列表。 其他项经常会添加到此列表，因此继续不久后回来查看新内容。 
+以云操作员的身份从 Azure Marketplace 下载项，并使其适用于 Azure Stack。 可以选择的项来自 Azure Marketplace 项的有序列表，这些项已预先经过测试，支持与 Azure Stack 配合使用。 其他项会不断地添加到此列表中，因此请不时地返回查看新内容。 
 
-有用于连接到 Azure 应用商店的两种方案： 
+Azure Marketplace 有两种连接场景： 
 
-- **连接的方案**-需要您的 Azure 堆栈环境以连接到 internet。 使用 Azure 堆栈门户查找和下载项。 
-- **断开连接或部分连接方案**-，需要访问 internet 使用 marketplace 联合工具下载应用商店项。 然后，将您的下载传输到你已断开连接的 Azure 堆栈安装。 这种情况下使用 PowerShell。
+- **联网场景** - 需将 Azure Stack 环境连接到 Internet。 使用 Azure Stack 门户查找和下载项。 
+- **离线场景或部分联网场景** - 需要使用 Marketplace 联合工具访问 Internet，以下载 Marketplace 项。 然后，将下载内容传输到离线 Azure Stack 安装中。 此场景使用 PowerShell。
 
-请参阅[Azure 堆栈的 Azure 应用商店项](azure-stack-marketplace-azure-items.md)有关你可以下载的应用商店项的列表。
+有关可下载的 Marketplace 项的列表，请参阅 [Azure Stack 的 Azure Marketplace 项](azure-stack-marketplace-azure-items.md)。
 
 
-## <a name="connected-scenario"></a>连接的方案
-如果 Azure 堆栈连接到 internet，你可以使用管理门户下载的应用商店项。
+## <a name="connected-scenario"></a>联网场景
+如果 Azure Stack 已连接到 Internet，则你可以使用管理门户下载 Marketplace 项。
 
 ### <a name="prerequisites"></a>必备组件
-你的 Azure 堆栈部署必须具有 internet 连接，而且必须[向 Azure 注册了](azure-stack-register.md)。
+Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](azure-stack-register.md)。
 
-### <a name="use-the-portal-to-download-marketplace-items"></a>使用门户下载的应用商店项  
-1. 登录到 Azure 堆栈管理员门户。
+### <a name="use-the-portal-to-download-marketplace-items"></a>使用门户下载 Marketplace 项  
+1. 登录到 Azure Stack 管理员门户。
 
-2.  下载应用商店项之前查看可用存储空间。 更高版本，当你选择下载的项，你可以为你的可用存储容量比较下载大小。 如果容量有限，请考虑选项[管理可用空间](azure-stack-manage-storage-shares.md#manage-available-space)。 
+2.  下载 Marketplace 项之前，查看可用的存储空间。 稍后在选择要下载的项时，可将下载大小与可用存储容量进行比较。 如果容量有限，请考虑使用[管理可用空间](azure-stack-manage-storage-shares.md#manage-available-space)的选项。 
 
-    若要查看可用空间，在**区域管理**选择你想要浏览，然后转到的区域**资源提供程序** > **存储**。
+    若要查看可用空间，请在“区域管理”中选择要浏览的区域，然后转到“资源提供程序” > “存储”。
 
-    ![检查存储空间](media/azure-stack-download-azure-marketplace-item/storage.png)  
+    ![查看存储空间](media/azure-stack-download-azure-marketplace-item/storage.png)  
 
     
-3. 打开 Azure 堆栈应用商店并连接到 Azure。 为此，请选择**应用商店管理**，然后选择**从 Azure 中的添加**。
+3. 打开 Azure Stack Marketplace 并连接到 Azure。 为此，请依次选择“Marketplace 管理”、“从 Azure 中添加”。
 
     ![从 Azure 添加](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
-    门户将显示可从 Azure 应用商店下载项的列表。 你可以单击每个项可查看其说明和其他信息，包括其下载大小。 
+    门户将显示可从 Azure Marketplace 下载的项的列表。 可以单击每个项查看其说明和附加信息，包括其下载大小。 
 
-    ![应用商店列表](media/azure-stack-download-azure-marketplace-item/image03.png)
+    ![Marketplace 列表](media/azure-stack-download-azure-marketplace-item/image03.png)
 
-4. 选择的项，然后选择**下载**。 下载时间会有差异。
+4. 选择所需的项，然后选择“下载”。 下载时间会有差异。
 
     ![下载消息](media/azure-stack-download-azure-marketplace-item/image04.png)
 
-    下载完成后，你可以部署新的应用商店项目作为 Azure 堆栈运算符或用户。
+    下载完成后，可以 Azure Stack 操作员或用户的身份部署新 Marketplace 项。
 
-5. 要部署下载的项，请选择 **+ 新建**，然后搜索之间新的应用商店项目的类别。 接下来选择要开始部署过程的项。 该过程因不同的应用商店项而异。 
+5. 若要部署下载的项，请选择“+新建”，在类别中搜索该新 Marketplace 项。 接下来，选择该项以开始部署过程。 该过程根据 Marketplace 项的不同而异。 
 
-## <a name="disconnected-or-a-partially-connected-scenario"></a>断开连接或部分连接的方案
+## <a name="disconnected-or-a-partially-connected-scenario"></a>离线场景或部分联网场景
 
-如果 Azure 堆栈处于断开连接模式，而无需 internet 连接，则使用 PowerShell 和*marketplace 联合工具*下载到计算机的 internet 连接的应用商店项。 然后将项传输到你的 Azure 堆栈环境。 在连接断开的环境，不能通过使用 Azure 堆栈门户下载的应用商店项。 
+如果 Azure Stack 处于离线模式且未建立 Internet 连接，请使用 PowerShell 和 *Marketplace 联合工具*，将 Marketplace 项下载到已建立 Internet 连接的计算机。 然后，将这些项传输到 Azure Stack 环境。 在离线环境中，无法使用 Azure Stack 门户下载 Marketplace 项。 
 
-应用商店联合工具还可在连接方案。 
+也可以在联网场景中使用 Marketplace 联合工具。 
 
 此方案包含两个部分：
-- **第 1 部分：** 从 Azure 应用商店下载。 具有 internet 访问的计算机上你配置 PowerShell，请下载联合工具，然后下载项目窗体 Azure 应用商店。  
-- **第 2 部分：** 上载和发布到 Azure 堆栈市场。 移动的文件下载到你的 Azure 堆栈环境，将它们导入 Azure 堆栈，然后将它们发布到 Azure 堆栈应用商店。  
+- **第 1 部分：** 从 Azure Marketplace 下载。 在能够访问 Internet 的计算机上配置 PowerShell，下载联合工具，然后从 Azure Marketplace 下载项。  
+- **第 2 部分：** 上传并发布到 Azure Stack Marketplace。 将下载的文件移到 Azure Stack 环境，将其导入 Azure Stack，然后将其发布到 Azure Stack Marketplace。  
 
 
 ### <a name="prerequisites"></a>必备组件
-- 必须是 Azure 堆栈部署[向 Azure 注册了](azure-stack-register.md)。  
+- Azure Stack 部署必须[已注册到 Azure](azure-stack-register.md)。  
 
-- 具有 internet 连接的计算机必须安装**Azure 堆栈 PowerShell 模块版本 1.2.11**或更高版本。 如果尚不存在，[安装 Azure 堆栈特定 PowerShell 模块](azure-stack-powershell-install.md)。  
+- 已建立 Internet 连接的计算机上必须已安装 **Azure Stack PowerShell 模块版本 1.2.11** 或更高版本。 如果未安装，请[安装 Azure Stack 特定的 PowerShell 模块](azure-stack-powershell-install.md)。  
 
-- 若要启用的这样的下载的应用商店项目的导入[PowerShell 环境用于 Azure 堆栈运算符](azure-stack-powershell-configure-admin.md)必须配置。  
+- 若要启用已下载 Marketplace 项的导入，必须配置 [Azure Stack 操作员的 PowerShell 环境](azure-stack-powershell-configure-admin.md)。  
 
-- 包含一个可公开访问容器 （这是存储 blob） 的 Azure 堆栈中，必须具有存储帐户。 将容器用作临时存储的应用商店项库文件。 如果你不熟悉与存储帐户和容器，请参阅[兼容 blob 的 Azure 门户](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)Azure 文档中。
+- 必须在 Azure Stack 中拥有一个包含可公开访问的容器（存储 Blob）的[存储帐户](azure-stack-manage-storage-accounts.md)。 该容器将用作 Marketplace 项库文件的临时存储。 如果你不熟悉存储帐户和容器，请参阅 Azure 文档中的[使用 Blob - Azure 门户](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
 
-- 在第一个过程中下载应用商店联合工具。 
+- 在执行第一个过程期间，将下载 Marketplace 联合工具。 
 
-### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>使用应用商店联合工具下载应用商店项
+### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>使用 Marketplace 联合工具下载 Marketplace 项
 
-1. 在建立 Internet 连接的计算机上，以管理员身份打开 PowerShell 控制台。
+1. 在已建立 Internet 连接的计算机上，以管理员身份打开 PowerShell 控制台。
 
-2. 添加已经用来注册过 Azure Stack 的 Azure 帐户。 若要运行的 PowerShell 中添加帐户，`Add-AzureRmAccount`不带任何参数。 系统将提示你输入你的 Azure 帐户凭据和你可能必须使用基于你的帐户配置的双因素身份验证。
+2. 添加已经用来注册过 Azure Stack 的 Azure 帐户。 若要添加帐户，请在 PowerShell 中不结合任何参数运行 `Add-AzureRmAccount`。 系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双重身份验证。
 
 3. 如果有多个订阅，请运行以下命令，选择已经用于注册的那个订阅：  
 
@@ -102,7 +103,7 @@ ms.lasthandoff: 05/17/2018
    $AzureContext = Get-AzureRmContext
    ```
 
-4. 通过使用以下脚本下载最新版本的应用商店联合工具：  
+4. 使用以下脚本下载最新版本的 Marketplace 联合工具：  
 
    ```PowerShell
    # Download the tools archive.
@@ -120,7 +121,7 @@ ms.lasthandoff: 05/17/2018
 
    ```
 
-5. 导入联合模块，然后通过运行以下脚本中启动该工具。 替换*目标文件夹路径*用于存储从 Azure 应用商店下载的文件的位置。   
+5. 运行以下脚本，导入联合模块并启动工具。 请将 *destination folder path* 替换为从 Azure Marketplace 下载的文件的存储位置。   
 
    ```PowerShell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
@@ -131,25 +132,25 @@ ms.lasthandoff: 05/17/2018
      -AzureSubscriptionId $AzureContext.Subscription.Id  
    ```
 
-6. 当工具运行时，系统会提示输入 Azure 帐户凭据。 登录到已经用来注册过 Azure Stack 的 Azure 帐户。 登录成功后，你应看到如下屏幕下图中，与可用的应用商店项的列表。  
+6. 当工具运行时，系统会提示输入 Azure 帐户凭据。 登录到已经用来注册过 Azure Stack 的 Azure 帐户。 登录成功以后，应会看到下图所示的屏幕，其中显示了可用 Marketplace 项的列表。  
 
    ![Azure Marketplace 项弹出窗口](media/azure-stack-download-azure-marketplace-item/image05.png)
 
-7. 选择你想要下载和记下的项*版本*。 (可以通过按住选择多个映像*Ctrl*键。)将引用*版本*导入下一个过程中的项时。 
+7. 选择要下载的项，并记下版本。 （可以按住 *Ctrl* 键选择多个映像。）在下一过程中导入项时，将要引用该版本。 
    
    也可通过“添加条件”选项来筛选映像的列表。
 
-8. 选择**确定**，然后查看并接受法律条款。 
+8. 选择“确定”，然后查看并接受法律条款。 
 
-9. 下载花费的时间取决于项的大小。 下载完成后，项是在脚本中指定的文件夹中。 下载内容中包括的 VHD 文件 （虚拟机） 或。（适用于虚拟机扩展） 的 ZIP 文件。 它还包括中的库包 *.azpkg*格式。 (A *.azpkg*包是 *.zip*文件。)
+9. 所需的下载时间取决于项的大小。 下载完成后，该项会出现在脚本中指定的文件夹内。 下载内容中包括一个 VHD 文件（适用于虚拟机）或 .ZIP 文件（适用于虚拟机扩展）。 此外，还包括一个 *.azpkg* 格式的库包。 （*.azpkg* 包是一个 *.zip* 文件。）
  
 
-### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>导入下载并发布到 Azure 堆栈市场
-1. 虚拟机映像，或者你有的解决方案模板的文件[以前下载的](#use-the-marketplace-syndication-tool-to-download-marketplace-items)必须可供本地 Azure 堆栈环境。  
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>导入下载内容并发布到 Azure Stack Marketplace
+1. 必须在本地将[前面下载的](#use-the-marketplace-syndication-tool-to-download-marketplace-items)虚拟机映像文件或解决方案模板文件提供给 Azure Stack 环境。  
 
-2. 导入。VHD 文件复制到 Azure 堆栈。 若要成功导入虚拟机 (VM) 映像，你必须使用有关 VM 的以下信息：
-   - *版本*，如前面的过程的步骤 7 中所述。
-   - 为虚拟机的值*发布服务器*，*提供*，和*sku*。 若要获取这些值，重命名一份 **.azpkg**文件以更改其文件扩展名 **.zip**。 然后可以使用文本编辑器打开**DeploymentTemplates\CreateUiDefinition.json**。 在.json 文件中，找到*imageReference*部分中，其中包含应用商店项目的以下值。 下面的示例演示此信息的显示方式：
+2. 将 .VHD 文件导入 Azure Stack。 若要成功导入虚拟机 (VM) 映像，必须获取有关 VM 的以下信息：
+   - 前面过程的步骤 7 中所述的版本。
+   - VM *publisher*、*offer* 和 *sku* 的值。 若要获取这些值，请重命名 **.azpkg** 文件的副本，将其文件扩展名更改为 **.zip**。 然后，可以使用文本编辑器打开 **DeploymentTemplates\CreateUiDefinition.json**。 在该 .json 文件中，找到 *imageReference* 节，其中包含 Marketplace 项的上述值。 以下示例演示此信息的显示方式：
 
      ```json  
      "imageReference": {  
@@ -159,9 +160,9 @@ ms.lasthandoff: 05/17/2018
       }
      ```  
 
-   通过将映像导入 Azure 堆栈**添加 AzsPlatformimage** cmdlet。 使用此 cmdlet 时，务必将 *publisher*、*offer* 和其他参数值替换为要导入的映像的值。 你可以获取*发布服务器*，*提供*，和*sku*来自以及 AZPKG 文件下载并存储在目标位置的文本文件的映像的值. 
+   使用 **Add-AzsPlatformimage** cmdlet 将映像导入到 Azure Stack。 使用此 cmdlet 时，务必将 *publisher*、*offer* 和其他参数值替换为要导入的映像的值。 可以从连同 AZPKG 文件一起下载的、存储在目标位置的文本文件中，获取映像的 *publisher*、*offer* 和 *sku* 值。 
 
-   在下面的示例脚本中，将使用 Windows Server 2016 Datacenter 的服务器内核的虚拟机的值。 
+   以下示例脚本使用了 Windows Server 2016 Datacenter - Server Core 虚拟机的值。 
 
    ```PowerShell  
    Add-AzsPlatformimage `
@@ -172,38 +173,38 @@ ms.lasthandoff: 05/17/2018
     -Version "2016.127.20171215" `
     -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Windows-Server-2016-DatacenterCore-20171215-en.us-127GB.vhd" `
    ```
-   **有关解决方案模板：** 某些模板可以包含小 3 MB。具有名称的 VHD 文件**fixed3.vhd**。 你不必将该文件导入到 Azure 堆栈。 Fixed3.vhd。  此文件是包含某些解决方案模板，以满足发布为 Azure 应用商店的要求。
+   **关于解决方案模板：** 某些模板可能包含名为 **fixed3.vhd** 的 3 MB .VHD 小文件。 无需将该文件导入 Azure Stack。 Fixed3.vhd。  某些解决方案模板包含此文件的目的是为了满足 Azure Marketplace 的发布要求。
 
-   查看模板说明并下载，然后导入所需使用的解决方案模板的 Vhd 等其他要求。
+   请查看模板说明，然后下载并导入其他必需的项，例如，使用解决方案模板所需的 VHD。
 
-3. 使用管理门户将在应用商店项包 （.azpkg 文件） 上载到 Azure 堆栈 Blob 存储。 上载的包使其可供 Azure 堆栈以便更高版本可以发布项 Azure 堆栈应用商店。
+3. 使用管理员门户将 Marketplace 项包（.azpkg 文件）上传到 Azure Stack Blob 存储。 上传该包会使其可供 Azure Stack使用，以便稍后能够将项发布到 Azure Stack Marketplace。
 
-   上载要求你拥有了一个可公开访问容器的存储帐户 （请参阅此方案的先决条件）   
-   1. 在 Azure 堆栈管理员门户中，转到**更多的服务** > **存储帐户**。  
+   需要有一个包含可公开访问的容器的存储帐户才能完成上传（请参阅此场景的先决条件）   
+   1. 在 Azure Stack 管理员门户中，转到“更多服务” > “存储帐户”。  
    
-   2. 选择一个存储帐户，从你的订阅，然后在下**BLOB 服务**，选择**容器**。  
+   2. 从订阅中选择一个存储帐户，然后在“BLOB 服务”下选择“容器”。  
       ![Blob 服务](media/azure-stack-download-azure-marketplace-item/blob-service.png)  
    
-   3. 选择你想要使用，然后选择的容器**上载**以打开**上载 blob**窗格。  
+   3. 选择要使用的容器，然后选择“上传”打开“上传 Blob”窗格。  
       ![容器](media/azure-stack-download-azure-marketplace-item/container.png)  
    
-   4. 在上载 blob 窗格中，浏览到你想要将加载到存储，然后选择文件**上载**。  
+   4. 在“上传 Blob”窗格中，浏览到要载入存储的文件，然后选择“上传”。  
       ![上传](media/azure-stack-download-azure-marketplace-item/upload.png)  
 
-   5. 你上载的文件会显示在容器窗格中。 选择一个文件，然后复制从 URL **Blob 属性**窗格。 将应用商店项目导入到 Azure 堆栈时，将在下一步中使用此 URL。  在下图中，容器是*blob 测试存储*和该文件是*Microsoft.WindowsServer2016DatacenterServerCore ARM.1.0.801.azpkg*。  文件 URL *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*。  
+   5. 上传的文件会显示在容器窗格中。 选择一个文件，然后复制“Blob 属性”窗格的 URL。 在下一步骤中将 Marketplace 项导入 Azure Stack 时，将要使用此 URL。  在下图中，容器为 *blob-test-storage*，文件为 *Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*。  文件 URL 为 *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*。  
       ![Blob 属性](media/azure-stack-download-azure-marketplace-item/blob-storage.png)  
 
-4.  使用 PowerShell 通过使用应用商店项目发布到 Azure 堆栈**添加 AzsGalleryItem** cmdlet。 例如：  
+4.  在 PowerShell 中使用 **Add-AzsGalleryItem** cmdlet 将 Marketplace 项发布到 Azure Stack。 例如：  
     ```PowerShell  
     Add-AzsGalleryItem `
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
     ```
-5. 您发布的库项后，你可以查看从**更多的服务** > **Marketplace**。  如果你下载的解决方案模板，请确保您添加该解决方案模板的任何依赖 VHD 映像。  
-  ![查看应用商店](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
+5. 发布库项后，可以查看通过“更多服务” > “Marketplace”查看该项。  如果下载内容是解决方案模板，请确保为该解决方案模板添加任何依赖的 VHD 映像。  
+  ![查看 Marketplace](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
 
 > [!NOTE]
-> 与 Azure 堆栈 PowerShell 1.3.0 新版现在可以添加虚拟机扩展。
+> 现在，可以使用 Azure Stack PowerShell 1.3.0 版添加虚拟机扩展。
 
 例如：
 

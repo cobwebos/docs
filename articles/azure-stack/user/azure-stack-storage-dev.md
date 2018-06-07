@@ -1,21 +1,22 @@
 ---
-title: Azure Stack 存储开发工具入门
-description: 使用 Azure Stack 存储开发工具的入门指南
+title: 开始使用 Azure 堆栈存储开发工具 |Microsoft 文档
+description: 若要开始使用 Azure 堆栈存储开发工具使用的指南
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0ceda393412f8217a893a347ec5f3a9ac03efa3d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604471"
 ---
-# <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack 存储开发工具入门
+# <a name="get-started-with-azure-stack-storage-development-tools"></a>开始使用 Azure 堆栈存储开发工具
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
@@ -23,12 +24,12 @@ Microsoft Azure 堆栈提供一组存储服务，包括 blob、 表和队列存�
 
 使用本文作为指南，若要开始使用 Azure 堆栈存储开发工具。 可以在相应的 Azure 存储教程中找到更多详细的信息和示例代码。
 
->[!NOTE]
->存在一些已知 Azure 堆栈存储和 Azure 存储空间，其中包括针对每个平台的特定需求之间的差异。 例如，Azure Stack 有特定的客户端库以及特定的终结点后缀需求。 有关详细信息，请参阅 [Azure Stack 存储：差异和注意事项](azure-stack-acs-differences.md)。
+> [!NOTE]  
+> 存在一些已知 Azure 堆栈存储和 Azure 存储，其中包括针对每个平台的特定需求之间的差异。 例如，Azure Stack 有特定的客户端库以及特定的终结点后缀需求。 有关详细信息，请参阅[Azure 堆栈存储： 差异和注意事项](azure-stack-acs-differences.md)。
 
 ## <a name="azure-client-libraries"></a>Azure 客户端库
 
-Azure Stack 存储支持的 REST API 版本是 2017-04-17、2016-05-31、2015-12-11、2015-07-08、2015-04-05（适用于 1802 更新或更高版本），以及 2015-04-05（适用于以前的版本）。 Azure Stack 终结点并不完全等同于最新版的 Azure 存储 REST API。 对于存储客户端库，需要知道与 REST API 兼容的版本。
+有关 Azure 堆栈存储支持的 REST API 版本为自 2017 年 1-04-17、 2016年-05-31、 2015年-12-11、 2015年-07-08、 2015年-04-05 1802年更新或更新版本，和 2015年-04-05 对于以前的版本。 Azure 堆栈终结点没有与 Azure 存储 REST API 的最新版本的完整奇偶校验。 对于存储客户端库，需要知道与 REST API 兼容的版本。
 
 ### <a name="1802-update-or-newer-versions"></a>1802 更新或更高版本
 

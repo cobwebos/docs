@@ -1,40 +1,41 @@
 ---
-title: Azure Stack 存储：差异和注意事项
-description: 了解 Azure Stack 存储与 Azure 存储之间的差异，以及 Azure Stack 部署注意事项。
+title: Azure 堆栈存储差异和注意事项 |Microsoft 文档
+description: 了解 Azure 堆栈存储和 Azure 存储，以及 Azure 堆栈部署注意事项之间的差异。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
 manager: femila
-ms.reviwer: xiaofmao
 ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviwer: xiaofmao
+ms.openlocfilehash: 2a6cb3f1a1f8009af411ba4d97a23194f6f089ae
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604454"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack 存储：差异和注意事项
+# <a name="azure-stack-storage-differences-and-considerations"></a>Azure 堆栈存储： 差异和注意事项
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 堆栈存储是存储在 Microsoft Azure 堆栈中的云服务的集合。 Azure Stack 存储使用与 Azure 一致的语义来提供 Blob、表、队列和帐户管理功能。
+Azure 堆栈存储是一组存储在 Microsoft Azure 堆栈中的云服务。 Azure 堆栈存储提供了 blob、 表、 队列和帐户管理功能，带有 Azure 一致的语义。
 
-本文总结了从 Azure 存储服务的已知的 Azure 堆栈存储差异。 它还列出了在部署 Azure 堆栈时应注意的事项。 有关 Azure Stack 与 Azure 之间大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)主题。
+本文汇总了 Azure Stack 存储与 Azure 存储服务之间的已知差异。 它还列出了部署 Azure Stack 时要考虑的事项。 若要了解有关高级全局 Azure 和 Azure 堆栈之间的差异信息，请参阅[密钥注意事项](azure-stack-considerations.md)主题。
 
 ## <a name="cheat-sheet-storage-differences"></a>速查表：存储差异
 
 | 功能 | Azure（公有云） | Azure Stack |
 | --- | --- | --- |
 |文件存储|支持基于云的 SMB 文件共享|尚不支持
-|静态数据的 Azure 存储服务加密|256 位 AES 加密|BitLocker 128 位 AES 加密
-|存储帐户类型|常规用途和 Azure Blob 存储帐户|仅限常规用途。
+|Azure 存储服务加密对静止数据|256 位 AES 加密|BitLocker 128 位 AES 加密
+|存储帐户类型|通用和 Azure blob 存储帐户|仅限常规用途。
 |复制选项|本地冗余存储、异地冗余存储、读取访问异地冗余存储和区域冗余存储|本地冗余存储。
 |高级存储|完全支持|可预配，但无性能限制或保证。
 |托管磁盘|支持高级和标准版|尚不支持。
@@ -47,9 +48,9 @@ Azure 堆栈存储是存储在 Microsoft Azure 堆栈中的云服务的集合。
 |页 Blob 大小上限|8 TB|1 TB
 |页 Blob 页面大小|512 字节|4 KB
 |表分区键和行键大小|1,024 个字符（2,048 字节）|400 个字符（800 字节）
-|Blob 快照|一个 blob 的快照的最大数目已不再局限。|一个 blob 的快照的最大数目为 1000。|
+|Blob 快照|一个 blob 的最大快照数不受限制。|一个 blob 的最大快照数为 1,000。|
 
-也有一些与存储度量值的差异：
+存储指标也有一些差异：
 
 * 存储指标中的事务数据不区分内部或外部网络带宽。
 * 存储指标中的事务数据不包含虚拟机对所装载的驱动器的访问。

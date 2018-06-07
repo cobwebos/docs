@@ -12,20 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/22/2018
 ms.author: anwestg
-ms.openlocfilehash: 9554309522e4a1e60fd3599b9a19bcf9cf4bbefb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f44e6e917058306e37b9eb99819afda76a742389
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604261"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>将应用服务资源提供程序添加到 Azure Stack
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 将 1804年更新应用于你的 Azure 堆栈集成系统，或在部署 Azure 应用程序服务 1.2 之前部署的最新的 Azure 堆栈开发工具包。
+> 请将 1804 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.2。
 >
 >
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 05/20/2018
 
 4. 查看并接受第三方许可条款，然后单击“下一步”。
 
-5. 请确保应用服务云配置信息正确无误。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，或者要部署到集成系统，则必须在此窗口中编辑相应的值，以反映自己的需要。 例如，如果使用域后缀 mycloud.com，则必须将“Azure Stack 租户”Azure 资源管理器终结点更改为 management.&lt;区域&gt;.mycloud.com。确认信息后，单击“下一步”。
+5. 请确保应用服务云配置信息正确无误。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，或者要部署到集成系统，则必须在此窗口中编辑相应的值，以反映自己的需要。 例如，如果使用域后缀 mycloud.com，则必须将“Azure Stack 租户”Azure 资源管理器终结点更改为 management.&lt;区域&gt;.mycloud.com。 确认信息后，单击“下一步”。
 
     ![应用服务安装程序][2]
 
@@ -66,6 +67,12 @@ ms.lasthandoff: 05/20/2018
         * 如果使用 Azure Active Directory (Azure AD)，请输入在部署 Azure Stack 时提供的 Azure AD 管理员帐户和密码。 单击“登录”。
         * 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，并单击“登录”。
     2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
+    
+    > [!NOTE]
+    > 仅可以将应用程序服务部署到**默认提供程序订阅**在此时间。  在未来的更新 App Service 将部署到新计数的订阅中 Azure 堆栈 1804年引入和所有现有部署将迁移到此新订阅还。
+    >
+    >
+    
     3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
 
     ![应用服务安装程序][3]
@@ -170,16 +177,16 @@ ms.lasthandoff: 05/20/2018
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
     
 > [!NOTE]
-> 如果你选择要部署到一个现有的虚拟网络和 conenct 到你的文件服务器的内部 IP 地址，你必须添加出站安全规则，启用辅助子网和文件服务器之间的 SMB 流量。  若要执行此操作，请转到在管理门户中 WorkersNsg 并添加出站安全规则具有以下属性：
-> * 源： 任何
-> * 源端口范围: *
-> * 目标： IP 地址
-> * 目标 IP 地址范围： Ip 范围为你的文件服务器
-> * 目标端口范围： 445
-> * 协议： TCP
-> * 操作： 允许
-> * 优先级： 700
-> * 名称： Outbound_Allow_SMB445
+> 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。  为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
+> * 源：任何
+> * 源端口范围：*
+> * 目标：IP 地址
+> * 目标 IP 地址范围：文件服务器的 IP 范围
+> * 目标端口范围：445
+> * 协议：TCP
+> * 操作：允许
+> * 优先级：700
+> * 名称：Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>体验 Azure Stack 上的应用服务
 

@@ -3,7 +3,7 @@ title: 向 Azure 报告 Azure Stack 用量数据 | Microsoft Docs
 description: 了解如何在 Azure Stack 中设置用量数据报告。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
-ms.author: mabrigg
+ms.date: 05/30/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 602cd6c3b2be8881bebbcebe30ec2520358b731f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: daaaf6c574c4b169c19ebec42ad68e2d818ca1cb
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603696"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>向 Azure 报告 Azure Stack 用量数据 
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/28/2018
 使用基于消耗的计费模式的 Azure Stack 多节点系统应向 Azure 报告用量数据，以便计费。  Azure Stack 操作员应将其 Azure Stack 实例配置为向 Azure 报告用量数据。
 
 > [!NOTE]
-> 根据即用即付付费模式购买许可证的 Azure Stack 多节点用户必须配置用量数据报告。 它是可选的容量模式下许可证的用户 (请参阅[如何购买页面](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)。 对于 Azure Stack 开发工具包用户，Azure Stack 操作员可以报告用量数据并测试此功能。 但是，用户无需为产生的任何用量付费。 
+> 根据即用即付付费模式购买许可证的 Azure Stack 多节点用户必须配置用量数据报告。 对于根据容量计费模式购买许可证的客户而言，用量数据报告是可选的（请参阅[购买方式页](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)）。 对于 Azure Stack 开发工具包用户，Azure Stack 操作员可以报告用量数据并测试此功能。 但是，用户无需为产生的任何用量付费。 
 
 
 ![计费流](media/azure-stack-usage-reporting/billing-flow.png)
@@ -42,7 +43,7 @@ ms.lasthandoff: 04/28/2018
 - **数量**– 指定的资源使用量。
 - **位置**– 其中部署当前 Azure 堆栈资源的位置。
 - **资源 URI** – 完全限定的用法报告的资源 URI。
-- **订阅 ID** – Azure 堆栈用户的订阅 ID。 这是本地（Azure Stack）订阅。
+- **订阅 ID** – Azure 堆栈用户，这就是本地的 （Azure 堆栈） 订阅的订阅 ID。
 - **时间**– 的使用情况数据的开始和结束时间。 在 Azure Stack 中使用这些资源的时间与向商务系统报告用量数据的时间存在一定的延迟。 Azure Stack 每隔 24 小时聚合一次用量数据，而向 Azure 中的商务管道报告用量数据则需要额外的好几个小时。 因此，在午夜之前短暂发生的用量可能要在第二天才显示在 Azure 中。
 
 ## <a name="generate-usage-data-reporting"></a>生成用量数据报告
@@ -68,7 +69,7 @@ ms.lasthandoff: 04/28/2018
 
    ![计费流](media/azure-stack-usage-reporting/pricing-details.png)
 
-对于 Azure Stack 开发工具包，我们不会收取 Azure Stack 资源费用，因此价格显示为 $0.00。 发布 Azure Stack 多节点的正式版后，可以看到其中每个资源的实际费用。
+对于 Azure Stack 开发工具包，我们不会收取 Azure Stack 资源费用，因此价格显示为 $0.00。
 
 ## <a name="which-azure-stack-deployments-are-charged"></a>哪些 Azure Stack 部署需要付费？
 
@@ -82,7 +83,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>我有 Windows Server 的许可证，如何在 Azure Stack 上使用它？
 
-使用现有许可证可避免生成用量计量值。 可以根据 [Azure Stack 许可指南](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)的“在 Azure Stack 中使用现有软件”部分所述，在 Azure Stack 中使用现有的 Windows Server 许可证。 客户需要根据 [Windows Server 许可证的混合权益](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)主题中所述部署其 Windows Server 虚拟机，才能使用其现有许可证。
+使用现有许可证可避免生成用量计量值。 可以根据 [Azure Stack 许可指南](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)的“在 Azure Stack 中使用现有软件”部分所述，在 Azure Stack 中使用现有的 Windows Server 许可证。 客户需要将其 Windows Server 虚拟机部署中所述[的 Windows Server 许可证的混合权益](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)才能使用其现有的许可证的文章。
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>从哪个订阅中收取消耗的资源费用？
 从[将 Azure Stack 注册到 Azure](azure-stack-register.md) 时提供的订阅收费。
@@ -101,7 +102,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>为何 Azure Stack 中报告的用量与从 Azure 帐户中心生成的报告不匹配？
 
-Azure Stack 用量 API 报告用量数据的时间与 Azure 帐户中心报告用量数据的时间始终存在延迟。 之所以发生这种延迟，是因为需要将用量数据从 Azure Stack 上传到 Azure 商务系统。 由于这种延迟，在午夜之前短暂发生的用量可能要在第二天才显示在 Azure 中。 如果使用 [Azure Stack 用量 API](azure-stack-provider-resource-api.md) 并将结果与 Azure 计费门户中报告的用量相比较，则可能会看到差异。
+始终是报告的 Azure 堆栈使用 Api 的使用情况数据和报告的 Azure 帐户中心的使用情况数据之间的延迟。 之所以发生这种延迟，是因为需要将用量数据从 Azure Stack 上传到 Azure 商务系统。 由于这种延迟，在午夜之前短暂发生的用量可能要在第二天才显示在 Azure 中。 如果使用 [Azure Stack 用量 API](azure-stack-provider-resource-api.md) 并将结果与 Azure 计费门户中报告的用量相比较，则可能会看到差异。
 
 ## <a name="next-steps"></a>后续步骤
 
