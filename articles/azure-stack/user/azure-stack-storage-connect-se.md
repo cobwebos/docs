@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
-ms.author: mattbriggs
+ms.date: 05/21/2018
+ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a3a69f3cf91c0d202d54d0da5dc5fe0531ef9db1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9704f05cc6da97e33c0043b93acedc9e66bdcc36
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714895"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>连接到 Azure 堆栈订阅或存储帐户的存储资源管理器
 
@@ -25,20 +26,20 @@ ms.lasthandoff: 05/16/2018
 
 在本文中，你将了解如何连接到你的 Azure 堆栈订阅和存储帐户使用存储资源管理器。 Azure 存储资源管理器是一个独立应用，可用于轻松地在 Windows、 macOS 和 Linux 上使用 Azure 堆栈存储数据。
 
->[!NOTE]
->有几种工具可用于将数据移到和从 Azure 堆栈存储。 有关详细信息，请参阅[适用于 Azure Stack 存储的数据传输工具](azure-stack-storage-transfer.md)。
+> [!NOTE]  
+> 有几种工具可用于将数据移到和从 Azure 堆栈存储。 有关详细信息，请参阅[适用于 Azure Stack 存储的数据传输工具](azure-stack-storage-transfer.md)。
 
 如果你尚未安装存储资源管理器尚未，[下载存储资源管理器](http://www.storageexplorer.com/)并将其安装。
 
 你连接到 Azure 堆栈订阅或存储帐户后，你可以使用[Azure 存储资源管理器文章](../../vs-azure-tools-storage-manage-with-storage-explorer.md)以便使用 Azure 堆栈数据。 
 
-## <a name="prepare-for-connecting-to-azure-stack"></a>准备用于连接到 Azure 堆栈
+## <a name="prepare-for-connecting-to-azure-stack"></a>为连接到 Azure Stack 做准备
 
-你需要直接访问 Azure 堆栈或存储资源管理器的 VPN 连接来访问 Azure 堆栈订阅。 若要了解如何设置到 Azure Stack 的 VPN 连接，请参阅[使用 VPN 连接到 Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)。
+你需要直接访问 Azure 堆栈或存储资源管理器无法访问该 Azure 堆栈订阅的 VPN 连接。 若要了解如何设置到 Azure Stack 的 VPN 连接，请参阅[使用 VPN 连接到 Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)。
 
 若是 Azure Stack 开发工具包，需要导出 Azure Stack 颁发机构根证书。
 
-### <a name="export-and-then-import-the-azure-stack-certificate"></a>导出和导入 Azure 堆栈证书
+### <a name="export-and-then-import-the-azure-stack-certificate"></a>导出然后导入 Azure Stack 证书
 
 1. 在 Azure Stack 主机或已与 Azure Stack 建立 VPN 连接的本地计算机上打开 `mmc.exe`。 
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 05/16/2018
 
 5. 启动存储资源管理器，并且如果你看到**连接到 Azure 存储**对话框框中，将其取消。
 
-6. 上**编辑**菜单上，指向**SSL 证书**，然后选择**导入证书**。 通过文件选取器对话框找到并打开在上一步导出的证书。
+6. 在“编辑”菜单上，指向“SSL 证书”，然后选择“导入证书”。 通过文件选取器对话框找到并打开在上一步导出的证书。
 
     导入证书之后, 将提示你重新启动存储资源管理器。
 
@@ -69,13 +70,13 @@ ms.lasthandoff: 05/16/2018
 使用以下步骤来连接到 Azure 堆栈订阅的存储资源管理器。
 
 1. 在存储资源管理器的左窗格中，选择**管理帐户**。 
-    将显示你登录的所有 Microsoft 订阅。
+    此时会显示你登录的所有 Microsoft 订阅。
 
-2. 若要连接到 Azure 堆栈订阅，选择**添加帐户**。
+2. 若要连接到 Azure Stack 订阅，请选择“添加帐户”。
 
     ![添加 Azure Stack 帐户](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. 在连接到 Azure 存储空间对话框中，在**Azure 环境**，选择**Azure**或**Azure 中国区**，取决于你正在使用的 Azure 堆栈帐户。 选择**登录**以登录到与至少一个有效的 Azure 堆栈订阅关联的 Azure 堆栈帐户。
+3. 在连接到 Azure 存储空间对话框中，在**Azure 环境**，选择**Azure**或**Azure 中国区**，取决于正在使用的 Azure 堆栈帐户，选择**登录**使用与至少一个有效的 Azure 堆栈订阅关联的 Azure 堆栈帐户进行登录。
 
     ![连接到 Azure 存储](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 
@@ -87,33 +88,33 @@ ms.lasthandoff: 05/16/2018
 
     ![存储帐户列表，其中包括 Azure Stack 订阅帐户](./media/azure-stack-storage-connect-se/azure-stack-storage-account-list.png)
 
-## <a name="connect-to-an-azure-stack-storage-account"></a>连接到 Azure 堆栈存储帐户
+## <a name="connect-to-an-azure-stack-storage-account"></a>连接到 Azure Stack 存储帐户
 
-你还可以连接到 Azure 堆栈存储帐户使用存储帐户名称和密钥对。
+还可以使用存储帐户名称和密钥对连接到 Azure Stack 存储帐户。
 
-1. 在存储资源管理器的左窗格中，选择管理帐户。 将显示你登录的 Microsoft 帐户。
+1. 在存储资源管理器的左窗格中，选择管理帐户。 此时会显示你登录的所有 Microsoft 帐户。
 
     ![添加帐户](./media/azure-stack-storage-connect-se/azure-stack-sub-add-an-account.png)
 
-2. 若要连接到 Azure 堆栈订阅，选择**添加帐户**。
+2. 若要连接到 Azure Stack 订阅，请选择“添加帐户”。
 
     ![添加帐户](./media/azure-stack-storage-connect-se/azure-stack-use-a-storage-and-key.png)
 
-3. 在连接到 Azure 存储空间对话框中，选择**使用存储帐户名称和密钥**。
+3. 在“连接到 Azure 存储”对话框中，选择“使用存储帐户名称和密钥”。
 
-4. 输入你的帐户名称**帐户名称**，帐户将密钥粘贴到**帐户密钥**文本框中，选择**其他 （在下面输入）** 中**存储终结点域**和输入 Azure 堆栈终结点。
+4. 在“帐户名称”中输入帐户名称，将帐户密钥粘贴到“帐户密钥”文本框中，在“存储终结点域”中选择“其他(在下面输入)”，并输入 Azure Stack 终结点。
 
     Azure Stack 终结点包含两个部分：区域的名称和 Azure Stack 域。 在 Azure Stack 开发工具包中，默认终结点是 **local.azurestack.external**。 如果不确定你的终结点，请与云管理员联系。
 
     ![附加名称和密钥](./media/azure-stack-storage-connect-se/azure-stack-attach-name-and-key.png)
 
 5. 选择“连接”。
-6. 已成功附加的存储帐户后，存储帐户将显示与 (**外部的其他**) 追加到其名称。
+6. 成功附加存储帐户后，会显示该存储帐户，其名称后面追加了“(外部、其他)”字样。
 
     ![VMWINDISK](./media/azure-stack-storage-connect-se/azure-stack-vmwindisk.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 * [要开始使用存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
-* [Azure Stack 存储：差异和注意事项](azure-stack-acs-differences.md)
+* [Azure 堆栈存储： 差异和注意事项](azure-stack-acs-differences.md)
 * 若要了解有关 Azure 存储空间的详细信息，请参阅[Microsoft Azure 存储空间简介](../../storage/common/storage-introduction.md)

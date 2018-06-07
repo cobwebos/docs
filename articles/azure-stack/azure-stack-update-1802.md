@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 5cf61ccaadc40a5f250dcf477de5b446052aba9a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: af65ffc088c2beadf415b72ec284ef77f3e4f6d4
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757251"
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新
 
@@ -36,7 +37,7 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 ## <a name="before-you-begin"></a>开始之前    
 > [!IMPORTANT]    
-> 在安装此更新的过程中，请勿尝试创建虚拟机。 有关如何管理更新的详细信息，请参阅[在 Azure Stack 中管理更新的概述](/azure-stack-updates#plan-for-updates)。
+> 在安装此更新的过程中，请勿尝试创建虚拟机。 有关如何管理更新的详细信息，请参阅[在 Azure Stack 中管理更新的概述](azure-stack-updates.md#plan-for-updates)。
 
 
 ### <a name="prerequisites"></a>必备组件
@@ -57,9 +58,9 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 ### <a name="post-update-steps"></a>更新后步骤
 安装 1802 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
-- Azure 堆栈修补程序**1.0.180302.4**。 [KB 4131152 的现有虚拟机规模集可能会变得不可用]( https://support.microsoft.com/help/4131152) 
+- Azure Stack 修补程序 **1.0.180302.4**。 [KB 4131152 - 现有虚拟机规模集可能不可用]( https://support.microsoft.com/help/4131152) 
 
-  此修补程序还可解决中详述的问题[KB 4103348-当你尝试安装 Azure 堆栈更新时的网络控制器 API 服务崩溃](https://support.microsoft.com/help/4103348)。
+  此修补程序还可解决 [KB 4103348 - 尝试安装 Azure Stack 更新时，网络控制器 API 服务崩溃](https://support.microsoft.com/help/4103348)中详述的问题。
 
 
 ### <a name="new-features-and-fixes"></a>新功能和修复
@@ -85,7 +86,7 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 - **增加了对多个容错域的支持**。  有关详细信息，请参阅 [Azure Stack 的高可用性](azure-stack-key-features.md#high-availability-for-azure-stack)。
 
-- **支持的物理内存升级**-现在可以在初始部署之后扩展集成的 Azure 堆栈系统的内存容量。 有关详细信息，请参阅[管理 Azure 堆栈的物理内存容量](azure-stack-manage-storage-physical-memory-capacity.md)。
+- **支持物理内存升级** - 现在可以在初始部署后扩展 Azure Stack 集成系统的内存容量。 有关详细信息，请参阅[管理 Azure Stack 的物理内存容量](azure-stack-manage-storage-physical-memory-capacity.md)。
 
 - 针对性能、稳定性、安全性以及 Azure Stack 所用操作系统的**各种修复**。
 
@@ -107,6 +108,9 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 下面是内部版本 **20180302.1** 的安装后已知问题
 
 #### <a name="portal"></a>门户
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  解决方法： 若要解决此问题，在安装此更新后，使用从步骤 3[触发器的自动化功能来配置声明提供方信任 Azure 堆栈中的](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程重新设置默认提供程序订阅的所有者。   
+
 - 在管理员门户中[从下拉列表提交新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 请改用以下链接：     
     - 对于 Azure Stack 集成系统，请使用 https://aka.ms/newsupportrequest。
 
@@ -137,7 +141,22 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 
 #### <a name="health-and-monitoring"></a>运行状况和监视
-更新到 1802 后没有任何已知问题。
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+  警报 # 1:
+   - 名称： 基础结构角色不正常
+   - 严重性： 警告
+   - 组件： 运行状况控制器
+   - 描述： 检测信号扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。  
+
+  警报 # 2:
+   - 名称： 基础结构角色不正常
+   - 严重性： 警告
+   - 组件： 运行状况控制器
+   - 描述： 错误扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。
+
+  可放心忽略这两个警报。 它们将自动关闭随着时间的推移。  
+
 
 #### <a name="marketplace"></a>Marketplace
 - 用户无需订阅就能浏览整个商城，并且能看到计划和产品/服务等管理项。 对用户而言，这些项是非功能性的。
@@ -155,7 +174,7 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 - 通过转到“新建” > “计算” > “可用性集”在门户中创建可用性集时，只能创建一个包含一个容错域和 1 个更新域的可用性集。 解决方法是在创建新的虚拟机时，通过 PowerShell、CLI 或门户来创建可用性集。
 
-- 在 Azure Stack 用户门户中创建虚拟机时，该门户显示的可以附加到 DS 系列 VM 的数据磁盘数不正确。 DS 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
+- 在 Azure Stack 用户门户中创建虚拟机时，该门户显示的可以附加到 D 系列 VM 的数据磁盘数不正确。 所有受支持的 D 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
 
 - 无法创建 VM 映像时，可能会向 VM 映像计算边栏选项卡添加一个无法删除的故障项。
 
@@ -277,6 +296,8 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 <!--
 #### Identity
 -->
+
+
 
 #### <a name="downloading-azure-stack-tools-from-github"></a>从 GitHub 下载 Azure Stack 工具
 - 使用 *invoke-webrequest* PowerShell cmdlet 从 Github 下载 Azure Stack 工具时，收到一个错误：     
