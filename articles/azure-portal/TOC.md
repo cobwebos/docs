@@ -15,6 +15,7 @@
 ### [以编程方式创建 Azure 仪表板](azure-portal-dashboards-create-programmatically.md)
 ## 管理
 ### [启用高对比度或更改主题](azure-portal-change-theme-high-contrast.md)
+### [导出或删除用户设置](azure-portal-export-delete-settings.md)
 ### [使用门户管理资源](../azure-resource-manager/resource-group-portal.md)
 ### [使用基于角色的访问控制管理访问权限](../role-based-access-control/role-assignments-portal.md)
 ### [使用基于角色的访问控制共享仪表板](azure-portal-dashboard-share-access.md)

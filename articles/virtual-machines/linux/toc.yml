@@ -89,6 +89,8 @@
               href: n-series-driver-setup.md
         - name: 高性能计算
           href: sizes-hpc.md
+        - name: 前几代
+          href: sizes-previous-gen.md
         - name: Azure 计算单元 (ACU)
           href: acu.md
         - name: 基准评分
@@ -140,6 +142,8 @@
           href: create-cli-complete.md
         - name: 使用模板
           href: create-ssh-secured-vm-from-template.md
+        - name: 使用 REST API
+          href: create-vm-rest-api.md
         - name: 复制或克隆 VM
           href: copy-vm.md
     - name: 保护 VM
@@ -188,7 +192,12 @@
         - name: 标记 VM
           href: tag.md
         - name: 在 VM 上运行脚本
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: 自定义脚本扩展
+              href: ../extensions/custom-script-linux.md
+            - name: 运行命令
+              href: run-command.md
         - name: 使用远程桌面
           href: use-remote-desktop.md
         - name: 将 VM 加入 Azure Active Directory
@@ -416,21 +425,7 @@
             - name: 使用内部 DNS
               href: static-dns-name-resolution-for-linux-on-azure.md
     - name: 使用 VM 扩展
-      items:
-        - name: VM 扩展 - 概述
-          href: extensions-features.md
-        - name: 自定义脚本扩展
-          href: extensions-customscript.md
-        - name: OMS 代理扩展
-          href: extensions-oms.md
-        - name: Linux 诊断扩展
-          href: diagnostic-extension.md
-        - name: 网络观察程序代理
-          href: extensions-nwa.md
-        - name: VMAccess 扩展
-          href: using-vmaccess-extension.md
-        - name: 限制扩展安装
-          href: ../extensions/extensions-rmpolicy-howto-cli.md
+      href: ../extensions/overview.md
     - name: 迁移 VM
       items:
         - name: 迁移 AWS 和本地 VM

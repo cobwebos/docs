@@ -1,26 +1,24 @@
 ---
-title: "Azure Data Lake Analytics 文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何使用 Data Lake Analytics 执行大数据分析。 教程介绍了如何运行实时交互式批处理分析，以及如何编写 U-SQL 查询。"
+title: Azure Data Lake Analytics 文档 - 教程和 API 参考
+description: 了解 Azure Data Lake Analytics 的大数据分析。 教程介绍了如何运行实时交互式批处理分析，以及如何编写 U-SQL 查询。
 services: data-lake-analytics
-author: czeumault
-manager: carolz
-layout: LandingPage
-ms.assetid: 
 ms.service: data-lake-analytics
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+layout: LandingPage
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 0cad8acb88494755522e0772c77afcc4793d8e74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6dc7b85e5a5f6173572e390c1073971d927aa7df
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624210"
 ---
-# <a name="data-lake-analytics-documentation"></a>Data Lake Analytics 文档
+# <a name="azure-data-lake-analytics-documentation"></a>Azure Data Lake Analytics 文档
 
-了解如何使用 Data Lake Analytics 运行可扩展为大规模数据集的大数据分析作业。 教程和其他文档介绍了如何创建和管理实时交互式批处理分析作业，以及如何使用 U-SQL 语言执行查询。
+了解如何使用 Azure Data Lake Analytics 运行可扩展为大规模数据集的大数据分析作业。 教程和其他文档介绍了如何创建和管理实时交互式批处理分析作业，以及如何使用 U-SQL 语言执行查询。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -82,9 +80,9 @@ ms.lasthandoff: 10/11/2017
 ## <a name="quickstarts"></a>快速入门
 <table>
     <tr>
-        <td><a href="data-lake-analytics-get-started-portal.md">门户</a></td>
+        <td><a href="data-lake-analytics-get-started-portal.md">Portal</a></td>
         <td><a href="data-lake-analytics-data-lake-tools-get-started.md">Visual Studio</a></td>
-        <td><a href="data-lake-analytics-data-lake-tools-for-vscode.md">Contact.java</a></td>
+        <td><a href="data-lake-analytics-data-lake-tools-for-vscode.md">Visual Studio Code</a></td>
         <td><a href="data-lake-analytics-get-started-powershell.md">PowerShell</a></td>
         <td><a href="data-lake-analytics-get-started-cli2.md">Azure CLI 2.0</a></td>
     </tr>
@@ -93,12 +91,11 @@ ms.lasthandoff: 10/11/2017
 ## <a name="manage-data-lake-analytics"></a>管理 Data Lake Analytics
 <table>
     <tr>
-        <td><a href="data-lake-analytics-manage-use-portal.md">门户</a></td>
+        <td><a href="data-lake-analytics-manage-use-portal.md">Portal</a></td>
         <td><a href="data-lake-analytics-manage-use-powershell.md">Python</a></td>
         <td><a href="data-lake-analytics-manage-use-cli.md">Azure CLI</a></td>
         <td><a href="data-lake-analytics-manage-use-dotnet-sdk.md">.NET SDK</a></td>
         <td><a href="data-lake-analytics-get-started-python.md">Python SDK</a></td>
-        <td><a href="data-lake-analytics-get-started-java-sdk.md">Java SDK</a></td>
     </tr>
 </table>
 

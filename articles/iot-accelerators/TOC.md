@@ -3,13 +3,13 @@
 
 # 概述
 ## [IoT 体系结构概念](iot-accelerators-what-is-azure-iot.md)
-## [比较 Azure IoT 选项](../iot-suite/iot-suite-options.md)
+## [比较 Azure IoT 选项](iot-accelerators-options.md)
 ## [解决方案加速器概述](iot-accelerators-what-are-solution-accelerators.md)
 
 # 入门
 ## 远程监视
 ### [部署解决方案加速器](iot-accelerators-remote-monitoring-deploy.md)
-### [操作解决方案加速器](../iot-suite/iot-suite-remote-monitoring-explore.md)
+### [操作解决方案加速器](iot-accelerators-remote-monitoring-explore.md)
 
 ## 远程监视（旧版）
 ### [解决方案加速器是什么？](../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md)
@@ -43,8 +43,8 @@
 
 
 ## 预测性维护
-### [预测性维护解决方案加速器概述](../iot-suite/iot-suite-predictive-overview.md)
-### [预测性维护解决方案加速器演练](../iot-suite/iot-suite-predictive-walkthrough.md)
+### [预测性维护解决方案加速器概述](iot-accelerators-predictive-overview.md)
+### [预测性维护解决方案加速器演练](iot-accelerators-predictive-walkthrough.md)
 
 ## 连接工厂
 ### [什么是连接工厂？](iot-accelerators-connected-factory-features.md)
@@ -70,7 +70,7 @@
 ### [自定义和重新部署微服务](iot-accelerators-microservices-example.md)
 ### [使用 CLI 进行部署](iot-accelerators-remote-monitoring-deploy-cli.md)
 ### [本地部署](iot-accelerators-remote-monitoring-deploy-local.md)
-### [使用时序见解可视化数据](../iot-suite/iot-suite-time-series-insights.md)
+### [使用时序见解可视化数据](iot-accelerators-time-series-insights.md)
 ### [与 Data Lake 集成](iot-accelerators-integrate-data-lake.md)
 ### 连接物理设备
 #### [Windows 上的 C](iot-accelerators-connecting-devices.md)
@@ -78,7 +78,7 @@
 #### [Node.js（通用）](iot-accelerators-connecting-devices-node.md)
 #### [Raspberry Pi 上的 Node.js](iot-accelerators-connecting-pi-node.md)
 #### [Raspberry Pi 上的 C](iot-accelerators-connecting-pi-c.md)
-#### [MX Chip AZ3166 DevKit](../iot-suite/iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
+#### [MX Chip AZ3166 DevKit](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 
 ### 概念
 #### [远程监视实现详细信息](iot-accelerators-remote-monitoring-sample-walkthrough.md)
@@ -89,19 +89,19 @@
 ### [自定义连接工厂](iot-accelerators-connected-factory-customize.md)
 ### [将 OPC 发布服务器用于连接工厂](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 ### [配置连接工厂](iot-accelerators-connected-factory-configure.md)
-## [azureiotsuite.com 权限](../iot-suite/iot-suite-permissions.md)
+## [azureiotsuite.com 权限](iot-accelerators-permissions.md)
 
 # 引用
 ## [开发人员参考指南](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [开发人员故障排除指南](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-## [安全体系结构](../iot-suite/iot-security-architecture.md)
-## [安全最佳实践](../iot-suite/iot-security-best-practices.md)
-## [保护 IoT 部署](../iot-suite/iot-suite-security-deployment.md)
-## [安全基础知识](../iot-suite/securing-iot-ground-up.md)
+## [安全体系结构](iot-security-architecture.md)
+## [安全最佳实践](iot-security-best-practices.md)
+## [保护 IoT 部署](iot-accelerators-security-deployment.md)
+## [安全基础知识](securing-iot-ground-up.md)
 
 # 相关内容
 ## 解决方案 
-### [IoT 套件预配置解决方案](/azure/iot-suite) 
+### [IoT 解决方案加速器](/azure/iot-suite) 
 ### [IoT 中心](https://docs.microsoft.com/microsoft-iot-central/) 
 ## 平台服务 
 ### [IoT 中心](/azure/iot-hub) 

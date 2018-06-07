@@ -14,6 +14,8 @@
   items:
     - name: 探索 TSI JavaScript 客户端库
       href: tutorial-explore-js-client-lib.md
+    - name: 创建 TSI 环境
+      href: tutorial-create-populate-tsi-environment.md
 - name: 概念
   items:
     - name: 规划环境
@@ -56,6 +58,8 @@
       href: time-series-insights-how-to-scale-your-environment.md
     - name: 使用模板管理资源
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
+    - name: 用于查询的形状 JSON
+      href: how-to-shape-query-json.md
 - name: 引用
   items:
     - name: 查询 API

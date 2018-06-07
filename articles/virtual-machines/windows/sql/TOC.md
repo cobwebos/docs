@@ -19,7 +19,8 @@
 #### [配置 Azure 密钥保管库集成](virtual-machines-windows-ps-sql-keyvault.md)
 ## 备份和还原
 ### [备份和还原](virtual-machines-windows-sql-backup-recovery.md)
-### [自动备份](virtual-machines-windows-sql-automated-backup.md)
+### [SQL Server 2014 自动备份](virtual-machines-windows-sql-automated-backup.md)
+### [SQL Server 2016+ 自动备份](virtual-machines-windows-sql-automated-backup-v2.md)
 ### [使用 Azure 存储进行备份和还原](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 
 # 操作指南

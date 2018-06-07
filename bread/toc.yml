@@ -113,7 +113,7 @@
     - name: Batch AI
       tocHref: /azure/batch-ai/
       topicHref: /azure/batch-ai/
-    - name: 计费
+    - name: 计费 + 成本管理
       tocHref: /azure/billing/
       topicHref: /azure/billing/
     - name: BizTalk 服务

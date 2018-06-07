@@ -73,6 +73,8 @@
           href: batch-custom-images.md
         - name: 在虚拟网络中创建池
           href: batch-virtual-network.md
+        - name: 装载 Azure 文件共享
+          href: pool-file-shares.md
         - name: 使用计算密集型 VM
           href: batch-pool-compute-intensive-sizes.md
         - name: 使用 Linux 计算节点
