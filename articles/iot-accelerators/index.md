@@ -1,19 +1,19 @@
 ---
 title: Azure IoT 解决方案加速器文档 - 教程和 API 参考 | Microsoft Docs
 description: Azure IoT 解决方案加速器的文档包括入门指南、操作方法文章、教程和 API 参考。
-services: iot-suite
-author: czeumault
-manager: carolz
-layout: LandingPage
-ms.service: iot-suite
+author: dominicbetts
+manager: timlt
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.topic: landing-page
 ms.date: 11/27/2017
-ms.author: carolz
-ms.openlocfilehash: cacc09cf926c5af9a770e42967a5e6cbbb46bfd7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: dobett
+ms.openlocfilehash: 3e9fe2b67980e83f57732c10da99738a15a5219e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626966"
 ---
 # <a name="iot-solution-accelerators-documentation"></a>IoT 解决方案加速器文档
 
@@ -30,10 +30,10 @@ ms.lasthandoff: 05/17/2018
                         <ul>
                             <li><a href="/azure/iot-accelerators/iot-accelerators-what-are-solution-accelerators">解决方案加速器概述</a></li>
                             <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-deploy">部署解决方案加速器</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-explore">现成的解决方案功能</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-monitor">监视功能</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-explore">现成的解决方案功能</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-monitor">监视功能</a></li>
                             <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-automate">规则管理功能</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-manage">设备管理功能</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-manage">设备管理功能</a></li>
                         </ul>
                     </div>
                 </div>
@@ -53,9 +53,9 @@ ms.lasthandoff: 05/17/2018
                     <div class="cardText">
                         <p>了解如何将设备连接到解决方案加速器</p>
                         <ul>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-schema">设备模型概述</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-behavior">自定义模拟设备</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-connecting-devices-node">连接物理设备</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-device-schema">设备模型概述</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-device-behavior">自定义模拟设备</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-connecting-devices-node">连接物理设备</a></li>
                         </ul>
                     </div>
                 </div>
@@ -95,10 +95,10 @@ ms.lasthandoff: 05/17/2018
                 <div class="card">
                     <div class="cardText">
                         <h3>资源</h3>
-                        <p><a href="/azure/iot-suite/iot-security-architecture">安全体系结构</a></p>
-                        <p><a href="/azure/iot-suite/iot-security-best-practices">安全最佳实践</a></p>
-                        <p><a href="/azure/iot-suite/iot-suite-security-deployment">保护 IoT 部署</a></p>
-                        <p><a href="/azure/iot-suite/securing-iot-ground-up">安全基础知识</a></p>
+                        <p><a href="/azure/iot-accelerators/iot-security-architecture">安全体系结构</a></p>
+                        <p><a href="/azure/iot-accelerators/iot-security-best-practices">安全最佳实践</a></p>
+                        <p><a href="/azure/iot-accelerators/iot-accelerators-security-deployment">保护 IoT 部署</a></p>
+                        <p><a href="/azure/iot-accelerators/securing-iot-ground-up">安全基础知识</a></p>
                    </div>
                 </div>
             </div>

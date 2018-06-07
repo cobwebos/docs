@@ -54,6 +54,7 @@
 ### [构建到自定义应用中 (SDK)](../active-directory/authentication/howto-mfa-sdk.md)
 
 ## [报告](../active-directory/authentication/howto-mfa-reporting.md)
+### [数据收集](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
 ## [MFA 用户指南](./end-user/multi-factor-authentication-end-user.md)
 

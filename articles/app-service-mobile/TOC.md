@@ -4,15 +4,14 @@
 ## [什么是移动应用？](app-service-mobile-value-prop.md)
 ## [应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-# 入门
-## 创建移动应用
-### [Android](app-service-mobile-android-get-started.md)
-### [Cordova](app-service-mobile-cordova-get-started.md)
-### [iOS](app-service-mobile-ios-get-started.md)
-### [Windows](app-service-mobile-windows-store-dotnet-get-started.md)
-### [Xamarin.Android](app-service-mobile-xamarin-android-get-started.md)
-### [Xamarin.Forms](app-service-mobile-xamarin-forms-get-started.md)
-### [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md)
+# 快速入门
+## [Android](app-service-mobile-android-get-started.md)
+## [Cordova](app-service-mobile-cordova-get-started.md)
+## [iOS](app-service-mobile-ios-get-started.md)
+## [Windows](app-service-mobile-windows-store-dotnet-get-started.md)
+## [Xamarin.Android](app-service-mobile-xamarin-android-get-started.md)
+## [Xamarin.Forms](app-service-mobile-xamarin-forms-get-started.md)
+## [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md)
 
 # 如何
 
