@@ -1,7 +1,7 @@
 ---
- title: 包含文件 description: 包含文件 services: azure-policy author: eross-msft
+ title: include 文件 description: include 文件 services: active-directory author: eross-msft
  
-ms.service: azure-policy ms.topic: include ms.date: 04/24/2018 ms.author: lizross ms.custom: include file
+ms.service: active-directory ms.topic: include ms.date: 04/24/2018 ms.author: lizross ms.custom: include file
 ---
 
 >[!Note] 

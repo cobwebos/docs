@@ -50,8 +50,6 @@
   items:
     - name: 管理
       items:
-        - name: 更新作业
-          href: stream-analytics-job-reliability.md
         - name: 更新凭据
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: 配置警报
@@ -60,6 +58,10 @@
           href: stream-analytics-test-query.md
         - name: 在仪表板上查看结果
           href: stream-analytics-power-bi-dashboard.md
+        - name: 清理作业
+          href: stream-analytics-clean-up-your-job.md
+        - name: 进行作业配对以确保可靠性
+          href: stream-analytics-job-reliability.md
     - name: 构建解决方案
       items:
         - name: Twitter 情绪分析

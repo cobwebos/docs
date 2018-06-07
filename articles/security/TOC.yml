@@ -95,11 +95,11 @@
           href: security-internet-of-things-overview.md
           items:
             - name: IoT 安全最佳实践
-              href: ../iot-suite/iot-security-best-practices.md
+              href: ../iot-accelerators/iot-security-best-practices.md
             - name: IoT 安全
-              href: '../iot-suite/iot-security-architecture.md#security-in-iot'
+              href: '../iot-accelerators/iot-security-architecture.md#security-in-iot'
             - name: 保护 IoT 部署
-              href: ../iot-suite/iot-suite-security-deployment.md
+              href: ../iot-accelerators/iot-accelerators-security-deployment.md
     - name: Azure Service Fabric 安全
       href: azure-service-fabric-security-overview.md
       items:
@@ -159,6 +159,8 @@
           href: ./blueprints/fedramp-datawarehouse-overview.md
         - name: IaaS Web 应用程序
           href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: PaaS Web 应用程序
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: PCI DSS
       href: ./blueprints/payment-processing-blueprint.md
       items:
@@ -197,6 +199,8 @@
       href: ./blueprints/azure-health.md
 - name: 白皮书
   href: security-white-papers.md
+- name: Azure 安全服务
+  href: azure-security-services-technologies.md
 - name: 技术概述
   href: security-overviews.md
 - name: 最佳实践

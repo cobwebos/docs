@@ -78,22 +78,43 @@
       href: storage-samples-blobs-cli.md
 - name: 概念
   items:
-    - name: 规划和设计
+    - name: 存储帐户
       items:
-        - name: 存储帐户选项
+        - name: 存储帐户概述
           href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 数据冗余
+        - name: 授权
+          href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           items:
-            - name: 冗余概述
-              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 使用 Azure AD 进行身份验证
+              href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: 使用 RBAC 管理访问权限
+                  href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 通过应用程序进行身份验证
+                  href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 通过托管服务标识进行身份验证
+                  href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 将 Azure AD 标识与 CLI 或 PowerShell 配合使用
+                  href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 通过共享密钥进行授权
+              href: /rest/api/storageservices/authenticate-with-shared-key
+            - name: 通过 SAS 进行授权
+              href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 匿名访问 Blob
+              href: storage-manage-access-to-resources.md
+        - name: 数据冗余
+          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          items:
             - name: 本地冗余存储
               href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 区域冗余存储
               href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 异地冗余存储
               href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 热层、冷层和存档层
+        - name: 访问层级
           href: storage-blob-storage-tiers.md
+        - name: 管理 Azure Blob 存储生命周期
+          href: ../common/storage-lifecycle-managment-concepts.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 对事件做出响应
           href: storage-blob-event-overview.md
         - name: 可伸缩性和性能目标
@@ -165,12 +186,6 @@
           href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 需要安全传输
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 共享密钥身份验证
-          href: /rest/api/storageservices/Authentication-for-the-Azure-Storage-Services
-        - name: 共享访问签名 (SAS)
-          href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 匿名访问 Blob
-          href: storage-manage-access-to-resources.md
         - name: 使用 Azure CDN 通过 HTTPs 访问包含自定义域的 Blob
           href: storage-https-custom-domain-cdn.md
     - name: 监视和故障排除
@@ -189,6 +204,79 @@
               href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 启用和查看指标（经典）
               href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 导入/导出数据
+      href: ../common/storage-import-export-service.md
+      items:
+        - name: 审查要求
+          href: ../common/storage-import-export-requirements.md
+        - name: 将数据导入 Blob
+          href: ../common/storage-import-export-data-to-blobs.md
+        - name: 将数据导入文件
+          href: ../common/storage-import-export-data-to-files.md
+        - name: 从 Blob 导出数据
+          href: ../common/storage-import-export-data-from-blobs.md
+        - name: 操作说明
+          items:
+            - name: 查看驱动器状态
+              href: ../common/storage-import-export-view-drive-status.md
+            - name: 查看作业状态
+              href: ../common/storage-import-export-tool-reviewing-job-status-v1.md
+            - name: 修复导入作业
+              href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md
+            - name: 修复导出作业
+              href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md
+        - name: 常见问题
+          href: ../common/storage-import-export-service-faq.md
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/storageimportexport/jobs'
+        - name: 联系支持人员
+          href: ../common/storage-import-export-contact-microsoft-support.md
+        - name: 存档
+          items:
+            - name: 准备用于导入的驱动器 (v1)
+              href: ../common/storage-import-export-tool-preparing-hard-drives-import-v1.md
+              items:
+                - name: 设置属性和元数据
+                  href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md
+                - name: 示例 - 准备用于导入的驱动器
+                  href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md
+                - name: 导入命令快速参考
+                  href: ../common/storage-import-export-tool-quick-reference-v1.md
+            - name: 准备用于导入的驱动器 (v2)
+              href: ../common/storage-import-export-tool-preparing-hard-drives-import.md
+              items:
+                - name: 设置属性和元数据
+                  href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md
+                - name: 示例 - 准备用于导入的驱动器
+                  href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md
+                - name: 导入命令快速参考
+                  href: ../common/storage-import-export-tool-quick-reference-v1.md
+            - name: 创建导入作业
+              href: ../common/storage-import-export-creating-an-import-job.md
+            - name: 创建导出作业
+              href: ../common/storage-import-export-creating-an-import-job.md
+            - name: 获取作业状态
+              href: ../common/storage-import-export-retrieving-state-info-for-a-job.md
+            - name: 创建导出作业
+              href: ../common/storage-import-export-creating-an-import-job.md
+            - name: 枚举作业
+              href: ../common/storage-import-export-enumerating-jobs.md
+            - name: 取消和删除作业
+              href: ../common/storage-import-export-cancelling-and-deleting-jobs.md
+            - name: 备份驱动器清单
+              href: ../common/storage-import-export-backing-up-drive-manifests.md
+            - name: 枚举作业
+              href: ../common/storage-import-export-enumerating-jobs.md
+            - name: 诊断和错误恢复
+              href: ../common/storage-import-export-diagnostics-and-error-recovery.md
+            - name: 用于导入作业的命令
+              href: ../common/storage-import-export-tool-quick-reference-v1.md
+            - name: 服务清单文件
+              href: ../common/storage-import-export-file-format-manifest.md
+            - name: 服务元数据和属性文件
+              href: ../common/storage-import-export-file-format-metadata-and-properties.md
+            - name: 服务日志文件
+              href: ../common/storage-import-export-file-format-log.md
 - name: 如何
   items:
     - name: 创建存储帐户
@@ -251,87 +339,6 @@
           href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 将 Blob 存储装载为 Linux 上的文件系统
           href: storage-how-to-mount-container-linux.md
-        - name: 使用导入/导出服务
-          href: ../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 使用导入/导出工具
-          href: ../common/storage-import-export-tool-how-to.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          items:
-            - name: 设置导入/导出工具
-              href: ../common/storage-import-export-tool-setup.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 为导入作业准备硬盘驱动器
-              href: ../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: 在导入过程中设置属性和元数据
-                  href: ../common/storage-import-export-tool-setting-properties-metadata-import.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 为导入作业准备硬盘驱动器的示例工作流
-                  href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 导入作业的常用命令快速参考
-                  href: ../common/storage-import-export-tool-quick-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 预览导出作业的驱动器使用情况
-              href: ../common/storage-import-export-tool-previewing-drive-usage-export-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 使用复制日志文件查看作业状态
-              href: ../common/storage-import-export-tool-reviewing-job-status-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 修复导入作业
-              href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 修复导出作业
-              href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 排查导入/导出工具问题
-              href: ../common/storage-import-export-tool-troubleshooting-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 导入/导出服务清单文件格式
-              href: ../common/storage-import-export-file-format-manifest.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 导入/导出服务元数据和属性文件格式
-              href: ../common/storage-import-export-file-format-metadata-and-properties.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 导入/导出服务日志文件格式
-              href: ../common/storage-import-export-file-format-log.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 使用导入/导出工具 (v1)
-          href: ../common/storage-import-export-tool-how-to-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          items:
-            - name: 设置导入/导出工具
-              href: ../common/storage-import-export-tool-setup-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 为导入作业准备硬盘驱动器
-              href: ../common/storage-import-export-tool-preparing-hard-drives-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: 在导入过程中设置属性和元数据
-                  href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 为导入作业准备硬盘驱动器的示例工作流
-                  href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 导入作业的常用命令快速参考
-                  href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 预览导出作业的驱动器使用情况
-              href: ../common/storage-import-export-tool-previewing-drive-usage-export-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 使用复制日志文件查看作业状态
-              href: ../common/storage-import-export-tool-reviewing-job-status-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 修复导入作业
-              href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 修复导出作业
-              href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 排查导入/导出工具问题
-              href: ../common/storage-import-export-tool-troubleshooting-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 导入/导出服务清单文件格式
-              href: ../common/storage-import-export-file-format-manifest.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 导入/导出服务元数据和属性文件格式
-              href: ../common/storage-import-export-file-format-metadata-and-properties.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 导入/导出服务日志文件格式
-              href: ../common/storage-import-export-file-format-log.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 使用 Azure 导入/导出服务 REST API
-          href: ../common/storage-import-export-using-the-rest-api.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          items:
-            - name: 创建导入作业
-              href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 创建导出作业
-              href: ../common/storage-import-export-creating-an-export-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 检索作业的状态信息
-              href: ../common/storage-import-export-retrieving-state-info-for-a-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 枚举作业
-              href: ../common/storage-import-export-enumerating-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 取消和删除作业
-              href: ../common/storage-import-export-cancelling-and-deleting-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 备份驱动器清单
-              href: ../common/storage-import-export-backing-up-drive-manifests.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 导入/导出作业的诊断和错误恢复
-              href: ../common/storage-import-export-diagnostics-and-error-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 联系支持部门以导入/导出
-          href: ../common/storage-import-export-contact-microsoft-support.md
         - name: 存储迁移常见问题解答
           href: ../common/storage-migration-faq.md
 - name: 引用

@@ -141,6 +141,8 @@
           href: functions-run-local.md
         - name: Visual Studio 开发
           href: functions-develop-vs.md
+        - name: 管理连接
+          href: manage-connections.md
         - name: 错误处理。
           href: functions-bindings-error-pages.md
     - name: 部署
@@ -200,7 +202,11 @@
         - name: Blob 存储
           href: functions-bindings-storage-blob.md
         - name: Azure Cosmos DB
-          href: functions-bindings-cosmosdb.md
+          items:
+            - name: Functions 1.x
+              href: functions-bindings-cosmosdb.md
+            - name: Functions 2.x
+              href: functions-bindings-cosmosdb-v2.md
         - name: 事件网格
           href: functions-bindings-event-grid.md
         - name: 事件中心

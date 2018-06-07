@@ -3,16 +3,19 @@ title: 教程 - 从单页应用使用 Azure Active Directory B2C 授予对 ASP.N
 description: 有关如何从单页应用使用 Active Directory B2C 保护 .NET Core Web API 并调用该 API 的教程。
 services: active-directory-b2c
 author: davidmu1
+manager: mtillman
 ms.author: davidmu
 ms.date: 3/02/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: 0e9e3074e2cdd9ec3adc814779811d150cd11010
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: 5b99f60c1bd81b77a5fc2be5575f65fc63eb0c11
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34711087"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>教程：从单页应用使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限
 
@@ -155,13 +158,15 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
+3. 在“属性”下打开 **launchSettings.json** 文件，找到 *applicationURL* 设置，然后记录在下一部分使用的值。
+
 ### <a name="configure-the-single-page-app"></a>配置单页应用
 
 该单页应用使用 Azure AD B2C 完成用户注册、登录，并调用受保护的 ASP.NET Core Web API。 需要更新单页应用来调用 .NET Core Web API。
 若要更改应用设置，请执行以下操作：
 
 1. 打开 Node.js 单页应用示例中的 `index.html` 文件。
-2. 使用 Azure AD B2C 租户注册信息来配置示例。 更改以下代码行中的 **b2cScopes** 和 **webApi** 值：
+2. 使用 Azure AD B2C 租户注册信息来配置示例。 在以下代码中，将租户名称添加到 **b2cScopes**，并将 **webApi** 值更改为以前记录的 *applicationURL* 值：
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -169,7 +174,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:58553/api/values',
+        webApi: 'http://localhost:64791/api/values',
     };
     ```
 

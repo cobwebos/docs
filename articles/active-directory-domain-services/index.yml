@@ -1,0 +1,102 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure AD 域服务文档
+metadata:
+  title: Azure AD 域服务文档
+  description: 了解如何使用 Active Directory 域服务将 Azure 虚拟机加入域，而无需使用域控制器。 教程和其他文档介绍了如何使用组策略管理虚拟机。
+  keywords: Azure AD, Azure, 域加入, 组策略, LDAP, Kerberos, 域控制器, DC, 直接迁移
+  author: mahesh-unnikrishnan
+  ms.author: maheshu
+  manager: mtillman
+  ms.date: 6/1/2018
+  ms.topic: landing-page
+  ms.devlang: na
+  ms.service: active-directory
+  ms.component: domains
+  ms.openlocfilehash: 4b065baf02a71d37b05cecf441b27f05a393c08c
+  ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/04/2018
+  ms.locfileid: "34726559"
+sections:
+- items:
+  - type: markdown
+    text: 了解如何使用 Active Directory 域服务将 Azure 虚拟机加入域，而无需使用域控制器。 教程和其他文档介绍了如何使用组策略管理虚拟机。
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - href: active-directory-ds-overview.md
+      html: <p>了解 Azure AD 域服务的功能。</p>
+      image:
+        src: https://docs.microsoft.com/en-us/media/common/i_investigate.svg
+      title: 什么是 Azure AD 域服务？
+    - href: active-directory-ds-getting-started.md
+      html: <p>通过这个简单的演练创建自己的托管域。</p>
+      image:
+        src: https://docs.microsoft.com/en-us/media/common/i_deploy.svg
+      title: 入门
+    - href: active-directory-ds-contact-us.md
+      html: <p>随时随地为你提供帮助。</p>
+      image:
+        src: https://docs.microsoft.com/en-us/media/common/i_support.svg
+      title: 获取支持
+    - href: https://azure.microsoft.com/en-us/updates/?product=active-directory-ds
+      html: <p>了解 Azure AD 域服务中的新功能。</p>
+      image:
+        src: https://docs.microsoft.com/en-us/media/common/i_whats-new.svg
+      title: 新增功能
+- title: 视频
+  items:
+  - type: markdown
+    text: '>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]'
+- title: 规划文章
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="active-directory-ds-comparison.md">确定服务是否适合自己</a>
+    - html: <a href="active-directory-ds-features.md">Azure AD 域服务的功能</a>
+    - html: <a href="active-directory-ds-scenarios.md">如何使用此服务？</a>
+    - html: <a href="active-directory-ds-synchronization.md">了解 Azure AD 域服务中的同步原理</a>
+    - html: <a href="https://azure.microsoft.com/en-us/pricing/details/active-directory-ds/">Azure AD 域服务定价</a>
+- title: 应用程序和 Azure AD 域服务
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="active-directory-ds-deploy-azure-app-proxy.md">部署 Azure AD 应用代理</a>
+    - html: <a href="active-directory-ds-enable-sharepoint-profile-sync.md">SharePoint Server 的配置文件同步</a>
+    - html: <a href="active-directory-ds-enable-kcd.md">配置 Kerberos 约束委派</a>
+- title: 操作方法文章
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="active-directory-ds-check-health.md">检查托管域的运行状况</a>
+    - html: <a href="active-directory-ds-csp.md">Azure CSP 订阅和 Azure AD 域服务</a>
+    - html: <a href="active-directory-ds-admin-guide-administer-dns.md">管理 DNS</a>
+    - html: <a href="active-directory-ds-networking.md">选择虚拟网络</a>
+    - html: <a href="active-directory-ds-admin-guide-configure-secure-ldap.md">配置安全 LDAP</a>
+    - html: <a href="active-directory-ds-admin-guide-create-ou.md">创建 OU</a>
+    - html: <a href="active-directory-ds-admin-guide-administer-group-policy.md">管理组策略</a>
+- title: 故障排除文章
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="active-directory-ds-troubleshooting.md">故障排除指南</a>
+    - html: <a href="active-directory-ds-troubleshoot-alerts.md">排查托管域的警报问题</a>
+    - html: <a href="active-directory-ds-faqs.md">常见问题</a>
+    - html: <a href="https://azure.microsoft.com/en-us/support/options/">获取支持</a>
+- title: 其他资源
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://feedback.azure.com/forums/169401-azure-active-directory/">通过 UserVoice 提供有关 Azure AD 域服务的反馈</a>
+    - html: <a href="https://azure.microsoft.com/en-us/roadmap/?category=security-identity">Azure 路线图</a>
+    - html: <a href="https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-contact-us">联系我们</a>

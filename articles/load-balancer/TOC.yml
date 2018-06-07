@@ -10,18 +10,26 @@
       href: quickstart-create-basic-load-balancer-portal.md
     - name: 创建基本负载均衡器 - Azure CLI
       href: quickstart-create-basic-load-balancer-cli.md
+    - name: 创建基本负载均衡器 - Azure PowerShell
+      href: quickstart-create-basic-load-balancer-powershell.md
     - name: 创建标准负载均衡器 - 门户
       href: quickstart-load-balancer-standard-public-portal.md
     - name: 创建标准负载均衡器 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
+    - name: 创建标准负载均衡器 - Azure PowerShell
+      href: quickstart-create-standard-load-balancer-powershell.md
 - name: 教程
   items:
+    - name: 创建和管理负载均衡器
+      href: tutorial-load-balancer-standard-manage-portal.md
     - name: 对传入 VM 的内部流量进行负载均衡
       href: tutorial-load-balancer-basic-internal-portal.md
     - name: 跨可用性区域对 VM 进行负载均衡
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定的可用性区域中对 VM 进行负载均衡
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+    - name: 在负载均衡器中配置端口转发
+      href: tutorial-load-balancer-port-forwarding-portal.md
 - name: 示例
   items:
     - name: Azure CLI

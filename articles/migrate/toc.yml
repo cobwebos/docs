@@ -10,7 +10,7 @@
       href: tutorial-assessment-vmware.md
 - name: 概念
   items:
-    - name: 收集器概念
+    - name: 关于收集器
       href: concepts-collector.md
     - name: 评估计算
       href: concepts-assessment-calculation.md
@@ -18,13 +18,15 @@
       href: concepts-dependency-visualization.md
 - name: 操作指南
   items:
-    - name: 将本地资源迁移到 Azure
+    - name: Contoso 迁移系列
       items:
-        - name: 方案概述 - 将本地资源迁移到 Azure
-          href: migrate-scenarios-overview.md
-        - name: 方案 1 - 评估要迁移到 Azure 的本地资源
+        - name: 1. Contoso - 迁移概述
+          href: contoso-migration-overview.md
+        - name: 2. Contoso - 设置 Azure 基础结构
+          href: contoso-migration-infrastructure.md
+        - name: 3. Contoso - 评估要迁移到 Azure 的本地资源
           href: migrate-scenarios-assessment.md
-        - name: 方案 2 - 直接迁移到 Azure
+        - name: 4. Contoso - 在 Azure VM 和 Azure SQL 托管实例上重新托管
           href: migrate-scenarios-lift-and-shift.md
     - name: 发现和评估大型环境
       href: how-to-scale-assessment.md

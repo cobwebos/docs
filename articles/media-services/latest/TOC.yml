@@ -12,9 +12,15 @@
 - name: 教程
   items:
     - name: 上传、编码和流式处理
-      href: stream-files-tutorial-with-api.md
+      items:
+        - name: 使用 .NET
+          href: stream-files-tutorial-with-api.md
+        - name: 使用 REST
+          href: stream-files-tutorial-with-rest.md
     - name: 分析视频
-      href: analyze-videos-tutorial-with-api.md
+      items:
+        - name: 使用 .NET
+          href: analyze-videos-tutorial-with-api.md
 - name: 示例
   items:
     - name: Azure 代码示例
@@ -25,18 +31,24 @@
   items:
     - name: 资产
       href: assets-concept.md
-    - name: 自动生成自适应比特率阶梯
-      href: autogen-bitrate-ladder.md
+    - name: 编码
+      items:
+        - name: 概述
+          href: encoding-concept.md
+        - name: 自动生成自适应比特率阶梯
+          href: autogen-bitrate-ladder.md
     - name: 媒体智能
       href: intelligence-concept.md
+    - name: 对事件做出响应
+      href: reacting-to-media-services-events.md
     - name: 存储帐户
       href: storage-account-concept.md
     - name: 转换和作业
       href: transform-concept.md
-    - name: 对事件做出响应
-      href: reacting-to-media-services-events.md
 - name: 操作指南
   items:
+    - name: 从 v2 迁移到 v3
+      href: migrate-from-v2-to-v3.md
     - name: 创建帐户 - CLI
       href: create-account-cli-how-to.md
     - name: 访问 API - CLI
@@ -49,8 +61,14 @@
           href: job-input-from-http-how-to.md
         - name: 从本地文件
           href: job-input-from-local-file-how-to.md
+    - name: 自定义转换预设
+      items:
+        - name: 使用 .NET Core
+          href: customize-encoder-presets-how-to.md
 - name: 引用
   items:
+    - name: OpenAPI 规范 (Swagger)
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview'
     - name: Azure CLI 2.0
       href: 'https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest'
     - name: REST
@@ -61,6 +79,8 @@
       href: 'https://docs.microsoft.com/java/api/overview/azure/mediaservices'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/media-services?view=azure-python'
+    - name: Node .js
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: 事件架构
       href: media-services-event-schemas.md
 - name: 资源
@@ -77,3 +97,5 @@
       href: release-notes.md
     - name: 配额和限制
       href: limits-quotas-constraints.md
+    - name: 常见问题
+      href: frequently-asked-questions.md
