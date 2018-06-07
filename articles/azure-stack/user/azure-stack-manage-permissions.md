@@ -15,87 +15,88 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 4f9354426ba584b26213f8a104c14122a831a453
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 026c686b1d5654aa50dd63b9addd619dd5322da0
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808139"
 ---
-# <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>管理使用 Azure Stack Role-Based 访问控制对资源的访问权限
+# <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>使用 Azure Stack 基于角色的访问控制管理对资源的访问权限
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 堆栈支持基于角色的访问控制 (RBAC)，相同[访问管理的安全模型](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview)Microsoft Azure 使用。 可以使用 RBAC 来管理用户、 组或订阅、 资源和服务应用程序访问。
+Azure 堆栈支持基于角色的访问控制 (RBAC)，相同[访问管理的安全模型](https://docs.microsoft.com/azure/role-based-access-control/overview)Microsoft Azure 使用。 可以使用 RBAC 来管理用户、组或应用程序对订阅、资源和服务的访问权限。
 
-## <a name="basics-of-access-management"></a>访问管理的基础知识
+## <a name="basics-of-access-management"></a>访问管理基础知识
 
-基于角色的访问控制，您可以使用来保护你的环境的精细的访问控制。 通过分配在某些范围内的 RBAC 角色所需的确切权限授予用户。 角色分配的作用域可以是订阅、 资源组或单个资源。 读取[在 Azure 门户中基于角色的访问控制](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview)文，以获取有关访问管理的更多详细的信息。
+基于角色的访问控制提供了精细的访问控制，可以用来保护环境安全。 通过在特定范围内分配 RBAC 角色，可以为用户授予他们所需的确切权限。 角色分配的范围可以是订阅、资源组或单个资源。 若要获取有关访问管理的更多详细信息，请阅读 [Azure 门户中基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)一文。
 
 ### <a name="built-in-roles"></a>内置角色
 
-Azure 堆栈具有三个基本角色可应用于所有资源类型：
+Azure Stack 有三个可应用于所有资源类型的基本角色：
 
-* **所有者**可以管理所有内容，包括对资源的访问。
-* **参与者**可以管理对资源的访问权限以外的所有内容。
-* **读取器**可以查看所有内容，但不能进行任何更改。
+* **所有者**可以管理所有内容，包括对资源的访问权限。
+* **参与者**可以管理除了对资源的访问权限以外的所有内容。
+* **读者**可以查看所有内容，但不能进行任何更改。
 
 ### <a name="resource-hierarchy-and-inheritance"></a>资源层次结构和继承
 
-Azure 堆栈具有以下资源层次结构：
+Azure Stack 具有以下资源层次结构：
 
-* 每个订阅都属于一个目录。
+* 每个订阅属于一个目录。
 * 每个资源组属于一个订阅。
 * 每个资源属于一个资源组。
 
-在子范围继承在父作用域授予的访问。 例如：
+子范围将继承在父范围授予的访问权限。 例如：
 
 * 将读取器角色分配给订阅范围内的 Azure AD 组。 该组成员可以查看订阅中的每个资源组和资源。
-* 将参与者角色分配给资源组范围内的应用程序。 应用程序可以管理该资源组，但不是在订阅中的其他资源组中的所有类型的资源。
+* 将参与者角色分配给资源组范围内的应用程序。 该应用程序可以管理该资源组中所有类型的资源，但不能管理订阅中的其他资源组。
 
 ### <a name="assigning-roles"></a>分配角色
 
-你可以将多个角色分配给用户，并且每个角色可以与不同的作用域关联。 例如：
+可以向一位用户分配多个角色，并且每个角色可以与不同的范围相关联。 例如：
 
-* 你将 TestUser-A 读取者角色分配给订阅-1。
-* 将 TestUser-A 所有者角色分配到 TestVM-1。
+* 向 TestUser-A 分配 Subscription-1 的“读者”角色。
+* 向 TestUser-A 分配 TestVM-1 的“所有者”角色。
 
-Azure[角色分配](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal)文章提供了有关查看、 分配和删除角色的详细的信息。
+Azure [角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)一文提供了有关查看、分配和删除角色的详细信息。
 
 ### <a name="resource-hierarchy-and-inheritance"></a>资源层次结构和继承
 
-Azure 堆栈具有以下资源层次结构：
+Azure Stack 具有以下资源层次结构：
 
-* 每个订阅都属于一个目录。
+* 每个订阅属于一个目录。
 * 每个资源组属于一个订阅。
 * 每个资源属于一个资源组。
 
-在子范围继承在父作用域授予的访问。 例如：
+子范围将继承在父范围授予的访问权限。 例如：
 
-* 你分配**读取器**到 Azure AD 组在订阅范围内的角色。 该组成员可以查看订阅中的每个资源组和资源。
-* 你分配**参与者**到应用程序在资源组作用域的角色。 应用程序可以管理该资源组，但不是在订阅中的其他资源组中的所有类型的资源。
+* 你向某个 Azure AD 组分配了在订阅范围内的**读者**角色。 该组成员可以查看订阅中的每个资源组和资源。
+* 你向某个应用程序分配了在资源组范围内的**参与者**角色。 该应用程序可以管理该资源组中所有类型的资源，但不能管理订阅中的其他资源组。
 
 ### <a name="assigning-roles"></a>分配角色
 
-你可以将多个角色分配给用户，并且每个角色可以与不同的作用域关联。 例如：
+可以向一位用户分配多个角色，并且每个角色可以与不同的范围相关联。 例如：
 
-* 你将 TestUser-A 读取者角色分配给订阅-1。
-* 将 TestUser-A 所有者角色分配到 TestVM-1。
+* 向 TestUser-A 分配 Subscription-1 的“读者”角色。
+* 向 TestUser-A 分配 TestVM-1 的“所有者”角色。
 
-Azure[角色分配](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal)文章提供了有关查看、 分配和删除角色的详细的信息。
+Azure [角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)一文提供了有关查看、分配和删除角色的详细信息。
 
 ## <a name="set-access-permissions-for-a-user"></a>设置用户的访问权限
 
-以下步骤介绍如何配置用户权限。
+以下步骤介绍了如何为用户配置权限。
 
 1. 使用对要管理的资源具有所有者权限的帐户登录。
 2. 在左侧导航窗格中，选择“资源组”。
-3. 选择你想要设置权限的资源组的名称。
-4. 在资源组的导航窗格中，选择**访问控制 (IAM)**。 **访问控制**视图列出有权访问的资源组的项目。 你可以筛选这些结果，并使用菜单栏添加或删除权限。
-5. 上**访问控制**菜单栏上，选择 **+ 添加**。
-6. 上**添加权限**:
+3. 选择要针对其设置权限的资源组的名称。
+4. 在资源组的导航窗格中，选择“访问控制(标识和访问管理)”。 “访问控制”视图会列出对该资源组具有访问权限的项。 可以对这些结果进行筛选，以及使用菜单栏添加或删除权限。
+5. 在“访问控制”菜单栏上，选择“+ 添加”。
+6. 在“添加权限”中：
 
-   * 选择你想要从分配的角色**角色**下拉列表。
-   * 选择你想要从分配的资源**分配其访问权限**下拉列表。
+   * 从“角色”下拉列表中选择要分配的角色。
+   * 从“将访问权限分配到”下拉列表中选择要分配的资源。
    * 在你想要授予访问权限的目录中选择用户、组或应用程序。 可以通过显示名称、电子邮件地址和对象标识符搜索该目录。
 
 7. 选择“保存”。

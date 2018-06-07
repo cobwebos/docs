@@ -1,6 +1,6 @@
 ---
-title: 将实现 Kubernetes 群集部署到 Azure 的堆栈 |Microsoft 文档
-description: 了解如何将 Kubernetes 群集部署到 Azure 堆栈。
+title: 将 Kubernetes 群集部署到 Azure Stack | Microsoft Docs
+description: 了解如何将 Kubernetes 群集部署到 Azure Stack。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,147 +11,150 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 7cf865f0ce75d8308d6d42306e8e05852f763cae
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 43c0b7c87f9ee1cd33da3d617747c11dc120e51a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823616"
 ---
-# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>将实现 Kubernetes 群集部署到 Azure 堆栈
+# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>将 Kubernetes 群集部署到 Azure Stack
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!Note]  
-> Azure 堆栈上的 Azure 容器服务 (ACS) Kubernetes 是处于特邀预览阶段。 Azure 堆栈运算符将需要请求对 Kubernetes 应用商店项执行本文中的说明所需的访问。
+> Azure Stack 上的 Azure 容器服务 (ACS) Kubernetes 目前为个人预览版。 Azure Stack 操作员需请求 Kubernetes Marketplace 项的访问权限，该项是根据本文中的说明进行操作所必需的。
 
-以下文章查看使用 Azure 资源管理器解决方案模板来部署和设置的资源为 Kubernetes 在单个协调的操作。 你将需要收集有关你的 Azure 堆栈安装所需的信息生成模板，并随后部署到云。
+下面的文章着眼于使用 Azure 资源管理器解决方案模板通过单个协调的操作为 Kubernetes 部署和预配资源。 需收集有关 Azure Stack 安装的必需信息，生成模板，然后再部署到云。
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes 和容器
 
-你可以在 Azure 堆栈上安装 Azure 容器服务 (ACS) Kubernetes。 [Kubernetes](https://kubernetes.io)是一种用于自动部署，开放源代码系统缩放和管理容器中的应用程序。 A[容器](https://www.docker.com/what-container)包含在映像中，类似于 VM。 与 VM 的容器映像只是示例包含它需要运行应用程序，如代码运行时执行代码、 特定的库和设置的资源。
+你可以安装 Kubernetes 使用由 Azure 堆栈上的 Azure 容器服务 (ACS) 引擎生成的 Azure 资源管理器模板。 [Kubernetes](https://kubernetes.io) 是一个开源系统，可以自动部署、缩放和管理容器中的应用程序。 [容器](https://www.docker.com/what-container)受限于映像，与 VM 类似。 与 VM，不同的容器映像仅包含它需要运行应用程序，如代码运行时执行代码、 特定的库和设置的资源。
 
-你可以使用 Kubernetes 到：
+可以使用 Kubernetes 执行以下操作：
 
-- 开发可大规模缩放、 可升级，应用程序可以部署以秒为单位。 
-- 简化你的应用程序的设计，并通过不同的舵应用程序来提高其可靠性。 [Helm](https://github.com/kubernetes/helm) 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。
-- 轻松监视和诊断应用程序与缩放的运行状况和升级功能。
+- 开发可以大规模伸缩、升级并可快速部署的应用程序。 
+- 通过不同的 Helm 应用程序简化应用程序的设计并改进其可靠性。 [Helm](https://github.com/kubernetes/helm) 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。
+- 轻松监视和诊断具有缩放和升级功能的应用程序的运行状况。
 
 ## <a name="prerequisites"></a>必备组件 
 
-若要开始，确保拥有正确权限，并且 Azure 堆栈已就绪。
+开始之前，请确保你有适当的权限且 Azure Stack 已就绪。
 
-1. 验证可以在 Azure Active Directory (Azure AD) 租户中创建应用程序。 Kubernetes 部署需要这些权限。
+1. 验证是否可以在 Azure Active Directory (Azure AD) 租户中创建应用程序。 需要这些权限才能进行 Kubernetes 部署。
 
-    检查你的权限的说明，请参阅[检查 Azure Active Directory 权限](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#check-azure-active-directory-permissions)。
+    有关如何检查权限的说明，请参阅[检查 Azure Active Directory 权限](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#check-azure-active-directory-permissions)。
 
-2. 生成的 SSH 公钥和私钥密钥对以登录到 Linux VM Azure 堆栈上。 创建群集时，你将需要公共密钥。
+2. 生成一个 SSH 公钥和私钥对，用于登录到 Azure Stack 上的 Linux VM。 在创建群集时需要此公钥。
 
-    有关生成密钥的说明，请参阅[SSH 密钥生成](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation)。
+    有关如何生成密钥的说明，请参阅 [SSH 密钥生成](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation)。
 
-3. 检查在你 Azure 堆栈租户门户中，具有有效的订阅，并且你有足够的公共 IP 地址可用于添加新的应用程序。
+3. 检查你在 Azure Stack 租户门户中是否有有效的订阅，以及是否有足够的公共 IP 地址来添加新的应用程序。
+
+    无法将群集部署到 Azure 堆栈**管理员**订阅。 你必须使用用户 * * 订阅。 
 
 ## <a name="create-a-service-principal-in-azure-ad"></a>在 Azure AD 中创建服务主体
 
-1. 登录到全局[Azure 门户](http://www.poartal.azure.com)。
-2. 您已在使用与 Azure 堆栈相关联的 Azure AD 租户登录的检查。
+1. 登录到全球 [Azure 门户](http://portal.azure.com)。
+2. 登录使用 Azure AD 租户与 Azure 堆栈实例关联的检查。
 3. 创建 Azure AD 应用程序。
 
-    a. 选择**Azure Active Directory** > **+ 应用程序注册** > **新应用程序注册**。
+    a. 选择“Azure Active Directory” > “+ 应用注册” > “新建应用程序注册”。
 
-    b. 输入**名称**的应用程序。
+    b. 输入应用程序的“名称”。
 
-    c. 选择**Web 应用程序 / API**
+    c. 选择**Web 应用程序 / API**。
 
-    d. 输入`http://localhost`为**登录 URL**。
+    d. 输入 `http://localhost` 作为“登录 URL”。
 
-    c. 单击“创建” 
+    c. 单击“创建”。
 
-4. 记下**应用程序 ID**。 创建群集时，你需要具有 ID。 作为引用 ID**服务主体客户端 ID**。
+4. 记下“应用程序 ID”。 在创建群集时需要此 ID。 此 ID 称为“服务主体客户端 ID”。
 
-5. 选择**设置** > **密钥**。
+5. 选择“设置” > “密钥”。
 
-    a. 输入**说明**。
+    a. 输入“说明”。
 
-    b. 选择**永不过期**为**Expires**。
+    b. 对于“过期”这一项，请选择“永不过期”。
 
-    c. 选择“保存”。 请记下密钥的字符串。 创建群集时，你将需要密钥的字符串。 该键与引用**服务主体客户端机密**。
+    c. 选择“保存”。 记下密钥字符串。 在创建群集时需要此密钥字符串。 密钥引用了作为**服务主体客户端机密**。
 
 
 
-## <a name="give-the-service-principal-access"></a>为提供的服务主体访问权限
+## <a name="give-the-service-principal-access"></a>为服务主体提供访问权限
 
-为服务主体访问提供到你的订阅中，使主体可以创建资源。
+为服务主体提供对订阅的访问权限，使该主体能够创建资源。
 
 1.  登录到[管理门户](https://adminportal.local.azurestack.external)。
 
-2. 选择**更多的服务** > **用户订阅** > **+ 添加**。
+2. 选择“更多服务” > “用户订阅” > “+ 添加”。
 
-3. 选择你创建的订阅。
+3. 选择已创建的订阅。
 
-4. 选择**访问控制 (IAM)** > 选择 **+ 添加**。
+4. 选择“访问控制(IAM)”，然后选择“+ 添加”。
 
-5. 选择**所有者**角色。
+5. 选择“所有者”角色。
 
-6. 选择创建你的服务主体的应用程序名称。 你可能需要在搜索框中键入的名称。
+6. 选择为服务主体创建的应用程序名称。 可能需要在搜索框中键入名称。
 
 7. 单击“ **保存**”。
 
-## <a name="deploy-a-kubernetes-cluster"></a>部署实现 Kubernetes 群集
+## <a name="deploy-a-kubernetes-cluster"></a>部署 Kubernetes 群集
 
-1. 打开[Azure 堆栈门户](https://portal.local.azurestack.external)。
+1. 打开 [Azure Stack 门户](https://portal.local.azurestack.external)。
 
-2. 选择 **+ 新** > **计算** > **Kubernetes 群集**。
+2. 选择“+新建” > “计算” > “Kubernetes 群集”。 单击“创建”。
 
-    ![部署解决方案模板](../media/azure-stack-solution-template-kubernetes-cluster-add/azure-stack-kubernetes-cluster-solution-template.png)
+    ![部署解决方案模板](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-3. 选择**参数**在部署解决方案模板。
+3. 选择**基础知识**中创建 Kubernetes 群集。
 
-    ![部署解决方案模板](../media/azure-stack-solution-template-kubernetes-cluster-add/azure-stack-kubernetes-cluster-solution-template-parameters.png)
+    ![部署解决方案模板](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
-2. 输入**Linux 管理用户名**。 Kubernetes 群集的一部分的 Linux 虚拟机并 DVM 的用户名称。
+2. 输入**Linux VM 管理员用户名**。 构成 Kubernetes 群集和 DVM 的 Linux 虚拟机的用户名。
 
 3. 输入**SSH 公钥**用于到 DVM Kubernetes 群集的一部分创建的所有 Linux 计算机的授权。
 
-4. 输入**租户终结点**。 这是要连接到创建 Kubernetes 群集的资源组的 Azure 资源管理器终结点。 你将需要从 Azure 堆栈运算符集成的系统中获取终结点。 有关 Azure 堆栈开发工具包 (ASDK)，你可以使用`https://management.local.azurestack.external`。
-
-5. 输入**租户 ID**租户。 如果你需要查找此值的帮助，请参阅[获取租户 ID](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)。 
-
-6. 输入**主配置文件的 DNS 前缀**区域中唯一。 这必须是一个区域唯一的名称，如`k8s-12345`。 尝试选择相同作为资源组的名称，作为最佳做法。
+4. 输入**母版配置文件 DNS 前缀**区域中唯一。 这必须是特定于区域的名称，例如 `k8s-12345`。 最佳做法是尝试选择与资源组名称相同的名称。
 
     > [!Note]  
-    > 对于每个群集中，使用新的和独特的主配置文件的 DNS 前缀。
+    > 为每个群集使用新且唯一的主配置文件 DNS 前缀。
 
-7. 在群集中输入的代理的数量。 此值称为**代理池配置文件计数**。 可以有从 1 到 32
+5. 输入**代理池配置文件计数**。 计数包含群集中的代理数。 可以有从 1 到 4。
 
-8. 输入**服务主体的应用程序 ID** Kubernetes Azure 云提供程序使用此。
+6. 输入**服务主体 ClientId** Kubernetes Azure 云提供程序使用此。
 
-9. 输入**服务主体的客户端机密**时创建服务主体的应用程序创建。
+7. 输入**服务主体客户端机密**时创建服务主体的应用程序创建。
 
-10. 输入**Kubernetes Azure 云提供程序版本**。 这是 Kubernetes Azure 提供程序版本。 Azure 堆栈释放用于每个 Azure 堆栈版本的自定义 Kubernetes 版本。
+8. 输入 **Kubernetes Azure 云提供程序版本**。 这是 Kubernetes Azure 提供程序的版本。 Azure Stack 为每个 Azure Stack 版本发布了自定义的 Kubernetes 内部版本。
 
-12. 选择“确定”。
+9. 选择你**订阅**id。
 
-### <a name="specify-the-solution-values"></a>指定解决方案值
+10. 输入新资源组的名称，或者选择现有资源组。 资源名称必须为字母数字，且必须小写。
 
-1. 选择**订阅**。
+11. 选择**位置**的资源组。 这是你的 Azure 堆栈安装你选择的区域。
 
-2. 输入新的资源组的名称或选择现有资源组。 资源名称必须是字母数字和小写。
+### <a name="specify-the-azure-stack-settings"></a>指定 Azure 堆栈设置
 
-3. 输入的位置的资源组中，如**本地**。
+1. 选择**Azure 堆栈戳设置**。
 
-4. 选择**创建。**
+    ![部署解决方案模板](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
+
+2. 输入**租户 Arm 终结点**。 这是在连接后即可为 Kubernetes 群集创建资源组的 Azure 资源管理器终结点。 需从集成系统的 Azure Stack 操作员处获取此终结点。 对于 Azure Stack 开发工具包 (ASDK)，可以使用 `https://management.local.azurestack.external`。
+
+3. 输入**租户 ID**租户。 如果不知道如何查找此值，请参阅[获取租户 ID](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)。 
 
 ## <a name="connect-to-your-cluster"></a>连接到你的群集
 
-现在你就可以连接到你的群集。 你将需要**kubectl**，Kubernetes 命令行客户端。 你可以找到有关连接到和管理 Azure 容器服务文档中的群集的说明。   
+现在可以连接到群集了。 Master 可以在群集资源组中，找到和名为`k8s-master-<sequence-of-numbers>`。 使用 SSH 客户端连接到主服务器。 你可使用了主机， **kubectl**，Kubernetes 命令行客户端来管理你的群集。 有关说明，请参阅[Kubernetes.io](https://kubernetes.io/docs/reference/kubectl/overview)。
 
-有关说明，请参阅[连接到群集](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough#connect-to-the-cluster)。
+你可能会发现**舵**程序包管理器用于安装和将应用部署到你的群集。 有关安装和使用你的群集舵的说明，请参阅[helm.sh](https://helm.sh/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[将实现 Kubernetes 群集添加到应用商店 （适用于 Azure 堆栈运算符）](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[向 Marketplace 添加 Kubernetes 群集（适用于 Azure Stack 操作员）](..\azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [在 Azure 上的 Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

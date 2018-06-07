@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 8c8037fe3936485082299250e603b2f3ea3859b9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 12138ac5a173f66d8b6b0041de9f31f4ac326485
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34822949"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>使用基础结构备份服务对 Azure Stack 进行备份和数据恢复
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 05/12/2018
 - **凭据**  
   需要域用户帐户和凭据，例如，可以使用 Azure Stack 管理员凭据。
 - **加密密钥**  
-  使用此密钥加密备份文件。 请确保将此密钥存储在安全位置。 首次设置此密钥或将来轮换密钥后，都无法从此界面查看此密钥。 有关生成预共享密钥的详细说明，请按照[使用 PowerShell 为 Azure Stack 启用备份](http://azure-stack-backup-enable-backup-powershell.md)中的脚本进行操作。
+  使用此密钥加密备份文件。 请确保将此密钥存储在安全位置。 首次设置此密钥或将来轮换密钥后，都无法从此界面查看此密钥。 有关生成预共享密钥的详细说明，请按照[使用 PowerShell 为 Azure Stack 启用备份](azure-stack-backup-enable-backup-powershell.md)中的脚本进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

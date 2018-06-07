@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: c2e18f30e55007a0625a19258ec3745f64dc25da
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd43d567a9839ae38c5b5eb4cdb851f8b80dcfff
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824564"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>提供对 Azure Stack 的应用程序访问权限
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 04/28/2018
 
 
 要求：
-- 需要经过认证。
+- 证书是必需的。
 
 **参数**
 

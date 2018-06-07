@@ -16,11 +16,12 @@ ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 325ef42d72970f4e0962a9b1a81b78bbd39585d4
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: a093e60718881b2fe9ca70df7596e8963dc55d9f
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808037"
 ---
 # <a name="tutorial-add-an-azure-stack-marketplace-item-from-a-local-source"></a>教程：从本地源添加 Azure Stack Marketplace项
 
@@ -48,85 +49,82 @@ ms.lasthandoff: 05/12/2018
 
 如果在离线场景或连接受限的场景中部署 Azure Stack，请使用此选项。
 
-1. 使用以下命令导入 Azure Stack 工具目录中包含的 Azure Stack `Connect` 和 `ComputeAdmin` PowerShell 模块：
+1. [安装适用于 Azure Stack 的 PowerShell](../azure-stack-powershell-install.md)。
 
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned
+  ```PowerShell  
+    # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+    Add-AzureRMEnvironment `
+      -Name "AzureStackAdmin" `
+      -ArmEndpoint $ArmEndpoint
 
-   # Import the Connect and ComputeAdmin modules.   
-   Import-Module .\Connect\AzureStack.Connect.psm1
-   Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
+    Set-AzureRmEnvironment `
+      -Name "AzureStackAdmin" `
+      -GraphAudience $GraphAudience
 
-   ```
+    $TenantID = Get-AzsDirectoryTenantId `
+      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
+      -EnvironmentName AzureStackAdmin
 
-2. 在 ASDK 主机上，根据部署 Azure Stack 环境时使用的是 Azure Active Directory (Azure AD) 还是 Active Directory 联合身份验证服务 (AD FS) 运行以下脚本之一：
+    Add-AzureRmAccount `
+      -EnvironmentName "AzureStackAdmin" `
+      -TenantId $TenantID
+  ```
 
-  - 适用于 **Azure AD 部署**的命令： 
+2. 如果使用 **Active Directory 联合身份验证服务**，请使用以下 cmdlet：
 
-      ```PowerShell
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
+  ```PowerShell
+  # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $GraphAudience = "https://graph.windows.net/"
-      
-      # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
-      Add-AzureRMEnvironment `
-        -Name "AzureStackAdmin" `
-        -ArmEndpoint $ArmEndpoint
+  # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+  $GraphAudience = "<GraphAuidence endpoint for your environment>"
 
-      Set-AzureRmEnvironment `
-        -Name "AzureStackAdmin" `
-        -GraphAudience $GraphAudience
-
-      $TenantID = Get-AzsDirectoryTenantId `
-      # Replace the AADTenantName value to reflect your Azure AD tenant name.
-        -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
-        -EnvironmentName AzureStackAdmin
-
-      Add-AzureRmAccount `
-        -EnvironmentName "AzureStackAdmin" `
-        -TenantId $TenantID 
-      ```
-
-  - 适用于 **AD FS 部署**的命令：
-      
-      ```PowerShell
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
-
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $GraphAudience = "https://graph.local.azurestack.external/"
-
-      # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
-      Add-AzureRMEnvironment `
-        -Name "AzureStackAdmin" `
-        -ArmEndpoint $ArmEndpoint
-
-      Set-AzureRmEnvironment `
-        -Name "AzureStackAdmin" `
-        -GraphAudience $GraphAudience `
-        -EnableAdfsAuthentication:$true
-
-      $TenantID = Get-AzsDirectoryTenantId `
-      -ADFS `
-      -EnvironmentName "AzureStackAdmin" 
-
-      Add-AzureRmAccount `
-        -EnvironmentName "AzureStackAdmin" `
-        -TenantId $TenantID 
-      ```
-   
-3. 将 Windows Server 2016 映像添加到 Azure Stack Marketplace。 （将 *fully_qualified_path_to_ISO* 替换为下载的 Windows Server 2016 ISO 的路径。）
-
-    ```PowerShell
-    $ISOPath = "<fully_qualified_path_to_ISO>"
-
-    # Add a Windows Server 2016 Evaluation VM image.
-    New-AzsServer2016VMImage `
-      -ISOPath $ISOPath
-
+  # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+  Add-AzureRMEnvironment `
+    -Name "AzureStackAdmin" `
+    -ArmEndpoint $ArmEndpoint
     ```
+
+3. 以操作员身份登录到 Azure Stack。 有关说明，请参阅[以操作员身份登录到 Azure Stack](../azure-stack-powershell-configure-admin.md)。
+
+   ````PowerShell  
+    Add-AzureRmAccount `
+      -EnvironmentName "AzureStackAdmin" `
+      -TenantId $TenantID
+  ````
+
+4. 将 Windows Server 2016 映像添加到 Azure Stack Marketplace。
+
+    **添加 AzsPlatformimage** cmdlet 用于将映像添加指定的 Azure 资源管理器模板用于引用的 VM 映像的值。
+    
+    这些值包括：
+    
+  - **publisher**  
+    例如： `Microsoft`  
+    VM 映像的发布者名称段，供用户在部署映像时使用。 例如，**Microsoft**。 此字段不得包含空格或其他特殊字符。  
+  - **offer**  
+    例如： `WindowsServer`  
+    VM 映像的产品/服务名称段，供用户在部署 VM 映像时使用。 例如，**WindowsServer**。 此字段不得包含空格或其他特殊字符。  
+  - **sku**  
+    例如： `Datacenter2016`  
+    VM 映像的 SKU 名称段，供用户在部署 VM 映像时使用。 例如，**Datacenter2016**。 此字段不得包含空格或其他特殊字符。  
+  - **version**  
+    例如： `1.0.0`  
+    VM 映像的版本，供用户在部署 VM 映像时使用。 此版本采用以下格式 *\#。\#。\#* 例如，**1.0.0**。 此字段不得包含空格或其他特殊字符。  
+  - **osType**  
+    例如： `Windows`  
+    映像的 osType 必须为 **Windows** 或 **Linux**。 替换*fully_qualified_path_to_ISO*替换为你下载 Windows Server 2016 ISO 的路径。 
+  - **OSUri**  
+    例如： `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
+    可以指定 `osDisk` 的 Blob 存储 URI。 在本例中，你将指定存储下载的映像的位置。
+
+    有关详细信息，请参阅的 PowerShell 参考[添加 AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet。
+
+    使用权限提升的提示符打开 PowerShell，并运行：
+
+      ````PowerShell  
+        Add-AzsPlatformimage -publisher "Microsoft" -offer "WindowsServer" -sku "Datacenter2016" -version "1.0.0” -OSType "Windows" -OSUri "<fully_qualified_path_to_ISO>"
+      ````  
 
 ## <a name="verify-the-marketplace-item-is-available"></a>验证是否已提供 Marketplace 项
 使用以下步骤，验证新的 VM 映像是否已在 Azure Stack Marketplace 中提供。

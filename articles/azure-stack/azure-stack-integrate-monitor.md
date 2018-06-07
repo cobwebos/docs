@@ -15,16 +15,17 @@ ms.date: 05/10/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.openlocfilehash: d7c8520602132722fd0c7138de4a276b9ac2208a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807333"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>将外部监视解决方案与 Azure Stack 集成
 
 要在外部监视 Azure Stack 基础结构，需要监视 Azure Stack 软件、物理计算机和物理网络交换机。 上述每个监视区域都提供相应的方法来检索运行状况和警报信息：
 
-- Azure Stack 软件提供基于 REST 的 API 来检索运行状况和警报。 软件定义的技术，如存储空间直通、 存储运行状况和警报的使用是软件监视的一部分。
+- Azure Stack 软件提供基于 REST 的 API 来检索运行状况和警报。 软件定义的技术（如存储空间直通、存储运行状况和警报）的使用是软件监视的一部分。
 - 物理计算机可以通过基板管理控制器 (BMC) 提供运行状况和警报信息。
 - 物理网络设备可以通过 SNMP 协议提供运行状况和警报信息。
 
@@ -91,7 +92,7 @@ ms.lasthandoff: 05/12/2018
 
 如果不使用 Operations Manager、Nagios 或基于 Nagios 的解决方案，可以使用 PowerShell 来启用广泛的监视解决方案，以便与 Azure Stack 集成。
 
-1. 若要使用 PowerShell，请确保已针对 Azure Stack 操作员环境[安装并配置 PowerShell](azure-stack-powershell-configure-quickstart.md)。 在可以访问资源管理器 （管理员） 终结点的本地计算机上安装 PowerShell (https://adminmanagement。 [区域]。[External_FQDN])。
+1. 若要使用 PowerShell，请确保已针对 Azure Stack 操作员环境[安装并配置 PowerShell](azure-stack-powershell-configure-quickstart.md)。 在可以访问资源管理器（管理员）终结点 (https://adminmanagement.[region].[External_FQDN]) 的本地计算机上安装 PowerShell。
 
 2. 以 Azure Stack 操作员身份运行以下命令，以连接到 Azure Stack 环境：
 

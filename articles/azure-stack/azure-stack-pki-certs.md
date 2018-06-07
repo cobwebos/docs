@@ -3,7 +3,7 @@ title: Azure Stack 集成系统的 Azure Stack 公钥基础结构证书要求 | 
 description: 介绍 Azure Stack 集成系统的 Azure Stack PKI 证书部署要求。
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
-ms.author: jeffgilb
+ms.date: 06/06/2018
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: faf85c34c527dd72889f0fcb5021925b79481163
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823843"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -35,7 +36,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 ## <a name="certificate-requirements"></a>证书要求
 以下列表描述了部署 Azure Stack 时需要满足的证书要求： 
 - 证书必须由内部证书颁发机构或公共证书颁发机构颁发。 如果使用公共证书颁发机构，它必须作为 Microsoft 信任根颁发机构计划的一部分包含在基础操作系统映像中。 在以下网页中查看完整列表：https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
-- 你 Azure 堆栈的基础结构必须具有网络访问权限的证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是一个 http 终结点
+- Azure Stack 基础结构必须能够通过网络访问证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是 http 终结点
 - 轮换证书时，证书必须由签署部署时提供的证书的同一内部证书颁发机构颁发，或者由上述任何公共证书颁发机构颁发
 - 不支持使用自签名证书
 - 证书可以是单个通配符证书，其中涵盖使用者可选名称 (SAN) 字段中的所有命名空间。 或者，可以针对需要证书的终结点（例如 **acs**和 Key Vault）使用采用通配符的单个证书。 
@@ -45,7 +46,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 证书 pfx 文件的“增强型密钥使用”字段中必须包含“服务器身份验证(1.3.6.1.5.5.7.3.1)”和“客户端身份验证(1.3.6.1.5.5.7.3.2)”值。
 - 证书的“颁发给:”字段不能与其“颁发者:”字段相同。
 - 部署时，所有证书 pfx 文件的密码都必须相同
-- 访问的证书 pfx 的密码必须是一个复杂的密码。
+- 证书 pfx 的密码必须是复杂密码。
 - 确保所有证书的“使用者名称”和“使用者可选名称”匹配本文中所述的规范，以免部署失败。
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 
 需要使用每个 Azure Stack 公共基础结构终结点的、具有适当 DNS 名称的证书。 每个终结点的 DNS 名称使用以下格式表示：*&lt;prefix>.&lt;region>.&lt;fqdn>*。 
 
-对于部署，[region] 和 [externalfqdn] 值必须与针对 Azure Stack 系统选择的区域和外部域名相匹配。 例如，如果区域名称为 *Redmond*，外部域名为 *contoso.com*，则 DNS 名称的格式为 *&lt;prefix>.redmond.contoso.com*。*&lt;prefix>* 值由 Microsoft 预先指定，描述证书保护的终结点。 此外，外部基础结构终结点的 *&lt;prefix>* 值取决于使用特定终结点的 Azure Stack 服务。 
+对于部署，[region] 和 [externalfqdn] 值必须与针对 Azure Stack 系统选择的区域和外部域名相匹配。 例如，如果区域名称为 *Redmond*，外部域名为 *contoso.com*，则 DNS 名称的格式为 *&lt;prefix>.redmond.contoso.com*。 *&lt;prefix>* 值由 Microsoft 预先指定，描述证书保护的终结点。 此外，外部基础结构终结点的 *&lt;prefix>* 值取决于使用特定终结点的 Azure Stack 服务。 
 
 > [!note]  
 > 可以提供证书作为已复制到所有目录的单个通配符证书，其中涵盖“使用者”和“使用者可选名称”(SAN) 字段中的所有命名空间；也可以作为每个终结点的、已复制到相应目录的单个证书。 请记住，这两个选项都要求对 **acs** 和 Key Vault 等需要通配符证书的终结点使用此类证书。 
