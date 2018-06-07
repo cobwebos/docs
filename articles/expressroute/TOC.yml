@@ -1,5 +1,5 @@
 - name: ExpressRoute 文档
-  href: index.md
+  href: index.yml
 - name: 概述
   items:
     - name: 什么是 ExpressRoute？

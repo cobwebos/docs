@@ -85,7 +85,7 @@
       href: concepts-auto-provisioning.md
     - name: 设备
       href: concepts-device.md
-    - name: 安全
+    - name: “安全”
       href: concepts-security.md
     - name: 服务
       href: concepts-service.md
@@ -125,7 +125,7 @@
   items:
     - name: 解决方案
       items:
-        - name: IoT 套件预配置解决方案
+        - name: IoT 解决方案加速器
           href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'

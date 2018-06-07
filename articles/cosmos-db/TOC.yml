@@ -1,3 +1,4 @@
+metadata: {}
 items:
   - name: Azure Cosmos DB 文档
     href: index.yml
@@ -70,6 +71,8 @@ items:
     items:
       - name: 全球分布
         href: distribute-data-globally.md
+      - name: 多主设置
+        href: multi-region-writers.md
       - name: 分区
         href: partition-data.md
       - name: Throughput
@@ -80,9 +83,7 @@ items:
         href: unique-keys.md
       - name: 无服务器的数据库
         href: serverless-computing-database.md
-      - name: BulkExecutor 概述
-        href: bulk-executor-overview.md
-      - name: 安全
+      - name: “安全”
         href: database-security.md
         items:
           - name: 静态加密
@@ -167,8 +168,6 @@ items:
                 href: sql-api-resources.md
               - name: 模型文档数据
                 href: modeling-data.md
-              - name: 多主设置
-                href: multi-region-writers.md
           - name: 操作方法指南
             items:
               - name: BulkExecutor - .NET
@@ -399,8 +398,6 @@ items:
                 href: table-storage-how-to-use-dotnet.md
               - name: 'F#'
                 href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
-              - name: Node.js
-                href: table-storage-cloud-service-nodejs.md
               - name: Java
                 href: table-storage-how-to-use-java.md
               - name: Node.js
@@ -413,8 +410,6 @@ items:
                 href: table-storage-how-to-use-python.md
               - name: Ruby
                 href: table-storage-how-to-use-ruby.md
-              - name: PowerShell
-                href: table-storage-how-to-use-powershell.md
           - name: 引用
             items:
               - name: .NET
@@ -467,10 +462,14 @@ items:
         href: regional-failover.md
       - name: 诊断日志记录
         href: logging.md
+      - name: BulkExecutor 概述
+        href: bulk-executor-overview.md
       - name: 以经济高效的方式读取和写入
         href: key-value-store-cost.md
       - name: 使数据自动过期
         href: time-to-live.md
+      - name: 使用 PowerShell 管理
+        href: manage-account-with-powershell.md
       - name: 使用存储资源管理器进行管理
         href: storage-explorer.md
   - name: 资源

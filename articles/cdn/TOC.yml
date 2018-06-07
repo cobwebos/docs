@@ -10,6 +10,8 @@
   items:
     - name: 创建配置文件和终结点
       href: cdn-create-new-endpoint.md
+    - name: 集成存储帐户
+      href: cdn-create-a-storage-account-with-cdn.md
 - name: 教程
   items:
     - name: 将 Azure CDN 添加到 Web 应用
@@ -28,29 +30,21 @@
   items:
     - name: 缓存工作原理
       href: cdn-how-caching-works.md
+    - name: 中国内容分发
+      href: cdn-china-delivery.md
+    - name: HTTP/2 支持
+      href: cdn-http2.md
 - name: 操作指南
   items:
-    - name: 集成
-      items:
-        - name: 存储
-          items:
-            - name: 集成存储帐户
-              href: cdn-create-a-storage-account-with-cdn.md
-            - name: SAS 存储支持
-              href: cdn-sas-storage-support.md
-        - name: 跨域资源共享
-          href: cdn-cors.md
     - name: 优化内容
+      href: cdn-optimization-overview.md
       items:
-        - name: 优化概述
-          href: cdn-optimization-overview.md
-          items:
-            - name: 大型文件优化
-              href: cdn-large-file-optimization.md
-            - name: 媒体流优化
-              href: cdn-media-streaming-optimization.md
-            - name: 动态站点加速
-              href: cdn-dynamic-site-acceleration.md
+        - name: 大型文件优化
+          href: cdn-large-file-optimization.md
+        - name: 媒体流优化
+          href: cdn-media-streaming-optimization.md
+        - name: 动态站点加速
+          href: cdn-dynamic-site-acceleration.md
     - name: 管理
       items:
         - name: 使用 Azure PowerShell 进行管理
@@ -61,8 +55,6 @@
           href: cdn-improve-performance.md
         - name: 控制缓存行为
           items:
-            - name: 缓存工作原理
-              href: cdn-how-caching-works.md
             - name: 使用缓存规则控制缓存行为
               href: cdn-caching-rules.md
             - name: 使用查询字符串缓存内容
@@ -83,35 +75,35 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: 令牌身份验证
           href: cdn-token-auth.md
+        - name: SAS 存储支持
+          href: cdn-sas-storage-support.md
+        - name: 跨域资源共享
+          href: cdn-cors.md
         - name: 监视资源
           href: cdn-resource-health.md
         - name: 用规则覆盖行为
           href: cdn-rules-engine.md
-        - name: 获取实时警报
-          href: cdn-real-time-alerts.md
-        - name: HTTP/2 支持
-          href: cdn-http2.md
     - name: 分析
+      href: cdn-log-analysis.md
       items:
-        - name: 分析 Azure CDN 使用模式
-          href: cdn-log-analysis.md
+        - name: Azure 诊断日志
+          href: cdn-azure-diagnostic-logs.md
+        - name: Verizon 中用于 Azure CDN 的分析工具
           items:
-            - name: Azure 诊断日志
-              href: cdn-azure-diagnostic-logs.md
-            - name: Verizon 中用于 Azure CDN 的分析工具
-              items:
-                - name: Verizon 中的核心报表
-                  href: cdn-analyze-usage-patterns.md
-                - name: Verizon 中的自定义报表
-                  href: cdn-verizon-custom-reports.md
-            - name: Verizon 提供的适用于 Azure CDN 高级版的分析工具
-              items:
-                - name: 生成高级 HTTP 报告
-                  href: cdn-advanced-http-reports.md
-                - name: 查看实时统计信息
-                  href: cdn-real-time-stats.md
-                - name: 分析边缘节点性能
-                  href: cdn-edge-performance.md
+            - name: Verizon 中的核心报表
+              href: cdn-analyze-usage-patterns.md
+            - name: Verizon 中的自定义报表
+              href: cdn-verizon-custom-reports.md
+        - name: Verizon 提供的适用于 Azure CDN 高级版的分析工具
+          items:
+            - name: 生成高级 HTTP 报告
+              href: cdn-advanced-http-reports.md
+            - name: 查看实时统计信息
+              href: cdn-real-time-stats.md
+            - name: 分析边缘节点性能
+              href: cdn-edge-performance.md
+            - name: 获取实时警报
+              href: cdn-real-time-alerts.md
     - name: 开发
       items:
         - name: .NET

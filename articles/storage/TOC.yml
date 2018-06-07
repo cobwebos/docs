@@ -13,7 +13,7 @@
 - name: 队列
   href: ./queues/storage-queues-introduction.md
 - name: 表
-  href: ../cosmos-db/table-storage-overview.md
+  href: ./tables/table-storage-overview.md
 - name: 磁盘
   items:
     - name: Windows

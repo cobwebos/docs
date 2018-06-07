@@ -67,6 +67,8 @@
           href: concepts-firewall-rules.md
         - name: 配置 SSL
           href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
     - name: 业务连续性
       items:
         - name: 概述
@@ -119,6 +121,12 @@
       items:
         - name: 针对指标创建警报
           href: howto-alert-on-metric.md
+    - name: 虚拟网络
+      items:
+        - name: Azure 门户
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-using-cli.md
 - name: 引用
   items:
     - name: Azure CLI

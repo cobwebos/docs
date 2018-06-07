@@ -7,9 +7,9 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: Docker Swarm Linux
-      href: container-service-swarm-walkthrough.md
-    - name: DC/OS Linux
+    - name: Docker Swarm
+      href: container-service-swarm-mode-walkthrough.md
+    - name: DC/OS
       href: container-service-dcos-quickstart.md
 - name: 教程
   items:
@@ -27,10 +27,6 @@
       href: container-service-security.md
 - name: 操作指南
   items:
-    - name: 创建 ACS 群集
-      href: container-service-create-acs-cluster-cli.md
-    - name: 与 ACS 群集连接
-      href: container-service-connect.md
     - name: 缩放 ACS 群集
       href: container-service-scale.md
     - name: DC/OS

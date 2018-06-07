@@ -58,10 +58,10 @@
               href: 'https://github.com/Azure-Samples/active-directory-b2c-android-native-msal'
             - name: 使用 App Auth 的 Android
               href: active-directory-b2c-devquickstarts-android.md
-            - name: .NET
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop'
-            - name: Xamarin
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-xamarin-native'
+        - name: .NET
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop'
+        - name: Xamarin
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-xamarin-native'
         - name: 资源所有者密码凭据
           href: configure-ropc.md
     - name: Web 应用
@@ -268,7 +268,7 @@
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 堆栈溢出
-      href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c'
+      href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支持
       href: active-directory-b2c-support.md
     - name: 视频
