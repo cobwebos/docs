@@ -7,7 +7,7 @@
 3. 为该锁提供名称和锁级别。 （可选）可以添加注释来描述该锁。
    
       ![设置锁](./media/resource-manager-lock-resources/set-lock.png) 
-4. 若要删除锁，请从可用选项中选择省略号和“删除”。
+4. 若要删除锁，请从可用选项中选择省略号中的“删除”。
    
       ![删除锁](./media/resource-manager-lock-resources/delete-lock.png) 
 
