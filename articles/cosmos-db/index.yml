@@ -14,11 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/26/2018
   ms.author: mimig
-  ms.openlocfilehash: 0981d1ef118ff08450b510204447427fc8475327
-  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+  ms.openlocfilehash: 14908c33409684d070ef7aee26445bc7ca3a6d59
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/10/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34612599"
 abstract:
   description: Azure Cosmos DB 是一种全球分布式多模型数据库服务。 使用这些快速入门、教程和示例，可通过使用常用 API 和编程模型开发文档数据库、键值数据库、宽列数据库和图形数据库。 然后了解在受益于全面 SLA 的同时，如何在任意数量的 Azure 区域之间复制数据，以及如何缩放吞吐量而不受你的存储影响。
   aside:
@@ -148,10 +149,10 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: 使用 Azure Cosmos DB 开发应用：<a href="/azure/cosmos-db/tutorial-develop-sql-api-dotnet">SQL</a> | <a href="/azure/cosmos-db/tutorial-develop-mongodb-nodejs">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-develop-table-dotnet">表</a> | <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">图形</a> | <a href="https://aka.ms/cassandratutorial">Cassandra</a>
+    - html: 使用 Azure Cosmos DB 开发应用：<a href="/azure/cosmos-db/tutorial-develop-sql-api-dotnet">SQL</a> | <a href="/azure/cosmos-db/tutorial-develop-mongodb-nodejs">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-develop-table-dotnet">表</a> | <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Gremlin</a> | <a href="https://aka.ms/cassandratutorial">Cassandra</a>
     - html: 将数据导入 Azure Cosmos DB：<a href="import-data">SQL</a> | <a href="mongodb-migrate">MongoDB</a> | <a href="https://aka.ms/tableapiimporttool">表</a> | <a href="https://aka.ms/cassandraimport">Cassandra</a>
-    - html: 使用 Azure Cosmos DB 查询数据：<a href="/azure/cosmos-db/tutorial-query-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">表</a> | <a href="/azure/cosmos-db/tutorial-query-graph">图形</a>
-    - html: 使用 Azure Cosmos DB 进行全球数据库复制：<a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">表</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">图形</a>
+    - html: 使用 Azure Cosmos DB 查询数据：<a href="/azure/cosmos-db/tutorial-query-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">表</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Gremlin</a>
+    - html: 使用 Azure Cosmos DB 进行全球数据库复制：<a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">表</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Gremlin</a>
     - html: <a href="local-emulator">使用仿真程序本地开发应用程序</a>
     - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">使用 Azure Cosmos DB 输入绑定创建 HTTP 触发器</a>
     - html: <a href="https://docs.microsoft.com/learn/build-serverless-app/index">构建要在 Cosmos DB 中托管静态文件的基本 Web 应用程序</a>

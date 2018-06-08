@@ -129,6 +129,8 @@
           href: monitoring-rest-api-walkthrough.md
         - name: Azure PowerShell 示例
           href: insights-powershell-samples.md
+        - name: Azure CLI 示例
+          href: insights-cli-samples.md
     - name: 使用 Azure 诊断扩展
       items:
         - name: 发送到 Azure 存储

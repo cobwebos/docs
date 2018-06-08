@@ -75,6 +75,8 @@
           href: concepts-firewall-rules.md
         - name: 配置 SSL
           href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
     - name: 业务连续性
       items:
         - name: 概述
@@ -89,6 +91,10 @@
           href: concepts-compatibility.md
         - name: 应用程序开发
           href: concepts-database-application-development.md
+    - name: 复制
+      items:
+        - name: 复制中数据
+          href: concepts-data-in-replication.md
 - name: 操作指南
   items:
     - name: 管理服务器
@@ -141,18 +147,30 @@
       items:
         - name: 针对指标创建警报
           href: howto-alert-on-metric.md
+    - name: 复制
+      items:
+        - name: 配置复制中数据
+          href: howto-data-in-replication.md
     - name: 故障排除
       items:
         - name: 查询性能故障排除
           href: howto-troubleshoot-query-performance.md
         - name: 如何使用 sys 架构中的视图
           href: howto-troubleshoot-sys-schema.md
+    - name: 虚拟网络
+      items:
+        - name: Azure 门户
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-using-cli.md
 - name: 引用
   items:
     - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
+    - name: 复制中数据存储过程
+      href: reference-data-in-stored-procedures.md
 - name: 资源
   items:
     - name: 部署模板

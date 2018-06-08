@@ -10,18 +10,18 @@
   items:
     - name: 开发测试实验室
       items:
-        - name: 1. 设置自定义实验室
+        - name: 1. 设置实验室
           href: tutorial-create-custom-lab.md
-        - name: 2. 访问自定义实验室
+        - name: 2. 访问实验室
           href: tutorial-use-custom-lab.md
     - name: 教室实验室
       items:
         - name: 1. 设置实验室帐户
-          href: tutorial-setup-lab-account.md
+          href: classroom-labs/tutorial-setup-lab-account.md
         - name: 2. 设置教室实验室
-          href: tutorial-setup-classroom-lab.md
+          href: classroom-labs/tutorial-setup-classroom-lab.md
         - name: 3. 访问教室实验室
-          href: tutorial-connect-virtual-machine-classroom-lab.md
+          href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
 - name: 示例
   items:
     - name: 开发测试实验室
@@ -50,20 +50,20 @@
     - name: 教室实验室
       items:
         - name: 管理实验室帐户
-          href: how-to-manage-lab-accounts.md
+          href: classroom-labs/how-to-manage-lab-accounts.md
         - name: 管理教室实验室
-          href: how-to-manage-classroom-labs.md
+          href: classroom-labs/how-to-manage-classroom-labs.md
         - name: 访问教室实验室
-          href: how-to-use-classroom-lab.md
+          href: classroom-labs/how-to-use-classroom-lab.md
     - name: 开发测试实验室
       items:
-        - name: 创建自定义实验室
+        - name: 创建实验室
           href: devtest-lab-create-lab.md
-        - name: 在自定义实验室中创建 VM
+        - name: 在实验室中创建 VM
           href: devtest-lab-create-first-vm.md
-        - name: 设置自定义实验室的策略
+        - name: 设置实验室的策略
           href: devtest-lab-get-started-with-lab-policies.md
-        - name: 在自定义实验室中使用 VM
+        - name: 在实验室中使用 VM
           items:
             - name: 创建 VM
               href: devtest-lab-add-vm.md
@@ -75,7 +75,7 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: 重新启动 VM
               href: devtest-lab-restart-vm.md
-        - name: 使用自定义实验室中的环境
+        - name: 在实验室中使用环境
           items:
             - name: 创建环境
               href: devtest-lab-create-environment-from-arm.md
@@ -85,7 +85,7 @@
               href: devtest-lab-add-devtest-user.md
             - name: 使用自定义角色来自定义权限
               href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
-        - name: 配置自定义实验室
+        - name: 配置实验室
           items:
             - name: 设置策略和计划
               href: devtest-lab-set-lab-policy.md
@@ -95,11 +95,11 @@
               href: devtest-lab-configure-marketplace-images.md
             - name: 启用许可的映像
               href: devtest-lab-enable-licensed-images.md
-            - name: 将标记添加到自定义实验室
+            - name: 将标记添加到实验室
               href: devtest-lab-add-tag.md
-            - name: 在自定义实验室中发布公告
+            - name: 在实验室中发布公告
               href: devtest-lab-announcements.md
-            - name: 将支持信息添加到自定义实验室
+            - name: 将支持信息添加到实验室
               href: devtest-lab-internal-support-message.md
         - name: 选择自定义映像或公式
           href: devtest-lab-comparing-vm-base-image-types.md

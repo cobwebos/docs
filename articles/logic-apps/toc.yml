@@ -47,6 +47,8 @@
               href: logic-apps-control-flow-loops.md
             - name: 作用域
               href: logic-apps-control-flow-run-steps-group-scopes.md
+        - name: 创建用于保存值的变量
+          href: logic-apps-create-variables-store-values.md
         - name: 使用 Azure Functions 添加自定义代码
           href: logic-apps-azure-functions.md
         - name: 使用 Azure Functions 调用逻辑应用
@@ -61,6 +63,8 @@
           href: logic-apps-content-type.md
         - name: 处理错误和异常
           href: logic-apps-exception-handling.md
+        - name: 处理大型消息
+          href: logic-apps-handle-large-messages.md
         - name: 保护逻辑应用
           href: logic-apps-securing-a-logic-app.md
         - name: 开发自定义连接器

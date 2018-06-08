@@ -4,20 +4,22 @@
   items:
     - name: 关于托管服务标识
       href: overview.md
-    - name: 快速入门
+- name: 快速入门
+  items:
+    - name: 使用 VM MSI 访问 Azure 资源管理器
       items:
-        - name: 使用 VM MSI 访问 Azure 资源管理器
-          items:
-            - name: Windows VM
-              href: tutorial-windows-vm-access-arm.md
-            - name: Linux VM
-              href: tutorial-linux-vm-access-arm.md
+        - name: Windows VM
+          href: tutorial-windows-vm-access-arm.md
+        - name: Linux VM
+          href: tutorial-linux-vm-access-arm.md
 - name: 教程
   items:
     - name: Windows VM/VMSS
       items:
         - name: 访问 Azure Data Lake Store
           href: tutorial-windows-vm-access-datalake.md
+        - name: 访问 Azure 存储
+          href: tutorial-vm-windows-access-storage.md
         - name: 使用访问密钥访问 Azure 存储
           href: tutorial-windows-vm-access-storage.md
         - name: 使用 SAS 访问 Azure 存储
@@ -34,6 +36,8 @@
       items:
         - name: 访问 Azure Data Lake Store
           href: tutorial-linux-vm-access-datalake.md
+        - name: 访问 Azure 存储
+          href: tutorial-linux-vm-access-storage.md
         - name: 使用访问密钥访问 Azure 存储
           href: tutorial-linux-vm-access-storage-access-key.md
         - name: 使用 SAS 访问 Azure 存储
@@ -116,3 +120,7 @@
       href: known-issues.md
     - name: 支持托管标识的 Azure 服务
       href: services-support-msi.md
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-msi'
+    - name: AAD 开发者论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences'

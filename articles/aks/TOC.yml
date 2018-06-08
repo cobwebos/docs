@@ -63,6 +63,8 @@
           href: internal-lb.md
         - name: 入口和 TLS
           href: ingress.md
+        - name: 出口流量
+          href: egress.md
         - name: HTTP 应用程序路由
           href: http-application-routing.md
     - name: 安全性和身份验证

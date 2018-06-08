@@ -1,0 +1,69 @@
+- name: Azure 表存储文档
+  items:
+    - name: Azure 表存储概述
+      href: table-storage-overview.md
+    - name: 选择表存储或表 API
+      href: /azure/cosmos-db/table-support
+      maintainContext: true
+- name: 快速入门
+  items:
+    - name: 创建存储帐户
+      href: /azure/storage/common/storage-quickstart-create-account
+      maintainContext: true
+    - name: 在 Azure 门户中创建表
+      href: table-storage-quickstart-portal.md
+- name: 示例
+  items:
+    - name: .NET
+      href: /azure/cosmos-db/table-storage-how-to-use-dotnet
+      maintainContext: true
+    - name: 'F#'
+      href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+      maintainContext: true
+    - name: Java
+      href: /azure/cosmos-db/table-storage-how-to-use-java
+      maintainContext: true
+    - name: Node.js
+      href: /azure/cosmos-db/table-storage-how-to-use-nodejs
+      maintainContext: true
+    - name: C++
+      href: /azure/cosmos-db/table-storage-how-to-use-c-plus
+      maintainContext: true
+    - name: PHP
+      href: /azure/cosmos-db/table-storage-how-to-use-php
+      maintainContext: true
+    - name: Python
+      href: /azure/cosmos-db/table-storage-how-to-use-python
+      maintainContext: true
+    - name: Ruby
+      href: /azure/cosmos-db/table-storage-how-to-use-ruby
+      maintainContext: true
+    - name: PowerShell
+      href: /azure/storage/tables/table-storage-how-to-use-powershell
+      maintainContext: true
+- name: 概念
+  items:
+    - name: 设计可伸缩的高性能表
+      href: table-storage-design.md
+    - name: 表设计准则
+      href: table-storage-design-guidelines.md
+    - name: 针对查询的设计
+      href: table-storage-design-for-query.md
+    - name: 针对数据修改的设计
+      href: table-storage-design-for-modification.md
+    - name: 对表数据进行加密
+      href: table-storage-design-encrypt-data.md
+    - name: 为关系建模
+      href: table-storage-design-modeling.md
+    - name: 表设计模式
+      href: table-storage-design-patterns.md
+- name: 操作指南
+  items:
+    - name: 如何使用存储模拟器
+      href: /azure/storage/common/storage-use-emulator
+      maintainContext: true
+- name: 资源
+  items:
+    - name: 表存储 REST API
+      href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
+      maintainContext: true

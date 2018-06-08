@@ -25,9 +25,11 @@
         - name: 2. Contoso - 设置 Azure 基础结构
           href: contoso-migration-infrastructure.md
         - name: 3. Contoso - 评估要迁移到 Azure 的本地资源
-          href: migrate-scenarios-assessment.md
-        - name: 4. Contoso - 在 Azure VM 和 Azure SQL 托管实例上重新托管
-          href: migrate-scenarios-lift-and-shift.md
+          href: contoso-migration-assessment.md
+        - name: 4. Contoso - 在 Azure VM 和 Azure SQL 托管实例上重新托管应用
+          href: contoso-migration-rehost-vm-sql-managed-instance.md
+        - name: 5. Contoso - 在 Azure VM 上重新托管应用
+          href: contoso-migration-rehost-vm.md
     - name: 发现和评估大型环境
       href: how-to-scale-assessment.md
     - name: 将计算机分组
@@ -48,3 +50,5 @@
       href: 'https://azure.microsoft.com/migrate'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: 常见问题
+      href: resources-faq.md

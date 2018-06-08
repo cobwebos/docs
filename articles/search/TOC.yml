@@ -61,17 +61,25 @@
       href: cognitive-search-concept-intro.md
     - name: 全文搜索
       href: search-lucene-query-architecture.md
-    - name: 语言分析
-      href: search-analyzers.md
-    - name: 索引
-      href: search-what-is-data-import.md
-    - name: 索引定义
-      href: search-what-is-an-index.md
-    - name: 索引器
-      href: search-indexer-overview.md
 - name: 操作指南
   items:
-    - name: 规划和设计
+    - name: 认知搜索（预览版）
+      items:
+        - name: 定义技能组合
+          href: cognitive-search-defining-skillset.md
+        - name: 引用注释
+          href: cognitive-search-concept-annotations-syntax.md
+        - name: 映射到索引字段
+          href: cognitive-search-output-field-mapping.md
+        - name: 处理和提取图像中的信息
+          href: cognitive-search-concept-image-scenarios.md
+        - name: 集成自定义技能
+          href: cognitive-search-custom-skill-interface.md
+        - name: 示例 - 自定义技能
+          href: cognitive-search-create-custom-skill-example.md
+        - name: 故障排除提示
+          href: cognitive-search-concept-troubleshooting.md
+    - name: 规划
       items:
         - name: 选择层
           href: search-sku-tier.md
@@ -81,9 +89,7 @@
           href: search-capacity-planning.md
         - name: 多租户的设计模式
           href: search-modeling-multitenant-saas-applications.md
-        - name: 性能和优化
-          href: search-performance-optimization.md
-    - name: 安全
+    - name: “安全”
       items:
         - name: 安全概述
           href: search-security-overview.md
@@ -117,55 +123,59 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: 升级 REST API
           href: search-api-migration.md
+    - name: 索引设计
+      items:
+        - name: 索引定义
+          href: search-what-is-an-index.md
+        - name: 分析器
+          items:
+            - name: 文本分析器
+              href: search-analyzers.md
+            - name: 语言分析器 API
+              href: 'https://docs.microsoft.com/rest/api/searchservice/language-support'
+            - name: 自定义分析器 API
+              href: 'https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search'
+        - name: 自动建议
+          href: 'https://docs.microsoft.com/rest/api/searchservice/suggesters'
         - name: 为复杂数据类型建模
           href: search-howto-complex-data-types.md
-        - name: 处理并发更新
-          href: search-howto-concurrency.md
-        - name: 分页结果
-          href: search-pagination-page-layout.md
-    - name: 文本分析
-      items:
-        - name: 语言分析器
-          href: 'https://docs.microsoft.com/rest/api/searchservice/language-support'
-        - name: 自定义分析器
-          href: 'https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search'
+        - name: 多面导航
+          href: search-faceted-navigation.md
+        - name: 相关性优化
+          href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
+        - name: 同义词（预览）
+          href: search-synonyms.md
     - name: 为数据编制索引
       items:
-        - name: Azure Blob 存储索引器
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Azure 表存储索引器
-          href: search-howto-indexing-azure-tables.md
-        - name: Azure SQL 索引器
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Azure Cosmos DB 索引器
-          href: search-howto-index-cosmosdb.md
-        - name: 为 CSV Blob 创建索引
-          href: search-howto-index-csv-blobs.md
-        - name: 为 JSON Blob 创建索引
-          href: search-howto-index-json-blobs.md
-        - name: 配置与 Azure VM 上 SQL Server 的索引器连接
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: 索引器中的字段映射
-          href: search-indexer-field-mappings.md
+        - name: 推送和拉取索引编制
+          href: search-what-is-data-import.md
         - name: 重新生成索引
           href: search-howto-reindex.md
-    - name: 认知搜索（预览版）
-      items:
-        - name: 定义技能组合
-          href: cognitive-search-defining-skillset.md
-        - name: 引用注释
-          href: cognitive-search-concept-annotations-syntax.md
-        - name: 映射到索引字段
-          href: cognitive-search-output-field-mapping.md
-        - name: 处理和提取图像中的信息
-          href: cognitive-search-concept-image-scenarios.md
-        - name: 集成自定义技能
-          href: cognitive-search-custom-skill-interface.md
-        - name: 示例 - 自定义技能
-          href: cognitive-search-create-custom-skill-example.md
-        - name: 故障排除提示
-          href: cognitive-search-concept-troubleshooting.md
-    - name: 全文搜索
+        - name: 编制大数据集索引
+          href: search-howto-large-index.md
+        - name: 处理并发更新
+          href: search-howto-concurrency.md
+        - name: 索引器
+          items:
+            - name: 索引器概述
+              href: search-indexer-overview.md
+            - name: Blob 存储索引器
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: 表存储索引器
+              href: search-howto-indexing-azure-tables.md
+            - name: SQL DB 索引器
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: Cosmos DB 索引器
+              href: search-howto-index-cosmosdb.md
+            - name: CSV Blob 索引编制
+              href: search-howto-index-csv-blobs.md
+            - name: JSON Blob 索引编制
+              href: search-howto-index-json-blobs.md
+            - name: 连接到 SQL Server VM
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+            - name: 字段映射
+              href: search-indexer-field-mappings.md
+    - name: 搜索数据
       items:
         - name: 基本查询构造
           href: search-query-overview.md
@@ -173,24 +183,22 @@
           href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
         - name: Lucene 查询语法
           href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
-        - name: Lucene 语法查询示例
+        - name: Lucene 查询示例
           href: search-query-lucene-examples.md
-        - name: 多面导航
-          href: search-faceted-navigation.md
-        - name: 为配置文件评分
+        - name: 分页结果
+          href: search-pagination-page-layout.md
+        - name: 相关性优化
           href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
-        - name: 建议
-          href: 'https://docs.microsoft.com/rest/api/searchservice/suggesters'
-        - name: 同义词（预览）
-          href: search-synonyms.md
-    - name: 筛选器
-      items:
-        - name: 筛选器概述
-          href: search-filters.md
-        - name: Facet 筛选器
-          href: search-filters-facets.md
-        - name: 筛选器表达式语法
-          href: 'https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search'
+        - name: 筛选器
+          items:
+            - name: 筛选器概述
+              href: search-filters.md
+            - name: Facet 筛选器
+              href: search-filters-facets.md
+            - name: 筛选器表达式语法
+              href: 'https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search'
+        - name: 性能和优化
+          href: search-performance-optimization.md
     - name: 管理和分析
       items:
         - name: 管理（门户）
@@ -211,41 +219,31 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html'
     - name: REST
       href: /rest/api/searchservice
-      items:
-        - name: 2017-11-11-Preview
-          href: search-api-2017-11-11-preview.md
     - name: .NET（管理）
       href: /rest/api/searchmanagement
-    - name: 认知搜索（预览版）
+    - name: REST（预览）
+      href: search-api-preview.md
+    - name: 预定义技能（预览）
+      href: cognitive-search-predefined-skills.md
       items:
-        - name: 2017-11-11-Preview (REST)
-          href: search-api-2017-11-11-preview.md
-          items:
-            - name: 创建技能组合（预览）
-              href: ref-create-skillset.md
-            - name: 创建索引器（预览）
-              href: ref-create-indexer.md
-        - name: 预定义技能
-          href: cognitive-search-predefined-skills.md
-          items:
-            - name: 关键短语提取
-              href: cognitive-search-skill-keyphrases.md
-            - name: 语言检测
-              href: cognitive-search-skill-language-detection.md
-            - name: 命名实体识别
-              href: cognitive-search-skill-named-entity-recognition.md
-            - name: 文本合并
-              href: cognitive-search-skill-textmerger.md
-            - name: 文本拆分
-              href: cognitive-search-skill-textsplit.md
-            - name: 情绪
-              href: cognitive-search-skill-sentiment.md
-            - name: 图像分析
-              href: cognitive-search-skill-image-analysis.md
-            - name: Ocr
-              href: cognitive-search-skill-ocr.md
-            - name: 整形程序
-              href: cognitive-search-skill-shaper.md
+        - name: 关键短语提取
+          href: cognitive-search-skill-keyphrases.md
+        - name: 语言检测
+          href: cognitive-search-skill-language-detection.md
+        - name: 命名实体识别
+          href: cognitive-search-skill-named-entity-recognition.md
+        - name: 文本合并
+          href: cognitive-search-skill-textmerger.md
+        - name: 文本拆分
+          href: cognitive-search-skill-textsplit.md
+        - name: 情绪
+          href: cognitive-search-skill-sentiment.md
+        - name: 图像分析
+          href: cognitive-search-skill-image-analysis.md
+        - name: Ocr
+          href: cognitive-search-skill-ocr.md
+        - name: 整形程序
+          href: cognitive-search-skill-shaper.md
 - name: 资源
   items:
     - name: FAQ - 常见问题解答

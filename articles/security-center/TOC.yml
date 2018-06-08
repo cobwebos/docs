@@ -109,6 +109,8 @@
           href: security-center-just-in-time.md
         - name: 自适应应用程序控制
           href: security-center-adaptive-application.md
+        - name: 文件完整性监视
+          href: security-center-file-integrity-monitoring.md
     - name: 管理安全解决方案
       href: security-center-partner-integration.md
       items:
@@ -145,6 +147,8 @@
           href: security-center-threat-intel.md
         - name: 调查
           href: security-center-investigation.md
+        - name: 管理调查用户数据
+          href: security-center-investigation-user-data.md
     - name: 自动执行安全工作流
       items:
         - name: 逻辑应用演练手册
@@ -169,6 +173,8 @@
       href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
 - name: 资源
   items:
+    - name: 管理用户数据
+      href: security-center-privacy.md
     - name: 常见问题
       href: security-center-faq.md
     - name: 支持的平台

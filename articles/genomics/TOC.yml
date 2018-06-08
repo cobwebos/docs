@@ -25,6 +25,8 @@
       href: frequently-asked-questions-genomics.md
     - name: 故障排除指南
       href: troubleshooting-guide-genomics.md
+    - name: 提出支持请求
+      href: file-support-ticket-genomics.md
     - name: 版本发行历史记录
       href: version-release-history-genomics.md
     - name: 业务连续性

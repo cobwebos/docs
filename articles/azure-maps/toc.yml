@@ -30,12 +30,14 @@
       href: render-coverage.md
     - name: 路由覆盖区域
       href: routing-coverage.md
-    - name: 搜索类别
-      href: search-categories.md
+    - name: 支持的搜索类别
+      href: supported-search-categories.md
     - name: 支持的语言
       href: supported-languages.md
     - name: 消耗模型
       href: consumption-model.md
+    - name: 扩展 geoJSON
+      href: extend-geojson.md
 - name: 操作指南
   items:
     - name: 管理 Maps 帐户
@@ -70,17 +72,33 @@
           href: map-show-traffic.md
         - name: 与鼠标事件交互
           href: map-events.md
+        - name: 可访问的地图应用程序
+          href: map-accessibility.md
 - name: 引用
   items:
-    - name: 服务 API - REST
-      href: 'https://docs.microsoft.com/rest/api/maps/'
-    - name: 地图控件 API - Javascript
-      href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+    - name: REST
+      items:
+        - name: 呈现服务
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/renderservice'
+        - name: 路线服务
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/routeservice'
+        - name: 搜索服务
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/searchservice'
+        - name: 时区服务
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/timezoneservice'
+        - name: 交通服务
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/trafficservice'
+        - name: 地图帐户管理
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps-management'
+    - name: JavaScript
+      items:
+        - name: 地图控件
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
 - name: 相关内容
   items:
     - name: 解决方案
       items:
-        - name: IoT 套件预配置解决方案
+        - name: IoT 解决方案加速器
           href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
