@@ -3,7 +3,7 @@
 # 概述
 ## [什么是 Resource Manager？](resource-group-overview.md)
 ## [资源提供程序和类型](resource-manager-supported-services.md)
-## [Resource Manager 部署和经典部署](resource-manager-deployment-model.md)
+## [资源管理器部署和经典部署](resource-manager-deployment-model.md)
 ## [订阅监管](/azure/architecture/cloud-adoption-guide/subscription-governance)
 ## [使用管理组组织资源](management-groups-overview.md)
 

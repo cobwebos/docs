@@ -39,7 +39,9 @@
   items:
     - name: 部署
       items:
-        - name: 部署多容器组
+        - name: 多容器组 - YAML
+          href: container-instances-multi-container-yaml.md
+        - name: 多容器组 - 资源管理器
           href: container-instances-multi-container-group.md
         - name: 从 Azure 容器注册表部署
           href: container-instances-using-azure-container-registry.md
