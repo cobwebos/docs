@@ -162,6 +162,8 @@
               href: app-insights-proactive-low-utilization-cloud-resources.md
             - name: 安全检测
               href: app-insights-proactive-application-security-detection-pack.md
+            - name: Azure 云服务
+              href: app-insights-proactive-cloud-services.md
         - name: 创建资源
           href: app-insights-create-new-resource.md
     - name: 分析

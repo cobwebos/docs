@@ -21,6 +21,8 @@
       href: custom-event-quickstart-portal.md
     - name: 将事件发送到队列存储
       href: custom-event-to-queue-storage.md
+    - name: 将事件发送到事件中心
+      href: custom-event-to-eventhub.md
 - name: 教程
   items:
     - name: 当 VM 更改时发送电子邮件
