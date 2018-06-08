@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 1186776742562566be893c411a642d2feb819a86
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: f7f459404b5a759bef9eb8f37141bbd4c9eae3e5
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603938"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849616"
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新
 
@@ -35,7 +35,7 @@ ms.locfileid: "34603938"
 Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 
-## <a name="before-you-begin"></a>开始之前    
+## <a name="before-you-begin"></a>准备阶段    
 > [!IMPORTANT]    
 > 在安装此更新的过程中，请勿尝试创建虚拟机。 有关如何管理更新的详细信息，请参阅[在 Azure Stack 中管理更新的概述](azure-stack-updates.md#plan-for-updates)。
 
@@ -82,7 +82,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 - <!-- 1739988 --> Internal Load Balancing (ILB) now properly handles MAC addresses for back-end VMs, which causes ILB to drop packets to the back-end network when using Linux instances on the back-end network. ILB works fine with Windows instances on the back-end network. 
 
-- <!-- 1805496 --> An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure.  The values now match the values in Azure. 
+- <!-- 1805496 --> An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure. The values for SALifetime (Time) and SALiftetime (Bytes) were not compatible with Azure and have changed in 1803 to match the Azure settings. The value for SALifetime (Seconds) prior to 1803 was 14,400 and now changes to 27,000 in 1803. The value for SALifetime (Bytes) prior to 1803 was 819,200 and changes to 33,553,408 in 1803.
 
 - <!-- 2209262 --> The IP issue where VPN Connections was previously visible in the portal; however enabling or toggling IP Forwarding has no effect. The feature is turned on by default and the ability to change this not yet supported.  The control has been removed from the portal. 
 
@@ -153,7 +153,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
   可放心忽略这两个警报。 它们将自动关闭随着时间的推移。  
 
 
-#### <a name="marketplace"></a>Marketplace
+#### <a name="marketplace"></a>应用商店
 - 用户无需订阅就能浏览整个商城，并且能看到计划和产品/服务等管理项。 对用户而言，这些项是非功能性的。
 
 
@@ -272,7 +272,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 
 
-#### <a name="app-service"></a>应用服务
+#### <a name="app-service"></a>App Service
 - 在订阅中创建第一个 Azure 函数之前，用户必须先注册存储资源提供程序。
 
 - 若要横向扩展基础结构（辅助角色、管理、前端角色），必须按照针对计算的发行说明中的说明来使用 PowerShell。

@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 开发工具包基础知识 | Microsoft Docs
-description: 描述如何执行基本管理任务的 Azure 堆栈开发工具包 (ASDK)。
+description: 介绍如何对 Azure Stack 开发工具包 (ASDK) 执行基本的管理任务。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 05dd42b049c75b9ea592ffe341f44e3b02b9757f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fa2ee4df9a0a28c08237f30fcf6a4bac50c21100
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849502"
 ---
 # <a name="asdk-administration-basics"></a>ASDK 管理基础知识 
 如果你不熟悉 Azure Stack 开发工具包 (ASDK) 的管理，请参考本文。 本指南概述评估环境中 Azure Stack 操作员的角色，以及如何确保测试用户快速提高工作效率。
@@ -29,14 +30,14 @@ ms.lasthandoff: 04/03/2018
 与 Azure 类似，Azure Stack 会快速推出创新，因此我们会定期发布 ASDK 的新版本。 但是，无法像升级 Azure Stack 集成系统部署一样升级 ASDK。 因此，若要过渡到最新版本，必须彻底[重新部署 ASDK](asdk-redeploy.md)。 不能应用更新包。 此过程需要一定的时间，但好处是可以在最新功能可用时立即试用。 
 
 ## <a name="what-account-should-i-use"></a>我应使用什么帐户?
-有一些你应注意管理 Azure 堆栈时的帐户注意事项。 尤其是在部署作为标识提供程序而不是 Azure Active Directory (Azure AD) 中使用 Windows Server Active Directory 联合身份验证服务 (AD FS)。 以下的帐户注意事项适用于 Azure 堆栈集成系统和 ASDK 部署：
+管理 Azure Stack 时，应该注意帐户方面的几个事项， 尤其是在使用 Windows Server Active Directory 联合身份验证服务 (AD FS) 而不是 Azure Active Directory (Azure AD) 作为标识提供者的部署中。 以下帐户注意事项同时适用于 Azure Stack 集成系统和 ASDK 部署：
 
 |帐户|Azure AD|AD FS|
 |-----|-----|-----|
-|本地管理员 (。 \Administrator)|ASDK 主机管理员|ASDK 主机管理员|
-|AzureStack\AzureStackAdmin|ASDK 主机管理员<br><br>用于登录到 Azure 堆栈管理门户<br><br>若要查看和管理 Service Fabric 环的访问|ASDK 主机管理员<br><br>不能访问 Azure 堆栈管理门户<br><br>若要查看和管理 Service Fabric 环的访问<br><br>不再所有者的默认提供程序订阅 (DP)|
-|AzureStack\CloudAdmin|可以访问并运行特权终结点中的允许的命令|可以访问并运行特权终结点中的允许的命令<br><br>可以不登录到 ASDK 主机<br><br>默认提供程序订阅 (DP) 的所有者|
-|Azure AD 全局管理员|在安装期间使用<br><br>默认提供程序订阅 (DP) 的所有者|不适用|
+|本地管理员 (.\Administrator)|ASDK 主机管理员|ASDK 主机管理员|
+|AzureStack\AzureStackAdmin|ASDK 主机管理员<br><br>可用于登录到 Azure Stack 管理门户<br><br>拥有查看和管理 Service Fabric 环的访问权限|ASDK 主机管理员<br><br>没有 Azure Stack 管理门户的访问权限<br><br>拥有查看和管理 Service Fabric 环的访问权限<br><br>不再是默认提供程序订阅 (DPS) 的所有者|
+|AzureStack\CloudAdmin|可在特权终结点中访问和运行允许的命令|可在特权终结点中访问和运行允许的命令<br><br>无法登录到 ASDK 主机<br><br>默认提供程序订阅 (DPS) 的所有者|
+|Azure AD 全局管理员|安装期间使用<br><br>默认提供程序订阅 (DPS) 的所有者|不适用|
 |
 
 ## <a name="what-tools-do-i-use-to-manage"></a>使用哪些工具进行管理？
@@ -63,6 +64,6 @@ Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组�
 > [!IMPORTANT]
 > 由于 ASDK 是一个评估环境，因此我们不会通过 Microsoft 客户支持服务 (CSS) 提供官方支持。
 
-## <a name="next-steps"></a>后续步骤
-[部署 ASDK](asdk-deploy.md)
+## <a name="next-steps"></a>接下来的步骤
+[部署 ASDK](asdk-install.md)
 

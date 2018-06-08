@@ -1,6 +1,6 @@
 ---
 title: 重新部署 Azure Stack 开发工具包 (ASDK) | Microsoft Docs
-description: 本教程介绍如何重新安装 ASDK。
+description: 在本文中，你将了解如何重新安装 ASDK。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,28 +11,23 @@ ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fcf1abfe574dd3067f00df7c5ff2632b9cc2ec4f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 91b8a936215e906e6e5b7e6a4fcd0dc88bef6009
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850314"
 ---
-# <a name="tutorial-redeploy-the-asdk"></a>教程：重新部署 ASDK
-本教程介绍如何在非生产环境中重新部署 Azure Stack 开发工具包 (ASDK)。 由于不支持 ASDK 升级，因此若要改用较新的版本，需彻底地进行重新部署。 也可随时根据需要从头开始重新部署 ASDK。
+# <a name="redeploy-the-asdk"></a>重新部署 ASDK
+在本文中，你将了解如何重新部署 Azure 堆栈开发工具包 (ASDK) 在非生产环境中。 由于不支持 ASDK 升级，因此若要改用较新的版本，需彻底地进行重新部署。 也可随时根据需要从头开始重新部署 ASDK。
 
 > [!IMPORTANT]
 > 不支持将 ASDK 升级到新的版本。 每次需要对较新版的 Azure Stack 进行评估时，需在开发工具包主机上重新部署 ASDK。
-
-本教程介绍如何执行下列操作：
-
-> [!div class="checklist"]
-> * 删除 Azure 注册 
-> * 重新部署 ASDK
 
 ## <a name="remove-azure-registration"></a>删除 Azure 注册 
 如果以前已将 ASDK 安装注册到 Azure，则应在重新部署 ASDK 之前删除注册资源。 重新部署 ASDK 时，请重新注册 ASDK，以便启用商城联合功能。 如果以前未将 ASDK 注册到 Azure 订阅，则可跳过此部分。
@@ -55,7 +50,7 @@ ms.lasthandoff: 04/28/2018
 
   # Unregister Azure Stack
   Remove-AzsRegistration `
-      -CloudAdminCredential $YourCloudAdminCredential `
+      -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01
 
   # Remove the Azure Stack resource group
@@ -71,7 +66,7 @@ ms.lasthandoff: 04/28/2018
 
 此时 Azure Stack 应该会成功地从 Azure 订阅注销。 另外也会删除在将 ASDK 注册到 Azure 时创建的 azurestack 资源组。
 
-## <a name="redeploy-the-asdk"></a>重新部署 ASDK
+## <a name="deploy-the-asdk"></a>部署 ASDK
 若要重新部署 Azure Stack，必须从头开始进行，如下所述。 这些步骤可能会有所不同，具体取决于是否使用了 Azure Stack 安装程序 (asdk-installer.ps1) 脚本来安装 ASDK。
 
 ### <a name="redeploy-the-asdk-using-the-installer-script"></a>使用安装程序脚本重新部署 ASDK
@@ -85,7 +80,7 @@ ms.lasthandoff: 04/28/2018
 
 3. 在开发工具包主机重启到基本操作系统中以后，以本地管理员身份登录。 找到并删除先前的部署过程中使用过的 **C:\CloudBuilder.vhdx** 文件。 
 
-4. 重复首次[部署 ASDK](asdk-deploy.md) 时执行过的步骤。
+4. 重复首次[部署 ASDK](asdk-install.md) 时执行过的步骤。
 
 ### <a name="redeploy-the-asdk-without-using-the-installer"></a>在不使用安装程序的情况下重新部署 ASDK
 如果未使用 asdk-installer.ps1 脚本来安装 ASDK，必须以手动方式重新配置开发工具包主机，然后才能重新部署 ASDK。
@@ -99,17 +94,8 @@ ms.lasthandoff: 04/28/2018
 3. 重复首次[使用 PowerShell 部署 ASDK](asdk-deploy-powershell.md) 时执行过的步骤。
 
 
-## <a name="next-steps"></a>后续步骤
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 删除 Azure 注册 
-> * 重新部署 ASDK
-
-继续学习下一教程，了解如何添加 Azure Stack Marketplace 项。
-
-> [!div class="nextstepaction"]
-> [添加 Azure Stack Marketplace 项](asdk-marketplace-item.md)
+## <a name="next-steps"></a>接下来的步骤
+[ASDK 安装后配置任务](asdk-post-deploy.md)
 
 
 
