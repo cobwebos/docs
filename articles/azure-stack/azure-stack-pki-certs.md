@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: faf85c34c527dd72889f0fcb5021925b79481163
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f0c86f121fd65a06fb4d1a193f3e3bf724af505e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823843"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234835"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -30,7 +30,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 获取与这些规范匹配的证书的过程是什么
 - 如何在部署期间准备、验证和使用这些证书
 
-> [!NOTE]
+> [!Note]  
 > 在部署期间，必须将证书复制到与要部署的标识提供者（Azure AD 或 AD FS）匹配的部署文件夹中。 如果将单个证书用于所有终结点，必须将该证书文件复制到下表所述的每个部署文件夹。 该文件夹的结构已预先在部署虚拟机中构建，路径为：C:\CloudDeployment\Setup\Certificates。 
 
 ## <a name="certificate-requirements"></a>证书要求
@@ -47,12 +47,12 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 证书的“颁发给:”字段不能与其“颁发者:”字段相同。
 - 部署时，所有证书 pfx 文件的密码都必须相同
 - 证书 pfx 的密码必须是复杂密码。
-- 确保所有证书的“使用者名称”和“使用者可选名称”匹配本文中所述的规范，以免部署失败。
+- 确保使用者名称和使用者备用名称扩展 (x509v3_config) 匹配项中的使用者可选名称。 使用者备用名称字段中，可以指定其他主机名 （网站、 IP 地址、 公用名） 由单个 SSL 证书进行保护。
 
-> [!NOTE]
+> [!NOTE]  
 > 不支持自签名证书。
 
-> [!NOTE]
+> [!NOTE]  
 > 支持在证书的信任链 IS 中包含中间证书颁发机构。 
 
 ## <a name="mandatory-certificates"></a>必需的证书

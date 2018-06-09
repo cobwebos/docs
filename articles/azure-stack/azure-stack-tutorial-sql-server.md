@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 0e1eed2601946ddff6fa15f1a1f82398706c920d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b9ba2bb89bb0d7e16a28a165cf14530a7a10f71b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234744"
 ---
-# <a name="make-sql-databases-available-to-your-azure-stack-users"></a>将 SQL 数据库提供给 Azure Stack 用户使用
+# <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>教程： 将 SQL 数据库提供给你 Azure 堆栈用户
+
 Azure Stack 云管理员可以创建产品/服务，使用户（租户）能够创建 SQL 数据库，以配合其云原生应用、网站和工作负荷使用。 通过向用户提供这些基于云的按需自定义数据库的访问权限，可以节省用户的时间和资源。 若要设置此功能，需要：
 
 > [!div class="checklist"]
@@ -32,11 +34,11 @@ Azure Stack 云管理员可以创建产品/服务，使用户（租户）能够�
 
 ## <a name="deploy-the-sql-server-resource-provider"></a>部署 SQL Server 资源提供程序
 
-[在 Azure Stack 中使用 SQL 数据库](azure-stack-sql-resource-provider-deploy.md)一文中详细介绍了部署过程，该过程包括以下主要步骤：
+在部署过程中将详细介绍[Azure 堆栈文章上的使用 SQL 数据库](azure-stack-sql-resource-provider-deploy.md)，和以下主要步骤组成：
 
 1. [部署 SQL 资源提供程序](azure-stack-sql-resource-provider-deploy.md)。
 2. [验证部署](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal)。
-3. 通过连接到宿主 SQL 服务器来提供容量。
+3. 通过连接到宿主 SQL 服务器来提供容量。 有关详细信息，请参阅[添加宿主服务器](azure-stack-sql-resource-provider-hosting-servers.md)
 
 ## <a name="create-an-offer"></a>创建产品
 
@@ -44,9 +46,7 @@ Azure Stack 云管理员可以创建产品/服务，使用户（租户）能够�
 2.  [创建计划](azure-stack-create-plan.md)。 将计划命名为 *TestSQLServerPlan*，并选择“Microsoft.SQLAdapter”服务和“SQLServerQuota”配额。
 
     > [!NOTE]
-    > 若要让用户创建其他应用，可能需要在计划中包含其他服务。 例如，Azure Functions 要求计划中必须包含 **Microsoft.Storage** 服务，而 Wordpress 则要求包含 **Microsoft.MySQLAdapter**。
-    > 
-    >
+    > 若要让用户创建其他应用，可能需要在计划中包含其他服务。 例如，Azure 函数需要**Microsoft.Storage**服务在计划中，而 Wordpress 需要**Microsoft.MySQLAdapter**。
 
 3.  [创建产品/服务](azure-stack-create-offer.md)，将其命名为 **TestSQLServerOffer**，然后选择“TestSQLServerPlan”计划。
 
@@ -55,23 +55,24 @@ Azure Stack 云管理员可以创建产品/服务，使用户（租户）能够�
 部署 SQL Server 资源提供程序并创建产品/服务后，可以用户身份登录并订阅该产品/服务，然后创建数据库。
 
 ### <a name="subscribe-to-the-offer"></a>订阅产品/服务
+
 1. 以租户身份登录到 Azure Stack 门户 (https://portal.local.azurestack.external)。
-2. 单击“获取订阅”，然后在“显示名称”下键入 **TestSQLServerSubscription**。
-3. 单击“选择产品/服务” > “TestSQLServerOffer” > “创建”。
-4. 单击“更多服务” > “订阅” > “TestSQLServerSubscription” > “资源提供程序”。
-5. 单击“Microsoft.SQLAdapter”提供程序旁边的“注册”。
+2. 选择**获取订阅**，然后输入**TestSQLServerSubscription**下**显示名称**。
+3. 选择**选择产品** > **TestSQLServerOffer** > **创建**。
+4. 选择**更多的服务** > **订阅** > **TestSQLServerSubscription** > **资源提供程序**。
+5. 选择**注册**旁边**Microsoft.SQLAdapter**提供程序。
 
 ### <a name="create-a-sql-database"></a>创建 SQL 数据库
 
-1. 单击“+” > “数据 + 存储” > “SQL 数据库”。
-2. 将字段保留默认值，或者可以参考以下示例：
+1. 选择**+**  > **数据 + 存储** > **SQL 数据库**。
+2. 保留默认值或为以下字段中使用这些示例：
     - **数据库名称**：SQLdb
     - **最大大小(MB)**：100
     - **订阅**：TestSQLOffer
     - **资源组**：SQL-RG
-3. 单击“登录设置”，输入数据库的凭据，然后单击“确定”。
-4. 单击“SKU”，选择为 SQL 宿主服务器创建的 SQL SKU，然后单击“确定”。
-5. 单击“创建”。
+3. 选择**登录设置**，对于数据库中，输入凭据，然后选择**确定**。
+4. 选择**SKU** > 选择你创建了 SQL 宿主服务器的 SQL SKU >，然后选择**确定**。
+5. 选择**创建**。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -86,4 +87,3 @@ Azure Stack 云管理员可以创建产品/服务，使用户（租户）能够�
 
 > [!div class="nextstepaction"]
 > [将 Web、移动和 API 应用提供给用户使用]( azure-stack-tutorial-app-service.md)
-
