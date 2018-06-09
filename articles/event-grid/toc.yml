@@ -49,6 +49,8 @@
       href: powershell-samples.md
     - name: 资源管理器模板
       href: template-samples.md
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid'
 - name: 概念
   items:
     - name: 事件网格概念

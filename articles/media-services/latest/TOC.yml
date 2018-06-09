@@ -17,6 +17,10 @@
           href: stream-files-tutorial-with-api.md
         - name: 使用 REST
           href: stream-files-tutorial-with-rest.md
+    - name: 实时流式处理
+      items:
+        - name: 使用 .NET Core
+          href: stream-live-tutorial-with-api.md
     - name: 分析视频
       items:
         - name: 使用 .NET
@@ -37,6 +41,8 @@
           href: encoding-concept.md
         - name: 自动生成自适应比特率阶梯
           href: autogen-bitrate-ladder.md
+    - name: 实时传送视频流
+      href: live-streaming-overview.md
     - name: 媒体智能
       href: intelligence-concept.md
     - name: 对事件做出响应
