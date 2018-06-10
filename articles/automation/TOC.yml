@@ -29,6 +29,8 @@
   items:
     - name: 登记
       items:
+        - name: 从门户载入多个 VM
+          href: automation-onboard-solutions-from-browse.md
         - name: 从 Azure VM 载入
           href: automation-onboard-solutions-from-vm.md
         - name: 从自动化帐户加入

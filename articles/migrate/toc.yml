@@ -14,7 +14,7 @@
       href: concepts-collector.md
     - name: 评估计算
       href: concepts-assessment-calculation.md
-    - name: 依赖项可视化
+    - name: 关于依赖项可视化
       href: concepts-dependency-visualization.md
 - name: 操作指南
   items:
@@ -30,6 +30,8 @@
           href: contoso-migration-rehost-vm-sql-managed-instance.md
         - name: 5. Contoso - 在 Azure VM 上重新托管应用
           href: contoso-migration-rehost-vm.md
+        - name: 6. Contoso - 在 Azure VM 和 Azure SQL AlwaysOn 上重新托管应用
+          href: contoso-migration-rehost-vm-sql-ag.md
     - name: 发现和评估大型环境
       href: how-to-scale-assessment.md
     - name: 将计算机分组

@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用自定义策略添加 Twitter 作为 OAuth1 标识提供者
-description: 使用 OAuth1 协议将 Twitter 用作标识提供者
+title: 在 Azure Active Directory B2C 中使用自定义策略将 Twitter 添加为 OAuth1 标识提供者 | Microsoft Docs
+description: 使用 OAuth1 协议将 Twitter 用作标识提供者。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: davidmu
-ms.openlocfilehash: 4a7cc552f49877874dc173a47efe22873d5aeeed
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 6b09bb295d889255dada0cebbb9ded2379d95d23
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34710230"
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Twitter 作为 OAuth1 标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/23/2018
 
     c. 在“回调 URL”框中，粘贴 https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp。 将 {*tenant*} 替换为你自己的租户名称（例如 contosob2c.onmicrosoft.com）。 请务必使用 HTTPS 方案。 
 
-    d.单击“下一步”。 在页面底部，阅读并接受条款，然后选择“创建 Twitter 应用程序”。
+    d. 在页面底部，阅读并接受条款，然后选择“创建 Twitter 应用程序”。
 
     ![Twitter 帐户 - 添加新应用](media/active-directory-b2c-custom-setup-twitter-idp/adb2c-ief-setup-twitter-idp-new-app2.png)
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/23/2018
 
 2. 若要查看租户中的可用密钥，请选择“策略密钥”。
 
-3. 选择“添加”。
+3. 选择 **添加** 。
 
 4. 在“选项”框中，选择“手动”。
 

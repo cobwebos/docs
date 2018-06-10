@@ -1,21 +1,21 @@
 ---
-title: 令牌引用 - Azure AD B2C | Microsoft 文档
+title: Azure Active Directory B2C 中的令牌引用 |Microsoft Docs
 description: Azure Active Directory B2C 中颁发的令牌类型
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 09d776b54941e33979d7969b25c35e67a53cf8f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: e2ca582c9ec767e9b810c574e3efddc6485bb6a0
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709302"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌参考
 

@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用自定义策略添加 Microsoft 帐户 (MSA) 作为标识提供者
-description: 使用 OpenID Connect (OIDC) 协议将 Microsoft 用作标识提供者的示例
+title: 在 Azure Active Directory B2C 中使用自定义策略添加 Microsoft 帐户 (MSA) 作为标识提供者 | Microsoft Docs
+description: 使用 OpenID Connect (OIDC) 协议将 Microsoft 用作标识提供者的示例。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: a49e9589322eeb90a713321b4fbe4c4820609f7a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 3426b6f3f248b670016713d2b58425ff030605af
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709115"
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Microsoft 帐户 (MSA) 作为标识提供者
 

@@ -5,21 +5,17 @@ keywords: 数据库问题, 常见问题, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771229"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34735158"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
@@ -62,6 +58,9 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Azure Cosmos DB 的吞吐量限制有哪些？
 对于 Azure Cosmos DB 中容器可以支持的吞吐量总量并没有任何限制。 关键是要将工作负荷大致均匀地分布于数量足够多的分区键上。
+
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>直接连接和网关连接模式是否加密？ 
+是的，两种模式始终完全加密。 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Azure Cosmos DB 的费用是多少？
 有关详细信息，请参阅 [Azure Cosmos DB 定价详细信息](https://azure.microsoft.com/pricing/details/cosmos-db/)页面。 Azure Cosmos DB 使用费取决于预配的容器数目、容器的联机小时数，以及每个容器的预配吞吐量。 此处的容器一词是指 SQL API 的集合、图形 API 的图、MongoDB API 的集合以及表 API 的表。 
@@ -165,6 +164,10 @@ SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。
 * 数据集成工具，如 [Azure Cosmos DB 的数据迁移工具](import-data.md)中所述。
 * 存储过程，如 [Azure Cosmos DB 的服务器端 JavaScript 编程](programming.md)中所述。
 
+### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>我将自己的集合设置为使用延迟索引编制，结果发现查询没有返回预期的结果。 
+如索引编制部分所述，延迟索引编制可能导致此行为。 应该始终对所有应用程序使用一致的索引编制。 
+
+
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>SQL API 是否支持资源链接缓存？
 是，因为 Azure Cosmos DB 是 RESTful 服务，而资源链接固定不变，所以可以缓存。 SQL API 客户端可以指定“If-None-Match”标头来读取任何资源，例如文档或集合，然后在服务器版本更改后更新其本地副本。
 
@@ -172,7 +175,12 @@ SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。
 是的。 [Azure Cosmos DB 模拟器](local-emulator.md)提供对 Cosmos DB 服务的高保真模拟。 它支持与 Azure Cosmos DB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 Azure Cosmos DB 模拟器开发和测试应用程序，然后对 Azure Cosmos DB 的连接终结点进行单一配置更改，可以将这些应用程序部署到全局范围的 Azure。
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>当从门户中的数据资源管理器查看时，为何会对文档中的长浮点值进行舍入？ 
-这是 JavaScript 的限制。 JavaScript 如 IEEE 754 中所指定使用双精度浮点格式的数字，并且它只能安全地呈现 -(253 - 1) 和 253 – 1（即 9007199254740991）之间的数字。
+这是 JavaScript 的限制。 JavaScript 根据 IEEE 754 中的规定使用双精度浮点格式的数字，并且只能安全地呈现 -(253 - 1) 和 253-1（即 9007199254740991）之间的数字。
+
+### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>在对象层次结构中的何处启用权限？
+
+可以在集合级别以及其下的级别（例如文档级别、附件级别）使用 ResourceTokens 来创建权限。 这意味着，目前不允许在数据库或帐户级别创建权限。
+
 
 ## <a name="develop-against-the-api-for-mongodb"></a>针对 API for MongoDB 进行开发
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>什么是 Azure Cosmos DB API for MongoDB？
@@ -233,8 +241,8 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 
 | 类 | 不支持的方法 |
 |-------|-------- |
-| CloudTableClient | \*ServiceProperties\* |
-|                  | \*ServiceStats\* |
+| CloudTableClient | \*ServiceProperties* |
+|                  | \*ServiceStats* |
 | CloudTable | SetPermissions* |
 |            | GetPermissions* |
 | TableServiceContext | *（实际上此类已弃用） |

@@ -2,18 +2,19 @@
 title: 将数据作为 Azure 流分析的输入进行流式传输
 description: 了解如何在 Azure 流分析中设置数据连接。 输入包括来自事件的数据流，也包括引用数据。
 services: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: mamccrea
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 2b2ef68622f96d87a25d203d3d67aa0877397072
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d993a29f5a7224c2346469b42309c11e55317756
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808819"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -27,22 +28,15 @@ ms.lasthandoff: 05/01/2018
 ### <a name="compression"></a>压缩
 流分析支持跨所有数据流输入源的压缩功能。 当前支持的引用类型为 None、GZip、和 Deflate 压缩。 对压缩的支持不可用于参考数据。 如果输入格式为压缩的 Avro 数据，则会以透明方式对其进行处理。 不需要通过 Avro 序列化指定压缩类型。 
 
-## <a name="create-or-edit-inputs"></a>创建或编辑输入
-若要创建新输入以及列出或编辑流式处理作业上的现有输入，可以使用 Azure 门户：
-1. 打开 [Azure 门户](https://portal.azure.com)，找到并选择流分析作业。
-2. 在“设置”标题下选择“输入”选项。 
-4. “输入”页会列出任何现有的输入。 
-5. 在“输入”页中选择“添加流输入”或“添加引用输入”，打开详细信息页。
-6. 选择一个现有输入，对其详细信息进行编辑，然后选择“保存”，对编辑的现有输入进行保存。
-7. 在输入详细信息页上选择“测试”，验证连接选项是否能够有效地使用。 
-8. 右键单击现有输入的名称，根据需要选择“来自输入的示例数据”进行进一步的测试。
+## <a name="create-edit-or-test-inputs"></a>创建、编辑或测试输入
+可以使用 [Azure 门户](https://portal.azure.com)来[创建新输入](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job)以及查看或编辑流式处理作业上的现有输入。 还可以通过示例数据测试输入连接以及[测试查询](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-manage-job#test-your-query)。 编写查询时，将在 FROM 子句中列出输入。 可以在门户的“查询”页中获取可用输入的列表。 若要使用多个输入，可以对其执行 `JOIN` 操作，也可以编写多个 `SELECT` 查询。
 
 
 ## <a name="stream-data-from-event-hubs"></a>从事件中心对数据进行流式传输
 
-Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件中心每秒可收集数百万个事件，使用户能够处理和分析互连设备与应用程序生成的海量数据。 事件中心和流分析一起为你提供进行实时分析所需的端到端解决方案。 可以通过事件中心将事件实时馈送到 Azure 中，以便流分析作业对这些事件进行实时处理。 例如，用户可以将 Web 点击操作、传感器读数或联机日志事件发送到事件中心。 然后可以创建流分析作业，将事件中心用作输入数据流，以便进行实时筛选、聚合和关联操作。
+Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件中心每秒可收集数百万个事件，使用户能够处理和分析互连设备与应用程序生成的海量数据。 事件中心和流分析一起提供进行实时分析所需的端到端解决方案。 可以通过事件中心将事件实时馈送到 Azure 中，以便流分析作业对这些事件进行实时处理。 例如，用户可以将 Web 点击操作、传感器读数或联机日志事件发送到事件中心。 然后可以创建流分析作业，将事件中心用作输入数据流，以便进行实时筛选、聚合和关联操作。
 
-来自流分析中事件中心的事件默认时间戳是事件到达事件中心的时间戳，即 `EventEnqueuedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
+`EventEnqueuedUtcTime` 是事件到达事件中心的时间戳，也是事件从事件中心发送到流分析的默认时间戳。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
 
 ### <a name="consumer-groups"></a>使用者组
 应对每个流分析事件中心输入进行配置，使之拥有自己的使用者组。 如果作业包含自联接或具有多个输入，则某些输入可能会由下游的多个读取器读取。 这种情况会影响单个使用者组中的读取器数量。 为了避免超出针对事件中心设置的每个分区每个使用者组 5 个读取器的限制，最好是为每个流分析作业指定一个使用者组。 此外，还有一项限制，即每个事件中心只能有 20 个使用者组。 有关详细信息，请参阅[使用事件中心接收器排查 Azure 流分析问题](stream-analytics-event-hub-consumer-groups.md)。
@@ -89,10 +83,6 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度伸缩性的发布-�
 
 在流分析中，来自 IoT 中心的事件的默认时间戳是事件到达 IoT 中心的时间戳，即 `EventEnqueuedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
 
-> [!NOTE]
-> 只能处理使用 `DeviceClient` 属性发送的消息。
-> 
-
 ### <a name="consumer-groups"></a>使用者组
 应该对每个流分析 IoT 中心输入进行配置，使之拥有自己的使用者组。 如果作业包含自联接或具有多个输入，则某些输入可能会由下游的多个读取器读取。 这种情况会影响单个使用者组中的读取器数量。 为了避免超出针对 Azure IoT 中心设置的每个分区每个使用者组 5 个读取器的限制，最好是为每个流分析作业指定一个使用者组。
 
@@ -129,7 +119,7 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度伸缩性的发布-�
 
 
 ## <a name="stream-data-from-blob-storage"></a>从 Blob 存储流式传输数据
-对于需要将大量非结构化数据存储在云中的情况，Azure Blob 存储提供了一种经济高效且可伸缩的解决方案。 Blob 存储中的数据通常被视为静态数据。 但是，Blob 数据可以作为数据流由流分析进行处理。 
+对于需要将大量非结构化数据存储在云中的情况，Azure Blob 存储提供了一种经济高效且可伸缩的解决方案。 通常情况下，可以将 Blob 存储中的数据视为静态数据，但 Blob 数据可以作为数据流由流分析处理。 
 
 通过流分析来使用 Blob 存储输入时，日志处理是一种常用方案。 在此方案中，首先从某个系统捕获遥测数据文件，然后根据需要对这些数据进行分析和处理以提取有意义的数据。
 

@@ -6,23 +6,23 @@ author: craigshoemaker
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: 4145f7edb93801aa6f98df7e9cff34ae7370fc52
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ac301daca769f9cec0d3395e7bde32494dd8e3d1
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32768007"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34735321"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
-
-## <a name="overview"></a>概述
 
 Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助开发人员构建安全的应用程序：
 
 - 所有写入 Azure 存储的数据，使用[存储服务加密 (SSE)](storage-service-encryption.md) 进行自动加密。 有关详细信息，请参阅[宣布推出针对 Azure Blob、文件、表和队列存储的默认加密](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
-- 存储帐户本身可以通过基于角色的访问控制和 Azure Active Directory 来保护。 
+- Azure 存储支持使用 Azure Active Directory (Azure AD) 和基于角色的访问控制 (RBAC) 进行资源管理操作和数据操作，如下所示：   
+    - 可以将作用域为存储帐户的 RBAC 角色分配给安全主体，并使用 Azure AD 为密钥管理之类的资源管理操作授权。
+    - 预览版支持通过 Azure AD 集成在 Blob 和队列服务上执行数据操作。 可以将作用域为订阅、资源组、存储帐户或单个容器或队列的 RBAC 角色分配给某个安全主体或托管服务标识。 有关详细信息，请参阅[使用 Azure Active Directory（预览）进行 Azure 存储访问权限身份验证](storage-auth-aad.md)。   
 - 在应用程序和 Azure 之间传输数据时，可使用[客户端加密](../storage-client-side-encryption.md)、HTTPS 或 SMB 3.0 保护数据。  
 - Azure 虚拟机使用的 OS 和数据磁盘可使用 [Azure 磁盘加密](../../security/azure-security-disk-encryption.md)进行加密。 
 - 在 Azure 存储中，可以使用[共享访问签名](../storage-dotnet-shared-access-signature-part-1.md)授予数据对象的委派访问权限。
@@ -161,12 +161,15 @@ Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助�
 ## <a name="data-plane-security"></a>数据平面安全性
 数据平面安全是指用于保护存储在 Azure 存储的数据对象（Blob、队列、表和文件）的方法。 我们已了解在传输数据期间加密数据和安全的方法，但该从何处着手来控制访问对象？
 
-可通过两种方法授权对数据对象本身的访问权限。 分别是控制对存储帐户密钥的访问，和使用共享访问签名来授予特定时间段对特定数据对象的访问权限。
+Azure 存储中数据对象的访问授权有三个选项，包括：
+
+- 使用 Azure AD 进行容器和队列（预览）的访问授权。 进行身份验证时，Azure AD 相对于其他方法具有很多优势，包括不需要将机密存储在代码中。 有关详细信息，请参阅[使用 Azure Active Directory（预览）进行 Azure 存储访问权限身份验证](storage-auth-aad.md)。 
+- 使用存储帐户密钥通过共享密钥进行访问授权。 通过共享密钥进行授权需要将存储帐户密钥存储在应用程序中，因此 Microsoft 建议尽可能改用 Azure AD。 如果使用生产型应用程序，或者要进行 Azure 表和文件的访问授权，请在 Azure AD 集成仍为预览版的情况下继续使用共享密钥。
+- 使用共享访问签名授予特定时间段对特定数据对象的受控权限。
 
 此外，对于 Blob 存储，可以通过对保存 Blob 的容器的访问级别进行相应设置，来允许对 Blob 进行公共访问。 如果将容器的访问权限设置为“Blob”或“容器”，则允许该容器中 Blob 的公共读取访问权限。 这意味着 URL 指向该容器中 Blob 的任何人都可以在浏览器中打开它，而不需要使用共享访问签名或拥有存储帐户密钥。
 
 除通过授权限制访问外，还可使用[防火墙和虚拟网络](storage-network-security.md)来根据网络规则限制对存储帐户的访问。  通过此方法，可拒绝对公共 Internet 流量的访问，并仅向特定 Azure 虚拟网络或公共 Internet IP 地址范围授予访问权限。
-
 
 ### <a name="storage-account-keys"></a>存储帐户密钥
 存储帐户密钥是由 Azure 创建的 512 位字符串，配合存储帐户名称用于访问存储于存储帐户中的数据对象。
@@ -265,21 +268,9 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 在调用 REST API 来访问存储帐户中的对象时，可以通过为存储帐户启用 [需要安全传输](../storage-require-secure-transfer.md) 来强制使用 HTTPS。 启用此设置后，使用 HTTP 的连接将被拒绝。
 
 ### <a name="using-encryption-during-transit-with-azure-file-shares"></a>传输期间对 Azure 文件共享使用加密
-使用 REST API 时，Azure 文件支持 HTTPS，但经常用作附加到 VM 的 SMB 文件共享。 SMB 2.1 不支持加密，因此只允许在 Azure 中的相同区域内连接。 但是，SMB 3.0 支持加密，并且可以在 Windows Server 2012 R2、Windows 8、Windows 8.1 和 Windows 10 中使用，允许跨区域访问和桌面上的访问。
+[Azure 文件](../files/storage-files-introduction.md)支持通过 SMB 3.0 进行加密，以及在使用文件 REST API 时通过 HTTPS 进行加密。 在 Azure 文件共享所在的 Azure 区域（例如本地或另一 Azure 区域）之外进行装载时，始终需要使用带加密功能的 SMB 3.0。 SMB 2.1 不支持加密，因此默认情况下只允许在 Azure 中的相同区域内连接，但可以强制使用带加密功能的 SMB 3.0，只需对存储帐户[要求安全传输](../storage-require-secure-transfer.md)即可。
 
-尽管 Azure 文件共享可以与 Unix 配合使用，但 Linux SMB 客户端尚不支持加密，因此只允许在 Azure 区域内访问。 Linux 的加密支持已经在负责 SMB 功能的 Linux 开发人员的路线图上。 当他们添加加密时，必须具有访问 Linux 上 Azure 文件共享的相同能力，就像对于 Windows 所做的一样。
-
-可以通过为存储帐户启用 [需要安全传输](../storage-require-secure-transfer.md) 来强制对 Azure 文件服务使用加密。 如果使用 REST API，则必须使用 HTTPs。 对于 SMB，只有支持加密的 SMB 连接才会成功连接。
-
-#### <a name="resources"></a>资源
-* [Azure 文件简介](../files/storage-files-introduction.md)
-* [在 Windows 上开始使用 Azure 文件](../files/storage-how-to-use-files-windows.md)
-
-  本文概述 Azure 文件共享，以及如何在 Windows 上装载和使用这些文件共享。
-
-* [如何通过 Linux 使用 Azure 文件](../files/storage-how-to-use-files-linux.md)
-
-  此文介绍如何在 Linux 系统上装载 Azure 文件共享，以及上传/下载文件。
+带加密功能的 SMB 3.0 可以在[所有受支持的 Windows 和 Windows Server 操作系统](../files/storage-how-to-use-files-windows.md)中使用，但 Windows 7 和 Windows Server 2008 R2 除外，这二者只支持 SMB 2.1。 在 [macOS](../files/storage-how-to-use-files-mac.md) 和使用 Linux 内核 4.11 及更高版本的 [Linux](../files/storage-how-to-use-files-linux.md) 发行版上，SMB 3.0 也受支持。 针对 SMB 3.0 的加密支持也通过多个 Linux 发行版向后移植到旧版 Linux 内核。详情请参阅[了解 SMB 客户端要求](../files/storage-how-to-use-files-linux.md#smb-client-reqs)。
 
 ### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>使用客户端加密来保护发送到存储的数据
 还可通过客户端加密，帮助确保在客户端应用程序与存储之间传输时数据安全。 数据先经过加密，再传输到 Azure 存储。 从 Azure 存储检索数据时，在客户端上收到数据之后会将其解密。 即使数据在通过连接时已加密，但还是建议使用 HTTPS，因为它内置了数据完整性检查，有助于降低影响数据完整性的网络错误。
@@ -461,7 +452,7 @@ SSE 由 Azure 存储管理。 SSE 不是针对传输中数据安全性提供的�
 解决此问题的另一种方法是让 Web 应用程序充当存储调用的代理。 这意味着，如果要将文件上传到 Blob 存储，Web 应用程序可以在本地写入它，然后将它复制到 Blob 存储，或者将它全部读入内存，然后将它写入 Blob 存储。 或者，你可以编写专门的 Web 应用程序（例如 Web API），以在本地上传文件并将它们写入 Blob 存储。 无论如何，都必须在确定伸缩性需求时考虑该功能。
 
 #### <a name="how-can-cors-help"></a>CORS 有何用途？
-Azure 存储允许启用 CORS – 跨域资源共享。 对于每个存储帐户，可以指定可访问该存储帐户中的资源的域。 例如上例中，可在 fabrikam.blob.core.windows.net 存储帐户中启用 CORS，并将其设置为允许访问 contoso.com。然后，Web 应用程序 contoso.com 就可直接访问 fabrikam.blob.core.windows.net 中的资源。
+Azure 存储允许启用 CORS – 跨域资源共享。 对于每个存储帐户，可以指定可访问该存储帐户中的资源的域。 例如上例中，可在 fabrikam.blob.core.windows.net 存储帐户中启用 CORS，并将其设置为允许访问 contoso.com。 然后，Web 应用程序 contoso.com 就可直接访问 fabrikam.blob.core.windows.net 中的资源。
 
 要注意的一点是，CORS 允许访问，但不提供所有对存储资源的非公共访问所需的身份验证。 这意味着，如果它们是公共的，就只能访问 Blob，或者可以包含共享访问签名来提供相应的权限。 表、队列和文件没有公共访问权限并需要 SAS。
 
@@ -514,8 +505,7 @@ Azure 存储允许启用 CORS – 跨域资源共享。 对于每个存储帐户
 
    Microsoft 允许每个客户决定是否启用 FIPS 模式。 我们相信，客户没有充分的理由违反政府法规，不按默认启用 FIPS 模式。
 
-   **资源**
-
+### <a name="resources"></a>资源
 * [为何建议不再使用“FIPS 模式”](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   此博客文章提供 FIPS 概述，并说明他们为什么默认不启用 FIPS 模式。

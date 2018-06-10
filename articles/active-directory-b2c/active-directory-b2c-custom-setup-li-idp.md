@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为 OAuth2 标识提供者
-description: 有关如何使用 OAuth2 协议和自定义策略设置 LinkedIn 应用程序的操作指南文章
+title: 在 Azure Active Directory B2C 中使用自定义策略将 LinkedIn 添加为 OAuth2 标识提供者 | Microsoft Docs
+description: 有关如何使用 OAuth2 协议和自定义策略设置 LinkedIn 应用程序的操作指南文章。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: davidmu
-ms.openlocfilehash: 9e5235739abcfbee1e530685890098a45a1b093d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 0544daf310d40ea419cb6a46cbbf308ebc924715
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709319"
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/23/2018
 
     c. 选择一种**应用程序用途**。
 
-    d.单击“下一步”。 在“网站 URL”框中，粘贴 https://login.microsoftonline.com。
+    d. 在“网站 URL”框中，粘贴 https://login.microsoftonline.com。
 
     e. 键入**办公电子邮件**地址和**办公电话**号码。
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/23/2018
     >[!NOTE]
     >客户端密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或将密钥随应用分发。
 
-5. 选择“添加”。
+5. 选择 **添加** 。
 
 6. 选择“设置”，将“应用程序状态”更改为“实时”，选择“更新”。
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 03/23/2018
 
 2. 若要查看租户中的可用密钥，请选择“策略密钥”。
 
-3. 选择“添加”。
+3. 选择 **添加** 。
 
 4. 在“选项”框中，选择“上传”。
 

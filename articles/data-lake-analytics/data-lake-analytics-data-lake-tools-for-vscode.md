@@ -1,27 +1,21 @@
 ---
-title: Azure Data Lake 工具：使用针对 Visual Studio Code 的 Azure Data Lake 工具 | Microsoft Docs
-description: '了解如何使用针对 Visual Studio Code 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。 '
-Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview file,upload to storage path,download,upload
+title: 使用针对 Visual Studio Code 的 Azure Data Lake 工具
+description: 了解如何使用针对 Visual Studio Code 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。
 services: data-lake-analytics
-documentationcenter: ''
 author: Jejiang
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+ms.author: jejiang
+manager: kfile
+editor: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/09/2018
-ms.author: jejiang
-ms.openlocfilehash: f35aa14286874d7c152509a69bd171b95b19e22b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 4f5d51a2a34e89223f51f456f2c730835b1e2451
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011265"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34735181"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
 
@@ -39,14 +33,14 @@ ms.locfileid: "34011265"
 - [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core)。 
 - [Mono 5.2.x](http://www.mono-project.com/download/)。
 
-## <a name="install-data-lake-tools"></a>安装 Data Lake 工具
+## <a name="install-azure-data-lake-tools"></a>安装 Azure Data Lake 工具
 
-安装必备组件后，即可安装用于 VS Code 的 Data Lake 工具。
+安装必备组件后，即可安装用于 VS Code 的 Azure Data Lake 工具。
 
-**安装 Data Lake 工具**
+**安装 Azure Data Lake 工具的步骤**
 
 1. 打开 Visual Studio Code。
-2. 单击左侧窗格中的“扩展”。 在搜索框中，输入“Azure Data Lake”。
+2. 单击左侧窗格中的“扩展”。 在搜索框中输入“Azure Data Lake 工具”。
 3. 单击“Azure Data Lake 工具”旁边的“安装”。 数秒后，“安装”按钮将变为“重载”。
 4. 单击“重载”，激活“Azure Data Lake 工具”扩展。
 5. 单击“重载窗口”以进行确认。 在“扩展”窗格中，可以看到“Azure Data Lake 工具”。
@@ -57,12 +51,14 @@ ms.locfileid: "34011265"
 ## <a name="activate-azure-data-lake-tools"></a>激活 Azure Data Lake 工具
 创建新的 .usql 文件，或打开现有的 .usql 文件以激活扩展。 
 
-## <a name="open-the-sample-script"></a>打开示例脚本
-打开命令面板 (Ctrl+Shift+P)，并输入 **ADL: Open Sample Script**。 这会打开此示例的另一个实例。 还可以对此实例编辑、配置和提交脚本。
 
 ## <a name="work-with-u-sql"></a>处理 U-SQL
 
 若要处理 U-SQL，需打开 U-SQL 文件或文件夹。
+
+**打开示例脚本的步骤**
+
+打开命令面板 (Ctrl+Shift+P)，并输入 **ADL: Open Sample Script**。 这会打开此示例的另一个实例。 还可以对此实例编辑、配置和提交脚本。
 
 **打开 U-SQL 项目文件夹的方法**
 
@@ -143,10 +139,12 @@ ms.locfileid: "34011265"
 
     ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-gitignore.png)
 
-## <a name="use-python-r-and-csharp-code-behind-file"></a>使用 Python、R 和 CSharp 代码隐藏文件
+
+## <a name="work-with-code-behind-file-csharp-python-and-r"></a>处理代码隐藏文件：CSharp、Python 和 R
+
 Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在 VSCode 中使用 Python、R 和 CSharp 开发用于 Azure Data Lake Analytics 的 U-SQL](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)。
 
-## <a name="use-assemblies"></a>使用程序集
+## <a name="work-with-assemblies"></a>处理程序集
 
 有关开发程序集的信息，请参阅[为 Azure Data Lake Analytics 作业开发 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)。
 
@@ -214,20 +212,32 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
             USING Outputters.Tsv();
 
 
+## <a name="u-sql-local-run-and-local-debug-for-windows-users"></a>Windows 用户的 U-SQL 本地运行和本地调试
+在将代码发布到 Data Lake Analytics 之前，U-SQL 本地运行可测试本地数据并在本地验证脚本。 使用本地调试功能可以在将代码提交到 Data Lake Analytics 之前完成以下任务： 
+- 调试 C# 代码隐藏。 
+- 逐步执行代码。 
+- 在本地验证脚本。
+
+有关本地运行和本地调试的说明，请参阅[使用 Visual Studio Code 进行 U-SQL 本地运行和本地调试](data-lake-tools-for-vscode-local-run-and-debug.md)。
+
+
 ## <a name="connect-to-azure"></a>连接到 Azure
 
 必须首先接到 Azure 帐户，才能在 Data Lake Analytics 中编译和运行 U-SQL 脚本。
 
-**连接到 Azure 的方法**
+<b id="sign-in-by-command">使用命令连接到 Azure 的步骤</b>
 
 1.  按 Ctrl+Shift+P 打开命令面板。 
-2.  输入 **ADL: Login**。 登录信息将显示在顶部区域中。
+2.  输入 **ADL: Login**。 登录信息显示在右下角。
 
-    ![针对 Visual Studio Code 的 Data Lake 工具命令面板](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
-    ![针对 Visual Studio Code 设备的 Data Lake 工具登录信息](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
-3.  单击“复制并打开”，通过 URL https://aka.ms/devicelogin 打开登录网页。 将代码 **G567LX42V** 粘贴到文本框中，然后选择“继续”。
+    ![用于 Visual Studio Code 的 Data Lake 工具命令面板](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
 
-   ![用于 Visual Studio Code 的 Data Lake 工具登录粘贴代码](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
+    ![用于 Visual Studio Code 的 Data Lake 工具设备登录信息](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
+
+3.  单击“复制并打开”，通过 URL https://aka.ms/devicelogin 打开登录网页。 将代码粘贴到文本框中，然后选择“继续”。
+
+    ![用于 Visual Studio Code 的 Data Lake 工具登录粘贴代码](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )  
+     
 4.  按照说明从网页登录。 连接后，“VS Code”窗口左下角的状态栏上会显示 Azure 帐户名称。 
 
     > [!NOTE] 
@@ -237,19 +247,45 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
 若要注销，请输入命令 **ADL: Logout**
 
-## <a name="list-your-data-lake-analytics-accounts"></a>列出 Data Lake Analytics 帐户
+**从浏览器连接到 Azure 的步骤**
 
-若要测试连接，请获取 Data Lake Analytics 帐户的列表。
+若要从浏览器登录，请展开“AZURE DATALAKE”，单击“登录到 Azure...”，然后按照[**使命命令连接到 Azure 的步骤**](#sign-in-by-command)中的步骤 3 和步骤 4 进行操作。
 
-**列出 Azure 订阅下 Data Lake Analytics 帐户的方法**
+![从浏览器连接到 Azure](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-sign-in-from-explorer.png )  
+
+不能从浏览器注销。 若要注销，请参阅[**使用命令连接到 Azure 的步骤**](#sign-in-by-command)。
+
+
+## <a name="create-extract-script"></a>创建 EXTRACT 脚本 
+可以通过命令“ADL: 创建 EXTRACT 脚本”或 **AZURE DATALAKE** 资源管理器为 .csv、.tsv、.txt 文件创建 EXTRACT 脚本。
+
+**使用命令创建 EXTRACT 脚本的步骤**
+
+1. 按 Ctrl+Shift+P 打开命令面板，然后输入“ADL: 创建 EXTRACT 脚本”。
+2. 指定某个 Azure 存储文件的完整路径，然后按 **Enter**。
+3. 选择一个帐户。
+4. 对于 .txt 文件，请选择一个用于提取文件的分隔符。 
+
+    ![创建 EXTRACT 脚本过程](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-process.png)
+
+EXTRACT 脚本是根据条目生成的。 对于不能检测列的脚本，请从两个选项中选择一个。 否则，只会生成一个脚本。
+
+![创建 EXTRACT 脚本结果](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-result.png)
+
+**从浏览器创建 EXTRACT 脚本的步骤**
+
+另一种创建 EXTRACT 脚本的方法是使用 Data Lake 存储或 Blob 存储的 .csv、.tsv、.txt 文件中的右键菜单。
+
+![从上下文菜单创建 EXTRACT 脚本](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-from-context-menu.png)
+
+## <a name="integrate-with-azure-data-lake-analytics-through-command"></a>通过命令与 Azure Data Lake Analytics 集成
+
+可以访问 Azure Data Lake Analytics 资源，包括列出帐户、访问元数据、查看分析作业。 
+
+**列出 Azure 订阅下 Azure Data Lake Analytics 帐户的步骤**
 
 1. 按 Ctrl+Shift+P 打开命令面板。
 2. 输入 **ADL: List Accounts**。 帐户随即显示在“输出”窗格中。
-
-
-## <a name="access-the-data-lake-analytics-catalog"></a>访问 Data Lake Analytics 目录
-
-连接到 Azure 后，可使用以下步骤访问 U-SQL 目录：
 
 **访问 Azure Data Lake Analytics 元数据**
 
@@ -258,9 +294,7 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 3.  选择其中一个 Data Lake Analytics 数据库。
 4.  选择其中一个架构。 可以看到表的列表。
 
-## <a name="view-data-lake-analytics-jobs"></a>查看 Data Lake Analytics 作业
-
-**查看 Data Lake Analytics 作业**
+**查看 Azure Data Lake Analytics 作业的步骤**
 1.  打开命令面板 (Ctrl+Shift+P)，并选择“ADL: Show Jobs”。 
 2.  选择 Data Lake Analytics 或本地帐户。 
 3.  等待显示帐户的作业列表
@@ -268,7 +302,7 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
     ![用于 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
 
-## <a name="azure-data-lake-storage-integration"></a>Azure Data Lake 存储集成
+## <a name="integrate-with-azure-data-lake-storage-through-command"></a>通过命令与 Azure Data Lake 存储集成
 
 可以使用 Azure Data Lake 存储相关的命令来执行以下操作：
  - 浏览 Azure Data Lake 存储资源。 [列出存储路径](#list-the-storage-path)。 
@@ -320,7 +354,7 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
 
 ### <a name="download-file"></a>下载文件 
-可以通过输入命令“ADL: 下载文件”或“ADL: 下载文件(高级)”来下载文件。
+可以通过命令“ADL: 下载文件”或“ADL: 下载文件(高级)”来下载文件。
 
 **通过“ADL: 下载文件(高级)”下载文件的具体步骤**
 1. 右键单击脚本编辑器，然后选择“下载文件(高级)”。
@@ -353,13 +387,10 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
    ![针对 Visual Studio Code 的 Data Lake 工具检查存储状态](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-status.png)
 
-## <a name="vscode-explorer-integration-with-azure-data-lake"></a>VSCode 资源管理器与 Azure Data Lake 集成
 
-**Azure 集成** 
+## <a name="integrate-with-azure-data-lake-analytics-from-explorer"></a>通过资源管理器与 Azure Data Lake Analytics 集成
 
-- 在登录到 Azure 之前，始终可以展开“AZURE DATALAKE”，然后单击“登录到 Azure”以登录到 Azure。 登录后，你将看到你的 Azure 帐户下的所有订阅都在“AZURE DATALAKE”的左侧面板中列出。 
-
-   ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/sign-in-datalake-explorer.png)
+- 登录后，你将看到你的 Azure 帐户下的所有订阅都在“AZURE DATALAKE”的左侧面板中列出。 
 
    ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
@@ -381,33 +412,33 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
     ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer-register-assembly.png)
 
-**ADLS 集成** 
+## <a name="integrate-with-azure-data-lake-storage-from-explorer"></a>通过资源管理器与 Azure Data Lake 存储集成
 
 导航到“Data Lake Store”
 
- - 在文件夹节点上，可以在右键单击的上下文菜单中“刷新”、“删除”、“上传”、“上传文件夹”、“复制相对路径”、“复制完整路径”。
+ - 在文件夹节点上，可以在右键单击的上下文菜单中执行“刷新”、“删除”、“上传”、“上传文件夹”、“复制相对路径”、“复制完整路径”操作。
 
    ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
- - 在文件节点上，可以在右键单击的上下文菜单中“下载”、“预览”、“删除”、“复制相对路径”、“复制完整路径”。 
+- 在文件节点上，可以在右键单击的上下文菜单中执行“预览”、“下载”、“删除”、“创建 EXTRACT 脚本”（仅适用于 CSV、TSV 和 TXT 文件）、“复制相对路径”、“复制完整路径”操作。
 
-   ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-download-preview-file.png)
+    ![DataLake 资源管理器 - 提取](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-extract.png)
 
-**WASB 集成**
+## <a name="integrate-with-azure-blob-storage-from-explorer"></a>通过资源管理器与 Azure Blob 存储集成
 
 导航到“Blob 存储”
 
-- 在 blob 容器节点上，可以在右键单击的上下文菜单中“刷新”、“删除 Blob 容器”、“上传 Blob”。
+- 在 Blob 容器节点上，可以在右键单击的上下文菜单中执行“刷新”、“删除 Blob 容器”、“上传 Blob”操作。
 
     ![Blob 存储 blob 容器节点](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
 
-- 在文件夹节点上，可以在右键单击的上下文菜单中“刷新”、“上传 Blob”。
+- 在文件夹节点上，可以在右键单击的上下文菜单中执行“刷新”和“上传 Blob”操作。
 
     ![Blob 存储文件夹节点](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
 
-- 在文件节点上，可以在右键单击的上下文菜单中“预览/编辑”、“下载”、“删除”、“复制相对路径”、“复制完整路径”。
+- 在文件节点上，可以在右键单击的上下文菜单中执行“预览/编辑”、“下载”、“删除”、“创建 EXTRACT 脚本”（仅适用于 CSV、TSV 和 TXT 文件）、“复制相对路径”、“复制完整路径”操作。
 
-    ![Blob 存储文件节点](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-file-node.png)
+    ![从上下文菜单创建 EXTRACT 脚本](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-from-context-menu-2.png)
 
 ## <a name="open-adl-storage-explorer-in-portal"></a>在门户中打开 ADL 存储资源管理器
 1. 按 Ctrl+Shift+P 打开命令面板。
@@ -415,14 +446,6 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 3. 选择 Data Lake Analytics 帐户。
 
 Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web 查找路径和预览文件。
-
-## <a name="local-run-and-local-debug-for-windows-users"></a>Windows 用户的本地运行和本地调试
-在将代码发布到 Data Lake Analytics 之前，U-SQL 本地运行可测试本地数据并在本地验证脚本。 使用本地调试功能可以在将代码提交到 Data Lake Analytics 之前完成以下任务： 
-- 调试 C# 代码隐藏。 
-- 逐步执行代码。 
-- 在本地验证脚本。
-
-有关本地运行和本地调试的说明，请参阅[使用 Visual Studio Code 进行 U-SQL 本地运行和本地调试](data-lake-tools-for-vscode-local-run-and-debug.md)。
 
 ## <a name="additional-features"></a>其他功能
 
@@ -450,17 +473,11 @@ Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web
 
     ![用于 Visual Studio Code 的 Data Lake 工具语法突出显示](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
 
-   >[!NOTE]
-   >为新的一般数据保护条例 (GDPR)（于 2018 年 5 月 25 日生效）做准备，建议针对 Visual Studio 代码的 Azure Data Lake 工具的用户升级到版本 0.2.13 或更高版本。 此版本包括基于最新数据保护要求所做的更改。 请注意，以前的版本不可供下载并将弃用。 
- 
+   > [!NOTE]
+   > Microsoft 建议你升级到针对 Visual Studio 的 Azure Data Lake 工具 2.3.3000.4 或更高版本。 以前的版本不再可以下载，现已弃用。  
    
 ## <a name="next-steps"></a>后续步骤
 - [在 VS Code 中使用 Python、R 和 CSharp 开发用于 Azure Data Lake Analytics 的 U-SQL](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [使用 Visual Studio Code 进行 U-SQL 本地运行和本地调试](data-lake-tools-for-vscode-local-run-and-debug.md)
 - [教程：Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
 - [教程：使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
-- [开发用于 Azure Data Lake Analytics 作业的 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)
-
-
-
-

@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：修改自定义策略中的注册和配置自断言提供程序
+title: 修改自定义策略中的注册和配置自断言提供程序 | Microsoft Docs
 description: 有关在注册中添加声明和配置用户输入的演练
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2017
 ms.author: davidmu
-ms.openlocfilehash: b9ea48f0700509194602dd15ff42c7c689685a53
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 9d8f644e819ceb83f0b436789d6d8610ed01f6a6
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34710791"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C：修改注册以添加新声明和配置用户输入。
 

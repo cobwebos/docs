@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用自定义策略动态自定义 Azure AD B2C 用户界面 (UI)
+title: 使用自定义策略动态自定义 Azure Active Directory B2C 用户界面 (UI) | Microsoft Docs
 description: 支持多品牌体验（包含运行时动态更改的 HTML5/CSS 内容）。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: davidmu
-ms.openlocfilehash: 77f6ae1df8a364eecc5e7d6d6fe3a07dd215ac16
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: d01f7b884e03bb311350c508dc46f699cd6717c0
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709336"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 

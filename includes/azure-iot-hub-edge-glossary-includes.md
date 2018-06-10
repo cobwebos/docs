@@ -1,3 +1,6 @@
+## <a name="automatic-device-management"></a>自动设备管理
+Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](/articles/iot-hub/iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](/articles/iot-edge/how-to-deploy-monitor.md)。
+
 ## <a name="iot-edge"></a>IoT Edge
 Azure IoT Edge 支持在本地设备进行 Azure 服务和解决方案特定代码的云驱动部署。 IoT Edge 设备可以聚合其他设备的数据，以在数据发送到云之前执行计算和分析。 有关详细信息，请参阅 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)。
 
@@ -7,8 +10,8 @@ IoT Edge 运行时部件负责部署和监视模块。
 ## <a name="iot-edge-device"></a>IoT Edge 设备
 IoT Edge 设备已安装 IoT Edge 运行时，并且在设备详细信息中标记为“IoT Edge 设备”。 了解如何[在 Linux 的模拟设备上部署 Azure IoT Edge - 预览](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux)。
 
-## <a name="iot-edge-deployment"></a>IoT Edge 部署
-IoT Edge 部署配置 IoT Edge 设备的目标集以运行 IoT Edge 模块集。 每次部署持续确保符合其目标条件的所有设备运行指定的模块集，即使是在创建新设备或者为满足目标条件修改设备时。 每个 IoT Edge 设备仅接收满足其目标条件的最高优先级部署。 了解有关 [IoT Edge 部署](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)的详细信息。
+## <a name="iot-edge-automatic-deployment"></a>IoT Edge 自动部署
+IoT Edge 自动部署配置 IoT Edge 设备的目标集以运行 IoT Edge 模块集。 每次部署持续确保符合其目标条件的所有设备运行指定的模块集，即使是在创建新设备或者为满足目标条件修改设备时。 每个 IoT Edge 设备仅接收满足其目标条件的最高优先级部署。 了解有关 [IoT Edge 自动部署](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)的详细信息。
 
 ## <a name="iot-edge-deployment-manifest"></a>IoT Edge 部署清单
 Json 文档包含要在一个或多个 IoT Edge 设备的模块孪生中复制的信息，以部署一组模块、路由和关联模块所需属性。
