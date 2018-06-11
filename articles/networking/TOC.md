@@ -8,6 +8,7 @@
 ### [网络安全最佳实践](../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [高度可用的网络虚拟设备](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha )
 ### [结合使用负载均衡方法](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [使用 Azure DNS 和流量管理器进行灾难恢复](disaster-recovery-dns-traffic-manager.md)
 ## 规划和设计
 ### [虚拟网络](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [跨界连接 - VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)

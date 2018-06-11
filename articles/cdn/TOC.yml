@@ -116,6 +116,8 @@
           href: cdn-troubleshoot-endpoint.md
         - name: 文件压缩
           href: cdn-troubleshoot-compression.md
+        - name: 允许的证书颁发机构
+          href: cdn-troubleshoot-allowed-ca.md
 - name: 引用
   items:
     - name: 规则引擎参考

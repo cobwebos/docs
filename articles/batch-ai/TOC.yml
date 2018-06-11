@@ -11,6 +11,10 @@
       href: quickstart-cli.md
     - name: 运行训练作业 - Python
       href: quickstart-python.md
+- name: 操作指南
+  items:
+    - name: 迁移到更新的 API
+      href: migrate-to-new-api.md
 - name: 引用
   items:
     - name: Azure CLI

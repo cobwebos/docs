@@ -63,8 +63,6 @@
           items:
             - name: 在 Azure 门户中准备 Azure 备份服务器工作负荷
               href: backup-azure-microsoft-azure-backup.md
-            - name: 在 Azure Stack 上安装 Azure 备份服务器
-              href: backup-mabs-install-azure-stack.md
             - name: 将存储添加到 Azure 备份服务器
               href: backup-mabs-add-storage.md
             - name: 将 Azure 备份服务器升级到 v.2
@@ -83,10 +81,18 @@
               href: backup-azure-sql-mabs.md
             - name: 保护系统状态和裸机恢复
               href: backup-mabs-system-state-and-bmr.md
-            - name: Azure Stack 上的文件和应用程序
-              href: backup-mabs-files-applications-azure-stack.md
         - name: 从 Azure 备份服务器恢复数据
           href: backup-azure-alternate-dpm-server.md
+    - name: Azure Stack 上的 Azure 备份服务器
+      items:
+        - name: 安装 Azure 备份服务器
+          href: backup-mabs-install-azure-stack.md
+        - name: 保护文件和应用程序
+          href: backup-mabs-files-applications-azure-stack.md
+        - name: 保护 SharePoint 场
+          href: backup-mabs-sharepoint-azure-stack.md
+        - name: 保护 SQL Server 数据库
+          href: backup-mabs-sql-azure-stack.md
     - name: Azure 文件共享
       items:
         - name: 备份 Azure 文件共享
