@@ -44,7 +44,7 @@ ms.lasthandoff: 05/20/2018
 4. 可能需要选择“刷新”查看最近创建的资源组。
    
     ![刷新资源组](./media/resource-group-portal/refresh-resource-groups.png)
-5. 若要自定义显示的资源组信息，请选择“列”。
+5. 若要自定义资源组的显示信息，请选择“列”。
    
     ![自定义列](./media/resource-group-portal/select-columns.png)
 6. 选择要添加的列，并选择“更新”。
@@ -95,7 +95,7 @@ ms.lasthandoff: 05/20/2018
 如果需要将资源移到另一个资源组或另一个订阅，请参阅[将资源移到新的资源组或订阅](resource-group-move-resources.md)。
 
 ## <a name="lock-resources"></a>锁定资源
-可以锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](resource-group-lock-resources.md)。
+可以锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。更多信息请参阅 [使用 Azure 资源管理器锁定资源](resource-group-lock-resources.md)。
 
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
