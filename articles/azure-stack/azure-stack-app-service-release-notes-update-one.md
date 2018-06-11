@@ -16,16 +16,17 @@ ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
 ms.openlocfilehash: 80bd865b7a08d9488c0fb6a1a5b60445b9c6eaaa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34358075"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>基于 Azure Stack 的应用服务 Update 1 发行说明
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-这些发行说明介绍了基于 Azure Stack 的 Azure 应用服务 Update 1 中的改进和修复，以及任何已知问题。 已知的问题划分为与部署、 更新过程和生成 （安装后） 的问题直接相关的问题。
+这些发行说明介绍了基于 Azure Stack 的 Azure 应用服务 Update 1 中的改进和修复，以及任何已知问题。 已知问题分为与部署、更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]
 > 请应用针对 Azure Stack 集成系统的 1802 更新，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务。
@@ -39,7 +40,7 @@ ms.lasthandoff: 05/20/2018
 ### <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
-> 基于 Azure Stack 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为目前在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新的使用者是 **\*。 sso.appservice。\<区域\>。\<domainname\>。\<扩展\>**
+> 基于 Azure Stack 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为目前在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新的使用者是 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
 >
 >
 
@@ -49,7 +50,7 @@ ms.lasthandoff: 05/20/2018
 
 基于 Azure Stack 的 Azure 应用服务 Update 1 包含以下改进和修复：
 
-- **Azure 应用服务的高可用性** - Azure Stack 1802 更新允许跨容错域部署工作负荷。 因此，应用服务基础结构能够容错，因为可以跨容错域进行部署。 默认情况下的 Azure App Service 的所有新部署具有此功能，但对于在 Azure 堆栈 1802年之前完成的部署更新正在应用，请参阅到[应用服务容错域文档](azure-stack-app-service-fault-domain-update.md)
+- **Azure 应用服务的高可用性** - Azure Stack 1802 更新允许跨容错域部署工作负荷。 因此，应用服务基础结构能够容错，因为可以跨容错域进行部署。 默认情况下，Azure 应用服务的所有全新部署都会有这个功能，但如果是在应用 Azure Stack 1802 更新之前完成的部署，请参阅[应用服务容错域文档](azure-stack-app-service-fault-domain-update.md)
 
 - **在现有的虚拟网络中进行部署** - 客户现在可以在现有的虚拟网络中部署基于 Azure Stack 的应用服务。 在现有的虚拟网络中进行部署以后，客户就可以通过专用端口连接到 Azure 应用服务所需的 SQL Server 和文件服务器。 在部署过程中，客户可以选择在现有的虚拟网络中进行部署，但在部署之前，[必须创建供应用服务使用的子网](azure-stack-app-service-before-you-get-started.md#virtual-network)。
 
@@ -196,18 +197,18 @@ Get-AzureStackRootCert.ps1 出错，导致客户在尚未安装 Azure Stack 根�
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-- 工作人员都无法访问文件服务器时在现有的虚拟网络中部署应用程序服务和文件服务器才私有网络上可用。
+- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。
  
-如果你选择要部署到现有的虚拟网络与内部 IP 地址连接到你的文件服务器，必须添加出站安全规则，启用辅助子网和文件服务器之间的 SMB 流量。 若要执行此操作，请转到在管理门户中 WorkersNsg 并添加出站安全规则具有以下属性：
- * 源： 任何
- * 源端口范围: *
- * 目标： IP 地址
- * 目标 IP 地址范围： Ip 范围为文件服务器
- * 目标端口范围： 445
- * 协议： TCP
- * 操作： 允许
- * 优先级： 700
- * 名称： Outbound_Allow_SMB445
+如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
+ * 源：任何
+ * 源端口范围：*
+ * 目标：IP 地址
+ * 目标 IP 地址范围：文件服务器的 IP 范围
+ * 目标端口范围：445
+ * 协议：TCP
+ * 操作：允许
+ * 优先级：700
+ * 名称：Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 30847ff20abf6654e58a0e72a12f04dcd88d5871
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: f84be4ec4d42b77e93cf0855d7fe4740256ed199
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011105"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34715354"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace 和 AppSource 发布者指南
 
@@ -100,7 +100,7 @@ Microsoft 提供两种不同的 Marketplace 店面，让合作伙伴可以列出
 |---------|---------|---------|
 | 1.在 Microsoft 合作伙伴网络中注册 | 15 分钟 | 加入 Microsoft 合作伙伴网络 (MPN)，成为正式的 Microsoft 合作伙伴并获得 Azure Marketplace 发布者享有的其他权益和支持。 若要在 MPN 中注册，请访问 Microsoft 合作伙伴网络，然后单击“注册”。 可以在注册过程中加入组织的现有成员（如果适用）。 注册后，请记下组织的 MPN ID：在云合作伙伴门户中激活发布者配置文件时（步骤 3），我们会要求提供该 ID。      |
 |2.创建 Microsoft ID     |   15 分钟      |  此 Microsoft ID 用于访问云合作伙伴门户。 此电子邮件地址需作为 Microsoft ID 注册，适用于云合作伙伴门户（步骤 3）和 Microsoft 开发人员中心（步骤 4）。 所选择的电子邮件地址最好属于企业域且由 IT 团队控制。 在创建 ID 之前，请查看“指南和操作方法”中的相关部分以获取指南。 |
-|3.提交 Marketplace 提名表格     |  1-3 天       | 指定组织成为 Microsoft 云 Marketplace 发布者。 该表单包括有关组织的信息、要发布的第一个应用程序或服务产品、要提供的支持等级。 <ul><li>[Azure Marketplace 提名表单](http://aka.ms/listonazuremarketplace)</li><li>[AppSource 提名表单](http://aka.ms/listonappsource)</li></ul> 提交表单后，Marketplace 团队会对应用程序进行评审并核实该申请。 请求被审查后，你将通过电子邮件收到通知，其中包括成为经过批准的合作伙伴并访问云合作伙伴门户所要完成的后续步骤。在该门户中，可以完成第一个产品/服务商品并创建其他产品/服务。 获得批准后，你会收到一个促销代码，可免除 Microsoft 开发中心的注册费用（步骤 4）。 |
+|3.提交 Marketplace 提名表格     |  1-3 天       | 指定组织成为 Microsoft 云 Marketplace 发布者。 该表单包括有关组织的信息、要发布的第一个应用程序或服务产品、要提供的支持等级。 <ul><li>[Azure Marketplace 提名表单](https://azuremarketplace.microsoft.com/sell/signup)</li><li>[AppSource 提名表单](http://aka.ms/listonappsource)</li></ul> 提交表单后，Marketplace 团队会对应用程序进行评审并核实该申请。 请求被审查后，你将通过电子邮件收到通知，其中包括成为经过批准的合作伙伴并访问云合作伙伴门户所要完成的后续步骤。在该门户中，可以完成第一个产品/服务商品并创建其他产品/服务。 获得批准后，你会收到一个促销代码，可免除 Microsoft 开发中心的注册费用（步骤 4）。 |
 |4.在开发人员中心注册     |    5-10 天     | 需要通过 Microsoft 开发人员中心发布具有在 Marketplace 中进行交易的功能的应用程序，例如虚拟机、解决方案模板和 Azure 托管应用。 提出此项要求的原因是使 Microsoft 能够验证公司信息、公司法律实体、税务信息和银行信息。 注册者必须是有效的组织代表，并且必须提供个人信息，用于验证身份。 注册人必须使用公司共享的 Microsoft ID（步骤 2），并且必须在云合作伙伴门户中使用同一帐户。 <ul>请注意，如果没有完成 Marketplace 提名表格，则需支付 $99 的注册费用。 若要免除此费用，请完成 Marketplace 提名表格，然后会通过电子邮件收到促销代码。 重要：请确保公司尚未拥有 Microsoft 开发人员中心帐户，然后再尝试创建该帐户。 有关此流程的分步说明，请参阅“关于如何在开发人员中心注册的说明”。</ul>   |
 |5.登录到云合作伙伴门户     |  15 分钟       |  提名获得批准并且你已在 [Microsoft 合作伙伴网络](https://partner.microsoft.com/en-us/membership/)和 [Microsoft 开发人员中心](https://dev.windows.com/)注册之后，系统会为你创建一个用于访问[云合作伙伴门户](https://cloudpartner.azure.com/)的帐户。 提名批准邮件中会包含用于首次登录的凭据。 有关如何使用云合作伙伴门户的详细信息，请转到门户中的[了解详情](https://cloudpartner.azure.com/#Learn)菜单并查看“文档”部分。    |
 
@@ -359,8 +359,8 @@ Microsoft 通过 Azure AD 对所有 Marketplace 用户进行身份验证。 当�
 |---------|---------|---------|
 | 1.在 Microsoft 合作伙伴网络中注册 | 15 分钟 | 加入 Microsoft 合作伙伴网络 (MPN)，成为正式的 Microsoft 合作伙伴并获得 Azure Marketplace 发布者享有的其他权益和支持。 若要在 MPN 中注册，请访问 Microsoft 合作伙伴网络，然后单击“注册”。 可以在注册过程中加入组织的现有成员（如果适用）。 注册后，请记下组织的 MPN ID：在云合作伙伴门户中激活发布者配置文件时（步骤 3），我们会要求提供该 ID。      |
 |2.创建 Microsoft ID     |   15 分钟      |  此 Microsoft ID 用于访问云合作伙伴门户。 此电子邮件地址需作为 Microsoft ID 注册，适用于云合作伙伴门户（步骤 3）和 Microsoft 开发人员中心（步骤 4）。 所选择的电子邮件地址最好属于企业域且由 IT 团队控制。 在创建 ID 之前，请查看“指南和操作方法”中的相关部分以获取指南。 |
-|3.提交 Marketplace 提名表格     |  1-3 天       | 指定组织成为 Microsoft 云 Marketplace 发布者。 该表单包括有关组织的信息、要发布的第一个应用程序或服务产品、要提供的支持等级。 <ul><li>[Azure Marketplace 提名表单](http://aka.ms/listonazuremarketplace)</li><li>[AppSource 提名表单](http://aka.ms/listonappsource)</li></ul> 提交表单后，Marketplace 团队会对应用程序进行评审并核实该申请。 请求被审查后，你将通过电子邮件收到通知，其中包括成为经过批准的合作伙伴并访问云合作伙伴门户所要完成的后续步骤。在该门户中，可以完成第一个产品/服务商品并创建其他产品/服务。 获得批准后，你会收到一个促销代码，可免除 Microsoft 开发中心的注册费用（步骤 4）。 |
-|4.在开发人员中心注册     |    5-10 天     | 需要通过 Microsoft 开发人员中心发布具有在 Marketplace 中进行交易的功能的应用程序，例如虚拟机、解决方案模板和 Azure 托管应用。 提出此项要求的原因是使 Microsoft 能够验证公司信息、公司法律实体、税务信息和银行信息。 注册者必须是有效的组织代表，并且必须提供个人信息，用于验证身份。 注册人必须使用公司共享的 Microsoft ID（步骤 2），并且必须在云合作伙伴门户中使用同一帐户。 <ul>请注意，如果没有完成 Marketplace 提名表格，则需支付 $99 的注册费用。 若要免除此费用，请完成 Marketplace 提名表格，然后会通过电子邮件收到促销代码。 重要：请确保公司尚未拥有 Microsoft 开发人员中心帐户，然后再尝试创建该帐户。 有关此流程的分步说明，请参阅“关于如何在开发人员中心注册的说明”。</ul>   |
+|3.提交 Marketplace 提名表格     |  1-3 天       | 指定组织成为 Microsoft 云 Marketplace 发布者。 该表单包括有关组织的信息、要发布的第一个应用程序或服务产品、要提供的支持等级。 <ul><li>[Azure Marketplace 提名表单](https://azuremarketplace.microsoft.com/sell/signup)</li><li>[AppSource 提名表单](http://aka.ms/listonappsource)</li></ul> 提交表单后，Marketplace 团队会对应用程序进行评审并核实该申请。 请求被审查后，你将通过电子邮件收到通知，其中包括成为经过批准的合作伙伴并访问云合作伙伴门户所要完成的后续步骤。在该门户中，可以完成第一个产品/服务商品并创建其他产品/服务。 获得批准后，你会收到一个促销代码，可免除 Microsoft 开发中心的注册费用（步骤 4）。 |
+|4.在开发人员中心注册     |    5-10 天     | 需要通过 Microsoft 开发人员中心发布具有在 Marketplace 中进行交易的功能的应用程序，例如虚拟机、解决方案模板、Azure 托管应用、容器和 SaaS 订阅。 提出此项要求的原因是使 Microsoft 能够验证公司信息、公司法律实体、税务信息和银行信息。 注册者必须是有效的组织代表，并且必须提供个人信息，用于验证身份。 注册人必须使用公司共享的 Microsoft ID（步骤 2），并且必须在云合作伙伴门户中使用同一帐户。 <ul>请注意，如果没有完成 Marketplace 提名表格，则需支付 $99 的注册费用。 若要免除此费用，请完成 Marketplace 提名表格，然后会通过电子邮件收到促销代码。 重要：请确保公司尚未拥有 Microsoft 开发人员中心帐户，然后再尝试创建该帐户。 有关此流程的分步说明，请参阅“关于如何在开发人员中心注册的说明”。</ul>   |
 |5.登录到云合作伙伴门户     |  15 分钟       |  提名获得批准并且你已在 [Microsoft 合作伙伴网络](https://partner.microsoft.com/en-us/membership/)和 [Microsoft 开发人员中心](https://dev.windows.com/)注册之后，系统会为你创建一个用于访问[云合作伙伴门户](https://cloudpartner.azure.com/)的帐户。 提名批准邮件中会包含用于首次登录的凭据。 有关如何使用云合作伙伴门户的详细信息，请转到门户中的[了解详情](https://cloudpartner.azure.com/#Learn)菜单并查看“文档”部分。    |
 
 
