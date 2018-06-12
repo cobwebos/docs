@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: f84be4ec4d42b77e93cf0855d7fe4740256ed199
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 79e7d049ebf184e273e05250bd6f112d4c6be53d
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34715354"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34806864"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace 和 AppSource 发布者指南
 
@@ -144,7 +144,7 @@ Microsoft 提供两种不同的 Marketplace 店面，让合作伙伴可以列出
 |支持渠道  |说明  |
 |---------|---------|
 |MSDN 论坛：[Marketplace](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | Microsoft Developer Network 论坛。         |
-|Stack Overflow：[Azure](https://stackoverflow.com/questions/tagged/azure)     |    在 Stack Overflow 环境中获取有关 Azure 和 Marketplace 的解决方案和提问：<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure 资源管理器](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Azure 虚拟机](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li></ul> |
+|Stack Overflow：[Azure](https://stackoverflow.com/questions/tagged/azure)     |    在 Stack Overflow 环境中获取有关 Azure 和 Marketplace 的解决方案和提问：<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure 资源管理器](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Azure 虚拟机](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li><li>[Azure 上的容器](https://stackoverflow.com/search?q=azure+container)</li></ul> |
 
 
 **市场营销资源**
@@ -215,7 +215,10 @@ Microsoft 提供两种不同的 Marketplace 店面，让合作伙伴可以列出
 |**要求**  |**详细信息** |**发布选项**  |
 |---------|---------|---------|
 |**计费和计量**   |  容器必须支持“免费”或“自带许可”计费模型。       |  事务       |
-|**基于 Docker 的映像**    |   容器映像必须基于 Docker 映像格式，并且必须从 Azure 容器注册表拉取。      |  事务       |
+|**从 Dockerfile 生成的映像**    |   容器映像必须基于 Docker 映像规范，并且必须从 Dockerfile 生成。 在[此处](https://docs.docker.com/engine/reference/builder/#usage)详细了解如何生成 Docker 映像。     |  事务       |
+|**在 ACR 中托管**    |   容器映像必须在 Azure 容器注册表 (ACR) 存储库中托管。 在[此处](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)详细了解如何使用 ACR。     |  事务       |
+|**映像标记**    |   容器映像必须包含至少 1 个标记（最多标记数：16）。 在[此处](https://docs.docker.com/engine/reference/commandline/tag/)详细了解如何标记映像。     |  事务       |
+
 
 #### <a name="prerequisites-specific-to-transation-publishing-for-saas-app-subscriptions"></a>特定于 SaaS 应用订阅事务发布的先决条件
 
@@ -224,7 +227,8 @@ Microsoft 提供两种不同的 Marketplace 店面，让合作伙伴可以列出
 |**计费和计量**    |   产品/服务按固定月费定价。 目前不支持基于使用情况的定价和基于使用情况的“校准”功能。      |   事务      |
 |**取消**  |   客户可以随时取消你的产品/服务。      |   事务      |
 |**事务登陆页**     |   托管一个 Azure 联合品牌事务登陆页，用户可以在其中创建并管理其 SaaS 服务帐户。      |    事务     |
-|**SaaS 订阅 API**    |   公开一个服务，该服务可以通过与 SaaS 订阅交互来创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。      |     事务    |
+|**订阅 API**    |   公开一个服务，该服务可以通过与 SaaS 订阅交互来创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。      |     事务    |
+
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>特定于咨询服务发布的先决条件
 
