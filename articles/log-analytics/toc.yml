@@ -28,7 +28,11 @@
 - name: 概念
   items:
     - name: OMS 门户转换
-      href: log-analytics-oms-portal-faq.md
+      items:
+        - name: 概述
+          href: log-analytics-oms-portal-transition.md
+        - name: 常见问题
+          href: log-analytics-oms-portal-faq.md
     - name: 工作区升级
       items:
         - name: 升级概述

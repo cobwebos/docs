@@ -235,6 +235,8 @@
               href: vmware-azure-manage-configuration-server.md
             - name: 管理配置服务器以进行物理服务器复制
               href: physical-manage-configuration-server.md
+            - name: 管理进程服务器
+              href: vmware-azure-manage-process-server.md
             - name: 管理 vCenter 服务器
               href: vmware-azure-manage-vcenter.md
             - name: 删除服务器并禁用保护
