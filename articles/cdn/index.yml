@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure CDN 文档
 metadata:
   title: Azure CDN 文档 - 教程和 API 参考 | Microsoft 文档
-  description: Azure 内容分发网络 (CDN) 是一种用于分发高带宽内容的全球 CDN 解决方案。 它可以托管在 Azure 中，也可以托管到任何其他位置。 借助 Azure CDN，可以通过使用距离最近的接入点 (POP) 服务器来缓存从 Azure Blob 存储、Web 应用程序或任何可公开访问的 Web 服务器加载的静态对象。 Azure CDN 还可以通过 CDN POP 来利用各种网络优化措施，从而加速不能缓存的动态内容的分发。 例如，Azure CDN 可以使用路由优化来绕过边界网关协议 (BGP)。
+  description: Azure 内容分发网络 (CDN) 是一种用于分发高带宽内容的全球 CDN 解决方案。 它可以托管在 Azure 中，也可以托管到任何其他位置。 借助 Azure CDN，可以通过使用距离最近的接入点 (POP) 服务器来缓存从 Azure Blob 存储、Web 应用程序或任何可公开访问的 Web 服务器加载的静态对象。 Azure CDN 也可以通过利用各种网络和路由优化来加速不能缓存的动态内容。
   services: cdn
   author: czeumault
   manager: carolz
@@ -11,15 +11,16 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/03/2018
+  ms.date: 06/08/2018
   ms.author: carolz
-  ms.openlocfilehash: 42d08e9a5893bf58ecf405cc5caf750ee3e1daf7
-  ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+  ms.openlocfilehash: 37250873e61b4fa1db95e5f4846f2cf054395b4a
+  ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/11/2018
+  ms.lasthandoff: 06/11/2018
+  ms.locfileid: "35260017"
 abstract:
-  description: Azure 内容分发网络 (CDN) 是一种用于分发高带宽内容的全球 CDN 解决方案。 它可以托管在 Azure 中，也可以托管到任何其他位置。 借助 Azure CDN，可以通过使用距离最近的接入点 (POP) 服务器来缓存从 Azure Blob 存储、Web 应用程序或任何可公开访问的 Web 服务器加载的静态对象。 Azure CDN 还可以通过 CDN POP 来利用各种网络优化措施，从而加速不能缓存的动态内容的分发。 例如，Azure CDN 可以使用路由优化来绕过边界网关协议 (BGP)。
+  description: Azure 内容分发网络 (CDN) 是一种用于分发高带宽内容的全球 CDN 解决方案。 它可以托管在 Azure 中，也可以托管到任何其他位置。 借助 Azure CDN，可以通过使用距离最近的接入点 (POP) 服务器来缓存从 Azure Blob 存储、Web 应用程序或任何可公开访问的 Web 服务器加载的静态对象。 Azure CDN 也可以通过利用各种网络和路由优化来加速不能缓存的动态内容。
 sections:
 - title: 
   items:

@@ -33,6 +33,8 @@
 ### [创建启用了 Kafka 的事件中心](event-hubs-create-kafka-enabled.md) 
 ### [流式传输到用于 Kafka 生态系统的 Azure 事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 ### [将 Kafka MirrorMaker 与用于 Kafka 生态系统的 Azure 事件中心配合使用](event-hubs-kafka-mirror-maker-tutorial.md)
+### [将 Apache Flink 与用于 Kafka 生态系统的事件中心配合使用](event-hubs-kafka-flink-tutorial.md)
+### [将 Akka Streams 与用于 Kafka 生态系统的事件中心配合使用](event-hubs-kafka-akka-streams-tutorial.md)
 ## 开发
 ### [使用 .NET Framework 发送事件](event-hubs-dotnet-framework-getstarted-send.md)
 ### [使用 .NET Framework 接收事件](event-hubs-dotnet-framework-getstarted-receive-eph.md)
@@ -40,7 +42,7 @@
 #### [.NET 标准](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET Framework](event-hubs-dotnet-framework-api-overview.md)
 #### [诊断日志](event-hubs-diagnostic-logs.md)
-### [AMQP 1.0 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
+### [AMQP 1.0 protocol guide](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## 管理
 ### [使用 Azure 监视来监视事件中心](event-hubs-metrics-azure-monitor.md)
 ### [事件中心管理库](event-hubs-management-libraries.md)

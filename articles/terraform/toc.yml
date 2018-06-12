@@ -15,6 +15,8 @@
       maintainContext: true
 - name: 教程
   items:
+    - name: 使用 AKS 和 Terraform 创建 Kubernetes 群集
+      href: terraform-create-k8s-cluster-with-tf-and-aks.md
     - name: Terraform 和 Azure 提供程序部署槽位
       href: terraform-slot-walkthru.md
     - name: 创建启用了 MSI 的 Terraform VM

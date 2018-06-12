@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: 教程
   items:
-    - name: 1 - 将 SSIS 包部署到 Azure
+    - name: 1 - 创建 Azure-SSIS 集成运行时
       items:
         - name: 用户界面 (UI)
           href: tutorial-deploy-ssis-packages-azure.md
@@ -362,7 +362,7 @@
           href: monitor-integration-runtime.md
         - name: 监视 Azure-SSIS 集成运行时
           href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
-        - name: 管理 Azure-SSIS 集成运行时
+        - name: 重新配置 Azure-SSIS 集成运行时
           href: manage-azure-ssis-integration-runtime.md
     - name: 创建集成运行时
       items:
@@ -374,7 +374,7 @@
           href: create-azure-ssis-integration-runtime.md
     - name: 在 Azure 中运行 SSIS 包
       items:
-        - name: 将 Azure-SSIS IR 加入 VNET
+        - name: 将 Azure-SSIS IR 加入虚拟网络
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: 为 Azure-SSIS IR 启用 Azure AD 身份验证
           href: enable-aad-authentication-azure-ssis-ir.md

@@ -21,7 +21,7 @@
       href: tutorial-forecast-spending.md
     - name: 3 - 管理成本
       href: tutorial-manage-costs.md
-    - name: 4 - 优化保留实例
+    - name: 4 - 优化预留实例
       href: tutorial-optimize-reserved-instances.md
     - name: 5 - 控制对数据的访问
       href: tutorial-user-access.md
@@ -43,6 +43,8 @@
       href: storage-accounts.md
     - name: 使用成本管理报表
       href: use-reports.md
+    - name: 使用仪表板
+      href: dashboards.md
 - name: 资源
   items:
     - name: 成本管理视频
