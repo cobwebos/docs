@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33931735"
 ---
 # <a name="problems-using-the-application-access-panel-website-or-mobile-application"></a>使用应用程序访问面板网站或移动应用程序时出现问题
 

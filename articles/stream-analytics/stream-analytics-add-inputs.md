@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186056"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>理解 Azure 流分析的输入
 

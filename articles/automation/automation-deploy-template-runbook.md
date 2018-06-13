@@ -15,6 +15,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195431"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197029"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>保护 Azure Data Lake Store 中存储的数据
 保护 Azure Data Lake Store 中的数据包含三个步骤。  必须同时设置基于角色的访问控制 (RBAC) 和访问控制列表 (ACL) 才能为用户和安全组完全启用对数据的访问权限。

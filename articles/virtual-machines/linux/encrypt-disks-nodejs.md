@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911671"
 ---
 # <a name="encrypt-disks-on-a-linux-vm-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 加密 Linux VM 中的磁盘
 为了增强虚拟机 (VM) 的安全性以及遵从法规，可以静态加密 Azure 中的虚拟磁盘。 磁盘是使用 Azure 密钥保管库中受保护的加密密钥加密的。 可以控制这些加密密钥，以及审核对它们的使用。 本文详细说明如何使用 Azure CLI 1.0 和 Resource Manager 部署模型加密 Linux VM 中的虚拟磁盘。

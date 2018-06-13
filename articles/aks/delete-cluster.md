@@ -14,6 +14,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936439"
 ---
 # <a name="delete-an-azure-kubernetes-service-aks-cluster"></a>删除 Azure Kubernetes 服务 (AKS) 群集
 

@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 5/10/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 4faa6930c37f9d491a3efa4b34519dbb13761a9d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: HT
+ms.openlocfilehash: 5fab656734d0984cf44a9fe1f29fd73530bd9aa8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34259849"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>使用 PowerShell 为 Azure Stack 启用备份
 
@@ -64,7 +65,7 @@ ms.lasthandoff: 05/12/2018
 
 | 变量        | 说明   |
 |---              |---                                        |
-| $username       | 使用域和用户名键入共享驱动器位置的**用户名**。 例如，`Contoso\administrator`。 |
+| $username       | 类型**用户名**使用共享的驱动器位置具有足够访问权限的域和用户名，以读取和写入文件。 例如，`Contoso\backupshareuser`。 |
 | $password       | 键入用户的**密码**。 |
 | $sharepath      | 键入**备份存储位置**的路径。 必须使用通用命名约定 (UNC) 字符串表示单独的设备上托管的文件共享的路径。 UNC 字符串指定资源（如共享文件或设备）的位置。 若要确保备份数据的可用性，设备应放置在单独的位置。 |
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186872"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>如何在 Azure 搜索中对搜索结果分页
 本文提供有关如何使用 Azure 搜索服务 REST API 实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。

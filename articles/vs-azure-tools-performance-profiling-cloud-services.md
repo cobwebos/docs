@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30292146"
 ---
 # <a name="testing-the-performance-of-a-cloud-service"></a>测试云服务的性能
 ## <a name="overview"></a>概述

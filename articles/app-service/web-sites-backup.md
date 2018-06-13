@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153576"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](app-service-web-overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936691"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何设置或编辑 Azure API 管理策略
 

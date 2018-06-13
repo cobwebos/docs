@@ -14,6 +14,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164316"
 ---
 # <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>通过 SSH 登录到 Azure Kubernetes 服务 (AKS) 群集节点
 

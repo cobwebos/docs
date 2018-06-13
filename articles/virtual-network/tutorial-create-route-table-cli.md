@@ -22,6 +22,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841939"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 通过路由表路由网络流量
 

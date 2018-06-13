@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206707"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>以组托管服务帐户身份运行服务
 在 Windows Server 独立群集上，可以使用 RunAs 策略以组托管服务帐户 (gMSA) 的身份来运行服务。  默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 即使在共享托管环境中以不同帐户身份运行应用程序，也可确保运行的应用程序彼此更安全。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。 使用 gMSA 时，没有密码或加密的密码存储在应用程序清单中。  还可以采用 [Active Directory 用户或组](service-fabric-run-service-as-ad-user-or-group.md)身份运行服务。

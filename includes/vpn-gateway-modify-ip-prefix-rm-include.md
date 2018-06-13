@@ -13,6 +13,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30326479"
 ---
 ### <a name="noconnection"></a>修改本地网关 IP 地址前缀 - 无网关连接
 

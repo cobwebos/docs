@@ -19,6 +19,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30316464"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
@@ -57,8 +58,8 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 
 用户帐户的提升级别指示任务是否可以使用提升的访问权限运行。 自动用户帐户和命名用户帐户都可以使用提升的访问权限运行。 提升级别的两个选项为：
 
-- **NonAdmin：**任务以没有提升访问权限的标准用户身份运行。 批处理用户帐户的默认提升级别始终为 **NonAdmin**。
-- **Admin：**任务以拥有提升访问权限的用户身份运行，以完全管理员权限操作。 
+- **NonAdmin：** 任务以没有提升访问权限的标准用户身份运行。 批处理用户帐户的默认提升级别始终为 **NonAdmin**。
+- **Admin：** 任务以拥有提升访问权限的用户身份运行，以完全管理员权限操作。 
 
 ## <a name="auto-user-accounts"></a>自动用户帐户
 

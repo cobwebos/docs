@@ -19,6 +19,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939798"
 ---
 # <a name="use-kafka-on-hdinsight-from-an-azure-function-app"></a>通过 Azure 函数应用使用 Kafka on HDInsight
 

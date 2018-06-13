@@ -16,6 +16,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 04/28/2018
+  ms.locfileid: "32160250"
 abstract:
   description: 了解如何部署应用程序网关 - 服务形式的应用程序传送控制器 (ADC)。 教程、API 参考和其他文档介绍了如何设置应用程序级别的路由和负载均衡服务，以便构建高度可用的可缩放 Web 前端。
 sections:

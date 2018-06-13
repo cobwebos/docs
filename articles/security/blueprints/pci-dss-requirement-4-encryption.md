@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896415"
 ---
 # <a name="encryption-requirements-for-pci-dss-compliant-environments"></a>符合 PCI DSS 的环境的加密要求 
 ## <a name="pci-dss-requirement-4"></a>PCI DSS 要求 4

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206741"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>访问、保存和删除 Reliable Actors 状态
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 是可封装逻辑与状态并稳定维护状态的单线程对象。 每个执行组件实例都有其自身的[状态管理器](service-fabric-reliable-actors-state-management.md)：一种类似于字典的数据结构，能够可靠地存储密钥/值对。 状态管理器是围绕状态提供程序的包装。 无论使用哪个[持久性设置](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)，都可以使用它来存储数据。

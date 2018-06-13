@@ -13,6 +13,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30921377"
 ---
 1. 在门户页左侧单击 **+**，并在搜索框中键入“虚拟网关”。 在“结果”中找到并单击“虚拟网关”。
 2. 在“虚拟网关”页底部，单击“创建”。 这会打开“创建虚拟网关”页。

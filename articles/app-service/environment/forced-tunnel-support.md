@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30835994"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 
@@ -89,7 +90,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 3. 获取可供所有从应用服务环境到 Internet 的出站流量使用的地址。 如果在本地路由流量，则这些地址为 NAT 或网关 IP。 若要通过 NVA 路由应用服务环境出站流量，则出口地址为 NVA 的公共 IP。
 
-4. _若要在现有的应用服务环境中设置传出地址：_请转到 resource.azure.com，再转到 Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name>。 然后即可看到描述应用服务环境的 JSON 代码。 确保代码的顶部显示“读/写”。 选择“编辑”。 向下滚动到底部。 将“userWhitelistedIpRanges”值从“null”更改为类似于以下内容的值。 使用要设置为出口地址范围的地址。 
+4. _若要在现有的应用服务环境中设置传出地址：_ 请转到 resource.azure.com，再转到 Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name>。 然后即可看到描述应用服务环境的 JSON 代码。 确保代码的顶部显示“读/写”。 选择“编辑”。 向下滚动到底部。 将“userWhitelistedIpRanges”值从“null”更改为类似于以下内容的值。 使用要设置为出口地址范围的地址。 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 

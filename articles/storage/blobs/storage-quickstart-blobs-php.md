@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188820"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 本快速入门介绍如何使用 PHP 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 

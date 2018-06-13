@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33761385"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 

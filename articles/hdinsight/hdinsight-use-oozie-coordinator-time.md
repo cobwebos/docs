@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31422005"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>将基于时间的 Oozie 协调器与 HDInsight 中的 Hadoop 配合使用以定义工作流和协调作业
 在本文中，学习如何定义工作流和协调器，以及如何基于时间触发协调器作业。 阅读本文前，浏览[将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]很有帮助。 除了 Oozie，还可以使用 Azure 数据工厂计划作业。 要了解 Azure 数据工厂，请参阅[将 Pig 和 Hive 用于数据工厂](../data-factory/transform-data.md)。

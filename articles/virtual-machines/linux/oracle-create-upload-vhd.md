@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30909320"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>为 Azure 准备 Oracle Linux 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -47,7 +48,7 @@ ms.lasthandoff: 04/06/2018
    
         # sudo rpm -e --nodeps NetworkManager
    
-    **注意：**如果尚未安装此包，则此命令会失败，并显示一条错误消息。 这是正常情况。
+    **注意：** 如果尚未安装此包，则此命令会失败，并显示一条错误消息。 这是正常情况。
 4. 在包含以下文本的 `/etc/sysconfig/` 目录中创建一个名为 **network** 的文件：
    
         NETWORKING=yes

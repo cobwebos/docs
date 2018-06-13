@@ -18,6 +18,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30912448"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中保护和使用虚拟机上的策略
 

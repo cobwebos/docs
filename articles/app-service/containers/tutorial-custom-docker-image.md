@@ -21,6 +21,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33763727"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 

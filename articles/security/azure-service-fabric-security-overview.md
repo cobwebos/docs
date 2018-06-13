@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895657"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric 安全性概述
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。

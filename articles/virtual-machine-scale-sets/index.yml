@@ -17,6 +17,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33941061"
 abstract:
   description: 使用 Azure 虚拟机规模集可以创建并管理一组完全相同的、负载均衡的、自动缩放的虚拟机。 使用我们的快速入门、教程和示例了解如何创建、配置、管理和自动缩放虚拟机规模集。
 sections:

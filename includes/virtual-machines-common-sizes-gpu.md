@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2018
+ms.locfileid: "30327519"
 ---
 GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍了此分组中各个大小的 GPU、vCPU、数据磁盘和 NIC 的数目及类型以及存储吞吐量及网络带宽的相关信息。 
 

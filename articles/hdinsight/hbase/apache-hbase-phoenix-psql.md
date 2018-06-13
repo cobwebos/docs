@@ -18,6 +18,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164732"
 ---
 # <a name="bulk-load-data-into-phoenix-using-psql"></a>使用 psql 将数据大容量加载到 Phoenix
 

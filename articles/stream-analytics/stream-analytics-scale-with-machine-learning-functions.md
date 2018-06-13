@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30909269"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>使用 Azure 机器学习函数缩放流分析作业
 设置流分析作业，并通过它运行某些示例数据，这通常很直接了当。 但当我们需要运行数据量更大的相同作业时，该怎么办？ 需要了解如何配置流分析作业，以便可以缩放它。 本文档关注使用机器学习函数缩放流分析作业的特殊方面。 有关在一般情况下如何缩放流分析作业的信息，请参阅文章[缩放作业](stream-analytics-scale-jobs.md)。
