@@ -1,11 +1,11 @@
 ---
-title: "保护 Azure 安全中心的应用程序 | Microsoft Docs"
-description: "本文档介绍 Azure 安全中心中的建议，以帮助你保护 Azure 应用程序并保持符合安全策略。"
+title: 保护 Azure 安全中心的应用程序 | Microsoft Docs
+description: 本文档介绍 Azure 安全中心中的建议，以帮助你保护 Azure 应用程序并保持符合安全策略。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: b5fc7a9e-24b1-415f-b3b5-62a53f5dd424
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040222"
 ---
 # <a name="protecting-your-applications-in-azure-security-center"></a>保护 Azure 安全中心中的应用程序
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。  适用于 Azure 资源类型的建议：虚拟机 (VM)、网络、SQL，以及应用程序。

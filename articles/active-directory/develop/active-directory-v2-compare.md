@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156800"
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>v2.0 终结点有什么不同？
 虽然你已熟悉 Azure Active Directory，或者已将应用与 Azure AD 集成，v2.0 终结点仍可能有一些预料之外的差异之处。 本文档针对这些差异作出汇总，可帮助你了解。

@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192966"
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
 本文包含管理 Azure 自动化环境的多个主题。
