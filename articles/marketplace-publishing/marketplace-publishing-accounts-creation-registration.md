@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32179327"
 ---
 # <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
 本文介绍成为 Azure Marketplace 的批准 Microsoft 开发人员的必要帐户创建和注册过程。
@@ -97,7 +98,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **“销售”国家/地区：**若要在 Azure Marketplace 上销售服务，注册实体必须来自已批准的上述“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅 [Marketplace 参与政策](http://go.microsoft.com/fwlink/?LinkID=526833)。
+   > **“销售”国家/地区：** 若要在 Azure Marketplace 上销售服务，注册实体必须来自已批准的上述“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅 [Marketplace 参与政策](http://go.microsoft.com/fwlink/?LinkID=526833)。
    >
    >
 5. 将“帐户类型”选择为“公司”，并单击“下一步”按钮。
@@ -202,10 +203,10 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 >
 
 ## <a name="4-steps-to-add-a-co-admin-in-the-publishing-portal"></a>4.在发布门户中添加共同管理员的步骤
-**假设你是管理员，**下面提供了添加共同管理员的步骤。
+**假设你是管理员，** 下面提供了添加共同管理员的步骤。
 
 > [!NOTE]
-> **对于新用户，**在发布门户中添加共同管理员之前，请确保已在发布门户中创建至少一个应用程序。 这是必需的，因为“发布者”选项卡仅在发布门户中创建至少一个应用程序后显示。
+> **对于新用户，** 在发布门户中添加共同管理员之前，请确保已在发布门户中创建至少一个应用程序。 这是必需的，因为“发布者”选项卡仅在发布门户中创建至少一个应用程序后显示。
 >
 >
 
@@ -218,7 +219,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
    ![绘制](media/marketplace-publishing-accounts-creation-registration/imgAddAdmin_05.png)
 
 ## <a name="5-steps-to-delete-a-co-admin-in-the-publishing-portal"></a>5.在发布门户中删除共同管理员的步骤
-**假设你是管理员，**下面提供了删除共同管理员的步骤。
+**假设你是管理员，** 下面提供了删除共同管理员的步骤。
 
 1. 使用管理员电子邮件 ID 登录到发布门户。
 2. 导航到“发布者”->依次选择帐户->“管理员” -> “共同管理员”。
