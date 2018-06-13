@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913615"
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>调整经典部署模型中创建的 Windows VM 大小
 本文介绍使用 Azure Powershell 调整在经典部署模型中创建的 Windows VM 大小。

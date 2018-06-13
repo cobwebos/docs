@@ -1,11 +1,11 @@
 ---
-title: "使用 Node.js 模块"
-description: "了解如何在使用 Azure 应用服务或云服务的同时使用 Node.js 模块。"
-services: 
+title: 使用 Node.js 模块
+description: 了解如何在使用 Azure 应用服务或云服务的同时使用 Node.js 模块。
+services: ''
 documentationcenter: nodejs
 author: TomArcher
 manager: routlaw
-editor: 
+editor: ''
 ms.assetid: c0e6cd3d-932d-433e-b72d-e513e23b4eb6
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23036462"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>将 Node.js 模块与 Azure 应用程序一起使用
 本文档提供有关将 Node.js 模块与托管在 Azure 中的应用程序一起使用的指南。 其中提供有关确保应用程序使用特定版本的模块，以及对 Azure 使用本机模块的指南。

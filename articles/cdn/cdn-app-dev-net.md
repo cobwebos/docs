@@ -1,11 +1,11 @@
 ---
-title: "适用于 .NET 的 Azure CDN 库入门 | Microsoft Docs"
-description: "了解如何编写 .NET 应用程序以使用 Visual Studio 管理 Azure CDN。"
+title: 适用于 .NET 的 Azure CDN 库入门 | Microsoft Docs
+description: 了解如何编写 .NET 应用程序以使用 Visual Studio 管理 Azure CDN。
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "22998172"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]

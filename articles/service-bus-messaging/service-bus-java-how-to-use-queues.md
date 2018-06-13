@@ -1,6 +1,6 @@
 ---
-title: "如何通过 Java 使用 Azure 服务总线队列 | Microsoft Docs"
-description: "了解如何在 Azure 中使用 Service Bus 队列。 用 Java 编写的代码示例。"
+title: 如何通过 Java 使用 Azure 服务总线队列 | Microsoft Docs
+description: 了解如何在 Azure 中使用 Service Bus 队列。 用 Java 编写的代码示例。
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23044252"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>如何通过 Java 使用服务总线队列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

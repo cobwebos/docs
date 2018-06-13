@@ -1,6 +1,6 @@
 ---
-title: "Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "Microsoft 威胁建模工具的主页，包含有关如何开始使用该工具的信息（包括威胁建模过程）"
+title: Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: Microsoft 威胁建模工具的主页，包含有关如何开始使用该工具的信息（包括威胁建模过程）
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23043352"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft 威胁建模工具
 
@@ -32,12 +33,12 @@ ms.lasthandoff: 10/11/2017
 
 下面只是该工具的一部分功能和创新：
 
-* **自动化：**有关绘制模型的指导和反馈
-* **STRIDE per Element：**引导式威胁分析和缓解措施
-* **报告：**安全活动与验证阶段的测试
-* **独特的方法：**使用户能够更好地可视化和了解威胁
-* **专为开发人员设计，以软件为中心：**许多方法是以资产或攻击者为中心。 我们是以软件为中心。 我们的解决方案构建在所有软件开发人员和架构师都很熟悉的活动基础之上 - 例如，为软件体系结构绘图
-* **注重设计分析：**术语“威胁建模”可以表示某项要求或设计分析技术。 有时，它指的是两者的复杂混合形式。 Microsoft SDL 的威胁建模方法是一种有重点的设计分析技术
+* **自动化：** 有关绘制模型的指导和反馈
+* **STRIDE per Element：** 引导式威胁分析和缓解措施
+* **报告：** 安全活动与验证阶段的测试
+* **独特的方法：** 使用户能够更好地可视化和了解威胁
+* **专为开发人员设计，以软件为中心：** 许多方法是以资产或攻击者为中心。 我们是以软件为中心。 我们的解决方案构建在所有软件开发人员和架构师都很熟悉的活动基础之上 - 例如，为软件体系结构绘图
+* **注重设计分析：** 术语“威胁建模”可以表示某项要求或设计分析技术。 有时，它指的是两者的复杂混合形式。 Microsoft SDL 的威胁建模方法是一种有重点的设计分析技术
 
 ## <a name="next-steps"></a>后续步骤
 

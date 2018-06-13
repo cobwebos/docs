@@ -23,7 +23,7 @@ ms.locfileid: "34266964"
 
 ## <a name="leave-an-organization"></a>离开组织
 
-若要以“访问面板”登录用户的身份离开组织，请执行以下操作[](https://myapps.microsoft.com)：
+若要以 [“访问面板”](https://myapps.microsoft.com) 登录用户的身份离开组织，请执行以下操作：
 
 1. 如果尚未登录要离开的组织，请在右上角选择你的姓名，然后单击要离开的组织。
 2. 在右上角选择你的姓名。

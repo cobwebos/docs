@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841258"
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>使用负载均衡的集来群集化 Linux 上的 MySQL
 > [!IMPORTANT]

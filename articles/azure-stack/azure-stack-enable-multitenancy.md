@@ -18,6 +18,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301829"
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>在 Azure Stack 中启用多租户
 

@@ -1,11 +1,11 @@
 ---
-title: "云服务的常见启动任务 |Microsoft Docs"
-description: "提供你可能想要以云服务 web 角色或辅助角色执行的一些常见启动任务的示例。"
+title: 云服务的常见启动任务 |Microsoft Docs
+description: 提供你可能想要以云服务 web 角色或辅助角色执行的一些常见启动任务的示例。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22999162"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
 本文提供你可能想要在云服务中执行的一些常见启动任务的示例。 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。 

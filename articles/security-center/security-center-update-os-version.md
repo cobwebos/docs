@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 安全中心更新 OS 版本 | Microsoft 文档"
-description: "本文档演示如何实现 Azure 安全中心建议**更新 OS 版本**。"
+title: 在 Azure 安全中心更新 OS 版本 | Microsoft 文档
+description: 本文档演示如何实现 Azure 安全中心建议**更新 OS 版本**。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: aa372492-ecdb-4368-8fdd-d8ed31e216ee
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040662"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>在 Azure 安全中心更新 OS 版本
 对于云服务中的虚拟机 (VM)，如果存在可用的较新版本的操作系统 (OS)，Azure 安全中心将建议对其进行更新。  仅监视云服务 web 和在生产槽运行的辅助角色。
