@@ -1,6 +1,6 @@
 ---
-title: "设置源环境以便使用 Azure Site Recovery 从 VMware 复制到 Azure | Microsoft Docs"
-description: "本文介绍如何设置本地环境，以便使用 Azure Site Recovery 将 VMware VM 复制到 Azure。"
+title: 设置源环境以便使用 Azure Site Recovery 从 VMware 复制到 Azure | Microsoft Docs
+description: 本文介绍如何设置本地环境，以便使用 Azure Site Recovery 将 VMware VM 复制到 Azure。
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811084"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>设置源环境以便从 VMware 复制到 Azure
 

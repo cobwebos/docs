@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939002"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>通过 Microsoft Azure 认证计划获得预先批准
 本文提供有关如何取得 Microsoft Azure 认证，从而将解决方案发布到 Azure Marketplace 并取得营销权益资格的说明。 有关 Microsoft Azure 认证计划及其优势的详细概述，请访问 [http://azure.com/certified](http://azure.com/certified)。

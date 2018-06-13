@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery 中的故障回复 | Microsoft Docs"
-description: "本文概述了各种类型的故障回复，以及在使用 Azure Site Recovery 服务故障回复到本地时要考虑的注意事项。"
+title: Azure Site Recovery 中的故障回复 | Microsoft Docs
+description: 本文概述了各种类型的故障回复，以及在使用 Azure Site Recovery 服务故障回复到本地时要考虑的注意事项。
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29803546"
 ---
 # <a name="overview-of-failback"></a>故障回复概述
 

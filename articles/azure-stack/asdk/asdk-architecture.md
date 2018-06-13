@@ -1,12 +1,12 @@
 ---
-title: "Azure 堆栈开发工具包体系结构 |Microsoft 文档"
-description: "介绍 Azure 堆栈开发工具包 (ASDK) 体系结构。"
+title: Azure 堆栈开发工具包体系结构 |Microsoft 文档
+description: 介绍 Azure 堆栈开发工具包 (ASDK) 体系结构。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29976409"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure 堆栈开发工具包体系结构
 Azure 堆栈开发工具包 (ASDK) 是单节点部署的 Azure 堆栈。 所有组件安装在单主机计算机上运行的虚拟机中。 
