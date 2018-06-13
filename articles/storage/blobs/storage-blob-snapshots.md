@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 存储中创建 Blob 的只读快照 | Microsoft Docs"
-description: "了解如何在指定时刻及时创建 blob 的快照以备份 blob 数据。 了解如何对快照计费，以及如何使用快照来最大程度地减少容量费用。"
+title: 在 Azure 存储中创建 Blob 的只读快照 | Microsoft Docs
+description: 了解如何在指定时刻及时创建 blob 的快照以备份 blob 数据。 了解如何对快照计费，以及如何使用快照来最大程度地减少容量费用。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852925"
 ---
 # <a name="create-a-blob-snapshot"></a>创建 Blob 快照
 

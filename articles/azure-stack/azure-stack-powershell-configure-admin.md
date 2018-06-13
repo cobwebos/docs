@@ -19,6 +19,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076464"
 ---
 # <a name="configure-the-azure-stack-powershell-environment"></a>配置 Azure 堆栈 PowerShell 环境
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for MySQL 概述 | Microsoft Docs"
-description: "Azure 门户中 Azure Database for MySQL 概述的帮助内容"
+title: Azure Database for MySQL 概述 | Microsoft Docs
+description: Azure 门户中 Azure Database for MySQL 概述的帮助内容
 services: mysql
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073888"
 ---
 # <a name="azure-database-for-mysql-documentation"></a>用于 MySQL 的 Azure 数据库文档
 

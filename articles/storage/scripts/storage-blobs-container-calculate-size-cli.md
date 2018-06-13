@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI 脚本示例 - 计算 blob 容器大小 | Microsoft Docs"
-description: "通过计算容器中 blob 的总大小来计算 Azure Blob 存储中容器的大小。"
+title: Azure CLI 脚本示例 - 计算 blob 容器大小 | Microsoft Docs
+description: 通过计算容器中 blob 的总大小来计算 Azure Blob 存储中容器的大小。
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29847101"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>计算 Blob 存储容器的大小
 

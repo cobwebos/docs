@@ -1,6 +1,6 @@
 ---
-title: "审核与日志记录 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "针对威胁建模工具中暴露的威胁采取的缓解措施"
+title: 审核与日志记录 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23044402"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>安全框架：审核与日志记录 | 缓解措施 
 | 产品/服务 | 文章 |

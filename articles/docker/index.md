@@ -1,6 +1,6 @@
 ---
-title: "Azure 上的 Docker"
-description: "在 Azure 上部署 Docker 并将其与 Azure 集成"
+title: Azure 上的 Docker
+description: 在 Azure 上部署 Docker 并将其与 Azure 集成
 services: multiple
 author: czeumault
 manager: carolz
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23069097"
 ---
 <div class="content">
    <h1>Azure 上的 Docker</h1>   

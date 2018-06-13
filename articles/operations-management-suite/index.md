@@ -1,11 +1,11 @@
 ---
-title: "Azure Operations Management Suite (OMS) 文档 - 教程 | Microsoft 文档"
-description: "Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。 本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。"
+title: Azure Operations Management Suite (OMS) 文档 - 教程 | Microsoft 文档
+description: Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。 本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。
 services: operations-management-suite
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: operations-management-suite
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23071205"
 ---
 # <a name="what-is-operations-management-suite-oms"></a>什么是 Operations Management Suite (OMS)？
 Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。  由于 OMS 作为基于云的服务实现，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。  将自动交付新增功能，从而节省持续维护和升级成本。

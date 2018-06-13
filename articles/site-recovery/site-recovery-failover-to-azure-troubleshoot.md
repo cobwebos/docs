@@ -1,12 +1,12 @@
 ---
-title: "对故障转移到 Azure 的故障进行排除 | Microsoft 文档"
-description: "本指南介绍如何解决在故障转移到 Azure 中的常见错误"
+title: 对故障转移到 Azure 的故障进行排除 | Microsoft 文档
+description: 本指南介绍如何解决在故障转移到 Azure 中的常见错误
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874353"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>解决从虚拟机到 Azure 的故障转移时出现的错误
 在执行从虚拟机到 Azure 的故障转移时，可能会收到以下错误之一。 若要解决错误，请为每个错误条件使用所述步骤。

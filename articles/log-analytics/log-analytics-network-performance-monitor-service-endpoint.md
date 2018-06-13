@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30240528"
 ---
 # <a name="service-endpoint-monitor"></a>服务终结点监视器
 
@@ -95,11 +96,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 观察应用程序响应时间与网络延迟之间的相关性，确定应用程序性能差是由于网络问题，还是由于应用程序提供商一端出现某种问题。 
 
-* **应用程序问题：**如果响应时间出现峰值，但网络延迟保持一致，则表示网络正常，问题可能是由于应用程序端的问题导致的。 
+* **应用程序问题：** 如果响应时间出现峰值，但网络延迟保持一致，则表示网络正常，问题可能是由于应用程序端的问题导致的。 
 
     ![服务终结点监视器应用程序问题](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
 
-* **网络问题：**如果出现响应时间峰值的同时，网络延迟也出现了相应的峰值，则表示响应时间增大可能是由于网络延迟增大。 
+* **网络问题：** 如果出现响应时间峰值的同时，网络延迟也出现了相应的峰值，则表示响应时间增大可能是由于网络延迟增大。 
 
     ![服务终结点监视器网络问题](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
 

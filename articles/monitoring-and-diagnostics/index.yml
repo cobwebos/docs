@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure Monitor 文档"
+title: Azure Monitor 文档
 metadata:
-  title: "Azure Monitor 文档 - 教程和 API 参考 | Microsoft Docs"
-  description: "Azure Monitor 是 Microsoft Azure 总体监视解决方案的一部分。 借助 Azure Monitor 可以跟踪性能、保持安全性和确定趋势。 使用快速入门和教程了解如何执行审核、创建警报以及存档数据。"
+  title: Azure Monitor 文档 - 教程和 API 参考 | Microsoft Docs
+  description: Azure Monitor 是 Microsoft Azure 总体监视解决方案的一部分。 借助 Azure Monitor 可以跟踪性能、保持安全性和确定趋势。 使用快速入门和教程了解如何执行审核、创建警报以及存档数据。
   services: monitoring-and-diagnostics
   author: czeumault
   manager: carolz
@@ -18,60 +18,61 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 10/11/2017
+  ms.locfileid: "23070729"
 abstract:
-  description: "Azure Monitor 是 Microsoft Azure 总体监视解决方案的一部分。 借助 Azure Monitor 可以跟踪性能、保持安全性和确定趋势。 使用快速入门和教程了解如何执行审核、创建警报以及存档数据。"
+  description: Azure Monitor 是 Microsoft Azure 总体监视解决方案的一部分。 借助 Azure Monitor 可以跟踪性能、保持安全性和确定趋势。 使用快速入门和教程了解如何执行审核、创建警报以及存档数据。
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解当 Azure 应用程序中出现特定的状况时如何接收通知。"
+    text: 了解当 Azure 应用程序中出现特定的状况时如何接收通知。
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/media/common/Chart.svg
-      text: "监控指标"
+      text: 监控指标
       href: monitor-quick-resource-metric-alert-portal
     - image:
         src: https://docs.microsoft.com/media/common/i_alert.svg
-      text: "订阅审核和警报"
+      text: 订阅审核和警报
       href: monitor-quick-audit-notify-action-in-subscription
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何自动缩放和存档监视数据。"
+    text: 了解如何自动缩放和存档监视数据。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"monitor-tutorial-autoscale-performance-schedule\">根据计划或应用程序性能自动缩放</a>"
-    - html: "<a href=\"monitor-tutorial-archive-monitoring-data\">存档监视数据</a>"
-- title: "免费 Pluralsight 视频培训"
+    - html: <a href="monitor-tutorial-autoscale-performance-schedule">根据计划或应用程序性能自动缩放</a>
+    - html: <a href="monitor-tutorial-archive-monitoring-data">存档监视数据</a>
+- title: 免费 Pluralsight 视频培训
   items:
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "IaaS 监视入门"
+    - title: IaaS 监视入门
       href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
-    - title: "在 Microsoft Azure 上管理基础结构"
+    - title: 在 Microsoft Azure 上管理基础结构
       href: https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started
-- title: "引用"
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "命令行"
+    - title: 命令行
       html: <p><a href="/cli/azure/monitor?view=azure-cli-latest">Azure CLI</a></p><p><a href="/powershell/module/azurerm.insights">Azure PowerShell</a></p>
     - title: REST
       html: <p><a href="/rest/api/monitor/">REST</a></p>
-    - title: "监视"
-      html: "<p><a href=\"monitoring-supported-metrics\">支持的指标</a></p><p><a href=\"monitoring-diagnostic-logs-schema\">诊断日志服务、类别和架构</a></p><p><a href=\"monitoring-activity-log-schema\">活动日志事件架构</a></p>"
-    - title: "诊断"
-      html: "<p><a href=\"azure-diagnostics-schema\">Azure 诊断扩展架构</a></p>"
+    - title: 监视
+      html: <p><a href="monitoring-supported-metrics">支持的指标</a></p><p><a href="monitoring-diagnostic-logs-schema">诊断日志服务、类别和架构</a></p><p><a href="monitoring-activity-log-schema">活动日志事件架构</a></p>
+    - title: 诊断
+      html: <p><a href="azure-diagnostics-schema">Azure 诊断扩展架构</a></p>

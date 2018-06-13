@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212062"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。

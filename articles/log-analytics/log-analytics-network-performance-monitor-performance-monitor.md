@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30241439"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>网络性能监视器解决方案：性能监视
 

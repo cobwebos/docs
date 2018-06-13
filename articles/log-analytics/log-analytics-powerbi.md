@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30236142"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>将 Azure Log Analytics 数据导入 Power BI
 

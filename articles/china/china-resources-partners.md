@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30230815"
 ---
 # <a name="azure-china-21vianet-partners"></a>Azure 中国世纪互联合作伙伴
 本页根据具体的需求，提供世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）合作伙伴的各个联系点。

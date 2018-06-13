@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 将 VMware VM 或物理服务器复制到辅助 VMware 站点时的支持矩阵 | Microsoft Docs"
-description: "汇总了对通过 Azure Site Recovery 将 VMware/物理服务器复制到辅助站点的支持"
+title: 使用 Azure Site Recovery 将 VMware VM 或物理服务器复制到辅助 VMware 站点时的支持矩阵 | Microsoft Docs
+description: 汇总了对通过 Azure Site Recovery 将 VMware/物理服务器复制到辅助站点的支持
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854299"
 ---
 # <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 或物理服务器复制到辅助站点时的支持矩阵
 
