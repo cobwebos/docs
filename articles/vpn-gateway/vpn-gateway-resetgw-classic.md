@@ -1,11 +1,11 @@
 ---
-title: "重置 Azure VPN 网关以重建 IPsec 隧道 | Microsoft Docs"
-description: "本文逐步讲解如何通过重置 Azure VPN 网关来重建 IPsec 隧道。 本文适用于经典和 Resource Manager 部署模型中的 VPN 网关。"
+title: 重置 Azure VPN 网关以重建 IPsec 隧道 | Microsoft Docs
+description: 本文逐步讲解如何通过重置 Azure VPN 网关来重建 IPsec 隧道。 本文适用于经典和 Resource Manager 部署模型中的 VPN 网关。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 79d77cb8-d175-4273-93ac-712d7d45b1fe
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23125815"
 ---
 # <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 

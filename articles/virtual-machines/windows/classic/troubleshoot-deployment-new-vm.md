@@ -1,11 +1,11 @@
 ---
-title: "排查 Windows VM 经典部署问题 | Microsoft Docs"
-description: "排查在 Azure 中新建 Windows 虚拟机时遇到的经典部署问题"
+title: 排查 Windows VM 经典部署问题 | Microsoft Docs
+description: 排查在 Azure 中新建 Windows 虚拟机时遇到的经典部署问题
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: JiangChen79
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 9f01d237-ba39-4c32-b72d-18f5f505d43a
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24056622"
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-windows-virtual-machine-in-azure"></a>排查在 Azure 中新建 Windows 虚拟机时遇到的经典部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-selectors-include.md)]
@@ -45,9 +46,9 @@ Y：如果 OS 是通用的 Windows，并且是使用通用设置上传和/或捕
 
 **上载错误：**
 
-**N<sup>1</sup>：**如果 OS 是通用的 Windows，但是以专用设置上载的，则会发生预配超时错误，并且 VM 会卡在 OOBE 屏幕上。
+**N<sup>1</sup>：** 如果 OS 是通用的 Windows，但是以专用设置上载的，则会发生预配超时错误，并且 VM 会卡在 OOBE 屏幕上。
 
-**N<sup>2</sup>：**如果 OS 是专用的 Windows，但是以通用设置上传的，则会发生预配失败错误，并且 VM 会卡在 OOBE 屏幕上，因为新 VM 是以原始计算机名称、用户名和密码运行的。
+**N<sup>2</sup>：** 如果 OS 是专用的 Windows，但是以通用设置上传的，则会发生预配失败错误，并且 VM 会卡在 OOBE 屏幕上，因为新 VM 是以原始计算机名称、用户名和密码运行的。
 
 **解决方法：**
 
@@ -55,9 +56,9 @@ Y：如果 OS 是通用的 Windows，并且是使用通用设置上传和/或捕
 
 **捕获错误：**
 
-**N<sup>3</sup>：**如果 OS 是通用的 Windows，但是以专用设置捕获的，则会发生预配超时错误，因为标记为通用的原始 VM 不可用。
+**N<sup>3</sup>：** 如果 OS 是通用的 Windows，但是以专用设置捕获的，则会发生预配超时错误，因为标记为通用的原始 VM 不可用。
 
-**N<sup>4</sup>：**如果 OS 是专用的 Windows，但是以专用设置捕获的，则会发生预配失败错误，因为新 VM 是以原始计算机名称、用户名和密码运行的。 此外，标记为专用的原始 VM 不可用。
+**N<sup>4</sup>：** 如果 OS 是专用的 Windows，但是以专用设置捕获的，则会发生预配失败错误，因为新 VM 是以原始计算机名称、用户名和密码运行的。 此外，标记为专用的原始 VM 不可用。
 
 **解决方法：**
 
@@ -68,7 +69,7 @@ Y：如果 OS 是通用的 Windows，并且是使用通用设置上传和/或捕
 
 可能遇到因两种情况造成的错误，取决于用于创建新 VM 的云服务的条件约束。
 
-**原因 1：**云服务已固定到特定群集，或者链接到地缘组，因而固定到所设计的特定群集。 因此，该地缘组中新的计算资源请求将于托管现有资源的相同群集中尝试发出。 但是，同一群集可能不支持请求的 VM 大小，或者可用空间不足，导致分配错误。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
+**原因 1：** 云服务已固定到特定群集，或者链接到地缘组，因而固定到所设计的特定群集。 因此，该地缘组中新的计算资源请求将于托管现有资源的相同群集中尝试发出。 但是，同一群集可能不支持请求的 VM 大小，或者可用空间不足，导致分配错误。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
 
 **解决方法 1：**
 
@@ -81,7 +82,7 @@ Y：如果 OS 是通用的 Windows，并且是使用通用设置上传和/或捕
 > 
 > 
 
-**原因 2：**云服务已经与链接到地缘组的虚拟网络关联，因而固定到所设计的特定群集。 该地缘组中的所有新计算资源请求将于托管现有资源的相同群集中尝试发出。 但是，同一群集可能不支持请求的 VM 大小，或者可用空间不足，导致分配错误。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
+**原因 2：** 云服务已经与链接到地缘组的虚拟网络关联，因而固定到所设计的特定群集。 该地缘组中的所有新计算资源请求将于托管现有资源的相同群集中尝试发出。 但是，同一群集可能不支持请求的 VM 大小，或者可用空间不足，导致分配错误。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
 
 **解决方法 2：**
 

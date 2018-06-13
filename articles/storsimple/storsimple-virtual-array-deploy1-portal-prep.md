@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 虚拟阵列的门户准备工作 | Microsoft 文档"
-description: "此为部署 StorSimple 虚拟阵列的第一个教程，介绍如何准备 Azure 门户"
+title: StorSimple 虚拟阵列的门户准备工作 | Microsoft 文档
+description: 此为部署 StorSimple 虚拟阵列的第一个教程，介绍如何准备 Azure 门户
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24526547"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
 

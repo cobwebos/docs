@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions 运行时安装 | Microsoft Docs"
-description: "如何安装 Azure Functions 运行时预览版 2"
+title: Azure Functions 运行时安装 | Microsoft Docs
+description: 如何安装 Azure Functions 运行时预览版 2
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/05/2017
+ms.locfileid: "26290651"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>安装 Azure Functions 运行时预览版 2
 

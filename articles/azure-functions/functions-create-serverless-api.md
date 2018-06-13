@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Functions 创建无服务器 API | Microsoft Docs"
-description: "如何使用 Azure Functions 创建无服务器 API"
+title: 使用 Azure Functions 创建无服务器 API | Microsoft Docs
+description: 如何使用 Azure Functions 创建无服务器 API
 services: functions
 author: mattchenderson
 manager: cfowler
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24811594"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>使用 Azure Functions 创建无服务器 API
 

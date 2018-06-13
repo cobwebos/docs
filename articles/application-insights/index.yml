@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Application Insights 文档"
+title: Application Insights 文档
 metadata:
-  title: "Application Insights 文档 - 教程和 API 参考 | Microsoft Docs"
-  description: "Application Insights 是可扩展的应用程序性能管理 (APM) 服务，可让 Web 开发人员在多个平台上生成和管理应用。 使用快速入门、教程和参考文档了解如何检测及诊断问题，并了解 Web 应用与服务的使用情况。"
+  title: Application Insights 文档 - 教程和 API 参考 | Microsoft Docs
+  description: Application Insights 是可扩展的应用程序性能管理 (APM) 服务，可让 Web 开发人员在多个平台上生成和管理应用。 使用快速入门、教程和参考文档了解如何检测及诊断问题，并了解 Web 应用与服务的使用情况。
   services: application-insights
   author: czeumault
   manager: carolz
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 10/25/2017
+  ms.locfileid: "23500688"
 abstract:
-  description: "Application Insights 是可扩展的应用程序性能管理 (APM) 服务，可让 Web 开发人员在多个平台上生成和管理应用。 使用快速入门、教程和参考文档了解如何检测及诊断问题，并了解 Web 应用与服务的使用情况。"
+  description: Application Insights 是可扩展的应用程序性能管理 (APM) 服务，可让 Web 开发人员在多个平台上生成和管理应用。 使用快速入门、教程和参考文档了解如何检测及诊断问题，并了解 Web 应用与服务的使用情况。
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解如何使用 Azure Application Insights 开始监视应用程序。"
+    text: 了解如何使用 Azure Application Insights 开始监视应用程序。
   - type: list
     style: icon48
     items:
@@ -46,47 +47,47 @@ sections:
       href: app-insights-java-quick-start
     - image:
         src: /azure/application-insights/media/index/mobile-center.png
-      text: "移动电话"
+      text: 移动电话
       href: app-insights-mobile-center-quickstart
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何持续改进 Web 应用程序的性能和用途。"
+    text: 了解如何持续改进 Web 应用程序的性能和用途。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"app-insights-tutorial-runtime-exceptions\">查找和诊断运行时异常</a>"
-    - html: "<a href=\"app-insights-tutorial-performance\">查找和诊断性能问题</a>"
-    - html: "<a href=\"app-insights-tutorial-alert\">监视应用程序运行状况并根据情况发出警报</a>"
-    - html: "<a href=\"app-insights-tutorial-users\">分析客户使用情况和信息</a>"
-    - html: "<a href=\"app-insights-tutorial-dashboards\">创建自定义 KPI 仪表板</a>"
-- title: "免费 Pluralsight 视频培训"
+    - html: <a href="app-insights-tutorial-runtime-exceptions">查找和诊断运行时异常</a>
+    - html: <a href="app-insights-tutorial-performance">查找和诊断性能问题</a>
+    - html: <a href="app-insights-tutorial-alert">监视应用程序运行状况并根据情况发出警报</a>
+    - html: <a href="app-insights-tutorial-users">分析客户使用情况和信息</a>
+    - html: <a href="app-insights-tutorial-dashboards">创建自定义 KPI 仪表板</a>
+- title: 免费 Pluralsight 视频培训
   items:
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "在 Azure 上使用 .NET 进行开发"
+    - title: 在 Azure 上使用 .NET 进行开发
       href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
-    - title: "在 Azure 上使用 Node.js 进行开发"
+    - title: 在 Azure 上使用 Node.js 进行开发
       href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
-- title: "引用"
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "语言"
-      html: "<p><a href=\"https://docs.loganalytics.io/\">分析</a></p><p><a href=\"/dotnet/api/microsoft.applicationinsights\">.NET</a></p><p><a href=\"/java/api/com.microsoft.applicationinsights\">Java</a></p><p><a href=\"https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md\">JavaScript</a></p><p><a href=\"https://dev.applicationinsights.io/\">数据访问 API</a></p>"
-    - title: "数据模型"
-      html: "<p><a href=\"application-insights-data-model-request-telemetry\">请求</a></p><p><a href=\"application-insights-data-model-dependency-telemetry\">依赖项</a></p><p><a href=\"application-insights-data-model-exception-telemetry\">异常</a></p><p><a href=\"application-insights-data-model-trace-telemetry\">跟踪</a></p><p><a href=\"application-insights-data-model-event-telemetry\">事件</a></p><p><a href=\"application-insights-data-model-metric-telemetry\">指标</a></p><p><a href=\"application-insights-data-model-context\">上下文</a></p>"
-    - title: "遥测关联"
-      html: "<p><a href=\"application-insights-correlation\">遥测关联</a></p>"
-    - title: "代码示例"
-      html: "<p><a href=\"https://azure.microsoft.com/en-us/resources/samples/?service=application-insights\">代码示例</a></p>"
+    - title: 语言
+      html: <p><a href="https://docs.loganalytics.io/">分析</a></p><p><a href="/dotnet/api/microsoft.applicationinsights">.NET</a></p><p><a href="/java/api/com.microsoft.applicationinsights">Java</a></p><p><a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md">JavaScript</a></p><p><a href="https://dev.applicationinsights.io/">数据访问 API</a></p>
+    - title: 数据模型
+      html: <p><a href="application-insights-data-model-request-telemetry">请求</a></p><p><a href="application-insights-data-model-dependency-telemetry">依赖项</a></p><p><a href="application-insights-data-model-exception-telemetry">异常</a></p><p><a href="application-insights-data-model-trace-telemetry">跟踪</a></p><p><a href="application-insights-data-model-event-telemetry">事件</a></p><p><a href="application-insights-data-model-metric-telemetry">指标</a></p><p><a href="application-insights-data-model-context">上下文</a></p>
+    - title: 遥测关联
+      html: <p><a href="application-insights-correlation">遥测关联</a></p>
+    - title: 代码示例
+      html: <p><a href="https://azure.microsoft.com/en-us/resources/samples/?service=application-insights">代码示例</a></p>

@@ -1,11 +1,11 @@
 ---
-title: "在 BizTalk 服务中创建和还原备份 | Microsoft Docs"
-description: "BizTalk 服务包括备份和还原。 了解如何创建和还原备份，并确定备份内容。 MABS, WABS"
+title: 在 BizTalk 服务中创建和还原备份 | Microsoft Docs
+description: BizTalk 服务包括备份和还原。 了解如何创建和还原备份，并确定备份内容。 MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 59f91173-4683-48df-abd5-41262bfce6df
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102335"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk 服务：备份和还原
 

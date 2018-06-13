@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/07/2017
+ms.locfileid: "26357661"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>通过 ExpressRoute Microsoft 对等互连配置站点到站点的 VPN
 

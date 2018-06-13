@@ -1,12 +1,12 @@
 ---
-title: "Azure PowerShell 脚本示例 - 根据前缀删除容器 | Microsoft Docs"
-description: "根据容器名称前缀删除 Azure 存储 blob 容器。"
+title: Azure PowerShell 脚本示例 - 根据前缀删除容器 | Microsoft Docs
+description: 根据容器名称前缀删除 Azure 存储 blob 容器。
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/29/2017
+ms.locfileid: "25983892"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>根据容器名称前缀删除容器
 

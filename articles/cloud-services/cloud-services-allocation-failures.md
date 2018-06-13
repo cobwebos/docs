@@ -1,11 +1,11 @@
 ---
-title: "排除云服务分配故障 | Microsoft Docs"
-description: "对在 Azure 中部署云服务时的分配失败进行故障排除"
+title: 排除云服务分配故障 | Microsoft Docs
+description: 对在 Azure 中部署云服务时的分配失败进行故障排除
 services: azure-service-management, cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23984110"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>对在 Azure 中部署云服务时的分配失败进行故障排除
 ## <a name="summary"></a>摘要

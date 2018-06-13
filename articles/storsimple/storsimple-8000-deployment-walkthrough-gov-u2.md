@@ -1,12 +1,12 @@
 ---
-title: "在政府门户中部署 StorSimple 8000 系列设备 | Microsoft Docs"
-description: "介绍在 Azure 政府门户中部署 StorSimple 8000 系列设备（运行 Update 3 及更高版本）和服务的步骤和最佳做法。"
+title: 在政府门户中部署 StorSimple 8000 系列设备 | Microsoft Docs
+description: 介绍在 Azure 政府门户中部署 StorSimple 8000 系列设备（运行 Update 3 及更高版本）和服务的步骤和最佳做法。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108745"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>在政府门户中部署本地 StorSimple 设备
 

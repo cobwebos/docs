@@ -1,6 +1,6 @@
 ---
-title: "Azure 安全概述 | Microsoft 文档"
-description: "Azure.com 上的 Microsoft Azure 安全信息站点针对 Azure 安全问题提供了技术解答。"
+title: Azure 安全概述 | Microsoft 文档
+description: Azure.com 上的 Microsoft Azure 安全信息站点针对 Azure 安全问题提供了技术解答。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25542140"
 ---
 # <a name="azure-security-overview"></a>Azure 安全概述
 Azure.com 上的 Microsoft Azure 安全信息站点针对 Azure 安全问题提供了技术解答。 如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/default.aspx)。

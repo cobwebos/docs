@@ -1,11 +1,11 @@
 ---
-title: "如何区分委派权限和应用程序权限之间的差异 | Microsoft Docs"
-description: "了解委派权限和应用程序权限、客户端使用它们的方式以及使用 Azure AD 开发的应用程序的资源公开它们的方式"
+title: 如何区分委派权限和应用程序权限之间的差异 | Microsoft Docs
+description: 了解委派权限和应用程序权限、客户端使用它们的方式以及使用 Azure AD 开发的应用程序的资源公开它们的方式
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26612882"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>如何区分委派权限和应用程序权限之间的差异
 

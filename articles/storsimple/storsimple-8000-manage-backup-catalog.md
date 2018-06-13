@@ -1,12 +1,12 @@
 ---
-title: "管理 StorSimple 备份目录 | Microsoft Docs"
-description: "介绍如何使用 StorSimple 设备管理器服务的备份目录页列出、选择和删除备份集。"
+title: 管理 StorSimple 备份目录 | Microsoft Docs
+description: 介绍如何使用 StorSimple 设备管理器服务的备份目录页列出、选择和删除备份集。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108375"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>使用 StorSimple 设备管理器服务管理备份目录
 ## <a name="overview"></a>概述

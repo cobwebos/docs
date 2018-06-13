@@ -1,6 +1,6 @@
 ---
-title: "Azure 中国世纪互联信任云原则 | Microsoft Docs"
-description: "Microsoft Azure 中国世纪互联遵守国际和行业特定的合规标准，此外，还遵守中华人民共和国公安部管理的信息系统安全等级保护标准。"
+title: Azure 中国世纪互联信任云原则 | Microsoft Docs
+description: Microsoft Azure 中国世纪互联遵守国际和行业特定的合规标准，此外，还遵守中华人民共和国公安部管理的信息系统安全等级保护标准。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635183"
 ---
 # <a name="trust-cloud-principle"></a>信任云原则
 世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）遵守国际和行业特定的合规标准 ISO/IEC 20000 与 ISO/IEC 27001，此外，还遵守中华人民共和国公安部管理的信息系统安全等级保护标准：GB 18030 信息技术 — 中文编码字符集和受信任的云服务 (TCS) 认证。 

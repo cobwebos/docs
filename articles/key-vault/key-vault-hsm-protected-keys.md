@@ -1,8 +1,8 @@
 ---
-title: "如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥 | Microsoft Docs"
-description: "使用这篇文章可帮助你规划、生成然后传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。 也称为 BYOK 或自带密钥。"
+title: 如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥 | Microsoft Docs
+description: 使用这篇文章可帮助你规划、生成然后传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。 也称为 BYOK 或自带密钥。
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345105"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 ## <a name="introduction"></a>介绍
@@ -468,4 +469,4 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 如果上传成功，会看到刚添加的密钥的属性。
 
 ## <a name="next-steps"></a>后续步骤
-现在可以在密钥保管库中使用此受 HSM 保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库入门](key-vault-get-started.md)中的**如果要使用硬件安全模块 (HSM)**部分。
+现在可以在密钥保管库中使用此受 HSM 保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库入门](key-vault-get-started.md)中的**如果要使用硬件安全模块 (HSM)** 部分。

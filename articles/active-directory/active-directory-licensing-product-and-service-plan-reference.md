@@ -1,13 +1,13 @@
 ---
-title: "Azure Active Directory 中用于许可的产品名称和服务计划标识符 | Microsoft Docs"
-description: "用于在 Azure 门户、Office 365 门户、PowerShell 或 Microsoft Graph 中管理 Azure AD 许可的标识符映射"
+title: Azure Active Directory 中用于许可的产品名称和服务计划标识符 | Microsoft Docs
+description: 用于在 Azure 门户、Office 365 门户、PowerShell 或 Microsoft Graph 中管理 Azure AD 许可的标识符映射
 services: active-directory
-keywords: "Azure Active Directory 许可服务计划"
-documentationcenter: 
+keywords: Azure Active Directory 许可服务计划
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26609323"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>用于许可的产品名称和服务计划标识符
 
