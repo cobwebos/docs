@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32189745"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>部署本地 StorSimple 设备（Update 3 及更高版本）
 

@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31790264"
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>谁在使用 Azure 搜索：案例研究和客户案例
 了解以下组织如何通过将丰富的 Azure 搜索体验集成到其联机应用程序来开展其业务。

@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31805146"
 ---
 ## <a name="scenario"></a>场景
 为了更好地说明如何创建 UDR，本文档使用以下方案：

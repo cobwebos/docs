@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32191309"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
 
@@ -76,7 +77,7 @@ VPN 网关连接涉及以下组件：
 
 2. 在两个节点上，为端口 5001 启用防火墙例外。
 
-    **Windows：**以管理员身份运行以下命令：
+    **Windows：** 以管理员身份运行以下命令：
 
     ```CMD
     netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
@@ -88,7 +89,7 @@ VPN 网关连接涉及以下组件：
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
     </br>
-    **Azure Linux：**Azure Linux 映像都具有限制性较低的防火墙。 如果有应用程序在侦听某个端口，则流量会被允许通过。 受保护的自定义映像可能需要显式打开端口。 常见的 Linux 操作系统层防火墙包括 `iptables`、`ufw` 或 `firewalld`。
+    **Azure Linux：** Azure Linux 映像都具有限制性较低的防火墙。 如果有应用程序在侦听某个端口，则流量会被允许通过。 受保护的自定义映像可能需要显式打开端口。 常见的 Linux 操作系统层防火墙包括 `iptables`、`ufw` 或 `firewalld`。
 
 3. 在服务器节点上，更改为从中提取 iperf3.exe 的目录。 然后，在服务器模式下运行 iPerf 并将其设置为侦听端口 5001，如以下命令所示：
 
