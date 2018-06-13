@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854183"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -140,12 +141,12 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 是的。 附加到通过资源管理器部署模型部署的 VM 的所有网络接口 (NIC) 必须连接到 VNet。 可以选择性地将通过经典部署模型部署的 VM 连接到 VNet。
 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>可向 VM 分配哪些不同类型的 IP 地址？
-* **专用：**分配到每个 VM 中的每个 NIC。 使用静态或动态方法分配地址。 应该分配 VNet 子网设置中指定的范围内的专用 IP 地址。 将为通过经典部署模型部署的资源分配专用 IP 地址，即使它们未连接到 VNet。 分配方法的行为根据资源是通过资源管理器还是通过经典部署模型部署的而不同： 
+* **专用：** 分配到每个 VM 中的每个 NIC。 使用静态或动态方法分配地址。 应该分配 VNet 子网设置中指定的范围内的专用 IP 地址。 将为通过经典部署模型部署的资源分配专用 IP 地址，即使它们未连接到 VNet。 分配方法的行为根据资源是通过资源管理器还是通过经典部署模型部署的而不同： 
 
   - **资源管理器**：使用动态或静态方法分配的专用 IP 地址保持分配给虚拟机（资源管理器），直到该资源被删除。 差别在于，使用静态方法时由你来选择地址，而使用动态方法时由 Azure 来选择地址。 
   - **经典**：如果虚拟机（经典）VM 在处于停止（解除分配）状态后重新启动，则使用动态方法分配的的专用 IP 地址可能会变化。 如果需要确保通过经典部署模型部署的资源的专用 IP 地址永远不会变化，请使用静态方法分配专用 IP 地址。
 
-* **公共：**选择性地分配给附加到通过 Azure 资源管理器部署模型部署的 VM 的 NIC。 可以使用静态或动态分配方法分配地址。 通过经典部署模型部署的所有 VM 和云服务角色实例位于分配有*动态*公共虚拟 IP (VIP) 地址的云服务中。 可以选择性地将某个公共*静态* IP 地址（称为[保留 IP 地址](virtual-networks-reserved-public-ip.md)）分配为 VIP。 可将公共 IP 地址分配给通过经典部署模型部署的单个 VM 或云服务角色实例。 这些地址称为[实例级公共 IP (ILPIP](virtual-networks-instance-level-public-ip.md) 地址，可动态分配。
+* **公共：** 选择性地分配给附加到通过 Azure 资源管理器部署模型部署的 VM 的 NIC。 可以使用静态或动态分配方法分配地址。 通过经典部署模型部署的所有 VM 和云服务角色实例位于分配有*动态*公共虚拟 IP (VIP) 地址的云服务中。 可以选择性地将某个公共*静态* IP 地址（称为[保留 IP 地址](virtual-networks-reserved-public-ip.md)）分配为 VIP。 可将公共 IP 地址分配给通过经典部署模型部署的单个 VM 或云服务角色实例。 这些地址称为[实例级公共 IP (ILPIP](virtual-networks-instance-level-public-ip.md) 地址，可动态分配。
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>是否可为以后创建的 VM 保留专用 IP 地址？
 不会。 无法保留专用 IP 地址。 如果某个专用 IP 地址可用，则 DHCP 服务器会将其分配给某个 VM 或角色实例。 该 VM 可能是你希望将专用 IP 地址分配到的 VM，也可能不是。 但是，可将已创建的 VM 的专用 IP 地址更改为任何可用的专用 IP 地址。

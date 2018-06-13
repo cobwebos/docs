@@ -1,12 +1,12 @@
 ---
-title: "用于排查 StorSimple 8000 设备问题的诊断工具 | Microsoft Docs"
-description: "介绍 StorSimple 设备模式，并说明如何使用 Windows PowerShell for StorSimple 更改设备模式。"
+title: 用于排查 StorSimple 8000 设备问题的诊断工具 | Microsoft Docs
+description: 介绍 StorSimple 设备模式，并说明如何使用 Windows PowerShell for StorSimple 更改设备模式。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27744106"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
 

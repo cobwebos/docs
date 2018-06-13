@@ -75,6 +75,10 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: 重新启动 VM
               href: devtest-lab-restart-vm.md
+            - name: 调整 VM 的大小
+              href: devtest-lab-resize-vm.md
+            - name: 重新部署 VM
+              href: devtest-lab-redeploy-vm.md
         - name: 在实验室中使用环境
           items:
             - name: 创建环境
@@ -91,7 +95,7 @@
               href: devtest-lab-set-lab-policy.md
             - name: 配置成本管理
               href: devtest-lab-configure-cost-management.md
-            - name: 配置 Azure Marketplace 映像
+            - name: 配置 Azure 市场映像
               href: devtest-lab-configure-marketplace-images.md
             - name: 启用许可的映像
               href: devtest-lab-enable-licensed-images.md

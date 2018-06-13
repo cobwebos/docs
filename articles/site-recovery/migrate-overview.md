@@ -1,6 +1,6 @@
 ---
-title: "关于 Azure Site Recovery 中的迁移 | Microsoft Docs"
-description: "本文介绍如何使用 Azure Site Recovery 服务迁移本地和 Azure VM。"
+title: 关于 Azure Site Recovery 中的迁移 | Microsoft Docs
+description: 本文介绍如何使用 Azure Site Recovery 服务迁移本地和 Azure VM。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811184"
 ---
 # <a name="about-migration"></a>关于迁移
 

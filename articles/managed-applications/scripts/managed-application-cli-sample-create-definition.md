@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 脚本示例 - 创建托管应用程序定义 | Microsoft Docs"
-description: "Azure CLI 脚本示例 - 创建托管应用程序定义"
+title: Azure CLI 脚本示例 - 创建托管应用程序定义 | Microsoft Docs
+description: Azure CLI 脚本示例 - 创建托管应用程序定义
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29848077"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>使用 Azure CLI 创建托管应用程序定义
 

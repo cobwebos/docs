@@ -1,23 +1,24 @@
 ---
-title: "选择 Azure 混合标识解决方案 | Microsoft Docs"
-description: "大致了解可用的混合标识解决方案和建议，以便为组织做出最明智的标识监管决策。"
-keywords: 
+title: 选择 Azure 混合标识解决方案 | Microsoft Docs
+description: 大致了解可用的混合标识解决方案和建议，以便为组织做出最明智的标识监管决策。
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
 ms.date: 03/02/2018
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
 ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
 ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29800731"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft 混合标识解决方案
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 混合标识解决方案使你能够将本地目录与 Azure AD 同步，同时仍可在本地管理用户。 如果计划将本地 Windows Server Active Directory 与 Azure AD 进行同步，首先需要决定是使用已同步的标识还是使用联合标识。 通过已同步标识和可选密码哈希，你的用户能够使用相同密码访问本地和基于云的组织资源。 对于更高级的方案要求，如单一登录 (SSO) 或本地 MFA，需要将 Active Directory 联合身份验证服务 (AD FS) 部署到联合标识。 
