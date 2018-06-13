@@ -1,25 +1,26 @@
 ---
-title: "在 Azure 中部署 OpenShift Origin | Microsoft Docs"
-description: "在 Azure 中部署 OpenShift Origin。"
+title: 在 Azure 中部署 OpenShift Origin | Microsoft Docs
+description: 在 Azure 中部署 OpenShift Origin。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
 ms.openlocfilehash: f7a668f30d7acb1ea14fe9fd8921066d40a6669b
 ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29123113"
 ---
 # <a name="deploy-openshift-origin-in-azure"></a>在 Azure 中部署 OpenShift Origin
 

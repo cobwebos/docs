@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Azure StorSimple 和云解决方案计划概述 | Microsoft Docs"
-description: "StorSimple 及适用于 StorSimple 的 CSP 合作伙伴概述。"
+title: Microsoft Azure StorSimple 和云解决方案计划概述 | Microsoft Docs
+description: StorSimple 及适用于 StorSimple 的 CSP 合作伙伴概述。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26367669"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>什么是适用于云解决方案提供商的 StorSimple 计划？
 
