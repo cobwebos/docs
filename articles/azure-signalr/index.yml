@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/08/2018
+  ms.locfileid: "33867277"
 abstract:
   description: Azure SignalR 服务是一项 Azure 托管服务，可帮助开发者轻松开发具有实时功能的 Web 应用程序。 此服务基于 ASP.NET Core，后者是一个开源库，可以简化将实时 Web 功能添加到应用程序这一过程。
 sections:

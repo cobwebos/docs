@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937825"
 ---
 # <a name="validate-azure-identity"></a>验证 Azure 标识 
 使用 Azure 堆栈准备情况检查器工具 (AzsReadinessChecker) 来验证 Azure Active Directory (Azure AD) 是可以用于 Azure 堆栈。 在开始 Azure 堆栈部署之前，请验证您的 Azure 标识解决方案。  

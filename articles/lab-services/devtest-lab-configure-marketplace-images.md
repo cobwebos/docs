@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781606"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置 Azure Marketplace 映像设置
 开发测试实验室支持基于 Azure Marketplace 映像创建 VM，具体取决于配置的 Azure Marketplace 映像在实验室中的使用方式。 本文演示如何指定在实验室中创建 VM 时可使用哪些 Azure Marketplace 映像（如果有的话）。 这可确保团队仅有权访问所需的 Marketplace 映像。 

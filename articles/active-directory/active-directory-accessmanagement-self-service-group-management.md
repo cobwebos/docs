@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33762007"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>为自助服务组管理设置 Azure Active Directory
 用户可以在 Azure Active Directory (Azure AD) 中创建和管理其自己的安全组或 Office 365 组。 用户也可以请求安全组或 Office 365 组成员身份，组所有者可以批准或拒绝成员身份。 可以将组成员身份的日常控制委托给了解该成员身份的业务上下文的人员。 自助组管理功能仅适用于安全组和 Office 365 组，而不适用于已启用邮件的安全组或通讯组列表。

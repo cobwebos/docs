@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32776471"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>调查 Azure 安全中心的事件和警报（预览版）
 本文档介绍如何使用 Azure 安全中心的调查功能调查安全事件和警报。

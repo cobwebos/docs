@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31427333"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>启动和停止 Azure 堆栈开发工具包 (ASDK)
 建议不要只需重新启动 ASDK 主机计算机。 相反，你应该按照本文章来正确关闭并重新启动 ASDK 服务中的过程。 

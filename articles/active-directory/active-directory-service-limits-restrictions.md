@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33759974"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Azure AD 服务限制和局限性
 本文介绍 Azure Active Directory (Azure AD) 服务的使用限制和其他服务限制。 如果正在查找 Microsoft Azure 服务限制全集，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。

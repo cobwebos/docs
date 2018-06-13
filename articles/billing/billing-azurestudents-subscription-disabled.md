@@ -20,6 +20,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203589"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>为何禁用 Azure for Students 订阅？如何重新激活它？
 
@@ -42,9 +43,9 @@ Azure for Students 帐户提供 100 美元的信用额度，以及 12 个月的�
 
 该表包含以下列：
 
-* **服务名称：**使用 Azure 信用额度的服务。
-* **服务资源：**所使用的服务的度量单位。
-* **花费：**服务所用的信用额度量（以美元 ($) 为单位）。
+* **服务名称：** 使用 Azure 信用额度的服务。
+* **服务资源：** 所使用的服务的度量单位。
+* **花费：** 服务所用的信用额度量（以美元 ($) 为单位）。
 
 
 ## <a name="your-credit-has-expired"></a>信用额度已过期

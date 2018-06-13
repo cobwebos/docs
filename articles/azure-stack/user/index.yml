@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: MT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/04/2018
+  ms.locfileid: "33205425"
 abstract:
   description: Azure Stack 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。 开发人员可以在 Azure Stack 上生成应用。 然后，可将这些应用部署到 Azure Stack 或 Azure，或者，可以生成利用 Azure Stack 云与 Azure 之间的连接的真正混合式应用。 使用快速入门和教程了解如何创建资源和部署应用。<br/><br/>如果你是 Azure Stack 操作员并想要管理基础结构和提供服务，请参阅<a href="/azure/azure-stack/">操作员文档</a>。<br/><br/>如果你是 Azure 堆栈操作员感中 Azure 堆栈开发工具包 (ASDK)，单节点部署的 Azure 堆栈，你可以下载和使用免费，请参阅我们<a href="/azure/azure-stack/asdk">ASDK 文档</a>。
 sections:

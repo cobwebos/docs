@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33883019"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>部署在 Azure 堆栈中的 Service Fabric 群集
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869999"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 本文档逐步讲解如何安装和配置 Azure AD Connect Health 代理。 可以从 [此处](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent)下载代理。

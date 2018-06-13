@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32775915"
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>将 Microsoft Advanced Threat Analytics 连接到 Azure 安全中心
 本文档可帮助配置 Microsoft Advanced Threat Analytics 和 Azure 安全中心之间的集成。

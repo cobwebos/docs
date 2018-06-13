@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895312"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 ## <a name="introduction"></a>介绍

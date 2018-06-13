@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894895"
 ---
 # <a name="identity-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的标识要求 
 ## <a name="pci-dss-requirement-8"></a>PCI DSS 要求 8

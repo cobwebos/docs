@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779462"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>教程：定义和评估安全策略
 可以通过安全中心使用安全策略来定义工作负荷的所需配置，确保用户遵守公司或法规方面的安全要求。 为 Azure 订阅定义策略并根据工作负荷类型或数据敏感性对其进行调整以后，即可通过安全中心获取计算、网络、SQL 和存储以及应用程序资源方面的安全建议。 在本教程中，将了解如何：

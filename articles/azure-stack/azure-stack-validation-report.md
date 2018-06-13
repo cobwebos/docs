@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937814"
 ---
 # <a name="azure-stack-validation-report"></a>Azure 堆栈验证报告
 使用 Azure 堆栈准备情况检查器工具运行支持的部署和维护 Azure 堆栈环境的验证。 该工具将写入.json 报表文件的验证结果。 报表显示整个详细和汇总数据和机密旋转上部署的 Azure 堆栈的先决条件的状态，对于现有的 Azure 堆栈部署。  

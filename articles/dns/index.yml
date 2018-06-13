@@ -20,6 +20,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/03/2018
+  ms.locfileid: "32773005"
 abstract:
   description: 了解如何使用 Azure DNS。 快速入门、教程、示例等介绍了如何设置和管理域名的 DNS 区域和记录。
 sections:

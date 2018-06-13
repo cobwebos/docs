@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33935558"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>导入 SOAP API 并将其转换为 REST
 

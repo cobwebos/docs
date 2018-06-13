@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781886"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>对 Azure 开发测试实验室中的虚拟机执行附加或分离数据磁盘操作
 [Azure 托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)管理与虚拟机数据磁盘关联的存储帐户。 用户将新数据磁盘附加到 VM，指定所需的磁盘的类型和大小，然后 Azure 会自动创建并管理磁盘。 数据磁盘可以从 VM 中分离，并且可以在以后重新附加到同一 VM 或附加到属于同一用户的其他 VM。

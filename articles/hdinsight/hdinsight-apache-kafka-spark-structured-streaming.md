@@ -10,13 +10,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: larryfr
-ms.openlocfilehash: bdb2369f81ae8aeeb0a57e092dc1af7d0a7ded8f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8c7c1b37102e94f00ac6077958952eb52b342668
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939240"
 ---
 # <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>教程：将 Spark 结构化流与 Kafka on HDInsight 配合使用
 
@@ -147,8 +148,8 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     | 订阅 | Azure 订阅 |
     | 资源组 | 包含资源的资源组。 |
     | Location | 创建资源时所在的 Azure 区域。 |
-    | Spark 群集名称 | Spark 群集的名称。 |
-    | Kafka 群集名称 | Kafka 群集的名称。 |
+    | Spark 群集名称 | Spark 群集的名称。 前六个字符必须与 Kafka 群集名称不同。 |
+    | Kafka 群集名称 | Kafka 群集的名称。 前六个字符必须与 Spark 群集名称不同。 |
     | 群集登录用户名 | 群集的管理员用户名。 |
     | 群集登录密码 | 群集的管理员用户密码。 |
     | SSH 用户名 | 要为群集创建的 SSH 用户。 |
