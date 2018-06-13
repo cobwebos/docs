@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线消息传送异常 | Microsoft Docs"
-description: "服务总线消息传送异常和建议的操作列表。"
+title: Azure 服务总线消息传送异常 | Microsoft Docs
+description: 服务总线消息传送异常和建议的操作列表。
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28930144"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服务总线消息传送异常
 本文列出了 Microsoft Azure 服务总线消息传送 API 生成的一些异常。 这些参考信息可随时更改，请不时返回查看更新内容。

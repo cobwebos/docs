@@ -1,11 +1,11 @@
 ---
-title: "通过 Azure 门户使用 Log Analytics 评估 Service Fabric 应用程序 | Microsoft 文档"
-description: "可以通过 Azure 门户使用 Log Analytics 中的 Service Fabric 解决方案评估 Service Fabric 应用程序、微服务、节点和群集的风险和运行状况。"
+title: 通过 Azure 门户使用 Log Analytics 评估 Service Fabric 应用程序 | Microsoft 文档
+description: 可以通过 Azure 门户使用 Log Analytics 中的 Service Fabric 解决方案评估 Service Fabric 应用程序、微服务、节点和群集的风险和运行状况。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: niniikhena
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 9c91aacb-c48e-466c-b792-261f25940c0c
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28932675"
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>使用 Azure 门户评估 Service Fabric 应用程序和微服务
 

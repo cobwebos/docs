@@ -1,11 +1,11 @@
 ---
-title: "Azure 中继 .NET Standard API 概述 | Microsoft Docs"
-description: "Azure 中继 .NET Standard API 概述"
+title: Azure 中继 .NET Standard API 概述 | Microsoft Docs
+description: Azure 中继 .NET Standard API 概述
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b1da9ac1-811b-4df7-a22c-ccd013405c40
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28016427"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
 

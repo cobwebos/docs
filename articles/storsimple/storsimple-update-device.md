@@ -1,11 +1,11 @@
 ---
-title: "更新 StorSimple 设备 | Microsoft Docs"
-description: "介绍如何使用 StorSimple 更新功能来安装常规更新和维护模式更新和修补程序。"
+title: 更新 StorSimple 设备 | Microsoft Docs
+description: 介绍如何使用 StorSimple 更新功能来安装常规更新和维护模式更新和修补程序。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103602"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新 StorSimple 8000 系列设备
 > [!NOTE]

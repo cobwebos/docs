@@ -1,6 +1,6 @@
 ---
-title: "授权 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "针对威胁建模工具中暴露的威胁采取的缓解措施"
+title: 授权 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019511"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |

@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200728"
 ---
 # <a name="message-sequencing-and-timestamps"></a>消息序列化和时间戳
 

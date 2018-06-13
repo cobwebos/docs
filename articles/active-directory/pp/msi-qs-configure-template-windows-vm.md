@@ -1,11 +1,11 @@
 ---
-title: "如何使用 Azure 模板为 Azure VM 配置用户分配的 MSI"
-description: "分步介绍了如何使用 Azure 资源管理器模板为 Azure VM 配置用户分配的托管服务标识 (MSI)。"
+title: 如何使用 Azure 模板为 Azure VM 配置用户分配的 MSI
+description: 分步介绍了如何使用 Azure 资源管理器模板为 Azure VM 配置用户分配的托管服务标识 (MSI)。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984033"
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>使用 Azure 模板为 VM 配置用户分配的托管服务标识 (MSI)
 

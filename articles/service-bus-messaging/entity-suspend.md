@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线暂停消息实体 | Microsoft Docs"
-description: "暂停和重新激活 Azure 服务总线消息实体。"
+title: Azure 服务总线暂停消息实体 | Microsoft Docs
+description: 暂停和重新激活 Azure 服务总线消息实体。
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197020"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暂停（禁用）和重新激活消息实体
 

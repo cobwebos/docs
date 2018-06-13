@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线预提取消息 | Microsoft Docs"
-description: "通过预提取 Azure 服务总线消息提升性能。"
+title: Azure 服务总线预提取消息 | Microsoft Docs
+description: 通过预提取 Azure 服务总线消息提升性能。
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28928155"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>预提取 Azure 服务总线消息
 

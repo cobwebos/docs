@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线端到端跟踪和诊断 | Microsoft Docs"
-description: "服务总线客户端诊断和端到端跟踪概述"
+title: Azure 服务总线端到端跟踪和诊断 | Microsoft Docs
+description: 服务总线客户端诊断和端到端跟踪概述
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: lmolkova
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27741214"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 

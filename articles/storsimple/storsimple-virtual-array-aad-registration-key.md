@@ -1,12 +1,12 @@
 ---
-title: "适用于 StorSimple 虚拟阵列的新身份验证 | Microsoft Docs"
-description: "说明如何将基于 AAD 的身份验证用于服务、生成新注册密钥以及执行设备的手动注册。"
+title: 适用于 StorSimple 虚拟阵列的新身份验证 | Microsoft Docs
+description: 说明如何将基于 AAD 的身份验证用于服务、生成新注册密钥以及执行设备的手动注册。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28031048"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>将新身份验证用于 StorSimple
 

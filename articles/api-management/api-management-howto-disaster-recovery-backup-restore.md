@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure API 管理中的备份和还原实现灾难恢复 | Microsoft 文档"
-description: "了解如何在 Azure API 管理中使用备份和还原执行灾难恢复。"
+title: 使用 Azure API 管理中的备份和还原实现灾难恢复 | Microsoft 文档
+description: 了解如何在 Azure API 管理中使用备份和还原执行灾难恢复。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019273"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 

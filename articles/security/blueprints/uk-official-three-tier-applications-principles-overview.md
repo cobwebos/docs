@@ -1,6 +1,6 @@
 ---
-title: "UK-OFFICIAL 三层 Web 应用程序自动化 - 概述"
-description: "UK-OFFICIAL 三层 Web 应用程序自动化 - 概述"
+title: UK-OFFICIAL 三层 Web 应用程序自动化 - 概述
+description: UK-OFFICIAL 三层 Web 应用程序自动化 - 概述
 services: security
 documentationcenter: na
 author: jomolesk
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29151372"
 ---
 # <a name="national-cyber-security-centre-cloud-security-principles-overview"></a>国家网络安全中心云安全原则概述
 

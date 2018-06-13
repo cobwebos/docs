@@ -1,13 +1,13 @@
 ---
-title: "Azure 事件中心诊断日志 | Microsoft 文档"
-description: "了解如何为 Azure 中的事件中心设置诊断日志。"
-keywords: 
-documentationcenter: 
+title: Azure 事件中心诊断日志 | Microsoft 文档
+description: 了解如何为 Azure 中的事件中心设置诊断日志。
+keywords: ''
+documentationcenter: ''
 services: event-hubs
 author: banisadr
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28932709"
 ---
 # <a name="event-hubs-diagnostic-logs"></a>事件中心诊断日志
 

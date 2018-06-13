@@ -1,6 +1,6 @@
 ---
-title: "异常管理 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "针对威胁建模工具中暴露的威胁采取的缓解措施"
+title: 异常管理 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019579"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -200,7 +201,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [编辑 ASP.NET 错误页设置对话框](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **步骤** | <p>如果 ASP.NET 应用程序失败并导致 HTTP/1.x 500 内部服务器错误，或者某项功能配置（例如请求筛选）阻止显示页面，会生成错误消息。 管理员可以选择是要让应用程序向客户端显示友好的消息、向客户端显示详细的错误消息，还是只向 localhost 显示详细的错误消息。 web.config 中的 <customErrors> 标记有三种模式：</p><ul><li>**On：**指定启用自定义错误。 如果未指定 defaultRedirect 特性，用户将看到常规错误。 将向远程客户端和本地主机显示自定义错误</li><li>**Off：**指定禁用自定义错误。 将向远程客户端和本地主机显示详细的 ASP.NET 错误</li><li>**RemoteOnly：**指定只向远程客户端显示自定义错误，向本地主机显示 ASP.NET 错误。 这是默认值</li></ul><p>打开应用程序/站点的 `web.config`文件，确保该标记中定义了 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
+| **步骤** | <p>如果 ASP.NET 应用程序失败并导致 HTTP/1.x 500 内部服务器错误，或者某项功能配置（例如请求筛选）阻止显示页面，会生成错误消息。 管理员可以选择是要让应用程序向客户端显示友好的消息、向客户端显示详细的错误消息，还是只向 localhost 显示详细的错误消息。 web.config 中的 <customErrors> 标记有三种模式：</p><ul><li>**On：** 指定启用自定义错误。 如果未指定 defaultRedirect 特性，用户将看到常规错误。 将向远程客户端和本地主机显示自定义错误</li><li>**Off：** 指定禁用自定义错误。 将向远程客户端和本地主机显示详细的 ASP.NET 错误</li><li>**RemoteOnly：** 指定只向远程客户端显示自定义错误，向本地主机显示 ASP.NET 错误。 这是默认值</li></ul><p>打开应用程序/站点的 `web.config`文件，确保该标记中定义了 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
 
 ## <a id="deployment"></a>在 IIS 中将部署方法设置为 Retail
 

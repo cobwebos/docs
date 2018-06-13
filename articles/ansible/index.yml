@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "“Azure 中的 Ansible”文档"
+title: “Azure 中的 Ansible”文档
 metadata:
-  title: "“Azure 中的 Ansible”文档 - 教程、示例、参考和资源"
+  title: “Azure 中的 Ansible”文档 - 教程、示例、参考和资源
   meta.description: Learn how to use Ansible to automate cloud provisioning, configuration management, and application deployments.
   services: terraform
   author: tomarcher
@@ -18,41 +18,42 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 01/29/2018
+  ms.locfileid: "28207698"
 abstract:
-  description: "使用 <a href=\"http://www.ansible.com\">Ansible</a> 自动执行云预配、配置管理和应用程序部署。"
+  description: 使用 <a href="http://www.ansible.com">Ansible</a> 自动执行云预配、配置管理和应用程序部署。
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "配置 Ansible 并使用它在 Azure 中创建 Linux VM。"
+    text: 配置 Ansible 并使用它在 Azure 中创建 Linux VM。
   - type: list
     style: icon48
     items:
     - image:
         src: /azure/media/index/azure_dev-9.svg
-      text: "配置 Ansible"
+      text: 配置 Ansible
       href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
     - image:
         src: /azure/media/index/VirtualMachine.svg
-      text: "创建 Linux VM"
+      text: 创建 Linux VM
       href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何使用 Ansible 创建并管理 Azure 计算和网络基础结构。"
+    text: 了解如何使用 Ansible 创建并管理 Azure 计算和网络基础结构。
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json\">创建 Linux 虚拟机，包括虚拟网络、公共 IP 地址和虚拟网络接口卡。</a>"
-    - html: "<a href=\"./ansible-run-playbook-in-cloudshell\">连接到 Azure 虚拟机并在 Cloud Shell 中运行 Ansible Playbook。</a>"
-    - html: "<a href=\"./ansible-manage-azure-dynamic-inventories\">创建和管理 Azure 资源的动态库存。</a>"
-- title: "引用"
+    - html: <a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">创建 Linux 虚拟机，包括虚拟网络、公共 IP 地址和虚拟网络接口卡。</a>
+    - html: <a href="./ansible-run-playbook-in-cloudshell">连接到 Azure 虚拟机并在 Cloud Shell 中运行 Ansible Playbook。</a>
+    - html: <a href="./ansible-manage-azure-dynamic-inventories">创建和管理 Azure 资源的动态库存。</a>
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Playbook 角色"
+    - title: Playbook 角色
       html: <p><a href="https://galaxy.ansible.com/Azure/azure_modules/">azure_module</a></p><p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>
-    - title: "发行版和功能"
-      html: "<p><a href=\"./ansible-matrix.md\">模块和角色的功能对照表</a></p>"
+    - title: 发行版和功能
+      html: <p><a href="./ansible-matrix.md">模块和角色的功能对照表</a></p>
