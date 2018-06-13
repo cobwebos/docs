@@ -1,6 +1,6 @@
 ---
-title: "Azure 中国世纪互联在中国提供的网站服务托管 | Microsoft Docs"
-description: "是要将网站和服务托管在中国大陆的境内还是境外？ 答案取决于中国是否是你的主要目标市场之一。 本文提供有关所要考虑的问题的指导，并帮助读者做出最佳决策。"
+title: Azure 中国世纪互联在中国提供的网站服务托管 | Microsoft Docs
+description: 是要将网站和服务托管在中国大陆的境内还是境外？ 答案取决于中国是否是你的主要目标市场之一。 本文提供有关所要考虑的问题的指导，并帮助读者做出最佳决策。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635180"
 ---
 # <a name="service-hosting-for-websites-in-china"></a>中国的网站服务托管
 组织经常会问到，是要将网站和服务托管在中国大陆的境内还是境外。 答案取决于中国是否是你的主要目标市场之一。 如果网站必须要让访客快速方便地访问并托管在本地，则应完成政府法规申请流程。

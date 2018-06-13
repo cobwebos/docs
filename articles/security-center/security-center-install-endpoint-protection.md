@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 安全中心管理 Endpoint Protection 问题 | Microsoft Docs"
-description: "了解如何在 Azure 安全中心内管理 Endpoint Protection 问题。"
+title: 使用 Azure 安全中心管理 Endpoint Protection 问题 | Microsoft Docs
+description: 了解如何在 Azure 安全中心内管理 Endpoint Protection 问题。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/24/2017
+ms.locfileid: "23497345"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>使用 Azure 安全中心管理 Endpoint Protection 问题
 Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protection 问题”边栏选项卡下报告此状态。 安全中心会突出显示此类问题，如检测到威胁和保护不充分，这可能会导致虚拟机 (VM) 和计算机容易受到反恶意软件威胁的攻击。 参考“Endpoint Protection 问题”下的信息，可以制定计划来解决发现的任何问题。
