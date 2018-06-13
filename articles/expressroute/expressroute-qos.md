@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute 的 QoS 要求 | Microsoft Docs"
-description: "本页提供有关为 ExpressRoute 线路配置和管理 QoS 的详细要求。"
+title: ExpressRoute 的 QoS 要求 | Microsoft Docs
+description: 本页提供有关为 ExpressRoute 线路配置和管理 QoS 的详细要求。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: db1c1447-0283-4a09-907b-ae481adc40c7
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22709906"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS 要求
 Skype for Business 具有各种工作负荷，它们要求的 QoS 处理方式各有差异。 如果打算通过 ExpressRoute 使用语音服务，应遵守以下所述要求。

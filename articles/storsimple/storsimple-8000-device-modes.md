@@ -1,12 +1,12 @@
 ---
-title: "更改 StorSimple 设备模式 | Microsoft Docs"
-description: "介绍 StorSimple 设备模式，并说明如何使用 Windows PowerShell for StorSimple 更改设备模式。"
+title: 更改 StorSimple 设备模式 | Microsoft Docs
+description: 介绍 StorSimple 设备模式，并说明如何使用 Windows PowerShell for StorSimple 更改设备模式。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108535"
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>更改 StorSimple 设备上的设备模式
 

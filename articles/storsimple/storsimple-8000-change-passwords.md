@@ -1,12 +1,12 @@
 ---
-title: "更改 StorSimple 密码 | Microsoft Docs"
-description: "介绍如何使用 StorSimple 设备管理器服务更改 StorSimple Snapshot Manager 和设备管理员的密码。"
+title: 更改 StorSimple 密码 | Microsoft Docs
+description: 介绍如何使用 StorSimple 设备管理器服务更改 StorSimple Snapshot Manager 和设备管理员的密码。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108165"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>使用 StorSimple 设备管理器服务更改 StorSimple 密码
 
