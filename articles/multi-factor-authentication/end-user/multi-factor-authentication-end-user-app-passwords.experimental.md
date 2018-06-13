@@ -1,8 +1,8 @@
 ---
-title: "如何使用 Azure MFA 中的应用密码？ | Microsoft Docs"
-description: "此页面将帮助用户了解什么是应用密码，以及在 Azure MFA 中，应用密码有什么作用。"
+title: 如何使用 Azure MFA 中的应用密码？ | Microsoft Docs
+description: 此页面将帮助用户了解什么是应用密码，以及在 Azure MFA 中，应用密码有什么作用。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27700439"
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的应用密码是什么？
 某些非浏览器应用（例如使用 Exchange Active Sync 的 Apple 本机电子邮件客户端）目前不支持 Multi-Factor Authentication。 Multi-Factor Authentication 是按用户启用的。  这意味着，用户在以下情况下不能使用多重身份验证：

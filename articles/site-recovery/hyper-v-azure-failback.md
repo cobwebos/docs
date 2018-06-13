@@ -1,6 +1,6 @@
 ---
-title: "为 Hyper-v 虚拟机运行到本地站点的故障回复 | Microsoft Docs"
-description: "Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解从 Azure 故障回复到本地数据中心。"
+title: 为 Hyper-v 虚拟机运行到本地站点的故障回复 | Microsoft Docs
+description: Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解从 Azure 故障回复到本地数据中心。
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29466743"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>为 Hyper-V VM 运行故障回复
 

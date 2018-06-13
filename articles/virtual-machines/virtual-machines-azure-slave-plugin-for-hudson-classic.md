@@ -1,11 +1,11 @@
 ---
-title: "如何在 Hudson 持续集成中使用 Azure 从属插件 | Microsoft Docs"
-description: "介绍如何在 Hudson 连续集成中使用 Azure 从属插件。"
+title: 如何在 Hudson 持续集成中使用 Azure 从属插件 | Microsoft Docs
+description: 介绍如何在 Hudson 连续集成中使用 Azure 从属插件。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rmcmurray
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: b2083d1c-4de8-4a19-a615-ccc9d9b6e1d9
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27704418"
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>如何在 Hudson 连续集成中使用 Azure 从属插件
 适用于 Hudson 的 Azure 从属插件使你能够在运行分布式构建系统时，预配 Azure 上的从属节点。

@@ -1,11 +1,11 @@
 ---
-title: "安装 Microsoft Azure StorSimple 8600 设备 | Microsoft 文档"
-description: "介绍如何在部署和配置软件之前打开 StorSimple 8600 设备的包装并进行机架安装和布线。"
+title: 安装 Microsoft Azure StorSimple 8600 设备 | Microsoft 文档
+description: 介绍如何在部署和配置软件之前打开 StorSimple 8600 设备的包装并进行机架安装和布线。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743705"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
 ## <a name="overview"></a>概述

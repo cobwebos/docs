@@ -1,11 +1,11 @@
 ---
-title: "将用户添加为 Azure 堆栈 ADFS |Microsoft 文档"
-description: "了解如何添加 Azure 堆栈的 ADFS 部署的用户"
+title: 将用户添加为 Azure 堆栈 ADFS |Microsoft 文档
+description: 了解如何添加 Azure 堆栈的 ADFS 部署的用户
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29554555"
 ---
 # <a name="add-users-in-the-azure-stack-development-kit"></a>将用户添加 Azure 堆栈开发工具包中
 

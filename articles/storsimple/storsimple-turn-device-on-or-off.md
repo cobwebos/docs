@@ -1,11 +1,11 @@
 ---
-title: "打开或关闭 StorSimple 8000 系列设备 | Microsoft Docs"
-description: "介绍如何打开新 StorSimple 设备，打开已关闭或断电的设备，以及关闭正在运行的设备。"
+title: 打开或关闭 StorSimple 8000 系列设备 | Microsoft Docs
+description: 介绍如何打开新 StorSimple 设备，打开已关闭或断电的设备，以及关闭正在运行的设备。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27779442"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>打开或关闭 StorSimple 8000 系列设备
 
