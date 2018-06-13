@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31592395"
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure 中国世纪互联开发人员指南
 Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Microsoft Azure 服务（“全球服务”）和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）。 大多数当前可用的技术内容（例如 [Azure 文档中心](https://azure.microsoft.com/documentation/)）都假设应用程序是针对全球 Azure 开发的，因此，必须了解哪些[服务和功能](/azure/china/china-get-started-service-availability)可在 Microsoft Azure 中国世纪互联中使用。
@@ -34,9 +35,9 @@ Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将�
 
 ## <a name="develop-for-azure-users"></a>针对 Azure 用户进行开发
 如果你习惯了针对其他区域中的用户开发云服务，请务必考虑中国用户的以下预期：
-- **移动优先：**移动设备（而不是电脑）被认为是联网世界的源头。 请确保设计策略以移动为中心。
-- **QR 码和屏幕扫描行为：**网站、印刷广告、名片和其他媒体通常包含 QR 码。 可在网站的页首和页脚中包含 QR 码，使访客能够在其手机上快速加载网站的手机版。
-- **内容本地化：**本地化不仅仅是指翻译内容。 请花些时间来了解目标市场的数字环境，以及业务决策造成的文化影响，然后相应地定制内容。 
+- **移动优先：** 移动设备（而不是电脑）被认为是联网世界的源头。 请确保设计策略以移动为中心。
+- **QR 码和屏幕扫描行为：** 网站、印刷广告、名片和其他媒体通常包含 QR 码。 可在网站的页首和页脚中包含 QR 码，使访客能够在其手机上快速加载网站的手机版。
+- **内容本地化：** 本地化不仅仅是指翻译内容。 请花些时间来了解目标市场的数字环境，以及业务决策造成的文化影响，然后相应地定制内容。 
 
 ## <a name="use-social-sites-and-media-services-in-china"></a>使用中国的社交网站和媒体服务
 在中国，常用的西方社交媒体网站和服务可能已被封锁。 在中国运营 Web 内容时：

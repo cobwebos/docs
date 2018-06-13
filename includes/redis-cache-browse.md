@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32297597"
 ---
 如果未将缓存固定到仪表板，请使用“所有服务”在[Azure 门户](https://portal.azure.com)中查找缓存。
 

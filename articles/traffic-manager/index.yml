@@ -20,6 +20,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/01/2018
+  ms.locfileid: "32313102"
 abstract:
   description: 了解如何使用 Azure 流量管理器。 快速入门、教程、示例等内容说明了如何管理传入流量以实现最佳应用程序性能，以及如何将流量分配到 Azure 或外部服务终结点。
 sections:

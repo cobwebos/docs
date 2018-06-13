@@ -16,6 +16,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32152214"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>快速入门： 使用 Azure 堆栈门户创建 Linux 服务器虚拟机
 
@@ -94,7 +95,7 @@ ms.lasthandoff: 04/28/2018
    ![选择 PuTTY 私钥](media/azure-stack-quick-linux-portal/Putty03.PNG)
 
 4. 在上滚**类别**窗口，，然后单击**会话**。
-5. 在**主机名 （或 IP 地址）**框中，粘贴 Azure 堆栈门户中显示的连接字符串。 在本示例中，该字符串为 ```asadmin@192.168.102.34```。
+5. 在**主机名 （或 IP 地址）** 框中，粘贴 Azure 堆栈门户中显示的连接字符串。 在本示例中，该字符串为 ```asadmin@192.168.102.34```。
 
    ![PuTTY 配置连接字符串](media/azure-stack-quick-linux-portal/Putty04.PNG)
 

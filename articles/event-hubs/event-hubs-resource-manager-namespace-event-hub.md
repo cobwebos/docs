@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311254"
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含事件中心和使用者组的事件中心命名空间
 

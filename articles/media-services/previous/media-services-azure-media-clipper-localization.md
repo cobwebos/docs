@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782676"
 ---
 # <a name="configure-localization"></a>配置本地化
 Azure 媒体剪辑器支持 18 种语言。 若要设置小组件语言，必须在初始化期间定义 `language` 参数。 从以下列表中传入所需的语言代码字符串：

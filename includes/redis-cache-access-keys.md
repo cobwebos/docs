@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32196515"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-using-the-azure-portal"></a>使用 Azure 门户检索主机名、端口和访问密钥
 
