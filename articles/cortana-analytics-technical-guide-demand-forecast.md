@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "27600140"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板技术指南
 ## <a name="overview"></a>**概述**
@@ -197,13 +198,13 @@ Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport
    在继续下一步之前，需要获取**数据库服务器名称、数据库名称、用户名和密码**。 下面提供了有关如何查找这些信息的指导。
 
    * 解决方案模板图示上的“Azure SQL 数据库”变为绿色后，请单击它，并单击“打开”。 随后会转到 Azure 门户，数据库信息页同时打开。
-   * 在该页上，找到“数据库”部分。 其中列出了已创建的数据库。 数据库名称应该是**“解决方案名称 + 随机数字 +‘db’”**（例如“mytest12345db”）。
+   * 在该页上，找到“数据库”部分。 其中列出了已创建的数据库。 数据库名称应该是 **“解决方案名称 + 随机数字 +‘db’”**（例如“mytest12345db”）。
    * 单击数据库，然后可以在新的弹出面板的顶部找到数据库服务器名称。 数据库服务器名称应是 `"Your Solution Name + Random Number + 'database.windows.net,1433'"`（例如“mytest12345.database.windows.net,1433”）。
    * 数据库**用户名**和**密码**与部署解决方案期间记下的用户名和密码相同。
 2. 更新冷路径 Power BI 文件的数据源
 
    * 确保已安装最新版本的 [Power BI desktop](https://powerbi.microsoft.com/desktop)。
-   * 在下载的“DemandForecastingDataGeneratorv1.0”文件夹中，双击“Power BI Template\DemandForecastPowerBI.pbix”文件。 初始的可视化效果基于虚构数据。 **注意：**如果看到错误消息，请确保已安装最新版本的 Power BI Desktop。
+   * 在下载的“DemandForecastingDataGeneratorv1.0”文件夹中，双击“Power BI Template\DemandForecastPowerBI.pbix”文件。 初始的可视化效果基于虚构数据。 **注意：** 如果看到错误消息，请确保已安装最新版本的 Power BI Desktop。
 
      打开该文件后，请在顶部单击“编辑查询”。 在弹出窗口中，双击右侧面板上的“源”。
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic1.png)
@@ -221,7 +222,7 @@ Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport
 4. （可选）计划数据源的刷新。
 
    * 要计划数据刷新，请将鼠标悬停在 **EnergyBPI-Final** 数据集上，单击 ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic3.png)，然后选择“计划刷新”。
-     **注意：**如果看到警告消息，请单击“编辑凭据”，确保数据库凭据与步骤 1 中所述相同。
+     **注意：** 如果看到警告消息，请单击“编辑凭据”，确保数据库凭据与步骤 1 中所述相同。
 
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic4.png)
    * 展开“计划刷新”部分。 打开“保持数据最新”。

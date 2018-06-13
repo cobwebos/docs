@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 虚拟阵列灾难恢复和设备故障转移 | Microsoft 文档"
-description: "了解有关如何对 StorSimple Virtual Array 进行故障转移的详细信息。"
+title: StorSimple 虚拟阵列灾难恢复和设备故障转移 | Microsoft 文档
+description: 了解有关如何对 StorSimple Virtual Array 进行故障转移的详细信息。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110745"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
 

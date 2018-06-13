@@ -1,11 +1,11 @@
 ---
-title: "保护 Azure 安全中心中的虚拟机 | Microsoft 文档"
-description: "本文档介绍 Azure 安全中心中的建议，以帮助你保护虚拟机并保持符合安全策略。"
+title: 保护 Azure 安全中心中的虚拟机 | Microsoft 文档
+description: 本文档介绍 Azure 安全中心中的建议，以帮助你保护虚拟机并保持符合安全策略。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27623492"
 ---
 # <a name="protecting-your-virtual-machines-in-azure-security-center"></a>保护 Azure 安全中心中的虚拟机
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。  适用于 Azure 资源类型的建议：虚拟机 (VM)、网络、SQL，以及应用程序。

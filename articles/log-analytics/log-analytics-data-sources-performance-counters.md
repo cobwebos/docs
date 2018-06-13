@@ -1,8 +1,8 @@
 ---
-title: "收集和分析 Azure Log Analytics 中的性能计数器 | Microsoft 文档"
-description: "性能计数器由 Log Analytics 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器收集、这些性能计数器在工作区中的存储详情和如何在 Azure 门户中对其进行分析。"
+title: 收集和分析 Azure Log Analytics 中的性能计数器 | Microsoft 文档
+description: 性能计数器由 Log Analytics 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器收集、这些性能计数器在工作区中的存储详情和如何在 Azure 门户中对其进行分析。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783156"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Log Analytics 还可以定期收集性能计数器以进行近实时 (NRT) 分析。

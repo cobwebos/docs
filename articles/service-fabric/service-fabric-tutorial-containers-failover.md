@@ -1,14 +1,14 @@
 ---
-title: "故障转移和缩放 Azure Service Fabric 容器应用 | Microsoft Docs"
-description: "本教程介绍如何在 Azure Service Fabric 容器应用程序中处理故障转移。  还了解如何缩放群集中运行的容器和服务。"
+title: 故障转移和缩放 Azure Service Fabric 容器应用 | Microsoft Docs
+description: 本教程介绍如何在 Azure Service Fabric 容器应用程序中处理故障转移。  还了解如何缩放群集中运行的容器和服务。
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, 容器, 微服务, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, 容器, 微服务, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29555474"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>教程：使用 Service Fabric 演示容器服务的故障转移和缩放
 
