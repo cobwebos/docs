@@ -1,11 +1,11 @@
 ---
-title: "如何将逻辑应用迁移到架构版本 2015 年 8 月 1 日预览版 | Microsoft Docs"
-description: "可以轻松地将逻辑应用迁移到最新架构版本。 只需执行以下步骤。"
+title: 如何将逻辑应用迁移到架构版本 2015 年 8 月 1 日预览版 | Microsoft Docs
+description: 可以轻松地将逻辑应用迁移到最新架构版本。 只需执行以下步骤。
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: MSFTMAN
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22707118"
 ---
 # <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a>如何将逻辑应用迁移到架构版本 2015 年 8 月 1 日预览版
 要将现有逻辑应用移动到新架构，请执行以下操作：  
