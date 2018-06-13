@@ -13,6 +13,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057768"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>使用 ACR Build 自动执行 OS 和框架修补
 

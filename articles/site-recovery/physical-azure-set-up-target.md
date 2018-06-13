@@ -1,6 +1,6 @@
 ---
-title: "准备目标（物理到 Azure）| Microsoft Docs"
-description: "本文介绍如何准备 Azure 环境以将运行 Windows 或 Linux 的物理服务器复制到 Azure。"
+title: 准备目标（物理到 Azure）| Microsoft Docs
+description: 本文介绍如何准备 Azure 环境以将运行 Windows 或 Linux 的物理服务器复制到 Azure。
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811054"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>准备目标（VMware 到 Azure）
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/08/2018
 ![准备目标](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
 1. 订阅：从下拉菜单中，选择要将物理服务器复制到的“订阅”。
-2. **部署模型：**选择部署模型（经典或 Resource Manager）
+2. **部署模型：** 选择部署模型（经典或 Resource Manager）
 
 根据选择的部署模型运行验证，确保要将物理服务器复制并故障转移到的目标订阅中至少具有一个兼容的存储帐户和虚拟网络。
 

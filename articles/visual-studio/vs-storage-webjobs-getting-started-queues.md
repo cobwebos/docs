@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798543"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -166,7 +167,7 @@ SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储事�
         }
     }
 
-**注意：**仪表板可能会错误显示已关闭函数的的状态和输出。
+**注意：** 仪表板可能会错误显示已关闭函数的的状态和输出。
 
 有关详细信息，请参阅 [WebJobs 正常关闭](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)。   
 
@@ -431,7 +432,7 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第
             host.RunAndBlock();
         }
 
-**注意：**每次调用函数，都会解析队列名称、表名称和 blob 名称，但 blob 容器名称只会在应用程序启动时进行解析。 作业运行时，无法更改 blob 容器名称。
+**注意：** 每次调用函数，都会解析队列名称、表名称和 blob 名称，但 blob 容器名称只会在应用程序启动时进行解析。 作业运行时，无法更改 blob 容器名称。
 
 ## <a name="how-to-trigger-a-function-manually"></a>如何手动触发函数
 若要手动触发某个函数，请使用 **JobHost** 对象的 **Call** 或 **CallAsync** 方法以及该函数的 **NoAutomaticTrigger** 属性，如以下示例所示。

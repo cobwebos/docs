@@ -17,6 +17,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069060"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 管理组是一些容器，可以帮助你跨多个订阅管理访问权限、策略和符合性。 可以创建这些容器来构建可以与 [Azure 策略](../azure-policy/azure-policy-introduction.md)和 [Azure 基于角色的访问控制](../role-based-access-control/overview.md)配合使用的有效且高效的层次结构。 有关管理组的详细信息，请参阅[使用 Azure 管理组来组织资源](management-groups-overview.md)。 

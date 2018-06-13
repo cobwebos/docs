@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31400650"
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>创建 HDInsight 群集时添加自定义 Hive 库
 

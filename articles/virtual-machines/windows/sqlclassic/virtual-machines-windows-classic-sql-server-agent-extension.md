@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29851752"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>使用 SQL Server 代理扩展在 Azure 虚拟机上自动完成管理任务（经典）
 > [!div class="op_single_selector"]

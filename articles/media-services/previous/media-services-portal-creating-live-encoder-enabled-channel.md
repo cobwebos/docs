@@ -19,6 +19,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940976"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>如何使用 Azure 媒体服务实时传送视频流，通过 Azure 门户创建多比特率流
 > [!div class="op_single_selector"]

@@ -21,6 +21,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012929"
 ---
 # <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建和管理 S2S VPN 连接
 

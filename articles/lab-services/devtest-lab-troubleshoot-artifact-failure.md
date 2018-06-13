@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783506"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>对实验室中的项目失败进行诊断 
 创建项目后，可检查其为成功还是失败。 Azure 开发测试实验室中的项目日志提供了可用于诊断项目失败的信息。 可通过几个选项查看 Windows VM 的项目日志信息：

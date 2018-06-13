@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30903469"
 ---
 # <a name="what-is-batch-ai-in-azure"></a>Azure 中的 Batch AI 是什么？
 Batch AI 是一项托管的服务，可以让数据科学家和 AI 研究人员在 Azure 虚拟机（包括带 GPU 支持的 VM）群集上训练 AI 和其他机器学习模型。 你只需描述作业要求，在何处查找输入和存储输出，其余的由 Batch AI 处理。  

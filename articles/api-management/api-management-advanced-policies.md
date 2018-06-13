@@ -18,6 +18,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30233820"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -137,9 +138,9 @@ ms.lasthandoff: 03/28/2018
 ###  <a name="ChooseUsage"></a> 使用
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、后端、错误时
+-   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="ForwardRequest"></a> 转发请求
  `forward-request` 策略将传入请求转发到请求[上下文](api-management-policy-expressions.md#ContextVariables)中指定的后端服务。 后端服务 URL 在 API [设置](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)中指定，可以使用[设置后端服务](api-management-transformation-policies.md)策略进行更改。
@@ -248,8 +249,8 @@ ms.lasthandoff: 03/28/2018
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**后端
--   **策略范围：**所有范围
+-   **策略节：** 后端
+-   **策略范围：** 所有范围
 
 ##  <a name="LimitConcurrency"></a> 限制并发
  `limit-concurrency` 策略阻止括住的策略在给定时间执行超过指定数量的请求。 超过该数量后，新请求将立即失败并显示“429 请求过多”状态代码。
@@ -295,9 +296,9 @@ ms.lasthandoff: 03/28/2018
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、后端、错误时
+-   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="log-to-eventhub"></a> 记录到事件中心
  `log-to-eventhub` 策略将指定格式的消息发送到记录器实体定义的事件中心。 从名称可以看出，此策略用于保存所选请求或响应上下文信息，以便进行联机或脱机分析。
@@ -346,9 +347,9 @@ ms.lasthandoff: 03/28/2018
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、后端、错误时
+-   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="mock-response"></a>模拟响应
 正如其名所示，`mock-response` 用于模拟 API 和操作。 它会中止正常的管道执行，并将模拟的响应返回给调用方。 该策略始终尝试返回保真度最高的响应。 它首选响应内容示例（若可用）。 若提供架构而不提供示例，它将从架构生成示例响应。 如果既找不到示例又找不到架构，则返回无内容的响应。
@@ -388,9 +389,9 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、错误时
+-   **策略节：** 入站、出站、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="Retry"></a> 重试
  `retry` 策略会执行其子策略一次，并重新尝试执行，直至重试 `condition` 变为 `false`，或者重试 `count` 为零。
@@ -453,9 +454,9 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。 请注意，此策略会继承子策略使用限制。
 
--   **策略节：**入站、出站、后端、错误时
+-   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="ReturnResponse"></a> 返回响应
  `return-response` 策略会中止管道执行，为调用方返回默认响应或自定义响应。 默认响应为`200 OK`，无正文。 可以通过上下文变量或策略语句指定自定义响应。 二者都提供时，会通过策略语句对上下文变量中包含的响应进行修改，然后再将其返回给调用方。
@@ -501,9 +502,9 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、后端、错误时
+-   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="SendOneWayRequest"></a> 发送单向请求
  `send-one-way-request` 策略将提供的请求发送到指定的 URL，无需等待响应。
@@ -573,9 +574,9 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、后端、错误时
+-   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="SendRequest"></a> 发送请求
  `send-request` 策略将提供的请求发送至指定 URL，等待时间不超过设置的超时值。
@@ -657,9 +658,9 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、后端、错误时
+-   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="SetHttpProxy"></a>设置 HTTP 代理
  `proxy` 策略允许通过 HTTP 代理将转发的请求路由到后端。 网关和代理之间仅支持 HTTP（而不是 HTTPS）。 仅限基本和 NTLM 身份验证。
@@ -696,9 +697,9 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略段：**入站
+-   **策略段：** 入站
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="SetRequestMethod"></a> 设置请求方法
  `set-method` 策略用于更改请求的 HTTP 请求方法。
@@ -748,9 +749,9 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、错误时
+-   **策略节：** 入站、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="SetStatus"></a> 设置状态代码
  `set-status` 策略将 HTTP 状态代码设置为指定的值。
@@ -795,8 +796,8 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**出站、后端、错误时
--   **策略范围：**所有范围
+-   **策略节：** 出站、后端、错误时
+-   **策略范围：** 所有范围
 
 ##  <a name="set-variable"></a> 设置变量
  `set-variable` 策略声明[上下文](api-management-policy-expressions.md#ContextVariables)变量，并为其分配通过[表达式](api-management-policy-expressions.md)或字符串文本指定的值。 如果表达式包含文本，则会将其转换为字符串，值的类型将为 `System.String`。
@@ -830,8 +831,8 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、后端、错误时
--   **策略范围：**所有范围
+-   **策略节：** 入站、出站、后端、错误时
+-   **策略范围：** 所有范围
 
 ###  <a name="set-variableAllowedTypes"></a> 允许的类型
  在 `set-variable` 策略中使用的表达式必须返回以下基本类型之一。
@@ -896,9 +897,9 @@ status code and media type. If no example or schema found, the content is empty.
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、后端、错误时
+-   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：**所有范围
+-   **策略范围：** 所有范围
 
 ##  <a name="Wait"></a> 等待
  `wait` 策略以并行方式执行其直接子策略，在完成之前会等待其直接子策略全部完成或其中一个完成。 等待策略可以将[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)和[控制流](api-management-advanced-policies.md#choose)策略设置为其直接子策略。
@@ -964,8 +965,8 @@ status code and media type. If no example or schema found, the content is empty.
 
 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略节：**入站、出站、后端
--   **策略范围：**所有范围
+-   **策略节：** 入站、出站、后端
+-   **策略范围：** 所有范围
 
 ## <a name="next-steps"></a>后续步骤
 

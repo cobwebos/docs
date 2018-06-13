@@ -18,6 +18,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053347"
 ---
 # <a name="how-to-assign-users-to-applications"></a>如何将用户分配给应用程序
 

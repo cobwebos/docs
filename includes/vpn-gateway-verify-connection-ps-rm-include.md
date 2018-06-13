@@ -13,6 +13,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30326487"
 ---
 可以验证连接是否成功，方法是使用“Get-AzureRmVirtualNetworkGatewayConnection”cmdlet，带或不带“-Debug”。 
 

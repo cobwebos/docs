@@ -15,6 +15,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33866224"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>将 PhoneFactor 代理升级到 Azure 多重身份验证服务器
 

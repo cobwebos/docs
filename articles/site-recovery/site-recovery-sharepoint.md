@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896493"
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 SharePoint 应用程序以实现灾难恢复
 

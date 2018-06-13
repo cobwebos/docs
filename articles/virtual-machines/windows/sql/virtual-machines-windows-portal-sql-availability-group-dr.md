@@ -1,6 +1,6 @@
 ---
-title: "SQL Server 可用性组 - Azure 虚拟机 - 灾难恢复 | Microsoft 文档"
-description: "本文介绍如何在 Azure 虚拟机上配置副本位于不同区域的 SQL Server 可用性组。"
+title: SQL Server 可用性组 - Azure 虚拟机 - 灾难恢复 | Microsoft 文档
+description: 本文介绍如何在 Azure 虚拟机上配置副本位于不同区域的 SQL Server 可用性组。
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852823"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure 虚拟机上配置 Always On 可用性组
 

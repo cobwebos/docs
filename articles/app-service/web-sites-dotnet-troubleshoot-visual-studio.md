@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30266132"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的 Web 应用进行故障排除
 ## <a name="overview"></a>概述

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30928156"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 中继指标（预览版）
 

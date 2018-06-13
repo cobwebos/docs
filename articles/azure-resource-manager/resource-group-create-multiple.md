@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359251"
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中部署资源或属性的多个实例
 本文演示如何按条件部署资源，以及如何在 Azure 资源管理器模板中进行迭代操作以创建资源的多个实例。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29941595"
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>如何对 VHD 创建期间遇到的常见问题进行故障排除
 提供本文的目的是在发布或管理虚拟机解决方案时，帮助可能遇到问题或有常见问题的 Azure Marketplace 发布者和/或联合管理员。

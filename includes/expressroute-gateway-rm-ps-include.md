@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31613613"
 ---
 此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 此列表中也概述了其他设置和名称。 尽管我们确实基于此列表中的值添加变量，但是我们在任何步骤中不会直接使用此列表。 可以复制列表作为参考，并将列表中的值替换为自己的值。
 

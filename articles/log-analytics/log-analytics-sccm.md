@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30283990"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可将 System Center Configuration Manager 环境连接到 Azure Log Analytics 以同步设备集合数据，并在 Log Analytics 和 Azure 自动化中引用这些集合。  

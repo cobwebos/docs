@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165411"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure 门户中的键盘快捷方式
 本文介绍了 Azure 门户中使用的键盘快捷方式。 各个服务可能有其自己的键盘快捷方式。

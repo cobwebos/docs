@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI 脚本示例 - 通过群集创建高级 Azure Redis 缓存 | Microsoft Docs"
-description: "Azure CLI 脚本示例 - 通过群集创建高级层 Azure Redis 缓存"
+title: Azure CLI 脚本示例 - 通过群集创建高级 Azure Redis 缓存 | Microsoft Docs
+description: Azure CLI 脚本示例 - 通过群集创建高级层 Azure Redis 缓存
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 07bcceae-2521-4fe3-b88f-ed833104ddd2
 ms.service: cache-redis
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29846292"
 ---
 # <a name="create-a-premium-azure-redis-cache-with-clustering"></a>通过群集创建高级 Azure Redis 缓存
 

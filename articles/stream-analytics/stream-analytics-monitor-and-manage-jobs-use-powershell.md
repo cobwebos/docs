@@ -14,6 +14,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31600891"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。

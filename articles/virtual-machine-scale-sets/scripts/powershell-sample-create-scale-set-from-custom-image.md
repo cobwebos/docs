@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246502"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>使用 Azure PowerShell 从自定义 VM 映像创建虚拟机规模集
 此脚本创建使用自定义 VM 映像作为 VM 实例源的虚拟机规模集。
