@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 本地固定卷的常见问题 | Microsoft 文档"
-description: "提供有关 StorSimple 本地固定卷常见问题的解答。"
+title: StorSimple 本地固定卷的常见问题 | Microsoft 文档
+description: 提供有关 StorSimple 本地固定卷常见问题的解答。
 services: storsimple
 documentationcenter: NA
 author: manuaery
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109465"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple 本地固定卷：常见问题 (FAQ)
 ## <a name="overview"></a>概述
@@ -35,11 +36,11 @@ ms.lasthandoff: 10/11/2017
 ## <a name="questions-about-creating-a-locally-pinned-volume"></a>有关创建本地固定卷的问题
 **问：** 在 8000 系列设备上可以创建的本地固定卷的大小上限是什么？
 
-**答：**在运行 StorSimple 8000 系列 Update 3.0 的设备上可以预配高达 8.5 TB 的本地固定卷，或者在 8100 设备上预配高达 200 TB 的分层卷。 8600 设备更大，可以预配高达 22.5 TB 的本地固定卷，预配高达 500 TB 的固定卷。
+**答：** 在运行 StorSimple 8000 系列 Update 3.0 的设备上可以预配高达 8.5 TB 的本地固定卷，或者在 8100 设备上预配高达 200 TB 的分层卷。 8600 设备更大，可以预配高达 22.5 TB 的本地固定卷，预配高达 500 TB 的固定卷。
 
 **问：** 我最近将 8100 设备升级到 Update 3.0，在尝试创建本地固定卷时，可用大小上限只有 6 TB 而不是 8.5 TB。 为何无法创建 8.5 TB 的卷？
 
-**答：**如果设备运行的是 Update 3.0，则可以预配高达 8.5 TB 的本地固定卷，或者在 8100 设备上预配高达 200 TB 的分层卷。 如果设备中已有分层卷，可用于创建本地固定卷的空间将相应地低于此最大限制。 举例来说，如果已在 8100 设备上预配大约 106 TB 的分层卷（这是分层容量的一半），则可以在 8100 设备上创建的本地卷大小上限缩减为 4 TB（大约是本地固定卷容量上限的一半）。
+**答：** 如果设备运行的是 Update 3.0，则可以预配高达 8.5 TB 的本地固定卷，或者在 8100 设备上预配高达 200 TB 的分层卷。 如果设备中已有分层卷，可用于创建本地固定卷的空间将相应地低于此最大限制。 举例来说，如果已在 8100 设备上预配大约 106 TB 的分层卷（这是分层容量的一半），则可以在 8100 设备上创建的本地卷大小上限缩减为 4 TB（大约是本地固定卷容量上限的一半）。
 
 由于设备上的某些本地空间用于托管分层卷的工作集，因此如果设备有分层卷，可用于创建本地固定卷的空间就会减少。 相反，创建本地固定卷也会相应减少分层卷可用的空间。 下表汇总了创建本地固定卷时，8100 和 8600 设备上可用的分层容量。
 
@@ -161,7 +162,7 @@ ms.lasthandoff: 10/11/2017
 
 **问：** 是否可以在还原期间更改卷的类型？
 
-**答：**无法在还原期间更改卷类型。
+**答：** 无法在还原期间更改卷类型。
 
 * 已删除的卷还原为快照中存储的类型。
 * 无论快照中存储的类型为何，卷都根据其当前类型还原（请参考前两个问题）。
