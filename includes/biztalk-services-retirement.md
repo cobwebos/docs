@@ -1,6 +1,6 @@
 ---
-title: "include 文件"
-description: "include 文件"
+title: include 文件
+description: include 文件
 services: biztalk-services
 author: MandiOhlinger
 ms.service: biztalk-services
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29765928"
 ---
 > [!IMPORTANT]
 > Microsoft Azure BizTalk 服务 (MABS) 即将停用，将被 Azure 逻辑应用替代。

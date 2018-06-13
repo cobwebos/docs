@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194394"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>将作业状态和作业流从自动化转发到 Log Analytics
 自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 可在 Azure 门户中或使用 PowerShell 查看单个作业的作业日志和作业流，这使用户可执行简单的调查。 现在，使用 Log Analytics，可以：

@@ -20,6 +20,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360413"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service 上 Azure 堆栈 update 2 发行说明
 

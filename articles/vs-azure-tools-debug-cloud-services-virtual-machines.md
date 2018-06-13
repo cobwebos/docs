@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30292792"
 ---
 # <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>在 Visual Studio 中调试云服务或虚拟机
 
@@ -42,7 +43,7 @@ Visual Studio 提供了不同的选项来调试 Azure 云服务和虚拟机。
 
 3. 通过选择“调试”菜单上的命令并设置代码中的断点来单步执行应用程序。 在调试器中单步执行应用程序时，窗格会随着应用程序的当前状态而更新。 当停止调试时，将删除应用程序部署。 如果应用程序包含 Web 角色，并且已将启动操作属性设置为启动 Web 浏览器，Visual Studio 会在浏览器中启动 Web 应用程序。 如果更改服务配置中某个角色的实例数，则必须停止云服务，然后重新启动调试，以便可以调试该角色的这些新实例。
 
-    **注意：**停止运行或调试服务时，不会停止本地计算模拟器和存储模拟器。 必须从通知区域显式将其停止。
+    **注意：** 停止运行或调试服务时，不会停止本地计算模拟器和存储模拟器。 必须从通知区域显式将其停止。
 
 ## <a name="debug-a-cloud-service-in-azure"></a>在 Azure 中调试云服务
 
@@ -148,7 +149,7 @@ Visual Studio ASP.NET 项目提供了一个选项，让你创建可用于应用�
 
     ![“创建 ASP.NET Web 项目”对话框](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746723.png)
 
-    **注意：**如果尚未登录到 Azure 帐户，系统将要求登录。
+    **注意：** 如果尚未登录到 Azure 帐户，系统将要求登录。
 
 3. 为虚拟机选择各项设置，并选择“确定”。 有关详细信息，请参阅[虚拟机](http://go.microsoft.com/fwlink/?LinkId=623033)。
 

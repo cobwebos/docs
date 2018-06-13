@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197166"
 ---
 下表按网关 SKU 显示了网关类型和估计的聚合吞吐量。 此表适用于 Resource Manager 和经典部署模型。 
 

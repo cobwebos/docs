@@ -1,6 +1,6 @@
 ---
-title: "Azure 堆栈数据中心集成的 DNS"
-description: "了解如何将与你的数据中心 DNS 集成 Azure 堆栈 DNS"
+title: Azure 堆栈数据中心集成的 DNS
+description: 了解如何将与你的数据中心 DNS 集成 Azure 堆栈 DNS
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -9,12 +9,13 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
+keywords: ''
 ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
 ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733853"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure 堆栈数据中心集成的 DNS
 若要能够访问 Azure 堆栈终结点 (`portal`， `adminportal`， `management`，`adminmanagement`等。) 从外部 Azure 堆栈，你需要与托管你想要使用 Azure 堆栈中的 DNS 区域的 DNS 服务器集成的 Azure 堆栈 DNS 服务。
