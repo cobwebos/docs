@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 脚本 - 下载 Azure Database for PostgreSQL 中的服务器日志"
-description: "此示例 Azure CLI 脚本演示如何启用和下载适用于 PostgreSQL 服务器的 Azure 数据库的服务器日志。"
+title: Azure CLI 脚本 - 下载 Azure Database for PostgreSQL 中的服务器日志
+description: 此示例 Azure CLI 脚本演示如何启用和下载适用于 PostgreSQL 服务器的 Azure 数据库的服务器日志。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29849556"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>使用 Azure CLI 启用和下载适用于 PostgreSQL 服务器的 Azure 数据库的服务器慢查询日志
 此示例 CLI 脚本可启用和下载单个适用于 PostgreSQL 服务器的 Azure 数据库的慢查询日志。

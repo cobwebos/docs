@@ -1,11 +1,11 @@
 ---
-title: "估算 Azure 中的复制容量 | Microsoft 文档"
-description: "参考本文估算使用 Azure Site Recovery 进行复制时可用的容量"
+title: 估算 Azure 中的复制容量 | Microsoft 文档
+description: 参考本文估算使用 Azure Site Recovery 进行复制时可用的容量
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
 ms.service: site-recovery
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875899"
 ---
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>计划用于使用 Site Recovery 保护 Hyper-V VM 的容量
 

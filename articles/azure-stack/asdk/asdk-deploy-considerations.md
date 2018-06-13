@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30164961"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure 堆栈部署规划注意事项
 在部署 Azure 堆栈开发工具包 (ASDK) 之前，确保你开发工具包的主机计算机满足本文中所述的要求。
@@ -38,7 +39,7 @@ ms.lasthandoff: 03/23/2018
 
 <sup>*</sup> 你需要更多不是如果你计划将添加的许多建议容量这样[应用商店项](asdk-marketplace-item.md)从 Azure。
 
-**数据磁盘驱动器配置：**所有数据驱动器都必须使用相同的类型（全 SAS、全 SATA 或全 NVMe）和容量。 如果使用 SAS 磁盘驱动器，则这些磁盘驱动器必须通过单个路径来附加（不提供 MPIO 多路径支持）。
+**数据磁盘驱动器配置：** 所有数据驱动器都必须使用相同的类型（全 SAS、全 SATA 或全 NVMe）和容量。 如果使用 SAS 磁盘驱动器，则这些磁盘驱动器必须通过单个路径来附加（不提供 MPIO 多路径支持）。
 
 **HBA 配置选项**
 

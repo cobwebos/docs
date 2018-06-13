@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30179083"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>使用 PowerShell 管理 Log Analytics
 可使用 [Log Analytics PowerShell cmdlet](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) 从命令行或作为脚本的一部分在 Log Analytics 中执行各种函数。  可使用 PowerShell 执行的任务示例包括：

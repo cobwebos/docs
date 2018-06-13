@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29395643"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级威胁防护。 有了安全中心，即可对各种工作负荷应用安全策略、减少受到的威胁，以及检测和响应攻击。

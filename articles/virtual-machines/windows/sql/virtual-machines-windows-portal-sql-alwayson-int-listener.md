@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 虚拟机中创建 SQL Server 可用性组侦听器 | Microsoft Docs"
-description: "有关为 Azure 虚拟机中的 SQL Server Always On 可用性组创建侦听器的分步说明"
+title: 在 Azure 虚拟机中创建 SQL Server 可用性组侦听器 | Microsoft Docs
+description: 有关为 Azure 虚拟机中的 SQL Server Always On 可用性组创建侦听器的分步说明
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400624"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>在 Azure 中为 Always On 可用性组配置负载均衡器
 本文说明如何在使用 Azure 资源管理器运行的 Azure 虚拟机中为 SQL Server Always On 可用性组创建负载均衡器。 当 SQL Server 实例位于 Azure 虚拟机上时，AlwaysOn 可用性组需要负载均衡器。 负载均衡器存储可用性组侦听器的 IP 地址。 如果可用性组跨多个区域，则每个区域都需要一个负载均衡器。

@@ -1,11 +1,11 @@
 ---
-title: "使用 .NET Framework 从 Azure 事件中心接收事件 | Microsoft 文档"
-description: "按照本教程的说明，使用 .NET Framework 从 Azure 事件中心接收事件。"
+title: 使用 .NET Framework 从 Azure 事件中心接收事件 | Microsoft 文档
+description: 按照本教程的说明，使用 .NET Framework 从 Azure 事件中心接收事件。
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
 ms.service: event-hubs
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29393212"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>使用 .NET Framework 从 Azure 事件中心接收事件
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 
 事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。
 
-本教程显示如何编写 .NET Framework 控制台应用程序，以使用**[事件处理程序主机][EventProcessorHost]**从事件中心接收消息。 要使用 .NET Framework 发送事件，请参阅[使用 .NET Framework 将事件发送到 Azure 事件中心](event-hubs-dotnet-framework-getstarted-send.md)一文，或者单击左侧目录中的相应发送语言。
+本教程显示如何编写 .NET Framework 控制台应用程序，以使用**[事件处理程序主机][EventProcessorHost]** 从事件中心接收消息。 要使用 .NET Framework 发送事件，请参阅[使用 .NET Framework 将事件发送到 Azure 事件中心](event-hubs-dotnet-framework-getstarted-send.md)一文，或者单击左侧目录中的相应发送语言。
 
 [事件处理程序主机][EventProcessorHost]是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用[事件处理程序主机][Event Processor Host]，可跨多个接收方拆分事件，即使在不同节点中托管也是如此。 此示例演示如何为单一接收方使用[事件处理程序主机][EventProcessorHost]。 [扩大事件处理][Scale out Event Processing with Event Hubs]示例显示如何将[事件处理程序主机][EventProcessorHost]用于多个接收方。
 

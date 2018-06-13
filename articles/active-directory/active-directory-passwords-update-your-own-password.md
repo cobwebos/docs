@@ -1,9 +1,9 @@
 ---
-title: "Azure AD：重置密码 | Microsoft 文档"
-description: "使用自助式密码重置功能重新获取工作用户帐户或学校用户帐户的访问权限"
+title: Azure AD：重置密码 | Microsoft 文档
+description: 使用自助式密码重置功能重新获取工作用户帐户或学校用户帐户的访问权限
 services: active-directory
-keywords: 
-documentationcenter: 
+keywords: ''
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: sahenry
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29463772"
 ---
 # <a name="reset-your-work-or-school-password"></a>重置工作或学校密码
 

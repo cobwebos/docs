@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197867"
 ---
 虚拟网络网关使用称作“网关子网”的特定子网。 网关子网是虚拟网络 IP 地址范围的一部分，该范围是在配置虚拟网络时指定的。 网关子网包含虚拟网络网关资源和服务使用的 IP 地址。 要使 Azure 能够部署网关资源，必须将子网命名为“GatewaySubnet”。 不能指定要将网关资源部署到的其他子网。 如果没有名为“GatewaySubnet”的子网，则无法创建 VPN 网关。
 
