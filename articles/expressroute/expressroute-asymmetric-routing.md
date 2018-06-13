@@ -1,11 +1,11 @@
 ---
-title: "非对称路由 | Microsoft Docs"
-description: "本文逐步讲解客户在与目标建立多个链接的网络中使用非对称路由时可能会遇到的问题。"
+title: 非对称路由 | Microsoft Docs
+description: 本文逐步讲解客户在与目标建立多个链接的网络中使用非对称路由时可能会遇到的问题。
 documentationcenter: na
 services: expressroute
 author: osamazia
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a754bff9-95c9-44b5-9796-377fc21e8322
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22710008"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>非对称路由与多个网络路径
 本文说明当网络源与目标之间有多个路径时，正向和返回网络流量如何选择不同的路由。
