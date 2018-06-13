@@ -18,6 +18,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196519"
 ---
 # <a name="using-dns-in-azure-stack"></a>使用 Azure 堆栈中的 DNS
 

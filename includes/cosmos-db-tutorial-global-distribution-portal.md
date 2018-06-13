@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31431714"
 ---
 可以通过以下视频了解 Azure Cosmos DB 全局分发，在该视频中 Azure Cosmos DB 项目经理 Andrew Liu 介绍了全局分发功能。
 

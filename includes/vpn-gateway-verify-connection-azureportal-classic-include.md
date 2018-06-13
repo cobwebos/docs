@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30196867"
 ---
 在 Azure 门户中，可通过导航到连接来查看经典 VNet VPN 网关的连接状态。 以下步骤演示导航到连接并进行验证的一种方法。
 

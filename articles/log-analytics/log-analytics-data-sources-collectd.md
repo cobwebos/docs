@@ -1,8 +1,8 @@
 ---
-title: "在 OMS Log Analytics 中收集来自 CollectD 的数据 | Microsoft Docs"
-description: "CollectD 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集数据。  本文提供了与将来自 CollectD 的数据收集到 Log Analytics 中相关的信息。"
+title: 在 OMS Log Analytics 中收集来自 CollectD 的数据 | Microsoft Docs
+description: CollectD 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集数据。  本文提供了与将来自 CollectD 的数据收集到 Log Analytics 中相关的信息。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23020852"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>在 Linux 代理上将来自 CollectD 的数据收集到 Log Analytics 中
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文提供了与将来自 CollectD 的性能数据收集到 Log Analytics 中相关的信息。

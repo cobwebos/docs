@@ -13,6 +13,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34173112"
 ---
 若要创建缓存，请先登录到 [Azure 门户](https://portal.azure.com)，并单击“创建资源” > “数据库” > “Redis 缓存”。
 

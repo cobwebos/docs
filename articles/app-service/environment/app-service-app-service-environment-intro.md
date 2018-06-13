@@ -1,11 +1,11 @@
 ---
-title: "应用服务环境 v1 简介"
-description: "了解有关可提供安全、加入 VNet 的专用缩放单位用于运行所有应用的应用服务环境 v1 功能。"
+title: 应用服务环境 v1 简介
+description: 了解有关可提供安全、加入 VNet 的专用缩放单位用于运行所有应用的应用服务环境 v1 功能。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986692"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>应用服务环境 v1 简介
 
