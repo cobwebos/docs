@@ -14,7 +14,7 @@
 2. 选择**添加操作**链接。 这会打开可搜索要采取的任何操作的搜索框。 本示例关注的操作是 SharePoint 操作。    
    ![SharePoint Online 操作图像 2](./media/connectors-create-api-sharepointonline/action-2.png)    
 3. 输入 *sharepoint* 搜索与 SharePoint 相关的操作。
-4. 选择“SharePoint Online - 创建文件”作为要执行的操作。   **注意：**如果事先未与 SharePoint Online 建立连接，系统会提示授权逻辑应用访问 SharePoint 帐户。    
+4. 选择“SharePoint Online - 创建文件”作为要执行的操作。   **注意：** 如果事先未与 SharePoint Online 建立连接，系统会提示授权逻辑应用访问 SharePoint 帐户。    
    ![SharePoint Online 操作图像 3](./media/connectors-create-api-sharepointonline/action-3.png)    
 5. 此时会打开“创建文件”控件。   
    ![SharePoint Online 操作图像 4](./media/connectors-create-api-sharepointonline/action-4.png)     
