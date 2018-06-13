@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心快速入门 - 将 Linux 计算机载入到安全中心 | Microsoft Docs"
-description: "本快速入门展示了如何将 Linux 计算机载入到安全中心。"
+title: Azure 安全中心快速入门 - 将 Linux 计算机载入到安全中心 | Microsoft Docs
+description: 本快速入门展示了如何将 Linux 计算机载入到安全中心。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29530160"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入门：将 Linux 计算机载入到安全中心
 载入 Azure 订阅之后，可以通过预配 Linux 代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。

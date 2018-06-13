@@ -11,6 +11,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204035"
 ---
 # <a name="migrate-machines-after-assessment"></a>在评估后迁移计算机
 

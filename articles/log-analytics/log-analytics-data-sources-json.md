@@ -1,8 +1,8 @@
 ---
-title: "在 OMS Log Analytics 中收集自定义 JSON 数据 | Microsoft Docs"
-description: "使用 OMS Agent for Linux 将自定义 JSON 数据源收集到 Log Analytics 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 curl 或 FluentD 的 300 多个插件之一。 本文介绍此数据收集所需的配置。"
+title: 在 OMS Log Analytics 中收集自定义 JSON 数据 | Microsoft Docs
+description: 使用 OMS Agent for Linux 将自定义 JSON 数据源收集到 Log Analytics 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 curl 或 FluentD 的 300 多个插件之一。 本文介绍此数据收集所需的配置。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23020892"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>在 Log Analytics 中使用 OMS Agent for Linux 收集自定义 JSON 数据源
 使用 OMS Agent for Linux 将自定义 JSON 数据源收集到 Log Analytics 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 [curl](https://curl.haxx.se/) 或 [FluentD 的 300 多个插件](http://www.fluentd.org/plugins/all)之一。 本文介绍此数据收集所需的配置。

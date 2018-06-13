@@ -1,12 +1,12 @@
 ---
-title: "什么是 Azure 事件中心？为何使用 Azure 事件中心？| Microsoft 文档"
-description: "Azure 事件中心概述和简介 - 从网站、应用和设备进行云规模的遥测数据引入"
+title: 什么是 Azure 事件中心？为何使用 Azure 事件中心？| Microsoft 文档
+description: Azure 事件中心概述和简介 - 从网站、应用和设备进行云规模的遥测数据引入
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29686899"
 ---
 # <a name="what-is-event-hubs"></a>什么是事件中心？
 

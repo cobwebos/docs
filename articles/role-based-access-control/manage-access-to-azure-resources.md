@@ -20,6 +20,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203215"
 ---
 # <a name="manage-access-to-azure-resources-with-azure-active-directory"></a>使用 Azure Active Directory 管理对 Azure 资源的访问权限
 

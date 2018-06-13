@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212885"
 ---
 # <a name="implementing-service-level-features-in-your-actor-service"></a>在执行组件服务中实现服务级功能
 如[服务分层](service-fabric-reliable-actors-platform.md#service-layering)中所述，执行组件服务本身是一项可靠的服务。  可以编写自己的派生自 `ActorService` 的服务，并且以与继承 StatefulService 时一样的方式实现服务级别的功能，例如：

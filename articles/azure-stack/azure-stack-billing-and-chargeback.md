@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack 中的客户计费和退款 | Microsoft Docs"
-description: "了解如何从 Azure Stack 中检索资源使用情况信息。"
+title: Azure Stack 中的客户计费和退款 | Microsoft Docs
+description: 了解如何从 Azure Stack 中检索资源使用情况信息。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877477"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Azure Stack 中的使用情况和计费
 

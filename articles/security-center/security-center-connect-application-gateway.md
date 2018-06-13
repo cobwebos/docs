@@ -1,11 +1,11 @@
 ---
-title: "将 Microsoft Azure 应用程序网关连接到 Azure 安全中心 | Microsoft Docs"
-description: "了解如何将应用程序网关与 Azure 安全中心集成，以增强资源的总体安全性。"
+title: 将 Microsoft Azure 应用程序网关连接到 Azure 安全中心 | Microsoft Docs
+description: 了解如何将应用程序网关与 Azure 安全中心集成，以增强资源的总体安全性。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854279"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>将 Microsoft Azure 应用程序网关连接到 Azure 安全中心
 本文档可帮助你配置与应用程序网关 Web 应用程序防火墙 (WAF) 和安全中心的集成。
