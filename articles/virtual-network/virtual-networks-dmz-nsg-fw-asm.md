@@ -1,11 +1,11 @@
 ---
-title: "外围网络示例 – 构建外围网络以通过防火墙和 NSG 保护应用程序 | Microsoft 文档"
-description: "使用防火墙和网络安全组 (NSG) 构建外围网络"
+title: 外围网络示例 – 构建外围网络以通过防火墙和 NSG 保护应用程序 | Microsoft 文档
+description: 使用防火墙和网络安全组 (NSG) 构建外围网络
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: c78491c7-54ac-4469-851c-b35bfed0f528
 ms.service: virtual-network
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23126925"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>示例 2 – 构建外围网络以通过防火墙和 NSG 保护应用程序
 [返回安全边界最佳实践页面][HOME]

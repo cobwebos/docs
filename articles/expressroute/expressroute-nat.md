@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute 线路的 NAT 要求 | Microsoft Docs"
-description: "本页提供有关为 ExpressRoute 线路配置和管理 NAT 的详细要求。"
+title: ExpressRoute 线路的 NAT 要求 | Microsoft Docs
+description: 本页提供有关为 ExpressRoute 线路配置和管理 NAT 的详细要求。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 867bf936-c851-485f-84c8-d8d6e33fee9f
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/13/2017
+ms.locfileid: "23409259"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT 要求
 要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理 NAT。 某些连接服务提供商以托管服务形式提供 NAT 的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果没有，则必须遵守相关要求，如下所述。 

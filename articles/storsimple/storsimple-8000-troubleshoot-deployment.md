@@ -1,12 +1,12 @@
 ---
-title: "排查 StorSimple 8000 系列部署问题 | Microsoft Docs"
-description: "介绍如何诊断和修复首次部署 StorSimple 时发生的错误。"
+title: 排查 StorSimple 8000 系列部署问题 | Microsoft Docs
+description: 介绍如何诊断和修复首次部署 StorSimple 时发生的错误。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23112255"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>排查 StorSimple 设备部署问题
 ## <a name="overview"></a>概述

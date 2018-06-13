@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23126675"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>示例 1 – 使用 NSG 和 Azure 资源管理器模板构建简单的外围网络
 [返回安全边界最佳实践页面][HOME]

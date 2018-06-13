@@ -1,11 +1,11 @@
 ---
-title: "在 Visual Studio 中优化 Azure 代码 | Microsoft Docs"
-description: "了解 Visual Studio 中的 Azure 代码优化工具如何帮助提高代码的可靠性和性能。"
+title: 在 Visual Studio 中优化 Azure 代码 | Microsoft Docs
+description: 了解 Visual Studio 中的 Azure 代码优化工具如何帮助提高代码的可靠性和性能。
 services: visual-studio-online
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: ed48ee06-e2d2-4322-af22-07200fb16987
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23452396"
 ---
 # <a name="optimizing-your-azure-code"></a>优化 Azure 代码
 对使用 Microsoft Azure 的应用程序进行编程时，应遵循某些编码做法，以免在云环境中应用程序的伸缩性、行为和性能出现问题。 Microsoft 提供了 Azure 代码分析工具，该工具可识别并确定部分常见问题并帮助你解决这些问题。 可以通过 NuGet 在 Visual Studio 中下载该工具。

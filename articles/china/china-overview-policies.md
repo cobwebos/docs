@@ -1,6 +1,6 @@
 ---
-title: "Azure 中国世纪互联的中国云政策和法规 | Microsoft Docs"
-description: "若要在中国推出 Internet 服务，组织必须遵守适用的中国云政策和法律。 了解 Internet 内容提供商 (ICP) 必须向中国工业和信息化部 (MIIT) 申请办理的各项法规手续。"
+title: Azure 中国世纪互联的中国云政策和法规 | Microsoft Docs
+description: 若要在中国推出 Internet 服务，组织必须遵守适用的中国云政策和法律。 了解 Internet 内容提供商 (ICP) 必须向中国工业和信息化部 (MIIT) 申请办理的各项法规手续。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635190"
 ---
 # <a name="china-cloud-policies-and-regulations"></a>中国云政策和法规
 若要在中国推出 Internet 服务，组织必须遵守适用的中国云政策和法律。 根据这些规定，Internet 内容提供商 (ICP) 必须向中国工业和信息化部 (MIIT) 申请以下类型的 [ICP 号码](https://en.wikipedia.org/wiki/ICP_license)之一：

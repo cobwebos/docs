@@ -1,6 +1,6 @@
 ---
-title: "将应用程序重新托管和迁移到 Azure 中国世纪互联 | Microsoft Docs"
-description: "如果已将应用程序或工作负荷部署到全球 Azure，可将其重新托管在 Azure 中国世纪互联，但可能需要对其进行更改。 本页介绍如何改编 Azure Active Directory、Azure 流量管理器、Azure 通知中心和 Azure Key Vault。"
+title: 将应用程序重新托管和迁移到 Azure 中国世纪互联 | Microsoft Docs
+description: 如果已将应用程序或工作负荷部署到全球 Azure，可将其重新托管在 Azure 中国世纪互联，但可能需要对其进行更改。 本页介绍如何改编 Azure Active Directory、Azure 流量管理器、Azure 通知中心和 Azure Key Vault。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635191"
 ---
 # <a name="rehost-and-migrate-an-application-to-azure"></a>将应用程序重新托管和迁移到 Azure
 如果已将应用程序或工作负荷部署到全球 Azure，可将其重新托管在世纪互联运营的 Microsoft Azure（Azure 中国世纪互联），但可能需要进行某些设计更改。 本页介绍在重新托管时如何改编 Azure Active Directory、Azure 流量管理器、Azure 通知中心和 Azure Key Vault。
@@ -95,8 +96,8 @@ Microsoft Azure 中国世纪互联将 [Azure Active Directory](https://azure.mic
 [Azure 全局连接工具包](https://github.com/Azure/AzureGlobalConnectionToolkit)有助于在国家云之间迁移应用程序，[GitHub](https://github.com/Azure/AzureGlobalConnectionToolkit) 中已提供该工具包。
 
 全局连接工具包提供两个组件：
-- **评估工具：**生成一份报告，让你评估现有的全局 Azure 订阅，并获取迁移规划任务的帮助。 该报告解答有关在不同 Azure 云环境之间迁移 Azure 服务、比较服务和估算成本的问题，并列出重要注意事项。
-- **CI/CD（持续集成和持续交付）工具：**验证和执行迁移。 例如，使用 CI/CD 工具可将虚拟机从 Azure 的东亚区域迁移到中国东部区域。 该工具包可在源与目标订阅之间同步元数据和配置，确保在迁移后，这些信息与原始值匹配。 作为一个开源工具，可以任意对其进行自定义，或将其集成到现有的 DevOps 流程中。 选择支持 Mac、Linux 和 Windows 的 PowerShell 版本或跨平台 NodeJS 版本。
+- **评估工具：** 生成一份报告，让你评估现有的全局 Azure 订阅，并获取迁移规划任务的帮助。 该报告解答有关在不同 Azure 云环境之间迁移 Azure 服务、比较服务和估算成本的问题，并列出重要注意事项。
+- **CI/CD（持续集成和持续交付）工具：** 验证和执行迁移。 例如，使用 CI/CD 工具可将虚拟机从 Azure 的东亚区域迁移到中国东部区域。 该工具包可在源与目标订阅之间同步元数据和配置，确保在迁移后，这些信息与原始值匹配。 作为一个开源工具，可以任意对其进行自定义，或将其集成到现有的 DevOps 流程中。 选择支持 Mac、Linux 和 Windows 的 PowerShell 版本或跨平台 NodeJS 版本。
 
 [获取工具包](https://github.com/Azure/AzureGlobalConnectionToolkit)。
 

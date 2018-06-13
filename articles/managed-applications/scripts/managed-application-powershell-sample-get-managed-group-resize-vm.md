@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell 脚本示例 - 获取托管资源组和重设 VM 大小 | Microsoft Docs"
-description: "Azure PowerShell 脚本示例 - 获取托管资源组和重设 VM 大小"
+title: Azure PowerShell 脚本示例 - 获取托管资源组和重设 VM 大小 | Microsoft Docs
+description: Azure PowerShell 脚本示例 - 获取托管资源组和重设 VM 大小
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23636967"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>使用 PowerShell 获取托管资源组中的资源并重设 VM 大小
 

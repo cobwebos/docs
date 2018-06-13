@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23112425"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>用作备份目标的 StorSimple 与 Veeam 的集成
 

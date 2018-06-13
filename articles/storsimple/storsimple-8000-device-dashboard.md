@@ -1,12 +1,12 @@
 ---
-title: "使用 StorSimple 8000 系列设备摘要 | Microsoft Docs"
-description: "介绍 StorSimple 设备管理器服务设备摘要、如何用其查看存储指标和连接的发起程序，以及如何查找序列号和 IQN。"
+title: 使用 StorSimple 8000 系列设备摘要 | Microsoft Docs
+description: 介绍 StorSimple 设备管理器服务设备摘要、如何用其查看存储指标和连接的发起程序，以及如何查找序列号和 IQN。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108255"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>使用 StorSimple 设备管理器服务中的设备摘要
 

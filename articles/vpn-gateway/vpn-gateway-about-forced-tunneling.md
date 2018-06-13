@@ -1,11 +1,11 @@
 ---
-title: "为 Azure 站点到站点连接配置强制隧道：经典 | Microsoft Docs"
-description: "如何重定向或“强制”所有 Internet 绑定的流量路由回本地位置。"
+title: 为 Azure 站点到站点连接配置强制隧道：经典 | Microsoft Docs
+description: 如何重定向或“强制”所有 Internet 绑定的流量路由回本地位置。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23123835"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用经典部署模型配置强制隧道
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 12/21/2017
 
   * 本地 VNet 路由：直接路由到同一个虚拟网络中的目标 VM。
   * 本地路由：路由到 Azure VPN 网关。
-  * **默认路由：**直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包会被删除。
+  * **默认路由：** 直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包会被删除。
 * 随着用户定义路由的发布，可以创建路由表来添加默认路由，然后将路由表关联到 VNet 子网，在这些子网启用强制隧道。
 * 需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
 * 强制隧道必须关联到具有动态路由 VPN 网关的 VNet，不能是静态网关。

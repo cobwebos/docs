@@ -1,12 +1,12 @@
 ---
-title: "使用 StorSimple 8000 系列设备摘要 | Microsoft Docs"
-description: "介绍 StorSimple 服务摘要边栏选项卡并说明如何使用它来监视 StorSimple 解决方案的运行状况。"
+title: 使用 StorSimple 8000 系列设备摘要 | Microsoft Docs
+description: 介绍 StorSimple 服务摘要边栏选项卡并说明如何使用它来监视 StorSimple 解决方案的运行状况。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108205"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>使用 StorSimple 8000 系列设备的服务摘要边栏选项卡
 

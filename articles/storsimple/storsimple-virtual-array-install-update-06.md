@@ -1,12 +1,12 @@
 ---
-title: "在 StorSimple Virtual Array 上安装 Update 0.6 | Microsoft Docs"
-description: "介绍如何使用 StorSimple Virtual Array Web UI，通过 Azure 门户和修补程序方法应用更新"
+title: 在 StorSimple Virtual Array 上安装 Update 0.6 | Microsoft Docs
+description: 介绍如何使用 StorSimple Virtual Array Web UI，通过 Azure 门户和修补程序方法应用更新
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109985"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装Update 0.6
 

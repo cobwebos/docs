@@ -1,12 +1,12 @@
 ---
-title: "Azure VPN 网关的 BGP 概述 | Microsoft 文档"
-description: "本文概述了 Azure VPN 网关的 BGP。"
+title: Azure VPN 网关的 BGP 概述 | Microsoft 文档
+description: 本文概述了 Azure VPN 网关的 BGP。
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: f8c3985c-c128-4f34-835c-0e88742bf36e
 ms.service: vpn-gateway
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23123795"
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Azure VPN 网关的 BGP 概述
 本文概述了 Azure VPN 网关中支持的 BGP（边界网关协议）。

@@ -1,12 +1,12 @@
 ---
-title: "Azure PowerShell 脚本示例 - 轮换存储帐户访问密钥 | Microsoft Docs"
-description: "创建 Azure 存储帐户，然后检索并轮换其中的一个帐户访问密钥。"
+title: Azure PowerShell 脚本示例 - 轮换存储帐户访问密钥 | Microsoft Docs
+description: 创建 Azure 存储帐户，然后检索并轮换其中的一个帐户访问密钥。
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/29/2017
+ms.locfileid: "25984155"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>创建存储帐户并轮换其帐户访问密钥
 

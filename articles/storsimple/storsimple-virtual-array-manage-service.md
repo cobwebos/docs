@@ -1,11 +1,11 @@
 ---
-title: "部署 StorSimple 设备管理器服务 | Microsoft 文档"
-description: "说明如何在 Azure 门户中创建和删除 StorSimple Device Manager 服务，并介绍了如何管理服务注册密钥。"
+title: 部署 StorSimple 设备管理器服务 | Microsoft 文档
+description: 说明如何在 Azure 门户中创建和删除 StorSimple Device Manager 服务，并介绍了如何管理服务注册密钥。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 28499494-8c4d-4a7f-9d44-94b2b8a93c93
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110295"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>为 StorSimple 虚拟阵列部署 StorSimple Device Manager 服务
 ## <a name="overview"></a>概述

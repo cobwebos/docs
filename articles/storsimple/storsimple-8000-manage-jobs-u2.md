@@ -1,12 +1,12 @@
 ---
-title: "查看和管理 StorSimple 8000 系列的作业 | Microsoft Docs"
-description: "介绍 StorSimple 设备管理器服务的“作业”边栏选项卡，以及如何使用它来跟踪最近的、当前的和计划的备份作业。"
+title: 查看和管理 StorSimple 8000 系列的作业 | Microsoft Docs
+description: 介绍 StorSimple 设备管理器服务的“作业”边栏选项卡，以及如何使用它来跟踪最近的、当前的和计划的备份作业。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108185"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 设备管理器服务查看和管理作业（Update 3 和更高版本）
 

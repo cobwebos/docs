@@ -1,5 +1,5 @@
 ---
-title: "将安全性集成到 Azure 体系结构设计 | Microsoft Docs"
+title: 将安全性集成到 Azure 体系结构设计 | Microsoft Docs
 description: " 本文将帮助你了解 Azure 上的应用程序和服务体系结构，以便更容易地将安全集成到设计和实现中。 "
 services: security
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/23/2017
+ms.locfileid: "25549411"
 ---
 # <a name="application-architecture-on-azure"></a>Azure 上的应用程序体系结构
 要在 Microsoft Azure 上帮助保护基于云的解决方案，坚实的体系结构基础是至关重要的。 架构师、设计师和实施者全部受益于应用程序和服务体系结构的扎实的知识。 此基础知识可帮助你了解基于云的解决方案的所有组件，并且更加轻松地将安全集成到设计和实现的各个方面。

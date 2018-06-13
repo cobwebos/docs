@@ -1,6 +1,6 @@
 ---
-title: "Azure 中国世纪互联支持 | Microsoft Docs"
-description: "Azure 通过世纪互联提供许多自助服务支持选项和支持工作。 本页提供多个支持选项以及相关的联系信息。"
+title: Azure 中国世纪互联支持 | Microsoft Docs
+description: Azure 通过世纪互联提供许多自助服务支持选项和支持工作。 本页提供多个支持选项以及相关的联系信息。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635181"
 ---
 # <a name="azure-china-21vianet-support"></a>Azure 中国世纪互联支持
 Azure 通过世纪互联提供许多自助服务支持选项和支持工作。

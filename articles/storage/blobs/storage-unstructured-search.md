@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 云存储中搜索非结构化数据"
-description: "使用 Azure 搜索来搜索非结构化数据。"
+title: 在 Azure 云存储中搜索非结构化数据
+description: 使用 Azure 搜索来搜索非结构化数据。
 author: roygara
 manager: timlt
 services: storage
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23451634"
 ---
 # <a name="search-unstructured-data-in-cloud-storage"></a>在云存储中搜索非结构化数据
 

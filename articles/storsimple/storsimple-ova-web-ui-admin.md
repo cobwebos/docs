@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array Web UI 管理 | Microsoft Docs"
-description: "介绍如何通过 StorSimple Virtual Array Web UI 执行基本的设备管理任务。"
+title: StorSimple Virtual Array Web UI 管理 | Microsoft Docs
+description: 介绍如何通过 StorSimple Virtual Array Web UI 执行基本的设备管理任务。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ea65b4c7-a478-43e6-83df-1d9ea62916a6
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109955"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>使用 Web UI 管理 StorSimple Virtual Array
 ![安装流程](./media/storsimple-ova-web-ui-admin/manage4.png)

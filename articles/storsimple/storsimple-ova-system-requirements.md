@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure StorSimple 虚拟阵列系统要求 | Microsoft Docs"
-description: "了解有关 StorSimple Virtual Array 的软件和网络要求的详细信息"
+title: Microsoft Azure StorSimple 虚拟阵列系统要求 | Microsoft Docs
+description: 了解有关 StorSimple Virtual Array 的软件和网络要求的详细信息
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24815222"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
 ## <a name="overview"></a>概述

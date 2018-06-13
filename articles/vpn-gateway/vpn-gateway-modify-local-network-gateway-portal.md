@@ -1,13 +1,13 @@
 ---
-title: "修改本地网络网关 IP 地址前缀和 VPN 网关 IP 地址 | Azure| 门户 | Microsoft Docs"
-description: "本文介绍了如何使用 Azure 门户更改本地网络网关的 IP 地址前缀。"
+title: 修改本地网络网关 IP 地址前缀和 VPN 网关 IP 地址 | Azure| 门户 | Microsoft Docs
+description: 本文介绍了如何使用 Azure 门户更改本地网络网关的 IP 地址前缀。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23124385"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>使用 Azure 门户修改本地网络网关设置
 

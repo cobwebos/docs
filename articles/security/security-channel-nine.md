@@ -1,6 +1,6 @@
 ---
-title: "第 9 频道上的 Azure 安全视频 | Microsoft 文档"
-description: "本文介绍第 9 频道上的精选 Azure 安全演示文稿。 第 9 频道是一个社区，使用我们产品的客户与我们产品的支持人员可以在这个社区进行交流。"
+title: 第 9 频道上的 Azure 安全视频 | Microsoft 文档
+description: 本文介绍第 9 频道上的精选 Azure 安全演示文稿。 第 9 频道是一个社区，使用我们产品的客户与我们产品的支持人员可以在这个社区进行交流。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540129"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>第 9 频道上的 Azure 安全视频
 [第 9 频道](https://channel9.msdn.com/)是一个社区，这个社区将我们产品的支持人员推向前台，让客户可以与他们直接进行交流。

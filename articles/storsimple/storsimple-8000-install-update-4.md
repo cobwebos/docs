@@ -1,12 +1,12 @@
 ---
-title: "在 StorSimple 8000 系列设备上安装 Update 4 | Microsoft Docs"
-description: "介绍如何在 StorSimple 8000 系列设备上安装 StorSimple 8000 系列 Update 4。"
+title: 在 StorSimple 8000 系列设备上安装 Update 4 | Microsoft Docs
+description: 介绍如何在 StorSimple 8000 系列设备上安装 StorSimple 8000 系列 Update 4。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108385"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 4
 

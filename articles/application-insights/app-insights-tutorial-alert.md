@@ -1,7 +1,7 @@
 ---
-title: "从 Azure Application Insights 发送警报 | Microsoft Docs"
-description: "本教程介绍如何使用 Azure Application Insights 发送警报以响应应用程序中的错误。"
-keywords: 
+title: 从 Azure Application Insights 发送警报 | Microsoft Docs
+description: 本教程介绍如何使用 Azure Application Insights 发送警报以响应应用程序中的错误。
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23659340"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 监视和警报应用程序的运行状况
 

@@ -1,12 +1,12 @@
 ---
-title: "将 StorSimple 故障转移和灾难恢复到 StorSimple 8000 系列物理设备 | Microsoft Docs"
-description: "了解如何将 StorSimple 8000 系列物理设备故障转移到另一个物理设备。"
+title: 将 StorSimple 故障转移和灾难恢复到 StorSimple 8000 系列物理设备 | Microsoft Docs
+description: 了解如何将 StorSimple 8000 系列物理设备故障转移到另一个物理设备。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108265"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>故障转移到 StorSimple 8000 系列物理设备
 

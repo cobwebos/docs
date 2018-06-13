@@ -1,11 +1,11 @@
 ---
-title: "什么是 StorSimple Snapshot Manager？ | Microsoft 文档"
-description: "介绍 StorSimple Snapshot Manager 及其体系结构和功能。"
+title: 什么是 StorSimple Snapshot Manager？ | Microsoft 文档
+description: 介绍 StorSimple Snapshot Manager 及其体系结构和功能。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6094c31e-e2d9-4592-8a15-76bdcf60a754
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111465"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager 简介
 

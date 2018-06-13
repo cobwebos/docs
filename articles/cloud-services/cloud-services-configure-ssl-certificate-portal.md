@@ -1,11 +1,11 @@
 ---
-title: "为云服务配置 SSL | Microsoft Docs"
-description: "了解如何为 Web 角色指定 HTTPS 终结点以及如何上传 SSL 证书来保护应用程序。 这些示例使用 Azure 门户。"
+title: 为云服务配置 SSL | Microsoft Docs
+description: 了解如何为 Web 角色指定 HTTPS 终结点以及如何上传 SSL 证书来保护应用程序。 这些示例使用 Azure 门户。
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 371ba204-48b6-41af-ab9f-ed1d64efe704
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24859770"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 中为应用程序配置 SSL
 
@@ -83,7 +84,7 @@ ms.lasthandoff: 11/16/2017
 
    | 权限值 | 说明 |
    | --- | --- |
-   | limitedOrElevated |**（默认）**所有角色进程都可以访问该私钥。 |
+   | limitedOrElevated |**（默认）** 所有角色进程都可以访问该私钥。 |
    | 提升的 |仅提升的进程可以访问该私钥。 |
 
 2. 在服务定义文件中，在 **Endpoints** 节中添加 **InputEndpoint** 元素以启用 HTTPS：

@@ -1,11 +1,11 @@
 ---
-title: "用于 DMZ 的 Azure 示例应用程序 |Microsoft Docs"
-description: "在创建外围网络后部署此简单的 Web 应用程序以测试流量流方案"
+title: 用于 DMZ 的 Azure 示例应用程序 |Microsoft Docs
+description: 在创建外围网络后部署此简单的 Web 应用程序以测试流量流方案
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: 60340ab7-b82b-40e0-bd87-83e41fe4519c
 ms.service: virtual-network
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23124345"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>用于 DMZ 的示例应用程序
 [返回安全边界最佳实践页面][HOME]

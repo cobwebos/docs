@@ -1,12 +1,12 @@
 ---
-title: "监视 StorSimple 8000 系列设备 | Microsoft Docs"
-description: "介绍了如何使用 StorSimple 设备管理器服务监视使用情况、I/O 性能和容量使用情况。"
+title: 监视 StorSimple 8000 系列设备 | Microsoft Docs
+description: 介绍了如何使用 StorSimple 设备管理器服务监视使用情况、I/O 性能和容量使用情况。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/21/2017
+ms.locfileid: "23479263"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 设备管理器服务监视 StorSimple 设备
 
