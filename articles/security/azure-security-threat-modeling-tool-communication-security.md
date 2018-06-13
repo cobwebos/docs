@@ -1,6 +1,6 @@
 ---
-title: "通信安全 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "针对威胁建模工具中暴露的威胁采取的缓解措施"
+title: 通信安全 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019477"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -288,7 +289,7 @@ namespace CertificatePinningExample
 | **适用的技术** | NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html) |
-| **步骤** | 应用程序配置应确保始终使用 HTTPS 来访问敏感信息。<ul><li>**说明：**如果应用程序需要处理敏感信息但未使用消息级加密，则只能允许它通过加密的传输通道来通信。</li><li>**建议：**确保禁用 HTTP 传输，改为启用 HTTPS 传输。 例如，将 `<httpTransport/>` 替换为 `<httpsTransport/>` 标记。 不要依赖使用网络配置（防火墙）来保证只能通过安全通道访问应用程序。 从哲学的观点来讲，应用程序不应依赖于网络来保证其安全性。</li></ul><p>从实践的观点来讲，负责保护网络的人不会一直跟进应用程序的不断变化的安全要求。</p>|
+| **步骤** | 应用程序配置应确保始终使用 HTTPS 来访问敏感信息。<ul><li>**说明：** 如果应用程序需要处理敏感信息但未使用消息级加密，则只能允许它通过加密的传输通道来通信。</li><li>**建议：** 确保禁用 HTTP 传输，改为启用 HTTPS 传输。 例如，将 `<httpTransport/>` 替换为 `<httpsTransport/>` 标记。 不要依赖使用网络配置（防火墙）来保证只能通过安全通道访问应用程序。 从哲学的观点来讲，应用程序不应依赖于网络来保证其安全性。</li></ul><p>从实践的观点来讲，负责保护网络的人不会一直跟进应用程序的不断变化的安全要求。</p>|
 
 ## <a id="message-protection"></a>WCF：将消息安全保护级别设置为 EncryptAndSign
 
@@ -299,7 +300,7 @@ namespace CertificatePinningExample
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **步骤** | <ul><li>**说明：**当保护级别设置为“none”时，将禁用消息保护。 保密性和完整性是使用适当的设置级别实现的。</li><li>**建议：**<ul><li>当 `Mode=None` 时 - 禁用消息保护</li><li>当 `Mode=Sign` 时 - 将消息签名但不加密；当数据完整性非常重要时应使用该设置</li><li>当 `Mode=EncryptAndSign` 时 - 将消息签名并加密</li></ul></li></ul><p>请考虑禁用加密，仅当只是需要验证信息的完整性而不关心机密性时，才为消息签名。 对于需要验证原始发送者但不传输任何敏感数据的操作或服务约定，这种做法可能很有用。 降低保护级别时，请小心不要在消息中包含任何个人身份信息 (PII)。</p>|
+| **步骤** | <ul><li>**说明：** 当保护级别设置为“none”时，将禁用消息保护。 保密性和完整性是使用适当的设置级别实现的。</li><li>**建议：**<ul><li>当 `Mode=None` 时 - 禁用消息保护</li><li>当 `Mode=Sign` 时 - 将消息签名但不加密；当数据完整性非常重要时应使用该设置</li><li>当 `Mode=EncryptAndSign` 时 - 将消息签名并加密</li></ul></li></ul><p>请考虑禁用加密，仅当只是需要验证信息的完整性而不关心机密性时，才为消息签名。 对于需要验证原始发送者但不传输任何敏感数据的操作或服务约定，这种做法可能很有用。 降低保护级别时，请小心不要在消息中包含任何个人身份信息 (PII)。</p>|
 
 ### <a name="example"></a>示例
 以下示例演示了如何将服务和操作配置为只将消息签名。 `ProtectionLevel.Sign` 的服务约定示例：下面是在服务约定级别使用 ProtectionLevel.Sign 的示例： 
@@ -328,7 +329,7 @@ string GetData(int value);
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
-| **步骤** | <ul><li>**说明：**不要使用管理员或高特权帐户运行 WCF 服务。 否则，如果服务遭到入侵，将导致严重影响。</li><li>**建议：**最低特权帐户托管 WCF 服务，因为这样可以在遭到攻击时减小应用程序的受攻击面，降低潜在损失。 如果服务帐户需要 MSMQ、事件日志、性能计数器和文件系统等基础结构资源的其他访问权限，应该授予对这些资源的相应权限，使 WCF 服务能够成功运行。</li></ul><p>如果服务需要代表原始调用方访问特定的资源，请使用模拟和委派来传送调用方的标识，以便在下游进行授权检查。 在开发方案中，请使用本地网络服务帐户，这是一个特权降低的特殊内置帐户。 在生产方案中，请创建最低特权的自定义域服务帐户。</p>|
+| **步骤** | <ul><li>**说明：** 不要使用管理员或高特权帐户运行 WCF 服务。 否则，如果服务遭到入侵，将导致严重影响。</li><li>**建议：** 最低特权帐户托管 WCF 服务，因为这样可以在遭到攻击时减小应用程序的受攻击面，降低潜在损失。 如果服务帐户需要 MSMQ、事件日志、性能计数器和文件系统等基础结构资源的其他访问权限，应该授予对这些资源的相应权限，使 WCF 服务能够成功运行。</li></ul><p>如果服务需要代表原始调用方访问特定的资源，请使用模拟和委派来传送调用方的标识，以便在下游进行授权检查。 在开发方案中，请使用本地网络服务帐户，这是一个特权降低的特殊内置帐户。 在生产方案中，请创建最低特权的自定义域服务帐户。</p>|
 
 ## <a id="webapi-https"></a>强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输
 
