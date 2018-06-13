@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31792542"
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics 中的数据源
 Log Analytics 从已连接的数据源收集数据并将其存储在 Log Analytics 工作区中。  从每个源收集的数据由所配置的数据源定义。  Log Analytics 中的数据以一组记录的形式存储。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。

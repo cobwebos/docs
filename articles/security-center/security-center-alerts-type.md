@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778421"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>了解 Azure 安全中心中的安全警报
 本文可帮助了解 Azure 安全中心提供的各类安全警报和相关的见解。 有关如何管理警报和事件的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。

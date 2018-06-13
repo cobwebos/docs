@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/07/2018
+  ms.locfileid: "33778658"
 abstract:
   description: 了解如何使用 Azure HDInsight 来分析流数据或历史数据。 教程和其他文档介绍了如何使用最常用的开源框架（例如 Hadoop、Spark、Hive、LLAP、Kafka、Storm、R）来创建群集、处理与分析大数据，以及开发解决方案。<p>Azure HDInsight 是适用于企业的分析服务，具有完全托管、全面且开源的特点。 HDInsight 是一项云服务，可以轻松、快速且经济有效地处理大量数据。 HDInsight 还支持各种各样的方案，例如提取、转换和加载 (ETL)；数据仓库操作；机器学习；IoT。</p>
   aside:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161306"
 ---
 # <a name="cli-example-create-an-azure-event-grid-subscription"></a>CLI 示例：创建 Azure 事件网格订阅 
 

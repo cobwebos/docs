@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32163276"
 ---
 # <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>教程：创建部署到 Azure 容器实例的容器
 

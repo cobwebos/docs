@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783826"
 ---
 # <a name="output-metadata"></a>输出元数据
 ## <a name="overview"></a>概述
@@ -96,7 +97,7 @@ ms.lasthandoff: 05/07/2018
 ### <a name="attributes"></a>属性
 | 名称 | Type | 说明 |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此视频轨道的从零开始的索引。**注意：**此 **Id** 不一定是 MP4 文件中使用的 TrackID。 |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此视频轨道的从零开始的索引。**注意：** 此 **Id** 不一定是 MP4 文件中使用的 TrackID。 |
 | **FourCC**<br/><br/> 必选 |**xs:string** |视频编解码器 FourCC 代码。 |
 | **配置文件** |**xs:string** |H264 配置文件（仅适用于 H264 编解码器）。 |
 | **级别** |**xs:string** |H264 级别（仅适用于 H264 编解码器）。 |
@@ -128,7 +129,7 @@ ms.lasthandoff: 05/07/2018
 ### <a name="attributes"></a>属性
 | 名称 | Type | 说明 |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此音频轨道从零开始的索引。**注意：**这不一定是 MP4 文件中使用的 TrackID。 |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此音频轨道从零开始的索引。**注意：** 这不一定是 MP4 文件中使用的 TrackID。 |
 | **编解码器** |**xs:string** |音频轨道编解码器字符串。 |
 | **EncoderVersion** |**xs:string** |可选的编码器版本字符串，对于 EAC3 是必需的。 |
 | **通道**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |音频通道数。 |
