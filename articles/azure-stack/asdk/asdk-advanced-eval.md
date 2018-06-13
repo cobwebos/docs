@@ -1,12 +1,12 @@
 ---
-title: "高级 Azure 堆栈评估任务 |Microsoft 文档"
-description: "本指南介绍了高级的 Azure 堆栈评估任务。"
+title: 高级 Azure 堆栈评估任务 |Microsoft 文档
+description: 本指南介绍了高级的 Azure 堆栈评估任务。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29976349"
 ---
 # <a name="advanced-azure-stack-development-kit-evaluation-tasks"></a>高级的 Azure 堆栈开发工具包评估任务
 已获得熟悉的基本 Azure 堆栈开发工具包 (ASDK) 服务特性和功能后，你可以通过更高级的方案测试深化 Azure 堆栈进一步了解。 这些更高级的评估任务均完全记录在 Azure 堆栈运算符文档。

@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 安全中心启用 VM 代理 | Microsoft 文档"
-description: "本文档介绍如何实现 Azure 安全中心建议**启用 VM 代理**。"
+title: 在 Azure 安全中心启用 VM 代理 | Microsoft 文档
+description: 本文档介绍如何实现 Azure 安全中心建议**启用 VM 代理**。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 5b431c25-4241-45b7-9556-cf2a1956f3da
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040282"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>在 Azure 安全中心启用 VM 代理
 必须在虚拟机 (VM) 上安装 VM 代理以便[启用数据收集](security-center-enable-data-collection.md)。  使用 Azure 安全中心，可以查看需要 VM 代理的 VM，并建议在这些 VM 上启用 VM 代理。

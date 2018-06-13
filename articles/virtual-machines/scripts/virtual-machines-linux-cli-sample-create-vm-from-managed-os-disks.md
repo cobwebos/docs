@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI 脚本示例 - 通过将托管磁盘附加为 OS 磁盘创建 VM | Microsoft Docs"
-description: "Azure CLI 脚本示例 - 通过将托管磁盘附加为 OS 磁盘创建 VM"
+title: Azure CLI 脚本示例 - 通过将托管磁盘附加为 OS 磁盘创建 VM | Microsoft Docs
+description: Azure CLI 脚本示例 - 通过将托管磁盘附加为 OS 磁盘创建 VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: ramankum
 manager: kavithag
 editor: ramankum
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29847669"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>通过 CLI 使用现有托管 OS 磁盘创建虚拟机
 

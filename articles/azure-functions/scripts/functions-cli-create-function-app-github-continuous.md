@@ -1,9 +1,9 @@
 ---
-title: "在 Azure 中创建从 GitHub 部署的函数 | Microsoft Docs"
-description: "使用 Azure Functions 创建函数应用并从 GitHub 存储库部署函数代码。"
+title: 在 Azure 中创建从 GitHub 部署的函数 | Microsoft Docs
+description: 使用 Azure Functions 创建函数应用并从 GitHub 存储库部署函数代码。
 services: functions
 ms.service: functions
-keywords: 
+keywords: ''
 ms.devlang: azurecli
 author: syntaxc4
 ms.author: cfowler
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29842722"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>在 Azure 中创建从 GitHub 部署的函数应用
 

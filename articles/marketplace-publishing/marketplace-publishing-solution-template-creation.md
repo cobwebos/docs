@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937302"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>为 Azure Marketplace 创建解决方案模板指南
 完成步骤 1 [帐户创建和注册][link-acct-creation]后，我们已通过[创建解决方案模板的技术先决条件](marketplace-publishing-solution-template-creation-prerequisites.md)指导创建 Azure 兼容的解决方案模板。 现在，我们指导完成在 Azure Marketplace 的[发布门户][link-pubportal]上为多个 VM 创建解决方案模板的步骤。

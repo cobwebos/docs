@@ -1,11 +1,11 @@
 ---
-title: "Azure 计划程序文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何使用计划程序来计划及调用重复性应用程序操作和例行维护等作业。 教程、API 参考和其他资源。"
+title: Azure 计划程序文档 - 教程和 API 参考 | Microsoft 文档
+description: 了解如何使用计划程序来计划及调用重复性应用程序操作和例行维护等作业。 教程、API 参考和其他资源。
 services: scheduler
 author: carolz
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: scheduler
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23071341"
 ---
 # <a name="scheduler-documentation"></a>计划程序文档
 
