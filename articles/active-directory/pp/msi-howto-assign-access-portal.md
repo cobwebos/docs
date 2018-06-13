@@ -1,11 +1,11 @@
 ---
-title: "如何使用 Azure 门户授予 MSI 对 Azure 资源的访问权限"
-description: "分步说明如何使用 Azure 门户授予一个资源上的 MSI 对另一个资源的访问权限。"
+title: 如何使用 Azure 门户授予 MSI 对 Azure 资源的访问权限
+description: 分步说明如何使用 Azure 门户授予一个资源上的 MSI 对另一个资源的访问权限。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28978831"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>使用 Azure 门户授予托管服务标识对资源的访问权限
 

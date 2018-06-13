@@ -1,12 +1,12 @@
 ---
-title: "Azure 事件中心基于角色的访问控制 (RBAC) 预览版 | Microsoft Docs"
-description: "Azure 事件中心基于角色的访问控制"
+title: Azure 事件中心基于角色的访问控制 (RBAC) 预览版 | Microsoft Docs
+description: Azure 事件中心基于角色的访问控制
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783328"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure 事件中心的托管服务标识预览版 | Microsoft Docs"
-description: "将托管服务标识与 Azure 事件中心一起使用"
+title: Azure 事件中心的托管服务标识预览版 | Microsoft Docs
+description: 将托管服务标识与 Azure 事件中心一起使用
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783327"
 ---
 # <a name="managed-service-identity-preview"></a>托管服务标识（预览版）
 

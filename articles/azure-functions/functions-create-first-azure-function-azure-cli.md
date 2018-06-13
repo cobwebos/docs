@@ -1,8 +1,8 @@
 ---
-title: "通过 Azure CLI 创建第一个函数 | Microsoft Docs"
-description: "了解如何使用 Azure CLI 创建第一个可无服务器执行的 Azure Function。"
+title: 通过 Azure CLI 创建第一个函数 | Microsoft Docs
+description: 了解如何使用 Azure CLI 创建第一个可无服务器执行的 Azure Function。
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118765"
 ---
 # <a name="create-your-first-function-using-the-azure-cli"></a>使用 Azure CLI 创建第一个函数
 

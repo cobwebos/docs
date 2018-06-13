@@ -1,11 +1,11 @@
 ---
-title: "如何为给定 API 选择权限 | Microsoft Docs"
-description: "了解要开发的应用程序的客户端和资源应用程序如何使用权限请求"
+title: 如何为给定 API 选择权限 | Microsoft Docs
+description: 了解要开发的应用程序的客户端和资源应用程序如何使用权限请求
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614162"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>如何为给定 API 选择权限 
 
