@@ -1,11 +1,11 @@
 ---
-title: "使用点到站点和证书身份验证将计算机连接到虚拟网络：Azure 经典门户 | Microsoft Docs"
-description: "使用 Azure 门户创建经典的点到站点 VPN 网关连接。"
+title: 使用点到站点和证书身份验证将计算机连接到虚拟网络：Azure 经典门户 | Microsoft Docs
+description: 使用 Azure 门户创建经典的点到站点 VPN 网关连接。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 65e14579-86cf-4d29-a6ac-547ccbd743bd
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29464252"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-classic-azure-portal"></a>使用证书身份验证配置与 VNet 的点到站点连接（经典）：Azure 门户
 
@@ -68,7 +69,7 @@ ms.lasthandoff: 02/22/2018
 * **连接类型：点到站点**
 * **客户端地址空间：172.16.201.0/24**。 使用此点到站点连接连接到 VNet 的 VPN 客户端接收来自指定池的 IP 地址。
 * **GatewaySubnet：192.168.200.0/24**。 网关子网必须使用名称“GatewaySubnet”。
-* **大小：**选择要使用的网关 SKU。
+* **大小：** 选择要使用的网关 SKU。
 * **路由类型：动态**
 
 ## <a name="vnetvpn"></a>1.创建虚拟网络和 VPN 网关

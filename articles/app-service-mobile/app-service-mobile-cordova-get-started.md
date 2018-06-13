@@ -1,13 +1,13 @@
 ---
-title: "在 Azure 应用服务移动应用中创建 Cordova 应用 | Microsoft Docs"
-description: "遵循本教程开始使用 Azure 移动应用后端进行 Apache Cordova 开发"
+title: 在 Azure 应用服务移动应用中创建 Cordova 应用 | Microsoft Docs
+description: 遵循本教程开始使用 Azure 移动应用后端进行 Apache Cordova 开发
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
-tags: 
-keywords: "cordova,javascript,移动,客户端"
+editor: ''
+tags: ''
+keywords: cordova,javascript,移动,客户端
 ms.assetid: 0b08fc12-0a80-42d3-9cc1-9b3f8d3e3a3f
 ms.service: app-service-mobile
 ms.workload: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27595170"
 ---
 # <a name="create-an-apache-cordova-app"></a>创建 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

@@ -1,10 +1,10 @@
 ---
-title: "使用移动应用向 Android 应用添加推送通知 | Microsoft Docs"
-description: "了解如何使用移动应用将推送通知发送到 Android 应用。"
+title: 使用移动应用向 Android 应用添加推送通知 | Microsoft Docs
+description: 了解如何使用移动应用将推送通知发送到 Android 应用。
 services: app-service\mobile
 documentationcenter: android
 manager: crdun
-editor: 
+editor: ''
 author: conceptdev
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27593022"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>向 Android 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]

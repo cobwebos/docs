@@ -1,6 +1,6 @@
 ---
-title: "为 Azure 移动应用启用脱机同步 (Android)"
-description: "了解如何在 Android 应用程序中使用应用服务移动应用来缓存和同步脱机数据"
+title: 为 Azure 移动应用启用脱机同步 (Android)
+description: 了解如何在 Android 应用程序中使用应用服务移动应用来缓存和同步脱机数据
 documentationcenter: android
 author: conceptdev
 manager: crdun
@@ -18,6 +18,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594179"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>为 Android 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
