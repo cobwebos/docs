@@ -1,6 +1,6 @@
 ---
-title: "将 ACR 与 Azure DC/OS 群集配合使用"
-description: "在 Azure 容器服务中将 Azure 容器注册表与 DC/OS 群集配合使用"
+title: 将 ACR 与 Azure DC/OS 群集配合使用
+description: 在 Azure 容器服务中将 Azure 容器注册表与 DC/OS 群集配合使用
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28922886"
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>将 ACR 与 DC/OS 群集配合使用，部署应用程序
 
