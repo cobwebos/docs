@@ -1,7 +1,7 @@
 ---
-title: "快速入门：使用多个输入提交工作流 | Microsoft Docs"
+title: 快速入门：使用多个输入提交工作流 | Microsoft Docs
 titleSuffix: Azure
-description: "本快速入门假定你已安装 msgen 客户端并已通过服务成功运行示例数据。"
+description: 本快速入门假定你已安装 msgen 客户端并已通过服务成功运行示例数据。
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29119989"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>使用来自同一示例的多个输入提交工作流
 

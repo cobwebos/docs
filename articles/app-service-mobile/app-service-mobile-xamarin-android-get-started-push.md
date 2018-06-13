@@ -1,11 +1,11 @@
 ---
-title: "向 Xamarin Android 应用添加推送通知 | Microsoft Docs"
-description: "了解如何使用 Azure 应用服务和 Azure 通知中心将推送通知发送到 Xamarin Android 应用"
+title: 向 Xamarin Android 应用添加推送通知 | Microsoft Docs
+description: 了解如何使用 Azure 应用服务和 Azure 通知中心将推送通知发送到 Xamarin Android 应用
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 6f7e8517-e532-4559-9b07-874115f4c65b
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118269"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]

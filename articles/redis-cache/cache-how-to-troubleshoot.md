@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984565"
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>如何排查 Azure Redis 缓存问题
 本文提供的指南适用于排查以下类别的 Azure Redis 缓存问题。

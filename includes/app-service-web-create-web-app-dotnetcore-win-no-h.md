@@ -1,6 +1,6 @@
 ---
-title: "include 文件"
-description: "include 文件"
+title: include 文件
+description: include 文件
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -13,6 +13,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28987302"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/containers/app-service-linux-intro.md)。 
 

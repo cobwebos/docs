@@ -1,11 +1,11 @@
 ---
-title: "在 BizTalk 服务中不同状态下可执行的任务 | Microsoft Docs"
-description: "不同 MABS 状态下允许执行的操作：停止、启动、重启、挂起、恢复、删除、缩放、更新配置和备份"
+title: 在 BizTalk 服务中不同状态下可执行的任务 | Microsoft Docs
+description: 不同 MABS 状态下允许执行的操作：停止、启动、重启、挂起、恢复、删除、缩放、更新配置和备份
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: aea738f3-ec76-4099-a41b-e17fea9e252f
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102736"
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>使用 BizTalk 服务状态可以和不可以执行的操作
 
