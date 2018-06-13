@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 配置和管理 VMware 复制的复制策略 | Microsoft Docs"
-description: "介绍如何配置复制设置，以便使用 Azure Site Recovery 从 VMware 复制到 Azure。"
+title: 使用 Azure Site Recovery 配置和管理 VMware 复制的复制策略 | Microsoft Docs
+description: 介绍如何配置复制设置，以便使用 Azure Site Recovery 从 VMware 复制到 Azure。
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811104"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-replication"></a>配置和管理 VMware 复制的复制策略
 本文介绍如何配置复制策略，以便使用 [Azure Site Recovery](site-recovery-overview.md) 将 VMware VM 复制到 Azure。
