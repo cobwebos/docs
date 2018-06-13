@@ -1,11 +1,11 @@
 ---
-title: "租户资源使用情况 API |Microsoft 文档"
-description: "针对资源使用情况 API 的引用，即在检索 Azure 堆栈使用情况信息。"
+title: 租户资源使用情况 API |Microsoft 文档
+description: 针对资源使用情况 API 的引用，即在检索 Azure 堆栈使用情况信息。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: b9d7c7ee-e906-4978-92a3-a2c52df16c36
 ms.service: azure-stack
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29873481"
 ---
 # <a name="tenant-resource-usage-api"></a>租户资源使用情况 API
 

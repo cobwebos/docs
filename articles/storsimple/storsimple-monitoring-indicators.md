@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 监视指示器 | Microsoft Docs"
-description: "介绍了用来监视 StorSimple 设备状态的发光二极管 (LED) 和有声警报。"
+title: StorSimple 监视指示器 | Microsoft Docs
+description: 介绍了用来监视 StorSimple 设备状态的发光二极管 (LED) 和有声警报。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/07/2017
+ms.locfileid: "24030351"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 监视指示器管理设备
 

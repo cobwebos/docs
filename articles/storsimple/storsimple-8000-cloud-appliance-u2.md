@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 云设备 Update 3 | Microsoft Docs"
-description: "了解如何在 Microsoft Azure 虚拟网络中创建、部署和管理 StorSimple 云设备。 （适用于 StorSimple Update 3 及更高版本）。"
+title: StorSimple 云设备 Update 3 | Microsoft Docs
+description: 了解如何在 Microsoft Azure 虚拟网络中创建、部署和管理 StorSimple 云设备。 （适用于 StorSimple Update 3 及更高版本）。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852330"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
 

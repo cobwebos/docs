@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "22863592"
 ---
 以下限制适用于 Azure 站点恢复：
 

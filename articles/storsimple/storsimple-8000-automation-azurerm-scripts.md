@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure 资源管理器脚本管理 StorSimple 设备 | Microsoft Docs"
-description: "了解如何使用 Azure 资源管理器脚本自动执行 StorSimple 作业"
+title: 使用 Azure 资源管理器脚本管理 StorSimple 设备 | Microsoft Docs
+description: 了解如何使用 Azure 资源管理器脚本自动执行 StorSimple 作业
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26373935"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备
 

@@ -1,12 +1,12 @@
 ---
-title: "在 Batch 中使用计算密集型 Azure VM |Microsoft Docs"
-description: "如何在 Azure Batch 池中利用支持 RDMA 或启用 GPU 的 VM 大小"
+title: 在 Batch 中使用计算密集型 Azure VM |Microsoft Docs
+description: 如何在 Azure Batch 池中利用支持 RDMA 或启用 GPU 的 VM 大小
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29762435"
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>在 Batch 池中使用支持 RDMA 或启用 GPU 的实例
 
