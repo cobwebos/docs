@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30917398"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>开始在 Azure 的 HPC Pack 群集上运行 Excel 和 SOA 工作负荷
 本文介绍如何使用 Azure 快速入门模板或 Azure PowerShell 部署脚本将 Microsoft HPC Pack 2012 R2 群集部署到 Azure 虚拟机。 此群集使用 Azure Marketplace VM 映像，这些映像根据设计可以通过 HPC Pack 运行 Microsoft Excel 工作负荷或面向服务的体系结构 (SOA) 工作负荷。 可使用群集从本地客户端计算机运行 Excel HPC 和 SOA 服务。 Excel HPC 服务提供 Excel 工作簿卸载和 Excel 用户定义的函数或 UDF。

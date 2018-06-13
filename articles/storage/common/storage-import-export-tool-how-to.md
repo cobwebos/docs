@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 导入/导出工具 | Microsoft Docs"
-description: "了解如何使用导入/导出工具为导入作业准备硬盘驱动器、修复导入作业或导出作业。"
+title: 使用 Azure 导入/导出工具 | Microsoft Docs
+description: 了解如何使用导入/导出工具为导入作业准备硬盘驱动器、修复导入作业或导出作业。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f77535bb-d577-438a-bdd3-e15a82e0c543
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059332"
 ---
 # <a name="using-the-azure-importexport-tool"></a>使用 Azure 导入/导出工具 
 

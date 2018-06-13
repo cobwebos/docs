@@ -13,6 +13,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30929336"
 ---
 1. 在虚拟网络的“设置”页上，导航到“DNS 服务器”并单击以打开“DNS 服务器”页。
 

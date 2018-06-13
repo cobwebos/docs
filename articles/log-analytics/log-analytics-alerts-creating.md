@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31519573"
 ---
 # <a name="working-with-alert-rules-in-log-analytics"></a>使用 Log Analytics 中的警报规则
 

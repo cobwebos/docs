@@ -1,11 +1,11 @@
 ---
-title: "如何通过 PHP 使用服务总线主题 | Microsoft 文档"
-description: "了解如何通过 PHP 使用 Azure 中的服务总线主题。"
+title: 如何通过 PHP 使用服务总线主题 | Microsoft 文档
+description: 了解如何通过 PHP 使用 Azure 中的服务总线主题。
 services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23044582"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>如何通过 PHP 使用服务总线主题和订阅
 

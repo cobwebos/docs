@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30171190"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>安装 Azure 堆栈开发工具包 (ASDK)
 后[准备 ASDK 主机计算机](asdk-prepare-host.md)，ASDK 可以部署到此文章中使用以下步骤 CloudBuilder.vhdx 映像。

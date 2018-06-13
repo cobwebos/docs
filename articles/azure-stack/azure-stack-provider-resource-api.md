@@ -1,11 +1,11 @@
 ---
-title: "提供程序资源使用情况 API |Microsoft 文档"
-description: "针对资源使用情况 API 的引用，即在检索 Azure 堆栈使用情况信息"
+title: 提供程序资源使用情况 API |Microsoft 文档
+description: 针对资源使用情况 API 的引用，即在检索 Azure 堆栈使用情况信息
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877273"
 ---
 # <a name="provider-resource-usage-api"></a>提供商资源使用情况 API
 术语*提供程序*适用于任何委派的提供程序和服务管理员。 Azure 堆栈运算符和委派的提供程序可以使用提供程序使用情况 API，查看其直接租户的使用情况。 例如，P0 关系图中所示，可以调用提供程序 API，以获取有关 P1 的使用情况信息和 P2 的直接使用和 P1 都可以调用有关 P3 和 P4 使用情况信息。
@@ -40,7 +41,7 @@ ms.lasthandoff: 03/12/2018
 | --- | --- |
 | *armendpoint* |Azure 堆栈环境的 azure 资源管理器终结点。 Azure 堆栈约定是 Azure 资源管理器终结点的名称采用以下格式`https://adminmanagement.{domain-name}`。 例如，对于开发工具包，如果域名为*local.azurestack.external*，则资源管理器终结点是`https://adminmanagement.local.azurestack.external`。 |
 | *subId* |进行调用的用户的订阅 ID。 |
-| *reportedStartTime* |查询的开始时间。 值*DateTime*应为以协调世界时 (UTC) 和开头的小时，例如，13:00。 为每日聚合，将此值设置为 UTC 午夜。 格式是*转义*ISO 8601。 例如， *2015年-06-16t18%3a53%3a11%2b00 %3a00z*，其中的冒号转义到*%3a*和加号转义到*%2b* ，以便它适合 URI。 |
+| *reportedStartTime* |查询的开始时间。 值*DateTime*应为以协调世界时 (UTC) 和开头的小时，例如，13:00。 为每日聚合，将此值设置为 UTC 午夜。 格式是*转义*ISO 8601。 例如， *2015年-06-16t18%3a53%3a11%2b00 %3a00z*，其中的冒号转义到 *%3a*和加号转义到 *%2b* ，以便它适合 URI。 |
 | *reportedEndTime* |查询的结束时间。 将应用于的约束*reportedStartTime*也适用于此自变量。 值*reportedEndTime*不能为将来或当前日期。 如果是，结果设置为"正在处理未完成。" |
 | *aggregationGranularity* |有两个离散潜在值的可选参数： 每天和每小时。 建议值，一个在日粒度返回的数据，另一个是每小时解析度。 默认值为每天选项。 |
 | *subscriberId* |订阅 ID。 若要获取筛选后的数据，提供程序直接租户的订阅 ID 是必需的。 如果未不指定任何订阅 ID 参数，调用将返回提供程序的所有直接租户的使用情况数据。 |

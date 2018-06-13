@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406484"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
@@ -255,7 +256,7 @@ END
 20. 通过将附加到“查找”活动的**绿色按钮**拖至“复制”活动，**将两个“查找”活动都连接到“复制”活动**。 看到“复制”活动的边框颜色变为蓝色时，松开鼠标按键。 
 
     ![将“查找”活动连接到“复制”活动](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
-21. 选择**“复制”活动**，确认在“属性”窗口看到活动的属性。 
+21. 选择 **“复制”活动**，确认在“属性”窗口看到活动的属性。 
 
     ![复制活动属性](./media/tutorial-incremental-copy-portal/back-to-copy-activity-properties.png)
 22. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤：

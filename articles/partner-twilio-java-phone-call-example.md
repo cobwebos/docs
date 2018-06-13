@@ -1,7 +1,7 @@
 ---
-title: "如何从 Twilio (Java) 发起电话呼叫 | Microsoft Docs"
-description: "了解如何在 Azure 的 Java 应用程序中使用 Twilio 从网页发起电话呼叫。"
-services: 
+title: 如何从 Twilio (Java) 发起电话呼叫 | Microsoft Docs
+description: 了解如何在 Azure 的 Java 应用程序中使用 Twilio 从网页发起电话呼叫。
+services: ''
 documentationcenter: java
 author: devinrader
 manager: twilio
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039622"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>如何在 Azure 的 Java 应用程序中使用 Twilio 发起电话呼叫
 以下示例演示了如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 生成的应用程序会提示用户输入电话呼叫值，如以下屏幕截图中所示。

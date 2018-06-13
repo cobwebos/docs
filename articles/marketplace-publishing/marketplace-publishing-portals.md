@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29938638"
 ---
 # <a name="portals-you-will-need"></a>所需的门户
 在启动发布产品/服务的过程之前，让我们先介绍你所需的各种门户。 下面是有关门户的简要概述，包括：开发人员中心、Azure 发布门户和 Azure 门户（按照与其进行交互的顺序显示）。                                                                            

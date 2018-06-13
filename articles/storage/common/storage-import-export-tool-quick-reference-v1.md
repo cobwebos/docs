@@ -1,12 +1,12 @@
 ---
-title: "Azure 导入/导出工具的导入作业命令的快速参考 - v1 | Microsoft Docs"
-description: "Azure 导入/导出工具的常用导入作业命令参考。 本文所述的导入/导出工具为 v1 版本。"
+title: Azure 导入/导出工具的导入作业命令的快速参考 - v1 | Microsoft Docs
+description: Azure 导入/导出工具的常用导入作业命令参考。 本文所述的导入/导出工具为 v1 版本。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059342"
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>导入作业的常用命令快速参考
 本部分提供一些常用命令的快速参考。 有关详细用法，请参阅[为导入作业准备硬盘驱动器](../storage-import-export-tool-preparing-hard-drives-import-v1.md)。  
