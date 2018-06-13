@@ -1,11 +1,11 @@
 ---
-title: "下载 Azure VM 模板 | Microsoft Docs"
-description: "下载 VM 模板，帮助在 Resource Manager 部署模型中自动部署"
+title: 下载 Azure VM 模板 | Microsoft Docs
+description: 下载 VM 模板，帮助在 Resource Manager 部署模型中自动部署
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/02/2017
+ms.locfileid: "26055783"
 ---
 # <a name="download-the-template-for-a-vm"></a>下载 VM 模板
 使用门户或 PowerShell 在 Azure 中创建 VM 时，系统会自动创建一个 Resource Manager 模板。 可以使用此模板快速复制部署。 该模板包含有关资源组中所有资源的信息。 对于虚拟机而言，这意味着该模板包含为在该资源组中支持该 VM 而创建的所有资源，包括网络资源。

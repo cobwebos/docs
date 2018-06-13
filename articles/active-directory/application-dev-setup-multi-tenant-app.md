@@ -1,11 +1,11 @@
 ---
-title: "如何配置新的多租户应用程序 | Microsoft Docs"
-description: "了解如何将应用程序配置为多租户，以及多租户应用程序如何工作"
+title: 如何配置新的多租户应用程序 | Microsoft Docs
+description: 了解如何将应用程序配置为多租户，以及多租户应用程序如何工作
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614798"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序
 

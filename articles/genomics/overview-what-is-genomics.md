@@ -1,7 +1,7 @@
 ---
-title: "什么是 Microsoft 基因组学？ | Microsoft Docs"
+title: 什么是 Microsoft 基因组学？ | Microsoft Docs
 titleSuffix: Azure
-description: "了解 Microsoft 基因组学如何为基因组排序提供支持，从而现在为用于辅助分析的 BWA-GATK 提供云实现。"
+description: 了解 Microsoft 基因组学如何为基因组排序提供支持，从而现在为用于辅助分析的 BWA-GATK 提供云实现。
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26684681"
 ---
 # <a name="what-is-microsoft-genomics"></a>什么是 Microsoft 基因组学？
 Microsoft 基因组学提供 Burrows-Wheeler Aligner (BWA) 的云实现以及用于辅助分析的基因组分析工具包 (GATK)。 该服务已通过 ISO 认证并符合 HIPAA 法规，并针对基因组排序需求提供价格可预测性。 了解如何通过阅读快速入门、教程和文档使用 Microsoft 基因组学服务并将其与 API 集成。

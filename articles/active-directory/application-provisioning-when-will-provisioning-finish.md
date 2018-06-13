@@ -1,11 +1,11 @@
 ---
-title: "用户预配到 Azure AD 库应用程序需要数小时或更长时间 | Microsoft Docs"
-description: "如何找出预配到应用程序时所需时间可能会比预期长的原因"
+title: 用户预配到 Azure AD 库应用程序需要数小时或更长时间 | Microsoft Docs
+description: 如何找出预配到应用程序时所需时间可能会比预期长的原因
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614061"
 ---
 # <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>用户预配到 Azure AD 库应用程序需要数小时或更长时间
 

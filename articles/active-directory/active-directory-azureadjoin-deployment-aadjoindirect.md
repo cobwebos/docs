@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Join 的使用方案和部署注意事项 | Microsoft 文档"
-description: "说明管理员如何为其最终用户（员工、学生或其他用户）设置 Azure AD Join。 它还讨论了使用 Azure AD Join 的不同实际方案。"
+title: Azure AD Join 的使用方案和部署注意事项 | Microsoft 文档
+description: 说明管理员如何为其最终用户（员工、学生或其他用户）设置 Azure AD Join。 它还讨论了使用 Azure AD Join 的不同实际方案。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
 ms.service: active-directory
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26602427"
 ---
 # <a name="usage-scenarios-and-deployment-considerations-for-azure-ad-join"></a>Azure AD Join 的使用方案和部署注意事项
 ## <a name="usage-scenarios-for-azure-ad-join"></a>Azure AD Join 的使用方案

@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure 流量管理器在 Azure 中部署高可用性跨地理区域 AD FS | Microsoft Docs"
-description: "在本文档中，学习如何在 Azure 中部署 AD FS 以实现高可用性。"
-keywords: "使用 Azure 流量管理器部署 Ad fs, 使用 Azure 流量管理器部署 adfs, 多个数据中心, 地理区域数据中心, 多个地理区域数据中心, 在 Azure 中部署 AD FS, 部署 Azure ADFS, Azure ADFS, Azure AD FS, 部署 ADFS, 部署 AD FS, Azure 中的 ADFS, 在 Azure 中部署 ADFS, 在 Azure 中部署 AD FS, ADFS Azure, AD FS 简介, Azure, Azure 中的 AD FS, IaaS, ADFS, 将 ADFS 移到 Azure"
+title: 使用 Azure 流量管理器在 Azure 中部署高可用性跨地理区域 AD FS | Microsoft Docs
+description: 在本文档中，学习如何在 Azure 中部署 AD FS 以实现高可用性。
+keywords: 使用 Azure 流量管理器部署 Ad fs, 使用 Azure 流量管理器部署 adfs, 多个数据中心, 地理区域数据中心, 多个地理区域数据中心, 在 Azure 中部署 AD FS, 部署 Azure ADFS, Azure ADFS, Azure AD FS, 部署 ADFS, 部署 AD FS, Azure 中的 ADFS, 在 Azure 中部署 ADFS, 在 Azure 中部署 AD FS, ADFS Azure, AD FS 简介, Azure, Azure 中的 AD FS, IaaS, ADFS, 将 ADFS 移到 Azure
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a14bc870-9fad-45ed-acd5-a90ccd432e54
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26604773"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>使用 Azure 流量管理器在 Azure 中部署高可用性跨地理区域 AD FS
 [AD FS deployment in Azure](active-directory-aadconnect-azure-adfs.md) （Azure 中的 AD FS 部署）提供了有关如何在 Azure 中为组织部署简单 AD FS 基础结构的分步指导。 本文提供后续步骤，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在 Azure 中创建跨地理区域的 AD FS 部署。 Azure 流量管理器使用各种可用的路由方法来应对基础结构的不同需求，有助于为组织创建分布各地的高可用性和高性能 AD FS 基础结构。
@@ -39,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 * **存储帐户：** 存储帐户与某个区域关联。 由于要在新地理区域中部署计算机，因此必须创建要在该区域中使用的新存储帐户。  
 * **网络安全组：** 与存储帐户一样，在一个区域中创建的网络安全组不能在另一个地理区域中使用。 因此，需要为新地理区域中的 INT 和外围网络子网创建类似于第一个地理区域中的新网络安全组。
 * **公共 IP 地址的 DNS 标签：** Azure 流量管理器只能通过 DNS 标签引用终结点。 因此，必须为外部负载均衡器的公共 IP 地址创建 DNS 标签。
-* **Azure 流量管理器：**使用 Microsoft Azure 流量管理器可以控制用户流量的分布，根据需要将用户流量分布到在全球不同数据中心运行的服务终结点。 Azure 流量管理器在 DNS 级别工作。 它使用 DNS 响应将最终用户流量定向到全球分布的终结点。 客户端然后直接连接到这些终结点。 性能、加权和优先级均有不同的路由选项，可以轻松选择最符合组织需求的路由选项。 
+* **Azure 流量管理器：** 使用 Microsoft Azure 流量管理器可以控制用户流量的分布，根据需要将用户流量分布到在全球不同数据中心运行的服务终结点。 Azure 流量管理器在 DNS 级别工作。 它使用 DNS 响应将最终用户流量定向到全球分布的终结点。 客户端然后直接连接到这些终结点。 性能、加权和优先级均有不同的路由选项，可以轻松选择最符合组织需求的路由选项。 
 * **两个区域之间的 VNet 到 VNet 连接：** 不需要在虚拟网络本身之间建立连接。 由于每个虚拟网络均可访问域控制器，并且本身都有 AD FS 和 WAP 服务器，因此不同区域中的虚拟网络之间不需要建立任何连接即可正常工作。 
 
 ## <a name="steps-to-integrate-azure-traffic-manager"></a>集成 Azure 流量管理器的步骤

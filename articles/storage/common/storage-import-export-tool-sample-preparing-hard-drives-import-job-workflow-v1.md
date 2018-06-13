@@ -1,11 +1,11 @@
 ---
-title: "为 Azure 导入/导出服务的导入作业准备硬盘驱动器的示例工作流 - v1 | Microsoft Docs"
-description: "请参阅为 Azure 导入/导出服务中的导入作业准备驱动器的完整过程演练。"
+title: 为 Azure 导入/导出服务的导入作业准备硬盘驱动器的示例工作流 - v1 | Microsoft Docs
+description: 请参阅为 Azure 导入/导出服务中的导入作业准备驱动器的完整过程演练。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 6eb1b1b7-c69f-4365-b5ef-3cd5e05eb72a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26692019"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器的示例工作流
 本主题讲解如何完成为导入作业准备驱动器的整个过程。  
@@ -72,11 +73,11 @@ ms.lasthandoff: 12/14/2017
   
 此外，可为所有文件设置以下元数据：  
   
--   **UploadMethod：**Microsoft Azure 导入/导出服务  
+-   **UploadMethod：** Microsoft Azure 导入/导出服务  
   
--   **DataSetName：**SampleData  
+-   **DataSetName：** SampleData  
   
--   **CreationDate：**10/1/2013  
+-   **CreationDate：** 10/1/2013  
   
 若要为导入的文件设置元数据，请创建包含以下内容的文本文件 `c:\WAImportExport\SampleMetadata.txt`：  
   
@@ -91,11 +92,11 @@ ms.lasthandoff: 12/14/2017
   
 还可为 `FavoriteMovie.ISO` Blob 设置一些属性：  
   
--   **Content-Type：**application/octet-stream  
+-   **Content-Type：** application/octet-stream  
   
--   **Content-MD5：**Q2hlY2sgSW50ZWdyaXR5IQ==  
+-   **Content-MD5：** Q2hlY2sgSW50ZWdyaXR5IQ==  
   
--   **Cache-Control：**no-cache  
+-   **Cache-Control：** no-cache  
   
 若要设置这些属性，请创建文本文件 `c:\WAImportExport\SampleProperties.txt`：  
   

@@ -1,12 +1,12 @@
 ---
-title: "克隆 StorSimple 8000 系列上的卷 | Microsoft Docs"
-description: "介绍不同的克隆类型和用法，以及如何使用备份集克隆 StorSimple 8000 系列设备上的单个卷。"
+title: 克隆 StorSimple 8000 系列上的卷 | Microsoft Docs
+description: 介绍不同的克隆类型和用法，以及如何使用备份集克隆 StorSimple 8000 系列设备上的单个卷。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26333196"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>在 Azure 门户中使用 StorSimple 设备管理器服务来克隆卷
 

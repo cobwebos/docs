@@ -1,12 +1,12 @@
 ---
-title: "Azure 堆栈集成系统连接模型 |Microsoft 文档"
-description: "确定部署规划多节点 Azure 堆栈的决策。"
+title: Azure 堆栈集成系统连接模型 |Microsoft 文档
+description: 确定部署规划多节点 Azure 堆栈的决策。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118782"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure 集成的堆栈系统连接模型
 如果你感兴趣的集成的 Azure 堆栈系统，你将需要了解[几个数据中心集成注意事项](azure-stack-datacenter-integration.md)Azure 堆栈部署，以确定系统将如何适应你的数据中心。 此外，你将需要决定完全你将如何集成 Azure 堆栈到混合云环境。 本文概述了这些主要决定包括 Azure 连接，标识存储和计费模型的决策。

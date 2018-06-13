@@ -1,8 +1,8 @@
 ---
-title: "Operations Management Suite (OMS) 体系结构 | Microsoft Docs"
-description: "Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。  本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。"
+title: Operations Management Suite (OMS) 体系结构 | Microsoft Docs
+description: Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。  本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26683259"
 ---
 # <a name="oms-architecture"></a>OMS 体系结构
 [Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) 是一套基于云的服务，用于管理本地和云环境。  本文介绍了 OMS 不同的本地和云组件及其高级云计算体系结构。  可参考各项服务的文档进一步了解详细信息。
