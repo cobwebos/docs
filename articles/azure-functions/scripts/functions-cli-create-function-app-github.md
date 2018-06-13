@@ -1,8 +1,8 @@
 ---
-title: "创建 Function App 并从 GitHub 部署函数代码 | Microsoft Docs"
-description: "Azure CLI 脚本示例 - 创建 Function App 并从 GitHub 部署函数代码"
+title: 创建 Function App 并从 GitHub 部署函数代码 | Microsoft Docs
+description: Azure CLI 脚本示例 - 创建 Function App 并从 GitHub 部署函数代码
 services: functions
-keywords: 
+keywords: ''
 author: syntaxc4
 ms.author: cfowler
 ms.date: 04/27/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29842654"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>创建 Function App 并从 GitHub 部署函数代码
 

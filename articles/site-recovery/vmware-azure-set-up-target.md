@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811064"
 ---
 # <a name="prepare-the-target-environment-for-vmware-replication-to-azure"></a>准备目标环境以便将 VMware 复制到 Azure
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/08/2018
 ![准备目标](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 
 1. 订阅：从下拉菜单中，选择要将虚拟机复制到的“订阅”。
-2. **部署模型：**选择部署模型（经典或 Resource Manager）
+2. **部署模型：** 选择部署模型（经典或 Resource Manager）
 
 根据选择的部署模型，运行验证以确保目标订阅中至少具有一个兼容的存储帐户和虚拟网络，以将虚拟机复制并故障转移到此目标订阅中。
 
