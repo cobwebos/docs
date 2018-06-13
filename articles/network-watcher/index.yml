@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/03/2018
+  ms.locfileid: "32777173"
 abstract:
   description: 了解如何使用 Azure 网络观察程序。 快速入门、教程等介绍了如何使用数据包捕获和 NSG 流日志等工具来了解 Azure 虚拟网络，以便诊断流量筛选和路由方面的问题，以及对连接进行监视。
 sections:

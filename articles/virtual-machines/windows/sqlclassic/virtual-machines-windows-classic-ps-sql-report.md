@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425072"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
@@ -148,7 +149,7 @@ ms.lasthandoff: 04/16/2018
 
 有关更多详细步骤，请参阅[连接到虚拟机并启动 Reporting Services 配置管理器](virtual-machines-windows-classic-ps-sql-bi.md#connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager)部分。
 
-**身份验证说明：**Windows 身份验证是建议的身份验证方法，并且它是默认的 Reporting Services 身份验证方法。 只有在 VM 配置的用户可以访问 Reporting Services 并分配给 Reporting Services 角色。
+**身份验证说明：** Windows 身份验证是建议的身份验证方法，并且它是默认的 Reporting Services 身份验证方法。 只有在 VM 配置的用户可以访问 Reporting Services 并分配给 Reporting Services 角色。
 
 ### <a name="use-script-to-configure-the-report-server-and-http"></a>使用脚本来配置报表服务器和 HTTP
 若要使用 Windows PowerShell 脚本配置报表服务器，请完成以下步骤。 该配置包括 HTTP 而不是 HTTPS：

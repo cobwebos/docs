@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156885"
 ---
 # <a name="permissions-in-azure-ad"></a>Azure AD 中的权限
 Azure Active Directory (Azure AD) 对 OAuth 和 OpenID Connect (OIDC) 流广泛使用权限。 当应用从 Azure AD 接收访问令牌时，它会包含声明用于描述应用对特定资源的权限（也称为作用域）。 这样，便可以轻松进行资源授权，因为只需检查令牌是否对所要调用的 API 包含相应的权限。 

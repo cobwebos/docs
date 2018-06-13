@@ -21,6 +21,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31412571"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>什么是 Power BI 工作区集合？
 
@@ -65,11 +66,11 @@ Power BI 工作区集合是一项 **Azure 服务**，使 ISV 和应用程序开�
 
 ## <a name="authentication-and-authorization-with-app-tokens"></a>使用应用令牌进行身份验证和授权
 
-**Microsoft Power BI 工作区集合**遵从应用程序来执行所有必要的用户身份验证和授权。 没有明确要求最终用户必须是 Azure Active directory (Azure AD) 的客户。  相反，应用程序通过使用**应用程序身份验证令牌（应用令牌）**向 **Microsoft Power BI 工作区集合**表明自己获得了呈现 Power BI 报表的授权。  希望应用呈现报表时，可以根据需要创建这些**应用令牌**。
+**Microsoft Power BI 工作区集合**遵从应用程序来执行所有必要的用户身份验证和授权。 没有明确要求最终用户必须是 Azure Active directory (Azure AD) 的客户。  相反，应用程序通过使用**应用程序身份验证令牌（应用令牌）** 向 **Microsoft Power BI 工作区集合**表明自己获得了呈现 Power BI 报表的授权。  希望应用呈现报表时，可以根据需要创建这些**应用令牌**。
 
 ![应用令牌使用情况图表](media/what-are-power-bi-workspace-collections/app-tokens.png)
 
-**应用程序身份验证令牌（应用令牌）**用于向 **Microsoft Power BI 工作区集合**表明身份。  有三种类型的**应用令牌**：
+**应用程序身份验证令牌（应用令牌）** 用于向 **Microsoft Power BI 工作区集合**表明身份。  有三种类型的**应用令牌**：
 
 1. 预配令牌 - 在**工作区集合**中预配新的**工作区**时使用
 2. 开发令牌 - 直接调用 **Power BI REST API** 时使用

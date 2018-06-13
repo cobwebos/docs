@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781896"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
 如果已[创建第一个 VM](devtest-lab-create-first-vm.md)，则很可能从预加载的[应用商店映像](devtest-lab-configure-marketplace-images.md)执行此操作。 现在，如果要将后续 VM 添加到实验室，还可以选择作为[自定义映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)的*基本*映像。 本教程会引导完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。
@@ -43,7 +44,7 @@ ms.lasthandoff: 05/07/2018
 1. **虚拟机磁盘类型**决定了允许将哪种存储磁盘类型用于实验室中的虚拟机。
 1. 选择“虚拟机大小”，并选择指定待创建 VM 的处理器内核、RAM 大小和硬盘驱动器大小的预定义项之一。
 1. 选择“项目”，并从项目列表中选择并配置要添加到基础映像的项目。
-    **注意：**如果对开发测试实验室或配置项目不熟悉，请参阅[向 VM 中添加现有项目](#add-an-existing-artifact-to-a-vm)部分，并在完成后返回此处。
+    **注意：** 如果对开发测试实验室或配置项目不熟悉，请参阅[向 VM 中添加现有项目](#add-an-existing-artifact-to-a-vm)部分，并在完成后返回此处。
 1. 选择“高级设置”来配置 VM 的网络选项和到期选项。 
 
    若要设置过期选项，请选择“日历”图标，指定一个自动删除 VM 的日期。  默认情况下，VM 永不过期。 
@@ -84,7 +85,7 @@ ms.lasthandoff: 05/07/2018
 1. 在“应用项目”窗格顶部，选择指示已添加到 VM 的项目数的链接。
    
     ![添加到 VM 的项目数](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. 在“已选项目”窗格上，将项目拖放为所需的顺序。 **注意：**如果在拖动项目时遇到麻烦，请确保是从项目的左侧拖动。 
+1. 在“已选项目”窗格上，将项目拖放为所需的顺序。 **注意：** 如果在拖动项目时遇到麻烦，请确保是从项目的左侧拖动。 
 1. 完成后选择“确定”。  
 
 ## <a name="view-or-modify-an-artifact"></a>查看或修改项目

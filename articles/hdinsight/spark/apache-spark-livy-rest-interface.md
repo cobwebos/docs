@@ -20,6 +20,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31517771"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集
 
@@ -177,9 +178,9 @@ HDInsight 3.5 群集默认情况下禁止使用本地文件路径访问示例数
 
 ### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>不支持从附加存储使用外部 jar
 
-**问题：**如果 Livy Spark 作业引用了与群集关联的附加存储帐户中的外部 jar，则作业会失败。
+**问题：** 如果 Livy Spark 作业引用了与群集关联的附加存储帐户中的外部 jar，则作业会失败。
 
-**解决方法：**请确保要使用的 jar 在与 HDInsight 群集关联的默认存储中可用。
+**解决方法：** 请确保要使用的 jar 在与 HDInsight 群集关联的默认存储中可用。
 
 
 

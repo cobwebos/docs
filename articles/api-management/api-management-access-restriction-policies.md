@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31515343"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -72,9 +73,9 @@ ms.lasthandoff: 04/18/2018
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略节：**入站、出站  
+-   **策略节：** 入站、出站  
   
--   **策略范围：**全局、产品、API、操作  
+-   **策略范围：** 全局、产品、API、操作  
   
 ##  <a name="LimitCallRate"></a> 按订阅限制调用速率  
  `rate-limit` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个订阅的 API 使用量暴增。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。  
@@ -127,9 +128,9 @@ ms.lasthandoff: 04/18/2018
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：**入站  
+-   **策略段：** 入站  
   
--   **策略范围：**产品  
+-   **策略范围：** 产品  
   
 ##  <a name="LimitCallRateByKey"></a> 按密钥限制调用速率  
  `rate-limit-by-key` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个密钥的 API 使用量暴增。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定在决定是否到达限制值时应该进行计数的请求。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。  
@@ -185,9 +186,9 @@ ms.lasthandoff: 04/18/2018
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：**入站  
+-   **策略段：** 入站  
   
--   **策略范围：**全局、产品、API、操作  
+-   **策略范围：** 全局、产品、API、操作  
   
 ##  <a name="RestrictCallerIPs"></a> 限制调用方 IP  
  `ip-filter` 策略筛选（允许/拒绝）来自特定 IP 地址和/或地址范围的调用。  
@@ -228,8 +229,8 @@ ms.lasthandoff: 04/18/2018
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：**入站  
--   **策略范围：**全局、产品、API、操作  
+-   **策略段：** 入站  
+-   **策略范围：** 全局、产品、API、操作  
   
 ##  <a name="SetUsageQuota"></a> 按订阅设置使用量配额  
  `quota` 策略允许根据订阅强制实施可续订或有生存期的调用量和/或带宽配额。  
@@ -283,8 +284,8 @@ ms.lasthandoff: 04/18/2018
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：**入站  
--   **策略范围：**产品  
+-   **策略段：** 入站  
+-   **策略范围：** 产品  
   
 ##  <a name="SetUsageQuotaByKey"></a> 按密钥设置使用量配额  
  `quota-by-key` 策略允许根据密钥强制实施可续订或有生存期的调用量和/或带宽配额。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定应在配额范围内的请求。  
@@ -343,8 +344,8 @@ ms.lasthandoff: 04/18/2018
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：**入站  
--   **策略范围：**全局、产品、API、操作  
+-   **策略段：** 入站  
+-   **策略范围：** 全局、产品、API、操作  
   
 ##  <a name="ValidateJWT"></a> 验证 JWT  
  `validate-jwt` 策略强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。  
@@ -513,8 +514,8 @@ ms.lasthandoff: 04/18/2018
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：**入站  
--   **策略范围：**全局、产品、API、操作  
+-   **策略段：** 入站  
+-   **策略范围：** 全局、产品、API、操作  
   
 ## <a name="next-steps"></a>后续步骤
 

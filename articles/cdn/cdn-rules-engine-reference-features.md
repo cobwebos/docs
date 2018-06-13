@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011418"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN 规则引擎功能
 本文列出 Azure 内容分发网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用功能的详细说明。
