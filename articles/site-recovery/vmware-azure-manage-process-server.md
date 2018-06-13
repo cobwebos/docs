@@ -1,10 +1,10 @@
 ---
-title: "在 Azure Site Recovery 中管理进程服务器 | Microsoft Doc"
-description: "本文介绍如何在 Azure Site Recovery 中管理为 VMware VM 和物理服务器复制设置的进程服务器。"
+title: 在 Azure Site Recovery 中管理进程服务器 | Microsoft Doc
+description: 本文介绍如何在 Azure Site Recovery 中管理为 VMware VM 和物理服务器复制设置的进程服务器。
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
-editor: 
+editor: ''
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811194"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 

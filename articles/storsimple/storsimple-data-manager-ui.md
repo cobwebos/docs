@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Azure StorSimple Data Manager UI | Microsoft 文档"
-description: "介绍如何使用 StorSimple 数据管理器服务 UI"
+title: Microsoft Azure StorSimple Data Manager UI | Microsoft 文档
+description: 介绍如何使用 StorSimple 数据管理器服务 UI
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862251"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>管理 Azure 门户中的 StorSimple 数据管理器服务
 

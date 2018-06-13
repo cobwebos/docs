@@ -1,11 +1,11 @@
 ---
-title: "Azure API 管理缓存策略 | Microsoft 文档"
-description: "了解可在 Azure API 管理中使用的缓存策略。"
+title: Azure API 管理缓存策略 | Microsoft 文档
+description: 了解可在 Azure API 管理中使用的缓存策略。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26344816"
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -122,8 +123,8 @@ ms.lasthandoff: 12/06/2017
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：**入站  
--   **策略范围：**API、操作、产品  
+-   **策略段：** 入站  
+-   **策略范围：** API、操作、产品  
   
 ##  <a name="StoreToCache"></a> 存储到缓存  
  `cache-store` 策略根据指定的缓存设置缓存响应。 当响应内容在某个时间段内保持静态时，即可应用该策略。 响应缓存可以降低后端 Web 服务器需要满足的带宽和处理能力要求，并可以减小 API 使用者能够察觉到的延迟。  
@@ -194,8 +195,8 @@ ms.lasthandoff: 12/06/2017
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：**出站    
--   **策略范围：**API、操作、产品  
+-   **策略段：** 出站    
+-   **策略范围：** API、操作、产品  
   
 ##  <a name="GetFromCacheByKey"></a> 从缓存中获取值  
  使用 `cache-lookup-value` 策略，可以通过密钥执行缓存查找，并返回缓存的值。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。  
@@ -238,8 +239,8 @@ ms.lasthandoff: 12/06/2017
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略节：**入站、出站、后端、错误时  
--   **策略范围：**全局、API、操作、产品  
+-   **策略节：** 入站、出站、后端、错误时  
+-   **策略范围：** 全局、API、操作、产品  
   
 ##  <a name="StoreToCacheByKey"></a> 在缓存中存储值  
  `cache-store-value` 按密钥执行缓存存储。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。  
@@ -280,8 +281,8 @@ ms.lasthandoff: 12/06/2017
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略节：**入站、出站、后端、错误时  
--   **策略范围：**全局、API、操作、产品  
+-   **策略节：** 入站、出站、后端、错误时  
+-   **策略范围：** 全局、API、操作、产品  
   
 ###  <a name="RemoveCacheByKey"></a> 从缓存中删除值  
 `cache-remove-value` 删除通过密钥标识的缓存项。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。  
@@ -317,8 +318,8 @@ ms.lasthandoff: 12/06/2017
 #### <a name="usage"></a>使用情况  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略节：**入站、出站、后端、错误时  
--   **策略范围：**全局、API、操作、产品  
+-   **策略节：** 入站、出站、后端、错误时  
+-   **策略范围：** 全局、API、操作、产品  
 
 ## <a name="next-steps"></a>后续步骤
 
