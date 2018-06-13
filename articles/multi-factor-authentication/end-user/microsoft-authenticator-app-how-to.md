@@ -20,6 +20,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200991"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft 验证器应用入门
 Microsoft Authenticator 应用在工作或学校帐户（例如，bsimon@contoso.com）或 Microsoft 帐户（例如，bsimon@outlook.com）中提供了附加安全级别。
