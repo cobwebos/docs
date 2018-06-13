@@ -1,11 +1,11 @@
 ---
-title: "在逻辑应用中添加查询操作 | Microsoft Docs"
-description: "用于执行筛选数组等操作的查询操作的概述。"
-services: 
-documentationcenter: 
+title: 在逻辑应用中添加查询操作 | Microsoft Docs
+description: 用于执行筛选数组等操作的查询操作的概述。
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27962639"
 ---
 # <a name="get-started-with-the-query-action"></a>查询操作入门
 通过使用查询操作，可使用批处理和数组完成工作流，以便：

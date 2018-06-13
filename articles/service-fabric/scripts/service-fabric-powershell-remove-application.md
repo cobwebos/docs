@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell 脚本示例 - 从群集中删除应用程序 | Microsoft Docs"
-description: "Azure PowerShell 脚本示例 - 从 Service Fabric 群集中删除应用程序。"
+title: Azure PowerShell 脚本示例 - 从群集中删除应用程序 | Microsoft Docs
+description: Azure PowerShell 脚本示例 - 从 Service Fabric 群集中删除应用程序。
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927856"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster"></a>从 Service Fabric 群集中删除应用程序
 

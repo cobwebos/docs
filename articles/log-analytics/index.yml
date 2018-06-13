@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Log Analytics 文档"
+title: Log Analytics 文档
 metadata:
-  title: "Azure Log Analytics 文档 - 教程和 API 参考 | Microsoft 文档"
-  description: "Log Analytics 是 Microsoft Azure 总体监视解决方案的一部分。  Log Analytics 可监视云和本地环境，使其保持较高的可用性和性能。 从各种工作负荷和系统中获取见解，以保持较高的可用性和性能。 使用快速入门、教程和示例了解如何收集、分析和处理数据。"
+  title: Azure Log Analytics 文档 - 教程和 API 参考 | Microsoft 文档
+  description: Log Analytics 是 Microsoft Azure 总体监视解决方案的一部分。  Log Analytics 可监视云和本地环境，使其保持较高的可用性和性能。 从各种工作负荷和系统中获取见解，以保持较高的可用性和性能。 使用快速入门、教程和示例了解如何收集、分析和处理数据。
   services: log-analytics
   author: czeumault
   manager: carolz
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27786112"
 abstract:
-  description: "Log Analytics 是 Microsoft Azure 总体监视解决方案的一部分。 Log Analytics 可监视云和本地环境，使其保持较高的可用性和性能。 从各种工作负荷和系统中获取见解，以保持较高的可用性和性能。 使用快速入门、教程和示例了解如何收集、分析和处理数据。"
+  description: Log Analytics 是 Microsoft Azure 总体监视解决方案的一部分。 Log Analytics 可监视云和本地环境，使其保持较高的可用性和性能。 从各种工作负荷和系统中获取见解，以保持较高的可用性和性能。 使用快速入门、教程和示例了解如何收集、分析和处理数据。
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解如何部署 Log Analytics，并配置从 Azure、其他云提供程序和本地资源收集数据。"
+    text: 了解如何部署 Log Analytics，并配置从 Azure、其他云提供程序和本地资源收集数据。
   - type: list
     style: icon48
     items:
@@ -34,49 +35,49 @@ sections:
       href: /azure/log-analytics/log-analytics-quick-collect-azurevm
     - image:
         src: https://docs.microsoft.com/media/logos/logo_linux.svg
-      text: "Linux 计算机"
+      text: Linux 计算机
       href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
     - image:
         src: https://docs.microsoft.com/media/logos/logo_Windows.svg
-      text: "Windows 计算机"
+      text: Windows 计算机
       href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何分析、可视化和处理收集的数据。"
+    text: 了解如何分析、可视化和处理收集的数据。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/log-analytics/log-analytics-tutorial-viewdata\">查看或分析收集的数据</a>"
-    - html: "<a href=\"/azure/log-analytics/log-analytics-tutorial-dashboards\">创建和共享仪表板</a>"
-    - html: "<a href=\"/azure/log-analytics/log-analytics-tutorial-response\">使用 Log Analytics 警报对事件做出响应</a>"
-- title: "免费 Pluralsight 视频培训"
+    - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">查看或分析收集的数据</a>
+    - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">创建和共享仪表板</a>
+    - html: <a href="/azure/log-analytics/log-analytics-tutorial-response">使用 Log Analytics 警报对事件做出响应</a>
+- title: 免费 Pluralsight 视频培训
   items:
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "IaaS 监视入门"
+    - title: IaaS 监视入门
       href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
-- title: "示例"
+- title: 示例
   items:
   - type: paragraph
-    text: "使用以下示例配置和管理 Log Analytics。"
+    text: 使用以下示例配置和管理 Log Analytics。
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/log-analytics/powershell-samples">Azure PowerShell</a>
-- title: "引用"
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "命令行"
+    - title: 命令行
       html: <p><a href="/powershell/module/azurerm.operationalinsights">Azure PowerShell</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/loganalytics\">REST API 参考</a></p>"
+      html: <p><a href="/rest/api/loganalytics">REST API 参考</a></p>

@@ -1,11 +1,11 @@
 ---
-title: "SKU 系列不可用 | Microsoft 文档"
-description: "对于该区域的选定订阅，某些 SKU 系列不可用。"
+title: SKU 系列不可用 | Microsoft 文档
+description: 对于该区域的选定订阅，某些 SKU 系列不可用。
 services: Azure Supportability
-documentationcenter: 
+documentationcenter: ''
 author: stevendotwang
 manager: rajatk
-editor: 
+editor: ''
 ms.service: azure-supportability
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24870572"
 ---
 # <a name="region-or-sku-unavailable"></a>区域或 SKU 不可用
 本文介绍如何解决 Azure 订阅无法访问区域或 VM SKU 的问题。

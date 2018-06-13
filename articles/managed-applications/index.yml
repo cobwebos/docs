@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27779561"
 abstract:
   description: 使用 Azure 托管应用程序可为内部和外部客户提供云解决方案。 你需要为解决方案定义基础结构，并为正在进行的解决方案管理定义条款。 解决方案的计费通过 Azure 计费来处理。
 sections:
