@@ -21,6 +21,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30282600"
 ---
 # <a name="connect-a-web-app-to-a-sql-database"></a>将 Web 应用连接到 SQL 数据库
 

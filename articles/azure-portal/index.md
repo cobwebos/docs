@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163840"
 ---
 # <a name="azure-portal-documentation"></a>Azure 门户文档
 了解可用于在 Azure 门户中部署资源的功能。 教程、API 参考和其他文档介绍了如何部署、管理和监视 Azure 资源。

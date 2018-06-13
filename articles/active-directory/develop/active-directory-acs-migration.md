@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157599"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>从 Azure 访问控制服务迁移
 

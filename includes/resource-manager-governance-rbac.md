@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31433243"
 ---
 你希望确保你的组织中的用户对这些资源具有合适级别的访问权限。 你不希望向用户授予不受限的访问权限，但还需要确保他们可以执行其工作。 使用基于角色的访问控制 (RBAC)，你可以管理哪些用户有权在某个范围内完成特定操作。 一个角色定义一组允许的操作。 将角色分配至某一范围，并指定哪些用户在此范围内属于该角色。
 

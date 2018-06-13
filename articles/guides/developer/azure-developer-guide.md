@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771086"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -106,7 +107,7 @@ Service Fabric 支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 
 大多数应用程序都必须存储数据，因此，无论你决定如何在 Azure 中托管应用程序，都要考虑下面一个或多个存储和数据服务。
 
 -   **Azure Cosmos DB**：一个全球分布式多模型数据库服务，使用它可以跨任意数量的地理区域，根据全面的 SLA，灵活地缩放吞吐量与存储。 
-    >**何时使用：**当应用程序需要文档、表或图形数据库（包括具有多个妥善定义的一致性模型的 MongoDB 数据库）时。 
+    >**何时使用：** 当应用程序需要文档、表或图形数据库（包括具有多个妥善定义的一致性模型的 MongoDB 数据库）时。 
 
     >**开始使用**：[构建 Azure Cosmos DB Web 应用](../../cosmos-db/create-sql-api-dotnet.md)。 如果是 MongoDB 开发人员，请参阅[构建使用 Azure Cosmos DB 的 MongoDB Web 应用](../../cosmos-db/create-mongodb-dotnet.md)。
 

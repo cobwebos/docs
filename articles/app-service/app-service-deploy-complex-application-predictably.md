@@ -1,8 +1,8 @@
 ---
-title: "按可预见的方式在 Azure 中设置和部署微服务"
-description: "了解如何使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 Azure 应用服务中由微服务构成的应用程序设置并部署为单个单元。"
+title: 按可预见的方式在 Azure 中设置和部署微服务
+description: 了解如何使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 Azure 应用服务中由微服务构成的应用程序设置并部署为单个单元。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22987452"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
 本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](/services/app-service/)中由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 

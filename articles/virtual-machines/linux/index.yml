@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33943689"
 abstract:
   description: Azure Linux 虚拟机使用所选 Red Hat、Ubuntu 或 Linux 分发按需提供具有高可伸缩性且十分安全的虚拟化基础结构。 使用快速入门、教程和示例了解如何创建、配置、管理、更新和缩放 Linux VM。
   aside:

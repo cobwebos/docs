@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34350332"
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>将 Azure Active Directory 与 Palo Alto Networks - Admin UI 集成
 

@@ -1,8 +1,8 @@
 ---
-title: "与 Operations Management Suite (OMS) 集成 | Microsoft 文档"
-description: "除了使用 OMS 的标准功能外，还可以将其与其他管理应用程序和服务集成，以提供混合管理环境、提供特定于环境的自定义管理方案或向客户提供自定义管理体验。  本文概述了用于与 OMS 集成的不同选项以及指向提供详细技术信息的文章链接。"
+title: 与 Operations Management Suite (OMS) 集成 | Microsoft 文档
+description: 除了使用 OMS 的标准功能外，还可以将其与其他管理应用程序和服务集成，以提供混合管理环境、提供特定于环境的自定义管理方案或向客户提供自定义管理体验。  本文概述了用于与 OMS 集成的不同选项以及指向提供详细技术信息的文章链接。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039462"
 ---
 # <a name="integrating-with-operations-management-suite-oms"></a>与 Operations Management Suite (OMS) 集成
 Operations Management Suite 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。  除了使用 OMS 的标准功能外，还可以将其与其他管理应用程序和服务集成，以提供混合管理环境、提供特定于环境的自定义管理方案或向客户提供自定义管理体验。  本文概述了用于与 OMS 服务集成的不同选项以及指向提供详细技术信息的文章链接。 

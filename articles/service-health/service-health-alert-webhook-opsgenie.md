@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30179338"
 ---
 # <a name="configure-service-health-alerts-with-opsgenie"></a>使用 OpsGenie 配置服务运行状况警报
 
@@ -53,9 +54,9 @@ ms.lasthandoff: 03/23/2018
 
     a. **操作类型：***Webhook*
 
-    b. **详细信息：**前面保存的 OpsGenie **集成 URL**。
+    b. **详细信息：** 前面保存的 OpsGenie **集成 URL**。
 
-    c. **名称：**Webhook 的名称、别名或标识符。
+    c. **名称：** Webhook 的名称、别名或标识符。
 
 3. 警报创建完成后，选择“保存”。
 
@@ -70,9 +71,9 @@ ms.lasthandoff: 03/23/2018
 
     a. **操作类型：***Webhook*
 
-    b. **详细信息：**前面保存的 OpsGenie **集成 URL**。
+    b. **详细信息：** 前面保存的 OpsGenie **集成 URL**。
 
-    c. **名称：**Webhook 的名称、别名或标识符。
+    c. **名称：** Webhook 的名称、别名或标识符。
 
 5. 操作组更新完成后，选择“保存”。
 

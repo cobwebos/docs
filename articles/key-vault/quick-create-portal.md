@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068874"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Key Vault
 

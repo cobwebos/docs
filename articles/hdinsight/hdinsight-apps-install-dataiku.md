@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31394612"
 ---
 # <a name="install-published-application---dataiku-dds"></a>安装已发布的应用程序 - Dataiku DDS
 

@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33943172"
 abstract:
   description: 了解如何使用 Azure 搜索创建基于专用异类内容的企业搜索解决方案。 教程、API 参考和其他文档介绍了如何将从简单到高级的语法用于各种方案，以便将可搜索内容整合到单个可查询的快速索引中。 <p/><b>新认知搜索预览版。</b> 使用预发行的 REST API 将 AI 驱动的算法绑定到索引编制管道。 提取数据，然后调用自然语言和图像处理功能，将原始的非结构化内容转换成 Azure 搜索索引中的可搜索内容。 <p/>通过<a href="/azure/search/cognitive-search-quickstart-blob">资源和示例数据</a>来入门，或者通过<a href="/azure/search/cognitive-search-concept-intro">概念</a>来了解详细信息。
   aside:

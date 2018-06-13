@@ -1,8 +1,8 @@
 ---
-title: "Microsoft 监视产品中的警报管理 | Microsoft 文档"
-description: "警报指示需要管理员关注的某些问题。  本篇文章介绍在 System Center Operations Manager (SCOM) 和 Log Analytics 中创建和管理警报的差异，并且提供将两种产品用于混合警报管理策略的最佳做法。"
+title: Microsoft 监视产品中的警报管理 | Microsoft 文档
+description: 警报指示需要管理员关注的某些问题。  本篇文章介绍在 System Center Operations Manager (SCOM) 和 Log Analytics 中创建和管理警报的差异，并且提供将两种产品用于混合警报管理策略的最佳做法。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039282"
 ---
 # <a name="managing-alerts-with-microsoft-monitoring"></a>使用 Microsoft 监视管理警报
 警报指示需要管理员关注的某些问题。  就警报创建方式、管理和分析方式以及通知已检测到重要问题的方式而言，Operations Management Suite (OMS) 中的 System Center Operations Manager (SCOM) 和 Log Analytics 差异明显。

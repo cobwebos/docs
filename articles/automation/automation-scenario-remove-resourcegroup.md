@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194513"
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure 自动化方案 - 自动删除资源组
 许多客户会创建多个资源组。 有些资源组专门用于管理生产应用程序，还有一些资源组可能用于开发、测试和过渡环境。 自动部署这些资源是一回事，但按一下鼠标就能取消配置资源组则是另一回事。 使用 Azure 自动化可以简化这种常见的管理任务。 如果使用的 Azure 订阅由于会员优惠制度（例如 MSDN 或 Microsoft Partner Network Cloud Essentials 计划）而实施支出限制，则使用自动化就很有帮助。
