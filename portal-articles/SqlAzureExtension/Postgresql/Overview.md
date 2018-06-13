@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL 概述 | Microsoft Docs"
-description: "Azure 门户中 Azure Database for PostgreSQL 概述的帮助内容"
+title: Azure Database for PostgreSQL 概述 | Microsoft Docs
+description: Azure 门户中 Azure Database for PostgreSQL 概述的帮助内容
 services: app-service
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073837"
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>用于 PostgreSQL 的 Azure 数据库文档
 

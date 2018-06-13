@@ -1,8 +1,8 @@
 ---
-title: "Azure 堆栈中的存储帐户 |Microsoft 文档"
-description: "了解如何创建 Azure 堆栈存储帐户。"
+title: Azure 堆栈中的存储帐户 |Microsoft 文档
+description: 了解如何创建 Azure 堆栈存储帐户。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
 ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733717"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Azure 堆栈中的存储帐户
 存储帐户包括 Blob 和表服务和存储数据对象的唯一命名空间。 默认情况下，你的帐户中的数据是仅提供给你的存储帐户所有者。

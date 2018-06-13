@@ -1,11 +1,11 @@
 ---
-title: "Azure 网络观察程序中的数据包捕获简介 | Microsoft 文档"
-description: "此页概述了网络观察程序数据包捕获功能"
+title: Azure 网络观察程序中的数据包捕获简介 | Microsoft 文档
+description: 此页概述了网络观察程序数据包捕获功能
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23036832"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure 网络观察程序中的可变数据包捕获简介
 
