@@ -1,12 +1,12 @@
 ---
-title: "使用 PowerShell 管理 Azure 事件中心资源 | Microsoft Docs"
-description: "使用 PowerShell 模块创建和管理事件中心"
+title: 使用 PowerShell 管理 Azure 事件中心资源 | Microsoft Docs
+description: 使用 PowerShell 模块创建和管理事件中心
 services: event-hubs
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782211"
 ---
 # <a name="use-powershell-to-manage-event-hubs-resources"></a>使用 PowerShell 管理事件中心资源
 

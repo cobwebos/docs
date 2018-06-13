@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27592705"
 ---
 # <a name="create-a-xamarinios-app"></a>创建 Xamarin iOS 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

@@ -1,11 +1,11 @@
 ---
-title: "登录 Microsoft 应用程序时出现的问题 | Microsoft Docs"
-description: "对使用 Azure AD 登录到第一方 Microsoft 应用程序（如 Office 365）时面临的常见问题进行故障排除"
+title: 登录 Microsoft 应用程序时出现的问题 | Microsoft Docs
+description: 对使用 Azure AD 登录到第一方 Microsoft 应用程序（如 Office 365）时面临的常见问题进行故障排除
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384204"
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 

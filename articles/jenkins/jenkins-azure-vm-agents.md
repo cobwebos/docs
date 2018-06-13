@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure VM 代理缩放 Jenkins 部署。"
-description: "使用安装了 Jenkins Azure VM 代理插件的 Azure 虚拟机将额外的容量添加到 Jenkins 管道。"
+title: 使用 Azure VM 代理缩放 Jenkins 部署。
+description: 使用安装了 Jenkins Azure VM 代理插件的 Azure 虚拟机将额外的容量添加到 Jenkins 管道。
 services: multiple
-documentationcenter: 
+documentationcenter: ''
 author: rloutlaw
 manager: justhe
 ms.service: multiple
@@ -16,6 +16,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29392634"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>使用 Azure VM 代理缩放 Jenkins 部署以满足需求
 

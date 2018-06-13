@@ -1,12 +1,12 @@
 ---
-title: "Azure 服务总线主题和订阅入门 | Microsoft Docs"
-description: "编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。"
+title: Azure 服务总线主题和订阅入门 | Microsoft Docs
+description: 编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29396935"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 

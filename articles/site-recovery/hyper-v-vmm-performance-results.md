@@ -1,6 +1,6 @@
 ---
-title: "通过 Azure Site Recovery 将 VMM 云中的 Hyper-V VM 复制到辅助站点的测试结果 | Microsoft Docs"
-description: "本文介绍了使用 Azure Site Recovery 在 VMM 云中将 Hyper-V VM 复制到辅助站点时的性能测试。"
+title: 通过 Azure Site Recovery 将 VMM 云中的 Hyper-V VM 复制到辅助站点的测试结果 | Microsoft Docs
+description: 本文介绍了使用 Azure Site Recovery 在 VMM 云中将 Hyper-V VM 复制到辅助站点时的性能测试。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29378682"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>从 Hyper-V 复制到辅助站点的测试结果
 

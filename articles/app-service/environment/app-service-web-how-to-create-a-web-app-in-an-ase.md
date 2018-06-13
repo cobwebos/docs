@@ -1,11 +1,11 @@
 ---
-title: "在应用服务环境 v1 中创建 Web 应用"
-description: "了解如何在应用服务环境 v1 中创建 Web 应用和应用服务计划"
+title: 在应用服务环境 v1 中创建 Web 应用
+description: 了解如何在应用服务环境 v1 中创建 Web 应用和应用服务计划
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.service: app-service
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386905"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
