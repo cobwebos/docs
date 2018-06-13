@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心搜索 | Microsoft Docs"
-description: "了解 Azure 安全中心是如何使用 Log Analytics 搜索检索和分析安全数据的。"
+title: Azure 安全中心搜索 | Microsoft Docs
+description: 了解 Azure 安全中心是如何使用 Log Analytics 搜索检索和分析安全数据的。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040432"
 ---
 # <a name="azure-security-center-search"></a>Azure 安全中心搜索
 Azure 安全中心使用 [Log Analytics 搜索](../log-analytics/log-analytics-log-searches.md)检索和分析安全数据。 Log Analytics 提供用于快速检索和整合数据的查询语言。 在安全中心中，可以利用 Log Analytics 搜索来构造查询并分析收集的数据。

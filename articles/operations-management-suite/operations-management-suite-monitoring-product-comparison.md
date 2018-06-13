@@ -1,8 +1,8 @@
 ---
-title: "Microsoft 监视产品比较 | Microsoft 文档"
-description: "Microsoft Operations Management Suite (OMS) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。  本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。"
+title: Microsoft 监视产品比较 | Microsoft 文档
+description: Microsoft Operations Management Suite (OMS) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。  本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040292"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Microsoft 监视产品比较
 本文在以下方面比较了 Operations Management Suite (OMS) 中的 System Center Operations Manager (SCOM) 和 Log Analytics：体系结构、如何监视资源的逻辑以及如何对所收集数据执行分析。  这是为了让用户对它们的区别和相对优势有基本了解。  

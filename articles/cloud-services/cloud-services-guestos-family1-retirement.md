@@ -1,11 +1,11 @@
 ---
-title: "来宾 OS 系列 1 停用通知 | Microsoft Docs"
-description: "提供有关 Azure 来宾 OS 系列 1 何时停用以及如何判断你是否受影响的信息"
+title: 来宾 OS 系列 1 停用通知 | Microsoft Docs
+description: 提供有关 Azure 来宾 OS 系列 1 何时停用以及如何判断你是否受影响的信息
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 37b422e9-0713-4a81-a942-f553ef478064
 ms.service: cloud-services
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22998292"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
 我们已在 2013 年 6 月 1 日宣布停用 OS 系列 1。

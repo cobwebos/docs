@@ -1,13 +1,13 @@
 ---
-title: "解决 502 错误的网关、503 服务不可用错误 | Microsoft Docs"
-description: "排查 Azure 应用服务中托管的 Web 应用出现的“502 错误的网关”和“503 服务不可用”错误。"
+title: 解决 502 错误的网关、503 服务不可用错误 | Microsoft Docs
+description: 排查 Azure 应用服务中托管的 Web 应用出现的“502 错误的网关”和“503 服务不可用”错误。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: top-support-issue
-keywords: "502 错误的网关, 503 服务不可用, 错误 503, 错误 502"
+keywords: 502 错误的网关, 503 服务不可用, 错误 503, 错误 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.service: app-service-web
 ms.workload: web
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986252"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>排查 Azure Web 应用中的“502 错误的网关”和“503 服务不可用”HTTP 错误
 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中托管的 Web 应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文将帮助你排查这些错误。

@@ -1,8 +1,8 @@
 ---
-title: "如何在应用服务环境中缩放 Web 应用"
-description: "在应用服务环境中缩放 Web 应用"
+title: 如何在应用服务环境中缩放 Web 应用
+description: 在应用服务环境中缩放 Web 应用
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986312"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>在应用服务环境中缩放应用
 在 Azure 应用服务中，通常有三项内容可以扩展：

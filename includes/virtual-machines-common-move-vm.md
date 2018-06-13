@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958701"
 ---
 ## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>使用门户将 VM 移到其他订阅
 可以使用门户将 VM 及其关联的资源移到其他订阅。
