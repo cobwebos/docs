@@ -28,8 +28,8 @@
 3. 使用以下命令并替换占位符，以创建新的 Azure Active Directory 应用程序：
    
    * **{Display name}**：应用程序的显示名称，例如 **MySampleApp**
-   * **{Home page URL}：**应用主页的 URL，例如 http://mysampleapp/home。 此 URL 不需要指向实际的应用程序。
-   * **{Application identifier}：**唯一标识符，例如 http://mysampleapp。 此 URL 不需要指向实际的应用程序。
+   * **{Home page URL}：** 应用主页的 URL，例如 http://mysampleapp/home。 此 URL 不需要指向实际的应用程序。
+   * **{Application identifier}：** 唯一标识符，例如 http://mysampleapp。 此 URL 不需要指向实际的应用程序。
    * **{Password}**：用于向应用进行身份验证的密码。
      
      ```powershell

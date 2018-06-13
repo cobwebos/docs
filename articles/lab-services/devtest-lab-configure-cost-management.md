@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781946"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>查看 Azure 开发测试实验室的每月估计实验室成本趋势
 开发测试实验室的成本管理功能有助于追踪实验室成本。 本文将演示如何使用**月评估成本趋势**图表，查看当前日历月中截止目前的成本以及当前日历月截止月底的预估成本。 本文还演示了如何通过设置支出目标和阈值更好地管理实验室成本，当达到阈值时会触发开发测试实验室向你报告结果。

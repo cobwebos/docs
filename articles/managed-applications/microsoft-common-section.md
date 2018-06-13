@@ -18,6 +18,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260963"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 元素
 一个将一个或多个元素分组到同一标题下的控件。

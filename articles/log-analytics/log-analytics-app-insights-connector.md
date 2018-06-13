@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30186227"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版）
 
@@ -140,7 +141,7 @@ ms.lasthandoff: 03/23/2018
 
 ### <a name="sample-corrected-data"></a>采样更正数据
 
-Application Insights 提供*[采样更正](../application-insights/app-insights-sampling.md)*来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 Log Analytics 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。
+Application Insights 提供*[采样更正](../application-insights/app-insights-sampling.md)* 来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 Log Analytics 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。
 
 下面日志搜索查询中的采样更正示例：
 

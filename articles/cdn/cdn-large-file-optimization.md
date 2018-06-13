@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33766200"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>通过 Azure CDN 优化大型文件下载
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29947310"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Log Analytics 中视图设计器磁贴的参考指南
 使用 Azure Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
