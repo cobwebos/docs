@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 网络观察程序管理网络安全组流日志 - Azure CLI 1.0 | Microsoft Docs"
-description: "此页说明如何在 Azure 网络观察程序中使用 Azure CLI 1.0 管理网络安全组流日志"
+title: 使用 Azure 网络观察程序管理网络安全组流日志 - Azure CLI 1.0 | Microsoft Docs
+description: 此页说明如何在 Azure 网络观察程序中使用 Azure CLI 1.0 管理网络安全组流日志
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2dfc3112-8294-4357-b2f8-f81840da67d3
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26774482"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli-10"></a>使用 Azure CLI 1.0 配置网络安全组流日志
 

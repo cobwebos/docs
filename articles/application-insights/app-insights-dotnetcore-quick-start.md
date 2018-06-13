@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights 快速入门 | Microsoft docs"
-description: "提供有关快速安装 ASP.NET Core Web 应用以使用 Application Insights 进行监视的说明"
+title: Azure Application Insights 快速入门 | Microsoft docs
+description: 提供有关快速安装 ASP.NET Core Web 应用以使用 Application Insights 进行监视的说明
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386373"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>开始监视 ASP.NET Core Web 应用程序
 

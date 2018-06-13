@@ -1,11 +1,11 @@
 ---
-title: "使用 PowerShell 在 Azure VM 中配置 Always On 可用性组 | Microsoft Docs"
-description: "本教程使用采用经典部署模型创建的资源。 将使用 PowerShell 在 Azure 中创建 Always On 可用性组。"
+title: 使用 PowerShell 在 Azure VM 中配置 Always On 可用性组 | Microsoft Docs
+description: 本教程使用采用经典部署模型创建的资源。 将使用 PowerShell 在 Azure 中创建 Always On 可用性组。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: a4e2f175-fe56-4218-86c7-a43fb916cc64
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401273"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>使用 PowerShell 在 Azure VM 中配置 Always On 可用性组
 > [!div class="op_single_selector"]

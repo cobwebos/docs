@@ -1,12 +1,12 @@
 ---
-title: "应用程序服务概述： Azure 堆栈 |Microsoft 文档"
-description: "Azure 堆栈上的应用程序服务概述"
+title: 应用程序服务概述： Azure 堆栈 |Microsoft 文档
+description: Azure 堆栈上的应用程序服务概述
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386068"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上的应用服务概述
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*

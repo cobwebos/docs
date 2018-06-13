@@ -1,11 +1,11 @@
 ---
-title: "登录后应用程序的页面上有错误 | Microsoft Docs"
-description: "如何解决应用程序本身发出错误的 Azure AD 登录问题"
+title: 登录后应用程序的页面上有错误 | Microsoft Docs
+description: 如何解决应用程序本身发出错误的 Azure AD 登录问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384899"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>登录后应用程序的页面上出现错误
 

@@ -1,11 +1,11 @@
 ---
-title: "指南：使用 Azure BizTalk 服务处理 EDIFACT 发票 | Microsoft Docs"
-description: "如何创建并配置 Box 连接器或 API 应用，以及在 Azure 应用服务中的逻辑应用中使用它"
+title: 指南：使用 Azure BizTalk 服务处理 EDIFACT 发票 | Microsoft Docs
+description: 如何创建并配置 Box 连接器或 API 应用，以及在 Azure 应用服务中的逻辑应用中使用它
 services: biztalk-services
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7e0b93fa-3e2b-4a9c-89ef-abf1d3aa8fa9
 ms.service: biztalk-services
 ms.devlang: multiple
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26633861"
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>指南：使用 Azure BizTalk 服务处理 EDIFACT 发票
 

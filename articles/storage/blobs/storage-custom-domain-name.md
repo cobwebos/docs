@@ -1,6 +1,6 @@
 ---
-title: "为 Azure Blob 存储终结点配置自定义域名 | Microsoft Docs"
-description: "使用 Azure 门户将自己的规范名称 (CNAME) 映射到 Azure 存储帐户中的 Blob 存储终结点。"
+title: 为 Azure Blob 存储终结点配置自定义域名 | Microsoft Docs
+description: 使用 Azure 门户将自己的规范名称 (CNAME) 映射到 Azure 存储帐户中的 Blob 存储终结点。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29559921"
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>为 Blob 存储终结点配置自定义域名
 

@@ -1,12 +1,12 @@
 ---
-title: "使用 .NET Standard 库从 Azure 事件中心接收事件 | Microsoft Docs"
-description: "使用 .NET Standard 中的 EventProcessorHost 接收消息入门"
+title: 使用 .NET Standard 库从 Azure 事件中心接收事件 | Microsoft Docs
+description: 使用 .NET Standard 中的 EventProcessorHost 接收消息入门
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29389829"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>使用 .NET Standard 中的事件处理程序主机接收消息入门
 

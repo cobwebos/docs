@@ -1,11 +1,11 @@
 ---
-title: "使用自助应用程序访问时的问题 | Microsoft Docs"
-description: "排除与自助应用程序访问相关的问题"
+title: 使用自助应用程序访问时的问题 | Microsoft Docs
+description: 排除与自助应用程序访问相关的问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29382349"
 ---
 # <a name="problem-using-self-service-application-access"></a>使用自助应用程序访问时的问题
 
@@ -60,11 +61,11 @@ ms.lasthandoff: 02/21/2018
 
 9.  接下来，要选择向其添加请求此应用程序访问权限的用户的组，请单击“分配的用户应添加到哪个组?”标签旁边的选择器，并选择一个组。
 
-10. **可选：**如果希望获得业务批准之后才允许用户访问，请将“需要获得批准才能授权访问此应用程序?”切换到“是”。
+10. **可选：** 如果希望获得业务批准之后才允许用户访问，请将“需要获得批准才能授权访问此应用程序?”切换到“是”。
 
-11. **可选：对于仅使用密码单一登录的应用程序，**如果要允许业务审批人为已批准的用户指定发送到此应用程序的密码，请将“允许审批人设置此应用程序的用户密码?”切换到“是”。
+11. **可选：对于仅使用密码单一登录的应用程序，** 如果要允许业务审批人为已批准的用户指定发送到此应用程序的密码，请将“允许审批人设置此应用程序的用户密码?”切换到“是”。
 
-12. **可选：**若要指定有权授予此应用程序访问权限的业务审批人，请单击“谁有权批准此应用程序的访问权限?”标签旁边的选择器，最多可选择 10 个单独业务审批人。
+12. **可选：** 若要指定有权授予此应用程序访问权限的业务审批人，请单击“谁有权批准此应用程序的访问权限?”标签旁边的选择器，最多可选择 10 个单独业务审批人。
 
  >[!NOTE]
  > 不支持组。

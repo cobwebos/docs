@@ -1,12 +1,12 @@
 ---
-title: "使用 Functions 将消息添加到 Azure 存储队列 | Microsoft Docs"
-description: "使用 Azure Functions 创建一个无服务器函数，该函数通过 HTTP 请求调用，并在 Azure 存储队列中创建一条消息。"
+title: 使用 Functions 将消息添加到 Azure 存储队列 | Microsoft Docs
+description: 使用 Azure Functions 创建一个无服务器函数，该函数通过 HTTP 请求调用，并在 Azure 存储队列中创建一条消息。
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.service: functions
 ms.devlang: multiple
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29387058"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
 
