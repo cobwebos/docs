@@ -1,11 +1,11 @@
 ---
-title: "将 Azure Log Analytics 升级到新的日志搜索 | Microsoft Docs"
-description: "新的 Log Analytics 查询语言即将发布，用户可以参与公共预览版。  本文介绍新语言的优势，以及如何转换工作区。"
+title: 将 Azure Log Analytics 升级到新的日志搜索 | Microsoft Docs
+description: 新的 Log Analytics 查询语言即将发布，用户可以参与公共预览版。  本文介绍新语言的优势，以及如何转换工作区。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28983982"
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>将 Azure Log Analytics 升级到新的日志搜索
 

@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure API 管理、事件中心和 Runscope 监视 API | Microsoft 文档"
-description: "通过连接 Azure API 管理、Azure 事件中心以及用于 HTTP 日志记录与监视的 Runscope，演示 log-to-eventhub 策略的示例应用程序"
+title: 使用 Azure API 管理、事件中心和 Runscope 监视 API | Microsoft 文档
+description: 通过连接 Azure API 管理、Azure 事件中心以及用于 HTTP 日志记录与监视的 Runscope，演示 log-to-eventhub 策略的示例应用程序
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: darrelmiller
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c528cf6f-5f16-4a06-beea-fa1207541a47
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117062"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>使用 Azure API 管理、事件中心和 Runscope 监视 API
 [API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后，将响应返回给 API 使用者。 API 管理服务保留要在 Azure 门户仪表板中显示的有关 API 的一些重要统计信息，但除此之外不显示详细信息。

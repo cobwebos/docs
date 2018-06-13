@@ -1,12 +1,12 @@
 ---
-title: "边框的集成的 Azure 堆栈系统的连接网络集成注意事项 |Microsoft 文档"
-description: "了解可以执行哪些操作来规划数据中心的多节点 Azure 堆栈的边框网络连接。"
+title: 边框的集成的 Azure 堆栈系统的连接网络集成注意事项 |Microsoft 文档
+description: 了解可以执行哪些操作来规划数据中心的多节点 Azure 堆栈的边框网络连接。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919428"
 ---
 # <a name="border-connectivity"></a>边框连接 
 网络集成规划是为成功集成的 Azure 堆栈系统部署、 操作和管理的重要前提条件。 边框连接规划开始通过选择使用边界网关协议 (BGP) 的动态路由。 这要求分配 16 位 BGP 自治系统编号 （公共或私有），或使用静态路由，其中一个静态默认路由分配给边界设备。

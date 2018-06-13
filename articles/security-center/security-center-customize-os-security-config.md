@@ -1,12 +1,12 @@
 ---
-title: "在 Azure 安全中心自定义 OS 安全配置（预览）| Microsoft Docs"
-description: "本文演示如何自定义安全中心评估"
+title: 在 Azure 安全中心自定义 OS 安全配置（预览）| Microsoft Docs
+description: 本文演示如何自定义安全中心评估
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200004"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>在 Azure 安全中心自定义 OS 安全配置（预览）
 

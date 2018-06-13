@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 资源管理器预配 Redis 缓存 | Microsoft 文档"
-description: "使用 Azure 资源管理器模板部署 Azure Redis 缓存。"
+title: 使用 Azure 资源管理器预配 Redis 缓存 | Microsoft 文档
+description: 使用 Azure 资源管理器模板部署 Azure Redis 缓存。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910735"
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>使用模板创建 Redis 缓存
 在本主题中，将学习如何创建用于部署 Azure Redis 缓存的 Azure 资源管理器模板。 该缓存可以用于现有存储帐户以保存诊断数据。 还将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。

@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics 新日志搜索常见问题解答 | Microsoft Docs"
-description: "本文提供有关将 Log Analytics 升级到新的查询语言的常见问题解答。"
+title: Log Analytics 新日志搜索常见问题解答 | Microsoft Docs
+description: 本文提供有关将 Log Analytics 升级到新的查询语言的常见问题解答。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27993863"
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Log Analytics 新日志搜索常见问题解答和已知问题
 

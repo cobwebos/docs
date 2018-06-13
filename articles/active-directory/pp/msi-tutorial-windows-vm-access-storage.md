@@ -1,8 +1,8 @@
 ---
-title: "使用 Windows VM MSI 访问 Azure 存储"
-description: "本教程逐步介绍如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure 存储。"
+title: 使用 Windows VM MSI 访问 Azure 存储
+description: 本教程逐步介绍如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure 存储。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984827"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>使用 Windows VM 托管服务标识通过访问密钥访问 Azure 存储
 

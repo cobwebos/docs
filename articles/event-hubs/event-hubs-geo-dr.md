@@ -1,11 +1,11 @@
 ---
-title: "Azure 事件中心异地灾难恢复 | Microsoft Docs"
-description: "如何使用地理区域进行故障转移并在 Azure 事件中心执行灾难恢复"
+title: Azure 事件中心异地灾难恢复 | Microsoft Docs
+description: 如何使用地理区域进行故障转移并在 Azure 事件中心执行灾难恢复
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745888"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure 事件中心异地灾难恢复
 

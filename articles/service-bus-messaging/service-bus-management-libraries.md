@@ -1,12 +1,12 @@
 ---
-title: "Azure 服务总线管理库 | Microsoft Docs"
-description: "在 .NET 中管理服务总线命名空间和消息实体。"
+title: Azure 服务总线管理库 | Microsoft Docs
+description: 在 .NET 中管理服务总线命名空间和消息实体。
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120890"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 

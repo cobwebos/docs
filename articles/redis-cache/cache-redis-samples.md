@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis 缓存示例 | Microsoft Docs"
-description: "了解如何使用 Azure Redis 缓存"
+title: Azure Redis 缓存示例 | Microsoft Docs
+description: 了解如何使用 Azure Redis 缓存
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1f8d210c-ee09-4fe2-b63f-1e69246a27d8
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909690"
 ---
 # <a name="azure-redis-cache-samples"></a>Azure Redis 缓存示例
 本主题提供 Azure Redis 缓存示例的列表，包括连接到缓存、从缓存读取数据和将数据写入缓存，以及使用 ASP.NET Redis 缓存提供程序等方案。 有些示例是可下载的项目，有些示例提供了分步指南并包含代码片段但没有链接到可下载的项目。

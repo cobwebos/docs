@@ -1,8 +1,8 @@
 ---
-title: "使用 Git 配置 Azure API 管理服务 | Microsoft 文档"
-description: "了解如何使用 Git 保存和配置 API 管理服务。"
+title: 使用 Git 配置 Azure API 管理服务 | Microsoft 文档
+description: 了解如何使用 Git 保存和配置 API 管理服务。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
 editor: mattfarm
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117531"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
