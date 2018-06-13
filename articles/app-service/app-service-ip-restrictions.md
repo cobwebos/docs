@@ -19,6 +19,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29800103"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Azure App Service 静态 IP 限制 #
 

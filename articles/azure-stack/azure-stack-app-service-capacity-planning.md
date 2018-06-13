@@ -1,12 +1,12 @@
 ---
-title: "Azure 堆栈中的 Azure App Service 服务器角色的容量规划 |Microsoft 文档"
-description: "Azure 堆栈中的 Azure App Service 服务器角色的容量规划"
+title: Azure 堆栈中的 Azure App Service 服务器角色的容量规划 |Microsoft 文档
+description: Azure 堆栈中的 Azure App Service 服务器角色的容量规划
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29388577"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Azure 堆栈中的 Azure App Service 服务器角色的容量规划
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*

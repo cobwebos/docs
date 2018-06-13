@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 从保护项中排除磁盘 | Microsoft Docs"
-description: "介绍在从 VMware 复制到 Azure 时，为何需要从复制中排除 VM 磁盘，以及如何这样做。"
+title: 使用 Azure Site Recovery 从保护项中排除磁盘 | Microsoft Docs
+description: 介绍在从 VMware 复制到 Azure 时，为何需要从复制中排除 VM 磁盘，以及如何这样做。
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811474"
 ---
 # <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>在从 VMware 到 Azure 方案的复制中排除磁盘
 

@@ -1,8 +1,8 @@
 ---
-title: "使用 Windows VM MSI 访问 Azure Key Vault"
-description: "本教程逐步介绍了如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault。"
+title: 使用 Windows VM MSI 访问 Azure Key Vault
+description: 本教程逐步介绍了如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29383777"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault 
 

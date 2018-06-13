@@ -1,6 +1,6 @@
 ---
-title: "有关使用 Azure Database for PostgreSQL 确保业务连续性的概述"
-description: "有关使用 Azure Database for PostgreSQL 确保业务连续性的概述。"
+title: 有关使用 Azure Database for PostgreSQL 确保业务连续性的概述
+description: 有关使用 Azure Database for PostgreSQL 确保业务连续性的概述。
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29693115"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>有关使用 Azure Database for PostgreSQL 确保业务连续性的概述
 

@@ -1,11 +1,11 @@
 ---
-title: "在 Azure Site Recovery 中将脚本添加到还原计划 | Microsoft Docs"
-description: "了解在 Azure 中将新的 System Center Virtual Machine Manager (VMM) 脚本添加到还原计划的先决条件。"
+title: 在 Azure Site Recovery 中将脚本添加到还原计划 | Microsoft Docs
+description: 了解在 Azure 中将新的 System Center Virtual Machine Manager (VMM) 脚本添加到还原计划的先决条件。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ruturaj
 manager: shons
-editor: 
+editor: ''
 ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
 ms.service: site-recovery
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29402068"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>将 VMM 脚本添加到还原计划
 

@@ -1,11 +1,11 @@
 ---
-title: "添加 Azure Log Analytics 管理解决方案 | Microsoft 文档"
-description: "Azure 中的管理解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。"
+title: 添加 Azure Log Analytics 管理解决方案 | Microsoft 文档
+description: Azure 中的管理解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29395456"
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>将 Azure Log Analytics 管理解决方案添加到工作区
 

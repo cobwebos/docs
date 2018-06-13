@@ -1,11 +1,11 @@
 ---
-title: "为 Azure API 管理实例配置自定义域名 | Microsoft Docs"
-description: "本主题介绍了如何为 Azure API 管理实例配置自定义域名。"
+title: 为 Azure API 管理实例配置自定义域名 | Microsoft Docs
+description: 本主题介绍了如何为 Azure API 管理实例配置自定义域名。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: anneta
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29345364"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名 
 

@@ -1,12 +1,12 @@
 ---
-title: "Log Analytics 中由用户启动的 Azure 自动化 Runbook 操作 | Microsoft Docs"
-description: "本文介绍了如何按需从 Log Analytics 搜索结果中运行自动化 runbook。"
+title: Log Analytics 中由用户启动的 Azure 自动化 Runbook 操作 | Microsoft Docs
+description: 本文介绍了如何按需从 Log Analytics 搜索结果中运行自动化 runbook。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29394609"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>从 Log Analytics 日志搜索结果中通过自动化 Runbook 采取操作
 

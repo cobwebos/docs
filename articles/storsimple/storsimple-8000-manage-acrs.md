@@ -1,12 +1,12 @@
 ---
-title: "管理 StorSimple 中的访问控制记录 | Microsoft Docs"
-description: "介绍如何使用访问控制记录 (ACR)，以确定哪些主机可以连接到 StorSimple 设备上的卷。"
+title: 管理 StorSimple 中的访问控制记录 | Microsoft Docs
+description: 介绍如何使用访问控制记录 (ACR)，以确定哪些主机可以连接到 StorSimple 设备上的卷。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108335"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>使用 StorSimple Manager 服务管理访问控制记录
 
