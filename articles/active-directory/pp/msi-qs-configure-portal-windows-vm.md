@@ -1,11 +1,11 @@
 ---
-title: "如何使用 Azure 门户在 Azure VM 上配置 MSI"
-description: "逐步介绍了如何使用 Azure 门户在 Azure VM 上配置托管服务标识 (MSI)。"
+title: 如何使用 Azure 门户在 Azure VM 上配置 MSI
+description: 逐步介绍了如何使用 Azure 门户在 Azure VM 上配置托管服务标识 (MSI)。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28979167"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>使用 Azure 门户配置 VM 托管服务标识 (MSI)
 

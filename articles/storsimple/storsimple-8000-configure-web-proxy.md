@@ -1,12 +1,12 @@
 ---
-title: "为 StorSimple 8000 系列设备设置 Web 代理 | Microsoft Docs"
-description: "了解如何使用 Windows PowerShell for StorSimple 为 StorSimple 设备配置 Web 代理设置。"
+title: 为 StorSimple 8000 系列设备设置 Web 代理 | Microsoft Docs
+description: 了解如何使用 Windows PowerShell for StorSimple 为 StorSimple 设备配置 Web 代理设置。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108505"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>为 StorSimple 设备配置 Web 代理
 

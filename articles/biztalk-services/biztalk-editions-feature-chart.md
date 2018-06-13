@@ -1,11 +1,11 @@
 ---
-title: "了解 BizTalk 服务各版本中的功能 | Microsoft Docs"
-description: "比较 BizTalk 服务各个版本的功能：免费版、开发人员版、基本版、标准版和高级版。 MABS，WABS。"
+title: 了解 BizTalk 服务各版本中的功能 | Microsoft Docs
+description: 比较 BizTalk 服务各个版本的功能：免费版、开发人员版、基本版、标准版和高级版。 MABS，WABS。
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: c589629f-06b1-44bb-b8ca-1db71826ea59
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22706642"
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk 服务：版本图表
 

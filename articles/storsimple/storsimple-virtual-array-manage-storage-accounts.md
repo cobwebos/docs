@@ -1,11 +1,11 @@
 ---
-title: "管理 StorSimple 虚拟阵列存储帐户凭据 | Microsoft 文档"
-description: "介绍如何使用 StorSimple 设备管理器的“配置”页添加、编辑、删除或轮换与 StorSimple 虚拟阵列关联的存储帐户凭据的安全密钥。"
+title: 管理 StorSimple 虚拟阵列存储帐户凭据 | Microsoft 文档
+description: 介绍如何使用 StorSimple 设备管理器的“配置”页添加、编辑、删除或轮换与 StorSimple 虚拟阵列关联的存储帐户凭据的安全密钥。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111705"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的存储帐户凭据
 
