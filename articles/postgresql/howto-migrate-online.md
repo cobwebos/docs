@@ -1,6 +1,6 @@
 ---
-title: "在最短的停机时间内迁移到 Azure Database for PostgreSQL"
-description: "本文介绍如何通过将 PostgreSQL 数据库提取到转储文件，从由 Azure Database for PostgreSQL 中的 pg_dump 创建的存档文件还原 PostgreSQL 数据库，并使用 Attunity Replicate for Microsoft Migrations 设置从源数据库到目标数据库的初始加载和持续数据同步，以执行在最短的故障时间内进行的迁移。"
+title: 在最短的停机时间内迁移到 Azure Database for PostgreSQL
+description: 本文介绍如何通过将 PostgreSQL 数据库提取到转储文件，从由 Azure Database for PostgreSQL 中的 pg_dump 创建的存档文件还原 PostgreSQL 数据库，并使用 Attunity Replicate for Microsoft Migrations 设置从源数据库到目标数据库的初始加载和持续数据同步，以执行在最短的故障时间内进行的迁移。
 services: postgresql
 author: HJToland3
 ms.author: jtoland
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29692083"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>在最短的停机时间内迁移到 Azure Database for PostgreSQL
 可以使用 Attunity Replicate for Microsoft Migrations 将现有的 PostgreSQL 数据库迁移到 Azure Database for PostgreSQL。 Attunity Replicate 是由 Attunity 和 Microsoft 联合提供的一项服务。 它随 Azure 数据库迁移服务一起提供，Microsoft 客户无需额外付费即可拥有它。 
