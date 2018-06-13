@@ -1,12 +1,12 @@
 ---
-title: "Azure Cloud Shell 定价 | Microsoft Docs"
-description: "Azure Cloud Shell 的定价概述"
-services: 
-documentationcenter: 
+title: Azure Cloud Shell 定价 | Microsoft Docs
+description: Azure Cloud Shell 的定价概述
+services: ''
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24809860"
 ---
 # <a name="pricing"></a>定价
 Bash in Cloud Shell 和 PowerShell in Cloud Shell（预览版）遵循以下信息。

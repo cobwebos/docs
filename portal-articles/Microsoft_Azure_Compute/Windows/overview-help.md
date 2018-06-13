@@ -1,6 +1,6 @@
 ---
-title: "Windows 虚拟机帮助文档 | Microsoft Docs"
-description: "Azure 门户中 Windows 虚拟机概述的帮助内容"
+title: Windows 虚拟机帮助文档 | Microsoft Docs
+description: Azure 门户中 Windows 虚拟机概述的帮助内容
 services: virtual-machines-windows
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24057682"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 虚拟机文档
 

@@ -1,7 +1,7 @@
 ---
-title: "使用 Terraform 和 HCL 创建 VM 群集"
-description: "在 Azure 中使用 Terraform 和 HashiCorp 配置语言 (HCL) 创建 Linux 虚拟机群集与负载均衡器"
-keywords: "terraform, devops, 虚拟机, 网络, 模块"
+title: 使用 Terraform 和 HCL 创建 VM 群集
+description: 在 Azure 中使用 Terraform 和 HashiCorp 配置语言 (HCL) 创建 Linux 虚拟机群集与负载均衡器
+keywords: terraform, devops, 虚拟机, 网络, 模块
 author: tomarcher
 manager: routlaw
 ms.service: virtual-machines-linux
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518794"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>使用 Terraform 和 HCL 创建 VM 群集
 

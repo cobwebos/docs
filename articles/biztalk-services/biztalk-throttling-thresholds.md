@@ -1,11 +1,11 @@
 ---
-title: "了解 BizTalk 服务中的限制 | Microsoft Docs"
-description: "了解 BizTalk 服务的限制阈值以及导致的运行时行为。 限制以内存使用量和消息数为基础。 MABS, WABS"
+title: 了解 BizTalk 服务中的限制 | Microsoft Docs
+description: 了解 BizTalk 服务的限制阈值以及导致的运行时行为。 限制以内存使用量和消息数为基础。 MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: f6663cf2-cda4-4bac-855e-27d2ad5c4fa4
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102080"
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk 服务：限制
 

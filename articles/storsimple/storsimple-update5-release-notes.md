@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 系列 Update 5 发行说明 | Microsoft Docs"
-description: "介绍 StorSimple 8000 系列 Update 5 的新功能、问题和解决方法。"
+title: StorSimple 8000 系列 Update 5 发行说明 | Microsoft Docs
+description: 介绍 StorSimple 8000 系列 Update 5 的新功能、问题和解决方法。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518913"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 系列 Update 5 发行说明
 
