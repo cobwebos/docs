@@ -41,6 +41,12 @@
           href: billing-understand-reserved-instance-usage-ea.md
         - name: 管理预留实例
           href: billing-manage-reserved-vm-instance.md
+    - name: REST 示例
+      items:
+        - name: 查看企业成本
+          href: billing-review-enterprise-billing.md
+        - name: 查看订阅使用情况
+          href: billing-review-subscription-billing.md
 - name: 管理帐户
   items:
     - name: 免费帐户

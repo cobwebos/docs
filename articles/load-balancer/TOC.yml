@@ -74,6 +74,8 @@
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: 在区域内对 VM 进行负载均衡 (CLI)
       href: load-balancer-standard-public-zonal-cli.md
+    - name: 使用 REST API 创建 Azure 负载均衡器
+      href: create-load-balancer-rest-api.md
     - name: 创建基本负载均衡器（模板）
       href: load-balancer-get-started-internet-arm-template.md
     - name: 使用 IPv6 创建公共负载均衡器
@@ -106,6 +108,8 @@
           href: load-balancer-multiple-ip-powershell.md
     - name: Azure 负载均衡器的 Log Analytics
       href: load-balancer-monitor-log.md
+    - name: 使用 REST 获取负载均衡器指标
+      href: load-balancer-query-metrics-rest-api.md
     - name: 为内部负载均衡器配置高可用性端口
       href: load-balancer-configure-ha-ports.md
     - name: 故障排除
