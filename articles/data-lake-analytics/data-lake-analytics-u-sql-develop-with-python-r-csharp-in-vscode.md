@@ -1,23 +1,20 @@
 ---
-title: "在 Visual Studio Code 中使用 Python、R 和 C# 开发用于 Azure Data Lake Analytics 的 U-SQL | Microsoft Docs"
-description: "了解如何使用 Python、R 和 C# 的隐藏代码来提交 Azure Data Lake 中的作业。"
+title: 在 Visual Studio Code 中使用 Python、R 和 C# 开发用于 Azure Data Lake Analytics 的 U-SQL
+description: 了解如何使用 Python、R 和 C# 的隐藏代码来提交 Azure Data Lake 中的作业。
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
-manager: 
-editor: 
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 11/22/2017
+author: jejiang
 ms.author: jejiang
-ms.openlocfilehash: 8fd8decfde1220be6aaa099c3afb24e8c1eecce4
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+manager: kfile
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 11/22/2017
+ms.openlocfilehash: 171aef186fd681adf9b3d92deb8691c852ea1038
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624901"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>在 Visual Studio Code 中使用 Python、R 和 C# 开发用于 Azure Data Lake Analytics 的 U-SQL
 了解如何使用 Visual Studio Code (VSCode) 来编写 U-SQL 的 Python、R 和 C# 隐藏代码，并将作业提交到 Azure Data Lake 服务。 有关 VSCode 的 Azure Data Lake 工具的详细信息，请参阅[使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)。
@@ -185,7 +182,6 @@ ms.lasthandoff: 12/07/2017
 ## <a name="next-steps"></a>后续步骤
 * [使用用于 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)
 * [使用 Visual Studio Code 进行 U-SQL 本地运行和本地调试](data-lake-tools-for-vscode-local-run-and-debug.md)
-* [开发用于 Azure Data Lake Analytics 作业的 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)
 * [通过 PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [通过 Azure 门户实现 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
 * [使用适用于 Visual Studio 的工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)

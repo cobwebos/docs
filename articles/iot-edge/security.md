@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT Edge 中的安全性 | Microsoft Docs"
-description: "安全性、身份验证和 IoT Edge 设备的授权"
-services: iot-edge
-keywords: 
+title: Azure IoT Edge 中的安全性 | Microsoft Docs
+description: 安全性、身份验证和 IoT Edge 设备的授权
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 8a5bf1f35fcdd779cf27edeba7dfd5705cbae205
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+services: iot-edge
+ms.openlocfilehash: effe33182435d2a4afbad3356c6840070ba96325
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631422"
 ---
 # <a name="securing-azure-iot-edge---preview"></a>确保 Azure IoT Edge 的安全 - 预览
 

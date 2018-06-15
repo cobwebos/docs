@@ -56,11 +56,9 @@
     - name: IaaS 安全
       href: security-virtual-machines-overview.md
       items:
-        - name: 最佳做法 - Azure VM
-          href: azure-security-best-practices-vms.md
         - name: 最佳做法 - IaaS 工作负荷
           href: azure-security-iaas.md
-        - name: Azure Marketplace 映像
+        - name: Azure 市场映像
           href: security-recommendations-azure-marketplace-images.md
     - name: 身份管理
       href: security-identity-management-overview.md

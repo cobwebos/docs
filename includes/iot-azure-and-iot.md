@@ -1,4 +1,20 @@
-
+---
+title: include 文件
+description: include 文件
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/25/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: f27dbf20eab5866ac3061d888c17e970a1d197f7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666749"
+---
 # <a name="azure-and-the-internet-of-things"></a>Azure 和物联网
 
 欢迎使用 Microsoft Azure 与物联网 (IoT)。 本文介绍云中 IoT 解决方案的常见特征。 IoT 解决方案需要设备（可能数以百万计）与解决方案后端之间有安全的双向通信。 例如，解决方案可能会使用自动化的预测分析，从设备到云的事件流中挖掘有用的见解。
@@ -58,14 +74,14 @@
 
 ### <a name="presentation-and-business-connectivity"></a>呈现和业务连接
 
-呈现和业务连接层可让最终用户与 IoT 解决方案及设备交互。 它可让用户查看和分析从其设备收集的数据。 这些视图可以采用仪表板或 BI 报表的格式，以显示历史数据和/或接近实时的数据。 例如，操作员可检查特定抽水站的状态，并查看系统引发的任何警报。 还可以通过此层来集成 IoT 解决方案与现有业务线应用程序，将其绑定到企业业务流程或工作流中。 例如，预测性维护解决方案可集成计划系统，在解决方案识别出需要维护的泵时预约工程师到泵站进行检查。
+呈现和业务连接层可让最终用户与 IoT 解决方案及设备交互。 它可让用户查看和分析从其设备收集的数据。 这些视图可以采用仪表板或 BI 报表的格式，以显示历史数据和/或接近实时的数据。 例如，操作员可检查特定抽水站的状态，并查看系统引发的任何警报。 还可以通过此层来集成 IoT 解决方案与现有业务线应用程序，将其绑定到企业业务流程或工作流中。 例如，预测性维护解决方案加速器可集成计划系统，在解决方案识别出需要维护的泵时预约工程师到泵站进行检查。
 
 [img-solution-architecture]: ./media/iot-azure-and-iot/iot-reference-architecture.png
 [img-dashboard]: ./media/iot-azure-and-iot/iot-suite.png
 
 [lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
-[lnk-iot-suite]: ../articles/iot-suite/iot-suite-overview.md
+[lnk-iot-suite]: ../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
 [lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
-[Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
+[Azure IoT solution accelerators]: http://azure.microsoft.com/solutions/iot
 [lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf

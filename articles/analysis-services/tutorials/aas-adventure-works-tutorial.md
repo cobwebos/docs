@@ -3,16 +3,17 @@ title: Azure Analysis Services Adventure Works 教程 | Microsoft Docs
 description: 介绍了 Azure Analysis Services 的 Adventure Works 教程
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3c95e755c66cfd1bc0a4e4e55bf1d05f08214925
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bb0cd89cb90b78bc7d5a68a1f7249fb82528db11
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596145"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services - Adventure Works 教程
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 04/16/2018
 
 -   包含**示例 AdventureWorksDW 数据库**的 [Azure SQL 数据仓库](../../sql-data-warehouse/create-data-warehouse-portal.md)，或者包含 [Adventure Works 示例数据库](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)的 SQL Server 数据仓库。
 
-    **重要说明：**如果在本地 SQL Server 数据仓库上安装示例数据库，并且将模型部署到 Azure Analysis Services 服务器，则需要[本地数据网关](../analysis-services-gateway.md)。
+    **重要说明：** 如果在本地 SQL Server 数据仓库上安装示例数据库，并且将模型部署到 Azure Analysis Services 服务器，则需要[本地数据网关](../analysis-services-gateway.md)。
 
 -   最新版本的用于 Visual Studio 的 [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)。
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 04/16/2018
 
 -   客户端应用程序，例如 [Power BI Desktop](https://powerbi.microsoft.com/desktop/) 或 Excel。 
 
-## <a name="scenario"></a>方案  
+## <a name="scenario"></a>场景  
 本教程基于 Adventure Works Cycles（一家虚构的公司）。 Adventure Works 是一家大型的跨国制造公司，生产自行车及其零配件并面向北美、欧洲和亚洲的商业市场销售。 公司雇佣了 500 名员工。 另外，Adventure Works 还雇用了遍布其市场群的多个区域销售团队。 项目内容是为销售和营销用户创建表格模型来分析 AdventureWorksDW 数据库中的 Internet 销售数据。  
   
 若要完成本教程，必须完成多个课程。 在每个课程中，需执行一些任务。 若要完成本课程，必须按序完成每个任务。 特定课程中可能有几个任务会实现类似的结果，但完成每个任务的方式略有不同。 此方法说明通常可通过多种方法来完成某个任务，并提供机会练习使用在之前的课程和任务中学习的技能。  

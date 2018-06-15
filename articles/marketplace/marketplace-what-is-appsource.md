@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
 ms.openlocfilehash: 5f963e9ef6f0a19599f372b196dc75a327b92b5a
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "32178230"
 ---
 # <a name="what-is-appsource"></a>AppSource 简介
@@ -76,7 +76,7 @@ Office 中的应用程序现在可用于 AppSource！ 查看[发布过程和指�
 | SaaS 应用（以前称为“Web 应用”） | 首选 | Azure AD 是确保无缝客户体验和吸引最优质潜在客户的最佳做法 |
 ###### <a name="table-appsource-offerings-that-require-azure-active-directory-integration"></a>表格：需要 Azure Active Directory 集成的 AppSource 产品/服务
 
-首先，建议设置一个专用订阅进行 Azure Marketplace 发布*，使发布工作与其他活动相互独立。 此外，如果尚未安装以下工具，建议将以下工具添加到开发环境： 
+首先，建议设置一个专用订阅进行 Azure 市场发布*，使发布工作与其他活动相互独立。 此外，如果尚未安装以下工具，建议将以下工具添加到开发环境： 
 *   [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest "Azure - CLI")
 *   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0 "PowerShell - Azure")
 *   查看 [Azure 开发人员工具](https://azure.microsoft.com/tools/ "Azure - Developer Tools")页中的可用工具

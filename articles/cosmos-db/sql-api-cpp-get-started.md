@@ -2,23 +2,21 @@
 title: 适用于 Azure Cosmos DB 的 C++ 教程 | Microsoft Docs
 description: 本 C++ 教程使用 Azure Cosmos DB 认可的 C++ SDK 创建 C++ 数据库和控制台应用程序。 Azure Cosmos DB 是全球规模的数据库服务。
 services: cosmos-db
-documentationcenter: cpp
-author: asthana86
+author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: b8756b60-8d41-4231-ba4f-6cfcfe3b4bab
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: cpp
-ms.topic: article
-ms.date: 12/25/2016
-ms.author: aasthan
-ms.openlocfilehash: e04723a8fa37d32851dd91cdc45293a549c9ee64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.topic: tutorial
+ms.date: 06/05/2018
+ms.author: sngun
+ms.openlocfilehash: 0e142eaf4182331e0a5803c54d2cc1284e21b221
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807169"
 ---
 # <a name="azure-cosmos-db-c-console-application-tutorial-for-the-sql-api"></a>Azure Cosmos DB：适用于 SQL API 的 C++ 控制台应用程序教程
 > [!div class="op_single_selector"]
@@ -45,7 +43,7 @@ ms.lasthandoff: 04/06/2018
 * 删除文档
 * 删除 C++ Azure Cosmos DB 数据库
 
-没有时间？ 不必担心！ 可在 [GitHub](https://github.com/stalker314314/sql-apiCpp)上获取完整的解决方案。 有关快速说明，请参阅 [Get the complete solution](#GetSolution) （获取完整解决方案）。
+没有时间？ 不必担心！ 可在 [GitHub](https://github.com/stalker314314/DocumentDBCpp)上获取完整的解决方案。 有关快速说明，请参阅 [Get the complete solution](#GetSolution) （获取完整解决方案）。
 
 现在，让我们开始吧！
 

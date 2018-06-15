@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central 中的体系结构概念 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 的体系结构相关的重要概念
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/30/2017
 ms.topic: conceptual
-ms.prod: microsoft-iot-central
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: c97db3eb2c0fe1a5ec3c743ca75c595ec127823e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 44408e7b6ad1a068f265bf7b78d973e6aae3001b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200082"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628753"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
 
@@ -83,7 +83,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 [管理员可以使用预定义的角色定义适用于 Azure IoT Central 应用程序的访问规则](howto-administer.md)。 管理员可以通过为用户分配角色来决定用户可以访问的应用程序的具体区域。
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 
 Azure IoT Central 中的安全功能包括：
 

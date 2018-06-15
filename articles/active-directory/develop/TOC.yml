@@ -259,6 +259,8 @@
               href: active-directory-v2-protocols-oauth-on-behalf-of.md
             - name: 证书凭据
               href: active-directory-certificate-credentials.md
+            - name: Oauth 2.0 代码示例
+              href: active-directory-protocols-oauth-get-jwt-token.md
         - name: 令牌
           href: active-directory-v2-tokens.md
         - name: 作用域和许可

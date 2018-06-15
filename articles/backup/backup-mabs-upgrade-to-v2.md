@@ -1,24 +1,19 @@
 ---
-title: 安装 Azure 备份服务器 v2 | Microsoft Docs
+title: 安装 Azure 备份服务器 v2
 description: Azure 备份服务器 v2 可提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。 了解如何安装或升级到 Azure 备份服务器 v2。
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: masaran;markgal
-ms.openlocfilehash: dd7b76d9e06bc82ffd75f12131c2c247da05cc91
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: adigan
+ms.openlocfilehash: 27da52a46b52e06a8ea4f80fa06487aca34c1c3c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606947"
 ---
 # <a name="install-azure-backup-server-v2"></a>安装 Azure 备份服务器 v2
 

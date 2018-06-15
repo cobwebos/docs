@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e38da0234f2a71abc40dfa0b86a03cc91adda834
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 62ee13c4e756e41558adcb5b98081e24d683e01a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620368"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 
@@ -349,7 +350,7 @@ ms.lasthandoff: 03/23/2018
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>使用读取器模块读取 Azure Blob 中多个文件的数据
 含 Pig 和 Hive 等活动的大数据管道可以生成无扩展名的一个或多个输出文件。 例如，指定外部 Hive 表时，可将外部 Hive 表数据存储在 Azure Blob 存储中，并命名为 000000_0。 可在实验中使用读取器模块读取多个文件，并将文件用于预测。
 
-在 Azure 机器学习实验中使用读取器模块时，可指定 Azure Blob 作为输入。 Azure Blob 存储中的文件可能是在 HDInsight 上运行的 Pig 和 Hive 脚本生成的输出文件（示例：000000_0）。 使用读取器模块，可通过配置“容器路径、目录/blob”读取文件（无扩展名）。 **容器路径**指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）**均作为实验的一部分读取。
+在 Azure 机器学习实验中使用读取器模块时，可指定 Azure Blob 作为输入。 Azure Blob 存储中的文件可能是在 HDInsight 上运行的 Pig 和 Hive 脚本生成的输出文件（示例：000000_0）。 使用读取器模块，可通过配置“容器路径、目录/blob”读取文件（无扩展名）。 **容器路径**指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
 
 ![Azure Blob 属性](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -555,9 +556,9 @@ Azure 机器学习批处理执行 Web 服务可能未配置任何 Web 服务输�
 有关 Azure Blob/Azure SQL 读取器/编写器的详细信息，请参阅 MSDN 库上的[读取器](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[编写器](https://msdn.microsoft.com/library/azure/dn905984.aspx)主题。 上一节中的示例使用了 Azure Blob 读取器和 Azure Blob 编写器。 本部分讨论如何使用 Azure SQL 读取器和 Azure SQL 编写器。
 
 ## <a name="frequently-asked-questions"></a>常见问题
-**问：**我有多个由大数据管道生成的文件。 可以使用 AzureMLBatchExecution 活动处理所有文件吗？
+**问：** 我有多个由大数据管道生成的文件。 可以使用 AzureMLBatchExecution 活动处理所有文件吗？
 
-**答：**可以。 有关详细信息，请参阅**使用读取器模块读取 Azure Blob 中多个文件的数据**部分。
+**答：** 可以。 有关详细信息，请参阅**使用读取器模块读取 Azure Blob 中多个文件的数据**部分。
 
 ## <a name="azure-ml-batch-scoring-activity"></a>Azure 机器学习批处理评分活动
 如果使用 **AzureMLBatchScoring** 活动集成 Azure 机器学习，建议使用最新的 **AzureMLBatchExecution** 活动。

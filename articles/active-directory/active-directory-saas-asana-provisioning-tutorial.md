@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c7e33a46940c9bf0cda5e48c07d42db9f0c7cd96
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 84fa3c5bd57e1f9f5b3eddf872307829f6c9c509
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292960"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教程：为 Asana 配置自动用户预配
 
@@ -42,7 +43,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 配置和启用预配服务前，需确定 Azure AD 中的哪些用户或组需访问 Google Apps 应用。 确定后，可以按照此处的说明将这些用户分配到 Asana 应用：
 
-[向企业应用分配用户](active-directory-coreapps-assign-user-azure-portal.md)
+[向企业应用分配用户](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-asana"></a>将用户分配到 Asana 的重要提示
 
@@ -99,6 +100,6 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
+* [管理企业应用的用户帐户预配](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](active-directory-saas-asana-tutorial.md)

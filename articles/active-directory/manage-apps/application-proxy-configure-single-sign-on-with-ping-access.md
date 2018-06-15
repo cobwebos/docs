@@ -15,11 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: f00c22a5a7bde69136c674c1362e3a9d65dd7934
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 37b5e5d05559088d7f5aac796f452f2ed83447fc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294625"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -182,4 +183,4 @@ Ping Identity 文档 [Configure PingAccess for Azure AD](https://docs.pingidenti
 
 - [配置 PingAccess for Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
 - [Azure AD 应用程序代理如何提供单一登录？](application-proxy-single-sign-on.md)
-- [排查应用程序代理问题](../active-directory-application-proxy-troubleshoot.md)
+- [排查应用程序代理问题](application-proxy-troubleshoot.md)

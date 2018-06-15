@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure IoT Edge 部署 Azure 机器学习 | Microsoft 文档
 description: 将 Azure 机器学习作为一个模块部署到 Edge 设备
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/12/2018
-ms.topic: article
+ms.topic: tutorial
 ms.service: iot-edge
-ms.openlocfilehash: 6062d8193ce8cf7edaff3187f5c0f7dd9968658b
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.custom: mvc
+ms.openlocfilehash: 248bc97c214c013d10f1839201ce2f572cb854ed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165734"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631167"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>将 Azure 机器学习作为 IoT Edge 模块进行部署 - 预览版
 

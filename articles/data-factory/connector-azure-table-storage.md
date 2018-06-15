@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ef43037ff33b693256c82459eec2e4b3beab4d9a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3f6add6691b0e1f43d70399493fa6bf8db8f3833
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617172"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/23/2018
 本文概述如何使用 Azure 数据工厂中的复制活动向/从 Azure 表存储复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用版本 1 的数据工厂服务，请参阅[版本 1 中的表存储连接器](v1/data-factory-azure-table-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用版本 1 的数据工厂服务，请参阅[版本 1 中的表存储连接器](v1/data-factory-azure-table-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 

@@ -1,19 +1,20 @@
 ---
 title: 浏览 Azure IoT Central UI | Microsoft Docs
 description: 构建者需要熟悉用来创建 IoT 解决方案的 Azure IoT Central UI 的主要区域。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
-ms.date: 4/13/2018
+ms.date: 04/13/2018
 ms.topic: overview
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: aa0d496b073600bb976a639ea0039d2a5bbdbbcf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: 69898358026eab716c057f339d8594df43db136f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201469"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629365"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>浏览 Azure IoT Central UI
 
@@ -30,7 +31,7 @@ ms.locfileid: "34201469"
 - 监视设备。
 - 配置设备。
 - 排查和修正设备问题。
-- 预配新设备。
+- 设置新设备。
 
 ## <a name="use-the-left-navigation-menu"></a>使用左侧导航菜单
 
@@ -60,9 +61,9 @@ ms.locfileid: "34201469"
 
 主页是登录到 Azure IoT Central 应用程序后看到的第一个页面。 构建者可以通过添加磁贴为应用程序的其他用户自定义主页。 若要了解详细信息，请参阅[自定义 Azure IoT Central 操作员的视图](tutorial-customize-operator.md)教程。
 
-## <a name="device-explorer"></a>Device explorer
+## <a name="device-explorer"></a>设备资源管理器
 
-![Explorer 页面](media/overview-iot-central-tour/explorer.png)
+![Explorer 页](media/overview-iot-central-tour/explorer.png)
 
 Explorer 页面显示 Azure IoT Central 应用程序中的“设备模板”和“设备”。
 

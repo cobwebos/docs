@@ -5,16 +5,16 @@ services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 9abe7743906064d182453fea403ff94a097c3558
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d37bf4fd131e700d4f4c3b07c84754b4014ca228
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212375"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648347"
 ---
 # <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>Azure SQL 数据库的基于 vCore 的购买模型（预览版）
 
@@ -103,7 +103,7 @@ ms.locfileid: "34212375"
 
 ## <a name="backups-and-storage"></a>备份和存储
 
-为数据库备份分配存储，以支持 SQL 数据库的时间点还原 (PITR) 和长期保留 (LTR) 功能。 为每个数据库单独分配此存储，并作为两个单独的每个数据库费用进行计费。 
+为数据库备份分配存储，以支持 SQL 数据库的时间点还原 (PITR) 和长期保留 (LTR) 功能。 此存储空间针对每个数据库单独分配，并根据数据库费用分开计费。 
 
 - **PITR**：自动将各个数据库备份复制到 RA-GRS 存储。 创建新备份时，存储大小动态递增。  存储由每周完整备份、每日差异备份和 5 分钟复制一次的事务日志备份使用。 存储消耗量取决于数据库变化率和保留期。 可单独为每个数据库配置 7 到 35 天的保留期。 提供与 1 倍数据库大小相等的最小存储量，不收取额外费用。 对于大多数数据库而言，此容量足以将备份存储 7 天。
 - **LTR**：SQL 数据库提供相应的选项用于将完整备份的长期保留期配置为最多 10 年。 如果启用了 LTR 策略，则这些备份将自动存储在 RA-GRS 存储中，但你可以控制复制备份的频率。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 此配置将定义要为 LTR 备份使用多少存储。 可以使用 LTR 定价计算器来估算 LTR 存储成本。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。

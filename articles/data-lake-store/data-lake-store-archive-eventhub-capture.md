@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cff2ca87ab2916c9d5aa8bb308325cb7a0227d75
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 57c4d9ccc64c9644c3d333fad1262c997aeff5d1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624655"
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Store 捕获事件中心的数据
 
@@ -56,12 +57,12 @@ ms.lasthandoff: 05/16/2018
 
     c. 在“分配权限”下，单击“选择权限”。 将“权限”设为“执行”。 将“添加到”设为“此文件夹和所有子文件夹”。 将“添加为”设为“一个访问权限入口和一个默认权限入口”。
 
-> [!IMPORTANT]
-> 创建用于捕获 Azure 事件中心接收的数据时，有一种简单的方法可用来确保对目标文件夹的访问。  但是，如果顶层文件夹具有许多子文件和文件夹，则添加对顶层文件夹的所有子代的权限时，可能需要花费很长时间。  如果根文件夹包含大量文件和文件夹，则分别对最终目标文件夹的路径中的每个文件夹添加对 `Microsoft.EventHubs` 的**执行**权限可能更快。 
+    > [!IMPORTANT]
+    > 创建用于捕获 Azure 事件中心接收的数据时，有一种简单的方法可用来确保对目标文件夹的访问。  但是，如果顶层文件夹具有许多子文件和文件夹，则添加对顶层文件夹的所有子代的权限时，可能需要花费很长时间。  如果根文件夹包含大量文件和文件夹，则分别对最终目标文件夹的路径中的每个文件夹添加对 `Microsoft.EventHubs` 的**执行**权限可能更快。 
 
-    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+    ![分配 Data Lake Store 根目录的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
 
-    Click **OK**.
+    单击“确定”。
 
 4. 为 Data Lake Store 帐户下要在其中捕获数据的文件夹分配权限。
 

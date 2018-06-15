@@ -9,15 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c2b6c494a9c4d0dac37315520b8d7b962f3490b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cad363309b6086197ced1a5d1c1793995db11228
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621603"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
@@ -98,7 +99,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 #### <a name="javascript-cryptography-library-based-encryption"></a>基于 JavaScript 加密库的加密
 可以使用[复制向导](data-factory-copy-wizard.md)中的 [JavaScript 加密库](https://www.microsoft.com/download/details.aspx?id=52439)对数据存储凭据加密。 选择此选项时，复制向导将检索网关的公共密钥，并将其用于加密数据存储凭据。 凭据由网关计算机解密，并受 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 保护。
 
-**支持的浏览器：**IE8、IE9、IE10、IE11、Microsoft Edge 以及最新的 Firefox、Chrome、Opera、Safari 浏览器。 
+**支持的浏览器：** IE8、IE9、IE10、IE11、Microsoft Edge 以及最新的 Firefox、Chrome、Opera、Safari 浏览器。 
 
 #### <a name="click-once-credentials-manager-app"></a>一键式凭据管理器应用
 创作管道时，可以从 Azure 门户/复制向导启动一键式凭据管理器应用。 此应用程序确保凭据不会通过网络以纯文本形式传输。 默认情况下，该应用程序在计算机上使用端口 8050 ，借助网关确保安全通信。 如有必要，可以更改此端口。  
@@ -141,7 +142,7 @@ IPSec VPN：
 
 ![将 IPSec VPN 与网关配合使用](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>网关的防火墙配置和允许列表 IP 地址
+### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>网关的防火墙配置和白名单 IP 地址
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求  
 在企业中，企业防火墙在组织的中央路由器上运行。 并且，Windows 防火墙在安装网关的本地计算机上作为守护程序运行。 
@@ -157,7 +158,7 @@ IPSec VPN：
 | `*.azuredatalakestore.net` | 443 | （可选）目标为 Azure Data Lake Store 时需要 | 
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别管理端口/允许列表域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
+> 可能需要按相应数据源的要求在企业防火墙级别管理端口/白名单域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
 
 下表提供了 Windows 防火墙的入站端口要求。
 
@@ -167,10 +168,10 @@ IPSec VPN：
 
 ![网关端口要求](media\data-factory-data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>数据存储中的 IP 配置/允许列表
+#### <a name="ip-configurations-whitelisting-in-data-store"></a>数据存储中的 IP 配置/白名单
 云中的某些数据存储还需要访问它们的计算机的 IP 地址允许列表。 确保已在防火墙中将网关计算机的 IP 地址列入允许列表或对其进行了适当配置。
 
-以下云数据存储需要网关计算机的 IP 地址允许列表。 默认情况下，某些这类数据存储可能不需要 IP 地址允许列表。 
+以下云数据存储需要网关计算机的 IP 地址允许列表。 默认情况下，某些这类数据存储可能不需要 IP 地址白名单。 
 
 - [Azure SQL 数据库](../../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -184,7 +185,7 @@ IPSec VPN：
 答案：我们尚不支持此功能。 我们正致力于解决该问题。
 
 问题：确保网关正常工作的端口要求是什么？
-答案：网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源/目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
+答案：网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源/目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和白名单 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
 
 问题：网关的证书要求是什么？
 答案：当前网关需要凭据管理器应用程序用于安全设置数据存储凭据的证书。 该证书是由网关安装程序创建并配置的自签名证书。 可以改用自己的 TLS/SSL 证书。 有关详细信息，请参阅[一键式凭据管理器应用程序](#click-once-credentials-manager-app)部分。 

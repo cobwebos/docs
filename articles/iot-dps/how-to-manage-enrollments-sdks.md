@@ -1,22 +1,19 @@
 ---
 title: 使用 Azure 设备预配服务 SDK 管理设备注册 | Microsoft Docs
 description: 如何使用服务 SDK 管理 IoT 中心设备预配服务中的设备注册
-services: iot-dps
-keywords: ''
 author: yzhong94
 ms.author: yizhon
 ms.date: 04/04/18
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 1ec86d319f529fe63b0924f4cfa0c2be178cd4d8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+services: iot-dps
+manager: arjmands
+ms.openlocfilehash: 9a68d928c70e1e233f6de7df13441a1f688f456a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629841"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 设备预配服务 SDK 管理设备注册
 “设备注册”将创建单台设备或一组设备在某一时刻向设备预配服务进行注册的记录。 注册记录包含注册过程中设备所需的初始配置及所需的 IoT 中心。 这篇文章演示如何使用 Azure IoT 预配服务 SDK 以编程方式管理预配服务的设备注册。  SDK 可从 GitHub 上与 Azure IoT SDK 相同的存储库中获取。
@@ -46,7 +43,7 @@ ms.lasthandoff: 04/16/2018
     1. 使用 ```attestation``` 创建的唯一 ```enrollmentGroupId``` 创建一个新的 ```EnrollmentGroup``` 变量。  （可选）可设置 ```Device ID```、```IoTHubHostName```、```ProvisioningStatus``` 等参数。
     2. 使用 ```EnrollmentGroup``` 在后端应用程序中调用服务 SDK API ```createOrUpdateEnrollmentGroup``` 以创建注册组。
 
-* 个人注册是用于单个设备注册的条目。 个人注册可使用 X.509 证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 对于需要唯一初始配置的设备或仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备，建议为其使用个人注册。 个人注册可能会指定所需 IoT 中心设备 ID。
+* 单独注册是用于单个设备注册的条目。 个人注册可使用 X.509 证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 对于需要唯一初始配置的设备或仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备，建议为其使用个人注册。 单独注册可能会指定所需 IoT 中心设备 ID。
 
     可按以下工作流使用 SDK 创建单个注册：
     

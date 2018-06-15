@@ -8,11 +8,12 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0ae4e196c81e767b2bbee4340f5d99b9f803df3b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653648"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -31,7 +32,7 @@ Azure 存储包括以下数据服务：
 - [Azure Blob](../blobs/storage-blobs-introduction.md)：适用于文本和二进制数据的可大规模缩放的对象存储。
 - [Azure 文件](../files/storage-files-introduction.md)：适用于云或本地部署的托管文件共享。
 - [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息传送存储。 
-- [Azure 表](../../cosmos-db/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无模式存储。
+- [Azure 表](../tables/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无模式存储。
 
 对每个服务的访问都通过存储帐户进行。 若要开始使用，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
@@ -78,13 +79,13 @@ Azure 队列服务用于存储和检索消息。 队列消息最大可以为 64 
 
 ## <a name="table-storage"></a>表存储
 
-Azure 表存储现在是 Azure Cosmos DB 的一部分。 若要查看 Azure 表存储文档，请参阅 [Azure 表存储概述](../../cosmos-db/table-storage-overview.md)。 除了现有的 Azure 表存储服务，还有新的 Azure Cosmos DB 表 API 产品/服务，后者提供吞吐量优化表、全局分发和自动辅助索引。 若要详细了解和尝试新的高级体验，请查看 [Azure Cosmos DB 表 API](https://aka.ms/premiumtables)。
+Azure 表存储现在是 Azure Cosmos DB 的一部分。 若要查看 Azure 表存储文档，请参阅 [Azure 表存储概述](../tables/table-storage-overview.md)。 除了现有的 Azure 表存储服务，还有新的 Azure Cosmos DB 表 API 产品/服务，后者提供吞吐量优化表、全局分发和自动辅助索引。 若要详细了解和尝试新的高级体验，请查看 [Azure Cosmos DB 表 API](https://aka.ms/premiumtables)。
 
-有关表存储的详细信息，请参阅 [Azure 表存储概述](../../cosmos-db/table-storage-overview.md)。
+有关表存储的详细信息，请参阅 [Azure 表存储概述](../tables/table-storage-overview.md)。
 
 ## <a name="disk-storage"></a>磁盘存储
 
-Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关这些功能的详细信息，请参阅[计算服务文档](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
+Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关这些功能的详细信息，请参阅[计算服务文档](https://docs.microsoft.com/en-gb/azure/#pivot=products&panel=Compute)。
 
 ## <a name="types-of-storage-accounts"></a>存储帐户的类型
 

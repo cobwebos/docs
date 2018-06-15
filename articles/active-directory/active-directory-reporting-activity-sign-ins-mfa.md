@@ -3,7 +3,7 @@ title: Azure 门户中多重身份验证报告的参考 | Microsoft Docs
 description: Azure 门户中多重身份验证报告的参考信息
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 03/16/2018
-ms.author: markvi
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e92d1383f3179f03194b460e0467314c137fd9e2
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ac24b5dcf1aa5b8c616e14bcbb696c9e99b6cecf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589060"
 ---
 # <a name="reference-for-multi-factor-authentication-reporting-in-the-azure-portal"></a>Azure 门户中多重身份验证报告的参考
 
@@ -52,9 +54,9 @@ ms.lasthandoff: 03/17/2018
 
 可以通过 MFA 登录活动报告了解以下信息：
 
-**需要 MFA：**登录时是否需要 MFA。 进行单用户 MFA、条件访问或其他操作时，可能需要 MFA。 可能的值为 `Yes` 或 `No`。
+**需要 MFA：** 登录时是否需要 MFA。 进行单用户 MFA、条件访问或其他操作时，可能需要 MFA。 可能的值为 `Yes` 或 `No`。
 
-**MFA 身份验证方法：**用户用来完成 MFA 的身份验证方法。 可能的值包括： 
+**MFA 身份验证方法：** 用户用来完成 MFA 的身份验证方法。 可能的值包括： 
 
 - 短信 
 
@@ -68,9 +70,9 @@ ms.lasthandoff: 03/17/2018
 
 - 电话呼叫（其他身份验证电话） 
 
-**MFA 身份验证详细信息：**清理版的电话号码，例如：+X XXXXXXXX64。 
+**MFA 身份验证详细信息：** 清理版的电话号码，例如：+X XXXXXXXX64。 
 
-**MFA 结果：**有关 MFA 是通过还是未通过的详细信息：
+**MFA 结果：** 有关 MFA 是通过还是未通过的详细信息：
 
 - 如果 MFA 通过，则此列会提供 MFA 如何通过的详细信息。 
 
