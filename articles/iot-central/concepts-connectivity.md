@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central 中的设备连接 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 中的设备连接相关的重要概念
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/30/2017
 ms.topic: conceptual
-ms.prod: microsoft-iot-central
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: 00b621a4635ef1ceda26772ac5876fa2599b56f8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: dc9fe144c2258f33ce59c61ce63c15835cc3fa53
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202639"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628328"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -70,7 +70,7 @@ ms.locfileid: "34202639"
 
 如果设备无法使用这些受支持协议中的任何一种，可以使用 Azure IoT Edge 进行协议转换。 IoT Edge 支持其他边缘智能方案，可以将处理从 Azure IoT Central 应用程序卸载到边缘。
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 
 在设备与 Azure IoT Central 之间交换的所有数据都经过加密。 如果设备已连接到任何面向设备的 IoT 中心终结点，则 IoT 中心会对从该设备发出的所有请求进行身份验证。 为了避免通过网络交换凭据，设备使用签名的令牌进行身份验证。 有关详细信息，请参阅[控制对 IoT 中心的访问](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security)。
 

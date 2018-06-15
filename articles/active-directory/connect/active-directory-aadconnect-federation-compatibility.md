@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e7239ae88c6b4e56fa7c49f64c30fe602d8ec5fe
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f5e85a551181a3dd4618db2611a99675329cfabd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32148839"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592001"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD 联合身份验证兼容性列表
 Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单一登录与更安全的应用程序访问，以便在不使用任何第三方解决方案的情况下实施混合部署和仅限云的部署。 与大多数 Microsoft Online 服务一样，Office 365 可与 Azure Active Directory 集成，以利用目录服务、身份验证和授权。 Azure Active Directory 还为数千种 SaaS 应用程序与本地 Web 应用程序提供单一登录。 有关支持的 SaaS 应用程序，请参阅 Azure Active Directory [应用程序库](https://azuremarketplace.microsoft.com/marketplace/apps)。 

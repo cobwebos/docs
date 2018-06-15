@@ -1,26 +1,21 @@
 ---
-title: 什么是 Azure 备份？ | Microsoft Docs
+title: 什么是 Azure 备份？
 description: 使用 Azure 备份，可以从 Windows Server、Windows 工作站、System Center DPM 服务器以及 Azure 虚拟机备份和还原数据与工作负荷。
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: 备份和还原;恢复服务;备份解决方案
-ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 3/1/2018
-ms.author: markgal;trinadhk;anuragm
+ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: b6701cdc4dd25c0a46193a73d1edd022388bc5ab
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: bbcb05fcc17b958711b704c75a53cf4af4d41bd0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607093"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
 Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云端数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。 Azure 备份提供多个组件，可将其下载并部署到适当计算机、服务器或云端。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 的恢复服务保管库中。 请参阅本文稍后部分的 [Azure 备份组件表格](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)，了解保护特定数据、应用程序或工作负荷所用的组件。
@@ -36,7 +31,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 **多个存储选项** - 高可用性的一个方面是存储复制。 Azure 备份提供两种类型的复制：[本地冗余存储](../storage/common/storage-redundancy-lrs.md)和[异地冗余存储](../storage/common/storage-redundancy-grs.md)。 根据需要选择备份存储选项：
 
-* 本地冗余存储 (LRS) 将数据中心的存储缩放单位中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
+* 本地冗余存储 (LRS) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
 
 * 异地冗余存储 (GRS) 是默认的和建议的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 可让数据更为持久，即使出现区域性中断也是如此。
 
@@ -159,7 +154,7 @@ Azure 备份可以还原使用托管磁盘的完整 VM，或者将托管磁盘�
 
 **增量备份**通过仅存储上次备份后更改的数据块，从而实现高存储效率和高网络效率。 采用增量备份，没有必要进行定期的完整备份。 在示例中，第一个月进行完整备份后，存储块 A2、A3、A4 和 A9 将标记为“已更改”，然后转移到第二个月。 在第三个月，仅标记已更改的存储块 A5，并进行传输。 移动较少的数据可以节省存储和网络资源，从而降低 TCO。
 
-### <a name="security"></a>安全
+### <a name="security"></a>“安全”
 | 功能 | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |
 | 网络安全<br/> （到 Azure） |![是][green] |![是][green] |![是][green] |![部分][yellow] |

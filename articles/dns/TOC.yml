@@ -6,7 +6,7 @@
       href: dns-overview.md
 - name: 快速入门
   items:
-    - name: 创建 DNS 区域和记录 - 门户
+    - name: 名称解析 - 门户
       href: dns-getstarted-portal.md
     - name: 创建 DNS 区域和记录 - PowerShell
       href: dns-getstarted-powershell.md
@@ -14,12 +14,12 @@
       href: dns-getstarted-cli.md
 - name: 教程
   items:
-    - name: 创建专用 DNS 区域和记录
-      href: private-dns-getstarted-powershell.md
-    - name: 将域委托给 Azure DNS
+    - name: 在 Azure DNS 中托管域
       href: dns-delegate-domain-azure-dns.md
     - name: 为 Web 应用创建自定义 DNS 记录
       href: dns-web-sites-custom-domain.md
+    - name: 创建专用 DNS 区域和记录
+      href: private-dns-getstarted-powershell.md
 - name: 示例
   items:
     - name: Azure CLI

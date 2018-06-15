@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: d9ba650549d313a4ecc9ceae5eb05e1cde727892
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 672bdd3ddb5b32b82d83322eadce2a594b13ce5b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643526"
 ---
 # <a name="service-remoting-with-reliable-services"></a>通过 Reliable Services 进行服务远程处理
 对于不依赖于特定的通信协议或堆栈的服务，如 WebAPI、Windows Communication Foundation (WCF) 或其他服务，Reliable Services 框架提供一种远程处理机制，以便快速而轻松地为这些服务设置远程过程调用。
@@ -52,7 +53,7 @@ class MyService : StatelessService, IMyService
     {
     }
 
-    public Task HelloWorldAsync()
+    public Task<string> HelloWorldAsync()
     {
         return Task.FromResult("Hello!");
     }
@@ -391,3 +392,4 @@ Remoting V2 与 V1（上一个 Remoting 堆栈）不兼容，因此遵循以下�
 * [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [通过 Reliable Services 进行 WCF 通信](service-fabric-reliable-services-communication-wcf.md)
 * [确保 Reliable Services 的通信安全](service-fabric-reliable-services-secure-communication.md)
+

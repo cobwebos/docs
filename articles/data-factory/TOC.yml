@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: 教程
   items:
-    - name: 1 - 创建 Azure-SSIS 集成运行时
+    - name: 1 - 预配 Azure-SSIS 集成运行时
       items:
         - name: 用户界面 (UI)
           href: tutorial-deploy-ssis-packages-azure.md

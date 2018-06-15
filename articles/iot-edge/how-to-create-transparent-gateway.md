@@ -1,20 +1,19 @@
 ---
 title: 使用 Azure IoT Edge 创建透明网关设备 | Microsoft 文档
 description: 使用 Azure IoT Edge 创建可为多个设备处理信息的透明网关设备
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/04/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 0378cb2964a496a2bfe5a0bc08296cbab462a409
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+services: iot-edge
+ms.openlocfilehash: fa4a2f6757a2a9dd114ea332b409759b0d4f4896
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170704"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630640"
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>创建充当透明网关的 IoT Edge 设备 -预览版
 
@@ -166,7 +165,7 @@ ms.locfileid: "32170704"
 
 在 OS 级别执行此步骤与在 Windows 之间和 Linux 分发版之间执行是不同的。
 
-第二步是使用引用网关设备主机名的连接字符串来初始化 IoT Hub 设备 sdk。
+第二步是使用引用网关设备主机名的连接字符串来初始化 IoT 中心设备 sdk。
 通过将 `GatewayHostName` 属性追加到设备连接字符串来完成此步骤。 例如，此处为设备的示例设备连接字符串，我们向它追加了 `GatewayHostName` 属性：
 
    ```
