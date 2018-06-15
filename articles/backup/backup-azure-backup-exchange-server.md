@@ -1,24 +1,19 @@
 ---
-title: "使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份 | Microsoft Docs"
-description: "了解如何使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份"
+title: 使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
+description: 了解如何使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 services: backup
-documentationcenter: 
 author: MaanasSaran
 manager: NKolli1
-editor: 
-ms.assetid: 13f32256-888e-416e-a78b-40c2a26a5939
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
-ms.author: masaran;jimpark;delhan;trinadhk;markgal
-ms.openlocfilehash: 9dc0105034e0d354a6cbbd7ba70634bdff83c1bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 4edec499d12261add398e5a9297f039ecfb252e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605094"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 本文说明如何配置 System Center 2012 R2 Data Protection Manager (DPM) 服务器，以将 Microsoft Exchange Server 备份到 Azure 备份。  
@@ -66,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 单击“下一步”。
+6. 单击“资源组名称” 的 Azure 数据工厂。
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
     选择此选项后，会在 DPM 服务器上运行备份一致性检查，以免由于在 Exchange Server 上运行 **eseutil** 命令而产生的 I/O 流量。
@@ -76,7 +71,7 @@ ms.lasthandoff: 10/11/2017
    > ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 单击“下一步”。
+8. 单击“资源组名称” 的 Azure 数据工厂。
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]
@@ -105,7 +100,7 @@ ms.lasthandoff: 10/11/2017
 
     ![指定联机保留策略](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. 确认设置，并单击“**创建组**”。
-19. 单击“**关闭**”。
+19. 单击“关闭”。
 
 ## <a name="recover-the-exchange-database"></a>恢复 Exchange 数据库
 1. 若要恢复 Exchange 数据库，请在 DPM 管理员控制台中单击“**恢复**”。
@@ -115,11 +110,11 @@ ms.lasthandoff: 10/11/2017
 
 在线恢复点有五种恢复类型：
 
-* **恢复到原始 Exchange Server 位置：**数据将恢复到原始 Exchange Server。
-* **恢复到 Exchange Server 上的其他数据库：**数据将恢复到其他 Exchange Server 上的其他数据库。
-* **恢复到恢复数据库：**数据将恢复到 Exchange 恢复数据库 (RDB)。
-* **复制到网络文件夹：**数据将恢复到网络文件夹。
-* **复制到磁带：**如果 DPM 服务器上安装并配置了磁带库或独立的磁带机，则恢复点将复制到可用的磁带。
+* **恢复到原始 Exchange Server 位置：** 数据将恢复到原始 Exchange Server。
+* **恢复到 Exchange Server 上的其他数据库：** 数据将恢复到其他 Exchange Server 上的其他数据库。
+* **恢复到恢复数据库：** 数据将恢复到 Exchange 恢复数据库 (RDB)。
+* **复制到网络文件夹：** 数据将恢复到网络文件夹。
+* **复制到磁带：** 如果 DPM 服务器上安装并配置了磁带库或独立的磁带机，则恢复点将复制到可用的磁带。
 
     ![选择在线复制](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 

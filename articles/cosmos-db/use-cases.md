@@ -4,19 +4,17 @@ description: 了解 Azure Cosmos DB 最常见的五个用例：用户生成的�
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-ms.assetid: eca68a58-1a8c-4851-8cf8-6e4d2b889905
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/7/2017
 ms.author: sngun
-ms.openlocfilehash: 67ff272f669e65f0466865349691bd69156401a9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: ab24dc98ef4c767f04dc083ac6208e2c9d831935
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616798"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB 常见用例
 本文概述了 Azure Cosmos DB 的几个常见用例。  本文中的建议可以作为使用 Cosmos DB 开发应用程序的一个起点。   
@@ -107,8 +105,8 @@ JSON 是一种用于呈现 UI 布局数据的有效格式，它受 Cosmos DB 支
 
 或者，如果想要了解有关使用 Cosmos DB 的客户的详细信息，可以参阅下面的客户案例：
 
-* [Jet.com](https://jet.com)。电子商务挑战者的目标是占领最高位置，即在 Microsoft 云端运行并在全球范围内利用 Cosmos DB。
-* [Asos.com](http://www.asos.com/)。Asos.com 是一家英国时尚服饰及美妆产品线上零售商。 Asos 主要面向年轻消费者，销售品牌超过 850 种，还销售其自主品牌的服装和配饰。
+* [Jet.com](https://jet.com)。 电子商务挑战者的目标是占领最高位置，即在 Microsoft 云端运行并在全球范围内利用 Cosmos DB。
+* [Asos.com](http://www.asos.com/)。 Asos.com 是一家英国时尚服饰及美妆产品线上零售商。 Asos 主要面向年轻消费者，销售品牌超过 850 种，还销售其自主品牌的服装和配饰。
 * [Toyota](https://www.toyota.com/)。 Toyota Motor Corporation 是一家日本汽车制造商。 它将 Cosmos DB 用于全球 IoT 应用。
 * [Citrix](https://customers.microsoft.com/story/citrix)。 Citrix 使用 Azure Service Fabric 和 Azure Cosmos DB 开发单一登录解决方案
 * [TEXA](https://customers.microsoft.com/story/texaspa) TEXA 为车辆所有者提供的革命性 IoT 解决方案有助于节省时间、金钱和汽油，甚至可能拯救生命。
@@ -116,7 +114,7 @@ JSON 是一种用于呈现 UI 布局数据的有效格式，它受 Cosmos DB 支
 * [Johnson Controls](http://www.johnsoncontrols.com)。 Johnson Controls 是一家全球性多元化科技公司，在多个行业占据领先地位，为 150 多个国家或地区的大量用户提供服务。
 * [Microsoft Windows、通用应用商店、Azure IoT 中心、Xbox Live 和其他 Internet 规模的服务](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/)。 Microsoft 如何使用 Azure Cosmos DB 构建高度可缩放的服务。
 * [Microsoft 数据和分析团队](https://customers.microsoft.com/story/microsoftdataandanalytics)。 Microsoft 的数据和分析团队通过 Azure Cosmos DB 实现全球规模的大数据收集
-* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india)。Sulekha 使用 Azure Cosmos DB 连接整个印度的客户和企业。
+* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india)。 Sulekha 使用 Azure Cosmos DB 连接整个印度的客户和企业。
 * [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb)。 NewOrbit 使用了 Azure Cosmos DB。
 * [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale)。 Affinio 从 AWS 切换到 Azure Cosmos DB，以便大规模利用社交数据。
 * [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)。 The Walking Dead: No Man’s Land（行尸走肉：无人之地）游戏在 Azure Cosmos DB 的支持下飙升至排行榜第 1 名。

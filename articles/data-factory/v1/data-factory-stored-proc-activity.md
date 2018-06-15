@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a628374841126a750ebf6881f8adec66340c1d29
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3a0d6998671df7f05d7077da6fffc20a5bf27e8a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178339"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622493"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="Transformation Activities"]

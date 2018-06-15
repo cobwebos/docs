@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2c560bf9eeac5f9aed1024bd87d450f7aee7ce05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 996b1e5cbc477bf8a67a8cbb118961aaedf151fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621500"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure 表
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

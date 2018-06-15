@@ -1,24 +1,20 @@
 ---
-title: 通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题 | Microsoft 文档
+title: 通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
 description: 通过用于 Visual Studio 的 Azure Data Lake 工具排查潜在解决方案的数据倾斜问题。
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/16/2016
 ms.author: yanacai
-ms.openlocfilehash: 2e1d33b5d2392832899fd30636e9d40231fc74ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+manager: kfile
+editor: jasonwhowell
+ms.service: data-lake-analytics
+ms.topic: conceptual
+ms.date: 12/16/2016
+ms.openlocfilehash: 43a050251a6945d6886930a2a76fcb9f833b78f0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623377"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
 

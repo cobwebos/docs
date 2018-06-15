@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: c43973a7e5070676fc0f32a4c8923d57a479f884
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6b0f576538f159155dcf602fe39b0ea67254e4c7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619246"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +29,7 @@ ms.lasthandoff: 03/29/2018
 Azure 数据工厂复制活动提供安全、可靠且高性能的一流数据加载解决方案。 它允许用户在各种云和本地数据存储中每天复制数十 TB 的数据。 速度超快的数据加载性能是确保用户能专注于核心“大数据”问题的关键：构建高级分析解决方案并从所有数据获得深入见解。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[数据工厂版本 1 中的复制活动性能](v1/data-factory-copy-activity-performance.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[数据工厂版本 1 中的复制活动性能](v1/data-factory-copy-activity-performance.md)。
 
 Azure 提供了一组企业级数据存储和数据仓库解决方案，并且复制活动提供了高度优化的数据加载体验，易于配置和设置。 使用单个复制活动，可完成：
 

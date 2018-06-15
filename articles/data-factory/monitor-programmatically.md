@@ -10,20 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 87e69349245c5f67e23022e3a45ed798400e6a2c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5b7b473bdc411e11d6d1c90c63c4f05c6dac3280
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619585"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>以编程方式监视 Azure 数据工厂
 本文介绍如何使用不同的软件开发工具包 (SDK) 监视数据工厂中的管道。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[监视和管理数据工厂版本 1 中的管道](v1/data-factory-monitor-manage-pipelines.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[监视和管理数据工厂版本 1 中的管道](v1/data-factory-monitor-manage-pipelines.md)。
 
 ## <a name="data-range"></a>数据范围
 

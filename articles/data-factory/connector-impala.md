@@ -10,21 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 22e1ddbd9f621a3ef270c4b769032e6456b54fc9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 73987d03cb96fa421d193504fe6eaf6c3b5ddb18
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618763"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Impala 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Impala 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用已正式发布的版本 1 的数据工厂，请参阅[版本 1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用已正式发布的版本 1 的数据工厂，请参阅[版本 1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 > [!IMPORTANT]
 > 此连接器目前处于 Beta 版本。 可以进行试用并提供反馈。 请勿在生产环境中使用该版本。

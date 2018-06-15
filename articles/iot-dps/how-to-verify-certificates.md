@@ -1,22 +1,19 @@
 ---
 title: 如何使用 Azure IoT 中心设备预配服务执行 X.509 CA 证书的所有权证明 | Microsoft Docs
 description: 如何使用 DPS 服务验证 X.509 CA 证书
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-jamebr
+ms.author: bryanla
 ms.date: 02/26/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: eb37ce7e61796494be0a9282afdc620b0ca5886a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dfd45a68934250978fa8ac0cc9cebabcf8bad597
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629688"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用设备预配服务执行 X.509 CA 证书的所有权证明
 

@@ -3,7 +3,7 @@ title: Azure Active Directory 门户中的“登录活动”报告 | Microsoft D
 description: Azure Active Directory 门户中的“登录活动”报告简介
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 05/17/2018
-ms.author: markvi
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 78d3399aab8e3c3b1d98946cb3ac6ffab353d95c
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 6414be82e57741bf2af1de3650a3d9a28c4d6427
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257707"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588601"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -198,7 +199,7 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 - 应用程序 ID
 - Application
 - Client
-- Location
+- 位置
 - IP 地址
 - 日期
 - 需要 MFA

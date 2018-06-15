@@ -9,14 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 11aed2ee2af239b02375a2d90e2544b4b45b2d41
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7280cd971e9857c494dfd1cb77d528e4737ed9d2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34197131"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624142"
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 > 
 
 ### <a name="directly-passing-in-user-credentials"></a>直接传递用户凭据
-应用程序可直接向 Azure AD 提供用户凭据。 此方法仅适用于组织 ID 用户帐户，不适用于个人/“实时 ID”用户帐户，包括以 @outlook.com 或 @live.com 结尾的用户帐户。此外，此方法不适用于需要 Azure AD 双因素身份验证 (2FA) 的用户帐户。
+应用程序可直接向 Azure AD 提供用户凭据。 此方法仅适用于组织 ID 用户帐户，不适用于个人/“实时 ID”用户帐户，包括以 @outlook.com 或 @live.com 结尾的用户帐户。 此外，此方法不适用于需要 Azure AD 双因素身份验证 (2FA) 的用户帐户。
 
 ### <a name="what-do-i-need-for-this-approach"></a>此方法需要什么？
 * Azure AD 域名。 此要求已在本文的先决条件中列出。
