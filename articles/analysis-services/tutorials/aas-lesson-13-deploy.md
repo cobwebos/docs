@@ -3,16 +3,17 @@ title: Azure Analysis Services 教程第 13 课：部署 | Microsoft Docs
 description: 介绍了如何将教程项目部署到 Azure Analysis Services。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 889cc4224e2ffe31e15590c04c3dbf4b656bc386
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9b953428525e7970fef7224e65200cf9811b6304
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596274"
 ---
 # <a name="deploy"></a>部署
 
@@ -52,7 +53,7 @@ ms.lasthandoff: 04/16/2018
 
 2.  右键单击“AW Internet 销售”项目，并单击“部署”。
 
-    部署到 Azure Analysis Services 时，可能会提示输入帐户。 输入组织帐户和密码，例如 nancy@adventureworks.com。此帐户必须位于服务器上的管理员组中。
+    部署到 Azure Analysis Services 时，可能会提示输入帐户。 输入组织帐户和密码，例如 nancy@adventureworks.com。 此帐户必须位于服务器上的管理员组中。
   
     “部署”对话框会出现，其中显示了模型中包括的元数据和每个表的部署状态。  
     

@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect - 直通身份验证 - 升级身份验证代理 | Microsoft Docs"
-description: "本文介绍如何升级 Azure Active Directory (Azure AD) 直通身份验证配置。"
+title: Azure AD Connect - 直通身份验证 - 升级身份验证代理 | Microsoft Docs
+description: 本文介绍如何升级 Azure Active Directory (Azure AD) 直通身份验证配置。
 services: active-directory
-keywords: "Azure AD Connect 直通身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
+keywords: Azure AD Connect 直通身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/14/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: f0a254b7216ca6fda40e26bafb7de57e796a5218
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: c699df83c7032dc6e3d176753d8203fec6977c1b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591984"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory 直通身份验证：升级预览身份验证代理
 

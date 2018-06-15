@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: fda195c03c589361b8a798166b0ae4d93611bcd0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7398e01a46b5d296f26905e2063acdb98383f567
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603379"
 ---
 # <a name="manage-azure-resources-through-portal"></a>通过门户管理 Azure 资源
 
@@ -44,7 +45,7 @@ ms.lasthandoff: 05/20/2018
 4. 可能需要选择“刷新”查看最近创建的资源组。
    
     ![刷新资源组](./media/resource-group-portal/refresh-resource-groups.png)
-5. 若要自定义资源组的显示信息，请选择“列”。
+5. 若要自定义显示的资源组信息，请选择“列”。
    
     ![自定义列](./media/resource-group-portal/select-columns.png)
 6. 选择要添加的列，并选择“更新”。
@@ -95,7 +96,7 @@ ms.lasthandoff: 05/20/2018
 如果需要将资源移到另一个资源组或另一个订阅，请参阅[将资源移到新的资源组或订阅](resource-group-move-resources.md)。
 
 ## <a name="lock-resources"></a>锁定资源
-可以锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。更多信息请参阅 [使用 Azure 资源管理器锁定资源](resource-group-lock-resources.md)。
+可以锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](resource-group-lock-resources.md)。
 
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
@@ -130,5 +131,5 @@ ms.lasthandoff: 05/20/2018
 * 若要查看有关部署的详细信息，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
 * 若要通过门户部署资源，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](resource-group-template-deploy-portal.md)。
 * 若要管理对资源的访问，请参阅[使用角色分配管理对 Azure 订阅资源的访问](../role-based-access-control/role-assignments-portal.md)。
-* 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
+* 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](/azure/architecture/cloud-adoption-guide/subscription-governance)。
 

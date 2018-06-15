@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect：直通身份验证 - 工作原理 | Microsoft 文档"
-description: "本文介绍了 Azure Active Directory 直通身份验证的工作原理"
+title: Azure AD Connect：直通身份验证 - 工作原理 | Microsoft 文档
+description: 本文介绍了 Azure Active Directory 直通身份验证的工作原理
 services: active-directory
-keywords: "Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
+keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: eaa9995430833c0c087ed0d4044f6c41d254e3ff
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: ca501bb3ad37353f00ffe5d46f72822c7c5487bf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591389"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 直通身份验证：技术深入研究
 本文简要介绍了 Azure Active Directory (Azure AD) 直通身份验证的工作原理。 有关深入的技术和安全信息，请参阅[深入了解安全性](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)一文。

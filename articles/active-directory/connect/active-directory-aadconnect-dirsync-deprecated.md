@@ -1,11 +1,11 @@
 ---
-title: "从 DirSync 和 Azure AD Sync 升级 | Microsoft Docs"
-description: "介绍如何从 DirSync 和 Azure AD Sync 升级到 Azure AD Connect。"
+title: 从 DirSync 和 Azure AD Sync 升级 | Microsoft Docs
+description: 介绍如何从 DirSync 和 Azure AD Sync 升级到 Azure AD Connect。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: bd68fb88-110b-4d76-978a-233e15590803
 ms.service: active-directory
 ms.workload: identity
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e8faf365c0f47582b4abc3554e0bb6e1c3e7902
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 23d2be6e3fb7d14cd7ea42ffc2bf6d4174a894cc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591814"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>升级 Windows Azure Active Directory Sync 和 Azure Active Directory Sync
 Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。 这是从 Windows Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级到 Azure AD Connect 的最佳时机，因为这些工具现已弃用，从 2017 年 4 月 13 日起不再受支持。
@@ -41,7 +43,7 @@ Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。它结合了两
 ## <a name="how-to-transition-to-azure-ad-connect"></a>如何过渡到 Azure AD Connect
 如果正在运行 DirSync，可通过两种方式升级：就地升级和并行部署。 对大多数客户，如果使用最新的操作系统并且对象数少于 50,000 个，我们建议使用就地升级。 对于其他情况，建议执行并行部署，这样，DirSync 配置将迁移到运行 Azure AD Connect 的新服务器。
 
-| 解决方案 | 方案 |
+| 解决方案 | 场景 |
 | --- | --- |
 | [从 DirSync 升级](active-directory-aadconnect-dirsync-upgrade-get-started.md) |<li>如果有已在运行的现有 DirSync 服务器。</li> |
 | [从 Azure AD Sync 升级](active-directory-aadconnect-upgrade-previous-version.md) |<li>如果要从 Azure AD Sync 迁移。</li> |

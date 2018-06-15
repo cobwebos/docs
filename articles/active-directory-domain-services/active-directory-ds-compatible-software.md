@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory 域服务：兼容的第三方软件 | Microsoft Docs"
-description: "适用于 Azure Active Directory 域服务的第三方软件"
+title: Azure Active Directory 域服务：兼容的第三方软件 | Microsoft Docs
+description: 适用于 Azure Active Directory 域服务的第三方软件
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 3d4ee6ab61a222b66a6a4dabc209f09af45f7909
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d44420505ebf08e199ee482d78baa8fdb5654c14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587153"
 ---
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>与 Azure AD 域服务兼容的第三方软件
 

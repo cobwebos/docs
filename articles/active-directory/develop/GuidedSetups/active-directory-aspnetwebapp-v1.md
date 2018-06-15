@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
+ms.date: 05/23/2018
 ms.author: andret
-ms.openlocfilehash: 00fef27529dd1d69c13ceaf22e16d2b7cd47801f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6b4ad805fe799e328631c13af5a599a9d1dbd91d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32156455"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594561"
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
@@ -221,7 +221,7 @@ ms.locfileid: "32156455"
 
 ### <a name="restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>限制某个组织的 Active Directory 实例的用户登录应用程序（单租户）
 
-此选项是 LOB 应用程序的常见方案：如果希望应用程序仅接受属于特定 Azure Active Directory 实例（包括该实例的来宾帐户）的用户登录，请使用组织的租户名称（例如 contoso.onmicrosoft.com） 替换 `Common` 的 web.config 中的 `Tenant` 参数。之后将 [OWIN 启动类](#configure-the-authentication-pipeline) 中的 `ValidateIssuer` 参数更改为 `true`。
+此选项是 LOB 应用程序的常见方案：如果希望应用程序仅接受属于特定 Azure Active Directory 实例（包括该实例的来宾帐户）的用户登录，请使用组织的租户名称（例如 contoso.onmicrosoft.com） 替换 `Common` 的 web.config 中的 `Tenant` 参数。 之后将 [OWIN 启动类](#configure-the-authentication-pipeline) 中的 `ValidateIssuer` 参数更改为 `true`。
 
 要允许来自特定组织列表的用户，将 `ValidateIssuer` 设置为 true，并使用 `ValidIssuers` 参数来指定组织的列表。
 

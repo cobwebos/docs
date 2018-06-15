@@ -1,23 +1,19 @@
 ---
-title: 将备份保管库升级到恢复服务保管库 | Microsoft Docs
+title: 将备份保管库升级到恢复服务保管库
 description: 将 Azure 备份保管库升级到恢复服务保管库的说明和支持信息。
 services: backup
-documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-ms.assetid: 228fef19-2f6b-4067-acc3-fb6e501afb88
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 1/4/2018
-ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 25ad2f6309531678ec98012f540556af581649b2
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.author: sogup
+ms.openlocfilehash: 551bc2aa4ff80feb3f28b5698e25dfd1b03dc870
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607331"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>将备份保管库升级到恢复服务保管库
 
@@ -140,7 +136,7 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 **升级后是否可以查看经典保管库？**</br>
 不会。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
 
-升级失败，但保存需要升级的代理的计算机不再存在。对于这种情况，该怎么办？</br>
+升级失败，但保存需要升级的代理的计算机不再存在。对于这种情况，该怎么办？**</br>
 如果需要存储此计算机的备份以便长期保留，则无法升级保管库。 在将来版本中，我们将添加对升级此类保管库的支持。
 如果不再需要存储此计算机的备份，请从保管库中注销此计算机，并重试升级。
 

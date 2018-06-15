@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 53de4afb42e9ea5b7845a9c862dc1e06c6de36df
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e4ce2a17f475fa3e11a4101c448f1c1c60dc66ec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604737"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组组织资源 
 
@@ -69,7 +70,7 @@ ms.lasthandoff: 05/04/2018
 
 Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 来访问所有资源访问和定义角色。 层次结构中的子资源继承这些权限。   
 
-可将任何[内置 RBAC 角色](../role-based-access-control/overview.md#built-in-roles)分配到管理组，不过，通常会使用四个角色： 
+可将任何[内置 RBAC 角色](../role-based-access-control/built-in-roles.md)分配到管理组，不过，通常会使用四个角色： 
 - **所有者**具有对所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 
 - 参与者可以创建和管理所有类型的 Azure 资源，但不能将访问权限授予其他用户。
 - **资源策略参与者**可以在资源的目录中创建和管理策略。     

@@ -11,16 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 05/24/2018
 ms.author: mbullwin; Soubhagya.Dash
-ms.openlocfilehash: 3b17344af099ea8b5d2554d5f6045a10641ff861
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 352fff53d9e35ddd8d8e0c107e969357d9c766b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193421"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599229"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断 
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
 通过使用 [Application Insights](app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 实时指标流与[探查器](app-insights-profiler.md)、[快照调试器](app-insights-snapshot-debugger.md)和[性能测试](app-insights-monitor-web-app-availability.md#performance-tests)一同为实时网站提供了功能强大且非入侵性的诊断工具。
 
@@ -35,8 +35,6 @@ ms.locfileid: "34193421"
 * 轻松识别有问题的服务器，并筛选出只与该服务器相关的所有 KPI/实时源。
 
 [![实时指标流视频](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
-
-实时指标流当前在本地或云端运行的 ASP.NET 应用中可用。 
 
 ## <a name="get-started"></a>入门
 

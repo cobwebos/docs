@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/22/2018
+ms.component: hybrid
 ms.author: davidste
-ms.openlocfilehash: 039e21cb3c35f8eb024ad2fca56e8a59e3182d3a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 11794739974a0efdd93a9c45cd18c6d959b1f7b2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592667"
 ---
 # <a name="connector-version-release-history"></a>连接器版本发行历史记录
 Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接器会经常更新。
@@ -141,8 +143,8 @@ Lotus：
 ### <a name="enhancements"></a>增强功能
 
 * 泛型 SQL：</br>
-  **情景症状：**我们仅允许引用一个对象类型，并要求对成员使用交叉引用，这是一个已知的 SQL 连接器限制。 </br>
-  **解决方案说明：**如果选择了“*”选项，在处理引用时，对象类型的所有组合将返回给同步引擎。
+  **情景症状：** 我们仅允许引用一个对象类型，并要求对成员使用交叉引用，这是一个已知的 SQL 连接器限制。 </br>
+  **解决方案说明：** 如果选择了“*”选项，在处理引用时，对象类型的所有组合将返回给同步引擎。
 
 >[!Important]
 - 这就会创建许多的占位符
@@ -150,15 +152,15 @@ Lotus：
 
 
 * 泛型 LDAP：</br>
- **情景：**特定分区中只选择了少量容器时，仍会针对整个分区执行搜索。 具体的信息由同步服务而不是 MA 筛选，这可能会导致性能下降。 </br>
+ **情景：** 特定分区中只选择了少量容器时，仍会针对整个分区执行搜索。 具体的信息由同步服务而不是 MA 筛选，这可能会导致性能下降。 </br>
 
- **解决方法说明：**更改 GLDAP 连接器的代码，使连接器可通过所有容器并可搜索每个容器中的对象，而不是在整个分区中搜索。
+ **解决方法说明：** 更改 GLDAP 连接器的代码，使连接器可通过所有容器并可搜索每个容器中的对象，而不是在整个分区中搜索。
 
 
 * Lotus Domino：
 
-  **情景：**导出期间用于删除人员的 Domino 邮件删除支持。 </br>
-  **解决方案：**在导出期间配置用于删除人员的邮件删除支持。
+  **情景：** 导出期间用于删除人员的 Domino 邮件删除支持。 </br>
+  **解决方案：** 在导出期间配置用于删除人员的邮件删除支持。
 
 ### <a name="fixed-issues"></a>已解决的问题：
 * 泛型 Web 服务：

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect - userCertificate 属性导致的 LargeObject 错误 | Microsoft Docs"
-description: "本主题提供针对 userCertificate 属性导致的 LargeObject 错误的补救步骤。"
+title: Azure AD Connect - userCertificate 属性导致的 LargeObject 错误 | Microsoft Docs
+description: 本主题提供针对 userCertificate 属性导致的 LargeObject 错误的补救步骤。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
 ms.service: active-directory
 ms.workload: identity
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 73c79e26b2962368f33bbb0d52d6c243b93a3026
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 9866454735b33239a812dca238006299c74e5ae2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592800"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同步：处理 userCertificate 属性导致的 LargeObject 错误
 
@@ -67,7 +69,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 8. 将更改导出到 Azure AD。
 9. 重新启用同步计划程序。
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>步骤 1. 禁用同步计划程序，并验证是否没有正在进行的同步操作
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>步骤 1。 禁用同步计划程序，并验证是否没有正在进行的同步操作
 确保实现新同步规则的中途不会发生同步，以免将意外的更改导出到 Azure AD。 若要禁用内置的同步计划程序，请执行以下操作：
 1. 在 Azure AD Connect 服务器上启动 PowerShell 会话。
 

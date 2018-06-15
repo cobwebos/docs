@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 5262914e469bdc07921c3b82e990d544349b5fd4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 24172ebac8c7f124d0873b9d93d260fa2e1a8a44
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930660"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594605"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-the-azure-cli"></a>使用 Azure CLI 创建、列出或删除用户分配标识
 
@@ -31,7 +31,7 @@ ms.locfileid: "33930660"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。 **请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)**。
+- 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 
 - 若要运行 CLI 脚本示例，可以使用下列三种方法：
@@ -46,8 +46,7 @@ ms.locfileid: "33930660"
 
 若要创建用户分配标识，请使用 [az identity create](/cli/azure/identity#az-identity-create) 命令。 `-g` 参数指定要创建用户分配标识的资源组，`-n` 参数指定其名称。 将 `<RESOURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 参数值替换为自己的值：
 
-> [!IMPORTANT]
-> 创建用户分配标识时仅支持字母数字和连字符（0-9 或 a-z 或 A-Z 或 -）字符。 另外，分配给 VM/VMSS 的名称长度应限制为 24 个字符，否则它无法正常工作。 稍后返回查看更新。 有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurecli-interactive
 az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>

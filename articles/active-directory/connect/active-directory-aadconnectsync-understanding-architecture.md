@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect 同步：了解体系结构 | Microsoft Docs"
-description: "本主题介绍 Azure AD Connect 同步的体系结构，并解释使用的术语。"
+title: Azure AD Connect 同步：了解体系结构 | Microsoft Docs
+description: 本主题介绍 Azure AD Connect 同步的体系结构，并解释使用的术语。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 465bcbe9-3bdd-4769-a8ca-f8905abf426d
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6a6150dca80a137e9787d943bfe9abb4224e6fe6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 079dfe772e6c189c0e81ea7af16d11a1c40f3ebe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593480"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步：了解体系结构
 本主题介绍 Azure AD Connect 同步的基本体系结构。在许多方面，它类似于其前身产品 MIIS 2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步是这些技术的演进。 如果熟悉上述任何早期技术，则也会熟悉本主题的内容。 本主题很适合同步功能的新手。 但是，不一定要了解本主题的详细信息才能成功自定义 Azure AD Connect 同步（在本主题中称为“同步引擎”）。

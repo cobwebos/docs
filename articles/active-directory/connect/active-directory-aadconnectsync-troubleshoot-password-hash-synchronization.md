@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bcf266813476c682d47bfd483db77f5d8b73837a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7cc86f56f7f68c70d66407bd44e6368f31f202d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593779"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码哈希同步问题
 本主题提供解决密码哈希同步问题的步骤。 如果密码未按预期同步，请区分该密码是一部分用户的密码还是所有用户的密码。
@@ -289,7 +291,7 @@ ms.lasthandoff: 03/29/2018
 
     c. 选择用户所在的 Active Directory 连接器。
 
-    d.单击“下一步”。 选择“搜索连接器空间”。
+    d. 选择“搜索连接器空间”。
 
     e. 在“作用域”框中，选择“DN 或定位点”，然后输入要排查的用户的完整 DN。
 
