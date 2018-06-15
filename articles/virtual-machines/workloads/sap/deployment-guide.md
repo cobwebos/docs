@@ -4,7 +4,7 @@ description: 了解如何将 SAP 软件部署到 Azure 中的 Linux 虚拟机。
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: a8929cfd0a484cdcd1adbd3d2ead4fd36cc49cd3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cb402f51ca20551bf34140322f3f259470a637ac
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656391"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -86,7 +87,10 @@ ms.lasthandoff: 05/20/2018
 [dbms-guide-3]:dbms-guide.md#871dfc27-e509-4222-9370-ab1de77021c3 (Azure Vm 的高可用性和灾难恢复)
 [dbms-guide-5.5.1]:dbms-guide.md#0fef0e79-d3fe-4ae2-85af-73666a6f7268 (SQL Server 2012 SP1 CU4 及更高版本)
 [dbms-guide-5.5.2]:dbms-guide.md#f9071eff-9d72-4f47-9da4-1852d782087b (SQL Server 2012 SP1 CU3 及更低版本)
-[dbms-guide-5.6]:dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 (使用来自 Azure Marketplace 的 SQL Server 映像)
+
+  [
+  dbms-guide-5.6]:dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8
+   (使用来自 Azure 市场的 SQL Server 映像)
 [dbms-guide-5.8]:dbms-guide.md#9053f720-6f3b-4483-904d-15dc54141e30 (适用于 Azure 上的 SAP 的 SQL Server 总体摘要)
 [dbms-guide-5]:dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737 (SQL Server RDBMS 的详细信息)
 [dbms-guide-8.4.1]:dbms-guide.md#b48cfe3b-48e9-4f5b-a783-1d29155bd573 (存储配置)
@@ -108,7 +112,10 @@ ms.lasthandoff: 05/20/2018
 [deployment-guide]:deployment-guide.md (适用于 SAP 的 Azure 虚拟机部署)
 [deployment-guide-2.2]:deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 (SAP 资源)
 [deployment-guide-3.1.2]:deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab (通过使用自定义映像部署 VM)
-[deployment-guide-3.2]:deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 (方案 1：从 Azure Marketplace 为 SAP 部署 VM)
+
+  [
+  deployment-guide-3.2]:deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281
+   (方案 1：为 SAP 部署来自 Azure 市场的 VM)
 [deployment-guide-3.3]:deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 (方案 2：使用自定义映像为 SAP 部署 VM)
 [deployment-guide-3.4]:deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 (方案 3：使用包含 SAP 的非通用化 Azure VHD 从本地移动 VM)
 [deployment-guide-3]:deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e (Microsoft Azure 上 SAP 的 VM 部署方案)
@@ -387,15 +394,17 @@ ms.lasthandoff: 05/20/2018
 ## <a name="b3253ee3-d63b-4d74-a49b-185e76c4088e"></a>Azure VM 上 SAP 软件的部署方案
 有多个选项可用于在 Azure 中部署 VM 和关联的磁盘。 了解这些部署选项之间的区别非常重要，你可能需要根据所选的部署类型采取不同的步骤为部署准备 VM。
 
-### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>方案 1：从 Azure Marketplace 为 SAP 部署 VM
-可以使用 Azure Marketplace 中由 Microsoft 或第三方提供的映像来部署 VM。 Marketplace 提供了 Windows Server 和各种 Linux 分发的一些标准 OS 映像。 还可以部署包括数据库管理系统 (DBMS) SKU（例如 Microsoft SQL Server）的映像。 有关使用包含 DBMS SKU 的映像的详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]。
+### 
+  <a name="db477013-9060-4602-9ad4-b0316f8bb281">
+  </a>方案 1：为 SAP 部署来自 Azure 市场的 VM
+可以使用 Azure 市场中由 Microsoft 或第三方提供的映像来部署 VM。 市场提供了 Windows Server 和各种 Linux 分发的一些标准 OS 映像。 还可以部署包括数据库管理系统 (DBMS) SKU（例如 Microsoft SQL Server）的映像。 有关使用包含 DBMS SKU 的映像的详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]。
 
-下面的流程图显示了从 Azure Marketplace 部署 VM 时特定于 SAP 的步骤序列：
+下面的流程图显示了从 Azure 市场部署 VM 时特定于 SAP 的步骤序列：
 
-![使用 Azure Marketplace 中的 VM 映像为 SAP 系统部署 VM 的流程图][deployment-guide-figure-100]
+![使用 Azure 市场中的 VM 映像为 SAP 系统部署 VM 的流程图][deployment-guide-figure-100]
 
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>使用 Azure 门户创建虚拟机
-使用 Azure Marketplace 中的映像创建新虚拟机的最简单方式是使用 Azure 门户。
+使用 Azure 市场中的映像创建新虚拟机的最简单方式是使用 Azure 门户。
 
 1.  转到 <https://portal.azure.com/#create/hub>。  或者，在 Azure 门户菜单中，选择“+ 新建”。
 2.  选择“计算”，并选择要部署的操作系统的类型。 例如，Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2) 或 Oracle Linux 7.2。 默认列表视图并未显示所有受支持的操作系统。 若要查看完整列表，请选择“查看所有”。 有关 SAP 软件部署支持的操作系统的详细信息，请参阅 SAP 说明 [1928533]。
@@ -488,7 +497,7 @@ ms.lasthandoff: 05/20/2018
 
 4.  选择“购买”。
 
-使用 Azure Marketplace 中的映像时，默认情况下会部署 Azure VM 代理。
+使用 Azure 市场中的映像时，默认情况下会部署 Azure VM 代理。
 
 #### <a name="configure-proxy-settings"></a>配置代理设置
 可能需要在 VM 上设置代理，具体取决于本地网络的配置情况。 如果 VM 通过 VPN 或 ExpressRoute 连接到本地网络，则 VM 可能无法访问 Internet，并且无法下载所需的扩展或收集监视数据。 有关详细信息，请参阅[配置代理][deployment-guide-configure-proxy]。
@@ -508,7 +517,7 @@ ms.lasthandoff: 05/20/2018
 将 VM 部署到 Azure 中之后，需要像在本地环境中一样，遵照相同的准则并使用相同的工具在 VM 上安装 SAP 软件。 若要在 Azure VM 上安装 SAP 软件，SAP 和 Microsoft 都建议将 SAP 安装媒体上传并存储到 Azure VHD 或托管磁盘中，或者创建一个充当文件服务器并包含所有必需 SAP 安装媒体的 Azure VM。
 
 ### <a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>方案 2：使用自定义映像为 SAP 部署 VM
-因为不同版本的操作系统或 DBMS 具有不同的修补程序要求，因此，在 Azure Marketplace 中找到的映像不一定能满足需求。 可能需要使用自己的 OS/DBMS VM 映像创建一个 VM，而且以后可以再次部署该 VM。
+因为不同版本的操作系统或 DBMS 具有不同的修补程序要求，因此，在 Azure 市场中找到的映像不一定能满足需求。 可能需要使用自己的 OS/DBMS VM 映像创建一个 VM，而且以后可以再次部署该 VM。
 为 Linux 创建专用映像时使用的步骤不同于为 Windows 创建专用映像时使用的步骤。
 
 - - -
@@ -527,7 +536,7 @@ ms.lasthandoff: 05/20/2018
 
 下面的流程图显示了从自定义映像部署 VM 时特定于 SAP 的步骤序列：
 
-![使用专用 Marketplace 中的 VM 映像为 SAP 系统部署 VM 的流程图][deployment-guide-figure-300]
+![使用专用市场中的 VM 映像为 SAP 系统部署 VM 的流程图][deployment-guide-figure-300]
 
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>使用 Azure 门户创建虚拟机
 通过托管磁盘映像创建新虚拟机的最简单方式是使用 Azure 门户。 有关如何创建托管磁盘映像的详细信息，请阅读[在 Azure 中捕获通用 VM 的托管映像](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
@@ -794,7 +803,7 @@ azure --version
 ### <a name="c7cbb0dc-52a4-49db-8e03-83e7edc2927d"></a>下载、安装并启用 Azure VM 代理
 对于从非通用化的 OS 映像（例如，非来自 Windows 系统准备（或 sysprep）工具的映像）部署的虚拟机，需要手动下载、安装并启用 Azure VM 代理。
 
-如果从 Azure Marketplace 部署 VM，则此步骤不是必需的。 来自 Azure Marketplace 的映像已经包含 Azure VM 代理。
+如果从 Azure 市场部署 VM，则此步骤不是必需的。 来自 Azure 市场的映像已经包含 Azure VM 代理。
 
 #### <a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
 1.  下载 Azure VM 代理：

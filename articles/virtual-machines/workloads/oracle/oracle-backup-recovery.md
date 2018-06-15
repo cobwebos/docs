@@ -4,7 +4,7 @@ description: 了解怎样在 Azure 环境中备份和恢复 Oracle Database 12c 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 5/17/2017
 ms.author: rclaus
-ms.openlocfilehash: e804fd17c3dbe9df9e9dc258e67b8f9192c1f8ad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e01a347607b2c2ff82d15172756f32c9c6a474a8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193098"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656155"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
 
-可从命令提示符使用 Azure CLI 或通过脚本来创建和管理 Azure 资源。 在本文中，我们使用 Azure CLI 脚本从 Azure Marketplace 库映像部署 Oracle Database 12c 数据库。
+可从命令提示符使用 Azure CLI 或通过脚本来创建和管理 Azure 资源。 在本文中，我们使用 Azure CLI 脚本从 Azure 市场库映像部署 Oracle Database 12c 数据库。
 
 在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "32193098"
 
 ### <a name="step-1-prerequisites"></a>步骤 1：先决条件
 
-*   要执行备份和恢复过程，首先必须创建已安装 Oracle Database 12c 实例的 Linux VM。 用来创建 VM 的 Marketplace 映像是“Oracle:Oracle-Database-Ee:12.1.0.2:latest”。
+*   要执行备份和恢复过程，首先必须创建已安装 Oracle Database 12c 实例的 Linux VM。 用来创建 VM 的市场映像是“Oracle:Oracle-Database-Ee:12.1.0.2:latest”。
 
     要了解如何创建 Oracle 数据库，请参阅 [Oracle 创建数据库快速入门](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)。
 

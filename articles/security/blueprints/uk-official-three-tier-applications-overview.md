@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: abacea02ee40cf899b58ab1fe4ac454784ff7d18
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757189"
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure 安全性和符合性蓝图 - UK-OFFICIAL 三层式 Web 应用程序自动化
 
@@ -148,7 +149,7 @@ ms.lasthandoff: 04/16/2018
 
 **Internet 网关和公共 IP 地址**：Internet 网关通过 Internet 向用户公开应用程序服务。 结合 Web 应用程序防火墙 (WAF) 保护，使用可提供第 7 层路由和负载均衡功能的[应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)来保护访问这些服务的流量。
 
-**管理 VNet**：此 [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overviewcontains) 包含针对生产 VNet 中运行的工作负荷实施管理和监视功能的资源。
+**管理 VNet**：此 [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 包含针对生产 VNet 中运行的工作负荷实施管理和监视功能的资源。
 
 **Jumpbox**：也称为[守护主机](https://en.wikipedia.org/wiki/Bastion_host)，它是网络中的一个安全 VM，管理员可使用它来连接到生产 VNet 中的 VM。 Jumpbox 中的某个 NSG 只允许来自安全列表中的公共 IP 地址的远程流量。 若要允许远程桌面 (RDP) 流量，需要在该 NSG 中定义流量的源。 使用受保护的 Jumpbox VM 通过 RDP 管理生产资源。
 
@@ -193,7 +194,7 @@ ms.lasthandoff: 04/16/2018
 
 **Active Directory 集成**：客户可能希望使用 [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-azure-active-directory) 集成或 [Azure 中已加入本地林的 Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest) 作为专用 AD DS 体系结构的替代方案。
 
-### <a name="security"></a>安全
+### <a name="security"></a>“安全”
 
 **管理安全性**：此蓝图允许管理员使用 RDP 从受信任的源连接到管理 VNet 和 Jumpbox。 使用 NSG 控制管理 VNet 的网络流量。 仅限受信任 IP 范围内可访问包含 Jumpbox 的子网的流量访问端口 3389。
 

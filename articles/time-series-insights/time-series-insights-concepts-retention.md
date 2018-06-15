@@ -1,28 +1,28 @@
 ---
-title: "了解 Azure 时序见解环境中的数据保留 | Microsoft Docs"
-description: "本文介绍控制 Azure 时序见解环境中的数据保留的两项设置。"
-services: time-series-insights
+title: 了解 Azure 时序见解环境中的数据保留 | Microsoft Docs
+description: 本文介绍控制 Azure 时序见解环境中的数据保留的两项设置。
 ms.service: time-series-insights
+services: time-series-insights
 author: anshan
 ms.author: anshan
 manager: kfile
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 46e0c4fa25c7d8a56763b80bf7de97c775c7ee99
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: ad0cbf38a1a32632869c490c5a46796eaa3884f4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652444"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>了解时序见解中的数据保留
 本文介绍影响时序见解 (TSI) 环境中的数据保留的两项设置。
 
 每个 TSI 环境都有一项设置控制**数据保留时间**。 该时间值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
 
-每个 TSI 环境有一项附加的设置：“超出存储限制时的行为”。 此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
+每个 TSI 环境都有一项附加设置：“超出存储限制时的行为”。 此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
 - **清除旧数据**（默认行为）  
 - **暂停传入**
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 02/14/2018
 - 在由于超过保留期而清除数据之前，此行为可让用户有更多的时间来增大其环境的容量。
 - 此行为有助于防止数据丢失，但如果暂停数据传入的持续时间超过事件源的保留期，则有可能会丢失最近的数据。
 - 但是，一旦达到环境的最大容量，环境将会暂停数据传入，直到执行附加的操作： 
-   - 增加环境的最大容量。 有关详细信息，请参阅[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)以添加更多缩放单位。
+   - 增加环境的最大容量。 有关详细信息，请参阅[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)以添加更多缩放单元。
    - 达到了数据保留期并清除了数据，从而使环境低于其最大容量。
 
 ### <a name="example-3"></a>示例 3：

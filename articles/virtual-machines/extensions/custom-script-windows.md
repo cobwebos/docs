@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: danis
-ms.openlocfilehash: 34c16b686a50994862bef14cefec1a4799a343c4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 80f9ecd40c5b9504a6554b95bf374046d8253933
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944939"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809771"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -45,22 +45,22 @@ ms.locfileid: "33944939"
 
 
 ### <a name="internet-connectivity"></a>Internet 连接
-如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙/网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用 Azure NSG 服务[存储](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)标记来允许访问。
+如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙/网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用[存储](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)的 Azure NSG 服务标记来允许访问。
 
 如果脚本位于本地服务器上，则可能仍需要打开其他防火墙/网络安全组端口。
 
 ### <a name="tips-and-tricks"></a>提示和技巧
-* 脚本中的语法错误会导致此扩展失败率最高，请测试脚本运行正确无误，同时在脚本中添加其他日志记录，以便更轻松地找到失败的位置。
+* 脚本中的语法错误会导致此扩展失败率最高，应测试脚本运行正确无误，同时在脚本中添加其他日志记录，以便更轻松地找到失败位置。
 * 编写幂等性的脚本，这样一来，如果脚本意外多次运行，将不会导致系统更改。
 * 确保这些脚本在运行时不需要用户输入。
-* 脚本可以运行 90 分钟，若运行时间更长，将导致扩展的预配失败。
+* 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
 * 请勿将 reboot 置于脚本中，这会导致正在安装的其他扩展出现问题，并且在重启后，该扩展将不会继续。 
 * 如果所拥有的脚本会导致重启，则安装应用程序并运行脚本等。应该使用 Windows 计划任务或者使用 DSC 或 Chef、Puppet 扩展等工具来计划重启。
 * 扩展将只运行脚本一次，如果想要在每次启动时运行脚本，则需要使用扩展创建 Windows 计划任务。
 * 如果想要计划脚本何时运行，应使用扩展创建 Windows 计划任务。 
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
 * 自定义脚本扩展本身不支持代理服务器，但可以在脚本中使用支持代理服务器的文件传输工具，如 Curl 
-* 请注意脚本或命令可能依赖的非默认目录位置，请按逻辑对其进行处理。
+* 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
 
 
 ## <a name="extension-schema"></a>扩展架构
@@ -126,12 +126,12 @@ ms.locfileid: "33944939"
 * `storageAccountName`：（可选，字符串）存储帐户的名称。 如果指定存储凭据，所有 `fileUris` 都必须是 Azure Blob 的 URL。
 * `storageAccountKey`：（可选，字符串）存储帐户的访问密钥
 
-可以在公共设置或受保护设置中设置以下值，但扩展将拒绝任何同时在公共设置和受保护设置中设置以下值的配置。
+可以在公共设置或受保护设置中设置以下值，但扩展会拒绝任何同时在公共设置和受保护设置中设置以下值的配置。
 * `commandToExecute`
 
 虽然使用公共设置可能对调试很有用，但强烈建议使用受保护设置。
 
-公共设置将以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 已知的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对加密值解密的证书存储在 VM 上，运行时使用它对设置解密（如有必要）。
+公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
 
 ## <a name="template-deployment"></a>模板部署
 

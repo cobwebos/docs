@@ -4,7 +4,7 @@ description: 了解如何针对 SAP ASCS/SCS 实例使用 Windows 故障转移�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25d3d01e12132165cc9e12032ba0f6e7a2f15070
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 223c038155d16f41f1599aa76081560739cd7095
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657370"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
 
@@ -178,8 +179,10 @@ Azure 资源管理器中的三层模板还支持高可用性方案。 例如体�
 
 可在以下位置获取本文中所述的示例方案的 Azure 资源管理器模板：
 
-* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [使用 Azure 托管磁盘的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
+* 
+  [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* 
+  [使用 Azure 托管磁盘的 Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
 * [使用托管磁盘的自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
@@ -271,8 +274,10 @@ Azure 资源管理器中的三层模板还支持高可用性方案。 例如体�
 
 可从以下位置获取适用于此部署方案的 Azure 资源管理器模板：
 
-* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [使用托管磁盘的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
+* 
+  [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* 
+  [使用托管磁盘的 Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 * [使用托管磁盘的自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
@@ -609,7 +614,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
   ![图 12：核心群集资源需要新 IP 地址][sap-ha-guide-figure-3011]
 
-  _**图 12：**核心群集资源需要新 IP 地址_
+  _**图 12：** 核心群集资源需要新 IP 地址_
 
 5.  更改核心群集服务的 IP 地址。 由于服务器的 IP 地址指向虚拟机节点之一，因此，在更改核心群集服务的 IP 地址之前，群集无法启动。 请在核心群集服务的 IP 资源“属性”页上执行此操作。
 
@@ -627,7 +632,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
   ![图 15：群集核心服务保持正常运行，使用正确的 IP 地址][sap-ha-guide-figure-3014]
 
-  _**图 15：**群集核心服务保持正常运行，使用正确的 IP 地址_
+  _**图 15：** 群集核心服务保持正常运行，使用正确的 IP 地址_
 
 7.  添加第二个群集节点。
 
@@ -691,7 +696,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
   ![图 21：将“对象类型”更改为包括计算机][sap-ha-guide-figure-3020]
 
-  _**图 21：**将“对象类型”更改为包括计算机_
+  _**图 21：** 将“对象类型”更改为包括计算机_
 
   ![图 22：选中“计算机”复选框][sap-ha-guide-figure-3021]
 
@@ -763,11 +768,11 @@ Windows Server 2012 R2 上不会自动激活或安装 .NET Framework 3.5。 由�
 
   ![图 29：使用“添加角色和功能向导”安装 .NET Framework 3.5][sap-ha-guide-figure-3028]
 
-  _**图 29：**使用“添加角色和功能向导”安装 .NET Framework 3.5_
+  _**图 29：** 使用“添加角色和功能向导”安装 .NET Framework 3.5_
 
   ![图 30：使用“添加角色和功能向导”安装 .NET Framework 3.5 时的安装进度栏][sap-ha-guide-figure-3029]
 
-  _**图 30：**使用“添加角色和功能向导”安装 .NET Framework 3.5 时的安装进度栏_
+  _**图 30：** 使用“添加角色和功能向导”安装 .NET Framework 3.5 时的安装进度栏_
 
 - 使用 dism.exe 命令行工具。 对于此类型的安装，需要访问 Windows 安装媒体上的 SxS 目录。 在权限提升的命令提示符下输入以下命令：
 
@@ -860,7 +865,7 @@ Windows Server 2012 R2 上不会自动激活或安装 .NET Framework 3.5。 由�
 
   ![图 41：定义当前目标节点的名称、TCP/IP 地址和磁盘卷][sap-ha-guide-figure-3041]
 
-  _**图 41：**定义当前目标节点的名称、TCP/IP 地址和磁盘卷_
+  _**图 41：** 定义当前目标节点的名称、TCP/IP 地址和磁盘卷_
 
 6.  定义压缩算法。 在本例中，建议压缩复制流。 尤其是在重新同步的情况下，压缩复制流可大幅缩短重新同步的时间。 压缩需要占用虚拟机的 CPU 和 RAM 资源。 随着压缩率增加，CPU 资源量也增加。 稍后可调整此设置。
 

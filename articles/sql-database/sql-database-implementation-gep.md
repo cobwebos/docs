@@ -6,14 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: c63076f9e3ed2e9ec16507e62a37e966218ec4d6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c39f59c4648fb8eafb8db4cb8cd2bc73de02dca4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647106"
 ---
 # <a name="azure-gives-gep-global-reach-and-greater-efficiency"></a>Azure 实现 GEP 全球覆盖并提高效率
 ![GEP 徽标](./media/sql-database-implementation-gep/geplogo.png)
@@ -74,9 +75,9 @@ Azure 访问控制服务 (ACS) 为 SMART by GEP 用户提供各种不同的选�
 ## <a name="other-azure-services"></a>其他 Azure 服务
 GEP 采用了其他一些 Azure 服务，使 SMART by GEP 能够响应客户需求。 GEP 使用 Azure 云服务（Web 角色和辅助角色）托管应用程序呈现和受保护的业务逻辑服务。 云服务不仅让开发人员能够管理基础结构即代码 (IAC)，而且部署新 SMART by GEP 应用程序所花的时间也比在本地数据中心内部署所需的时间短很多，这些任务全都不需要 IT 人员的介入。 GEP 开发人员可以使用云服务过渡环境来测试新版本，而不影响当前的生产部署。 测试之后，GEP 可在一分钟内使用 Azure 云服务的 VIP 交换功能，将过渡代码转移到生产槽，以此缩短部署停机时间。
 
-为了降低应用程序延迟，GEP 使用 Azure 内容交付网络 (CDN) 将存储在 Azure Blob 存储中的静态内容（例如 CSS 和 JavaScript 文件）放置在靠近用户的边缘服务器上。 GEP 使用 Azure 服务总线来支持应用程序体系结构模式，包括发布-订阅到部分命令查询响应分离 (CQRS) 及包含松散耦合与异步通信的分层体系结构。 GEP 使用 Azure 媒体服务改善其客户支持服务。 GEP 发现，可以轻松将用户支持视频发布到 Azure 媒体服务。 这些视频解答了常见用户问题，除了减轻 GEP 客户支持人员的部分支持负担以外，还有助于提升 SMART by GEP 用户的满意度。
+为了降低应用程序延迟，GEP 使用 Azure 内容分发网络 (CDN) 将存储在 Azure Blob 存储中的静态内容（例如 CSS 和 JavaScript 文件）放置在靠近用户的边缘服务器上。 GEP 使用 Azure 服务总线来支持应用程序体系结构模式，包括发布-订阅到部分命令查询响应分离 (CQRS) 及包含松散耦合与异步通信的分层体系结构。 GEP 使用 Azure 媒体服务改善其客户支持服务。 GEP 发现，可以轻松将用户支持视频发布到 Azure 媒体服务。 这些视频解答了常见用户问题，除了减轻 GEP 客户支持人员的部分支持负担以外，还有助于提升 SMART by GEP 用户的满意度。
 
-为了发送 SMART by GEP 每天生成的数千封事务邮件，公司使用 SendGrid .NET API 来与 Azure 集成。 对 GEP 开发人员而言，此过程十分简单 — Azure Marketplace 中就有适用于 Azure 的 SendGrid 加载项。 GEP 开发人员可以直接在 Microsoft Visual Studio 中使用 SendGrid NuGet 包来配置 SMART by GEP；GEP IT 可以直接从 Azure 监视软件的 SendGrid 电子邮件流量。
+为了发送 SMART by GEP 每天生成的数千封事务邮件，公司使用 SendGrid .NET API 来与 Azure 集成。 对 GEP 开发人员而言，此过程十分简单 — Azure 市场中就有适用于 Azure 的 SendGrid 加载项。 GEP 开发人员可以直接在 Microsoft Visual Studio 中使用 SendGrid NuGet 包来配置 SMART by GEP；GEP IT 可以直接从 Azure 监视软件的 SendGrid 电子邮件流量。
 
 最后，SMART by GEP 使用 Azure 虚拟机（Azure IaaS 服务）来托管工程设计时还没有成形的应用程序和服务，取代软件即服务 (SaaS) 或 PaaS 解决方案。 例如，GEP 将集成 API 服务托管在虚拟机中，以便与客户本地企业资源规划 (ERP) 系统（例如 SAP、Oracle、PeopleSoft、JD Edwards、Microsoft Dynamics GP 和 Lawson）以及客户 SaaS 解决方案进行企业到企业 (B2B) 集成，有效交换采购文档（例如发票）。
 

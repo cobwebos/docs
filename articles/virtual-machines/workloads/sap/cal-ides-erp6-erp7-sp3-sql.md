@@ -1,13 +1,13 @@
 ---
-title: "在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3 | Microsoft Docs"
-description: "在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3"
+title: 在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3 | Microsoft Docs
+description: 在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 91eed294077ff72d0760018b10c98f32db88f3be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1895fb1910c5f30cbcff1c16ca66057d31a580b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656476"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署与 SQL Server 和 Windows 操作系统一起运行的 SAP IDES 系统。 屏幕截图将逐步显示此过程。 若要部署另一种解决方案，请按照相同的步骤操作。
@@ -28,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 若要开始使用 SAP CAL，请转到 [SAP Cloud Appliance Library](https://cal.sap.com/)网站。 有关新版 [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)，SAP 提供了博客介绍。 
 
 > [!NOTE]
-自 2017 年 5 月 29 日起，除了优先级较低的经典部署模型外，还可使用 Azure Resource Manager 部署模型来部署 SAP CAL。 建议使用新的 Resource Manager 部署模型，并忽略经典部署模型。
+自 2017 年 5 月 29 日起，除了优先级较低的经典部署模型外，还可使用 Azure 资源管理器部署模型来部署 SAP CAL。 建议使用新的 Resource Manager 部署模型，并忽略经典部署模型。
 
 如果已创建使用经典模型的 SAP CAL 帐户，则需要创建另一个 SAP CAL 帐户。 需使用 Resource Manager 模型以独占方式将此帐户部署到 Azure。
 
@@ -105,7 +106,7 @@ ms.lasthandoff: 10/11/2017
 
     ![SAP CAL 基本模式：创建实例](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-3. 单击“创建” 。 一段时间后，根据解决方案的大小和复杂性（SAP CAL 提供估算值），状态将显示为“活动”并可供使用： 
+3. 单击“创建”。 一段时间后，根据解决方案的大小和复杂性（SAP CAL 提供估算值），状态将显示为“活动”并可供使用： 
 
     ![SAP CAL 实例](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

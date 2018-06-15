@@ -2,20 +2,20 @@
 title: 教程 - 注册应用程序以便能够使用 Azure Active Directory B2C 进行注册和登录 | Microsoft Docs
 description: 使用 Azure 门户创建 Azure AD B2C 租户并向其注册应用程序。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: patricka
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: davidmu
-ms.openlocfilehash: 85e61f96ff829052e857d4823b3c944c6d981d2f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: ebfe4a2d8c6a5b1d5334034e406131fac81f0c19
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713892"
 ---
 # <a name="tutorial-register-an-application-to-enable-sign-up-and-sign-in-using-azure-active-directory-b2c"></a>教程：注册应用程序以便能够使用 Azure Active Directory B2C 进行注册和登录
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 04/18/2018
 
 `https://new.login.contoso.com`
 
-在这种情况下，将引用 login.contoso.com 的 DNS 子域。如果希望应用使用 login-east.contoso.com 和 login-west.contoso.com 作为回复 URL，必须按以下顺序添加这些回复 URL：
+在这种情况下，将引用 login.contoso.com 的 DNS 子域。 如果希望应用使用 login-east.contoso.com 和 login-west.contoso.com 作为回复 URL，必须按以下顺序添加这些回复 URL：
 
 `https://contoso.com`
 
@@ -175,4 +175,4 @@ ms.lasthandoff: 04/18/2018
 > * 注册应用程序
 
 > [!div class="nextstepaction"]
-> [使 Web 应用程序能够使用帐户进行身份验证](active-directory-b2c-app-registration.md)
+> [使 Web 应用程序能够使用帐户进行身份验证](active-directory-b2c-tutorials-web-app.md)

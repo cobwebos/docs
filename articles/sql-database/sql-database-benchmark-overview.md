@@ -6,15 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a045a545b8a0d4dda33dd404d0d206723eb822ad
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2efcad27c0a7de2691195c2b3cb2f201fa3bf487
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363972"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644787"
 ---
 # <a name="azure-sql-database-dtu-benchmark-overview"></a>Azure SQL 数据库 DTU 基准检验概述
 ## <a name="overview"></a>概述

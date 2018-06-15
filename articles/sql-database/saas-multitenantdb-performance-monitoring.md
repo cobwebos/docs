@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 43bac88a7ab6320c5fdcc9dc0fb6b5209bdbcaa3
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 22a3c5b2c7c4676c9c05c7cc67f30108a5dfbe5b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644675"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
 
@@ -73,7 +74,7 @@ New-TenantBatch 脚本在分片多租户数据库内使用唯一的租户密钥�
 
 我们提供了 Demo-PerformanceMonitoringAndManagement.ps1 脚本，用于模拟针对多租户数据库运行的工作负载。 负载是使用可用负载方案之一生成的：
 
-| 演示 | 方案 |
+| 演示 | 场景 |
 |:--|:--|
 | 2 | 生成正常强度的负载（约 30 DTU） |
 | 3 | 生成单个租户的突发时间更长的负载|

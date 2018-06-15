@@ -7,14 +7,15 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 1e3ecd27ce7ec2e2763a7249428875e51872bf63
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6c352298c701c827cd01c0ed7f427b7ed6015e29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646671"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
 
@@ -76,17 +77,17 @@ ms.lasthandoff: 04/06/2018
 
 该部署最初具有要连接的租户和目录 SQL 数据库服务器。 服务器的命名取决于数据库租户模式（请参阅下文了解详细信息）。 
 
-   - **独立的应用程序：**每个租户的服务器（例如： contosoconcerthall-&lt;User&gt; 服务器）和 catalog-sa-&lt;User&gt;
-   - **每个租户一个数据库：**tenants1-dpt-&lt;User&gt; 和 catalog-dpt-&lt;User&gt; 服务器
-   - **多租户数据库：**tenants1-mt-&lt;User&gt; 和 catalog-mt-&lt;User&gt; 服务器
+   - **独立的应用程序：** 每个租户的服务器（例如： contosoconcerthall-&lt;User&gt; 服务器）和 catalog-sa-&lt;User&gt;
+   - **每个租户一个数据库：** tenants1-dpt-&lt;User&gt; 和 catalog-dpt-&lt;User&gt; 服务器
+   - **多租户数据库：** tenants1-mt-&lt;User&gt; 和 catalog-mt-&lt;User&gt; 服务器
 
 为确保成功连接演示，所有服务器的[防火墙规则](sql-database-firewall-configure.md)都允许所有 IP 通过。
 
 
 1. 打开 SSMS 并连接到租户。 服务器名称取决于所选数据库租户模式（请参阅下文了解详细信息）：
-    - **独立的应用程序：**各个租户的服务器（例如： contosoconcerthall-&lt;User&gt;.database.windows.net） 
-    - **每个租户一个数据库：**tenants1-dpt-&lt;User&gt;.database.windows.net
-    - **多租户数据库：**tenants1-mt-&lt;User&gt;.database.windows.net 
+    - **独立的应用程序：** 各个租户的服务器（例如： contosoconcerthall-&lt;User&gt;.database.windows.net） 
+    - **每个租户一个数据库：** tenants1-dpt-&lt;User&gt;.database.windows.net
+    - **多租户数据库：** tenants1-mt-&lt;User&gt;.database.windows.net 
 2. 单击“连接” > “数据库引擎...”：
 
    ![编录服务器](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
@@ -99,9 +100,9 @@ ms.lasthandoff: 04/06/2018
    
 
 4. 重复步骤 2-3，并连接到目录服务器（请参阅下文，了解基于所选数据库租户模式的特定服务器名称）
-    - **独立的应用程序：**catalog-sa-&lt;User&gt;.database.windows.net
-    - **每个租户一个数据库：**catalog-dpt-&lt;User&gt;.database.windows.net
-    - **多租户数据库：**catalog-mt-&lt;User&gt;.database.windows.net
+    - **独立的应用程序：** catalog-sa-&lt;User&gt;.database.windows.net
+    - **每个租户一个数据库：** catalog-dpt-&lt;User&gt;.database.windows.net
+    - **多租户数据库：** catalog-mt-&lt;User&gt;.database.windows.net
 
 
 成功连接后，会看到所有服务器。 你的数据库列表可能会有所不同，具体取决于已预配的租户。

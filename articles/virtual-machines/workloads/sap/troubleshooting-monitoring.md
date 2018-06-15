@@ -1,11 +1,11 @@
 ---
-title: "Azure 上的 SAP HANA（大型实例）的故障排除与监视 | Microsoft 文档"
-description: "对 Azure 上的 SAP HANA（大型实例）进行故障排除和监视。"
+title: Azure 上的 SAP HANA（大型实例）的故障排除与监视 | Microsoft 文档
+description: 对 Azure 上的 SAP HANA（大型实例）进行故障排除和监视。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 10/31/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583f3d1949614dbba4d2f91d72e4ac6b4d03d1c
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 41fbeb848d7d97e5ee41a2221b69cc88380dc1e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657190"
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>如何对 Azure 上的 SAP HANA（大型实例）进行故障排除和监视
 
@@ -34,13 +35,13 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 
 对于 Azure 虚拟机，需要确定上述资源类是否足够，或者这些资源是否已耗尽。 下面提供了有关每个不同的类的更多详细信息：
 
-**CPU 资源消耗：**系统实施 SAP 针对 HANA 上的特定工作负荷定义的消耗比，确保有足够的 CPU 资源用于处理内存中存储的数据。 不过，在某些情况下，HANA 可能会由于缺失索引或类似问题，在执行查询时消耗大量 CPU。 这意味着，应该监视 HANA 大型实例单元消耗的 CPU 资源，以及特定 HANA 服务消耗的 CPU 资源。
+**CPU 资源消耗：** 系统实施 SAP 针对 HANA 上的特定工作负荷定义的消耗比，确保有足够的 CPU 资源用于处理内存中存储的数据。 不过，在某些情况下，HANA 可能会由于缺失索引或类似问题，在执行查询时消耗大量 CPU。 这意味着，应该监视 HANA 大型实例单元消耗的 CPU 资源，以及特定 HANA 服务消耗的 CPU 资源。
 
-**内存消耗：**必须从 HANA 内部监视，以及从单元上的 HANA 外部监视。 在 HANA 内部，应该监视数据对 HANA 分配的内存的消耗情况，使之不会超出 SAP 规定的消耗量指导原则。 此外，还需要在大型实例级别监视内存消耗，确保其他已安装的非 HANA 软件不会消耗过多的内存，从而与 HANA 争用内存。
+**内存消耗：** 必须从 HANA 内部监视，以及从单元上的 HANA 外部监视。 在 HANA 内部，应该监视数据对 HANA 分配的内存的消耗情况，使之不会超出 SAP 规定的消耗量指导原则。 此外，还需要在大型实例级别监视内存消耗，确保其他已安装的非 HANA 软件不会消耗过多的内存，从而与 HANA 争用内存。
 
-**网络带宽：**将数据移入 Azure VNet 时，Azure VNet 网关会限制带宽，因此，监视 VNet 中的所有 Azure VM 接收的数据有助于确定与所选 Azure 网关 SKU 的限制还有多大的差距。 在 HANA 大型实例单元上，监视传入和传出的网络流量以及跟踪不同时间处理的数据量确实很有作用。
+**网络带宽：** 将数据移入 Azure VNet 时，Azure VNet 网关会限制带宽，因此，监视 VNet 中的所有 Azure VM 接收的数据有助于确定与所选 Azure 网关 SKU 的限制还有多大的差距。 在 HANA 大型实例单元上，监视传入和传出的网络流量以及跟踪不同时间处理的数据量确实很有作用。
 
-**磁盘空间：**磁盘空间消耗量通常会随着时间的推移而增大。 原因有多种，但最主要的原因包括：数据量增加、执行事务日志备份、存储跟踪文件，以及执行存储快照。 因此，必须监视磁盘空间用量，管理与 HANA 大型实例单元相关的磁盘空间。
+**磁盘空间：** 磁盘空间消耗量通常会随着时间的推移而增大。 原因有多种，但最主要的原因包括：数据量增加、执行事务日志备份、存储跟踪文件，以及执行存储快照。 因此，必须监视磁盘空间用量，管理与 HANA 大型实例单元相关的磁盘空间。
 
 对于 HANA 大型实例类型 II SKU，服务器附带预载的系统诊断工具。 可以利用这些诊断工具执行系统健康状况检查。 运行以下命令，在 /var/log/health_check 生成健康状况检查日志文件。
 ```

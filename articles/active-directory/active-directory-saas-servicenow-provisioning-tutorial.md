@@ -14,23 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 88505126389f51f59cf0538da8b72139f86e58d5
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d3e64cc232aa01a5619a55290f9b07421165a6d5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698724"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配
 
 本教程的目的是说明从 Azure AD 自动将用户帐户预配到 ServiceNow 和取消其预配所需在 ServiceNow 和 Azure 中执行的步骤。
 
+> [!NOTE]
+> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](./active-directory-saas-app-provisioning.md)。
+
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定您已具有以下各项：
+若要配置 Azure AD 与 ServiceNow 的集成，需做好以下准备：
 
-*   Azure Active Directory 租户。
-*   必须拥有 ServiceNow for Work 或 ServiceNow for Education 的有效租户。 免费试用帐户可用于任一服务。
-*   在 ServiceNow 中具有团队管理员权限的用户帐户。
+- Azure AD 订阅
+- 对于 ServiceNow，需要 Calgary 版本或更高版本的 ServiceNow 实例或租户
+- 对于 ServiceNow Express，需要 Helsinki 版本或更高版本的 ServiceNow Express 实例
+
+> [!NOTE]
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
+
+测试本教程中的步骤应遵循以下建议：
+
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+
 
 ## <a name="assigning-users-to-servicenow"></a>将用户分配到 ServiceNow
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心支持的平台 | Microsoft Docs"
-description: "本文档提供 Azure 安全中心支持的 Windows 和 Linux 操作系统列表。"
+title: Azure 安全中心支持的平台 | Microsoft Docs
+description: 本文档提供 Azure 安全中心支持的 Windows 和 Linux 操作系统列表。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: terrylan
-ms.openlocfilehash: 3b57cacec729bd2f2dd4acdbb9c15e69ab9f5c85
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 86e8c1c8f0d8654c86b851e3ae7296476f38b94e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756895"
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure 安全中心支持的平台
 使用经典部署模式和资源管理器部署模式创建的虚拟机 (VM) 和计算机支持安全状态监视和建议。
@@ -59,6 +60,6 @@ ms.lasthandoff: 03/13/2018
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md) - 了解如何规划和了解设计注意事项，以适应 Azure 安全中心
-- [Azure 安全中心按类型划分的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) - 了解关于安全中心中虚拟机行为分析和故障转储内存分析的详细信息
+- [Azure 安全中心按类型划分的安全警报](security-center-alerts-type.md#virtual-machine-behavioral-analysis) - 了解关于安全中心中虚拟机行为分析和故障转储内存分析的详细信息
 - [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题
 - [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章

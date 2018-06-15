@@ -1,30 +1,31 @@
 ---
-title: "在 Azure 应用服务上进行高密度托管 | Microsoft Docs"
-description: "在 Azure 应用服务上进行高密度托管"
+title: 在 Azure 应用服务上进行高密度托管 | Microsoft Docs
+description: 在 Azure 应用服务上进行高密度托管
 author: btardif
 manager: erikre
-editor: 
+editor: ''
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: a903cb78-4927-47b0-8427-56412c4e3e64
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 22/01/2018
+ms.date: 01/22/2018
 ms.author: byvinyal
-ms.openlocfilehash: 2ffffd3cc9f5c59f74f71d6d7d31c5ea615d11f4
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 8bdf62ce70929c583b59b91e5f1e7c520376120b
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735806"
 ---
 # <a name="high-density-hosting-on-azure-app-service"></a>在 Azure 应用服务上进行高密度托管
 使用应用服务时，应用程序会与所分配的容量分离，具体表现在两个概念：
 
-* **应用程序：**代表应用及其运行时配置。 例如，它包括运行时应该加载的 .NET 的版本、应用设置。
-* **应用服务计划：**定义容量的特征、可用功能集以及应用程序的位置。 例如，特征可能包括：大型（四核）机、四个实例、美国东部的高级功能。
+* **应用程序：** 代表应用及其运行时配置。 例如，它包括运行时应该加载的 .NET 的版本、应用设置。
+* **应用服务计划：** 定义容量的特征、可用功能集以及应用程序的位置。 例如，特征可能包括：大型（四核）机、四个实例、美国东部的高级功能。
 
 一个应用始终与一个应用服务计划相关联，但一个应用服务计划则可能为一个或多个应用提供容量。
 
