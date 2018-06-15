@@ -2,24 +2,22 @@
 title: Azure Cosmos DB：SQL .NET Core API、SDK 和资源 | Microsoft Docs
 description: 了解有关 SQL .NET Core API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB .NET Core SDK 各版本之间所做的更改。
 services: cosmos-db
-documentationcenter: .net
 author: rnagpal
 manager: kfile
 editor: cgronlun
-ms.assetid: f899b314-26ac-4ddb-86b2-bfdf05c2abf2
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27e7d5e26cf1705383faf38c4837f6dec0ecd2fb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c62869d1ec0dca1859972e817fe1e5e2c1f4c1eb
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797856"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
