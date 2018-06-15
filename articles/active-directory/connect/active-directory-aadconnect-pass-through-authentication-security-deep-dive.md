@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory 直通身份验证安全性深入研究 | Microsoft Docs"
-description: "本文介绍 Azure Active Directory (Azure AD) 传递身份分验证如何保护本地帐户"
+title: Azure Active Directory 直通身份验证安全性深入研究 | Microsoft Docs
+description: 本文介绍 Azure Active Directory (Azure AD) 传递身份分验证如何保护本地帐户
 services: active-directory
-keywords: "Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
+keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.service: active-directory
@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84a5ef23739635ba4d2f0adc688c1b506f643a36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cb8382a9801c3570a190259416d846fe518cc6ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595030"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 

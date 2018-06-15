@@ -3,17 +3,17 @@ title: Azure Analysis Services 模型的异步刷新 | Microsoft Docs
 description: 了解如何使用 REST API 编写异步刷新的代码。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 05/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d1862c5ed83033eb8de74459f26260864c646dfa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a20e8460e0243e2f6f2f258e26374a2cd716206c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153120"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601609"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
@@ -98,7 +98,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 |名称  |Type  |说明  |默认  |
 |---------|---------|---------|---------|
-|Type     |  枚举       |  要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic、add 和 defragment。       |   automatic      |
+|Type     |  枚举       |  要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
 |CommitMode     |  枚举       |  确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
 |MaxParallelism     |   int      |  此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
 |RetryCount    |    int     |   指示操作在失败之前要重试的次数。      |     0    |

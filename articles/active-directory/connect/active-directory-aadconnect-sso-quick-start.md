@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d026009151f85a01f14ce4dd8a510f60ff407da1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e6bb32c20ca9bb6c514cab462e94018543c3a702
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592606"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -34,7 +36,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 * 设置 Azure AD Connect 服务器：如果使用[直通身份验证](active-directory-aadconnect-pass-through-authentication.md)作为登录方法，则无需进行其他先决条件检查。 如果使用[密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)作为登录方法，并且 Azure AD Connect 与 Azure AD 之间有防火墙，则请确保：
    - 使用 Azure AD Connect 版本 1.1.644.0 或更高版本。 
-   - 如果防火墙或代理允许执行 DNS 允许列表，则可将通过端口 443 与 **\*.msappproxy.net** URL 的连接加入允许列表。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此先决条件仅适用于启用了该功能的情况。 无需用户实际登录。
+   - 如果防火墙或代理允许执行 DNS 白名单，则可将通过端口 443 与 **\*.msappproxy.net** URL 的连接加入白名单。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此先决条件仅适用于启用了该功能的情况。 无需用户实际登录。
 
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果不打算将密码哈希同步与直通身份验证结合使用，请阅读 [Azure AD Connect 发行说明](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)了解详细信息。

@@ -1,13 +1,13 @@
 ---
-title: "在 Azure 环境下的 Oracle 灾难恢复方案概述 | Microsoft 文档"
-description: "在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复方案"
+title: 在 Azure 环境下的 Oracle 灾难恢复方案概述 | Microsoft 文档
+description: 在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复方案
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/2/2017
 ms.author: rclaus
-ms.openlocfilehash: aede44d964994bd2ef9b46a133b1f1ee303ef309
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb319c4ba9bbfba584803b35a0db0763fcf97b86
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657855"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复
 
