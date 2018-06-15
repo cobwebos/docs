@@ -2,18 +2,20 @@
 title: 教程 - 从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限 | Microsoft Docs
 description: 有关如何从 .NET 桌面应用使用 Active Directory B2C 保护 .Node.js Web API 并调用该 API 的教程。
 services: active-directory-b2c
-author: PatAltimore
-ms.author: patricka
-ms.reviewer: parja
+author: davidmu1
+manager: mtillman
+ms.author: davidmu
 ms.date: 3/01/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: ef92a7fbbc3b84195eff251b0224cb0fd51a6c88
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: 01c13b214d40fba278ce788047e2b158adc20287
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711590"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教程：从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限
 
@@ -53,7 +55,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
     
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | 我的示例 Node.js Web API | 输入一个**名称**，描述面向开发人员的 Web API。 |
+    | **名称** | 我的示例 Node.js Web API | 输入一个**名称**，描述面向开发人员的 Web API。 |
     | 包括 Web 应用/Web API | 是 | 对于 Web API，请选择“是”。 |
     | 允许隐式流 | 是 | 选择“是”，因为 API 使用 [OpenID Connect 登录](active-directory-b2c-reference-oidc.md)。 |
     | 回复 URL | `http://localhost:5000` | 回复 URL 属于终结点，允许 Azure AD B2C 在其中返回 API 请求的任何令牌。 在本教程中，示例 Web API 在本地 (localhost) 运行，并在端口 5000 上进行侦听。 |
