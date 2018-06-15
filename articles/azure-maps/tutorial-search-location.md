@@ -1,22 +1,20 @@
 ---
 title: 使用 Azure Maps 进行搜索 | Microsoft Docs
 description: 使用 Azure Maps 搜索附近兴趣点
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a4479ceebd4c8aad477b5f13a5bcc06d24c1202d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4a414b5b865d31dd99b54ef9693abafb5490a50f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601779"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
 
@@ -40,7 +38,7 @@ ms.lasthandoff: 05/07/2018
 使用以下步骤创建新的 Maps 帐户：
 
 1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。
-2. 在“搜索 Marketplace”框中，键入“Maps”。
+2. 在“在市场中搜索”框中，键入“Maps”。
 3. 从“结果”中，选择“Maps”。 单击地图下面显示的“创建”按钮。 
 4. 在“创建 Maps 帐户”页上，输入以下值：
     - 新帐户的名称。 

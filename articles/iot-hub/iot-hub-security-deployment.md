@@ -1,24 +1,19 @@
 ---
-title: "保护 Azure IoT 部署 | Microsoft Docs"
-description: "如何保护 IoT 部署。 包括保护设备预配、连接和对 IoT 中心服务的访问的指导原则。"
-services: iot-hub
-documentationcenter: 
+title: 保护 Azure IoT 部署 | Microsoft Docs
+description: 如何保护 IoT 部署。 包括保护设备预配、连接和对 IoT 中心服务的访问的指导原则。
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: dfddaf86-2733-44fe-804c-586a5a7364cc
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: c7857d7bc9059609e9fa9fed3e6f665376f4d144
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8e4ac736d5938cc3cfd81d80ed7bfc95893fc5c7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635519"
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 

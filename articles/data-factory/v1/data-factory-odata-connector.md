@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55fde1a1a61f8ec0479cd264b2ce4dd37789c5a4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b87ed8b9d9b43de81bfe4173d117d9f1e2bd7abd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622000"
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -201,7 +202,7 @@ ms.lasthandoff: 03/23/2018
 
 此示例每小时将数据从针对 OData 源的查询复制到 Azure Blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
-**OData 链接服务：**此示例使用匿名身份验证。 请参阅 [OData 链接服务](#linked-service-properties)部分，了解各种可用的身份验证。
+**OData 链接服务：** 此示例使用匿名身份验证。 请参阅 [OData 链接服务](#linked-service-properties)部分，了解各种可用的身份验证。
 
 ```json
 {

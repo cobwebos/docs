@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 47a0f2e1cdb873dc907748ed2f3def29efccaa98
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 797421e40a5550e1897443f35089838a349ad85a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607389"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -149,7 +150,7 @@ ms.lasthandoff: 05/03/2018
 | 云解决方案提供商 (CSP) | 咨询提供商 |
 | Azure 赞助 | [赞助门户](https://www.microsoftazuresponsorships.com/) |
 
-如果管理大型组织的 IT，建议阅读 [Azure 企业基架](../azure-resource-manager/resource-manager-subscription-governance.md)和[企业 IT 白皮书](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf)（.pdf 下载，仅英文版）。
+如果管理大型组织的 IT，建议阅读 [Azure 企业基架](/azure/architecture/cloud-adoption-guide/subscription-governance)和[企业 IT 白皮书](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf)（.pdf 下载，仅英文版）。
 
 #### <a name="EA"></a>在 Azure 门户中预览“企业协议”成本视图 
 

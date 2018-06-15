@@ -16,12 +16,12 @@ ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: a62d7a36eeb84b06baa4f2968d48f4a7afcaa05d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 086a2fde5905321da7d5689b6f1ee2f5139209ba
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32140076"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588856"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory 中可配置的令牌生存期（公共预览版）
 可以指定 Azure Active Directory (Azure AD) 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。
@@ -279,7 +279,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 2.  将策略分配到服务主体。 还需要获取服务主体的 **ObjectId**。 
 
-    1.  若要查看组织的所有服务主体，可以查询 [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) 或 [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 此外，还可以在 [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/) 和 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中使用 Azure AD 帐户测试此功能。
+    1.  若要查看组织的所有服务主体，可以查询 [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) 或 [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 此外，还可以在 [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) 和 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中使用 Azure AD 帐户测试此功能。
 
     2.  获取服务主体的 **ObjectId** 后，运行以下命令：
 

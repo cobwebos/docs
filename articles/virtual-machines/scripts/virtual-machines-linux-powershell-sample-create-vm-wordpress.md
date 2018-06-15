@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell 脚本示例 - WordPress | Microsoft 文档"
-description: "Azure PowerShell 脚本示例 - WordPress"
+title: Azure PowerShell 脚本示例 - WordPress | Microsoft 文档
+description: Azure PowerShell 脚本示例 - WordPress
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: sample
@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 778a6d5cfc63f80aa66654d682fedb178cfd67a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba1138d4c26b7fbcdda50b2f4ba45745a018e855
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34655848"
 ---
 # <a name="create-a-wordpress-vm-with-powershell"></a>使用 PowerShell 创建 WordPress VM
 

@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell 脚本示例 - OMS | Microsoft 文档"
-description: "Azure PowerShell 脚本示例 - OMS"
+title: Azure PowerShell 脚本示例 - OMS | Microsoft 文档
+description: Azure PowerShell 脚本示例 - OMS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2f9303568838113335343a420913b8dcb84cb49c
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: dc6cda6490740488e60f380d99952fa3f8d0c3fb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34655956"
 ---
 # <a name="create-an-operations-management-suite-monitored-vm-with-powershell"></a>使用 PowerShell 创建 Operations Management Suite 监视的 VM
 

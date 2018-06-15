@@ -128,6 +128,8 @@
           href: azure-stack-monitor-health.md
         - name: 管理网络资源
           href: azure-stack-viewing-public-ip-address-consumption.md
+        - name: 更改用户订阅所有者
+          href: azure-stack-change-subscription-owner.md
         - name: 管理 Windows Azure Pack VM
           href: azure-stack-manage-windows-azure-pack.md
         - name: 启动和停止 Azure Stack
@@ -189,6 +191,8 @@
               href: azure-stack-enable-multitenancy.md
         - name: 轮换机密
           href: azure-stack-rotate-secrets.md
+        - name: 更新防病毒
+          href: azure-stack-security-av.md
     - name: 提供服务
       items:
         - name: 提供服务概述
@@ -216,7 +220,7 @@
           items:
             - name: 部署 SQL Server 资源提供程序
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: 添加宿主服务器
+            - name: 添加 SQL 宿主服务器
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: 创建 SQL 数据库
               href: azure-stack-sql-resource-provider-databases.md
@@ -227,7 +231,20 @@
             - name: 删除 SQL Server 资源提供程序
               href: azure-stack-sql-resource-provider-remove.md
         - name: 提供 MySQL 作为 PaaS
-          href: azure-stack-mysql-resource-provider-deploy.md
+          href: azure-stack-mysql-resource-provider.md
+          items:
+            - name: 部署 MySQL Server 资源提供程序
+              href: azure-stack-mysql-resource-provider-deploy.md
+            - name: 添加 MySQL 宿主服务器
+              href: azure-stack-mysql-resource-provider-hosting-servers.md
+            - name: 创建 MySQL 数据库
+              href: azure-stack-mysql-resource-provider-databases.md
+            - name: 更新 MySQL Server 资源提供程序
+              href: azure-stack-mysql-resource-provider-update.md
+            - name: 维护 MySQL Server 资源提供程序
+              href: azure-stack-mysql-resource-provider-maintain.md
+            - name: 删除 MySQL Server 资源提供程序
+              href: azure-stack-mysql-resource-provider-remove.md
         - name: 提供应用服务作为 PaaS
           items:
             - name: Azure Stack 上的应用服务概述
@@ -254,15 +271,15 @@
               href: azure-stack-app-service-release-notes-update-one.md
             - name: 基于 Azure Stack 的应用服务 Update 2 发行说明
               href: azure-stack-app-service-release-notes-update-two.md
-        - name: 充实 Marketplace
+        - name: 充实市场
           items:
-            - name: Marketplace 概述
+            - name: 市场概述
               href: azure-stack-marketplace.md
-            - name: 下载 Marketplace 项
+            - name: 下载市场项
               href: azure-stack-download-azure-marketplace-item.md
             - name: Azure Stack 的 Azure Marketplace 项
               href: azure-stack-marketplace-azure-items.md
-            - name: 创建和发布 Marketplace 项
+            - name: 创建和发布市场项
               href: azure-stack-create-and-publish-marketplace-item.md
             - name: 使用 Marketplace 发布工具
               href: azure-stack-marketplace-publisher.md

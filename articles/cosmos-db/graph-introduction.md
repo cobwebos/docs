@@ -3,21 +3,19 @@ title: Azure Cosmos DB 图形 API 简介 | Microsoft Docs
 description: 了解如何在 Azure Cosmos DB 中通过使用 Apache TinkerPop 的 Gremlin 图形查询语言以较低的延迟存储、查询和遍历大量图形。
 services: cosmos-db
 author: LuisBosquez
-documentationcenter: ''
 manager: kfile
-ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: article
+ms.component: cosmosdb-graph
+ms.devlang: na
+ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 6deaf57b6314ed4077369beb3195e97281d918e6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 6fcd6389e3ff23c1cb2b2f0e5183ea43bae9f313
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796129"
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB 简介：图形 API
 
