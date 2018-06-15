@@ -3,23 +3,20 @@ title: 通过 Azure 门户管理 Cosmos DB 帐户 | Microsoft Docs
 description: 了解如何通过 Azure 门户管理 Azure Cosmos DB 帐户。 查找有关使用 Azure 门户查看、复制、删除和访问帐户的指南。
 keywords: Azure 门户, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: ''
 author: kirillg
 manager: kfile
 editor: cgronlun
-ms.assetid: 00fc172f-f86c-44ca-8336-11998dcab45c
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 9c8126c7f902beec348419c0362722a692cb393e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b28143dc92fa526b631baf6d47e4a9f2367ee0e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612150"
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>如何管理 Azure Cosmos DB 帐户
 了解如何在 Azure 门户中设置全局一致性、使用密钥，以及删除 Azure Cosmos DB 帐户。

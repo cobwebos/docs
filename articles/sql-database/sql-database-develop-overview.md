@@ -7,15 +7,15 @@ manager: craigg
 ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 37f143ce9dabdc2d0eaf6c60dd551c682a141c17
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aee8f8c830ac504b6688c02c2b262a0d87bc5278
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187668"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646620"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
 本文逐步讲解开发人员在编写代码以连接到 Azure SQL 数据库时应考虑的基本注意事项。
@@ -37,7 +37,7 @@ Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源�
 
 * 更多信息：[Azure SQL 数据库基于 DTU 的资源模型限制](sql-database-dtu-resource-limits.md)[Azure SQL 数据库基于 vCore 的资源模型限制（预览版）](sql-database-vcore-resource-limits.md)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据和监视活动的资源。
 
 * 详细信息：[保护 SQL 数据库](sql-database-security-overview.md)。

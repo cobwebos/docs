@@ -1,11 +1,11 @@
 ---
-title: "用于 B2B 企业集成的 EDIFACT 消息 - Azure 逻辑应用 | Microsoft 文档"
-description: "使用 Azure 逻辑应用交换 EDI 格式的 EDIFACT 消息以实现 B2B 企业集成"
+title: 用于 B2B 企业集成的 EDIFACT 消息 - Azure 逻辑应用 | Microsoft 文档
+description: 使用 Azure 逻辑应用交换 EDI 格式的 EDIFACT 消息以实现 B2B 企业集成
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: 4b1ea9966add3cf0d5f75988f11cda57fa4e4cf6
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d85db6f5be487578ceab261d2779589439bfad31
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300090"
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 EDIFACT 消息以实现企业集成
 

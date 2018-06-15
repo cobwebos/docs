@@ -6,15 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: c84104ac9094980d0e6d16b535dcf13c462a645a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 613fc4d914635f46d09552858706975006fcbff6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195441"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650462"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>优化 Azure SQL 数据库性能
 
@@ -135,7 +135,7 @@ Azure SQL 数据库有助于查找并修复常见缺少索引情况。 Azure SQL
 
 ![已更正索引的查询计划](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-重要见解是共享商用系统的 IO 容量会比专用服务器计算机的容量受到更多限制。 客观上鼓励将不必要 IO 降至最低，最大限度地在 Azure SQL 数据库服务层的每个性能级别 DTU 范围内利用系统。 选择适当的物理数据库设计方式可显著缩短单个查询的延迟、提高对于每个缩放单位可处理的并发请求的吞吐量，以及将满足查询所需的成本降至最低。 有关缺少索引 DMV 的详细信息，请参阅 [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)。
+重要见解是共享商用系统的 IO 容量会比专用服务器计算机的容量受到更多限制。 客观上鼓励将不必要 IO 降至最低，最大限度地在 Azure SQL 数据库服务层的每个性能级别 DTU 范围内利用系统。 选择适当的物理数据库设计方式可显著缩短单个查询的延迟、提高按缩放单元处理的并发请求的吞吐量，以及将满足查询所需的成本降至最低。 有关缺少索引 DMV 的详细信息，请参阅 [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)。
 
 ### <a name="query-tuning-and-hinting"></a>查询优化和提示
 Azure SQL 数据库中的查询优化器与传统的 SQL Server 查询优化器相似。 有关优化查询和了解查询优化器的推理模型限制的最佳实践也大多适用于 Azure SQL 数据库。 如果优化 Azure SQL 数据库中的查询，则可能会获得另一个降低总资源需求的好处。 与未经优化的同等应用程序相比，应用程序可能能够以更低的成本运行，因为它可用更低的性能级别运行。

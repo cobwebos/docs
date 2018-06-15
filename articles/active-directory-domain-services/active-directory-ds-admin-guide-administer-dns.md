@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory 域服务：管理托管域上的 DNS | Microsoft Docs"
-description: "管理 Azure Active Directory 域服务托管域上的 DNS"
+title: Azure Active Directory 域服务：管理托管域上的 DNS | Microsoft Docs
+description: 管理 Azure Active Directory 域服务托管域上的 DNS
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 55b6368d55b5d0ad50d066a4963e74d8c44a2049
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b2cb351e18cfa8a0d0552c9a2a36e5bb11b2d3f7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587494"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD 域服务托管域上的 DNS
 Azure Active Directory 域服务包括一个 DNS（域名解析）服务器，用于为托管域提供 DNS 解析。 用户偶尔需在托管域上配置 DNS。 用户可能需要为未加入域的计算机创建 DNS 记录、为负载均衡器配置虚拟 IP 地址，或者设置外部 DNS 转发器。 因此，需向属于“AAD DC 管理员”组的用户授予对托管域的“DNS 管理”权限。
@@ -100,5 +102,5 @@ Azure AD 目录中的管理员无权通过远程桌面连接到托管域上的�
 ## <a name="related-content"></a>相关内容
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [将 Windows Server 虚拟机加入 Azure AD 域服务托管域](active-directory-ds-admin-guide-join-windows-vm.md)
-* [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
+* [管理 Azure AD 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)
 * [DNS administration tools](https://technet.microsoft.com/library/cc753579.aspx)（DNS 管理工具）

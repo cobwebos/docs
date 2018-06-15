@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b54138c5197d1c5870eed6fd4782e47c6a8b0300
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 27d74ce2cf8fdc4434c48c36dd0c0751dbbab232
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622306"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -102,8 +103,8 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 | 复制方案 | 服务决定的默认 DMU 数目 |
 |:--- |:--- |
-| 在基于文件的存储之间复制数据 | 2 到 16 个，具体取决于文件的数量和大小。 |
-| 所有其他复制方案 | 2 |
+| 在基于文件的存储之间复制数据 | 4 到 16 个，具体取决于文件的数量和大小。 |
+| 所有其他复制方案 | 4 |
 
 若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 **cloudDataMovementUnits** 属性的**允许值**为 2、4、8、16 和 32。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
 
@@ -396,7 +397,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 在这种情况下，bzip2 数据压缩可能会拖慢整个管道的速度。 切换到 gzip 压缩编解码器可能会缓解此瓶颈。
 
 ## <a name="sample-scenarios-use-parallel-copy"></a>示例方案：使用并行复制
-**方案 I：**将 1,000 个 1 MB 的文件从本地文件系统复制到 Blob 存储。
+**方案 I：** 将 1,000 个 1 MB 的文件从本地文件系统复制到 Blob 存储。
 
 **分析和性能优化**：例如，如果已在四核计算机上安装了网关，数据工厂将使用 16 个并行复制将文件从文件系统并发移动到 Blob 存储。 此并行执行应会导致高吞吐量。 还可显式指定并行复制数。 复制许多小文件时，并行复制通过更有效地使用资源显著帮助提高吞吐量。
 

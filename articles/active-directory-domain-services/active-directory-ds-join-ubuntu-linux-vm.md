@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: maheshu
-ms.openlocfilehash: d968548f9ac369f02f10a10d8f1ecc99c48bca60
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 51d32a1009e5fe2625bda80e4ab5ee7f5bf2a38d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587651"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>将 Azure 中的 Ubuntu 虚拟机加入托管域
 本文介绍如何将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -121,7 +123,7 @@ sudo systemctl start ntp
     ```
 
    > [!NOTE] 
-   > **故障排除：**如果“领域发现”找不到托管域：
+   > **故障排除：** 如果“领域发现”找不到托管域：
      * 确保域可从虚拟机（请尝试 ping）进行访问。
      * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
      * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。

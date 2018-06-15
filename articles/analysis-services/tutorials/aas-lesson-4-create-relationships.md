@@ -3,16 +3,17 @@ title: Azure Analysis Services 教程第 4 课：创建关系 | Microsoft Docs
 description: 介绍如何在 Azure Analysis Services 教程项目中创建关系。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 694043454ba2564900416135e1f143bdeb63c202
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d8ee78ecb253e0b29fd0c2fee2388195c8aa6918
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596832"
 ---
 # <a name="create-relationships"></a>创建关系
 
