@@ -1,11 +1,11 @@
 ---
-title: "使用 HTTP + Swagger 连接器为 Azure 逻辑应用调用 REST 终结点 | Microsoft Docs"
-description: "使用 HTTP + Swagger 连接器通过 Swagger 从逻辑应用连接到 REST 终结点"
+title: 使用 HTTP + Swagger 连接器为 Azure 逻辑应用调用 REST 终结点 | Microsoft Docs
+description: 使用 HTTP + Swagger 连接器通过 Swagger 从逻辑应用连接到 REST 终结点
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 0487dbedddee684c75420bd66effe2c963a18624
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4e4421b0dfe0f29c3d50764b9ca04471c73a1450
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296513"
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger 操作入门
 

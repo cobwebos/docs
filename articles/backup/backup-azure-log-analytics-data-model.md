@@ -2,24 +2,19 @@
 title: Azure 备份的 Log Analytics 数据模型
 description: 本文介绍 Azure 备份数据的 Log Analytics 数据模型详细信息。
 services: backup
-documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: ''
-ms.assetid: dfd5c73d-0d34-4d48-959e-1936986f9fc0
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55ec8ac4416fe0a082812584552462292b6dbb7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5a2ba1d523e7a6364420302eee095f24fd08eadb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605767"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 本文介绍用于将报告数据推送到 Log Analytics 的数据模型。 使用此数据模型可以创建自定义查询和仪表板，并在 Log Analytics 中利用这些对象。 

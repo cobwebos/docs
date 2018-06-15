@@ -3,21 +3,22 @@ title: 配置 Azure AD Privileged Identity Management | Microsoft 文档
 description: 本主题介绍什么是 Azure AD Privileged Identity Management，以及如何使用 PIM 来提升云安全性。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: protection
 ms.topic: article
 ms.date: 03/07/2018
-ms.author: curtand
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4bc41727c30d4dd213baca1d7c56cdfdf741692d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: fc7f7323f0c5c5975b74d3d30194ed0711b12eb4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233870"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 

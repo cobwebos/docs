@@ -7,17 +7,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: bb1843b56f19715b5d1d81fd39e072e437dec663
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 3d4d217fba55b8329937575042f0ac909aad09e9
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838470"
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>用于数据科学团队项目的平台和工具
 
@@ -50,7 +52,7 @@ Microsoft 在 Windows 和 Linux 上提供的数据科学虚拟机包含用于数
 
 DSVM 目前可在 **Windows** 和 **Linux CentOS** 操作系统中使用。 根据计划在其上执行的数据科学项目的需求，选择 DSVM 的大小（CPU 核心数和内存量）。 
 
-有关 Windows 版 DSVM 的详细信息，请参阅 Azure Marketplace 中的 [Microsoft 数据科学虚拟机](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/)。 有关 Linux 版 DSVM，请参阅 [Linux 数据科学虚拟机](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
+有关 Windows 版 DSVM 的详细信息，请参阅 Azure 市场中的 [Microsoft 数据科学虚拟机](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/)。 有关 Linux 版 DSVM，请参阅 [Linux 数据科学虚拟机](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
 
 若要了解如何在 DSVM 上有效执行某些常见的数据科学任务，请参阅[数据科学虚拟机的十大功能](../data-science-virtual-machine/vm-do-ten-things.md)
 
