@@ -1,19 +1,19 @@
 ---
 title: 将图像上传到 Azure IoT Central 应用程序 | Microsoft Docs
 description: 了解如何以开发者的身份准备图像并将其上传到 Azure IoT Central 应用程序。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: a43f2dd780604235ada1d8e3ae8a20563042fbaa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 7fd9c8ed5559b00bc755e3f04c768dceeb487562
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200225"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628015"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>准备图像并将其上传到 Azure IoT Central 应用程序
 
@@ -56,7 +56,7 @@ ms.locfileid: "34200225"
 
 下表汇总了可以使用的图像大小：
 
-| Location | 大小 |
+| 位置 | 大小 |
 | -------- | ------ |
 | **应用程序管理器** | 268x160 像素 |
 | 设备模板 | 64x64 像素 |

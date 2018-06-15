@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: jingwang
-ms.openlocfilehash: 629c1e071f475ab1d3ae3bf25839d6832b416264
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3d4c36578402d5a31464bc8a1c77f60cba9104c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206263"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617396"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Oracle Responsys 复制数据
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle Responsys 复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle Responsys 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
 > 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。

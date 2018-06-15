@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ed1179663823bc5a16f3ef348a649731814cdd5a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293086"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
@@ -32,7 +33,7 @@ ms.lasthandoff: 05/20/2018
 |:---:| --- |
 | 介绍 Azure AD 解决的应用程序管理问题	 |[使用 Azure Active Directory (AD) 管理应用程序](manage-apps/what-is-application-management.md) |
 | Azure AD 中与启用单一登录、定义有权访问应用程序的人员，以及用户如何启动应用程序相关的各种功能概述 |[Azure Active Directory 中的应用程序访问和单一登录](manage-apps/what-is-single-sign-on.md) |
-| 探讨将应用程序集成到 Azure AD 时所涉及的不同步骤 |[将 Azure Active Directory 与应用程序集成](manage-apps/plan-an-application-integration.md)<br /><br />[启用对 SaaS 应用的单一登录](active-directory-enterprise-apps-manage-sso.md)<br /><br />[管理对应用的访问](active-directory-managing-access-to-apps.md) |
+| 探讨将应用程序集成到 Azure AD 时所涉及的不同步骤 |[将 Azure Active Directory 与应用程序集成](manage-apps/plan-an-application-integration.md)<br /><br />[启用对 SaaS 应用的单一登录](manage-apps/configure-single-sign-on-portal.md)<br /><br />[管理对应用的访问](manage-apps/what-is-access-management.md) |
 | 如何在 Azure AD 中表示应用程序的技术说明 |[如何以及为何将应用程序添加到 Azure AD](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>疑难解答文章
@@ -42,7 +43,7 @@ ms.lasthandoff: 05/20/2018
 |:---:| --- |
 | 联合单一登录 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
 | 基于密码的单一登录 |[Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md) |
-| 应用程序代理 |[应用代理故障排除指南](active-directory-application-proxy-troubleshoot.md) |
+| 应用程序代理 |[应用代理故障排除指南](manage-apps/application-proxy-troubleshoot.md) |
 | 本地 AD 与 Azure AD 之间的单一登录 |[排查密码哈希同步问题](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[排查密码写回问题](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | 动态组成员身份 |[动态组成员身份疑难解答](active-directory-accessmanagement-troubleshooting.md) |
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 05/20/2018
 | 超过 150 个应用教程，讲解如何为 [Salesforce](active-directory-saas-salesforce-tutorial.md)、[ServiceNow](active-directory-saas-servicenow-tutorial.md)、[Google Apps](active-directory-saas-google-apps-tutorial.md)、[Workday](active-directory-saas-workday-tutorial.md) 等应用配置单一登录 |[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md) |
 | 如何手动设置和自定义单一登录配置 |[如何为不在 Azure Active Directory 应用程序库中的应用配置联合单一登录](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md) |
 | 使用 SAML 协议的联合应用的故障排除指南 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
-| 如何设置应用的证书过期日期，以及如何续订证书 |[在 Azure Active Directory 中管理用于联合单一登录的证书](active-directory-sso-certs.md) |
+| 如何设置应用的证书过期日期，以及如何续订证书 |[在 Azure Active Directory 中管理用于联合单一登录的证书](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 联合单一登录适用于所有版本的 Azure AD，每个用户最多十个应用。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来分配对联合应用程序的访问权限](#managing-access-to-applications)。
 
@@ -82,7 +83,7 @@ ms.lasthandoff: 05/20/2018
 | 有关如何配置应用程序代理以及如何发布第一个应用的教程 |[如何设置 Azure AD 应用代理](manage-apps/application-proxy-enable.md)<br /><br />[如何以无提示方式安装应用代理连接器](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[如何使用应用代理发布应用程序](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[如何使用自己的域名](manage-apps/application-proxy-configure-custom-domain.md) |
 | 如何对使用应用代理发布的应用程序启用单一登录和条件性访问 |[使用应用程序代理的单一登录](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[条件性访问和应用程序代理](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | 有关如何对以下方案使用应用程序代理的指导 |[如何支持本机客户端应用程序](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[如何支持声明感知应用程序](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[如何支持在单独网络和位置上发布的应用程序](manage-apps/application-proxy-connector-groups.md) |
-| 应用程序代理故障排除指南 |[应用代理故障排除指南](active-directory-application-proxy-troubleshoot.md) |
+| 应用程序代理故障排除指南 |[应用代理故障排除指南](manage-apps/application-proxy-troubleshoot.md) |
 
 应用程序代理适用于所有版本的 Azure AD，每个用户最多十个应用。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来分配对应用程序的访问权限](#managing-access-to-applications)。
 
@@ -136,7 +137,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 |:---:| --- |
 | 了解其工作原理，并查找常见问题的解答 |[在 SaaS 应用中自动预配和取消预配用户](active-directory-saas-app-provisioning.md) |
 | 配置如何在 Azure AD 与 SaaS 应用程序之间映射信息 |[自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)<br><br>[为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
-| 如何对支持 SCIM 协议的任何应用启用自动化预配 |[对启用 SCIM 的任何应用设置自动化用户预配](active-directory-scim-provisioning.md) |
+| 如何对支持 SCIM 协议的任何应用启用自动化预配 |[对启用 SCIM 的任何应用设置自动化用户预配](manage-apps/use-scim-to-provision-users-and-groups.md) |
 | 如何针对用户预配进行报告和故障排除 |[针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md)<br><br>[对用户预配进行故障排除](active-directory-application-provisioning-content-map.md) |
 | 根据应用程序的属性值限制可以预配应用程序的人员 |[范围筛选器](active-directory-saas-scoping-filters.md) |
 
@@ -159,7 +160,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 
 | 文章指南 |  |
 |:---:| --- |
-| Azure AD 访问管理功能的概述 |[管理对应用的访问简介](active-directory-managing-access-to-apps.md)<br /><br />[Azure AD 中的访问管理工作原理](active-directory-manage-groups.md)<br /><br />[如何使用组管理对 SaaS 应用程序的访问权限](active-directory-accessmanagement-group-saasapps.md) |
+| Azure AD 访问管理功能的概述 |[管理对应用的访问简介](manage-apps/what-is-access-management.md)<br /><br />[Azure AD 中的访问管理工作原理](active-directory-manage-groups.md)<br /><br />[如何使用组管理对 SaaS 应用程序的访问权限](active-directory-accessmanagement-group-saasapps.md) |
 | 启用应用程序和组的自助管理 |[自助应用程序管理](active-directory-self-service-application-access.md)<br /><br />[自助组管理](active-directory-accessmanagement-self-service-group-management.md) |
 | 有关在 Azure AD 中设置组的说明 |[如何创建安全组](active-directory-groups-create-azure-portal.md)<br /><br />[如何指定组所有者](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[如何使用“所有用户”组](active-directory-accessmanagement-dedicated-groups.md) |
 | 使用动态组通过基于属性的成员资格规则自动填充组成员资格 |[动态组成员身份：高级规则 ](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[动态组成员身份疑难解答](active-directory-accessmanagement-troubleshooting.md) |

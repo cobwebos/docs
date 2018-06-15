@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d1de8baf725233bee30a14eca770e4f04e7a70b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f648bec7530260a6445f74b6d141140f728674ee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617155"
 ---
 # <a name="copy-data-from-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/23/2018
 本文概述了如何使用 Azure 数据工厂中的复制活动从 OData 源复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 OData 连接器](v1/data-factory-odata-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 OData 连接器](v1/data-factory-odata-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -133,7 +134,7 @@ OData 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**ODataResource** | 是 |
-| 路径 | OData 资源的路径。 | 否 |
+| 路径 | OData 资源的路径。 | 是 |
 
 **示例**
 

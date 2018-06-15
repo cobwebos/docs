@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5387f3911c58b115629c461420737230fce6b85a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 2e0b448b5ab48e7be3429d3d3b5b898b6bf22115
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261842"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 元素
 一个具有一行可用选项的选择控件。
@@ -31,7 +32,7 @@ ms.lasthandoff: 05/17/2018
   "name": "element1",
   "type": "Microsoft.Common.OptionsGroup",
   "label": "Some options group",
-  "defaultValue": "my value",
+  "defaultValue": "Value two",
   "toolTip": "",
   "constraints": {
     "allowedValues": [
@@ -57,7 +58,7 @@ ms.lasthandoff: 05/17/2018
 
 ## <a name="sample-output"></a>示例输出
 ```json
-"Bar"
+"two"
 ```
 
 ## <a name="next-steps"></a>后续步骤

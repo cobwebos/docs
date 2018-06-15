@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2018
+ms.date: 05/29/2018
 ms.author: shlo
-ms.openlocfilehash: 08fcc2eec1914d9f7535ea66d33045240452e2a6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e9fb1088110212a0971ea1af7bbfbecb7d150e21
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715031"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -138,6 +139,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 触发器是可以执行管道运行的另一种方法。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持两种类型的触发器：
 
 - 计划触发器：按时钟计划调用管道的触发器。
+
 - 翻转窗口触发器：一种触发器，可以定期运行，同时还能保留状态。 Azure 数据工厂目前不支持基于事件的触发器。 例如，对文件到达事件进行响应的管道运行的触发器不受支持。
 
 管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道，单个触发器也可以启动多个管道。 在以下触发器定义中，pipelines 属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
@@ -175,7 +177,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 如需计划触发器的详细信息和示例，请参阅[创建计划触发器](how-to-create-schedule-trigger.md)。
 
 ## <a name="tumbling-window-trigger"></a>翻转窗口触发器
-翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 如需翻转窗口触发器的详细信息和示例，请参阅[创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
+翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。
+
+如需翻转窗口触发器的详细信息和示例，请参阅[创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
 
 ## <a name="schedule-trigger-definition"></a>计划触发器定义
 创建计划触发器时，请使用 JSON 定义指定计划和定期触发。 

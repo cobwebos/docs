@@ -4,20 +4,17 @@ description: 了解 Azure Cosmos DB 和 Azure Functions 如何一起使用，以
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 9b1ffe7e63157f86a1cfe643e297c0cb3eb5c235
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 26d5fe3cf96f7a63b725f1b46d85e453a8aa6ada
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34613959"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算
 
@@ -53,7 +50,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 在 IoT 实现中，当引擎检查灯显示在连接的汽车中时，可以调用一个函数。
 
-**实现：**使用 Azure Cosmos DB 触发器和输出绑定
+**实现：** 使用 Azure Cosmos DB 触发器和输出绑定
 
 1. **Azure Cosmos DB 触发器**用于触发与汽车警报相关的事件，例如引擎检查灯在连接的汽车上发光。
 2. 当引擎检查灯发光时，传感器数据将发送到 Azure Cosmos DB。
@@ -71,7 +68,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 在财务实现中，当银行帐户余额低于特定金额时，可以调用一个函数。
 
-**实现：**使用 Azure Cosmos DB 输入绑定的计时器触发器
+**实现：** 使用 Azure Cosmos DB 输入绑定的计时器触发器
 
 1. 通过使用 [计时器触发器](../azure-functions/functions-bindings-timer.md)，可以使用“输入绑定”每隔一定时间检索存储在 Azure Cosmos DB 容器中的银行帐户余额信息。
 2. 如果余额低于用户设置的低余额阈值，则采取 Azure Function 中的某个措施。
@@ -87,7 +84,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 在游戏中，当新用户创建时，可以使用 [Azure Cosmos DB 图形 API](graph-introduction.md) 搜索可能知道新用户的其他用户。 然后，将结果写入 [Azure Cosmos DB SQL 数据库]以便于检索。
 
-**实现：**使用 Azure Cosmos DB 触发器和输出绑定
+**实现：** 使用 Azure Cosmos DB 触发器和输出绑定
 
 1. 通过使用 Azure Cosmos DB [图形数据库](graph-introduction.md)存储所有用户，可以使用 Azure Cosmos DB 触发器创建新函数。 
 2. 每当插入新用户时，都将调用该函数，然后使用“输出绑定”存储结果。
@@ -98,7 +95,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 在零售实现中，当用户向购物篮添加商品时，可以为可选业务管道组件灵活创建和调用函数。
 
-**实现：**侦听一个集合的多个 Azure Cosmos DB 触发器
+**实现：** 侦听一个集合的多个 Azure Cosmos DB 触发器
 
 1. 通过将 Azure Cosmos DB 触发器添加到每个 Azure Functions 可以创建多个 Azure Functions，它们全部都侦听购物车数据的同一更改源。 请注意，当多个函数侦听同一更改源时，需要为每个函数提供新的租用集合。 有关租约集合的详细信息，请参阅[了解更改源处理器库](change-feed.md#understand-cf)。
 2. 每当新商品添加到用户的购物车时，更改源都将从购物车容器中独立调用每个函数。

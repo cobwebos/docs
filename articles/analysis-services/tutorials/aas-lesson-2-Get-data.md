@@ -3,16 +3,17 @@ title: Azure Analysis Services 教程第 2 课：获取数据 | Microsoft Docs
 description: 介绍了在 Azure Analysis Services 教程项目中如何获取和导入数据。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: be3368b5207669d7cc5b03e7eeb6953b757c786d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d66b3f303ab4e19ee645be8768512a451454769b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596968"
 ---
 # <a name="get-data"></a>获取数据
 

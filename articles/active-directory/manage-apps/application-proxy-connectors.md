@@ -15,11 +15,12 @@ ms.date: 10/12/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 16f008c6a6f97a791122a3b441c4c09eaf7eadde
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: dfbabb3bc2702e7c6ab5d0ba5c809a1bd04d0bbc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293001"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -164,6 +165,6 @@ Register-AppProxyConnector
 
 * [使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)
 * [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)
-* [对应用程序代理和连接器错误进行故障排除](../active-directory-application-proxy-troubleshoot.md)
+* [对应用程序代理和连接器错误进行故障排除](application-proxy-troubleshoot.md)
 * [如何以无提示方式安装 Azure AD 应用程序代理连接器](application-proxy-register-connector-powershell.md)
 

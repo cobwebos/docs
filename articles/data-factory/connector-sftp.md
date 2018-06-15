@@ -10,22 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d6e66104e602d7e5cbfadab004a4f9547c9b6c7
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 0cabb2f5618ef5179e2a25278fa2460556036d77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010942"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618406"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - 正式版](v1/data-factory-sftp-connector.md)
 > * [版本 2 - 预览版](connector-sftp.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 SFTP 服务器复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 SFTP 服务器复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
 > 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 SFTP 连接器](v1/data-factory-sftp-connector.md)。
