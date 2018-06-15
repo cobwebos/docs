@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8f0cd8aad2d5c5142fc66c78393b57ff210a7b83
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ad883248097fd84e2fa064515b6c7a5232aaa3d3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621932"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -78,12 +79,12 @@ ms.lasthandoff: 04/20/2018
 
 * **数据工厂使用 Batch 分配的池运行自定义活动。** 数据工厂可同时运行多个活动。 每个活动处理一个数据切片。 结果存储在存储中。
 
-* **数据工厂将最终结果移动至第三个位置，**通过应用将其分发或使用其他工具进行进一步处理。
+* **数据工厂将最终结果移动至第三个位置，** 通过应用将其分发或使用其他工具进行进一步处理。
 
 ## <a name="implementation-of-the-sample-solution"></a>示例解决方案的实现
 示例解决方案特意是简单的解决方案。 它旨在演示如何结合使用数据工厂和 Batch 来处理数据集。 该解决方案对搜索词“Microsoft”在按时序排列的输入文件中出现的次数计数。 它随后将计数输出到输出文件。
 
-**时间：**如果熟悉 Azure、数据工厂和 Batch 的基础知识，且已完成以下先决条件，则完成此解决方案需要一到两小时。
+**时间：** 如果熟悉 Azure、数据工厂和 Batch 的基础知识，且已完成以下先决条件，则完成此解决方案需要一到两小时。
 
 ### <a name="prerequisites"></a>先决条件
 #### <a name="azure-subscription"></a>Azure 订阅
@@ -577,7 +578,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. 对于 **batchUri** JSON 属性，输入 batch URI。
 
       > [!IMPORTANT]
-      > “Batch 帐户”边栏选项卡中的 URL 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
+      > “Batch 帐户”边栏选项卡中的 URL 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 
