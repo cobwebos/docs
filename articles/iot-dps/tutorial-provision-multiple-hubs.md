@@ -1,22 +1,20 @@
 ---
-title: "使用 Azure IoT 中心设备预配服务跨负载均衡的 IoT 中心预配设备 | Microsoft Docs"
-description: "在 Azure 门户中跨负载均衡的 IoT 中心执行 DPS 自动设备预配"
-services: iot-dps
-keywords: 
+title: 使用 Azure IoT 中心设备预配服务跨负载均衡的 IoT 中心预配设备 | Microsoft Docs
+description: 在 Azure 门户中跨负载均衡的 IoT 中心执行 DPS 自动设备预配
 author: sethmanheim
 ms.author: sethm
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4842944cd0d980fb7e817165da23b9c3c4037e94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d0a3720fe729d5e260bbe5b0902460c8c7cfc7cb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629620"
 ---
 # <a name="provision-devices-across-load-balanced-iot-hubs"></a>跨负载均衡的 IoT 中心预配设备
 
@@ -28,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 > * 将 DPS 分配策略设置为“均匀分发”
 > * 将新 IoT 中心链接到 DPS
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 若要设置分配策略，请在 DPS 页中单击“管理分配策略”。
 2. 将分配策略设置为“均匀加权分发”。
-3. 单击“保存” 。
+3. 单击“ **保存**”。
 
 ## <a name="link-the-new-iot-hub-to-dps"></a>将新 IoT 中心链接到 DPS
 
@@ -66,9 +64,9 @@ ms.lasthandoff: 10/11/2017
 
 1. 在“所有资源”页上，单击之前创建的 DPS。
 2. 在 DPS 页中，单击“链接 IoT 中心”。
-3. 单击“添加”。
+3. 单击 **“添加”**。
 4. 在“将链接添加到 IoT 中心”页上，使用单选按钮指定链接的 IoT 中心位于当前订阅中还是其他订阅中。 然后，从“IoT 中心”框中选择该 IoT 中心的名称。
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 
 ## <a name="next-steps"></a>后续步骤
 

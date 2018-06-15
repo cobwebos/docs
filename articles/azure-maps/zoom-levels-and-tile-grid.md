@@ -1,22 +1,19 @@
 ---
 title: Azure Maps 中的缩放级别和磁贴网格 | Microsoft Docs
 description: 了解 Azure Maps 中的缩放级别和磁贴网格
-services: azure-maps
-keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: 330333569f094fe3cec7f73ee3b20107ec70f5b5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: ''
+ms.openlocfilehash: 55441cda7a6fc65ac8103d19510823a7c84a9cbf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599919"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
 Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。

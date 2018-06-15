@@ -10,21 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3ef9150cad62e9f9fc43f7afcbbbc01d89884a12
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c479298187cfc4af6d9b33d9bd3839e8fa579566
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294153"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>排查 Application Insights 中的分析问题
 [Application Insights Analytics](app-insights-analytics.md) 出现了问题？ 从此处开始。 Analytics 是 Azure Application Insights 的强大搜索工具。
 
 ## <a name="limits"></a>限制
 * 目前，查询结果限制为过去一周的数据。
-* 我们已测试过的浏览器：最新版本的 Chrome、Microsoft Edge 和 Internet Explorer。
+* 我们已测试过的浏览器：最新版本的 Chrome、Edge 和 Internet Explorer。
 
 ## <a name="known-incompatible-browser-extensions"></a>已知不兼容的浏览器扩展
 * Ghostery
@@ -54,7 +55,7 @@ ms.lasthandoff: 11/01/2017
 2. 是否使用了收藏夹、书签或保存的链接来打开 Analytics 门户？ 登录时使用的凭据与保存链接时使用的凭据是否不同？
 3. 尝试使用 InPrivate/incognito 浏览器窗口（在关闭所有此类窗口之后）。 需要提供凭据。 
 4. 打开另一个（普通）浏览器窗口并转到 [Azure](https://portal.azure.com)。 注销。然后打开链接并使用正确的凭据登录。
-5. 如果受信任区域设置不受支持，Microsoft Edge 和 Internet Explorer 的用户也会收到此错误。
+5. 如果受信任区域设置不受支持，Edge 和 Internet Explorer 的用户也会收到此错误。
    
     检查 [Analytics 门户](https://analytics.applicationinsights.io)和 [Azure Active Directory 门户](https://portal.azure.com)是否位于相同的安全区域：
    

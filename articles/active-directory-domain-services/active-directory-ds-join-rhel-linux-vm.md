@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: d76ae997-2279-46dd-bfc5-c0ee29718096
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: b278f5c4c8c87590205aca13a50a82fe8712d909
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b91ffb0965516a8e3f6678a6607ab0b26a0c2a67
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34586842"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。
@@ -83,7 +85,7 @@ sudo vi /etc/hosts
     ```
 
      > [!NOTE] 
-     > **故障排除：**如果“领域发现”找不到托管域：
+     > **故障排除：** 如果“领域发现”找不到托管域：
      * 确保域可从虚拟机（请尝试 ping）进行访问。
      * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
      * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。

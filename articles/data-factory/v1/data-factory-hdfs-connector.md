@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 62a1052c0b2674e3292d5f89c0b8863439dd3928
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b8a35e19628ebbe75d3f1890a6d64ab777519698
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621541"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 HDFS 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -189,7 +190,7 @@ ms.lasthandoff: 03/23/2018
 
 第一步，设置数据管理网关。 [在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的说明。
 
-**HDFS 链接服务：**此示例使用 Windows 身份验证。 请参阅 [HDFS 链接服务](#linked-service-properties)部分，了解各种可用的身份验证。
+**HDFS 链接服务：** 此示例使用 Windows 身份验证。 请参阅 [HDFS 链接服务](#linked-service-properties)部分，了解各种可用的身份验证。
 
 ```JSON
 {
@@ -223,7 +224,7 @@ ms.lasthandoff: 03/23/2018
 }
 ```
 
-**HDFS 输入数据集：**此数据集是指 HDFS 文件夹 DataTransfer/UnitTest/。 管道将此文件夹中的所有文件复制到目标。
+**HDFS 输入数据集：** 此数据集是指 HDFS 文件夹 DataTransfer/UnitTest/。 管道将此文件夹中的所有文件复制到目标。
 
 设置“external”: ”true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 

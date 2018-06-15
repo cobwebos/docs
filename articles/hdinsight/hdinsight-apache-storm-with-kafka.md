@@ -12,13 +12,14 @@ ms.devlang: java
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/06/2018
+ms.date: 05/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 8baafd69e45210b74db8b0bf41b765067b1251a8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b973890caddf598d5ba4e96a04a18df46cdb5cf8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626284"
 ---
 # <a name="tutorial-use-apache-storm-with-kafka-on-hdinsight"></a>教程：将 Apache Storm 与 Kafka on HDInsight 结合使用
 
@@ -59,7 +60,7 @@ ms.lasthandoff: 05/07/2018
     * Maven 的安装目录。
 
 > [!IMPORTANT]
-> 本文档中的步骤需要一个 Azure 资源组并且该资源组同时包含 Storm on HDInsight 群集和 Kafka on HDInsight 群集。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。
+> 本文档中的步骤需要一个 Azure 资源组并且该资源组同时包含 Storm on HDInsight 群集和 Kafka on HDInsight 群集。 这些群集都位于 Azure 虚拟网络中，允许 Storm 群集直接与 Kafka 群集进行通信。
 > 
 > 为方便起见，本文档链接到了一个模板，该模板可创建所有所需 Azure 资源。 
 >
@@ -415,7 +416,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     | --- | --- |
     | 订阅 | Azure 订阅 |
     | 资源组 | 包含资源的资源组。 |
-    | Location | 创建资源时所在的 Azure 区域。 |
+    | 位置 | 创建资源时所在的 Azure 区域。 |
     | Kafka 群集名称 | Kafka 群集的名称。 |
     | Storm 群集名称 | Storm 群集的名称。 |
     | 群集登录用户名 | 群集的管理员用户名。 |

@@ -1,21 +1,20 @@
 ---
 title: Azure IoT Edge SQL 模块 | Microsoft Docs
 description: 使用 Microsoft SQL 模块存储边缘中的数据，并使用 Azure Functions 设置数据的格式。
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: ebertrams
 ms.date: 02/21/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: de75a7ab907655d84873949460692a921c8d3186
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: 9c90cc28956e4dd7730cc7ba09a173f505f056fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166091"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632394"
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>使用 SQL Server 数据库存储边缘中的数据
 

@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 66102836b954bf4fafc4379cf573658d89e0d409
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 10517f5684774c47ccc96c773287476c2614613f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292501"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南提供开发用于 Azure Active Directory (AD) 的业务线 (LoB) 应用程序的概述，目标受众为 Active Directory/Office 365 全局管理员。
@@ -79,5 +80,5 @@ ms.lasthandoff: 05/11/2018
 ## <a name="related-articles"></a>相关文章
 * [使用 Azure AD 应用程序代理启用对本地应用程序的安全远程访问](manage-apps/application-proxy.md)
 * [适用于 SaaS 应用的 Azure 条件性访问预览版](active-directory-conditional-access-azure-portal-get-started.md)
-* [使用 Azure AD 管理对应用的访问](active-directory-managing-access-to-apps.md)
+* [使用 Azure AD 管理对应用的访问](manage-apps/what-is-access-management.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)

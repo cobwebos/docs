@@ -1,23 +1,20 @@
 ---
 title: Azure Maps 概述 | Microsoft Docs
 description: Azure Maps 简介
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: overview
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4882eadb8db5137d6fcf75c6d80c34ae050d3a6d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9eb6039a10cbdac004ab25f8295f5659c246a743
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193945"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600055"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Azure Maps 简介
 Azure Maps 是一项地理空间服务组合，包括适用于地图、搜索、路线、交通和时区的服务 API。 可以借助这组服务使用熟悉的工具快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了为 Web 和移动应用程序提供地理环境时所需的全新地图数据。 Azure Maps 是一组 REST API，随基于 Web 的 JavaScript 控件一起提供，使得开发简单、灵活且可跨多个媒体移植。 
@@ -91,7 +88,7 @@ Microsoft 的目标是为开发人员社区在定位服务产品方面提供选�
 | 开发阶段  | Azure Maps 的优化是针对早期测试和概念证明开发的 | 对于生产环境来说，企业级 SLA 是所必需 |
 | 定价选项 | 初步开发人员定价选项已足够 | 自定义企业级定价是必需的 |
 | 用例环境 | 车辆中使用是必需的 | 车辆中使用不是必需的 |
-| 地理覆盖范围 | 印度、中国、日本和韩国不是必需的 | 印度、中国、日本和韩国地图覆盖是必需的 |
+| 地理覆盖范围 | 印度、中国、日本和韩国不是必需的 | 印度、中国、日本和韩国地图范围是必需的 |
 | 地图内容 | 标准的地面图已足够 | 卫星图、空中图和街道图是必需的 |
 | 基础性的地图来源 | TomTom 地图数据为首选 | HERE 地图数据为首选 |
 
