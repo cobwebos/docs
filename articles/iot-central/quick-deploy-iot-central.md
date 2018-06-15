@@ -1,20 +1,20 @@
 ---
 title: 部署 Azure IoT Central 应用程序 | Microsoft Docs
 description: 创建一个新的 Azure IoT Central 应用程序用于管理冷藏食品贩卖设备。 查看模拟设备生成的遥测数据。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/15/2018
-ms.topic: hero-article
-ms.prod: microsoft-iot-central
+ms.topic: quickstart
+ms.service: iot-central
+services: iot-central
 ms.custom: mvc
-manager: timlt
-ms.openlocfilehash: 54219246f073f48c2a7e1b04dce7653bd2da0b40
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+manager: peterpr
+ms.openlocfilehash: 9a9b9e66995a2945ef95056f2fcbcd59814d08ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202367"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630487"
 ---
 # <a name="create-an-azure-iot-central-application"></a>创建 Azure IoT Central 应用程序
 
@@ -36,7 +36,7 @@ ms.locfileid: "34202367"
 
 若要完成本快速入门，需要基于“Contoso 示例”应用程序模板创建一个 Azure IoT Central 应用程序。
 
-导航到 Azure IoT Central 的“应用程序管理器”页。[](https://aka.ms/iotcentral) 输入用于访问 Azure 订阅的电子邮件地址和密码：
+导航到 Azure IoT Central 的[应用程序管理器](https://aka.ms/iotcentral)页。 输入用于访问 Azure 订阅的电子邮件地址和密码：
 
 ![输入组织帐户](media/quick-deploy-iot-central/sign-in.png)
 

@@ -10,15 +10,16 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 996fdd9934d79f1640e58c7853564ac05ebb90bb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d0897f73ed1a321c8287729eaba775a625f51e4d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620980"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Cosmos DB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -482,18 +483,18 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 Azure 数据工厂允许用户通过 **nestingSeparator** 来表示层次结构，即“.” 来实现。 通过该分隔符，复制活动会根据表定义中的“Name.First”、“Name.Middle”和“Name.Last”生成包含三个子元素（First、Middle 和 Last）的“Name”对象。
 
 ## <a name="appendix"></a>附录
-1. **问题：**复制活动是否支持现有记录的更新？
+1. **问题：** 复制活动是否支持现有记录的更新？
 
-    **答案：**否。
-2. **问题：**复制到 Azure Cosmos DB 的重试操作如何处理已复制的记录？
+    **答案：** 否。
+2. **问题：** 复制到 Azure Cosmos DB 的重试操作如何处理已复制的记录？
 
-    **答案：**如果记录具有一个“ID”字段，并且复制操作尝试插入具有相同 ID 的记录，则复制操作将引发错误。  
-3. **问题：**数据工厂是否支持[按范围分区或按基于哈希的数据分区](../../cosmos-db/sql-api-partition-data.md)？
+    **答案：** 如果记录具有一个“ID”字段，并且复制操作尝试插入具有相同 ID 的记录，则复制操作将引发错误。  
+3. **问题：** 数据工厂是否支持[按范围分区或按基于哈希的数据分区](../../cosmos-db/sql-api-partition-data.md)？
 
-    **答案：**否。
-4. **问题：**是否可以为一个表指定多个 Azure Cosmos DB 集合？
+    **答案：** 否。
+4. **问题：** 是否可以为一个表指定多个 Azure Cosmos DB 集合？
 
-    **答案：**否。 目前仅可以指定一个集合。
+    **答案：** 否。 目前仅可以指定一个集合。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法。
