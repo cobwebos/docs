@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7457a820d9179248eab976ceec64f6b7a4a38563
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643332"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用指标管理资源消耗和负载
 指标是服务关切的、由群集中的节点提供的资源。 指标是要进行管理以提升或监视服务性能的任何信息。 例如，可能需要监视内存消耗量以了解服务是否过载。 另一个用途是确定服务是否可以移动到内存较少受限的其他位置，以便获得更佳性能。
@@ -32,11 +33,12 @@ ms.lasthandoff: 05/16/2018
   - ReplicaCount - 节点上的有状态副本总计数
   - Count - 节点上的所有服务对象（无状态和有状态）计数
 
-| 指标 | 无状态实例负载 | 有状态辅助负载 | 有状态主要负载 |
-| --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |
-| ReplicaCount |0 |1 |1 |
-| Count |1 |1 |1 |
+| 指标 | 无状态实例负载 | 有状态辅助负载 | 有状态主要负载 | 重量 |
+| --- | --- | --- | --- | --- |
+| PrimaryCount |0 |0 |1 |0 |
+| ReplicaCount |0 |1 |1 |0 |
+| Count |1 |1 |1 |0 |
+
 
 对于脚本工作负荷，默认指标实现群集中的适当工作分布。 在下面的示例中，让我们看看创建两个服务并依赖默认指标进行平衡时会发生什么情况。 第一个服务是具有 3 个分区的有状态服务，目标副本集大小为 3。 第二个服务是具有 1 个分区的无状态服务，实例数为 3。
 

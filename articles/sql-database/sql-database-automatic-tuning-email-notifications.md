@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: v-daljep
-ms.openlocfilehash: 8891e8b9fbf3ce8422036e8add900504ea7e4162
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 643740ea76769f857e8c99ebaa6d27eceed99067
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644325"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 
@@ -30,7 +31,7 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 要使用 Azure 自动化，第一步是创建自动化帐户并使用 Azure 资源配置该帐户，以用于 PowerShell 脚本的执行。 要了解 Azure 自动化及其功能的详细信息，请参阅 [Azure 自动化入门](https://docs.microsoft.com/azure/automation/automation-offering-get-started)。
 
-请通过从 Marketplace 选择和配置自动化应用的方法，执行以下步骤来创建 Azure 自动化帐户：
+请通过从市场选择和配置自动化应用的方法，执行以下步骤来创建 Azure 自动化帐户：
 
 - 登录到 Azure 门户
 - 单击左上角的“+ 创建资源”

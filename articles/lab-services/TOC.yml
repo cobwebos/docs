@@ -79,6 +79,8 @@
               href: devtest-lab-resize-vm.md
             - name: 重新部署 VM
               href: devtest-lab-redeploy-vm.md
+            - name: 导入 VM
+              href: devtest-lab-import-vm.md
         - name: 在实验室中使用环境
           items:
             - name: 创建环境

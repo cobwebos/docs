@@ -1,24 +1,19 @@
 ---
 title: 使用 Azure 门户创建 IoT 中心 | Microsoft Docs
 description: 如何通过 Azure 门户创建、管理和删除 Azure IoT 中心。 包括有关定价层、缩放、安全性和消息传递配置的信息。
-services: iot-hub
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 6ffde076caff6217bf6255c9294eca63d3e39b85
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ca0eff415c4ba0e887c3999e7a03e3c4fa1cc156
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635927"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
@@ -34,14 +29,14 @@ ms.lasthandoff: 04/03/2018
 可以在门户中的以下位置找到 IoT 中心服务：
 
 * 选择“+ 新建”，然后选择“物联网”。
-* 在 Marketplace 中选择“物联网”。
+* 在市场中选择“物联网”。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 可以使用以下方法创建 IoT 中心：
 
-* “+ 新建”选项可以打开下方屏幕截图中显示的边栏选项卡。 通过此方法和通过应用商店创建 IoT 中心的步骤完全相同。
-* 在 Marketplace 中选择“创建”可打开下方屏幕截图中显示的边栏选项卡。
+* “+ 新建”选项可以打开下方屏幕截图中显示的边栏选项卡。 通过此方法和通过市场创建 IoT 中心的步骤完全相同。
+* 在市场中选择“创建”可打开下方屏幕截图中显示的边栏选项卡。
 
 以下部分将介绍创建 IoT 中心所需的几个步骤：
 

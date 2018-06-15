@@ -59,7 +59,7 @@
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # 相关内容
-## [Azure Active Directory](../active-directory/active-directory-whatis.md)
+## [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
 ## [多重身份验证](../active-directory/authentication/multi-factor-authentication.md)
 

@@ -33,7 +33,6 @@
 ### [使用 Azure PowerShell 管理 VM](manage-psh-classic.md)
 ### [关于 VM 代理和扩展](agents-and-extensions-classic.md)
 ### [管理 VM 扩展](manage-extensions-classic.md)
-### [VM 的自定义脚本扩展](extensions-customscript-classic.md)
 
 ## 管理工作负荷
 ### [高性能计算 (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
@@ -42,7 +41,8 @@
 #### [创建群集](hpcpack-cluster-powershell-script.md)
 #### [设置用于运行 MPI 应用程序的群集](hpcpack-rdma-cluster.md)
 #### [运行 Excel 和 SOA 工作负荷](../../virtual-machines-windows-excel-cluster-hpcpack.md)
-#### [使用 Marketplace 映像创建头节点](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
+#### 
+  [使用市场映像创建头节点](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
 #### [将作业从本地提交到 Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 ### [MySQL](mysql-2008r2.md)
 ### [Tomcat](java-run-tomcat-app-server.md)

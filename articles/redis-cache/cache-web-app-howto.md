@@ -15,27 +15,23 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 7bf08849cd03a77095ffe717c8387d79d1961b06
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: baaa53b04f608e2cb3546fcac6a6eb4eda4d3c4b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640748"
 ---
 # <a name="quickstart-create-a-aspnet-web-app-with-redis-cache"></a>快速入门：使用 Redis 缓存创建 ASP.NET Web 应用
 
-> [!div class="op_single_selector"]
-> * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-> * [ASP.NET](cache-web-app-howto.md)
-> * [Node.js](cache-nodejs-get-started.md)
-> * [Java](cache-java-get-started.md)
-> * [Python](cache-python-get-started.md)
->
 
 ## <a name="introduction"></a>介绍
 
 本快速入门介绍如何使用 Visual Studio 2017 创建 ASP.NET Web 应用程序并将其部署到 Azure 应用服务。 示例应用程序连接到 Azure Redis 缓存，以在缓存中存储并检索数据。 完成本快速入门后，Azure 中会托管一个正常运行的 Web 应用，该应用在 Azure Redis 缓存中读取和写入数据。
 
 ![对完成的 Azure 项目进行简单测试](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,8 +40,6 @@ ms.lasthandoff: 04/28/2018
 * 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
     * ASP.NET 和 Web 开发
     * Azure 开发
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
@@ -322,13 +316,13 @@ using StackExchange.Redis;
 
 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
 
-在“按名称筛选...”文本框中键入资源组的名称。 本主题的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”。
+在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”。
 
 ![删除](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
 
-几分钟后，资源组及其包含的所有资源就会被删除。
+片刻之后，将会删除该资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

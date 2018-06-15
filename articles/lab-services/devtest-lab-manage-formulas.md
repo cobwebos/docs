@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 40c30958c5e0e24f2b35475848c1828df4a40d0c
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "33781916"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 
 [!INCLUDE [devtest-lab-formula-definition](../../includes/devtest-lab-formula-definition.md)]
 
-本文介绍如何从基项（自定义映像、Marketplace 映像或其他公式）或现有 VM 创建公式。 本文还引导完成管理现有公式的操作。
+本文介绍如何从基项（自定义映像、市场映像或其他公式）或现有 VM 创建公式。 本文还引导完成管理现有公式的操作。
 
 ## <a name="create-a-formula"></a>创建公式
 任何拥有开发测试实验室用户权限的用户都可以使用公式作为基础创建 VM。 有两种创建公式的方法： 
@@ -36,7 +36,7 @@ ms.locfileid: "33781916"
 有关添加用户和权限的详细信息，请参阅[在 Azure 开发测试实验室中添加所有者和用户](./devtest-lab-add-devtest-user.md)。
 
 ### <a name="create-a-formula-from-a-base"></a>从基项创建公式
-以下步骤介绍从自定义映像、Marketplace 映像或其他公式创建公式的过程。
+以下步骤介绍从自定义映像、市场映像或其他公式创建公式的过程。
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "33781916"
    
     ![添加公式](./media/devtest-lab-create-formulas/add-formula.png)
 
-6. 在“选择基项”边栏选项卡上，选择要从中创建公式的基项（自定义映像、Marketplace 映像或公式）。
+6. 在“选择基项”边栏选项卡上，选择要从中创建公式的基项（自定义映像、市场映像或公式）。
    
     ![基项列表](./media/devtest-lab-create-formulas/base-list.png)
 

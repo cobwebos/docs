@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d72d0823d78f47aed3d8690cee81f8bb00e7921d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636964"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>将 Azure 活动日志收集到不同订阅中的 Log Analytics
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 03/30/2018
 
 1. 在 Azure 门户中，选择“创建资源” > “物联网” > “事件中心”。
 
-   ![Marketplace - 新建事件中心](media/log-analytics-activity-logs-subscriptions/marketplace-new-event-hub.png)
+   ![市场 - 新建事件中心](media/log-analytics-activity-logs-subscriptions/marketplace-new-event-hub.png)
 
 3. 在“创建命名空间”下，输入新命名空间或选择现有的命名空间。 系统会立即检查该名称是否可用。
 
@@ -113,14 +114,14 @@ ms.lasthandoff: 03/30/2018
 - Log Analytics 工作区 ID
 - Log Analytics 共享密钥
 
-若要获取事件中心名称和连接字符串，请遵循[检查事件中心命名空间权限和查找连接字符串](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs)中的步骤。
+若要获取事件中心名称和连接字符串，请遵循[检查事件中心命名空间权限和查找连接字符串](../connectors/connectors-create-api-azure-event-hubs.md#permissions-connection-string)中的步骤。
 
 
 ### <a name="create-a-new-blank-logic-app"></a>创建新的空白逻辑应用
 
 1. 在 Azure 门户中，选择“创建资源” > “企业集成” > “逻辑应用”。
 
-    ![Marketplace - 新建逻辑应用](media/log-analytics-activity-logs-subscriptions/marketplace-new-logic-app.png)
+    ![市场 - 新建逻辑应用](media/log-analytics-activity-logs-subscriptions/marketplace-new-logic-app.png)
 
 2. 输入下表中所示的设置。
 
@@ -131,7 +132,7 @@ ms.lasthandoff: 03/30/2018
    | 名称           | 逻辑应用的唯一名称。 |
    | 订阅   | 选择将要包含该逻辑应用的 Azure 订阅。 |
    | 资源组 | 为逻辑应用选择现有的 Azure 资源组或创建新的资源组。 |
-   | Location       | 选择用于部署逻辑应用的数据中心区域。 |
+   | 位置       | 选择用于部署逻辑应用的数据中心区域。 |
    | Log Analytics  | 如果想要将逻辑应用的每次运行状态记录到 Log Analytics 中，请选择此项。  |
 
     

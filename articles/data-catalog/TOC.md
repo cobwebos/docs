@@ -37,7 +37,7 @@
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [定价](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
-## [发行说明](data-catalog-whats-new.md)
+## [发行说明](../active-directory/fundamentals/whats-new.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 ## [术语](data-catalog-terminology.md)

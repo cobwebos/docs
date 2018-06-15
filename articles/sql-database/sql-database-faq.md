@@ -6,15 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 5d77c2dc121d7f291fa755f66d7d9a5d7213bf9f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9bb79a2054a0e51ce435f51a52f964062427cea4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195424"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647990"
 ---
 # <a name="sql-database-faq"></a>SQL 数据库常见问题
 
@@ -26,7 +26,7 @@ SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 ## <a name="whatis-the-new-vcore-based-purchasing-model-preview-for-azure-sql-database"></a>Azure SQL 数据库的基于 vCore 的新购买模型（预览版）是什么？
 
-新购买模型是对现有基于 DTU 的模型的补充。 基于 vCore 的购买模型旨在让客户以灵活、可控、透明且直接的方式将本地工作负载要求转换到云。 它还允许客户根据其工作负载需求缩放计算和存储资源。 此外，借助[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，使用 vCore 模型的单一数据库和弹性池选项最大能够实现 30% 的节省。 有关详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。 
+新购买模型是对现有基于 DTU 的模型的补充。 基于 vCore 的购买模型旨在让客户以灵活、可控、透明且直接的方式将本地工作负载要求转换到云。 它还允许客户根据其工作负荷需求缩放计算和存储资源。 此外，借助[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，使用 vCore 模型的单一数据库和弹性池选项最大能够实现 30% 的节省。 有关详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。 
 
 ## <a name="what-is-a-vcore"></a>什么是 vCore？ 
 虚拟核心表示逻辑 CPU，提供不同代的硬件供客户选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器，第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器。
