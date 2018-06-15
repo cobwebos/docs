@@ -1,24 +1,25 @@
 ---
 title: 借助 Azure 的航天工业预见性维护 - Cortana Intelligence 解决方案技术指南 | Microsoft Docs
 description: 在航天工业、实用工具和运输业中用于预见性维护的 Microsoft Cortana Intelligence 解决方案模板的技术指南。
-services: cortana-analytics
+services: machine-learning
 documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2c4d2147-0f05-4705-8748-9527c2c1f033
-ms.service: cortana-analytics
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c3e9b27784a1c0671ca3c87f9a7c55a288362299
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248378"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
@@ -199,7 +200,7 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
      <br/>
    * 要计划数据刷新，请将鼠标悬停在 **PredictiveMaintenanceAerospace** 数据集上，单击![省略号图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png)，然后选择“计划刷新”。
      <br/>
-     **注意：**如果看到警告消息，请单击“编辑凭据”，确保数据库凭据与步骤 1 中所述相同。
+     **注意：** 如果看到警告消息，请单击“编辑凭据”，确保数据库凭据与步骤 1 中所述相同。
      <br/>
      ![计划刷新](./media/cortana-analytics-technical-guide-predictive-maintenance/schedule-refresh.png)
      <br/>

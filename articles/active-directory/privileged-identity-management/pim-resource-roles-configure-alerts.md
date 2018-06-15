@@ -3,22 +3,23 @@ title: 使用 Privileged Identity Management 管理 Azure 资源的安全警报 
 description: 介绍了 PIM 安全警报。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: c6c057541b3e3067de6331bab6ca9cccfa092710
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5d65201c8940e63e3ba514ae0a2dc8a247d7b859
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149179"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233506"
 ---
 # <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>使用 Privileged Identity Management 管理 Azure 资源的安全警报
 如果环境中有可疑活动或不安全活动，Azure 资源的 Privileged Identity Management (PIM) 会生成警报。 当警报触发时，它将显示在“警报”页上。 

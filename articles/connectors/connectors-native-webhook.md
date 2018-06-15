@@ -1,11 +1,11 @@
 ---
-title: "Azure 逻辑应用的 Webhook 连接器 | Microsoft Docs"
-description: "如何使用 webhook 操作和触发器执行操作，如逻辑应用的筛选数组操作"
+title: Azure 逻辑应用的 Webhook 连接器 | Microsoft Docs
+description: 如何使用 webhook 操作和触发器执行操作，如逻辑应用的筛选数组操作
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: ec407d72f90cf3616214d27c378dee0ff42f4c6f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 647dcebdd8d66ca49e14b51633e6a4a3ce6cb32b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296554"
 ---
 # <a name="get-started-with-the-webhook-connector"></a>Webhook 连接器入门
 

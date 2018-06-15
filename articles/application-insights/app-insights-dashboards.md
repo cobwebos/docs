@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights 中的仪表板和导航 | Microsoft Docs"
-description: "创建关键 APM 图表和查询的视图。"
+title: Azure Application Insights 中的仪表板和导航 | Microsoft Docs
+description: 创建关键 APM 图表和查询的视图。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5ec0412dc91a7e5c28ee9ee820df9584ffa80cd8
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 72859f68fc1bb76a6c71bbd7b98cd713f1f0fe02
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296394"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights 门户中的导航与仪表板
 [在项目中设置 Application Insights](app-insights-overview.md) 之后，有关应用性能和使用情况的遥测数据将出现在 [Azure 门户](https://portal.azure.com)中项目的 Application Insights 资源内。

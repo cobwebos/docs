@@ -3,22 +3,24 @@ title: 使用应用程序代理应用程序时出现“无法访问此企业应�
 description: 如何解决使用 Azure AD 应用程序代理应用程序时的常见访问问题。
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: b9a643dab98fa685bb4873705c177a834af831ce
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 05/21/2018
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: 1c6c6f56f8e4d8d1d7a10bd07679732d64b86e23
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156086"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292297"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
 
@@ -108,7 +110,7 @@ ms.locfileid: "34156086"
 
 如果继续看到此错误，请转到装有连接器的计算机，打开浏览器并尝试访问用于应用程序的内部 URL。 连接器的作用类似于同一台计算机中的另一个客户端。 如果无法访问应用程序，则需要调查该计算机无法访问应用程序的原因，或使用能够访问应用程序的服务器上的连接器。
 
-如果可以从该计算机访问应用程序，则查找连接器本身的问题或错误。 可以在[故障排除文档](active-directory-application-proxy-troubleshoot.md#connector-errors)中查看一些常见错误。 也可以直接查看连接器日志以标识任何错误。 我们的很多错误消息都能共享更具体的修复建议。 若要了解如何查看日志，请参阅[我们的连接器文档](manage-apps/application-proxy-connectors.md#under-the-hood)。
+如果可以从该计算机访问应用程序，则查找连接器本身的问题或错误。 可以在[故障排除文档](manage-apps/application-proxy-troubleshoot.md#connector-errors)中查看一些常见错误。 也可以直接查看连接器日志以标识任何错误。 我们的很多错误消息都能共享更具体的修复建议。 若要了解如何查看日志，请参阅[我们的连接器文档](manage-apps/application-proxy-connectors.md#under-the-hood)。
 
 ## <a name="next-steps"></a>后续步骤
 [了解 Azure AD 应用程序代理连接器](manage-apps/application-proxy-connectors.md)

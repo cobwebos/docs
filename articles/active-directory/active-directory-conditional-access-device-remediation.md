@@ -1,13 +1,14 @@
 ---
-title: "在 Azure 门户中无法在 Windows 设备上切换位置 | Microsoft Docs"
-description: "了解在哪些情况下可能会碰到无法切换位置的问题，以及可以检查哪些内容来避免遇到此类对话框。"
+title: 在 Azure 门户中无法在 Windows 设备上切换位置 | Microsoft Docs
+description: 了解在哪些情况下可能会碰到无法切换位置的问题，以及可以检查哪些内容来避免遇到此类对话框。
 services: active-directory
-keywords: "基于设备的条件访问, 设备注册, 启用设备注册, 设备注册和 MDM"
-documentationcenter: 
+keywords: 基于设备的条件访问, 设备注册, 启用设备注册, 设备注册和 MDM
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5ad9b01d3821b481fe3255c821e8674dcb26b322
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 664909fa78f2034c0750492e529b21cebc087e5c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723790"
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>在 Windows 设备上无法切换位置
 

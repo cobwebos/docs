@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/13/2018
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78d971b47ffceb8d845f21a731176834f004f12c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 565394664ab59ef5186503f708502eacc040321f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295619"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果已启用了针对第三方 SaaS 应用程序的用户预配，则 Azure 门户以称作“属性映射”的配置形式控制其属性值。
@@ -83,7 +84,7 @@ Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 
 可以自定义预配为“组”对象的一部分的属性，就像前面所述的预配“用户”对象一样。 
 
 >[!TIP]
->预配组对象（属性和成员）的过程完全不同于[将组分配](active-directory-coreapps-assign-user-azure-portal.md)到应用程序。 可以将组分配到应用程序，但只能预配组中包含的用户对象。 预配整个组对象不需要使用分配中的组。
+>预配组对象（属性和成员）的过程完全不同于[将组分配](manage-apps/assign-user-or-group-access-portal.md)到应用程序。 可以将组分配到应用程序，但只能预配组中包含的用户对象。 预配整个组对象不需要使用分配中的组。
 
 
 ## <a name="editing-the-list-of-supported-attributes"></a>编辑受支持属性的列表
@@ -149,7 +150,7 @@ Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 
 * [在 SaaS 应用中自动预配和取消预配用户](active-directory-saas-app-provisioning.md)
 * [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [用于用户预配的作用域筛选器](active-directory-saas-scoping-filters.md)
-* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md)
+* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
 
 <!--Image references-->

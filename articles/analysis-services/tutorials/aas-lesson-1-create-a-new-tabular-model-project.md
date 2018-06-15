@@ -3,16 +3,17 @@ title: Azure Analysis Services 教程第 1 课：创建新的表格模型项目 
 description: 介绍如何创建新的 Azure Analysis Services 教程项目。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 73764e7595d5b0bbc55ee9242e86ba19d5f80254
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 12e090996df4b8b1ee364e5dae9349cedd045c4a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596060"
 ---
 # <a name="create-a-tabular-model-project"></a>创建表格模型项目
 

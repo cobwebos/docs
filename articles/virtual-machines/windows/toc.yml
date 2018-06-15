@@ -439,7 +439,7 @@
     - name: 计算 REST
       href: /rest/api/compute
     - name: 托管磁盘 REST
-      href: /rest/api/manageddisks
+      href: /rest/api/disks
 - name: 资源
   items:
     - name: 创作模板

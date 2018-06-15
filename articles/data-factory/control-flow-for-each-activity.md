@@ -10,20 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 2eaa4f6bb49867e0f0f061116551794d6f1dd0ca
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2240ebc7fb4fd39ea063240987fec64f26608a8a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619042"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
 ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="syntax"></a>语法
 此属性在本文后面介绍。 项属性是集合，通过 `@item()` 引用集合中的每个项目，如以下语法中所示：  
@@ -87,7 +88,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 在 ForEach 活动中，为属性 **items** 提供要循环访问的数组。 使用 `@item()` 循环访问 ForEach 活动中的单个枚举。 例如，如果 **items** 是数组：[1, 2, 3]，则 `@item()` 在第一次迭代中返回 1，在第二次迭代中返回 2，在第三次迭代中返回 3。
 
 ## <a name="iterating-over-a-single-activity"></a>循环访问单个活动
-**方案：**将 Azure Blob 中的同一源文件复制到 Azure Blob 中的多个目标文件。
+**方案：** 将 Azure Blob 中的同一源文件复制到 Azure Blob 中的多个目标文件。
 
 ### <a name="pipeline-definition"></a>管道定义
 
@@ -238,7 +239,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 
 ```
 ### <a name="example"></a>示例
-**方案：**在包含执行管道活动的 ForEach 活动中循环访问 InnerPipeline。 内部管道使用参数化的架构定义进行复制。
+**方案：** 在包含执行管道活动的 ForEach 活动中循环访问 InnerPipeline。 内部管道使用参数化的架构定义进行复制。
 
 #### <a name="master-pipeline-definition"></a>主管道定义
 

@@ -2,7 +2,7 @@
 title: 用于 B2B 监视的 X12 跟踪架构 - Azure 逻辑应用 | Microsoft 文档
 description: 使用 X12 跟踪架构通过 Azure 集成帐户中的事务监视 B2B 消息。
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5a43b9bdf522b6b26f27c082f5cb623f7a76a8b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 385ff73d780f62f19af2face591cd0b2291ef396
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300967"
 ---
 # <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>启动或启用对 X12 消息的跟踪，监视成功、错误和消息属性
 可以在 Azure 集成帐户中使用这些 X12 跟踪架构来帮助监视企业到企业 (B2B) 的事务：

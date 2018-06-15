@@ -3,7 +3,7 @@ title: 工作流定义语言函数 - Azure 逻辑应用 | Microsoft Docs
 description: 了解使用工作流定义语言创建逻辑应用的函数
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/25/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 8240ddf8a93c6589f89f3ad680c1c99c594742c9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 6f1871e1e135ecb9e7cb37c0bedff3737d3febb7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886606"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301382"
 ---
 # <a name="workflow-definition-language-functions-reference-for-azure-logic-apps"></a>Azure 逻辑应用的工作流定义语言函数参考
 
@@ -358,7 +358,7 @@ addMinutes('2018-03-15T00:20:00Z', -5)
 
 ## <a name="addproperty"></a>addProperty
 
-将属性及其值或名称-值对添加到 JSON 对象，并返回更新后的对象。 如果在运行时已存在该对象，此函数将引发错误。
+将属性及其值或名称/值对添加到 JSON 对象，并返回更新的对象。 如果在运行时已存在该对象，此函数将引发错误。
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -473,7 +473,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 
 ## <a name="and"></a>and
 
-检查是否所有表达式均为 true。 当所有表达式均为 true 时返回 true，当至少一个表达式为 false 时返回 false。
+检查所有表达式是否为 true。 当所有表达式均为 true 时返回 true，当至少一个表达式为 false 时返回 false。
 
 ```
 and(<expression1>, <expression2>, ...)
@@ -525,7 +525,7 @@ and(equals(1, 2), equals(1, 3))
 
 ## <a name="array"></a>数组
 
-基于单个指定的输入返回一个数组。 对于多个输入，请参阅 [createArray()](#createArray)。 
+从单个指定的输入返回数组。 对于多个输入，请参阅 [createArray()](#createArray)。 
 
 ```
 array('<value>')
@@ -995,7 +995,7 @@ convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 
 ## <a name="createarray"></a>createArray
 
-基于多个输入返回数组。 对于单输入数组，请参阅 [array()](#array)。
+从多个输入返回数组。 对于单输入数组，请参阅 [array()](#array)。
 
 ```
 createArray('<object1>', '<object2>', ...)
@@ -1828,7 +1828,7 @@ guid('P')
 
 ## <a name="if"></a>if
 
-检查表达式为 true 还是 false。 根据结果，返回指定的值。
+检查表达式为 true 还是 false。 根据结果返回指定的值。
 
 ```
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
@@ -2039,7 +2039,7 @@ json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> 
 
 ## <a name="intersection"></a>交集
 
-返回其中“仅”包含指定集合的共有项的一个集合。 某个项必须出现在传递给此函数的所有集合中才会出现在结果中。 如果一个或多个项具有相同的名称，则具有该名称的最后一项将出现在结果中。
+返回其中仅包含指定集合的共有项的一个集合。 某个项必须出现在传递给此函数的所有集合中才会出现在结果中。 如果一个或多个项具有相同的名称，则具有该名称的最后一项将出现在结果中。
 
 ```
 intersection([<collection1>], [<collection2>], ...)
@@ -2101,7 +2101,7 @@ join([a, b, c], '.')
 
 ## <a name="last"></a>last
 
-返回集合中的最后一项。
+返回集合中的最后一个项。
 
 ```
 last('<collection>')
@@ -2327,7 +2327,7 @@ max([1, 2, 3])
 
 ## <a name="min"></a>min
 
-返回数字集或数组中的最小值。
+返回一组数字或数组中的最小值。
 
 ```
 min(<number1>, <number2>, ...)
