@@ -4,7 +4,7 @@ description: 使用 REST API 参数的 Twitter 连接器概述
 services: ''
 documentationcenter: ''
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: eb953ee7701d407b9b75a0699f53b9b64828a0e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b44a973a94043f71f2fd9803abca47652363d8a1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296537"
 ---
 # <a name="get-started-with-the-twitter-connector"></a>Twitter 连接器入门
 借助 Twitter 连接器，可以：
@@ -28,7 +29,7 @@ ms.lasthandoff: 03/16/2018
 * 访问时间线、好友和关注者
 * 执行本文中所述的任何其他操作和触发器
 
-若要使用[“任何连接器”](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。  
+若要使用[任何连接器](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。  
 
 ## <a name="connect-to-twitter"></a>连接到 Twitter
 在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  

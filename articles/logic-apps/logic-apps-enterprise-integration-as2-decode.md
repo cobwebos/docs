@@ -1,11 +1,11 @@
 ---
-title: "为 AS2 消息解码 - Azure 逻辑应用 | Microsoft 文档"
-description: "如何对 Azure 逻辑应用使用 Enterprise Integration Pack 中的 AS2 解码器"
+title: 为 AS2 消息解码 - Azure 逻辑应用 | Microsoft 文档
+description: 如何对 Azure 逻辑应用使用 Enterprise Integration Pack 中的 AS2 解码器
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4acae9f1837069c494985ff1456979490485f609
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: a5ca615d984d07513b12399b6f7e7901490f2e41
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298825"
 ---
 # <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用的 AS2 消息解码 
 

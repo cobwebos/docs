@@ -2,23 +2,21 @@
 title: 使用 Node.js 将 MongoDB 应用连接到 Azure Cosmos DB | Microsoft Docs
 description: 了解如何将现有的 Node.js MongoDB 应用连接到 Azure Cosmos DB
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
+ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: sngun
-ms.openlocfilehash: 69302a0291b267bd4d46ab9387d296673da17025
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ff6712a70138a2178a2bddb4af467371192fdea3
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795612"
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB：迁移现有的 Node.js MongoDB Web 应用 
 
@@ -200,7 +198,7 @@ npm start
 
 此时应会显示一条控制台消息，告知开发环境已启动并运行。 
 
-在浏览器中导航至 `http://localhost:3000`。 在顶部菜单中单击“注册”，并尝试创建两个虚构的用户。 
+在浏览器中导航至 `http://localhost:3000` 。 在顶部菜单中单击“注册”，并尝试创建两个虚构的用户。 
 
 MEAN.js 示例应用程序将用户数据存储在数据库中。 如果上述操作成功并且 MEAN.js 可自动登录到已创建的用户，则表示 Azure Cosmos DB 连接可正常工作。 
 

@@ -2,24 +2,22 @@
 title: Azure Cosmos DB：SQL API 和 .NET Core 入门教程 | Microsoft Docs
 description: 使用 Azure Cosmos DB SQL API .NET Core SDK 创建联机数据库和 C# 控制台应用程序的教程。
 services: cosmos-db
-documentationcenter: .net
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: 9f93e276-9936-4efb-a534-a9889fa7c7d2
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: sngun
 ms.custom: devcenter
-ms.openlocfilehash: 81c7767852b25c6e075c48feb245227643799316
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2d1f93e839d4ad2d7c857916996f2ad5d09626c5
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796581"
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB：SQL API 和 .NET Core 入门
 > [!div class="op_single_selector"]

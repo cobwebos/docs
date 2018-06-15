@@ -1,19 +1,20 @@
 ---
-title: "在 Azure 门户中配置和访问 Azure Database for MySQL 的服务器日志"
-description: "本文介绍如何从 Azure 门户配置和访问 Azure Database for PostgreSQL 中的服务器日志。"
+title: 在 Azure 门户中配置和访问 Azure Database for MySQL 的服务器日志
+description: 本文介绍如何从 Azure 门户配置和访问 Azure Database for PostgreSQL 中的服务器日志。
 services: mysql
 author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: b68d92688b18e69f74c0e0a9b2e572795a288579
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: eb35563bc21fc48d304f216e7b34cc9a77f35e83
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265356"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>使用 Azure 门户中配置和访问服务器日志
 

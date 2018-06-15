@@ -2,29 +2,26 @@
 title: 使用 Azure Cosmos DB 输入绑定创建 HTTP 触发器 | Microsoft Docs
 description: 了解如何使用包含 HTTP 触发器的 Azure Functions 查询 Azure Cosmos DB。
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 85a9e66491513b016380913617d8e78cf5d82f6d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ea102d56df1e47fd1d1c35bd23a3e987fa45145
+ms.sourcegitcommit: 00e875607372517b4b93ca4b6baa915cbbad8064
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818893"
 ---
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器
 
 Azure Cosmos DB 是无架构、无服务器的全球分布式多模型数据库。 Azure Functions 是一种无服务器计算服务，可用于按需运行代码。 将这两个 Azure 服务搭配使用可以建立无服务器体系结构的基础，专注于生成完美的应用，无需考虑如何根据计算与数据库需求预配和维护服务器。
 
-本教程基于[适用于 .NET 的图形 API 快速入门](create-graph-dotnet.md)中创建的代码。 本教程将添加一个包含 [HTTP 触发器](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-bindings-http-webhook.md#http-trigger)的 Azure 函数。 该 HTTP 触发器使用 Azure Cosmos DB [输入绑定](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-triggers-bindings.md)从快速入门中创建的图形数据库检索数据。 此特定 HTTP 触发器会在 Azure Cosmos DB 中查询数据，但可以使用 Azure Cosmos DB 中的输入绑定来检索函数所需的任何项的数据输入值。
+本教程基于[适用于 .NET 的图形 API 快速入门](create-graph-dotnet.md)中创建的代码。 本教程将添加一个包含 [HTTP 触发器](../azure-functions/functions-bindings-http-webhook.md)的 Azure 函数。 该 HTTP 触发器使用 Azure Cosmos DB [输入绑定](../azure-functions/functions-triggers-bindings.md)从快速入门中创建的图形数据库检索数据。 此特定 HTTP 触发器会在 Azure Cosmos DB 中查询数据，但可以使用 Azure Cosmos DB 中的输入绑定来检索函数所需的任何项的数据输入值。
 
 本教程涵盖以下任务：
 

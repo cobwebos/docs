@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: a7c97153-583e-48fe-b301-365123db3780
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 8f8b252d8771dff23d0a8c89e057fc17ba321a65
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 16e4af4dd7f5c2bd14d70cc28225dfc750ce3bea
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838504"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
 本文介绍如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。 它将指导完成[数据科学过程](http://aka.ms/datascienceprocess)所需的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 本文中的模型包括逻辑和线性回归、随机林和梯度提升树 (GBT)，以及两个常见的监管式机器学习任务：

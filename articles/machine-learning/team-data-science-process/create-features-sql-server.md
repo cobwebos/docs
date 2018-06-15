@@ -8,17 +8,19 @@ manager: cgronlun
 editor: ''
 ms.assetid: bf1f4a6c-7711-4456-beb7-35fdccd46a44
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: deguhath
-ms.openlocfilehash: 206ae59ff84699eb8419d068d2f2102759ac82c1
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 432f7b9bb27c1dee396677c54edf48d9fdb027a0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836328"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
 本文档演示如何在 Azure 上为存储于 SQL Server VM 中的数据生成功能，用于帮助算法更有效地从数据中进行学习。 可以使用 SQL 或 Python 等编程语言来完成此任务。 下面演示了这两种方法。

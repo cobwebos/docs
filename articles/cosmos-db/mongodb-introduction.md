@@ -3,22 +3,20 @@ title: Azure Cosmos DB 简介：MongoDB API | Microsoft Docs
 description: 了解如何通过常用 OSS MongoDB API 使用 Azure Cosmos DB 以低延迟存储和查询大量 JSON 文档。
 keywords: 什么是 MongoDB
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 4afaf40d-c560-42e0-83b4-a64d94671f0a
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 02/12/2018
-ms.author: anhoh
-ms.openlocfilehash: bebf8b8830255277b5ea492f06e130ee667affa5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: sngun
+ms.openlocfilehash: c10f1fdc7e373633298b083d1317f17cff3aa2b8
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796625"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB 简介：MongoDB API
 
@@ -32,13 +30,13 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="what-is-the-benefit-of-using-azure-cosmos-db-for-mongodb-applications"></a>将 Azure Cosmos DB 用于 MongoDB 应用程序的好处是什么？
 
-**可弹性缩放的吞吐量和存储：**轻松增大或减小 MongoDB 数据库规模来满足应用程序需求。 数据存储在固态硬盘 (SSD) 上，以实现可预测的低延迟。 Azure Cosmos DB 支持几乎可以扩展到无限存储大小和预配吞吐量的 MongoDB 集合。 随着应用程序规模的增长，你可以弹性无缝地扩展 Azure Cosmos DB 且其性能可以预测。 
+**可弹性缩放的吞吐量和存储：** 轻松增大或减小 MongoDB 数据库规模来满足应用程序需求。 数据存储在固态硬盘 (SSD) 上，以实现可预测的低延迟。 Azure Cosmos DB 支持几乎可以扩展到无限存储大小和预配吞吐量的 MongoDB 集合。 随着应用程序规模的增长，你可以弹性无缝地扩展 Azure Cosmos DB 且其性能可以预测。 
 
-**多区域复制：**Azure Cosmos DB 以透明方式将数据复制到与 MongoDB 帐户关联的所有区域，使用户能够开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。 Azure Cosmos DB 提供具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储。 在[全球分布数据](distribute-data-globally.md)中了解详细信息。
+**多区域复制：** Azure Cosmos DB 以透明方式将数据复制到与 MongoDB 帐户关联的所有区域，使用户能够开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。 Azure Cosmos DB 提供具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储。 在[全球分布数据](distribute-data-globally.md)中了解详细信息。
 
 无需管理服务器：无需管理和缩放 MongoDB 数据库。 Azure Cosmos DB 是完全托管的服务，这意味着无需自己管理任何基础结构或虚拟机。 Azure Cosmos DB 在 30 多个 [Azure 区域](https://azure.microsoft.com/regions/services/)中可用。
 
-**可调整的一致性级别：**Azure Cosmos DB 当前实现了 MongoDB 3.4 版，其中具有两个一致性设置：强一致性和最终一致性。 由于 Azure Cosmos DB 是多 api，因此一致性设置在帐户级别适用，并由每个 API 控制一致性的实施。 在 MongoDB 3.6 以前，没有会话一致性的概念，因此如果将 MongoDB API 帐户设置为使用会话一致性，则使用 MongoDB API 时，该一致性会降级为最终一致性。 如果需要向某个 MongoDB API 帐户提供“读取自己的写入”保证，该帐户的默认一致性级别应设置为“强”或“有限过期”。 有关详细信息，请参阅[使用一致性级别最大化可用性和性能](consistency-levels.md)。
+**可调整的一致性级别：** Azure Cosmos DB 当前实现了 MongoDB 3.4 版，其中具有两个一致性设置：强一致性和最终一致性。 由于 Azure Cosmos DB 是多 api，因此一致性设置在帐户级别适用，并由每个 API 控制一致性的实施。 在 MongoDB 3.6 以前，没有会话一致性的概念，因此如果将 MongoDB API 帐户设置为使用会话一致性，则使用 MongoDB API 时，该一致性会降级为最终一致性。 如果需要向某个 MongoDB API 帐户提供“读取自己的写入”保证，该帐户的默认一致性级别应设置为“强”或“有限过期”。 有关详细信息，请参阅[使用一致性级别最大化可用性和性能](consistency-levels.md)。
 
 | Azure Cosmos DB 的默认一致性级别 |   Mongo API (3.4) |
 |---|---|
@@ -48,7 +46,7 @@ ms.lasthandoff: 04/18/2018
 |有限过期| 非常 |
 | 非常 | 非常 |
 
-**自动编制索引：**默认情况下，Azure Cosmos DB 自动为 MongoDB 数据库文档中的所有属性编制索引，无需任何架构或创建二级索引。 此外，唯一索引功能可以针对已在 Azure Cosmos DB 中自动编制索引的所有文档字段启用唯一性约束。
+**自动编制索引：** 默认情况下，Azure Cosmos DB 自动为 MongoDB 数据库文档中的所有属性编制索引，无需任何架构或创建二级索引。 此外，唯一索引功能可以针对已在 Azure Cosmos DB 中自动编制索引的所有文档字段启用唯一性约束。
 
 **企业级**：Azure Cosmos DB 支持多个本地副本，在面对本地和区域故障时提供 99.99％ 的可用性和数据保护。 Azure Cosmos DB 具有企业级[符合性认证](https://www.microsoft.com/trustcenter)和安全功能。 
 

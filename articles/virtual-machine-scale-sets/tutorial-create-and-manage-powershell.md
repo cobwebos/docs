@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 91174f14cb6a49e560504e01ba47e7121f869080
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7531ddce37b2f6d140cb277727d6168d8d98ba1e
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366250"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802378"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
@@ -37,7 +37,7 @@ ms.locfileid: "34366250"
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 6.0.0 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。 
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 6.0.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。 
 
 
 ## <a name="create-a-resource-group"></a>创建资源组
@@ -146,7 +146,7 @@ mstsc /v 52.168.121.216:50001
 
 
 ## <a name="understand-vm-instance-images"></a>了解 VM 实例映像
-在前面的步骤中使用 [Set-AzureRmVmssStorageProfile](/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile) 定义规模集配置时，使用了 Windows Server 2016 Datacenter 映像。 Azure Marketplace 包括许多可用于创建 VM 实例的映像。 若要查看可用发布者的列表，请使用 [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) 命令。
+Azure 市场包括许多可用于创建 VM 实例的映像。 若要查看可用发布者的列表，请使用 [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) 命令。
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "EastUS"

@@ -4,7 +4,7 @@ description: 使用 Azure 应用服务创建逻辑应用。 Outlook.com 连接�
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 9fc0cfd39197bcc834aca600238853a712ebf297
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1338b7ce8f72a57cb65f9389e630fd7ebd0417b1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295578"
 ---
 # <a name="get-started-with-the-outlookcom-connector"></a>Outlook.com 连接器入门
 Outlook.com 连接器允许管理邮件、日历和联系人。 可以执行各种操作，例如发送邮件、安排会议、添加联系人等。

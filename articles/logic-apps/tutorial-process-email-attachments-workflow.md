@@ -2,7 +2,7 @@
 title: 生成处理电子邮件和附件的工作流 - Azure 逻辑应用 | Microsoft Docs
 description: 本教程介绍如何创建自动化工作流，以便使用 Azure 逻辑应用、Azure 存储和 Azure Functions 处理电子邮件和附件
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 8c327599585e67ccc6ebdf849d3e9cf9b95e7398
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 3d6d66dca06c1f34a31155a27c32bbe3e48c8aa3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300627"
 ---
 # <a name="process-emails-and-attachments-with-a-logic-app"></a>使用逻辑应用处理电子邮件和附件
 
@@ -64,14 +65,14 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | attachmentstorageacct | 存储帐户的名称 | 
+   | **名称** | attachmentstorageacct | 存储帐户的名称 | 
    | **部署模型** | 资源管理器 | 用于管理资源部署的[部署模型](../azure-resource-manager/resource-manager-deployment-model.md) | 
    | **帐户种类** | 常规用途 | [存储帐户类型](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
    | **性能** | 标准 | 此设置指定支持的数据类型以及用于存储数据的介质。 请参阅[存储帐户的类型](../storage/common/storage-introduction.md#types-of-storage-accounts)。 | 
    | **复制** | 本地冗余存储 (LRS) | 此设置指定如何复制、存储、管理和同步数据。 请参阅[复制](../storage/common/storage-introduction.md#replication)。 | 
    | **需要安全传输** | 已禁用 | 此设置指定从连接进行请求所需的安全性。 请参阅[需要安全传输](../storage/common/storage-require-secure-transfer.md)。 | 
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅的名称 | 
-   | **资源组** | LA-Tutorial-RG | 用于组织和管理相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 <p>**注意：**资源组存在于特定的区域。 本教程中的项目可能不在所有区域提供，请尽可能尝试使用同一区域。 | 
+   | **资源组** | LA-Tutorial-RG | 用于组织和管理相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 <p>**注意：** 资源组存在于特定的区域。 本教程中的项目可能不在所有区域提供，请尽可能尝试使用同一区域。 | 
    | **位置** | 美国东部 2 | 用于存储存储帐户信息的区域 | 
    | **配置虚拟网络** | 已禁用 | 对于本教程，请保留“禁用”设置。 | 
    |||| 
@@ -111,9 +112,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 3. 检查存储帐户和容器是否正确显示在存储资源管理器中：
 
-   1. 在**资源管理器**下，展开**(本地和附加)** > 
-   **存储帐户** > **attachmentstorageaccount** > 
-   **Blob 容器**。
+   1. 在“资源管理器”下，**** 展开“(本地和附加)”****> 
+   “存储帐户”****> **attachmentstorageaccount** > 
+   ****“Blob 容器”。
 
    2. 确认“attachments”容器现在是否显示。 
    例如：
@@ -135,7 +136,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    | **资源组** | LA-Tutorial-RG | 以前使用过的同一 Azure 资源组 | 
    | **托管计划** | 使用计划 | 此设置决定了如何分配和缩放用于运行函数应用的资源，例如计算能力。 请参阅[托管计划比较](../azure-functions/functions-scale.md)。 | 
    | **位置** | 美国东部 2 | 以前使用过的同一区域 | 
-   | **存储** | cleantextfunctionstorageacct | 为函数应用创建存储帐户。 只使用小写字母和数字。 <p>**注意：**此存储帐户包含函数应用，不同于以前创建的用于电子邮件附件的存储帐户。 | 
+   | **存储** | cleantextfunctionstorageacct | 为函数应用创建存储帐户。 只使用小写字母和数字。 <p>**注意：** 此存储帐户包含函数应用，不同于以前创建的用于电子邮件附件的存储帐户。 | 
    | **Application Insights** | 关闭 | 请对 [Application Insights](../application-insights/app-insights-overview.md) 启用应用程序监视，但对于本教程，请保留“禁用”设置。 | 
    |||| 
 
@@ -215,7 +216,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | LA-ProcessAttachment | 逻辑应用的名称 | 
+   | **名称** | LA-ProcessAttachment | 逻辑应用的名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | 以前使用过的同一 Azure 订阅 | 
    | **资源组** | LA-Tutorial-RG | 以前使用过的同一 Azure 资源组 |
    | **位置** | 美国东部 2 | 以前使用过的同一区域 | 
@@ -256,7 +257,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       | 设置 | 值 | 说明 | 
       | ------- | ----- | ----------- | 
-      | **带有附件** | 是 | 仅获取带有附件的电子邮件。 <p>**注意：**此触发器不删除帐户中的任何电子邮件，仅检查新邮件，并且仅处理与主题筛选器匹配的电子邮件。 | 
+      | **带有附件** | 是 | 仅获取带有附件的电子邮件。 <p>**注意：** 此触发器不删除帐户中的任何电子邮件，仅检查新邮件，并且仅处理与主题筛选器匹配的电子邮件。 | 
       | **包括附件** | 是 | 获取充当工作流输入的附件，而不是仅仅检查是否有附件。 | 
       | **主题筛选器** | ```Business Analyst 2 #423501``` | 要在电子邮件主题中查找的文本 | 
       |  |  |  | 
@@ -447,9 +448,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 3. 检查逻辑应用是否已将电子邮件保存到正确的存储容器。 
 
-   1. 在存储资源管理器中展开**(本地和附加)** > 
-   **存储帐户** > **attachmentstorageacct (外部)** > 
-   **Blob 容器** > **attachments**。
+   1. 在存储资源管理器中展开“(本地和附加)”****> 
+   “存储帐户”****>“attachmentstorageacct (外部)”****> 
+   “Blob 容器”****> **attachments**。
 
    2. 检查 **attachments** 容器中是否有电子邮件。 
 
@@ -526,9 +527,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 3. 检查逻辑应用是否已将电子邮件和附件保存到正确的存储容器。 
 
-   1. 在存储资源管理器中展开**(本地和附加)** > 
-   **存储帐户** > **attachmentstorageacct (外部)** > 
-   **Blob 容器** > **attachments**。
+   1. 在存储资源管理器中展开“(本地和附加)”****> 
+   “存储帐户”****>“attachmentstorageacct (外部)”****> 
+   “Blob 容器”****> **attachments**。
 
    2. 检查 **attachments** 容器中是否有电子邮件和附件。
 
@@ -565,7 +566,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----- | 
-   | **To** | <*recipient-email-address*> | 为进行测试，可以使用自己的电子邮件地址。 | 
+   | **收件人** | <*recipient-email-address*> | 为进行测试，可以使用自己的电子邮件地址。 | 
    | **主题**  | ```ASAP - Review applicant for position: ``` **主题** | 要包括的电子邮件主题。 在参数列表或动态内容列表的“收到新电子邮件时”下选择“主题”字段。 | 
    | **正文** | ```Please review new applicant:``` <p>```Applicant name: ``` **发件人** <p>```Application file location: ``` **路径** <p>```Application email content: ``` **正文** | 电子邮件正文的内容。 从参数列表或动态内容列表中选择以下字段： <p>-“收到新电子邮件时”下的“发件人”字段 </br>-“创建用于电子邮件正文的 Blob”下的“路径”字段 </br>-“调用 RemoveHTMLFunction 来清除电子邮件正文”下的“正文”字段 | 
    |||| 

@@ -1,11 +1,11 @@
 ---
-title: "为 AS2 消息编码 - Azure 逻辑应用 | Microsoft 文档"
-description: "如何为 Azure 逻辑应用使用 Enterprise Integration Pack 中的 AS2 编码器"
+title: 为 AS2 消息编码 - Azure 逻辑应用 | Microsoft 文档
+description: 如何为 Azure 逻辑应用使用 Enterprise Integration Pack 中的 AS2 编码器
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 332fb9e3-576c-4683-bd10-d177a0ebe9a3
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bccc8f81a3a664e090796ae8a3cbb38c890c0479
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: fe8a2b00f15fa737c8ed343a47e1cab1c260346b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297924"
 ---
 # <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用编码 AS2 消息
 

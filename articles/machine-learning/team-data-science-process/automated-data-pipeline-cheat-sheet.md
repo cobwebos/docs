@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 22674d6b-4491-4805-a3ac-d423611177bb
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: f07e7cc9c97dcd5ef6ebc2d4c16d31b831869352
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 54a3aca4c3519948a9e18d035565f746964b38bc
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836154"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure 机器学习预测中自动化数据管道的速查表
 **Microsoft Azure 机器学习自动化数据管道速查表**帮助你浏览各项技术，这些技术可用来将数据移到预测分析模型可对其进行评分的机器学习 Web 服务中。

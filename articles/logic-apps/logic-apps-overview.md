@@ -1,12 +1,12 @@
 ---
-title: "概述 - 与 Azure 逻辑应用的企业集成 | Microsoft Docs"
-description: "生成自动化工作流和业务流程，以便跨企业和组织集成数据、服务、应用和系统。 创建适用于数据集成、系统集成、企业应用程序集成 (EAI) 和业务流程方案的解决方案。"
-keywords: "自动化, 工作流, 企业应用程序集成, EAI, 系统集成, 数据集成, 业务流程, 集成服务, iPaaS"
+title: 概述 - 与 Azure 逻辑应用的企业集成 | Microsoft Docs
+description: 生成自动化工作流和业务流程，以便跨企业和组织集成数据、服务、应用和系统。 创建适用于数据集成、系统集成、企业应用程序集成 (EAI) 和业务流程方案的解决方案。
+keywords: 自动化, 工作流, 企业应用程序集成, EAI, 系统集成, 数据集成, 业务流程, 集成服务, iPaaS
 services: logic-apps
 author: ecfan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 07765c05-72a6-4169-a8ab-f6420bfbaf07
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 6c88c51eb4def92164e221efa5c6293f9b2247e4
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: c575ae1f9c801072fb1f6f32a13f111b9edd18ce
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299233"
 ---
 # <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 

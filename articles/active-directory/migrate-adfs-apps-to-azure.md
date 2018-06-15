@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: 93282f3d4a7ca84e59fa8831d5eb650a643d1e83
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 6c82ba9f5864da96ae008974b758058fc6d63cb1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296705"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>将 AD FS 本地应用迁移到 Azure 
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 05/11/2018
 - 作为 SaaS 应用的标识提供者，Azure AD 支持其他功能，例如：
   - 基于应用程序的令牌签名证书。
   - [可配置的证书过期日期](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)。
-  - 根据 Azure AD 标识在重要的 Azure Marketplace 应用中[自动预配](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)用户帐户。
+  - 根据 Azure AD 标识在重要的 Azure 市场应用中[自动预配](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)用户帐户。
 
 **保留本地标识提供者的优点**
 - 在获得 Azure AD 优势的同时，可以继续使用本地解决方案进行身份验证， 因此仍可继续利用本地多重身份验证解决方案、日志记录、审核等方面的优势。 
@@ -64,7 +65,7 @@ ms.lasthandoff: 05/11/2018
 ## <a name="mapping-types-of-apps-on-premises-to-types-of-apps-in-azure-ad"></a>将本地应用类型映射到 Azure AD 中的应用类型
 可以根据所用登录类型将大多数应用划分到多个类别中的一个。 这些类别决定了应用在 Azure AD 中的呈现方式。
 
-简单地说，SAML 2.0 应用程序可以通过 Marketplace 中的 Azure AD 应用程序库与 Azure AD 集成，也可以作为非 Marketplace 应用程序进行集成。 类似地，使用 OAuth 2.0 或 OpenID Connect 的应用可以以“应用注册”的方式与 Azure AD 集成。 阅读更多详细信息。
+简单地说，SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure AD 集成，也可以作为非市场应用程序进行集成。 类似地，使用 OAuth 2.0 或 OpenID Connect 的应用可以以“应用注册”的方式与 Azure AD 集成。 阅读更多详细信息。
 
 ### <a name="federated-saas-apps-vs-custom-lob-apps"></a>联合 SaaS 应用与自定义 LOB 应用
 联合应用包括归到以下类别中的应用：
@@ -72,7 +73,7 @@ ms.lasthandoff: 05/11/2018
 - SaaS 应用 
     - 如果你的用户登录到 SaaS 应用（例如 Salesforce、ServiceNow 或 Workday），而你与本地标识提供者（例如 AD FS 或 Ping）集成，则你使用的是适用于 SaaS 应用的联合登录。
     - 应用通常使用 SAML 2.0 协议进行联合登录。
-    - 归到此类别的应用可以通过 Marketplace 以企业应用程序的方式与 Azure AD 集成，也可以作为非 Marketplace 应用程序进行集成。
+    - 归到此类别的应用可以通过市场以企业应用程序的方式与 Azure AD 集成，也可以作为非市场应用程序进行集成。
 - 自定义 LOB 应用
     - 这是指非 SaaS 应用。此类应用由组织内部开发，或者作为标准打包产品提供，安装在数据中心。 此类应用包括 SharePoint 应用以及基于 Windows Identity Foundation 的应用。
     - 应用可以使用 SAML 2.0、WS 联合身份验证、OAuth 或 OpenID Connect 进行联合登录。
@@ -125,7 +126,7 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 |IdP </br>联合 </br>metadata|IdP 的公开提供的联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）|AD FS 联合元数据 URL 位于 AD FS 管理中的“服务” > “终结点” > “元数据” > “类型: 联合元数据”下。 例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的相应值遵循 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml 模式。 {TenantDomainName} 的值将替换为“contoso.onmicrosoft.com”格式的租户名称。 </br></br>有关详细信息，请参阅[联合元数据](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)。
 
 ## <a name="migrating-saas-apps"></a>迁移 SaaS 应用
-目前，将 SaaS 应用从 AD FS 或其他标识提供者迁移到 Azure AD 需要手动进行。 如需特定于应用的指南，请查看[介绍如何集成 Marketplace 中的 SaaS 应用的教程的列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)。
+目前，将 SaaS 应用从 AD FS 或其他标识提供者迁移到 Azure AD 需要手动进行。 如需特定于应用的指南，请查看[介绍如何集成市场中的 SaaS 应用的教程的列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)。
 
 这些集成教程假定你在进行绿色字段集成。 在计划、评估、配置和直接转换应用时，应该了解一些特定于迁移的重要概念：  
 - 某些应用可以轻松地进行迁移。 具有较复杂要求（例如自定义声明）的应用可能需要在 Azure AD 和/或 Azure AD Connect 中进行其他配置。
@@ -134,7 +135,7 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 - 属性在 Azure AD 中可用以后，即可在 Azure AD 中添加声明颁发规则，以便将这些属性作为声明包括在颁发的令牌中。 请在 Azure AD 的应用的“单一登录”属性中添加这些规则。
 
 ### <a name="assess-what-can-be-migrated"></a>评估可迁移的内容
-SAML 2.0 应用程序可以通过 Marketplace 中的 Azure AD 应用程序库与 Azure AD 集成，也可以作为非 Marketplace 应用程序进行集成。  
+SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure AD 集成，也可以作为非市场应用程序进行集成。  
 
 某些配置需要额外的步骤才能在 Azure AD 中进行配置，某些配置目前不受支持。 若要确定哪些内容可以移动，请查看每个应用的当前配置， 尤其请注意以下配置：
 - 配置的声明规则（颁发转换规则）。
@@ -201,7 +202,7 @@ SAML 2.0 应用程序可以通过 Marketplace 中的 Azure AD 应用程序库与
 
 ![“添加分配”窗格](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-用户应该在登录时在[访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)中看到 SaaS 应用，这样才能验证访问权限。 可以在 http://myapps.microsoft.com 找到访问面板。在此示例中，已成功向用户分配 Salesforce 和 ServiceNow 的访问权限。
+用户应该在登录时在[访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)中看到 SaaS 应用，这样才能验证访问权限。 可以在 http://myapps.microsoft.com 找到访问面板。 在此示例中，已成功向用户分配 Salesforce 和 ServiceNow 的访问权限。
 
 ![包含 Salesforce 和 ServiceNow 应用的示例访问面板](media/migrate-adfs-apps-to-azure/migrate8.png)
 
@@ -235,5 +236,5 @@ SAML 2.0 应用程序可以通过 Marketplace 中的 Azure AD 应用程序库与
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure Active Directory 管理应用程序](manage-apps/what-is-application-management.md)
-- [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
+- [管理对应用的访问权限](manage-apps/what-is-access-management.md)
 - [Azure AD Connect 联合身份验证](active-directory-aadconnectfed-whatis.md)

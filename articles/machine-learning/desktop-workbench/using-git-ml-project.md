@@ -7,14 +7,16 @@ ms.author: haining
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/18/2017
-ms.openlocfilehash: 6d244e990552ac4899361360efb44be140b06fe8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 134e02f976f1ed0084e24ddbda06ba70b237edad
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833234"
 ---
 # <a name="use-a-git-repo-with-a-machine-learning-workbench-project"></a>将 Git 存储库与 Machine Learning Workbench 项目配合使用
 了解有关 Azure Machine Learning Workbench 如何使用 Git 提供版本控制并确保数据科学试验重现能力。 了解如何将项目与云 Git 存储库 (repo) 关联。

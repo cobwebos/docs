@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157664"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293103"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -141,7 +141,7 @@ ms.locfileid: "34157664"
 | --- | --- |
 | SaaS 应用程序的测试环境可用。 本指南使用 ServiceNow 作为示例。<br/>强烈建议使用测试实例来最大程度地减少导航现有数据质量和映射上的冲突。 | 转到 https://developer.servicenow.com/app.do#!/home 以开始获取测试实例的过程 |
 | 对 ServiceNow 管理控制台的管理员访问权限 | [教程：Azure Active Directory 与 ServiceNow 集成](active-directory-saas-servicenow-tutorial.md) |
-| 要分配应用程序的目标用户群。 建议使用包含 PoC 用户的安全组。 <br/>如果无法创建组，请直接向用户分配应用程序进行 PoC | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
+| 要分配应用程序的目标用户群。 建议使用包含 PoC 用户的安全组。 <br/>如果无法创建组，请直接向用户分配应用程序进行 PoC | [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>步骤
 
@@ -149,13 +149,13 @@ ms.locfileid: "34157664"
 | --- | --- |
 | 从 Microsoft 文档将教程共享给所有执行组件  | [教程：Azure Active Directory 与 ServiceNow 集成](active-directory-saas-servicenow-tutorial.md) |
 | 设置一个工作会议，并按照每个执行组件的教程步骤进行操作。 | [教程：Azure Active Directory 与 ServiceNow 集成](active-directory-saas-servicenow-tutorial.md) |
-| 将应用分配给在先决条件中标识的组。 如果 POC 在作用域中具有条件性访问，则可以稍后再次访问并添加 MFA 等。 <br/>请注意，这会在预配过程中启动（如果配置） |  [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) <br/>[在 Azure Active Directory 中创建组并添加成员](active-directory-groups-create-azure-portal.md) |
+| 将应用分配给在先决条件中标识的组。 如果 POC 在作用域中具有条件性访问，则可以稍后再次访问并添加 MFA 等。 <br/>请注意，这会在预配过程中启动（如果配置） |  [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) <br/>[在 Azure Active Directory 中创建组并添加成员](active-directory-groups-create-azure-portal.md) |
 | 使用 Azure AD 管理门户从库中添加 ServiceNow 应用程序| [Azure AD 管理门户：企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Azure Active Directory 中企业应用程序管理的新增功能](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | 在 ServiceNow 应用的“单一登录”边栏选项卡中，启用“基于 SAML 的登录” |  |
 | 使用 ServiceNow URL 填写“登录 URL”和“标识符”字段<br/>选中“使新证书处于活动状态”框<br/>并保存设置 |  |
 | 打开面板底部的“配置 ServiceNow”边栏选项卡，以查看配置 ServiceNow 的自定义说明 |  |
 | 按照说明配置 ServiceNow |  |
-| 在 ServiceNow 应用的“预配”边栏选项卡中，启用“自动”设置 | [在新的 Azure 门户中管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md) |
+| 在 ServiceNow 应用的“预配”边栏选项卡中，启用“自动”设置 | [在新的 Azure 门户中管理企业应用的用户帐户预配](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | 稍等几分钟，等待预配完成。  在此期间，可以查看预配报告 |  |
 | 以具有访问权限的测试用户身份登录 https://myapps.microsoft.com/ | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 | 单击刚刚创建的应用程序的磁贴。 确认访问 |  |
@@ -174,9 +174,11 @@ ms.locfileid: "34157664"
 
 | 先决条件 | 资源 |
 | --- | --- |
-| SaaS 应用程序的测试环境。 HipChat 和 Twitter 就是密码 SSO 的示例。 而其他的任何应用程序都需要 html 登录窗体页面的确切 URL。 | [Microsoft Azure Marketplace 上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Microsoft Azure Marketplace 上的 HipChat](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
+| SaaS 应用程序的测试环境。 HipChat 和 Twitter 就是密码 SSO 的示例。 而其他的任何应用程序都需要 html 登录窗体页面的确切 URL。 | 
+  [Microsoft Azure 市场上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>
+  [Microsoft Azure 市场上的 HipChat](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | 应用程序的测试帐户。 | [注册 Twitter](https://twitter.com/signup?lang=en)<br/>[免费注册：HipChat](https://www.hipchat.com/sign_up) |
-| 要分配应用程序的目标用户群。 建议使用包含用户的安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
+| 要分配应用程序的目标用户群。 建议使用包含用户的安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>步骤
@@ -185,8 +187,8 @@ ms.locfileid: "34157664"
 | --- | --- |
 | 安装浏览器扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | 从库中配置应用程序 | [Azure Active Directory 中企业应用程序管理的新增功能：新增和改进的应用程序库](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| 配置密码 SSO | [在新的 Azure 门户中管理企业应用的单一登录：基于密码的登录](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| 将应用分配给在先决条件中标识的组 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
+| 配置密码 SSO | [在新的 Azure 门户中管理企业应用的单一登录：基于密码的登录](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| 将应用分配给在先决条件中标识的组 | [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) |
 | 以具有访问权限的测试用户身份登录 https://myapps.microsoft.com/ |  |
 | 单击刚刚创建的应用程序的磁贴。 | [访问面板是什么？：没有标识预配的基于密码的 SSO](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | 提供应用程序凭据 | [访问面板是什么？：没有标识预配的基于密码的 SSO](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
@@ -209,9 +211,10 @@ ms.locfileid: "34157664"
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | [Microsoft Azure Marketplace 上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
+| 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | 
+  [Microsoft Azure 市场上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
 | 此 SaaS 应用程序的共享凭据。 | [使用 Azure AD 共享帐户](active-directory-sharing-accounts.md)<br/>[适用于 Facebook、Twitter 和 LinkedIn 的 Azure AD 自动密码滚动更新现在提供预览版！ -“企业移动性 + 安全性”博客] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
-| 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
+| 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>步骤
@@ -220,8 +223,8 @@ ms.locfileid: "34157664"
 | --- | --- |
 | 安装浏览器扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | 从库中配置应用程序 | [Azure Active Directory 中企业应用程序管理的新增功能：新增和改进的应用程序库](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| 配置密码 SSO | [在新的 Azure 门户中管理企业应用的单一登录：基于密码的登录](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| 分配凭据时会应用分配给在先决条件中标识的组 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
+| 配置密码 SSO | [在新的 Azure 门户中管理企业应用的单一登录：基于密码的登录](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| 分配凭据时会应用分配给在先决条件中标识的组 | [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) |
 | 使用其他的用户身份登录，该用户可以使用**相同共享帐户**访问应用。  |  |
 | 或者可以查看应用程序使用情况报告。 请注意，存在一定程度的延迟，因此需要等待一段时间才能在报告中看到流量。 | [Azure Active Directory 门户中的登录活动报告：托管应用程序的使用情况](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory 报告保留策略](active-directory-reporting-retention.md) |
 

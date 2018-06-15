@@ -3,7 +3,7 @@ title: 工作流定义语言架构 - Azure 逻辑应用 | Microsoft Docs
 description: 使用工作流定义语言编写 Azure 逻辑应用的自定义工作流定义
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 6a4e113c6816540e303210c3f1c96d81146cf5db
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33886795"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300175"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>采用工作流定义语言架构的逻辑应用工作流定义
 
@@ -154,8 +154,8 @@ ms.locfileid: "33886795"
 |------------|--------| 
 | "Sophia Owen" | 返回这些字符：'Sophia Owen' |
 | "array[1]" | 返回这些字符：'array[1]' |
-| "\@@\" | 以单字符字符串的形式返回这些字符：'@' |   
-| \" \@\" | 以双字符字符串的形式返回这些字符：' @' |
+| "\@@\" | 以单字符字符串的形式返回这些字符：\'\@\' |   
+| \" \@\" | 以双字符字符串的形式返回这些字符：\' \@\' |
 |||
 
 这些示例假设定义了 "myBirthMonth" 等于 "January"，"myAge" 等于数字 42：  

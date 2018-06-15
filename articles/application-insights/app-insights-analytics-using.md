@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
-ms.author: danha; mbullwin
-ms.openlocfilehash: 5a49d38ddc9d2181f9b35ac948c44df70bad831b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: danha
+ms.author: mbullwin
+ms.openlocfilehash: 7f8f49cf88bda8e485d2365281c13680ef796196
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869880"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295513"
 ---
 # <a name="using-analytics-in-application-insights"></a>使用 Application Insights 中的 Analytics
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。

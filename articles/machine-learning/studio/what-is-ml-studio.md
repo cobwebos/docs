@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
-ms.openlocfilehash: e7fb545b985968b4d9e5a516c812cbf594352e08
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9911d56807a95a5f8199cecdff13ad06497fb33e
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836947"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
