@@ -1,11 +1,11 @@
 ---
-title: "方案 - 使用 Azure Functions 和 Azure 服务总线触发逻辑应用 | Microsoft Docs"
-description: "使用 Azure Functions 和 Azure 服务总线创建触发逻辑应用的函数"
+title: 方案 - 使用 Azure Functions 和 Azure 服务总线触发逻辑应用 | Microsoft Docs
+description: 使用 Azure Functions 和 Azure 服务总线创建触发逻辑应用的函数
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/23/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 088f10bc32dd492f82f0a10a7e5829e76f588758
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89fcd88643bd793935e7476ef32641ffa5ff4713
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299787"
 ---
 # <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>方案：使用 Azure Functions 和 Azure 服务总线触发逻辑应用
 
@@ -63,7 +64,7 @@ ms.lasthandoff: 10/11/2017
    }
    ```
 
-若要进行测试，请通过诸如[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)此类的工具添加队列消息。 可看到逻辑应用会在该函数收到消息之后立即触发。
+若要进行测试，请通过诸如[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)之类的工具添加队列消息。 可看到逻辑应用会在该函数收到消息之后立即触发。
 
 <!-- Image References -->
 [1]: ./media/logic-apps-scenario-function-sb-trigger/manualtrigger.png

@@ -1,23 +1,19 @@
 ---
 title: 了解 Azure IoT 中心自定义终结点 | Microsoft Docs
 description: 开发人员指南 - 使用路由规则将设备到云的消息路由到自定义终结点。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: 3d54da43141dc2bdf34c9f71adc41dc7cf24ff10
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b035c7ef6dfe56c4b4534e081e70d95ea7c14847
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808020"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>对设备到云的消息使用消息路由和自定义终结点
 
@@ -25,7 +21,7 @@ ms.lasthandoff: 04/16/2018
 
 | 属性      | 说明 |
 | ------------- | ----------- |
-| **Name**      | 用于标识规则的唯一名称。 |
+| **名称**      | 用于标识规则的唯一名称。 |
 | **源**    | 要处理的数据流的来源。 例如，设备遥测。 |
 | **条件** | 路由规则的查询表达式，针对消息的标头和正文运行，确定消息是否与终结点匹配。 有关构造路由条件的详细信息，请参阅[参考 - 设备孪生和作业的查询语言][lnk-devguide-query-language]。 |
 | **终结点**  | IoT 中心将匹配条件的消息发送到的终结点的名称。 终结点应与 IoT 中心位于同一区域，否则跨区域写入将产生费用。 |
@@ -71,7 +67,7 @@ IoT 中心具有默认的[内置终结点][lnk-built-in]。 将订阅中的其�
 [lnk-device-to-cloud]: iot-hub-devguide-messages-d2c.md
 [lnk-devguide-query-language]: iot-hub-devguide-query-language.md
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-d2c-tutorial]: tutorial-routing.md
 [lnk-getstarted-eh]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
 [lnk-getstarted-queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 [lnk-getstarted-topic]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md

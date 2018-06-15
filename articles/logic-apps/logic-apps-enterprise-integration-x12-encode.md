@@ -1,11 +1,11 @@
 ---
-title: "为 X12 消息编码 - Azure 逻辑应用 | Microsoft 文档"
-description: "使用 Enterprise Integration Pack 中的 X12 消息编码器为 Azure 逻辑应用验证 EDI 并转换 XML 编码的消息"
+title: 为 X12 消息编码 - Azure 逻辑应用 | Microsoft 文档
+description: 使用 Enterprise Integration Pack 中的 X12 消息编码器为 Azure 逻辑应用验证 EDI 并转换 XML 编码的消息
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f7408f240a1b05e0d53716764a9f8d1e19229ebe
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ec350560f4aca4e9a0b4f00892b690012c9f08dd
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298997"
 ---
 # <a name="encode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用编码 X12 消息
 

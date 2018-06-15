@@ -1,12 +1,12 @@
 ---
-title: "使用 HTTP 终结点调用、触发或嵌套工作流 - Azure 逻辑应用 | Microsoft Docs"
-description: "设置 HTTP 终结点用于调用、触发或嵌套 Azure 逻辑应用的工作流"
+title: 使用 HTTP 终结点调用、触发或嵌套工作流 - Azure 逻辑应用 | Microsoft Docs
+description: 设置 HTTP 终结点用于调用、触发或嵌套 Azure 逻辑应用的工作流
 services: logic-apps
-keywords: "工作流, HTTP 终结点"
+keywords: 工作流, HTTP 终结点
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.service: logic-apps
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: de4f4ee086fbf3799fcac1f1b008d9237b5e7a09
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 9c02a0f540f52007412a850b9d69e337743fc35f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300192"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流
 

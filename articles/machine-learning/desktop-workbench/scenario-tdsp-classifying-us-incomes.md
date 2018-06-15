@@ -9,17 +9,19 @@ editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
-ms.openlocfilehash: 48c88f541f650fac3bdec431f3164138fb0f3205
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3b1d2be46b2f142adff966991997891e44e850ec
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832673"
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>使用 Team Data Science Process (TDSP) 项目进行收入分类
 
@@ -140,7 +142,7 @@ ms.lasthandoff: 04/19/2018
 
 “弹性网络”和“随机林”模型的 AUC 均大于 0.85。 我们将两种模型保存在 pickled.pkl 文件中，并输出两种模型的 ROC 图。 “随机林”模型的 AUC 为 0.92，“弹性网络”模型的 AUC 为 0.90。 另外，就模型解释来说，适用于“随机林”模型的特征重要度以 .csv 文件格式输出，并以 pdf 格式绘制（仅限前 20 个预测特征）。
 
-基于测试数据的**“随机林”模型**的 ROC 曲线如下所示。 这是已部署的模型：
+基于测试数据的 **“随机林”模型**的 ROC 曲线如下所示。 这是已部署的模型：
 
 ![](./media/scenario-tdsp-classifying-us-incomes/rf-auc.png)
 

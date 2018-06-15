@@ -1,30 +1,32 @@
 ---
-title: "Azure AI 库特定于行业的解决方案 | Microsoft Docs"
-description: "在 Azure AI 库中发现行业解决方案。"
+title: Azure AI 库特定于行业的解决方案 | Microsoft Docs
+description: 在 Azure AI 库中发现行业解决方案。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: garyericson
 manager: jhubbard
 editor: cgronlun
 ms.assetid: fd2ecf9a-ff76-4a0f-8d68-7f762249648c
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: garye
-ms.openlocfilehash: 0113742cd0b51470559f4e7b03edbfddf2d7e0de
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: b2b55c550a75be977b040070926953308c387639
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834560"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现特定于行业的解决方案
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="industry-specific-cortana-intelligence-solutions"></a>特定于行业的 Cortana Intelligence 解决方案
-库的**[行业](https://gallery.cortanaintelligence.com/industries)**部分汇聚了以下所示行业特有的各种资源：
+库的**[行业](https://gallery.cortanaintelligence.com/industries)** 部分汇聚了以下所示行业特有的各种资源：
 
 * [零售](https://gallery.cortanaintelligence-int.com/industries/retail) - 查找零售解决方案，如销售预测、预测客户流失和开发定价模型。
 * [制造](https://gallery.cortanaintelligence-int.com/industries/manufacturing) - 查找制造解决方案，如预测设备维护和预测能源价格。

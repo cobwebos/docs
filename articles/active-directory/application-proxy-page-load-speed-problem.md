@@ -3,22 +3,24 @@ title: 应用程序代理应用程序加载耗时过长 | Microsoft Docs
 description: 对 Azure AD 应用程序代理的页面加载性能问题进行故障排除
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 34422cb42768ddbc2997da3eec3d35c11e272855
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: 1c32015cb5addcb693c1f7b746f26a6373979c14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158500"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589927"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>应用程序代理应用程序加载耗时过长
 
@@ -32,7 +34,7 @@ ms.locfileid: "34158500"
 具有应用程序代理服务的数据中心可以在[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)上找到。 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>有关应用程序代理数据中心位置的反馈 
-可能有的 Azure 数据中心尚未包含应用程序代理，但会为你带来很大的延迟改进。 将数据中心位置发送到 aadapfeedback@microsoft.com。Microsoft 将根据你的反馈来扩展计划。
+可能有的 Azure 数据中心尚未包含应用程序代理，但会为你带来很大的延迟改进。 将数据中心位置发送到 aadapfeedback@microsoft.com。 Microsoft 将根据你的反馈来扩展计划。
 
 Microsoft 正在致力研究改进延迟的附加功能。 这些改进一旦推出，就会及时更新文档。
 

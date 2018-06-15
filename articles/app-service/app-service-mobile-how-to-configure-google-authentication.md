@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 1a174913446c0a1d5e3e3b01123db8b40bfd172c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f89ff3a030f1da75bca538eefaf2496e9be8e97b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233813"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>如何将应用服务应用程序配置为使用 Google 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -32,11 +33,11 @@ ms.lasthandoff: 04/28/2018
 2. 导航到 [Google API](http://go.microsoft.com/fwlink/p/?LinkId=268303) 网站，使用 Google 帐户凭据登录，单击“创建项目”，提供“项目名称”，并单击“创建”。
 3. 创建项目后，请选择它。 从项目仪表板中，单击“转到 API 概述”。
 4. 选择“启用 API 和服务”。 搜索 **Google + API**，然后选择它。 单击“启用”。
-6. 在左侧导航中，单击“凭据” > “OAuth 许可屏幕”，选择“电子邮件地址”，输入“产品名称”，并单击“保存”。
-7. 在“凭据”选项卡中，单击“创建凭据” > “OAuth 客户端 ID”。 单击“配置许可屏幕”，提供**产品名称**。 单击“保存”
-8. 在“创建客户端 ID”屏幕上，选择“Web 应用程序”。
-9. 将之前复制的应用服务 **URL** 粘贴到“已授权的 JavaScript 源”中，然后将重定向 URI 粘贴到“已授权的重定向 URI”中。 重定向 URI 是应用程序的 URL 加上路径 */.auth/login/google/callback*。 例如，`https://contoso.azurewebsites.net/.auth/login/google/callback`。 请务必使用 HTTPS 方案。 然后单击“创建”。
-10. 在下一个屏幕上，记下客户端 ID 和客户端密钥的值。
+5. 在左侧导航中，单击“凭据” > “OAuth 许可屏幕”，选择“电子邮件地址”，输入“产品名称”，并单击“保存”。
+6. 在“凭据”选项卡中，单击“创建凭据” > “OAuth 客户端 ID”。
+7. 在“创建客户端 ID”屏幕上，选择“Web 应用程序”。
+8. 将之前复制的应用服务 **URL** 粘贴到“已授权的 JavaScript 源”中，然后将重定向 URI 粘贴到“已授权的重定向 URI”中。 重定向 URI 是应用程序的 URL 加上路径 */.auth/login/google/callback*。 例如，`https://contoso.azurewebsites.net/.auth/login/google/callback`。 请务必使用 HTTPS 方案。 然后单击“创建”。
+9. 在下一个屏幕上，记下客户端 ID 和客户端密钥的值。
 
     > [!IMPORTANT]
     > 客户端密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或在客户端应用程序中分发它。

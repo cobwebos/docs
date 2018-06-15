@@ -4,7 +4,7 @@ description: 逻辑应用中的错误和异常处理模式。
 services: logic-apps
 documentationcenter: ''
 author: dereklee
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 70dd4e98dbffd9dac27752f0b4c2f5ce4ca70bdc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ee2c4f1408dcb6527220cd3870ab00d83987f471
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300056"
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>处理逻辑应用中的错误和异常
 
@@ -177,7 +178,7 @@ ms.lasthandoff: 04/03/2018
 
 **@result()** 函数采用单个参数（作用域名称），并返回该作用域内所有操作结果的数组。 这些操作对象包括与 **@actions()** 对象相同的属性，例如操作的开始时间、结束时间、状态、输入、相关 ID 和输出。 若要发送某个作用域内任何失败的操作的上下文，可以轻松地将 **@result()** 函数与 **runAfter** 属性搭配使用。
 
-若要对某个作用域内结果为 **Failed** 的*每个*操作运行某个操作，或者将结果数组筛选为失败的操作，则可将 **@result()** 与**[筛选数组](../connectors/connectors-native-query.md)**操作以及 **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)** 循环搭配使用。 可以采用筛选的结果数组并使用 **ForEach** 循环对每个失败执行操作。 
+若要对某个作用域内结果为 **Failed** 的*每个*操作运行某个操作，或者将结果数组筛选为失败的操作，则可将 **@result()** 与**[筛选数组](../connectors/connectors-native-query.md)** 操作以及 **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)** 循环搭配使用。 可以采用筛选的结果数组并使用 **ForEach** 循环对每个失败执行操作。 
 
 以下示例（后面随附了详细的说明）发送一个 HTTP POST 请求，其中包含作用域“My_Scope”中失败的任何操作的响应正文。
 

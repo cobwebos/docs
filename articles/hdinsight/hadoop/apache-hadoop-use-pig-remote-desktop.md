@@ -14,11 +14,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: f8d403e46f7460dff92cc418b829cc5510efd982
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 700569684888428032997dd81c10023c6fd5a7d8
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823299"
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>从远程桌面连接运行 Pig 作业
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -76,7 +77,7 @@ ms.lasthandoff: 04/16/2018
     <tr>
     <td>RESULT = order FREQUENCIES by COUNT desc;</td><td>按计数为日志级别排序（降序），并存储到 RESULT</td>
     </tr>
-    </table>
+</table>
 6. 也可以使用 `STORE` 语句保存转换结果。 例如，以下命令将 `RESULT` 保存到群集的默认存储容器中的 **/example/data/pigout**目录：
 
         STORE RESULT into 'wasb:///example/data/pigout'

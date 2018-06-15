@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4d28a9a840b25ea415021da149ab145836cbed28
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072430"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802504"
 ---
 # <a name="install-a-linux-master-target-server"></a>安装 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -243,7 +243,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
 2. 通过 multipath -ll 命令了解保留磁盘的多路径 I：multipath -ll
 
-    ![多路径 ID](./media/vmware-azure-install-linux-master-target/image22.png)
+    ![多路径 ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
 3. 格式化驱动器，然后在新驱动器上创建文件系统：mkfs.ext4 /dev/mapper/<保留磁盘的多路径 id>。
     

@@ -2,7 +2,7 @@
 title: 使用 Log Analytics 监视并获取有关逻辑应用运行的见解 - Azure 逻辑应用 | Microsoft Docs
 description: 使用 Log Analytics 监视逻辑应用运行并获取用于故障排除和诊断的见解以及更丰富的调试详细信息
 author: divyaswarnkar
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: d484aaf7d7582bd474d7437a7a62f41880690dbc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 493d82f59600d83a083bb13cdd0a21b872d77a43
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299937"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>使用 Log Analytics 监视并获取有关逻辑应用运行的见解
 
@@ -99,13 +100,13 @@ ms.lasthandoff: 04/05/2018
    ![查看逻辑应用或状态的运行](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
    在此页上有两个高级选项：
-   * **跟踪属性：**此列显示逻辑应用的跟踪属性（按操作分组）。 若要查看跟踪属性，请选择“查看”。 可以使用列筛选器搜索跟踪属性。
+   * **跟踪属性：** 此列显示逻辑应用的跟踪属性（按操作分组）。 若要查看跟踪属性，请选择“查看”。 可以使用列筛选器搜索跟踪属性。
    
      ![查看逻辑应用的跟踪属性](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
      任何新添加的跟踪属性可能需要 10-15 分钟时间，才会首次显示。 了解[如何将跟踪属性添加到逻辑应用](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)。
 
-   * **重新提交：**可以重新提交一个或多个已失败、已成功或仍在运行的逻辑应用运行。 选择要重新提交的运行所对应的复选框，然后选择“重新提交”。 
+   * **重新提交：** 可以重新提交一个或多个已失败、已成功或仍在运行的逻辑应用运行。 选择要重新提交的运行所对应的复选框，然后选择“重新提交”。 
 
      ![重新提交逻辑应用运行](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 

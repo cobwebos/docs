@@ -3,21 +3,19 @@ title: 图形 API 分区 | Microsoft Docs
 description: 了解如何在 Azure Cosmos DB 中使用分区图形。
 services: cosmos-db
 author: luisbosquez
-documentationcenter: ''
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: article
+ms.component: cosmosdb-graph
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: db41efeee467d2cda89f62e0a18cf89cec2d9e63
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e2658c01ea3a31efdcf2fef3bb9b56df536de295
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795646"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用分区图形
 

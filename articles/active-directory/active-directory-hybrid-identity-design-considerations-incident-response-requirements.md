@@ -1,11 +1,11 @@
 ---
-title: "混合标识设计 - 事件响应要求 Azure | Microsoft Docs"
-description: "确定混合标识解决方案的监视和报告功能，IT 部门可以利用这些功能采取措施来识别和缓解潜在威胁"
-documentationcenter: 
+title: 混合标识设计 - 事件响应要求 Azure | Microsoft Docs
+description: 确定混合标识解决方案的监视和报告功能，IT 部门可以利用这些功能采取措施来识别和缓解潜在威胁
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a3d2a459-599b-4b67-8e51-7369ee25082d
 ms.service: active-directory
 ms.devlang: na
@@ -13,13 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 1521c3c7353d206df8a95b2cce1f3358c22fc438
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 09dfa0bd01a7de95ba6ce3093ddf589595116aa6
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801052"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的事件响应要求
 大型或中型组织很可能会部署[安全事件响应](https://technet.microsoft.com/library/cc700825.aspx)，帮助 IT 部门根据事件级别采取相应措施。 标识管理系统是事件响应过程的重要组成部分，因为可以使用它来帮助识别针对目标执行具体操作的用户。 混合标识解决方案必须能够提供监视和报告功能，IT 部门可以利用这些功能采取措施来识别和缓解潜在威胁。 在典型的事件响应计划中将包含以下几个阶段：

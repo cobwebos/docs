@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: a4e1de99-a554-4240-9647-2c6d669593c8
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: d7b4a87b72349375df71a5dd47c2bb544f3b4e3b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f15596bbd8a9b8bab96eeae738b63df934620648
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838487"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -181,9 +183,9 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 ## <a name="whats-next"></a>后续步骤
 现在，已完成 HDInsight Spark 群集设置并且上传了 Jupyter 笔记本，可以随时完成对应于这三个 PySpark 笔记本的主题。 它们介绍了如何浏览数据以及如何创建和使用模型。 高级数据浏览和建模笔记本介绍了如何包括交叉验证、超参数扫描和模型评估。 
 
-**使用 Spark 进行数据浏览和建模：**通过完成[使用 Spark MLlib 工具包为数据创建二元分类和回归模型](spark-data-exploration-modeling.md)主题，浏览数据集并创建、评分和评估机器学习模型。
+**使用 Spark 进行数据浏览和建模：** 通过完成[使用 Spark MLlib 工具包为数据创建二元分类和回归模型](spark-data-exploration-modeling.md)主题，浏览数据集并创建、评分和评估机器学习模型。
 
-**模型使用：**若要了解如何评分在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 生成的机器学习模型](spark-model-consumption.md)。
+**模型使用：** 若要了解如何评分在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 生成的机器学习模型](spark-model-consumption.md)。
 
 **交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据浏览和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
 

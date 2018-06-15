@@ -3,16 +3,17 @@ title: Azure Analysis Services 教程第 7 课：创建关键绩效指标 | Micr
 description: 介绍了在 Azure Analysis Services 教程项目中如何创建关键绩效指标。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8534640822030a7aa93c8eafe2a1b1a4a8bc5bc4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 877619e5c7e323985339a270f2f60abee2a3714f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596026"
 ---
 # <a name="create-key-performance-indicators"></a>创建关键绩效指标
 

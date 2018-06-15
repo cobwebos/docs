@@ -4,7 +4,7 @@ description: 使用 SharePoint Online 连接器创建逻辑应用以管理 Share
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
@@ -15,16 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/19/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 9fdd5ff83bee974953331791f38e1ce8ba8b6dc3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: be104080e1056fa2181e54919d014154d16a60a4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296452"
 ---
 # <a name="get-started-with-the-sharepoint-online-connector"></a>SharePoint Online 连接器入门
 使用 SharePoint Online 连接器管理 SharePoint 列表。  
 
-若要使用[“任何连接器”](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。
+若要使用[任何连接器](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。
 
 ## <a name="connect-to-sharepoint-online"></a>连接到 SharePoint Online
 在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  

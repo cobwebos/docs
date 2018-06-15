@@ -10,16 +10,18 @@ manager: hjerez
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 225414082c447016cdfdfd1a9e5dbe5e5fbcfaec
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2078f7e84522a40cf6fcf6dff860d24307084467
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833795"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列

@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: f02bf54cc8941d18c866183c9b7d12bbe7222d2b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca7ad5a46c1401a283879f8aba80c781a88fc089
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835423"
 ---
 # <a name="retrain-a-machine-learning-model"></a>重新训练机器学习模型
 作为 Azure 机器学习中机器学习模型操作过程的一部分，模型被训练并保存。 使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。 

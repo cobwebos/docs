@@ -7,14 +7,16 @@ ms.author: roastala
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 1bd8f28b472361470fa8020149a9af0c690fbc52
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db0cfa1d91681d48a21ac160706dc4e8c72f81c2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830905"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>如何在 Azure 机器学习中使用 GPU
 图形处理单元 (GPU) 广泛用于处理通常在训练某些深度神经网络模型时发生的计算密集型任务。 使用 GPU 可以显著减少模型的训练时间。 在本文档中，可了解如何配置 Azure ML 工作台，以使用配备 GPU（作为执行目标）的 [DSVM（数据科学虚拟机）](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview)。 
@@ -59,7 +61,7 @@ Azure ML 工作台还支持在 Azure Linux VM 的 Docker 中执行。 用户在�
 
 2. 选择门户左侧的“+ 新建”。
 
-3. 在商城中搜索“用于 Linux (Ubuntu) 的数据科学虚拟机”。
+3. 在市场中搜索“用于 Linux (Ubuntu) 的数据科学虚拟机”。
 
 4. 单击“创建”以创建 Ubuntu DSVM。
 

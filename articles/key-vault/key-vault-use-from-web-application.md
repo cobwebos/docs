@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: adhurwit
-ms.openlocfilehash: de8276b22377db37075c6793d0710bb18625446c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3a191c3ee7eea641aab81008a6da801b609fb4c5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802096"
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>从 Web 应用程序使用 Azure 密钥保管库
 
@@ -260,7 +261,7 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetA
 
 ## <a id="next"></a>后续步骤
 
-有关编程参考，请参阅 [Azure 密钥保管库 C# 客户端 API 参考](https://msdn.microsoft.com/library/azure/dn903628.aspx)。
+有关编程参考，请参阅 [Azure 密钥保管库 C# 客户端 API 参考](https://msdn.microsoft.com/en-us/library/azure/mt430941.aspx)。
 
 <!--Image references-->
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png

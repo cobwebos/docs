@@ -1,23 +1,19 @@
 ---
 title: 了解 Azure IoT 中心设备到云的消息传送 | Microsoft Docs
 description: 开发人员指南 - 如何使用 IoT 中心进行设备到云的消息传送。 包含有关发送遥测和非遥测数据以及使用路由传递消息的信息。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 54b2961713f529438f5508bb0615824ec6bec214
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6096d726d7a00a4ddf8047edeebb74ab3f151e51
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808251"
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>将设备到云的消息发送到 IoT 中心
 
@@ -65,8 +61,8 @@ IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与
 
 ```json
 {
-  "scope": "{ hub | device}",
-  "type": "{ symkey | sas}",
+  "scope": "{ hub | device }",
+  "type": "{ symkey | sas | x509 }",
   "issuer": "iothub"
 }
 ```
@@ -90,4 +86,4 @@ IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与
 [lnk-compatible-endpoint]: iot-hub-devguide-messages-read-builtin.md
 [lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
 [lnk-devguide-security]: iot-hub-devguide-security.md
-[lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-d2c-tutorial]: tutorial-routing.md

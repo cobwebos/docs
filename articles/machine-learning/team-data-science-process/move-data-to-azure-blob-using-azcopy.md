@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: c309ceb2-0e83-4a07-b16d-c997dcd62d5c
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 936f0a25b101e82f3c0e3ae7e1e3183b9ee38393
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a25a35bc05781c6a52e21d697233ba1187ebeccf
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838409"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>使用 AzCopy 将数据移入和移出 Azure Blob 存储
 AzCopy 是一个命令行实用程序，用于将数据上传、复制到 Microsoft Azure Blob、文件和表存储以及从其中下载和复制数据。

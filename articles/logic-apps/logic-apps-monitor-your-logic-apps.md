@@ -2,7 +2,7 @@
 title: 检查状态、设置日志记录并获取警报 - Azure 逻辑应用 | Microsoft Docs
 description: 监视逻辑应用的状态和性能，记录诊断数据并设置警报
 author: jeffhollan
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: c1d5bc55b132b449ebc2964ef95016a6a4780c19
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 061269050ad598e1877c3b7bc6745d4095816020
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301212"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 

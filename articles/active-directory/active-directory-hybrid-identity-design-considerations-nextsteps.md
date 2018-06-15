@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 混合标识设计注意事项 - 后续步骤 | Microsoft 文档"
-description: "摘要和读完混合标识设计注意事项指南后的后续步骤"
-documentationcenter: 
+title: Azure Active Directory 混合标识设计注意事项 - 后续步骤 | Microsoft 文档
+description: 摘要和读完混合标识设计注意事项指南后的后续步骤
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 02d48768-ea9e-4bfe-ae54-b54c4bd0a789
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 29c045af81134847321d9ef69943f0154e9ee5a0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e63df0832431ddc1502ab7b07c60c8d4abf59ac4
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801484"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory 混合标识设计注意事项 - 后续步骤
 既然已为移动设备管理解决方案完成要求定义和所有选项检查，就可以随时采取后续步骤，为你和组织部署合适的支持基础结构。

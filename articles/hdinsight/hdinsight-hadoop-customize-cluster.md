@@ -15,11 +15,11 @@ ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: 15fa3e7738810ada48f471a685f79a82445ad70c
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271300"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808853"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>使用脚本操作自定义基于 Windows 的 HDInsight 群集
 在创建群集的过程中，可以使用**脚本操作**来调用[自定义脚本](hdinsight-hadoop-script-actions.md)，以便在群集上安装其他软件。
@@ -296,7 +296,7 @@ HDInsight 服务中有两种类型的开放源代码组件：
 > [!WARNING]
 > 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/)。
+> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/)。
 >
 >
 

@@ -7,14 +7,16 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3e7436c4b69a27931238ea80304231394074ffe3
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831088"
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>持久保存更改和处理大型文件
 使用 Azure 机器学习试验服务可以配置各种执行目标。 有些目标是本地目标，例如本地计算机，或本地计算机上的 Docker 容器。 有些则是远程目标，例如远程计算机或 HDInsight 群集上的 Docker 容器。 有关详细信息，请参阅 [Azure 机器学习试验执行服务概述](experimentation-service-configuration.md)。 

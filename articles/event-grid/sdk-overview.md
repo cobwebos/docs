@@ -8,11 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 82f08341f8c96695a4ceddb19d1b610d70b89f88
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ebba28e72b3b27729318956bad07b6b6df3f14ac
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823540"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用于管理和发布的事件网格 SDK
 
@@ -24,7 +25,7 @@ ms.lasthandoff: 05/18/2018
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
-* [Java](https://mvnrepository.com/artifact/com.microsoft.azure.eventgrid-2018-01-01/azure-mgmt-eventgrid)
+* [Java](https://search.maven.org/#search%7Cga%7C1%7Cazure-mgmt-eventgrid)
 * [Node](https://www.npmjs.com/package/azure-arm-eventgrid)
 * [Python](https://pypi.python.org/pypi/azure-mgmt-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_mgmt_event_grid)

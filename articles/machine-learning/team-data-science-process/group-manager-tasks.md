@@ -7,17 +7,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 9f9cdd52aff5445f64a4780d6e04590a06c21105
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a6cf6627d18917a2102dc0537cd44dc7701b063f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837236"
 ---
 # <a name="group-manager-tasks"></a>组管理员任务
 
@@ -87,10 +89,10 @@ VSTS 服务器承载以下存储库：
 在“创建帐户”向导中使用以下值填写想要创建的 VSTS 服务器的信息： 
 
 - **服务器 URL**：用自己的*服务器名称*替换 *mysamplegroup*。 服务器 URL 应为：*https://\<servername\>.visualstudio.com*。 
-- **管理代码使用：**选择 **_Git_**。
-- **项目名称：**输入 *GroupCommon*。 
-- **组织工作使用：**选择 *Agile*。
-- **项目承载位置：**选择地区位置。 在此示例中，我们选择*美国中南部*。 
+- **管理代码使用：** 选择 **_Git_**。
+- **项目名称：** 输入 *GroupCommon*。 
+- **组织工作使用：** 选择 *Agile*。
+- **项目承载位置：** 选择地区位置。 在此示例中，我们选择*美国中南部*。 
         
 ![4](./media/group-manager-tasks/fill-in-account-information.png)
 

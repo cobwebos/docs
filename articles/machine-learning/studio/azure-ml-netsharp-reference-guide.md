@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 599dc158cde0508aa0836c7028a87ed708ba1d86
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2571420e3497e85ec1bf37b340015b061e8c91d4
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833907"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>有关 Azure 机器学习的 Net# 神经网络规范语言的指南
 
@@ -216,7 +218,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
     
     如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
 
-+ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：**当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。 
++ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。 
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
       - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。 

@@ -2,7 +2,7 @@
 title: 监视 B2B 事务并设置日志记录 - Azure 逻辑应用 | Microsoft Docs
 description: 监视 AS2、X12 和 EDIFACT 消息，启动集成帐户的诊断日志记录
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 6afab12b9e2d6e8686ecbc95be9743afbe70d98c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 399c7b91949a854f3a152e9a3788d9163c565934
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299311"
 ---
 # <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>监视和设置用于在集成帐户中进行 B2B 通信的诊断日志记录
 

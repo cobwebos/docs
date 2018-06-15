@@ -8,6 +8,7 @@ editor: mezmicrosoft
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
-ms.openlocfilehash: 081ca444aee5cd3d426ee569a98bf54c7923af79
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3695657d819f52ef04468a0f1a44828403c65373
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835094"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 进行问答匹配
 回答开放式问题很难，通常需要行业专家 (SME) 提供人力帮助。 公司通常会创建常见问题解答 (FAQ) 的列表，作为一种协助用户的手段，同时也可以降低对内部 SME 的需求。 本示例介绍了各种有效的机器学习方法，将开放式查询与预先存在的常见问题解答的问答对进行匹配。 本示例演示了如何通过简单的开发过程，使用 Azure Machine Learning Workbench 生成此类解决方案。 

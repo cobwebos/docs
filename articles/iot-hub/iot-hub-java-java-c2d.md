@@ -1,24 +1,20 @@
 ---
 title: 使用 Azure IoT 中心发送云到设备消息 (Java) | Microsoft Docs
 description: 如何使用 Azure IoT SDK for Java 将云到设备的消息从 Azure IoT 中心发送到设备。 修改模拟设备应用以接收云到设备消息，并修改后端应用以发送云到设备消息。
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 7f785ea8-e7c2-40c5-87ef-96525e9b9e1e
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 4c748f01a83c7f569953f7c7f2fc5631ca0efd17
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 410a156d60aa9b17da9c36e043082c291eea4849
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808105"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>使用 IoT 中心发送云到设备的消息 (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -45,7 +41,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 要完成本教程，需要以下各项：
 
-* [IoT 中心入门](iot-hub-java-java-getstarted.md)或[处理 IoT 中心设备到云的消息](iot-hub-java-java-process-d2c.md)教程的完整有效版。
+* [IoT 中心入门](iot-hub-java-java-getstarted.md)或[处理 IoT 中心设备到云的消息](tutorial-routing.md)教程的完整有效版。
 * 最新的 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）

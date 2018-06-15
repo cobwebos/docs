@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 10/12/2017
 ms.author: alleonar
-ms.openlocfilehash: 35e84a22eabce0b7361c2227317baab62421c301
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7ff8c038ac5fa42668227a0531fa77bd853dd2b2
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757513"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -56,7 +57,7 @@ ms.lasthandoff: 04/28/2018
 
 有关 MSI 的详细信息，请参阅 [Azure 资源的托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview)。
 
-若要详细了解如何使用 AAD，请参阅[将应用程序与 Azure Active Directory 集成](/active-directory/develop/active-directory-integrating-applications)。
+若要详细了解如何使用 AAD，请参阅[将应用程序与 Azure Active Directory 集成](/azure/active-directory/develop/active-directory-integrating-applications)。
 
 使用密钥保管库中的密钥、机密或证书前，请通过 CLI、PowerShell、资源管理器模板或 REST 创建和管理密钥保管库，如以下文章所述：
 
