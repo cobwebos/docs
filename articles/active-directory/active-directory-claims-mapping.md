@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 04fa23e059ee676ba0e7c48eeea3361b85af5415
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261196"
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory 中的声明映射（公共预览版）
 
@@ -238,11 +239,11 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="include-basic-claim-set"></a>包含基本声明集
 
-**字符串：**IncludeBasicClaimSet
+**字符串：** IncludeBasicClaimSet
 
-**数据类型：**布尔值（True 或 False）
+**数据类型：** 布尔值（True 或 False）
 
-**摘要：**此属性确定是否在受此策略的令牌中包含基本声明集。 
+**摘要：** 此属性确定是否在受此策略的令牌中包含基本声明集。 
 
 - 如果设置为 True，则在受此策略的令牌中发出基本声明集中的所有声明。 
 - 如果设置为 False，基本声明集中的声明不包含在令牌中，除非在相同策略的声明架构属性中单独添加它们。
@@ -252,18 +253,18 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="claims-schema"></a>声明架构
 
-**字符串：**ClaimsSchema
+**字符串：** ClaimsSchema
 
-**数据类型：**具有一个或多个声明架构条目的 JSON blob
+**数据类型：** 具有一个或多个声明架构条目的 JSON blob
 
-**摘要：**此属性定义除了基本声明集与核心声明集之外，在受此策略影响的令牌中存在的声明。
+**摘要：** 此属性定义除了基本声明集与核心声明集之外，在受此策略影响的令牌中存在的声明。
 对于此属性中定义的每个声明架构条目，都需要特定信息。 必须指定数据来源（**Value** 或 **Source/ID 对**）以及数据作为哪种声明发出（**声明类型**）。
 
 ### <a name="claim-schema-entry-elements"></a>声明架构条目元素
 
-**Value：**Value 元素将静态值定义为要在声明中发出的数据。
+**Value：** Value 元素将静态值定义为要在声明中发出的数据。
 
-**Source/ID 对：**Source 和 ID 元素定义声明中的数据的来源。 
+**Source/ID 对：** Source 和 ID 元素定义声明中的数据的来源。 
 
 Source 元素必须设置为以下值之一： 
 
@@ -326,7 +327,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 |application、resource、audience|标记|服务主体标记|
 |公司|tenantcountry|租户的国家/地区|
 
-**TransformationID：**仅当 Source 元素设置为“transformation”时，才必须提供 TransformationID 元素。
+**TransformationID：** 仅当 Source 元素设置为“transformation”时，才必须提供 TransformationID 元素。
 
 - 此元素必须与 **ClaimsTransformation** 属性（定义如何生成此声明的数据）中的转换条目的 ID 元素匹配。
 
@@ -340,15 +341,15 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 ### <a name="claims-transformation"></a>声明转换
 
-**字符串：**ClaimsTransformation
+**字符串：** ClaimsTransformation
 
-**数据类型：**具有一个或多个转换条目的 JSON blob 
+**数据类型：** 具有一个或多个转换条目的 JSON blob 
 
-**摘要：**使用此属性可将常见转换应用于源数据，以便为声明架构中指定的声明生成输出数据。
+**摘要：** 使用此属性可将常见转换应用于源数据，以便为声明架构中指定的声明生成输出数据。
 
-**ID：**使用 ID 元素可在 TransformationID 声明架构条目中引用此转换条目。 对于此策略中的每个转换条目，此值必须是唯一的。
+**ID：** 使用 ID 元素可在 TransformationID 声明架构条目中引用此转换条目。 对于此策略中的每个转换条目，此值必须是唯一的。
 
-**TransformationMethod：**TransformationMethod 元素标识为生成声明的数据而执行的操作。
+**TransformationMethod：** TransformationMethod 元素标识为生成声明的数据而执行的操作。
 
 根据选择的方法，需要一组输入和输出。 这些内容使用 **InputClaims**、**InputParameters** 和**OutputClaims** 元素进行定义。
 
@@ -358,24 +359,24 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 |Join|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
 |ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果 @ 符号不存在，则原样返回原始输入字符串。|
 
-**InputClaims：**使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
+**InputClaims：** 使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
 - **ClaimTypeReferenceId** 与声明架构条目的 ID 元素联接在一起可查找相应的输入声明。 
 - **TransformationClaimType** 用于向此输入提供唯一名称。 此名称必须与转换方法的预期输入之一匹配。
 
-**InputParameters：**使用 InputParameters 元素可将常数值传递给转换。 它具有两个属性：**Value** 和 **ID**。
+**InputParameters：** 使用 InputParameters 元素可将常数值传递给转换。 它具有两个属性：**Value** 和 **ID**。
 
 - **Value** 是要传递的实际常数值。
 - **ID** 用于向此输入提供唯一名称。 此名称必须与转换方法的预期输入之一匹配。
 
-**OutputClaims：**使用 OutputClaims 元素可保存转换生成的数据，并将它绑定到声明架构条目。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
+**OutputClaims：** 使用 OutputClaims 元素可保存转换生成的数据，并将它绑定到声明架构条目。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
 - **ClaimTypeReferenceId** 与声明架构条目的 ID 联接在一起可查找相应的输出声明。
 - **TransformationClaimType** 用于向此输出提供唯一名称。 此名称必须与转换方法的预期输出之一匹配。
 
 ### <a name="exceptions-and-restrictions"></a>例外和限制
 
-**SAML NameID 和 UPN：**NameID 和 UPN 值所源自的属性以及允许使用的声明转换会受到限制。
+**SAML NameID 和 UPN：** NameID 和 UPN 值所源自的属性以及允许使用的声明转换会受到限制。
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 |Source|ID|说明|
@@ -467,7 +468,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
     1. 若要创建该策略，请运行以下命令：  
      
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":" tenantcountry ","SamlClaimType":" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country ","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
     ```
     
     2. 若要查看新策略并获取策略 ObjectId，请运行以下命令：

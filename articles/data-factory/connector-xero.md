@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 131f147e2c445e8cfef12288d4d0d29f6fd7fe01
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fbfad00956faad49980a431504d991cfde22cafb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167545"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619365"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Xero 复制数据
 

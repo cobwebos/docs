@@ -379,10 +379,10 @@
         - name: 数据科学虚拟机
           tocHref: /azure/machine-learning/data-science-virtual-machine
           topicHref: /azure/machine-learning/data-science-virtual-machine/
-    - name: Marketplace 消费者
+    - name: 市场消费者
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/
-    - name: Marketplace 发布
+    - name: 市场发布
       tocHref: /azure/marketplace-publishing/
       topicHref: /azure/marketplace-publishing/
     - name: 媒体服务
@@ -469,6 +469,9 @@
     - name: 复原
       tocHref: /azure/resiliency/
       topicHref: /azure/resiliency/
+    - name: 基于角色的访问控制
+      tocHref: /azure/role-based-access-control/
+      topicHref: /azure/role-based-access-control/
     - name: 服务运行状况
       tocHref: /azure/service-health/
       topicHref: /azure/service-health/

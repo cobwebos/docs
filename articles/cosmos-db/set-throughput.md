@@ -4,24 +4,21 @@ description: 了解如何为 Azure Cosmos DB 容器、集合以及关系图和�
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: f98def7f-f012-4592-be03-f6fa185e1b1e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: sngun
-ms.openlocfilehash: 925167c6b4a7f173726ec094c2847a16ca3d0ef4
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 777655d8976990396b2c78a5b6d977a92b1a2335
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34614071"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>为 Azure Cosmos DB 容器和数据库设置和获取吞吐量
 
-可通过 Azure 门户或客户端 SDK 为一个 Azure Cosmos DB 容器或一组容器设置吞吐量。 为一组容器预配吞吐量时，所有这些容器共享预配的吞吐量。 为单个容器预配吞吐量可确保为该特定容器保留吞吐量。 另一方面，为一个数据库预配吞吐量可在属于该数据库的所有容器间共享吞吐量。 在 Azure Cosmos DB 数据库中，可以让一组容器共享吞吐量，也可以让容器使用专用的吞吐量。 
+可通过 Azure 门户或客户端 SDK 为一个 Azure Cosmos DB 容器或一组容器设置吞吐量。 为一组容器预配吞吐量时，所有这些容器共享预配的吞吐量。 为单个容器预配吞吐量可确保为该特定容器预留吞吐量。 另一方面，为一个数据库预配吞吐量可在属于该数据库的所有容器间共享吞吐量。 在 Azure Cosmos DB 数据库中，可以让一组容器共享吞吐量，也可以让容器使用专用的吞吐量。 
 
 Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容器并拆分/重新均衡分区中不断增长的数据。
 
@@ -89,7 +86,7 @@ Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容�
 
 ## <a name="considerations-when-provisioning-throughput"></a>预配吞吐量时的注意事项
 
-下面是一些注意事项，可以帮助你确定吞吐量保留策略。
+下面是一些注意事项，可以帮助你确定吞吐量预留策略。
 
 出现以下情况时，考虑在数据库级别（针对一组容器）预配吞吐量：
 
@@ -178,7 +175,7 @@ dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
 await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
 ```
 
-Azure Cosmos DB 运行一个保留模型来预配吞吐量。 也就是说，用户需要根据保留的吞吐量付费，不管实际使用的吞吐量是多少。 随着应用程序的负载、数据和使用模式的更改，可以通过 SDK 或 [Azure 门户](https://portal.azure.com)轻松增加和减少保留的 RU 数。
+Azure Cosmos DB 运行一个预留模型来预配吞吐量。 也就是说，用户需要根据保留的吞吐量付费，不管实际使用的吞吐量是多少。 随着应用程序的负载、数据和使用模式的更改，可以通过 SDK 或 [Azure 门户](https://portal.azure.com)轻松增加和减少保留的 RU 数。
 
 每个或每组容器都会映射到 Azure Cosmos DB 中的 `Offer` 资源，该资源包含有关预配吞吐量的元数据。 可以通过查找容器的相应服务资源，并使用新的吞吐量值来对它进行更新，来更改分配的吞吐量。 以下代码片段使用 .NET SDK 将容器的吞吐量更改为每秒 5,000 个请求单位：
 
