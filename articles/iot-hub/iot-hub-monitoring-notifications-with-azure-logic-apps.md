@@ -1,25 +1,21 @@
 ---
 title: 通过 Azure 逻辑应用进行 IoT 远程监视并发送通知 | Microsoft Docs
 description: 使用 Azure 逻辑应用在 IoT 中心内监视 IoT 温度，并针对检测到的任何异常自动将电子邮件通知发送到邮箱。
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: IoT 监视, IoT 通知, IoT 温度监视
-ms.assetid: 43043067-2e1f-42c9-953d-e2dce8fd86df
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: e54c36d0cfbaedb93db86ad6ce5f99b288b63c9c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e59577e99114f1b2061a2f9075976da3f0b1811f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634448"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知
 

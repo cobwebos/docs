@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: iot-accelerators
+author: dominicbetts
+ms.service: iot-accelerators
+ms.topic: include
+ms.date: 05/30/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 4224575644e754724d2129f101aed6b9e4b54b65
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34670160"
+---
 ## <a name="provision-the-solution"></a>预配解决方案
 
 如果尚未在帐户中预配远程监视预配置解决方案，请执行以下步骤：
@@ -21,7 +38,7 @@
 
 是否有你预期会看到但没有列出的解决方案详细信息？ 请在 [用户之声](https://feedback.azure.com/forums/321918-azure-iot)中向我们提供功能建议。
 
-[lnk-azureiotsuite]: https://www.azureiotsuite.com
+[lnk-azureiotsuite]: https://www.azureiotsolutions.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-v1-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-v1-faq.md

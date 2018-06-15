@@ -1,23 +1,20 @@
 ---
-title: "Azure IoT 中心设备管理入门 (Java) | Microsoft Docs"
-description: "如何使用 Azure IoT 中心设备管理启动远程设备重启。 使用适用于 Java 的 Azure IoT 设备 SDK 实现包含直接方法的模拟设备应用，并使用适用于 Java 的 Azure IoT 服务 SDK 实现调用直接方法的服务应用。"
-services: iot-hub
-documentationcenter: .java
+title: Azure IoT 中心设备管理入门 (Java) | Microsoft Docs
+description: 如何使用 Azure IoT 中心设备管理启动远程设备重启。 使用适用于 Java 的 Azure IoT 设备 SDK 实现包含直接方法的模拟设备应用，并使用适用于 Java 的 Azure IoT 服务 SDK 实现调用直接方法的服务应用。
 author: dominicbetts
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: java
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 7e3837582e2020dc560a2b624352f7326ea87c3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a4ba8c2b88520dff028610cf64aa9b3a6e3fefd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636182"
 ---
 # <a name="get-started-with-device-management-java"></a>设备管理入门 (Java)
 

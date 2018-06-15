@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: sstein
-ms.openlocfilehash: cf8d4427cddbe6368ac265fe9ecc0f408f7fb1fb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7e156142a68b30471646ea3a9181ce7d0097e626
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646987"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库
 若要轻松地扩大 SQL Azure 上的数据库，请使用分片映射管理器。 分片映射管理器是一个特殊的数据库，它维护一个分片集中有关所有分片 （数据库）的全局映射信息。 元数据允许应用程序基于**分片键**值连接到正确的数据库。 此外，在集中的每个分片都包含跟踪本地分片数据的映射 （称为 **shardlet**）。 
@@ -94,7 +95,7 @@ ms.lasthandoff: 03/17/2018
 ## <a name="constructing-a-shardmapmanager"></a>构造 ShardMapManager
 ShardMapManager 对象是使用工厂（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)）模式构造的。 通过 ShardMapManagerFactory.GetSqlShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.getsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)）方法可获取具有 ConnectionString 形式的凭据（包括用于保存 GSM 的服务器名称和数据库名称），并返回 ShardMapManager 的实例。  
 
-**请注意：**在应用程序的初始化代码内，每个应用域只应实例化 **ShardMapManager** 一次。 在同一个应用域中创建 ShardMapManager 的其他实例将导致应用程序的内存增加且 CPU 使用率增加。 **ShardMapManager** 可包含任意数量的分片映射。 尽管对于许多应用程序而言，单个分片映射可能是足够的，但有时针对不同的架构或出于特定目的，需使用不同的数据库集，在这些情况下多个分片可能更合适。 
+**请注意：** 在应用程序的初始化代码内，每个应用域只应实例化 **ShardMapManager** 一次。 在同一个应用域中创建 ShardMapManager 的其他实例将导致应用程序的内存增加且 CPU 使用率增加。 **ShardMapManager** 可包含任意数量的分片映射。 尽管对于许多应用程序而言，单个分片映射可能是足够的，但有时针对不同的架构或出于特定目的，需使用不同的数据库集，在这些情况下多个分片可能更合适。 
 
 在此代码中，应用程序尝试使用 TryGetSqlShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)）方法打开现有的 ShardMapManager。 如果数据库中尚不存在表示全局 ShardMapManager (GSM) 的对象，客户端库会使用 CreateSqlShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)）方法在数据库中创建这些对象。
 

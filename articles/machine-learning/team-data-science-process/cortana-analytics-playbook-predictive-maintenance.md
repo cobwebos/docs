@@ -2,10 +2,9 @@
 title: 针对预测性维护解决方案的 Azure AI 指南 | Microsoft Docs
 description: 有关增强多个垂直行业预测性维护解决方案的数据科学的全面说明。
 services: machine-learning
-documentationcenter: ''
 author: fboylu
-manager: jhubbard
-editor: cgronlun
+manager: cgronlun
+editor: ''
 ms.assetid: 2e8b66db-91eb-432b-b305-6abccca25620
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -15,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 581e9d586f007fe0cd28d60b5558594777656ca8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 50338e05241be9ce573ff3dd3bb99711cbf15b28
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248531"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -385,7 +385,7 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 对于二元分类：
 - [接收方操作曲线 (ROC)](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) 也是一个常用的指标。 在 ROC 曲线中，模型性能根据 ROC 上的固定操作点来解释。
-- 但对于 PdM 问题，十分位表和提升图更具参考性。 它们只注重正类（故障），提供的算法性能图比 ROC 曲线更复杂。
+- 但对于 PdM 问题， _decile 表_和_提升图_更具信息性。 它们只注重正类（故障），提供的算法性能图比 ROC 曲线更复杂。
   - 十分位表是使用文本示例根据故障概率的降序创建的。 然后，将排序的示例分组成十分位（具有最高概率的样本的 10%、20%、30%，依此类推）。 每个十分位的比率（真实正比率）/（随机基线）可帮助估计每个十分位的算法性能。 随机基线采用值 0.1、0.2，依此类推。
   - 提升图绘制十分位的真实正比率，而不是所有十分位的随机真实正比率。[](http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html) 最前面的十分位是结果的重点，因为它们展示了最大增益。 用于 PdM 时，也可以将最前面的十分位视为“有风险”的代表。
 

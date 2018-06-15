@@ -8,18 +8,19 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 6a755ef4d933046377a6a25be76655b44f4bf508
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d2aa3c8582227363e9365f213cdf351b9f4a81af
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34361363"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830531"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>基于数据科学虚拟机的团队分析和 AI 环境 
 [数据科学虚拟机](overview.md) (DSVM) 通过 AI 和数据分析的预建软件在 Azure 云上提供丰富的环境。 DSVM 历来被用作个人分析桌面，并且个人数据科学家通过其预建分析环境的共享概念提高了生产率。 当大型分析团队为其数据科学家和 AI 开发人员规划分析环境时，其中一个反复出现的主题就是打造共享分析开发和试验基础结构，该基础结构根据跨整个数据科学/分析团队促进协作和一致的企业 IT 策略进行管理。 共享基础结构还使 IT 部门能够更好地利用分析环境。 基于团队的数据科学/分析基础结构还被某些组织称为“分析沙盒”，它帮助数据科学家在有权访问多种数据资产但不影响生产环境的情况下，以安全的方式快速理解数据、运行试验、验证假设、构建预测模型。 

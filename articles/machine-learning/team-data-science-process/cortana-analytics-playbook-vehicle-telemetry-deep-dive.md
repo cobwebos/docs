@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: d8866fa6-aba6-40e5-b3b3-33057393c1a8
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 10fe87757a6da8a64e4fbd7fb624fef3e666714c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a856c59191a1e35b78d1ab6c2c88ab5288ea1419
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836477"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>车辆遥测分析解决方案操作手册：深入探讨解决方案
 这个菜单链接至此操作手册的部分： 
@@ -96,7 +98,7 @@ ms.lasthandoff: 05/03/2018
 | 8OMCL3LGI7XNCC21U |敞篷车 |
 | ……. | |
 
-## <a name="ingestion"></a>引入
+## <a name="ingestion"></a>引流 
 Azure 事件中心、Azure 流分析和 Azure 数据工厂的组合可用于获取车辆信号、诊断事件以及实时和批处理分析。 所有这些组件都将作为解决方案部署的一部分进行创建和配置。 
 
 ### <a name="real-time-analysis"></a>实时分析
