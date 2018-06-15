@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: eee20271c27f596ee6aefd0b7280c7862c53b289
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ac3ea6d696eaf5ba4b2554f416118718271526a8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292460"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。
@@ -75,7 +77,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
     * 提供 **Azure AD 全局管理员凭据**。 全局管理员租户可能不同于 Microsoft Azure 凭据。
     * 用于注册连接器的管理员帐户必须属于已启用应用程序代理服务的同一目录。 例如，如果租户域为 contoso.com，则管理员应该为 admin@contoso.com 或该域上的任何其他有效别名。
     * 如果已为要安装连接器的服务器启用“IE 增强的安全配置”，则可能无法显示注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作。 确保 Internet Explorer 增强的安全性已关闭。
-    * 如果连接器注册不成功，请参阅 [故障排除应用程序代理](../active-directory/active-directory-application-proxy-troubleshoot.md)。
+    * 如果连接器注册不成功，请参阅 [故障排除应用程序代理](../active-directory/manage-apps/application-proxy-troubleshoot.md)。
 
     ![已安装的连接器](./media/app-proxy/app-proxy-connector-installed.png)
 4. 若要确保连接器正常工作，请运行 Azure AD 应用程序代理连接器疑难解答程序。 运行疑难解答程序后，应看到成功的报告。

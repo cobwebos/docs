@@ -1,19 +1,20 @@
 ---
-title: "在最短的停机时间内迁移到 Azure Database for MySQL"
-description: "本文介绍如何通过使用 Attunity Replicate for Microsoft Migrations 执行在最短的停机时间内从 MySQL 数据库到 Azure Database for MySQL 的迁移，以及如何设置从源数据库到目标数据库的初始加载和持续数据同步。"
+title: 在最短的停机时间内迁移到 Azure Database for MySQL
+description: 本文介绍如何通过使用 Attunity Replicate for Microsoft Migrations 执行在最短的停机时间内从 MySQL 数据库到 Azure Database for MySQL 的迁移，以及如何设置从源数据库到目标数据库的初始加载和持续数据同步。
 services: mysql
 author: HJToland3
 ms.author: jtoland
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: e1be72d97570643cc8a7c6eb05d3d363e96357b6
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 99add55188615debdc96b6cfc8b21e34552fd9d4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267248"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>在最短的停机时间内迁移到 Azure Database for MySQL
 可以使用 Attunity Replicate for Microsoft Migrations 将现有的 MySQL 数据库迁移到 Azure Database for MySQL。 Attunity Replicate 是由 Attunity 和 Microsoft 联合提供的一项服务。 它随 Azure 数据库迁移服务一起提供，Microsoft 客户无需额外付费即可拥有它。 

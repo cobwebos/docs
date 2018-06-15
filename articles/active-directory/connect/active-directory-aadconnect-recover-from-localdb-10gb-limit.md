@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect：如何从 LocalDB 10 GB 的限制问题恢复 | Microsoft Docs"
-description: "本主题介绍在遇到 LocalDB 10 GB 限制问题时，如何恢复 Azure AD Connect Synchronization Service。"
+title: Azure AD Connect：如何从 LocalDB 10 GB 的限制问题恢复 | Microsoft Docs
+description: 本主题介绍在遇到 LocalDB 10 GB 限制问题时，如何恢复 Azure AD Connect Synchronization Service。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 41d081af-ed89-4e17-be34-14f7e80ae358
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b72f6730d32a71146781420923226fc521b5982b
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 3ba491902444c9c05f997f854353206d78f2957d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591266"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何从 LocalDB 10 GB 的限制恢复
 Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可以使用随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，也可以使用自己的完整 SQL。 SQL Server Express 存在 10 GB 的大小限制。 使用 LocalDB 并达到此限制后，Azure AD Connect Synchronization Service 将无法正常启动或同步。 本文提供了恢复步骤。

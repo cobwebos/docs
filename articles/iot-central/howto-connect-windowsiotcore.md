@@ -1,19 +1,19 @@
 ---
 title: 将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序 | Microsoft Docs
 description: 了解如何以设备开发人员的身份将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序。
-services: iot-central
-author: miriamb
+author: miriambrus
 ms.author: mriamb
 ms.date: 04/09/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
 manager: peterpr
-ms.openlocfilehash: c38231f97eeb1c4511702bf3e788f72918cab045
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c36a9798718c37fba889323830b76cf8201785cf
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200398"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261893"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -23,7 +23,7 @@ ms.locfileid: "34200398"
 
 若要完成本文中的步骤，需要以下各项：
 
-1. 从“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
+1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
 2. 运行 Windows 10 IoT Core 操作系统的设备。 就本演练来说，我们将使用 Raspberry Pi
 
 从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Windows IoT Core** 设备模板：
@@ -50,7 +50,7 @@ ms.locfileid: "34200398"
 | Type            | 显示名称 | 字段名称 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 文本            | Location     | location   | 不适用       |
+| 文本            | 位置     | location   | 不适用       |
 
 ## <a name="add-a-real-device"></a>添加真实设备
 

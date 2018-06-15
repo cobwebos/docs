@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 309a64c47eb95ca2ca05bb82bc1c41256305823d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9608af734d39627435a81e1d853c2546eabcdb0f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623428"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -64,7 +65,7 @@ ms.lasthandoff: 04/03/2018
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
-9. 创建完成后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
     ![数据工厂主页](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. 单击“创作和部署”磁贴启动数据工厂编辑器。

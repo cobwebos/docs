@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 05/16/2018
-ms.author: billmath
-ms.openlocfilehash: a96e856b55f118b74c7cb43ead925e10e4b74f1c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: dbb139081e1eb84ea64a187b7fec0d9cb159653c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192432"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234999"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理来宾访问权限
 
@@ -36,9 +37,6 @@ ms.locfileid: "34192432"
 
 
 访问评审在 Azure AD 的 Premium P2 版本中提供，后者随附在 Microsoft 企业移动性 + 安全性的 E5 中。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。 与此功能交互的每个用户，无论是创建评审、填写评审还是确认评审，都需要许可证。 
-
-访问评审在 Azure AD 的 Premium P2 版本中提供，后者随附在 Microsoft 企业移动性 + 安全性的 E5 中。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-whatis.md)。 与此功能交互的每个用户，无论是将该功能用于创建评审、访问评审或应用评审，都需要许可证。
-
 
 如果计划要求来宾用户评审其自己的访问权限，请阅读来宾用户授权。 有关详细信息，请参阅 [Azure AD B2B 协作授权](active-directory-b2b-licensing.md)。
 

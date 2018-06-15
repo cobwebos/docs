@@ -14,12 +14,12 @@ ms.date: 09/11/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: b185f53f8f13ebbe1efc57a99b7d65269f5559c0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3f1225b71d16419a3dd100bfaccfbfa1e1c1c41c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354505"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292885"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory 的应用程序访问与单一登录是什么？
 单一登录是指只需使用单个用户帐户登录一次，就能访问展开业务所需的全部应用程序和资源。 登录之后，用户可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。
@@ -59,7 +59,7 @@ Azure AD 支持通过三种不同的方式登录应用程序：
 
 Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协议的应用程序使用联合单一登录。
 
-另请参阅：[管理用于联合单一登录的证书](../active-directory-sso-certs.md)
+另请参阅：[管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)
 
 ### <a name="password-based-single-sign-on"></a>基于密码的单一登录
 配置基于密码的单一登录可使组织中的用户能够使用第三方 SaaS 应用程序中的用户帐户信息通过 Azure AD 自动登录到第三方 SaaS 应用程序。 启用此功能时，Azure AD 将收集并安全地存储用户帐户信息和相关密码。
@@ -194,7 +194,7 @@ Azure AD 还为支持基于密码单一登录、现有单一登录以及任何�
 * [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../active-directory-saas-tutorial-list.md)
 * [使用 Cloud App Discovery 查找未经认可的云应用程序](cloud-app-discovery.md)
-* [管理对应用的访问简介](../active-directory-managing-access-to-apps.md)
+* [管理对应用的访问简介](what-is-access-management.md)
 * [比较 Azure AD 中用于管理外部标识的功能](../active-directory-b2b-compare-b2c.md)
 
 

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe7b419a2f4bbc3ae4aa69dad1e3b3e0957cc848
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2af093e4ce6284f4cee75543720d109fa71a9b66
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621388"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -231,7 +232,7 @@ ms.lasthandoff: 03/23/2018
     1. 请确认以下选项：a. “文件格式”已设为“文本格式”。 可在下拉列表中看到所有支持的格式。 例如：JSON、Avro、ORC 和 Parquet。
         b. “列分隔符”已设为 `Comma (,)`。 可在下拉列表中看到数据工厂支持的其他列分隔符。 还可以指定自定义分隔符。
         c. “行分隔符”已设为 `Carriage Return + Line feed (\r\n)`。 可在下拉列表中看到数据工厂支持的其他行分隔符。 还可以指定自定义分隔符。
-        d.单击“下一步”。 “跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。
+        d. “跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。
         e.  未设置“第一数据行包含列名”。 如果源文件的第一行包含列名称，请选择此选项。
         f. 已设置“将空列值视为 null”选项。
     2. 展开“高级设置”以查看可用的高级选项。

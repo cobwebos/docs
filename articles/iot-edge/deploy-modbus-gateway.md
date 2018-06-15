@@ -1,25 +1,19 @@
 ---
-title: "在 Azure IoT Edge 上部署 Modbus | Microsoft Docs"
-description: "通过创建 IoT Edge 网关设备，允许设备使用 Modbus TCP 与 Azure IoT 中心通信"
-services: iot-Edge
-documentationcenter: 
+title: 在 Azure IoT Edge 上部署 Modbus | Microsoft Docs
+description: 通过创建 IoT Edge 网关设备，允许设备使用 Modbus TCP 与 Azure IoT 中心通信
 author: kgremban
 manager: timlt
-editor: chrisgmsft
-ms.assetid: 
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: kgremban
-ms.custom: 
-ms.openlocfilehash: e239bde48c3da0d899e3c78bdd39f520c4128b95
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: d6e831cdd7cd18305beb617693ee1026bb6429e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631456"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway---preview"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备 - 预览
 
@@ -31,7 +25,7 @@ ms.lasthandoff: 01/05/2018
 
 本文假定你使用的是 Modbus TCP 协议。 若要详细了解如何配置支持 Modbus RTU 的模块，请参阅 Github 上的 [Azure IoT Edge Modbus 模块](https://github.com/Azure/iot-edge-modbus)项目。 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 * Azure IoT Edge 设备。 若要详细了解如何设置一个，请参阅[在 Windows 中将 Azure IoT Edge 部署到模拟的设备](tutorial-simulate-device-windows.md)或[在 Linux 中将 Azure IoT Edge 部署到模拟的设备](tutorial-simulate-device-linux.md)。 
 * IoT Edge 设备的主键连接字符串。
 * 支持 Modbus TCP 的物理或模拟 Modbus 设备。

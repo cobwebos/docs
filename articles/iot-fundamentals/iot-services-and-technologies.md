@@ -1,30 +1,24 @@
 ---
 title: Azure 物联网 (IoT) 技术和解决方案
 description: 提供适用于生成 Azure IoT 解决方案的 PaaS/SaaS 技术和解决方案的集合。
-services: iot-hub
-documentationcenter: ''
 author: BryanLa
 manager: timlt
-editor: bryanla; v-clay
-ms.service: iot
-ms.devlang: na
+ms.service: iot-fundamentals
+services: iot-fundamentals
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/30/2018
-ms.author: bryanla; v-clay
-ms.custom: ''
-ms.openlocfilehash: 56410b040ac14a2a46927cac8ed41218fc709888
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 05/18/2018
+ms.author: bryanla
+ms.openlocfilehash: e875ec599323b3d037ba704d4cc54a48ff9b1b57
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886189"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631405"
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT 技术和解决方案：PaaS 和 SaaS
 
 Microsoft 构建的项目组合支持所有客户的需求，让所有人都能够获得数字化转型带来的好处。 Azure IoT 产品组合概述了可用的 PaaS/SaaS 技术和解决方案。 它提供两种适用于生成你自己的解决方案的途径：
-- 平台即服务 (PaaS)：使用 [Azure IoT 解决方案加速器](https://www.azureiotsuite.com/)开发应用程序，该加速器集合了企业级的预配置解决方案，可以加速自定义 IoT 解决方案的开发。
+- 平台即服务 (PaaS)：使用 [Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/)开发应用程序，该加速器集合了企业级的预配置解决方案，可以加速自定义 IoT 解决方案的开发。
 - 软件即服务 (SaaS)：通过 [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) 这种新的 SaaS 解决方案进行快速入门，以便开发 IoT 应用程序，不需接触复杂的 IoT 解决方案。 如果因组织缺少相关的资源而无法生成你自己的 IoT 解决方案，则可使用 Azure IoT Central 这种无代码的 IoT 解决方案，在数分钟内创建设备模型、仪表板和规则。
 
 ![Azure IoT 技术和解决方案][img-paas-saas-technologies-solutions]

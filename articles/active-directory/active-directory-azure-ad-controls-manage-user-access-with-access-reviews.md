@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/16/2018
-ms.author: billmath
-ms.openlocfilehash: 2b80a09bc84166b65a731f1bd544e1cb40ff2eef
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 22cb517435777074390321de64daf98c8d12d0fb
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192483"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35232959"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理用户访问权限
 
@@ -33,10 +34,6 @@ ms.locfileid: "34192483"
 
 
 访问评审在 Azure AD 的 Premium P2 版本中提供，后者随附在 Microsoft 企业移动性 + 安全性的 E5 中。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。 与此功能交互的每个用户，无论是创建评审、填写评审还是确认评审，都需要许可证。 
-
-访问评审在 Azure AD 的 Premium P2 版本中提供，后者随附在 Microsoft 企业移动性 + 安全性的 E5 中。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-whatis.md)。 与此功能交互的每个用户，无论是将该功能用于创建评审、访问评审或应用评审，都需要许可证。
-
-
 
 ## <a name="create-and-perform-an-access-review"></a>创建和执行访问评审
 

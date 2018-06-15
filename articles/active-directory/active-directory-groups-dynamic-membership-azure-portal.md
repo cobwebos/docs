@@ -14,12 +14,12 @@ ms.date: 05/17/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 4eda67f9c28a52667a34af175086be19b627f2ce
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 38f65804e9166a77278a11d545374461e6f6c38f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303362"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261111"
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
 在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。 可以为安全组或 Office 365 组中的动态成员身份设置规则。
@@ -111,7 +111,7 @@ ms.locfileid: "34303362"
 
 若要将用户属性的值与大量其他值进行比较，可使用 -In 或 -notIn 运算符。 下面是使用 -In 运算符的示例：
 ```
-    user.department -In [ "50001", "50002", "50003", “50005”, “50006”, “50007”, “50008”, “50016”, “50020”, “50024”, “50038”, “50039”, “51100” ]
+   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
 ```
 请注意值列表开头和末尾使用的“[”和“]”。 此条件的计算结果为 True，user.department 的值与此列表中的某个值相同。
 

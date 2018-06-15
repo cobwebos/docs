@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack 中使用 SQL 数据库 | Microsoft Docs
-description: 了解如何在 Azure Stack 中部署 SQL 数据库即服务，并通过便捷的步骤部署 SQL Server 资源提供程序适配器。
+title: 更新 Azure 堆栈 SQL 资源提供程序 |Microsoft 文档
+description: 了解如何更新 Azure 堆栈 SQL 资源提供程序。
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: fd1c2241fe22dc35ceb09e0ba3650fa0000a77b1
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 3a7656e54181c8e8e7b6b1bd39f80ce8ed01c807
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603610"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294854"
 ---
-# <a name="update-the-sql-resource-provider-adapter"></a>更新 SQL 资源提供程序适配器
-更新 Azure Stack 内部版本时，可能会发布新的 SQL 资源提供程序适配器。 虽然现有的适配器可以继续使用，但仍建议尽快更新到最新的内部版本。 更新必须按顺序安装：不能跳过版本（请参见[部署资源提供程序的先决条件](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)中的版本列表）。
+# <a name="update-the-sql-resource-provider"></a>更新 SQL 资源提供程序
+更新 Azure 堆栈生成时，可能会发布新的 SQL 资源提供程序。 虽然现有的适配器可以继续使用，但仍建议尽快更新到最新的内部版本。 更新必须按顺序安装：不能跳过版本（请参见[部署资源提供程序的先决条件](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)中的版本列表）。
 
 若要更新资源提供程序，请使用 *UpdateSQLProvider.ps1* 脚本。 此过程类似于用于安装资源提供程序的过程，如[部署资源提供程序](.\azure-stack-sql-resource-provider-deploy.md)一文中所述。 资源提供程序的下载包中提供此脚本。
 

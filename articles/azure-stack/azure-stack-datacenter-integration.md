@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 55243ead4f088f7a2b3d54c0581c604f0dc63d07
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0c43b66a9d6210ea951af3fae5eca8bc6d47c3d9
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261202"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>有关 Azure Stack 集成系统的数据中心集成注意事项
 如果你对 Azure Stack 集成系统感兴趣，应了解一些有关部署的重要规划注意事项，及系统如何融入数据中心。 本文提供这些注意事项的综合概述，帮助你在 Azure Stack 多节点系统方面做出重要的基础结构决策。 配合 OEM 硬件供应商将 Azure Stack 部署到数据中心时，了解这些注意事项会有所帮助。  
@@ -50,7 +51,7 @@ Azure Stack 是一个密封的系统，从权限和网络角度来看，其基�
 ## <a name="identity-considerations"></a>标识注意事项
 
 ### <a name="choose-identity-provider"></a>选择标识提供者
-需要考虑用于 Azure Stack 部署的标识提供者：Azure AD 或 AD FS。 部署之后无法切换标识提供者，除非重新部署整个系统。 如果你没有 Azure AD 帐户，并将云服务提供的程序提供给你的帐户，并且如果你决定切换提供程序并且可以使用不同的 Azure AD 帐户，此时你将需要联系你的解决方案提供商，以重新部署解决方案 f或您使用的您的成本。
+需要考虑用于 Azure Stack 部署的标识提供者：Azure AD 或 AD FS。 部署之后无法切换标识提供者，除非重新部署整个系统。 如果你未拥有 Azure AD 帐户且使用的是云服务提供商提供给你的帐户，并且你决定切换提供商并使用其他 Azure AD 帐户，则此时你必须联系解决方案提供商让其根据你的成本为你重新部署解决方案。
 
 
 
@@ -76,7 +77,7 @@ Azure Stack 是一个密封的系统，从权限和网络角度来看，其基�
 
 ## <a name="naming-decisions"></a>命名决策
 
-需要考虑如何规划 Azure Stack 命名空间，尤其是区域名称和外部域名。 公开终结点的 Azure Stack 部署的外部完全限定域名 (FQDN) 由以下两个名称组成：&lt;*区域*&gt;.&lt;*fqdn*&gt;。 例如 *east.cloud.fabrikam.com*。在此示例中，Azure Stack 门户将在以下 URL 中提供：
+需要考虑如何规划 Azure Stack 命名空间，尤其是区域名称和外部域名。 公开终结点的 Azure Stack 部署的外部完全限定域名 (FQDN) 由以下两个名称组成：&lt;*区域*&gt;.&lt;*fqdn*&gt;。 例如 *east.cloud.fabrikam.com*。 在此示例中，Azure Stack 门户将在以下 URL 中提供：
 
 - https://portal.east.cloud.fabrikam.com
 - https://adminportal.east.cloud.fabrikam.com
@@ -134,9 +135,9 @@ Azure Stack 是一个密封的系统，从权限和网络角度来看，其基�
 
 | 场景 | 连接方法 | 优点 | 缺点 | 适用范围 |
 | -- | -- | --| -- | --|
-| 单租户 Azure Stack、Intranet 部署 | 出站 NAT | 提供更快的带宽用于提高传输速度。 易于实施；不需要网关。 | 不加密流量；TOR 外部无隔离或加密。 | 同等信任所有租户的企业部署。<br><br>与 Azure 之间建立了 Azure ExpressRoute 线路的企业。 |
+| 单租户 Azure Stack、Intranet 部署 | 出站 NAT | 提供更快的带宽用于提高传输速度。 易于实施；不需要网关。 | 通信未加密;无隔离或堆栈外部的加密。 | 同等信任所有租户的企业部署。<br><br>与 Azure 之间建立了 Azure ExpressRoute 线路的企业。 |
 | 多租户 Azure Stack、Intranet 部署 | 站点到站点 VPN | 从租户 VNet 到目标的流量是安全的。 | 带宽受限于站点到站点 VPN 隧道。<br><br>需要在虚拟网络中部署网关，在目标网络中部署 VPN 设备。 | 必须避免其他租户访问其部分租户流量的企业部署。 |
-| 单租户 Azure Stack、Internet 部署 | 出站 NAT | 提供更快的带宽用于提高传输速度。 | 不加密流量；TOR 外部无隔离或加密。 | 托管方案，其中的租户获取自身的 Azure Stack 部署，并与 Azure Stack 环境之间建立专用线路。 例如，ExpressRoute 和多重协议标签交换 (MPLS)。
+| 单租户 Azure Stack、Internet 部署 | 出站 NAT | 提供更快的带宽用于提高传输速度。 | 通信未加密;无隔离或堆栈外部的加密。 | 托管方案，其中的租户获取自身的 Azure Stack 部署，并与 Azure Stack 环境之间建立专用线路。 例如，ExpressRoute 和多重协议标签交换 (MPLS)。
 | 多租户 Azure Stack、Internet 部署 | 站点到站点 VPN | 从租户 VNet 到目标的流量是安全的。 | 带宽受限于站点到站点 VPN 隧道。<br><br>需要在虚拟网络中部署网关，在目标网络中部署 VPN 设备。 | 托管方案，其中的提供商需要提供多租户云，使租户彼此不信任且必须加密流量。
 |  |  |  |  |  |
 

@@ -15,11 +15,12 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ac3438f0c706988323318146965a87461dcce1e8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 183c5f3196653ce9519c0742db7a67cd36c63fb9
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292831"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
 ## <a name="overview"></a>概述
@@ -64,7 +65,7 @@ ms.lasthandoff: 05/20/2018
 如上所述，可能有些应用程序到目前为止仍不受组织的管理。  在盘点过程中，可以查找未经认可的云应用程序。 请参阅[使用 Cloud App Discovery 查找未经认可的云应用程序](cloud-app-discovery.md)。
 
 ### <a name="authentication-types"></a>身份验证类型
-每个应用程序可能有不同的身份验证要求。 借助 Azure AD，可对使用 SAML 2.0、WS 联合身份验证或 OpenID Connect 协议以及密码单一登录的应用程序使用签名证书。 有关可用于 Azure AD 的应用程序身份验证类型的详细信息，请参阅[在 Azure Active Directory 中管理用于联合单一登录的证书](../active-directory-sso-certs.md)和[基于密码的单一登录](what-is-single-sign-on.md)。
+每个应用程序可能有不同的身份验证要求。 借助 Azure AD，可对使用 SAML 2.0、WS 联合身份验证或 OpenID Connect 协议以及密码单一登录的应用程序使用签名证书。 有关可用于 Azure AD 的应用程序身份验证类型的详细信息，请参阅[在 Azure Active Directory 中管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)和[基于密码的单一登录](what-is-single-sign-on.md)。
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>使用 Azure AD 应用代理启用 SSO
 使用 Microsoft Azure AD 应用程序代理，可以从任何位置和任何设备安全访问专用网络中的应用程序。 在环境中安装应用程序代理连接器后，可以使用 Azure AD 轻松配置该连接器。
@@ -79,7 +80,7 @@ ms.lasthandoff: 05/20/2018
 ## <a name="managing-access-to-applications"></a>管理对应用程序的访问
 以下文章介绍了在使用 Azure AD 连接器和 Azure AD 将应用程序与 Azure AD 集成之后，如何管理对应用程序的访问。
 
-* [使用 Azure AD 管理对应用的访问](../active-directory-managing-access-to-apps.md)
+* [使用 Azure AD 管理对应用的访问](what-is-access-management.md)
 * [使用 Azure AD 连接器自动化](../active-directory-saas-app-provisioning.md)
 * [将用户分配到应用程序](../active-directory-applications-guiding-developers-assigning-users.md)
 * [将组分配到应用程序](../active-directory-applications-guiding-developers-assigning-groups.md)

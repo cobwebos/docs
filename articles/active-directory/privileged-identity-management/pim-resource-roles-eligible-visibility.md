@@ -3,23 +3,24 @@ title: Privileged Identity Management 中针对 Azure 的合格分配和资源�
 description: 介绍如何在使用 PIM 时将成员分配为资源角色的合格成员。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
-editor: mwahl
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: protection
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4804d930a98192d64245784058920eeba7d30212
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 205b4f3113f369279dbe18e75b5945a0498e7bbd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149980"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260373"
 ---
 # <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>使用 Privileged Identity Management 实现合格分配和资源可见性
 

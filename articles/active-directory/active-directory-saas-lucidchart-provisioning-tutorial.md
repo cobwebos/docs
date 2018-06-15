@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: ccc876b2421641271e73ad72ec0c00a10792f8b3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3a77393f01fd5b6e2d2280b52bd45c6b6f61f7d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293052"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>教程：为 LucidChart 配置自动用户预配
 
@@ -39,7 +40,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 在配置和启用预配服务前，需确定 Azure AD 中的哪些用户和/或组表示需要访问 LucidChart 应用的用户。 确定后，可以按照此处的说明将这些用户分配到 LucidChart 应用：
 
-[向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md)
+[向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-lucidchart"></a>将用户分配到 LucidChart 的重要提示
 
@@ -94,7 +95,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
+* [管理企业应用的用户帐户预配](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,24 +1,19 @@
 ---
-title: 什么是 Azure 服务运行状况通知？ | Microsoft Docs
+title: 什么是 Azure 服务运行状况通知？
 description: 借助服务运行状况通知，可以查看由 Microsoft Azure 发布的服务运行状况消息。
 author: dkamstra
-manager: chrad
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 4/12/2017
 ms.author: dukek
-ms.openlocfilehash: 6821828d3e39a87b8c93f74e7e0583bf9fe1fe4a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: activitylog
+ms.openlocfilehash: d6a87b17041c4ce6cf41da863354ef5a2a37141c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264436"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 
@@ -26,12 +21,12 @@ ms.lasthandoff: 04/16/2018
 
 服务运行状况通知有多类：  
 
-- **所需的操作：**当发生了有关帐户的异常情况时，Azure 可能会发出通知，并协同你解决相关问题。 Azure 会向用户发送通知，其中或详细列出需要执行的操作，或详细说明如何联系 Azure 工程或支持人员。  
-- **辅助恢复：**事件已发生，且工程人员确认用户仍受事件影响。 Azure 工程人员需与用户协同解决问题，让服务完全恢复正常。  
-- **事件：**某个影响服务的事件当前正在影响订阅中的一个或多个资源。  
-- **维护：**某个计划的维护活动，可能会影响订阅中的一个或多个资源。  
-- **信息：**可能实现的优化，可帮助改进资源使用。 
-- **安全性：**与 Azure 上运行的解决方案相关的紧急安全性信息。
+- **所需的操作：** 当发生了有关帐户的异常情况时，Azure 可能会发出通知，并协同你解决相关问题。 Azure 会向用户发送通知，其中或详细列出需要执行的操作，或详细说明如何联系 Azure 工程或支持人员。  
+- **辅助恢复：** 事件已发生，且工程人员确认用户仍受事件影响。 Azure 工程人员需与用户协同解决问题，让服务完全恢复正常。  
+- **事件：** 某个影响服务的事件当前正在影响订阅中的一个或多个资源。  
+- **维护：** 某个计划的维护活动，可能会影响订阅中的一个或多个资源。  
+- **信息：** 可能实现的优化，可帮助改进资源使用。 
+- **安全性：** 与 Azure 上运行的解决方案相关的紧急安全性信息。
 
 每个服务运行状况通知将包含有关适用范围和资源所受影响的详细信息。 详细信息包括：
 

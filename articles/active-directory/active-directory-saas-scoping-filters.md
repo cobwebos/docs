@@ -1,8 +1,8 @@
 ---
-title: "使用范围筛选器预配应用 | Microsoft Docs"
-description: "了解如何使用范围筛选器阻止应用中支持自动用户预配的对象进行预配（如果对象不满足业务要求）。"
+title: 使用范围筛选器预配应用 | Microsoft Docs
+description: 了解如何使用范围筛选器阻止应用中支持自动用户预配的对象进行预配（如果对象不满足业务要求）。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7a2322239945a529a544054c2273e37a3d65abf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d6f4f257d380d6521774afd23dbeaf6a94711c6d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293069"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -29,7 +30,7 @@ ms.lasthandoff: 12/11/2017
 
 范围筛选器的用法因预配连接器的类型而异：
 
-* **从 Azure AD 到 SaaS 应用程序的出站预配**。 当 Azure AD 是源系统时，[用户和组分配](active-directory-coreapps-assign-user-azure-portal.md)是确定预配范围内用户的最常用方法。 这些分配也用于启用单一登录，它们提供单一方法来管理访问权限和预配。 除分配外，还可选择性地使用范围筛选器，根据属性值筛选用户。
+* **从 Azure AD 到 SaaS 应用程序的出站预配**。 当 Azure AD 是源系统时，[用户和组分配](manage-apps/assign-user-or-group-access-portal.md)是确定预配范围内用户的最常用方法。 这些分配也用于启用单一登录，它们提供单一方法来管理访问权限和预配。 除分配外，还可选择性地使用范围筛选器，根据属性值筛选用户。
 
     >[!TIP]
     > 可将预配设置下的[范围](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)菜单中的设置更改为“同步所有用户和组”，根据企业应用程序的分配禁用预配。 使用此选项及基于属性的范围筛选器比使用基于组的分配速度更快。  
@@ -83,9 +84,9 @@ ms.lasthandoff: 12/11/2017
 
    c. **IS TRUE**。 如果评估的属性包含为 true 的布尔值，则子句返回“true”。
 
-   d.单击“下一步”。 **IS FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
+   d. **IS FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 **IS NULL**。 如果评估的属性为空，则子句返回“true”。
+   e. **IS NULL**。 如果评估的属性为空，则子句返回“true”。
 
    f. **IS NOT NULL**。 如果评估的属性不为空，则子句返回“true”。
 
@@ -115,6 +116,6 @@ ms.lasthandoff: 12/11/2017
 * [为用户预配自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)
 * [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [帐户预配通知](active-directory-saas-account-provisioning-notifications.md)
-* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md)
+* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
 

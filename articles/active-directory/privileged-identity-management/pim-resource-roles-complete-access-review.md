@@ -3,22 +3,23 @@ title: 使用 Privileged Identity Management 完成 Azure 资源的访问评审 
 description: 介绍如何完成 Azure 资源的访问评审。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ae64d9ebbca80f6c21b8c7f352022a0878518e65
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2e6556d3bac386bff26f9a5ce8f599e099fdb6c4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149332"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233795"
 ---
 # <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>使用 Privileged Identity Management 完成 Azure 资源的访问评审
 [开始安全审阅](pim-resource-roles-start-access-review.md)后，特权角色管理员可以审阅特权访问。 Azure 资源的 Privileged Identity Management (PIM) 会自动发送一封电子邮件来提示用户审阅其访问。 如果用户未收到电子邮件，可以向他们发送[如何执行安全审阅](pim-resource-roles-perform-access-review.md)的说明。

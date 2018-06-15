@@ -1,24 +1,26 @@
 ---
-title: "Azure AD Connect 同步服务影子属性 | Microsoft Docs"
-description: "介绍影子属性在 Azure AD Connect 同步服务中的工作方式。"
+title: Azure AD Connect 同步服务影子属性 | Microsoft Docs
+description: 介绍影子属性在 Azure AD Connect 同步服务中的工作方式。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 19d5ae46955ecc094c340d141485d3eb54c8e9b2
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: bd1ede2bf8ff642b7be0869e54a6f037b01dd262
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593382"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同步服务影子属性
 大多数属性在 Azure AD 中的表示方式与在本地 Active Directory 中相同。 但某些属性有一些特殊处理，并且 Azure AD 中的属性值可能不同于 Azure AD Connect 同步的值。
@@ -55,7 +57,7 @@ userPrincipalName 属性是在使用 PowerShell 时显示的值。
 | 本地 proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-在这种情况下，**smtp:abbie.spencer@fabrikam.com** 已删除，因为尚未验证该域。 但 Exchange 还添加了 **SIP:abbie.spencer@fabrikamonline.com**。Fabrikam 未使用本地 Lync/Skype，但 Azure AD 和 Exchange Online 准备使用它。
+在这种情况下，**smtp:abbie.spencer@fabrikam.com** 已删除，因为尚未验证该域。 但 Exchange 还添加了 **SIP:abbie.spencer@fabrikamonline.com**。 Fabrikam 未使用本地 Lync/Skype，但 Azure AD 和 Exchange Online 准备使用它。
 
 proxyAddresses 的此逻辑称为 **ProxyCalc**。 在以下情况下，每次更改用户时，将调用 ProxyCalc：
 

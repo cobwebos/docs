@@ -1,24 +1,19 @@
 ---
-title: Azure 监视器 PowerShell 快速入门示例。 | Microsoft Docs
+title: Azure 监视器 PowerShell 快速入门示例
 description: 使用 PowerShell 访问 Azure 监视器功能，如自动缩放、警报、webhook 和搜索活动日志。
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: c0761814-7148-4ab5-8c27-a2c9fa4cfef5
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: a67edd4372cff70a3948e85033e806749d585eb5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: ''
+ms.openlocfilehash: d7275bb0399ae5832e85089e44f4b9a1fe412747
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262413"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
 本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。

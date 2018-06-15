@@ -1,24 +1,19 @@
 ---
-title: "Azure IoT 中心通信协议和端口 | Microsoft Docs"
-description: "开发人员指南 - 介绍了设备到云和云到设备通信支持的通信协议和必须打开的端口号。"
-services: iot-hub
-documentationcenter: .net
+title: Azure IoT 中心通信协议和端口 | Microsoft Docs
+description: 开发人员指南 - 介绍了设备到云和云到设备通信支持的通信协议和必须打开的端口号。
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: f115d1e7313d2c9d378129c021a37489674fe81f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0fe3dd719877dac23410ff1ca00d559636a5ed60
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632996"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
 
@@ -63,7 +58,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 | 基于 WebSockets 的 AMQP |443 |
 | HTTPS |443 |
 
-在 Azure 区域创建 IoT 中心后，该 IoT 中心会在生存期内保留同一 IP 地址。 但为保证服务质量，如果 Microsoft 调整 IoT 中心的大小，则向其分配新的 IP 地址。
+在 Azure 区域创建 IoT 中心后，该 IoT 中心会在生存期内保留同一 IP 地址。 但如果 Microsoft 将 IoT 中心移到其他缩放单元以保持服务质量，则向其分配新的 IP 地址。
 
 
 ## <a name="next-steps"></a>后续步骤

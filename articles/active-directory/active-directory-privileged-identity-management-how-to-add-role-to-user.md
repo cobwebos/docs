@@ -3,20 +3,21 @@ title: 如何添加或删除用户角色 | Microsoft 文档
 description: 了解如何使用 Azure Active Directory Privileged Identity Management 应用程序将角色添加到特权标识。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: protection
 ms.date: 01/03/2018
-ms.author: curtand
-ms.openlocfilehash: 6024016d7c59551e5678069cb6a6e1e7ab45ad6e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: rolyon
+ms.openlocfilehash: 856fdc69bd5ce582ca772c01f8af615fbc455887
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233214"
 ---
 # <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management：如何添加或删除用户角色
 全局管理员（或公司管理员）可以使用 Azure Active Directory (AD) 来更新要将哪些用户**永久**分配到 Azure AD 中的角色。 为此，可以使用 `Add-MsolRoleMember` 和 `Remove-MsolRoleMember` 等 PowerShell cmdlet。 或者，可以根据[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)中所述使用 Azure 门户。

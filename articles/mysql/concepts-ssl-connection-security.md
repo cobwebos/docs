@@ -1,19 +1,20 @@
 ---
-title: "Azure Database for MySQL 的 SSL 连接"
-description: "有关配置 Azure Database for MySQL 和关联应用程序以正确使用 SSL 连接的信息"
+title: Azure Database for MySQL 的 SSL 连接
+description: 有关配置 Azure Database for MySQL 和关联应用程序以正确使用 SSL 连接的信息
 services: mysql
 author: JasonMAnderson
 ms.author: janders
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: f59d5eab9772515a3c59f887a48d597d27bab135
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: ee7e0ec8524d66ee89cf7b2c4d44b70efa784f8f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265055"
 ---
 # <a name="ssl-connectivity-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的 SSL 连接
 Azure Database for MySQL 支持使用安全套接字层 (SSL) 将数据库服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。

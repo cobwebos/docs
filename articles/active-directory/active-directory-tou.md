@@ -2,7 +2,7 @@
 title: Azure Active Directory 使用条款 | Microsoft Docs
 description: 通过借鉴 Azure AD 使用条款，你和你的公司可以向 Azure AD 服务用户提供使用条款。
 services: active-directory
-author: billmath
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/15/2018
-ms.author: billmath
-ms.openlocfilehash: 428d70474ba928a9e0c774aeb16395ef6a4cea2e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 8fea445a4cd02da3cf3c3239a119b491327abf54
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192949"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234111"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  可以通过这样的呈现方式确保用户看到法律要求或合规性要求的相关免责声明。

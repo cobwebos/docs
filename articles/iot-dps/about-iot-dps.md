@@ -1,22 +1,19 @@
 ---
-title: "Azure IoT 中心设备预配服务概述 | Microsoft Docs"
-description: "介绍在 Azure 中使用设备预配服务和 IoT 中心预配设备"
-services: iot-dps
-keywords: 
+title: Azure IoT 中心设备预配服务概述 | Microsoft Docs
+description: 介绍在 Azure 中使用设备预配服务和 IoT 中心预配设备
 author: nberdy
 ms.author: nberdy
 ms.date: 12/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: 
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 108ae4a66d2c13906cd0892b6c8ee5b20c3ca605
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 45f47a553f94da2759c4db2b79c8ef5a1b42b8e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630233"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务预配设备
 Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT 解决方案需求。 IoT 中心设备预配服务是针对 IoT 中心的帮助程序服务，无需人为干预即可零接触实时预配至合适的 IoT 中心，客户可以采用安全且可缩放的方式预配数百万台设备。

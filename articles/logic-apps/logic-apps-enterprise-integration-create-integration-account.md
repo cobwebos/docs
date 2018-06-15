@@ -4,7 +4,7 @@ description: 使用 Azure 逻辑应用为企业集成和 B2B 解决方案创建�
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: e661920974c2b0d28200d4c3d82bd644a7a55395
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 2a1fe501386884e02657d4b6cbef58ffc533fa33
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166227"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297982"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>使用逻辑应用创建和管理 B2B 解决方案的集成帐户
 
@@ -58,7 +58,7 @@ ms.locfileid: "34166227"
    | 订阅 | 是 | <*Azure-subscription-name*> | 要使用的 Azure 订阅的名称 | 
    | 资源组 | 是 | test-integration-account-rg | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 对于此示例，请使用指定的名称创建新的资源组。 | 
    | 定价层 | 是 | 免费 | 要使用的定价层。 对于此示例，请选择“免费”，但有关详细信息，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md)和[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 | 
-   | Location | 是 | 美国西部 | 用于存储集成帐户信息的区域。 选择与逻辑应用相同的位置，或者在与集成帐户相同的位置创建逻辑应用。 对于此示例， | 
+   | 位置 | 是 | 美国西部 | 用于存储集成帐户信息的区域。 选择与逻辑应用相同的位置，或者在与集成帐户相同的位置创建逻辑应用。 | 
    | Log Analytics | 否 | 关闭 | 对于诊断日志记录，请保留“关闭”设置。 | 
    ||||| 
 

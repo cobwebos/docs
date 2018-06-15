@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Connect 同步：了解用户、组和联系人 | Microsoft Docs"
-description: "介绍 Azure AD Connect 同步中的用户、组和联系人。"
+title: Azure AD Connect 同步：了解用户、组和联系人 | Microsoft Docs
+description: 介绍 Azure AD Connect 同步中的用户、组和联系人。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 8d204647-213a-4519-bd62-49563c421602
@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
+ms.component: hybrid
 ms.author: markvi;andkjell
-ms.openlocfilehash: 7f4bc51630653bfe341bfcb5c11699020053585a
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2e249fbf63adc459a29aa3e39e22f97b5769586a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593327"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步：了解用户、组和联系人
 有几个不同的原因导致你会有多个 Active Directory 林，并且还有几个不同的部署拓扑。 常见的模型包括合并和收购之后的帐户-资源部署和 GAL 同步的林。 但即使有纯模型，混合模型也是常见的模型。 Azure AD Connect 同步中的默认配置不会假定任何特定模型，但具体取决于安装指南中如何选择用户匹配，可以观察到不同的行为。

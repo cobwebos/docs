@@ -7,15 +7,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 04/10/2018
+ms.date: 06/07/2018
 ms.author: ninarn
-ms.topic: article
-ms.openlocfilehash: ecf9450271e82132b0f31fd0c65ce95d95c2cb3d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: conceptual
+ms.openlocfilehash: 6e58d3ed84771cedda126511e868ad264db88606
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195458"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850485"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -104,7 +104,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 有关每个资源模型提供的服务层，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
 
-SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。 除推荐外，内置体验还估算服务器上自定义组数据库的 eDTU 使用率。 这样便可以执行“假设”分析，其方法为：通过交互方式将数据库添加到池并删除它们以在提交所做的更改之前获取资源使用率分析和调整建议。 相关操作方式，请参阅[监视、管理弹性池并调整其大小](sql-database-elastic-pool-manage-portal.md)。
+SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。 除推荐外，内置体验还估算服务器上自定义组数据库的 eDTU 使用率。 这样便可以执行“假设”分析，其方法为：通过交互方式将数据库添加到池并删除它们以在提交所做的更改之前获取资源使用率分析和调整建议。 相关操作方式，请参阅[监视、管理弹性池并调整其大小](#monitor-an-elastic-pool-and-its-databases)。
 
 在无法使用工具的情况下，以下分步步骤可以帮助你评估池是否比单一数据库更具成本效益：
 
@@ -143,7 +143,7 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 ### <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>使用 Azure 门户创建新的 SQL 数据库弹性池
 
 在 Azure 门户中可以通过两种方法创建弹性池。
-1. 可以通过在 **Marketplace** 中搜索“SQL 弹性池”或者通过在 SQL 弹性池浏览边栏选项卡中单击“+添加”来创建弹性池。 可以通过此池预配工作流指定新的或现有的服务器。
+1. 可以通过在**市场**中搜索“SQL 弹性池”或者通过在 SQL 弹性池浏览边栏选项卡中单击“+添加”来创建弹性池。 可以通过此池预配工作流指定新的或现有的服务器。
 2. 或者可以创建一个弹性池：导航到现有 SQL 服务器，然后单击“创建池”，直接在该服务器中创建一个池。 此处的唯一差别是要跳过在池预配工作流期间指定服务器的步骤。
 
 > [!NOTE]

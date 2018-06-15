@@ -11,18 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/16/2018
-ms.author: billmath
-ms.openlocfilehash: cdd07fd837863d9a5abced0db8cacaded6288a41
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: c30d166335e31cdbf03283371da42fa6b7cda162
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192218"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233108"
 ---
 # <a name="retrieve-access-review-results"></a>检索访问评审结果
 
 管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](active-directory-azure-ad-controls-create-access-review.md)。  具有**全局管理员**、**安全管理员**或**安全读者**角色的用户也可以读取访问评审结果。  为了将用户分配给其中一个角色，特权角色管理员可以使用 Azure AD PIM 来让用户有资格激活该角色，或者全局管理员可以永久地[将用户分配给角色](active-directory-users-assign-role-azure-portal.md)。
+
+[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="locating-an-access-review"></a>查找访问评审
 
@@ -42,8 +45,6 @@ ms.locfileid: "34192218"
 
 
 ## <a name="removing-users-from-an-access-review"></a>从访问评审中删除用户
-
-[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
 
 默认情况下，删除的用户将在 Azure AD 中保持删除状态 30 天，在此期间，管理员可以根据需要还原这些用户。  30 天后，该用户将被永久删除。  此外，使用 Azure Active Directory 门户，全局管理员可以在达到该时间段之前，显式地[永久删除最近删除的用户](active-directory-users-restore.md)。  某个用户被永久删除后，随后有关该用户的数据将从活动访问评审中删除。  有关已删除用户的审核信息仍保留在审核日志中。
 

@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: 7633d2bd15e5bc4620a4980623f3883c162f4331
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f1f3c2c808558124548008927219191469a412b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836460"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 ## <a name="overview"></a>概述
@@ -110,10 +112,10 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 
 | 检测程序类别 | 检测程序 | 说明 | 输入参数 | Outputs |
 | --- | --- | --- | --- | --- |
-| 峰值检测程序 |TSpike 检测程序 |根据值与第一个和第三个四分位数的距离，检测峰值和低值 |*tspikedetector.sensitivity：*采用 1-10 中的整数值、默认值：3；较高的值会捕获多个极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
-| 峰值检测程序 | ZSpike 检测程序 |根据数据点与平均值的距离，检测峰值和低值 |*tspikedetector.sensitivity：*采用 1-10 范围内的整数值，默认值为 3；值越大，捕获的值更极端，使敏感程度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” | |
-| 慢速趋势检测程序 |慢速趋势检测程序 |根据每组的敏感度，检测慢速正面发展趋势 |*trenddetector.sensitivity：*检测程序分数上的阈值（默认值：3.25，3.25 – 5 是合理的选择范围；值越高敏感性越低） |tscore：浮动数字，表示趋势的异常分数 |
-| 级别更改检测程序 | 双向级别更改检测程序 |根据每组的敏感度，检测向下和向上级别的更改 |*bileveldetector.sensitivity：*检测程序分数上的阈值（默认值：3.25，3.25 – 5 是合理的选择范围；值越高敏感性越低） |rpscore：浮动数字，表示向上和向下级别更改的异常分数 | |
+| 峰值检测程序 |TSpike 检测程序 |根据值与第一个和第三个四分位数的距离，检测峰值和低值 |*tspikedetector.sensitivity：* 采用 1-10 中的整数值、默认值：3；较高的值会捕获多个极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
+| 峰值检测程序 | ZSpike 检测程序 |根据数据点与平均值的距离，检测峰值和低值 |*tspikedetector.sensitivity：* 采用 1-10 范围内的整数值，默认值为 3；值越大，捕获的值更极端，使敏感程度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” | |
+| 慢速趋势检测程序 |慢速趋势检测程序 |根据每组的敏感度，检测慢速正面发展趋势 |*trenddetector.sensitivity：* 检测程序分数上的阈值（默认值：3.25，3.25 – 5 是合理的选择范围；值越高敏感性越低） |tscore：浮动数字，表示趋势的异常分数 |
+| 级别更改检测程序 | 双向级别更改检测程序 |根据每组的敏感度，检测向下和向上级别的更改 |*bileveldetector.sensitivity：* 检测程序分数上的阈值（默认值：3.25，3.25 – 5 是合理的选择范围；值越高敏感性越低） |rpscore：浮动数字，表示向上和向下级别更改的异常分数 | |
 
 ### <a name="parameters"></a>parameters
 下表中列出了这些输入参数的更多详细信息：
