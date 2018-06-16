@@ -130,8 +130,6 @@
           href: azure-stack-viewing-public-ip-address-consumption.md
         - name: 更改用户订阅所有者
           href: azure-stack-change-subscription-owner.md
-        - name: 管理 Windows Azure Pack VM
-          href: azure-stack-manage-windows-azure-pack.md
         - name: 启动和停止 Azure Stack
           href: azure-stack-start-and-stop.md
         - name: 管理容量
@@ -277,11 +275,11 @@
               href: azure-stack-marketplace.md
             - name: 下载市场项
               href: azure-stack-download-azure-marketplace-item.md
-            - name: Azure Stack 的 Azure Marketplace 项
+            - name: Azure Stack 的 Azure 市场项
               href: azure-stack-marketplace-azure-items.md
             - name: 创建和发布市场项
               href: azure-stack-create-and-publish-marketplace-item.md
-            - name: 使用 Marketplace 发布工具
+            - name: 使用市场发布工具
               href: azure-stack-marketplace-publisher.md
             - name: Azure Stack 支持的来宾操作系统
               href: azure-stack-supported-os.md
