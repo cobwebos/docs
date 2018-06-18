@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: d9ab8115ad273101a0a25a094436bc0a24a45e68
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 1c11c50dedda84bcb968f84ffbb43b49fbc93ff4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714776"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>创建由 Azure 队列存储触发的函数
 
@@ -59,7 +60,7 @@ ms.lasthandoff: 03/30/2018
     
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
-    | **Name** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
+    | **名称** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
     | **队列名称**   | myqueue-items    | 要连接到存储帐户中的队列的名称。 |
     | **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |    
 

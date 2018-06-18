@@ -1,26 +1,26 @@
 ---
 title: 通过 Azure 门户开始使用 Azure Data Lake Analytics
-description: 了解如何使用 Azure 门户创建 Data Lake Analytics 帐户，使用 U-SQL 创建 Data Lake Analytics 作业，并提交该作业。
+description: 使用 Azure 门户创建 Azure Data Lake Analytics 帐户，并提交 U-SQL 作业。
 services: data-lake-analytics
+ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 manager: kfile
+editor: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
-ms.service: data-lake-analytics
-ms.topic: hero-article
-ms.workload: big-data
+ms.topic: get-started-article
 ms.date: 03/21/2017
-ms.openlocfilehash: 63fc4272dc4b26e9eb4846118bc57cd6aa5bf361
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fa6a0febfc268fe96063e962a208d73662f9815a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358279"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623904"
 ---
-# <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
+# <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-了解如何使用 Azure 门户创建 Azure Data Lake Analytics 帐户，在 [U-SQL](data-lake-analytics-u-sql-get-started.md)中定义作业，并将作业提交到 Data Lake Analytics 服务。 有关 Data Lake Analytics 的详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
+本文介绍如何使用 Azure 门户创建 Azure Data Lake Analytics 帐户，在 [U-SQL](data-lake-analytics-u-sql-get-started.md) 中定义作业，并将作业提交到 Data Lake Analytics 服务。
 
 ## <a name="prerequisites"></a>先决条件
 

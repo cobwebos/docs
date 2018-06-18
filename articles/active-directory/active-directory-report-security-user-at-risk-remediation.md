@@ -1,23 +1,25 @@
 ---
-title: "Azure Active Directory 门户中“标记为风险用户”的用户的安全报告 | Microsoft Docs"
-description: "了解 Azure Active Directory 门户中“标记为风险用户”的用户的安全报告"
+title: Azure Active Directory 门户中“标记为风险用户”的用户的安全报告 | Microsoft Docs
+description: 了解 Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
 services: active-directory
-author: MarkusVi
-manager: femila
+author: rolyon
+manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/24/2017
-ms.author: markvi
+ms.component: compliance-reports
+ms.date: 05/23/2018
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ed6201e9edcef39b14b948b6b2f6e0b5da01ec60
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 030a45335f06c4f15a5136842a7f6477bac8253b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588703"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
@@ -29,12 +31,20 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 如果检测到不正常的活动，表明有人对你的部分用户帐户进行了非授权的访问，系统会向你发送通知，让你采取行动。 向你提供通知并不意味着 Microsoft 自己的系统已经受到任何形式的损坏。
  
 
-## <a name="azure-active-directory-report-access"></a>访问 Azure Active Directory 报告
+## <a name="access-the-users-flagged-for-risk-report"></a>访问标记为存在风险的用户的报告
 
-可以通过在线 Azure Active Directory 报告查看“标记为风险用户”的用户。 如果不是 Azure 订户，可以通过 [http://aka.ms/AccessAAD](http://aka.ms/AccessAAD) 免费完成订阅过程。  
-完成后，即可使用 Office 365 凭据访问 Azure 管理中心。 请注意，在基本订阅级别提供的详细信息是受限制的。 Azure 高级订户可获取其他的数据和分析。 有关详细信息，请参阅 [Azure Active Directory 门户中“标记为风险用户”的用户的安全报告](active-directory-reporting-security-user-at-risk.md)。
+可以通过 Azure Active Directory (AD) 中的相关[报告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk)查看标记为存在风险的用户。 如果不是 Azure AD 订户，可以通过 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 免费完成一次性订阅过程。 在此报告中，可以执行各种操作，例如：
 
-激活对 Azure AD 的访问权限以后，就会重定向到 [Azure AD 门户](https://portal.azure.com)。 若要直接访问报告，请导航到以下 URL：[https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk)。
+- 生成临时密码
+- 要求用户在下次登录时安全地重置其密码
+- 无需执行任何更正操作，即可消除用户风险。
+
+有关详细信息，请参阅 [Azure Active Directory 门户中“标记为存在风险”的用户的安全报告](active-directory-reporting-security-user-at-risk.md)。
+
+### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 客户的 Azure AD 订阅
+
+完成后，即可使用 Office 365 凭据访问 Azure 管理中心。 激活对 Azure AD 的访问权限以后，就会重定向到 Azure AD 门户。 在基本订阅级别，报告中提供的详细信息量是受限制的。 Azure 高级订户可获取其他的数据和分析。
+
 
 **若要在 Office 365 管理中心访问“标记为风险用户”的用户的报告，请执行以下操作：**
 
@@ -45,7 +55,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 4.  在左侧导航菜单中，单击“Azure Active Directory”。 
 5.  在导航窗格的“安全性”下，单击“‘标记为风险用户’的用户”。
 
-查询此处显示的信息。 应该重置此处列出的任何帐户的密码。 
+查询此处显示的信息。 应该重置所列出的任何帐户的密码。 
 
 ## <a name="remediation-actions"></a>修正操作
 
@@ -61,7 +71,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
     c. 禁用针对外部域的邮件转发规则。
 
-    d.单击“下一步”。 删除邮箱上的全局邮件转发属性。
+    d. 删除邮箱上的全局邮件转发属性。
 
     e. 在用户的帐户上启用 MFA。
 

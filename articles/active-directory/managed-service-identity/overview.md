@@ -14,11 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3493c726b600c1fd70e0c6041ec57c8f0ba01c38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 851f788adee46436bd4286c803427f49ce0ed89a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724092"
 ---
 #  <a name="what-is-managed-service-identity-msi-for-azure-resources"></a>什么是 Azure 资源的托管服务标识 (MSI)？
 
@@ -26,12 +27,14 @@ ms.lasthandoff: 05/10/2018
 
 生成云应用程序时需要应对的常见挑战是，如何管理为了通过云服务的身份验证而需要插入代码的凭据。 保护这些凭据是一项非常重要的任务。 理想情况下，它们永远不会出现在开发者工作站上，也永远不会被签入源代码管理系统中。 虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 托管服务标识 (MSI) 为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
 
+Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默认设置。 无需额外付费，即可使用托管服务标识。
+
 ## <a name="how-does-it-work"></a>工作原理
 
 有两种类型的托管服务标识：**系统分配的**和**用户分配的**。
 
 - **系统分配的标识**直接在 Azure 服务实例上启用。 启用后，Azure 将在服务实例的订阅信任的 Azure AD 租户中创建服务实例的标识。 创建标识后，会将其凭据预配到服务实例。 系统分配的标识的生命周期直接绑定到启用它的 Azure 服务实例。 如果服务实例遭删除，Azure 会自动清理 Azure AD 中的凭据和标识。
-- **用户分配的标识**（公共预览版）是作为独立的 Azure 资源创建的。 在创建过程中，Azure 会在由所使用的订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。 用户分配的标识的生命周期与它分配给的 Azure 服务实例的生命周期是分开管理的。
+- **用户分配的标识**是作为独立的 Azure 资源创建的。 在创建过程中，Azure 会在由所使用的订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。 用户分配的标识的生命周期与它分配给的 Azure 服务实例的生命周期是分开管理的。
 
 因此，代码可以使用系统分配的或用户分配的标识来请求支持 Azure AD 身份验证的服务的访问令牌。 同时，Azure 负责滚动更新服务实例使用的凭据。
 
@@ -103,17 +106,6 @@ ms.lasthandoff: 05/10/2018
 
 托管标识可以用来向支持 Azure AD 身份验证的服务证明身份。 有关支持托管服务标识的 Azure 服务的列表，请参阅以下文章：
 - [支持托管服务标识的服务](services-support-msi.md)
-
-## <a name="how-much-does-managed-service-identity-cost"></a>托管服务标识的费用如何？
-
-Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默认设置。 无需额外付费，即可使用托管服务标识。
-
-## <a name="support-and-feedback"></a>支持和反馈
-
-我们希望听取大家的意见反馈！
-
-* 在 Stack Overflow 上使用标记 [azure-msi](http://stackoverflow.com/questions/tagged/azure-msi) 提出操作方法方面的问题。
-* 在[面向开发者的 Azure AD 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)上提交功能请求或提供反馈。
 
 ## <a name="next-steps"></a>后续步骤
 

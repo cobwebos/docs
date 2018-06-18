@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 47b3ca20b32188f3cf102934c7f21d6418f3c2f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639337"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure 网络观察程序是什么？
 
@@ -48,11 +49,11 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 ### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>诊断传入或传出 VM 的网络流量筛选问题
 
-部署 VM 时，Azure 会向 VM 应用多个默认安全规则，以允许或拒绝传入/传出 VM 的流量。 可以替代 Azure 的默认规则，或创建其他规则。 有时，VM 可能会由于安全规则而无法与其他资源通信。 使用 IP 流验证功能可以指定源和目标 IPv4 地址、端口、协议（TCP 或 UDP）和流量方向（入站或出站）。 然后，IP 流验证会测试通信，并告知连接是成功还是失败。 如果连接失败，IP 流验证会告知哪个安全规则允许或拒绝了通信，以便可以解决问题。 详细了解 [IP 流验证](network-watcher-ip-flow-verify-overview.md)。
+部署 VM 时，Azure 会向 VM 应用多个默认安全规则，以允许或拒绝传入/传出 VM 的流量。 可以替代 Azure 的默认规则，或创建其他规则。 有时，VM 可能会由于安全规则而无法与其他资源通信。 使用 IP 流验证功能可以指定源和目标 IPv4 地址、端口、协议（TCP 或 UDP）和流量方向（入站或出站）。 然后，IP 流验证会测试通信，并告知连接是成功还是失败。 如果连接失败，IP 流验证会告知哪个安全规则允许或拒绝了通信，以便可以解决问题。 通过完成[诊断虚拟机网络流量筛选问题](diagnose-vm-network-traffic-filtering-problem.md)教程，了解有关 IP 流验证的更多信息。
 
 ### <a name="diagnose-network-routing-problems-from-a-vm"></a>诊断 VM 的网络路由问题
 
-创建虚拟网络时，Azure 将为网络流量创建多个默认出站路由。 来自虚拟网络中部署的所有资源（例如 VM）的出站流量将会根据 Azure 的默认路由进行路由。 可以替代 Azure 的默认路由，或创建其他路由。 你可能发现，特定的路由导致 VM 不再能够与其他资源通信。 使用下一个跃点功能可以指定源和目标 IPv4 地址。 下一跃点会测试通信，并告知使用了哪种类型的下一跃点来路由流量。 然后，可以删除、更改或添加路由，以解决路由问题。 详细了解[下一跃点](network-watcher-next-hop-overview.md?)功能。
+创建虚拟网络时，Azure 将为网络流量创建多个默认出站路由。 来自虚拟网络中部署的所有资源（例如 VM）的出站流量将会根据 Azure 的默认路由进行路由。 可以替代 Azure 的默认路由，或创建其他路由。 你可能发现，特定的路由导致 VM 不再能够与其他资源通信。 使用下一个跃点功能可以指定源和目标 IPv4 地址。 下一跃点会测试通信，并告知使用了哪种类型的下一跃点来路由流量。 然后，可以删除、更改或添加路由，以解决路由问题。 详细了解[下一跃点](diagnose-vm-network-routing-problem.md)功能。
 
 ### <a name="connection-troubleshoot"></a>诊断 VM 的出站连接
 
@@ -64,7 +65,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 ### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>诊断 Azure 虚拟网络网关和连接的问题
 
-虚拟网络网关在本地资源与 Azure 虚拟网络之间提供连接。 监视网关及其连接对于确保通信不中断至关重要。 使用 VPN 诊断功能可以诊断网关和连接。 VPN 诊断功能诊断网关或网关连接的运行状况，并告知网关和网关连接是否可用。 如果网关或连接不可用，VPN 诊断会告知原因，以便可以解决问题。 详细了解 [VPN 诊断](network-watcher-troubleshoot-overview.md)。
+虚拟网络网关在本地资源与 Azure 虚拟网络之间提供连接。 监视网关及其连接对于确保通信不中断至关重要。 使用 VPN 诊断功能可以诊断网关和连接。 VPN 诊断功能诊断网关或网关连接的运行状况，并告知网关和网关连接是否可用。 如果网关或连接不可用，VPN 诊断会告知原因，以便可以解决问题。 通过完成[诊断网络之间的通信问题](diagnose-communication-problem-between-networks.md)教程，了解有关 VPN 诊断的更多信息。
 
 ### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>确定 Azure 区域与 Internet 服务提供商之间的相对延迟
 
@@ -90,7 +91,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 ![流量分析](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
-详细了解 [NSG 流日志](network-watcher-nsg-flow-logging-overview.md)和[流量分析](traffic-analytics.md)。
+通过完成[记录出入虚拟机的网络流量](network-watcher-nsg-flow-logging-portal.md)教程，了解有关 NSG 流日志的更多信息以及如何实现[流量分析](traffic-analytics.md)。
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>查看网络资源的诊断日志
 

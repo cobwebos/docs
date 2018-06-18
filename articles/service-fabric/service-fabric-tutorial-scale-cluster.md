@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: e80fad4d0bddff89ff4dda7feed90fc622369ee9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642693"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster"></a>教程：缩放 Service Fabric 群集
 
@@ -85,7 +86,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-连接后，即可使用命令获取群集中每个节点的状态。 对于 PowerShell，请使用 `Get-ServiceFabricClusterHealth` 命令，而对于 sfctl，请使用 `sfctl cluster select` 命令。
+连接后，即可使用命令获取群集中每个节点的状态。 对于 **PowerShell**，请使用 `Get-ServiceFabricClusterHealth` 命令，而对于 **sfctl**，请使用 `sfctl cluster select` 命令。
 
 ## <a name="scale-out"></a>向外扩展
 
@@ -131,15 +132,15 @@ Service Fabric 群集需要了解此节点将被移除。 需要执行以下三�
 
 1. 禁用节点，使其不再是数据复制。  
 PowerShell：`Disable-ServiceFabricNode`  
-sfcli：`sfctl node disable`
+sfctl：`sfctl node disable`
 
 2. 停止节点，使 Service Fabric 运行时完全关闭且应用获取终止请求。  
 PowerShell：`Start-ServiceFabricNodeTransition -Stop`  
-sfcli：`sfctl node transition --node-transition-type Stop`
+sfctl：`sfctl node transition --node-transition-type Stop`
 
 2. 从群集移除节点。  
 PowerShell：`Remove-ServiceFabricNodeState`  
-sfcli：`sfctl node remove-state`
+sfctl：`sfctl node remove-state`
 
 对节点执行这三个步骤后，即可将其从规模集中移除。 如果使用除 [bronze][durability] 以外的任意持续性层，在移除规模集实例时会完成这些步骤。
 

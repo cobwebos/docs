@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 926f256de0974112c1571fe4d1d48b6e7f530362
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fc03fa2a12c9031d88404d5d8d9f821254b033bb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211790"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726323"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -83,7 +83,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 可以在创建用户定义路由时指定下面的下一跃点类型：
 
-- **虚拟设备**：虚拟设备是通常情况下运行防火墙等网络应用程序的虚拟机。 若要了解各种可在虚拟网络中部署的预配置网络虚拟设备，请参阅 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)。 使用“虚拟设备”跃点类型创建路由时，也指定下一跃点 IP 地址。 IP 地址可以是：
+- **虚拟设备**：虚拟设备是通常情况下运行防火墙等网络应用程序的虚拟机。 若要了解各种可在虚拟网络中部署的预配置网络虚拟设备，请参阅 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)。 使用“虚拟设备”跃点类型创建路由时，也指定下一跃点 IP 地址。 IP 地址可以是：
 
     - 附加到虚拟机的网络接口的[专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)。 如果网络接口附加到虚拟机，而虚拟机将网络流量转发到不是自己地址的地址，则该网络接口必须为其启用 Azure 选项“启用 IP 转发”。 此设置禁止 Azure 在源和目标中检查网络接口。 详细了解如何[为网络接口启用 IP 转发](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)。 虽然“启用 IP 转发”是一项 Azure 设置，但你也可能需要在虚拟机的操作系统中启用 IP 转发，否则设备无法在分配到 Azure 网络接口的专用 IP 地址之间转发流量。 如果必须将流量路由到公共 IP 地址，则设备需通过代理来路由流量，或者通过网络地址转换将源的专用 IP 地址转换为其自己的专用 IP 地址，然后再由 Azure 将网络地址转换为公共 IP 地址，这样才能将流量发送到 Internet。 若要确定虚拟机中的必需设置，请参阅操作系统或网络应用程序的文档。 若要了解 Azure 中的出站连接，请参阅[了解出站连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -167,7 +167,9 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
         - 能够进行网络地址转换和转发，或者能够对流向子网中目标资源的流量进行代理，以及能够让流量返回 Internet。 
     - **虚拟网关**：如果网关为 ExpressRoute 虚拟网关，则连接了 Internet 的本地设备可以进行网络地址转换和转发，或者通过 ExpressRoute 的[专用对等互连](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering)对流向子网中目标资源的流量进行代理。 
 
-  请参阅 [Azure 与本地数据中心之间的外围网络](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json)和 [Azure 与 Internet 之间的外围网络](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json)，了解在 Internet 和 Azure 之间使用虚拟网关和虚拟设备时的实施详情。
+如果虚拟网络已连接到 Azure VPN 网关，请不要将路由表与包含目标为 0.0.0.0/0 的路由的[网关子网](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)相关联。 这样做可能会阻止网关正常工作。
+
+请参阅 [Azure 与本地数据中心之间的外围网络](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json)和 [Azure 与 Internet 之间的外围网络](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json)，了解在 Internet 和 Azure 之间使用虚拟网关和虚拟设备时的实施详情。
 
 ## <a name="routing-example"></a>路由示例
 
@@ -259,5 +261,5 @@ Subnet2 的路由表包含所有 Azure 创建的默认路由，以及可选的 V
 - [创建包含路由和网络虚拟设备的用户定义路由表](tutorial-create-route-table-portal.md)
 - [为 Azure VPN 网关配置 BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [将 BGP 与 ExpressRoute 配合使用](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
-- [查看子网的所有路由](virtual-network-routes-troubleshoot-portal.md)。 用户定义的路由表仅显示子网的用户定义路由，不显示其默认路由和 BGP 路由。 查看所有路由时，会显示网络接口所在子网的默认路由、BGP 路由和用户定义路由。
+- [查看子网的所有路由](diagnose-network-routing-problem.md)。 用户定义的路由表仅显示子网的用户定义路由，不显示其默认路由和 BGP 路由。 查看所有路由时，会显示网络接口所在子网的默认路由、BGP 路由和用户定义路由。
 - [确定下一跃点类型](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（虚拟机和目标 IP 地址之间）。 Azure 网络观察程序下一跃点功能用于确定流量是否离开子网并路由到你所期望的位置。

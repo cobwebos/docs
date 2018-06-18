@@ -1,21 +1,22 @@
 ---
 title: 在 Azure IoT Central 中配置规则和操作 | Microsoft Docs
 description: 本教程演示，作为构建者，如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 5ac19e0e25ea3e25ede4d87776c01f8bcaea4655
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: af2aa8d7b01d973da400808fd3e97d0739693cd2
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202231"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236325"
 ---
-# <a name="2---configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>2 - 在 Azure IoT Central 中配置用于设备的规则和操作
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>教程：在 Azure IoT Central 中配置用于设备的规则和操作
 
 本教程演示，作为构建者，如何在 Microsoft Azure IoT Central 应用程序中配置基于遥测的规则和操作。
 
@@ -39,17 +40,17 @@ ms.locfileid: "34202231"
 
     可看到在上一教程中创建的“已连接空调 (1.0.0)”设备模板和“已连接空调-1”设备。
 
-1. 若要开始自定义连接的空调设备，请选择在上一教程中创建的设备：
+2. 若要开始自定义连接的空调设备，请选择在上一教程中创建的设备：
 
     ![“已连接空调”页](media/tutorial-configure-rules/builderdevicelist.png)
 
-1. 若要开始在“规则”视图中添加规则，请选择“规则”：
+3. 若要开始在“规则”视图中添加规则，请选择“规则”：
 
     ![“规则”视图](media/tutorial-configure-rules/builderrulesview.png)
 
-1. 在本教程中，将添加基于阈值的遥测规则。 若要开始创建基于阈值的规则，请依次选择“新建规则”、“遥测”。
+4. 若要开始创建基于阈值的遥测规则，请依次选择“新建规则”、“遥测”。
 
-1. 若要定义规则，请使用下表中的信息：
+5. 若要定义规则，请使用下表中的信息：
 
     | 设置     | 值                          |
     | ----------- | ------------------------------ |
@@ -67,7 +68,7 @@ ms.locfileid: "34202231"
 
     ![温度规则操作](media/tutorial-configure-rules/builderaddaction.png)
 
-1. 若要定义操作，请使用下表中的信息：
+2. 若要定义操作，请使用下表中的信息：
 
     | 设置   | 值                          |
     | --------- | ------------------------------ |
@@ -79,7 +80,7 @@ ms.locfileid: "34202231"
 
     ![应用程序构建者温度操作](media/tutorial-configure-rules/buildertemperatureaction.png)
 
-1. 选择“保存”。 你的规则将列在“规则”页上：
+3. 选择“保存”。 你的规则将列在“规则”页上：
 
     ![应用程序构建者规则](media/tutorial-configure-rules/builderrules.png)
 

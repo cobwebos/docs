@@ -13,18 +13,19 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/08/2018
 ms.author: juliako
-ms.openlocfilehash: 40759fc65caa181651de68756f4374f879fd9c9c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e17a800ff61822a5040737e479c3e1855eeb8893
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701032"
 ---
 # <a name="quickstart-stream-video-files---net"></a>快速入门：流式传输视频文件 - .NET
 
 > [!NOTE]
 > Azure 媒体服务的最新版本目前处于预览状态，可能称为 v3 版本。 若要开始使用 v3 API，应按照快速入门所述创建新的 Azure 媒体服务帐户。 
 
-本快速入门将为你演示，使用 Azure 媒体服务在各种浏览器和设备上对视频进行流式处理有多轻松。 
+本快速入门将为你演示，使用 Azure 媒体服务在各种浏览器和设备上对视频进行流式处理有多轻松。 本主题中的示例对可通过 HTTPS URL 访问的内容进行编码。 
 
 完成本快速入门后即可对视频进行流式处理。  
 
@@ -43,6 +44,18 @@ ms.lasthandoff: 05/07/2018
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
+
+该示例位于 [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) 文件夹。
+
+该示例执行以下操作：
+
+1. 创建一个转换（首先，检查指定的转换是否存在）。 
+2. 创建一个输出资产用作编码作业的输出。
+3. 创建基于 HTTPS URL 的作业输入。
+4. 使用先前创建的输入和输出提交编码作业。
+5. 检查作业的状态。
+6. 创建 StreamingLocator。
+7. 生成流式处理 URL。
 
 有关示例代码中的每个功能的内容介绍，请在[此源文件](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中查看相关代码和注释。
 

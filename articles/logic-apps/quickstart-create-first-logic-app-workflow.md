@@ -1,30 +1,26 @@
 ---
-title: 创建第一个自动化工作流 - Azure 逻辑应用 | Microsoft Docs
-description: 本快速入门介绍如何使用 Azure 逻辑应用自动完成第一个工作流，以便执行系统集成和企业应用程序集成 (EAI) 方案，从而集成系统和云服务
-author: ecfan
-manager: anneta
-editor: ''
+title: 创建并自动执行第一个工作流 - Azure 逻辑应用 | Microsoft Docs
+description: 本快速入门介绍如何使用 Azure 逻辑应用创建第一个自动执行任务、流程和工作流的逻辑应用。 为系统和云服务创建用于系统集成和企业应用程序集成 (EAI) 解决方案的逻辑应用
 services: logic-apps
-keywords: 工作流, 云服务, 系统集成, 企业应用程序集成, EAI
-documentationcenter: ''
-ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 1/12/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 1/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 0a629deec0cc18f65dfe5e88a3eaea528636dd0f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300933"
 ---
-# <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>快速入门：生成第一个逻辑应用工作流 - Azure 门户
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个自动化工作流 - Azure 门户
 
-本快速入门介绍如何使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建第一个自动化工作流。 在本文中，请创建一个逻辑应用，以便定期查看网站的 RSS 源中是否有新项。 如果存在新项，逻辑应用会针对每个项发送电子邮件。 完成后，逻辑应用看起来大致与以下工作流类似：
+本快速入门介绍如何使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)构建第一个自动化工作流。 在本文中，请创建一个逻辑应用，以便定期查看网站的 RSS 源中是否有新项。 如果存在新项，逻辑应用会针对每个项发送电子邮件。 完成后，逻辑应用看起来大致与以下工作流类似：
 
 ![概述 - 逻辑应用示例](./media/quickstart-create-first-logic-app-workflow/overview.png)
 
@@ -48,7 +44,7 @@ ms.lasthandoff: 03/16/2018
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | MyFirstLogicApp | 逻辑应用的名称 | 
+   | **名称** | MyFirstLogicApp | 逻辑应用的名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅的名称 | 
    | **资源组** | My-First-LA-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称 | 
    | **位置** | 美国东部 2 | 用于存储逻辑应用信息的区域 | 
@@ -158,7 +154,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="run-your-logic-app"></a>运行逻辑应用
 
-若要手动启动逻辑应用，可在设计器工具栏中选择“运行”。 或者，等待逻辑应用根据指定的计划（每隔一分钟）检索 RSS 源。 如果 RSS 源有新项，逻辑应用会为每个新项发送一封电子邮件。 否则，逻辑应用会等到下一个间隔已过，然后才执行检查。 
+若要手动启动逻辑应用，可在设计器工具栏中选择“运行”。 或者，等待逻辑应用根据指定的计划（每隔一分钟）检索 RSS 源。 如果 RSS 源有新项，逻辑应用会为每个新项发送一封电子邮件。 否则，逻辑应用会等到下一个间隔过后才进行检查。 
 
 例如，下面是此逻辑应用发送的一封示例电子邮件。 如果没有收到任何电子邮件，请检查垃圾邮件文件夹。
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b98c1995aa9051029049711ece18aeb23c444f1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365353"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642788"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>教程：将容器打包并部署为 Service Fabric 应用程序
 
@@ -237,7 +237,7 @@ openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>生成应用程序并将其部署到群集
 可以使用 Service Fabric CLI 将应用程序部署到 Azure 群集。 如果计算机上未安装 Service Fabric CLI，请按照[此处](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli)的说明进行安装。 
 
-连接到 Azure 中的 Service Fabric 群集。 将占位符终结点替换为自己的终结点。 终结点必须是类似于下面的完整 URL。
+连接到 Azure 中的 Service Fabric 群集。 将示例终结点替换为自己的终结点。 终结点必须是类似于下面的完整 URL。
 
 ```bash
 sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify

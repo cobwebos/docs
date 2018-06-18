@@ -9,11 +9,12 @@ ms.topic: quickstart
 ms.date: 04/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: cd17d2732bf44e3f4b46878d6a416579b9e2f970
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8b9a9eddc6876451a75f0deae911d73b57198827
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597274"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>快速入门：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-选择“创建资源”，搜索“Kubernetes”，选择“Azure Kubernetes 服务(预览)” > “创建”。
+选择“创建资源”，搜索“Kubernetes”，选择“Kubernetes 服务” > “创建”。
 
 在创建 AKS 群集窗体的每个标题下完成以下步骤。
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 05/07/2018
 
 ![创建 AKS 群集步骤 1](media/container-service-walkthrough-portal/aks-portal-3.png)
 
-片刻之后，ASK 群集即可完成部署并可供使用。 浏览到 AKS 群集资源组，选择 AKS 资源，然后应看到 AKS 群集仪表板。
+片刻之后，AKS 群集即可完成部署并可供使用。 浏览到 AKS 群集资源组，选择 AKS 资源，然后应看到 AKS 群集仪表板。
 
 ![创建 AKS 群集步骤 1](media/container-service-walkthrough-portal/aks-portal-5.png)
 
@@ -163,10 +164,10 @@ spec:
     app: azure-vote-front
 ```
 
-使用 [kubectl create][kubectl-create] 命令运行该应用程序。
+使用 [kubectl apply][kubectl-apply] 命令运行该应用程序。
 
 ```azurecli-interactive
-kubectl create -f azure-vote.yaml
+kubectl apply -f azure-vote.yaml
 ```
 
 输出：
@@ -244,7 +245,7 @@ az aks delete --resource-group myAKSCluster --name myAKSCluster --no-wait
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
@@ -254,7 +255,7 @@ az aks delete --resource-group myAKSCluster --name myAKSCluster --no-wait
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
 [az-aks-delete]: /cli/azure/aks#az-aks-delete
-[aks-monitor]: ../log-analytics/log-analytics-containers.md
+[aks-monitor]: ../monitoring/monitoring-container-health.md
 [aks-network]: ./networking-overview.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md

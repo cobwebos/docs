@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802045"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
 Log Analytics 包括以下信息：收集的数据量、哪些源发送了数据、所发送数据的不同类型。  使用“Log Analytics 使用情况”仪表板查看和分析数据使用情况。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
@@ -116,7 +117,7 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 
 接下来回到“使用情况”仪表板，查看“按解决方案统计的数据量”图表。 若要查看为解决方案发送最多数据的计算机，请单击列表中解决方案的名称。 单击列表中第一个解决方案的名称。 
 
-在以下屏幕截图中，可以确认 acmetomcat 计算机为“日志管理”解决方案发送了最多数据。<br><br> ![解决方案的数据量](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
+在以下屏幕截图中，可以确认 mycon 计算机为“日志管理”解决方案发送了最多数据。<br><br> ![解决方案的数据量](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 根据需要执行其他分析，确定某个解决方案或数据类型中的大型卷。 查询示例如下：
 

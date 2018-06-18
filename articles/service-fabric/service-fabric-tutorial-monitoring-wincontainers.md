@@ -12,14 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9024036c5340e9afb2369feedde140d84e880265
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 035deabd04b8b838e0009f2cae96b0761733897f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248235"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>教程：使用 Log Analytics 监视 Service Fabric 上的 Windows 容器
 
@@ -212,18 +213,14 @@ ms.lasthandoff: 05/10/2018
 
 ## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>配置 OMS 代理以收集性能计数器
 
-使用 OMS 代理的另一个好处是，可以通过 OMS 用户界面体验更改想要收集的性能计数器，而不必配置 Azure 诊断代理并每次都基于资源管理器模板进行升级。 若要执行此操作，请单击容器监视（或 Service Fabric）解决方案登陆页面上的“OMS 门户”。
+使用 OMS 代理的另一个好处是，可以通过 OMS 用户界面体验更改想要收集的性能计数器，而不必配置 Azure 诊断代理并每次都基于资源管理器模板进行升级。 若要执行此操作，请单击容器监视（或 Service Fabric）解决方案登陆页面上的“OMS 工作区”。
 
-![OMS 门户](./media/service-fabric-tutorial-monitoring-wincontainers/oms-portal.png)
-
-此操作会将你转到 OMS 门户中的工作区，可以从中查看你的解决方案，创建自定义仪表板，以及配置 OMS 代理。 
-* 单击屏幕右上角的齿轮，打开“设置”菜单。
+此操作会将你转到 OMS 工作区，可以从中查看解决方案、创建自定义仪表板，以及配置 OMS 代理。 
+* 单击“高级设置”以打开“高级设置”菜单。
 * 单击“连接的源” > “Windows Server”，验证是否已连接了 5 个 Windows 计算机。
-* 单击“数据” > “Windows 性能计数器”，搜索并添加新性能计数器。 此处，你将看到 Log Analytics 提供的关于可收集的性能计数器的建议列表，以及用于搜索其他计数器的选项。 单击“添加选定的性能计数器”，以开始收集建议的指标。
+* 单击“数据” > “Windows 性能计数器”，搜索并添加新性能计数器。 此处，你将看到 Log Analytics 提供的关于可收集的性能计数器的建议列表，以及用于搜索其他计数器的选项。 验证是否正在收集 **Processor(_Total)\% Processor Time** 和 **Memory(*)\Available MBytes** 计数器。
 
-    ![性能计数器](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
-
-返回 Azure 门户，几分钟后刷新容器监视解决方案，应开始看到计算机性能数据出现。 此数据将有助于你了解的资源的使用情况。 此外，还可以使用这些指标做出适当的群集缩放决策，或者使用它们确认群集是否正在按照预期方式平衡负载。
+几分钟后刷新容器监视解决方案，应开始看到计算机性能数据出现。 此数据将有助于你了解的资源的使用情况。 此外，还可以使用这些指标做出适当的群集缩放决策，或者使用它们确认群集是否正在按照预期方式平衡负载。
 
 注意：请确保已正确设置时间筛选器，以便于使用这些指标。 
 

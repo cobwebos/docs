@@ -3,7 +3,7 @@ title: 在 Azure 安全中心设置安全策略 | Microsoft Docs
 description: 本文介绍了如何在 Azure 安全中心配置安全策略。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
-ms.author: yurid
-ms.openlocfilehash: fed4a587d2258cdab35d09f5e3947a8cacade157
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 06/05/2018
+ms.author: terrylan
+ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364380"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756985"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>在 Azure 安全中心设置安全策略
 本文介绍了如何在安全中心配置安全策略。
@@ -28,7 +28,7 @@ ms.locfileid: "34364380"
 安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心编辑该策略并监视策略遵循情况。
 
 > [!NOTE]
-> 现在可以使用 Azure 策略（功能受限的预览版）来扩展安全中心策略。 若要加入预览版，请转到 [Sign up for Azure Policy](https://aka.ms/getpolicy)（注册 Azure 策略）。 有关详细信息，请参阅[集成安全中心安全策略与 Azure 策略](security-center-azure-policy.md)。
+> 现在可以使用 [Azure 策略](../azure-policy/azure-policy-introduction.md)来扩展安全中心策略。 有关详细信息，请参阅[集成安全中心安全策略与 Azure 策略](security-center-azure-policy.md)。
 
 开发或测试用资源的安全要求可能不同于生产应用型资源。 使用管控数据（例如个人身份信息）的应用程序可能需要更高级别的安全性。 在 Azure 安全中心启用的安全策略可以通过安全建议和监视帮助用户确定可能的漏洞并缓解威胁造成的危害。 若要详细了解如何确定适当的选项，请参阅 [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)。
 
@@ -75,3 +75,5 @@ ms.locfileid: "34364380"
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题解答](security-center-faq.md)：获取有关使用服务的常见问题的答案。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/):.查找关于 Azure 安全性及合规性的博客文章
+
+若要了解有关 Azure 策略的详细信息，请参阅[什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)

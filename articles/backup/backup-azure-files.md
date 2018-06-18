@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 文件备份到 Azure
+title: 备份 Azure 文件共享
 description: 本文详述了如何备份和还原 Azure 文件共享，并对管理任务进行了说明。
 services: backup
 author: markgalioto
@@ -8,11 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 440cee4309fad0a22d8964982f3aad2178397124
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 40c57a00363d3952f85a053724ab7dbec257670d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606454"
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 本文介绍如何使用 Azure 门户备份和还原 [Azure 文件共享](../storage/files/storage-files-introduction.md)。

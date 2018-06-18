@@ -7,11 +7,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 278fbd5d7f5925b802303910222c5a13379bfad6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640255"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>快速入门：使用技能和示例数据创建认知搜索管道
 
@@ -95,6 +96,8 @@ ms.lasthandoff: 05/07/2018
 ### <a name="step-2-add-cognitive-skills"></a>步骤 2：添加认知技能
 
 接下来，将扩充步骤添加到索引管道。 门户会提供图像分析和文本分析的预定义认知技能。 在门户中，技能集针对单个源字段运行。 这看上去像是一个小目标，但对于 Azure Blob 而言，`content` 字段包含大部分 Blob 文档（例如，Word 文档或 PowerPoint 幻灯片）。 因此，此字段是理想的输入，因为 Blob 的所有内容都包含在其中。
+
+有时，你想要从主要由扫描图像组成的文件中提取文本表示形式，如由扫描仪生成的 PDF。 Azure 搜索可以自动从文档中的嵌入图像中提取内容。 为此，请选择“启用 OCR 并将所有文本合并到 merged_content 字段”选项。 这将自动创建一个 `merged_content` 字段，该字段包含从文档中提取的文本以及嵌入文档中的图像的文本表示形式。 选择此选项时，`Source data field` 将设置为 `merged_content`。
 
 在“添加认知技能”中，选择执行自然语言处理的技能。 在本快速入门中，我们针对人员、组织和地点选择了实体识别。
 

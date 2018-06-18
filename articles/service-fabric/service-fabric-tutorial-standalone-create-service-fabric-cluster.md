@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: b9b9e08676228ddbdea8be91253b41dac8ef8fb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 85e6efcc4e213da4d6c650f7543403dd52e8337c
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211729"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248429"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>教程：安装并创建 Service Fabric 群集
 
-Service Fabric 独立群集为你提供选择自己的环境的选项，并创建群集作为 Service Fabric 所采用的“任何 OS、任何云”方法的一部分。 在本教程系列中，将创建一个在 AWS 上托管的独立群集并将应用程序安装到其中。
+Service Fabric 独立群集为你提供选择自己的环境的选项，并创建群集作为 Service Fabric 所采用的“任何 OS、任何云”方法的一部分。 在本系列教程中，我们将创建一个托管在 AWS 上的独立群集，并将应用程序安装到其中。
 
 本教程是一个系列中的第二部分。 本教程将逐步指导完成创建 Service Fabric 独立群集的步骤。
 
@@ -69,7 +69,7 @@ Service Fabric 提供了一个安装程序包，用于创建独立的 Service Fa
 mkdir \\172.31.27.1\c$\DiagnosticsStore
 ```
 
-最后，请在 `nodeTypes` 节添加的配置中添加一个新节来映射 windows 将使用的临时端口。  该配置文件应该如下所示：
+最后，请在配置的 `nodeTypes` 节中添加一个新节来映射 windows 将使用的临时端口。  该配置文件应该如下所示：
 
 ```json
 "applicationPorts": {

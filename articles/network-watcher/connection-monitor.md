@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: bfd9552a0d7c3b1e631fcc1a25d240608754c6a3
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639021"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 05/03/2018
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup|
-    |Location| 选择“美国东部”|
+    |位置| 选择“美国东部”|
 
 4. 选择 VM 的大小，然后选择“选择”。
 5. 在“设置”下选择“扩展”。 选择“添加扩展”，然后选择“用于 Windows 的网络观察程序代理”，如下图所示：
@@ -141,7 +142,7 @@ ms.lasthandoff: 05/03/2018
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。 如下图所示，现在的结果有所不同：
 
-    ![监视器详述错误情况](./media/connection-monitor/vm-monitor-fault .png)
+    ![监视器详细信息错误](./media/connection-monitor/vm-monitor-fault.png)
 
     可以看到在 **myvm2529** 网络接口的状态列中有一个红色感叹号。
 

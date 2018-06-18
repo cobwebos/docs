@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e78051c4eb0cd79d636a6af31db8ffb6cd7e6aef
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7d7fcaded1f088961fb139b1fba6b1944b383435
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616505"
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>比较 Azure 数据工厂 V1 和 V2
 本文比较了 Azure 数据工厂的 V1 和 V2。 有关 V1 的简介，请参阅 [Azure 数据工厂简介](v1/data-factory-introduction.md)。 有关 V2 的简介，请参阅[数据工厂（V2 - 预览）简介](introduction.md)。
@@ -139,7 +140,7 @@ V2 支持创建按需 Azure HDInsight Spark 群集。 若要创建按需 Spark �
 
 ## <a name="roles-and-permissions"></a>角色和权限
 
-可以使用数据工厂版本 1 参与者角色创建和管理数据工厂 v2 资源。
+可以使用数据工厂版本 1 参与者角色创建和管理数据工厂 v2 资源。 有关详细信息，请参阅[数据工厂参与者](../role-based-access-control/built-in-roles.md#data-factory-contributor)。
 
 ## <a name="monitoring-experience"></a>监视体验
 在 V2 中，也可通过 [Azure Monitor](monitor-using-azure-monitor.md) 来监视数据工厂。 新的 PowerShell cmdlet 支持对 [Integration Runtime](monitor-integration-runtime.md) 进行监视。 V1 和 V2 都支持通过可以从 Azure 门户启动的监视应用程序进行视觉监视。

@@ -4,15 +4,15 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5c63d74158087d2011478d038d41fc1bae44190e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 68f335762e1fdd68296d7056ef5826f69c868d70
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202841"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236359"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -48,8 +48,8 @@ Azure Migrate 有助于：
 **属性** | **详细信息**
 --- | ---
 **目标位置** | 要迁移到的 Azure 位置。<br/><br/>Azure Migrate 当前支持 30 个区域，包括澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、印度中部、美国中部、中国东部、中国北部、东亚、美国东部、德国中部、德国东北部、美国东部 2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、印度南部、英国南部、英国西部、US Gov 亚利桑那州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、美国中西部、西欧、印度西部、美国西部和美国西部 2。 默认情况下，目标位置设置为“美国西部 2”。
-**存储冗余** | Azure VM 会在迁移后使用的[存储冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)类型。 默认为本地冗余存储 (LRS)。 请注意，Azure Migrate 仅支持基于托管磁盘的评估，而托管磁盘仅支持 LRS，因此该属性目前只有 LRS 选项。
-**调整大小的条件** | Azure Migrate 用来对 Azure 的 VM 进行大小调整的条件。 可以根据本地 VM 的*性能历史记录*来进行大小调整，也可以将 Azure VMs *作为本地 VM* 来调整大小，不考虑性能历史记录。 默认值为基于性能的大小调整。
+**存储类型** | 可以指定要在 Azure 中分配的磁盘的类型。 当大小调整条件为“按本地大小调整”时，此属性适用。 可以将目标磁盘类型指定为“高级托管磁盘”或“标准托管磁盘”。 默认值为“高级托管磁盘”。 对于基于性能的大小调整，将根据 VM 的性能数据自动提供磁盘建议。 请注意，Azure Migrate 仅支持使用托管磁盘进行迁移评估。
+**调整大小的条件** | Azure Migrate 用来对 Azure 的 VM 进行大小调整的条件。 可以根据本地 VM 的*性能历史记录*来进行大小调整，也可以将 Azure VMs *作为本地 VM* 来调整大小，不考虑性能历史记录。 默认值为“按本地大小调整”。
 **定价计划** | 至于成本计算，在评估时要考虑到是否有软件保障，以及是否有享受 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)的资格。 此外还要考虑到你可能有资格获得 [Azure 优惠](https://azure.microsoft.com/support/legal/offer-details/)，并且可以指定在该优惠基础上使用的任何特定于订阅的折扣 (%)。
 **定价层** | 可指定目标 Azure VM 的[定价层（基本/标准）](../virtual-machines/windows/sizes-general.md)。 例如，如果打算迁移生产环境，则可考虑“标准”层，其提供的 VM 延迟较低但成本可能较高。 而如果使用开发-测试环境，则可考虑“基本”层，其 VM 延迟较高，但成本较低。 默认使用[标准](../virtual-machines/windows/sizes-general.md)层。
 **性能历史记录** | 默认情况下，Azure Migrate 使用最后一天的性能历史记录来评估本地计算机的性能，百分位数为 95%。 可以在评估属性中修改这些值。
@@ -100,4 +100,6 @@ Azure Migrate 有助于：
 
 
 ## <a name="next-steps"></a>后续步骤
-[按教程](tutorial-assessment-vmware.md)创建本地 VMware VM 的评估。
+
+- [按教程](tutorial-assessment-vmware.md)创建本地 VMware VM 的评估。
+- [详细了解](resources-faq.md)有关 Azure Migrate 的常见问题解答

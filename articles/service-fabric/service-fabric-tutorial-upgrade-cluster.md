@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 407268299e77d771a53c49c11995dce1ada65112
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 375e0171f1a131ad95a9c6594cc0e05926e4dcc5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642829"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>教程：升级 Service Fabric 群集的运行时
 
@@ -97,7 +98,7 @@ Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 > [!IMPORTANT]
 > 群集运行时升级可能需要较长时间才能完成。 运行升级时，PowerShell 将被阻止。 可以使用另一个 PowerShell 会话来检查升级状态。
 
-可以使用 PowerShell 或 `sfctl` CLI 监视升级状态。
+可以使用 PowerShell 或 Azure Service Fabric CLI (sfctl) 监视升级状态。
 
 首先，请使用在本教程第一部分中创建的 SSL 证书连接到群集。 使用 `Connect-ServiceFabricCluster` cmdlet 或 `sfctl cluster upgrade-status`。
 

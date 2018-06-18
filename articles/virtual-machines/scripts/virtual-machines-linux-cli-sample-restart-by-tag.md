@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI 脚本示例 — 重新启动 VM | Microsoft Docs"
-description: "Azure CLI 脚本示例 — 按标记和 ID 重新启动 VM"
+title: Azure CLI 脚本示例 — 重新启动 VM | Microsoft Docs
+description: Azure CLI 脚本示例 — 按标记和 ID 重新启动 VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: allclark
 manager: douge
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: a9f7cf8ba492004cb6d9e359bfb392448dfbe813
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4c409dfcfba14093d5e2cf28df4bb6c5d1bd9533
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725966"
 ---
 # <a name="restart-vms"></a>重新启动 VM
 
@@ -42,7 +43,7 @@ az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
-此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../windows/cli-options.md)。
+此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)。
 
 
 ## <a name="sample-script"></a>示例脚本

@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 86b20e0f317a14db415feff68b17aa99e1e42cb4
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 3f0ba3034c1ba9e68f83caaaf9aacb96134ca74b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258421"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235492"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域上配置 HTTPS
 
 > [!IMPORTANT]
-> 此功能不适用于 Akamai 的 Azure CDN 标准版产品。 有关 CDN 功能的比较，请参阅 [Azure CDN 概述](cdn-features.md)。
+> 此功能不适用于 Akamai 的 Azure CDN 标准版产品。 有关 Azure 内容分发网络 (CDN) 功能的比较，请参阅[比较 Azure CDN 产品功能](cdn-features.md)。
 
-本教程演示如何为与 Azure 内容分发网络 (CDN) 终结点关联的自定义域启用 HTTPS 协议。 通过在自定义域上使用 HTTPS 协议（例如 https:\//www.contoso.com），可以确保敏感数据在通过 Internet 发送时可以通过 SSL 加密安全地进行分发。 HTTPS 提供信任、身份验证并保护 Web 应用程序免受攻击。 
+本教程演示如何为与 Azure CDN 终结点关联的自定义域启用 HTTPS 协议。 通过在自定义域（例如 https:\//www.contoso.com）上使用 HTTPS 协议，可以确保敏感数据在通过 Internet 发送时可以通过 TLS/SSL 加密安全地进行分发。 Web 浏览器通过 HTTPS 连接到网站时，它会验证网站的安全证书并验证该证书是否是由合法的证书颁发机构颁发的。 此过程提供安全性并保护 Web 应用程序免受攻击。
 
 默认情况下，Azure CDN 支持对 CDN 终结点主机名使用 HTTPS。 例如，如果创建 CDN 终结点（例如 https:\//contoso.azureedge.net），则会自动启用 HTTPS。  
 
@@ -94,13 +94,13 @@ ms.locfileid: "34258421"
 > 目前只有“Microsoft 的 Azure CDN 标准版”配置文件支持此选项。 
 >
  
-可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure CDN 使用此安全机制来获得你的证书，并且需要一些额外的步骤。
+可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure CDN 使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure CDN 上启用自定义 HTTPS 的证书颁发机构](cdn-troubleshoot-allowed-ca.md)。
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
 1. Azure Key Vault：在要启用自定义 HTTPS 的 Azure CDN 配置文件和 CDN 终结点的同一订阅下，必须具有正在运行的 Azure Key Vault 帐户。 创建 Azure Key Vault 帐户（如果还没有帐户）。
  
-2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴证书授权机构 (CA) 之一创建新的证书。 
+2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 
 
 ### <a name="register-azure-cdn"></a>注册 Azure CDN
 
@@ -123,9 +123,9 @@ ms.locfileid: "34258421"
 
     ![创建新的访问策略](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-    ![访问策略设置](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
+2. 在“选择主体”中，搜索 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**，并选择 **Microsoft.Azure.Cdn**。 单击“选择”。
 
-2. 在“选择主体”中，搜索并选择“Azure CDN”。
+    ![访问策略设置](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
 3. 在“选择权限”中，选择“获取”以允许 CDN 执行这些权限来获取并列出证书。 
 
@@ -165,7 +165,7 @@ ms.locfileid: "34258421"
 
 ### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>自定义域已通过 CNAME 记录映射到 CDN 终结点
 
-将自定义域添加到终结点时，会在域注册机构的 DNS 表中创建一条 CNAME 记录，以将其映射到 CDN 终结点主机名。 如果该 CNAME 记录仍然存在，并且不包含 cdnverify 子域，则 DigiCert 证书颁发机构 (CA) 将使用它来自动验证自定义域的所有权。 
+将自定义域添加到终结点时，会在域注册机构的 DNS 表中创建一条 CNAME 记录，以将其映射到 CDN 终结点主机名。 如果该 CNAME 记录仍然存在，并且不包含 cdnverify 子域，则 DigiCert CA 将使用它来自动验证自定义域的所有权。 
 
 如果使用的是自己的证书，则不需要对域进行验证。
 
@@ -188,7 +188,7 @@ CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* �
 
 如果终结点的 CNAME 记录条目不再存在，或者它包含 cdnverify 子域，请按照此步骤中的其余说明进行操作。
 
-在自定义域上启用 HTTPS 后，DigiCert 证书颁发机构 (CA) 会根据域的 [WHOIS](http://whois.domaintools.com/) 注册者信息，通过联系域的注册者来验证域的所有权。 通过 WHOIS 注册中列出的电子邮件地址（默认）或电话号码进行联系。 必须先完成域验证，才能在自定义域上激活 HTTPS。 可在 6 个工作日内批准域。 自动取消 6 个工作日内未批准的请求。 
+在自定义域上启用 HTTPS 后，DigiCert CA 会根据域的 [WHOIS](http://whois.domaintools.com/) 注册者信息，通过联系域的注册者来验证域的所有权。 通过 WHOIS 注册中列出的电子邮件地址（默认）或电话号码进行联系。 必须先完成域验证，才能在自定义域上激活 HTTPS。 可在 6 个工作日内批准域。 自动取消 6 个工作日内未批准的请求。 
 
 ![WHOIS 记录](./media/cdn-custom-ssl/whois-record.png)
 
@@ -210,7 +210,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 按表中的说明操作；有两种验证选项：
 
-- 可批准通过同一根域（例如 consoto.com）的同一帐户下的所有将来订单。如果你打算为同一根域添加其他自定义域，建议使用此方法。
+- 可批准通过同一根域（例如 consoto.com）的同一帐户下的所有将来订单。 如果你打算为同一根域添加其他自定义域，建议使用此方法。
 
 - 可以只批准该请求中使用的特定主机名。 后续请求将需要其他批准。
 

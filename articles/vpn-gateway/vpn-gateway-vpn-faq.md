@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2018
+ms.date: 06/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9ebdbb8958779e074195623aec90b7a6f6de2bb4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99ecf8af278823fbae41cb14df5c2372d6451e0c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236189"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 
@@ -126,7 +127,7 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>能否在 Azure 中设置自己的 VPN 服务器，并使用该服务器连接到本地网络？
 
-能。可以在 Azure 中部署自己的 VPN 网关或服务器，可以从 Azure Marketplace 部署，也可以通过创建自己的 VPN 路由器来部署。 需要在虚拟网络中配置用户定义的路由，确保流量在本地网络和虚拟网络子网之间正确路由。
+能。可以在 Azure 中部署自己的 VPN 网关或服务器，可以从 Azure 市场部署，也可以通过创建自己的 VPN 路由器来部署。 需要在虚拟网络中配置用户定义的路由，确保流量在本地网络和虚拟网络子网之间正确路由。
 
 ### <a name="why-are-certain-ports-opened-on-my-vpn-gateway"></a>我的 VPN 网关上的某些端口为何处于打开状态？
 
@@ -166,13 +167,13 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 其他软件 VPN 解决方案只要遵循行业标准 IPsec 实现，就会与我们的网关兼容。 有关配置和支持说明，请与该软件的供应商联系。
 
-## <a name="P2S"></a>点到站点 - 本机 Azure 证书身份验证
+## <a name="P2S"></a>点到站点 - 使用本机 Azure 证书身份验证
 
 本部分适用于资源管理器部署模型。
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="P2SRADIUS"></a>点到站点 - RADIUS 身份验证
+## <a name="P2SRADIUS"></a>点到站点 - 使用 RADIUS 身份验证
 
 本部分适用于资源管理器部署模型。
 

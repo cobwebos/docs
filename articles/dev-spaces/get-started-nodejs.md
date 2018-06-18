@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: deb651170b0fd58f8c89b591f3e42b5b629f4095
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0507208e58323fd31bb7c6cdb3a293ec0179cabe
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361465"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823905"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>通过 Node.js 开始使用 Azure Dev Spaces
 
@@ -32,7 +32,7 @@ ms.locfileid: "34361465"
 Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发环境的大部分配置存储在云中，可以与其他用户共享。 首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 > [!IMPORTANT]
-> 如果已安装 Azure CLI，请确保使用 2.0.32 或更高版本。
+> 如果已安装 Azure CLI，请确保使用 2.0.33 版或更高版本。
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -44,10 +44,10 @@ Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发环境�
 
 ## <a name="create-a-nodejs-container-in-kubernetes"></a>在 Kubernetes 中创建 Node.js 容器
 
-在本部分，我们将创建一个 Node.js Web 应用，并使其在 Kubernetes 中的容器内运行。
+在此部分，需创建一个 Node.js Web 应用并让其在 Kubernetes 的容器中运行。
 
 ### <a name="create-a-nodejs-web-app"></a>创建 Node.js Web 应用
-从 GitHub 下载代码，方法是：导航到 https://github.com/Azure/dev-spaces，然后选择“克隆或下载”，将 GitHub 存储库下载到本地环境。 本指南的代码位于 `samples/nodejs/getting-started/webfrontend` 中。
+请从 GitHub 下载代码，方法是：导航到 https://github.com/Azure/dev-spaces，然后选择“Clone or Download”（克隆或下载），将 GitHub 存储库下载到本地环境。 本指南的代码位于 `samples/nodejs/getting-started/webfrontend` 中。
 
 [!INCLUDE[](includes/azds-prep.md)]
 
@@ -68,7 +68,7 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 发生了什么情况？ 对内容文件（例如 HTML 和 CSS）所做的编辑不需要 Node.js 进程重启，因此活动的 `azds up` 命令会自动将任何修改的内容文件直接同步到 Azure 中正在运行的容器，方便你快速查看所做的内容编辑。
 
 ### <a name="test-from-a-mobile-device"></a>从移动设备进行测试
-如果在移动设备上打开 Web 应用，将会注意到 UI 在小型设备上显示不正常。
+如果在移动设备上打开 Web 应用，你会注意到 UI 在小型设备上显示不正确。
 
 若要修复此问题，可添加一个 `viewport` META 标记：
 1. 打开 `./public/index.html` 文件
@@ -82,12 +82,12 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
     ```
 
 1. 保存文件。
-1. 刷新设备的浏览器。 此时会看到 Web 应用正常显示。 
+1. 刷新设备的浏览器。 此时会看到 Web 应用正确地呈现。 
 
 此示例说明了某些问题只有在使用相应应用的设备上进行测试才会被发现。 使用 Azure Dev Spaces 可以快速迭代代码，并在目标设备上验证任何更改。
 
 ### <a name="update-a-code-file"></a>更新代码文件
-更新服务器端代码文件需要的工作多一些，因为 Node.js 应用需要重启。
+更新服务器端代码文件需要的工作多一些，因为 Node.js 应用需重启。
 
 1. 在终端窗口中按 `Ctrl+C`（用于停止 `azds up`）。
 1. 打开名为 `server.js` 的代码文件，编辑服务的 hello 消息： 
@@ -99,7 +99,7 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 3. 保存文件。
 1. 在终端窗口中运行 `azds up`。 
 
-这会重新生成容器映像并重新部署 Helm 图表。 重新加载浏览器页面以查看代码更改的效果。
+这样会重新生成容器映像并重新部署 Helm 图表。 重新加载浏览器页面即可查看代码更改的效果。
 
 不过，还有一种更快的开发代码的方法，该方法在下一部分介绍。 
 
@@ -121,16 +121,16 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 ### <a name="debug-the-container-in-kubernetes"></a>在 Kubernetes 中调试容器
 按 **F5** 在 Kubernetes 中调试代码！
 
-与 `up` 命令类似，代码会在开始调试后同步到开发环境，而容器则会在生成后部署到 Kubernetes。 这次调试程序会附加到远程容器。
+与 `up` 命令类似，代码会在开始调试后同步到开发环境，而容器则会在生成后部署到 Kubernetes。 这次调试器会附加到远程容器。
 
 [!INCLUDE[](includes/tip-vscode-status-bar-url.md)]
 
-在服务器端的代码文件中设置一个断点，例如，在 `server.js` 的 `app.get('/api'...` 中设置断点。 刷新浏览器页面，或者按“再说一遍”按钮，然后应会命中断点，并对代码进行单步调试。
+在服务器端的代码文件中设置一个断点，例如，在 `server.js` 的 `app.get('/api'...` 中设置断点。 刷新浏览器页面，或者按“再说一遍”按钮，然后即可按断点对代码进行单步调试。
 
-可以不受限制地访问调试信息（例如调用堆栈、局部变量、异常信息等），就像在本地执行代码一样。
+可以不受限制地访问调试信息（例如调用堆栈、本地变量、异常信息等），就像在本地执行代码一样。
 
 ### <a name="edit-code-and-refresh-the-debug-session"></a>编辑代码并刷新调试会话
-在调试程序处于活动状态的情况下进行代码编辑，例如再次修改 hello 消息：
+在调试器处于活动状态的情况下进行代码编辑，例如再次修改 hello 消息：
 
 ```javascript
 app.get('/api', function (req, res) {
@@ -146,13 +146,13 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 
 刷新浏览器中的 Web 应用，或者按“再说一遍”按钮。 此时会看到自定义消息显示在 UI 中。
 
-### <a name="use-nodemon-to-develop-even-faster"></a>使用 NodeMon 进一步加快开发速度
+### <a name="use-nodemon-to-develop-even-faster"></a>使用 NodeMon 加快开发速度
 *Nodemon* 是一种常用的工具，可供 Node.js 开发人员用来进行快速开发。 开发人员通常不会每次进行服务器端代码编辑都手动重启 Node 进程，而是将其 Node 项目配置为通过 *nodemon* 监视文件更改并自动重启服务器进程。 使用这种工作方式，开发人员只需在进行代码编辑后刷新其浏览器即可。
 
 使用 Azure Dev Spaces 时，可以使用的许多开发工作流与在本地开发无异。 示例性的 `webfrontend` 项目配置为使用 *nodemon*（在 `package.json` 中配置为开发依赖项）就是为了说明这一点。
 
 请尝试以下步骤：
-1. 停止 VS Code 调试程序。
+1. 停止 VS Code 调试器。
 1. 单击 VS Code 侧**活动栏**中的“调试”图标。 
 1. 选择“附加(AZDS)”作为活动的调试配置。
 1. 按 F5。
@@ -185,25 +185,25 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 1. 在 `server.js` 的顶部添加以下代码行：
     ```javascript
     var request = require('request');
-    var propagateHeaders = require('./propagateHeaders');
     ```
 
 3. 替换 `/api` GET 处理程序的代码。 处理请求时，该代码又会调用 `mywebapi`，然后返回来自这两个服务的结果。
 
     ```javascript
     app.get('/api', function (req, res) {
-        request({
-            uri: 'http://mywebapi',
-            headers: propagateHeaders.from(req) // propagate headers to outgoing requests
-        }, function (error, response, body) {
-            res.send('Hello from webfrontend and ' + body);
-        });
+       request({
+          uri: 'http://mywebapi',
+          headers: {
+             /* propagate the dev space routing header */
+             'azds-route-as': req.headers['azds-route-as']
+          }
+       }, function (error, response, body) {
+           res.send('Hello from webfrontend and ' + body);
+       });
     });
     ```
 
-注意如何运用 Kubernetes 的 DNS 服务发现，将该服务引用为 `http://mywebapi`。 **开发环境中的代码运行方式与在生产环境中相同**。
-
-上面的代码示例使用名为 `propagateHeaders` 的帮助器模块。 运行 `azds prep` 时，此帮助器已添加到代码文件夹。 `propagateHeaders.from()` 函数将特定标头从现有的 http.IncomingMessage 对象传播到传出请求的 headers 对象中。 本文稍后将会介绍此函数如何帮助团队实现协作性开发。
+上面的代码示例将传入请求中的 `azds-route-as` 标头转发给传出请求。 本文稍后将会介绍此函数如何帮助团队实现协作性开发。
 
 ### <a name="debug-across-multiple-services"></a>跨多个服务进行调试
 1. 此时，`mywebapi` 应该仍是在附加了调试程序的情况下运行。 如果不是，请在 `mywebapi` 项目中按 F5。

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.date: 05/17/2018
 ms.author: magoedte
-ms.openlocfilehash: d2480936ed54ec58ba289eae1ba605a16e27f0b3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 80ce7337717376b05dc9539abaf49b1a933a78f2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271664"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637525"
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -98,7 +98,7 @@ ms.locfileid: "34271664"
 
 | 操作                                                          | 所需 Azure 权限 | 说明 |
 |-----------------------------------------------------------------|--------------------------|-------|
-| 添加和删除管理解决方案                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| 添加和删除管理解决方案                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 需要在资源组或订阅级别授予这些权限。 |
 | 更改定价层                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | 查看*备份* 和 *Site Recovery* 解决方案磁贴中的数据 | 管理员/共同管理员 | 访问通过经典部署模型部署的资源 |
 | 在 Azure 门户中创建工作区                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
@@ -125,11 +125,14 @@ Log Analytics 读者角色的成员可以：
 
 
 Log Analytics 参与者角色的成员可以：
-- 读取所有监视数据 
-- 创建和配置自动化帐户
-- 添加和删除管理解决方案
-- 读取存储帐户密钥 
-- 从 Azure 存储配置日志集合
+- 读取所有监视数据  
+- 创建和配置自动化帐户  
+- 添加和删除管理解决方案    
+    > [!NOTE] 
+    > 若要成功执行这两个操作，需要在资源组或订阅级别授予此权限。  
+
+- 读取存储帐户密钥   
+- 从 Azure 存储配置日志集合  
 - 编辑 Azure 资源的监视设置，包括
   - 将 VM 扩展添加到 VM
   - 在所有 Azure 资源上配置 Azure 诊断
@@ -157,7 +160,7 @@ Log Analytics 参与者角色的成员可以：
 - 资源组 - 访问资源组中的所有工作区
 - 资源 - 仅访问指定工作区
 
-使用[自定义角色](../active-directory/role-based-access-control-custom-roles.md)，创建具有所需的特定权限的角色。
+我们建议你在资源级别（工作区）执行分配，以确保准确的访问控制。  使用[自定义角色](../active-directory/role-based-access-control-custom-roles.md)，创建具有所需的特定权限的角色。
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Azure 用户角色和 Log Analytics 门户用户角色
 如果对 Log Analytics 工作区的权限至少为 Azure 读取权限，则可在查看 Log Analytics 工作区时单击“OMS 门户”任务，打开 Log Analytics 门户。
@@ -271,7 +274,7 @@ Log Analytics 参与者角色的成员可以：
 7. 如果需要，可以更改以下项的值：
    * 订阅
    * 资源组
-   * Location
+   * 位置
    * 定价层  
      ![更改值](./media/log-analytics-manage-access/manage-access-link-azure05.png)
 8. 单击“确定”。 工作区现已链接到 Azure 帐户。

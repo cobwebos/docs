@@ -10,18 +10,18 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 643998921ec2ae4ec6737dc4ab88160e85007867
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d87b27101b5bbb3fb589987865649e102d7835de
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304991"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639201"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
-使用 Azure 托管应用程序，可以提供可让使用者轻松部署和操作的云解决方案。 可实施基础结构并提供持续支持。 若要向所有客户提供托管应用程序，可将其发布到 Azure Marketplace。 如果只希望组织中的用户使用托管应用程序，可将其发布到内部目录。 
+使用 Azure 托管应用程序，可以提供可让使用者轻松部署和操作的云解决方案。 可实施基础结构并提供持续支持。 若要向所有客户提供托管应用程序，可将其发布到 Azure 市场。 如果只希望组织中的用户使用托管应用程序，可将其发布到内部目录。 
 
-托管应用程序类似于 Marketplace 中的解决方案模板，但有一个重大差异。 在托管应用程序中，资源已预配到由应用发布者管理的资源组。 资源组在使用者的订阅中，但发布者租户中的标识有权访问该资源组。 发布者指定解决方案的持续支持费用。
+托管应用程序类似于市场中的解决方案模板，但有一个重大差异。 在托管应用程序中，资源已预配到由应用发布者管理的资源组。 资源组在使用者的订阅中，但发布者租户中的标识有权访问该资源组。 发布者指定解决方案的持续支持费用。
 
 ## <a name="advantages-of-managed-applications"></a>托管应用程序的优点
 
@@ -45,15 +45,17 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 有关发布服务目录托管应用程序的信息，请参阅[创建服务目录应用程序](publish-service-catalog-app.md)。
 
-### <a name="marketplace"></a>Marketplace
+### <a name="marketplace"></a>市场
 
-希望为服务计费的供应商可以通过 Azure Marketplace 提供托管应用程序。 供应商发布应用程序后，该应用程序可供组织外部的用户使用。 通过这种方法，托管服务提供商 (MSP)、独立软件供应商 (ISV) 和系统集成商 (SI) 可向所有 Azure 客户提供其解决方案。
+希望为服务计费的供应商可以通过 Azure 市场提供托管应用程序。 供应商发布应用程序后，该应用程序可供组织外部的用户使用。 通过这种方法，托管服务提供商 (MSP)、独立软件供应商 (ISV) 和系统集成商 (SI) 可向所有 Azure 客户提供其解决方案。
 
-有关将托管应用程序发布到 Marketplace 的信息，请参阅[创建 Marketplace 应用程序](publish-marketplace-app.md)。
+有关将托管应用程序发布到市场的信息，请参阅[创建市场应用程序](publish-marketplace-app.md)。
 
 ## <a name="resource-groups-for-managed-applications"></a>托管应用程序的资源组
 
-通常，托管应用程序的资源驻留在两个资源组中。 使用者管理一个资源组，发布者管理另一个资源组。 定义托管应用程序时，发布者可指定访问级别。 下图显示了发布者请求托管资源组所有者角色的方案。 发布者在此资源组中针对使用者放置了一个只读锁。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
+通常，托管应用程序的资源驻留在两个资源组中。 使用者管理一个资源组，发布者管理另一个资源组。 定义托管应用程序时，发布者可指定访问级别。 目前，Azure 中的所有数据提供程序都不支持限制[数据操作](../role-based-access-control/role-definitions.md)的访问。
+
+下图显示了发布者请求托管资源组所有者角色的方案。 发布者在此资源组中针对使用者放置了一个只读锁。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
 
 ![资源组访问权限](./media/overview/access.png)
 
@@ -73,4 +75,4 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 * 有关定义和部署托管应用程序的介绍，请参阅[使用 Azure CLI 创建和部署 Azure 托管应用程序](managed-apps-quickstart-cli.md)
 * 有关发布内部应用程序的信息，请参阅[创建服务目录应用程序](publish-service-catalog-app.md)。
-* 有关将托管应用程序发布到 Marketplace 的信息，请参阅[创建 Marketplace 应用程序](publish-marketplace-app.md)。
+* 有关将托管应用程序发布到市场的信息，请参阅[创建市场应用程序](publish-marketplace-app.md)。

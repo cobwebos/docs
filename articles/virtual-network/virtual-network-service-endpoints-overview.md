@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2018
+ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f612eb9647bf64a9435b1c667700bf717d445931
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824680"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -31,6 +32,7 @@ ms.lasthandoff: 05/07/2018
 - **Azure SQL 数据库**：在所有 Azure 区域正式发布
 - **Azure Cosmos DB**：在所有 Azure 公有云区域正式发布 
 - **Azure SQL 数据仓库**：在所有 Azure 公有云区域以预览版提供
+- **用于 PostgreSQL 和 MySQL 的 Azure 数据库服务**：在可以使用数据库服务的 Azure 区域中以预览版提供。
 
 有关最新通知，请查看 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
 
@@ -98,7 +100,7 @@ ms.lasthandoff: 05/07/2018
   - 指示与任何强制隧道路由相比，它还与服务另外建立了一个有效的直接连接
 
 >[!NOTE]
-> 服务终结点路由会替代与 Azure 服务匹配的地址前缀的 BGP 或 UDR 路由。 详细了解如何[排查有效路由问题](virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow)
+> 服务终结点路由会替代与 Azure 服务匹配的地址前缀的 BGP 或 UDR 路由。 详细了解如何[排查有效路由问题](diagnose-network-routing-problem.md)
 
 ## <a name="provisioning"></a>设置
 

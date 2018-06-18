@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 4cf20dacf66ee334dcd455ce1770609c175d3b88
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48dbd89216d27e9495a9129c6b873f86a9a23338
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763249"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中开始使用 Hadoop 和 Hive
 
@@ -77,6 +78,110 @@ ms.lasthandoff: 05/07/2018
 > 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。       
 > 
 >
+
+## <a name="use-vscode-to-run-hive-queries"></a>使用 VSCode 运行 Hive 查询
+
+如何获取 VSCode 中的 HDInsight 工具，请参阅[使用用于 Visual Studio Code 的 Azure HDInsight 工具](../hdinsight-for-vscode.md)。
+
+### <a name="submit-interactive-hive-queries"></a>提交交互式 Hive 查询
+
+通过用于 VSCode 的 HDInsight 工具，可以将交互式 Hive 查询提交到 HDInsight 交互式查询群集。
+
+1. 创建一个新的工作文件夹和一个新的 Hive 脚本文件（如果还没有）。
+
+2. 连接到 Azure 帐户，然后配置默认群集（如果尚未执行此操作）。
+
+3. 将以下代码复制并粘贴到 Hive 文件中，然后保存该文件。
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. 右键单击脚本编辑器，然后选择“HDInsight: Hive Interactive”以提交查询。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 很快，查询结果将显示在新选项卡中。
+
+   ![交互式 Hive 结果](./media/apache-hadoop-linux-tutorial-get-started/interactive-hive-result.png)
+
+    - “结果”面板：可以将整个结果作为 CSV、JSON、Excel 保存到本地路径，也可以只选择多个行。
+
+    - “消息”面板：选择**行**号会跳转到运行的脚本的第一行。
+
+与[运行 Hive 批处理作业](#submit-hive-batch-scripts)相比，运行交互式查询花费的时间要少得多。
+
+### <a name="submit-hive-batch-scripts"></a>提交 Hive 批处理脚本
+
+1. 创建一个新的工作文件夹和一个新的 Hive 脚本文件（如果还没有）。
+
+2. 连接到 Azure 帐户，然后配置默认群集（如果尚未执行此操作）。
+
+3. 将以下代码复制并粘贴到 Hive 文件中，然后保存该文件。
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. 右键单击脚本编辑器，然后选择“HDInsight: Hive Batch”以提交 Hive 作业。 
+
+5. 选择想要提交的群集。  
+
+    提交 Hive 作业后，“输出”面板中将显示提交成功信息和作业 ID。 Hive 作业还会打开“WEB 浏览器”，其中显示了实时作业日志和状态。
+
+   ![提交 Hive 作业结果](./media/apache-hadoop-linux-tutorial-get-started/submit-Hivejob-result.png)
+
+[提交交互式 Hive 查询](#submit-interactive-hive-queries)所花费的时间比提交批处理作业要少得多。
+
+## <a name="use-visualstudio-to-run-hive-queries"></a>使用 VisualStudio 运行 Hive 查询
+
+如何获取 Visual Studio 中的 HDInsight 工具，请参阅[使用针对 Visual Studio 的 Data Lake 工具](./apache-hadoop-visual-studio-tools-get-started.md)。
+
+### <a name="run-hive-queries"></a>运行 Hive 查询
+
+可以使用两个选项来创建并运行 Hive 查询：
+
+* 创建临时查询
+* 创建 Hive 应用程序
+
+若要创建和运行临时查询，请执行以下操作：
+
+1. 在“服务器资源管理器”中，选择“Azure” > “HDInsight 群集”。
+
+2. 右键单击要运行查询的群集，然后选择“编写 Hive 查询”。  
+
+3. 输入 Hive 查询。 
+
+    Hive 编辑器支持 IntelliSense。 用于 Visual Studio 的 Data Lake 工具支持在编辑 Hive 脚本时加载远程元数据。 例如，如果键入“SELECT * FROM”，IntelliSense 会列出所有建议的表名称。 在指定表名称后，IntelliSense 会列出列名称。 这些工具支持大多数 Hive DML 语句、子查询和内置 UDF。
+   
+    ![HDInsight Visual Studio Tools IntelliSense 示例 1 的屏幕截图](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-table-name.png "U-SQL IntelliSense")
+   
+    ![HDInsight Visual Studio Tools IntelliSense 示例 2 的屏幕截图](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-column-name.png "U-SQL IntelliSense")
+   
+   > [!NOTE]
+   > IntelliSense 只建议 HDInsight 工具栏中所选群集的元数据。
+   > 
+   
+4. 选择“提交”或“提交(高级)”。 
+   
+    ![提交 Hive 查询的屏幕截图](./media/apache-hadoop-linux-tutorial-get-started/vs-batch-query.png)
+
+   如果选择高级提交选项，请为脚本配置“作业名称”、“参数”、“其他配置”和“状态目录”：
+
+    ![HDInsight Hadoop Hive 查询的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.submit.jobs.advanced.png "提交查询")
+
+   运行交互式 Hive 查询
+
+   * 单击下箭头选择“交互式”。 
+   
+   * 单击“执行” 。
+
+   ![执行交互式 Hive 查询的屏幕截图](./media/apache-hadoop-linux-tutorial-get-started/vs-execute-hive-query.png)
+
+若要创建并运行 Hive 解决方案，请执行以下操作：
+
+1. 在“文件”菜单中，选择“新建”，然后选择“项目”。
+2. 在左窗格中，选择“HDInsight”。 在中间窗格中，选择“Hive 应用程序”。 输入属性，然后选择“确定”。
+   
+    ![HDInsight Visual Studio 工具新建 Hive 项目的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "从 Visual Studio 创建 Hive 应用程序")
+3. 在“解决方案资源管理器”中，双击“Script.hql”将该脚本打开。
+4. 输入 Hive 查询并提交。 （请参阅上面的步骤 3 和步骤 4）  
+
+
 
 ## <a name="run-hive-queries"></a>运行 Hive 查询
 
@@ -158,7 +263,7 @@ ms.lasthandoff: 05/07/2018
 * 若要了解 Pig（一种用于转换数据的语言），请参阅[将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)。
 * 若要了解 MapReduce（在 Hadoop 中处理数据的程序编写方式），请参阅[将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)。
 * 若要了解如何使用用于 Visual Studio 的 HDInsight 工具来分析 HDInsight 数据，请参阅 [Get started using Visual Studio Hadoop tools for HDInsight](apache-hadoop-visual-studio-tools-get-started.md)（用于 HDInsight 的 Visual Studio Hadoop 工具入门）。
-
+* 若要了解如何使用用于 VSCode 的 HDInsight 工具来分析 HDInsight 数据，请参阅[使用用于 Visual Studio Code 的 Azure HDInsight 工具](../hdinsight-for-vscode.md)。
 
 
 若要详细了解如何创建或管理 HDInsight 群集，请参阅以下文章：

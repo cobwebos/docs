@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: b5a4854cb999fd3e89174684b01e9046385a3c5f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 62502c3d88b1dde13f7ea5d77dc0f3bed5f19b65
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602044"
 ---
 # <a name="allowed-virtual-network-gateway-skus"></a>允许的虚拟网络网关 SKU
 
@@ -76,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-- 其他 Azure 策略模板示例位于 [Azure 策略模板](../json-samples.md)。
+- 在 [Azure 策略示例](../json-samples.md)中查看更多示例。

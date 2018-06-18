@@ -1,21 +1,22 @@
 ---
 title: 在 Azure IoT Central 自定义操作员的视图 | Microsoft Docs
 description: 以构建人员的身份在 Azure IoT Central 应用程序中自定义操作员的视图。
-services: iot-central
 author: sandeeppujar
 ms.author: sadeepu
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 3e0dfab05fc7972a055853af45f0d1b13d52c0a1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: ddb6e6d7859227b8eec7f13b95fab06b333dacda
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202316"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235362"
 ---
-# <a name="3---customize-the-azure-iot-central-operators-view"></a>3 - 自定义 Azure IoT Central 操作员的视图
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>教程：自定义 Azure IoT Central 操作员的视图
 
 本教程向构建人员介绍如何自定义应用程序的操作员视图。 以构建人员的身份对应用程序进行更改时，可在 Microsoft Azure IoT Central 应用程序中预览操作员的视图。
 
@@ -35,8 +36,8 @@ ms.locfileid: "34202316"
 
 在开始之前，应完成前面的两篇教程：
 
-1. [在 Azure IoT Central 应用程序中定义新设备类型](tutorial-define-device-type.md)。
-1. [配置设备的规则和操作](tutorial-configure-rules.md)。
+* [在 Azure IoT Central 应用程序中定义新设备类型](tutorial-define-device-type.md)。
+* [配置设备的规则和操作](tutorial-configure-rules.md)。
 
 ## <a name="configure-your-device-dashboard"></a>配置设备仪表板
 
@@ -46,17 +47,17 @@ ms.locfileid: "34202316"
 
     ![Explorer 页](media/tutorial-customize-operator/explorer.png)
 
-1. 若要开始自定义连接的空调设备仪表板，请选择“连接的空调(1.0.0)”设备模板。 选择[在应用程序中定义新设备类型](tutorial-define-device-type.md)教程中创建的“连接的空调 - 1”设备：
+2. 若要开始自定义连接的空调设备仪表板，请选择“连接的空调(1.0.0)”设备模板。 选择[在应用程序中定义新设备类型](tutorial-define-device-type.md)教程中创建的“连接的空调 - 1”设备：
 
     ![选择连接的空调设备](media/tutorial-customize-operator/selectdevice.png)
 
     对某个设备（例如“连接的空调 - 1”）进行更改时，会对基础模板进行更改。 有关详细信息，请参阅[创建新设备模板版本](howto-version-devicetemplate.md)。
 
-1. 若要编辑仪表板，请选择“仪表板”：
+3. 若要编辑仪表板，请选择“仪表板”：
 
     ![设备模板仪表板页](media/tutorial-customize-operator/dashboard.png)
 
-1. 若要将 KPI 磁贴添加到仪表板，请选择“KPI”：
+4. 若要将 KPI 磁贴添加到仪表板，请选择“KPI”：
 
     ![添加 KPI](media/tutorial-customize-operator/addkpi.png)
 
@@ -69,11 +70,11 @@ ms.locfileid: "34202316"
     | 聚合 | 最大值 |
     | 时间范围  | 过去 1 周 |
 
-1. 选择“保存”。 现在，可在仪表板中看到“KPI”磁贴：
+5. 选择“保存”。 现在，可在仪表板中看到“KPI”磁贴：
 
     ![“KPI”磁贴](media/tutorial-customize-operator/temperaturekpi.png)
 
-1. 若要移动仪表板上的某个磁贴或调整其大小，请将鼠标指针移到该磁贴上。 可将磁贴拖到新位置，或调整其大小：
+6. 若要移动仪表板上的某个磁贴或调整其大小，请将鼠标指针移到该磁贴上。 可将磁贴拖到新位置，或调整其大小：
 
     ![编辑仪表板布局](media/tutorial-customize-operator/dashboardlayout.png)
 
@@ -85,7 +86,7 @@ ms.locfileid: "34202316"
 
     ![“设置”页](media/tutorial-customize-operator/settings.png)
 
-1. 可以移动设置磁贴并调整其大小：
+2. 可以移动设置磁贴并调整其大小：
 
     ![编辑设置布局](media/tutorial-customize-operator/settingslayout.png)
 
@@ -100,7 +101,7 @@ ms.locfileid: "34202316"
 
     ![“属性”页](media/tutorial-customize-operator/properties.png)
 
-1. 可以移动属性字段并调整其大小：
+2. 可以移动属性字段并调整其大小：
 
     ![编辑属性布局](media/tutorial-customize-operator/propertieslayout.png)
 
@@ -113,17 +114,17 @@ ms.locfileid: "34202316"
 
 1. 若要以操作员的身份查看连接的空调设备，需要关闭“设计模式”。 若要关闭“设计模式”，请在页面右上角将“设计模式”切换到关闭状态。
 
-1. 若要更新此设备的序列号，请编辑序列号磁贴中的值，并选择“保存”：
+2. 若要更新此设备的序列号，请编辑序列号磁贴中的值，并选择“保存”：
 
     ![编辑属性值](media/tutorial-customize-operator/editproperty.png)
 
-1. 若要将设置发送到连接的空调，请选择“设置”，更改磁贴中的设置值，并选择“更新”：
+3. 若要将设置发送到连接的空调，请选择“设置”，更改磁贴中的设置值，并选择“更新”：
 
     ![将设置发送到设备](media/tutorial-customize-operator/sendsetting.png)
 
     当设备确认新设置值时，该设置会在磁贴上显示为“已同步”。
 
-1. 操作员可以查看构建人员配置的设备仪表板：
+4. 操作员可以查看构建人员配置的设备仪表板：
 
     ![设备仪表板的操作员视图](media/tutorial-customize-operator/operatordashboard.png)
 
@@ -131,18 +132,18 @@ ms.locfileid: "34202316"
 
 构建人员或操作员在登录到 Azure IoT Central 应用程序时，会看到主页。 构建人员可以配置此主页的内容，以包含对操作员最有用且最相关的内容。
 
-1. 若要自定义默认主页，请导航到“主页”页，并在页面右上角打开“设计模式”。 打开“设计模式”后，一个面板将从右侧滑出，其中包含可添加到主页的对象列表。
+1. 若要自定义默认主页，请导航到“主页”页，并在页面右上角打开“设计模式”。 启用“设计模式”后，一个面板将从右侧滑出，其中包含可添加到主页的对象列表。
 
     ![应用程序构建人员页](media/tutorial-customize-operator/builderhome.png)
 
-1. 若要自定义主页，请从“库”中添加磁贴。 选择“链接”，并添加组织网站的详细信息。 然后选择“保存”：
+2. 若要自定义主页，请从“库”中添加磁贴。 选择“链接”，并添加组织网站的详细信息。 然后选择“保存”：
 
     ![添加主页的链接](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > 还可以在 Azure IoT Central 应用程序内部添加页面的链接。 例如，可以添加设备仪表板或设置页的链接。
 
-1. （可选）选择“图像”，并上传要在主页上显示的图像。 图像可以包含 URL，单击该图像时可导航到该 URL：
+3. （可选）选择“图像”，并上传要在主页上显示的图像。 图像可以包含 URL，单击该图像时可导航到该 URL：
 
     ![将图像添加到主页](media/tutorial-customize-operator/addimage.png)
 

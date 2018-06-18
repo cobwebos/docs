@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: ff57aec76171b45dbebff928f2898bd5f91ec1c2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 53adf8045e1c947466cf5080b8c967a928d2dc24
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365536"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643220"
 ---
 # <a name="tutorial-deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>教程：将 Service Fabric Linux 群集部署到 Azure 虚拟网络
 本教程是一个系列中的第一部分。 其中介绍了如何使用 Azure CLI 和模板，将 Linux Service Fabric 群集部署到 [Azure 虚拟网络 (VNET)](../virtual-network/virtual-networks-overview.md) 和[网络安全组 (NSG)](../virtual-network/security-overview.md)。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。 若要使用 PowerShell 创建 Windows 群集，请参阅[在 Azure 上创建安全的 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
@@ -157,7 +157,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>连接到安全群集
-使用密钥通过 Service Fabric CLI `sfctl cluster select` 命令连接到群集。  请注意仅针对自签名证书使用 **--no-verify** 选项。
+使用密钥通过 Service Fabric CLI 命令 `sfctl cluster select` 连接到群集。  请注意仅针对自签名证书使用 **--no-verify** 选项。
 
 ```azurecli
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \

@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6c84b60018ec03b7f9bc572db9181b8a47a0c595
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 860d28cb6726a86194460977b822197a37ab7279
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365386"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642863"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-azure"></a>快速入门：将 Java Spring Boot 应用程序部署到 Azure
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。 
 
-本快速入门演示如何使用 Mac 或 Linux 开发人员计算机将 Spring Boot 应用程序部署到 Service Fabric。 本快速入门使用 Spring 网站中的[入门](https://spring.io/guides/gs/spring-boot/)示例。 本快速入门逐步讲解如何使用熟悉的命令行工具，将 Spring Boot 示例部署为 Service Fabric 应用程序。 完成后，Spring Boot 入门示例将在 Service Fabric 上正常运行。 
+使用熟悉的命令行工具，本快速入门将介绍如何使用 Spring 网站上的[入门](https://spring.io/guides/gs/spring-boot/)示例在 Mac 或 Linux 开发人员计算机上将功能性 Spring Boot 应用程序部署到 Service Fabric。
 
 ![应用程序屏幕截图](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
@@ -246,7 +246,7 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
     sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
 
     # Run Bash command to scale instance count for your service
-    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted` --instance-count 3 --stateless 
+    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
 4. 在树视图中单击“fabric:/SpringServiceFabric/SpringGettingStarted”节点，展开分区节点（由 GUID 表示）。

@@ -3,25 +3,26 @@ title: Azure AD Privileged Identity Management 入门 | Microsoft Docs
 description: 了解如何在 Azure 门户中使用 Azure Active Directory Privileged Identity Management 应用程序管理特权标识。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.component: protection
 ms.topic: get-started-article
 ms.workload: identity
 ms.date: 09/17/2017
-ms.author: curtand
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7137d7ba53c055c869bd967a04085d0c65aec683
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 882f76b8f6529e2a6e72a5bbc1b24842150e1af0
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233231"
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>开始使用 Azure AD Privileged Identity Management
 
-使用 Azure Active Directory (AD) Privileged Identity Management，可以管理、控制和监视组织内的访问。 此范围包括访问 Azure 资源、Azure AD 和其他 Microsoft Online Services（如 Office 365 或 Microsoft Intune）。
+使用 Azure Active Directory (AD) Privileged Identity Management，可以管理、控制和监视组织内的访问。 此范围包括访问 Azure 资源、Azure AD 和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）。
 
 本文介绍了如何将 Azure AD PIM 应用添加到 Azure 门户仪表板。
 

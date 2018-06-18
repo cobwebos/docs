@@ -2,24 +2,21 @@
 title: 通过 Azure Cosmos DB 模拟器在本地开发 | Microsoft Docs
 description: 利用 Azure Cosmos DB 模拟器，可以在本地免费开发和测试应用程序，无需创建 Azure 订阅。
 services: cosmos-db
-documentationcenter: ''
 keywords: Azure Cosmos DB 模拟器
 author: David-Noble-at-work
 manager: kfile
 editor: ''
-ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 109bd61963b918f2a20c48a5bf7bd89dc353db96
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6869698f2e6dca321d371bb22ded316f32cdeb51
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824088"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>将 Azure Cosmos DB 模拟器用于本地开发和测试
 
@@ -55,7 +52,7 @@ ms.lasthandoff: 04/28/2018
 > * 收集跟踪文件
 > * 故障排除
 
-建议通过观看以下视频来入门，Kirill Gavrylyuk 在视频中演示了如何开始使用 Azure Cosmos DB 模拟器。 请注意，视频中将模拟器称为 DocumentDB 模拟器，但自视频录制后，该工具本身已重命名为 Azure Cosmos DB 模拟器。 视频中的所有信息对于 Azure Cosmos DB 模拟器仍然准确。 
+建议通过观看以下视频来入门，Kirill Gavrylyuk 在视频中演示了如何开始使用 Azure Cosmos DB 模拟器。 视频中将模拟器称为 DocumentDB 模拟器，但自视频录制后，该工具本身已重命名为 Azure Cosmos DB 模拟器。 视频中的所有信息对于 Azure Cosmos DB 模拟器仍然准确。 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2016/192/player]
 > 
@@ -69,6 +66,7 @@ Azure Cosmos DB 模拟器提供对 Azure Cosmos DB 服务的高保真模拟。 �
 ## <a name="differences-between-the-emulator-and-the-service"></a>模拟器和服务之间的差异 
 由于 Azure Cosmos DB 模拟器提供在本地开发人员工作站上运行的模拟环境，因此模拟器与云中的 Azure Cosmos DB 帐户之间在功能上存在一些差异：
 
+* 目前，模拟器中的数据资源管理器仅支持 SQL API 集合和 MongoDB 集合， 尚不支持表、图形和 Cassandra API。  
 * Azure Cosmos DB 模拟器只支持单一固定帐户和公开的主密钥。  在 Azure Cosmos DB 模拟器中无法重新生成密钥。
 * Azure Cosmos DB 模拟器不是可缩放的服务，并且不支持大量的集合。
 * Azure Cosmos DB 模拟器不模拟不同的 [Azure Cosmos DB 一致性级别](consistency-levels.md)。
@@ -82,8 +80,8 @@ Azure Cosmos DB 模拟器具有以下硬件和软件要求：
 * 软件要求
   * Windows Server 2012 R2、Windows Server 2016 或 Windows 10
 *   最低硬件要求
-  * 2 GB RAM
-  * 10 GB 可用硬盘空间
+  * 2-GB RAM
+  * 10-GB 可用硬盘空间
 
 ## <a name="installation"></a>安装
 可以从 [Microsoft 下载中心](https://aka.ms/cosmosdb-emulator)下载并安装 Azure Cosmos DB 模拟器，也可以在用于 Windows 的 Docker 上运行模拟器。 有关在用于 Windows 的 Docker 上使用模拟器的说明，请参阅[在 Docker 上运行](#running-on-docker)。 
@@ -116,7 +114,7 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 > 在某版本的 Azure Cosmos DB 模拟器中创建数据后，不能保证在使用其他版本时可访问。 如果需要长期保存数据，建议将该数据存储在 Azure Cosmos DB 帐户中，而不是存储在 Azure Cosmos DB 模拟器中。 
 
 ## <a name="authenticating-requests"></a>对请求进行身份验证
-与云中的 Azure Cosmos DB 一样，针对 Azure Cosmos DB 模拟器的每个请求都必须进行身份验证。 Azure Cosmos DB 模拟器支持单一固定帐户和用于主密钥身份验证的公开的身份验证密钥。 此帐户和密钥是允许用于 Azure Cosmos DB 模拟器的唯一凭据。 它们是：
+与云中的 Azure Cosmos DB 一样，针对 Azure Cosmos DB 模拟器发出的每个请求都必须进行身份验证。 Azure Cosmos DB 模拟器支持单一固定帐户和用于主密钥身份验证的公开的身份验证密钥。 此帐户和密钥是允许用于 Azure Cosmos DB 模拟器的唯一凭据。 它们是：
 
     Account name: localhost:<port>
     Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
@@ -133,7 +131,7 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 
 可在本地网络中运行仿真器。 要启用网络访问，请在[命令行](#command-line-syntax)中指定 /AllowNetworkAccess 选项（同时还需指定 /Key=key_string 或 /KeyFile=file_name）。 可使用 /GenKeyFile=file_name 提前生成具有随机密钥的文件。  然后可将其传递至 /KeyFile=file_name 或 /Key=contents_of_file。
 
-首次启用网络访问时，用户应关闭仿真器，并删除仿真器的数据目录 (C:\Users\user_name\AppData\Local\CosmosDBEmulator)。
+首次启用网络访问时，用户应关闭模拟器，并删除模拟器的数据目录 (C:\Users\user_name\AppData\Local\CosmosDBEmulator)。
 
 ## <a name="developing-with-the-emulator"></a>通过模拟器进行开发
 在桌面上运行 Azure Cosmos DB 模拟器以后，可以使用任何支持的 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或 [Azure Cosmos DB REST API](/rest/api/cosmos-db/) 与模拟器进行交互。 Azure Cosmos DB 模拟器还包括内置数据资源管理器，可以利用它在不编写任何代码的情况下，为 SQL API 和 MongoDB API 创建集合以及查看和编辑文档。   
@@ -509,7 +507,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulatorCert
 
    我们通过向模拟器添加替代配置纠正了此问题。 我们现在应用的倍数为 1。 现在，分配用来执行各项服务的任务数等于主机上的核心数。
 
-   对于此版本来说，最重要的是解决此问题。 我们发现，许多开发/测试环境托管的模拟器有 1 到 2 个核心。
+   要不是因为我们为此版本做了其他事情，就会已解决此问题。 我们发现，许多开发/测试环境托管的模拟器有 1 到 2 个核心。
 
 2. 模拟器不再要求安装 Microsoft Visual C++ 2015 Redistributable。
 

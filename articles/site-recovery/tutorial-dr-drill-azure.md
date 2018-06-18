@@ -5,41 +5,42 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 06/04/2018
 ms.author: raynew
-ms.openlocfilehash: 724144e8f2f2f76c4ad98b4c5cad84e69dadadbb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d1b6dec122672e4f6260105f7b50af2cd7369947
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209719"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737099"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 
-本教程演示如何使用测试故障转移对 Azure 本地计算机运行灾难恢复演练。 演练在不丢失数据的情况下验证你的复制策略。 本教程介绍如何执行下列操作：
+[Azure Site Recovery](site-recovery-overview.md) 通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
+
+- 这是本系列的第四个教程，演示如何为本地 VMware VM 设置到 Azure 的灾难恢复。 它假定你已完成前两个教程：
+    - 在[第一个教程](tutorial-prepare-azure.md)中，我们设置了 VMware 灾难恢复所需的 Azure 组件。
+    - 在[第二个教程](vmware-azure-tutorial-prepare-on-premises.md)中，我们准备了用于灾难恢复的本地组件，并查看了先决条件。
+    - 在[第三个教程](vmware-azure-tutorial.md)中，我们为本地 VMware VM 设置并启用了复制。
+- 教程旨在向你展示方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 
+
+
+本文演示如何使用测试故障转移对 Azure 本地计算机运行灾难恢复演练。 演练在不丢失数据的情况下验证你的复制策略。 了解如何：
 
 > [!div class="checklist"]
 > * 设置隔离式网络以用于测试故障转移
 > * 准备在故障转移后连接到 Azure VM
 > * 为单一计算机运行测试故障转移
 
-此教程为系列教程中的第四个教程。 本教程假设你已完成前面教程中的以下任务。
-
-1. [准备 Azure](tutorial-prepare-azure.md)
-2. [准备本地 VMware](tutorial-prepare-on-premises-vmware.md)
-3. [设置灾难恢复](tutorial-vmware-to-azure.md)
+本教程使用最简单的设置设置到 Azure 的 VMware 灾难恢复。 如果想要更详细地了解测试故障转移步骤，请阅读[操作方法指南](site-recovery-test-failover-to-azure.md)。
 
 ## <a name="verify-vm-properties"></a>验证虚拟机属性
 
-运行测试性故障转移前，请验证 VM 属性，确保 Hyper-V VM[hyper-v-azure-support-matrix.md#replicated-vms]、[VMware VM 或物理服务器](vmware-physical-azure-support-matrix.md#replicated-machines)符合 Azure 要求。
+运行测试性故障转移前，请验证 VMware VM 属性，确保 Hyper-V VM[hyper-v-azure-support-matrix.md#replicated-vms]、[VMware VM 或物理服务器](vmware-physical-azure-support-matrix.md#replicated-machines)符合 Azure 要求。
 
-1. 在“受保护的项”中，单击“复制的项”>“虚拟机”。
+1. 在“受保护的项”中，单击“复制的项”，然后单击 VM。
 2. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要。 单击“属性”可查看更多详细信息。
-3. 在“计算和网络”中，可修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和托管的磁盘设置
-   
-      >[!NOTE]
-      当前不支持从使用托管磁盘的 Azure VM 故障回复到本地 Hyper-V 计算机。 如果计划将本地 VM 迁移到 Azure，而不对其进行故障回复，则只应为故障转移使用托管磁盘选项。
-   
+3. 在“计算和网络”中，可修改 Azure 名称、资源组、目标大小、可用性集和托管磁盘设置。
 4. 可查看和修改网络设置，包括在运行故障转移后 Azure VM 所在的网络/子网，以及将分配给它的 IP 地址。
 5. 在“磁盘”中，可以看到关于 VM 上的操作系统和数据磁盘的信息。
 

@@ -1,19 +1,20 @@
 ---
 title: 什么是 Azure IoT Central | Microsoft Docs
 description: Azure IoT Central 是一个端到端 SaaS 解决方案，可以用来构建和管理自定义 IoT 解决方案。 本文概述了 Azure IoT Central 的功能。
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/30/2017
 ms.topic: overview
-ms.prod: microsoft-iot-central
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 41eb9049b45c6835dd866c988af486a4975c4831
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8c369ab05059e57f2e2a98339052c27292ac7c0d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201160"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628770"
 ---
 <!---
 Purpose of an Overview article: 
@@ -80,7 +81,7 @@ Microsoft Azure IoT Central 是一个完全托管的 IoT 软件即服务解决�
 - 配置自定义仪表板，以帮助操作员获得见解，并更快地解决问题。
 - 配置自定义分析来从已连接的设备探究时序数据。
 
-## <a name="connect-your-devices"></a>连接设备
+## <a name="connect-your-devices"></a>连接数据
 
 在构建者定义可以连接到应用程序的设备类型后，设备开发者创建要在设备上运行的代码。 设备开发者可以使用 Microsoft 的开源 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 来创建设备代码。 这些 SDK 提供了广泛的语言、平台和协议支持来满足将设备连接到 Azure IoT Central 应用程序时的需求。 这些 SDK 可帮助在连接到 Azure IoT Central 的设备上执行以下任务：
 
@@ -109,7 +110,7 @@ Azure IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应
 
 现在，你已大致了解了 Azure IoT Central，下面是建议的后续步骤：
 
-- 了解 [Azure IoT Central 与 Azure IoT 套件](overview-iot-options.md)之间的区别。
+- 了解 [Azure IoT Central 与 Azure IoT 解决方案加速器](overview-iot-options.md)之间的区别。
 - 熟悉 [Azure IoT Central UI](overview-iot-central-tour.md)。
 - 通过[创建 Azure IoT Central 应用程序](quick-deploy-iot-central.md)开始使用此解决方案。
 - 请按顺序学习以下教程，它们展示了：

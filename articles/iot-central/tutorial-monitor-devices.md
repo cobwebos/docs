@@ -1,21 +1,22 @@
 ---
 title: 在 Azure IoT Central 中监视设备 | Microsoft Docs
 description: 作为操作员，使用 Azure IoT Central 应用程序监视设备。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: a07c9e3c28fadaead8bfaaebe4d1ee06ac66a99e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: 9a3b7383651d679b079818fb32bd8f98160d0a4c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201381"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235475"
 ---
-# <a name="use-azure-iot-central-to-monitor-your-devices"></a>使用 Azure IoT Central 监视设备
+# <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>教程：使用 Azure IoT Central 监视设备
 
 本教程介绍作为操作员如何使用 Microsoft Azure IoT Central 应用程序监视设备和更改设置。
 
@@ -31,7 +32,7 @@ ms.locfileid: "34201381"
 在开始之前，构建者应完成三个构建者教程以创建 Azure IoT Central 应用程序：
 
 * [定义新设备类型](tutorial-define-device-type.md)
-* [配置用于设备的规则和操作](tutorial-configure-rules.md)
+* [为设备配置规则和操作](tutorial-configure-rules.md)
 * [自定义操作员的视图](tutorial-customize-operator.md)
 
 ## <a name="receive-a-notification"></a>接收通知
@@ -50,11 +51,11 @@ Azure IoT Central 将有关设备的通知作为电子邮件发送。 构建者�
 
 作为操作员，你可以在“度量”、“设置”、“属性”、“规则”和“仪表板”页中查看有关设备的信息。 构建者自定义了**仪表板**以显示有关已连接空调设备的重要信息。
 
-* 选择“仪表板”视图可查看有关设备的信息：
+选择“仪表板”视图可查看有关设备的信息。
 
-    ![设备仪表板](media/tutorial-monitor-devices/initial_screen.png)
+![设备仪表板](media/tutorial-monitor-devices/initial_screen.png)
 
-    仪表板上的图表显示了设备温度的曲线图。 还可以在“设置目标温度”磁贴中查看设备的当前目标温度。 你确定目标温度过高。
+仪表板上的图表显示了设备温度的曲线图。 还可以在“设置目标温度”磁贴中查看设备的当前目标温度。 你确定目标温度过高。
 
 ## <a name="remediate-an-issue"></a>解决问题
 
@@ -64,7 +65,7 @@ Azure IoT Central 将有关设备的通知作为电子邮件发送。 构建者�
 
     ![更新设置](media/tutorial-monitor-devices/change_settings.png)
 
-1. 选择“仪表板”并验证新的设置值：
+2. 选择“仪表板”并验证新的设置值：
 
     ![“已更新设备”仪表板](media/tutorial-monitor-devices/new_settings.png)
 
@@ -77,4 +78,4 @@ Azure IoT Central 将有关设备的通知作为电子邮件发送。 构建者�
 > * 调查问题
 > * 解决问题
 
-现在已监视了设备，建议的下一步是[添加设备](tutorial-add-device.md)。
+现在已了解如何监视设备，建议的下一步是[添加设备](tutorial-add-device.md)。

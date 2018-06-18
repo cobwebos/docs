@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b9adae07bc95e385e9932250f7eb91115396f275
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193448"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714572"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>教程：将现有的自定义 SSL 证书绑定到 Azure Web 应用
 
@@ -84,17 +84,17 @@ Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程�
 
 ![扩展菜单](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
 
-检查以确保 Web 应用不在“免费”或“共享”层中。 深蓝色的框突出显示了 Web 应用的当前层。
+检查以确保 Web 应用不在 **F1** 或 **D1** 层中。 深蓝色的框突出显示了 Web 应用的当前层。
 
 ![检查定价层](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
 
-“免费”或“共享”层不支持自定义 SSL。 如果需要增加，请按照下一部分中的步骤进行操作。 否则，请关闭“选择定价层”页并跳转到[上传和绑定 SSL 证书](#upload)。
+**F1** 或 **D1** 层不支持自定义 SSL。 如果需要增加，请按照下一部分中的步骤进行操作。 否则，请关闭“纵向扩展”页并跳转到[上传和绑定 SSL 证书](#upload)。
 
 ### <a name="scale-up-your-app-service-plan"></a>纵向扩展应用服务计划
 
-选择“基本”、“标准”或“高级”层。
+选择任何非免费层（**B1**、**B2**、**B3**，或“生产”类别中的任何层）。 有关其他选项，请单击“查看其他选项”。
 
-单击“选择”。
+单击“应用” 。
 
 ![选择定价层](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
 

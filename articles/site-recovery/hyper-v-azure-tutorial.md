@@ -1,18 +1,19 @@
 ---
-title: "使用 Azure Site Recovery 为 Hyper-V VM（不包含 VMM）设置到 Azure 的灾难恢复 | Microsoft Docs"
-description: "了解如何使用 Azure Site Recovery 服务为本地 Hyper-V VM（不包含 VMM）设置灾难恢复。"
+title: 使用 Azure Site Recovery 为 Hyper-V VM（不包含 VMM）设置到 Azure 的灾难恢复 | Microsoft Docs
+description: 了解如何使用 Azure Site Recovery 服务为本地 Hyper-V VM（不包含 VMM）设置灾难恢复。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/14/2018
+ms.date: 05/21/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e7ddb3046b0725b3afcea2ed6a533388a89cf306
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 9ee5478412b02615efec983dd0b99c12fc2d9213
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643577"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>对 Azure 设置本地 Hyper-V VM 的灾难恢复
 
@@ -40,19 +41,31 @@ ms.lasthandoff: 02/24/2018
 2. 在“入门”中，单击“Site Recovery”。 然后单击“准备基础结构”
 3. 在“保护目标” > “计算机所在位置”中，选择“本地”。
 4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”。
-5. 在“计算机是否已虚拟化”中，选择“否”， 然后单击“确定”。
+5. 在“是否要使用 System Center VMM 管理 Hyper-V 主机”中，选择“否”。 然后单击“确定”。
 
     ![复制目标](./media/hyper-v-azure-tutorial/replication-goal.png)
 
+## <a name="confirm-deployment-planning"></a>确认部署规划
+
+在规划大型部署时，应确保完成[针对 Hyper-V 复制的部署规划](hyper-v-deployment-planner-overview.md)。 对于本教程，在“是否已完成部署规划?”中，从下拉列表中选择“我将稍后进行”。
+
+![部署规划](./media/hyper-v-azure-tutorial/deployment-planning.png)
+
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-若要设置源环境，请在 Hyper-V 站点中添加 Hyper-V 主机，下载并安装 Azure Site Recovery 提供程序和 Azure 恢复服务代理，并在保管库中注册该 Hyper-V 站点。 
+若要设置源环境，请创建 Hyper-V 站点，并将 Hyper-V 主机添加到该站点。 然后，在每个主机上下载并安装 Azure Site Recovery 提供程序和 Azure 恢复服务代理，并将 Hyper-V 站点注册到保管库中。 
 
 1. 在“准备基础结构”中，单击“源”。
 2. 单击“+Hyper-V 站点”，指定在上一教程中创建的站点的名称“ContosoHyperVSite”。
-3. 单击“+Hyper-V 服务器”。
+
+    ![Hyper-V 站点](./media/hyper-v-azure-tutorial/hyperv-site.png)
+
+3. 创建站点后，单击“+Hyper-V Server”。
+
+    ![Hyper-V Server](./media/hyper-v-azure-tutorial/hyperv-server.png)
+
 4. 下载提供程序安装程序文件。
-5. 下载保管库注册密钥。 运行提供程序安装程序时需要此密钥。 生成的密钥有效期为 5 天。
+6. 下载保管库注册密钥。 运行提供程序安装程序时需要此密钥。 生成的密钥有效期为 5 天。
 
     ![下载提供程序](./media/hyper-v-azure-tutorial/download.png)
     

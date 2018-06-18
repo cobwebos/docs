@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/27/2018
+ms.date: 06/01/2018
 ms.author: babanisa
-ms.openlocfilehash: f1d235fe431cfe14019ffef7c043dfbc367bb2bc
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303971"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725235"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure 事件网格简介
 
@@ -71,8 +71,6 @@ ms.locfileid: "34303971"
 * 队列存储
 * Webhook
 
-使用 Azure Functions 作为处理程序时，请使用事件网格触发器而不是通用 HTTP 触发器。 事件网格会自动验证事件网格函数触发器。 使用泛型 HTTP 触发器时，必须实现[验证响应](security-authentication.md#webhook-event-delivery)。
-
 有关演示如何使用每个事件处理程序的文章的链接，请参阅 [Azure 事件网格中的事件处理程序](event-handlers.md)。
 
 ## <a name="concepts"></a>概念
@@ -80,7 +78,7 @@ ms.locfileid: "34303971"
 在可以开始进行操作的 Azure 事件网格中有五个概念：
 
 * 事件 - 发生了什么。
-* 事件源/发布者 - 事件发生的地点。
+* **事件源** - 事件发生的地点。
 * 主题 - 其中发布者发送事件的终结点。
 * 事件订阅 - 用于路由事件，有时用于多个处理程序的终结点或内置机制。 订阅还用于处理程序，以便智能地筛选传入事件。
 * 事件处理程序 - 对事件作出反应的应用或服务。
@@ -126,7 +124,7 @@ Azure 事件网格提供了多个极大地改进无服务器的功能、运维�
 
 ## <a name="how-much-does-event-grid-cost"></a>事件网格的费用是多少？
 
-Azure 事件网格使用按事件支付的定价模型，因此，你只需为你所使用的事件付费。 每月前 100,000 个操作是免费的。 这些操作被定义为事件入口、高级匹配、交付尝试和管理调用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/event-grid/)。
+Azure 事件网格使用按事件支付的定价模型，因此，你只需为你所使用的事件付费。 每月前 100,000 个操作是免费的。 操作定义为事件引入、订阅交付尝试、管理调用和按使用者后缀筛选。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/event-grid/)。
 
 ## <a name="next-steps"></a>后续步骤
 

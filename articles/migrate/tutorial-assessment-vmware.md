@@ -4,15 +4,15 @@ description: 介绍如何发现和评估要使用 Azure Migrate 迁移到 Azure 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 695298be6cb9f56de26b8682c556285aba22d4a6
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e8d4380087e826a4f1332c0a39670c2309a10861
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272057"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236138"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -118,29 +118,6 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-    适用于 OVA 版本 1.0.8.59
-
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | 71139e24a532ca67669260b3062c3dad
-    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
-    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
-
-    适用于 OVA 版本 1.0.8.49
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | cefd96394198b92870d650c975dbf3b8
-    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
-    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
-
-    适用于 OVA 版本 1.0.8.40：
-
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | afbae5a2e7142829659c21fd8a9def3f
-    SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
-    SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
-
 ## <a name="create-the-collector-vm"></a>创建收集器 VM
 
 将下载的文件导入 vCenter Server。
@@ -162,7 +139,8 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 1. 在 vSphere 客户端控制台中，右键单击“VM”>“打开控制台”。
 2. 提供设备的语言、时区和密码首选项。
 3. 在桌面上，单击“运行收集器”快捷方式。
-4. 在 Azure Migrate 收集器中，打开“设置必备组件”。
+4. 在收集器 UI 的顶部栏中单击“检查更新”，并确认收集器正在最新版本上运行。 如果不是，可以选择从链接下载最新的升级包并更新收集器。
+5. 在 Azure Migrate 收集器中，打开“设置必备组件”。
     - 接受许可条款，并阅读第三方信息。
     - 收集器将会检查 VM 是否可访问 Internet。
     - 如果 VM 通过代理访问 Internet，请单击“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。 [详细了解](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#internet-connectivity) Internet 连接要求和收集器访问的 URL 列表。
@@ -173,13 +151,13 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     - 收集器将检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
     - 下载并安装 VMware PowerCLI。
 
-5. 在“指定 vCenter Server 详细信息”中，执行以下操作：
+6. 在“指定 vCenter Server 详细信息”中，执行以下操作：
     - 指定 vCenter 服务器的名称 (FQDN) 或 IP 地址。
     - 在“用户名称”和“密码”中，指定收集器用来发现 vCenter 服务器上的 VM 的只读帐户凭据。
     - 在“收集范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1500 台 VM。 [详细了解](how-to-scale-assessment.md)如何发现更大的环境。
 
-6. 在“指定迁移项目”中，指定从门户复制的 Azure Migrate 项目 ID 和密钥。 如果未复制这些信息，请从收集器 VM 中打开 Azure 门户。 在项目“概述”页中，单击“发现计算机”，然后复制结果。  
-7. 在“查看收集进度”中，监视发现过程，并检查从 VM 中收集的元数据是否在范围内。 收集器提供一个近似的发现时间。 [详细了解](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) Azure Migrate 收集器收集哪些数据。
+7. 在“指定迁移项目”中，指定从门户复制的 Azure Migrate 项目 ID 和密钥。 如果未复制这些信息，请从收集器 VM 中打开 Azure 门户。 在项目“概述”页中，单击“发现计算机”，然后复制结果。  
+8. 在“查看收集进度”中，监视发现过程，并检查从 VM 中收集的元数据是否在范围内。 收集器提供一个近似的发现时间。 [详细了解](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) Azure Migrate 收集器收集哪些数据。
 
 > [!NOTE]
 > 收集器仅支持使用“英语(美国)”作为操作系统语言和收集器界面语言。 即将支持更多语言。
@@ -219,7 +197,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 - 尚未做好 Azure 迁移准备
 - 就绪性未知
 
-对于准备就绪的 VM，Azure Migrate 会推荐一个适合 Azure 的 VM 大小。 Azure Migrate 提供的大小建议取决于在评估属性中指定的大小调整条件。 如果大小调整条件是基于性能的大小调整，则在提供大小建议时，会考虑 VM 的性能历史记录。 如果大小调整条件是“作为本地 VM”进行大小调整，则在对 Azure 中的 VM 大小提供建议时，会查看本地 VM 的大小（按原样进行大小调整）。 VM 大小调整时不考虑 VM 的 CPU 和内存利用率数据。 但是，调整磁盘的大小（按本地调整大小的情况下）时会查看性能数据。  [详细了解](concepts-assessment-calculation.md)如何在 Azure Migrate 中进行大小调整。
+对于准备就绪的 VM，Azure Migrate 会推荐一个适合 Azure 的 VM 大小。 Azure Migrate 提供的大小建议取决于在评估属性中指定的大小调整条件。 如果大小调整条件是基于性能的大小调整，则在提供大小建议时，会考虑 VM（CPU 和内存）及磁盘（IOPS 和吞吐量）的性能历史记录。 如果大小调整条件是“按本地”，则 Azure Migrate 不会考虑 VM 和磁盘的性能数据。 Azure 中 VM 大小的建议通过查看本地 VM 的大小来完成，并且根据评估属性中指定的存储类型（默认为高级磁盘）来完成磁盘大小调整。 [详细了解](concepts-assessment-calculation.md)如何在 Azure Migrate 中进行大小调整。
 
 如果 VM 尚未做好 Azure 迁移或特定条件下的 Azure 迁移的准备，Azure Migrate 会对就绪性问题进行说明，并提供修正步骤。
 
@@ -244,7 +222,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 在 Azure Migrate 中进行的每次评估都会与置信度分级相关联。置信度分为 1 星到 5 星，1 星表示置信度最低，5 星表示置信度最高。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 对评估的置信度分级可以用来评估 Azure Migrate 提供的大小建议的可靠性。
 
-对 VM 进行基于性能的大小调整时，Azure Migrate 需要 CPU 和内存的利用率数据。 另外，对于每个附加到 VM 的磁盘的大小调整，需要读/写 IOPS 和吞吐量。 同样，对于每个附加到 VM 的网络适配器，Azure Migrate 需要进行基于性能的大小调整所需的网络流入/流出量。 如果上述利用率数据在 vCenter Server 中均不可用，则 Azure Migrate 提供的大小建议可能不可靠。 根据可用数据点的百分比，提供评估的置信度分级，如下所示：
+评估的置信度分级对于大小调整条件为“基于性能的大小调整”的评估更为有用。 对于基于性能的大小调整，Azure Migrate 需要 VM 的 CPU 和内存的利用率数据。 此外，对于每个附加到 VM 的磁盘，它需要磁盘 IOPS 和吞吐量数据。 同样，对于每个附加到 VM 的网络适配器，Azure Migrate 需要网络流入/流出量才能执行基于性能的大小调整。 如果上述利用率数据在 vCenter Server 中均不可用，则 Azure Migrate 提供的大小建议可能不可靠。 根据可用数据点的百分比，提供评估的置信度分级，如下所示：
 
    **数据点的可用性** | **置信度分级**
    --- | ---
@@ -255,7 +233,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
    81%-100% | 5 星
 
 由于以下某个原因，评估时并非所有数据点都可用：
-- vCenter Server 中的统计信息设置未设置为级别 3。 如果 vCenter Server 中的统计设置低于级别 3，则不会从 vCenter Server 收集磁盘和网络的性能数据。 在这种情况下，Azure Migrate 针对磁盘和网络提供的建议不考虑利用率。 在不考虑磁盘的 IOPS/吞吐量的情况下，Azure Migrate 无法确定磁盘是否需要是 Azure 中的高级磁盘，因此，在这种情况下，Azure Migrate 建议所有磁盘是标准磁盘。
+- vCenter Server 中的统计信息设置未设置为级别 3。 如果 vCenter Server 中的统计设置低于级别 3，则不会从 vCenter Server 收集磁盘和网络的性能数据。 在这种情况下，Azure Migrate 针对磁盘和网络提供的建议不考虑利用率。 在不考虑磁盘的 IOPS/吞吐量的情况下，Azure Migrate 无法确定磁盘是否需要 Azure 中的高级磁盘，因此，在这种情况下，Azure Migrate 建议所有磁盘是标准磁盘。
 - 在启动发现之前，vCenter Server 中的统计设置已短时间设置为级别 3。 例如，如果在今天将统计设置级别更改为 3，并在明天（24 小时后）使用收集器设备启动发现，则可考虑此方案。 如果是创建一天的评估，你就有了所有数据点，对评估的置信度分级将是 5 星。 但是，如果在评估属性中将性能时段更改为一个月，则置信度分级会下降，因为最后一个月的磁盘和网络性能数据将不可用。 若要考虑最后一个月的性能数据，建议将 vCenter Server 统计设置保留为级别 3 一个月，然后再启动发现。
 - 一些 VM 在进行评估计算期间关闭。 如果某些 VM 停机了一段时间，则 vCenter Server 不会有该时段的性能数据。
 - 在进行评估计算期间创建了一些 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 则在这种情况下，新建 VM 的性能历史记录并非在整个期间都有。
@@ -269,3 +247,4 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 - 了解如何使用[计算机依赖关系映射](how-to-create-group-machine-dependencies.md)创建高可信度的评估组
 - [详细了解](concepts-assessment-calculation.md)如何计算评估。
 - [了解](how-to-scale-assessment.md)如何发现和评估大型 VMware 环境。
+- [详细了解](resources-faq.md)有关 Azure Migrate 的常见问题解答

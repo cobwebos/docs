@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f40f2102729cc317f74bd5a91b17a349a7824476
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849985"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
 如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。 如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](active-directory-aadconnect-get-started-express.md)不能满足部署或拓扑的所有情况。
@@ -214,12 +216,11 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 1.  打开组策略管理工具
 2.  编辑要应用到所有用户的组策略。 例如默认的域策略。
 3.  导航到“用户配置\管理模板\Windows 组件\Internet Explorer\Internet 控制面板\安全性”页，并选择“区域分配列表的站点”，如下图所示。
-4.  启用策略，并在对话框中输入以下两项。
+4.  启用策略，并在对话框中输入以下项。
 
         Value: `https://autologon.microsoftazuread-sso.com`  
         Data: 1  
-        Value: `https://aadg.windows.net.nsatc.net`  
-        Data: 1
+    
 
 5.  如下图所示：  
 ![Intranet 区域](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
@@ -227,7 +228,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 6.  单击“确定”两次。
 
 ## <a name="configuring-federation-with-ad-fs"></a>配置与 AD FS 的联合
-只需单击几下鼠标，请能使用 Azure AD Connect 配置 AD FS。 配置之前需要做好以下准备。
+使用 Azure AD Connect 配置 AD FS 非常简单，只需单击几下鼠标即可。 配置之前需要做好以下准备。
 
 * 已启用远程管理的、用作联合服务器的 Windows Server 2012 R2 或更高版服务器
 * 已启用远程管理的、用作 Web 应用程序代理服务器的 Windows Server 2012 R2 或更高版服务器
@@ -303,7 +304,7 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 >
 
 ## <a name="configuring-federation-with-pingfederate"></a>配置使用 PingFederate 的联合身份验证
-只需单击几下鼠标，便可使用 Azure AD Connect 配置 PingFederate。 配置之前需要做好以下准备。  但是，以下必备组件是必需的
+使用 Azure AD Connect 配置 PingFederate 非常简单，只需单击几下鼠标即可。 但是，以下先决条件是必需的。
 - PingFederate 8.4 或更高版本。  有关详细信息，请参阅 [PingFederate 与 Azure Active Directory 和 Office 365 的集成](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)
 - 想要使用的联合身份验证服务名称（例如 sts.contoso.com）的 SSL 证书
 

@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 92445ffa7954d42ec1a864264fbfc7555986ad58
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 370cb367a90c8c1a4f8051e79d3858d78c8c3b75
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644036"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教程：将 Java 应用程序部署到 Azure 中的 Service Fabric 群集
 本教程是一个系列的第三部分，介绍如何将 Service Fabric 应用程序部署到 Azure 中的群集。
@@ -198,7 +199,7 @@ ms.lasthandoff: 03/23/2018
     </Certificates>
     ```
 
-2. 若要将应用程序部署到此群集，必须使用 SFCTL 来建立到群集的连接。 SFCTL 要求使用一个 PEM 文件，其中的公钥和私钥用于连接到群集。因此，请运行以下命令，生成包含公钥和私钥的 PEM 文件。 
+2. 若要将应用程序部署到此群集，必须使用 SFCTL 来建立到群集的连接。 SFCTL 需要一个带有公钥和私钥的 PEM 文件才能连接到群集。 运行以下命令以生成带有公钥和私钥的 PEM 文件。 
 
     ```bash
     openssl pkcs12 -in testservicefabric.westus.cloudapp.azure.com.pfx -out sfctlconnection.pem -nodes -passin pass:<password>
@@ -216,7 +217,7 @@ ms.lasthandoff: 03/23/2018
     ./install.sh
     ```
 
-5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 https://testlinuxcluster.westus.cloudapp.azure.com:19080 。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。 
+5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 https://testlinuxcluster.westus.cloudapp.azure.com:19080。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。 
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 

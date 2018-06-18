@@ -1,35 +1,44 @@
 ---
-title: 为 Azure Analysis Services 服务器添加示例表格模型 | Microsoft Docs
-description: 了解如何在 Azure Analysis Services 中添加示例模型。
+title: 教程 - 使用门户将基本示例模型添加到 Azure Analysis Services 服务器 | Microsoft Docs
+description: 本教程介绍如何在 Azure Analysis Services 中添加示例模型。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
-ms.topic: conceptual
-ms.date: 04/12/2018
+ms.service: azure-analysis-services
+ms.topic: tutorial
+ms.date: 05/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 27353ff8c05f44b76304279e09a8a8d817041d78
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f44e33d2b735b6743b2b74760f816442c2cd17fe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596781"
 ---
-# <a name="tutorial-add-a-sample-model"></a>教程：添加示例模型
+# <a name="tutorial-add-a-sample-model-from-the-portal"></a>教程：从门户添加示例模型
 
-在本教程中，将向服务器添加示例 Adventure Works 模型。 此示例模型是 Adventure Works Internet Sales (1200) 数据建模教程的完整版本。 示例模型可用于测试模型管理、与工具和客户端应用程序进行连接，以及查询模型数据。
+在本教程中，将向服务器添加示例 Adventure Works 表格模型数据库。 此示例模型是 Adventure Works Internet Sales (1200) 示例数据模型的完整版本。 示例模型可用于测试模型管理、与工具和客户端应用程序进行连接，以及查询模型数据。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) 执行以下操作： 
+
+> [!div class="checklist"]
+> * 将已完成的示例表格数据模型添加到服务器 
+> * 使用 SSMS 连接到模型
+
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="before-you-begin"></a>开始之前
 
 要完成本教程，需要：
 
-- Azure Analysis Services 服务器
+- Azure Analysis Services 服务器。 若要了解更多信息，请参阅[创建服务器 - 门户](analysis-services-create-server.md)。
 - 服务器管理员权限
+- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录[门户](https://portal.azure.com/)。
 
-## <a name="create-a-sample-model"></a>创建示例模型
+## <a name="add-a-sample-model"></a>添加示例模型
 
 1. 在服务器“概述”中，单击“新建模型”。
 
@@ -39,16 +48,16 @@ ms.lasthandoff: 04/16/2018
 
     ![选择“示例数据”](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
-3. 在“概述”中，确认是否创建了 `adventureworks` 示例。
+3. 在“概述”中，确认是否添加了 `adventureworks` 示例模型。
 
     ![选择“示例数据”](./media/analysis-services-create-sample-model/aas-create-sample-verify.png)
+
 
 ## <a name="clean-up-resources"></a>清理资源
 
 示例模型使用了缓存内存资源。 如果不使用示例模型进行测试，则应将其从服务器中删除。
 
-> [!NOTE]
-> 下面的步骤介绍了如何使用 SSMS 从服务器中删除模型。 也可以使用预览版 Web 设计器功能来删除模型。
+下面的步骤介绍了如何使用 SSMS 从服务器中删除模型。 也可以使用预览版 Web 设计器功能来删除模型。
 
 1. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
 
@@ -62,7 +71,9 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="next-steps"></a>后续步骤 
 
-[在 Power BI Desktop 中连接](analysis-services-connect-pbi.md)   
-[管理数据库角色和用户](analysis-services-database-users.md)
+本教程介绍了如何将基本示例模型添加到服务器。 现在，已有模型数据库，可以从 SQL Server Management Studio 连接到它，并添加用户角色。 若要了解详细信息，请继续阅读下一个教程。
+
+> [!div class="nextstepaction"]
+> [教程：配置服务器管理员和用户角色](analysis-services-database-users.md)
 
 

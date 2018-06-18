@@ -15,16 +15,17 @@ ms.topic: quickstart
 ms.date: 04/02/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: de94735676934af21dc08a0953987729fba756aa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ec85f2c473fa0c4ac4d69599a24b878278309577
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637222"
 ---
 # <a name="collect-data-from-windows-computers-hosted-in-your-environment"></a>从托管在环境中的 Windows 计算机上收集数据
 [Azure Log Analytics](log-analytics-overview.md) 可直接从物理或虚拟 Windows 计算机及环境中的其他资源收集数据，并将数据置于单个存储库进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Windows 计算机中配置或收集数据。  有关 Azure Windows VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](log-analytics-quick-collect-azurevm.md)。  
 
-若要了解部署 Windows 代理的网络和系统要求，请参阅 [Windows 操作系统的必备组件](log-analytics-concept-hybrid.md#prerequisites)。
+若要了解支持的配置，请查看[支持的 Windows 操作系统](log-analytics-concept-hybrid.md#supported-windows-operating-systems)和[网络防火墙配置](log-analytics-concept-hybrid.md#network-firewall-requirements)。
  
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

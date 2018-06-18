@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/06/2017
+ms.date: 05/22/2018
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: f05b0baee3f11f498976377c69c38b3118f3c922
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 190d4713f5c84281bc2637fc0d8323a2dabf6f21
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358653"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603757"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>使用 Visual Studio Code 扩展创建 Azure 资源管理器模板
 本文介绍在 Visual Studio Code 中安装和使用 Azure 资源管理器工具扩展有哪些好处。 可以在 VS Code 中创建不带扩展的资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 它会为用户建议可以在模板中使用的模板函数、参数和变量。
@@ -171,7 +171,18 @@ ms.locfileid: "34358653"
 
    ![显示变量](./media/resource-manager-vscode-extension/show-variables.png) 
 
-10. 选择 storageName 变量。 添加右方括号。 以下示例显示 outputs 节：
+10. 选择 storageName 变量。 代码现在如下所示：
+
+   ```json
+   "storageUri": {
+      "type": "string",
+      "value": "[reference(variables('storageName'))"
+   }
+   ```
+   
+11. 前面的代码将不起作用，因为 `reference` 返回一个对象，但你的输出值设置为字符串。 需要指定该对象的其中一个值。 引用函数可以与任何资源类型一起使用，因此 VS Code 不会建议对象的属性。 但是，你可以发现[为存储帐户返回](/rest/api/storagerp/storageaccounts/getproperties)的一个值为 `.primaryEndpoints.blob`。 
+
+   在最后一个括号后添加该属性。 添加右方括号。 以下示例显示 outputs 节：
 
    ```json
    "outputs": { 
@@ -181,7 +192,7 @@ ms.locfileid: "34358653"
        },
        "storageUri": {
          "type": "string",
-         "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+         "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
        }
    }
    ```
@@ -249,7 +260,7 @@ ms.locfileid: "34358653"
     },
     "storageUri": {
       "type": "string",
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+      "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
     }
   }
 }
