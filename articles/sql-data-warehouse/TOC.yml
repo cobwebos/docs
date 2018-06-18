@@ -49,8 +49,6 @@
           href: sql-data-warehouse-manage-compute-overview.md
         - name: 备份和还原
           href: backup-and-restore.md
-        - name: 审核
-          href: sql-data-warehouse-auditing-overview.md
         - name: 容量限制
           href: sql-data-warehouse-service-capacity-limits.md
         - name: 维护
@@ -61,8 +59,22 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-manage-security.md
+        - name: 访问控制
+          href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 防火墙规则
+          href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 防火墙虚拟网络规则
+          href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
         - name: 身份验证
-          href: sql-data-warehouse-authentication.md
+          href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: Azure AD
+          href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 登录名和用户
+          href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 多重身份验证
+          href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 审核
+          href: sql-data-warehouse-auditing-overview.md
         - name: 行级别安全性
           href: column-level-security.md
     - name: 迁移到 SQL 数据仓库
@@ -181,6 +193,12 @@
           href: sql-data-warehouse-restore-database-rest-api.md
     - name: “安全”
       items:
+        - name: 配置 Azure AD 身份验证
+          href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 条件性访问
+          href: ../sql-database/sql-database-conditional-access.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 通过 PowerShell 配置虚拟网络规则
+          href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/azure/sql-data-warehouse/toc.json
         - name: 启用加密 - 门户
           href: sql-data-warehouse-encryption-tde.md
         - name: 启用加密 - T-SQL

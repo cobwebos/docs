@@ -10,31 +10,28 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: eefe59da69eb60f2ac9e266389fa7f68e6139215
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0216a95a5209f5545b34e446904b3215950c6fbc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362181"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638103"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>教程：使用 API 上传、编码和流式传输视频
 
-本教程介绍如何使用 Azure 媒体服务上传、编码和流式传输视频文件。 可能会需要以 Apple 的 HLS、MPEG DASH 或 CMAF 格式流式传输内容，以便在各种浏览器和设备上播放此内容。 在能够流式传输之前，需要对视频进行适当编码并打包视频。
-
-虽然本教程会演示上传视频的步骤，但也可以对可通过 HTTPS URL 使用媒体服务帐户访问的内容进行编码。
+使用媒体服务可以将媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，你可能希望以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 在流式传输之前，应该对高质量的数字媒体文件进行编码。 有关编码指南，请参阅[编码概念](encoding-concept.md)。 本教程上传本地视频文件并对上传的文件进行编码。 还可以对可通过 HTTPS URL 访问的内容进行编码。 有关详细信息，请参阅[从 HTTP URL 创建作业输入](job-input-from-http-how-to.md)。
 
 ![播放视频](./media/stream-files-tutorial-with-api/final-video.png)
 
 本教程演示如何：    
 
 > [!div class="checklist"]
-> * 启动 Azure Cloud Shell
 > * 创建媒体服务帐户
 > * 访问媒体服务 API
 > * 配置示例应用
-> * 仔细检查代码
+> * 检查用于上传、编码和流式传输的代码
 > * 运行应用程序
 > * 测试流式 URL
 > * 清理资源
@@ -53,19 +50,31 @@ ms.locfileid: "34362181"
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
+该示例位于 [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles) 文件夹。
+
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="examine-the-code"></a>检查代码
+## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>检查用于上传、编码和流式传输的代码
 
 本节讨论 UploadEncodeAndStreamFiles 项目的 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs) 文件中定义的函数。
 
+该示例执行以下操作：
+
+1. 创建一个新转换（首先，检查指定的转换是否存在）。 
+2. 创建一个输出资产用作编码作业的输出。
+3. 创建一个输入资产并将指定的本地视频文件上传到其中。 该资产用作作业的输入。 
+4. 使用创建的输入和输出提交编码作业。
+5. 检查作业的状态。
+6. 创建 StreamingLocator。
+7. 生成流式处理 URL。
+
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 首先需要获取令牌，然后从返回的令牌创建 ClientCredential 对象。 在本文开头克隆的代码中，ArmClientCredential 对象用于获取令牌。  
+若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在本文开头克隆的代码中，**GetCredentialsAsync** 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateMediaServicesClient)]
 
@@ -96,7 +105,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 创建新转换实例时，需要指定希望生成的输出内容[](https://docs.microsoft.com/rest/api/media/transforms)。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
 
-可以使用内置 EncoderNamedPreset 或使用自定义预设。 
+可以使用内置 EncoderNamedPreset 或使用自定义预设。 有关详细信息，请参阅[如何自定义编码器预设](customize-encoder-presets-how-to.md)。
 
 在创建时[转换](https://docs.microsoft.com/rest/api/media/transforms)，首先应检查是否其中一个已存在使用**获取**方法，如下面的代码中所示。  在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
@@ -112,7 +121,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ### <a name="wait-for-the-job-to-complete"></a>等待作业完成
 
-以下代码示例显示如何轮询服务以获取[作业](https://docs.microsoft.com/rest/api/media/jobs)状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。
+此作业需要一些时间才能完成，完成时可发出通知。 以下代码示例显示如何轮询服务以获取[作业](https://docs.microsoft.com/rest/api/media/jobs)状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。
 
 事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。  请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
@@ -122,11 +131,11 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ### <a name="get-a-streaminglocator"></a>获取 StreamingLocator
 
-完成编码后，下一步是让客户端能够播放输入资产中的视频。 可通过两个步骤完成此操作：首先，创建 StreamingLocator，然后，生成客户端可以使用的流式 URL[](https://docs.microsoft.com/rest/api/media/streaminglocators)。 
+编码完成后，下一步是使输出资产中的视频可供客户端播放。 可通过两个步骤完成此操作：首先，创建 StreamingLocator，然后，生成客户端可以使用的流式 URL[](https://docs.microsoft.com/rest/api/media/streaminglocators)。 
 
 创建 StreamingLocator 的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，StreamingLocator 立即生效，并持续到其被删除为止。 
 
-创建 StreamingLocator 时，需要指定所需的 StreamingPolicyName[](https://docs.microsoft.com/rest/api/media/streaminglocators)。 在此示例中，将流式传输采用明码或未加密的内容，以便使用预定义的明确的流式传输策略 PredefinedStreamingPolicy.ClearStreamingOnly。
+创建 StreamingLocator 时，需要指定所需的 StreamingPolicyName[](https://docs.microsoft.com/rest/api/media/streaminglocators)。 在此示例中将流式传输明文（或未加密的内容），因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
 
 > [!IMPORTANT]
 > 使用自定义的 [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个 StreamingLocator 创建新的 StreamingPolicy。

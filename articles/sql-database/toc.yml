@@ -343,7 +343,7 @@
         - name: 使用 BCP 加载数据
           href: sql-database-load-from-csv-with-bcp.md
         - name: 使用 ADF 加载数据
-          href: ../data-factory/connector-azure-sql-database.md
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
         - name: 同步数据
           href: sql-database-get-started-sql-data-sync.md
     - name: 监视和优化

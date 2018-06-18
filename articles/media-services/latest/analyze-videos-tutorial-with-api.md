@@ -12,25 +12,24 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 0fdc8c6dc9fae96a79e2ab2b05b7db3012834c1e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e81544d263bea3f367eaf2100ddb36a2835034c4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362288"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637906"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>教程：使用 Azure 媒体服务分析视频 
 
-本教程介绍如何使用 Azure 媒体服务分析视频。 在很多情况下，用户可能会希望深入了解录制的视频或音频内容。 例如，若要提高客户满意度，组织可采取语音转文本操作，将客户支持录音转换为具有索引和仪表板的可搜索目录。 然后，即可获得有关其业务的见解，如常见投诉列表、此类投诉的来源等等。
+本教程介绍如何使用 Azure 媒体服务分析视频。 在很多情况下，用户可能会希望深入了解录制的视频或音频内容。 例如，若要提高客户满意度，组织可运行语音转文本处理，将客户支持录音转换为具有索引和仪表板的可搜索目录。 然后，即可获得有关其业务的见解，如常见投诉列表、此类投诉的来源等等。
 
 本教程演示如何：    
 
 > [!div class="checklist"]
-> * 启动 Azure Cloud Shell
 > * 创建媒体服务帐户
 > * 访问媒体服务 API
 > * 配置示例应用
-> * 仔细检查示例代码
+> * 检查用于分析指定视频的代码
 > * 运行应用程序
 > * 检查输出
 > * 清理资源
@@ -49,23 +48,48 @@ ms.locfileid: "34362288"
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
+该示例位于 [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) 文件夹。
+
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="examine-the-sample-code-in-detail"></a>仔细检查示例代码
+## <a name="examine-the-code-that-analyzes-the-specified-video"></a>检查用于分析指定视频的代码
 
 本节讨论 AnalyzeVideos 项目的 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) 文件中定义的函数。
 
+该示例执行以下操作：
+
+1. 创建转换和用于分析视频的作业。
+2. 创建输入资产，并将视频上传到其中。 该资产用作作业的输入。
+3. 创建用于存储作业输出的输出资产。 
+4. 提交作业。
+5. 检查作业的状态。
+6. 下载运行作业产生的文件。 
+
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 首先需要获取令牌，然后从返回的令牌创建 ClientCredential 对象。 在本文开头克隆的代码中，ArmClientCredential 对象用于获取令牌。  
+若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在本文开头克隆的代码中，**GetCredentialsAsync** 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateMediaServicesClient)]
 
-### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>创建输出资产用于存储作业结果 
+### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>创建输入资产并将本地文件上传到该资产 
+
+CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/rest/api/media/assets)并将指定的本地视频文件上传到该资产。 此资产用作编码作业的输入。 在媒体服务 v3 中，作业输入可以是资产，也可以是可通过 HTTPS URL 使用媒体服务帐户访问的内容。 如果想要了解如何从 HTTPS URL 进行编码，请参阅[此](job-input-from-http-how-to.md)文章。  
+
+在媒体服务 v3 中，使用 Azure 存储 API 上传文件。 以下 .NET 片段显示如何上传。
+
+以下函数执行以下操作：
+
+* 创建资产 
+* 获取资产的[存储中容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)的可写 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+* 使用 SAS URL 将文件上传到存储中的容器中
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
+
+### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>创建一个输出资产以存储作业的结果 
 
 输出[资产](https://docs.microsoft.com/rest/api/media/assets)会存储作业结果。 项目定义 DownloadResults 函数，该函数将结果从此输出资产中下载到**输出**文件夹中，便于用户查看获取的内容。
 
@@ -111,7 +135,7 @@ ms.locfileid: "34362288"
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>清理媒体服务帐户中的资源
 
-通常情况下，除了打算重复使用的对象，用户应清理所有内容（通常将重复使用转换并保留 StreamingLocators 等）。 如果希望帐户在试验后保持干净状态，则应删除不打算重复使用的资源。 例如，以下代码可删除作业。
+一般来说，除了打算重用的对象之外，应该清除所有对象（通常，将重用转换并保留 StreamingLocators）。 如果希望帐户在试验后保持干净状态，则应删除不打算重复使用的资源。 例如，以下代码可删除作业。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 

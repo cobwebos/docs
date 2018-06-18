@@ -13,7 +13,7 @@
 
 # 入门
 ## [Azure AD 入门](fundamentals/get-started-azure-ad.md)
-## [注册 Azure AD Premium](active-directory-get-started-premium.md)
+## [注册 Azure AD Premium](fundamentals/active-directory-get-started-premium.md)
 ## [添加自定义域名](fundamentals/add-custom-domain.md)
 ## [配置公司品牌](fundamentals/customize-branding.md)
 ## [将用户添加到 Azure AD](fundamentals/add-users-azure-active-directory.md)
@@ -82,10 +82,10 @@
 
 ## [管理组和成员](fundamentals/active-directory-manage-groups.md)
 ### 管理组
-#### [Azure 门户](active-directory-groups-create-azure-portal.md)
+#### [Azure 门户](fundamentals/active-directory-groups-create-azure-portal.md)
 #### [用于 Graph 的 Azure AD PowerShell (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 #### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
-### [管理组成员](active-directory-groups-members-azure-portal.md)
+### [管理组成员](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [管理组所有者](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [管理组成员身份](fundamentals/active-directory-groups-membership-azure-portal.md)
 ### [使用组分配许可证](fundamentals/active-directory-licensing-whatis-azure-portal.md)

@@ -15,11 +15,12 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: aaac2fa4d62fb02bf17342a0db27fad79e495693
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 4eaae22f1ccbcb73eb7244f55ea4629aae053171
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597750"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>在 Azure 中创建 PHP Web 应用
 
@@ -104,7 +105,7 @@ az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --
 }
 ```
 
-浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
+浏览到新建的 Web 应用。 将 _&lt;app name>_ 替换为在上一步中创建的唯一应用名称。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -170,7 +171,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-完成部署后，切换回**浏览到应用**步骤中打开的浏览器窗口，然后刷新页面。
+完成部署后，返回到**浏览到应用**步骤期间打开的浏览器窗口，然后刷新页面。
 
 ![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-php/hello-azure-in-browser.png)
 
@@ -182,11 +183,11 @@ git push azure master
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
+将显示 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
 
 ![Azure 门户中的应用服务页](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供用于配置应用的不同选项。 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
