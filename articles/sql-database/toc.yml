@@ -100,7 +100,7 @@
       href: sql-database-features.md
     - name: 高可用性
       href: sql-database-high-availability.md
-    - name: 安全
+    - name: “安全”
       items:
         - name: 概述
           href: sql-database-security-overview.md
@@ -202,6 +202,30 @@
           href: sql-database-xevent-db-diff-from-svr.md
         - name: 监视内存中存储
           href: sql-database-in-memory-oltp-monitoring.md
+    - name: 弹性数据库作业
+      items:
+        - name: 概述
+          href: elastic-jobs-overview.md
+        - name: 创建和管理 (PowerShell)
+          href: elastic-jobs-powershell.md
+        - name: 创建和管理 (T-SQL)
+          href: elastic-jobs-tsql.md
+        - name: 迁移（从旧的弹性作业）
+          href: elastic-jobs-migrate.md
+        - name: 弹性作业（已弃用）
+          items:
+            - name: 概述（已弃用）
+              href: sql-database-elastic-jobs-overview.md
+            - name: 安装弹性作业（已弃用）
+              href: sql-database-elastic-jobs-service-installation.md
+            - name: 创建作业 - 门户（已弃用）
+              href: sql-database-elastic-jobs-create-and-manage.md
+            - name: 创建作业 - Azure PowerShell（已弃用）
+              href: sql-database-elastic-jobs-powershell.md
+            - name: 创建作业 - 示例应用（已弃用）
+              href: sql-database-elastic-jobs-getting-started.md
+            - name: 卸载弹性作业（已弃用）
+              href: sql-database-elastic-jobs-uninstall.md
     - name: 向外扩展
       items:
         - name: 概述
@@ -212,8 +236,6 @@
           href: sql-database-elastic-query-overview.md
         - name: 弹性事务
           href: sql-database-elastic-transactions-overview.md
-        - name: 弹性作业
-          href: sql-database-elastic-jobs-overview.md
         - name: 分片映射
           href: sql-database-elastic-scale-shard-map-management.md
         - name: 查询路由
@@ -276,16 +298,6 @@
       items:
         - name: 升级弹性数据库客户端库
           href: sql-database-elastic-scale-upgrade-client-library.md
-        - name: 安装弹性作业
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: 创建作业 - 门户
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: 创建作业 - Azure PowerShell
-          href: sql-database-elastic-jobs-powershell.md
-        - name: 创建作业 - 示例应用
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: 卸载弹性作业
-          href: sql-database-elastic-jobs-uninstall.md
         - name: 查询垂直分区的数据
           href: sql-database-elastic-query-getting-started-vertical.md
         - name: 跨横向扩展的数据层进行报告
@@ -302,7 +314,7 @@
           href: sql-database-managed-instance-connect-app.md
         - name: 同步网络配置
           href: sql-database-managed-instance-sync-network-configuration.md
-    - name: 安全
+    - name: “安全”
       items:
         - name: 配置 Azure AD 身份验证
           href: sql-database-aad-authentication-configure.md
@@ -454,8 +466,6 @@
   items:
     - name: Azure PowerShell
       href: '/powershell/module/azurerm.sql/#sql'
-    - name: PowerShell（弹性数据库）
-      href: '/powershell/module/elasticdatabasejobs/#elasticdatabasejobs'
     - name: Azure CLI 2.0
       href: /cli/azure/sql
     - name: .NET

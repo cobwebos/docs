@@ -1,51 +1,57 @@
 - name: 管理访问概述
   href: manage-access-to-azure-resources.md
-- name: Azure 中的资源访问权限
-  href: rbac-and-directory-admin-roles.md
-- name: 基于角色的访问控制 (RBAC)
-  href: overview.md
+  items: null
+- name: 概述
   items:
-    - name: 快速入门
-      items:
-        - name: 授予用户访问权限 - 门户
-          href: quickstart-assign-role-user-portal.md
-    - name: 教程
-      items:
-        - name: 授予用户访问权限 - PowerShell
-          href: tutorial-role-assignments-user-powershell.md
-        - name: 授予组访问权限 - PowerShell
-          href: tutorial-role-assignments-group-powershell.md
-        - name: 创建自定义角色 - PowerShell
-          href: tutorial-custom-role-powershell.md
-        - name: 创建自定义角色 - CLI
-          href: tutorial-custom-role-cli.md
-    - name: 管理角色分配
-      items:
-        - name: 门户
-          href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
-        - name: Azure CLI
-          href: role-assignments-cli.md
-        - name: PowerShell
-          href: role-assignments-powershell.md
-        - name: REST
-          href: role-assignments-rest.md
+    - name: 什么是 RBAC?
+      href: overview.md
+    - name: 了解不同角色
+      href: rbac-and-directory-admin-roles.md
+- name: 快速入门
+  items:
+    - name: 授予用户访问权限
+      href: quickstart-assign-role-user-portal.md
+- name: 教程
+  items:
+    - name: 授予用户访问权限 - PowerShell
+      href: tutorial-role-assignments-user-powershell.md
+    - name: 授予组访问权限 - PowerShell
+      href: tutorial-role-assignments-group-powershell.md
+    - name: 创建自定义角色 - PowerShell
+      href: tutorial-custom-role-powershell.md
+    - name: 创建自定义角色 - CLI
+      href: tutorial-custom-role-cli.md
+- name: 概念
+  items:
     - name: 了解角色定义
       href: role-definitions.md
     - name: 内置角色
       href: built-in-roles.md
     - name: 自定义角色
       href: custom-roles.md
-    - name: 管理外部用户的角色分配
-      href: role-assignments-external-users.md
+    - name: 资源提供程序操作
+      href: resource-provider-operations.md
+    - name: RBAC 的 Privileged Identity Management (PIM)
+      href: pim-azure-resource.md
+    - name: 用于 Azure 管理的条件访问
+      href: conditional-access-azure-management.md
+- name: 操作指南
+  items:
+    - name: 管理访问权限
+      items:
+        - name: 门户
+          href: role-assignments-portal.md
+        - name: Azure CLI
+          href: role-assignments-cli.md
+        - name: PowerShell
+          href: role-assignments-powershell.md
+        - name: REST
+          href: role-assignments-rest.md
     - name: 活动日志
       href: change-history-report.md
     - name: 为全局管理员提升访问权限
       href: elevate-access-global-admin.md
+    - name: 管理外部用户的访问权限
+      href: role-assignments-external-users.md
     - name: 故障排除
       href: troubleshooting.md
-    - name: 资源提供程序操作
-      href: resource-provider-operations.md
-- name: RBAC 的 Privileged Identity Management (PIM)
-  href: pim-azure-resource.md
-- name: 用于 Azure 管理的条件访问
-  href: conditional-access-azure-management.md

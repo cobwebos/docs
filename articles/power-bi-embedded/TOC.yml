@@ -4,12 +4,14 @@
   items:
     - name: 什么是 Power BI Embedded
       href: what-is-power-bi-embedded.md
-- name: 入门
+- name: 教程
+  items:
+    - name: 为客户示例嵌入内容
+      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
+- name: 概念
   items:
     - name: Power BI Embedded 入门
       href: get-started.md
-    - name: 示例入门
-      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
 - name: 如何
   items:
     - name: 管理容量

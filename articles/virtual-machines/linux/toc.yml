@@ -201,7 +201,13 @@
         - name: 使用远程桌面
           href: use-remote-desktop.md
         - name: 将 VM 加入 Azure Active Directory
-          href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
+          items:
+            - name: Red Hat Enteprise Linux
+              href: ../../active-directory-domain-services/active-directory-ds-join-rhel-linux-vm.md
+            - name: CentOS
+              href: ../../active-directory-domain-services/active-directory-ds-join-centos-linux-vm.md
+            - name: Ubuntu
+              href: ../../active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm.md
         - name: 使用 Azure Active Directory 凭据登录
           href: login-using-aad.md
         - name: 更新和修补程序
