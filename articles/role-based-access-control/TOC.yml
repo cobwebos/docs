@@ -1,5 +1,5 @@
-- name: 管理访问概述
-  href: manage-access-to-azure-resources.md
+- name: 基于角色的访问控制文档
+  href: index.yml
   items: null
 - name: 概述
   items:
@@ -36,6 +36,7 @@
     - name: 用于 Azure 管理的条件访问
       href: conditional-access-azure-management.md
 - name: 操作指南
+  expanded: true
   items:
     - name: 管理访问权限
       items:

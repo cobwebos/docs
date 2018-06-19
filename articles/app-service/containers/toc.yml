@@ -29,13 +29,13 @@
       items:
         - name: 将 .NET Core 与 SQL DB 配合使用
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: 将 Ruby 与 MySQL 配合使用
-          href: tutorial-ruby-mysql-app.md
+        - name: 将 Ruby 与 Postgres 配合使用
+          href: tutorial-ruby-postgres-app.md
         - name: 将 PHP 与 MySQL 配合使用
           href: tutorial-php-mysql-app.md
         - name: 将 Node.js 与 MongoDB 配合使用
           href: tutorial-nodejs-mongodb-app.md
-        - name: 将 Python 自定义容器与 PostgreSQL 配合使用
+        - name: 将 Python 自定义容器与 Postgres 配合使用
           href: tutorial-docker-python-postgresql-app.md
     - name: 多容器应用
       href: tutorial-multi-container-app.md

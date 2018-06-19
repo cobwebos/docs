@@ -16,6 +16,8 @@
   items:
     - name: 将 Azure CDN 添加到 Web 应用
       href: cdn-add-to-web-app.md
+    - name: 通过 HTTPS 使用自定义域访问 Blob
+      href: cdn-storage-custom-domain-https.md
     - name: 添加自定义域
       href: cdn-map-content-to-custom-domain.md
     - name: 在自定义域上配置 HTTPS

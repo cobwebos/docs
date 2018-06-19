@@ -37,13 +37,10 @@
     - name: Azure VNet 中的 HBase 群集复制
       href: ../hbase/apache-hbase-replication.md
       maintainContext: true
-- name: 使用 OMS 进行监视
+- name: 使用 Log Analytics 进行监视
   items:
     - name: 使用 Azure Log Analytics
       href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-      maintainContext: true
-    - name: 特定于群集的仪表板
-      href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
       maintainContext: true
     - name: 将查询与 Log Analytics 配合使用
       href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
