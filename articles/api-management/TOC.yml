@@ -97,6 +97,8 @@
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: 使用证书进行相互身份验证
           href: api-management-howto-mutual-certificates.md
+        - name: 管理协议和密码
+          href: api-management-howto-manage-protocols-ciphers.md
     - name: 自定义开发人员体验
       items:
         - name: 修改页面内容和布局

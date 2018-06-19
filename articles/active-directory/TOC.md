@@ -122,7 +122,6 @@
 ### 引用
 #### [保留](active-directory-reporting-retention.md)
 #### [延迟](active-directory-reporting-latencies-azure-portal.md)
-#### [通知](active-directory-reporting-notifications.md)
 #### [审核活动参考](active-directory-reporting-activity-audit-reference.md)
 #### [登录活动错误代码](active-directory-reporting-activity-sign-ins-errors.md)
 #### [多重身份验证](active-directory-reporting-activity-sign-ins-mfa.md)
@@ -152,6 +151,12 @@
 ### [SSPR 自定义](authentication/concept-sspr-customization.md)
 ### [SSPR 数据要求](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR 报告](authentication/howto-sspr-reporting.md)
+### [消除弱密码](authentication/concept-password-ban-bad.md)
+### [配置禁止的密码列表](authentication/howto-password-ban-bad.md)
+### [本地集成](authentication/concept-password-ban-bad-on-premises.md)
+### [部署 Azure AD 密码保护](authentication/howto-password-ban-bad-on-premises.md)
+### [配置 Azure AD 密码保护](authentication/howto-password-ban-bad-on-premises-operations.md)
+### [监视 Azure AD 密码保护](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### IT 管理员：重置密码
 #### [Azure 门户](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [许可 SSPR](authentication/concept-sspr-licensing.md)
@@ -178,14 +183,14 @@
 ## 管理应用
 ### [概述](manage-apps/what-is-application-management.md)
 ### [入门](manage-apps/plan-an-application-integration.md)
-### [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
+### [SaaS 应用集成教程](saas-apps/tutorial-list.md)
 ### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
 #### [创建快照报表](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [使用自定义日志分析器](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
 ### [对 SaaS 应用进行用户预配和取消预配](active-directory-saas-app-provisioning.md) 
-#### [应用集成教程](active-directory-saas-tutorial-list.md) 
+#### [应用集成教程](saas-apps/tutorial-list.md) 
 #### [对启用 SCIM 的应用自动执行预配](manage-apps/use-scim-to-provision-users-and-groups.md) 
 #### [自定义属性映射](active-directory-saas-customizing-attribute-mappings.md) 
 #### [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md) 

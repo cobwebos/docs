@@ -184,7 +184,19 @@
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: 视频
-      href: videos.md
+      items:
+        - name: 产品视频
+          href: videos.md
+        - name: 操作方法视频系列
+          items:
+            - name: 了解产品功能和优势
+              href: 'https://aka.ms/mysql-intro-vid'
+            - name: 将 MySQL 应用迁移到 Azure
+              href: 'https://aka.ms/mysql-migrate-vid'
+            - name: 生成和部署 Web 应用
+              href: 'https://aka.ms/mysql-webapps-vid'
+            - name: 使用 OSBA 连接容器
+              href: 'https://aka.ms/mysql-osba-vid'
     - name: 请求功能
       href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
     - name: 上市区域

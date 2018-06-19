@@ -53,7 +53,7 @@
     - name: 监视安全运行状况
       href: security-center-monitoring.md
       items:
-        - name: 计算安全
+        - name: 计算和应用安全
           href: security-center-virtual-machine-recommendations.md
           items:
             - name: 应用磁盘加密
@@ -74,6 +74,10 @@
               href: security-center-update-os-version.md
             - name: 未安装漏洞评估
               href: security-center-vulnerability-assessment-recommendations.md
+            - name: 添加 Web 应用程序防火墙
+              href: security-center-add-web-application-firewall.md
+            - name: 完成应用程序保护
+              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
         - name: 网络安全
           href: security-center-network-recommendations.md
           items:
@@ -94,13 +98,6 @@
               href: security-center-enable-auditing-on-sql-servers.md
             - name: 启用透明数据加密
               href: security-center-enable-transparent-data-encryption.md
-        - name: 应用程序安全性
-          href: security-center-application-recommendations.md
-          items:
-            - name: 添加 Web 应用程序防火墙
-              href: security-center-add-web-application-firewall.md
-            - name: 完成应用程序保护
-              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
         - name: 标识和访问
           href: security-center-identity-access.md
     - name: 应用云防御措施
