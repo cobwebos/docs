@@ -27,7 +27,7 @@
 ### [通过模板将 Windows Server VM 加入托管域](active-directory-ds-join-windows-vm-template.md)
 ### [CentOS](active-directory-ds-join-centos-linux-vm.md)
 ### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
-### [RedHat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
+### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
 ### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## 管理托管域
 ### [管理托管域](active-directory-ds-admin-guide-administer-domain.md)

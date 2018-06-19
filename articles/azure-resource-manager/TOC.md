@@ -17,6 +17,7 @@
 ### [模板节](resource-group-authoring-templates.md)
 #### [参数](resource-manager-templates-parameters.md)
 #### [变量](resource-manager-templates-variables.md)
+#### [函数](resource-group-authoring-templates.md#functions)
 #### [资源](resource-manager-templates-resources.md)
 #### [输出](resource-manager-templates-outputs.md)
 ### [链接和嵌套模板](resource-group-linked-templates.md)

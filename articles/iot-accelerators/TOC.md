@@ -1,4 +1,4 @@
-# [Azure IoT 基础](../iot-fundamentals/index.yml)
+# [Azure IoT 基础](/azure/iot-fundamentals)
 # [IoT 解决方案加速器文档](index.md)
 
 # 概述
@@ -94,15 +94,16 @@
 # 引用
 ## [开发人员参考指南](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [开发人员故障排除指南](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-## [安全体系结构](iot-security-architecture.md)
-## [安全最佳实践](iot-security-best-practices.md)
-## [保护 IoT 部署](iot-accelerators-security-deployment.md)
-## [安全基础知识](securing-iot-ground-up.md)
+## [安全基础知识](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc)
+## [安全最佳实践](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc)
+## [安全体系结构](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc)
+## [保护 IoT 部署](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc)
 
 # 相关内容
 ## 解决方案 
 ### [IoT 解决方案加速器](/azure/iot-suite) 
-### [IoT 中心](https://docs.microsoft.com/microsoft-iot-central/) 
+### 
+  [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## 平台服务 
 ### [IoT 中心](/azure/iot-hub) 
 ### [IoT 中心设备预配服务](/azure/iot-dps)

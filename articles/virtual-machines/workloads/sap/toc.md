@@ -51,12 +51,12 @@
 ## [DBMS 部署指南](dbms-guide.md)
 ## [使用 Azure Site Recovery 进行 SAP 灾难恢复](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # AAD SAP 标识集成和单一登录
-## [与 SAP 云集成](../../../active-directory/active-directory-saas-sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD 与 SAP Cloud Platform Identity Authentication 集成](../../../active-directory/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [设置与 SAP Cloud Platform 配合使用的单一登录](../../../active-directory/active-directory-saas-sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD 与 SAP NetWeaver 集成](../../../active-directory/active-directory-saas-sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD 与 SAP Business ByDesign 集成](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD 与 SAP HANA DBMS 集成](../../../active-directory/active-directory-saas-saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [与 SAP 云集成](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD 与 SAP Cloud Platform Identity Authentication 集成](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [设置与 SAP Cloud Platform 配合使用的单一登录](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD 与 SAP NetWeaver 集成](../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD 与 SAP Business ByDesign 集成](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD 与 SAP HANA DBMS 集成](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[通过 Azure AD 执行的 SAP Fiori Launchpad SAML 单一登录](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
