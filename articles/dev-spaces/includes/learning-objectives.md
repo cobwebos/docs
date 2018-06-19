@@ -10,15 +10,15 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 56233a6764c50ed816a5fd10e79d3a66fff08a0a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ad02c7abf42d61d5e67eefdbb42fe3501e4cfba8
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198603"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823785"
 ---
 本指南介绍如何：
 
-- 在 Azure 中创建针对开发进行了优化、基于 Kubernetes 的环境。
+- 在 Azure 中创建针对开发进行了优化的基于 Kubernetes 的环境 - _开发空间_。
 - 在容器中使用 VS Code 和命令行以迭代方式开发代码。
 - 在团队环境中高效地开发和测试代码。
