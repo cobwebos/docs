@@ -346,6 +346,14 @@
           href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
         - name: 同步数据
           href: sql-database-get-started-sql-data-sync.md
+        - name: 为 SQL 数据同步复制架构更改
+          href: sql-database-update-sync-schema.md
+        - name: 使用 OMS Log Analytics 监视 SQL 数据同步
+          href: sql-database-sync-monitor-oms.md
+        - name: SQL 数据同步最佳做法
+          href: sql-database-best-practices-data-sync.md
+        - name: SQL 数据同步故障排除
+          href: sql-database-troubleshoot-data-sync.md
     - name: 监视和优化
       items:
         - name: 监视和提高性能
@@ -374,12 +382,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure 自动化
           href: sql-database-manage-automation.md
-        - name: 使用 OMS Log Analytics 监视 SQL 数据同步
-          href: sql-database-sync-monitor-oms.md
-        - name: SQL 数据同步最佳做法
-          href: sql-database-best-practices-data-sync.md
-        - name: SQL 数据同步故障排除
-          href: sql-database-troubleshoot-data-sync.md
     - name: 向外扩展
       items:
         - name: 创建分片应用

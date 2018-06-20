@@ -15,36 +15,37 @@ ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 1e2dbc6020dd317e96c4116811f8e3bf87680bfb
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9d3c063dab11f31b10762e8399a1f11f2c28c3cd
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204388"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226990"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>快速入门： Azure 堆栈中使用 PowerShell 创建 Linux 服务器虚拟机
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 PowerShell 创建 Linux 服务器虚拟机
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-你可以通过 Azure 堆栈 PowerShell 创建 Ubuntu Server 16.04 LTS 虚拟机。 按照这篇文章创建和使用虚拟机中的步骤。  这篇文章还为你提供的步骤：
+可以使用 Azure Stack PowerShell 创建 Ubuntu Server 16.04 LTS 虚拟机。 请按照本文中的步骤创建和使用虚拟机。  本文还提供了执行以下操作的步骤：
 
-* 连接到远程客户端的虚拟机。
-* 安装 NGINX web 服务器并查看默认的主页。
+* 通过远程客户端连接到虚拟机。
+* 安装 NGINX Web 服务器并查看默认主页。
 * 清理未使用的资源。
 
 ## <a name="prerequisites"></a>必备组件
 
-* **Azure Stack Marketplace 中的 Linux 映像**
+* 
+  **Azure Stack 市场中的 Linux 映像**
 
-   默认情况下，Azure Stack Marketplace 不包含 Linux 映像。 获取要提供的 Azure 堆栈运算符**Ubuntu Server 16.04 LTS**所需的映像。 运算符可以使用中所述的步骤[从 Azure 应用商店项下载到 Azure 堆栈](../azure-stack-download-azure-marketplace-item.md)文章。
+   默认情况下，Azure Stack 市场不包含 Linux 映像。 让 Azure Stack 操作员提供你需要的 **Ubuntu Server 16.04 LTS** 映像。 操作员可以使用[将市场项从 Azure 下载到 Azure Stack](../azure-stack-download-azure-marketplace-item.md) 一文中介绍的步骤。
 
-* Azure 堆栈需要特定版本的 Azure PowerShell 创建和管理资源。 如果尚未针对 Azure Stack 配置 PowerShell，请登录到[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或登录到基于 Windows 的外部客户端（如果[通过 VPN 建立了连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)），遵循相应的步骤[安装](azure-stack-powershell-install.md)并[配置](azure-stack-powershell-configure-user.md) PowerShell。
+* Azure Stack 需要使用特定版本的 Azure PowerShell 来创建和管理资源。 如果尚未针对 Azure Stack 配置 PowerShell，请登录到[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或登录到基于 Windows 的外部客户端（如果[通过 VPN 建立了连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)），遵循相应的步骤[安装](azure-stack-powershell-install.md)并[配置](azure-stack-powershell-configure-user.md) PowerShell。
 
-* 保存你的 Windows 用户配置文件的.ssh 目录中名称 id_rsa.pub 公共 SSH 密钥。 有关创建 SSH 密钥的详细信息，请参阅[创建 SSH 密钥在 Windows 上的](../../virtual-machines/linux/ssh-from-windows.md)。
+* Windows 用户配置文件的 .ssh 目录中保存的名为 id_rsa.pub 的 SSH 公钥。 有关创建 SSH 密钥的详细信息，请参阅[在 Windows 上创建 SSH 密钥](../../virtual-machines/linux/ssh-from-windows.md)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是你可以在其中部署和管理 Azure 堆栈资源的逻辑容器。 在开发工具包或 Azure Stack 集成系统中，运行以下代码块创建资源组。 本文档中的所有变量分配值，你可以使用这些值或指定新值。
+资源组是一个逻辑容器，可以在其中部署和管理 Azure Stack 资源。 在开发工具包或 Azure Stack 集成系统中，运行以下代码块创建资源组。 本文档中为所有变量都分配了值，你可以使用这些值或分配新值。
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -58,7 +59,7 @@ New-AzureRmResourceGroup `
 
 ## <a name="create-storage-resources"></a>创建存储资源
 
-创建存储帐户，然后创建 Ubuntu Server 16.04 LTS 映像的存储容器。
+创建一个存储帐户，然后创建 Ubuntu Server 16.04 LTS 映像的存储容器。
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -113,22 +114,28 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>创建网络安全组和网络安全组规则
 
-网络安全组使用入站和出站规则保护虚拟机。 创建针对端口 3389，以允许传入远程桌面连接的入站的规则，并为端口 80 以允许传入的 web 流量的入站的规则。
+网络安全组使用入站和出站规则保护虚拟机。 为端口 3389 创建一个入站规则来允许传入的远程桌面连接，为端口 80 创建一个入站规则来允许传入的 Web 流量。
 
 ```powershell
+# Create variables to store the network security group and rules names.
+$nsgName = "myNetworkSecurityGroup"
+$nsgRuleSSHName = "myNetworkSecurityGroupRuleSSH"
+$nsgRuleWebName = "myNetworkSecurityGroupRuleWeb"
+
+
 # Create an inbound network security group rule for port 22
-$nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleSSH  -Protocol Tcp `
+$nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name $nsgRuleSSHName -Protocol Tcp `
 -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
 -DestinationPortRange 22 -Access Allow
 
 # Create an inbound network security group rule for port 80
-$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleWWW  -Protocol Tcp `
+$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name $nsgRuleWebName -Protocol Tcp `
 -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
 -DestinationPortRange 80 -Access Allow
 
 # Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroup -Location local `
--Name myNetworkSecurityGroup -SecurityRules $nsgRuleSSH,$nsgRuleWeb
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $location `
+-Name $nsgName -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>为虚拟机创建网卡
@@ -148,7 +155,7 @@ $nic = New-AzureRmNetworkInterface `
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-创建虚拟机配置。 此配置操作包括将虚拟机部署时使用的设置。 例如： 用户凭据、 大小和虚拟机映像。
+创建虚拟机配置。 此配置包括部署虚拟机时使用的设置。 例如：用户凭据、大小和虚拟机映像。
 
 ```powershell
 # Define a credential object.
@@ -205,25 +212,194 @@ New-AzureRmVM `
   -VM $VirtualMachine
 ```
 
+## <a name="quick-create-virtual-machine---full-script"></a>快速创建虚拟机的完整脚本
+
+> [!NOTE]
+> 很多或少合并，上面的代码，但使用密码，而不是 SSH 密钥进行身份验证。
+
+```powershell
+## Create a resource group
+
+<#
+A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. Values are assigned for all the variables in this document, you can use these values or assign new values.
+#>
+
+# Edit your variables here if required
+
+# Create variables to store the location and resource group names.
+$location = "local"
+$ResourceGroupName = "myResourceGroup"
+
+# Create variables to store the storage account name and the storage account SKU information
+$StorageAccountName = "mystorageaccount"
+$SkuName = "Standard_LRS"
+
+# Create variables to store the network security group and rules names.
+$nsgName = "myNetworkSecurityGroup"
+$nsgRuleSSHName = "myNetworkSecurityGroupRuleSSH"
+$nsgRuleWebName = "myNetworkSecurityGroupRuleWeb"
+
+# Create variable for virtual machine password
+$VMPassword = 'Password123!'
+
+# End of Variables - no need to edit anything past that point to deploy a single VM
+
+# Create Resource Group
+New-AzureRmResourceGroup `
+  -Name $ResourceGroupName `
+  -Location $location
+
+## Create storage resources
+
+# Create a storage account and then create a storage container for the Ubuntu Server 16.04 LTS image.
+
+# Create a new storage account
+$StorageAccount = New-AzureRMStorageAccount `
+  -Location $location `
+  -ResourceGroupName $ResourceGroupName `
+  -Type $SkuName `
+  -Name $StorageAccountName
+
+Set-AzureRmCurrentStorageAccount `
+  -StorageAccountName $storageAccountName `
+  -ResourceGroupName $resourceGroupName
+
+# Create a storage container to store the virtual machine image
+$containerName = 'osdisks'
+$container = New-AzureStorageContainer `
+  -Name $containerName `
+  -Permission Blob
+
+
+## Create networking resources
+
+# Create a virtual network, subnet, and a public IP address. These resources are used to provide network connectivity to the virtual machine.
+
+# Create a subnet configuration
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name mySubnet `
+  -AddressPrefix 192.168.1.0/24
+
+# Create a virtual network
+$vnet = New-AzureRmVirtualNetwork `
+  -ResourceGroupName $ResourceGroupName `
+  -Location $location `
+  -Name MyVnet `
+  -AddressPrefix 192.168.0.0/16 `
+  -Subnet $subnetConfig
+
+# Create a public IP address and specify a DNS name
+$pip = New-AzureRmPublicIpAddress `
+  -ResourceGroupName $ResourceGroupName `
+  -Location $location `
+  -AllocationMethod Static `
+  -IdleTimeoutInMinutes 4 `
+  -Name "mypublicdns$(Get-Random)"
+
+
+### Create a network security group and a network security group rule
+
+<#
+The network security group secures the virtual machine by using inbound and outbound rules. Create an inbound rule for port 3389 to allow incoming Remote Desktop connections and an inbound rule for port 80 to allow incoming web traffic.
+#>
+
+# Create an inbound network security group rule for port 22
+$nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name $nsgRuleSSHName -Protocol Tcp `
+-Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+-DestinationPortRange 22 -Access Allow
+
+# Create an inbound network security group rule for port 80
+$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name $nsgRuleWebName -Protocol Tcp `
+-Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+-DestinationPortRange 80 -Access Allow
+
+# Create a network security group
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $location `
+-Name $nsgName -SecurityRules $nsgRuleSSH,$nsgRuleWeb
+
+### Create a network card for the virtual machine
+
+# The network card connects the virtual machine to a subnet, network security group, and public IP address.
+
+# Create a virtual network card and associate it with public IP address and NSG
+$nic = New-AzureRmNetworkInterface `
+  -Name myNic `
+  -ResourceGroupName $ResourceGroupName `
+  -Location $location `
+  -SubnetId $vnet.Subnets[0].Id `
+  -PublicIpAddressId $pip.Id `
+  -NetworkSecurityGroupId $nsg.Id
+
+## Create a virtual machine
+<#
+Create a virtual machine configuration. This configuration includes the settings used when deploying the virtual machine. For example: user credentials, size, and the virtual machine image.
+#>
+
+# Define a credential object.
+$UserName='demouser'
+$securePassword = ConvertTo-SecureString $VMPassword -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ($UserName, $securePassword)
+
+# Create the virtual machine configuration object
+$VmName = "VirtualMachinelatest"
+$VmSize = "Standard_D1"
+$VirtualMachine = New-AzureRmVMConfig `
+  -VMName $VmName `
+  -VMSize $VmSize
+
+$VirtualMachine = Set-AzureRmVMOperatingSystem `
+  -VM $VirtualMachine `
+  -Linux `
+  -ComputerName "MainComputer" `
+  -Credential $cred
+
+$VirtualMachine = Set-AzureRmVMSourceImage `
+  -VM $VirtualMachine `
+  -PublisherName "Canonical" `
+  -Offer "UbuntuServer" `
+  -Skus "16.04-LTS" `
+  -Version "latest"
+
+$osDiskName = "OsDisk"
+$osDiskUri = '{0}vhds/{1}-{2}.vhd' -f `
+  $StorageAccount.PrimaryEndpoints.Blob.ToString(),`
+  $vmName.ToLower(), `
+  $osDiskName
+
+# Sets the operating system disk properties on a virtual machine.
+$VirtualMachine = Set-AzureRmVMOSDisk `
+  -VM $VirtualMachine `
+  -Name $osDiskName `
+  -VhdUri $OsDiskUri `
+  -CreateOption FromImage | `
+  Add-AzureRmVMNetworkInterface -Id $nic.Id
+
+# Create the virtual machine.
+New-AzureRmVM `
+  -ResourceGroupName $ResourceGroupName `
+ -Location $location `
+  -VM $VirtualMachine
+```
+
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
 
-部署虚拟机后，配置虚拟机建立 SSH 连接。 使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1) 命令返回虚拟机的公共 IP 地址。
+部署虚拟机后，为虚拟机配置一个 SSH 连接。 使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1) 命令返回虚拟机的公共 IP 地址。
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-从使用安装的 SSH 客户端系统，使用以下命令以连接到虚拟机。 如果在 Windows 上操作，可以使用 [Putty](http://www.putty.org/) 创建连接。
+从安装有 SSH 的客户端系统中，使用以下命令连接到虚拟机。 如果在 Windows 上操作，可以使用 [Putty](http://www.putty.org/) 创建连接。
 
 ```
 ssh <Public IP Address>
 ```
 
-出现提示时，输入 azureuser 作为登录用户。 如果你在创建 SSH 密钥时，你会使用通行短语，你将需要提供的通行短语。
+出现提示时，输入 azureuser 作为登录用户名。 如果在创建 SSH 密钥时使用了通行短语，则必须提供该通行短语。
 
-## <a name="install-the-nginx-web-server"></a>安装 NGINX web 服务器
+## <a name="install-the-nginx-web-server"></a>安装 NGINX Web 服务器
 
-若要更新包的资源和安装最新的 NGINX 包，运行以下脚本：
+若要更新包源并安装最新的 NGINX 包，请运行以下脚本：
 
 ```bash
 #!/bin/bash
@@ -237,13 +413,13 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>查看 NGINX 欢迎页
 
-使用安装，NGINX 和端口 80 打开虚拟机上，你可以访问 web 服务器上使用虚拟机的公共 IP 地址。 打开 Web 浏览器，并浏览到 ```http://<public IP address>```。
+在虚拟机上安装 NGINX 并打开端口 80 后，可通过虚拟机的公共 IP 地址访问 Web 服务器。 打开 Web 浏览器，并浏览到 ```http://<public IP address>```。
 
-![NGINX web 服务器欢迎页](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
+![NGINX Web 服务器欢迎页](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-清理不不再需要的资源。 你可以使用[Remove-azurermresourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1)命令，以删除这些资源。 若要删除资源组及其所有资源，请运行以下命令：
+清理不再需要的资源。 可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) 命令删除这些资源。 若要删除资源组及其所有资源，请运行以下命令：
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -251,4 +427,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程，你将部署基本的 Linux 服务器虚拟机。 若要了解有关 Azure 堆栈的虚拟机的详细信息，请转到[Azure 堆栈中的虚拟机的注意事项](azure-stack-vm-considerations.md)。
+在本快速入门中，你已部署了一台基本的 Linux 服务器虚拟机。 若要了解 Azure Stack 虚拟机的详细信息，请转到 [Azure Stack 中虚拟机的注意事项](azure-stack-vm-considerations.md)。

@@ -184,6 +184,8 @@
 ### [概述](manage-apps/what-is-application-management.md)
 ### [入门](manage-apps/plan-an-application-integration.md)
 ### [SaaS 应用集成教程](saas-apps/tutorial-list.md)
+
+
 ### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
 #### [创建快照报表](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
@@ -255,27 +257,110 @@
 #### [租户限制](manage-apps/tenant-restrictions.md)
 #### [使用 SCIM 预配用户](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [故障排除](active-directory-application-troubleshoot-content-map.md)
-#### [应用程序开发](active-directory-application-dev-troubleshoot-content-map.md)
-##### [配置和注册](active-directory-application-dev-config-content-map.md)
-##### [开发](active-directory-application-dev-development-content-map.md)
-#### [应用程序管理](active-directory-application-management-troubleshoot-content-map.md)
-##### [配置](active-directory-application-config-content-map.md)
-##### [登录](active-directory-application-sign-in-content-map.md)
-##### [预配](active-directory-application-provisioning-content-map.md)
 
-###### [验证用户是否已预配](application-provisioning-when-will-provisioning-finish-specific-user.md) 
-###### [预配需要很长时间](application-provisioning-when-will-provisioning-finish.md) 
-###### [如何配置用户预配](application-provisioning-config-how-to.md) 
-###### [配置预配时出现问题](application-provisioning-config-problem.md) 
-###### [保存管理员凭据时出现问题](application-provisioning-config-problem-storage-limit.md) 
-###### [没有用户正在进行预配](application-provisioning-config-problem-no-users-provisioned.md) 
-###### [正在对错误的用户进行预配](application-provisioning-config-problem-wrong-users-provisioned.md) 
+### 故障排除
 
-##### [管理访问](active-directory-application-access-content-map.md)
-##### [访问面板](active-directory-application-access-panel-content-map.md)
-##### [应用程序代理](active-directory-application-proxy-content-map.md)
-##### [条件性访问](active-directory-application-conditional-access-content-map.md)
+
+
+#### 访问面板
+##### [应用未出现](application-access-panel-unexpected-application-not-appearing.md)
+##### [出现意外的应用](application-access-panel-unexpected-application-appears.md)
+##### [无法登录](application-access-panel-web-sign-in-problem.md)
+##### [安装浏览器扩展时出错](application-access-panel-extension-problem-installing.md)
+##### [如何使用自助服务应用访问权限](application-access-panel-self-service-applications-how-to.md)
+##### [使用自助服务应用访问权限时出错](application-access-panel-self-service-applications-problem.md)
+
+#### 添加应用
+##### [选择应用类型](application-config-add-app-problem-how-to-choose-application-type.md)
+##### [常见问题 - 库应用](application-config-add-app-problem-problem-adding-gallery-app.md)
+##### [常见问题 - 非库应用](application-config-add-app-problem-problem-adding-non-gallery-app.md)
+
+#### 应用程序代理
+##### [显示应用页时出现问题](application-proxy-page-appearance-broken-problem.md)
+##### [应用程序加载时间过长](application-proxy-page-load-speed-problem.md)
+##### [应用程序页上的链接不起作用](application-proxy-page-links-broken-problem.md)
+##### [要为应用打开哪些端口](application-proxy-connectivity-ports-how-to.md)
+##### [应用的连接器组中没有起作用的连接器](application-proxy-connectivity-no-working-connector.md)
+##### [在管理门户中配置](application-proxy-config-how-to.md)
+##### [为应用配置单一登录](application-proxy-config-sso-how-to.md)
+##### [在管理门户中创建应用时出现问题](application-proxy-config-problem.md)
+##### [配置 Kerberos 约束委派](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+##### [使用 PingAccess 配置](application-proxy-back-end-ping-access-how-to.md)
+##### [“无法访问此企业应用程序”错误](application-proxy-sign-in-bad-gateway-timeout-error.md)
+##### [安装应用程序代理程序连接器时出现问题](application-proxy-connector-installation-problem.md)
+
+
+#### 应用程序注册
+##### [为应用程序对象填写字段](application-dev-registration-config-specific-application-property-how-to.md)
+##### [更改令牌生存期默认值](application-dev-registration-config-change-token-lifetime-how-to.md)
+
+#### 身份验证
+##### [配置终结点](application-dev-registration-config-how-to.md)
+
+#### 条件性访问
+##### [客户不符合设备注册先决条件](active-directory-conditional-access.md)
+##### [由于条件访问策略设置不当，租户被阻止](active-directory-conditional-access-device-remediation.md)
+##### [企业网络外部规则如何以及何时生效？](https://aka.ms/calocation)
+##### [如何增加允许用户在 Azure AD 中注册的设备数？](active-directory-azureadjoin-setup.md)
+##### [如何为 Exchange Online 设置条件访问？](https://aka.ms/csforexchange)
+##### [如何为 Windows 7 设备设置条件访问？](active-directory-conditional-access.md#device-based-conditional-access)
+##### [哪些应用程序支持条件访问？](active-directory-conditional-access-supported-apps.md)
+
+#### 查找 API
+##### [查找 API](application-dev-api-find-an-api-how-to.md)
+
+#### 管理访问权限
+##### [为应用分配用户和组](application-access-assignment-how-to-add-assignment.md)
+##### [删除对应用的用户访问权限](application-access-assignment-how-to-remove-assignment.md)
+##### [配置自助服务应用分配](application-access-self-service-how-to.md)
+##### [分配了意外的用户](application-access-unexpected-user-assignment.md)
+##### [应用程序列表中的意外应用](application-access-unexpected-application.md)
+
+#### 多租户应用
+##### [配置新应用](application-dev-setup-multi-tenant-app.md)
+##### [添加到应用库](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+
+#### 权限
+##### [选择 API 的权限](application-dev-perms-for-given-api.md)
+##### [为应用授予权限](application-dev-registration-config-grant-permissions-how-to.md)
+##### [委派权限与应用程序权限](application-dev-delegated-and-app-perms.md)
+##### [应用程序许可](application-dev-consent-framework.md)
+
+#### 设置
+##### [花费多长时间](application-provisioning-when-will-provisioning-finish-specific-user.md)
+##### [花费数小时 - 库应用](application-provisioning-when-will-provisioning-finish.md)
+##### [配置用户预配 - 库应用](application-provisioning-config-how-to.md)
+##### [配置用户预配时出现问题 - 库应用](application-provisioning-config-problem.md)
+##### [配置用户预配时保存管理员凭据出现问题 - 库应用](application-provisioning-config-problem-storage-limit.md)
+##### [未预配用户 - 库应用](application-provisioning-config-problem-no-users-provisioned.md)
+##### [预配了错误的用户 - 库应用](application-provisioning-config-problem-wrong-users-provisioned.md)
+
+#### 单一登录
+##### [选择方法](application-config-sso-how-to-choose-sign-on-method.md)
+##### [配置](application-dev-registration-config-sso-how-to.md)
+##### [配置联合单一登录 - 库应用](application-config-sso-how-to-configure-federated-sso-gallery.md)
+##### [配置联合单一登录时常见的问题 - 库应用](application-config-sso-problem-configure-federated-sso-gallery.md)
+##### [配置联合单一登录 - 非库应用](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+##### [配置联合单一登录时常见的问题 - 非库应用](application-config-sso-problem-configure-federated-sso-non-gallery.md)
+##### [配置密码 - 库应用](application-config-sso-how-to-configure-password-sso-gallery.md)
+##### [配置密码时常见的问题 - 库应用](application-config-sso-problem-configure-password-sso-gallery.md)
+##### [配置密码 - 非库应用](application-config-sso-how-to-configure-password-sso-non-gallery.md)
+##### [配置密码时常见的问题 - 非库应用](application-config-sso-problem-configure-password-sso-non-gallery.md)
+
+#### 用户登录问题
+##### [意外的许可提示](application-sign-in-unexpected-user-consent-prompt.md)
+##### [用户许可错误](application-sign-in-unexpected-user-consent-error.md)
+##### [从自定义门户登录时出现问题](application-sign-in-other-problem-deeplink.md)
+##### [从访问面板登录时出现问题](application-sign-in-other-problem-access-panel.md)
+##### [应用程序登录页上的错误](application-sign-in-problem-application-error.md)
+##### [使用密码单一登录时出现的问题 - 非库应用](application-sign-in-problem-password-sso-non-gallery.md)
+##### [使用密码单一登录时出现的问题 - 库应用](application-sign-in-problem-password-sso-gallery.md)
+##### [登录到 Microsoft 应用时出现问题](application-sign-in-problem-first-party-microsoft.md)
+##### [使用联合单一登录时出现的问题 - 非库应用](application-sign-in-problem-federated-sso-non-gallery.md)
+##### [使用联合单一登录时出现的问题 - 库应用](application-sign-in-problem-federated-sso-gallery.md)
+##### [登录自定义开发的应用时出现的问题](application-sign-in-problem-custom-dev.md)
+##### [登录本地应用时出现的问题 - 应用程序代理](application-sign-in-problem-on-premises-application-proxy.md)
+
 ### [开发应用](active-directory-applications-guiding-developers-for-lob-applications.md)
 ### [文档库](active-directory-apps-index.md)
 
