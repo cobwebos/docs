@@ -66,7 +66,7 @@ ms.locfileid: "30245441"
 > 
 > 
 
-下载已加密的 blob 需要使用 **DownloadTo***/** BlobReadStream** 便捷方法检索整个 blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
+下载已加密的 blob 需要使用 **DownloadTo**\* /**BlobReadStream** 便捷方法检索整个 blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
 下载已加密 blob 中的任意范围（**DownloadRange*** 方法）需要调整用户提供的范围以获取少量可用于成功解密所请求范围的附加数据。
 
