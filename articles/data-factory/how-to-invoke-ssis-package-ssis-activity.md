@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 数据工厂中使用 SSIS 活动运行 SSIS 包 | Microsoft Docs
-description: 本文介绍如何使用 SSIS 活动从 Azure 数据工厂管道运行 SQL Server Integration Services (SSIS) 包。
+title: 使用“执行 SSIS 包”活动运行 SSIS 包 - Azure | Microsoft Docs
+description: 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -9,20 +9,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
-ms.date: 04/17/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 6c8bbe7ef7f74638b978cdad5b59a89fd81d12a5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ce041813d52e645c336869ef04c9522962c80cf5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297149"
 ---
-# <a name="run-an-ssis-package-using-the-ssis-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SSIS 活动运行 SSIS 包
-本文介绍如何使用 SSIS 活动从 Azure 数据工厂管道中运行 SSIS 包。 
+# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
+本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SSIS 包。 
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 SSIS 活动在版本 1（正式版 (GA)）的数据工厂服务中不可用。 若要使用替代方法在版本 1 的数据工厂服务中运行 SSIS 包，请参阅[在版本 1 中使用存储过程活动运行 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 “执行 SSIS 包”活动在版本 1（正式版 (GA)）的数据工厂服务中不可用。 若要使用替代方法在版本 1 的数据工厂服务中运行 SSIS 包，请参阅[在版本 1 中使用存储过程活动运行 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/18/2018
 如果还没有 Azure-SSIS 集成运行时，请按照[教程：部署 SSIS 包](tutorial-create-azure-ssis-runtime-portal.md)中的分步说明创建一个。
 
 ## <a name="data-factory-ui-azure-portal"></a>数据工厂 UI（Azure 门户）
-在本部分，我们将使用数据工厂 UI 来创建一个数据工厂管道，其中包含可运行 SSIS 包的 SSIS 活动。
+在本部分中，我们将使用数据工厂 UI 来创建一个数据工厂管道，其中包含可运行 SSIS 包的“执行 SSIS 包”活动。
 
 ### <a name="create-a-data-factory"></a>创建数据工厂
 第一步是使用 Azure 门户创建数据工厂。 
@@ -69,8 +70,8 @@ ms.lasthandoff: 04/18/2018
     ![数据工厂主页](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。 
 
-### <a name="create-a-pipeline-with-an-ssis-activity"></a>创建包含 SSIS 活动的管道。
-在此步骤中，将使用数据工厂 UI 创建管道。 将 SSIS 活动添加到管道，并将该活动配置为运行 SSIS 包。 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用“执行 SSIS 包”活动创建管道
+在此步骤中，将使用数据工厂 UI 创建管道。 将“执行 SSIS 包”活动添加到管道，并将该活动配置为运行 SSIS 包。 
 
 1. 在“入门”页中，单击“创建管道”： 
 
@@ -79,17 +80,23 @@ ms.lasthandoff: 04/18/2018
 
    ![将 SSIS 活动拖到设计器图面](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-3. 在 SSIS 活动属性的“常规”选项卡上，提供活动的名称和说明。 设置可选的超时和重试值。
+3. 在“执行 SSIS 包”活动属性的“常规”选项卡上，提供活动的名称和说明。 设置可选的超时和重试值。
 
     ![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. 在 SSIS 活动属性的“设置”选项卡上，选择与包部署到的  **数据库关联的 Azure-SSIS 集成运行时。**`SSISDB` 以 `<folder name>/<project name>/<package name>.dtsx` 格式提供包在 `SSISDB` 数据库中的路径。 （可选）指定 32 位执行和预定义或自定义的日志记录级别，并以 `<folder name>/<environment name>` 格式提供环境路径。
+4. 在“执行 SSIS 包”活动属性的“设置”选项卡上，选择与包部署到的 `SSISDB` 数据库关联的 Azure-SSIS 集成运行时。 以 `<folder name>/<project name>/<package name>.dtsx` 格式提供包在 `SSISDB` 数据库中的路径。 （可选）指定 32 位执行和预定义或自定义的日志记录级别，并以 `<folder name>/<environment name>` 格式提供环境路径。
 
     ![在“设置”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
 5. 若要验证管道配置，请单击工具栏中的“验证”。 若要关闭“管道验证报告”，请单击 **>>**。
 
 6. 单击“全部发布”按钮将管道发布到数据工厂。 
+
+### <a name="optionally-parameterize-the-activity"></a>（可选）将活动参数化
+
+（可选）在“高级”选项卡上以 JSON 格式将值、表达式或函数（可引用数据工厂系统变量）分配给项目或包参数。例如，可以将数据工厂管道参数分配给 SSIS 项目或包参数，如以下屏幕截图所示：
+
+![将参数添加到“执行 SSIS 包”活动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
 
 ### <a name="run-and-monitor-the-pipeline"></a>运行和监视管道
 在此部分中，将触发管道运行，然后对其进行监视。 
@@ -99,15 +106,16 @@ ms.lasthandoff: 04/18/2018
     ![立即触发](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
 2. 在“管道运行”窗口中选择“完成”。 
+
 3. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态以及其他信息（比如运行开始时间）。 若要刷新视图，请单击“刷新”。
 
     ![管道运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-3. 在“操作”列中单击“查看活动运行”链接。 此时只显示一个活动运行，因为管道只有一个活动（SSIS 活动）。
+4. 在“操作”列中单击“查看活动运行”链接。 此时只显示一个活动运行，因为管道只有一个活动（“执行 SSIS 包”活动）。
 
     ![活动运行](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-4. 可在 Azure SQL Server 中针对 SSISDB 数据库运行以下**查询**，验证是否执行了该包。 
+5. 可在 Azure SQL Server 中针对 SSISDB 数据库运行以下**查询**，验证是否执行了该包。 
 
     ```sql
     select * from catalog.executions
@@ -115,6 +123,9 @@ ms.lasthandoff: 04/18/2018
 
     ![验证包执行](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
+6. 还可以从管道活动运行的输出中获取 SSISDB 执行 ID，并使用此 ID 在 SSMS 中查看更全面的执行日志和错误消息。
+
+    ![获取执行 ID。](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
 > [!NOTE]
 > 也可以为管道创建一个计划触发器，以便按计划（每小时、每天等）运行管道。 有关示例，请参阅[创建数据工厂 - 数据工厂 UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)。
@@ -300,6 +311,8 @@ while ($True) {
 }   
 ```
 
+还可使用 Azure 门户监视管道。 有关分步说明，请参阅[监视管道](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)。
+
 ### <a name="create-a-trigger"></a>创建触发器
 在上一步骤中，已按需运行了管道。 还可创建一个计划触发器，按计划（按小时、每天等）运行管道。
 
@@ -369,4 +382,5 @@ while ($True) {
 
 
 ## <a name="next-steps"></a>后续步骤
-还可使用 Azure 门户监视管道。 有关分步说明，请参阅[监视管道](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)。
+请参阅以下博客文章：
+-   [使用 ADF 管道中的 SSIS 活动来实现 ETL/ELT 工作流的现代化并对其进行扩展](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)

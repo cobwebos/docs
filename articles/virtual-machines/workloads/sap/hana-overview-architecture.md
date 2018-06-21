@@ -4,22 +4,22 @@ description: 有关如何部署 Azure 上的 SAP HANA（大型实例）的体系
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/02/2018
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: bfcab5a84d9e8b0bf164c666162636ede2e1b06f
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077617"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763776"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
 
@@ -68,8 +68,8 @@ HANA 大型实例指南的不同文档涵盖以下几个方面：
    本地域的域用户可以访问服务器，并可在这些 VM 上运行服务（例如 DBMS 服务）。 但无法在本地的 VM 和 Azure 部署的 VM 之间进行通信和名称解析。 这是大多数 SAP 资产的典型部署场景。 有关详细信息，请参阅 [Azure VPN 网关的设计和规划](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)以及[使用 Azure 门户创建具有站点到站点连接的虚拟网络](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 - **租户**：在 HANA 大型实例模具中部署的客户会隔离到租户中。 租户在网络、存储和计算层中相互隔离。 分配给不同租户的存储和计算单元在 HANA 大型实例模具级别上无法相互看到或进行通信。 客户可以选择部署到不同的租户中。 即使这样，HANA 大型实例模具级别上的租户之间也不进行通信。
 - **SKU 类别**：对于 HANA 大型实例，提供以下两类 SKU。
-    - **类型 I 类**：S72、S72m、S144、S144m、S192 和 S192m
-    - **类型 II 类**：S384、S384m、S384xm、S576m、S768m 和 S960m
+    - **I 类**：S72、S72m、S144、S144m、S192、S192m 和 S192xm
+    - **II 类**：S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 和 S960m
 
 
 其他各种资源介绍了如何在云中部署 SAP 工作负荷。 需要由拥有相关经验的人员来规划 Azure 中的 SAP HANA 的部署，他们应该了解 Azure IaaS 的原理，知道如何在 Azure IaaS 上部署 SAP 工作负荷。 在继续之前，请参阅[在 Azure 虚拟机上使用 SAP 解决方案](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来了解详细信息。 
@@ -148,7 +148,10 @@ Azure 大型实例模具本身包含以下组件：
 |---| Azure 上的 SAP HANA S576m<br /> – 12 x Intel® Xeon® 处理器 E7-8890 v4<br /> 288 CPU 内核和 576 CPU 线程 |  12.0 TB |  28 TB | 可用 |
 |---| Azure 上的 SAP HANA S768m<br /> – 16 x Intel® Xeon® 处理器 E7-8890 v4<br /> 384 CPU 内核和 768 CPU 线程 |  16.0 TB |  36 TB | 可用 |
 |---| Azure 上的 SAP HANA S960m<br /> – 20 x Intel® Xeon® 处理器 E7-8890 v4<br /> 480 CPU 内核和 960 CPU 线程 |  20.0 TB |  46 TB | 可用 |
-
+| 已针对 OLTP **TDIv5** 优化：SAP HANA 或 S/4HANA (OLTP) 上的<br /> SAP Business Suite，<br /> 适用于一般 OLTP | Azure 上的 SAP HANA S192xm<br /> – 4 x Intel® Xeon® 处理器 E7-8890 v4<br /> 96 CPU 内核和 192 CPU 线程 |  6.0 TB |  16 TB | 可用 |
+|---| Azure 上的 SAP HANA S384xxm<br /> – 8 x Intel® Xeon® 处理器 E7-8890 v4<br /> 192 CPU 内核和 384 CPU 线程 |  12.0 TB |  28 TB | 可用 |
+|---| Azure 上的 SAP HANA S576xm<br /> – 12 x Intel® Xeon® 处理器 E7-8890 v4<br /> 288 CPU 内核和 576 CPU 线程 |  18.0 TB |  41 TB | 可用 |
+|---| Azure 上的 SAP HANA S768xm<br /> – 16 x Intel® Xeon® 处理器 E7-8890 v4<br /> 384 CPU 内核和 768 CPU 线程 |  24.0 TB |  56 TB | 可用 |
 - CPU 内核数 = 服务器单元处理器之和的非超线程 CPU 内核数的总和。
 - CPU 线程数 = 服务器单元处理器之和的超线程 CPU 内核数所提供的计算线程总和。 所有单元都默认配置为使用超线程技术。
 
@@ -157,8 +160,8 @@ Azure 大型实例模具本身包含以下组件：
 
 所有产品/服务的硬件基地都经过 SAP HANA TDI 认证。 两种不同类的硬件将 SKU 分为：
 
-- 称为“I 类”SKU 的 S72、S72m、S144、S144m、S192 和 S192m。
-- 称为“II 类”SKU 的 S384、S384m、S384xm、S576m、S768m 和 S960m。
+- 称为“I 类”SKU 的 S72、S72m、S144、S144m、S192、S192m 和 S192xm。
+- 称为“II 类”SKU 的 S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 和 S960m。
 
 不会将整个 HANA 大型实例模具以独占方式分配给单个客户使用。 此事实也适用于通过 Azure 中部署的网络结构连接的计算和存储资源的机架。 HANA 大型实例基础结构（例如 Azure）部署在以下三个级别中相互隔离的不同客户&quot;租户&quot;：
 
@@ -338,17 +341,21 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 
 请参阅下表，了解存储分配情况。 此表大致列出了不同卷的容量，这些卷是随不同的 HANA 大型实例单位一起提供的。
 
-| HANA 大型实例 SKU | hana/data | hana/log | hana/shared | hana/log/backup |
+| HANA 大型实例 SKU | hana/data | hana/log | hana/shared | hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
 | S192 | 4,608 GB | 1,024 GB | 1,536 GB | 1,024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
+| S192xm |  12,000 GB |  2,050 GB |  2,050 GB |  2.040 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
 | S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
+| S384xxm |  20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
 | S576m | 20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S576xm | 31,744 GB | 4,096 GB | 2,048 GB | 4,096 GB |
 | S768m | 28,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S768xm | 40,960 GB | 6,144 GB | 4,096 GB | 6,144 GB |
 | S960m | 36,000 GB | 4,100 GB | 2,050 GB | 4,100 GB |
 
 

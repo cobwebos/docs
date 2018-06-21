@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: d76ae997-2279-46dd-bfc5-c0ee29718096
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: b91ffb0965516a8e3f6678a6607ab0b26a0c2a67
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 93c96e71aea98598492ec32f13fddb0b0732196e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34586842"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217045"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。

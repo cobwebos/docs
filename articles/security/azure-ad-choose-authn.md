@@ -9,16 +9,16 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 6d107b9264a80c7b280ffed9a50b7bb0ffe354be
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 062b5e48cfba5de64aa11f79629e82645df87f96
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365519"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809254"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
-本文是本系列文章中的第一篇，旨在帮助组织实现完整的 Azure Active Directory (Azure AD) 混合标识解决方案。 此解决方案已概括为混合标识数字转换框架。 它涵盖了组织可为实现可靠且安全的混合标识解决方案而关注的业务成果和目标。 
+本文是本系列文章中的第一篇，旨在帮助组织实现完整的 Azure Active Directory (Azure AD) 混合标识解决方案。 此解决方案已概述为[混合标识数字转换框架](https://aka.ms/aadframework)。 它涵盖了组织可为实现可靠且安全的混合标识解决方案而关注的业务成果和目标。 
 
 框架的第一个业务成果阐述在用户访问云应用时对组织确保身份验证过程安全的要求。 身份验证保护的业务成果的第一个业务目标是，用户可以使用其本地用户名和密码登录云应用。 有了此登录过程以及用户进行身份验证的方式，才有可能实现云中的一切。
 
@@ -92,7 +92,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **工作量**。 对于直通身份验证，需要有一个或多个（我们建议三个）轻量代理安装在现有服务器上。 这些代理必须有权访问本地 Active Directory 域服务，包括本地 AD 域控制器。 它们需要具有对 Internet 的出站访问权限以及对域控制器的访问权限。 因此，不支持将这些代理部署在外围网络中。 
 
-    直通身份验证需要对域控制器进行不受约束的网络访问。 所有流量都已进行加密并受限于身份验证请求。 有关此过程的详细信息，请参阅直通身份验证的[安全性深入研究](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-security-deep-dive)。
+    直通身份验证需要对域控制器进行不受约束的网络访问。 所有流量都已进行加密并受限于身份验证请求。 有关此过程的详细信息，请参阅传递身份验证的[安全性深入研究](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-security-deep-dive)。
 
 * **用户体验**。 若要改善用户的登录体验，请将无缝 SSO 随直通身份验证一起部署。 在用户登录后，无缝 SSO 将消除不必要的提示。
 
@@ -108,7 +108,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
     直通身份验证仅支持使用新式验证和特定 Exchange Online 协议的云应用。 一些协议为 ActiveSync、POP3 和 IMAP4。 例如，Microsoft Office 2013 和更高版本支持新式验证，但较早版本并非如此。 有关 Office 应用支持的详细信息，请参阅 [Updated Office 365 modern authentication](https://blogs.office.com/en-us/2015/11/19/updated-office-365-modern-authentication-public-preview/)（更新的 Office 365 新式验证）。 有关直通身份验证的其他注意事项（包括备用 ID 支持），请参阅[常见问题](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)。
 
-请参阅[实现直通身份验证](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication)了解部署步骤。
+请参阅[实现传递身份验证](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication)了解部署步骤。
 
 ### <a name="federated-authentication"></a>联合身份验证
 
@@ -167,7 +167,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 |有哪些多重身份验证选项？|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)<br><br>[Azure MFA 服务器](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[第三方 MFA](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)|
 |支持哪些用户帐户状态？|已禁用帐户<br>（最多 30 分钟延迟）|已禁用帐户<br><br>帐户已锁定<br><br>密码已过期<br><br>登录小时数|已禁用帐户<br><br>帐户已锁定<br><br>密码已过期<br><br>登录小时数|
 |有哪些条件访问选项？|[Azure AD 条件访问](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Azure AD 条件访问](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Azure AD 条件访问](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[AD FS 声明规则](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|是否支持阻止旧协议？|否|否|[是](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|是否支持阻止旧协议？|[是](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[是](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[是](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |是否可以自定义登录页面的徽标、图像和说明？|[是，可使用 Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[是，可使用 Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[是](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
 |支持哪些高级方案？|[智能密码锁定](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-secure-passwords)<br><br>[已泄漏凭据报告](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-risk-events)|[智能密码锁定](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|多站点低延迟身份验证系统<br><br>[AD FS Extranet 锁定](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)<br><br>[与第三方标识系统集成](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 

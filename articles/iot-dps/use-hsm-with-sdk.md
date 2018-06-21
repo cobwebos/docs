@@ -10,10 +10,10 @@ services: iot-dps
 manager: arjmands
 ms.custom: mvc
 ms.openlocfilehash: 2d5bc3d0167c08c41b38bb324d55c239041f1fba
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
+ms.lasthandoff: 06/20/2018
 ms.locfileid: "34630419"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何将不同的证明机制与用于 C 的设备预配服务客户端 SDK 配合使用

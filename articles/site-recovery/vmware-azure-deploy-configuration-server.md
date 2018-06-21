@@ -2,18 +2,18 @@
 title: 通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复 | Microsoft Docs
 description: 本文介绍如何通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 2389ff6824a005db46c04bd1b45eabfd5ce50481
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/06/2018
+ms.author: raynew
+ms.openlocfilehash: 3e7a9196d928fb8a5d12647e1916b046ebedd261
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188474"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267503"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -21,11 +21,19 @@ ms.locfileid: "32188474"
 
 ## <a name="prerequisites"></a>先决条件
 
-建议将配置服务器部署为高可用性 VMware VM。 下表汇总了最低硬件要求。
+建议将配置服务器部署为高可用性 VMware VM。 下表汇总了配置服务器要求。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 
+
+### <a name="prepare-for-mysql-installation"></a>准备安装 MySQL
+
+MySQL 必须安装在配置服务器上。 可使用以下方法之一来执行此操作：
+
+- 当配置服务器管理向导运行时，让 Site Recovery 下载并安装它。 你不必执行任何特定操作。
+- 手动下载 MySQL，并将它置于文件夹 C:\Temp\ASRSetup 中。 然后运行安装程序。 当向导运行时，Site Recovery 将识别它已安装。
+- 手动下载 MySQL，并将它置于文件夹 C:\Temp\ASRSetup 中。 当向导运行时，它会找到安装文件，并从此位置安装它。 
 
 
 ## <a name="capacity-planning"></a>容量计划
@@ -101,7 +109,7 @@ Site Recovery 提供可下载的模板，以将配置服务器设置为高度可
 
 1. 在配置服务器管理向导中，选择“设置连接”。 选择要接收复制流量的 NIC，然后选择“保存”。 配置后无法更改此设置。
 2. 在“选择恢复服务保管库”中，选择自己的 Azure 订阅以及相关的资源组和保管库。
-3. 在“安装第三方软件”中，接受许可协议。 选择“下载并安装”，安装 MySQL 服务器。
+3. 在“安装第三方软件”中，接受许可协议。 按照[用于安装 MySQL 的方法](#prepare-for-mysql-installation)安装 MySQL。
 4. 选择“安装 VMware PowerLCI”。 执行此操作之前，请确保所有浏览器窗口已关闭。 然后选择“继续”。
 5. 在“验证设备配置”中验证先决条件，然后继续。
 6. 在“配置 vCenter Server/vSphere ESXi 服务器”中，输入要复制的 VM 所在的 vCenter Server 或 vSphere 主机的 FQDN 或 IP 地址。 输入服务器侦听的端口，以及保管库中的 VMware 服务器的友好名称。

@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: maheshu
-ms.openlocfilehash: 504fc4cabdb7a2d24cba749f4ba2d2bd8f078212
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fc4e738e95799838c5761e8b1ee5973aefea7dc6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587477"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213832"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>在托管域上配置 Kerberos 约束委派 (KCD)
 许多应用程序需要在用户的上下文中访问资源。 Active Directory 支持实现此用例的称为“Kerberos 委派”的机制。 而且，可以限制委派，以便只能在用户的上下文中访问特定资源。 Azure AD 域服务托管域不同于传统的 Active Directory 域，因为它们更安全地锁定。

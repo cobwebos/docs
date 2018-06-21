@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: dadc20cdee68730fa1d81dd86b3ffa0b0022a5b1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 408d86d2d79e827da654ad71f66972fe76fc2431
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34586947"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212489"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>将 Windows Server 虚拟机加入托管域
 本文展示了如何使用 Azure 门户部署 Windows Server 虚拟机。 它还展示了如何将虚拟机加入 Azure Active Directory 域服务 (Azure AD DS) 托管域。

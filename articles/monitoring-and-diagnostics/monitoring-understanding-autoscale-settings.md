@@ -1,24 +1,19 @@
 ---
-title: "了解 Azure 中的自动缩放设置 | Microsoft Docs"
-description: "自动缩放设置的详细步骤及其工作原理。"
+title: 了解 Azure Monitor 中的自动缩放设置
+description: 自动缩放设置的详细步骤及其工作原理。 适用于虚拟机、云服务、Web 应用
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ce2930aa-fc41-4b81-b0cb-e7ea922467e1
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.openlocfilehash: 73c79ec4ee1beb5220e088421c78ffffd932eef1
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.component: autoscale
+ms.openlocfilehash: 982bc43fd86a808da07833d77bde17e17789b2d6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264990"
 ---
 # <a name="understand-autoscale-settings"></a>了解自动缩放设置
 使用自动缩放设置有助于确保运行适当数量的资源来处理应用程序负载的波动。 可将自动缩放设置配置为基于指标（指示负载或性能）触发，或者在计划好的日期和时间触发。 本文将会深度剖析自动缩放设置。 本文首先介绍设置的架构和属性，然后逐步讲解可配置的不同配置文件类型。 最后讨论 Azure 中的自动缩放功能如何评估要在任意给定时间执行哪个配置文件。
@@ -122,11 +117,11 @@ ms.lasthandoff: 02/03/2018
 
 有三种类型的自动缩放配置文件：
 
-- **常规配置文件：**最常见的配置文件。 如果不需要根据星期日期或特定的日历日期以不同的方式缩放资源，则可以使用常规配置文件。 然后，可以使用规定何时扩展及何时缩减的指标规则，来配置此配置文件。 只应定义一个常规配置文件。
+- **常规配置文件：** 最常见的配置文件。 如果不需要根据星期日期或特定的日历日期以不同的方式缩放资源，则可以使用常规配置文件。 然后，可以使用规定何时扩展及何时缩减的指标规则，来配置此配置文件。 只应定义一个常规配置文件。
 
     本文前面使用的示例配置文件就是一个常规配置文件。 请注意，还可以将配置文件设置为缩放到资源的静态实例计数。
 
-- **固定日期配置文件：**此配置文件适用于特殊场合。 假设你要在 2017 年 12 月 26 日（太平洋标准时间）举办一场重要活动。 你希望当天的最小和最大资源容量有所不同，但仍可根据相同的指标缩放。 在这种情况下，应在设置的配置文件列表中添加一个固定日期配置文件。 该配置文件配置为只在活动当天运行。 在其他任何日期，自动缩放将使用常规配置文件。
+- **固定日期配置文件：** 此配置文件适用于特殊场合。 假设你要在 2017 年 12 月 26 日（太平洋标准时间）举办一场重要活动。 你希望当天的最小和最大资源容量有所不同，但仍可根据相同的指标缩放。 在这种情况下，应在设置的配置文件列表中添加一个固定日期配置文件。 该配置文件配置为只在活动当天运行。 在其他任何日期，自动缩放将使用常规配置文件。
 
     ``` JSON
     "profiles": [{
@@ -159,7 +154,7 @@ ms.lasthandoff: 02/03/2018
     ]
     ```
     
-- **重复配置文件：**使用此类配置文件可以确保始终在特定的星期日期使用此配置文件。 重复配置文件只包含开始时间。 它们会一直运行到下一个重复配置文件或固定日期配置文件设置为启动为止。 只包含一个重复配置文件的自动缩放设置只会运行该配置文件，即使相同的设置中定义了常规配置文件。 以下两个示例演示了此配置文件的用法：
+- **重复配置文件：** 使用此类配置文件可以确保始终在特定的星期日期使用此配置文件。 重复配置文件只包含开始时间。 它们会一直运行到下一个重复配置文件或固定日期配置文件设置为启动为止。 只包含一个重复配置文件的自动缩放设置只会运行该配置文件，即使相同的设置中定义了常规配置文件。 以下两个示例演示了此配置文件的用法：
 
     **示例 1：工作日与周末**
     

@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: aelnably;wesmc
-ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 05/25/2018
+ms.author: msangapu
+ms.openlocfilehash: 162f9e4a6ad18cc95ccc0b14ce5d8c6318b86ba5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294005"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 05/07/2018
 
 **配置运行时堆栈时，“启动文件”部分的所需值是什么？**
 
-对于 Node.js，指定 PM2 配置文件或脚本文件。 对于 .NET Core，指定已编译的 DLL 名称。 对于 Ruby，可以指定要用于初始化应用的 Ruby 脚本。
+对于 Node.js，指定 PM2 配置文件或脚本文件。 对于 .NET Core，以 `dotnet <myapp>.dll` 的形式指定已编译的 DLL 名称。 对于 Ruby，可以指定要用于初始化应用的 Ruby 脚本。
 
 ## <a name="management"></a>管理
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 05/07/2018
 
 是的，可以通过源代码管理 (SCM) 站点实现此操作。
 
-> [!NOTE] 
+> [!NOTE]
 > 还可以使用 SSH、SFTP 或 Visual Studio Code（用于实时调试 Node.js 应用）直接从本地开发计算机连接到应用容器。 有关详细信息，请参阅[远程调试和通过 SSH 登录到 Linux 上的应用服务](https://aka.ms/linux-debug)。
 >
 
@@ -113,7 +114,7 @@ var io = require('socket.io')(server,{
 
 **自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重启了容器。**
 
-可以配置该平台在重启容器之前的等待时间。 为此，可将 `WEBSITES_CONTAINER_START_TIME_LIMIT` 应用设置设为所需的值。 默认值为 230 秒，最大值为 600 秒。
+可以配置该平台在重启容器之前的等待时间。 为此，可将 `WEBSITES_CONTAINER_START_TIME_LIMIT` 应用设置设为所需的值。 默认值为 230 秒，最大值为 1800 秒。
 
 **专用注册表服务器 URL 的格式是什么？**
 

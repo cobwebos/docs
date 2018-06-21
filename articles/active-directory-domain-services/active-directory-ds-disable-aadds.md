@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 89e407e1-e1e0-49d1-8b89-de11484eee46
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: maheshu
-ms.openlocfilehash: d2db86dbd65e64af2e8643dc02e27701bfe61717
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4fd811c4114e5bd216e05a10bafba0ab0592c53c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34586418"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213937"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户禁用 Azure Active Directory 域服务
 本文演示如何使用 Azure 门户为 Azure AD 目录禁用 Azure Active Directory (AD) 域服务。

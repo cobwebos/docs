@@ -7,23 +7,36 @@ author: billgib
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
+ms.reviewer: genemi
 ms.author: billgib
-ms.openlocfilehash: ef35bbb28f5b13068f92f4bf07c7807b4a5d407a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 39be48019979ceb1337cbd3008c8cf071d403310
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941888"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737674"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>多租户 SaaS 数据库租户模式
 
 在设计多租户 SaaS 应用程序时，必须慎重选择最符合应用程序需要的租户模型。  租户模型确定如何将每个租户的数据映射到存储。  所选的租户模型会影响应用程序设计和管理。  今后改用不同的模型可能需要付出一定的代价。
 
-下面介绍备用租户模型。
+本指南介绍备选租户模型。
 
-## <a name="a-how-to-choose-the-appropriate-tenancy-model"></a>A. 如何选择适当的租户模型
+## <a name="a-saas-concepts-and-terminology"></a>A. SaaS 概念和术语
+
+在软件即服务 (SaaS) 模型中，贵公司不会销售软件的*许可证*。 而是，每个客户都会向贵公司支付租金，使每个客户成为贵公司的*租户*。
+
+作为支付租金的回报，每个租户都可以访问 SaaS 应用程序组件，并将数据存储在 SaaS 系统中。
+
+术语*租户模型*是指租户存储数据的组织方式：
+
+- *单租户：*&nbsp;每个数据库仅存储来自一个租户的数据。
+- *多租户：*&nbsp;每个数据库都存储来自多个独立租户的数据（使用保护数据隐私的机制）。
+- 混合租户模式也可用。
+
+## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. 如何选择适当的租户模型
 
 一般情况下，租户模型不会影响应用程序的功能，但可能会影响总体解决方案的其他方面。  以下条件用于评估每个模型：
 
@@ -51,7 +64,7 @@ ms.locfileid: "33941888"
 
 有关租户的讨论侧重于数据层。  但是，请花费片刻时间思考一下应用程序层。  应用程序层被视为单一实体。  如果将应用程序划分成多个小型组件，所选的租户模型可能会更改。  在所用的租户和存储技术或平台方面，可以不同的方式对待某些组件。
 
-## <a name="b-standalone-single-tenant-app-with-single-tenant-database"></a>B. 包含单租户数据库的独立单租户应用
+## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. 包含单租户数据库的独立单租户应用
 
 #### <a name="application-level-isolation"></a>应用程序级隔离
 
@@ -67,7 +80,7 @@ ms.locfileid: "33941888"
 
 供应商可以访问所有独立应用实例中的所有数据库，即使应用实例安装在不同的租户订阅中。  访问是通过 SQL 连接实现的。  这种跨实例访问可让供应商出于报告或分析目的，在集中位置进行架构管理和跨数据库查询。  如果需要此类集中化管理，必须部署一个可将租户标识符映射到数据库 URI 的目录。  Azure SQL 数据库提供一个分片库，将该库与 SQL 数据库一起使用可以提供目录。  该分片库的正式名称为[弹性数据库客户端库][docu-elastic-db-client-library-536r]。
 
-## <a name="c-multi-tenant-app-with-database-per-tenant"></a>C. 采用“每个租户各有数据库”模型的多租户应用
+## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. 采用“每个租户各有数据库”模型的多租户应用
 
 接下来的这个模式使用包含许多数据库的多租户应用程序，这些数据库都是单租户数据库。  针对每个新租户预配一个新数据库。  可通过为每个节点添加更多的资源来纵向扩展应用程序层。  或者，可通过添加更多的节点来横向扩展应用。  缩放基于工作负荷，不受各个数据库的数目或规模的影响。
 
@@ -106,7 +119,7 @@ Azure SQL 数据库平台提供多种管理功能，用于大规模管理大量�
 
 例如，可将单个租户自动恢复到以前的某个时间点。  恢复操作只需还原一个存储租户的单租户数据库。  此还原操作不会影响其他租户，确保以每个租户的粒度级完成管理操作。
 
-## <a name="d-multi-tenant-app-with-multi-tenant-databases"></a>D. 包含多租户数据库的多租户应用
+## <a name="e-multi-tenant-app-with-multi-tenant-databases"></a>E. 包含多租户数据库的多租户应用
 
 另一种可用模式是在一个多租户数据库中存储许多租户。  应用程序实例可以包含任意数量的多租户数据库。  多租户数据库的架构必须包含一个或多个租户标识符列，以便能够选择性地检索任意给定租户中的数据。  此外，该架构可能需要几个只由一部分租户使用的表或列。  但是，静态代码和引用数据只会存储一次，并由所有租户共享。
 
@@ -122,13 +135,13 @@ Azure SQL 数据库平台提供多种管理功能，用于大规模管理大量�
 
 下面介绍多租户数据库模型的两种变体，其中，分片多租户模型是灵活性和可伸缩性最高的模型。
 
-## <a name="e-multi-tenant-app-with-a-single-multi-tenant-database"></a>E. 包含单个多租户数据库的多租户应用
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. 包含单个多租户数据库的多租户应用
 
 最简单的多租户数据库模式使用单个独立数据库来托管所有租户的数据。  添加更多的租户时，该数据库会使用更多的存储和计算资源进行纵向扩展。  通过这种纵向扩展也许能够做到高枕无忧，不过，规模始终有一个最终的限制。  但是，在远远未达到该限制之前，数据库可能就会变得难以管理。
 
 在多租户数据库中，侧重于单个租户的管理操作更难实现。  大规模执行这些操作可能会使速度变得非常缓慢，让人无法接受。  一个例子是只是对一个租户的数据执行时间点还原。
 
-## <a name="f-multi-tenant-app-with-sharded-multi-tenant-databases"></a>F. 包含分片多租户数据库的多租户应用
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. 包含分片多租户数据库的多租户应用
 
 大多数 SaaS 应用程序每次只访问一个租户的数据。  使用此访问模式可在多个数据库或分片之间分布租户数据，其中，任一租户的所有数据包含在一个分片中。  将分片模型与多租户数据库模式相结合可以实现几乎无限的规模。
 
@@ -152,7 +165,7 @@ SQL 数据库提供一个可与分片库和目录数据库结合使用的拆分/
 
 可将分片多租户数据库放在弹性池中。  一般而言，在一个池中放置许多单租户数据库，与在少量多租户数据库中放置许多租户的经济高效性相当。  当有大量的相对不活跃租户时，多租户数据库就很有优势。
 
-## <a name="g-hybrid-sharded-multi-tenant-database-model"></a>G. 混合分片多租户数据库模型
+## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. 混合分片多租户数据库模型
 
 在混合模型中，所有数据库在其架构中包含租户标识符。  这些数据库都能存储多个租户，并且可以分片。  因此，在架构的意义上，它们都是多租户数据库。  但实际上，其中一些数据库只包含一个租户。  不管怎样，给定数据库中存储的租户数量不会对数据库架构造成影响。
 
@@ -166,7 +179,7 @@ SQL 数据库提供一个可与分片库和目录数据库结合使用的拆分/
 
 在此混合模型中，可将订阅者租户的单租户数据库放在资源池中，以减少每个租户的数据库成本。  “每个租户各有数据库”模型中也采用了这种做法。
 
-## <a name="h-tenancy-models-compared"></a>H. 租户模型的比较
+## <a name="i-tenancy-models-compared"></a>I. 租户模型的比较
 
 下表汇总了主要租户模型之间的差异。
 

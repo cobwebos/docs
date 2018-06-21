@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: ac3ea6d696eaf5ba4b2554f416118718271526a8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4ee07d8b9180c04c714476da845ceffaa4388bee
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292460"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229523"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。

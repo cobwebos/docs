@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: 89b3f1184254964a32073c63de3fe69d8a51e292
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e614c78ca4e8ed7afbce0d3f2423ce137c5225b5
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652951"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294964"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
@@ -154,7 +154,7 @@ ms.locfileid: "34652951"
 ```json
 {
   "fileUris": ["<url>"],
-  "commandToExecute": "<command-to-execute>"
+  "commandToExecute": "<command-to-execute>",
   "skipDos2Unix": true
 }
 ```

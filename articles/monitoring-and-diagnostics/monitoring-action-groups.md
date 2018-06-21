@@ -1,31 +1,25 @@
 ---
-title: 在 Azure 门户中创建和管理操作组 | Microsoft 文档
+title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: dkamstra
-manager: chrad
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/20/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/1/2018
 ms.author: dukek
-ms.openlocfilehash: 07e3c1a95aa223121117f3deba0269fb6cc280c2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: alerts
+ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170370"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263059"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
-本文演示如何在 Azure 门户中创建和管理操作组。
+操作组是用户定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报配置为在触发警报时使用特定操作组。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。
 
-通过操作组可以配置操作列表。 之后，这些组可由你定义的每个警报使用，从而确保每次触发警报时采取相同的操作。
+本文演示如何在 Azure 门户中创建和管理操作组。
 
 每个操作包含以下属性：
 
@@ -70,7 +64,14 @@ ms.locfileid: "32170370"
 <dd>目前，Azure 应用操作只支持 ServiceHealth 警报。 任何其他警报时间都会被忽略。 请参阅[配置每次发布服务运行状况通知时的警报](monitoring-activity-log-alerts-on-service-notifications.md)。</dd>
 
 <dt>电子邮件</dt>
-<dd>一个操作组中最多可以有 50 个电子邮件操作</dd>
+<dd>将从以下电子邮件地址发送电子邮件。 确保电子邮件筛选正确配置
+
+    - azure-noreply@microsoft.com
+    - azureemail-noreply@microsoft.com
+    - alerts-noreply@mail.windowsazure.com
+    
+</dd>
+<dd>一个操作组中最多可以有 1000 个电子邮件操作</dd>
 <dd>请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文</dd>
 
 <dt>ITSM</dt>

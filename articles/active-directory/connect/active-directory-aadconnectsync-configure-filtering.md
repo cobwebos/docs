@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f54f0fb16838b245ac09c08c7afd9e6a53449afc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59bc6652a61e0c61188bbfd09251161411923628
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594221"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287569"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置会采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Office 365 工作负荷的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -40,7 +40,7 @@ ms.locfileid: "34594221"
 ## <a name="basics-and-important-notes"></a>基础知识和重要说明
 在 Azure AD Connect 同步中，可以随时启用筛选。 如果从目录同步的默认配置开始并在此后配置了筛选，则筛选出的对象不再同步到 Azure AD。 由于这种变化，Azure AD 中前面已同步，但之后进行筛选的任何对象会在 Azure AD 中进行删除。
 
-在开始更改筛选之前，请确保[禁用计划的任务](#disable-scheduled-task)，以免意外导出尚未确认是否正确的更改。
+在开始更改筛选之前，请确保[禁用计划的任务](#disable-the-scheduled-task)，以免意外导出尚未确认是否正确的更改。
 
 由于筛选操作可能会同时删除很多的对象，因此请先确保新的筛选器正确无误，然后再开始将更改导出到 Azure AD。 强烈建议，在完成配置步骤后，先执行[验证步骤](#apply-and-verify-changes)，然后再向 Azure AD 导出更改。
 

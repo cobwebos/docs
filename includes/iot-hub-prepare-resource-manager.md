@@ -33,7 +33,8 @@
    * **{Password}**：用于向应用进行身份验证的密码。
      
      ```powershell
-     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
+     $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
+     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. 请记下创建的应用程序的 **ApplicationId**。 稍后会需要它。
 5. 使用以下命令（将 **{MyApplicationId}** 替换为上一步骤中的 **ApplicationId**）创建新的服务主体：

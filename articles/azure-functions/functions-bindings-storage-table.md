@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1c8cee149e99786b58e4584e5e7b508b1040389d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 51b9f7bfd25da7dfd4ae9038f8dab70e9232b944
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724575"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -27,13 +28,17 @@ ms.lasthandoff: 05/18/2018
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>包
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包中提供了表存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了表存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>包 - Functions 2.x
+
+[Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 3.x 版中提供了表存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub 存储库中提供了此包的源代码。
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -104,6 +109,9 @@ public class TableStorage
     }
 }
 ```
+
+  > [!NOTE]
+  > [Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 ### <a name="input---c-script-example-1"></a>输入 - C# 脚本示例 1
 
@@ -382,8 +390,8 @@ module.exports = function (context, myQueueItem) {
 
   使用方法参数 `IQueryable<T> <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 必须是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 可以使用 `IQueryable` 方法执行任何所需的筛选。 此方案中不使用 `partitionKey`、`rowKey`、`filter` 和 `take` 属性。  
 
-> [!NOTE]
-> [Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。
+  > [!NOTE]
+  > [Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 * **在 JavaScript 中读取一行或多行**
 
@@ -640,7 +648,7 @@ public static MyPoco TableOutput(
 
   在 C# 和 C# 脚本中，可以使用方法参数 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` 访问输出表实体。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 指定要添加的实体的架构。 通常，`T` 派生自 `TableEntity` 或实现 `ITableEntity`，但不一定非要这样。 此方案不使用 *function.json* 中的分区键和行键值，也不使用 `Table` 特性构造函数。
 
-  一种替代方法是使用 `CloudTable paramName` 方法参数通过 Azure 存储 SDK 来写入表。
+  一种替代方法是使用 `CloudTable paramName` 方法参数通过 Azure 存储 SDK 来写入表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 * **在 JavaScript 中写入一行或多行**
 

@@ -1,24 +1,19 @@
 ---
-title: 为 Azure 服务创建警报 - 跨平台 CLI | Microsoft 文档
+title: 为 Azure 服务创建经典警报 - 跨平台 CLI
 description: 满足指定的条件时触发电子邮件、通知、调用网站 URL (Webhook) 或自动化。
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 5c6a2d27-7dcc-4f89-8752-9bb31b05ff35
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: 9ea7da35acefc139625e71904c8aa1b01b87e4df
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: alerts
+ms.openlocfilehash: 35f87f140772be1777ddfb184e78b61446bb3bd6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267741"
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>在 Azure Monitor 中为 Azure 服务创建经典指标警报 - 跨平台 CLI
 > [!div class="op_single_selector"]
@@ -30,7 +25,7 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="overview"></a>概述
 > [!NOTE]
-> 本文介绍了如何创建较早的经典指标警报。 Azure Monitor 现在支持[较新、更好的指标警报](monitoring-near-real-time-metric-alerts.md)。 这些警报可监视多个指标，并允许对维度指标发出警报。 即将推出支持较新指标警报的 CLI。
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新、更好的指标警报](monitoring-near-real-time-metric-alerts.md)。 这些警报可监视多个指标，并允许对维度指标发出警报。 即将推出支持较新指标警报的 CLI。
 >
 >
 

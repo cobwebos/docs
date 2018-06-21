@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895477"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301365"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure 安全性和符合性蓝图 - 符合 PCI DSS 的付款处理环境
 
@@ -44,7 +44,7 @@ PCI DSS 遵从环境的支付处理提供有关部署适合用于处理敏感支
 - **部署模板**。 在此部署中，[Azure 资源管理器模板](/azure/azure-resource-manager/resource-group-overview#template-deployment)通过在安装期间指定配置参数，将体系结构的组件自动部署到 Microsoft Azure。
 - **自动化部署脚本**。 这些脚本帮助部署端到端解决方案。 脚本包括：
     - 一个模块安装和[全局管理员](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)设置脚本，用于安装所需的 PowerShell 模块，并验证是否已正确配置全局管理员角色。
-    - 一个用于部署端到端解决方案的 PowerShell 安装脚本，通过一个 .zip 文件和一个 .bacpac 文件提供，其中包含预建的演示 Web 应用程序和 [SQL 数据库示例](https://github.com/Microsoft/azure-sql-security-sample)。 内容。 可在 [蓝图代码存储库][代码存储库] 中查看此解决方案的源代码。 
+    - 一个用于部署端到端解决方案的 PowerShell 安装脚本，通过一个 .zip 文件和一个 .bacpac 文件提供，其中包含预建的演示 Web 应用程序和 [SQL 数据库示例](https://github.com/Microsoft/azure-sql-security-sample)内容。 [GitHub](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms) 上提供了此解决方案的源代码供查看。 
 
 ## <a name="architectural-diagram"></a>体系结构图
 
@@ -169,8 +169,6 @@ Edna Benson 是业务经理兼接待员。 她负责确保客户信息准确和�
 - 针对防火墙和应用程序网关 WAF 的外围网络安全组
 - 针对管理 Jumpbox（守护主机）的 NSG
 - 针对应用服务环境的 NSG
-
-每个 NSG 打开了特定的端口和协议，以便安全正确地操作解决方案。 有关详细信息，请参阅 [PCI 指南 - 网络安全组](#network-security-groups)。
 
 每个 NSG 打开了特定的端口和协议，以便安全正确地运行解决方案。 此外，为每个 NSG 启用了以下配置：
 - 启用的[诊断日志和事件](/azure/virtual-network/virtual-network-nsg-manage-log)存储在存储帐户中 

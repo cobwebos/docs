@@ -1,24 +1,20 @@
 ---
 title: 使用 Azure IoT 中心更新设备固件 (.NET/.NET) | Microsoft Docs
 description: 如何使用 Azure IoT 中心上的设备管理进行设备固件更新。 使用适用于 .NET 的 Azure IoT 设备 SDK 实现模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现可触发固件更新的服务应用。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 10/19/2017
-ms.author: v-jamebr;dobett
-ms.openlocfilehash: 50bb2ada9cf848bdcfb4f958272ff918996bf411
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: dobett
+ms.openlocfilehash: cd669a9585ac5aecf935202a04065a828a2174be
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736749"
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>使用设备管理启动设备固件更新 (.NET/.NET)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
@@ -345,7 +341,7 @@ ms.lasthandoff: 04/05/2018
 > [!NOTE]
 > 此方法触发以**任务**形式运行的模拟更新，然后立即响应方法调用，告知服务已启动固件更新。 更新状态和完成进度将通过设备孪生的报告属性发送到服务。 我们会在启动更新时而不是在完成更新后响应此方法调用，因为：
 > * 实际的更新过程所花费的时间很可能比方法调用超时的时间要长。
-> * 实际的更新过程很可能要求重新启动，这会重新启动此应用，使 **MetodRequest** 对象不可用。 （但是，即使在重新启动之后，也能更新报告属性。） 
+> * 实际的更新过程很可能要求重新启动，这会重新启动此应用，使 **MethodRequest** 对象不可用。 （但是，即使在重新启动之后，也能更新报告属性。） 
 
 14. 最后，将以下代码添加到 **Main** 方法，打开与 IoT 中心的连接并初始化方法侦听器：
    

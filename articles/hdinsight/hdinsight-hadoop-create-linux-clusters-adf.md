@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: nitinme
-ms.openlocfilehash: 53ff14e00b88f6d182579ba0d9df630fae9b3d78
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9d54d3481176b36a0d13a9b8af2fad03349b81be
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771127"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229247"
 ---
 # <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -80,12 +80,7 @@ $destContainerName = "adfgetstarted" # don't change this value.
 ####################################
 #region - Connect to Azure subscription
 Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
-<<<<<<< HEAD
 Login-AzureRmAccount
-=======
-try{Get-AzureRmContext}
-catch{Connect-AzureRmAccount}
->>>>>>> refs/remotes/MicrosoftDocs/release-build-hdinsight-2018
 #endregion
 
 ####################################
@@ -188,7 +183,7 @@ Write-host "`nScript completed" -ForegroundColor Green
     
     |属性  |说明  |
     |---------|---------|
-    |**Name** |  输入数据工厂的名称。 该名称必须全局唯一。|
+    |**名称** |  输入数据工厂的名称。 该名称必须全局唯一。|
     |**订阅**     |  选择 Azure 订阅。 |
     |**资源组**     | 选择“使用现有项”，然后选择使用 PowerShell 脚本创建的资源组。 |
     |**版本**     | 选择“V2 (预览版)”。 |

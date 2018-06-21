@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1c44b2738fb21450c5a37f715c995a3e7aecc4a6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 164760355077e2b905aa0e0f03e1efaf28941e55
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868819"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296884"
 ---
 # <a name="password-writeback-overview"></a>密码写回概述
 
-使用密码写回服务，可以将 Azure Active Directory (Azure AD) 配置为，将密码写回本地 Active Directory。 借助密码写回服务，无需再设置和管理复杂的本地自助密码重置 (SSPR) 解决方案，而是使用基于云的便捷方法，随时随地重置本地密码。 密码写回服务是 [Azure Active Directory Connect](./../connect/active-directory-aadconnect.md) 组成部分，可供 [Azure Active Directory Premium](../active-directory-whatis.md) 版本的当前订阅者启用和使用。
+使用密码写回服务，可以将 Azure Active Directory (Azure AD) 配置为，将密码写回本地 Active Directory。 借助密码写回服务，无需再设置和管理复杂的本地自助密码重置 (SSPR) 解决方案，而是使用基于云的便捷方法，随时随地重置本地密码。 密码写回服务是 [Azure Active Directory Connect](./../connect/active-directory-aadconnect.md) 组成部分，可供 [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) 版本的当前订阅者启用和使用。
 
 密码写回提供以下功能：
 
@@ -129,7 +129,7 @@ ms.locfileid: "33868819"
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
 
-若要了解许可，请参阅[密码写回所需的许可证](concept-sspr-licensing.md#licenses-required-for-password-writeback)或以下网站：
+若要了解许可，请参阅[密码写回所需的许可证](concept-sspr-licensing.md)或以下网站：
 
 * [Azure Active Directory 定价网站](https://azure.microsoft.com/pricing/details/active-directory/)
 * [企业移动性 + 安全性](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)

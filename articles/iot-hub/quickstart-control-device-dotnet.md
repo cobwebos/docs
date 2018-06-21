@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: 8eefb66e50b4dfd601428eec90784b0991276b5a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: c24c311f6ee446122fea7fd7699b34ab2ae8510c
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807883"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292834"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入门：控制连接到 IoT 中心 (.NET) 的设备
 
@@ -143,9 +143,7 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续学习教程，请保留资源组和 IoT 中心，稍后再进行使用。
-
-如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的资源组，然后单击“删除”。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,24 +1,19 @@
 ---
-title: Azure 诊断日志概述 | Microsoft Docs
+title: Azure 诊断日志概述
 description: 了解什么是 Azure 诊断日志，以及如何使用该诊断日志了解发生在 Azure 资源内的事件。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/04/2018
-ms.author: johnkem; magoedte
-ms.openlocfilehash: 00b990181e5bb96f122ff1ae530dd027a772b210
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/07/2018
+ms.author: johnkem
+ms.component: logs
+ms.openlocfilehash: e361259bc5ce2dd946d3ea8bc1e69f743a40c6df
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264395"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>从 Azure 资源收集和使用日志数据
 
@@ -45,6 +40,9 @@ ms.lasthandoff: 04/18/2018
 
 可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有合适的 RBAC 访问权限。
 
+> [!NOTE]
+>  当前无法将数据存档到支持安全虚拟网络的存储帐户。
+
 ## <a name="resource-diagnostic-settings"></a>资源诊断设置
 
 非计算资源的资源诊断日志是使用资源诊断设置配置的。 资源控制的**资源诊断设置**：
@@ -54,7 +52,7 @@ ms.lasthandoff: 04/18/2018
 * 应该将每个日志类别在存储帐户中保留多长时间
     - 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
     - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择了“事件中心”或“Log Analytics”选项），则保留策略无效。
-    - 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。
+    - 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程始于协调世界时晚上 12 点，但请注意，日志从存储帐户删除可能需要多达 24 小时的时间。
 
 这些设置可以通过诊断设置（适用于 Azure 门户中的资源）、Azure PowerShell 和 CLI 命令或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) 轻松进行配置。
 

@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 5a32a0df-a3ca-4ebe-b980-91f58f8030fc
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 4198ea59efae7493c799c236c5d662cec9f82fa8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 701fe17869d6e7744751d80330422ea47361b411
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587381"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216134"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>允许将密码哈希同步到 Azure Active Directory 域服务
 在前述任务中，你为 Azure Active Directory (Azure AD) 租户启用了 Azure Active Directory 域服务。 下一个任务是使 NT LAN Manager (NTLM) 和 Kerberos 身份验证所需的密码哈希同步到 Azure AD 域服务。 设置密码哈希同步以后，用户即可使用其公司凭据登录到托管域。

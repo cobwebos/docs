@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 数据工厂中使用存储过程活动运行 SSIS 包 | Microsoft Docs
-description: 本文介绍如何使用存储过程活动从 Azure 数据工厂管道运行 SQL Server Integration Services (SSIS) 包。
+title: 使用存储过程活动运行 SSIS 包 - Azure | Microsoft Docs
+description: 本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,17 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 283e1022abda083d73e8e4e5bca7872791cb4861
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df4e5002d637c4d280686642156309c85bd89773
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297679"
 ---
-# <a name="run-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
-本文介绍如何使用存储过程活动从 Azure 数据工厂管道中运行 SSIS 包。 
+# <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
+本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SSIS 包。 
 
 > [!NOTE]
 > 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[在版本 1 中使用存储过程活动调用 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
@@ -133,7 +134,7 @@ ms.lasthandoff: 04/19/2018
 
     ![活动运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
 
-4. 可在 Azure SQL Server 中针对 SSISDB 数据库运行以下查询，验证是否执行了该包。 
+4. 可在 Azure SQL Server 中针对 SSISDB 数据库运行以下**查询**，验证是否执行了该包。 
 
     ```sql
     select * from catalog.executions

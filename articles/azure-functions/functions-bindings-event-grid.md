@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 9228b1e80c8c46780a24d33e13fcedbd8da63ac3
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7e0fb3cee8d4ec72e1ec44f7444264fabb1dd202
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724724"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -33,17 +34,17 @@ ms.lasthandoff: 05/18/2018
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>包
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension) GitHub 存储库中提供了此包的源代码。
-
-<!--
-If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
--->
+[Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包 1.x 版中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>包 - Functions 2.x
+
+[Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包 2.x 版中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub 存储库中提供了此包的源代码。
+
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example"></a>示例
 
@@ -57,12 +58,12 @@ If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` typ
 
 ### <a name="c-example"></a>C# 示例
 
-以下示例演示绑定到 `JObject` 的 [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示绑定到 `JObject` 的 Functions 1.x [C# 函数](functions-dotnet-class-library.md)：
 
 ```cs
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -79,30 +80,26 @@ namespace Company.Function
 }
 ```
 
-<!--
-The following example shows a [C# function](functions-dotnet-class-library.md) that binds to `EventGridEvent`:
+以下示例演示绑定到 `EventGridEvent` 的 Functions 2.x [C# 函数](functions-dotnet-class-library.md)：
 
 ```cs
+using Microsoft.Azure.EventGrid.Models;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Host;
 
 namespace Company.Function
 {
     public static class EventGridTriggerCSharp
     {
         [FunctionName("EventGridTest")]
-            public static void EventGridTest([EventGridTrigger] Microsoft.Azure.EventGrid.Models.EventGridEvent eventGridEvent, TraceWriter log)
+        public static void EventGridTest([EventGridTrigger]EventGridEvent eventGridEvent, TraceWriter log)
         {
-            log.Info("C# Event Grid function processed a request.");
-            log.Info($"Subject: {eventGridEvent.Subject}");
-            log.Info($"Time: {eventGridEvent.EventTime}");
-            log.Info($"Data: {eventGridEvent.Data.ToString()}");
+            log.Info(eventGridEvent.Data.ToString());
         }
     }
 }
 ```
--->
 
 有关详细信息，请参阅[包](#packages)、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
 
@@ -125,7 +122,7 @@ namespace Company.Function
 }
 ```
 
-下面是绑定到 `JObject` 的 C# 脚本代码：
+下面是绑定到 `JObject` 的 Functions 1.x C# 脚本代码：
 
 ```cs
 #r "Newtonsoft.Json"
@@ -139,26 +136,17 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-<!--
-Here's C# script code that binds to `EventGridEvent`:
+下面是绑定到 `EventGridEvent` 的 Functions 2.x C# 脚本代码：
 
 ```csharp
-#r "Newtonsoft.Json"
-#r "Microsoft.Azure.WebJobs.Extensions.EventGrid"
 #r "Microsoft.Azure.EventGrid"
-
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-Using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.EventGrid.Models;
 
 public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
 {
-    log.Info("C# Event Grid function processed a request.");
-    log.Info($"Subject: {eventGridEvent.Subject}");
-    log.Info($"Time: {eventGridEvent.EventTime}");
-    log.Info($"Data: {eventGridEvent.Data.ToString()}");
+    log.Info(eventGridEvent.Data.ToString());
 }
 ```
--->
 
 有关详细信息，请参阅[包](#packages)、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
 
@@ -221,11 +209,17 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, Trac
 
 ## <a name="usage"></a>使用情况
 
-在 C# 和 C# 函数中，可以为事件网格触发器使用以下参数类型：
+在 Azure Functions 1.x 的 C# 和 F# 函数中，可以为事件网格触发器使用以下参数类型：
 
 * `JObject`
 * `string`
-* `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` - 定义所有事件类型通用的字段的属性。 此类型已弃用，但其替代项尚未发布到 NuGet。
+
+在 Azure Functions 2.x 的 C# 和 F# 函数中，还可以选择为事件网格触发器使用以下参数类型：
+
+* `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定义所有事件类型通用的字段的属性。
+
+> [!NOTE]
+> 在 Functions v1 中，如果尝试绑定到 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，编译器将显示“已弃用”消息，并建议你改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用较新类型，请引用 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 包，并通过为 `EventGridEvent` 类型名称添加 `Microsoft.Azure.EventGrid.Models` 前缀来对其进行完全限定。 有关如何在 C# 脚本函数中引用 NuGet 包的信息，请参阅[使用 NuGet 包](functions-reference-csharp.md#using-nuget-packages)
 
 对于 JavaScript 函数，由 *function.json* `name` 属性命名的参数包含对事件对象的引用。
 

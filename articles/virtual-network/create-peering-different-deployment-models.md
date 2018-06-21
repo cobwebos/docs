@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: f4fe93078246bc25eb41a7f8e685d75f8dcb6b7c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bec02b3f3bde9f9cfab615d75cc6f05976ce981a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012618"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726214"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>创建虚拟网络对等互连 - 不同部署模型，相同订阅
 
@@ -52,7 +52,7 @@ ms.locfileid: "34012618"
     - **订阅**：选择你的订阅
     - **资源组**：选择“新建”并输入 *myResourceGroup*
     - **位置**：美国东部
-4. 单击“+ 新建”。 在“搜索 Marketplace”框中，键入“虚拟网络”。 单击搜索结果中出现的“虚拟网络”。 
+4. 单击“+ 新建”。 在“在市场中搜索”框中，键入“虚拟网络”。 单击搜索结果中出现的“虚拟网络”。 
 5. 在“虚拟网络”边栏选项卡的“选择部署模型”框中选择“经典”，然后单击“创建”。
 6. 在“创建虚拟网络”边栏选项卡中，为以下设置输入或选择值，然后单击“创建”：
     - **名称**：*myVnet2*
@@ -90,7 +90,7 @@ ms.locfileid: "34012618"
     azure network vnet create --vnet myVnet2 --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
 
-5. 创建资源组和虚拟网络 (Resource Manager)。 可使用 CLI 1.0 或 2.0（[安装](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)）。 本教程中使用 CLI 2.0 创建虚拟网络 (Resource Manager)，因为必须使用 2.0 来创建对等互连。 从安装有 CLI 2.0.4 或更高版本的本地计算机执行以下 bash CLI 脚本。 有关在 Windows 客户端上运行 bash CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 还可使用 Azure Cloud Shell 运行该脚本。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 单击下面脚本中的“试用”按钮，调用一个可用于登录 Azure 帐户的 Cloud Shell。 若要执行脚本，请单击“复制”按钮，将内容粘贴到 Cloud Shell，然后按 `Enter`。
+5. 创建资源组和虚拟网络 (Resource Manager)。 可使用 CLI 1.0 或 2.0（[安装](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)）。 本教程中使用 CLI 2.0 创建虚拟网络 (Resource Manager)，因为必须使用 2.0 来创建对等互连。 从安装有 CLI 2.0.4 或更高版本的本地计算机执行以下 bash CLI 脚本。 有关在 Windows 客户端上运行 bash CLI 脚本的选项，请参阅[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)。 还可使用 Azure Cloud Shell 运行该脚本。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 单击下面脚本中的“试用”按钮，调用一个可用于登录 Azure 帐户的 Cloud Shell。 若要执行脚本，请单击“复制”按钮，将内容粘贴到 Cloud Shell，然后按 `Enter`。
 
     ```azurecli-interactive
     #!/bin/bash

@@ -4,22 +4,22 @@ description: 了解规划 Azure 文件部署时应考虑的问题。
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 26e4af814bad988da02d4e0cf36f17e1beec872e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 93331dd936a6d7b30ca18743d2079900421b2620
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187736"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738473"
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>添加/删除 Azure 文件同步（预览版）服务器终结点
 借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -44,22 +44,25 @@ ms.locfileid: "32187736"
 
 - **已注册服务器**：要在其中创建服务器终结点的服务器或群集的名称。
 - **路径**：要作为同步组的一部分进行同步的 Windows Server 上的路径。
-- **云分层**：用于启用或禁用云分层的开关，它使很少使用或访问的文件能够分层为 Azure 文件。
+- 云分层：启用或禁用云分层的开关。 启用时，云分层会将文件分层到 Azure 文件共享。 这会将本地文件共享转换为缓存而不是数据集的完整副本，以帮助你管理服务器上的空间效率。
 - **卷可用空间**：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
 
 选择“创建”以添加服务器终结点。 同步组命名空间中的文件现在会保持同步。 
 
 ## <a name="remove-a-server-endpoint"></a>删除服务器终结点
-为服务器终结点启用时，云分层会将文件分层到 Azure 文件共享。 这使本地文件共享可以充当缓存（而不是数据集的完整副本），以便高效使用文件服务器上的空间。 但是，如果在分层文件仍处于服务器本地的情况下删除服务器终结点，则这些文件将不可访问。 因此，如果本地文件共享需要继续进行文件访问，则必须先从 Azure 文件召回所有分层文件，然后再继续删除服务器终结点。 
+如果希望停止对给定服务器终结点使用 Azure 文件同步，则可以删除该服务器终结点。 
 
-这可以使用 PowerShell cmdlet 完成，如下所示：
+> [!Warning]  
+> 不要尝试通过删除并重新创建服务器终结点来解决同步、云分层或 Azure 文件同步的任何其他方面的问题，除非 Microsoft 工程师明确指示这样做。 删除服务器终结点是一种破坏性操作，并且在重新创建服务器终结点后，服务器终结点中的分层文件将不会“重新连接”到 Azure 文件共享上的其位置，这将导致同步错误。 另请注意，存在于服务器终结点命名空间之外的分层文件可能会永久丢失。 即使从未启用云分层，分层文件也可能存在于服务器终结点中。
+
+若要确保在删除服务器终结点之前召回所有分层文件，请在服务器终结点上禁用云分层，然后执行以下 PowerShell cmdlet 以召回服务器终结点命名空间内的所有分层文件：
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 
-> [!Warning]  
+> [!Note]  
 > 如果承载服务器的本地卷没有足够可用空间可用于召回所有分层数据，则 `Invoke-StorageSyncFileRecall` cmdlet 会失败。  
 
 删除服务器终结点：

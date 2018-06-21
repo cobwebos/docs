@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: b21d711e59ddc762eaf72f49e501d9f324d75105
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 05abd943d85fcdd709143bf7fce221dcdfb86011
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30240528"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215093"
 ---
 # <a name="service-endpoint-monitor"></a>服务终结点监视器
 
@@ -43,7 +43,7 @@ ms.locfileid: "30240528"
 ![配置网络性能监视器](media/log-analytics-network-performance-monitor/npm-configure-button.png)
 
 
-### <a name="configure-operations-management-suite-agents-for-monitoring"></a>配置用于监视的 Operations Management Suite 代理
+### <a name="configure-operations-management-suite-agents-for-monitoring"></a>配置 Operations Management Suite 代理的监视功能
 在用于监视的节点上启用以下防火墙规则，以便解决方案能够发现从节点到服务终结点的拓扑： 
 
 ```
@@ -52,7 +52,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6Echo" protocol="icmpv6:128,a
 netsh advfirewall firewall add rule name="NPMDICMPV4DestinationUnreachable" protocol="icmpv4:3,any" dir=in action=allow 
 netsh advfirewall firewall add rule name="NPMDICMPV6DestinationUnreachable" protocol="icmpv6:1,any" dir=in action=allow 
 netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmpv4:11,any" dir=in action=allow 
-netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action 
+netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
 ### <a name="create-service-endpoint-monitor-tests"></a>创建服务终结点监视器测试 

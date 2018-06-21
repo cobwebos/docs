@@ -1,8 +1,8 @@
 ---
-title: "向上缩放 Azure 中的应用 | Microsoft Docs"
-description: "了解如何扩展 Azure 应用服务中的应用规模以增加容量和功能。"
+title: 向上缩放 Azure 中的应用 | Microsoft Docs
+description: 了解如何扩展 Azure 应用服务中的应用规模以增加容量和功能。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: c07105a34f6778fcd62f6f1bc1d3930f6a8bf173
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714929"
 ---
 # <a name="scale-up-an-app-in-azure"></a>向上缩放 Azure 中的应用
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 02/14/2018
 2. 在应用服务应用页面，单击“所有设置”，然后单击“纵向扩展”。
    
     ![导航以纵向扩展 Azure 应用规模。][ChooseWHP]
-3. 选择层，并单击“选择”。
+3. 选择层，并单击“应用”。
    
     在操作完成后，“通知”选项卡上将闪现绿色的**成功**字样。
 

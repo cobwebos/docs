@@ -3,7 +3,7 @@ title: 如何向 Azure 时序见解环境发送事件 | Microsoft Docs
 description: 本教程介绍如何创建和配置事件中心，并运行一个示例应用程序来推送要在 Azure 时序见解中显示的事件。
 ms.service: time-series-insights
 services: time-series-insights
-author: venkatgct
+author: ashannon7
 ms.author: venkatja
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: db528f5a02d90e7e1e2e2cd3da30f04755575777
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fb550942debf26691a0deac2a1ad8093128e4e63
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657782"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294507"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>通过事件中心向时序见解环境发送事件
 本文介绍如何创建和配置事件中心并运行示例应用程序来推送事件。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在[时序见解](https://insights.timeseries.azure.com)中查看你的环境。

@@ -1,12 +1,12 @@
 ---
-title: "为 Azure 应用服务配置 PremiumV2 层 |Microsoft Docs"
-description: "了解如何通过扩展到新的 PremiumV2 定价层提高 Azure 应用服务中的 Web、移动和 API 应用的性能。"
-keywords: "应用服务, azure 应用服务, 缩放, 可缩放, 应用服务计划, 应用服务成本"
+title: 为 Azure 应用服务配置 PremiumV2 层 |Microsoft Docs
+description: 了解如何通过扩展到新的 PremiumV2 定价层提高 Azure 应用服务中的 Web、移动和 API 应用的性能。
+keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 应用服务计划, 应用服务成本
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: cephalin
-ms.openlocfilehash: 76897173d9fdfffe7139e7c5648ad0efb1c05b97
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4c157ed905b7dc48c886b26987c164ef9a47f3c3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714555"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
 
@@ -51,9 +52,9 @@ az appservice list-locations --sku P1V2
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中配置应用服务计划时，选择“定价层”。 
 
-选择 **PremiumV2** 选项之一并单击“选择”。
+选择“生产”，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”。
 
-![](media/app-service-configure-premium-tier/pick-premium-tier.png)
+![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > 如果没有看到 **P1V2**、**P2V2** 和 **P3V2** 作为选项列出，则 **PremiumV2** 在所选区域中不可用，或者所配置的 Linux 应用服务计划不支持 **PremiumV2**。
@@ -70,7 +71,7 @@ az appservice list-locations --sku P1V2
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-选择 **PremiumV2** 大小之一，然后单击“选择”。
+选择“生产”，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 

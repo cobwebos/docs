@@ -3,19 +3,19 @@ title: 如何在 Azure 时序见解环境中配置保留期 | Microsoft Docs
 description: 本文介绍如何在 Azure 时序见解环境中配置保留期。
 ms.service: time-series-insights
 services: time-series-insights
-author: anshan
+author: ashannon7
 ms.author: anshan
 manager: kfile
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 9a236ba500af36e8fb1c8c089389ffd74b9d2abb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b1280549d43aac42c3ea3567a1411f42354c2b11
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653913"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293727"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>在时序见解中配置保留期
 本文介绍如何在 Azure 时序见解中配置**数据保留时间**和**超出存储限制时的行为**。

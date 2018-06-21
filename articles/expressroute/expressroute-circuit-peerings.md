@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 0e060e67d615f0d6aa8ca6cbe305670956ac3faf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: be04a1cd723cf27e764daa468607d6495baf0291
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849924"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 线路和路由域
  必须订购一条 ExpressRoute 线路，以通过连接提供商将本地基础结构连接到 Microsoft。 下图展示了 WAN 与 Microsoft 之间连接的逻辑表示。
@@ -86,6 +87,11 @@ Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的
 可以选择启用一个或多个路由域作为 ExpressRoute 线路的一部分。 要将这些路由域合并成单个路由域，可以选择将所有路由域放置在同一个 VPN 中。 此外，还可以如图所示，将它们放置在不同的路由域中。 建议的配置是将专用对等链路直接连接到核心网络，并将公共和 Microsoft 对等链路连接到外围网络。
 
 如果选择使用所有三个对等会话，必须使用三对 BGP 会话（每一对用于一个对等类型）。 BGP 会话对提供高度可用的链接。 若要通过第 2 层连接性提供程序进行连接，需要负责配置和管理路由。 可以通过查看设置 ExpressRoute 的[工作流](expressroute-workflows.md)了解详细信息。
+
+## <a name="expressroute-health"></a>ExpressRoute 运行状况
+可以使用[网络性能监视器](https://docs.microsoft.com/en-us/azure/networking/network-monitoring-overview) (NPM) 监视 ExpressRoute 线路的可用性、与 VNet 的连接性和带宽利用率。
+
+NPM 监视 Azure 专用对等互连和 Microsoft 对等互连的运行状况。  有关详细信息，请查看我们的[帖子](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/)。
 
 ## <a name="next-steps"></a>后续步骤
 * 查找服务提供商。 请参阅 [ExpressRoute 服务提供商和位置](expressroute-locations.md)。

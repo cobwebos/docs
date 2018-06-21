@@ -5,20 +5,17 @@ keywords: odbc, odbc 驱动程序
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 9967f4e5-4b71-4cd7-8324-221a8c789e6b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: rest-api
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 360161ec0485259029be0bbd5194911e484a57e5
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725085"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB
 
@@ -123,7 +120,7 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
 通过设置链接服务器连接，可以从 SQL Server Management Studio (SSMS) 查询 Azure Cosmos DB。
 
 1. 按[步骤 2](#connect) 中所述创建系统数据源并为其命名，如 `SDS Name`。
-2. [安装 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+2. [安装 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 并连接到服务器。 
 3. 在 SSMS 查询编辑器中，使用以下命令为数据源创建链接服务器对象 `DEMOCOSMOS`。 将 `DEMOCOSMOS` 替换为链接服务器的名称，并将 `SDS Name` 替换为系统数据源的名称。
 
     ```sql

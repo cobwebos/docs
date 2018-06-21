@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 5f2d09e896a41647ef3211a754a4c7aa403d8cea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8bfc62f978b85399a64da32636627efc7ae234da
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587846"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212547"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>在 Azure Active Directory Join 与 Azure Active Directory 域服务之间进行选择
 本文介绍 Azure Active Directory (AD) Join 与 Azure AD 域服务之间的差异，帮助根据用例做出选择。

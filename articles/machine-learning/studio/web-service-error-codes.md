@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 0ba44b2a93bcd542db1350def2d0554c8c44233c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fbedf355c6b1c45d581408a962b875544838087f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836083"
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>机器学习 REST API 错误代码
  
@@ -45,12 +47,12 @@ ms.lasthandoff: 03/23/2018
 | ContainerValidationFailed | Blob 容器验证失败并出现以下错误: {0}。 |
 | DataTypeNotSupported | 提供了不支持的数据类型。 请提供有效的数据类型，并重试。 |
 | DuplicateInputInBatchCall | 批处理请求无效。 不能同时指定单输入和多输入。 请从请求中删除这些项中的一个，并重试。 |
-| ExpiryTimeInThePast | 提供的过期时间已过去: {0}。 请提供将来的过期时间(UTC)，然后重试。 要设置为永不过期，请将过期时间设置为 NULL。 |
+| ExpiryTimeInThePast | 提供的到期时间已过去: {0}。 请提供将来的过期时间(UTC)，然后重试。 要设置为永不过期，请将过期时间设置为 NULL。 |
 | IncompleteSettings | 诊断设置不完整。 |
 | InputBlobRelativeLocationInvalid | 未提供 Azure 存储 Blob 名称。 请提供有效的 Blob 名称，并重试。 |
 | InvalidBlob | Blob 的 Blob 规范无效: {0}。 请检查连接字符串/相对路径或 SAS 令牌规范是否正确，并重试。 |
 | InvalidBlobConnectionString | 为某个输入/输出 Blob 指定的连接字符串无效: {0}。 请更正此问题，并重试。 |
-| InvalidBlobExtension | Blob 引用: {0} 的某个文件扩展名无效或缺失。 此输出类型支持的文件扩展名为: "{1}"。 |
+| InvalidBlobExtension | Blob 引用: {0} 的文件扩展名无效或缺失。 此输出类型支持的文件扩展名为:“{1}”。 |
 | InvalidInputNames | 在请求中指定了无效的服务输入名称: {0}。 请将输入数据映射到正确的服务输入，然后重试。 |
 | InvalidOutputOverrideName | 输出重写名称无效: {0}。 服务中没有任何输出节点使用此名称。 请向重写传入正确的输出节点名称(区分大小写)。 |
 | InvalidQueryParameter | 查询参数“{0}”无效。 {1} |
@@ -96,7 +98,7 @@ ms.lasthandoff: 03/23/2018
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|
-| CannotStartJob | 作业处于 {0} 状态，因此无法启动。 |
+| CannotStartJob | 由于作业处于 {0} 状态，因此无法启动。 |
 | IncompatibleModel | 模型与请求版本不兼容。 该请求版本仅支持单一数据库输出模型。 |
 | MultipleInputsNotAllowed | 该模型不允许多个输入。 |
  
