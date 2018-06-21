@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8511af935eb2427724ace1f39ec9948e3b0b5537
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366522"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643203"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -29,14 +29,21 @@ ms.locfileid: "34366522"
 在 Service Fabric 群集上运行 Windows 容器中的现有应用程序不需要对应用程序进行任何更改。 本文逐步讲解如何创建包含 Python [Flask](http://flask.pocoo.org/) Web 应用程序的 Docker 映像并将其部署到 Service Fabric 群集。 此外，将通过 [Azure 容器注册表](/azure/container-registry/)共享容器化的应用程序。 本文假定读者对 Docker 有一个基本的了解。 阅读 [Docker Overview](https://docs.docker.com/engine/understanding-docker/)（Docker 概述）即可了解 Docker。
 
 ## <a name="prerequisites"></a>先决条件
-一台运行以下软件的开发计算机：
-* Visual Studio 2015 或 Visual Studio 2017。
-* [Service Fabric SDK 和工具](service-fabric-get-started.md)。
-*  适用于 Windows 的 Docker。 [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)（获取适用于 Windows 的 Docker CE（稳定版））。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。 此步骤是运行基于 Windows 的 Docker 映像所必需的。
+* 一台运行以下软件的开发计算机：
+  * Visual Studio 2015 或 Visual Studio 2017。
+  * [Service Fabric SDK 和工具](service-fabric-get-started.md)。
+  *  适用于 Windows 的 Docker。 [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)（获取适用于 Windows 的 Docker CE（稳定版））。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。 此步骤是运行基于 Windows 的 Docker 映像所必需的。
 
-一个 Windows 群集，其中至少有三个节点运行在包含容器的 Windows Server 2016 上 - [创建群集](service-fabric-cluster-creation-via-portal.md)或[免费试用 Service Fabric](https://aka.ms/tryservicefabric)。
+* 有三个或更多节点在使用容器的 Windows Server 上运行的 Windows 群集。 
 
-一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。
+  在本文中，群集结点上运行的使用容器的 Windows Server 版本必须与开发计算机上的版本相匹配。 这是因为要在开发计算机上构建 Docker 映像，而容器 OS 和用来部署的主机 OS 的版本之间有兼容性限制。 有关详细信息，请参阅 [Windows Server 容器 OS 与主机 OS 的兼容性](#windows-server-container-os-and-host-os-compatibility)。 
+  
+  若要确定使用容器的 Windows Server 版本，请在开发计算机上从 Windows 命令提示符运行 `ver` 命令：
+
+  * 如果版本包含 x.x.14323.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时务必选择 WindowsServer 2016-Datacenter-with-Containers 作为操作系统，或者通过 Party 群集[免费试用 Service Fabric](https://aka.ms/tryservicefabric)。
+  * 如果版本包含 x.x.16299.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时务必选择 WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers 作为操作系统。 不能使用 Party 群集。
+
+* 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。
 
 > [!NOTE]
 > 不支持将容器部署到 Windows 10 中的 Service Fabric 群集或安装了 Docker CE 的群集。 本演练以本地方式测试如何在 Windows 10 中使用 Docker 引擎，并最终将容器服务部署到 Azure 中运行 Docker EE 的 Windows Server 群集。 
@@ -316,7 +323,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 ```
 
 ## <a name="configure-isolation-mode"></a>配置隔离模式
-Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔离模式时，在同一台主机计算机上运行的所有容器将与主机共享内核。 使用 Hyper-V 隔离模式时，内核将在每个 Hyper-V 容器与容器主机之间隔离。 隔离模式在应用程序清单文件中的 `ContainerHostPolicies` 元素内指定。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 默认隔离模式在 Windows Server 主机上默认为 `process`，在 Windows 10 主机上默认为 `hyperv`。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
+Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔离模式时，在同一台主机计算机上运行的所有容器将与主机共享内核。 使用 Hyper-V 隔离模式时，内核将在每个 Hyper-V 容器与容器主机之间隔离。 隔离模式在应用程序清单文件中的 `ContainerHostPolicies` 元素内指定。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 Windows Server 主机上默认采用进程隔离模式。 Windows 10 主机仅支持 Hyper-V 隔离模式，因此无论容器的离模式设置如何，它都在 Hyper-V 隔离模式下运行。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
@@ -387,19 +394,44 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
+## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server 容器 OS 与主机 OS 的兼容性
+
+Windows Server 容器并非在所有主机 OS 版本间都兼容。 例如：
+ 
+- 使用 Windows Server 1709 版本生成的 Windows Server 容器在运行 Windows Server 2016 版本的主机上无效。 
+- 使用 Windows Server 2016 生成的 Windows Server 容器仅在运行 Windows Server 1709 版本的主机上以 hyperv 隔离模式工作。 
+- 因为 Windows Server 容器使用 Windows Server 2016 生成，所以在运行 Windows Server 2016 的主机上以进程隔离模式运行时，可能需要确保容器 OS 和主机 OS 的版本相同。
+ 
+若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
+
+将容器生成和部署到 Service Fabric 群集时，请考虑主机 OS 和容器 OS 的兼容性。 例如：
+
+- 请确保通过与群集节点上的 OS 兼容的 OS 部署容器。
+- 请确保为容器应用指定的隔离模式与为部署容器的节点上的容器 OS 提供支持的要求一致。
+- 请考虑 OS 升级到群集结点的方式，否则容器可能影响它们的兼容性。 
+
+建议采取以下做法，确保容器正确部署在 Service Fabric 群集上：
+
+- 对 Docker 映像进行显式映像标记，以指定生成容器的 Windows Server OS 的版本。 
+- 在应用程序清单文件中使用 [OS 标记](#specify-os-build-specific-container-images)，确保应用程序与不同 Windows Server 版本和升级兼容。
+
+> [!NOTE]
+> 使用 Service Fabric 6.2 及更高版本，可以在 Windows 10 主机上本地部署基于 Windows Server 2016 的容器。 在 Windows 10 上，容器以 Hyper-V 隔离模式运行，不管应用程序清单中设置的隔离模式如何。 若要了解详细信息，请参阅[配置隔离模式](#configure-isolation-mode)。   
+>
+ 
 ## <a name="specify-os-build-specific-container-images"></a>指定特定于 OS 内部版本的容器映像 
 
-Windows Server 容器（进程隔离模式）可能不兼容较新版的 OS。 例如，使用 Windows Server 2016 生成的 Windows Server 容器在 Windows Server 版本 1709 上无效。 因此，如果将群集节点更新到最新版本，则使用较早版本的 OS 生成的容器服务可能会发生故障。 为了避免 6.1 及更新版本的运行时出现这种情况，Service Fabric 允许为每个容器指定多个 OS 映像并为这些映像标记 OS 的内部版本（通过在 Windows 命令提示符处运行 `winver` 获取）。 更新应用程序清单并为每个 OS 版本指定映像重写项，然后更新节点上的 OS。 以下代码片段演示了如何在应用程序清单 **ApplicationManifest.xml** 中指定多个容器映像：
+Windows Server 容器在不同 OS 版本中可能不兼容。 例如，在进程隔离模式中，使用 Windows Server 2016 生成的 Windows Server 容器在 Windows Server 版本 1709 上无效。 因此，如果将群集节点更新到最新版本，则使用较早版本的 OS 生成的容器服务可能会发生故障。 为了避免 6.1 及更新版本的运行时出现这种情况，Service Fabric 允许为每个容器指定多个 OS 映像并为这些映像标记应用程序清单中的 OS 的内部版本。 可以通过在 Windows 命令提示符下运行 `winver` 获取 OS 的内部版本。 更新应用程序清单并为每个 OS 版本指定映像重写项，然后更新节点上的 OS。 以下代码片段演示了如何在应用程序清单 **ApplicationManifest.xml** 中指定多个容器映像：
 
 
 ```xml
-<ContainerHostPolicies> 
+      <ContainerHostPolicies> 
          <ImageOverrides> 
            <Image Name="myregistry.azurecr.io/samples/helloworldappDefault" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
          </ImageOverrides> 
-     </ContainerHostPolicies> 
+      </ContainerHostPolicies> 
 ```
 WIndows Server 2016 的内部版本为 14393，Windows Server 版本 1709 的内部版本为 16299。 对于单个容器服务，服务清单仍然只指定一个映像，如下所示：
 

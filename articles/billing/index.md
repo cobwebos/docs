@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 313d6cfd69fbf63066add46c7a467c5090604067
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: e696f3829ce710ef38957a5f538c1a43f4ba33f5
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807248"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285842"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Azure 计费和成本管理文档
 
@@ -133,7 +133,7 @@ ms.locfileid: "34807248"
                     <div class="cardText">
                         <h3>借助虚拟机预留实例实现节约</h3>
                         <p>
-                        <a href="/azure/billing/billing-save-compute-costs-reservations">什么是预留实例？</a><br/>
+                        <a href="/azure/billing/billing-save-compute-costs-reservations">什么是预留实例？</a> <br/>
                         <a href="/azure/virtual-machines/windows/prepay-reserved-vm-instances?toc=/azure/billing/TOC.json">购买预留实例</a><br/>
                         <a href="/azure/billing/billing-understand-vm-reservation-charges">如何应用折扣</a><br/>
                         <a href="/azure/billing/billing-reserved-instance-windows-software-costs">未包括软件成本</a>
@@ -165,12 +165,18 @@ ms.locfileid: "34807248"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>故障排除</h3>
+                        <h3>企业订阅：需要 EA 门户访问</h3>
+                        <style>.p-test:after { font-family: docons; content: "\E9D0";}</style>
                         <p>
-                        <a href="/azure/billing/billing-no-subscriptions-found">“未找到订阅”</a><br/>
-                        <a href="https://support.microsoft.com/help/4042960/troubleshoot-why-your-debit-card-or-credit-card-is-declined-at-azure-s">银行卡被拒绝</a><br/>
-                        <a href="https://support.microsoft.com/help/4042959/troubleshoot-why-you-can-t-sign-up-for-azure">注册问题</a><br/>
-                        <a href="https://support.microsoft.com/help/4042961/troubleshoot-why-you-can-t-sign-in-to-manage-your-azure-subscription">登录问题</a>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/createADepartment" data-linktype="external">管理部门<span class="docon docon-navigate-external"></span></a>
+                        <br>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/addNewAccount" data-linktype="external">管理帐户<span class="docon docon-navigate-external"></span></a>
+                        <br>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/createANewSubscription" data-linktype="external">创建订阅<span class="docon docon-navigate-external"></span></a>
+                        <br>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/viewPriceSheet" data-linktype="external">查看价目表<span class="docon docon-navigate-external"></span></a>
+                        <br>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/usageDetailReport" data-linktype="external">查看使用情况详细信息<span class="docon docon-navigate-external"></span></a>
                         </p>
                     </div>
                 </div>

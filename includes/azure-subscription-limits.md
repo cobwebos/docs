@@ -8,15 +8,16 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 8f104ab046fad8dfd9086525b8f942f3d2941821
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3daf0e214c2c10d682e908ca430f4852df105926
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35414648"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的核心数 <sup>1</sup> |20 |10,000 |
+| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 vCPU 数量 <sup>1</sup> |20 |10,000 |
 | 每个订阅的[共同管理员数](../articles/billing-add-change-azure-subscription-administrator.md) |200 |200 |
 | 每个订阅在每个区域中的[存储帐户数](../articles/storage/common/storage-create-storage-account.md)<sup>2</sup> |200 |250 |
 | 每个订阅的[云服务数](../articles/cloud-services/cloud-services-choose-me.md) |20 |200 |
@@ -28,7 +29,7 @@ ms.lasthandoff: 05/20/2018
 | 每个订阅的[地缘组数](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |256 |256 |
 
 
-<sup>1</sup>特小实例作为一项核心至核心限制计数，即使使用了部分核心。
+<sup>1</sup>特小实例作为一个 vCPU 至 vCPU 限制计数，即使使用了部分 CPU 核心。
 
-<sup>2</sup>此存储帐户限制包括标准和高级存储帐户。 如果在单个区域中需要的存储帐户多于 200 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储团队将评审业务案例，最多可以批准 250 个存储帐户。 
+<sup>2</sup>此存储帐户限制包括标准和高级存储帐户。 如果在某特定区域中需要的存储帐户多于 200 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储团队将评审业务案例，对于特定区域最多可以批准 250 个存储帐户。 
 

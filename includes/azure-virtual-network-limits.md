@@ -1,4 +1,21 @@
-<a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。
+---
+title: include 文件
+description: include 文件
+services: networking
+author: jimdial
+ms.service: networking
+ms.topic: include
+ms.date: 06/12/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568120"
+---
+<a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -18,7 +35,7 @@
 | 终结点访问控制列表 (ACL) |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制 - Azure 资源管理器
-以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。
+以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -58,7 +75,10 @@
 | 前端 IP 配置数，标准 | 10 | 600 |
 | 后端池数，基本 | 100，单个可用性集 | 100，单个可用性集 |
 | 后端池数，标准 | 1000，单个 VNet | 1000，单个 VNet |
+| 每个负载均衡器的后端资源数，标准 &ast; | 50 | 150 |
 | HA 端口数，标准 | 每个内部前端 1 个 | 每个内部前端 1 个 |
+
+&ast; 多达 150 个资源，独立虚拟机、可用性集和虚拟机规模集可任意组合。
 
 如果需要在默认值的基础上提高限制，请[与支持人员联系](../articles/azure-supportability/resource-manager-core-quotas-request.md )。
 

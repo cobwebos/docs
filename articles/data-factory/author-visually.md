@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: b588fd4b67dbed1e0dc3d4ad2cbd75b462ce311f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725136"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265282"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。 可通过两种方法使用 UX 执行视觉对象创作：
@@ -63,11 +63,11 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 |:--- |:--- |:--- |
 | **存储库类型** | VSTS 代码存储库的类型。<br/>**注意**：当前不支持 GitHub。 | Visual Studio Team Services Git |
 | **Azure Active Directory** | Azure AD 租户的名称。 | <your tenant name> |
-| **Visual Studio Team Services 帐户** | VSTS 帐户名称。 可以在 `https://{account name}.visualstudio.com` 找到 VSTS 帐户名称。 可以[登录到 VSTS 帐户](https://www.visualstudio.com/team-services/git/)并访问 Visual Studio 配置文件以查看存储库和项目 | \<你的帐户名> |
-| **ProjectName** | VSTS 项目名称。 可以在 `https://{account name}.visualstudio.com/{project name}` 找到 VSTS 项目名称。 | \<你的 VSTS 项目名称> |
-| **RepositoryName** | VSTS 代码存储库名称。 VSTS 项目包含 Git 存储库，随着项目的发展来管理源代码。 要么创建一个新的存储库，要么使用项目中已有的存储库。 | \<你的 VSTS 代码存储库名称> |
-| **协作分支** | 将用于发布的 VSTS 协作分支。 默认为 `master`。 如果希望从其他分支发布资源，可对其进行更改。 | \<你的协作分支名称> |
-| **根文件夹** | VSTS 协作分支中的根文件夹。 | \<你的根文件夹名称> |
+| **Visual Studio Team Services 帐户** | VSTS 帐户名称。 可以在 `https://{account name}.visualstudio.com` 找到 VSTS 帐户名称。 可以[登录到 VSTS 帐户](https://www.visualstudio.com/team-services/git/)并访问 Visual Studio 配置文件以查看存储库和项目 | <your account name> |
+| **ProjectName** | VSTS 项目名称。 可以在 `https://{account name}.visualstudio.com/{project name}` 找到 VSTS 项目名称。 | <your VSTS project name> |
+| **RepositoryName** | VSTS 代码存储库名称。 VSTS 项目包含 Git 存储库，随着项目的发展来管理源代码。 要么创建一个新的存储库，要么使用项目中已有的存储库。 | <your VSTS code repository name> |
+| **协作分支** | 将用于发布的 VSTS 协作分支。 默认为 `master`。 如果希望从其他分支发布资源，可对其进行更改。 | <your collaboration branch name> |
+| **根文件夹** | VSTS 协作分支中的根文件夹。 | <your root folder name> |
 | 确认选中“将现有的数据工厂资源导入存储库”选项。 | 指定是否从 UX 导入现有数据工厂资源**创作画布**入 VSTS Git 存储库中。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>配置方法 2：UX 创作画布

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 500e335d0b2eddc56cdfb9828236bc4676d9b6aa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 28290718d15a893c5d676c887b9f810449075746
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371161"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34665985"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -28,7 +28,7 @@ ms.locfileid: "34371161"
 * 压力
 * 湿度
 
-为简单起见，代码会生成**冷却器**的示例遥测值。 可以通过将真实的传感器连接到设备并发送真实的遥测数据，在本示例的基础上融会贯通。
+为简单起见，代码会生成冷却器的示例遥测值。 可以通过将真实的传感器连接到设备并发送真实的遥测数据，在本示例的基础上融会贯通。
 
 示例设备还会：
 
@@ -44,7 +44,7 @@ ms.locfileid: "34371161"
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>部署远程监视解决方案加速器
 
-本教程中创建的“冷却器”设备会将数据发送到[远程监视](../articles/iot-suite/iot-suite-remote-monitoring-explore.md)解决方案加速器的实例中。 如果尚未在 Azure 帐户中预配远程监视解决方案加速器，请参阅[部署远程监视解决方案加速器](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
+本教程中创建的“冷却器”设备会将数据发送到[远程监视](../articles/iot-accelerators/iot-accelerators-remote-monitoring-explore.md)解决方案加速器的实例中。 如果尚未在 Azure 帐户中预配远程监视解决方案加速器，请参阅[部署远程监视解决方案加速器](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 当远程监视解决方案的部署过程完成后，单击“启动”，以在浏览器中打开解决方案仪表板。
 
@@ -59,22 +59,22 @@ ms.locfileid: "34371161"
 
 若要在远程监视解决方案中添加设备，请在解决方案中的“设备”页上完成以下步骤：
 
-1. 选择“+ 新建设备”，并选择“物理”作为**设备类型**：
+1. 选择“+ 新建设备”，并选择“物理”作为设备类型：
 
     ![添加物理设备](media/iot-suite-selector-connecting/devicesprovision.png)
 
-1. 输入 **Physical-chiller** 作为设备 ID。 选择“对称密钥”和“自动生成密钥”选项：
+1. 输入 Physical-chiller 作为设备 ID。 选择“对称密钥”和“自动生成密钥”选项：
 
     ![选择设备选项](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. 选择“应用”。 然后记下**设备 ID**、**主密钥**和**连接字符串主密钥**值：
+1. 选择“应用”。 然后记下设备 ID、主密钥和连接字符串主密钥值：
 
     ![检索凭据](media/iot-suite-selector-connecting/credentials.png)
 
 现在，你已向远程监视解决方案加速器添加了物理设备，并记下了其设备连接字符串。 在以下各部分中，你将实现使用设备连接字符串连接到解决方案的客户端应用程序。
 
-客户端应用程序实现内置的**冷却器**设备模型。 解决方案加速器设备模型指定有关设备的以下信息：
+客户端应用程序实现内置的冷却器设备模型。 解决方案加速器设备模型指定有关设备的以下信息：
 
-* 设备报告给解决方案的属性。 例如，**冷却器**设备报告有关其固件和位置的信息。
-* 由设备发送到解决方案的遥测数据类型。 例如，**冷却器**设备发送温度、湿度和压力值。
-* 可以在解决方案中计划的、要在设备上运行的方法。 例如，**冷却器**设备必须实现 **Reboot**、**FirmwareUpdate**、**EmergencyValveRelease** 和 **IncreasePressure** 方法。
+* 设备报告给解决方案的属性。 例如，冷却器设备报告有关其固件和位置的信息。
+* 由设备发送到解决方案的遥测数据类型。 例如，冷却器设备发送温度、湿度和压力值。
+* 从解决方案可计划的在设备上运行的方法。 例如，冷却器设备必须实现 Reboot、FirmwareUpdate、EmergencyValveRelease 和 IncreasePressure 方法。

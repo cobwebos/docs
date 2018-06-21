@@ -77,6 +77,8 @@
           href: edit-api.md
     - name: 预配和缩放
       items:
+        - name: 容量指标
+          href: api-management-capacity.md
         - name: 升级和缩放
           href: upgrade-and-scale.md
         - name: 配置自定义域

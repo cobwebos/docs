@@ -2,30 +2,27 @@
 title: 利用生存时间使 Azure Cosmos DB 中的数据过期 | Microsoft Docs
 description: 通过 TTL 功能，Microsoft Azure Cosmos DB 能够在一段时间后将文档自动从系统清除。
 services: cosmos-db
-documentationcenter: ''
 keywords: 生存时间
 author: SnehaGunda
 manager: kfile
-ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 13f2caa631817a5745f39b44faccb11252a2d549
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e1b11d637eec54d43c9f1212936d94b2d7396c97
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615115"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>利用生存时间使 Azure Cosmos DB 集合中的数据自动过期
 应用程序可以生成和存储大量数据。 其中的某些数据（如计算机生成的事件数据、日志和用户会话信息）仅在有限的一段时间内才有用。 当数据变得多余，应用程序不再需要时，可以安全地清除这些数据并减少应用程序的存储需求。
 
 通过“生存时间”或 TTL 功能，Microsoft Azure Cosmos DB 能够在一段时间后将文档自动从数据库清除。 可以在集合级别设置默认生存时间，并且可以在每个文档上覆盖该时间。 TTL 设置后，无论作为集合默认或在文档级别，Cosmos DB 都将自文档上次修改起的某段时间（以秒为单位）后，自动删除该文档。
 
-Cosmos DB 中的生存时间针对上次修改该文档的时间使用偏移量。 为此，它会使用每个文档中存在的 `_ts` 字段。 _ts 字段为 unix 型的时期时间戳，表示日期和时间。 每次修改文档时都会更新 `_ts` 字段。 
+Azure Cosmos DB 中的生存时间针对上次修改该文档的时间使用偏移量。 为此，它会使用每个文档中存在的 `_ts` 字段。 _ts 字段为 unix 型的时期时间戳，表示日期和时间。 每次修改文档时都会更新 `_ts` 字段。 
 
 ## <a name="ttl-behavior"></a>TTL 行为
 TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 设置这些值时以秒为单位，这些值被视为自上次修改文档所在的 `_ts` 起的增量。
@@ -33,8 +30,8 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
 1. 集合的 DefaultTTL
    
    * 如果缺失（或设置为 NULL），则文档不会自动删除。
-   * 如果存在且值为“-1”= 无限期 - 则默认情况下，文档不过期
-   * 如果存在且值为某个数字（“n”）- 则文档在上次修改“n”秒后过期
+   * 如果存在且值设为“-1”= 无限期 - 则默认情况下，文档不过期
+   * 如果存在且值设为某个数字（“n”）- 则文档在上次修改“n”秒后过期
 2. 文档的 TTL： 
    
    * 属性仅在对父集合设置 DefaultTTL 时适用。
@@ -169,7 +166,7 @@ TTL 启动后，文档将立即过期，并且无法通过 CRUD 或查询 API �
 
 **TTL 功能是否仅应用于整个文档，或者是否可以使单个文档的属性值过期？**
 
-TTL 应用于整个文档。 如果只是想要使文档的一部分过期，则建议将该部分从主文档中提取到一个单独的“链接”文档，并对被提取的文档使用 TTL。
+TTL 应用于整个文档。 如果只是想要使文档的一部分过期，则建议将该部分从主文档中提取到一个单独的“链接”文档，然后对被提取的文档使用 TTL。
 
 **TTL 功能是否具有特定的索引编制要求？**
 

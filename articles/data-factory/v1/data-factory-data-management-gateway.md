@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c1db81594f44f805cf50523b449af62d76099a08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: abc542f79d722f24ff6a6e9d96d12364ed76894b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771042"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621177"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -208,7 +208,7 @@ ms.locfileid: "33771042"
 如果为 HTTP 代理服务器选择“使用系统代理”设置，则网关使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则网关无需通过代理，直接连接到云服务。 以下过程说明如何更新 diahost.exe.config 文件。  
 
 1. 在文件资源管理器中，生成 C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config 的安全副本，以备份原始文件。
-2. 启动作为管理员运行的 Notepad.exe，并打开文本文件“C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config”。找到 system.net 的默认标记，如以下代码中所示：
+2. 启动作为管理员运行的 Notepad.exe，并打开文本文件 C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config。找到 system.net 的默认标记，如以下代码中所示：
 
          <system.net>
              <defaultProxy useDefaultCredentials="true" />
@@ -237,7 +237,7 @@ ms.locfileid: "33771042"
 如果遇到类似于以下的错误，可能是由于防火墙或代理服务器配置错误，阻止了网关连接到数据工厂进行自身身份验证。 请参考上一部分，确保防火墙和代理服务器已正确配置。
 
 1. 尝试注册网关时，会收到以下错误：“未能注册网关密钥。 在尝试再次注册网关密钥之前，请确认数据管理网关处于已连接状态，并且数据管理网关主机服务已启动”。
-2. 打开配置管理器时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器”>“应用程序和服务日志”>“数据管理网关”下，会看到错误消息，例如以下错误：`Unable to connect to the remote server`
+2. 打开 Configuration Manager 时，看到状态为“已断开连接”或“正在连接”。查看 Windows 事件日志时，在“事件查看器”>“应用程序和服务日志”>“数据管理网关”下，会看到错误消息，例如以下错误：`Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>打开端口 8050 以实现凭据加密
@@ -369,7 +369,7 @@ ms.locfileid: "33771042"
 CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。 
 网络（进/出） | 网关节点的网络利用率。 此值为近实时快照。 
 并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用，但活动即将超时的高级方案中，可提高上限来增强并发作业执行。此功能也适用于单节点网关（即便未启用可伸缩性和可用性功能）。  
-角色 | 多节点网关中有两种角色 – 调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中请求任务/作业，并分派到其他辅助节点（包括其本身）。
+角色 | 多节点网关中有两种角色 – Dispatcher 和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中请求任务/作业，并分派到其他辅助节点（包括其本身）。
 
 在此页面，你将发现当网关中存在两个或以上节点（扩展方案）时，某些设置更为好用。 有关如何设置多节点网关的详细信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
 
@@ -490,12 +490,12 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 3. 使用 **New-AzureRmDataFactoryGateway** cmdlet 创建逻辑网关，如下所示：
 
     ```PowerShell
-    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
+    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF �Description <desc>
     ```
     **示例命令和输出**：
 
     ```
-    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
+    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF �Description �gateway for walkthrough�
 
     Name              : MyGateway
     Description       : gateway for walkthrough

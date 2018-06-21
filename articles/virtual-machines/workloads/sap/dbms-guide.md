@@ -4,7 +4,7 @@ description: SAP NetWeaver 的 Azure 虚拟机 DBMS 部署
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c78b764b66e677144186831b6139fd6a0aae7e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 356e44b063fbd65de23d3aab313f58b5572840ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366352"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656187"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机 DBMS 部署
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -540,18 +540,19 @@ SAP 当前仅支持高级托管磁盘。 有关更多详细信息，请阅读 SA
 如果使用托管磁盘，则可通过以下方式迁移到高级存储：
 
 1. 解除分配虚拟机
-2. 必要时重设虚拟机的大小，使之支持高级存储（例如重设为 DS 或 GS）
-3. 将托管磁盘帐户类型更改为“高级”(SSD)
-4. 启动虚拟机
+1. 必要时重设虚拟机的大小，使之支持高级存储（例如重设为 DS 或 GS）
+1. 将托管磁盘帐户类型更改为“高级”(SSD)
+1. 根据 [VM 和数据磁盘的缓存][dbms-guide-2.1]一章的建议，更改数据磁盘的缓存
+1. 启动虚拟机
 
 ### <a name="deployment-of-vms-for-sap-in-azure"></a>在 Azure 中为 SAP 部署 VM
 Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此，请务必了解这些方法之间的差异，因为 VM 的准备工作可能会因部署方法的不同而异。 一般情况下，我们会考虑以下章节中所述的方案。
 
-#### <a name="deploying-a-vm-from-the-azure-marketplace"></a>从 Azure Marketplace 部署 VM
-想要从 Azure Marketplace 中获取某个 Microsoft 或第三方映像来部署 VM。 将 VM 部署到 Azure 之后，需要像在本地环境中一样，遵照相同的准则并使用相同的工具在 VM 内部安装 SAP 软件。 若要在 Azure VM 内部安装 SAP 软件，SAP 和 Microsoft 建议将 SAP 安装媒体上传并存储到磁盘中，或创建一个充当“文件服务器”并包含所有必要 SAP 安装媒体的 Azure VM。
+#### <a name="deploying-a-vm-from-the-azure-marketplace"></a>从 Azure 市场部署 VM
+想要从 Azure 市场中获取某个 Microsoft 或第三方映像来部署 VM。 将 VM 部署到 Azure 之后，需要像在本地环境中一样，遵照相同的准则并使用相同的工具在 VM 内部安装 SAP 软件。 若要在 Azure VM 内部安装 SAP 软件，SAP 和 Microsoft 建议将 SAP 安装媒体上传并存储到磁盘中，或创建一个充当“文件服务器”并包含所有必要 SAP 安装媒体的 Azure VM。
 
 #### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>使用特定于客户的通用化映像部署 VM
-由于 OS 或 DBMS 版本存在特定的修补程序要求，Azure Marketplace 中提供的映像可能并不符合需要。 因此，可能需要使用自己的、以后可以多次部署的“专用”OS/DBMS VM 映像创建一个 VM。 若要准备这样一个可供复制的“专用”映像，必须在本地 VM 上将 OS 通用化。 有关如何将 VM 通用化的详细信息，请参阅[部署指南][deployment-guide]。
+由于 OS 或 DBMS 版本存在特定的修补程序要求，Azure 市场中提供的映像可能并不符合需要。 因此，可能需要使用自己的、以后可以多次部署的“专用”OS/DBMS VM 映像创建一个 VM。 若要准备这样一个可供复制的“专用”映像，必须在本地 VM 上将 OS 通用化。 有关如何将 VM 通用化的详细信息，请参阅[部署指南][deployment-guide]。
 
 如果已将 SAP 内容安装在本地 VM 中（尤其是对于双层系统），则可以在部署 Azure VM 之后，通过 SAP Software Provisioning Manager 支持的实例重命名过程来修改 SAP 系统设置（SAP 说明 [1619720]）。 否则，可以稍后在部署 Azure VM 之后安装 SAP 软件。
 
@@ -619,7 +620,8 @@ Microsoft Azure 可用性集是 VM 或服务的逻辑分组，可确保 VM 和�
 * **SQL 版本支持**：对于 SAP 客户，我们在 Microsoft Azure 虚拟机上支持 SQL Server 2008 R2 和更高版本。 不支持更早版本。 有关更多详细信息，请查看此通用[支持声明](https://support.microsoft.com/kb/956893)。 注意，Microsoft 通常也支持 SQL Server 2008。 不过，由于适用于 SAP 的重要功能是通过 SQL Server 2008 R2 引进的，因此，SQL Server 2008 R2 是适用于 SAP 的最低版本。 请记住，SQL Server 2012 和 2014 已扩展，可与 IaaS 方案更深入地集成（例如，直接对 Azure 存储进行备份）。 因此，我们将本文的范围限制为 SQL Server 2012 和 2014 及其适用于 Azure 的最新补丁级别。
 * **SQL 功能支持**：Microsoft Azure 虚拟机支持大部分 SQL Server 功能，但有一些例外。 **不支持使用共享磁盘的 SQL Server 故障转移群集**。  单个 Azure 区域内支持数据库镜像、AlwaysOn 可用性组、复制、日志传送和 Service Broker 等分布式技术。 不同的 Azure 区域之间也支持 SQL Server AlwaysOn，如此处所述：<https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>。  有关更多详细信息，请查看[支持声明](https://support.microsoft.com/kb/956893)。 [此文][virtual-machines-workload-template-sql-alwayson]提供了有关如何部署 AlwaysOn 配置的示例。 此外，请查看[此处][virtual-machines-sql-server-infrastructure-services]所述的最佳做法 
 * SQL 性能：相比其他公有云虚拟化产品，我们确信 Microsoft Azure 托管的虚拟机将运行得非常顺利，但个别结果可能不同。 请查看[此文][virtual-machines-sql-server-performance-best-practices]。
-* **使用来自 Azure Marketplace 的映像**：部署新 Azure VM 的最快方式是使用来自 Microsoft Azure Marketplace 的映像。 Azure Marketplace 提供包含 SQL Server 的映像。 已经安装 SQL Server 的映像不能立即用于 SAP NetWeaver 应用程序。 原因是这些映像安装了默认的 SQL Server 排序规则，而不是 SAP NetWeaver 系统所需的排序规则。 若要使用此类映像，请查看[使用来自 Microsoft Azure Marketplace 的 SQL Server 映像][dbms-guide-5.6]一章中所述的步骤。 
+* 
+  **使用来自 Azure 市场的映像**：部署新 Azure VM 的最快方式是使用来自 Microsoft Azure 市场的映像。 Azure 市场提供包含 SQL Server 的映像。 已经安装 SQL Server 的映像不能立即用于 SAP NetWeaver 应用程序。 原因是这些映像安装了默认的 SQL Server 排序规则，而不是 SAP NetWeaver 系统所需的排序规则。 若要使用此类映像，请查看[使用来自 Microsoft Azure 市场的 SQL Server 映像][dbms-guide-5.6]一章中所述的步骤。 
 * 有关详细信息，请查看[定价详细信息](https://azure.microsoft.com/pricing/)。 [SQL Server 2012 Licensing Guide](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf)（SQL Server 2012 许可指南）和 [SQL Server 2014 Licensing Guide](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf)（SQL Server 2014 许可指南）也是相当重要的资源。
 
 ### <a name="sql-server-configuration-guidelines-for-sap-related-sql-server-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 相关 SQL Server 的 SQL Server 配置准则
@@ -748,15 +750,17 @@ SQL Server 2014 引入了一项称为缓冲池扩展的新功能。 此功能使
 
 有关 Azure 上备份和 SAP 的更完整的讨论，请参阅 [SAP 备份指南](sap-hana-backup-guide.md)以了解详细信息。
 
-### <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>使用来自 Microsoft Azure Marketplace 的 SQL Server 映像
-Microsoft 在 Azure Marketplace 中提供已经包含 SQL Server 版本的 VM。 对于需要 SQL Server 和 Windows 许可证的 SAP 客户，可以通过运行已安装 SQL Server 的 VM，基本满足对许可证的需求。 若要针对 SAP 使用此类映像，必须注意以下事项：
+### 
+  <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8">
+  </a>使用来自 Microsoft Azure 市场的 SQL Server 映像
+Microsoft 在 Azure 市场中提供已经包含 SQL Server 版本的 VM。 对于需要 SQL Server 和 Windows 许可证的 SAP 客户，可以通过运行已安装 SQL Server 的 VM，基本满足对许可证的需求。 若要针对 SAP 使用此类映像，必须注意以下事项：
 
-* SQL Server 非评估版的购置成本高于从 Azure Marketplace 部署的“仅限 Windows”VM。 请参阅以下文章来比较价格：<https://azure.microsoft.com/pricing/details/virtual-machines/windows/> 和 <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>。 
+* SQL Server 非评估版的购置成本高于从 Azure 市场部署的“仅限 Windows”VM。 请参阅以下文章来比较价格：<https://azure.microsoft.com/pricing/details/virtual-machines/windows/> 和 <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>。 
 * 只能使用 SAP 支持的 SQL Server 版本，例如 SQL Server 2012。
-* 安装于 VM（来自 Azure Marketplace）中的 SQL Server 实例的排序规则并不是 SAP NetWeaver 要求 SQL Server 实例运行的排序规则。 不过，可以遵循下一节的指示来更改排序规则。
+* 安装于 VM（来自 Azure 市场）中的 SQL Server 实例的排序规则并不是 SAP NetWeaver 要求 SQL Server 实例运行的排序规则。 不过，可以遵循下一节的指示来更改排序规则。
 
 #### <a name="changing-the-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>更改 Microsoft Windows/SQL Server VM 的 SQL Server 排序规则
-因为 Azure Marketplace 中的 SQL Server 映像未设置为使用 SAP NetWeaver 应用程序所需的排序规则，所以需要在部署之后立即更改。 对于 SQL Server 2012，一旦部署了 VM 且管理员能够登录已部署的 VM，就可以使用下列步骤来完成此操作：
+因为 Azure 市场中的 SQL Server 映像未设置为使用 SAP NetWeaver 应用程序所需的排序规则，所以需要在部署之后立即更改。 对于 SQL Server 2012，一旦部署了 VM 且管理员能够登录已部署的 VM，就可以使用下列步骤来完成此操作：
 
 * 以管理员身份打开 Windows 命令窗口。
 * 将目录更改为 C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012。
@@ -855,7 +859,7 @@ Azure 存储会保护内容，因此，更加没有理由坚持使用热备用�
 6. 使用 DBMS 供应商的 HA/DR 解决方案来复制数据库数据。
 7. 始终使用名称解析，不要依赖 IP 地址。
 8. 尽可能使用最高强度的数据库压缩。 对 SQL Server 而言，即页面压缩。
-9. 谨慎使用来自 Azure Marketplace 的 SQL Server 映像。 如果使用 SQL Server 映像，就必须更改实例排序规则，才能在其上安装任何 SAP NetWeaver 系统。
+9. 谨慎使用来自 Azure 市场的 SQL Server 映像。 如果使用 SQL Server 映像，就必须更改实例排序规则，才能在其上安装任何 SAP NetWeaver 系统。
 10. 按照[部署指南][deployment-guide]中的说明，安装和配置适用于 Azure 的 SAP 主机监视。
 
 ## <a name="specifics-to-sap-ase-on-windows"></a>有关 Windows 上的 SAP ASE 的具体信息

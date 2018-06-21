@@ -6,13 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/23/2018
 ms.author: raynew
-ms.openlocfilehash: 207ff17f7b113bf4a94bb6c157cf53e7b1c46b45
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4c83e495e269cdca35844a699d714b55cf1f500
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643305"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -27,18 +28,25 @@ ms.lasthandoff: 04/16/2018
 > * 创建复制策略
 > * 为服务器启用复制
 
+[查看体系结构](concepts-hyper-v-to-azure-architecture.md)，这适用于此灾难恢复方案。
+
 ## <a name="prerequisites"></a>先决条件
 
 完成本教程：
 
-- 请确保了解[方案体系结构和组件](physical-azure-architecture.md)。
+- 请确保了解此方案的[体系结构和组件](physical-azure-architecture.md)。
 - 查看所有组件的[支持要求](vmware-physical-secondary-support-matrix.md)。
 - 请确保想要复制的服务器符合 [Azure VM 要求](vmware-physical-secondary-support-matrix.md#replicated-vm-support)。
 - 准备 Azure。 需要 Azure 订阅、Azure 虚拟网络和存储帐户。
 - 准备一个帐户用于在要复制的每个服务器上自动安装移动服务。
 
-> [!NOTE]
-> 在开始之前，请注意，故障转移到 Azure 后，物理服务器将不能故障回复到本地物理计算机。 只能故障回复到 VMware VM。 
+在开始之前，请注意：
+
+- 故障转移到 Azure 后，物理服务器将不能故障回复到本地物理计算机。 只能故障回复到 VMware VM。 
+- 本教程使用最简单的设置设置到 Azure 的物理服务器灾难恢复。 如果想要了解其他选项，请通读我们的操作方法指南：
+    - 设置[复制源](physical-azure-set-up-source.md)，包括 Site Recovery 配置服务器。
+    - 设置[复制目标](physical-azure-set-up-target.md)。
+    - 配置[复制策略](vmware-azure-set-up-replication.md)并[启用复制](vmware-azure-enable-replication.md)。
 
 
 ### <a name="set-up-an-azure-account"></a>设置 Azure 帐户

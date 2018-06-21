@@ -328,6 +328,8 @@ items:
                 href: mongodb-readpreference.md
               - name: 索引
                 href: mongodb-indexing.md
+              - name: MongoDB 中的 TTL
+                href: mongodb-ttl.md
               - name: 使用 Power BI 直观显示数据
                 href: powerbi-visualize.md
               - name: 使用存储资源管理器进行管理

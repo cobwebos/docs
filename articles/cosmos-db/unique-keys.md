@@ -6,20 +6,17 @@ keywords: 唯一键约束, 违反唯一键约束
 author: rafats
 manager: kfile
 editor: monicar
-documentationcenter: ''
-ms.assetid: b15d5041-22dd-491e-a8d5-a3d18fa6517d
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: rafats
-ms.openlocfilehash: dd23f24fd817bfc443457dee30d2f3091c0d9f6b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d12109efbb157b1e0c15b1a4c0d005fa98c44858
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261094"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一键
 
@@ -34,7 +31,7 @@ ms.lasthandoff: 04/19/2018
 
 例如，我们来看一看与[社交应用程序](use-cases.md#web-and-mobile-applications)关联的用户数据库如何从对电子邮件地址实施唯一键策略中受益。 通过使用户的电子邮件地址成为唯一键，确保每条记录具有唯一的电子邮件地址，并且不会创建具有重复电子邮件地址的新记录。 
 
-如果你确实想要用户能够创建多条具有相同电子邮件地址的记录，但不是相同的名字、姓氏加上电子邮件地址，那么可以将其他路径添加到唯一键策略。 因此，不是仅基于电子邮件地址创建唯一键，而是基于名字、姓氏和电子邮件的组合创建唯一键。 在这种情况下，允许使用这三个路径的每个唯一组合，因此，数据库可能包含具有以下路径值的项。 其中每条记录都会通过唯一键策略。  
+如果你确实想要用户能够创建多条具有相同电子邮件地址的记录，但不是相同的名字、姓氏加上电子邮件地址，那么可以将其他路径添加到唯一键策略。 因此，可以将名字、姓氏和电子邮件组合起来创建唯一键，而不是根据电子邮件地址创建唯一键。 在这种情况下，允许使用这三个路径的每个唯一组合，因此，数据库可能包含具有以下路径值的项。 其中每条记录都会通过唯一键策略。  
 
 **firstName、lastName 和 email 的唯一键的允许值**
 
@@ -52,7 +49,7 @@ ms.lasthandoff: 04/19/2018
 
 创建容器时必须定义唯一键，并将唯一键限定为分区键。 若要基于前面的示例构建，如果基于邮政编码分区，则可以将表中的记录复制到每个分区中。
 
-现有容器不能更新为使用唯一键。
+不能将现有容器更新为使用唯一键。
 
 一旦使用唯一键策略创建了容器，就无法更改策略，除非重新创建容器。 如果你有想要对其实施唯一键的现有数据，请创建新容器，然后使用相应的数据迁移工具将数据移到新容器。 对于 SQL 容器，请使用[数据迁移工具](import-data.md)。 对于 MongoDB 容器，请使用 [mongoimport.exe 或 mongorestore.exe](mongodb-migrate.md)。
 
@@ -90,9 +87,8 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
                 new Collection<UniqueKey>
                 {
                     new UniqueKey { Paths = new Collection<string> { "/firstName" , "/lastName" , "/email" }}
-                    new UniqueKey { Paths = new Collection<string> { "/address/zipCode" } },
-
-                }
+                    new UniqueKey { Paths = new Collection<string> { "/address/zipcode" } },
+          }
             };
             await client.CreateDocumentCollectionAsync(
                 UriFactory.CreateDatabaseUri(dataBase),
@@ -115,17 +111,20 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
     "firstName": "Gaby",
     "lastName": "Duperre",
     "email": "gaby@contoso.com",
-    "address": [
+    "address": 
         {            
             "line1": "100 Some Street",
             "line2": "Unit 1",
             "city": "Seattle",
             "state": "WA",
-            "zipCode": 98012
+            "zipcode": 98012
         }
-    ],
+    
 }
 ```
+> [!NOTE]
+> 请注意，唯一键名称区分大小写。 如上述示例所示，已将唯一名称设置为 /address/zipcode。 如果数据包含 ZipCode，则会在唯一键中插入“null”，因为 zipcode 不等于 ZipCode。 而且由于这个区分大小写的规则，所有包含 ZipCode 的其他记录都将无法插入，因为重复的“null”违反唯一键约束。
+
 ## <a name="mongodb-api-sample"></a>MongoDB API 示例
 
 下面的命令示例显示了如何在 MongoDB API 用户集合的 firstName、lastName 和 email 字段上创建唯一索引。 这将确保跨集合中所有文档的所有三个字段组合的唯一性。 对于 MongoDB API 集合，在创建集合之后但在填充集合之前创建唯一索引。
@@ -133,6 +132,20 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
 ```
+## <a name="configure-unique-keys-by-using-azure-portal"></a>使用 Azure 门户配置唯一键
+
+在以上部分，你会发现代码示例会显示如何在使用 SQL API 或 MongoDB API 创建集合时定义唯一键约束。 但是，也可使用 Azure 门户在通过 Web UI 创建集合时定义唯一键。 
+
+- 在 Cosmos DB 帐户中导航到“数据资源管理器”
+- 单击“新建集合”
+- 在“唯一键”部分，**可以通过单击“添加唯一键”来添加所需的唯一键约束。
+
+![在数据资源管理器中定义唯一键](./media/unique-keys/unique-keys-azure-portal.png)
+
+- 若要在 lastName 路径中创建唯一键约束，请添加 `/lastName`。
+- 若要为 lastName 和 firstName 组合创建唯一键约束，请添加 `/lastName,/firstName`
+
+完成后，请单击“确定”以创建集合。
 
 ## <a name="next-steps"></a>后续步骤
 

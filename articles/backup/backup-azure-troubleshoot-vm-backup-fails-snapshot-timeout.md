@@ -1,26 +1,20 @@
 ---
-title: Azure 备份故障排除：客户代理状态不可用 | Microsoft Docs
+title: Azure 备份故障排除：客户代理状态不可用
 description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、原因及解决方法。
 services: backup
-documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: ''
 keywords: Azure 备份；VM 代理；网络连接；
-ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
-ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: genli
+ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196757"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606352"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -64,7 +58,7 @@ ms.locfileid: "34196757"
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>由于 VM 代理无响应，备份失败
 
-错误消息：“由于 VM 代理无响应，无法执行操作” <br>
+错误消息：“无法与 VM 代理通信，因此无法获取快照状态” <br>
 错误代码：“GuestAgentSnapshotTaskStatusError”
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
@@ -92,6 +86,16 @@ VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 
 
 若要正常工作，备份扩展需要连接到 Azure 公共 IP 地址。 该扩展会将命令发送到 Azure 存储终结点 (HTTP URL) 来管理 VM 的快照。 如果扩展无法访问公共 Internet，则备份最终会失败。
 
+可以部署代理服务器来路由 VM 流量。
+##### <a name="create-a-path-for-http-traffic"></a>为 HTTP 流量创建路径
+
+1. 如果指定了网络限制（例如网络安全组），请部署 HTTP 代理服务器来路由流量。
+2. 要允许从 HTTP 代理服务器访问 Internet，如果有规则，请将其添加到网络安全组。
+
+若要了解如何设置 HTTP 代理进行 VM 备份，请参阅[进行备份 Azure 虚拟机所需的环境准备](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
+
+无论是备份的 VM 还是路由流量的代理服务器，都需要对 Azure 公共 IP 地址的访问权限
+
 ####  <a name="solution"></a>解决方案
 若要解决此问题，请尝试下列方法：
 
@@ -105,13 +109,6 @@ VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 
 
 > [!WARNING]
 > 存储服务标记以预览版提供。 它们只在特定的区域中可用。 有关区域列表，请参阅[存储的服务标记](../virtual-network/security-overview.md#service-tags)。
-
-##### <a name="create-a-path-for-http-traffic"></a>为 HTTP 流量创建路径
-
-1. 如果指定了网络限制（例如网络安全组），请部署 HTTP 代理服务器来路由流量。
-2. 要允许从 HTTP 代理服务器访问 Internet，如果有规则，请将其添加到网络安全组。
-
-若要了解如何设置 HTTP 代理进行 VM 备份，请参阅[进行备份 Azure 虚拟机所需的环境准备](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
 
 如果使用 Azure 托管磁盘，可能需要在防火墙上打开另一个端口 (8443)。
 
@@ -195,6 +192,19 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 #### <a name="solution"></a>解决方案
 
-若要解决此问题，请从资源组中删除锁，并让 Azure 备份服务在下一次备份中清除恢复点集合和基础快照。
-完成后，可以再次将锁放回 VM 资源组。 
+若要解决此问题，请从资源组删除锁定并执行下列步骤以删除还原点集合： 
+ 
+1. 删除 VM 所在的资源组中的锁。 
+2. 使用 Chocolatey 安装 ARMClient： <br>
+   https://github.com/projectkudu/ARMClient
+3. 登录到 ARMClient： <br>
+    `.\armclient.exe login`
+4. 获取与 VM 对应的还原点集合： <br>
+    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
 
+    示例：`.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+5. 删除还原点集合： <br>
+    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
+6. 下一次计划备份会自动创建还原点集合和新的还原点。
+
+完成后，可以再次将锁放回 VM 资源组。 

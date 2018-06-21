@@ -54,15 +54,17 @@
     - name: Azure 机器学习
       href: walkthroughs-aml-with-tdsp.md
       items:
-        - name: 情绪分类
+        - name: 使用 Keras & Scikit Learn 进行情绪分类
           href: predict-twitter-sentiment.md
+        - name: 使用 AML 文本分析包进行情绪分类
+          href: predict-twitter-sentiment-amltextpackage.md
         - name: 美国收入分类
           href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
           maintainContext: true
         - name: 生物医学实体识别
           href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
-        - name: 皮肤癌图像分类
+        - name: 使用用于计算机视觉的 AML 包进行皮肤癌图像分类
           href: isic-image-classification.md
           maintainContext: true
     - name: Spark 与 PySpark 和 Scala

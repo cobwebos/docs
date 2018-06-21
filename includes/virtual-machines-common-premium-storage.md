@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: storage
+author: ramankumarlive
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: ramankum
+ms.custom: include file
+ms.openlocfilehash: 5cbe6f1f8f15e9da8e1fe6961d3da9b9e2a31e4b
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34806377"
+---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 的高性能高级存储和托管磁盘
 Azure 高级存储为运行输入/输出 (I/O) 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 使用高级存储的 VM 磁盘在固态硬盘 (SSD) 上存储数据。 要利用高级存储磁盘的速度和性能优势，可将现有的 VM 磁盘迁移到高级存储。
 
@@ -61,7 +78,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 ## <a name="supported-vms"></a>支持的 VM
 
-高级存储支持 B 系列、DS 系列、DSv2 系列、DSv3 系列、GS 系列、Ls 系列、M 系列和 Fs 系列 VM。 可将标准和高级存储磁盘用于这些 VM 类型。 不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
+高级存储支持 B 系列、DS 系列、DSv2 系列、DSv3 系列、Esv3 系列、GS 系列、Ls 系列、M 系列和 Fs 系列 VM。 可将标准和高级存储磁盘用于这些 VM 类型。 不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
 
 
 有关 Azure 中适用于 Windows 的 VM 类型和大小的信息，请参阅 [Windows VM 大小](../articles/virtual-machines/windows/sizes.md)。 有关 Azure 中适用于 Linux 的 VM 类型和大小的信息，请参阅 [Linux VM 大小](../articles/virtual-machines/linux/sizes.md)。
@@ -81,13 +98,13 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
     可在同一高级存储 VM 中使用高级和标准磁盘。 使用高级存储时，可以预配 VM 并将多个持久性数据磁盘附加到 VM。 如果需要，可以跨磁盘条带化，以增加卷的容量与性能。
 
     > [!NOTE]
-    > 如果使用[存储空间](http://technet.microsoft.com/library/hh831739.aspx)条带化高级存储数据磁盘，请为使用的每个磁盘设置包含 1 列的存储空间。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 默认情况下，在服务器管理器中可以设置最多包含 8 个磁盘的列。 如果磁盘超过 8 个，请使用 PowerShell 来创建卷， 并手动指定列数。 否则，即使有更多磁盘，服务器管理器 UI 仍会继续使用 8 个列。 例如，如果一个带区集中有 32 个磁盘，请指定 32 列。 若要指定虚拟磁盘使用的列数，请在 [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) PowerShell cmdlet 中使用 *NumberOfColumns* 参数。 有关详细信息，请参阅[存储空间概述](http://technet.microsoft.com/library/hh831739.aspx)和[存储空间常见问题解答](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)。
+    > 如果使用[存储空间](http://technet.microsoft.com/library/hh831739.aspx)条带化高级存储数据磁盘，请为使用的每个磁盘设置包含 1 列的存储空间。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 默认情况下，在服务器管理器中可以设置最多包含 8 个磁盘的列。 如果磁盘超过 8 个，请使用 PowerShell 来创建卷。 手动指定列数。 否则，即使有更多磁盘，服务器管理器 UI 仍会继续使用 8 个列。 例如，如果一个带区集中有 32 个磁盘，请指定 32 列。 若要指定虚拟磁盘使用的列数，请在 [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) PowerShell cmdlet 中使用 *NumberOfColumns* 参数。 有关详细信息，请参阅[存储空间概述](http://technet.microsoft.com/library/hh831739.aspx)和[存储空间常见问题解答](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)。
     >
     > 
 
 * **缓存**
 
-    支持高级存储的大小系列中的 VM 提供独特的缓存功能来实现较高级别的吞吐量和延迟。 缓存功能可以在底层高级存储磁盘性能的基础上提升性能。 可以在高级存储磁盘上将磁盘缓存策略设置为 **ReadOnly**、**ReadWrite** 或 **None**。 所有高级数据磁盘的默认磁盘缓存策略都是 **ReadOnly**，而操作系统磁盘的磁盘缓存策略则是 **ReadWrite**。 为了让应用程序达到最佳性能，请使用正确的缓存设置。 例如，对于读取频繁或只读数据磁盘（如 SQL Server 数据文件），可将磁盘缓存策略设置为 **ReadOnly**。 对于写入频繁或只写数据磁盘（如 SQL Server 日志文件），可将磁盘缓存策略设置为 **None**。 若要详细了解如何优化高级存储的设计，请参阅[使用高级存储实现高性能设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
+    支持高级存储的大小系列中的 VM 提供独特的缓存功能来实现较高级别的吞吐量和延迟。 缓存功能可以在底层高级存储磁盘性能的基础上提升性能。 可以在高级存储磁盘上将磁盘缓存策略设置为 ReadOnly、ReadWrite 或 None。 所有高级数据磁盘的默认磁盘缓存策略都是 ReadOnly，而操作系统磁盘的磁盘缓存策略则是 ReadWrite。 为了让应用程序达到最佳性能，请使用正确的缓存设置。 例如，对于读取频繁或只读数据磁盘（如 SQL Server 数据文件），可将磁盘缓存策略设置为 ReadOnly。 对于写入频繁或只写数据磁盘（如 SQL Server 日志文件），可将磁盘缓存策略设置为 None。 若要详细了解如何优化高级存储的设计，请参阅[使用高级存储实现高性能设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
 
 * **分析**
 
@@ -170,7 +187,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **缓存命中数**
 
-    缓存命中数不受磁盘已分配 IOPS 或吞吐量的限制。 例如，在高级存储支持的 VM 上使用具有 **ReadOnly** 缓存设置的数据磁盘时，缓存提供的读取数不受磁盘的 IOPS 和吞吐量上限的约束。 如果磁盘的工作负荷以读取为主，可以获得极高的吞吐量。 缓存根据 VM 大小在 VM 级别受到不同 IOPS 和吞吐量的限制。 DS 系列 VM 大约有 4,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 33-MB/秒。 GS 系列 VM 限制为 5,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 50-MB/秒。 
+    缓存命中数不受磁盘已分配 IOPS 或吞吐量的限制。 例如，在高级存储支持的 VM 上使用具有 ReadOnly 缓存设置的数据磁盘时，缓存提供的读取数不受磁盘的 IOPS 和吞吐量上限的约束。 如果磁盘的工作负荷以读取为主，可以获得极高的吞吐量。 缓存根据 VM 大小在 VM 级别受到不同 IOPS 和吞吐量的限制。 DS 系列 VM 大约有 4,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 33-MB/秒。 GS 系列 VM 限制为 5,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 50-MB/秒。 
 
 ## <a name="throttling"></a>限制
 如果应用程序的 IOPS 或吞吐量超过高级存储磁盘的分配限制，可能会发生限制。 此外，如果 VM 上所有磁盘的总磁盘流量超过 VM 可用的磁盘带宽限制，也可能会发生限制。 为了避免限制，我们建议限制磁盘的挂起 I/O 请求数。 请根据预配磁盘的可伸缩性和性能目标，以及 VM 可用的磁盘带宽使用限制。  
@@ -226,12 +243,12 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 ## <a name="premium-storage-for-linux-vms"></a>Linux VM 的高级存储
 可以借助以下信息在高级存储中设置 Linux VM：
 
-若要在高级存储中实现可伸缩性目标，对于缓存设置为 **ReadOnly** 或 **None** 的所有高级存储磁盘，必须在装入文件系统时禁用“屏障”。 在此方案中不需要屏障，因为写入高级存储磁盘对于这些缓存设置是持久性的。 成功完成写入请求时，数据已写入持久存储。 若要禁用“屏障”，请使用以下方法之一： 选择适用于文件系统的方法：
+若要在高级存储中实现可伸缩性目标，对于缓存设置为 ReadOnly 或 None 的所有高级存储磁盘，必须在装入文件系统时禁用“屏障”。 在此方案中不需要屏障，因为写入高级存储磁盘对于这些缓存设置是持久性的。 成功完成写入请求时，数据已写入持久存储。 若要禁用“屏障”，请使用以下方法之一： 选择适用于文件系统的方法：
   
-* 对于 **reiserFS**，请使用 `barrier=none` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier=flush`。）
-* 对于 **ext3/ext4**，请使用 `barrier=0` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier=1`。）
-* 对于 **XFS**，请使用 `nobarrier` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier`。）
-* 对于缓存设置为 **ReadWrite** 的高级存储磁盘，请启用屏障来实现写入持久性。
+* 对于 reiserFS，请使用 `barrier=none` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier=flush`。）
+* 对于 ext3/ext4，请使用 `barrier=0` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier=1`。）
+* 对于 XFS，请使用 `nobarrier` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier`。）
+* 对于缓存设置为 ReadWrite 的高级存储磁盘，请启用屏障来实现写入持久性。
 * 若要在重新启动 VM 后保留卷标，必须在 /etc/fstab 中更新对磁盘的全局唯一标识符 (UUID) 引用。 有关详细信息，请参阅[将托管磁盘添加到 Linux VM](../articles/virtual-machines/linux/add-disk.md)。
 
 下面是我们使用 Azure 高级存储验证过的 Linux 发行版。 为了提高高级存储的性能和稳定性，我们建议将 VM 升级到其中的至少一个版本（或更高版本）。 某些版本需要最新的适用于 Azure 的 Linux Integration Services (LIS) v4.0。 若要下载并安装某个发行版，请单击下表中所列的链接。 完成验证后，我们将陆续在该列表中添加映像。 请注意，我们的验证表明，性能根据每个映像的不同而异。 性能取决于工作负荷特征和映像设置。 不同的映像已针对不同种类的工作负荷进行优化。
@@ -244,8 +261,8 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 | SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
 | SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5、6.6、6.7、7.0 | &nbsp; | [需要 LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *请参阅下一部分中的注释* |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [建议使用 LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *请参阅下一部分中的注释* |
+| CentOS | 6.5、6.6、6.7、7.0 | &nbsp; | [需要 LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> 请参阅下一部分中的注释 |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [建议使用 LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> 请参阅下一部分中的注释 |
 | Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+ | &nbsp; | &nbsp; |
 | Oracle | 6.0+、7.2+ | &nbsp; | UEK4 或 RHCK |
 | Oracle | 7.0-7.1 | &nbsp; | UEK4 或 RHCK w/[LIS 4.1+](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |

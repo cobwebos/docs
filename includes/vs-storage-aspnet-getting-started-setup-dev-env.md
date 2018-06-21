@@ -22,11 +22,11 @@
 
 2. 从上下文菜单中，选择“添加” > “连接服务”。
 
-1. 在“连接服务”对话框中，选择“使用 Azure 存储的云存储”，并选择“配置”。
+1. 在“连接服务”对话框中，选择“Azure 存储的云存储”。
 
     ![“连接服务”对话框屏幕截图](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
-1. 在“Azure 存储”对话框中，选择要在本教程中使用的 Azure 存储帐户。 若要创建新的 Azure 存储帐户，请选择“创建新的存储帐户”并填写表单。 选择现有的存储帐户或创建新的存储帐户后，选择“添加”。 Visual Studio 会安装 Azure 存储的 NuGet 包，并将一个存储连接字符串添加到 **Web.config**。
+1. 在“Azure 存储”对话框中，选择要在本教程中使用的 Azure 存储帐户。 若要创建新的 Azure 存储帐户，请选择“创建新的存储帐户”并填写表单。 选择现有的存储帐户或创建新的存储帐户后，选择“添加”。 Visual Studio 会安装 Azure 存储的 NuGet 包，并将一个存储连接字符串添加到 Web.config。
 
 > [!TIP]
 > 若要了解如何使用 [Azure 门户](https://portal.azure.com)创建存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)。

@@ -1,95 +1,154 @@
 ---
-title: "连续部署到 Azure 应用服务 | Microsoft 文档"
-description: "了解如何实现连续部署到 Azure 应用服务。"
+title: 持续部署到 Azure 应用服务 | Microsoft Docs
+description: 了解如何实现持续部署到 Azure 应用服务。
 services: app-service
-documentationcenter: 
-author: dariagrigoriu
-manager: erikre
-editor: mollybos
+documentationcenter: ''
+author: cephalin
+manager: cfowler
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
-ms.author: dariagrigoriu
-ms.openlocfilehash: ef5924607868bcb3dc35e279539b78d5a0e17c1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 06/05/2018
+ms.author: cephalin;dariagrigoriu
+ms.openlocfilehash: d83d1ad74d04356f73f18a744c2d1509b5efc280
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233838"
 ---
-# <a name="continuous-deployment-to-azure-app-service"></a>连续部署到 Azure 应用服务
-本教程说明如何为 [Azure Web 应用](app-service-web-overview.md)配置持续部署工作流。 将应用服务与 BitBucket、GitHub 和 [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) 集成可以实现一种连续部署工作流，在其中，Azure 可以从发布到其中一种服务的项目中拉取最近的更新。 连续部署选项非常适合用于频繁集成多个分发内容的项目。
+# <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
+本文展示了如何为 [Azure 应用服务](app-service-web-overview.md)配置持续部署。 应用服务可以使用 BitBucket、GitHub 和 [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) 实现持续部署，方法是从上述服务之一中的现有存储库拉取最新的更新。
 
-若要了解如何通过 Azure 门户中未列出的云存储库（如 [GitLab](https://gitlab.com/)）手动配置连续部署，请参阅[使用手动步骤设置连续部署](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)。
+若要了解如何通过 Azure 门户中未列出的云存储库（如 [GitLab](https://gitlab.com/)）手动配置持续部署，请参阅[使用手动步骤设置持续部署](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)。
 
-## <a name="overview"></a>启用持续部署
-若要启用连续部署，请执行以下操作：
+[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-1. 将应用内容发布到用于连续部署的存储库。  
-    要深入了解如何将项目发布到这些服务，请参阅[创建存储库 (GitHub)]、[创建存储库 (BitBucket)] 和 [VSTS 入门]。
-2. 访问[Azure 门户]，在应用的菜单边栏选项卡中单击“应用部署”>“部署选项”。 单击“选择源”，并选择部署源。  
-   
-    ![](./media/app-service-continuous-deployment/cd_options.png)
-   
-   > [!NOTE]
-   > 若要为应用服务部署配置 VSTS 帐户，请参阅此[教程](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)。
-   > 
-   > 
-3. 完成授权工作流。
-4. 在“部署源”边栏选项卡中，选择要从中进行部署的项目和分支。 完成后，单击“确定”。
-   
-    ![](./media/app-service-continuous-deployment/github_option.png)
-   
-   > [!NOTE]
-   > 在使用 GitHub 或 BitBucket 启用连续部署时，会显示公用项目和专用项目。
-   > 
-   > 
-   
-    应用服务将创建与所选存储库的关联，从指定的分支拉取文件，并保留 App Service 应用存储库的副本。 通过 Azure 门户配置 VSTS 连续部署时，集成使用应用服务 [Kudu 部署引擎](https://github.com/projectkudu/kudu/wiki)，该引擎使用每个 `git push` 来自动完成生成和部署任务。 不需要在 VSTS 中单独设置连续部署。 此过程完成后，“部署选项”应用边栏选项卡会显示活动部署，指出部署已成功完成。
-5. 若要验证是否已成功部署应用，请在 Azure 门户的应用边栏选项卡顶部单击“URL”。
-6. 要验证是否能够在从所选存储库进行连续部署，请将更改推送到该存储库。 推送到存储库完成后，应用应该很快更新以反映更改。 可在应用的“部署选项”边栏选项卡中验证是否已拉取更新。
+将准备好的存储库发布到受支持的服务之一。 要深入了解如何将项目发布到这些服务，请参阅[创建存储库 (GitHub)]、[创建存储库 (BitBucket)] 和 [VSTS 入门]。
 
-## <a name="VSsolution"></a>持续部署 Visual Studio 解决方案
-将 Visual Studio 解决方案推送到 Azure 应用服务就像推送简单的 index.html 文件一样容易。 应用服务部署过程简化了所有细节，包括还原 NuGet 依赖项和生成应用程序二进制文件。 可以按照仅在 Git 存储库中维护代码的源控件最佳实践操作，并让应用服务部署处理其余工作。
+## <a name="deploy-continuously-from-github"></a>从 GitHub 持续部署
 
-将 Visual Studio 解决方案推送到应用服务的步骤与[上一部分](#overview)中的步骤相同，前提是按以下方式配置解决方案和存储库：
+若要使用 GitHub 实现持续部署，请在 [Azure 门户](https://portal.azure.com)中导航至你的应用服务应用页。
 
-* 使用 Visual Studio 源代码管理选项生成如下图所示的 `.gitignore` 文件，或者在内容存储库根目录中手动添加一个 `.gitignore` 文件，其内容类似于此 [.gitignore 示例](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)。
-  
-  ![](./media/app-service-continuous-deployment/VS_source_control.png)
-* 将整个解决方案的目录树添加到存储库中，其中 .sln 文件位于存储库根中。
+在左侧菜单中，单击“部署中心” > “GitHub” > “授权”。 按照授权提示进行操作。 
 
-按照说明设置存储库并将 Azure 中的应用配置为从某个联机 Git 存储库连续发布后，便可以在 Visual Studio 中从本地开发 ASP.NET 应用程序，并且只需通过将所做的更改推送到联机的 Git 存储库即可连续部署代码。
+![](media/app-service-continuous-deployment/github-choose-source.png)
 
-## <a name="disableCD"></a>禁用持续部署
-若要禁用连续部署，请执行以下操作：
+只需要通过 GitHub 授权一次。 如果已获得授权，只需单击“继续”即可。 可以通过单击“更改帐户”来更改已获得授权的 GitHub 帐户。
 
-1. 访问[Azure 门户]，在应用的菜单边栏选项卡中单击“应用部署”>“部署选项”。 然后单击“部署选项”边栏选项卡中的“断开连接”。
-   
-    ![](./media/app-service-continuous-deployment/cd_disconnect.png)
-2. 在显示确认消息时点击“是”后，若要从其他源设置发布，可返回到应用边栏选项卡，再单击“应用部署”>“部署选项”。
+![](media/app-service-continuous-deployment/github-continue.png)
+
+在“生成提供程序”页面中，选择生成提供程序并单击 >“继续”。
+
+### <a name="option-1-use-app-service-kudu-build-server"></a>选项 1：使用应用服务 Kudu 生成服务器
+
+在“配置”页面中，选择要从中进行持续部署的组织、存储库和分支。 完成后，单击“继续”。
+
+### <a name="option-2-use-vsts-continuous-delivery"></a>选项 2：使用 VSTS 持续交付
+
+> [!NOTE]
+> 要让应用服务在 VSTS 帐户中创建必要的生成和发布定义，Azure 帐户必须在 Azure 订阅中具有“所有者”角色。
+>
+
+在“配置”页面中，在“代码”部分中，选择要从中进行持续部署的组织、存储库和分支。 完成后，单击“继续”。
+
+在“配置”页面中，在“生成”部分中，配置新的 VSTS 帐户，或指定一个现有帐户。 完成后，单击“继续”。
+
+> [!NOTE]
+> 如果想要使用未列出的现有 VSTS 帐户，则需要[将 VSTS 帐户链接到 Azure 订阅](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)。
+
+在“测试”页面中，选择是否要启用负载测试，然后单击“继续”。
+
+根据应用服务计划的[定价层](/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否要启用部署槽位，然后单击“继续”[](web-sites-staged-publishing.md)。
+
+### <a name="finish-configuration"></a>完成配置
+
+在“摘要”页中，确认选项，然后单击“完成”。
+
+在配置完成后，选定存储库中的新提交将持续部署到应用服务应用。
+
+![](media/app-service-continuous-deployment/github-finished.png)
+
+## <a name="deploy-continuously-from-bitbucket"></a>从 BitBucket 持续部署
+
+若要使用 BitBucket 实现持续部署，请在 [Azure 门户](https://portal.azure.com)中导航至你的应用服务应用页。
+
+在左侧菜单中，单击“部署中心” > “BitBucket” > “授权”。 按照授权提示进行操作。 
+
+![](media/app-service-continuous-deployment/bitbucket-choose-source.png)
+
+只需要通过 BitBucket 授权一次。 如果已获得授权，只需单击“继续”即可。 可以通过单击“更改帐户”来更改已获得授权的 BitBucket 帐户。
+
+![](media/app-service-continuous-deployment/bitbucket-continue.png)
+
+在“配置”页面中，选择要从中进行持续部署的存储库和分支。 完成后，单击“继续”。
+
+在“摘要”页中，确认选项，然后单击“完成”。
+
+在配置完成后，选定存储库中的新提交将持续部署到应用服务应用。
+
+## <a name="deploy-continuously-from-vsts"></a>从 VSTS 持续部署
+
+若要使用 VSTS 实现持续部署，请在 [Azure 门户](https://portal.azure.com)中导航至你的应用服务应用页。
+
+在左侧菜单中，单击“部署中心” > “VSTS” > “继续”。 
+
+![](media/app-service-continuous-deployment/vsts-choose-source.png)
+
+在“生成提供程序”页面中，选择生成提供程序并单击 >“继续”。
+
+### <a name="option-1-use-app-service-kudu-build-server"></a>选项 1：使用应用服务 Kudu 生成服务器
+
+在“配置”页面中，选择要从中进行持续部署的 VSTS 帐户、项目、存储库和分支。 完成后，单击“继续”。
+
+### <a name="option-2-use-vsts-continuous-delivery"></a>选项 2：使用 VSTS 持续交付
+
+> [!NOTE]
+> 要让应用服务在 VSTS 帐户中创建必要的生成和发布定义，Azure 帐户必须在 Azure 订阅中具有“所有者”角色。
+>
+
+在“配置”页面中，在“代码”部分中，选择要从中进行持续部署的 VSTS 帐户、项目、存储库和分支。 完成后，单击“继续”。
+
+> [!NOTE]
+> 如果想要使用未列出的现有 VSTS 帐户，则需要[将 VSTS 帐户链接到 Azure 订阅](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)。
+
+在“配置”页中，在“生成”部分中，指定 VSTS 在为选定的存储库运行生成任务时应当使用的语言框架。 完成后，单击“继续”。
+
+在“测试”页面中，选择是否要启用负载测试，然后单击“继续”。
+
+根据应用服务计划的[定价层](/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否要启用部署槽位，然后单击“继续”[](web-sites-staged-publishing.md)。 
+
+### <a name="finish-configuration"></a>完成配置
+
+在“摘要”页中，确认选项，然后单击“完成”。
+
+在配置完成后，选定存储库中的新提交将持续部署到应用服务应用。
+
+## <a name="disable-continuous-deployment"></a>禁用持续部署
+
+若要禁用持续部署，请在 [Azure 门户](https://portal.azure.com)中导航至你的应用服务应用页。
+
+在左侧菜单中，单击“部署中心” > “GitHub”、“VSTS”或“BitBucket” > “断开连接”。
+
+![](media/app-service-continuous-deployment/disable.png)
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="additional-resources"></a>其他资源
-* [How to investigate common issues with continuous deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)（如何调查连续部署的常见问题）
+
+* [How to investigate common issues with continuous deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)（如何调查持续部署的常见问题）
 * [如何使用适用于 Azure 的 PowerShell]
-* [如何使用针对 Mac 和 Linux 的 Azure 命令行工具]
 * [Git 文档]
 * [项目 Kudu](https://github.com/projectkudu/kudu/wiki)
 * [Use Azure to automatically generate a CI/CD pipeline to deploy an ASP.NET 4 app](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)（使用 Azure 自动生成部署 ASP.NET 4 应用的 CI/CD 管道）
 
-> [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
-> 
-> 
-
-[Azure 门户]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [如何使用适用于 Azure 的 PowerShell]: /powershell/azureps-cmdlets-docs
-[如何使用针对 Mac 和 Linux 的 Azure 命令行工具]:../cli-install-nodejs.md
 [Git 文档]: http://git-scm.com/documentation
 
 [创建存储库 (GitHub)]: https://help.github.com/articles/create-a-repo

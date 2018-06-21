@@ -1,13 +1,13 @@
 ---
-title: "在 Azure Linux 虚拟机上设置 Oracle ASM | Microsoft Docs"
-description: "在 Azure 环境中快速启动并运行 Oracle ASM。"
+title: 在 Azure Linux 虚拟机上设置 Oracle ASM | Microsoft Docs
+description: 在 Azure 环境中快速启动并运行 Oracle ASM。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 0e34a188271a5ac2fb6cb34a088ec3f650be6cab
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cc75235680eeace5107ef6ac0380e8b7a42974fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656103"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
@@ -543,7 +544,7 @@ ssh <publicIpAddress>
 
 ## <a name="create-the-database"></a>创建数据库
 
-Oracle 数据库软件已安装在 Azure Marketplace 映像中。 若要创建数据库，请完成以下步骤：
+Oracle 数据库软件已安装在 Azure 市场映像中。 若要创建数据库，请完成以下步骤：
 
 1. 将用户切换到 Oracle 超级用户，然后初始化用于日志记录的侦听器：
 
@@ -574,7 +575,7 @@ Oracle 数据库软件已安装在 Azure Marketplace 映像中。 若要创建�
 
 ## <a name="delete-the-vm"></a>删除 VM
 
-现已成功在 Azure Marketplace 中的 Oracle DB 映像上已成功配置 Oracle 自动存储管理。  如果不再需要此 VM，可以使用以下命令删除资源组、VM 和所有相关的资源：
+现已成功在 Azure 市场中的 Oracle DB 映像上已成功配置 Oracle 自动存储管理。  如果不再需要此 VM，可以使用以下命令删除资源组、VM 和所有相关的资源：
 
 ```azurecli
 az group delete --name myResourceGroup

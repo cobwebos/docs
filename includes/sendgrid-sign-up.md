@@ -61,9 +61,9 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 
 若要管理电子邮件传递设置，请单击“管理”按钮。 此操作将重定向到 SendGrid 仪表板。
 
-    ![manage][manage]
+![manage][manage]
 
-    For more information on sending email through SendGrid, visit the [Email API Overview][Email API Overview].
+有关通过 SendGrid 发送电子邮件的详细信息，请访问[电子邮件 API 概述][Email API Overview]。
 
 <!--images-->
 

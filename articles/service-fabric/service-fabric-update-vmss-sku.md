@@ -6,7 +6,6 @@ documentationcenter: .net
 author: v-rachiw
 manager: navya
 editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,26 +13,35 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/08/2018
 ms.author: v-rachiw
-ms.openlocfilehash: 8d5b560068a9e0bc0169bfdb98c5e939e34a3b8c
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 96956543a44b6d5d967e3bae3fd833b08baf3d6f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34274020"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642727"
 ---
 # <a name="upgrademigrate-the-sku-for-primary-node-type-to-higher-sku"></a>将主节点类型的 SKU 升级/迁移到更高的 SKU
 
 本文介绍如何使用 Azure PowerShell 将 Service Fabric 群集的主节点类型的 SKU 升级/迁移到更高的 SKU
 
-## <a name="add-a-new-virtual-machine-scale-set"></a>添加新的虚拟机规模集 
+## <a name="add-a-new-virtual-machine-scale-set"></a>添加新的虚拟机规模集
 
-部署新的虚拟机规模集和负载均衡器。 新虚拟机规模集的 Service Fabric 扩展配置（尤其是节点类型）应与你尝试升级的旧规模集的扩展配置相同。 在 SF 资源管理器中验证新节点是否可用。 
+部署新的虚拟机规模集和负载均衡器。 新虚拟机规模集的 Service Fabric 扩展配置（尤其是节点类型）应与你尝试升级的旧规模集的扩展配置相同。 在 Service Fabric 资源管理器中验证新节点是否可用
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
+
 以下示例使用 Azure PowerShell 部署更新的资源管理器模板 template.json，该模板使用名为 myResourceGroup 的资源组：
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName myResourceGroup -TemplateFile \template\template.json 
+New-AzureRmResourceGroupDeployment -ResourceGroupName myResourceGroup -TemplateFile template.json -TemplateParameterFile parameters.json
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+
+以下命令使用 Azure Service Fabric CLI 部署更新的资源管理器模板 template.json，该模板使用名为 myResourceGroup 的资源组：
+
+```CLI
+az group deployment create --resource-group myResourceGroup --template-file template.json --parameters parameters.json
 ```
 
 请参阅以下示例修改 json 模板，以在现有群集中添加具有主节点类型的新虚拟机规模集资源
@@ -214,43 +222,58 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName myResourceGroup -TemplateF
         },
 ```
 
-
 ## <a name="remove-old-virtual-machine-scale-set"></a>删除旧的虚拟机规模集
 
-禁用意图删除节点的旧虚拟机规模集的 VM 实例。 此操作可能需要较长时间才能完成。 可以一次全部禁用，它们会排队。 请等待直至所有节点都被禁用。 
-
-### <a name="azure-powershell"></a>Azure PowerShell
+1. 禁用意图删除节点的旧虚拟机规模集的 VM 实例。 此操作可能需要较长时间才能完成。 可以一次全部禁用，它们会排队。 请等待直至所有节点都被禁用。 
+#### <a name="azure-powershell"></a>Azure PowerShell
 以下示例使用 Azure Service Fabric PowerShell 从名为 NTvm1 的旧虚拟机规模集中禁用名为 NTvm1_0 的节点实例：
-
 ```powershell
-Disable-ServiceFabricNode -NodeName NTvm1_0 -Intent RemoveNode 
+Disable-ServiceFabricNode -NodeName NTvm1_0 -Intent RemoveNode
 ```
-
-删除完整规模集。 请等待直至规模集预配状态为成功 
-
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-cli"></a>Azure CLI
+以下命令使用 Azure Service Fabric CLI 从名为 NTvm1 的旧虚拟机规模集中禁用名为 NTvm1_0 的节点实例：
+```CLI
+sfctl node disable --node-name "_NTvm1_0" --deactivation-intent RemoveNode
+```
+2. 删除完整规模集。 请等待直至规模集预配状态为成功
+#### <a name="azure-powershell"></a>Azure PowerShell
 以下示例使用 Azure PowerShell 从名为 myResourceGroup 的资源组中删除名为 NTvm1 的完整规模集：
-
 ```powershell
 Remove-AzureRmVmss -ResourceGroupName myResourceGroup -VMScaleSetName NTvm1
+```
+#### <a name="azure-cli"></a>Azure CLI
+以下命令使用 Azure Service Fabric CLI 从名为 myResourceGroup 的资源组中删除名为 NTvm1 的完整规模集：
+
+```CLI
+az vmss delete --name NTvm1 --resource-group myResourceGroup
 ```
 
 ## <a name="remove-load-balancer-related-to-old-scale-set"></a>删除与旧规模集相关的负载均衡器
 
 删除与旧规模集相关的负载均衡器。 此步骤将导致群集出现短暂的故障时间
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
+
 以下示例使用 Azure PowerShell 从名为 myResourceGroup 的资源组中删除与旧规模集相关的名为 LB-myCluster-NTvm1 的负载均衡器：
 
 ```powershell
 Remove-AzureRmLoadBalancer -Name LB-myCluster-NTvm1 -ResourceGroupName myResourceGroup
 ```
 
+#### <a name="azure-cli"></a>Azure CLI
+
+以下命令使用 Azure Service Fabric CLI 从名为 myResourceGroup 的资源组中删除与旧规模集相关的名为 LB-myCluster-NTvm1 的负载均衡器：
+
+```CLI
+az network lb delete --name LB-myCluster-NTvm1 --resource-group myResourceGroup
+```
+
 ## <a name="remove-public-ip-related-to-old-scale-set"></a>删除与旧规模集相关的公共 IP
 
 将与旧规模集相关的公有 IP 地址的 DNS 设置存储到变量中，然后删除该公共 IP 地址
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
+
 以下示例使用 Azure PowerShell 将名为 LBIP-myCluster-NTvm1 的公共 IP 地址的 DNS 设置存储到变量中，并删除该 IP 地址：
 
 ```powershell
@@ -260,27 +283,52 @@ $primaryDNSFqdn = $oldprimaryPublicIP.DnsSettings.Fqdn
 Remove-AzureRmPublicIpAddress -Name LBIP-myCluster-NTvm1 -ResourceGroupName myResourceGroup
 ```
 
+#### <a name="azure-cli"></a>Azure CLI
+
+以下命令使用 Azure Service Fabric CLI 获取名为 LBIP-myCluster-NTvm1 的公共 IP 地址的 DNS 设置并删除 IP 地址：
+
+```CLI
+az network public-ip show --name LBIP-myCluster-NTvm1 --resource-group myResourceGroup
+az network public-ip delete --name LBIP-myCluster-NTvm1 --resource-group myResourceGroup
+```
+
 ## <a name="update-public-ip-address-related-to-new-scale-set"></a>更新与新规模集相关的公共 IP 地址
 
 使用与旧规模集相关的公共 IP 地址的 DNS 设置更新与新规模集相关的公共 IP 地址的 DNS 设置
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 以下示例使用 Azure PowerShell 将名为 LBIP-myCluster-NTvm3 的公共 IP 地址的 DNS 设置更新为上一步中存储在变量中的 DNS 设置：
 
 ```powershell
-$PublicIP = Get-AzureRmPublicIpAddress -Name LBIP-myCluster-NTvm1  -ResourceGroupName myResourceGroup
+$PublicIP = Get-AzureRmPublicIpAddress -Name LBIP-myCluster-NTvm3  -ResourceGroupName myResourceGroup
 $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
-Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP 
+Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+
+以下命令使用 Azure Service Fabric CLI，将名为 LBIP-myCluster-NTvm3 的公共 IP 地址的 DNS 设置更新为之前步骤中收集的旧公共 IP 的 DNS 设置：
+
+```CLI
+az network public-ip update --name LBIP-myCluster-NTvm3 --resource-group myResourceGroup --dns-name myCluster
 ```
 
 ## <a name="remove-knowledge-of-service-fabric-node-from-fm"></a>从 FM 删除 Service Fabric 节点的知识
 
 通知 Service Fabric，已关闭的节点已从群集中删除。 （对旧虚拟机规模集的所有 VM 实例运行此命令）（如果旧虚拟机规模集的耐久性级别是银级或金级，则可能不需要此步骤。 因为该步骤是由系统自动完成的。）
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 以下示例使用 Azure Service Fabric PowerShell 来通知 Service Fabric 名为 NTvm1_0 的节点已删除：
 
 ```powershell
 Remove-ServiceFabricNodeState -NodeName NTvm1_0
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+
+以下命令使用 Azure Service Fabric CLI 来通知 Service Fabric 名为 NTvm1_0 的节点已删除：
+
+```CLI
+sfctl node remove-state --node-name _NTvm1_0
 ```

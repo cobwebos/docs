@@ -1,22 +1,19 @@
 ---
 title: 使用 Azure IoT 中心大规模配置和监视 IoT 设备 | Microsoft Docs
 description: 使用 Azure IoT 中心自动设备配置向多个设备分配配置
-services: iot-hub
-documentationcenter: ''
 author: ChrisGMsft
-manager: timlt
-editor: ''
+manager: bruz
 ms.service: iot-hub
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: 7146fba69857c3a612ce1b3dbb83387c1f3068d6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fe5ce960663f39d4f2c87a7bbffa091d327e9559
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632442"
 ---
 # <a name="configure-and-monitor-iot-devices-at-scale---preview"></a>大规模配置和监视 IoT 设备 - 预览
 
@@ -31,6 +28,9 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 * **目标内容**定义要在目标设备孪生中添加或更新的所需属性。 内容包括要更改的所需属性节的路径。
 
 * **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。 自定义指标指定为设备孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的设备孪生数，以及已成功更新的孪生数。 
+
+> [!Note]
+> 在预览期间，此功能不适用于美国东部、美国西部、北欧和西欧区域中的 IoT 中心。
 
 ## <a name="implement-device-twins-to-configure-devices"></a>实施设备孪生以配置设备
 
@@ -52,7 +52,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 ## <a name="create-a-configuration"></a>创建配置
 
 1. 在 [Azure 门户][lnk-portal]中，转到 IoT 中心。 
-1. 选择“设备配置(预览)”。
+1. 选择“IoT 设备配置(预览)”。
 1. 选择“添加配置”。
 
 创建配置需要执行五个步骤。 下列各节将引导完成每个步骤。 
@@ -86,7 +86,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 例如： `SELECT deviceId FROM devices WHERE properties.reported.chillerWaterSettings.status='pending'`
 
-可以包含一个表示应用了配置的子句，例如：`SELECT deviceId FROM devices WHERE configurations.yourconfigname.status='Applied'`
+可以包含一个表示应用了配置的子句，例如：`SELECT deviceId FROM devices WHERE configurations.[[yourconfigname]].status='Applied'` 包括双括号。
 
 
 ### <a name="step-4-target-devices"></a>步骤 4：目标设备
@@ -108,7 +108,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 若要查看配置的详细信息并监视运行它的设备，请执行以下步骤：
 
 1. 在 [Azure 门户][lnk-portal]中，转到 IoT 中心。 
-1. 选择“设备配置(预览)”。
+1. 选择“IoT 设备配置(预览)”。
 1. 检查配置列表。 对于每个配置，可查看以下详细信息：
    * **ID** - 配置的名称。
    * **目标条件** - 用于定义目标设备的查询。
@@ -136,7 +136,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 若要修改配置，请执行以下步骤： 
 
 1. 在 [Azure 门户][lnk-portal]中，转到 IoT 中心。 
-1. 选择“设备配置(预览)”。 
+1. 选择“IoT 设备配置(预览)”。 
 1. 选择要修改的配置。 
 1. 更新以下字段： 
    * 目标条件 
@@ -151,7 +151,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 删除某个配置时，所有设备孪生将会采用下一个最高优先级的配置。 如果设备孪生不满足其他任何配置的目标条件，则不会应用其他任何设置。 
 
 1. 在 [Azure 门户][lnk-portal]中，转到 IoT 中心。 
-1. 选择“设备配置(预览)”。 
+1. 选择“IoT 设备配置(预览)”。 
 1. 使用复选框选择想要删除的配置。 
 1. 选择“删除”。
 1. 系统会提示确认。

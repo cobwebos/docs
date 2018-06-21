@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/22/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea999945ace53099eb9dec15397310c9b5d1b904
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643118"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Linux 操作系统
 
@@ -61,9 +62,9 @@ ms.lasthandoff: 05/16/2018
 ### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>确保 Azure VM 正在运行 Ubuntu 16.04
 截至编写本文档时，Ubuntu 16.04 (`Xenial Xerus`) 是唯一受支持的版本。
 
-### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-61x-and-above"></a>确保 Service Fabric Linux 群集版本为 6.1.x 或以上
+### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-62x-and-above"></a>确保 Service Fabric Linux 群集版本为 6.2.x 或以上
 
-Linux 版修补业务流程应用使用特定的运行时功能，这些功能只能在 Service Fabric 运行时 6.1.x 或更高版本中使用。
+Linux 版修补业务流程应用使用特定的运行时功能，这些功能只能在 Service Fabric 运行时 6.2.x 或更高版本中使用。
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>启用修复管理器服务（如果尚未运行）
 
@@ -118,7 +119,9 @@ Linux 版修补业务流程应用使用特定的运行时功能，这些功能�
 
 ## <a name="download-the-app-package"></a>下载应用包
 
-从该[下载链接](https://go.microsoft.com/fwlink/?linkid=867984)下载应用程序。
+可以从[存档链接](https://go.microsoft.com/fwlink/?linkid=867984)下载应用程序和安装脚本。
+
+可以从 [sfpkg 链接](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg)下载 sfpkg 格式的应用程序。 这对[基于 Azure 资源管理器的应用程序部署](service-fabric-application-arm-resource.md)非常有用。
 
 ## <a name="configure-the-app"></a>配置应用
 
@@ -319,6 +322,10 @@ A. 在群集上安装修补业务流程应用后，会立即禁用群集节点�
 
 A. 是的，在执行安装后的步骤期间会执行清理。 
 
+问： **修补业务流程应用是否可用来修补开发群集（单节点群集）？**
+
+A. 否，修补业务流程应用不能用来修补单节点群集。 此限制是设计使然，因为 [Service Fabric 系统服务](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-technical-overview#system-services)或者任意客户应用将面临停机时间，因此修复管理器不会批准任何修复工作进行修补。
+
 ## <a name="troubleshooting"></a>故障排除
 
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>节点无法恢复启动状态
@@ -360,5 +367,8 @@ A. 是的，在执行安装后的步骤期间会执行清理。
 ### <a name="version-010"></a>版本 0.1.0
 - 个人预览版
 
-### <a name="version-200-latest"></a>版本 2.0.0（最新版本）
+### <a name="version-200"></a>版本 2.0.0
 - 公开发布的版本
+
+### <a name="version-201-latest"></a>版本 2.0.1（最新）
+- 使用最新 Service Fabric SDK 重新编译应用

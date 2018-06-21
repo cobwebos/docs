@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure 应用服务 Web 应用配置 Python"
-description: "本教程介绍在 Azure 应用服务 Web 应用中创作和配置符合基本 Web 服务器网关接口 (WSGI) 的 Python 应用程序的选项。"
+title: 使用 Azure 应用服务 Web 应用配置 Python
+description: 本教程介绍在 Azure 应用服务 Web 应用中创作和配置符合基本 Web 服务器网关接口 (WSGI) 的 Python 应用程序的选项。
 services: app-service
 documentationcenter: python
 tags: python
 author: huguesv
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fd00dc91-9935-4331-b955-4bd71e66d518
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: fa5f9afbc595f06bd41e8670fab7730b610f570e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 32d9cd6c42387b67881877a1165dfcbcaef405ba
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598634"
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>使用 Azure 应用服务 Web 应用配置 Python
 本教程介绍在 [Azure 应用服务 Web 应用](http://go.microsoft.com/fwlink/?LinkId=529714)中创作和配置符合基本 Web 服务器网关接口 (WSGI) 的 Python 应用程序的选项。
@@ -27,11 +28,11 @@ ms.lasthandoff: 02/21/2018
 其中讲解了 Git 部署的一些功能，如使用 requirements.txt 安装虚拟环境和包。
 
 ## <a name="bottle-django-or-flask"></a>Bottle、Django 还是 Flask？
-Azure Marketplace 包含用于 Bottle、Django 和 Flask 框架的模板。 如果正在开发 Azure 应用服务中的第一个 Web 应用，可以通过 Azure 门户快速创建一个：
+Azure 市场包含用于 Bottle、Django 和 Flask 框架的模板。 如果正在开发 Azure 应用服务中的第一个 Web 应用，可以通过 Azure 门户快速创建一个：
 
 * [使用 Bottle 创建 Web 应用](https://portal.azure.com/#create/PTVS.Bottle)
 * [使用 Django 创建 Web 应用](https://portal.azure.com/#create/PTVS.Django)
-* [使用 Flask 创建 Web 应用](https://portal.azure.com/#create/PTVS.Flask)
+* [使用 Linux 上 Flask 创建 Web 应用](https://portal.azure.com/#create/PTVS.FlaskLinux)
 
 ## <a name="web-app-creation-on-azure-portal"></a>在 Azure 门户上创建 Web 应用
 本教程假设已有 Azure 订阅和 Azure 门户访问权限。

@@ -5,14 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/30/2018
+ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 4fe1f2ad4bad9d670094bbb4eed188baf28108ea
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 21681a1af64754ef569f2ad4ff92f85a598007ac
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323776"
 ---
 # <a name="write-accelerator"></a>写入加速器
 写入加速器是 M 系列虚拟机 (VM) 的磁盘功能，且只能与 Azure 托管磁盘一起在高级存储上使用。 顾名思义，该功能的目的是改善对 Azure 高级存储的写入操作的 I/O 延迟。 写入加速器非常适合需要更新日志文件，并以高性能方式将现代数据库保存到磁盘的情况。
@@ -40,19 +41,21 @@ ms.lasthandoff: 05/03/2018
 ### <a name="restrictions-when-using-write-accelerator"></a>使用写入加速器时的限制
 对 Azure 磁盘/VHD 使用写入加速器时，需遵循以下限制：
 
-- 需要将高级磁盘缓存设置为“无”或“只读”。 不支持其他所有缓存模式。
+- 必须将高级磁盘缓存设置为“无”或“只读”。 不支持其他所有缓存模式。
 - 尚不支持已启用写入加速器的磁盘上的快照。 此限制会导致 Azure 备份服务无法对虚拟机的所有磁盘执行应用程序一致的快照。
-- 仅较小的 I/O (<=32KiB) 大小会采用加速路径。 在以下工作负荷情形下，I/O 写入到磁盘的更改不会采用加速路径：数据大容量加载或者数据在持久保存到存储之前，不同 DBMS 的事务日志缓冲区已较大程度上填满。
+- 仅较小的 I/O (<=32 KiB) 大小会采用加速路径。 在以下工作负荷情形下，I/O 写入到磁盘的更改不会采用加速路径：数据大容量加载或者数据在持久保存到存储之前，不同 DBMS 的事务日志缓冲区已较大程度上填满。
 
 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有限制。 当前限制为：
 
 | VM SKU | 写入加速器磁盘数 | 每个 VM 的写入加速器磁盘 IOPS |
 | --- | --- | --- |
-| M128ms | 16 | 8000 |
-| M128s | 16 | 8000 |
-| M64ms | 8 | 4000 |
-| M64s | 8 | 4000 | 
+| M128ms、128s | 16 | 8000 |
+| M64ms、M64ls、M64s | 8 | 4000 |
+| M32ms、M32ls、M32ts、M32s | 4 | 2000 | 
+| M16ms、M16s | 2 | 1000 | 
+| M8ms、M8s | 1 | 500 | 
 
+IOPS 限制是针对每个 VM 而不是每个磁盘。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>在特定磁盘上启用写入加速器
 以下几个部分介绍如何在 Azure 高级存储 VHD 上启用写入加速器。
 
@@ -63,29 +66,29 @@ ms.lasthandoff: 05/03/2018
 - 要向其应用 Azure 写入加速器的磁盘需是高级存储上的 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。
 - 必须使用 M 系列 VM
 
-### <a name="enabling-through-power-shell"></a>通过 PowerShell 启用
+## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure 写入加速器
 Azure PowerShell 模块 5.5.0 和更高版本对相关的 cmdlet 做了更改，以便能够针对特定的 Azure 高级存储磁盘启用或禁用写入加速器。
 为了启用或部署写入加速器支持的磁盘，以下 PowerShell 命令已发生更改，并已扩展为接受写入加速器的参数。
 
 已将新的开关参数“WriteAccelerator”添加到以下 cmdlet： 
 
-- Set-AzureRmVMOsDisk
-- Add-AzureRmVMDataDisk
-- Set-AzureRmVMDataDisk
-- Add-AzureRmVmssDataDisk
+- [Set-AzureRmVMOsDisk](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
+- [Add-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
 
 不指定该参数会将属性设置为 false，并且会部署不受写入加速器支持的磁盘。
 
 已将新的开关参数“OsDiskWriteAccelerator”添加到以下 cmdlet： 
 
-- Set-AzureRmVmssStorageProfile
+- [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
 
 不指定该参数集会将属性设置为 false，并且会提供不利用写入加速器的磁盘。
 
 已将新的可选布尔参数（不可为 null）“OsDiskWriteAccelerator”添加到以下 cmdlet： 
 
-- Update-AzureRmVM
-- Update-AzureRmVmss
+- [Update-AzureRmVM](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
+- [Update-AzureRmVmss](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
 
 指定 $true 或 $false 可以控制磁盘对 Azure 写入加速器的支持。
 
@@ -158,12 +161,28 @@ Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
 > [!Note]
 > 执行上述脚本会分离指定的磁盘，针对该磁盘启用写入加速器，然后重新附加该磁盘
 
-### <a name="enabling-through-azure-portal"></a>通过 Azure 门户启用
+### <a name="enabling-azure-write-accelerator-using-the-azure-portal"></a>使用 Azure 门户启用 Azure 写入加速器
 
 可以通过指定磁盘缓存设置的门户启用写入加速器： 
 
 ![Azure 门户中的写入加速器](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
+## <a name="enabling-through-azure-cli"></a>通过 Azure CLI 启用
+可以使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) 来启用写入加速器。 
+
+若要在现有磁盘上启用写入加速器，请使用 [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update)；若要将 diskName、VMName 和 ResourceGroup 替换为自己的内容，可使用以下示例：
+ 
+```
+az vm update -g group1 -n vm1 -write-accelerator 1=true
+```
+若要在启用写入加速器的情况下附加磁盘，请使用 [az vm disk attach](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)；若要替换为自己的值，可使用以下示例：
+```
+az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator
+```
+若要禁用写入加速器，请使用 [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update) 将属性设置为 false： 
+```
+az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false
+```
 
 ### <a name="enabling-through-rest-apis"></a>通过 REST API 启用
 若要通过 Azure REST API 进行部署，需要安装 Azure armclient
