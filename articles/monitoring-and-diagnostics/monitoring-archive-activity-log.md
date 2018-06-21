@@ -1,24 +1,19 @@
 ---
-title: 存档 Azure 活动日志 | Microsoft Docs
-description: 了解如何存档 Azure 活动日志，将其长期保留在存储帐户中。
+title: 存档 Azure 活动日志
+description: 存档 Azure 活动日志，将其长期保留在存储帐户中。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/09/2016
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/07/2018
 ms.author: johnkem
-ms.openlocfilehash: 6020272d79ace55041da94ee45165e557e92b80f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: activitylog
+ms.openlocfilehash: 508b2f615819f20a717065d8fff25beff64957d5
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263423"
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [**Azure 活动日志**](monitoring-overview-activity-logs.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
@@ -26,8 +21,11 @@ ms.lasthandoff: 04/06/2018
 ## <a name="prerequisites"></a>先决条件
 在开始之前，需要[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)，将活动日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将诊断日志和指标存档到存储帐户，则也可将该存储帐户用于活动日志，使得所有监视数据都位于一个中心位置。 所使用的存储帐户必须是一个通用存储帐户，而不是一个 blob 存储帐户。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必与订阅发出日志位于同一订阅中。
 
+> [!NOTE]
+>  当前无法将数据存档到支持安全虚拟网络的存储帐户。
+
 ## <a name="log-profile"></a>日志配置文件
-若要使用下述任意方法存档活动日志，可为订阅设置**日志配置文件**。 日志配置文件定义已存储或流式传输的事件的类型，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，事件将无限期存储。 如果不想让事件无限期存储，可将保留策略设置为 1 到 2147483647 之间的任何值。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 [可在此处了解日志配置文件的详细信息](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 
+若要使用下述任意方法存档活动日志，可为订阅设置**日志配置文件**。 日志配置文件定义已存储或流式传输的事件的类型，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，事件将无限期存储。 如果不想让事件无限期存储，可将保留策略设置为 1 到 2147483647 之间的任何值。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程始于协调世界时晚上 12 点，但请注意，日志从存储帐户删除可能需要多达 24 小时的时间。 [可在此处了解日志配置文件的详细信息](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>使用门户存档活动日志
 1. 在门户中，单击左侧导航中的“活动日志”链接。 如果看不到活动日志的链接，请先单击“所有服务”链接。

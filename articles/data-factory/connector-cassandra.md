@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/02/2018
+ms.topic: conceptual
+ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: fe68797090926f2e0e0e2fbb66ba2bb7f6d940e7
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 94312edaa97a5d9a7502eed4c0551151ce2a06cc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770955"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235271"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure 数据工厂从 Cassandra 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,8 +37,11 @@ ms.locfileid: "32770955"
 
 具体而言，此 Cassandra 连接器支持：
 
-- Cassandra 2.X 版。
+- Cassandra 2.X 版和 3.x 版。
 - 使用基本或匿名身份验证复制数据。
+
+>[!NOTE]
+>对于自承载集成运行时上运行的活动，Cassandra 3.x 受 IR 版本 3.7 及更高版本支持。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,6 +66,9 @@ Cassandra 链接的服务支持以下属性：
 | username |为用户帐户指定用户名。 |是（如果 authenticationType 设置为 Basic）。 |
 | password |指定用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果 authenticationType 设置为 Basic）。 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+
+>[!NOTE]
+>当前不支持使用 SSL 连接到 Cassandra。
 
 **示例：**
 

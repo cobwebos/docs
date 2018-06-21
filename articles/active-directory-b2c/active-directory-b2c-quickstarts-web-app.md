@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4caa4dfcfdc468c69241c5cf61d3c520609a088a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e52674014a888913e288f7b0749d9b2e05bedf45
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710255"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292780"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为 ASP.NET 应用程序设置登录
 
@@ -124,4 +124,4 @@ Azure Active Directory B2C 提供允许用户更新个人资料的功能。 示�
 继续阅读本教程可以了解如何将示例 ASP.NET 配置为使用你自己的 Azure AD B2C 租户。
 
 > [!div class="nextstepaction"]
-> [教程：使用 Azure Active Directory B2C 在 ASP.NET Web 应用中进行用户身份验证](active-directory-b2c-tutorials-web-app.md)
+> [在 Azure 门户中创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)

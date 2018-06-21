@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: b6b78c5ae4506c1405428b60887567f272d6e268
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 12eb182c859617139fce6553496c6aa6e9bcdc98
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839055"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
 在本教程中，我们指导为某个公开提供的数据集（[NYC 出租车车程](http://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
@@ -365,7 +367,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     -- Report number of columns in table <nyctaxi_trip>
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
 
-**输出︰**行数应该是 173,179,759，列数应该是 14。
+**输出︰** 行数应该是 173,179,759，列数应该是 14。
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>浏览：依据徽章的行程分布
 此示例查询标识在指定的时间段内完成超过 100 个行程的徽章（出租车编号）。 查询将受益于分区表访问，因为它受 **pickup\_datetime** 分区方案的限制。 查询完整数据集还将使用分区表和/或索引扫描。
@@ -376,7 +378,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-**输出︰**查询应返回一个表，表中的行指定 13,369 个徽章（出租车）和它们在 2013 年完成的行程数。 最后一列包含已完成的行程数量的计算。
+**输出︰** 查询应返回一个表，表中的行指定 13,369 个徽章（出租车）和它们在 2013 年完成的行程数。 最后一列包含已完成的行程数量的计算。
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>浏览：依据徽章和 hack_license 的行程分布
 此示例标识在指定的时间段内完成超过 100 个行程的徽章（出租车编号）和 hack_license 编号（驾驶员）。
@@ -387,7 +389,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-**输出︰**查询应返回一个包含 13,369 行的表，这些行指定在 2013年已完成超过 100 个行程的 13,369 个汽车/驾驶员 ID。 最后一列包含已完成的行程数量的计算。
+**输出︰** 查询应返回一个包含 13,369 行的表，这些行指定在 2013年已完成超过 100 个行程的 13,369 个汽车/驾驶员 ID。 最后一列包含已完成的行程数量的计算。
 
 ### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>数据质量评估：验证含有不正确的经度和/或纬度的记录
 此示例将调查是否有任何一个经度和/或纬度字段包含无效的值（弧度应介于 -90 到 90 之间），或者具有（0，0）坐标。
@@ -401,7 +403,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-**输出︰**查询返回经度和/或纬度字段无效的 837,467 个行程。
+**输出︰** 查询返回经度和/或纬度字段无效的 837,467 个行程。
 
 ### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>浏览︰已付小费与未付小费的行程分布
 此示例查找指定时间段（或如果像此处设置的那在，时间段为全年，则表示完整的数据集）内已付小费与未付小费的行程的数量。 此分布反映二元标签分布，以便以后用于二元分类建模。
@@ -412,7 +414,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-**输出︰**查询应返回 2013 年度的以下小费频率︰90,447,622 个已付小费的和 82,264,709 个未付小费的。
+**输出︰** 查询应返回 2013 年度的以下小费频率︰90,447,622 个已付小费的和 82,264,709 个未付小费的。
 
 ### <a name="exploration-tip-classrange-distribution"></a>浏览：小费分类/范围分布
 此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是以后用于多类分类建模的标签类的分布。
@@ -533,7 +535,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-**输出︰**此查询生成一个表（包含 2,803,538 行），其中有提取纬度和减少纬度、提取经度和减少经度以及相应的直接距离（以英里计）。 下面是前 3 行的结果︰
+**输出︰** 此查询生成一个表（包含 2,803,538 行），其中有提取纬度和减少纬度、提取经度和减少经度以及相应的直接距离（以英里计）。 下面是前 3 行的结果︰
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
@@ -883,7 +885,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 此示例演练和及其附带脚本和 IPython notebook 是在 MIT 许可证下由 Microsoft 共享。 如需详细信息，请查看 GitHub 上的示例代码目录中的 LICENSE.txt 文件。
 
 ## <a name="references"></a>参考
-•   [Andrés Monroy NYC 出租车行程下载页面](http://www.andresmh.com/nyctaxitrips/)  
+•    [Andrés Monroy NYC 出租车行程下载页](http://www.andresmh.com/nyctaxitrips/)  
 •    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](http://chriswhong.com/open-data/foil_nyc_taxi/)   
 •   [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 

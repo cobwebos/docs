@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 05/04/2017
+ms.topic: conceptual
+ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: f2ebd2a021d3803b6e3f7d805b9253d181cb16c3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010458"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293633"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
 *依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](app-insights-overview.md) 可以度量应用程序等待依赖项的时长以及依赖项调用失败的频率。 可以调查特定的调用，并将其与请求和异常相关联。
@@ -191,6 +191,8 @@ ms.locfileid: "34010458"
             {
                 timer.Stop();
                 telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
+                // The call above has been made obsolete in the latest SDK. The updated call follows this format:
+                // TrackDependency (string dependencyTypeName, string dependencyName, string data, DateTimeOffset startTime, TimeSpan duration, bool success);
             }
 ```
 
@@ -201,12 +203,13 @@ ms.locfileid: "34010458"
 
 *SQL 查询未完整显示。*
 
-* 升级到最新稳定版本的 Application Insights SDK。
+请参阅下表，并确保你选择了正确的配置以启用应用程序的依赖项监视。
 
- 如果 .NET 版本低于 4.6：
-
-* IIS 主机：在主机服务器上安装 [Application Insights 代理](app-insights-monitor-performance-live-website-now.md)。
-* Azure Web 应用：在 Web 应用控制面板中打开“Application Insights”选项卡，并安装 Application Insights。
+| 平台 | 安装 |
+| --- | --- |
+| IIS 服务器 |[在服务器上安装状态监视器](app-insights-monitor-performance-live-website-now.md)， 或者[将应用程序升级到 .NET framework 4.6 或更高版本](http://go.microsoft.com/fwlink/?LinkId=528259)，并在应用中安装 [Application Insights SDK](app-insights-asp-net.md)。 |
+| Azure Web 应用 |在 Web 应用控件面板中[打开“Application Insights”边栏选项卡](app-insights-azure-web-apps.md)，并在出现提示时选择“安装”。 |
+| Azure 云服务 |[使用启动任务](app-insights-cloudservices.md)或[安装 .NET framework 4.6+](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="video"></a>视频
 

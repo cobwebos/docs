@@ -1,24 +1,19 @@
 ---
-title: "使用自动缩放操作发送电子邮件和 webhook 警报通知。 | Microsoft 文档"
-description: "了解如何在 Azure 监视器中使用自动缩放操作来调用 Web URL 或发送电子邮件通知。 "
+title: 使用自动缩放发送电子邮件和 Webhook 警报通知
+description: '了解如何在 Azure 监视器中使用自动缩放操作来调用 Web URL 或发送电子邮件通知。 '
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: eb9a4c98-0894-488c-8ee8-5df0065d094f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.openlocfilehash: 16caf14028494800e9259f0296c292b606d0210a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 65405a6d7f1d49911da1e2a5d26b02098a261c01
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262216"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
 本文演示如何设置触发器，以便可以在 Azure 中基于自动缩放操作调用特定 Web URL 或发送电子邮件。  
@@ -26,7 +21,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="webhooks"></a>Webhook
 通过 webhook 可以将 Azure 警报通知路由到其他系统以便用于后处理或自定义通知。 例如，将警报路由到可以处理传入 web 请求的服务，以便使用聊天或消息服务等来发送 SMS、记录 bug、通知团队。Webhook URI 必须是有效 HTTP 或 HTTPS 终结点。
 
-## <a name="email"></a>电子邮件
+## <a name="email"></a>Email
 电子邮件可以发送到任何有效电子邮件地址。 还将通知运行规则的订阅的管理员和共同管理员。
 
 ## <a name="cloud-services-and-web-apps"></a>云服务和 Web 应用
@@ -72,10 +67,10 @@ ms.lasthandoff: 10/11/2017
 | customEmails |是 |值可以为 null [] 或电子邮件的字符串数组 |
 | webhooks |是 |该值可以为 null 或有效的 URI |
 | serviceUri |是 |有效的 https URI |
-| properties |是 |值必须是空的 {}，也可以包含键值对 |
+| 属性 |是 |值必须是空的 {}，也可以包含键值对 |
 
 ## <a name="authentication-in-webhooks"></a>webhook 中的身份验证
-webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
+webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如： https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>自动缩放通知 webhook 负载架构
 生成自动缩放通知时，以下元数据会包含在 webhook 负载中：

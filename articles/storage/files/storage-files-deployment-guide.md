@@ -1,24 +1,25 @@
 ---
-title: "如何部署 Azure 文件 | Microsoft Docs"
-description: "了解如何从头至尾部署 Azure 文件。"
+title: 如何部署 Azure 文件 | Microsoft Docs
+description: 了解如何从头至尾部署 Azure 文件。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 05/22/2018
 ms.author: wgries
-ms.openlocfilehash: c33639723657d3c2875ed9607a887775d558be16
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 193a403a64cea31a2e4cea21a5838be71af8dd53
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737344"
 ---
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 文件
 [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文介绍如何在组织内实际部署 Azure 文件。
@@ -91,7 +92,7 @@ Azure 文件同步也可用于将数据迁移到 Azure 文件共享，即使长�
     > [!Warning]  
     > 完成磁盘准备操作以后，请勿修改硬盘驱动器上的数据，也勿修改日志文件。
 
-7. [创建导入作业](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-an-export-job)。
+7. [创建导入作业](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job)。
     
 ### <a name="robocopy"></a>Robocopy
 Robocopy 是 Windows 和 Windows Server 自带的一款知名复制工具。 Robocopy 可用于将数据传输到 Azure 文件，方法是在本地装载文件共享，然后使用装载位置作为 Robocopy 命令的目标位置。 Robocopy 操作非常简单：

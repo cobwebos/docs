@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: cynthn
-ms.openlocfilehash: 26a213d490ee3f661735ff5b893b0a5f5f9906da
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b61b7501c94e9682a3b324488caf119ce4aad3df
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267197"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>如何在 Windows VM 中重置远程桌面服务或其登录密码
 如果无法连接到 Windows 虚拟机 (VM)，可以重置本地管理员密码或远程桌面服务配置（Windows 域控制器不支持此操作）。 可以使用 Azure 门户或 Azure PowerShell 中的 VM 访问扩展重置密码。 登录到 VM 后，应重置该用户的密码。  
@@ -57,7 +58,7 @@ ms.lasthandoff: 04/19/2018
 请务必[安装和配置最新的 PowerShell 模块](/powershell/azure/overview)，并使用 `Connect-AzureRmAccount` cmdlet 登录到 Azure 订阅。
 
 ### <a name="reset-the-local-administrator-account-password"></a>**重置本地管理员帐户密码**
-使用 [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell cmdlet 重置管理员密码或用户名。 
+使用 [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell cmdlet 重置管理员密码或用户名。 typeHandlerVersion 必须是 2.0 或更高版本，因为版本 1 已弃用。 
 
 ```powershell
 $SubID = "<SUBSCRIPTION ID>" 

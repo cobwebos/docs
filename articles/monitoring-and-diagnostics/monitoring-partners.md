@@ -1,24 +1,19 @@
 ---
-title: Azure 监视器合作伙伴集成 | Microsoft Docs
+title: 与 Azure Monitor 集成的合作伙伴
 description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 01ee13ac-66fc-4edc-8b0c-32f69b986a26
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/15/2018
 ms.author: johnkem
-ms.openlocfilehash: 44315b88d55d370c8200952dc2ff9d64d64cf524
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: ''
+ms.openlocfilehash: c8f8dbc4aa32b550849ff14f3ad653311b9fab93
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265277"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 | 合作伙伴 |  |  |
@@ -38,7 +33,7 @@ Alert Logic Log Manager 收集 VM、应用程序和 Azure 平台日志进行安�
 [查看相关文档。][alertlogic-doc]
 
 ## <a name="appdynamics"></a>AppDynamics
-AppDynamics Application Performance Management (APM) 可让应用程序所有者快速针对性能瓶颈进行故障排除，优化 Azure 环境中运行的应用程序的性能。 它可以监视 Azure 云服务 (PaaS)、Web 角色和辅助角色、虚拟机 (IaaS)、远程服务检测（Microsoft Azure 服务总线）、Microsoft Azure 队列、Microsoft Azure 远程服务 (Azure Blob)、Azure 队列（Microsoft 服务总线）、数据存储和 Microsoft Azure Blob 存储。 AppDynamics APM 在 Azure Marketplace 中提供。
+AppDynamics Application Performance Management (APM) 可让应用程序所有者快速针对性能瓶颈进行故障排除，优化 Azure 环境中运行的应用程序的性能。 它可以监视 Azure 云服务 (PaaS)、Web 角色和辅助角色、虚拟机 (IaaS)、远程服务检测（Microsoft Azure 服务总线）、Microsoft Azure 队列、Microsoft Azure 远程服务 (Azure Blob)、Azure 队列（Microsoft 服务总线）、数据存储和 Microsoft Azure Blob 存储。 AppDynamics APM 在 Azure 市场中提供。
 
 [查看相关文档。][appdynamics-doc]
 

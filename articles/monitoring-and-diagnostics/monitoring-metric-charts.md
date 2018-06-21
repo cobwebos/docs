@@ -1,24 +1,19 @@
 ---
-title: "Azure Monitor 指标资源管理器 | Microsoft 文档"
-description: "了解 Azure Monitor 指标资源管理器中的新功能"
+title: Azure Monitor 指标资源管理器
+description: 了解 Azure Monitor 指标资源管理器中的新功能
 author: vgorbenko
-manager: Victor.Mushkatin
-editor: mrbullwinkle
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 2397596a-071f-4d49-8893-bec5f735bd7b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
-ms.openlocfilehash: 537dd6d64fe49093dd73d8040cde5a9153a7bd5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: metrics
+ms.openlocfilehash: a2611f89d9eef1ec6bac34389fa4db833aecc087
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264082"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
 
@@ -110,7 +105,7 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 
 2. 选择想要筛选的维度（属性）
 
-   ![指标图](./media/monitoring-metric-charts/006.png)
+   ![图表上的](./media/monitoring-metric-charts/006.png)
 
 3. 选择想要在绘制图表时包含的维度值（此示例将显示筛选出了成功的存储事务）：
 
@@ -118,7 +113,7 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 
 4. 选择筛选值后，在“筛选选择器”之外单击将其关闭。 现在图表将显示失败的存储事务数：
 
-   ![指标图](./media/monitoring-metric-charts/008.png)
+   ![图表上的](./media/monitoring-metric-charts/008.png)
 
 5. 可以重复步骤 1-4 将多个筛选器应用到同一个图表。
 
@@ -135,11 +130,11 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 
 2. 选择想要用于分割图表的维度： 
 
-   ![指标图](./media/monitoring-metric-charts/010.png)
+   ![图表上的](./media/monitoring-metric-charts/010.png)
 
    现在图表将显示多个折线图，每个维度部分均有一个：
 
-   ![指标图](./media/monitoring-metric-charts/012.png)
+   ![图表上的](./media/monitoring-metric-charts/012.png)
 
 3. 在“分组选择器”之外单击以将其关闭。
 
@@ -154,7 +149,7 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 
 配置图表后，单击图表右上角的“图表操作”菜单，然后单击“固定到仪表板”。
 
-   ![指标图](./media/monitoring-metric-charts/013.png)
+   ![图表上的](./media/monitoring-metric-charts/013.png)
 
 ## <a name="next-steps"></a>后续步骤
 

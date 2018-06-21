@@ -5,5 +5,7 @@
 ``dc.services.visualstudio.com`` - 用于遥测。 <br>
 ``time.nist.gov`` 和 ``time.windows.com``。 用于检查系统时间与全球时间之间的时间同步。
 <br/><br/>
-Azure 政府云的 URL：<br/>- .ugv.hypervrecoverymanager.windowsazure.us<br/>- .ugv.backup.windowsazure.us<br/>- .ugi.hypervrecoverymanager.windowsazure.us<br/>- .ugi.backup.windowsazure.us<br/>- https://login-us.microsoftonline.com<br/>- https://login.microsoftonline.us<br/>- https://login.microsoftonline.com<br/>
+Azure 政府云的 URL：<br/>- .ugv.hypervrecoverymanager.windowsazure.us<br/>- .ugv.backup.windowsazure.us<br/>- .ugi.hypervrecoverymanager.windowsazure.us<br/>- .ugi.backup.windowsazure.us<br/>-
+https://login.microsoftonline.us<br/>-
+https://login.microsoftonline.com<br/>
 

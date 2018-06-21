@@ -1,23 +1,21 @@
 ---
-title: Azure CosmosDB 表 API .NET SDK 和资源 | Microsoft Docs
+title: Azure Cosmos DB 表 API .NET SDK 和资源 | Microsoft Docs
 description: 了解有关 Azure Cosmos DB 表 API 的全部信息，包括发布日期、停用日期和各版本之间进行的更改。
 services: cosmos-db
-documentationcenter: .net
 author: rnagpal
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 03/26/2018
 ms.author: rnagpal
-ms.openlocfilehash: 7e012e07b8f93554ea44404c611a7bc0eb64a0d0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 391948af7fe00e0a5e6171d5322c09c05fcd1cc3
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798468"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
 > [!div class="op_single_selector"]

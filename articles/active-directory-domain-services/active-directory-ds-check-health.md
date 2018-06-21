@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5be6a2c36dfec8c8543f6dcfe252ce01b4c28e50
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ffb00ce85a06812dfc42dfbbba74f712c1877615
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587232"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212367"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>检查 Azure AD 域服务托管域的运行状况
 

@@ -4,21 +4,18 @@ description: 了解分区在 Azure Cosmos DB 中的工作原理，如何配置�
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1976ab5ab0bd0037163b2ad8048fcee10b204ea2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d083181b379301ae80e6577ccc3ac8f142767db3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261066"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中分区和缩放
 
@@ -50,7 +47,7 @@ ms.lasthandoff: 05/07/2018
 
 * 使用 **T** RU/秒（每秒请求数）吞吐量预配一组 Azure Cosmos DB 容器。
 * Azure Cosmos DB 在后台预配所需的物理分区，每秒处理 **T** 个请求。 如果 **T** 高于每个物理分区的最大吞吐量 **t**，则 Azure Cosmos DB 会预配 **N = T/t** 个物理分区。 单分区的最大吞吐量的值由 Azure Cosmos DB 配置。此值根据总的预配吞吐量以及所使用的硬件配置来分配。 
-* Azure Cosmos DB 在 **N** 个物理分区中均衡分配分区键哈希的键空间。 因此，每个物理分区托管 **1/N** 个分区键值（逻辑分区）。
+* Azure Cosmos DB 在 **N** 个物理分区中均衡分配分区键哈希的键空间。 因此，每个物理分区托管的逻辑分区数是 **1/N** * 分区键值的个数。
 * 当物理分区 **p** 达到其存储限制时，Azure Cosmos DB 会将 **p** 无缝拆分为两个新的物理分区：**p1** 和 **p2**。 它会向每个新物理分区分发对应于大约一半键的值。 此拆分操作对应用程序完全不可见。 如果物理分区达到其存储限制，但物理分区中的所有数据属于同一个逻辑分区键，则不会发生该拆分操作。 这是因为单个逻辑分区键的所有数据必须驻留在同一个物理分区中。 在这种情况下，应采用其他分区键策略。
 * 当预配高于 **t*N** 的吞吐量时，Azure Cosmos DB 会拆分一个或多个物理分区，以支持更高的吞吐量。
 
@@ -63,15 +60,24 @@ ms.lasthandoff: 05/07/2018
 | Gremlin | 自定义分区键属性 | 固定 `id` | 
 | 表 | 固定 `PartitionKey` | 固定 `RowKey` | 
 
-Azure Cosmos DB 使用基于哈希的分区。 写入某个项时，Azure Cosmos DB 将对分区键值进行哈希处理，并使用经过哈希处理的结果来确定要在其中存储该项的分区。 Azure Cosmos DB 将分区键相同的所有项存储在同一个物理分区中。 选择分区键是设计时需要做出的重要决定。 选择的属性名称应具有范围较宽的值，并采用均衡的访问模式。 如果物理分区达到其存储限制，但分区中的数据使用同一个分区键，则 Azure Cosmos DB 将返回“分区键达到 10 GB 的最大大小”消息，并且不会拆分分区。 选择适当的分区键非常重要。
+Azure Cosmos DB 使用基于哈希的分区。 写入某个项时，Azure Cosmos DB 将对分区键值进行哈希处理，并使用经过哈希处理的结果来确定要在其中存储该项的分区。 Azure Cosmos DB 将分区键相同的所有项存储在同一个物理分区中。 
 
-> [!NOTE]
-> 采用具有大量不同值（例如数百或数千个）的分区键是最佳做法。 这样就可以跨这些值均匀分配工作负荷。 理想的分区键可以作为筛选器频繁出现在查询中，并具有足够的基数，以确保解决方案可缩放。
->
+## <a name="best-practices-when-choosing-a-partition-key"></a>选择分区键时的最佳做法
 
-可在 Azure 门户中以*固定*或*无限制*模式创建 Azure Cosmos DB 容器。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 若要以无限制模式创建容器，必须指定一个分区键，以及最低 1,000 RU/秒的吞吐量。 
+选择分区键是设计时需要做出的重要决定。 选择的属性名称应具有范围较宽的值，并采用均衡的访问模式。 采用具有大量不同值（例如数百或数千个）的分区键是最佳做法。 这样就可以跨这些值均匀分配工作负荷。 理想的分区键可以作为筛选器频繁出现在查询中，并具有足够的基数，以确保解决方案可缩放。
 
-也可将 Azure Cosmos DB 容器配置为在一组容器之间共享吞吐量，该组中的每个容器必须指定一个分区键，可以无限增长。
+如果物理分区达到其存储限制，但分区中的数据使用同一个分区键，则 Azure Cosmos DB 将返回“分区键达到 10 GB 的最大大小”消息，并且不会拆分分区。 选择适当的分区键非常重要。 物理分区是 Azure Cosmos DB 的内部概念并且是暂时的。 Azure Cosmos DB 将根据工作负荷自动缩放物理分区的数量。 因此，不应根据物理分区的数量来关联数据库设计，而应该确保选择正确的分区键（逻辑分区）。 
+
+选择分区键，以便：
+
+* 存储均匀分布在所有键中。
+* 在给定的时间点，请求的卷均匀分布在所有键中。
+* 通过在筛选器谓词中包含分区键，可以高效地路由通过高并发性调用的查询。  
+* 通常首选具有较高基数的分区键 - 因为它通常会产生更好的分布和可伸缩性。 例如，可以通过连接来自多个属性的值来形成组合键以增加基数。 
+
+考虑上述注意事项选择分区键时，你不必担心分区数量或每个物理分区分配的吞吐量，因为 Azure Cosmos DB 会横向扩展物理分区的数量，还可以根据需要缩放单个分区。
+
+可在 Azure 门户中以*固定*或*无限制*模式创建 Azure Cosmos DB 容器。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 若要以无限制模式创建容器，必须指定一个分区键，以及最低 1,000 RU/秒的吞吐量。 也可将 Azure Cosmos DB 容器配置为在一组容器之间共享吞吐量，该组中的每个容器必须指定一个分区键，可以无限增长。
 
 查看数据在不同分区之间的分布方式是个好主意。 若要在门户中查看数据分布情况，请转到 Azure Cosmos DB 帐户，在“监视”部分单击“指标”，然后单击“存储”选项卡，查看数据在不同物理分区之间的分区方式。
 

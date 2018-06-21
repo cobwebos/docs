@@ -4,29 +4,29 @@ description: 如何在 Azure SAP HANA（大型实例）上安装 SAP HANA。
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0747bd5dc147639167f352dea46f7e4a1d43227d
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778590"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763437"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安装和配置 SAP HANA（大型实例）
 
 下面介绍了在阅读本指南之前要了解的一些重要定义。 在 [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)中，我们引入了两类不同的 HANA 大型实例单元，其中包括：
 
-- 称为“I 类”SKU 的 S72、S72m、S144、S144m、S192 和 S192m。
-- 称为“II 类”SKU 的 S384、S384m、S384xm、S576m、S768m 和 S960m。
+- 称为“I 类”SKU 的 S72、S72m、S144、S144m、S192、S192m 和 S192xm。
+- 称为“II 类”SKU 的 S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 和 S960m。
 
 将在整个 HANA 大型实例文档中使用类说明符，最终用于根据 HANA 大型实例 SKU 指代不同的功能和要求。
 
@@ -323,9 +323,9 @@ SUSEConnect –cleanup
 ### <a name="download-of-the-sap-hana-installation-bits"></a>下载 SAP HANA 安装位包
 由于 HANA 大型实例单元不直接连接 Internet，因此无法直接将安装程序包从 SAP 下载到 HANA 大型实例 VM。 若要解决不直接连接 Internet 的问题，需要使用跳转盒。 将程序包下载到跳转盒 VM。
 
-若要下载 HANA 安装程序包，需要以 SAP S 用户或其他用户身份下载，以便可以访问 SAP Marketplace。 登录后，请依次转到下列屏幕：
+若要下载 HANA 安装程序包，需要以 SAP S 用户或其他用户身份下载，以便可以访问 SAP市场。 登录后，请依次转到下列屏幕：
 
-转到 [SAP Service Marketplace](https://support.sap.com/en/index.html) > 单击“下载软件”>“安装和升级”> 使用按字母顺序排列的索引 > 在“H”下选择“SAP HANA 平台版本”>“SAP HANA 平台版 2.0”>“安装”> 下载以下文件
+转到 [SAP Service Marketplace](https://support.sap.com/en/index.html) &gt; 单击“下载软件”&gt;“安装和升级”&gt; 使用按字母顺序排列的索引 &gt; 在“H”下选择“SAP HANA 平台版本”&gt;“SAP HANA 平台版 2.0”&gt;“安装”&gt; 下载以下文件
 
 ![下载 HANA 安装程序包](./media/hana-installation/image16_download_hana.PNG)
 

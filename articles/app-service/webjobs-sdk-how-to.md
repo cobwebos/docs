@@ -1,5 +1,5 @@
 ---
-title: 如何使用 WebJobs SDK 进行事件驱动的后台处理 - Azure
+title: 如何使用 Azure WebJobs SDK
 description: 详细了解如何为 WebJobs SDK 编写代码。 创建事件驱动的后台处理作业，用于访问 Azure 服务和第三方服务中的数据。
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,18 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 3adf725f76f744fd1d321668fe892b9703de25de
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 08272ba7d828f744336723f25b482bf06b9e43dc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234644"
 ---
-# <a name="how-to-use-the-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 WebJobs SDK 进行事件驱动的后台处理
+# <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
-本文提供有关如何为 [WebJobs SDK](webjobs-sdk-get-started.md) 编写代码的指导。 除非另有说明，否则本文档适用于版本 2.x 和 3.x。 3.x 中引入的主要更改是使用 .NET Core 而不是 .NET Framework。
+本文提供有关如何为 [Azure WebJobs SDK](webjobs-sdk-get-started.md) 编写代码的指导。 除非另有说明，否则本文档适用于版本 2.x 和 3.x。 3.x 中引入的主要更改是使用 .NET Core 而不是 .NET Framework。
 
 >[!NOTE]
-> [Azure Functions](../azure-functions/functions-overview.md) 基于 WebJobs SDK，本文链接到某些主题的 Azure Functions 文档。 注意 Functions 与 WebJobs SDK 之间的以下差异：
+> [Azure Functions](../azure-functions/functions-overview.md) 是基于 WebJobs SDK 构建的，本文链接到某些主题的 Azure Functions 文档。 注意 Functions 与 WebJobs SDK 之间的以下差异：
 > * Azure Functions 版本 1.x 对应于 WebJobs SDK 版本 2.x，Azure Functions 2.x 对应于 WebJobs SDK 3.x。 源代码存储库遵循 WebJobs SDK 编号方案，许多存储库具有 v2.x 分支，其中的主分支当前包含 3.x 代码。
 > * Azure Functions C# 类库的示例代码类似于 WebJobs SDK 代码，不过，在 WebJobs SDK 项目中，无需指定 `FunctionName` 特性。
 > * 某些绑定类型（例如 HTTP、Webhook 以及基于 HTTP 的事件网格）只在 Functions 中受支持。 
@@ -322,7 +323,7 @@ public static void CreateQueueMessage(
 
 Azure Functions 文档中提供了有关每个绑定类型的参考信息。 每篇绑定参考文章中以存储队列为例介绍了以下信息：
 
-* [包](../azure-functions/functions-bindings-storage-queue.md#packages) - 要安装哪个包才能在 WebJobs SDK 项目中包含绑定支持。
+* [包](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x) - 要安装哪个包才能在 WebJobs SDK 项目中包含绑定支持。
 * [示例](../azure-functions/functions-bindings-storage-queue.md#trigger---example) - C# 类库示例适用于 WebJobs SDK；只需忽略 `FunctionName` 特性。
 * [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes) - 用于绑定类型的特性。
 * [配置](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration) - 特性属性和构造函数参数的解释。
@@ -390,6 +391,26 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 * **FileTrigger** - 将 `FileProcessor.MaxDegreeOfParallelism` 设置为 1。
 
 可以使用这些设置来确保函数在单个实例上作为单一实例运行。 若要确保在 Web 应用横向扩展到多个实例时只运行函数的单个实例，请对该函数应用侦听器级别的单一实例锁 (`[Singleton(Mode = SingletonMode.Listener)]`)。 启动 JobHost 时获取侦听器锁。 如果三个横向扩展的实例全部同时启动，只有其中的一个实例获取该锁，并且只有一个侦听器启动。
+
+### <a name="scope-values"></a>范围值
+
+可以在单一实例中指定一个**范围表达式/值**，这将确保该范围内的所有函数执行都将进行序列化。 通过这种方式实现更细粒度的锁定可以为函数提供一定程度的并行度，同时可以根据需求对其他调用进行序列化。 例如，在下面的示例中，范围表达式将绑定到传入消息的 `Region` 值。 如果队列分别在区域 “East”、“East”和“West”中包含 3 条消息，则区域为“East”的消息将串行执行，而区域为“West”的消息将与这些消息并行执行。
+
+```csharp
+[Singleton("{Region}")]
+public static async Task ProcessWorkItem([QueueTrigger("workitems")] WorkItem workItem)
+{
+     // Process the work item
+}
+
+public class WorkItem
+{
+     public int ID { get; set; }
+     public string Region { get; set; }
+     public int Category { get; set; }
+     public string Description { get; set; }
+}
+```
 
 ### <a name="singletonscopehost"></a>SingletonScope.Host
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9522e1f56c7aa8ce8fbe2b5b7b04f5482738342c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f18e94b6f788609dc5a0466e9d8ffa0c02056b1e
+ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236667"
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35678049"
 ---
 ### <a name="supportedclientos"></a>点到站点连接可以用于哪些客户端操作系统？
 
@@ -21,7 +21,6 @@ ms.locfileid: "35236667"
 
 * Windows 7（32 位和 64 位）
 * Windows Server 2008 R2（仅 64 位）
-* Windows 8（32 位和 64 位）
 * Windows 8.1（32 位和 64 位）
 * Windows Server 2012（仅 64 位）
 * Windows Server 2012 R2（仅 64 位）

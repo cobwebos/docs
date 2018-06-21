@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 38f31220b7cf4624367d872df152ef9e1304e841
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 63f079f6c8e584ff3a89503104060daf056763ed
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836294"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
 [top]: #machine-learning-sample-datasets
@@ -203,7 +205,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>相关研究：</b>Cortez, P. 和 Morais, A.（2008 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
-[Cortez 和 Morais，2007 年] P. Cortez 和 A. Morais。 使用气象数据预测森林火灾的数据挖掘方法。 在 J. Neves, M. F. Santos 和 J. Machado Eds., 人工智能的新趋势, 2007 第 13 届 EPIA 的会议记录 - 有关人工智能的葡萄牙语大会, 12 月, Guimarães, 葡萄牙, pp. 512-523, 2007 年。 APPIA, ISBN-13 978-989-95618-0-9。 如需获取，请访问 <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>。
+[Cortez 和 Morais，2007 年] P. Cortez 和 A. Morais。 使用气象数据预测森林火灾的数据挖掘方法。 在 J. Neves, M. F. Santos 和 J. Machado 编辑，“人工智能新趋势”，2007 年第 13 届 EPIA 会议记录 - 有关人工智能的葡萄牙会议于 2007 年 12 月在葡萄牙吉马良斯召开，第 512-523 页。 APPIA, ISBN-13 978-989-95618-0-9。 如需获取，请访问 <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>。
   </td>
 </tr>
 

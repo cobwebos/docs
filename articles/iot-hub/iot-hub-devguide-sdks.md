@@ -1,25 +1,19 @@
 ---
 title: 了解 Azure IoT SDK | Microsoft Docs
 description: 开发人员指南 - 介绍了相关链接，其指向可用于构建设备应用和后端应用的各种 Azure IoT 设备和服务 SDK。
-services: iot-hub
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: c5c9a497-bb03-4301-be2d-00edfb7d308f
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: dobett
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71d02e3f8bf0757d7ea0622e76b95acda1fefc95
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 718bf82a921ec3b70939b7a70205a4c650702dd0
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823344"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -61,6 +55,10 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 * 通过 [pip][lnk-pip-device] 安装
 * [源代码][lnk-python-sdk]
 
+适用于 iOS 的 Azure IoT 中心设备 SDK： 
+* 从 [CocoaPod][lnk-cocoa-device] 安装
+* [示例][lnk-ios-sample]
+
 > [!NOTE]
 > 有关使用语言和平台特定的程序包管理器在开发计算机上安装二进制文件和依赖项的信息，请参阅 GitHub 存储库中的自述文件。
 > 
@@ -96,6 +94,10 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 适用于 C 的 Azure IoT 中心服务 SDK： 
 * 通过 [apt-get、MBED、Arduino IDE 或 Nuget][lnk-c-package] 下载
 * [源代码][lnk-c-sdk]
+
+适用于 iOS 的 Azure IoT 中心服务 SDK： 
+* 从 [CocoaPod][lnk-cocoa-service] 安装
+* [示例][lnk-ios-sample]
 
 > [!NOTE]
 > 有关使用语言和平台特定的程序包管理器在开发计算机上安装二进制文件和依赖项的信息，请参阅 GitHub 存储库中的自述文件。
@@ -145,3 +147,6 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-benefits-blog]: https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/
+[lnk-cocoa-device]: https://cocoapods.org/pods/AzureIoTHubClient
+[lnk-ios-sample]: https://github.com/Azure-Samples/azure-iot-samples-ios
+[lnk-cocoa-service]: https://cocoapods.org/pods/AzureIoTHubServiceClient

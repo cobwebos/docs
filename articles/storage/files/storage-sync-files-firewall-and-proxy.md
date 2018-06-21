@@ -4,7 +4,7 @@ description: Azure 文件同步本地网络配置
 services: storage
 documentationcenter: ''
 author: fauhse
-manager: klaasl
+manager: aungoo
 editor: tamram
 ms.assetid: ''
 ms.service: storage
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 979897e3cb703b36a46e96848a9176d6d4c6cc6a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 5014c8204b6b6da539a41aaa3308d8787fb517a7
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072260"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738524"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。

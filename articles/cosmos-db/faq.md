@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735158"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261553"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
@@ -159,8 +159,9 @@ SQL API 通过 HTTP 实体标记或 ETag 支持乐观并发控制 (OCC)。 每�
 SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。 脚本内的所有数据库操作均在快照隔离下执行。 如果是单分区集合，则在集合范围内执行。 如果集合已分区，则在集合内具有相同分区键值的文档下执行。 文档版本 (ETag) 的快照是在事务开始时获取的，且只有当脚本成功运行时才会提交。 如果 JavaScript 引发错误，则会回滚事务。 有关详细信息，请参阅 [Azure Cosmos DB 的服务器端 JavaScript 编程](programming.md)。
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>如何将文档批量插入到 Document DB 中？
-可以通过以下两种方法之一，将文档批量插入到 Azure Cosmos DB 中：
+可以通过以下方法之一，将文档批量插入到 Azure Cosmos DB 中：
 
+* 批量执行程序工具，如[使用批量执行程序 .NET 库](bulk-executor-dot-net.md)和[使用批量执行程序 Java 库](bulk-executor-java.md)中所述
 * 数据集成工具，如 [Azure Cosmos DB 的数据迁移工具](import-data.md)中所述。
 * 存储过程，如 [Azure Cosmos DB 的服务器端 JavaScript 编程](programming.md)中所述。
 

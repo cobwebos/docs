@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 49123a47d90970d1a99276521b5aa1d516f509ab
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1facce770ca2b106d2e3113bb6d1a754ecb9376b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587583"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211707"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域中创建组织单位 (OU)
 Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计算机”和“AADDC 用户”。 “AADDC 计算机”容器包含已加入托管域的所有计算机的计算机对象。 “AADDC 用户”容器包含 Azure AD 租户中的用户和组。 有时，可能需要在托管域上创建服务帐户才能部署工作负荷。 为此，可以在托管域上创建自定义的组织单位 (OU)，并在此 OU 中创建服务帐户。 本文说明如何在托管域中创建 OU。

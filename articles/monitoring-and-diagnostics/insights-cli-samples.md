@@ -1,32 +1,26 @@
 ---
-title: Azure Monitor CLI 2.0 快速入门示例。 | Microsoft Docs
+title: Azure Monitor CLI 快速入门示例
 description: Azure Monitor 功能的示例 CLI 2.0 命令。 Azure 监视器是一项 Microsoft Azure 服务，允许用户发送警报通知、基于所配置的遥测数据调用 Web URL 和自动缩放云服务、虚拟机和 Web 应用。
-author: kamathashwin
-manager: ''
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 1653aa81-0ee6-4622-9c65-d4801ed9006f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/09/2018
-ms.author: ashwink
-ms.openlocfilehash: a9c6cc0fb81b094e1c980e4c209184a0c0ebd428
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+author: rboucher
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: robb
+ms.component: ''
+ms.openlocfilehash: 0b98cc29325310cfc0c7a62de693c309b6731447
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34009752"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262396"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>Azure Monitor CLI 2.0 快速入门示例
 本文演示有助于访问 Azure 监视器功能的示例命令行接口 (CLI) 命令。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
 
 ## <a name="prerequisites"></a>先决条件
 
-如果尚未安装 Azure CLI，请按照[安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 的说明进行操作。 还可以使用 [Azure Cloud Shell](/azure/cloud-shell) 在浏览器中以交互式体验运行 CLI。 
+如果尚未安装 Azure CLI，请按照[安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 的说明进行操作。 还可以使用 [Azure Cloud Shell](/azure/cloud-shell) 在浏览器中以交互式体验运行 CLI。 请参阅 [Azure Monitor CLI 参考](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest)中的所有可用命令的完整参考。 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 第一步是登录 Azure 帐户。
@@ -91,7 +85,8 @@ az monitor activity-log list --resource-provider Microsoft.Web \
 ```
 
 ## <a name="work-with-alerts"></a>使用警报 
-[!NOTE] 目前，仅在 CLI 中支持警报（经典）。 
+> [!NOTE]
+> 目前，仅在 CLI 中支持警报（经典）。 
 
 ### <a name="get-alert-classic-rules-in-a-resource-group"></a>在资源组中获取警报（经典）规则
 

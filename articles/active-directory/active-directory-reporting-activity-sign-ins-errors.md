@@ -3,25 +3,25 @@ title: Azure Active Directory 门户中的登录活动报告错误代码 | Micro
 description: 登录活动报告错误代码参考。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cb636db4e6e2097f494fcbc7a6584f0172514b95
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698503"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231863"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的登录活动报告错误代码
 
@@ -65,13 +65,13 @@ ms.locfileid: "34698503"
 |40008|联合标识提供者出现问题。 请联系 IDP 解决此问题。|
 |40009|联合标识提供者出现问题。 请联系 IDP 解决此问题。|
 |40014|联合标识提供者出现问题。 请联系 IDP 解决此问题。|
-|50000|登录服务出现问题。 请[开具支持票证](active-directory-troubleshooting-support-howto.md)以解决此问题。|
+|50000|登录服务出现问题。 请[开具支持票证](fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。|
 |50001|在此租户中找不到服务主体名称。 如果应用程序尚未由租户管理员安装，则可能会发生这种情况。 或者，资源主体在目录中找不到或无效。|
 |50002|由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题|
 |50003|由于缺少签名密钥或证书，登录失败。 这可能是因为应用程序中未配置任何签名密钥。 请查看 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) 中所述的解决方法。 如果仍然出现问题，请联系应用程序所有者或应用程序管理员|
 |50005|用户尝试从条件访问策略目前不支持的平台登录到设备|
 |50006| 由于签名无效，签名验证失败。 请查看 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) 中所述的解决方法。 如果仍然出现问题，请联系应用程序所有者或应用管理员|
-|50007|找不到此应用程序的合作伙伴加密证书。 请向 Microsoft [开具支持票证](active-directory-troubleshooting-support-howto.md)以解决此问题。|
+|50007|找不到此应用程序的合作伙伴加密证书。 请向 Microsoft [开具支持票证](fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。|
 |50008|SAML 断言在令牌中缺失或配置错误。 请联系联合提供者。|
 |50010|由于未配置令牌受众，应用程序的受众 URI 验证失败。 请联系应用程序所有者|
 |50011|回复地址缺失、配置错误或者与为应用程序配置的回复地址不匹配。 请尝试 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) 中所列的解决方法。 如果仍然出现问题，请联系应用程序所有者或应用管理员|
@@ -114,8 +114,8 @@ ms.locfileid: "34698503"
 |50133|会话因过期或最近更改了密码而无效。|
 |50135|由于存在帐户风险，需要更改密码|
 |50136|将 MSA 会话重定向到应用 - 检测到单个 MSA 会话 |
-|50140|此错误是由于用户登录时出现“使我保持登录状态”中断而发生的。 [开具支持票证](active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。 |
-|50143|会话不匹配 - 会话无效，因为不同的资源导致用户租户与域提示不匹配。 [开具支持票证](active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。|
+|50140|此错误是由于用户登录时出现“使我保持登录状态”中断而发生的。 [开具支持票证](fundamentals/active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。 |
+|50143|会话不匹配 - 会话无效，因为不同的资源导致用户租户与域提示不匹配。 [开具支持票证](fundamentals/active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。|
 |50144|用户的 Active Directory 密码已过期。 为用户生成新密码，或者让最终用户使用自助重置工具|
 |50146|需要为此应用程序配置特定于应用程序的签名密钥。 没有为此应用程序配置签名密钥，或者密钥已过期或尚未生效。 请联系应用程序所有者|
 |50148|code_verifier 与 PKCE 的授权请求中提供的 code_challenge 不匹配。 请与应用程序开发人员联系。 |
@@ -150,7 +150,7 @@ ms.locfileid: "34698503"
 |70007|请求令牌时，应用程序返回了不受支持的“response_mode”值。 请联系应用所有者|
 |70008|提供的授权代码或刷新令牌已过期 - 已吊销。 让用户重试登录|
 |70011|应用程序请求的作用域无效。 请联系应用程序所有者|
-|70012|对 MSA（使用者）用户进行身份验证时发生服务器错误。 请重试。 如果仍然失败，请[开具支持票证](active-directory-troubleshooting-support-howto.md) |
+|70012|对 MSA（使用者）用户进行身份验证时发生服务器错误。 请重试。 如果仍然失败，请[开具支持票证](fundamentals/active-directory-troubleshooting-support-howto.md) |
 |70018|由于用户为设备代码流键入了错误的用户代码，验证码无效。 授权未获批准|
 |70019|验证码已过期。 让用户重试登录|
 |70037|提供了错误的质询响应。 已拒绝远程控制身份验证会话。|
@@ -161,15 +161,15 @@ ms.locfileid: "34698503"
 |75011|用户在服务中用于身份验证的身份验证方法与请求的身份验证方法不匹配。 请联系应用所有者|
 |75016|SAML2 身份验证请求包含无效的 NameIdPolicy。 请联系应用所有者|
 |80001|身份验证代理无法连接到 Active Directory。 请务必在可为用户登录请求提供服务的 DC 建立直接连接的、已加入域的计算机上安装身份验证代理。|
-|80002|内部错误。 密码验证请求超时。我们无法将身份验证请求发送到内部混合标识服务。 请[开具支持票证](active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息|
-|80003|身份验证代理收到的响应无效。 尝试对本地 Active Directory 进行身份验证时发生未知错误。 请[开具支持票证](active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。|
-|80005|身份验证代理：处理来自身份验证代理的响应时出现未知错误。 请[开具支持票证](active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。|
+|80002|内部错误。 密码验证请求超时。我们无法将身份验证请求发送到内部混合标识服务。 请[开具支持票证](fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息|
+|80003|身份验证代理收到的响应无效。 尝试对本地 Active Directory 进行身份验证时发生未知错误。 请[开具支持票证](fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。|
+|80005|身份验证代理：处理来自身份验证代理的响应时出现未知错误。 请[开具支持票证](fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。|
 |80007|身份验证代理无法验证用户的密码。|
 |80010|身份验证代理无法解密密码。 |
 |80011|身份验证代理无法检索加密密钥。|
 |80012|用户尝试在允许的小时（在 AD 中指定）以外登录|
 |80013|由于运行身份验证代理的计算机与 AD 之间存在时间偏差，身份验证尝试无法完成。 解决时间同步问题|
-|80014|身份验证代理超时。[开具支持票证](active-directory-troubleshooting-support-howto.md)并提供错误代码、相关性 ID和日期时间，以获取有关此错误的更多详细信息|
+|80014|身份验证代理超时。[开具支持票证](fundamentals/active-directory-troubleshooting-support-howto.md)并提供错误代码、相关性 ID和日期时间，以获取有关此错误的更多详细信息|
 |81001|用户的 Kerberos 票证太大。 如果用户处于过多的组中，从而使得 Kerberos 票证包含过多的组成员身份，则可能会出现此问题。 减少用户的组成员身份，然后重试。|
 |81005|身份验证包不受支持|
 |81007|没有为租户启用无缝 SSO|

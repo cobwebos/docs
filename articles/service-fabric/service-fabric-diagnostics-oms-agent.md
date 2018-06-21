@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: a3ce72e51477c1eda99461b3910bfeeac207be55
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 74a738f85a969e3c3451dc326de9b4284c0984c8
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809567"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>使用 Log Analytics 设置性能监视
 
@@ -73,19 +74,27 @@ ms.lasthandoff: 05/16/2018
 
 添加 OMS 代理后，请转到 Log Analytics 门户，选择要收集的性能计数器。 
 
-1. 在 Azure 门户中，转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 ServiceFabric\<nameOfOMSWorkspace\>然后转到其概述页。 单击顶部的链接转到 OMS 门户。
+1. 在 Azure 门户中，转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfOMSWorkspace\>**。
 
-2. 进入门户后，将在图形窗体中看到每个已启用的解决方案的磁贴，包括 Service Fabric 的磁贴。 单击磁贴可转到 Service Fabric 分析解决方案。 
+2. 单击“OMS 工作区”。
 
-3. 随后将会看到一些磁贴，以及有关操作通道和 Reliable Services 事件的图形。 在右侧单击齿轮图标转到设置页。
+3. 单击“高级设置”。
 
-    ![OMS 设置](media/service-fabric-diagnostics-oms-agent/oms-solutions-settings.png)
+4. 单击“数据”，然后单击“Windows 或 Linux 性能计数器”。 此时会显示一个可以选择的默认计数器列表，此外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)中介绍了正确的格式。
 
-4. 在设置页上，单击“数据”并选择“Windows 或 Linux 性能计数器”。 此时会显示一个可以选择的默认选项列表，另外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)中介绍了正确的格式。
+5. 单击“保存”，然后单击“确定”。
 
-配置计数器后，请返回解决方案页，随即会看到数据流入并显示在“节点指标”下面的图形中。 还可以使用 Kusto 查询语言，像查询群集事件一样查询性能计数器数据，以及基于节点、性能计数器名称和值进行筛选。 
+6. 关闭“高级设置”边栏选项卡。
 
-![OMS 性能计数器查询](media/service-fabric-diagnostics-oms-agent/oms-perf-counter-query.png)
+7. 在“常规”标题下，单击“概述”。
+
+8. 将看到每个已启用的解决方案的图形形式的磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
+
+9. 将会看到一些带有有关操作通道和 Reliable Services 事件的图形的磁贴。 已选择的计数器的流入数据的图形表示形式将会显示在“节点指标”下。 
+
+10. 单击“容器指标”图形可了解更多详细信息。 还可以使用 Kusto 查询语言，像查询群集事件一样查询性能计数器数据，以及基于节点、性能计数器名称和值进行筛选。
+
+![OMS 性能计数器查询](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 

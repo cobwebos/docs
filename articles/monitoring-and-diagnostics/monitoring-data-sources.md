@@ -1,24 +1,19 @@
 ---
-title: 使用 Azure 中的监视数据 | Microsoft Docs
+title: Azure 中的监视数据源
 description: 了解现可在 Azure 上使用的所有监视数据源。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/27/2017
 ms.author: johnkem
-ms.openlocfilehash: b10e95cd6b335468201b4cd123b3a29fb5d1bcdb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: ''
+ms.openlocfilehash: 7b3cb869f3c220c20db53216c96449d01c16eaf6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263171"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>使用 Azure 中的监视数据
 
@@ -43,7 +38,7 @@ ms.lasthandoff: 04/06/2018
 | 安全中心资源状态 | 状态 | [支持的所有资源](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**REST API：**[安全状态](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |
 | 资源运行状况 | 状态 | 支持的服务 | <ul><li>**REST API：**[资源运行状况 REST API](https://azure.microsoft.com/blog/reduce-troubleshooting-time-with-azure-resource-health/)</li></ul> |
 | Azure Monitor 指标警报 | 通知 | [查看此处的列表](monitoring-supported-metrics.md) | <ul><li>**Webhook：**[Azure 指标警报](insights-webhooks-alerts.md)</li></ul> |
-| Azure Monitor 活动日志警报 | 通知 | 所有 Azure 服务 | <ul><li>**Webhook：**Azure 活动日志警报</li></ul> |
+| Azure Monitor 活动日志警报 | 通知 | 所有 Azure 服务 | <ul><li>**Webhook：** Azure 活动日志警报</li></ul> |
 | 自动缩放通知 | 通知 | [查看此处的列表](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhook：**[自动缩放通知 webhook 有效负载架构](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
 | 日志搜索查询警报 | 通知 | Log Analytics | <ul><li>**Webhook：**[Log Analytics 警报](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
 | Application Insights 指标警报 | 通知 | Application Insights | <ul><li>**Webhook：**[Application Insights 警报](../application-insights/app-insights-alerts.md)</li></ul> |

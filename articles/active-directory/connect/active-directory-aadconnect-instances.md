@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 06/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 158a0f6d948172ec7d986703e9fa95dd19bdde6a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 351f3e34f5050d922655a633ec89f51d191b946e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592256"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291962"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect：有关实例的特殊注意事项
 Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例。 但也有其他实例，这些实例对 URL 具有不同的要求并且具有其他的特殊注意事项。
@@ -38,8 +38,6 @@ Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例�
 
 德国 Microsoft 云中当前不存在的功能：
 
-* **Azure AD Connect Health** 不可用。
-* **自动更新**不可用。
 * 密码写回可用于使用 Azure AD Connect 1.1.570.0 及更高版本预览。
 * 其他 Azure AD Premium 服务不可用。
 
@@ -61,8 +59,6 @@ DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本�
 
 Microsoft Azure 政府版云中当前不存在的功能：
 
-* **Azure AD Connect Health** 不可用。
-* **自动更新**不可用。
 * 密码写回可用于使用 Azure AD Connect 1.1.570.0 及更高版本预览。
 * 其他 Azure AD Premium 服务不可用。
 

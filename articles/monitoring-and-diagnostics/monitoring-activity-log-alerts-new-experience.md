@@ -1,26 +1,19 @@
 ---
-title: 使用 Azure Monitor 中的新警报体验创建和管理活动日志警报 | Microsoft Docs
-description: 本文介绍如何通过 Azure Monitor 中的警报选项卡创建活动日志警报
-author: JYOTHIRMAISURI
-manager: vvithal
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: aabc0e57-78cd-44dd-a8d1-af5e1e567360
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: 在新的 Azure Monitor 警报体验中使用活动日志警报
+description: 如何通过 Azure Monitor 下的“警报(预览版)”选项卡创建活动日志警报。 此文将详细介绍此功能的新用户体验。
+author: jyothirmaisuri
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: v-jysur
-ms.custom: ''
-ms.openlocfilehash: 070acc6fb6f6f744474edeef0e914dda9d24c558
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.component: alerts
+ms.openlocfilehash: 10cd4e2ea14ab66a44ba2123e025b3d1b91f385c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202814"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263552"
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-experience"></a>使用新的警报体验创建活动日志警报
 

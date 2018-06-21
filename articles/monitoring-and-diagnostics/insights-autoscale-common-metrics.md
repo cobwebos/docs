@@ -1,24 +1,19 @@
 ---
-title: "Azure Monitor 自动缩放常见指标 | Microsoft Docs"
-description: "了解自动缩放云服务、虚拟机和 Web 应用时常用的指标。"
+title: 自动缩放的常用指标
+description: 了解自动缩放云服务、虚拟机和 Web 应用时常用的指标。
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 189b2a13-01c8-4aca-afd5-90711903ca59
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.openlocfilehash: 240a230d09680672ccd5316470a87d047fab9fd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 7b6f454a8d4c8794b8c56494fd9ed573f8b79852
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262233"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
 利用 Azure 监视器自动缩放，可以根据遥测数据（指标）增加或减少正在运行的实例数。 本文档介绍了可能需要使用的常用指标。 在云服务和服务器场的 Azure 门户中，可以选择要作为缩放依据的资源指标。 不过，也可以选择其他资源的任何指标来作为缩放依据。
@@ -53,15 +48,15 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 可以针对下列指标创建警报：
 
-| 指标名称 | 计价单位 |
+| 指标名称 | 单位 |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |百分比 |
 | \Processor(_Total)\% Privileged Time |百分比 |
 | \Processor(_Total)\% User Time |百分比 |
-| \Processor Information(_Total)\Processor Frequency |计数 |
-| \System\Processes |计数 |
-| \Process(_Total)\Thread Count |计数 |
-| \Process(_Total)\Handle Count |计数 |
+| \Processor Information(_Total)\Processor Frequency |Count |
+| \System\Processes |Count |
+| \Process(_Total)\Thread Count |Count |
+| \Process(_Total)\Handle Count |Count |
 | \Memory\% Committed Bytes In Use |百分比 |
 | \Memory\Available Bytes |字节 |
 | \Memory\Committed Bytes |字节 |
@@ -77,11 +72,11 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \PhysicalDisk(_Total)\Disk Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |每秒字节数 |
-| \PhysicalDisk(_Total)\Avg.磁盘队列长度 |计数 |
-| \PhysicalDisk(_Total)\Avg.磁盘读取队列长度 |计数 |
-| \PhysicalDisk(_Total)\Avg.磁盘写入队列长度 |计数 |
+| \PhysicalDisk(_Total)\Avg.磁盘队列长度 |Count |
+| \PhysicalDisk(_Total)\Avg.磁盘读取队列长度 |Count |
+| \PhysicalDisk(_Total)\Avg.磁盘写入队列长度 |Count |
 | \LogicalDisk(_Total)\% Free Space |百分比 |
-| \LogicalDisk(_Total)\Free Megabytes |计数 |
+| \LogicalDisk(_Total)\Free Megabytes |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Linux VM 的来宾 OS 指标
 在 Azure 中创建 VM 时，使用诊断扩展会默认启用诊断。
@@ -125,15 +120,15 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \PhysicalDisk\AverageReadTime |秒 |
 | \PhysicalDisk\AverageWriteTime |秒 |
 | \PhysicalDisk\AverageTransferTime |秒 |
-| \PhysicalDisk\AverageDiskQueueLength |计数 |
+| \PhysicalDisk\AverageDiskQueueLength |Count |
 | \NetworkInterface\BytesTransmitted |字节 |
 | \NetworkInterface\BytesReceived |字节 |
-| \NetworkInterface\PacketsTransmitted |计数 |
-| \NetworkInterface\PacketsReceived |计数 |
+| \NetworkInterface\PacketsTransmitted |Count |
+| \NetworkInterface\PacketsReceived |Count |
 | \NetworkInterface\BytesTotal |字节 |
-| \NetworkInterface\TotalRxErrors |计数 |
-| \NetworkInterface\TotalTxErrors |计数 |
-| \NetworkInterface\TotalCollisions |计数 |
+| \NetworkInterface\TotalRxErrors |Count |
+| \NetworkInterface\TotalTxErrors |Count |
+| \NetworkInterface\TotalCollisions |Count |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>常用的 Web（服务器场）指标
 也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名为 **HttpQueueLength**。  以下部分列出了可用的服务器场（Web 应用）指标。
@@ -147,12 +142,12 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 可以针对这些指标发出警报或以其为缩放依据。
 
-| 指标名称 | 计价单位 |
+| 指标名称 | 单位 |
 | --- | --- |
 | CpuPercentage |百分比 |
 | MemoryPercentage |百分比 |
-| DiskQueueLength |计数 |
-| HttpQueueLength |计数 |
+| DiskQueueLength |Count |
+| HttpQueueLength |Count |
 | BytesReceived |字节 |
 | BytesSent |字节 |
 
@@ -189,6 +184,6 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 ```
 
 > [!NOTE]
-> 若使用服务总线，则不存在资源组这一概念，但 Azure Resource Manager 会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-EastUS”、“Default-ServiceBus-WestUS”、“Default-ServiceBus-AustraliaEast”等等。
+> 若使用服务总线，则不存在资源组这一概念，但 Azure 资源管理器会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-EastUS”、“Default-ServiceBus-WestUS”、“Default-ServiceBus-AustraliaEast”等等。
 >
 >

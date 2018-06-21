@@ -1,0 +1,72 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 文本翻译 API 文档
+metadata:
+  title: 文本翻译 API 文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  description: 了解如何使用文本翻译 API 来翻译多个语言的文本。
+  services: cognitive-services
+  author: Jann-Skotdal
+  manager: Chris.Wendt
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 10/30/2017
+  ms.author: v-jansko
+  ms.openlocfilehash: 55ec3147a07c5c76fe1f1b356d633a9afeb783cc
+  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/20/2018
+  ms.locfileid: "36286902"
+abstract:
+  description: Microsoft 文本翻译 API 是一项基于云的机器翻译服务。 有了此 API，可以通过简单的 REST API 调用来近乎实时地翻译来自任何应用或服务的文本。 该 API 使用最先进的神经机器翻译技术以及产品/服务统计机器翻译技术。 有关神经 MT 和统计 MT 支持的语言的列表，请参阅<a href="languages.md">支持的语言</a>。
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 开始使用文本翻译 API：
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+      title: C#
+    - image:
+        src: media/index/logo_java.svg
+      title: Java
+    - image:
+        src: media/index/logo_nodejs.svg
+      title: Node.js
+    - image:
+        src: media/index/logo_python.svg
+      title: Python
+    rows:
+    - title: 将一种语言的文本翻译为另一种语言
+      values:
+      - href: quickstart-csharp-translate
+      - href: quickstart-java-translate
+      - href: 
+      - href: 
+    - title: 将一个脚本中的文本转换到另一个脚本
+      values:
+      - href: quickstart-csharp-transliterate
+      - href: quickstart-java-transliterate
+      - href: 
+      - href: 
+    - title: 确定文本语言
+      values:
+      - href: quickstart-csharp-detect
+      - href: quickstart-java-detect
+      - href: 
+      - href: 
+    - title: 获取备用翻译和使用情况
+      values:
+      - href: quickstart-csharp-dictionary
+      - href: quickstart-java-dictionary
+      - href: 
+      - href: 
+- title: 引用
+  items:
+  - type: paragraph
+    text: <p><a href="reference/v3-0-reference.md">API 参考</a></p>

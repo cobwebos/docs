@@ -3,25 +3,25 @@ title: Azure AD 报告 API 入门 | Microsoft Docs
 description: 如何开始使用 Azure Active Directory 报告 API
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/07/2018
-ms.author: dhanyahk;rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: df0b672a07575a0d26fff89c90008043d02818dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 842e4d8413544a303b656a8e4a05bdf58a7c8164
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589094"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223835"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 

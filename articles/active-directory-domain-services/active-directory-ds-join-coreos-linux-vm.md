@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: bd323faf7fbc42d7b85fdaf87311c3f133045e6f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 53127cbc663141a5080426072360237935f175db
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589128"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217334"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>将 CoreOS Linux 虚拟机加入托管域
 本文介绍如何将 Azure 中的 CoreOS Linux 虚拟机加入 Azure AD 域服务托管域。

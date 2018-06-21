@@ -1,35 +1,39 @@
 ---
-title: "Azure 日志集成与 Azure Active Directory 审核日志 | Microsoft Docs"
-description: "了解如何安装 Azure 日志集成服务和集成来自 Azure 审核日志的日志"
+title: Azure 日志集成与 Azure Active Directory 审核日志 | Microsoft Docs
+description: 了解如何安装 Azure 日志集成服务和集成来自 Azure 审核日志的日志
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 02/16/2018
+ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0f45f43a0296a7d90a68b0526f805ea50a1ce6c6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 07299b960747528dde8dcefc70055442c2150486
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235985"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志
 
 Azure Active Directory (Azure AD) 审核事件可以帮助识别 Azure Active Directory 中发生的特权操作。 通过查看 [Azure Active Directory 审核报告事件](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md)，可以了解能够跟踪的事件类型。
 
 
-> [!NOTE]
-> 必须先查看[入门](security-azure-log-integration-get-started.md)文章并完成其中的步骤，然后才能尝试本文中的步骤。
+>[!IMPORTANT]
+> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载将于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志的步骤
+
+> [!NOTE]
+> 必须先查看[入门](security-azure-log-integration-get-started.md)文章并完成其中的相关步骤，然后才能尝试本文中的步骤。
 
 1. 打开命令提示符并运行此命令：
 

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 685998729e9aa01f60c80735b5f2f4d278769bdb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9075c774d0b56b6609616205e30b5a7d484fa031
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808088"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +43,7 @@ ms.lasthandoff: 03/23/2018
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
-为使数据管理网关连接到 MySQL 数据库，需要在数据管理网关所在的系统上安装[用于 Microsoft Windows 的 MySQL 连接器/Net ](https://dev.mysql.com/downloads/connector/net/)（版本 6.6.5 或更高版本）。 此 32 位驱动程序与 64 位数据管理网关兼容。 支持 5.1 和更高版本的 MySQL。
+要使数据管理网关连接到 MySQL 数据库，需要在数据管理网关所在的系统上安装[用于 Microsoft Windows 的 MySQL 连接器/Net ](https://dev.mysql.com/downloads/connector/net/)（6.6.5 和 6.10.7 之间的版本）。 此 32 位驱动程序与 64 位数据管理网关兼容。 支持 5.1 和更高版本的 MySQL。
 
 > [!TIP]
 > 如果遇到“身份验证失败，因为远程方已关闭传输流”错误，请考虑将 MySQL 连接器/Net 升级到更高版本。

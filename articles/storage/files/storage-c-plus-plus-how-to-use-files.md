@@ -1,11 +1,11 @@
 ---
-title: "使用 C++ 针对 Azure 文件进行开发 | Microsoft Docs"
-description: "了解如何开发使用 Azure 文件来存储文件数据的 C++ 应用程序和服务。"
+title: 使用 C++ 针对 Azure 文件进行开发 | Microsoft Docs
+description: 了解如何开发使用 Azure 文件来存储文件数据的 C++ 应用程序和服务。
 services: storage
 documentationcenter: .net
 author: renashahmsft
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: d2f55b5ca6348ba8e190c65ec9a72c6f730d869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737565"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -26,9 +27,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>关于本教程
-
 本教程介绍如何针对 Azure 文件执行基本的操作。 通过用 C++ 编写的示例，学习如何创建共享和目录，以及如何上传、列出和删除文件。 如果不熟悉 Azure 文件，请先了解下面各部分中的概念，以便理解相关示例。
-
 
 * 创建和删除 Azure 文件共享
 * 创建和删除目录
@@ -45,8 +44,8 @@ ms.lasthandoff: 10/11/2017
 
 若要安装用于 C++ 的 Azure 存储客户端 2.4.0，可以使用以下方法之一：
 
-* **Linux：**按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
-* **Windows：**在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“程序包管理器控制台”。 在 [NuGet 包管理器控制台](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
+* **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
+* **Windows：** 在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“程序包管理器控制台”。 在 [NuGet 包管理器控制台](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
   
 ```
 Install-Package wastorage
@@ -182,7 +181,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 ```
 
 ## <a name="upload-a-file"></a>上传文件
-Azure 文件共享至少包含文件所在的根目录。 在本部分，你将学习如何将文件从本地存储上传到共享所在的根目录。
+Azure 文件共享至少包含文件可以驻留的根目录。 在本部分，学习如何将文件从本地存储上传到共享所在的根目录。
 
 上传文件的第一步是获取对文件所在的目录的引用。 为此，需要调用共享对象的 **get_root_directory_reference** 方法。
 
@@ -357,6 +356,6 @@ if (share.exists())
 若要了解有关 Azure 存储的详细信息，请参阅以下资源：
 
 * [适用于 C++ 的存储客户端库](https://github.com/Azure/azure-storage-cpp)
-* [Azure Storage File Service Samples in C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)（C++ 中的 Azure 存储文件服务示例）
+* [C++ 的 Azure 存储文件服务示例] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)
 * [Azure 存储资源管理器](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)

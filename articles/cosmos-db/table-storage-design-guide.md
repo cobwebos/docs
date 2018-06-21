@@ -2,22 +2,20 @@
 title: Azure 存储表设计指南 | Microsoft Docs
 description: 在 Azure 表存储中设计可伸缩的高性能表
 services: cosmos-db
-documentationcenter: na
 author: SnehaGunda
 manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: cosmos-db
+ms.component: cosmosdb-table
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 667fef855238b2524c05bbc2f137d466c0e56de8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4f3cafd80c713697a8b8fdde56c021be1c5319fb
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824581"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure 存储表设计指南：设计可伸缩的高性能表
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -85,7 +83,7 @@ ms.lasthandoff: 04/16/2018
 </tr>
 <tr>
 <td>Marketing</td>
-<td>系</td>
+<td>部门</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -525,7 +523,7 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 #### <a name="context-and-problem"></a>上下文和问题
 EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性能和伸缩性原因，你可能会决定在不同分区或不同存储系统中存储具有一致性要求的实体：在这种情况下，不能使用 EGT 来维护一致性。 例如，可能需要保持以下对象之间的最终一致性：  
 
-* 存储在同一个表的两个不同分区中的实体、存储在不同表中的实体、存储在不同存储帐户中的实体。  
+* 存储在同一个表的两个不同分区中的实体、存储在不同表中的实体，或存储在不同存储帐户中的实体。  
 * 存储在表服务中的实体和存储在 Blob 服务中的 blob。  
 * 表服务中存储的实体和文件系统中的文件。  
 * 实体存储在表服务中还使用 Azure 搜索服务编制了索引。  
@@ -1257,7 +1255,7 @@ foreach (var e in entities)
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>系</td>
+<td>部门</td>
 <td></td>
 <td></td>
 </tr>

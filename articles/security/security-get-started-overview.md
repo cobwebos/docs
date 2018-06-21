@@ -12,23 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 6a2ece3fc908963a6c8ea68f9746788278407fdc
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 7cb6927b8de07566428050e06a981c8f3afabb05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25542140"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227517"
 ---
 # <a name="azure-security-overview"></a>Azure 安全概述
-Azure.com 上的 Microsoft Azure 安全信息站点针对 Azure 安全问题提供了技术解答。 如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/default.aspx)。
+
+Azure.com 上的 Microsoft Azure 安全信息站点针对 Azure 安全问题提供了技术解答。 如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://www.microsoft.com/en-us/TrustCenter/)。
 
 我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 为应用程序和服务使用 Azure 其中一个最合理原因就是：可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。
 
 此网页与此站点会随着新 Azure 服务推出以及现有服务的更新而不断演进。 我们的安全产品会不断改进，并会在此处继续分享这些增强功能的技术详细信息。 建议定期光顾此站点查看最新消息！
 
 ## <a name="using-the-azure-security-information-site"></a>使用 Azure 安全信息站点
+
 在页面左侧，可以看到安全主题的类别集合。 单击或点按主题可以查看该类别下的文章。
 
 每个类别都有一篇“概述”文章。 “概述”文章的目的是提供 Azure 在针对该类别安全性方面所提供内容摘要。 “概述”文章有助于读者理解 Azure 产品、服务和功能，从而提升部署的安全性。 这些“概述”文章包含大量技术内容的链接，可通过这些链接详细了解有关主题及其实现方法。

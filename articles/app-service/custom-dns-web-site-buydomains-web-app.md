@@ -1,11 +1,11 @@
 ---
-title: "为 Azure Web 应用购买自定义域名"
-description: "了解如何在 Azure 应用服务中购买 Web 应用的自定义域名。"
+title: 为 Azure Web 应用购买自定义域名
+description: 了解如何在 Azure 应用服务中购买 Web 应用的自定义域名。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
 ms.workload: web
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 152dbb6d47dfdf3bf5df945b823f64e58e7d91e2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16a6d8e34bdec6e597c5f04faf421d387a877bff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714878"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>为 Azure Web 应用购买自定义域名
 
@@ -57,17 +58,17 @@ ms.lasthandoff: 02/21/2018
 
 ![扩展菜单](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-蓝色边框突出显示了应用的当前层。 检查以确保应用不在“免费”层中。 **免费**层不支持自定义 DNS。 
+蓝色边框突出显示了应用的当前层。 检查以确保应用不在 **F1** 层中。 **F1** 层不支持自定义 DNS。 
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-如果应用服务计划不在“免费”层，请关闭“选择定价层”页并跳转到[购买域](#buy-the-domain)。
+如果应用服务计划不在 **F1** 层中，请关闭“纵向扩展”页并跳转到[购买域](#buy-the-domain)。
 
 ### <a name="scale-up-the-app-service-plan"></a>增加应用服务计划
 
-选择任一非免费层（“共享”、“基本”、“标准”或“高级”）。 
+选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”类别中的任何层）。 有关其他选项，请单击“查看其他选项”。
 
-单击“选择”。
+单击“应用” 。
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

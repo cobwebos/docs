@@ -1,6 +1,6 @@
 ---
-title: "适用于 Hyper-V 到 Azure 部署的 Azure Site Recovery 部署规划器 | Microsoft Docs"
-description: "本文介绍在从 Hyper-V 移到 Azure 时运行 Azure Site Recovery 部署规划器的模式。"
+title: 适用于 Hyper-V 到 Azure 部署的 Azure Site Recovery 部署规划器 | Microsoft Docs
+description: 本文介绍在从 Hyper-V 移到 Azure 时运行 Azure Site Recovery 部署规划器的模式。
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: nisoneji
-ms.openlocfilehash: ae539f136578c6461ef7f680d553fbd76b10ae98
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 49243eaa4d3413509e569a88e1d7a2f6359d7876
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236223"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>运行适用于 Hyper-V 到 Azure 部署的 Azure Site Recovery 部署规划器
 
@@ -39,7 +40,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 |---|---|
 | -Operation | GetVMList |
 | -User | 连接到 Hyper-V 主机或 Hyper-V 群集所需的用户名。 用户需要有管理访问权限。|
-|-ServerListFile | 包含服务器列表的文件，其中有要分析的 VM。 文件路径可以是绝对或相对路径。 此文件的每一行中应包含以下内容之一：<ul><li>Hyper-V 主机名或 IP 地址</li><li>Hyper-V 群集名称或 IP 地址</li></ul><br>**示例：**ServerList.txt 包含以下服务器：<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
+|-ServerListFile | 包含服务器列表的文件，其中有要分析的 VM。 文件路径可以是绝对或相对路径。 此文件的每一行中应包含以下内容之一：<ul><li>Hyper-V 主机名或 IP 地址</li><li>Hyper-V 群集名称或 IP 地址</li></ul><br>**示例：** ServerList.txt 包含以下服务器：<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
 | -Directory|（可选）通用命名约定 (UNC) 或本地目录路径，用于存储在此操作期间生成的数据。 如果未指定名称，则会使用当前路径下名为 ProfiledData 的目录作为默认目录。|
 |-OutputFile| （可选）一个文件，其中保存了从 Hyper-V 服务器中提取的 VM 的列表。 如果未提到名称，则详细信息会存储在 VMList.txt 中。  在删除不需分析的 VM 后，即可使用此文件开始分析。|
 |-Password|（可选）连接到 Hyper-V 主机所需的密码。 如果未将密码指定为参数，则在运行命令时，系统会提示你输入它。|
@@ -88,14 +89,14 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |---|---|
 | -Operation | StartProfiling |
 | -User | 连接到 Hyper-V 主机或 Hyper-V 群集所需的用户名。 用户需要有管理访问权限。|
-| -VMListFile | 包含要分析的 VM 列表的文件。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br><br>**示例：**VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
+| -VMListFile | 包含要分析的 VM 列表的文件。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br><br>**示例：** VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-NoOfMinutesToProfile|运行分析的分钟数。 最小值为 30 分钟。|
 |-NoOfHoursToProfile|运行分析的小时数。|
 |-NoOfDaysToProfile |运行分析的天数。 建议在运行分析时，运行 7 天以上。 该持续时间可确保观察环境中指定时段内的工作负荷模式，并使用这些结果来提供准确的建议。|
 |-Virtualization|虚拟化类型（VMware 或 Hyper-V）。|
 |-Directory|（可选）用于存储在分析期间生成的分析数据的 UNC 或本地目录路径。 如果未指定名称，则会使用当前路径下名为 ProfiledData 的目录作为默认目录。|
 |-Password|（可选）连接到 Hyper-V 主机所需的密码。 如果未将密码指定为参数，则在运行命令时，系统会提示你输入它。|
-|-StorageAccountName|（可选）存储帐户名称，用于确定在将数据从本地复制到 Azure 时可实现的吞吐量。 该工具会将测试数据上传到此存储帐户来计算吞吐量。 存储帐户必须是常规用途 v1 或常规用途 v2。|
+|-StorageAccountName|（可选）存储帐户名称，用于确定在将数据从本地复制到 Azure 时可实现的吞吐量。 该工具会将测试数据上传到此存储帐户来计算吞吐量。 存储帐户必须是常规用途 v1 (GPv1) 类型。|
 |-StorageAccountKey|（可选）用于访问存储帐户的密钥。 转到 Azure 门户 >“存储帐户” > *存储帐户名称* > “设置” > “访问密钥” > **Key1**（或经典存储帐户的主访问密钥）。|
 |-Environment|（可选）Azure 存储帐户的目标环境。 它可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标区域为 Azure 美国政府或 Azure 中国时，请使用此参数。|
 
@@ -168,7 +169,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | 参数名称 | 说明 |
 |---|---|
 | -Operation | GenerateReport |
-|-VMListFile | 一个文件，其中包含一系列需为其生成报表的已分析 VM。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br><br>**示例：**VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
+|-VMListFile | 一个文件，其中包含一系列需为其生成报表的已分析 VM。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br><br>**示例：** VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Virtualization|虚拟化类型（VMware 或 Hyper-V）。|
 |-Directory|（可选）UNC 或本地目录路径，其中存储了分析数据（在分析期间生成的文件）。 需要使用此数据来生成报告。 如果未指定名称，则会使用当前路径下名为 ProfiledData 的目录作为默认目录。|
 | -User | （可选）连接到 Hyper-V 主机或 Hyper-V 群集所需的用户名。 用户需要有管理访问权限。 用户和密码用于获取要在报表中使用的最新 VM 配置信息（例如磁盘数、核心数、NIC 数）。 如果未提供此值，则使用分析过程中收集的配置信息。|
@@ -277,9 +278,9 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -Operation | GetThroughput |
 |-Virtualization|虚拟化类型（VMware 或 Hyper-V）。|
 |-Directory|（可选）UNC 或本地目录路径，其中存储了分析数据（在分析期间生成的文件）。 需要使用此数据来生成报告。 如果未指定名称，则会使用当前路径下名为 ProfiledData 的目录作为默认目录。|
-| -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上传到此存储帐户来确定消耗的带宽。 存储帐户必须是常规用途 v1 或常规用途 v2。|
+| -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上传到此存储帐户来确定消耗的带宽。 存储帐户必须是常规用途 v1 (GPv1) 类型。|
 | -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户” > *存储帐户名称* > “设置” > “访问密钥” > **Key1**。|
-| -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br><br>**示例：**VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
+| -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br><br>**示例：** VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Environment|（可选）Azure 存储帐户的目标环境。 它可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府或 Azure 中国时，请使用此参数。|
 
 ### <a name="example"></a>示例

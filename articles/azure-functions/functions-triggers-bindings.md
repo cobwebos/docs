@@ -13,13 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/07/2018
+ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 56b0f8e24dfc38b542f4bbfc7975f1704d70f22c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c5211b43a85383c7c9f42a1d56271addae6d956e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725337"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -45,38 +46,39 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="register-binding-extensions"></a>注册绑定扩展
 
-在版本 2.x 的 Azure Functions 运行时中，必须显式注册在函数应用中使用的[绑定扩展](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md)。 
+在版本 2.x 的 Azure Functions 运行时中，必须显式注册在函数应用中使用的绑定扩展（绑定类型）。 
 
-扩展以 NuGet 包的形式提供，其中，包名称通常以 [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) 开头。  安装和注册绑定扩展的方式取决于函数的开发方式： 
+Functions 运行时版本 2.x 目前以预览版提供。 有关如何将函数应用设置为使用 Functions 运行时版本 2.x 的信息，请参阅[如何指定 Azure Functions 运行时的目标版本](set-runtime-version.md)。
+
+在版本 2.x 中有一组可自动注册的核心绑定，因此你不必显式注册它们：HTTP、计时器和 Azure 存储（blob、队列和表）。 
+
+扩展以 NuGet 包的形式提供，其中，包名称通常以 [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) 开头。  注册绑定扩展的方式取决于函数的开发方式： 
 
 + [在本地使用 Visual Studio 或 VS Code 进行 C# 开发](#local-c-development-using-visual-studio-or-vs-code)
 + [在本地使用 Azure Functions Core Tools](#local-development-azure-functions-core-tools)
 + [在 Azure 门户中](#azure-portal-development) 
 
-在版本 2.x 中，有一组不是以扩展形式提供的核心绑定。 不需要注册以下触发器和绑定的扩展：HTTP、计时器和 Azure 存储。 
-
-有关如何将函数应用设置为使用 Functions 运行时版本 2.x 的信息，请参阅[如何指定 Azure Functions 运行时的目标版本](set-runtime-version.md)。 Functions 运行时版本 2.x 目前以预览版提供。 
-
 本部分中所示的包版本仅用作示例。 请检查 [NuGet.org 站点](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions)，确定函数应用中的其他依赖项需要哪个版本的给定扩展。    
 
-###  <a name="local-c-development-using-visual-studio-or-vs-code"></a>使用 Visual Studio 或 VS Code 进行本地 C# 开发 
+### <a name="local-csharp"></a>使用 Visual Studio 或 VS Code 进行本地 C# 开发
 
-使用 Visual Studio 或 Visual Studio Code 在本地开发 C# 函数时，只需添加扩展的 NuGet 包。 
+使用 Visual Studio 或 Visual Studio Code 在本地开发 C# 函数时，请安装扩展的 NuGet 包。 
 
 + **Visual Studio**：使用 NuGet 包管理器工具。 以下 [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) 命令从包管理器控制台安装 Azure Cosmos DB 扩展：
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
     ```
+
 + **Visual Studio Code**：可以在 .NET CLI 中，通过命令提示符使用 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令来安装包，如下所示：
 
-    ```
+    ```terminal
     dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
     ```
 
 ### <a name="local-development-azure-functions-core-tools"></a>使用 Azure Functions Core Tools 进行本地开发
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 ### <a name="azure-portal-development"></a>使用 Azure 门户进行开发
 

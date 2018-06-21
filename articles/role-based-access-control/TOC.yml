@@ -48,7 +48,7 @@
           href: role-assignments-powershell.md
         - name: REST
           href: role-assignments-rest.md
-    - name: 活动日志
+    - name: 查看活动日志
       href: change-history-report.md
     - name: 为全局管理员提升访问权限
       href: elevate-access-global-admin.md

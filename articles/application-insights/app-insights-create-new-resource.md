@@ -1,8 +1,8 @@
 ---
-title: "新建 Azure Application Insights 资源 | Microsoft Docs"
-description: "为新的实时应用程序手动设置 Application Insights 监视。"
+title: 新建 Azure Application Insights 资源 | Microsoft Docs
+description: 为新的实时应用程序手动设置 Application Insights 监视。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 9023f3d9ae3ddd4d75b5853a08177cba7718cec1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294711"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程序的数据。 因此创建新资源属于[设置 Application Insights 来监视新应用程序][start]的一个环节。 在许多情况下，IDE 可以自动完成资源创建。 但在某些情况下需要手动创建资源（例如，创建分别用于应用程序开发和产品构建的资源）。

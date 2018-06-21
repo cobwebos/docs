@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: d65e4c76d6c9bc0b1f6a9f2827a0ae2d7dec5d93
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f0def105997213ae5d356de89e6189b6441facbd
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824162"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291912"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
 在此任务中，会根据规定的业务要求，为混合标识解决方案定义数据保护策略。
@@ -57,7 +57,7 @@ ms.locfileid: "34824162"
 >
 
 ## <a name="define-content-management-options"></a>定义内容管理选项
-使用 Azure AD 管理混合标识基础结构的优点之一是整个过程对用户而言是完全透明的。 用户尝试访问共享资源，资源需要身份验证，因此用户必须将身份验证请求发送到 Azure AD 才能够获取令牌和访问资源。 整个过程在后台发生，无需用户交互。 还可以向某个用户[组](active-directory-manage-groups.md#getting-started-with-access-management)授权，使其能够执行某些常见操作。
+使用 Azure AD 管理混合标识基础结构的优点之一是整个过程对用户而言是完全透明的。 用户尝试访问共享资源，资源需要身份验证，因此用户必须将身份验证请求发送到 Azure AD 才能够获取令牌和访问资源。 整个过程在后台发生，无需用户交互。 还可以向某个用户[组](fundamentals/active-directory-manage-groups.md#getting-started-with-access-management)授权，使其能够执行某些常见操作。
 
 有数据隐私顾虑的组织通常需要对其解决方案进行数据分类。 如果其当前本地基础结构已使用数据分类，就能够使用 Azure AD 作为用户标识的主要存储库。 在 Windows Server 2012 R2 中，本地用于数据分类的常用工具称为[数据分类工具包](https://msdn.microsoft.com/library/Hh204743.aspx)。 借助此工具可以标识、分类和保护私有云中文件服务器上的数据。 还可以使用 Windows Server 2012 中的[自动文件分类](https://technet.microsoft.com/library/hh831672.aspx)来完成此任务。
 
@@ -131,12 +131,12 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
   3. 使用 Microsoft Intune 的 Office 365 应用程序的条件访问：IT 管理员可以预配条件访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 有关详细信息，请参阅 [Office 365 服务的条件性访问设备策略](active-directory-conditional-access-device-policies.md)。
 
-  4. 适用于 SaaS 应用的条件访问：使用[此功能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)可以配置基于应用程序的多重身份验证访问规则，并可以阻止不在受信任网络中的用户的访问。 可以将多重身份验证规则应用于已分配给该应用程序的所有用户，或者仅应用于指定安全组中的用户。 如果用户是从组织网络内部的 IP 地址访问应用程序，则可能不需要进行多重身份验证。
+  4. 适用于 SaaS 应用的条件访问：使用[此功能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)可以配置基于应用程序的多重身份验证访问规则，并可以阻止不在受信任网络中的用户的访问。 可以将多重身份验证规则应用于已分配给该应用程序的所有用户，或者仅应用于指定安全组中的用户。 如果用户是从组织网络内部的 IP 地址访问应用程序，则可能不需要进行多重身份验证。
 
 由于访问控制选项采用多层方式，因此在运行此任务时无法比较这些选项。 请确保针对每个要求控制资源访问权限的方案使用所有适用的选项。
 
 ## <a name="define-incident-response-options"></a>定义事件响应选项
-Azure AD 可通过监视用户活动，帮助 IT 人员识别环境中潜在的安全风险。 IT 可以使用 Azure AD 的访问和使用情况报告来监控组织目录的完整性和安全性。 使用此信息，IT 管理员能够更好地确定可能发生安全风险的位置，以便做出充分的规划来缓解这些风险。  [Azure AD Premium 订阅](active-directory-get-started-premium.md)提供一组安全报告来让 IT 人员获取此信息。 [Azure AD 报告](active-directory-view-access-usage-reports.md)的分类如下所示：
+Azure AD 可通过监视用户活动，帮助 IT 人员识别环境中潜在的安全风险。 IT 可以使用 Azure AD 的访问和使用情况报告来监控组织目录的完整性和安全性。 使用此信息，IT 管理员能够更好地确定可能发生安全风险的位置，以便做出充分的规划来缓解这些风险。  [Azure AD Premium 订阅](fundamentals/active-directory-get-started-premium.md)提供一组安全报告来让 IT 人员获取此信息。 [Azure AD 报告](active-directory-view-access-usage-reports.md)的分类如下所示：
 
 * **异常报告**：包含我们发现存在异常的登录事件。 目标是让你知道这项活动并能够就事件是否可疑做出决定。
 * **集成式应用程序报告**：就组织如何使用云应用程序提供见解。 Azure Active Directory 提供与数千个云应用程序的集成。
@@ -145,9 +145,9 @@ Azure AD 可通过监视用户活动，帮助 IT 人员识别环境中潜在的�
 * **活动日志**：包含过去 24 小时、过去 7 天或过去 30 天内的所有已审核事件的记录，以及组活动更改记录、密码重置和注册活动记录。
 
 > [!TIP]
-> 此外，可帮助事件响应团队处理案例的另一份报告是[凭据已泄漏的用户](http://blogs.technet.com/b/ad/archive/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials.aspx)报告。 此报告呈现这些泄漏凭据列表与租户之间的所有匹配项。
+> 此外，可帮助事件响应团队处理案例的另一份报告是[凭据已泄漏的用户](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/)报告。 此报告呈现这些泄漏凭据列表与租户之间的所有匹配项。
 >
->
+
 
 Azure AD 中还提供其他可在事件响应调查期间使用的重要内置报告，包括：
 

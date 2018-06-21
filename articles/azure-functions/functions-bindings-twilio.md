@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30a47fb597b5739e9f947caa9b72238631c780fe
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 62df5ebc6f5928c0992bd715e208137d89789e9a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724439"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 绑定
 
@@ -28,13 +29,17 @@ ms.lasthandoff: 05/18/2018
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>包
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet 包中提供了 Twilio 绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet 包 1.x 版中提供了 Twilio 绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>包 - Functions 2.x
+
+[Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet 包 3.x 版中提供了 Twilio 绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub 存储库中提供了此包的源代码。
+
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example"></a>示例
 
@@ -234,7 +239,7 @@ public static SMSMessage Run(
 |**name**|| 在 Twilio 短信的函数代码中使用的变量名。 |
 |**accountSid**|**AccountSid**| 此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称。|
 |**authToken**|**AuthToken**| 此值必须设置为保留 Twilio 身份验证令牌的应用设置的名称。|
-|**to**|**To**| 此值设置为短信将发送到的电话号码。|
+|**to**|**收件人**| 此值设置为短信将发送到的电话号码。|
 |**from**|**From**| 此值设置为发送短信的电话号码。|
 |**body**|**正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |
 

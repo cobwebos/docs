@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 7e9518f8a90faa0566b96d58992b01e4b0a642f4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c10a6367f07bf66f7a0a8968022881b3c616fb74
+ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32202705"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "36205597"
 ---
 ## <a name="test-your-code"></a>测试代码
 
@@ -43,7 +43,7 @@ ms.locfileid: "32202705"
 
 |属性 |值 |说明 |
 |---|---|---|
-|**Name** |用户全名 | 用户的名字和姓氏。
+|**名称** |用户全名 | 用户的名字和姓氏。
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名。
 |**主题** |主题 |唯一标识 Web 上用户的字符串。|
 |**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 guid。|

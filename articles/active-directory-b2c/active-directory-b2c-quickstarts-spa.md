@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5ea6b85803fdc5c768a23bf770b3646cc6add36b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ad9153b9b8d0235ad2cdc71b56f7b6179e98afdb
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711886"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293275"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为单页应用设置登录
 
@@ -104,4 +104,4 @@ Azure AD B2C 为示例 Web 应用的虚构品牌“Wingtip Toys”提供了一�
 下一步是创建自己的 Azure AD B2C 租户并将示例配置为使用租户运行。 
 
 > [!div class="nextstepaction"]
-> [在 Azure 门户中创建 Azure Active Directory B2C 租户](active-directory-b2c-get-started.md)
+> [在 Azure 门户中创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)

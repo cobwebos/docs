@@ -3,7 +3,7 @@ title: 计划 Azure 时序见解环境的缩放 | Microsoft Docs
 description: 本文介绍了在计划 Azure 时序见解环境（包括存储容量、数据保留、入口容量和监控）时如何遵循最佳做法。
 services: time-series-insights
 ms.service: time-series-insights
-author: jasonwhowell
+author: ashannon7
 ms.author: jasonh
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 45f081c4e1dbd32b46c8a69f32b0b205b948f9b5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49842f971645f97d954451ff6755294dc3c5a40f
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652315"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293258"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>计划 Azure 时序见解环境
 

@@ -3,19 +3,19 @@ title: 如何向 Azure 时序见解添加事件中心事件源 | Microsoft Docs
 description: 本文介绍如何将已连接至事件中心的事件源添加到时序见解环境
 ms.service: time-series-insights
 services: time-series-insights
-author: sandshadow
+author: ashannon7
 ms.author: edett
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: ed151160bd8bd0f0241e1a728fab53570e33a201
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 780a7cb3035dbe19c45b5fe9c6dfae54fccafd03
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656011"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293642"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>如何向时序见解环境添加事件中心事件源
 

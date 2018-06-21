@@ -5,20 +5,17 @@ keywords: 更改源
 services: cosmos-db
 author: rafats
 manager: kfile
-documentationcenter: ''
-ms.assetid: 2d7798db-857f-431a-b10f-3ccbc7d93b50
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: ''
-ms.topic: article
+ms.devlang: dotnet
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: be59f1a9dc19fffdb6a952c7db73756909036bf6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2600565493a334c7227e5c0d67a5808f30751108
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261060"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的更改源支持
 
@@ -47,9 +44,9 @@ Azure Cosmos DB 中的更改源支持的工作原理是侦听 Azure Cosmos DB �
 
 如本文稍后所述，可通过三种不同的方式读取更改源：
 
-1.  [使用 Azure Functions](#azure-functions)
-2.  [使用 Azure Cosmos DB SDK](#rest-apis)
-3.  [使用 Azure Cosmos DB 更改源处理器库](#change-feed-processor)
+*   [使用 Azure Functions](#azure-functions)
+*   [使用 Azure Cosmos DB SDK](#sql-sdk)
+*   [使用 Azure Cosmos DB 更改源处理器库](#change-feed-processor)
 
 更改源适用于文档集合中的每个分区键范围，因此，可以分配到一个或多个使用者供并行处理，如下图所示。
 
@@ -92,7 +89,7 @@ Azure Cosmos DB 中的更改源支持的工作原理是侦听 Azure Cosmos DB �
 
 可在 Azure Functions 门户、Azure Cosmos DB 门户中或以编程方式创建触发器。 有关详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 进行无服务器数据库计算](serverless-computing-database.md)。
 
-<a id="rest-apis"></a>
+<a id="sql-sdk"></a>
 ## <a name="using-the-sdk"></a>使用 SDK
 
 Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理更改源的所有强大功能。 但是，强大的功能也附带了诸多的责任。 如果想要管理检查点、处理文档序列号，并想要精细控制分区键，则使用 SDK 可能是适当的方法。
@@ -167,7 +164,7 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
 
 如果有多个读取者，可以使用 **ChangeFeedOptions** 将读取负载分配到不同的线程或不同的客户端。
 
-只需编写这几行代码，即可开始读取更改源。 可从 [GitHub 存储库](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)获取本文中使用的完整代码。
+只需编写这几行代码，即可开始读取更改源。 可从 [GitHub 存储库](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)获取本文中使用的完整代码。
 
 在上面步骤 4 所示的代码中，最后一行中的 **ResponseContinuation** 包含文档的最后一个逻辑序列号 (LSN)，下一次读取此序列号后面的新文档时，将要使用此序列号。 使用 **ChangeFeedOption** 的 **StartTime**，可以拓宽文档的检索覆盖面。 因此，如果 **ResponseContinuation** 为 null，但 **StartTime** 是过去的某个时间，则会获得从 **StartTime** 开始更改的所有文档。 但是，如果 **ResponseContinuation** 使用了某个值，则系统会获取从该 LSN 开始的所有文档。
 
@@ -191,7 +188,7 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
 <a id="understand-cf"></a>
 ### <a name="understanding-the-change-feed-processor-library"></a>了解更改源处理器库
 
-实现更改源处理器需要四个主要组件：监视集合、租用集合、处理器主机和使用者。 
+实现更改源处理器库需要四个主要组件：监视集合、租用集合、处理器主机和使用者。 
 
 > [!WARNING]
 > 创建集合会影响定价，因为要保留应用程序的吞吐量才能与 Azure Cosmos DB 进行通信。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)
@@ -279,7 +276,152 @@ using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destColl
 }
 ```
 
-就这么简单。 完成这几个步骤后，文档会开始传入 **DocumentFeedObserver ProcessChangesAsync** 方法。
+就这么简单。 完成这几个步骤后，文档会开始传入 **DocumentFeedObserver ProcessChangesAsync** 方法。 在 [GitHub 存储库](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)中查找上述代码
+
+## <a name="faq"></a>常见问题
+
+### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>可通过哪些不同的方法读取更改源？何时使用哪种方法？
+
+可通过三个选项读取更改源：
+
+* **[使用 Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
+   
+   使用此方法可对更改源进行低级控制。 可以管理检查点、访问特定的分区键，等等。如果有多个读取者，可以使用 [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) 将读取负载分配到不同的线程或不同的客户端。 。
+
+* **[使用 Azure Cosmos DB 更改源处理器库](#change-feed-processor)**
+
+   若要大量转移更改源的复杂性，可以使用更改源处理器库。 此库可以大幅消除复杂性，同时仍让你保持更改源的完全控制度。 此库遵循[观察程序模式](https://en.wikipedia.org/wiki/Observer_pattern)，处理函数由 SDK 调用。 
+
+   如果有高吞吐量的更改源，可以实例化多个客户端来读取更改源。 由于使用的是“更改源处理器库”，它会自动在不同的客户端之间分配负载。 你不需要执行任何操作。 SDK 会解决所有的复杂性。 但是，若要使用自己的负载均衡器，可以针对自定义的分区策略实现 IParitionLoadBalancingStrategy。 实现 IPartitionProcessor - 用于对分区进行自定义处理更改。 使用 SDK 可以处理分区范围，但是，若要处理特定的分区键，则必须使用 SDK for SQL API。
+
+* **[使用 Azure Functions](#azure-functions)** 
+   
+   Azure 函数是最后一个选项，也是最简单的选项。 我们建议使用此选项。 在 Azure Functions 应用中创建 Azure Cosmos DB 触发器时，请选择要连接到的 Azure Cosmos DB 集合，以及每当对该集合做出更改时要触发的函数。 观看使用 Azure 函数和更改源的[幻灯片](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s)
+
+   可在 Azure Functions 门户、Azure Cosmos DB 门户中或以编程方式创建触发器。 Visual Studio 和 VS Code 很好地支持编写 Azure 函数。 可以在桌面上编写和调试代码，然后单击一下鼠标部署函数。 有关详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 进行无服务器数据库计算](serverless-computing-database.md)一文。
+
+### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>更改源中文档的排序顺序是什么？
+
+更改源文档按其修改时间排序。 只能按分区保证这种排序顺序。
+
+### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>对于多区域帐户，写入区域故障转移时更改源会发生什么情况？ 更改源是否也故障转移？ 更改源是否仍显示为连续状态，或者，故障转移是否导致更改源重置？
+
+是的，每次执行手动故障转移操作时，更改源会正常工作，并且是连续的。
+
+### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>如果将文档的 TTL（生存时间）属性设置为 -1，更改源会将更改的数据保留多久？
+
+更改源会永久保留。 如果数据未被删除，它会保留在更改源中。
+
+### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>如何将 Azure Functions 配置为从特定的区域读取数据，因为更改源默认已在所有读取区域提供？
+
+目前无法将 Azure Functions 配置为从特定的区域读取数据。 设置任何 Azure Cosmos DB 绑定和触发器的首选区域时，Azure Functions 存储库中会出现一个 GitHub 问题。
+
+Azure Functions 使用默认连接策略。 可以在 Azure Functions 中配置连接模式，默认情况下，Azure Functions 从写入区域读取数据，因此，最好是将 Azure Functions 共置在同一区域。
+
+### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Azure Functions 中的默认批大小是什么？
+
+每次调用 Azure Functions 时会读取 100 个文档。 但是，可在 function.json 文件中配置此数字。 下面是完整的[配置选项列表](../azure-functions/functions-run-local.md)。 如果在本地进行开发，请更新 [local.settings.json](../azure-functions/functions-run-local.md) 文件中的应用程序设置。
+
+### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>我正在监视一个集合并读取其更改源，但发现无法获取所有插入的文档，某些文档已缺失。 这是怎么回事？
+
+请确保没有其他函数正在读取具有相同租用集合的相同集合。 我也遇到过这种情况，后来我认识到，缺少的文档已由另一个 Azure 函数处理，该函数也使用了相同的租约。
+
+因此，如果创建多个 Azure 函数来读取相同的更改源，则这些函数必须使用不同的租用集合，或使用“leasePrefix”配置来共享相同的集合。 但是，如果使用更改源处理器库，则可以启动函数的多个实例，SDK 会自动在不同的实例之间分割文档。
+
+### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>我的文档每隔一秒更新一次，但无法在侦听更改源的 Azure Functions 中获取所有更改。
+
+Azure Functions 每隔 5 秒轮询更改源一次，因此，在 5 秒间隔内发生的任何更改都会丢失。 Azure Cosmos DB 只存储 5 秒间隔的一个版本，因此，你会获取文档的第 5 次更改。 但是，若要使用 5 秒以下的频率，每隔一秒轮询更改源，则可以配置轮询时间“feedPollTime”，具体请参阅 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)。 该时间以毫秒定义，默认值为 5000。 可以使用小于 1 秒的时间，但不建议使用，否则会消耗更多的 CPU。
+
+### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>我在 Mongo API 集合中插入了一个文档，但在更改源中获取该文档时，显示了一个不同的 ID 值。 原因是什么？
+
+你的集合是 Mongo API 集合。 请记住，更改源是使用 SQL 客户端读取的，会将项序列化为 JSON 格式。 由于采用 JSON 格式，MongoDB 客户端会遇到 BSON 格式的文档与 JSON 格式的更改源不匹配的情况。 显示的是 BSON 文档的 JSON 表示形式。 如果在 Mongo 帐户中使用二进制属性，它们会转换为 JSON。
+
+### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>是否可以通过某种方式来只控制更改源的更新，而不控制插入？
+
+暂时不可以，但此功能已在规划中。 目前，可以在文档中添加更新软标记。
+
+### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>是否可以通过某种方式来获取更改源的删除？
+
+目前更改源不会记录日志删除操作。 更改源在不断改进，此功能已在规划中。 目前，可以在文档中添加删除软标记。 在文档中添加名为“deleted”的属性并将其设置为“true”，并在文档中设置 TTL，以便自动删除文档。
+
+### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>是否可以读取历史文档的更改源（例如，5 年前添加的文档）？
+
+是的，如果未删除该文档，则可以读取不超过集合原始时间的更改源。
+
+### <a name="can-i-read-change-feed-using-javascript"></a>是否可以使用 JavaScript 读取更改源？
+
+是的，最近已添加对更改源的 Node.js SDK 初始支持。 可按以下示例中所示使用 JavaScript。在运行代码之前，请将 documentdb 模块更新到新版本：
+
+```js
+
+var DocumentDBClient = require('documentdb').DocumentClient;
+const host = "https://your_host:443/";
+const masterKey = "your_master_key==";
+const databaseId = "db";
+const collectionId = "c1";
+const dbLink = 'dbs/' + databaseId;
+const collLink = dbLink + '/colls/' + collectionId;
+var client = new DocumentDBClient(host, { masterKey: masterKey });
+let options = {
+    a_im: "Incremental feed",
+    accessCondition: {
+        type: "IfNoneMatch",        // Use: - empty condition (or remove accessCondition entirely) to start from beginning.
+        //      - '*' to start from current.
+        //      - specific etag value to start from specific continuation.
+        condition: ""
+    }
+};
+ 
+var query = client.readDocuments(collLink, options);
+query.executeNext((err, results, headers) =&gt; {
+    // Now we have headers.etag, which can be used in next readDocuments in accessCondition option.
+    console.log(results);
+    console.log(headers.etag);
+    console.log(results.length);
+    options.accessCondition = { type: "IfNoneMatch", condition: headers.etag };
+    var query = client.readDocuments(collLink, options);
+    query.executeNext((err, results, headers) =&gt; {
+        console.log("next one:", results[0]);
+    });
+});<span id="mce_SELREST_start" style="overflow:hidden;line-height:0;"></span>
+
+```
+
+### <a name="can-i-read-change-feed-using-java"></a>是否可以使用 Java 读取更改源？
+
+[Github 存储库](https://github.com/Azure/azure-documentdb-changefeedprocessor-java)中提供了用于读取更改源的 Java 库。 但是，基于 .NET 库的 Java 库版本目前很少。 不久后，这两个库将会同步。
+
+### <a name="can-i-use-etag-lsn-or-ts-for-internal-bookkeeping-which-i-get-in-response"></a>是否可对响应中获取的内部簿记使用 _etag、_lsn 或 _ts？
+
+_etag 属于内部格式，请不要依赖它（不要分析它），因为它随时可能更改。
+_ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。
+_lsn 是仅为更改源添加的批 ID，它表示存储中的事务 ID。 许多文档可能具有相同的 _lsn。
+另请注意，FeedResponse 中的 ETag 不同于文档中显示的 _etag。 _etag 是用于实现并发性的内部标识符，它告知文档的版本，而 ETag 用于将源定序。
+
+### <a name="does-reading-change-feed-add-any-additional-cost-"></a>读取更改源是否会提高成本？
+
+需要支付消耗的 RU 费用，也就是说，将数据移入和移出 Azure Cosmos DB 集合始终会消耗 RU。 用户将根据租用集合支付消耗的 RU 费用。
+
+### <a name="can-multiple-azure-functions-read-one-collections-change-feed"></a>多个 Azure Functions 是否可以读取一个集合的更改源？
+
+是的。 多个 Azure Functions 可以读取同一集合的更改源。 但是，需要为 Azure Functions 定义不同的 leaseCollectionPrefix。
+
+### <a name="should-the-lease-collection-be-partitioned"></a>是否应将租用集合分区？
+
+不需要，租用集合可以固定。 不需要分区的租用集合，而且目前不支持。
+
+### <a name="can-i-read-change-feed-from-spark"></a>是否可以从 Spark 读取更改源？
+
+可以。 请参阅 [Azure Cosmos DB Spark 连接器](spark-connector.md)。 以[幻灯片](https://www.youtube.com/watch?v=P9Qz4pwKm_0&t=1519s)演示了如何将更改源作为结构化流进行处理。
+
+### <a name="if-i-am-processing-change-feed-by-using-azure-functions-say-a-batch-of-10-documents-and-i-get-an-error-at-7th-document-in-that-case-the-last-three-documents-are-not-processed-how-can-i-start-processing-from-the-failed-documentie-7th-document-in-my-next-feed"></a>如果我使用 Azure Functions 处理更改源（例如，包含 10 个文档的批），在处理第 7 个文档时遇到错误， 在这种情况下，最后 3 个文档不会得到处理。如何在下一个源中从失败的文档 （即第 7 个文档）开始处理？
+
+若要处理错误，建议的模式是使用 try-catch 块包装代码。 捕获错误，将该文档放入队列（死信），然后定义逻辑来处理已生成错误的文档。 如果批中的文档数有 200 个，并且只有一个文档失败，则使用此方法就无需丢弃整个批。
+
+如果出错，则不应将检查点回退到开始位置，否则可以从更改源获取这些文档。 请记住，更改源保留文档的最后一个最终快照，因此，可能会丢失文档中的前一个快照。 更改源只保留文档的最后一个版本，在不同的版本之间，其他进程可能会更改文档。
+
+在不断修复代码的过程中，你很快就会发现，死信队列中没有任何文档。
+Azure Functions 由更改源系统自动调用，检查点等内容由 Azure 函数在内部维护。 若要回滚检查点并控制其各个方面，应考虑使用更改源处理器 SDK。
 
 ## <a name="next-steps"></a>后续步骤
 

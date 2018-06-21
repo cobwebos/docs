@@ -1,25 +1,19 @@
 ---
-title: Azure 备份 - 使用 Azure 导入/导出服务进行脱机备份或初始种子设定 | Microsoft Docs
+title: Azure 备份 - 使用 Azure 导入/导出服务进行脱机备份或初始种子设定
 description: 了解如何在 Azure 备份中使用 Azure 导入/导出服务离线发送数据。 本文介绍如何使用 Azure 导入导出服务来脱机设定初始备份数据的种子。
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-ms.assetid: ada19c12-3e60-457b-8a6e-cf21b9553b97
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 5/8/2018
-ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 801de343ebb88394f04a65236997f9ec80a2f535
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 05/17/2018
+ms.author: saurse
+ms.openlocfilehash: 5ef44ccf87bc5e40b57dc7fc997c9a827c93484b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939697"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831443"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 通过脱机种子设定，Azure 备份可以使用磁盘将脱机备份数据上传到 Azure。
@@ -57,7 +51,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 在启动脱机备份工作流之前，需满足以下先决条件： 
 * 创建[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)。 若要创建保管库，请参阅[此文](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)中的步骤
 * 确保 Windows Server/Windows 客户端上只安装了[最新版本的 Azure 备份代理](https://aka.ms/azurebackup_agent)（如果适用），并已向恢复服务保管库注册了计算机。
-* 运行 Azure 备份代理的计算机上需要 Azure PowerShell 3.7.0 或更高版本。 建议[安装最新版本的 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)。
+* 运行 Azure 备份代理的计算机上需要 Azure PowerShell 3.7.0。 建议你下载并[安装 Azure PowerShell 3.7.0 版](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017)。
 * 在运行 Azure 备份代理的计算机上，确保已安装 Microsoft Edge 或 Internet Explorer 11，并已启用 JavaScript。 
 * 在恢复服务保管库所在的同一订阅中创建 Azure 存储帐户。 
 * 确保拥有创建 Azure Active Directory 应用程序的[所需权限](../azure-resource-manager/resource-group-create-service-principal-portal.md)。 脱机备份工作流在与 Azure 存储帐户关联的订阅中创建一个 Azure Active Directory 应用程序。 该应用程序的目标是为 Azure 备份提供 Azure 导入服务的安全受限访问权限，以便完成脱机备份工作流。 
@@ -68,7 +62,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
     4. 在提供程序列表中，向下滚动到“Microsoft.ImportExport”。 如果“Status”为“NotRegistered”，请单击“注册”。
     ![注册资源提供程序](./media/backup-azure-backup-import-export/registerimportexport.png)
 * 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少。）
-* 将磁盘寄送到 Azure 时，请仅使用 2.5 英寸 SSD，或者 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-service.md#hard-disk-drives)，了解服务支持的最新驱动器集。
+* 将磁盘寄送到 Azure 时，请仅使用 2.5 英寸 SSD，或者 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
 * SATA 驱动器必须连接到一台计算机（称为“副本计算机”），在这台计算机中完成将备份数据从暂存位置复制到 SATA 驱动器。 请确保已在副本计算机上启用 BitLocker。
 
 ## <a name="workflow"></a>工作流
@@ -114,7 +108,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
     * 副本计算机可使用在**启动脱机备份**工作流中提供的相同网络路径，访问脱机种子设定工作流的暂存位置。
     * 已在副本计算机上启用 BitLocker。
-    * 已安装 Azure PowerShell 3.7.0 或更高版本。
+    * Azure PowerShell 3.7.0 已安装。
     * 已安装最新的兼容浏览器（Edge 或 Internet Explorer 11），并已启用 JavaScript。 
     * 副本计算机可以访问 Azure 门户。 必要时，副本计算机可与源计算机相同。
     

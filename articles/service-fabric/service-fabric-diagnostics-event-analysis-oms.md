@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: b51f7dc43f390152b2b0be223541e381bbddd3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 184faa0f6171ff00ab3c2398f693e9c7ad015d33
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839582"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>使用 Log Analytics 进行事件分析和可视化
 
@@ -36,17 +37,15 @@ Log Analytics 收到数据后，Azure 会提供多个预打包的管理解决方
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>访问 Service Fabric 分析解决方案
 
-1. 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择资源 **ServiceFabric\<nameOfOMSWorkspace\>** 并转到其概述页。
+1. 在 Azure 门户中，转到在其中创建了 Service Fabric 分析解决方案的资源组。
 
-2. 在概述页中，单击顶部附近的链接转到 OMS 门户
+2. 选择资源 **ServiceFabric\<nameOfOMSWorkspace\>**。
 
-    ![OMS 门户链接](media/service-fabric-diagnostics-event-analysis-oms/oms-portal-link.png)
+2. 在“摘要”中，将看到每个已启用的解决方案的图形形式的磁贴，包括 Service Fabric 的磁贴。 单击“Service Fabric”图形（下面的第一张图）转到 Service Fabric 分析解决方案（下面的第二张图）。
 
-3. 现已进入 OMS 门户，可以看到已启用的解决方案。 单击标题为“Service Fabric”（下面的第一张插图）的图形转到 Service Fabric 解决方案（下面的第二张插图）
+    ![OMS SF 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![OMS SF 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms-workspace-all-solutions.png)
-
-    ![OMS SF 解决方案](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new.png)
+    ![OMS SF 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
 上图是 Service Fabric 分析解决方案的主页。 这是群集中发生的情况的快照视图。 如果创建群集时启用了诊断，则可以看到以下对象的事件： 
 
@@ -55,19 +54,19 @@ Log Analytics 收到数据后，Azure 会提供多个预打包的管理解决方
 * [Reliable Services 编程模型事件](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->除了操作通道以外，可以通过[更新诊断扩展的配置](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)来收集更详细的系统事件
+>除了操作通道以外，可以通过[更新诊断扩展的配置](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)来收集更详细的系统事件。
 
-### <a name="view-operational-events-including-actions-on-nodes"></a>查看操作事件，包括对节点执行的操作
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>查看 Service Fabric 事件，包括对节点执行的操作
 
-1. 在 OMS 门户中的“Service Fabric 分析”页上，单击“操作通道”对应的图形
+1. 在“Service Fabric 分析”页上，单击“Service Fabric 事件”对应的图形。
 
-    ![OMS SF 解决方案操作通道](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
+    ![OMS SF 解决方案操作通道](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-2. 单击“表”，在列表中查看事件。 打开该列表后，将会看到已收集的所有系统事件。 以下内容插自 Azure 存储帐户中的 WADServiceFabricSystemEventsTable 以供参考，类似地，接下来看到的 Reliable Services 和 Reliable Actors 事件也都摘自相应的表。
+2. 单击“列表”，在列表中查看事件。 打开该列表后，将会看到已收集的所有系统事件。 以下内容插自 Azure 存储帐户中的 WADServiceFabricSystemEventsTable 以供参考，类似地，接下来看到的 Reliable Services 和 Reliable Actors 事件也都摘自相应的表。
     
-    ![OMS 查询操作通道](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
+    ![OMS 查询操作通道](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-或者，可以单击左侧的放大镜并使用 Kusto 查询语言找到所需的内容。 例如，若要查找针对群集中的节点执行的所有操作，可以使用以下查询。 在[操作通道事件参考](service-fabric-diagnostics-event-generation-operational.md)中可以找到下面使用的事件 ID
+或者，可以单击左侧的放大镜并使用 Kusto 查询语言找到所需的内容。 例如，若要查找针对群集中的节点执行的所有操作，可以使用以下查询。 在[操作通道事件参考](service-fabric-diagnostics-event-generation-operational.md)中可以找到下面使用的事件 ID。
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -78,15 +77,15 @@ ServiceFabricOperationalEvent
 
 ### <a name="view-service-fabric-reliable-service-and-actor-events"></a>查看 Service Fabric Reliable Services 和 Reliable Actors 事件
 
-1. 在 OMS 门户中的“Service Fabric 分析”页上，单击“Reliable Services”对应的图形
+1. 在“Service Fabric 分析”页上，单击“Reliable Services”对应的图形。
 
-    ![OMS SF 解决方案 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
+    ![OMS SF 解决方案 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-2. 单击“表”，在列表中查看事件。 在此处可以查看来自 Reliable Services 的事件。 可以看到服务 runasync 在启动和完成（通常发生在部署和升级时）时的不同事件。 
+2. 单击“列表”，在列表中查看事件。 在此处可以查看来自 Reliable Services 的事件。 可以看到服务 runasync 在启动和完成（通常发生在部署和升级时）时的不同事件。 
 
-    ![OMS 查询 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms-query-reliable-services.png)
+    ![OMS 查询 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-可以类似的方式查看 Reliable Actors 事件。 若要为 Reliable Actors 配置更详细的事件，需要在诊断扩展的配置中更改 `scheduledTransferKeywordFilter`（如下所示）。 [Reliable Actors 事件参考](service-fabric-reliable-actors-diagnostics.md#keywords)中提供了这些参数值的详细信息
+可以类似的方式查看 Reliable Actors 事件。 若要为 Reliable Actors 配置更详细的事件，需要在诊断扩展的配置中更改 `scheduledTransferKeywordFilter`（如下所示）。 [Reliable Actors 事件参考](service-fabric-reliable-actors-diagnostics.md#keywords)中提供了这些参数值的详细信息。
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -100,9 +99,9 @@ ServiceFabricOperationalEvent
                 },
 ```
 
-Kusto 查询语言非常强大。 可以运行另一个有用查询来找出哪些节点正在生成大多数事件。 以下屏幕截图中的查询显示了在特定服务和节点中聚合的 Reliable Services 事件
+Kusto 查询语言非常强大。 可以运行另一个有用查询来找出哪些节点正在生成大多数事件。 以下屏幕截图中的查询显示了与特定服务和节点聚合的 Reliable Services 操作事件。
 
-![每个节点的 OMS 查询事件](media/service-fabric-diagnostics-event-analysis-oms/oms-query-events-per-node.png)
+![每个节点的 OMS 查询事件](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>后续步骤
 

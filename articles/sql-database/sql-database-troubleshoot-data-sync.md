@@ -3,17 +3,18 @@ title: 排查 Azure SQL 数据同步（预览版）问题 | Microsoft Docs
 description: 了解如何排查 Azure SQL 数据同步（预览版）的常见问题
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 8c3476a81c10c9e1754302da4ac5c703ce7375bc
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757530"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>排查 SQL 数据同步（预览版）的问题
 
@@ -240,9 +241,8 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 -   SQL 数据同步（预览版）Windows 服务正在运行。  
 -   SQL 数据同步（预览版）预览 Windows 服务的服务帐户具有网络访问权限。    
--   客户端代理能够访问定位器服务。 检查以下注册表项是否具有值 https://locator.sync.azure.com/LocatorServiceApi.svc:  
-    -   x86 计算机：`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
-    -   x64 计算机：`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
+-   出站 1433 端口在本地防火墙规则中处于打开状态。
+-   本地 IP 已添加到同步元数据库的服务器或数据库防火墙规则。
 
 #### <a name="cause"></a>原因
 

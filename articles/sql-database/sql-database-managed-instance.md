@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 0c4acf6e8e236d46a9db2b4ab730b8333e4f6ca6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648119"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215518"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>什么是托管实例（预览版）？
 
@@ -39,7 +39,7 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 
 | | 使用方案 | 
 | --- | --- | 
-|SQL 数据库托管实例 |对于想要从本地或 IaaS 迁移大量自我构建的或 ISV 提供的应用，并且希望尽量减少迁移工作量的客户，可能推荐托管实例。 使用 Azure 中完全自动化的[数据迁移服务 (DMS)](/sql/dma/dma-overview)，客户可将其本地 SQL Server 即时转移到托管实例，从而实现与本地 SQL Server 的兼容，并通过本机 VNET 支持实现客户实例的完全隔离。  借助软件保障，可以使用 [SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)交换现有许可证，以获得 SQL 数据库托管实例的折扣价格。  SQL 数据库托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。 |
+|SQL 数据库托管实例 |对于想要从本地或 IaaS 迁移大量自我构建的或 ISV 提供的应用，并且希望尽量减少迁移工作量的客户，可能推荐托管实例。 使用 Azure 中完全自动化的[数据迁移服务 (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)，客户可将其本地 SQL Server 即时转移到托管实例，从而实现与本地 SQL Server 的兼容，并通过本机 VNET 支持实现客户实例的完全隔离。  借助软件保障，可以使用 [SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)交换现有许可证，以获得 SQL 数据库托管实例的折扣价格。  SQL 数据库托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。 |
 |Azure SQL 数据库（单个或池） |**弹性池**：对于开发新 SaaS 多租户应用程序或有意将现有本地应用转换为 SaaS 多租户应用的客户，建议弹性池。 此模型的优点包括： <br><ul><li>将业务模式从销售许可证转换为销售服务订阅（适用于 ISV）</li></ul><ul><li>简单且高度安全的租户隔离</li></ul><ul><li>以数据库为中心的简化编程模型</li></ul><ul><li>在不超出硬性限制的情况下横向扩展的可能性</li></ul>**单一数据库**：对于想要开发除 SaaS 多租户应用以外的应用，并且其工作负荷较为稳定且可预测的客户，建议单一数据库。 此模型的优点包括：<ul><li>以数据库为中心的简化编程模型</li></ul>  <ul><li>每个数据库的性能可预测</li></ul>|
 |SQL IaaS 虚拟机|对于需要自定义操作系统或数据库服务器，或者在配合 SQL Server 运行第三方应用（在同一 VM 上）方面有特定要求的客户，可以推荐 SQL VM/IaaS 作为最佳解决方案|
 |||
@@ -186,11 +186,10 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 迁移方法利用从 SQL 到 Azure Blob 存储的备份。 可将 Azure 存储 Blob 中存储的备份直接还原到托管实例。 若要将现有 SQL 数据库还原到托管实例，可以：
 
-- 使用[数据迁移服务 (DMS)](/sql/dma/dma-overview)。 有关教程，请参阅[使用 Azure 数据库迁移服务 (DMS) 迁移到托管实例](../dms/tutorial-sql-server-to-managed-instance.md)，以从数据库备份文件还原
+- 使用[数据迁移服务 (DMS)](../dms/dms-overview.md)。 有关教程，请参阅[使用 Azure 数据库迁移服务 (DMS) 迁移到托管实例](../dms/tutorial-sql-server-to-managed-instance.md)，以从数据库备份文件还原
 - 使用 [T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)。 
   - 有关介绍如何还原 Wide World Importers - 标准数据库备份文件的教程，请参阅[将备份文件还原到托管实例](sql-database-managed-instance-restore-from-backup-tutorial.md)。 本教程介绍如何将备份文件上传到 Azure 博客存储并使用共享访问签名 (SAS) 密钥进行保护。
   - 有关从 URL 还原的信息，请参阅[从 URL 本机还原](sql-database-managed-instance-migrate.md#native-restore-from-url)。
-- [从 BACPAC 文件导入](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>支持的 SQL 功能 
 

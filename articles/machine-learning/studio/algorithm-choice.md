@@ -10,16 +10,18 @@ editor: cgronlun
 tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
-ms.openlocfilehash: e1c7030a5f0c6e13653b302fcb48e7d4efa232c7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 79b2cc3951fa8a48282f42f7180ec831050508f8
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834376"
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>如何选择 Microsoft Azure 机器学习的算法
 “应使用何种机器学习算法？”这一问题的答案 始终是“视情况而定。” 这取决于数据的大小、质量和性质。 这取决于想用算法做什么。 这取决于算法的数学如何转换为所使用的计算机的指令。 还取决于可用时间的长短。 即使是经验最丰富的数据科学家也无法在试用之前判断哪种算法执行效果最佳。
@@ -35,7 +37,7 @@ ms.lasthandoff: 04/20/2018
 
 此备忘单有非常特定的受众：使用本科级机器学习的初级数据科学家，试图在 Azure 机器学习工作室中选择一种算法开始操作。 这意味着它会导致出现一些泛化和过度简化，但会指向一个安全的方向。 这也意味着有很多算法并未列在此处。 随着 Azure 机器学习的发展，它将包含更完整的可用方法集，我们将及时添加它们。
 
-这些建议是许多数据科学家和机器学习专家给出的已编译的反馈和提示。 我们不一致的一切内容，但我试着插入粗略达成一致意见协调各自观点。我们并不同意一切观点，但试图协调各方意见，达成粗略共识。 大多数争议性语句都以“这取决于···”开头
+这些建议是许多数据科学家和机器学习专家给出的已编译的反馈和提示。 我们不一致的一切内容，但我试着插入粗略达成一致意见协调各自观点。我们并不同意一切观点，但试图协调各方意见，达成粗略共识。 大多数异议陈述都以“看情况而定...”开头
 
 ### <a name="how-to-use-the-cheat-sheet"></a>如何使用备忘单
 读取图表上的路径和算法标签为“为&lt;路径标签&gt;使用&lt;算法&gt;。” 例如，“为速度使用双类逻辑回归。” 有时会应用多个分支。

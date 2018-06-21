@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: a173b77d969697f85eab0d5976e5bc0a1796fe75
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 8d771fb17019e39da93995d0244c8089ea4a08b7
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808564"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286539"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>快速入门：控制连接到 IoT 中心的设备 (Node.js)
 
@@ -131,9 +131,8 @@ node --version
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续学习教程，请保留资源组和 IoT 中心，稍后再进行使用。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的资源组，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

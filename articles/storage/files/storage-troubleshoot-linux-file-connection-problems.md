@@ -3,9 +3,9 @@ title: 在 Linux 中排查 Azure 文件问题 | Microsoft Docs
 description: 在 Linux 中排查 Azure 文件问题
 services: storage
 documentationcenter: ''
-author: genlin
-manager: willchen
-editor: na
+author: wmgries
+manager: aungoo
+editor: tamram
 tags: storage
 ms.service: storage
 ms.workload: na
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 7b5567359e7ca87d26e05d336337b55af364031e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: wgries
+ms.openlocfilehash: 4a80b868529b18875100d8205fd8c3a664b6b9e2
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738358"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -86,7 +87,7 @@ ms.lasthandoff: 05/11/2018
 
 ### <a name="solution"></a>解决方案
 
-在 4.11 内核中引入了适用于 Linux 的 SMB 3.0 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 在发布时，此功能已向后移植到 Ubuntu 17.04 和 Ubuntu 16.10。 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件存储帐户所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件。
+4.11 内核中引入了适用于 Linux 的 SMB 3.0 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 在发布时，此功能已向后移植到 Ubuntu 17.04 和 Ubuntu 16.10。 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件存储帐户所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM 上装载的 Azure 文件共享性能缓慢

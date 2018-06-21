@@ -1,6 +1,6 @@
 ---
-title: "将 Azure CLI 1.0 用于 Azure 存储 | Microsoft Docs"
-description: "了解如何将 Azure 命令行接口 (Azure CLI) 1.0 用于 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。 Azure CLI 是一个跨平台工具"
+title: 将 Azure CLI 1.0 用于 Azure 存储 | Microsoft Docs
+description: 了解如何将 Azure 命令行接口 (Azure CLI) 1.0 用于 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。 Azure CLI 是一个跨平台工具
 services: storage
 documentationcenter: na
 author: seguler
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: 772417012e4c6aa519e83177bd8e93778f6af3b5
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: a8866385c682e86e889ddf171cc640fe0bb8252d
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737463"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>将 Azure CLI 1.0 用于 Azure 存储
 
@@ -40,7 +41,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 ## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>在 5 分钟内开始使用 Azure 存储和 Azure CLI
 本指南使用 Ubuntu 作为示例，但其他 OS 平台的操作应与此类似。
 
-**Azure 新用户：**获取一个 Microsoft Azure 订阅以及与该订阅关联的 Microsoft 帐户。 有关 Azure 购买选项的信息，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)、[购买选项](https://azure.microsoft.com/pricing/purchase-options/)和[成员优惠](https://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
+**Azure 新用户：** 获取一个 Microsoft Azure 订阅以及与该订阅关联的 Microsoft 帐户。 有关 Azure 购买选项的信息，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)、[购买选项](https://azure.microsoft.com/pricing/purchase-options/)和[成员优惠](https://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
 
 请参阅[在 Azure Active Directory (Azure AD) 中分配管理员角色](https://msdn.microsoft.com/library/azure/hh531793.aspx)，以了解有关 Azure 订阅的更多信息。
 
@@ -83,7 +84,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 5. 在本地计算机中，打开首选的文本编辑器（例如 vim）。 在文本编辑器中键入上述脚本。
 6. 现在，需要基于配置设置更新脚本变量。
 
-   * **<storage_account_name>**：使用脚本中给定的名称，或输入存储帐户的新名称。 **重要提示：**在 Azure 中，存储帐户的名称必须是唯一的。 它还必须为小写！
+   * **<storage_account_name>**：使用脚本中给定的名称，或输入存储帐户的新名称。 **重要提示：** 在 Azure 中，存储帐户的名称必须是唯一的。 它还必须为小写！
    * **<storage_account_key>**：存储帐户的访问密钥。
    * **<container_name>**：使用脚本中给定的名称，或输入容器的新名称。
    * **<image_to_upload>**：输入本地计算机上图片的路径，例如：“~/images/HelloWorld.png”。

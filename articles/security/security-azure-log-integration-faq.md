@@ -1,6 +1,6 @@
 ---
-title: "Azure 日志集成常见问题解答 |Microsoft 文档"
-description: "本文回答了关于 Azure 日志的问题。"
+title: Azure 日志集成常见问题解答 |Microsoft 文档
+description: 本文回答了关于 Azure 日志的问题。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,25 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 02/16/2018
-ms.author: TomSh
+ms.date: 06/07/2018
+ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 615bfb1ea86d31733fc1db7139cd995fbbbac7aa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bec62b8c6b70706fa6519cbc2fd59bf69f119e9d
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236257"
 ---
 # <a name="azure-log-integration-faq"></a>Azure 日志集成常见问题解答
 
 本文回答了一些有关 Azure 日志集成常见问题 (FAQ)。
 
 >[!IMPORTANT]
->用于集成 Azure 日志的首选方法是通过使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
+> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载将于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Azure 日志集成是 Windows 操作系统服务，可用来将 Azure 资源中的原始日志集成到本地安全信息和事件管理 (SIEM) 系统。 此集成为本地或云端的所有资产提供统一的仪表板。 对于与应用程序相关的安全事件，可进行聚合、关联、分析和警报等操作。
 
+用于集成 Azure 日志的首选方法是通过使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
+
 ## <a name="is-the-azure-log-integration-software-free"></a>Azure 日志集成软件是否免费？
+
 是的。 Azure 日志集成软件不产生任何费用。
 
 ## <a name="where-is-azure-log-integration-available"></a>Azure 日志集成在哪些地方可用？
@@ -38,6 +42,7 @@ Azure 日志集成是 Windows 操作系统服务，可用来将 Azure 资源中�
 目前 Azure 商业版和 Azure 政府版提供该功能，但在中国或德国不提供。
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>如何查看 Azure 日志集成从中提取 Azure VM 日志的存储帐户？
+
 运行 **AzLog source list** 命令。
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>如何判断 Azure 日志集成日志来自哪个订阅？
@@ -51,6 +56,7 @@ Azure Active Directory 审核日志的名称包含租户 ID。
 从事件中心读取的诊断日志的名称不包括订阅 ID。 但包括在创建事件中心源的过程中指定的友好名称。 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>如何更新代理配置？
+
 如果代理设置不允许直接访问 Azure 存储，请打开 **c:\Program Files\Microsoft Azure Log Integration** 中的 **AZLOG.EXE.CONFIG** 文件。 更新文件，以将组织的代理地址包括在 **defaultProxy** 部分中。 完成更新后，并使用 **net stop AzLog** 和 **net start AzLog** 命令停止和启动该服务。
 
     <?xml version="1.0" encoding="utf-8"?>
@@ -61,7 +67,7 @@ Azure Active Directory 审核日志的名称包含租户 ID。
         </connectionManagement>
         <defaultProxy>
           <proxy usesystemdefault="true"
-          proxyaddress=http://127.0.0.1:8888
+          proxyaddress="http://127.0.0.1:8888"
           bypassonlocal="true" />
         </defaultProxy>
       </system.net>
@@ -70,6 +76,7 @@ Azure Active Directory 审核日志的名称包含租户 ID。
       </system.diagnostics>   
 
 ## <a name="how-can-i-see-the-subscription-information-in-windows-events"></a>如何查看 Windows 事件中的订阅信息？
+
 添加源时，将订阅 ID追加到友好名称之后：
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
@@ -79,6 +86,7 @@ Azure Active Directory 审核日志的名称包含租户 ID。
 
 ## <a name="error-messages"></a>错误消息
 ### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>运行 ```AzLog createazureid``` 命令时，为何收到以下错误？
+
 错误：
 
   *无法创建 AAD 应用程序 - 租户 72f988bf-86f1-41af-91ab-2d7cd011db37 - 原因 = “禁止” - 消息 = “特权不足以完成此操作”。*
@@ -86,6 +94,7 @@ Azure Active Directory 审核日志的名称包含租户 ID。
 azlog createazureid 命令尝试在 Azure 登录有权访问的订阅在所有 Azure AD 租户中创建服务主体。 如果 Azure 登录在 Azure AD 租户中只是来宾用户，该命令会失败，并显示“特权不足以完成此操作”。 请求租户管理员将帐户添加为租户中的用户。
 
 ### <a name="when-i-run-the-command-azlog-authorize-why-do-i-get-the-following-error"></a>运行 azlog authorize 命令时，为什么收到以下错误？
+
 错误：
 
   *创建角色分配警告 - AuthorizationFailed：具有对象 ID“fe9e03e4-4dad-4328-910f-fd24a9660bd2”的客户端 janedo@microsoft.com 没有在“/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000”范围执行操作“Microsoft.Authorization/roleAssignments/write”的权限。*
@@ -93,15 +102,18 @@ azlog createazureid 命令尝试在 Azure 登录有权访问的订阅在所有 A
 azlog authorize 命令会将 Azure AD 服务主体的读取器角色（使用 azlog createazureid 创建）分配给提供的订阅。 如果 Azure 登录不是订阅的协同管理员或所有者，就会失败，并显示“授权失败”错误消息。 需要 Azure 基于角色访问控制 (RBAC) 的共同管理员或所有者来完成此操作。
 
 ## <a name="where-can-i-find-the-definition-of-the-properties-in-the-audit-log"></a>在哪里可以找到审核日志中的属性定义？
+
 请参阅：
 
 * [使用 Azure 资源管理器执行审核操作](../azure-resource-manager/resource-group-audit.md)
 * [在 Azure Monitor REST API 中列出订阅的管理事件](https://msdn.microsoft.com/library/azure/dn931934.aspx)
 
 ## <a name="where-can-i-find-details-on-azure-security-center-alerts"></a>哪里可以找到 Azure 安全中心警报的详细信息？
+
 请参阅[管理和响应 Azure 安全中心中的安全警报](../security-center/security-center-managing-and-responding-alerts.md)。
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>如何修改使用 VM 诊断收集的内容？
+
 有关如何获取、修改和设置 Azure 诊断配置的详细信息，请参阅[使用 PowerShell 在运行 Windows 的虚拟机上启用 Azure 诊断](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 以下示例将获取 Azure 诊断配置：

@@ -1,25 +1,19 @@
 ---
 title: 了解 Azure IoT 中心直接方法 | Microsoft Docs
 description: 开发人员指南 - 使用直接方法从服务应用调用设备上的代码。
-services: iot-hub
-documentationcenter: .net
 author: nberdy
-manager: timlt
-editor: ''
-ms.assetid: 9f0535f1-02e6-467a-9fc4-c0950702102d
+manager: briz
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/29/2018
+services: iot-hub
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: nberdy
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a35c88ac053b43d4a95b5bef92f3ebfb03567e2b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: da9672c7a924411136928d8d04e54c2c62a014b9
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736671"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法用于即时操作过程不同的情况，即时操作的不同取决于设备能否响应。
@@ -85,6 +79,11 @@ ms.lasthandoff: 05/16/2018
     ```
 
     `status` 和 `body` 均由设备提供，用于响应，其中包含设备自身的状态代码和/或描述。
+
+### <a name="method-invocation-for-iot-edge-modules"></a>IoT Edge 模块的方法调用
+C# 预览版 SDK（可在[此处](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)获得）支持使用模块 ID 调用直接方法。
+
+为此，请使用 `ServiceClient.InvokeDeviceMethodAsync()` 方法并传入 `deviceId` 和 `moduleId` 作为参数。
 
 ## <a name="handle-a-direct-method-on-a-device"></a>在设备上处理直接方法
 ### <a name="mqtt"></a>MQTT
