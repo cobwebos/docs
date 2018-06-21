@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI- sfctl is | Microsoft Docs
-description: 介绍 Service Fabric CLI sfctl is 命令。
+title: Azure Service Fabric CLI - sfctl container | Microsoft Docs
+description: 介绍 Service Fabric CLI sfctl container 命令。
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -14,34 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 05/23/2018
 ms.author: bikang
-ms.openlocfilehash: aa1e4d588f367351f0bed10370c7d67d50dd9927
+ms.openlocfilehash: cd3725ac547a1ed1fd9207dc48ba3b6227e85ef1
 ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763045"
+ms.locfileid: "34763924"
 ---
-# <a name="sfctl-is"></a>sfctl is
-查询并向基础结构服务发送命令。
+# <a name="sfctl-container"></a>sfctl container
+在群集节点上运行与容器相关的命令。
 
 ## <a name="commands"></a>命令
 
 |命令|说明|
 | --- | --- |
-| command | 针对给定基础结构服务实例调用管理命令。 |
-| query | 针对给定基础结构服务实例调用只读查询。 |
+| invoke-api | 调用容器 REST API。 |
+| 日志 | 检索容器日志。 |
 
-## <a name="sfctl-is-command"></a>sfctl is command
-针对给定基础结构服务实例调用管理命令。
-
-对于配置了一个或多个基础结构服务实例的群集，使用此 API 可向特定基础结构服务实例发送特定于基础结构的命令。 可用命令及其相应的响应格式因运行群集的基础结构而异。 此 API 支持 Service Fabric 平台；不应从代码直接使用它。
+## <a name="sfctl-container-invoke-api"></a>sfctl container invoke-api
+调用容器 REST API。
 
 ### <a name="arguments"></a>参数
 
 |参数|说明|
 | --- | --- |
-| --command [必需] | 将调用的命令文本。 命令内容特定于基础结构。 |
-| --service-id | 基础结构服务标识。 <br><br> 这是不包含“fabric”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。 |
+| --application-id           [必需] | 应用程序标识。 |
+| --code-package-instance-id [必需] | 代码包实例 ID，可以通过“service code-package-list”来检索。 |
+| --code-package-name        [必需] | 代码包名称。 |
+| --container-api-uri-path   [必需] | 容器 REST API URI 路径，使用“{ID}”代替容器名称/ID。 |
+| --node-name                [必需] | 节点的名称。 |
+| --service-manifest-name    [必需] | 服务清单名称。 |
+| --container-api-body | 容器 REST API 的 HTTP 请求正文。 |
+| --container-api-content-type | 容器 REST API 的内容类型，默认为“application/json”。 |
+| --container-api-http-verb | 容器 REST API 的 HTTP 谓词，默认为 GET。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -54,17 +59,19 @@ ms.locfileid: "34763045"
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
 
-## <a name="sfctl-is-query"></a>sfctl is query
-针对给定基础结构服务实例调用只读查询。
-
-对于配置了一个或多个基础结构服务实例的群集，使用此 API 可向特定基础结构服务实例发送特定于基础结构的查询。 可用命令及其相应的响应格式因运行群集的基础结构而异。 此 API 支持 Service Fabric 平台；不应从代码直接使用它。
+## <a name="sfctl-container-logs"></a>sfctl container logs
+检索容器日志。
 
 ### <a name="arguments"></a>参数
 
 |参数|说明|
 | --- | --- |
-| --command [必需] | 将调用的命令文本。 命令内容特定于基础结构。 |
-| --service-id | 基础结构服务标识。 <br><br> 这是不包含“fabric\:”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。 |
+| --application-id           [必需] | 应用程序标识。 |
+| --code-package-instance-id [必需] | 代码包实例 ID，可以通过“service code-package-list”来检索。 |
+| --code-package-name        [必需] | 代码包名称。 |
+| --node-name                [必需] | 节点的名称。 |
+| --service-manifest-name    [必需] | 服务清单名称。 |
+| --tail | 仅从日志的末尾返回此数量的日志行。 指定为整数，或指定为“all”以输出所有日志行。 默认为“all”。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值：60。 |
 
 ### <a name="global-arguments"></a>全局参数
