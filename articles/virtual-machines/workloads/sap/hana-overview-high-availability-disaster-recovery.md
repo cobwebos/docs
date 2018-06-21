@@ -4,21 +4,22 @@ description: 为 Azure 上的 SAP HANA（大型实例）建立高可用性并规
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/01/2018
+ms.date: 05/30/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6c939e0fb59c7fce2c1c34aca1b77bd0b8cec0c5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9c4c126663d34d65cc7e0aa641bf93b848a5dcae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658309"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复 
 
@@ -36,7 +37,7 @@ Microsoft 通过 HANA 大型实例支持一些 SAP HANA 高可用性功能。 �
 - **HANA 系统复制**：将 [SAP HANA 中的所有数据](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)复制到独立的 SAP HANA 系统。 通过定期复制数据最大限度地减小恢复时间目标。 SAP HANA 支持异步模式、内存中同步模式和同步模式。 仅在同一数据中心或者距离不超过 100 公里的范围内针对 SAP HANA 系统使用同步模式。 在 HANA 大型实例戳的当前设计中，HANA 系统复制仅可用于在一个区域内实现高可用性。 HANA 系统复制要求使用第三方反向代理或路由组件将灾难恢复配置传送到另一 Azure 区域。 
 - **主机自动故障转移**：用于替代 HANA 系统复制的 SAP HANA 本地故障恢复解决方案。 如果主节点不可用，可在横向扩展模式下配置一个或多个备用 SAP HANA 节点，SAP HANA 会自动故障转移到备用节点。
 
-Azure 上的 SAP HANA（大型实例）在三个地缘政治区域（美国、澳大利亚和欧洲）的两个 Azure 区域中提供。 托管 HANA 大型实例戳的两个不同区域与用于复制存储快照的单独专用网络线路连接。 它们用于复制存储快照，以提供灾难恢复方法。 默认情况下不建立复制，该功能是为订购灾难恢复功能的客户设置。 存储复制取决于 HANA 大型实例存储快照的使用情况。 无法选择 Azure 区域作为 DR 区域，因为它位于另一个地缘政治区域。 
+Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、澳大利亚、欧洲和日本）的两个 Azure 区域中提供。 托管 HANA 大型实例戳的两个不同区域与用于复制存储快照的单独专用网络线路连接。 它们用于复制存储快照，以提供灾难恢复方法。 默认情况下不建立复制，该功能是为订购灾难恢复功能的客户设置。 存储复制取决于 HANA 大型实例存储快照的使用情况。 无法选择 Azure 区域作为 DR 区域，因为它位于另一个地缘政治区域。 
 
 下表显示了当前支持的高可用性和灾难恢复方法与组合：
 
@@ -81,6 +82,7 @@ Azure 上的 SAP HANA（大型实例）在三个地缘政治区域（美国、�
 
 - 订购的 Azure 上的 SAP HANA（大型实例）的 SKU 大小必须与生产 SKU 大小相同，并且应部署在灾难恢复区域中。 在当前客户部署中，这些实例用于运行非生产 HANA 实例。 这些配置被称为“多用途 DR 设置”。   
 - 在 DR 站点上为想要在灾难恢复站点中恢复的每个 Azure 上的 SAP HANA（大型实例）SKU 订购附加存储。 购买附加存储可以分配存储卷。 可以分配用作从生产 Azure 区域复制到灾难恢复 Azure 区域的存储复制目标的存储卷。
+- 本例中，在主节点上安装了 HSR，且将基于存储的副本安装到了 DR 站点，因此必须在 站点购买额外的存储，以便主节点数据和辅助节点数据复制到 DR 站点。
 
  
 
@@ -113,7 +115,7 @@ Azure 上的 SAP HANA（大型实例）提供两个备份和还原选项：
 Azure 上的 SAP HANA（大型实例）的底层存储基础结构支持卷的存储快照。 支持备份和还原卷，不过需要注意以下事项：
 
 - 它不是创建完整的数据库备份，而是频繁创建存储卷的快照。
-- 当触发对 /hana/data、和 /hana/shared（包括 /usr/sap）卷的快照时，快照技术将在执行存储快照前启动 SAP HANA 快照。 在恢复存储快照后，此 SAP HANA 快照是最终日志还原的设置点。
+- 当触发对 /hana/data、和 /hana/shared（包括 /usr/sap）卷的快照时，快照技术将在执行存储快照前启动 SAP HANA 快照。 在恢复存储快照后，此 SAP HANA 快照是最终日志还原的设置点。 为使 HANA 快照成功，需要活跃的 HANA 实例。  在 HSR 方案中，不能执行 HANA 快照的当前辅助节点不支持存储快照。
 - 成功执行存储快照后，将删除 SAP HANA 快照。
 - 事务日志备份需频繁创建，并存储在 /hana/logbackups 卷或 Azure 中。 可以单独触发包含事务日志备份的 /hana/logbackups 卷来创建快照。 在这种情况下，不需要执行 HANA 快照。
 - 如果必须将数据库还原到某个特定的时间点，可请求 Microsoft Azure 支持（会造成生产中断）或 Azure 上的 SAP HANA 服务管理部门还原到特定的存储快照。 一个例子就是按计划将沙盒系统还原到其原始状态。
@@ -126,6 +128,7 @@ Azure 上的 SAP HANA（大型实例）的底层存储基础结构支持卷的�
 - 基于 /hana/logbackups 创建单独的快照。
 - 操作系统分区。
 
+从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 获取最新的快照脚本和文档。 
 
 ### <a name="storage-snapshot-considerations"></a>存储快照注意事项
 
@@ -144,7 +147,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 以下部分提供了有关执行这些快照的信息，提供了一般性的建议：
 
-- 尽管硬件可以保留每个卷的 255 个快照，但可以保留的快照数远低于此数字。
+- 尽管硬件可以保留每个卷的 255 个快照，但可以保留的快照数远低于此数字。 建议设为 250 个或更少。
 - 执行存储快照之前，请监视并跟踪可用空间。
 - 根据可用空间减少存储快照数量。 可以减少保留的快照数量，或者扩展卷。 可以 1 TB 为单位订购附加存储。
 - 在使用 SAP 平台迁移工具 (R3load) 将数据移入 SAP HANA，或者从备份还原 SAP HANA 数据库或执行其他活动期间，可以禁用 /hana/data 卷上的存储快照。 
@@ -171,6 +174,8 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 6. 将脚本和配置文件从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 复制到 SAP HANA 安装中的 **hdbsql** 位置。
 7. 必要时，根据相应的客户规范修改 *HANABackupDetails.txt* 文件。
 
+从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 获取最新的快照脚本和文档。 
+
 ### <a name="consideration-for-mcod-scenarios"></a>MCOD 方案的注意事项
 如果对一个 HANA 大型实例单元上的多个 SAP HANA 实例运行 [MCOD 场景](https://launchpad.support.sap.com/#/notes/1681092)，将获得为每个 SAP HANA 实例预配的单独存储卷。 在当前版本的自助服务快照自动化中，无法针对每个 HANA 实例系统 ID (SID) 启动单独的快照。 该功能在配置文件（参阅下文）中为服务器的注册 SAP HANA 实例提供检查，并对单元上注册的所有实例的卷执行同时快照。
  
@@ -180,7 +185,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 Azure 上的 SAP HANA（大型实例）上安装的 Linux 操作系统包含所需的文件夹和脚本用于针对备份和灾难恢复目的执行 SAP HANA 存储快照。 在 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 中查找最新版本。 最新发布的脚本版本为 3.x。 相同的主要版本中，不同的脚本可能具有不同的次要发行版本。
 
 >[!IMPORTANT]
->从脚本版本 2.1 过渡到 3.0 时，请注意，配置文件的结构和脚本的某些语法发生了变化。 请查看特定部分中的标注。 
+>从脚本版本 2.1 过渡到 3.x 时，请注意，配置文件的结构和脚本的某些语法发生了变化。 请查看特定部分中的标注。 
 
 客户需要负责在安装 SAP HANA 时在 HANA 大型实例单元上安装 SAP HANA HDB 客户端。
 
@@ -234,7 +239,7 @@ MACs hmac-sha1
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>步骤 4：创建 SAP HANA 用户帐户
 
-为了启动 SAP HANA 快照的创建，需要在 SAP HANA 中创建一个可供存储快照脚本使用的用户帐户。 在 SAP HANA Studio 中创建用于此目的的 SAP HANA 用户帐户。 必须在 SYSTEMDB 下创建用户，而不是在 SID 数据库下创建。 此帐户必须拥有以下权限：“备份管理”和“目录读取”。 在本示例中，用户名为 **SCADMIN**。 在 HANA Studio 中创建的用户帐户名区分大小写。 出现是否要求用户下次登录时更改密码的提示时，请务必选择“否”。
+为了启动 SAP HANA 快照的创建，需要在 SAP HANA 中创建一个可供存储快照脚本使用的用户帐户。 在 SAP HANA Studio 中创建用于此目的的 SAP HANA 用户帐户。 必须在 SYSTEMDB 下创建用户，而不是在适用于 MDC 的 SID 数据库下创建。 在单容器环境中，在租户数据库下设置用户。 此帐户必须拥有以下权限：“备份管理”和“目录读取”。 在本示例中，用户名为 **SCADMIN**。 在 HANA Studio 中创建的用户帐户名区分大小写。 出现是否要求用户下次登录时更改密码的提示时，请务必选择“否”。
 
 ![在 HANA Studio 中创建用户](./media/hana-overview-high-availability-disaster-recovery/image3-creating-user.png)
 
@@ -245,7 +250,7 @@ MACs hmac-sha1
 在此步骤中，向创建的 SAP HANA 用户帐户授权，以便脚本无需在运行时提交密码。 使用 SAP HANA 命令 `hdbuserstore` 可以创建存储在一个或多个 SAP HANA 节点上的 SAP HANA 用户密钥。 用户可以使用用户密钥从脚本流程内部访问 SAP HANA，而无需管理密码。 本文稍后会介绍脚本过程。
 
 >[!IMPORTANT]
->以 `root` 身份运行以下命令。 否则脚本无法正常工作。
+>在计划执行脚本的用户下运行以下命令。 否则脚本无法正常工作。
 
 按如下所示输入 `hdbuserstore` 命令：
 
@@ -285,7 +290,7 @@ testHANAConnection.pl
 testStorageSnapshotConnection.pl 
 removeTestStorageSnapshot.pl
 azure_hana_dr_failover.pl
-azure_hana_dr_failover.pl 
+azure_hana_test_dr_failover.pl 
 HANABackupCustomerDetails.txt 
 ``` 
 
@@ -319,12 +324,12 @@ HANABackupCustomerDetails.txt
 - **azure\_hana\_测试\_dr\_failover.pl**：此脚本将测试故障转移执行到 DR 站点。 与 azure_hana_dr_failover.pl 脚本不同，此执行不会中断从主端到辅助端的存储复制。 而会在 DR 端创建复制的存储卷的克隆，并提供克隆卷的装载点。 
 - **HANABackupCustomerDetails.txt**：此文件是可修改的配置文件，需要将其进行修改以适应 SAP HANA 配置。 *HANABackupCustomerDetails.txt* 文件是脚本的控制与配置文件，用于运行存储快照。 根据用途和设置调整该文件。 在部署实例后，应会收到 Azure 上的 SAP HANA 服务管理部门提供的**存储备份名称**和**存储 IP 地址**。 不能修改此文件中任何变量的顺序、排序或空格。 否则脚本无法正常运行。 此外，还会收到 Azure 上的 SAP HANA 服务管理部门提供的纵向扩展节点或主节点（如果是横向扩展）的 IP 地址。 还会知道在安装 SAP HANA 期间获取的 HANA 实例编号。 现在，需要将备份名称添加到配置文件。
 
-对于纵向扩展或横向扩展部署，在填写 HANA 大型实例单元的服务器名称和服务器的 IP 地址后，配置文件如以下示例所示。 在使用 SAP HANA 系统复制的情况下，请使用 HANA 系统复制配置的虚拟 IP 地址。 填写想要备份或恢复的每个 SAP HANA SID 的所有必填字段。
+对于纵向扩展或横向扩展部署，在填写 HANA 大型实例单元的服务器名称和服务器的 IP 地址后，配置文件如以下示例所示。 填写想要备份或恢复的每个 SAP HANA SID 的所有必填字段。
 
 还可以标注出一段时间内不希望备份的实例行，方法是在所需的字段前添加“#”。 如果不需要备份或恢复特定实例，则无需输入服务器上包含的所有 SAP HANA 实例。 必须保留所有字段的格式，否则所有脚本都会引发错误消息，并且脚本会终止。 最后一个 SAP HANA 实例投入使用后，可以删除未使用的任何 SID 信息详情的其他所需行。 必须填写、标注或删除所有行。
 
 >[!IMPORTANT]
->从版本 2.1 到版本 3.0，文件的结构有所更改。 如果想使用 3.0 版本的脚本，则需要调整配置文件结构。 
+>从版本 2.1 到版本 3.x，文件的结构有所更改。 如果想使用 3.x 版本的脚本，则需要调整配置文件结构。 
 
 
 ```
@@ -379,7 +384,7 @@ testHANAConnection.pl
 
 2. 运行测试脚本：
    ```
-    ./testStorageSnapshotConnection.pl <HANA SID>
+    ./testStorageSnapshotConnection.pl
    ```
 
 脚本会尝试使用之前设置步骤中提供的公钥和在 *HANABackupCustomerDetails.txt* 文件中配置的数据登录到存储。 如果登录成功，会显示以下内容：
@@ -447,7 +452,7 @@ Snapshot created successfully.
 
 
 >[!NOTE]
-> 随着 3.0 版本脚本（支持 MCOD 部署）的到来，这三种类型快照的调用语法发生了变化。 没有必要再指定实例的 HANA SID。 需确保在配置文件 *HANABackupCustomerDetails.txt* 中配置了一个单元的 SAP HANA 实例。
+> 随着 3.x 版本脚本（支持 MCOD 部署）的到来，这三种类型快照的调用语法发生了变化。 没有必要再指定实例的 HANA SID。 需确保在配置文件 *HANABackupCustomerDetails.txt* 中配置了一个单元的 SAP HANA 实例。
 
 >[!NOTE]
 > 首次执行脚本时，在多 SID 环境中，脚本可能会显示某些意外错误。 只需重新运行脚本即可解决问题。
@@ -472,7 +477,7 @@ For snapshot of the volume storing the boot LUN
 
 - 第一个参数确定相应快照备份类型的特征。 允许的值为 **hana**、**logs** 和 **boot**。 
 - 参数 <HANA Large Instance Type> 仅对于启动卷备份是必须的。 有两个有效的值“TypeI”或“TypeII”，具体取决于 HANA 大型实例单元。 若要了解单元的类型，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。  
-- <snapshot_prefix> 参数是一个快照，或该快照类型的备份标签。 它有两个用途：第一个用途是指定快照的名称，以便知道这些快照的作用。 第二个用途是让脚本 *azure\_hana\_backup.pl* 确定该特定标签下保留的存储快照数。 如果计划两个具有相同类型（例如 **hana**）、不同标签的存储快照备份，并定义要对每个备份保留 30 个快照，则最终会有 60 个受影响的存储卷快照。 
+- <snapshot_prefix> 参数是一个快照，或该快照类型的备份标签。 它有两个用途：第一个用途是指定快照的名称，以便知道这些快照的作用。 第二个用途是让脚本 *azure\_hana\_backup.pl* 确定该特定标签下保留的存储快照数。 如果计划两个具有相同类型（例如 **hana**）、不同标签的存储快照备份，并定义要对每个备份保留 30 个快照，则最终会有 60 个受影响的存储卷快照。 仅允许字母数字（“A-Z、a-z、0-9”）、下划线（“_”）和破折号（“-”）字符。 
 - 参数 <snapshot_frequency>  保留供未来发展使用，无任何影响。 执行 **log** 类型的备份时，请将其设置为“3 分钟”，并在执行其他备份类型时将其设为“15 分钟”。
 - 参数 **<number of snapshots retained>** 通过定义要保留的快照数（拥有相同快照前缀/标签）间接定义快照的保留期。 对于通过 cron 制定的执行计划，此参数十分重要。 如果拥有相同快照前缀的快照数将超出此参数提供的编号，在执行新的存储快照之前，将删除时间最早的快照。
 
@@ -500,7 +505,7 @@ For snapshot of the volume storing the boot LUN
 - 使用的空间。
 - 潜在灾难恢复的恢复点和恢复时间目标。
 - 针对磁盘最终执行的 HANA 完整数据库备份。 每当针对磁盘执行完整数据库备份或执行 **backint** 接口时，存储快照的执行会失败。 如果打算基于存储快照执行完整数据库备份，请确保在此期间已禁用存储快照执行。
-- 每个卷的快照数（限制为 255）。
+- 每个卷的快照数（限制为 250）。
 
 
 对于不使用 HANA 大型实例灾难恢复功能的客户，快照频率会低一些。 在这类情况下，客户以 12 小时或 24 小时的周期对 /hana/data 和 /hana/shared（包括 /usr/sap）执行组合快照，并将这些快照保留一个月。 对日志备份卷的快照也执行相同操作。 但是，日志备份卷的 SAP HANA 事务日志备份按 5 - 15 分钟的周期执行。
@@ -532,9 +537,7 @@ For snapshot of the volume storing the boot LUN
 
 SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据库。 SAP HANA 将保存点定期写入 /hana/data 卷。 根据 crontab 中所指定，SAP HANA 事务日志备份每 5 分钟执行一次。 由于对 /hana/data 和 /hana/shared 卷触发组合存储快照，因此还会每小时执行一次 SAP HANA 快照。 成功执行 HANA 快照后，会执行组合存储快照。 如 crontab 中所指示，在 HANA 事务日志备份后 2 分钟左右，/hana/logbackup 卷上的存储快照每 5 分钟执行一次。
 
-> [!NOTE]
->如果在 HANA 系统复制设置的两个节点上计划存储快照备份，需要确保两个节点之间的快照备份执行不重叠。 SAP HANA 具有限制，一次只能处理一个 HANA 快照。 由于 HANA 快照是成功存储快照备份的基本组件，需确保主节点和辅助节点以及最终的第三节点上的存储快照及时相互分离。
-
+> 
 
 >[!IMPORTANT]
 > 仅当与 SAP HANA 事务日志备份配合执行存储快照时，才能针对 SAP HANA 备份使用存储快照。 这些事务日志备份需要能够涵盖执行存储快照的间隔时间段。 
@@ -557,7 +560,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
 成功执行第一个存储快照后，可删除在步骤 6 中执行的测试快照。 为此，请运行脚本 `removeTestStorageSnapshot.pl`：
 ```
-./removeTestStorageSnapshot.pl <hana instance>
+./removeTestStorageSnapshot.pl
 ```
 
 下面是脚本输出的示例：
@@ -636,7 +639,7 @@ HANA Backup ID:
 
 
 ### <a name="file-level-restore-from-a-storage-snapshot"></a>从存储快照实现文件级还原
-对于 **hana** 和 **logs** 快照类型，可以直接在 **.snapshot** 目录中的卷上访问快照。 每个快照的有一个子目录。 可将执行了快照的每个文件以文件在快照瞬间的状态从该子目录复制到实际目录结构。
+对于 **hana** 和 **logs** 快照类型，可以直接在 **.snapshot** 目录中的卷上访问快照。 每个快照的有一个子目录。 可将执行了快照的每个文件以文件在快照瞬间的状态从该子目录复制到实际目录结构。 在当前的脚本版本中，未以自助服务的形式向快照还原提供还原脚本（虽然故障转移期间可在 DR 站点在自助服务 DR 脚本中执行快照还原）。 必须通过打开服务请求联系 Microsoft 操作团队，要求从现有可用快照还原所需快照。
 
 >[!NOTE]
 >单个文件还原不适用于独立于 HANA 大型实例单元类型的启动 LUN 的快照。 **.snapshot** 目录不在启动 LUN 中公开。 
@@ -830,11 +833,8 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 
 如果在一个 HANA 大型实例单元上有多个独立的 SAP HANA 实例时采用 MCOD 部署，应将所有的 SAP HANA 实例存储复制到 DR 端。
 
-在生产站点中将 HANA 系统复制作为高可用性功能使用时，将仅复制第 2 层（或副本）实例的卷。 如果保留或移除次要副本（第 2 层）服务器单元或此单元中的 SAP HANA 实例，此配置可能导致在将存储复制到 DR 站点时出现延迟。 
+使用 HANA 系统复制作为生产站点的高可用性功能，并对 DR 站点使用基于存储的复制时，会将两个节点的卷都从主站点复制到 DR 实例。 必须在 DR 站点购买额外存储（大小与主节点相同）以容纳从主站点和辅助站点到 DR 的复制。 
 
-
->[!IMPORTANT]
->对于多层 HANA 系统复制，当使用 HANA 大型实例灾难恢复功能时，关闭第 2 层 HANA 实例或服务器单元会中断到灾难恢复站点的复制。
 
 
 >[!NOTE]

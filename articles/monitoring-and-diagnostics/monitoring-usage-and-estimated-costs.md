@@ -1,24 +1,20 @@
 ---
-title: 在 Azure Monitor 中监视使用情况和预估成本 | Microsoft Docs
+title: 在 Azure Monitor 中监视使用情况和预估成本
 description: Azure Monitor 中的使用情况和预估成本页的使用过程概述
 author: dalekoetke
-manager: carmonmills
-editor: mrbullwinkle
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/09/2018
-ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: 6cc35697573ae2997f289f67c7867d9c522149be
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 05/31/2018
+ms.author: mbullwin
+ms.reviewer: Dale.Koetke
+ms.component: ''
+ms.openlocfilehash: edfcc244105403ae33251777c560d4cc21dfe5cb
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203771"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264276"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>监视使用情况和预估成本
 
@@ -107,3 +103,146 @@ ms.locfileid: "34203771"
 ![“定价模型选择”屏幕截图](./media/monitoring-usage-and-estimated-costs/007.png)
 
 若要将订阅移到新定价模型，只需选中相应的复选框，然后选择“保存”即可。 可以相同的方式移回到旧定价模型。 请记住，更改定价模型需要订阅所有者或参与者权限。
+
+## <a name="automate-moving-to-the-new-pricing-model"></a>自动转移到新定价模型
+
+下面的脚本需要使用 Azure PowerShell 模块。 若要检查是否拥有最新版本，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0)。
+
+在拥有最新版本的 Azure PowerShell 后，你需要运行 ``Connect-AzureRmAccount``。
+
+``` PowerShell
+# To check if your subscription is eligible to adjust pricing models.
+$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+```
+
+如果 isGrandFatherableSubscription 下的结果为 True，则表示此订阅的定价模型可以在两种定价模型之间切换。 如果 optedInDate 下没有值，则意味着此订阅当前设置为使用旧的定价模型。
+
+```
+isGrandFatherableSubscription optedInDate
+----------------------------- -----------
+                         True            
+```
+
+若要将此订阅迁移到新的定价模型，请运行以下命令：
+
+```PowerShell
+$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action migratetonewpricingmodel `
+ -Force
+```
+
+若要确认更改是否成功，请重新运行以下命令：
+
+```PowerShell
+$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+```
+
+如果迁移成功，则结果现在应如下所示：
+
+```
+isGrandFatherableSubscription optedInDate                      
+----------------------------- -----------                      
+                         True 2018-05-31T13:52:43.3592081+00:00
+```
+
+optInDate 现在包含此订阅加入到新定价模型时的时间戳。
+
+如果需要恢复到旧定价模型，可以运行以下命令：
+
+```PowerShell
+ $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action rollbacktolegacypricingmodel `
+ -Force
+```
+
+如果之后重新运行包含 ``-Action listmigrationdate`` 的上一脚本，则应当会看到空的 optedInDate 值，表示你的订阅已恢复到旧定价模型。
+
+如果你希望迁移位于同一租户下的多个订阅，则可以使用以下脚本的片段创建你自己的脚本变体：
+
+```PowerShell
+#Query tenant and create an array comprised of all of your tenants subscription ids
+$TenantId = <Your-tenant-id>
+$Tenant =Get-AzureRMSubscription -TenantId $TenantId
+$Subscriptions = $Tenant.Id
+```
+
+若要检查是否租户中的所有订阅都有资格使用新定价模型，可以运行以下命令：
+
+```PowerShell
+Foreach ($id in $Subscriptions)
+{
+$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+}
+```
+
+可以通过创建生成三个数组的脚本进一步对脚本进行优化。 一个数组将包含 ```isGrandFatherableSubscription``` 设置为 True 且 optedInDate 当前没有值的所有订阅 ID。 第二个数组包含当前采用新定价模型的任何订阅。 第三个数组仅填充有租户中没有资格使用新定价模型的订阅 ID：
+
+```PowerShell
+[System.Collections.ArrayList]$Eligible= @{}
+[System.Collections.ArrayList]$NewPricingEnabled = @{}
+[System.Collections.ArrayList]$NotEligible = @{}
+
+Foreach ($id in $Subscriptions)
+{
+$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
+$Result= Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+
+     if ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $False)
+     {
+     $Eligible.Add($id)
+     }
+
+     elseif ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $True)
+     {
+     $NewPricingEnabled.Add($id)
+     }
+
+     elseif ($Result.isGrandFatherableSubscription -eq $False)
+     {
+     $NotEligible.add($id)
+     }
+}
+```
+
+> [!NOTE]
+> 运行以上脚本可能要花费一些时间，具体取决于订阅数。 由于使用了 .add() 方法，PowerShell 窗口将在向每个数组添加项时回显递增的值。
+
+现在，你已将订阅拆分到三个数组中，你应当仔细检查结果。 你可能还希望创建数组内容的备份副本，以便在将来需要时轻松还原更改。 如果已决定要将当前采用旧定价模型的所有符合条件的订阅转移到新定价模型，则现在可以通过以下脚本完成此任务：
+
+```PowerShell
+Foreach ($id in $Eligible)
+{
+$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action migratetonewpricingmodel `
+ -Force
+}
+
+```

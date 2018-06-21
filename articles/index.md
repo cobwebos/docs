@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 19f9bd1385766ab52613cd8dd191a92329f44616
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6b6b2c902cf64eab74533a4c581156e49375a407
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299206"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295539"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -269,6 +269,11 @@ Terraform </a>
                                                         <a class="barLink" href="https://docs.microsoft.com/vsts/deploy-azure/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
 Visual Studio Team Services </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops">
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
+了解如何将 DevOps 与 Azure 配合使用</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1461,6 +1466,12 @@ Visual Studio Team Services </a>
                                             <a href="/azure/vpn-gateway/">
                                                 <img src="media/index/VPNGateway.svg" alt="" />
                                                 <p>VPN 网关</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/role-based-access-control/">
+                                                <img src="media/index/PersonWithFriend.svg" alt="" />
+                                                <p>基于角色的访问控制</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -4287,6 +4298,25 @@ Visual Studio Team Services </a>
                                                 <div class="cardText">
                                                     <h3>VPN 网关</h3>
                                                     <p>建立安全的跨界连接</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/role-based-access-control/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/PersonWithFriend.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>基于角色的访问控制</h3>
+                                                    <p>管理对 Azure 资源的访问权限</p>
                                                 </div>
                                             </div>
                                         </div>

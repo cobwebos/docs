@@ -1,23 +1,19 @@
 ---
-title: "使用 Azure 备份服务器备份 VMware 服务器 | Microsoft Docs"
-description: "可以使用 Azure 备份服务器将 VMware vCenter/ESXi 服务器备份到 Azure 或磁盘。 本文提供了用于备份（或保护）VMware 工作负荷的分步说明。"
+title: 使用 Azure 备份服务器备份 VMware 服务器
+description: 可以使用 Azure 备份服务器将 VMware vCenter/ESXi 服务器备份到 Azure 或磁盘。 本文提供了用于备份（或保护）VMware 工作负荷的分步说明。
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-ms.assetid: 6b131caf-de85-4eba-b8e6-d8a04545cd9d
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/24/2017
-ms.author: markgal;
-ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 9cf3c9d5df11e19045cd47a41d7ab9ac93bdf700
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605417"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>将 VMware 服务器备份到 Azure
 
@@ -92,7 +88,7 @@ Azure 备份服务器可以备份或帮助保护 VMware vCenter 服务器版本 
 
     ![证书目标文件夹](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-    “受信任的根证书颁发机构”文件夹确认为证书存储。 单击“下一步”。
+    “受信任的根证书颁发机构”文件夹确认为证书存储。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![证书存储文件夹](./media/backup-azure-backup-server-vmware/certificate-import-wizard2.png)
 
@@ -336,11 +332,11 @@ Azure 备份服务器使用用户名和密码对 vCenter 服务器进行身份�
 
 6. 在“检查磁盘分配”页面上，检查 VM 的磁盘空间并根据需要进行修改。 建议的磁盘分配基于“指定短期目标”页面中指定的保留期、工作负荷的类型、以及受保护数据的大小（在步骤 3 中确定）。  
 
-  - **数据大小：**保护组中数据的大小。
-  - **磁盘空间：**为保护组建议的磁盘空间量。 若要修改此设置，所分配的总空间应比每个数据源预计增长量略大。
-  - **归置数据：**如果启用归置，受保护的多个数据源可以映射到单个副本和恢复点卷。 并非所有工作负荷都支持归置。
-  - **自动增长：**启用此设置后，当受保护组中的数据增长量超过初始分配时，System Center Data Protection Manager 会尝试将磁盘大小增加 25%。
-  - **存储池详细信息：**显示存储池的状态，包括总磁盘大小和剩余磁盘大小。
+  - **数据大小：** 保护组中数据的大小。
+  - **磁盘空间：** 为保护组建议的磁盘空间量。 若要修改此设置，所分配的总空间应比每个数据源预计增长量略大。
+  - **归置数据：** 如果启用归置，受保护的多个数据源可以映射到单个副本和恢复点卷。 并非所有工作负荷都支持归置。
+  - **自动增长：** 启用此设置后，当受保护组中的数据增长量超过初始分配时，System Center Data Protection Manager 会尝试将磁盘大小增加 25%。
+  - **存储池详细信息：** 显示存储池的状态，包括总磁盘大小和剩余磁盘大小。
 
     ![查看磁盘分配](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 

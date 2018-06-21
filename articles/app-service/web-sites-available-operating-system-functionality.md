@@ -1,8 +1,8 @@
 ---
-title: "Azure 应用服务上的操作系统功能"
-description: "了解可供 Azure 应用服务上的 Web 应用、移动应用后端和 API 应用使用的 OS 功能"
+title: Azure 应用服务上的操作系统功能
+description: 了解可供 Azure 应用服务上的 Web 应用、移动应用后端和 API 应用使用的 OS 功能
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-ms.openlocfilehash: 6b5939341ad05fb8f80415c5335c24d216fc2555
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 00b5f9c78000fbb9bf86e8c1d8b06e3645795a12
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850148"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
 本文介绍了可供在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)上运行的所有应用使用的常见基准操作系统功能。 这些功能包括文件、网络和注册表访问以及诊断日志和事件。 
@@ -49,16 +50,22 @@ ms.lasthandoff: 03/12/2018
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>本地驱动器
-就其核心而言，应用服务是在 Azure PaaS（平台即服务）基础结构的基础上运行的服务。 因此，“附加到”虚拟机的本地驱动器是可用于在 Azure 中运行的任何辅助角色的相同驱动器类型。 这包括操作系统驱动器（D:\ 驱动器）、包含应用服务专用（客户不可访问）的 Azure 程序包 cspkg 文件的应用程序驱动器，以及其大小因 VM 大小而异的“user”驱动器（C:\ 驱动器）。 随着应用程序增长，请务必监视磁盘利用率。 如果达到了磁盘配额，可能会对应用程序产生负面影响。
+就其核心而言，应用服务是在 Azure PaaS（平台即服务）基础结构的基础上运行的服务。 因此，“附加到”虚拟机的本地驱动器是可用于在 Azure 中运行的任何辅助角色的相同驱动器类型。 这包括：
+
+- 操作系统驱动器 (D:\ drive)
+- 包含应用服务独占使用（且客户不可访问）的 Azure 包 cspkg 文件的应用程序驱动器
+- “user”驱动器 (C:\ drive)，其大小因虚拟机大小而异。 
+
+随着应用程序增长，请务必监视磁盘利用率。 如果达到了磁盘配额，可能会对应用程序产生负面影响。
 
 <a id="NetworkDrives"></a>
 
 ### <a name="network-drives-aka-unc-shares"></a>网络驱动器（即 UNC 共享）
-应用服务中有一个独具特色的方面能够简化应用的部署和维护，这就是所有用户内容都存储在一组 UNC 共享中。 此模型非常好地映射到具有多个负载均衡服务器的本地 Web 托管环境所用内容存储的公共模式。 
+应用服务中有一个独具特色的方面能够简化应用的部署和维护，这就是所有用户内容都存储在一组 UNC 共享中。 此模型很好地映射到具有多个负载均衡服务器的本地 Web 托管环境所用内容存储的公共模式。 
 
 在应用服务内，每个数据中心都创建了许多 UNC 共享。 在每个数据中心针对所有客户的某个百分比的用户内容将分配给各 UNC 共享。 此外，单个客户的订阅的所有文件内容将始终置于相同的 UNC 共享中。 
 
-请注意，由于云服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保由不同虚拟机装入 UNC 共享，因为在正常云操作过程中它们会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息会在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 *faux* 绝对路径 **D:\home\site**。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 **D:\home\site**，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径。
+由于 Azure 服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保由不同虚拟机装入 UNC 共享，因为在正常 Azure 操作过程中它们会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息会在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 faux 绝对路径 D:\home\site。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 D:\home\site，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径。
 
 <a id="TypesOfFileAccess"></a>
 
@@ -81,7 +88,7 @@ ms.lasthandoff: 03/12/2018
 ## <a name="network-access"></a>网络访问
 应用程序代码可以使用基于 TCP/IP 和 UDP 的协议建立与公开外部服务的 Internet 可访问终结点的出站网络连接。 应用可以使用这些相同协议连接到 Azure 内的服务&#151;例如，建立与 SQL 数据库的 HTTPS 连接即可实现此目的。
 
-还有有限容量以便为应用建立一个本地环回连接，并且让应用侦听该本地环回套接字。 此功能存在主要是为了实现作为其功能的一部分侦听本地环回套接字的应用。 请注意，每个应用都将看到“私有”环回连接；应用“A”无法侦听应用“B”建立的本地环回套接字。
+还有有限容量以便为应用建立一个本地环回连接，并且让应用侦听该本地环回套接字。 此功能存在主要是为了实现作为其功能的一部分侦听本地环回套接字的应用。 每个应用监视一个“专用”环回连接。 应用“A”无法侦听应用“B”创建的本地环回套接字。
 
 还支持命名管道作为共同运行应用的不同进程之间的进程间通信 (IPC) 机制。 例如，IIS FastCGI 模块依赖命名管道协调运行 PHP 页的单独进程。
 

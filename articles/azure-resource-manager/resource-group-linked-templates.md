@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2018
+ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: b01df5d89784c9982ebbf2351ae61a5d9f79aee8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 17f40790343181c592eca7bf6337b0f37d3ec20c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359435"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602809"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
-若要部署解决方案，可以使用单个模板或包含多个相关模板的主模板。 相关模板可以是从主模板链接到的单独文件，也可以是嵌套在主模板中的模板。
+若要部署解决方案，可以使用单个模板或包含任意相关模板的主模板。 相关模板可以是从主模板链接到的单独文件，也可以是嵌套在主模板中的模板。
 
 对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件，并重复使用模板。
 
@@ -86,6 +86,8 @@ ms.locfileid: "34359435"
 >
 > 不能在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
+嵌套模板需要与标准模板[相同的属性](resource-group-authoring-templates.md)。
+
 ### <a name="external-template-and-external-parameters"></a>外部模板和外部参数
 
 若要链接到外部模板和参数文件，请使用 **templateLink** 和 **parametersLink**。 链接到某个模板时，资源管理器服务必须能够访问该模板。 不能指定本地文件，或者只能在本地网络中使用的文件。 只能提供包含 **http** 或 **https** 的 URI 值。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
@@ -110,6 +112,8 @@ ms.locfileid: "34359435"
   }
 ]
 ```
+
+无需为模板或参数提供 `contentVersion` 属性。 如果未提供内容版本值，将部署模板的当前版本。 如果提供内容版本值，它必须与链接的模板中的版本相匹配；否则，部署失败并产生错误。
 
 ### <a name="external-template-and-inline-parameters"></a>外部模板和内联参数
 
@@ -149,7 +153,7 @@ ms.locfileid: "34359435"
 }
 ```
 
-还可以使用 [deployment()](resource-group-template-functions-deployment.md#deployment) 获取当前模板的基 URL，并使用该 URL 来获取同一位置其他模板的 URL。 如果模板位置发生变化（原因可能是改版）或者想要避免对模板文件中的 URL 进行硬编码，则此方法非常有用。 仅当链接到带有 URL 的远程模板时，才会返回 templateLink 属性。 如果使用的是本地模板，该属性不可用。
+还可以使用 [deployment()](resource-group-template-functions-deployment.md#deployment) 获取当前模板的基 URL，并使用该 URL 来获取同一位置其他模板的 URL。 如果模板位置发生变化或者想要避免对模板文件中的 URL 进行硬编码，则此方法非常有用。 仅当链接到带有 URL 的远程模板时，才会返回 templateLink 属性。 如果使用的是本地模板，该属性不可用。
 
 ```json
 "variables": {
@@ -447,7 +451,7 @@ done
 }
 ```
 
-在 PowerShell 中，使用以下命令获取容器的令牌并部署模板。 注意，**containerSasToken** 参数是在模板中定义的。 它不是 **New-AzureRmResourceGroupDeployment** 命令中的参数。
+在 PowerShell 中，使用以下命令获取容器的令牌并部署模板。 注意，**containerSasToken** 参数是在模板中定义的。 它不是 New-AzureRmResourceGroupDeployment 命令中的参数。
 
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates

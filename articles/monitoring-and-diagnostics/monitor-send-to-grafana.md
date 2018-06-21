@@ -1,28 +1,30 @@
 ---
-title: 使用 Grafana 监控 Azure 服务和应用程序 | Microsoft 文档
+title: 使用 Grafana 监视 Azure 服务和应用程序
 description: 路由 Azure Monitor 和 Application Insights 数据，以便在 Grafana 中进行查看。
-services: monitoring-and-diagnostics
+services: azure-monitor
 keywords: ''
 author: rboucher
 ms.author: robb
 ms.date: 11/06/2017
-ms.topic: article
-ms.service: monitoring-and-diagnostics
-ms.openlocfilehash: 537760554baa542d4cd967d2e1e885f936303175
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.topic: conceptual
+ms.service: azure-monitor
+ms.component: ''
+ms.openlocfilehash: de2c57949cb2087e41b79a225963225d340f12af
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263076"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
 你现在还可以使用 [Azure Monitor 数据源插件](https://grafana.com/plugins/grafana-azure-monitor-datasource)从 [Grafana](https://grafana.com/) 监控 Azure 服务和应用程序。 此插件将收集通过 Application Insights SDK 收集的应用程序性能数据，以及 Azure Monitor 提供的基础结构数据。 随后，可以在 Grafana 仪表板上显示此数据。
 
 此插件目前为预览版。
 
-使用以下步骤从 Azure Marketplace 设置 Grafana 服务器，并从 Azure Monitor 和 Application Insights 为指标生成仪表板。
+使用以下步骤从 Azure 市场设置 Grafana 服务器，并从 Azure Monitor 和 Application Insights 为指标生成仪表板。
 
 ## <a name="set-up-a-grafana-instance"></a>设置 Grafana 实例
-1. 转到 Azure Marketplace 并选取 Grafana Labs 的 Grafana。
+1. 转到 Azure 市场并选取 Grafana Labs 的 Grafana。
 
 2. 填写名称和详细信息。 创建新的资源组。 记录为 VM 用户名、VM 密码和 Grafana 服务器管理员密码选择的值。  
 
@@ -39,7 +41,7 @@ ms.lasthandoff: 03/30/2018
 
     如果选择网络安全组（在本例中为 grafana nsg），你可以看到端口 3000 用于访问 Grafana 服务器。
 
-2. 返回资源列表，然后选择“公共 IP 地址”。 使用在此屏幕上找到的值，在浏览器中键入 *http://<IP address>:3000* 或 *<DNSName>:3000*。 你应看到刚生成的 Grafana 服务器登录页。
+2. 返回资源列表，然后选择“公共 IP 地址”。 使用在此屏幕上找到的值，在浏览器中键入 http://<IP address>:3000 或 <DNSName>:3000。 你应看到刚生成的 Grafana 服务器登录页。
 
     ![Grafana 登录屏幕](.\media\monitor-how-to-grafana\grafana2.png)
 
@@ -107,7 +109,7 @@ Grafana 使用 Azure Active Directory 服务主体连接到 Azure Monitor API �
 
 你也可以重复使用此设置来包含 Prometheus 服务器中的指标。 在 Grafana 插件库中使用 Prometheus 数据源插件。
 
-如何使用 Telegraf、InfluxDB、Prometheus 和 Docker 的优秀参考文章如下：
+以下为如何使用 Telegraf、InfluxDB、Prometheus 和 Docker 的优秀参考文章：
  - [如何在 Ubuntu 16.04 上使用 TICK Stack 监控系统指标](https://www.digitalocean.com/community/tutorials/how-to-monitor-system-metrics-with-the-tick-stack-on-ubuntu-16-04)
 
  - [使用 Grafana、InfluxDB 和 Telegraf 监控 Docker 资源指标](https://blog.vpetkov.net/2016/08/04/monitor-docker-resource-metrics-with-grafana-influxdb-and-telegraf/)

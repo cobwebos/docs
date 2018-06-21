@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: genli
-ms.openlocfilehash: 2d332ce0da8622441d31a16a0addb9c06058998c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: df1bb64d0d753ae1853a2212c7c89d2e1613b8bc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363288"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657309"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在脱机模式下安装 Azure 虚拟机代理 
 
@@ -109,7 +109,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 如果使用资源管理器部署模型创建了 VM，则无需再进行额外操作。
 
-### <a name="use-the-provisionguestagent-property-for-vms-created-with-azure-resource-manager"></a>对使用 Azure 资源管理器创建的 VM 使用 ProvisionGuestAgent 属性
+### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>对于经典 VM，使用 ProvisionGuestAgent 属性
 
 如果使用经典模型创建了 VM，请使用 Azure PowerShell 模块更新 ProvisionGuestAgent 属性。 该属性会通知 Azure 该 VM 已安装 VM 代理。
 

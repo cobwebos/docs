@@ -6,15 +6,15 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: jovanpop
-ms.openlocfilehash: 7707a40a39e429333ff1c20fb7884a1fb7ee2162
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bef8d01bd4c220fac595177089088ff64ee3bc3b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365961"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646637"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL 数据库中的自动优化
 
@@ -62,13 +62,15 @@ Azure SQL 数据库自动优化与 SQL Server 自动优化引擎共享其核心�
 ## <a name="automatic-tuning-options"></a>自动优化选项
 
 Azure SQL 数据库中可用的自动优化选项包括：
- 1. **创建索引** - 标识可提高工作负载性能的索引，创建索引，并自动验证查询性能是否有所提高。 已启用此选项的默认 Azure 设置。
- 2. **删除索引** - 标识冗余和重复索引，以及长期未使用的索引。 请注意，目前此选项与使用分区切换和索引提示的应用程序不兼容。 已禁用此选项的默认 Azure 设置。
- 3. **强制执行上一卓越计划** - 标识使用执行计划的 SQL 查询（该执行计划速度慢于上一卓越计划），并标识使用上一已知卓越计划的查询而不是回归计划。 已启用此选项的默认 Azure 设置。
+ 1. **创建索引** - 标识可提高工作负载性能的索引，创建索引，并自动验证查询性能是否有所提高。
+ 2. **删除索引** - 标识冗余和重复索引，以及长期未使用的索引。 请注意，此选项与使用分区切换和索引提示的应用程序不兼容。
+ 3. **强制执行上一卓越计划** - 标识使用执行计划的 SQL 查询（该执行计划速度慢于上一卓越计划），并标识使用上一已知卓越计划的查询而不是回归计划。
 
-Azure SQL 数据库确定可优化数据库的“创建索引”、“删除索引”和“强制执行上一个卓越计划”建议，并在 Azure 门户中显示它们。 有关如何识别应更改索引的详细信息，请参阅[在 Azure 门户中查找索引建议](sql-database-advisor-portal.md)。 可以使用门户手动应用建议，也可以让 Azure SQL 数据库自动应用建议，在更改后监视工作负载，并验证该建议是否改进了工作负载的性能。
+Azure SQL 数据库确定可优化数据库的“创建索引”、“删除索引”和“强制执行上一个卓越计划”建议，并在 Azure 门户中显示它们。 有关如何识别应更改索引的详细信息，请参阅[在 Azure 门户中查找索引建议](sql-database-advisor-portal.md)。 可以使用门户手动应用建议，也可以让 Azure SQL 数据库自动应用建议，在更改后监视工作负载，并验证该建议是否改进了工作负载的性能。 
 
-每个数据库都可以独立打开或关闭自动优化选项，也可以在逻辑服务器上配置这些选项，并将其应用于从服务器继承设置的每个数据库。 逻辑服务器可继承 Azure 默认值，用于自动调整设置。 要配置自动优化，建议在服务器上配置自动优化选项并继承服务器中数据库的设置，因为这会简化对大量数据库的自动优化选项的管理。
+每个数据库都可以独立启用或禁用自动优化选项，也可以在逻辑服务器上配置这些选项，并将其应用于从服务器继承设置的每个数据库。 逻辑服务器可继承 Azure 默认值，用于自动调整设置。 目前 Azure 默认值设为启用 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用 DROP_INDEX。
+
+要配置自动优化，建议在服务器上配置自动优化选项并继承属于父级服务器的数据库设置，因为这会简化对大量数据库的自动优化选项的管理。
 
 ## <a name="next-steps"></a>后续步骤
 

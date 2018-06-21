@@ -1,9 +1,9 @@
 ---
-title: "Microsoft Azure 上的 Oracle 解决方案 | Microsoft Docs"
-description: "了解 Microsoft Azure 上 Oracle 解决方案支持的配置和限制。"
+title: Microsoft Azure 上的 Oracle 解决方案 | Microsoft Docs
+description: 了解 Microsoft Azure 上 Oracle 解决方案支持的配置和限制。
 services: virtual-machines-linux
-documentationcenter: 
-manager: timlt
+documentationcenter: ''
+manager: jeconnoc
 author: rickstercdn
 tags: azure-resource-management
 ms.assetid: 5d71886b-463a-43ae-b61f-35c6fc9bae25
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: rclaus
-ms.openlocfilehash: 1bc03d15096e7f1d4538d6642a61aaee9bb572f7
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: daed709b4b4be87ba75f5539bd31c666b3a37414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656340"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle 解决方案及其部署
-本文介绍在 Microsoft Azure 上成功部署各种 Oracle 解决方案所需的信息。 这些解决方案以 Oracle 在 Azure Marketplace 中发布的虚拟机映像为基础。 若要获取当前可用映像的列表，请运行以下命令：
+本文介绍在 Microsoft Azure 上成功部署各种 Oracle 解决方案所需的信息。 这些解决方案以 Oracle 在 Azure 市场中发布的虚拟机映像为基础。 若要获取当前可用映像的列表，请运行以下命令：
 ```azurecli-interactive
 az vm image list --publisher oracle -o table --all
 ```
@@ -56,7 +57,8 @@ Oracle 支持在基于 Oracle Linux 的虚拟机映像上的 Azure 中运行 Ora
 附加磁盘依赖于 Azure Blob 存储服务。 每个标准磁盘理论上每秒最多能够完成大约 500 个输入/输出操作 (IOPS)。 高级磁盘产品主要针对高性能数据库工作负荷，每个磁盘 IOPS 高达 5000。 尽管可使用单个磁盘（如果这可满足性能需求），但是如果使用多个附加磁盘，将数据库数据分散到这些磁盘上，然后使用 Oracle 自动存储管理 (ASM)，通常可以提高有效 IOPS 性能。 请参阅 [Oracle 自动存储概述](http://www.oracle.com/technetwork/database/index-100339.html)，了解更多 Oracle ASM 的具体信息。 有关如何在 Linux Azure VM 上安装和配置 Oracle ASM 的示例，可查看[安装和配置 Oracle 自动存储管理](configure-oracle-asm.md)教程。
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
-Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要 Azure 中的 Oracle RAC，需要使用第三方软件来启用这些技术。  **Microsoft Azure 认证**产品称为 [FlashGrid Node for Oracle RAC](https://azuremarketplace.microsoft.com/marketplace/apps/flashgrid-inc.flashgrid-racnode?tab=Overview) 处于可以使用 Azure Marketplace 发布：FlashGrid inc.有关此解决方案以及它如何在 Azure 中工作的详细信息，请参阅 [FlashGrid 解决方案页](https://www.flashgrid.io/oracle-rac-in-azure/)。
+Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要 Azure 中的 Oracle RAC，需要使用第三方软件来启用这些技术。  
+  **Microsoft Azure 认证**产品称为 [FlashGrid Node for Oracle RAC](https://azuremarketplace.microsoft.com/marketplace/apps/flashgrid-inc.flashgrid-racnode?tab=Overview) 处于可以使用 Azure 市场发布：FlashGrid inc.有关此解决方案以及它如何在 Azure 中工作的详细信息，请参阅 [FlashGrid 解决方案页](https://www.flashgrid.io/oracle-rac-in-azure/)。
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和灾难恢复注意事项
 在 Azure 中使用 Oracle 数据库时，用户负责实现高可用性和灾难恢复解决方案，避免出现任何停机。 
@@ -89,7 +91,7 @@ Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故�
 
          -Dweblogic.rjvm.enableprotocolswitch=true
 
-如需相关信息，请参阅 <http://support.oracle.com> 上的知识库文章 **860340.1**。
+如需相关信息，请参阅位于 <http://support.oracle.com> 的知识库文章 **860340.1**。
 
 * **动态群集和负载均衡限制。** 假设要在 WebLogic Server 中使用动态群集并通过 Azure 中单个公共负载均衡终结点公开它。 只要对每个托管服务器使用固定的端口号（不是从范围中动态分配的），并且启动的托管服务器数不超过管理员正在跟踪的计算机数（即，每个虚拟机不能有一个以上托管服务器），就可以完成此操作。 如果配置导致启动的 WebLogic Server 数多于存在的虚拟机数（即，其中多个 WebLogic Server 实例共享同一个虚拟机），则其中多个 WebLogic Server 实例服务器不能绑定到给定端口号 - 该虚拟机上的其他 WebLogic Server 实例会失败。
 
