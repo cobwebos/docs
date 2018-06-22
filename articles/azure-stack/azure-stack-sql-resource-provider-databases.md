@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: a82db16f2012672f6e2669f2fd8198b177f501f3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 56d21b76268f94f4254985a6924c4ca2d778a9cd
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264176"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300794"
 ---
 # <a name="create-sql-databases"></a>创建 SQL 数据库
 
@@ -27,7 +27,7 @@ ms.locfileid: "36264176"
 
 1. 登录到[Azure 堆栈](azure-stack-poc.md)用户门户。
 
-2. 选择 **+ 新** &gt;**数据 + 存储"** &gt; **SQL Server 数据库** &gt; **添加**。
+2. 选择 **+ 新** &gt;**数据 + 存储** &gt; **SQL Server 数据库** &gt; **添加**。
 
 3. 下**Create Database**，输入所需的信息，如**数据库名称**和**以 mb 为单位的最大大小**。
 
