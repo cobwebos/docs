@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure 流分析的输出
-description: 本文介绍了 Azure 流分析提供的数据输出选项，包括用于分析结果的 Power BI。
+description: 本文介绍 Azure 流分析提供的数据输出选项，包括用于分析结果的 Power BI。
 services: stream-analytics
 author: jasonwhowell
 ms.author: jasonh
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: e14c4671669bc00e52c84c821a5229d26b2ba1c1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f2f616c5908d8583764425b62acd1650283d0695
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211365"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701711"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 本文将介绍适用于 Azure 流分析作业的不同类型的输出。 输出可帮助存储和保存流分析作业的结果。 使用输出数据，可进一步进行业务分析和数据的数据仓储。 
@@ -27,48 +27,50 @@ ms.locfileid: "34211365"
 
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
-流分析支持 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 Data Lake Store 可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。 流分析必须经过授权，才能访问 Data Lake Store。
+流分析支持 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于大数据分析工作负载。 Data Lake Store 支持存储任何大小、类型和引入速度的数据，以便进行运营分析和探索分析。 流分析必须经过授权，才能访问 Data Lake Store。
+
+流分析中的 Azure Data Lake Store 输出当前不可在 Azure 中国（世纪互联）和 Azure 德国 (T-Systems International) 区域中使用。
 
 ### <a name="authorize-an-azure-data-lake-store-account"></a>授权 Azure Data Lake Store 帐户
 
-1. 当选择 Data Lake Storage 作为 Azure 门户的输出时，系统会提示对现有 Data Lake Store 的连接进行授权。  
+1. 当选择 Data Lake 存储作为 Azure 门户的输出时，系统会提示对现有 Data Lake Store 的连接进行授权。  
 
-   ![Azure Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+   ![授权 Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
-2. 如果已有权访问 Data Lake Store，请选择“立即授权”，此时弹出一个页面，指示“正在重定向到授权”。 授权成功后，会显示一个页面用于配置 Data Lake Store 输出。
+2. 如果已有权访问 Data Lake Store，请选择“立即授权”，此时弹出一个页面，指示“正在重定向到授权”。 授权成功后，会显示一个页面，用于配置 Data Lake Store 输出。
 
 3. Data Lake Store 帐户身份验证完成后，可以为自己的 Data Lake Store 输出配置属性。 下表列出了用于配置 Data Lake Store 输出的属性名称及其说明。
 
-   ![Azure Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+   ![授权 Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 | 属性名称 | 说明 | 
 | --- | --- |
-| 输出别名 | 该名称是在查询中使用的友好名称，用于将查询输出定向到此 Data Lake Store。 | 
+| 输出别名 | 查询中使用的友好名称，用于将查询输出定向到此 Data Lake Store。 | 
 | 帐户名 | Data Lake 存储帐户的名称（正在向该存储帐户发送输出）。 此时会显示订阅中提供的 Data Lake Store 帐户的下拉列表。 |
-| 路径前缀模式 | 用于对指定 Data Lake Store 帐户中的文件进行编写的文件路径。 可以指定 {date} 和 {time} 变量的一个或多个实例。</br><ul><li>示例 1：folder1/logs/{date}/{time}</li><li>示例 2：folder1/logs/{date}</li></ul>如果文件路径模式不包含结尾的“/”，文件路径中的最后一个模式将被视为文件名前缀。 </br></br>在这些情况下会创建新文件：<ul><li>在输出架构中进行更改</li><li>在外部或内部重启作业。</li></ul> |
+| 路径前缀模式 | 用于对指定 Data Lake Store 帐户中的文件进行写入的文件路径。 可以指定 {date} 和 {time} 变量的一个或多个实例。</br><ul><li>示例 1：folder1/logs/{date}/{time}</li><li>示例 2：folder1/logs/{date}</li></ul><br>创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。</br><br>如果文件路径模式不包含结尾的“/”，文件路径中的最后一个模式将被视为文件名前缀。 </br></br>在这些情况下会创建新文件：<ul><li>在输出架构中进行更改</li><li>在外部或内部重启作业。</li></ul> |
 | 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
-|时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以选择组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
+|时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV 和 Avro。| 
-| 编码 | 如果是 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。|
+| 编码 | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。|
 | 分隔符 | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。|
-| 格式 | 仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。|
+| 格式 | 仅适用于 JSON 序列化。 分隔行指定通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。|
 
 ### <a name="renew-data-lake-store-authorization"></a>续订 Data Lake Store 授权
-如果自作业创建后或上次身份验证后更改了密码，则需要重新对 Data Lake Store 帐户进行身份验证。 如果不重新进行身份验证，作业不会输出结果，并在操作日志中显示一个错误，指示需要重新授权。 目前，有一个限制：即需要每隔 90 天对身份验证令牌进行手动刷新，适用于使用 Data Lake Store 输出的所有作业。 
+如果自作业创建后或上次身份验证后更改了密码，则需要重新对 Data Lake Store 帐户进行身份验证。 如果不重新进行身份验证，作业不会输出结果，并在操作日志中显示一个错误，指示需要重新授权。 目前，有一个限制：即需要每隔 90 天手动刷新身份验证令牌，适用于使用 Data Lake Store 输出的所有作业。 
 
 若要续订授权，请“停止”作业，转到 Data Lake Store 输出，单击“续订授权”链接，在很短的时间内会弹出一个页面，指示“正在重定向到授权...”。该页会自动关闭，成功后指示“授权已成功续订”。 然后需要单击该页底部的“保存”，并通过从“上次停止的时间”重新启动作业来继续，以避免数据丢失。
 
-![Azure Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
+![授权 Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL 数据库
 可以将 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 流分析作业将写入到 Azure SQL 数据库的现有表中。  请注意表架构必须与字段及其正从作业输出的类型完全匹配。 [Azure SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)也可以通过 SQL 数据库输出选项指定为输出。 下表列出了属性名称和用于创建 SQL 数据库输出的属性说明。
 
 | 属性名称 | 说明 |
 | --- | --- |
-| 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
+| 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
 | 数据库 | 数据库的名称（正在向该数据库发送输出）。 |
 | 服务器名称 | SQL 数据库服务器名称。 |
-| 用户名 | 具有写入数据库权限的用户名。 |
+| 用户名 | 有权写入到数据库的用户名。 |
 | 密码 | 用于连接到数据库的密码。 |
 | 表 | 将写入输出的表名称。 表名称区分大小写，并且该表架构应与字段数量以及作业输出正在生成的字段类型完全匹配。 |
 
@@ -77,44 +79,44 @@ ms.locfileid: "34211365"
 > 
 
 ## <a name="blob-storage"></a>Blob 存储
-Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在云中存储大量非结构化数据。  有关 Azure Blob 存储及其用法的简介，请参阅[如何使用 Blob](../storage/blobs/storage-dotnet-how-to-use-blobs.md) 处的文档。
+Blob 存储提供了一种经济高效且可扩展的解决方案，用于在云中存储大量非结构化数据。  有关 Azure Blob 存储及其用法的简介，请参阅[如何使用 Blob](../storage/blobs/storage-dotnet-how-to-use-blobs.md) 处的文档。
 
 下表列出了属性名称和用于创建 blob 输出的属性说明。
 
 | 属性名称 | 说明 | 
 | --- | --- |
-| 输出别名 | 该名称是在查询中使用的友好名称，用于将查询输出定向到此 blob 存储。 |
+| 输出别名 | 查询中使用的友好名称，用于将查询输出定向到此 blob 存储。 |
 | 存储帐户 | 存储帐户的名称（正在向该存储帐户发送输出）。 |
 | 存储帐户密钥 | 与存储帐户关联的密钥。 |
 | 存储容器 | 容器对存储在 Microsoft Azure Blob 服务中的 blob 进行逻辑分组。 将 blob 上传到 Blob 服务时，必须为该 blob 指定一个容器。 |
-| 路径模式 | 可选。 用于编写指定容器中的 blob 的文件路径模式。 </br></br> 在路径模式中，可以选择使用数据时间变量的一个或多个实例指定 blob 写入的频率： </br> {date}、{time} </br> </br>如果注册[预览版](https://aka.ms/ASAPreview)，则可以从事件数据中指定一个自定义 {field} 名称来作为 blob 的分区依据，其中字段名称为字母数字，可以包含空格、连字符和下划线。 对自定义字段的限制包括以下内容： <ul><li>不区分大小写（不区分列“ID”和列“id”）</li><li>不允许嵌套字段（在作业查询中改用别名来“平展”字段）</li><li>不能使用表达式作为字段名称</li></ul>示例: <ul><li>示例 1：cluster1/logs/{date}/{time}</li><li>示例 2：cluster1/logs/{date}</li><li>示例 3（预览版）：cluster1/{client_id}/{date}/{time}</li><li>示例 4（预览版）：cluster1/{myField}，其中查询为：SELECT data.myField AS myField FROM Input；</li></ul><BR> 文件命名将遵循以下约定： </br> {路径前缀模式}/schemaHashcode_Guid_Number.extension </br></br> 示例输出文件： </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
+| 路径模式 | 可选。 用于写入指定容器中的 blob 的文件路径模式。 </br></br> 在路径模式中，可以选择使用数据时间变量的一个或多个实例指定 blob 写入的频率： </br> {date}、{time} </br> </br>如果注册[预览版](https://aka.ms/ASAPreview)，则可以从事件数据中指定一个自定义 {field} 名称来作为 blob 的分区依据，其中字段名称为字母数字，可以包含空格、连字符和下划线。 对自定义字段的限制包括以下内容： <ul><li>不区分大小写（不区分列“ID”和列“id”）</li><li>不允许嵌套字段（在作业查询中改用别名来“平展”字段）</li><li>不能使用表达式作为字段名称</li></ul>示例： <ul><li>示例 1：cluster1/logs/{date}/{time}</li><li>示例 2：cluster1/logs/{date}</li><li>示例 3（预览版）：cluster1/{client_id}/{date}/{time}</li><li>示例 4（预览版）：cluster1/{myField}，其中查询为：SELECT data.myField AS myField FROM Input；</li></ul><br>创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。</br><BR> 文件命名将遵循以下约定： </br> {路径前缀模式}/schemaHashcode_Guid_Number.extension </br></br> 示例输出文件： </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
-| 时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以选择组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
+| 时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。  支持 JSON、CSV 和 Avro。
-| 编码 | 如果是 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。 |
+| 编码 | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。 |
 | 分隔符 | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 格式 | 仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
+| 格式 | 仅适用于 JSON 序列化。 分隔行指定通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
 
 当使用 blob 存储作为输出时，在以下情况下 blob 中创建一个新文件：
 
-* 如果文件超出了允许的最大块数（目前为 50,000） 可达到允许的最大块数，但不能达到允许的最大 blob 大小。 例如，如果输出率很高，你可以看到每个块，更多字节和文件大小大于。 当输出率不足时，每个块都有较少的数据，且文件大小较小。
-* 如果在输出中，架构更改，并且输出格式需要固定的架构（CSV 和 Avro）。  
+* 如果文件超出了允许的最大块数（目前为 50,000）。 可达到允许的最大块数，但不能达到允许的最大 blob 大小。 例如，如果输出率很高，则可以看到每个块的字节更多，并且文件大小会更大。 输出率较低时，每个块都有较少的数据，且文件大小较小。
+* 如果输出中出现架构更改，输出格式也需要固定的架构（CSV 和 Avro）。  
 * 如果作业重新启动，可选择在外部由用户停止或启动，或在内部进行系统维护或错误恢复。  
-* 如果完全分区查询，为每个输出分区创建新文件。  
-* 如果用户删除文件或存储帐户的容器。  
-* 如果了输出，则使用路径前缀模式分区的时间，当查询移动到下一个小时，则使用新 blob。
+* 如果对查询进行完全分区，会为每个输出分区创建新文件。  
+* 如果用户删除存储帐户的文件或容器。  
+* 如果使用路径前缀模式对输出进行了时间分区，当查询移动到下一个小时后，会使用新的 blob。
 * 如果按自定义字段对输出进行分区，则每个分区键都会创建新的 blob（如果不存在）。
-*   如果按照自定义字段对输出进行分区（其中分区键基数超过 8000），则可能每个分区键创建一个新的 blob。
+* 如果按照自定义字段对输出进行分区（其中分区键基数超过 8000），则可能每个分区键创建一个新的 blob。
 
 ## <a name="event-hub"></a>事件中心
-[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)服务是具有高扩展性的发布-订阅事件引入器。 事件中心每秒可收集数百万个事件。 当流分析作业的输出将要成为另一个流式处理作业的输入时，可以将事件中心用作输出。
+[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)服务是具有高扩展性的发布 - 订阅事件引入器。 事件中心每秒可收集数百万个事件。 当流分析作业的输出成为另一个流式处理作业的输入时，可以将事件中心用作输出。
 
-将事件中心数据流配置成输出时，需要使用几个参数。
+将事件中心数据流配置为输出时，需要使用几个参数。
 
 | 属性名称 | 说明 |
 | --- | --- |
-| 输出别名 | 该名称是在查询中使用的友好名称，用于将查询输出定向到此事件中心。 |
-| 事件中心命名空间 |事件中心命名空间是包含一组消息传递实体的容器。 创建新的事件中心后，还创建了时间中心命名空间。 |
+| 输出别名 | 查询中使用的友好名称，用于将查询输出定向到此事件中心。 |
+| 事件中心命名空间 |事件中心命名空间是包含一组消息传递实体的容器。 创建新的事件中心后，还创建了事件中心命名空间。 |
 | 事件中心名称 | 事件中心输出的名称。 |
 | 事件中心策略名称 | 可以在事件中心的“配置”选项卡上创建的共享访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | 事件中心策略密钥 | 用于对事件中心命名空间的访问权限进行身份验证的共享访问密钥。 |
@@ -122,10 +124,12 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 | 事件序列化格式 | 输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
 | 编码 | 对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |
 | 分隔符 | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 格式 | 仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
+| 格式 | 仅适用于 JSON 序列化。 分隔行指定通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) 可以用作流分析作业的输出，以便提供丰富的分析结果可视化体验。 此功能可用于操作仪表板、生成报告以及进行指标驱动型报告。
+
+流分析中的 Power BI 输出当前不可在 Azure 中国（世纪互联）和 Azure 德国 (T-Systems International) 区域中使用。
 
 ### <a name="authorize-a-power-bi-account"></a>向 Power BI 帐户授权
 1. 当 Power BI 被选为 Azure 门户中的输出时，会提示向现有的 Power BI 用户授权或创建新的 Power BI 帐户。  
@@ -223,7 +227,7 @@ Datetime | String | String |  Datetime | String
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
 | 编码 |对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 格式 |仅适用于 JSON 类型。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 |
+| 格式 |仅适用于 JSON 类型。 分隔行指定通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 |
 
 分区数[基于服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。
 
@@ -240,13 +244,15 @@ Datetime | String | String |  Datetime | String
 | 主题策略名称 |创建主题时，还可以在“主题配置”选项卡上创建共享的访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | 主题策略密钥 |用于验证访问服务总线命名空间的共享访问密钥 |
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
-| 编码 |如果是 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式 |
+| 编码 |如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 
 分区数[基于服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 是一种分布全球的多模型数据库服务，它提供全球范围内不设限的弹性缩放、丰富查询和自动索引（经由与架构无关的数据模型）、可靠的低延迟及行业领先的综合 SLA。 若要了解流分析的 Cosmos DB 集合选项，请参阅[将 Cosmos DB 用作输出的流分析](stream-analytics-documentdb-output.md)一文。
+
+流分析中的 Azure Cosmos DB 输出当前不可在 Azure 中国（世纪互联）和 Azure 德国 (T-Systems International) 区域中使用。
 
 > [!Note]
 > 目前，Azure 流分析仅支持使用 SQL API 连接到 CosmosDB。
@@ -267,6 +273,8 @@ Datetime | String | String |  Datetime | String
 
 ## <a name="azure-functions"></a>Azure Functions
 Azure Functions 是一个无服务器计算服务，使用它可以按需运行代码，而无需显式预配或管理基础结构。 它允许实现由 Azure 或第三方服务中出现的事件所触发的代码。  Azure Functions 响应触发的这一功能使其成为 Azure 流分析的自然输出。 此输出适配器允许用户将流分析连接到 Azure Functions，并运行脚本或一段代码来响应各种事件。
+
+流分析中的 Azure Functions 输出当前不可在 Azure 中国（世纪互联）和 Azure 德国 (T-Systems International) 区域中使用。
 
 Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下可配置属性的新 Azure Functions 输出适配器：
 
@@ -289,15 +297,15 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 | 输出类型 | 分区支持 | 分区键  | 输出写入器数目 | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | 是 | 在 Path 前缀模式中使用 {date} 和 {time} 标记。 选择日期格式，例如 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY。 HH 用于时间格式。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 | 
-| Azure SQL 数据库 | 否 | 无 | 不适用。 | 
+| Azure SQL 数据库 | No | 无 | 不适用。 | 
 | Azure Blob 存储 | 是 | 在 Path 模式中使用事件字段中的 {date} 和 {time} 标记。 选择日期格式，例如 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY。 HH 用于时间格式。 在[预览版](https://aka.ms/ASAPreview)中，可以通过单个自定义事件属性 {fieldname} 对 blob 输出进行分区。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 | 
 | Azure 事件中心 | 是 | 是 | 按分区对齐方式变化。</br> 输出事件中心分区键与上游（上一个）查询步骤相同时，编写器的数量与输出事件中心分区的数量相同。 各编写器使用 EventHub 的 [EventHubSender class](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) 将事件发送到特定分区。 </br> 输出事件中心分区键与上游（上一个）查询步骤不相同时，编写器的数量与之前步骤中的分区数量不相同。 各编写器使用 EventHubClient [SendBatchAsync class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) 将事件发送到所有输出分区。 |
-| Power BI | 否 | 无 | 不适用。 | 
+| Power BI | No | 无 | 不适用。 | 
 | Azure 表存储 | 是 | 任何输出列。  | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 | 
 | Azure 服务总线主题 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出主题中的分区数量相同。  |
 | Azure 服务总线队列 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出队列中的分区数量相同。 |
 | Azure Cosmos DB | 是 | 在 Collection 命名模式中使用 {partition} 标记。 {partition} 值基于查询中的 PARTITION BY 子句。 | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
-| Azure Functions | 否 | 无 | 不适用。 | 
+| Azure Functions | No | 无 | 不适用。 | 
 
 ## <a name="output-batch-size"></a>输出批大小
 Azure 流分析使用大小可变的批来处理事件和写入到输出。 通常流分析引擎不会一次写入一条消息，而是使用批来提高效率。 输入和输出事件速率都很高时，它会使用更大的批。 输出速率低时，使用较小的批来保证低延迟。 

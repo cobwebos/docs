@@ -36,6 +36,8 @@
       href: cdn-china-delivery.md
     - name: HTTP/2 支持
       href: cdn-http2.md
+    - name: 从标准 Verizon 迁移到高级 Verizon
+      href: cdn-migrate.md
 - name: 操作指南
   items:
     - name: 优化内容

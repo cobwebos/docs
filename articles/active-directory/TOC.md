@@ -417,6 +417,7 @@
 #### 教程
 ##### [迁移经典 MFA 策略](active-directory-conditional-access-migration-mfa.md)
 #### 概念
+##### [基线保护](active-directory-conditional-access-baseline-protection.md)
 ##### [条件](active-directory-conditional-access-conditions.md)
 ##### [位置条件](active-directory-conditional-access-locations.md)
 ##### [控制](active-directory-conditional-access-controls.md)

@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 27c4f35cbd8cc69e689b26078d5a07c8558d8e2a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: daveba
+ms.openlocfilehash: 5805dbc0a4831f14a4f9a98943a7611fa49961eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303195"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594945"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>教程：使用 Windows VM 托管服务标识 (MSI) 访问 Azure SQL
 
@@ -270,11 +270,9 @@ if (accessToken != null) {
 
 检查 `$DataSet.Tables[0]` 的值，以查看查询结果。  我们在未提供凭据的情况下，使用 VM MSI 查询了数据库！
 
-## <a name="related-content"></a>相关内容
+## <a name="next-steps"></a>后续步骤
 
-- 有关 MSI 的概述，请参阅[托管服务标识概述](overview.md)。
-- 详细了解 [Azure SQL 对 Azure AD 身份验证的支持](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)。
-- 详细了解如何[配置 Azure SQL 对 Azure AD 身份验证的支持](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)。
-- 详细了解 [SQL 服务器中的身份验证和访问权限](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)。
+本教程介绍了如何创建托管服务标识来访问 Azure SQL Server。  若要了解有关 Azure SQL Server 的详细信息，请参阅：
 
-使用以下评论部分提供反馈，帮助我们改进内容。
+> [!div class="nextstepaction"]
+>[Azure SQL 数据库服务](/azure/sql-database/sql-database-technical-overview)

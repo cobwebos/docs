@@ -1,22 +1,20 @@
 ---
 title: 使用 Azure Maps 添加形状 | Microsoft Docs
 description: 如何向 Javascript 地图添加形状
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fb9ec0713d3db465cf835346465e70c4455b38ff
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dec9b7289927365faa9c58522df2571db99f0494
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599365"
 ---
 # <a name="add-a-shape-to-a-map"></a>向地图添加形状
 
@@ -59,3 +57,10 @@ ms.lasthandoff: 05/07/2018
 第二个代码块创建一个多边形。 多边形是[多边形](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygon?view=azure-iot-typescript-latest)的一项[功能](https://docs.microsoft.com/javascript/api/azure-maps-javascript/feature?view=azure-iot-typescript-latest)，使用 [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonproperties?view=azure-iot-typescript-latest) 作为其 Feature 属性。 请使用 `new atlas.data.Feature(new atlas.data.Polygon())` 创建多边形并定义其属性。 请在多边形构造函数中提供多边形路径的有序坐标。
 
 多边形层是一个多边形数组。 最后一个代码块使用 map 类的 [addPolygons](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpolygons) 函数向地图添加多边形层并定义其属性。 请参阅 [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 
+
+## <a name="next-steps"></a>后续步骤
+有关可向地图添加的更多代码示例，请参阅以下文章：
+* [添加自定义 HTML](./map-add-custom-html.md)
+* [显示搜索结果](./map-search-location.md)
+
+
