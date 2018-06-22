@@ -7,24 +7,26 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 1cfd0570315d5a1c6587ade164edf0a837453406
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: aab6e893a6da1c5b877498f2bf6cbeaa6d0a5c2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587777"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory 域服务：常见问题 (FAQ)
 本页面解答有关 Azure Active Directory 域服务的常见问题。 请随时返回查看更新信息。
 
 ## <a name="troubleshooting-guide"></a>故障排除指南
-有关配置或管理 Azure AD 域服务时遇到的常见问题的解决方法，请参阅[疑难解答指南](active-directory-ds-troubleshooting.md)。
+有关配置或管理 Azure AD 域服务的常见问题的解决方法，请参阅[疑难解答指南](active-directory-ds-troubleshooting.md)。
 
 ## <a name="configuration"></a>配置
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>是否可为单个 Azure AD 目录创建多个托管域？
@@ -65,13 +67,13 @@ ms.lasthandoff: 03/09/2018
 “AAD DC 管理员”管理组的成员均可将计算机加入域。 此外，此组中的成员有权通过远程桌面访问已加入域的计算机。
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>我是否具有 Azure AD 域服务提供的托管域的域管理员特权？
-不会。 在托管域上没有管理权限。 不可以在该域中使用“域管理员”和“企业管理员”权限。 Azure AD 目录中现有的域管理员或企业管理员组在该域上也没有域/企业管理员权限。
+不会。 在托管域上没有管理权限。 不可以在该域中使用“域管理员”和“企业管理员”权限。 本地 Active Directory 中的域管理员或企业管理员组成员在该托管域上也没有域/企业管理员权限。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>能否在托管域上使用 LDAP 或其他 AD 管理工具修改组成员身份？
 不会。 无法在 Azure AD 域服务服务的域上修改组成员身份。 这同样适用于用户属性。 但是，可以在 Azure AD 中或本地域上更改组成员身份或用户属性。 此类更改会自动同步到 Azure AD 域服务。
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>对 Azure AD 目录的更改需要多长时间才可在托管域中显示？
-在 Azure AD 目录中使用 Azure AD UI 或 PowerShell 进行的更改将同步到托管域中。 此同步过程在后台运行。 目录的一次性初始同步完成后，Azure AD 中的更改通常需要约 20 分钟才会在托管域中反映。
+在 Azure AD 目录中使用 Azure AD UI 或 PowerShell 进行的更改将同步到托管域中。 此同步过程在后台运行。 初始同步完成后，Azure AD 中的更改通常需要约 20 分钟才会在托管域中反映。
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>能否扩展 Azure AD 域服务提供的托管域的架构？
 不会。 托管域的架构由 Microsoft 管理。 Azure AD 域服务不支持架构扩展。
@@ -81,6 +83,9 @@ ms.lasthandoff: 03/09/2018
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>什么是托管域上的密码生存期策略？
 Azure AD 域服务托管域上的默认密码生存期为 90 天。 此密码生存期与在 Azure AD 中配置的密码生存期不同步。 因此，可能会出现用户密码在托管域中已过期，但在 Azure AD 中仍然有效的情况。 在这种情况下，用户需要更改 Azure AD 中的密码，并且将新密码同步到托管域。 此外，用户帐户的“password-does-not-expire”和“user-must-change-password-at-next-logon”属性不会同步到托管域。
+
+### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD 域服务是否提供 AD 帐户锁定保护？
+是的。 在托管域上于 2 分钟内尝试五个无效密码将导致用户帐户锁定 30 分钟。 30 分钟后用户帐户将自动解锁。 在 Azure AD 中，在托管域上尝试无效密码不会锁定用户帐户。 仅在 Azure AD 域服务托管域中锁定用户帐户。
 
 ## <a name="billing-and-availability"></a>计费和可用性
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD 域服务是付费服务吗？

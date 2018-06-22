@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 080a4e670b06544d84e3d34a0b04bdb91a95aff1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 04fa1f9a23a7c93426b45305302e3f77d16ab8c0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202435"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726255"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -94,7 +94,7 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”。 规�
 
     - **TCP 自定义探测：** 此探测依赖于在定义的探测端口上成功建立 TCP 会话。 只要 VM 上指定的侦听器存在，此探测就会成功。 如果连接被拒绝，此探测将会失败。 此探测将替代默认来宾代理探测。
 
-    - **来宾代理探测（仅适用于平台即服务 [PaaS] VM）：** 负载均衡器也可以利用 VM 中的来宾代理。 仅当实例处于就绪状态时，来宾代理才会侦听并以“HTTP 200 正常”做出响应。 如果代理没有使用“HTTP 200 正常”进行响应，则负载均衡器会将实例标记为无响应，并停止向该实例发送流量。 负载均衡器继续尝试访问实例。 如果来宾代理使用 HTTP 200 响应，则负载均衡器会再次向该实例发送流量。 来宾代理探测是最终手段，支持 HTTP 或 TCP 自定义探测配置时不建议使用它。 
+    - 来宾代理探测：负载均衡器也可以利用 VM 中的来宾代理。 仅当实例处于就绪状态时，来宾代理才会侦听并以“HTTP 200 正常”做出响应。 如果代理没有使用“HTTP 200 正常”进行响应，则负载均衡器会将实例标记为无响应，并停止向该实例发送流量。 负载均衡器继续尝试访问实例。 如果来宾代理使用 HTTP 200 响应，则负载均衡器会再次向该实例发送流量。 来宾代理探测是_最终手段但不建议_在支持 HTTP 或 TCP 自定义探测配置时使用它。 
     
 * **出站连接 (SNAT)**
 

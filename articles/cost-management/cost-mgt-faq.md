@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 0742e1e96e03840f138dde2bca7b2bcda1e49dfe
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302733"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298403"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure 成本管理常见问题解答
 
@@ -72,16 +72,20 @@ ms.locfileid: "34302733"
 
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>如何启用已暂停或已锁定的用户？
 
+首先，让我们来看一下导致用户帐户初始挂起的常见应用场景。
+
+> 管理员 1 可能是 Microsoft 云解决方案提供商或企业协议用户。 他的组织已准备好开始使用成本管理。  他通过 Azure 门户注册并登录到 Cloudyn 门户。 作为注册成本管理服务并登录到 Cloudyn 门户的人员，他成为主要管理员。 管理员 1 不创建任何用户帐户。 但是，通过使用 Cloudyn 门户，他的确创建 Azure 帐户并设置实体层次结构。 管理员 1 通知管理员 2（即租户管理员），告知他需要注册成本管理并登录到 Cloudyn 门户。
+
+> 管理员 2 通过 Azure 门户进行注册。 但是，当他尝试登录到 Cloudyn 门户时，他收到一条错误消息，指明他的帐户已被挂起。 主要管理员（管理员 1）将收到帐户挂起的通知。 管理员 1 需要激活管理员 2 的帐户并针对相应的实体授予管理员实体访问权限，并允许用户管理访问和激活用户帐户。
+
+
 如果收到请求允许某个用户进行访问的警报，需要激活该用户帐户。
 
 若要激活用户帐户，请执行以下操作：
 
 1. 使用设置 Cloudyn 时所用的 Azure 管理用户帐户登录到 Cloudyn。 或者，使用拥有管理员访问权限的用户帐户登录。
-
 2. 选择右上角的齿轮符号，再选择“用户管理”。
-
 3. 找到该用户，然后选择铅笔符号并编辑该用户。
-
 4. 在“用户状态”下，将状态从“已暂停”更改为“活动”。
 
 Cloudyn 用户帐户使用单一登录从 Azure 建立连接。 如果用户错误地键入了密码，他们可能被锁定在 Cloudyn 之外，即使他们仍可访问 Azure。

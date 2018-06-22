@@ -3,8 +3,8 @@ title: 按国家/地区限制 Azure CDN 内容 | Microsoft Docs
 description: 了解如何使用地区筛选功能限制对 Azure CDN 内容的访问。
 services: cdn
 documentationcenter: ''
-author: lichard
-manager: akucer
+author: dksimpson
+manager: cfowler
 editor: ''
 ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: rli
-ms.openlocfilehash: bb757ab115d03ab04dac4468d23f446696a971a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: 93321c4c8a7f8d79835d702ca07132eed94f6493
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260746"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>按国家/地区限制 Azure CDN 内容
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/07/2018
 当用户请求内容时，默认情况下，系统会提交该内容，不管用户是从何处提交该请求。 在某些情况下，可能需要按国家/地区限制内容访问。 本文说明了如何使用“地区筛选”功能来配置服务，以便按国家/地区允许或阻止访问。
 
 > [!IMPORTANT]
-> 所有 Azure CDN 产品都提供相同的地区筛选功能，但在其支持的国家/地区代码方面有些许差别。 有关不同之处的链接，请参阅步骤 3。
+> 所有 Azure CDN 产品都提供相同的地区筛选功能，但在其支持的国家/地区代码方面有些许差别。 有关详细信息，请参阅 [Azure CDN 国家/地区代码](https://msdn.microsoft.com/library/mt761717.aspx)。
 
 
 有关配置这种类型的限制所适用的注意事项的信息，请参阅[注意事项](cdn-restrict-access-by-country.md#considerations)。  
@@ -69,10 +70,13 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="considerations"></a>注意事项
 * 对国家/地区筛选配置的更改不会立即生效：
-   * 对于 **Microsoft 的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
+   * 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
    * 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-   * 对于 **Verizon 的 Azure CDN 标准版**和 **Verizon 的 Azure CDN 高级版**配置文件，传播通常可在 90 分钟内完成。  
+   * 对于“Verizon 提供的 Azure CDN 标准版”和“Verizon 提供的 Azure CDN 高级版”配置文件，传播通常在 10 分钟内完成。 
+ 
 * 此功能不支持通配符（例如“*”）。
+
 * 与相对路径关联的地区筛选配置以递归方式应用于该路径。
-* 只能将一条规则应用于同一相对路径（不能创建多个指向同一相对路径的国家/地区筛选器）。 但是，一个文件夹可以有多个国家/地区筛选器。 这是因为国家/地区筛选器的递归性质。 换言之，即使某个文件夹此前已配置过，也可以向该文件夹的子文件夹分配其他国家/地区筛选器。
+
+* 只能对相同相对路径应用一个规则。 也就是说，无法创建多个指向相同相对路径的国家/地区筛选器。 不过，鉴于国家/地区筛选器的递归性质，文件夹下可以有多个国家/地区筛选器。 换言之，即使某个文件夹此前已配置过，也可以向该文件夹的子文件夹分配其他国家/地区筛选器。
 

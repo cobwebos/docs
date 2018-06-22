@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/27/2018
+ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 80cdd2bdad5962a9d5f6a0e20f34ac3db1942741
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650931"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -204,75 +205,9 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
-## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
+## <a name="managing-personal-inforamation"></a>管理个人信息
 
-以下是有关安全及 Microsoft Azure StorSimple 的部分问答。
-
-**问：**我的服务受到安全威胁。 下一步我应该怎么做？
-
-**答：**你应该立即更改服务数据加密密钥以及用于数据分层的存储帐户的存储帐户密钥。 有关说明，请转到：
-
-* [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
-* [存储帐户的密钥轮换](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
-
-**问：**我有一台新的 StorSimple 设备，需要服务注册密钥。 我该如何获取它？
-
-**答：**首次创建 StorSimple 设备管理器服务时会创建该密钥。 使用 StorSimple 设备管理器服务连接到设备时，可以使用服务快速启动页面查看或者重新生成服务注册密钥。 生成新的服务注册密钥不会影响现有的已注册设备。 有关说明，请转到：
-
-* [查看或重新生成服务注册密钥](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
-
-**问：**我丢失了服务数据加密密钥。 我该怎么办？
-
-**答：**请与 Microsoft 支持部门联系。 支持部门可以登录到设备上的支持会话并帮助你获取密钥（前提是至少一台设备为联机状态）。 获取服务数据加密密钥后，应立即更改该密钥以保证仅自己知道新的密钥。 有关说明，请转到：
-
-* [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
-
-**问：**我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。 我该怎么办？
-
-**答：**如果超时期限已过，需要重新授权设备进行服务数据加密密钥更改，并重新开始该过程。
-
-**问：**我更改了服务数据加密密钥，但无法在 4 小时内更新其他设备。 是否必须重新开始？
-
-**答：**4 小时时限仅适用于启动更改操作。 一旦在授权的 StorSimple 设备上开始更新过程，授权会保持有效，直至所有设备都已更新。
-
-**问：**我们的 StorSimple 管理员离开了公司。 我该怎么办？
-
-**答：**请更改和重置用于访问 StorSimple 设备的密码，并更改服务数据加密密钥以确保新信息不会泄露给未获授权的人员。 有关说明，请转到：
-
-* [使用 StorSimple 设备管理器服务更改 StorSimple 密码](storsimple-8000-change-passwords.md)
-* [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
-* [为 StorSimple 设备配置 CHAP](storsimple-8000-configure-chap.md)
-
-**问：**我想要将 StorSimple Snapshot Manager 密码提供给连接到 StorSimple 设备的主机，但却想不起该密码。 我该怎么办？
-
-**答：**如果忘记了密码，应该创建一个新密码。 然后务必通知所有现有用户密码已更改，要求他们更新客户端以使用新密码。 有关说明，请转到：
-
-* [更改 StorSimple Snapshot Manager 密码](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
-* [对设备进行身份验证](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
-
-**问：**用于远程访问 Windows PowerShell for StorSimple 的证书已在设备上更改。 如何更新我的远程访问客户端？
-
-**答：**可以从 StorSimple 设备管理器服务下载新证书，然后即可将其安装到远程访问客户端的证书存储中。 有关说明，请转到：
-
-* [Import-Certificate cmdlet](https://technet.microsoft.com/library/hh848630.aspx)
-
-**问：**如果 StorSimple 设备管理器服务受到安全威胁，我的数据是否得到保护？
-
-**答：**在 Web 浏览器中查看服务配置数据时，始终使用公钥加密该数据。 因为服务不具备访问公钥的权限，服务将无法看到任何数据。 如果 StorSimple 设备管理器服务受到安全威胁，则无任何影响，因为 StorSimple 设备管理器服务中未存储任何密钥。
-
-**问：**如果有人获取了对数据加密证书的访问权限，我的数据是否会受到安全威胁？
-
-**答：**Microsoft Azure 以加密格式存储客户的数据加密密钥（.pfx 文件）。 由于 .pfx 文件经过加密，而且 StorSimple 服务没有用于解密 .pfx 文件的服务数据加密密钥，因此单纯访问 .pfx 文件并不会造成机密泄露。
-
-**问：**如果某个政府实体要求 Microsoft 提供我的数据，会发生什么情况？
-
-**答：**由于所有数据是在服务上加密的，而私钥是保留在设备上的，该政府实体必须获得客户的允许才能获得数据。
-
-## <a name="gdpr-compliance"></a>GDPR 符合性
-
-[一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 包含许多有关如何收集、存储和使用个人信息的要求。 GDPR 规则针对在欧盟运营的公司、政府机构和其他组织实施，并收集和分析与欧盟居民有关的数据。 
-
-适用于物理和虚拟系列的 StorSimple 设备管理器符合 GDPR。 有两个关于在服务中收集并显示个人信息的关键示例：
+物理系列和虚拟系列的 StorSimple 设备管理器收集以下密钥实例中的个人信息：
 
 - 提醒用户设置，可在其中配置用户电子邮件地址。 此信息可以由管理员查看和清除。 这适用于 StorSimple 8000 系列设备和 StorSimple 虚拟阵列。
  * 要查看和清除 StorSimple 8000 系列的设置，请按照[查看和管理 StorSimple 警报](storsimple-8000-manage-alerts.md#configure-alert-settings)中的步骤操作
@@ -281,6 +216,72 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
  * 要查看可访问共享的用户列表或删除某个共享，请按照[管理 StorSimple 虚拟阵列上的共享](storsimple-virtual-array-manage-shares.md)中的步骤操作
 
 有关详细信息，请在[信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
+
+## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
+
+以下是有关安全及 Microsoft Azure StorSimple 的部分问答。
+
+**问：** 我的服务受到安全威胁。 下一步我应该怎么做？
+
+**答：** 你应该立即更改服务数据加密密钥以及用于数据分层的存储帐户的存储帐户密钥。 有关说明，请转到：
+
+* [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+* [存储帐户的密钥轮换](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
+
+**问：** 我有一台新的 StorSimple 设备，需要服务注册密钥。 我该如何获取它？
+
+**答：** 首次创建 StorSimple 设备管理器服务时会创建该密钥。 使用 StorSimple 设备管理器服务连接到设备时，可以使用服务快速启动页面查看或者重新生成服务注册密钥。 生成新的服务注册密钥不会影响现有的已注册设备。 有关说明，请转到：
+
+* [查看或重新生成服务注册密钥](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
+
+**问：** 我丢失了服务数据加密密钥。 我该怎么办？
+
+**答：** 请与 Microsoft 支持部门联系。 支持部门可以登录到设备上的支持会话并帮助你获取密钥（前提是至少一台设备为联机状态）。 获取服务数据加密密钥后，应立即更改该密钥以保证仅自己知道新的密钥。 有关说明，请转到：
+
+* [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+
+**问：** 我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。 我该怎么办？
+
+**答：** 如果超时期限已过，需要重新授权设备进行服务数据加密密钥更改，并重新开始该过程。
+
+**问：** 我更改了服务数据加密密钥，但无法在 4 小时内更新其他设备。 是否必须重新开始？
+
+**答：** 4 小时时限仅适用于启动更改操作。 一旦在授权的 StorSimple 设备上开始更新过程，授权会保持有效，直至所有设备都已更新。
+
+**问：** 我们的 StorSimple 管理员离开了公司。 我该怎么办？
+
+**答：** 请更改和重置用于访问 StorSimple 设备的密码，并更改服务数据加密密钥以确保新信息不会泄露给未获授权的人员。 有关说明，请转到：
+
+* [使用 StorSimple 设备管理器服务更改 StorSimple 密码](storsimple-8000-change-passwords.md)
+* [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+* [为 StorSimple 设备配置 CHAP](storsimple-8000-configure-chap.md)
+
+**问：** 我想要将 StorSimple Snapshot Manager 密码提供给连接到 StorSimple 设备的主机，但却想不起该密码。 我该怎么办？
+
+**答：** 如果忘记了密码，应该创建一个新密码。 然后务必通知所有现有用户密码已更改，要求他们更新客户端以使用新密码。 有关说明，请转到：
+
+* [更改 StorSimple Snapshot Manager 密码](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
+* [对设备进行身份验证](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
+
+**问：** 用于远程访问 Windows PowerShell for StorSimple 的证书已在设备上更改。 如何更新我的远程访问客户端？
+
+**答：** 可以从 StorSimple 设备管理器服务下载新证书，然后即可将其安装到远程访问客户端的证书存储中。 有关说明，请转到：
+
+* [Import-Certificate cmdlet](https://technet.microsoft.com/library/hh848630.aspx)
+
+**问：** 如果 StorSimple 设备管理器服务受到安全威胁，我的数据是否得到保护？
+
+**答：** 在 Web 浏览器中查看服务配置数据时，始终使用公钥加密该数据。 因为服务不具备访问公钥的权限，服务将无法看到任何数据。 如果 StorSimple 设备管理器服务受到安全威胁，则无任何影响，因为 StorSimple 设备管理器服务中未存储任何密钥。
+
+**问：** 如果有人获取了对数据加密证书的访问权限，我的数据是否会受到安全威胁？
+
+**答：** Microsoft Azure 以加密格式存储客户的数据加密密钥（.pfx 文件）。 由于 .pfx 文件经过加密，而且 StorSimple 服务没有用于解密 .pfx 文件的服务数据加密密钥，因此单纯访问 .pfx 文件并不会造成机密泄露。
+
+**问：** 如果某个政府实体要求 Microsoft 提供我的数据，会发生什么情况？
+
+**答：** 由于所有数据是在服务上加密的，而私钥是保留在设备上的，该政府实体必须获得客户的允许才能获得数据。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

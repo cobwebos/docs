@@ -6,13 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 05/22/2018
 ms.author: babanisa
-ms.openlocfilehash: 23187fbc230e384984085d330bfbfbc90cc9f945
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: a2cccbb4feaa7b6f3f51ac7204af4a3e1efc6349
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625587"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>将 CloudEvents 架构与事件网格配合使用
 
@@ -123,7 +124,7 @@ az eventgrid event-subscription create \
   --event-delivery-schema cloudeventv01schema
 ```
 
-CloudEvents 的当前版本不支持对事件进行批处理。 针对 CloudEvent 架构配置的事件订阅会单独接收每个事件。
+CloudEvents 的当前版本不支持对事件进行批处理。 针对 CloudEvent 架构配置的事件订阅会单独接收每个事件。 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 必须使用 HTTP 触发器。
 
 ## <a name="next-steps"></a>后续步骤
 

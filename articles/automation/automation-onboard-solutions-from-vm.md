@@ -4,21 +4,21 @@ description: 了解如何载入包含属于 Azure 自动化的一部分的更新
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2fbfd733a57d0e2f91d119b614917abf172b8379
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 675aebf35a6bee6e4cc4fd884204edb5bae4b848
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193088"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830555"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>从 Azure 虚拟机载入更新管理、更改跟踪和清单解决方案
 
-Azure 自动化提供了解决方案来管理操作系统安全性更新、跟踪更改以及列出计算机上所安装项的清单。 可以通过多种方式来载入计算机，可以通过虚拟机、[自动化帐户](automation-onboard-solutions-from-automation-account.md)或 [Runbook](automation-onboard-solutions.md) 载入解决方案。 本文介绍了如何从 Azure 虚拟机载入这些解决方案。
+Azure 自动化提供了解决方案来管理操作系统安全性更新、跟踪更改以及列出计算机上所安装项的清单。 可以通过多种方式来载入计算机，可以通过虚拟机、[通过自动化帐户](automation-onboard-solutions-from-automation-account.md)、[通过浏览多个计算机](automation-onboard-solutions-from-browse.md)或通过 [Runbook](automation-onboard-solutions.md) 载入解决方案。 本文介绍了如何从 Azure 虚拟机载入这些解决方案。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -28,13 +28,13 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 导航到现有的虚拟机，然后在“操作”下选择“更新管理”、“清单”或“更改跟踪”。
 
+若要启用 VM 的解决方案，只需确保“为此 VM 启用”单选按钮处于选中状态，若要将多台计算机载入到解决方案，请选择“为此订阅中的 VM 启用”并单击“单击以选择要启用的计算机”。 请参阅[载入更新管理、更改跟踪和清单解决方案](automation-onboard-solutions-from-automation-account.md)以查看如何一次性载入多台计算机的步骤。
+
 选择 Log analytics 工作区和自动化帐户，然后单击“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 ![载入更新解决方案](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
 导航到其他解决方案并单击“启用”，Log Analytics 和自动化帐户下拉框处于禁用状态，因为它们与之前启用的解决方案使用相同的工作区和自动化帐户。
-
-![载入更新解决方案](media/automation-onboard-solutions-from-vm/onboard-solutions2.png)
 
 > [!NOTE]
 > “更改跟踪”和“清单”使用相同的解决方案，启用其中一个后，另一个也会启用。

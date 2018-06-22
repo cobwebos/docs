@@ -1,25 +1,22 @@
 ---
-title: 使用 Azure 命令行接口管理 Azure Data Lake Analytics | Microsoft Docs
-description: 了解如何使用 Azure CLI 管理 Data Lake Analytics 帐户、数据源、作业和用户
+title: 使用 Azure 命令行接口管理 Azure Data Lake Analytics
+description: 本文介绍如何使用 Azure CLI 管理 Data Lake Analytics 作业、数据源和用户。
 services: data-lake-analytics
-documentationcenter: ''
-author: SnehaGunda
-manager: Kfile
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: sngun
-ms.openlocfilehash: 9504e1fcbb0128f538cb6e959cf7586f24827836
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 86fa41db2d21beac08015d067b79ce1375cd3ddf
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736083"
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
+# <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
 
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
@@ -214,24 +211,6 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
-
-
-## <a name="use-azure-resource-manager-groups"></a>使用 Azure 资源管理器组
-应用程序通常由许多组件构成，例如 Web 应用、数据库、数据库服务器、存储和第三方服务。 可使用 Azure 资源管理器以组（称为 Azure 资源组）的方式处理应用程序中的资源。 可以通过一个协调的操作为应用程序部署、更新、监视或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 可以通过查看整个组的累积费用，明确了解组织的帐单开支。 有关详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。 
-
-Data Lake Analytics 服务可包括以下组件：
-
-* Azure Data Lake Analytics 帐户
-* 所需的默认 Azure Data Lake 存储帐户
-* 其他 Azure Data Lake 存储帐户
-* 其他 Azure 存储帐户
-
-可在一个资源管理器组下创建所有这些组件，使其更易于管理。
-
-![Azure Data Lake Analytics 帐户和存储](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
-
-Data Lake Analytics 帐户和从属存储帐户必须位于同一个 Azure 数据中心。
-但资源管理器组可以位于不同的数据中心。  
 
 ## <a name="see-also"></a>另请参阅
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)

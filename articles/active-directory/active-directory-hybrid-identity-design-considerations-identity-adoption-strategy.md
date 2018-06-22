@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9107464acefe75141950c0d07298c8ad946e0ddc
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260356"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -32,7 +34,7 @@ ms.lasthandoff: 04/19/2018
 第一项任务是确定组织的业务需求。  这可能非常广泛，一不小心就发生范围蔓延。  刚开始要保持简单，但要时常记住所规划的设计应该兼顾和推动将来的变革。  无论是简单还是极为复杂的设计，Azure Active Directory 都是支持 Office 365、Microsoft Online Services 和云感知应用程序的 Microsoft 标识平台。
 
 ## <a name="define-an-integration-strategy"></a>定义集成策略
-Microsoft 有三个主要集成方案，分别为云标识、同步标识和联合标识。  应该规划采用这些集成策略的其中一个。  选择的策略可能有所不同，决策的因素包括想要提供何种用户体验、是否已部署现有的基础结构，以及哪种做法最符合成本效益。  
+Microsoft 有三个主要集成方案，分别为云标识、同步标识和联合标识。  应该规划采用这些集成策略的其中一个。  选择的策略可能各异，决策因素可能包括要提供何种用户体验、是否已部署现有基础结构，以及哪种做法最经济高效。  
 
 ![](./media/hybrid-id-design-considerations/integration-scenarios.png)
 
@@ -51,7 +53,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 | 策略 | 优点 | 缺点 |
 | --- | --- | --- |
-| **云标识** |在小型组织中易于管理。 <br> 不需要在本地安装任何软件 - 不需要额外的硬件<br>用户离职时轻松禁用其帐户 |用户访问云中的工作负荷时需要登录 <br> 云和本地标识的密码可以相同，也可以不同 |
+| **云标识** |在小型组织中易于管理。 <br> 没有要本地安装的内容。 无需其他任何硬件<br>用户离职时轻松禁用其帐户 |用户访问云中的工作负荷时需要登录 <br> 云和本地标识的密码可以相同，也可以不同 |
 | **同步** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |由于公司的特定策略，某些客户可能不愿意将目录与云同步 |
 | **联合** |用户可以执行单一登录 (SSO) <br>如果用户被辞退或离职，可以立即禁用其帐户并吊销其访问权限。<br> 支持同步所不能实现的高级方案 |设置和配置步骤较多 <br> 更多的维护工作 <br> 可能需要额外的硬件来部署 STS 服务器。 <br> 可能需要额外的硬件来安装联合服务器。 如果使用 AD FS，则需要额外的软件 <br> 需要进行大量的设置才能使用 SSO <br> 严重的缺点是，联合身份验证服务器关闭时用户无法进行身份验证 |
 
@@ -65,7 +67,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | Web 浏览器 |基于表单的身份验证 |单一登录，有时需要提供组织 ID |
 | Outlook |提示输入凭据 |提示输入凭据 |
 | Skype for Business (Lync) |提示输入凭据 |在 Lync 中需要单一登录，在 Exchange 中提示输入凭据 |
-| Skydrive Pro |提示输入凭据 |单一登录 |
+| OneDrive for Business |提示输入凭据 |单一登录 |
 | Office Pro Plus 订阅 |提示输入凭据 |单一登录 |
 
 **外部或不受信任源**：
@@ -73,7 +75,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 |  | 同步标识 | 联合标识 |
 | --- | --- | --- |
 | Web 浏览器 |基于表单的身份验证 |基于表单的身份验证 |
-| Outlook、Skype for Business (Lync)、Skydrive Pro、Office 订阅 |提示输入凭据 |提示输入凭据 |
+| Outlook、Skype for Business (Lync)、OneDrive for Business、Office 订阅 |提示输入凭据 |提示输入凭据 |
 | Exchange ActiveSync |提示输入凭据 |在 Lync 中需要单一登录，在 Exchange 中提示输入凭据 |
 | 移动应用 |提示输入凭据 |提示输入凭据 |
 
@@ -119,7 +121,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 多林方案
 
-如果是这样，当以下条件成立时，应该采用多林单 Azure AD 拓扑：
+如果是这样且符合以下条件，应考虑使用多林单一 Azure AD 拓扑：
 
 * 用户在所有林中只有 1 个标识 – 下面的唯一识别用户部分有更详细的说明。
 * 用户向他们的标识所在的林进行身份验证
@@ -149,7 +151,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 **单林筛选方案**
 
-为此，以下条件必须成立：
+为此，必须符合以下条件：
 
 * Azure AD Connect 同步服务器必须设置筛选，让它们都有一组对象的互斥集。  例如，将每个服务器的范围限定于特定域或 OU。
 * DNS 域只能在单个 Azure AD 目录中注册，因此本地 AD 中的用户 UPN 必须使用独立的命名空间

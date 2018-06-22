@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: f2904f3d070a818985fa291fb9083b5ec57529dd
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 31afe8579580ab392411aa8428f023fd52c4c4c6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301645"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595285"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>教程：使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
 
@@ -209,12 +209,9 @@ Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接
 
 祝贺你！  你已成功使用 VM MSI 对 Data Lake Store 进行身份验证。
 
-## <a name="related-content"></a>相关内容
+## <a name="next-steps"></a>后续步骤
 
-- 有关 MSI 的概述，请参阅[托管服务标识概述](overview.md)。
-- 对于管理操作，Data Lake Store 使用 Azure 资源管理器。  有关使用 VM MSI 对资源管理器进行身份验证的详细信息，请阅读[使用 Linux VM 托管服务标识 (MSI) 访问资源管理器](https://docs.microsoft.com/azure/active-directory/msi-tutorial-linux-vm-access-arm)。
-- 详细了解[使用 Azure Active Directory 进行 Data Lake Store 身份验证](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)。
-- 详细了解[使用 REST API 在 Azure Data Lake Store 上进行的文件系统操作](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-operations-rest-api)或 [WebHDFS 文件系统 API](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis)。
-- 详细了解 [Data Lake Store 中的访问控制](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)。
+在本教程中，你了解了如何使用 Windows 虚拟机的托管服务标识访问 Azure Data Lake Store。 若要了解有关 Azure Data Lake Store 的详细信息，请参阅：
 
-使用以下评论部分提供反馈，帮助我们改进内容。
+> [!div class="nextstepaction"]
+>[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)

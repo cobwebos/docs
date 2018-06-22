@@ -10,16 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303937"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831629"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>部署 Azure Blockchain Workbench
 
-Azure Blockchain Workbench 是使用 Azure Marketplace 中的解决方案模板部署的。 该模板可以简化创建区块链应用程序所需的组件的部署。 部署后，Blockchain Workbench 提供对客户端应用的访问权限，以创建和管理用户与区块链应用程序。
+Azure Blockchain Workbench 是使用 Azure 市场中的解决方案模板部署的。 该模板可以简化创建区块链应用程序所需的组件的部署。 部署后，Blockchain Workbench 提供对客户端应用的访问权限，以创建和管理用户与区块链应用程序。
 
 有关 Blockchain Workbench 组件的详细信息，请参阅 [Azure Blockchain Workbench 体系结构](blockchain-workbench-architecture.md)。
 
@@ -73,7 +73,7 @@ Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Az
 接下来，需将应用程序清单修改为使用 Azure AD 中的应用程序角色，以指定 Blockchain Workbench 管理员。  有关应用程序清单的详细信息，请参阅 [Azure Active Directory 应用程序清单](../active-directory/develop/active-directory-application-manifest.md)。
 
 1. 针对已注册的应用程序，在其详细信息窗格中选择“清单”。
-2. 生成 GUID。 可以使用 PowerShell 命令 `[guid]::NewGuid()` 或联机工具来生成 GUID。 
+2. 生成 GUID。 可以运行 PowerShell 命令 [guid] :: NewGuid () 或 New-GUID cmdlet 来生成 GUID。 还可以使用 GUID 生成器网站。
 3. 稍后将要更新清单的 **appRoles** 节。 在“编辑清单”窗格中选择“编辑”，将 `"appRoles": []` 替换为所提供的 JSON。 请务必将 **id** 字段的值替换为生成的 GUID。 
 
     ``` json
@@ -169,13 +169,13 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
 
 1.  登录到 [Azure 门户](https://portal.azure.com)。
 2.  在右上角选择自己的帐户，然后切换到要在其中部署 Azure Blockchain Workbench 的所需 Azure AD 租户。
-3.  在左窗格中，选择“创建资源”。 在“搜索 Marketplace”搜索栏中搜索 `Azure Blockchain Workbench`。 
+3.  在左窗格中，选择“创建资源”。 在“在市场中搜索”搜索栏中搜索 `Azure Blockchain Workbench`。 
 
-    ![Marketplace 搜索栏](media/blockchain-workbench-deploy/marketplace-search-bar.png)
+    ![市场搜索栏](media/blockchain-workbench-deploy/marketplace-search-bar.png)
 
 4.  选择“Azure Blockchain Workbench”。
 
-    ![Marketplace 搜索结果](media/blockchain-workbench-deploy/marketplace-search-results.png)
+    ![市场搜索结果](media/blockchain-workbench-deploy/marketplace-search-results.png)
 
 4.  选择**创建**。
 5.  完成基本设置。
@@ -193,7 +193,7 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
     | 部署区域 | 指定部署 Blockchain Workbench 资源的位置。 为了尽可能提高可用性，此位置应与“位置”设置相符。 |
     | 订阅 | 指定要用于部署的 Azure 订阅。 |
     | 资源组 | 选择“新建”创建新资源组，并指定唯一的资源组名称。 |
-    | Location | 指定要将框架部署到的区域。 |
+    | 位置 | 指定要将框架部署到的区域。 |
 
 6.  选择“确定”完成基本设置配置部分。
 

@@ -1,20 +1,19 @@
 ---
 title: 部署 Azure IoT Edge 模块 | Microsoft Docs
 description: 了解如何将模块部署到边缘设备
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: ffd3a8e6bde7310f6bdbed0e0f87419c73fcd6fc
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: 880a17b6029dafec9ed41e3a32802dc42b872e77
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166329"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725320"
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>了解单设备 IoT Edge 部署或大规模 IoT Edge 部署 - 预览
 
@@ -26,7 +25,7 @@ Azure IoT Edge 设备遵循的[设备生命周期][lnk-lifecycle]类似于其他
 
 Azure IoT Edge 提供两种方法来配置在 IoT Edge 设备上运行的模块：一种方法用于在单个设备上进行开发和快速迭代（这是在 Azure IoT Edge 教程中使用的），另一种方法用于管理大群 IoT Edge 设备。 可以通过 Azure 门户和编程方式使用这两种方法。
 
-本文重点介绍设备群的配置和监视阶段，统称为 IoT Edge 部署。 整个部署步骤如下所示：   
+本文重点介绍设备群的配置和监视阶段，统称为 IoT Edge 自动部署。 整个部署步骤如下所示：   
 
 1. 由操作员来定义部署，描述一组模块和目标设备。 每个部署都有一个反映此信息的部署清单。 
 1. IoT 中心服务与所有目标设备通信，为其配置所需模块。 
@@ -37,7 +36,7 @@ Azure IoT Edge 提供两种方法来配置在 IoT Edge 设备上运行的模块�
 
 ## <a name="deployment"></a>部署
 
-部署会分配 IoT Edge 模块映像，这些映像在一组 IoT Edge 目标设备上作为实例运行。 操作方式是：配置一个 IoT Edge 部署清单，其中包括一系列模块和相应的初始化参数。 部署可以分配给单个设备（通常按设备 ID 分配），也可以分配给一组设备（按标记分配）。 IoT Edge 设备在收到部署清单以后，就会从各个容器存储库下载并安装模块容器映像，并对其进行相应的配置。 创建部署以后，操作员可以监视部署状态，看目标设备是否已正确配置。   
+loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT Edge 目标设备上作为实例运行。 操作方式是：配置一个 IoT Edge 部署清单，其中包括一系列模块和相应的初始化参数。 部署可以分配给单个设备（通常按设备 ID 分配），也可以分配给一组设备（按标记分配）。 IoT Edge 设备在收到部署清单以后，就会从各个容器存储库下载并安装模块容器映像，并对其进行相应的配置。 创建部署以后，操作员可以监视部署状态，看目标设备是否已正确配置。   
 
 需将设备预配为 IoT Edge 设备，然后才能为其配置部署。 以下是先决条件，不包含在部署中：
 * 基础操作系统

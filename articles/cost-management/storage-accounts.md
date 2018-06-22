@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: 76a9fc586a1932b8b5e664b6c964f0c7d3eac4d4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e37604e5cd36cfed016ef596060459011ec32d35
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297829"
 ---
 # <a name="configure-storage-accounts-for-cost-management"></a>为成本管理配置存储帐户
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/28/2018
 3. 在存储帐户页的“设置”下，单击“访问密钥”。
 4. 复制**存储帐户名称**和 key1 下的**连接字符串**。  
 ![Azure 存储访问密钥](./media/storage-accounts/azure-storage-access-keys.png)  
-5. 可以从 Azure 门户打开 Cloudyn 门户，也可以导航到 https://azure.cloudyn.com 并登录。
+5. 通过 Azure 门户打开 Cloudyn 门户，或导航到 https://azure.cloudyn.com 并进行登录。
 6. 单击齿轮符号，然后选择“报表存储管理”。
 7. 单击“新增 +”，确保选中“Microsoft Azure”。 在“名称”区域中粘贴 Azure 存储帐户名称。 在相应的区域中粘贴**连接字符串**。 输入容器名称，然后单击“保存”。  
 ![为 Azure 配置的 Cloudyn 存储](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +148,7 @@ Cloudyn 使用现有的 AWS 凭据“用户”或“角色”将报表保存到�
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>将 AWS 报表存储添加到 Cloudyn
 
-1. 可以从 Azure 门户打开 Cloudyn 门户，也可以导航到 https://azure.cloudyn.com 并登录。
+1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 https://azure.cloudyn.com 并进行登录。
 2. 单击齿轮符号，然后选择“报表存储管理”。
 3. 单击“新增 +”，确保选中“AWS”。
 4. 选择帐户和存储 Bucket。 AWS 存储 Bucket 的名称会自动填充。  

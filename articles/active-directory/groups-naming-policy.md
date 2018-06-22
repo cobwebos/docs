@@ -10,15 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 1cfd85eda9ef59a2265a991cabe5f1b6ee83563d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fb4f43dd85f887fa051aaa8050ddf6b37313e376
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594544"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>在 Azure Active Directory 中为 Office 365 组实施命名策略（预览版）
 
@@ -189,7 +190,7 @@ Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement 遵�
 Outlook Customer Manager (OCM) | Outlook Customer Manager 遵循命名策略，并且命名策略自动应用于在 Outlook Customer Manager 中创建的组。 如果检测到自定义阻止字词，则会阻止在 OCM 中创建组，并阻止用户使用 OCM 应用。
 Classroom 应用 | 在 Classroom 应用中创建的组遵循命名策略，但不会自动应用命名策略，并且在输入教室组名时不会向用户显示命名策略预览。 用户必须输入强制使用的教室组名称（包含前缀和后缀）。 否则，教室组创建或编辑会失败，并出现错误。
 Power BI | Power BI 工作区遵循命名策略。    
-Yammer | Yammer 连接组不强制实施配置的命名策略。 在启用了命名策略的组织中，对于不符合命名策略的组，Yammer 创建不会连接到 Office 365 的旧式 Yammer 组。
+Yammer | 当使用其 Azure Active Directory 帐户登录到 Yammer 的用户创建一个组或编辑组名时，组名将符合命名策略。 这适用于 Office 365 连接组以及所有其他 Yammer 组。<br>如果在命名策略到位之前已创建 Office 365 连接组，则组名将不会自动遵循命名策略。 当用户编辑组名，系统将提示他们添加前缀和后缀。
 StaffHub  | StaffHub 团队不遵循命名策略，但基础 Office 365 组遵循给策略。 StaffHub 团队名不应用前缀和后缀，也不检查自定义阻止字词。 但在基础 Office 365 组中，StaffHub 应用了前缀和后缀，并删除了阻止字词。
 Exchange PowerShell | Exchange PowerShell cmdlet 遵循命名策略。 如果用户不遵循组名和组别名 (mailNickname) 的命名策略，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。
 Azure Active Directory PowerShell cmdlet | Azure Active Directory PowerShell cmdlet 遵循命名策略。 如果用户不遵循组名和组别名的命名约定，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。

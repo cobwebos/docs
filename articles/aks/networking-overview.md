@@ -6,13 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/04/2018
 ms.author: marsma
-ms.openlocfilehash: 818bae2e05f6a3256ccbf0cbcc901dd337b9a260
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: d6f42a5f3ce907fdb759bef29ca25bdc7fe365d9
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757002"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络配置
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 05/14/2018
 高级网络提供以下优势：
 
 * 将 AKS 群集部署到现有的 VNet，或者为群集创建新的 VNet 和子网。
-* 群集中的每个 Pod 在 VNet 中分配有一个 IP 地址，并可直接与群集中的其他 Pod 以及 VNet 中的其他 VM 通信。
+* 群集中的每个 Pod 在 VNet 中分配有一个 IP 地址，并可直接与群集中的其他 Pod 以及 VNet 中的其他节点通信。
 * Pod 可以通过 ExpressRoute 和站点到站点 (S2S) VPN 连接来与对等互连 VNet 中的其他服务和本地网络建立连接。 还可以从本地访问 Pod。
 * 通过 Azure 负载均衡器在外部或内部公开 Kubernetes 服务。 这也是基本网络的一项功能。
 * 启用了服务终结点的子网中的 Pod 可以安全地连接到 Azure 服务（例如 Azure 存储和 SQL 数据库）。
@@ -46,7 +47,33 @@ ms.lasthandoff: 05/14/2018
 * Pod 可以访问公共 Internet 上的资源。 这也是基本网络的一项功能。
 
 > [!IMPORTANT]
-> 为高级网络配置的 AKS 群集中的每个节点最多可以托管 **30 个 Pod**。 预配用于 Azure CNI 插件的每个 VNet 限制为 **4096 个 IP 地址** (/20)。
+> 为高级网络配置的 AKS 群集中的每个节点最多可以托管 **30 个 Pod**。 预配用于 Azure CNI 插件的每个 VNet 限制为 4096 个配置的 IP 地址。
+
+## <a name="advanced-networking-prerequisites"></a>高级网络先决条件
+
+* AKS 群集的 VNet 必须允许出站 Internet 连接。
+* 不要在同一子网中创建多个 AKS 群集。
+* AKS 高级网络不支持使用 Azure 专用 DNS 区域的 VNet。
+* AKS 群集可能不会使用 Kubernetes 服务地址范围的 `169.254.0.0/16`、`172.30.0.0/16` 或 `172.31.0.0/16`。
+* 用于 AKS 群集的服务主体必须具有对包含现有 VNet 的资源组的 `Contributor` 权限。
+
+## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
+
+使用高级网络配置的群集需要额外的规划。 VNet 及其子网的大小必须适应你计划运行的 Pod 数以及群集的节点数。
+
+Pod 和群集节点的 IP 地址是从 VNet 中指定的子网分配的。 为每个节点配置一个主要 IP（即节点的 IP），以及 Azure CNI 预配置的 30 个附加 IP 地址，这些附加 IP 地址将分配给节点上安排的 Pod。 横向扩展群集时，将使用子网中的 IP 地址以类似方式配置每个节点。
+
+AKS 群集 IP 地址计划包括 VNet、至少一个节点和 Pod 子网以及 Kubernetes 服务地址范围。
+
+| 地址范围 / Azure 资源 | 限制和调整大小 |
+| --------- | ------------- |
+| 虚拟网络 | Azure VNet 可以最大为 /8，但可能只有 4096 个配置的 IP 地址。 |
+| 子网 | 必须足够大才能容纳节点和 Pod。 若要计算最小子网大小：（节点数）+（节点数 * 每个节点的 Pod）。 对于 50 个节点群集：(50) + (50 * 30) = 1,550，你的子网大小必须为 /21 或更大。 |
+| Kubernetes 服务地址范围 | 此范围不应由此 VNet 上或连接到此 VNet 的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 |
+| Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址将由群集服务发现 (kube-dns) 使用。 |
+| Docker 桥地址 | IP 地址（采用 CIDR 表示法）用作节点上的 Docker 桥 IP 地址。 默认地址为 172.17.0.1/16。 |
+
+如前所述，预配用于 Azure CNI 插件的每个 VNet 限制为 4096 个配置的 IP 地址。 为高级网络配置的群集中的每个节点最多可以托管 **30 个 Pod**。
 
 ## <a name="configure-advanced-networking"></a>配置高级网络
 
@@ -66,14 +93,6 @@ ms.lasthandoff: 05/14/2018
 
 ![Azure 门户中的高级网络配置][portal-01-networking-advanced]
 
-## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
-
-使用高级网络配置的群集需要额外的规划。 VNet 及其子网的大小必须适应你要在群集中同时运行的 Pod 数，并符合缩放要求。
-
-Pod 和群集节点的 IP 地址是从 VNet 中指定的子网分配的。 为每个节点配置一个主要 IP（即节点本身的 IP），以及 Azure CNI 预配置的 30 个附加 IP 地址，这些附加 IP 地址将分配给节点上安排的 Pod。 横向扩展群集时，将使用子网中的 IP 地址以类似方式配置每个节点。
-
-如前所述，预配用于 Azure CNI 插件的每个 VNet 限制为 **4096 个 IP 地址** (/20)。 为高级网络配置的群集中的每个节点最多可以托管 **30 个 Pod**。
-
 ## <a name="frequently-asked-questions"></a>常见问题
 
 以下问题和解答适用于“高级”网络配置。
@@ -92,7 +111,7 @@ Pod 和群集节点的 IP 地址是从 VNet 中指定的子网分配的。 为�
 
 * 可部署到节点的 Pod 数上限是否可配置？
 
-  默认情况下，每个节点最多可以托管 30 个 Pod。 目前，只能在使用资源管理器模板部署群集时，通过修改 `maxPods` 属性来更改最大值。
+  默认情况下，每个节点最多可以托管 30 个 Pod。 只能在使用资源管理器模板部署群集时，通过修改 `maxPods` 属性来更改最大值。
 
 * 如何配置创建 AKS 群集期间创建的子网的其他属性？例如服务终结点。
 

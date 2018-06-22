@@ -5,20 +5,16 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/07/2018
 ms.author: sethm
-ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4c28f1ae5517e54fab259e680128d6c666c82fbe
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235305"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -30,7 +26,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 * 更长的事件保留期
 * 其他中转连接，对于超出包含的数量的部分收取超额费用
 * 多于单个使用者组
-* [捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [捕获](event-hubs-capture-overview.md)
 
 有关定价层的详细信息（包括专用事件中心），请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -58,9 +54,10 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 可以，但前提是所有事件中心都在同一个命名空间中。
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>事件的最长保留期有多久？
-事件中心标准目前支持的最长保留期为 7 天。 请注意，事件中心并不是永久性的数据存储区。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新计算机学习模型。 如果需要将消息保留 7 天以上，请启用事件中心的[事件中心捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)功能，将数据从事件中心拉取到选择的存储帐户或 Azure Data Lake 服务帐户。 启用捕获功能会基于购买的吞吐量单位进行计价。
+事件中心标准目前支持的最长保留期为 7 天。 请注意，事件中心并不是永久性的数据存储区。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新计算机学习模型。 如果需要将消息保留 7 天以上，请启用事件中心的[事件中心捕获](event-hubs-capture-overview.md)功能，将数据从事件中心拉取到选择的存储帐户或 Azure Data Lake 服务帐户。 启用捕获功能需要支付费用，具体因购买的吞吐量单位而异。
 
 ### <a name="where-is-azure-event-hubs-available"></a>Azure 事件中心在哪些区域可用？
+
 在所有支持的 Azure 区域中都可使用 Azure 事件中心。 有关列表，请访问 [Azure 区域](https://azure.microsoft.com/regions/)页。  
 
 ## <a name="best-practices"></a>最佳实践
@@ -101,22 +98,27 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ## <a name="quotas"></a>配额
 
 ### <a name="are-there-any-quotas-associated-with-event-hubs"></a>是否有与事件中心关联的配额？
+
 如需所有事件中心配额的列表，请参阅[配额](event-hubs-quotas.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>事件中心生成的异常有哪些，建议采取什么操作？
+
 有关可能的事件中心异常的列表，请参阅[异常概述](event-hubs-messaging-exceptions.md)。
 
 ### <a name="diagnostic-logs"></a>诊断日志
+
 事件中心支持两种类型的[诊断日志](event-hubs-diagnostic-logs.md) - 捕获错误日志和操作日志 - 这两种日志都用 json 表示并可以通过 Azure 门户启用。
 
 ### <a name="support-and-sla"></a>支持和 SLA
+
 事件中心的技术支持可通过[社区论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)获得。 计费和订阅管理支持免费提供。
 
 若要详细了解我们的 SLA，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)页面。
 
 ## <a name="next-steps"></a>后续步骤
+
 访问以下链接可以了解有关事件中心的详细信息：
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)

@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：自定义策略中的语言自定义 | Microsoft Docs
-description: 了解如何在自定义策略中针对多种语言本地化内容
+title: Azure Active Directory B2C 自定义策略中的语言自定义 | Microsoft Docs
+description: 了解如何在自定义策略中针对多种语言本地化内容。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: davidmu
-ms.openlocfilehash: 45cfa152615da1447cc695e0dd201e5b8d046cf4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: c8deabd4d0a4126365b014875624525d5b1f3063
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711750"
 ---
 # <a name="language-customization-in-custom-policies"></a>自定义策略中的语言自定义
 

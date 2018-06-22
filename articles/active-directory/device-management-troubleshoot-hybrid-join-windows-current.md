@@ -1,12 +1,13 @@
 ---
-title: "排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题 | Microsoft Docs"
-description: "排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题。"
+title: 排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题 | Microsoft Docs
+description: 排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,22 +15,23 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 3b98d31efcdbd61cf12e2c905f200c1e54f68f69
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40303d72f4facc6cd8c762f2542c48df3e370c0a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713722"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题 
 
-本主题是适用于以下客户端：
+本文适用于以下客户端：
 
 -   Windows 10
 -   Windows Server 2016
 
 对于其他 Windows 客户端，请参阅[排查已加入混合 Azure Active Directory 的下层设备问题](device-management-troubleshoot-hybrid-join-windows-legacy.md)。
 
-本主题假设已[配置已加入混合 Azure Active Directory 的设备](device-management-hybrid-azuread-joined-devices-setup.md)以支持以下方案：
+本文假设你已[配置已加入混合 Azure Active Directory 的设备](device-management-hybrid-azuread-joined-devices-setup.md)，以支持以下方案：
 
 - 基于设备的条件访问
 

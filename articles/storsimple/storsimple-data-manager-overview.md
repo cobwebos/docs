@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/26/2018
+ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 429f1edae15a98b3c38ae4980a630f23b3a85d23
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d57229ad79909aa0334cc623d727b733a1ec73f9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271898"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652002"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 数据管理器解决方案概述
 
@@ -82,10 +82,9 @@ StorSimple 数据管理器需要服务数据加密密钥才可将数据从 StorS
 
 ![服务和作业定义位于不同的区域中](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
 
-## <a name="gdpr-compliance"></a>GDPR 符合性
+## <a name="managing-personal-information"></a>管理个人信息
 
-[一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 包含许多有关如何收集、存储和使用个人信息的要求。 GDPR 规则针对在欧盟运营的公司、政府机构和其他组织实施，并收集和分析与欧盟居民有关的数据。 StorSimple 数据管理器符合 GDPR。 数据管理器服务不会收集个人数据。
-有关详细信息，请在[信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
+StorSimple 数据管理器不收集，也不显示任何个人信息。 有关详细信息，请在[信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
 
 ## <a name="next-steps"></a>后续步骤
 

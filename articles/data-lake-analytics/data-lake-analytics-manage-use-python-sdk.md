@@ -1,33 +1,32 @@
 ---
-title: 使用 Python 管理 Azure Data Lake Analytics | Microsoft Docs
-description: '了解如何使用 Python 创建 Data Lake Store 帐户和提交作业。 '
+title: 使用 Python 管理 Azure Data Lake Analytics
+description: 本文介绍了如何使用 Python 管理 Data Lake Analytics 帐户、数据源、用户和作业。
 services: data-lake-analytics
-documentationcenter: ''
-author: matt1883
-manager: jhubbard
-editor: cgronlun
-ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/18/2017
+author: matt1883
 ms.author: saveenr
-ms.custom: devcenter
-ms.openlocfilehash: 0182a14979550c880904ec829f6b59dee016cad2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+editor: jasonwhowell
+ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
+ms.topic: conceptual
+ms.date: 06/08/2018
+ms.openlocfilehash: 2f3912069b54b3ad761493f02336d8d58866f53a
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261454"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>使用 Python 管理 Azure Data Lake Analytics
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-## <a name="python-versions"></a>Python 版本
+本文介绍了如何使用 Python 管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。
+
+## <a name="supported-python-versions"></a>支持的 Python 版本
 
 * 使用 64 位版本的 Python。
-* 可以使用位于 **[Python.org 下载](https://www.python.org/downloads/)**上的标准 Python 分发版。 
-* 许多开发人员发现使用 **[Anaconda Python 分发版](https://www.continuum.io/downloads)**会十分方便。  
+* 可以使用位于 **[Python.org 下载](https://www.python.org/downloads/)** 上的标准 Python 分发版。 
+* 许多开发人员发现使用 **[Anaconda Python 分发版](https://www.continuum.io/downloads)** 会十分方便。  
 * 本文是使用来自标准 Python 分发版的 Python 版本 3.6 编写的
 
 ## <a name="install-azure-python-sdk"></a>安装 Azure Python SDK
@@ -35,9 +34,9 @@ ms.lasthandoff: 04/05/2018
 安装以下模块：
 
 * **azure-mgmt-resource** 模块包括 Active Directory 等的其他 Azure 模块。
-* **azure-mgmt-datalake-store** 模块包括 Azure Data Lake Store 帐户管理操作。
 * **azure-datalake-store** 模块包含 Azure Data Lake Store 文件系统操作。 
-* **azure-datalake-analytics** 模块包含 Azure Data Lake Analytics 操作。 
+* **azure-mgmt-datalake-store** 模块包括 Azure Data Lake Store 帐户管理操作。
+* azure-mgmt-datalake-analytics 模块包含 Azure Data Lake Analytics 操作。 
 
 首先，通过运行以下命令来确保具有最新 `pip`：
 

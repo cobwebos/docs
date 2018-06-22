@@ -1,25 +1,22 @@
 ---
-title: "从 Azure 逻辑应用连接到 Dynamics 365（联机）| Microsoft Docs"
-description: "创建逻辑应用工作流，用于通过 Dynamics 365 连接器提供的 API 管理 Dynamics 365（联机）"
-services: logic-apps
-cloud: Azure Stack
+title: 连接到 Dynamics 365 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Dynamics 365（联机）REST API 和 Azure 逻辑应用创建和管理记录
 author: Mattp123
-manager: anneta
-documentationcenter: 
-tags: connectors
-ms.assetid: 0dc2abef-7d2c-4a2d-87ca-fad21367d135
-ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+manager: jeconnoc
+ms.author: matp
 ms.date: 02/10/2017
-ms.author: matp; LADocs
-ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 6ac45d45ed1df0e89eb27657a064a8c95ad4be79
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294837"
 ---
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>从逻辑应用工作流连接到 Dynamics 365
 

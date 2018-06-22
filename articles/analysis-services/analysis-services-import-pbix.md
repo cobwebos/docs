@@ -3,23 +3,24 @@ title: 将 Power BI Desktop 文件导入到 Azure Analysis Services 中 | Micros
 description: 介绍了如何使用 Azure 门户导入 Power BI Desktop 文件 (pbix)。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 05/22/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 35bf2ba85017de43788f802b6244d61ed2bb62df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: aea6f3efcf3740527c43b75a30caadf6b2a8b623
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601065"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>导入 Power BI Desktop 文件
 
-可以通过导入 Power BI Desktop 文件 (pbix) 在 Azure AS 中创建新模型。 将导入模型元数据、缓存的数据以及数据源连接。 不会导入报表和可视化效果。
+可以将 Power BI Desktop 文件 (pbix) 中的数据模型导入到 Azure Analysis Services 中。 将导入模型元数据、缓存的数据以及数据源连接。 不会导入报表和可视化效果。 从 Power BI Desktop 中导入的数据模型的兼容级别为 1400。
 
 **限制**   
-- pbix 模型只能连接到 Azure SQL 数据库和 Azure SQL 数据仓库数据源。 
+- pbix 模型只能连接到“Azure SQL 数据库”和“Azure SQL 数据仓库”数据源。 
 - pbix 模型不能具有实时连接或 DirectQuery 连接。 
 - 如果 pbix 数据模型包含 Analysis Services 不支持的元数据，导入可能会失败。
 

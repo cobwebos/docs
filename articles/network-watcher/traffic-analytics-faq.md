@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236393"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -29,7 +30,14 @@ ms.lasthandoff: 04/18/2018
     - 为要监视的 NSG 启用 NSG 流日志
     - 一个 Azure 存储帐户，用于存储原始流日志
     - 具有读取和写入访问权限的 Log Analytics (OMS) 工作区
-    - 帐户在 Microsoft.Network 提供程序上必须赋予以下操作：
+    - 必须在订阅一级为用户分配以下两个角色之一：
+    
+            All permissions *
+            All Read permissions */read
+            All network permissions Microsoft.Network/*
+            All network read permissions Microsoft.Network/*/read
+
+    或者，必须在订阅一级为用户分配以下所有角色： 
 
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read
@@ -41,6 +49,19 @@ ms.lasthandoff: 04/18/2018
         - Microsoft.Network/routeTables/read
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
+        
+若要检查针对订阅分配给用户的角色，请按照以下步骤操作：
+
+使用 Login-AzureRmAccount 登录 Azure 
+
+使用 Select-AzureRmSubscription 选择所需订阅 
+
+现在，若要列出分配给特定用户的所有角色，请使用 Get-AzureRmRoleAssignment -SignInName <user email> -IncludeClassicAdministrators 
+
+如果在执行命令后未看到任何输出，请联系相应的订阅管理员，以获取执行命令的权限。  
+
+如需了解详情，请参阅[使用 Azure PowerShell 管理基于角色的访问控制](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
+
 
 2.  可在哪些 Azure 区域使用流量分析？
 
@@ -106,11 +127,11 @@ ms.lasthandoff: 04/18/2018
 
 14. 是否可以使用 PowerShell 或 Azure 资源管理器模板配置流量分析？
 
-    否，只能使用 Azure 门户配置流量分析。
+可以，自版本 6.2.1 起开始支持使用 Windows PowerShell 配置流量分析，但暂不支持使用 Azure 资源管理器模板进行配置。 若要详细了解如何使用 PowerShell 配置流量分析，请参阅以下[文档](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0)。 
 
 15.  流量分析如何计费？
 
-        流量分析按以下内容计费：增强精简的日志并将它们存储在 Log Analytics 工作区中。 在预览版中，不会因增强精简的日志而对流量分析计费，但工作区中的数据保留需按照发布的费率计费。 发布流量分析的定价后，将更新本答案。
+流量分析是针对服务处理的流日志数据进行计量，并将生成的增强日志存储在 Log Analytics 工作区中。 若要详细了解定价计划，请[单击此处](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
 
 16.  如何使用地图视图中的键盘导航？
 

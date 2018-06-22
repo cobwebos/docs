@@ -1,21 +1,21 @@
 ---
-title: 令牌、会话和单一登录配置 - Azure AD B2C | Microsoft 文档
-description: Azure Active Directory B2C 中的令牌、会话和单一登录配置
+title: Azure Active Directory B2C 中的令牌、会话和单一登录配置 | Microsoft Docs
+description: Azure Active Directory B2C 中的令牌、会话和单一登录配置。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 925313b6f2a00826f2ec8086457315c60f70b007
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: 0ee39f4b6f80d13cc0f71c77ae87b2a4ee74e390
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710628"
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C：令牌、会话和单一登录配置
 
@@ -49,14 +49,14 @@ Azure AD B2C 支持 [OAuth 2.0 授权协议](active-directory-b2c-reference-prot
   * 默认值 = 14 天。
   * 最小值（含）= 1 天。
   * 最大值（含）= 90 天。
-* **刷新令牌的滑动窗口生存期（天）**：此时间段过后，强制用户重新进行身份验证，不考虑应用获取的最新刷新令牌的有效期。 仅在此开关设为“有限”时该属性才可用。 它的值必须大于或等于**刷新令牌生存期（天）**的值。 如果此开关设置为“无限”，则无法提供特定值。
+* **刷新令牌的滑动窗口生存期（天）**：此时间段过后，强制用户重新进行身份验证，不考虑应用获取的最新刷新令牌的有效期。 仅在此开关设为“有限”时该属性才可用。 它的值必须大于或等于**刷新令牌生存期（天）** 的值。 如果此开关设置为“无限”，则无法提供特定值。
   * 默认值 = 90 天。
   * 最小值（含）= 1 天。
   * 最大值（含）= 365 天。
 
 以下是可以使用上述属性的两个用例：
 
-* 只要用户在移动应用上持续保持活动状态，允许该用户无限期地保持登录此应用。 可以通过将登录策略中的**刷新令牌的滑动窗口生存期（天）**开关设为**无限**来实现此场景。
+* 只要用户在移动应用上持续保持活动状态，允许该用户无限期地保持登录此应用。 可以通过将登录策略中的**刷新令牌的滑动窗口生存期（天）** 开关设为**无限**来实现此场景。
 * 通过设置合适的访问令牌生存期来满足行业的安全性和合规性要求。
 
     > [!NOTE]
@@ -86,7 +86,7 @@ Azure AD B2C 支持 [OpenID Connect 身份验证协议](active-directory-b2c-ref
   * 默认值 = 1440 分钟。
   * 最小值（含）= 15 分钟。
   * 最大值（含）= 1440 分钟。
-* **Web 应用会话超时**：如果此开关设置为“绝对”，则在 **Web 应用会话生存期（分钟）**指定的时间之后强制用户重新进行身份验证。 如果此开关设置为“滚动”（默认设置），那么只要用户持续在 Web 应用中保持活动状态，该用户就可以保持登录状态。
+* **Web 应用会话超时**：如果此开关设置为“绝对”，则在 **Web 应用会话生存期（分钟）** 指定的时间之后强制用户重新进行身份验证。 如果此开关设置为“滚动”（默认设置），那么只要用户持续在 Web 应用中保持活动状态，该用户就可以保持登录状态。
 
 以下是可以使用上述属性的两个用例：
 

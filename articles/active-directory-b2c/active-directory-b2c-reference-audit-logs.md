@@ -1,20 +1,21 @@
 ---
-title: Azure Active Directory B2C：审核日志示例和定义
-description: 访问 Azure AD B2C 审核日志的指南和示例
+title: Azure Active Directory B2C 中的审核日志示例和定义 | Microsoft Docs
+description: 访问 Azure AD B2C 审核日志的指南和示例。
 services: active-directory-b2c
-author: sromeroz
-manager: sasubram
-ms.author: sezambra
-ms.service: active-directory-b2c
+author: davidmu1
+manager: mtillman
+ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.date: 08/04/2017
-ms.openlocfilehash: 8cc48853b0677230c4e19df4f0ecd93ce88b119d
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: davidmu
+ms.component: B2C
+ms.openlocfilehash: 4828bf2f0faa596c8222c3a36dc3d38ec1b3bd1a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206257"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709812"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 

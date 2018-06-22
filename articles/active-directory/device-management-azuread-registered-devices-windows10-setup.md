@@ -1,13 +1,14 @@
 ---
-title: "设置已注册 Azure Active Directory 的设备 | Microsoft Docs"
-description: "了解如何设置已注册 Azure Active Directory 的设备。"
+title: 设置已注册 Azure Active Directory 的设备 | Microsoft Docs
+description: 了解如何设置已注册 Azure Active Directory 的设备。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,22 +16,23 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2560e51d61506389e84288bf983b0ebcb5776ff2
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 541f37bb11c604567b356716db282d0e4e2f629b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713518"
 ---
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>设置已注册 Azure Active Directory 的 Windows 10 设备
 
-使用 Azure Active Directory (Azure AD) 中的设备管理，可以确保用户从满足安全性和符合性标准的设备访问资源。 有关更多详细信息，请参阅 [Azure Active Directory 中的设备管理简介](device-management-introduction.md)。
+使用 Azure Active Directory (Azure AD) 中的设备管理，可以确保用户从满足安全性和符合性标准的设备访问资源。 有关详细信息，请参阅 [Azure Active Directory 中的设备管理简介](device-management-introduction.md)。
 
-若要启用“自带设备 (BYOD)”方案，可通过配置已注册 Azure AD 的设备实现此方案。 在 Azure AD 中，可配置适用于 Windows 10、iOS、Android 和 macOS 的已注册 Azure AD 的设备。 本主题提供了适用于 Windows 10 设备的相关步骤。 
+若要启用“自带设备 (BYOD)”方案，可通过配置已注册 Azure AD 的设备实现此方案。 在 Azure AD 中，可配置适用于 Windows 10、iOS、Android 和 macOS 的已注册 Azure AD 的设备。 本文提供了适用于 Windows 10 设备的相关步骤。 
 
 
 ## <a name="before-you-begin"></a>开始之前
 
-若要注册 Windows 10 设备，必须配置设备注册服务以允许注册设备。 除具有在 Azure AD 租户中注册设备的权限外，注册设备的数量必须少于所配置的最大数。 有关详细信息，请参阅[配置设备设置](device-management-azure-portal.md#configure-device-settings)。
+若要注册 Windows 10 设备，必须配置设备注册服务以允许注册设备。 此外，还必须使已注册的设备数少于已配置的最大设备数。 有关详细信息，请参阅[配置设备设置](device-management-azure-portal.md#configure-device-settings)。
 
 ## <a name="what-you-should-know"></a>要点
 
@@ -49,7 +51,7 @@ ms.lasthandoff: 01/16/2018
 
 ## <a name="registering-a-device"></a>注册设备
 
-本部分介绍了在 Azure AD 中注册 Windows 10 设备的步骤。 如果已成功在 Azure AD 中注册设备，“访问工作单位或学校”对话框会通过“工作或学校帐户”条目进行指示。
+本部分介绍了在 Azure AD 中注册 Windows 10 设备的步骤。 将显示成功注册的设备并包含“工作或学校帐户”条目。
 
 ![注册](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
@@ -74,7 +76,7 @@ ms.lasthandoff: 01/16/2018
     ![连接](./media/device-management-azuread-registered-devices-windows10-setup/04.png)
 
 
-5. 在“设置工作或学校帐户”对话框中，输入帐户名称（例如：someone@example.com），然后单击“下一步”。
+5. 在“设置工作或学校帐户”对话框中，输入帐户名称（例如，someone@example.com），再单击“下一步”。
 
     ![连接](./media/device-management-azuread-registered-devices-windows10-setup/06.png)
 
@@ -104,7 +106,7 @@ ms.lasthandoff: 01/16/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关更多详细信息，请参阅 [Azure Active Directory 中的设备管理简介](device-management-introduction.md)
+- 有关详细信息，请参阅 [Azure Active Directory 中的设备管理简介](device-management-introduction.md)
 
 - 有关在 Azure AD 门户中管理设备的详细信息，请参阅[使用 Azure 门户管理设备](device-management-azure-portal.md)。
 

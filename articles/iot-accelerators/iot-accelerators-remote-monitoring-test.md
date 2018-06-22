@@ -1,22 +1,19 @@
 ---
 title: 远程监视解决方案中的设备模拟 - Azure | Microsoft Docs
 description: 本教程介绍如何在远程监视解决方案加速器中使用设备模拟器。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/15/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c10d983ea6b864d21f4589a3cbfdd5def39ac753
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: d8a528265acc3e0bee24da6c1b6130082815b9fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628253"
 ---
 # <a name="create-a-new-simulated-device"></a>创建新的模拟设备
 
@@ -106,7 +103,7 @@ ms.lasthandoff: 05/20/2018
 
 ### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>在 Azure 中配置对解决方案虚拟机的 SSH 访问
 
-在 [www.azureiotsuite.com](https://www.azureiotsuite.com) 中创建远程监视解决方案时，已选择了一个解决方案名称。 该解决方案名称将是包含解决方案所用的各个已部署资源的 Azure 资源组的名称。 以下命令使用名为 **Contoso-01** 的资源组，应将 **Contoso-01** 替换为自己的资源组名称。
+在 [www.azureiotsolutions.com](https://www.azureiotsolutions.com) 中创建远程监视解决方案时，选择了一个解决方案名称。 该解决方案名称将是包含解决方案所用的各个已部署资源的 Azure 资源组的名称。 以下命令使用名为 **Contoso-01** 的资源组，应将 **Contoso-01** 替换为自己的资源组名称。
 
 以下命令使用 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中的 `az` 命令。 可以在开发计算机上安装 Azure CLI 2.0，或者在 [Azure 门户](http://portal.azure.com)中使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 Cloud Shell 中已预装 Azure CLI 2.0。
 
@@ -484,7 +481,7 @@ ms.lasthandoff: 05/20/2018
 
     ![连接的设备数](./media/iot-accelerators-remote-monitoring-test/connecteddevices.png)
 
-1. 在浏览器中，导航到远程监视解决方案的**仪表板**。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示所有模拟设备的温度：
+1. 在浏览器中，导航到远程监视解决方案的“仪表板”。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示所有模拟设备的温度：
 
     ![温度遥测](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
@@ -584,7 +581,7 @@ ms.lasthandoff: 05/20/2018
 
 现已完成将设备模拟服务更新版本部署到远程监视解决方案的步骤。
 
-在浏览器中，导航到远程监视解决方案的**仪表板**。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示两个模拟设备的温度：
+在浏览器中，导航到远程监视解决方案的“仪表板”。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示两个模拟设备的温度：
 
 ![温度遥测](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
@@ -678,7 +675,7 @@ ms.lasthandoff: 05/20/2018
 
 若要测试已更新的**冷却器**设备类型，请先运行 **device-simulation** 服务的本地副本，以测试设备类型的行为是否符合预期。 在本地测试并调试已更新的设备类型后，可以重新生成容器，并将**设备模拟**服务重新部署到 Azure。
 
-在本地运行**设备模拟**服务时，该服务会将遥测数据发送到远程监视解决方案。 在“设备”页上，可以预配已更新类型的实例。
+在本地运行设备模拟服务时，该服务会将遥测数据发送到远程监视解决方案。 在“设备”页上，可以预配已更新类型的实例。
 
 若要在本地测试和调试更改，请参阅上一部分[在本地测试灯泡设备类型](#test-the-lightbulb-device-type-locally)。
 

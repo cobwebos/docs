@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3343cebb85124f19fe773822e296312abad53d96
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150617"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591168"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>用户隐私和 Azure Active Directory 直通身份验证
 
@@ -29,13 +30,13 @@ ms.locfileid: "32150617"
 
 ## <a name="overview"></a>概述
 
-Azure AD 直通身份验证创建可以包含 EUII 的以下日志类型：
+Azure AD 直通身份验证创建可以包含个人数据的以下日志类型：
 
 - Azure AD Connect 跟踪日志文件。
 - 身份验证代理跟踪日志文件。
 - Windows 事件日志文件。
 
-可通过两种方式实现直通身份验证的用户隐私：
+可通过两种方式改进直通身份验证的用户隐私：
 
 1.  根据请求提取用户的数据以及从安装项中删除该用户的数据。
 2.  确保数据保留时长均不超过 48 小时。

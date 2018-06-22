@@ -1,19 +1,19 @@
 ---
 title: 在 Azure IoT Central 应用程序中使用设备集 | Microsoft Docs
 description: 如何以操作员的身份在 Azure IoT Central 应用程序中使用设备集。
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932c8315b5af22c3adf18de50cf03deaf6b2a53e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpfr
+ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201143"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261672"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中使用设备集
 
@@ -86,10 +86,40 @@ ms.locfileid: "34201143"
 
     > [!NOTE]
     > 可以添加多个图像、链接和网格。
-
-1. 关闭“设计模式”。
+  
+    1. 关闭“设计模式”。
 
     ![设计模式已关闭](media/howto-use-device-sets/image10.png)
+
+
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>在设备集仪表板中配置位置地图 
+可以添加位置地图，在地图中直观呈现设备集的位置。 
+
+若要向设备集仪表板添加位置地图，必须在设备模板中配置位置属性（请参阅[创建由 Azure Maps 提供技术支持的位置属性](howto-set-up-template.md)）。
+
+
+1. 在设备集仪表板中，选择库中的“地图”。 
+
+    ![设备集仪表板地图](media/howto-use-device-sets/LocationMaps1.png)
+
+
+2. 指定标题，并选择之前已配置为设备属性的一部分的位置属性。
+
+    ![配置仪表板地图](media/howto-use-device-sets/LocationMaps2.png)
+
+3. 保存设置，此时会看到显示设备集中设备的位置的地图图块。
+
+    ![保存仪表板地图](media/howto-use-device-sets/LocationMaps3.png)
+
+
+5. 此时，当操作者查看设备集仪表板时，她可以看到你已配置的所有图块（包括位置地图），所有设备位置一目了然！
+
+    ![仪表板地图操作者视图](media/howto-use-device-sets/LocationMaps4.png)
+
+    可以根据需要重设地图大小。
+
+
+
 
 ## <a name="configure-the-list-for-your-device-set"></a>配置设备集的列表
 

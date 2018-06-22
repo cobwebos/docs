@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 8a8482fa93ca902746e4fc8ef6d67b274a926bdc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9e4ea16193824e63298b19d4401c110385fa7feb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939954"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700186"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
@@ -74,6 +74,7 @@ ms.locfileid: "33939954"
 * [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics](#log-analytics-limits)
+* [托管的标识](#managed-identity-limits)
 * [媒体服务](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [移动服务](#mobile-services-limits)
@@ -83,6 +84,7 @@ ms.locfileid: "33939954"
 * [网络观察程序](#network-watcher-limits)
 * [通知中心服务](#notification-hub-service-limits)
 * [资源组](#resource-group-limits)
+* [基于角色的访问控制](#role-based-access-control-limits)
 * [计划程序](#scheduler-limits)
 * [搜索](#search-limits)
 * [服务总线](#service-bus-limits)
@@ -315,6 +317,12 @@ Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放�
 
 ### <a name="automation-limits"></a>自动化限制
 [!INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
+
+### <a name="managed-identity-limits"></a>托管的标识限制
+[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
+
+### <a name="role-based-access-control-limits"></a>基于角色的访问控制限制
+[!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>SQL 数据库限制
 有关 Azure SQL 数据库限制，请参阅 [SQL 数据库资源限制](sql-database/sql-database-resource-limits.md)。

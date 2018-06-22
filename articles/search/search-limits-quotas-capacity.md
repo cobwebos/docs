@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 05/24/2018
 ms.author: heidist
-ms.openlocfilehash: b964f5c127d627ede6d3ff671ac695e1b33e4558
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c24cccde507873424e3c51d584f5cd094df2b876
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203386"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641163"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
@@ -93,13 +93,16 @@ ms.locfileid: "34203386"
 
 2017 年底后创建的基本服务的上限已增大为 15 个索引、数据源、技能集和索引器。
 
+资源密集型操作（如 Azure blob 索引中的图像分析或认知搜索中的自然语言处理）具有较短的最大运行时间，以便可以容纳其他索引作业。 如果在允许的最长时间内无法完成索引作业，请尝试按计划运行。 计划程序将跟踪索引的状态。 如果计划的索引作业因某种原因而中断，则索引器可以在下一次计划运行时从它上次停止的位置重新开始。
+
 | 资源 | 免费&nbsp;<sup>1</sup> | 基本&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | 最大索引器数 |3 |5 或 15|50 |200 |200 |不适用 |
 | 最大数据源数 |3 |5 或 15 |50 |200 |200 |不适用 |
 | 最大技能集数<sup>4</sup> |3 |5 或 15 |50 |200 |200 |不适用 |
 | 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |不适用 |
-| 最长运行时间 | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |不适用  |
+| 最长运行时间 <sup>5</sup> | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |不适用  |
+| 认知搜索技能集的最长运行时间或具有图像分析的 blob 索引 <sup>5</sup> | 3-10 分钟 |2 小时 |2 小时 |2 小时 |2 小时 |不适用  |
 | Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不适用  |
 | Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4 百万 |4 百万 |4 百万 |不适用 |
 
@@ -110,6 +113,8 @@ ms.locfileid: "34203386"
 <sup>3</sup> S3 HD 服务未包括索引器支持。
 
 <sup>4</sup> 每个技能集最多拥有 30 项技能。
+
+<sup>5</sup> 认知搜索工作负载和 Azure blob 索引中的 图像分析的运行时间比常规文本索引运行时间短。 图像分析和自然语言处理属于计算密集型，并且消耗了过多的可用处理能力。 减少运行时间，以便队列中的其他作业能够运行。  
 
 ## <a name="queries-per-second-qps"></a>每秒查询次数 (QPS)
 
@@ -124,7 +129,7 @@ ms.locfileid: "34203386"
 * $Orderby 子句中最多 32 字段
 * 最大搜索词大小为 UTF-8 编码文本的 32,766 字节（32 KB 减 2 个字节）
 
-<sup>1</sup> 在 Azure 搜索中，请求主体受 16 MB 上限的约束，这会针对不受理论限制约束的单个字段或集合的内容施加实际限制（有关字段组合和限制的详细信息，请参阅[支持的数据类型](https://msdn.microsoft.com/library/azure/dn798938.aspx)）。
+<sup>1</sup> 在 Azure 搜索中，请求主体受 16 MB 上限的约束，这会针对不受理论限制约束的单个字段或集合的内容施加实际限制（有关字段组合和限制的详细信息，请参阅[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)）。
 
 ## <a name="api-response-limits"></a>API 响应限制
 * 每页搜索结果最多返回 1000 个文档

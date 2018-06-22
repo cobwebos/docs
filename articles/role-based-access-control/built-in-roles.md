@@ -11,24 +11,24 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/06/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 91f721f5508191c7530e57b6dd96cad3301542a7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203499"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267367"
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
-[基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 你无法修改内置角色，但你可创建自己的[自定义角色](custom-roles.md)以适应组织的特定需求。
+[基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，可以创建你自己的[自定义角色](custom-roles.md)。
 
 内置角色始终在不断演变。 若要获取最新的角色定义，请使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。
 
 ## <a name="built-in-role-descriptions"></a>内置角色说明
-下表提供内置角色的简短说明。 单击角色名称，查看每个角色的 `actions` 和 `notActions` 的列表。
+下表提供内置角色的简短说明。 单击角色名称，查看每个角色的 `actions`、`notActions`、`dataActions` 和 `notDataActions` 列表。
 
 
 | 内置角色 | 说明 |
@@ -84,6 +84,7 @@ ms.locfileid: "34203499"
 | [New Relic APM 帐户参与者](#new-relic-apm-account-contributor) | 允许管理 New Relic 应用程序性能管理帐户和应用程序，但不允许访问它们。 |
 | [读取器和数据访问](#reader-and-data-access) | 允许查看所有内容，但不允许删除或创建存储帐户或包含的资源。 它还允许使用存储帐户密钥对存储帐户中包含的所有数据进行读/写访问。 |
 | [Redis 缓存参与者](#redis-cache-contributor) | 允许管理 Redis 缓存，但不允许访问这些缓存。 |
+| [资源策略参与者（预览）](#resource-policy-contributor-preview) | （预览）通过 EA 回填的 用户，具有创建/修改资源策略、创建支持票证和读取资源/层次结构的权限。 |
 | [计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许管理计划程序作业集合，但不允许访问这些集合。 |
 | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 |
 | [安全管理员](#security-admin) | 仅在安全中心内：可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议 |
@@ -97,6 +98,10 @@ ms.locfileid: "34203499"
 | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL 服务器和数据库，但不允许访问它们及其安全相关的策略。 |
 | [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户，但不允许对其进行访问。 |
 | [存储帐户密钥操作员服务角色](#storage-account-key-operator-service-role) | 允许存储帐户密钥操作员在存储帐户上列出和重新生成密钥 |
+| [存储 Blob 数据参与者（预览）](#storage-blob-data-contributor-preview) | 授予对 Azure 存储 blob 容器和数据的读取、写入和删除权限 |
+| [存储 Blob 数据读者（预览）](#storage-blob-data-reader-preview) | 授予对 Azure 存储 blob 容器和数据的读取权限 |
+| [存储队列数据参与者（预览）](#storage-queue-data-contributor-preview) | 授予对 Azure 存储队列和队列消息的读取、写入和删除权限 |
+| [存储队列数据读者（预览）](#storage-queue-data-reader-preview) | 授予对 Azure 存储队列和队列消息的读取权限 |
 | [支持请求参与者](#support-request-contributor) | 允许创建和管理支持请求 |
 | [流量管理器参与者](#traffic-manager-contributor) | 允许管理流量管理器配置文件，但不允许控制谁可以访问它们。 |
 | [用户访问管理员](#user-access-administrator) | 允许管理用户对 Azure 资源的访问权限。 |
@@ -128,6 +133,8 @@ ms.locfileid: "34203499"
 > | Microsoft.Authorization/*/Delete | 无法删除角色和角色分配 |
 > | Microsoft.Authorization/*/Write | 无法创建角色和角色分配 |
 > | Microsoft.Authorization/elevateAccess/Action | 向调用方授予租户范围的“用户访问管理员”访问权限 |
+> | Microsoft.Blueprint/blueprintAssignments/write |  |
+> | Microsoft.Blueprint/blueprintAssignments/delete |  |
 
 ## <a name="reader"></a>读取器
 > [!div class="mx-tableFixed"]
@@ -325,8 +332,8 @@ ms.locfileid: "34203499"
 > | **说明** | 允许管理 Azure Stack 注册。 |
 > | **Id** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | **操作** |  |
-> | Microsoft.AzureStack/registrations/products/listDetails/action | 检索 Azure Stack Marketplace 产品的扩展详细信息 |
-> | Microsoft.AzureStack/registrations/products/read | 获取 Azure Stack Marketplace 产品的属性 |
+> | Microsoft.AzureStack/registrations/products/listDetails/action | 检索 Azure Stack 市场产品的扩展详细信息 |
+> | Microsoft.AzureStack/registrations/products/read | 获取 Azure Stack 市场产品的属性 |
 > | Microsoft.AzureStack/registrations/read | 获取 Azure Stack 注册的属性 |
 
 ## <a name="backup-contributor"></a>备份参与者
@@ -704,7 +711,7 @@ ms.locfileid: "34203499"
 > | **Id** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **操作** |  |
 > | Microsoft.Insights/components/*/read |  |
-> | Microsoft.Insights/components/purge/action |  |
+> | Microsoft.Insights/components/purge/action | 从 Application Insights 清除数据 |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | 从工作区中删除指定数据 |
 
@@ -1034,6 +1041,20 @@ ms.locfileid: "34203499"
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | Microsoft.Support/* | 创建和管理支持票证 |
+
+## <a name="resource-policy-contributor-preview"></a>资源策略参与者（预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | （预览）通过 EA 回填的 用户，具有创建/修改资源策略、创建支持票证和读取资源/层次结构的权限。 |
+> | **Id** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
+> | **操作** |  |
+> | */read | 读取除密码外的所有类型的资源。 |
+> | Microsoft.Authorization/policyassignments/* | 创建和管理策略分配 |
+> | Microsoft.Authorization/policydefinitions/* | 创建和管理策略定义 |
+> | Microsoft.Authorization/policysetdefinitions/* | 创建和管理策略集 |
+> | Microsoft.PolicyInsights/* |  |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 
 ## <a name="scheduler-job-collections-contributor"></a>计划程序作业集合参与者
@@ -1389,6 +1410,58 @@ ms.locfileid: "34203499"
 > | Microsoft.Storage/storageAccounts/listkeys/action | 返回指定存储帐户的访问密钥。 |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | 再生成指定存储帐户的访问密钥。 |
 
+## <a name="storage-blob-data-contributor-preview"></a>存储 Blob 数据参与者（预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 授予对 Azure 存储 blob 容器和数据的读取、写入和删除权限 |
+> | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **操作** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | 返回删除容器的结果 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | 返回容器或容器列表 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | 返回放置或租用 blob 容器的结果 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 返回删除 blob 的结果 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 返回 blob 或 blob 列表 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 返回写入 blob 的结果 |
+
+## <a name="storage-blob-data-reader-preview"></a>存储 Blob 数据读者（预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 授予对 Azure 存储 blob 容器和数据的读取权限 |
+> | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | **操作** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | 返回容器或容器列表 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 返回 blob 或 blob 列表 |
+
+## <a name="storage-queue-data-contributor-preview"></a>存储队列数据参与者（预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 授予对 Azure 存储队列和队列消息的读取、写入和删除权限 |
+> | **Id** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | **操作** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/delete | 返回删除队列的结果 |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/read | 返回队列或队列列表。 |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/write | 返回写入队列的结果 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | 返回删除消息的结果 |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | 返回消息 |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | 返回编写消息的结果 |
+
+## <a name="storage-queue-data-reader-preview"></a>存储队列数据读者（预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 授予对 Azure 存储队列和队列消息的读取权限 |
+> | **Id** | 19e7f393-937e-4f77-808e-94535e297925 |
+> | **操作** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/read | 返回队列或队列列表。 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | 返回消息 |
+
 ## <a name="support-request-contributor"></a>支持请求参与者
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1438,6 +1511,9 @@ ms.locfileid: "34203499"
 > | Microsoft.Network/loadBalancers/read | 获取负载均衡器定义 |
 > | Microsoft.Network/networkInterfaces/read | 获取网络接口定义。  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **DataActions** |  |
+> | Microsoft.Compute/virtualMachines/login/action | 以普通用户身份登录虚拟机 |
+> | Microsoft.Compute/virtualMachines/loginAsAdmin/action | 以 Windows 管理员身份或 Linux 根用户权限登录虚拟机 |
 
 ## <a name="virtual-machine-contributor"></a>虚拟机参与者
 > [!div class="mx-tableFixed"]
@@ -1496,6 +1572,8 @@ ms.locfileid: "34203499"
 > | Microsoft.Network/loadBalancers/read | 获取负载均衡器定义 |
 > | Microsoft.Network/networkInterfaces/read | 获取网络接口定义。  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **DataActions** |  |
+> | Microsoft.Compute/virtualMachines/login/action | 以普通用户身份登录虚拟机 |
 
 ## <a name="web-plan-contributor"></a>Web 计划参与者
 > [!div class="mx-tableFixed"]

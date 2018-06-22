@@ -1,22 +1,21 @@
 ---
-title: Azure Active Directory B2C：用户迁移方法
+title: Azure Active Directory B2C 中的用户迁移方法 | Microsoft Docs
 description: 介绍有关使用图形 API和选择性地使用 Azure AD B2C 自定义策略执行用户迁移的高级核心概念。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 47f813839a5495591356e5ecd461902fa8745c65
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: 7c78cb13f9028b2be527794751d5f8ced9bff171
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32140319"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711335"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 将标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C)C 时，可能还需要迁移用户帐户。 本文介绍如何将现有用户帐户从任何标识提供者迁移到 Azure AD B2C。 本文并未阐述约定俗成的内容，而只是介绍了几种方案。 开发人员负责判断每种方法是否适用。
@@ -62,8 +61,8 @@ ms.locfileid: "32140319"
     ![新建应用程序注册](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
 
 6. 执行以下操作，创建新应用程序：
-    * 在“名称”中填写 **B2CUserMigration** 或所需的其他任何名称。
-    * 在“应用程序类型”中填写“Web 应用/API”。
+    * 对于“名称”，请使用 **B2CUserMigration** 或所需的其他任何名称。
+    * 对于“应用程序类型”，使用“Web 应用/API”。
     * 在“登录 URL”中填写 https://localhost（因为它与此应用程序无关）。
     * 选择**创建**。
 

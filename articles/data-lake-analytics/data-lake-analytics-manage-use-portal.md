@@ -1,30 +1,27 @@
 ---
-title: 使用 Azure 门户管理 Azure Data Lake Analytics | Microsoft Docs
-description: 了解如何管理 Data Lake Analytics 帐户、数据源、用户和作业。
+title: 使用 Azure 门户管理 Azure Data Lake Analytics
+description: 本文介绍如何使用 Azure 门户管理 Data Lake Analytics 帐户、数据源、用户和作业。
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: kfile
-editor: cgronlun
-ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 99b638279b38ce3b583208ec0b80617f9046a6d7
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+manager: kfile
+editor: jasonwhowell
+ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
+ms.topic: conceptual
+ms.date: 12/05/2016
+ms.openlocfilehash: 1ccd4dd6b8d4ee15b7d9f14e7436ccd87392121e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771375"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623700"
 ---
-# <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
+# <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-了解如何使用 Azure 门户管理 Azure Data Lake Analytics 帐户、帐户数据源、用户和作业。 若要查看有关使用其他工具的管理主题，请单击页面顶部的一个选项卡。
+本文介绍如何使用 Azure 门户管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。
+
 
 <!-- ################################ -->
 <!-- ################################ -->

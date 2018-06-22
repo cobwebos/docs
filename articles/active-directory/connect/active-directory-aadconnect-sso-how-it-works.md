@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9d17a4038f2171b74c8ba1dbc21e8335e6893691
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bcd9ec44eafd586648ba964c5cba248a184a8ec3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591555"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
 
@@ -50,7 +52,7 @@ ms.lasthandoff: 03/08/2018
 
 在 Web 浏览器上进行登录的流程如下所示：
 
-1. 用户尝试从企业网络内部已加入域的企业设备访问 Web 应用程序（例如，Outlook Web App - https://outlook.office365.com/owa/）。
+1. 用户尝试从企业网络内部已加入域的企业设备访问 Web 应用程序（例如，Outlook Web 应用 - https://outlook.office365.com/owa/)）。
 2. 如果用户尚未登录，该用户将被重定向到 Azure AD 登录页面。
 3. 用户在 Azure AD 登录页键入其用户名。
 

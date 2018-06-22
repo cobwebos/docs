@@ -1,5 +1,5 @@
 ---
-title: Azure Blockchain Workbench 消息概述
+title: Azure Blockchain Workbench 消息集成概述
 description: 有关在 Azure Blockchain Workbench 中使用消息的概述。
 services: azure-blockchain
 keywords: ''
@@ -10,23 +10,22 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4a2e85cc619d17745be9d8f72af5f99049ce7c6b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f45396c3af285026e16ce641bd37bf0eadcee56d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302086"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607594"
 ---
-# <a name="azure-blockchain-workbench-messages-overview"></a>Azure Blockchain Workbench 消息概述
+# <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench 消息集成
 
 除了提供 REST API 以外，Azure Blockchain Workbench 还提供基于消息的集成。 Workbench 通过 Azure 事件网格发布以账本为中心的事件，使下游使用者能够根据这些事件引入数据或执行操作。 对于需要可靠消息传递的客户端，Azure Blockchain Workbench 还会将消息传送到 Azure 服务总线终结点。
 
 很多开发人员还希望能够与外部系统通信，并发起事务来创建用户、创建合同以及更新账本中的合同。 尽管此功能目前尚未推出公共预览版，但在 [http://aka.ms/blockchain-workbench-integration-sample](http://aka.ms/blockchain-workbench-integration-sample) 中可以找到提供此功能的示例。
 
-
 ## <a name="event-notifications"></a>事件通知
 
-可以使用事件通知将 Workbench 中发生的事件及其连接到的区块链网络告知用户和下游系统。 可以直接在代码中使用，或者结合逻辑应用和 Flow 等工具使用事件通知来触发到下游系统的数据流。
+可以使用事件通知将 Blockchain Workbench 中发生的事件及其连接到的区块链网络告知用户和下游系统。 可以直接在代码中使用，或者结合逻辑应用和 Flow 等工具使用事件通知来触发到下游系统的数据流。
 
 有关可接收的各种消息的详细信息，请参阅[通知消息参考](#notification-message-reference)。
 
@@ -61,7 +60,7 @@ ms.locfileid: "34302086"
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>配合逻辑应用使用服务总线消息
 
 1. 在 Azure 门户中创建一个新的 **Azure 逻辑应用**。
-2.  在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 在搜索框中键入“服务总线”，然后选择适合与服务总线之间的交互类型的触发器。 例如，选择“服务总线 - 主题订阅中收到邮件时(自动完成)”。
+2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 在搜索框中键入“服务总线”，然后选择适合与服务总线之间的交互类型的触发器。 例如，选择“服务总线 - 主题订阅中收到邮件时(自动完成)”。
 3. 显示工作流设计器后，指定服务总线的连接信息。
 4. 选择订阅并指定 **workbench-external** 主题。
 5. 开发应用程序的逻辑，以利用此触发器的消息。
@@ -76,7 +75,7 @@ ms.locfileid: "34302086"
 
 | 名称    | 说明  |
 |----------|--------------|
-| UserId  | 创建的用户的 ID |
+| UserId  | 创建的用户的 ID。 |
 | ChainIdentifier | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此值为用户的“链中”地址。 |
 
 ``` csharp
@@ -94,15 +93,15 @@ public class NewAccountRequest : MessageModelBase
 | 名称 | 说明 |
 |-----|--------------|
 | ChainID | 与请求关联的链的唯一标识符。|
-  BlockId | 账本中块的唯一标识符。|
-  ContractId | 合同的唯一标识符。|
-  ContractAddress |       账本中合同的地址。|
-  TransactionHash  |     账本中事务的哈希。|
-  OriginatingAddress |   事务发起方的地址。|
-  ActionName       |     操作的名称。|
-  IsUpdate        |      标识此操作是否为更新。|
-  parameters       |     一个对象列表，用于标识发送到操作的参数的名称、值和数据类型。|
-  TopLevelInputParams |  如果已将某个合同连接到其他一个或多个合同，则这些项是来自顶级合同的参数。 |
+| BlockId | 账本中块的唯一标识符。|
+| ContractId | 合同的唯一标识符。|
+| ContractAddress |       账本中合同的地址。|
+| TransactionHash  |     账本中事务的哈希。|
+| OriginatingAddress |   事务发起方的地址。|
+| ActionName       |     操作的名称。|
+| IsUpdate        |      标识此操作是否为更新。|
+| parameters       |     一个对象列表，用于标识发送到操作的参数的名称、值和数据类型。|
+| TopLevelInputParams |  如果已将某个合同连接到其他一个或多个合同，则这些项是来自顶级合同的参数。 |
 
 ``` csharp
 public class ContractInsertOrUpdateRequest : MessageModelBase
@@ -242,6 +241,65 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 {
     public int ContractId { get; set; }
     public string ChainIdentifier { get; set; }
+}
+```
+
+## <a name="classes-used-by-message-types"></a>消息类型使用的类
+
+### <a name="messagemodelbase"></a>MessageModelBase
+
+所有消息的基础模型。
+
+| 名称          | 说明                          |
+|---------------|--------------------------------------|
+| OperationName | 操作的名称。           |
+| RequestId     | 请求的唯一标识符。 |
+
+``` csharp
+public class MessageModelBase
+{
+    public string OperationName { get; set; }
+    public string RequestId { get; set; }
+}
+```
+
+### <a name="contractinputparameter"></a>ContractInputParameter
+
+包含参数的名称、值和类型。
+
+| 名称  | 说明                 |
+|-------|-----------------------------|
+| 名称  | 参数的名称。  |
+| 值 | 参数值。 |
+| Type  | 参数的类型。  |
+
+``` csharp
+public class ContractInputParameter
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string Type { get; set; }
+}
+```
+
+#### <a name="contractproperty"></a>ContractProperty
+
+包含属性的 ID、名称、值和类型。
+
+| 名称  | 说明                |
+|-------|----------------------------|
+| ID    | 属性的 ID。    |
+| 名称  | 属性的名称。  |
+| 值 | 属性的值。 |
+| Type  | 属性类型。  |
+
+``` csharp
+public class ContractProperty
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string DataType { get; set; }
 }
 ```
 

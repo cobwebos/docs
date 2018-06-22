@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：LinkedIn 配置 | Microsoft Docs
-description: 在 Azure Active Directory B2C 保护的应用程序中，向具有 LinkedIn 帐户的使用者提供注册和登录
+title: Azure Active Directory B2C 中的 LinkedIn 配置 | Microsoft Docs
+description: 在 Azure Active Directory B2C 保护的应用程序中，向具有 LinkedIn 帐户的使用者提供注册和登录。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 91970b3ec41c645cd1cd3e203cc96ad655dafd7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 6db3832031a1bb960ee40c0e4fb8c3d0591a976c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711692"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C：向具有 LinkedIn 帐户的使用者提供注册和登录
 ## <a name="create-a-linkedin-application"></a>创建 LinkedIn 应用程序
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/23/2018
    > “客户端密钥”是一个重要的安全凭据。
    > 
    > 
-6. 在（**OAuth 2.0** 下的）“授权重定向 URL”字段中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contoso.onmicrosoft.com）。 单击“添加”，并单击“更新”。 **{tenant}** 值区分大小写。
+6. 在（**OAuth 2.0** 下的）“授权重定向 URL”字段中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contoso.onmicrosoft.com）。 单击“添加”，并单击“更新”。 {tenant} 值应为小写。
    
     ![LinkedIn - 安装应用](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
 

@@ -1,25 +1,27 @@
 ---
-title: "Azure Active Directory 报告延迟 | Microsoft Docs"
-description: "了解在 Azure 门户中显示报告事件所花费的时间"
+title: Azure Active Directory 报告延迟 | Microsoft Docs
+description: 了解在 Azure 门户中显示报告事件所花费的时间
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 12/15/2017
-ms.author: markvi;dhanyahk
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5ec41817fede495b8262e28d2d614a480d98ff3b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: eda894216c624956aab6efa74057e15ce9a1b3ff
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230516"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
 
@@ -37,10 +39,10 @@ ms.lasthandoff: 12/18/2017
 
 下表列出了活动报表的延迟信息。
 
-| 报表 | 最小值 | 平均值 | 备注 |
-| :-- | --- | --- | :-- |
-| 审核日志 | 30 分钟  | 1 小时	  |在某些实例中，可能需要多达 2 个小时才能显示审核活动数据。|
-| 登录 | 15 分钟  | 2 小时 |在某些实例中，可能需要多达 24 个小时才能显示登录活动数据。 这包括来自旧版 Office 应用程序的登录活动数据。 |
+| 报表 | 延迟 (P95) |延迟 (P99)|
+| :-- | --- | --- | 
+| 审核日志 | 2 分钟  | 5 分钟  |
+| 登录 | 2 分钟  | 5 分钟 |
 
 
 

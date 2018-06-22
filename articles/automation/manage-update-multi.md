@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1f34255bdbcc8761f1c68adbb2f1828521f789e4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 658686bec41fe1a6cfa8ca4ba6fe61d2e559297c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194013"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833713"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -35,31 +35,16 @@ ms.locfileid: "34194013"
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-以下操作系统支持更新管理。
+以下操作系统支持更新管理：
 
-### <a name="windows"></a>Windows
-
-- Windows Server 2008 及更高版本，以及针对 Windows Server 2008 R2 SP1 及更高版本的更新部署。 不支持 Nano Server。
-
-  若要提供相关支持，以便将更新部署到 Windows Server 2008 R2 SP1，需要 .NET Framework 4.5 和 Windows Management Framework 5.0 或更高版本。
-
-- 不支持 Windows 客户端操作系统。
-
-Windows 代理也必须配置为与 Windows Server Update Services (WSUS) 服务器通信或有权访问 Microsoft 更新。
-
-> [!NOTE]
-> System Center Configuration Manager 无法同时管理 Windows 代理。
->
-
-### <a name="linux"></a>Linux
-
-- CentOS 6 (x86/x64) 和 7 (x64)
-
-- Red Hat Enterprise 6 (x86/x64) 和 7 (x64)
-
-- SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)
-
-- Ubuntu 12.04 LTS 和更高版本 (x86/x64)
+|操作系统  |说明  |
+|---------|---------|
+|Windows Server 2008、Windows Server 2008 R2 RTM    | 仅支持更新评估         |
+|Windows Server 2008 R2 SP1 和更高版本     |Windows PowerShell 4.0 或更高版本是必需的（[下载 WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)）。</br> 为提高可靠性，建议使用 Windows PowerShell 5.1（[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）。         |
+|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。        |
+|Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
+|SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
+|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |Linux 代理必须具有访问更新存储库的权限。         |
 
 > [!NOTE]
 > 若要防止在 Ubuntu 上的维护时段外应用更新，请重新配置无人参与升级包，禁用自动更新。 有关详细信息，请参阅[“Ubuntu 服务器指南”中的“自动更新”主题](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)。
@@ -152,6 +137,9 @@ Linux 代理必须具有访问更新存储库的权限。
   - 定义更新
   - 工具
   - 更新
+
+- **要排除的更新** - 这会打开“排除”页。 输入要排除的 KB 或包名称。
+
 - **计划设置**：可以接受默认的日期和时间，即当前时间后 30 分钟。 也可以指定其他时间。
    还可以指定是一次性部署还是按计划定期部署。 若要设置定期计划，请选择“重复周期”下的“重复执行”选项。
 

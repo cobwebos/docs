@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a1fa7f58040b420bf52d89a57b1234416c2fb939
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8e3f81a6480e9de55c8f803e2266c4ac6e33c316
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149383"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590532"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>用户隐私和 Azure AD Connect 
 
@@ -27,7 +28,7 @@ ms.locfileid: "32149383"
 >[!NOTE] 
 >本文介绍 Azure AD Connect 和用户隐私。  有关 Azure AD Connect Health 和用户隐私的信息，请参阅[此处](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)的文章。
 
-安装 Azure AD Connect 时，可通过两种方式实现用户隐私符合性：
+可通过以下两种方式提高 Azure AD Connect 安装的用户隐私：
 
 1.  根据请求提取用户的数据以及从安装项中删除该用户的数据
 2.  确保数据保留时长均不超过 48 小时。

@@ -1,20 +1,21 @@
 ---
-title: 通过 Azure AD B2C 使用 Application Insights 中的事件跟踪用户行为 | Microsoft Docs
+title: 通过 Azure Active Directory B2C 使用 Application Insights 中的事件跟踪用户行为 | Microsoft Docs
 description: 有关如何通过 Azure AD B2C 用户旅程使用自定义策略在 Application Insights 中启用事件日志的分步指南（预览版）
 services: active-directory-b2c
-documentationcenter: dev-center-name
 author: davidmu1
 manager: mtillman
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: davidmu
-ms.openlocfilehash: db9ba62cb6ef0d2627dbeb07cb8165a4ac7ae490
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 1b37e61763b34e320ffb4078600e08b1d32330a1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709958"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>使用 Application Insights 在 Azure AD B2C 旅程中跟踪用户行为
 
@@ -254,7 +255,7 @@ Referenced using: {Culture:One of the property names below}
 | 声明 | 定义 | 示例 |
 | ----- | -----------| --------|
 | LanguageName | 语言的两字母 ISO 代码 | en |
-| RegionName | 区域的两字母 ISO 代码 | US |
+| RegionName | 区域的两字母 ISO 代码 | 美国 |
 | RFC5646 | RFC5646 语言代码 | en-US |
 | LCID   | 语言代码的 LCID | 1033 |
 

@@ -4,16 +4,16 @@ description: 介绍 Azure 策略如何使用资源策略定义，通过描述何
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 320ca0da946a0f04517c9ed4e8a61a868d2bb27c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194642"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260475"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
 
@@ -64,7 +64,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 }
 ```
 
-所有 Azure 策略模板示例位于 [Azure 策略模板](json-samples.md)。
+所有 Azure 策略示例均位于[策略示例](json-samples.md)内。
 
 ## <a name="mode"></a>Mode
 
@@ -192,7 +192,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-使用 like 和 notLike 条件时，可以在值中提供通配符 (*)。
+使用 like 和 notLike 条件时，可以在值中指定通配符 (*)。值不得包含多个通配符 (*)。
 
 当使用 match 和 notMatch 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供任何其他字符来表示该实际字符。 例如，请参阅[允许多名称模式](scripts/allow-multiple-name-patterns.md)。
 
@@ -204,7 +204,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 
 - `name`
 - `fullName`
-  - 返回资源的全名，包括任何父级信息（例如：“myServer/myDatabase”）
+  - 返回资源全名。 资源全名是最前面为任意父资源名称的资源名称（例如“myServer/myDatabase”）。
 - `kind`
 - `type`
 - `location`
@@ -251,6 +251,8 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 
 借助 AuditIfNotExists 和 DeployIfNotExists，可以评估相关资源是否存在，并在该资源不存在时应用规则和相应的作用。 例如，可以要求为所有虚拟网络部署网络观察程序。
 有关未部署虚拟机扩展时的审核示例，请参阅[如果扩展不存在，则进行审核](scripts/audit-ext-not-exist.md)。
+
+有关每种效果、评估顺序、属性和示例的完整详细信息，请参阅[了解策略效果](policy-effects.md)。
 
 ## <a name="aliases"></a>别名
 
@@ -392,4 +394,4 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 可在 [Azure 策略模板](json-samples.md)中查看 Azure 策略模板示例。
+- 有关更多示例，请参阅 [Azure 策略示例](json-samples.md)。

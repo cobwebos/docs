@@ -1,21 +1,21 @@
 ---
-title: 在 Azure AD B2C 中配置资源所有者密码凭据流 | Microsoft Docs
+title: 在 Azure Active Directory B2C 中配置资源所有者密码凭据流 | Microsoft Docs
 description: 了解如何在 Azure AD B2C 中配置资源所有者密码凭据流。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: davidmu
-ms.openlocfilehash: c1b4d641f6830751e2cb9e66d5052eb20a48d371
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.component: B2C
+ms.openlocfilehash: f6f9b9c7ae71697efb6d722eff55d9ee3f8746d5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158248"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712294"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-ropc-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流 (ROPC)
 

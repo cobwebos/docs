@@ -6,31 +6,39 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/29/2018
+ms.date: 06/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8cbf379e167f854d495704bc0919789dcbafd8e1
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: db3f616d85c21f01c751fd82532289593a6e7e45
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850563"
 ---
 # <a name="deploy-a-container-group"></a>部署容器组
 
 Azure 容器实例支持使用[容器组](container-instances-container-groups.md)将多个容器部署到单台主机上。 当生成应用程序 sidecar 以用于日志记录、监视或用于某些其他配置（其中服务需要第二个附加进程）时，这种方法很有用。
 
-本文档介绍如何使用 Azure 资源管理器模板运行简单的多容器 sidecar 配置。
+使用 Azure CLI 部署多容器组的方法有以下两种：
+
+* 资源管理器模板部署（本文）
+* [YAML 文件部署](container-instances-multi-container-yaml.md)
+
+如果需要在部署容器实例时部署其他 Azure 服务资源（例如，共享 Azure 文件），建议采用资源管理器模板部署方法。 由于 YAML 格式更简洁，因此建议在仅部署容器实例时，采用 YAML 文件部署方法。
 
 > [!NOTE]
 > 多容器组当前仅限于 Linux 容器。 我们正致力于为 Windows 容器提供全部功能，你可在 [Azure 容器实例的配额和区域可用性](container-instances-quotas.md)中了解当前的平台差异。
 
 ## <a name="configure-the-template"></a>配置模板
 
-创建名为 `azuredeploy.json` 的文件，并将以下 JSON 复制到文件中。
+本文中的各部分逐步介绍了如何通过部署 Azure 资源管理器模板来运行简单的多容器 sidecar 配置。
 
-在本示例中，定义了一个包含两个容器的容器组、一个公共 IP 地址和两个公开端口。 该组中的第一个容器运行面向 Internet 的应用程序。 第二个容器 sidecar 通过该组的本地网络向主要 Web 应用程序发出 HTTP 请求。
+首先，创建名为 `azuredeploy.json` 的文件，再将以下 JSON 复制到其中。
 
-```json
+此资源管理器模板定义的容器组包含两个容器、一个公共 IP 地址和两个公开端口。 该组中的第一个容器运行面向 Internet 的应用程序。 第二个容器 sidecar 通过该组的本地网络向主要 Web 应用程序发出 HTTP 请求。
+
+```JSON
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -118,7 +126,7 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
 
 若要使用专用容器映像注册表，请采用以下格式向 JSON 文档添加对象。 有关此配置的示例实现，请参阅 [ACI 资源管理器模板引用][template-reference]文档。
 
-```json
+```JSON
 "imageRegistryCredentials": [
   {
     "server": "[parameters('imageRegistryLoginServer')]",
@@ -146,13 +154,13 @@ az group deployment create --resource-group myResourceGroup --template-file azur
 
 ## <a name="view-deployment-state"></a>查看部署状态
 
-若要查看部署状态，请使用 [az container show][az-container-show] 命令。 这会返回预配的公共 IP 地址，可通过该 IP 地址访问应用程序。
+若要查看部署状态，请运行下面的 [az container show][az-container-show] 命令：
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-输出：
+若要查看正在运行的应用程序，请在浏览器中转到它的 IP 地址。 例如，在此示例输出中，IP 为 `52.168.26.124`：
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location

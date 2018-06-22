@@ -13,27 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/12/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e2ea46ea1a6b5bd3f50d4d4c15492c16c5241c0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3baf616e448f1f6d5292161ae125502d72141940
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161050"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266588"
 ---
 # <a name="create-custom-roles-in-azure"></a>在 Azure 中创建自定义角色
 
-如果[内置角色](built-in-roles.md)不能满足特定访问需要，则可创建自己的自定义角色。 与内置角色一样，可以将自定义角色分配到订阅、资源组和资源范围内的用户、组和服务主体。 自定义角色存储在 Azure Active Directory (Azure AD) 租户中，可以在订阅之间共享。 可以使用 Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。 本文介绍如何开始使用 PowerShell 和 Azure CLI 创建自定义角色的示例。
+如果[内置角色](built-in-roles.md)不能满足特定访问需要，则可创建自己的自定义角色。 与内置角色一样，可以将自定义角色分配到订阅、资源组和资源范围内的用户、组和服务主体。 自定义角色存储在 Azure Active Directory (Azure AD) 租户中，可以在订阅之间共享。 每个租户最多可以有 2000 个自定义角色。 可以使用 Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
+
+本文介绍如何开始使用 PowerShell 和 Azure CLI 创建自定义角色的示例。
 
 ## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>使用 PowerShell 创建自定义角色以提出支持请求
 
 若要创建自定义角色，可以从内置角色着手，对其进行编辑，然后创建新角色。 对于此示例，内置[读取者](built-in-roles.md#reader)角色经过自定义，用于创建名为“读取者支持票证访问级别”的自定义角色。 此角色允许用户订阅中的所有内容，以及建立支持请求。
 
 > [!NOTE]
-> 允许用户建立支持请求的唯一两个内置角色是“所有者”和“参与者”。[](built-in-roles.md#owner)[](built-in-roles.md#contributor) 若使某个用户能够提出支持请求，必须在订阅范围为该用户分配角色，因为所有支持请求都是基于 Azure 订阅创建的。
+> 允许用户建立支持请求的唯一两个内置角色是[所有者](built-in-roles.md#owner)和[参与者](built-in-roles.md#contributor)。 若使某个用户能够提出支持请求，必须在订阅范围为该用户分配角色，因为所有支持请求都是基于 Azure 订阅创建的。
 
-在 PowerShell 中，使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) 命令导出 JSON 格式的“读取者”角色。[](built-in-roles.md#reader)
+在 PowerShell 中，使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) 命令导出 JSON 格式的[读取者](built-in-roles.md#reader)角色。
 
 ```azurepowershell
 Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
@@ -111,7 +113,7 @@ New-AzureRmRoleDefinition -InputFile "C:\rbacrole2.json"
 
 使用 Azure CLI 创建自定义角色的步骤类似于使用 PowerShell，只是 JSON 输出有所不同。
 
-对于此示例，可以从内置的“读取者”角色着手。[](built-in-roles.md#reader) 若要列出[读取者](built-in-roles.md#reader)角色的操作，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list) 命令。
+对于此示例，可以从内置的[读取者](built-in-roles.md#reader)角色着手。 若要列出[读取者](built-in-roles.md#reader)角色的操作，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list) 命令。
 
 ```azurecli
 az role definition list --name "Reader" --output json

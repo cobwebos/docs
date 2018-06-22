@@ -8,6 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,18 +16,18 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: fabe19a7348591b4a299868dfc3e618c049198c3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258306"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261179"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
 使用 Azure Active Directory (Azure AD) 中的设备管理，可以确保用户从满足安全性和符合性标准的设备访问资源。 有关更多详细信息，请参阅 [Azure Active Directory 中的设备管理简介](device-management-introduction.md)。
 
-如果你有本地 Active Directory 环境，并且想要将已加入域的设备联接到 Azure AD，则可以通过配置联接到混合 Azure AD 的设备来实现。 本主题提供了相关步骤。 
+如果你有本地 Active Directory 环境，并且想要将已加入域的设备联接到 Azure AD，则可以通过配置联接到混合 Azure AD 的设备来实现。 本文介绍了相关步骤。 
 
 
 ## <a name="before-you-begin"></a>开始之前
@@ -37,7 +38,7 @@ ms.locfileid: "34258306"
 
 完成下面所述的配置步骤后，当设备重启或用户登录时，运行 Windows 10 周年更新和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果不想要此自动注册行为或需要控制推出，请先按照下面的“步骤 4：控制部署和推出”部分中的说明进行操作以有选择地启用或禁用自动推出，然后再执行其他配置步骤。  
 
-为了方便阅读介绍内容，本主题使用了以下术语： 
+为提高说明的可读性，本文使用以下术语： 
 
 - **Windows 当前设备** - 此术语指运行 Windows 10 或 Windows Server 2016 的已加入域的设备。
 - **Windows 下层设备** - 此术语指既不运行 Windows 10 也不运行 Windows Server 2016 的所有已加入域的**受支持** Windows 设备。  
@@ -56,7 +57,8 @@ ms.locfileid: "34258306"
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- 在非联合环境中，通过无缝单一登录支持 Windows 下层设备的注册 [Azure Active Directory 无缝单一登录](https://aka.ms/hybrid/sso)。
+- 在非联合环境中，通过无缝单一登录支持 Windows 下层设备的注册 [Azure Active Directory 无缝单一登录](https://aka.ms/hybrid/sso)。 
+- 使用 Azure AD 直通身份验证时，不支持注册 Windows 下级设备。
 - 使用漫游配置文件的设备不支持 Windows 下层设备的注册。 如果依赖于配置文件或设置漫游，请使用 Windows 10。
 
 
@@ -80,8 +82,7 @@ Azure AD Connect：
 
 - https://enterpriseregistration.windows.net
 
-- https://login.microsoftonline.com
-
+- https://login.microsoftonline.com 允许
 - https://device.login.microsoftonline.com
 
 - 组织的 STS（联盟域）
@@ -94,7 +95,7 @@ Azure AD Connect：
 
 - https://aadg.windows.net.nsatc.net
 
-- 此外，应在用户的 Intranet 区域中启用以下设置：“允许通过脚本对状态栏进行更新”。
+- 此外，应在用户的 Intranet 区域中启用以下设置：“允许通过脚本更新状态栏”。
 
 如果组织对本地 AD 使用托管（非联合）设置并且不使用 ADFS 与 Azure AD 联合，则 Windows 10 上的混合 Azure AD 加入依赖于 AD 中要同步到 Azure AD 的计算机对象。 确保包含需要加入混合 Azure AD 的计算机对象的任何组织单位 (OU) 都启用了 Azure AD Connect 同步配置中的同步。
 

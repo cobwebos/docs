@@ -6,13 +6,14 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 6/08/2018
 ms.author: nepeters
-ms.openlocfilehash: 3152dc69bc8fb9a94111f85976e5d999c4b18261
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 79236ae7134a27b9a5b89ee8151803befa7b51e1
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260784"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -48,7 +49,7 @@ Azure 可将安全修补程序在夜间自动应用于群集。 但是，你有�
 
 ## <a name="when-will-acs-be-deprecated"></a>何时弃用 ACS？
 
-ACS 将弃用围绕 AKS 变得提供 GA 版。 必须将群集迁移到 AKS 该日期后的 12 个月。 在 12 个月期间，可以运行所有 ACS 操作。
+ACS 将在 AKS 变为 GA 时遭弃用。 必须将群集迁移到 AKS 该日期后的 12 个月。 在 12 个月期间，可以运行所有 ACS 操作。
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS 是否支持节点自动缩放？
 
@@ -72,9 +73,13 @@ ACS 将弃用围绕 AKS 变得提供 GA 版。 必须将群集迁移到 AKS 该�
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>为什么使用 AKS 创建两个资源组？
 
-每个 AKS 部署都跨越两个资源组。 第一个由你创建，且仅包含 AKS 资源。 AKS 资源提供程序在部署期间将自动创建第二个资源组，且名称类似于 MC_myResourceGRoup_myAKSCluster_eastus。 第二个资源组包含与该群集相关联的所有基础结构资源，例如 VM、网络和存储。 创建第二个资源组可简化资源清理。
+每个 AKS 部署都跨越两个资源组。 第一个由你创建，且仅包含 AKS 资源。 AKS 资源提供程序在部署期间自动创建第二个资源组，命名类似于 MC_myResourceGroup_myAKSCluster_eastus。 第二个资源组包含与该群集相关联的所有基础结构资源，例如 VM、网络和存储。 创建第二个资源组可简化资源清理。
 
 如果要创建将与你的 AKS 群集配合使用的资源，例如存储帐户或保留公共 IP 地址，应将它们放在自动生成的资源组中。
+
+## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服务级别协议？
+
+在服务级别协议 (SLA) 中，提供商同意因未达到发布的服务级别向客户偿还服务费用。 由于 AKS 本身是免费的，没有费用需要偿还，因此也就没有正式的 SLA。 不过，我们会设法将 Kubernetes API 服务器的可用性维持在不小于 99.5% 的水平上。
 
 <!-- LINKS - external -->
 [auto-scaler]: https://github.com/kubernetes/autoscaler

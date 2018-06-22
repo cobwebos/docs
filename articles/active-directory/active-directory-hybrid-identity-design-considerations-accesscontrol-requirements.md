@@ -1,25 +1,27 @@
 ---
-title: "混合标识设计访问控制要求 Azure | Microsoft Docs"
-description: "介绍标识的重要组成部分，确定混合环境中用户对资源的访问权限的要求。"
-documentationcenter: 
+title: 混合标识设计访问控制要求 Azure | Microsoft Docs
+description: 介绍标识的重要组成部分，确定混合环境中用户对资源的访问权限的要求。
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e3b3b984-0d15-4654-93be-a396324b9f5e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 161820e69b0c9d0dc376a62cecceb9cc5e83c8ce
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 3a61e7ab4c738f6cba17bcc74c3bfd335378ab83
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801212"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的访问控制要求
 组织在设计混合标识解决方案时，也可以借机评审正在规划中的、用户对资源的访问权限要求。 数据访问权限涉及到标识的所有四个重要组成部分：
@@ -41,7 +43,7 @@ ms.lasthandoff: 01/18/2018
 
 * 组织是否只验证和授权位于其标识管理系统中的用户？
   * 是否针对 B2B 方案制定了任何计划？
-  * 如果是，是否知道要使用哪些协议（SAML、OAuth、Kerberos、令牌或证书）来连接这两家企业？
+  * 如果是，是否知道要使用哪些协议（SAML、OAuth、Kerberos 或证书）来连接这两家企业？
 * 要采用的混合标识解决方案是否支持这些协议？
 
 另一个要考虑的要点是用户与合作伙伴要使用的身份验证存储库位于何处，以及要使用哪种管理模型。 请考虑以下两个核心选项：

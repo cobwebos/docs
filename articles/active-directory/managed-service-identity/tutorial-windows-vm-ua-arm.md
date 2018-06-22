@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: b81d4b669898a7acc428fe22a070ccd76dc5e546
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 57455c5abf8c566f3935ece73d0b7470863936f8
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33932457"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699143"
 ---
-# <a name="use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>使用 Windows VM 上用户分配的托管服务标识 (MSI) 访问 Azure 资源管理器
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管服务标识 (MSI) 访问 Azure 资源管理器
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -80,8 +80,7 @@ New-AzureRmVm `
 
 用户分配的标识是作为独立的 Azure 资源创建的。 使用 [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity)，Azure 可在你的 Azure AD 租户中创建可分配给一个或多个 Azure 服务实例的标识。
 
-> [!IMPORTANT]
-> 创建用户分配标识时仅支持字母数字和连字符（0-9 或 a-z 或 A-Z 或 -）字符。 另外，分配给 VM/VMSS 的名称长度应限制为 24 个字符，否则它无法正常工作。 请关注后续更新。 有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
@@ -172,4 +171,7 @@ CanDelegate: False
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 MSI 的概述，请参阅[托管服务标识概述](overview.md)。
+在本教程中，你学习了如何创建用户分配标识并将其附加到 Azure 虚拟机，以访问 Azure 资源管理器 API。  若要详细了解 Azure 资源管理器，请参阅：
+
+> [!div class="nextstepaction"]
+>[Azure 资源管理器](/azure/azure-resource-manager/resource-group-overview)

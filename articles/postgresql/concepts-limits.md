@@ -8,41 +8,33 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 06/04/2018
+ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757410"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的限制
 下列各部分介绍数据库服务中的容量和功能限制。
 
-## <a name="pricing-tier-maximums"></a>定价层最大值
-创建服务器时，Azure Database for PostgreSQL 中提供了多个可供选择的定价层。 有关详细信息，请参阅 [Azure Database for PostgreSQL 中的定价层](concepts-pricing-tiers.md)。  
+## <a name="maximum-connections"></a>最大连接数
+每个定价层和 vCore 的连接最大数如下所示： 
 
-每个定价层中的连接数、计算单位和存储均有最大值限制，如下所示： 
-
-|定价层| 计算代| vCore| 最大连接数 |
-|---|---|---|---|
-|基本| 第 4 代| 1| 50 |
-|基本| 第 4 代| 2| 100 |
-|基本| 第 5 代| 1| 50 |
-|基本| 第 5 代| 2| 100 |
-|常规用途| 第 4 代| 2| 150|
-|常规用途| 第 4 代| 4| 250|
-|常规用途| 第 4 代| 8| 480|
-|常规用途| 第 4 代| 16| 950|
-|常规用途| 第 4 代| 32| 1500|
-|常规用途| 第 5 代| 2| 150|
-|常规用途| 第 5 代| 4| 250|
-|常规用途| 第 5 代| 8| 480|
-|常规用途| 第 5 代| 16| 950|
-|常规用途| 第 5 代| 32| 1500|
-|内存优化| 第 5 代| 2| 150|
-|内存优化| 第 5 代| 4| 250|
-|内存优化| 第 5 代| 8| 480|
-|内存优化| 第 5 代| 16| 950|
+|**定价层**| **vCore(s)**| 最大连接数 |
+|---|---|---|
+|基本| 1| 50 |
+|基本| 2| 100 |
+|常规用途| 2| 150|
+|常规用途| 4| 250|
+|常规用途| 8| 480|
+|常规用途| 16| 950|
+|常规用途| 32| 1500|
+|内存优化| 2| 150|
+|内存优化| 4| 250|
+|内存优化| 8| 480|
+|内存优化| 16| 950|
 
 当连接数超出限制时，可能会收到以下错误：
 > 严重：很抱歉，客户端数过多

@@ -1,25 +1,22 @@
 ---
-title: 在逻辑应用中添加 Office 365 用户连接器 | Microsoft Docs
-description: 使用 REST API 参数的 Office 365 用户连接器概述
-services: ''
-documentationcenter: ''
+title: 连接到 Office 365 用户 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Office 365 用户 REST API 和 Azure 逻辑应用管理用户配置文件
 author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: b2146481-9105-4f56-b4c2-7ae340cb922f
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: jeconnoc
+ms.author: estfan
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 3d281bcb8e1d0ba4d1eb0b636bdd618340399898
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: f030ac07dc1615c435c1a110836d7a03ab8a8546
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295602"
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Office 365 用户连接器入门
 连接到 Office 365 用户，获取配置文件、搜索用户等。 通过 Office 365 用户，可以：

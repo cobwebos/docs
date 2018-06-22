@@ -1,30 +1,32 @@
 ---
-title: "混合标识设计 - 管理任务 Azure | Microsoft Docs"
-description: "借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。"
-documentationcenter: 
+title: 混合标识设计 - 管理任务 Azure | Microsoft Docs
+description: 借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 65f80aea-0426-4072-83e1-faf5b76df034
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: ed683f1b96172b71cc3dfae2511607e50071739f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5fcb229690827c7bd508aa0d27dd68b169b4e25e
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801320"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>规划混合标识生命周期
 标识是企业移动性和应用程序访问策略的基石之一。 无论登录移动设备还是 SaaS 应用，标识都是能否进行访问的关键所在。 从最高层面讲，标识管理解决方案涉及到存储库的统合与同步，其中又包含预配资源过程的自动化和集中化。 标识解决方案应为跨本地与云的集中式标识功能，且应使用某种形式的标识联合，以维护集中式身份验证，安全地与外部用户和企业进行共享和协作。 资源的范围涵盖操作系统和应用程序，乃至组织中或隶属于组织的人员。 组织结构可以改变，以适应预配策略和过程。
 
-为用户提供标识解决方案，使其体验自助式服务以提升能力从而保持生产力，这一点很重要。 标识解决方案如果能让用户在其需要访问的所有资源级别上进行的所有资源级别，将更加稳健。管理员可在各个级别上使用标准化过程来管理用户凭据。 根据预配管理解决方案的范围，可以减少或消除某些级别的管理。 此外，可以安全地在不同组织之间手动或自动分配管理功能。 例如，域管理员只能为该域中的人员和资源提供服务。 此用户可以执行管理和预配任务，但无权执行配置任务，例如创建工作流。
+为用户提供标识解决方案，使其体验自助式服务以提升能力从而保持生产力，这一点很重要。 如果标识解决方案能够跨用户需要访问的所有资源为用户启用单一登录，则它将更加可靠。 各级管理员均可使用标准化程序来管理用户凭据。 根据预配管理解决方案的范围，可以减少或消除某些级别的管理。 此外，可以安全地在不同组织之间手动或自动分配管理功能。 例如，域管理员只能为该域中的人员和资源提供服务。 此用户可以执行管理和预配任务，但无权执行配置任务，例如创建工作流。
 
 ## <a name="determine-hybrid-identity-management-tasks"></a>确定混合标识管理任务
 在组织中分配管理任务可以改善管理的精准度和效率，改善组织的工作负荷均衡性。 下面是定义稳健标识管理系统的要点。

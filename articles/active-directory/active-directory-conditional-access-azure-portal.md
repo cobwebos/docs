@@ -9,19 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2018
+ms.date: 06/08/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 19878b7fa023ecf0d9c2a62001a5ea93ca3eb6db
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 0730fbd2df6c2a0a8b8d0930c86709c0e3012002
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257727"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248714"
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
 
@@ -31,6 +32,7 @@ ms.locfileid: "34257727"
 ![控制](./media/active-directory-conditional-access-azure-portal/81.png)
 
 本文从概念上概述了 Azure AD 中的条件访问。
+
 
 
 ## <a name="common-scenarios"></a>常见方案
@@ -59,7 +61,7 @@ ms.locfileid: "34257727"
 
 ## <a name="conditional-access-policies"></a>条件访问策略
 
-条件访问策略是使用以下模式的访问方案的定义：
+条件访问策略定义了使用以下模式的访问方案：
 
 ![控制](./media/active-directory-conditional-access-azure-portal/10.png)
 
@@ -82,32 +84,8 @@ ms.locfileid: "34257727"
 
 使用基于策略的方法保护对云应用的访问的一个好处是，可使用本文中概述的结构起草环境的策略要求，而无需担心技术实现。 
 
-## <a name="what-you-need-to-know"></a>需要了解的事项
 
-### <a name="general-requirements-for-using-conditional-access"></a>使用条件访问的一般要求
-
-如果身份验证尝试来自以下位置，可以使用 Azure AD 条件访问来保护云应用：
-
-- Web 浏览器
-
-- 使用新式身份验证的客户端应用
-
-- Exchange ActiveSync
-
-有关详细信息，请参阅[客户端应用](active-directory-conditional-access-conditions.md#client-apps)。
-
-某些[云应用](active-directory-conditional-access-conditions.md#cloud-apps)还支持旧式身份验证协议。 例如，SharePoint Online 和 Exchange Online 就支持这些协议。 如果客户端应用可以使用旧式身份验证协议访问云应用，则 Azure AD 无法针对此访问尝试实施条件访问策略。 为了防止客户端应用绕过策略的实施，应该检查它是否能够做到只对受影响的云应用启用新式身份验证。
-
-条件访问不适用的客户端应用示例包括：
-
-- Office 2010 和更低版本
-
-- 未启用新式身份验证的 Office 2013
-
-有关详细信息，请参阅[为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online](active-directory-conditional-access-no-modern-authentication.md)。
-
-
-### <a name="license-requirements-for-using-conditional-access"></a>使用条件访问的许可证要求
+## <a name="license-requirements-for-using-conditional-access"></a>使用条件访问的许可证要求
 
 使用条件访问需要 Azure AD Premium 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
 

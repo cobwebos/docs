@@ -1,31 +1,25 @@
 ---
-title: "在用于 Visual Studio 的 Data Lake 工具中使用顶点执行视图 | Microsoft Docs"
-description: "了解如何使用顶点执行视图测试 Data Lake Analytics 作业。"
+title: 在用于 Visual Studio 的 Data Lake 工具中使用顶点执行视图
+description: 本文介绍如何使用顶点执行视图测试 Data Lake Analytics 作业。
 services: data-lake-analytics
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 10/13/2016
+author: mumian
 ms.author: jgao
-ms.openlocfilehash: b788e7bc8ded86ebd49cc0be73e5b4e1bcbeaba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
+ms.topic: conceptual
+ms.date: 10/13/2016
+ms.openlocfilehash: af15bb9fd1131f598dc87f13c4af481b63d023e3
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735435"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>在用于 Visual Studio 的 Data Lake 工具中使用顶点执行视图
 了解如何使用顶点执行视图测试 Data Lake Analytics 作业。
 
-## <a name="prerequisites"></a>先决条件
-
-需要基本了解如何使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本。  请参阅[教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
 
 ## <a name="open-the-vertex-execution-view"></a>打开顶点执行视图
 在用于 Visual Studio 的 Data Lake 工具中打开 U-SQL 作业。 在左下角单击“顶点执行视图”。 系统可能提示先加载配置文件，此操作可能需要一些时间，具体取决于网络连接状况。

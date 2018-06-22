@@ -1,21 +1,21 @@
 ---
-title: 自定义策略中的密码复杂性 - Azure AD B2C | Microsoft 文档
-description: 如何在自定义策略中配置密码复杂性要求
+title: Azure Active Directory B2C 中自定义策略的密码复杂性 | Microsoft Docs
+description: 如何在自定义策略中配置密码复杂性要求。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 9f8d576cbc5c2bb2fe4109086b04711422911390
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: B2C
+ms.openlocfilehash: 6ad205167477715713b58fe06a771c3e683f5c04
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712158"
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>在自定义策略中配置密码复杂性
 

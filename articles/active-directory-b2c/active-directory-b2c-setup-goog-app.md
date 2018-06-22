@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：Google+ 配置 | Microsoft Docs
+title: Azure Active Directory B2C 中的 Google+ 配置 | Microsoft Docs
 description: 在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Google+ 帐户的注册和登录功能。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: db3044754e0c1316b49eda0600d41e3009c1ba16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 5377e4b56bca09a1785d14bfe4c32de01e6db7d3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711359"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-google-accounts"></a>Azure Active Directory B2C：向用户提供使用 Google+ 帐户的注册和登录功能
 ## <a name="create-a-google-application"></a>创建 Google+ 应用程序

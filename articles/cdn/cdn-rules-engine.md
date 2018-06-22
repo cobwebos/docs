@@ -1,24 +1,25 @@
 ---
-title: "使用 Azure CDN 规则引擎重写 HTTP 行为 | Microsoft Docs"
-description: "规则引擎允许自定义 Azure CDN 如何处理 HTTP 请求，例如，阻止交付某些类型的内容、定义缓存策略以及修改 HTTP 标头。"
+title: 使用 Azure CDN 规则引擎重写 HTTP 行为 | Microsoft Docs
+description: 规则引擎允许自定义 Azure CDN 如何处理 HTTP 请求，例如，阻止交付某些类型的内容、定义缓存策略以及修改 HTTP 标头。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: akucer
-editor: 
+manager: cfowler
+editor: ''
 ms.assetid: 625a912b-91f2-485d-8991-128cc194ee71
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
-ms.author: mazha
-ms.openlocfilehash: fe3df703f7eb244a52756c4d015e9ea598224ce1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: df8114aaf5b4672ea51482978abde6f0ce724528
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261043"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>使用 Azure CDN 规则引擎重写 HTTP 行为
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -49,6 +50,7 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
     ![CDN 配置文件管理按钮](./media/cdn-rules-engine/cdn-manage-btn.png)
    
     CDN 管理门户打开。
+
 2. 选择“HTTP 大型”选项卡，然后选择“规则引擎”。
    
     将显示新规则的选项。
@@ -58,7 +60,9 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
    > [!IMPORTANT]
    > 多个规则的列出顺序会影响处理它们的方式。 后一个规则可能会覆盖前一个规则所指定的操作。
    > 
+
 3. 在“**名称/描述**”文本框中输入一个名称。
+
 4. 标识该规则适用的请求类型。 使用默认的匹配条件：**始终**。 
    
    ![CDN 规则匹配条件](./media/cdn-rules-engine/cdn-request-type.png)
@@ -71,7 +75,8 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
    > 有关匹配条件的详细列表，请参阅[规则引擎匹配条件](cdn-rules-engine-reference-match-conditions.md)。
    > 
    > 
-1. 若要添加新功能，请选择“功能”旁边的 **+** 按钮。  在左侧的下拉列表中，选择“**强制内部最长时间**”。  在显示的文本框中，输入 **300**。 不要更改剩余的默认值。
+
+5. 若要添加新功能，请选择“功能”旁边的 **+** 按钮。  在左侧的下拉列表中，选择“**强制内部最长时间**”。  在显示的文本框中，输入 **300**。 不要更改剩余的默认值。
    
    ![CDN 规则功能](./media/cdn-rules-engine/cdn-new-feature.png)
    
@@ -83,10 +88,11 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
    > 有关功能的详细列表，请参阅[规则引擎功能](cdn-rules-engine-reference-features.md)。
    > 
    > 
-1. 单击“**添加**”按钮保存新规则。  新规则现在正在等待批准。 获得批准后，状态将从“挂起的 XML”更改为“活动 XML”。
+
+6. 选择“添加”，以保存新规则。  新规则现在正在等待批准。 获得批准后，状态将从“挂起的 XML”更改为“活动 XML”。
    
    > [!IMPORTANT]
-   > 规则的更改可能最多需要 90 分钟才能传播到整个 CDN。
+   > 规则更改最多可能需要 10 分钟，才能在整个 Azure CDN 中传播。
    > 
    > 
 

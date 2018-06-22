@@ -1,26 +1,23 @@
 ---
 title: 部署远程监视解决方案 - Azure | Microsoft Docs
 description: 本教程演示如何从 azureiotsuite.com 预配远程监视解决方案加速器。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 8738fbfc29f6776a091cdc2b872eab88abd195cd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 42f6afcd3cb6880ba6c9cdd2a51e2a3e9ff2c2d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626847"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator"></a>部署远程监视解决方案加速器
 
-本教程演示如何预配远程监视解决方案加速器。 从 azureiotsuite.com 部署解决方案。还可以使用 CLI 部署解决方案，若要了解此选项，请参阅[从命令行部署解决方案加速器](iot-accelerators-remote-monitoring-deploy-cli.md)。
+本教程演示如何预配远程监视解决方案加速器。 从 azureiotsuite.com 部署解决方案。 还可以使用 CLI 部署解决方案，若要了解此选项，请参阅[从命令行部署解决方案加速器](iot-accelerators-remote-monitoring-deploy-cli.md)。
 
 本教程介绍如何执行下列操作：
 
@@ -45,7 +42,7 @@ ms.lasthandoff: 05/20/2018
 
     ![选择远程监视](./media/iot-accelerators-remote-monitoring-deploy/remotemonitoring.png)
 
-1. 在“创建远程监视解决方案”页上，为远程监视解决方案加速器输入**解决方案名称**。
+1. 在“创建远程监视解决方案”页上，为远程监视解决方案加速器输入一个解决方案名称。
 
 1. 选择“基本”或“标准”部署。 如果部署解决方案的目的是要了解其工作原理或运行演示，请选择“基本”选项，使成本降到最低。
 
@@ -69,7 +66,7 @@ ms.lasthandoff: 05/20/2018
 
     ![选择新的解决方案](./media/iot-accelerators-remote-monitoring-deploy/choosenew.png)
 
-1. 可以在显示的面板中查看有关远程监视解决方案的信息。 选择“解决方案仪表板”连接到远程监视解决方案。
+1. 可以在显示的面板中查看有关远程监视解决方案的信息。 选择“解决方案仪表板”以连接到远程监视解决方案。
 
     > [!NOTE]
     > 使用完远程监视解决方案后，可以将其从此面板中删除。

@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 44777946fdc829da222ffdd67dfecfa3bf240be7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2eefabcc0484fca0e6e3ad1dd5037684a759d010
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850440"
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Azure 流分析故障排除指南
 
@@ -41,6 +42,7 @@ Azure 流分析故障排除可能看上去是一项复杂的工作。 经过我�
 
 5.  避免常犯的错误，例如：
     - 查询中的一个 [WHERE](https://msdn.microsoft.com/library/azure/dn835048.aspx) 子句筛选掉了所有事件，从而阻止生成输出。
+    - [CAST](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) 函数失败，导致作业失败。 为了避免类型强制转换失败，请改用 [TRY_CAST](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics)。
     - 使用窗口函数时，请等待整个窗口持续时间完成，以查看查询中的输出。
     - 事件的时间戳要先于作业开始时间，因此事件会被删除。
 

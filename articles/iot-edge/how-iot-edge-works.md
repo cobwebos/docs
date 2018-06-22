@@ -1,25 +1,20 @@
 ---
 title: 什么是 Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge 服务概述
-services: iot-Edge
-documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: chipalost
-ms.assetid: ''
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.reviewer: chipalost
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.custom: ''
-ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 52956e9888d67e0502a9ea82657acb9728216111
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630691"
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>什么是 Azure IoT Edge - 预览
 
@@ -69,7 +64,7 @@ Azure IoT Edge 运行时在各种 IoT 设备上运行，因此可以通过各种
 
 管理企业设备的软件生命周期很复杂。 管理数百万台异源 IoT 设备的软件生命周期则更为困难。 必须针对特定类型的设备创建和配置工作负荷，然后将其大规模部署到解决方案中的数百万台设备，最后再进行监视，捕获行为异常的设备。 这些活动不能逐个设备地来完成，必须大规模地进行操作。
 
-Azure IoT Edge 与 Azure IoT 套件无缝集成，提供一个符合解决方案需要的控制平面。 云服务允许用户：
+Azure IoT Edge 与 Azure IoT 解决方案加速器无缝集成，提供一个符合解决方案需要的控制平面。 云服务允许用户：
 
 * 创建和配置在特定类型的设备上运行的工作负荷。
 * 将工作负荷发送到一组设备。

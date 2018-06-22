@@ -1,25 +1,22 @@
 ---
-title: "在逻辑应用中添加 DB2 连接器 | Microsoft Docs"
-description: "使用 REST API 参数的 DB2 连接器概述"
-services: 
-documentationcenter: 
+title: 连接到 DB2 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 DB2 REST API 和 Azure 逻辑应用管理资源
 author: gplarsen
-manager: erikre
-editor: 
-tags: connectors
-ms.assetid: 1c6b010c-beee-496d-943a-a99e168c99aa
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: jeconnoc
+ms.author: plarsen
 ms.date: 09/26/2016
-ms.author: plarsen; ladocs
-ms.openlocfilehash: 7ad246ede7e891de42235443c1bc6a90b88ad5ac
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, estfan
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 507bc48b6b775d6a6fb5f855210d33520e187a74
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295085"
 ---
 # <a name="get-started-with-the-db2-connector"></a>DB2 连接器入门
 Microsoft DB2 连接器可将逻辑应用连接到在 IBM DB2 数据库中存储的资源。 此连接器包括要在 TCP/IP 网络上与远程 DB2 服务器计算机通信的 Microsoft 客户端。 这包括云数据库（如在 Azure 虚拟化中运行的 Windows IBM Bluemix dashDB 或 IBM DB2）和使用本地数据网关的本地数据库。 请参阅 IBM DB2 平台和版本（在本主题中）的[受支持列表](connectors-create-api-db2.md#supported-db2-platforms-and-versions)。

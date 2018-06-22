@@ -1,25 +1,19 @@
 ---
 title: 连接的工厂解决方案常见问题解答 - Azure | Microsoft Docs
 description: 连接的工厂解决方案加速器的常见问题解答
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 4ed0cd413480e717e686f7e52123102e1a838f19
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627495"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
@@ -67,7 +61,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 只有使用[存储库](https://github.com/Azure/azure-iot-connected-factory)中的 PowerShell 脚本 `build.ps1` 部署解决方案才支持登录到模拟 VM。
 
-如果从 www.azureiotsuite.com 部署解决方案，则无法登录到 VM。 无法登录，因为密码随机生成且无法重置。
+如果从 www.azureiotsolutions.com 部署解决方案，则无法登录到 VM。 无法登录，因为密码随机生成且无法重置。
 
 1. 将公共 IP 地址添加到 VM。 请参阅[如何将公共 IP 地址添加到模拟 VM？](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
 1. 使用 VM IP 地址创建 VM 的 SSH 会话。
@@ -148,11 +142,11 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 若要在连接的工厂解决方案中启用互动地图，必须具有现有的“适用于企业的必应地图 API”计划。
 
-从 [www.azureiotsuite.com](http://www.azureiotsuite.com) 进行部署时，部署过程会验证你的订阅是否已启用“适用于企业的必应地图 API”计划，然后自动将互动地图部署到连接的工厂中。 如果未启用，仍然可以在部署中启用互动地图，如下所示：
+从 [www.azureiotsolutions.com](http://www.azureiotsolutions.com) 进行部署时，部署过程会验证你的订阅是否已启用“适用于企业的必应地图 API”计划，然后自动将互动地图部署到连接的工厂中。 如果未启用，仍然可以在部署中启用互动地图，如下所示：
 
 在连接的工厂 GitHub 存储库中，当使用 `build.ps1` 脚本进行部署并且有“适用于企业的必应地图 API”计划时，请将生成窗口中的环境变量 `$env:MapApiQueryKey` 设置为计划的查询密钥。 互动地图随后会自动启用。
 
-如果没有“适用于企业的必应地图 API”计划，则可以从 [www.azureiotsuite.com](http://www.azureiotsuite.com) 或使用 `build.ps1` 脚本部署连接的工厂解决方案。 然后按照[如何创建“适用于企业的必应地图 API”帐户？](#how-do-i-create-a-bing-maps-api-for-enterprise-account)所述将“适用于企业的必应地图 API”计划添加到订阅中。 按照[如何获取“适用于企业的必应地图 API”查询密钥](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)中所述查找此帐户的查询密钥，然后保存此密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用设置”部分。 将 MapApiQueryKey 设置为你获取的查询密钥。 保存设置，然后导航到“概述”并重新启动应用服务。
+如果没有“适用于企业的必应地图 API”计划，则可以从 [www.azureiotsolutions.com](http://www.azureiotsolutions.com) 或使用 `build.ps1` 脚本部署连接的工厂解决方案。 然后按照[如何创建“适用于企业的必应地图 API”帐户？](#how-do-i-create-a-bing-maps-api-for-enterprise-account)所述将“适用于企业的必应地图 API”计划添加到订阅中。 按照[如何获取“适用于企业的必应地图 API”查询密钥](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)中所述查找此帐户的查询密钥，然后保存此密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用设置”部分。 将 MapApiQueryKey 设置为你获取的查询密钥。 保存设置，然后导航到“概述”并重新启动应用服务。
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>如何创建“适用于企业的必应地图 API”帐户
 
@@ -212,6 +206,6 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
-* [预测性维护解决方案加速器概述](../iot-suite/iot-suite-predictive-overview.md)
+* [预测性维护解决方案加速器概述](iot-accelerators-predictive-overview.md)
 * [连接工厂解决方案加速器概述](iot-accelerators-connected-factory-overview.md)
-* [从头保障 IoT 的安全](../iot-suite/securing-iot-ground-up.md)
+* [从头保障 IoT 的安全](securing-iot-ground-up.md)

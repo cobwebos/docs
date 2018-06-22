@@ -17,11 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: d9936da3ee1b0cfb4ee6e834a838798a35140620
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 25660eef50a0a18d4f404944daeb443133424897
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261145"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
@@ -79,7 +80,7 @@ ms.lasthandoff: 03/23/2018
 **潜在问题**：如果管理员配置 Active Directory 联合身份验证服务多重身份验证条件访问策略，且设备上的访问令牌过期，那么同步可能会失败。 确保使用 Microsoft Passport for Work PIN 进行登录和注销，或在访问其他 Azure 服务（如 Office 365）时完成多重身份验证。
 
 ### <a name="event-viewer"></a>事件查看器
-要进行高级故障排除，可以使用事件查看器查找特定的错误。 下表中介绍了如何查找。 在事件查看器的“应用程序和服务日志”>“Microsoft” > “Windows” > “SettingSync”下面可以查找事件；在“Microsoft” > “Windows” > “Azure AD”下面可以查找同步标识相关的问题。
+要进行高级故障排除，可以使用事件查看器查找特定的错误。 下表中介绍了如何查找。 依次转到“事件查看器”>“应用程序和服务日志”>“Microsoft” > “Windows” > “SettingSync”下面可以查看事件；对于与标识相关的问题，依次同步转到“Microsoft” > “Windows” > “AAD”。
 
 
 ## <a name="known-issues"></a>已知问题

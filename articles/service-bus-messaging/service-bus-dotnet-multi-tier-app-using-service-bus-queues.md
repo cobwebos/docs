@@ -1,24 +1,21 @@
 ---
-title: "使用 Azure 服务总线的 .NET 多层应用程序 | Microsoft 文档"
-description: "本 .NET 教程可帮助你在 Azure 中开发使用服务总线队列在各层之间进行通信的多层应用。"
+title: 使用 Azure 服务总线的 .NET 多层应用程序 | Microsoft 文档
+description: 本 .NET 教程可帮助你在 Azure 中开发使用服务总线队列在各层之间进行通信的多层应用。
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 1b8608ca-aa5a-4700-b400-54d65b02615c
 ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: 667efced715b904234bd2b941453ed27e9ef1c42
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 34b647c0405e4d0997eca12758c10b60cf862a5f
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809448"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -58,25 +55,19 @@ ms.lasthandoff: 01/19/2018
 
 以下各节讨论了实现此体系结构的代码。
 
-## <a name="set-up-the-development-environment"></a>设置开发环境
-在开始开发 Azure 应用程序之前，需要获取工具并设置开发环境。
-
-1. 从 SDK [下载页](https://azure.microsoft.com/downloads/)安装用于 .NET 的 Azure SDK。
-2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤适用于 Visual Studio 2015，但也适用于 Visual Studio 2017。
-3. 当提示是要运行还是保存安装程序时，单击“运行”。
-4. 在“Web 平台安装程序”中，单击“安装”，并继续安装。
-5. 安装完成后，就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
-
 ## <a name="create-a-namespace"></a>创建命名空间
-下一步是创建命名空间并获取该命名空间的[共享访问签名 (SAS) 密钥](service-bus-sas.md)。 命名空间为每个通过服务总线公开的应用程序提供应用程序边界。 创建命名空间后，系统将生成一个 SAS 密钥。 命名空间名称与 SAS 密钥的组合为服务总线提供了用于验证应用程序访问权限的凭据。
+
+第一步是创建命名空间并获取该命名空间的[共享访问签名 (SAS) 密钥](service-bus-sas.md)。 命名空间为每个通过服务总线公开的应用程序提供应用程序边界。 创建命名空间后，系统将生成一个 SAS 密钥。 命名空间名称与 SAS 密钥的组合为服务总线提供了用于验证应用程序访问权限的凭据。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-web-role"></a>创建 Web 角色
+
 在本部分中，会生成应用程序的前端。 首先，将创建应用程序显示的各种页面。
 之后，将添加代码，以便将项目提交到服务总线队列并显示有关队列的状态信息。
 
 ### <a name="create-the-project"></a>创建项目
+
 1. 使用管理员特权启动 Visual Studio：右键单击“Visual Studio”程序图标，并单击“以管理员身份运行”。 Azure 计算模拟器（本文后面会讨论）要求使用管理员权限启动 Visual Studio。
    
    在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。

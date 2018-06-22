@@ -4,7 +4,7 @@ description: 有关为 Azure Log Analytics 部署 Cloud Foundry Loggregator Nozz
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: b900a42196eedab89af8e55d71a336ed7adc45a4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 687356b60ad0bbc469d67e071ce3bccc8b61ebd7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608995"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
@@ -55,11 +56,11 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3.在 Azure 中创建 Log Analytics 工作区
 
-可以手动或使用模板创建 Log Analytics 工作区。 完成 Nozzle 部署后，加载预配置的 OMS 视图和警报。
+可以手动或使用模板创建 Log Analytics 工作区。 该模板将部署预配置的 OMS KPI 视图和 OMS 控制台警报设置。 
 
-手动创建工作区：
+#### <a name="to-create-the-workspace-manually"></a>手动创建工作区：
 
-1. 在 Azure 门户中，在 Azure Marketplace 中搜索服务列表，再选择“Log Analytics”。
+1. 在 Azure 门户中，在 Azure 市场中搜索服务列表，再选择“Log Analytics”。
 2. 选择“创建”，然后为以下各项选择选项：
 
    * **OMS 工作区**：键入工作区的名称。
@@ -70,7 +71,22 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 有关详细信息，请参阅 [Log Analytics 入门](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
 
-或者，可以通过 OMS 模板创建 Log Analytics 工作区。 使用此方法时，模板会自动加载预配置的 OMS 视图和警报。 有关详细信息，请参阅 [Cloud Foundry 的 Azure Log Analytics 解决方案](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution)。
+#### <a name="to-create-the-oms-workspace-through-the-oms-monitoring-template-from-azure-market-place"></a>若要通过 Azure 市场中的 OMS 监测模板创建 OMS 工作区：
+
+1. 打开 Azure 门户。
+2. 单击“+”号，或单击左上角的“创建资源”。
+3. 在搜索窗口中键入“Cloud Foundry”，选择“OMS Cloud Foundry 监视解决方案”。
+4. 将加载 OMS Cloud Foundry 监视解决方案模板前页，单击“创建”以启动模板边栏选项卡。
+5. 输入所需的参数：
+    * 订阅：选择 OMS 工作区的 Azure 订阅，通常与 Cloud Foundry 部署相同。
+    * 资源组：选择现有资源组或为 OMS 工作区创建新资源组。
+    * 资源组位置：选择资源组的位置。
+    * OMS_Workspace_Name：输入工作区名称，如果工作区不存在，该模板将创建一个新的工作区。
+    * OMS_Workspace_Region：选择工作区的位置。
+    * **OMS_Workspace_Pricing_Tier**：选择 OMS 工作区 SKU。 有关参考信息，请参阅[定价指南](https://azure.microsoft.com/pricing/details/log-analytics/)。
+    * 法律条款：单击法律条款，然后单击“创建”以接受法律条款。
+- 指定所有参数后，单击“创建”来部署模板。 完成部署后，状态将显示在通知选项卡处。
+
 
 ## <a name="deploy-the-nozzle"></a>部署 Nozzle
 
@@ -78,9 +94,9 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 ### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>将 Nozzle 部署为 PCF Ops Manager 磁贴
 
-如果已通过 Ops Manager 部署了 PCF，请遵循[安装并配置适用于 PCF 的 Nozzle](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html) 中的步骤。 Nozzle 将安装为 Ops Manager 中的磁贴。
+请按照[安装和配置 PCF Azure Log Analytics Nozzle](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html) 中的步骤操作。这是一种简化的方法，将自动配置 PCF Ops Manager 磁贴并推送 Nozzle。 
 
-### <a name="deploy-the-nozzle-as-a-cf-application"></a>将 Nozzle 部署为 CF 应用程序
+### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>将 Nozzle 手动部署为 CF 应用程序
 
 如果不使用 PCF Ops Manager，可将 Nozzle 部署为应用程序。 以下部分将介绍此过程。
 
@@ -163,6 +179,10 @@ cf apps
 
 ## <a name="view-the-data-in-the-oms-portal"></a>在 OMS 门户中查看数据
 
+如果已通过市场模板部署了 OMS 监视解决方案，请转到 Azure 门户，并找到 OMS 解决方案。 可以在模板中指定的资源组中找到解决方案。 单击该解决方案，浏览到“OMS 控制台”，将列出预配置的视图，顶部为 Cloud Foundry 系统 KPI、应用程序数据、警报和 VM 运行状况指标。 
+
+如果已手动创建 OMS 工作区，请执行以下步骤来创建视图和警报：
+
 ### <a name="1-import-the-oms-view"></a>1.导入 OMS 视图
 
 在 OMS 门户中，浏览到“视图设计器” > “导入” > “浏览”，选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。 此时，“概述”页上会显示一个磁贴。 选择此磁贴可查看可视化的指标。
@@ -226,6 +246,6 @@ Azure Log Analytics Nozzle 是开放源代码。 若有问题和反馈，请发�
 
 ## <a name="next-step"></a>后续步骤
 
-除了 Nozzle 涵盖的 Cloud Foundry 指标之外，还可以使用 OMS 代理获取有关 VM 级操作数据（例如 Syslog、性能、警报和清单）的见解。 OMS 代理可作为 Bosh 加载项安装到 CF VM 中。
+自 PCF2.0 起，VM 性能指标将由系统指标转发器传输至 Azure Log Analytics Nozzle，并集成到 OMS 工作区。 你不再需要 OMS 代理来获取 VM 性能指标。 但仍然可以使用 OMS 代理来收集 Syslog 信息。 OMS 代理可作为 Bosh 加载项安装到 CF VM 中。 
 
 有关详细信息，请参阅[将 OMS 代理部署到 Cloud Foundry 部署](https://github.com/Azure/oms-agent-for-linux-boshrelease)。

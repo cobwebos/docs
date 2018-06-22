@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/25/2018
 ms.author: sachins
-ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625332"
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>使用 Azure Data Lake Store 的最佳做法
 本文介绍 Azure Data Lake Store 使用方面的最佳做法和注意事项。 本文介绍 Data Lake Store 的安全性、性能、复原和监视。 在 Data Lake Store 出现之前，在 Azure HDInsight 之类的服务中使用真正大型的数据是很复杂的事情。 必须将数据在多个 Blob 存储帐户中分片，才能实现 PB 级的存储以及在该规模下的性能优化。 使用 Data Lake Store 时，大部分针对大小和性能的硬性限制都会去除。 但是，若要充分利用 Data Lake Store 的性能，仍有一些需要本文讨论的注意事项。 
@@ -65,9 +66,9 @@ Data Lake Store 最强大的一项功能是去除了对数据吞吐量的硬性�
 * 加快复制速度
 * 减少更新 Data Lake Store POSIX 权限时需要处理的文件数 
 
-可以考虑将文件大小设置为 256 MB 到 1 GB 的范围，最好是不要低于 100 MB 或超出 2 GB，具体取决于哪些服务和工作负荷在使用数据。 如果文件无法在放置到 Data Lake Store 中时合并，可以通过单独的压缩作业将这些文件组合成较大的文件。 有关 Data Lake Store 中文件大小和数据组织的详细信息和建议，请参阅[调整数据集结构](data-lake-store-performance-tuning-guidance.md#structure-your-data-set)。 
+具体取决于哪些服务和工作负载正在使用数据，文件的大小最好为 256 MB 或更大。 如果文件无法在放置到 Data Lake Store 中时合并，可以通过单独的压缩作业将这些文件组合成较大的文件。 有关 Data Lake Store 中文件大小和数据组织的详细信息和建议，请参阅[调整数据集结构](data-lake-store-performance-tuning-guidance.md#structure-your-data-set)。
 
-### <a name="large-file-sizes-and-potential-performance-impact"></a>大文件及其可能的性能影响 
+### <a name="large-file-sizes-and-potential-performance-impact"></a>大文件及其可能的性能影响
 
 虽然 Data Lake Store 支持大文件（最大可以达 PB 级），但考虑到性能优化以及数据读取过程，最好不要让文件的平均大小超出 2 GB。 例如，使用 **Distcp** 在不同位置或存储帐户之间复制数据时，会根据文件（最小粒度级别）来确定映射任务。 因此，如果复制 10 个文件，每个文件的大小为 1 TB，则最多可以分配 10 个映射器。 另外，如果有许多分配了映射器的文件，这些映射器一开始会通过并行工作来移动大文件。 但是，随着作业的进行，处于已分配状态的映射器越来越少，最终出现只有一个映射器分配到一个大文件的情况。 Microsoft 已提交了对 Distcp 的改进，将在未来的 Hadoop 版本中解决此问题。  
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: d3e43d3484d321c93b4ac3b0e2b947b69af5d2c6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 30409794807618f082cf98de14e374d97a9b4519
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869948"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592871"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -73,6 +73,8 @@ ms.locfileid: "33869948"
 | 一天中阻止用户尝试密码重置的次数太多。 | 我们实施了一种自动扼制机制来阻止用户在短时间内过多地尝试重置其密码。 如果存在以下情况，将发生限制： <br><ul><li>用户在一小时内 5 次尝试验证某个电话号码。</li><li>用户在一小时内 5 次尝试使用安全问题入口。</li><li>用户在一小时内 5 次尝试为同一用户帐户重置密码。</li></ul>若要解决此问题，请指示用户在最后一次尝试后等待 24 小时。 然后用户即可重置其密码。 |
 | 用户在验证其电话号码时看到了一个错误。 | 当输入的电话号码与文件上的电话号码不匹配时，将发生此错误。 当尝试使用基于电话的方法进行密码重置时，请确保用户输入了完整的电话号码（包括区域和国家/地区代码）。 |
 | 处理请求时出错。 | 许多问题都可能会导致此错误，但此错误通常是由服务中断或者配置问题导致的。 如果看到了此错误并且它影响了业务，请与 Microsoft 支持人员联系，以获得更多的帮助。 |
+| 本地策略冲突 | 该密码不符合本地 Active Directory 密码策略。 |
+| 密码不符合模糊策略 | 已使用的密码显示在禁止密码列表中，且可能无法使用。 |
 
 ## <a name="troubleshoot-password-writeback"></a>排查密码写回问题
 
@@ -83,9 +85,9 @@ ms.locfileid: "33869948"
 | 在 Azure AD Connect 安装过程的最后一步，看到了一个错误，它指出无法配置密码写回。 <br> <br> Azure AD Connect 应用程序事件日志包含错误 32009，其文本为“获取身份验证令牌时出错”。 | 在以下两种情况下会发生此错误： <br><ul><li>为在 Azure AD Connect 安装过程开始时指定的全局管理员帐户指定了错误的密码。</li><li>试图将联合用户用于在 Azure AD Connect 安装过程开始时指定的全局管理员帐户。</li></ul> 若要解决此问题，请确保未将联合帐户用于在安装过程开始时指定的全局管理员帐户。 另请确保指定的密码正确。 |
 | Azure AD Connect 计算机事件日志包含运行 PasswordResetService 时引发的错误 32002。 <br> <br> 错误如下：“连接到 ServiceBus 出错。 令牌提供程序无法提供安全令牌。” | 本地环境无法连接到云中的 Azure 服务总线终结点。 此错误是由于防火墙规则阻止了到特定端口或 web 地址的出站连接导致的。 有关详细信息，请参阅[连接先决条件](./../connect/active-directory-aadconnect-prerequisites.md)。 在更新这些规则后，重新启动 Azure AD Connect 计算机，密码写回应当会再次开始工作。 |
 | 工作一段时间后，联合身份验证、直通身份验证或密码哈希同步的用户无法重置其密码。 | 在某些极少见的情况下，当 Azure AD Connect 已重启时，密码写回服务可能无法重启。 在这些情况下，首先，请检查是否已在本地启用了密码写回。 可以使用 Azure AD Connect 向导或 PowerShell 执行检查（请参阅上面的“操作说明”部分）。 如果此功能显示为已启用，请尝试通过 UI 或 PowerShell 再次启用或禁用此功能。 如果这不起作用，请尝试完全卸载并重新安装 Azure AD Connect。 |
-| 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在尝试提交密码后看到错误。 该错误指示存在服务问题。 <br ><br> 除此问题以外，在密码重置期间，可能会在本地事件日志中看到有关管理代理被拒绝访问的消息。 | 如果在事件日志中看到这些错误，请确认 Active Directory 管理代理 (ADMA) 帐户（在配置时在向导中指定的帐户）具有进行密码写回所需的权限。 <br> <br> 请注意，在授予此权限后，权限可能需要最多一小时来通过域控制器 (DC) 上的 `sdprop` 后台任务进行渗透。 <br> <br> 要使密码重置工作，需要将此权限标记在为其重置密码的用户对象的安全描述符上。 在此权限显示在用户对象上之前，密码重置将持续失败并出现“访问被拒绝”消息。 |
+| 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在尝试提交密码后看到错误。 该错误指示存在服务问题。 <br ><br> 除此问题以外，在密码重置期间，可能会在本地事件日志中看到有关管理代理被拒绝访问的消息。 | 如果在事件日志中看到这些错误，请确认 Active Directory 管理代理 (ADMA) 帐户（在配置时在向导中指定的帐户）具有进行密码写回所需的权限。 <br> <br> 在授予此权限后，权限可能需要最多一小时来通过域控制器 (DC) 上的 `sdprop` 后台任务进行渗透。 <br> <br> 要使密码重置工作，需要将此权限标记在为其重置密码的用户对象的安全描述符上。 在此权限显示在用户对象上之前，密码重置将持续失败并出现“访问被拒绝”消息。 |
 | 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在提交密码后看到错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个表示“找不到对象”错误的错误。 | 此错误通常表示同步引擎无法找到 Azure AD 连接器空间中的用户对象或者无法找到链接的 Metaverse (MV) 或 Azure AD 连接器空间对象。 <br> <br> 若要解决此问题，请确保用户确实已通过当前的 Azure AD Connect 实例从本地同步到了 Azure AD，并检查连接器空间和 MV 中的对象的状态。 通过“Microsoft.InfromADUserAccountEnabled.xxx”规则确认 Active Directory 证书服务 (AD CS) 对象是 MV 对象的连接器。|
-| 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在提交密码后看到错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个错误，指出发生“找到多个匹配项”错误。 | 这表示同步引擎通过“Microsoft.InfromADUserAccountEnabled.xxx”检测到 MV 对象连接到了多个 AD CS 对象。 这意味着用户在多个林具有已启用的帐户。 请注意，密码写回不支持此方案。 |
+| 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在提交密码后看到错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个错误，指出发生“找到多个匹配项”错误。 | 这表示同步引擎通过“Microsoft.InfromADUserAccountEnabled.xxx”检测到 MV 对象连接到了多个 AD CS 对象。 这意味着用户在多个林具有已启用的帐户。 密码写回不支持此方案。 |
 | 密码操作因为发生配置错误而失败。 应用程序事件日志包含 Azure AD Connect 错误 6329，文本为：“0x8023061f (操作失败，因为未在此管理代理上启用密码同步)”。 | 如果在启用密码写回功能之后将 Azure AD Connect 配置更改为添加新的 Active Directory 林（或者更改为删除现有林之后再重新添加），则会发生此错误。 在这些最近添加的林中，用户的密码操作会失败。 要解决此问题，请在林配置更改完成后，先禁用密码写回功能，再重新启用它。 |
 
 ## <a name="password-writeback-event-log-error-codes"></a>密码写回事件日志错误代码
@@ -167,7 +169,7 @@ ms.locfileid: "33869948"
    - passwordreset.microsoftonline.com
    - servicebus.windows.net
 
-若要进行更精细的访问，请参考 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的更新列表，该列表在每周星期三更新，在下一周星期一生效。
+若要进行更精细的访问，请参考 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的更新列表，该列表在每周三更新，在下周一生效。
 
 有关详细信息，请查看 [Azure AD Connect 的先决条件](./../connect/active-directory-aadconnect-prerequisites.md)一文中的连接先决条件。
 

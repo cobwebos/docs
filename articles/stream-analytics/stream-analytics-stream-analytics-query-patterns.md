@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f63ccd62136fe8d556a4cfb591e3294f3751dfb3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652240"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
 
@@ -117,7 +118,7 @@ Azure 流分析中的查询以类似 SQL 的查询语言表示。 这些语言�
         Make,
         TumblingWindow(second, 10)
 
-**说明**：可通过 CASE 子句根据某些条件（在此示例中为聚合窗口中车辆的计数）提供不同的计算操作。
+说明：CASE 表达式将表达式与一组简单表达式进行比较以确定结果。 在此示例中，计数为 1 的车返回的是与计数不为 1 的车不同的字符串说明。 
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>查询示例：将数据发送到多个输出
 **说明**：从单个作业中将数据发送到多个输出目标。
@@ -173,7 +174,7 @@ Azure 流分析中的查询以类似 SQL 的查询语言表示。 这些语言�
         [Count] >= 3
 
 **说明**：INTO 子句告知流分析哪一个输出可通过此语句写入数据。
-第一个查询将我们接收到的数据传递到名为 ArchiveOutput 的输出。
+第一个查询将接收到的数据传递到名为 ArchiveOutput 的输出。
 第二个查询进行了一些简单的聚合和筛选操作，并将结果发送到下游的警报系统。
 
 请注意，还可重复使用多个输出语句中的公用表表达式 (CTE) 结果（例如 WITH 语句）。 此选项可提供额外权益，即在输入源打开较少的读取器。
@@ -418,7 +419,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>查询示例：检测某个条件的持续时间
 **说明**：查看某个条件的持续时间。
-例如，假设某个 Bug 导致所有汽车的重量均不正确（超出 20000 磅）。 我们需要计算该 Bug 的持续时间。
+例如，假设某个 Bug 导致所有车的重量不正确（超出 20000 磅），因此必须计算该 Bug 的持续时间。
 
 **输入**：
 
@@ -506,8 +507,8 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 
 ## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>查询示例：在同一流中关联两个事件类型
-**说明**：有时我们需要基于某个特定时间范围内发生的多个事件类型生成警报。
-例如，在家用烤箱的 IoT 方案中，我们想要在风扇温度小于 40 且在过去 3 分钟内最大功率小于 10 时引发警报。
+说明：有时需要基于某个特定时间范围内发生的多个事件类型生成警报。
+例如，在家用烤箱的 IoT 方案中，必须在风扇温度小于 40 且在过去 3 分钟内最大功率小于 10 时生成警报。
 
 **输入**：
 
@@ -577,6 +578,46 @@ WHERE
 ````
 
 **说明**：第一个查询 `max_power_during_last_3_mins` 使用[滑动窗口](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)查找在过去 3 分钟内每个设备的功率传感器最大值。 将第二个查询联接到第一个查询，以便在与当前事件有关的最近窗口中查找功率值。 然后，假如满足条件，将为设备生成警报。
+
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>查询示例：处理与设备时钟偏差无关的事件（子流）
+说明由于事件生成器之间的时钟偏差、分区之间的时钟偏差或网络延迟，事件可能会迟到或不按顺序到达。 在下面的示例中，TollID 2 的设备时钟比 TollID 1 慢 10 秒，TollID 3 的设备时钟比 TollID 1 慢 5 秒。 
+
+
+**输入**：
+| LicensePlate | 制造商 | 时间 | TollID |
+| --- | --- | --- | --- |
+| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
+| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
+| QYF 9358 |Honda |2015-07-27T00:00:01.0000000Z | 2 |
+| GXF 9462 |BMW |2015-07-27T00:00:04.0000000Z | 2 |
+| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1 |
+| RMV 8282 |Honda |2015-07-27T00:00:03.0000000Z | 3 |
+| MDR 6128 |BMW |2015-07-27T00:00:11.0000000Z | 2 |
+| YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
+
+**输出**：
+| TollID | Count |
+| --- | --- |
+| 1 | 2 |
+| 2 | 2 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+
+**解决方案**；
+
+````
+SELECT
+      TollId,
+      COUNT(*) AS Count
+FROM input
+      TIMESTAMP BY Time OVER TollId
+GROUP BY TUMBLINGWINDOW(second, 5), TollId
+
+````
+
+说明：[TIMESTAMP BY OVER](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) 子句分别使用子流来查看每个设备时间线。 每个 TollID 的输出事件都是在计算时生成的，这意味着事件按照每个 TollID 的顺序排列，而不是像所有设备都在同一个时钟上那样重新排序。
 
 
 ## <a name="get-help"></a>获取帮助

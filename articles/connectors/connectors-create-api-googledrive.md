@@ -1,26 +1,22 @@
 ---
-title: 在逻辑应用中添加 Google Drive 连接器 | Microsoft Docs
-description: 使用 REST API 参数的 Google Drive 连接器概述
-services: ''
-suite: ''
-documentationcenter: ''
+title: 连接到 Google Drive - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Google Drive REST API 和 Azure 逻辑应用创建和管理文件
 author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: b2bcebc5-02d2-435b-b0da-ef53bc51c4b6
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+manager: jeconnoc
+ms.author: estfan
 ms.date: 11/07/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 9cea2ea13b93e798912e4feea012f6bd64b90cac
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 4994687afbdd23f0265138cd1d4eff53bb47c163
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295877"
 ---
 # <a name="get-started-with-the-google-drive-connector"></a>Google Drive 连接器入门
 连接到 Google Drive，创建文件、获取行等。 通过 Google Drive，可以： 

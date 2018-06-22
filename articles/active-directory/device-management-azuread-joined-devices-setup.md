@@ -1,13 +1,14 @@
 ---
-title: "设置已加入 Azure Active Directory 的设备 | Microsoft Docs"
-description: "了解如何设置已加入 Azure Active Directory 的设备。"
+title: 设置已加入 Azure Active Directory 的设备 | Microsoft Docs
+description: 了解如何设置已加入 Azure Active Directory 的设备。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ac6c9224925e5bfd3cb056c6c8d9cf2a96b0eb2b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 791181f11af38e4b78743ddb372207bd21893a6b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260923"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>设置已加入 Azure Active Directory 的设备
 
@@ -47,10 +49,14 @@ ms.lasthandoff: 01/16/2018
 
 - 如果是联合用户，需要使用凭据登录。
 
+- 如果是联合用户，标识提供程序必须支持 WS-Fed 和 WS-Trust 用户名/密码终结点。 这可以是版本 1.3 或 2005。 无论是将设备加入 Azure AD，还是使用密码登录设备，都必须有此协议支持。 
+
+
+
 
 ## <a name="joining-a-device"></a>加入设备
 
-本部分提供了将 Windows 10 设备加入到 Azure AD 的步骤。 如果已成功将设备加入到 Azure AD，“访问工作单位或学校”对话框会通过“已连接到 \<Azure AD\>”条目进行指示。
+本部分提供了将 Windows 10 设备加入到 Azure AD 的步骤。 成功加入的设备显示为“已连接到 \<Azure AD\>”。
 
 ![已连接](./media/device-management-azuread-joined-devices-setup/13.png)
 

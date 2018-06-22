@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure 应用服务的移动应用功能将推送通知添加到 Apache Cordova 应用 | Microsoft Docs"
-description: "了解如何使用移动应用将推送通知发送到 Apache Cordova 应用。"
+title: 使用 Azure 应用服务的移动应用功能将推送通知添加到 Apache Cordova 应用 | Microsoft Docs
+description: 了解如何使用移动应用将推送通知发送到 Apache Cordova 应用。
 services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
-editor: 
+editor: ''
 author: conceptdev
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 6af5fa51f2e6553431b9f0aa2dbb368651e7e209
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 13c1a53cfa3f998c9e3fa3ee1ee2dcec37357095
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597988"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>将推送通知添加到 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -33,13 +34,13 @@ ms.lasthandoff: 02/21/2018
 
 要完成本教程，需要：
 
-* 装有 [Visual Studio Community 2015][2] 或更高版本的电脑 
+* 装有 [Visual Studio Community 2015][2] 或更高版本的电脑
 * [用于 Apache Cordova 的 Visual Studio 工具][4]
 * [有效的 Azure 帐户][3]
 * 已完成的 [Apache Cordova 快速入门][5]项目
 * (Android) 具有已验证电子邮件地址的 [Google 帐户][6]
 * (iOS) [Apple 开发人员计划成员身份][7]和 iOS 设备（iOS 模拟器不支持推送通知）
-* (Windows) [Windows 应用商店开发人员帐户][8]和 Windows 10 设备
+* (Windows) [Microsoft Store 开发人员帐户][8]和 Windows 10 设备
 
 ## <a name="configure-hub"></a>配置通知中心
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
@@ -85,7 +86,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
     >[!NOTE]
     >从版本 2.0.0 开始，需要在项目根文件夹中安装 google-services.json 才能配置发送方 ID。 有关详细信息，请参阅[安装文档](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)。
-5. 选择“添加”。
+5. 选择 **添加** 。
 
 现已安装推送插件。
 
@@ -213,11 +214,11 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 #### <a name="test-push-notifications-in-the-app-on-android"></a>在 Android 应用中测试推送通知
 现在，可以通过运行该应用并将项插入 TodoItem 表中测试推送通知。 只要使用同一后端，就可以在同一设备或另一台设备中进行测试。 通过下面其中一种方式在 Android 平台上测试 Cordova 应用：
 
-* *在物理设备上：*使用 USB 线缆将 Android 设备连接到开发计算机。  不是使用 **Google Android 模拟器**，而是选择“设备”。 Visual Studio 会将应用程序部署到设备，并运行应用程序。 可以随后在该设备上与该应用程序进行交互。
+* *在物理设备上：* 使用 USB 线缆将 Android 设备连接到开发计算机。  不是使用 **Google Android 模拟器**，而是选择“设备”。 Visual Studio 会将应用程序部署到设备，并运行应用程序。 可以随后在该设备上与该应用程序进行交互。
 
   屏幕共享应用程序（如 [Mobizen][20]）可以帮助你开发 Android 应用程序。 Mobizen 会将 Android 屏幕投影到电脑上的 Web 浏览器。
 
-* *在 Android 模拟器中：*使用模拟器时，还需要其他配置步骤。
+* *在 Android 模拟器中：* 使用模拟器时，还需要其他配置步骤。
 
     请确保部署到将 Google API 设置为目标的虚拟设备，如 Android 虚拟设备 (AVD) 管理器所示。
 

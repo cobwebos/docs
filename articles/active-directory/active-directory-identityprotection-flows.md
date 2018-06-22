@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 424ea1eca637653c5e7cfed9dc4b970d5afd91ad
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164197"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713402"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 中的登录体验
 使用 Azure Active Directory Identity Protection 时，可以：
@@ -30,7 +31,7 @@ ms.locfileid: "34164197"
 
 系统对这些问题做出的响应会影响到用户的登录体验，因为此时已不再能够直接使用用户名和密码登录。 需要采取其他措施才能使用户安全地恢复正常工作。
 
-本主题概述在各种可能情况下的用户登录体验。
+本文概述在各种可能情况下的用户登录体验。
 
 **多重身份验证**
 

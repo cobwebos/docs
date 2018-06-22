@@ -1,26 +1,23 @@
 ---
-title: 对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图 | Microsoft Docs
-description: '了解如何对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图。 '
+title: 对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图
+description: 本文介绍如何对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图。
 services: data-lake-analytics
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+editor: jasonwhowell
+ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
+ms.topic: conceptual
 ms.date: 08/02/2017
-ms.author: jgao
-ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6d7ebc8d14e82281e074ff52abd41a16871470c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623224"
 ---
-# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图
+# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>对 Azure Data Lake Analytics 使用作业浏览器和作业视图
 Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query-store)中。 本文介绍如何在用于 Visual Studio 的 Azure Data Lake 工具中使用作业浏览器和作业视图查找历史作业消息。 
 
 默认情况下，Data Lake Analytics 服务将作业存档 30 天。 通过配置自定义过期策略，可在 Azure 门户中配置有效期。 过期后，无法访问作业信息。 

@@ -9,155 +9,30 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a4067db9955b804f126e889fa73641f69fef56ab
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39c43c079ea4d10686bd656ba2d451ff42aac9f6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700224"
 ---
-# <a name="troubleshoot-container-and-deployment-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的容器和部署问题
+# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
-本文展示了如何排查向 Azure 容器实例部署容器时出现的问题。 还介绍了一些可能会遇到的常见问题。
+本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。
 
-## <a name="view-logs-and-stream-output"></a>查看日志和流输出
+## <a name="naming-conventions"></a>命名约定
 
-如果容器的行为错误，应首先使用 [az container logs][az-container-logs] 查看其日志，然后使用 [az container attach][az-container-attach] 流式传输其标准输出和标准错误。
+定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。
+有关 Azure 命名约定的详细信息，请参阅 Azure 体系结构中心中的[命名约定](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)。
 
-### <a name="view-logs"></a>查看日志
-
-若要查看容器内应用程序代码的日志，可使用 [az container logs][az-container-logs] 命令。
-
-下面是[在 ACI 中运行容器化任务](container-instances-restart-policy.md)中基于任务的示例容器，在向其送入无效的 URL 进行处理后的日志输出：
-
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
-Traceback (most recent call last):
-  File "wordcount.py", line 11, in <module>
-    urllib.request.urlretrieve (sys.argv[1], "foo.txt")
-  File "/usr/local/lib/python3.6/urllib/request.py", line 248, in urlretrieve
-    with contextlib.closing(urlopen(url, data)) as fp:
-  File "/usr/local/lib/python3.6/urllib/request.py", line 223, in urlopen
-    return opener.open(url, data, timeout)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 532, in open
-    response = meth(req, response)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 642, in http_response
-    'http', request, response, code, msg, hdrs)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 570, in error
-    return self._call_chain(*args)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 504, in _call_chain
-    result = func(*args)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 650, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 404: Not Found
-```
-
-### <a name="attach-output-streams"></a>附加输出流
-
-[az container attach][az-container-attach] 命令在容器启动过程中提供诊断信息。 启动容器后，它会将 STDOUT 和 STDERR 流式传输到本地控制台。
-
-例如，下面是[在 ACI 中运行容器化任务](container-instances-restart-policy.md)中基于任务的容器，在向其提供一个大型文本文件的有效 URL 进行处理后的输出：
-
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
-Container 'mycontainer' is in state 'Unknown'...
-Container 'mycontainer' is in state 'Waiting'...
-Container 'mycontainer' is in state 'Running'...
-(count: 1) (last timestamp: 2018-03-09 23:21:33+00:00) pulling image "microsoft/aci-wordcount:latest"
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Successfully pulled image "microsoft/aci-wordcount:latest"
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Created container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Started container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
-
-Start streaming logs:
-[('the', 22979),
- ('I', 20003),
- ('and', 18373),
- ('to', 15651),
- ('of', 15558),
- ('a', 12500),
- ('you', 11818),
- ('my', 10651),
- ('in', 9707),
- ('is', 8195)]
-```
-
-## <a name="get-diagnostic-events"></a>获取诊断事件
-
-如果容器无法成功部署，则需要查看由 Azure 容器实例资源提供程序提供的诊断信息。 若要查看容器事件，请运行 [az container show][az-container-show] 命令：
-
-```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer
-```
-
-输出包括容器的核心属性，以及部署事件（此处截断显示）：
-
-```JSON
-{
-  "containers": [
-    {
-      "command": null,
-      "environmentVariables": [],
-      "image": "microsoft/aci-helloworld",
-      ...
-        "events": [
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:49+00:00",
-            "lastTimestamp": "2017-12-21T22:50:49+00:00",
-            "message": "pulling image \"microsoft/aci-helloworld\"",
-            "name": "Pulling",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Successfully pulled image \"microsoft/aci-helloworld\"",
-            "name": "Pulled",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Created container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
-            "name": "Created",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Started container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
-            "name": "Started",
-            "type": "Normal"
-          }
-        ],
-        "previousState": null,
-        "restartCount": 0
-      },
-      "name": "mycontainer",
-      "ports": [
-        {
-          "port": 80,
-          "protocol": null
-        }
-      ],
-      ...
-    }
-  ],
-  ...
-}
-```
-
-## <a name="common-deployment-issues"></a>常见部署问题
-
-以下部分描述了导致容器部署中的大多数错误的常见问题：
-
-* [不支持映像版本](#image-version-not-supported)
-* [无法请求映像](#unable-to-pull-image)
-* [容器不断退出并重启](#container-continually-exits-and-restarts)
-* [容器启动时间过长](#container-takes-a-long-time-to-start)
-* [“资源不可用”错误](#resource-not-available-error)
+| 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 容器组名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| 容器名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| 容器端口 | 介于 1 和 65535 之间 |Integer |一个介于 1 和 65535 之间的整数 |`<port-number>` |`443` |
+| DNS 名称标签 | 5-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>` |`frontend-site1` |
+| 环境变量 | 1-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和“_”字符 |`<name>` |`MY_VARIABLE` |
+| 卷名 | 5-63 |不区分大小写 |第一个或最后一个字符不能为小写字母、数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
 
 ## <a name="image-version-not-supported"></a>不支持映像版本
 
@@ -252,7 +127,7 @@ az container show --resource-group myResourceGroup --name mycontainer
 * [映像大小](#image-size)
 * [映像位置](#image-location)
 
-Windows 映像具有[其他注意事项](#use-recent-windows-images)。
+Windows 映像具有[其他注意事项](#cached-windows-images)。
 
 ### <a name="image-size"></a>映像大小
 
@@ -272,7 +147,7 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 
 若要减小映像请求对容器启动时间的影响，另一种方法是在希望部署容器实例的同一区域的 [Azure 容器注册表](/azure/container-registry/)中托管容器映像。 这会缩短容器映像需要经过的网络路径，显著缩短下载时间。
 
-### <a name="use-recent-windows-images"></a>使用最新的 Windows 映像
+### <a name="cached-windows-images"></a>缓存的 Windows 映像
 
 对于基于某些 Windows 映像的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。
 
@@ -280,6 +155,10 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 
 * [Windows Server 2016][docker-hub-windows-core]（仅限 LTS）
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+
+### <a name="windows-containers-slow-network-readiness"></a>Windows 容器慢速网络准备情况
+
+Windows 容器在初始创建后可能最多 5 秒内没有入站或出站连接。 初始设置后，容器网络应适当恢复。
 
 ## <a name="resource-not-available-error"></a>资源不可用错误
 
@@ -294,12 +173,13 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 * 部署到其他 Azure 区域
 * 稍后部署
 
+## <a name="next-steps"></a>后续步骤
+了解如何[检索容器日志和事件](container-instances-get-logs.md)来帮助调试你的容器。
+
 <!-- LINKS - External -->
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/
 
 <!-- LINKS - Internal -->
-[az-container-attach]: /cli/azure/container#az_container_attach
-[az-container-logs]: /cli/azure/container#az_container_logs
 [az-container-show]: /cli/azure/container#az_container_show
