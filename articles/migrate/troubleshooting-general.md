@@ -3,15 +3,15 @@ title: 排查 Azure Migrate 问题 | Microsoft 文档
 description: 概述 Azure Migrate 服务中的已知问题，并针对常见错误提供故障排除技巧。
 author: rayne-wiselman
 ms.service: azure-migrate
-ms.topic: troubleshooting
-ms.date: 06/08/2018
+ms.topic: conceptual
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: c717cfdac83ec8d85b1fa0a874e5573a40dd4611
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 896e918f6031f3bc6b925a2ecdfa2a5c82f00e0b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235621"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228248"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 

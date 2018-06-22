@@ -4,15 +4,15 @@ description: 概述了收集器设备及其配置方法。
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/19/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 32554b2f297c2079374a5edd7739af7320bc1234
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d0f36370f5093f8c1d06c83a62532b3854597fa4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640221"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211661"
 ---
 # <a name="collector-appliance"></a>收集器设备
 
@@ -157,8 +157,8 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 
 |计数器                                  |级别    |设备级别  |评估影响                               |
 |-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |不可用                |建议的 VM 大小和成本                    |
-|mem.usage.average                        | 1       |不可用                |建议的 VM 大小和成本                    |
+|cpu.usage.average                        | 1       |NA                |建议的 VM 大小和成本                    |
+|mem.usage.average                        | 1       |NA                |建议的 VM 大小和成本                    |
 |virtualDisk.read.average                 | 2       |2                 |磁盘大小、存储成本和 VM 大小         |
 |virtualDisk.write.average                | 2       |2                 |磁盘大小、存储成本和 VM 大小         |
 |virtualDisk.numberReadAveraged.average   | 1       |3                 |磁盘大小、存储成本和 VM 大小         |
