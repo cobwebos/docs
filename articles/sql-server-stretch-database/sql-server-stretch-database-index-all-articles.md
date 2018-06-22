@@ -28,7 +28,7 @@ ms.locfileid: "23055522"
 | &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
 | 1 |[通过运行延伸数据库顾问来识别符合 Stretch Database 条件的数据库和表](sql-server-stretch-database-identify-databases.md) |了解如何识别符合 Stretch Database 条件的数据库和表。 |
-| #N/A |[Stretch Database 的限制](sql-server-stretch-database-limitations.md) |了解 Stretch Database 的限制。 |
+| 2 |[Stretch Database 的限制](sql-server-stretch-database-limitations.md) |了解 Stretch Database 的限制。 |
 | 3 |[Stretch Database 概述](sql-server-stretch-database-overview.md) |了解 Stretch Database 如何透明、安全地将冷数据迁移到 Microsoft Azure 云。 |
 | 4 |[通过运行“为数据库启用延伸向导”开始操作](sql-server-stretch-database-wizard.md) |了解如何通过运行“为数据库启用延伸向导”，来为 Stretch Database 配置数据库。 |
 

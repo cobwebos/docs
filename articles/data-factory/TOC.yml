@@ -356,6 +356,8 @@
           href: monitor-visually.md
         - name: 使用 Azure Monitor 进行监视
           href: monitor-using-azure-monitor.md
+        - name: 使用 OMS 进行监视
+          href: data-factory-monitor-oms.md
         - name: 使用 SDK 进行监视
           href: monitor-programmatically.md
         - name: 监视集成运行时
