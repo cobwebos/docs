@@ -98,22 +98,22 @@
           href: sql-database-dtu-resource-limits-single-databases.md
         - name: 缩放单个 DB 资源
           href: sql-database-single-database-scale.md
-        - name: 弹性池和入池 DB
-          items:
-            - name: 弹性池和入池 DB
-              href: sql-database-elastic-pool.md
-            - name: 管理池和入池 DB
-              href: sql-database-elastic-pool-manage.md
-            - name: 基于虚拟核心的资源限制
-              href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: 基于 DTU 的资源限制
-              href: sql-database-dtu-resource-limits-elastic-pools.md
-        - name: 缩放弹性池资源
-          href: sql-database-elastic-pool-scale.md
         - name: 连接体系结构
           href: sql-database-connectivity-architecture.md
         - name: T-SQL 的差异
           href: sql-database-transact-sql-information.md
+    - name: 弹性池和入池 DB
+      items:
+        - name: 弹性池和入池 DB
+          href: sql-database-elastic-pool.md
+        - name: 管理池和入池 DB
+          href: sql-database-elastic-pool-manage.md
+        - name: 基于虚拟核心的资源限制
+          href: sql-database-vcore-resource-limits-elastic-pools.md
+        - name: 基于 DTU 的资源限制
+          href: sql-database-dtu-resource-limits-elastic-pools.md
+        - name: 缩放弹性池资源
+          href: sql-database-elastic-pool-scale.md
     - name: 托管实例
       items:
         - name: 托管实例

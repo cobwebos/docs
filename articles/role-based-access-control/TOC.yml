@@ -27,8 +27,6 @@
       href: role-definitions.md
     - name: 内置角色
       href: built-in-roles.md
-    - name: 自定义角色
-      href: custom-roles.md
     - name: 资源提供程序操作
       href: resource-provider-operations.md
     - name: RBAC 的 Privileged Identity Management (PIM)
@@ -42,12 +40,21 @@
       items:
         - name: 门户
           href: role-assignments-portal.md
-        - name: Azure CLI
-          href: role-assignments-cli.md
         - name: PowerShell
           href: role-assignments-powershell.md
-        - name: REST
+        - name: Azure CLI
+          href: role-assignments-cli.md
+        - name: REST API
           href: role-assignments-rest.md
+    - name: 自定义角色
+      href: custom-roles.md
+      items:
+        - name: PowerShell
+          href: custom-roles-powershell.md
+        - name: Azure CLI
+          href: custom-roles-cli.md
+        - name: REST API
+          href: custom-roles-rest.md
     - name: 查看活动日志
       href: change-history-report.md
     - name: 为全局管理员提升访问权限

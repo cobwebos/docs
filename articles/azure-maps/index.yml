@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/07/2018
   ms.author: philmea
-  ms.openlocfilehash: 2d7820649a4b1123a78d70a720ae58a0e1898407
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+  ms.openlocfilehash: 9e9f0020ce52a5bd75e15ab333ed367244016e11
+  ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34600096"
+  ms.lasthandoff: 06/22/2018
+  ms.locfileid: "36317514"
 abstract:
   description: Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了为 Web 和移动应用程序提供地理环境时所需的全新地图数据。 此服务是与 Azure One API 兼容的一组 REST API，随基于 Web 的 JavaScript 控件一起提供，使得开发简单、灵活且可跨多个媒体移植。
 sections:
@@ -51,4 +51,4 @@ sections:
     - title: JavaScript
       html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">地图控件</a></p>
     - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/maps/renderservice">呈现服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/routeservice">路线服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/searchservice">搜索服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezoneservice">时区服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/trafficservice">交通服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">地图帐户管理</a></p>
+      html: <p><a href="https://docs.microsoft.com/rest/api/maps/render">呈现服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">路线服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">搜索服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">时区服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">交通服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">地图帐户管理</a></p>
