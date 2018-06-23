@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2018
+ms.date: 06/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: dd43d567a9839ae38c5b5eb4cdb851f8b80dcfff
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: b505e0fa215b04a5b05ca1b4c3fa9548d8deb71f
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824564"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36321271"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>提供对 Azure Stack 的应用程序访问权限
 
@@ -45,7 +45,7 @@ ms.locfileid: "34824564"
 ### <a name="create-service-principal"></a>创建服务主体
 在本部分中，将在 Azure AD 中创建表示你的应用程序的应用程序（服务主体）。
 
-1. 通过 [Azure 门户](https://portal.azure.com)登录 Azure 帐户。
+1. 登录到你的 Azure 帐户通过[Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “应用注册” > “添加”   
 3. 为应用提供名称和 URL。 选择“Web 应用/API”或“本机”作为要创建的应用程序的类型。 设置这些值后，选择“创建”。
 
@@ -132,7 +132,7 @@ ms.locfileid: "34824564"
 Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
  -ServicePrincipal `
  -CertificateThumbprint $servicePrincipal.Thumbprint `
- -ApplicationId $servicePrincipal.ApplicationId ` 
+ -ApplicationId $servicePrincipal.ClientId ` 
  -TenantId $directoryTenantId
 ```
 

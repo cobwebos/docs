@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/22/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 2c2813a7f2d909a23c8f5d4f5ac0280b3f932ba6
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 9fc58d971db18db63e4dc76123ff1311b77e0191
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "34700118"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316427"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新
 
@@ -89,7 +89,9 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 
 
 ### <a name="post-update-steps"></a>更新后步骤
-*对于 1804 更新，更新后不需要执行任何步骤。*
+安装之后 1804年，安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
+ - [KB 4341392-Azure 堆栈修补程序 1.0.180523.11](https://support.microsoft.com/en-us/help/4341392)。
+
 
 
 
