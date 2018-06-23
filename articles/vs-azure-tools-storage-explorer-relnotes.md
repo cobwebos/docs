@@ -14,18 +14,103 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2878fb737f5daa875b91aefc77c6b8bc495f917e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778999"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657564"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
 本文包含 Azure 存储资源管理器 1.0.0 发行版及以前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
+
+## <a name="version-110"></a>版本 1.1.0
+2018/05/09
+
+### <a name="download-azure-storage-explorer-110"></a>下载 Azure 存储资源管理器 1.1.0
+- [适用于 Windows 的 Azure 存储资源管理器 1.1.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 1.1.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 1.1.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新建
+* 存储资源管理器现在支持使用 Azurite。 请注意：与 Azurite 的连接已硬编码到默认开发终结点。
+* 存储资源管理器现在仅支持 Blob 的访问层和 GPV2 存储帐户。 在[此处](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers)详细了解访问层。
+* 生成 SAS 时不再需要开始时间。
+
+### <a name="fixes"></a>修复项
+* 检索美国政府帐户的订阅被中断。 此问题已解决。 [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
+* 访问策略的到期时间未正确保存。 此问题已解决。 [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
+* 为容器中的项目生成 SAS URL 时，项目的名称未追加到 URL。 此问题已解决。 [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
+* 创建 SAS 时，过去的到期时间有时会成为默认值。 这是因为存储资源管理器使用上次使用的开始时间和到期时间作为默认值。 现在，每次打开 SAS 对话框时，都会生成一组新的默认值。 [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
+* 在存储帐户之间进行复制时，会生成 24 小时 SAS。 如果复制持续时间超过 24 小时，复制将失败。 我们已将 SAS 的有效时间增加到持续 1 周，以减少由于 SAS 过期而导致复制失败的可能性。 [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
+* 对于某些活动，单击“取消”并非始终有效。 此问题已解决。 [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
+* 对于某些活动来说，传输速度不正确。 此问题已解决。 [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
+* 视图菜单中“上一个”的拼写错误。 现在已正确拼写。 [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
+* Windows 安装程序的最后一页有“下一步”按钮。 该按钮已更改为“完成”按钮。 [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
+* 使用 HC Black 主题时，对话框中按钮的 Tab 焦点不可见。 现在已可见。[#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
+* 活动日志中操作的“自动解析”的大小写不正确。 现已正确。 [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
+* 从表中删除实体时，要求确认的对话框显示错误图标。 该对话框现在使用警告图标。 [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+
+### <a name="known-issues"></a>已知问题
+* 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能取消阻止你，请对[此问题](https://github.com/Microsoft/AzureStorageExplorer/issues/97)发表评论。
+* Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是[此处](https://github.com/Azure/azure-storage-node/issues/317)介绍的“取消筛选”解决办法。 
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>以前的版本
+
+* [版本 1.0.0](#version-100)
+* [版本 0.9.6](#version-096)
+* [版本 0.9.5](#version-095)
+* [版本 0.9.4 和 0.9.3](#version-094-and-093)
+* [版本 0.9.2](#version-092)
+* [版本 0.9.1 和 0.9.0](#version-091-and-090)
+* [版本 0.8.16](#version-0816)
+* [版本 0.8.14](#version-0814)
+* [版本 0.8.13](#version-0813)
+* [版本 0.8.12、0.8.11 和 0.8.10](#version-0812-and-0811-and-0810)
+* [版本 0.8.9 和 0.8.8](#version-089-and-088)
+* [版本 0.8.7](#version-087)
+* [版本 0.8.6](#version-086)
+* [版本 0.8.5](#version-085)
+* [版本 0.8.4](#version-084)
+* [版本 0.8.3](#version-083)
+* [版本 0.8.2](#version-082)
+* [版本 0.8.0](#version-080)
+* [版本 0.7.20160509.0](#version-07201605090)
+* [版本 0.7.20160325.0](#version-07201603250)
+* [版本 0.7.20160129.1](#version-07201601291)
+* [版本 0.7.20160105.0](#version-07201601050)
+* [版本 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-100"></a>版本 1.0.0
 04/16/2018
@@ -96,31 +181,6 @@ ms.locfileid: "32778999"
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>以前的版本
-
-* [版本 0.9.6](#version-096)
-* [版本 0.9.5](#version-095)
-* [版本 0.9.4 和 0.9.3](#version-094-and-093)
-* [版本 0.9.2](#version-092)
-* [版本 0.9.1 和 0.9.0](#version-091-and-090)
-* [版本 0.8.16](#version-0816)
-* [版本 0.8.14](#version-0814)
-* [版本 0.8.13](#version-0813)
-* [版本 0.8.12、0.8.11 和 0.8.10](#version-0812-and-0811-and-0810)
-* [版本 0.8.9 和 0.8.8](#version-089-and-088)
-* [版本 0.8.7](#version-087)
-* [版本 0.8.6](#version-086)
-* [版本 0.8.5](#version-085)
-* [版本 0.8.4](#version-084)
-* [版本 0.8.3](#version-083)
-* [版本 0.8.2](#version-082)
-* [版本 0.8.0](#version-080)
-* [版本 0.7.20160509.0](#version-07201605090)
-* [版本 0.7.20160325.0](#version-07201603250)
-* [版本 0.7.20160129.1](#version-07201601291)
-* [版本 0.7.20160105.0](#version-07201601050)
-* [版本 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-096"></a>版本 0.9.6
 2018/02/28
