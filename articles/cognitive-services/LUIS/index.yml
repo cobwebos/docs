@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 语言理解 (LUIS) 文档
+metadata:
+  document_id: 
+  title: 语言理解 (LUIS) - 教程、快速入门、API 参考
+  description: 了解如何使用语言理解服务使应用程序可以理解用户以自己的语言表达的内容。
+  author: Kaiqb
+  manager: carolz
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/25/2018
+  ms.author: kamrani
+  ms.openlocfilehash: 7d529825733025335f27ce0fe477c117aeaf5c41
+  ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/08/2018
+  ms.locfileid: "35356750"
+abstract:
+  description: 语言理解服务 (LUIS) 使应用程序可以理解用户以自己的语言表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="luis-get-started-create-app.md">为预构建的域创建应用</a>
+    - html: <a href="luis-quickstart-intents-only.md">为自定义域创建应用</a>
+- title: 分步教程
+  items:
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="luis-quickstart-primary-and-secondary-data">使用简单实体从表述中提取消息数据</a>
+    - html: <a href="luis-quickstart-intents-regex-entity">使用正则表达式实体从表述中提取 KB 文章编号</a>
+    - html: <a href="luis-quickstart-intent-and-list-entity">使用列表实体从表述中提取饮料订单信息</a>
+    - html: <a href="luis-tutorial-pattern">使用模式提高意向和实体预测准确性</a>
+    - html: <a href="luis-tutorial-interchangeable-phrase-list">使用短语列表提高字词显著性</a>
+    - html: <a href="luis-get-started-cs-get-intent">向 LUIS 发送表述并接收终结点预测响应 - C#</a>
+    - html: <a href="luis-get-started-cs-add-utterance">将示例表述添加到意向并训练 LUIS 应用 - C#</a>
+- title: 视频
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" >Build 2018 中的 Azure Friday - 认知服务 - 语言 (LUIS)</a>
+    - html: <a href="https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player" >Build 2018 AI 演示 - 语言理解服务 (LUIS) 的新增功能</a>
+    - html: <a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018 会议 - 机器人智能、语音功能和 NLU 最佳做法</a>
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST API v2
+      html: <p><a href="https://aka.ms/luis-endpoint-apis">终结点 API</a></p><p><a href="https://aka.ms/luis-authoring-apis">创作 API</a></p>
+    - title: SDK
+      html: <p><a href="https://aka.ms/luis-endpoint-sdk"> .NET 终结点 SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET 创作 SDK</a></p>
+    - title: 代码示例
+      html: <p><a href="https://aka.ms/luis-code-samples">代码示例</a></p>

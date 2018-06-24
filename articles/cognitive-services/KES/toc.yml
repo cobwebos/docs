@@ -1,0 +1,35 @@
+- name: 知识探索服务文档
+- name: 概述
+  expanded: true
+  items:
+    - name: 了解知识探索服务
+      href: Overview.md
+- name: 入门
+  items:
+    - name: 创建后端引擎
+      href: GettingStarted.md
+    - name: 命令行
+      href: CommandLine.md
+    - name: 架构格式
+      href: SchemaFormat.md
+    - name: 数据格式
+      href: DataFormat.md
+    - name: 语法格式
+      href: GrammarFormat.md
+    - name: 语义解释
+      href: SemanticInterpretation.md
+    - name: Web API 接口
+      href: WebAPI.md
+      items:
+        - name: calchistogram
+          href: calchistogramMethod.md
+        - name: 评估
+          href: evaluateMethod.md
+        - name: 解释
+          href: interpretMethod.md
+    - name: 结构化查询表达式
+      href: Expressions.md
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'

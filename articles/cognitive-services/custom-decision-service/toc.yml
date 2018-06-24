@@ -1,0 +1,43 @@
+- name: 自定义 AI 决策服务文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是自定义 AI 决策服务？
+      href: custom-decision-service-overview.md
+    - name: 自定义 AI 决策服务工作流
+      href: custom-decision-service-workflow.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 注册应用程序
+      href: custom-decision-service-get-started-register.md
+    - name: 从浏览器调用 API
+      href: custom-decision-service-get-started-browser.md
+    - name: 从应用调用 API
+      href: custom-decision-service-get-started-app.md
+- name: 教程
+  items:
+    - name: 文章个性化
+      href: custom-decision-service-tutorial-news.md
+    - name: 机器学习
+      href: custom-decision-service-tutorial-ml.md
+- name: 引用
+  items:
+    - name: API
+      href: custom-decision-service-api-reference.md
+    - name: 试验
+      href: custom-decision-service-experimentation-reference.md
+    - name: LogDownloader
+      href: custom-decision-service-log-downloader-reference.md
+- name: 资源
+  items:
+    - name: 定价（免费）
+      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-decision-service/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598138-custom-decision-service'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'

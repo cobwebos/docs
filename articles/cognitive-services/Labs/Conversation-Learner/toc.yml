@@ -1,0 +1,68 @@
+- name: 对话学习器文档
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是对话学习器？
+      href: overview.md
+    - name: 支持的语言
+      href: languages-supported.md
+- name: 概念
+  items:
+    - name: 控制流
+      href: control-flow.md
+    - name: 默认值和边界
+      href: cl-values-and-boundaries.md
+- name: 操作指南
+  items:
+    - name: 对话学习器入门
+      href: quickstart.md
+    - name: Hello world
+      href: tutorials/1-hello-world.md
+    - name: 等待与非等待操作
+      href: tutorials/2-wait-vs-nonwait-actions.md
+    - name: 实体简介
+      href: tutorials/3-introduction-to-entities.md
+    - name: 预期的实体
+      href: tutorials/4-expected-entity.md
+    - name: 可否定的实体
+      href: tutorials/5-negatable-entities.md
+    - name: 多值实体
+      href: tutorials/6-multi-value-entities.md
+    - name: 内置实体
+      href: tutorials/7-built-in-entities.md
+    - name: 备用输入
+      href: tutorials/8-alternative-inputs.md
+    - name: 记录对话
+      href: tutorials/9-log-dialogs.md
+    - name: 实体检测回调
+      href: tutorials/10-entity-detection-callback.md
+    - name: 会话回调
+      href: tutorials/11-session-callbacks.md
+    - name: API 调用
+      href: tutorials/12-api-calls.md
+    - name: 卡片第 1 部分
+      href: tutorials/13-cards-1.md
+    - name: 卡片第 2 部分
+      href: tutorials/14-cards-2.md
+    - name: 分支和撤消
+      href: tutorials/15-branching-and-undo.md
+    - name: 版本控制和标记
+      href: tutorials/16-versioning-and-tagging.md
+    - name: 演示 - 密码重置
+      href: tutorials/demo-password-reset.md
+    - name: 演示 - 披萨订单
+      href: tutorials/demo-pizza-order.md
+    - name: 演示 - VR 应用启动器
+      href: tutorials/demo-vr-app-launcher.md
+    - name: 部署会话学习器机器人
+      href: deploy-to-bf.md
+    - name: 如何训练对话学习器
+      href: how-to-teach-cl.md
+    - name: 如何管理用户数据
+      href: managing-data.md
+- name: 资源
+  items:
+    - name: 对话学习器示例机器人
+      href: 'https://github.com/Microsoft/ConversationLearner-Samples'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'

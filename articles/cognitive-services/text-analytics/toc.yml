@@ -1,0 +1,69 @@
+- name: 文本分析 API 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是文本分析 API？
+      href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: 教程
+  items:
+    - name: 使用 Power BI 进行文本分析
+      href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Power Apps 中的文本分析
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
+- name: 操作指南
+  items:
+    - name: 注册
+      href: How-tos/text-analytics-how-to-signup.md
+    - name: 获取访问密钥
+      href: How-tos/text-analytics-how-to-access-key.md
+    - name: 调用文本分析 API
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: 检测语言
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: 分析情绪
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: 提取关键短语
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+    - name: 识别链接的实体
+      href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: 使用 Visual Studio
+      items:
+        - name: 使用文本分析连接服务
+          href: vs-text-connected-service.md
+- name: 引用
+  items:
+    - name: 文本分析 API
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7'
+- name: 资源
+  items:
+    - name: 常见问题
+      href: text-analytics-resource-faq.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
+    - name: 支持的语言
+      href: text-analytics-supported-languages.md
+    - name: 订阅密钥
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
+    - name: 外部和社区内容
+      href: text-analytics-resource-external-community.md
+    - name: 试试看！
+      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

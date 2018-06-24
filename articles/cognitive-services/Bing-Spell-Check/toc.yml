@@ -1,0 +1,63 @@
+- name: 必应拼写检查 API 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是必应拼写检查 API？
+      href: proof-text.md
+- name: REST API 快速入门
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: SDK 快速入门
+  items:
+    - name: 'SDK C# 快速入门'
+      href: sdk-quickstart-spell-check.md
+    - name: SDK 示例概述
+      href: sdk.md
+- name: 教程
+  items:
+    - name: 构建拼写检查 Web 应用
+      href: tutorials/spellcheck.md
+    - name: 源代码：拼写检查 Web 应用
+      href: tutorials/spellcheck-source.md
+- name: 操作指南
+  items:
+    - name: 使用和显示要求
+      href: UseAndDisplayRequirements.md
+    - name: 从 v5 升级到 v7
+      href: bing-spell-check-upgrade-guide-v5-to-v7.md
+- name: 引用
+  items:
+    - name: 必应拼写检查 API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference'
+    - name: 必应拼写检查 API v5（旧版）
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference'
+- name: 资源
+  items:
+    - name: 常见问题
+      href: bing-spell-check-resource-faq.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/bing-api'
+    - name: 支持的语言
+      href: bing-spell-check-supported-languages.md
+    - name: 适用于必应拼写检查 API 的分析
+      href: bing-spell-check-stats.md
+    - name: 订阅密钥
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+    - name: 试试看！
+      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'

@@ -1,0 +1,15 @@
+- name: Web 语言模型 API 文档
+- name: 概述
+  items:
+    - name: 什么是 Web 语言模型 API？
+      href: Home.md
+- name: 引用
+  items:
+    - name: Web 语言模型 API
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51'
+    - name: Windows SDK
+      href: 'https://github.com/Microsoft/Cognitive-WebLM-Windows'
+- name: 资源
+  items:
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555943-web-language-model-api'

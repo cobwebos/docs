@@ -1,0 +1,131 @@
+- name: 内容审查器文档
+- name: 概述
+  items:
+    - name: 什么是内容审查器？
+      href: overview.md
+- name: 示例
+  items:
+    - name: .NET SDK 示例
+      href: samples-dotnet.md
+    - name: '以 C# 编写的 REST API 示例'
+      href: samples-rest.md
+- name: 概念
+  items:
+    - name: 图像审查
+      href: image-moderation-api.md
+    - name: 文本审查
+      href: text-moderation-api.md
+    - name: 文本审查 - 语言
+      href: Text-Moderation-API-Languages.md
+    - name: 视频审查
+      href: video-moderation-human-review.md
+    - name: 作业和审阅
+      href: review-api.md
+    - name: 工作流
+      href: workflow-api.md
+- name: 操作指南
+  items:
+    - name: 试用内容审查器
+      items:
+        - name: 内容审查器入门
+          href: quick-start.md
+        - name: 审查 API
+          items:
+            - name: 帮助程序库 - .NET
+              href: content-moderator-helper-quickstart-dotnet.md
+            - name: 图像 - API 控制台
+              href: try-image-api.md
+            - name: 图像 - .NET
+              href: image-moderation-quickstart-dotnet.md
+            - name: 自定义图像 - API 控制台
+              href: try-image-list-api.md
+            - name: 自定义图像 - .NET
+              href: image-lists-quickstart-dotnet.md
+            - name: 文本 - API 控制台
+              href: try-text-api.md
+            - name: 文本 - .NET
+              href: text-moderation-quickstart-dotnet.md
+            - name: 自定义术语 - API 控制台
+              href: try-terms-list-api.md
+            - name: 自定义术语 - .NET
+              href: term-lists-quickstart-dotnet.md
+            - name: 视频 - .NET
+              href: video-moderation-api.md
+        - name: 查看 API
+          items:
+            - name: 作业 - API 控制台
+              href: try-review-api-job.md
+            - name: 作业 - .NET
+              href: moderation-jobs-quickstart-dotnet.md
+            - name: 审阅 - API 控制台
+              href: try-review-api-review.md
+            - name: 审阅 - .NET
+              href: moderation-reviews-quickstart-dotnet.md
+            - name: 视频审阅 - .NET
+              href: video-reviews-quickstart-dotnet.md
+            - name: 视频脚本审阅 - .NET
+              href: video-transcript-reviews-quickstart-dotnet.md
+            - name: 工作流 - API 控制台
+              href: try-review-api-workflow.md
+    - name: 第一个内容审查器应用
+      items:
+        - name: Facebook 内容审核
+          href: facebook-post-moderation.md
+        - name: 电子商务图像审核
+          href: ecommerce-retail-catalog-moderation.md
+        - name: 视频和脚本审核
+          href: video-transcript-moderation-review-tutorial-dotnet.md
+    - name: 审阅工具
+      items:
+        - name: 人机共生
+          href: Review-Tool-User-Guide/human-in-the-loop.md
+        - name: 使用设置
+          href: Review-Tool-User-Guide/Configure.md
+        - name: 管理团队
+          href: Review-Tool-User-Guide/SubTeams.md
+        - name: 使用标记
+          href: Review-Tool-User-Guide/Tags.md
+        - name: 审阅图像
+          href: Review-Tool-User-Guide/Review-Moderated-Images.md
+        - name: 审阅文本
+          href: Review-Tool-User-Guide/Text-Reviews.md
+        - name: 管理凭据
+          href: Review-Tool-User-Guide/Credentials.md
+        - name: 使用连接器
+          href: Review-Tool-User-Guide/Connectors.md
+        - name: 使用工作流
+          href: Review-Tool-User-Guide/Workflows.md
+        - name: 查看仪表板
+          href: Review-Tool-User-Guide/View-Dashboard.md
+- name: 引用
+  items:
+    - name: 内容审查器 API
+      href: api-reference.md
+    - name: SDK
+      items:
+        - name: Java
+          href: 'https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-cognitiveservices-contentmoderator%22'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python'
+        - name: .NET
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator'
+- name: 资源
+  items:
+    - name: 常见问题
+      href: FAQs.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
+    - name: 导出或删除帐户数据
+      href: ./export-delete-data.md
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/559960-content-moderator'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: 按需网络研讨会
+      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'

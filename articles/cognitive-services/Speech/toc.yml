@@ -1,0 +1,49 @@
+- name: 概述
+  href: Home.md
+- name: 入门
+  expanded: true
+  href: GetStarted/GetStarted.md
+  items:
+    - name: REST
+      href: GetStarted/GetStartedREST.md
+    - name: 客户端库
+      href: GetStarted/GetStartedClientLibraries.md
+      items:
+        - name: 'C# 桌面库'
+          href: GetStarted/GetStartedCSharpDesktop.md
+        - name: 'C# 服务库'
+          href: GetStarted/GetStartedCSharpServiceLibrary.md
+        - name: JavaScript 库
+          href: GetStarted/GetStartedJSWebsockets.md
+        - name: 适用于 Android 的 Java 库
+          href: GetStarted/GetStartedJavaAndroid.md
+        - name: 适用于 iOS 的 Objective-C 库
+          href: GetStarted/Get-Started-ObjectiveC-iOS.md
+- name: 示例
+  href: samples.md
+- name: 概念
+  href: concepts.md
+- name: 操作指南
+  items:
+    - name: 用于使用该服务的身份验证
+      href: How-to/how-to-authentication.md
+    - name: 选择识别模式
+      href: How-to/how-to-choose-recognition-mode.md
+    - name: 音频流的分块传输
+      href: How-to/how-to-chunked-transfer.md
+- name: 引用
+  items:
+    - name: Microsoft 语音 WebSocket 协议
+      href: API-Reference-REST/websocketprotocol.md
+    - name: 文本转语音 API 参考
+      href: API-Reference-REST/BingVoiceOutput.md
+    - name: 支持的语言
+      href: API-Reference-REST/supportedlanguages.md
+- name: 故障排除
+  href: troubleshooting.md
+- name: 资源
+  items:
+    - name: 支持
+      href: support.md
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127980-bing-speech'

@@ -1,0 +1,189 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 语音服务文档（预览版）
+metadata:
+  title: 语音服务文档 - 教程、快速入门和 API 参考 - 认知服务 | Microsoft Docs
+  meta.description: Speech SDK provides developers an easy way to create powerful speech-enabled features in their applications, such as voice command control and dialog, using natural speech conversation, speech transcription and dictation, and speech translation.
+  services: cognitive-services
+  author: noellelacharite
+  manager: nolachar
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.component: speech-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/01/2018
+  ms.author: nolachar
+  ms.openlocfilehash: ae9c5a62dd4f1b83f4d1317b54e5766b80d14245
+  ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/11/2018
+  ms.locfileid: "35356758"
+abstract:
+  description: 使用 Microsoft 语音服务和 SDK，开发人员可以轻松地在其应用程序中创建支持语音的强大功能，例如语音命令控制、听录和听写。 Cortana、Microsoft Office 和其他应用使用同一技术。 Microsoft 语音服务的一项关键优势是能够自定义<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">语音转文本</a>的声学和语言模型，以适应专用词汇、杂音环境和说话的不同方式。 事实上，我们还提供了自定义的<a href="http://aka.ms/customvoice">文本转语音</a>和<a href="http://aka.ms/customtranslator">语音翻译</a>。<br/><br/>我们的语音 SDK 以多种编程语言在多个平台上提供，因此你可以进行实时麦克风管理、实时流式处理或基于批处理的文件通信，具体取决于你的应用程序需求。
+sections:
+- title: 10 分钟快速入门 - 全新 SDK
+  items:
+  - type: paragraph
+    text: 使用快速入门了解如何安装和使用语音 SDK：
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_cplusplus.svg
+    - image:
+        src: media/index/logo_java.jpg
+    rows:
+    - title: Windows
+      values:
+      - href: quickstart-csharp-windows
+      - href: cpp-windows
+      - href: 
+    - title: Linux
+      values:
+      - href: 
+      - href: cpp-linux
+      - href: 
+    - title: 设备 SDK (Android)
+      values:
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk
+- title: 示例和参考
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 示例
+      html: <ul><li><a href="speech-to-text-sample.md">语音识别</a></li><li><a href="intent.md">意向识别</a></li><li><a href="translation.md">翻译</a></li></ul>
+    - title: API 参考
+      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C# API</a></li><li><a href="https://aka.ms/csspeech/cppref">C + + API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java API（设备 SDK）</a></li></ul>
+- title: 语音转文本
+  items:
+  - type: paragraph
+    text: 我们的语音 SDK 支持<b>语音转文本</b> (STT) 或语音识别。  语音 SDK 将音频流听录为应用程序可以接受为输入的文本。 然后，应用程序可以（例如）将文本输入文档中或作为命令来按照它执行相应操作。
+  - type: paragraph
+    text: 以下是通过语音 SDK 进行<b>语音转文本</b>的常见用例。
+  - type: list
+    style: unordered
+    items:
+    - text: 识别简要表述，例如一条命令，不提供中间结果。
+    - text: 听录一段较长的、以前录制的表述，如语音邮件消息。
+    - text: 实时听录流式处理语音以进行听写，提供部分结果。
+    - text: 根据所说的自然语言请求确定用户希望执行的操作。
+  - type: paragraph
+    text: 通过提供实时连续<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">语音转文本</a>功能和中间结果，语音 SDK 为交互式语音听录提供支持。 它还支持语音结束检测、可选自动大写和标点、不雅内容屏蔽和文本规范化。
+  - type: paragraph
+    text: Microsoft 语音服务的一项关键优势是能够自定义<a href="http://aka.ms/customspeech">语音转文本</a>的声学和语言模型，以适应专用词汇、杂音环境和说话的不同方式。
+- title: 语音翻译
+  items:
+  - type: paragraph
+    text: 语音 SDK 还可用于<a href="https://azure.microsoft.com/services/cognitive-services/speech-translation">语音翻译</a>。  有了通过语音 SDK 进行流式处理<b>语音翻译</b>这一功能，该服务将返回可以向用户显示以指示翻译进度的中间结果。 结果可能会作为文本或语音返回。
+  - type: paragraph
+    text: 通过语音 SDK 进行<b>语音翻译</b>的用例包括：
+  - type: list
+    style: unordered
+    items:
+    - text: 为旅行者实现对话翻译移动应用或设备。
+    - text: 为录制的音频和视频的字幕提供自动翻译。
+  - type: paragraph
+    text: <b>语音翻译</b>模型也可以<a href="http://aka.ms/customtranslator">自定义</a>。
+- title: 文本转语音
+  items:
+  - type: paragraph
+    text: 目前，我们通过 REST API 为<a href="https://azure.microsoft.com/services/cognitive-services/text-to-speech">文本转语音</a> (TTS) 或语音合成提供支持，该 API 将纯文本转换为听起来自然的语音，然后此语音将以音频文件形式传递到应用程序。 我们为许多语言提供了多种语音（因性别或口音而异）。
+  - type: paragraph
+    text: 使用语音 SDK 可以访问语音转文本和语音翻译功能。 文本转语音采用 HTTP 上的 REST POST 调用。
+  - type: paragraph
+    text: <b>文本转语音</b> REST API 支持<b>语音合成标记语言</b> (SSML) 标记，因此，你可以为令人烦恼的字词指定确切的语音发音。 SSML 还可以直接在文本中指示语音特征（包括强调、速度、音量、性别和音高）。
+  - type: paragraph
+    text: 如果应用程序需要不支持的方言或独特语音，你可以从自己的语音示例创建<a href="http://aka.ms/customvoice">自定义语音字体</a>。
+  - type: paragraph
+    text: 以下是<b>文本转语音</b> REST API 的常见用例。
+  - type: list
+    style: unordered
+    items:
+    - text: 作为备用屏幕输出提供给有视觉障碍的用户的语音输出。
+    - text: 用于车内应用程序（如导航）的语音提示。
+    - text: 与<b>语音转文本</b> API 协作的对话用户界面。
+- title: 语音设备 SDK
+  items:
+  - type: paragraph
+    text: 随着统一的语音服务的推出，Microsoft 及其合作伙伴现在提供一个针对开发支持语音的设备进行了优化的集成硬件/软件平台：<b>语音设备 SDK</b>。 此 SDK 适用于面向所有类型的应用程序开发智能语音设备。
+  - type: paragraph
+    text: 通过<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk">语音设备 SDK</a> 可以使用品牌特有的、触发音频捕获的自定义唤醒字词构建自己的环境设备。 它还从多渠道来源提供高级音频处理，以用于进行更准确的语音识别，包括噪声抑制、远场语音和波束赋形。
+- title: 旧版本的 SDK
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/uwp.jpg
+    - image:
+        src: media/index/logo_java.jpg
+    - image:
+        src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
+        src: media/index/logo_rest_sr.svg
+    - image:
+        src: media/index/logo_rest_tts.svg
+    rows:
+    - title: Windows
+      values:
+      - href: https://docs.microsoft.com/windows/uwp/design/input/speech-recognition
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: Android
+      values:
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjavaandroid
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: iOS
+      values:
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/get-started-objectivec-ios
+      - href: 
+      - href: 
+      - href: 
+    - title: Web
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjswebsockets
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest?tabs=Powershell
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput
+- title: 正在考虑的 SDK
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_python.svg
+    - image:
+        src: media/index/logo_swift.jpg
+    - image:
+        src: media/index/logo_gopher.svg
+    - image:
+        src: media/index/c.jpg
+    rows:
+    - title: SDK
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 

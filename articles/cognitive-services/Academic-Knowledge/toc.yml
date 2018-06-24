@@ -1,0 +1,54 @@
+- name: 学术知识文档
+- name: 概述
+  items:
+    - name: 了解学术知识 API
+      href: Home.md
+- name: 操作方法指南
+  items:
+    - name: 实体属性
+      href: EntityAttributes.md
+      items:
+        - name: 论文
+          href: PaperEntityAttributes.md
+        - name: 作者
+          href: AuthorEntityAttributes.md
+        - name: 所属机构
+          href: AffiliationEntityAttributes.md
+        - name: 研究领域
+          href: FieldsOfStudyEntityAttributes.md
+        - name: 会议系列
+          href: ConferenceSeriesEntityAttributes.md
+        - name: 会议实例
+          href: ConferenceInstanceEntityAttributes.md
+        - name: 期刊
+          href: JournalEntityAttributes.md
+    - name: 方法
+      items:
+        - name: CalcHistogram
+          href: CalcHistogramMethod.md
+        - name: 评估
+          href: EvaluateMethod.md
+        - name: 解释
+          href: InterpretMethod.md
+        - name: 相似度
+          href: SimilarityMethod.md
+    - name: 查询表达式语法
+      href: QueryExpressionSyntax.md
+    - name: 图遍历
+      items:
+        - name: Lambda 搜索语法
+          href: LambdaSearchSyntax.md
+        - name: 图搜索方法
+          href: GraphSearchMethod.md
+        - name: JSON 搜索语法
+          href: JSONSearchSyntax.md
+- name: 引用
+  items:
+    - name: API 参考
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56332331778daf02acc0a50b/operations/565d9001ca73072048922d97'
+    - name: 实验室 API 参考
+      href: 'https://dev.labs.cognitive.microsoft.com/docs/services/56332331778daf02acc0a50b/operations/565d9001ca73072048922d97'
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'

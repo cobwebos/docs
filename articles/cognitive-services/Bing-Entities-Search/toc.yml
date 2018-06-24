@@ -1,0 +1,75 @@
+- name: 必应实体搜索文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是必应实体搜索？
+      href: search-the-web.md
+- name: REST API 快速入门
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: SDK 快速入门
+  items:
+    - name: SDK 示例概述
+      href: sdk.md
+    - name: '实体搜索 C# 快速入门'
+      href: entity-search-sdk-quickstart.md
+    - name: 实体搜索 Node.js 快速入门
+      href: entity-search-sdk-node-quickstart.md
+    - name: 实体搜索 Python 快速入门
+      href: entity-sdk-python-quickstart.md
+    - name: 实体搜索 Java 快速入门
+      href: entity-sdk-java-quickstart.md
+- name: 教程
+  items:
+    - name: 单页 Web 应用
+      href: tutorial-bing-entities-search-single-page-app.md
+    - name: 单页 Web 应用（源代码）
+      href: tutorial-bing-entities-search-single-page-app-source.md
+- name: 示例
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
+- name: 操作指南
+  items:
+    - name: 使用和显示要求
+      href: use-display-requirements.md
+    - name: 调整和裁剪缩略图
+      href: resize-and-crop-thumbnails.md
+- name: 引用
+  items:
+    - name: 必应实体搜索 API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference'
+- name: 资源
+  items:
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/601036-bing-entity-search-api'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/search?q=bing+entity+search'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: 获取 API 密钥
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api'
+    - name: 试试看！
+      href: 'https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/'
+    - name: 必应实体搜索终结点
+      href: entity-search-endpoint.md
+    - name: 适用于必应实体搜索 API 的分析
+      href: bing-entity-stats.md

@@ -1,0 +1,45 @@
+- name: 语音翻译 API 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于语音翻译 API
+      href: Overview.md
+    - name: 支持的语言
+      href: languages.md
+- name: 快速入门
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: Python
+      href: quickstarts/python.md
+- name: 教程
+  items:
+    - name: 翻译应用
+      href: tutorial-translator-speech-csharp.md
+- name: 示例
+  items:
+    - name: GitHub 上的示例
+      href: 'https://aka.ms/TranslatorGitHub'
+- name: 操作指南
+  items:
+    - name: 注册语音翻译 API
+      href: translator-speech-how-to-signup.md
+- name: 引用
+  href: reference.md
+  items:
+    - name: 语言
+      href: languages-reference.md
+- name: 资源
+  items:
+    - name: 常见问题
+      href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-speech-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

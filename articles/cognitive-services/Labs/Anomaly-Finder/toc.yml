@@ -1,0 +1,48 @@
+- name: 异常查找器文档
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是异常查找器？
+      href: overview.md
+- name: 操作指南
+  items:
+    - name: 使用异常查找器 API
+      items:
+        - name: cURL
+          href: quickstarts/curl.md
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+        - name: Javascript
+          href: quickstarts/javascript.md
+- name: 示例
+  items:
+    - name: 'C# 应用'
+      href: tutorials/csharp-tutorial.md
+    - name: Java 应用
+      href: tutorials/java-tutorial.md
+    - name: Python 应用
+      href: tutorials/python-tutorial.md
+    - name: JavaScript 网页
+      href: tutorials/javascript-tutorial.md
+- name: 引用
+  items:
+    - name: 异常查找器 API 参考
+      href: apiref.md
+    - name: REST v1
+      href: 'https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection'
+- name: 资源
+  items:
+    - name: 订阅密钥
+      href: 'https://labs.cognitive.microsoft.com/en-us/subscriptions?productId=/products/AnomalyDetection.Preview&source=labs'
+    - name: 试试看！
+      href: 'https://labs.cognitive.microsoft.com/en-us/project-anomaly-finder'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/search?q=anomaly+finder'

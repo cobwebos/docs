@@ -1,0 +1,41 @@
+- name: Azure 认知服务文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是认知服务？
+      href: Welcome.md
+- name: 快速入门
+  items:
+    - name: 创建帐户
+      href: cognitive-services-apis-create-account.md
+    - name: 构建图像分类器
+      href: ./custom-vision-service/getting-started-build-a-classifier.md
+    - name: 构建家庭自动化应用
+      href: ./luis/luis-get-started-create-app.md
+    - name: 创建 .NET 文本分析应用
+      href: ./text-analytics/quickstarts/csharp.md
+- name: 教程
+  items:
+    - name: 自定义搜索网页
+      href: ./bing-custom-search/tutorials/custom-search-web-page.md
+    - name: 语言理解应用
+      href: ./luis/luis-nodejs-tutorial-build-bot-framework-sample.md
+    - name: 提高命令的意向准确性
+      href: ./luis/luis-tutorial-batch-testing.md
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: 行为准则
+      href: 'http://go.microsoft.com/fwlink/?LinkId=698895'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase'

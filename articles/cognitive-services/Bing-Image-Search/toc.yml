@@ -1,0 +1,95 @@
+- name: 必应图像搜索文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是必应图像搜索？
+      href: overview.md
+- name: REST API 快速入门
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: SDK 快速入门
+  items:
+    - name: SDK 示例概述
+      href: sdk.md
+    - name: '图像搜索 SDK C# 快速入门'
+      href: image-search-sdk-quickstart.md
+    - name: 图像搜索 SDK Node.js 快速入门
+      href: image-search-sdk-node-quickstart.md
+    - name: 图像搜索 SDK Python 快速入门
+      href: image-sdk-python-quickstart.md
+    - name: 图像搜索 SDK Java 快速入门
+      href: image-sdk-java-quickstart.md
+- name: 教程
+  items:
+    - name: 单页 Web 应用
+      href: tutorial-bing-image-search-single-page-app.md
+    - name: 单页 Web 应用（源代码）
+      href: tutorial-bing-image-search-single-page-app-source.md
+    - name: 上传必应图像以获取见解
+      href: tutorial-image-post.md
+    - name: 上传必应图像以获取见解（源代码）
+      href: tutorial-image-post-source.md
+- name: 示例
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
+- name: 操作指南
+  items:
+    - name: 使用和显示结果
+      href: UseAndDisplayRequirements.md
+    - name: 获取图像见解
+      href: image-insights.md
+    - name: 获取 .gif 图像
+      href: gif-images.md
+    - name: 获取热门图像
+      href: trending-images.md
+    - name: 对图像进行分页
+      href: paging-images.md
+    - name: 调整和裁剪缩略图
+      href: resize-and-crop-thumbnails.md
+    - name: 从 v5 升级到 v7
+      href: bing-image-upgrade-guide-v5-to-v7.md
+- name: 引用
+  items:
+    - name: 必应图像搜索 API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference'
+    - name: 必应图像搜索 API v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference'
+- name: 资源
+  items:
+    - name: 常见问题
+      href: bing-image-search-resource-faq.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/bing-search'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: 获取 API 密钥
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api'
+    - name: 试试看！
+      href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
+    - name: 必应图像搜索终结点
+      href: image-search-endpoint.md
+    - name: 支持的国家/地区和市场
+      href: supported-countries-markets.md
+    - name: 适用于必应图像搜索 API 的分析
+      href: bing-image-stats.md

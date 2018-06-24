@@ -1,0 +1,84 @@
+- name: 必应自定义搜索文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是必应自定义搜索？
+      href: overview.md
+- name: REST API 快速入门
+  expanded: true
+  items:
+    - name: 创建第一个实例
+      href: quick-start.md
+    - name: 'C#'
+      href: call-endpoint-csharp.md
+    - name: Java
+      href: call-endpoint-java.md
+    - name: Node.js
+      href: call-endpoint-nodejs.md
+    - name: Python
+      href: call-endpoint-python.md
+- name: SDK 快速入门
+  items:
+    - name: SDK 示例概述
+      href: sdk.md
+    - name: '自定义搜索 SDK C# 快速入门'
+      href: custom-search-sdk-quickstart.md
+- name: 教程
+  items:
+    - name: 构建自定义搜索网页
+      href: ./tutorials/custom-search-web-page.md
+- name: 示例
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
+- name: 操作指南
+  items:
+    - name: 配置自定义搜索体验
+      href: define-your-custom-view.md
+    - name: 调用自定义搜索
+      href: search-your-custom-view.md
+    - name: 配置托管 UI 体验
+      href: hosted-ui.md
+    - name: 共享自定义搜索
+      href: share-your-custom-search.md
+    - name: 配置自定义自动建议体验
+      href: define-custom-suggestions.md
+    - name: 获取自定义建议
+      href: get-custom-suggestions.md
+    - name: 处理搜索词突出显示
+      href: hit-highlighting.md
+    - name: 网页
+      href: page-webpages.md
+- name: 引用
+  items:
+    - name: 必应自定义自动建议 API 参考
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
+    - name: 必应自定义图像搜索 API 参考
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
+    - name: 必应自定义搜索 API 参考
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
+    - name: 必应搜索 API 使用和显示要求
+      href: use-and-display-requirements.md
+- name: 资源
+  items:
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/search?q=bing+custom+search'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: 获取 API 密钥
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
+    - name: 试试看！
+      href: 'https://aka.ms/bingcustomsearchtryit'
+    - name: 必应自定义搜索终结点
+      href: endpoint-custom.md
+    - name: 支持的国家/地区和市场
+      href: supported-countries-markets.md
