@@ -1,19 +1,19 @@
 ---
 title: 在 Azure IoT Central 应用程序中设置设备模板 | Microsoft Docs
 description: 了解如何使用度量、设置、属性、规则和仪表板设置设备模板。
-services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 52c6c8fe4375354d650f92b73bffc288c9a2ccfe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: bda056a75ae9d696dab389b85fe1bfb2935ee1a8
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201503"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261978"
 ---
 # <a name="set-up-a-device-template"></a>设置设备模板
 
@@ -161,6 +161,59 @@ ms.locfileid: "34201503"
 > [!NOTE]
 > 创建新磁贴后，可以更改属性值。 首先，在屏幕右上角关闭设计模式。
 
+### <a name="create-a-location-property-powered-by-azure-maps"></a>创建由 Azure Maps 提供支持的位置属性
+可以在 Azure IoT Central 中为位置数据提供地理上下文，并映射街道地址的任何纬度和经度坐标，或者仅映射纬度和经度坐标。 Azure IoT Central 中的此功能由 Azure Maps 提供支持。
+
+可以添加两种类型的位置属性：
+- **应用程序位置属性**，它将仅仅存储在应用程序中。 设备不知道应用程序属性。
+- **设备位置属性**，将由设备报告。
+
+####<a name="adding-location-as-an-application-property"></a>添加应用程序位置属性 
+可以在 Azure IoT Central 应用程序中使用 Azure Maps 将位置属性创建为应用程序属性。 例如，可以添加设备安装地址。 
+
+1. 导航到“设备属性”选项卡；确保已启用“设计模式”。
+
+![位置属性](./media/howto-set-up-template/locationcloudproperty1.png)
+
+2. 在“属性”选项卡上，单击“位置”。
+3. （可选）配置位置的显示名称、字段名称和初始值。 
+
+![“位置属性”格式](./media/howto-set-up-template/locationcloudproperty2.png)
+
+有两种支持的格式可以添加位置：
+- **作为地址的位置**
+- **作为坐标的位置** 
+
+4. 单击“保存”。 
+
+![“位置属性”字段](./media/howto-set-up-template/locationcloudproperty3.png)
+
+现在，操作员可以用位置字段格式更新位置值。 
+
+####<a name="adding-location-as-a-device-property"></a>添加设备位置属性 
+
+可以将位置属性创建为由设备报告的设备属性。
+例如，想要跟踪设备位置。
+
+1.  导航到“设备属性”选项卡；确保已启用“设计模式”。
+2.  单击库中的“设备属性”。
+
+![“位置属性”字段](./media/howto-set-up-template/locationdeviceproperty1.png)
+
+3.  配置显示名称、字段名称，并选择“location”作为数据类型。 
+
+> [!NOTE]
+字段名称必须与设备报告的属性名称完全匹配。 
+
+![“位置属性”字段](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+![“位置属性”操作员视图](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+现在，你已经配置了位置属性，将能够添加一个地图以在设备仪表板中直观显示位置。 了解如何[在仪表板中添加位置 Azure 地图](howto-set-up-template.md)。
+
+
+
+
 ## <a name="rules"></a>规则
 
 操作员可以使用规则近乎实时地监视设备。 规则会自动调用**操作**，例如，在触发规则时发送电子邮件。 目前只有一种类型的规则：
@@ -178,6 +231,31 @@ ms.locfileid: "34201503"
 现在，当操作员查看仪表板时，可以看到此磁贴，其中显示了设备的属性和设置：
 
 ![仪表板磁贴](./media/howto-set-up-template/dashboardtile.png)
+
+### <a name="add-location-azure-map-in-dashboard"></a>在仪表板中添加位置 Azure 地图
+
+如果已按照步骤 [创建由 Azure Maps 提供支持的位置属性]((howto-set-up-template.md) 配置位置属性，则可以在设备仪表板中直接使用地图直观显示位置。
+
+1.  导航到“设备仪表板”选项卡；确保已启用“设计模式”。
+2.  在“设备仪表板”中，从“库”中选择“地图”。 
+
+![仪表板位置：Azure 地图选择](./media/howto-set-up-template/locationcloudproperty4map.png)
+
+3.  指定标题，并选择之前已配置为设备属性的一部分的位置属性。
+
+![仪表板位置：Azure 地图配置](./media/howto-set-up-template/locationcloudproperty5map.png)
+
+4.  保存设置，此时会看到显示已选择的位置的地图图块。 
+
+![仪表板位置：Azure 地图可视化](./media/howto-set-up-template/locationcloudproperty6map.png) 
+
+可以根据需要重设地图大小。
+
+现在，当操作员查看仪表板时，他们可以看到已配置的所有仪表板磁贴，包括位置地图！
+
+![仪表板位置：Azure 地图仪表板](./media/howto-set-up-template/locationcloudproperty7map.png) 
+
+
 
 ## <a name="next-steps"></a>后续步骤
 
