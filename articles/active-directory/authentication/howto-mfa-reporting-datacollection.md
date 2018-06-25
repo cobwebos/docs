@@ -10,12 +10,12 @@ ms.service: multi-factor-authentication
 ms.workload: identity
 ms.topic: article
 ms.date: 05/01/2018
-ms.openlocfilehash: d28bb4b8e171ef6189f81acc337088b3c5499ccf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2281a35d1616aa88b0c646fb96cb9f95c3272536
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608133"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264362"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Microsoft Azure 多重身份验证用户数据收集
 
@@ -151,39 +151,39 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 
 ## <a name="gather-data-from-nps-extension"></a>从 NPS 扩展收集数据
 
-使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.)发出导出请求。
+使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview)发出导出请求。
 
 - MFA 信息将包含在导出中，可能需要几个小时甚至几天才能完成导出。
 - AzureMfa/AuthN/AuthNOptCh、AzureMfa/AuthZ/AuthZAdminCh 和 AzureMfa/AuthZ/AuthZOptCh 事件日志中出现的用户名被视为有效，并与导出中提供的信息重复。
 
 ## <a name="delete-data-from-nps-extension"></a>从 NPS 扩展删除数据
 
-使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.)发出“帐户关闭”请求，以删除针对此用户收集的所有 MFA 云服务信息。
+使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview)发出“帐户关闭”请求，以删除针对此用户收集的所有 MFA 云服务信息。
 
 - 完全删除这些数据最长可能需要 30 天。
 
 ## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>从 Windows Server 2016 Azure MFA AD FS 适配器收集数据
 
-使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.)发出导出请求。 
+使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview)发出导出请求。 
 
 - MFA 信息将包含在导出中，可能需要几个小时甚至几天才能完成导出。
 - AD FS 跟踪/调试事件日志（如果已启用）中出现的用户名被视为有效，并与导出中提供的信息重复。
 
 ## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>从 Windows Server 2016 Azure MFA AD FS 适配器删除数据
 
-使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.)发出“帐户关闭”请求，以删除针对此用户收集的所有 MFA 云服务信息。
+使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview)发出“帐户关闭”请求，以删除针对此用户收集的所有 MFA 云服务信息。
 
 - 完全删除这些数据最长可能需要 30 天。
 
 ## <a name="gather-data-for-azure-mfa"></a>收集 Azure MFA 的数据
 
-使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.)发出导出请求。
+使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview)发出导出请求。
 
 - MFA 信息将包含在导出中，可能需要几个小时甚至几天才能完成导出。
 
 ## <a name="delete-data-for-azure-mfa"></a>删除 Azure MFA 的数据
 
-使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.)发出“帐户关闭”请求，以删除针对此用户收集的所有 MFA 云服务信息。
+使用 [Microsoft 隐私门户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview)发出“帐户关闭”请求，以删除针对此用户收集的所有 MFA 云服务信息。
 
 - 完全删除这些数据最长可能需要 30 天。
 

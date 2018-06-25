@@ -3,17 +3,16 @@ title: 将本地 Linux 应用迁移和重新托管到 Azure VM | Microsoft Docs
 description: 了解 Contoso 如何通过将本地 Linux 应用迁移到 Azure VM 来重新托管该应用。
 services: site-recovery
 author: rayne-wiselman
-manager: ''
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 85c377c0fbca32a33cc68c9a1bedfa00ce0a366a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8f039884ca0ea46c128078984d6cab6fd29ac9af
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300368"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220544"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso 迁移：将本地 Linux 应用重新托管到 Azure VM
 
