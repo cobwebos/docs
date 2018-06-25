@@ -3,15 +3,15 @@ title: 使用 Azure Migrate 执行批量发现和评估 | Microsoft Docs
 description: 介绍如何使用 Azure Migrate 服务访问大量本地计算机。
 author: rayne-wiselman
 ms.service: azure-migrate
-ms.topic: article
-ms.date: 06/04/2018
+ms.topic: conceptual
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 89c9cfd4bdc1c483764983c886ba9f96cc75c69e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: dd7524c0114589e0c145cb4c03b0f531d58ce950
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736824"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214685"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -80,7 +80,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 #### <a name="download-the-collector-appliance"></a>下载收集器设备
 
-如果有多个项目，只需将收集器设备下载到 vCenter Server 一次。 下载和设置设备后，为每个项目运行该设备，并指定唯一项目 ID 和密钥。
+如果有多个项目，只需将收集器设备下载到 vCenter 服务器一次。 下载和设置设备后，为每个项目运行该设备，并指定唯一项目 ID 和密钥。
 
 1. 在 Azure Migrate 项目中，选择“开始” > “发现和评估” > “发现计算机”。
 2. 在“发现计算机”中，选择“下载”以下载 .OVA 文件。
@@ -166,8 +166,8 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 | 计数器                                 | 级别 | 设备级别 | 评估影响                    |
 | --------------------------------------- | ----- | ---------------- | ------------------------------------ |
-| cpu.usage.average                       | 1     | 不可用               | 建议的 VM 大小和成本         |
-| mem.usage.average                       | 1     | 不可用               | 建议的 VM 大小和成本         |
+| cpu.usage.average                       | 1     | NA               | 建议的 VM 大小和成本         |
+| mem.usage.average                       | 1     | NA               | 建议的 VM 大小和成本         |
 | virtualDisk.read.average                | 2     | 2                | 磁盘大小、存储成本和 VM 大小 |
 | virtualDisk.write.average               | 2     | 2                | 磁盘大小、存储成本和 VM 大小 |
 | virtualDisk.numberReadAveraged.average  | 1     | 3                | 磁盘大小、存储成本和 VM 大小 |
