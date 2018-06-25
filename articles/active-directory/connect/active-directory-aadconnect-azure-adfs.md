@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5ac1e4c62242c088a0ac84fffc0211baf442b53
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 34a5e223dfc8ff51ce03a973e88a962643c71202
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595193"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212666"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>在 Azure 中部署 Active Directory 联合身份验证服务
 AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 与 Azure AD 或 O365 联合可让用户使用本地凭据进行身份验证，并访问云中的所有资源。 这样，就必须建立高可用性的 AD FS 基础结构来确保能够访问本地和云中的资源。 在 Azure 中部署 AD FS 有助于以最少量的工作实现所需的高可用性。
@@ -305,7 +305,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 1. 使用 PowerShell 在 AD FS 服务器上运行以下 cmdlet，以将它设置为启用。
    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
-2. 从任何外部计算机访问 https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx  
+2. 从任何外部计算机访问 https:\//adfs-server.contoso.com/adfs/ls/IdpInitiatedSignon.aspx。  
 3. 应会看到如下所示的 AD FS 页：
 
 ![测试登录页](./media/active-directory-aadconnect-azure-adfs/test1.png)

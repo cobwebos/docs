@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 29c7994485eeb2b3fdde52d1794704ecb51d65e5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942350"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301059"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -86,10 +86,18 @@ ms.locfileid: "33942350"
 
 在每个配置文件级别，可将 DNS TTL 设置为最低 0 秒，最高 2,147,483,647 秒（最大范围符合 [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt )）。 TTL 为 0 表示下游 DNS 解析器不缓存查询响应，所有查询到应进入流量管理器 DNS 服务器进行解析。
 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>如何了解传入到我的配置文件的查询数量？ 
+流量管理器提供的指标之一是由配置文件响应的查询数。 可以在配置文件聚合级别获取此信息，也可以进一步对其进行拆分来查看返回了特定终结点的查询数量。 此外，还可以设置警报，以便在查询响应数量越过了设置的条件时向你发出通知。 有关更多详细信息，请参阅[流量管理器指标和警报](traffic-manager-metrics-alerts.md)。
+
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>流量管理器的“地理”流量路由方法
 
 ### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>可以在哪些情况下使用地理路由？ 
 只要 Azure 客户需要根据地理区域辨识其用户，即可使用地理路由类型。 例如，通过使用地理流量路由方法可为特定区域的用户提供不同于其他区域的用户体验。 又比如，根据本地数据自主性的规定，只能由同一区域的终结点为用户提供数据。
+
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>如何决定我应当使用性能路由方法还是应当使用地理路由方法？ 
+这两种常用路由方法的主要区别为，在性能路由方法中，主要目标是将流量发送到可以为调用方提供最低延迟的终结点，但是，在地理路由中，主要目标是针对调用方实施地理围栏，以便可以特意将它们路由到特定终结点。 因为地理接近与延迟更低之间存在关联，所以这两种路由方法可能会存在重叠，但是并非始终会重叠。 如果另一地理位置中的终结点可以为调用方提供更好的延迟体验，在这种情况下，性能路由会将用户发送到该终结点，但地理路由始终将用户发送到你为其地理区域映射的终结点。 为了说得更明白一点，请考虑以下示例 - 使用地理路由，你可以进行不常见映射，例如，将来自亚洲的所有流量发送到美国的终结点，将美国的所有流量发送到亚洲的终结点。 在这种情况下，地理路由将特意执行你为其配置的要执行的确切操作，性能优化不是一个考虑因素。 
+>[!NOTE]
+>在某些场景中，你可能同时需要性能和地理路由功能，对于这些场景，嵌套式配置文件可能是不错的选择。 例如，你可以设置一个采用地理路由的父配置文件，用以将来自北美的所有流量发送到一个嵌套的配置文件，该配置文件包含美国的终结点并使用性能路由将那些流量发送到该终结点集合中最合适的终结点。 
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>进行地理路由时，流量管理器支持哪些区域？ 
 可在[此处](traffic-manager-geographic-regions.md)查找流量管理器使用的国家/地区层次结构。 更改会在此页进行更新，但也可以通过 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式检索相同的信息。 
@@ -331,6 +339,9 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 到达终结点的流量管理器运行状况检查次数取决于以下条件：
 - 为监视间隔设置的值（在任意给定时期内，间隔越小意味着到达终结点的请求越多）。
 - 发起运行状况检查的位置数（在前面的常见问题解答中，列出了可发起这些检查的 IP 地址）。
+
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>如果我的终结点发生故障，我如何得到通知？ 
+流量管理器提供的指标之一是配置文件中的终结点的运行状况状态。 可以将此指标作为配置文件中所有终结点的聚合进行查看（例如，75% 的终结点正常运行），也可以在每终结点级别查看此指标。 流量管理器指标是通过 Azure Monitor 公开的，并且，当终结点的运行状况状态发生更改时，你可以使用其[警报功能](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)获得通知。 有关更多详细信息，请参阅[流量管理器指标和警报](traffic-manager-metrics-alerts.md)。  
 
 ## <a name="traffic-manager-nested-profiles"></a>流量管理器嵌套式配置文件
 

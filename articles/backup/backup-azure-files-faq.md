@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: f6dcaee1ac328a9bafce0561f421b772b7e1d119
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7429516538c892bea04d38a98abcfb13ba960d22
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605162"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286393"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -23,7 +23,7 @@ ms.locfileid: "34605162"
 ## <a name="configuring-the-backup-job-for-azure-files"></a>为 Azure 文件配置备份作业
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>为什么我看不到需要保护的部分存储帐户？这些帐户中包含的 Azure 文件共享都是有效的。 <br/>
-在预览期间，Azure 文件共享的备份并不支持所有类型的存储帐户。 请参阅[此处](troubleshoot-azure-files.md#preview-boundaries)的列表，了解一系列受支持的存储帐户。 还有一种可能是，要查找的存储帐户已受保护或已注册到另一保管库中。 从保管库中[注销](troubleshoot-azure-files.md#configuring-backup)可发现其他保管库中要保护的存储帐户。
+在预览期间，Azure 文件共享的备份并不支持所有类型的存储帐户。 请参阅[此处](troubleshoot-azure-files.md#limitations-for-azure-file-share-backup-during-preview)的列表，了解一系列受支持的存储帐户。 还有一种可能是，要查找的存储帐户已受保护或已注册到另一保管库中。 从保管库中[注销](troubleshoot-azure-files.md#configuring-backup)可发现其他保管库中要保护的存储帐户。
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>尝试配置备份时，为什么看不到存储帐户中的部分 Azure 文件共享？ <br/>
 检查是否已在同一恢复服务保管库中对 Azure 文件共享进行保护，或者已在最近将其删除。
@@ -39,13 +39,13 @@ ms.locfileid: "34605162"
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>可以在哪些地理区域备份 Azure 文件共享？ <br/>
 Azure 文件共享备份目前为预览版，只在以下地理区域提供： 
--   澳大利亚东南部 (ASE) 
+-   澳大利亚东部 (AE) 
+- 澳大利亚东南部 (ASE) 
 - 巴西南部 (BRS)
 - 加拿大中部 (CNC)
 -   加拿大东部 (CE)
 -   美国中部 (CUS)
 -   东亚 (EA)
--   东澳大利亚 (AE) 
 -   美国东部 (EUS)
 -   美国东部 2 (EUS2)
 - 日本东部 (JPE)

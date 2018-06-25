@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: b0c8be546b40b36746224ca43c7766ac310fd7ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9542eedecaf8dc6d689bf6192f74eee15287ae99
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178749"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295420"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -67,6 +67,7 @@ a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传�
 ### <a name="ip-addresses-used-for-microsoft-peering"></a>用于 Microsoft 对等互连的 IP 地址
 必须使用自己的公共 IP 地址来设置 BGP 会话。 Microsoft 必须能够通过路由 Internet 注册表和 Internet 路由注册表来验证 IP 地址的所有权。
 
+* 门户中列出的与 Microsoft 对等互连的已播发公共前缀相对应的 IP 将为 Microsoft 核心路由器创建 ACL，目的是允许来自这些 IP 的入站流量。 
 * 必须使用一个唯一的 /29 (IPv4) 或 /125 (IPv6) 子网或两个 /30 (IPv4) 或 /126 (IPv6) 子网为每条 ExpressRoute 线路（如果有多个）的每个对等互连设置 BGP 对等互连。
 * 如果使用 /29 子网，它将拆分成两个 /30 子网。
 * 第一个 /30 子网用于主链路，第二个 /30 子网将用于辅助链路。
