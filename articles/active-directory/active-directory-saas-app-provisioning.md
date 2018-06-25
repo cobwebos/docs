@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2017
+ms.date: 06/07/2018
 ms.author: asmalser
-ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069884"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293290"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>什么是 SaaS 应用的自动化用户预配？
 Azure Active Directory (Azure AD) 允许用户自动创建、维护和删除云 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 应用程序（如 Dropbox、Salesforce、ServiceNow 等）中的用户标识。
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
 **以下是此功能操作的一些示例：**
 
@@ -69,7 +71,7 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 
 有关 Azure AD 中支持预先集成预配连接器的所有应用程序的列表，请参阅[支持用户预配的应用程序列表教程](active-directory-saas-tutorial-list.md)。
 
-有关如何在应用程序中添加 Azure AD 用户预配支持的信息，请参阅[使用 SCIM 在应用程序中自动预配 Azure Active Directory 中的用户和组](active-directory-scim-provisioning.md)。
+有关如何在应用程序中添加 Azure AD 用户预配支持的信息，请参阅[使用 SCIM 在应用程序中自动预配 Azure Active Directory 中的用户和组](manage-apps/use-scim-to-provision-users-and-groups.md)。
 
 如需联系 Azure AD 工程团队以请求其他应用程序的预配支持，请通过 [Azure Active Directory 反馈论坛](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035)提交消息。    
 
@@ -78,6 +80,8 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
     
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>如何设置为自动预配到应用程序？
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 可以在 **[Azure 门户](https://portal.azure.com)** 中开始针对选定的应用程序配置 Azure AD 预配服务。 在“Azure Active Directory”>“企业应用程序”部分中，依次选择“添加”、“所有”，并根据情况添加以下项之一：
 
@@ -102,7 +106,7 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 
     * **根据属性值进行筛选** - 属性映射中的“源对象范围”菜单允许根据特定的属性值进行筛选。 例如，可以指定只能将“Department”属性为“Sales”的用户列入预配范围。 有关详细信息，请参阅[使用范围筛选器](active-directory-saas-scoping-filters.md)。
 
-    * **根据分配进行筛选** - 使用门户的“预配”>“设置”部分中的“范围”菜单，可以指定是只能将“分配的”用户和组列入预配范围，还是应该预配 Azure AD 目录中的所有用户。 有关“分配的”用户和组的信息，请参阅[在 Azure Active Directory 中将用户或组分配到企业应用](active-directory-coreapps-assign-user-azure-portal.md)。
+    * **根据分配进行筛选** - 使用门户的“预配”>“设置”部分中的“范围”菜单，可以指定是只能将“分配的”用户和组列入预配范围，还是应该预配 Azure AD 目录中的所有用户。 有关“分配的”用户和组的信息，请参阅[在 Azure Active Directory 中将用户或组分配到企业应用](manage-apps/assign-user-or-group-access-portal.md)。
     
 * “设置”控制预配服务针对应用程序执行的操作，包括该操作当前是否正在运行。
 
@@ -122,7 +126,7 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 当预配服务启动时，执行的第一次同步是：
 
 1. 查询源系统中的所有用户和组，并检索[属性映射](active-directory-saas-customizing-attribute-mappings.md)中定义的所有属性。
-2. 使用配置的任何[分配](active-directory-coreapps-assign-user-azure-portal.md)或[基于属性的范围筛选器](active-directory-saas-scoping-filters.md)筛选返回的用户和组。
+2. 使用配置的任何[分配](manage-apps/assign-user-or-group-access-portal.md)或[基于属性的范围筛选器](active-directory-saas-scoping-filters.md)筛选返回的用户和组。
 3. 找到要分配的用户，或者在预配范围中找到某个用户后，服务将使用指定的[匹配属性](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties)在目标系统中查询匹配的用户。 示例：如果源系统中的 userPrincipal 名称是匹配的属性并映射到目标系统中的 userName，则预配服务会在目标系统中查询与源系统中 userPrincipal 名称值匹配的 userName。
 4. 如果在目标系统中未找到匹配的用户，则使用从源系统返回的属性创建该用户。
 5. 如果找到匹配的用户，则使用源系统提供的属性更新该用户。
@@ -135,7 +139,7 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 初始同步后，所有的后续同步是：
 
 1. 在源系统中查询自上次存储水印以来已更新的所有用户和组。
-2. 使用配置的任何[分配](active-directory-coreapps-assign-user-azure-portal.md)或[基于属性的范围筛选器](active-directory-saas-scoping-filters.md)筛选返回的用户和组。
+2. 使用配置的任何[分配](manage-apps/assign-user-or-group-access-portal.md)或[基于属性的范围筛选器](active-directory-saas-scoping-filters.md)筛选返回的用户和组。
 3. 找到要分配的用户，或者在预配范围中找到某个用户后，服务将使用指定的[匹配属性](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties)在目标系统中查询匹配的用户。
 4. 如果在目标系统中未找到匹配的用户，则使用从源系统返回的属性创建该用户。
 5. 如果找到匹配的用户，则使用源系统提供的属性更新该用户。
@@ -171,31 +175,50 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 解决所有造成问题的错误后，将从隔离区中删除预配作业，然后，下一个同步周期开始。 如果预配作业在隔离区中保留四周以上，则会禁用预配作业。
 
 
+## <a name="how-long-will-it-take-to-provision-users"></a>预配用户需要多长时间？
+
+性能取决于预配作业执行的是初始同步还是增量同步，如上一部分中所述。
+
+对于**初始同步**，作业时间取决于各种因素，包括预配范围中用户和组的数目，以及源系统中用户和组的总数。 本部分中的下文中汇总了影响初始同步性能的因素的完整列表。
+
+对于**增量同步**，作业时间取决于在该同步周期中检测到的更改数量。 如果有少于 5000 个用户或组成员身份更改，则作业可以在单个增量同步周期内完成。 
+
+下表总结了常见的预配方案的同步时间。 在这些方案中，源系统是 Azure AD，目标系统是 SaaS 应用程序。 同步时间是通过对 SaaS 应用程序 ServiceNow、Workplace、Salesforce 和 Google Apps 的同步作业进行统计分析得出的。
+
+
+| 作用域配置 | 作用域中的用户、组和成员 | 初始同步时间 | 增量同步时间 |
+| -------- | -------- | -------- | -------- |
+| 仅同步已分配的用户和组 |  < 1,000 |  < 30 分钟 | < 30 分钟 |
+| 仅同步已分配的用户和组 |  1,000 - 10,000 | 142 - 708 分钟 | < 30 分钟 |
+| 仅同步已分配的用户和组 |   10,000 - 100,000 | 1,170 - 2,340 分钟 | < 30 分钟 |
+| 同步 Azure AD 中的所有用户和组 |  < 1,000 | < 30 分钟  | < 30 分钟 |
+| 同步 Azure AD 中的所有用户和组 |  1,000 - 10,000 | < 30 - 120 分钟 | < 30 分钟 |
+| 同步 Azure AD 中的所有用户和组 |  10,000 - 100,000  | 713 - 1,425 分钟 | < 30 分钟 |
+| 同步 Azure AD 中的所有用户|  < 1,000  | < 30 分钟 | < 30 分钟 |
+| 同步 Azure AD 中的所有用户 | 1,000 - 10,000  | 43 - 86 分钟 | < 30 分钟 |
+
+
+对于“仅同步已分配的用户和组”配置，可以使用以下公式来确定大概的最小和最大预计**初始同步**时间：
+
+    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
+    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
+    
+影响**初始同步**的完成时间的因素汇总：
+
+* 预配范围中用户和组的总数
+
+* 源系统 (Azure AD) 中存在的用户、组和组成员的总数
+
+* 预配范围中的用户与目标应用程序中的现有用户匹配，还是需要首次创建。 要首次为其创建所有用户的同步作业花费的时间大约是所有用户都与现有用户匹配的同步作业花费的时间的“两倍”。
+
+* [审核日志](active-directory-saas-provisioning-reporting.md)中的错误数。 如果有许多错误，并且预配服务已进入“隔离”状态，则性能较低   
+
+* 目标系统实现的请求速率限制。 某些目标系统实现了在大型同步操作期间可能会影响性能的请求速率限制。 在这些情况下，太快地接收太多请求的应用可能会拖慢其响应速率或关闭连接。 为提高性能，连接器需要进行调整，以不高于应用可以应对的处理速率的速率来向应用发送请求。 Microsoft 构建的预配连接器进行此调整。 
+
+* 已分配的组的数量和大小。 同步已分配的组比同步用户花费的时间要长。 已分配的组的数量和大小都会影响性能。 如果应用程序[为组对象同步启用了映射](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings)，则除了用户之外，还会同步组名称和成员身份等组属性。 这些额外的同步比仅同步用户对象需要花费更长的时间。
+ 
+
 ## <a name="frequently-asked-questions"></a>常见问题
-
-**预配我的用户需要多长时间？**
-
-根据预配作业执行的是初始同步还是增量同步，性能会有所不同。
-
-完成初始同步所需的时间直接取决于源系统中的用户、组和组成员身份数量。 包含几百个对象的极小型源系统只需几分钟就能完成初始同步。 但是，包含几十万甚至几百万个组合对象的源系统将需要更长时间才能完成初始同步。
-
-完成增量同步所需的时间取决于在该同步周期中检测到的更改数量。 如果检测到 5,000 个以下的用户或组成员身份更改，则同步周期通常在 40 分钟内即可完成。 
-
-请注意，整体性能取决于源系统和目标系统。 某些目标系统在大规模同步操作期间实施请求速率限制，这可能会影响性能，而这些系统的预建 Azure AD 预配连接器会考虑此因素。
-
-如果生成了许多错误（记录在[审核日志](active-directory-saas-provisioning-reporting.md)中），并且预配服务已进入“隔离”状态，则性能也会变慢。
-
-**如何提高同步的性能？**
-
-大部分性能问题是在对包含大量组和组成员身份的系统执行初始同步期间发生的。
-
-如果不需要同步组或组成员身份，则可通过以下方式大幅提升同步性能：
-
-1. 将“预配”>“设置”>“范围”菜单设置为“全部同步”，而不是同步分配的用户和组。
-2. 使用[范围筛选器](active-directory-saas-scoping-filters.md)而不是分配来筛选预配用户的列表。
-
-> [!NOTE]
-> 对于支持预配组名称和组属性的应用程序（例如 ServiceNow 和 Google Apps），禁用此功能还会减少完成初始同步所需的时间。 如果不想要将组名称和组成员身份预配到应用程序，可以在预配配置的[属性映射](active-directory-saas-customizing-attribute-mappings.md)中禁用此功能。
 
 **可以如何跟踪当前预配作业的进度？**
 
@@ -219,7 +242,7 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 * [为用户预配自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)
 * [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [用于用户预配的作用域筛选器](active-directory-saas-scoping-filters.md)
-* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md)
+* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 * [应用程序的出站用户预配的分步部署计划](https://aka.ms/userprovisioningdeploymentplan)
 

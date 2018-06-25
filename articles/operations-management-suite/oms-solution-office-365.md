@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 06/07/2018
 ms.author: bwren
-ms.openlocfilehash: 8797e08ad942687b7d2defd765f4fe3f9765812f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e93860328ed6a31b7a06cc3420fb50ab4af9a00c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777842"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236097"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览）
 
@@ -40,28 +40,467 @@ ms.locfileid: "33777842"
 - 若要接收审核数据，必须在 Office 365 订阅中[配置审核](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin)。  请注意，[邮箱审核](https://technet.microsoft.com/library/dn879651.aspx)单独配置。  若未配置审核，仍可安装解决方案和收集其他数据。
  
 
-
 ## <a name="management-packs"></a>管理包
-此解决方案不会在连接的管理组中安装任何管理包。
+此解决方案不会在[连接的管理组](../log-analytics/log-analytics-om-agents.md)中安装任何管理包。
   
+## <a name="install-and-configure"></a>安装和配置
+首先，[将 Office 365 解决方案添加到你的订阅](/monitoring/monitoring-solutions.md#install-a-management-solution)。 在添加后，必须执行本部分中的配置步骤来向其授予对你的 Office 365 订阅的访问权限。
 
-## <a name="configuration"></a>配置
-[向订阅添加 Office 365 解决方案](../log-analytics/log-analytics-add-solutions.md)后，必须将其连接到 Office 365 订阅。
+### <a name="required-information"></a>必需的信息
+在开始此过程之前，收集以下信息。
 
-1. 使用[“添加解决方案”](../log-analytics/log-analytics-add-solutions.md)中所述的流程，将警报管理解决方案添加到 Log Analytics 工作区。
-2. 在 OMS 门户中，转到“设置”。
-3. 在“连接的源”下，选择“Office 365”。
-4. 单击“连接 Office 365”。<br>![连接 Office 365](media/oms-solution-office-365/configure.png)
-5. 使用充当订阅的全局管理员的帐户登录 Office 365。 
-6. 订阅将与解决方案要监视的工作负荷一并列出。<br>![连接 Office 365](media/oms-solution-office-365/connected.png) 
+从 Log Analytics 工作区中：
 
+- 工作区名称：将在其中收集 Office 365 数据的工作区。
+- 资源组名称：包含工作区的资源组。
+- Azure 订阅 ID：包含工作区的订阅。
+
+从 Office 365 订阅中：
+
+- 用户名：管理帐户的电子邮件地址。
+- 租户 ID：Office 365 订阅的唯一 ID。
+- 客户端 ID：一个 16 字符的字符串，表示 Office 365 客户端。
+- 客户端机密：进行身份验证所需的已加密字符串。
+
+### <a name="create-an-office-365-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建一个 Office 365 应用程序
+第一步是在 Azure Active Directory 中创建管理解决方案将用来访问 Office 365 解决方案的应用程序。
+
+1. 通过 [https://portal.azure.com](https://portal.azure.com/) 登录到 Azure 门户。
+1. 依次选择“Azure Active Directory”和“应用注册”。
+1. 单击“新建应用程序注册”。
+
+    ![添加应用注册](media/oms-solution-office-365/add-app-registration.png)
+1. 输入应用程序**名称**和**登录 URL**。  名称应该是描述性的。  使用 _http://localhost_ 作为 URL，将“应用程序类型”保留为“Web 应用 / API”。
+    
+    ![创建应用程序](media/oms-solution-office-365/create-application.png)
+1. 单击“创建”并验证应用程序信息。
+
+    ![已注册的应用](media/oms-solution-office-365/registered-app.png)
+
+### <a name="configure-application-for-office-365"></a>为 Office 365 配置应用程序
+
+1. 单击“设置”以打开“设置”菜单。
+1. 选择“属性”。 将“多租户”更改为“是”。
+
+    ![设置多租户](media/oms-solution-office-365/settings-multitenant.png)
+
+1. 在“设置”菜单中选择“所需权限”，然后单击“添加”。
+1. 单击“选择 API”，然后单击“Office 365 管理 API”。 单击“Office 365 管理 API”。 单击“选择”。
+
+    ![选择 API](media/oms-solution-office-365/select-api.png)
+
+1. 在“选择权限”下，为“应用程序权限”和“委派的权限”选择以下选项：
+    - 读取组织的服务运行状况信息
+    - 读取组织的活动数据
+    - 读取组织的活动报表
+
+    ![选择 API](media/oms-solution-office-365/select-permissions.png)
+
+1. 依次单击“选择”、“完成”。
+1. 单击“授予权限”，然后在要求确认时单击“是”。
+
+    ![授予权限](media/oms-solution-office-365/grant-permissions.png)
+
+### <a name="add-a-key-for-the-application"></a>为应用程序添加密钥
+
+1. 在“设置”窗口中选择“密钥”。
+1. 键入新密钥的**说明**和**持续时间**。
+1. 单击“保存”，然后复制生成的**值**。
+
+    ![密钥](media/oms-solution-office-365/keys.png)
+
+### <a name="add-admin-consent"></a>添加管理员同意
+若要首次启用管理帐户，必须为应用程序提供管理同意。 可以使用 PowerShell 脚本执行此操作。 
+
+1. 将以下脚本保存为 *office365_consent.ps1*。
+
+    ```
+    param (
+        [Parameter(Mandatory=$True)][string]$WorkspaceName,     
+        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
+        [Parameter(Mandatory=$True)][string]$SubscriptionId
+    )
+    
+    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
+        
+    IF ($Subscription -eq $null)
+        {Login-AzureRmAccount -ErrorAction Stop}
+    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+    $Subscription
+    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $WorkspaceLocation= $Workspace.Location
+    $WorkspaceLocationShort= $Workspace.PortalUrl.Split("/",$option)[1].Split(".",$option)[0]
+    $WorkspaceLocation
+    
+    Function AdminConsent{
+    
+    $domain='login.microsoftonline.com'
+    $mmsDomain = 'login.mms.microsoft.com'
+    $WorkspaceLocationShort= $Workspace.PortalUrl.Split("/",$option)[1].Split(".",$option)[0]
+    $WorkspaceLocationShort
+    $WorkspaceLocation
+    switch ($WorkspaceLocation.Replace(" ","").ToLower()) {
+           "eastus"   {$OfficeAppClientId="d7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
+           "westeurope"   {$OfficeAppClientId="c9005da2-023d-40f1-a17a-2b7d91af4ede"; break}
+           "southeastasia"   {$OfficeAppClientId="09c5b521-648d-4e29-81ff-7f3a71b27270"; break}
+           "australiasoutheast"  {$OfficeAppClientId="f553e464-612b-480f-adb9-14fd8b6cbff8"; break}   
+           "westcentralus"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break}
+           "japaneast"   {$OfficeAppClientId="b07d97d3-731b-4247-93d1-755b5dae91cb"; break}
+           "uksouth"   {$OfficeAppClientId="f232cf9b-e7a9-4ebb-a143-be00850cd22a"; break}
+           "centralindia"   {$OfficeAppClientId="ffbd6cf4-cba8-4bea-8b08-4fb5ee2a60bd"; break}
+           "canadacentral"  {$OfficeAppClientId="c2d686db-f759-43c9-ade5-9d7aeec19455"; break}
+           "eastus2"  {$OfficeAppClientId="7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
+           "westus2"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break} #Need to check
+           "usgovvirginia" {$OfficeAppClientId="c8b41a87-f8c5-4d10-98a4-f8c11c3933fe"; 
+                             $domain='login.microsoftonline.us';
+                             $mmsDomain = 'usbn1.login.oms.microsoft.us'; break} # US Gov Virginia
+           default {$OfficeAppClientId="55b65fb5-b825-43b5-8972-c8b6875867c1";
+                    $domain='login.windows-ppe.net'; break} #Int
+        }
+    
+        $OfficeAppRedirectUrl="https://$($WorkspaceLocationShort).$($mmsDomain)/Office365/Authorize"
+        $OfficeAppRedirectUrl
+        $domain
+        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345&redirect_uri=$($OfficeAppRedirectUrl)"
+    }
+    
+    AdminConsent -ErrorAction Stop
+    ```
+
+2. 使用以下命令运行该脚本。
+    ```
+    .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
+    ```
+    示例：
+
+    ```
+    .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
+    ```
+
+1. 将会显示类似于以下窗口的窗口。 单击“接受”。
+    
+    ![管理员同意](media/oms-solution-office-365/admin-consent.png)
+
+### <a name="subscribe-to-log-analytics-workspace"></a>订阅 Log Analytics 工作区
+最后一步是让应用程序订阅 Log Analytics 工作区。 也是使用 PowerShell 脚本执行此操作。
+
+1. 将以下脚本保存为 *office365_subscription.ps1*。
+
+    ```
+    param (
+        [Parameter(Mandatory=$True)][string]$WorkspaceName,
+        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
+        [Parameter(Mandatory=$True)][string]$SubscriptionId,
+        [Parameter(Mandatory=$True)][string]$OfficeUsername,
+        [Parameter(Mandatory=$True)][string]$OfficeTennantId,
+        [Parameter(Mandatory=$True)][string]$OfficeClientId,
+        [Parameter(Mandatory=$True)][string]$OfficeClientSecret
+    )
+    $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
+    $line
+    IF ($Subscription -eq $null)
+        {Login-AzureRmAccount -ErrorAction Stop}
+    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+    $Subscription
+    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
+    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace
+    $WorkspaceLocation= $Workspace.Location
+    $OfficeClientSecret =[uri]::EscapeDataString($OfficeClientSecret)
+    
+    # Client ID for Azure PowerShell
+    $clientId = "1950a258-227b-4e31-a9cf-717495945fc2"
+    # Set redirect URI for Azure PowerShell
+    $redirectUri = "urn:ietf:wg:oauth:2.0:oob"
+    $domain='login.microsoftonline.com'
+    $adTenant = $Subscription[0].Tenant.Id
+    $authority = "https://login.windows.net/$adTenant";
+    $ARMResource ="https://management.azure.com/";
+    $xms_client_tenant_Id ='55b65fb5-b825-43b5-8972-c8b6875867c1'
+    
+    switch ($WorkspaceLocation) {
+           "USGov Virginia" { 
+                             $domain='login.microsoftonline.us';
+                              $authority = "https://login.microsoftonline.us/$adTenant";
+                              $ARMResource ="https://management.usgovcloudapi.net/"; break} # US Gov Virginia
+           default {
+                    $domain='login.microsoftonline.com'; 
+                    $authority = "https://login.windows.net/$adTenant";
+                    $ARMResource ="https://management.azure.com/";break} 
+                    }
+    
+    Function RESTAPI-Auth { 
+    
+    # Load ADAL Azure AD Authentication Library Assemblies
+    $adal = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
+    $null = [System.Reflection.Assembly]::LoadFrom($adal)
+    $null = [System.Reflection.Assembly]::LoadFrom($adalforms)
+     
+    $global:SubscriptionID = $Subscription.SubscriptionId
+    # Set Resource URI to Azure Service Management API
+    $resourceAppIdURIARM=$ARMResource;
+    # Authenticate and Acquire Token 
+    # Create Authentication Context tied to Azure AD Tenant
+    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
+    # Acquire token
+    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
+    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader
+    }
+    
+    Function Failure {
+    $line
+    $formatstring = "{0} : {1}`n{2}`n" +
+                    "    + CategoryInfo          : {3}`n" +
+                    "    + FullyQualifiedErrorId : {4}`n"
+    $fields = $_.InvocationInfo.MyCommand.Name,
+              $_.ErrorDetails.Message,
+              $_.InvocationInfo.PositionMessage,
+              $_.CategoryInfo.ToString(),
+              $_.FullyQualifiedErrorId
+    
+    $formatstring -f $fields
+    $_.Exception.Response
+    
+    $line
+    break
+    }
+    
+    Function Connection-API
+    {
+    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $ResourceName = "https://manage.office.com"
+    $SubscriptionId   =  $Subscription[0].Subscription.Id
+    
+    $line
+    $connectionAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/connections/office365connection_' + $SubscriptionId + $OfficeTennantId + '?api-version=2017-04-26-preview'
+    $connectionAPIUrl
+    $line
+    
+    $xms_client_tenant_Id ='1da8f770-27f4-4351-8cb3-43ee54f14759'
+    
+    $BodyString = "{
+                    'properties': {
+                                    'AuthProvider':'Office365',
+                                    'clientId': '" + $OfficeClientId + "',
+                                    'clientSecret': '" + $OfficeClientSecret + "',
+                                    'Username': '" + $OfficeUsername   + "',
+                                    'Url': 'https://$($domain)/" + $OfficeTennantId + "/oauth2/token',
+                                  },
+                    'etag': '*',
+                    'kind': 'Connection',
+                    'solution': 'Connection',
+                   }"
+    
+    $params = @{
+        ContentType = 'application/json'
+        Headers = @{
+        'Authorization'="$($authHeader)"
+        'x-ms-client-tenant-id'=$xms_client_tenant_Id #Prod-'1da8f770-27f4-4351-8cb3-43ee54f14759'
+        'Content-Type' = 'application/json'
+        }
+        Body = $BodyString
+        Method = 'Put'
+        URI = $connectionAPIUrl
+    }
+    $response = Invoke-WebRequest @params 
+    $response
+    $line
+    
+    }
+    
+    Function Office-Subscribe-Call{
+    try{
+    #----------------------------------------------------------------------------------------------------------------------------------------------
+    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $SubscriptionId   =  $Subscription[0].Subscription.Id
+    $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
+    
+    $OfficeBodyString = "{
+                    'properties': {
+                                    'AuthProvider':'Office365',
+                                    'office365TenantID': '" + $OfficeTennantId + "',
+                                    'connectionID': 'office365connection_" + $SubscriptionId + $OfficeTennantId + "',
+                                    'office365AdminUsername': '" + $OfficeUsername + "',
+                                    'contentTypes':'Audit.Exchange,Audit.AzureActiveDirectory'
+                                  },
+                    'etag': '*',
+                    'kind': 'Office365',
+                    'solution': 'Office365',
+                   }"
+    
+    $Officeparams = @{
+        ContentType = 'application/json'
+        Headers = @{
+        'Authorization'="$($authHeader)"
+        'x-ms-client-tenant-id'=$xms_client_tenant_Id
+        'Content-Type' = 'application/json'
+        }
+        Body = $OfficeBodyString
+        Method = 'Put'
+        URI = $OfficeAPIUrl
+      }
+    
+    $officeresponse = Invoke-WebRequest @Officeparams 
+    $officeresponse
+    }
+    catch{ Failure }
+    }
+    
+    #GetDetails 
+    RESTAPI-Auth -ErrorAction Stop
+    Connection-API -ErrorAction Stop
+    Office-Subscribe-Call -ErrorAction Stop
+    ```
+
+2. 使用以下命令运行该脚本：
+    ```
+    .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
+    ```
+    示例：
+
+    ```
+    .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
+    ```
+
+### <a name="troublshooting"></a>故障排除
+
+在订阅已存在后，如果尝试创建订阅，则会出现以下错误。
+
+```
+Invoke-WebRequest : {"Message":"An error has occurred."}
+At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
++ $officeresponse = Invoke-WebRequest @Officeparams
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand 
+```
+
+如果提供了无效的参数值，则会出现以下错误。
+
+```
+Select-AzureRmSubscription : Please provide a valid tenant or a valid subscription.
+At line:12 char:18
++ ... cription = (Select-AzureRmSubscription -SubscriptionId $($Subscriptio ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Set-AzureRmContext], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzureRMContextCommand
+
+```
+
+## <a name="uninstall"></a>卸载
+可以使用[删除管理解决方案](../monitoring/monitoring-solutions.md#remove-a-management-solution)中的过程删除 Office 365 管理解决方案。 但是，这不会停止将数据从 Office 365 收集到 Log Analytics 中。 请按照下面的过程来取消订阅 Office 365 并停止收集数据。
+
+1. 将以下脚本保存为 *office365_unsubscribe.ps1*。
+
+    ```
+    param (
+        [Parameter(Mandatory=$True)][string]$WorkspaceName,
+        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
+        [Parameter(Mandatory=$True)][string]$SubscriptionId,
+        [Parameter(Mandatory=$True)][string]$OfficeTennantId
+    )
+    $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
+    
+    $line
+    IF ($Subscription -eq $null)
+        {Login-AzureRmAccount -ErrorAction Stop}
+    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+    $Subscription
+    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
+    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace
+    $WorkspaceLocation= $Workspace.Location
+    
+    # Client ID for Azure PowerShell
+    $clientId = "1950a258-227b-4e31-a9cf-717495945fc2"
+    # Set redirect URI for Azure PowerShell
+    $redirectUri = "urn:ietf:wg:oauth:2.0:oob"
+    $domain='login.microsoftonline.com'
+    $adTenant =  $Subscription[0].Tenant.Id
+    $authority = "https://login.windows.net/$adTenant";
+    $ARMResource ="https://management.azure.com/";
+    $xms_client_tenant_Id ='55b65fb5-b825-43b5-8972-c8b6875867c1'
+    
+    switch ($WorkspaceLocation) {
+           "USGov Virginia" { 
+                             $domain='login.microsoftonline.us';
+                              $authority = "https://login.microsoftonline.us/$adTenant";
+                              $ARMResource ="https://management.usgovcloudapi.net/"; break} # US Gov Virginia
+           default {
+                    $domain='login.microsoftonline.com'; 
+                    $authority = "https://login.windows.net/$adTenant";
+                    $ARMResource ="https://management.azure.com/";break} 
+                    }
+    
+    Function RESTAPI-Auth { 
+    
+    # Load ADAL Azure AD Authentication Library Assemblies
+    $adal = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
+    $null = [System.Reflection.Assembly]::LoadFrom($adal)
+    $null = [System.Reflection.Assembly]::LoadFrom($adalforms)
+     
+    $global:SubscriptionID = $Subscription.SubscriptionId
+    # Set Resource URI to Azure Service Management API
+    $resourceAppIdURIARM=$ARMResource;
+    # Authenticate and Acquire Token 
+    # Create Authentication Context tied to Azure AD Tenant
+    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
+    # Acquire token
+    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
+    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader
+    }
+    
+    Function Office-UnSubscribe-Call{
+    
+    #----------------------------------------------------------------------------------------------------------------------------------------------
+    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $ResourceName = "https://manage.office.com"
+    $SubscriptionId   = $Subscription[0].Subscription.Id
+    $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_'  + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
+    
+    $Officeparams = @{
+        ContentType = 'application/json'
+        Headers = @{
+        'Authorization'="$($authHeader)"
+        'x-ms-client-tenant-id'=$xms_client_tenant_Id
+        'Content-Type' = 'application/json'
+        }
+        Method = 'Delete'
+        URI = $OfficeAPIUrl
+      }
+    
+    $officeresponse = Invoke-WebRequest @Officeparams 
+    $officeresponse
+    
+    }
+    
+    #GetDetails 
+    RESTAPI-Auth -ErrorAction Stop
+    Office-UnSubscribe-Call -ErrorAction Stop
+    ```
+
+2. 使用以下命令运行该脚本：
+
+    ```
+    .\office365_unsubscribe.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeTennantID <Tenant ID> 
+    ```
+
+    示例：
+
+    ```
+    .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
+    ```
 
 ## <a name="data-collection"></a>数据收集
 ### <a name="supported-agents"></a>支持的代理
 Office 365 解决方案不会从任何 [OMS 代理](../log-analytics/log-analytics-data-sources.md)中检索数据。  而直接从 Office 365 检索数据。
 
 ### <a name="collection-frequency"></a>收集频率
-每次创建一条记录时，Office 365 都会向 Log Analytics 发送带详细数据的 [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)。
+初次收集数据可能需要几个小时。 在开始收集后，每次创建记录时，Office 365 都会向 Log Analytics 发送带详细数据的 [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)。 在收到此记录几分钟后，此记录将出现在 Log Analytics 中。
 
 ## <a name="using-the-solution"></a>使用解决方案
 向 Log Analytics 工作区添加 Office 365 解决方案时，“Office 365”磁贴将添加到你的仪表板。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
@@ -281,23 +720,11 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 | 查询 | 说明 |
 | --- | --- |
-|Office 365 订阅上所有操作的计数 |Type = OfficeActivity &#124; measure count() by Operation |
-|SharePoint 网站的使用情况|Type=OfficeActivity OfficeWorkload=sharepoint &#124; measure count() as Count by SiteUrl &#124; sort Count asc|
-|文件访问操作数（按用户类型）|Type=OfficeActivity OfficeWorkload=sharepoint Operation=FileAccessed &#124; measure count() by UserType|
+|Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
+|SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | sort by Count asc|
+|文件访问操作数（按用户类型）|search in (OfficeActivity) OfficeWorkload =~ "azureactivedirectory" and "MyTest"|
 |使用特定关键字搜索|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
-|监视 Exchange 上的外部操作|Type=OfficeActivity OfficeWorkload=exchange ExternalAccess = true|
-
-
-
-## <a name="troubleshooting"></a>故障排除
-
-如果 Office 365 解决方案未按预期方式收集数据，请通过 OMS 门户中的“设置” -> “连接的源” -> “Office 365”检查其状态。 下表介绍了每种状态。
-
-| 状态 | 说明 |
-|:--|:--|
-| 活动 | Office 365 订阅处于活动状态，且工作负荷已成功连接到 Log Analytics 工作区。 |
-| 挂起的 | Office 365 订阅处于活动状态，但工作负荷尚未成功连接到 Log Analytics 工作区。 首次连接 Office 365 订阅时，所有工作负荷都将处于此状态直至成功连接。 请等待 24 小时，待所有工作负荷切换为“活动”。 |
-| 非活动 | Office 365 订阅处于非活动状态。 请查看 Office 365 管理员页面了解详细信息。 激活 Office 365 订阅后，从 Log Analytics 工作区取消链接它，再重新链接以开始接收数据。 |
+|监视 Exchange 上的外部操作|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|
 
 
 

@@ -1,0 +1,65 @@
+- name: 必应自动建议文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是必应自动建议？
+      href: get-suggested-search-terms.md
+- name: REST API 快速入门
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: 教程
+  items:
+    - name: 单页 Web 应用
+      href: tutorials/autosuggest.md
+    - name: 单页 Web 应用（源代码）
+      href: tutorials/autosuggest-source.md
+- name: 操作指南
+  items:
+    - name: 使用和显示要求
+      href: UseAndDisplayRequirements.md
+    - name: 从 v5 升级到 v7
+      href: bing-autosuggest-upgrade-guide-v5-to-v7.md
+- name: 引用
+  items:
+    - name: 必应自动推荐 API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference'
+    - name: 必应自动推荐 API v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference'
+- name: 资源
+  items:
+    - name: 常见问题
+      href: bing-autosuggest-resource-faq.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/search?q=bing+autosuggest'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: 获取 API 密钥
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
+    - name: 试试看！
+      href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
+    - name: 必应自动建议终结点
+      href: autosuggest-endpoint.md
+    - name: 支持的语言
+      href: bing-autosuggest-supported-languages.md
+    - name: 适用于必应自动推荐 API 的分析
+      href: bing-autosuggest-stats.md

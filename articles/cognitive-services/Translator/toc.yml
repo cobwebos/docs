@@ -35,6 +35,62 @@
           href: quickstart-java-languages.md
         - name: 获取文本中的句子长度
           href: quickstart-java-sentences.md
+    - name: Node.js
+      items:
+        - name: 翻译文本
+          href: quickstart-nodejs-translate.md
+        - name: 转换文本脚本
+          href: quickstart-nodejs-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-nodejs-detect.md
+        - name: 获取备用翻译
+          href: quickstart-nodejs-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-nodejs-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-nodejs-sentences.md
+    - name: PHP
+      items:
+        - name: 翻译文本
+          href: quickstart-php-translate.md
+        - name: 转换文本脚本
+          href: quickstart-php-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-php-detect.md
+        - name: 获取备用翻译
+          href: quickstart-php-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-php-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-php-sentences.md
+    - name: Python
+      items:
+        - name: 翻译文本
+          href: quickstart-python-translate.md
+        - name: 转换文本脚本
+          href: quickstart-python-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-python-detect.md
+        - name: 获取备用翻译
+          href: quickstart-python-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-python-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-python-sentences.md
+    - name: Ruby
+      items:
+        - name: 翻译文本
+          href: quickstart-ruby-translate.md
+        - name: 转换文本脚本
+          href: quickstart-ruby-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-ruby-detect.md
+        - name: 获取备用翻译
+          href: quickstart-ruby-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-ruby-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-ruby-sentences.md
 - name: 概念
   items:
     - name: 支持的语言
@@ -55,18 +111,8 @@
       href: word-alignment.md
     - name: 使用动态字典功能
       href: dynamic-dictionary.md
-    - name: 使用文本翻译 API
-      items:
-        - name: Node.js
-          href: quickstarts/nodejs.md
-        - name: PHP
-          href: quickstarts/php.md
-        - name: Python
-          href: quickstarts/python.md
-        - name: Ruby
-          href: quickstarts/ruby.md
-        - name: 使用 WPF 创建文本翻译应用
-          href: tutorial-wpf-translation-csharp.md
+    - name: 使用 WPF 创建文本翻译应用
+      href: tutorial-wpf-translation-csharp.md
 - name: 引用
   items:
     - name: v3 文本翻译 API 参考
