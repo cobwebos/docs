@@ -13,14 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/27/2018
+ms.date: 06/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 33afe5fb24309547a7aacfcbe3b799ed413594ac
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 489801852202163ef40d57da0082e39793196d85
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264088"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
 
@@ -49,7 +50,9 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 
 ## <a name="v3-capabilities"></a>v3 功能
 
-v3 基于统一的 API 面，其公开了 Azure 资源管理器上的管理和操作功能。 该版本提供以下功能：  
+v3 基于一个统一的 API 接口，该接口公开了基于 Azure 资源管理器构建的管理和操作功能。 
+
+该版本提供以下功能：  
 
 * “转换”有助于定义媒体处理或分析任务的简单工作流。 “转换”是处理视频和音频文件的一种方法。 可以通过将作业提交到“转换”，重复应用“转换”来处理内容库中的所有文件。
 * “作业”用于处理（编码或分析）视频。 可以使用 HTTP(s)、URL、SAS URL 或位于 Azure Blob 存储中的文件路径，在作业上指定输入内容。 
@@ -58,34 +61,29 @@ v3 基于统一的 API 面，其公开了 Azure 资源管理器上的管理和�
 * 可在资源级别设置基于角色的访问控制，从而锁定对特定资源（如转换、频道）的访问。
 * 多种语言的客户端 SDK：.NET、.NET core、Python、Go、Java 和 Node.js。
 
+## <a name="naming-conventions"></a>命名约定
+
+Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵循 Azure 资源管理器命名约束。 根据 Azure 资源管理器的要求，资源名称始终必须唯一。 因此，可以为资源名称使用任何唯一的标识符字符串（例如，GUID）。 
+
+媒体服务资源名称不能包含“<”、“>”、“%”、“&”、“:”、“&#92;”、“?”、“/”、“*”、“+”、“.”、单引号或任何控制字符。 允许其他所有字符。 资源名称的最大长度为 260 个字符。 
+
+有关 Azure 资源管理器命名的详细信息，请参阅[命名要求](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource)和[命名约定](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)。
+
 ## <a name="how-can-i-get-started-with-v3"></a>如何开始使用 v3？
 
-作为开发者，可以利用媒体服务 [REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) 或客户端库，与 REST API 交互，轻松创建、管理和维护自定义媒体工作流。 Microsoft 生成并支持以下客户端库： 
+作为开发者，可以利用媒体服务 [REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) 或客户端库，与 REST API 交互，轻松创建、管理和维护自定义媒体工作流。 可在[此处](https://github.com/Azure-Samples/media-services-v3-rest-postman)找到 REST Postman 示例。 也可使用[基于 Azure 资源管理器的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)。
 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [.NET 语言](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)
-* .NET Core 
-* Java
+Microsoft 生成并支持以下客户端库： 
 
-  在项目中添加以下依赖项：
-  
-  ```
-  <dependency>
-    <groupId>com.microsoft.azure.media-2018-03-30-preview</groupId>
-    <artifactId>azure-mgmt- media</artifactId>
-    <version>0.0.1-beta</version>
-  </dependency> 
-  ```
-* Node.js 
-
-  请使用以下命令：
-  
-  ```
-  npm install azure-arm-mediaservices
-  ```
-  
-* [Python](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)
-* [Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)
+|客户端库|示例|
+|---|---|
+|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)|[Azure CLI 示例](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
+|[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)|[.NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)|
+|[.NET Core SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)（选择“.NET CLI”选项卡）|[.NET Core 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/mediaservices)||
+|[Node.js SDK](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest)|[Node.js 示例](https://github.com/Azure-Samples/media-services-v3-node-tutorials)|
+|[Python SDK](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)||
+|[Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)||
 
 媒体服务提供 [Swagger 文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media)，此类文件可用于为首选语言/技术生成 SDK。  
 

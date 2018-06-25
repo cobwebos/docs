@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d52691dbec932a3515c90e757863be01ade086cc
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: aa6f3560d3939eb448c4193e3b3301073c601904
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715949"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284031"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
 

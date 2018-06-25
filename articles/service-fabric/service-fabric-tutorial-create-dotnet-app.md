@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: df455f46e5fbc6bc1a4a7f0c30eac1bb185dea3d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: a1197277b97c14e95bdab67f7c3d00b75a841f22
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312689"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36267568"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 本教程是一个系列中的第一部分。  其中介绍了如何使用 ASP.NET Core Web API 前端和有状态后端服务创建 Azure Service Fabric 应用程序以存储数据。 完成后，将生成一个投票应用程序，其中包含 ASP.NET Core Web 前端，用于将投票结果保存到群集的有状态后端服务中。 如果不想手动创建投票应用程序，可以[下载已完成应用程序的源代码](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)，跳到[大致了解投票示例应用程序](#walkthrough_anchor)。  如果需要，还可以观看本教程的[视频演练](https://channel9.msdn.com/Events/Connect/2017/E100)。
@@ -74,9 +74,21 @@ ms.locfileid: "32312689"
    ![使用 ASP.NET Core Web API 服务创建应用程序之后的解决方案资源管理器]( ./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-service.png)
 
 ### <a name="add-angularjs-to-the-votingweb-service"></a>将 AngularJS 添加到 VotingWeb 服务
-使用 [Bower 支持](/aspnet/core/client-side/bower)将 [AngularJS](http://angularjs.org/) 添加到服务。 首先，将 Bower 配置文件添加到项目。  在解决方案资源管理器中，右键单击“VotingWeb”，并选择“添加”->“新建项”。 依次选择“Web”、“Bower 配置文件”。  随即会创建 *bower.json* 文件。
+使用 [Bower 支持](/aspnet/core/client-side/bower)将 [AngularJS](http://angularjs.org/) 添加到服务。 首先，向项目添加 *.bowerrc* 设置文件。  在解决方案资源管理器中，右键单击“VotingWeb”，并选择“添加”->“新建项”。 选择“C#”，然后选择“JSON 文件”。  在“名称”字段中输入 **.bowerrc**，然后单击“添加”。
 
-打开 bower.json，添加 angular 和 angular-bootstrap 的条目，然后保存所做更改。
+打开 *.bowerrc* 并将其内容替换为以下内容（指示 Bower 会将包资产安装到 *wwwroot/lib* 目录）。
+
+```json
+{
+ "directory": "wwwroot/lib"
+}
+```
+
+保存对 *.bowerrc* 所做的更改。  这样就会在项目中创建一个 *.bowerrc* 文件。  
+
+接下来，将 Bower 配置文件添加到项目。  在解决方案资源管理器中，右键单击“VotingWeb”，并选择“添加”->“新建项”。 选择“C#”，然后选择“JSON 文件”。  在“名称”字段中输入 **bower.json**，然后单击“添加”。
+
+打开 *bower.json*，将内容替换为 angular 和 angular-bootstrap 的以下条目，然后保存所做的更改。
 
 ```json
 {
@@ -92,7 +104,8 @@ ms.locfileid: "32312689"
   }
 }
 ```
-保存 bower.json 文件后，Angular 安装在项目的 wwwroot/lib 文件夹中。 此外，它还会在 Dependencies/Bower 文件夹内列出。
+
+保存 *bower.json* 文件以后，Visual Studio 的 Bower 支持会将 Angular 安装在项目的 *wwwroot/lib* 文件夹中。 此外，它还会在 Dependencies/Bower 文件夹内列出。
 
 ### <a name="update-the-sitejs-file"></a>更新 site.js 文件
 打开 wwwroot/js/site.js 文件。  将其内容替换为“主文件夹”视图所用的 JavaScript：

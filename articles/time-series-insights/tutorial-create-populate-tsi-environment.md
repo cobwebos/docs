@@ -2,17 +2,17 @@
 title: 创建 Azure 时序见解环境
 description: 了解如何创建时序见解环境，并在其中填充模拟设备的数据。
 services: time-series-insights
-author: BryanLa
+author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/04/2018
 ms.author: bryanla
-ms.openlocfilehash: 434f9f7890b909746fd1a0f72a2dea5d7bb27e92
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b57e688b5f830c8c7d34315a68be94e4e4c99466
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301348"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295841"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教程：创建 Azure 时序见解环境
 
@@ -230,9 +230,9 @@ IoT 中心提供多个终结点用于与其他执行组件共享功能。 将数
 > * 运行设备模拟以将数据流式传输到 TSI 环境
 > * 验证模拟的遥测数据
 
-了解如何创建自己的 TSI 环境后，请转到以下文章详细了解规划过程：
+了解如何创建自己的 TSI 环境后，请学习如何生成可以使用 TSI 环境中的数据的 Web 应用程序。
 
 > [!div class="nextstepaction"]
-> [规划 Azure 时序见解环境](time-series-insights-environment-planning.md)
+> [创建 Azure 时序见解单页 Web 应用](tutorial-create-tsi-sample-spa.md)
 
 

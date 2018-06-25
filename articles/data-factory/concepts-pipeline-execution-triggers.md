@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/29/2018
+ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: e9fb1088110212a0971ea1af7bbfbecb7d150e21
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715031"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293473"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -142,6 +142,8 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 - 翻转窗口触发器：一种触发器，可以定期运行，同时还能保留状态。 Azure 数据工厂目前不支持基于事件的触发器。 例如，对文件到达事件进行响应的管道运行的触发器不受支持。
 
+- 基于事件的触发器：响应某个事件的触发器。
+
 管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道，单个触发器也可以启动多个管道。 在以下触发器定义中，pipelines 属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
 
 ### <a name="basic-trigger-definition"></a>基本的触发器定义
@@ -175,11 +177,6 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 计划触发器按时钟计划运行管道。 此触发器支持定期和高级日历选项。 例如，此触发器支持“每周”或“星期一下午 5:00 和星期四晚上 9:00”之类的时间间隔。 计划触发器很灵活，因为数据集模式与数据类型无关，该触发器不区分时序数据和非时序数据。
 
 如需计划触发器的详细信息和示例，请参阅[创建计划触发器](how-to-create-schedule-trigger.md)。
-
-## <a name="tumbling-window-trigger"></a>翻转窗口触发器
-翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。
-
-如需翻转窗口触发器的详细信息和示例，请参阅[创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
 
 ## <a name="schedule-trigger-definition"></a>计划触发器定义
 创建计划触发器时，请使用 JSON 定义指定计划和定期触发。 
@@ -322,6 +319,17 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **工作日** | 运行触发器的星期日期。 此值只能使用与星期相关的频率来指定。|<br />- Monday<br />- Tuesday<br />- Wednesday<br />- Thursday<br />- Friday<br />- Saturday<br />- Sunday<br />- 星期值的数组（最大数组值为 7）<br /><br />星期值不区分大小写|
 | **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 |- **monthlyOccurence** 对象的数组：`{ "day": day,  "occurrence": occurence }`<br />- **day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。<br />- **occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。|
 | **monthDays** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 |<= -1 且 >= -31 的任意值<br />>= 1 且 <= 31 的任意值<br />- 值组成的数组|
+
+## <a name="tumbling-window-trigger"></a>翻转窗口触发器
+翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。
+
+如需翻转窗口触发器的详细信息和示例，请参阅[创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
+
+## <a name="event-based-trigger"></a>基于事件的触发器
+
+基于事件的触发器在 Azure Blob 存储中通过运行管道来响应某个事件，例如某个文件已到达，或者某个文件已删除。
+
+若要详细了解基于事件的触发器，请参阅[创建可以通过运行管道来响应事件的触发器](how-to-create-event-trigger.md)。
 
 ## <a name="examples-of-trigger-recurrence-schedules"></a>触发器定期触发计划示例
 此部分提供定期触发计划的示例， 重点介绍 **schedule** 对象及其元素。

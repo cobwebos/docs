@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 02/01/2018
+ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea70d6053f12c33d9c3ff4c69f22a41130c783e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69c0661f515f062a6a99b0692130d52eb23d20d6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171071"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285893"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -29,7 +29,7 @@ ms.locfileid: "30171071"
 > [!NOTE]
 > 如果你对 Azure 数据工厂不太熟悉，请在学习本快速入门之前参阅 [Azure 数据工厂简介](data-factory-introduction.md)。 
 >
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用第 1 版的服务（即正式版 (GA)），请参阅[数据工厂第 1 版教程](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用第 1 版的服务（即正式版 (GA)），请参阅[数据工厂第 1 版教程](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -70,7 +70,7 @@ ms.locfileid: "30171071"
 9. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
    ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
-10. 在“入门”页的左侧面板中，切换到“编辑”选项卡。 
+10. 在“入门”页的左侧面板中，切换到“创作”选项卡。 
 
     ![“入门”页](./media/quickstart-create-data-factory-portal/get-started-page.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "30171071"
    ![用于创建新连接的按钮](./media/quickstart-create-data-factory-portal/new-connection-button.png)    
 2. 在“新建链接服务”页中，选择“Azure Blob 存储”，然后选择“继续”。 
 
-   ![选择“Azure Blob 存储”磁贴](./media/quickstart-create-data-factory-portal/select-azure-storage.png)
+   ![选择“Azure Blob 存储”磁贴](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 3. 完成以下步骤： 
 
    a. 至于“名称”，请输入 **AzureStorageLinkedService**。
@@ -91,12 +91,9 @@ ms.locfileid: "30171071"
 
    c. 选择“测试连接”，确认数据工厂服务可以连接到存储帐户。 
 
-   d.单击“下一步”。 选择“保存”保存链接服务。 
+   d. 选择“保存”保存链接服务。 
 
    ![Azure 存储链接服务设置](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
-4. 确认可以在链接服务列表中看到 **AzureStorageLinkedService**。 
-
-   ![列表中的 Azure 存储链接服务](./media/quickstart-create-data-factory-portal/azure-storage-linked-service-in-list.png)
 
 ## <a name="create-datasets"></a>创建数据集
 此过程创建两个数据集：**InputDataset** 和 **OutputDataset**。 这两个数据集的类型为 **AzureBlob**。 它们引用在上一部分创建的 Azure 存储链接服务。 
@@ -112,36 +109,29 @@ ms.locfileid: "30171071"
    ![用于创建数据集的菜单](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
 2. 在“新建数据集”页中，选择“Azure Blob 存储”，然后选择“完成”。 
 
-   ![选择“Azure Blob 存储”](./media/quickstart-create-data-factory-portal/select-azure-blob-storage.png)
-3. 在数据集的“属性”窗口中，输入 **InputDataset** 作为**名称**。 
+   ![选择“Azure Blob 存储”](./media/quickstart-create-data-factory-portal/select-azure-blob-dataset.png)
+3. 在数据集的“常规”选项卡中，输入 **InputDataset** 作为**名称**。 
 
-   ![数据集常规设置](./media/quickstart-create-data-factory-portal/dataset-general-page.png)
 4. 切换到“连接”选项卡，然后完成以下步骤： 
 
-   a. 至于“链接服务”，请选择“AzureStorageLinkedService”。
+    a. 至于“链接服务”，请选择“AzureStorageLinkedService”。
 
-   b. 对于“文件路径”，请选择“浏览”按钮。
+    b. 对于“文件路径”，请选择“浏览”按钮。
 
-      ![“连接”选项卡和“浏览”按钮](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. 在“选择文件或文件夹”窗口中浏览到 **adftutorial** 容器中的 **input** 文件夹，选择 **emp.txt** 文件，然后选择“完成”。
+    ![“连接”选项卡和“浏览”按钮](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. 在“选择文件或文件夹”窗口中浏览到 **adftutorial** 容器中的 **input** 文件夹，选择 **emp.txt** 文件，然后选择“完成”。
 
-      ![以浏览方式查找输入文件](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
+    ![以浏览方式查找输入文件](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
     
-   d.单击“下一步”。 （可选）选择“预览数据”，预览 emp.txt 文件中的数据。     
+   d. （可选）选择“预览数据”，预览 emp.txt 文件中的数据。     
 5. 重复创建输出数据集的步骤：  
 
    a. 选择“+ (加)”按钮，然后选择“数据集”。
 
    b. 在“新建数据集”页中，选择“Azure Blob 存储”，然后选择“完成”。
 
-   c. 指定 **OutputDataset** 作为名称。
+   c. 在“常规”表中，指定 **OutputDataset** 作为名称。
 
-   d.单击“下一步”。 输入 **adftutorial/output** 作为文件夹。 如果 **output** 文件夹不存在，复制活动会在运行时创建它。
-
-   e. 输入 `@CONCAT(pipeline().RunId, '.txt')` 作为文件名。 
-   
-      每次运行管道时，该管道运行都与一个与之关联的唯一 ID。 此表达式将管道的运行 ID 与 **.txt** 连接起来，为输出文件名赋值。 如需支持的系统变量和表达式的列表，请参阅[系统变量](control-flow-system-variables.md)和[表达式语言](control-flow-expression-language-functions.md)。
-
-   ![输出数据集设置](./media/quickstart-create-data-factory-portal/output-dataset-settings.png)
+   d. 在“连接”选项卡中，选择 **AzureStorageLinkedService** 作为链接服务，然后输入 **adftutorial/output** 作为文件夹。 如果 **output** 文件夹不存在，复制活动会在运行时创建它。
 
 ## <a name="create-a-pipeline"></a>创建管道 
 此过程创建和验证一个管道，其中包含的复制活动可使用输入和输出数据集。 复制活动将数据从输入数据集设置中指定的文件复制到输出数据集设置中指定的文件。 如果输入数据集只指定了一个文件夹（不是文件名），则复制活动会将源文件夹中的所有文件复制到目标。 
@@ -149,45 +139,33 @@ ms.locfileid: "30171071"
 1. 选择“+ (加)”按钮，然后选择“管道”。 
 
    ![用于创建新管道的菜单](./media/quickstart-create-data-factory-portal/new-pipeline-menu.png)
-2. 在“属性”窗口中指定 **CopyPipeline** 作为**名称**。 
+2. 在“常规”选项卡中指定 **CopyPipeline** 作为**名称**。 
 
-   ![管道常规设置](./media/quickstart-create-data-factory-portal/pipeline-general-settings.png)
 3. 在“活动”工具箱中，展开“数据流”。 将“复制”活动从“活动”工具箱拖到管道设计器图面。 也可在“活动”工具箱中搜索活动。 指定 **CopyFromBlobToBlob** 作为**名称**。
 
    ![复制活动常规设置](./media/quickstart-create-data-factory-portal/copy-activity-general-settings.png)
 4. 切换到复制活动设置中的“源”选项卡，选择 **InputDataset** 作为**源数据集**。
 
-   ![复制活动源设置](./media/quickstart-create-data-factory-portal/copy-activity-source-settings.png)    
 5. 切换到复制活动设置中的“接收器”选项卡，选择 **OutputDataset** 作为**接收器数据集**。
 
-   ![复制活动接收器设置](./media/quickstart-create-data-factory-portal/copy-activity-sink-settings.png)    
-7. 选择“验证”对管道设置进行验证。 确认已成功验证管道。 若要关闭验证输出，请选择 **>>**（右箭头）按钮。 
+6. 在画布上面的管道工具栏中单击“验证”，以便验证管道设置。 确认已成功验证管道。 若要关闭验证输出，请选择 **>>**（右箭头）按钮。 
 
-   ![验证管道](./media/quickstart-create-data-factory-portal/pipeline-validate-button.png)
+## <a name="debug-the-pipeline"></a>调试管道
+此步骤对管道进行调试，然后再将其部署到数据工厂。 
 
-## <a name="test-run-the-pipeline"></a>测试性运行管道
-此步骤对管道进行测试性运行，然后再将其部署到数据工厂。 
-
-1. 在管道的工具栏中选择“测试性运行”。 
+1. 在画布上面的管道工具栏中单击“调试”，以便触发测试性运行。 
     
-   ![管道测试性运行](./media/quickstart-create-data-factory-portal/pipeline-test-run.png)
-2. 确认可以在管道设置的“输出”选项卡中看到管道运行的状态。 
+2. 确认可以在底部的管道设置的“输出”选项卡中看到管道运行的状态。 
 
-   ![测试性运行输出](./media/quickstart-create-data-factory-portal/test-run-output.png)    
 3. 确认可以在 **adftutorial** 容器的 **output** 文件夹中看到输出文件。 如果 output 文件夹不存在，数据工厂服务会自动创建它。 
-    
-   ![验证输出](./media/quickstart-create-data-factory-portal/verify-output.png)
-
 
 ## <a name="trigger-the-pipeline-manually"></a>手动触发管道
 在此过程中，请将实体（链接服务、数据集、管道）部署到 Azure 数据工厂， 然后手动触发管道运行。 也可将实体发布到自己的 Visual Studio Team Services GIT 存储库，这在[另一教程](tutorial-copy-data-portal.md?#configure-code-repository)中有介绍。
 
-1. 在触发管道之前，必须将实体发布到数据工厂。 若要进行发布，请选择左窗格中的“全部发布”。 
+1. 在触发管道之前，必须将实体发布到数据工厂。 若要进行发布，请选择顶部的“全部发布”。 
 
    ![发布按钮](./media/quickstart-create-data-factory-portal/publish-button.png)
-2. 若要手动触发管道，请选择工具栏中的“触发器”，然后选择“立即触发”。 
-    
-   ![“立即触发”命令](./media/quickstart-create-data-factory-portal/pipeline-trigger-now.png)
+2. 若要手动触发管道，请选择管道工具栏中的“触发器”，然后选择“立即触发”。 
 
 ## <a name="monitor-the-pipeline"></a>监视管道
 
@@ -206,15 +184,12 @@ ms.locfileid: "30171071"
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>按计划触发管道
 在本教程中，此过程为可选过程。 可以创建*计划程序触发器*，将管道计划为定期运行（每小时运行一次、每天运行一次，等等）。 此过程创建一个触发器。该触发器每分钟运行一次，直至指定的结束日期和时间。 
 
-1. 切换到“编辑”选项卡。 
+1. 切换到“创作”选项卡。 
 
-   ![编辑按钮](./media/quickstart-create-data-factory-portal/switch-edit-tab.png)
-1. 在菜单上选择“触发器”，然后选择“新建/编辑”。 
+2. 转到管道，选择管道工具栏中的“触发器”，然后选择“新建/编辑”。 
 
-   ![新触发器的菜单](./media/quickstart-create-data-factory-portal/new-trigger-menu.png)
 2. 在“添加触发器”页中选择“选择触发器”，然后选择“新建”。 
 
-   ![适用于添加新触发器的选择](./media/quickstart-create-data-factory-portal/add-trigger-new-button.png)
 3. 在“新建触发器”页的“结束”下，选择“在特定日期”，指定一个结束时间，使之比当前时间晚数分钟，然后选择“应用”。 
 
    每次管道运行都需要支付相关成本，因此请指定适当的结束时间，使之仅比开始时间晚数分钟。 确保两个时间是在同一天。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在将解决方案发布到数据工厂之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。 
@@ -228,7 +203,6 @@ ms.locfileid: "30171071"
    ![警告和“完成”按钮](./media/quickstart-create-data-factory-portal/new-trigger-finish.png)
 6. 选择“全部发布”，将所做的更改发布到数据工厂。 
 
-   ![发布按钮](./media/quickstart-create-data-factory-portal/publish-button.png)
 8. 在左侧切换到“监视”选项卡。 选择“刷新”可刷新列表。 从发布时间到结束时间这段时间内，可以看到管道每分钟运行一次。 
 
    请注意“触发因素”列中的值。 手动触发器运行是在此前执行的步骤（“立即触发”）中完成的。 

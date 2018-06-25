@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/05/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 2ceb350883bc6f2b40d88d5cf595b06b074013d1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802045"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209810"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
 Log Analytics 包括以下信息：收集的数据量、哪些源发送了数据、所发送数据的不同类型。  使用“Log Analytics 使用情况”仪表板查看和分析数据使用情况。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
@@ -59,7 +59,9 @@ Log Analytics 包括以下信息：收集的数据量、哪些源发送了数据
 - 数据量超过指定的量。
 - 预测数据量会超过指定的量。
 
-Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 如果在过去 24 小时内收集的数据超过 100 GB，则以下查询就会有结果：
+Azure 警报支持使用搜索查询的[日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)。 
+
+如果在过去 24 小时内收集的数据超过 100 GB，则以下查询就会有结果：
 
 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
 
@@ -69,27 +71,35 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 
 若要针对其他数据量发出警报，请在查询中将 100 更改为要发出警报的 GB 数。
 
-执行[创建警报规则](log-analytics-alerts-creating.md#create-an-alert-rule)中介绍的步骤，当数据收集量超出预期时，系统就会通知你。
+执行[创建新的日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)中介绍的步骤，当数据收集量超出预期时，系统就会发出通知。
 
 为第一个查询创建警报时，如果 24 小时内的数据超出 100 GB，则请进行如下设置：  
-- 将“名称”设置为“24 小时内的数据量大于 100 GB”  
-- 将“严重性”设置为“警告”  
-- 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`   
-- 将“时间窗口”设置为“24 小时”。
-- 将“警报频率”设置为“一小时”，因为使用情况数据一小时才更新一次。
-- 将“生成警报的基础”设置为“结果数”
-- 将“结果数”设置为“大于 0”
 
-执行[将操作添加到警报规则](log-analytics-alerts-actions.md)中介绍的步骤，为警报规则配置电子邮件、Webhook 或 Runbook 操作。
+- **定义警报条件**将 Log Analytics 工作区指定为资源目标。
+- **警报条件**指定下列项：
+   - **信号名称**选择“自定义日志搜索”。
+   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **警报逻辑****基于***结果数*，**条件***大于***阈值** *0*
+   - 将“时间段”设置为 1440 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
+- **定义警报详细信息**指定以下项：
+   - 将“名称”设置为“24 小时内的数据量大于 100 GB”
+   - 将“严重性”设置为“警告”
+
+指定现有的操作组或创建一个新[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)，以便当日志警报匹配条件时，你会收到通知。
 
 为第二个查询创建警报时，如果预测 24 小时内的数据会超出 100 GB，则请进行如下设置：
-- 将“名称”设置为“预期 24 小时内的数据量大于 100 GB”
-- 将“严重性”设置为“警告”
-- 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
-- 将“时间窗口”设置为“3 小时”。
-- 将“警报频率”设置为“一小时”，因为使用情况数据一小时才更新一次。
-- 将“生成警报的基础”设置为“结果数”
-- 将“结果数”设置为“大于 0”
+
+- **定义警报条件**将 Log Analytics 工作区指定为资源目标。
+- **警报条件**指定下列项：
+   - **信号名称**选择“自定义日志搜索”。
+   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **警报逻辑****基于***结果数*，**条件***大于***阈值** *0*
+   - 将“时间段”设置为 180 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
+- **定义警报详细信息**指定以下项：
+   - 将“名称”设置为“预期 24 小时内的数据量大于 100 GB”
+   - 将“严重性”设置为“警告”
+
+指定现有的操作组或创建一个新[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)，以便当日志警报匹配条件时，你会收到通知。
 
 收到警报后，请执行以下部分介绍的步骤，排查使用量超出预期的原因。
 
@@ -155,12 +165,11 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 
 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。
 
-
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何使用搜索语言，请参阅 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)。 可以使用搜索查询，对使用情况数据执行其他分析。
-* 执行[创建警报规则](log-analytics-alerts-creating.md#create-an-alert-rule)中介绍的步骤，当满足搜索条件时，系统就会通知你
-* 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据
-* 若要配置有效的安全事件收集策略，请参阅 [Azure 安全中心筛选策略](../security-center/security-center-enable-data-collection.md)
-* 更改[性能计数器配置](log-analytics-data-sources-performance-counters.md)
-* 若要修改事件收集设置，请参阅[事件日志配置](log-analytics-data-sources-windows-events.md)
-* 若要修改 syslog 收集设置，请参阅 [syslog 配置](log-analytics-data-sources-syslog.md)
+* 执行[创建新的日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)中介绍的步骤，当满足搜索条件时，系统就会通知你。
+* 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。
+* 若要配置有效的安全事件收集策略，请参阅 [Azure 安全中心筛选策略](../security-center/security-center-enable-data-collection.md)。
+* 更改[性能计数器配置](log-analytics-data-sources-performance-counters.md)。
+* 若要修改事件收集设置，请参阅[事件日志配置](log-analytics-data-sources-windows-events.md)。
+* 若要修改 syslog 收集设置，请参阅 [syslog 配置](log-analytics-data-sources-syslog.md)。

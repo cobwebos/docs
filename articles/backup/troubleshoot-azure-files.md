@@ -8,31 +8,29 @@ ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: bdb35cf47b339ff2089b3849283a71aa9d8fbc3d
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 797637fbaaeb0577d0437f32d4ce244a738be84b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807408"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287315"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>排查 Azure 文件共享备份问题
 可参考下表中所列信息，排查使用 Azure 文件共享备份时遇到的问题和错误。
 
-## <a name="preview-boundaries"></a>预览版边界
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>预览版期间 Azure 文件共享备份的限制
 Azure 文件共享备份处于预览状态。 Azure 文件共享不支持以下备份场景：
-- 保护具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能的存储帐户中的 Azure 文件共享。
-- 保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
-- 使用 PowerShell 或 CLI 备份 Azure 文件共享。
+- 不能保护具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能的存储帐户中的 Azure 文件共享。
+- 不能保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
+- 无法使用 PowerShell 或 CLI 通过 Azure 备份来保护 Azure 文件。
+- 每天的计划备份数上限为 1。
+- 每天的按需备份数上限为 4。
+- 在存储帐户上使用[资源锁定](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)，防止意外删除恢复服务保管库中的备份。
+- 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
 
 \*具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能的存储帐户中的 Azure 文件共享将作为 GRS 发挥作用并按 GRS 价格计费
 
 使用[区域冗余存储空间](../storage/common/storage-redundancy-zrs.md) (ZRS) 复制对存储帐户中的 Azure 文件共享进行备份，目前只能在美国中部 (CUS) 和美国东部 2 (EUS2) 中使用
-
-### <a name="limitations"></a>限制
-- 每天的最大计划内备份数为 1。
-- 每天的最大按需备份数为 4。
-- 在存储帐户上使用资源锁定，防止意外删除恢复服务保管库中的备份。
-- 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原故障
 
 ## <a name="configuring-backup"></a>配置备份
 下表用于配置备份：
