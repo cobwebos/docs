@@ -1,7 +1,7 @@
 - name: 数据工厂 V1 文档
   href: null
 - name: 切换到当前版本的文档
-  href: ../index.yml
+  href: ../introduction.md
 - name: 概述
   items:
     - name: Azure 数据工厂简介

@@ -29,6 +29,14 @@
           href: QuickStarts/curl-thumb.md
         - name: 提取打印的文本
           href: QuickStarts/curl-print-text.md
+    - name: Go
+      items:
+        - name: 分析图像
+          href: QuickStarts/go-analyze.md
+        - name: 生成缩略图
+          href: QuickStarts/go-thumb.md
+        - name: 提取打印的文本
+          href: QuickStarts/go-print-text.md
     - name: Java
       items:
         - name: 分析图像
