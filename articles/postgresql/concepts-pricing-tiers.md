@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: aa8d92e86a40841ca46ff39f72ebf0ee24d332f8
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.date: 05/18/2018
+ms.openlocfilehash: 9e01d3a69fe8814d4864bccf94c0d65ea573ada8
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272176"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756630"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -24,7 +24,7 @@ ms.locfileid: "34272176"
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| 每个 vCore 的内存 | 基线 | “基本”层的 2 倍 | “常规用途”层的 2 倍 |
+| 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 2 TB | 5 GB 到 2 TB |
 | 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |
@@ -37,10 +37,10 @@ ms.locfileid: "34272176"
 | 常规用途 | 大多数业务工作负荷。此类工作负荷需要均衡的计算和内存以及可缩放的 I/O 吞吐量。 相关示例包括用于托管 Web 和移动应用的服务器，以及其他企业应用程序。|
 | 内存优化 | 高性能数据库工作负荷。此类工作负荷需要内存中性能来实现更快的事务处理速度和更高的并发性。 相关示例包括用于处理实时数据的服务器，以及高性能事务性应用或分析应用。|
 
-创建服务器后，只需数秒钟即可向上或向下更改 vCore 数（在同一定价层中）。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 创建服务器之后，不能更改定价层或备份存储类型。 有关详细信息，请参阅[缩放资源](#scale-resources)部分。
+创建服务器后，只需数秒钟即可上下调整 vCore 数（在同一定价层中）。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 创建服务器之后，不能更改定价层或备份存储类型。 有关详细信息，请参阅[缩放资源](#scale-resources)部分。
 
 
-## <a name="compute-generations-vcores-and-memory"></a>计算的代、vCore 数和内存
+## <a name="compute-generations-and-vcores"></a>计算代数和 vCore 数
 
 计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 目前提供两代计算（第 4 代和第 5 代）供你选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器。 第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器。 可在以下区域获取第 4 代和第 5 代（“X”表示可用）。 
 
@@ -64,14 +64,12 @@ ms.locfileid: "34272176"
 | 东南亚 | X | X |
 | 澳大利亚东部 |  | X |
 | 澳大利亚东南部 |  | X |
-| 印度中部 | X |  |
-| 印度西部 | X |  |
+| 印度中部 | X | X |
+| 印度西部 | X | X |
 | 印度南部 |  | X |
 | 日本东部 | X | X |
 | 日本西部 | X | X |
 | 韩国南部 |  | X |
-
-每个 vCore 都预配了特定的内存量，具体取决于定价层。 在增减服务器的 vCore 数时，内存也会按比例增减。 “常规用途”层为每个 vCore 提供的内存量是“基本”层的两倍。 “内存优化”层提供的内存量是“常规用途”层的两倍。
 
 ## <a name="storage"></a>存储
 

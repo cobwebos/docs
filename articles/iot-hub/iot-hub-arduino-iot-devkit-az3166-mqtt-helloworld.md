@@ -1,24 +1,20 @@
 ---
-title: 使用 Azure MQTT 客户端库向 MQTT 服务器发送消息 | Microsoft Docs.
-description: 使用 DevKit 作为客户端向 MQTT 服务器发送消息。
-services: iot-hub
-documentationcenter: ''
+title: 使用 Azure MQTT 客户端库向 MQTT 服务器发送消息 | Microsoft Docs
+description: 使用 DevKit 作为客户端向 MQTT 服务器发送消息
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 62fdd3dae9513973d0284eda5250d9eb29bfde91
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ee8ff1acbaf5d97d62d6811e8e8abc86017b32fe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632605"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
 

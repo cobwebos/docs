@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: a38729c266a4dd214c3de97c6b9d92df6ed2dd96
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 93d5883071a012842106bdd946e4f09a0d7aa751
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735113"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260448"
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
 
@@ -89,9 +89,7 @@ Azure Functions 工具包含在 [Visual Studio 2017 版本 15.5](https://www.vis
 
 ## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
-Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 
-
-[!INCLUDE [Note on local storage](../../includes/functions-local-settings-note.md)]
+Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为 `UseDevelopmentStorage=true`。 在部署之前，必须将此设置更改为实际的存储连接。
 
 若要设置存储帐户连接字符串，请执行以下操作：
 
@@ -111,7 +109,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
     ![创建队列触发的函数](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    此触发器示例使用具有名为 **QueueStorage** 的键的连接字符串。 必须在 local.settings.json 文件中定义此连接字符串设置。
+    此触发器示例使用具有名为 **QueueStorage** 的键的连接字符串。 必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中定义此连接字符串设置。
 
 3. 检查新添加的类。 将会看到一个静态 **Run** 方法，它已使用 **FunctionName** 属性设置了属性。 该属性指示该方法是函数的入口点。
 

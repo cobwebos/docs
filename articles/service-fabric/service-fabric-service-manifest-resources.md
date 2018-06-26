@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: ce2bc8cc8d9b149b16aee9c5e601d9872621e277
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f486ce5c058286289873d87767f02bf92f91459e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701436"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
@@ -105,7 +106,10 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 > [!NOTE]
 > 在应用程序升级期间不能更改服务的协议。 如果在升级期间进行了更改，那将是一项重大的更改。
 > 
-> 
+
+> [!WARNING] 
+> 使用 HTTPS 时，请勿将同一端口和证书用于部署到同一节点的不同服务实例（独立于应用程序）。 在不同的应用程序实例中使用相同的端口升级两个不同的服务将导致升级失败。 有关详细信息，请参阅[使用 HTTPS 终结点升级多个应用程序](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)。
+>
 
 下面是需要为 HTTPS 设置的一个示例 ApplicationManifest。 必须提供证书的指纹。 EndpointRef 是对 ServiceManifest 中 EndpointResource 的引用，为其设置 HTTPS 协议。 可以添加多个 EndpointCertificate。  
 
@@ -158,7 +162,7 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 
 若要使用 ApplicationParameter 重写 ServiceManifest 中的终结点，请更改 ApplicationManifest，如下所示：
 
-在 ServiceManifestImport 部分添加一个新部分“ResourceOverrides”
+在 ServiceManifestImport 部分添加一个新部分“ResourceOverrides”。
 
 ```xml
 <ServiceManifestImport>
@@ -188,7 +192,7 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
   </Parameters>
 ```
 
-部署应用程序时，现可传入这些值作为 ApplicationParameter，例如：
+部署应用程序时，可以传入这些值作为 ApplicationParameter。  例如：
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}

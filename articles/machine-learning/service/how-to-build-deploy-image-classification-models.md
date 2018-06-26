@@ -9,11 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: bd9f01e76c68fa41616818251b5b54553059cbcc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 72f5215bac9254c9e3295b2cade7b6d44d516af6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637729"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署图像分类模型
 
@@ -227,7 +228,6 @@ else:
 ## <a name="define-dnn-models"></a>定义 DNN 模型
 
 此包支持以下预先训练的深度神经网络模型： 
-+ AlexNet
 + Resnet-18
 + Resnet-34
 + Resnet-50
@@ -444,13 +444,9 @@ display(pr_ui.ui)
 + 若要查看当前模型管理帐户，请使用命令：
   <br>`az ml account modelmanagement show`
 
-**创建和设置部署环境**
+**创建和设置群集部署环境**
 
 只需设置部署环境一次。 如果没有部署环境，请遵照[这些说明](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup)立即设置部署环境。 
-
-根据需要正确遵循本地或群集部署设置步骤。
-+ Linux 和 Windows 10 计算机支持本地部署，但 Windows 数据科学 VM 或深度学习 VM 则不支持。 
-+ Linux 和 Windows 支持群集环境部署。 
 
 若要查看活动部署环境，请使用以下 CLI 命令：
 <br>`az ml env show`

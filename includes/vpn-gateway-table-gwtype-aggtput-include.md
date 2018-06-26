@@ -8,20 +8,21 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c9457e51858d4a073d8baffdd435c8100d95d566
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: bc42697f756ec75d9a8f2c20c99b28b2f7886ca1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34670269"
 ---
 |**SKU**   | S2S/VNet 到 VNet<br>隧道 | P2S<br>连接 | 聚合<br>吞吐量基准 |
 |---       | ---                             | ---                    | ---                         |
-|VpnGw1| 每个  30                         | 每个  128               | 650 Mbps                    |
-|VpnGw2| 每个  30                         | 每个  128               | 1 Gbps                      |
-|VpnGw3| 每个  30                         | 每个  128               | 1.25 Gbps                   |
+|VpnGw1| 每个  30                         | 每个  128*              | 650 Mbps                    |
+|VpnGw2| 每个  30                         | 每个  128*              | 1 Gbps                      |
+|VpnGw3| 每个  30                         | 每个  128*              | 1.25 Gbps                   |
 |**基本** | 每个  10                         | 每个  128               | 100 Mbps                    | 
-|          |                                 |                        |                             | 
 
+*如果需要其他连接，请联系支持人员
 - 聚合吞吐量基准基于对通过单个网关聚合的多个隧道的测量。 受 Internet 流量情况和应用程序行为影响，该吞吐量无法保证。
 
 - 可在 [定价](https://azure.microsoft.com/pricing/details/vpn-gateway) 页上找到定价信息。
