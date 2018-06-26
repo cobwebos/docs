@@ -177,6 +177,8 @@
           href: api-management-howto-deploy-multi-region.md
         - name: 将事件记录到 Azure 事件中心
           href: api-management-howto-log-event-hubs.md
+        - name: 使用 Azure Application Insights 记录请求
+          href: api-management-howto-app-insights.md
         - name: 使用备份/还原设置灾难恢复
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: 管理用户帐户
