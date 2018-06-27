@@ -489,7 +489,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-可以使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取应用程序网关的公共 IP 地址。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，http://52.168.55.24、http://52.168.55.24:8080/images/test.htm、http://52.168.55.24:8080/video/test.htm 或 http://52.168.55.24:8081/images/test.htm。
+可以使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取应用程序网关的公共 IP 地址。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如， http://52.168.55.24 、 http://52.168.55.24:8080/images/test.htm 、 http://52.168.55.24:8080/video/test.htm 或 http://52.168.55.24:8081/images/test.htm 。
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
