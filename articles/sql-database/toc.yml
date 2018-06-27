@@ -74,9 +74,9 @@
       href: sql-database-powershell-samples.md
 - name: 概念
   items:
-    - name: 服务层和资源
+    - name: 购买模型和资源
       items:
-        - name: 服务层
+        - name: 购买模型
           href: sql-database-service-tiers.md
         - name: 基于 vCore 的模型
           href: sql-database-service-tiers-vcore.md

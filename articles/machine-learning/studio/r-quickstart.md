@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 57c0030ac613167dc3ed567c2876b8e2e110d47a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836369"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227232"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>适用于 Azure 机器学习的 R 编程语言快速入门教程
 
@@ -41,7 +41,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
 在此快速入门指南中我们将使用加利福尼亚州的乳品生产和价格数据。 该数据包括几种乳品的生产和基准商品乳脂的价格的月度信息。
 
-可以在[此处下载][download]本文使用的数据和 R 脚本。 此数据最初是从威斯康星州大学提供的信息中合成的，网址为 http://future.aae.wisc.edu/tab/production.html。
+可以在[此处下载](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv)本文使用的数据和 R 脚本。 此数据最初是从威斯康星州大学提供的信息中合成的，网址为 https://dairymarkets.com。
 
 ### <a name="organization"></a>组织
 我们将通过几个步骤来了解如何在 Azure 机器学习环境中创建、测试并执行分析和数据操作 R 代码。  
@@ -94,13 +94,13 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
     x <- 1.0
     z <- x + y
 
-此代码无法执行，导致出现错误。 单击**属性**窗格上的**查看错误日志**，弹出图 2 中显示的内容。
+此代码无法执行，导致出现错误。 单击“属性”窗格上的“查看错误日志”，弹出图 2 中显示的内容。
 
   ![弹出错误消息][2]
 
 *图 2.弹出错误消息*
 
-看来我们需要打开 output.log 文件查看此 R 错误消息。 单击[执行 R 脚本][execute-r-script]后，单击右侧的**属性**窗格上的**查看 output.log**。 打开了新的浏览器窗口，我看到以下内容。
+看来我们需要打开 output.log 文件查看此 R 错误消息。 单击“执行 R 脚本[execute-r-script]”后，单击右侧的“属性”窗格上的“查看 output.log”。[] 打开了新的浏览器窗口，我看到以下内容。
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
     ---------- Start of error message from R ----------
@@ -123,7 +123,7 @@ Azure 机器学习附带了超过 350 个预安装的 R 语言包。 可以在[�
 如果此时不了解此代码的最后一行，请继续阅读。 本文剩余部分将全面讨论在 Azure 机器学习环境中使用 R。
 
 ### <a name="introduction-to-rstudio"></a>RStudio 简介
-RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使用 RStudio 编辑、测试和调试此快速入门指南中使用的一些 R 代码。 测试并准备好 R 代码后，只需将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室的[执行 R 脚本][execute-r-script]模块中。  
+RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使用 RStudio 编辑、测试和调试此快速入门指南中使用的一些 R 代码。 测试并准备好 R 代码后，可以简单地将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室的[执行 R 脚本][execute-r-script]模块中。  
 
 如果还没有在台式计算机上安装 R 编程语言，我建议立即安装。 可以从 Comprehensive R Archive Network (CRAN) 免费下载开放源代码 R 语言，网址为 [http://www.r-project.org/](http://www.r-project.org/)。 该网站提供了适用于 Windows、Mac OS 和 Linux/UNIX 的 R 语言下载。 请选择附近的网站镜像，并按照下载说明进行操作。 此外，CRAN 包含大量有用的分析和数据操作包。
 
@@ -152,11 +152,11 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 #### <a name="create-an-experiment"></a>创建试验
 现在，机器学习工作室中已有一些数据，我们需要创建一个试验来执行分析。  
 
-* 单击左下方的 **+ 新建**，并依次选择**实验**和**空白实验**。
-* 可以命名试验，方法是选择和修改页面顶部的**在...创建的试验**标题。 例如，将其改为“CA 乳品分析”。
-* 在试验页面的左侧，展开**保存的数据集**，并选择**我的数据集**。 可看到之前上传的 **cadairydata.csv**。
+* 单击左下方的“+ 新建”，并依次选择“实验”和“空白实验”。
+* 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”标题。 例如，将其改为“CA 乳品分析”。
+* 在试验页面的左侧，展开“保存的数据集”，并选择“我的数据集”。 可看到之前上传的 cadairydata.csv。
 * 将 **csdairydata.csv 数据集**拖放到试验。
-* 在左窗格顶部的**搜索试验项**框中，键入[执行 R 脚本][execute-r-script]。 可以看到模块在搜索列表中显示。
+* 在左窗格顶部的“搜索试验项”框中，键入“执行 R 脚本[execute-r-script]”。[] 可以看到模块在搜索列表中显示。
 * 将[执行 R 脚本][execute-r-script]拖放到托盘上。  
 * 将 **csdairydata.csv 数据集**的输出连接到[执行 R 脚本][execute-r-script]最左侧输入 (**Dataset1**)。
 * **别忘了单击“保存”！**  
@@ -385,7 +385,7 @@ R 是一个具有动态类型的语言，这表示可以根据需要将数据类
 
 *图 9.具有因子变量的数据框摘要*
 
-现在 Month 的类型显示为**具有 14 个级别的因子**。 由于一年只有 12 个月，因此这是一个问题。 还可以查看该类型在结果数据集端口的**可视化**中为**分类**。
+现在 Month 的类型显示为**具有 14 个级别的因子**。 由于一年只有 12 个月，因此这是一个问题。 还可以查看该类型在结果数据集端口的“可视化”中为“分类”。
 
 问题在于“Month”列未系统地进行编码。 在某些情况下一个月份称为 April，但在其他情况下，它缩写为 Apr。可通过将字符串剪裁到 3 个字符来解决此问题。 现在代码行如下所示：
 
@@ -837,7 +837,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 *图 18.成对相关性分析的 ccf 对象列表*
 
-每个滞后时间有一个相关性值。 没有一个相关性值足够大而具有意义。 因此可以确定我们可以单独对每个变量建模。
+每个滞后时间有一个相关性值。 这些相关性值没有一个足够大而具有意义。 因此可以确定我们可以单独对每个变量建模。
 
 ### <a name="output-a-dataframe"></a>输出数据框
 我们已经以 R ccf 对象列表的形式计算成对相关性。 这种方法有一点问题，因为结果数据集输出端口确实需要数据框。 而且，ccf 对象本身就是一个列表，而我们只需要该列表中第一个元素的值，即各种滞后时间中的相关性。

@@ -45,6 +45,8 @@
       href: use-reports.md
     - name: 使用仪表板
       href: dashboards.md
+    - name: 管理预算
+      href: manage-budgets.md
 - name: 资源
   items:
     - name: 成本管理视频

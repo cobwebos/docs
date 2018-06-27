@@ -23,6 +23,8 @@
       href: quickstart-ruby.md
     - name: 创建 Docker/Go 应用
       href: quickstart-docker-go.md
+    - name: 创建多容器应用
+      href: quickstart-multi-container.md
 - name: 教程
   items:
     - name: 将应用与 DB 配合使用

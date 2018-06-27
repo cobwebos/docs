@@ -12,31 +12,33 @@
     - name: '在 C# 应用中识别语音'
       href: quickstart-csharp-windows.md
     - name: 在用于 Windows 的 C + + 应用中识别语音
-      href: cpp-windows.md
+      href: quickstart-cpp-windows.md
     - name: 在用于 Linux 的 C + + 应用中识别语音
-      href: cpp-linux.md
+      href: quickstart-cpp-linux.md
     - name: 语音设备 SDK 入门
       href: speech-devices-sdk-qsg.md
-- name: 操作指南
+- name: 自定义
   items:
-    - name: 识别语音
-      href: how-to-speech-to-text.md
     - name: 自定义语音模型
       href: how-to-customize-speech-models.md
-    - name: 合成语音
-      href: how-to-text-to-speech.md
     - name: 自定义语音字体
       href: how-to-customize-voice-font.md
-    - name: 翻译语音
-      href: how-to-translate-speech.md
     - name: 准备脚本
       href: prepare-transcription.md
     - name: 使用自定义音频流
       href: how-to-use-audio-input-streams.md
+    - name: 自定义设备唤醒字词（设备 SDK）
+      href: speech-devices-sdk-create-kws.md
+- name: 操作指南
+  items:
+    - name: 识别语音
+      href: how-to-speech-to-text.md
+    - name: 合成语音
+      href: how-to-text-to-speech.md
+    - name: 翻译语音
+      href: how-to-translate-speech.md
     - name: 获取语音设备 SDK
       href: get-speech-devices-sdk.md
-    - name: 自定义设备唤醒字词
-      href: speech-devices-sdk-create-kws.md
     - name: 批处理听录（呼叫中心）
       href: batch-transcription.md
 - name: 示例
@@ -73,8 +75,14 @@
       href: speech-synthesis-markup.md
 - name: 资源
   items:
-    - name: 语音转文本常见问题解答
-      href: faq-stt.md
+    - name: 常见问题
+      items:
+        - name: 语音转文本常见问题解答
+          href: faq-stt.md
+        - name: 文本到语音常见问题解答
+          href: faq-text-to-speech.md
+        - name: 翻译工具常见问题解答
+          href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: UserVoice

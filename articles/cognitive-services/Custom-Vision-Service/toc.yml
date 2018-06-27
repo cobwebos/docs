@@ -17,6 +17,8 @@
           href: use-prediction-api.md
         - name: 将模型导出到移动设备
           href: export-your-model.md
+        - name: 将 ONNX 模型与 Windows ML 配合使用
+          href: custom-vision-onnx-windows-ml.md
         - name: 运行以 Python 编写的 TensorFlow 模型
           href: export-model-python.md
     - name: 生成应用

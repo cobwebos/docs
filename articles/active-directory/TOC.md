@@ -250,7 +250,7 @@
 #### [SAML 应用的高级证书签名](manage-apps/certificate-signing-options.md)
 #### [从用户体验中隐藏应用程序](manage-apps/hide-application-from-user-portal.md)
 ### [使用 HRD 策略配置登录自动加速](manage-apps/configure-authentication-for-federated-users-portal.md)
-### [将 AD FS 应用迁移到 Azure AD](migrate-adfs-apps-to-azure.md) 
+### [将 AD FS 应用迁移到 Azure AD](manage-apps/migrate-adfs-apps-to-azure.md) 
 ### [管理对应用的访问权限](manage-apps/what-is-access-management.md)
 #### [SSO 访问](manage-apps/what-is-single-sign-on.md)
 #### [SSO 证书](manage-apps/manage-certificates-for-federated-single-sign-on.md)
@@ -386,13 +386,10 @@
 
 ## 委托对资源的访问权限
 ### [管理员角色](active-directory-assign-admin-roles-azure-portal.md)
-#### [向用户分配管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md) 
-#### [比较成员和来宾的用户权限](fundamentals/users-default-permissions.md) 
-### [保护特权访问](admin-roles-best-practices.md)  
-### [创建紧急访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md) 
-
-
-#### [默认用户权限](fundamentals/users-default-permissions.md)
+#### [向用户分配管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
+#### [比较成员和来宾的用户权限](fundamentals/users-default-permissions.md)
+### [确保管理员角色的安全](admin-roles-best-practices.md)  
+#### [创建紧急访问管理员帐户](active-directory-admin-manage-emergency-access-accounts.md)
 ### [管理单元](active-directory-administrative-units-management.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 ### [保护特权角色](admin-roles-best-practices.md)

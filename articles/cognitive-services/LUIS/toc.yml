@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 了解语言理解
+    - name: 什么是语言理解？
       href: Home.md
     - name: 支持的语言
       href: luis-supported-languages.md
@@ -25,10 +25,10 @@
           href: luis-quickstart-primary-and-secondary-data.md
         - name: 分层的实体
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: 列表实体
-          href: luis-quickstart-intent-and-list-entity.md
         - name: 正则表达式实体
           href: luis-quickstart-intents-regex-entity.md
+        - name: 列表实体
+          href: luis-quickstart-intent-and-list-entity.md
         - name: KeyPhrase 实体
           href: luis-quickstart-intent-and-key-phrase.md
         - name: 情绪分析
@@ -238,7 +238,33 @@
     - name: 边界
       href: luis-boundaries.md
     - name: 预构建的实体参考
-      href: luis-reference-prebuilt-entities.md
+      items:
+        - name: 基于区域性的实体数
+          href: luis-reference-prebuilt-entities.md
+        - name: 年龄实体
+          href: luis-reference-prebuilt-age.md
+        - name: 货币实体
+          href: luis-reference-prebuilt-currency.md
+        - name: DatetimeV2 实体
+          href: luis-reference-prebuilt-datetimev2.md
+        - name: 维度实体
+          href: luis-reference-prebuilt-dimension.md
+        - name: 已弃用的实体
+          href: luis-reference-prebuilt-deprecated.md
+        - name: 电子邮件实体
+          href: luis-reference-prebuilt-email.md
+        - name: 数字实体
+          href: luis-reference-prebuilt-number.md
+        - name: 序号实体
+          href: luis-reference-prebuilt-ordinal.md
+        - name: 百分比实体
+          href: luis-reference-prebuilt-percentage.md
+        - name: Phonenumber 实体
+          href: luis-reference-prebuilt-phonenumber.md
+        - name: 温度实体
+          href: luis-reference-prebuilt-temperature.md
+        - name: URL 实体
+          href: luis-reference-prebuilt-url.md
     - name: 预构建的域参考
       href: luis-reference-prebuilt-domains.md
     - name: Cortana 预构建的应用参考

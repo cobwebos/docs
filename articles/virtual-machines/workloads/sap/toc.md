@@ -3,6 +3,7 @@
 ## [认证](sap-certifications.md)
 # Azure 上的 SAP HANA（大型实例）
 ## [概述和体系结构](hana-overview-architecture.md)
+### [支持 HLI 的方案](hana-supported-scenario.md)
 ## [基础结构和连接](hana-overview-infrastructure-connectivity.md)
 ## [安装 SAP HANA](hana-installation.md)
 ## [高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)
