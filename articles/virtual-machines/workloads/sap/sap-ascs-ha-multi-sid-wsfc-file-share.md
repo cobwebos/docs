@@ -271,7 +271,7 @@ _图 3：多 SID SOFS 使用相同的 SAP 全局主机名_
 ><SID2> 全局主机的文件路径是 C:\ClusterStorage\\Volume1\usr\sap\<SID2>\SYS\.
 >
 
-对于 \<SID2> 系统，必须准备 SAP 全局主机 ..\SYS\.。 SOFS 群集上的文件夹。
+对于 \<SID2> 系统，必须准备 SAP 全局主机 ..\SYS\. SOFS 群集上的文件夹。
 
 若要为 \<SID2> 实例准备 SAP 全局主机，请执行下面的 PowerShell 脚本：
 
