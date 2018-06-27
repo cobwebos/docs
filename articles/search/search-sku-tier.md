@@ -7,14 +7,14 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/12/2018
+ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: bbf535c5b446fd654331374d29c106b6e43d55f5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 241d24746d82a359b4bbf4febbbaaf91180dd23e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266874"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210918"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -39,7 +39,7 @@ ms.locfileid: "34266874"
 容量的结构为副本和分区。 副本是搜索服务的实例，每个副本托管一个索引的一个负载均衡副本。 例如，包含 6 个副本的服务具有加载到服务中的每个索引的 6 个副本。 分区存储索引并自动拆分可搜索的数据：两个分区将索引分成两部分，三个分区分成三部分，以此类推。 在容量方面，分区大小是各层级的主要区别特征。
 
 > [!NOTE]
-> 所有“标准”层都支持[灵活组合副本和分区](search-capacity-planning.md#chart)，用户可通过改变均衡来[增加系统的速度或存储空间](search-performance-optimization.md)。 “基本”层提供三个具有高可用性但只有分区的副本。 “免费”层不提供专用资源：计算资源由多个免费服务共享。
+> 所有“标准”层都支持[灵活组合副本和分区](search-capacity-planning.md#chart)，用户可通过改变均衡来[增加系统的速度或存储空间](search-performance-optimization.md)。 “基本”层最多可提供三个副本以实现高可用性，但只有一个分区。 “免费”层不提供专用资源：计算资源由多个免费服务共享。
 
 ### <a name="limits"></a>限制
 

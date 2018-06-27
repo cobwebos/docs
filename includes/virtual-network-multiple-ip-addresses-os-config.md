@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 1febadbbf7821988600d6feddc94fce25d15e989
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 70762b720dcd55679d02de8e5064dc99353e06cb
+ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31434052"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "36206092"
 ---
 ## <a name="os-config"></a>将 IP 地址添加到 VM 操作系统
 
@@ -110,7 +110,7 @@ ping -S 10.0.0.5 hotmail.com
 
     应会在列表中看到添加的 IP 地址。
 
-### <a name="linux-redhat-centos-and-others"></a>Linux（Redhat、CentOS 和其他操作系统）
+### <a name="linux-red-hat-centos-and-others"></a>Linux（Red Hat、CentOS 和其他操作系统）
 
 1. 打开终端窗口。
 2. 请确保以 root 用户身份操作。 否则，请输入以下命令：

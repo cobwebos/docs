@@ -1,6 +1,6 @@
 ---
-title: 使用 REST 进行基于角色的访问控制 - Azure AD | Microsoft 文档
-description: 使用 REST API 管理基于角色的访问控制
+title: 使用 RBAC 和 REST API 管理访问权限 - Azure | Microsoft Docs
+description: 了解如何使用基于角色的访问控制 (RBAC) 和 REST API 来管理用户、组和应用程序的访问权限。 这包括列出访问权限、授予访问权限以及删除访问权限。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,20 +15,16 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f81c84f5db4b595acf851a315c03cd4189514afa
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fdf246ede9fd030c03a70a90b35d4dd1fb645df1
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267469"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294456"
 ---
-# <a name="manage-role-based-access-control-with-the-rest-api"></a>使用 REST API 管理基于角色的访问控制
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
+# <a name="manage-access-using-rbac-and-the-rest-api"></a>使用 RBAC 和 REST API 管理访问权限
 
-使用基于角色的访问控制 (RBAC) 时，可以通过分配特定范围的角色，为用户、组和服务主体定义访问权限。 本文介绍如何使用 REST API 管理访问权限。
+可以在 Azure 中通过[基于角色的访问控制 (RBAC)](overview.md) 这种方式管理对资源的访问。 本文介绍如何使用 RBAC 和 REST API 来管理用户、组和应用程序的访问权限。
 
 ## <a name="list-all-role-assignments"></a>列出所有角色分配
 列出指定范围和子范围内的所有角色分配。

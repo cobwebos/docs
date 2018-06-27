@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 8796cd3224670c6d1c8b1b3c6da8d1c096b01d03
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716714"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287797"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
@@ -56,7 +56,7 @@ ms.locfileid: "34716714"
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
-##创建群集
+## <a name="create-the-cluster"></a>创建群集
 
 完成先决条件后，首先要创建包含两个 SQL Sever 和一个见证服务器的 Windows Server 故障转移群集。
 
@@ -413,8 +413,8 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
    | 名称 | 文本 | SQLAlwaysOnEndPointListener |
    | “前端 IP 地址” | 选择一个地址 |使用创建负载均衡器时所创建的地址。 |
    | 协议 | 选择 TCP |TCP |
-   | 端口 | 使用 SQL Server 的端口 | 1433 |
-   | 后端端口 | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 1433 |
+   | 端口 | 使用可用性组侦听程序的端口 | 1435 |
+   | 后端端口 | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 1435 |
    | 探测 |为探测指定的名称 | SQLAlwaysOnEndPointProbe |
    | “会话暂留” | 下拉列表 | 无 |
    | “空闲超时” | 使 TCP 连接保持打开所需的分钟数 | 4 |

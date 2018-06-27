@@ -3,25 +3,25 @@ title: Azure Active Directory 门户中的“登录活动”报告 | Microsoft D
 description: Azure Active Directory 门户中的“登录活动”报告简介
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/17/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6414be82e57741bf2af1de3650a3d9a28c4d6427
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d9c2f210204122947c24eb42f643450537f3b9a8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588601"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231864"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -153,7 +153,7 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 ![下载](./media/active-directory-reporting-activity-sign-ins/71.png "下载")
 
-单击“下载”会创建一个包含最近 5K 条记录的 CSV 文件。 如果需要更大的灵活性，可以使用脚本解决方案。 单击“脚本”会创建一个脚本，其中包含已设置的所有筛选器。 除了技术实现外，可以下载的记录数还受到 [Azure Active Directory 报告保留策略](active-directory-reporting-retention.md)的限制。  
+单击“下载”会创建一个包含最近 5K 条记录的 CSV 文件。 如果需要更大的灵活性，可以使用脚本解决方案。 单击“脚本”会创建一个 PowerShell 脚本，其中包含已设置的所有筛选器。 以**管理员模式**下载并运行此脚本以生成 CSV 文件。 除了技术实现外，可以下载的记录数还受到 [Azure Active Directory 报告保留策略](active-directory-reporting-retention.md)的限制。  
 
 
 

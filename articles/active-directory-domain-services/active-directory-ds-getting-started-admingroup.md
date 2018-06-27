@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory 域服务：入门 | Microsoft Docs"
-description: "使用 Azure 门户启用 Azure Active Directory 域服务"
+title: Azure Active Directory 域服务：入门 | Microsoft Docs
+description: 使用 Azure 门户启用 Azure Active Directory 域服务
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 2a171490faf9804196c93d33c5ee74d22533c044
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d5b81a6d4bdda24208673e42757807aba60fea97
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263969"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 
@@ -40,16 +42,19 @@ ms.lasthandoff: 12/11/2017
 
 3. 完成后，单击“确定”以前进到向导的“摘要”页。
 
-4. 在向导的“摘要”页上，检查托管域的配置设置。 可以在必要时返回到向导的任何步骤进行更改。 完成后，单击“确定”以创建新托管域。
+
+## <a name="deploy-your-managed-domain"></a>部署托管域
+
+1. 在向导的“摘要”页上，检查托管域的配置设置。 可以在必要时返回到向导的任何步骤进行更改。 完成后，单击“确定”以创建新托管域。
 
     ![摘要](./media/getting-started/domain-services-blade-summary.png)
 
-5. 你会看到一个通知，其中显示 Azure AD 域服务部署的进度。 单击该通知可查看部署的详细进度。
+2. 你会看到一个通知，其中显示 Azure AD 域服务部署的进度。 单击该通知可查看部署的详细进度。
 
     ![通知 - 部署正在进行](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
 
-## <a name="provision-your-managed-domain"></a>预配托管域
+## <a name="check-the-deployment-status-of-your-managed-domain"></a>检查托管域的部署状态
 预配托管域的过程可能最多需要一小时。
 
 1. 在部署正在进行时，可以在“搜索资源”搜索框中搜索“域服务”。 从搜索结果中“选择 Azure AD 域服务”。 “Azure AD 域服务”边栏选项卡会列出正在预配的托管域。
@@ -67,6 +72,9 @@ ms.lasthandoff: 12/11/2017
 4. 托管域完全预配之后，“概览”选项卡会将域状态显示为“正在运行”。
 
     ![完全预配后的“域服务 - 概览”选项卡](./media/getting-started/domain-services-provisioned.png)
+    >[!NOTE]
+    >在预配过程中，Azure AD 域服务会在你的目录中创建名为“Domain Controller Services”和“AzureActiveDirectoryDomainControllerServices”的企业应用程序。 需要这些企业应用程序来为托管域提供服务。 必须在任何时候都不删除这些企业应用程序。
+    >
 
 5. 在“属性”选项卡上，会看到两个 IP 地址，这些地址上的域控制器可用于虚拟网络。
 

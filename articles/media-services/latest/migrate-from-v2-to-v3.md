@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/22/2018
+ms.date: 06/12/2018
 ms.author: juliako
-ms.openlocfilehash: 4e644db12a74d6ef132a0c8d64ef517a0c2253cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a382af644d30f9f0ebb586273c982ef1766f50b0
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658986"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292042"
 ---
 # <a name="migrate-from-media-services-v2-to-v3"></a>从媒体服务 v2 迁移到 v3
 
@@ -50,6 +50,10 @@ ms.locfileid: "34658986"
 
 ## <a name="changes-from-v2"></a>自 v2 以来的更改
 
+* 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性。 这意味着 v3 会处理现有的存储加密资产，但不会允许创建新资产。
+
+    对于使用 v3 创建的资产，媒体服务支持 [Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)服务器端存储加密。
+    
 * 媒体服务 SDK 已脱离存储 SDK，这使用户可以更好地控制所使用的存储 SDK 并避免版本控制问题。 
 * 在 v3 中，所有编码比特率以位/秒为单位。 这不同于 REST v2 Media Encoder Standard 预设。 例如，v2 中的比特率被指定为 128，但在 v3 中，它是 128000。 
 * AssetFile、AccessPolicy、Ingestmanifest 不存在于 v3 中。
@@ -141,7 +145,7 @@ new Job {Input = jobInput, Outputs = jobOutputs});
 1. 创建内容密钥策略
 2. 创建 Asset
 3. 上传内容或将 Asset 用作 JobOutput
-4. 创建 Locator
+4. 创建 StreamingLocator
 
 ## <a name="next-steps"></a>后续步骤
 

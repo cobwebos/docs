@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 30e6adfe2a15598acceccc56160622f234af163a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 82d1fbc4167d1df4cb2c976395c181e4abd1ba3c
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299971"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293192"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>使用 Azure Log Analytics 跟踪 B2B 通信
 
@@ -56,39 +56,31 @@ ms.locfileid: "35299971"
 
    ![选择你的 Log Analytics 工作区](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. 在“管理”下，选择“OMS 门户”。
+3. 在“管理”下，选择“概述”。
 
-   ![选择“OMS 门户”](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![选择“Log Analytics 门户”](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. 在主页打开后，选择“解决方案库”。    
+4. 在主页打开后，选择“添加”以安装逻辑应用 B2B 解决方案。    
+   ![选择“解决方案库”](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   ![选择“解决方案库”](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
-
-5. 在“所有解决方案”下，查找并选择“逻辑应用 B2B”。     
-
-   ![选择“逻辑应用 B2B”](media/logic-apps-track-b2b-messages-omsportal/omshomepage2.png)
-
-6. 在“逻辑应用 B2B”下，选择“添加”。
-
-   ![选择“添加”](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
+5. 在“管理解决方案”下，查找和创建“逻辑应用 B2B”解决方案。     
+   ![选择“逻辑应用 B2B”](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
 
    在主页上，此时会显示“逻辑应用 B2B 消息”磁贴。 
    此磁贴更新 B2B 消息经过处理后的消息计数。
-
-   ![主页上的“逻辑应用 B2B 消息”磁贴](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
 ## <a name="track-message-status-and-details-in-log-analytics"></a>在 Log Analytics 中跟踪消息状态和详细信息
 
-1. 在 B2B 消息经过处理后，可以查看这些消息的状态和详细信息。 在主页上，选择“逻辑应用 B2B 消息”磁贴。
+1. 在 B2B 消息经过处理后，可以查看这些消息的状态和详细信息。 在“概述”页上，选择“逻辑应用 B2B 消息”磁贴。
 
-   ![更新后的消息计数](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
+   ![更新后的消息计数](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
    > 默认情况下，“逻辑应用 B2B 消息”磁贴显示的是一天数据。 若要将数据范围更改为其他时间间隔，请选择页面顶部的范围控件：
    > 
-   > ![更改数据范围](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
+   > ![更改数据范围](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
    >
 
 2. 当消息状态仪表板显示后，可以查看特定消息类型的更多详细信息（显示的也是一天数据）。 选择“AS2”、“X12”或“EDIFACT”磁贴。

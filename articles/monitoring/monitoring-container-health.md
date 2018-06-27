@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: f0501d4404375ee44b96ae4514c15e69b616d38a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7c4294947cba72b1638e77c2dd8de1f5ee37b62a
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285978"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>监视 Azure Kubernetes 服务 (AKS) 容器运行状况（预览版）
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 05/04/2018
 - 支持以下版本的 AKS 群集：1.7.7 到 1.9.6。
 - 适用于 Linux microsoft/oms:ciprod04202018 及更高版本的容器化 OMS 代理。 此代理在容器运行状况载入期间自动安装。  
 - Log Analytics 工作区。  它可以在启用新 AKS 群集的监视时创建，也可以通过 [Azure 资源管理器](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) 或从 [Azure 门户](../log-analytics/log-analytics-quick-create-workspace.md)创建。
-
+- 成为 Log Analytics 参与者角色的成员，以便启用容器监视。  有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../log-analytics/log-analytics-manage-access.md)。
 
 ## <a name="components"></a>组件 
 
@@ -49,8 +50,8 @@ ms.lasthandoff: 05/04/2018
 >如果已部署 AKS 群集，则使用提供的 Azure 资源管理器模板启用监视，如本文后面所示。 不能使用 `kubectl` 升级、删除、重新部署或部署代理。  
 >
 
-## <a name="log-in-to-azure-portal"></a>登录到 Azure 门户
-通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。 
+## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>为每个新群集启用容器运行状况监视
 从 Azure 门户部署时，仅能启用 AKS 群集的监视。  按照快速入门文章[部署 Azure Kubernetes 服务 (AKS) 群集](../aks/kubernetes-walkthrough-portal.md)中的步骤操作。  位于“监视”页面时，为“启用监视”选项选择“是”以启用此功能，然后选择一个现有的或者创建一个新的 Log Analytics 工作区。  
@@ -65,7 +66,27 @@ ms.lasthandoff: 05/04/2018
 启用监视后，可能需要大约 15 分钟才能查看群集的操作数据。  
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>为现有托管群集启用容器运行状况监视
-不能从门户启用已部署的 AKS 容器的监视，只能借助 PowerShell cmdlet New-AzureRmResourceGroupDeployment 或 Azure CLI 使用提供的 Azure 资源管理器模板完成此操作。  一个 JSON 模板指定要启用监视的配置，另一个 JSON 模板包含配置用于指定以下内容的参数值：
+启用对已部署的 AKS 容器的监视可以通过 Azure 门户或借助 PowerShell cmdlet **New-AzureRmResourceGroupDeployment** 或 Azure CLI 使用提供的 Azure 资源管理器模板来完成。  
+
+
+### <a name="enable-from-azure-portal"></a>从 Azure 门户启用
+执行以下步骤，从 Azure 门户启用对 AKS 容器的监视。
+
+1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“容器”。 开始键入时，会根据输入筛选该列表。 选择“Kubernetes 服务”。<br><br> ![Azure 门户](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
+2. 在容器列表中，选择一个容器。
+3. 在容器概述页上，选择“监视容器运行状况”，会出现“载入到容器运行状况和日志”页。
+4. 在“载入到容器运行状况和日志”页上，如果现有的 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区。  该列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。 也可以选择“新建”并在同一订阅中指定新的工作区。<br><br> ![启用 AKS 容器运行状况监视](./media/monitoring-container-health/container-health-enable-brownfield.png) 
+
+    如果选择“新建”，则会显示“新建工作区”窗格。 **区域**默认为创建容器资源的区域，你可以接受默认区域或选择其他区域，然后指定工作区的名称。  单击“创建”以接受所做的选择。<br><br> ![定义用于容器监视的工作区](./media/monitoring-container-health/create-new-workspace-01.png)  
+
+    >[!NOTE]
+    >目前，不能在美国中西部区域中创建新工作区，只能在该区域中选择一个现存的工作区。  即使你可以从列表中选择该区域，部署也会开始，但之后不久就会失败。  
+    >
+ 
+启用监视后，可能需要大约 15 分钟才能查看群集的操作数据。 
+
+### <a name="enable-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用
+此方法包含两个 JSON 模板，一个模板指定用于启用监视的配置，另一个 JSON 模板包含配置的参数值以指定以下内容：
 
 * AKS 容器资源 ID 
 * 部署群集的资源组 
@@ -77,7 +98,7 @@ ms.lasthandoff: 05/04/2018
 
 如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。  要求运行 Azure CLI 2.0.27 或更高版本。 运行 `az --version` 确定版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 
-### <a name="create-and-execute-template"></a>创建和执行模板
+#### <a name="create-and-execute-template"></a>创建和执行模板
 
 1. 将以下 JSON 语法复制并粘贴到文件中：
 
@@ -89,82 +110,82 @@ ms.lasthandoff: 05/04/2018
       "aksResourceId": {
         "type": "string",
         "metadata": {
-           "description": "AKS Cluster resource id"
-        }
+           "description": "AKS Cluster Resource ID"
+           }
     },
     "aksResourceLocation": {
+    "type": "string",
+     "metadata": {
+        "description": "Location of the AKS resource e.g. \"East US\""
+       }
+    },
+    "workspaceResourceId": {
       "type": "string",
       "metadata": {
-        "description": "Location of the AKS resource e.g. \"East US\""
-        }
-      },
-      "workspaceId": {
-        "type": "string",
-        "metadata": {
-          "description": "Azure Monitor Log Analytics resource id"
-        }
-      },
-      "workspaceRegion": {
-        "type": "string",
-        "metadata": {
-          "description": "Azure Monitor Log Analytics workspace region"
-        }
+         "description": "Azure Monitor Log Analytics Resource ID"
+       }
+    },
+    "workspaceRegion": {
+    "type": "string",
+    "metadata": {
+       "description": "Azure Monitor Log Analytics workspace region"
       }
+     }
     },
     "resources": [
       {
-        "name": "[split(parameters('aksResourceId'),'/')[8]]",
-        "type": "Microsoft.ContainerService/managedClusters",
-        "location": "[parameters('aksResourceLocation')]",
-        "apiVersion": "2018-03-31",
-        "properties": {
-          "mode": "Incremental",
-          "id": "[parameters('aksResourceId')]",
-          "addonProfiles": {
-            "omsagent": {
-              "enabled": true,
-              "config": {
-                "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
-              }
-            }
+    "name": "[split(parameters('aksResourceId'),'/')[8]]",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "[parameters('aksResourceLocation')]",
+    "apiVersion": "2018-03-31",
+    "properties": {
+      "mode": "Incremental",
+      "id": "[parameters('aksResourceId')]",
+      "addonProfiles": {
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "logAnalyticsWorkspaceResourceID": "[parameters('workspaceResourceId')]"
           }
-        }
-      },
-      {
-            "type": "Microsoft.Resources/deployments",
-            "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceId'),'/')[8], ')')]",
-            "apiVersion": "2017-05-10",
-            "subscriptionId": "[split(parameters('workspaceId'),'/')[2]]",
-            "resourceGroup": "[split(parameters('workspaceId'),'/')[4]]",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                        {
-                            "apiVersion": "2015-11-01-preview",
-                            "type": "Microsoft.OperationsManagement/solutions",
-                            "location": "[parameters('workspaceRegion')]",
-                            "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceId'),'/')[8], ')')]",
-                            "properties": {
-                                "workspaceResourceId": "[parameters('workspaceId')]"
-                            },
-                            "plan": {
-                                "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceId'),'/')[8], ')')]",
-                                "product": "[Concat('OMSGallery/', 'ContainerInsights')]",
-                                "promotionCode": "",
-                                "publisher": "Microsoft"
-                            }
-                        }
-                    ]
-                },
-                "parameters": {}
-            }
          }
-      ]
+       }
+      }
+     },
+    {
+        "type": "Microsoft.Resources/deployments",
+        "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
+        "apiVersion": "2017-05-10",
+        "subscriptionId": "[split(parameters('workspaceResourceId'),'/')[2]]",
+        "resourceGroup": "[split(parameters('workspaceResourceId'),'/')[4]]",
+        "properties": {
+            "mode": "Incremental",
+            "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "variables": {},
+                "resources": [
+                    {
+                        "apiVersion": "2015-11-01-preview",
+                        "type": "Microsoft.OperationsManagement/solutions",
+                        "location": "[parameters('workspaceRegion')]",
+                        "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
+                        "properties": {
+                            "workspaceResourceId": "[parameters('workspaceResourceId')]"
+                        },
+                        "plan": {
+                            "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
+                            "product": "[Concat('OMSGallery/', 'ContainerInsights')]",
+                            "promotionCode": "",
+                            "publisher": "Microsoft"
+                        }
+                    }
+                ]
+            },
+            "parameters": {}
+        }
+       }
+     ]
     }
     ```
 
@@ -173,26 +194,26 @@ ms.lasthandoff: 05/04/2018
 
     ```json
     {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "$schema": "https://schema.management.azure.com/  schemas/2015-01-01/deploymentParameters.json#",
        "contentVersion": "1.0.0.0",
        "parameters": {
          "aksResourceId": {
-           "value": "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroup>/providers/Microsoft.ContainerService/managedClusters/<ResourceName>"
-        },
-        "aksResourceLocation": {
-          "value": "East US"
-        },
-        "workspaceId": {
-          "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>"
-        },
-        "workspaceRegion": {
-          "value": "eastus"
-        }
-      }
+           "value": "/subscriptions/<SubscroptiopnId>/resourcegroups/<ResourceGroup>/providers/Microsoft.ContainerService/managedClusters/<ResourceName>"
+       },
+       "aksResourceLocation": {
+         "value": "East US"
+       },
+       "workspaceResourceId": {
+         "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>"
+       },
+       "workspaceRegion": {
+         "value": "eastus"
+       }
+     }
     }
     ```
 
-4. 使用可以在 AKS 群集的“AKS 概述”页面上找到的值编辑“aksResourceId”和“aksResourceLocation”的值。  “workspaceId”的值应是 Log Analytics 工作区的名称，“workspaceRegion”表示要创建工作区的位置。    
+4. 使用可以在 AKS 群集的“AKS 概述”页面上找到的值编辑“aksResourceId”和“aksResourceLocation”的值。  **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。  此外，为 **workspaceRegion** 指定工作区所在的位置。    
 5. 将此文件以“existingClusterParam.json”文件名保存到本地文件夹。
 6. 已做好部署此模板的准备。 
 
@@ -223,12 +244,12 @@ ms.lasthandoff: 05/04/2018
 启用监视后，可能需要大约 15 分钟才能查看群集的操作数据。  
 
 ## <a name="verify-agent-deployed-successfully"></a>验证已成功部署代理
-若要验证 OMS 代理已正确部署，请运行以下命令：` kubectl get ds omsagent -—namespace=kube-system`。
+若要验证 OMS 代理已正确部署，请运行以下命令：` kubectl get ds omsagent --namespace=kube-system`。
 
 输出应如下所示，表示它已正确部署：
 
 ```
-User@aksuser:~$ kubectl get ds omsagent -—namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
@@ -314,19 +335,19 @@ omsagent   2         2         2         2            2           beta.kubernete
 
 | 数据类型 | 日志搜索中的数据类型 | 字段 |
 | --- | --- | --- |
-| 主机和容器的性能 | `Perf` | 计算机、ObjectName、CounterName、处理器时间百分比、磁盘读取 MB、磁盘写入 MB、内存使用 MB、网络接收字节数、网络发送字节数、处理器使用秒数、网络、CounterValue、TimeGenerated、CounterPath、SourceSystem |
+| 主机和容器的性能 | `Perf` | 计算机、ObjectName、CounterName（处理器时间百分比、磁盘读取 MB、磁盘写入 MB、内存使用 MB、网络接收字节数、网络发送字节数、处理器使用秒数、网络）、CounterValue、TimeGenerated、CounterPath、SourceSystem |
 | 容器库存 | `ContainerInventory` | TimeGenerated、计算机、容器名称、ContainerHostname、映像、ImageTag、ContainerState、ExitCode、EnvironmentVar、命令、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
 | 容器映像库存 | `ContainerImageInventory` | TimeGenerated、计算机、映像、ImageTag、ImageSize、VirtualSize、正在运行、暂停、停止、失败、SourceSystem、ImageID、TotalContainer |
 | 容器日志 | `ContainerLog` | TimeGenerated、计算机、映像 ID、容器名称、LogEntrySource、LogEntry、SourceSystem、ContainerID |
 | 容器服务日志 | `ContainerServiceLog`  | TimeGenerated、计算机、TimeOfCommand、映像、命令、SourceSystem、ContainerID |
 | 容器节点清单 | `ContainerNodeInventory_CL`| TimeGenerated、计算机、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
 | 容器进程 | `ContainerProcess_CL` | TimeGenerated、计算机、Pod_s、Namespace_s、ClassName_s、InstanceID_s、Uid_s、PID_s、PPID_s、C_s、STIME_s、Tty_s、TIME_s、Cmd_s、Id_s、Name_s、SourceSystem |
-| Kubernetes 群集中的 Pod 清单 | `KubePodInventory` | TimeGenerated, Computer, ClusterId , ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, ControllerName, ContainerStatus, ContainerID, ContainerName, Name, PodLabel, Namespace, PodStatus, ClusterName, PodIp, SourceSystem |
+| Kubernetes 群集中的 Pod 清单 | `KubePodInventory` | TimeGenerated、计算机、ClusterId、ContainerCreationTimeStamp、PodUid、PodCreationTimeStamp、ContainerRestartCount、PodRestartCount、PodStartTime、ContainerStartTime、ServiceName、ControllerKind、ControllerName、ContainerStatus、ContainerID、ContainerName、Name、PodLabel、Namespace、PodStatus、ClusterName、PodIp、SourceSystem |
 | Kubernetes 群集节点部分清单 | `KubeNodeInventory` | TimeGenerated, Computer, ClusterName, ClusterId, LastTransitionTimeReady, Labels, Status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
 | Kubernetes 事件 | `KubeEvents_CL` | TimeGenerated, Computer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Message,  SourceSystem | 
 | Kubernetes 群集中的服务 | `KubeServices_CL` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Kubernetes 群集节点部分的性能指标 | Perf &#124; where ObjectName == “K8SNode” | cpuUsageNanoCores, , memoryWorkingSetBytes, memoryRssBytes, networkRxBytes, networkTxBytes, restartTimeEpoch, networkRxBytesPerSec, networkTxBytesPerSec, cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes | 
-| Kubernetes 群集容器部分的性能指标 | Perf &#124; where ObjectName == “K8SContainer” | cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, restartTimeEpoch, cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryLimitBytes | 
+| Kubernetes 群集节点部分的性能指标 | Perf &#124; where ObjectName == “K8SNode” | Computer、ObjectName、CounterName（cpuUsageNanoCores、memoryWorkingSetBytes、memoryRssBytes、networkRxBytes、networkTxBytes、restartTimeEpoch、networkRxBytesPerSec、networkTxBytesPerSec、cpuAllocatableNanoCores、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes）、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
+| Kubernetes 群集容器部分的性能指标 | Perf &#124; where ObjectName == “K8SContainer” | CounterName（cpuUsageNanoCores、memoryWorkingSetBytes、memoryRssBytes、restartTimeEpoch、cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryLimitBytes）、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
 
 ## <a name="search-logs-to-analyze-data"></a>搜索日志以分析数据
 Log Analytics 有助于查找趋势、诊断瓶颈、预测或关联有助于确定是否最优执行当前群集配置的数据。  提供预定义日志搜索，可直接使用，也可自定义以根据自己的需要返回信息。 
@@ -363,7 +384,7 @@ Log Analytics 有助于查找趋势、诊断瓶颈、预测或关联有助于确
         "aksResourceId": {
            "type": "string",
            "metadata": {
-             "description": "AKS Cluster resource id"
+             "description": "AKS Cluster Resource ID"
            }
        },
       "aksResourceLocation": {
@@ -416,7 +437,7 @@ Log Analytics 有助于查找趋势、诊断瓶颈、预测或关联有助于确
 
 4. 使用可以在选中群集的“属性”页面上找到的 AKS 群集值编辑“aksResourceId”和“aksResourceLocation”的值。<br><br> ![容器属性页面](./media/monitoring-container-health/container-properties-page.png)<br>
 
-    位于“属性”页面时，还请复制“工作区资源 ID”。如果决定稍后删除 Log Analytics 工作区（不在此进程中执行此操作），则需要此值。  
+    位于“属性”页时，还请复制“工作区资源 ID”。  如果决定稍后删除 Log Analytics 工作区（不在此进程中执行此操作），则需要此值。  
 
 5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹。
 6. 已做好部署此模板的准备。 
@@ -429,7 +450,7 @@ Log Analytics 有助于查找趋势、诊断瓶颈、预测或关联有助于确
         New-AzureRmResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
         ```
 
-        配置更改可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息，如下所示：
+        配置更改可能需要几分钟才能完成。 完成后，会看到一条包含返回的结果的消息，如下所示：
 
         ```powershell
         ProvisioningState       : Succeeded
@@ -443,13 +464,13 @@ Log Analytics 有助于查找趋势、诊断瓶颈、预测或关联有助于确
         az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
         ```
 
-        配置更改可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息，如下所示：
+        配置更改可能需要几分钟才能完成。 完成后，会看到一条包含返回的结果的消息，如下所示：
 
         ```azurecli
         ProvisioningState       : Succeeded
         ```
 
-如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果不熟悉如何删除工作区，请参阅[使用 Azure 门户删除 Azure Log Analytics 工作区](../log-analytics/log-analytics-manage-del-workspace.md)。  不要忘记之前在步骤 4 中复制的“工作区资源 ID”，稍后还会需要。  
+如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果不熟悉如何删除工作区，请参阅[使用 Azure 门户删除 Azure Log Analytics 工作区](../log-analytics/log-analytics-manage-del-workspace.md)。  不要忘记之前在步骤 4 中复制的“工作区资源 ID”，稍后将会需要。  
 
 ## <a name="troubleshooting"></a>故障排除
 本节提供有助于排查容器运行状况问题的信息。

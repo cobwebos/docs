@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 398b69769cebb9d54121e357faed06294499bd61
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e666d23cec4ec6d987084bf5dc33bdb7c3db0f66
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723773"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231189"
 ---
 # <a name="set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online 
 
@@ -182,7 +182,7 @@ ms.locfileid: "34723773"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)。
+有关详细信息，请参阅 [Azure Active Directory 中的条件访问是什么](active-directory-conditional-access-azure-portal.md)。
 
 有关配置声明规则的说明，请参阅[配置声明规则](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-claim-rules)。 
 

@@ -1,5 +1,20 @@
-
-
+---
+title: include 文件
+description: include 文件
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: azcspmt;jonbeck;cynthn
+ms.custom: include file
+ms.openlocfilehash: eaf490979167ea5cbfe5846e62444526310452f8
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36269538"
+---
 某些数据库工作负荷（如 SQL Server 或 Oracle）需要高内存、存储和 I/O 带宽，但不需要高核心计数。 许多数据库工作负荷不是 CPU 密集型工作负荷。 Azure 提供了某些 VM 大小（其中你可以限制 VM vCPU 计数），以降低软件许可成本，同时保持相同的内存、存储和 I/O 带宽。
 
 可将 vCPU 计数限制为一半或四分之一的原始 VM 大小。 这些新 VM 大小具有可指定活动的 vCPU 数的后缀，以便可以更轻松地识别。
@@ -11,6 +26,12 @@
 
 | 名称                | vCPU | 规格           |
 |---------------------|------|-----------------|
+| Standard_M8-2ms     | 2    | 与 M8ms 相同    |
+| Standard_M8-4ms     | 4    | 与 M8ms 相同    |
+| Standard_M16-4ms    | 4    | 与 M16ms 相同   |
+| Standard_M16-8ms    | 8    | 与 M16ms 相同   |
+| Standard_M32-8ms    | 8    | 与 M32ms 相同   |
+| Standard_M32-16ms   | 16   | 与 M32ms 相同   |
 | Standard_M64-32ms   | 32   | 与 M64ms 相同   |
 | Standard_M64-16ms   | 16   | 与 M64ms 相同   |
 | Standard_M128-64ms  | 64   | 与 M128ms 相同  |

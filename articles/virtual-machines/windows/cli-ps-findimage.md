@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中选择 Windows VM 映像 | Microsoft Docs
-description: 了解如何使用 Azure PowerSHell 来确定 Marketplace VM 映像的发布者、产品/服务、SKU 和版本。
+description: 了解如何使用 Azure PowerSHell 来确定市场 VM 映像的发布者、产品/服务、SKU 和版本。
 services: virtual-machines-windows
 documentationcenter: ''
 author: dlepow
@@ -15,16 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
-ms.openlocfilehash: 885ee10bc63b65d936f5b433a18c4435b2503720
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 269d1392e00d02a79a360e3528fdde174563f2cf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313437"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295204"
 ---
-# <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>如何使用 Azure PowerShell 在 Azure Marketplace 中查找 Windows VM 映像
+# <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>如何使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
 
-本文介绍如何使用 Azure PowerShell 在 Azure Marketplace 中查找 VM 映像。 使用 PowerShell、资源管理器模板或其他工具以编程方式创建 VM 时，使用此信息指定 Marketplace 映像。
+本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 使用 PowerShell、资源管理器模板或其他工具以编程方式创建 VM 时，使用此信息指定市场映像。
+
+还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
 确保已安装并配置最新的 [Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
@@ -232,7 +234,7 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>接受条款
 
-若要查看许可条款，请使用 [Get-AzureRmMarketplaceterms](/powershell/module/azurerm.marketplaceordering/get-azurermmarketplaceterms) cmdlet 并传入购买计划参数。 输出会提供指向 Marketplace 映像条款的链接，并显示是否以前已接受条款。 例如：
+若要查看许可条款，请使用 [Get-AzureRmMarketplaceterms](/powershell/module/azurerm.marketplaceordering/get-azurermmarketplaceterms) cmdlet 并传入购买计划参数。 输出会提供指向市场映像条款的链接，并显示是否以前已接受条款。 例如：
 
 ```powershell
 Get-AzureRmMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -277,7 +279,7 @@ Signdate          : 2/23/2018 7:49:31 PM
 ```
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>使用购买计划参数进行部署
-接受映像的条款后，便可以在订阅中部署 VM。 如以下代码片段中所示，使用 [Set-AzureRmVMPlan](/powershell/module/azurerm.compute/set-azurermvmplan) cmdlet 为 VM 对象设置 Marketplace 计划信息。 如需为 VM 创建网络设置和完成部署的完整脚本，请参阅 [PowerShell 脚本示例](powershell-samples.md)。
+接受映像的条款后，便可以在订阅中部署 VM。 如以下代码片段中所示，使用 [Set-AzureRmVMPlan](/powershell/module/azurerm.compute/set-azurermvmplan) cmdlet 为 VM 对象设置市场计划信息。 如需为 VM 创建网络设置和完成部署的完整脚本，请参阅 [PowerShell 脚本示例](powershell-samples.md)。
 
 ```powershell
 ...

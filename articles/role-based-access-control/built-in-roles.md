@@ -1,6 +1,6 @@
 ---
-title: Azure 中基于角色的访问控制 (RBAC) 的内置角色 | Microsoft Docs
-description: 介绍 Azure 中基于角色的访问控制 (RBAC) 的内置角色。 列出 actions 和 notActions。
+title: Azure 中的内置角色 | Microsoft Docs
+description: 介绍 Azure 中基于角色的访问控制 (RBAC) 的内置角色。 列出 actions、notActions、dataActions 和 notDataActions。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 06/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 861b4ca360ef3fb9bc752d79009570ee2cfc9ade
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267367"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294490"
 ---
-# <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
+# <a name="built-in-roles-in-azure"></a>Azure 中的内置角色
 [基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，可以创建你自己的[自定义角色](custom-roles.md)。
 
 内置角色始终在不断演变。 若要获取最新的角色定义，请使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。

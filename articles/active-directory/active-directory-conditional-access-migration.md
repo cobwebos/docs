@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中迁移经典策略 | Microsoft Docs
+title: Azure Active Directory 条件访问中的策略迁移是什么？ | Microsoft Docs
 description: 了解在 Azure 门户中迁移经典策略所要掌握的知识。
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b6285381833526cdbdd7c1392894458a47c1cf34
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4a9b3df66567c4170ba861d3e597261e37271bf1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723722"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231856"
 ---
-# <a name="migrate-classic-policies-in-the-azure-portal"></a>在 Azure 门户中迁移经典策略 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的策略迁移是什么？ 
 
 
 [条件访问](active-directory-conditional-access-azure-portal.md)是 Azure Active Directory (Azure AD) 中的一项功能，用于控制已获授权的用户如何访问云应用。 尽管此功能的用途仍未变化，但新版 Azure 门户在条件访问的工作原理方面引入了重大改进。
@@ -85,11 +85,11 @@ ms.locfileid: "34723722"
 
 请参阅：
 
-- [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)，了解基本概念和术语。
+- [Azure Active Directory 中的条件访问是什么](active-directory-conditional-access-azure-portal.md)，了解基本概念和术语。
 
 - [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)，获取有关在组织中部署条件访问的一些指导。
 
-- [Azure Active Directory 中的条件访问入门](active-directory-conditional-access-azure-portal-get-started.md)，熟悉 Azure 门户中的用户界面。
+- [通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](active-directory-conditional-access-app-based-mfa.md)，熟悉 Azure 门户中的用户界面。
 
 
  
@@ -170,6 +170,6 @@ Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
+- 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](active-directory-conditional-access-app-based-mfa.md)。
 
 - 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。 

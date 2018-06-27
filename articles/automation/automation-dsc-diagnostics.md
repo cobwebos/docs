@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d01042a02f2339f039f23d4f6e021de503dc3815
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 822d0e285e6f1cc9907625d7928dff3d9bf66921
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195958"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218949"
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>将 Azure Automation DSC 报告数据转发到 Log Analytics
 
@@ -86,14 +86,14 @@ Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Wo
 
 我们的一家重要客户提出的请求是，当 DSC 配置出现问题时能够发送电子邮件或短信。   
 
-若要创建预警规则，需要首先针对应调用警报的 DSC 报表记录创建日志搜索。  单击“警报”按钮以创建和配置警报的规则。
+若要创建预警规则，需要首先针对应调用警报的 DSC 报表记录创建日志搜索。  单击“+ 新建警报规则”按钮以创建并配置警报规则。
 
 1. 在 Log Analytics“概述”页面中，单击“日志搜索”。
 1. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
 
   如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。  
   自动化帐户名称可能派生自 DscNodeStatusData 搜索中的 Resource 字段。  
-1. 若要打开“添加警报规则”屏幕，请单击页面顶部的“警报”。 有关用于配置警报的选项的详细信息，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md#alert-rules)。
+1. 若要打开“创建规则”屏幕，请单击页面顶部的“+ 新建警报规则”。 有关用于配置警报的选项的详细信息，请参阅[创建警报规则](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>在所有节点中查找失败的 DSC 资源
 

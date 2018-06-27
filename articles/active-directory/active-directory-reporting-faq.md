@@ -3,24 +3,24 @@ title: Azure Active Directory 报告常见问题 | Microsoft Docs
 description: Azure Active Directory 报告常见问题。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/10/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bf253e0b8451b3798360a657485289f089239c70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588584"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231899"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory 报告常见问题
 
@@ -72,7 +72,7 @@ ms.locfileid: "34588584"
 
 **问：可从 Azure 门户下载多少条记录？**
 
-**答：** 最多可从 Azure 门户下载 12 万条记录。 记录按最近时间进行排序，默认情况下获取的是最近 12 万条记录。 
+**答：** 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间进行排序，默认情况下获取的是最近 5000 条记录。 对于大于 5000 的记录大小，请选择筛选条件，然后单击 Azure 门户上的“脚本”按钮。 这将下载一个 PowerShell 脚本，你可以运行该脚本生成一个 CSV 文件，其中包含与筛选条件匹配的所有记录。 需要以*管理员模式*运行 PowerShell 脚本。 有关详细信息，请参阅[下载登录活动](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities)。
 
 ---
 
@@ -84,7 +84,7 @@ ms.locfileid: "34588584"
 
 **问：如何获得高级许可证？**
 
-**答：** 请参阅 [Azure Active Directory Premium 入门](active-directory-get-started-premium.md)获取此问题的解答。
+**答：** 请参阅 [Azure Active Directory Premium 入门](fundamentals/active-directory-get-started-premium.md)获取此问题的解答。
 
 ---
 

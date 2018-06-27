@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9d34c06461ea5f264f762494d93d76f1dc1bcb3e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637168"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221526"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -75,18 +75,21 @@ Log Analytics 使用 UTC 时间并且每天从 UTC 午夜时间开始。 如果�
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>问： 当数据收集停止时如何可以收到通知？
 
-答：当数据收集停止时，可以使用[创建警报规则](log-analytics-alerts-creating.md#create-an-alert-rule)中所述的步骤收到通知。
+答：当数据收集停止时，可以使用[新建日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)中所述的步骤收到通知。
 
 针对数据收集停止时创建警报时，请设置以下各项：
-- 将“名称”设置为“数据收集已停止”
-- 将“严重性”设置为“警告”
-- 将“搜索查询”设置为 `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-- 将“时间范围”设置为“30 分钟”。
-- 将“警报频率”设置为每“十”分钟。
-- 将“生成警报的基础”设置为“结果数”
-- 将“结果数”设置为“大于 0”
 
-查询返回结果时，只有在检测信号消失时间超过 15 分钟的情况下，才会触发此警报。  执行[将操作添加到警报规则](log-analytics-alerts-actions.md)中介绍的步骤，为警报规则配置电子邮件、Webhook 或 Runbook 操作。
+- **定义警报条件**将 Log Analytics 工作区指定为资源目标。
+- **警报条件**指定下列项：
+   - **信号名称**选择“自定义日志搜索”。
+   - 将“搜索查询”设置为 `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **警报逻辑****基于***结果数*，**条件***大于***阈值** *0*
+   - **时间段**为 *30* 分钟，并将**警报频率**设为每 *10* 分钟
+- **定义警报详细信息**指定以下项：
+   - 将“名称”设置为“数据收集已停止”
+   - 将“严重性”设置为“警告”
+
+指定现有的操作组或创建一个新[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)，以便当日志警报匹配条件时，如果检测信号丢失超过 15 分钟，你将收到通知。
 
 ## <a name="configuration"></a>配置
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>问： 是否可以更改用于从 Azure 诊断 (WAD) 读取数据的表/blob 容器的名称？

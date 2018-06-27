@@ -48,6 +48,8 @@
           href: security-center-customize-os-security-config.md
         - name: 使用 Azure 策略的安全策略
           href: security-center-azure-policy.md
+        - name: 租户范围可见性
+          href: security-center-management-groups.md
     - name: 实施安全建议
       href: security-center-recommendations.md
     - name: 监视安全运行状况

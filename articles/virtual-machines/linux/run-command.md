@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a7e828aa79d3a7fba53c0ef9f683ed16afc9a3e6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0e87243b4b6e8362cb840a6510c175d2712b8a1a
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267443"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285750"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>使用“运行命令”在 Linux VM 中运行 shell 脚本
 
@@ -33,6 +33,7 @@ ms.locfileid: "35267443"
 * 运行脚本的最短时间大约为 20 秒
 * 在 Linux 上，脚本默认情况下以提升用户的身份运行
 * 一次只能运行一个脚本
+* 不支持提示输入信息（交互模式）的脚本。
 * 无法取消正在运行的脚本
 * 脚本最多可以运行 90 分钟，之后它将超时
 
@@ -66,7 +67,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 下表显示了可用于 Linux VM 的命令的列表。 **RunShellScript** 命令可用来运行所需的任何自定义脚本。
 
-|**名称**|**说明**|
+|名称|**说明**|
 |---|---|
 |**RunShellScript**|执行 Linux shell 脚本。|
 |**ifconfig**| 获取所有网络接口的配置。|

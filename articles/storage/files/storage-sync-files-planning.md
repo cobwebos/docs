@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 160f01c3094548277e1f68e0002954ae63c79ce6
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 81b760e3a911bacb9c01106d59577d794788abe8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738323"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296904"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>规划 Azure 文件同步（预览版）部署
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -145,6 +145,9 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 
 有关详细信息，请参阅 [DFS 复制概述](https://technet.microsoft.com/library/jj127250)。
 
+### <a name="windows-search"></a>Windows 搜索
+如果在服务器终结点上启用了云分层功能，则已分层的文件将被跳过，并且不会被 Windows 搜索进行索引。 非分层文件会适当进行索引。
+
 ### <a name="antivirus-solutions"></a>防病毒解决方案
 由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 由于分层文件设置有“脱机”属性，因此建议咨询软件供应商，了解如何配置解决方案以跳过读取脱机文件。 
 
@@ -158,6 +161,11 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 
 ### <a name="backup-solutions"></a>备份解决方案
 与防病毒解决方案一样，备份解决方案可能导致重新调用分层文件。 建议使用云备份解决方案来备份 Azure文件共享，而不是使用本地备份产品。
+
+如果使用的是本地备份解决方案，则应在已禁用云分层的同步组中的服务器上执行备份。 在服务器终结点位置内还原文件时，请使用文件级还原选项。 还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。
+
+> [!Note]  
+> 应用程序感知、卷级别和裸机还原 (BMR) 选项可能导致意外结果，目前不受支持。 未来版本将支持这些还原选项。
 
 ### <a name="encryption-solutions"></a>加密解决方案
 是否支持加密解决方案取决于其实现方式。 Azure 文件同步现支持：
@@ -180,6 +188,7 @@ Azure 文件同步仅在以下区域提供预览版：
 | 区域 | 数据中心位置 |
 |--------|---------------------|
 | 澳大利亚东部 | 新南威尔士州 |
+| 澳大利亚东南部 | 维多利亚 |
 | 加拿大中部 | 多伦多 |
 | 加拿大东部 | 魁北克市 |
 | 美国中部 | 爱荷华州 |
@@ -189,6 +198,7 @@ Azure 文件同步仅在以下区域提供预览版：
 | 北欧 | 爱尔兰 |
 | 东南亚 | 新加坡 |
 | 英国南部 | 伦敦 |
+| 英国西部 | 加的夫 |
 | 欧洲西部 | 荷兰 |
 | 美国西部 | California |
 

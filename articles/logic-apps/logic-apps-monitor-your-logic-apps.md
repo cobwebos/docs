@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 061269050ad598e1877c3b7bc6745d4095816020
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f11db2009328118dda036057918ba853f5032200
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301212"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293517"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -118,19 +118,11 @@ ms.locfileid: "35301212"
 
    ![选择你的 Log Analytics 工作区](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
-3. 在“管理”下，选择“OMS 门户”。
+3. 在“管理”下，选择“日志搜索”。
 
-   ![选择“OMS 门户”](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
+   ![选择“日志搜索”](media/logic-apps-monitor-your-logic-apps/log-search.png)
 
-4. 在主页上，选择“日志搜索”。
-
-   ![在主页上，选择“日志搜索”](media/logic-apps-monitor-your-logic-apps/logsearch.png)
-
-   -或-
-
-   ![在菜单上，选择“日志搜索”](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
-
-5. 在搜索框中，指定要查找的字段，然后按下 Enter 键。 开始输入时，会显示可能的匹配和可以使用的操作。 
+4. 在搜索框中，指定要查找的字段，然后按下 Enter 键。 开始输入时，会显示可能的匹配和可以使用的操作。 
 
    例如，要查找发生的前 10 个事件，请输入并选择此搜索查询：search Category == "WorkflowRuntime" | limit 10
 
@@ -138,27 +130,27 @@ ms.locfileid: "35301212"
 
    详细了解[如何在 Log Analytics 中查找数据](../log-analytics/log-analytics-log-searches.md)。
 
-6. 在结果页的左侧栏中，选择要查看的时间范围。
+5. 在结果页的左侧栏中，选择要查看的时间范围。
 若要通过添加筛选器优化查询，请选择“+添加”。
 
    ![选择查询结果的时间范围](media/logic-apps-monitor-your-logic-apps/query-results.png)
 
-7. 在“添加筛选器”下，输入筛选器名称，以便查找所需的筛选器。 选择筛选器，然后选择“+添加”。
+6. 在“添加筛选器”下，输入筛选器名称，以便查找所需的筛选器。 选择筛选器，然后选择“+添加”。
 
    本示例使用“status”一词在“AzureDiagnostics”下查找失败的事件。
    此处已选中 status_s 的筛选器。
 
    ![选择筛选器](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
-8. 在左侧栏中，选择要使用的筛选器值，然后选择“应用”。
+7. 在左侧栏中，选择要使用的筛选器值，然后选择“应用”。
 
    ![选择筛选器值，然后选择“应用”](media/logic-apps-monitor-your-logic-apps/log-search-apply-filter.png)
 
-9. 现在返回到你正在生成的查询。 该查询已通过你选定的筛选器和值进行更新。 以前的结果现在也已进行了筛选。
+8. 现在返回到你正在生成的查询。 该查询已通过你选定的筛选器和值进行更新。 以前的结果现在也已进行了筛选。
 
    ![返回到包含筛选结果的查询](media/logic-apps-monitor-your-logic-apps/log-search-query-filtered-results.png)
 
-10. 若要保存查询供将来使用，请选择“保存”。 了解[如何保存查询](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query)。
+9. 若要保存查询供将来使用，请选择“保存”。 了解[如何保存查询](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query)。
 
 <a name="extend-diagnostic-data"></a>
 

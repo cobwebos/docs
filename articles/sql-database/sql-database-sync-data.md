@@ -1,22 +1,23 @@
 ---
-title: Azure SQL 数据同步（预览版）| Microsoft 文档
-description: 本文概述了 Azure SQL 数据同步（预览版）
+title: Azure SQL 数据同步 | Microsoft Docs
+description: 此概述介绍 Azure SQL 数据同步
 services: sql-database
 author: douglaslms
 manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 365a612b20ed91a6acde566dff12b07ff3b8b676
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c31735719e559a25b53acf0bfcf1efff0cee4d5e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296914"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>使用 SQL 数据同步（预览版）跨多个云和本地数据库同步数据
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
 使用 SQL 数据同步这项基于 Azure SQL 数据库的服务，可以跨多个 SQL 数据库和 SQL Server 实例双向同步选定数据。
 
@@ -46,29 +47,29 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
 
 如果需要跨多个 Azure SQL 数据库或 SQL Server 数据库更新数据，SQL 数据同步就非常有用。 下面是 SQL 数据同步的主要用例：
 
--   **混合数据同步：**借助 SQL 数据同步，可以在本地数据库和 Azure SQL 数据库之间同步数据，以便启用混合应用程序。 此功能可能会吸引在考虑迁移到云中，并希望启用 Azure 应用程序的客户。
+-   **混合数据同步：** 借助 SQL 数据同步，可以在本地数据库和 Azure SQL 数据库之间同步数据，以便启用混合应用程序。 此功能可能会吸引在考虑迁移到云中，并希望启用 Azure 应用程序的客户。
 
--   **分布式应用程序：**在许多情况下，跨各个数据库分散不同的工作负载会大有裨益。 例如，如果有大型生产数据库，但还需要对此数据运行报表或分析工作负载，那么使用第二个数据库来处理此额外工作负载将会有所帮助。 这种方法可最大限度地减轻对生产工作负载造成的性能影响。 可以使用 SQL 数据同步来同步这两个数据库。
+-   **分布式应用程序：** 在许多情况下，跨各个数据库分散不同的工作负载会大有裨益。 例如，如果有大型生产数据库，但还需要对此数据运行报表或分析工作负载，那么使用第二个数据库来处理此额外工作负载将会有所帮助。 这种方法可最大限度地减轻对生产工作负载造成的性能影响。 可以使用 SQL 数据同步来同步这两个数据库。
 
--   **全局分布式应用程序：**许多企业的业务分布在多个区域，甚至是多个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
+-   **全局分布式应用程序：** 许多企业的业务分布在多个区域，甚至是多个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
 
-数据同步不适合以下方案：
+数据同步不是以下场景的最佳解决方案：
 
--   灾难恢复
-
--   读取缩放
-
--   ETL（OLTP 到 OLAP）
-
--   从本地 SQL Server 迁移到 Azure SQL 数据库
+| 场景 | 一些建议的解决方案 |
+|----------|----------------------------|
+| 灾难恢复 | [Azure 异地冗余备份](sql-database-automated-backups.md) |
+| 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](sql-database-read-scale-out.md) |
+| ETL（OLTP 到 OLAP） | [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)或 [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| 从本地 SQL Server 迁移到 Azure SQL 数据库 | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
+|||
 
 ## <a name="how-does-data-sync-work"></a>SQL 数据同步的工作原理 
 
--   **跟踪数据更改：**SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 更改记录在用户数据库中的端表内。
+-   **跟踪数据更改：** SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 更改记录在用户数据库中的端表内。
 
--   **同步数据：**根据设计，SQL 数据同步采用中心辐射型模型。 中心与各个成员同步数据。 中心内的更改会先下载到成员，然后成员内的更改会上传到中心。
+-   **同步数据：** 根据设计，SQL 数据同步采用中心辐射型模型。 中心与各个成员同步数据。 中心内的更改会先下载到成员，然后成员内的更改会上传到中心。
 
--   **解决冲突：**SQL 数据同步提供两个冲突解决选项，即“中心胜出”或“成员胜出”。
+-   **解决冲突：** SQL 数据同步提供两个冲突解决选项，即“中心胜出”或“成员胜出”。
     -   如果选择“中心胜出”，中心内的更改始终覆盖成员内的更改。
     -   如果选择“成员胜出”，成员内的更改覆盖中心内的更改。 如果有多个成员，最终值取决于哪个成员最先同步。
 
@@ -81,6 +82,8 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
 
 #### <a name="performance-impact"></a>性能影响
 SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在用户数据库中创建用于跟踪的端表。 这些更改跟踪活动会对数据库工作负荷产生影响。 评估服务层并根据需要升级。
+
+在同步组创建、更新和删除期间预配和取消预配也可能会影响数据库性能。 
 
 ### <a name="general-requirements"></a>一般要求
 
@@ -124,13 +127,13 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 ## <a name="faq-about-sql-data-sync"></a>SQL 数据同步常见问题解答
 
-### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>SQL 数据同步（预览版）服务的价格是多少？
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL 数据同步服务的价格是多少？
 
-预览期间，不对 SQL 数据同步（预览版）服务本身收取任何费用。  但是，对于传入和传出 SQL 数据库实例的数据移动，仍然会产生数据传输费用。 有关价格，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
+对 SQL 数据同步服务本身不收取任何费用。  但是，对于传入和传出 SQL 数据库实例的数据移动，仍然会产生数据传输费用。 有关价格，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 ### <a name="what-regions-support-data-sync"></a>哪些区域支持数据同步？
 
-SQL 数据同步（预览版）适用于所有公共云区域。
+SQL 数据同步在所有公共云区域中都可用。
 
 ### <a name="is-a-sql-database-account-required"></a>是否需要 SQL 数据库帐户？ 
 
@@ -149,7 +152,7 @@ SQL 数据同步（预览版）适用于所有公共云区域。
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>我应该使用 SQL 数据同步备份和还原数据库吗？
 
-不建议使用 SQL 数据同步（预览版）创建数据备份。 由于 SQL 数据同步（预览版）的同步没有版本控制，因此无法备份和还原到特定时间点。 此外，SQL 数据同步（预览版）不会备份其他 SQL 对象（如存储过程），并且不会快速执行还原操作的等效操作。
+建议不要使用 SQL 数据同步创建数据备份。 由于 SQL 数据同步的同步不进行版本控制，因此无法备份并还原到特定时间点。 此外，SQL 数据同步不会备份其他 SQL 对象（如存储过程），并且不会快速执行还原操作的等效操作。
 
 对于推荐的备份技术，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
 
@@ -169,7 +172,7 @@ SQL 数据同步（预览版）适用于所有公共云区域。
 
 ### <a name="is-federation-supported-in-sql-data-sync"></a>SQL 数据同步是否支持联合？
 
-联合根数据库可用于 SQL 数据同步（预览版）服务，没有任何限制。 不能将联合数据库终结点添加到当前版本的 SQL 数据同步（预览版）。
+联合根数据库可用于 SQL 数据同步服务，没有任何限制。 不能将联合数据库终结点添加到当前版本的 SQL 数据同步。
 
 ## <a name="next-steps"></a>后续步骤
 

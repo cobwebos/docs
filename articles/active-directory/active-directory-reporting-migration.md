@@ -3,34 +3,28 @@ title: 查找 Azure 门户中的 Azure Active Directory 用户活动报告 | Mic
 description: 了解在 Azure 门户中何处查找 Azure Active Directory 用户活动报告。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: users-groups-roles
 ms.date: 12/06/2017
-ms.author: curtand
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 985bdc3c00549844958c23a83496a019d7a31944
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f22219a0e2ff342e25a2efdeb319f389250ecfef
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231315"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
 通过本文可以了解如何在 Azure 门户中查找 Azure Active Directory 用户活动报告。
 
-## <a name="whats-new"></a>新增功能
-
-Azure 经典门户中的报告分为以下类别：
-* 安全报表
-* 活动报表
-* 集成的应用报告
-
-### <a name="activity-and-integrated-app-reports"></a>活动和集成的应用报表
+## <a name="activity-and-integrated-app-reports"></a>活动和集成的应用报表
 
 对于 Azure 门户中基于上下文的报告，现有报告将合并成单个视图。 单个基础 API 为视图提供数据。
 
@@ -87,7 +81,7 @@ Azure 经典门户中的报告分为以下类别：
 
 #### <a name="azure-ad-anomalous-activity-reports"></a>Azure AD 异常活动报告
 
-Azure 经典门户的 Azure AD 异常活动安全报告已合并，以向你提供一个主要视图。 此视图显示 Azure AD 可以检测和报告的所有与安全相关的风险事件。
+Azure AD 异常活动安全报告已合并，以向你提供一个中心视图。 此视图显示 Azure AD 可以检测和报告的所有与安全相关的风险事件。
 
 下表列出了 Azure 门户中“Azure AD 异常活动”安全报告和相应的风险事件类型。
 
@@ -104,8 +98,6 @@ Azure 经典门户的 Azure AD 异常活动安全报告已合并，以向你提�
 
 * 多次失败后登录
 * 从多个地理区域登录
-
-这些报告仍然可以在 Azure 经典门户中使用，但它们会在未来某个时间弃用。
 
 有关详细信息，请参阅 [Azure Active Directory 风险事件](active-directory-identity-protection-risk-events.md)。  
 
@@ -125,29 +117,10 @@ Azure 经典门户的 Azure AD 异常活动安全报告已合并，以向你提�
 - [Azure Active Directory 门户中的“有风险的登录”报告](active-directory-reporting-security-risky-sign-ins.md)
 
 
-## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Azure 经典门户与 Azure 门户中的活动报告
-
-本部分中的表列出了 Azure 经典门户中的现有报告。 它还说明了如何在 Azure 门户中获取相同的信息。
-
-若要查看所有审核数据，请在“Azure Active Directory”边栏选项卡上的“活动”下，转到“审核日志”。
-
-![审核日志](./media/active-directory-reporting-migration/61.png "审核日志")
-
-| Azure 经典门户                 | 在 Azure 门户中查找                                                         |
-| ---                                  | ---                                                                        |
-| 审核日志                           | 对于“活动类别”，选择“核心目录”。                       |
-| 密码重置活动              | 对于“活动类别”，选择“自助服务密码管理”。 |
-| 密码重置注册活动 | 对于“活动类别”，选择“自助服务密码管理”。     |
-| 自助服务组活动         | 对于“活动类别”，选择“自助服务组管理”。        |
-| 帐户设置活动        | 对于“活动类别”，选择“帐户用户预配”。         |
-| 密码滚动更新状态             | 对于“活动类别”，选择“自动执行应用密码滚动更新”。      |
-| 帐户设置错误          | 对于“活动类别”，选择“帐户用户预配”。        |
-| Office365 组名称更改         | 对于“活动类别”，选择“自助服务密码管理”。 对于“活动资源类型”，选择“组”。 对于“活动源”，选择“O365 组”。|
-
 要查看“应用程序使用情况”报告，请在“Azure Active Directory”边栏选项卡上的“管理”下，选择“企业应用程序”，并选择“登录”。
 
 
-![“企业应用程序登录”报告](./media/active-directory-reporting-migration/199.png "“企业应用程序登录”报告")
+![企业应用程序登录报告](./media/active-directory-reporting-migration/199.png)
 
 ## <a name="next-steps"></a>后续步骤
 

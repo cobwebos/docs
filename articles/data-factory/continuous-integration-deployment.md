@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 06/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 17fb10f4b39361a99d3f51ed753d333c6ec0bf15
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: febd43586ab3006303143ca04ce8a37941a6fd60
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618583"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36267919"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和部署
 
@@ -89,42 +89,9 @@ ms.locfileid: "34618583"
 
 4.  输入环境的名称。
 
-5.  添加一个 Git 项目，选择使用数据工厂配置的存储库。 选择 `adf\_publish` 作为使用最新默认版本的默认分支。
+5.  添加一个 Git 项目，选择使用数据工厂配置的存储库。 选择 `adf_publish` 作为使用最新默认版本的默认分支。
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
-
-6.  获取 Azure Key Vault 中的机密。 可以通过两种方式来处理机密：
-
-    a.  将机密添加到参数文件：
-
-       -   创建上传到 publish 分支的参数文件的副本，并使用以下格式设置需要从密钥保管库获取的参数的值：
-
-        ```json
-        {
-            "parameters": {
-                "azureSqlReportingDbPassword": {
-                    "reference": {
-                        "keyVault": {
-                            "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
-                        },
-                        "secretName": " < secret - name > "
-                    }
-                }
-            }
-        }
-        ```
-
-       -   使用此方法时，会自动从密钥保管库拉取机密。
-
-       -   参数文件也需位于 publish 分支中。
-
-    b.  添加 [Azure Key Vault 任务](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)：
-
-       -   选择“任务”选项卡，创建新的任务，然后搜索并添加“Azure Key Vault”。
-
-       -   在 Key Vault 任务中，选择在其中创建了密钥保管库的订阅，根据需要提供凭据，然后选择密钥保管库。
-
-       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  添加 Azure 资源管理器部署任务：
 
@@ -134,7 +101,7 @@ ms.locfileid: "34618583"
 
     c.  选择“创建或更新资源组”操作。
 
-    d.  在“替代模板参数”字段旁边 选择“…”。 以浏览方式查找在门户中通过发布操作创建的资源管理器模板 (*ARMTemplateForFactory.json*)。 在 `adf\_publish` 分支的根文件夹中查找该文件。
+    d.  在“模板”字段中 选择“…”。 以浏览方式查找在门户中通过发布操作创建的资源管理器模板 (*ARMTemplateForFactory.json*)。 在 `adf_publish` 分支的文件夹 `<FactoryName>` 中查找该文件。
 
     e.  针对参数文件执行相同的操作。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
 
@@ -147,6 +114,43 @@ ms.locfileid: "34618583"
 9.  根据此版本定义创建新版本。
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
+
+### <a name="optional---get-the-secrets-from-azure-key-vault"></a>可选 - 获取 Azure Key Vault 中的机密
+
+如果有要传入 Azure 资源管理器模板的机密，我们建议将 Azure Key Vault 用于 VSTS 发布。
+
+可以通过两种方式来处理机密：
+
+1.  将机密添加到参数文件。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。
+
+    -   创建上传到 publish 分支的参数文件的副本，并使用以下格式设置需要从密钥保管库获取的参数的值：
+
+    ```json
+    {
+        "parameters": {
+            "azureSqlReportingDbPassword": {
+                "reference": {
+                    "keyVault": {
+                        "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
+                    },
+                    "secretName": " < secret - name > "
+                }
+            }
+        }
+    }
+    ```
+
+    -   使用此方法时，会自动从密钥保管库拉取机密。
+
+    -   参数文件也需位于 publish 分支中。
+
+2.  在上一部分中介绍的 Azure 资源管理器部署之前添加 [Azure Key Vault 任务](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)：
+
+    -   选择“任务”选项卡，创建新的任务，然后搜索并添加“Azure Key Vault”。
+
+    -   在 Key Vault 任务中，选择在其中创建了密钥保管库的订阅，根据需要提供凭据，然后选择密钥保管库。
+
+    ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-vsts-agent"></a>向 VSTS 代理授权
 第一次时，Azure Key Vault 任务可能会失败，出现“拒绝访问”错误。 请下载此版本的日志，使用此命令找到 `.ps1` 文件，以便向 VSTS 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
@@ -161,14 +165,9 @@ ms.locfileid: "34618583"
 3.  选择“内联脚本”作为脚本类型，然后提供代码。 以下示例停止触发器：
 
     ```powershell
-    $armTemplate="$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json"
+    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 
-    $templateJson = Get-Content "$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json" | ConvertFrom-Json
-
-    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName
-    $DataFactoryName -ResourceGroupName $ResourceGroupName
-
-    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $\_.name -Force }
+    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)

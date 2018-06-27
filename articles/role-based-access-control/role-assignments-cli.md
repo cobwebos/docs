@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 管理基于角色的访问控制 (RBAC) | Microsoft Docs
-description: 通过列出角色和角色操作、将角色分配到订阅和应用程序范围来了解如何使用 Azure 命令行接口管理基于角色的访问控制 (RBAC)。
+title: 使用 RBAC 和 Azure CLI 管理访问权限 | Microsoft Docs
+description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure CLI 来管理用户、组和应用程序的访问权限。 这包括列出访问权限、授予访问权限以及删除访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,30 +14,24 @@ ms.workload: identity
 ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b50d04bcbd067059bf4816468585e5d56a63d41
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 15ff519f5af7471d6adaae44e2af19422ad44fea
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266731"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294398"
 ---
-# <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>使用 Azure 命令行接口管理基于角色的访问控制
+# <a name="manage-access-using-rbac-and-azure-cli"></a>使用 RBAC 和 Azure CLI 管理访问权限
 
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
-
-
-使用基于角色的访问控制 (RBAC) 时，可以通过分配特定范围的角色，为用户、组和服务主体定义访问权限。 本文介绍如何使用 Azure 命令行接口 (CLI) 来管理角色分配。
+可以在 Azure 中通过[基于角色的访问控制 (RBAC)](overview.md) 这种方式管理对资源的访问。 本文介绍如何使用 RBAC 和 Azure CLI 来管理用户、组和应用程序的访问权限。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要使用 Azure CLI 管理角色分配，必须具备以下先决条件：
 
-* [Azure CLI 2.0](/cli/azure)。 可以通过 [Azure Cloud Shell](../cloud-shell/overview.md) 在浏览器中使用它，也可以将其[安装](/cli/azure/install-azure-cli)在 macOS、Linux 和 Windows 上，然后从命令行运行它。
+* [Azure CLI](/cli/azure)。 可以通过 [Azure Cloud Shell](../cloud-shell/overview.md) 在浏览器中使用它，也可以将其[安装](/cli/azure/install-azure-cli)在 macOS、Linux 和 Windows 上，然后从命令行运行它。
 
-## <a name="list-role-definitions"></a>列出角色定义
+## <a name="list-roles"></a>列出角色
 
 若要列出所有可用的角色定义，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)：
 
@@ -94,7 +88,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role-definition"></a>列出角色定义的操作
+### <a name="list-actions-of-a-role"></a>列出角色的操作
 
 若要列出角色定义的操作，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)：
 
@@ -182,7 +176,9 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="list-role-assignments"></a>列出角色分配
+## <a name="list-access"></a>列出访问权限
+
+在 RBAC 中，若要列出访问权限，请列出角色分配。
 
 ### <a name="list-role-assignments-for-a-user"></a>为用户列出角色分配
 
@@ -240,7 +236,9 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 ...
 ```
 
-## <a name="create-role-assignments"></a>创建角色分配
+## <a name="grant-access"></a>授予访问权限
+
+在 RBAC 中，若要授予访问权限，请创建角色分配。
 
 ### <a name="create-a-role-assignment-for-a-user"></a>为用户创建角色分配
 
@@ -290,9 +288,9 @@ az role assignment create --role <role> --assignee-object-id <assignee_object_id
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-a-role-assignment"></a>删除角色分配
+## <a name="remove-access"></a>删除访问权限
 
-若要删除角色分配，请使用 [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete)：
+在 RBAC 中，若要删除访问权限，请使用 [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) 删除角色分配：
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>

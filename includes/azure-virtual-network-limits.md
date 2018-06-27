@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/12/2018
+ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
-ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35568120"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36297960"
 ---
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -25,7 +25,7 @@ ms.locfileid: "35568120"
 | 每个虚拟网络的专用 IP 地址数 |4096 |4096 |
 | 虚拟机或角色实例的单 NIC 并发 TCP 或 UDP 流数 |500K |500K |
 | 网络安全组 (NSG) |100 |200 |
-| 每个 NSG 的 NSG 规则数 |200 |400 |
+| 每个 NSG 的 NSG 规则数 |200 |1000 |
 | 用户定义路由表数 |100 |200 |
 | 每个路由表的用户定义的路由数 |100 |400 |
 | 公共 IP 地址 (动态) |5 |联系支持人员 |
@@ -50,7 +50,7 @@ ms.locfileid: "35568120"
 | 网络安全组 (NSG) |100 |5000 |
 | 每个 NSG 的 NSG 规则数 |1000** |1000 |
 | 为安全组中的源或目标指定的 IP 地址和范围数 |2000 |4000 |
-| 应用程序安全组 |200 |500 |
+| 应用程序安全组 |500 |3000 |
 | 每个 IP 配置和每个 NIC 的应用程序安全组数 |10 |20 |
 | 每个应用程序安全组的 IP 配置数 |1000 |4000 |
 | 可在网络安全组的所有安全规则中指定的应用程序安全组数 |50 |100 |
@@ -64,6 +64,7 @@ ms.locfileid: "35568120"
 **这些默认限制适用于以前未通过客户支持提高这些上限的订阅
 
 #### <a name="load-balancer"></a>负载均衡器限制
+以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)
 
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |

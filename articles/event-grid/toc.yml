@@ -13,6 +13,8 @@
       href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Blob 存储事件 - PowerShell
       href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Blob 存储事件 - 门户
+      href: blob-event-quickstart-portal.md
     - name: 自定义事件 - Azure CLI
       href: custom-event-quickstart.md
     - name: 自定义事件 - PowerShell

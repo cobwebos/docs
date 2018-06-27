@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: bbc0cee8a44773c025c6174eaf7eccaba81b8d1b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4fc71432707c981c0f3f12e74ad7c499d36a17d2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "26617072"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231332"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
 
 本文介绍对应用程序进行许可期间可能发生的错误。 如果要对不包含任何错误消息的意外许可提示进行故障排除，请参阅 [Azure AD 的身份验证方案](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios)。
 
-与 Azure Active Directory 集成的许多应用程序需要获取访问其他资源的权限才能正常工作。 当这些资源也与 Azure Active Directory 集成时，通常使用通用许可框架来请求访问它们的权限。 
+与 Azure Active Directory 集成的许多应用程序需要获取访问其他资源的权限才能正常工作。 当这些资源也与 Azure Active Directory 集成时，通常使用通用许可框架来请求访问它们的权限。 这会显示许可提示，此情形通常发生在首次使用应用程序时，但也可能发生在后续使用应用程序时。
 
-这会显示许可提示，此情形通常发生在首次使用应用程序时，但也可能发生在后续使用应用程序时。
-
-对于用户而言，必须满足一些条件才能对应用程序所需的权限进行许可。 如果不满足这些条件，可能会发生各种错误。 其中包括：
+对于用户而言，必须满足一些条件才能对应用程序所需的权限进行许可。 如果不满足这些条件，可能会发生以下错误。
 
 ## <a name="requesting-not-authorized-permissions-error"></a>请求未授予的权限错误
 * **AADSTS90093：**&lt;clientAppDisplayName&gt; 正在请求一个或多个无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
@@ -41,7 +39,7 @@ ms.locfileid: "26617072"
 当公司管理员关闭用户对应用程序进行许可的能力，非管理员用户尝试使用的应用程序需要许可时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
 ## <a name="intermittent-problem-error"></a>不稳定问题错误
-* **AADSTS90090：** 我们似乎遇到了不稳定问题，它记录了尝试授予 &lt;clientAppDisplayName&gt; 的权限。 请稍后重试。
+* **AADSTS90090：** 登录过程似乎遇到了间歇性问题，它记录了尝试授予 &lt;clientAppDisplayName&gt; 的权限。 请稍后重试。
 
 此错误表明服务端已发生不稳定问题。 可通过重新尝试对应用程序进行许可来解决此问题。
 
@@ -62,7 +60,7 @@ ms.locfileid: "26617072"
 
 -   客户端应用程序开发人员错误地配置了应用程序，从而导致应用程序请求访问无效的资源。 在这种情况下，为了解决此问题，应用程序开发人员必须更新客户端应用程序的配置。
 
--   代表目标资源应用程序的服务主体在组织中不存在，或过去存在但已删除。 若要解决此问题，必须在组织中预配资源应用程序的服务主体，以便客户端应用程序可以请求其权限。 根据应用程序的类型，可以通过多种方式进行此操作，包括：
+-   代表目标资源应用程序的服务主体在组织中不存在，或过去存在但已删除。 若要解决此问题，必须在组织中预配资源应用程序的服务主体，以便客户端应用程序可以请求其权限。 可通过多种方式配置服务主体，具体取决于应用程序的类型，包括：
 
     -   获取资源应用程序（Microsoft 已发布的应用程序）的订阅
 
