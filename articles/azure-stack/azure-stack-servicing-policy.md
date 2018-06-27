@@ -12,21 +12,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: 77cc2f80588a104880e8149daccc6debd1ec43bc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c3cc8857373238079fee06c61faec962d7e3a6b2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796412"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack 服务策略
 本文介绍 Azure Stack 集成系统的服务策略，以及必须如何做才能使系统保持在受支持的状态。 
 
 ## <a name="update-package-types"></a>更新包类型
 
-有两种类型的集成系统的更新包： 
+集成系统有两种类型的更新包： 
 
 - **Microsoft 软件更新**。 Microsoft 会负责 Microsoft 软件更新包的端到端服务生命周期。 这些包可以包括最新的 Windows Server 安全更新、非安全更新和 Azure Stack 功能更新。 可以直接从 Microsoft 下载这些更新包。
 
@@ -36,23 +37,22 @@ ms.lasthandoff: 04/19/2018
 ## <a name="update-package-release-cadence"></a>更新包发布频率
 Microsoft 预期每月发布软件更新包。 但是，可能一个月内发布多个更新或没有任何更新。 OEM 硬件供应商会根据需要发布更新。 
 
-查找有关如何规划和管理更新，以及如何确定在当前版本的文档[管理更新概述](azure-stack-updates.md)。 有关特定更新的信息，包括如何下载它，请参阅发行说明的更新： 
-- [Azure 堆栈 1803年更新](azure-stack-update-1803.md)
-- [Azure 堆栈 1802年更新](azure-stack-update-1802.md)
-- [Azure 堆栈 1712年更新](azure-stack-update-1712.md)
-
+在[管理更新概述](azure-stack-updates.md)文档中，可以了解如何规划和管理更新，以及如何确定当前版本。 有关特定更新（包括其下载方法）的信息，请参阅该更新的发行说明： 
+- [Azure 堆栈 1805年更新](azure-stack-update-1805.md)
+- [Azure 堆栈 1804年更新](azure-stack-update-1804.md)
+- [Azure Stack 1803 更新](azure-stack-update-1803.md)
 
 
 ## <a name="hotfixes"></a>修补程序
-有时，Microsoft 提供的修补程序用于 Azure 堆栈该地址通常是预防性或具有时效性的特定问题。  每个修补程序将被释放，相应的 Microsoft 知识库文章，其中详细列出问题、 原因以及解决方法。 
+Microsoft 偶尔会提供 Azure Stack 的修补程序（通常是预防性或时效性的程序）来解决具体的问题。  发布的每个修补程序都附带相应的 Microsoft 知识库文章，其中详细描述了问题、原因和解决方法。 
 
-修补程序下载并安装用于 Azure 堆栈一样的正则完整的更新包。 但是，与完整的更新，不同修补程序可以安装以分钟为单位。 我们建议安装修补程序时，Azure 堆栈运算符设置维护时段。 修补程序更新的新版 Azure 堆栈云使你可以轻松地确定是否已应用此修补程序。 仍在支持的 Azure 堆栈的每个版本提供单独的修补程序。 每个修补程序的特定迭代累积并包含相同的版本为以前的更新。 你可以阅读更多有关的相应知识库修补程序中的特定修补程序适用性文章。  
+可以像下载和安装普通的 Azure Stack 完整更新包一样下载和安装修补程序。 但是，与完整更新不同，修补程序在几分钟内即可完成安装。 我们建议 Azure Stack 操作员在安装修补程序时设置维护时段。 修补程序会更新 Azure Stack 云的版本，使你可以轻松确定是否已应用该修补程序。 对于仍在支持期内的每个 Azure Stack 版本，将单独提供修补程序。 特定迭代的每个修复程序是累积性的，包含同一版本的以往更新。 可以在相应的知识库文章中详细了解特定修补程序的适用性。  
 
 
 ## <a name="keep-your-system-under-support"></a>保持系统受支持
-必须不断更新 Azure Stack 部署才能持续获得支持。 更新延迟的策略是： 对于 Azure 堆栈部署，以便保留在支持，它必须运行的最近发布的更新版本或运行的两个前面的更新版本。 修补程序不属于主要更新版本。 如果你的 Azure 堆栈云后通过*两个以上的更新*，它被视为不符合，必须将更新为至少支持的最低版本才能获得支持。 
+必须不断更新 Azure Stack 部署才能持续获得支持。 更新的延期策略是：为了确保 Azure Stack 部署始终获得支持，必须运行最近发布的更新版本，或者运行以前发布的两个更新版本之一。 修补程序不属于主要更新版本。 如果缺少至少两个更新，Azure Stack 云会被视为不合规，必须至少更新到最低的受支持版本才能获得支持。 
 
-例如，如果最新发布的更新版本为 1805，在此之前的两个更新包为版本 1804 和 1803，则 1803 和 1804 仍受支持， 但 1802 不受支持。 即使最近一到两个月没有发布任何版本，此策略也有效。 例如，如果当前版本是 1805年并且没有任何 1804年版本，1803年和 1802年以前的两个更新包保持的支持。
+例如，如果最新发布的更新版本为 1805，在此之前的两个更新包为版本 1804 和 1803，则 1803 和 1804 仍受支持， 但 1802 不受支持。 即使最近一到两个月没有发布任何版本，此策略也有效。 例如，如果最新版本为 1805，但没有版本 1804，则此前的两个更新包（1803 和 1802）仍可获得支持。
 
 Microsoft 软件更新包是非累积性的，其先决条件是需要前一个更新包。 如果决定延后一个或多个更新，则要使用最新版本，请考虑整体运行时。 
 

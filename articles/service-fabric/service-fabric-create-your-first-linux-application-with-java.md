@@ -12,14 +12,14 @@ ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/27/2018
+ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 38412713d625fc3c44e29444138675b98129f1fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 16c99c2c5524a321616ac9f0975f0c9b4255ca94
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643594"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215848"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上创建第一个 Java Service Fabric Reliable Actors 应用程序
 > [!div class="op_single_selector"]
@@ -221,6 +221,9 @@ Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service F
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>启动测试客户端并执行故障转移
 角色自身未执行任何操作，它们需要其他服务或客户端向其发送消息。 Actor 模板包括可用于与 actor 服务进行交互的简单测试脚本。
+
+> [!Note]
+> 测试客户端使用 ActorProxy 类与执行组件进行通信，执行组件必须在执行组件服务所在的群集内运行或共享相同的 IP 地址空间。  可以在本地开发群集所在的计算机上运行测试客户端。  但是，若要与远程群集中的执行组件进行通信，必须在处理与执行组件的外部通信的群集上部署网关。
 
 1. 使用监视实用程序运行该脚本来查看 actor 服务的输出。  测试脚本对角色调用 `setCountAsync()` 方法来递增计数器，对角色调用 `getCountAsync()` 方法来获取新的计数器值，并向控制台显示该值。
 

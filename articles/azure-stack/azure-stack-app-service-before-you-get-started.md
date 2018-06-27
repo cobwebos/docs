@@ -12,20 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/04/2018
 ms.author: anwestg
-ms.openlocfilehash: 95393df03ffc33748f0f14344d989d58ae52297c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ae21a7cc5c38fefd40a2676e15308b027c6f95d5
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796727"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>在 Azure Stack 上开始使用应用服务之前
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 将 1804年更新应用于你的 Azure 堆栈集成系统，或在部署 Azure 应用程序服务 1.2 之前部署的最新的 Azure 堆栈开发工具包。
+> 请将 1804 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.2。
 >
 >
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 05/20/2018
 
 ## <a name="high-availability"></a>高可用性
 
-由于 1802 版 Azure Stack 的推出（此版本已添加对容错域的支持），Azure Stack 上新的 Azure 应用服务部署将分配到各个容错域并提供容错功能。  有关 Azure 堆栈上的 Azure App Service 的现有部署，已部署在 1802年更新发布前，请参阅[文档](azure-stack-app-service-fault-domain-update.md)有关如何重新平衡部署。
+由于 1802 版 Azure Stack 的推出（此版本已添加对容错域的支持），Azure Stack 上新的 Azure 应用服务部署将分配到各个容错域并提供容错功能。  对于 Azure Stack 上现有的 Azure 应用服务部署（部署时间在 1802 更新发布以前），请参阅[此文档](azure-stack-app-service-fault-domain-update.md)了解如何重新均衡部署。
 
 此外，为了让 Azure Stack 上的 Azure 应用服务提供高可用性，请在高可用性配置中部署所需的文件服务器和 SQL Server 实例。
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 05/20/2018
 
 ### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Azure Stack 的 Azure 资源管理器根证书
 
-作为 azurestack\CloudAdmin 在可以访问 Azure 堆栈集成系统或 Azure 堆栈开发工具包主机上的特权终结点的计算机上运行的 PowerShell 会话中运行 Get AzureStackRootCert.ps1 脚本从从中提取的文件夹帮助程序脚本中。 脚本在 App Service 需要用于创建证书的脚本所在的文件夹中创建的根证书。
+在可以访问 Azure Stack 集成系统或 Azure Stack 开发工具包主机上的特权终结点的计算机上以 azurestack\CloudAdmin 身份运行的 PowerShell 会话中，从帮助器脚本解压缩到的文件夹运行 Get-AzureStackRootCert.ps1 脚本。 此脚本在应用服务所需的、用于创建证书的脚本所在的同一文件夹中创建一个根证书。
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
@@ -101,7 +102,7 @@ ms.lasthandoff: 05/20/2018
 
 默认域证书放在“前端”角色上。 对 Azure 应用服务发出通配符或默认域请求的用户应用程序使用此证书。 该证书还用于源代码管理操作 (Kudu)。
 
-该证书必须采用 .pfx 格式，并且应该是包含三个使用者的通配符证书。 此要求允许一个证书，以涵盖的默认域和 SCM 终结点源代码管理操作。
+该证书必须采用 .pfx 格式，并且应该是包含三个使用者的通配符证书。 此要求允许一个证书同时涵盖用于源代码管理操作的默认域和 SCM 终结点。
 
 | 格式 | 示例 |
 | --- | --- |
@@ -278,10 +279,10 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 对于生产和高可用性目的，应使用完整版本的 SQL Server 2014 SP2 或更高版本，启用混合模式身份验证，并在[高可用性配置](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server)中部署。
 
-必须能够从所有“应用服务”角色访问 Azure Stack 上的 Azure 应用服务的 SQL Server 实例。 可以在 Azure Stack 中的默认提供程序订阅中部署 SQL Server。 或者，可以使用组织中现有的基础结构（前提是与 Azure Stack 建立了连接）。 如果使用 Azure Marketplace 映像，请记得相应地配置防火墙。
+必须能够从所有“应用服务”角色访问 Azure Stack 上的 Azure 应用服务的 SQL Server 实例。 可以在 Azure Stack 中的默认提供程序订阅中部署 SQL Server。 或者，可以使用组织中现有的基础结构（前提是与 Azure Stack 建立了连接）。 如果使用 Azure 市场映像，请记得相应地配置防火墙。
 
 >[!NOTE]
-> 可通过 Marketplace 管理功能获取许多 SQL IaaS 虚拟机映像。 在使用 Marketplace 项部署 VM 之前，请确保下载最新版本的 SQL IaaS 扩展。 SQL 映像与 Azure 中提供的 SQL VM 相同。 对于从这些映像创建的 SQL VM，IaaS 扩展和相应的门户增强功能可提供自动修补和备份等功能。
+> 可通过市场管理功能获取许多 SQL IaaS 虚拟机映像。 在使用市场项部署 VM 之前，请确保下载最新版本的 SQL IaaS 扩展。 SQL 映像与 Azure 中提供的 SQL VM 相同。 对于从这些映像创建的 SQL VM，IaaS 扩展和相应的门户增强功能可提供自动修补和备份等功能。
 >
 对于任何 SQL Server 角色，可以使用默认实例或命名实例。 如果使用命名实例，请务必手动启动 SQL Server Browser 服务并打开端口 1434。
 
@@ -291,7 +292,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 ## <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
-配置 Azure AD 服务主体，若要支持以下操作：
+配置 Azure AD 服务主体以支持以下操作：
 
 - 辅助角色层上的虚拟机规模集集成。
 - Azure Functions 门户和高级开发人员工具的 SSO。
@@ -330,12 +331,12 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 | AdminArmEndpoint | 需要 | Null | Azure 资源管理器管理终结点。 例如 adminmanagement.local.azurestack.external。 |
 | TenantARMEndpoint | 需要 | Null | Azure 资源管理器租户终结点。 例如 management.local.azurestack.external。 |
 | AzureStackAdminCredential | 需要 | Null | Azure AD 服务管理员凭据。 |
-| CertificateFilePath | 需要 | Null | 前面生成的标识应用程序证书文件的路径。 |
+| CertificateFilePath | 需要 | Null | **完整路径**到更早版本生成的标识应用程序证书文件。 |
 | CertificatePassword | 需要 | Null | 帮助保护证书私钥的密码。 |
 
 ## <a name="create-an-active-directory-federation-services-application"></a>创建 Active Directory 联合身份验证服务应用程序
 
-对于 Azure 堆栈 AD FS 保护的环境，你必须配置 AD FS 服务主体，若要支持以下操作：
+对于受 AD FS 保护的 Azure Stack 环境，必须配置 AD FS 服务主体以支持以下操作：
 
 - 辅助角色层上的虚拟机规模集集成。
 - Azure Functions 门户和高级开发人员工具的 SSO。
@@ -364,7 +365,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 | AdminArmEndpoint | 需要 | Null | Azure 资源管理器管理终结点。 例如 adminmanagement.local.azurestack.external。 |
 | PrivilegedEndpoint | 需要 | Null | 特权终结点。 例如 AzS-ERCS01。 |
 | CloudAdminCredential | 需要 | Null | Azure Stack 云管理的域帐户凭据。 例如 Azurestack\CloudAdmin。 |
-| CertificateFilePath | 需要 | Null | 标识应用程序的证书 PFX 文件的路径。 |
+| CertificateFilePath | 需要 | Null | **完整路径**标识应用程序的证书 PFX 文件。 |
 | CertificatePassword | 需要 | Null | 帮助保护证书私钥的密码。 |
 
 ## <a name="next-steps"></a>后续步骤

@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的评估计算。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/28/2018
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: e815ff3340a9ef6c56e43d3276a28619d2f008a9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639140"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287882"
 ---
 # <a name="assessment-calculations"></a>评估计算
 
@@ -40,7 +40,7 @@ Azure Migrate 检查本地 VM 的以下属性来确认 VM 是否可在 Azure 上
 --- | --- | ---
 **启动类型** | Azure 支持启动类型为 BIOS（而非 UEFI）的 VM。 | 如果启动类型为 UEFI，则状态为 Auzre 有条件的就绪。
 **核心数** | 计算机中的内核数必须等于或小于 Azure VM 支持的最大内核数量 (32)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果在评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果内核数大于 32，则为未就绪。
-**内存** | 计算机内存大小必须等于或小于 Azure VM 允许的最大内存 (448 GB)。 <br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存以进行比较。 如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果内存大小大于 448 GB，则为未就绪。
+内存 | 计算机内存大小必须等于或小于 Azure VM 允许的最大内存 (448 GB)。 <br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存以进行比较。 如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果内存大小大于 448 GB，则为未就绪。
 **存储磁盘** | 分配的磁盘大小必须为 4 TB (4096 GB) 或更小。<br/><br/> 连接到计算机的磁盘（包括操作系统磁盘）数必须为 65 个或更少。 | 如果有任何磁盘的大小大于 4 TB，或计算机附加了超过 65 个磁盘，则为未就绪。
 **网络** | 连接到计算机的 NIC 数必须为 32 个或更少。 | 如果计算机有超过 32 个 NIC，则为未就绪
 
@@ -132,7 +132,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
 大小建议完成后，Azure Migrate 将计算迁移后计算和存储成本。
 
-- 计算成本：使用建议的 Azure VM 大小，Azure Migrate 使用计费 API 来计算 VM 每月成本。 该计算会考虑操作系统、软件保障、位置和货币设置。 它将所有计算机的成本求和，计算每月总计算成本。
+- 计算成本：使用建议的 Azure VM 大小，Azure Migrate 使用计费 API 来计算 VM 每月成本。 该计算会考虑操作系统、软件保障、预留实例、VM 运行时间、位置和货币设置。 它将所有计算机的成本求和，计算每月总计算成本。
 - 存储成本：一台计算机的每月存储成本的计算方法为，将连接到该计算机的所有磁盘的每月成本求和。 Azure Migrate 通过将所有计算机的存储成本求和，计算每月总存储成本。 当前该计算不考虑在评估设置中指定的优惠。
 
 成本以在评估设置中指定的币种显示。

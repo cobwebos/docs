@@ -428,6 +428,8 @@
               href: service-fabric-securing-containers.md
             - name: 设置 Windows 容器的 gMSA
               href: service-fabric-setup-gmsa-for-windows-containers.md
+            - name: 在 Linux 上配置证书
+              href: service-fabric-configure-certificates-linux.md
         - name: 配置定期备份（Azure 上的群集）
           href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
         - name: 配置定期备份（独立群集）

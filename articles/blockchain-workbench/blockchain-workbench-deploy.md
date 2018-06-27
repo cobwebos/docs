@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831629"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294843"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>部署 Azure Blockchain Workbench
 
@@ -48,7 +48,10 @@ Blockchain Workbench 的成本是基础 Azure 服务成本的总和。 Azure 服
 
 ### <a name="blockchain-workbench-api-app-registration"></a>Blockchain Workbench API 应用注册
 
-Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Azure Active Directory (Azure AD) 来注册应用。 可以使用现有租户，也可以创建新租户。 如果使用现有的 Azure AD 租户，需要拥有足够的权限才能在 Azure AD 租户中注册应用程序。 应用程序注册需要在部署 Workbench 的订阅的订阅管理员租户中进行。 有关 Azure AD 租户的详细信息，请参阅[如何获取 Active Directory 租户](../active-directory/develop/active-directory-howto-tenant.md)和[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)。
+Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Azure Active Directory (Azure AD) 来注册应用。 可以使用现有租户，也可以创建新租户。 如果使用现有的 Azure AD 租户，需要拥有足够的权限才能在 Azure AD 租户中注册应用程序和授予图形 API 权限。 如果在现有的 Azure AD 租户中没有足够的权限，请创建一个新租户。 
+
+> [!IMPORTANT]
+> Workbench 不必部署在你用来注册 Azure AD 应用程序的同一租户中。 Workbench 必须部署在你有足够的权限来部署资源的租户中。 有关 Azure AD 租户的详细信息，请参阅[如何获取 Active Directory 租户](../active-directory/develop/active-directory-howto-tenant.md)和[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在右上角选择自己的帐户，然后切换到所需的 Azure AD 租户。 该租户应是部署 Workbench 的订阅的订阅管理员租户，并且你有足够的权限在其中注册应用程序。
