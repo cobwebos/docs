@@ -59,7 +59,7 @@ ms.locfileid: "29740657"
   * [度量值显示低 AverageE2ELatency 和低 AverageServerLatency，但客户端出现高延迟]
   * [度量值显示高 AverageServerLatency]
   * [队列中的消息传递出现意外延迟]
-  * [指标显示 PercentThrottlingError 增加]
+  * [度量值显示 PercentThrottlingError 增加]
   * [度量值显示 PercentTimeoutError 增加]
   * [度量值显示 PercentNetworkError 增加]
   * [客户端正在接收“HTTP 403 (禁止访问)”消息]
@@ -75,7 +75,7 @@ ms.locfileid: "29740657"
   * [排查 Windows 的 Azure 文件问题](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [排查 Linux 的 Azure 文件问题](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [附录]
-  * [附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 通信]
+  * [附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量]
   * [附录 2：使用 Wireshark 捕获网络流量]
   * [附录 3：使用 Microsoft Message Analyzer 捕获网络流量]
   * [附录 4：使用 Excel 查看度量值和日志数据]
@@ -92,7 +92,7 @@ ms.locfileid: "29740657"
 * 提供必要的过程和工具来帮助你确定应用程序中的问题是否与 Azure 存储有关。
 * 为提供用于解决与 Azure 存储相关的问题的可操作指南。
 
-### <a name="how-this-guide-is-organized">本指南的组织方式</a>
+### <a name="how-this-guide-is-organized"></a>本指南的组织方式
 “[监视存储服务]”一节介绍如何使用 Azure 存储分析度量值（存储度量值）监视 Azure 存储服务的运行状况和性能。
 
 “[诊断存储问题]”一节介绍如何使用 Azure 存储分析日志记录（存储日志记录）诊断问题。 它还介绍了如何使用其中一个客户端库（如 .NET 存储客户端库或 Azure SDK for Java）中的工具启用客户端日志记录。
@@ -318,7 +318,7 @@ catch (StorageException storageException)
 ---
 问题是否与其中一个存储服务的可用性相关？
 
-* [指标显示 PercentThrottlingError 增加]
+* [度量值显示 PercentThrottlingError 增加]
 * [度量值显示 PercentTimeoutError 增加]
 * [度量值显示 PercentNetworkError 增加]
 
@@ -404,7 +404,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 如果当对于同一 Blob（或一组 Blob）存在重复的请求时，会看到 Blob 下载请求显示高 **AverageServerLatency**，则应考虑使用 Azure 缓存或 Azure 内容传送网络 (CDN) 缓存这些 Blob。 对于上传请求，你可以通过使用较大的数据块大小来提高吞吐量。 对于表查询，也可以在执行相同的查询操作并且数据不会频繁更改的客户端上实施客户端缓存。
 
-高 **AverageServerLatency** 值也可能是设计欠佳的表或查询的症状，它会导致扫描操作或执行追加/前面预置反模式。 有关详细信息，请参阅“[指标显示 PercentThrottlingError 增加]”。
+高 **AverageServerLatency** 值也可能是设计欠佳的表或查询的症状，它会导致扫描操作或执行追加/前面预置反模式。 有关详细信息，请参阅“[度量值显示 PercentThrottlingError 增加]”。
 
 > [!NOTE]
 > 可以在此处找到一份全面的性能清单：[Microsoft Azure 存储性能和可伸缩性清单](storage-performance-checklist.md)。
@@ -656,7 +656,7 @@ client.SetServiceProperties(sp);
 ### <a name="capacity-metrics-show-an-unexpected-increase"></a>容量指标显示存储容量使用量意外增加
 如果发现存储帐户中的容量使用量意外突变，可调查其原因，具体方法是先查看可用性指标；例如，失败的删除请求数增加可能导致所用的 Blob 存储量增加，本来希望应用程序特定的清理操作可释放一些空间，但却未按预期工作（例如，因为用于释放空间的 SAS 令牌已过期）。
 
-### <a name="your-issue-arises-from-using-the-storage-emulator">该问题是由于使用存储模拟器进行开发或测试而导致</a>
+### <a name="your-issue-arises-from-using-the-storage-emulator"></a>该问题是由于使用存储模拟器进行开发或测试而导致
 通常，在开发和测试过程中使用存储模拟器以避免需要 Azure 存储帐户。 使用存储模拟器时可能发生的常见问题包括：
 
 * [功能“X”在存储模拟器中无法正常工作]
@@ -704,7 +704,7 @@ sqllocaldb create v11.0
 * 可以使用度量值信息来帮助搜索服务器端日志数据，以获取有关发生的任何错误的更多详细信息。 此信息可能会帮助你排查和解决该问题。
 * 如果服务器端日志中的信息不足以成功排查此问题，则可以使用存储客户端库客户端日志来调查客户端应用程序和工具（如 Fiddler、Wireshark 和 Microsoft Message Analyzer）的行为以调查网络。
 
-有关使用 Fiddler 的详细信息，请参阅“[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 通信]”。
+有关使用 Fiddler 的详细信息，请参阅“[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量]”。
 
 有关使用 Wireshark 的详细信息，请参阅“[附录 2：使用 Wireshark 捕获网络流量]”。
 
@@ -843,7 +843,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 [度量值显示高 AverageServerLatency]: #metrics-show-high-AverageServerLatency
 [队列中的消息传递出现意外延迟]: #you-are-experiencing-unexpected-delays-in-message-delivery
 
-[指标显示 PercentThrottlingError 增加]: #metrics-show-an-increase-in-PercentThrottlingError
+[度量值显示 PercentThrottlingError 增加]: #metrics-show-an-increase-in-PercentThrottlingError
 [PercentThrottlingError 暂时增加]: #transient-increase-in-PercentThrottlingError
 [PercentThrottlingError 错误永久增加]: #permanent-increase-in-PercentThrottlingError
 [度量值显示 PercentTimeoutError 增加]: #metrics-show-an-increase-in-PercentTimeoutError
@@ -867,7 +867,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 [遇到了其他存储服务问题]: #you-have-a-different-issue-with-a-storage-service
 
 [附录]: #appendices
-[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 通信]: #appendix-1
+[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量]: #appendix-1
 [附录 2：使用 Wireshark 捕获网络流量]: #appendix-2
 [附录 3：使用 Microsoft Message Analyzer 捕获网络流量]: #appendix-3
 [附录 4：使用 Excel 查看度量值和日志数据]: #appendix-4
