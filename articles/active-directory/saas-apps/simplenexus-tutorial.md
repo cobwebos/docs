@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: a29ef6535d1d4e64df7b97fc7519e55f511df222
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 759052a073103304f89096a43f0cbef88e0a1624
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212166"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>教程：Azure Active Directory 与 SimpleNexus 集成
 
@@ -117,7 +117,7 @@ ms.locfileid: "36212166"
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://simplenexus.com/<companyname>`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [SimpleNexus 客户端支持团队](https://simplenexus.com/site/contact)获取这些值。 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [SimpleNexus 客户端支持团队](https://simplenexus.com/sn/contact-us/)获取这些值。 
  
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -127,7 +127,7 @@ ms.locfileid: "36212166"
 
     ![配置单一登录](./media/simplenexus-tutorial/tutorial_general_400.png)
 
-6. 若要在 SimpleNexus 端配置单一登录，需将下载的元数据 XML 发送给 [SimpleNexus 支持团队](https://simplenexus.com/site/contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+6. 若要在 SimpleNexus 端配置单一登录，需将下载的元数据 XML 发送给 [SimpleNexus 支持团队](https://simplenexus.com/sn/contact-us/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
