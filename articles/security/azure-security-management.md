@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f5630c8cb9c0ca13210c62652f8d7f2e98f94438
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 209fdda974dee2386328da43991cc9d453e61aa7
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366641"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062150"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -42,7 +42,7 @@ Azure 订阅者可从多种设备管理其云环境，这些设备包括管理�
 ### <a name="operational-security-fundamentals"></a>操作安全性基础知识
 为了提升管理和操作的安全性，可以减少可能的入口点数目以尽可能缩小客户端的受攻击面。 这可以通过“职责分离”和“环境隔离”安全原则来实现。
 
-让敏感功能彼此隔离以降低某个级别的错误导致另一个级别出现数据泄漏的可能性。 示例:
+让敏感功能彼此隔离以降低某个级别的错误导致另一个级别出现数据泄漏的可能性。 示例：
 
 * 管理任务不应该与可能将造成入侵的活动合并（例如，管理员的电子邮件中有恶意代码，从而感染基础结构服务器）。
 * 用于高敏感性操作的工作站也不应该是用于高风险用途（例如浏览 Internet）的同一系统。
@@ -51,7 +51,7 @@ Azure 订阅者可从多种设备管理其云环境，这些设备包括管理�
 
 * 如果设备的主要用途是管理云服务，则标准的管理、支持或开发工作站都不应该请求安装电子邮件客户端或其他生产力应用程序。
 
-对基础结构组件拥有管理员访问权限的客户端系统应该尽可能受到严格策略的限制，以降低安全风险。 示例:
+对基础结构组件拥有管理员访问权限的客户端系统应该尽可能受到严格策略的限制，以降低安全风险。 示例：
 
 * 安全策略可以包含拒绝设备进行开放访问 Internet 和使用严格防火墙配置的组策略设置。
 * 如果需要直接访问，请使用 Internet 协议安全性 (IPsec) VPN。
@@ -224,8 +224,8 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 除了本文中所提到的特定项以外，以下资源也提供了有关 Azure 及相关 Microsoft 服务的更多常规信息：
 
 * [保护特权访问](https://technet.microsoft.com/library/mt631194.aspx) – 获取有关设计和构建安全管理工作站以管理 Azure 的技术详细信息
-* [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/Security/AzureSecurity) - 了解可保护 Azure 结构以及在 Azure 上运行的工作负荷的 Azure 平台功能
-* [Microsoft 安全响应中心](http://www.microsoft.com/security/msrc/default.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 [secure@microsoft.com](mailto:secure@microsoft.com)
+* [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/cloudservices/azure) - 了解可保护 Azure 结构以及在 Azure 上运行的工作负荷的 Azure 平台功能
+* [Microsoft 安全响应中心](https://technet.microsoft.com/en-us/security/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 [secure@microsoft.com](mailto:secure@microsoft.com)
 * [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/) – 随时掌握 Azure 安全性的最新信息
 
 <!--Image references-->

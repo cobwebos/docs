@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 0bd31270ca67dc993cc7ac72ab2bab9bf70005ca
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293989"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333906"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>使用 Azure 虚拟网络服务终结点保护对 Azure Cosmos DB 帐户的访问
 
@@ -80,7 +80,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 
 如果 Azure Cosmos DB 帐户由其他 Azure 服务（例如 Azure 搜索）使用，或者从流分析或 Power BI 进行访问，请选中“允许 Azure 服务的访问”来允许这种访问。
 
-为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许 Azure 门户的访问”选项。 若要详细了解这些选项，请参阅[来自 Azure 门户的连接](firewall-support.md#connections-from-the-azure-portal)和[来自 Azure PaaS 服务的连接](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services)部分。 选择访问权限后，选择“保存”以保存设置。
+为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许 Azure 门户的访问”选项。 若要详细了解这些选项，请参阅[来自 Azure 门户的连接](firewall-support.md#connections-from-the-azure-portal)和[来自 Azure PaaS 服务的连接](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services)部分。 选择访问权限后，选择“保存”以保存设置。
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>删除虚拟网络或子网 
 
@@ -125,15 +125,16 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 4. 确保已在虚拟网络和子网中为 Azure Cosmos DB 启用了服务终结点，为在 CosmosDB 帐户中启用 ACL 做好准备。
 
    ```powershell
-   $subnet = Get-AzureRmVirtualNetwork `
-    -ResourceGroupName $rgname `
-    -Name $vnName  | Get-AzureRmVirtualNetworkSubnetConfig -Name $sname
-   $vnProp = Get-AzureRmVirtualNetwork `-Name $vnName  -ResourceGroupName $rgName
+   $vnProp = Get-AzureRmVirtualNetwork `
+     -Name $vnName  -ResourceGroupName $rgName
    ```
 
 5. 运行以下 cmdlet 获取 Azure Cosmos DB 帐户的属性：  
 
    ```powershell
+   $apiVersion = "2015-04-08"
+   $acctName = "<Azure Cosmos DB account name>"
+
    $cosmosDBConfiguration = Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
@@ -144,15 +145,24 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 
    ```powershell
    $locations = @(@{})
+
+   <# If you have read regions in addition to a write region, use the following code to set the $locations variable instead.
+
+   $locations = @(@{"locationName"="<Write location>"; 
+                 "failoverPriority"=0}, 
+               @{"locationName"="<Read location>"; 
+                  "failoverPriority"=1}) #>
+
    $consistencyPolicy = @{}
    $cosmosDBProperties = @{}
 
    $locations[0]['failoverPriority'] = $cosmosDBConfiguration.Properties.failoverPolicies.failoverPriority
    $locations[0]['locationName'] = $cosmosDBConfiguration.Properties.failoverPolicies.locationName
+
    $consistencyPolicy = $cosmosDBConfiguration.Properties.consistencyPolicy
 
    $accountVNETFilterEnabled = $True
-   $subnetID = $vnProp.Id+"/subnets/" + $subnetName  
+   $subnetID = $vnProp.Id+"/subnets/" + $sname  
    $virtualNetworkRules = @(@{"id"=$subnetID})
    $databaseAccountOfferType = $cosmosDBConfiguration.Properties.databaseAccountOfferType
    ```
@@ -166,7 +176,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
    $cosmosDBProperties['virtualNetworkRules'] = $virtualNetworkRules
    $cosmosDBProperties['isVirtualNetworkFilterEnabled'] = $accountVNETFilterEnabled
 
-   Set-AzureRmResource ``
+   Set-AzureRmResource `
      -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `

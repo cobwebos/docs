@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: dbb4ce971e6504f33de82e31cf289a42a1640952
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 501a8f2dad0537f0288dfd6a6d7bedcac054ab86
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293163"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332280"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序从中心读取遥测数据 (C#)
 
@@ -88,7 +88,7 @@ dotnet --version
 
 2. 在所选文本编辑器中打开 SimulatedDevice.cs 文件。
 
-    将 `connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.cs 文件。
+    将 `s_connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.cs 文件。
 
 3. 在终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
 
@@ -116,9 +116,9 @@ dotnet --version
 
     | 变量 | 值 |
     | -------- | ----------- |
-    | `eventHubsCompatibleEndpoint` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
-    | `eventHubsCompatiblePath`     | 将变量的值替换为之前记下的与事件中心兼容的路径。 |
-    | `iotHubSasKey`                | 将变量的值替换为之前记下的 iothubowner 主键。 |
+    | `s_eventHubsCompatibleEndpoint` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
+    | `s_eventHubsCompatiblePath`     | 将变量的值替换为之前记下的与事件中心兼容的路径。 |
+    | `s_iotHubSasKey`                | 将变量的值替换为之前记下的 iothubowner 主键。 |
 
 3. 在终端窗口中，运行以下命令，安装后端应用程序所需的库：
 

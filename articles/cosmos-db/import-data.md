@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 07c41bb02863cc32372722cbcbac4be2c5071860
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7f8e8d920884c611965ff760bb0369e08163356e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611460"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029598"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB：数据迁移工具
 
@@ -222,7 +222,7 @@ Azure 表存储连接字符串的格式为：
 > 
 > 
 
-输入要从其中导入数据的 Azure 表的名称。 可以选择指定[筛选器](https://msdn.microsoft.com/library/azure/ff683669.aspx)。
+输入要从其中导入数据的 Azure 表的名称。 可以选择指定[筛选器](../vs-azure-tools-table-designer-construct-filter-strings.md)。
 
 Azure 表存储源导入程序选项具有下列附加选项︰
 

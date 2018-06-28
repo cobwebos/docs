@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 25660eef50a0a18d4f404944daeb443133424897
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b5ade0f3a6590832b6717bbb5f91a4d62cdc9e0c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261145"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309037"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
@@ -178,7 +178,7 @@ ms.locfileid: "35261145"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 欢迎在[用户之声论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/158658-enterprise-state-roaming)中提供反馈，并提出有关如何改进企业状态漫游的建议。
+- 欢迎在[用户之声论坛](https://social.technet.microsoft.com/Forums/windows/en-US/f51c856c-db92-4cf7-a497-720da21d7d31/enterprise-state-roaming)中提供反馈，并提出有关如何改进企业状态漫游的建议。
 
 - 有关详细信息，请参阅[企业状态漫游概述](active-directory-windows-enterprise-state-roaming-overview.md)。 
 

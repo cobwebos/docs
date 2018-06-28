@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: c479298187cfc4af6d9b33d9bd3839e8fa579566
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: eeda0fa6ad8faa05baf0a9344e958d298fb80d8e
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294153"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936677"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>排查 Application Insights 中的分析问题
 [Application Insights Analytics](app-insights-analytics.md) 出现了问题？ 从此处开始。 Analytics 是 Azure Application Insights 的强大搜索工具。
@@ -57,7 +57,7 @@ ms.locfileid: "35294153"
 4. 打开另一个（普通）浏览器窗口并转到 [Azure](https://portal.azure.com)。 注销。然后打开链接并使用正确的凭据登录。
 5. 如果受信任区域设置不受支持，Edge 和 Internet Explorer 的用户也会收到此错误。
    
-    检查 [Analytics 门户](https://analytics.applicationinsights.io)和 [Azure Active Directory 门户](https://portal.azure.com)是否位于相同的安全区域：
+    检查 [Analytics 门户](https://portal.azure.com)和 [Azure Active Directory 门户](https://portal.azure.com)是否位于相同的安全区域：
    
    * 在 Internet Explorer 中，打开“Internet 选项”、“安全”、“受信任的站点”、“站点”：
      

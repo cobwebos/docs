@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
-ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6da876a0e6c1e98683caa864a4a2bcf85195cd10
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040292"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753313"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Microsoft 监视产品比较
 本文在以下方面比较了 Operations Management Suite (OMS) 中的 System Center Operations Manager (SCOM) 和 Log Analytics：体系结构、如何监视资源的逻辑以及如何对所收集数据执行分析。  这是为了让用户对它们的区别和相对优势有基本了解。  
 
 ## <a name="basic-architecture"></a>基本体系结构
 ### <a name="system-center-operations-manager"></a>System Center Operations Manager
-所有 SCOM 组件均安装在数据中心中。  [代理安装](http://technet.microsoft.com/library/hh551142.aspx)在由 SCOM 管理的 Windows 和 Linux 计算机上。  代理连接到可与 SCOM 数据库和数据仓库通信的[管理服务器](https://technet.microsoft.com/library/hh301922.aspx)。  代理依赖于域身份验证来连接到管理服务器。  受信任的域之外的代理可以执行证书身份验证或连接到[网关服务器](https://technet.microsoft.com/library/hh212823.aspx)。
+所有 SCOM 组件均安装在数据中心中。  [代理安装](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-console)在由 SCOM 管理的 Windows 和 Linux 计算机上。  代理连接到可与 SCOM 数据库和数据仓库通信的[管理服务器](https://technet.microsoft.com/library/hh301922.aspx)。  代理依赖于域身份验证来连接到管理服务器。  受信任的域之外的代理可以执行证书身份验证或连接到[网关服务器](https://technet.microsoft.com/library/hh212823.aspx)。
 
 SCOM 需要两个 SQL 数据库，一个用于操作数据，另一个数据仓库支持报告和数据分析。  [报告服务器](https://technet.microsoft.com/library/hh298611.aspx)运行 SQL 报告服务，以报告数据仓库中的数据。 
 

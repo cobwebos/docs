@@ -3,7 +3,7 @@ title: 在 Azure Active Directory 中使用 SCIM 自动预配应用 | Microsoft 
 description: Azure Active Directory 可以使用 SCIM 协议规范中定义的接口，自动将用户和组预配到以 Web 服务为前端的任何应用程序或标识存储
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
-ms.author: asmalser
+ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 2bbea8f082e482ec5f5a08ce9978940e05c2325b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 40fa7959fc27692489a6317df0eddb9208c57bd6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302078"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337325"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -697,7 +697,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 * [为属性映射编写表达式](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [用于用户预配的作用域筛选器](../active-directory-saas-scoping-filters.md)
 * [帐户预配通知](../active-directory-saas-app-provisioning.md)
-* [有关如何集成 SaaS 应用的教程列表](../active-directory-saas-tutorial-list.md)
+* [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

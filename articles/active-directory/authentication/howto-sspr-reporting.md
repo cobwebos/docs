@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 45183e51e9071647e07cfd0738522f0dfa28bd7b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: efdef681dd94cdb97d84de657668c49022b72d95
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33868996"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751490"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -54,25 +54,6 @@ ms.locfileid: "33868996"
 6. 要筛选此视图以便仅查看密码重置的相关事件，请选择窗格顶部的“筛选”按钮。
 7. 在“筛选”菜单中选择“类别”下拉列表，然后将其更改为“自助密码管理”类别类型。
 8. （可选）通过选择所需的特定“活动”进一步筛选该列表。
-
-## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>如何通过 Azure AD 报告和事件 API 检索密码管理事件
-
-Azure AD 报表和事件 API 支持检索密码重置和密码重置注册报表中包含的所有信息。 使用此 API，可以下载单个密码重置和密码重置注册事件，并将其与所选报表技术集成。
-
-> [!IMPORTANT]
-> 目前，Azure AD 报表和事件 API 最多可以检索 [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) 和 [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) 类型的 75,000 个事件。 该 API 的检索范围为过去 30 天。
-> 
-> 如果需要检索或存储的数据超过此时间范围，建议使用该 API 来查询生成的差异数据，以便将数据保存在外部数据库中。 建议当开始在组织中使用 SSPR 时即开始检索此数据。 将其保留在外部，然后继续跟踪之后的差异数据。
->
-
-### <a name="how-to-get-started-with-the-reporting-api"></a>如何开始使用报告 API
-
-要访问此数据，需要编写一个小型应用程序或脚本，以便从我们的服务器检索这些数据。 有关详细信息，请参阅 [Azure AD 报表 API 入门](../active-directory-reporting-api-getting-started-azure-portal.md)。
-
-编写有效的脚本后，请根据方案，检查可以检索的密码重置和注册事件：
-
-* [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)：列出密码重置事件可用的列。
-* [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent)：列出密码重置注册事件可用的列。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 

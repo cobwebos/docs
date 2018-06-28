@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: bb69c217c1038a66333e65629023357e5854d242
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: a91120e2592e6fdaa38334f36bfd9b67c0f1b50d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265035"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300989"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD 域服务的网络注意事项
 ## <a name="how-to-select-an-azure-virtual-network"></a>如何选择 Azure 虚拟网络
@@ -107,7 +107,7 @@ Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保�
 
 ![通过 Internet 进行安全 LDAPS 访问的示例 NSG](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
-详细信息 - [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)。
+详细信息 - [创建网络安全组](../virtual-network/manage-network-security-group.md)。
 
 
 ## <a name="network-connectivity"></a>网络连接
@@ -145,4 +145,4 @@ Azure AD 域服务托管域只能在 Azure 中的单个虚拟网络中启用。
 * [Azure 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
 * [为经典部署模型配置 VNet 到 VNet 连接](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Azure 网络安全组](../virtual-network/security-overview.md)
-* [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [创建网络安全组](../virtual-network/manage-network-security-group.md)

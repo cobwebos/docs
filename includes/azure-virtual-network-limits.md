@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 326da32f91b263bbd09a4c6f521c9ec72094820c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36297960"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066061"
 ---
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "36297960"
 | 每个虚拟网络的虚拟网络对等互连数 |10 |50 |
 | 每个虚拟网络的 DNS 服务器数 |9 |25 |
 | 每个虚拟网络的专用 IP 地址数 |16384** |16384 |
-| 每个网络接口的专用 IP 地址数 |256 |1024 |
+| 每个网络接口的专用 IP 地址数 |256 |256 |
 | 虚拟机或角色实例的单 NIC 并发 TCP 或 UDP 流数 |500K |500K |
 | 网络接口 (NIC) |24000** |24000 |
 | 网络安全组 (NSG) |100 |5000 |

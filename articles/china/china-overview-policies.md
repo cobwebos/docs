@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: b3c2cab56daa1390d9fbbae134fe193d0284a746
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 89918dd1c3e4c60fcb250f05a8d57ce26d77e1cc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "23635190"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331574"
 ---
 # <a name="china-cloud-policies-and-regulations"></a>中国云政策和法规
 若要在中国推出 Internet 服务，组织必须遵守适用的中国云政策和法律。 根据这些规定，Internet 内容提供商 (ICP) 必须向中国工业和信息化部 (MIIT) 申请以下类型的 [ICP 号码](https://en.wikipedia.org/wiki/ICP_license)之一：
@@ -44,14 +44,14 @@ ICP 备案号以小号字体显示在网站主页的页脚中，并且应一直�
 
 申请要求和审查流程根据[省/自治区/直辖市](https://wacndevelop.blob.core.chinacloudapi.cn/marketing-resource/documents/special-request.pdf)的不同而异。 例如，在上海和重庆，该流程需要大约三天时间。 在甘肃和云南，该流程需要三周时间。 我们建议提前两个月做好规划，因为在提交申请文件后，ICP 执照的审批通常至少需要 20 个工作日。
 
-审查申请和结果会发布在[世纪互联申请网站](http://icp.cloud.21vianet.com/)上，同时，世纪互联会通过电子邮件或电话通知你。 以下示例概述了适用于上海市注册的企业的流程步骤。
+审查申请和结果会发布在[世纪互联申请网站](https://icp.cloud.21vianet.com/)上，同时，世纪互联会通过电子邮件或电话通知你。 以下示例概述了适用于上海市注册的企业的流程步骤。
 
 ### <a name="apply-for-icp"></a>申请 ICP
-1.  使用电子邮件地址注册新帐户，并登录到[申请网站](http://icp.cloud.21vianet.com/)。 
+1.  使用电子邮件地址注册新帐户，并登录到[申请网站](https://icp.cloud.21vianet.com/)。 
 2.  遵照说明填写 ICP 备案的必要信息，包括有关网站和 ICP 的详细信息。
 3.  以彩色扫描件或照片的形式上传所需材料的软拷贝（电子版）。
 4.  在两个工作日内，会将首次审查反馈发送给你。 如果申请通过了首次审查，你会收到一封电子邮件，要求前往北京或上海的世纪互联办事处参加现场访谈，地址如下：
-    - 北京市 朝阳区 酒仙桥东路 1 号<br>
+    - 不是。 朝阳区 酒仙桥东路 1 号<br>
     电话：400-089-0365
     - 上海市浦东区 科苑路 88 号 3 栋 657 房<br>
     电话：400-089-0365 <br>
@@ -78,7 +78,7 @@ ICP 备案号以小号字体显示在网站主页的页脚中，并且应一直�
 
 ## <a name="next-steps"></a>后续步骤
 - [ICP 号](https://en.wikipedia.org/wiki/ICP_license)
-- [申请网站](http://icp.cloud.21vianet.com/)
+- [申请网站](https://icp.cloud.21vianet.com/)
 - [注册门户](http://www.beian.gov.cn/portal/index)
 - [所需材料](https://www.azure.cn/support/announcement/public-security-registration/process/)
 

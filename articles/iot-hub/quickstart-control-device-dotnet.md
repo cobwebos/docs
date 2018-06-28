@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: c24c311f6ee446122fea7fd7699b34ab2ae8510c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 0bb27c23850384501afec733d24f824346b8416b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292834"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335469"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入门：控制连接到 IoT 中心 (.NET) 的设备
 
@@ -67,7 +67,7 @@ dotnet --version
 
     如果为设备选择不同名称，则在运行示例应用程序之前，请在其中更新设备名称。
 
-1. 运行以下命令，获取刚注册设备的设备连接字符串：
+2. 运行以下命令，获取刚注册设备的设备连接字符串：
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -91,17 +91,17 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 1. 在终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device-2** 文件夹。
 
-1. 在所选文本编辑器中打开 SimulatedDevice.cs 文件。
+2. 在所选文本编辑器中打开 SimulatedDevice.cs 文件。
 
-    将 `connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.cs 文件。
+    将 `s_connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.cs 文件。
 
-1. 在终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
+3. 在终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. 在终端窗口中，运行以下命令，生成并运行模拟设备应用程序：
+4. 在终端窗口中，运行以下命令，生成并运行模拟设备应用程序：
 
     ```cmd/sh
     dotnet run
@@ -117,17 +117,17 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 1. 在另一个终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹。
 
-1. 在所选文本编辑器中打开 BackEndApplication.cs 文件。
+2. 在所选文本编辑器中打开 BackEndApplication.cs 文件。
 
-    将 `connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 BackEndApplication.cs 文件。
+    将 `s_connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 BackEndApplication.cs 文件。
 
-1. 在终端窗口中，运行以下命令，安装后端应用程序所需的库：
+3. 在终端窗口中，运行以下命令，安装后端应用程序所需的库：
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. 在终端窗口中，运行以下命令，生成并运行后端应用程序：
+4. 在终端窗口中，运行以下命令，生成并运行后端应用程序：
 
     ```cmd/sh
     dotnet run

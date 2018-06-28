@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: 032b14051c5c2b06fa23ee67858706fada545967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618651"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055335"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 
@@ -26,9 +26,6 @@ ms.locfileid: "34618651"
 - 动态确定哪些对象（文件、表等）在后续活动中工作，而不是针对对象名称进行硬编码
 
 查找活动可以读取并返回配置文件、配置表的内容，或执行查询或存储过程的结果。  查找活动的输出可用于后续复制或转换活动（如果它是单一实例值），或者可用于 ForEach 活动（如果它是属性数组）。
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -61,7 +58,7 @@ ms.locfileid: "34618651"
 ---- | ----------- | ---- | --------
 dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”部分中获取详细信息。 | 键/值对 | 是
 源 | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
-firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔 | 不会。 默认为 `true`。
+firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔 | 不是。 默认为 `true`。
 
 **请注意以下几点：**
 

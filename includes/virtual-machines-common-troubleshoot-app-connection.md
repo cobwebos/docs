@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ab668a905b435287a4eaf96ff04b2fa5b54deb1d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371263"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313507"
 ---
 有多种原因可导致无法启用或连接到在 Azure 虚拟机 (VM) 上运行的应用程序。 原因包括应用程序未在预期端口上运行或侦听、侦听端口受到阻止，或网络规则未将流量正确传递到应用程序。 本文说明有条理地找到问题并更正问题。
 
@@ -32,7 +32,7 @@ ms.locfileid: "34371263"
 
 * 重启虚拟机
 * 重新创建终结点/防火墙规则/网络安全组 (NSG) 规则
-  * [Resource Manager 模型 - 管理网络安全组](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Resource Manager 模型 - 管理网络安全组](../articles/virtual-network/manage-network-security-group.md)
   * [经典模型 - 管理云服务终结点](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
 * 从不同的位置（例如不同的 Azure 虚拟网络）进行连接
 * 重新部署虚拟机
@@ -93,7 +93,7 @@ ms.locfileid: "34371263"
 * 目标 VM 上运行的入侵检测或网络监视软件允许流量。
 * 云服务终结点或网络安全组允许流量：
   * [经典模型 - 管理云服务终结点](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-  * [Resource Manager 模型 - 管理网络安全组](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Resource Manager 模型 - 管理网络安全组](../articles/virtual-network/manage-network-security-group.md)
 * VM 中在测试 VM 和 VM 之间的路径运行的单独组件（例如负载均衡器或防火墙）允许流量。
 
 在基于 Windows 的虚拟机上，使用具有高级安全性的 Windows 防火墙确定防火墙规则是否排除应用程序的入站和出站流量。

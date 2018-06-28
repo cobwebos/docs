@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9eb6039a10cbdac004ab25f8295f5659c246a743
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 239134e7665b80ef78b6a3df12c14156bff9ae29
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600055"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317052"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Azure Maps 简介
 Azure Maps 是一项地理空间服务组合，包括适用于地图、搜索、路线、交通和时区的服务 API。 可以借助这组服务使用熟悉的工具快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了为 Web 和移动应用程序提供地理环境时所需的全新地图数据。 Azure Maps 是一组 REST API，随基于 Web 的 JavaScript 控件一起提供，使得开发简单、灵活且可跨多个媒体移植。 
@@ -77,27 +77,9 @@ Azure Maps 使用基于密钥的身份验证方案，因此，访问这些服务
 * 巴基斯坦
 * 韩国
 
-## <a name="relationship-with-bing-maps"></a>与必应地图的关系
-此文档中描述的地图有别于必应地图提供的地图。 虽然二者的很多功能是相同的，但这两项服务既不相同，也不相关。 此 Azure 服务不会影响必应地图产品或路线图。
-
-Microsoft 的目标是为开发人员社区在定位服务产品方面提供选择。 下表包含的指南面向要选择使用的服务的开发人员： 
-
-| 场景 | 使用 Azure Maps 的场景… | 使用必应地图的情形 |
-| ------------- | ------------- | ------------- |
-| 开发环境 | 在其他 Azure 服务中生成或与这些服务协调 | 使用第三方云或其他开发人员环境 |
-| 开发阶段  | Azure Maps 的优化是针对早期测试和概念证明开发的 | 对于生产环境来说，企业级 SLA 是所必需 |
-| 定价选项 | 初步开发人员定价选项已足够 | 自定义企业级定价是必需的 |
-| 用例环境 | 车辆中使用是必需的 | 车辆中使用不是必需的 |
-| 地理覆盖范围 | 印度、中国、日本和韩国不是必需的 | 印度、中国、日本和韩国地图范围是必需的 |
-| 地图内容 | 标准的地面图已足够 | 卫星图、空中图和街道图是必需的 |
-| 基础性的地图来源 | TomTom 地图数据为首选 | HERE 地图数据为首选 |
-
-立即注册 [Azure Maps 帐户](http://aka.ms/azurelbsportal)。
-
 ## <a name="next-steps"></a>后续步骤
 
 现在已概要了解 Azure Maps。 下一步是试用展示服务的示例应用。
 
 > [!div class="nextstepaction"]
 > [启动演示交互式搜索地图](quick-demo-map-app.md)
-

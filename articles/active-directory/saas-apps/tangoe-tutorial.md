@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c87b90e82b1300e147533256e3286421a73f08d2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42d1b40e01653e8fb5fa5bf118c65de758832f4d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218888"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>教程：Azure Active Directory 与 Tangoe Command Premium Mobile 集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "36218888"
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://sso.tangoe.com/sp/ACS.saml2`
 
     > [!NOTE] 
-    > 这些不是实际值。 使用实际的回复 URL 和登录 URL 更新这些值。 请联系 [Tangoe Command Premium Mobile 客户端支持团队](https://www.tangoe.com/contact-2/)获取这些值。 
+    > 这些不是实际值。 使用实际的回复 URL 和登录 URL 更新这些值。 请联系 [Tangoe Command Premium Mobile 客户端支持团队](https://www.tangoe.com/contact-us/)获取这些值。 
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -128,7 +128,7 @@ ms.locfileid: "36218888"
 
     ![“Tangoe Command Premium Mobile 配置”部分](./media/tangoe-tutorial/tutorial_tangoe_configure.png) 
 
-7. 若要为应用程序配置 SSO，请联系 [Tangoe Command Premium Mobile 客户端支持团队](https://www.tangoe.com/contact-2/)，并提供以下内容：
+7. 若要为应用程序配置 SSO，请联系 [Tangoe Command Premium Mobile 客户端支持团队](https://www.tangoe.com/contact-us/)，并提供以下内容：
 
    - 下载的元数据文件
    - **SAML 实体 ID**
@@ -174,7 +174,7 @@ ms.locfileid: "36218888"
 
 在本部分中，会在 Tangoe Command Premium Mobile 中创建一个名为“Britta Simon”的用户。 
 
-在执行单一登录前，Tangoe Command Premium Mobile 应用程序需要在应用程序中预配所有用户。 因此，请协助 [Tangoe Command Premium Mobile 客户端支持团队](https://www.tangoe.com/contact-2/)将所有这些用户预配到应用程序中。 
+在执行单一登录前，Tangoe Command Premium Mobile 应用程序需要在应用程序中预配所有用户。 因此，请协助 [Tangoe Command Premium Mobile 客户端支持团队](https://www.tangoe.com/contact-us/)将所有这些用户预配到应用程序中。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

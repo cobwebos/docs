@@ -388,11 +388,10 @@
 ### [管理员角色](active-directory-assign-admin-roles-azure-portal.md)
 #### [向用户分配管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [比较成员和来宾的用户权限](fundamentals/users-default-permissions.md)
-### [确保管理员角色的安全](admin-roles-best-practices.md)  
+### [强化管理员角色安全性](admin-roles-best-practices.md)  
 #### [创建紧急访问管理员帐户](active-directory-admin-manage-emergency-access-accounts.md)
 ### [管理单元](active-directory-administrative-units-management.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
-### [保护特权角色](admin-roles-best-practices.md)
 
 ## 访问评审
 ### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)

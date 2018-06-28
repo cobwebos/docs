@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/16/2018
+ms.date: 06/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 28bb900a3281becc7bb243e6bd7bf2beedf1a5c1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 49558f5a4777818478ee11b96636d87b70e1e156
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261625"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335360"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -44,7 +44,7 @@ ms.locfileid: "34261625"
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
 | Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | 否，内置到 OS           | 是                       |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 | 通过扩展                | 是                       |
-| Trend Micro – 所有版本         | Windows Server 系列                 | 通过扩展                | 是                       |
+| Trend Micro – 所有版本         | Windows Server 系列                 | 否                           | 是                       |
 | Symantec v12.1.1100+              | Windows Server 系列                 | 否                           | 是                       |
 | McAfee v10+                       | Windows Server 系列                 | 否                           | 是                       |
 | Kaspersky                         | Windows Server 系列                 | 否                           | 否                        |

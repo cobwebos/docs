@@ -7,17 +7,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 06/20/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: e0c849efa402bdfcf3ed6091cccf47ca722f23d7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650105"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061638"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>云中的新 DBA - 在 Azure SQL 数据库中管理数据库
 
@@ -31,7 +31,6 @@ ms.locfileid: "34650105"
 - 安全和符合性
 - 智能数据库监视和维护
 - 数据移动
-
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>业务连续性和灾难恢复 (BCDR)
 借助业务连续性和灾难恢复功能，发生灾难时仍可像往常一样继续运行业务。 灾难可能是数据库级别的事件（例如，有人错误地删除了关键表格）或数据中心级别的事件（例如，海啸等区域性灾难）。 
@@ -171,7 +170,7 @@ Express Route 还允许激增高达 2 倍的带宽限制，无需额外付费。
 - [工作流](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL 数据库是否符合任何规章要求，这对我组织的合规性有什么帮助？
-SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符合性，请访问 [Microsoft 信任中心](https://www.microsoft.com/trustcenter/compliance/complianceofferings)，并深入了解对你组织而言至关重要的符合性，以了解 SQL 数据库是否包含在符合的 Azure 服务中。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
+SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符合性，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/compliance/complianceofferings)，并深入了解对你组织而言至关重要的符合性，以了解 SQL 数据库是否包含在符合的 Azure 服务中。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>迁移后的智能数据库监视和维护
 
@@ -235,7 +234,7 @@ SQL 数据库提供了各种服务层：基本、标准和高级。 在每个服
 
 为确保处于正确的性能级别，可通过“如何监视 SQL 数据库中的性能和资源利用率”中所述的某种方式来监视查询和数据库资源消耗。 如果发现查询/数据库一直在 CPU/内存等上快速运行，则可考虑升级为更高的性能等级。 同样，如果注意到，即使在繁忙时间，似乎也没有使用多少资源，则可考虑下调当前性能等级。 
 
-如果有 SaaS 应用模式或数据库整合方案，则考虑使用弹性池进行成本优化。 弹性池非常适合用于整合数据库和优化成本。 要了解有关使用弹性池管理多个数据库的详细信息，请参阅：[管理池和数据库](sql-database-elastic-pool.md#manage-elastic-pools-and-databases-using-the-azure-portal)。 
+如果有 SaaS 应用模式或数据库整合方案，则考虑使用弹性池进行成本优化。 弹性池非常适合用于整合数据库和优化成本。 要了解有关使用弹性池管理多个数据库的详细信息，请参阅：[管理池和数据库](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)。 
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>需要多久运行一次数据库完整性检查？
 SQL 数据库使用的某些智能技术可以实现自动处理某些类别的数据损坏，不会出现数据丢失。 这些技术内置于服务中，有需要时，服务会利用这些技术。 通过定期还原数据库备份并对其运行 DBCC CHECKDB，测试整个服务的数据库备份。 如果存在问题，SQL 数据库会主动解决。 [自动页修复](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)用于修复损坏或具有数据完整性问题的页面。 数据库页面始终由验证页面完整性的默认 CHECKSUM 设置进行验证。 SQL 数据库会主动监视和检查数据库的数据完整性，如果存在问题，则以最高优先级解决问题。 除此之外，还可自己选择随时运行完整性检查。  有关详细信息，请参阅 [SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)

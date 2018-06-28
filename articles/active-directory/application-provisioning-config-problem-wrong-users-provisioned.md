@@ -3,22 +3,24 @@ title: 预配到 Azure AD 库应用程序的用户组错误 | Microsoft Docs
 description: 了解如何找到为何预配到应用程序的用户组与预期不同的原因
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 2dca671d4813dac0709dacb17d39cd3af3b3292c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: f984db4c06a98f7d131860f8eb5d76a67a35a483
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29383131"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332545"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>预配到 Azure AD 库应用程序的用户组错误
 

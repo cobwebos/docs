@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 5754a537b8a0bf0a93d6d54ba0ba78e5957ac87f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7bdc692104194bff4a25e6974ba72971af543cbf
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777468"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028990"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Chrome 应用推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "33777468"
 > [!NOTE]
 > Chrome 应用的推送通知不是常规的浏览器中通知，而是特定于浏览器扩展模型（有关详细信息，请参阅 [Chrome Apps Overview] （Chrome 应用概述））。 Chrome 应用除了在桌面浏览器中运行以外，还可通过 Apache Cordova 在移动设备（Android 和 iOS）上运行。 有关详细信息，请参阅[移动设备上的 Chrome 应用]。
 
-在本教程中，请执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * [启用 Google Cloud Messaging](#register)
@@ -400,7 +400,7 @@ ms.locfileid: "33777468"
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-   <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">带 WindowsAzure.ServiceBus NuGet 包的 Azure 服务总线 SDK 的引用将自动添加到项目</a>。
+   <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">带 WindowsAzure.ServiceBus NuGet 包的 Azure 服务总线 SDK 的引用将自动添加到项目</a>。
 4. 打开 `Program.cs` 并添加以下 `using` 语句：
    
         using Microsoft.Azure.NotificationHubs;

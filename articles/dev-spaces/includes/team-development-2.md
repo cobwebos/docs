@@ -10,23 +10,23 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 78dca327a470394d19e6befc6578abf2d499850c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 85f8632aae8a70b1282155881dbca6b25734a6c5
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247579"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936391"
 ---
 ### <a name="run-the-service"></a>运行该服务
 
-1. 点击 F5（或在终端窗口键入 `azds up`）运行该服务。 该服务将自动在你新选择的空间 `scott` 中运行。 
-1. 可以再次运行 `azds space list` 来确认服务在其自己的空间中运行。 首先，你会注意到 `mywebapi` 的实例现在正在 `scott` 空间中运行（在 `default` 中运行的版本仍在运行，但未列出）。 其次，`webfrontend` 的接入点 URL 的前缀为文本“scott.s.”。 此 URL 对 `scott` 空间是唯一的。 此特殊 URL 表示发送到“scott URL”的请求会尝试先路由到 `scott` 空间中的服务，但如果失败，就会回退到 `default` 空间中的服务。
+1. 点击 F5（或在终端窗口键入 `azds up`）运行该服务。 该服务将自动在你新选择的空间 `default/scott` 中运行。 
+1. 可以再次运行 `azds list` 来确认服务在其自己的空间中运行。 首先，你会注意到 `mywebapi` 的实例现在正在 `default/scott` 空间中运行（在 `default` 中运行的版本仍在运行，但未列出）。 其次，`webfrontend` 的接入点 URL 的前缀为文本“scott.s.”。 此 URL 对 `default/scott` 空间是唯一的。 此特殊 URL 表示发送到“scott URL”的请求会尝试先路由到 `default/scott` 空间中的服务，但如果失败，就会回退到 `default` 空间中的服务。
 
 ```
-Name         Space     Chart              Ports   Updated     Access Points
------------  --------  -----------------  ------  ----------  -------------
-mywebapi     scott     mywebapi-0.1.0     80/TCP  15s ago     http://localhost:61466
-webfrontend  default  webfrontend-0.1.0  80/TCP  5h ago      http://scott.s.webfrontend-contosodev.1234abcdef.eastus.aksapp.io
+Name         Space          Chart              Ports   Updated     Access Points
+-----------  --------       -----------------  ------  ----------  -------------
+mywebapi     default/scott  mywebapi-0.1.0     80/TCP  15s ago     http://localhost:61466
+webfrontend  default        webfrontend-0.1.0  80/TCP  5h ago      http://scott.s.webfrontend-contosodev.1234abcdef.eastus.aksapp.io
 ```
 
 ![](../media/common/space-routing.png)

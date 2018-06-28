@@ -15,12 +15,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: befdd7af0a91623af4c5ea0fd957141cad84eb53
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d8d07e2ba58b7067d59baf5f0a4ea3228d6aabbc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297863"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331166"
 ---
 # <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>通过 Azure Functions 为逻辑应用添加和运行自定义代码
 
@@ -62,7 +62,7 @@ function start(req, res){
 
 ### <a name="create-a-function-from-logic-app-designer"></a>通过逻辑应用设计器创建函数
 
-还可以从设计器中创建 node.js webhook 函数。 首先，选择“我的区域中的 Azure Functions”，并选择函数的容器。 如果还没有容器，则需要在 [Azure Functions 门户](https://functions.azure.com/signin)中创建一个。 选择“新建”。  
+还可以从设计器中创建 node.js webhook 函数。 首先，选择“我的区域中的 Azure Functions”，并选择函数的容器。 如果还没有容器，则需要在 [Azure Functions 门户](https://functions.azure.com/)中创建一个。 选择“新建”。  
 
 若要基于要计算的数据生成模板，请指定打算传递到函数的上下文对象。 此对象必须是 JSON 对象。 例如，如果从 FTP 操作传入文件内容，则上下文有效负载如此示例所示：
 

@@ -3,22 +3,24 @@ title: 登录到配置为密码单一登录的 Azure AD 库应用程序时出现
 description: 介绍问题区域以便为对登录到配置为密码单一登录的 Azure AD 库应用程序相关问题进行故障排除提供指导
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: f13f9fa54af13dbbe435a846be35c9e06fe65455
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 020a5ec2a6cea2854e46d9da8aa0a178695deb86
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068752"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331899"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>登录到配置为密码单一登录的 Azure AD 库应用程序时出现的问题
 
@@ -81,7 +83,7 @@ ms.locfileid: "34068752"
 
 ## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>对 Internet Explorer 中的访问面板进行故障排除
 
-有关访问诊断工具以及为 IE 配置扩展的分步说明，请按照[对 Internet Explorer 的访问面板扩展进行故障排除](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-Troubleshoot)指南操作。
+有关访问诊断工具以及为 IE 配置扩展的分步说明，请按照[对 Internet Explorer 的访问面板扩展进行故障排除](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting)指南操作。
 
 ## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
 

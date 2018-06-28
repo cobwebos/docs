@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293103"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754167"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -100,10 +100,10 @@ ms.locfileid: "35293103"
 | 步骤 | 资源 |
 | --- | --- |
 | 转到 Azure AD 管理门户 | [Azure AD 管理门户 - 公司品牌](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| 上传登录页的资产（英雄徽标、小型徽标、标签等）。 或者，如果拥有 AD FS，也可以使用与 ADFS 登录页相同的资产 | [在登录页和访问面板页中添加公司品牌：可自定义的元素](customize-branding.md) |
+| 上传登录页的资产（英雄徽标、小型徽标、标签等）。 或者，如果拥有 AD FS，也可以使用与 ADFS 登录页相同的资产 | [在登录页和访问面板页中添加公司品牌：可自定义的元素](fundamentals/customize-branding.md) |
 | 等待几分钟时间使更改完全生效 |  |
 | 使用 POC 用户凭据登录 https://myapps.microsoft.com |  |
-| 在浏览器中查看呈现效果 | [在登录页和访问面板页中添加公司品牌](customize-branding.md) |
+| 在浏览器中查看呈现效果 | [在登录页和访问面板页中添加公司品牌](fundamentals/customize-branding.md) |
 | 也可以在其他设备中查看呈现效果 |  |
 
 ### <a name="considerations"></a>注意事项
@@ -118,7 +118,7 @@ ms.locfileid: "35293103"
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 所有的 POC 用户都属于安全组（云中或本地上） | [在 Azure Active Directory 中创建组并添加成员](active-directory-groups-create-azure-portal.md) |
+| 所有的 POC 用户都属于安全组（云中或本地上） | [在 Azure Active Directory 中创建组并添加成员](fundamentals/active-directory-groups-create-azure-portal.md) |
 
 ### <a name="steps"></a>步骤
 
@@ -140,16 +140,16 @@ ms.locfileid: "35293103"
 | 先决条件 | 资源 |
 | --- | --- |
 | SaaS 应用程序的测试环境可用。 本指南使用 ServiceNow 作为示例。<br/>强烈建议使用测试实例来最大程度地减少导航现有数据质量和映射上的冲突。 | 转到 https://developer.servicenow.com/app.do#!/home 以开始获取测试实例的过程 |
-| 对 ServiceNow 管理控制台的管理员访问权限 | [教程：Azure Active Directory 与 ServiceNow 集成](active-directory-saas-servicenow-tutorial.md) |
+| 对 ServiceNow 管理控制台的管理员访问权限 | [教程：Azure Active Directory 与 ServiceNow 集成](saas-apps/servicenow-tutorial.md) |
 | 要分配应用程序的目标用户群。 建议使用包含 PoC 用户的安全组。 <br/>如果无法创建组，请直接向用户分配应用程序进行 PoC | [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
-| 从 Microsoft 文档将教程共享给所有执行组件  | [教程：Azure Active Directory 与 ServiceNow 集成](active-directory-saas-servicenow-tutorial.md) |
-| 设置一个工作会议，并按照每个执行组件的教程步骤进行操作。 | [教程：Azure Active Directory 与 ServiceNow 集成](active-directory-saas-servicenow-tutorial.md) |
-| 将应用分配给在先决条件中标识的组。 如果 POC 在作用域中具有条件性访问，则可以稍后再次访问并添加 MFA 等。 <br/>请注意，这会在预配过程中启动（如果配置） |  [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) <br/>[在 Azure Active Directory 中创建组并添加成员](active-directory-groups-create-azure-portal.md) |
+| 从 Microsoft 文档将教程共享给所有执行组件  | [教程：Azure Active Directory 与 ServiceNow 集成](saas-apps/servicenow-tutorial.md) |
+| 设置一个工作会议，并按照每个执行组件的教程步骤进行操作。 | [教程：Azure Active Directory 与 ServiceNow 集成](saas-apps/servicenow-tutorial.md) |
+| 将应用分配给在先决条件中标识的组。 如果 POC 在作用域中具有条件性访问，则可以稍后再次访问并添加 MFA 等。 <br/>请注意，这会在预配过程中启动（如果配置） |  [在 Azure Active Directory 中向企业应用分配用户或组](manage-apps/assign-user-or-group-access-portal.md) <br/>[在 Azure Active Directory 中创建组并添加成员](fundamentals/active-directory-groups-create-azure-portal.md) |
 | 使用 Azure AD 管理门户从库中添加 ServiceNow 应用程序| [Azure AD 管理门户：企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Azure Active Directory 中企业应用程序管理的新增功能](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | 在 ServiceNow 应用的“单一登录”边栏选项卡中，启用“基于 SAML 的登录” |  |
 | 使用 ServiceNow URL 填写“登录 URL”和“标识符”字段<br/>选中“使新证书处于活动状态”框<br/>并保存设置 |  |
@@ -163,7 +163,7 @@ ms.locfileid: "35293103"
 
 ### <a name="considerations"></a>注意事项
 
-1. 以上[教程](active-directory-saas-servicenow-tutorial.md)涉及到了旧版的 Azure AD 管理体验。 但是 PoC 是以[快速入门](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away)体验为基础的。
+1. 以上[教程](saas-apps/servicenow-tutorial.md)涉及到了旧版的 Azure AD 管理体验。 但是 PoC 是以[快速入门](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away)体验为基础的。
 2. 如果库中没有目标应用程序，则可以使用“提供自己的应用”。 有关详细信息，请参阅 [Azure Active Directory 中企业应用程序管理的新增功能：从一个位置添加自定义应用程序](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
 ## <a name="saas-password-sso-configuration"></a>SaaS 密码 SSO 配置
@@ -245,7 +245,7 @@ ms.locfileid: "35293103"
 
 | 先决条件 | 资源 |
 | --- | --- |
-| Microsoft Azure AD 基本或高级版订阅以及本人为全局管理员的 Azure AD 目录 | [Azure Active Directory 版本](active-directory-whatis.md) |
+| Microsoft Azure AD 基本或高级版订阅以及本人为全局管理员的 Azure AD 目录 | [Azure Active Directory 版本](fundamentals/active-directory-whatis.md) |
 | 想配置远程访问的本地托管 Web 应用程序 |  |
 | 可以安装应用程序代理连接器，运行 Windows Server 2012 R2 或 Windows 8.1 或更高版本的服务器 | [了解 Azure AD 应用程序代理连接器](manage-apps/application-proxy-connectors.md) |
 | 如果路径中有防火墙，请确保防火墙已打开，以便连接器向应用程序代理发出 HTTPS (TCP) 请求 | [在 Azure 门户中启用应用程序代理：应用程序代理先决条件](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
@@ -309,8 +309,8 @@ ms.locfileid: "35293103"
 | 先决条件 | 资源 |
 | --- | --- |
 | 已配置 SaaS 应用程序（联合 SSO 或密码 SSO） | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) |
-| 已标识云组，并且已为该组分配对 #1 中的应用程序的访问权限 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) <br/>[在 Azure Active Directory 中创建组并添加成员](active-directory-groups-create-azure-portal.md) |
-| 组所有者的凭据可用 | [使用 Azure Active Directory 组管理对资源的访问权限](active-directory-manage-groups.md) |
+| 已标识云组，并且已为该组分配对 #1 中的应用程序的访问权限 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) <br/>[在 Azure Active Directory 中创建组并添加成员](fundamentals/active-directory-groups-create-azure-portal.md) |
+| 组所有者的凭据可用 | [使用 Azure Active Directory 组管理对资源的访问权限](fundamentals/active-directory-manage-groups.md) |
 | 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -318,8 +318,8 @@ ms.locfileid: "35293103"
 
 | 步骤 | 资源 |
 | --- | --- |
-| 标识已被授权访问应用程序的组，并配置给定组的所有者| [在 Azure Active Directory 中管理组的设置](active-directory-groups-settings-azure-portal.md) |
-| 以组所有者身份登录，在访问面板的组选项卡中查看组成员 | [Azure Active Directory 组管理页面](https://account.activedirectory.windowsazure.com/r/#/groups) |
+| 标识已被授权访问应用程序的组，并配置给定组的所有者| [在 Azure Active Directory 中管理组的设置](fundamentals/active-directory-groups-settings-azure-portal.md) |
+| 以组所有者身份登录，在访问面板的组选项卡中查看组成员 | [Azure Active Directory 组管理页面](https://account.activedirectory.windowsazure.com/r#/groups) |
 | 添加要测试的信息辅助角色 |  |
 | 以信息辅助角色身份登录，确认磁贴可用 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 
@@ -334,7 +334,7 @@ ms.locfileid: "35293103"
 | 先决条件 | 资源 |
 | --- | --- |
 | 已配置 SaaS 应用程序（联合 SSO 或密码 SSO） | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) |
-| 已标识云组，并且已为该组分配对 #1 中的应用程序的访问权限 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) <br/>[在 Azure Active Directory 中创建组并添加成员](active-directory-groups-create-azure-portal.md) |
+| 已标识云组，并且已为该组分配对 #1 中的应用程序的访问权限 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) <br/>[在 Azure Active Directory 中创建组并添加成员](fundamentals/active-directory-groups-create-azure-portal.md) |
 | 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -342,7 +342,7 @@ ms.locfileid: "35293103"
 
 | 步骤 | 资源 |
 | --- | --- |
-| 从向其分配应用的组中删除用户 | [在 Azure Active Directory 租户中管理用户的组成员身份](active-directory-groups-members-azure-portal.md) |
+| 从向其分配应用的组中删除用户 | [在 Azure Active Directory 租户中管理用户的组成员身份](fundamentals/active-directory-groups-members-azure-portal.md) |
 | 请稍等几分钟等待取消预配 | [Azure AD 中的自动化 SaaS 应用用户预配：自动化预配的工作原理](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
 | 在单独的浏览器会话中，以信息辅助角色身份登录到“我的应用”门户，并确认磁贴缺失 | http://myapps.microsoft.com |
 

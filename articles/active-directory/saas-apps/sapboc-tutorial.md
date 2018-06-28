@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 4848132254736aca12be5e31325d98a936754af2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42eb1c8332a29ff07c83b962aaa8f8e2f04fd07b
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220628"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308293"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>教程：将 Azure Active Directory 与 SAP Business Object Cloud 集成
 
@@ -129,7 +129,7 @@ ms.locfileid: "36220628"
     ![SAP Business Object Cloud 域和 URL 网页的 URL](./media/sapboc-tutorial/tutorial_sapboc_url.png)
  
     > [!NOTE] 
-    > 这些 URL 中的值是仅用于演示。 请使用实际登录 URL 和标识符 URL 来更新这些值。 若要获取登录 URL，请联系 [SAP Business Object Cloud 客户端支持团队](https://www.sap.com/product/analytics/cloud-analytics.support.html)。 可以通过从管理员控制台下载 SAP Business Object Cloud 元数据来获取标识符 URL。 本教程后面将对有所解释。 
+    > 这些 URL 中的值是仅用于演示。 请使用实际登录 URL 和标识符 URL 来更新这些值。 若要获取登录 URL，请联系 [SAP Business Object Cloud 客户端支持团队](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/en-US)。 可以通过从管理员控制台下载 SAP Business Object Cloud 元数据来获取标识符 URL。 本教程后面将对有所解释。 
 
 4. 在“SAML 签名证书”下，选择“元数据 XML”。 然后，将元数据文件保存到计算机。
 

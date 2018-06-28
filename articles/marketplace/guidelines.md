@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 135f934cd6b352dad9e4cea5a14406804f31b66b
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825798"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307479"
 ---
 # <a name="guidelines"></a>指南  
 
@@ -35,7 +35,7 @@ ms.locfileid: "34825798"
 
 >[!IMPORTANT]
 >若要授权多个用户访问你的 Microsoft 开发人员中心（简称“开发人员中心”）帐户，Microsoft 建议使用 Azure Active Directory (Azure AD) 向各个用户分配角色。 每个用户必须通过使用其个人 Azure AD 凭据登录来访问该帐户。 使用已注册到公司的域中的电子邮件地址创建 Microsoft ID。Microsoft 建议不要将电子邮件分配给个人。 例如 `windowsapps@fabrikam.com`。  
->*   有关详细信息，请访问[问题：Azure AD 联合域中的 Microsoft ID](#issue:-microsoft-id-in-an-azure-ad-federated-domain) 部分。  
+>*   有关详细信息，请访问[问题：Azure AD 联合域中的 Microsoft ID](#issue-microsoft-id-in-an-azure-ad-federated-domain) 部分。  
 
 *   限制只有尽可能最少数量的开发人员可以访问 Microsoft ID。 
 *   设置企业电子邮件通讯组列表 (DL)，并在其中包含必须访问开发人员中心帐户的每个人。 将 DL 电子邮件地址添加到安全信息。 DL 可让列表中的所有员工根据请求接收安全代码，以及管理 Microsoft ID 的安全信息。 如果设置通讯组列表不可行，则个人电子邮件帐户的所有者必须能够根据提示访问和共享安全代码。  

@@ -13,19 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: e1162a3f87c9242e7366109302b3bd807b1fdcc8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9e21547f6e1088677bb5699d17d81d170b4cab3d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214369"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332127"
 ---
 # <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>配置托管域以支持 SharePoint Server 的配置文件同步
 SharePoint Server 包含一个用户配置文件服务用于用户配置文件同步。 若要设置用户配置文件服务，需要在 Active Directory 域中授予相应的权限。 有关详细信息，请参阅 [grant Active Directory Domain Services permissions for profile synchronization in SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx)（在 SharePoint Server 2013 中授予配置文件同步的 Active Directory 域服务权限）。
 
 本文介绍如何配置 Azure AD 域服务托管域，以部署 SharePoint Server 用户配置文件同步服务。
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="the-aad-dc-service-accounts-group"></a>“AAD DC 服务帐户”组
 托管域上的“用户”组织单位中提供了一个名为“**AAD DC 服务帐户**”的安全组。 在托管域上的“Active Directory 用户和计算机”MMC 管理单元中可以看到此组。

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 927a734b288f5bb0082e77be15ae540702fe4e8b
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: d0c587b3d43f7511775a4a114bead96348372bc5
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808275"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959961"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>通过 .NET 开始使用 Azure 表存储和 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -95,7 +95,7 @@ ms.locfileid: "34808275"
 > 
 
 > [!TIP]
-> 已熟悉 Azure 表存储的开发人员过去可能使用了 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) 包。 建议所有新的表应用程序使用 [Azure 存储通用库](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)和 [Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)，但是 WindowsAzure.Storage 包仍受支持。 如果使用 WindowsAzure.Storage 库，请在 using 语句中包括 Microsoft.WindowsAzure.Storage.Table。
+> 已熟悉 Azure 表存储的开发人员过去可能使用了 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) 包。 建议所有新的表应用程序使用 [Azure 存储通用库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common)和 [Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)，但是 WindowsAzure.Storage 包仍受支持。 如果使用 WindowsAzure.Storage 库，请在 using 语句中包括 Microsoft.WindowsAzure.Storage.Table。
 >
 >
 

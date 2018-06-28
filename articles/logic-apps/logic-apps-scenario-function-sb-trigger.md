@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/23/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 89fcd88643bd793935e7476ef32641ffa5ff4713
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6bc845e4ec329d308ed87770d0dec6a7d5e447c7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299787"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030942"
 ---
 # <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>方案：使用 Azure Functions 和 Azure 服务总线触发逻辑应用
 
@@ -39,7 +39,7 @@ ms.locfileid: "35299787"
 ## <a name="build-the-function"></a>构建函数
 接下来，需要创建一个充当触发器并侦听队列的函数。
 
-1. 在 [Azure Functions 门户](https://functions.azure.com/signin)中，选择“新建函数”，并选择“ServiceBusQueueTrigger - C#”模板。
+1. 在 [Azure Functions 门户](https://functions.azure.com/)中，选择“新建函数”，并选择“ServiceBusQueueTrigger - C#”模板。
    
     ![Azure Functions 门户][2]
 2. 配置与服务总线队列之间的连接，该连接会使用 Azure 服务总线 SDK `OnMessageReceive()` 侦听器。

@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dbb14854f00fb133c3604a1dd529d42120371fd2
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 07a62dfa2d7e1c71daf547c5aa7c8c7d15830bfd
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825812"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309310"
 ---
 # <a name="requirements-by-listing-type"></a>按商品信息类型列出的要求  
 技术和营销内容要求因店面、产品/服务类型和商品信息类型而异。 请查看以下规范，以确认是否合规。  
 1. 店面要求：  
-    *   [AppSource](#storefront-requirements:-appSource)  
-    *   [Azure 市场](#storefront-requirements:-azure-marketplace)  
+    *   [AppSource](#storefront-requirements-appSource)  
+    *   [Azure 市场](#storefront-requirements-azure-marketplace)  
 2. 商品类型和产品/服务类型要求：  
     *   有关商品类型和产品/服务类型的详细信息，请访问“确定解决方案的商品类型”页：[docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md)。  
 
@@ -39,7 +39,7 @@ ms.locfileid: "34825812"
 | ***适合企业的软件即服务 (SaaS) 应用*** | 应用必须满足以下要求。<ul> <li>是业务线 SaaS 应用</li> <li>专注于业务流程</li> <li>以企业客户为目标</li> <li>允许用户使用其工作凭据（用户名和密码）登录</li> </ul> | 必选 |  
 | ***免费试用期和试用体验*** | 应用必须包含以下选项之一，使客户能够在有限的时间内免费使用你的应用。<ul> <li>提供 `try` 选项，使客户能够在 AppSource 中开始试用应用</li> <li>在 AppSource 中提供 `request trial` 选项，使客户能够请求应用的试用版</li> </ul>提供的免费试用版必须为客户提供一段预先规定的时间让他们试用应用，且不收取额外的费用。 | 必选 |  
 | ***可轻松配置、随时可用的解决方案*** | 应用的配置和设置必须便捷，不需要自定义。 | 必选 |  
-| ***商机管理*** | 在从店面收获商机之前，必须启用 CRM 来接收商机数据。<ul> <li>CRM 的例子包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 必选 |  
+| ***潜在客户管理*** | 在从店面收获商机之前，必须启用 CRM 来接收商机数据。<ul> <li>CRM 的例子包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 必选 |  
 | ***隐私策略和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | 必选 |  
 | ***支持*** | 应用必须使用公共 URL 提供客户支持页面的链接。 如果应用是试用版，则必须在试用期间提供支持，且不收取额外的费用。 | 必选 |  
 
@@ -50,7 +50,7 @@ ms.locfileid: "34825812"
 | ***参与策略*** | 必须遵循 Azure 市场参与政策。<ul> <li>有关参与政策的详细信息，请访问“Azure 市场参与政策”页：[azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies)。</li></ul> | list<br />事务处理<br />试用 |  
 | ***与 Microsoft 集成*** | 产品/服务应利用或扩展 Microsoft Azure 服务（例如计算、网络或存储）。 产品/服务应按现有 Azure 市场类别进行分类（例如数据库、安全性或网络等）。<ul> <li>有关市场产品/服务的详细信息，请访问“市场应用”页：[azuremarketplace.microsoft.com/marketplace/apps](https://azuremarketplace.microsoft.com/marketplace/apps)。</li> </ul> | list<br />事务处理<br />试用 |  
 | ***受众*** | 产品/服务必须面向 IT 专业人员、云开发人员或其他技术型客户角色。 | list<br />事务处理<br />试用 |  
-| ***商机管理*** | 在从店面收获商机之前，必须启用 CRM（Marketo、Microsoft Dynamics 或 Salesforce）来接收商机数据。 | list<br />事务处理<br />试用 |  
+| ***潜在客户管理*** | 在从店面收获商机之前，必须启用 CRM（Marketo、Microsoft Dynamics 或 Salesforce）来接收商机数据。 | list<br />事务处理<br />试用 |  
 | ***隐私策略和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | list<br />事务处理<br />试用 |  
 | ***支持*** | 产品/服务必须使用公共 URL 提供客户支持页面的链接。 如果产品/服务是试用版，则必须在试用期间提供支持，且不收取额外的费用。 | 事务处理<br />试用 |    
 
@@ -62,10 +62,10 @@ ms.locfileid: "34825812"
 
 | 产品/服务类型 | 店面 | 详细信息 |  
 |:---        |:---        |:---     |  
-| 咨询服务 | AppSource | [要求：AppSource：列表：咨询服务](#requirements:-appsource:-list:-consulting-services) |  
-| 咨询服务 | Azure 市场 | [要求：Azure 市场：列表：咨询服务](#requirements:-azure-marketplace:-list:-consulting-services) |  
+| 咨询服务 | AppSource | [要求：AppSource：列表：咨询服务](#requirements-appsource-list-consulting-services) |  
+| 咨询服务 | Azure 市场 | [要求：Azure 市场：列表：咨询服务](#requirements-azure-marketplace-list-consulting-services) |  
 | 与我联系 | AppSource | [](#) |  
-| 与我联系 | Azure 市场 | [要求：AppSource：列表：与我联系](#requirements:-azure-marketplace:-list:-contact-me) |  
+| 与我联系 | Azure 市场 | [要求：AppSource：列表：与我联系](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>要求：AppSource：列表：咨询服务  
 
@@ -89,12 +89,12 @@ ms.locfileid: "34825812"
 
 | 产品/服务类型 | 店面 | 详细信息 |  
 |:---        |:---        |:---     |  
-| 免费/SaaS 试用 | AppSource | [商品类型要求：试用](#listing-type-requirements:-trial) |  
-| 免费/SaaS 试用 | Azure 市场 | [要求：Azure 市场：试用：免费试用/SaaS 试用](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| 互动演示 | AppSource | [商品类型要求：试用](#listing-type-requirements:-trial) |  
-| 互动演示 | Azure 市场 | [要求：Azure 市场：试用：互动演示](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| 体验版 | AppSource | [商品类型要求：试用](#listing-type-requirements:-trial) |  
-| 体验版 | Azure 市场 | [要求：Azure 市场：试用：体验版](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| 免费/SaaS 试用 | AppSource | [商品类型要求：试用](#listing-type-requirements-trial) |  
+| 免费/SaaS 试用 | Azure 市场 | [要求：Azure 市场：试用：免费试用/SaaS 试用](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| 互动演示 | AppSource | [商品类型要求：试用](#listing-type-requirements-trial) |  
+| 互动演示 | Azure 市场 | [要求：Azure 市场：试用：互动演示](#requirements-azure-marketplace-trial-interactive-demo) |  
+| 体验版 | AppSource | [商品类型要求：试用](#listing-type-requirements-trial) |  
+| 体验版 | Azure 市场 | [要求：Azure 市场：试用：体验版](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>要求：Azure 市场：试用  
 
@@ -131,11 +131,11 @@ ms.locfileid: "34825812"
 
 | 产品/服务类型 | 店面 | 详细信息 |   
 |:---        |:---        | :--- |  
-| Azure 应用：托管应用 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：托管应用](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  
-| Azure 应用：解决方案模板 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：解决方案模板](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  
-| 容器 | Azure 市场 | [要求：Azure 市场：事务处理：容器](#requirements:-azure-marketplace:-transact:-container) |  
-| SaaS 应用  | Azure 市场 | [要求：Azure 市场：事务处理：SaaS 应用](#requirements:-azure-marketplace:-transact:-saas-app) |  
-| 虚拟机 | Azure 市场 | [要求：Azure 市场：事务处理：虚拟机](#requirements:-azure-marketplace:-transact:-virtual-machine) |  
+| Azure 应用：托管应用 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：托管应用](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Azure 应用：解决方案模板 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：解决方案模板](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| 容器 | Azure 市场 | [要求：Azure 市场：事务处理：容器](#requirements-azure-marketplace-transact-container) |  
+| SaaS 应用  | Azure 市场 | [要求：Azure 市场：事务处理：SaaS 应用](#requirements-azure-marketplace-transact-saas-app) |  
+| 虚拟机 | Azure 市场 | [要求：Azure 市场：事务处理：虚拟机](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
 

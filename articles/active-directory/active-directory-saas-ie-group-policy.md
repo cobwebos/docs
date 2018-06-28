@@ -15,12 +15,12 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a39e454bd0993f07efd1168404df453f3013e0fa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2d719a31700e8d693dd7edb7de603682daae14ea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34341000"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308528"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何使用组策略部署 Internet Explorer 的访问面板扩展
 本教程说明如何使用组策略在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。 需要登录到使用[基于密码的单一登录](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)配置的应用程序的 Internet Explorer 用户必须使用此扩展。
@@ -44,7 +44,7 @@ ms.locfileid: "34341000"
    
     ![打开文件和存储服务](./media/active-directory-saas-ie-group-policy/shares.png)
 4. 完成“新建共享向导”并设置权限，确保可以从用户的计算机访问该共享位置。 [了解有关共享的详细信息。](https://technet.microsoft.com/library/cc753175.aspx)
-5. 下载以下 Microsoft Windows 安装程序包（.msi 文件）：[Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi)
+5. 下载以下 Microsoft Windows 安装程序包（.msi 文件）：[Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 6. 将该安装程序包复制到共享中所需的位置。
    
     ![将 .msi 文件复制到共享。](./media/active-directory-saas-ie-group-policy/copy-package.png)
