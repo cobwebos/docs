@@ -39,9 +39,7 @@ ms.locfileid: "34627017"
 
        ![新建 HDInsight 群集按钮](./media/hdinsight-administer-use-portal-linux/azure-portal-new-button.png)
 
-       
-  **
-  **在“在市场中搜索”**** 中输入 HDInsight ，单击 HDInsight****，然后单击“创建”****。
+       在“在市场中搜索”中输入 HDInsight，单击 HDInsight，然后单击“创建”。
 
    * 在左侧菜单中单击“HDInsight 群集”以列出现有群集：
 
