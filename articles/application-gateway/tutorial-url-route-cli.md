@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 4/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 411baa24cc796a40f83e8530ab797f3e377ee5f6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 61f884e186316b0b7829ef8e9f8f62d6c5df6b5d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356233"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307939"
 ---
 # <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>教程 - 使用 Azure CLI 基于 URL 对 Web 流量进行路由
 
@@ -234,7 +234,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，http://40.121.222.19、 http://40.121.222.19:8080/images/test.htm 或 http://40.121.222.19:8080/video/test.htm。
+若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，*http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm*, 或 *http://40.121.222.19:8080/video/test.htm*。
 
 ```azurecli-interactive
 az network public-ip show \
@@ -246,7 +246,7 @@ az network public-ip show \
 
 ![在应用程序网关中测试基 URL](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-将 URL 更改为 http://&lt;ip-address&gt;:8080/video/test.html（请将 &lt;ip-address&gt; 替换为自己的 IP 地址），应会看到如以下示例所示的内容：
+将 URL 更改为 http://&lt;ip-address&gt;:8080/images/test.html（请将 &lt;ip-address&gt; 替换为自己的 IP 地址），应会看到如以下示例所示的内容：
 
 ![在应用程序网关中测试映像 URL](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 

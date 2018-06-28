@@ -47,7 +47,6 @@
 ##### [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
 ##### [工作原理](active-directory-aadconnect-pass-through-authentication-how-it-works.md)
 ##### [升级预览代理](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)
-##### [智能锁定](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [常见问题](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ##### [深入了解安全性](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)

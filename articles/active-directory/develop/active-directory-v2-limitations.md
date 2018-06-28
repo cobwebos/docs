@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e026fd7021b39905d5392be55dbf3862cd307360
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: d7328ba8403f2415705d049d1fc7947b52aeb5c1
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156385"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319553"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>我是否应使用 v2.0 终结点？
 构建与 Azure Active Directory 集成的应用程序时，需确定 v2.0 终结点和身份验证协议是否满足需求。 Azure Active Directory 的原始终结点仍完全受支持，并且在某些方面比 v2.0 的功能更丰富。 但是，v2.0 终结点为开发人员[带来了极大的好处](active-directory-v2-compare.md)。
@@ -76,13 +76,13 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 
 `https://new.login.contoso.com`
 
-在这种情况下，将引用 login.contoso.com 的 DNS 子域。如果希望拥有使用 login-east.contoso.com 和 login-west.contoso.com 作为重定向 URI 的应用，则必须按以下顺序添加这些重定向 URI：
+在这种情况下，将引用 login.contoso.com 的 DNS 子域。 如果希望拥有使用 login-east.contoso.com 和 login-west.contoso.com 作为重定向 URI 的应用，则必须按以下顺序添加这些重定向 URI：
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-可以添加后两个重定向 URI，因为它们是第一个重定向 URI (contoso.com) 的子域。即将发布的版本中将取消此限制。
+可以添加后两个重定向 URI，因为它们是第一个重定向 URI (contoso.com) 的子域。 即将发布的版本中将取消此限制。
 
 另请注意，只能为特定应用程序设置 20 个答复 URL。
 

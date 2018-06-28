@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 4e92d1ba948626c05e7b66d2c0d469ac6c6571a2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4813c492ba25b0d6dd524e2c0b4b5b6e8c2a2bfa
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228180"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>教程：Azure Active Directory 与 TimeOffManager 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "36228180"
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
 
     > [!NOTE] 
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 可以从教程后面介绍的“单一登录设置页面”中获取此值，也可以联系 [TimeOffManager 支持团队](http://www.timeoffmanager.com/contact-us.aspx)。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 可以从教程后面介绍的“单一登录设置页面”中获取此值，也可以联系 [TimeOffManager 支持团队](https://www.purelyhr.com/contact-us)。
  
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -128,7 +128,7 @@ ms.locfileid: "36228180"
     | --- | --- |
     | 名 |User.givenname |
     | Lastname |User.surname |
-    | Email |User.mail |
+    | 电子邮件 |User.mail |
     
     a.  对于上表中的每个数据行，单击“添加用户属性”。
     

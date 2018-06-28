@@ -356,7 +356,7 @@ Azure 缩放单元内的 Azure 可用性集可使用不限数目的更新和容�
 如果将一些 SAP 应用程序服务器实例部署在其专用 VM 中，假设有 5 个更新域，则会出现下图所示的情况。 可用性集内的更新域和容错域的实际数目上限将来可能会变化：
 
 ![图 2：在 Azure 可用性集中 SAP 应用程序服务器的高可用性][planning-guide-figure-3000]
-**** 图 2：在 Azure 可用性集中 SAP 应用程序服务器的高可用性__
+_**图 2：** 在 Azure 可用性集中 SAP 应用程序服务器的高可用性_
 
 有关详细信息，请参阅[在 Azure 中管理 Windows 虚拟机的可用性][azure-virtual-machines-manage-availability]。
 

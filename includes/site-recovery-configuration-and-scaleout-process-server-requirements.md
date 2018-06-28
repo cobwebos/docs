@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 601819756b78ffe8762bdfbfd5f802bc2d76e9c5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: bc1beb53c5919914919e666ecf1836ec45d32ccf
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35268047"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319720"
 ---
 配置/进程服务器要求
 
@@ -36,7 +36,7 @@ IIS | - 无预先存在的默认网站 <br> - 端口 443 上没有预先存在�
 | 
 网络设置 | 
 IP 地址类型 | 静态 
-Internet 访问权限 | 服务器需要访问这些 URL（直接或通过代理） <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi（如果要设置配置服务器） <br> - time.nist.gov <br> - time.windows.com 
+Internet 访问权限 | 服务器需要访问这些 URL（直接或通过代理） <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi（如果要设置配置服务器） <br> - time.nist.gov <br> - time.windows.com 
 端口 | 443（控制通道协调）<br>9443（数据传输） 
 NIC 类型 | VMXNET3（如果配置服务器是 VMware VM）
  | 

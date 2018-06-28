@@ -15,11 +15,15 @@
       href: quickstarts/nodejs.md
     - name: 以 Python 编写的第一个查询
       href: quickstarts/python.md
-- name: SDK 中 IsInRole 中的声明
+- name: SDK
   expanded: true
   items:
     - name: SDK 示例概述
       href: sdk.md
+    - name: '以 C# 编写的 SDK'
+      href: visual-search-sdk-c-sharp.md
+    - name: 以 Node 编写的 SDK
+      href: visual-search-sdk-node.md
     - name: 以 Python 编写的 SDK
       href: visual-search-sdk-python.md
 - name: 教程

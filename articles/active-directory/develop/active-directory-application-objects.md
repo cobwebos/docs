@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 10/19/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: e8e693355fb9b30e1a69b49f20d5044c531e2fcd
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: elisol
+ms.openlocfilehash: d7194846dbeab2a5da8a8ceaa5a1040f33e8d515
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155613"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317123"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) 中的应用程序对象和服务主体对象
 有时在 Azure AD 的上下文中使用时，术语“应用程序”的含义可能会被误解。 本文旨在阐述 Azure AD 应用程序集成的概念和具体层面，并演示如何注册和同意[多租户应用程序](active-directory-dev-glossary.md#multi-tenant-application)。
