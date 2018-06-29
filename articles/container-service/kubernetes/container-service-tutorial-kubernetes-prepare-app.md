@@ -100,7 +100,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>在本地测试应用程序
 
-浏览到 http://localhost:8080查看正在运行的应用程序。
+浏览到 http://localhost:8080 查看正在运行的应用程序。
 
 ![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/azure-vote.png)
 
