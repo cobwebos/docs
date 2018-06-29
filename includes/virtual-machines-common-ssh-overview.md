@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/16/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 919582745d166cf8b3f3937f9bac4fc0dc1fe64f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5e199771c39ba2fbdeabbd04ed4081a9cd3ea117
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "31613400"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36964512"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>SSH 和密钥概述
 

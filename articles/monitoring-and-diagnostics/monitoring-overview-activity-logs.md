@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 6fc4fefe6eaaf48061ea05bdbc087288ada35838
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b6639ecc6fbd36df29458532d555b68b50b0a19c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264562"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018971"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
@@ -98,12 +98,12 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 * 活动日志应当在存储帐户中保留多长时间。
     - 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
     - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择了“事件中心”或“Log Analytics”选项），则保留策略无效。
-    - 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程始于协调世界时晚上 12 点，但请注意，日志从存储帐户删除可能需要多达 24 小时的时间。
+    - 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。
 
 可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有合适的 RBAC 访问权限。
 
 > [!NOTE]
->  当前无法将数据存档到支持安全虚拟网络的存储帐户。
+>  当前无法将数据存档到安全虚拟网络中的存储帐户。
 
 这些设置可以通过门户中活动日志边栏选项卡上的“导出”选项进行配置。 也可以[使用 Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell cmdlet 或 CLI 以编程方式对其进行配置。 一个订阅只能有一个日志配置文件。
 
@@ -136,7 +136,7 @@ Get-AzureRmLogProfile
 #### <a name="add-a-log-profile"></a>添加日志配置文件
 
 ```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
 | 属性 | 必选 | 说明 |

@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 9fcf751d1b7655cf38bbcaca0aa8c918e38e4fda
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c67f6c14dc396367e0179fe5bdb4663fcb7725da
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619059"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045960"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 ServiceNow 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -35,7 +32,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 ServiceNow 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 

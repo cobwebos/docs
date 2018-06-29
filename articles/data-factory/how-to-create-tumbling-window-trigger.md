@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: shlo
-ms.openlocfilehash: 61d53e0d5f32f40b67f5b2d4ce888b047f8c4cea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 02f84047d0e1d3e73fac991250da814176f3995d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619705"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049918"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 本文提供了创建、启动和监视翻转窗口触发器的步骤。 有关触发器和支持的类型的一般信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用 Azure 数据工厂版本 1（即正式版 (GA)），请参阅 [Azure 数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 翻转窗口触发器与管道存在一对一关系，一个这样的触发器只能引用一个管道。
 
@@ -75,7 +72,7 @@ ms.locfileid: "34619705"
 
 | JSON 元素 | 说明 | Type | 允许的值 | 必选 |
 |:--- |:--- |:--- |:--- |:--- |
-| **类型** | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
+| type | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
 | **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |
 | **frequency** | 一个字符串，表示触发器重复出现的频率单位（分钟或小时）。 如果 **startTime** 日期值粒度比 **frequency** 值更细，则会在计算窗口边界时考虑 **startTime** 日期。 例如：如果 **frequency** 值为每小时，**startTime** 值为 2016-04-01T10:10:10Z，则第一个窗口为 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | “minute”、“hour”  | 是 |
 | **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“hour”，则触发器每 3 小时重复触发一次。 | Integer | 正整数。 | 是 |

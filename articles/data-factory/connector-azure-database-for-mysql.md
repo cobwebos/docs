@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3de19bd088008c732d45ce3dc40fbe778ea8bbb0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e254c9b18d86debad7ba914a0a4d41369795bc58
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616764"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050008"
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure Database for MySQL 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure Database for MySQL 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 MySQL 连接器](v1/data-factory-onprem-mysql-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -159,13 +156,14 @@ Azure Database for MySQL 链接服务支持以下属性：
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
-| `bit` |`Decimal` |
+| `bit` |`Boolean` |
+| `bit(M), M>1`|`Byte[]`|
 | `blob` |`Byte[]` |
-| `bool` |`Boolean` |
+| `bool` |`Int16` |
 | `char` |`String` |
 | `date` |`Datetime` |
 | `datetime` |`Datetime` |
-| `decimal` |`Decimal` |
+| `decimal` |`Decimal, String` |
 | `double` |`Double` |
 | `double precision` |`Double` |
 | `enum` |`String` |

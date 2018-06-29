@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1f3de9ba6615a9b2232cca237a822b308d89426d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: cea96234083abd01cdf280129e6f75a1f69af9c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019817"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028976"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -38,7 +38,7 @@ ms.locfileid: "28019817"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -70,7 +70,7 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -81,7 +81,7 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -92,7 +92,7 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -103,11 +103,11 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [OWASP 点击劫持防御速查表](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet)、[IE 内部 - 使用 X-Frame-Options 阻击点击劫持](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-click-jacking-with-x-frame-options/) |
+| **参考**              | [OWASP 点击劫持防御速查表](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet)、[IE 内部 - 使用 X-Frame-Options 阻击点击劫持](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **步骤** | <p>点击劫持也称“UI 伪装攻击”，是指攻击者使用多个透明或不透明的层，在用户想要点击顶层页面时，诱使用户点击另一个页面上的按钮或链接。</p><p>这种分层是通过编写使用 iframe 的恶意页面，加载受害者的页面来实现的。 因此，攻击者正是“劫持”了用户原本要在其页面上的点击，将他们路由到很有可能是由其他应用程序和/或域拥有的另一个页面。 若要阻止点击劫持攻击，请设置适当的 X-Frame-Options HTTP 响应标头，指示浏览器不要允许来自其他域的框架设计</p>|
 
 ### <a name="example"></a>示例
@@ -138,7 +138,7 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | 不适用  |
@@ -169,7 +169,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | 不适用  |
@@ -195,7 +195,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -206,7 +206,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -271,7 +271,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
@@ -282,7 +282,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | 不适用，SQL 版本 - V12 |
@@ -293,7 +293,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 5 |
 | **属性**              | 不适用  |
@@ -389,7 +389,7 @@ public class ResourcesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 6 |
 | **属性**              | 不适用  |
@@ -481,7 +481,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -492,7 +492,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件               | IoT 设备 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -503,7 +503,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件               | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -514,7 +514,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件               | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -525,7 +525,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件               | IoT 设备 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -536,7 +536,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 现场网关 | 
+| 组件               | IoT 现场网关 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -547,7 +547,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 现场网关 | 
+| 组件               | IoT 现场网关 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -558,7 +558,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 云网关 | 
+| 组件               | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
@@ -569,7 +569,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 计算机信任边界 | 
+| 组件               | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -580,7 +580,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -591,7 +591,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -602,7 +602,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
@@ -625,7 +625,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |

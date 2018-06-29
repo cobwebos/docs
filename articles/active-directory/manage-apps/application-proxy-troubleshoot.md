@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: f3c767da249d10896ef1792ce4a5ed72ba3fa418
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8740557471d1cc528e8b7440984c7a3c624ee693
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302037"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017658"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>应用程序代理问题和错误消息故障排除
 如果在访问已发布应用程序或发布应用程序时出现错误，请检查以下选项，查看 Microsoft Azure AD 应用程序代理是否正确工作：
@@ -40,8 +40,6 @@ ms.locfileid: "35302037"
 如果更改路径以包含引用内容，但仍然需要用户登陆路径中更深的链接，请参阅博客文章 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)（在 Azure AD 访问面板和 Office 365 应用启动器中为应用程序代理应用程序设置正确的链接）。
 
 ## <a name="connector-errors"></a>连接器错误
-
-使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器是否能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。 
 
 如果注册在连接器向导安装期间失败，有两种方法可查看失败原因。 查看**应用程序和服务日志\Microsoft\AadApplicationProxy\Connector\Admin** 下的事件日志，或运行以下 Windows PowerShell 命令：
 

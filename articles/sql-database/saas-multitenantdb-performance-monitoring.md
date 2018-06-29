@@ -10,18 +10,18 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 22a3c5b2c7c4676c9c05c7cc67f30108a5dfbe5b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 75431715b5948525e92c99b778842d26a684da82
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644675"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753434"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
 
 本教程将探讨 SaaS 应用程序中使用的几个关键性能管理方案。 使用负载生成器来模拟分片多租户数据库间的活动，演示 SQL 数据库内置的监视和警报功能。
 
-Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型，其中场地（租户）数据是通过可能跨多个数据库的租户 ID 来分布的。 与许多 SaaS 应用程序一样，预期的租户工作负荷模式为不可预测的偶发型。 换言之，票证销售可能会发生在任意时刻。 若要利用此典型的数据库使用模式，将可对数据库进行纵向扩展或缩小，以优化解决方案的成本。 使用此类模式时，必须监视数据库资源的使用情况，以确保实现合理的可能跨多个数据库的负载均衡。 此外还需确保各个数据库有足够的资源，且没有达到其 [DTU](sql-database-what-is-a-dtu.md) 限制。 本教程探讨如何通过多种方式来监视和管理数据库，以及如何采取纠正措施来响应工作负载的变化。
+Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型，其中场地（租户）数据是通过可能跨多个数据库的租户 ID 来分布的。 与许多 SaaS 应用程序一样，预期的租户工作负荷模式为不可预测的偶发型。 换言之，票证销售可能会发生在任意时刻。 若要利用此典型的数据库使用模式，将可对数据库进行纵向扩展或缩小，以优化解决方案的成本。 使用此类模式时，必须监视数据库资源的使用情况，以确保实现合理的可能跨多个数据库的负载均衡。 此外还需确保各个数据库有足够的资源，且没有达到其 [DTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus) 限制。 本教程探讨如何通过多种方式来监视和管理数据库，以及如何采取纠正措施来响应工作负载的变化。
 
 本教程介绍如何执行下列操作：
 

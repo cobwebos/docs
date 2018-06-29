@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f0c86f121fd65a06fb4d1a193f3e3bf724af505e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 9a43179998e8377dfbbb1a41ba7d46936d63aedd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234835"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030149"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -76,20 +76,6 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | 队列存储 | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Key Vault | vault.&lt;region>.&lt;fqdn> |
 | KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） |  内部 Key Vault |  adminvault.&lt;region>.&lt;fqdn> |
-
-### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>适用于 1803 以前版本上的 Azure Stack 环境
-
-|部署文件夹|所需的证书使用者和使用者可选名称 (SAN)|范围（按区域）|子域命名空间|
-|-----|-----|-----|-----|
-|公共门户|portal.*&lt;region>.&lt;fqdn>*|门户|*&lt;region>.&lt;fqdn>*|
-|管理门户|adminportal.*&lt;region>.&lt;fqdn>*|门户|*&lt;region>.&lt;fqdn>*|
-|Azure 资源管理器公共门户|management.*&lt;region>.&lt;fqdn>*|Azure 资源管理器|*&lt;region>.&lt;fqdn>*|
-|Azure 资源管理器管理门户|adminmanagement.*&lt;region>.&lt;fqdn>*|Azure 资源管理器|*&lt;region>.&lt;fqdn>*|
-|ACS<sup>1</sup>|一个包含使用者可选名称的多子域通配符证书：<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.table.*&lt;region>.&lt;fqdn>*|存储|blob.*&lt;region>.&lt;fqdn>*<br>table.*&lt;region>.&lt;fqdn>*<br>queue.*&lt;region>.&lt;fqdn>*|
-|KeyVault|&#42;.vault.*&lt;region>.&lt;fqdn>*<br>（通配符 SSL 证书）|Key Vault|vault.*&lt;region>.&lt;fqdn>*|
-|KeyVaultInternal|&#42;.adminvault.*&lt;region>.&lt;fqdn>*<br>（通配符 SSL 证书）|内部 Key Vault|adminvault.*&lt;region>.&lt;fqdn>*|
-|
-<sup>1</sup> ACS 证书要求单个证书中包含三个通配符 SAN。 并非所有公共证书颁发机构都支持在单个证书中包含多个通配符 SAN。 
 
 如果使用 Azure AD 部署模式来部署 Azure Stack，只需请求上表中所列的证书。 但是，如果使用 AD FS 部署模式来部署 Azure Stack，则还必须请求下表中所述的证书：
 

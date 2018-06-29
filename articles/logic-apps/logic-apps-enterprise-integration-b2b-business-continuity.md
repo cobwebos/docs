@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 65c7262916219a74dcd6bdab487306b5bd5f709f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1882207207327214ee6519a98715d06a7e32ab93
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299090"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045596"
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>逻辑应用 B2B 跨区域灾难恢复
 
@@ -85,7 +85,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 根据控制编号，设计 EDI X12 文档的业务连续性：
 
 > [!TIP]
-> 还可使用 [X12 快速入门模板](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/)创建逻辑应用。 使用该模板的先决条件是创建主要和次要的集成帐户。 该模板有助于创建两个逻辑应用，一个用于接收的控制编号，另一个用于生成的控制编号。 各自的触发器和操作会在逻辑应用中创建，然后将触发器连接到主要集成帐户，将操作连接到次要集成帐户。
+> 还可使用 [X12 快速入门模板](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/)创建逻辑应用。 使用该模板的先决条件是创建主要和次要的集成帐户。 该模板有助于创建两个逻辑应用，一个用于接收的控制编号，另一个用于生成的控制编号。 各自的触发器和操作会在逻辑应用中创建，然后将触发器连接到主要集成帐户，将操作连接到次要集成帐户。
 
 **先决条件**
 

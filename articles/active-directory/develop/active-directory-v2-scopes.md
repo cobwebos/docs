@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: f001751c9401b88d9bfaf35444882d3d5ccbfef3
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 304f71efa009c3d8035d5707bcee73a9ac280e2a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157305"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318973"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 终结点中的范围、权限和同意
 与 Azure Active Directory (Azure AD) 集成的应用遵循一种授权模型，该模型可让用户控制应用访问其数据的方式。 此授权模型的 v2.0 实现已更新，其中更改了应用程序必须与 Azure AD 交互的方式。 本文涵盖此授权模型的基本概念，包括范围、权限和同意。

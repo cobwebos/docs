@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: 068d63b7c96dd6729ebc46fb92a136be43b84385
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2b5c265827c30ec9f62cc902aa348e050aec7ba1
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200854"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019598"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 MapReduce 作业
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
@@ -179,6 +179,6 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 * 有关提交 Hive 作业，请参阅[使用 HDInsight .NET SDK 运行 Hive 查询](apache-hadoop-use-hive-dotnet-sdk.md)。
 * 请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)，了解如何创建 HDInsight 群集。
 * 请参阅[在 HDInsight 中管理 Hadoop 群集](../hdinsight-administer-use-portal-linux.md)，了解如何管理 HDInsight 群集。
-* 请参阅 [HDInsight.NET SDK 参考资料](https://msdn.microsoft.com/library/mt271028.aspx)，学习 HDInsight.NET SDK。
+* 请参阅 [HDInsight.NET SDK 参考资料](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)，学习 HDInsight.NET SDK。
 * 请参阅[创建非交互式身份验证 .NET HDInsight 应用程序](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)，了解对 Azure 的非交互式身份验证。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 44abf7a4fc24893146179b34d3357f54450decab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 27f6ccadaa89042ebced759ac3040b5b79e1f8f8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365138"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051519"
 ---
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
 
@@ -69,7 +69,7 @@ SQL 数据库可提供加密功能来帮助保护数据：
 
 一种解决方法是加密数据库中的敏感数据，并使用证书保护用于加密数据的密钥。 此解决方案可防止没有密钥的人使用数据，但这种保护必须经过精心规划。
 
-为解决此问题，SQL Server 和 SQL 数据库支持[透明数据加密](https://docs.microsoft.com/sql/relational-databases/securityrecryption/transparent-data-encryption-tde)。 透明数据加密可加密 SQL Server 和 SQL 数据库数据文件，这称为静态加密数据。
+为解决此问题，SQL Server 和 SQL 数据库支持[透明数据加密](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017)。 透明数据加密可加密 SQL Server 和 SQL 数据库数据文件，这称为静态加密数据。
 
 透明数据加密有助于防范恶意活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。  
 
@@ -195,10 +195,10 @@ SQL 数据库审核可跟踪数据库事件，并将事件写入 Azure 存储帐
 
 安全中心支持基于角色的访问。
 
-## <a name="azure-marketplace"></a>Azure Marketplace
+## <a name="azure-marketplace"></a>Azure 市场
 
 Azure Marketplace 是一个在线应用程序和服务市场，初创公司和独立软件供应商 (ISV) 能够通过它为全球 Azure 客户提供解决方案。
-Azure Marketplace 与 Microsoft Azure 合作伙伴生态系统结合为一个统一的平台，以便更好地服务于客户和合作伙伴。 可[运行搜索](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1)，查看 Azure Marketplace 中可用的数据库安全产品。
+Azure 市场与 Microsoft Azure 合作伙伴生态系统结合为一个统一的平台，以便更好地服务于客户和合作伙伴。 可[运行搜索](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1)，查看 Azure 市场中可用的数据库安全产品。
 
 ## <a name="next-steps"></a>后续步骤
 

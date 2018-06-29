@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7848aa2e620218463bbe3faa325b4589ae6ac3b5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7f1c2b028521983081ba5f276789af9701b568b7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657492"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047252"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -775,7 +775,7 @@ ExpressRoute 强制隧道由通过 ExpressRoute BGP 对等互连会话广告默�
 
 ![用于确定能否在 Azure 上部署 SAP 的决策树][planning-guide-figure-700]
 
-**步骤 1**：首先要获取的最重要信息是有关给定 SAP 系统的 SAPS 要求。 需要将 SAPS 要求划分为 DBMS 部分和 SAP 应用程序部分，即使该 SAP 系统已部署在本地的双层配置中。 对于现有系统，通常可以根据现有的 SAP 基准来确定或估测使用中的硬件的相关 SAPS。 可在此处 <http://global.sap.com/campaigns/benchmark/index.epx> 找到结果。
+**步骤 1**：首先要获取的最重要信息是有关给定 SAP 系统的 SAPS 要求。 需要将 SAPS 要求划分为 DBMS 部分和 SAP 应用程序部分，即使该 SAP 系统已部署在本地的双层配置中。 对于现有系统，通常可以根据现有的 SAP 基准来确定或估测使用中的硬件的相关 SAPS。 可在此处 <https://sap.com/about/benchmark.html> 找到结果。
 对于新部署的 SAP 系统，应该事先完成整个大小调整活动，该活动应得出系统的 SAPS 要求。
 有关在 Azure 上调整 SAP 大小的信息，另请参阅此博客及附加文档：<http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
@@ -988,7 +988,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 * 使用 Powershell 或 Azure CLI 上传 VHD
 * （可选）使用 Powershell、Azure CLI 或 Azure 门户从 VHD 创建托管磁盘
-* 使用引用 VHD 的 JSON 模板（如[此示例 JSON 模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json)中所示）或使用托管磁盘（如[此示例 JSON 模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-disk-md/azuredeploy.json)中所示）部署 VM。
+* 使用引用 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
 
 #### <a name="deployment-of-a-vm-image"></a>部署 VM 映像
 若要从本地网络上传现有的 VM 或 VHD 以将其用作 Azure VM 映像，这种 VM 或 VHD 需要满足本文档的[准备使用特定于客户的映像为 SAP 部署 VM][planning-guide-5.2.2] 一章中列出的要求。
@@ -1905,8 +1905,7 @@ Azure 托管磁盘自动放置在其附加到的虚拟机的容错域中。 如�
 为了实现整个 SAP 系统的高可用性，需要保护所有关键 SAP 系统组件（例如冗余的 SAP 应用程序服务器），以及 SAP (A)SCS 实例和 DBMS 等独特的组件（例如单一故障点）。
 
 #### <a name="5d9d36f9-9058-435d-8367-5ad05f00de77"></a>SAP 应用程序服务器的高可用性
-对于 SAP 应用程序服务器/对话实例，不必要考虑特定高可用性解决方案。 高可用性可直接通过冗余来实现，因此必须在不同的虚拟机中有足够的冗余。 它们应该全部放同一个 Azure 可用性集中，以避免在计划内维护停机时间内同时更新 VM。 
-  [升级域][planning-guide-3.2.2]一章介绍了在 Azure 缩放单元内不同升级域和容错域上构建的基本功能。 本文档的 [Azure 可用性集][planning-guide-3.2.3]一章介绍了 Azure 可用性集。
+对于 SAP 应用程序服务器/对话实例，不必要考虑特定高可用性解决方案。 高可用性可直接通过冗余来实现，因此必须在不同的虚拟机中有足够的冗余。 它们应该全部放同一个 Azure 可用性集中，以避免在计划内维护停机时间内同时更新 VM。 [升级域][planning-guide-3.2.2]一章介绍了在 Azure 缩放单元内不同升级域和容错域上构建的基本功能。 本文档的 [Azure 可用性集][planning-guide-3.2.3]一章介绍了 Azure 可用性集。
 
 Azure 缩放单元内的 Azure 可用性集可使用不限数目的容错和升级域。 这意味着，如果将一些 VM 放在一个可用性集中，迟早会有多个 VM 出现在同一个容错或升级域中。
 

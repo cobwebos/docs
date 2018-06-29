@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: 19e8c11a0051f9d13ef4be3d77fe828a272c3c77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c26019bad63a904f8ebd1241d2b58923d786e181
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937884"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>如何在 Azure 中标记 Linux 虚拟机
 本文介绍在 Azure 中通过 Resource Manager 部署模型标记 Linux 虚拟机的不同方式。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 15 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。 请注意，只有通过 Resource Manager 部署模型创建的资源支持标记。
@@ -28,8 +29,6 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="tagging-with-azure-cli"></a>使用 Azure CLI 进行标记
 若要开始，需要安装最新的 [Azure CLI 2.0](/cli/azure/install-azure-cli) 并已使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure 帐户。
-
-还可以使用 [Azure CLI 1.0](tag-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
 可以使用此命令查看给定虚拟机的所有属性，包括标记：
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 956bd89a993a019d7a5a4dd28efec4116b174334
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 523d50623257d3944342cb174174e27bd4731248
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297251"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045239"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -26,9 +26,6 @@ ms.locfileid: "35297251"
 - Azure 集成运行时
 - 自承载集成运行时
 - Azure-SSIS 集成运行时
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 若要获取集成运行时 (IR) 实例的状态，请运行以下 PowerShell 命令： 
 
@@ -158,7 +155,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | Nodes | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
 | OtherErrors | Azure-SSIS 集成运行时中发生的非特定于节点且可采取措施的错误。 |
 | LastOperation | 上次对 Azure-SSIS 集成运行时执行的启动/停止操作的结果，以及可采取措施的错误（如果操作失败）。 |
-| State | Azure-SSIS 集成运行时的总体状态 (initial/starting/started/stopping/stopped)。 |
+| 省/直辖市/自治区 | Azure-SSIS 集成运行时的总体状态 (initial/starting/started/stopping/stopped)。 |
 | 位置 | Azure-SSIS 集成运行时的位置。 |
 | NodeSize | Azure-SSIS 集成运行时的每个节点的大小。 |
 | NodeCount | Azure-SSIS 集成运行时中的节点数目。 |

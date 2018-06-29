@@ -13,19 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: f30b749d40cd2628ca6539d962d5a1153cd3e7c2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0141694b87664a83872f7b270631d454f863d5a8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618518"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046160"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false` 时，它会计算另一组活动。 
-
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="syntax"></a>语法
 

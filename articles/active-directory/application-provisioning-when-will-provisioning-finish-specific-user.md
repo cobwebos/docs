@@ -3,22 +3,24 @@ title: 找出特定的用户何时可以访问某个应用程序 | Microsoft Doc
 description: 如何找出非常重要的用户何时可以访问已使用 Azure AD 配置用户预配的应用程序
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 42c305ad48e6994b1d2c729b849acf665e575807
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: a97e898c503a1078c5bae8ba45f0dcd49627aee8
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26613617"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330751"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>找出特定的用户何时可以访问某个应用程序
 当会自动化用户预配用于应用程序时，Azure AD 会根据类似[用户和组分配](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)，定期（通常每 10 分钟）自动预配并更新应用中的用户帐户。

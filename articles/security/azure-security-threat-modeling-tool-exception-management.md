@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3fae9390b41d12361b820e2c37601283b37bc302
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019579"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031706"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -32,11 +32,11 @@ ms.locfileid: "28019579"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **步骤** | 可将 Windows Communication Framework (WCF) 服务配置为公开调试信息。 不应在生产环境中使用调试信息。 `<serviceDebug>` 标记定义是否为 WCF 服务启用调试信息功能。 如果 includeExceptionDetailInFaults 特性设置为 true，则将来自应用程序的异常信息返回到客户端。 攻击者可以利用他们从调试输出中获取的附加信息，针对框架、数据库或者应用程序使用的其他资源展开攻击。 |
 
 ### <a name="example"></a>示例
@@ -56,18 +56,18 @@ ms.locfileid: "28019579"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 泛型、NET Framework 3 |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **步骤** | 有关服务的公开信息可能会给攻击者提供有用的洞察数据，使他们知道如何攻击服务。 `<serviceMetadata>` 标记会启用元数据发布功能。 服务元数据可能包含不应该提供给公众访问的敏感信息。 最起码，应该只允许受信任的用户访问元数据，确保不必要的信息不会公开。 当然，更好的做法是完全禁用元数据发布功能。 安全的 WCF 配置不包含 `<serviceMetadata>` 标记。 |
 
 ## <a id="exception"></a>确保在 ASP.NET Web API 中进行适当的异常处理
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 5、MVC 6 |
 | **属性**              | 不适用  |
@@ -185,7 +185,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -196,7 +196,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -207,7 +207,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -218,7 +218,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |

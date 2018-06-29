@@ -10,41 +10,42 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: ee4321b905396f78e7dad9248b9e377dad250a13
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054375"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack 中的配置文件支持的资源提供程序 API 版本
 
-你可以找到有关本文中使用由 Azure 堆栈的每个 API 配置文件的资源提供程序和版本号。 这篇文章中的表列出每个资源提供程序和配置文件的 API 版本所支持的版本。 每个资源提供程序包含一组的资源类型和特定的版本号。
+可以在本文中找到 Azure Stack 使用的每个 API 配置文件的资源提供程序和版本号。 本文中的表格列出了每个资源提供程序支持的版本以及配置文件的 API 版本。 每个资源提供程序包含一组资源类型和特定的版本号。
 
 API 配置文件使用三个命名约定：
  - 最新
- - Yyyy mm dd 混合
- - yyyy mm-dd 配置文件
+ - yyyy-mm-dd-hybrid
+ - yyyy-mm-dd-profile
 
-有关 Azure 堆栈的 API 配置文件和版本发布节奏说明，请参阅[管理 API 版本 Azure 堆栈中的配置文件](azure-stack-version-profiles.md)。
+有关 Azure Stack 的 API 配置文件和版本发布频率的说明，请参阅[在 Azure Stack 中管理 API 版本配置文件](azure-stack-version-profiles.md)。
 
 > [!Note]  
-> **最新**API 配置文件包含最新的资源提供程序 API 版本，并且不在本文中列出。
+> **最新** API 配置文件包含最新的资源提供程序 API 版本，未在本文中列出。
 
 ## <a name="overview-of-2018--03-01-hybrid"></a>2018-03-01-混合的概述
 
-| 资源提供程序 | api 版本 |
+| 资源提供程序 | Api-version |
 |-----------------------------------------------|-----------------------------------------------------|
-| Microsoft.Compute | 自 2017 年 1-03-30 |
-| Microsoft.Network | 自 2017 年 1-10-01<br>VPN 网关将 2017年-03-01 |
-| Microsoft.Storage （数据平面） | 2017-04-17 |
-| Microsoft.Storage （控制平面） | 2016-01-01 |
-| Microsoft. Web | 2016-08-01<br>这是在 Azure 中的最新 （截止到现在） |
-| Microsoft.KeyVault | （不更改） 的 2016年-10-01 |
-| Microsoft.Resources （Azure 资源管理器本身） | 2016-02-01 |
-| Microsoft.Authorization （策略操作） | 2015-11-01 |
+| Microsoft.Compute | 2017-03-30 |
+| Microsoft.Network | 2017-10-01<br>VPN 网关将为 2017-03-01 |
+| Microsoft.Storage（数据平面） | 2017-04-17 |
+| Microsoft.Storage（控制平面） | 2016-01-01 |
+| Microsoft. Web | 2016-08-01<br>这是 Azure 中的最新版（截至目前） |
+| Microsoft.KeyVault | 2016-10-01（未更改） |
+| Microsoft.Resources（Azure 资源管理器本身） | 2016-02-01 |
+| Microsoft.Authorization（策略操作） | 2015-11-01 |
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | 策略 | 2016-10-01 |
@@ -53,31 +54,31 @@ API 配置文件使用三个命名约定：
 | Resources_Locks | 2016-10-01 |
 | 订阅 | 2016-10-01 |
 
-有关更多的每个资源类型的 api 配置文件中的提供程序版本的列表，请参阅[2018年-03-01-混合的详细信息](#details-for-the-2018-03-01-hybrid)配置文件。
+有关 api 配置文件中提供程序的每种资源类型的更多版本列表，请参阅 [2018-03-01-hybrid 配置文件的详细信息](#details-for-the-2018-03-01-hybrid)。
 
-## <a name="overview-of-2017-03-09-profile"></a>自 2017 年 1-03-09-配置文件的概述
+## <a name="overview-of-2017-03-09-profile"></a>2017-03-09-profile 的概述
 
-| 资源提供程序 | api 版本 |
+| 资源提供程序 | Api-version |
 |------------------------------------------------|------------------------------|
 | Microsoft.Compute | 2016-03-30 |
 | Microsoft.Network | 2015-06-15 |
-| Microsoft.Storage （数据平面） | 2015-04-05  |
-| Microsoft.Storage （控制平面） | 2016-01-01   |
+| Microsoft.Storage（数据平面） | 2015-04-05  |
+| Microsoft.Storage（控制平面） | 2016-01-01   |
 | Microsoft.Websites | 2016-01-01 |
-| Microsoft.KeyVault | 2016-10-01<br>（不更改） |
-| Microsoft.Resources<br>（azure 资源管理器本身） | 2016-02-01 |
+| Microsoft.KeyVault | 2016-10-01<br>（未更改） |
+| Microsoft.Resources<br>（Azure 资源管理器本身） | 2016-02-01 |
 | Microsoft.Authorization<Br>（策略操作） | 2015-11-01 |
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
-| 策略 | 2015-10-01-预览版 |
+| 策略 | 2015-10-01-preview |
 | 资源 | 2016-02-01 |
 | Resources_Links | 2016-09-01 |
 | Resources_Locks | 2016-09-01 |
 | 订阅 | 2016-06-1 |
 
-有关更多的每个资源类型的 api 配置文件中的提供程序版本的列表，请参阅[自 2017 年 1-03-09-配置文件的详细信息](#details-for-the-2017-03-09-profile)
+有关 api 配置文件中提供程序的每种资源类型的更多版本列表，请参阅 [2017-03-09-profile 的详细信息](#details-for-the-2017-03-09-profile)
 
-## <a name="details-for-the-2018-03-01-hybrid"></a>2018-03-01-混合的详细信息
+## <a name="details-for-the-2018-03-01-hybrid"></a>2018-03-01-hybrid 的详细信息
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
@@ -143,11 +144,14 @@ API 配置文件使用三个命名约定：
 
 | 资源类型 | API 版本 |
 |--------------------|--------------------|
-| 预警规则 | 2016-03-01 |
-| 事件类别 | 2017-03-01-preview |
-| 事件类型 | 2017-03-01-preview |
-| 指标定义 | 2016-03-01 |
 | 操作 | 2015-04-01 |
+| 活动类型 | 2015-04-01 |
+| 事件类别 | 2015-04-01 |
+| 指标定义 | 2018-01-01 |
+| 度量值 | 2018-01-01 |
+| 诊断设置 | 自 2017 年 1-05-01-preview |
+| 诊断设置类别 | 自 2017 年 1-05-01-preview |
+
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -227,7 +231,7 @@ API 配置文件使用三个命名约定：
 | 存储帐户 | 2016-01-01 |
 | 用途 | 2016-01-01 |
 
-## <a name="details-for-the-2017-03-09-profile"></a>自 2017 年 1-03-09-配置文件的详细信息
+## <a name="details-for-the-2017-03-09-profile"></a>2017-03-09-profile 的详细信息
 
 ### <a name="microsoft-authorization"></a>Microsoft 授权
 
@@ -307,7 +311,7 @@ API 配置文件使用三个命名约定：
 | 订阅/资源组 | 2016-09-01 |
 | 订阅/资源组/资源 | 2016-09-01 |
 | 订阅/资源 | 2016-09-01 |
-| 标记名称 Subscriptiosn / | 2016-09-01 |
+| 订阅/标记名称 | 2016-09-01 |
 | 订阅/标记名称/标记值 | 2016-09-01 |
 | 租户 | 2017-08-01 |
 

@@ -3,20 +3,20 @@ title: 使用 Azure Cosmos DB 和 HDInsight (Apache Spark) 的 Lambda 体系结�
 description: 本文介绍如何实现使用 Azure Cosmos DB、HDInsight 和 Spark 的 lambda 体系结构
 keywords: lambda-architecture
 services: cosmos-db
-author: dennyglee
+author: tknandu
 manager: kfile
 editor: ''
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: denlee
-ms.openlocfilehash: a8cdee6e8e7c338be278449a31426824f6e805d6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: ramkris
+ms.openlocfilehash: 20fea7f4f4ccf852045d53ba06c3f8fcbdd1d60d
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611851"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959825"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB：在 Azure 平台上实现 lambda 体系结构 
 

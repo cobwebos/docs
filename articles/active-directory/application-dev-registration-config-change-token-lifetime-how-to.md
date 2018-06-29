@@ -3,22 +3,23 @@ title: 如何为自定义开发的应用程序更改令牌生存期默认设置 
 description: 如何为在 Azure AD 上开发的应用程序更新令牌生存期策略
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 8067ecf3e274f65abe2c82f20dd2f4469344f3b6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.openlocfilehash: bd963253ee796fb56405e8da855475df2d2f5d08
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26614372"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335333"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>如何为自定义开发的应用程序更改令牌生存期默认设置
 

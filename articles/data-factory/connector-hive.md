@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f3ed658ffb3f85baacf7eeec8395aaeff84806b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 379cc5412d317680afa9b03f0eea60c7f1a3b60d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616339"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051072"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>使用 Azure 数据工厂从 Hive 复制数据 
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Hive 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -35,7 +32,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Hive 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -47,7 +44,7 @@ Hive 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Hive** | 是 |
 | host | Hive 服务器的 IP 地址或主机名；对于多台主机，将以“;”分隔（仅限启用了 serviceDiscoveryMode 时）。  | 是 |
-| 端口 | Hive 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
+| port | Hive 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
 | serverType | Hive 服务器的类型。 <br/>允许的值为：**HiveServer1**、**HiveServer2**、**HiveThriftServer** | 否 |
 | thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许的值为：**Binary**、**SASL**、**HTTP** | 否 |
 | authenticationType | 用于访问 Hive 服务器的身份验证方法。 <br/>允许的值为：**Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | 是 |

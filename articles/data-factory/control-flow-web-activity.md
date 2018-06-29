@@ -11,20 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/14/2018
 ms.author: shlo
-ms.openlocfilehash: 6d14d84610d97e487e3bf4286267623681c4eb75
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 71e89828645cadbbbf60527fca9968fd8ed568ff
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619229"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055351"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。 
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="syntax"></a>语法
 
@@ -72,7 +69,7 @@ type | 必须设置为 **WebActivity**。 | String | 是
 方法 | 目标终结点的 Rest API 方法。 | 字符串。 <br/><br/>支持的类型：“GET”、“POST”、“PUT” | 是
 url | 目标终结点和路径 | 字符串（或带有 resultType 字符串的表达式）。 如果活动在 1 分钟内未收到终结点的响应，则会超时并显示错误。 | 是
 headers | 发送到请求的标头。 例如，若要在请求中设置语言和类型：`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 字符串（或带有 resultType 字符串的表达式） | 是，需要内容类型标头。 `"headers":{ "Content-Type":"application/json"}`
-body | 表示要发送到终结点的有效负载。 POST/PUT 方法所必需。  | 字符串（或带有 resultType 字符串的表达式）。 <br/><br/>请参阅[请求有效负载架构](#request-payload-schema)部分中的请求有效负载架构。 | 否
+body | 表示要发送到终结点的有效负载。  | 字符串（或带有 resultType 字符串的表达式）。 <br/><br/>请参阅[请求有效负载架构](#request-payload-schema)部分中的请求有效负载架构。 | POST/PUT 方法所必需。
 authentication | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”或“ClientCertificate”。 有关详细信息，请参阅[身份验证](#authentication)部分。 如果不需要身份验证，则排除此属性。 | 字符串（或带有 resultType 字符串的表达式） | 否
 datasets | 传递给终结点的数据集列表。 | 数据集引用数组。 可以是空数组。 | 是
 linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用数组。 可以是空数组。 | 是

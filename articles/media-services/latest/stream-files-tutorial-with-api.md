@@ -103,7 +103,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 #### <a name="transform"></a>转换
 
-创建新转换实例时，需要指定希望生成的输出内容[](https://docs.microsoft.com/rest/api/media/transforms)。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
+创建新[转换](https://docs.microsoft.com/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
 
 可以使用内置 EncoderNamedPreset 或使用自定义预设。 有关详细信息，请参阅[如何自定义编码器预设](customize-encoder-presets-how-to.md)。
 
@@ -113,7 +113,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 #### <a name="job"></a>作业
 
-如上所述，转换对象为脚本，作业则是对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容[](https://docs.microsoft.com/rest/api/media/transforms)[](https://docs.microsoft.com/rest/api/media/jobs)。 作业指定输入视频位置和输出位置等信息。
+如上所述，[转换](https://docs.microsoft.com/rest/api/media/transforms)对象为脚本，[作业则](https://docs.microsoft.com/rest/api/media/jobs)是对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。
 
 在此示例中，已从本地计算机上传输入视频。 如果想要了解如何从 HTTPS URL 进行编码，请参阅[此](job-input-from-http-how-to.md)文章。
 
@@ -131,11 +131,11 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ### <a name="get-a-streaminglocator"></a>获取 StreamingLocator
 
-编码完成后，下一步是使输出资产中的视频可供客户端播放。 可通过两个步骤完成此操作：首先，创建 StreamingLocator，然后，生成客户端可以使用的流式 URL[](https://docs.microsoft.com/rest/api/media/streaminglocators)。 
+编码完成后，下一步是使输出资产中的视频可供客户端播放。 可通过两个步骤完成此操作：首先，创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) ，然后，生成客户端可以使用的流式 URL。 
 
 创建 StreamingLocator 的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，StreamingLocator 立即生效，并持续到其被删除为止。 
 
-创建 StreamingLocator 时，需要指定所需的 StreamingPolicyName[](https://docs.microsoft.com/rest/api/media/streaminglocators)。 在此示例中将流式传输明文（或未加密的内容），因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
+创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 时，需要指定所需的 **StreamingPolicyName**。 在此示例中将流式传输明文（或未加密的内容），因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
 
 > [!IMPORTANT]
 > 使用自定义的 [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个 StreamingLocator 创建新的 StreamingPolicy。
@@ -148,7 +148,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ### <a name="get-streaming-urls"></a>获取流式 URL
 
-现已创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)，可以获取流式 URL，如 GetStreamingURLs 中所示。 若要生成 URL，需要连接 StreamingEndpoint 主机名称和 StreamingLocator 路径[](https://docs.microsoft.com/rest/api/media/streamingendpoints)。 在此示例中，使用默认的 StreamingEndpoint。 首次创建媒体服务帐户时，默认 StreamingEndpoint 处于停止状态，因此需要调用 Start。
+现已创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)，可以获取流式 URL，如 GetStreamingURLs 中所示。 若要生成 URL，需要连接 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) 主机名称和 **StreamingLocator** 路径 。 在此示例中，使用默认的 StreamingEndpoint。 首次创建媒体服务帐户时，默认 StreamingEndpoint 处于停止状态，因此需要调用 Start。
 
 > [!NOTE]
 > 在此方法中，需要在创建输出资产的 StreamingLocator 时所使用的 locatorName。

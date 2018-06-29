@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: alkohli
-ms.openlocfilehash: ed928452946b871ee9192bda82fcbf205b96e6e0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d324025a50346415de8232af4adc487a5d907331
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659229"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031390"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答 
 下面是你在使用 Azure 导入/导出服务将数据传输到 Azure 存储时可能会提出的问题及其解答。 问题和解答分为以下几个类别：
@@ -28,39 +28,39 @@ ms.locfileid: "34659229"
 
 ### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>是否可以使用 Azure 导入/导出服务复制 Azure 文件存储？
 
-是。 Azure 导入/导出服务支持导入到 Azure 文件存储。 目前它不支持导出 Azure 文件。
+是的。 Azure 导入/导出服务支持导入到 Azure 文件存储。 目前它不支持导出 Azure 文件。
 
 ### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Azure 导入/导出服务是否适用于 CSP 订阅？
 
-是。 Azure 导入/导出服务支持云解决方案提供商 (CSP) 订阅。
+是的。 Azure 导入/导出服务支持云解决方案提供商 (CSP) 订阅。
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>是否可以使用 Azure 导入/导出服务将 PST 邮箱和 SharePoint 数据复制到 O365？
 
-是。 有关详细信息，请转到[将 PST 文件或 SharePoint 数据导入到 Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx)。
+是的。 有关详细信息，请转到[将 PST 文件或 SharePoint 数据导入到 Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx)。
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>是否可以使用 Azure 导入/导出服务将我的备份脱机复制到 Azure 备份服务？
 
-是。 有关详细信息，请转到 [Azure 备份中的脱机备份工作流](../../backup/backup-azure-backup-import-export.md)。
+是的。 有关详细信息，请转到 [Azure 备份中的脱机备份工作流](../../backup/backup-azure-backup-import-export.md)。
 
 ### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>是否可以从 Microsoft 购买用于导入/导出作业的驱动器？
 
-否。 对于导入和导出作业，你需要使用自己的驱动器。
+不是。 对于导入和导出作业，你需要使用自己的驱动器。
 
 
 ## <a name="preparing-disks-for-importexport"></a>为导入/导出准备磁盘
 
 ### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>是否可以跳过导入作业的驱动器准备步骤？ 是否可以在不复制的情况下准备磁盘？
 
-否。 必须使用 Azure WAImportExport 工具准备用来导入数据的任何驱动器。 还要使用该工具将数据复制到驱动器。
+不是。 必须使用 Azure WAImportExport 工具准备用来导入数据的任何驱动器。 还要使用该工具将数据复制到驱动器。
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>在创建导出作业时我是否需要执行任何磁盘准备操作？
 
-否。 但建议执行一些预先检查。 若要检查所需的磁盘数，请使用 WAImportExport 工具的 PreviewExport 命令。 有关详细信息，请参阅[预览导出作业的驱动器使用情况](https://msdn.microsoft.com/library/azure/dn722414.aspx)。 此命令可以根据要使用的驱动器的大小，帮助你预览所选 Blob 的驱动器使用情况。 此外，请检查是否可以向要寄送的用于导出作业的硬盘驱动器进行读取和写入。
+不是。 但建议执行一些预先检查。 若要检查所需的磁盘数，请使用 WAImportExport 工具的 PreviewExport 命令。 有关详细信息，请参阅[预览导出作业的驱动器使用情况](https://msdn.microsoft.com/library/azure/dn722414.aspx)。 此命令可以根据要使用的驱动器的大小，帮助你预览所选 Blob 的驱动器使用情况。 此外，请检查是否可以向要寄送的用于导出作业的硬盘驱动器进行读取和写入。
 
 ## <a name="importexport-jobs"></a>导入/导出作业
 
 ### <a name="can-i-cancel-my-job"></a>是否可以取消我的作业？
-是。 可以取消状态为“正在创建”或“正在寄送”的作业。 在这些阶段之外，无法取消作业，它将一直执行到最终阶段。
+是的。 可以取消状态为“正在创建”或“正在寄送”的作业。 在这些阶段之外，无法取消作业，它将一直执行到最终阶段。
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>在 Azure 门户中可以查看多长时间的已完成作业的状态？
 可以查看最长 90 天的已完成作业的状态。 已完成作业在 90 天后会被删除。
@@ -104,7 +104,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="does-the-service-format-the-drives-before-returning-them"></a>该服务是否会在返还驱动器之前将其格式化？
 
-不会。 所有驱动器都使用 BitLocker 加密。
+不是。 所有驱动器都使用 BitLocker 加密。
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>如何才能访问此服务导入的数据？
 
@@ -119,7 +119,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 视情况而定。 准备驱动器时，可以使用数据集 CSV 文件中名为 /Disposition:<rename|no-overwrite|overwrite> 的字段指定是否应覆盖或忽略目标文件。 默认情况下，该服务会将新文件重命名，而不是覆盖现有 Blob 或文件。
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>WAImportExport 工具是否与 32 位操作系统兼容？
-否。 WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关受支持的 OS 的完整列表，请转到[受支持的操作系统]()。 
+不是。 WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关受支持的 OS 的完整列表，请转到[受支持的操作系统]()。 
 
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure 导入/导出支持的最大块 Blob 和页 Blob 大小是多少？
@@ -135,7 +135,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
     ```
-- 如果使用的是 [WAImportExport V2](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)，请指定“AlreadyEncrypted”，并在驱动器集 CSV 中提供密钥。
+- 如果使用的是 [WAImportExport V2](https://www.microsoft.com/en-us/download/details.aspx?id=55280)，请指定“AlreadyEncrypted”，并在驱动器集 CSV 中提供密钥。
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
     G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |

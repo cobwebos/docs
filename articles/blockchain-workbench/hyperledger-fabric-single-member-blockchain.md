@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 7b60c086896506e5883607db48a64d2a2efbd967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 28561f5f94044d19cfd07e99d7f7a736ec470cf1
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658937"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960349"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Hyperledger Fabric 单一成员网络
 
@@ -89,10 +89,10 @@ ms.locfileid: "34658937"
 参数名称| 说明| 允许的值|默认值
 ---|---|---|---
 **成员资格节点数**|运行成员资格服务的节点数。 有关成员资格服务的其他详细信息，请查看 Hyperledger [文档](https://media.readthedocs.org/pdf/hyperledger-fabric/latest/hyperledger-fabric.pdf)的安全性与成员资格服务。<br /><br />此值目前限制为 1 个节点，但我们计划在下一个修订版本中通过群集来支持对其进行扩大。|1| 1
-**排序节点数** |将事务排序（整理）为块的节点数。--> 此表述冗长且难以理解。 有关排序服务的其他详细信息，请访问 Hyperledger [文档](http://hyperledger-fabric.readthedocs.io/en/latest/orderingservice.html)。<br /><br />此值目前限制为 1 个节点。 |1 |1
+**排序节点数** |将事务排序（整理）为块的节点数。--> 此表述冗长且难以理解。 有关排序服务的其他详细信息，请访问 Hyperledger [文档](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html)。<br /><br />此值目前限制为 1 个节点。 |1 |1
 **对等节点数**| 归联盟成员所有，执行事务并保持状态和账本副本的节点数。<br /><br />有关排序服务的其他详细信息，请访问 Hyperledger [文档](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html)。|3| 3 - 9
 **存储性能**|支持每个已部署的节点的存储类型。 若要了解有关存储的详细信息，请访问 [Microsoft Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction)和[高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)。|标准或高级|标准
-**虚拟机大小** |用于网络中所有节点的虚拟机大小|标准 A、<br />标准 D、<br />标准 D-v2、<br />标准 F 系列、<br />标准 DS、<br />和标准 FS|标准 D1_v2
+**虚拟机大小** |用于网络中所有节点的虚拟机大小|标准 A、<br />标准 D、<br />标准 D-v2、<br />标准 F 系列、<br />标准 DS <br />和标准 FS|标准 D1_v2
 
 ### <a name="fabric-specific-settings"></a>Fabric 特定设置
 

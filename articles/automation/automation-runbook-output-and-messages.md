@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 04fae653c72c127b22f994e89b050477dac6495d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5dc1a4bc1de3560338e1734e73ad04910535be5b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194244"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751296"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 大多数 Azure 自动化 Runbook 向用户或旨在由其他工作流使用的复杂对象提供某种形式的输出，例如错误消息。 Windows PowerShell 提供[多个流](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx)，以便从脚本或工作流发送输出。 Azure 自动化以不同方式处理其中的每个流，在创建 Runbook 时，应该遵循有关如何使用每个流的最佳实践。
@@ -31,7 +31,7 @@ ms.locfileid: "34194244"
 | 调试 |面向交互式用户的消息。 不应在 Runbook 中使用。 |不会写入作业历史记录。 |不会写入测试输出窗格。 |
 
 ## <a name="output-stream"></a>输出流
-输出流旨在输出脚本或工作流创建的对象（如果该脚本或工作流正常运行）。 在 Azure 自动化中，此流主要用于供[调用当前 Runbook 的父 Runbook](automation-child-runbooks.md) 使用的对象。 从父 Runbook [调用某个内联 Runbook](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) 时，后者会将输出流中的数据返回给父级。 仅在知道该 Runbook 永不会被其他 Runbook 调用时，才应使用输出流将一般信息传回给用户。 但是，最佳做法通常是使用[详细流](#Verbose)向用户传递常规信息。
+输出流旨在输出脚本或工作流创建的对象（如果该脚本或工作流正常运行）。 在 Azure 自动化中，此流主要用于供[调用当前 Runbook 的父 Runbook](automation-child-runbooks.md) 使用的对象。 从父 Runbook [调用某个内联 Runbook](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) 时，后者会将输出流中的数据返回给父级。 仅在知道该 Runbook 永不会被其他 Runbook 调用时，才应使用输出流将一般信息传回给用户。 但是，最佳做法通常是使用[详细流](#verbose-stream)向用户传递常规信息。
 
 可以通过使用 [Write-Output](http://technet.microsoft.com/library/hh849921.aspx)，或者在 Runbook 中将对象放置在其对应行中，来向输出流写入数据。
 
@@ -118,7 +118,7 @@ Workflow Test-Runbook
 与输出流不同，消息流旨在向用户传递信息。 有多个消息流用于传递不同类型的信息，Azure 自动化以不同的方式处理每个消息流。
 
 ### <a name="warning-and-error-streams"></a>警告和错误流
-警告和错误流旨在记录 Runbook 中出现的问题。 当 Runbook 执行时，这些流将写入作业历史记录；在测试 Runbook 时，它们将包含在 Azure 门户的测试输出窗格中。 默认情况下，在出现警告或错误后，Runbook 将继续执行。 创建消息之前，可以通过在 Runbook 中设置[首选项变量](#PreferenceVariables)，指定应在出现警告或错误时挂起 Runbook。 例如，要使 Runbook 在出现错误时挂起（就像发生异常时那样），请将 **$ErrorActionPreference** 设置为 Stop。
+警告和错误流旨在记录 Runbook 中出现的问题。 当 Runbook 执行时，这些流将写入作业历史记录；在测试 Runbook 时，它们将包含在 Azure 门户的测试输出窗格中。 默认情况下，在出现警告或错误后，Runbook 将继续执行。 创建消息之前，可以通过在 Runbook 中设置[首选项变量](#preference-variables)，指定应在出现警告或错误时挂起 Runbook。 例如，要使 Runbook 在出现错误时挂起（就像发生异常时那样），请将 **$ErrorActionPreference** 设置为 Stop。
 
 使用 [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) 或 [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) cmdlet 创建警告或错误消息。 活动可能也会向这些流写入数据。
 
@@ -172,7 +172,7 @@ Windows PowerShell 使用[首选项变量](http://technet.microsoft.com/library/
 
 ## <a name="retrieving-runbook-output-and-messages"></a>检索 Runbook 输出和消息
 ### <a name="azure-portal"></a>Azure 门户
-可以从 Azure 门户中 Runbook 的“作业”选项卡查看 Runbook 作业的详细信息。 作业的“摘要”可显示输入参数和[输出流](#Output)，此外，还显示有关作业以及任何发生的异常的常规信息。 “历史记录”包含来自[输出流](#Output)以及[警告和错误流](#WarningError)中的消息，此外，如果 Runbook 已配置为记录详细记录和进度记录，则还包含[详细流](#Verbose)和[进度记录](#Progress)。
+可以从 Azure 门户中 Runbook 的“作业”选项卡查看 Runbook 作业的详细信息。 作业的“摘要”可显示输入参数和[输出流](#output-stream)，此外，还显示有关作业以及任何发生的异常的常规信息。 “历史记录”包含来自[输出流](#output-stream)以及[警告和错误流](#warning-and-error-streams)中的消息，此外，如果 Runbook 已配置为记录详细记录和进度记录，则还包含[详细流](#verbose-stream)和[进度记录](#progress-records)。
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 在 Windows PowerShell 中，可以使用 [Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) cmdlet 检索 Runbook 的输出和消息。 此 cmdlet 需要作业的 ID，如果指定了要返回的流，则它还要使用一个名为 Stream 的参数。 可以指定 **Any** 来返回作业的所有流。

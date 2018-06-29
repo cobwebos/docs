@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8d627abfe7b686eeeb5a65c4515e184f4ce62f4e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231899"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335051"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory 报告常见问题
 
@@ -72,7 +72,7 @@ ms.locfileid: "36231899"
 
 **问：可从 Azure 门户下载多少条记录？**
 
-**答：** 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间进行排序，默认情况下获取的是最近 5000 条记录。 对于大于 5000 的记录大小，请选择筛选条件，然后单击 Azure 门户上的“脚本”按钮。 这将下载一个 PowerShell 脚本，你可以运行该脚本生成一个 CSV 文件，其中包含与筛选条件匹配的所有记录。 需要以*管理员模式*运行 PowerShell 脚本。 有关详细信息，请参阅[下载登录活动](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities)。
+**答：** 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间进行排序，默认情况下获取的是最近 5000 条记录。
 
 ---
 

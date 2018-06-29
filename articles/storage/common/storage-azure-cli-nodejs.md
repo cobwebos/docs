@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: a8866385c682e86e889ddf171cc640fe0bb8252d
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1e2c2dc45f2cb91ca225bf183ddde5fa2d1123c4
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737463"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936983"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>将 Azure CLI 1.0 用于 Azure 存储
 
@@ -43,7 +43,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 
 **Azure 新用户：** 获取一个 Microsoft Azure 订阅以及与该订阅关联的 Microsoft 帐户。 有关 Azure 购买选项的信息，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)、[购买选项](https://azure.microsoft.com/pricing/purchase-options/)和[成员优惠](https://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
 
-请参阅[在 Azure Active Directory (Azure AD) 中分配管理员角色](https://msdn.microsoft.com/library/azure/hh531793.aspx)，以了解有关 Azure 订阅的更多信息。
+请参阅[在 Azure Active Directory (Azure AD) 中分配管理员角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)，以了解有关 Azure 订阅的更多信息。
 
 **创建 Microsoft Azure 订阅和帐户之后：**
 

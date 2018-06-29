@@ -13,19 +13,15 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 91887bad9c3ca976612522c161663fb0b35f587c
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 248967f736fcd10cf398917d3cd1e2760537df7c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266917"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051978"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>重新配置 Azure-SSIS 集成运行时
 本文介绍如何重新配置现在的 Azure-SSIS 集成运行时。 若要在 Azure 数据工厂中创建 Azure-SSIS 集成运行时 (IR)，请参阅[创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。  
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
-
 
 ## <a name="data-factory-ui"></a>数据工厂 UI 
 可以使用数据工厂 UI 停止、编辑/重新配置或删除 Azure-SSIS IR。 

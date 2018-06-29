@@ -195,9 +195,9 @@
       items:
         - name: 提供服务概述
           href: azure-stack-offer-services-overview.md
-        - name: 创建计划、产品/服务和配额
+        - name: 创建计划、套餐和配额
           items:
-            - name: 计划、产品/服务、配额和订阅概述
+            - name: 计划、套餐、配额和订阅概述
               href: azure-stack-plan-offer-quota-overview.md
             - name: 创建计划
               href: azure-stack-create-plan.md
@@ -207,7 +207,7 @@
               href: azure-stack-create-offer.md
             - name: 订阅产品
               href: azure-stack-subscribe-plan-provision-vm.md
-            - name: 在 Azure Stack 中委托产品/服务
+            - name: 在 Azure Stack 中委托套餐
               href: azure-stack-delegated-provider.md
             - name: 配额类型
               href: azure-stack-quota-types.md
@@ -294,15 +294,15 @@
             - name: 提供 Kubernetes 群集
               href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: 使用情况和计费
+          href: azure-stack-billing-and-chargeback.md
           items:
-            - name: 概述
-              href: azure-stack-billing-and-chargeback.md
             - name: 以 CSP 身份管理使用情况和计费
               href: azure-stack-add-manage-billing-as-a-csp.md
-            - name: 添加租户以获取用量和计费信息
-              href: azure-stack-csp-howto-register-tenants.md
-            - name: 管理租户注册
-              href: azure-stack-csp-ref-operations.md
+              items:
+                - name: 添加租户以获取用量和计费信息
+                  href: azure-stack-csp-howto-register-tenants.md
+                - name: 管理租户注册
+                  href: azure-stack-csp-ref-operations.md
             - name: 使用情况和计费参考
               items:
                 - name: 使用情况数据报告

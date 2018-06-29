@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 7cb6927b8de07566428050e06a981c8f3afabb05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d6117b5b071e780841f4450a205287d005e11801
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227517"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752174"
 ---
 # <a name="azure-security-overview"></a>Azure 安全概述
 
-Azure.com 上的 Microsoft Azure 安全信息站点针对 Azure 安全问题提供了技术解答。 如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://www.microsoft.com/en-us/TrustCenter/)。
+Azure.com 上的 Microsoft Azure 安全信息站点针对 Azure 安全问题提供了技术解答。 如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。
 
 我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 为应用程序和服务使用 Azure 其中一个最合理原因就是：可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。
 

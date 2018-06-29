@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 03/27/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b2686b4bb2b98d3f79d8087f6857c149cfdeb553
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0a439a2bb485829b863d6aa666938ab58c90c61f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711257"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750771"
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C：威胁管理
 
@@ -29,4 +29,4 @@ Azure AD B2C 使用检测和缓解技术（如 SYN Cookie、速率和连接限�
 
 Azure AD B2C 还有适用于密码攻击的缓解技术。 缓解技术包括暴力破解密码攻击和字典密码攻击。 要求用户所设密码的复杂性合理。 Azure AD B2C 使用各种信号分析请求的完整性。 Azure AD B2C 旨在智能地将目标用户与黑客和僵尸网络区分开来。 Azure AD B2C 提供一种成熟的策略，根据输入的密码、受到攻击的可能性锁定帐户。
 
-有关详细信息，请访问 [Microsoft 信任中心](https://www.microsoft.com/trustcenter/security/threatmanagement)。
+有关详细信息，请访问 [Microsoft 信任中心](https://www.microsoft.com/en-us/trustcenter/default.aspx)。

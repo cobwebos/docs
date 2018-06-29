@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 92b6945ad13842e926d53be6dcc0d21554485ff3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0626b958a9b822569f4d3b6d27f3395bed853174
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151002"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030047"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
@@ -74,31 +74,31 @@ az webapp config set --python-version 3.4 --resource-group <groupname> --name <a
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 
-### <a name="deprecated-versions"></a>已弃用的版本
+### <a name="deprecated-versions"></a>已弃用的版本  
 
 弃用某个旧版本后，将会公布删除日期，以便你可以相应地规划运行时版本升级。 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>如何在实例中查询 OS 和运行时更新状态？
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>如何在实例中查询 OS 和运行时更新状态？  
 
 尽管关键的 OS 信息已被限制访问（请参阅 [Azure 应用服务中的操作系统功能](web-sites-available-operating-system-functionality.md)），但可以使用 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)在应用服务实例中查询有关 OS 版本和运行时版本的信息。 
 
 下表显示了应用中运行的 Windows 和语言运行时版本：
 
-| 信息 | 查找位置 |
+| 信息 | 查找位置 | 
 |-|-|
 | Windows 版本 | 查看 `https://<appname>.scm.azurewebsites.net/Env.cshtml`（在“系统信息”下） |
 | .NET 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | .NET Core 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `dotnet --version` |
 | PHP 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `php --version` |
 | 默认的 Node.js 版本 | 在 [Cloud Shell](../cloud-shell/overview.md) 中运行以下命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `python --version` |
+| Python 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `python --version` |  
 
-> [!NOTE]
+> [!NOTE]  
 > 访问注册表位置 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`，其中存储了有关[“KB”修补]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins))的信息。该位置已被锁定。
 >
 >
 
 ## <a name="more-resources"></a>更多资源
 
-[信任中心：安全性](https://www.microsoft.com/TrustCenter/Security/default.aspx)  
+[信任中心：安全性](https://www.microsoft.com/en-us/trustcenter/security)  
 [Azure 应用服务中的 64 位 ASP.NET Core](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

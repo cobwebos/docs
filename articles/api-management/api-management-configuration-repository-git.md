@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 57d14b6aa6caca0cc9b075723d4c350b0a50c9f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0165de82850c0c80052564c5f31a5e5cf5effb11
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29117531"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938302"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -219,9 +219,9 @@ git push
 ### <a name="apis-folder"></a>apis 文件夹
 `apis` 文件夹针对服务实例中的每个 API 都包含一个文件夹，该文件夹包含以下项目。
 
-* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI) 时会返回的相同信息。
-* `apis\<api name>\api.description.html` - 这是 API 的说明，对应于 [API 实体](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties)的 `description` 属性。
-* `apis\<api name>\operations\` - 此文件夹包含映射到 API 中的操作的 `<operation name>.description.html` 文件。 每个文件包含 API 中单个操作的说明，该说明映射到 REST API 中[操作实体](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties)的 `description` 属性。
+* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) 时会返回的相同信息。
+* `apis\<api name>\api.description.html` - 这是 API 的说明，对应于 [API 实体](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property)的 `description` 属性。
+* `apis\<api name>\operations\` - 此文件夹包含映射到 API 中的操作的 `<operation name>.description.html` 文件。 每个文件包含 API 中单个操作的说明，该说明映射到 REST API 中[操作实体](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties)的 `description` 属性。
 
 ### <a name="groups-folder"></a>groups 文件夹
 `groups` 文件夹针对服务实例中定义的每个组都包含一个文件夹。

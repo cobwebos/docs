@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: b0a73ea89bec67cbf644cce60913981a0533360a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 095205752b8432a741aab16983b175c21b02c0f4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179684"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017864"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具
 
@@ -224,7 +224,7 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 * [提交 Sqoop 作业](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>迁移到新的 HDInsight .NET SDK
-基于 Azure 服务管理 (ASM) 的 [HDInsight.NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) 现已弃用。 建议使用基于 Azure 资源管理器的 [基于资源管理器的 HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx)。 以下基于 ASM 的 HDInsight 包即将过时。
+基于 Azure 服务管理 (ASM) 的 [HDInsight.NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) 现已弃用。 建议使用基于 Azure 资源管理器的 [基于资源管理器的 HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)。 以下基于 ASM 的 HDInsight 包即将过时。
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`

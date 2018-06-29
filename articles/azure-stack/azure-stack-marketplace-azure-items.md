@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: ead3d9be5b23d53cdc0ae9ffa3baec4a3cd74b8b
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
-ms.translationtype: MT
+ms.openlocfilehash: 826daae9c5d9cf5cd169651ab8603cef938e6482
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946102"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030030"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure 市场项
 
@@ -69,13 +69,13 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店虚拟机和解决方案模
 | ![Ubuntu Server 16.04 LTS 上的 SQL Server 2017 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS 上的 SQL Server 2017 Standard](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + Canonical |
 | ![免费许可证： SQL Server 自 2017 年开发人员在 Ubuntu Server 16.04 LTS 上](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证： SQL Server 自 2017 年开发人员在 Ubuntu Server 16.04 LTS 上](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS) | 免费的开发人员版本的 SQL Server 2017 事务，数据仓库、 商业智能和分析工作负荷。 | Microsoft + Canonical |
 | ![Ubuntu Server 16.04 LTS 上免费许可证： SQL Server 自 2017 年 Express](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS 上免费许可证： SQL Server 自 2017 年 Express](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS) | 免费 express 版本的 SQL Server 自 2017 年。 | Microsoft + Canonical |
-| ![Ubuntu Server 16.04 LTS 上的 SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS 上的 SQL Server 自 2017 年 Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017EnterpriseUbuntuServer1604LTS) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + Canonical |
+| ![Ubuntu Server 16.04 LTS 上的 SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS 上的 SQL Server 自 2017 年 Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + Canonical |
 | ![Ubuntu Server 16.04 LTS 上的 SQL Server 2017 Web](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS 上的 SQL Server 2017 Web](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017WebonUbuntuServer1604LTS) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + Canonical |
-| ![SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 上的 SQL Server 自 2017 年 Standard SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017StandardonSLES12SP2) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + SUSE |
-| ![免费许可证： SQL Server 自 2017 年开发人员在 SUSE Linux Enterprise Server (SLES) 12 上的 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证： SQL Server 自 2017 年开发人员在 SUSE Linux Enterprise Server (SLES) 12 上的 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP) | 免费的开发人员版本的 SQL Server 2017 事务，数据仓库、 商业智能和分析工作负荷。 | Microsoft + SUSE |
+| ![SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 上的 SQL Server 自 2017 年 Standard SP2](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQLServer2017StandardonSLES12SP2?tab=Overview) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + SUSE |
+| ![免费许可证： SQL Server 自 2017 年开发人员在 SUSE Linux Enterprise Server (SLES) 12 上的 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证： SQL Server 自 2017 年开发人员在 SUSE Linux Enterprise Server (SLES) 12 上的 SP2](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2?tab=Overview) | 免费的开发人员版本的 SQL Server 2017 事务，数据仓库、 商业智能和分析工作负荷。 | Microsoft + SUSE |
 | ![免费许可证： SUSE Linux Enterprise Server (SLES) 12 上 SQL Server 自 2017 年 Express SP2](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证： SUSE Linux Enterprise Server (SLES) 12 上 SQL Server 自 2017 年 Express SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) | 免费 express 版本的 SQL Server 自 2017 年。 | Microsoft + SUSE |
-| ![SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 上的 SQL Server 自 2017 年 Enterprise SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017EnterpriseonSLES12SP2) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + SUSE |
-| ![SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Web](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 自 2017 年 1 Web 在 SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017WebonSLES12SP2) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + SUSE |
+| ![SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 上的 SQL Server 自 2017 年 Enterprise SP2](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQLServer2017EnterpriseonSLES12SP2?tab=Overview) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + SUSE |
+| ![SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Web](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 自 2017 年 1 Web 在 SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQLServer2017WebonSLES12SP2) | 适用于任务关键型智能应用程序的数据库平台。 | Microsoft + SUSE |
 | ![Windows Server 2016 上的 Microsoft Machine Learning Server 9.3.0](media/azure-stack-marketplace-azure-items/microsoft.png) | [Windows Server 2016 上的 Microsoft Machine Learning Server 9.3.0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onWindowsServer2016) | Windows Server 2016 上的 Microsoft Machine Learning Server 9.3.0。 | Microsoft |
 | ![Ubuntu 16.04 上的 Microsoft Machine Learning Server 9.3.0](media/azure-stack-marketplace-azure-items/microsoft.png) | [Ubuntu 16.04 上的 Microsoft Machine Learning Server 9.3.0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onUbuntu1604) | Ubuntu 16.04 上的 Microsoft Machine Learning Server 9.3.0。 | Microsoft + Canonical |
 | ![CentOS Linux 7.2 上的 Microsoft Machine Learning Server 9.3.0](media/azure-stack-marketplace-azure-items/microsoft.png) | [CentOS Linux 7.2 上的 Microsoft Machine Learning Server 9.3.0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onCentOSLinux72) | CentOS Linux 7.2 上的 Microsoft Machine Learning Server 9.3.0。 | Microsoft + Rogue Wave |

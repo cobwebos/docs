@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a748cb0e2a08ed5e8ada5db171d5ef12b2fe121e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9e8c930acd12b5197238be48722947dac5380be6
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170721"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751405"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>在 Log Analytics 中收集要使用的 Azure 服务日志和指标
 
@@ -57,7 +57,7 @@ ms.locfileid: "32170721"
 | 虚拟机        | Microsoft.Compute/virtualMachines       | 分机   | 分机 <br> 诊断  | |
 | 虚拟机规模集 | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | 诊断 | |
 | Web 服务器场        | Microsoft.Web/serverfarms               |             | 诊断 | |
-| 网站               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 诊断 | [Azure Web 应用分析（预览版）](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) |
+| 网站               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 诊断 | [Azure Web 应用分析（预览版）](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
 
 
 > [!NOTE]

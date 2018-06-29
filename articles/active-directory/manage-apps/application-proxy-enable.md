@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 58bcb3cbdf389393beb58a9f50b3e77aa2b3aae8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0ac14f792c63ea06a484eb5b522c4d33958538ed
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158415"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025154"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>开始使用应用程序代理并安装连接器
 本文指导完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
@@ -30,7 +30,7 @@ ms.locfileid: "34158415"
 ## <a name="application-proxy-prerequisites"></a>应用程序代理先决条件
 在启用和使用应用程序代理服务之前，需要：
 
-* [Microsoft Azure AD 基本或高级版订阅](../active-directory-whatis.md) 以及本人为全局管理员的 Azure AD 目录。
+* [Microsoft Azure AD 基本或高级版订阅](../fundamentals/active-directory-whatis.md) 以及本人为全局管理员的 Azure AD 目录。
 * 可以安装应用程序代理连接器、运行 Windows Server 2012 R2 或 2016 的服务器。 该服务器需要能够连接到云中的应用程序代理服务和你要发布的本地应用程序。
   * 若要使用 Kerberos 约束委派单一登录到已发布的应用程序，此计算机应域加入要发布的应用程序所在的同一 AD 域。 有关信息，请参阅[用于使用应用程序代理进行单一登录的 KCD](application-proxy-configure-single-sign-on-with-kcd.md)。
 
@@ -64,7 +64,6 @@ ms.locfileid: "34158415"
 
 4. 连接器在注册过程中需要访问 login.windows.net 和 login.microsoftonline.com。
 
-5. 使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器是否能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。
 
 ## <a name="install-and-register-a-connector"></a>安装并注册连接器
 1. 在 [Azure 门户](https://portal.azure.com/)中，以管理员身份登录。

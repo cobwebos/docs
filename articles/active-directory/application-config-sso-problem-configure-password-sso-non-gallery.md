@@ -3,22 +3,23 @@ title: 配置非库应用程序的密码单一登录时的遇到问题 | Microso
 description: 了解在为 Azure AD 应用程序库中所列非库应用程序配置密码单一登录时人们面对的常见问题
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 7b671089bfac04b359717874928d6a342c44b3d4
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.author: barbkess
+ms.openlocfilehash: 69a2bf6e622cd2338d57e62ed82951cb2385edd6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34069668"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334901"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序密码单一登录时遇到的问题
 

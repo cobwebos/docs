@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b112eee0e33654657bc6a57eec528c8a93bb077a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010874"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018397"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 ##  <a name="introduction"></a>介绍
@@ -121,7 +121,7 @@ Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权�
 
 如果用户删除了任何数据，Microsoft Azure 也将删除该数据，包括所有缓存或备份副本。 对于范围内服务，该删除操作会在保留期结束后 90 天内进行。 （[联机服务条款](http://aka.ms/Online-Services-Terms)的数据处理条款部分对范围内服务进行了定义。）
 
-如果用于存储的磁盘驱动器发生硬件故障，在 Microsoft 将其送回给制造商进行更换或修复前，将安全[擦除或销毁](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data)该磁盘驱动器上的数据。 驱动器上的数据会被覆盖，以确保无法通过任何方式恢复数据。
+如果用于存储的磁盘驱动器发生硬件故障，在 Microsoft 将其送回给制造商进行更换或修复前，将安全[擦除或销毁](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data)该磁盘驱动器上的数据。 驱动器上的数据会被覆盖，以确保无法通过任何方式恢复数据。
 
 ## <a name="compute-isolation"></a>计算隔离
 Microsoft Azure 提供各种基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。 这些计算实例和服务提供多个级别的隔离来保护数据，且不会降低客户所需配置的灵活性。

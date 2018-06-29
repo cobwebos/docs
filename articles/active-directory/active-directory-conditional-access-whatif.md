@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 条件访问中的模拟工具是什么？ - 预览版 | Microsoft Docs
+title: Azure Active Directory 条件访问中的模拟工具是什么？
 description: 了解如何理解条件访问策略对环境的影响。
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231849"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750076"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Azure Active Directory 条件访问中的模拟工具是什么？ - 预览版
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的模拟工具是什么？
 
 [条件访问](active-directory-conditional-access-azure-portal.md)是 Azure Active Directory (Azure AD) 中的一项功能，用于控制已获授权的用户如何访问云应用。 如何知道环境中的条件访问策略的构成成分？ 若要回答此问题，可以使用“条件访问模拟工具”。
 

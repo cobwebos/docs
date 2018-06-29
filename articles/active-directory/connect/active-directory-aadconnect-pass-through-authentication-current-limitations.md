@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ebfbb972d567963b6c302b7e6151f73165c4a87b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8bdf1e3a46b6b03a7472bd2330b0a97429917122
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590668"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028908"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -59,7 +59,7 @@ _不_支持以下方案：
 
 ## <a name="next-steps"></a>后续步骤
 - [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md)：快速了解 Azure AD 直通身份验证。
-- [智能锁定](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。
+- [智能锁定](../authentication/howto-password-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。
 - [技术深入了解](active-directory-aadconnect-pass-through-authentication-how-it-works.md)：了解直通身份验证功能的工作原理。
 - [常见问题解答](active-directory-aadconnect-pass-through-authentication-faq.md)：查找有关直通身份验证功能的常见问题的解答。
 - [故障诊断](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。

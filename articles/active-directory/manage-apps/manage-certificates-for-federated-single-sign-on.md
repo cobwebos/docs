@@ -3,7 +3,7 @@ title: 在 Azure AD 中管理联合身份验证证书 | Microsoft Docs
 description: 了解如何自定义联合证书的过期日期，以及如何续订即将过期的证书。
 services: active-directory
 documentationcenter: ''
-author: jeevansd
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
-ms.author: jeedes
-ms.openlocfilehash: c4d812db6371a4cd1fcc701f7eae2c913c29fb6b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.author: barbkess
+ms.reviewer: jeedes
+ms.openlocfilehash: 5b4e2694a9b7e67643cb1e3b3cbc99fab940bd9d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302034"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337095"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
 本文包含 Azure Active Directory (Azure AD) 为了与 SaaS 应用程序建立联合单一登录 (SSO) 而创建的证书的相关常见问题和信息。 从 Azure AD 应用库或使用非库应用程序模板添加应用程序。 使用联合 SSO 选项配置应用程序。
@@ -84,7 +85,7 @@ Azure AD 将在 SAML 证书到期前的 60 天、30 天和 7 天发送电子邮�
     ![生成新证书](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 
 ## <a name="related-articles"></a>相关文章
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../active-directory-saas-tutorial-list.md)
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
 * [Azure Active Directory 的应用程序访问与单一登录](what-is-single-sign-on.md)
 * [排查基于 SAML 的单一登录的问题](../develop/active-directory-saml-debugging.md)
