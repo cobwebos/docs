@@ -62,7 +62,7 @@ ms.locfileid: "35233838"
 
 在“测试”页面中，选择是否要启用负载测试，然后单击“继续”。
 
-根据应用服务计划的[定价层](/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否要启用部署槽位，然后单击“继续”[](web-sites-staged-publishing.md)。
+根据应用服务计划的[定价层](/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否[要启用部署槽位](web-sites-staged-publishing.md)，然后单击“继续”。
 
 ### <a name="finish-configuration"></a>完成配置
 
@@ -119,7 +119,7 @@ ms.locfileid: "35233838"
 
 在“测试”页面中，选择是否要启用负载测试，然后单击“继续”。
 
-根据应用服务计划的[定价层](/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否要启用部署槽位，然后单击“继续”[](web-sites-staged-publishing.md)。 
+根据应用服务计划的[定价层](/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否[要启用部署槽位](web-sites-staged-publishing.md)，然后单击“继续”。 
 
 ### <a name="finish-configuration"></a>完成配置
 
