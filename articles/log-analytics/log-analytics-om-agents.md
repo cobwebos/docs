@@ -115,7 +115,7 @@ ms.locfileid: "34763589"
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 展开 Operations Management Suite，并单击“**连接**”。
 3. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
-4. 在“Operations Management Suite 向导: 代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，键入包含端口号的 URL，例如 http://corpproxy:80，并单击“完成”。
+4. 在“Operations Management Suite 向导: 代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，键入包含端口号的 URL，例如 http://corpproxy:80 ，并单击“完成”。
 
 如果代理服务器要求身份验证，请执行以下步骤，配置需要向管理组中 OMS 报告的受管理计算机传播的凭据和设置。
 

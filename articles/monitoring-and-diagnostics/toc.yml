@@ -23,6 +23,8 @@
       href: monitoring-data-sources.md
     - name: Azure Monitor
       href: monitoring-overview-azure-monitor.md
+    - name: 代理
+      href: ../monitoring/monitoring-overview-azure-agents.md
     - name: 度量值
       href: monitoring-overview-metrics.md
     - name: 自动缩放

@@ -56,7 +56,7 @@
 ## [报告](../active-directory/authentication/howto-mfa-reporting.md)
 ### [数据收集](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
-## [MFA 用户指南](./end-user/multi-factor-authentication-end-user.md)
+## [MFA 用户指南](../active-directory/authentication/end-user/current/multi-factor-authentication-end-user.md)
 
 ## 故障排除
 ### [常见问题](../active-directory/authentication/multi-factor-authentication-faq.md)

@@ -17,20 +17,16 @@
       href: quick-deploy-iot-central.md
 - name: 教程
   items:
-    - name: 构建者
-      items:
-        - name: 1 - 定义新设备类型
-          href: tutorial-define-device-type.md
-        - name: 2 - 配置规则
-          href: tutorial-configure-rules.md
-        - name: 3 - 自定义操作员的视图
-          href: tutorial-customize-operator.md
-    - name: 运算符
-      items:
-        - name: 4 - 监视设备
-          href: tutorial-monitor-devices.md
-        - name: 5 - 添加设备
-          href: tutorial-add-device.md
+    - name: 1 - 定义新设备类型
+      href: tutorial-define-device-type.md
+    - name: 2 - 配置规则
+      href: tutorial-configure-rules.md
+    - name: 3 - 自定义操作员的视图
+      href: tutorial-customize-operator.md
+    - name: 4 - 监视设备
+      href: tutorial-monitor-devices.md
+    - name: 5 - 添加设备
+      href: tutorial-add-device.md
 - name: 概念
   items:
     - name: 体系结构
