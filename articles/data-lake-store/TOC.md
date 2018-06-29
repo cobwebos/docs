@@ -1,11 +1,11 @@
-# [Data Lake Store 文档](index.md)
+# [Data Lake Storage Gen1 文档](index.md)
 
 # 概述
-## [Overview of Azure Data Lake Store](data-lake-store-overview.md)
-## [Azure Data Lake Store 与 Azure 存储的比较](data-lake-store-comparison-with-blob-storage.md)
-## [使用 Azure Data Lake Store 处理大数据](data-lake-store-data-scenarios.md)
-## [使用 Azure Data Lake Store 的开源应用程序](data-lake-store-compatible-oss-other-applications.md)
-## [使用 Data Lake Store 的最佳做法](data-lake-store-best-practices.md)
+## [Data Lake Storage Gen1 概述](data-lake-store-overview.md)
+## [Data Lake Storage Gen1 与 Azure 存储的比较](data-lake-store-comparison-with-blob-storage.md)
+## [使用 Data Lake Storage Gen1 处理大数据](data-lake-store-data-scenarios.md)
+## [使用 Data Lake Storage Gen1 的开源应用程序](data-lake-store-compatible-oss-other-applications.md)
+## [使用 Data Lake Storage Gen1 的最佳做法](data-lake-store-best-practices.md)
 
 # 入门
 ## [使用门户](data-lake-store-get-started-portal.md)
@@ -21,15 +21,15 @@
 ### [使用 DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [使用 Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 ### [从脱机源上传数据](data-lake-store-offline-bulk-data-upload.md)
-### [跨区域迁移 Azure Data Lake Store](data-lake-store-migration-cross-region.md)
+### [跨区域迁移 Data Lake Store](data-lake-store-migration-cross-region.md)
 
 ## 保护数据
 ### [安全性概述](data-lake-store-security-overview.md)
-### [Data Lake Store 中的访问控制](data-lake-store-access-control.md)
-### [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
+### [Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)
+### [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
 ### [加密](data-lake-store-encryption.md)
 
-## Data Lake Store 身份验证
+## 使用 Data Lake Storage Gen1 进行身份验证
 ### [身份验证选项](data-lakes-store-authentication-using-azure-active-directory.md)
 ### [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
 #### [使用 Java](data-lake-store-end-user-authenticate-java-sdk.md)
@@ -42,7 +42,7 @@
 #### [使用 REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
 #### [使用 Python](data-lake-store-service-to-service-authenticate-python.md)
 
-## 使用 Data Lake Store
+## 使用 Data Lake Storage Gen1
 ### 帐户管理操作
 #### [使用 .NET SDK](data-lake-store-get-started-net-sdk.md)
 #### [使用 REST API](data-lake-store-get-started-rest-api.md)
@@ -54,12 +54,12 @@
 #### [使用 Python](data-lake-store-data-operations-python.md)
 
 ## 性能
-### [Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-guidance.md)
-### [将 PowerShell 与 Azure Data Lake Store 配合使用的性能优化指南](data-lake-store-performance-tuning-powershell.md)
-### [Spark on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-spark.md)
-### [Hive on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-hive.md)
-### [MapReduce on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-mapreduce.md)
-### [Storm on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-storm.md)
+### [Azure Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-guidance.md)
+### [将 PowerShell 与 Data Lake Storage Gen1 配合使用的性能优化指南](data-lake-store-performance-tuning-powershell.md)
+### [Spark on HDInsight 和 Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-spark.md)
+### [Hive on HDInsight 和 Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-hive.md)
+### [MapReduce on HDInsight 和 Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-mapreduce.md)
+### [Storm on HDInsight 和 Data Lake Storage Gen1 性能优化指南](data-lake-store-performance-tuning-storm.md)
 
 ## 与 Azure 服务集成
 ### 与 HDInsight 配合使用

@@ -97,7 +97,7 @@ $ApplicationId = (Get-AzureRmADApplication -DisplayNameStartWith exampleapp).App
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>使用来自证书颁发机构的证书创建服务主体
 
-以下示例使用证书颁发机构颁发的证书创建服务主体。 分配的范围限定为指定的 Azure 订阅。 它将服务主体添加到“参与者”[](../role-based-access-control/built-in-roles.md#contributor)角色。 如果在角色分配过程中发生错误，它会重试分配。
+以下示例使用证书颁发机构颁发的证书创建服务主体。 分配的范围限定为指定的 Azure 订阅。 它将服务主体添加到[“参与者”](../role-based-access-control/built-in-roles.md#contributor)角色。 如果在角色分配过程中发生错误，它会重试分配。
 
 ```powershell
 Param (

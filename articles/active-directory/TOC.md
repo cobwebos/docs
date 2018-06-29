@@ -151,6 +151,7 @@
 ### [SSPR 自定义](authentication/concept-sspr-customization.md)
 ### [SSPR 数据要求](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR 报告](authentication/howto-sspr-reporting.md)
+### [智能锁定](authentication/howto-password-smart-lockout.md)
 ### [消除弱密码](authentication/concept-password-ban-bad.md)
 ### [配置禁止的密码列表](authentication/howto-password-ban-bad.md)
 ### [本地集成](authentication/concept-password-ban-bad-on-premises.md)

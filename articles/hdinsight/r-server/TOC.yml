@@ -1,6 +1,6 @@
 - name: Azure HDInsight 文档
   href: /azure/hdinsight
-- name: HDInsight 上的 R Server
+- name: ML Services on HDInsight
   items:
     - name: 概述
       href: r-server-overview.md
@@ -9,7 +9,7 @@
       maintainContext: true
 - name: 入门
   items:
-    - name: 从 R Server 开始
+    - name: ML Services 入门
       href: r-server-get-started.md
     - name: 安装 HDInsight 应用
       href: ../hdinsight-apps-install-applications.md
@@ -19,11 +19,11 @@
       maintainContext: true
 - name: 如何
   items:
-    - name: 使用 R Server
+    - name: 使用 ML Services
       items:
-        - name: 管理 R Server 群集
+        - name: 管理 ML Services 群集
           href: r-server-hdinsight-manage.md
-        - name: 使 R Server 群集可操作
+        - name: 使 ML Services 群集可操作
           href: r-server-operationalize.md
         - name: 存储选项
           href: r-server-storage.md

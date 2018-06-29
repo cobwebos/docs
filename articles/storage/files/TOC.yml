@@ -106,6 +106,8 @@
           href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
         - name: 共享访问签名 (SAS)
           href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 为 Azure 存储客户端启用安全 TLS
+          href: ../common/storage-security-tls.md
     - name: 监视和故障排除
       items:
         - name: 排查 Azure 文件连接问题 - Windows

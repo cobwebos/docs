@@ -5,62 +5,38 @@
 - name: 概述
   items:
     - name: 关于 Azure IoT Edge
-      href: how-iot-edge-works.md
+      href: about-iot-edge.md
 - name: 快速入门
   expanded: true
   items:
-    - name: 部署到 Edge 设备 - Linux/Mac
+    - name: 将代码部署到 Linux 设备
       href: quickstart-linux.md
-    - name: 部署到 Edge 设备 - Windows
+    - name: 将代码部署到 Windows 设备
       href: quickstart.md
 - name: 教程
   items:
-    - name: 模拟 Edge 设备 - Linux/Mac
-      href: tutorial-simulate-device-linux.md
-    - name: 模拟 Edge 设备 - Windows
-      href: tutorial-simulate-device-windows.md
-    - name: 在模块中部署代码
+    - name: 在边缘查找见解
       items:
-        - name: 'C#'
-          href: tutorial-csharp-module.md
-        - name: Python
-          href: tutorial-python-module.md
-    - name: 部署 Azure 流分析
-      href: tutorial-deploy-stream-analytics.md
-    - name: 部署 Azure 机器学习
-      href: tutorial-deploy-machine-learning.md
-    - name: 部署 Azure Functions
-      href: tutorial-deploy-function.md
-- name: 操作指南
-  items:
-    - name: 创建网关
-      items:
-        - name: 创建透明网关
-          href: how-to-create-transparent-gateway.md
-        - name: Modbus 网关
-          href: deploy-modbus-gateway.md
-    - name: 使用适用于 Azure CLI 2.0 的 IoT 扩展
-      href: tutorial-create-deployment-with-cli-iot-extension.md
-    - name: 大规模部署和监视
-      href: how-to-deploy-monitor.md
-    - name: 预配 IoT Core 设备
-      href: how-to-install-iot-core.md
-    - name: 使用 VS Code 开发 IoT Edge 解决方案
-      items:
-        - name: 使用多个模块
-          href: tutorial-multiple-modules-in-vscode.md
-        - name: '调试 C# 模块'
-          href: how-to-vscode-debug-csharp-module.md
-        - name: 调试 Azure Functions
-          href: how-to-vscode-debug-azure-function.md
-    - name: VSTS 中的 CI/CD
-      href: how-to-ci-cd.md
-    - name: 在边缘存储数据
-      href: sql-storage.md
-    - name: 故障排除
-      href: troubleshoot.md
+        - name: 使用 Azure Functions 筛选数据
+          href: tutorial-deploy-function.md
+        - name: 使用 ASA 查找平均值
+          href: tutorial-deploy-stream-analytics.md
+        - name: 使用 Azure ML 给数据评分
+          href: tutorial-deploy-machine-learning.md
+        - name: 使用自定义代码筛选数据
+          items:
+            - name: 'C#'
+              href: tutorial-csharp-module.md
+            - name: Python
+              href: tutorial-python-module.md
+            - name: Node.js
+              href: tutorial-node-module.md
+    - name: 使用 SQL 在本地存储数据
+      href: tutorial-store-data-sql-server.md
 - name: 概念
   items:
+    - name: IoT Edge 运行时
+      href: iot-edge-runtime.md
     - name: IoT Edge 模块
       href: iot-edge-modules.md
       items:
@@ -70,16 +46,76 @@
           href: module-composition.md
         - name: Edge 代理和中心属性
           href: module-edgeagent-edgehub.md
-    - name: IoT Edge 运行时
-      href: iot-edge-runtime.md
     - name: 部署
       href: module-deployment-monitoring.md
     - name: 使用 IoT Edge 设备作为网关
       href: iot-edge-as-gateway.md
     - name: “安全”
       href: security.md
+    - name: 平台支持
+      href: support.md
     - name: IoT Edge 术语表
       href: iot-edge-glossary.md
+- name: 操作指南
+  items:
+    - name: 注册 Edge 设备
+      items:
+        - name: Azure 门户
+          href: how-to-register-device-portal.md
+        - name: Azure CLI
+          href: how-to-register-device-cli.md
+        - name: Visual Studio Code
+          href: how-to-register-device-vscode.md
+    - name: 安装 IoT Edge 运行时
+      items:
+        - name: 在 Linux X64 设备上
+          href: how-to-install-iot-edge-linux.md
+        - name: 在 Linux ARM32 设备上
+          href: how-to-install-iot-edge-linux-arm.md
+        - name: 在使用 Windows 容器的 Windows 上
+          href: how-to-install-iot-edge-windows-with-windows.md
+        - name: 在使用 Linux 容器的 Windows 上
+          href: how-to-install-iot-edge-windows-with-linux.md
+    - name: 开发和调试模块
+      items:
+        - name: 'C#'
+          href: how-to-develop-csharp-module.md
+        - name: Node.js
+          href: how-to-develop-node-module.md
+        - name: Azure Functions
+          href: how-to-develop-csharp-function.md
+        - name: 开发多个模块
+          href: how-to-develop-multiple-modules-vscode.md
+        - name: 调试多个模块
+          href: how-to-debug-multiple-modules-vscode.md
+    - name: 部署模块
+      items:
+        - name: Azure 门户
+          href: how-to-deploy-modules-portal.md
+        - name: Azure CLI
+          href: how-to-deploy-modules-cli.md
+        - name: Visual Studio Code
+          href: how-to-deploy-modules-vscode.md
+    - name: 大规模部署和监视
+      items:
+        - name: Azure 门户
+          href: how-to-deploy-monitor.md
+        - name: Azure CLI
+          href: how-to-deploy-monitor-cli.md
+    - name: 使用 Edge 设备作为网关
+      items:
+        - name: 透明网关 (Linux)
+          href: how-to-create-transparent-gateway-linux.md
+        - name: 透明网关 (Windows)
+          href: how-to-create-transparent-gateway-windows.md
+        - name: Modbus 协议网关
+          href: deploy-modbus-gateway.md
+    - name: 预配 IoT Core 设备
+      href: how-to-install-iot-core.md
+    - name: VSTS 中的 CI/CD
+      href: how-to-ci-cd.md
+    - name: 故障排除
+      href: troubleshoot.md
 - name: 相关内容
   items:
     - name: 解决方案
@@ -114,6 +150,10 @@
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: 用于 VS Code 的 Azure IoT Edge
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge'
+    - name: 用于 VS Code 的 Azure IoT Toolkit
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
     - name: DeviceExplorer 工具
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
     - name: iothub-diagnostics 工具

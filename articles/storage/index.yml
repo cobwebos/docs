@@ -3,24 +3,24 @@ documentType: LandingData
 title: Azure 存储文档
 metadata:
   title: Azure 存储文档 - 教程和 API 参考 | Microsoft 文档
-  description: Azure 存储是 Microsoft 托管的云服务，其提供的存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Blob 存储、文件存储和队列存储。
+  description: Azure 存储是 Microsoft 托管的云服务，其提供的存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Azure Blob、Azure Data Lake Storage Gen2、Azure 文件、Azure 队列和 Azure 表。
   services: storage
   author: tamram
-  manager: jeconnoc
+  manager: twooley
   ms.service: storage
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/18/2018
+  ms.date: 06/27/2018
   ms.author: tamram
-  ms.openlocfilehash: 0e8c2b7048ff9e59612e13a87506bf1209036ca6
-  ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+  ms.openlocfilehash: a2254967a9f7338e29105682ea6d496271bbbe75
+  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/19/2018
-  ms.locfileid: "36266665"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37030285"
 abstract:
-  description: Microsoft Azure 存储是 Microsoft 托管的云服务，其提供的存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Blob 存储、文件存储和队列存储。  使用快速入门和教程了解如何在应用程序中利用 Azure 存储。
+  description: Azure 存储是一项 Microsoft 托管服务，其提供的云存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Azure Blob（对象）、Azure Data Lake Storage Gen2、Azure 文件、Azure 队列和 Azure 表。 使用快速入门和教程了解如何在应用程序中利用 Azure 存储。
 sections:
 - title: 5 分钟快速入门
   items:
@@ -65,30 +65,25 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-java
       - href: /azure/storage/blobs/storage-quickstart-blobs-python
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
+    - title: Data Lake Storage Gen2
+      values:
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-the-azure-portal
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-azure-cli
+      - href: 
+      - href: 
+      - href: 
+      - href: 
 - title: 分步教程
   items:
-  - type: paragraph
-    text: 了解如何在云中上传和处理图像数据。
   - type: list
-    style: unordered
+    style: cards
+    className: cardsD
     items:
-    - html: <a href="/azure/storage/blobs/storage-upload-process-images">上传和检索云中的图像数据</a>
-    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">触发 Azure Functions 来处理 Blob</a>
-    - html: <a href="/azure/storage/blobs/storage-secure-access-application">保护应用程序数据</a>
-    - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">监视存储和排查其问题</a>
-  - type: paragraph
-    text: 了解如何在 Azure 存储中设计可用性高的应用程序。
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-create-geo-redundant-storage">使应用程序数据的可用性高</a>
-    - html: <a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">模拟访问读取访问冗余存储时发生的故障</a>
-  - type: paragraph
-    text: 了解如何在 Azure 存储中搜索非结构化数据。
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-unstructured-search">在云存储中搜索非结构化数据</a>
+    - title: Blob
+      html: <p>在云中上传和处理图像数据</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">上传和检索云中的图像数据</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">触发 Azure Functions 来处理 Blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">保护应用程序数据</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">监视存储和排查其问题</a></li></ul><p>针对高可用性设计应用程序</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">使应用程序数据的可用性高</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">模拟访问读取访问冗余存储时发生的故障</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">在 Azure 存储中搜索非结构化数据</a></p>
+    - title: Data Lake Storage Gen2
+      html: <p><a href="/azure/storage/data-lake-storage/handle-data-using-databricks">使用 Azure Databricks 提取、转换和加载数据</a></p><p><a href="/azure/storage/data-lake-storage/using-databricks-spark">使用 Spark 通过 DataBricks 访问 Azure Data Lake Storage Gen2 数据</a></p><p><a href="/azure/storage/data-lake-storage/tutorial-extract-transform-load-hive">使用 Apache Hive on Azure HDInsight 提取、转换和加载数据</a></p>
 - title: 示例
   items:
   - type: paragraph

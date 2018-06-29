@@ -50,7 +50,7 @@
       href: sql-database-design-first-database.md
     - name: 2 - 使用 .NET 设计 DB
       href: sql-database-design-first-database-csharp.md
-    - name: 3 - 使用 DMS 迁移到 SQL Server DB
+    - name: 3 - 使用 DMA 迁移到 SQL Server DB
       href: sql-database-migrate-your-sql-server-database.md
     - name: 4 - 保护 SQL DB
       href: sql-database-security-tutorial.md

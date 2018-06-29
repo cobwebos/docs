@@ -99,7 +99,7 @@ ms.locfileid: "34057149"
 
 ## <a name="run-a-test-migration"></a>运行测试迁移
 
-运行“测试故障转移”[](tutorial-dr-drill-azure.md)，确保一切如预期正常运行。
+运行 [测试故障转移](tutorial-dr-drill-azure.md) ，确保一切如预期正常运行。
 
 
 ## <a name="migrate-to-azure"></a>迁移到 Azure

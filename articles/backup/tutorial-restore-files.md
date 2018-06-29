@@ -140,7 +140,7 @@ Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复�
     ./myVM_we_1571974050985163527.sh
     ```
 
-    在脚本运行时，系统会提示你输入密码以访问恢复点。 输入在上一个生成恢复脚本的 az backup restore files mount-rp[](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp) 命令输出中显示的密码。
+    在脚本运行时，系统会提示你输入密码以访问恢复点。 输入在上一个生成恢复脚本的 [az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp) 命令输出中显示的密码。
 
     脚本的输出将提供恢复点的路径。 下面的示例输出显示恢复点已装入 /home/azureuser/myVM-20170919213536/Volume1：
 

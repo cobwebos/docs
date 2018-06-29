@@ -43,6 +43,18 @@
 ### 存储
 #### [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
 
+### 事件中心
+#### [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+
+### 服务总线
+#### [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+
+### VPN 网关
+#### [创建区域冗余的虚拟网关](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
+### ExpressRoute
+#### [创建区域冗余的虚拟网关](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
 # 灾难恢复
 ## [使用 Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)
 

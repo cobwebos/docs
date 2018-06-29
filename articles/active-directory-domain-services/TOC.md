@@ -38,6 +38,7 @@
 #### [任务 3：使用 Azure 门户为托管域启用安全 LDAP](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [在托管域上创建 OU](active-directory-ds-admin-guide-create-ou.md)
+### [在托管域上创建组托管服务帐户](active-directory-ds-create-gmsa.md)
 ### [管理托管域中的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 ## [选择虚拟网络](active-directory-ds-networking.md)
 ## 部署应用程序

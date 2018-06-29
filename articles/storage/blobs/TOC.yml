@@ -190,6 +190,8 @@
           href: storage-https-custom-domain-cdn.md
         - name: Azure Blob 存储的不可变存储功能（预览版）
           href: storage-blob-immutable-storage.md
+        - name: 为 Azure 存储客户端启用安全 TLS
+          href: ../common/storage-security-tls.md
     - name: 监视和故障排除
       items:
         - name: 故障排除教程

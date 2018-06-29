@@ -20,6 +20,7 @@
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [路由消息](tutorial-routing.md)
 ## [配置设备](tutorial-device-twins.md)
+## [管理固件更新](tutorial-firmware-update.md)
 ## [测试设备连接性](tutorial-connectivity.md)
 ## 发送“云到设备”消息
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
@@ -111,6 +112,8 @@
 #### [使用 Eclipse Paho API 将消息发送到 MQTT 服务器](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 #### [使用 Azure Functions 监视磁传感器并发送电子邮件通知](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
+## [设备配置最佳做法](iot-hub-configuration-best-practices.md)
+
 # 操作指南
 ## 计划
 ### [比较 IoT 中心与事件中心](iot-hub-compare-event-hubs.md)
@@ -169,6 +172,9 @@
 ### 模块孪生入门
 #### [Portal](iot-hub-portal-csharp-module-twin-getstarted.md)
 #### [.NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
+#### [Python](iot-hub-python-python-module-twin-getstarted.md)
+#### [C](iot-hub-c-c-module-twin-getstarted.md)
+#### [Node](iot-hub-node-node-module-twin-getstarted.md)
 ### 使用直接方法
 #### [Node.js](iot-hub-node-node-direct-methods.md)
 #### [.NET](iot-hub-csharp-csharp-direct-methods.md)
@@ -221,7 +227,9 @@
 ## [升级 IoT 中心](iot-hub-upgrade.md)
 ## [使用指标](iot-hub-metrics.md)
 ## [配置 IP 筛选](iot-hub-ip-filtering.md)
-## [大规模配置设备](iot-hub-auto-device-config.md)
+## 大规模配置设备
+### [使用 Azure 门户](iot-hub-auto-device-config.md)
+### [使用 Azure CLI](iot-hub-auto-device-config-cli.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=iot-hub)
@@ -243,7 +251,8 @@
 # 相关内容
 ## 解决方案 
 ### [IoT 解决方案加速器](/azure/iot-suite) 
-### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
+### 
+  [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## 平台服务 
 ### [IoT 中心](/azure/iot-hub) 
 ### [IoT 中心设备预配服务](/azure/iot-dps)

@@ -10,6 +10,8 @@
       href: stream-analytics-quick-create-portal.md
     - name: 创建作业 - PowerShell
       href: stream-analytics-quick-create-powershell.md
+    - name: 创建作业 - Visual Studio
+      href: stream-analytics-quick-create-vs.md
 - name: 教程
   items:
     - name: 1 - 创建/管理作业

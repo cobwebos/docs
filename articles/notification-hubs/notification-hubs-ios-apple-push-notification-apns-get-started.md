@@ -43,7 +43,7 @@ ms.locfileid: "33778212"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。[](https://azure.microsoft.com/free) 
+- 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一 [个免费试用帐户](https://azure.microsoft.com/free)。 
 - [Windows Azure Messaging Framework]
 - 最新版本的 [Xcode]
 - 支持 iOS 10（或更高版本）的设备

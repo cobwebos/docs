@@ -1,4 +1,4 @@
-- name: 数据工厂 V2 文档
+- name: 数据工厂文档
   href: index.yml
 - name: 切换到版本 1 文档
   href: v1/data-factory-introduction.md
@@ -6,7 +6,7 @@
   items:
     - name: 数据工厂简介
       href: introduction.md
-    - name: 比较版本 1 和 2
+    - name: 将当前版本与版本 1 进行比较
       href: compare-versions.md
 - name: 快速入门
   expanded: true
@@ -138,6 +138,8 @@
           href: connector-azure-blob-storage.md
         - name: Azure Cosmos DB
           href: connector-azure-cosmos-db.md
+        - name: Azure Data Lake 存储
+          href: connector-azure-data-lake-storage.md
         - name: Azure Data Lake Store
           href: connector-azure-data-lake-store.md
         - name: Azure Database for MySQL
@@ -275,6 +277,8 @@
         - name: 复制数据工具
           href: copy-data-tool.md
           items: null
+        - name: 加载 Data Lake Storage
+          href: load-azure-data-lake-storage-gen2.md
         - name: 加载 SQL 数据仓库
           href: load-azure-sql-data-warehouse.md
         - name: 加载 Data Lake Store

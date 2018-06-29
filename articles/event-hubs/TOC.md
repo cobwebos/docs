@@ -36,6 +36,8 @@
 ### [将 Apache Flink 与用于 Kafka 生态系统的事件中心配合使用](event-hubs-kafka-flink-tutorial.md)
 ### [将 Akka Streams 与用于 Kafka 生态系统的事件中心配合使用](event-hubs-kafka-akka-streams-tutorial.md)
 ## 开发
+### [IP 连接筛选器](event-hubs-ip-filtering.md)
+### [虚拟网络服务终结点](event-hubs-service-endpoints.md)
 ### [使用 .NET Framework 发送事件](event-hubs-dotnet-framework-getstarted-send.md)
 ### [使用 .NET Framework 接收事件](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [可用 API](event-hubs-api-overview.md)

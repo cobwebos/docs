@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cfac573bc9f1bdec3fd884f8090e11514f1e93b3
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604703"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083220"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 证书签名请求生成
 
@@ -30,8 +30,6 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
 
  - **标准证书请求**  
     根据[为 Azure Stack 部署生成 PKI 证书](azure-stack-get-pki-certs.md)执行请求。
- - **请求类型**  
-    指定证书签名请求是单个请求还是多个请求。
  - **平台即服务**  
     （可选）根据 [Azure Stack 公钥基础结构证书要求 - 可选的 PaaS 证书](azure-stack-pki-certs.md#optional-paas-certificates)中的规定，请求证书的平台即服务 (PaaS) 名称。
 
@@ -98,22 +96,22 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
     > [!note]  
     > `<regionName>.<externalFQDN>` 构成了 Azure Stack 中所有外部 DNS 名称创建位置的基础，在此示例中，门户是 `portal.east.azurestack.contoso.com`。  
 
-6. 若要使用多个使用者可选名称生成单个证书请求：
+6. 若要生成证书签名请求每个 DNS 名称：
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    ````
+
+    若要包括 PaaS 服务，请指定开关 ```-IncludePaaS```
+
+7. 或者，对于开发/测试环境。 若要生成多个使用者备用名称的单个证书请求将添加 **-RequestType SingleCSR**参数和值 (**不**建议用于生产环境):
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
     若要包括 PaaS 服务，请指定开关 ```-IncludePaaS```
-
-7. 若要为每个 DNS 名称生成单个证书签名请求：
-
-    ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ````
-
-    若要包括 PaaS 服务，请指定开关 ```-IncludePaaS```
-
+    
 8. 查看输出：
 
     ````PowerShell  

@@ -1,0 +1,72 @@
+- name: Azure 存储文档
+  href: /azure/storage/
+- name: 切换到 Data Lake Storage Gen1 文档
+  href: /azure/data-lake-store/
+- name: 概述
+  items:
+    - name: 介绍
+      href: introduction.md
+- name: 快速入门
+  items:
+    - name: 创建支持 Data Lake Storage Gen2 的存储帐户
+      href: quickstart-create-account.md
+    - name: 创建/连接 Databricks 帐户
+      href: quickstart-create-databricks-account.md
+    - name: 创建 HDInsight 群集
+      href: quickstart-create-connect-hdi-cluster.md
+- name: 教程
+  items:
+    - name: 使用 Azure Databricks 提取、转换和加载数据
+      href: handle-data-using-databricks.md
+    - name: 使用 Spark 通过 DataBricks 访问 Data Lake Storage 数据
+      href: using-databricks-spark.md
+    - name: 使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
+      href: tutorial-extract-transform-load-hive.md
+- name: 概念
+  items:
+    - name: 适用于 Hadoop 的 Azure Blob FileSystem 驱动程序
+      href: abfs-driver.md
+    - name: Azure Blob 文件系统 URI 简介
+      href: introduction-abfs-uri.md
+    - name: 分层命名空间服务
+      href: namespace.md
+    - name: “安全”
+      items:
+        - name: 静态数据加密
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+        - name: 使用客户密钥对数据进行静态加密
+          href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: Data Lake Storage Gen2 评估
+      href: evaluation.md
+- name: 操作指南
+  items:
+    - name: 配合使用 Data Lake Storage Gen2 和 Azure HDInsight 群集
+      href: use-hdi-cluster.md
+    - name: 配合使用 Hadoop 文件系统 CLI 和 Data Lake Storage Gen2
+      href: use-hdfs-data-lake-storage.md
+    - name: 引入数据
+      items:
+        - name: 使用 Distcp 将数据复制到 Data Lake Storage Gen2 中
+          href: use-distcp.md
+        - name: 使用 Azure 数据工厂将数据复制到 Data Lake Storage Gen2 中
+          href: ../../data-factory/load-azure-data-lake-storage-gen2.md
+    - name: 连接到 Azure DataBricks
+      href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Azure 存储客户端工具
+      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: 论坛
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/storage/data-lake/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=storage'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
