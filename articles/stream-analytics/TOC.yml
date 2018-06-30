@@ -127,8 +127,6 @@
           href: stream-analytics-job-diagram-with-metrics.md
         - name: 诊断日志
           href: stream-analytics-job-diagnostic-logs.md
-        - name: 检查资源运行状况
-          href: stream-analytics-resource-health.md
         - name: SELECT INTO 语句
           href: stream-analytics-select-into.md
         - name: 事件中心接收方
