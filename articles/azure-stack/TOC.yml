@@ -269,6 +269,8 @@
               href: azure-stack-app-service-release-notes-update-one.md
             - name: 基于 Azure Stack 的应用服务 Update 2 发行说明
               href: azure-stack-app-service-release-notes-update-two.md
+        - name: 部署 Ethereum
+          href: azure-stack-ethereum.md
         - name: 充实市场
           items:
             - name: 市场概述

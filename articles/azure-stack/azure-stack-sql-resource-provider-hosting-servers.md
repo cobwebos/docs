@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 06/29/2018
 ms.author: jeffgilb
-ms.openlocfilehash: af820f90c5d8822dbdaa768b16360d534fd47828
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 74d888ffe28e5428b47bfc73122518c22d0f0918
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060036"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128701"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
@@ -121,7 +121,8 @@ Sku 可用于区分服务产品。 例如，你可以具有以下特征的 SQL E
 > [!NOTE]
 > SQL 适配器资源提供程序_仅_支持 SQL 2016 SP1 Enterprise 或更高版本的 Always On 实例。 此适配器配置需要新的 SQL 功能，如自动种子设定。
 
-此外，你必须启用[自动种子设定](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)上每个可用性组的每个 SQL Server 实例。
+### <a name="automatic-seeding"></a>自动种子设定
+必须启用[自动种子设定](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)上每个可用性组的每个 SQL Server 实例。
 
 若要启用自动种子设定，所有实例上，编辑，然后运行以下 SQL 命令为每个实例：
 
@@ -136,6 +137,18 @@ Sku 可用于区分服务产品。 例如，你可以具有以下特征的 SQL E
 
   ```
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+  GO
+  ```
+
+### <a name="configure-contained-database-authentication"></a>配置包含的数据库身份验证
+之前将包含的数据库添加到可用性组中，确保包含的数据库身份验证服务器选项都设置为每个承载可用性组的可用性副本的服务器实例上的 1。 有关详细信息，请参阅[contained database authentication 服务器配置选项](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017)。
+
+使用这些命令来设置每个实例的包含的数据库身份验证服务器选项：
+
+  ```
+  EXEC sp_configure 'contained database authentication', 1
+  GO
+  RECONFIGURE
   GO
   ```
 

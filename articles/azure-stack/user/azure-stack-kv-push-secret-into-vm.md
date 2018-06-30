@@ -12,29 +12,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 06/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3950c9dfc5ff5f7ea1d170da086b4f97048ed81c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 05278ee4b0dc1f2c22f40bfcff4f9d7342017c0f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108750"
 ---
-# <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>创建虚拟机并安装从 Azure 堆栈密钥保管库中检索证书
+# <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>创建虚拟机，并安装从 Azure Stack 密钥保管库检索到的证书
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-了解如何创建 Azure 堆栈虚拟机 (VM) 安装的密钥保管库证书。
+了解如何使用安装的密钥保管库证书创建 Azure Stack 虚拟机 (VM)。
 
 ## <a name="overview"></a>概述
 
-证书用于在许多情况下，例如向 Active Directory 进行身份验证或加密 web 流量。 为 Azure 堆栈密钥保管库中的机密，可以安全地存储证书。 使用 Azure 堆栈密钥保管库的好处是：
+在许多情况下都会使用证书，例如向 Active Directory 进行身份验证或加密 Web 流量。 可以安全地将证书作为机密存储在 Azure Stack 密钥保管库中。 使用 Azure Stack 密钥保管库的好处是：
 
-* 证书不公开在脚本、 命令行的历史记录，还是模板。
-* 在证书管理过程都得到了优化。
-* 必须控制访问证书的密钥。
+* 证书不会在脚本、命令行历史记录或模板中公开。
+* 简化了证书管理流程。
+* 可以控制访问证书的密钥。
 
-### <a name="process-description"></a>流程说明
+### <a name="process-description"></a>过程说明
 
 以下步骤说明将证书推送到虚拟机所需的过程：
 
@@ -42,8 +43,8 @@ ms.lasthandoff: 05/11/2018
 2. 更新 azuredeploy.parameters.json 文件。
 3. 部署模板
 
->[!NOTE]
->如果你通过 VPN 连接，你可以使用以下步骤从 Azure 堆栈开发工具包中，或者从外部客户端。
+> [!NOTE]
+> 可以通过 Azure Stack 开发工具包或者外部客户端（如果已通过 VPN 建立连接）执行这些步骤。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -55,8 +56,8 @@ ms.lasthandoff: 05/11/2018
 
 以下脚本会创建 .pfx 格式的证书、创建密钥保管库，并将该证书作为机密存储在密钥保管库中。
 
->[!IMPORTANT]
->必须使用`-EnabledForDeployment`参数创建密钥的错误时。 此参数可确保密钥保管库可以从 Azure 资源管理器模板来引用。
+> [!IMPORTANT]
+> 必须使用`-EnabledForDeployment`参数创建密钥保管库时。 此参数可确保能够从 Azure 资源管理器模板引用密钥保管库。
 
 ```powershell
 
@@ -177,16 +178,16 @@ New-AzureRmResourceGroupDeployment `
 
 ![模板部署结果](media/azure-stack-kv-push-secret-into-vm/deployment-output.png)
 
-在部署过程，azure 堆栈推送到虚拟机的证书。 证书的位置取决于 VM 的操作系统：
+在部署期间，Azure Stack 会将证书推送到虚拟机。 证书的位置取决于 VM 的操作系统：
 
 * 在 Windows 中，系统会利用用户提供的证书存储，将证书添加到 LocalMachine 证书位置。
 * 在 Linux 中，证书会置于 /var/lib/waagent 目录下，其中 x509 证书文件的文件名为 &lt;UppercaseThumbprint&gt;.crt，且私钥的文件名为 &lt;UppercaseThumbprint&gt;.prv。
 
 ## <a name="retire-certificates"></a>停用证书
 
-停用证书是在证书管理过程的一部分。 无法删除旧版本的证书，但你可以通过禁用它`Set-AzureKeyVaultSecretAttribute`cmdlet。
+停用证书是证书管理过程的一部分。 无法删除旧版本的证书，但可以使用 `Set-AzureKeyVaultSecretAttribute` cmdlet 将其禁用。
 
-下面的示例演示如何禁用证书。 使用你自己的值**VaultName**，**名称**，和**版本**参数。
+以下示例说明如何禁用证书。 对 **VaultName**、**Name** 和 **Version** 参数使用自己的值。
 
 ```powershell
 Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Version e3391a126b65414f93f6f9806743a1f7 -Enable 0
