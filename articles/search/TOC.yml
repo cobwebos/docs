@@ -145,7 +145,7 @@
           href: search-faceted-navigation.md
         - name: 相关性优化
           href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
-        - name: 同义词（预览）
+        - name: 同义词
           href: search-synonyms.md
     - name: 为数据编制索引
       items:
