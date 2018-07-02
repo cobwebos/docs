@@ -9,27 +9,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 01/09/2018
+ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: d2f1d089c6a08a1dc90f82fd9d1c3cb2b6f6dc0a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 504f025edef79b310249c29665198438a326881a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171787"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051995"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [版本 1 - 正式版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [版本 2 - 预览版](tutorial-copy-data-tool.md)
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [当前版本](tutorial-copy-data-tool.md)
 
 在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用“复制数据”工具创建一个管道，以便将数据从 Azure Blob 存储复制到 SQL 数据库。 
 
 > [!NOTE]
 > 如果对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
->
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用公开发布的第 1 版数据工厂，请参阅[数据工厂第 1 版入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-
 
 将在本教程中执行以下步骤：
 
@@ -106,7 +103,7 @@ ms.locfileid: "30171787"
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
 
-5. 在“版本”下选择“V2 (预览)”作为版本。
+5. 在“版本”下选择“V2”作为版本。
 6. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
 7. 选择“固定到仪表板”。 
 8. 选择**创建**。
@@ -126,84 +123,80 @@ ms.locfileid: "30171787"
 2. 在“属性”页的“任务名称”下，输入 **CopyFromBlobToSqlPipeline**。 然后，选择“下一步”。 数据工厂 UI 将使用指定的任务名称创建一个管道。 
 
     ![“属性”页](./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png)
-3. 在“源数据存储”页中选择“Azure Blob 存储”，然后选择“下一步”。 源数据位于 Blob 存储中。 
+3. 在“源数据存储”页上，完成以下步骤：
 
-    ![“源数据存储”页](./media/tutorial-copy-data-tool/source-data-store-page.png)
-4. 在“指定 Azure Blob 存储帐户”页中执行以下步骤：
+    a. 单击“+ 创建新连接”来添加连接。
 
-    a. 在“连接名称”下输入 **AzureStorageLinkedService**。
+    ![新建源链接服务](./media/tutorial-copy-data-tool/new-source-linked-service.png)
 
-    b. 从“存储帐户名称”下拉列表中选择自己的存储帐户名称。
+    b. 从库中选择“Azure Blob 存储”，然后选择“下一步”。
 
-    c. 选择“**下一步**”。 
+    ![选择 blob 源](./media/tutorial-copy-data-tool/select-blob-source.png)
 
-    ![指定存储帐户](./media/tutorial-copy-data-tool/specify-blob-storage-account.png)
+    c. 在“新建链接服务”页面上，从“存储帐户名称”列表中选择你的存储帐户，然后选择“完成”。
 
-    链接服务可将数据存储或计算链接到数据工厂。 本示例创建一个存储链接服务，用于将存储帐户链接到数据存储。 该链接服务包含的连接信息可供数据工厂用来在运行时连接到 Blob 存储。 数据集指定包含源数据的容器、文件夹和文件（可选）。 
+    ![配置 Azure 存储](./media/tutorial-copy-data-tool/configure-azure-storage.png)
 
-5. 在“选择输入文件或文件夹”页中执行以下步骤：
+    d. 选择新创建的链接服务作为源，然后单击“下一步”。
+
+    ![选择源链接服务](./media/tutorial-copy-data-tool/select-source-linked-service.png)
+
+4. 在“选择输入文件或文件夹”页中完成以下步骤：
     
-    a. 浏览到“adfv2tutorial/input”文件夹。
+    a. 单击“浏览”导航到 **adfv2tutorial/input** 文件夹，选择 **inputEmp.txt** 文件，然后单击“选择”。
 
-    b. 选择“inputEmp.txt”文件。
+    ![选择输入文件或文件夹](./media/tutorial-copy-data-tool/specify-source-path.png)
 
-    c. 选择“选择”。 也可以双击“inputEmp.txt”文件。
+    b. 单击“下一步”转到下一步骤。
 
-    d.单击“下一步”。 选择“**下一步**”。 
-
-    ![选择输入文件或文件夹](./media/tutorial-copy-data-tool/choose-input-file-folder.png)
-
-6. 在“文件格式设置”页中，注意该工具会自动检测列与行的分隔符。 选择“**下一步**”。 还可以在此页中预览数据，以及查看输入数据的架构。 
+5. 在“文件格式设置”页中，注意该工具会自动检测列与行的分隔符。 选择“**下一步**”。 还可以在此页中预览数据，以及查看输入数据的架构。 
 
     ![文件格式设置](./media/tutorial-copy-data-tool/file-format-settings-page.png)
-7. 在“目标数据存储”页上，选择“Azure SQL 数据库”，然后选择“下一步”。
+6. 在“目标数据存储”页上，完成以下步骤：
 
-    ![目标数据存储](./media/tutorial-copy-data-tool/destination-data-storage-page.png)
-8. 在“指定 Azure SQL 数据库”页中执行以下步骤： 
+    a. 单击“+ 创建新连接”来添加连接。
 
-    a. 在“连接名称”下输入 **AzureSqlDatabaseLinkedService**。
+    ![新建接收器链接服务](./media/tutorial-copy-data-tool/new-sink-linked-service.png)
 
-    b. 在“服务器名称”下选择 SQL Server 实例。
+    b. 从库中选择“Azure Blob 存储”，然后选择“下一步”。
 
-    c. 在“数据库名称”下选择自己的 SQL 数据库。
+    ![选择 Azure SQL DB](./media/tutorial-copy-data-tool/select-azure-sql-db.png)
 
-    d.单击“下一步”。 在“用户名”下输入用户的名称。
+    c. 在“新建链接服务”页面上，从下拉列表中选择你的服务器名称和 DB 名称，指定用户名和密码，然后选择“完成”。    
 
-    e. 在“密码”下输入用户的密码。
+    ![配置 Azure SQL DB](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
-    f. 选择“**下一步**”。 
+    d. 选择新创建的链接服务作为接收器，然后单击“下一步”。
 
-    ![指定 SQL 数据库](./media/tutorial-copy-data-tool/specify-azure-sql-database.png)
+    ![选择接收器链接服务](./media/tutorial-copy-data-tool/select-sink-linked-service.png)
 
-    数据集必须与链接服务相关联。 该链接服务包含的连接字符串可供数据工厂用于在运行时连接到 SQL 数据库。 数据集指定可将数据复制到其中的容器、文件夹和文件（可选）。
+7. 在“表映射”页中，选择 **[dbo].[emp]** 表，然后选择“下一步”。 
 
-9. 在“表映射”页中，选择 **[dbo].[emp]** 表，然后选择“下一步”。 
+    ![表映射](./media/tutorial-copy-data-tool/table-mapping.png)
+8. 在“架构映射”页中，注意输入文件中的第一个和第二个列已映射到 **emp** 表的 **FirstName** 和 **LastName** 列。 选择“**下一步**”。
 
-    ![表映射](./media/tutorial-copy-data-tool/table-mapping-page.png)
-10. 在“架构映射”页中，注意输入文件中的第一个和第二个列已映射到 **emp** 表的 **FirstName** 和 **LastName** 列。
-
-    ![“架构映射”页](./media/tutorial-copy-data-tool/schema-mapping-page.png)
-11. 在“设置”页中，选择“下一步”。 
-
-    ![“设置”页](./media/tutorial-copy-data-tool/settings-page.png)
-12. 在“摘要”页中检查设置，然后选择“下一步”。
+    ![“架构映射”页](./media/tutorial-copy-data-tool/schema-mapping.png)
+9. 在“设置”页中，选择“下一步”。 
+10. 在“摘要”页中检查设置，然后选择“下一步”。
 
     ![“摘要”页](./media/tutorial-copy-data-tool/summary-page.png)
-13. 在“部署”页中，选择“监视”可以监视管道（任务）。
+11. 在“部署”页中，选择“监视”可以监视管道（任务）。
 
     ![“部署”页](./media/tutorial-copy-data-tool/deployment-page.png)
-14. 请注意，界面中已自动选择左侧的“监视”选项卡。 “操作”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接。 选择“刷新”可刷新列表。 
+12. 请注意，界面中已自动选择左侧的“监视”选项卡。 “操作”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接。 选择“刷新”可刷新列表。 
 
-    ![监视管道运行](./media/tutorial-copy-data-tool/monitor-pipeline-runs.png)
-15. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。 该管道只包含一个活动（复制活动），因此只显示了一个条目。 有关复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。 若要回到“管道运行”视图，请选择顶部的“管道”链接。 若要刷新视图，请选择“刷新”。 
+    ![监视管道运行](./media/tutorial-copy-data-tool/pipeline-monitoring.png)
+13. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。 有关复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。 若要回到“管道运行”视图，请选择顶部的“管道”链接。 若要刷新视图，请选择“刷新”。 
 
-    ![监视活动运行](./media/tutorial-copy-data-tool/monitor-activity-runs.png)
-16. 选择左侧的“编辑”选项卡可以切换到编辑器模式。 可以使用编辑器来更新通过该工具创建的链接服务、数据集和管道。 选择“代码”可以查看当前在编辑器中打开的实体的 JSON 代码。 有关在数据工厂 UI 中编辑这些实体的详细信息，请参阅[本教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
+    ![监视活动运行](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
-    ![编辑器选项卡](./media/tutorial-copy-data-tool/edit-tab.png)
-17. 验证数据是否已插入到 SQL 数据库中的 **emp** 表。
+    ![复制活动详细信息](./media/tutorial-copy-data-tool/copy-execution-details.png)
+
+14. 验证数据是否已插入到 SQL 数据库中的 **emp** 表。
 
     ![验证 SQL 输出](./media/tutorial-copy-data-tool/verify-sql-output.png)
+
+15. 选择左侧的“创作”选项卡切换到编辑器模式。 可以使用编辑器来更新通过该工具创建的链接服务、数据集和管道。 有关在数据工厂 UI 中编辑这些实体的详细信息，请参阅[本教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 此示例中的管道将数据从 Blob 存储复制到 SQL 数据库。 你已了解如何： 

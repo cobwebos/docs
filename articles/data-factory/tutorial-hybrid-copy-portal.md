@@ -13,19 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: e21c08d418022430400ff14baedc1759d2d16069
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 27e7d6f22678bf33ffd81fb34472fe4add3f9a15
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171557"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045454"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure 数据工厂用户界面 (UI) 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用公开发布的第 1 版数据工厂，请参阅[数据工厂第 1 版文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-> 
 > 本文不提供数据工厂的详细介绍。 有关详细信息，请参阅[数据工厂简介](introduction.md)。 
 
 将在本教程中执行以下步骤：
@@ -128,21 +126,21 @@ ms.locfileid: "30171557"
    
    ![新建数据工厂](./media/tutorial-hybrid-copy-portal/new-azure-data-factory-menu.png)
 3. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory**。 
-      
+   
      ![“新建数据工厂”页](./media/tutorial-hybrid-copy-portal/new-azure-data-factory.png)
- 
-   数据工厂的名称必须全局唯一。 如果看到名称字段的以下错误消息，请更改数据工厂的名称（例如，改为 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
-  
+
+数据工厂的名称必须全局唯一。 如果看到名称字段的以下错误消息，请更改数据工厂的名称（例如，改为 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+
    ![新建数据工厂名称](./media/tutorial-hybrid-copy-portal/name-not-available-error.png)
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于“资源组”，请执行以下步骤之一：
-     
+   
       - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
 
       - 选择“新建”，并输入资源组的名称。
-         
+        
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
-6. 在“版本”下选择“V2 (预览)”。
+6. 在“版本”下选择“V2”。
 7. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
 8. 选择“固定到仪表板”。 
 9. 选择**创建**。
@@ -160,42 +158,55 @@ ms.locfileid: "30171557"
 1. 在“开始使用”页中，选择“创建管道”。 系统会自动创建一个管道。 可以在树状视图中看到该管道，并且其编辑器已打开。 
 
    ![“开始使用”页](./media/tutorial-hybrid-copy-portal/get-started-page.png)
+
 2. 在“属性”窗口底部的“常规”选项卡的“名称”中，输入 **SQLServerToBlobPipeline**。
 
    ![管道名称](./media/tutorial-hybrid-copy-portal/pipeline-name.png)
+
 3. 在“活动”工具箱中，展开“DataFlow”。 将“复制”活动拖放到管道设计图面。 将活动的名称设置为 **CopySqlServerToAzureBlobActivity**。
 
    ![活动名称](./media/tutorial-hybrid-copy-portal/copy-activity-name.png)
+
 4. 在“属性”窗口中转到“源”选项卡，然后选择“+ 新建”。
 
    ![“源”选项卡](./media/tutorial-hybrid-copy-portal/source-dataset-new-button.png)
+
 5. 在“新建数据集”窗口中搜索“SQL Server”。 选择“SQL Server”，然后选择“完成”。 此时会显示标题为“SqlServerTable1”的新选项卡。 左侧的树状视图中也显示了“SqlServerTable1”数据集。 
 
    ![SQL Server 选择](./media/tutorial-hybrid-copy-portal/select-sql-server.png)
+
 6. 在“属性”窗口底部的“常规”选项卡的“名称”中，输入 **SqlServerDataset**。
-    
+
    ![源数据集名称](./media/tutorial-hybrid-copy-portal/source-dataset-name.png)
+
 7. 转到“连接”选项卡，然后选择“+ 新建”。 执行此步骤来与源数据存储（SQL Server 数据库）建立连接。 
 
    ![连接到源数据集](./media/tutorial-hybrid-copy-portal/source-connection-new-button.png)
-8. 在“新建链接服务”窗口中，选择“新建 Integration Runtime”。 在本部分，请创建一个自承载 Integration Runtime，然后将其与安装了 SQL Server 数据库的本地计算机相关联。 自承载 Integration Runtime 是一个组件，用于将数据从计算机上的 SQL Server 数据库复制到 Blob 存储。 
+
+8. 在“新建链接服务”窗口中，添加 **SqlServerLinkedService** 作为**名称**。 在“通过集成运行时连接”下选择“新建”。 在本部分，请创建一个自承载 Integration Runtime，然后将其与安装了 SQL Server 数据库的本地计算机相关联。 自承载 Integration Runtime 是一个组件，用于将数据从计算机上的 SQL Server 数据库复制到 Blob 存储。 
 
    ![新建集成运行时](./media/tutorial-hybrid-copy-portal/new-integration-runtime-button.png)
+
 9. 在“集成运行时安装”窗口中选择“专用网络”，然后选择“下一步”。 
 
    ![专用网络选择](./media/tutorial-hybrid-copy-portal/select-private-network.png)
+
 10. 输入集成运行时的名称，然后选择“下一步”。
-    
+
     ![集成运行时名称](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
+
 11. 在“选项 1: 快速安装”下选择“单击此处对此计算机启动快速安装”。 
 
     ![“快速安装”链接](./media/tutorial-hybrid-copy-portal/click-exress-setup.png)
+
 12. 在“Integration Runtime (自承载)快速安装”窗口中，选择“关闭”。 
 
     ![Integration Runtime(自承载)快速安装](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
-13. 在 Web 浏览器中的“集成运行时安装”窗口中，选择“完成”。 
 
-    ![集成运行时安装](./media/tutorial-hybrid-copy-portal/click-finish-integration-runtime-setup.png)
+13. 在“新建链接服务”窗口中，确保在“通过集成运行时连接”下选择了上面创建的**集成运行时**。 
+
+    ![](./media/tutorial-hybrid-copy-portal/select-integration-runtime.png)
+
 14. 在“新建链接服务”窗口中执行以下步骤：
 
     a. 在“名称”下输入 **SqlServerLinkedService**。
@@ -204,7 +215,7 @@ ms.locfileid: "30171557"
 
     c. 在“服务器名称”下，输入 SQL Server 实例的名称。 
 
-    d.单击“下一步”。 在“数据库名称”下，输入包含 **emp** 表的数据库的名称。
+    d. 在“数据库名称”下，输入包含 **emp** 表的数据库的名称。
 
     e. 在“身份验证类型”下，选择数据工厂在连接到 SQL Server 数据库时会使用的相应身份验证类型。
 
@@ -212,9 +223,10 @@ ms.locfileid: "30171557"
 
     g. 选择“测试连接”。 执行此步骤是为了确认数据工厂是否可以使用已创建的自承载 Integration Runtime 连接到 SQL Server 数据库。
 
-    h. 若要保存链接服务，请选择“保存”。
+    h. 若要保存链接服务，请选择“完成”。
 
-       ![“新建链接服务”设置](./media/tutorial-hybrid-copy-portal/sql-server-linked-service-settings.png)
+       
+
 15. 此时应已返回到打开了源数据集的窗口。 在“属性”窗口的“连接”选项卡中执行以下步骤： 
 
     a. 在“链接服务”中，确认显示了“SqlServerLinkedService”。
@@ -222,21 +234,27 @@ ms.locfileid: "30171557"
     b. 在“表”中选择“[dbo].[emp]”。
 
     ![源数据集连接信息](./media/tutorial-hybrid-copy-portal/source-dataset-connection.png)
+
 16. 转到包含 SQLServerToBlobPipeline 的选项卡，或在树状视图中选择“SQLServerToBlobPipeline”。 
 
     ![“管道”选项卡](./media/tutorial-hybrid-copy-portal/pipeliene-tab.png)
+
 17. 转到“属性”窗口底部的“接收器”选项卡，选择“+ 新建”。 
 
     ![“接收器”选项卡](./media/tutorial-hybrid-copy-portal/sink-dataset-new-button.png)
+
 18. 在“新建数据集”窗口中，选择“Azure Blob 存储”， 然后选择“完成”。 此时可以看到为数据集打开了一个新选项卡。 也可以在树状视图中看到此数据集。 
 
     ![Blob 存储选择](./media/tutorial-hybrid-copy-portal/select-azure-blob-storage.png)
+
 19. 在“名称”中输入 **AzureBlobDataset**。
 
     ![接收器数据集名称](./media/tutorial-hybrid-copy-portal/sink-dataset-name.png)
+
 20. 转到“属性”窗口底部的“连接”选项卡。 在“链接服务”旁边选择“+ 新建”。 
 
     ![“新建链接服务”按钮](./media/tutorial-hybrid-copy-portal/new-storage-linked-service-button.png)
+
 21. 在“新建链接服务”窗口中执行以下步骤：
 
     a. 在“名称”下输入 **AzureStorageLinkedService**。
@@ -245,31 +263,42 @@ ms.locfileid: "30171557"
 
     c. 若要测试到存储帐户的连接，请选择“测试连接”。
 
-    d.单击“下一步”。 选择“保存”。
+    d. 选择“保存”。
 
     ![存储链接服务设置](./media/tutorial-hybrid-copy-portal/azure-storage-linked-service-settings.png) 
-22.  此时应已返回到打开了接收器数据集的窗口。 在“连接”选项卡中执行以下步骤： 
 
-        a. 在“链接服务”中，确认选择了“AzureStorageLinkedService”。
+22. 此时应已返回到打开了接收器数据集的窗口。 在“连接”选项卡中执行以下步骤： 
 
-        b. 输入 **adftutorial/fromonprem** 作为“文件路径”的**文件夹**部分。 如果 adftutorial 容器中不包含 output 文件夹，数据工厂会自动创建 output 文件夹。
+       a. 在“链接服务”中，确认选择了“AzureStorageLinkedService”。
 
-        c. 输入 `@CONCAT(pipeline().RunId, '.txt')` 作为“文件路径”的**文件名**部分。
+       b. 对于**文件路径**的**文件夹**/ **目录**部分，输入 **adftutorial/fromonprem**。 如果 adftutorial 容器中不包含 output 文件夹，数据工厂会自动创建 output 文件夹。
 
-     ![连接到接收器数据集](./media/tutorial-hybrid-copy-portal/sink-dataset-connection.png)
+       c. 对于**文件路径**的**文件名**部分，选择“添加动态内容”。   
+
+    ![动态文件名值](./media/tutorial-hybrid-copy-portal/file-name.png)
+
+       d. 添加 `@CONCAT(pipeline().RunId, '.txt')`，选择“完成”。 这会将文件重命名为 PipelineRunID.txt。 
+
+    ![用于解析文件名的动态表达式](./media/tutorial-hybrid-copy-portal/add-dynamic-file-name.png)
+
+    ![连接到接收器数据集](./media/tutorial-hybrid-copy-portal/sink-dataset-connection.png)
+
 23. 转到已打开该管道的选项卡，或者在树状视图中选择该管道。 在“接收器数据集”中，确认选择了“AzureBlobDataset”。 
 
     ![选择的接收器数据集](./media/tutorial-hybrid-copy-portal/sink-dataset-selected.png)
+
 24. 若要验证管道设置，请在工具栏中选择该管道对应的“验证”。 若要关闭“管道验证报表”，请选择“关闭”。 
 
     ![验证管道](./media/tutorial-hybrid-copy-portal/validate-pipeline.png)
+
 25. 若要将创建的实体发布到数据工厂，请选择“全部发布”。
 
     ![发布按钮](./media/tutorial-hybrid-copy-portal/publish-button.png)
+
 26. 等到“发布成功”弹出消息出现。 若要查看发布状态，请选择左侧的“显示通知”链接。 若要关闭通知窗口，请选择“关闭”。 
 
     ![发布成功](./media/tutorial-hybrid-copy-portal/publishing-succeeded.png)
-    
+
 
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
 选择工具栏中对应于管道的“触发器”，然后选择“立即触发”。
@@ -286,15 +315,9 @@ ms.locfileid: "30171557"
     ![监视活动运行](./media/tutorial-hybrid-copy-portal/activity-runs.png)
 
 ## <a name="verify-the-output"></a>验证输出
-该管道自动在 `adftutorial` Blob 容器中创建名为 *fromonprem* 的输出文件夹。 确认在输出文件夹中看到 *dbo.emp.txt* 文件。 
+该管道自动在 `adftutorial` Blob 容器中创建名为 *fromonprem* 的输出文件夹。 确认在输出文件夹中看到了 *[pipeline().RunId].txt* 文件。 
 
-1. 在 Azure 门户的“adftutorial”容器窗口中选择“刷新”，查看输出文件夹。
-
-    ![创建的输出文件夹](media/tutorial-hybrid-copy-portal/fromonprem-folder.png)
-2. 选择文件夹列表中的 `fromonprem`。 
-3. 确认可以看到名为 `dbo.emp.txt` 的文件。
-
-    ![输出文件](media/tutorial-hybrid-copy-portal/fromonprem-file.png)
+![确认输出文件名](./media/tutorial-hybrid-copy-portal/sink-output.png)
 
 
 ## <a name="next-steps"></a>后续步骤

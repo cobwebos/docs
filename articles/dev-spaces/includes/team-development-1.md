@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 41418cb908f2bf149a3d0087728652b44cd6b19e
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 2a6118bd23c6e8319ad4fa26a266948a4dad1b9f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825495"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939141"
 ---
 到目前为止，在运行应用程序代码的过程中，如同你是唯一的一位开发人员在操作该应用。 本部分介绍 Azure Dev Spaces 如何简化团队开发：
 * 通过根据需要在共享的开发空间或不同的开发空间中工作，使一组开发人员能够在相同的环境中工作。
@@ -56,13 +56,15 @@ webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     http://webfrontend-c
 
 “空间”列显示这两个服务在名为 `default` 的空间中运行。 打开公共 URL 并导航到 Web 应用的任何人将调用前面编写的代码路径，该代码路径从前到后运行这两个服务。 现在，假设你要继续开发 `mywebapi`。 如何能够做出代码更改并对其测试，同时又不干扰其他使用开发环境的开发人员？ 为此，请设置自己的空间。
 
-### <a name="create-a-space"></a>创建空间
+### <a name="create-a-dev-space"></a>创建开发空间
 若要在除 `default` 以外的空间中运行自己的 `mywebapi` 版本，可使用以下命令创建自己的空间：
 
 ``` 
-azds space create --name scott
+azds space select --name scott
 ```
+
+出现提示时，选择 `default` 作为**父级开发空间**。 这意味着我们的新空间 `default/scott` 将从空间 `default` 派生。 很快，我们将会看到这将如何帮助我们进行测试。 
 
 在上述示例中，我已使用自己的名字来为新空间命名，使我的同事能够识别我所在的空间。但是，你可以指定任何名称，并灵活规定其含义，例如“sprint4”或“demo”。
 
-运行 `azds space list` 命令查看开发环境中所有空间的列表。 当前选定空间的旁边显示了星号 (*)。 在本例中，创建名为“scott”的空间后已自动选中它。 随时可以使用 `azds space select` 命令选择另一个空间。
+运行 `azds space list` 命令查看开发环境中所有空间的列表。 当前选定空间的旁边显示了星号 (*)。 在本例中，创建名为“default/scott”的空间后已自动选中它。 随时可以使用 `azds space select` 命令选择另一个空间。

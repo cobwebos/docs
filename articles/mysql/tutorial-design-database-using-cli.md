@@ -11,12 +11,12 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 4ca555b53de3dd626c52a5a5d17196a82829d3e8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 2b40d5fdd2b21cc9ff82b4749e1f2b4fe2c38614
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293241"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028656"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MySQL
 
@@ -59,6 +59,13 @@ az group create --name myresourcegroup --location westus
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 5.7
 ```
+sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如以下示例中所示：
++ `--sku-name B_Gen4_4` 映射到基本、第 4 代和 4 个 vCore。
++ `--sku-name GP_Gen5_32` 映射到常规用途、第 5 层和 32 个 vCore。
++ `--sku-name MO_Gen5_2` 映射到内存优化、第 5 层和 2 个 vCore。
+
+请参阅[定价层](./concepts-pricing-tiers.md)文档来了解适用于每个区域和每个层的有效值。
+
 > [!IMPORTANT]
 > 此处指定的服务器管理员登录名和密码是以后在本快速入门中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。
 

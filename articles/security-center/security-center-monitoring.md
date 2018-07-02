@@ -3,7 +3,7 @@ title: 在 Azure 安全中心进行安全监视 | Microsoft 文档
 description: 本文介绍如何开始使用 Azure 安全中心的监视功能。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2018
-ms.author: yurid
-ms.openlocfilehash: 330a12f851ef0191adc4dc46102b798f1b752589
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/26/2018
+ms.author: terrylan
+ms.openlocfilehash: dc362306e20b4d39aa73a552e47cbcbd3037edbd
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777707"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063385"
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>在 Azure 安全中心进行安全运行状况监视
 本文介绍如何通过 Azure 安全中心的监视功能监视合规性。
@@ -32,107 +32,13 @@ ms.locfileid: "32777707"
 
 如需详细了解如何应用建议，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 
-在“预防”部分，可以监视资源的安全状态。 在以下示例中，可以看到每个资源的磁贴（“计算”、“网络”、“存储与数据”、“应用程序”）中都有已发现问题的总数。
+在“资源运行状况监视”下，可以监视资源的安全状态。 在以下示例中，可以看到每个资源的磁贴（计算和应用、网络、数据安全性、标识和访问）中都有已发现问题的总数。
 
 ![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
 
 
-### <a name="monitor-compute"></a>监视计算节点
-单击“计算”磁贴时，可以看到三个选项卡：
-
-- 概览：监视和建议。
-- VM 和计算机：列出所有虚拟机、计算机及其当前安全状态。
-- **云服务**：列出安全中心监视的所有 Web 角色和辅助角色。
-
-![各虚拟机缺少的系统更新](./media/security-center-monitoring/security-center-monitoring-fig1-sep2017.png)
-
-每个选项卡可能包含多个部分，在每个部分，可以选择单个选项详细查看可解决该特定问题的建议步骤。
-
-#### <a name="monitoring-recommendations"></a>监视建议
-此部分显示已进行自动预配初始化的虚拟机和计算机的总数及其当前状态。 此示例中有一个建议：**监视代理运行状况问题**。  选择此建议。
-
-![监视代理运行状况问题](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
-
-此时会打开“监视代理运行状况问题”。 会列出安全中心无法成功监视的 VM 和计算机。 选择要获取其详细信息的 VM 或计算机。 “监视状态”提供安全中心不能进行监视的原因。 查看[安全中心故障排除指南](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)可获取一个列表，其中包含“监视状态”的值、说明和解决步骤。
-
-#### <a name="recommendations"></a>建议
-此部分提供了一组[针对每个受 Azure 安全中心监视的虚拟机和计算机的建议](security-center-virtual-machine-recommendations.md)。 第一列列出了建议。 第二列显示受该建议影响的虚拟机和计算机的总数。 第三列显示问题的严重性，如以下屏幕截图所示：
-
-![虚拟机建议](./media/security-center-monitoring/security-center-monitoring-fig2-sep2017.png)
-
-> [!NOTE]
-> “网络拓扑”列表的“网络运行状况”中仅显示至少具有一个公共终结点的虚拟机。
->
-
-每个建议都有一组操作，单击即可执行。 例如，如果单击“缺失的系统更新”，则会显示一个列表，其中包含缺少修补程序的虚拟机和计算机，以及所缺更新的严重性，如以下屏幕截图所示：
-
-![各虚拟机缺少的系统更新](./media/security-center-monitoring/security-center-monitoring-fig9-sep2017.png)
-
-“缺失的系统更新”以图形格式汇总了关键更新，分别适用于 Windows 和 Linux。 第二部分有一个表，其中包含以下信息：
-
-* 名称：所缺更新的名称。
-* VM 和计算机数：缺少该更新的 VM 和计算机的总数。
-* **状态**：该建议的当前状态：
-  * **未解决**：建议尚未得到处理。
-  * **正在进行**：目前已将建议应用到相关资源，不需用户采取行动。
-  * **已解决**：已完成建议。 （解决问题后，此条目将变暗）。
-* **严重性**：描述该特定建议的严重性：
-  * **高**：重要资源（应用程序、虚拟机或网络安全组）存在漏洞，需要引起注意。
-  * **中**：需要采取非关键步骤或额外步骤来完成某个过程或消除某个漏洞。
-  * **低**：漏洞需要解决，但不需立即处理。 （默认情况下，不显示严重性低的建议，但如果用户需要查看这些建议，可以将其筛选出来。）
-
-若要查看建议详细信息，请单击列表中缺失更新的名称。
-
-![特定虚拟机缺少的系统更新](./media/security-center-monitoring/security-center-monitoring-fig4-sep2017.png)
-
-> [!NOTE]
-> 此处提供的安全建议与“建议”选项中的相同。 请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)，详细了解如何应用建议。 这不仅适用于虚拟机和计算机，还适用于“资源运行状况”磁贴中提供的所有资源。
->
-
-#### <a name="unmonitored-vms"></a>未监视的 VM
-如果某个 VM 未运行 Microsoft Monitoring Agent 扩展，则该 VM 未受安全中心监视。 VM 可能已安装了本地代理，例如 OMS 直接代理或 SCOM 代理。 装有这些代理的 VM 会被标识为未受监视，因为安全中心不完全支持这些代理。 若要充分利用安全中心的所有功能，需要使用 Microsoft Monitoring Agent 扩展。
-
-除了已安装的本地代理，还可以在未受监视的 VM 上安装该扩展。 对两个代理进行相同的配置，将二者连接到同一工作区。 这样，安全中心就能与 Microsoft Monitoring Agent 扩展交互并收集数据。  请参阅[启用 VM 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)，获取如何安装 Microsoft Monitoring Agent 扩展的说明。
-
-请参阅[监视代理运行状况问题](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)，详细了解安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因。
-
-#### <a name="vms--computers-section"></a>VM 和计算机部分
-可以通过虚拟机和计算机部分概要了解所有虚拟机和计算机的建议。 每一列代表一组建议，如以下屏幕截图所示：
-
-![所有虚拟机和建议的概览](./media/security-center-monitoring/security-center-monitoring-fig5-sep2017.png)
-
-此列表（见上）显示了四类图标：
-
-![icon1](./media/security-center-monitoring/security-center-monitoring-icon1.png) 非 Azure 计算机。
-
-![icon2](./media/security-center-monitoring/security-center-monitoring-icon2.png) Azure 资源管理器 VM。
-
-![icon3](./media/security-center-monitoring/security-center-monitoring-icon3.png) Azure 经典 VM。
-
-![icon4](./media/security-center-monitoring/security-center-monitoring-icon4.png) 只能通过工作区（属于所查看的订阅）标识的 VM。 其中包括其他订阅中向此订阅中的工作区报告的 VM，以及使用 SCOM 直接代理安装的 VM（没有资源 ID）。
-
-每个建议下都会显示一个图标，用于快速确定需要关注的虚拟机和计算机以及建议的类型。 也可使用“筛选器”选项，选择需要在此屏幕上显示的具体选项。
-
-![筛选器](./media/security-center-monitoring/security-center-monitoring-fig6-sep2017.png)
-
-在以上示例中，一个虚拟机有一条关于终结点保护的关键建议。 若要获取有关虚拟机的详细信息，请单击它：
-
-![虚拟机安全详细信息](./media/security-center-monitoring/security-center-monitoring-fig7-sep2017.png)
-
-此处显示虚拟机或计算机的安全详细信息。 在底部可以看到建议的操作以及每个问题的严重性。
-
-#### <a name="cloud-services-section"></a>云服务部分
-对于云服务，会在操作系统版本过期时创建建议，如以下屏幕截图所示：
-
-![云服务的运行状态](./media/security-center-monitoring/security-center-monitoring-fig1-new006-2017.png)
-
-如果确实提供了建议（在上一示例中不是这样），则需要遵循建议中的步骤更新操作系统版本。 如果有可用的更新，会出现警报（红色或橙色 - 取决于问题的严重性）。 如果单击 WebRole1（运行 Windows Server，将 Web 应用自动部署到 IIS）或 WorkerRole1（运行 Windows Server，将 Web 应用自动部署到 IIS）行中的此警报，则会显示有关此建议的更多详细信息，如以下屏幕截图所示：
-
-![云服务详细信息](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
-
-若要查看有关此建议的更全面的说明，请在“说明”栏下单击“更新 OS 版本”。
-
-![云服务建议](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
+### <a name="monitor-compute--apps"></a>监视计算和应用
+有关详细信息，请参阅[在 Azure 安全中心内保护计算机和应用程序](security-center-virtual-machine-recommendations.md)。
 
 ### <a name="monitor-virtual-networks"></a>监视虚拟网络
 单击“网络”磁贴即可打开“网络”边栏选项卡，其中包含更多详细信息，如以下屏幕截图所示：
@@ -184,9 +90,9 @@ ms.locfileid: "32777707"
 
 此边栏选项卡底部为对此虚拟机的建议，与前述内容类似。 单击某个建议即可了解其详细信息或应用所需的安全控制或配置。
 
-### <a name="monitor-storage--data"></a>监视存储与数据
+### <a name="monitor-data-security"></a>监视数据安全性
 
-在“预防”部分单击“存储与数据”时，“数据资源”会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
+单击“预防”部分中的“数据安全性”时，“数据资源”会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
 
 ![数据资源](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
 
@@ -208,19 +114,9 @@ ms.locfileid: "32777707"
 
 若要启用审核，请在“审核”选项下选择“启用”。
 
-### <a name="monitor-applications"></a>监视应用程序
+### <a name="monitor-identity--access"></a>监视标识和访问
 
-如果 Azure 工作负荷中的应用程序位于[（通过 Azure Resource Manager 创建的）虚拟机](../azure-resource-manager/resource-manager-deployment-model.md)中，且后者使用公开的 Web 端口（TCP 端口 80 和 443），安全中心可以监视这些端口，确定潜在的安全问题并提供补救步骤方面的建议。 单击“应用程序”磁贴即可打开“应用程序”，在“应用程序建议”部分包含一系列建议。 此外还会显示每个主机的应用程序明细、IP/域，以及是否已安装 WAF 解决方案：
-
-![应用程序安全运行状况](./media/security-center-monitoring/security-center-monitoring-fig8-sep2017.png)
-
-与其他建议一样，单击建议即可查看有关问题的更多详细信息以及补救方法。 下图所示示例为已被确定为不安全 Web 应用程序的应用程序。 选择被视为不安全的应用程序时，以下选项可用：
-
-![详细信息](./media/security-center-monitoring/security-center-monitoring-fig17-ga.png)
-
-此处会提供一个列表，其中包含对此应用程序的所有建议。 单击“添加 Web 应用程序防火墙”建议即可打开“添加 Web 应用程序防火墙”，其中包含安装合作伙伴所提供 Web 应用程序防火墙 (WAF) 的选项，如以下屏幕截图所示。
-
-![“添加 Web 应用程序防火墙”对话框](./media/security-center-monitoring/security-center-monitoring-fig18-ga.png)
+有关详细信息，请参阅[在 Azure 安全中心内监视标识和访问](security-center-identity-access.md)。
 
 ## <a name="see-also"></a>另请参阅
 本文介绍了如何使用 Azure 安全中心的监视功能。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：

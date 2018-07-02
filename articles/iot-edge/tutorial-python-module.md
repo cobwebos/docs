@@ -1,23 +1,24 @@
 ---
-title: Azure IoT Edge Python 模块 | Microsoft Docs
-description: 使用 Python 代码创建 IoT Edge 模块，并将它部署到边缘设备
+title: Azure IoT Edge Python 教程 | Microsoft Docs
+description: 本教程介绍如何使用 Python 代码创建 IoT Edge 模块并将其部署到边缘设备
+services: iot-edge
 author: shizn
-manager: ''
+manager: timlt
 ms.author: xshi
-ms.date: 03/18/2018
+ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
-services: iot-edge
-ms.openlocfilehash: 88d772306cb9e67216b380aa885284ebedc77b5f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.custom: mvc
+ms.openlocfilehash: 884237a851461fe3d7a48708d221909804760ceb
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632102"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063116"
 ---
-# <a name="develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device---preview"></a>开发 Python IoT Edge 模块，并将它部署到模拟设备 - 预览
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>教程：开发 Python IoT Edge 模块并将其部署到模拟设备
 
-可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 将使用的模拟 IoT Edge 设备是在 [Windows][lnk-tutorial1-win] 或 [Linux][lnk-tutorial1-lin] 教程的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：    
+可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 将使用的模拟 IoT Edge 设备是在 [Windows][lnk-quickstart-win] 或 [Linux][lnk-quickstart-lin] 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：    
 
 > [!div class="checklist"]
 > * 使用 Visual Studio Code 创建 IoT Edge Python 模块
@@ -28,15 +29,14 @@ ms.locfileid: "34632102"
 
 在本教程中创建的 IoT Edge 模块可以筛选由设备生成的温度数据。 它只在温度高于指定阈值的情况下，向上游发送消息。 在边缘进行的此类分析适用于减少传递到云中和存储在云中的数据量。 
 
-> [!IMPORTANT]
-> 目前 Python 模块只能在 amd64 Linux 容器中运行，无法在 Windows 容器或基于 ARM 的容器中运行。 
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free)。
+
 
 ## <a name="prerequisites"></a>先决条件
 
-* 已通过快速入门或第一个教程创建 Azure IoT Edge 设备。
-* IoT Edge 设备的主键连接字符串。  
+* 已通过 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)快速入门创建 Azure IoT Edge 设备。
 * [Visual Studio Code](https://code.visualstudio.com/)。 
-* [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
+* [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 * [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。 
 * Visual Studio Code 所在计算机上的 [Docker](https://docs.docker.com/engine/installation/)。 对于本教程而言，使用社区版 (CE) 即可。 
 * [Python](https://www.python.org/downloads/)。
@@ -56,36 +56,61 @@ ms.locfileid: "34632102"
 
 ## <a name="create-an-iot-edge-module-project"></a>创建 IoT Edge 模块项目
 以下步骤将介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建 IoT Edge Python 模块。
+
+### <a name="create-a-new-solution"></a>创建新的解决方案
+
+使用 Python 包 **cookiecutter** 创建一个 Python 解决方案模板，以便在其上生成项目。 
+
 1. 在 Visual Studio Code 中选择“视图” > “集成终端”，打开 VS Code 集成终端。
-2. 在集成终端中，输入以下命令以安装（或更新）cookiecutter（我们建议在虚拟环境中或作为用户安装执行此操作，如下所示）：
+
+2. 在集成终端中输入以下命令，以便安装（或更新）用于在 VS Code 中创建 Edge 解决方案模板的 cookiecuttere：
 
     ```cmd/sh
     pip install --upgrade --user cookiecutter
     ```
 
-3. 为新模块创建一个项目。 以下命令通过容器存储库创建项目文件夹 FilterModule。 如果使用 Azure 容器注册表，`image_repository` 的参数应采用 `<your container registry name>.azurecr.io/filtermodule` 的形式。 在当前的工作文件夹中输入以下命令：
+3. 选择“视图” > “命令面板”，打开 VS Code 命令面板。 
 
-    ```cmd/sh
-    cookiecutter --no-input https://github.com/Azure/cookiecutter-azure-iot-edge-module module_name=FilterModule image_repository=<your container registry address>/filtermodule
-    ```
+4. 在命令面板中，键入并运行“Azure: 登录”命令，然后按说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
+
+5. 在命令面板中，键入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案： 
+
+   1. 选择要在其中创建解决方案的文件夹。 
+   2. 提供解决方案的名称，或者接受默认的 **EdgeSolution**。
+   3. 选择“Python 模块”作为模块模板。 
+   4. 将模块命名为 **PythonModule**。 
+   5. 将在上一部分创建的 Azure 容器注册表指定为第一个模块的映像存储库。 将 **localhost:5000** 替换为复制的登录服务器值。 最终的字符串看起来类似于 **\<注册表名称\>.azurecr.io/pythonmodule**。
  
-4. 选择“文件” > “打开文件夹”。
-5. 浏览到“FilterModule”文件夹，然后单击“选择文件夹”，在 VS Code 中打开此项目。
-6. 在 VS Code 资源管理器中，单击“main.py”将其打开。
-7. 在“FilterModule”命名空间的顶部，导入 `json` 库：
+VS Code 窗口将加载你的 IoT Edge 解决方案空间。 有一个 **modules** 文件夹、一个部署清单模板文件，以及一个 **.env** 文件。 
+
+### <a name="add-your-registry-credentials"></a>添加注册表凭据
+
+环境文件存储容器存储库的凭据，并将其与 IoT Edge 运行时共享。 此运行时需要这些凭据才能将专用映像拉取到 IoT Edge 设备中。 
+
+1. 在 VS Code 资源管理器中，打开 **.env** 文件。 
+2. 使用从 Azure 容器注册表复制的 **username** 和 **password** 值更新相关字段。 
+3. 保存此文件。 
+
+### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
+
+每个模板都附带示例代码，该代码从 **tempSensor** 模块提取模拟传感器数据并将其路由到 IoT 中心。 在此部分，请添加代码，以便扩展用于分析消息的 pythonModule，然后再发送它们。 
+
+1. 在 VS Code 资源管理器中，打开 **modules** > **PythonModule** > **main.py**。
+
+2. 在 **main.py** 顶部导入 `json` 库。
 
     ```python
     import json
     ```
 
-8. 在全局计数器下添加 `TEMPERATURE_THRESHOLD`、`RECEIVE_CALLBACKS` 和 `TWIN_CALLBACKS`。 温度阈值设置一个值，若要向 IoT 中心发送数据，测量的温度必须超出该值。
+3. 在全局计数器下添加 `TEMPERATURE_THRESHOLD` 和 `TWIN_CALLBACKS` 变量。 温度阈值设置一个值，若要向 IoT 中心发送数据，测量的计算机温度必须超出该值。
 
     ```python
     TEMPERATURE_THRESHOLD = 25
-    TWIN_CALLBACKS = RECEIVE_CALLBACKS = 0
+    TWIN_CALLBACKS = 0
     ```
 
-9. 使用以下内容更新 `receive_message_callback` 函数。
+4. 将 `receive_message_callback` 函数替换为以下代码：
 
     ```python
     # receive_message_callback is invoked when an incoming message arrives on the specified 
@@ -97,129 +122,136 @@ ms.locfileid: "34632102"
         message_buffer = message.get_bytearray()
         size = len(message_buffer)
         message_text = message_buffer[:size].decode('utf-8')
-        print("    Data: <<<{}>>> & Size={:d}".format(message_text, size))
+        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
         map_properties = message.properties()
         key_value_pair = map_properties.get_internals()
-        print("    Properties: {}".format(key_value_pair))
+        print ( "    Properties: %s" % key_value_pair )
         RECEIVE_CALLBACKS += 1
-        print("    Total calls received: {:d}".format(RECEIVE_CALLBACKS))
+        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
         data = json.loads(message_text)
         if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
             map_properties.add("MessageType", "Alert")
-            print("Machine temperature {} exceeds threshold {}".format(data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
+            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
         hubManager.forward_event_to_output("output1", message, 0)
         return IoTHubMessageDispositionResult.ACCEPTED
     ```
 
-10. 添加新的 `device_twin_callback` 函数。 更新所需属性时，将调用此函数。
+5. 添加新的名为 `module_twin_callback` 的函数。 更新所需属性时，将调用此函数。
 
     ```python
-    # device_twin_callback is invoked when twin's desired properties are updated.
-    def device_twin_callback(update_state, payload, user_context):
+    # module_twin_callback is invoked when twin's desired properties are updated.
+    def module_twin_callback(update_state, payload, user_context):
         global TWIN_CALLBACKS
         global TEMPERATURE_THRESHOLD
-        print("\nTwin callback called with:\nupdateStatus = {}\npayload = {}\ncontext = {}".format(update_state, payload, user_context))
+        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
         data = json.loads(payload)
         if "desired" in data and "TemperatureThreshold" in data["desired"]:
             TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
         if "TemperatureThreshold" in data:
             TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
         TWIN_CALLBACKS += 1
-        print("Total calls confirmed: {:d}\n".format(TWIN_CALLBACKS))
+        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
     ```
 
-11. 在 `HubManager` 类中，向 `__init__` 方法添加新的一行，以初始化刚添加的 `device_twin_callback` 函数。
+6. 在 `HubManager` 类中，向 `__init__` 方法添加新的一行，以初始化刚添加的 `module_twin_callback` 函数。
 
     ```python
     # sets the callback when a twin's desired properties are updated.
-    self.client.set_device_twin_callback(device_twin_callback, self)
+    self.client.set_module_twin_callback(module_twin_callback, self)
     ```
 
+7. 保存此文件。
 
-12. 保存此文件。
+## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案
 
-## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>创建 Docker 映像并将其发布到注册表
+在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 PythonModule，该函数会筛选出其中报告的计算机温度低于可接受阈值的消息。 现在需将解决方案生成为容器映像并将其推送到容器注册表。 
 
-1. 在 VS Code 集成终端输入以下命令，登录到 Docker： 
+1. 在 Visual Studio Code 集成终端输入以下命令，登录到 Docker，以便将模块映像推送到 ACR： 
      
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
-   使用用户名、密码以及在创建时从 Azure 容器注册表复制的登录服务器。
+   使用用户名、密码以及在第一部分从 Azure 容器注册表复制的登录服务器。 或者再次在 Azure 门户中从注册表的“访问密钥”部分检索它们。
 
-2. 在 VS Code 资源管理器中，右键单击 module.json 文件，然后单击“生成和推送 IoT Edge 模块 Docker 映像”。 在 VS Code 窗口顶部的弹出下拉框中，选择容器平台，例如，为 Linux 容器选择“amd64”。 VS Code 将 `main.py` 及所需依赖关系容器化并推送到指定的容器注册表。 首次生成映像时，可能需要几分钟时间。
+2. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 
 
-3. 可在 VS Code 集成终端中获取具有标记的完整容器映像地址。 有关生成和推送定义的详细信息，可参考 `module.json` 文件。
+   此文件告知 `$edgeAgent` 部署两个模块：**tempSensor**，用于模拟设备数据，以及 **PythonModule**。 `PythonModule.image` 值设置为映像的 Linux amd64 版本。 若要详细了解部署清单，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
-## <a name="add-registry-credentials-to-edge-runtime"></a>将注册表凭据添加到 Edge 运行时
-在运行 Edge 设备的计算机上将注册表凭据添加到 Edge 运行时。 这些凭据为此运行时提供拉取容器的访问权限。 
+   此文件也包含注册表凭据。 在模板文件中，用户名和密码会使用占位符填充。 生成部署清单时，这些字段会被更新为添加到 **.env** 的值。 
 
-- 在 Windows 上，运行以下命令：
-    
-    ```cmd/sh
-    iotedgectl login --address <your container registry address> --username <username> --password <password> 
-    ```
-
-- 在 Linux 上，运行以下命令：
-    
-    ```cmd/sh
-    sudo iotedgectl login --address <your container registry address> --username <username> --password <password> 
-    ```
-
-## <a name="run-the-solution"></a>运行解决方案
-
-1. 在 [Azure 门户](https://portal.azure.com)中导航到 IoT 中心。
-2. 转到“IoT Edge (预览版)”，然后选择 IoT Edge 设备。
-3. 选择“设置模块”。 
-2. 检查 **tempSensor** 模块是否已自动填充。 否则，请使用以下步骤来添加该模块：
-    1. 选择“添加 IoT Edge 模块”。
-    2. 在“名称”字段中，输入 `tempSensor`。
-    3. 在“映像 URI”字段中，输入 `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`。
-    4. 将其他设置保留不变，然后单击“保存”。
-9. 添加在前面部分创建的 **filterModule** 模块。 
-    1. 选择“添加 IoT Edge 模块”。
-    2. 在“名称”字段中，输入 `filterModule`。
-    3. 在“映像 URI”字段中，输入映像地址；例如 `<your container registry address>/filtermodule:0.0.1-amd64`。 可从上一节中找到完整映像地址。
-    4. 勾选“启用”框，这样就能编辑孪生模块。 
-    5. 将文本框中用于模块孪生的 JSON 替换为以下 JSON： 
-
-        ```json
-        {
-           "properties.desired":{
-              "TemperatureThreshold":25
-           }
-        }
-        ```
- 
-    6. 单击“ **保存**”。
-10. 单击“资源组名称” 的 Azure 数据工厂。
-11. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 这些模块会将所有消息发布到 Edge 运行时。 此运行时中的声明性规则将定义消息流经的位置。 本教程需要两个路由。 第一个路由会通过“input1”终结点（该终结点是通过 FilterMessages 处理程序配置的终结点）将消息从温度传感器传输到筛选器模块。 第二个路由会将消息从筛选器模块传输到 IoT 中心。 在此路由中，`upstream` 是特殊目的地，它将告诉 Edge 中心将消息发送到 IoT 中心。 
-
+3. 将 PythonModule 模块孪生添加到部署清单。 在 `moduleContent` 节底部 `$edgeHub` 模块孪生后插入以下 JSON 内容： 
     ```json
-    {
-       "routes":{
-          "sensorToFilter":"FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filterModule/inputs/input1\")",
-          "filterToIoTHub":"FROM /messages/modules/filterModule/outputs/output1 INTO $upstream"
-       }
-    }
+        "PythonModule": {
+            "properties.desired":{
+                "TemperatureThreshold":25
+            }
+        }
     ```
 
-4. 单击“资源组名称” 的 Azure 数据工厂。
-5. 在“审阅模板”步骤中，单击“提交”。 
-6. 返回到“IoT Edge 设备详细信息”页，并单击“刷新”。 应看到新的 filter 模块与 tempSensor 模块和 IoT Edge 运行时在同时运行。 
+4. 保存此文件。
+
+5. 在 VS Code 资源管理器中右键单击 **deployment.template.json** 文件，然后选择“生成 IoT Edge 解决方案”。 
+
+要求 Visual Studio Code 生成解决方案时，它首先获取部署模板中的信息，然后在新的 **config** 文件夹中生成 `deployment.json` 文件。 然后，它在集成终端运行两个命令，即 `docker build` 和 `docker push`。 这两个命令会生成代码，将 Python 代码容器化，然后将其推送到在初始化解决方案时指定的容器注册表。 
+
+可以使用在 VS Code 集成终端中运行的 `docker build` 命令查看具有标记的完整容器映像地址。 映像地址根据 `module.json` 文件中的信息生成，其格式为 **\<存储库\>:\<版本\>-\<平台\>**。 在本教程中，它应该类似于 **registryname.azurecr.io/pythonmodule:0.0.1-amd64**。
+
+## <a name="deploy-and-run-the-solution"></a>部署并运行解决方案
+
+可以使用 Azure 门户将 Python 模块部署到 IoT Edge 设备，就像在快速入门中操作一样，但也可在 Visual Studio Code 中部署和监视模块。 以下部分使用用于 VS Code 的 Azure IoT Edge 扩展，该扩展已在先决条件中列出。 立即安装该扩展（如果尚未安装）。 
+
+1. 打开 VS Code 命令面板，方法是选择“视图” > “命令面板”。
+
+2. 搜索并运行“Azure: 登录”命令。 按照说明登录 Azure 帐户。 
+
+3. 在命令面板中，搜索并运行“Azure IoT 中心: 选择 IoT 中心”命令。 
+
+4. 选择包含 IoT 中心的订阅，然后选择要访问的 IoT 中心。
+
+5. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。 
+
+6. 右键单击 IoT Edge 设备的名称，然后选择“为 IoT Edge 设备创建部署”。 
+
+7. 导航到包含 PythonModule 的解决方案文件夹。 打开 **config** 文件夹，选择 **deployment.json** 文件。 单击“选择 Edge 部署清单”。
+
+8. 刷新“Azure IoT 中心设备”部分。 此时会看到新的 **PythonModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。 
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-监视从 IoT Edge 设备发送到 IoT 中心的“设备到云”消息：
-1. 为 Azure IoT 工具包扩展配置适用于 IoT 中心的连接字符串： 
-    1. 选择“视图” > “资源管理器”，打开 VS Code 资源管理器。 
-    3. 在资源管理器中，单击“IOT 中心设备”，然后单击“...”。单击“设置 IoT 中心连接字符串”，然后在弹出窗口中输入 IoT Edge 设备所连接的 IoT 中心的连接字符串。 
+1. 若要监视到达 IoT 中心的数据，请单击“...”，然后选择“开始监视 D2C 消息”。
+2. 若要监视特定设备的 D2C 消息，请右键单击列表中的设备，然后选择“开始监视 D2C 消息”。
+3. 若要停止监视数据，请在命令面板中运行“Azure IoT 中心: 停止监视 D2C 消息”命令。 
+4. 若要查看或更新模块孪生，请右键单击列表中的模块，然后选择“编辑模块孪生”。 若要更新模块孪生，请保存孪生 JSON 文件，然后右键单击编辑器区域并选择“更新模块孪生”。
+5. 若要查看 Docker 日志，可以安装用于 VS Code 的 [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)，然后通过 Docker 资源管理器在本地找到正在运行的模块。 在上下文菜单中单击“显示日志”，在集成终端中进行查看。 
 
-        要找到此连接字符串，请在 Azure 门户中单击 IoT 中心的磁贴，然后单击“共享访问策略”。 在“共享访问策略”中，单击“iothubowner”策略，并复制“iothubowner”窗口中的 IoT 中心连接字符串。   
+## <a name="clean-up-resources"></a>清理资源 
 
-1. 若要监视到达 IoT 中心的数据，请选择“视图” > “命令面板”，然后搜索“IoT: 开始监视 D2C 消息”菜单命令。 
-2. 若要停止监视数据，请使用“IoT: 停止监视 D2C 消息”菜单命令。 
+<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
+
+如果想要继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。
+
+否则，可删除本文中创建的本地配置和 Azure 资源，避免收费。 
+
+> [!IMPORTANT]
+> 删除 Azure 资源和资源组的操作不可逆。 资源组以及包含在其中的所有资源一旦删除就会被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
+>
+
+若要只删除 IoT 中心，请使用中心名称和资源组名称执行以下命令：
+
+```azurecli-interactive
+az iot hub delete --name MyIoTHub --resource-group TestResources
+```
+
+
+若要按名称删除整个资源组，请执行以下操作：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+
+2. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称。 
+
+3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
+
+4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -231,8 +263,8 @@ ms.locfileid: "34632102"
 
 
 <!-- Links -->
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
+[lnk-quickstart-win]: quickstart.md
+[lnk-quickstart-lin]: quickstart-linux.md
 
 <!-- Images -->
 [1]: ./media/tutorial-csharp-module/programcs.png

@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 06/26/2018
 ms.author: terrylan
-ms.openlocfilehash: 0004db332ec13e23ed49f2c19e3454a516ca6a40
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: d10cef33ef0c325d41c9539107b9a4cab5e916d8
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29531666"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059848"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>快速入门：将 Azure 订阅加入安全中心标准层
 Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁防护。 免费层只能为 Azure 资源提供有限的安全性，而标准层将这些功能扩展到了本地和其他云。 借助安全中心标准层，可以查找和修复安全漏洞、应用访问控制和应用程序控制来阻止恶意活动、使用分析和智能功能检测威胁，以及在受到攻击时迅速做出响应。 可以尝试安全中心标准版，头 60 天免费。
@@ -46,7 +46,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 在首次启动安全中心后的几分钟内，可以看到：
 
 - 有关如何改善 Azure 订阅安全性的**建议**。 单击“建议”磁贴会启动一个优先级列表。
-- 该列表中包含安全中心目前正在评估“计算”、“网络”、“存储和数据”与“应用程序”的库存以及每个项的安全局势。
+- 该列表中包含安全中心目前正在评估的“计算和应用”、“网络”、“数据安全性”以及“标识和访问”资源的清单以及每个项的安全局势。
 
 若要充分利用安全中心，需要完成以下步骤升级到标准层，并安装 Microsoft Monitoring Agent。
 

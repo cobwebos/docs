@@ -1,6 +1,6 @@
 ---
-title: Azure AD 中的权限 | Microsoft Docs
-description: 了解 Azure Active Directory 中的作用域和权限及其用法
+title: Azure Active Directory 中的权限 | Microsoft docs
+description: 了解 Azure Active Directory 中的权限及其用法。
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,21 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/20/2017
+ms.date: 06/25/2018
 ms.author: celested
-ms.reviewer: justhu
+ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 749253d6a082bcdc2b80c5984f20c4b8c4039ad0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 786757293e2ad2c47f80745f6bdd9bb5a65add80
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156885"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936949"
 ---
-# <a name="permissions-in-azure-ad"></a>Azure AD 中的权限
-Azure Active Directory (Azure AD) 对 OAuth 和 OpenID Connect (OIDC) 流广泛使用权限。 当应用从 Azure AD 接收访问令牌时，它会包含声明用于描述应用对特定资源的权限（也称为作用域）。 这样，便可以轻松进行资源授权，因为只需检查令牌是否对所要调用的 API 包含相应的权限。 
+# <a name="permissions-in-azure-active-directory"></a>Azure Active Directory 中的权限
+
+Azure Active Directory (Azure AD) 对 OAuth 和 OpenID Connect (OIDC) 流广泛使用权限。 当应用从 Azure AD 接收访问令牌时，访问令牌将包含声明，这些声明描述了应用对特定资源的权限。 利用权限（也称为作用域），资源可以轻松进行授权，因为资源只需要检查令牌是否包含对应用要调用的 API 的合适权限。 
 
 ## <a name="types-of-permissions"></a>权限的类型
+
 Azure AD 定义两种权限： 
 * **委托的权限** - 由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对 API 发出调用时，该应用可充当登录的用户。 根据具体的 API，用户可能无法直接许可 API，而是改为[要求管理员提供“管理员许可”。](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)
 * **应用程序权限** - 由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。 应用程序权限只能[由管理员许可](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)，因为它们通常非常强大，允许访问跨用户边界的数据，或者访问仅限管理员访问的数据。 
@@ -55,14 +57,14 @@ Azure AD 中的权限提供多个属性用于帮助用户、管理员或应用�
 
 | 属性名称 | 说明 | 示例 | 
 | --- | --- | --- |
-| ID | 这是唯一标识此权限的 GUID 值 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
-| IsEnabled | 指示此作用域是否可供使用。 | 是 | 
-| Type | 指示此权限是否需要用户许可或管理员许可。 | 用户 | 
-| AdminConsentDescription | 这是在管理员许可体验期间向管理员显示的说明 | 允许应用读取用户邮箱中的电子邮件。 | 
-| AdminConsentDisplayName | 这是在管理员许可体验期间向管理员显示的友好名称。 | 读取用户邮件 | 
-| UserConsentDescription | 这是在用户许可体验期间向用户显示的说明。 |  允许应用读取你邮箱中的电子邮件。 | 
-| UserConsentDisplayName | 这是在用户许可体验期间向用户显示的友好名称。 | 读取你的邮件 | 
-| 值 | 这是在 OAuth 2.0 授权流期间用于标识权限的字符串。 还可以将此值与应用 ID URI 字符串合并，以构成完全限定的权限名称。 | `Mail.Read` | 
+| `ID` | 这是唯一标识此权限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
+| `IsEnabled` | 指示此权限是否可供使用。 | 是 | 
+| `Type` | 指示此权限是否需要用户许可或管理员许可。 | 用户 | 
+| `AdminConsentDescription` | 这是在管理员许可体验期间向管理员显示的说明 | 允许应用读取用户邮箱中的电子邮件。 | 
+| `AdminConsentDisplayName` | 这是在管理员许可体验期间向管理员显示的友好名称。 | 读取用户邮件 | 
+| `UserConsentDescription` | 这是在用户许可体验期间向用户显示的说明。 |  允许应用读取你邮箱中的电子邮件。 | 
+| `UserConsentDisplayName` | 这是在用户许可体验期间向用户显示的友好名称。 | 读取你的邮件 | 
+| `Value` | 这是在 OAuth 2.0 授权流期间用于标识权限的字符串。 还可以将 `Value` 与应用 ID URI 字符串进行组合，以构成完全限定的权限名称。 | `Mail.Read` | 
 
 ## <a name="types-of-consent"></a>许可的类型
 Azure AD 中的应用程序必须获得许可才能访问所需的资源或 API。 应用可能需要了解多种类型的许可才能成功访问。 在定义权限时，还需要了解用户如何获取应用或 API 的访问权限。
@@ -70,31 +72,38 @@ Azure AD 中的应用程序必须获得许可才能访问所需的资源或 API�
 * **静态用户许可** - 在执行 [OAuth 2.0 授权流](/azure/active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code)期间指定应用想要交互的资源时自动发生。 在静态用户许可方案中，应用必须已指定它在 Azure 门户的应用配置中所需的所有权限。 如果用户（或管理员）未授予此应用的许可，则 Azure AD 现在会提示用户提供许可。 
 
     详细了解如何注册请求访问一组静态 API 的 Azure AD 应用。
-* **动态用户许可** - 是 v2 Azure AD 应用模型的一项功能。 在此方案中，应用请求它在 [v2 应用的 OAuth 2.0 授权流](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent)中所需的一组作用域。 如果用户尚未许可，系统现在会提示他们许可。 [详细了解动态许可](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent)。
+* **动态用户许可** - 是 v2 Azure AD 应用模型的一项功能。 在此方案中，你的应用请求它在 [v2 应用的 OAuth 2.0 授权流](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent)中所需的一组权限。 如果用户尚未许可，系统现在会提示他们许可。 [详细了解动态许可](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent)。
 
     > [!NOTE]
-    > 动态许可有时十分方便，但对于管理员许可的权限而言，可能会带来很大的挑战，因为管理员许可体验在许可时不知道这些权限。 如果你需要管理员特权作用域，应用必须在 Azure 门户中注册这些作用域。
+    > 动态许可有时十分方便，但对于管理员许可的权限而言，可能会带来很大的挑战，因为管理员许可体验在许可时不知道这些权限。 如果你需要管理员特权，则应用必须在 Azure 门户中注册这些权限。
   
-* **管理员同意** - 当应用需要访问特定的高特权权限时必须执行。 这可以确保管理员在授权应用或用户访问组织中的高特权数据之前拥有某些额外的控制权。 [详细了解如何授予管理员许可](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)。
+* **管理员同意** - 当应用需要访问特定的高特权权限时必须执行。 管理员同意可以确保管理员在授权应用或用户访问组织中的高特权数据之前拥有某些额外的控制权。 [详细了解如何授予管理员许可](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)。
 
 ## <a name="best-practices"></a>最佳实践
 
-### <a name="resource-best-practices"></a>资源最佳做法
-公开 API 的资源应该定义与它们所要保护的数据或操作非常相关的权限。 这有助于确保客户端最终不会有权访问它们不需要的数据，并合理告知用户他们需要许可的数据。
-
-资源应该单独显式定义 `Read` 和 `ReadWrite` 权限。 
-
-资源应将允许访问跨用户边界的数据的所有权限标记为 `Admin` 权限。 
-
-资源应遵循以下命名模式：`Subject.Permission[.Modifier]`，其中，`Subject` 对应于可用数据的类型，`Permission` 对应于用户可对该数据执行的操作，`Modifier` 是选用的，描述另一个权限的特殊性。 例如： 
-* Mail.Read - 允许用户读取邮件。 
-* Mail.ReadWrite - 允许用户读取或写入邮件。
-* Mail.ReadWrite.All - 允许管理员或用户访问组织中的所有邮件。
-
 ### <a name="client-best-practices"></a>客户端最佳实践
-只请求应用所需的作用域的权限。 拥有过多权限的应用一旦泄密，则存在透露用户数据的风险。
 
-客户端不应从同一应用请求应用程序权限和委托的权限。 这可能会导致特权提升，并允许用户访问其自身权限所不允许访问的数据。 
+- 仅请求你的应用需要的权限。 拥有过多权限的应用一旦泄密，则存在透露用户数据的风险。
+- 根据你的应用支持的方案在委派的权限与应用程序权限之间进行选择。 
+    - 如果调用是以用户身份执行的，请始终使用委派的权限。
+    - 如果应用是非交互的并且不以任何特定用户的身份执行调用，请仅使用应用程序权限。 应用程序权限有很高的特权，只有绝对必要时才应使用。
+- 使用基于 v2.0 终结点的应用时，请始终将静态权限（在应用程序注册中指定的那些权限）设置为你在运行时请求的动态权限（在代码中指定的并且在授权请求中作为查询参数发送的那些权限）的超集，以便管理员同意等方案可以正常工作。
+
+### <a name="resourceapi-best-practices"></a>资源 /API 最佳做法
+
+- 公开 API 的资源应当定义与它们所要保护的数据或操作相关的权限。 遵循此最佳做法有助于确保客户端最终不会有权访问它们不需要的数据，并合理告知用户他们需要许可的数据。
+- 资源应该单独显式定义 `Read` 和 `ReadWrite` 权限。
+- 资源应将允许访问跨用户边界的数据的所有权限标记为 `Admin` 权限。
+- 资源应当遵循命名模式 `Subject.Permission[.Modifier]`，其中：
+    - `Subject` 对应于可用的数据类型，
+    - `Permission` 对应于用户可以对该数据执行的操作，并且 
+    - 还可以使用 `Modifier` 来描述另一权限的专用化。 
+    
+    例如： 
+    * Mail.Read - 允许用户读取邮件。
+    * Mail.ReadWrite - 允许用户读取或写入邮件。
+    * Mail.ReadWrite.All - 允许管理员或用户访问组织中的所有邮件。
+
 
 
 

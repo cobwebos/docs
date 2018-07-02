@@ -2,7 +2,7 @@
 title: Azure Cosmos DB：使用 Golang 和 Azure 门户生成 MongoDB API 控制台应用 | Microsoft Docs
 description: 演示一个可以用来连接和查询 Azure Cosmos DB 的 Golang 代码示例
 services: cosmos-db
-author: Durgaprasad-Budhwani
+author: SnehaGunda
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: c02d85546a50b197639929158dc97b3d9bf7ff90
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d1a45389e95dbd7f5f762b6dee0edc3897d0c3b8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795765"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029839"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB：使用 Golang 和 Azure 门户生成 MongoDB API 控制台应用
 
@@ -210,7 +210,7 @@ if err != nil {
 ## <a name="run-the-app"></a>运行应用程序
 
 1. 在 Goglang 中，确保 GOPATH（依次单击“文件”、“设置”、“Go”、“GOPATH”即可找到）包含安装 gopkg 时所在的位置，默认为 USERPROFILE\go。 
-2. 注释掉用于删除文档的行（即第 91-96 行），这样就能在运行应用后看到文档。
+2. 注释掉用于删除文档的行（即第 103-107 行），这样就能在运行应用后看到文档。
 3. 在 Goglang 中单击“运行”，然后单击“运行‘生成 main.go 并运行’”。
 
     应用完成后，将会显示在[创建文档](#create-document)中创建的文档的说明。

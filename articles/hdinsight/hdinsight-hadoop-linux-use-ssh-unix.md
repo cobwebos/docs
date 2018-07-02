@@ -17,12 +17,12 @@ ms.workload: big-data
 ms.date: 04/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 359b458d5fa9089fd7f35f94cd3f0265dc8ea3c9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a76dbb9a232d99615629d1a3fec6010b37e73247
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179055"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046772"
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Hadoop)
 
@@ -32,7 +32,7 @@ HDInsight 可以使用 Linux (Ubuntu) 作为 Hadoop 群集中节点的操作系�
 
 | 地址 | 端口 | 连接到... |
 | ----- | ----- | ----- |
-| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | 边缘节点（HDInsight 上的 R Server） |
+| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | 边缘节点 (ML Services on HDInsight) |
 | `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | 边缘节点（如果存在边缘节点，则可以是任何其他群集类型） |
 | `<clustername>-ssh.azurehdinsight.net` | 22 | 主头节点 |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | 辅助头节点 |

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: e32fa771595fdc4bf5fe54ec14630961d467d40f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c9cc94cbfb7575181a65cf21fdd8d19d2fd818f7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32176868"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049774"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 本教程使用 Azure 门户创建 Azure 数据工厂管道。 该管道使用 Spark 活动和按需 Azure HDInsight 链接服务转换数据。 
@@ -29,9 +29,6 @@ ms.locfileid: "32176868"
 > * 创建使用 Spark 活动的管道。
 > * 触发管道运行。
 > * 监视管道运行。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
 
@@ -98,7 +95,7 @@ ms.locfileid: "32176868"
    - 选择“新建”，并输入资源组的名称。   
          
    本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-5. 对于“版本”，请选择“V2 (预览版)”。
+5. 对于“版本”，选择“V2”。
 6. 对于“位置”，请选择数据工厂所在的位置。 
 
    目前，数据工厂 V2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 HDInsight）可以位于其他区域。

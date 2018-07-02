@@ -3,7 +3,7 @@ title: 使用更改跟踪和 Azure 数据工厂以增量方式复制数据 | Mic
 description: '在本教程中，请创建一个 Azure 数据工厂管道，将增量数据以增量方式从本地 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。 '
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: jingwang
-ms.openlocfilehash: d8299778ce5b713f4275a28c7f174a300197a6a2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: fc2aca7cf4bd566e0bbdd1530d68a306dba9ce5b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30184592"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051410"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -34,11 +34,8 @@ ms.locfileid: "30184592"
 > * 在源表中添加或更新数据
 > * 创建、运行和监视增量复制管道
 
-> [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-
 ## <a name="overview"></a>概述
-在数据集成解决方案中，一种广泛使用的方案是在完成初始数据加载后以增量方式加载数据。 在某些情况下，可以通过某种方式（例如，使用 LastModifyTime、CreationTime 等属性）将源数据存储中某个时段的更改数据轻松地进行切分。 在某些情况下，没有明确的方式可以将增量数据从上一次处理过的数据中区分出来。 可以使用 Azure SQL 数据库、SQL Server 等数据存储支持的更改跟踪技术来确定增量数据。  本教程介绍如何将 Azure 数据工厂第 2 版与 SQL 更改跟踪技术配合使用，通过增量方式将增量数据从 Azure SQL 数据库加载到 Azure Blob 存储中。  有关 SQL 更改跟踪技术的更具体的信息，请参阅 [SQL Server 中的更改跟踪](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 
+在数据集成解决方案中，一种广泛使用的方案是在完成初始数据加载后以增量方式加载数据。 在某些情况下，可以通过某种方式（例如，使用 LastModifyTime、CreationTime 等属性）将源数据存储中某个时段的更改数据轻松地进行切分。 在某些情况下，没有明确的方式可以将增量数据从上一次处理过的数据中区分出来。 可以使用 Azure SQL 数据库、SQL Server 等数据存储支持的更改跟踪技术来确定增量数据。  本教程介绍如何将 Azure 数据工厂与 SQL 更改跟踪技术配合使用，通过增量方式将增量数据从 Azure SQL 数据库加载到 Azure Blob 存储中。  有关 SQL 更改跟踪技术的更具体的信息，请参阅 [SQL Server 中的更改跟踪](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 
 
 ## <a name="end-to-end-workflow"></a>端到端工作流
 下面是典型的端到端工作流步骤，用于通过更改跟踪技术以增量方式加载数据。
@@ -192,7 +189,7 @@ ms.locfileid: "30184592"
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
-* 目前，数据工厂版本 2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 目前，数据工厂仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务

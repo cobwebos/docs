@@ -11,25 +11,22 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 69c0661f515f062a6a99b0692130d52eb23d20d6
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 454eaba26155b2bf4a0381af98047dbcbb514bb5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285893"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046810"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [版本 2 - 预览版](quickstart-create-data-factory-portal.md)
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [当前版本](quickstart-create-data-factory-portal.md)
 
 本快速入门介绍如何使用 Azure 数据工厂 UI 创建和监视数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-portal.md)。 
 
-
 > [!NOTE]
 > 如果你对 Azure 数据工厂不太熟悉，请在学习本快速入门之前参阅 [Azure 数据工厂简介](data-factory-introduction.md)。 
->
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用第 1 版的服务（即正式版 (GA)），请参阅[数据工厂第 1 版教程](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -58,7 +55,7 @@ ms.locfileid: "36285893"
    - 选择“新建”，并输入资源组的名称。   
          
    若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-4. 对于“版本”，请选择“V2 (预览版)”。
+4. 对于“版本”，选择“V2”。
 5. 对于“位置”，请选择数据工厂所在的位置。
 
    列表仅显示数据工厂支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 Azure HDInsight）可以位于其他位置。
@@ -160,7 +157,7 @@ ms.locfileid: "36285893"
 3. 确认可以在 **adftutorial** 容器的 **output** 文件夹中看到输出文件。 如果 output 文件夹不存在，数据工厂服务会自动创建它。 
 
 ## <a name="trigger-the-pipeline-manually"></a>手动触发管道
-在此过程中，请将实体（链接服务、数据集、管道）部署到 Azure 数据工厂， 然后手动触发管道运行。 也可将实体发布到自己的 Visual Studio Team Services GIT 存储库，这在[另一教程](tutorial-copy-data-portal.md?#configure-code-repository)中有介绍。
+在此过程中，请将实体（链接服务、数据集、管道）部署到 Azure 数据工厂， 然后手动触发管道运行。 
 
 1. 在触发管道之前，必须将实体发布到数据工厂。 若要进行发布，请选择顶部的“全部发布”。 
 

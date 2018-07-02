@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1e82c73c1d2984631e8d2dd2eb0f93c9751a1cf1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 135cfbb148f2e47819c41c7874e4a5e08335f6bf
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406382"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050441"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>教程：使用 Visual Studio 创建带有复制活动的管道
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "31406382"
 > 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[版本 2 中的复制活动教程文档](../quickstart-create-data-factory-dot-net.md)。 
+> 本文适用于数据工厂版本 1。 如果你使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
 
 本文介绍如何使用 Microsoft Visual Studio 创建数据工厂，以便通过管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 如果不熟悉 Azure 数据工厂，请在学习本教程之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)一文。   
 

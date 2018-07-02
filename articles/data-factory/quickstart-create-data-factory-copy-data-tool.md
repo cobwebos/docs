@@ -11,25 +11,22 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 23d4afffbe108d439dd53d95ed81f7d9fc4246ef
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284566"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048020"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>使用“复制数据”工具复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [版本 2 - 预览版](quickstart-create-data-factory-copy-data-tool.md)
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [当前版本](quickstart-create-data-factory-copy-data-tool.md)
 
 在本快速入门中，我们将使用 Azure 门户创建一个数据工厂。 然后，使用“复制数据”工具创建一个管道，用于将数据从 Azure Blob 存储中的某个文件夹复制到另一个文件夹。 
 
 > [!NOTE]
 > 如果你对 Azure 数据工厂不太熟悉，请在学习本快速入门之前参阅 [Azure 数据工厂简介](data-factory-introduction.md)。 
->
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用版本 1 的服务（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -52,7 +49,7 @@ ms.locfileid: "36284566"
    - 选择“新建”，并输入资源组的名称。   
          
    若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-4. 对于“版本”，请选择“V2 (预览版)”。
+4. 对于“版本”，选择“V2”。
 5. 对于“位置”，请选择数据工厂所在的位置。 
 
    此列表仅显示支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 Azure HDInsight）可以位于其他位置/区域。
@@ -85,7 +82,7 @@ ms.locfileid: "36284566"
 
     ![从库中选择 Blob 存储](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. 在“指定 Azure Blob 存储帐户”页中，从“存储帐户名称”列表中选择自己的存储帐户，然后选择“下一步”。 
+    c. 在“指定 Azure Blob 存储帐户”页中，从“存储帐户名称”列表中选择自己的存储帐户，然后选择“完成”。 
 
    ![配置 Azure Blob 存储帐户](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 

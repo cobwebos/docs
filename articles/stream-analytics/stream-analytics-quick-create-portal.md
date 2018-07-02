@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1e7245afe36d348b1cbd955900e34876b8e34511
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651720"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031424"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
@@ -40,7 +40,7 @@ ms.locfileid: "34651720"
      "hmdt": 44
    }
    ```
-2. 登录到 Azure 门户。  
+2. 登录到 [Azure 门户](https://portal.azure.com/)。  
 
 3. 从 Azure 门户的左上角选择“创建资源” > “存储” > “存储帐户”。 填充“存储帐户作业”页，将“名称”设置为“asaquickstartstorage”，将“位置”设置为“美国西部 2”，将“资源组”设置为“asaquickstart-resourcegroup”（请将存储帐户托管在流式处理作业所在的资源组中，以便提高性能）。 余下设置可以保留默认值。  
 
@@ -116,7 +116,7 @@ ms.locfileid: "34651720"
    |---------|---------|---------|
    |输出别名 |   BlobOutput   |   输入一个名称，用于标识作业的输出。 |
    |订阅  |  用户的订阅\<\>  |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
-   |存储帐户 |  myasastorageaccount |   选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。       |
+   |存储帐户 |  asaquickstartstorage |   选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。       |
    |容器 |   container1  |  选择你在存储帐户中创建的现有容器。   |
    |路径模式 |   output  |  输入一个名称作为输出的现有容器中的路径。   |
 

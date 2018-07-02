@@ -12,17 +12,26 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 85dc16b07b72f2e8c1ed00fb5dd25288b985ae21
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 576558f7ab3ae9a0e3ceebb65d19f689b4836022
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603037"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958810"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
-应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure 资源管理器以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助你在部署后管理资源。 
+应用程序的基础结构通常由许多组件构成，其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不作为独立的实体出现，而是作为单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure 资源管理器以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。 
+
+## <a name="consistent-management-layer"></a>一致的管理层
+资源管理器针对通过 Azure PowerShell、Azure CLI、Azure 门户、REST API 和客户端 SDK 来执行任务提供了一致的管理层。 在 Azure 门户中提供的所有功能也可以通过 Azure PowerShell、Azure CLI、Azure REST API 和客户端 SDK 来提供。 最初通过 API 发布的功能将在初次发布后的 180 天内在门户中提供。
+
+选择最适合你的工具和 API - 它们具有相同的功能并提供一致的结果。
+
+下图显示各种工具如何与同一 Azure 资源管理器 API 交互。 API 将请求传递给 Resource Manager 服务，后者对请求进行身份验证和授权。 Resource Manager 随后将请求路由到相应的资源提供程序。
+
+![Resource Manager 请求模型](./media/resource-group-overview/consistent-management-layer.png)
 
 ## <a name="terminology"></a>术语
 如果不熟悉 Azure 资源管理器，则可能不熟悉某些术语。
@@ -44,14 +53,7 @@ ms.locfileid: "34603037"
 * 可以将标记应用到资源，以逻辑方式组织订阅中的所有资源。
 * 可以通过查看一组共享相同标记的资源的成本来理清组织的帐单。  
 
-Resource Manager 提供了一种新方法来部署和管理解决方案。 如果使用早期的部署模型并想了解这些更改，请参阅[了解 Resource Manager 部署和经典部署](resource-manager-deployment-model.md)。
-
-## <a name="consistent-management-layer"></a>一致的管理层
-Resource Manager 提供一致的管理层，用于管理通过 Azure PowerShell、Azure CLI、Azure 门户、REST API 和开发工具执行的任务。 所有工具使用一组通用操作。 使用最适合的工具，并可交替使用而不会混淆。 
-
-下图显示各种工具如何与同一 Azure 资源管理器 API 交互。 API 将请求传递给 Resource Manager 服务，后者对请求进行身份验证和授权。 Resource Manager 随后将请求路由到相应的资源提供程序。
-
-![Resource Manager 请求模型](./media/resource-group-overview/consistent-management-layer.png)
+Resource Manager 提供了一种新方法来部署和管理解决方案。 如果使用早期的部署模型并想要了解这些更改，请参阅[了解 Resource Manager 部署和经典部署](resource-manager-deployment-model.md)。
 
 ## <a name="guidance"></a>指南
 以下建议将帮助你在使用解决方案时充分利用 Resource Manager。
@@ -142,7 +144,7 @@ Azure 资源管理器会分析依赖关系，以确保按正确的顺序创建�
 
 还可以使用模板对基础结构进行更新。 例如，可以将新的资源添加到应用程序，并为已部署的资源添加配置规则。 如果模板指定要创建资源，但该资源已存在，则 Azure 资源管理器将执行更新而不是创建新资产。 Azure 资源管理器会将现有资产更新到相同状态，就如同该资产是新建的一样。  
 
-如果需要其他操作（例如，安装未包含在安装程序中的特定软件）时，Resource Manager 可提供所需的扩展。 如果已在使用配置管理服务（如 DSC、Chef 或 Puppet），则可以使用扩展来继续处理该服务。 有关虚拟机扩展的信息，请参阅[关于虚拟机扩展和功能](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+如果需要其他操作（例如，安装未包含在安装程序中的特定软件）时，资源管理器可提供所需的扩展。 如果已在使用配置管理服务（如 DSC、Chef 或 Puppet），则可以使用扩展来继续处理该服务。 有关虚拟机扩展的信息，请参阅[关于虚拟机扩展和功能](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 最后，该模板将成为应用程序源代码的一部分。 可以将它签入源代码存储库，并随着应用程序的发展更新该模板。 可以通过 Visual Studio 编辑模板。
 
@@ -154,7 +156,7 @@ Azure 资源管理器会分析依赖关系，以确保按正确的顺序创建�
 * [使用 Resource Manager 模板和 Resource Manager REST API 部署资源](resource-group-template-deploy-rest.md)
 
 ## <a name="tags"></a>标记
-资源管理器提供了标记功能，可根据管理或计费要求为资源分类。 如果有一系列复杂的资源组和资源，并想要以最有利的方式可视化这些资产，则可以使用标记。 例如，可以标记组织中充当类似角色或者属于同一部门的资源。 如果不使用标记，组织中的用户可以创建多个资源，这可能会使将来的标识和管理变得十分困难。 例如，你可能想要删除某个特定项目的所有资源。 如果未对项目的这些资源使用标记，则需要手动查找它们。 标记是降低不必要的订阅成本的重要方法。 
+资源管理器提供了标记功能，可根据管理或计费要求为资源分类。 如果有一系列复杂的资源组和资源，并想要以最有利的方式可视化这些资产，则可以使用标记。 例如，可以标记组织中充当类似角色或者属于同一部门的资源。 如果不使用标记，组织中的用户可以创建多个资源，这可能会使将来的标识和管理变得十分困难。 例如，你可能想要删除某个特定项目的所有资源。 如果没有为项目标记这些资源，则必须手动查找它们。 标记是降低不必要的订阅成本的重要方法。 
 
 资源不需要驻留在同一个资源组中就能共享一个标记。 可以创建自己的标记分类，以确保组织中的所有用户使用公用的标记，避免用户无意中应用稍有不同的标记（如“dept”而不是“department”）。
 
@@ -227,7 +229,7 @@ Azure 还提供多个特定于资源的角色。 常见的此类角色有：
 可以显式锁定关键资源，以防止用户删除或修改这些资源。 有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](resource-group-lock-resources.md)。
 
 ## <a name="activity-logs"></a>活动日志
-Resource Manager 将记录创建、修改或删除资源的所有操作。 活动日志可用于在故障排除时查找错误，或用于监视组织内用户对资源的修改。 若要查看日志，请在某资源组的“设置”边栏选项卡选择“活动日志”。 可按多个值筛选日志，包括启动操作的用户。 有关使用活动日志的信息，请参阅[查看活动日志以管理 Azure 资源](resource-group-audit.md)。
+Resource Manager 将记录创建、修改或删除资源的所有操作。 活动日志可用于在故障排除时查找错误，或用于监视组织内用户对资源的修改。 可按多个值筛选日志，包括启动操作的用户。 有关使用活动日志的信息，请参阅[查看活动日志以管理 Azure 资源](resource-group-audit.md)。
 
 ## <a name="customized-policies"></a>自定义策略
 资源管理器可创建自定义策略来管理资源。 创建的策略的类型可以包括各种应用场景。 可以对资源实施命名约定，限制可以部署的资源类型和实例，或限制可以托管某个类型资源的区域。 可以获取资源的标记值以按部门组织帐单。 可以通过创建策略来降低成本并在订阅中保持一致性。 
@@ -255,7 +257,7 @@ Resource Manager 将记录创建、修改或删除资源的所有操作。 活�
 ## <a name="sdks"></a>SDK
 Azure SDK 适用于多种语言和平台。 每种语言实现可通过其生态系统包管理器和 GitHub 来使用。
 
-以下是我们的开放源代码 SDK 存储库。 欢迎提出反馈、问题和要求。
+下面是开放源代码 SDK 存储库。
 
 * [用于 .NET 的 Azure SDK](https://github.com/Azure/azure-sdk-for-net)
 * [适用于 Java 的 Azure 管理库](https://github.com/Azure/azure-sdk-for-java)

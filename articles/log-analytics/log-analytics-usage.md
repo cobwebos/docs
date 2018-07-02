@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ceb350883bc6f2b40d88d5cf595b06b074013d1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9a9c898cf0f2e0b1387bbc2ac18b5009838d138b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209810"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317297"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
 Log Analytics 包括以下信息：收集的数据量、哪些源发送了数据、所发送数据的不同类型。  使用“Log Analytics 使用情况”仪表板查看和分析数据使用情况。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
@@ -151,7 +151,7 @@ Azure 警报支持使用搜索查询的[日志警报](../monitoring-and-diagnost
 
 | 高数据量来源 | 如何减少数据量 |
 | -------------------------- | ------------------------- |
-| 安全性事件            | 选择[通用或最低安全性事件](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) <br> 更改安全审核策略，只收集所需事件。 具体而言，请查看是否需要收集以下对象的事件： <br> - [审核筛选平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [审核注册表](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [审核文件系统](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [审核内核对象](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [审核句柄操作](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [审核可移动存储](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
+| 安全性事件            | 选择[通用或最低安全性事件](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) <br> 更改安全审核策略，只收集所需事件。 具体而言，请查看是否需要收集以下对象的事件： <br> - [审核筛选平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [审核注册表](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [审核文件系统](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [审核内核对象](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [审核句柄操作](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 审核可移动存储 |
 | 性能计数器       | 更改[性能计数器配置](log-analytics-data-sources-performance-counters.md)如下： <br> - 降低收集频率 <br> - 减少性能计数器数 |
 | 事件日志                 | 更改[事件日志配置](log-analytics-data-sources-windows-events.md)如下： <br> - 减少收集的事件日志数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”级别事件 |
 | Syslog                     | 更改 [syslog 配置](log-analytics-data-sources-syslog.md)如下： <br> - 减少收集的设施数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”和“调试”级别事件 |

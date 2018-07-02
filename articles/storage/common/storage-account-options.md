@@ -7,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 06/22/2018
 ms.author: hux
-ms.openlocfilehash: d6279a308bc4539184cca37c1343afe8725eca7f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248293"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335765"
 ---
 # <a name="azure-storage-account-options"></a>Azure 存储帐户选项
 
@@ -76,32 +76,27 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 > [!NOTE]
 > Blob 存储帐户仅支持块 blob 和追加 blob，不支持页 blob。
+>
+> 大多数情况下，Microsoft 建议使用常规用途 v2 存储帐户而不是 Blob 存储帐户。
 
 ## <a name="recommendations"></a>建议
 
 有关存储帐户的详细信息，请参阅[关于 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-对于仅需块 Blob 或追加 Blob 存储的应用程序，建议使用 GPv2 存储帐户，充分利用分层存储的差异化定价模型。 但是，在某些情况下可能需要使用 GPv1，例如：
+对于需要最新的块或追加 Blob 功能的应用程序，建议使用 GPv2 存储帐户，充分利用分层存储的差异化定价模型。 但是，在某些情况下可能需要使用 GPv1，例如：
 
 * 仍需使用经典部署模型。 GPv2 和 Blob 存储帐户只能通过 Azure 资源管理器部署模型使用。
-
 * 所使用的事务量较大或异地复制带宽较高，这二者在 GPv2 和 Blob 存储帐户中的成本比 GPv1 中的要高，并且存储不够大，无法充分利用单 GB 存储成本较低这一优势。
-
 * 使用了早于 2014-02-14 的 [存储服务 REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) 的版本或使用了版本低于 4.x 的客户端库，并且无法升级应用程序。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 所有存储帐户使用的定价模型都适用于 Blob 存储，具体取决于每个 Blob 的层。 使用存储帐户时，需要考虑到以下计费因素：
 
 * **存储成本**：除了存储的数据量，存储数据的成本将因存储层而异。 层越冷，单 GB 成本越低。
-
 * **数据访问成本**：层越冷，数据访问费用越高。 对于冷存储层和存档存储层中的数据，需要按 GB 支付读取方面的数据访问费用。
-
 * **事务成本**：层越冷，每个层的按事务收费越高。
-
 * **异地复制数据传输成本**：此费用仅适用于配置了异地复制的帐户，包括 GRS 和 RA-GRS。 异地复制数据传输会产生每 GB 费用。
-
 * **出站数据传输成本**：出站数据传输（传出 Azure 区域的数据）会按每 GB 产生带宽使用费，与通用存储帐户一致。
-
 * **更改存储层**：将帐户存储层从“冷”更改为“热”会产生费用，费用等于读取存储帐户中存在的所有数据的费用。 但是，将帐户存储层从热更改为冷产生的费用则相当于将所有数据写入冷层（仅限 GPv2 帐户）。
 
 > [!NOTE]
@@ -156,7 +151,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 若要导航到你的存储帐户，请选择“所有资源”，然后选择你的存储帐户。
+2. 若要导航到存储帐户：请选择“所有资源”，然后选择存储帐户。
 
 3. 在“设置”部分单击“配置”。
 
@@ -205,7 +200,6 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 若要估算在 GPv2 存储帐户中存储和访问数据所需的成本，需评估现有的使用模式，或对预期的使用模式进行一个大致的估计。 一般情况下，需了解：
 
 * 存储消耗 - 正在存储的数据量以及每月如何变化？
-
 * 存储访问模式 - 从帐户读取以及写入到帐户的数据量（包括新数据）？ 使用了多少事务来进行数据访问？这些事务是什么类型的事务？
 
 ## <a name="monitoring-existing-storage-accounts"></a>监视现有存储帐户
@@ -256,10 +250,9 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 虽然存储分析不提供从存储帐户读取以及写入到存储帐户的数据量，但该数据量可以通过查看事务度量值表来大致进行估算。 事务度量值表中某个 API 的所有条目的 “ *TotalIngress* ”计得之和表示该特定 API 的传入数据的总量。 与此类似，“ *TotalEgress* ”计得之和表示传出数据的总量，以字节为单位。
 
-若要估算 Blob 存储帐户的数据访问费用，需将事务细分成两组。
+若要估算 Blob 存储帐户的数据访问成本，需将事务细分成两组：
 
 * 从存储帐户检索的数据量可以通过查看主要为 'GetBlob' 和 'CopyBlob' 操作的 'TotalEgress' 计得之和来估算。
-
 * 写入到存储帐户的数据量可以通过查看主要为 'PutBlob'、'PutBlock'、'CopyBlob' 和 'AppendBlock' 操作的 'TotalIngress' 计得之和来估算。
 
 在使用 GRS 或 RA-GRS 存储帐户时，也可以通过所写入数据量的估算值来计算 Blob 存储帐户的异地复制数据传输费用。
@@ -336,11 +329,11 @@ GPv2 和 Blob 存储帐户的热存储层中 Blob 的延迟与 GPv1 存储帐户
 
 **是否可以将页 blob 和虚拟机磁盘存储在 Blob 存储帐户中？**
 
-不会。 Blob 存储帐户仅支持块 blob 和追加 blob，不支持页 blob。 Azure 虚拟机磁盘由页 blob 支持，因此不能使用 Blob 存储帐户来存储虚拟机磁盘。 但是，可以在 Blob 存储帐户中将虚拟机磁盘的备份存储为块 blob。 如果需要考虑使用 GPv2 来代替 Blob 存储帐户，则这是原因之一。
+不是。 Blob 存储帐户仅支持块 blob 和追加 blob，不支持页 blob。 Azure 虚拟机磁盘由页 blob 支持，因此不能使用 Blob 存储帐户来存储虚拟机磁盘。 但是，可以在 Blob 存储帐户中将虚拟机磁盘的备份存储为块 blob。 如果需要考虑使用 GPv2 来代替 Blob 存储帐户，则这是原因之一。
 
 **是否可以为 GPv2 存储帐户中的页 Blob 确定层次？**
 
-不可以。 页 blob 会推断帐户的存储层，但它对定价或可用性没有影响。 无法将页 blob 的访问层更改为“热”、“冷”或“存档”。 高级存储帐户中允许对页 blob 执行“设置 Blob 层”操作，但该操作仅确定高级页 blob 允许的大小、IOPS 和带宽。 有关详细信息，请参阅[设置 Blob 层](https://docs.microsoft.com/en-us/rest/api/storageservices/set-blob-tier)。
+不是。 页 blob 会推断帐户的存储层，但它对定价或可用性没有影响。 无法将页 blob 的访问层更改为“热”、“冷”或“存档”。 高级存储帐户中允许对页 blob 执行“设置 Blob 层”操作，但该操作仅确定高级页 blob 允许的大小、IOPS 和带宽。 有关详细信息，请参阅[设置 Blob 层](https://docs.microsoft.com/en-us/rest/api/storageservices/set-blob-tier)。
 
 **是否需要更改现有应用程序才能使用 GPv2 存储帐户？**
 

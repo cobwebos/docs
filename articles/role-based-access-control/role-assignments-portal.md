@@ -1,6 +1,6 @@
 ---
 title: 使用 RBAC 和 Azure 门户管理访问权限 | Microsoft Docs
-description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure 门户来管理用户、组和应用程序的访问权限。 这包括列出访问权限、授予访问权限以及删除访问权限。
+description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure 门户来管理用户、组和应用程序的访问权限。 这包括如何列出访问权限、授予访问权限以及删除访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8f2c77a366c96455016894c042868d080551bc6a
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 0aec1f50225bea25d5f68289c22ccc7b69703f7a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295858"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317940"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>使用 RBAC 和 Azure 门户管理访问权限
 

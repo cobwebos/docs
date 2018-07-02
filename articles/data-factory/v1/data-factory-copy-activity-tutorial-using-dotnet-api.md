@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4e6fe47f148d6b9cb13d41bda9622a279f8bb93
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: bc88ed342f833123c74bd91db9b838473b5f88aa
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31594250"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054456"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教程：使用 .NET API 创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "31594250"
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[版本 2 中的复制活动教程文档](../quickstart-create-data-factory-dot-net.md)。 
+> 本文适用于数据工厂版本 1。 如果你使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
 
 本文介绍如何使用 [.NET API](https://portal.azure.com) 创建数据工厂，以便通过管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 如果不熟悉 Azure 数据工厂，请在学习本教程之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)一文。   
 

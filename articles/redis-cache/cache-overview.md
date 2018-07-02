@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 8f477282e49104e9b034e11656ff50c2a67545f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5efb0087c8e1ea55051d8eb7b209059b3abd5c5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195866"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062753"
 ---
 # <a name="what-is-azure-redis-cache"></a>什么是 Azure Redis 缓存
 
@@ -77,6 +77,7 @@ Azure Redis 缓存在下述层中提供：
 
 * [ASP.NET Web 应用快速入门](cache-web-app-howto.md)：创建简单的使用 Azure Redis 缓存的 ASP.NET Web 应用。
 * [.NET 快速入门](cache-dotnet-how-to-use-azure-redis-cache.md)：创建使用 Azure Redis 缓存的 .NET 应用。
+* [.NET Core 快速入门](cache-dotnet-core-quickstart.md)：创建使用 Azure Redis 缓存的 .NET Core 应用。
 * [Node.js 快速入门](cache-nodejs-get-started.md)：创建简单的使用 Azure Redis 缓存的 Node.js 应用。
 * [Java 快速入门](cache-java-get-started.md)：创建简单的使用 Azure Redis 缓存的 Java 应用。
 * [Python 快速入门](cache-python-get-started.md)：创建使用 Azure Redis 缓存的 Python 应用。

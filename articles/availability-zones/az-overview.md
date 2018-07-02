@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 06/27/2018
 ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 7a67d65621da129640d3bb551cb0976ec1912050
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 6a4dcc2cd3b196221b881783c79ddb0adaa6f38b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284798"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063657"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>什么是 Azure 中的可用性区域？
 可用性区域是一个高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 区域中可用性区域的物理隔离可以在发生数据中心故障的情况下保护应用程序和数据。 区域冗余服务可跨可用性区域复制应用程序和数据，以防范单点故障。 Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
@@ -42,7 +42,7 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 - 美国中部
 - 法国中部
 - 美国东部 2（预览版）
-- 西欧（预览版）
+- 西欧
 - 东南亚（预览版）
 
 
@@ -59,6 +59,8 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 - SQL 数据库
 - 事件中心
 - 服务总线
+- VPN 网关
+- ExpressRoute
 
 
 ## <a name="pricing"></a>定价
@@ -73,6 +75,9 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 - [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
 - [SQL 数据库](../sql-database/sql-database-high-availability.md#zone-redundant-configuration-preview)
+- [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+- [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+- [创建区域冗余的虚拟网关](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 
 ## <a name="next-steps"></a>后续步骤

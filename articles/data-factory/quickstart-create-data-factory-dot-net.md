@@ -13,23 +13,21 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: c5b7af290a5e5c45d3f64ccb50586db0811dd592
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b934cff674ee6967c9ae97baa5c3b93226600e87
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30265486"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046334"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>使用 .NET SDK 创建数据工厂和管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [版本 2 - 预览版](quickstart-create-data-factory-dot-net.md)
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [当前版本](quickstart-create-data-factory-dot-net.md)
 
 此快速入门介绍了如何使用 .NET SDK 创建一个 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
->
 > 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -461,7 +459,7 @@ Checking copy activity run details...
     "throughput": 14073.209,
     "errors": [],
     "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
-    "usedCloudDataMovementUnits": 2,
+    "usedDataIntegrationUnits": 2,
     "billedDuration": 23
 }
 

@@ -13,23 +13,21 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 2769be7097ebc65bc7c022ebd2e3f2de6e57e9b8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 525a11d0cbb10d4170930fb4df362e0a9ea024e2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30839545"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054269"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-build-your-first-pipeline-using-arm.md)
-> * [版本 2 - 预览版](quickstart-create-data-factory-resource-manager-template.md) 
+> * [版本 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
+> * [当前版本](quickstart-create-data-factory-resource-manager-template.md) 
 
 本快速入门介绍如何使用 Azure 资源管理器模板来创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。 
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[使用数据工厂版本 1 构建第一个数据工厂](v1/data-factory-build-your-first-pipeline-using-arm.md)。
->
 > 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 

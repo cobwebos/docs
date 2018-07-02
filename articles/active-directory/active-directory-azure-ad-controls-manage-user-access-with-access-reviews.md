@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.component: compliance-reports
-ms.date: 05/16/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 22cb517435777074390321de64daf98c8d12d0fb
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 86ca14c8865ee82d61cb63a20f66c508f532f124
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35232959"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019996"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理用户访问权限
 
@@ -43,7 +43,7 @@ ms.locfileid: "35232959"
 
 2. 决定是由每个用户评审自己的访问权限，还是由一个或多个用户评审每个人的访问权限。
 
-3. 使访问评审能够显示在审阅者的访问面板上。 以全局管理员身份转到[访问评审页面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
+3. 使访问评审能够显示在审阅者的访问面板上。 以全局管理员或用户帐户管理员身份，转到[访问评审页面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
 4. 开始访问评审。 有关详细信息，请参阅[创建访问评审](active-directory-azure-ad-controls-create-access-review.md)。
 

@@ -13,24 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ceff54b15ef70c9654142566bb1d54b6a7990833
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293473"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048632"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [版本 1 - 正式版](v1/data-factory-scheduling-and-execution.md)
-> * [版本 2 - 预览版](concepts-pipeline-execution-triggers.md)
+> * [版本 1](v1/data-factory-scheduling-and-execution.md)
+> * [当前版本](concepts-pipeline-execution-triggers.md)
 
-“管道运行”在 Azure 数据工厂第 2 版中用于定义管道执行的实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。 
+Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。 
 
 管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道时，可以手动，也可以使用触发器。 本文提供了有关执行管道的两种方式的详细信息。
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用 Azure 数据工厂第 1 版（即正式版 (GA)），请参阅 [Azure 数据工厂第 1 版中的计划和执行](v1/data-factory-scheduling-and-execution.md)。
 
 ## <a name="manual-execution-on-demand"></a>手动执行（按需）
 管道的手动执行也称为按需执行。
@@ -136,7 +133,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 > 可以使用 .NET SDK 从 Azure Functions、自己的 Web 服务等位置调用数据工厂管道。
 
 <h2 id="triggers">触发器执行</h2>
-触发器是可以执行管道运行的另一种方法。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持两种类型的触发器：
+触发器是可以执行管道运行的另一种方法。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持三种类型的触发器：
 
 - 计划触发器：按时钟计划调用管道的触发器。
 

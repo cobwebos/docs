@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 0507208e58323fd31bb7c6cdb3a293ec0179cabe
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: efd19393a661a48a566e85a058dad071c3bdb63c
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823905"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945983"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>通过 Node.js 开始使用 Azure Dev Spaces
 
@@ -32,7 +32,7 @@ ms.locfileid: "34823905"
 Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发环境的大部分配置存储在云中，可以与其他用户共享。 首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 > [!IMPORTANT]
-> 如果已安装 Azure CLI，请确保使用 2.0.33 版或更高版本。
+> 如果已安装 Azure CLI，请确保使用 2.0.38 版或更高版本。
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -68,7 +68,7 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 发生了什么情况？ 对内容文件（例如 HTML 和 CSS）所做的编辑不需要 Node.js 进程重启，因此活动的 `azds up` 命令会自动将任何修改的内容文件直接同步到 Azure 中正在运行的容器，方便你快速查看所做的内容编辑。
 
 ### <a name="test-from-a-mobile-device"></a>从移动设备进行测试
-如果在移动设备上打开 Web 应用，你会注意到 UI 在小型设备上显示不正确。
+使用 webfrontend 的公共 URL 在移动设备上打开该 Web 应用。 你可能希望将该 URL 从桌面复制并发送到设备，以避免输入长长的地址。 当该 Web 应用在移动设备中加载时，你会注意到 UI 在小型设备上不能正确显示。
 
 若要修复此问题，可添加一个 `viewport` META 标记：
 1. 打开 `./public/index.html` 文件
@@ -113,7 +113,7 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 1. 若要打开“调试”视图，请单击 VS Code 侧**活动栏**中的“调试”图标。
 1. 选择“启动程序(AZDS)”作为活动的调试配置。
 
-![](media/get-started-node/debug-configuration-nodejs.png)
+![](media/get-started-node/debug-configuration-nodejs2.png)
 
 > [!Note]
 > 如果在命令面板中看不到任何 Azure Dev Spaces 命令，请确保已[安装 Azure Dev Spaces 的 VS Code 扩展](get-started-nodejs.md#get-kubernetes-debugging-for-vs-code)。

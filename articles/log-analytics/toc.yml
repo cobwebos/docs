@@ -39,6 +39,8 @@
       href: log-analytics-data-security.md
     - name: 管理访问权限
       href: log-analytics-manage-access.md
+    - name: 代理概述
+      href: ../monitoring/monitoring-overview-azure-agents.md
     - name: 监视混合环境
       href: log-analytics-concept-hybrid.md
     - name: 适用于服务提供商的功能

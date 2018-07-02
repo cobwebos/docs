@@ -1,11 +1,11 @@
 - name: 计算机视觉文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 什么是计算机视觉？
       href: Home.md
-- name: 快速入门
-  expanded: true
+- name: API 快速入门
   items:
     - name: 摘要
       href: QuickStarts/quickstart-summary.md
@@ -97,6 +97,16 @@
           href: QuickStarts/ruby-thumb.md
         - name: 提取打印的文本
           href: QuickStarts/ruby-print-text.md
+- name: SDK 快速入门
+  items:
+    - name: 'C#'
+      items:
+        - name: 分析图像
+          href: quickstarts-sdk/csharp-analyze-sdk.md
+        - name: 生成缩略图
+          href: quickstarts-sdk/csharp-thumb-sdk.md
+        - name: 提取手写的文本
+          href: quickstarts-sdk/csharp-hand-text-sdk.md
 - name: 操作指南
   items:
     - name: 第一个计算机视觉应用

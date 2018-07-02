@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: v-geberr
-ms.openlocfilehash: c31e7d130d02ab6b0fad7577026e557692c2b60e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 317d5b37b90f6c436e3cecf0486d587f54960598
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285944"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316536"
 ---
 # <a name="tutorial-use-regular-expression-entity"></a>教程：使用正则表达式实体
 在本教程中，我们将创建一个应用，用于演示如何使用**正则表达式**实体，从陈述中提取带有一致格式的数据。
@@ -28,10 +28,10 @@ ms.locfileid: "36285944"
 > * 训练并发布应用
 > * 查询应用终结点以查看 LUIS JSON 响应
 
-本文需要一个免费的 [LUIS][LUIS] 帐户，以便能够创作 LUIS 应用程序。
+本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便能够创作 LUIS 应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
-如果尚未获得预生成实体[自定义域](luis-tutorial-prebuilt-intents-entities.md)教程中所述的人力资源应用，请将 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) Github 存储库中的 JSON [导入](create-new-app.md#import-new-app)到 [LUIS][LUIS] 网站上的新应用。
+如果尚未获得预生成实体[自定义域](luis-tutorial-prebuilt-intents-entities.md)教程中所述的人力资源应用，请将 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) Github 存储库中的 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。
 
 若要保留原始人力资源应用，请在“设置”页上克隆版本，并将其命名为 `regex`。[](luis-how-to-manage-versions.md#clone-a-version) 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
@@ -244,6 +244,3 @@ LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可�
 > [!div class="nextstepaction"]
 > [了解 KeyPhrase 实体](luis-quickstart-intent-and-key-phrase.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

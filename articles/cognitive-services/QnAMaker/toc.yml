@@ -1,7 +1,9 @@
-- name: 什么是 QnA Maker？
-  href: Overview/overview.md
+- name: QnA Maker 文档
+  href: index.yml
 - name: 概述
   items:
+    - name: 什么是 QnA Maker？
+      href: Overview/overview.md
     - name: 支持的语言
       href: Overview/languages-supported.md
 - name: 快速入门

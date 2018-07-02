@@ -52,6 +52,10 @@
           href: ../../data-factory/load-azure-data-lake-storage-gen2.md
     - name: 连接到 Azure DataBricks
       href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
+- name: 引用
+  items:
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
 - name: 资源
   items:
     - name: Azure 路线图

@@ -47,6 +47,8 @@
       href: search-semi-structured-data.md
     - name: 在 .NET 中添加同义词
       href: search-synonyms-tutorial-sdk.md
+    - name: 在 .NET 中添加自动完成
+      href: search-autocomplete-tutorial.md
     - name: 门户演练
       href: search-get-started-portal.md
 - name: 示例

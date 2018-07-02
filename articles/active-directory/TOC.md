@@ -186,12 +186,6 @@
 ### [入门](manage-apps/plan-an-application-integration.md)
 ### [SaaS 应用集成教程](saas-apps/tutorial-list.md)
 
-
-### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
-#### [创建快照报表](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
-#### [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [使用自定义日志分析器](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-
 ### [对 SaaS 应用进行用户预配和取消预配](active-directory-saas-app-provisioning.md) 
 #### [应用集成教程](saas-apps/tutorial-list.md) 
 #### [对启用 SCIM 的应用自动执行预配](manage-apps/use-scim-to-provision-users-and-groups.md) 

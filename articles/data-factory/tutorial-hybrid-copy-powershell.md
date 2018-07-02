@@ -13,19 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d362d8167cdfb772c70b02cc57bb49d3c2eb01d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cfbd7080ff365daa15618b93dcfb9fd2d07aacff
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31594369"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046572"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>教程：将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure PowerShell 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-> 
 > 本文不提供数据工厂服务的详细介绍。 有关详细信息，请参阅 [Azure 数据工厂简介](introduction.md)。 
 
 将在本教程中执行以下步骤：
@@ -187,7 +185,7 @@ ms.locfileid: "31594369"
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须具有参与者或所有者角色，或者是 Azure 订阅的管理员。
-> * 目前，只能使用数据工厂第 2 版在“美国东部”、“美国东部 2”和“西欧”区域创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域。
+> * 目前，数据工厂仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域。
 > 
 > 
 

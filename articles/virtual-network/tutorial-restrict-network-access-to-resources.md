@@ -16,12 +16,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/14/2018
 ms.author: jdial
-ms.openlocfilehash: 2efbd6e0fc3f90909553bc839a8b61ff3ed681ad
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 2442c177b303600f936e80f6c765e2d4096b1dca
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267384"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021713"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>教程：使用 Azure 门户通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -115,7 +115,7 @@ ms.locfileid: "35267384"
     |Priority|100|
     |名称|Allow-Storage-All|
     
-8. 创建一条拒绝出站通信到 Internet 的规则。 此规则将覆盖所有网络安全组中允许出站 Internet 通信的默认规则。 使用以下值再次完成步骤 6 和 7：
+8. 创建一个拒绝到 Internet 的出站通信的规则。 此规则将覆盖所有网络安全组中允许出站 Internet 通信的默认规则。 使用以下值再次完成步骤 6 和 7：
 
     |设置|值|
     |----|----|

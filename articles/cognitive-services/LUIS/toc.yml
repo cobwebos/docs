@@ -9,36 +9,8 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 构建应用模型
-      items:
-        - name: 使用预构建的域
-          href: luis-get-started-create-app.md
-        - name: 使用自定义域
-          href: luis-quickstart-intents-only.md
-- name: 教程
-  items:
-    - name: 添加预构建的意向和实体
-      href: luis-tutorial-prebuilt-intents-entities.md
-    - name: 从实体获取数据
-      items:
-        - name: 简单实体
-          href: luis-quickstart-primary-and-secondary-data.md
-        - name: 分层的实体
-          href: luis-quickstart-intent-and-hier-entity.md
-        - name: 正则表达式实体
-          href: luis-quickstart-intents-regex-entity.md
-        - name: 列表实体
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: KeyPhrase 实体
-          href: luis-quickstart-intent-and-key-phrase.md
-        - name: 情绪分析
-          href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: 改进预测
-      items:
-        - name: 使用模式
-          href: luis-tutorial-pattern.md
-        - name: 使用短语列表
-          href: luis-tutorial-interchangeable-phrase-list.md
+    - name: 构建预生成域应用
+      href: luis-get-started-create-app.md
     - name: 使用 API
       items:
         - name: 使用终结点查询获取表述预测
@@ -73,6 +45,32 @@
               href: luis-get-started-php-add-utterance.md
             - name: Ruby
               href: luis-get-started-ruby-add-utterance.md
+- name: 教程
+  items:
+    - name: 构建应用
+      items:
+        - name: 1. 使用自定义域
+          href: luis-quickstart-intents-only.md
+        - name: 2. 添加预构建的意向和实体
+          href: luis-tutorial-prebuilt-intents-entities.md
+        - name: 3. 添加正则表达式实体
+          href: luis-quickstart-intents-regex-entity.md
+        - name: 4. 添加列表实体
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: 5. 添加分层的实体
+          href: luis-quickstart-intent-and-hier-entity.md
+        - name: 6. 添加简单实体和短语列表
+          href: luis-quickstart-primary-and-secondary-data.md
+        - name: 7. 添加 keyPhrase 实体
+          href: luis-quickstart-intent-and-key-phrase.md
+        - name: 8. 添加情绪分析
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: 改进预测
+      items:
+        - name: 使用模式
+          href: luis-tutorial-pattern.md
+        - name: 使用短语列表
+          href: luis-tutorial-interchangeable-phrase-list.md
 - name: 示例
   items:
     - name: 代码示例
@@ -83,7 +81,7 @@
       href: luis-concept-best-practices.md
     - name: 创作应用
       items:
-        - name: 创作循环
+        - name: 创作周期
           href: luis-concept-app-iteration.md
         - name: 协作
           href: luis-concept-collaborator.md

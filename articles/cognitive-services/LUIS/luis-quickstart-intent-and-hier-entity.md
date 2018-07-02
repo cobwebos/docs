@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 2547407126943161ba604fa2f5e80b9186cae57e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266492"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335554"
 ---
 # <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>教程：创建使用分层实体的应用
 在本教程中，我们将创建一个应用，用于演示如何根据上下文查找相关的数据片段。 
@@ -22,140 +22,111 @@ ms.locfileid: "36266492"
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * 了解分层实体和根据上下文学习到的子级 
-> * 使用 Bookflight 意向创建适用于旅行领域的新 LUIS 应用
-> * 添加 _None_ 意向并添加示例陈述
+> * 在人力资源 (HR) 域中使用 LUIS 应用 
 > * 添加包含出发地和目的地子级的位置分层实体
 > * 训练并发布应用
 > * 查询应用的终结点以查看包含分层子级的 LUIS JSON 响应 
 
 本文需要一个免费的 [LUIS][LUIS] 帐户，以便能够创作 LUIS 应用程序。
 
+## <a name="before-you-begin"></a>开始之前
+如果还没有[列表实体](luis-quickstart-intent-and-list-entity.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) Github 存储库中。
+
+若要保留原始人力资源应用，请在“设置”页上克隆版本，并将其命名为 `hier`。[](luis-how-to-manage-versions.md#clone-a-version) 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
+
 ## <a name="purpose-of-the-app-with-this-entity"></a>包含此实体的应用的用途
-此应用确定用户是否想要预订航班。 它使用分层实体在用户文本中确定位置、出发地城市和目的地城市。 
+此应用用于确定在何处将员工从原始位置（大楼和办公室）移到目标位置（大楼和办公室）。 它使用分层实体来确定陈述中的位置。 
 
 分层实体非常适合此类数据，因为这两个数据片段：
 
-* 都是位置，通常以城市或机场代码表示。
-* 通常围绕单词提供独特的单词选项，能够确定哪个是出发地，哪个是目的地。 这些单词包括：to（到）、headed toward（前往）、from（从）、leaving（离开）
+* 在使用陈述的情况下彼此相关。
+* 使用特别选择的词汇来指示每个位置。 这些词汇的示例包括：from/to（从/到）、leaving/headed to（离开/前往）、away from/toward（离开/前往）。
 * 两个位置往往在同一个陈述中。 
 
 **分层**实体的用途是根据上下文查找陈述中的相关数据。 考虑以下陈述：
 
 ```JSON
-1 ticket from Seattle to Cairo`
+mv Jill Jones from a-2349 to b-1298
 ```
-
-该陈述中指定了两个位置。 一个位置是出发地城市 Seattle，另一个位置是目的地城市 Cairo。 在预订航班时，这些城市非常重要。 尽管可以使用简单实体找到这些位置，但它们彼此相关，往往可以在同一个陈述中找到。 因此，将它们分组为分层实体“Location”的子级会很有帮助。 
-
-与使用机器学习的实体时一样，应用需要获取包含标记的出发地城市和目的地城市的示例陈述。 这样，LUIS 便知道实体在陈述中的位置、实体的长度及其相关单词。 
-
-## <a name="app-intents"></a>应用意向
-意向是用户需求的类别。 此应用有两个意向：BookFlight 和 None。 [None](luis-concept-intent.md#none-intent-is-fallback-for-app) 意向是有针对性的，表示应用外部的任何属性。  
-
-## <a name="hierarchical-entity-is-contextually-learned"></a>分层实体是根据上下文学习到的 
-实体的用途是查找陈述中的文本部分并将其分类。 [分层](luis-concept-entity-types.md)实体是基于用法上下文的父-子实体。 用户可以根据 `to` 和 `from` 的用法在陈述中确定出发地和目的地城市。 这些都是上下文用法的示例。  
-
-对于此旅行应用，LUIS 会适当地提取出发地和目的地位置，以便能够创建和填充标准预订。 LUIS 允许陈述包含变体、缩写和俚语。 
-
-用户提供的简单陈述示例包括：
-
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Researve a seat from New York to Paris on the first of April
-```
-
-陈述的缩写或俚语版本包括：
-
-```
-LHR tomorrow
-SEA to NYC next Monday
-LA to MCO spring break
-```
+该陈述中指定了两个位置：`a-2349` 和 `b-1298`。 假定字母对应于大楼名称，数字表示该大楼中的办公室。 分组时，可以将它们作为分层实体 `Locations` 的子级，因为这两种数据都需要从陈述中提取，而且彼此相关。 
  
-分层实体与出发地和目的地位置相匹配。 如果只存在分层实体的一个子级（出发地或目的地），仍会提取该子级。 不需要找到所有子级即可提取一个或一些子级。 
+如果只存在分层实体的一个子级（出发地或目的地），仍会提取该子级。 不需要找到所有子级即可提取一个或一些子级。 
 
-## <a name="what-luis-does"></a>LUIS 的作用
-在[终结点](https://aka.ms/luis-endpoint-apis)中识别、[提取](luis-concept-data-extraction.md#list-entity-data)并以 JSON 格式返回陈述的意向和实体后，LUIS 即告完成。 调用方应用程序或聊天机器人按照设计的任何方式提取该 JSON 响应并履行请求。 
+## <a name="remove-prebuilt-number-entity-from-app"></a>从应用中删除预生成的数字实体
+若要查看整个陈述并标记分层子级，请暂时删除预生成的数字实体。
 
-## <a name="create-a-new-app"></a>创建新应用
-1. 登录到 [LUIS][LUIS] 网站。 确保登录到需要发布 LUIS 终结点的[区域][LUIS-regions]。
+1. LUIS 的“生成”部分包含你的人力资源应用。 在右上方的菜单栏中选择“生成”可切换到此部分。 
 
-2. 在 [LUIS][LUIS] 网站上，选择“创建新应用”。  
+    [![LUIS 应用的屏幕截图，其中已突出显示右上方的导航栏](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/app-list.png "应用列表页的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/app-list.png#lightbox)
+2. 在左侧菜单中选择“实体”。
 
-3. 在弹出的对话框中，输入名称 `MyTravelApp`。 
+    [ ![LUIS 应用的屏幕截图，已在左菜单中突出显示“实体”按钮](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-app.png "“创建新应用”弹出对话框的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/create-new-app.png#lightbox)
 
-4. 过程完成后，应用会显示具有 **None** 意向的“意向”页。 
+3. 选择列表中数字实体右侧的三个点 (...)。 选择“删除”。 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png "仅包含 None 意向的“意向”列表屏幕截图")](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png#lightbox)
+    [ ![实体列表页上 LUIS 应用的屏幕截图，已针对“数字”预生成实体突出显示删除按钮](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
-## <a name="create-a-new-intent"></a>创建新意向
 
-1. 在“意向”页上，选择“创建新意向”。 
+## <a name="add-utterances-to-findform-intent"></a>将陈述添加到 FindForm 意向
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png "“意向”列表的屏幕截图，其中已突出显示“创建新意向”按钮")](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png#lightbox)
+1. 在左侧菜单中选择“意向”。
 
-2. 输入新意向名称 `BookFlight`。 每当用户想要预订航班时，都应该选择此意向。
+    [ ![LUIS 应用的屏幕截图，已在左菜单中突出显示“意向”](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png#lightbox)
 
-    创建意向会创建想要识别的主要信息类别。 为类别命名可让使用 LUIS 查询结果的其他任何应用程序使用该类别名称来查找相应的答案或采取相应的措施。 LUIS 不会回答这些问题，而只会识别以自然语言请求的信息类型。 
+2. 从意向列表中选择“MoveEmployee”。
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png "“创建新意向”弹出对话框的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png#lightbox)
+    [ ![LUIS 应用的屏幕截图，已在左菜单中突出显示“MoveEmployee”意向](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
-3. 将多个陈述添加到用户预期会请求的 `BookFlight` 意向，例如：
+3. 添加以下示例陈述：
 
-    | 示例陈述|
+    |示例陈述|
     |--|
-    |Book 2 flights from Seattle to Cairo next Monday|
-    |Reserve a ticket to London tomorrow|
-    |Schedule 4 seats from Paris to London for April 1|
+    |将 John W. Smith 移**到** a-2345|
+    |要求 Jill Jones 转**到** b-3499|
+    |组织 x23456 **从** hh-2345 移**到** e-0234|
+    |开始文书工作，将 x12345 设置为**离开** a-3459，**前往** f-34567|
+    |让 425-555-0000 **离开** g-2323，**前往** hh-2345|
 
-    [![](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png "在 BookFlight 意向页上输入陈述的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png#lightbox)
+    在[列表实体](luis-quickstart-intent-and-list-entity.md)教程中，可以通过姓名、电子邮件地址、电话分机、移动电话号码或美国联邦社会安全号码来指定某个员工。 这些员工编号用在陈述中。 前面的示例陈述包括了用于表示原始位置和目标位置（以粗体标记）的不同方式。 一些陈述特意只包含目标位置。 这有助于 LUIS 了解在不指定原始位置的情况下，如何在陈述中放置这些位置。
 
-## <a name="add-utterances-to-none-intent"></a>将陈述添加到 None 意向
+    [ ![LUIS 的屏幕截图，在 MoveEmployee 意向中有新陈述](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+     
 
-LUIS 应用当前没有 **None** 意向的陈述。 它需要包含你不希望应用回答的陈述，因此，它必须在 **None** 意向中包含陈述。 请不要将此意向留空。 
+## <a name="create-a-location-entity"></a>创建位置实体
+LUIS 需要通过在陈述中标记原始位置和目标位置来了解什么是位置。 如需在令牌（原始）视图中查看陈述，请在标记为“实体视图”的陈述上方的栏中选择切换。 切换开关以后，此控件会被标记为“令牌视图”。
 
-1. 在左侧面板中选择“意向”。 
+1. 在陈述 `Displace 425-555-0000 away from g-2323 toward hh-2345` 中，选择单词 `g-2323`。 此时会出现下拉菜单，其顶部有一个文本框。 在文本框中输入实体名称 `Locations`，然后在下拉菜单中选择“创建新实体”。 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png "BookFlight 意向页的屏幕截图，其中已突出显示“意向”按钮")](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png#lightbox)
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "在意向页上创建新实体的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
-2. 选择“None”意向。 添加用户可能会输入的、但与应用无关的三条陈述：
+2. 在弹出窗口中，选择包含 `Origin` 和 `Destination` 子实体的“分层”实体类型。 选择“完成”。
 
-    | 示例陈述|
-    |--|
-    |Cancel!|
-    |Good bye|
-    |What is going on?|
+    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "用于创建新位置实体的弹出对话框的屏幕截图")
 
-## <a name="when-the-utterance-is-predicted-for-the-none-intent"></a>何时预测 None 意向的陈述
-在 LUIS 调用方应用程序（例如聊天机器人）中，当 LUIS 返回陈述的 **None** 意向时，机器人可以询问用户是否要结束对话。 如果用户不想要结束对话，机器人还能提供有关继续对话的更多指示。 
+3. `g-2323` 的标签已标记为 `Locations`，因为 LUIS 不知道名词是出发地还是目的地，或者两者都不是。 依次选择 `g-2323`、“位置”，遵循菜单操作，然后选择 `Origin`。
 
-实体在 **None** 意向中工作。 如果评分最高的意向是 **None**，但提取的实体对聊天机器人而言有意义，则聊天机器人可以跟进以客户意向为重点的问题。 
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "实体的屏幕截图，该实体标记用于更改位置实体子级的弹出对话框")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
-## <a name="create-a-location-entity-from-the-intent-page"></a>从“意向”页创建位置实体
-在两个意向中包含陈述后，LUIS 需要了解位置是什么。 导航回到 `BookFlight` 意向，并遵循以下步骤标示（标记）陈述中的城市名称：
+5. 标记所有其他陈述中的其他位置，方法是：选择陈述中的大楼和办公室，然后选择“位置”，再遵循右侧的菜单选择 `Origin` 或 `Destination`。 所有位置都标记以后，“令牌视图”中的陈述开始显示出某种模式。 
 
-1. 在左侧面板中选择“意向”，返回到 `BookFlight` 意向。
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "在陈述中标记的“位置”实体的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
-2. 在意向列表中选择 `BookFlight`。
+## <a name="add-prebuilt-number-entity-to-app"></a>向应用添加预生成的数字实体
+将预生成的数字实体添加回应用程序。
 
-3. 在陈述 `Book 2 flights from Seattle to Cairo next Monday` 中，选择单词 `Seattle`。 此时会出现一个下拉菜单，其顶部显示了用于创建新实体的文本框。 在文本框中输入实体名称 `Location`，然后在下拉菜单中选择“创建新实体”。 
+1. 在左侧导航菜单中选择“实体”。
 
-    [![](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png "BookFlight 意向页 - 从选定的文本创建新实体的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png#lightbox)
+    [ ![在左侧导航中突出显示的“实体”按钮的屏幕截图](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png#lightbox)
 
-4. 在弹出窗口中，选择包含 `Origin` 和 `Destination` 子实体的“分层”实体类型。 选择“完成”。
+2. 选择“管理预生成的实体”按钮。
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png "用于创建新位置实体的弹出对话框的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png#lightbox)
+    [ ![“实体”列表的屏幕截图，已突出显示“管理预生成的实体”](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png#lightbox)
 
-    `Seattle` 的标签已标记为 `Location`，因为 LUIS 不知道名词是出发地还是目的地，或者两者都不是。 依次选择 `Seattle`、“位置”，遵循菜单操作，然后选择 `Origin`。
+3. 从预生成的实体的列表中选择“数字”，然后选择“完成”。
 
-5. 创建实体并标记一个陈述后，依次选择城市名称、“位置”，然后遵循右侧的菜单选择 `Origin` 或 `Destination`，以标记其他城市。
-
-    [![](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png "Bookflight 实体的屏幕截图，其中包含针对实体选项选择的陈述文本")](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png#lightbox)
+    ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
 LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。 
@@ -173,8 +144,6 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 
 1. 在 LUIS 网站的右上方，选择“发布”按钮。 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/publish.png "Bookflight 意向的屏幕截图，其中已突出显示“发布”按钮")](media/luis-quickstart-intent-and-hier-entity/publish.png#lightbox)
-
 2. 选择“生产”槽和“发布”按钮。
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "“发布”页的屏幕截图，其中已突出显示“发布到生产槽”按钮")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
@@ -186,41 +155,114 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "“发布”页的屏幕截图，其中已突出显示终结点 URL")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `1 ticket to Portland on Friday`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `BookFlight` 意向。
+2. 将光标定位到地址栏中 URL 的末尾，并输入 `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `MoveEmployee` 意向。
 
-```
+```JSON
 {
-  "query": "1 ticket to Portland on Friday",
+  "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.9998226
+    "intent": "MoveEmployee",
+    "score": 0.9966052
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.9998226
+      "intent": "MoveEmployee",
+      "score": 0.9966052
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0325253047
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.006137873
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.00462633232
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00415637763
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00382325822
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00249120337
     },
     {
       "intent": "None",
-      "score": 0.221926212
+      "score": 0.00130756292
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00119622645
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 1.26910036E-05
     }
   ],
   "entities": [
     {
-      "entity": "portland",
-      "type": "Location::Destination",
-      "startIndex": 12,
-      "endIndex": 19,
-      "score": 0.564448953
+      "entity": "jill - jones @ mycompany . com",
+      "type": "Employee",
+      "startIndex": 18,
+      "endIndex": 41,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "x - 2345",
+      "type": "Locations::Origin",
+      "startIndex": 48,
+      "endIndex": 53,
+      "score": 0.8520272
+    },
+    {
+      "entity": "g - 23456",
+      "type": "Locations::Destination",
+      "startIndex": 58,
+      "endIndex": 64,
+      "score": 0.974032
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 49,
+      "endIndex": 53,
+      "resolution": {
+        "value": "-2345"
+      }
+    },
+    {
+      "entity": "-23456",
+      "type": "builtin.number",
+      "startIndex": 59,
+      "endIndex": 64,
+      "resolution": {
+        "value": "-23456"
+      }
     }
   ]
 }
 ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>此 LUIS 应用实现了哪些目的？
-此应用只包含两个意向和一个分层实体，识别了自然语言查询意向，并返回了提取的数据。 
+## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>是否可以为每个位置使用正则表达式？
+是的，可以创建包含原始位置和目标位置角色的正则表达式，然后将其用在某个模式中。
 
-现在，聊天机器人已获得足够的信息，可以确定确定主要操作 `BookFlight`，以及在陈述中找到的位置信息。 
+此示例中的位置（例如 `a-1234`）遵循特定的格式，即以一到两个字母开头，后接破折号，然后是一系列数字（4 到 5 个）。 可以将该数据描述为一个正则表达式实体，每个位置有一个角色。 角色适用于模式。 可以根据这些陈述创建模式，然后针对位置格式创建一个正则表达式，再将其添加到模式。 <!-- Go to this tutorial to see how that is done -->
+
+## <a name="what-has-this-luis-app-accomplished"></a>此 LUIS 应用实现了哪些目的？
+此应用只包含数个意向和一个分层实体，识别了自然语言查询意向，并返回了提取的数据。 
+
+现在，聊天机器人已获得足够的信息，可以确定确定主要操作 `MoveEmployee`，以及在陈述中找到的位置信息。 
 
 ## <a name="where-is-this-luis-data-used"></a>在何处使用此 LUIS 数据？ 
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
@@ -231,11 +273,6 @@ LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可�
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"] 
 > [了解如何添加列表实体](luis-quickstart-intent-and-list-entity.md) 
-
-添加**数字**[预生成实体](luis-how-to-add-entities.md#add-prebuilt-entity)以提取数字。 
-
-添加 **datetimeV2** [预生成实体](luis-how-to-add-entities.md#add-prebuilt-entity)以提取日期信息。
-
 
 <!--References-->
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

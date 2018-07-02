@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/14/2018
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: b1e7fa441dc52a647828c7d3785f09533af06fd0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42be14569215af7ee98a540c2a86cef2b2a028e4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651283"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033555"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -76,7 +76,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku S1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --hub-name $hub-name -o table
+az iot hub show-connection-string --hub-name $hubname -o table
 
 ```
 
@@ -260,14 +260,7 @@ az group delete --name tutorial-iot-hub-rg
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何通过执行以下任务，在设备与 IoT 中心之间同步状态信息：
-
-> [!div class="checklist"]
-> * 创建 IoT 中心并将测试设备添加到标识注册表。
-> * 使用所需属性将状态信息发送到模拟设备。
-> * 使用报告属性从模拟设备接收状态信息。
-
-请继续学习下一篇教程，了解如何使用设备孪生实现固件更新过程。
+在本教程中，你已学习了如何在设备与 IoT 中心之间同步状态信息。 请继续学习下一篇教程，了解如何使用设备孪生实现固件更新过程。
 
 > [!div class="nextstepaction"]
-[使用模拟设备测试 IoT 中心的连接](tutorial-connectivity.md)
+[实现设备固件更新过程](tutorial-firmware-update.md)

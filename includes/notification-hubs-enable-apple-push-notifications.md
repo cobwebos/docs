@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 08ff4b2190b26471d7b1ac1850ce89f889b8c256
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 10ccb80dd74606d2ad40ab5d7993aed8cd71725e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33814724"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329665"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>生成证书签名请求文件
 Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。 请遵照这些说明来创建用于发送和接收通知的所需推送证书。 有关这些概念的详细信息，请参阅正式的 [Apple Push Notification 服务](http://go.microsoft.com/fwlink/p/?LinkId=272584)文档。

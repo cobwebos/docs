@@ -13,23 +13,21 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 2f9ec088f7a0853817df032164c08d9dfedc405e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f31282af79f3f091f8147124afe9d4cbeb641196
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31596528"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049532"
 ---
 # <a name="create-an-azure-data-factory-using-powershell"></a>使用 PowerShell 创建 Azure 数据工厂 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [版本 2 - 预览版](quickstart-create-data-factory-powershell.md)
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [当前版本](quickstart-create-data-factory-powershell.md)
 
 此快速入门介绍了如何使用 PowerShell 创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。 
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
->
 > 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
@@ -93,7 +91,7 @@ ms.locfileid: "31596528"
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
-* 目前，数据工厂版本 2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 目前，数据工厂仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 ## <a name="create-a-linked-service"></a>创建链接服务
 
@@ -365,7 +363,7 @@ ms.locfileid: "31596528"
     "throughput": 0.01
     "errors": []
     "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)"
-    "usedCloudDataMovementUnits": 2
+    "usedDataIntegrationUnits": 2
     "billedDuration": 14
     ```
 

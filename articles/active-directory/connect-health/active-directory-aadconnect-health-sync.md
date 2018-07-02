@@ -14,17 +14,17 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a3801573f3ffe3a0941f3941cf33e516f4f1b614
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30229942"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961632"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
 
-![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/sync-blade.png)
+![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>用于同步的 Azure AD Connect Health 的警报
 用于同步的 Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。 选择活动或已解决的警报后，将看到一个新的边栏选项卡，其中会显示额外信息、可用于解决警报的方法步骤以及其他文档的链接。 还可以查看过去已解决警报的相关历史数据。
@@ -98,15 +98,18 @@ ms.locfileid: "30229942"
 ### <a name="error-details"></a>错误详细信息
 每种错误的详细视图中提供以下数据
 
+* 突出显示的冲突属性
 * 相关 *AD 对象*的标识符
 * 相关 *Azure AD 对象*的标识符（如果适用）
 * 错误说明和解决方法
-* 相关文章
 
-![同步错误报告详细信息](./media/active-directory-aadconnect-health-sync/errorreport04.png)
+![同步错误报告详细信息](./media/active-directory-aadconnect-health-sync/duplicateAttributeSyncError.png)
 
 ### <a name="download-the-error-report-as-csv"></a>以 CSV 格式下载错误报告
 选择“导出”按钮即可下载一个 CSV 文件，其中包含所有错误的所有详细信息。
+
+### <a name="diagnose-and-remediate-sync-errors"></a>诊断并修正同步错误 
+对于涉及用户源锚点更新的特定重复属性同步错误场景，可以直接从门户修复它们。 阅读有关[诊断并修正重复的属性同步错误](active-directory-aadconnect-health-diagnose-sync-errors.md)的更多内容
 
 ## <a name="related-links"></a>相关链接
 * [排查同步期间的错误](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md)

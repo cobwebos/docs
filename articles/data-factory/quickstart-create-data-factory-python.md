@@ -13,24 +13,21 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 83367d85e70a1a83850388c4cb786e93ae194223
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 844527fcfdcc2e0db22a322cafd81d07e5bd35e7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30173260"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048105"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>使用 Python 创建数据工厂和管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [版本 2 - 预览版](quickstart-create-data-factory-python.md)
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [当前版本](quickstart-create-data-factory-python.md)
 
 Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
 
 此快速入门教程介绍了如何使用 Python 创建一个 Azure 数据工厂。 该数据工厂中的管道将数据从 Azure blob 存储中的一个文件夹复制到另一个文件夹。
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 

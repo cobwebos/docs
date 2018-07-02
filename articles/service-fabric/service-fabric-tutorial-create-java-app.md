@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: dc67de00abb2eac2eeb6e2b6bf3798e3aa210152
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b512ba91d1df7ec0432bdf9048268714e570fe6b
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29949882"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958670"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 Java Web API 前端服务和有状态后端服务创建并部署应用程序
 本教程是一个系列中的第一部分。 完成后，将生成一个带 Java Web 前端的 Voting 应用程序，用于将投票结果保存到群集的有状态后端服务中。 本教程系列要求你有一台工作的 Mac OSX 或 Linux 开发人员计算机。 如果不想手动创建投票应用程序，可以[下载已完成应用程序的源代码](https://github.com/Azure-Samples/service-fabric-java-quickstart)，跳到[大致了解投票示例应用程序](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)。
@@ -596,7 +596,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
     }
     
     dependencies {
-        compile ('com.microsoft.servicefabric:sf-actors:1.0.0-preview1')
+        compile ('com.microsoft.servicefabric:sf-actors:1.0.0')
     }
     
     jar {
@@ -898,7 +898,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 4. 在适用于 Eclipse 的包资源管理器中右键单击“Voting”项目，然后单击“Service Fabric”->“发布应用程序...” 
 5. 在“发布应用程序”窗口的下拉列表中，选择“Local.json”并单击“发布”。
-6. 转到 Web 浏览器并访问 **http://localhost:8080**，以便查看在本地 Service Fabric 群集上运行的应用程序。 
+6. 转到 Web 浏览器并访问 **http://localhost:8080**，以查看在本地 Service Fabric 群集上运行的应用程序。 
 
 ## <a name="next-steps"></a>后续步骤
 本教程的此部分介绍了如何：

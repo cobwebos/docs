@@ -157,6 +157,8 @@
           href: b2clogin.md
         - name: 使用年龄门控
           href: basic-age-gating.md
+        - name: 直接登录
+          href: direct-signin.md
     - name: 标识体验框架
       items:
         - name: 自定义策略

@@ -1,22 +1,22 @@
 ---
-title: Azure IoT Edge C# 模块 | Microsoft Docs
-description: 使用 C# 代码创建 IoT Edge 模块，并将它部署到边缘设备
+title: Azure IoT Edge C# 教程 | Microsoft Docs
+description: 本教程介绍如何使用 C# 代码创建 IoT Edge 模块并将其部署到边缘设备
+services: iot-edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/14/2018
+ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
-services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1da3a246a2ad33a4563f491058f5d4d115f3954d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8cd4f87e690d64e1f69ef39f3422ebc73d79974a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631065"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053086"
 ---
-# <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>开发 C# IoT Edge 模块，并将它部署到模拟设备 - 预览
+# <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 C# IoT Edge 模块并将其部署到模拟设备
 
 可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 将使用的模拟 IoT Edge 设备是在 [Windows][lnk-tutorial1-win] 或 [Linux][lnk-tutorial1-lin] 教程的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：    
 
@@ -29,15 +29,19 @@ ms.locfileid: "34631065"
 
 在本教程中创建的 IoT Edge 模块可以筛选由设备生成的温度数据。 它只在温度高于指定阈值的情况下，向上游发送消息。 在边缘进行的此类分析适用于减少传递到云中和存储在云中的数据量。 
 
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free)。
+
+
 ## <a name="prerequisites"></a>先决条件
 
-* 已通过快速入门或第一个教程创建 Azure IoT Edge 设备。
+* 已通过 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)快速入门创建 Azure IoT Edge 设备。
 * IoT Edge 设备的主键连接字符串。  
 * [Visual Studio Code](https://code.visualstudio.com/)。 
-* [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
-* [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 
-* Visual Studio Code 所在计算机上的 [Docker](https://docs.docker.com/engine/installation/)。 对于本教程而言，使用社区版 (CE) 即可。 
-* [.NET Core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd)。 
+* [适用于 Visual Studio Code 的 C#（由 OmniSharp 提供支持）扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+* 适用于 Visual Studio Code 的 [Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
+* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
+* 开发计算机上的 [Docker CE](https://docs.docker.com/install/)。 
+
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 本教程将使用适用于 VS Code 的 Azure IoT Edge 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
@@ -52,27 +56,20 @@ ms.locfileid: "34631065"
 6. 复制“登录服务器”、“用户名”和“密码”的值。 本教程中稍后将 Docker 映像发布到注册表，以及向 Edge 运行时添加注册表凭据时，将使用这些值。 
 
 ## <a name="create-an-iot-edge-module-project"></a>创建 IoT Edge 模块项目
-以下步骤将介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建基于 .NET Core 2.0 的 IoT Edge 模块。
+以下步骤介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建基于 .NET Core 2.0 的 IoT Edge 模块项目。
 1. 在 Visual Studio Code 中选择“视图” > “集成终端”，打开 VS Code 集成终端。
-2. 在集成终端的 dotnet 中，输入以下命令安装（或更新）AzureIoTEdgeModule 模板：
-
-    ```cmd/sh
-    dotnet new -i Microsoft.Azure.IoT.Edge.Module
-    ```
-
-3. 为新模块创建一个项目。 以下命令通过容器存储库创建项目文件夹 FilterModule。 如果使用 Azure 容器注册表，第二个参数应采用 `<your container registry name>.azurecr.io` 的形式。 在当前的工作文件夹中输入以下命令：
-
-    ```cmd/sh
-    dotnet new aziotedgemodule -n FilterModule -r <your container registry address>/filtermodule
-    ```
+2. 选择“视图” > “命令面板”，打开 VS Code 命令面板。 
+3. 在命令面板中，键入并运行“Azure: 登录”命令，然后按说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
+4. 在命令面板中，键入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案： 
+   1. 选择要在其中创建解决方案的文件夹。 
+   2. 提供解决方案的名称，或者接受默认的 **EdgeSolution**。
+   3. 选择“C# 模块”作为模块模板。 
+   4. 将模块命名为 **CSharpModule**。 
+   5. 将在上一部分创建的 Azure 容器注册表指定为第一个模块的映像存储库。 将 **localhost:5000** 替换为复制的登录服务器值。 最终的字符串看起来类似于 **\<注册表名称\>.azurecr.io/csharpmodule**。
  
-4. 选择“文件” > “打开文件夹”。
-5. 浏览到 FilterModule 文件夹，然后单击“选择文件夹”，在 VS Code 中打开此项目。
-6. 在 VS Code 资源管理器中，单击 Program.cs 将其打开。
+4. VS Code 窗口将加载你的 IoT Edge 解决方案空间。 有一个 **modules** 文件夹、一个 **.vscode** 文件夹、一个部署清单模板文件，以及一个 **.env** 文件。 打开 **modules** > **CSharpModule** > **Program.cs**。
 
-   ![打开 Program.cs][1]
-
-7. 在 **FilterModule** 命名空间的顶部，为以后要使用的类型添加三个 `using` 语句：
+5. 在 **CSharpModule** 命名空间的顶部，为以后要使用的类型添加三个 `using` 语句：
 
     ```csharp
     using System.Collections.Generic;     // for KeyValuePair<>
@@ -80,13 +77,13 @@ ms.locfileid: "34631065"
     using Newtonsoft.Json;                // for JsonConvert
     ```
 
-8. 将 `temperatureThreshold` 变量添加到 **Program** 类。 此变量设置一个值，若要向 IoT 中心发送数据，测量的温度必须超出该值。 
+6. 将 `temperatureThreshold` 变量添加到 **Program** 类。 此变量设置一个值，若要向 IoT 中心发送数据，测量的温度必须超出该值。 
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-9. 将 `MessageBody`、`Machine` 和 `Ambient` 类添加到 **Program** 类。 这些类将为传入消息的正文定义所需的架构。
+7. 将 `MessageBody`、`Machine` 和 `Ambient` 类添加到 **Program** 类。 这些类将为传入消息的正文定义所需的架构。
 
     ```csharp
     class MessageBody
@@ -107,7 +104,7 @@ ms.locfileid: "34631065"
     }
     ```
 
-10. 在 Init 方法中，此代码创建并配置 DeviceClient 对象。 该对象允许模块连接到本地 Azure IoT Edge 运行时，发送并接收消息。 在 **Init** 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 创建 **DeviceClient** 后，代码通过Module Twin中的所需属性读取TemperatureThreshold的值， 并且通过 **input1** 终结点注册一个回调方法，用于接收来自 IoT Edge 中心的消息。 将 `SetInputMessageHandlerAsync` 方法替换为新方法，然后添加 `SetDesiredPropertyUpdateCallbackAsync` 方法，以便进行所需的属性更新。 若要进行此更改，请使用以下代码替换 Init 方法的最后一行 ：
+8. 在 Init 方法中，此代码创建并配置 ModuleClient 对象。 该对象允许模块连接到本地 Azure IoT Edge 运行时，发送并接收消息。 在 **Init** 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 创建 **ModuleClient** 后，代码通过模块孪生的所需属性读取 TemperatureThreshold，并且通过 **input1** 终结点注册一个回调方法，用于接收来自 IoT Edge 中心的消息。 将 `SetInputMessageHandlerAsync` 方法替换为新方法，然后添加 `SetDesiredPropertyUpdateCallbackAsync` 方法，以便进行所需的属性更新。 若要进行此更改，请使用以下代码替换 Init 方法的最后一行 ：
 
     ```csharp
     // Register callback to be called when a message is received by the module
@@ -119,7 +116,7 @@ ms.locfileid: "34631065"
     try {
         temperatureThreshold = moduleTwinCollection["TemperatureThreshold"];
     } catch(ArgumentOutOfRangeException e) {
-        Console.WriteLine("Property TemperatureThreshold not exist");
+        Console.WriteLine($"Property TemperatureThreshold not exist: {e.Message}"); 
     }
 
     // Attach callback for Twin desired properties updates
@@ -129,7 +126,7 @@ ms.locfileid: "34631065"
     await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
     ```
 
-11. 将 `onDesiredPropertiesUpdate` 方法添加到 **Program** 类。 此方法从孪生模块接收所需属性的更新，然后更新 **temperatureThreshold** 变量，使之匹配。 所有模块都有自己的孪生模块，因此可以直接从云配置在模块中运行的代码。
+9. 将 `onDesiredPropertiesUpdate` 方法添加到 **Program** 类。 此方法从孪生模块接收所需属性的更新，然后更新 **temperatureThreshold** 变量，使之匹配。 所有模块都有自己的孪生模块，因此可以直接从云配置在模块中运行的代码。
 
     ```csharp
     static Task onDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
@@ -160,16 +157,15 @@ ms.locfileid: "34631065"
     }
     ```
 
-12. 将 `PipeMessage` 方法替换为 `FilterMessages` 方法。 每当模块从 IoT Edge 中心接收消息，就会调用此方法。 此方法筛选掉那些所报告温度低于温度阈值（通过孪生模块进行设置）的消息。 它还将 **MessageType** 属性添加到消息，其值设置为“警报”。 
+10. 将 `PipeMessage` 方法替换为 `FilterMessages` 方法。 每当模块从 IoT Edge 中心接收消息，就会调用此方法。 此方法筛选掉那些所报告温度低于温度阈值（通过孪生模块进行设置）的消息。 它还将 **MessageType** 属性添加到消息，其值设置为“警报”。 
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
     {
         var counterValue = Interlocked.Increment(ref counter);
-
-        try {
-            DeviceClient deviceClient = (DeviceClient)userContext;
-
+        try
+        {
+            ModuleClient moduleClient = (ModuleClient)userContext;
             var messageBytes = message.GetBytes();
             var messageString = Encoding.UTF8.GetString(messageBytes);
             Console.WriteLine($"Received message {counterValue}: [{messageString}]");
@@ -188,7 +184,7 @@ ms.locfileid: "34631065"
                 }
 
                 filteredMessage.Properties.Add("MessageType", "Alert");
-                await deviceClient.SendEventAsync("output1", filteredMessage);
+                await moduleClient.SendEventAsync("output1", filteredMessage);
             }
 
             // Indicate that the message treatment is completed
@@ -202,7 +198,7 @@ ms.locfileid: "34631065"
                 Console.WriteLine("Error in sample: {0}", exception);
             }
             // Indicate that the message treatment is not completed
-            var deviceClient = (DeviceClient)userContext;
+            var moduleClient = (ModuleClient)userContext;
             return MessageResponse.Abandoned;
         }
         catch (Exception ex)
@@ -210,109 +206,105 @@ ms.locfileid: "34631065"
             Console.WriteLine();
             Console.WriteLine("Error in sample: {0}", ex.Message);
             // Indicate that the message treatment is not completed
-            DeviceClient deviceClient = (DeviceClient)userContext;
+            ModuleClient moduleClient = (ModuleClient)userContext;
             return MessageResponse.Abandoned;
         }
     }
     ```
 
-13. 保存此文件。
+11. 保存此文件。
 
-## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>创建 Docker 映像并将其发布到注册表
+## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案
 
-1. 在 VS Code 集成终端输入以下命令，登录到 Docker： 
+在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 CSharpModule，该函数会筛选出其中报告的计算机温度低于可接受阈值的消息。 现在需将解决方案生成为容器映像并将其推送到容器注册表。 
+
+1. 在 Visual Studio Code 集成终端输入以下命令，登录到 Docker，以便将模块映像推送到 ACR： 
      
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-   若要查找在此命令中使用的用户名、密码和登录服务器，请转到 [Azure 门户] (https://portal.azure.com)。 在“所有资源”中，单击 Azure 容器注册表的磁贴以打开其属性，然后单击“访问密钥”。 复制“用户名”、“密码”和“登录服务器”字段中的值。 
+   使用用户名、密码以及在第一部分从 Azure 容器注册表复制的登录服务器。 或者再次在 Azure 门户中从注册表的“访问密钥”部分检索它们。
 
-2. 在 VS Code 资源管理器中，右键单击 module.json 文件，然后单击“生成和推送 IoT Edge 模块 Docker 映像”。 在 VS Code 窗口顶部的弹出下拉框中，选择容器平台，即为 Linux 容器选择“amd64”，或为 Windows 容器选择“windows-amd64”。 然后，VS Code 生成代码、将 `FilterModule.dll` 容器化并推送到指定的容器注册表。
+2. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 此文件告知 `$edgeAgent` 部署两个模块：**tempSensor** 和 **CSharpModule**。 `CSharpModule.image` 值设置为映像的 Linux amd64 版本。 若要详细了解部署清单，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
+3. 在 **deployment.template.json** 文件中有一个名为 **registryCredentials** 的节，用于存储 Docker 注册表凭据。 实际的用户名和密码对存储在属于 gitignore 文件的 .env 文件中。
 
-3. 可在 VS Code 集成终端中获取具有标记的完整容器映像地址。 有关生成和推送定义的详细信息，可参考 `module.json` 文件。
-
-## <a name="add-registry-credentials-to-edge-runtime"></a>将注册表凭据添加到 Edge 运行时
-在运行 Edge 设备的计算机上将注册表凭据添加到 Edge 运行时。 这些凭据为此运行时提供拉取容器的访问权限。 
-
-- 在 Windows 上，运行以下命令：
-    
-    ```cmd/sh
-    iotedgectl login --address <your container registry address> --username <username> --password <password> 
-    ```
-
-- 在 Linux 上，运行以下命令：
-    
-    ```cmd/sh
-    sudo iotedgectl login --address <your container registry address> --username <username> --password <password> 
-    ```
-
-## <a name="run-the-solution"></a>运行解决方案
-
-1. 在 [Azure 门户](https://portal.azure.com)中导航到 IoT 中心。
-2. 转到“IoT Edge (预览版)”，然后选择 IoT Edge 设备。
-3. 选择“设置模块”。 
-4. 检查 **tempSensor** 模块是否已自动填充。 否则，请使用以下步骤来添加该模块：
-    1. 选择“添加 IoT Edge 模块”。
-    2. 在“名称”字段中，输入 `tempSensor`。
-    3. 在“映像 URI”字段中，输入 `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`。
-    4. 将其他设置保留不变，然后单击“保存”。
-5. 添加在前面部分创建的 **filterModule** 模块。 
-    1. 选择“添加 IoT Edge 模块”。
-    2. 在“名称”字段中，输入 `filterModule`。
-    3. 在“映像 URI”字段中，输入映像地址；例如 `<your container registry address>/filtermodule:0.0.1-amd64`。 可从上一节中找到完整映像地址。
-    4. 勾选“启用”框，这样就能编辑孪生模块。 
-    5. 将文本框中用于模块孪生的 JSON 替换为以下 JSON： 
-
-        ```json
-        {
-           "properties.desired":{
-              "TemperatureThreshold":25
-           }
-        }
-        ```
- 
-    6. 单击“ **保存**”。
-6. 单击“资源组名称” 的 Azure 数据工厂。
-7. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 这些模块会将所有消息发布到 Edge 运行时。 此运行时中的声明性规则将定义消息流经的位置。 本教程需要两个路由。 第一个路由会通过“input1”终结点（该终结点是通过 FilterMessages 处理程序配置的终结点）将消息从温度传感器传输到筛选器模块。 第二个路由会将消息从筛选器模块传输到 IoT 中心。 在此路由中，`upstream` 是特殊目的地，它将告诉 Edge 中心将消息发送到 IoT 中心。 
-
+4. 将 CSharpModule 模块孪生添加到部署清单。 在 `moduleContent` 节底部 `$edgeHub` 模块孪生后插入以下 JSON 内容： 
     ```json
-    {
-       "routes":{
-          "sensorToFilter":"FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filterModule/inputs/input1\")",
-          "filterToIoTHub":"FROM /messages/modules/filterModule/outputs/output1 INTO $upstream"
-       }
-    }
+        "CSharpModule": {
+            "properties.desired":{
+                "TemperatureThreshold":25
+            }
+        }
     ```
 
-8. 单击“资源组名称” 的 Azure 数据工厂。
-9. 在“审阅模板”步骤中，单击“提交”。 
-10. 返回到“IoT Edge 设备详细信息”页，并单击“刷新”。 应看到新的 filter 模块与 tempSensor 模块和 IoT Edge 运行时在同时运行。 
+4. 保存此文件。
+5. 在 VS Code 资源管理器中右键单击 **deployment.template.json** 文件，然后选择“生成 IoT Edge 解决方案”。 
+
+要求 Visual Studio Code 生成解决方案时，它首先获取部署模板中的信息，然后在新的 **config** 文件夹中生成 `deployment.json` 文件。 然后，它在集成终端运行两个命令，即 `docker build` 和 `docker push`。 这两个命令会生成代码，将 `CSharpModule.dll` 容器化，然后将其推送到在初始化解决方案时指定的容器注册表。 
+
+可在 VS Code 集成终端中查看具有标记的完整容器映像地址。 映像地址根据 `module.json` 文件中的信息生成，其格式为 **\<存储库\>:\<版本\>-\<平台\>**。 在本教程中，它应该类似于 **registryname.azurecr.io/csharpmodule:0.0.1-amd64**。
+
+## <a name="deploy-and-run-the-solution"></a>部署并运行解决方案
+
+1. 为 Azure IoT 工具包扩展配置适用于 IoT 中心的连接字符串： 
+    1. 选择“视图” > “资源管理器”，打开 VS Code 资源管理器。 
+    2. 在资源管理器中，单击“AZURE IOT 中心设备”，然后单击“...”。单击“选择 IoT 中心”。 按照说明登录 Azure 帐户并选择 IoT 中心。 
+       注意，也可通过单击“设置 IoT 中心连接字符串”进行设置。 在弹出窗口中输入 IoT Edge 设备连接到的 IoT 中心的连接字符串。
+
+2. 在 Azure IoT 中心设备资源管理器中，右键单击 IoT Edge 设备，然后单击“为 IoT Edge 设备创建部署”。 选择 **config** 文件夹中的 **deployment.json** 文件，然后单击“选择 Edge 部署清单”。
+
+3. 单击刷新按钮。 此时会看到新的 **CSharpModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。 
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-监视从 IoT Edge 设备发送到 IoT 中心的“设备到云”消息：
-1. 为 Azure IoT 工具包扩展配置适用于 IoT 中心的连接字符串： 
-    1. 选择“视图” > “资源管理器”，打开 VS Code 资源管理器。 
-    2. 在资源管理器中，单击“IOT 中心设备”，然后单击“...”。单击“设置 IoT 中心连接字符串”，然后在弹出窗口中输入 IoT Edge 设备所连接的 IoT 中心的连接字符串。 
+1. 若要监视到达 IoT 中心的数据，请单击“...”，然后选择“开始监视 D2C 消息”。
+2. 若要监视特定设备的 D2C 消息，请右键单击列表中的设备，然后选择“开始监视 D2C 消息”。
+3. 若要停止监视数据，请在命令面板中运行“Azure IoT 中心: 停止监视 D2C 消息”命令。 
+4. 若要查看或更新模块孪生，请右键单击列表中的模块，然后选择“编辑模块孪生”。 若要更新模块孪生，请保存孪生 JSON 文件，然后右键单击编辑器区域并选择“更新模块孪生”。
+5. 若要查看 Docker 日志，可以安装用于 VS Code 的 [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)，然后通过 Docker 资源管理器在本地找到正在运行的模块。 在上下文菜单中单击“显示日志”，在集成终端中进行查看。
+ 
+## <a name="clean-up-resources"></a>清理资源 
 
-        要找到此连接字符串，请在 Azure 门户中单击 IoT 中心的磁贴，然后单击“共享访问策略”。 在“共享访问策略”中，单击“iothubowner”策略，并复制“iothubowner”窗口中的 IoT 中心连接字符串。   
+<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
 
-2. 若要监视到达 IoT 中心的数据，请选择“视图” > “命令面板”，然后搜索“IoT: 开始监视 D2C 消息”菜单命令。 
-3. 若要停止监视数据，请使用“IoT: 停止监视 D2C 消息”菜单命令。 
+如果想要继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。
+
+否则，可删除本文中创建的本地配置和 Azure 资源，避免收费。 
+
+> [!IMPORTANT]
+> 删除 Azure 资源和资源组的操作不可逆。 资源组以及包含在其中的所有资源一旦删除就会被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
+>
+
+若要只删除 IoT 中心，请使用中心名称和资源组名称执行以下命令：
+
+```azurecli-interactive
+az iot hub delete --name MyIoTHub --resource-group TestResources
+```
+
+
+若要按名称删除整个资源组，请执行以下操作：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+
+2. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称。 
+
+3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
+
+4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，创建了 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 可以继续查看以下任一教程，了解 Azure IoT Edge 有助于将数据转化为边缘业务洞察力的其他方式。
+在本教程中，创建了 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 做好生成自己的模块的准备以后，即可详细了解如何[使用用于 Visual Studio Code 的 Azure IoT Edge 开发 C# 模块](how-to-develop-csharp-module.md)。 可以继续阅读后续教程，了解如何使用 Azure IoT Edge 通过其他方式将数据转化为边缘业务见解。
 
 > [!div class="nextstepaction"]
-> [将 Azure 函数部署为模块](tutorial-deploy-function.md)
-> [将 Azure 流分析部署为模块](tutorial-deploy-stream-analytics.md)
-
+> [使用 SQL Server 数据库在边缘存储数据](tutorial-store-data-sql-server.md)
 
 <!-- Links -->
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
+[lnk-tutorial1-win]: quickstart.md
+[lnk-tutorial1-lin]: quickstart-linux.md
 
 <!-- Images -->
 [1]: ./media/tutorial-csharp-module/programcs.png

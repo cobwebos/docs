@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 65441882827ecb26405f74fb1389b6a21d99cf9c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1b7ce6078fcaedee3d9ed4151063816df937ac0f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30172845"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055131"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 在本教程中，我们将创建一个数据工厂管道来展示某些控制流功能。 此管道执行从 Azure Blob 存储容器中某个容器到同一存储帐户中另一个容器的简单复制。 如果复制活动成功，该管道会在告知成功结果的电子邮件中发送成功复制操作的详细信息（例如写入的数据量）。 如果复制活动失败，该管道会在告知失败结果的电子邮件中发送复制失败的详细信息（例如错误消息）。 整个教程讲解了如何传递参数。
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 方案的综合概述：![概述](media/tutorial-control-flow-portal/overview.png)
 
@@ -148,14 +145,14 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       - 选择“新建”，并输入资源组的名称。   
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-4. 选择“V2 (预览)”作为**版本**。
+4. 选择“V2”作为“版本”。
 5. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。      
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-control-flow-portal/deploying-data-factory.png)
-9. 创建完成后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/tutorial-control-flow-portal/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
@@ -242,7 +239,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         - 消息 – `@{activity('Copy1').output.dataWritten` 的传递值。 访问前一复制活动的属性，并传递 dataWritten 的值。 失败时，传递错误输出而不是 `@{activity('CopyBlobtoBlob').error.message`。
         - 数据工厂名称 – `@{pipeline().DataFactory}` 的传递值。这是一个系统变量，用于访问相应的数据工厂名称。 有关系统变量的列表，请参阅[系统变量](control-flow-system-variables.md)一文。
         - 管道名称 – `@{pipeline().Pipeline}` 的传递值。 这也是系统变量，用于访问相应的管道名称。 
-        - 收件人 – "@pipeline().parameters.receiver") 的传递值。 访问管道参数。
+        - 接收方 – 传递 "\@pipeline().parameters.receiver") 的值。 访问管道参数。
     
         ![第一个 Web 活动的设置](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. 将“复制”活动旁边的绿色按钮拖放到“Web”活动，以便将“复制”活动连接到“Web”活动。 
@@ -312,7 +309,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     1. 为 **sourceBlobContainer** 参数输入 **adftutorial/dummy/input**。 请确保 adftutorial 容器中不存在 dummy 文件夹。 
     2. 为 **sinkBlobContainer** 参数输入 **adftutorial/dummy/output**。 
     3. 输入**接收方**的**电子邮件地址**。 
-    4. 单击“完成” 。
+    4. 单击“完成”。
 
 ## <a name="monitor-the-failed-pipeline-run"></a>监视失败的管道运行
 

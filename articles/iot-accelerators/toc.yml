@@ -1,0 +1,215 @@
+- name: Azure IoT 基础
+  href: ../iot-fundamentals/index.yml
+- name: IoT 解决方案加速器文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: IoT 解决方案加速器是什么
+      href: about-iot-accelerators.md
+- name: 快速入门
+  items:
+    - name: 部署远程监视解决方案
+      href: quickstart-remote-monitoring-deploy.md
+- name: 教程
+  items:
+    - name: 监视 IoT 设备
+      href: iot-accelerators-remote-monitoring-monitor.md
+    - name: 检测设备问题
+      href: iot-accelerators-remote-monitoring-automate.md
+    - name: 配置和管理设备
+      href: iot-accelerators-remote-monitoring-manage.md
+    - name: 使用警报并修复设备问题
+      href: iot-accelerators-remote-monitoring-maintain.md
+- name: 概念
+  items:
+    - name: 远程监视
+      href: iot-accelerators-remote-monitoring-sample-walkthrough.md
+      items:
+        - name: 体系结构选择
+          href: iot-accelerators-remote-monitoring-architectural-choices.md
+        - name: 设备模型架构
+          href: iot-accelerators-remote-monitoring-device-schema.md
+        - name: 设备模型行为
+          href: iot-accelerators-remote-monitoring-device-behavior.md
+    - name: 预测性维护
+      href: iot-accelerators-predictive-walkthrough.md
+    - name: 连接工厂
+      href: iot-accelerators-connected-factory-features.md
+      items:
+        - name: 体系结构
+          href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: 对 azureiotsolutions.com 的权限
+      href: iot-accelerators-permissions.md
+- name: 操作指南
+  items:
+    - name: 远程监视
+      items:
+        - name: 连接物理设备
+          items:
+            - name: Windows 上的 C
+              href: iot-accelerators-connecting-devices.md
+            - name: Linux 上的 C
+              href: iot-accelerators-connecting-devices-linux.md
+            - name: Node.js（通用）
+              href: iot-accelerators-connecting-devices-node.md
+            - name: Raspberry Pi 上的 Node.js
+              href: iot-accelerators-connecting-pi-node.md
+            - name: Raspberry Pi 上的 C
+              href: iot-accelerators-connecting-pi-c.md
+            - name: MX Chip AZ3166 DevKit
+              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
+        - name: 集成 SIM 数据
+          href: iot-accelerators-remote-monitoring-telefonica-sim.md
+        - name: 创建模拟设备
+          href: iot-accelerators-remote-monitoring-test.md
+        - name: 自定义 UI
+          href: iot-accelerators-remote-monitoring-customize.md
+        - name: 自定义和重新部署微服务
+          href: iot-accelerators-microservices-example.md
+        - name: 使用 CLI 进行部署
+          href: iot-accelerators-remote-monitoring-deploy-cli.md
+        - name: 本地部署
+          href: iot-accelerators-remote-monitoring-deploy-local.md
+        - name: 使用 PowerBI 对遥测数据进行可视化
+          href: iot-accelerators-integrate-data-powerbi.md
+        - name: 使用时序见解对遥测数据进行可视化
+          href: iot-accelerators-time-series-insights.md
+        - name: 使用 Data Lake 分析遥测数据
+          href: iot-accelerators-integrate-data-lake.md
+    - name: 远程监视（旧版）
+      items:
+        - name: 什么是预配置的解决方案？
+          href: ../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md
+        - name: 常见问题
+          href: ../iot-suite/iot-suite-v1-faq.md
+        - name: 入门
+          items:
+            - name: 预配置的解决方案入门
+              href: ../iot-suite/iot-suite-v1-getstarted-preconfigured-solutions.md
+            - name: azureiotsuite.com 权限
+              href: ../iot-suite/iot-suite-v1-permissions.md
+            - name: 远程监视解决方案演练
+              href: ../iot-suite/iot-suite-v1-remote-monitoring-sample-walkthrough.md
+            - name: 连接 Raspberry Pi
+              href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-get-started.md
+              items:
+                - name: 使用 C
+                  items:
+                    - name: 模拟数据
+                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md
+                    - name: 使用实际传感器
+                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md
+                    - name: 实施固件更新
+                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md
+                - name: 使用 Node.js
+                  items:
+                    - name: 模拟数据
+                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md
+                    - name: 使用实际传感器
+                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md
+                    - name: 实施固件更新
+                      href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md
+            - name: 连接 MXChip IoT DevKit
+              href: ../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md
+        - name: 操作指南
+          items:
+            - name: 连接模拟设备
+              items:
+                - name: Windows 上的 C
+                  href: ../iot-suite/iot-suite-v1-connecting-devices.md
+                - name: Linux 上的 C
+                  href: ../iot-suite/iot-suite-v1-connecting-devices-linux.md
+                - name: Node.js
+                  href: ../iot-suite/iot-suite-v1-connecting-devices-node.md
+            - name: 将逻辑应用连接到远程监视解决方案
+              href: ../iot-suite/iot-suite-v1-logic-apps-tutorial.md
+            - name: 自定义解决方案加速器
+              href: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
+            - name: 在远程监视解决方案中使用动态遥测
+              href: ../iot-suite/iot-suite-v1-dynamic-telemetry.md
+            - name: 在远程监视解决方案中创建自定义规则
+              href: ../iot-suite/iot-suite-v1-custom-rule.md
+            - name: 远程监视解决方案中的设备信息
+              href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
+    - name: 预测性维护
+      items:
+        - name: 部署解决方案加速器
+          href: iot-accelerators-predictive-overview.md
+    - name: 连接工厂
+      items:
+        - name: 部署解决方案加速器
+          href: iot-accelerators-connected-factory-overview.md
+        - name: 部署网关
+          href: iot-accelerators-connected-factory-gateway-deployment.md
+        - name: 使用 OPC 发布服务器
+          href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
+        - name: 配置解决方案加速器
+          href: iot-accelerators-connected-factory-configure.md
+        - name: 自定义解决方案加速器
+          href: iot-accelerators-connected-factory-customize.md
+    - name: 设备模拟
+      items:
+        - name: 部署解决方案加速器
+          href: iot-accelerators-device-simulation-deploy.md
+        - name: 运行模拟
+          href: iot-accelerators-device-simulation-explore.md
+- name: 引用
+  items:
+    - name: 开发人员参考指南
+      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+    - name: 开发人员故障排除指南
+      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+    - name: 安全体系结构
+      href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
+    - name: 安全最佳实践
+      href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
+    - name: 保护 IoT 部署
+      href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
+    - name: 安全基础知识
+      href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
+- name: 相关内容
+  items:
+    - name: 解决方案
+      items:
+        - name: IoT 解决方案加速器
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: 平台服务
+      items:
+        - name: IoT 中心
+          href: /azure/iot-hub
+        - name: IoT 中心设备预配服务
+          href: /azure/iot-dps
+        - name: IoT 服务 SDK
+          href: /azure/iot-hub/iot-hub-devguide-sdks  azure-iot-service-sdks
+        - name: 地图
+          href: /azure/azure-maps
+        - name: 时序见解
+          href: /azure/time-series-insights
+    - name: Microsoft Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 设备 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+    - name: 流分析
+      href: /azure/stream-analytics/
+    - name: 事件中心
+      href: /azure/event-hubs/
+    - name: 机器学习
+      href: /azure/machine-learning/
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 常见问题
+      href: iot-accelerators-faq.md
+    - name: 远程监视常见问题解答
+      href: iot-accelerators-faq-rm-v2.md
+    - name: 连接的工厂常见问题解答
+      href: iot-accelerators-faq-cf.md
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'
+    - name: IoT 解决方案加速器学习路径
+      href: 'https://azure.microsoft.com/documentation/learning-paths/iot-suite/'

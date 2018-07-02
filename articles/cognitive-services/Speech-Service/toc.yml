@@ -17,18 +17,6 @@
       href: quickstart-cpp-linux.md
     - name: 语音设备 SDK 入门
       href: speech-devices-sdk-qsg.md
-- name: 自定义
-  items:
-    - name: 自定义语音模型
-      href: how-to-customize-speech-models.md
-    - name: 自定义语音字体
-      href: how-to-customize-voice-font.md
-    - name: 准备脚本
-      href: prepare-transcription.md
-    - name: 使用自定义音频流
-      href: how-to-use-audio-input-streams.md
-    - name: 自定义设备唤醒字词（设备 SDK）
-      href: speech-devices-sdk-create-kws.md
 - name: 操作指南
   items:
     - name: 识别语音
@@ -39,8 +27,22 @@
       href: how-to-translate-speech.md
     - name: 获取语音设备 SDK
       href: get-speech-devices-sdk.md
-    - name: 批处理听录（呼叫中心）
+    - name: 听录批处理
       href: batch-transcription.md
+- name: 自定义
+  items:
+    - name: 自定义声学模型
+      href: how-to-customize-acoustic-models.md
+    - name: 自定义语言模型
+      href: how-to-customize-language-model.md
+    - name: 自定义语音字体（机器人品牌语音）
+      href: how-to-customize-voice-font.md
+    - name: 准备脚本
+      href: prepare-transcription.md
+    - name: 使用自定义音频流
+      href: how-to-use-audio-input-streams.md
+    - name: 自定义设备唤醒字词（设备 SDK）
+      href: speech-devices-sdk-create-kws.md
 - name: 示例
   items:
     - name: 下载示例

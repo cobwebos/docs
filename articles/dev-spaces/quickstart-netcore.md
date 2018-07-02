@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 3802e67503fd546ef71b9c26daddc8ef63cf4bd2
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 21b94544105f55cbb8cb77c28d8c546ffcf7f8c0
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823220"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945850"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes 开发空间（.NET Core 和 VS Code）
 
@@ -40,7 +40,7 @@ ms.locfileid: "34823220"
 
 ## <a name="set-up-azure-dev-spaces"></a>设置 Azure Dev Spaces
 
-1. 安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)（版本 2.0.33 或更高版本）。
+1. 安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)（版本 2.0.38 或更高版本）。
 1. 在 AKS 群集上设置 Dev Spaces：`az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
 1. 下载适用于 VS Code 的 [Azure Dev Spaces 扩展](https://aka.ms/get-azds-code)。
 1. 安装扩展：`code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`
@@ -50,12 +50,15 @@ ms.locfileid: "34823220"
 1. 从 GitHub 下载示例代码：[https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) 
 1. 将目录切换到 webfrontend 文件夹：`cd dev-spaces/samples/dotnetcore/getting-started/webfrontend`
 1. 生成 Docker 和 Helm 图表资产：`azds prep --public`
-1. 在 AKS 中生成并运行代码。 在终端窗口中，从**根代码文件夹** webfrontend 运行以下命令：`azds up`
+1. 在 AKS 中生成并运行代码。 在终端窗口中，从 **webfrontend 文件夹**中运行以下命令：`azds up`
 1. 扫描控制台输出以获取有关由 `up` 命令创建的 URL 的信息。 它的形式如下： 
 
    `Service 'webfrontend' port 'http' is available at <url>` 
 
    在浏览器窗口中打开此 URL，你应看到 Web 应用加载。 
+   
+   > [!Note]
+   > 首次运行时，公共 DNS 可能要花费几分钟时间才能准备就绪。 如果公共 URL 无法解析，可以使用控制台输出中显示的替代 http://localhost:<portnumber> URL。 如果使用该 localhost URL，则容器看起来是在本地运行，但实际上是在 AKS 中运行。 为方便操作以及便于与本地计算机中的服务交互，Azure Dev Spaces 将与 Azure 中运行的容器建立临时的 SSH 隧道。 你可以返回，稍后在 DNS 记录准备就绪时再尝试公共 URL。
 
 ### <a name="update-a-content-file"></a>更新内容文件
 

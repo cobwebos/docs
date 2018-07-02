@@ -1,5 +1,5 @@
 ---
-title: 使用用于容器的 Azure Web 应用创建多容器（预览版）应用
+title: 在用于容器的 Web 应用中创建多容器（预览版）应用
 description: 了解如何配合 WordPress 和 MySQL 应用，通过 Docker Compose 和 Kubernetes 配置文件在 Azure 上使用多个容器。
 keywords: azure 应用服务, web 应用, linux, docker, compose, 多容器, 容器, kubernetes
 services: app-service
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 05/02/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 61158af0bc978665c3d914c8de3376b8f5d5c69f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 43a3fa271a1958c99bd3dd597c73de2d77bb1bfd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651276"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751908"
 ---
-# <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
+# <a name="tutorial-create-a-multicontainer-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 
 在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本教程介绍如何使用 WordPress 和 MySQL 创建多容器应用。
 
@@ -174,7 +174,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ![用于容器的 Web 应用中的示例多容器应用][1]
 
-**祝贺你**，现已在用于容器的 Web 应用中创建了多容器应用。 接下来，请将应用配置为使用 Azure Database for MySQL。 暂时不要安装 WordPress。
+**恭喜**，你已在用于容器的 Web 应用中创建了多容器应用。 接下来，请将应用配置为使用 Azure Database for MySQL。 暂时不要安装 WordPress。
 
 ## <a name="connect-to-production-database"></a>连接到生产数据库
 
@@ -336,7 +336,7 @@ az webapp config container set --resource-group myResourceGroup --name <app_name
 
 ## <a name="add-persistent-storage"></a>添加持久性存储
 
-多容器应用正在用于容器的 Web 应用中运行。 但是，如果现在安装 WordPress 并稍后重启应用，则会发现 WordPress 安装已消失。 之所以发生这种情况，是因为 Docker Compose 配置当前指向容器中的存储位置。 重启应用后，在容器中安装的文件不会保留。 在本部分，我们将持久性存储添加到 WordPress 容器。
+你的多容器应用现在正在用于容器的 Web 应用中运行。 但是，如果现在安装 WordPress 并稍后重启应用，则会发现 WordPress 安装已消失。 之所以发生这种情况，是因为 Docker Compose 配置当前指向容器中的存储位置。 重启应用后，在容器中安装的文件不会保留。 在本部分，我们将持久性存储添加到 WordPress 容器。
 
 ### <a name="configure-environment-variables"></a>配置环境变量
 
@@ -511,7 +511,7 @@ WordPress 将连接到 Redis 服务器。 同一页面上会显示连接**状态
 
 本部分介绍如何使用 Kubernetes 配置来部署多个容器。 请务必遵循前面的步骤创建[资源组](#create-a-resource-group)和[应用服务计划](#create-an-azure-app-service-plan)。 由于大多数步骤与 compose 部分中的步骤类似，因此，本部分已将配置文件合并。
 
-### <a name="supported-kubernetes-options-for-multi-container"></a>多容器支持的 Kubernetes 选项
+### <a name="supported-kubernetes-options-for-multicontainer"></a>多容器支持的 Kubernetes 选项
 
 * args
 * command
@@ -627,7 +627,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="add-persistent-storage"></a>添加持久性存储
 
-多容器应用正在用于容器的 Web 应用中运行。 重启后会擦除数据，因为文件不会持久保留。 在本部分，我们将持久性存储添加到 WordPress 容器。
+你的多容器应用现在正在用于容器的 Web 应用中运行。 重启后会擦除数据，因为文件不会持久保留。 在本部分，我们将持久性存储添加到 WordPress 容器。
 
 ### <a name="configure-environment-variables"></a>配置环境变量
 
@@ -649,7 +649,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 ]
 ```
 
-### <a name="create-a-multi-container-app-kubernetes"></a>创建多容器应用 (Kubernetes)
+### <a name="create-a-multicontainer-app-kubernetes"></a>创建多容器应用 (Kubernetes)
 
 在本地命令提示符终端中，使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令在 `myResourceGroup` 资源组和 `myAppServicePlan` 应用服务计划中创建多容器 [Web 应用](app-service-linux-intro.md)。 不要忘记将 _\<app_name>_ 替换为唯一的应用名称。
 
@@ -681,7 +681,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ![用于容器的 Web 应用中的示例多容器应用][1]
 
-**祝贺你**，现已在用于容器的 Web 应用中创建了多容器应用。
+**恭喜**，你已在用于容器的 Web 应用中创建了多容器应用。
 
 若要使用 Redis，请遵循[将 WordPress 连接到 Redis](#connect-wordpress-to-redis) 中的步骤。
 

@@ -3,7 +3,7 @@ title: 使用 Azure 数据工厂以增量方式复制表 | Microsoft Docs
 description: 在本教程中，我们将创建一个 Azure 数据工厂管道，它能够以增量方式将 Azure SQL 数据库中的数据复制到 Azure Blob 存储。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,20 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: shlo
-ms.openlocfilehash: a543bb1ceb14bb8f618e1cf644cc269a99719c28
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: d9b1666c1543e16fe5433e05645c232d01e7260c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054562"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
-
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用数据工厂服务的第 1 版（正式版），请参阅[数据工厂第 1 版文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-
 
 在本教程中执行以下步骤：
 
@@ -192,7 +188,7 @@ END
     ```
 
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
-* 目前，数据工厂版本 2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域创建数据工厂。 数据工厂使用的数据存储（存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
+* 目前，数据工厂仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务

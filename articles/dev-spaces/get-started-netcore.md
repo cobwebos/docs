@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: bd42268c36f44dc20b88d27d19cbf378e848b82f
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 8b14f06f364bde1d4c5588e60a54aefe07c821d2
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823140"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945915"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>通过 .NET Core 开始使用 Azure Dev Spaces
 
@@ -32,7 +32,7 @@ ms.locfileid: "34823140"
 Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间的大部分配置存储在云中，可以与其他用户共享。 首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
 
 > [!IMPORTANT]
-> 如果已安装 Azure CLI，请确保使用 2.0.33 版或更高版本。
+> 如果已安装 Azure CLI，请确保使用 2.0.38 版或更高版本。
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -193,13 +193,14 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 
 让我们看看该项目的运行情况。 转到 `mywebapi` 的 VS Code 窗口，并对 `string Get(int id)` 方法进行代码编辑，例如：
 
-    ```csharp
-    [HttpGet("{id}")]
-    public string Get(int id)
-    {
-        return "mywebapi now says something new";
-    }
-    ```
+```csharp
+[HttpGet("{id}")]
+public string Get(int id)
+{
+    return "mywebapi now says something new";
+}
+```
+
 
 [!INCLUDE[](includes/team-development-2.md)]
 

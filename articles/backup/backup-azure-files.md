@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9697bd5a55a5cfcdcd6958f8baff85e55c880c87
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d21a235602c425cef77b26d8c60f1e3562411095
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287654"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961666"
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 本文介绍如何使用 Azure 门户备份和还原 [Azure 文件共享](../storage/files/storage-files-introduction.md)。
@@ -40,9 +40,9 @@ Azure 文件共享备份处于预览状态。 Azure 文件共享不支持以下�
 - 在存储帐户上使用[资源锁定](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)，防止意外删除恢复服务保管库中的备份。
 - 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
 
-\*具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能的存储帐户中的 Azure 文件共享将作为 GRS 发挥作用并按 GRS 价格计费
+\*具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能的存储帐户中的 Azure 文件共享将作为 GRS 发挥作用并按 GRS 价格计费。
 
-使用[区域冗余存储空间](../storage/common/storage-redundancy-zrs.md) (ZRS) 复制对存储帐户中的 Azure 文件共享进行备份，目前只能在美国中部 (CUS) 和美国东部 2 (EUS2) 中使用
+使用[区域冗余存储空间](../storage/common/storage-redundancy-zrs.md) (ZRS) 复制对存储帐户中的 Azure 文件共享进行备份，目前只能在美国中部 (CUS)、美国东部 2 (EUS2)、北欧 (NE)、东南亚 (SEA) 和西欧 (WE) 使用。
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>为 Azure 文件共享配置备份
 所有备份数据都存储在恢复服务保管库中。 本教程假定你已建立 Azure 文件共享。 若要备份 Azure 文件共享，请执行以下操作：

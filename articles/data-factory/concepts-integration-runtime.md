@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 61dea25b9a52a9acaee029162929e4faeb3a0978
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: cd2964d0a579b903ddebfd19c90d2ce38d2374bc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291851"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050414"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -26,10 +26,6 @@ ms.locfileid: "36291851"
 - **数据移动**：在公用网络中的数据存储和专用网络（本地或虚拟专用网络）中的数据存储之间移动数据。 它提供对内置连接器、格式转换、列映射以及性能和可扩展数据传输的支持。
 - **活动分派**：分派和监视在各种计算服务（如 Azure HDInsight、Azure 机器学习、Azure SQL 数据库、SQL Server 等等）上运行的转换活动。
 - **SSIS 包执行**：在托管的 Azure 计算环境中本机执行 SQL Server 集成服务 (SSIS) 包。
-
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 在数据工厂中，活动定义要执行的操作。 链接服务定义目标数据存储或计算服务。 集成运行时提供活动和链接服务之间的桥梁。  它被链接服务引用，并提供运行或分派活动的计算环境。  这样一来，可以在最接近目标数据存储的区域中执行活动，或者，以最优性能计算服务的同时满足安全和合规性需求。
 
@@ -64,7 +60,7 @@ Azure 集成运行时支持使用可公开访问的终结点连接到公用网�
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR 计算资源和缩放
 Azure 集成运行时在 Azure 中提供完全托管的无服务器计算。  无需担心基础结构配置、软件安装、修补或功能扩展。  此外，只需为实际使用时间付费。
 
-Azure 集成运行时提供了使用安全、可靠和高性能的方式在云数据存储之间移动数据的本机计算。  可以设置在复制活动上要使用的数据移动单位的数量，相应的，Azure IR 的计算大小弹性地纵向扩展，无需显式调整 Azure 集成运行时的大小。
+Azure 集成运行时提供了使用安全、可靠和高性能的方式在云数据存储之间移动数据的本机计算。  可以设置在复制活动上要使用的数据集成单元的数量，相应地，Azure IR 的计算大小弹性地纵向扩展，无需显式调整 Azure 集成运行时的大小。
 
 活动分派是将活动路由到目标计算服务的轻型操作，因此，无需纵向扩展此方案的计算大小。
 

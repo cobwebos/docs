@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 13d350950e91d771b7b4b2310a788537c4c36bd7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5ae6ba28ba448591d58cc3963f5df9a563997ab0
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642387"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959539"
 ---
 # <a name="quickstart-deploy-a-java-service-fabric-reliable-services-application-to-azure"></a>快速入门：将 Java Service Fabric Reliable Services 应用程序部署到 Azure
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。 
@@ -120,13 +120,13 @@ Service Fabric 提供多种可以用来管理群集及其应用程序的工具�
 
 需将证书指纹添加到应用程序，因为它使用 Service Fabric 编程模型。 
 
-1. 在安全群集上运行时，需要 ```Voting/VotingApplication/ApplicationManiest.xml``` 文件中的证书的指纹。 运行以下命令，提取证书指纹。
+1. 在安全群集上运行时，需要 `Voting/VotingApplication/ApplicationManifest.xml` 文件中的证书的指纹。 运行以下命令，提取证书指纹。
 
     ```bash
     openssl x509 -in [CERTIFICATE_PEM_FILE] -fingerprint -noout
     ```
 
-2. 在 ```Voting/VotingApplication/ApplicationManiest.xml``` 中的 **ApplicationManifest** 标记下添加以下代码片段。 **X509FindValue** 应该是上一步的指纹（无分号）。 
+2. 在 `Voting/VotingApplication/ApplicationManifest.xml` 文件中，在 **ApplicationManifest** 标记下添加以下代码片段。 **X509FindValue** 应该是上一步的指纹（无分号）。 
 
     ```xml
     <Certificates>

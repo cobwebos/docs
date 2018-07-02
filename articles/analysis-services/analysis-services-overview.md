@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/05/2018
+ms.date: 06/21/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 52695ba495b088d30a5ee039d3e24eb274957bff
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234550"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937931"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -31,7 +31,7 @@ Azure Analysis Services 是一个完全托管的平台即服务 (PaaS)，它在�
 
 **视频：** 观看 [Automating deployent](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)（将部署自动化），详细了解如何使用 Azure 自动化来加速服务器的创建。
 
-Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的分析解决方案。 集成 [Azure Active Directory](../active-directory/active-directory-whatis.md) 后可以对关键数据进行安全的基于角色的访问。 只需包括一项将数据加载到模型中的活动，即可集成 [Azure 数据工厂](../data-factory/introduction.md)管道。 可通过自定义代码将 [Azure 自动化](../automation/automation-intro.md)和 [Azure Functions](../azure-functions/functions-overview.md) 用于模型的轻型业务流程。 
+Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的分析解决方案。 集成 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 后可以对关键数据进行安全的基于角色的访问。 只需包括一项将数据加载到模型中的活动，即可集成 [Azure 数据工厂](../data-factory/introduction.md)管道。 可通过自定义代码将 [Azure 自动化](../automation/automation-intro.md)和 [Azure Functions](../azure-functions/functions-overview.md) 用于模型的轻型业务流程。 
 
 ## <a name="the-right-tier-when-you-need-it"></a>符合需要的层级
 
@@ -72,39 +72,41 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ## <a name="availability-by-region"></a>按区域列出的可用性
 
-全球的各个区域都支持 azure Analysis Services。 请在多个区域的冗余服务器上部署模型，确保[高可用性](analysis-services-bcdr.md)。 支持的层和查询副本取决于所选的区域。 
+全球的各个区域都支持 azure Analysis Services。 支持的计划和查询副本可用性取决于所选的区域。 计划和查询副本可用性可能会根据每个区域的需求和可用资源而变化。 
 
 ### <a name="americas"></a>美洲
 
-|区域  | 支持的层 | 查询副本 |
+|区域  | 支持的计划 | 查询副本（仅限标准计划） |
 |---------|---------|:---------:|
 |巴西南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |加拿大中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |美国东部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
-|美国东部 2     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |    7     |
+|美国东部 2     |     B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1     |    7     |
 |美国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
-|美国中部     |    B1、B2、S0、S1、S2、S4、D1     |    3     |
+|美国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
-|美国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    7     |
-|美国西部     |    B1、B2、S0、S1、S2、S4、S8、S9、D1     |    7     |
-|美国西部 2    |    B1、B2、S0、S1、S2、S4、S8、S9、D1     |    1     |
+|美国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
+|美国西部     |    B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1     |    7     |
+|美国西部 2    |    B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1     |    3     |
 
 ### <a name="europe"></a>欧洲
 
-|区域  | 支持的层 | 查询副本 |
+|区域  | 支持的计划 | 查询副本（仅限标准计划） |
 |---------|---------|:---------:|
-|北欧     |    B1、B2、S0、S1、S2、S4、D1      |    1     |
+|北欧     |    B1、B2、S0、S1、S2、S4、D1      |    7     |
 |英国南部   |    B1、B2、S0、S1、S2、S4、D1      |     1    |
-|欧洲西部     |    B1、B2、S0、S1、S2、S4、S8、S9、D1      |    7     |
+|西欧     |    B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1      |    7     |
 
 ### <a name="asia-pacific"></a>亚太区 
 
-|区域  | 支持的层 | 查询副本 |
+|区域  | 支持的计划 | 查询副本（仅限标准计划） |
 |---------|---------|:---------:|
 |澳大利亚东南部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |日本东部  |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|东南亚     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   3      |
+|东南亚     |     B1、B2、S0、S1、S2、S4、S8\*、S9\*、D1     |   1      |
 |印度西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
+
+\* 标准层中的 S8、S9 计划仅支持一个查询副本。
 
 ## <a name="scale-to-your-needs"></a>按需求缩放
 
@@ -116,7 +118,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 启用横向扩展后，客户端查询就会分布在查询池中的多个查询副本中。 查询副本已同步表格模型的副本。 可以通过分散查询工作负荷，缩短查询工作负荷高峰期间的响应时间。 可以将模型处理操作与查询池分开，确保客户端查询不受处理操作的负面影响。 
 
-创建查询池时，最多可以有七个其他的查询副本（总共为八个，包括你自己的服务器在内）。 在池中可以创建的查询副本数取决于所选的区域。 查询副本不能分散到服务器区域的外部。 查询副本的计费方式与服务器相同。
+创建查询池时，最多可以有七个其他的查询副本（总共为八个，包括你自己的服务器在内）。 可以在池中创建的查询副本数取决于所选的计划和区域。 查询副本不能分散到服务器区域的外部。 查询副本的计费方式与服务器相同。
 
 可以根据需要横向扩展查询副本，就像更改层一样。 通过门户或 REST API 配置横向扩展。 有关详细信息，请参阅 [Azure Analysis Services 横向扩展](analysis-services-scale-out.md)。
 
@@ -148,7 +150,7 @@ Azure Analysis Services 防火墙阻止所有客户端连接，规则中指定�
 
 ### <a name="authentication"></a>身份验证
 
-用户身份验证由 [Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md) 处理。 登录时，用户需使用组织帐户标识对数据库进行基于角色的访问。 用户标识必须是服务器所在订阅的默认 Azure Active Directory 成员。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
+用户身份验证由 [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) 处理。 登录时，用户需使用组织帐户标识对数据库进行基于角色的访问。 用户标识必须是服务器所在订阅的默认 Azure Active Directory 成员。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
 ### <a name="data-security"></a>数据安全
 
@@ -162,7 +164,7 @@ Analysis Services 使用[基于角色的授权](https://docs.microsoft.com/sql/a
   
 通过数据库角色向查询数据的非管理最终用户授予访问权限。 数据库角色作为数据库中的单独对象创建，并且仅适用于创建该角色的数据库。 数据库角色按（数据库）“管理员”、“读取”与“读取和处理”权限来定义。 使用 SSMS 或 PowerShell 添加用户和组帐户。
 
-### <a name="row-level-security"></a>行级安全性
+### <a name="row-level-security"></a>行级别安全性
 
 所有兼容级别的表格模型都支持行级安全性。 行级安全性的定义方式如下：在模型中使用 DAX 表达式，这些表达式可在表中定义行，以及在用户可查询的相关表的许多方向定义任何行。 为“读取”与“读取和处理”权限定义使用 DAX 表达式的行筛选器。 
 

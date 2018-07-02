@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: douglasl
-ms.openlocfilehash: e9ec338e04c456a9a91d51a7a4741e4760f1b3c9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5959eeea7e5a16170414c7ef8036093ce122681d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179924"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045664"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 本教程使用 Azure 门户创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络 (VNet) 中的数据。 在本教程中执行以下步骤：
@@ -30,9 +30,6 @@ ms.locfileid: "32179924"
 > * 触发管道运行。
 > * 监视管道运行 
 > * 验证输出
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -90,7 +87,7 @@ ms.locfileid: "32179924"
       - 选择“新建”，并输入资源组的名称。   
          
       若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-4. 选择“V2 (预览)”作为**版本**。
+4. 选择“V2”作为“版本”。
 5. 选择数据工厂的**位置**。 列表中只会显示支持创建数据工厂的位置。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。

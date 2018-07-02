@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/23/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 70698dc233dac60a2fa2d1444930d21d3fba8773
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6fa090a5277b1feb3e1b6ea0114ce90035197076
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637117"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753262"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>借助 Azure Monitor 警报对事件做出响应
 Azure Monitor 中的警报可以标识 Log Analytics 存储库中的重要信息。 它们由定期自动运行日志搜索的警报规则创建；如果日志搜索的结果符合特定条件，则创建一条警报记录，并可将此记录配置为执行自动响应。  本教程是[创建和共享 Log Analytics 数据的仪表板](log-analytics-tutorial-dashboards.md)教程的延续。   
@@ -41,7 +41,7 @@ Azure Monitor 中的警报可以标识 Log Analytics 存储库中的重要信息
 
 在以下示例中，请根据保存在[可视化数据教程](log-analytics-tutorial-dashboards.md)中的“Azure VM - 处理器利用率”查询创建一条指标度量警报规则。  将会为每个超出阈值 (90%) 的虚拟机创建一条警报。  
 
-1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
+1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“监视器”。 开始键入时，会根据输入筛选该列表。 选择“监视器”。
 2. 在左窗格中选择“警报”，然后单击页面顶部的“新建警报规则”，以便创建新的警报。<br><br> ![创建新的警报规则](./media/log-analytics-tutorial-response/alert-rule-02.png)<br>
 3. 第一步是在“创建警报”部分选择充当资源的 Log Analytics 工作区，因为这是基于日志的警报信号。  对结果进行筛选，方法是：从下拉列表中选择特定的**订阅**（如果有多个），其中包含此前创建的 VM 和 Log Analytics 工作区。  从下拉列表中选择“Log Analytics”，对“资源类型”进行筛选。  最后，选择**资源** **DefaultLAWorkspace**，然后单击“完成”。<br><br> ![创建警报步骤 1 任务](./media/log-analytics-tutorial-response/alert-rule-03.png)<br>
 4. 在“警报条件”部分单击“添加条件”，选择保存的查询，然后指定警报规则遵循的逻辑。  在“配置信号逻辑”窗格的列表中选择“Azure VM - 处理器利用率”。  此窗格会进行更新，以呈现警报的配置设置。  在顶部，它会显示所选信号和搜索查询本身在过去 30 分钟的结果。  

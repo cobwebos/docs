@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.topic: quickstart
-ms.date: 05/22/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 1d5bc6b63a6322919afd65f6e77371f5504bba64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5592a22a5e9dad8b0b0aa2e9c9f704db9a31c914
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648966"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308218"
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库
 
@@ -77,9 +77,7 @@ ms.locfileid: "34648966"
 6. 单击“定价层”，指定服务层、DTU 数和存储量。 浏览相关选项，了解适用于每个服务层的 DTU 数和存储量。
 
    > [!IMPORTANT]
-   > - 超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
-   >- 除以下区域外，所有区域均提供超过 1 TB 的高级层存储：英国北部、美国中西部、英国南部 2、中国东部、USDoDCentral、德国中部、USDoDEast、US Gov 西南部、US Gov 中南部、德国东北部、中国北部、US Gov 东部。 更广泛的可用性也在计划之中。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
-   >
+   > 除以下区域外，所有区域当前均提供超过 1 TB 的高级层存储：英国北部、美国中西部、英国南部 2、中国东部、USDoDCentral、德国中部、USDoDEast、US Gov 西南部、US Gov 中南部、德国东北部、中国北部、US Gov 东部。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
 
 7. 对于本快速入门，请选择“标准”服务层，然后使用滑块选择“10 DTU (S0)”和“1”GB 存储。
 
@@ -88,10 +86,7 @@ ms.locfileid: "34648966"
 8. 若要使用“附加存储”选项，请接受预览版条款。
 
    > [!IMPORTANT]
-   > - 超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
-   >
-   > - 除以下区域外，所有区域均提供超过 1 TB 的高级层存储：英国北部、美国中西部、英国南部 2、中国东部、USDoDCentral、德国中部、USDoDEast、US Gov 西南部、US Gov 中南部、德国东北部、中国北部、US Gov 东部。 更广泛的可用性也在计划之中。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
-   >
+   > 除以下区域外，所有区域当前均提供超过 1 TB 的高级层存储：英国北部、美国中西部、英国南部 2、中国东部、USDoDCentral、德国中部、USDoDEast、US Gov 西南部、US Gov 中南部、德国东北部、中国北部、US Gov 东部。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
 
 9. 选择服务器层、DTU 数和存储量后，单击“应用”。  
 

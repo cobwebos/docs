@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f18e94b6f788609dc5a0466e9d8ffa0c02056b1e
-ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
+ms.openlocfilehash: 199998f193f375137d499913e9ce966f85ed863c
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2018
-ms.locfileid: "35678049"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753789"
 ---
 ### <a name="supportedclientos"></a>点到站点连接可以用于哪些客户端操作系统？
 
@@ -61,7 +61,7 @@ Azure 支持两种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
-不会。 点到站点客户端只能连接到虚拟网络网关所在的 VNet 中的资源。
+不是。 点到站点客户端只能连接到虚拟网络网关所在的 VNet 中的资源。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>预计通过站点到站点连接或点到站点连接的吞吐量有多少？
 
@@ -69,7 +69,7 @@ Azure 支持两种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>是否可以将任何软件 VPN 客户端用于支持 SSTP 和/或 IKEv2 的点到站点配置？
 
-不会。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 请参阅支持的客户端操作系统的列表。
+不是。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 请参阅支持的客户端操作系统的列表。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure 是否支持使用 Windows 的 IKEv2 VPN？
 
@@ -93,7 +93,7 @@ Azure 支持两种类型的点到站点 VPN 选项：
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>除了 Windows 和 Mac 以外，Azure 还支持在其他哪些平台上使用 P2S VPN？
 
-Azure 仅支持在 Windows 和 Mac 上使用 P2S VPN。
+Azure 支持将 Windows、Mac 和 Linux 用于 P2S VPN。
 
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>我已部署 Azure VPN 网关。 是否可在该网关上启用 RADIUS 和/或 IKEv2 VPN？
 

@@ -138,9 +138,11 @@
         - name: 测试函数
           href: functions-test-a-function.md
         - name: 在本地开发和调试
-          href: functions-run-local.md
+          href: functions-develop-local.md
         - name: Visual Studio 开发
           href: functions-develop-vs.md
+        - name: Core Tools 开发
+          href: functions-run-local.md
         - name: 管理连接
           href: manage-connections.md
         - name: 错误处理。

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 89f5391cfbfd85f9f0715a8c7d288cc3981cc618
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ae0247df0bbde07e755bd910bca08b8703969cec
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30236999"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047269"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-introduction.md)
-> * [版本 2 - 预览版](introduction.md)
+> * [版本 1](v1/data-factory-introduction.md)
+> * [当前版本](introduction.md)
 
 在大数据环境中，原始、散乱的数据通常存储在关系、非关系和其他存储系统中。 但是，就其本身而言，原始数据没有适当的上下文或含义来为分析师、数据科学家或业务决策人提供有意义的见解。 
 
@@ -40,9 +40,6 @@ Azure 数据工厂是解决此类数据方案的平台。 它是*基于云的数
 此外，你还可以将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。 最终，通过 Azure 数据工厂，可将原始数据组织成有意义的数据存储和数据湖，以实现更好的业务决策。
 
 ![数据工厂的顶级视图](media/introduction/big-picture.png)
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 简介](v1/data-factory-introduction.md)。
 
 ## <a name="how-does-it-work"></a>工作原理
 Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下四个步骤：
@@ -92,7 +89,7 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 - 代表可托管活动执行的**计算资源**。 例如，HDInsightHive 活动在 HDInsight Hadoop 群集上运行。 有关转换活动列表和支持的计算环境，请参阅[转换数据](transform-data.md)一文。
 
 ### <a name="triggers"></a>触发器
-触发器代表处理单元，用于确定何时需要启动管道执行。 不同类型的事件有不同类型的触发器类型。 数据工厂预览版支持时钟计划程序触发器。 
+触发器代表处理单元，用于确定何时需要启动管道执行。 不同类型的事件有不同类型的触发器类型。
 
 ### <a name="pipeline-runs"></a>管道运行
 管道运行是管道执行实例。 管道运行通常是通过将自变量传递给管道中定义的参数来实例化的。 自变量可手动传递，也可在触发器定义中传递。
@@ -124,8 +121,8 @@ Azure 数据工厂本身不存储任何数据。 它允许创建数据驱动型�
 
 例如，假设计算环境（例如 Azure HDInsight 群集和 Azure 机器学习）即将耗尽西欧区域的资源。 可以在美国东部或美国东部 2 创建并使用一个 Azure 数据工厂实例来安排西欧计算环境中的作业。 只需几毫秒时间，数据工厂就能触发计算环境上的作业，但在计算环境上运行作业所需的时间不会改变。
 
-## <a name="compare-with-version-2"></a>与第 2 版比较
-如需数据工厂服务第 1 版和第 2 版差异的列表，请参阅[与第 1 版比较](compare-versions.md)。 
+## <a name="compare-with-version-1"></a>与版本 1 比较
+有关数据工厂服务版本 1 与当前版本之间的差异列表，请参阅[与版本 1 比较](compare-versions.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 开始使用以下工具/SDK 之一创建数据工厂管道： 
