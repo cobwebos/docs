@@ -25,16 +25,11 @@
   items:
     - name: 了解角色定义
       href: role-definitions.md
-    - name: 内置角色
-      href: built-in-roles.md
-    - name: 资源提供程序操作
-      href: resource-provider-operations.md
     - name: RBAC 的 Privileged Identity Management (PIM)
       href: pim-azure-resource.md
     - name: 用于 Azure 管理的条件访问
       href: conditional-access-azure-management.md
 - name: 操作指南
-  expanded: true
   items:
     - name: 管理访问权限
       items:
@@ -63,3 +58,17 @@
       href: role-assignments-external-users.md
     - name: 故障排除
       href: troubleshooting.md
+- name: 引用
+  items:
+    - name: 内置角色
+      href: built-in-roles.md
+    - name: 资源提供程序操作
+      href: resource-provider-operations.md
+    - name: RBAC 限制
+      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: Azure CLI
+      href: /cli/azure/role?view=azure-cli-latest
+    - name: REST API
+      href: /rest/api/authorization/

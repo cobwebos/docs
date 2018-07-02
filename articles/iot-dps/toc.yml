@@ -113,6 +113,9 @@
           href: how-to-manage-dps-with-cli.md
         - name: 控制对预配服务 API 的访问
           href: how-to-control-access.md
+    - name: 预配 IoT Edge 设备
+      href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
+      maintainContext: true
     - name: 将证明机制与 SDK 配合使用
       href: use-hsm-with-sdk.md
     - name: 使用 SDK 工具进行开发

@@ -1,15 +1,19 @@
-# [Azure Marketplace 文档](index.md)  
+# 
+  [Azure 市场文档](index.md)  
 
-## [Azure Marketplace 和 AppSource 发布者指南](./marketplace-publishers-guide.md)  
+## 
+  [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)  
 ### 概述和权益  
 ### 店面  
 #### [比较 AppSource 和 Azure Marketplace](./comparing-appsource-azure-marketplace.md)  
 #### [通过 AppSource 发展业务](./grow-your-business-with-appsource.md)  
 ##### [生成登陆页](./build-your-landing-page.md)  
 ##### [启用潜在顾客共享](./enable-lead-sharing.md)  
+##### [首选解决方案](./preferred-solutions.md)
 ##### [Marketplace 的 GTM 权益](./gtm-benefits.md)  
 ##### [通过 Microsoft 促进业务发展](./promote-your-business-with-microsoft.md)  
-#### [通过 Azure Marketplace 扩展业务](./grow-your-business-with-azure-marketplace.md)  
+#### 
+  [通过 Azure 市场扩展业务](./grow-your-business-with-azure-marketplace.md)  
 ##### [生成登陆页](./build-your-landing-page.md)  
 ##### [启用潜在顾客共享](./enable-lead-sharing.md)  
 ##### [Marketplace 的 GTM 权益](./gtm-benefits.md)  
