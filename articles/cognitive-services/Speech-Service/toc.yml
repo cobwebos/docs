@@ -5,6 +5,8 @@
     - name: 什么是语音服务？
       href: overview.md
       expanded: true
+    - name: 语音方案
+      href: speech-scenarios.md
 - name: 快速入门
   items:
     - name: 免费试用语音服务
@@ -25,16 +27,18 @@
       href: how-to-text-to-speech.md
     - name: 翻译语音
       href: how-to-translate-speech.md
-    - name: 获取语音设备 SDK
-      href: get-speech-devices-sdk.md
     - name: 听录批处理
       href: batch-transcription.md
+    - name: 获取语音设备 SDK
+      href: get-speech-devices-sdk.md
 - name: 自定义
   items:
     - name: 自定义声学模型
       href: how-to-customize-acoustic-models.md
     - name: 自定义语言模型
       href: how-to-customize-language-model.md
+    - name: 自定义发音
+      href: how-to-customize-pronunciation.md
     - name: 自定义语音字体（机器人品牌语音）
       href: how-to-customize-voice-font.md
     - name: 准备脚本

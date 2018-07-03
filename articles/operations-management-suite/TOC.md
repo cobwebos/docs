@@ -1,6 +1,5 @@
 # 概述
-## [什么是 Operations Management Suite？](operations-management-suite-overview.md)
-## [OMS 体系结构](operations-management-suite-architecture.md)
+## [代理监视](../monitoring/index.md)
 
 # 入门
 ## [Log Analytics](../log-analytics/log-analytics-get-started.md)
@@ -13,8 +12,6 @@
 
 ## 分析
 ### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [监视产品比较](operations-management-suite-monitoring-product-comparison.md)
-### [管理警报](operations-management-suite-monitoring-alerts.md)
 ## 自动化
 ### [Azure 自动化概述](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -45,7 +42,6 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric 分析](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### 服务映射
-##### [演练](../monitoring/monitoring-walkthrough-servicemap.md)
 ##### [使用](../monitoring/monitoring-service-map.md)
 ##### [配置](../monitoring/monitoring-service-map-configure.md)
 ##### [与 Operations Manager 的集成](../monitoring/monitoring-service-map-scom.md)
@@ -69,12 +65,7 @@
 ### [最佳实践](../monitoring/monitoring-solutions-best-practices.md)
 
 ## 管理方案
-### [从 runbook 收集分析数据](operations-management-suite-runbook-datacollect.md)
-
-## [与 OMS 集成](operations-management-suite-integration.md)
-
-# 引用
-## [SDK](operations-management-suite-sdk.md)
+### [从 runbook 收集分析数据](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
