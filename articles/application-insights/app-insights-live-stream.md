@@ -163,7 +163,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ```
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET 核心（需要 Application Insights ASP.NET 核心 SDK 2.3.0 版本或更高版本）
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core（需要 Application Insights ASP.NET Core SDK 2.3.0 版本或更高版本）
 
 如下所述修改 startup.cs 文件：
 

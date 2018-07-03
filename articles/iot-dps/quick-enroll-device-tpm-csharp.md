@@ -28,7 +28,7 @@ ms.lasthandoff: 04/28/2018
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
 1. 确保已在计算机上安装 [Visual Studio 2017](https://www.visualstudio.com/vs/)。 
-2. 确保已在计算机上安装 [.Net 核心 SDK](https://www.microsoft.com/net/download/windows)。 
+2. 确保已在计算机上安装 [.NET Core SDK](https://www.microsoft.com/net/download/windows)。 
 3. 在继续操作之前，请确保完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。
 4. （可选）如需在本快速入门末尾注册模拟设备，请执行[使用 C# 设备 SDK 创建和预配模拟的 TPM 设备](quick-create-simulated-device-tpm-csharp.md)中的步骤，一直到获取设备的认可密钥那一步。 记下认可密钥和注册 ID，也可以记下设备 ID。稍后需要在本快速入门中使用它们。 **请勿执行通过 Azure 门户创建单个注册的步骤。**
 
