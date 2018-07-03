@@ -34,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="prerequisites"></a>先决条件
 
 1. [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](http://www.visualstudio.com/vs)或更高版本。
-2. [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
+2. [.NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
 2. Azure 订阅。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
