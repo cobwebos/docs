@@ -192,11 +192,11 @@
         - name: 使用批处理测试提高准确性
           href: luis-tutorial-batch-testing.md
     - name: 发布应用
-      href: PublishApp.md
+      href: luis-how-to-publish-app.md
     - name: 使用预构建的模型
       items:
         - name: 使用预生成的实体
-          href: Pre-builtEntities.md
+          href: luis-prebuilt-entities.md
         - name: 使用预生成的域
           href: luis-how-to-use-prebuilt-domains.md
         - name: 使用 Cortana 预生成的应用
@@ -208,7 +208,7 @@
         - name: 创建密钥
           href: luis-how-to-azure-subscription.md
         - name: 在 LUIS 中添加密钥
-          href: Manage-Keys.md
+          href: luis-how-to-manage-keys.md
         - name: 使用 PowerShell 查看终结点使用情况
           href: luis-how-to-manage-from-cloud-shell.md
         - name: 管理版本
@@ -283,6 +283,10 @@
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
         - name: Node.js
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Go
+          href: 'https://aka.ms/luis-sdk-go'
+        - name: Java
+          href: 'https://aka.ms/luis-java-sdk'
         - name: Python
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
         - name: .Net 终结点

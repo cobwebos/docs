@@ -45,13 +45,13 @@ ms.locfileid: "34593099"
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>步骤 2：修改 contoso.com 联合身份验证设置 
  
-为联合到 AD FS 的单个域设置的默认颁发者为 “ http://ADFSServiceFQDN/adfs/services/trust ” ，例如 “http://fs.contoso.com/adfs/services/trust” 。 Azure Active Directory 要求每个联合域都有唯一颁发者。 由于同一 AD FS 将联合两个域，因此颁发者值需进行修改，使之对于每个与 Azure Active Directory 联合的域 AD FS 都是唯一的。 
+为联合到 AD FS 的单个域设置的默认颁发者为“ http://ADFSServiceFQDN/adfs/services/trust ”，例如“ http://fs.contoso.com/adfs/services/trust ”。 Azure Active Directory 要求每个联合域都有唯一颁发者。 由于同一 AD FS 将联合两个域，因此颁发者值需进行修改，使之对于每个与 Azure Active Directory 联合的域 AD FS 都是唯一的。 
  
 在 AD FS 服务器上，打开 Azure AD PowerShell 并执行以下步骤：
  
 连接到 Azure Active Directory，其中包含域 contoso.com Connect-MsolService 更新 contoso.com 的联合身份验证设置 Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain
  
-会将域联合身份验证设置中的颁发者更改为“http://contoso.com/adfs/services/trust”，并且会为 Azure AD 信赖方信任添加颁发声明规则，以便根据 UPN 后缀颁发正确的 issuerId 值。
+会将域联合身份验证设置中的颁发者更改为“ http://contoso.com/adfs/services/trust ”，并且会为 Azure AD 信赖方信任添加颁发声明规则，以便根据 UPN 后缀颁发正确的 issuerId 值。
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>步骤 3：通过 AD FS 联合 fabrikam.com
  

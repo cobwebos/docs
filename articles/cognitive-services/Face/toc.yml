@@ -1,11 +1,11 @@
 - name: 人脸 API 文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 什么是人脸 API？
       href: Overview.md
 - name: 快速入门
-  expanded: true
   items:
     - name: 'C#'
       href: QuickStarts/CSharp.md
@@ -53,16 +53,18 @@
   items:
     - name: 人脸 API
       href: APIReference.md
+    - name: 术语表
+      href: Glossary.md
     - name: SDK
       items:
-        - name: Go
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face'
+        - name: Windows
+          href: 'https://github.com/Microsoft/Cognitive-Face-Windows'
         - name: Node.js
           href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules'
         - name: Python
           href: 'https://github.com/Microsoft/Cognitive-Face-Python'
-        - name: Windows
-          href: 'https://github.com/Microsoft/Cognitive-Face-Windows'
+        - name: Go
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face'
         - name: Android
           href: 'https://github.com/Microsoft/Cognitive-Face-Android'
         - name: iOS
@@ -81,7 +83,7 @@
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: 术语表
-      href: Glossary.md
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 发行说明
       href: ReleaseNotes.md
