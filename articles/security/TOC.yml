@@ -10,6 +10,8 @@
       href: azure-log-audit.md
     - name: Azure 网络安全
       href: azure-network-security.md
+    - name: Azure 无服务器平台安全
+      href: abstract-serverless-platform-security.md
     - name: 实现运营安全
       href: azure-operational-security.md
     - name: Azure 中的监管
