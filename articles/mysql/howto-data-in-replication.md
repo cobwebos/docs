@@ -1,6 +1,6 @@
 ---
-title: 配置复制中数据以将数据复制到 Azure Database for MySQL。
-description: 本文介绍如何为 Azure Database for MySQL 设置复制中数据。
+title: 配置“向内复制数据”以将数据复制到 Azure Database for MySQL。
+description: 本文介绍如何为 Azure Database for MySQL 设置“向内复制数据”。
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: f9517cb552130e340310abc4affdad8bdadc26fe
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/20/2018
+ms.openlocfilehash: e099597eae419653a2a40c7f01ee7abbbc4657f0
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265745"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294415"
 ---
-# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的复制中数据
+# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的“向内复制数据”
 
-本文介绍如何通过配置主服务器和副本服务器，在 Azure Database for MySQL 服务中设置复制中数据。
+本文介绍如何通过配置主服务器和副本服务器，在 Azure Database for MySQL 服务中设置“向内复制数据”。 借助“向内复制数据”，可以将本地或虚拟机中运行的主 MySQL 服务器或其他云提供程序托管的数据库服务中的数据同步到 Azure Database for MySQL 服务中的副本。 
 
 本文假设读者在 MySQL 服务器和数据库方面有一定的经验。
 
@@ -26,10 +26,10 @@ ms.locfileid: "35265745"
 
 1. 创建新的 Azure Database for MySQL 服务器
 
-   创建新的 MySQL 服务器（例如 “replica.mysql.database.azure.com”）。 参阅[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)了解如何创建服务器。 此服务器是复制中数据中的“副本”服务器。
+   创建新的 MySQL 服务器（例如 “replica.mysql.database.azure.com”）。 参阅[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)了解如何创建服务器。 此服务器是“向内复制数据”中的“副本”服务器。
 
    > [!IMPORTANT]
-   > 必须在“常规用途”或“内存优化”定价层中创建此服务器。
+   > 必须在“常规用途”或“内存优化”定价层中创建 Azure Database for MySQL 服务器。
    > 
 
 2. 创建相同的用户帐户和对应的特权
@@ -37,6 +37,7 @@ ms.locfileid: "35265745"
    用户帐户不会从主服务器复制到副本服务器。 如果打算为用户提供副本服务器的访问权限，需要在此新建的 Azure Database for MySQL 服务器上创建所有帐户和对应的特权。
 
 ## <a name="configure-the-primary-server"></a>配置主服务器
+以下步骤准备并配置本地或虚拟机中托管的 MySQL 服务器或其他云提供程序托管的数据库服务，以便向内复制数据。 此服务器是“向内复制数据”中的“主”服务器。 
 
 1. 启用二进制日志记录
 
@@ -52,7 +53,7 @@ ms.locfileid: "35265745"
 
 2. 主服务器设置
 
-   复制中数据要求参数 `lower_case_table_names` 在主服务器与副本服务器之间保持一致。 在 Azure Database for MySQL 中，此参数默认为 1。 
+   “向内复制数据”要求参数 `lower_case_table_names` 在主服务器与副本服务器之间保持一致。 在 Azure Database for MySQL 中，此参数默认为 1。 
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -138,11 +139,11 @@ ms.locfileid: "35265745"
 
    将转储文件还原到 Azure Database for MySQL 服务中创建的服务器。 请参阅[转储和还原](concepts-migrate-dump-restore.md)，了解如何将转储文件还原到 MySQL 服务器。 如果转储文件较大，请将其上传到 Azure 中副本服务器所在的同一区域内的某个虚拟机。 将转储文件从虚拟机还原到 Azure Database for MySQL 服务器。
 
-## <a name="link-primary-and-replica-servers-to-start-data-in-replication"></a>链接主服务器和副本服务器以启动复制中数据
+## <a name="link-primary-and-replica-servers-to-start-data-in-replication"></a>链接主服务器和副本服务器以开始向内复制数据
 
 1. 设置主服务器
 
-   所有复制中数据函数均由存储过程执行。 可以在[复制中数据存储过程](reference-data-in-stored-procedures.md)中找到所有过程。 可以在 MySQL shell 或 MySQL Workbench 中运行存储过程。 
+   所有“向内复制数据”函数均由存储过程执行。 可以在[“向内复制数据”存储过程](reference-data-in-stored-procedures.md)中找到所有过程。 可以在 MySQL shell 或 MySQL Workbench 中运行存储过程。 
 
    若要链接两个服务器并启动复制，请在 Azure DB for MySQL 服务中登录到目标副本服务器，并将外部实例设置为主服务器。 为此，可在 Azure DB for MySQL 服务器上使用 `mysql.az_replication_change_primary` 存储过程。
 
@@ -226,3 +227,6 @@ CALL mysql.az_replication_remove_primary;
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+
+## <a name="next-steps"></a>后续步骤
+- 详细了解 Azure Database for MySQL 的[向内复制数据](concepts-data-in-replication.md)。 

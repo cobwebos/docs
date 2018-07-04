@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e9d43d46f1979e985a5da96fda608eec55ad7830
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425606"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031050"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server Business Intelligence
 > [!IMPORTANT] 
@@ -34,7 +34,7 @@ Microsoft Azure 虚拟机库包括含有 SQL Server 安装的映像。 库映像
 1. 属于软件保障的许可证移动性权益。 有关详细信息，请参阅 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)。
 2. 已安装 SQL Server 的 Azure 虚拟机按小时付费。 请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)中的“SQL Server”部分。
 
-有关许可和当前费率的详细信息，请参阅[虚拟机许可常见问题](https://azure.microsoft.com/pricing/licensing-faq/%20/)。
+有关许可和当前费率的详细信息，请参阅[虚拟机许可常见问题](https://azure.microsoft.com/pricing/licensing-faq/)。
 
 ## <a name="sql-server-images-available-in-azure-virtual-machine-gallery"></a>在 Azure 虚拟机库中提供的 SQL Server 映像
 Microsoft Azure 虚拟机库包括若干含有 Microsoft SQL Server 的映像。 虚拟机映像上安装的软件根据操作系统版本和 SQL Server 版本而有所不同。 Azure 虚拟机库中提供的映像列表频繁更改。
@@ -207,7 +207,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 **适用于 2012 和 2014 的 Web 门户 URL 或报表管理器 URL：**
 
 1. 在左侧窗格中，单击适用于 2014 和 2012 的 **Web 门户 URL** 或**报表服务器 URL**。
-2. 单击“应用” 。
+2. 单击“应用”。
 3. 在“结果”窗格中，验证是否已成功完成操作。
 4. 单击“退出”。
 
@@ -351,5 +351,5 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
 > [通过 Microsoft SQL Server Connect 提交反馈和联系人信息](https://connect.microsoft.com/SQLServer/Feedback)
 
 ### <a name="community-content"></a>社区内容
-* [使用 PowerShell 管理 Azure SQL 数据库](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
+* [使用 PowerShell 管理 Azure SQL 数据库](https://azure.microsoft.com/blog/windows-azure-sql-database-management-with-powershell/)
 

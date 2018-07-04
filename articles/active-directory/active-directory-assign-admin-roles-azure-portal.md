@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 0bb4a57bcc31cffba3c0e7dc50d0e2b214c50838
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1de2482b7795bbed82874b6eea29f89f1ff52560
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260407"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939711"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
 
@@ -29,12 +29,18 @@ ms.locfileid: "35260407"
 全局管理员有权使用所有管理功能。 默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 只有全局管理员才能分配其他管理员角色。
 
 ## <a name="assign-or-remove-administrator-roles"></a>分配或删除管理员角色
-若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 中向用户分配管理角色](active-directory-users-assign-role-azure-portal.md)。
+若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 中向用户分配管理角色](fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="available-roles"></a>可用的角色
 提供以下管理员角色：
 
+* **应用程序管理员**：此角色中的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 此角色还可以同意委派权限，以及除 Microsoft Graph 和 Azure AD Graph 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将此角色的成员添加为所有者。
+
+* 应用程序开发人员：在将设置“用户可以注册应用程序”设置为“否”时，此角色中的用户可以创建应用程序注册。 在设置“用户可以同意应用代表他们访问公司数据”设置为“否”时，此角色还允许成员代表自己授予同意。 在创建新应用程序注册或企业应用程序时，会将此角色的成员添加为所有者。
+
 * **计费管理员**：进行采购、管理订阅、管理支持票证并监视服务运行状况。
+
+* **云应用程序管理员**：此角色中的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 此角色授予创建和管理企业应用程序和应用程序注册的所有方面的权限。 此角色还可以同意委派权限，以及除 Microsoft Graph 和 Azure AD Graph 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将此角色的成员添加为所有者。
 
 * **合规性管理员**：拥有此角色的用户具有 Office 365 安全与合规中心和 Exchange 管理中心中的管理权限。 有关详细信息，请参阅“[关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)”。
 
@@ -107,11 +113,29 @@ ms.locfileid: "35260407"
 
 ## <a name="administrator-permissions"></a>管理员权限
 
+### <a name="application-administrator"></a>应用程序管理员
+
+| 有权执行的操作 | 无权执行的操作 |
+| --- | --- |
+| 读取所有目录信息<br>创建应用程序注册<br>更新应用程序注册属性<br>获取企业应用程序<br>管理应用程序注册属性<br>删除应用程序注册<br>管理企业应用程序单一登录设置<br>管理企业应用程序预配设置<br>管理企业应用程序自助服务设置<br>管理企业应用程序权限设置<br>管理应用程序访问权限<br>管理预配设置<br>删除企业应用程序<br>代表每个人同意所有委托的权限请求<br>代表每个人同意除 Azure AD Graph 或 Microsoft Graph 之外的所有应用程序权限请求<br>管理应用程序代理设置<br>访问服务设置<br>监视服务运行状况<br>管理支持票证<br>读取隐藏的组成员资格 | 创建、编辑和删除组<br>管理用户许可证<br>使用目录同步<br>查看登录报告并审核日志 | 
+
+### <a name="application-developer"></a>应用程序开发人员
+
+| 有权执行的操作 | 无权执行的操作 |
+| --- | --- |
+| 读取所有目录信息<br>创建应用程序注册<br>代表自己同意 | 查看登录并审核日志<br>读取隐藏的组成员资格 |
+
 ### <a name="billing-administrator"></a>计费管理员
 
 | 有权执行的操作 | 无权执行的操作 |
 | --- | --- |
-|<p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>为 Office 产品执行计费和采购操作</p> |<p>重置用户密码</p><p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>查看审核日志</p>|
+|<p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>为 Office 产品执行计费和采购操作</p> |<p>重置用户密码</p><p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>查看审核日志</p> |
+
+### <a name="cloud-application-administrator"></a>云应用管理员
+
+| 有权执行的操作 | 无权执行的操作 |
+| --- | --- |
+| 读取所有目录信息<br>创建应用程序注册<br>更新应用程序注册属性<br>获取企业应用程序<br>管理应用程序注册属性<br>删除应用程序注册<br>管理企业应用程序单一登录设置<br>管理企业应用程序预配设置<br>管理企业应用程序自助服务设置<br>管理企业应用程序权限设置<br>管理应用程序访问权限<br>管理预配设置<br>删除企业应用程序<br>代表每个人同意所有委托的权限请求<br>代表每个人同意除 Azure AD Graph 或 Microsoft Graph 之外的所有应用程序权限请求<br>访问服务设置<br>监视服务运行状况<br>管理支持票证<br>读取隐藏的组成员资格 | 管理应用程序代理设置<br>创建、编辑和删除组<br>管理用户许可证<br>使用目录同步<br>查看登录报告并审核日志 |
 
 ### <a name="conditional-access-administrator"></a>条件访问管理员
 
@@ -169,17 +193,19 @@ Azure 信息保护 | <li>配置全局策略和作用域内策略中的标签和�
 
    ![打开 Azure AD 管理中心](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
 
-2. 选择“用户和组”&gt;“所有用户”
+2. 选择“用户” > “所有用户”。
 
-3. 找到要指定为全局管理员的用户，并打开此用户的边栏选项卡。
+3. 打开要指定为全局管理员的用户的页面。
 
-4. 在“用户”边栏选项卡中，选择“目录角色”。
- 
-5. 在“目录角色”边栏选项卡中，选择“全局管理员”角色并保存。
+4. 在命令栏上，选择“目录角色”。
+
+5. 选择“添加角色”。
+
+6. 在目录角色页中，选择“全局管理员”角色，然后单击“选择”以保存。
 
 ## <a name="deprecated-roles"></a>已弃用的角色
 
-不应使用以下角色。 这些角色已弃用，并将从 Azure AD 中删除。
+不应使用以下角色。 这些角色已弃用，并且未来将从 Azure AD 中删除。
 
 * 即席许可证管理员
 * 经电子邮件验证的用户创建者
@@ -190,9 +216,9 @@ Azure 信息保护 | <li>配置全局策略和作用域内策略中的标签和�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)
+* 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅[添加或更改 Azure 订阅管理员](../billing-add-change-azure-subscription-administrator.md)
 * 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [了解 Azure 中的资源访问权限](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* 有关 Azure Active Directory 如何与 Azure 订阅相关联的详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）
+* 有关 Azure Active Directory 如何与 Azure 订阅相关联的详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](fundamentals/active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）
 * [管理用户](active-directory-create-users.md)
 * [管理密码](active-directory-manage-passwords.md)
-* [管理组](active-directory-manage-groups.md)
+* [管理组](fundamentals/active-directory-manage-groups.md)

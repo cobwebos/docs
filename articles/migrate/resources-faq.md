@@ -3,15 +3,15 @@ title: Azure Migrate - 常见问题解答 (FAQ) | Microsoft Docs
 description: 解答有关 Azure Migrate 的常见问题
 author: snehaamicrosoft
 ms.service: azure-migrate
-ms.topic: article
-ms.date: 06/06/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: snehaa
-ms.openlocfilehash: b18d2cecfd7556ad3f05d0f63435d16bc29ebab1
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: db47f774dd4f73692d0b6ab2c4a511f687864e37
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825821"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285699"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -21,7 +21,7 @@ ms.locfileid: "34825821"
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Azure Migrate 与 Azure Site Recovery 有何不同？
 
-Azure Migrate 是评估服务，可帮助发现本地工作负荷以及规划到 Azure 的迁移。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) 属于灾难恢复解决方案，可帮助将本地工作负荷迁移到 Azure 中的 IaaS VM。 
+Azure Migrate 是评估服务，可帮助发现本地工作负荷以及规划到 Azure 的迁移。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) 属于灾难恢复解决方案，可帮助将本地工作负荷迁移到 Azure 中的 IaaS VM。
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Azure Migrate 与 Azure Site Recovery 部署规划器有何不同？
 
@@ -36,6 +36,10 @@ Azure Migrate 是一个迁移规划工具，而 Azure Site Recovery 部署规划
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Azure Migrate 是否需要使用 vCenter Server 来发现 VMware 环境？
 
 是的，Azure Migrate 需要使用 vCenter Server 来发现 VMware 环境。 它不支持发现不受 vCenter Server 管理的 ESXi 主机。
+
+### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Azure Migrate 支持哪些 Azure 区域？
+
+Azure Migrate 当前支持“美国东部”和“美国中西部”作为项目位置。 请注意，即使只能在美国中西部和美国东部创建迁移项目，也仍可以评估[多个目标位置](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)的计算机。 项目位置仅用于存储已发现的数据。
 
 ## <a name="discovery"></a>发现
 

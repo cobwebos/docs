@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Lake Analytics 查询 Avro 数据 |Microsoft Docs
-description: 使用消息正文属性将设备遥测数据路由到 blob 存储并查询写入到 blob 存储的 Avro 格式数据。
+description: 使用消息正文属性将设备遥测数据路由到 Blob 存储并查询写入到 Blob 存储的 Avro 格式数据。
 services: iot-hub
 documentationcenter: ''
 author: ksaye
@@ -9,55 +9,57 @@ ms.service: iot-hub
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: Kevin.Saye
-ms.openlocfilehash: 98a30155c73a937042b4bea6568543fb5152d748
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 08aed809184cbb65d632e1fb6f4b9bd25747e349
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726613"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751068"
 ---
-# <a name="query-avro-data-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查询 Avro 数据
+# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查询 Avro 数据
 
-本文介绍了如何查询 Avro 数据以便高效地将消息从 Azure IoT 中心路由到 Azure 服务。 从博客文章公告—[Azure IoT Hub message routing: now with routing on message body]（Azure IoT 中心消息路由：现在可基于消息正文进行路由了）来看，IoT 中心支持基于属性或消息正文进行路由。 另请参阅[基于消息正文进行路由][Routing on message bodies]。 
+本文讨论了如何查询 Avro 数据，以高效地将消息从 Azure IoT 中心路由到 Azure 服务。 正如我们在博客文章 [Azure IoT Hub message routing: now with routing on message body]中宣布的那样，IoT 中心支持基于属性或消息正文进行路由。 有关详细信息，请参阅[基于消息正文进行路由][Routing on message bodies]。 
 
-挑战在于，当 Azure IoT 中心将消息路由到 blob 存储时，IoT 中心以 Avro 格式写入内容，该格式同时包括消息正文和消息属性。 请注意，IoT 中心仅支持以 Avro 数据格式将数据写入到 blob 存储，此格式不用于任何其他终结点。 请参阅[如果使用 Azure 存储容器][When using Azure storage containers]。 虽然 Avro 格式非常适用于数据/消息保留，但是查询数据时很有挑战性。 比较而言，JSON 或 CSV 格式更容易用来查询数据。
+挑战在于，当 Azure IoT 中心将消息路由到 Azure Blob 存储时，IoT 中心以 Avro 格式写入内容，该格式同时包括消息正文属性和消息属性。 IoT 中心仅支持以 Avro 数据格式将数据写入到 Blob 存储，此格式不用于任何其他终结点。 有关详细信息，请参阅[如果使用 Azure 存储容器][When using Azure storage containers]。 尽管 Avro 格式可用于保存数据和消息，但将其用于查询数据将是一项挑战。 比较而言，JSON 或 CSV 格式更容易用来查询数据。
 
-若要解决此问题，可以使用许多大数据模式来对数据进行转换和缩放，以应对非关系大数据需求和格式。 其中一种模式是“按查询付费”，Azure Data Lake Analytics (ADLA) 采用的就是这种模式。 它是本文的重点。 虽然可以在 Hadoop 或其他解决方案中轻松执行查询，但 ADLA 通常更适合“按查询付费”方式。 U-SQL 中有一个适用于 Avro 的“提取程序”。 请参阅 [U-SQL Avro 示例]。
+为了解决非关系大数据需求和格式并应对这一挑战，可以使用许多大数据模式来对数据进行转换和缩放。 其中的一个模式“按查询付费”是 Azure Data Lake Analytics，它是本文重点要讨论的内容。 虽然可以在 Hadoop 或其他解决方案中轻松执行查询，但 Data Lake Analytics 通常更适合“按查询付费”方式。 
+
+U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，请参阅 [U-SQL Avro 示例]。
 
 ## <a name="query-and-export-avro-data-to-a-csv-file"></a>查询 Avro 数据并将其导出到 CSV 文件
-本部分将指导你查询 Avro 数据并将其导出到 Azure Blob 存储中的一个 CSV 文件，但是也可以轻松将数据放置在其他存储库或数据存储中。
+在本部分，你将查询 Avro 数据并将其导出到 Azure Blob 存储中的一个 CSV 文件，但也可以轻松将数据放置在其他存储库或数据存储中。
 
 1. 将 Azure IoT 中心设置为通过使用消息正文中的属性来选择消息来将数据路由到 Azure Blob 存储终结点。
 
-    ![步骤 1a 的屏幕捕获][img-query-avro-data-1a]
+    ![“自定义终结点”部分][img-query-avro-data-1a]
 
-    ![步骤 1b 的屏幕捕获][img-query-avro-data-1b]
+    ![路由命令][img-query-avro-data-1b]
 
-2. 确保你的设备有属性或消息正文中的编码、内容类型和所需的数据，如产品文档中所述。 当在 Device Explorer 中查看时（见下文），可以验证这些属性是否已正确设置。
+2. 确保你的设备有属性或消息正文中的编码、内容类型和所需的数据，如产品文档中所述。 当在 Device Explorer 中查看这些属性时（如此处所示），可以验证这些属性是否已正确设置。
 
-    ![步骤 2 的屏幕捕获][img-query-avro-data-2]
+    ![“事件中心数据”窗格][img-query-avro-data-2]
 
-3. 设置 Azure Data Lake Store (ADLS) 和 Azure Data Lake Analytics 实例。 虽然 Azure IoT 中心不路由到 Azure Data Lake Store，但 ADLA 需要一个该实例。
+3. 设置 Azure Data Lake Store 实例和 Data Lake Analytics 实例。 Azure IoT 中心不会路由到 Data Lake Store 实例，但 Data Lake Analytics 实例需要它。
 
-    ![步骤 3 的屏幕捕获][img-query-avro-data-3]
+    ![Data Lake Store 和 Data Lake Analytics 实例][img-query-avro-data-3]
 
-4. 在 ADLA 中，将 Azure Blob 存储配置为一个附加存储（Azure IoT 中心将数据路由到的同一 Blob 存储）。
+4. 在 Data Lake Analytics 中，将 Azure Blob 存储配置为一个附加存储（Azure IoT 中心将数据路由到的同一 Blob 存储）。
 
-    ![步骤 4 的屏幕捕获][img-query-avro-data-4]
+    ![“数据源”窗格][img-query-avro-data-4]
  
-5. 如 [U-SQL Avro 示例]中所述，需要 4 个 DLL。  将这些文件上传到 ADLS 中的某个位置。
+5. 如 [U-SQL Avro 示例]中讨论的那样，你需要四个 DLL 文件。 将这些文件上载到 Data Lake Store 实例中的某个位置。
 
-    ![步骤 5 的屏幕捕获][img-query-avro-data-5] 
+    ![四个已上载的 DLL 文件][img-query-avro-data-5] 
 
-6. 在 Visual Studio 中，创建一个 U-SQL 项目
+6. 在 Visual Studio 中，创建一个 U-SQL 项目。
  
-    ![步骤 6 的屏幕捕获][img-query-avro-data-6]
+    ![创建 U-SQL 项目][img-query-avro-data-6]
 
-7. 复制以下脚本的内容并将其粘贴到新创建的文件中。 修改 3 个突出显示的部分：ADLA 帐户、关联的 DLL 的路径，以及存储帐户的正确路径。
+7. 将以下脚本的内容粘贴到新创建的文件中。 修改三个突出显示的部分：Data Lake Analytics 帐户、关联的 DLL 文件路径，以及存储帐户的正确路径。
     
-    ![步骤 7a 的屏幕捕获][img-query-avro-data-7a]
+    ![要修改的三个部分][img-query-avro-data-7a]
 
-    用于简单输出到 CSV 的实际 U-SQL 脚本：
+    用于简单输出到 CSV 文件的实际 U-SQL 脚本：
     
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
@@ -121,16 +123,15 @@ ms.locfileid: "34726613"
         OUTPUT @cnt TO @output_file USING Outputters.Text(); 
     ```    
 
-    运行下面所示的脚本，当限制为 10 个分析单元时，ADLA 花费了 5 分钟并处理了 177 个文件，将输出汇总到了一个 CSV 文件中。
+    Data Lake Analytics 需要五分钟的时间来运行以下脚本，该脚本被限制为 10 个分析单元和处理 177 个文件。 结果显示在以下图像中显示的 CSV 文件输出中：
     
-    ![步骤 7b 的屏幕捕获][img-query-avro-data-7b]
+    ![输出到 CSV 文件的结果][img-query-avro-data-7b]
 
-    查看输出，可以看到 Avro 内容已转换为 CSV 文件。 如果希望解析 JSON，请继续执行步骤 8。
-    
-    ![步骤 7c 的屏幕捕获][img-query-avro-data-7c]
+    ![转换为 CSV 文件的输出][img-query-avro-data-7c]
 
+    若要解析 JSON，请继续执行步骤 8。
     
-8. 大多数 IoT 消息采用 JSON 格式。  添加下列行，您可以将消息解析为 JSON，因此你可以添加 WHERE 子句并仅输出所需的数据。
+8. 大多数 IoT 消息采用 JSON 文件格式。 通过添加下列行，可以将消息解析为 JSON 文件，这使你能够添加 WHERE 子句并仅输出所需的数据。
 
     ```sql
        @jsonify = SELECT Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(Encoding.UTF8.GetString(Body)) AS message FROM @rs;
@@ -154,14 +155,14 @@ ms.locfileid: "34726613"
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-9. 查看输出，现在可以看到 select 命令中每个项的列。 
+    输出显示 `SELECT` 命令中的每个项的列。 
     
-    ![步骤 8 的屏幕捕获][img-query-avro-data-8]
+    ![显示每个项的列的输出][img-query-avro-data-8]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习了如何查询 Avro 数据以便高效地将消息从 Azure IoT 中心路由到 Azure 服务。
+在本教程中，你已学习了如何查询 Avro 数据以高效地将消息从 Azure IoT 中心路由到 Azure 服务。
 
-若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 远程监视解决方案加速器][lnk-iot-sa-land]。
+有关使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 远程监视解决方案加速器][lnk-iot-sa-land]。
 
 若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南]。
 
