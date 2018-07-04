@@ -45,19 +45,21 @@
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference'
 - name: 资源
   items:
+    - name: 适用于必应拼写检查 API 的分析
+      href: bing-spell-check-stats.md
     - name: 常见问题
       href: bing-spell-check-resource-faq.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/bing-api'
-    - name: 支持的语言
-      href: bing-spell-check-supported-languages.md
-    - name: 适用于必应拼写检查 API 的分析
-      href: bing-spell-check-stats.md
     - name: 订阅密钥
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+    - name: 支持的语言
+      href: bing-spell-check-supported-languages.md
     - name: 试试看！
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'

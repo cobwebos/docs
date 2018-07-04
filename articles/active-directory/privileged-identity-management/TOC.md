@@ -1,12 +1,9 @@
 # 概述
-## [安全的特许访问权限](active-directory-securing-privileged-access.md)
 ## [什么是 Azure AD PIM？](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [安全的特许访问权限](../admin-roles-best-practices.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [PIM 中的目录角色](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [适用于 Azure 资源的 PIM](azure-pim-resource-rbac.md)
 ## [PIM 审批工作流](azure-ad-pim-approval-workflow.md)
-## [角色](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-
-
 
 # 入门
 ## [订阅要求](subscription-requirements.md)
@@ -46,16 +43,8 @@
 ### [完成访问审阅](pim-resource-roles-complete-access-review.md)
 
 # 常见问题
-## 用于目录角色的 PIM
 ## 用于资源角色的 PIM
 ### [分配类型](pim-resource-roles-eligible-visibility.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
-
-# 相关内容
-## [Azure Active Directory](/azure/active-directory/)
-## [基于角色的访问控制](../../role-based-access-control/overview.md)
-# 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
-## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: afc3a6036e8d006f8c5f2a1de35037db2b38a70a
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: fdce9dc733f8c1a389a44374641eb27ba40d6b37
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083373"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446004"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -5451,7 +5451,7 @@ s" alt="" />
                                                     <a href="/java/azure">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/java/api/overview/azure">API 参考</a>
+                                                    <a href="/java/api">API 参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -5602,7 +5602,7 @@ Docker </h3>
                                                     <a href="/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker">Visual Studio Tools for Docker</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680">适用于 Visual Studio 的下载项</a>
+                                                    <a href="https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017">适用于 Visual Studio 的下载项</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780681">适用于 Visual Studio Code 的下载项</a>

@@ -136,7 +136,7 @@
 - name: 操作指南
   items:
     - name: 规划应用
-      href: Plan-your-app.md
+      href: luis-how-plan-your-app.md
     - name: 创建新应用
       href: Create-new-app.md
     - name: 构建模型
@@ -200,7 +200,7 @@
         - name: 使用预生成的域
           href: luis-how-to-use-prebuilt-domains.md
         - name: 使用 Cortana 预生成的应用
-          href: Cortana-Prebuilt-App.md
+          href: luis-how-to-cortana-prebuilt-app.md
     - name: 管理 LUIS 应用
       items:
         - name: 使用仪表板
@@ -309,6 +309,8 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
     - name: 文本分析
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: 识别器 - 文本
+      href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: 资源
   items:
     - name: Azure 路线图

@@ -5,7 +5,6 @@
 ### 店面  
 #### [比较 AppSource 和 Azure Marketplace](./comparing-appsource-azure-marketplace.md)  
 #### [通过 AppSource 发展业务](./grow-your-business-with-appsource.md) 
-#### [首选解决方案](./preferred-solutions.md)
 ##### [生成登陆页](./build-your-landing-page.md)  
 ##### [启用潜在顾客共享](./enable-lead-sharing.md)  
 ##### [Marketplace 的 GTM 权益](./gtm-benefits.md)  
@@ -19,17 +18,17 @@
 ### 如何在 Marketplace 的店面中发布  
 #### [确定你的解决方案的商品信息类型](./determine-your-listing-type.md)  
 #### [成为 Marketplace 店面的发布者](./become-publisher.md)  
-#### [按商品信息类型列出的要求](./listing-type-requirements.md)  
+#### [按商品信息类型列出的要求](./listing-type-requirements.md) 
+#### [首选解决方案](./preferred-solutions.md) 
 
 ### 发布清单  
 #### [AppSource 的发布清单](./publishing-checklist-appsource.md)  
 #### [Azure Marketplace 的发布清单](./publishing-checklist-azure-marketplace.md)  
 
 ### 支持  
-#### [对 AppSource 的支持](./support-appsource.md)  
-#### [对 Azure Marketplace 的支持](./support-azure-marketplace.md)  
+#### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)  
 
-### 指南  
+### 发布指南  
 #### [Azure Marketplace 咨询服务](consulting-services.md)  
 #### [Azure Marketplace SaaS 应用技术发布指南](marketplace-saas-applications-technical-publishing-guide.md) 
 

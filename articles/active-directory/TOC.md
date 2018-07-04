@@ -83,8 +83,8 @@
 ## [管理组和成员](fundamentals/active-directory-manage-groups.md)
 ### 管理组
 #### [Azure 门户](fundamentals/active-directory-groups-create-azure-portal.md)
-#### [用于 Graph 的 Azure AD PowerShell (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [用于 Graph 的 Azure AD PowerShell (v2)](users-groups-roles/groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline](users-groups-roles/groups-settings-cmdlets.md)
 ### [管理组成员](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [管理组所有者](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [管理组成员身份](fundamentals/active-directory-groups-membership-azure-portal.md)
@@ -99,13 +99,13 @@
 ### [设置 Office 365 组过期时间](active-directory-groups-lifecycle-azure-portal.md)
 ### [为组强制执行命名策略](groups-naming-policy.md)
 ### [查看所有组](fundamentals/active-directory-groups-view-azure-portal.md)
-### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
+### [添加对 SaaS 应用的组访问权限](users-groups-roles/groups-saasapps.md)
 ### [还原已删除的 Office 365 组](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [管理组设置](fundamentals/active-directory-groups-settings-azure-portal.md) 
 ### 创建高级规则
 #### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
-### [设置自助服务组](active-directory-accessmanagement-self-service-group-management.md)
-### [故障排除](active-directory-accessmanagement-troubleshooting.md)
+### [设置自助服务组](users-groups-roles/groups-self-service-management.md)
+### [故障排除](users-groups-roles/groups-troubleshooting.md)
 
 ## [管理报表](active-directory-reporting-azure-portal.md)
 ### [登录活动](active-directory-reporting-activity-sign-ins.md)
@@ -363,7 +363,7 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### 自定义域名
 #### [快速入门](fundamentals/add-custom-domain.md)
-#### [添加自定义域名](active-directory-domains-manage-azure-portal.md)
+#### [添加自定义域名](users-groups-roles/domains-manage.md)
 ### [管理目录](fundamentals/active-directory-administer.md)
 ### [删除目录](directory-delete-howto.md)
 ### [多个目录](active-directory-licensing-directory-independence.md)
@@ -381,12 +381,12 @@
 
 ## 委托对资源的访问权限
 ### [查看管理员角色的成员](directory-manage-roles-portal.md)
-### [管理员角色](active-directory-assign-admin-roles-azure-portal.md)
+### [管理员角色](users-groups-roles/directory-assign-admin-roles.md)
 #### [向用户分配管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [比较成员和来宾的用户权限](fundamentals/users-default-permissions.md)
 ### [强化管理员角色安全性](admin-roles-best-practices.md)  
-#### [创建紧急访问管理员帐户](active-directory-admin-manage-emergency-access-accounts.md)
-### [管理单元](active-directory-administrative-units-management.md)
+#### [创建紧急访问管理员帐户](users-groups-roles/directory-emergency-access.md)
+### [管理单元](users-groups-roles/directory-administrative-units.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 
 ## 访问评审
@@ -406,6 +406,7 @@
 #### 快速入门
 ##### [根据云应用 MFA 进行配置](active-directory-conditional-access-app-based-mfa.md)
 ##### [需要接受使用条款](active-directory-conditional-access-tou.md)
+##### [检测到会话风险时阻止访问](active-directory-conditional-access-app-sign-in-risk.md)
 #### 教程
 ##### [迁移经典 MFA 策略](active-directory-conditional-access-migration-mfa.md)
 #### 概念

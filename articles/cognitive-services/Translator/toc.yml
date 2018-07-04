@@ -157,15 +157,17 @@
           href: return-n-best-translations.md
 - name: 资源
   items:
-    - name: 常见问题
-      href: 'https://www.microsoft.com/translator/faq.aspx'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/558796-translator'
-    - name: 堆栈溢出
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-    - name: 知识库
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
     - name: GitHub 上的代码示例
       href: 'https://aka.ms/TranslatorGitHub'
+    - name: 常见问题
+      href: 'https://www.microsoft.com/translator/faq.aspx'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'

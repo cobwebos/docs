@@ -423,6 +423,10 @@
     - name: 发行说明
       href: ../hdinsight-release-notes.md
       maintainContext: true
+      items:
+        - name: 已存档的发行说明
+          href: ../hdinsight-release-notes-archive.md
+          maintainContext: true
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: 在论坛上获取帮助
