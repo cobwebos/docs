@@ -29,7 +29,7 @@ ms.locfileid: "34629715"
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>准备开发环境 
 
-1. 确保已在计算机上安装 [.NET 核心 SDK](https://www.microsoft.com/net/download/windows)。 
+1. 确保已在计算机上安装 [.NET Core SDK](https://www.microsoft.com/net/download/windows)。 
 
 1. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括 Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
 

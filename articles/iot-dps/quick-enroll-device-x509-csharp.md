@@ -27,7 +27,7 @@ ms.locfileid: "34630191"
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
 1. 确保已在计算机上安装 [Visual Studio 2017](https://www.visualstudio.com/vs/)。 
-2. 确保已在计算机上安装 [.Net 核心 SDK](https://www.microsoft.com/net/download/windows)。 
+2. 确保已在计算机上安装 [.NET Core SDK](https://www.microsoft.com/net/download/windows)。 
 3. 在继续操作之前，请确保完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。
 4. 需要一个 .pem 或 .cer 文件，其中包含的中间或根 CA X.509 证书的公用部分已上传到预配服务并通过该服务进行验证。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 包含的工具有助于创建 X.509 证书链、从该链上传根证书或中间证书，以及通过服务执行所有权证明操作，对证书进行验证。 若要使用此工具，请将 [azure-iot-sdk-c/tools/CACertificates](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) 文件夹的内容下载到计算机上的某个工作文件夹，然后按 [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) 中的步骤操作。 除了 C SDK 中的工具，还可以使用 **C# 服务 SDK** 中的[组证书验证示例](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample)，通过现有的 X.509 中间或根 CA 证书演示如何执行所有权证明操作。 
 

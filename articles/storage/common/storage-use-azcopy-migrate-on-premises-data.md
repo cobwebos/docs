@@ -23,7 +23,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 
 有两种版本的 AzCopy 可供下载：
 
-* [AzCopy on Linux](storage-use-azcopy-linux.md) 使用 .NET 核心 Framework 生成。 它面向 Linux 平台，提供 POSIX 样式命令行选项。 
+* [AzCopy on Linux](storage-use-azcopy-linux.md) 使用 .NET Core Framework 生成。 它面向 Linux 平台，提供 POSIX 样式命令行选项。 
 * [AzCopy on Windows](storage-use-azcopy.md) 使用 .NET Framework 生成。 它提供 Windows 样式命令行选项。 
  
 本教程介绍如何执行下列操作：

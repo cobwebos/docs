@@ -16,7 +16,7 @@ ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
 ms.openlocfilehash: 41e6f64ada7c95674cc2573048eef8afc83e4385
 ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34604346"
@@ -303,7 +303,7 @@ Azure 基于角色的访问控制 (RBAC) 提供了 Azure 的精细访问权限�
 1. 可以创建生成定义的帐户登录到 VSTS。
 2. 导航到**生成 Web 应用程序**项目页。
 
-3. 在**参数**，添加 **-r win10 x64**代码。 这必需触发自包含的部署使用.Net 核心。
+3. 在**参数**，添加 **-r win10 x64**代码。 这必需触发自包含的部署使用.NET Core。
 
     ![添加的自变量生成定义](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
 
