@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8e9e98a0c9f1db805d62cdee038fb4754ff047e2
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194397"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960434"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>虚拟机串行控制台（预览版） 
 
@@ -33,6 +33,7 @@ ms.locfileid: "32194397"
 
 ## <a name="prerequisites"></a>先决条件 
 
+* 必须使用资源管理部署模型。 不支持经典部署。 
 * 虚拟机上必须已启用[启动诊断](boot-diagnostics.md) 
 * 使用串行控制台的帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[参与者角色](../../role-based-access-control/built-in-roles.md)。 
 

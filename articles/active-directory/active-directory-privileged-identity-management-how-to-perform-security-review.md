@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: protection
-ms.date: 06/06/2017
+ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 885c7a144a2ac588e1f1b32fb03b7ed72d058e94
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 7c536a4e7f93a2f1ef42b7600513994dd80826a0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233445"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020864"
 ---
 # <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中执行访问权限审查
 Azure Active Directory (AD) Privileged Identity Management 简化了企业管理以特权身份访问 Azure AD 中的资源和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）的方式。  
 
 如果已被分配到某个管理角色，组织中的特权角色管理员可能要求定期确认仍然需要使用该角色来完成工作。 可以通过你所收到的电子邮件中的链接，或者直接转到 [Azure 门户](https://portal.azure.com)来执行此操作。 请遵循本文中的步骤对分配的角色执行自我审查。
 
-如果是特权角色管理员并且想要了解访问权限审查，请参阅[如何开始进行访问权限审查](active-directory-privileged-identity-management-how-to-start-security-review.md)中的详细信息。
+若为特权角色管理员或全局管理员，并有意了解访问评审，请参阅[如何开始访问评审](active-directory-privileged-identity-management-how-to-start-security-review.md)，了解详细信息。
 
 ## <a name="add-the-privileged-identity-management-application"></a>添加 Privileged Identity Management 应用程序
 可以使用 [Azure 门户](https://portal.azure.com/)中的 Azure AD Privileged Identity Management (PIM) 应用程序执行审查。  如果门户中没有 Azure AD Privileged Identity Management 应用程序，请遵循以下步骤开始操作。

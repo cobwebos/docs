@@ -6,20 +6,19 @@ documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 5f5ca940-eef8-4125-b6a0-f44ba04ab5ab
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 06/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 14aa54277cac3369df739a1d84580624f2d3b401
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3e1dd8ad49ceb126a14070ed641146d91419640a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359469"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025110"
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>从现有资源导出 Azure 资源管理器模板
 本文介绍如何从订阅中的现有资源导出 Resource Manager 模板。 可以使用该生成的模板更好地了解模板语法。
@@ -27,7 +26,7 @@ ms.locfileid: "34359469"
 可以通过两种方式来导出模板：
 
 * 可以导出用于部署的实际模板。 导出的模板中包括的所有参数和变量与原始模板中显示的完全一样。 在已通过门户部署资源的情况下，若需了解如何通过模板来创建这些资源，则可使用此方法。 此模板可随时使用。 
-* 可以导出已生成的表示资源组当前状态的模板。 导出的模板不基于任何已用于部署的模板。 它创建的模板是资源组的“快照”或“备份”。 导出的模板会有许多硬编码的值，其参数可能没有定义的那么多。 使用此选项可将资源重新部署到同一资源组。 若要将此模板用于其他资源组，可能需要对其进行大幅修改。
+* 可以导出已生成的表示资源组当前状态的模板。 导出的模板不以任何已用于部署的模板为依据。 它创建的模板是资源组的“快照”或“备份”。 导出的模板会有许多硬编码的值，其参数可能没有定义的那么多。 使用此选项可将资源重新部署到同一资源组。 若要将此模板用于其他资源组，可能需要对其进行大幅修改。
 
 本文通过门户展示了这两种方法。
 
@@ -65,8 +64,7 @@ ms.locfileid: "34359469"
    
    1. **模板** - 定义解决方案基础结构的模板。 通过门户创建存储帐户时，Resource Manager 使用模板来部署该存储帐户，并保存该模板供将来参考。
    2. **参数** - 可用于在部署过程中传入值的参数文件。 它包含你在首次部署时提供的值。 重新部署模板时，可以更改这其中的任何值。
-   3. **CLI** - 可用于部署该模板的 Azure 命令行界面 (CLI) 脚本文件。
-   3. **CLI 2.0** - 可用于部署该模板的 Azure 命令行界面 (CLI) 脚本文件。
+   3. **CLI** - 可用于部署模板的 Azure CLI 脚本文件。
    4. **PowerShell** - 可用于部署该模板的 Azure PowerShell 脚本文件。
    5. **.NET** - 可用于部署该模板的 .NET 类。
    6. **Ruby** - 可用于部署模板的 Ruby 类。
@@ -94,7 +92,7 @@ ms.locfileid: "34359469"
    
 3. 可通过几个选项继续使用此模板。 可以下载模板，并使用 JSON 编辑器本地使用它。 也可将模板保存到库，并通过门户使用它。
    
-     如果喜欢使用 [VS Code](https://code.visualstudio.com/) 或 [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 等 JSON 编辑器，可本地下载模板并使用该编辑器。 若要在本地使用，请选择“下载”。
+     如果习惯使用 [VS Code](https://code.visualstudio.com/) 或 [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 等 JSON 编辑器，建议本地下载模板，并使用相应编辑器。 若要在本地使用，请选择“下载”。
    
       ![下载模板](./media/resource-manager-export-template/download-template.png)
    
@@ -121,7 +119,7 @@ ms.locfileid: "34359469"
 2. 选择模板。
    
      ![编辑模板](./media/resource-manager-export-template/select-added-template.png)
-3. 请将下面的两个参数添加到模板中的 parameters 节，以便传递可能需要在部署过程中指定的值：
+3. 若要传递建议在部署过程中指定的值，请将下面的两个参数添加到模板中的 parameters 部分：
 
    ```json
    "administratorLogin": {
@@ -163,12 +161,11 @@ ms.locfileid: "34359469"
 
 
 ## <a name="fix-export-issues"></a>修复导出问题
-并非所有资源类型都支持导出模板功能。 要解决此问题，可以手动将缺失的资源添加回模板中。 错误消息包含无法导出的资源类型。 请在[模板引用](/azure/templates/)中查找该资源类型。 例如，若要手动添加虚拟网关，请参阅 [Microsoft.Network/virtualNetworkGateways 模板引用](/azure/templates/microsoft.network/virtualnetworkgateways)。
+并非所有资源类型都支持导出模板功能。 仅当从资源组导出（而不是从部署历史记录导出）时，才会看到导出问题。 如果上一个部署能够准确地代表资源组的当前状态，则应从部署历史记录而非资源组中导出模板。 只有在已更改资源组且更改未在单个模板中定义时，才应从资源组导出。
 
-> [!NOTE]
-> 仅当从资源组而不是从部署历史记录中导出时，才会遇到导出问题。 如果上一个部署能够准确地代表资源组的当前状态，则应从部署历史记录而非资源组中导出模板。 只有在已对资源组进行更改且该更改未在单个模板中定义的情况下，才应从资源组导出。
-> 
-> 
+若要解决导出问题，请手动将缺少的资源添加回模板中。 错误消息内指出了无法导出的资源类型。 请在[模板引用](/azure/templates/)中查找该资源类型。 例如，若要手动添加虚拟网关，请参阅 [Microsoft.Network/virtualNetworkGateways 模板引用](/azure/templates/microsoft.network/virtualnetworkgateways)。 模板参考文档中提供了用于将资源添加到模板的 JSON。
+
+获取资源的 JSON 格式后，需要获取资源值。 可以在 REST API 中对资源类型使用 GET 操作，从而查看资源值。 例如，若要获取虚拟网络网关值，请参阅[虚拟网络网关 - Get](/rest/api/network-gateway/virtualnetworkgateways/get)。
 
 ## <a name="next-steps"></a>后续步骤
 

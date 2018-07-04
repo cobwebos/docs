@@ -6,40 +6,30 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 06/25/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8452708ef6b3d1944495c3c2c152c1e753a9cebf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fcf0b6f3b7f6d75006d8c10aab041c25fc0d8c39
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599892"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751279"
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的 HTTPS 入口
 
 入口控制器是一个软件片段，为 Kubernetes 服务提供反向代理、可配置的流量路由和 TLS 终止。 Kubernetes 入口资源用于配置各个 Kubernetes 服务的入口规则和路由。 借助入口控制器和入口规则，可以使用单个外部地址中将流量路由到 Kubernetes 群集中的多个服务。
 
-本文档通过一个示例演示如何在 Azure Kubernetes 服务 (AKS) 群集中部署 [NGINX 入口控制器][nginx-ingress]。 此外，使用 [KUBE-LEGO][kube-lego] 项目自动生成并配置 [Let's Encrypt][lets-encrypt] 证书。 最后，在 AKS 群集中运行多个应用程序（可通过单个地址访问其中的每个应用程序）。
-
-## <a name="prerequisite"></a>先决条件
-
-安装 Helm CLI - 有关安装说明，请参阅 Helm CLI [文档][helm-cli]。
+本文档通过一个示例演示如何在 Azure Kubernetes 服务 (AKS) 群集中部署 [NGINX 入口控制器][nginx-ingress]。 此外，[证书管理器][cert-manager]项目用于自动生成和配置 [Let's Encrypt][lets-encrypt] 证书。 最后，在 AKS 群集中运行多个应用程序（可通过单个地址访问其中的每个应用程序）。
 
 ## <a name="install-an-ingress-controller"></a>安装入口控制器
 
 使用 Helm 安装 NGINX 入口控制器。 有关详细的部署信息，请参阅 NGINX 入口控制器的[文档][nginx-ingress]。
 
-更新图表存储库。
+本示例将控制器安装在 `kube-system` 命名空间中，可将其修改为所需的命名空间。 如果 AKS 群集未启用 RBAC，请将 `--set rbac.create=false` 添加到命令中。 有关详细信息，请参阅 [nginx 流入量图表][nginx-ingress]。
 
-```console
-helm repo update
-```
-
-安装 NGINX 入口控制器。 本示例将控制器安装在 `kube-system` 命名空间中，可将其修改为所需的命名空间。
-
-```
-helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
+```bash
+helm install stable/nginx-ingress --namespace kube-system
 ```
 
 在安装过程中，将为入口控制器创建一个 Azure 公共 IP 地址。 若要获取公共 IP 地址，请使用 kubectl get service 命令。 将 IP 地址分配到服务可能需要一段时间。
@@ -60,7 +50,7 @@ eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none> 
 
 由于使用了 HTTPS 证书，因此需要配置入口控制器 IP 地址的 FQDN 名称。 在此示例中，Azure FQDN 是使用 Azure CLI 创建的。 请使用入口控制器的 IP 地址以及要在 FQDN 中使用的名称更新脚本。
 
-```
+```bash
 #!/bin/bash
 
 # Public IP address
@@ -78,19 +68,73 @@ az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
 
 现在应该可以通过 FQDN 访问入口控制器了。
 
-## <a name="install-kube-lego"></a>安装 KUBE-LEGO
+## <a name="install-cert-manager"></a>安装证书管理器
 
-NGINX 入口控制器支持 TLS 终止。 尽管可以通过多种方式检索和配置 HTTPS 的证书，但本文档只演示如何使用提供自动 [Lets Encrypt][lets-encrypt] 证书生成和管理功能的 [KUBE-LEGO][kube-lego]。
+NGINX 入口控制器支持 TLS 终止。 尽管可以通过多种方式来检索和配置 HTTPS 证书，但本文档介绍的是如何使用[证书管理器][cert-manager]，它能自动生成和管理 [Lets Encrypt][lets-encrypt] 证书。
 
-若要安装 KUBE-LEGO 控制器，请使用以下 Helm install 命令。 将电子邮件地址更新为组织中的某个电子邮件地址。
+若要安装证书管理器控制器，请运行以下 Helm install 命令。
 
-```
-helm install stable/kube-lego \
-  --set config.LEGO_EMAIL=user@contoso.com \
-  --set config.LEGO_URL=https://acme-v01.api.letsencrypt.org/directory
+```bash
+helm install stable/cert-manager --set ingressShim.defaultIssuerName=letsencrypt-prod --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-有关 KUBE-LEGO 配置的详细信息，请参阅 [KUBE-LEGO 文档][kube-lego]。
+如果群集未启用 RBAC，请运行以下命令。
+
+```bash
+helm install stable/cert-manager \
+  --set ingressShim.defaultIssuerName=letsencrypt-prod \
+  --set ingressShim.defaultIssuerKind=ClusterIssuer \
+  --set rbac.create=false \
+  --set serviceAccount.create=false
+```
+
+若要详细了解证书管理器配置，请参阅[证书管理器项目][cert-manager]。
+
+## <a name="create-ca-cluster-issuer"></a>创建 CA 群集证书颁发者
+
+证书管理器必须有 [Issuer][cert-manager-issuer] 或 [ClusterIssuer][cert-manager-cluster-issuer] 资源，才能颁发证书。 这两种资源的功能完全相同，区别在于 `Issuer` 适用于单一命名空间，而 `ClusterIssuer` 适用于所有命名空间。 有关详细信息，请参阅[证书管理器证书颁发者][cert-manager-issuer]文档。
+
+使用以下清单创建群集证书颁发者。 将电子邮件地址更新为组织提供的有效地址。
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: user@contoso.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    http01: {}
+```
+
+## <a name="create-certificate-object"></a>创建证书对象
+
+接下来，必须创建证书资源。 证书资源定义了必需的 X.509 证书。 有关详细信息，请参阅[证书管理器证书][cert-manager-certificates]。
+
+使用以下清单创建证书资源。
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: tls-secret
+spec:
+  secretName: tls-secret
+  dnsNames:
+  - demo-aks-ingress.eastus.cloudapp.azure.com
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - demo-aks-ingress.eastus.cloudapp.azure.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+```
 
 ## <a name="run-application"></a>运行应用程序
 
@@ -100,13 +144,13 @@ helm install stable/kube-lego \
 
 运行该应用程序之前，请在开发系统中添加 Azure 示例 Helm 存储库。
 
-```
+```bash
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```
 
- 使用以下命令运行 AKS hello world 图表：
+使用以下命令运行 AKS hello world 图表：
 
-```
+```bash
 helm install azure-samples/aks-helloworld
 ```
 
@@ -114,7 +158,7 @@ helm install azure-samples/aks-helloworld
 
 对于第二个实例，请指定新的标题，使两个应用程序在视觉上不同。 还需要指定唯一的服务名称。 可以使用以下命令查看这些配置。
 
-```console
+```bash
 helm install azure-samples/aks-helloworld --set title="AKS Ingress Demo" --set serviceName="ingress-demo"
 ```
 
@@ -126,13 +170,14 @@ helm install azure-samples/aks-helloworld --set title="AKS Ingress Demo" --set s
 
 注意传往地址 `https://demo-aks-ingress.eastus.cloudapp.azure.com/` 的流量将路由到名为 `aks-helloworld` 的服务。 传往地址 `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` 的流量将路由到 `ingress-demo` 服务。
 
-```
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
   annotations:
-    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
@@ -179,10 +224,13 @@ kubectl apply -f hello-world-ingress.yaml
 
 - [Helm CLI][helm-cli]
 - [NGINX 入口控制器][nginx-ingress]
-- [KUBE-LEGO][kube-lego]
+- [证书管理器][cert-manager]
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
-[kube-lego]: https://github.com/jetstack/kube-lego
+[cert-manager]: https://github.com/jetstack/cert-manager
+[cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
+[cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html
+[cert-manager-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

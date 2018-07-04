@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 5f3b8a7b9c7bf582ebc2fac2be8ff55134fbc6f2
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 665365e06ef02698c10259628f6bf2442ab8d612
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333507"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -82,8 +83,9 @@ ms.lasthandoff: 05/10/2018
       -   续订信息 - > 例如 在到期之前 90 天  
 
   - 证书创建过程通常为异步过程，涉及轮询密钥保管库中“创建证书”操作的状态。  
-[获取证书操作](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation) -   状态：“已完成”、“失败并显示错误信息”或“已取消”  
-            -   由于创建操作延迟，可能会启动取消操作。 取消操作可能生效，也可能不生效。  
+[获取证书操作](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+      -   状态：“已完成”、“失败并显示错误消息”或“已取消”  
+      -   由于创建操作延迟，因此可能会启动取消操作。 取消操作可能生效，也可能不生效。  
 
 ## <a name="import-a-certificate"></a>导入证书  
  也可将证书导入 Key Vault - PFX 或 PEM。  

@@ -50,7 +50,7 @@ function callGraphApi() {
         userInfoElement.parentElement.classList.remove("hidden");
         userInfoElement.innerHTML = JSON.stringify(user, null, 4);
 
-        // Show Sign-Out button
+        // Show sign-out button
         document.getElementById("signOutButton").classList.remove("hidden");
 
         // Now Call Graph API to show the user profile information:
@@ -81,7 +81,7 @@ function callGraphApi() {
 /**
  * Callback method from sign-in: if no errors, call callGraphApi() to show results.
  * @param {string} errorDesc - If error occur, the error message
- * @param {object} token - The token received from login
+ * @param {object} token - The token received from sign-in
  * @param {object} error - The error string
  * @param {string} tokenType - The token type: For loginRedirect, tokenType = "id_token". For acquireTokenRedirect, tokenType:"access_token".
  */
@@ -120,11 +120,11 @@ function showError(endpoint, error, errorDesc) {
 #### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
 
 初次登录后，你不希望在用户每次需要请求令牌访问资源时都要求其重新认证，因此大部分时间都应使用 acquireTokenSilent 来获取令牌。 但有些情况下，需要强制用户与 Azure Active Directory v2 终结点交互，一些示例包括：
--   由于密码已过期，用户可能需要重新输入凭据
--   应用程序正在请求访问用户需要同意的资源
--   需要双重身份验证
+- 由于密码已过期，用户可能需要重新输入凭据
+- 应用程序正在请求访问用户需要同意的资源
+- 需要双重身份验证
 
-调用 acquireTokenRedirect(scope) 导致将用户重定向到 Azure Active Directory v2 终结点（或弹出窗口上显示 acquireTokenPopup(scope) 结果），在这种情况下，用户需要通过确认其凭证、同意所需资源，或完成双重身份验证来与之交互。
+调用 acquireTokenRedirect(scope) 导致将用户重定向到 Azure Active Directory v2 终结点（或弹出窗口上显示 acquireTokenPopup(scope) 结果），在这种情况下，用户需要通过确认其凭证、同意所需资源或完成双因素身份验证来与之交互。
 
 #### <a name="getting-a-user-token-silently"></a>以静默方式获取用户令牌
 ` acquireTokenSilent` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `loginRedirect`（或 `loginPopup`）后，通常使用 `acquireTokenSilent` 方法获取用于访问受保护资源的令牌，以便进行后续调用，因为调用请求或续订令牌都以静默方式进行。
@@ -204,7 +204,7 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
 
 ```javascript
 /**
- * Sign-out the user
+ * Sign out the user
  */
 function signOut() {
     userAgentApplication.logout();

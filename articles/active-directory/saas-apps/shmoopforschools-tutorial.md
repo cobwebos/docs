@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 58cf30163837f6d3c327b7c0c6c2542ea294e8d6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e9dc784d84c43600f3ba4fda92e023c01afe8995
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228989"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>教程：Azure Active Directory 与 Shmoop For Schools 的集成
 
@@ -120,7 +120,7 @@ ms.locfileid: "36228989"
     ![配置单一登录](./media/shmoopforschools-tutorial/tutorial_attribute.png)
 
     > [!NOTE]
-    > Shmoop For Schools 支持两个用户角色：“教师”和“学生”。 在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[使用 Azure AD 在云应用程序中进行基于角色的访问控制](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/)。
+    > Shmoop For Schools 支持两个用户角色：“教师”和“学生”。 在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
     
 5. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性。  然后执行以下步骤：
 

@@ -3,21 +3,23 @@ title: 如何配置 Azure AD 库应用程序的联合单一登录 | Microsoft Do
 description: 如何配置现有 Azure AD 库应用程序的联合单一登录和如何使用教程以快速入门
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 47aab24702be966beeb41371201c6966497dc35a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.openlocfilehash: f74e614cd8709503afcbae8714732bbacf7c2ae2
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331644"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的联合单一登录
 
@@ -165,7 +167,7 @@ ms.lasthandoff: 05/11/2018
 
 8.  转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
 
-Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文件进行检索。
+Azure AD 还提供用于获取元数据的 URL。 按照以下模式获取特定于应用程序的元数据 URL：https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>。
 
 ## <a name="assign-users-to-the-application"></a>将用户分配到应用程序
 

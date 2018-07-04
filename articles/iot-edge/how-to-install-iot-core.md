@@ -9,23 +9,24 @@ ms.date: 03/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: af6ce22d1b41ebfe9b64ea5fc1a2cf99478af925
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ae5644a62b794dc8d6ace52f21a452fa70027d39
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630028"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029554"
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>在 Windows IoT Core 上安装 IoT Edge 运行时 - 预览
 
 配合使用 Azure IoT Edge 和 [Windows IoT Core](https://docs.microsoft.com/windows/iot-core/)，即使在小型设备上也能实现边缘计算。 Azure IoT Edge 运行时甚至可以在 IoT 行业内非常流行的小型单板计算机 (SBC) 设备上运行。 
 
-本文介绍在运行 Windows IoT Core 的 [MinnowBoard Turbot][lnk-minnow] 开发板上预配运行时。 Windows IoT Core 仅在基于 Intel x64 的处理器上支持 Azure IoT Edge。 
+本文逐步介绍了如何在运行 Windows IoT Core 的开发板上预配运行时。 
 
-## <a name="install-the-runtime"></a>安装运行时
+**目前，Windows IoT Core 仅在基于 Intel x64 的处理器上支持 Azure IoT Edge。**
 
-1. 在主机系统上安装 [Windows 10 IoT Core 仪表板][lnk-core]。
-1. 安装[设置设备][lnk-board]中的步骤使用 MinnowBoard Turbot/MAX Build 16299 映像配置板。 
+## <a name="install-the-container-runtime"></a>安装容器运行时
+
+1. 使用内部版本 17134 (RS4) IoT Core 映像配置板。 
 1. 打开设备，然后[使用 PowerShell 远程登录][lnk-powershell]。
 1. 在 PowerShell 控制台中，安装容器运行时： 
 
@@ -40,28 +41,18 @@ ms.locfileid: "34630028"
    ```
 
    >[!NOTE]
-   >此容器运行时来自 Moby 项目生成服务器，仅用于评估目的。 它未经过 Docker 测试、背书或支持。
+   >此容器运行时来自 Moby 项目生成服务器，仅用于评估目的。 它未经过 Docker 测试、认可或支持。
 
-1. 安装 IoT Edge 运行时并验证配置：
+## <a name="finish-installing"></a>完成安装
 
-   ```powershell
-   Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
-   ```
-
-   此脚本提供以下内容： 
-   * Python 3.6
-   * IoT Edge 控件脚本 (iotedgectl.exe)
-
-在远程 PowerShell 窗口中可能会看见 iotedgectl.exe 工具中的信息输出为绿色。 这不一定表示错误。 
+按照[这篇文章][lnk-install-windows-on-windows]中的说明操作，安装并配置 IoT Edge 安全守护程序
 
 ## <a name="next-steps"></a>后续步骤
 
 现在已具有一个运行 IoT Edge 运行时的设备，下面了解如何[大规模部署和监视 IoT Edge 模块][lnk-deploy]。
 
 <!--Links-->
-[lnk-minnow]: https://minnowboard.org/ 
-[lnk-core]: https://docs.microsoft.com/windows/iot-core/connect-your-device/iotdashboard
-[lnk-board]: https://developer.microsoft.com/windows/iot/Docs/GetStarted/mbm/sdcard/stable/getstartedstep2
+[lnk-install-windows-on-windows]: how-to-install-iot-edge-windows-with-windows.md#download-the-edge-daemon-package-and-install
 [lnk-powershell]: https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell
 [lnk-deploy]: how-to-deploy-monitor.md
 [lnk-docker-install]: https://docs.docker.com/engine/installation/linux/docker-ce/binaries#install-server-and-client-binaries-on-windows

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 81b760e3a911bacb9c01106d59577d794788abe8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1927ab29e82836c60b2ba36c3eec0acf49778082
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296904"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335833"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>规划 Azure 文件同步（预览版）部署
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -145,6 +145,9 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 
 有关详细信息，请参阅 [DFS 复制概述](https://technet.microsoft.com/library/jj127250)。
 
+### <a name="sysprep"></a>Sysprep
+不支持在安装了 Azure 文件同步代理的服务器上使用 sysprep，那样做会导致意外结果。 应该在部署服务器映像并完成 sysprep 迷你安装后再安装代理和注册服务器。
+
 ### <a name="windows-search"></a>Windows 搜索
 如果在服务器终结点上启用了云分层功能，则已分层的文件将被跳过，并且不会被 Windows 搜索进行索引。 非分层文件会适当进行索引。
 
@@ -199,7 +202,7 @@ Azure 文件同步仅在以下区域提供预览版：
 | 东南亚 | 新加坡 |
 | 英国南部 | 伦敦 |
 | 英国西部 | 加的夫 |
-| 欧洲西部 | 荷兰 |
+| 西欧 | 荷兰 |
 | 美国西部 | California |
 
 在预览版中，仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。

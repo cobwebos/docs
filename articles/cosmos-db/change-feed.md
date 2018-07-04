@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 2600565493a334c7227e5c0d67a5808f30751108
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8475c79782730e989f9590566c31ccd50af9f144
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261060"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302040"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的更改源支持
 
@@ -219,138 +219,253 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
 
 安装更改源处理器 NuGet 包之前，请先安装： 
 
-* Microsoft.Azure.DocumentDB 1.13.1 或更高版本 
-* Newtonsoft.Json，9.0.1 或更高版本
+* Microsoft.Azure.DocumentDB 最新版本。
+* Newtonsoft.Json 最新版本
 
 然后安装 [Microsoft.Azure.DocumentDB.ChangeFeedProcessor Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)并将其包含为引用。
 
 若要实现更改源处理器库，必须执行以下操作：
 
 1. 实现 **DocumentFeedObserver** 对象，用于实现 **IChangeFeedObserver**。
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Documents;
+    using Microsoft.Azure.Documents.ChangeFeedProcessor.FeedProcessing;
+    using Microsoft.Azure.Documents.Client;
 
-2. 实现 **DocumentFeedObserverFactory** 对象，用于实现 **IChangeFeedObserverFactory**。
-
-3. 在 **DocumentFeedObserverFacory** 的 **CreateObserver** 方法中，实例化在步骤 1 中创建的 **ChangeFeedObserver** 并将其返回。
-
-    ```
-    public IChangeFeedObserver CreateObserver()
+    /// <summary>
+    /// This class implements the IChangeFeedObserver interface and is used to observe 
+    /// changes on change feed. ChangeFeedEventHost will create as many instances of 
+    /// this class as needed. 
+    /// </summary>
+    public class DocumentFeedObserver : IChangeFeedObserver
     {
-              DocumentFeedObserver newObserver = new DocumentFeedObserver(this.client, this.collectionInfo);
-              return newObserver;
+    private static int totalDocs = 0;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DocumentFeedObserver" /> class.
+        /// Saves input DocumentClient and DocumentCollectionInfo parameters to class fields
+        /// </summary>
+        /// <param name="client"> Client connected to destination collection </param>
+        /// <param name="destCollInfo"> Destination collection information </param>
+        public DocumentFeedObserver()
+        {
+            
+        }
+
+        /// <summary>
+        /// Called when change feed observer is opened; 
+        /// this function prints out observer partition key id. 
+        /// </summary>
+        /// <param name="context">The context specifying partition for this observer, etc.</param>
+        /// <returns>A Task to allow asynchronous execution</returns>
+        public Task OpenAsync(IChangeFeedObserverContext context)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Observer opened for partition Key Range: {0}", context.PartitionKeyRangeId);
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Called when change feed observer is closed; 
+        /// this function prints out observer partition key id and reason for shut down. 
+        /// </summary>
+        /// <param name="context">The context specifying partition for this observer, etc.</param>
+        /// <param name="reason">Specifies the reason the observer is closed.</param>
+        /// <returns>A Task to allow asynchronous execution</returns>
+        public Task CloseAsync(IChangeFeedObserverContext context, ChangeFeedObserverCloseReason reason)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Observer closed, {0}", context.PartitionKeyRangeId);
+            Console.WriteLine("Reason for shutdown, {0}", reason);
+            return Task.CompletedTask;
+        }
+
+        public Task ProcessChangesAsync(IChangeFeedObserverContext context, IReadOnlyList<Document> docs, CancellationToken cancellationToken)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Change feed: PartitionId {0} total {1} doc(s)", context.PartitionKeyRangeId, Interlocked.Add(ref totalDocs, docs.Count));
+            foreach (Document doc in docs)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(doc.Id.ToString());
+            }
+
+            return Task.CompletedTask;
+        }
     }
     ```
 
-4. 实例化 **DocumentObserverFactory**。
-
-5. 实例化 **ChangeFeedEventHost**：
-
+2. 实现 **DocumentFeedObserverFactory** 对象，用于实现 **IChangeFeedObserverFactory**。
     ```csharp
-    ChangeFeedEventHost host = new ChangeFeedEventHost(
-                     hostName,
-                     documentCollectionLocation,
-                     leaseCollectionLocation,
-                     feedOptions,
-                     feedHostOptions);
+     using Microsoft.Azure.Documents.ChangeFeedProcessor.FeedProcessing;
+
+    /// <summary>
+    /// Factory class to create instance of document feed observer. 
+    /// </summary>
+    public class DocumentFeedObserverFactory : IChangeFeedObserverFactory
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DocumentFeedObserverFactory" /> class.
+        /// Saves input DocumentClient and DocumentCollectionInfo parameters to class fields
+        /// </summary>
+        public DocumentFeedObserverFactory()
+        {
+        }
+
+        /// <summary>
+        /// Creates document observer instance with client and destination collection information
+        /// </summary>
+        /// <returns>DocumentFeedObserver with client and destination collection information</returns>
+        public IChangeFeedObserver CreateObserver()
+        {
+            DocumentFeedObserver newObserver = new DocumentFeedObserver();
+            return newObserver as IChangeFeedObserver;
+        }
+    }
     ```
 
-6. 将 **DocumentFeedObserverFactory** 注册到主机。
+3. 定义 CancellationTokenSource 和 ChangeFeedProcessorBuilder
 
-步骤 4 到 6 的代码为： 
+    ```csharp
+    private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+    private readonly ChangeFeedProcessorBuilder builder = new ChangeFeedProcessorBuilder();
+    ```
 
-```
-ChangeFeedOptions feedOptions = new ChangeFeedOptions();
-feedOptions.StartFromBeginning = true;
+5. 在定义相关对象后生成 ChangeFeedProcessorBuilder 
 
-ChangeFeedHostOptions feedHostOptions = new ChangeFeedHostOptions();
- 
-// Customizing lease renewal interval to 15 seconds.
-// Can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay
-feedHostOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
- 
-using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destCollInfo.MasterKey))
-{
-        DocumentFeedObserverFactory docObserverFactory = new DocumentFeedObserverFactory(destClient, destCollInfo);
-        ChangeFeedEventHost host = new ChangeFeedEventHost(hostName, documentCollectionLocation, leaseCollectionLocation, feedOptions, feedHostOptions);
-        await host.RegisterObserverFactoryAsync(docObserverFactory);
-        await host.UnregisterObserversAsync();
-}
-```
+    ```csharp
+            string hostName = Guid.NewGuid().ToString();
+      
+            // monitored collection info 
+            DocumentCollectionInfo documentCollectionInfo = new DocumentCollectionInfo
+            {
+                Uri = new Uri(this.monitoredUri),
+                MasterKey = this.monitoredSecretKey,
+                DatabaseName = this.monitoredDbName,
+                CollectionName = this.monitoredCollectionName
+            };
+            
+            DocumentCollectionInfo leaseCollectionInfo = new DocumentCollectionInfo
+                {
+                    Uri = new Uri(this.leaseUri),
+                    MasterKey = this.leaseSecretKey,
+                    DatabaseName = this.leaseDbName,
+                    CollectionName = this.leaseCollectionName
+                };
+            DocumentFeedObserverFactory docObserverFactory = new DocumentFeedObserverFactory();
+            ChangeFeedOptions feedOptions = new ChangeFeedOptions();
 
-就这么简单。 完成这几个步骤后，文档会开始传入 **DocumentFeedObserver ProcessChangesAsync** 方法。 在 [GitHub 存储库](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)中查找上述代码
+            /* ie customize StartFromBeginning so change feed reads from beginning
+                can customize MaxItemCount, PartitonKeyRangeId, RequestContinuation, SessionToken and StartFromBeginning
+            */
 
-## <a name="faq"></a>常见问题
+            feedOptions.StartFromBeginning = true;
+        
+            ChangeFeedProcessorOptions feedProcessorOptions = new ChangeFeedProcessorOptions();
 
-### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>可通过哪些不同的方法读取更改源？何时使用哪种方法？
+            // ie. customizing lease renewal interval to 15 seconds
+            // can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay 
+            feedProcessorOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
 
-可通过三个选项读取更改源：
+            this.builder
+                .WithHostName(hostName)
+                .WithFeedCollection(documentCollectionInfo)
+                .WithLeaseCollection(leaseCollectionInfo)
+                .WithProcessorOptions (feedProcessorOptions)
+                .WithObserverFactory(new DocumentFeedObserverFactory());               
+                //.WithObserver<DocumentFeedObserver>();  If no factory then just pass an observer
 
-* **[使用 Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
+            var result =  await this.builder.BuildAsync();
+            await result.StartAsync();
+            Console.Read();
+            await result.StopAsync();    
+            ```
+
+That’s it. After these few steps documents will start showing up into the **DocumentFeedObserver.ProcessChangesAsync** method.
+
+Above code is for illustration purpose to show different kind of objects and their interaction. You have to define proper variables and initiate them with correct values. You can get the complete code used in this article from the [GitHub repo](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor).
+
+> [!NOTE]
+> You should never have a master key in your code or in config file as shown in above code. Please see [how to use Key-Vault to retrive the keys](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
+
+
+## FAQ
+
+### What are the different ways you can read Change Feed? and when to use each method?
+
+There are three options for you to read change feed:
+
+* **[Using Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
    
-   使用此方法可对更改源进行低级控制。 可以管理检查点、访问特定的分区键，等等。如果有多个读取者，可以使用 [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) 将读取负载分配到不同的线程或不同的客户端。 。
+   By using this method, you get low level of control on change feed. You can manage the checkpoint, you can access a particular partition key etc. If you have multiple readers, you can use [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) to distribute read load to different threads or different clients. .
 
-* **[使用 Azure Cosmos DB 更改源处理器库](#change-feed-processor)**
+* **[Using the Azure Cosmos DB change feed processor library](#change-feed-processor)**
 
-   若要大量转移更改源的复杂性，可以使用更改源处理器库。 此库可以大幅消除复杂性，同时仍让你保持更改源的完全控制度。 此库遵循[观察程序模式](https://en.wikipedia.org/wiki/Observer_pattern)，处理函数由 SDK 调用。 
+   If you want to outsource lot of complexity of change feed then you can use change feed processor library. This library hides lot of complexity, but still gives you complete control on change feed. This library follows an [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), your processing function is called by the SDK. 
 
-   如果有高吞吐量的更改源，可以实例化多个客户端来读取更改源。 由于使用的是“更改源处理器库”，它会自动在不同的客户端之间分配负载。 你不需要执行任何操作。 SDK 会解决所有的复杂性。 但是，若要使用自己的负载均衡器，可以针对自定义的分区策略实现 IParitionLoadBalancingStrategy。 实现 IPartitionProcessor - 用于对分区进行自定义处理更改。 使用 SDK 可以处理分区范围，但是，若要处理特定的分区键，则必须使用 SDK for SQL API。
+   If you have a high throughput change feed, you can instantiate multiple clients to read the change feed. Because you are using “change feed processor library”, it will automatically divide the load among different clients. You do not have to do anything. All the complexity is handled by SDK. However, if you want to have your own load balancer, then you can implement IParitionLoadBalancingStrategy for custom partition strategy. Implement IPartitionProcessor – for custom processing changes on a partition. However, with SDK, you can process a partition range but if you want to process a particular partition key then you have to use SDK for SQL API.
 
-* **[使用 Azure Functions](#azure-functions)** 
+* **[Using Azure Functions](#azure-functions)** 
    
-   Azure 函数是最后一个选项，也是最简单的选项。 我们建议使用此选项。 在 Azure Functions 应用中创建 Azure Cosmos DB 触发器时，请选择要连接到的 Azure Cosmos DB 集合，以及每当对该集合做出更改时要触发的函数。 观看使用 Azure 函数和更改源的[幻灯片](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s)
+   The last option Azure Function is the simplest option. We recommend using this option. When you create an Azure Cosmos DB trigger in an Azure Functions app, you select the Azure Cosmos DB collection to connect to and the function is triggered whenever a change to the collection is made. watch a [screen cast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) of using Azure function and change feed
 
-   可在 Azure Functions 门户、Azure Cosmos DB 门户中或以编程方式创建触发器。 Visual Studio 和 VS Code 很好地支持编写 Azure 函数。 可以在桌面上编写和调试代码，然后单击一下鼠标部署函数。 有关详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 进行无服务器数据库计算](serverless-computing-database.md)一文。
+   Triggers can be created in the Azure Functions portal, in the Azure Cosmos DB portal, or programmatically. Visual Studio and VS Code has great support to write Azure Function. You can write and debug the code on your desktop, and then deploy the function with one click. For more information, see [Azure Cosmos DB: Serverless database computing using Azure Functions](serverless-computing-database.md) article.
 
-### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>更改源中文档的排序顺序是什么？
+### What is the sort order of documents in change feed?
 
-更改源文档按其修改时间排序。 只能按分区保证这种排序顺序。
+Change feed documents comes in order of their modification time. This sort order is guaranteed only per partition.
 
-### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>对于多区域帐户，写入区域故障转移时更改源会发生什么情况？ 更改源是否也故障转移？ 更改源是否仍显示为连续状态，或者，故障转移是否导致更改源重置？
+### For a multi-region account, what happens to the change feed when the write-region fails-over? Does the change feed also failover? Would the change feed still appear contiguous or would the fail-over cause change feed to reset?
 
-是的，每次执行手动故障转移操作时，更改源会正常工作，并且是连续的。
+Yes, change feed will work across the manual failover operation and it will be contiguous.
 
-### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>如果将文档的 TTL（生存时间）属性设置为 -1，更改源会将更改的数据保留多久？
+### How long change feed persist the changed data if I set the TTL (Time to Live) property for the document to -1?
 
-更改源会永久保留。 如果数据未被删除，它会保留在更改源中。
+Change feed will persist forever. If data is not deleted, it will remain in change feed.
 
-### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>如何将 Azure Functions 配置为从特定的区域读取数据，因为更改源默认已在所有读取区域提供？
+### How can I configure Azure functions to read from a particular region, as change feed is available in all the read regions by default?
 
-目前无法将 Azure Functions 配置为从特定的区域读取数据。 设置任何 Azure Cosmos DB 绑定和触发器的首选区域时，Azure Functions 存储库中会出现一个 GitHub 问题。
+Currently it’s not possible to configure Azure Functions to read from a particular region. There is a GitHub issue in the Azure Functions repo to set the preferred regions of any Azure Cosmos DB binding and trigger.
 
-Azure Functions 使用默认连接策略。 可以在 Azure Functions 中配置连接模式，默认情况下，Azure Functions 从写入区域读取数据，因此，最好是将 Azure Functions 共置在同一区域。
+Azure Functions uses the default connection policy. You can configure connection mode in Azure Functions and by default, it reads from the write region, so it is best to co-locate Azure Functions on the same region.
 
-### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Azure Functions 中的默认批大小是什么？
+### What is the default size of batches in Azure Functions?
 
-每次调用 Azure Functions 时会读取 100 个文档。 但是，可在 function.json 文件中配置此数字。 下面是完整的[配置选项列表](../azure-functions/functions-run-local.md)。 如果在本地进行开发，请更新 [local.settings.json](../azure-functions/functions-run-local.md) 文件中的应用程序设置。
+100 documents at every invocation of Azure Functions. However, this number is configurable within the function.json file. Here is complete [list of configuration options](../azure-functions/functions-run-local.md). If you are developing locally, update the application settings within the [local.settings.json](../azure-functions/functions-run-local.md) file.
 
-### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>我正在监视一个集合并读取其更改源，但发现无法获取所有插入的文档，某些文档已缺失。 这是怎么回事？
+### I am monitoring a collection and reading its change feed, however I see I am not getting all the inserted document, some documents are missing. What is going on here?
 
-请确保没有其他函数正在读取具有相同租用集合的相同集合。 我也遇到过这种情况，后来我认识到，缺少的文档已由另一个 Azure 函数处理，该函数也使用了相同的租约。
+Please make sure that there is no other function reading the same collection with the same lease collection. It happened to me, and later I realized the missing documents are processed by my other Azure functions, which is also using the same lease.
 
-因此，如果创建多个 Azure 函数来读取相同的更改源，则这些函数必须使用不同的租用集合，或使用“leasePrefix”配置来共享相同的集合。 但是，如果使用更改源处理器库，则可以启动函数的多个实例，SDK 会自动在不同的实例之间分割文档。
+Therefore, if you are creating multiple Azure Functions to read the same change feed then they must use different lease collection or use the “leasePrefix” configuration to share the same collection. However, when you use change feed processor library you can start multiple instances of your function and SDK will divide the documents between different instances automatically for you.
 
-### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>我的文档每隔一秒更新一次，但无法在侦听更改源的 Azure Functions 中获取所有更改。
+### My document is updated every second, and I am not getting all the changes in Azure Functions listening to change feed.
 
-Azure Functions 每隔 5 秒轮询更改源一次，因此，在 5 秒间隔内发生的任何更改都会丢失。 Azure Cosmos DB 只存储 5 秒间隔的一个版本，因此，你会获取文档的第 5 次更改。 但是，若要使用 5 秒以下的频率，每隔一秒轮询更改源，则可以配置轮询时间“feedPollTime”，具体请参阅 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)。 该时间以毫秒定义，默认值为 5000。 可以使用小于 1 秒的时间，但不建议使用，否则会消耗更多的 CPU。
+Azure Functions polls change feed for every 5 seconds, so any changes made between 5 seconds are lost. Azure Cosmos DB stores just one version for every 5 seconds so you will get the 5th change on the document. However, if you want to go below 5 second, and want to poll change Feed every second, You can configure the polling time “feedPollTime”, see [Azure Cosmos DB bindings](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). It is defined in milliseconds with a default of 5000. Below 1 second is possible but not advisable, as you will start burning more CPU.
 
-### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>我在 Mongo API 集合中插入了一个文档，但在更改源中获取该文档时，显示了一个不同的 ID 值。 原因是什么？
+### I inserted a document in the Mongo API collection, but when I get the document in change feed, it shows a different id value. What is wrong here?
 
-你的集合是 Mongo API 集合。 请记住，更改源是使用 SQL 客户端读取的，会将项序列化为 JSON 格式。 由于采用 JSON 格式，MongoDB 客户端会遇到 BSON 格式的文档与 JSON 格式的更改源不匹配的情况。 显示的是 BSON 文档的 JSON 表示形式。 如果在 Mongo 帐户中使用二进制属性，它们会转换为 JSON。
+Your collection is Mongo API collection. Remember, change feed is read using the SQL client and serializes items into JSON format. Because of the JSON formatting, MongoDB clients will experience a mismatch between BSON formatted documents and the JSON formatted change feed. You are seeing is the representation of a BSON document in JSON. If you use binary attributes in a Mongo accounts, they are converted to JSON.
 
-### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>是否可以通过某种方式来只控制更改源的更新，而不控制插入？
+### Is there a way to control change feed for updates only and not inserts?
 
-暂时不可以，但此功能已在规划中。 目前，可以在文档中添加更新软标记。
+Not today, but this functionality is on roadmap. Today, you can add a soft marker on the document for updates.
 
-### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>是否可以通过某种方式来获取更改源的删除？
+### Is there a way to get deletes in change feed?
 
-目前更改源不会记录日志删除操作。 更改源在不断改进，此功能已在规划中。 目前，可以在文档中添加删除软标记。 在文档中添加名为“deleted”的属性并将其设置为“true”，并在文档中设置 TTL，以便自动删除文档。
+Currently change feed doesn’t log deletes. Change feed is continuously improving, and this functionality is on roadmap. Today, you can add a soft marker on the document for delete. Add an attribute on the document called “deleted” and set it to “true” and set a TTL on the document so that it can be automatically deleted.
 
-### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>是否可以读取历史文档的更改源（例如，5 年前添加的文档）？
+### Can I read change feed for historic documents(for example, documents that were added 5 years back) ?
 
-是的，如果未删除该文档，则可以读取不超过集合原始时间的更改源。
+Yes, if the document is not deleted you can read the change feed as far as the origin of your collection.
 
-### <a name="can-i-read-change-feed-using-javascript"></a>是否可以使用 JavaScript 读取更改源？
+### Can I read change feed using JavaScript?
 
-是的，最近已添加对更改源的 Node.js SDK 初始支持。 可按以下示例中所示使用 JavaScript。在运行代码之前，请将 documentdb 模块更新到新版本：
+Yes, Node.js SDK initial support for change feed is recently added. It can be used as shown in the following example, please update documentdb module to current version before you run the code:
 
 ```js
 
@@ -422,6 +537,7 @@ _lsn 是仅为更改源添加的批 ID，它表示存储中的事务 ID。 许�
 
 在不断修复代码的过程中，你很快就会发现，死信队列中没有任何文档。
 Azure Functions 由更改源系统自动调用，检查点等内容由 Azure 函数在内部维护。 若要回滚检查点并控制其各个方面，应考虑使用更改源处理器 SDK。
+
 
 ## <a name="next-steps"></a>后续步骤
 

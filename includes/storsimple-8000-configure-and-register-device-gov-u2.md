@@ -6,7 +6,7 @@
 3. 系统会提示选择要为设备设置的语言。 指定语言，并按 **Enter**。
    
     ![StorSimple 配置和注册设备 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
-4. 在显示的串行控制台菜单中，选择选项 1 以具有完全访问权限进行登录。
+4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”。
    
     ![StorSimple 注册设备 2](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice2-gov-include.png)
 5. 执行以下步骤，为设备配置最低要求的网络设置。

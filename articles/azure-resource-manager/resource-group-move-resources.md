@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 06/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2326f37afcb845b8c484bdf57db0876026f8e8a1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7bee84e1ce473c27730b3fe84aa0a580baeba7c2
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602714"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939794"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -57,7 +57,7 @@ ms.locfileid: "34602714"
   如果源订阅和目标订阅的租户 ID 不相同，可使用以下方法协调租户 ID：
 
   * [将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
-  * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
+  * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 2. 该服务必须支持移动资源的功能。 本文列出了支持对资源进行移动的服务和不支持对资源进行移动的服务。
 3. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。 将资源移到新的订阅时，可能会遇到此问题，但该订阅从未配合该资源类型使用。
@@ -93,6 +93,8 @@ ms.locfileid: "34602714"
    * 源资源组上的 Microsoft.Resources/subscriptions/resourceGroups/moveResources/action 权限。
    * 目标资源组上的 Microsoft.Resources/subscriptions/resourceGroups/write 权限。
 
+5. 在移动资源之前，请检查要将资源移动到的订阅的订阅配额。 如果移动资源意味着订阅将超出其限制，则需要检查是否可以请求增加配额。 有关限制的列表及如何请求增加配额的信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。
+
 5. 在可能的情况下，将大型移动分为单独的移动操作。 在一次操作中尝试移动超过 800 项资源，资源管理器将立即失败。 但是，移动 800 项以下的资源也可能因超时而失败。
 
 ## <a name="when-to-call-support"></a>何时致电支持人员
@@ -115,6 +117,7 @@ ms.locfileid: "34602714"
 * 应用服务应用（Web 应用）- 请参阅[应用服务限制](#app-service-limitations)
 * 应用服务证书
 * Application Insights
+* Analysis Services
 * 自动化
 * Azure Cosmos DB
 * Azure 中继
@@ -153,7 +156,8 @@ ms.locfileid: "34602714"
 * 存储
 * 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 流分析 - 当流分析作业处于运行状态时，则无法进行移动。
-* SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。 
+* SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
+* 时序见解
 * 流量管理器
 * 虚拟机 - 包含托管磁盘的 VM 无法移动。 请参阅[虚拟机限制](#virtual-machines-limitations)
 * 虚拟机（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
@@ -174,6 +178,7 @@ ms.locfileid: "34602714"
 * Azure Migrate
 * BizTalk 服务
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
+* 容器服务
 * 开发测试实验室 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * Dynamics LCS
 * Express Route
@@ -189,7 +194,7 @@ ms.locfileid: "34602714"
 
 ## <a name="virtual-machines-limitations"></a>虚拟机限制
 
-托管磁盘不支持移动。 此限制意味着，多个相关资源也无法移动。 无法移动：
+托管磁盘不支持移动。 此限制意味着，多个相关资源也无法移动。 无法移动以下项：
 
 * 托管磁盘
 * 包含托管磁盘的虚拟机
@@ -202,7 +207,7 @@ ms.locfileid: "34602714"
 * 使用 [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) 或 [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md) 将托管磁盘复制到同一订阅或不同订阅
 * 通过将现有托管 OS 磁盘与 [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) 或 [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md) 配合使用来创建虚拟机。
 
-无法资源组或订阅之间移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
+无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 
 证书存储在 Key Vault 中的虚拟机可以移动到同一订阅中的新资源组，但无法跨订阅进行移动。
 
@@ -218,7 +223,7 @@ ms.locfileid: "34602714"
 
 ## <a name="app-service-limitations"></a>应用服务限制
 
-移动通过经典模型部署的资源时，其选项各不相同，具体取决于是在订阅内移动资源，还是将应用服务资源移到新的订阅。
+移动应用服务资源的限制各不相同，具体取决于是在订阅内移动资源，还是将应用服务资源移到新的订阅。
 
 这些部分中所述的限制适用于已上传的证书，不适用于应用服务证书。 可将应用服务证书移动到新的资源组或订阅，且不会存在任何限制。 如果你有多个使用相同应用服务证书的 Web 应用，请先移动所有这些 Web 应用，然后再移动证书。
 
@@ -267,7 +272,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 * 必须在同一操作中移动订阅中的所有经典资源。
 * 目标订阅不得包含任何其他经典资源。
-* 只能通过独立的适用于经典移动的 REST API 来请求移动。 将经典资源移到新订阅时，不能使用标准的 Resource Manager 移动命令。
+* 只能通过独立的适用于经典移动的 REST API 来请求移动。 将经典资源移到新订阅时，不能使用标准的资源管理器移动命令。
 
 要将经典资源移动到新订阅，请使用特定于经典资源的 REST 操作。 若要使用 REST，请执行以下步骤：
 
@@ -342,7 +347,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ## <a name="hdinsight-limitations"></a>HDInsight 限制
 
-可以将 HDInsight 群集移到新的订阅或资源组。 但是，无法在订阅之间移动链接到 HDInsight 群集的网络资源（例如虚拟网络、网卡或负载均衡器）。 此外，无法将连接到群集的虚拟机的网卡移到新的资源组。
+可以将 HDInsight 群集移到新的订阅或资源组。 但是，无法在订阅之间移动链接到 HDInsight 群集的网络资源（例如虚拟网络、NIC 或负载均衡器）。 此外，无法将连接到群集的虚拟机的 NIC 移到新的资源组。
 
 将 HDInsight 群集移到新的订阅时，首先移动其他资源（如存储帐户）。 然后移动 HDInsight 群集本身。
 
@@ -377,7 +382,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ![显示移动状态](./media/resource-group-move-resources/show-status.png)
 
-操作完成后，会获得结果通知。
+操作完成后，你会获得结果通知。
 
 ![显示移动结果](./media/resource-group-move-resources/show-result.png)
 

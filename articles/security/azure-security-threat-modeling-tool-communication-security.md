@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 71bbe53595f2afab50d6220f335d615ada957a85
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: c361f74147862585074f3c4475209ba6eb0c1e0c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019477"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029792"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -42,7 +42,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 事件中心 | 
+| 组件               | Azure 事件中心 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -53,7 +53,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Dynamics CRM | 
+| 组件               | Dynamics CRM | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -64,7 +64,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 数据工厂 | 
+| 组件               | Azure 数据工厂 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 链接服务类型 - Azure 和本地 |
@@ -75,7 +75,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 标识服务器 | 
+| 组件               | 标识服务器 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -86,7 +86,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -97,7 +97,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
@@ -108,7 +108,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
@@ -135,24 +135,24 @@ ms.locfileid: "28019477"
   </system.webServer>
 </configuration>
 ```
-此规则的工作方式是当用户使用 HTTP 请求某个页面时，返回 HTTP 状态码 301（永久重定向）。 301 将请求重定向到访问者请求的同一个 URL，但使用 HTTPS 来替换请求的 HTTP 部分。 例如，HTTP://contoso.com 将重定向到 HTTPS://contoso.com。 
+此规则的工作方式是当用户使用 HTTP 请求某个页面时，返回 HTTP 状态码 301（永久重定向）。 301 将请求重定向到访问者请求的同一个 URL，但使用 HTTPS 来替换请求的 HTTP 部分。 例如，HTTP://contoso.com 会重定向到 HTTPS://contoso.com。 
 
 ## <a id="http-hsts"></a>启用 HTTP 严格传输安全性 (HSTS)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [OWASP HTTP 严格传输安全性速查表](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **步骤** | <p>HTTP 严格传输安全性 (HSTS) 是 Web 应用程序使用特殊响应标头指定的一个选用的安全增强功能。 支持的浏览器收到此标头后，将阻止通过 HTTP 将任何通信发送到指定的域，并改为通过 HTTPS 发送所有通信。 它还可以防止浏览器中出现 HTTPS 点击提示。</p><p>若要实现 HSTS，必须在代码或配置中为网站全局配置以下响应标头。Strict-Transport-Security: max-age=300; includeSubDomains。HSTS 可解决以下威胁：</p><ul><li>用户将 http://example.com 加入书签或者手动键入该 URL 时，可能会受到中间人攻击：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>纯粹只进行 HTTPS 通信的 Web 应用程序无意中包含 HTTP 链接或通过 HTTP 提供内容：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>中间人攻击者尝试使用无效的证书来截获受害用户发送的流量，并希望该用户接受错误的证书：HSTS 不允许用户重写无效的证书消息</li></ul>|
+| **步骤** | <p>HTTP 严格传输安全性 (HSTS) 是 Web 应用程序使用特殊响应标头指定的一个选用的安全增强功能。 支持的浏览器收到此标头后，将阻止通过 HTTP 将任何通信发送到指定的域，并改为通过 HTTPS 发送所有通信。 它还可以防止浏览器中出现 HTTPS 点击提示。</p><p>若要实现 HSTS，必须在代码或配置中为网站全局配置以下响应标头。Strict-Transport-Security: max-age=300; includeSubDomains。HSTS 可解决以下威胁：</p><ul><li>用户将 http://example.com 加入书签或手动键入此 URL，可能会受到中间人攻击：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>纯粹只进行 HTTPS 通信的 Web 应用程序无意中包含 HTTP 链接或通过 HTTP 提供内容：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>中间人攻击者尝试使用无效的证书来截获受害用户发送的流量，并希望该用户接受错误的证书：HSTS 不允许用户重写无效的证书消息</li></ul>|
 
 ## <a id="sqlserver-validation"></a>确保加密 SQL Server 连接并验证证书
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure  |
 | **属性**              | SQL 版本 - V12 |
@@ -163,7 +163,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | OnPrem |
 | **属性**              | SQL 版本 - MsSQL2016，SQL 版本 - MsSQL2012，SQL 版本 - MsSQL2014 |
@@ -174,7 +174,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -185,7 +185,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -196,7 +196,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 移动客户端 | 
+| 组件               | 移动客户端 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - 文件 |
@@ -207,7 +207,7 @@ ms.locfileid: "28019477"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 通用、Windows Phone |
 | **属性**              | 不适用  |
@@ -284,18 +284,18 @@ namespace CertificatePinningExample
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | NET Framework 3 |
 | **属性**              | 不适用  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **步骤** | 应用程序配置应确保始终使用 HTTPS 来访问敏感信息。<ul><li>**说明：** 如果应用程序需要处理敏感信息但未使用消息级加密，则只能允许它通过加密的传输通道来通信。</li><li>**建议：** 确保禁用 HTTP 传输，改为启用 HTTPS 传输。 例如，将 `<httpTransport/>` 替换为 `<httpsTransport/>` 标记。 不要依赖使用网络配置（防火墙）来保证只能通过安全通道访问应用程序。 从哲学的观点来讲，应用程序不应依赖于网络来保证其安全性。</li></ul><p>从实践的观点来讲，负责保护网络的人不会一直跟进应用程序的不断变化的安全要求。</p>|
 
 ## <a id="message-protection"></a>WCF：将消息安全保护级别设置为 EncryptAndSign
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
@@ -324,7 +324,7 @@ string GetData(int value);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
@@ -335,7 +335,7 @@ string GetData(int value);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
@@ -376,7 +376,7 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure Redis 缓存 | 
+| 组件               | Azure Redis 缓存 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -389,7 +389,7 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 现场网关 | 
+| 组件               | IoT 现场网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -400,7 +400,7 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 云网关 | 
+| 组件               | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |

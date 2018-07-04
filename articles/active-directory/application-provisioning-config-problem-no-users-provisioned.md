@@ -3,22 +3,24 @@ title: 没有为任何用户预配 Azure AD 库应用程序 | Microsoft Docs
 description: 当在针对用户预配使用 Azure AD 配置的 Azure AD 库应用程序中没有看到用户时，如何解决面对的常见问题
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: asteen
-ms.openlocfilehash: a36d60b8915ae0b46226bb2127829a8f1767daba
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 394e8642c177312c8990ea211f77fb802d4228fd
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26616288"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332403"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>没有为任何用户预配 Azure AD 库应用程序
 
@@ -56,7 +58,7 @@ ms.locfileid: "26616288"
 
 当用户在审核日志中显示为“已跳过”时，请务必阅读日志消息中的延伸详细信息，以确定原因。 以下为常见的原因和解决方法：
 
--   **已配置作用域筛选器**，**它根据属性值筛选用户**。 有关作用域筛选器的详细信息，请参阅 <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>。
+-   **已配置作用域筛选器**，**它根据属性值筛选用户**。 有关范围筛选器的详细信息，请参阅 <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>。
 
 -   **该用户“未得到有效授权”。** 如果看到此特定错误消息，是因为存储在 Azure AD 中的用户分配记录出现问题。 要解决此问题，请从应用中取消分配用户（或组），并重新分配。 有关分配的详细信息，请参阅 <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>。
 

@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: 8b007c4658d3ca168c4c1a86a72a737c75ca33db
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 629cdf3907f45419ecfa5fce59430a163767c8fb
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371331"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943260"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移
-本文介绍如何才能将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Resource Manager 部署模型。 用户可以阅读有关 [Azure 资源管理器功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 本文详述了如何使用虚拟网络的站点到站点网关连接订阅中并存的两个部署模型中的资源。
+本文介绍如何将服务架构 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure 资源管理器功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 
 
 ## <a name="goal-for-migration"></a>迁移目标
 资源管理器除了可让你通过模板部署复杂的应用程序之外，还可使用 VM 扩展来配置虚拟机，并且纳入访问管理和标记。 Azure 资源管理器将虚拟机的可缩放并行部署包含在可用性集内。 新部署模型还针对计算、网络和存储单独提供生命周期管理。 最后，将重点介绍为了默认启用安全性而要在虚拟网络中实施虚拟机的做法。
@@ -38,12 +38,12 @@ ms.locfileid: "34371331"
 * 保留 IP
 
 ## <a name="supported-scopes-of-migration"></a>支持的迁移范围
-可通过 4 种不同的方式完成计算、网络和存储资源的迁移。 这 4 种方式为：
+可通过四种不同的方式完成计算、网络和存储资源的迁移：
 
-* 迁移（不在虚拟网络中的）虚拟机
-* 迁移（虚拟网络中的）虚拟机
-* 存储帐户迁移
-* 未附加的资源（网络安全组、路由表和保留 IP）
+* [迁移（不在虚拟网络中的）虚拟机](#migration-of-virtual-machines-not-in-a-virtual-network)
+* [迁移（虚拟网络中的）虚拟机](#migration-of-virtual-machines-in-a-virtual-network)
+* [存储帐户的迁移](#migration-of-storage-accounts)
+* [未附加资源的迁移](#migration-of-unattached-resources)
 
 ### <a name="migration-of-virtual-machines-not-in-a-virtual-network"></a>迁移（不在虚拟网络中的）虚拟机
 在 Resource Manager 部署模型中，默认情况下会针对应用程序强制实施安全性。 在 Resource Manager 模型中，所有 VM 都必须位于虚拟网络内。 Azure 平台会在迁移过程中重新启动（`Stop`、`Deallocate`、`Start`）VM。 对于虚拟机将迁移到的虚拟网络，有两个选项：
@@ -53,7 +53,6 @@ ms.locfileid: "34371331"
 
 > [!NOTE]
 > 在此迁移范围内，迁移期间可能有一段时间不允许进行管理平面操作和数据平面操作。
->
 >
 
 ### <a name="migration-of-virtual-machines-in-a-virtual-network"></a>迁移（虚拟网络中的）虚拟机
@@ -67,23 +66,25 @@ ms.locfileid: "34371331"
 > [!NOTE]
 > 在此迁移范围内，迁移期间可能有一段时间不允许进行管理平面操作。 上述某些配置会造成数据平面停机。
 >
->
 
-### <a name="storage-accounts-migration"></a>存储帐户迁移
+### <a name="migration-of-storage-accounts"></a>存储帐户的迁移
 为了让迁移顺畅进行，可以在经典存储帐户中部署 Resource Manager VM。 通过此功能，就可以并且应该迁移计算和网络资源，而不必受到存储帐户的约束。 迁移虚拟机和虚拟网络后，需要迁移存储帐户才能完成迁移过程。
+
+如果存储帐户没有任何关联的磁盘或虚拟机数据，并且只有 blob、文件、表和队列，那么到 Azure 资源管理器的迁移可以作为独立的迁移完成，而不需要依赖项。
 
 > [!NOTE]
 > Resource Manager 部署模型没有经典映像和磁盘的概念。 迁移存储帐户时，经典映像和磁盘不在 Resource Manager 堆栈中可见，但后备 VHD 保留在存储帐户中。
 >
->
 
-### <a name="unattached-resources-network-security-groups-route-tables--reserved-ips"></a>未附加的资源（网络安全组、路由表和保留 IP）
-未附加到任何虚拟机和虚拟网络的网络安全组、路由表和保留 IP 可以单独迁移。
+### <a name="migration-of-unattached-resources"></a>未附加资源的迁移
+没有关联的磁盘或虚拟机数据的存储帐户可以单独迁移。
+
+未附加到任何虚拟机和虚拟网络的网络安全组、路由表和保留 IP 也可以单独迁移。
 
 <br>
 
 ## <a name="unsupported-features-and-configurations"></a>不支持的功能和配置
-目前不支持某些功能和配置。 下列各节介绍了我们对这些功能和配置的相关建议。
+目前不支持某些功能和配置；以下各节将围绕这些功能和配置介绍我们的建议。
 
 ### <a name="unsupported-features"></a>不支持的功能
 目前不支持以下功能。 可以选择删除这些设置、迁移 VM，然后在 Resource Manager 部署模型中重新启用这些设置。
@@ -109,7 +110,7 @@ ms.locfileid: "34371331"
 | 计算 |使用高级存储启动诊断 |在继续执行迁移之前，为 VM 禁用启动诊断功能。 在迁移完成之后，可以在 Resource Manager 堆栈中重新启用启动诊断。 此外，应删除正用于屏幕截图和串行日志的 blob，以便不会再针对这些 blob 向你收费。 |
 | 计算 | 包含 Web 角色/辅助角色的云服务 | 目前不支持。 |
 | 计算 | 云服务包含一个以上可用性集或多个可用性集。 |目前不支持。 在迁移之前，请将虚拟机移到同一可用性集中。 |
-| 计算 | 带 Azure 安全中心扩展的 VM | Azure 安全中心在虚拟机上自动安装扩展，用于监视其安全性并引发警报。 如果在订阅上启用了 Azure 安全中心策略，通常会自动安装这些扩展。 若要迁移虚拟机，请禁用订阅上的安全中心策略，这将从虚拟机删除监视扩展的安全中心。 |
+| 计算 | 带 Azure 安全中心扩展的 VM | Azure 安全中心在虚拟机上自动安装扩展，用于监视其安全性并引发警报。 如果在订阅上启用了 Azure 安全中心策略，通常会自动安装这些扩展。 若要迁移虚拟机，则禁用订阅上的安全中心策略，这将从虚拟机删除监视扩展的安全中心。 |
 | 计算 | 带备份或快照扩展的 VM | 这些扩展安装在配置有 Azure 备份服务的虚拟机上。 当不支持迁移这些 VM 时，请按照[此处](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault)的指导，在迁移前保留备份。  |
 | 网络 |包含虚拟机和 Web 角色/辅助角色的虚拟网络 |目前不支持。 在迁移之前，请将 Web/辅助角色移动到其自己的虚拟网络。 一旦迁移经典虚拟网络，就可以将迁移的 Azure 资源管理器虚拟网络与经典虚拟网络对等，从而实现与以前类似的配置。|
 | 网络 | 经典 Express Route 线路 |目前不支持。 这些线路需要在开始迁移 IaaS 之前迁移到 Azure 资源管理器。 有关详细信息，请参阅[将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型](../articles/expressroute/expressroute-move.md)。|
@@ -118,4 +119,4 @@ ms.locfileid: "34371331"
 | Microsoft Dynamics Lifecycle Services |包含由 Dynamics Lifecycle Services 管理的虚拟机的虚拟网络 |目前不支持。 |
 | Azure AD 域服务 |包含 Azure AD 域服务的虚拟网络 |目前不支持。 |
 | Azure RemoteApp |包含 Azure RemoteApp 部署的虚拟网络 |目前不支持。 |
-| Azure API 管理 |包含 Azure API 管理部署的虚拟网络 |目前不支持。 若要迁移 IaaS VNET，请更改 API 管理部署的 VNET（该部署不会造成停机）。 |
+| Azure API 管理 |包含 Azure API 管理部署的虚拟网络 |目前不支持。 若要迁移 IaaS VNET，则更改 API 管理部署的 VNET（该部署不会造成停机）。 |

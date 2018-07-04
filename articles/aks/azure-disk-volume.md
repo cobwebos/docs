@@ -6,14 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b790213e19b9f2aaef74a3f670c89246f54fd6d7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597061"
 ---
 # <a name="volumes-with-azure-disks"></a>含 Azure 磁盘的卷
 
@@ -23,34 +24,27 @@ ms.lasthandoff: 05/10/2018
 
 ## <a name="create-an-azure-disk"></a>创建 Azure 磁盘
 
-在将 Azure 托管磁盘装载为 Kubernetes 卷之前，该磁盘必须与 AKS 群集资源位于同一资源组。 要查找此资源组，请使用 [az group list][az-group-list] 命令。
+在将 Azure 托管磁盘装载为 Kubernetes 卷之前，该磁盘必须位于 AKS 节点资源组中。 使用 [az resource show][az-resource-show] 命令获取资源组名称。
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-你在查找名称类似 `MC_clustername_clustername_locaton` 的资源组，其中 clustername 为 AKS 群集的名称，location 为部署群集的 Azure 区域。
-
-```console
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 使用 [az disk create][az-disk-create] 命令创建 Azure 磁盘。
 
-使用此示例，将 `--resource-group` 更新为资源组的名称，并将 `--name` 更新为你选择的名称。
+将 `--resource-group` 更新为上一个步骤中收集的资源组的名称，并将 `--name` 更新为你选择的名称。
 
 ```azurecli-interactive
 az disk create \
-  --resource-group MC_myAKSCluster_myAKSCluster_eastus \
+  --resource-group MC_myResourceGroup_myAKSCluster_eastus \
   --name myAKSDisk  \
   --size-gb 20 \
   --query id --output tsv
 ```
 
-创建磁盘后，你应该会看到与下面类似的输出。 此值为磁盘 ID，在将磁盘装载至 Kubernetes Pod 时会有用。
+创建磁盘后，你应该会看到与下面类似的输出。 此值为磁盘 ID，在装载磁盘时会有用。
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
@@ -105,3 +99,4 @@ kubectl apply -f azure-disk-pod.yaml
 [az-disk-list]: /cli/azure/disk#az_disk_list
 [az-disk-create]: /cli/azure/disk#az_disk_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show

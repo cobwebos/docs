@@ -3,16 +3,17 @@ title: Azure Analysis Services 横向扩展 | Microsoft Docs
 description: 通过横向扩展复制 Azure Analysis Services 服务器
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/16/2018
+ms.date: 05/24/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5d1d55a1cf29d6dc3574099cd468c42ccfc72f5b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597121"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -33,6 +34,22 @@ ms.lasthandoff: 04/18/2018
 
 > [!NOTE]
 > 横向扩展不会增加服务器的可用内存量。 要增加内存，需升级计划。
+
+## <a name="region-limits"></a>区域限制
+
+你可以配置的查询副本数量受服务器所在区域限制。 以下限制适用于：
+
+|区域  |最大副本数  |
+|---------|---------|
+|美国东部 2    |    7     |
+|美国中西部     |    7     |
+|西欧     |    7     |
+|美国西部     |     7    |
+|美国中部     |     3    |
+|东南亚    |     3    |
+|所有其他区域  |   1    |
+
+
 
 ## <a name="monitor-qpu-usage"></a>监视 QPU 使用情况
 

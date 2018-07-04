@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885262"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752915"
 ---
 # <a name="management-solutions-in-azure"></a>Azure 中的管理解决方案
 管理解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述 Azure 中的管理解决方案，并详细介绍如何使用和安装这些解决方案。
@@ -52,21 +52,17 @@ ms.locfileid: "33885262"
 ![解决方案属性](media/monitoring-solutions/solution-properties.png)
 
 
-## <a name="find-management-solutions"></a>查找管理解决方案
-可以浏览和安装 Microsoft 提供的，以及合作伙伴在 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) 中提供的管理解决方案。 [搜索“管理解决方案”](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)以筛选管理解决方案，然后单击任何一项以查看更多详细信息。
-
-![Marketplace](media/monitoring-solutions/marketplace.png)
 
 ## <a name="install-a-management-solution"></a>安装管理解决方案
+[Azure 市场](https://azuremarketplace.microsoft.com)中提供了 Microsoft 和合作伙伴的管理解决方案。 可以搜索可用的解决方案，并使用以下过程进行安装。
 
-### <a name="install-a-management-solution-from-the-azure-marketplace"></a>从 Azure Marketplace 安装管理解决方案
-可以使用以下任一方法找到并开始安装管理解决方案。
+1. 在[订阅的解决方案列表](#list-installed-management-solutions)中，单击“添加”。 
+1. 在“管理解决方案”的右侧，单击“更多”。 
+1. 找到所需的管理解决方案并阅读其说明。
+1. 单击“创建”以启动安装进程。
+1. 安装过程开始后，系统会提示提供所需的配置（根据每个解决方案而异）。 所有配置都要求选择要在其中安装该解决方案的 Log Analytics 工作区，以及要将解决方案数据收集到的位置。 
 
-- 在 [Azure Marketplace](#find-management-solutions) 中单击某个管理解决方案对应的“立即获取”。
-- 在[订阅的解决方案列表](#list-installed-management-solutions)中，单击“添加”。 在“管理解决方案”的右侧，单击“更多”。 找到所需的管理解决方案，单击“创建”。
-- 在 Azure 门户中，选择“创建资源” > “监视 + 管理” > “查看全部”。 在“管理解决方案”的右侧，单击“更多”。 找到所需的管理解决方案，单击“创建”。
-
-安装过程开始后，系统会提示提供所需的配置（根据每个解决方案而异）。 所有配置都要求选择要在其中安装该解决方案的 Log Analytics 工作区，以及要将解决方案数据收集到的位置。 如果解决方案有要求，可能还需要[指定自动化帐户](#log-analytics-workspace-and-automation-account)。
+![安装解决方案](media/monitoring-solutions/install-solution.png)
 
 ### <a name="install-a-solution-from-the-community"></a>从社区安装解决方案
 社区成员可以将管理解决方案提交到 Azure 快速入门模板。 可以直接安装这些解决方案，或者下载模板，以便今后安装。
@@ -90,8 +86,8 @@ ms.locfileid: "33885262"
 ### <a name="creating-a-link-between-a-log-analytics-workspace-and-automation-account"></a>在 Log Analytics 工作区和自动化帐户之间创建链接
 如何指定 Log Analytics 工作区和自动化帐户取决于解决方案的安装方法。
 
-* 通过 Azure Marketplace 安装解决方案时，系统会提示提供一个工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
-* 对于 Azure Marketplace 外的解决方案，必须在安装解决方案之前链接 Log Analytics 工作区和自动化帐户。 为此，可以在 Azure Marketplace 中选择任何解决方案，并选择 Log Analytics 工作区和自动化帐户。 无需实际安装解决方案，因为只要选择了 Log Analytics 工作区和自动化帐户，就会创建链接。 创建链接后，可以对任何解决方案使用该 Log Analytics 工作区和自动化帐户。
+* 通过 Azure 市场安装解决方案时，系统会提示提供一个工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
+* 对于 Azure 市场外的解决方案，必须在安装解决方案之前链接 Log Analytics 工作区和自动化帐户。 为此，可以在 Azure 市场中选择任何解决方案，并选择 Log Analytics 工作区和自动化帐户。 无需实际安装解决方案，因为只要选择了 Log Analytics 工作区和自动化帐户，就会创建链接。 创建链接后，可以对任何解决方案使用该 Log Analytics 工作区和自动化帐户。
 
 ### <a name="verifying-the-link-between-a-log-analytics-workspace-and-automation-account"></a>验证 Log Analytics 工作区和自动化帐户之间的链接
 可以使用以下过程验证 Log Analytics 工作区和自动化帐户之间的链接。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c5aaf9869326f2de86d3bff33f36e8f967f3e6fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3e058242840a3fa8b86c9ae9d5a0940cc02f04d2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209995"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020383"
 ---
 # <a name="configure-stateful-reliable-services"></a>配置有状态 Reliable Services
 有两组配置设置可供 Reliable Services 使用。 一组适用于群集中的所有 Reliable Services，而另一组特定于特定的 Reliable Services。
@@ -82,6 +82,11 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 
 ### <a name="replicator-security-configuration"></a>复制器安全配置
 复制器安全配置用于保护在复制过程中使用的通信通道的安全。 这意味着服务将无法看到对方的复制流量，从而确保高度可用的数据也处于安全状态。 默认情况下，空的安全配置节会影响复制安全。
+
+> [!IMPORTANT]
+> 在 Linux 节点上，证书必须是 PEM 格式。 若要了解有关查找和配置适用于 Linux 的证书的详细信息，请参阅[在 Linux 上配置证书](./service-fabric-configure-certificates-linux.md)。 
+> 
+> 
 
 ### <a name="default-section-name"></a>默认节名称
 ReplicatorSecurityConfig

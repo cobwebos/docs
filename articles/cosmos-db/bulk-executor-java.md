@@ -1,6 +1,6 @@
 ---
-title: 使用 BulkExecutor Java 库在 Azure Cosmos DB 中执行批量操作 | Microsoft Docs
-description: 使用 Azure Cosmos DB 的 BulkExecutor Java 库在 Azure Cosmos DB 集合中批量导入和更新文档。
+title: 使用 Bulk Executor Java 库在 Azure Cosmos DB 中执行批量操作 | Microsoft Docs
+description: 使用 Azure Cosmos DB 的 Bulk Executor Java 库在 Azure Cosmos DB 集合中批量导入和更新文档。
 keywords: Java 批量执行程序
 services: cosmos-db
 author: tknandu
@@ -10,16 +10,16 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 77135ec5f62636d1dd634361da345b00d98ad918
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f241a98cdcc847ddb579b86b51034d1438ee1395
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610236"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300707"
 ---
-# <a name="use-bulkexecutor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 BulkExecutor Java 库针对 Azure Cosmos DB 数据执行批量操作
+# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
-本教程提供有关使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档的说明。 若要了解 BulkExecutor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [ BulkExecutor 库概述](bulk-executor-overview.md)一文。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos DB 集合。 导入后，我们将批量更新文档的某些属性。 
+本教程提供有关使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档的说明。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos DB 集合。 导入后，我们将批量更新文档的某些属性。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -197,7 +197,7 @@ ms.locfileid: "34610236"
 
 ## <a name="performance-tips"></a>性能提示 
 
-使用 BulkExecutor 库时，请注意以下几点，以获得更好的性能：
+使用 Bulk Executor 库时，请注意以下几点，以获得更好的性能：
 
 * 为获得最佳性能，请从 Cosmos DB 帐户写入区域中的 Azure VM 运行应用程序。  
 * 为实现更高的吞吐量：  
@@ -211,6 +211,6 @@ ms.locfileid: "34610236"
 
     
 ## <a name="next-steps"></a>后续步骤
-* 若要了解 maven 包的详细信息以及 BulkExecutor Java 库的发行说明，请参阅 [BulkExecutor SDK 详细信息](sql-api-sdk-bulk-executor-java.md)。
+* 若要了解 maven 包的详细信息以及 Bulk Executor Java 库的发行说明，请参阅 [Bulk Executor SDK 详细信息](sql-api-sdk-bulk-executor-java.md)。
 
 

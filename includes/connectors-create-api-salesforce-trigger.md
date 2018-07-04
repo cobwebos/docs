@@ -1,7 +1,7 @@
 本演练介绍在 Salesforce 中创建新潜在顾客时，如何使用“Salesforce - 创建对象时”触发器启动逻辑应用工作流。
 
 > [!NOTE]
-> 如果尚未与 Salesforce 建立*连接*，系统会提示登录到 Salesforce 帐户。  
+> 如果尚未与 Salesforce 建立连接，系统会提示登录到 Salesforce 帐户。  
 > 
 > 
 

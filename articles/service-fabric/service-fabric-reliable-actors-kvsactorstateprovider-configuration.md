@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: f29754c73db74f02214522a4de15904e65df0e98
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c01bcfecea8d79784b764e715f077c76e7d4be45
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208254"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017641"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>配置 Reliable Actors - KVSActorStateProvider
 通过更改 Microsoft Visual Studio 程序包根目录下的指定执行组件的 Config 文件夹中生成的 settings.xml 文件，可以修改 KVSActorStateProvider 的默认配置。
@@ -34,6 +34,10 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 ## <a name="replicator-security-configuration"></a>复制器安全配置
 复制器安全配置用于保护在复制过程中使用的通信通道的安全。 这意味着服务将无法看到对方的复制流量，从而确保高度可用的数据也处于安全状态。
 默认情况下，空的安全配置节会影响复制安全。
+
+> [!IMPORTANT]
+> 在 Linux 节点上，证书必须是 PEM 格式。 若要了解有关查找和配置适用于 Linux 的证书的详细信息，请参阅[在 Linux 上配置证书](./service-fabric-configure-certificates-linux.md)。 
+> 
 
 ### <a name="section-name"></a>节名称
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig

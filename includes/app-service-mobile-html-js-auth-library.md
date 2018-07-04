@@ -6,7 +6,7 @@
 
 ```
 client.login("facebook").done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -21,7 +21,7 @@ client.login("facebook").done(function (results) {
 
 ###<a name="client-auth"></a>如何：使用提供程序（客户端流）进行身份验证
 
-应用还能够独立联系标识提供者，然后将返回的令牌提供给应用服务以进行身份验证。 使用此客户端流可为用户提供单一登录体验，或者从标识提供者中检索其他用户数据。
+你的应用还能够独立联系标识提供者，并将返回的令牌提供给应用服务以进行身份验证。 使用此客户端流可为用户提供单一登录体验，或者从标识提供者中检索其他用户数据。
 
 #### <a name="social-authentication-basic-example"></a>社交身份验证基本示例
 
@@ -32,7 +32,7 @@ client.login(
      "facebook",
      {"access_token": token})
 .done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -50,7 +50,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
             "microsoftaccount",
             {"authenticationToken": result.session.authentication_token})
       .done(function(results){
-            alert("You are now logged in as: " + results.userId);
+            alert("You are now signed in as: " + results.userId);
       },
       function(error){
             alert("Error: " + err);

@@ -95,7 +95,7 @@ Azure 针对防病毒解决方案提供多种选项，但需要用户自行管�
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>哪些选项可用于备份和恢复？
-在某些区域，可将 Azure 备份用作预览。 有关详细信息，请参阅[备份 Azure 虚拟机](../articles/backup/backup-azure-arm-vms.md)。 认证合作伙伴提供其他解决方案。 若要了解当前提供的内容，请搜索 Azure Marketplace。
+在某些区域，可将 Azure 备份用作预览。 有关详细信息，请参阅[备份 Azure 虚拟机](../articles/backup/backup-azure-arm-vms.md)。 认证合作伙伴提供其他解决方案。 若要了解当前提供的内容，请搜索 Azure 市场。
 
 其他选项使用 blob 存储的快照功能。 为此，需要在进行任何依赖 blob 快照的操作前关闭 VM。 这会保存挂起的数据写入，并将文件系统保持为一致状态。
 

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/04/2018
+ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: 5fce1a3b8370ce49a522f41749795362e1bf1f9b
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 93d3e25957fb1f04400fa78423a5658d32f7d5fd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757271"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749712"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
 
@@ -53,7 +53,7 @@ ms.locfileid: "34757271"
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  将数据工厂 MSI 添加到该组。 可以根据 [Azure Data Factory 服务标识](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity)中的说明获取服务标识 ID（例如 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc）。
+3.  将数据工厂 MSI 添加到该组。 可以根据 [Azure Data Factory 服务标识](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity)获取主体服务标识 ID（例如 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但不要将服务标识应用程序 ID 用于此目的）。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

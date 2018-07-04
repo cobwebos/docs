@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: c01f986bfe3e6a3162988056a268423e07f429bf
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6484142eafa8388117c1e96ab31eefeab188e488
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301144"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750266"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>将 Log Analytics 警报扩展到 Azure 警报
-Azure Log Analytics 包含自身的警报功能，可以根据 Log Analytics 数据将相关情况主动通知给你，这种情况到最近才有所改变。 你过去在 [Microsoft Operations Management Suite 门户](../operations-management-suite/operations-management-suite-overview.md)中管理警报规则。 新的警报体验现在已在 Microsoft Azure 的各种服务中集成了警报。 该体验在 Azure 门户中通过 Azure Monitor 下的“警报”提供，支持的警报来自活动日志、指标以及 Log Analytics 和 Azure Application Insights 提供的日志。 
+Azure Log Analytics 包含自身的警报功能，可以根据 Log Analytics 数据将相关情况主动通知给你，这种情况到最近才有所改变。 过去是在 Microsoft Operations Management Suite 门户中管理预警规则。 新的警报体验现在已在 Microsoft Azure 的各种服务中集成了警报。 该体验在 Azure 门户中通过 Azure Monitor 下的“警报”提供，支持的警报来自活动日志、指标以及 Log Analytics 和 Azure Application Insights 提供的日志。 
 
 ## <a name="benefits-of-extending-your-alerts"></a>对警报进行扩展的好处
 在 Azure 门户中创建和管理警报有多种优势，例如：

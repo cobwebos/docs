@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: bd36cfd0cd03592396a2aa9a977124880f47ec90
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248463"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752786"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>管理 Azure Blob 存储生命周期（预览）
 
@@ -265,7 +265,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ### <a name="expire-data-based-on-age"></a>基于陈旧程度使数据过期
 
-某些数据预期在创建后的数日或数月内过期，以降低成本或遵守政府法规。 可将生命周期管理策略设置为根据数据陈旧程度删除数据，以使数据过期。 以下示例中演示的策略删除超过 365 天的所有块 Blob（未指定前缀）。
+某些数据预期在创建后的数日或数月内过期，以降低成本或遵守政府法规。 可以将生命周期管理策略设置为，根据数据陈旧程度删除数据，从而让数据到期。 以下示例中演示的策略删除超过 365 天的所有块 Blob（未指定前缀）。
 
 ```json
 {

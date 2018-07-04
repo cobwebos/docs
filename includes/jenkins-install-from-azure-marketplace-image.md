@@ -9,14 +9,14 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 552e93e9bd1b17c73fb1638fbae2ac30b051c261
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d5a832909f060ad8c8b3f0e7c7ea4504e5e5aadb
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29957543"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943464"
 ---
-1. 在浏览器中，打开[适用于 Jenkins 的 Azure Marketplace 映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)。
+1. 在浏览器中，打开[用于 Jenkins 的 Azure 市场映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)。
 
 1. 选择“立即获取”。
 
@@ -33,7 +33,7 @@ ms.locfileid: "29957543"
 1. 在“基本”选项卡上，指定以下值：
 
     - **名称** - 输入 `Jenkins`。
-    - **用户名** - 输入登录到运行 Jenkins 的虚拟机时要使用的用户名。 用户名称必须满足[特定要求](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)。
+    - 用户名 - 输入登录到运行 Jenkins 的虚拟机时要使用的用户名。 用户名称必须满足[特定要求](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)。
     - **身份验证类型** - 选择“SSH 公钥”。
     - **SSH 公钥** - 以单行格式（以 `ssh-rsa` 开头）或多行 PEM 格式复制并粘贴 RSA 公钥。 可以在 Linux 和 macOS 上使用 ssh-keygen 生成 SSH 密钥，或在 Windows 上使用 PuTTYGen 生成这些密钥。 有关 SSH 密钥和 Azure 的详细信息，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](/azure/virtual-machines/linux/ssh-from-windows)一文。
     - **订阅** - 选择要用于安装 Jenkins 的 Azure 订阅。

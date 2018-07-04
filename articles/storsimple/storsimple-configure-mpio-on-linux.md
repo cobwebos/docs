@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 2fbae15c1c6a9ec886f57f9df903612ae10d8e12
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: df9f53694cd72a700d593550bfde13a4f25180db
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27779085"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021747"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -67,7 +67,7 @@ multipath.conf 包括五个节：
 
 以下过程描述当有两个网络接口的 StorSimple 设备连接到有两个网络接口的主机时，如何配置多路径。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 本部分详细说明 CentOS 服务器和 StorSimple 设备的配置先决条件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主机上
@@ -120,7 +120,7 @@ multipath.conf 包括五个节：
    4. 为确保在启动期间启用 iSCSI 发起程序，请使用 `chkconfig` 命令启用该服务。
       
        `chkconfig iscsi on`
-   5. 若要验证是否正确设置了该服务，请运行以下命令：
+   5. 若要验证是否已正确设置，请运行下面的命令：
       
        `chkconfig --list | grep iscsi`
       

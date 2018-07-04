@@ -2,19 +2,19 @@
 title: Azure Database for MySQL 中的限制
 description: 本文介绍了 Azure Database for MySQL 中的限制，例如连接数和存储引擎选项。
 services: mysql
-author: kamathsun
-ms.author: sukamat
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 3ec78b9aad45500a92a8f46f4bb2e654f97da8cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/21/2018
+ms.openlocfilehash: 2fc224445f89a0b0b4afdc0ef1d0eb1b25b45f36
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264878"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311191"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -60,29 +60,29 @@ ms.locfileid: "35264878"
 ## <a name="data-manipulation-statement-support"></a>数据操作语句支持
 
 ### <a name="supported"></a>支持
-- LOAD DATA INFILE：受支持，但它必须指定定向到 UNC 路径（通过 XSMB 装载的 Azure 存储）的 [LOCAL] 参数。
+- 支持 `LOAD DATA INFILE`，但必须指定 `[LOCAL]` 参数，并将其定向到 UNC 路径（通过 SMB 装载的 Azure 存储空间）。
 
 ### <a name="unsupported"></a>不支持
-- SELECT ...INTO OUTFILE
+- `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>功能限制
 
 ### <a name="scale-operations"></a>缩放操作
-- 目前不支持跨定价层动态缩放服务器。 即，在“基本”、“常规用途”和“内存优化”定价层之间进行切换。
+- 目前不支持向/从基本定价层动态缩放。
 - 不支持减小服务器存储大小。
 
 ### <a name="server-version-upgrades"></a>服务器版本升级
 - 目前不支持在主要数据库引擎版本之间进行自动迁移。
 
 ### <a name="point-in-time-restore"></a>时间点还原
-- 不允许还原到不同的服务层和/或计算单元和存储大小。
+- 使用 PITR 功能时，将使用与新服务器所基于的服务器相同的配置创建新服务器。
 - 不支持还原已删除的服务器。
 
 ### <a name="subscription-management"></a>订阅管理
 - 目前不支持跨订阅和资源组动态移动预先创建的服务器。
 
 ## <a name="current-known-issues"></a>当前已知的问题
-- 建立连接后，MySQL 服务器实例显示错误的服务器版本。 若要获得正确的服务器实例版本控制，请在 MySQL 提示符处使用 select version(); 命令。
+- 建立连接后，MySQL 服务器实例显示错误的服务器版本。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。
 
 ## <a name="next-steps"></a>后续步骤
 - [每个服务层中有哪些可用资源](concepts-pricing-tiers.md)

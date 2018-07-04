@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 05abd943d85fcdd709143bf7fce221dcdfb86011
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f6196c1403ded7bb8a72ee5483c2c2056b0e8020
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215093"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030703"
 ---
-# <a name="service-endpoint-monitor"></a>服务终结点监视器
+# <a name="service-connectivity-monitor"></a>服务连接监视器
 
-可以使用[网络性能监视器](log-analytics-network-performance-monitor.md)中的服务终结点管理器功能监视与带有开放 TCP 端口的任何终结点之间建立的网络连接。 此类终结点包括网站、SaaS 应用程序、PaaS 应用程序和 SQL 数据库。 
+可以使用[网络性能监视器](log-analytics-network-performance-monitor.md)中的服务连接监视器功能，监视与 TCP 端口打开的任何终结点之间的网络连接。 此类终结点包括网站、SaaS 应用程序、PaaS 应用程序和 SQL 数据库。 
 
-可以使用服务终结点监视器执行以下功能： 
+可以使用服务连接监视器实现以下功能： 
 
 - 监视从多个分支机构或位置到应用程序和网络服务的网络连接。 应用程序和网络服务包括 Office 365、Dynamics CRM、内部业务线应用程序和 SQL 数据库。
 - 使用内置测试来监视与 Office 365 和 Dynamics 365 终结点建立的网络连接。 
@@ -34,7 +34,7 @@ ms.locfileid: "36215093"
 - 通过查看拓扑图中每个跃点造成的延迟，来查明网络中可能导致应用程序性能差的热点。
 
 
-![服务终结点监视器](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![服务连接监视器](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>配置 
@@ -55,11 +55,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmp
 netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
-### <a name="create-service-endpoint-monitor-tests"></a>创建服务终结点监视器测试 
+### <a name="create-service-connectivity-monitor-tests"></a>创建服务连接监视器测试 
 
 开始创建测试，以便监视与服务终结点建立的网络连接。
 
-1. 选择“服务终结点监视器”选项卡。
+1. 选择“服务连接监视器”选项卡。
 2. 选择“添加测试”并输入测试名称和说明。 
 3. 选择测试类型：<br>
 
@@ -84,7 +84,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 ## <a name="walkthrough"></a>演练 
 
-转到“网络性能监视器”仪表板视图。 若要获取你创建的各个测试的运行状况的摘要，请查看“服务终结点监视器”页面。 
+转到“网络性能监视器”仪表板视图。 若要概览创建的各个测试的运行状况，请查看“服务连接监视器”页面。 
 
 ![“服务终结点监视器”页面](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
 

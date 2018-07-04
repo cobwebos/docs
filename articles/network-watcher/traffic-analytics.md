@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: badd2d63ffaf8e88ff672087783f2bce150bc7c3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ad26772650cf052926a2534d343f64765f47b78f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264984"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333388"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -267,9 +267,9 @@ New-AzureRmStorageAccount `
 
 **查找**
 
-- 每个子网的流量分布、拓扑、向子网传送流量的最主要来源、与子网对话的最主要恶意网络，以及对话最活跃的应用程序协议。
+- 每个子网的流量分布、拓扑、向子网传送流量的最主要来源、与子网对话的最主要未授权网络，以及对话最活跃的应用程序协议。
     - 了解哪两个子网正在对话。 如果发现意外的对话，可以更正配置。
-    - 如果恶意网络正在与子网对话，可以配置 NSG 规则来阻止恶意网络，从而更正此行为。
+    - 如果未授权网络正在与子网对话，可以配置 NSG 规则来阻止未授权网络，从而更正此行为。
 - 使用子网拓扑顶部的功能区可以选择参数，例如活动/非活动的子网、外部连接、活动流和子网的恶意流。
 - 子网拓扑显示虚拟网络的流相关流量分布（允许/阻止/入站/出站/良性/恶意）、应用程序协议和 NSG，例如：
 
@@ -277,10 +277,10 @@ New-AzureRmStorageAccount `
 
 **查找**
 
-每个应用程序网关和负载均衡器的流量分布、拓扑、最主要的流量来源、与应用程序网关和负载均衡器对话的最主要恶意网络，以及对话最活跃的应用程序协议。 
+每个应用程序网关和负载均衡器的流量分布、拓扑、最主要的流量来源、与应用程序网关和负载均衡器对话的最主要未授权网络，以及对话最活跃的应用程序协议。 
     
  - 了解哪个子网正在与哪个应用程序网关或负载均衡器对话。 如果观察到意外的对话，可以更正配置。
- - 如果恶意网络正在与应用程序网关或负载均衡器对话，你可以配置 NSG 规则来阻止恶意网络，从而更正此行为。 
+ - 如果未授权网络正在与应用程序网关或负载均衡器对话，可以配置 NSG 规则来阻止未授权网络，从而更正此行为。 
 
     ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 

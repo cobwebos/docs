@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0e87243b4b6e8362cb840a6510c175d2712b8a1a
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 93972c88676cceef07b39b4a4ed34bab5b74cbd3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285750"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334867"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>使用“运行命令”在 Linux VM 中运行 shell 脚本
 
@@ -23,7 +23,7 @@ ms.locfileid: "36285750"
 
 有多个选项可以用来访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 可以通过 Azure 门户、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 或 [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) 使用“运行命令”。
 
-在需要在虚拟机中运行脚本的所有方案中，此功能都很有用，并且它可以用来对由于网络或管理用户配置不正确而没有打开 RDP 或 SSH 端口的虚拟机进行故障排除和修正，是具有此用途的少数方法之一。
+此功能适用于要在虚拟机中运行脚本的所有方案，并且是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方式之一。
 
 ## <a name="restrictions"></a>限制
 

@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25bb16ebda29722fc8200ece525e870f6c85ef7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: de892afee57b9a39b841f6cfc93f8470d831c2a6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621949"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045926"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[版本 2 中的复制活动教程文档](../quickstart-create-data-factory-dot-net.md)。 
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
 
 ## <a name="overview"></a>概述
 可使用数据工厂 .NET SDK 以编程方式创建、监视和管理 Azure 数据工厂。 可根据本文所含演练创建示例 .NET 控制台应用程序，从而创建和监视数据工厂。 
@@ -425,7 +425,7 @@ ms.locfileid: "34621949"
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. 将 **Main** 方法使用的以下帮助器方法添加到 **Program** 类。 此方法会弹出要求提供用于登录 Azure 门户的**用户名**和**密码**的对话框。
+14. 将 **Main** 方法使用的以下帮助器方法添加到 **Program** 类。 此方法会弹出要求提供用于登录 Azure 门户的用户名和密码的对话框。
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()

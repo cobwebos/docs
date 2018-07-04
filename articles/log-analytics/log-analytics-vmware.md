@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c07cc3e434a178a5f6a1ea10f7dc630c3d0d548d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775105"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019268"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
 
@@ -54,7 +54,7 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
     ![vspherefw](./media/log-analytics-vmware/vsphere2.png)  
 
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
-4. 检查 vSphere 控制台验证该 syslog 是否已正确设置。 在 ESXI 主机上确认端口 **1514** 已配置。
+4. 检查 vSphere 控制台以验证该 syslog 是否已正确设置。 在 ESXI 主机上确认端口 **1514** 已配置。
 5. 在 Linux 服务器上下载并安装适用于 Linux 的 OMS 代理。 有关详细信息，请参阅 [适用于 Linux 的 OMS 代理的文档](https://github.com/Microsoft/OMS-Agent-for-Linux)。
 6. 安装 OMS Agent for Linux 后，转到 /etc/opt/microsoft/omsagent/sysconf/omsagent.d 目录，将 vmware_esxi.conf 文件复制到 /etc/opt/microsoft/omsagent/conf/omsagent.d 目录并更改文件的所有者/组和权限。 例如：
 
@@ -171,7 +171,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 解决方案使用转发机制的本机 ESXi 主机 Syslog。 无需在 ESXi 主机上安装任何其他的 Microsoft 软件，便可捕获日志。 它对现有环境应该不会造成大的影响。 但是，需要设置 syslog 转发这一 ESXI 功能。
 
 ### <a name="do-i-need-to-restart-my-esxi-host"></a>是否需要重启 ESXi 主机？
-不会。 此执行过程不需要重启主机。 有时，vSphere 不会正确更新 syslog。 这种情况下，请登录到 ESXi 主机并重新加载 syslog。 同样，无需重启主机，使该过程不会造成环境中断。
+不是。 此执行过程不需要重启主机。 有时，vSphere 不会正确更新 syslog。 这种情况下，请登录到 ESXi 主机并重新加载 syslog。 同样，无需重启主机，使该过程不会造成环境中断。
 
 ### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>是否可以增减发送到 Log Analytics 的日志数据量？
 可以。 可以在 vSphere 中使用 ESXi 主机日志级别设置。 日志集合基于 *info* 级别。 因此，如果想要审核 VM 创建或删除，则需在 Hostd 上保持 *info* 级别。 有关详细信息，请参阅 [VMware 知识库](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658)。

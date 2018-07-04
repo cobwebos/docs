@@ -15,12 +15,12 @@ ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2f96f9c70d6a12aeddd51602bccd7f03f89ec7d1
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b53ae66d927dfacd1048a6bd0fa9abdb6f2a7862
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260862"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751146"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>使用资源仪表板执行访问评审
 
@@ -32,7 +32,7 @@ ms.locfileid: "35260862"
 
 ![管理员视图仪表板的屏幕截图，显示图形和图表](media/azure-pim-resource-rbac/rbac-overview-top.png)
 
-![管理员视图仪表板的屏幕截图，显示数据列表](media/azure-pim-resource-rbac/role-settings.png)
+![显示数据列表的“管理员视图”仪表板屏幕截图](media/azure-pim-resource-rbac/role-settings.png)
 
 过去七天执行的资源角色激活操作的图形表示形式。 此数据对应于选定的资源，显示最常见角色（所有者、参与者、用户访问管理员）以及所有角色的激活情况。
 

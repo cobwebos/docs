@@ -23,4 +23,4 @@
  
     ![导出到 PowerApps 和 Microsoft Flow](media/functions-export-api-definition/export-api-2.png)
 
-1. 单击 **“确定”**。 现在自定义 API 已生成并添加到了指定的环境中。
+1. 单击“确定”。 现在自定义 API 已生成并添加到了指定的环境中。

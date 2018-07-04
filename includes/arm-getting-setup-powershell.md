@@ -24,7 +24,7 @@
 ### <a name="set-your-azure-account-and-subscription"></a>设置 Azure 帐户和订阅
 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-打开 Azure PowerShell 命令提示符，并使用此命令登录到 Azure。
+打开 Azure PowerShell 命令提示符，并运行以下命令登录 Azure。
 
     Connect-AzureRmAccount
 

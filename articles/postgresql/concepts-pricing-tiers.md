@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: 9e01d3a69fe8814d4864bccf94c0d65ea573ada8
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 06/21/2018
+ms.openlocfilehash: 6f078823d8b911bc5ce6a36ab27b11a9c0117b80
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756630"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018333"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -25,7 +25,7 @@ ms.locfileid: "34756630"
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
-| 存储大小 | 5 GB 到 1 TB | 5 GB 到 2 TB | 5 GB 到 2 TB |
+| 存储大小 | 5 GB 到 1 TB | 5 GB 到 4 TB | 5 GB 到 4 TB |
 | 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |
 
@@ -37,7 +37,7 @@ ms.locfileid: "34756630"
 | 常规用途 | 大多数业务工作负荷。此类工作负荷需要均衡的计算和内存以及可缩放的 I/O 吞吐量。 相关示例包括用于托管 Web 和移动应用的服务器，以及其他企业应用程序。|
 | 内存优化 | 高性能数据库工作负荷。此类工作负荷需要内存中性能来实现更快的事务处理速度和更高的并发性。 相关示例包括用于处理实时数据的服务器，以及高性能事务性应用或分析应用。|
 
-创建服务器后，只需数秒钟即可上下调整 vCore 数（在同一定价层中）。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 创建服务器之后，不能更改定价层或备份存储类型。 有关详细信息，请参阅[缩放资源](#scale-resources)部分。
+创建服务器后，只需数秒钟即可上下调整 vCore 数、硬件生成和定价层（除了基本定价层）。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 创建服务器之后，不能更改备份存储类型。 有关详细信息，请参阅[缩放资源](#scale-resources)部分。
 
 
 ## <a name="compute-generations-and-vcores"></a>计算代数和 vCore 数
@@ -49,7 +49,7 @@ ms.locfileid: "34756630"
 | 美国中部 | X |  |
 | 美国东部 | X | X |
 | 美国东部 2 | X | X |
-| 美国中北部 | X |  |
+| 美国中北部 | X | X |
 | 美国中南部 | X | X |
 | 美国西部 | X | X |
 | 美国西部 2 |  | X |
@@ -57,10 +57,11 @@ ms.locfileid: "34756630"
 | 加拿大东部 | X | X |
 | 巴西南部 | X | X |
 | 北欧 | X | X |
-| 欧洲西部 |  | X |
+| 西欧 |  | X |
+| 法国中部 |  | X |
 | 英国西部 |  | X |
 | 英国南部 |  | X |
-| 东亚 | X |  |
+| 东亚 | X | X |
 | 东南亚 | X | X |
 | 澳大利亚东部 |  | X |
 | 澳大利亚东南部 |  | X |
@@ -69,6 +70,7 @@ ms.locfileid: "34756630"
 | 印度南部 |  | X |
 | 日本东部 | X | X |
 | 日本西部 | X | X |
+| 韩国中部 |  | X |
 | 韩国南部 |  | X |
 
 ## <a name="storage"></a>存储
@@ -78,15 +80,15 @@ ms.locfileid: "34756630"
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
-| 存储大小 | 5 GB 到 1 TB | 5 GB 到 2 TB | 5 GB 到 2 TB |
+| 存储大小 | 5 GB 到 1 TB | 5 GB 到 4 TB | 5 GB 到 4 TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
-| IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS | 3 IOPS/GB<br/>至少 100 IOPS |
+| IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS |
 
 在创建服务器的过程中和之后，可以添加更多的存储容量。 “基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
 
 可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
 
-### <a name="reaching-the-store-limit"></a>达到存储限制
+### <a name="reaching-the-storage-limit"></a>达到存储限制
 
 当可用存储量低于 5 GB 或 5% 的预配存储（以较低者为准）时，服务器会标记为只读。 例如，如果已预配 100 GB 的存储，而实际使用量超过 95 GB，则服务器会标记为只读。 或者，如果已预配 5 GB 的存储，则当可用存储少于 250 MB 时，服务器会标记为只读。  
 
@@ -100,9 +102,9 @@ ms.locfileid: "34756630"
 
 ## <a name="scale-resources"></a>缩放资源
 
-创建服务器之后，可以独立地更改 vCore 数、存储量和备份保留期。 创建服务器之后，不能更改定价层或备份存储类型。 可以在同一定价层中向上或向下调整 VCores 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。  可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)。
+创建服务器之后，可以独立地更改 vCore、硬件生成、定价层（除了基本定价层）、存储量和备份保留期。 创建服务器之后，不能更改备份存储类型。 向上或向下调整 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)。
 
-更改 vCore 数时，将会使用新的计算分配创建原始服务器的副本。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此时段是可变的，但大多数情况下不到一分钟。
+更改 vCore 数、硬件生成或定价层时，将会使用新的计算分配创建原始服务器的副本。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此时段是可变的，但大多数情况下不到一分钟。
 
 缩放存储和更改备份保留期是真正的联机操作。 不会造成停机，应用程序不会受影响。 当 IOPS 随已预配存储的大小缩放时，可以通过扩大存储来增加提供给服务器的 IOPS。
 

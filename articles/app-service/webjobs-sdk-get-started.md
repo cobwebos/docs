@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234508"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018449"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -66,6 +66,9 @@ public static void Run(
 2. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
 
    若要创建 3.x 项目，请选择“.NET Core”>“控制台应用(.NET Core)”。
+   
+   > [!NOTE]
+   > 3.x 仍在预览中且正处于开发阶段。 本文中的 3.x 说明并不完整，有关最新信息，请参阅页面底部的 GitHub 问题。
 
 3. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
 

@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84734b89aeb95745d237c062e5654afc4d49f966
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 00f1dc8c9cffbff240f96fed3d2f09888c041301
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711138"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754091"
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C：自定义 Azure AD B2C 用户界面 (UI)
 
 用户体验在面向客户的应用程序中至关重要。  通过提升品牌观感的用户体验，可扩大客户群。 通过 Azure Active Directory B2C (Azure AD B2C)，可以使用完美的像素控制自定义注册、登录、配置文件编辑和密码重置页面。
 
 > [!NOTE]
-> 本文所述的页面 UI 自定义功能不适用于仅登录策略、其随附的密码重置页面和验证电子邮件。  这些功能使用[公司品牌功能](../active-directory/customize-branding.md)。
+> 本文所述的页面 UI 自定义功能不适用于仅登录策略、其随附的密码重置页面和验证电子邮件。  这些功能使用[公司品牌功能](../active-directory/fundamentals/customize-branding.md)。
 >
-> 同样，如果用户在登录之前启动编辑配置文件策略，则用户将被重定向到可使用[公司品牌功能](../active-directory/customize-branding.md)进行自定义的页。
+> 同样，如果用户在登录之前启动编辑配置文件策略，则用户将被重定向到可使用[公司品牌功能](../active-directory/fundamentals/customize-branding.md)进行自定义的页。
 
 本文涵盖以下主题：
 

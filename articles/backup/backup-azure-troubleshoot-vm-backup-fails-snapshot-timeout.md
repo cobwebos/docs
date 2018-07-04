@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Azure 备份；VM 代理；网络连接；
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 01/09/2018
+ms.date: 06/25/2018
 ms.author: genli
-ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09cfda3c2c790297b0961ecac92cba61c9e6de6f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606352"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754092"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -84,15 +84,15 @@ ms.locfileid: "34606352"
 ### <a name="the-vm-has-no-internet-access"></a>VM 无法访问 Internet
 VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 Azure 基础结构。
 
-若要正常工作，备份扩展需要连接到 Azure 公共 IP 地址。 该扩展会将命令发送到 Azure 存储终结点 (HTTP URL) 来管理 VM 的快照。 如果扩展无法访问公共 Internet，则备份最终会失败。
+若要正常工作，备份扩展需要连接到 Azure 公共 IP 地址。 扩展将命令发送到 Azure 存储终结点 (HTTPS URL)，以管理 VM 快照。 如果扩展无法访问公共 Internet，则备份最终会失败。
 
 可以部署代理服务器来路由 VM 流量。
-##### <a name="create-a-path-for-http-traffic"></a>为 HTTP 流量创建路径
+##### <a name="create-a-path-for-https-traffic"></a>创建 HTTPS 流量路径
 
-1. 如果指定了网络限制（例如网络安全组），请部署 HTTP 代理服务器来路由流量。
-2. 要允许从 HTTP 代理服务器访问 Internet，如果有规则，请将其添加到网络安全组。
+1. 若有网络限制（例如，网络安全组），请部署 HTTPS 代理服务器来路由流量。
+2. 若要允许从 HTTPS 代理服务器访问 Internet，请将规则（若有）添加到网络安全组。
 
-若要了解如何设置 HTTP 代理进行 VM 备份，请参阅[进行备份 Azure 虚拟机所需的环境准备](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
+若要了解如何为 VM 备份设置 HTTPS 代理，请参阅[准备环境以备份 Azure 虚拟机](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
 
 无论是备份的 VM 还是路由流量的代理服务器，都需要对 Azure 公共 IP 地址的访问权限
 
@@ -121,7 +121,7 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 2. 如果“服务”中未显示 Windows 来宾代理服务，请在控制面板中转到“程序和功能”，确定是否已安装 Windows 来宾代理服务。
 4. 如果“程序和功能”中显示了 Windows 来宾代理，请将其卸载。
 5. 下载并安装[最新版本的代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 必须拥有管理员权限才能完成安装。
-6. 检查“服务”中是否显示了 Windows 来宾代理服务。
+6. 检查能否在服务中看到 Windows 来宾代理服务。
 7. 运行按需备份： 
     * 在门户中，选择“立即备份”。
 
@@ -197,7 +197,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 1. 删除 VM 所在的资源组中的锁。 
 2. 使用 Chocolatey 安装 ARMClient： <br>
    https://github.com/projectkudu/ARMClient
-3. 登录到 ARMClient： <br>
+3. 登录 ARMClient： <br>
     `.\armclient.exe login`
 4. 获取与 VM 对应的还原点集合： <br>
     `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`

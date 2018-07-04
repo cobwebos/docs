@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/11/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4b7d861ee0207c6a16c83e23d259411f7e874354
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e40b3a9f1454e892e07f7749ba900cd74c42c339
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823378"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309225"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure 市场和 AppSource 发布者指南  
 
@@ -118,7 +118,7 @@ Microsoft 在市场上提供了两个不同的店面。 店面能够让你列出
 ---   
 
 ## <a name="how-to-publish-in-the-storefronts-on-the-marketplace"></a>如何在 Marketplace 的店面中发布  
-以下部分有助于浏览 AppSource 和 Azure 市场中的发布选项。  
+以下页面有助于浏览 AppSource 和 Azure 市场中的发布选项。  
 
 通过三个简单的步骤，成为市场店面的发布者。  
 1.  访问[确定解决方案的商品信息类型](./determine-your-listing-type.md)页。  
@@ -135,7 +135,6 @@ Microsoft 在市场上提供了两个不同的店面。 店面能够让你列出
 ---  
 
 ## <a name="support"></a>支持  
-
 *   访问 [AppSource 支持](./support-appsource.md)页。  
 *   访问 [Azure 市场支持](./support-azure-marketplace.md)页。  
 
@@ -147,6 +146,7 @@ Microsoft 在市场上提供了两个不同的店面。 店面能够让你列出
 
 ## <a name="guidelines"></a>指南  
 *   访问[准则](./guidelines.md)页。  
+    *   访问[有关创建 Microsoft ID 来管理 Azure 市场帐户的准则](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)部分。  
 *   访问[在开发人员中心中注册](./register-dev-center.md)页。  
 *   访问[添加银行和税务信息](./add-bank-tax-info.md)页。  
 *   访问[通过 Azure AD 启用试用](./enable-trial-using-azure-ad.md)页。  

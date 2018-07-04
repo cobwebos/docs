@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/18/2018
 ms.author: kirpas;iainfou;sewhee
 ms.custom: include file
-ms.openlocfilehash: c8b48c9b3ebd6b40640a744f00673158c07cdc3a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ab4d5326fc06cc8676ea93ed529315cc47651e26
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35323793"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943447"
 ---
 ## <a name="overview"></a>概述
 在资源组中通过从 [Azure 市场](https://azure.microsoft.com/marketplace/)部署映像来创建新的虚拟机 (VM) 时，默认的 OS 驱动器通常为 127 GB（默认情况下，某些映像的 OS 磁盘大小更小）。 尽管用户可以将数据磁盘添加到 VM（数量取决于所选择的 SKU），并且我们建议将应用程序和需要大量 CPU 的工作负荷安装在这些附加的磁盘上，但客户有时候还是必须扩展 OS 驱动器以支持特定的方案，例如：

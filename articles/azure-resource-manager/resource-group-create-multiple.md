@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2017
+ms.date: 06/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: ce442793a9917320b6b2b0a7014a20f885c3720c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ee32f6459cf7673f6bb633e12776ec3c40eb13e1
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359251"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753415"
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中部署资源或属性的多个实例
 本文演示如何按条件部署资源，以及如何在 Azure 资源管理器模板中进行迭代操作以创建资源的多个实例。
@@ -130,7 +130,7 @@ ms.locfileid: "34359251"
 
 默认情况下，资源管理器将并行创建资源。 因此，不保证创建的顺序。 但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。
 
-若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量。 在串行模式下，Resource Manager 会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
+若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
 
 例如，若要按顺序一次部署两个存储帐户，请使用：
 
@@ -223,13 +223,41 @@ Resource Manager 在部署期间扩展 `copy` 数组。 数组的名称将成为
       ...
 ```
 
+copy 元素是一个数组，因此，可以为资源指定多个属性。 为要创建的每个属性添加一个对象。
+
+```json
+{
+    "name": "string",
+    "type": "Microsoft.Network/loadBalancers",
+    "apiVersion": "2017-10-01",
+    "properties": {
+        "copy": [
+          {
+              "name": "loadBalancingRules",
+              "count": "[length(parameters('loadBalancingRules'))]",
+              "input": {
+                ...
+              }
+          },
+          {
+              "name": "probes",
+              "count": "[length(parameters('loadBalancingRules'))]",
+              "input": {
+                ...
+              }
+          }
+        ]
+    }
+}
+```
+
 可将资源和属性迭代一起使用。 按名称引用属性迭代。
 
 ```json
 {
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[concat(parameters('vnetname'), copyIndex())]",
-    "apiVersion": "2016-06-01",
+    "apiVersion": "2018-04-01",
     "copy":{
         "count": 2,
         "name": "vnetloop"
@@ -308,6 +336,27 @@ Resource Manager 在部署期间扩展 `copy` 数组。 数组的名称将成为
     }
   }
 }
+```
+
+在这两种方法中，copy 元素是一个数组，因此，可以指定多个变量。 为要创建的每个变量添加一个对象。
+
+```json
+"copy": [
+  {
+    "name": "first-variable",
+    "count": 5,
+    "input": {
+      "demoProperty": "[concat('myProperty', copyIndex('first-variable'))]",
+    }
+  },
+  {
+    "name": "second-variable",
+    "count": 3,
+    "input": {
+      "demoProperty": "[concat('myProperty', copyIndex('second-variable'))]",
+    }
+  },
+]
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>依赖于循环中的资源
@@ -410,7 +459,7 @@ Resource Manager 在部署期间扩展 `copy` 数组。 数组的名称将成为
 |[具有新的或现有虚拟网络、存储和公共 IP 的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) |按条件部署虚拟机的新资源或现有资源。 |
 |[部署数据磁盘数量不定的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |演示对变量进行迭代的不同方法。 |
-|[多个安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 这会从参数构造安全规则。 |
+|[多个安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 这会从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关模板区段的信息，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。

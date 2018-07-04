@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: ce894f775614c5be7413a004d2237f6a5cf00926
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59dc090053c78dbddc1854f21db39f66df7bc91c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642404"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020539"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -108,11 +108,23 @@ Service Fabric Yeoman 模板包含一个可用于（在导航到应用程序文�
 
 应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
 
+> [!IMPORTANT]
+> 要将应用程序部署到 Azure 中的安全 Linux 群集，你需要配置证书以使用 Service Fabric 运行时验证应用程序。 这样做可使 Reliable Services 服务与基础 Service Fabric 运行时 API 通信。 要了解详细信息，请参阅[配置 Reliable Services 应用以在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
+>
+
 ## <a name="start-the-test-client-and-perform-a-failover"></a>启动测试客户端并执行故障转移
 Actor 项目自身未执行任何操作。 它们需要另一个服务或客户端向其发送消息。 Actor 模板包括可用于与 actor 服务进行交互的简单测试脚本。
 
 1. 使用监视实用程序运行该脚本来查看 actor 服务的输出。
 
+   对于 MAC OS X，你需要通过运行以下附加命令将 myactorsvcTestClient 文件夹复制到容器内的某个位置。
+    
+    ```bash
+    docker cp  [first-four-digits-of-container-ID]:/home
+    docker exec -it [first-four-digits-of-container-ID] /bin/bash
+    cd /home
+    ```
+    
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh

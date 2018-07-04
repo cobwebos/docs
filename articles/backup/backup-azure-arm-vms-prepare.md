@@ -7,14 +7,14 @@ manager: carmonm
 keywords: 备份; 正在备份;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/1/2018
+ms.date: 6/21/2018
 ms.author: markgal
-ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 06898877a4f13182230c6d5fb12544f90525d84d
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606630"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960162"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
 
@@ -34,11 +34,14 @@ ms.locfileid: "34606630"
 如果环境已满足这些条件，请转到[备份 VM](backup-azure-arm-vms.md) 一文。 如果需要设置或检查上述任何先决条件，本文将逐步引导你完成各个步骤。
 
 ## <a name="supported-operating-systems-for-backup"></a>支持用于备份的操作系统
- * **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，但 CoreOS Linux 除外。 
- 
+
+ * **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，但 CoreOS Linux 除外。 有关支持还原文件的 Linux 操作系统的列表，请参阅[从虚拟机备份恢复文件](backup-azure-restore-files-from-vm.md#for-linux-os)。
+
     > [!NOTE] 
     > 只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 发行版应该也能正常运行。 但是，不支持这些发行版。
- * **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
+    >
+ * **Windows Server**、**Windows 客户端**：不支持低于 Windows Server 2008 R2 或 Windows 7 的版本。
+
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>备份和还原 VM 时的限制
 准备环境之前，请务必了解限制：

@@ -10,24 +10,21 @@ ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
+ms.date: 06/26/2018
 ms.author: omidm
-ms.openlocfilehash: 6c5e32f0ed39ce2e8c1e412dcfc6c04fb0f8bd7a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3fd3a4b8982fe2170726df03bdc884e658d0b0c2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715252"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019482"
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>已加入域的 HDInsight 群集的 Hadoop 安全性简介
 
 截止目前，Azure HDInsight 仅支持一个本地管理员用户。这种情况对于应用程序团队或部门而言比较有利。 随着基于 Hadoop 的工作负荷在企业细分市场中越来越普及，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制等企业级功能需求也变得日益重要。 使用已加入域的 HDInsight 群集，可以创建一个已加入 Active Directory 域的 HDInsight 群集，配置可以通过 Azure Active Directory 进行身份验证并登录到 HDInsight 群集的企业员工列表。 企业外部的任何人都无法登录或访问 HDInsight 群集。 企业管理员可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制来实现 Hive 安全性，从而根据最大需求权限来限制数据访问权限。 最后，管理员可以审核员工的数据访问活动以及对访问控制策略所做的任何更改，从而以较大的力度监管其企业资源。
 
 > [!NOTE]
-> 本文中所述的新功能仅在以下群集类型上以预览版提供：Hadoop、Spark 和交互式查询。
-
-> [!IMPORTANT]
-> 在加入域的 HDInsight 上未启用 Oozie。
+> 本文中所述的新功能仅在以下群集类型上以预览版提供：Hadoop、Spark 和交互式查询。 Oozie 现已对域加入群集启用。 若要访问 Oozie Web UI，用户应启用[隧道](../hdinsight-linux-ambari-ssh-tunnel.md)
 
 ## <a name="benefits"></a>优点
 企业安全性包含四大支柱 - 外围安全性、身份验证、授权和加密。

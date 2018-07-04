@@ -16,21 +16,22 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf73f9419732e93c1f32f2fb39d3acee02f49b64
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895311"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34656435"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
 获取有关 Azure 虚拟机规模集常见问题的解答。
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>有关规模集的热门常见问题解答
+
 **问：** 可在规模集中包含多少个 VM？
 
-**答：** 一个规模集可以包含 0 到 1,000 个基于平台映像的 VM，或者 0 到 300 个基于自定义映像的 VM。 
+**答：** 一个规模集可以包含 0 到 1,000 个基于平台映像的 VM，或者 0 到 300 个基于自定义映像的 VM。
 
 **问：** 规模集是否支持数据磁盘？
 
@@ -48,7 +49,7 @@ ms.locfileid: "33895311"
 
 **问：** 如何使用自定义映像创建规模集？
 
-**答：** 根据自定义映像 VHD 创建托管磁盘，并在规模集模板中引用该磁盘。 [下面是一个示例](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os)。
+**答：** 创建并捕获 VM 映像，然后将其用作规模集的源。 有关如何创建和使用自定义 VM 映像的教程，你可以使用 [Azure CLI 2.0](tutorial-use-custom-image-cli.md) 或 [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 **问：** 如果我将规模集容量从 20 减少到 15，将删除哪些 VM？
 
@@ -120,7 +121,7 @@ ms.locfileid: "33895311"
 
 通过 PowerShell 或 Azure CLI，可以为虚拟机规模集创建指标警报。 有关详细信息，请参阅 [Azure Monitor PowerShell 快速入门示例](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)和 [Azure Monitor 跨平台 CLI 快速入门示例](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)。
 
-虚拟机规模集的 TargetResourceId 如下所示： 
+虚拟机规模集的 TargetResourceId 如下所示：
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
@@ -128,8 +129,12 @@ ms.locfileid: "33895311"
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>如何使用 PowerShell 对虚拟机规模集设置自动缩放？
 
-若要使用 PowerShell 对虚拟机规模集设置自动缩放，请参阅博客文章 [How to add autoscale to an Azure virtual machine scale set](https://msftstack.wordpress.com/2017/03/05/how-to-add-autoscale-to-an-azure-vm-scale-set/)（如何向 Azure 虚拟机规模集添加自动缩放）。
+若要使用 PowerShell 对虚拟机规模集设置自动缩放，请参阅[自动缩放虚拟机规模集](tutorial-autoscale-powershell.md)。 你还可以使用 [Azure CLI 2.0](tutorial-autoscale-cli.md) 和 [Azure 模板](tutorial-autoscale-template.md)配置自动缩放
 
+
+### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止（解除分配）VM，该 VM 是否作为自动缩放操作的一部分启动？
+
+不是。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
 
 
 

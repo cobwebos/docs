@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure 数据工厂中读取或写入分区的数据 | Microsoft Docs
-description: 了解如何在 Azure 数据工厂版本 2 中读取或写入分区的数据。
+description: 了解如何在 Azure 数据工厂中读取或写入分区的数据。
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: cdf305e3607d7483186185a014883cff5458b89f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619076"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053704"
 ---
-# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>如何在 Azure 数据工厂版本 2 中读取或写入分区的数据
-在版本 1 中，Azure 数据工厂支持使用 SliceStart/SliceEnd/WindowStart/WindowEnd 系统变量读取或写入分区的数据。 在版本 2 中，可使用管道参数和触发器的开始时间/计划时间作为参数值实现此行为。 
+# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>如何在 Azure 数据工厂中读取或写入分区的数据
+在版本 1 中，Azure 数据工厂支持使用 SliceStart/SliceEnd/WindowStart/WindowEnd 系统变量读取或写入分区的数据。 在数据工厂的当前版本中，可使用管道参数和触发器的开始时间/计划时间作为参数值实现此行为。 
 
 ## <a name="use-a-pipeline-parameter"></a>使用管道参数 
 在版本 1 中，可以使用 partitionedBy 属性和 SliceStart 系统变量，如以下示例所示： 
@@ -37,7 +37,7 @@ ms.locfileid: "34619076"
 
 有关 partitonedBy 属性的详细信息，请参阅[版本 1 Azure Blob 连接器](v1/data-factory-azure-blob-connector.md#dataset-properties)一文。 
 
-在版本 2 中，实现此行为的一个方法是执行以下操作： 
+在数据工厂的当前版本中，实现此行为的一个方法是执行以下操作： 
 
 1. 定义类型字符串的“管道参数”。 在以下示例中，管道参数的名称为“windowStartTime”。 
 2. 将数据集定义中的“folderPath”设置为引用管道参数的值。 

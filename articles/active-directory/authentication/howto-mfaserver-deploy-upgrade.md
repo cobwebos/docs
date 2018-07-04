@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: a94d97fb90e65fd569047a3d55945437002d97ab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9537380daab80529c3ba6307f1b2cd82a8c0ca41
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867385"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334663"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升级到最新的 Azure 多重身份验证服务器
 
@@ -48,21 +48,12 @@ ms.locfileid: "33867385"
 
 如果用户门户在多个服务器上运行，则对所有这些服务器重复上述安装步骤。 
 
-
 ## <a name="upgrade-the-mobile-app-web-service"></a>升级移动应用 Web 服务
 
-1. 备份位于移动应用 Web 服务安装位置（例如，C:\inetpub\wwwroot\app 或 C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService）的虚拟目录中的 web.config 文件。
-2. 从 MFA 服务器的安装位置复制 MultiFactorAuthenticationMobileAppWebServiceSetup64.msi 文件，再将它置于移动应用注册 Web 服务器上。
-3. 运行安装程序。 
-
-  如果出现错误，指示需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本，则从 [Microsoft 下载中心](https://www.microsoft.com/download/)下载并安装最新的更新包。 同时安装 x86 和 x64 版本。
-
-4. 安装已更新的移动应用 Web 服务软件后，将在第 1 步中备份的 web.config 文件与新的 web.config 文件进行比较。 如果新的 web.config 文件中没有新属性，可以将保存的 web.config 复制回虚拟目录中，并覆盖新文件。 另一种做法是将备份文件中的 appSettings 值和 Web 服务 SDK URL 复制/粘贴到新的 web.config。
-
-如果移动应用 Web 服务在多个服务器上运行，则对所有这些服务器重复上述安装步骤。 
+> [!NOTE]
+> 从低于 8.0 的 Azure MFA 服务器版本升级到 8.0+ 时，可以在升级后卸载移动应用 Web 服务
 
 ## <a name="upgrade-the-ad-fs-adapters"></a>升级 AD FS 适配器
-
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>如果 MFA 在 AD FS 以外的服务器上运行
 

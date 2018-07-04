@@ -1,35 +1,42 @@
 ---
-title: 为 Azure Blob 存储终结点配置自定义域名 | Microsoft Docs
-description: 使用 Azure 门户将自己的规范名称 (CNAME) 映射到 Azure 存储帐户中的 Blob 存储终结点。
+title: 为 Azure 存储帐户配置自定义域名 | Microsoft Docs
+description: 在 Azure 门户中，可以将自己的规范名称 (CNAME) 映射到 Azure 存储帐户中的 blob 或 Web 终结点。
 services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 06/26/2018
 ms.author: tamram
-ms.openlocfilehash: 2b776e8f40f6972a60f933b0104312b119439f38
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2f4267c25dfd31e6f1d5ae3a832be06b5ef6c828
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29559921"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017914"
 ---
-# <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>为 Blob 存储终结点配置自定义域名
+# <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>为 Azure 存储帐户配置自定义域名
 
-可以配置自定义域以便访问 Azure 存储帐户中的 Blob 数据。 Blob 存储的默认终结点是 `<storage-account-name>.blob.core.windows.net`。 如果将自定义域和子域（例如 **www.contoso.com**）映射到存储帐户的 Blob 终结点，则用户可以使用该域访问存储帐户中的 Blob 数据。
+可以配置自定义域以便访问 Azure 存储帐户中的 Blob 数据。 Blob 存储的默认终结点是 `<storage-account-name>.blob.core.windows.net`。 还可以使用作为[静态网站功能（预览版）](storage-blob-static-website.md)一部分生成的 Web 终结点。 如果将自定义域和子域（例如 www.contoso.com）映射到存储帐户中的 blob 或 Web 终结点，用户可以使用相应域访问存储帐户中的 blob 数据。
 
 > [!IMPORTANT]
 > Azure 存储尚不支持以本机方式对自定义域使用 HTTPS。 目前可[使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob](storage-https-custom-domain-cdn.md)。
 >
 
+> [!NOTE]  
+> 暂仅支持为每个存储帐户配置一个自定义域名。 也就是说，无法将自定义域名映射到 Web 和 blob 服务终结点。
+
 下表显示了 **mystorageaccount** 存储帐户中的 Blob 数据的一些示例 URL。 为存储帐户注册的自定义域是 **www.contoso.com**：
 
 | 资源类型 | 默认 URL | 自定义域 URL |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | 存储帐户 | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
 | Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| 根容器 | http://mystorageaccount.blob.core.windows.net/myblob 或者 http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob or http://www.contoso.com/$root/myblob |
+| 根容器 | http://mystorageaccount.blob.core.windows.net/myblob 或 http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob 或 http://www.contoso.com/$root/myblob |
+| Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/$web 或 http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/$web 或 http://www.contoso.com/ 或 http://www.contoso.com/$web/[indexdoc] 或 http://www.contoso.com/[indexdoc] |
+
+> [!NOTE]  
+> 以下 blob 服务终结点的所有示例同样适用于 Web 服务终结点。
 
 ## <a name="direct-vs-intermediary-domain-mapping"></a>直接域映射与中间域映射
 
@@ -37,7 +44,7 @@ ms.locfileid: "29559921"
 
 ### <a name="direct-cname-mapping"></a>直接 CNAME 映射
 
-第一种方法是创建一个规范名称 (CNAME) 记录。此记录可以将自定义域和子域直接映射到 Blob 终结点。这种方法最简单。 CNAME 记录是一种域名系统 (DNS) 功能，用于将源域映射到目标域。 在本示例中，源域是自定义域和子域，例如 www.contoso.com。目标域是 Blob 服务终结点，例如 mystorageaccount.blob.core.windows.net。
+第一种方法是创建一个规范名称 (CNAME) 记录。此记录可以将自定义域和子域直接映射到 Blob 终结点。这种方法最简单。 CNAME 记录是一种域名系统 (DNS) 功能，用于将源域映射到目标域。 在本示例中，源域是自定义域和子域，例如 www.contoso.com。 目标域是 Blob 服务终结点，例如 mystorageaccount.blob.core.windows.net。
 
 [注册自定义域](#register-a-custom-domain)中介绍了直接方法。
 
@@ -63,7 +70,7 @@ ms.locfileid: "29559921"
 1. 登录到域注册机构的网站，并转到用于管理 DNS 的页面。 可能会在“**域名**”、“**DNS**”或“**名称服务器管理**”等部分中找到此页。
 1. 找到用于管理 CNAME 的部分。 可能需要转至高级设置页面，并找到“**CNAME**”、“**别名**”或“**子域**”字样。
 1. 创建一个新的 CNAME 记录，并且提供子域别名，例如 **www** 或 **photos**。 然后以 **mystorageaccount.blob.core.windows.net** 格式（其中，*mystorageaccount* 是存储帐户名称）提供主机名称，这是 Blob 服务终结点。 要使用的主机名会显示在 [Azure 门户](https://portal.azure.com)中“自定义域”边栏选项卡的第一项中。
-1. 在 [Azure 门户](https://portal.azure.com)的“自定义域”边栏选项卡上的文本框中，输入自定义域的名称，包括子域。 例如，如果域是 **contoso.com**，子域别名是 **www**，则请输入 **www.contoso.com**。如果子域是 **photos**，则请输入 **photos.contoso.com**。必须输入子域。
+1. 在 [Azure 门户](https://portal.azure.com)的“自定义域”边栏选项卡上的文本框中，输入自定义域的名称，包括子域。 例如，如果域是 **contoso.com**，子域别名是 **www**，则请输入 **www.contoso.com**。 如果子域是 **photos**，则请输入 **photos.contoso.com**。 必须输入子域。
 1. 在“自定义域”边栏选项卡上选择“保存”以注册自定义域。 如果注册成功，你会看到一个门户通知，提示存储帐户已成功更新。
 
 新的 CNAME 记录通过 DNS 传播后，只要用户具有适当的权限，他们就可以通过使用自定义域查看 Blob 数据。
@@ -78,7 +85,7 @@ ms.locfileid: "29559921"
 1. 登录到 DNS 提供程序的网站，并转到用于管理 DNS 的页面。 可能会在“**域名**”、“**DNS**”或“**名称服务器管理**”等部分中找到此页。
 1. 找到用于管理 CNAME 的部分。 可能需要转至高级设置页面，并找到“**CNAME**”、“**别名**”或“**子域**”字样。
 1. 创建一个新的 CNAME 记录，并且提供包括 *asverify* 子域的子域别名。 例如，**asverify.www** 或 **asverify.photos**。 然后以 **asverify.mystorageaccount.blob.core.windows.net** 格式（其中，**mystorageaccount** 是存储帐户名称）提供主机名称，这是 Blob 服务终结点。 要使用的主机名会显示在 [Azure 门户](https://portal.azure.com)中“自定义域”边栏选项卡的第二项中。
-1. 在 [Azure 门户](https://portal.azure.com)的“自定义域”边栏选项卡上的文本框中，输入自定义域的名称，包括子域。 请不要包含 asverify 例如，如果域是 **contoso.com**，子域别名是 **www**，则请输入 **www.contoso.com**。如果子域是 **photos**，则请输入 **photos.contoso.com**。必须输入子域。
+1. 在 [Azure 门户](https://portal.azure.com)的“自定义域”边栏选项卡上的文本框中，输入自定义域的名称，包括子域。 请不要包含 asverify 例如，如果域是 **contoso.com**，子域别名是 **www**，则请输入 **www.contoso.com**。 如果子域是 **photos**，则请输入 **photos.contoso.com**。 必须输入子域。
 1. 选择“使用间接 CNAME 验证”复选框。
 1. 在“自定义域”边栏选项卡上选择“保存”以注册自定义域。 如果注册成功，你会看到一个门户通知，提示存储帐户已成功更新。 此时，自定义域已由 Azure 进行了验证，但传输到域的流量尚未路由到存储帐户。
 1. 返回到 DNS 提供程序的网站，创建将子域映射到 Blob 服务终结点的另一条 CNAME 记录。 例如，将子域指定为 **www** 或 **photos**（不含 *asverify*），将主机名指定为 **mystorageaccount.blob.core.windows.net**（其中，**mystorageaccount** 是存储帐户名称）。 完成此步骤后，也就完成了自定义域的注册。
@@ -156,5 +163,6 @@ ms.locfileid: "29559921"
   ```
 
 ## <a name="next-steps"></a>后续步骤
-* [将自定义域映射到 Azure 内容交付网络 (CDN) 终结点](../../cdn/cdn-map-content-to-custom-domain.md)
+* [将自定义域映射到 Azure 内容分发网络 (CDN) 终结点](../../cdn/cdn-map-content-to-custom-domain.md)
 * [使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob](storage-https-custom-domain-cdn.md)
+* [Azure Blob 存储中的静态网站托管（预览版）](storage-blob-static-website.md)

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66d50c94f2aad15e0d4a1b7500e8a4aeb45b1742
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 59a00f5605f7664148b65f2ec9a88fbaa9057ccf
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214247"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36946051"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 

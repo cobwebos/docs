@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bffa5a3aa57c5b01e3361bc6fc6b284348707800
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a4fc779cdfb177a9817049fd7b62b0014e141ce0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149521"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34592402"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>用户隐私和 Azure AD 无缝单一登录
 
@@ -28,11 +29,11 @@ ms.locfileid: "32149521"
 ## <a name="overview"></a>概述
 
 
-Azure AD 无缝 SSO 创建可包含 EUII 的以下日志类型：
+Azure AD 无缝 SSO 创建可包含个人数据的以下日志类型： 
 
 - Azure AD Connect 跟踪日志文件。
 
-可通过两种方式使无缝 SSO 实现用户隐私符合性：
+通过两种方式改善无缝 SSO 的用户隐私：
 
 1.  根据请求提取用户的数据以及从安装项中删除该用户的数据。
 2.  确保数据保留时长均不超过 48 小时。

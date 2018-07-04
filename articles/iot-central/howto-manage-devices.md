@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8a1b88621feaaaff3f787cca8c4b4e45d4974931
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807469"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937612"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
 
@@ -49,7 +49,7 @@ ms.locfileid: "34807469"
 1. 选择“真实”或“模拟”。 真实设备是指要连接到 Azure IoT Central 应用程序的物理设备。 模拟设备包含 Azure IoT Central 生成的示例数据。 本示例使用真实设备。 选择“真实”导航到新设备的“设备详细信息”页。
 
 
-## <a name="bulk-import-devices"></a>批量导入设备
+## <a name="import-devices"></a>导入设备
 
 Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大量的设备连接到应用程序。 
 
@@ -65,9 +65,12 @@ CSV 文件要求：
 
 1. 在左面板中，选择要为其批量创建设备的设备模板。
 
-1. 依次选择“新建”、“批量导入”。
+ >   [!NOTE] 
+    如果还没有设备模板，则可以在“未关联设备”下导入设备，并在没有任何模板的情况下注册这些设备。 导入设备后，就可以将其与模板关联起来作为后续步骤。
 
-    [![批量导入操作](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
+1. 单击“导入”。
+
+    [![导入操作](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
 1. 选择包含要导入的设备 ID 列表的 CSV 文件。
 
@@ -75,9 +78,25 @@ CSV 文件要求：
 
 1. 导入完成后，设备网格上会显示成功消息。
 
-    [![批量导入成功](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+    [![导入成功](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
 如果设备导入操作失败，将在设备网格上看到错误消息。 系统会生成一个日志文件来捕获所有错误；单击错误消息可下载该文件。
+
+
+**将设备与模板关联**
+
+如果通过在“未关联设备”下启动导入来注册设备，则无需任何设备模板关联即可创建设备。 设备必须与模板关联起来，才能浏览有关设备的数据和其他详细信息。 请按照以下步骤将设备与模板进行关联：
+1. 在左侧导航菜单中选择“Explorer”。
+1. 在左面板中，选择“未关联设备”。
+    [![未关联设备](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
+1. 选择想要与模板关联的设备。
+1. 单击“关联”选项。
+    [![关联设备](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
+1. 从可用模板列表中选择模板，然后单击“关联”按钮。
+1. 所选设备将在相应的设备模板下移动。
+
+ >   [!NOTE] 
+    设备与模板关联后，就无法取消关联或与其他模板关联。
 
 ## <a name="export-devices"></a>导出设备
 

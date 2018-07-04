@@ -12,25 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 21b54f60286e25c410b9d51de8be122c450080d3
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "23655409"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752769"
 ---
 # <a name="filters-in-log-analytics-views"></a>Log Analytics 视图中的筛选器
 [Log Analytics 视图](log-analytics-view-designer.md) 中的筛选器使得用户可以在不修改视图本身的情况下，以特定属性的值在视图中筛选数据。  例如，可以允许视图的用户在视图中筛选仅来自特定计算机或特定计算器组的数据。  可以在单个视图上创建多个筛选器，以便用户按多个属性筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
 
 ## <a name="using-a-filter"></a>使用筛选器
-单击“筛选器”打开视图的筛选器窗格。  在筛选器窗格中，为可在视图中使用的任何筛选器选择时间范围和值。  选择筛选器时，将显示可用值的列表。  可以选择一个或多个值，也可以键入值。 视图自动更新为基于指定的值进行筛选。 
+单击视图顶部的数据时间范围以打开下拉列表，可以在此处更改视图的日期时间范围。
 
-如果未对筛选器选择任何值，则该筛选器不会应用于视图。  如果移除筛选器的所有值，则将不再应用该筛选器。
+![筛选器示例](media/log-analytics-view-designer/filters-example-time.png)
+
+单击 **+** 以添加为视图定义的使用自定义筛选器的筛选器。 从下拉列表中为筛选器选择一个值或键入一个值。 通过单击 **+** 来继续添加筛选器。 
 
 
-![筛选器示例](media/log-analytics-view-designer/filters-example.png)
+![筛选器示例](media/log-analytics-view-designer/filters-example-custom.png)
+
+如果移除筛选器的所有值，则将不再应用该筛选器。
 
 
 ## <a name="creating-a-filter"></a>创建筛选器

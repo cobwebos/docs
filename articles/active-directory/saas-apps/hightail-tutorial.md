@@ -7,19 +7,18 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e15206ac-74b0-46e4-9329-892c7d242ec0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2017
+ms.date: 06/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 6fe7cad2910bed2dc08180d28fdf1af1d6cffd9a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7267f8fa1ed900d1bac58b4fa61f076e5949d712
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223410"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319099"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>教程：Azure Active Directory 与 Hightail 集成
 
@@ -105,25 +104,23 @@ ms.locfileid: "36223410"
     ![配置单一登录][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_samlbase.png)
 
-3. 在“Hightail 域和 URL”部分中，执行以下步骤：
+3. 在“Hightail 域和 URL”部分，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
 
     ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_url.png)
 
-     在“回复 URL”文本框中，键入 URL：`https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
+    在“回复 URL”文本框中，键入 URL：`https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
-    > [!NOTE] 
-    > 上面的值不是实际值。 用户将使用实际的回复 URL 更新该值（本教程稍后将会介绍）。
- 
-4. 在“Hightail 域和 URL”部分中，如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
-    
+    > [!NOTE]
+    > 答复 URL 值不是真实值。 用户将使用实际的答复 URL 更新答复 URL 值（本教程稍后将会介绍）。
+
+4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+
     ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_url1.png)
 
-    a. 单击“显示高级 URL 设置”。
-
-    b. 在“登录 URL”文本框中，键入 URL：`https://www.hightail.com/loginSSO`
+    在“登录 URL”文本框中，键入 URL：`https://www.hightail.com/loginSSO`
 
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -139,7 +136,7 @@ ms.locfileid: "36223410"
     | ------------------- | -------------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Email | user.mail |    
+    | 电子邮件 | user.mail |    
     | UserIdentity | user.mail |
     
     a. 单击“添加属性”，打开“添加属性”对话框。
@@ -153,7 +150,7 @@ ms.locfileid: "36223410"
     c. 在“值”列表中，选择为该行显示的属性值。
 
     d. 将“命名空间”留空。
-    
+
     e. 单击“确定” 。
 
 7. 单击“保存”按钮。
@@ -162,41 +159,32 @@ ms.locfileid: "36223410"
 
 8. 在“Hightail 配置”部分中，单击“配置 Hightail”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
-    ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_configure.png) 
+    ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_configure.png)
 
-    >[!NOTE] 
+    >[!NOTE]
     >在 Hightail 应用上配置单一登录之前，请将 Hightail 团队的电子邮件域添加到允许列表，以便使用该域的所有用户可以利用单一登录功能。
 
+9. 在另一个浏览器窗口中，打开“Hightail”管理门户。
 
-9. 若要为应用程序配置 SSO，需要以管理员身份登录到 Hightail 租户。
-   
-    a. 在顶部菜单中，单击“帐户”选项卡，并选择“配置 SAML”。
- 
-    ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_001.png) 
+10. 单击页面右上角的“用户”图标。 
 
-    b. 选中“启用 SAML 身份验证”复选框。
+    ![配置单一登录](./media/hightail-tutorial/configure1.png)
 
-    ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_002.png) 
+11. 单击“查看管理控制台”选项卡。
 
-    c. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“SAML 令牌签名证书”文本框。
+    ![配置单一登录](./media/hightail-tutorial/configure2.png)
 
-    ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_003.png) 
+12. 在顶部菜单中，单击“SAML”选项卡并执行以下步骤：
 
-    d. 在“SAML 颁发机构 (标识提供者)”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    ![配置单一登录](./media/hightail-tutorial/configure3.png)
 
-    ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_004.png)
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
-    e. 如果要在“IDP 发起的模式”下配置应用程序，请选择“标识提供者(IdP)发起的登录”。 如果使用“SP 发起的模式”，请选择“服务提供程序(SP)发起的登录”。
+    b. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“SAML 证书”文本框。
 
-    ![配置单一登录](./media/hightail-tutorial/tutorial_hightail_006.png)
+    c. 单击“复制”，复制实例的 SAML 使用者 URL 并将其粘贴到 Azure 门户中“Hightail 域和 URL”部分的“答复 URL”文本框中。
 
-    f. 复制实例的 SAML 使用者 URL 并将其粘贴到 Azure 门户中“Hightail 域和 URL”的“回复 URL”文本框中。
-    
-    g. 单击“ **保存**”。
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    d. 单击“保存配置”。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -256,7 +244,7 @@ ms.locfileid: "36223410"
 
 3. 在左侧菜单中，单击“用户和组”。
 
-    ![分配用户][202] 
+    ![分配用户][202]
 
 4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
@@ -267,7 +255,7 @@ ms.locfileid: "36223410"
 6. 在“用户和组”对话框中单击“选择”按钮。
 
 7. 在“添加分配”对话框中单击“分配”按钮。
-    
+
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
 本部分旨在使用“访问面板”测试 Azure AD 单一登录配置。
@@ -279,8 +267,6 @@ ms.locfileid: "36223410"
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 

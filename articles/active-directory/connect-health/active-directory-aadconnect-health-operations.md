@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4377e9902696a4ee3b5bbb5fcb44d972ec14f822
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31389706"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958719"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -122,7 +122,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步骤 2：添加用户、组并分配角色
 1. 在“配置”部分中，单击“用户”。<br>
-   ![Azure AD Connect Health RBAC 主边栏选项卡的屏幕截图（其中突出显示了“用户”）](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
+   ![Azure AD Connect Health 资源边栏的屏幕截图](./media/active-directory-aadconnect-health/startRBAC.png)
 2. 选择 **添加** 。
 3. 在“选择角色”窗格中，选择一个角色（例如“所有者”）。<br>
    ![Azure AD Connect Health RBAC“用户”窗口的屏幕快照](./media/active-directory-aadconnect-health/RBAC_add.png)
@@ -146,7 +146,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
    ![Azure AD Connect Health RBAC 固定边栏选项卡的屏幕截图（其中突出显示了固定图标）](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
 > [!NOTE]
-> 分配有“读取者”角色的用户无法从 Azure Marketplace 获取 Azure AD Connect Health 扩展。 这类用户无法执行实现上述操作所必需的“创建”操作。 但此用户仍可通过转到前一链接来访问边栏选项卡。 为方便后续使用，用户可以将边栏选项卡固定到仪表板。
+> 分配有“读取者”角色的用户无法从 Azure 市场获取 Azure AD Connect Health 扩展。 这类用户无法执行实现上述操作所必需的“创建”操作。 但此用户仍可通过转到前一链接来访问边栏选项卡。 为方便后续使用，用户可以将边栏选项卡固定到仪表板。
 >
 >
 

@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 924c41b060f56b4a21e4d29e059eb2968fa19330
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dc1e3fd3984d0ccbfb0565a3216ec907894e88ea
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231918"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028942"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？ 
 
@@ -77,7 +77,7 @@ ms.locfileid: "36231918"
 
 ### <a name="compliant-device"></a>合规的设备
 
-可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](active-directory-conditional-access-policy-connected-applications.md#managed-devices)授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是受管理设备的选项。 如果选择了此选项，则条件访问策略会授权访问通过[已注册](device-management-introduction.md) Azure Active Directory 并由你的 MDM 解决方案标记为兼容的设备所做的尝试。
+可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](active-directory-conditional-access-policy-connected-applications.md#managed-devices)授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是受管理设备的选项。 如果选择此选项，条件访问策略会授权访问以下设备所做的访问尝试：已向 Azure Active Directory [注册](device-management-introduction.md)，且由 Intune（适用于任何设备 OS）或由 Windows 10 设备的第三方 MDM 系统标记为兼容的设备。 不支持除 Windows 10 以外的设备 OS 类型第三方 MDM 系统。
 
 有关详细信息，请参阅[设置 Azure Active Directory 基于设备的条件访问策略](active-directory-conditional-access-policy-connected-applications.md)。
 

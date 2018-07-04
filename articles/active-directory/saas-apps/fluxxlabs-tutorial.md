@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d8fac770-bb57-4e1f-b50b-9ffeae239d07
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2d22720e71788493d3663524f2b70783ba26b84d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b5fb84f8d8fbed7e1d4112e96b00af3e460661a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218157"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317096"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>教程：Azure Active Directory 与 Fluxx Labs 集成
 
@@ -67,7 +66,7 @@ ms.locfileid: "36218157"
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
-    
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
@@ -103,7 +102,7 @@ ms.locfileid: "36218157"
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_samlbase.png)
 
 3. 在“Fluxx Labs 域和 URL”部分执行以下步骤：
@@ -123,8 +122,8 @@ ms.locfileid: "36218157"
     |-------------|------------|
     | 生产 | `https://<subdomain>.fluxx.io/auth/saml/callback` |
     | 预生产 | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
-        
-    > [!NOTE] 
+
+    > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Fluxx Labs 支持团队](mailto:travis@fluxxlabs.com)。
 
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
@@ -135,7 +134,7 @@ ms.locfileid: "36218157"
 
     ![配置单一登录“保存”按钮](./media/fluxxlabs-tutorial/tutorial_general_400.png)
 
-6. 在“Fluxx Labs 配置”部分，单击“配置 Fluxx Labs”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+6. 在“Fluxx Labs 配置”部分，单击“配置 Fluxx Labs”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_configure.png)
 
@@ -148,9 +147,9 @@ ms.locfileid: "36218157"
 9. 在管理面板中，选择“插件” > “集成”，然后选择“SAML SSO (已禁用)”
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config2.png)
-    
+
 10. 在属性部分执行以下步骤：
-    
+
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config3.png)
 
     a. 选中“SAML SSO”复选框。
@@ -159,15 +158,17 @@ ms.locfileid: "36218157"
 
     c. 在“回调路径”文本框中，键入 **/auth/saml/callback**。
 
-    d. 在“断言使用者服务 URL (单一登录 URL)”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    d. 在“断言使用者服务 URL (单一登录 URL)”文本框中，输入已在 Azure 门户中输入的“回复 URL”值。
 
-    e. 在“受众 (SP 实体 ID)”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+    e. 在“受众(SP 实体 ID)”文本框中，输入已在 Azure 门户中输入的“标识符”值。
 
-    f. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“标识提供者证书”文本框。
+    f. 在“标识提供者 SSO 目标 URL”文本框中，粘贴从 Azure 门户中复制的“SAML 单一登录服务 URL”值。
 
-    g. 在“名称标识符格式”文本框中，输入值 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
+    g. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“标识提供者证书”文本框。
 
-    h. 单击“ **保存**”。
+    h. 在“名称标识符格式”文本框中，输入值 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
+
+    i. 单击“ **保存**”。
 
     > [!NOTE]
     > 保存内容后，字段会出于安全原因显示空白，但值已保存到配置中。
@@ -221,7 +222,7 @@ ms.locfileid: "36218157"
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config4.png)
 
 4. 在“新建人员”部分中，执行以下步骤：
-    
+
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config5.png)
 
     a. Fluxx Labs 使用电子邮件作为 SSO 登录名的唯一标识符。 在“SSO UID”字段中填写用户的电子邮件地址，该值与他们进行 SSO 登录时使用的电子邮件地址匹配。
@@ -232,7 +233,7 @@ ms.locfileid: "36218157"
 
 在本部分，我们通过授予 Britta Simon 访问 Fluxx Labs 的权限，以支持其使用 Azure 单一登录。
 
-![分配用户角色][200] 
+![分配用户角色][200]
 
 **若要将 Britta Simon 分配到 Fluxx Labs，请执行以下步骤：**
 
@@ -257,7 +258,7 @@ ms.locfileid: "36218157"
 6. 在“用户和组”对话框中单击“选择”按钮。
 
 7. 在“添加分配”对话框中单击“分配”按钮。
-    
+
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。

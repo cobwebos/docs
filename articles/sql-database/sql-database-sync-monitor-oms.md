@@ -1,26 +1,26 @@
 ---
-title: 使用 Log Analytics 监视 Azure SQL 数据同步（预览版）| Microsoft Docs
-description: 了解如何使用 Log Analytics 监视 Azure SQL 数据同步（预览版）
+title: 使用 Log Analytics 监视 Azure SQL 数据同步 | Microsoft Docs
+description: 了解如何使用 Log Analytics 监视 Azure SQL 数据同步
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 4c684337a904fe6984e6b5cd5cf88ef8eb976cb6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b64a5e913748cda7927877c50a964ede587ae30
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650241"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025129"
 ---
-# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>使用 Log Analytics 监视 SQL 数据同步（预览版） 
+# <a name="monitor-sql-data-sync-with-log-analytics"></a>使用 Log Analytics 监视 SQL 数据同步 
 
 若要检查 SQL 数据同步活动日志并检测错误和警告，以前必须在 Azure 门户手动检查 SQL 数据同步，或者使用 PowerShell 或 REST API。 请按照本文中的步骤配置自定义解决方案，以便改进数据同步监控体验。 可以自定义该解决方案以适合你的方案。
 
-有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步（预览版）跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>监视所有同步组的仪表板 
 

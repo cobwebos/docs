@@ -8,23 +8,20 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: effe33182435d2a4afbad3356c6840070ba96325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f198efe9ff5e4862a3bbe872ab50e5848c9dbb5c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631422"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030574"
 ---
-# <a name="securing-azure-iot-edge---preview"></a>确保 Azure IoT Edge 的安全 - 预览
+# <a name="securing-azure-iot-edge"></a>确保 Azure IoT Edge 安全
 
 对于让人们充满信心地执行端到端 IoT 解决方案而言，确保智能边缘的安全性非常必要。 Azure IoT Edge 专为安全性设计，可扩展到不同的风险状况、部署方案，并且提供期望 Azure 服务提供的相同保护。
 
 Azure IoT Edge 在不同的硬件上运行、支持 Linux 和 Windows 并且适用于各种部署方案。  评估的风险取决于许多因素，包括解决方案所有者、部署地理位置、数据敏感度、隐私、垂直应用程序和法规要求。  最好是基于为规模设计的有充分根据的原则来设计可扩展的安全框架，而不是提供特定方案的具体解决方案。 
  
 本文提供安全框架的概述。 有关详细信息，请参阅[确保智能边缘的安全][lnk-edge-blog]。
-
->[!NOTE]
->下面介绍的安全框架现正添加到产品中，并将在 Azure IoT Edge 的正式发布版中可用。 该产品当前是公共预览版，意在允许边缘解决方案的部署和原型制作，不是需要完整安全框架的完整产品部署。   
 
 ## <a name="standards"></a>标准
 

@@ -12,35 +12,35 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: f9793156b3728f617b92624651ff89ab2665c061
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 1c7fd3ac1a4cf62dd8f909acc26615ea5f96f32c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235801"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309092"
 ---
 # <a name="determine-the-listing-type-for-your-solution"></a>确定解决方案的商品类型  
 店面支持许多发布选项：商品类型和产品/服务类型。 选择最能代表解决方案和服务详细信息的产品/服务类型。 所有发布选项均提供对潜在客户共享功能的访问权限。   
 
 | 店面 | 商品类型 | 应用类型 | 技术指导 |  
 |:--- |:--- |:--- |:--- |  
-| AppSource | [列表](#list) | [咨询服务](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
-| Azure 市场 | [列表](#list) | [咨询服务](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| Azure 市场 | [列表](#list) | [与我联系](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| Azure 市场 | [试用](#trial) | [免费试用/SaaS 试用](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
+| AppSource | [列表](#list) | [咨询服务](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| Azure 市场 | [列表](#list) | [咨询服务](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| Azure 市场 | [列表](#list) | [与我联系](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| Azure 市场 | [试用](#trial) | [免费试用/SaaS 试用](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
 | AppSource |  | Cortana Intelligence | [docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 | AppSource |  |Dynamics 365 for Customer Engagement | [docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 | AppSource |  | Dynamics 365 for Finance and Operations | [docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
-| Azure 市场 | [试用](#trial) | [互动演示](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| Azure 市场 | [试用](#trial) | [体验版](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
+| Azure 市场 | [试用](#trial) | [互动演示](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| Azure 市场 | [试用](#trial) | [体验版](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
 | AppSource |  | Office 365 | [docs.microsoft.com/office/dev/store/submit-to-the-office-store](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store) |  
-| AppSource |  | Power BI | [docs.microsoft.com/power-bi/developer/office-store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure 市场 | [事务处理](#transact) | [Azure 应用：托管应用](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/azure/managed-applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| Azure 市场 | [事务处理](#transact) | [Azure 应用：解决方案模板](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| Azure 市场 | [事务处理](#transact) | [容器](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| Azure 市场 | [事务处理](#transact) | [SaaS 应用](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| Azure 市场 | [事务处理](#transact) | [虚拟机](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |   
+| AppSource |  | Power BI | [docs.microsoft.com/power-bi/developer/office-store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure 市场 | [事务处理](#transact) | [Azure 应用：托管应用](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/azure/managed-applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| Azure 市场 | [事务处理](#transact) | [Azure 应用：解决方案模板](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| Azure 市场 | [事务处理](#transact) | [容器](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| Azure 市场 | [事务处理](#transact) | [SaaS 应用](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| Azure 市场 | [事务处理](#transact) | [虚拟机](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |   
 
 ## <a name="azure-certified-program"></a>Azure 认证计划  
 Azure 市场中发布的所有虚拟机 (VM) 都经过“Azure 认证”计划的测试。  
@@ -58,7 +58,7 @@ Azure 市场中发布的所有虚拟机 (VM) 都经过“Azure 认证”计划�
 
 | 商品类型 | 应用类型 | 技术指导 |  
 |:--- |:--- |:--- |  
-| [列表](#list) | [咨询服务](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| [列表](#list) | [咨询服务](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
 |  | Cortana Intelligence | [docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 |  |Dynamics 365 for Customer Engagement | [docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 |  | Dynamics 365 for Finance and Operations | [docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
@@ -68,20 +68,23 @@ Azure 市场中发布的所有虚拟机 (VM) 都经过“Azure 认证”计划�
 ---   
 
 ## <a name="azure-marketplace-publishing-by-product"></a>按产品进行的 Azure 市场发布  
+
+![](./media/marketplace-publishers-guide/workflow-azure-marketplace.png)  
+
 下表提供 Azure 市场产品/服务的详细具体要求。  
 
 | 商品类型 | 产品/服务类型 |  技术指导 |  
 |:--- |:--- |:--- |  
-| [列表](#list) | [咨询服务](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| [列表](#list) | [与我联系](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| [试用](#trial) | [免费试用/SaaS 试用](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
-| [试用](#trial) | [互动演示](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| [试用](#trial) | [体验版](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
-| [事务处理](#transact) | [Azure 应用：托管应用](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/azure/managed-applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| [事务处理](#transact) | [Azure 应用：解决方案模板](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| [事务处理](#transact) | [容器](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| [事务处理](#transact) | [SaaS 应用](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| [事务处理](#transact) | [虚拟机](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |  
+| [列表](#list) | [咨询服务](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| [列表](#list) | [与我联系](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| [试用](#trial) | [免费试用/SaaS 试用](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
+| [试用](#trial) | [互动演示](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| [试用](#trial) | [体验版](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
+| [事务处理](#transact) | [Azure 应用：托管应用](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/azure/managed-applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| [事务处理](#transact) | [Azure 应用：解决方案模板](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| [事务处理](#transact) | [容器](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| [事务处理](#transact) | [SaaS 应用](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| [事务处理](#transact) | [虚拟机](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |  
 
 ---   
 
@@ -93,10 +96,10 @@ Azure 市场中发布的所有虚拟机 (VM) 都经过“Azure 认证”计划�
 
 | 产品/服务类型 | 店面 | 详细信息 |  
 |:---        |:---        |:---     |  
-| 咨询服务 | AppSource | [要求：AppSource：列表：咨询服务](#requirements:-appsource:-list:-consulting-service) |  
-| 咨询服务 | Azure 市场 | [要求：Azure 市场：列表：咨询服务](#requirements:-azure-marketplace:-list:-consulting-service) |  
+| 咨询服务 | AppSource | [要求：AppSource：列表：咨询服务](#requirements-appsource-list-consulting-service) |  
+| 咨询服务 | Azure 市场 | [要求：Azure 市场：列表：咨询服务](#requirements-azure-marketplace-list-consulting-service) |  
 | 与我联系 | AppSource | [](#) |  
-| 与我联系 | Azure 市场 | [要求：AppSource：列表：与我联系](#requirements:-azure-marketplace:-list:-contact-me) |  
+| 与我联系 | Azure 市场 | [要求：AppSource：列表：与我联系](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>要求：AppSource：列表：咨询服务  
 如果产品/服务主要由专业服务构成（例如评估、实施和学习班），请使用“咨询服务”产品/服务类型。  
@@ -130,12 +133,12 @@ Azure 市场中发布的所有虚拟机 (VM) 都经过“Azure 认证”计划�
 
 | 产品/服务类型 | 店面 | 详细信息 |  
 |:---        |:---        |:---     |  
-| 免费/SaaS 试用 | AppSource | [商品类型要求：试用](#Listing-Type-Requirements:-trial) |  
-| 免费/SaaS 试用 | Azure 市场 | [要求：Azure 市场：试用：免费试用/SaaS 试用](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| 互动演示 | AppSource | [商品类型要求：试用](#Listing-Type-Requirements:-trial) |  
-| 互动演示 | Azure 市场 | [要求：Azure 市场：试用：互动演示](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| 体验版 | AppSource | [商品类型要求：试用](#Listing-Type-Requirements:-trial) |  
-| 体验版 | Azure 市场 | [要求：Azure 市场：试用：体验版](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| 免费/SaaS 试用 | AppSource | [商品类型要求：试用](#listing-type-requirements-trial) |  
+| 免费/SaaS 试用 | Azure 市场 | [要求：Azure 市场：试用：免费试用/SaaS 试用](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| 互动演示 | AppSource | [商品类型要求：试用](#listing-type-requirements-trial) |  
+| 互动演示 | Azure 市场 | [要求：Azure 市场：试用：互动演示](#requirements-azure-marketplace-trial-interactive-demo) |  
+| 体验版 | AppSource | [商品类型要求：试用](#listing-type-requirements-trial) |  
+| 体验版 | Azure 市场 | [要求：Azure 市场：试用：体验版](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>要求：Azure 市场：试用  
 
@@ -177,11 +180,11 @@ Azure 市场中发布的所有虚拟机 (VM) 都经过“Azure 认证”计划�
 
 | 产品/服务类型 | 店面 | 详细信息 |   
 |:---        |:---        | :--- |  
-| Azure 应用：托管应用 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：托管应用](#requirements:-azure-marketplace:-transact:-Azure-apps:-Managed-app) |  
-| Azure 应用：解决方案模板 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：解决方案模板](#requirements:-azure-marketplace:-transact:-Azure-apps:-Solution-template) |  
-| 容器 | Azure 市场 | [要求：Azure 市场：事务处理：容器](#requirements:-azure-marketplace:-transact:-Container) |  
-| SaaS 应用  | Azure 市场 | [要求：Azure 市场：事务处理：SaaS 应用](#requirements:-azure-marketplace:-transact:-SaaS-app) |  
-| 虚拟机 | Azure 市场 | [要求：Azure 市场：事务处理：虚拟机](#requirements:-azure-marketplace:-transact:-Virtual-Machine) |  
+| Azure 应用：托管应用 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：托管应用](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Azure 应用：解决方案模板 | Azure 市场 | [要求：Azure 市场：事务处理：Azure 应用：解决方案模板](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| 容器 | Azure 市场 | [要求：Azure 市场：事务处理：容器](#requirements-azure-marketplace-transact-container) |  
+| SaaS 应用  | Azure 市场 | [要求：Azure 市场：事务处理：SaaS 应用](#requirements-azure-marketplace-transact-saas-app) |  
+| 虚拟机 | Azure 市场 | [要求：Azure 市场：事务处理：虚拟机](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 #### <a name="requirements-azure-marketplace-transact-azure-apps-managed-app"></a>要求：Azure 市场：事务处理：Azure 应用：托管应用  
 需要满足以下条件时，请使用“Azure 应用：托管应用”产品/服务类型。  
@@ -209,11 +212,10 @@ Microsoft 目前支持免费和自带许可 (BYOL) 许可模型。 我们已计�
 
 | 要求 | 详细信息 |  
 |:--- |:--- |  
-|计费和计量  |  容器必须支持“免费”或“自带许可”计费模型。       |  
-|从 Dockerfile 生成的映像   |   容器映像必须基于 Docker 映像规范，并且必须从 Dockerfile 生成。 在[此处](https://docs.docker.com/engine/reference/builder/#usage)详细了解如何生成 Docker 映像。
-|在 ACR 中托管   |   容器映像必须在 Azure 容器注册表 (ACR) 存储库中托管。 在[此处](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)详细了解如何使用 ACR。     
-|映像标记   |   容器映像必须包含至少 1 个标记（最多标记数：16）。 在[此处](https://docs.docker.com/engine/reference/commandline/tag/)详细了解如何标记映像。     | 
-
+| 计费和计量 | 支持免费或 BYOL 计费模型。 |  
+| 从 Dockerfile 生成的映像 | 容器映像必须基于 Docker 映像规范，并且必须从 Dockerfile 生成。<ul> <li>有关构建 docker 镜像的详细信息，请访问位于 [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage) 内的“使用情况”部分。</li> </ul> |  
+| 在 ACR 中托管 | 容器映像必须在 Azure 容器注册表 (ACR) 存储库中托管。<ul> <li>有关使用 ACR 的详细信息，请访问位于 [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal) 内的快速入门：使用 Azure 门户页面创建容器注册表。</li> </ul> |  
+| 映像标记 | 容器映像必须包含至少 1 个标记（最多标记数：16）。<ul> <li>有关标记图像的详细信息，请访问位于 [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag) 内的 docker 标记页。</li> </ul> |  
 
 
 #### <a name="requirements-azure-marketplace-transact-saas-app"></a>要求：Azure 市场：事务处理：SaaS 应用  
@@ -225,12 +227,10 @@ Microsoft 托管商业事务。 Microsoft 代你向客户计费。 若要以订�
 
 | 要求 | 详细信息 |  
 |:--- |:--- |  
-|计费和计量   |   产品/服务按固定月费定价。 目前不支持基于使用情况的定价和基于使用情况的“校准”功能。      |  
-|取消  |   客户可以随时取消你的产品/服务。      |  
-|事务登陆页   |   托管一个 Azure 联合品牌事务登陆页，用户可以在其中创建并管理其 SaaS 服务帐户。      |   
-|订阅 API    |   公开一个服务，该服务可以通过与 SaaS 订阅交互来创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。      | 
-
-
+|计费和计量 | 产品/服务按固定月费定价。 目前不支持基于使用情况的定价和基于使用情况的“校准”功能。 |  
+|取消 | 客户可以随时取消你的产品/服务。 |  
+|事务登陆页 | 托管一个 Azure 联合品牌事务登陆页，用户可以在其中创建并管理其 SaaS 服务帐户。 |   
+| 订阅 API | 公开一个服务，该服务可以通过与 SaaS 订阅交互来创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。 |  
 
 #### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>要求：Azure 市场：事务处理：虚拟机  
 将虚拟设备部署到与客户关联的订阅时，请使用“虚拟机”产品/服务类型。 使用即用即付或自带许可 (BYOL) 许可模型为 VM 启用完整商务功能。 Microsoft 托管商业事务并代你向客户计费。 可获得的好处是能够利用客户与 Microsoft 之间达成的首选付费关系（包括任何企业协议）。  

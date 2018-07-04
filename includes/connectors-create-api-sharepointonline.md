@@ -2,7 +2,7 @@
 
 要连接到 **SharePoint Online**，需要向 SharePoint Online 提供标识（用户名和密码、智能卡凭据等）。 经过身份验证后，可以继续在逻辑应用中使用 SharePoint Online 连接器。 
 
-逻辑应用的设计器打开时，按照以下步骤操作登录到 SharePoint，创建要在逻辑应用中使用的**连接**：
+逻辑应用的设计器打开时，按照以下步骤操作登录到 SharePoint，创建要在逻辑应用中使用的连接：
 
 1. 在搜索框中输入“SharePoint”，并等待该搜索返回与 SharePoint Online 有关的所有触发器和操作：   
    ![配置 SharePoint][1]  

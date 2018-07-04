@@ -2,19 +2,19 @@
 title: Azure SQL 数据库审核入门 | Microsoft 文档
 description: 使用 Azure SQL 数据库审核跟踪写入审核日志的数据库事件。
 services: sql-database
-author: giladm
+author: giladmit
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 62c6e576a5ef7fa953618dcba4ddd158df131148
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0646667caab594556cc3c2043bc36905acef6e54
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644583"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751037"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
@@ -200,12 +200,17 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
 
 **REST API - Blob 审核**：
 
-* [创建或更新数据库 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-* [创建或更新服务器 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-* [获取数据库 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-* [获取服务器 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [创建或更新数据库 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [创建或更新服务器 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [获取数据库 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
+* [获取服务器 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
 * [获取服务器 Blob 审核操作结果](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
+支持使用 WHERE 子句执行附加筛选的扩展策略：
+* [创建或更新数据库扩展 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [创建或更新服务器扩展 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [获取数据库扩展 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [获取服务器扩展 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

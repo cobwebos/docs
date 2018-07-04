@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2018
+ms.date: 06/26/2018
 ms.author: asmalser
-ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c7a18132a797bd7411487c233fc41647cc20dfb4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293290"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025135"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>什么是 SaaS 应用的自动化用户预配？
@@ -50,7 +50,6 @@ Azure Active Directory (Azure AD) 允许用户自动创建、维护和删除云 
 * 轻松将大量用户导入特定的 SaaS 应用程序或系统。
 * 享用一组策略，确定已预配哪些用户，以及哪些用户可登录应用。
 
-
 ## <a name="how-does-automatic-provisioning-work"></a>自动化预配的工作原理
     
 **Azure AD 预配服务**通过连接到由每个应用程序供应商提供的用户管理 API 终结点，将用户预配到 SaaS 应用和其他系统。 这些用户管理 API 终结点允许 Azure AD 以编程方式创建、更新和删除用户。 对于选定的应用程序，预配服务还可以创建、更新和删除其他标识相关的对象，例如组和角色。 
@@ -69,15 +68,17 @@ Azure Active Directory (Azure AD) 允许用户自动创建、维护和删除云 
 
 Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统的支持，以及对实现 SCIM 2.0 标准特定部分的应用的一般性支持。
 
-有关 Azure AD 中支持预先集成预配连接器的所有应用程序的列表，请参阅[支持用户预配的应用程序列表教程](active-directory-saas-tutorial-list.md)。
+### <a name="pre-integrated-applications"></a>预先集成的应用程序
+有关 Azure AD 中支持预先集成预配连接器的所有应用程序的列表，请参阅[支持用户预配的应用程序列表教程](saas-apps/tutorial-list.md)。
 
-有关如何在应用程序中添加 Azure AD 用户预配支持的信息，请参阅[使用 SCIM 在应用程序中自动预配 Azure Active Directory 中的用户和组](manage-apps/use-scim-to-provision-users-and-groups.md)。
-
-如需联系 Azure AD 工程团队以请求其他应用程序的预配支持，请通过 [Azure Active Directory 反馈论坛](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035)提交消息。    
+如需联系 Azure AD 工程团队以请求其他应用程序的预配支持，请通过 [Azure Active Directory 反馈论坛](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035)提交消息。
 
 > [!NOTE]
 > 为了使应用程序支持自动化用户预配，它必须首先提供必要的、允许外部程序自动执行创建、维护和删除用户操作的用户管理 API。 因此，不是所有的 SaaS 应用都能兼容此功能。 对于不支持用户管理 API 的应用，Azure AD 工程团队能够构建连接到这些应用的设置连接器，并按当前和潜在客户需求设置优先级。 
-    
+
+### <a name="connecting-applications-that-support-scim-20"></a>连接支持 SCIM 2.0 的应用程序
+若要了解如何常规连接实现基于 SCIM. 2.0 的用户管理 API 的应用程序，请参阅[使用 SCIM 自动将用户和组从 Azure Active Directory 预配到应用程序](manage-apps/use-scim-to-provision-users-and-groups.md)。
+
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>如何设置为自动预配到应用程序？
 
@@ -85,7 +86,7 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 
 可以在 **[Azure 门户](https://portal.azure.com)** 中开始针对选定的应用程序配置 Azure AD 预配服务。 在“Azure Active Directory”>“企业应用程序”部分中，依次选择“添加”、“所有”，并根据情况添加以下项之一：
 
-* “特色应用程序”部分中的所有应用程序支持自动预配。 有关其他应用程序，请参阅[支持用户预配的应用程序列表教程](active-directory-saas-tutorial-list.md)。
+* “特色应用程序”部分中的所有应用程序支持自动预配。 有关其他应用程序，请参阅[支持用户预配的应用程序列表教程](saas-apps/tutorial-list.md)。
 
 * 使用“非库应用程序”选项进行定制开发的 SCIM 集成
 
@@ -152,7 +153,7 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 >[!NOTE]
 > 可以根据需要，使用[属性映射](active-directory-saas-customizing-attribute-mappings.md)部分中的“目标对象操作”复选框来禁用创建、更新或删除操作。 还可以使用“accountEnabled”等字段通过属性映射来控制用于在更新期间禁用用户的逻辑。
 
-预配服务会根据[特定于每个应用程序的教程](active-directory-saas-tutorial-list.md)中定义的间隔，持续无限期地运行后端到后端的增量同步，直到发生以下事件之一：
+预配服务会根据[特定于每个应用程序的教程](saas-apps/tutorial-list.md)中定义的间隔，持续无限期地运行后端到后端的增量同步，直到发生以下事件之一：
 
 * 使用 Azure 门户或使用相应的图形 API 命令手动停止了该服务 
 * 在 Azure 门户中使用“清除状态并重启”选项，或使用相应的图形 API 命令触发了新的初始同步。 这会清除所有存储的水印，并导致重新评估所有源对象。
@@ -216,33 +217,31 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 * 目标系统实现的请求速率限制。 某些目标系统实现了在大型同步操作期间可能会影响性能的请求速率限制。 在这些情况下，太快地接收太多请求的应用可能会拖慢其响应速率或关闭连接。 为提高性能，连接器需要进行调整，以不高于应用可以应对的处理速率的速率来向应用发送请求。 Microsoft 构建的预配连接器进行此调整。 
 
 * 已分配的组的数量和大小。 同步已分配的组比同步用户花费的时间要长。 已分配的组的数量和大小都会影响性能。 如果应用程序[为组对象同步启用了映射](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings)，则除了用户之外，还会同步组名称和成员身份等组属性。 这些额外的同步比仅同步用户对象需要花费更长的时间。
- 
 
-## <a name="frequently-asked-questions"></a>常见问题
 
-**可以如何跟踪当前预配作业的进度？**
+##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>如何判断用户预配是否正确？
 
-请参阅[预配报告指南](active-directory-saas-provisioning-reporting.md)。
+Azure AD 审核日志中记录了用户预配服务执行的所有操作。 这包括对源和目标系统执行的所有读写操作，以及在每次操作期间读取或写入的用户数据。
 
-**我如何知道用户无法正确预配？**
+若要了解如何在 Azure 门户中读取审核日志，请参阅[预配报告指南](active-directory-saas-provisioning-reporting.md)。
 
-所有错误记录在 Azure AD 审核日志中。 有关详细信息，请参阅[预配报告指南](active-directory-saas-provisioning-reporting.md)。
 
-**如何构建支持预配服务的应用程序？**
+##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>如何排查用户预配问题？
 
-请参阅[使用 SCIM 将 Azure Active Directory 中的用户和组自动预配到应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning)。
+有关如何排查自动用户预配问题的基于方案的指导，请参阅[在应用程序中配置和预配用户时出现问题](active-directory-application-provisioning-content-map.md)。
 
-**如何向工程团队提交反馈？**
 
-请通过 [Azure Active Directory 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
+##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>推出自动用户预配的最佳做法是什么？
+
+> [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
+
+有关向应用程序执行出站用户预配的分步部署计划，请参阅[有关用户预配的标识部署指南](https://aka.ms/userprovisioningdeploymentplan)/
 
 
 ## <a name="related-articles"></a>相关文章
-* [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
+* [有关如何集成 SaaS 应用的教程列表](saas-apps/tutorial-list.md)
 * [为用户预配自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)
 * [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [用于用户预配的作用域筛选器](active-directory-saas-scoping-filters.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-* [应用程序的出站用户预配的分步部署计划](https://aka.ms/userprovisioningdeploymentplan)
-
