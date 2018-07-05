@@ -2,18 +2,18 @@
 title: 使用 Azure 容器实例作为 Jenkins 生成代理
 description: 了解如何使用 Azure 容器实例作为 Jenkins 生成代理。
 services: container-instances
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: nepeters
-ms.openlocfilehash: 4df230c8306a3876e94a5e9ada5e7408f134ba26
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: iainfou
+ms.openlocfilehash: 7d1fa80b6d9b76a37ff29db42c5119389b3aad2a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359537"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096428"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>使用 Azure 容器实例作为 Jenkins 生成代理
 

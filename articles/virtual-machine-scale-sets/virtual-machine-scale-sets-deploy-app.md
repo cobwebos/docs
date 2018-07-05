@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: iainfou
-ms.openlocfilehash: bbbe677b0a0d47147ace41ff5a229282f80bbf1b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ed43dc21c8b7c585abc0a2734a541f760ab3c487
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839509"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111557"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 本文介绍如何为规模集中的实例生成自定义 VM 映像，或在现有 VM 实例上自动运行安装脚本。 本文还将介绍如何跨规模集管理应用程序或 OS 更新。
@@ -91,7 +91,7 @@ Update-AzureRmVmss `
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>使用 cloud-init 将应用安装到 Linux VM
-[Cloud-init](https://cloudinit.readthedocs.io/latest/) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
+[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
 
 Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 

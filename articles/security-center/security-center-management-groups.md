@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 2c95b06ce34b850d1bfaf60e47d6e5fede148a38
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 05504f94d72f39762672d0e79669dd50d8e6435e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025109"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441478"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍了如何执行一些操作来最大限度地利用 Azure 安全中心提供的优势，从而帮助读者入门。 执行这些操作，可以在所有与 Azure Active Directory 租户相关联的 Azure 订阅中实现公开范围，并能以聚合方式跨多个订阅应用安全策略，从而大规模、有效地管理组织的安全状态。
@@ -86,7 +86,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 5. 执行需要在提升的访问权限下完成的任务。 完成后，将开关设置回“否”。
 
 ### <a name="assign-rbac-roles-to-users"></a>向用户分配 RBAC 角色
-拥有提升的访问权限后，租户管理员便可以在根管理组一级向相关用户分配 RBAC 角色。 建议分配的角色是[读者](../role-based-access-control/built-in-roles.md#reader)。 必须有此角色，才能授予租户级公开范围。 分配的角色会自动传播到根管理组下的所有管理组和订阅。 若要详细了解 RBAC 角色，请参阅[可用角色](../active-directory/active-directory-assign-admin-roles-azure-portal.md#available-roles)。
+拥有提升的访问权限后，租户管理员便可以在根管理组一级向相关用户分配 RBAC 角色。 建议分配的角色是[读者](../role-based-access-control/built-in-roles.md#reader)。 必须有此角色，才能授予租户级公开范围。 分配的角色会自动传播到根管理组下的所有管理组和订阅。 若要详细了解 RBAC 角色，请参阅[可用角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)。
 
 1. 安装 [Azure PowerShell](/powershell/azure/install-azurerm-ps)。
 2. 运行以下命令： 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: e9d43d46f1979e985a5da96fda608eec55ad7830
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: a41dcd5f2c93e5c1279e1c7511e10e6d72574b3b
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031050"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098740"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server Business Intelligence
 > [!IMPORTANT] 
@@ -63,7 +63,7 @@ Microsoft Azure 虚拟机库包括若干含有 Microsoft SQL Server 的映像。
 
 有关 SQL Server 支持的版本和功能的详细信息，请参阅以下各部分：
 
-* [SQL Server 版本](https://www.microsoft.com/server-cloud/products/sql-server-editions/#fbid=Zae0-E6r5oh)
+* [SQL Server 版本](https://www.microsoft.com/sql-server/sql-server-2017-editions)
 * [SQL Server 2016 版本支持的功能](https://msdn.microsoft.com/library/cc645993.aspx)
 
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>SQL Server 虚拟机库映像上安装的 BI 功能

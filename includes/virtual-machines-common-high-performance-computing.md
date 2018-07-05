@@ -5,15 +5,15 @@ services: virtual-machines-linux, virtual-machines-windows
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 05/11/2018
+ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 496c32e70ad58f64b31c1f6fcf913884fcd4abc1
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34152217"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37348229"
 ---
 组织具有大规模计算需求。 这些大型计算工作负荷包括工程设计和分析、财务风险计算、图像渲染、复杂建模、Monte Carlo 仿真等。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "34152217"
     * 使用 [Cray supercomputer](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) 作为 Azure 中托管的服务。
 * 
   **市场解决方案**
-    * 使用 [Azure 市场](https://azuremarketplace.microsoft.com/)中提供的大量 [HPC 应用程序](#hpc-applications)和[解决方案](#marketplace-solutions)。 
+    * 使用 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/)中提供的大量 [HPC 应用程序](#hpc-applications)和[解决方案](#marketplace-solutions)。 
     
 
 
@@ -65,10 +65,10 @@ ms.locfileid: "34152217"
  
 ## <a name="hpc-applications"></a>HPC 应用程序
 
-在 Azure 中运行自定义 HPC 应用程序或商业 HPC 应用程序。 本部分中的几个示例已成为使用更多 VM 或计算核心高效进行缩放的基准。 请访问 [Azure 市场](https://marketplace.azure.com)获取随时可供部署的解决方案。
+在 Azure 中运行自定义 HPC 应用程序或商业 HPC 应用程序。 本部分中的几个示例已成为使用更多 VM 或计算核心高效进行缩放的基准。 请访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace)获取随时可供部署的解决方案。
 
 > [!NOTE]
-> 请向商业应用程序的供应商咨询有关在云中运行的许可或其他限制。 并非所有供应商都提供即付即用许可。 可能需要云中有一个用于自己的解决方案的许可服务器，或连接到本地许可证服务器。
+> 请向商业应用程序的供应商咨询有关在云中运行的许可或其他限制。 并非所有供应商都提供即用即付许可。 可能需要云中有一个用于自己的解决方案的许可服务器，或连接到本地许可证服务器。
 
 ### <a name="engineering-applications"></a>工程应用程序
 
@@ -197,6 +197,7 @@ Azure 虚拟机、虚拟机规模集、Batch 和相关的计算服务是大多�
 * [Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
 * [Milliman](https://customers.microsoft.com/story/actuarial-firm-works-to-transform-insurance-industry-w)
 * [Mitsubishi UFJ Securities International](https://customers.microsoft.com/story/powering-risk-compute-grids-in-the-cloud)
+* [NeuroInitiative](https://customers.microsoft.com/en-us/story/neuroinitiative-health-provider-azure)
 * [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
 * [Towers Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
 

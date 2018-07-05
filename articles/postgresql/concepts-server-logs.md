@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: a8d560aa8906e3ba1f65758239b645cd1b1df032
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: bcca8ce8d11482dd8517992297b7e8a5b94ac8b1
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29691087"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435484"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的服务器日志 
 Azure Database for PostgreSQL 生成查询和错误日志。 但不支持访问事务日志。 查询和错误日志可用于识别、排除和修复配置错误和性能不佳问题。 有关详细信息，请参阅[错误报告和日志记录](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html)。
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL 生成查询和错误日志。 但不支持访问�
 ## <a name="configure-logging-for-azure-postgresql-server"></a>配置 Azure PostgreSQL 服务器的日志
 可以启用服务器的查询日志和错误日志。 错误日志包含自动清空、连接和检查点等信息。
 
-可以通过设置以下两个服务器参数为 PostgreSQL DB 实例启用查询日志记录：`log\_statement` 和 `log\_min\_duration\_statement`。
+可以通过设置以下两个服务器参数为 PostgreSQL DB 实例启用查询日志记录：`log_statement` 和 `log_min_duration_statement`。
 
 **log\_statement** 参数控制要记录的 SQL 语句。 建议将此参数设置为 ***all*** 以便记录所有语句；默认值为“none”。
 

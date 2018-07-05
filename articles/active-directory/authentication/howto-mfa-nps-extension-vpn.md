@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: cfdb89ae833dc2450a4670a84af305f1caa10591
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: dfd28c5abea668e704fb5ee8b02d85d552e9ae77
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869506"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098866"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -305,7 +305,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
  
 ## <a name="configure-multi-factor-authentication"></a>配置多重身份验证
 
-如需针对多重身份验证配置用户的帮助，请参阅文章[如何对用户或组要求双重验证](howto-mfa-userstates.md)和[为双重验证设置帐户](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
+如需针对多重身份验证配置用户的帮助，请参阅文章[如何对用户或组要求双重验证](howto-mfa-userstates.md)和[为双重验证设置帐户](end-user/current/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>安装和配置 NPS 扩展
 

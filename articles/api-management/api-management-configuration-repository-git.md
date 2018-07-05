@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 0165de82850c0c80052564c5f31a5e5cf5effb11
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 87381a27a59d6719f4bfff9ed367598932c1985c
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938302"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436397"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -226,7 +226,7 @@ git push
 ### <a name="groups-folder"></a>groups 文件夹
 `groups` 文件夹针对服务实例中定义的每个组都包含一个文件夹。
 
-* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup)操作时会返回的相同信息。
+* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://docs.microsoft.com/en-us/rest/api/apimanagement/group/get)操作时会返回的相同信息。
 * `groups\<group name>\description.html` - 这是组的说明，对应于[组实体](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties)的 `description` 属性。
 
 ### <a name="policies-folder"></a>policies 文件夹
@@ -246,8 +246,8 @@ git push
 ### <a name="products-folder"></a>products 文件夹
 `products` 文件夹针对服务实例中定义的每个产品都包含一个文件夹。
 
-* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct)操作时会返回的相同信息。
-* `products\<product name>\product.description.html` - 这是产品的说明，对应于 REST API 中[产品实体](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product)的 `description` 属性。
+* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://docs.microsoft.com/en-us/rest/api/apimanagement/product/get)操作时会返回的相同信息。
+* `products\<product name>\product.description.html` - 这是产品的说明，对应于 REST API 中[产品实体](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity)的 `description` 属性。
 
 ### <a name="templates"></a>模板
 `templates` 文件夹包含服务实例的[电子邮件模板](api-management-howto-configure-notifications.md)配置。

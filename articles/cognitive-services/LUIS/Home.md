@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: bbd0a532e54f9b221739c8ae9ff097fe44fdc4df
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751589"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344825"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 语言理解 (LUIS) 是一种基于云的服务，可在用户对话的自然语言文本中应用自定义机器学习，从而预测整体含义并提炼出相关的详细信息。 
@@ -82,11 +82,11 @@ JSON 终结点响应至少包含查询话语和得分最高的意向。
 
 LUIS 提供多种方式来标识和分类实体。
 
-* **预构建的实体** LUIS 具有多个预构建的域模型，它们自带意向、话语和[预构建的实体](pre-builtentities.md)。 即使不使用预构建的模型中的意向和话语，也能使用预构建的实体。 预构建的实体可助你节省时间。
+* **预构建的实体** LUIS 具有多个预构建的域模型，它们自带意向、话语和[预构建的实体](luis-prebuilt-entities.md)。 即使不使用预构建的模型中的意向和话语，也能使用预构建的实体。 预构建的实体可助你节省时间。
 
 * **自定义实体** LUIS 提供多种方式来自行标识自定义的[实体](luis-concept-entity-types.md)，比如机器学习到的实体、特定或文本实体，以及机器学习到的实体和文本实体的组合。
 
-### <a name="example-utterances"></a>示例话语
+### <a name="example-utterances"></a>示例陈述
 示例[话语](luis-how-to-add-example-utterances.md)指客户端应用程序需要理解的用户文本输入。 它可能是一个句子，比如“预订到巴黎的机票”，也可能是句子的片段，比如“预订”或“巴黎航班”。 话语不总是格式正确，特定意向可能具有多个话语变体。 向每个意向添加 10 到 20 个示例话语，并在每个话语中标出实体。
 
 |示例用户话语|意向|实体|
@@ -95,7 +95,7 @@ LUIS 提供多种方式来标识和分类实体。
 |“你的店铺何时开门？”|店铺营业时间和位置|开门|
 |“安排下午 1 点与分销部的何石谈话”|安排谈话|下午 1 点，何石|
 
-## <a name="improve-prediction-accuracy"></a>提高预测的准确性
+## <a name="improve-prediction-accuracy"></a>提高预测准确性
 在 LUIS 应用发布和接收实时用户话语之后，LUIS 提供了多种方式来提升预测的准确性：针对终结点话语的[主动学习](#active-learning)、针对域字词内容的[短语列表](#phrase-lists)，以及用于减少所需话语数的[模式](#patterns)。
 
 ### <a name="active-learning"></a>主动学习

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 10f4b6ec29c2d9539fa7fe61c96581755e630822
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b0d6a797e4fe84ce2cb969d001ff96177f6ac641
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23665596"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097040"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
 ## <a name="overview"></a>概述
@@ -205,7 +205,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作负荷摘要
 下表列出了受支持的 StorSimple 工作负荷摘要。
 
-| 方案 | 工作负载 | 支持 | 限制 | 版本 |
+| 场景 | 工作负载 | 支持 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 协作 |文件共享 |是 | |所有版本 |
 | 协作 |分布式文件共享 |是 | |所有版本 |
@@ -232,7 +232,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 下面是 StorSimple 支持的基础结构组件列表。
 
-| 方案 | 工作负载 | 支持 | 限制 | 版本 |
+| 场景 | 工作负载 | 支持 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 常规 |Express Route |是 | |所有版本 |
 | 常规 |DataCore FC |是* |受 DataCore SANsymphony 支持 |所有版本 |
@@ -249,7 +249,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | 备份目标 |Veeam |Veeam v9 和更高版本 |[用作备份目标的 StorSimple 与 Veaam 的集成](storsimple-configure-backup-target-veeam.md)|
 | 备份目标 |Veritas Backup Exec |Backup Exec 16 和更高版本 |[用作备份目标的 StorSimple 与 Backup Exec 的集成](storsimple-configure-backup-target-using-backup-exec.md)|
 | 备份目标 |Veritas NetBackup |NetBackup 7.7.x 和更高版本  |[用作备份目标的 StorSimple 与 NetBackup 的集成](storsimple-configure-backuptarget-netbackup.md)|
-| 全局文件共享 <br></br> 协作 |Talon  |[StorSimple 与 Talon 的集成](https://www.talonstorage.com/products/fast-deployment-azure-storsimple) | |
+| 全局文件共享 <br></br> 协作 |Talon  |[StorSimple 与 Talon 的集成](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
 
 ## <a name="storsimple-terminology"></a>StorSimple 术语
 部署 Microsoft Azure StorSimple 解决方案之前，我们建议查看以下术语和定义。

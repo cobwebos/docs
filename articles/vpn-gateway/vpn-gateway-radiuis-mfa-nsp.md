@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: genli
-ms.openlocfilehash: 665e1914f44d7c5e650a1b632d8b11c6d8a5931a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c9985f6ad8721460e973d3c43f1f035506ae697c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100068"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>将 Azure VPN 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证 
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="prerequisite"></a>先决条件
 
-若要启用 MFA，用户必须位于 Azure Active Directory (Azure AD) 中，后者必须从本地或云环境进行同步。 此外，用户还必须已完成 MFA 的自动注册过程。  有关详细信息，请参阅[为帐户设置双重验证](../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
+若要启用 MFA，用户必须位于 Azure Active Directory (Azure AD) 中，后者必须从本地或云环境进行同步。 此外，用户还必须已完成 MFA 的自动注册过程。  有关详细信息，请参阅[为帐户设置双重验证](../active-directory/authentication/end-user/current/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="detailed-steps"></a>详细步骤
 

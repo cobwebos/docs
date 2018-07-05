@@ -11,16 +11,16 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cfcb87fdff8105b25d4f7e63b775aaf9243d2a90
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 859a410a4ff9204e8e52fbd2cc3b38823f4bb830
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317001"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435212"
 ---
 # <a name="manage-access-using-rbac-and-the-rest-api"></a>使用 RBAC 和 REST API 管理访问权限
 
@@ -54,7 +54,7 @@ ms.locfileid: "36317001"
 
 ## <a name="grant-access"></a>授予访问权限
 
-在 RBAC 中，若要授予访问权限，请创建角色分配。 若要创建角色分配，请使用[角色分配 - Create](/rest/api/authorization/roleassignments/create) REST API 并指定安全主体、角色定义和范围。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/write` 操作的访问权限。 在内置角色中，只有“所有者”[](built-in-roles.md#owner)和“用户访问管理员”[](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
+在 RBAC 中，若要授予访问权限，请创建角色分配。 若要创建角色分配，请使用[角色分配 - Create](/rest/api/authorization/roleassignments/create) REST API 并指定安全主体、角色定义和范围。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/write` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
 
 1. 使用[角色定义 - List](/rest/api/authorization/roledefinitions/list) REST API 或参阅[内置角色](built-in-roles.md)，获取你想要分配的角色定义的标识符。
 
@@ -93,7 +93,7 @@ ms.locfileid: "36317001"
 
 ## <a name="remove-access"></a>删除访问权限
 
-在 RBAC 中，若要删除访问权限，请删除角色分配。 若要删除角色分配，请使用[角色分配 - Delete](/rest/api/authorization/roleassignments/delete) REST API。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/delete` 操作的访问权限。 在内置角色中，只有“所有者”[](built-in-roles.md#owner)和“用户访问管理员”[](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
+在 RBAC 中，若要删除访问权限，请删除角色分配。 若要删除角色分配，请使用[角色分配 - Delete](/rest/api/authorization/roleassignments/delete) REST API。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/delete` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
 
 1. 获取角色分配标识符 (GUID)。 首次创建角色分配时将返回此标识符，也可以通过列出角色分配来获取它。
 

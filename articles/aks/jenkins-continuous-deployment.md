@@ -2,18 +2,19 @@
 title: Jenkins 持续部署与 Azure Kubernetes 服务中的 Kubernetes
 description: 如何使用 Jenkins 自动完成持续部署过程，以便在 Azure Kubernetes 服务中的 Kubernetes 上部署和升级容器化应用
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 376d3b916c4e01ea6111e6c1db63e976dd1ea320
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 84baf01ce6eeed8dc569d7a856189aefba788126
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096469"
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>使用 Jenkins 和 Azure Kubernetes 服务进行持续部署
 

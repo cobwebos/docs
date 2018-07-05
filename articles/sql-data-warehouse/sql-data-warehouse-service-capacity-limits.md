@@ -2,20 +2,20 @@
 title: 容量限制 - Azure SQL 数据仓库 | Microsoft Docs
 description: Azure SQL 数据仓库的各个组件允许的最大值。
 services: sql-data-warehouse
-author: antvgski
+author: sachinpMSFT
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
+ms.date: 06/28/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: b79d928f3c1c3d81fbca0b8d676d4a4cbf83369a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 82ad6239923f78641bfa80027ed62242b45b95eb
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839633"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096251"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL 数据仓库容量限制
 Azure SQL 数据仓库的各个组件允许的最大值。

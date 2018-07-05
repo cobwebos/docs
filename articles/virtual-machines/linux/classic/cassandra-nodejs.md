@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 93cd4b6c4264c5905746b85f9fa46ce31ebd9e9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: b1945c68f0e320c834ae93a590f420403263a0fd
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937663"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098934"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>使用 Node.js 在适用于 Linux 的 Azure 上运行 Cassandra 群集
 
@@ -61,7 +61,7 @@ Cassandra 可以部署到单个或多个 Azure 区域，具体取决于工作负
 
 群集种子：必须选择可用性最高的节点作为种子，因为新节点需要与种子节点进行通信才能发现群集的拓扑。 会从每个可用性集中选择一个节点作为种子节点，以免出现单节点故障。
 
-**复制因子和一致性级别：** Cassandra 固有的高可用性和数据耐用性通过复制因子（RF - 存储在群集中的每一行的副本数目）和一致性级别（在将结果返回到调用方之前需要读取/写入的副本数）来表示。 复制因子是在创建 KEYSPACE（类似于关系数据库）过程中指定的，而一致性级别则是在发出 CRUD 查询时指定的。 有关一致性的详细信息以及进行仲裁计算的公式，请参阅 Cassandra 文档：[针对一致性进行配置](http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html)。
+**复制因子和一致性级别：** Cassandra 固有的高可用性和数据耐用性通过复制因子（RF - 存储在群集中的每一行的副本数目）和一致性级别（在将结果返回到调用方之前需要读取/写入的副本数）来表示。 复制因子是在创建 KEYSPACE（类似于关系数据库）过程中指定的，而一致性级别则是在发出 CRUD 查询时指定的。 有关一致性的详细信息以及进行仲裁计算的公式，请参阅 Cassandra 文档：[针对一致性进行配置](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html)。
 
 Cassandra 支持两种类型的数据完整性模型 - 一致性和最终一致性；复制因子和一致性级别共同决定了数据是在写操作完成后就表现出一致性，还是最终才表现出一致性。 例如，如果指定 QUORUM 作为一致性级别，则只要一致性级别低于需要写入的副本数，就会根据需要写入相应的副本数以满足 QUORUM（例如 1）结果，使得数据最终保持一致。
 
@@ -75,8 +75,8 @@ Cassandra 支持两种类型的数据完整性模型 - 一致性和最终一致�
 | 复制因子 (RF) |3 |给定行副本数 |
 | 一致性级别（写入） |QUORUM [(RF/2) +1) = 2] 公式的结果向下舍入 |在将响应发送到调用方之前，最多写入 2 个副本；第 3 个副本将采取最终一致性方式写入。 |
 | 一致性级别（读取） |QUORUM [(RF/2) +1= 2] 公式结果向下舍入 |在将响应发送到调用方之前读取 2 个副本。 |
-| 复制策略 |NetworkTopologyStrategy 请参阅 Cassandra 文档中的[数据复制](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)了解更多信息 |了解部署拓扑，将副本置于节点上时，需确保最终不会让所有副本位于同一机架上 |
-| Snitch |GossipingPropertyFileSnitch 请参阅 Cassandra 文档中的 [Snitch](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) 获取更多信息 |NetworkTopologyStrategy 使用 snitch 这个概念来了解拓扑。 在将每个节点映射到数据中心和机架时，使用 GossipingPropertyFileSnitch 可以更好地进行控制。 然后，该群集使用 gossip 来传播此信息。 相对于 PropertyFileSnitch，此方法在进行动态 IP 设置时要简单得多 |
+| 复制策略 |NetworkTopologyStrategy 请参阅 Cassandra 文档中的[数据复制](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html)了解更多信息 |了解部署拓扑，将副本置于节点上时，需确保最终不会让所有副本位于同一机架上 |
+| Snitch |GossipingPropertyFileSnitch 请参阅 Cassandra 文档中的 [Snitch](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) 获取更多信息 |NetworkTopologyStrategy 使用 snitch 这个概念来了解拓扑。 在将每个节点映射到数据中心和机架时，使用 GossipingPropertyFileSnitch 可以更好地进行控制。 然后，该群集使用 gossip 来传播此信息。 相对于 PropertyFileSnitch，此方法在进行动态 IP 设置时要简单得多 |
 
 **针对 Cassandra 群集的 Azure 注意事项：** Microsoft Azure 虚拟机功能使用 Azure Blob 存储以确保磁盘持久性；Azure 存储为每个磁盘保留 3 个副本以确保高耐用性。 这意味插入到 Cassandra 表的每行数据都已存储在三个副本中。 因此，即使复制因子 (RF) 为 1，也仍将处理数据一致性。 复制因子为 1 的主要问题是，即使单个 Cassandra 节点发生故障，应用程序也会体验到停机。 不过，如果某个节点因 Azure 结构控制器检测到问题（例如，硬件故障、系统软件故障）而关闭，则会使用相同的存储驱动器预配一个新节点来代替旧节点。 预配一个新节点来代替旧节点可能需要数分钟的时间。  类似地，如果要进行规划好的维护活动（例如来宾 OS 更改、Cassandra 升级和应用程序更改），Azure 结构控制器会在群集中对节点进行滚动升级。  滚动升级也会一次关闭数个节点，因此该群集会出现数个分区短暂停机的现象。 不过，由于固有的 Azure 存储冗余，数据不会丢失。  
 
@@ -110,8 +110,8 @@ Cassandra 的上述数据中心感知型复制和一致性模型可以很方便�
 | 复制因子 (RF) |3 |给定行副本数 |
 | 一致性级别（写入） |LOCAL_QUORUM [(sum(RF)/2) +1) = 4] 公式结果向下舍入 |2 个节点将同步写入第一个数据中心；满足仲裁所需的其余 2 个节点将通过异步方式写入第二个数据中心。 |
 | 一致性级别（读取） |LOCAL_QUORUM ((RF/2) +1) = 2 公式结果向下舍入 |读取请求仅从一个区域满足；在将响应发送回客户端之前，读取 2 个节点。 |
-| 复制策略 |NetworkTopologyStrategy 请参阅 Cassandra 文档中的[数据复制](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)了解更多信息 |了解部署拓扑，将副本置于节点上时，需确保最终不会让所有副本位于同一机架上 |
-| Snitch |GossipingPropertyFileSnitch 请参阅 Cassandra 文档中的 [Snitch](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) 获取更多信息 |NetworkTopologyStrategy 使用 snitch 这个概念来了解拓扑。 在将每个节点映射到数据中心和机架时，使用 GossipingPropertyFileSnitch 可以更好地进行控制。 然后，该群集使用 gossip 来传播此信息。 相对于 PropertyFileSnitch，此方法在进行动态 IP 设置时要简单得多 |
+| 复制策略 |NetworkTopologyStrategy 请参阅 Cassandra 文档中的[数据复制](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html)了解更多信息 |了解部署拓扑，将副本置于节点上时，需确保最终不会让所有副本位于同一机架上 |
+| Snitch |GossipingPropertyFileSnitch 请参阅 Cassandra 文档中的 [Snitch](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) 获取更多信息 |NetworkTopologyStrategy 使用 snitch 这个概念来了解拓扑。 在将每个节点映射到数据中心和机架时，使用 GossipingPropertyFileSnitch 可以更好地进行控制。 然后，该群集使用 gossip 来传播此信息。 相对于 PropertyFileSnitch，此方法在进行动态 IP 设置时要简单得多 |
 
 ## <a name="the-software-configuration"></a>软件配置
 在部署过程中使用以下软件版本：

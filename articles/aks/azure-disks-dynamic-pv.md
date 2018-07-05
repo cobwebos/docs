@@ -2,18 +2,18 @@
 title: 将 Azure 磁盘与 AKS 配合使用
 description: 将 Azure 磁盘与 AKS 配合使用
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
-ms.author: nepeters
-ms.openlocfilehash: 3841222d08b23f43f69e77fa43c469793b70ce63
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: iainfou
+ms.openlocfilehash: ddac68b2a47fc830055b9dd5bd705802cc29c52f
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801375"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095920"
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>含 Azure 磁盘的永久性卷
 
@@ -118,6 +118,6 @@ kubectl apply -f azure-pvc-disk.yaml
 [managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
-[azure-disk-volume]: azure-disk-volume.md 
+[azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/windows/premium-storage.md

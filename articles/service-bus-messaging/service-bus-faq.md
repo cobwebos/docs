@@ -8,16 +8,16 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: df60862b6a835340534be4ed43a27267c33b64f5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: b3171ca264afdbdbddeb26eff8744ee67f336dfe
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802259"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109512"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 
-本文讨论了一些关于 Microsoft Azure 服务总线的常见问题解答。 还可以访问 [Azure 支持常见问题解答](http://go.microsoft.com/fwlink/?LinkID=185083)了解常规的 Azure 定价和支持信息。
+本文讨论了一些关于 Microsoft Azure 服务总线的常见问题解答。 还可以访问 [Azure 支持常见问题解答](https://azure.microsoft.com/en-us/support/faq/)了解常规的 Azure 定价和支持信息。
 
 ## <a name="general-questions-about-azure-service-bus"></a>关于 Azure 服务总线的一般问题
 ### <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
@@ -56,7 +56,7 @@ ms.locfileid: "34802259"
 
 [服务总线定价和计费](service-bus-pricing-billing.md)译文介绍了服务总线中的计费标准。 有关服务总线定价选项的具体信息，请参阅[服务总线定价详细信息](https://azure.microsoft.com/pricing/details/service-bus/)。
 
-还可以访问 [Azure 支持常见问题解答](http://go.microsoft.com/fwlink/?LinkID=185083)了解常规的 Azure 定价信息。 
+还可以访问 [Azure 支持常见问题解答](https://azure.microsoft.com/en-us/support/faq/)了解常规的 Azure 定价信息。 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>服务总线如何收取费用？
 有关服务总线定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。 除标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。

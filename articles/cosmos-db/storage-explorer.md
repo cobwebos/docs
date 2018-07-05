@@ -4,7 +4,7 @@ description: 了解如何在 Azure 存储资源管理器中管理 Azure Cosmos D
 Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
 services: cosmos-db
 author: Jejiang
-manager: omafnan
+manager: kfile
 editor: ''
 tags: Azure Cosmos DB
 ms.service: cosmos-db
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 3b870ed638656ee3b1b0e46fe9bac44e4436f154
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b45328425cff978377d5e05de487d42e786c063b
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612837"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345101"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>在 Azure 存储资源管理器中管理 Azure Cosmos DB
 

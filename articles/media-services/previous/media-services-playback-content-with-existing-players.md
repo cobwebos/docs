@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/02/2018
 ms.author: juliako
-ms.openlocfilehash: a64d32747371aab2bd927e53c5d43e30de9108f9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3fe82b98163182c73a144b72da371e8aa195e8cf
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783156"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435851"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用现有播放器播放内容
 Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题指出了可用来测试流的现有播放器。
@@ -48,8 +48,6 @@ Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 
 [http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
 
 ### <a name="silverlight-players"></a>Silverlight 播放器
-#### <a name="monitoring"></a>监视
-[http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor)
 
 #### <a name="playready-with-token"></a>带令牌的 PlayReady
 [http://sltoken.azurewebsites.net](http://sltoken.azurewebsites.net)

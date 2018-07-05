@@ -2,18 +2,18 @@
 title: 在 Azure Kubernetes 服务 (AKS) 群集中运行虚拟 kubelet
 description: 使用虚拟 kubelet 在 Azure 容器实例上运行 Kubernetes 容器。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 06/12/2018
-ms.author: nepeters
-ms.openlocfilehash: 0d046970b40f5253b07005ab578035c7c179e7df
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: iainfou
+ms.openlocfilehash: 04fdb1620dc6e7147ed10ae6eeeaeb3eeae14b62
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304008"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097353"
 ---
 # <a name="virtual-kubelet-with-aks"></a>带有 AKS 的虚拟 Kubelet
 
@@ -177,7 +177,7 @@ az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --conn
 [aks-install-connector]: /cli/azure/aks#az-aks-install-connector
 
 <!-- LINKS - external -->
-[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create
+[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#get
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: da44fb2982c76b849181683f308e414c3d3f0b7a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8eb12764cf5df539f61842ba3602c6265c1e2b86
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331200"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441203"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助服务应用程序访问
 
@@ -85,4 +85,4 @@ ms.locfileid: "36331200"
 这些批准仅支持单个审批工作流，意味着如果指定多个审批人，任何一个审批人都可以批准对该应用程序的访问。
 
 ## <a name="next-steps"></a>后续步骤
-[为自助组管理设置 Azure Active Directory](active-directory-accessmanagement-self-service-group-management.md)
+[为自助组管理设置 Azure Active Directory](users-groups-roles/groups-self-service-management.md)

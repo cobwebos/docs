@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2017
 ms.author: cherylmc
-ms.openlocfilehash: 64203e2cbac1206224f0e0ad8b7d364f19ad0332
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 86e101ee78cfa709c6957c7658f103ce787a6351
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
-ms.locfileid: "26357661"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110848"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>通过 ExpressRoute Microsoft 对等互连配置站点到站点的 VPN
 
@@ -40,7 +40,7 @@ ms.locfileid: "26357661"
 
   ![高可用性选项](./media/site-to-site-vpn-over-microsoft-peering/HighAvailability.png)
 
-终止通过 Microsoft 对等互连配置的 VPN 隧道有两种方法：使用 VPN 网关；使用 Azure Marketplace 提供的合适的网络虚拟设备 (NVA)。 可通过加密隧道静态或动态地交换路由，无需向底层 Microsoft 对等互连公开路由交换。 在本文的示例中，BGP（与用于创建 Microsoft 对等互连的 BGP 会话不同）用于在加密隧道上动态交换前缀。
+终止通过 Microsoft 对等互连配置的 VPN 隧道有两种方法：使用 VPN 网关；使用 Azure 市场提供的合适的网络虚拟设备 (NVA)。 可通过加密隧道静态或动态地交换路由，无需向底层 Microsoft 对等互连公开路由交换。 在本文的示例中，BGP（与用于创建 Microsoft 对等互连的 BGP 会话不同）用于在加密隧道上动态交换前缀。
 
 >[!IMPORTANT]
 >对于本地端，通常会在 DMZ 上终止 Microsoft 对等互连，在核心网络区域终止专用对等互连。 两个区域使用防火墙分隔。 如果将 Microsoft 对等互连配置为专用于启用通过 ExpressRoute 配置的安全隧道，请记住只筛选相关的公共 IP，这些 IP 通过 Microsoft 对等互连播发。
@@ -167,7 +167,7 @@ Get-AzureRmBgpServiceCommunity
   "gatewayName": "vpnGw",                 // Name of the Azure VPN gateway
   "gatewaySku": "VpnGw1",                 // Azure VPN gateway SKU
   "vpnType": "RouteBased",                // type of VPN gateway
-  "sharedKey": "string",                  // shared secret needs to match with on-premise configuration
+  "sharedKey": "string",                  // shared secret needs to match with on-premises configuration
   "asnVpnGateway": 65000,                 // BGP Autonomous System number assigned to the VPN Gateway 
   "asnRemote": 65010,                     // BGP Autonmous Syste number assigned to the on-premises device
   "bgpPeeringAddress": "172.16.0.3",      // IP address of the remote BGP peer on-premises

@@ -2,18 +2,18 @@
 title: 使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 description: 了解如何使用 Azure Active Directory 服务主体从 Azure Kubernetes 服务访问专用容器注册表中的映像。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
-ms.author: nepeters
-ms.openlocfilehash: 0888afbb9087251e2c9219e2eb32fbf0d5600304
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: iainfou
+ms.openlocfilehash: 8cfd70275caa13c708f7d2f46cdc71e0f190ca0e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33767880"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100617"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 

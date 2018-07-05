@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 03/04/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 3d1027a2fe53a45b089fbae29a831d9e23df059e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: cbb0e6c4f72e53938ba8ee838a1db9cab5357fc2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233316"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441016"
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Azure Active Directory PIM 中的不同管理角色
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -28,7 +28,7 @@ ms.locfileid: "35233316"
 > [!IMPORTANT]
 > Microsoft 推荐使用 Azure 门户的 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。
 
-全局管理员可以使用 PowerShell cmdlet（例如 `Add-MsolRoleMember` 和 `Remove-MsolRoleMember`）或者根据[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)中所述，通过门户更新要将哪些用户“永久”分配到 Azure AD 中的角色。
+全局管理员可以使用 PowerShell cmdlet（例如 `Add-MsolRoleMember` 和 `Remove-MsolRoleMember`）或者根据[在 Azure Active Directory 中分配管理员角色](users-groups-roles/directory-assign-admin-roles.md)中所述，通过门户更新要将哪些用户“永久”分配到 Azure AD 中的角色。
 
 Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具有特权的用户的策略。 PIM 将用户分配到 Azure AD 中的一个或多个角色，可以分配某位用户永久充当该角色，或者使其符合该角色的资格。 将用户永久分配到某个角色或者激活合格角色分配时，他们可以使用分配到角色的权限来管理 Azure Active Directory、Office 365 和其他应用程序。
 
@@ -52,7 +52,7 @@ Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具
 * **SharePoint 管理员（预览）**：具有通过 SharePoint Online 管理中心访问 SharePoint Online 的管理权限，可在 SharePoint Online 中执行几乎所有的任务。 此角色目前处于预览状态。 在 PIM 中激活后，符合条件的用户在 SharePoint 中使用此角色可能会发生延迟。
 * **Skype for Business 管理员**：具有通过 Skype for Business 管理中心访问 Skype for Business 的管理权限，可在 Skype for Business Online 中执行几乎所有的任务。
 
-有关详细信息，请参阅文章[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)以及[在 Office 365 中分配管理员角色](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504)。
+有关详细信息，请参阅文章[在 Azure AD 中分配管理员角色](users-groups-roles/directory-assign-admin-roles.md)以及[在 Office 365 中分配管理员角色](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504)。
 
 <!--**PLACEHOLDER: The above article may not be the one we want since PIM gets roles from places other that Office 365**-->
 

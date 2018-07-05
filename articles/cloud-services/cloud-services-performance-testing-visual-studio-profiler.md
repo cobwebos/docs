@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: 8ff7b88a3086488ab669288687c274237ca30b47
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ea46039583681bd89e254d153997e3a300041d4e
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30284551"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341348"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务的性能
 可通过各种工具和技术来测试云服务的性能。
@@ -167,7 +167,7 @@ public static string Concatenate(int number)
 ## <a name="next-steps"></a>后续步骤
 Visual Studio 探查器不支持在模拟器中检测 Azure 二进制文件，但要测试内存分配，可以在分析时选择该选项。 此外，可以选择并发分析，这会帮助你确定线程是否正在浪费时间竞争锁；也可以选择层交互分析，这会帮助你跟踪在应用程序的各个层之间（最常见的是数据层和辅助角色之间）进行交互时的性能问题。  可以查看应用程序生成的数据库查询并使用分析数据来改进对数据库的使用。 有关层交互分析的信息，请参阅博客文章[演练：在 Visual Studio Team System 2010 中使用层交互探查器][3]。
 
-[1]: http://msdn.microsoft.com/library/azure/hh369930.aspx
+[1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
 [2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
 [3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png

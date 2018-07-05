@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 2916252c08c599d2e528595a8cdf2abca8ea89a3
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3715dcceb4330f6eaab01f49aee9d4d19663b62e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939710"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099649"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
@@ -54,7 +54,7 @@ ms.locfileid: "36939710"
 ### <a name="synthetic-data-source"></a>综合数据源
 对于此模板，使用的数据源是从桌面应用程序生成的，将下载应用程序并于部署成功后在本地运行。
 
-若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) 由 [NASA 数据存储库](https://c3.nasa.gov/dashlink/resources/139/)中的公开可用数据派生的。
+若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) 由 [NASA 数据存储库](https://c3.nasa.gov/dashlink/resources/139/)中的公开可用数据派生的。
 
 仅当它在计算机上运行时，事件生成应用程序才填充 Azure 事件中心。  
 
@@ -82,7 +82,7 @@ ms.locfileid: "36939710"
 ## <a name="how-to-bring-in-your-own-data"></a>如何输入自己的数据
 本部分说明如何将自己的数据输入 Azure，以及对于放入此体系结构的数据，需要更改哪些方面。
 
-你的数据集不可能符合用于此解决方案模板的 [Turbofan 引擎降级模拟数据集](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan)所使用的数据集。 了解数据与需求对于如何修改此模板以配合自己的数据非常重要。 
+你的数据集不可能符合用于此解决方案模板的 [Turbofan 引擎降级模拟数据集](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)所使用的数据集。 了解数据与需求对于如何修改此模板以配合自己的数据非常重要。 
 
 以下部分介绍引入新数据集需要修改的模板部分。
 

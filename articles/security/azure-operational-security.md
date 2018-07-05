@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d5bea758a0b2a950f51ec443707d9d32dee9cbc4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 60260d7bcff07a9ce2d680c84119d11271579e7d
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895674"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342263"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>介绍
@@ -102,7 +102,7 @@ Azure 备份中的受保护数据存储在位于特定地理区域的备份保�
 [Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。
 
 
-[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现使用一个或多个 OMS 服务的特定管理方案。 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
+[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现使用一个或多个 OMS 服务的特定管理方案。 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 市场或快速启动模板将它们提供给用户。
 
 
 ![管理解决方案](./media/azure-operational-security/azure-operational-security-fig4.png)
@@ -151,7 +151,7 @@ Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集�
 
 -   数据访问：为提供安全建议和调查潜在的安全威胁，Microsoft 人员可能访问 Azure 服务收集或分析的信息，包括故障转储文件、进程创建事件、VM 磁盘快照和项目，因此可能意外地包括了虚拟机中的客户数据或个人数据。 我们遵守 [Microsoft Online Services 条款和隐私声明](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)，其中指出，Microsoft 不会出于广告或类似的商业目的利用客户数据，或者从客户数据衍生信息。
 
--   **数据使用**：Microsoft 使用多个租户所使用的模式和威胁情报增强用户预防和检测威胁的能力；执行过程中遵循[隐私声明](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx)中所述的隐私承诺。
+-   **数据使用**：Microsoft 使用多个租户所使用的模式和威胁情报增强用户预防和检测威胁的能力；执行过程中遵循[隐私声明](https://www.microsoft.com/en-us/privacystatement/OnlineServices/)中所述的隐私承诺。
 
 ### <a name="data-location"></a>数据位置
 

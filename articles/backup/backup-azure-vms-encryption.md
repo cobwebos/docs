@@ -2,19 +2,19 @@
 title: 使用 Azure 备份来备份和还原已加密的 VM
 description: 本文介绍如何备份和还原使用 Azure 磁盘加密功能加密的 VM。
 services: backup
-author: JPallavi
+author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 10/13/2017
-ms.author: pajosh
+ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18a4b0f369ea7ed65945fd43a60cbf44589ca8f2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49361aef774e9eb5a0995bc106e73b236a71b0bb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607280"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441125"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>使用 Azure 备份来备份和还原已加密的虚拟机
 本文介绍使用 Azure 备份来备份和还原虚拟机 (VM) 的步骤。 此外，提供有关受支持的方案、先决条件以及针对错误案例的疑难解答步骤的详细信息。

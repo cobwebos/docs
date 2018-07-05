@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 665365e06ef02698c10259628f6bf2442ab8d612
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f1a1a2fa083dd1bf02132e08981d736a17a2c58f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333507"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109477"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -121,5 +121,5 @@ ms.locfileid: "36333507"
   (5) - 应用程序在合并 CA 提供的 X509 证书后，就完成了新证书创建过程。
 
 ## <a name="see-also"></a>另请参阅
-- [证书操作](/rest/api/keyvault/certificate-operations.md)
+- [证书操作](/rest/api/keyvault/certificate-operations)
 - [关于键、密钥和证书](about-keys-secrets-and-certificates.md)

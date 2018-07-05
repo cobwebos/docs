@@ -2,19 +2,19 @@
 title: 在 Azure 容器实例中部署多容器组
 description: 了解如何在 Azure 容器实例中部署包含多个容器的容器组。
 services: container-instances
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: db3f616d85c21f01c751fd82532289593a6e7e45
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 6d337c9ed23ac9af884f4113b046a8e9756fd441
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850563"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097098"
 ---
 # <a name="deploy-a-container-group"></a>部署容器组
 
@@ -25,7 +25,7 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
 * 资源管理器模板部署（本文）
 * [YAML 文件部署](container-instances-multi-container-yaml.md)
 
-如果需要在部署容器实例时部署其他 Azure 服务资源（例如，共享 Azure 文件），建议采用资源管理器模板部署方法。 由于 YAML 格式更简洁，因此建议在仅部署容器实例时，采用 YAML 文件部署方法。
+如果需要在部署容器实例时部署其他 Azure 服务资源（例如，共享 Azure 文件），建议采用资源管理器模板部署方法。 由于 YAML 格式更简洁，因此，当部署仅包括容器实例时，建议使用 YAML 文件进行部署。
 
 > [!NOTE]
 > 多容器组当前仅限于 Linux 容器。 我们正致力于为 Windows 容器提供全部功能，你可在 [Azure 容器实例的配额和区域可用性](container-instances-quotas.md)中了解当前的平台差异。

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/01/2018
 ms.author: juliako
-ms.openlocfilehash: 13447fd9193374d80ed5c2e6af8543f11b95e709
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 63cf7633a2280682b3a3da7e8939e71e83ee8f3b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783526"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342103"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
  可以使用 Azure 媒体服务在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 
@@ -94,8 +94,6 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 
 ## <a name="related-links"></a>相关链接
 
-* [Azure 媒体服务 PlayReady 许可证交付定价详述](http://mingfeiy.com/playready-pricing-explained-in-azure-media-services)
-* [在 Azure 媒体服务中调试 AES 加密流](http://mingfeiy.com/debug-aes-encrypted-stream-azure-media-services)
 * [JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
 * [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 相集成，并基于 JWT 声明限制内容密钥传送](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
