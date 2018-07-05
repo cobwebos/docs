@@ -1,6 +1,6 @@
 ---
-title: 适用于 R Server on HDInsight 的 Azure 存储解决方案 - Azure | Microsoft Docs
-description: 了解 HDInsight 上的 R Server 所提供的不同存储选项
+title: 适用于 ML Services on HDInsight 的 Azure 存储解决方案 - Azure | Microsoft Docs
+description: 了解 ML Services on HDInsight 所提供的不同存储选项
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,17 +11,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 23e32a913fb73d2207f7cf37ce6230e428fbe95c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f5b9b180f8a6f825e4d91850ee72af19e6d09a4c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052957"
 ---
-# <a name="azure-storage-solutions-for-r-server-on-azure-hdinsight"></a>适用于 Azure HDInsight 上的 R Server 的 Azure 存储解决方案
+# <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
 
-HDInsight 上的 R Server 具有多种存储解决方案，用于保留数据、代码或包含分析结果的对象。 这包括以下选项：
+ML Services on HDInsight 可使用各种存储解决方案来保存数据、代码或包含分析结果的对象。 这包括以下选项：
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake 存储](https://azure.microsoft.com/services/data-lake-store/)
@@ -34,14 +35,14 @@ HDInsight 上的 R Server 具有多种存储解决方案，用于保留数据、
 - [配合使用 Azure 存储与 HDInsight ](../hdinsight-hadoop-use-blob-storage.md)
 - [配合使用 Data Lake Store 和 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-store.md)
 
-## <a name="use-azure-blob-storage-accounts-with-r-server-cluster"></a>将 Azure Blob 存储帐户用于 R Server 群集
+## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>将 Azure Blob 存储帐户用于 ML Services 群集
 
-如果在创建 R Server 群集时指定了多个存储帐户，以下说明介绍如何使用辅助帐户在 R Server 群集上访问数据和执行操作。 假定为以下存储帐户和容器：storage1 和名为 container1 的一个默认容器以及包含 **container2** 的 storage2。
+如果在创建 ML Services 群集时指定了多个存储帐户，以下说明介绍如何使用辅助帐户在 ML Services 群集上访问数据和执行操作。 假定为以下存储帐户和容器：storage1 和名为 container1 的一个默认容器以及包含 **container2** 的 storage2。
 
 > [!WARNING]
 > 出于性能目的，HDInsight 群集会在与你指定的主存储帐户相同的数据中心内创建。 不支持在 HDInsight 群集之外的其他位置使用存储帐户。
 
-### <a name="use-the-default-storage-with-r-server-on-hdinsight"></a>将默认存储用于 HDInsight 上的 R Server
+### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>将默认存储用于 ML Services on HDInsight
 
 1. 使用 SSH 客户端，连接到群集的边缘节点。 有关将 SSH 与 HDInsight 群集配合使用的信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
   
@@ -72,7 +73,7 @@ HDInsight 上的 R Server 具有多种存储解决方案，用于保留数据、
 
 所有目录和文件引用都指向存储帐户 `wasb://container1@storage1.blob.core.windows.net`。 这是与 HDInsight 群集关联的**默认存储帐户**。
 
-### <a name="use-the-additional-storage-with-r-server-on-hdinsight"></a>将其他存储用于 HDInsight 上的 R Server
+### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>将其他存储用于 ML Services on HDInsight
 
 现在，假设要处理名为 mysamplefile1.csv 的文件，该文件位于 **storage2** 的 **container2** 中的 /private 目录。
 
@@ -105,7 +106,7 @@ HDInsight 上的 R Server 具有多种存储解决方案，用于保留数据、
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
-## <a name="use-an-azure-data-lake-store-with-r-server-cluster"></a>将 Azure Data Lake store 和 R Server 群集配合使用 
+## <a name="use-an-azure-data-lake-store-with-ml-services-cluster"></a>将 Azure Data Lake Store 与 ML Services 群集配合使用 
 
 若要将 Data Lake Store 与 HDInsight 群集配合使用，必须允许群集访问你要使用的每个 Azure Data Lake Store。 有关如何使用 Azure 门户创建 HDInsight 群集，并将 Azure Data Lake Store 帐户作为默认存储或附加存储的说明，请参阅[使用 Azure 门户创建带 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
 
@@ -122,9 +123,9 @@ HDInsight 上的 R Server 具有多种存储解决方案，用于保留数据、
 
 创建群集后，还可向一个或多个 Data Lake store 帐户添加群集访问权限。 打开 Data Lake store 的 Azure 门户条目，转至“数据资源管理器”>“访问权限”>“添加”。 
 
-### <a name="how-to-access-the-data-lake-store-from-r-server-on-hdinsight"></a>如何从 HDInsight 上的 R Server 访问 Data Lake store
+### <a name="how-to-access-the-data-lake-store-from-ml-services-on-hdinsight"></a>如何从 ML Services on HDInsight 访问 Data Lake Store
 
-获得 Data Lake Store 访问权限后，便可以在 HDInsight 上的 R Server 群集中使用该存储，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：
+获得 Data Lake Store 访问权限后，便可以在 HDInsight 上的 ML Services 群集中使用该存储，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：
 
 
     # Point to the ADL store (e.g. ADLtest)
@@ -160,7 +161,7 @@ HDInsight 上的 R Server 具有多种存储解决方案，用于保留数据、
     hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 
 
-## <a name="use-azure-file-storage-with-r-server-on-hdinsight"></a>将 Azure 文件存储用于 HDInsight 上的 R Server
+## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>将 Azure 文件存储用于 ML Services on HDInsight
 
 还有一个可在边缘节点上使用的便利数据存储选项，我们称之为 [Azure 文件]((https://azure.microsoft.com/services/storage/files/)。 使用该选项可将 Azure 存储的文件共享装载到 Linux 文件系统。 对比 HDFS，如果可以在边缘节点上使用本机文件系统，则存储数据文件、R 脚本以及随后可能需要的结果对象将更方便。 
 
@@ -172,7 +173,7 @@ HDInsight 上的 R Server 具有多种存储解决方案，用于保留数据、
 
 ## <a name="next-steps"></a>后续步骤
 
-* [HDInsight 上的 R Server 群集概述](r-server-overview.md)
-* [Hadoop 上的 R Server 群集入门](r-server-get-started.md)
-* [适用于 HDInsight 上的 R Server 群集的计算上下文选项](r-server-compute-contexts.md)
+* [HDInsight 上的 ML Services 群集概述](r-server-overview.md)
+* [Hadoop 上的 ML Services 群集入门](r-server-get-started.md)
+* [适用于 HDInsight 上的 ML Services 群集的计算上下文选项](r-server-compute-contexts.md)
 

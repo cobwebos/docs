@@ -11,28 +11,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/26/2018
+ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 80cec0bc8136142f30ea7b957de819379b1bb139
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c0a07cb872ec87bbf39237b74990a1fc7a74e9e8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619127"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053249"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-data-movement-security-considerations.md)
-> * [版本 2 - 预览版](data-movement-security-considerations.md)
+> * [第 1 版](v1/data-factory-data-movement-security-considerations.md)
+> * [当前版本](data-movement-security-considerations.md)
 
 本文介绍 Azure 数据工厂中数据移动服务用于帮助保护数据的基本安全基础结构。 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
 
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 的数据移动安全注意事项](v1/data-factory-data-movement-security-considerations.md)。
-
 在数据工厂解决方案中，可以创建一个或多个数据[管道](concepts-pipelines-activities.md)。 “管道”是共同执行一项任务的活动的逻辑分组。 这些管道位于创建数据工厂的区域。 
 
-尽管数据工厂仅在美国东部、美国东部 2 和西欧区域（预览版 2）中推出，但数据移动服务已在[全球多个区域](concepts-integration-runtime.md#azure-ir)推出。 如果数据移动服务尚未部署到该区域，数据工厂服务可确保数据不会离开某个地理区域，除非在明确指示服务使用备用区域。 
+尽管数据工厂仅在少数区域中可用，但数据移动服务[在全球范围内可用](concepts-integration-runtime.md#integration-runtime-location)，以确保数据符合性、高效和降低网络出口成本。 
 
 除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂不存储任何其他数据。 使用数据工厂可以创建数据驱动的工作流，协调[受支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](compute-linked-services.md)在其他区域或本地环境中处理数据。 还可以使用 SDK 与 Azure Monitor 来监视和管理工作流。
 
@@ -42,7 +39,7 @@ ms.locfileid: "34619127"
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018)
 -   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
 
-如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://www.microsoft.com/trustcenter)。
+如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 

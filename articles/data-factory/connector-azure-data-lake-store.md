@@ -12,22 +12,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 12402ea30e44534734e0429f850772cbef2f7381
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: cf1ac441f695e5427e57f1a85bafd095777eed80
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287457"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049292"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Store 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-azure-datalake-connector.md)
-> * [版本 2 - 预览版](connector-azure-data-lake-store.md)
+> * [第 1 版](v1/data-factory-azure-datalake-connector.md)
+> * [当前版本](connector-azure-data-lake-store.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动向/从 Azure Data Lake Store 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Data Lake Store 连接器](v1/data-factory-azure-datalake-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -42,6 +39,9 @@ ms.locfileid: "36287457"
 > 如果使用自承载 Integration Runtime 复制数据，请配置企业防火墙以允许通过端口 443 到 `<ADLS account name>.azuredatalakestore.net` 和 `login.microsoftonline.com/<tenant>/oauth2/token` 的出站流量。 后者是 Azure 安全令牌服务 (STS)，IR 需要与之通信以获取访问令牌。
 
 ## <a name="get-started"></a>入门
+
+> [!TIP]
+> 有关使用 Azure Data Lake Store 连接器的演练，请参阅[将数据加载到 Azure Data Lake Store](load-azure-data-lake-store.md)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 345ea6f91593e14ff19616f5512916ee77f38486
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2dab0adb0728a1fb5e8ac9bebe01f861ed8c7c3a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619943"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055262"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-use-custom-activities.md)
-> * [版本 2 - 预览版](transform-data-using-dotnet-custom-activity.md)
+> * [第 1 版](v1/data-factory-use-custom-activities.md)
+> * [当前版本](transform-data-using-dotnet-custom-activity.md)
 
 在 Azure 数据工厂管道中可使用两类活动。
 
@@ -30,10 +30,6 @@ ms.locfileid: "34619943"
 - [数据转换活动](transform-data.md)：使用 Azure HDInsight、Azure Batch 和 Azure 机器学习等计算服务转换数据。 
 
 若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建**自定义活动**，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅[数据工厂版本 1 中的（自定义）DotNet 活动](v1/data-factory-use-custom-activities.md)。
- 
 
 如果不熟悉 Azure Batch 服务，请参阅以下文章：
 
@@ -288,7 +284,7 @@ namespace SampleApp
   "failureType": ""
   "target": "MyCustomActivity"
   ```
-如果要在下游活动中使用 stdout.txt 的内容，则可以在表达式“@activity('MyCustomActivity').output.outputs[0]”中获取 stdout.txt 文件的路径。 
+如果要在下游活动中使用 stdout.txt 的内容，则可以在表达式“\@activity('MyCustomActivity').output.outputs[0]”中获取 stdout.txt 文件的路径。 
 
   > [!IMPORTANT]
   > - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/”路径中。 必要时需要单独清理它们。 
@@ -307,7 +303,7 @@ namespace SampleApp
   下表介绍数据工厂 V2 自定义活动和数据工厂版本 1（自定义）DotNet 活动之间的差异： 
 
 
-|差异      |版本 2 自定义活动      | 版本 1（自定义）DotNet 活动      |
+|差异      | 自定义活动      | 版本 1（自定义）DotNet 活动      |
 | ---- | ---- | ---- |
 |如何定义自定义逻辑      |通过提供可执行文件      |通过实施 .Net DLL      |
 |自定义逻辑的执行环境      |Windows 或 Linux      |Windows (.Net Framework 4.5.2)      |
@@ -318,7 +314,7 @@ namespace SampleApp
 |日志记录      |直接写入到 STDOUT      |在 .Net DLL 中实施记录器      |
 
 
-  如果有针对版本 1（自定义）DotNet 活动编写的现有 .Net 代码，则需要修改代码，使其可用于版本 2 自定义活动。 按照以下高级准则更新代码：  
+  如果有针对版本 1（自定义）DotNet 活动编写的现有 .Net 代码，则需要修改代码，使其可用于当前版本的自定义活动。 按照以下高级准则更新代码：  
 
    - 将项目从 .Net 类库更改到控制台应用。 
    - 使用 `Main` 方法启动应用程序。 不再需要 `IDotNetActivity` 接口的 `Execute` 方法。 
@@ -327,7 +323,7 @@ namespace SampleApp
    - 不再需要 Microsoft.Azure.Management.DataFactories NuGet 包。 
    - 编译代码，将可执行文件及其依赖项上传到 Azure 存储，并在 `folderPath` 属性中定义路径。 
 
-有关端到端 DLL 和数据工厂版本 1 文章[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写为数据工厂版本 2 自定义活动的完整示例，请参阅[数据工厂版本 2 自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。 
+有关端到端 DLL 和数据工厂版本 1 文章[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写为数据工厂自定义活动的完整示例，请参阅[数据工厂自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。 

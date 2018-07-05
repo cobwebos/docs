@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6a3401f620f7dfe8b42bad9ed1a3981325b2ce1e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620470"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046980"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-create-datasets.md)
-> * [版本 2 - 预览版](../concepts-datasets-linked-services.md)
+> * [第 1 版](data-factory-create-datasets.md)
+> * [版本 2（当前版本）](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的数据集](../concepts-datasets-linked-services.md)。
+> 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的数据集](../concepts-datasets-linked-services.md)。
 
 本文介绍了数据集的涵义，采用 JSON 格式定义数据集的方式以及数据集在 Azure 数据工厂管道中的用法。 本文的数据集 JSON 定义中详细介绍了每个部分（例如，结构、可用性和策略）。 本文还提供有关在数据集 JSON 定义中使用 offset、anchorDateTime 和 style 属性的示例。
 
@@ -82,13 +82,13 @@ ms.locfileid: "34620470"
 
 | 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
-| 名称 |数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |不可用 |
-| type |数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#Type)。 |是 |不可用 |
-| structure |数据集的架构。<br/><br/>有关详细信息，请参阅[数据集结构](#Structure)。 |否 |不可用 |
-| typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属性各不相同。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#Type)。 |是 |不可用 |
+| 名称 |数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |NA |
+| type |数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#Type)。 |是 |NA |
+| structure |数据集的架构。<br/><br/>有关详细信息，请参阅[数据集结构](#Structure)。 |否 |NA |
+| typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属性各不相同。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#Type)。 |是 |NA |
 | external | 布尔标志，用于指定数据集是否由数据工厂管道显式生成。 如果活动的输入数据集不由当前管道生成，请将此标志设置为 true。 针对管道中第一个活动的输入数据集，将此标志设置为 true。  |否 |false |
-| availability | 定义数据集生产的处理时段（如每小时或每天）或切片模型。 活动运行使用和生成的每个数据单元称为数据切片。 如果输出数据集的可用性设置为每天（频率 - 天，间隔 - 1），则将每天生成一个切片。 <br/><br/>有关详细信息，请参阅[数据集可用性](#Availability)。 <br/><br/>有关数据集切片模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。 |是 |不可用 |
-| policy |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅[数据集策略](#Policy)部分。 |否 |不可用 |
+| availability | 定义数据集生产的处理时段（如每小时或每天）或切片模型。 活动运行使用和生成的每个数据单元称为数据切片。 如果输出数据集的可用性设置为每天（频率 - 天，间隔 - 1），则将每天生成一个切片。 <br/><br/>有关详细信息，请参阅[数据集可用性](#Availability)。 <br/><br/>有关数据集切片模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。 |是 |NA |
+| policy |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅[数据集策略](#Policy)部分。 |否 |NA |
 
 ## <a name="dataset-example"></a>数据集示例
 在以下示例中，数据集表示 SQL 数据库中名为 MyTable 的表。
@@ -238,11 +238,11 @@ structure:
 
 | 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
-| 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
-| interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”指定为“Minute”，则应将“interval”设置为小于 15 的值。 |是 |不可用 |
+| 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
+| interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”指定为“Minute”，则应将“interval”设置为小于 15 的值。 |是 |NA |
 | style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>若将“frequency”设置为“Month”，将“style”设置为“EndOfInterval”，则会在每月的最后一天生成切片。 若将“style”设置为“StartOfInterval”，则会在每月的第一天生成切片。<br/><br/>若将“frequency”设置为“Day”，将“style”设置为“EndOfInterval”，则会在一天的最后一小时生成切片。<br/><br/>若将 **frequency** 设置为 **Hour**，**style** 设置为 **EndOfInterval**，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
 | anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>注意：如果此属性的日期部分比指定的频率更精细，则忽略更精细部分。 例如，如果“interval”是“每小时”（frequency: hour 且 interval: 1），而 anchorDateTime 包含“分钟和秒”，则将忽略 anchorDateTime 的“分钟和秒”部分。 |否 |01/01/0001 |
-| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/>注意：如果同时指定了 anchorDateTime 和 offset，则结果是组合偏移。 |否 |不可用 |
+| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/>注意：如果同时指定了 anchorDateTime 和 offset，则结果是组合偏移。 |否 |NA |
 
 ### <a name="offset-example"></a>偏移示例
 默认情况下，日常 (`"frequency": "Day", "interval": 1`) 切片在协调世界时凌晨零点（午夜）开始。 要将开始时间改为 UTC 时间早上 6 点，请按以下片段中所示设置偏移量： 
@@ -285,8 +285,8 @@ structure:
 ### <a name="validation-policies"></a>验证策略
 | 策略名称 | 说明 | 适用对象 | 必选 | 默认 |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |验证 Azure Blob 存储中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |不可用 |
-| minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |不可用 |
+| minimumSizeMB |验证 Azure Blob 存储中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |NA |
+| minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
 
 #### <a name="examples"></a>示例
 **minimumSizeMB：**

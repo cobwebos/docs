@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 280c91d6a871984959d587e9895166853e89cc45
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d31859a2af0402789b03447510d510a9658961de
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615676"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051002"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-azure-search-connector.md)
-> * [版本 2 - 预览版](connector-azure-search.md)
+> * [第 1 版](v1/data-factory-azure-search-connector.md)
+> * [当前版本](connector-azure-search.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动将数据复制到 Azure 搜索索引。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 Azure 搜索连接器](v1/data-factory-azure-search-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -37,7 +34,7 @@ ms.locfileid: "34615676"
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Azure 搜索连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 

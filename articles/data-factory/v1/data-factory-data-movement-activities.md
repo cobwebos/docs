@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cdea020ad4c9c9e828d62fff8639acec2e3d6c74
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621915"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054252"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-data-movement-activities.md)
-> * [版本 2 - 预览版](../copy-activity-overview.md)
+> * [第 1 版](data-factory-data-movement-activities.md)
+> * [版本 2（当前版本）](../copy-activity-overview.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的复制活动](../copy-activity-overview.md)。
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅 [V2 中的复制活动](../copy-activity-overview.md)。
 
 ## <a name="overview"></a>概述
 在 Azure 数据工厂中，可使用“复制活动”在本地和云数据存储区之间复制数据。 复制数据后，可对其进一步执行转换和分析操作。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
@@ -108,7 +108,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | &nbsp; | 加拿大中部 | 加拿大中部 |
 | 巴西 | 巴西南部 | 巴西南部 |
 | 欧洲 | 北欧 | 北欧 |
-| &nbsp; | 欧洲西部 | 欧洲西部 |
+| &nbsp; | 西欧 | 西欧 |
 | 英国 | 英国西部 | 英国南部 |
 | &nbsp; | 英国南部 | 英国南部 |
 | 亚太区 | 东南亚 | 东南亚 |

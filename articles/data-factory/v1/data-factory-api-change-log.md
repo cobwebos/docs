@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c5f47379072f4e5d15ffd96c5e45a23d10fff187
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f53c9e2b21e4758bccb6b0f89eb69501df2a6009
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620242"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051393"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure 数据工厂 - .NET API 更改日志
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 
+> 本文适用于数据工厂版本 1。 
 
 本文提供有关特定版本的 Azure 数据工厂 SDK 中的更改信息。 可以在[此处](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)找到 Azure 数据工厂的最新 NuGet 包
 

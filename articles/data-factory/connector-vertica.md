@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（Beta 版本）从 Vertica 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Vertica 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Vertica 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -11,24 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/26/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 56be714224ccdaf9af1afcb18e24a85bed7522b4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d4399fd26c4c536f89bb15e16bfc67fb1d0940fa
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617845"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055259"
 ---
-# <a name="copy-data-from-vertica-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Vertica 复制数据
+# <a name="copy-data-from-vertica-using-azure-data-factory"></a>使用 Azure 数据工厂从 Vertica 复制数据 
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Vertica 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
-
-> [!IMPORTANT]
-> 此连接器目前处于 Beta 版本。 欢迎试用并提供反馈。 请勿在生产环境中使用该版本。
 
 ## <a name="supported-capabilities"></a>支持的功能
 

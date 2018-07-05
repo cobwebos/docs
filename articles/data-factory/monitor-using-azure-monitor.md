@@ -11,22 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 234dacca152dca6e8e212a86f3921c9355f640e4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d1b21897975717db7b733e33b7700bc76e3e065
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620334"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046541"
 ---
-# <a name="monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂  
+# <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
 
-Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 有关详细信息，请参阅[监视概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 Azure 诊断日志是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 数据工厂在 Azure Monitor 中输出诊断日志。 
+Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 有关详细信息，请参阅[监视概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 Azure 诊断日志是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 数据工厂在 Azure Monitor 中输出诊断日志。
 
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[监视和管理数据工厂版本 1 中的管道](v1/data-factory-monitor-manage-pipelines.md)。
+## <a name="persist-data-factory-data"></a>保存数据工厂数据
+数据工厂仅将管道运行数据存储 45 天。 如果希望将管道运行数据保留超过 45 天，则使用 Azure Monitor 不仅可以路由诊断日志以进行分析，还可以将诊断日志保存到存储帐户中，以便在所选的期间内获得工厂信息。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
@@ -101,7 +101,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
             ]
     },
     "location": ""
-} 
+}
 ```
 
 | 属性 | Type | 说明 |
@@ -109,7 +109,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | storageAccountId |String | 要将诊断日志发送到的存储帐户的资源 ID |
 | serviceBusRuleId |String | 要在其中创建事件中心，以便流式传输诊断日志的服务总线命名空间的服务总线规则 ID。 规则 ID 的格式为：“{服务总线资源 ID}/authorizationrules/{密钥名称}”。|
 | workspaceId | 复杂类型 | 指标时间粒度及其保留策略的数组。 目前，此属性为空。 |
-|指标| 要传递到被调用管道的管道运行的参数值| 用于将参数名称映射到参数值的 JSON 对象 | 
+|指标| 要传递到被调用管道的管道运行的参数值| 用于将参数名称映射到参数值的 JSON 对象 |
 | 日志| 复杂类型| 某个资源类型的诊断日志类别的名称。 若要获取资源的诊断日志类别列表，请先执行 GET 诊断设置操作。 |
 | category| String| 日志类别及其保留策略的数组 |
 | timeGrain | String | 以 ISO 8601 持续时间格式捕获的指标的粒度。 必须为 PT1M（1 分钟）|
@@ -231,14 +231,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-[在此处了解详细信息](https://msdn.microsoft.com/library/azure/dn931932.aspx)
+[在此处了解详细信息](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)
 
 ## <a name="schema-of-logs--events"></a>日志和事件的架构
 
 ### <a name="activity-run-logs-attributes"></a>活动运行日志属性
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -252,7 +252,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "activityName":"",
    "start":"",
    "end":"",
-   "properties:" 
+   "properties:"
        {
           "Input": "{
               "source": {
@@ -294,7 +294,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="pipeline-run-logs-attributes"></a>管道运行日志属性
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -307,7 +307,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "start":"",
    "end":"",
    "status":"",
-   "properties": 
+   "properties":
     {
       "Parameters": {
         "<parameter1Name>": "<parameter1Value>"
@@ -340,7 +340,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="trigger-run-logs-attributes"></a>触发器运行日志属性
 
 ```json
-{ 
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -362,7 +362,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
       },
       "SystemParameters": {}
     }
-} 
+}
 
 ```
 
@@ -397,7 +397,7 @@ ADFV2 发出以下指标
 | TriggerSucceededRuns | 成功的触发器运行数指标  | Count    | 总计                | 在一分钟时段内成功的触发器运行总数   |
 | TriggerFailedRuns    | 失败的触发器运行数指标     | Count    | 总计                | 在一分钟时段内失败的触发器运行总数      |
 
-若要访问指标，请按照 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 一文中的说明进行操作 
+若要访问指标，请按照 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 一文中的说明进行操作
 
 ## <a name="alerts"></a>警报
 
@@ -445,4 +445,4 @@ ADFV2 发出以下指标
     ![操作组，第 4 屏，共 4 屏](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>后续步骤
-参阅[以编程方式监视和管理管道](monitor-programmatically.md)一文，了解如何通过运行  来监视和管理管道。 
+参阅[以编程方式监视和管理管道](monitor-programmatically.md)一文，了解如何通过运行  来监视和管理管道。

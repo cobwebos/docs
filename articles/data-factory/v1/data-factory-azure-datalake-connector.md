@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d83e71efa89746d7744893281ffe0ac1169fa08b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8f86f43b4d8c474f338285abffb3c444f5ebc2d7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621466"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054732"
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Store 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-azure-datalake-connector.md)
-> * [版本 2 - 预览版](../connector-azure-data-lake-store.md)
+> * [第 1 版](data-factory-azure-datalake-connector.md)
+> * [版本 2（当前版本）](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 Azure Data Lake Store 连接器](../connector-azure-data-lake-store.md)。
+> 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的 Azure Data Lake Store 连接器](../connector-azure-data-lake-store.md)。
 
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure Data Lake Store。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，后者概述了如何使用复制活动移动数据。
 
@@ -60,9 +60,9 @@ Data Lake Store 连接器支持以下身份验证类型：
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。 
-2. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure Data Lake Store，可创建两个链接服务，将 Azure 存储帐户和 Azure Data Lake Store 链接到数据工厂。 有关特定于 Azure Data Lake Store 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
-2. 创建**数据集**以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Data Lake Store 中用于保存从 Blob 存储复制的数据的文件夹和文件路径。 有关特定于 Azure Data Lake Store 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，AzureDataLakeStoreSink 作为接收器。 同样，如果从 Azure Data Lake Store 复制到 Azure Blob 存储，则在复制活动中使用 AzureDataLakeStoreSource 和 BlobSink。 有关特定于 Azure Data Lake Store 的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。  
+2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure Data Lake Store，可创建两个链接服务，将 Azure 存储帐户和 Azure Data Lake Store 链接到数据工厂。 有关特定于 Azure Data Lake Store 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
+2. 创建数据集以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Data Lake Store 中用于保存从 Blob 存储复制的数据的文件夹和文件路径。 有关特定于 Azure Data Lake Store 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，AzureDataLakeStoreSink 作为接收器。 同样，如果从 Azure Data Lake Store 复制到 Azure Blob 存储，则在复制活动中使用 AzureDataLakeStoreSource 和 BlobSink。 有关特定于 Azure Data Lake Store 的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。  
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure Data Lake Store 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-data-lake-store)部分。
 
@@ -73,7 +73,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| **类型** | type 属性必须设置为 **AzureDataLakeStore**。 | 是 |
+| type | type 属性必须设置为 **AzureDataLakeStore**。 | 是 |
 | **dataLakeStoreUri** | Azure Data Lake Store 帐户相关信息。 此信息采用以下格式之一：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
 | **subscriptionId** | Data Lake Store 帐户所属的 Azure 订阅 ID。 | 接收器所需 |
 | **resourceGroupName** | Data Lake Store 帐户所属的 Azure 资源组名称。 | 接收器所需 |

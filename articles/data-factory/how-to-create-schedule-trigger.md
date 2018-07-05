@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 5df6633d40a3a361e551d1bea6caa2606a661a52
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eee68481f4396f8a09241b664d4c3d7d4a4f6567
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618916"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054344"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 本文提供有关计划触发器和创建、启动和监视计划触发器的步骤的信息。 有关其他类型的触发器，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
 
 创建计划触发器时，请指定该触发器的计划（开始日期、重复周期、结束日期等），并将其与管道相关联。 管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。
-
-> [!NOTE]
-> 本文适用于目前以预览版提供的 Azure 数据工厂版本 2。 如果使用 Azure 数据工厂版本 1（即正式版 (GA)），请参阅 [Azure 数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 以下部分提供以不同方式创建计划触发器的步骤。 
 
@@ -249,7 +246,7 @@ ms.locfileid: "34618916"
 可以使用 Azure 资源管理器模板创建触发器。 有关分步说明，请参阅[使用资源管理器模板创建 Azure 数据工厂](quickstart-create-data-factory-resource-manager-template.md)。  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>将触发器开始时间传递给管道
-Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区的数据：**SliceStart**、**SliceEnd**、**WindowStart** 和 **WindowEnd**。 在 Azure 数据工厂版本 2 中，可以使用管道参数实现此行为。 触发器的开始时间和计划时间设置为管道参数的值。 在以下示例中，触发器的计划时间作为值传递给 **scheduledRunTime** 管道参数：
+Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区的数据：**SliceStart**、**SliceEnd**、**WindowStart** 和 **WindowEnd**。 在 Azure 数据工厂的当前版本中，可以使用管道参数实现此行为。 触发器的开始时间和计划时间设置为管道参数的值。 在以下示例中，触发器的计划时间作为值传递给 **scheduledRunTime** 管道参数：
 
 ```json
 "parameters": {

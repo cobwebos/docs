@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e30cffa836beb2086e3bc4e94bf60be94136d3a0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f68e1077ebc26245b25eae3b0310db74b6d1357e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620616"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046439"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据推送到 Azure 搜索索引
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-azure-search-connector.md)
-> * [版本 2 - 预览版](../connector-azure-search.md)
+> * [第 1 版](data-factory-azure-search-connector.md)
+> * [版本 2（当前版本）](../connector-azure-search.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 Azure 搜索连接器](../connector-azure-search.md)。
+> 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的 Azure 搜索连接器](../connector-azure-search.md)。
 
 本文介绍如何使用“复制活动”将数据从支持的源数据存储推送到 Azure 搜索索引。 [支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表的“源”列中列出了支持的源数据存储。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何结合使用复制活动和受支持的数据存储进行数据移动。
 
@@ -39,15 +39,15 @@ ms.locfileid: "34620616"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从源数据存储将数据推送到 Azure 搜索索引。
 
-创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
-1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
+2. 创建数据集以表示复制操作的输入和输出数据。 
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于将数据复制到 Azure 搜索索引的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从本地 SQL Server 复制到 Azure 搜索索引](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index)部分。 
 

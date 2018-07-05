@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 71933c4356c9fd8b050656b197b18e200fb1104f
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 7a3d776acb06d2aa55f71dafb0ddccbc307f394e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284815"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050516"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-ftp-connector.md)
-> * [版本 2 - 预览版](connector-ftp.md)
+> * [第 1 版](v1/data-factory-ftp-connector.md)
+> * [当前版本](connector-ftp.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 FTP 服务器复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 FTP 连接器](v1/data-factory-ftp-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -53,7 +50,7 @@ FTP 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：FtpServer。 | 是 |
 | host | 指定 FTP 服务器的名称或 IP 地址。 | 是 |
-| 端口 | 指定 FTP 服务器侦听的端口。<br/>允许的值是：整数，默认值是 21。 | 否 |
+| port | 指定 FTP 服务器侦听的端口。<br/>允许的值是：整数，默认值是 21。 | 否 |
 | enableSsl | 指定是否通过 SSL/TLS 通道使用 FTP。<br/>允许的值是：true（默认）、false。 | 否 |
 | enableServerCertificateValidation | 指定在通过 SSL/TLS 通道使用 FTP 时，是否启用服务器 SSL 证书验证。<br/>允许的值是：true（默认）、false。 | 否 |
 | authenticationType | 指定身份验证类型。<br/>允许的值是：Basic、Anonymous | 是 |
