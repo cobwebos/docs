@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: brenduns
-ms.openlocfilehash: b84744a52426123f2f3e7dd4c14419fef8b779cc
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 52ab831dfaca337cdf803f410d3824b514fd0e8a
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258624"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437148"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack 中支持的虚拟机大小
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-本文列出了可用 Azure 堆栈中的虚拟机 (VM) 大小。
+本文列出了 Azure Stack 中可用的虚拟机 (VM) 大小。
 
 ## <a name="general-purpose"></a>常规用途
 
-一般用途的 VM 大小提供平衡的 CPU 内存之比。 它们用于测试和开发，小型到中型数据库，和低到中等规模流量 web 服务器。
+常规用途 VM 大小提供均衡的 CPU 与内存之比。 它们用于测试和开发小到中型数据库和低到中等流量 Web 服务器。
 
 ### <a name="basic-a"></a>基本 A
 |大小 - 大小\名称 |vCPU     |内存 | 最大临时磁盘大小 | 最大 OS 磁盘吞吐量：(IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘吞吐量 (IOPS) | 最大 NIC 数 |    
@@ -38,7 +38,7 @@ ms.locfileid: "34258624"
 |**A1\Basic_A1**  |1    |1.75 GB  | 40 GB   |300  | 300  |2 / 2x300  |1   |
 |**A2\Basic_A2**  |2    |3.5 GB   | 60 GB   |300  | 300  |4 / 4x300  |1   |
 |**A3\Basic_A3**  |4    |7 GB     | 120 GB  |300  | 300  |8 / 8x300  |1   |
-|**A4\Basic_A4**  |8    |14 GB    | 240 GB  |300  | 300  |6 / 16X300 |1   |
+|**A4\Basic_A4**  |8    |14 GB    | 240 GB  |300  | 300  |16 / 16 X 300 |1   |
 
 ### <a name="standard-a"></a>标准 A 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数/预期网络带宽 (MBps) |    
@@ -53,7 +53,7 @@ ms.locfileid: "34258624"
 |**Standard_A7** |8 |56    |605 |500 |500 |16x500 |4 / 2000 |
 
 ### <a name="av2-series"></a>Av2 系列
-*需要 Azure 堆栈版本 1804年或更高版本*
+*需要 Azure Stack 1804 或更高版本*
 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数/预期网络带宽 (MBps) |
 |-----------------|----|----|-----|-----|------|--------------|---------|
@@ -103,11 +103,11 @@ ms.locfileid: "34258624"
 
 ## <a name="compute-optimized"></a>计算优化
 ### <a name="f-series"></a>F 系列
-*需要 Azure 堆栈版本 1804年或更高版本*
+*需要 Azure Stack 1804 或更高版本*
 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数/预期网络带宽 (MBps) |
 |-----------------|----|----|-----|----|------|------------|---------|
-|**Standard_F1**  |1   |2   |16   |500 |3000  |4 / 4 x 400   |2 / 750  |
+|**Standard_F1**  |1   |2   |16   |500 |3000  |4 / 4x400   |2 / 750  |
 |**Standard_F2**  |2   |4   |32   |500 |6000  |8/8x500   |2 / 1500 |
 |**Standard_F4**  |4   |8   |64   |500 |12000 |16/16x500 |4 / 3000 |
 |**Standard_F8**  |8   |16  |128  |500 |24000 |32/32x500 |8 / 6000 |
@@ -115,7 +115,7 @@ ms.locfileid: "34258624"
 
 
 ### <a name="fs-series"></a>FS 系列
-*需要 Azure 堆栈版本 1804年或更高版本*  
+*需要 Azure Stack 1804 或更高版本*  
 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数/预期网络带宽 (MBps) |
 |------------------|----|----|----|-----|------|-------------|---------|
@@ -127,7 +127,7 @@ ms.locfileid: "34258624"
 
 
 ### <a name="fsv2-series"></a>Fsv2 系列
-*需要 Azure 堆栈版本 1804年或更高版本* 
+*需要 Azure Stack 1804 或更高版本* 
 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数/预期网络带宽 (MBps) |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
@@ -141,7 +141,7 @@ ms.locfileid: "34258624"
 
 ## <a name="memory-optimized"></a>内存优化
 
-内存优化的 VM 大小为关系数据库服务器、 中型到大型缓存和内存中分析提供旨在高内存 CPU 比率。
+内存优化 VM 大小提供适用于关系数据库服务器、中到大型缓存和内存中分析的高内存 CPU 比率。
 
 ### <a name="mo-d"></a>D 系列
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数/预期网络带宽 (MBps) |

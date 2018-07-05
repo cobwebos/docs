@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 6/28/2018
+ms.date: 07/03/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: fb870cbfbc233725752b3d97fc0ad048a7c14040
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 0e03b524834f528ddb7555a344fbebe720b4d9ff
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341726"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446961"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Azure Stack 以太坊区块链解决方案模板
 
@@ -69,7 +69,7 @@ ms.locfileid: "37341726"
     ADMINUSERNAME | 每个已部署的 VM 的管理员用户名 | 1 - 64 个字符 | gethadmin
     ADMINPASSWORD (身份验证类型 = 密码)| 部署的每个虚拟机的管理员帐户密码。 密码必须包含下列要求中的 3 项: 1 个大写字符，1 个小写字符，1 个数字和 1 个特殊字符。 <br />虽然所有 VM 最初都有相同的密码，但你可以在预配后更改密码。|12 - 72 个字符|
     ADMINSSHKEY (身份验证类型 = sshPublicKey) | 用于远程登录的安全 shell 密钥。 | |
-    GENESISBLOCK | 表示自定义起源块的 JSON 字符串。 | |
+    GENESISBLOCK | 表示自定义起源块的 JSON 字符串。  指定此参数的值是可选的。 | |
     ETHEREUMACCOUNTPSSWD | 用于保护以太坊帐户的管理员密码。 | |
     ETHEREUMACCOUNTPASSPHRASE | 用于生成与以太坊帐户相关联的私钥的通行短语。 | |
     ETHEREUMNETWORKID | 联盟网络 ID。 | 使用 5 和 999999999 之间的任何值 | 72

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 8dd77dd3431f1be2b8edd8b51929c21b1d5bcd88
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 5c2088ab39e32c049ce867698e84efba759c9a87
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081344"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447330"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>在 Azure Stack 中提供虚拟机映像
 
@@ -54,7 +54,7 @@ ms.locfileid: "37081344"
 
    ![将 Blob 访问权限设置为公共](./media/azure-stack-add-vm-image/image2.png)
 
-2. 以操作员身份登录到 Azure Stack。 在菜单中，选择**更多的服务**。 然后，选择“计算” > “VM 映像” > “添加”。
+2. 以操作员身份登录到 Azure Stack。 在菜单中，选择**更多服务**。 然后，选择“计算” > “VM 映像” > “添加”。
 
 3. 在“添加 VM 映像”下，输入虚拟机映像的发布者、产品/服务、SKU 和版本。 这些名称段是指资源管理器模板中的 VM 映像。 确保正确地选择 **osType** 值。 对于“OS 磁盘 Blob URI”，请输入在其中上传了映像的 Blob URI。 然后选择“创建”，开始创建 VM 映像。
 
@@ -73,6 +73,9 @@ ms.locfileid: "37081344"
 3. 单击“删除” 。
 
 ## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>使用 PowerShell 将 VM 映像添加到市场
+
+> [!Note]  
+> 当你添加映像仅可供 Azure 资源管理器基于模板和 PowerShell 的部署。 若要使映像可用作为 marketplace 项，用户在文章中，使用步骤将 marketplace 项发布[创建和发布 Marketplace 项](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)
 
 1. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。  
 
@@ -110,7 +113,7 @@ VM 映像的产品/服务名称段，供用户在部署 VM 映像时使用。 �
     例如： `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
     可以指定 `osDisk` 的 Blob 存储 URI。  
 
-    有关详细信息，请参阅的 PowerShell 参考[添加 AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet 和[新建 DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) cmdlet。
+    有关详细信息，请参阅 [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet 和 [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) cmdlet 的 PowerShell 参考。
 
 ## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>使用 PowerShell 将自定义 VM 映像添加到市场
 
@@ -209,7 +212,7 @@ VM 映像的产品/服务名称段，供用户在部署 VM 映像时使用。 �
     例如： `1.0.0`  
     VM 映像的版本，供用户在部署 VM 映像时使用。 此版本采用以下格式 *\#。\#。\#* 例如，**1.0.0**。 此字段不得包含空格或其他特殊字符。  
     
-    有关删除 AzsPlatformImage cmdlet 的详细信息，请参阅 PowerShell 的 Microsoft [Azure 堆栈运算符模块文档](https://docs.microsoft.com/powershell/module/)。
+    有关删除 AzsPlatformImage cmdlet 的详细信息，请参阅 Microsoft PowerShell [Azure Stack 操作员模块文档](https://docs.microsoft.com/powershell/module/)。
 
 ## <a name="next-steps"></a>后续步骤
 
