@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ad883248097fd84e2fa064515b6c7a5232aaa3d3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f6b2be357ad53a1852973d40e221da3d41b09ffb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621932"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050567"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
-> 本文适用于 Azure 数据工厂版本 1（即正式版）。 如果使用数据工厂服务版本 2（即预览版），请参阅[数据工厂版本 2 中的自定义活动](../transform-data-using-dotnet-custom-activity.md)。
+> 本文适用于 Azure 数据工厂第 1 版（即正式版）。 如果使用数据工厂服务的当前版本，请参阅[数据工厂中的自定义活动](../transform-data-using-dotnet-custom-activity.md)。
 
 本文介绍示例解决方案的体系结构，该解决方案通过计划的自动方式移动并处理大规模数据集。 它还提供使用数据工厂和 Azure Batch 来实现此解决方案的端到端演练。
 
@@ -968,7 +968,7 @@ test custom activity Microsoft test custom activity Microsoft
 * [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [数据工厂服务简介](data-factory-introduction.md)
-  * [数据工厂入门](data-factory-build-your-first-pipeline.md)
+  * [](data-factory-build-your-first-pipeline.md)
   * [在数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 

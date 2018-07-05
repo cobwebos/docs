@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 2868ebd459f937f8621086b16c63f89842f376be
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 61ee84ccfccfa49ff2e106e7036d072c1b21ca03
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34652536"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>扩展 Azure 流分析作业以增加吞吐量
 本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 可以使用以下指南来扩展作业，以便处理较高负载并充分利用更多的系统资源（如更多带宽、更多 CPU 资源、更多内存）。
@@ -76,72 +77,6 @@ ms.lasthandoff: 05/04/2018
 > 此查询模式通常具有大量子查询，并导致非常大且复杂的拓扑。 作业控制器可能无法处理此类大型拓扑。 根据经验，1 SU 作业应保持在 40 个租户以下，3 SU 和 6 SU 作业则为 60 个租户。 如果即将超出控制器的容量，则不会成功启动作业。
 
 
-## <a name="an-example-of-stream-analytics-throughput-at-scale"></a>下面举例说明了基于规模的流分析吞吐量
-为了帮助你了解如何缩放流分析作业，我们基于 Raspberry Pi 设备中的输入进行了一项试验。 通过此试验，可以发现输入对多个流式处理单元和分区的吞吐量的影响。
-
-在此方案中，设备将传感器数据（客户端）发送到事件中心。 流分析处理数据，并将警报或统计信息作为输出发送到另一个事件中心。 
-
-客户端以 JSON 格式发送传感器数据。 数据输出也采用 JSON 格式。 数据如下所示：
-
-    {"devicetime":"2014-12-11T02:24:56.8850110Z","hmdt":42.7,"temp":72.6,"prss":98187.75,"lght":0.38,"dspl":"R-PI Olivier's Office"}
-
-以下查询用于在关灯时发送警报：
-
-    SELECT AVG(lght), "LightOff" as AlertText
-    FROM input TIMESTAMP BY devicetime 
-    PARTITION BY PartitionID
-    WHERE lght< 0.05 GROUP BY TumblingWindow(second, 1)
-
-### <a name="measure-throughput"></a>衡量吞吐量
-
-在这种情况下，吞吐量是指由流分析在固定时间内处理的输入数据量。 （测量时长为 10 分钟。）为了使输入数据达到最佳的处理吞吐量，我们对数据流输入和查询进行了分区。 还在查询中添加了 COUNT()，以便测量已处理的输入事件数。 为了确保作业不会单纯地等待输入事件的到来，输入事件中心的每个分区均预先加载了约 300 MB 的输入数据。
-
-下表显示结果，可以发现流式处理单元数和事件中心的相应分区数均有所增加。  
-
-<table border="1">
-<tr><th>输入分区数</th><th>输出分区数</th><th>流式处理单位数</th><th>持续的吞吐量
-</th></td>
-
-<tr><td>12</td>
-<td>12</td>
-<td>6</td>
-<td>4.06 MB/秒</td>
-</tr>
-
-<tr><td>12</td>
-<td>12</td>
-<td>12</td>
-<td>8.06 MB/秒</td>
-</tr>
-
-<tr><td>48</td>
-<td>48</td>
-<td>48</td>
-<td>38.32 MB/秒</td>
-</tr>
-
-<tr><td>192</td>
-<td>192</td>
-<td>192</td>
-<td>172.67 MB/秒</td>
-</tr>
-
-<tr><td>480</td>
-<td>480</td>
-<td>480</td>
-<td>454.27 MB/秒</td>
-</tr>
-
-<tr><td>720</td>
-<td>720</td>
-<td>720</td>
-<td>609.69 MB/秒</td>
-</tr>
-</table>
-
-另外，下图直观地显示了 SU 和吞吐量之间的关系。
-
-![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>获取帮助
 如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。

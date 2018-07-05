@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 2c25bff60adc1f3d462cc6a437eab0d46f9fa413
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 034c9a321f402bada87290f6aa72fc7e416ef2c6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287865"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054538"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-hdfs-connector.md)
-> * [版本 2 - 预览版](connector-hdfs.md)
+> * [第 1 版](v1/data-factory-hdfs-connector.md)
+> * [当前版本](connector-hdfs.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 HDFS 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 HDFS 连接器](v1/data-factory-hdfs-connector.md)。
-
 
 ## <a name="supported-capabilities"></a>支持的功能
 

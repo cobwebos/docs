@@ -1,6 +1,6 @@
 ---
-title: 针对 Hadoop、Spark、Kafka、HBase 或 R Server 的群集设置 — Azure HDInsight | Microsoft Docs
-description: 通过浏览器、Azure CLI、Azure PowerShell、REST 或 SDK 为 HDInsight 设置 Hadoop、Kafka、Spark、HBase、R Server 或 Storm 群集。
+title: 针对 Hadoop、Spark、Kafka、HBase 或 ML Services 的群集设置 — Azure HDInsight | Microsoft Docs
+description: 通过浏览器、Azure CLI、Azure PowerShell、REST 或 SDK 为 HDInsight 设置 Hadoop、Kafka、Spark、HBase、ML Services 或 Storm 群集。
 keywords: hadoop 群集设置, kafka 群集设置, spark 群集设置, 什么是 hadoop 群集
 services: hdinsight
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 2afe1e91465c92c6f6cba00c4383456ef78d225c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: eddbd3f171cee9df9ff306368df47501ff9dcfca
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200191"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051587"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>使用 Hadoop、Spark、Kafka 等等在 HDInsight 中设置群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-了解如何使用 Hadoop、Spark、Kafka、交互式查询、HBase、R Server 或 Storm 在 HDInsight 中设置和配置群集。 另外，了解如何自定义群集，并将它们加入域以提高安全性。
+了解如何使用 Hadoop、Spark、Kafka、交互式查询、HBase、ML Services 或 Storm 在 HDInsight 中设置和配置群集。 另外，了解如何自定义群集，并将它们加入域以提高安全性。
 
 Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点）组成。 Azure HDInsight 对各个节点的安装和配置的实现细节进行处理，因此用户只需提供常规配置信息。 
 
@@ -81,7 +81,7 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 | [HBase](hbase/apache-hbase-overview.md) |处理大量无架构的 NoSQL 数据 |
 | [交互式查询](./interactive-query/apache-interactive-query-get-started.md) |更快的交互式 Hive 查询的内存中缓存 |
 | [Kafka](kafka/apache-kafka-introduction.md) | 分布式流式处理平台，可用于构建实时流数据管道和应用程序 |
-| [R Server](r-server/r-server-overview.md) |各种大数据统计信息、预测模型和机器学习功能 |
+| [ML Services](r-server/r-server-overview.md) |各种大数据统计信息、预测模型和机器学习功能 |
 | [Spark](spark/apache-spark-overview.md) |内存中处理、交互式查询、微批流处理 |
 | [Storm](storm/apache-storm-overview.md) |实时事件处理 |
 
@@ -203,7 +203,7 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 - [群集大小](#cluster-size)
 - 高级设置
   - [脚本操作](#customize-clusters-using-script-action)
-  - [虚拟网络](#use-virtual-network)
+  - 虚拟网络[](#use-virtual-network)
 
 ## <a name="install-hdinsight-applications-on-clusters"></a>在群集上安装 HDInsight 应用程序
 
