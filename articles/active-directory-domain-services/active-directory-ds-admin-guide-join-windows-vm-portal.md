@@ -13,20 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 06/21/2018
 ms.author: maheshu
-ms.openlocfilehash: 408d86d2d79e827da654ad71f66972fe76fc2431
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2929f85b738171f7fb7f5b66af90e4e2ab54f5d0
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212489"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317164"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>将 Windows Server 虚拟机加入托管域
 本文展示了如何使用 Azure 门户部署 Windows Server 虚拟机。 它还展示了如何将虚拟机加入 Azure Active Directory 域服务 (Azure AD DS) 托管域。
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>步骤 1：创建 Windows Server 虚拟机。
-若要创建 Windows 虚拟机，然后将其加入已在其中启用了 Azure AD DS 的虚拟网络，请执行以下步骤：
+若要创建 Windows 虚拟机，并将其加入已在其中启用了 Azure AD DS 的虚拟网络，请执行以下步骤：
 
 1. 登录到 [Azure 门户](http://portal.azure.com)。
 2. 在左窗格的顶部，选择“新建”。
@@ -68,7 +70,7 @@ ms.locfileid: "36212489"
 ## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>步骤 2：使用本地管理员帐户连接到 Windows Server 虚拟机
 现在，连接到新建的 Windows Server 虚拟机，以便将其加入域。 请使用在创建虚拟机时指定的本地管理员凭据。
 
-执行以下步骤连接到虚拟机：
+若要连接到虚拟机，请执行以下步骤：
 
 1. 在“概述”页面上，选择“连接”。  
     此时会创建并下载远程桌面协议 (.rdp) 文件。
@@ -76,21 +78,21 @@ ms.locfileid: "36212489"
     ![连接到 Windows 虚拟机](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 
 2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，选择“连接”。
-3. 在登录提示中，输入创建虚拟机时指定的**本地管理员凭据**（例如 *localhost\mahesh*）。
-4. 如果在登录过程中收到证书警告，请单击“是”或“继续”以继续连接。
+3. 输入创建虚拟机时指定的**本地管理员凭据**（例如 *localhost\mahesh*）。
+4. 如果在登录过程中看到证书警告，请选择“是”或“继续”进行连接。
 
 此时，应已使用本地管理员凭据登录到新建的 Windows 虚拟机。 下一步是将该虚拟机加入域。
 
 
 ## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>步骤 3：将 Windows Server 虚拟机加入 Azure AD DS 托管域
-执行以下步骤，将 Windows Server 虚拟机加入 Azure AD DS 托管域：
+若要将 Windows Server 虚拟机加入 Azure AD DS 托管域，请完成以下步骤：
 
 1. 如“步骤 2”中所述连接到 Windows Server VM。 在“开始”屏幕中打开“服务器管理器”。
 2. 在“服务器管理器”窗口的左窗格中选择“本地服务器”。
 
     ![虚拟机上的“服务器管理器”窗口](./media/active-directory-domain-services-admin-guide/join-domain-server-manager.png)
 
-3. 选择“属性”部分下面的“工作组”。 
+3. 选择“属性”部分下面的“工作组”。
 4. 在“系统属性”属性页中，选择“更改”加入域。
 
     ![“系统属性”窗口](./media/active-directory-domain-services-admin-guide/join-domain-system-properties.png)
@@ -99,7 +101,7 @@ ms.locfileid: "36212489"
 
     ![指定要加入的域](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-domain.png)
 
-6. 系统会提示输入用于加入域的凭据。 请务必*指定属于 Azure AD DC 管理员组的用户的凭据*。 只有此组的成员才有权将计算机加入托管域。
+6. 系统会要求输入用于加入域的凭据。 使用*属于 Azure AD DC 管理员组的用户*的凭据。 只有此组的成员才有权将计算机加入托管域。
 
     ![指定凭据的 Windows 安全性窗口](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 
@@ -123,30 +125,30 @@ ms.locfileid: "36212489"
 
 ## <a name="troubleshoot-joining-a-domain"></a>排查域加入问题
 ### <a name="connectivity-issues"></a>连接问题
-如果虚拟机找不到域，请尝试以下一种或多种方法：
+如果虚拟机找不到域，请尝试以下故障排除步骤：
 
-* 确保虚拟机已连接到已在其中启用 Azure AD DS 的同一个虚拟网络。 如果未连接，虚拟机无法连接到域，因此也就无法加入该域。
+* 验证虚拟机是否已连接到已在启用 Azure AD DS 的同一虚拟网络。 否则，虚拟机将无法连接到域或加入域。
 
-* 请确保虚拟机位于某个虚拟网络中而后者又连接到已在其中启用了 Azure AD DS 的虚拟网络。
+* 确保虚拟机位于某个虚拟网络中而后者又连接到已在其中启用了 Azure AD DS 的虚拟网络。
 
-* 尝试使用托管域的域名来 ping 域（例如 *ping contoso100.com*）。 如果无法执行此操作，请尝试 ping 页面中显示的、已在其中启用 Azure AD DS 的域的 IP 地址（例如 *ping 10.0.0.4*）。 如果能够 ping 通该 IP 地址，但无法 ping 通域，则表示 DNS 的配置可能不正确。 检查是否已将域的 IP 地址配置为虚拟网络的 DNS 服务器。
+* 尝试 ping 托管域的 DNS 域名（例如“ping contoso100.com”）。 如果无法执行此操作，请尝试 ping 页面中显示的、已在其中启用 Azure AD DS 的域的 IP 地址（例如 *ping 10.0.0.4*）。 如果能够 ping 通该 IP 地址，但无法 ping 通域，则表示 DNS 的配置可能不正确。 检查是否已将域的 IP 地址配置为虚拟网络的 DNS 服务器。
 
 * 请尝试刷新虚拟机上的 DNS 解析程序缓存 (*ipconfig /flushdns*)。
 
 如果出现请求提供凭据来加入域的窗口，则表示没有连接问题。
 
 ### <a name="credentials-related-issues"></a>与凭据相关的问题
-如果凭据有问题，因而无法加入域，请尝试以下一种或多种方法：
+如果凭据有问题，因而无法加入域，请尝试以下故障排除步骤：
 
-* 尝试使用 UPN 格式指定凭据。 如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，系统可能会自动生成帐户的 SAMAccountName。 因此，帐户的 SAMAccountName 格式可能不同于所需的格式或者在本地域中使用的格式。
+* 尝试使用 UPN 格式指定凭据。 如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，系统可能会自动生成帐户的 SAMAccountName。 在这些情况下，帐户的 SAMAccountName 格式可能不同于所需的格式或者在本地域中使用的格式。
 
 * 请尝试使用属于“AAD DC 管理员”组的用户帐户的凭据。
 
-* 确保根据入门指南中所述的步骤[启用密码同步](active-directory-ds-getting-started-password-sync.md)。
+* 检查托管域是否已[启用密码同步](active-directory-ds-getting-started-password-sync.md)。
 
 * 确保使用 Azure AD 中配置的用户的 UPN（例如 *bob@domainservicespreview.onmicrosoft.com*）登录。
 
-* 确保根据入门指南中所述，等待足够长的时间来完成密码同步。
+* 按照入门指南中所述，等待足够长的时间来完成密码同步。
 
 ## <a name="related-content"></a>相关内容
 * [Azure AD DS 入门指南](active-directory-ds-getting-started.md)

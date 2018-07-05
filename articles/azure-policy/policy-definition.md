@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 320ca0da946a0f04517c9ed4e8a61a868d2bb27c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 2f756d65fa167b3812772088aec7232d08b04b9f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260475"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937326"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
 
@@ -192,7 +192,8 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-使用 like 和 notLike 条件时，可以在值中指定通配符 (*)。值不得包含多个通配符 (*)。
+使用 like 和 notLike 条件时，可以在值中指定通配符 `*`。
+值不得包含多个通配符 `*`。
 
 当使用 match 和 notMatch 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供任何其他字符来表示该实际字符。 例如，请参阅[允许多名称模式](scripts/allow-multiple-name-patterns.md)。
 
@@ -316,7 +317,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 
 ## <a name="initiatives"></a>计划
 
-计划可组合多个相关策略定义，简化分配和管理，因为可将组作为单个项使用。 例如，可以将所有相关标记策略组合为单个计划。 将应用计划，而非单独分配每个策略。
+使用计划可组合多个相关策略定义，以简化分配和管理，因为可将组作为单个项使用。 例如，可以将所有相关标记策略组合为单个计划。 将应用计划，而非单独分配每个策略。
 
 下面的示例演示如何创建用于处理 `costCenter` 和 `productName` 这两个标记的计划。 它使用两个内置策略来应用默认标记值。
 

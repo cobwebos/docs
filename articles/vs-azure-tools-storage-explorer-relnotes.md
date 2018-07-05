@@ -12,55 +12,58 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2017
+ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 2878fb737f5daa875b91aefc77c6b8bc495f917e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59415941172fab06b3e86ef4d34d464cf359ce8f
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657564"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025132"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
-本文包含 Azure 存储资源管理器 1.0.0 发行版及以前版本的发行说明。
+本文包含 Azure 存储资源管理器 1.2.0 发行版及以前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
-## <a name="version-110"></a>版本 1.1.0
-2018/05/09
+## <a name="version-120"></a>版本 1.2.0
+06/12/2018
 
-### <a name="download-azure-storage-explorer-110"></a>下载 Azure 存储资源管理器 1.1.0
-- [适用于 Windows 的 Azure 存储资源管理器 1.1.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 1.1.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 1.1.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-120"></a>下载 Azure 存储资源管理器 1.2.0
+- [适用于 Windows 的 Azure 存储资源管理器 1.2.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 1.2.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 1.2.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新建
-* 存储资源管理器现在支持使用 Azurite。 请注意：与 Azurite 的连接已硬编码到默认开发终结点。
-* 存储资源管理器现在仅支持 Blob 的访问层和 GPV2 存储帐户。 在[此处](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers)详细了解访问层。
-* 生成 SAS 时不再需要开始时间。
+* 如果存储资源管理器无法做到只加载一部分租户中的订阅，则会显示所有已成功加载的订阅，此外还会专门针对失败的租户显示一条错误消息。 [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
+* 在 Windows 上，当有更新可用时，现在可以选择“关闭时更新”。 如果选择此选项，将在关闭存储资源管理器后运行更新安装程序。 [#21](https://github.com/Microsoft/AzureStorageExplorer/issues/21)
+* 查看文件共享快照时，“还原快照”会添加到文件共享编辑器的上下文菜单中。[#131](https://github.com/Microsoft/AzureStorageExplorer/issues/131)
+* 现在始终会启用“清除队列”按钮。[#135](https://github.com/Microsoft/AzureStorageExplorer/issues/135)
+* 已重新启用对登录到 ADFS Azure Stack 的支持。 需要 Azure Stack 1804 或更高版本。 [#150](https://github.com/Microsoft/AzureStorageExplorer/issues/150)
 
 ### <a name="fixes"></a>修复项
-* 检索美国政府帐户的订阅被中断。 此问题已解决。 [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
-* 访问策略的到期时间未正确保存。 此问题已解决。 [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
-* 为容器中的项目生成 SAS URL 时，项目的名称未追加到 URL。 此问题已解决。 [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
-* 创建 SAS 时，过去的到期时间有时会成为默认值。 这是因为存储资源管理器使用上次使用的开始时间和到期时间作为默认值。 现在，每次打开 SAS 对话框时，都会生成一组新的默认值。 [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
-* 在存储帐户之间进行复制时，会生成 24 小时 SAS。 如果复制持续时间超过 24 小时，复制将失败。 我们已将 SAS 的有效时间增加到持续 1 周，以减少由于 SAS 过期而导致复制失败的可能性。 [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
-* 对于某些活动，单击“取消”并非始终有效。 此问题已解决。 [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
-* 对于某些活动来说，传输速度不正确。 此问题已解决。 [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
-* 视图菜单中“上一个”的拼写错误。 现在已正确拼写。 [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
-* Windows 安装程序的最后一页有“下一步”按钮。 该按钮已更改为“完成”按钮。 [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
-* 使用 HC Black 主题时，对话框中按钮的 Tab 焦点不可见。 现在已可见。[#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
-* 活动日志中操作的“自动解析”的大小写不正确。 现已正确。 [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
-* 从表中删除实体时，要求确认的对话框显示错误图标。 该对话框现在使用警告图标。 [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+* 如果查看了某个文件共享的快照，并且该文件共享的名称是同一存储帐户中另一文件共享的前缀，则也会列出另一文件共享的快照。 现在已修复此问题。 [#255](https://github.com/Microsoft/AzureStorageExplorer/issues/255)
+* 通过 SAS 附加时，从文件共享快照还原文件会导致出错。 现在已修复此问题。 [#211](https://github.com/Microsoft/AzureStorageExplorer/issues/211)
+* 以前，在查看 Blob 的快照时，如果已选择基本 Blob 和单个快照，则会启用“提升快照”操作。 现在，仅当选择单个快照时才启用该操作。 [#230](https://github.com/Microsoft/AzureStorageExplorer/issues/230)
+* 以前，如果单个作业（例如下载 Blob）已启动但随后失败，则在启动相同类型的另一个作业之前，不会自动重试该作业。 现在，所有作业都会自动重试，不管有多少个排队的作业。
+* 以前，为 GPV2 和 Blob 存储帐户中新建的 Blob 容器打开的编辑器不包含“访问层”列。 现在已修复此问题。 [#109](https://github.com/Microsoft/AzureStorageExplorer/issues/109)
+* 以前，在通过 SAS 附加存储帐户或 Blob 容器时，“访问层”列有时不会显示。 现在，始终会显示该列，但如果未设置“访问层”，则该列会包含空值。 [#160](https://github.com/Microsoft/AzureStorageExplorer/issues/160)
+* 以前，禁止设置新上传的块 Blob 的访问层。 现在已修复此问题。 [#171](https://github.com/Microsoft/AzureStorageExplorer/issues/171)
+* 以前，如果使用键盘调用“将选项卡保持打开状态”按钮，则键盘焦点会丢失。 现在，焦点会移到保持打开的选项卡。 [#163](https://github.com/Microsoft/AzureStorageExplorer/issues/163)
+* 以前，对于查询生成器中的查询，VoiceOver 不会提供当前运算符的有用说明。 现在，说明更有描述性。 [#207](https://github.com/Microsoft/AzureStorageExplorer/issues/207)
+* 以前，各种编辑器的分页链接没有描述性。 现在，这些链接更有描述性。 [#205](https://github.com/Microsoft/AzureStorageExplorer/issues/205)
+* 以前，在“添加实体”对话框中，VoiceOver 不会告知某个输入元素所在的列。 现在，元素的说明中会包含当前列的名称。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* 以前，在聚焦时，单选按钮和复选框没有可见的边框。 现在已修复此问题。 [#237](https://github.com/Microsoft/AzureStorageExplorer/issues/237)
 
 ### <a name="known-issues"></a>已知问题
+* 使用 Azure 存储仿真器或 Azurite 等仿真器时，需要让它们在默认端口上侦听连接。 否则，存储资源管理器无法连接到这些仿真器。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能取消阻止你，请对[此问题](https://github.com/Microsoft/AzureStorageExplorer/issues/97)发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
 * 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
 * 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。
 * 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
-* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是[此处](https://github.com/Azure/azure-storage-node/issues/317)介绍的“取消筛选”解决办法。 
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是[此处](https://github.com/Azure/azure-storage-node/issues/317)介绍的“取消筛选”解决办法。
 * 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
@@ -86,8 +89,16 @@ ms.locfileid: "34657564"
     sudo apt-get install libgconf-2-4
     ```
 
+
+
+
+
+
+
+
 ## <a name="previous-releases"></a>以前的版本
 
+* [版本 1.1.0](#version-110)
 * [版本 1.0.0](#version-100)
 * [版本 0.9.6](#version-096)
 * [版本 0.9.5](#version-095)
@@ -112,13 +123,64 @@ ms.locfileid: "34657564"
 * [版本 0.7.20160105.0](#version-07201601050)
 * [版本 0.7.20151116.0](#version-07201511160)
 
+
+## <a name="version-110"></a>版本 1.1.0
+2018/05/09
+
+### <a name="new"></a>新建
+* 存储资源管理器现在支持使用 Azurite。 请注意：与 Azurite 的连接已硬编码到默认开发终结点。
+* 存储资源管理器现在仅支持 Blob 的访问层和 GPV2 存储帐户。 在[此处](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers)详细了解访问层。
+* 生成 SAS 时不再需要开始时间。
+
+### <a name="fixes"></a>修复项
+* 检索美国政府帐户的订阅被中断。 现在已修复此问题。 [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
+* 访问策略的到期时间未正确保存。 现在已修复此问题。 [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
+* 为容器中的项目生成 SAS URL 时，项目的名称未追加到 URL。 现在已修复此问题。 [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
+* 创建 SAS 时，过去的到期时间有时会成为默认值。 这是因为存储资源管理器使用上次使用的开始时间和到期时间作为默认值。 现在，每次打开 SAS 对话框时，都会生成一组新的默认值。 [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
+* 在存储帐户之间进行复制时，会生成 24 小时 SAS。 如果复制持续时间超过 24 小时，复制将失败。 我们已将 SAS 的有效时间增加到持续 1 周，以减少由于 SAS 过期而导致复制失败的可能性。 [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
+* 对于某些活动，单击“取消”并非始终有效。 现在已修复此问题。 [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
+* 对于某些活动来说，传输速度不正确。 现在已修复此问题。 [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
+* 视图菜单中“上一个”的拼写错误。 现在已正确拼写。 [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
+* Windows 安装程序的最后一页有“下一步”按钮。 该按钮已更改为“完成”按钮。 [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
+* 使用 HC Black 主题时，对话框中按钮的 Tab 焦点不可见。 现在已可见。[#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
+* 活动日志中操作的“自动解析”的大小写不正确。 现已正确。 [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
+* 从表中删除实体时，要求确认的对话框显示错误图标。 该对话框现在使用警告图标。 [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+
+### <a name="known-issues"></a>已知问题
+* 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能取消阻止你，请对[此问题](https://github.com/Microsoft/AzureStorageExplorer/issues/97)发表评论。
+* Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是[此处](https://github.com/Azure/azure-storage-node/issues/317)介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+
 ## <a name="version-100"></a>版本 1.0.0
 04/16/2018
-
-### <a name="download-azure-storage-explorer-100"></a>下载 Azure 存储资源管理器 1.0.0
-- [适用于 Windows 的 Azure 存储资源管理器 1.0.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 1.0.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 1.0.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新建
 * 增强的身份验证，允许存储资源管理器使用与 Visual Studio 2017 相同的帐户存储。 若要使用此功能，需要重新登录到帐户并重置已筛选的订阅。
@@ -135,28 +197,28 @@ ms.locfileid: "34657564"
 * 用于加密敏感数据的方法已更改。 这可能会导致需要重新添加某些快速访问项，并且/或者需要重新附加某些附加资源。
 
 ### <a name="fixes"></a>修复项
-* 代理后面的某些用户的组 blob 上传或下载操作会被“无法解析”错误消息中断。 此问题已解决。
-* 如果使用直接链接时需要登录，单击“登录”提示符会弹出一个空白对话框。 此问题已解决。
+* 代理后面的某些用户的组 blob 上传或下载操作会被“无法解析”错误消息中断。 现在已修复此问题。
+* 如果使用直接链接时需要登录，单击“登录”提示会弹出一个空白对话框。 现在已修复此问题。
 * 在 Linux 上，如果存储资源管理器因 GPU 进程故障而无法启动，现在会通知你发生故障，并让你使用“--disable-gpu”开关，然后存储资源管理器会在启用该开关的情况下自动重启。
 * 在“访问策略”对话框中难以识别无效访问策略。 为提高可见性，现在无效访问策略 ID 的边框为红色。
-* 活动日志在活动的不同部分之间有时有大面积的空格。 此问题已解决。
+* 活动日志在活动的不同部分之间有时有大面积的空格。 现在已修复此问题。
 * 在表查询编辑器中，如果让 timestamp 子句处于无效状态，然后尝试修改另一个子句，编辑器会冻结。 现在，如果检测到另一个子句中的更改，编辑器会将 timestamp 子句还原为其上一个有效状态。
 * 如果在树视图中键入搜索查询时暂停，搜索会开始并且焦点会从文本框中消失。 现在，必须通过按 Enter 键，或通过单击“开始搜索”按钮来显式启动搜索。
-* 右键单击“文件共享”中的文件时，有时“获取共享访问签名”命令会处于禁用状态。 此问题已解决。
+* 右键单击“文件共享”中的文件时，有时“获取共享访问签名”命令会处于禁用状态。 现在已修复此问题。
 * 如果在搜索期间筛选掉具有焦点的资源树节点，将无法使用 tab 键访问资源树，也无法使用箭头键在资源树中导航。 现在，如果具有焦点的资源树节点被隐藏，资源树中的第一个节点将自动获得焦点。
-* 有时会在编辑器工具栏中看到额外的分隔符。 此问题已解决。
-* 痕迹导航文本框有时会溢出。 此问题已解决。
-* 一次上传多个文件时，Blob 编辑器和文件共享编辑器有时会不断刷新。 此问题已解决。
+* 有时会在编辑器工具栏中看到额外的分隔符。 现在已修复此问题。
+* 痕迹导航文本框有时会溢出。 现在已修复此问题。
+* 一次上传多个文件时，Blob 编辑器和文件共享编辑器有时会不断刷新。 现在已修复此问题。
 * “文件夹统计信息”功能在“文件共享快照管理”视图中没有任何用途。 现在该功能已禁用。
-* 在 Linux 上，“文件”菜单未显示。 此问题已解决。
+* 在 Linux 上，“文件”菜单未显示。 现在已修复此问题。
 * 将文件夹上传到“文件共享”时，默认情况下，只上传了该文件夹的内容。 现在，默认行为是将该文件夹的内容上传到“文件共享”中的相应文件夹。
-* 几个对话框中的按钮的顺序是相反的。 此问题已解决。
+* 几个对话框中的按钮的顺序是相反的。 现在已修复此问题。
 * 各种与安全相关的修复。
 
 ### <a name="known-issues"></a>已知问题
 * 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
 * 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
-* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。 
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。
 * 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
@@ -185,14 +247,9 @@ ms.locfileid: "34657564"
 ## <a name="version-096"></a>版本 0.9.6
 2018/02/28
 
-### <a name="download-azure-storage-explorer-096-preview"></a>下载 Azure 存储资源管理器 0.9.6（预览版）
-- [适用于 Windows 的 Azure 存储资源管理器 0.9.6（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 0.9.6（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 0.9.6（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
-
 ### <a name="fixes"></a>修复项
-* 此问题使所需的 blob/文件无法在编辑器中列出。 此问题已解决。
-* 此问题导致在快照视图之间切换时无法正确显示项。 此问题已解决。
+* 此问题使所需的 blob/文件无法在编辑器中列出。 现在已修复此问题。
+* 此问题导致在快照视图之间切换时无法正确显示项。 现在已修复此问题。
 
 ### <a name="known-issues"></a>已知问题
 * 存储资源管理器不支持 ADFS 帐户。
@@ -225,11 +282,6 @@ ms.locfileid: "34657564"
 
 ## <a name="version-095"></a>版本 0.9.5
 2018/02/06
-
-### <a name="download-azure-storage-explorer-095-preview"></a>下载 Azure 存储资源管理器 0.9.5（预览版）
-- [适用于 Windows 的 Azure 存储资源管理器 0.9.5（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 0.9.5（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 0.9.5（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新建
 
@@ -280,11 +332,6 @@ ms.locfileid: "34657564"
 ## <a name="version-094-and-093"></a>版本 0.9.4 和 0.9.3
 2018 年 1 月 21 日
 
-### <a name="download-azure-storage-explorer-094-preview"></a>下载 Azure 存储资源管理器 0.9.4（预览版）
-* [下载适用于 Windows 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [下载适用于 Mac 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [下载适用于 Linux 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=809308)
-
 ### <a name="new"></a>新建
 * 在以下情况下，将重新使用现有的存储资源管理器窗口：
     * 打开存储资源管理器中生成的直接链接。
@@ -295,7 +342,7 @@ ms.locfileid: "34657564"
     * 对于 Mac，应用菜单下有一个“新建窗口”选项。
 
 ### <a name="fixes"></a>修复项
-* 修复了安全性问题。 请尽早升级至 0.9.4。
+* 修复了安全性问题。 请尽早升级到 0.9.4。
 * 以前不会适当地清理旧活动。 这影响了长时间运行的作业的性能。 现在会正确清理旧活动。
 * 涉及大量文件和目录的操作有时可能导致存储资源管理器冻结。 现在限制了对 Azure 的文件共享请求，以限制系统资源的使用。
 
@@ -332,7 +379,7 @@ ms.locfileid: "34657564"
 
 ### <a name="hotfixes"></a>修补程序
 * 根据本地时区编辑表实体的 Edm.DateTime 值时，可能发生意外的数据更改。 编辑器现使用纯文本文本框，以便始终如一地精确控制 Edm.DateTime 值。
-* 在附有名称和密钥时无法启动一组 blob 的上传/下载。 此问题已解决。
+* 在附有名称和密钥时无法启动一组 blob 的上传/下载。 现在已修复此问题。
 * 如果选择了帐户的一个或多个订阅，以前的存储资源管理器仅会提示重新验证过时帐户。 现在，即使完全筛选掉该帐户，存储资源管理器仍会提示。
 * 适用于 Azure 美国政府版的终结点域不正确。 此问题已解决。
 * 有时很难单击“管理帐户”面板上的“应用”按钮。 不会再发生此问题。
@@ -357,7 +404,7 @@ ms.locfileid: "34657564"
 
 ### <a name="fixes"></a>修复项
 * 过去，如果尝试下载具有无效 Windows 文件名的 blob，则操作将失败。 现在，存储资源管理器将检测 blob 名称是否有效，并且会询问你是要对其进行编码还是跳过该 blob。 存储资源管理器还会检测文件名看起来是否已编码并且在上传前会询问是否要对其进行解码。
-* 在上传 blob 期间，目标 blob 容器的编辑器有时候不能正确刷新。 此问题已解决。
+* 在上传 blob 期间，目标 blob 容器的编辑器有时候不能正确刷新。 现在已修复此问题。
 * 支持多种形式的连接字符串和回归的 SAS URI。 我们已解决了所有已知问题，但是如果遇到了进一步的问题，请向我们发送反馈。
 * 在 0.9.0 版中，对于某些用户，更新通知损坏。 此问题已修复，并且受此 bug 影响的用户可[从此处](https://azure.microsoft.com/features/storage-explorer/)手动下载最新版本的存储资源管理器。
 
@@ -411,7 +458,7 @@ ms.locfileid: "34657564"
 
 ### <a name="fixes"></a>修复项
 * 过去，如果尝试下载具有无效 Windows 文件名的 blob，则操作将失败。 现在，存储资源管理器将检测 blob 名称是否有效，并且会询问你是要对其进行编码还是跳过该 blob。 存储资源管理器还会检测文件名看起来是否已编码并且在上传前会询问是否要对其进行解码。
-* 在上传 blob 期间，目标 blob 容器的编辑器有时候不能正确刷新。 此问题已解决。
+* 在上传 blob 期间，目标 blob 容器的编辑器有时候不能正确刷新。 现在已修复此问题。
 * 支持多种形式的连接字符串和回归的 SAS URI。 我们已解决了所有已知问题，但是如果遇到了进一步的问题，请向我们发送反馈。
 * 在 0.9.0 版中，对于某些用户，更新通知损坏。 此问题已修复，对于受此 bug 影响的那些用户，可以手动[从此处](https://azure.microsoft.com/features/storage-explorer/)下载最新版本的存储资源管理器。
 

@@ -3,7 +3,7 @@ title: Azure 单一注销 SAML 协议 | Microsoft Docs
 description: 本文介绍 Azure Active Directory 中的单一注销 SAML 协议
 services: active-directory
 documentationcenter: .net
-author: priyamohanram
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
@@ -14,21 +14,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
-ms.author: priyamo
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 9ec99ffc64138cf1cd94e0f11077cdc5d86dbc57
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: hirsin
+ms.openlocfilehash: c8373df67adbb93e25ab5a31a254efe70581d32d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155491"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317671"
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
-Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配置文件。 要使单一注销正常工作，必须在应用程序注册期间向 Azure AD 显式注册应用程序的 **LogoutURL**。 Azure AD 使用 LogoutURL 在用户注销后重定向。
+
+Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配置文件。 要使单一注销正常工作，必须在应用程序注册期间向 Azure AD 显式注册应用程序的 **LogoutURL**。 Azure AD 使用 LogoutURL 在用户注销后将用户重定向。
 
 下图显示了 Azure AD 单一注销过程的工作流。
 
-![单一注销工作流](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
+![Azure AD 单一注销工作流](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
 
 ## <a name="logoutrequest"></a>LogoutRequest
 云服务将 `LogoutRequest` 消息发送到 Azure AD，以指示会话已终止。 以下摘录显示了一个示例 `LogoutRequest` 元素。
@@ -43,9 +45,9 @@ Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配�
 ### <a name="logoutrequest"></a>LogoutRequest
 发送到 Azure AD 的 `LogoutRequest` 元素需要以下属性：
 
-* `ID`：标识注销请求。 `ID` 的值不能以数字开头。 典型的做法是在 GUID 的字符串表示形式前面追加 **ID**。
-* `Version`：将此元素的值设置为 **2.0**。 此值是必需的。
-* `IssueInstant`：这是一个 `DateTime` 字符串，它包含协调世界时 (UTC) 值并采用[往返格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)。 Azure AD 预期需要此类型的值，但这不是强制要求。
+* `ID` - 此项标识注销请求。 `ID` 的值不能以数字开头。 典型的做法是在 GUID 的字符串表示形式前面追加 **ID**。
+* `Version` - 将此元素的值设置为 **2.0**。 此值是必需的。
+* `IssueInstant` - 这是一个 `DateTime` 字符串，它包含协调世界时 (UTC) 值并采用[往返格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)。 Azure AD 需要此类型的值，但不强制要求。
 
 ### <a name="issuer"></a>颁发者
 `LogoutRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的 **ServicePrincipalNames** 之一完全匹配。 通常，此参数设置为应用程序注册期间指定的**应用 ID URI**。

@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 3/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a1a5d6d455086ee34767e92b277936840717bcd6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 910a5c85d16cb46465598a77d5321cc0eed99744
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933767"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319242"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
 
-内部负载均衡使得 Kubernetes 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 本文档详述如何创建包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器。
+内部负载均衡使得 Kubernetes 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 本文档详述如何创建包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器。 Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”。 AKS 使用基本 SKU。
 
 ## <a name="create-internal-load-balancer"></a>创建内部负载均衡器
 

@@ -1,25 +1,24 @@
 ---
-title: "Azure 数据目录中的新增功能 | Microsoft Docs"
-description: "本文概述了 Azure 数据目录中的新增功能。"
+title: Azure 数据目录中的新增功能 | Microsoft Docs
+description: 本文概述了 Azure 数据目录中的新增功能。
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 9fb7814a8412200f6d31cfb9dcaee4663d7cea97
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 780ab56df19e8d6761fcf88fa7fbed3e8002fbe8
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025115"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure 数据目录中的新增功能
 我们会定期发布“Azure 数据目录”的更新。 但是，并非每个版本都包括面向用户的新功能，因为某些版本聚焦于后端的服务功能。 本页重点介绍 Azure 数据目录服务新增的面向用户的功能。
@@ -99,7 +98,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="whats-new-for-december-2016"></a>2016 年 12 月新增功能
 截至 2016 年 12 月，已添加到 Azure 数据目录的功能如下：
-*   Azure 数据目录现在符合 [HIPAA](https://www.microsoft.com/trustcenter/Compliance/HIPAA)和[欧盟标准条款](https://www.microsoft.com/TrustCenter/Compliance/EU-Model-Clauses)要求。
+*   Azure 数据目录现在符合 [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa)和[欧盟标准条款](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses)要求。
 *   支持编辑数据源连接信息。 数据资产所有者和数据目录管理员现在可编辑已注册的数据源的连接信息，而无需重新注册数据源。
 *   支持 Salesforce.com 数据源。 用户现在可注册和发现 Salesforce 对象。
 
@@ -158,7 +157,7 @@ ms.lasthandoff: 01/19/2018
 截至 2016 年 2 月，已添加到 Azure 数据目录的功能如下：
 
 * 在 Azure 数据目录数据源注册工具中新增重新设计的数据源选择体验。 数据源注册工具已更新，方便找到 Azure 数据目录所支持的数据源，并从中进行选择。
-* 在 Azure 数据目录门户和数据源注册工具中支持其他 10 种语言。 除英语外，Azure 数据目录体验现已支持德语、西班牙语、法语、意大利语、日语、朝鲜语、巴西葡萄牙语、俄语、简体中文和繁体中文。 Azure 数据目录的用户体验根据在 Windows 中或在用户的 Web 浏览器中设置的语言首选项进行本地化。
+* 在 Azure 数据目录门户和数据源注册工具中支持其他 10 种语言。 除英语外，Azure 数据目录体验现已支持德语、西班牙语、法语、意大利语、日语、韩语、巴西葡萄牙语、俄语、简体中文和繁体中文。 Azure 数据目录的用户体验根据在 Windows 中或在用户的 Web 浏览器中设置的语言首选项进行本地化。
 * 支持 Azure 数据目录数据的异地复制，带来业务连续性，提供灾难恢复。 所有 Azure 数据目录内容，包括数据源元数据和众包批注，现在在两个 Azure 区域之间已复制，客户无需额外付费。 预先对至少相隔 500 英里的 Azure 区域进行配对，并遵循 [业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)中所述的映射。
 * 支持更改 Azure 数据目录使用的 Azure 订阅。 出于计费目的，Azure 数据目录管理员可以使用 Azure 数据目录门户中的设置页来选择不同的 Azure 订阅。
 
@@ -246,7 +245,7 @@ ms.lasthandoff: 01/19/2018
 * 在 Azure 数据目录门户中增加了新的“入门”数据源发现体验。 当用户进入 Azure 数据目录门户的“发现”页却没有输入搜索词时，将为用户展现目录内容概述，包括最常用的标记、专家、数据源类型和对象类型。
 * 支持注册和发现 Azure SQL 数据仓库对象和数据库。 有关 Azure SQL 数据仓库的详细信息，请参阅 [SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse/)。
 * 支持注册和发现作为容器的 SQL Server Analysis Services 模型和 SQL Server Reporting Services 服务器。 注册 SSAS 和 SSRS 对象时，Azure 数据目录会为 SSAS 模型和 SSRS 服务器以及报表和其他对象创建条目。 可以使用 Azure 数据目录门户发现并且批注容器。 除搜索和筛选目录内容外，用户还可以搜索和筛选模型或服务器的内容。
-* 支持通过 HTTP/HTTPS 注册和发现 SQL Server Analysis Services 对象。 用户现在可以替代服务器名称使用 URL（如 https://servername/olap/msmdpump.dll）连接到 SSAS 服务器，并且除 Windows 身份验证外，还能使用基本身份验证和匿名连接。 有关通过 HTTP/HTTPS 连接到 SSAS 的详细信息，请参阅 [配置对 Analysis Services 的 HTTP 访问](https://msdn.microsoft.com/library/gg492140.aspx)。
+* 支持通过 HTTP/HTTPS 注册和发现 SQL Server Analysis Services 对象。 用户现在可以替代服务器名称使用 URL（如 https://servername/olap/msmdpump.dll)）连接到 SSAS 服务器，并且除 Windows 身份验证外，还能使用基本身份验证和匿名连接。 有关通过 HTTP/HTTPS 连接到 SSAS 的详细信息，请参阅 [配置对 Analysis Services 的 HTTP 访问](https://msdn.microsoft.com/library/gg492140.aspx)。
 * 支持 HDInsight 上的 Hive 数据源。 现在，用户可以在 HDInsight 本地数据源中注册和发现 Apache Hive 的 Hive 表。 有关 HDInsight 上的 Hive 的详细信息，请参阅 [HDInsight documentation center](../hdinsight/hadoop/hdinsight-use-hive.md)（HDInsight 文档中心）。
 * 支持注册和发现作为容器的 Oracle 数据库和 HDFS 群集。 注册 Oracle 表和视图或 HDFS 时，Azure 数据目录会为数据库、表和视图创建条目。 可以使用 Azure 数据目录门户发现并且批注数据库。 除搜索和筛选目录内容外，用户还可以搜索和筛选数据库或群集的内容。
 * 支持手动注册未知的数据源类型。 用户可以使用 Azure 数据目录门户手动输入数据源信息，以便批注和发现数据源注册工具未显式支持的数据源。

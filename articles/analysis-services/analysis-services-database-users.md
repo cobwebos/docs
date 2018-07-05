@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a2338045c43f9eb240ce55fd1ec31a4db40fd4e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8870c4199d5f24d1e8d07bc97d61a09c07052c1e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598345"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307973"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
-在模型数据库级别，所有用户都必须属于一个角色。 角色可针对模型数据库定义具有特定权限的用户。 添加到角色的任何用户或安全组都必须在与服务器相同的订阅的 Azure AD 租户中具有一个帐户。
+在模型数据库级别，所有用户都必须属于一个角色。 角色可针对模型数据库定义具有特定权限的用户。 添加到角色的任何用户或安全组都必须在与服务器相同的订阅的 Azure AD 租户中具有一个帐户。 
 
 定义角色的方式根据使用的工具有所差异，但效果却是相同的。
 
@@ -27,6 +27,9 @@ ms.locfileid: "34598345"
 *  读取 - 用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
 
 如果创建表格模型项目，请使用 SSDT 中的角色管理器创建角色并向这些角色添加用户或组。 如果向服务器部署，请使用 SSMS、[Analysis Services PowerShell cmdlet](https://msdn.microsoft.com/library/hh758425.aspx) 或 [表格模型脚本语言](https://msdn.microsoft.com/library/mt614797.aspx) \(TMSL) 添加或删除角色和用户成员。
+
+> [!NOTE]
+> 安全组必须已将 `MailEnabled` 属性设为 `True`。
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>在 SSDT 中添加或管理角色和用户  
   

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: 0407d3c58fa63a11c8391f069039f7c35a15ceb7
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: c55f90b944038a0e4ca216a357fc30f4cf6a6ddc
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294731"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317280"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB 防火墙支持
 为保护存储在 Azure Cosmos DB 数据库帐户的数据，Azure Cosmos DB 已提供对基于机密的[授权模型](https://msdn.microsoft.com/library/azure/dn783368.aspx)的支持，该模型利用强大的基于哈希的消息验证代码 (HMAC)。 现在，除了基于机密的授权模型以外，Azure Cosmos DB 还支持针对入站防火墙支持的基于 IP 的策略驱动访问控制。 此模型与传统数据库系统的防火墙规则类似，并且对 Azure Cosmos DB 数据库帐户提供了额外级别的安全性。 利用此模型，现可将 Azure Cosmos DB 数据库帐户配置为仅可从一组已批准的计算机和/或云服务进行访问。 从这些已批准的计算机和服务访问 Azure Cosmos DB 资源仍要求调用方提供有效的授权令牌。
@@ -56,10 +56,10 @@ ms.locfileid: "36294731"
 
 ![此屏幕截图显示了如何启用对 Azure 门户的访问](./media/firewall-support/enable-azure-portal.png)
 
-## <a name="connections-from-public-azure-datacenters-or-azure-paas-services"></a>来自公共 Azure 数据中心或 Azure PaaS 服务的连接
+## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>来自全球 Azure 数据中心或 Azure PaaS 服务的连接
 在 Azure 中，PaaS 服务（如 Azure 流分析、Azure Functions、Azure 应用服务）都是与 Azure Cosmos DB 结合使用的。 要从此类 IP 地址不可用的服务中启用对 Azure Cosmos DB 数据库帐户的访问，请以编程方式将 IP 地址 0.0.0.0 添加到与 Azure Cosmos DB 数据库帐户关联的允许 IP 地址列表中。 
 
-在 Azure 门户中将“防火墙”设置更改为“选定的网络”时，默认已启用对来自公共 Azure 数据中心的连接的访问。 
+在 Azure 门户中将“防火墙”设置更改为“选定的网络”时，默认已启用对来自全球 Azure 数据中心的连接的访问。 
 
 ![此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页](./media/firewall-support/enable-azure-services.png)
 
@@ -87,6 +87,25 @@ ms.locfileid: "36294731"
 
 ## <a name="connections-from-the-internet"></a>从 Internet 连接
 从 Internet 上的计算机访问 Azure Cosmos DB 数据库帐户时，必须将客户端 IP 地址或计算机的 IP 地址范围添加到 Azure Cosmos DB 数据库帐户 IP 地址的允许列表中。 
+
+## <a name="using-azure-resource-manager-template-to-set-up-the-ip-access-control"></a>使用 Azure 资源管理器模板设置 IP 访问控制
+
+将以下 JSON 添加到模板以设置 IP 访问控制。 帐户的资源管理器模板将具有 ipRangeFilter 属性，该属性是 IP 范围列表，应该加入允许列表。
+
+```json
+   {
+     "apiVersion": "2015-04-08",
+     "type": "Microsoft.DocumentDB/databaseAccounts",
+     "kind": "GlobalDocumentDB",
+     "name": "[parameters('databaseAccountName')]",
+     "location": "[resourceGroup().location]",
+     "properties": {
+     "databaseAccountOfferType": "Standard",
+     "name": "[parameters('databaseAccountName')]",
+     "ipRangeFilter":"10.0.0.1,10.0.0.2,183.240.196.255"
+   }
+   }
+```
 
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>IP 访问控制策略的故障排除
 ### <a name="portal-operations"></a>门户操作

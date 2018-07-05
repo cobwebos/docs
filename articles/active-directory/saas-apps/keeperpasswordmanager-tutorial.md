@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 3ef20cdb0f6a7b5afd624a7910495ee784140c48
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b61465e9f38a5a461802d4ab46a7221c557b4595
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219976"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308136"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>教程：Azure Active Directory 与 Keeper Password Manager & Digital Vault 集成
 
@@ -133,7 +133,7 @@ ms.locfileid: "36219976"
 
     ![配置单一登录](./media/keeperpasswordmanager-tutorial/tutorial_keeper_configure.png) 
 
-7. 在“Keeper Password Manager & Digital Vault 配置”端配置单一登录，按 [Keeper 支持指南](https://keepersecurity.com/assets/pdf/SettingupAzurewithKeeperSSOConnect.pdf)所给出的准则操作。
+7. 若要在“Keeper Password Manager & Digital Vault 配置”端配置单一登录，按 [Keeper 支持指南](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf)所给出的准则操作。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)

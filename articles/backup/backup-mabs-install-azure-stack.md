@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: f39f8571d4256a14f64ee2a66788cac8fa524eec
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c9dd6a1818b0afeb5e577724568a8254a70c8228
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248888"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753347"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
 
@@ -42,18 +42,9 @@ Azure 备份服务器保护以下 Azure Stack 虚拟机工作负荷。
 | SQL Server 2016 | 数据库 |
 | SQL Server 2014 | 数据库 |
 | SQL Server 2012 SP1 | 数据库 |
+| SharePoint 2016 | 场、数据库、前端、Web 服务器 |
 | SharePoint 2013 | 场、数据库、前端、Web 服务器 |
 | SharePoint 2010 | 场、数据库、前端、Web 服务器 |
-
-
-### <a name="host-vs-guest-backup"></a>主机与来宾备份
-
-Azure 备份服务器执行虚拟机的主机或来宾级备份。 在主机级别，Azure 备份代理安装在虚拟机或群集上，保护主机上运行的整个虚拟机和数据文件。 在来宾级别，Azure 备份代理安装在每个虚拟机上，保护该虚拟机上的工作负荷。
-
-这两种方法各有利弊：
-
-   * 不管来宾计算机上运行哪种 OS，主机级备份都能正常工作，且不需要在每个 VM 上安装 Azure 备份代理。 如果部署主机级备份，则可以恢复整个虚拟机或者文件和文件夹（项级恢复）。
-   * 来宾级备份非常有利于保护虚拟机上运行的特定工作负荷。 在主机级别，可以恢复整个 VM 或特定文件，但不能恢复特定应用程序的上下文中的数据。 例如，若要从受保护的虚拟机恢复特定的 SharePoint 文件，必须在来宾级别保护 VM。 若要保护直通磁盘上存储的数据，必须使用来宾级备份。 直通可让虚拟机直接访问存储设备，而不需要在 VHD 文件中存储虚拟卷数据。
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Azure 备份服务器环境的先决条件
 
@@ -84,13 +75,10 @@ Azure备份服务器将备份数据存储在附加到虚拟机的 Azure 磁盘�
 
 若要将备份数据存储在 Azure 中，请创建或使用恢复服务保管库。 准备备份 Azure 备份服务器工作负荷时，请[配置恢复服务保管库](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault)。 配置后，每次运行备份作业时，都会在保管库中创建恢复点。 每个恢复服务保管库最多可容纳 9999 个恢复点。 根据所创建的恢复点数量以及保留期限，可以将备份数据保留多年。 例如，可以每月创建恢复点，并将其保留五年。
  
-### <a name="using-sql-server"></a>使用 SQL Server
-如果要使用远程 SQL Server 作为 Azure 备份服务器数据库，请仅选择运行 SQL Server 的 Azure Stack VM。
-
 ### <a name="scaling-deployment"></a>扩展部署
 如果想要扩展部署，可以使用以下选项：
   - 纵向扩展 - 将 Azure 备份服务器虚拟机的大小从 A 系列增加到 D 系列，并[根据 Azure Stack 虚拟机说明](../azure-stack/user/azure-stack-manage-vm-disks.md)增加本地存储。
-  - 卸载数据 - 将旧数据发送到 Azure 备份服务器，并仅保留附加到 Azure 备份服务器的存储上的最新数据。
+  - 卸载数据 - 将旧数据发送到 Azure，并仅保留附加到 Azure 备份服务器的存储上的最新数据。
   - 横向扩展 - 添加更多 Azure 备份服务器来保护工作负荷。
 
 ### <a name="net-framework"></a>.NET framework
@@ -216,7 +204,7 @@ Azure 备份服务器虚拟机必须加入域。 拥有管理员特权的域用�
 
 ![Microsoft Azure 备份安装向导](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Azure 备份服务器与 Data Protection Manager 共享代码。 在 Azure 备份服务器安装程序中会看到对 Data Protection Manager 和 DPM 的引用。 尽管 Azure 备份服务器和 Data Protection Manager 属于不同的产品，但两者密切相关。 在 Azure 备份服务器文档中，Data Protection Manager 和 DPM 的所有参考信息同样适用于 Azure 备份服务器。
+Azure 备份服务器与 Data Protection Manager 共享代码。 在 Azure 备份服务器安装程序中会看到对 Data Protection Manager 和 DPM 的引用。 尽管 Azure 备份服务器和 Data Protection Manager 属于不同的产品，但两者密切相关。
 
 1. 若要启动安装向导，请单击“Microsoft Azure 备份服务器”。
 
@@ -230,7 +218,7 @@ Azure 备份服务器与 Data Protection Manager 共享代码。 在 Azure 备�
 
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    如果环境符合先决条件，则会显示一条消息，指出计算机符合要求。 单击“资源组名称” 的 Azure 数据工厂。  
+    如果环境符合先决条件，则会显示一条消息，指出计算机符合要求。 单击“下一步”。  
 
     ![Azure 备份服务器 - 已通过先决条件检查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
@@ -322,7 +310,7 @@ Azure 备份服务器与 Data Protection Manager 共享代码。 在 Azure 备�
 
 ## <a name="add-backup-storage"></a>添加备份存储
 
-第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。 有关添加磁盘的详细信息，请参阅[配置存储池和磁盘存储](https://technet.microsoft.com/library/hh758075.aspx)。
+第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。 有关添加磁盘的详细信息，请参阅[添加新式备份存储](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801)。
 
 > [!NOTE]
 > 即使你打算将数据发送到 Azure，也需要添加备份存储。 在 Azure 备份服务器体系结构中，恢复服务保管库将保存数据的第二个副本，而本地存储将保存第一个（必需的）备份副本。
@@ -356,7 +344,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 - \*.microsoftonline.com
 - \*.windows.net
 
-在 Azure 备份服务器上恢复与 Azure 的连接后，Azure 订阅状态将确定可执行的操作。 服务器变为“已连接”状态后，请使用“网络连接”中的表查看可用操作。[](backup-mabs-install-azure-stack.md#network-connectivity)
+在 Azure 备份服务器上恢复与 Azure 的连接后，Azure 订阅状态将确定可执行的操作。 服务器变为“已连接”状态后，请使用[“网络连接”](backup-mabs-install-azure-stack.md#network-connectivity)中的表查看可用操作。
 
 ### <a name="handling-subscription-states"></a>处理订阅状态
 
@@ -372,10 +360,10 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 ## <a name="next-steps"></a>后续步骤
 
-[为 DPM 准备环境](https://technet.microsoft.com/library/hh758176.aspx)一文包含了有关受支持 Azure 备份服务器配置的信息。
+[为 DPM 准备环境](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)一文包含了有关受支持 Azure 备份服务器配置的信息。
 
 可以使用以下文章深入了解如何使用 Microsoft Azure 备份服务器来保护工作负荷。
 
-- [SQL Server 备份](backup-azure-backup-sql.md)
-- [SharePoint Server 备份](backup-azure-backup-sharepoint.md)
+- [SQL Server 备份](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+- [SharePoint Server 备份](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [备用服务器备份](backup-azure-alternate-dpm-server.md)

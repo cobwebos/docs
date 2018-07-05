@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 63f079f6c8e584ff3a89503104060daf056763ed
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5e225a16baef53c12a5d0a719c36a2042d391c7f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836294"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959096"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
 [top]: #machine-learning-sample-datasets
@@ -403,7 +403,7 @@ RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配�
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-此数据来自 KDD Cup 2010 学生成绩评估挑战赛（<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">学生成绩评估</a>）。 使用的数据为 Algebra_2008_2009 训练集 (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. （2010 年）。 代数 I 2008-2009。 来自 KDD Cup 2010 教育数据挖掘挑战赛的挑战数据集。 可在 <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 或 <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a> 中找到该数据。
+此数据来自 KDD Cup 2010 学生成绩评估挑战赛（<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">学生成绩评估</a>）。 使用的数据为 Algebra_2008_2009 训练集 (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. （2010 年）。 代数 I 2008-2009。 来自 KDD Cup 2010 教育数据挖掘挑战赛的挑战数据集。 可在 <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 中找到该数据。
 <p></p>
 该数据集已下载并存储在 Azure Blob 存储 (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) 中，包含学生辅导系统中的日志文件。 提供的特征包含问题 ID 及其简要描述、学生 ID、时间戳以及学生在正确解决该问题之前尝试的次数。 原始数据集具有 890 万条记录，此数据集已降低取样为前 10 万行。 该数据集具有 23 个制表符分隔的各种类型的列：数值、分类和时间戳。
   </td>

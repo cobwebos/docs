@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: df1981443d8c55f07f86394967e357a599a7b3a3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 262c864a9e580ab5e2ebb0d4fc1e6ec16adeacb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213135"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334320"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -60,6 +60,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 * 要求只根据 Workday HCM 模块中检测到的更改信息，加入、移动用户或者使用户保持同步到一个或多个 Active Directory 林、域和 OU 的组织（请参阅 [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html)）
 
 * 使用 Office 365 收发电子邮件的组织
+
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="planning-your-solution"></a>规划解决方案
 
@@ -543,14 +545,13 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * 如果连接测试成功，请单击顶部的“保存”按钮。 如果测试失败，请仔细检查 Workday 中的 Workday URL 和凭据是否有效。
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>第 2 部分：配置属性映射 
 
 在本部分配置仅限云的用户的用户数据如何从 Workday 流入 Azure Active Directory。
 
-1.  在“预配”选项卡中的“映射”下面，单击“将工作人员同步到 Azure AD”。
+1. 在“预配”选项卡中的“映射”下面，单击“将工作人员同步到 Azure AD”。
 
-2.   在“源对象范围”字段中，可以通过定义一组基于属性的筛选器，选择 Workday 中要预配到 Azure AD 的用户集范围。 默认范围是“Workday 中的所有用户”。 示例筛选器：
+2. 在“源对象范围”字段中，可以通过定义一组基于属性的筛选器，选择 Workday 中要预配到 Azure AD 的用户集范围。 默认范围是“Workday 中的所有用户”。 示例筛选器：
 
    * 示例：将范围限定为工作人员 ID 为 1000000 到 2000000 的用户
 
@@ -566,9 +567,9 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
       * 运算符：IS NOT NULL
 
-3.  在“目标对象操作”字段中，可以全局筛选允许对 Azure AD 执行的操作。 “创建”和“更新”是最常见的操作。
+3. 在“目标对象操作”字段中，可以全局筛选允许对 Azure AD 执行的操作。 “创建”和“更新”是最常见的操作。
 
-4.  在“属性映射”部分中，可以定义 Workday 属性到 Active Directory 属性的各个映射。
+4. 在“属性映射”部分中，可以定义将单个 Workday 属性映射到 Active Directory 属性的方式。
 
 5. 单击现有的属性映射可将其更新，单击屏幕底部的“添加新映射”可添加新的映射。 单个属性映射支持以下属性：
 
@@ -602,7 +603,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 ### <a name="part-3-start-the-service"></a>第 3 部分：启动服务
 完成第 1-2 部分后，可以启动预配服务。
 
-1.  在“预配”选项卡中，将“预配状态”设置为“打开”。
+1. 在“预配”选项卡中，将“预配状态”设置为“打开”。
 
 2. 单击“ **保存**”。
 
@@ -612,7 +613,6 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 5. 完成某项操作后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 
-
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>配置向 Workday 写回电子邮件地址
 遵照以下说明，配置将用户电子邮件地址从 Azure Active Directory 写回到 Workday。
 
@@ -620,21 +620,21 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 **若要配置 Workday 到 Active Directory 的预配：**
 
-1.  转到 <https://portal.azure.com>
+1. 转到 <https://portal.azure.com>
 
-2.  在左侧导航栏中选择“Azure Active Directory”。
+2. 在左侧导航栏中选择“Azure Active Directory”。
 
-3.  依次选择“企业应用程序”、“所有应用程序”。
+3. 依次选择“企业应用程序”、“所有应用程序”。
 
-4.  依次选择“添加应用程序”、“所有”类别。
+4. 依次选择“添加应用程序”、“所有”类别。
 
-5.  搜索“Workday 写回”，然后从库中添加该应用。
+5. 搜索“Workday 写回”，然后从库中添加该应用。
 
-6.  添加应用并显示应用详细信息屏幕后，请选择“预配”
+6. 添加应用并显示应用详细信息屏幕后，请选择“预配”
 
-7.  将“预配模式”更改为“自动”
+7. 将“预配模式”更改为“自动”
 
-8.  按如下所述完成“管理员凭据”部分：
+8. 按如下所述完成“管理员凭据”部分：
 
    * **管理员用户名** – 输入 Workday 集成系统帐户的用户名，并附加租户域名。 此值应类似于：username@contoso4
 
@@ -646,24 +646,22 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * 单击“测试连接”按钮。 如果连接测试成功，请单击顶部的“保存”按钮。 如果测试失败，请仔细检查 Workday 中的 Workday URL 和凭据是否有效。
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>第 2 部分：配置属性映射 
-
 
 在本部分配置用户数据如何从 Workday 流入 Active Directory。
 
-1.  在“预配”选项卡中的“映射”下面，单击“将 Azure AD 用户同步到 Workday”。
+1. 在“预配”选项卡中的“映射”下面，单击“将 Azure AD 用户同步到 Workday”。
 
-2.  在“源对象范围”字段中，可以有选择性地在 Azure Active Directory 中筛选要将其电子邮件地址写回到 Workday 的用户集。 默认范围是“Azure AD 中的所有用户”。 
+2. 在“源对象范围”字段中，可以有选择性地在 Azure Active Directory 中筛选要将其电子邮件地址写回到 Workday 的用户集。 默认范围是“Azure AD 中的所有用户”。 
 
-3.  在“属性映射”部分中，可以定义 Workday 属性到 Active Directory 属性的各个映射。 默认情况下，电子邮件地址存在映射。 但是，必须更新匹配 ID，使 Azure AD 中的用户与其在 Workday 中的相应条目匹配。 常用的匹配方法是将 Workday 工作人员 ID 或员工 ID 同步到 Azure AD 中的 extensionAttribute1-15，然后使用 Azure AD 中的此属性来重新匹配 Workday 中的用户。
+3. 在“属性映射”部分中，可以定义 Workday 属性到 Active Directory 属性的各个映射。 默认情况下，电子邮件地址存在映射。 但是，必须更新匹配 ID，使 Azure AD 中的用户与其在 Workday 中的相应条目匹配。 常用的匹配方法是将 Workday 工作人员 ID 或员工 ID 同步到 Azure AD 中的 extensionAttribute1-15，然后使用 Azure AD 中的此属性来重新匹配 Workday 中的用户。
 
-4.  若要保存映射，请单击“属性映射”部分顶部的“保存”。
+4. 若要保存映射，请单击“属性映射”部分顶部的“保存”。
 
 ### <a name="part-3-start-the-service"></a>第 3 部分：启动服务
 完成第 1-2 部分后，可以启动预配服务。
 
-1.  在“预配”选项卡中，将“预配状态”设置为“打开”。
+1. 在“预配”选项卡中，将“预配状态”设置为“打开”。
 
 2. 单击“ **保存**”。
 
@@ -672,7 +670,6 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 4. 可在“审核日志”选项卡中查看单个同步事件。**[有关如何读取审核日志的详细说明，请参阅预配报告指南](../active-directory-saas-provisioning-reporting.md)**
 
 5. 完成某项操作后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
-
 
 ## <a name="customizing-the-list-of-workday-user-attributes"></a>自定义 Workday 用户属性列表
 适用于 Active Directory 和 Azure AD 的 Workday 预配应用都包含一个默认的 Workday 用户属性列表，可以从中进行选择。 但是，这些列表并不详尽。 Workday 支持数百个可能的用户属性，这些属性可能是 Workday 租户中的标准属性或唯一属性。 
@@ -799,15 +796,9 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 * 以前存在的，审核日志在位于欧盟的 Azure AD 租户中不显示的问题现已得到解决。 但是，需要对欧盟的 Azure AD 租户进行附加的代理配置。 有关详细信息，请参阅[第 3 部分：配置本地同步代理](#Part 3: Configure the on-premises synchronization agent)
 
-
 ## <a name="managing-personal-data"></a>管理个人数据
 
 Active Directory 的 Workday 预配解决方案需要在已加入域的服务器上安装同步代理，并且此代理会在 Windows 事件日志中创建可包含个人身份信息的日志。
-
-[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)] 其中 ../ 引用文章的相应层次结构
-
-> [!NOTE]
-> 若要查看或删除个人数据，请参阅 [Windows data subject requests for the GDPR](https://review.docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows)（GDPR 的 Windows 数据主体请求）站点中的 Microsoft 指南。 如需关于 GDPR 的常规信息，请参阅[服务信任门户的 GDPR 部分](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)。
 
 ## <a name="next-steps"></a>后续步骤
 

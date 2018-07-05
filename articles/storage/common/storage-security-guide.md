@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: ac301daca769f9cec0d3395e7bde32494dd8e3d1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ba008a86f76a526967bb9dab6ba37043a85f5cf3
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735321"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304128"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
@@ -101,7 +101,7 @@ Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助�
 * [Azure Storage Resource Provider REST API Reference](https://msdn.microsoft.com/library/azure/mt163683.aspx)（Azure 存储资源提供程序 REST API 参考）
 
   该 API 参考信息介绍了可用于按编程方式管理存储帐户的 API。
-* [开发人员指南：使用 Azure 资源管理器 API 进行身份验证](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
+* [使用资源管理器身份验证 API 访问订阅](../../azure-resource-manager/resource-manager-api-authentication.md)
 
   此文说明如何使用 Resource Manager API 进行身份验证。
 * [Role-Based Access Control for Microsoft Azure from Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)（Ignite 中提供的适用于 Microsoft Azure 的基于角色的访问控制）
@@ -209,7 +209,7 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
 ```
 
-#### <a name="how-the-shared-access-signature-is-authenticated-by-the-azure-storage-service"></a>Azure 存储服务对共享访问签名进行身份验证的方式
+#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>Azure 存储服务对共享访问签名进行授权的方式
 当存储服务收到请求时，它将获取输入查询参数，并使用与调用程序相同的方法来创建签名。 然后比较这两个签名。 如果它们相符，则存储服务可以检查存储服务版本以确保它有效、检查当前日期和时间是在指定时段内、确保请求的访问权限对应于发出的请求，等等。
 
 以上述 URL 为例，如果 URL 指向文件而不是 Blob，此请求会失败，因为它指定共享访问签名适用于 Blob。 如果调用的 REST 命令是更新 Blob，则该命令会失败，因为共享访问签名指定只准许读访问权限。
@@ -349,7 +349,7 @@ Azure 磁盘加密是一项新功能。 此功能允许加密 IaaS 虚拟机使�
 
 #### <a name="iaas-vms-and-their-vhd-files"></a>IaaS VM 及其 VHD 文件
 
-对于 IaaS VM 使用的数据磁盘，建议使用 Azure 磁盘加密。 如果使用 Azure Marketplace 中的映像创建包含非托管磁盘的 VM，Azure 会在 Azure 存储中[浅层复制](https://en.wikipedia.org/wiki/Object_copying)存储帐户中的映像；即使已启用 SSE，也不会加密。 创建 VM 并启动更新映像后，SSE 将开始加密数据。 出于此原因，如果想要将它们完全加密，最好在通过 Azure Marketplace 中的映像创建的包含非托管磁盘的 VM 上使用 Azure 磁盘加密。 如果创建包含托管磁盘的 VM，则 SSE 默认情况下会使用平台管理的密钥加密所有数据。 
+对于 IaaS VM 使用的数据磁盘，建议使用 Azure 磁盘加密。 如果使用 Azure 市场中的映像创建包含非托管磁盘的 VM，Azure 会在 Azure 存储中[浅层复制](https://en.wikipedia.org/wiki/Object_copying)存储帐户中的映像；即使已启用 SSE，也不会加密。 创建 VM 并启动更新映像后，SSE 将开始加密数据。 出于此原因，如果想要将它们完全加密，最好在通过 Azure 市场中的映像创建的包含非托管磁盘的 VM 上使用 Azure 磁盘加密。 如果创建包含托管磁盘的 VM，则 SSE 默认情况下会使用平台管理的密钥加密所有数据。 
 
 如果通过本地将预先加密的 VM 带入 Azure 中，就能将加密密钥上传到 Azure 密钥保管库，并继续针对使用本地的 VM 使用加密。 启用 Azure 磁盘加密即可处理此方案。
 
@@ -404,11 +404,11 @@ SSE 由 Azure 存储管理。 SSE 不是针对传输中数据安全性提供的�
 
 ![日志文件中字段的快照](./media/storage-security-guide/image3.png)
 
-我们对于 GetBlob 的条目及其身份验证方法感兴趣，因此需要查找操作类型“Get-Blob”的条目，并检查请求状态（第四</sup>列）和授权类型（第八</sup>列）。
+我们对于 GetBlob 的条目及其授权方法感兴趣，因此需要查找操作类型为“Get-Blob”的条目，并检查请求状态（第四</sup>列）和授权类型（第八</sup>列）。
 
-例如，在上述列表的前几列中，请求状态为“Success”且授权类型为“authenticated”。 这意味着已使用存储帐户密钥验证请求。
+例如，在上述列表的前几列中，请求状态为“Success”且授权类型为“authenticated”。 这意味着已使用存储帐户密钥对请求进行授权。
 
-#### <a name="how-are-my-blobs-being-authenticated"></a>如何对我的 Blob 进行身份验证？
+#### <a name="how-is-access-to-my-blobs-being-authorized"></a>如何授权对 blob 的访问？
 下面提供了我们感兴趣的三种用例。
 
 1. Blob 是公共的，可使用 URL 来访问（无需共享访问签名）。 在本例中，请求状态为“AnonymousSuccess”且授权类型为“anonymous”。

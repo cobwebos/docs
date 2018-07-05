@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ee866248ae7f0c1f1c49c449b777c2b68d884c5b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 88baa1385bfd64cab08299bc31a6f003f6b87e48
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257673"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019285"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -80,7 +80,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
 ```
 
-可以使用脚本创建连接资产，因为在创建自动化帐户时，该帐户默认情况下会在使用连接类型 **AzurServicePrincipal** 时自动包括多个全局模块，以便创建 **AzureRunAsConnection** 连接资产。  牢记这一点很重要，因为如果尝试使用其他身份验证方法创建新的连接资产来连接到服务或应用程序，则会失败，原因在于连接类型尚未在自动化帐户中定义。  如需详细了解如何通过 [PowerShell 库](https://www.powershellgallery.com)为自定义模块创建自己的连接类型，请参阅[集成模块](automation-integration-modules.md)
+可以使用脚本创建连接资产，因为在创建自动化帐户时，该帐户默认情况下会在使用连接类型 **AzureServicePrincipal** 时自动包括多个全局模块，以便创建 **AzureRunAsConnection** 连接资产。  牢记这一点很重要，因为如果尝试使用其他身份验证方法创建新的连接资产来连接到服务或应用程序，则会失败，原因在于连接类型尚未在自动化帐户中定义。  如需详细了解如何通过 [PowerShell 库](https://www.powershellgallery.com)为自定义模块创建自己的连接类型，请参阅[集成模块](automation-integration-modules.md)
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>在 Runbook 或 DSC 配置中使用连接
 

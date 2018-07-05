@@ -10,16 +10,16 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/06/2018
-ms.openlocfilehash: 5904864ffba656dab17e1549ed9832be4258a67f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 06/21/2018
+ms.openlocfilehash: 9fcee103854209016d73e29b598c9f33d35c4b6c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30235394"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316861"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑
-本文将介绍 Azure SQL 数据库迁移服务可使用的各种网络拓扑，以提供从本地 SQL 服务器到 Azure SQL 数据库托管实例的无缝迁移体验。
+本文介绍 Azure SQL 数据库迁移服务可使用的各种网络拓扑，以提供从本地 SQL Server 到 Azure SQL 数据库托管实例的全面迁移体验。
 
 ## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>为混合工作负载配置的 Azure SQL 数据库托管实例 
 如果 Azure SQL 数据库托管实例与本地网络连接，请使用此拓扑。 此方法提供最简化的网络路由，并在迁移过程中提供最大数据吞吐量。
@@ -40,7 +40,7 @@ ms.locfileid: "30235394"
 
 **要求**
 - Azure 数据库迁移服务针对本方案使用的 VNET 还需通过使用 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 连接到本地网络。
-- 需要在用于 Azure SQL 数据库托管实例的 VNET 和 Azure 数据库迁移服务之间创建 [VNET 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
+- 在用于 Azure SQL 数据库托管实例的 VNET 和 Azure 数据库迁移服务之间设置 [VNET 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
 
 
 ## <a name="cloud-to-cloud-migrations-shared-vnet"></a>云到云的迁移：共享的 VNET
@@ -62,7 +62,7 @@ ms.locfileid: "30235394"
 ![独立 VNET 的云到云迁移的网络拓扑](media\resource-network-topologies\cloud-to-cloud-isolated.png)
 
 **要求**
-- 需要在用于 Azure SQL 数据库托管实例的 VNET 和 Azure 数据库迁移服务之间创建 [VNET 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
+- 在用于 Azure SQL 数据库托管实例的 VNET 和 Azure 数据库迁移服务之间设置 [VNET 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
 
 
 ## <a name="see-also"></a>另请参阅

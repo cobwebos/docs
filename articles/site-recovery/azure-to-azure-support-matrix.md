@@ -7,20 +7,20 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 06/22/2018
 ms.author: sujayt
-ms.openlocfilehash: 19c439e1182086b91d05f8bb23bc6c07c34a12a2
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7f0011172185f13f51bcea8061b36012aa5da33b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716306"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36324212"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
 
 
-本文总结了 Azure Site Recovery 在不同区域之间复制和恢复 Azure 虚拟机时支持的配置和组件。
+本文总结了使用 [Azure Site Recovery](site-recovery-overview.md) 服务在不同区域之间复制和恢复 Azure 虚拟机时支持的配置和组件。
 
 ## <a name="user-interface-options"></a>用户界面选项
 
@@ -79,9 +79,10 @@ ms.locfileid: "34716306"
 - Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Debian 7[（受支持的内核版本）](#supported-debian-kernel-versions-for-azure-virtual-machines)
 - Debian 8[（受支持的内核版本）](#supported-debian-kernel-versions-for-azure-virtual-machines)
-- Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）
+- SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [（受支持的内核版本）](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
+- Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）
 
 （不支持复制计算机从 SLES 11 SP3 升级到 SLES 11 SP4。 如果已将复制计算机从 SLES 11SP3 升级到 SLES 11 SP4，则需要禁用复制，并在升级后再次对计算机启用保护。）
 
@@ -93,22 +94,32 @@ ms.locfileid: "34716306"
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-14.04 LTS | 9.13 | 3.13.0-24-generic 到 3.13.0-137-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-104-generic |
-14.04 LTS | 9.14 | 3.13.0-24-generic 到 3.13.0-141-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-112-generic |
-14.04 LTS | 9.15 | 3.13.0-24-generic 到 3.13.0-143-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-116-generic |
+14.04 LTS | 9.17 | 3.13.0-24-generic 到 3.13.0-147-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-124-generic |
 14.04 LTS | 9.16 | 3.13.0-24-generic 到 3.13.0-144-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-119-generic |
-16.04 LTS | 9.13 | 4.4.0-21-generic 到 4.4.0-104-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic |
-16.04 LTS | 9.14 | 4.4.0-21-generic 到 4.4.0-112-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-32-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1009-azure |
-16.04 LTS | 9.15 | 4.4.0-21-generic 到 4.4.0-116-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-37-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1012-azure |
+14.04 LTS | 9.15 | 3.13.0-24-generic 到 3.13.0-143-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-116-generic |
+14.04 LTS | 9.14 | 3.13.0-24-generic 到 3.13.0-141-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-112-generic |
+|||
+16.04 LTS | 9.17 | 4.4.0-21-generic 到 4.4.0-124-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-41-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1016-azure |
 16.04 LTS | 9.16 | 4.4.0-21-generic 到 4.4.0-119-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-38-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1012-azure |
+16.04 LTS | 9.15 | 4.4.0-21-generic 到 4.4.0-116-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-37-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1012-azure |
+16.04 LTS | 9.14 | 4.4.0-21-generic 到 4.4.0-112-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-32-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1009-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Debian 内核版本
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
+Debian 7 | 9.17 | 3.2.0-4-amd64 到 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 Debian 7 | 9.14、9.15、9.16 | 3.2.0-4-amd64 到 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
+|||
+Debian 8 | 9.17 | 3.16.0-4-amd64 到 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.6-amd64 |
 Debian 8 | 9.14、9.15、9.16 | 3.16.0-4-amd64 到 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.5-amd64 |
+
+### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 SUSE Linux Enterprise Server 12 内核版本
+
+**版本** | **移动服务版本** | **内核版本** |
+--- | --- | --- |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.17 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.88-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default 到 4.4.126-94.22-default |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>运行 Linux OS 的 Azure 虚拟机上支持的文件系统和来宾存储配置
 
@@ -162,7 +173,7 @@ Azure 库映像 — 由第三方发布 | 支持 | 只要 VM 在 Site Recovery �
 标准托管磁盘 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 目前不支持政府云。  |  
 高级托管磁盘 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 目前不支持政府云。 |
 存储空间 | 支持 |         
-静态加密 (SSE) | 支持 | 对于缓存和目标存储帐户，可以选择启用了 SSE 的存储帐户。     
+静态加密 (SSE) | 支持 | SSE 是存储帐户的默认设置。   
 Azure 磁盘加密 (ADE) | 不支持 |
 热添加/移除磁盘 | 不支持 | 如果在 VM 上添加或删除数据磁盘，则需为 VM 禁用复制后重新启用复制。
 排除磁盘 | 不支持|   默认排除临时磁盘。

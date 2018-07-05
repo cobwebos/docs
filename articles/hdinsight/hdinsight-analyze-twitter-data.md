@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: d81f7889122bcf887676496a056df2148cdff6e9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 35f8937ddef54d407a6e3c83566225ca8ede8bd9
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593706"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960121"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析 Twitter 数据
 社交网站是采用大数据的主要推动力之一。 Twitter 等网站所提供的公共 API 是一类用于分析和了解流行趋势的有用数据源。
@@ -68,7 +68,7 @@ ms.locfileid: "31593706"
 > [!NOTE]
 > 已将包含 10,000 个推文的文件和 Hive 脚本文件（在下一节中介绍）上传到公共 Blob 容器中。 如果要使用已上传的文件，可以跳过本节。
 
-[推文数据](https://dev.twitter.com/docs/platform-objects/tweets)以包含复杂的嵌套结构的 JavaScript 对象表示法 (JSON) 格式存储。 可以将此嵌套结构转换为 Hive 表（而不是使用传统的编程语言编写多行代码），使其能够通过类似结构化查询语言 (SQL) 的语言（称作 HiveQL）进行查询。
+推文数据以包含复杂的嵌套结构的 JavaScript 对象表示法 (JSON) 格式存储。 可以将此嵌套结构转换为 Hive 表（而不是使用传统的编程语言编写多行代码），使其能够通过类似结构化查询语言 (SQL) 的语言（称作 HiveQL）进行查询。
 
 Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份验证协议，允许用户批准应用程序代表其执行操作，而不用共享其密码。 更多信息可以在 [oauth.net](http://oauth.net/) 上或 Hueniverse 提供的出色的 [OAuth 初学者指南](http://hueniverse.com/oauth/)中找到。
 

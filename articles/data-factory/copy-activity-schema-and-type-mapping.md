@@ -11,21 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: dbfbafccc1bc735927535a5ee0f8d232be355dca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 338df0e258f66b6639e59a4fe31b6cfb6c283dd3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618617"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045521"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
 本文介绍复制数据时，Azure 数据工厂复制活动如何将架构和数据类型从源数据映射到接收器数据。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) - 版本 1 的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
-
 
 ## <a name="column-mapping"></a>列映射
 
@@ -128,11 +124,18 @@ ms.locfileid: "34618617"
         "translator":
         {
             "type": "TabularTranslator",
-            "ColumnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"
+            "columnMappings": 
+            {
+                "UserId": "MyUserId",
+                "Group": "MyGroup",
+                "Name": "MyName"
+            }
         }
     }
 }
 ```
+
+如果你使用 `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` 的语法指定列映射，则仍然按原样支持它。
 
 **列映射流：**
 

@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8e521099-bf7d-43ab-a0e0-86aa1c9e577e
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 44b34c20c8b21b58ef67beedc1074f0664048b90
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f4ef40ea5e3d68ed8c04dc2a67042abd74df42aa
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212363"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317802"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>教程：Azure Active Directory 与 Manabi Pocket 集成
 
@@ -101,35 +100,29 @@ ms.locfileid: "36212363"
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/manabipocket-tutorial/tutorial_manabipocket_samlbase.png)
 
-3. 在“Manabi Pocket 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+3. 在“Manabi Pocket 域和 URL”部分中，执行以下步骤：
 
     ![Manabi Pocket 域和 URL 单一登录信息](./media/manabipocket-tutorial/tutorial_manabipocket_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
-    
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/assertion_post`
+    a. 在“登录 URL”文本框中，键入 URL：`https://ed-cl.com/`
+
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Manabi Pocket 客户端支持团队](mailto:info-ed-cl@ntt.com)获取这些值。
+    > 标识符非实际值。 使用实际标识符更新此值。 请联系 [Manabi Pocket 客户端支持团队](mailto:info-ed-cl@ntt.com)获取此值。
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
-
-    ![Manabi Pocket 域和 URL 单一登录信息](./media/manabipocket-tutorial/tutorial_manabipocket_url1.png)
-
-    在“登录 URL”文本框中，键入 URL：`https://ed-cl.com/`
-
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/manabipocket-tutorial/tutorial_manabipocket_certificate.png) 
 
-6. 单击“保存”按钮。
+5. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/manabipocket-tutorial/tutorial_general_400.png)
 
-7. 若要在“Manabi Pocket”端配置单一登录，需要将下载的“元数据 XML”发送给 [Manabi Pocket 支持团队](mailto:info-ed-cl@ntt.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+6. 若要在“Manabi Pocket”端配置单一登录，需要将下载的“元数据 XML”发送给 [Manabi Pocket 支持团队](mailto:info-ed-cl@ntt.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -196,7 +189,7 @@ ms.locfileid: "36212363"
 6. 在“用户和组”对话框中单击“选择”按钮。
 
 7. 在“添加分配”对话框中单击“分配”按钮。
-    
+
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
@@ -222,4 +215,3 @@ ms.locfileid: "36212363"
 [201]: ./media/manabipocket-tutorial/tutorial_general_201.png
 [202]: ./media/manabipocket-tutorial/tutorial_general_202.png
 [203]: ./media/manabipocket-tutorial/tutorial_general_203.png
-

@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.component: compliance-reports
-ms.date: 05/14/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 6a1d4a55074630cc20c98202d2e94ec682c323f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2c4e26bb6f2cd144d00d9e4ada92d756fe68418b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234067"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020400"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>使用 Azure AD 针对组成员或应用程序访问权限创建访问评审
 
@@ -26,7 +26,7 @@ ms.locfileid: "35234067"
 
 ## <a name="create-an-access-review"></a>创建访问评审
 
-1. 以全局管理员的身份转到[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)，并选择“计划”。
+1. 以全局管理员或用户帐户管理员身份，转到[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)，选择“计划”。
 
 2. 选择包含要创建的访问评审控件的计划。 “默认计划”将始终存在，但也可以创建不同的计划。 例如，可以选择针对每个符合性措施或业务目标创建一个计划。
 
@@ -38,7 +38,7 @@ ms.locfileid: "35234067"
 
 6. 若要让访问评审定期进行，可将频率从“一次”更改为“每周”、“每月”、“每季”或“每年”，并且可以通过滑块或文本框来定义定期进行的一系列评审每次的运行天数（可供审阅者输入）。 例如，每月评审的最长持续时间可以设置为 27 天，以免评审时间重叠。 
 
-7.  定期访问评审系列的结束方式有 3 种：持续运行，无限期地开始评审；运行至指定日期；运行至已完成定义的评审数目。 你或者其他全局管理员可以在创建此系列后将其停止，只需在“设置”中更改日期，然后此系列就会在该日期结束。
+7.  定期访问评审系列的结束方式有 3 种：持续运行，无限期地开始评审；运行至指定日期；运行至已完成定义的评审数目。 你、其他用户帐户管理员或其他全局管理员可以在创建后停止此系列，只需在“设置”中更改日期，然后此系列就会在该日期结束。
 
 8. 访问评审的对象可以是组成员，或者是已分配到应用程序的用户。 可将访问评审的范围进一步限定为仅评审属于成员（或已分配到应用）的来宾用户，而不是评审属于成员或有权访问应用程序的所有用户。
 

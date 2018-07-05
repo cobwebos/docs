@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 48546e84b94ad0c11a159b2f88f7e21f7eb6ae0e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7e83f141791bb49130f7cf01086537f8ae08c406
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208295"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019689"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 > [!div class="op_single_selector"]
@@ -116,10 +116,10 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-在本教程中，我们将重点放在 `runAsync()` 入口点方法上。 这是可以立即开始运行代码的位置。
+本教程将重点放在 `runAsync()` 入口点方法上。 这是可以立即开始运行代码的位置。
 
 ### <a name="runasync"></a>RunAsync
-当服务实例已放置并且可以执行时，平台将调用此方法。 对于无状态服务，这就意味着打开服务实例。 需要关闭服务实例时，将提供取消标记进行协调。 在 Service Fabric 中，服务实例的此打开-关闭循环可能会在服务的整个生存期内出现多次。 发生这种情况的原因多种多样，包括：
+当服务实例已放置并且可以执行时，平台将调用此方法。 对于无状态服务，这表示打开服务实例的时间。 需要关闭服务实例时，将提供取消标记进行协调。 在 Service Fabric 中，服务实例的此打开-关闭循环可能会在服务的整个生存期内出现多次。 发生这种情况的原因多种多样，包括：
 
 * 系统可能会移动服务实例以实现资源平衡。
 * 代码中发生错误。
@@ -201,16 +201,16 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和 Reliable Hashmaps，可以将数据直接存储在服务中而无需外部持久性存储。 Reliable Hashmaps 可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个*副本*来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和 Reliable HashMaps，可以将数据直接存储在服务中而无需外部持久性存储。 Reliable HashMaps 可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个*副本*来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
 
 Reliable Collections 可以存储任何 Java 类型（包括自定义类型），但需要注意以下几点：
 
-* Service Fabric 通过跨节点复制状态，使状态具备高可用性；而 Reliable Hashmap 会将数据存储到每个副本上的本地磁盘中。 这意味着 Reliable Hashmaps 中存储的所有内容都必须可序列化。 
-* 在 Reliable Hashmaps 上提交事务时，将复制对象以实现高可用性。 存储在 Reliable Hashmaps 中的对象保留在服务的本地内存中。 这意味着你有对象的本地引用。
+* Service Fabric 通过跨节点复制状态，使状态具备高可用性；而 Reliable HashMap 会将数据存储到每个副本上的本地磁盘中。 这意味着 Reliable HashMaps 中存储的所有内容都必须可序列化。 
+* 在 Reliable HashMaps 上提交事务时，将复制对象以实现高可用性。 存储在 Reliable HashMaps 中的对象保留在服务的本地内存中。 这意味着你有对象的本地引用。
   
    切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改将不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个*更新*方法。
 
-Reliable State Manager 自动管理 Reliable Hashmaps。 无论何时何地，都可以根据名称向可靠状态管理器请求服务中的某个可靠集合。 可靠状态管理器可确保能取回引用。 不建议将可靠集合实例的引用存储在类成员变量或属性中。 请特别小心，确保在服务生命周期中随时会引用设置为某个实例。 可靠状态管理器将处理此工作，并已针对重复访问进行优化。
+可靠状态管理器自动管理 Reliable HashMaps。 无论何时何地，都可以根据名称向可靠状态管理器请求服务中的某个可靠集合。 可靠状态管理器可确保能取回引用。 建议不要将可靠集合实例的引用保存到类成员变量或属性中。 请特别小心，确保在服务生命周期中随时会引用设置为某个实例。 可靠状态管理器将处理此工作，并已针对重复访问进行优化。
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>事务和异步操作
@@ -231,12 +231,12 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-Reliable Hashmaps 上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
+Reliable HashMaps 上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
 
-Reliable Hashmap 操作是事务性的，因此可以跨多个 Reliable Hashmaps 和操作保持状态的一致。 例如，在单个事务中，从一个 Reliable Dictionary 中获取工作项、对其执行操作并将结果保存在 Reliable Hashmap 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
+Reliable HashMap 操作是事务性的，因此可以跨多个 Reliable HashMaps 和操作保持状态一致。 例如，可以在单个事务中，从一个可靠字典中获取工作项、对其执行操作并将结果保存在另一个 Reliable HashMap 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
 
 
-## <a name="run-the-application"></a>运行应用程序
+## <a name="build-the-application"></a>构建应用程序
 
 Yeoman 基架包含用于生成应用程序的 gradle 脚本，以及用于部署和删除应用程序的 bash 脚本。 若要运行应用程序，请先使用 gradle 构建应用程序：
 
@@ -246,13 +246,31 @@ $ gradle
 
 这会生成可以使用 Service Fabric CLI 部署的 Service Fabric 应用程序包。
 
-### <a name="deploy-with-service-fabric-cli"></a>使用 Service Fabric CLI 部署
+## <a name="deploy-the-application"></a>部署应用程序
 
-Install.sh 脚本包含用于部署应用程序包的 Service Fabric CLI 命令。 运行 install.sh 脚本以部署此应用程序。
+生成应用程序后，可以将其部署到本地群集。
 
-```bash
-$ ./install.sh
-```
+1. 连接到本地 Service Fabric 群集。
+
+    ```bash
+    sfctl cluster select --endpoint http://localhost:19080
+    ```
+
+2. 运行模板中提供的安装脚本可将应用程序包复制到群集的映像存储区、注册应用程序类型和创建应用程序实例。
+
+    ```bash
+    ./install.sh
+    ```
+
+部署生成的应用程序时，其方式与部署任何其他 Service Fabric 应用程序相同。 如需详细的说明，请参阅相关文档，了解如何[使用 Service Fabric CLI 管理 Service Fabric 应用程序](service-fabric-application-lifecycle-sfctl.md)。
+
+这些命令的参数可以在应用程序包内的已生成清单中找到。
+
+应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
+
+> [!IMPORTANT]
+> 若要将应用程序部署到 Azure 中的安全 Linux 群集，需要配置证书以使用 Service Fabric 运行时验证应用程序。 这样做可允许 Reliable Services 服务与基础 Service Fabric 运行时 API 通信。 若要了解详细信息，请参阅[配置 Reliable Services 应用以在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
+>
 
 ## <a name="next-steps"></a>后续步骤
 

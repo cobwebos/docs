@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: a856c59191a1e35b78d1ab6c2c88ab5288ea1419
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 991e4b86a1d3e75c02e5ed8fe97727c625f174a4
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836477"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055347"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>车辆遥测分析解决方案操作手册：深入探讨解决方案
 这个菜单链接至此操作手册的部分： 
@@ -35,7 +35,7 @@ ms.locfileid: "34836477"
 * 模拟车辆信号和诊断数据集
 * 车辆目录
 
-车辆远程信息处理模拟器是此解决方案的一部分，如以下屏幕截图所示。 它可在给定的时间点根据车辆的状态以及驾驶模式发出对应的诊断信息和信号。 若要下载“车辆远程信息处理模拟器 Visual Studio 解决方案”，以基于自身要求进行自定义，请转到[车辆远程信息处理模拟器](http://go.microsoft.com/fwlink/?LinkId=717075)网页。 车辆目录包含将车辆识别号 (VIN) 映射到模型的参考数据集。
+车辆远程信息处理模拟器是此解决方案的一部分，如以下屏幕截图所示。 它可在给定的时间点根据车辆的状态以及驾驶模式发出对应的诊断信息和信号。  车辆目录包含将车辆识别号 (VIN) 映射到模型的参考数据集。 请注意：车辆远程信息处理模拟器 Visual Studio 解决方案数据集不再可用。 
 
 ![车辆远程信息处理模拟器](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig1-vehicle-telematics-simulator.png)
 
@@ -363,7 +363,7 @@ PCA 是机器学习中一项成熟的技术，可应用于特征选择、分类�
 
 另外，此模式也适用于希望将业务线应用程序与实时分析流集成的场景。 这些场景包括警报、通知和消息传递。
 
-若要下载用于自定义的 RealtimeDashboardApp Visual Studio 解决方案，请参阅 [RealtimeDashboardApp download](http://go.microsoft.com/fwlink/?LinkId=717078) 网页。 
+请注意：RealtimeDashboardApp Visual Studio 解决方案的数据不再可用。
 
 #### <a name="execute-the-real-time-dashboard-application"></a>执行实时仪表板应用程序
 1. 提取 RealtimeDashboardApp，并将它保存到本地。
@@ -669,10 +669,9 @@ Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和�
 
 ### <a name="references"></a>参考
 
-* [Vehicle Telematics Simulator Visual Studio Solution](http://go.microsoft.com/fwlink/?LinkId=717075)（车辆远程信息处理模拟器 Visual Studio 解决方案） 
 * [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)
 * [Azure 数据工厂](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 * [用于流引入的 Azure 事件中心 SDK](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-* [Azure 数据工厂数据移动功能](../../data-factory/v1/data-factory-data-movement-activities.md)
-* [Azure 数据工厂 .NET 活动](../../data-factory/v1/data-factory-use-custom-activities.md)
+* [Azure 数据工厂数据移动功能](../../data-factory/copy-activity-overview.md)
+* [Azure 数据工厂 .NET 活动](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [用于准备示例数据的 Azure 数据工厂 .NET 活动 Visual Studio 解决方案](http://go.microsoft.com/fwlink/?LinkId=717077) 

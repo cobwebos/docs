@@ -8,14 +8,14 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf6a14020f26691195963a210d668912705f3b8d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbbd07e93602855afb0c9755e8872e0b46557611
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631711"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030013"
 ---
-# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules---preview"></a>了解开发 IoT Edge 模块的要求和工具 - 预览
+# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>了解开发 IoT Edge 模块的要求和工具
 
 本文介绍编写作为 IoT Edge 模块运行的应用程序时可用的功能，以及如何充分利用它们。
 

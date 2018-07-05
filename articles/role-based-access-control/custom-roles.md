@@ -1,6 +1,6 @@
 ---
-title: 为 Azure RBAC 创建自定义角色 | Microsoft Docs
-description: 了解如何通过 Azure 基于角色的访问控制来定义自定义角色，以便在 Azure 订阅中进行更精确的身份管理。
+title: Azure 中的自定义角色 | Microsoft Docs
+description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 定义自定义角色，以便对 Azure 中的资源进行精细的访问权限管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,173 +11,106 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/12/2018
+ms.date: 06/12/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3baf616e448f1f6d5292161ae125502d72141940
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 074c305cb15bc1fb25dfa5cfc52dcce53b661a7e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266588"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36324182"
 ---
-# <a name="create-custom-roles-in-azure"></a>在 Azure 中创建自定义角色
+# <a name="custom-roles-in-azure"></a>Azure 中的自定义角色
 
-如果[内置角色](built-in-roles.md)不能满足特定访问需要，则可创建自己的自定义角色。 与内置角色一样，可以将自定义角色分配到订阅、资源组和资源范围内的用户、组和服务主体。 自定义角色存储在 Azure Active Directory (Azure AD) 租户中，可以在订阅之间共享。 每个租户最多可以有 2000 个自定义角色。 可以使用 Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
+如果[内置角色](built-in-roles.md)不能满足组织的特定需求，你可以创建自己的自定义角色。 与内置角色一样，可以将自定义角色分配到订阅、资源组和资源范围内的用户、组和服务主体。 自定义角色存储在 Azure Active Directory (Azure AD) 租户中，可以在订阅之间共享。 每个租户最多可以有 2000 个自定义角色。 可以使用 Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
 
-本文介绍如何开始使用 PowerShell 和 Azure CLI 创建自定义角色的示例。
+## <a name="custom-role-example"></a>自定义角色示例
 
-## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>使用 PowerShell 创建自定义角色以提出支持请求
-
-若要创建自定义角色，可以从内置角色着手，对其进行编辑，然后创建新角色。 对于此示例，内置[读取者](built-in-roles.md#reader)角色经过自定义，用于创建名为“读取者支持票证访问级别”的自定义角色。 此角色允许用户订阅中的所有内容，以及建立支持请求。
-
-> [!NOTE]
-> 允许用户建立支持请求的唯一两个内置角色是[所有者](built-in-roles.md#owner)和[参与者](built-in-roles.md#contributor)。 若使某个用户能够提出支持请求，必须在订阅范围为该用户分配角色，因为所有支持请求都是基于 Azure 订阅创建的。
-
-在 PowerShell 中，使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) 命令导出 JSON 格式的[读取者](built-in-roles.md#reader)角色。
-
-```azurepowershell
-Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
-```
-
-以下是[读取者](built-in-roles.md#reader)角色的 JSON 输出。 典型角色由三个主要部分组成：`Actions`、`NotActions` 和 `AssignableScopes`。 `Actions` 部分列出允许此角色执行的所有操作。 若要从 `Actions` 中排除操作，可将其添加到 `NotActions`。 通过从 `Actions` 操作中减去 `NotActions` 操作可以计算出有效权限。
+下面提供了使用 Azure PowerShell 显示的用于监视和重启虚拟机的自定义角色：
 
 ```json
 {
-    "Name":  "Reader",
-    "Id":  "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "IsCustom":  false,
-    "Description":  "Lets you view everything, but not make any changes.",
-    "Actions":  [
-                    "*/read"
-                ],
-    "NotActions":  [
+  "Name":  "Virtual Machine Operator",
+  "Id":  "88888888-8888-8888-8888-888888888888",
+  "IsCustom":  true,
+  "Description":  "Can monitor and restart virtual machines.",
+  "Actions":  [
+                  "Microsoft.Storage/*/read",
+                  "Microsoft.Network/*/read",
+                  "Microsoft.Compute/*/read",
+                  "Microsoft.Compute/virtualMachines/start/action",
+                  "Microsoft.Compute/virtualMachines/restart/action",
+                  "Microsoft.Authorization/*/read",
+                  "Microsoft.Resources/subscriptions/resourceGroups/read",
+                  "Microsoft.Insights/alertRules/*",
+                  "Microsoft.Insights/diagnosticSettings/*",
+                  "Microsoft.Support/*"
+  ],
+  "NotActions":  [
 
-                   ],
-    "AssignableScopes":  [
-                             "/"
-                         ]
+                 ],
+  "DataActions":  [
+
+                  ],
+  "NotDataActions":  [
+
+                     ],
+  "AssignableScopes":  [
+                           "/subscriptions/{subscriptionId1}",
+                           "/subscriptions/{subscriptionId2}",
+                           "/subscriptions/{subscriptionId3}"
+                       ]
 }
 ```
 
-接下来，编辑 JSON 输出以创建自定义角色。 在本例中，若要创建支持票证，必须添加 `Microsoft.Support/*` 操作。 每个操作都是通过资源提供程序提供的。 若要获取资源提供程序的操作列表，可以使用 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 命令，或参阅 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。
+创建自定义角色后，该角色会显示在 Azure 门户中，并带有一个橙色资源图标。
 
-角色必须包含它所应用到的显式订阅 ID。 订阅 ID 必须列在 `AssignableScopes` 下面，否则无法在订阅中导入角色。
+![自定义角色图标](./media/custom-roles/roles-custom-role-icon.png)
 
-最后，必须将 `IsCustom` 属性设置为 `true` 来指定这是自定义角色。
+## <a name="steps-to-create-a-custom-role"></a>创建自定义角色的步骤
 
-```json
-{
-    "Name":  "Reader support tickets access level",
-    "IsCustom":  true,
-    "Description":  "View everything in the subscription and also open support requests.",
-    "Actions":  [
-                    "*/read",
-                    "Microsoft.Support/*"
-                ],
-    "NotActions":  [
+1. 确定所需的权限
 
-                   ],
-    "AssignableScopes":  [
-                             "/subscriptions/11111111-1111-1111-1111-111111111111"
-                         ]
-}
-```
+    创建自定义角色时，需要知道可用于定义权限的资源提供程序操作。 若要查看操作列表，可以使用 [Get-AzureRMProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 或 [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list) 命令。
+    若要指定自定义角色的权限，请将操作添加到[角色定义](role-definitions.md)的 `actions` 或 `notActions` 属性。 如果有数据操作，请将这些操作添加到 `dataActions` 或 `notDataActions` 属性。
 
-若要新建自定义角色，请使用 [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) 命令，并提供更新的 JSON 角色定义文件。
+2. 创建自定义角色
 
-```azurepowershell
-New-AzureRmRoleDefinition -InputFile "C:\rbacrole2.json"
-```
+    可以使用 Azure PowerShell 或 Azure CLI 创建自定义角色。 通常，我们会从一个现有的内置角色着手，并根据需要对其进行修改。 然后，使用 [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) 或 [az role definition create](/cli/azure/role/definition#az-role-definition-create) 命令创建自定义角色。 若要创建自定义角色，必须拥有所有 `assignableScopes` 的 `Microsoft.Authorization/roleDefinitions/write` 权限，例如[所有者](built-in-roles.md#owner)或[用户访问权限管理员](built-in-roles.md#user-access-administrator)。
 
-运行 [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) 后，新的自定义角色可在 Azure 门户中使用，并可分配给用户。
+3. 测试自定义角色
 
-![Azure 门户中导入的自定义角色屏幕截图](./media/custom-roles/18.png)
+    创建自定义角色后，必须对其进行测试，以验证它是否按预期工作。 如果需要做出调整，可以更新自定义角色。
 
-![将导入的自定义角色分配到同一目录中的用户的屏幕截图](./media/custom-roles/19.png)
+## <a name="custom-role-properties"></a>自定义角色属性
 
-![导入的自定义角色的权限屏幕截图](./media/custom-roles/20.png)
+自定义角色具有以下属性。
 
-具有此自定义角色的用户可以创建新的支持请求。
+| 属性 | 必选 | Type | 说明 |
+| --- | --- | --- | --- |
+| `Name` | 是 | String | 自定义角色的显示名称。 此名称必须在租户中唯一。 可以包含字母、数字、空格和特殊字符。 最多包含 128 个字符。 |
+| `Id` | 是 | String | 自定义角色的唯一 ID。 如果使用 Azure PowerShell 和 Azure CLI，在创建新角色时会自动生成此 ID。 |
+| `IsCustom` | 是 | String | 指示此角色是否为自定义角色。 设置为 `true` 表示是自定义角色。 |
+| `Description` | 是 | String | 自定义角色的说明。 可以包含字母、数字、空格和特殊字符。 最多包含 1024 个字符。 |
+| `Actions` | 是 | String[] | 一个字符串数组，指定该角色允许执行的管理操作。 有关详细信息，请参阅 [actions](role-definitions.md#actions)。 |
+| `NotActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `actions` 中排除的管理操作。 有关详细信息，请参阅 [notActions](role-definitions.md#notactions)。 |
+| `DataActions` | 否 | String[] | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 有关详细信息，请参阅 [dataActions（预览）](role-definitions.md#dataactions-preview)。 |
+| `NotDataActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `dataActions` 中排除的数据操作。 有关详细信息，请参阅 [notDataActions（预览）](role-definitions.md#notdataactions-preview)。 |
+| `AssignableScopes` | 是 | String[] | 一个字符串数组，指定自定义角色的可分配范围。 不能设置为根范围 (`"/"`)。 有关详细信息，请参阅 [assignableScopes](role-definitions.md#assignablescopes)。 |
 
-![可创建支持请求的自定义角色的屏幕截图](./media/custom-roles/21.png)
+## <a name="assignablescopes-for-custom-roles"></a>自定义角色的 assignableScopes
 
-具有此自定义角色的用户无法执行其他操作，例如创建 VM 或创建资源组。
+与在内置角色中一样，`assignableScopes` 属性指定角色的可配置范围。 但是，你不能在自己的自定义角色中使用根范围 (`"/"`)。 如果你尝试，会收到一个授权错误。 自定义角色的 `assignableScopes` 属性还控制谁可以创建、删除、修改或查看自定义角色。
 
-![无法创建 VM 的自定义角色的屏幕截图](./media/custom-roles/22.png)
+| 任务 | Operation | 说明 |
+| --- | --- | --- |
+| 创建/删除自定义角色 | `Microsoft.Authorization/ roleDefinition/write` | 在自定义角色的所有 `assignableScopes` 上被允许此操作的用户可以创建（或删除）用于这些范围的自定义角色。 例如，订阅、资源组和资源的[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)。 |
+| 修改自定义角色 | `Microsoft.Authorization/ roleDefinition/write` | 在自定义角色的所有 `assignableScopes` 上被允许此操作的用户可以修改这些范围中的自定义角色。 例如，订阅、资源组和资源的[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)。 |
+| 查看自定义角色 | `Microsoft.Authorization/ roleDefinition/read` | 在某个范围内被允许此操作的用户可以查看可在该范围内分配的自定义角色。 所有内置角色都允许自定义角色可用于分配。 |
 
-![无法创建新资源组的自定义角色的屏幕截图](./media/custom-roles/23.png)
-
-## <a name="create-a-custom-role-to-open-support-requests-using-azure-cli"></a>使用 Azure CLI 创建自定义角色以提出支持请求
-
-使用 Azure CLI 创建自定义角色的步骤类似于使用 PowerShell，只是 JSON 输出有所不同。
-
-对于此示例，可以从内置的[读取者](built-in-roles.md#reader)角色着手。 若要列出[读取者](built-in-roles.md#reader)角色的操作，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list) 命令。
-
-```azurecli
-az role definition list --name "Reader" --output json
-```
-
-```json
-[
-  {
-    "additionalProperties": {},
-    "assignableScopes": [
-      "/"
-    ],
-    "description": "Lets you view everything, but not make any changes.",
-    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "permissions": [
-      {
-        "actions": [
-          "*/read"
-        ],
-        "additionalProperties": {},
-        "notActions": [],
-      }
-    ],
-    "roleName": "Reader",
-    "roleType": "BuiltInRole",
-    "type": "Microsoft.Authorization/roleDefinitions"
-  }
-]
-```
-
-使用以下格式创建 JSON 文件。 `Microsoft.Support/*` 操作已添加到 `Actions` 部分，以便此用户可以提出支持请求，同时继续充当读取者角色。 必须在 `AssignableScopes` 部分中添加此角色将要应用到的订阅 ID。
-
-```json
-{
-    "Name":  "Reader support tickets access level",
-    "IsCustom":  true,
-    "Description":  "View everything in the subscription and also open support requests.",
-    "Actions":  [
-                    "*/read",
-                    "Microsoft.Support/*"
-                ],
-    "NotActions":  [
-
-                   ],
-    "AssignableScopes": [
-                            "/subscriptions/11111111-1111-1111-1111-111111111111"
-                        ]
-}
-```
-
-若要新建自定义角色，请使用 [az role definition create](/cli/azure/role/definition#az_role_definition_create) 命令。
-
-```azurecli
-az role definition create --role-definition ~/roles/rbacrole1.json
-```
-
-现在，新角色可在 Azure 门户中使用，其使用过程与前面 PowerShell 部分中所述的过程相同。
-
-![使用 CLI 1.0 创建自定义角色的 Azure 门户屏幕截图](./media/custom-roles/26.png)
-
-
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
+- [使用 Azure PowerShell 创建自定义角色](custom-roles-powershell.md)
+- [使用 Azure CLI 创建自定义角色](custom-roles-cli.md)
 - [了解角色定义](role-definitions.md)
-- [使用 Azure PowerShell 管理基于角色的访问控制](role-assignments-powershell.md)
-- [使用 Azure CLI 管理基于角色的访问控制](role-assignments-cli.md)
-- [使用 REST API 管理基于角色的访问控制](role-assignments-rest.md)

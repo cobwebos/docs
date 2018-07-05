@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 6b0f576538f159155dcf602fe39b0ea67254e4c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b6de6331b4d829f183c8b5dc03d6a29095a47479
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619246"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049315"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-copy-activity-performance.md)
-> * [版本 2 - 预览版](copy-activity-performance.md)
+> * [版本 1](v1/data-factory-copy-activity-performance.md)
+> * [当前版本](copy-activity-performance.md)
 
 
 Azure 数据工厂复制活动提供安全、可靠且高性能的一流数据加载解决方案。 它允许用户在各种云和本地数据存储中每天复制数十 TB 的数据。 速度超快的数据加载性能是确保用户能专注于核心“大数据”问题的关键：构建高级分析解决方案并从所有数据获得深入见解。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[数据工厂版本 1 中的复制活动性能](v1/data-factory-copy-activity-performance.md)。
 
 Azure 提供了一组企业级数据存储和数据仓库解决方案，并且复制活动提供了高度优化的数据加载体验，易于配置和设置。 使用单个复制活动，可完成：
 
@@ -40,7 +37,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 本文介绍：
 
 * 支持的源和接收器数据存储的[性能参考数字](#performance-reference)，可帮助用户规划项目；
-* 可在不同情况下提高复制吞吐量的功能，包括[云数据移动单元](#cloud-data-movement-units)、[并行复制](#parallel-copy)和[分步复制](#staged-copy)；
+* 可在不同情况下提高复制吞吐量的功能，包括[数据集成单元](#data-integration-units)、[并行复制](#parallel-copy)和[分步复制](#staged-copy)；
 * 有关如何优化性能和调整影响复制性能的关键因素的[性能优化指南](#performance-tuning-steps)。
 
 > [!NOTE]
@@ -49,12 +46,12 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ## <a name="performance-reference"></a>性能参考
 
-作为参考，下表基于内部测试显示了**单次复制活动运行**中给定源和接收器对的复制吞吐量数目（**以 MBps 为单位**）。 为进行比较，它还演示了[云数据移动单元](#cloud-data-movement-units)或[自承载 Integration Runtime 可伸缩性](concepts-integration-runtime.md#self-hosted-integration-runtime)的不同设置（多个节点）如何提升复制性能。
+作为参考，下表基于内部测试显示了**单次复制活动运行**中给定源和接收器对的复制吞吐量数目（**以 MBps 为单位**）。 为进行比较，它还演示了[数据集成单元](#data-integration-units)或[自承载 Integration Runtime 可伸缩性](concepts-integration-runtime.md#self-hosted-integration-runtime)的不同设置（多个节点）如何提升复制性能。
 
 ![性能矩阵](./media/copy-activity-performance/CopyPerfRef.png)
 
->[!IMPORTANT]
->在 Azure 数据工厂版本 2 中，对 Azure Integration Runtime 执行复制活动时，允许的云数据移动单元数下限为两个。 如果未指定，请参阅[云数据移动单元](#cloud-data-movement-units)了解使用的默认数据移动单元数。
+> [!IMPORTANT]
+> 对 Azure Integration Runtime 执行复制活动时，允许的数据集成单元（以前称为数据移动单元）数量下限为两个。 如果未指定，请参阅[数据集成单元](#data-integration-units)中使用的默认数据集成单元数。
 
 需要注意的要点：
 
@@ -79,25 +76,25 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 
 > [!TIP]
-> 可通过使用比允许的默认最大 DMU 还要多的数据移动单元 (DMU) 来实现更高的吞吐量，对于云到云复制活动运行来说，允许的默认 DMU 上限为 32。 例如，使用 100 个 DMU，可将数据以 **1.0GBps** 的速率从 Azure Blob 复制到 Azure Data Lake Store 中。 请参阅[云数据移动单位](#cloud-data-movement-units)部分，了解有关此功能和受支持方案的相关详细信息。 要请求更多 DMU，请联系[支持](https://azure.microsoft.com/support/)。
+> 可通过使用比允许的默认最大数据集成单元 (DIU) 数更多的 DIU 来实现更高的吞吐量，对于云到云复制活动运行来说，允许的默认上限为 32。 例如，使用 100 个 DIU，可将数据以 **1.0GBps** 的速率从 Azure Blob 复制到 Azure Data Lake Store 中。 请参阅[数据集成单元](#data-integration-units)部分，了解有关此功能和受支持方案的相关详细信息。 要请求更多 DIU，请联系 [Azure 支持](https://azure.microsoft.com/support/)。
 
-## <a name="cloud-data-movement-units"></a>云数据移动单位
+## <a name="data-integration-units"></a>数据集成单元
 
-**云数据移动单位 (DMU)** 是一种度量单位，代表单个单位在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 **DMU 仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**，而不适用于[自承载 Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)。
+**数据集成单元 (DIU)**（以前称为云数据移动单元或 DMU）是一种度量单位，代表单个单元在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 **DIU 仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**，而不适用于[自承载 Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)。
 
-**为复制活动运行提供支持的云数据移动单元数下限为两个。** 如果未指定，下表列出了不同复制方案中使用的默认 DMU 数目：
+**为复制活动运行提供支持的数据集成单元数下限为两个。** 如果未指定，下表列出了不同复制方案中使用的默认 DIU 数目：
 
-| 复制方案 | 服务决定的默认 DMU 数目 |
+| 复制方案 | 服务决定的默认 DIU 数目 |
 |:--- |:--- |
 | 在基于文件的存储之间复制数据 | 4 到 32 个，具体取决于文件的数量和大小。 |
 | 所有其他复制方案 | 4 |
 
-若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 cloudDataMovementUnits 属性的允许值最大为 256。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
+若要替代此默认值，请如下所示指定 **dataIntegrationUnits** 属性的值。 **dataIntegrationUnits** 属性**允许的值****最大为 256**。 复制操作在运行时使用的**实际 DIU 数**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
 
-监视活动运行时，可以在复制活动输出中看到每次复制运行实际使用的云数据移动单元数。 从[复制活动监视](copy-activity-overview.md#monitoring)中了解详细信息。
+监视活动运行时，可以在复制活动输出中看到每次复制运行实际使用的数据集成单元数。 从[复制活动监视](copy-activity-overview.md#monitoring)中了解详细信息。
 
 > [!NOTE]
-> 如果需要更多云 DMU 以获得更高的吞吐量，请联系 [Azure支持](https://azure.microsoft.com/support/)。 目前仅在**将多个文件从 Blob 存储/Data Lake Store/Amazon S3/云 FTP/云 SFTP 复制到其他任何云数据存储**时，才能设置为 8 或更高的值。
+> 如果需要更多 DIU 以获得更高的吞吐量，请联系 [Azure 支持](https://azure.microsoft.com/support/)。 目前仅在**将多个文件从 Blob 存储/Data Lake Store/Amazon S3/云 FTP/云 SFTP 复制到其他任何云数据存储**时，才能设置为 8 或更高的值。
 >
 
 **示例：**
@@ -116,15 +113,15 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
             "sink": {
                 "type": "AzureDataLakeStoreSink"
             },
-            "cloudDataMovementUnits": 32
+            "dataIntegrationUnits": 32
         }
     }
 ]
 ```
 
-### <a name="cloud-data-movement-units-billing-impact"></a>云数据移动单元计费影响
+### <a name="data-integration-units-billing-impact"></a>数据集成单元计费影响
 
-请**务必**记住，会根据复制操作的总时间向你收费。 对数据移动计费的总持续时间是所有 DMU 的持续时间总和。 如果复制作业过去使用 2 个云单元花费 1 小时，现在使用 8 个云单元花费 15 分钟，则总费用几乎相同。
+请**务必**记住，会根据复制操作的总时间向你收费。 对数据移动计费的总持续时间是所有 DIU 的持续时间总和。 如果复制作业过去使用 2 个云单元花费 1 小时，现在使用 8 个云单元花费 15 分钟，则总费用几乎相同。
 
 ## <a name="parallel-copy"></a>并行复制
 
@@ -134,7 +131,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 | 复制方案 | 由服务确定的默认并行复制计数 |
 | --- | --- |
-| 在基于文件的存储之间复制数据 |取决于文件大小以及用于在两个云数据存储之间复制数据的云数据移动单元 (DMU) 数，或自承载 Integration Runtime 计算机的物理配置。 |
+| 在基于文件的存储之间复制数据 |取决于文件大小以及用于在两个云数据存储之间复制数据的数据集成单元 (DIU) 数，或自承载 Integration Runtime 计算机的物理配置。 |
 | 将数据从任何源数据存储复制到 Azure 表存储 |4 |
 | 所有其他复制方案 |1 |
 
@@ -168,7 +165,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * 在基于文件的存储之间复制数据时，**parallelCopies** 确定文件级别的并行度。 单个文件内的区块化会自动透明地在文件下进行，它旨在对给定源数据存储类型使用最佳区块大小，以并行和正交方式将数据加载到 parallelCopies。 数据移动服务在运行时用于复制操作的并行复制的实际数量不超过所拥有的文件数。 如果复制行为是 **mergeFile**，复制活动无法利用文件级别的并行度。
 * 指定 **parallelCopies** 属性的值时，请考虑源数据存储和接收器数据存储上的负载会增加，如果使用自承载 Integration Runtime 为混合复制或其他复制的复制活动提供支持，其负载也会增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种情况。 如果注意到数据存储或自承载 Integration Runtime 负载过重，请降低 **parallelCopies**  值以减轻负载。
 * 将数据从不基于文件的存储复制到基于文件的存储时，数据移动服务将忽略 **parallelCopies** 属性。 即使指定了并行性，在此情况下也不适用。
-* **parallelCopies** 与 **cloudDataMovementUnits** 不相干。 前者跨所有云数据移动单元计数。
+* **parallelCopies** 与 **dataIntegrationUnits** 之间存在正交关系。 前者跨所有数据集成单元进行计数。
 
 ## <a name="staged-copy"></a>暂存复制
 
@@ -246,7 +243,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
    * 性能功能：
      * [并行复制](#parallel-copy)
-     * [云数据移动单位](#cloud-data-movement-units)
+     * [数据集成单元](#data-integration-units)
      * [暂存复制](#staged-copy)
      * [自承载 Integration Runtime 可伸缩性](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [自承载 Integration Runtime](#considerations-for-self-hosted-integration-runtime)

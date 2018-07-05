@@ -1,25 +1,26 @@
 ---
-title: 有关 Data Lake Store 的数据方案 | Microsoft Docs
-description: 了解 Data Lake Store 中可进行数据引入、处理、下载和可视化的不同方案和工具
+title: 涉及 Data Lake Storage Gen1 的数据方案 | Microsoft Docs
+description: 了解可在 Data Lake Storage Gen1（以前称为 Azure Data Lake Store）中进行数据引入、处理、下载和可视化的不同方案和工具
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 37409a71-a563-4bb7-bc46-2cbd426a2ece
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 86b6d05538171fcf0e259e2761316529deb4fb37
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e0c7ed22762ef19c6e68ad69d0cabcfeb8007251
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625315"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031033"
 ---
-# <a name="using-azure-data-lake-store-for-big-data-requirements"></a>使用 Azure Data Lake Store 满足大数据要求
+# <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 满足大数据要求
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 大数据处理的四个主要阶段：
 
 * 实时或批量引入大量数据到数据存储

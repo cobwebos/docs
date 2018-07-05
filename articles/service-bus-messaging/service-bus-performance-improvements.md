@@ -5,27 +5,22 @@ services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: e756c15d-31fc-45c0-8df4-0bca0da10bb2
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: e6762d988da7d34893852505d8ce0fd30622eaaf
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: e168dcab182f9eb30291b58bdde252ec66d18e8c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802538"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301795"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
 本文介绍如何使用 Azure 服务总线在交换中转消息时优化性能。 本文的第一部分介绍有助于提高性能的各种不同机制。 第二部分则指导用户如何针对给定方案以能够提供最佳性能的方式使用服务总线。
 
-在本主题中，术语“客户端”是指任何访问服务总线的实体。 客户端可以充当发送方或接收方的角色。 术语“发件人”用于将消息发送到服务总线队列或主题订阅的服务总线队列或主题客户端。 术语“接收方”是指从服务总线队列或订阅接收消息的服务总线队列或订阅客户端。
+在本文中，术语“客户端”是指任何访问服务总线的实体。 客户端可以充当发送方或接收方的角色。 术语“发件人”用于将消息发送到服务总线队列或主题订阅的服务总线队列或主题客户端。 术语“接收方”是指从服务总线队列或订阅接收消息的服务总线队列或订阅客户端。
 
 以下几部分介绍服务总线用以帮助提高性能的几个概念。
 
@@ -37,7 +32,7 @@ ms.locfileid: "34802538"
 2. 服务总线邮件协议 (SBMP)
 3. HTTP
 
-AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与服务总线的连接。 它还实现批处理和预提取。 除非明确提到，本主题中的所有内容都假定使用 AMQP 或 SBMP。
+AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与服务总线的连接。 它还实现批处理和预提取。 除非明确提到，本文中的所有内容都假定使用 AMQP 或 SBMP。
 
 ## <a name="reusing-factories-and-clients"></a>重用工厂和客户端
 
@@ -45,13 +40,13 @@ AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与
 
 ## <a name="concurrent-operations"></a>并发操作
 
-执行某项操作（发送、接收、删除等）需要花费一定时间。 这一时间包括服务总线服务处理该操作的时间，外加延迟处理请求和答复的时间。 若要增加每次操作的数目，操作必须同时执行。 你可以通过几种不同的方式来达成这种共识：
+执行某项操作（发送、接收、删除等）需要花费一定时间。 这一时间包括服务总线服务处理该操作的时间，外加延迟处理请求和答复的时间。 若要增加每次操作的数目，操作必须同时执行。 
 
-* **异步操作**：客户端通过执行异步操作来计划操作。 前一个请求完成之前便启动下一个请求。 以下代码片段是异步发送操作的示例：
+客户端通过执行异步操作来计划并发操作。 前一个请求完成之前便启动下一个请求。 以下代码片段是异步发送操作的示例：
   
  ```csharp
-  BrokeredMessage m1 = new BrokeredMessage(body);
-  BrokeredMessage m2 = new BrokeredMessage(body);
+  Message m1 = new BrokeredMessage(body);
+  Message m2 = new BrokeredMessage(body);
   
   Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
     {
@@ -65,25 +60,14 @@ AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与
   Console.WriteLine("All messages sent");
   ```
   
-  以下代码是异步接收操作的示例：
+  以下代码是异步接收操作的示例。 请在[此处](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues)查看完整程序：
   
   ```csharp
-  Task receive1 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  Task receive2 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  
-  Task.WaitAll(receive1, receive2);
-  Console.WriteLine("All messages received");
-  
-  async void ProcessReceivedMessage(Task<BrokeredMessage> t)
-  {
-    BrokeredMessage m = t.Result;
-    Console.WriteLine("{0} received", m.Label);
-    await m.CompleteAsync();
-    Console.WriteLine("{0} complete", m.Label);
-  }
-  ```
+  var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
+  var doneReceiving = new TaskCompletionSource<bool>();
 
-* 多个工厂：由同一工厂创建的所有客户端（发送方和接收方）共享一个 TCP 连接。 最大消息吞吐量受可通过此 TCP 连接的操作的数目限制。 单个工厂可获得的吞吐量因 TCP 往返时间和消息大小不同而大有差异。 若要获得更高的吞吐速率，应使用多个消息工厂。
+  receiver.RegisterMessageHandler(
+  ```
 
 ## <a name="receive-mode"></a>接收模式
 
@@ -108,7 +92,7 @@ mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05
 MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
-批处理不会影响可计费的消息操作的数目，且仅适用于服务总线客户端协议。 HTTP 协议不支持批处理。
+批处理不会影响可计费的消息操作的数目，且仅适用于使用 [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 库的服务总线客户端协议。 HTTP 协议不支持批处理。
 
 ## <a name="batching-store-access"></a>批处理存储访问
 
@@ -135,7 +119,7 @@ Queue q = namespaceManager.CreateQueue(qd);
 
 预提取一条消息后，服务将锁定此预提取的消息。 通过此锁定操作，其他接收方则无法接收到此预提取的消息。 如果接收方在锁定过期之前无法完成此消息，则该消息便对其他接收方可用。 预提取的消息的副本则保留在缓存中。 使用过期的缓存副本的接收方会在尝试完成该消息时接收到一个异常。 默认情况下，消息锁定在 60 秒后过期。 这一值可延长到 5 分钟。 若要阻止过期消息的使用，缓存大小应始终小于客户端可在锁定超时间隔内使用的消息数。
 
-使用 60 秒的默认锁定时限时，[SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] 的合理值是工厂所有接收方最大处理速率的 20 倍。 例如，某个工厂创建了 3 个接收方，并且每个接收方每秒可以处理最多 10 个消息。 预提取计数不应超过 20 X 3 X 10 = 600。 默认情况下，[QueueClient.PrefetchCount][QueueClient.PrefetchCount] 设置为 0，这表示不会从服务中提取额外消息。
+使用 60 秒的默认锁定时限时，[PrefetchCount][SubscriptionClient.PrefetchCount] 的合理值是工厂所有接收方最大处理速率的 20 倍。 例如，某个工厂创建了 3 个接收方，并且每个接收方每秒可以处理最多 10 个消息。 预提取计数不应超过 20 X 3 X 10 = 600。 默认情况下，[PrefetchCount][QueueClient.PrefetchCount] 设置为 0，这表示不会从服务中提取额外消息。
 
 预提取消息会增加队列或订阅的总体吞吐量，因为它减少了消息操作或往返行程的总数。 但是，提取第一条消息会耗用更长的时间（因消息大小增加所致）。 由于预提取的消息已经被客户端下载，因此预提取消息的接收速度将变快。
 
@@ -158,12 +142,12 @@ namespaceManager.CreateTopic(td);
 > [!NOTE]
 > Express 实体不支持事务。
 
-## <a name="use-of-partitioned-queues-or-topics"></a>使用分区的队列或主题
+## <a name="partitioned-queues-or-topics"></a>分区的队列或主题
 
 在内部，服务总线使用同一节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。 另一方面，[分区的队列或主题](service-bus-partitioning.md)则分布在多个节点和消息存储上。 分区的队列和主题不仅比常规队列和主题产生更高的吞吐量，还显示出更高的可用性。 要创建分区的实体，则将 [EnablePartitioning][EnablePartitioning] 属性设置为 **true**，如以下示例所示。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
 
 > [!NOTE]
-> [高级 SKU](service-bus-premium-messaging.md) 中不再支持分区实体。 
+> [高级 SKU](service-bus-premium-messaging.md) 不支持分区实体。 
 
 ```csharp
 // Create partitioned queue.
@@ -172,7 +156,7 @@ qd.EnablePartitioning = true;
 namespaceManager.CreateQueue(qd);
 ```
 
-## <a name="use-of-multiple-queues"></a>使用多个队列
+## <a name="multiple-queues"></a>多个队列
 
 如果不能使用分区的队列或主题，或不能由单个分区的队列或主题处理预期的负载，则必须使用多个消息实体。 在使用多个实体时，为每个实体创建专用客户端，而不是针对所有实体使用同一个客户端。
 

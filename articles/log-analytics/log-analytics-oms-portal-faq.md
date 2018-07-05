@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: bwren
-ms.openlocfilehash: cb48d6f61991fd16112b3507a413946ec01b4871
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1e0fd56b6e420103b4f786985f71a84737db642d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851079"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333626"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Log Analytics 用户从 OMS 门户转到 Azure 门户的常见问题
 Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理其配置并分析收集的数据。  此门户的所有功能已移至 Azure 门户，在其中继续进行开发。
@@ -39,7 +39,7 @@ Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理�
 ![概述页](media/log-analytics-new-portal/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>概览页在哪里？
-OMS 门户中的主屏幕显示在工作区中安装的所有管理解决方案的磁贴，以及已创建的任何自定义视图。 在 Azure 门户中，这称为“概览”页。 在 Azure 门户的工作区中，选择菜单中的“概览”，或者单击主页上的“概览”按钮。
+OMS 门户中的主屏幕显示在工作区中安装的所有管理解决方案的磁贴，以及已创建的任何自定义视图。 Azure 门户中提供了此相同的视图。 从工作区中选择“工作区摘要”。
 
 ![概述页](media/log-analytics-new-portal/overview.png)
 

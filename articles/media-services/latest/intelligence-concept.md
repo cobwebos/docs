@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: 804a418f6ee88974d6e74a2c18bc5d01b6adf838
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783546"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331514"
 ---
 # <a name="media-intelligence"></a>媒体智能
 
@@ -130,7 +130,7 @@ Azure 媒体服务 REST v3 API 可帮助分析音频和视频内容。 若要分
 
 |名称|说明|
 |---|---|
-|id|关键字 id。|
+|id|关键字 ID。|
 |text|关键字文本。|
 |confidence|关键字的识别置信度。|
 |语言|关键字语言（转换后）。|
@@ -178,10 +178,10 @@ Azure 媒体服务 REST v3 API 可帮助分析音频和视频内容。 若要分
 
 |名称|说明|
 |---|---|
-|id|面部 ID。|
+|id|人脸 ID。|
 |名称|人脸姓名。 可以为“Unknown #0”、公认的名人或客户训练的人。|
 |confidence|人脸识别置信度。|
-|description|名人的介绍（“Satya Nadella 生于...”）。 |
+|description|名人的说明。 |
 |thumbnalId|该人脸视频缩略图的 ID。|
 |knownPersonId|已知人员的内部 ID。|
 |referenceId|必应名人的必应 ID。|
@@ -329,33 +329,6 @@ Azure 媒体服务 REST v3 API 可帮助分析音频和视频内容。 若要分
       ]
     }
   ]
-```
-
-### <a name="audioeffects"></a>audioEffects
-
-|名称|说明|
-|---|---|
-|id|音频效果 ID。|
-|type|音频效果类型（例如鼓掌、语音、静音）。|
-|instances|出现此音频效果的时间范围列表。|
-
-```json
-"audioEffects": [
-{
-    "id": 0,
-    "type": "Clapping",
-    "instances": [
-    {
-        "start": "00:00:00",
-        "end": "00:00:03"
-    },
-    {
-        "start": "00:01:13",
-        "end": "00:01:21"
-    }
-    ]
-}
-]
 ```
 
 

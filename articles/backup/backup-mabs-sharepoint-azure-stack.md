@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Stack 上将 SharePoint 场备份到 Azure
+title: 在 Azure Stack 上备份 SharePoint 场
 description: 在 Azure Stack 上使用 Azure 备份服务器备份和还原 SharePoint 数据。 本文介绍如何配置 SharePoint 场，以便在 Azure 中存储所需的数据。 可以从磁盘或 Azure 还原受保护的 SharePoint 数据。
 services: backup
 author: pvrk
@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: da8421441863c8d7f840630614f4f35c16f184d5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 309e817426fff1eb877ab02ae9aa16ddc8f5cf16
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248925"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751891"
 ---
-# <a name="back-up-a-sharepoint-farm-on-azure-stack-to-azure"></a>在 Azure Stack 上将 SharePoint 场备份到 Azure
+# <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>在 Azure Stack 上备份 SharePoint 场
 在 Azure Stack 上使用 Microsoft Azure 备份服务器 (MABS) 将 SharePoint 场备份到 Microsoft Azure，其方法与备份其他数据源极为类似。 Azure 备份提供灵活的备份计划来创建每日、每周、每月或每年备份点，并提供适用于各种备份点的保留策略选项。 利用该技术，不仅可以存储本地磁盘副本以实现快速的恢复时间目标 (RTO)，还可以将副本存储到 Azure 以进行经济高效的长期保留。
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint 支持的版本与相关保护方案
-DPM 的 Microsoft Azure 备份支持以下方案：
+MABS 的 Azure 备份支持以下方案：
 
 | 工作负载 | 版本 | Sharepoint 部署 | 保护和恢复 |
 | --- | --- | --- | --- | --- | --- |
@@ -41,9 +41,6 @@ DPM 的 Microsoft Azure 备份支持以下方案：
 Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL Server 数据库，MABS 需要对运行 SQL Server 的服务器的帐户具有 sysadmin 特权。 备份之前，先在运行 SQL Server 的服务器上将 NT AUTHORITY\SYSTEM 设置为 *sysadmin*。
 
 如果 SharePoint 场有使用 SQL Server 别名配置的 SQL Server 数据库，请在 MABS 将要保护的前端 Web 服务器上安装 SQL Server 客户端组件。
-
-### <a name="sharepoint-server"></a>SharePoint Server
-尽管性能取决于许多因素，例如 SharePoint 场的大小，但一般做法是使用一台 MABS 服务器来保护 25 TB 的 SharePoint 场。
 
 ### <a name="whats-not-supported"></a>不支持的功能
 * 保护 SharePoint 场的 MABS 不会保护搜索索引或应用程序服务数据库。 需要单独为这些数据库配置保护。
@@ -83,7 +80,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
    > 在已安装保护代理的情况下，可以在向导中看到该服务器。 MABS 还会显示其结构。 由于已运行 ConfigureSharePoint.exe，MABS 将与 SharePoint VSS 写入器服务及其对应的 SQL Server 数据库通信，并识别 SharePoint 场结构、关联的内容数据库和任何对应项。
    >
    >
-4. 在“**选择数据保护方法**”页上，输入“**保护组**”的名称，并选择偏好的“*保护方法*”。 单击“资源组名称” 的 Azure 数据工厂。
+4. 在“**选择数据保护方法**”页上，输入“**保护组**”的名称，并选择偏好的“*保护方法*”。 单击“下一步”。
 
     ![选择数据保护方法](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
@@ -154,7 +151,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
 5. 还可以浏览各个恢复点，并选择要恢复的数据库或项。 选择“**日期 > 恢复时间**”，并选择正确的“**数据库 > SharePoint 场 > 恢复点 > 项**”。
 
     ![MABS SharePoint 保护 7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. 右键单击该项，并选择“**恢复**”打开“**恢复向导**”。 单击“资源组名称” 的 Azure 数据工厂。
+6. 右键单击该项，并选择“**恢复**”打开“**恢复向导**”。 单击“下一步”。
 
     ![复查恢复选择](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. 选择要执行的恢复类型，然后单击“**下一步**”。
@@ -178,7 +175,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
     MABS 将托管 SharePoint 项的内容数据库附加到临时 SQL Server 实例。 MABS 将从内容数据库恢复该项，并将它放在 MABS 上的暂存文件位置。 现在，需要将暂存位置中的已恢复项导出到 SharePoint 场上的暂存位置。
 
     ![暂存位置 2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. 选择“**指定恢复选项**”，并将安全设置应用到 SharePoint 场，或应用恢复点的安全设置。 单击“资源组名称” 的 Azure 数据工厂。
+10. 选择“**指定恢复选项**”，并将安全设置应用到 SharePoint 场，或应用恢复点的安全设置。 单击“下一步”。
 
     ![恢复选项](./media/backup-azure-backup-sharepoint/recovery-options.png)
 

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c4c126663d34d65cc7e0aa641bf93b848a5dcae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d2445713aa5d6a839950ca0fe9567133c06d1ffa
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658309"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062235"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复 
 
@@ -44,10 +44,12 @@ Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、�
 | HANA 大型实例支持的方案 | 高可用性选项 | 灾难恢复选项 | 注释 |
 | --- | --- | --- | --- |
 | 单节点 | 不可用。 | 专用 DR 设置。<br /> 多用途 DR 设置。 | |
-| 主机自动故障转移：N+m<br /> 包括 1+1 | 在备用节点充当活动角色的情况下可行。<br /> HANA 控制角色切换。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。 | HANA 卷集附加到所有节点 (n+m)。<br /> DR 站点必须拥有相同的节点数。 |
+| 主机自动故障转移：横向扩展（使用或不使用备用）<br /> 包括 1+1 | 在备用节点充当活动角色的情况下可行。<br /> HANA 控制角色切换。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。 | HANA 卷集将附加到所有节点。<br /> DR 站点必须拥有相同的节点数。 |
 | HANA 系统复制。 | 在使用主要或辅助设置的情况下可行。<br /> 在故障转移案例中，辅助角色变为主要角色。<br /> HANA 系统复制和 OS 控制故障转移。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。<br /> 在没有第三方组件的情况下，无法使用 HANA 系统复制实现 DR。 | 单独一组磁盘卷附加到每个节点。<br /> 仅生产站点中的辅助副本磁盘卷被复制到 DR 位置。<br /> DR 站点中需要一组卷。 | 
 
 专用 DR 设置是在不用于运行任何其他工作负荷或非生产系统的 DR 站点中部署 HANA 大型实例单元。 此单元是被动单元，仅当执行灾难故障转移时才部署。 不过，对于许多客户而言，此设置不是首选项。
+
+请参阅[支持 HLI 的方案](hana-supported-scenario.md)，了解体系结构的存储布局和以太网详细信息。
 
 > [!NOTE]
 > [SAP HANA MCOD 部署](https://launchpad.support.sap.com/#/notes/1681092)（一个单元上多个 HANA 实例）作为覆盖方案，与表中列出的 HA 和 DR 方法配合使用。 例外情况是将 HANA 系统复制与基于 Pacemaker 的自动故障转移群集配合使用。 这种情况仅支持一个单元一个 HANA 实例。 而对于 [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) 部署，如果部署了多个租户，仅非基于存储的 HA 和 DR 方法可用。 若仅部署了一个租户，则上面列出的所有方法均有效。  
@@ -60,7 +62,7 @@ Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、�
 - [SAP HANA 高可用性白皮书](http://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
 - [SAP HANA 管理指南](http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
 - [有关 SAP HANA 系统复制的 SAP HANA 学院视频](http://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
-- [SAP 支持说明 #1999880 - 有关 SAP HANA 系统复制的常见问题](https://bcs.wdf.sap.corp/sap/support/notes/1999880)
+- [SAP 支持说明 #1999880 - 有关 SAP HANA 系统复制的常见问题](https://apps.support.sap.com/sap/support/knowledge/preview/en/1999880)
 - [SAP 支持说明 #2165547 - SAP HANA 系统复制环境中的 SAP HANA 备份和还原](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3231363535343726)
 - [SAP 支持说明 #1984882 - 使用 SAP HANA 系统复制在最大限度地减少停机时间/不停机的情况下实现硬件更换](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3139383438383226)
 

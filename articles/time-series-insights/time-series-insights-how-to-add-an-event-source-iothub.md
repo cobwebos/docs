@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: b970d01c586e016d47b0f0480d73f06211969814
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1cc8518e84bd9fe7a1f03a2f5d6ccdbac8fb78e3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294874"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330588"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>如何向 Azure 时序见解环境添加 IoT 中心事件源
 本文介绍如何使用 Azure 门户将从 IoT 中心读取数据的事件源添加到时序见解环境。
@@ -25,6 +25,22 @@ ms.locfileid: "36294874"
 - 创建 IoT 中心。 有关 IoT 中心的详细信息，请参阅[使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)
 - IoT 中心需要有正在发送进来的活动消息事件。
 - 在 IoT 中心创建专用使用者组，以供时序见解环境使用。 每个时序见解事件源都需要具有自己的专用使用者组，该组不与其他使用者共享。 如果多个读取器使用同一使用者组中的事件，则所有读取器都可能出现故障。 有关详细信息，请参阅 [IoT 中心开发人员指南](../iot-hub/iot-hub-devguide.md)。
+
+### <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
+应用程序使用使用者组来从 Azure IoT 中心拉取数据。 提供专用使用者组，仅供此时序见解环境使用，以可靠地从 IoT 中心读取数据。
+
+要将新使用者组添加到 IoT 中心，请执行以下步骤：
+1. 在 Azure 门户中，找到并打开 IoT 中心。
+
+2. 在“消息”标题下，选择“终结点”。 
+
+   ![添加使用者组](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
+
+3. 选择“事件”终结点，“属性”页将打开。
+
+4. 在“使用者组”标题下，为使用者组提供新的唯一名称。 创建新的事件源时，请在时序见解环境中使用此相同名称。
+
+5. 选择**保存**以保存新的使用者组。
 
 ## <a name="add-a-new-event-source"></a>添加新的事件源
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -73,27 +89,13 @@ ms.locfileid: "36294874"
    | 事件序列化格式 | JSON 是目前唯一可用的序列化。 事件消息必须采用此格式，否则将无法读取任何数据。 |
    | 时间戳属性名称 | 若要确定此值，你需要了解发送到 IoT 中心的消息数据的消息格式。 此值是消息数据中你想要用作事件时间戳的特定事件属性的“名称”。 该值区分大小写。 如果留空，则事件源中的“事件排队时间”将用作事件时间戳。 |
 
-10. 选择“创建”以添加新的事件源。
+10. 添加已添加到 IoT 中心的专用 TSI 使用者组名称。
+
+11. 选择“创建”以添加新的事件源。
 
    ![单击创建](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
 
    创建事件源以后，时序见解就会自动将数据流式传输到你的环境中。
-
-### <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
-应用程序使用使用者组来从 Azure IoT 中心拉取数据。 提供专用使用者组，仅供此时序见解环境使用，以可靠地从 IoT 中心读取数据。
-
-要将新使用者组添加到 IoT 中心，请执行以下步骤：
-1. 在 Azure 门户中，找到并打开 IoT 中心。
-
-2. 在“消息”标题下，选择“终结点”。 
-
-   ![添加使用者组](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
-
-3. 选择“事件”终结点，“属性”页将打开。
-
-4. 在“使用者组”标题下，为使用者组提供新的唯一名称。 创建新的事件源时，请在时序见解环境中使用此相同名称。
-
-5. 选择**保存**以保存新的使用者组。
 
 ## <a name="next-steps"></a>后续步骤
 - [定义数据访问策略](time-series-insights-data-access.md)，以保护数据。

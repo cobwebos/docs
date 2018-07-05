@@ -1,5 +1,5 @@
 ---
-title: 避免 Azure 免费帐户产生费用 - Azure | Microsoft Docs
+title: 避免 Azure 免费帐户产生费用 | Microsoft Docs
 description: 了解 Azure 免费帐户产生费用的原因。 了解如何避免产生这些费用。
 services: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: d7a6b60abe3319c787d1fa2b5ff7bf3985bd7cd2
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 8803a4c0f1be3a3407e5e90bbdadeddbfcb1ab9c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33207436"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060998"
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>避免 Azure 免费帐户产生费用
 

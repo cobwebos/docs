@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628117"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017503"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署远程监视解决方案加速器
 
@@ -68,7 +68,7 @@ pcs login
 | Count | 资源                       | Type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/) | 标准 D1 V2  | 托管微服务 |
-| 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 – 基本层 | 设备管理和通信 |
+| 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 - 标准层 | 设备管理和通信 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 标准        | 存储配置数据和设备遥测数据，例如规则、警报和消息 |  
 | 1     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 标准        | 适用于 VM 和流式处理检查点的存储 |
 | 1     | [Web 应用程序](https://azure.microsoft.com/services/app-service/web/)        |                 | 托管前端 Web 应用程序 |
@@ -82,7 +82,7 @@ pcs login
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/)   | 标准 D2 V2  | 1 个 master，3 个代理，用于在确保冗余的情况下托管微服务 |
 | 1     | [Azure 容器服务](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) 业务流程协调程序 |
-| 1     | [Azure IoT 中心][https://azure.microsoft.com/services/iot-hub/]                     | S1 – 基本层 | 设备管理、命令和控制 |
+| 1     | [Azure IoT 中心][https://azure.microsoft.com/services/iot-hub/]                     | S2 - 标准层 | 设备管理、命令和控制 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 标准        | 存储配置数据和设备遥测数据，例如规则、警报和消息 |
 | 5     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 标准        | 4 个用于 VM 存储，1 个用于流式处理检查点 |
 | 1     | [应用服务](https://azure.microsoft.com/services/app-service/web/)             | S1 标准     | 基于 SSL 的应用程序网关 |

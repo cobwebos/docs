@@ -8,19 +8,18 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 0410456a-76f7-42a7-9bb5-f767de75a0e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 37409ee72591d943a834ff38f077a002a1724ab9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 18c3dbdcf85c5b06b4f0f20c85b9fe751a3719fe
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215386"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317976"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>教程：Azure Active Directory 与 PagerDuty 集成
 
@@ -60,14 +59,14 @@ ms.locfileid: "36215386"
 
 **若要从库中添加 PagerDuty，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
     ![“Azure Active Directory”按钮][1]
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
-    
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
@@ -102,8 +101,8 @@ ms.locfileid: "36215386"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+
     ![“单一登录”对话框](./media/pagerduty-tutorial/tutorial_pagerduty_samlbase.png)
 
 3. 在“PagerDuty 域和 URL”部分中，执行以下步骤：
@@ -114,12 +113,12 @@ ms.locfileid: "36215386"
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenant-name>.pagerduty.com`
 
-    > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [PagerDuty 客户端支持团队](https://www.pagerduty.com/support/)获取这些值。 
+    > [!NOTE]
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [PagerDuty 客户端支持团队](https://www.pagerduty.com/support/)获取这些值。
 
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
-    ![证书下载链接](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png) 
+    ![证书下载链接](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png)
 
 5. 单击“保存”按钮。
 
@@ -127,34 +126,33 @@ ms.locfileid: "36215386"
 
 6. 在“PagerDuty 配置”部分，单击“配置 PagerDuty”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
 
-    ![PagerDuty 配置](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png) 
+    ![PagerDuty 配置](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png)
 
 7. 在另一 Web 浏览器窗口中，以管理员身份登录到 Pagerduty 公司站点。
 
 8. 在顶部菜单中，单击“帐户设置”。
-   
+
     ![帐户设置](./media/pagerduty-tutorial/ic778535.png "帐户设置")
 
 9. 单击“单一登录”。
-   
+
     ![单一登录](./media/pagerduty-tutorial/ic778536.png "单一登录")
 
 10. 在“启用单一登录(SSO)”页上，执行以下步骤：
-   
+
     ![启用单一登录](./media/pagerduty-tutorial/ic778537.png "启用单一登录")
-   
+
     a. 在记事本中打开从 Azure 门户下载的 base-64 编码的证书，将其内容复制到剪贴板，再将其粘贴到“X.509 证书”文本框中
   
     b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
   
     c. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”。
- 
-    d. 选择“启用单一登录”。
- 
-    e. 单击“保存更改”。
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+    d. 选择“允许用户名/密码登录”。
+
+    e. 选中“需要精确的身份验证上下文比较”复选框。
+
+    f. 单击“保存更改”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -262,8 +260,6 @@ ms.locfileid: "36215386"
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/pagerduty-tutorial/tutorial_general_01.png
@@ -277,4 +273,3 @@ ms.locfileid: "36215386"
 [201]: ./media/pagerduty-tutorial/tutorial_general_201.png
 [202]: ./media/pagerduty-tutorial/tutorial_general_202.png
 [203]: ./media/pagerduty-tutorial/tutorial_general_203.png
-

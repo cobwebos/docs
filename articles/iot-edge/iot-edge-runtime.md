@@ -4,18 +4,18 @@ description: 了解 Azure IoT Edge 运行时以及它如何支持边缘设备
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 02/15/2018
+ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c44713d6b58edd3a18b0d20992d31dec7377fa7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b7418947c44c62883ef13c4be130458bb9f9ce6c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632068"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030373"
 ---
-# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>了解 Azure IoT Edge 运行时及其体系结构 - 预览
+# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 运行时及其体系结构
 
 IoT Edge 运行时是一系列程序，设备安装了这些程序才可视为 IoT Edge 设备。 IoT Edge 运行时中的组件共同协作，使 IoT Edge 设备能够接收代码，从而在 Edge 运行和传达结果。 
 
@@ -90,9 +90,9 @@ IoT Edge 代理是构成 Azure IoT Edge 运行时的其他模块。 它负责实
 
 模块字典中的每一项包含有关模块的特定信息，并由 Edge 代理用于控制模块的生命周期。 下面是一些更有趣的属性： 
 
-* settings.image - Edge 代理用来启动模块的容器映像。 如果该映像受密码保护，则必须为 Edge 代理配置容器注册表的凭据。 要配置 Edge 代理，请使用以下命令：`azure-iot-edge-runtime-ctl.py –configure`
+* settings.image - Edge 代理用来启动模块的容器映像。 如果该映像受密码保护，则必须为 Edge 代理配置容器注册表的凭据。 若要配置 Edge 代理，请更新 `config.yaml` 文件。 在 Linux 中使用以下命令：`sudo nano /etc/iotedge/config.yaml`
 * settings.createOptions - 启动模块的容器时直接传递到 Docker 守护程序的字符串。 在此属性中添加 Docker 选项允许高级选项，如端口转接或将卷装载到模块的容器中。  
-* 状态 - Edge 代理放置模块的状态。 此值通常设置为“正在运行”，因为大多数人希望 Edge 代理立即启动设备上的所有模块。 但是，可以将模块的初始状态指定为“已停止”，等待一定时间后告知 Edge 代理启动模块。 Edge 代理会向报告属性中的云报告每个模块的状态。 所需属性和报告属性之间存在差异可以起指示作用或发现故障设备。 支持的状态为：
+* 状态 - Edge 代理放置模块的状态。 此值通常设置为“正在运行”，因为大多数人希望 Edge 代理立即启动设备上的所有模块。 但是，可以将模块的初始状态指定为“已停止”，等待一定时间后告知 Edge 代理启动模块。 Edge 代理会向报告属性中的云报告每个模块的状态。 所需属性和报告的属性之间存在差异指示了设备运行状况不正常。 支持的状态为：
    * 正在下载
    * 正在运行
    * 不正常
@@ -114,7 +114,7 @@ IoT Edge 代理会将运行时响应发送到 IoT 中心。 下面是可能的�
 
 ### <a name="security"></a>“安全”
 
-IoT Edge 代理在 IoT Edge 设备的安全性中起着关键作用。 例如，它会执行某些操作，如在启动之前验证模块的映像。 在正式发布 V2 功能时将添加这些功能。 
+IoT Edge 代理在 IoT Edge 设备的安全性中起着关键作用。 例如，它会执行某些操作，如在启动之前验证模块的映像。 正式发布时将添加这些功能。 
 
 <!-- For more information about the Azure IoT Edge security framework, see []. -->
 

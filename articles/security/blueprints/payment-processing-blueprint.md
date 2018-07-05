@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 223829df11bb1c9add811b40b55e47ee1fbb1fe4
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301365"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751832"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure 安全性和符合性蓝图 - 符合 PCI DSS 的付款处理环境
 
@@ -298,7 +298,7 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[PCI 蓝图代码存储库][代码存储库] 中提供了用于部署此解决方案的组件。 基础体系结构的部署需要通过 Microsoft PowerShell v5 执行多个步骤。 若要连接到网站，必须提供自定义域名（例如 contoso.com）。 此域名是在步骤 2 中使用 `-customHostName` 开关指定的。 有关详细信息，请参阅[购买 Azure Web 应用的自定义域名](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)。 成功部署和运行解决方案不需要自定义域名，但如果不使用，则无法连接到网站进行演示。
+[PCI 蓝图代码存储库](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms)中提供了用于部署此解决方案的组件。 基础体系结构的部署需要通过 Microsoft PowerShell v5 执行多个步骤。 若要连接到网站，必须提供自定义域名（例如 contoso.com）。 这是通过步骤 2 中主要部署脚本中的引导式用户提示指定的。 有关详细信息，请参阅[购买 Azure Web 应用的自定义域名](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)。 成功部署和运行解决方案不需要自定义域名，但如果不使用，则无法连接到网站进行演示。
 
 脚本将域用户添加到指定的 Azure AD 租户。 我们建议创建一个用于测试的新 Azure AD 租户。
 
@@ -323,19 +323,17 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
  
     ```powershell
     .\1-DeployAndConfigureAzureResources.ps1 
-        -resourceGroupName contosowebstore
-        -globalAdminUserName adminXX@contosowebstore.com 
-        -globalAdminPassword **************
-        -azureADDomainName contosowebstore.com 
-        -subscriptionID XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
-        -suffix PCIcontosowebstore
-        -customHostName contosowebstore.com
-        -sqlTDAlertEmailAddress edna@contosowebstore.com 
-        -enableSSL
-        -enableADDomainPasswordPolicy 
     ```
     
-    有关详细用法说明，请参阅[脚本说明 - 部署和配置 Azure 资源](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)。
+    有关详细用法说明，请参阅[脚本说明 - 部署和配置 Azure 资源](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)。 此脚本可用于支持 Contoso Web Store 演示，或试执行部署一个用于为符合 PCI 而提供支持的环境的初始步骤。 
+    
+    ```PowerShell
+    .\1A-ContosoWebStoreDemoAzureResources.ps1
+    ```
+    
+    有关支持 Contoso Web Store 演示部署的详细用法说明，请参阅[脚本说明 - Contoso Web Store 演示 Azure 资源](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1A-ContosoWebStoreDemoAzureResources.md)。 此脚本可用于部署 Contoso Web Store 演示基础结构。 
+    
+    这些脚本应彼此独立使用。 为了更好地理解解决方案，建议完成演示部署，以确定支持解决方案所需的必要 Azure 资源。 
     
 3. 日志记录和监视。 在部署解决方案后，可以打开 Log Analytics 工作区，并可以使用解决方案存储库中提供的示例模板来演示如何配置监视仪表板。 有关示例模板，请参阅 [omsDashboards 文件夹](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)。 请注意，必须在 Log Analytics 中收集数据，以便正确部署模板。 这可以最多需要一小时或更多具体取决于站点的活动。
  

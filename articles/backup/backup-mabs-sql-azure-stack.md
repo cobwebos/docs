@@ -8,21 +8,21 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: 5541a2fff6bb54f5d62518e7edf54fb9150e3109
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ca7da7ab048b6f7bfdba81aac9bc7702b20ff967
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248921"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751791"
 ---
-# <a name="back-up-sql-server-on-azure-stack"></a>在 Azure Stack 上备份 SQL Server
+# <a name="back-up-sql-server-on-stack"></a>在 Stack 上备份 SQL Server
 使用本文配置 Microsoft Azure 备份服务器 (MABS) 以在 Azure Stack 上保护 SQL Server 数据库。
 
 向 Azure 备份以及从 Azure 恢复 SQL Server 数据库的管理工作涉及三个步骤：
 
-1. 创建备份策略来保护要备份到 Azure 的 SQL Server 数据库。
-2. 创建要备份到 Azure 的按需备份副本。
-3. 从 Azure 恢复数据库。
+1. 创建备份策略来保护 SQL Server 数据库
+2. 创建按需备份副本
+3. 从磁盘和 Azure 恢复数据库
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -35,7 +35,7 @@ ms.locfileid: "35248921"
 
     ![创建保护组](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure 备份服务器将启动“保护组”向导，该向导将引导你完成创建**保护组**的过程。 单击“资源组名称” 的 Azure 数据工厂。
+    Azure 备份服务器将启动“保护组”向导，该向导将引导你完成创建**保护组**的过程。 单击“下一步”。
 
 3. 在“选择保护组类型”屏幕上，选择“服务器”。
 
@@ -62,15 +62,9 @@ ms.locfileid: "35248921"
    >
    >
 
-7. 在“检查磁盘分配”屏幕上，验证可用的总存储空间以及能够使用的磁盘空间。 单击“资源组名称” 的 Azure 数据工厂。
+7. 在“检查磁盘分配”屏幕上，验证可用的总存储空间以及能够使用的磁盘空间。 单击“下一步”。
 
-    ![磁盘分配](./media/backup-azure-backup-sql/pg-storage.png)
-
-    默认情况下，Azure 备份服务器会针对每个数据源（SQL Server 数据库）创建一个用于初始备份副本的卷。 使用此方法时，逻辑磁盘管理器 (LDM) 会将 Azure 备份限制为最多只能保护 300 个数据源（SQL Server 数据库）。 若要避免此限制，请选择“在 DPM 存储池中共置数据”。 借助归置，Azure 备份服务器可以将单个卷用于多个数据源，并且可以保护最多 2000 个 SQL Server 数据库。
-
-    如果选择了“自动增大卷”，Azure 备份服务器可以随着生产数据的增长而考虑增大备份卷。 如果未选择此选项，则 Azure 备份服务器会限制用来对保护组中的数据源进行保护的备份存储。
-
-8. 在“选择副本创建方法”中，选择如何创建第一个恢复点。 可以选择手动传输初始备份（脱离网络），以免网络出现带宽拥塞现象。 如果选择等待传输第一个备份，则可以指定初始传输的时间。 单击“资源组名称” 的 Azure 数据工厂。
+8. 在“选择副本创建方法”中，选择如何创建第一个恢复点。 可以选择手动传输初始备份（脱离网络），以免网络出现带宽拥塞现象。 如果选择等待传输第一个备份，则可以指定初始传输的时间。 单击“下一步”。
 
     ![初始复制方法](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -111,12 +105,7 @@ ms.locfileid: "35248921"
     * 在星期六中午 12:00 进行的备份 会保留 104 周
     * 在最后一个星期六中午 12:00 进行的备份 会保留 60 个月
     * 在 3 月的最后一个星期六中午 12:00 进行的备份 会保留 10 年
-13. 单击“**下一步**”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“**自动通过网络**”或“**脱机备份**”。
-
-    * “**自动通过网络**”会根据为备份选择的计划将备份数据传输到 Azure。
-    * [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)中解释了**脱机备份**。
-
-    选择将初始备份副本发送到 Azure 的相关传输机制，然后单击“**下一步**”。
+13. 单击“**下一步**”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“自动通过网络”
 
 14. 在“摘要”屏幕中复查策略详细信息后，单击“创建组”以完成工作流。 可以单击“关闭”，然后在“监视”工作区中监视作业进度。
 
@@ -147,13 +136,13 @@ ms.locfileid: "35248921"
 2. 右键单击数据库名称，并单击“**恢复**”。
 
     ![从 Azure 恢复](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. DPM 会显示恢复点的详细信息。 单击“资源组名称” 的 Azure 数据工厂。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 单击“资源组名称” 的 Azure 数据工厂。
+3. MABS 会显示恢复点的详细信息。 单击“下一步”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 单击“下一步”。
 
     ![恢复到原始位置](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
-    在此示例中，DPM 将数据库恢复到另一个 SQL Server 实例或独立的网络文件夹。
+    在此示例中，MABS 将数据库恢复到另一个 SQL Server 实例或独立的网络文件夹。
 
-4. 在“**指定恢复选项**”屏幕上，可以选择恢复选项（例如“网络带宽使用限制”），以便限制恢复操作所使用的带宽。 单击“资源组名称” 的 Azure 数据工厂。
+4. 在“**指定恢复选项**”屏幕上，可以选择恢复选项（例如“网络带宽使用限制”），以便限制恢复操作所使用的带宽。 单击“下一步”。
 
 5. 在“**摘要**”屏幕上，会看到目前提供的所有恢复配置。 单击“**恢复**”。
 

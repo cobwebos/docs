@@ -3,17 +3,18 @@ title: Azure 搜索中用于数据提取和自然语言处理的认知搜索 | M
 description: 使用认知技能进行数据提取、自然语言处理 (NLP) 和图像处理，以便在 Azure 搜索索引中创建可搜索的内容。
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: ca6c285348208a7ad24faf966073d641810039fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 64b4c0a315e206cd260f2f1108362e92f55d1843
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641105"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304278"
 ---
 # <a name="what-is-cognitive-search"></a>什么是认知搜索？
 
@@ -88,7 +89,7 @@ AI 集成通过认知技能实现。该技能在搜索索引的路由中通过�
 **步骤 1：在区域中创建提供 API 的搜索服务** 
 
 + 美国中南部
-+ 欧洲西部
++ 西欧
 
 **步骤 2：掌握工作流的实践体验**
 

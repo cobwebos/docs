@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3feed9c1c8903db66a0506f09161982dadaa79ba
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ddbac24020110e32792286a1ac64070316cfb081
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284958"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332708"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
@@ -23,7 +23,7 @@ ms.locfileid: "36284958"
 
 有多个选项可以用来访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 可以通过 Azure 门户、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 或 [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) 使用“运行命令”。
 
-在需要在虚拟机中运行脚本的所有方案中，此功能都很有用，并且它可以用来对由于网络或管理用户配置不正确而没有打开 RDP 或 SSH 端口的虚拟机进行故障排除和修正，是具有此用途的少数方法之一。
+此功能适用于要在虚拟机中运行脚本的所有方案，并且是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方法。
 
 ## <a name="restrictions"></a>限制
 
@@ -33,9 +33,10 @@ ms.locfileid: "36284958"
 * 运行脚本的最短时间大约为 20 秒
 * 脚本以系统身份在 Windows 上运行
 * 一次只能运行一个脚本
-* 不支持提示输入信息（交互模式）的脚本。
 * 无法取消正在运行的脚本
 * 脚本最多可以运行 90 分钟，之后它将超时
+
+**PermissionsConfig-OrchestratorUsersGroup***GroupName***-OrchestratorUser***UserName***\-remote** 
 
 ## <a name="run-a-command"></a>运行命令
 

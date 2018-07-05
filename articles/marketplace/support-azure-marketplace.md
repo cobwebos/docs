@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6ad1c226246bc1523daca84235591afc27a3b132
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: a2962f50258bb3f65f574882ce2ea46ff006aac3
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825804"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309344"
 ---
 # <a name="support-for-azure-marketplace"></a>Azure 市场支持  
 Azure 市场的支持选项。  
@@ -50,7 +50,7 @@ Azure 市场的支持选项。
 |:--- |:--- |  
 | Slack：[join.marketplace.azure.com](https://join.marketplace.azure.com) | 在环境出留出空间用于为存在技术问题的合作伙伴提供支持。 目前有超过 350 个合作伙伴使用此环境。 |  
 | MSDN 论坛：Azure 市场位于 [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network 论坛。 |  
-| Stack Overflow：Azure 位于 [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | 用于获取解决方案并就 Azure 市场的所有相关内容提问的 Stack Overflow 环境。<ul> <li>Stack Overflow：Azure 市场位于 [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow：Azure 资源管理器位于 [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow：Azure 虚拟机位于 [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li><li>[Azure 上的容器](https://stackoverflow.com/search?q=azure+container)</li></ul> |
+| Stack Overflow：Azure 位于 [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | 用于获取解决方案并就 Azure 市场的所有相关内容提问的 Stack Overflow 环境。<ul> <li>Stack Overflow：Azure 市场位于 [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow：Azure 资源管理器位于 [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow：Azure 上的虚拟机位于 [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow：Azure 上的容器位于 [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
 ## <a name="marketing-resources"></a>市场营销资源  
 

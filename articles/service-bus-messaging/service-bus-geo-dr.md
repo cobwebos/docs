@@ -2,23 +2,18 @@
 title: Azure 服务总线异地灾难恢复 | Microsoft 文档
 description: 如何使用地理区域进行故障转移并在 Azure 服务总线中执行灾难恢复
 services: service-bus-messaging
-documentationcenter: ''
-author: christianwolf42
+author: sethmanheim
 manager: timlt
-editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b43c5bd6ff6b386e1a2ee0b5e3ae8ec8fa61fb4b
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237339"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301513"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
 
@@ -89,7 +84,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 [GitHub 上的示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/)演示如何设置和启动故障转移。 这些示例演示以下概念：
 
-- 在 Azure Active Directory 中将 Azure 资源管理器与服务总线配合使用所需的 .Net 示例和设置，用来设置和启用异地灾难恢复。
+- 在 Azure Active Directory 中将 Azure 资源管理器与服务总线配合使用所需的 .NET 示例和设置，用来设置和启用异地灾难恢复。
 - 执行示例代码所需的步骤。
 - 如何使用现有的命名空间作为别名。
 - 改用 PowerShell 或 CLI 启用异地灾难恢复的步骤。
@@ -107,6 +102,17 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 4. 同步实体可能需要一些时间，每分钟大约 50-100 个实体。 订阅和规则也计为实体。 
 
+## <a name="availability-zones-preview"></a>可用性区域（预览版）
+
+服务总线高级 SKU 还支持[可用性区域](../availability-zones/az-overview.md)，在 Azure 区域内提供故障隔离位置。 
+
+> [!NOTE]
+> 仅在“美国中部”、“美国东部 2”和“法国中部”区域中支持可用性区域预览版。
+
+可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持迁移现有命名空间。 在命名空间上启用区域冗余之后，不能将其禁用。
+
+![3][]
+
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅此处的异地灾难恢复 [REST API 参考](/rest/api/servicebus/disasterrecoveryconfigs)。
@@ -123,3 +129,4 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 [1]: ./media/service-bus-geo-dr/geo1.png
 [2]: ./media/service-bus-geo-dr/geo2.png
+[3]: ./media/service-bus-geo-dr/az.png

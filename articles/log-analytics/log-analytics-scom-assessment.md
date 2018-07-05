@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2017
+ms.date: 06/25/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86484ca2bc7dc14035f48b8f7b1514a4fc471b74
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 493fb0295c1d760bb7de13ae1b703b3636750612
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29180030"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018703"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -46,7 +46,7 @@ ms.locfileid: "29180030"
 
 使用以下信息安装和配置解决方案。
 
- - 在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 可从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview) 安装该解决方案。
+ - 在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 可从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview)安装该解决方案。
 
  - 将解决方案添加到工作区以后，仪表板上的“System Center Operations Manager 运行状况检查”磁贴会显示“需要更多的配置”这样一条消息。 单击该磁贴，并按照页面中所述的配置步骤操作
 
@@ -212,14 +212,14 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 ## <a name="use-health-check-focus-area-recommendations"></a>使用运行状况检查重点区域建议
 
-在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 若要了解有关安装解决方案的信息，请参阅[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。 安装完成后，可以通过使用 OMS 门户中“概述”页上的“System Center Operations Manager 运行状况检查”磁贴来查看建议摘要。
+在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 若要详细了解如何安装解决方案，请参阅[安装管理解决方案](log-analytics-add-solutions.md)。 安装完成后，可以通过使用 Azure 门户中工作区的“概述”页上的“System Center Operations Manager 运行状况检查”磁贴来查看建议摘要。
 
 查看概述的针对基础结构的合规性评估，并深入分析建议。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
-1. 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+1. 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
 2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
-3. 在 Log Analytics 订阅窗格中选择一个工作区，再选择“OMS 门户”磁贴。  
+3. 在 Log Analytics 订阅窗格中选择一个工作区，再单击“工作区摘要”菜单项。  
 4. 在“概述”页上，单击“System Center Operations Manager 运行状况检查”磁贴。
 5. 在“System Center Operations Manager 运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
 6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“受影响的对象”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![重点区域](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
@@ -232,7 +232,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>确定要忽略的建议
-1. 在 Azure 门户中所选工作区对应的 Log Analytics 工作区页上，单击“日志搜索”磁贴。
+1. 在 Azure 门户中所选工作区对应的 Log Analytics 工作区页上，单击“日志搜索”菜单项。
 2. 使用以下查询列出对于环境中计算机失败的建议。
 
     ```

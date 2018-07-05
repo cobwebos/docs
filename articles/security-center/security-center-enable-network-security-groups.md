@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 3c0ad4a0e1a5f4f2fd6def4f29599e2e55eb1a9d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fe75781629e8d6416405cc9eec9ce14e61a00b14
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364448"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301421"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>在 Azure 安全中心启用网络安全组
 Azure 安全中心建议启用网络安全组 (NSG)（如果尚未启用）。 NSG 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。 另外，可以通过将 NSG 直接关联到单个 VM，对流向该 VM 的流量进行进一步的限制。 有关详细信息，请参阅 [What is a Network Security Group (NSG)?](../virtual-network/security-overview.md)（什么是网络安全组 (NSG)？）
@@ -43,7 +43,7 @@ Azure 安全中心建议启用网络安全组 (NSG)（如果尚未启用）。 N
 
    ![选择网络安全组][4]
 
-如果创建一个 NSG，请按照[如何使用 Azure 门户管理 NSG](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) 中的步骤创建 NSG 并设置安全规则。
+如果创建 NSG，请按照[管理网络安全组](../virtual-network/manage-network-security-group.md)中的步骤创建 NSG 并设置安全规则。
 
 ## <a name="see-also"></a>另请参阅
 本文档演示如何实现安全中心建议，为子网或虚拟机“启用网络安全组”。 若要了解有关启用 NSG 的详细信息，请参阅以下内容：

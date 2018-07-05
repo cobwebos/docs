@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: c8b0529b0ae45d7bcee5574991551a424c13ba70
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713858"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311111"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -44,7 +44,7 @@ ms.locfileid: "34713858"
 **问：我最近注册了设备，但为什么在 Azure 门户中我的用户信息下看不到该设备？**
 
 **答：** 已加入混合 Azure AD 的 Windows 10 设备不显示在 USER 设备下。
-需要使用 PowerShell 查看所有设备。 
+需要使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
 
 USER 设备下面只会列出以下设备：
 
@@ -52,25 +52,24 @@ USER 设备下面只会列出以下设备：
 - 所有非 Windows 10/Windows Server 2016 设备。
 - 所有非 Windows 设备 
 
----
-
-**问：在 Azure 门户中为何看不到所有已在 Azure Active Directory 中注册的设备？** 
-
-**答：** 现在可以在“Azure AD Directory”->“所有设备”菜单下看到它们。 还可以使用 Azure PowerShell 查找所有设备。 有关详细信息，请参阅 [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
-
 --- 
 
 **问：如何了解客户端的设备注册状态？**
 
-**答：** 对于 Windows 10 和 Windows Server 2016 或更高版本的设备，请运行 dsregcmd.exe /status。
+**答：** 可以使用 Azure 门户，转到“所有设备”并使用设备 ID 搜索设备。 检查“联接类型”列下的值。
 
-对于下层 OS 版本，请运行“%programFiles%\Microsoft Workplace Join\autoworkplace.exe”
+如果要从注册的设备检查本地设备注册状态：
+
+- 对于 Windows 10 和 Windows Server 2016 或更高版本的设备，请运行 dsregcmd.exe /status。
+- 对于下层 OS 版本，请运行“%programFiles%\Microsoft Workplace Join\autoworkplace.exe”
 
 ---
 
-**问：在 Azure 门户中或使用 Windows PowerShell 删除的设备为何仍列为已注册？**
+**问：我已通过 Azure 门户或使用 Windows PowerShell 删除，但设备上的本地状态仍然显示它已注册？**
 
-**答：** 这是设计使然。 该设备无权访问云中的资源。 若要重新注册，必须在设备上执行一个手动操作。 
+**答：** 这是设计使然。 该设备无权访问云中的资源。 
+
+若要重新注册，必须在设备上执行一个手动操作。 
 
 若要从已加入本地 AD 域的 Windows 10 和 Windows Server 2016 中清除联接状态，请执行以下操作：
 
@@ -85,6 +84,13 @@ USER 设备下面只会列出以下设备：
 1.  以管理员身份打开命令提示符。
 2.  键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`。
 3.  键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
+
+---
+**问：如何在设备上本地取消加入已加入 Azure AD 的设备？
+**答：** 
+- 对于已加入混合 Azure AD 的设备，请确保关闭自动注册，以便计划任务不会再次注册该设备。 接下来，以管理员身份打开命令提示符并键入 `dsregcmd.exe /debug /leave`。 或者，可以将该命令作为脚本跨多个设备运行，以批量取消加入。
+
+- 对于已加入纯 Azure AD 的设备，请确保你有脱机本地管理员帐户或创建一个，因为你将无法使用任何 Azure AD 用户凭据登录。 接下来，转到“设置” > “帐户” > “访问工作单位或学校”。 选择帐户，然后单击“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
 
 ---
 
@@ -119,7 +125,7 @@ USER 设备下面只会列出以下设备：
 ---
 
 
-**问：我在 Azure 门户中的用户信息下看到了设备记录，设备状态为已在客户端注册。我的设置是否正确，可以使用条件访问？**
+**问：我在 Azure 门户中的“用户信息”下看到了设备记录，设备状态为已在设备上注册。我的设置是否正确，可以使用条件访问？**
 
 **答：** deviceID 所反映的设备加入状态必须与 Azure AD 上的状态相符，并且必须符合条件性访问的任何评估条件。 有关详细信息，请参阅 [Azure Active Directory 设备注册入门](active-directory-device-registration.md)。
 
@@ -137,6 +143,8 @@ USER 设备下面只会列出以下设备：
 
 - 联合登录要求联合服务器支持 WS-Trust 活动终结点。 
 
+- 你已启用“直通身份验证”，并且用户具有需要在登录时更改的临时密码。
+
 ---
 
 **问：尝试在电脑上加入 Azure AD 时，为何会出现“哎呀...发生了错误!”对话框？**
@@ -147,7 +155,7 @@ USER 设备下面只会列出以下设备：
 
 **问：我没有收到任何错误信息，但尝试加入电脑为何失败？**
 
-**答：** 一个可能的原因是用户使用内置管理员帐户登录到设备。 请在使用 Azure Active Directory Join 之前创建一个不同的本地帐户以完成设置。 
+**答：** 一个可能的原因是用户使用本地内置管理员帐户登录到设备。 请在使用 Azure Active Directory Join 之前创建一个不同的本地帐户以完成设置。 
 
 ---
 

@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 184faa0f6171ff00ab3c2398f693e9c7ad015d33
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 49d9b5306a0fcf51cc0de036c725fca8345cd0ec
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839582"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302176"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>使用 Log Analytics 进行事件分析和可视化
-
-Log Analytics（也称为 OMS (Operations Management Suite)）集中了管理服务，有助于监视和诊断云中托管的应用程序的服务。 本文概述如何在 Log Analytics 中运行查询，以获取见解并排查群集中发生的问题。 本文解决以下常见问题：
+Log Analytics 从云中托管的应用程序和服务收集和分析遥测，并提供分析工具来帮助你最大限度地提高其可用性和性能。 本文概述如何在 Log Analytics 中运行查询，以获取见解并排查群集中发生的问题。 本文解决以下常见问题：
 
 * 如何排查运行状况事件问题？
 * 如何知道节点已关闭？
@@ -43,9 +42,9 @@ Log Analytics 收到数据后，Azure 会提供多个预打包的管理解决方
 
 2. 在“摘要”中，将看到每个已启用的解决方案的图形形式的磁贴，包括 Service Fabric 的磁贴。 单击“Service Fabric”图形（下面的第一张图）转到 Service Fabric 分析解决方案（下面的第二张图）。
 
-    ![OMS SF 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
+    ![Service Fabric 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![OMS SF 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+    ![Service Fabric 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
 上图是 Service Fabric 分析解决方案的主页。 这是群集中发生的情况的快照视图。 如果创建群集时启用了诊断，则可以看到以下对象的事件： 
 
@@ -60,11 +59,11 @@ Log Analytics 收到数据后，Azure 会提供多个预打包的管理解决方
 
 1. 在“Service Fabric 分析”页上，单击“Service Fabric 事件”对应的图形。
 
-    ![OMS SF 解决方案操作通道](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
+    ![Service Fabric 解决方案操作通道](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
 2. 单击“列表”，在列表中查看事件。 打开该列表后，将会看到已收集的所有系统事件。 以下内容插自 Azure 存储帐户中的 WADServiceFabricSystemEventsTable 以供参考，类似地，接下来看到的 Reliable Services 和 Reliable Actors 事件也都摘自相应的表。
     
-    ![OMS 查询操作通道](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
+    ![查询操作通道](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
 或者，可以单击左侧的放大镜并使用 Kusto 查询语言找到所需的内容。 例如，若要查找针对群集中的节点执行的所有操作，可以使用以下查询。 在[操作通道事件参考](service-fabric-diagnostics-event-generation-operational.md)中可以找到下面使用的事件 ID。
 
@@ -79,11 +78,11 @@ ServiceFabricOperationalEvent
 
 1. 在“Service Fabric 分析”页上，单击“Reliable Services”对应的图形。
 
-    ![OMS SF 解决方案 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+    ![Service Fabric 解决方案 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
 2. 单击“列表”，在列表中查看事件。 在此处可以查看来自 Reliable Services 的事件。 可以看到服务 runasync 在启动和完成（通常发生在部署和升级时）时的不同事件。 
 
-    ![OMS 查询 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
+    ![查询 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
 可以类似的方式查看 Reliable Actors 事件。 若要为 Reliable Actors 配置更详细的事件，需要在诊断扩展的配置中更改 `scheduledTransferKeywordFilter`（如下所示）。 [Reliable Actors 事件参考](service-fabric-reliable-actors-diagnostics.md#keywords)中提供了这些参数值的详细信息。
 
@@ -101,12 +100,12 @@ ServiceFabricOperationalEvent
 
 Kusto 查询语言非常强大。 可以运行另一个有用查询来找出哪些节点正在生成大多数事件。 以下屏幕截图中的查询显示了与特定服务和节点聚合的 Reliable Services 操作事件。
 
-![每个节点的 OMS 查询事件](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
+![每个节点的查询事件](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要启用基础结构监视（例如性能计数器），请转到[添加 OMS 代理](service-fabric-diagnostics-oms-agent.md)。 该代理将收集性能计数器，并将其添加到现有工作区。
-* 对于本地群集，OMS 提供可用于向 OMS 发送数据的网关（HTTP 正向代理）。 有关更多信息，请参阅[使用 OMS 网关将无法访问 Internet 的计算机连接到 OMS](../log-analytics/log-analytics-oms-gateway.md)
-* 配置 OMS，以设置[自动警报](../log-analytics/log-analytics-alerts.md)来帮助进行检测和诊断。
+* 若要启用基础结构监视（即性能计数器），请转到[添加 Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)。 该代理将收集性能计数器，并将其添加到现有工作区。
+* 对于本地群集，Log Analytics 提供可用于向 Log Analytics 发送数据的网关（HTTP 正向代理）。 有关更多信息，请参阅[使用 OMS 网关将无法访问 Internet 的计算机连接到 Log Analytics](../log-analytics/log-analytics-oms-gateway.md)
+* 配置[自动警报](../log-analytics/log-analytics-alerts.md)来帮助进行检测和诊断
 * 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
 * 有关 Log Analytics 及其功能的更详细概述，请参阅[什么是 Log Analytics？](../operations-management-suite/operations-management-suite-overview.md)

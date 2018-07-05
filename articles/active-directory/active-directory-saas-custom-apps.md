@@ -15,20 +15,20 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c115414fc6ae599342192196e256597c28e5aa6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: aeb67a73a69684b89609c6b04160357b244f62b7
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293188"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754087"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录
 
-本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 此功能已在 2015 年 11 月 18 日技术预览中发布，并且已包含在 [Azure Active Directory Premium](active-directory-whatis.md) 中。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
+本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 此功能已在 2015 年 11 月 18 日技术预览中发布，并且已包含在 [Azure Active Directory Premium](fundamentals/active-directory-whatis.md) 中。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
 
 如[此文](manage-apps/what-is-single-sign-on.md)中所述，Azure Active Directory 应用程序库提供了一份已知能够支持 Azure Active Directory 单一登录的应用程序列表。 IT 专业人员或组织中的系统集成人员找到所要连接的应用程序后，可以遵循 Azure 门户中提供的分步说明启用单一登录。
 
-具有 [Azure Active Directory Premium](active-directory-whatis.md) 许可证的客户还会额外获得以下功能：
+具有 [Azure Active Directory Premium](fundamentals/active-directory-whatis.md) 许可证的客户还会额外获得以下功能：
 
 * 通过自助方式集成支持 SAML 2.0 标识提供者的任何应用程序（SP 发起或 IdP 发起）
 * 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) 的任何 Web 应用程序
@@ -148,18 +148,7 @@ ms.locfileid: "35293188"
 
 ### <a name="test-the-saml-application"></a>测试 SAML 应用程序
 
-在测试 SAML 应用程序之前，必须先使用 Azure AD 设置应用程序，并将用户或组分配到应用程序。
-
-  ![测试](./media/active-directory-saas-custom-apps/testing.png)
-
-在单一登录页中，单击“域和 URL”部分下的“测试 SAML 设置”。 此时会打开一个内容窗格，其中包含有关如何测试应用程序的说明。
-
-1. 登录到应用程序。 如果应用程序配置为服务提供者发起的单一登录，则你会重定向到可在其中发起登录的单一登录 URL。 如果应用程序配置为标识提供者发起的单一登录，则你会登录到应用程序。
-2.  如果公司登录页中出现任何错误，请复制该错误，并返回到 Azure AD 的测试单一登录内容窗格。 将错误粘贴到框中，然后单击“获取解决方法步骤”。 如果应用程序页上出现错误，则需要联系应用程序供应商，并共享 Azure AD 中的配置以验证值。 
-3.  Azure AD 会根据错误提供解决问题的具体步骤。
-
-有关详细信息，请参阅[如何在 Azure Active Directory 中调试对应用程序进行的基于 SAML 的单一登录](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-saml-debugging/?WT.mc_id=DMC_AAD_?WT.mc_id=UI_AAD_Configure_NonGalleryApps)
-
+在测试 SAML 应用程序之前，必须先使用 Azure AD 设置应用程序，并将用户或组分配到应用程序。 若要测试 SAML 应用程序，请参阅[如何在 Azure Active Directory 中调试对应用程序进行的基于 SAML 的单一登录](develop/active-directory-saml-debugging.md)。
 
 ## <a name="password-single-sign-on"></a>密码单一登录
 

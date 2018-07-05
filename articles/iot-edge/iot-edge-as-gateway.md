@@ -8,14 +8,14 @@ ms.date: 11/27/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ff5e50df1f7a9059bf37fe99d89050a48aa6e64e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0e085d6c2962ec2a2324bfc134b0e201df04a336
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631592"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028959"
 ---
-# <a name="how-an-iot-edge-device-can-be-used-as-a-gateway---preview"></a>如何将 IoT Edge 设备用作网关 - 预览版
+# <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 
 IoT 解决方案中的网关用途特是定于解决方案的，并将设备连接与边缘分析结合起来。 Azure IoT Edge 可用于满足 IoT 网关的所有需求，无论它们是否与连接、标识或边缘分析相关。 本文中的网关模式仅指下游设备连接和设备标识的特征，而不是指在网关上处理设备数据的方式。
 
@@ -54,7 +54,7 @@ IoT 解决方案中的网关用途特是定于解决方案的，并将设备连�
 ## <a name="next-steps"></a>后续步骤
 将 IoT Edge 设备用作[透明网关][lnk-iot-edge-as-transparent-gateway] 
 
-[lnk-iot-edge-as-transparent-gateway]: ./how-to-create-transparent-gateway.md
+[lnk-iot-edge-as-transparent-gateway]: ./how-to-create-transparent-gateway-linux.md
 [lnk-iothub-throttles-quotas]: ../iot-hub/iot-hub-devguide-quotas-throttling.md
 
 [1]: ./media/iot-edge-as-gateway/edge-as-gateway.png

@@ -1,6 +1,6 @@
 ---
 title: 基于模板在 Azure 中创建 Linux VM | Microsoft Docs
-description: 如何使用 Azure CLI 2.0 基于 Resource Manager 模板创建 Linux VM
+description: 如何使用 Azure CLI 基于资源管理器模板创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
 author: iainfoulds
@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0e241d56eba8c8cb23b1a78227b4ca7ff725162d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fc2b4dde9796336112d6c8a68d16d0b3006b3fee
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716401"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936408"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>如何使用 Azure 资源管理器模板创建 Linux 虚拟机
-本文介绍了如何使用 Azure 资源管理器模板和 Azure CLI 2.0 快速部署 Linux 虚拟机 (VM)。 还可以使用 [Azure CLI 1.0](create-ssh-secured-vm-from-template-nodejs.md) 执行这些步骤。
+本文介绍如何使用 Azure 资源管理器模板和 Azure CLI 快速部署 Linux 虚拟机 (VM)。 
 
 
 ## <a name="templates-overview"></a>模板概述

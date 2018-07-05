@@ -1,27 +1,27 @@
 ---
-title: Azure Data Lake Store 概述 | Microsoft 文档
-description: 了解什么是 Azure Data Lake Store，及其与其他数据存储相比它有哪些优势
+title: Azure Data Lake Storage Gen1 概述 | Microsoft Docs
+description: 了解什么是 Data Lake Storage Gen1（以前称为 Azure Data Lake Store），及其与其他数据存储相比它有哪些优势
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: b3475057-9427-4492-a3af-25a802a23a79
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 111906bc9e7e85e30a879d7bacff37edb4b204ac
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4dff8f4ff9fc324d48391c0399677b64824493c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034362"
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Azure Data Lake Store 概述
-Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 使用 Azure Data Lake 可以在单个位置捕获任何大小、类型和引入速度的数据进行操作和探索分析。
+# <a name="overview-of-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 概述
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于大数据分析工作负载。 使用 Azure Data Lake 可以在单个位置捕获任何大小、类型和引入速度的数据进行操作和探索分析。
 
 > [!TIP]
 > 使用 [Data Lake Store learning path](https://azure.microsoft.com/documentation/learning-paths/data-lake-store-self-guided-training/) （Data Lake Store 学习路径）开始探索 Azure Data Lake Store 服务。
@@ -81,24 +81,8 @@ Azure Data Lake Store 与 Hadoop 生态系统中的大多数开源组件兼容�
 
 可以使用 `adl://<data_lake_store_name>.azuredatalakestore.net`访问 Data Lake Store 中的数据。 有关如何访问 Data Lake Store 中的数据的详细信息，请参阅 [View properties of the stored data](data-lake-store-get-started-portal.md#properties)
 
-## <a name="how-do-i-start-using-azure-data-lake-store"></a>如何开始使用 Azure Data Lake Store？
-请参阅 [Get Started with Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md)（通过 Azure 门户开始使用 Data Lake Store），了解如何使用 Azure 门户预配 Data Lake Store。 预配 Azure Data Lake Store 后，即可知道如何配合 Data Lake Store 使用大数据产品，例如 Azure Data Lake Analytics 或 Azure HDInsight。 还可以创建 .NET 应用程序来建立 Azure Data Lake Store 帐户，以及执行数据上传、数据下载等操作。
+## <a name="next-steps"></a>后续步骤
 
-* [Get Started with Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Data Lake Store 入门（使用 Azure 门户）](data-lake-store-get-started-portal.md)
 * [Get started with Azure Data Lake Store using .NET SDK](data-lake-store-get-started-net-sdk.md)
-
-## <a name="data-lake-store-videos"></a>Data Lake Store 视频
-如果学习过程中更偏向于观看视频，Data Lake Store 提供了各种功能的视频。
-
-* [创建 Azure Data Lake Store 帐户](https://mix.office.com/watch/1k1cycy4l4gen)
-* [Use the Data Explorer to Manage Data in Azure Data Lake Store](https://mix.office.com/watch/icletrxrh6pc)
-* [Connect Azure Data Lake Analytics to Azure Data Lake Store](https://mix.office.com/watch/qwji0dc9rx9k)
-* [Access Azure Data Lake Store via Data Lake Analytics](https://mix.office.com/watch/1n0s45up381a8)
-* [Connect Azure HDInsight to Azure Data Lake Store](https://mix.office.com/watch/l93xri2yhtp2)
-* [Access Azure Data Lake Store via Hive and Pig](https://mix.office.com/watch/1n9g5w0fiqv1q)
-* [Use DistCp (Hadoop Distributed Copy) to copy data to and from Azure Data Lake Store](https://mix.office.com/watch/1liuojvdx6sie)
-* [Use Apache Sqoop to move data between relational sources and Azure Data Lake Store](https://mix.office.com/watch/1butcdjxmu114)
-* [Data Orchestration using Azure Data Factory for Azure Data Lake Store](https://mix.office.com/watch/1oa7le7t2u4ka)
-* [Securing Data in the Azure Data Lake Store](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
+* [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)

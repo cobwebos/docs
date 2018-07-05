@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/22/2018
+ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7d10f4bc772382f0ea48d32e7493be496946c455
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a12ac87eba14db4ff13868446cf8d14b10d1f5fb
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801858"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317820"
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD 令牌参考
 Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。 
@@ -113,7 +113,8 @@ JWT 包含三个段（以 `.` 字符分隔）。 第一个段称为**标头**，
 {
   "typ": "JWT",
   "alg": "RS256",
-  "x5t": "kriMPdmBvx68skT8-mPAB3BseeA"
+  "x5t": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
+  "kid": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
 }
 ```
 
@@ -129,12 +130,13 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 > [!TIP]
 > 在浏览器中尝试打开此 URL！
-> 
-> 
 
 此元数据文档是一个 JSON 对象，包含一些有用的信息，例如执行 OpenID Connect 身份验证所需的各种终结点的位置。 
 
 它还包含 `jwks_uri`，其提供用于对令牌进行签名的公钥集的位置。 位于 `jwks_uri` 的 JSON 文档包含在该特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明选择本文档中已用于对特定令牌进行签名的公钥。 然后可以使用正确的公钥和指定的算法来执行签名验证。
+
+> [!NOTE]
+> v1.0 终结点会返回 `x5t` 和 `kid` 声明。 v2.0 令牌中缺少 `x5t` 声明。 v2.0 终结点以 `kid` 声明进行响应。 从目前开始，我们建议使用 `kid` 声明来验证令牌。
 
 执行签名验证超出了本文档的范围 - 有许多开放源代码库可帮助这么做（如有必要）。
 
@@ -158,7 +160,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 * MaxInactiveTime：如果在 MaxInactiveTime 指定的时间内未使用刷新令牌，刷新令牌将不再有效。 
 * MaxSessionAge：如果 MaxAgeSessionMultiFactor 或 MaxAgeSessionSingleFactor 已设置为其默认值（“直到吊销”）以外的值，则在经过 MaxAgeSession* 中设置的时间后，将需要重新进行身份验证。 
-* 示例:
+* 示例：
   * 租户的 MaxInactiveTime 为 5 天，用户去度假一周，因此 AAD 在 7 天内未看到用户发出的新令牌请求。 下次用户请求新令牌时，他们将看到其刷新令牌已被吊销，他们必须重新输入其凭据。 
   * 敏感应用程序的 MaxAgeSessionSingleFactor 为 1 天。 如果用户在星期一登录，则在星期二（已经过 25 个小时后），他们将需要重新进行身份验证。 
 

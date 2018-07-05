@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1c8ea748297b8fe4052b60f08b8f00b1e41275fb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f1dd8c4c5e38547492887425bb5732d87d5f8071
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620351"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045878"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>将源数据集列映射到目标数据集列
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 
+> 本文适用于数据工厂版本 1。 
 
 使用列映射可以指定如何将源表“结构”中指定的列映射到接收器表“结构”中指定的列。 可以在复制活动的 **typeProperties** 节中使用 **ColumnMapping** 属性。
 

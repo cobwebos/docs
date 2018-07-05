@@ -1,6 +1,6 @@
 ---
-title: 适用于 Windows 的 OMS Azure 虚拟机扩展 | Microsoft 文档
-description: 使用虚拟机扩展在 Windows 虚拟机上部署 OMS 代理。
+title: 适用于 Windows 的 Azure Log Analytics 虚拟机扩展 | Microsoft Docs
+description: 使用虚拟机扩展在 Windows 虚拟机上部署 Log Analytics 代理。
 services: virtual-machines-windows
 documentationcenter: ''
 author: danielsollondon
@@ -15,33 +15,33 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danis
-ms.openlocfilehash: c365c43eb5abb975bf77e28ad061ff091f5ec627
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 49e5033f6c77b19dd8545e9b6fd30ce03ce21f34
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944719"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301774"
 ---
-# <a name="oms-virtual-machine-extension-for-windows"></a>适用于 Windows 的 OMS 虚拟机扩展
+# <a name="log-analytics-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Log Analytics 虚拟机扩展
 
-Operations Management Suite (OMS) 提供跨云和本地资产的监视、警报和警报修正功能。 适用于 Windows 的 OMS 代理虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 OMS 代理，并将虚拟机注册到现有的 OMS 工作区中。 本文档详细介绍适用于 Windows 的 OMS 虚拟机扩展支持的平台、配置和部署选项。
+Log Analytics 提供跨云和本地资产的监视功能。 适用于 Windows 的 Log Analytics 代理虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Windows 的 Log Analytics 虚拟机扩展支持的平台、配置和部署选项。
 
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
-可以在 Windows Server 2008 R2、2012、2012 R2 和 2016 版本中运行适用于 Windows 的 OMS 代理扩展。
+可以针对 Windows Server 2008 R2、2012、2012 R2 和 2016 版本运行适用于 Windows 的 Log Analytics 代理扩展。
 
 ### <a name="azure-security-center"></a>Azure 安全中心
 
-Azure 安全中心自动设置 OMS 代理并将其与 Azure 订阅的默认记录分析工作区相连接。 如果使用 Azure 安全中心，请勿按照本文档中的步骤运行。 这样做会覆盖已配置的工作区并断开与 Azure 安全中心的连接。
+Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订阅的默认 Log Analytics 工作区。 如果使用 Azure 安全中心，请勿按照本文档中的步骤运行。 这样做会覆盖已配置的工作区并断开与 Azure 安全中心的连接。
 
 ### <a name="internet-connectivity"></a>Internet 连接
-适用于 Windows 的 OMS 代理扩展要求目标虚拟机已连接到 Internet。 
+适用于 Windows 的 Log Analytics 代理扩展要求目标虚拟机已连接到 Internet。 
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 OMS 代理扩展的架构。 此扩展需要目标 OMS 工作区的工作区 ID 和工作区密钥，可以在 OMS 门户中找到此 ID 和密钥。 由于工作区密钥应视为敏感数据，因此它应存储在受保护的设置配置。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
+以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥。 这些数据可在 Azure 门户的工作区设置中找到。 由于工作区密钥应视为敏感数据，因此它应存储在受保护的设置配置。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
 
 ```json
 {
@@ -79,11 +79,11 @@ Azure 安全中心自动设置 OMS 代理并将其与 Azure 订阅的默认记�
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行 OMS 代理扩展。 包含 OMS 代理 VM 扩展的示例模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)中找到。 
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行 Log Analytics 代理扩展。 包含 Log Analytics 代理 VM 扩展的示例模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)中找到。 
 
 虚拟机扩展的 JSON 可以嵌套在虚拟机资源内，或放置在 Resource Manager JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources)。 
 
-以下示例假定 OMS 扩展嵌套在虚拟机资源内。 嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。
+以下示例假定 Log Analytics 扩展嵌套在虚拟机资源内。 嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。
 
 
 ```json
@@ -138,7 +138,7 @@ Azure 安全中心自动设置 OMS 代理并将其与 Azure 订阅的默认记�
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-可以使用 `Set-AzureRmVMExtension` 命令将 OMS 代理虚拟机扩展部署到现有的虚拟机。 运行命令之前，需将公共和专用配置存储在 PowerShell 哈希表中。 
+可以使用 `Set-AzureRmVMExtension` 命令将 Log Analytics 代理虚拟机扩展部署到现有的虚拟机。 运行命令之前，需将公共和专用配置存储在 PowerShell 哈希表中。 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
