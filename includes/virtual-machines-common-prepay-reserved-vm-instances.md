@@ -1,15 +1,15 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
-ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
+ms.openlocfilehash: 509d2bc3f58c57a3e2e15eed2ea2c70ed17856f3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2018
-ms.locfileid: "35683043"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063691"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>通过 Azure 虚拟机预留实例为虚拟机预付费
 
-通过 Azure 虚拟机 (VM) 预留实例预付虚拟机并节省资金。 有关详细信息，请参阅 [Azure 预留实例产品/服务](https://azure.microsoft.com/pricing/reserved-vm-instances/)。
+通过 Azure 虚拟机 (VM) 预留实例预付虚拟机并节省资金。 有关详细信息，请参阅 [Azure 虚拟机预留实例产品/服务](https://azure.microsoft.com/pricing/reserved-vm-instances/)。
 
 可以在 [Azure 门户](https://portal.azure.com)中购买 Azure 虚拟机预留实例。 购买预留实例：
 -   你必须至少具有一个企业或即用即付订阅的所有者角色。
@@ -50,16 +50,16 @@ ms.locfileid: "35683043"
 ## <a name="next-steps"></a>后续步骤 
 预留实例折扣将自动应用于正在运行的与预留实例范围和属性匹配的虚拟机数量。 可以通过 [Azure 门户](https://portal.azure.com)、PowerShell、CLI 或通过 API 更新预留实例的范围。 
 
-若要了解如何管理预留实例，请参阅[管理 Azure 预留实例](../articles/billing/billing-manage-reserved-vm-instance.md)。
+若要了解如何管理预留实例，请参阅[管理 Azure 中的预留实例](../articles/billing/billing-manage-reserved-vm-instance.md)。
 
 若要了解有关 Azure 预留实例的详细信息，请参阅以下文章：
 
-- [通过预留实例节省虚拟机资金](../articles/billing/billing-save-compute-costs-reservations.md)
-- [管理 Azure 预留实例](../articles/billing/billing-manage-reserved-vm-instance.md)
+- [什么是 Azure 虚拟机预留实例？](../articles/billing/billing-save-compute-costs-reservations.md)
+- [管理 Azure 中的预留实例](../articles/billing/billing-manage-reserved-vm-instance.md)
 - [了解如何应用预留实例折扣](../articles/billing/billing-understand-vm-reservation-charges.md)
-- [了解即用即付订阅的预订实例使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)
-- [了解企业许可登记表的预订实例使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-- [预订实例未包含的 Windows 软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+- [了解即用即付订阅的预留实例使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)
+- [了解适用于企业合约的预留实例使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+- [预留实例未包含的 Windows 软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)
 - [合作伙伴中心云解决方案提供商 (CSP) 计划中的预留实例](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员

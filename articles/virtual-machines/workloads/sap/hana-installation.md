@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/04/2018
+ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0747bd5dc147639167f352dea46f7e4a1d43227d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 178102990462235b9b39f2ed1ad0e43395118daf
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763437"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064264"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安装和配置 SAP HANA（大型实例）
 
@@ -44,7 +44,7 @@ ms.locfileid: "34763437"
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>接收 HANA 大型实例单元后的前几个步骤
 
-收到 HANA 大型实例且建立与实例的访问和连接通道后的第一步是，向 OS 提供程序注册 OS 实例。 在这一步中，请在需要部署到 Azure VM 的 SUSE SMT 实例中注册 SUSE Linux OS。 HANA 大型实例单元可以连接到此 SMT 实例（请参阅本文档的后面部分）。 或者，需要将 RedHat OS 注册到所要连接的 Red Hat 订阅管理器中。 另请参阅此[文档](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的备注。 若要修补 OS，也需要执行这一步。 此任务由客户负责。 对于 SUSE，请在[此处](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)查找有关安装和配置 SMT 的文档。
+收到 HANA 大型实例且建立与实例的访问和连接通道后的第一步是，向 OS 提供程序注册 OS 实例。 在这一步中，请在需要部署到 Azure VM 的 SUSE SMT 实例中注册 SUSE Linux OS。 HANA 大型实例单元可以连接到此 SMT 实例（请参阅本文档的后面部分）。 或者，需要在所要连接的 Red Hat 订阅管理器中注册 Red Hat OS。 另请参阅此[文档](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的备注。 若要修补 OS，也需要执行这一步。 此任务由客户负责。 对于 SUSE，请在[此处](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)查找有关安装和配置 SMT 的文档。
 
 **第二个步骤**是检查特定 OS 发行版/版本的新修补程序和修复程序。 检查 HANA 大型实例的修补级别是否处于最新状态。 有时，可能未包含最新修补程序，具体视 OS 修补程序/版本的时间安排，以及 Microsoft 可以部署的映像的更改而定。 因此，在接管 HANA 大型实例单元后，必须检查与安全性、功能、可用性和性能相关的修补程序是否已发布，同时检查由特定 Linux 供应商发布的修补程序，以及是否需要应用这些修补程序。
 
@@ -80,18 +80,7 @@ ms.locfileid: "34763437"
 
 在单个单位的网络方面，有些详细信息值得注意。 每个 HANA 大型实例单元附带两个或三个 IP 地址，这些地址已分配到该单元的两个或三个 NIC 端口。 HANA 横向扩展配置和 HANA 系统复制方案中使用三个 IP 地址。 分配给单元 NIC 的一个 IP 地址位于 [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)中所述的服务器 IP 池外部。
 
-分配有两个 IP 地址的单元的分布形式应如下所示：
-
-- 应该为 eth0.xx 分配一个位于提交给 Microsoft 的服务器 IP 池地址范围以外的 IP 地址。 此 IP 地址用于在 OS 的 /etc/hosts 中进行维护。
-- 应该为 eth1.xx 分配一个用来与 NFS 通信的 IP 地址。 因此，**不**需要在 etc/hosts 中维护这些地址即可在租户中允许实例间的通信流量。
-
-对于 HANA 系统复制或 HANA 横向扩展部署用例，不适合使用分配有两个 IP 地址的刀片式服务器配置。 如果只分配了两个 IP 地址，且希望部署此类配置，请联系 Azure 上的 SAP HANA 服务管理部门，让其在第三个 VLAN 中分配第三个 IP 地址。 对于在三个 NIC 端口上分配了三个 IP 地址的 HANA 大型实例单元，请注意以下使用规则：
-
-- 应该为 eth0.xx 分配一个位于提交给 Microsoft 的服务器 IP 池地址范围以外的 IP 地址。 因此，此 IP 地址不会用于在 OS 的 /etc/hosts 中进行维护。
-- 应该为 eth1.xx 分配一个用来与 NFS 存储通信的 IP 地址。 因此，不应在 etc/hosts 中维护此类地址。
-- 应在 etc/hosts 中以独占方式维护 eth2.xx，以便在不同的实例之间通信。 在横向扩展 HANA 配置中，也需要将这些 IP 地址作为 HANA 用于节点间配置的 IP 地址进行维护。
-
-
+请参阅[支持 HLI 的方案](hana-supported-scenario.md)，了解体系结构的以太网详细信息。
 
 ## <a name="storage"></a>存储
 
@@ -111,7 +100,7 @@ Azure 上的 SAP HANA 服务管理部门可遵循 [SAP HANA 存储要求](http:/
 
 租户代表在部署租户时在内部枚举操作。
 
-可以看到，HANA 共享和 usr/sap 使用同一个卷。 装入点的命名法确实包括 HANA 实例系统 ID 和装入编号。 在纵向扩展部署中，只有一个装入，如 mnt00001。 而在横向扩展部署中，装入数量与辅助角色和主节点一样多。 对于横向扩展环境，数据、日志、日志备份卷都会共享并附加到横向扩展配置中的每个节点。 对于运行多个 SAP 实例的配置，将创建一组不同的卷，并将其附加到 HANA 大型实例单元。
+可以看到，HANA 共享和 usr/sap 使用同一个卷。 装入点的命名法确实包括 HANA 实例系统 ID 和装入编号。 在纵向扩展部署中，只有一个装入，如 mnt00001。 而在横向扩展部署中，装入数量与辅助角色和主节点一样多。 对于横向扩展环境，数据、日志、日志备份卷都会共享并附加到横向扩展配置中的每个节点。 对于运行多个 SAP 实例的配置，将创建一组不同的卷，并将其附加到 HANA 大型实例单元。 请参阅[支持 HLI 的方案](hana-supported-scenario.md)，了解方案的存储布局详细信息。
 
 阅读本文档并了解 HANA 大型实例单元时，将会发现，单元随附相当大的 HANA/data 磁盘卷，并且还有 HANA/log/backup 卷。 HANA/data 卷之所以这么大是因为，我们为客户提供的存储快照使用的是同一磁盘卷。 也就是说，如果存储快照更多，分配的存储卷中的快照占用的空间就更多。 HANA/log/backup 卷并不是用于放置数据库备份的卷。 它的大小适合用作 HANA 事务日志备份的备份卷。 在今后发布的存储快照自助服务版本中，这一特定卷将能包含更频繁生成的快照。 而且，这样一来，还可以更频繁地复制到灾难恢复站点，前提是希望启用 HANA 大型实例基础结构提供的灾难恢复功能。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
 
@@ -150,6 +139,7 @@ S72m HANA 大型实例单元上的命令 df -h 的输出如下所示：
 
 在 SAP HANA 2.0 中，hdbparam 框架已弃用。 因此，必须使用 SQL 命令设置这些参数。 有关详细信息，请参阅 [SAP 说明 #2399079：HANA 2 中已弃用 hdbparam](https://launchpad.support.sap.com/#/notes/2399079)。
 
+请参阅[支持 HLI 的方案](hana-supported-scenario.md)，了解体系结构的存储布局。
 
 ## <a name="operating-system"></a>操作系统
 

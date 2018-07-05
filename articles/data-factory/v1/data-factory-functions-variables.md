@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 265b227520f25ebd1112d940aaf28fed9f88ecdc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b4d9a684c2c21ed9ec00b04963432f9ebcff7493
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621014"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048448"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure 数据工厂 - 函数和系统变量
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[数据工厂版本 2 中的系统变量](../control-flow-system-variables.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[数据工厂中的系统变量](../control-flow-system-variables.md)。
 
 本文提供 Azure 数据工厂支持的函数和变量的相关信息。
 
@@ -90,7 +90,7 @@ ms.locfileid: "34621014"
 | 日期 |AddYears(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 年。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>也可指定 Y 为负数来减去年数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`。 |
 | 日期 |Day(X) |X: DateTime |获取 X 的日期号数部分。<br/><br/>示例：`Day of 9/15/2013 12:00:00 PM is 9`。 |
 | 日期 |DayOfWeek(X) |X: DateTime |获取 X 的星期部分。<br/><br/>示例：`DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`。 |
-| 日期 |DayOfYear(X) |X: DateTime |获取由 X 的年份部分表示的当年第几天。<br/><br/>示例:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
+| 日期 |DayOfYear(X) |X: DateTime |获取由 X 的年份部分表示的当年第几天。<br/><br/>示例：<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
 | 日期 |DaysInMonth(X) |X: DateTime |获取由参数 X 的月份部分表示的当月天数。<br/><br/>示例：`DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`。 |
 | 日期 |EndOfDay(X) |X: DateTime |获取表示 X 的当天（日期号数部分）结束时的日期时间。<br/><br/>示例：`EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`。 |
 | 日期 |EndOfMonth(X) |X: DateTime |获取由参数 X 的月份部分表示的当月结束时间。 <br/><br/>示例： `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM`（表示 9 月结束的日期时间） |

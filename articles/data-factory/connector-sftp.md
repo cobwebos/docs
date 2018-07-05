@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 92f83bb6656578792aea45efe62da75009c1391d
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3425558ac1ffa9e8d5146a5126f01c4ac55050dc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284941"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049624"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-sftp-connector.md)
-> * [版本 2 - 预览版](connector-sftp.md)
+> * [第 1 版](v1/data-factory-sftp-connector.md)
+> * [当前版本](connector-sftp.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SFTP 服务器复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 SFTP 连接器](v1/data-factory-sftp-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -53,7 +50,7 @@ SFTP 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sftp**。 |是 |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
-| 端口 | SFTP 服务器侦听的端口。<br/>允许的值是：整数，默认值是 22。 |否 |
+| port | SFTP 服务器侦听的端口。<br/>允许的值是：整数，默认值是 22。 |否 |
 | skipHostKeyValidation | 指定是否要跳过主机密钥验证。<br/>允许的值为：true、false（默认）。  | 否 |
 | hostKeyFingerprint | 指定主机密钥的指纹。 | 是（如果“skipHostKeyValidation”设置为 false）。  |
 | authenticationType | 指定身份验证类型。<br/>允许的值为：Basic、SshPublicKey。 有关其他属性和 JSON 示例，请分别参阅[使用基本身份验证](#using-basic-authentication)和[使用 SSH 公钥身份验证](#using-ssh-public-key-authentication)部分。 |是 |

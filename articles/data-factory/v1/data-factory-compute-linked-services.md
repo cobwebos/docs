@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 51a0f43587b9d34a3693eb4a2927d10c71bd95d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59631ee0115c817da1b0588c1ad37d2f8b34db67
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621745"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053637"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 > [!NOTE]
-> 本文适用于 Azure 数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅[版本 2 中的计算链接服务](../compute-linked-services.md)。
+> 本文适用于 Azure 数据工厂版本 1。 如果使用当前版本的数据工厂服务，请参阅[计算链接服务](../compute-linked-services.md)。
 
 本文介绍可用于处理或转换数据的计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
 
@@ -66,7 +66,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 - 如果目前使用按需 HDInsight 链接服务执行数据工厂版本 1 DotNet 自定义活动，请更新 DotNet 自定义活动的 JSON 定义，以改用 Azure Batch 链接服务。 有关详细信息，请参阅[在数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)。 
 
 > [!Note]
-> 如果在数据工厂版本 1 中使用现有的自带群集 HDInsight 链接设备，或者在 Azure 数据工厂版本 2 中使用自带和按需的 HDInsight 链接服务，则不需要执行任何操作。 在这些情况下，已实施最新版本的 HDInsight 群集支持策略。 
+> 如果在数据工厂版本 1 中使用现有的自带群集 HDInsight 链接设备，或者在 Azure 数据工厂中使用自带和按需的 HDInsight 链接服务，则不需要执行任何操作。 在这些情况下，已实施最新版本的 HDInsight 群集支持策略。 
 >
 > 
 

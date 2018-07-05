@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: fdf3c7d1a6621437c414e2c1fe0628f2f585d98a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 1c1c294a877a996dc0e6cb916b038dc0ca27ed5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061703"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
@@ -85,7 +86,7 @@ ms.lasthandoff: 05/03/2018
 - 在此 Service Manager 实例中，可以根据 Log Analytics 警报、日志记录或 Azure 警报创建事件。
 
 
-了解详细信息：[为 Log Analytics 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)、[根据 Log Analytics 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)和[根据 Azure 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+详细了解：[根据 Azure 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>创建和部署 Service Manager Web 应用服务
 
@@ -103,7 +104,7 @@ ms.lasthandoff: 05/03/2018
 
 - Azure 订阅详细信息
 - 资源组名称
-- Location
+- 位置
 - Service Manager 服务器详细信息（服务器名称、域、用户名和密码）
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。
@@ -190,7 +191,7 @@ ms.lasthandoff: 05/03/2018
 **ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作**：
 - 生成 ServiceNow 产品的客户端 ID 和客户端密码。 有关如何生成客户端 ID 和机密的信息，请根据需要参阅以下信息：
 
-    - [为金斯顿设置 OAuth](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/concept/OAuth-setup.html)
+    - [为金斯顿设置 OAuth](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为雅加达设置 OAuth](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为伊斯坦布尔设置 OAuth](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为赫尔辛基设置 OAuth](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -238,7 +239,7 @@ ms.lasthandoff: 05/03/2018
 
 - 在此 ServiceNow 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解详细信息：[为 Log Analytics 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)、[根据 Log Analytics 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)和[根据 Azure 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+详细了解：[根据 Azure 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>在 ServiceNow 应用中创建集成用户角色
 
@@ -329,7 +330,7 @@ ms.lasthandoff: 05/03/2018
 
 - 在此 Provance 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解详细信息：[为 Log Analytics 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)、[根据 Log Analytics 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)和[根据 Azure 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+详细了解：[根据 Azure 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>将 Cherwell 连接到 Azure 中的 IT 服务管理连接器
 
@@ -381,7 +382,7 @@ ms.lasthandoff: 05/03/2018
 
 - 在此 Cherwell 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解详细信息：[为 Log Analytics 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)、[根据 Log Analytics 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)和[根据 Azure 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+详细了解：[根据 Azure 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="generate-client-id-for-cherwell"></a>为 Cherwell 生成客户端 ID
 
@@ -395,6 +396,4 @@ ms.lasthandoff: 05/03/2018
 
 
 ## <a name="next-steps"></a>后续步骤
- - [为 Log Analytics 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)
- - [根据 Log Analytics 日志记录日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)
  - [根据 Azure 警报日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)

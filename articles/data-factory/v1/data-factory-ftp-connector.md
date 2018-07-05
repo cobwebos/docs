@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe8982c9c4995cd9ddd6faa9a28fae1f321a2988
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bbbbaab6090941141abd7a2bbd2eac6dbf9fd354
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623241"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051536"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-ftp-connector.md)
-> * [版本 2 - 预览版](../connector-ftp.md)
+> * [第 1 版](data-factory-ftp-connector.md)
+> * [版本 2（当前版本）](../connector-ftp.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 FTP 连接器](../connector-ftp.md)。
+> 本文适用于数据工厂版本 1。 如果正在使用当前版本数据工厂服务，请参阅 [V2 中的 FTP 连接器](../connector-ftp.md)。
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从 FTP 服务器移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，该文章总体概述了如何使用复制活动移动数据。
 
@@ -50,9 +50,9 @@ ms.locfileid: "34623241"
 
 无论使用工具还是 API，执行以下步骤都可创建将数据从源数据存储移至接收器数据存储的管道：
 
-1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
+2. 创建数据集以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从 FTP 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 FTP 服务器复制到 Azure blob](#json-example-copy-data-from-ftp-server-to-azure-blob) 部分。
 
@@ -73,7 +73,7 @@ ms.locfileid: "34623241"
 | password |指定用户（用户名）的密码。 |否 |&nbsp; |
 | encryptedCredential |指定访问 FTP 服务器的加密凭据。 |否 |&nbsp; |
 | gatewayName |指定数据管理网关中用于连接到本地 FTP 服务器的网关名称。 |否 |&nbsp; |
-| 端口 |指定 FTP 服务器侦听的端口。 |否 |21 |
+| port |指定 FTP 服务器侦听的端口。 |否 |21 |
 | enableSsl |指定是否通过 SSL/TLS 通道使用 FTP。 |否 |是 |
 | enableServerCertificateValidation |指定在通过 SSL/TLS 通道使用 FTP 时，是否启用服务器 SSL 证书验证。 |否 |是 |
 

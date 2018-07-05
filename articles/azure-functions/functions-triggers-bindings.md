@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: c5211b43a85383c7c9f42a1d56271addae6d956e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5e7e6608003b365d5516ca2e94a51c0710ad1125
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725337"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061347"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -46,48 +46,53 @@ ms.locfileid: "34725337"
 
 ## <a name="register-binding-extensions"></a>注册绑定扩展
 
-在版本 2.x 的 Azure Functions 运行时中，必须显式注册在函数应用中使用的绑定扩展（绑定类型）。 
+在某些开发环境中，必须显式注册要使用的绑定。 绑定扩展在 NuGet 包中提供，且需要安装包才可注册扩展。 下表显示了注册绑定扩展的时间和方式。
 
-Functions 运行时版本 2.x 目前以预览版提供。 有关如何将函数应用设置为使用 Functions 运行时版本 2.x 的信息，请参阅[如何指定 Azure Functions 运行时的目标版本](set-runtime-version.md)。
+|开发环境 |在 <br/> Functions 1.x 中注册  |在 <br/> Functions 2.x 中注册  |
+|---------|---------|---------|
+|Azure 门户|自动|[自动，带有提示](#azure-portal-development)|
+|使用 Azure Functions Core Tools 的本地环境|自动|[使用 Core Tools CLI 命令](#local-development-azure-functions-core-tools)|
+|使用 Visual Studio 2017 的 C# 类库|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|
+|使用 Visual Studio Code 的 C# 类库|不适用|[使用 .NET Core CLI](#c-class-library-with-visual-studio-code)|
 
-在版本 2.x 中有一组可自动注册的核心绑定，因此你不必显式注册它们：HTTP、计时器和 Azure 存储（blob、队列和表）。 
+以下绑定类型例外，它们不需要显式注册，因为它们会在所有版本和环境中自动注册：HTTP、计时器和 Azure 存储（blob、队列和表）。 
 
-扩展以 NuGet 包的形式提供，其中，包名称通常以 [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) 开头。  注册绑定扩展的方式取决于函数的开发方式： 
+### <a name="azure-portal-development"></a>使用 Azure 门户进行开发
 
-+ [在本地使用 Visual Studio 或 VS Code 进行 C# 开发](#local-c-development-using-visual-studio-or-vs-code)
-+ [在本地使用 Azure Functions Core Tools](#local-development-azure-functions-core-tools)
-+ [在 Azure 门户中](#azure-portal-development) 
+创建函数或添加绑定时，如果触发器或绑定的扩展需要注册，则系统会显示提示。 单击“安装”注册扩展，以响应提示。 在消耗计划中，安装最多需要 10 分钟。
 
-本部分中所示的包版本仅用作示例。 请检查 [NuGet.org 站点](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions)，确定函数应用中的其他依赖项需要哪个版本的给定扩展。    
-
-### <a name="local-csharp"></a>使用 Visual Studio 或 VS Code 进行本地 C# 开发
-
-使用 Visual Studio 或 Visual Studio Code 在本地开发 C# 函数时，请安装扩展的 NuGet 包。 
-
-+ **Visual Studio**：使用 NuGet 包管理器工具。 以下 [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) 命令从包管理器控制台安装 Azure Cosmos DB 扩展：
-
-    ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
-    ```
-
-+ **Visual Studio Code**：可以在 .NET CLI 中，通过命令提示符使用 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令来安装包，如下所示：
-
-    ```terminal
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
-    ```
+对于给定的函数应用，只需安装每个扩展一次。 
 
 ### <a name="local-development-azure-functions-core-tools"></a>使用 Azure Functions Core Tools 进行本地开发
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
-### <a name="azure-portal-development"></a>使用 Azure 门户进行开发
+<a name="local-csharp"></a>
+### <a name="c-class-library-with-visual-studio-2017"></a>使用 Visual Studio 2017 的 C# 类库
 
-创建函数或者将绑定添加到现有函数时，如果所添加的触发器或绑定的扩展需要注册，则系统会显示提示。   
+在“Visual Studio 2017”中，可使用 [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) 命令从包管理器控制台安装包，如以下示例所示：
 
-在系统针对所安装的特定扩展显示警告后，请单击“安装”注册该扩展。 对于给定的函数应用，只需安装每个扩展一次。 
+```powershell
+Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
+```
 
->[!Note] 
->在消耗计划中，门户内安装进程最多需要 10 分钟。
+用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
+
+将示例中的 `<target_version>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
+
+### <a name="c-class-library-with-visual-studio-code"></a>使用 Visual Studio Code 的 C# 类库
+
+在“Visual Studio Code”中，可在 .NET Core CLI 中，通过命令提示符使用 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令来安装包，如以下示例所示：
+
+```terminal
+dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
+```
+
+.NET Core CLI 只能用于 Azure Functions 2.x 开发。
+
+用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
+
+将示例中的 `<target_version>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
 
 ## <a name="example-trigger-and-binding"></a>示例触发器和绑定
 

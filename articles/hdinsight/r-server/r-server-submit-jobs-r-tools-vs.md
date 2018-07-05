@@ -11,13 +11,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 06/27/2018
 ms.author: maxluk
-ms.openlocfilehash: c6f6e691ef4b317854aef1d7397d5fb840d25ff2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eb7b538737e54b2c3d8a32e2ba65f7e0762a302c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047150"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
@@ -36,7 +37,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 3. 需要有用于 SSH 身份验证的公钥和私钥。
 <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. 在计算机上安装 [R Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 R Server 提供 [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 和 `RxSpark` 函数。
+4. 在计算机上安装 [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 ML Server 提供 [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 和 `RxSpark` 函数。
 
 5. 安装 [PuTTY](http://www.putty.org/) 以提供计算上下文，用于从本地客户端针对 HDInsight 群集运行 `RevoScaleR` 函数。
 
@@ -52,7 +53,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 ## <a name="execute-local-r-methods"></a>执行本地 R 方法
 
-1. 创建 [R Server HDInsight 群集](r-server-get-started.md)。
+1. 创建 [HDInsight ML Services 群集](r-server-get-started.md)。
 2. 安装 [RTVS 扩展](https://docs.microsoft.com/visualstudio/rtvs/installation)。
 3. 下载[示例 zip 文件](https://github.com/Microsoft/RTVS-docs/archive/master.zip)。
 4. 打开 `examples/Examples.sln` 以在 Visual Studio 中启动解决方案。
@@ -65,11 +66,11 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
     ![数据科学设置...](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
 
-## <a name="submit-jobs-to-an-hdinsight-r-cluster"></a>将作业提交到 HDInsight R 群集
+## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>将作业提交到 HDInsight ML Services 群集
 
-通过从安装有 PuTTY 的 Windows 计算机使用 Microsoft R Server/Microsoft R Client，可以创建计算上下文，用于从本地客户端针对 HDInsight 群集运行分布式 `RevoScaleR` 函数。 使用 `RxSpark` 创建计算上下文，并指定用户名、Hadoop 群集的边缘节点、SSH 交换机等等。
+通过从安装有 PuTTY 的 Windows 计算机使用 Microsoft ML Server/Microsoft R Client，可以创建计算上下文，用于从本地客户端针对 HDInsight 群集运行分布式 `RevoScaleR` 函数。 使用 `RxSpark` 创建计算上下文，并指定用户名、Hadoop 群集的边缘节点、SSH 交换机等等。
 
-1. 若要查找边缘节点的主机名，请在 Azure 上打开 HDInsight R 群集窗格，然后选择“概述”窗格顶部菜单中的“安全外壳(SSH)”。
+1. 若要查找边缘节点的主机名，请在 Azure 上打开 HDInsight ML Services 群集窗格，然后选择“概述”窗格顶部菜单中的“安全外壳(SSH)”。
 
     ![安全外壳(SSH)](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
 
@@ -121,7 +122,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 5. 确保 `rxHadoopCopy` 已将 `people.json` 文件从示例数据文件夹成功复制到新创建的 `/user/RevoShare/newUser` 文件夹：
 
-    1. 从 Azure 的 HDInsight R 群集窗格中，选择左侧菜单中的“存储帐户”。
+    1. 从 Azure 的 HDInsight ML Services 群集窗格中，选择左侧菜单中的“存储帐户”。
 
         ![存储帐户](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
 
@@ -143,6 +144,6 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 ## <a name="next-steps"></a>后续步骤
 
-* [适用于 HDInsight 上的 R Server 的计算上下文选项](r-server-compute-contexts.md)
+* [适用于 HDInsight 上的 ML Services 的计算上下文选项](r-server-compute-contexts.md)
 * [将 ScaleR 和 SparkR 合并](../hdinsight-hadoop-r-scaler-sparkr.md)提供了航班延迟预测示例。
 <!-- * You can also submit R jobs with the [R Studio Server](hdinsight-submit-jobs-from-r-studio-server.md) -->

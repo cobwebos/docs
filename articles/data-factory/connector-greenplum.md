@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（Beta 版本）从 Greenplum 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Greenplum 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Greenplum 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -11,24 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: b71534b05dbd97c3d193e1be54e0fc4dfa465c08
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 12a8fb714d398db50258e2cf256379c9a3fccc55
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617546"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051019"
 ---
-# <a name="copy-data-from-greenplum-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Greenplum 复制数据
+# <a name="copy-data-from-greenplum-using-azure-data-factory"></a>使用 Azure 数据工厂从 Greenplum 复制数据 
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Greenplum 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
-
-> [!IMPORTANT]
-> 此连接器目前处于 Beta 版本。 欢迎试用并提供反馈。 请勿在生产环境中使用该版本。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -38,7 +32,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Greenplum 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 

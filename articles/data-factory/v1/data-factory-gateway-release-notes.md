@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 4530b11db7691f631f636021634cc5e9c8be8c86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac0e1945e75ee7aea346c103a671b4a47b9e5994
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620555"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048608"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅 [V2 中的自托管集成运行时](../create-self-hosted-integration-runtime.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅 [V2 中的自承载集成运行时](../create-self-hosted-integration-runtime.md)。
 
 现代数据集成的一大挑战是将数据在本地和云之间进行移动。 数据工厂借助数据管理网关实现此集成，后者是一个可安装在本地以实现混合数据移动的代理。
 
@@ -127,12 +127,12 @@ ms.locfileid: "34620555"
 
     *  已重新组织和简化控件。
 
-    *  可使用[无代码复制预览工具](data-factory-copy-data-wizard-tutorial.md)从存储中复制数据。 有关此功能的大体详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
+    *  可使用[无代码复制工具](data-factory-copy-data-wizard-tutorial.md)从存储中复制数据。 有关此功能的大体详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
 *  可使用数据管理网关将数据从本地 SQL Server 数据库直接传入 Azure 机器学习。
 
 *  性能提升
 
-    * 针对无代码复制预览工具中的 SQL Server 提升查看架构/预览的性能。
+    * 针对无代码复制工具中的 SQL Server 提升查看架构/预览的性能。
 
 ## <a name="11259531"></a>1.12.5953.1
 

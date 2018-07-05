@@ -1,24 +1,26 @@
 ---
-title: 使用 Azure Data Lake Store 的最佳做法 | Microsoft Docs
-description: 了解与 Azure Data Lake Store 使用相关的数据引入、日期安全性和性能的最佳做法
+title: 使用 Azure Data Lake Storage Gen1 的最佳做法 | Microsoft Docs
+description: 了解与使用 Azure Data Lake Storage Gen 1（以前称为 Azure Data Lake Store）相关的数据引入、日期安全和性能的最佳做法
 services: data-lake-store
 documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
-editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 00eb2b6b60aa6c3224b58556f6dad64d4294c308
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625332"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034341"
 ---
-# <a name="best-practices-for-using-azure-data-lake-store"></a>使用 Azure Data Lake Store 的最佳做法
+# <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 本文介绍 Azure Data Lake Store 使用方面的最佳做法和注意事项。 本文介绍 Data Lake Store 的安全性、性能、复原和监视。 在 Data Lake Store 出现之前，在 Azure HDInsight 之类的服务中使用真正大型的数据是很复杂的事情。 必须将数据在多个 Blob 存储帐户中分片，才能实现 PB 级的存储以及在该规模下的性能优化。 使用 Data Lake Store 时，大部分针对大小和性能的硬性限制都会去除。 但是，若要充分利用 Data Lake Store 的性能，仍有一些需要本文讨论的注意事项。 
 
 ## <a name="security-considerations"></a>安全注意事项
@@ -114,7 +116,7 @@ Distcp 是 distributed copy（分布式复制）的简称，是 Hadoop 随附的
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>使用 Azure 数据工厂来计划复制作业 
 
-Azure 数据工厂还可以用来通过**复制活动**对复制作业进行计划，甚至可以通过**复制向导**设置一个频率。 请记住，Azure 数据工厂的云数据移动单位 (DMU) 有限，因此最终会对大数据工作负荷的吞吐量/计算进行限制。 另外，Azure 数据工厂目前不提供在 Data Lake Store 帐户之间进行增量更新的功能，因此 Hive 表之类的文件夹需要获得完整的副本才能进行复制。 请参阅[复制活动优化指南](../data-factory/v1/data-factory-copy-activity-performance.md)，详细了解如何使用数据工厂进行复制。 
+Azure 数据工厂还可以用来通过**复制活动**对复制作业进行计划，甚至可以通过**复制向导**设置一个频率。 请记住，Azure 数据工厂的云数据移动单位 (DMU) 有限，因此最终会对大数据工作负荷的吞吐量/计算进行限制。 另外，Azure 数据工厂目前不提供在 Data Lake Store 帐户之间进行增量更新的功能，因此 Hive 表之类的文件夹需要获得完整的副本才能进行复制。 请参阅[复制活动优化指南](../data-factory/copy-activity-performance.md)，详细了解如何使用数据工厂进行复制。 
 
 ### <a name="adlcopy"></a>AdlCopy
 

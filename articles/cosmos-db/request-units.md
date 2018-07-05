@@ -2,19 +2,19 @@
 title: 请求单位和估计吞吐量 - Azure Cosmos DB | Microsoft Docs
 description: 了解如何理解、指定和估计 Azure Cosmos DB 中的请求单位需求。
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 06/26/2018
 ms.author: rimman
-ms.openlocfilehash: 16ccda120aef0aa892bf365403f3f0bdc1209ca3
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 160ff4e09f70036fd261c07fa59e13772bc00660
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823717"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053321"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 
@@ -41,7 +41,7 @@ Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满�
 
 通过 Azure Cosmos DB，可根据每秒处理的请求单位指定保留的吞吐量。 可将请求单位视为吞吐量货币。 可以保留每秒可用于应用程序的定量有保障请求单位。 Azure Cosmos DB 中的每个操作（包括编写文档、执行查询、更新文档）都会消耗 CPU、内存和 IOPS。 也就是说，每个操作都会产生请求费用（用请求单位表示）。 了解影响请求单位费用的因素，以及应用程序吞吐量要求时，可以尽量有效地运行应用程序。 
 
-为帮助你入门，Azure Cosmos DB 项目经理 Andrew Liu 在以下视频中介绍了请求单位： <br /><br />
+为帮助你入门，Azure Cosmos DB 项目经理 Andrew Liu 在以下视频中介绍了请求单位（视频的请求单位示例中存在较小的拼写错误。 当使用具有 100,000 条记录的 1KB 数据时，总存储为 100MB 而不是 100GB）： <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
@@ -111,7 +111,7 @@ Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满�
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>使用 Azure Cosmos DB 请求费用响应标头
-每个来自 Azure Cosmos DB 服务的响应都包含一个自定义标头 (`x-ms-request-charge`)，该标头包含请求消耗的请求单位数。 也可以通过 Azure Cosmos DB SDK 访问此标头。 在 .NET SDK 中，**RequestCharge** 是 **ResourceResponse** 对象的属性。 对于查询，Azure 门户中的 Azure Cosmos DB 数据资源管理器提供了用于执行的查询的请求费用信息。
+每个来自 Azure Cosmos DB 服务的响应都包含一个自定义标头 (`x-ms-request-charge`)，该标头包含请求消耗的请求单位数。 也可以通过 Azure Cosmos DB SDK 访问此标头。 在 .NET SDK 中，**RequestCharge** 是 **ResourceResponse** 对象的属性。 对于查询，Azure 门户中的 Azure Cosmos DB 数据资源管理器提供了用于执行的查询的请求费用信息。 要了解如何使用不同多模型 API 来获取和设置吞吐量，请参阅[在 Azure Cosmos DB 中设置和获取吞吐量](set-throughput.md)一文。
 
 有一种方法可以估算应用程序所需的保留吞吐量：在针对应用程序所用代表性项运行典型操作时，记录与之相关的请求单位费用。 然后估算预计每秒会执行的操作数目。 也要确保测算并包含典型查询和 Azure Cosmos DB 脚本使用情况。
 

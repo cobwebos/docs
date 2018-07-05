@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 84d81dd9e1ef51a2a1705210cd7002a685bdf8fb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266815"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050601"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure SSIS 集成运行时
 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们通常希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。
@@ -34,10 +34,6 @@ ms.locfileid: "36266815"
 3. **为 Runbook 创建两个 Webhook**，一个用于“启动”操作，另一个用于“停止”操作。 在数据工厂管道中配置 Web 活动时，将使用这些 Webhook 的 URL。 
 4. **创建数据工厂管道**。 创建的管道由三个活动组成。 第一个 **Web** 活动调用第一个 Webhook 来启动 Azure SSIS IR。 **存储过程**活动运行一个 SQL 脚本来运行 SSIS 包。 第二个 **Web** 活动停止 Azure SSIS IR。 有关使用存储过程活动从数据工厂管道调用 SSIS 包的详细信息，请参阅[调用 SSIS 包](how-to-invoke-ssis-package-stored-procedure-activity.md)。 然后，创建一个计划触发器，用于将管道计划为按指定的频率运行。
 
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[在版本 1 中使用存储过程活动调用 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
-
- 
 ## <a name="prerequisites"></a>先决条件
 如果尚未预配 Azure SSIS 集成运行时，请遵照[此教程](tutorial-create-azure-ssis-runtime-portal.md)中的说明预配。 
 
@@ -254,7 +250,7 @@ ms.locfileid: "36266815"
       - 选择“新建”，并输入资源组的名称。   
          
       若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-4. 选择“V2 (预览)”作为**版本**。
+4. 选择“V2”作为“版本”。
 5. 选择数据工厂的**位置**。 列表中只会显示支持创建数据工厂的位置。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。

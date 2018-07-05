@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cf32ea7b77db3fc78a404063b8a4d69ecebf58
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195703"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062568"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -157,13 +157,9 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 
 在混合 Runbook 辅助角色中，对作业的处理方式与作业在 Azure 沙盒中运行时略有不同。 一个主要区别是，混合 Runbook 辅助角色中对作业持续时间没有限制。 如果具有长时间运行的 runbook，则你希望确保它在可能发生的重新启动（例如，如果承载着混合辅助角色的计算机重新启动）后能够复原。 如果混合辅助角色宿主计算机重新启动，则任何正在运行的 runbook 将从头重启，或者从 PowerShell 工作流 runbook 的最后一个检查点重启。 如果某个 runbook 作业重启了 3 次以上，则它会挂起。
 
-## <a name="troubleshooting-runbooks-on-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中排查 Runbook 问题
+## <a name="troubleshoot"></a>故障排除
 
-日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 混合辅助角色还会在 **Application and Services Logs\Microsoft-SMA\Operational** 下的 Windows 事件日志中记录错误和事件。 在辅助角色上执行的 runbook 相关事件会写入 Application and Services Logs\Microsoft-Automation\Operational。 Microsoft-SMA 日志包括与推送到辅助角色的 runbook 作业以及与处理 runbook 相关的更多事件。 虽然 **Microsoft 自动化**事件日志未包含许多有助于排查 runbook 执行问题的事件和详细信息，但它包含 runbook 作业的结果。
-
-[Runbook 输出和消息](automation-runbook-output-and-messages.md)将从混合辅助角色发送到 Azure 自动化，就像云中运行的 Runbook 作业一样。 就像在其他 Runbook 中一样，还可以启用详细流和进度流。
-
-如果 Runbook 没有成功完成且作业摘要显示的状态为“已暂停”，请参阅故障诊断文章：[混合 Runbook 辅助角色：Runbook 作业以暂停状态终止](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended)。
+如果 Runbook 没有成功完成且作业摘要显示的状态为“已暂停”，请参阅 [Runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
 
 ## <a name="next-steps"></a>后续步骤
 

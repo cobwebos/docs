@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 4ee8425bb5c3830b029b766aad464df0ffb15f41
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 8ef9d5a8e5212f6715769eecf4fde92a6d0b9d44
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801109"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060511"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -229,7 +229,13 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
 
-在配置容器设置时，`AZ_BATCH_NODE_ROOT_DIR` 下的所有目录（节点上 Azure Batch 目录的根）都以递归方式映射到容器，所有任务环境变量都会映射到容器，并在容器中执行任务命令行。
+Azure Batch 容器任务的命令行在容器中的工作目录中执行，该容器与为常规（非容器）任务的环境 Batch 设置非常相似：
+
+* 以递归方式位于 `AZ_BATCH_NODE_ROOT_DIR`（节点上的 Azure Batch 目录的根）下的所有目录都映射到该容器
+* 所有任务环境变量都映射到该容器
+* 应用程序工作目录的设置与常规任务的设置相同，因此可使用应用程序包和资源文件等功能
+
+由于 Batch 更改了容器中的默认工作目录，因此任务在不同于典型容器入口点的位置中运行（例如，默认情况下，在 Windows 容器上的 `c:\` 或 Linux 上的 `/`）。 确保由任务命令行或容器入口点指定绝对路径（如果尚未以此方式配置）。
 
 以下 Python 代码片段演示从 Docker 中心拉取的 Ubuntu 容器中运行的基本命令行。 容器运行选项是任务运行的 `docker create` 命令的附加参数。 此处，`--rm` 选项会在任务完成后删除容器。
 
@@ -240,7 +246,7 @@ task_container_settings = batch.models.TaskContainerSettings(
     container_run_options='--rm')
 task = batch.models.TaskAddParameter(
     id=task_id,
-    command_line='echo hello',
+    command_line='/bin/echo hello',
     container_settings=task_container_settings
 )
 
@@ -251,7 +257,7 @@ task = batch.models.TaskAddParameter(
 ```csharp
 // Simple container task command
 
-string cmdLine = "<my-command-line>";
+string cmdLine = "c:\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
     imageName: "tensorflow/tensorflow:latest-gpu",

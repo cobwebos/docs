@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b2f33a8dce441312e74688ca766ab65c028451d9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167880"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064293"
 ---
 # <a name="understanding-cost-management-reports"></a>了解成本管理报表
 
@@ -73,7 +73,7 @@ ms.locfileid: "32167880"
 
   示例可能包括：
      - 成本中心
-     - 系
+     - 部门
      - Application
      - 环境
      - 成本代码
@@ -136,8 +136,8 @@ ms.locfileid: "32167880"
     使用成本分摊报表中的分期付款，可查看非基于用量的服务费用或者一次性应付成本，并已根据服务整个生存期的不同时间段将成本均匀分摊。 一次性费用的示例可能包括：
     - 年度支持费用
     - 年度安全组件费用
-    - 保留实例购买费用
-    - 某些 Azure Marketplace 项目。
+    - 预留实例购买费用
+    - 某些 Azure 市场项目。
 
   在“分期付款”下，选择“摊销成本”或“实际成本”。
 
@@ -176,6 +176,10 @@ ms.locfileid: "32167880"
 
     使用操作可保存、导出或计划报表。
 
+15. **策略**
+
+    虽然没有具体显示，但某些报表中包含计划的成本计算策略。 在这些报表中，“合并”策略显示对当前实体（例如 Microsoft 注册方或 AWS 付款方）的所有帐户和订阅的建议。 “独立”策略显示对一个帐户或订阅（没有其他订阅存在的情况）的建议。 所选策略会因组织所使用的优化策略而有所不同。 成本预测以过去 30 天的使用情况为基础。
+
 ## <a name="save-and-schedule-reports"></a>保存和计划报表
 
 创建报表后，可以将其保存供将来使用。 已保存的报表可在“我的工具” > “我的报表”中找到。 如果对现有报表进行更改并将其保存，则该报表将保存为新版本。 或者，可以将其另存为新报表。
@@ -199,4 +203,5 @@ ms.locfileid: "32167880"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果尚未完成有关成本管理的第一本教程，请阅读[查看使用情况和成本](tutorial-review-usage.md)。
+- 在[使用成本管理报表](use-reports.md)处了解 Cloudyn 中包括的报表。
+- 了解如何使用报表创建[仪表板](dashboards.md)。

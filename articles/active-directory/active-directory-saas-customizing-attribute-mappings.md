@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/13/2018
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 565394664ab59ef5186503f708502eacc040321f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7dad9f3e688c43de3eabd430bf5618ad4632ca3d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295619"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034360"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
-Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果已启用了针对第三方 SaaS 应用程序的用户预配，则 Azure 门户以称作“属性映射”的配置形式控制其属性值。
+Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果已为第三方 SaaS 应用程序启用用户预配，Azure 门户将以属性映射的形式控制其属性值。
 
-在 Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配置的一组属性和属性映射。 除了“用户”以外，某些应用还可以管理其他类型的对象，例如“组”。 <br> 
+Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配置的一组属性和属性映射。 除了“用户”以外，某些应用还可以管理其他类型的对象，例如“组”。 <br> 
  可以根据业务需求自定义默认的属性映射。 这意味着，可以更改或删除现有属性映射或者创建新的属性映射。
  
 ## <a name="editing-user-attribute-mappings"></a>编辑用户属性映射
@@ -48,7 +48,7 @@ Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 
 
 
 ### <a name="understanding-attribute-mapping-types"></a>了解属性映射类型
-使用属性映射，可以控制如何在第三方 SaaS 应用程序中填充属性。 支持四种不同的映射类型：
+使用属性映射可以控制属性在第三方 SaaS 应用程序中的填充方式。 支持四种不同的映射类型：
 
 * **直接** – 目标属性由 Azure AD 中的链接对象的属性值填充。
 * **常量** - 目标属性使用已指定的特定字符串填充。
@@ -56,12 +56,12 @@ Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 
   有关详细信息，请参阅[在 Azure Active Directory 中编写属性映射的表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)。
 * **无** - 目标属性保持不变。 不过，如果目标属性曾经为空，则它由你指定的默认值填充。
 
-除了这四个基本属性映射类型之外，自定义属性映射还支持可选的默认值赋值概念。 默认值赋值确保当 Azure AD 中和目标对象中都没有值时使用某个值填充目标属性。 最常见的配置是将此项留空。
+除了这四个基本类型之外，自定义属性映射还支持可选的默认值赋值概念。 默认值赋值确保当 Azure AD 中和目标对象中都没有值时使用某个值填充目标属性。 最常见的配置是将此项留空。
 
 
 ### <a name="understanding-attribute-mapping-properties"></a>了解属性映射的属性
 
-在前面的部分中，已介绍了属性映射类型属性。
+前面的部分介绍了属性映射类型属性。
 除此属性外，属性映射还支持以下属性：
 
 - **源属性** - 来自源系统的用户属性（例如 Azure Active Directory）。
@@ -98,8 +98,7 @@ Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 
 * Salesforce
 * ServiceNow
 * Workday
-* Azure Active Directory
-* 本地 Active Directory（Workday 用户预配连接器随附）
+* Azure Active Directory（支持 [Azure AD 图形 API 默认属性](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)和自定义目录扩展）
 * 支持 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的应用（需要添加[核心架构](https://tools.ietf.org/html/rfc7643)中定义的属性）
 
 >[!NOTE]
@@ -151,7 +150,7 @@ Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 
 * [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [用于用户预配的作用域筛选器](active-directory-saas-scoping-filters.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](manage-apps/use-scim-to-provision-users-and-groups.md)
-* [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
+* [有关如何集成 SaaS 应用的教程列表](saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [5]: ./media/active-directory-saas-customizing-attribute-mappings/21.png

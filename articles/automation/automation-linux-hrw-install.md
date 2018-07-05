@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8507cf99ea22b24aa3026565cb7c4139e4c3742d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d37dbb85dc85ee8bae0447f18f771dc658de18e3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267859"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060232"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -109,41 +109,9 @@ Linux 混合 Runbook 辅助角色并非支持 Azure 自动化中的全套 Runboo
 * 图形
 * 图形 PowerShell 工作流
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshoot"></a>故障排除
 
-Linux 混合 Runbook 辅助角色依靠适用于 Linux 的 OMS 代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因。
-
-### <a name="the-oms-agent-for-linux-isnt-running"></a>适用于 Linux 的 OMS 代理未运行
-
-如果适用于 Linux 的 OMS 代理未运行，则 Linux 混合 Runbook 辅助角色无法与 Azure 自动化通信。 输入命令 `ps -ef | grep python`，验证代理是否正在运行。 
-
-应会看到如下所示的输出（使用 **nxautomation** 用户帐户的 Python 进程）。 如果未启用更新管理或 Azure 自动化解决方案，则以下任何进程都不会运行。
-
-```bash
-nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
-nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-```
-
-针对 Linux 混合 Runbook 辅助角色启动了以下进程。 这些进程全都位于 `/var/opt/microsoft/omsagent/state/automationworker/` 目录中。
-
-* **oms.conf**：这是辅助角色管理器进程。 它直接从 Desired State Configuration (DSC) 启动。
-
-* **worker.conf**：这是自动注册的混合辅助角色进程。 它由辅助角色管理器启动。 此进程由更新管理使用且对用户而言是透明的。 仅当已在计算机上启用了更新管理解决方案时，才会显示此进程。
-
-* **diy/worker.conf**：这是 DIY 混合辅助角色进程。 DIY 混合辅助角色进程用于执行混合 Runbook 辅助角色的用户 Runbook。 它与自动注册的混合辅助角色进程的唯一差别在于它使用不同的配置。 仅当已启用 Azure 自动化解决方案并且已注册 DIY Linux 混合辅助角色时，才会显示此进程。
-
-如果适用于 Linux 的 OMS 代理未运行，请运行以下命令启动该服务：`sudo /opt/microsoft/omsagent/bin/service_control restart`。
-
-### <a name="the-specified-class-doesnt-exist"></a>指定的类不存在
-
-如果 `/var/opt/microsoft/omsconfig/omsconfig.log` 中出现错误“指定的类不存在”，需要更新适用于 Linux 的 OMS 代理。 运行以下命令重新安装 OMS 代理：
-
-```bash
-wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
-```
-
-有关如何对更新管理问题进行故障排除的其他步骤，请参阅[更新管理：故障排除](automation-update-management.md#troubleshooting)。
+若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅 [Linux 混合 Runbook 辅助角色的故障排除](troubleshoot/hybrid-runbook-worker.md#linux)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（Beta 版本）从 Impala 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Impala 复制数据 | Microsoft Docs
 description: 了解如何使用数据工厂管道中的复制活动，将数据从 Impala 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 73987d03cb96fa421d193504fe6eaf6c3b5ddb18
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 366d0945bfac8546aa757648b6f797c2605a43ea
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618763"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045861"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Impala 复制数据
+# <a name="copy-data-from-impala-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Impala 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Impala 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用已正式发布的版本 1 的数据工厂，请参阅[版本 1 中的复制活动](v1/data-factory-data-movement-activities.md)。
-
 > [!IMPORTANT]
-> 此连接器目前处于 Beta 版本。 可以进行试用并提供反馈。 请勿在生产环境中使用该版本。
+> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -38,7 +35,7 @@ ms.locfileid: "34618763"
 
 ## <a name="get-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Impala 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -50,7 +47,7 @@ Impala 链接服务支持以下属性。
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Impala**。 | 是 |
 | host | Impala 服务器的 IP 地址或主机名（即，192.168.222.160）。  | 是 |
-| 端口 | Impala 服务器用来侦听客户端连接的 TCP 端口。 默认值为 21050。  | 否 |
+| port | Impala 服务器用来侦听客户端连接的 TCP 端口。 默认值为 21050。  | 否 |
 | authenticationType | 可使用的身份验证类型。 <br/>允许的值为：**Anonymous**、**SASLUsername** 和 **UsernameAndPassword**。 | 是 |
 | username | 用于访问 Impala 服务器的用户名。 使用 SASLUsername 时，默认值是匿名的。  | 否 |
 | password | 使用 UsernameAndPassword 时用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |

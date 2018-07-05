@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 93729646cf1a501b5502e2666ed68944fe474f72
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5cf4005ad50c9c75f22b2fa2719925afbe69f26
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615999"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37044970"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure 数据工厂中的数据集和链接服务 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-create-datasets.md)
-> * [版本 2 - 预览版](concepts-datasets-linked-services.md)
+> * [第 1 版](v1/data-factory-create-datasets.md)
+> * [当前版本](concepts-datasets-linked-services.md)
 
-本文介绍了数据集的涵义，采用 JSON 格式定义数据集的方式以及数据集在 Azure 数据工厂 V2 管道中的用法。 
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) - 版本 1 的数据工厂服务，请参阅[数据工厂 V1 中的数据集](v1/data-factory-create-datasets.md)。
+本文介绍了数据集的涵义，采用 JSON 格式定义数据集的方式以及数据集在 Azure 数据工厂管道中的用法。 
 
 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)了解相关概述。 
 
@@ -220,13 +217,13 @@ culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的�
 ## <a name="create-datasets"></a>创建数据集
 可以使用以下任一工具或 SDK 创建数据集：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户
 
-## <a name="v1-vs-v2-datasets"></a>V1 与V2 数据集
+## <a name="current-version-vs-version-1-datasets"></a>当前版本与版本 1 数据集的比较
 
-以下是数据工厂 v1 和 v2 数据集之间的一些区别： 
+以下是数据工厂和数据工厂版本 1 数据集之间的差异： 
 
-- v2 不支持外部属性。 它已被[触发器](concepts-pipeline-execution-triggers.md)取代。
-- V2 不支持策略和可用性属性。 管道的开始时间取决于[触发器](concepts-pipeline-execution-triggers.md)。
-- V2 不支持范围内的数据集（管道中定义的数据集）。 
+- 当前版本不支持外部属性。 它已被[触发器](concepts-pipeline-execution-triggers.md)取代。
+- 当前版本不支持策略和可用性属性。 管道的开始时间取决于[触发器](concepts-pipeline-execution-triggers.md)。
+- 当前版本不支持指定了作用域的数据集（管道中定义的数据集）。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下教程，了解使用下列某个工具或 SDK 创建管道和数据集的分步说明。 

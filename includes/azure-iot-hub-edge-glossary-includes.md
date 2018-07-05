@@ -41,10 +41,10 @@ IoT Edge 运行时用来实例化模块实例的 docker 映像。
 当两个 IoT Edge 部署以同一设备为目标时，应用优先级更高的部署。 如果两个部署优先级相同，则应用创建日期更晚的部署。 了解有关[优先级](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority)的详细信息。
 
 ## <a name="iot-edge-runtime"></a>IoT Edge 运行时
-IoT Edge 运行时包括 Microsoft 分发用于安装在 IoT Edge 设备上的所有内容。 它包括 Edge 代理、Edge 中心和 Edge CTL 工具。
+IoT Edge 运行时包括 Microsoft 分发用于安装在 IoT Edge 设备上的所有内容。 其中包括 Edge 代理、Edge 中心和 IoT Edge 安全守护程序。
 
 ## <a name="iot-edge-set-modules-to-a-single-device"></a>IoT Edge 将模块设置为单个设备
 在一个设备的模块孪生上复制 IoT Edge 清单内容的操作。 基础 API 是泛型“应用配置”，仅将 IoT Edge 清单作为输入。
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge 目标条件
-在 IoT Edge 部署中，目标条件是设备孪生标记上的任意布尔条件，以选择部署的目标设备（例如“tag.environment = prod”）。 持续评估目标条件，以包括满足需求的任何新设备或者删除不再满足要求的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息
+在 IoT Edge 部署中，目标条件是设备孪生标记上的任意布尔条件，以选择部署的目标设备（例如 tag.environment = prod）。持续评估目标条件，以包括满足需求的任何新设备或者删除不再满足要求的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fc4ce0a2ae33e99ecede371d9f17fb9a63851f64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 88e56f522545f9c1f38bf0d0fdbcebdc171c294b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622017"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046524"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-onprem-db2-connector.md)
-> * [版本 2 - 预览版](../connector-db2.md)
+> * [第 1 版](data-factory-onprem-db2-connector.md)
+> * [版本 2（当前版本）](../connector-db2.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 DB2 连接器](../connector-db2.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅 [V2 中的 DB2 连接器](../connector-db2.md)。
 
 
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据从本地 DB2 数据库复制到数据存储。 可将数据复制到[数据工厂数据移动活动](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文中列为受支持接收器的任何存储。 本主题基于“数据工厂”一文，其中概述了如何使用复制活动移动数据，并列出了受支持的数据存储组合。 
@@ -82,7 +82,7 @@ ms.locfileid: "34622017"
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| **类型** |必须将此属性设置为 **OnPremisesDb2**。 |是 |
+| type |必须将此属性设置为 **OnPremisesDb2**。 |是 |
 | **server** |DB2 服务器的名称。 |是 |
 | **database** |DB2 数据库的名称。 |是 |
 | **schema** |DB2 数据库中架构的名称。 此属性区分大小写。 |否 |
@@ -94,7 +94,7 @@ ms.locfileid: "34622017"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的各节和属性的列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 所有数据集类型（Azure SQL、Azure Blob 存储、Azure 表存储等）的数据集 JSON 的 **structure**、**availability** 和 **policy** 等节类似。
 
-每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |

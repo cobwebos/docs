@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 78cff3ba5bd2f8bc80f302a232e45864159ca88f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aca03452ff5655d3a7180009f42df14c9459a9ff
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641877"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061552"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
@@ -27,6 +27,10 @@ ms.locfileid: "34641877"
 * 群集一开始需要的节点类型数目
 * 每个节点类型的属性（大小、主节点、面向 Internet、VM 数量等）
 * 群集的可靠性和耐久性特征
+
+> [!NOTE]
+> 规划期间至少应该查看所有“不允许的”升级策略值。 这样可以确保正确设置值，并且可以减少不可更改的系统配置设置所导致的群集使用。 
+> 
 
 让我们简单地了解其中的每项。
 
@@ -46,6 +50,8 @@ ms.locfileid: "34641877"
 每个节点类型是不同的规模集，可以独立扩展或缩减，可以打开不同的端口集，并且有不同的容量指标。 若要详细了解节点类型和虚拟机规模集之间关系、如何 RDP 到任一实例、如何打开新的端口等，请参阅 [Service Fabric 群集节点类型](service-fabric-cluster-nodetypes.md)。
 
 Service Fabric 群集可以包含不止一个节点类型。 在这种情况下，群集包含一个主节点类型以及一个或多个非主节点类型。
+
+单个节点类型不能超过每个虚拟机规模集 100 个节点这一限制。 可能需要添加虚拟机规模集以实现目标规模，自动缩放不能自动添加虚拟机规模集。 就地将虚拟机规模集添加到实时群集是一项有挑战性的任务，通常这会导致用户使用创建时预配的相应节点类型预配新的群集。 
 
 ### <a name="primary-node-type"></a>主节点类型
 

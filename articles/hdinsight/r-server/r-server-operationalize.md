@@ -1,6 +1,6 @@
 ---
-title: 操作 HDInsight 上的 R Server - Azure | Microsoft Docs
-description: 了解如何操作 Azure HDInsight 中的 R Server。
+title: 操作 HDInsight 上的 ML Services - Azure | Microsoft Docs
+description: 了解如何操作 Azure HDInsight 中的 ML Services。
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -10,28 +10,31 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 6de6e78d9b4ad68d268b59cff18c75fbdd7be757
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: caefe30ff567a5e24e1f4c3a11309bd35e06190c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412835"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046133"
 ---
-# <a name="operationalize-r-server-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 R Server 群集
+# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
-使用 HDInsight 中的 R Server 群集完成数据建模后，便可以操作该模型进行预测。 本文提供如何执行此任务的说明。
+使用 HDInsight 中的 ML Services 群集完成数据建模后，可操作该模型进行预测。 本文提供如何执行此任务的说明。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **HDInsight 上的 R Server 群集**：有关说明，请参阅 [Get started with R Server on HDInsight](r-server-get-started.md)（HDInsight 上的 R Server 入门）。
+* **HDInsight 上的 ML Services 群集**：有关说明，请参阅 [HDInsight 上的 ML Services 入门](r-server-get-started.md)。
 
 * **安全外壳 (SSH) 客户端**：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-## <a name="operationalize-r-server-cluster-with-one-box-configuration"></a>使用单机配置操作 R Server 群集
+## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>使用单机配置操作 ML Services 群集
 
-1. 通过 SSH 登录到边缘节点。  
+> [!NOTE]
+> 以下步骤适用于 R Server 9.0 和 ML Server 9.1。 有关 ML Server 9.3，请参阅[使用管理工具管理操作化配置](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch)。
+
+1. 通过 SSH 登录到边缘节点。
 
         ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
@@ -39,7 +42,7 @@ ms.locfileid: "31412835"
 
 2. 请更改相关版本的目录并使用 sudo 运行 .net dll： 
 
-    - 对于 Microsoft R Server 9.1：
+    - 对于 Microsoft ML Server 9.1：
 
             cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
             sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
@@ -49,11 +52,11 @@ ms.locfileid: "31412835"
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 R Server 的操作化”。
+3. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”。
 
     ![单机操作](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-4. 现在将提供选项供你选择要操作 R Server 的方式。 输入 **A** 从提供的选项中选择第一项。
+4. 现在将提供选项供你选择要操作 ML Server 的方式。 输入 **A** 从提供的选项中选择第一项。
 
     ![单机操作](./media/r-server-operationalize/admin-util-one-box-2.png)
 
@@ -99,7 +102,7 @@ ms.locfileid: "31412835"
 
 在此阶段，操作化的配置已完成。 现在，可以使用 RClient 上的 `mrsdeploy` 包连接到边缘节点上的操作化，并开始使用其功能（如[远程执行](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely)和 [Web 服务](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)）。 可能需要通过 SSH 登录设置端口转发隧道，具体取决于群集是否设置在虚拟网络上。 以下部分介绍如何设置此隧道。
 
-### <a name="r-server-cluster-on-virtual-network"></a>虚拟网络上的 R Server 群集
+### <a name="ml-services-cluster-on-virtual-network"></a>虚拟网络上的 ML Services 群集
 
 请确保允许流量通过端口 12800 到达边缘节点。 这样，便可以使用边缘节点连接到操作化功能。
 
@@ -115,7 +118,7 @@ ms.locfileid: "31412835"
 
 如果 `remoteLogin()` 无法连接到边缘节点，但你可以使用 SSH 连接到边缘节点，则需验证是否已正确设置允许端口 12800 上的流量的规则。 如果仍遇到此问题，则解决方法是通过 SSH 设置端口转发隧道。 有关说明，请参阅以下部分：
 
-### <a name="r-server-cluster-not-set-up-on-virtual-network"></a>R Server 群集未设置在虚拟网络上
+### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>ML Services 群集未设置在虚拟网络上
 
 如果群集未设置在 vnet 上，或者如果通过 vnet 连接时遇到问题，可以使用 SSH 端口转发隧道：
 
@@ -139,7 +142,7 @@ SSH 会话处于活动状态后，来自计算机端口 12800 的流量将通过
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>步骤 1：解除工作节点的授权
 
-R Server 群集未通过 YARN 托管。 如果工作节点未解除授权，YARN 资源管理器将无法正常工作，因为它不知道服务器所占用的资源。 为了避免这种情况，建议在扩大计算节点前解除辅助角色节点的授权。
+ML Services 群集未通过 YARN 托管。 如果工作节点未解除授权，YARN 资源管理器将无法正常工作，因为它不知道服务器所占用的资源。 为了避免这种情况，建议在扩大计算节点前解除辅助角色节点的授权。
 
 请按照下列步骤解除工作节点的授权：
 
@@ -163,11 +166,11 @@ R Server 群集未通过 YARN 托管。 如果工作节点未解除授权，YARN
 
 1. 通过 SSH 登录到每个已解除授权的辅助角色节点。
 
-2. 使用所用 R Server 群集的相关 DLL 运行管理实用程序。 对于 R Server 9.1，运行以下命令：
+2. 使用所用 ML Services 群集的相关 DLL 运行管理实用程序。 对于 ML Server 9.1，运行以下命令：
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. 输入“1”，选择“配置 R Server 的操作化”选项。
+3. 输入“1”，选择“配置 ML Server 的操作化”选项。
 
 4. 输入“C”选择选项 `C. Compute node`。 这将在辅助角色节点上配置计算节点。
 
@@ -175,7 +178,7 @@ R Server 群集未通过 YARN 托管。 如果工作节点未解除授权，YARN
 
 ### <a name="step-3-add-compute-nodes-details-on-web-node"></a>步骤 3：在 Web 节点上添加计算节点详细信息
 
-将所有已解除授权的工作节点配置为运行计算节点后，回到边缘节点，在 R Server Web 节点的配置中添加已解除授权的工作节点的 IP 地址：
+将所有已解除授权的工作节点配置为运行计算节点后，回到边缘节点，在 ML Server Web 节点的配置中添加已解除授权的工作节点的 IP 地址：
 
 1. 通过 SSH 登录到边缘节点。
 
@@ -192,6 +195,6 @@ R Server 群集未通过 YARN 托管。 如果工作节点未解除授权，YARN
 
 ## <a name="next-steps"></a>后续步骤
 
-* [管理 HDInsight 上的 R Server 群集](r-server-hdinsight-manage.md)
-* [适用于 HDInsight 上的 R Server 群集的计算上下文选项](r-server-compute-contexts.md)
-* [适用于 HDInsight 上的 R Server 群集的 Azure 存储选项](r-server-storage.md)
+* [管理 HDInsight 上的 ML Services 群集](r-server-hdinsight-manage.md)
+* [适用于 HDInsight 上的 ML Services 群集的计算上下文选项](r-server-compute-contexts.md)
+* [适用于 HDInsight 上的 ML Services 群集的 Azure 存储选项](r-server-storage.md)

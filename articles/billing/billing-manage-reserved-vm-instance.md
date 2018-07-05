@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure 预留实例 - Azure 计费 | Microsoft Docs
-description: 了解如何为 Azure 预订 VM 实例更改订阅范围以及管理访问权限。
+title: 管理 Azure 虚拟机预留实例 | Microsoft Docs
+description: 了解如何为 Azure 虚拟机预留实例更改订阅范围以及管理访问权限。
 services: billing
 documentationcenter: ''
 author: vikramdesai01
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: vikdesai
-ms.openlocfilehash: fc473906be9c572e6d6549c85f9faa8fe7566b86
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ddb9d46dc2689b0dbcd8734e276916f7cd9d2728
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303056"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064296"
 ---
-# <a name="manage-reserved-instances"></a>管理保留实例
+# <a name="manage-reserved-instances-in-azure"></a>管理 Azure 中的预留实例
 
-购买 Azure 预留 VM 实例后，可能需要将预留实例应用到与购买过程中指定的订阅不同的订阅。 或者，如果匹配的虚拟机正在多个订阅中运行，可能需要将预留实例范围更改为共享。 若要最大限度地增加预留实例折扣，请确保购买的实例数量与已在运行的虚拟机的属性和数量匹配。 若要详细了解 Azure 预留实例，请参阅[通过为 Azure 虚拟机预付费节省资金](https://go.microsoft.com/fwlink/?linkid=862121)。
+购买 Azure 虚拟机预留实例后，可能需要将预留实例应用到与购买过程中指定的订阅不同的订阅。 或者，如果匹配的虚拟机正在多个订阅中运行，可能需要将预留实例范围更改为共享。 若要最大限度地增加预留实例折扣，请确保购买的实例数量与已在运行的虚拟机的属性和数量匹配。 若要了解有关 Azure 预留实例的详细信息，请参阅[通过为 Azure 虚拟机预付费节省资金](https://go.microsoft.com/fwlink/?linkid=862121)。
 
 ## <a name="change-the-scope-for-a-reserved-instance"></a>更改预留实例的范围
  预留实例折扣适用于与预留实例匹配并在预留实例范围内运行的虚拟机。 预留实例范围可以是计费上下文中的单个订阅或所有订阅。 如果将范围设置为单个订阅，预留实例将与所选订阅中正在运行的虚拟机匹配。 如果将范围设置为共享，Azure 会将预留实例与计费上下文内所有订阅中运行的虚拟机匹配。 计费上下文依赖于用于购买预留实例的订阅。 若要了解详细信息，请参阅[通过购买预留实例为 VM 预付费](https://go.microsoft.com/fwlink/?linkid=861721)。
@@ -30,7 +30,7 @@ ms.locfileid: "34303056"
 若要更新预留实例范围，请执行以下操作： 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有服务” > “预订”。
-3. 选择预留实例
+3. 选择预留实例。
 4. 选择“设置” > “配置”。
 5. 更改范围。 如果要从“共享”更改为单个范围，只能选择自己是其所有者的订阅。 只能选择与该预留实例相同的计费上下文中的订阅。 计费上下文取决于在购买预留实例时已选择的订阅。 范围仅适用于即用即付产品/服务 MS-AZR-0003P 订阅和 Enterprise 产品/服务 MS-AZR-0017P 订阅。 对于企业协议，开发/测试订阅不符合获取预留实例折扣的条件。
 
@@ -43,7 +43,7 @@ ms.locfileid: "34303056"
 1. 通过运行以下命令获取预留实例订单 ID：
 
     ```powershell
-    # Get the Reserved Instance orders you have access to
+    # Get the reserved instance orders you have access to
     Get-AzureRmReservationOrder
     ```
 2. 获取预留实例的详细信息：
@@ -54,7 +54,7 @@ ms.locfileid: "34303056"
 3. 将该预留实例拆分为两个实例并对这两个实例进行分配：
 
     ```powershell
-    # Split the Reserved Instance. The sum of the Reserved Instances, the quantity, must equal the total number of instances in the Reserved Instance that you're splitting.
+    # Split the reserved instance. The sum of the reserved instances, the quantity, must equal the total number of instances in the reserved instance that you're splitting.
     Split-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
     ```
 1. 可运行以下命令更新范围：
@@ -80,12 +80,12 @@ ms.locfileid: "34303056"
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure 预留实例的详细信息，请参阅以下文章：
 
-- [通过 Azure 预留实例节省虚拟机资金](billing-save-compute-costs-reservations.md)
-- [通过预留实例为虚拟机预付资金](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [什么是 Azure 虚拟机预留实例？](billing-save-compute-costs-reservations.md)
+- [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [了解如何应用预留实例折扣](billing-understand-vm-reservation-charges.md)
-- [了解即用即付订阅的预订实例使用情况](billing-understand-reserved-instance-usage.md)
-- [了解企业许可登记表的预订实例使用情况](billing-understand-reserved-instance-usage-ea.md)
-- [预订实例未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+- [了解即用即付订阅的预留实例使用情况](billing-understand-reserved-instance-usage.md)
+- [了解适用于企业合约的预留实例使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [预留实例未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

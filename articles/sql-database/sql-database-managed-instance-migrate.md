@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 8f666bc352dc1706da4812590f85adc7695e2f13
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1015600343886333655a921f2e0944ebb676f3e6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647656"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050120"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
@@ -78,11 +78,12 @@ SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第�
 
 - Azure 数据库迁移服务 - 在几乎不停机的情况下进行迁移
 - 通过 URL 进行本机还原 - 使用来自 SQL Server 的本机备份并需要一定的停机时间
-- 使用 BACPAC 文件进行迁移 - 使用来自 SQL Server 或 SQL 数据库的 BACPAC 文件并且需要一定的停机时间
 
 ### <a name="azure-database-migration-service"></a>Azure 数据库迁移服务
 
 [Azure 数据库迁移服务 (DMS)](../dms/dms-overview.md) 是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。 此服务简化了将现有第三方和 SQL Server 数据库移到 Azure 所要执行的任务。 公共预览版中的部署选项包括 Azure SQL 数据库、托管实例和 Azure 虚拟机中的 SQL Server。 DMS 是迁移企业工作负荷的建议方法。 
+
+如果在本地 SQL Server 上使用 SQL Server Integration Services (SSIS)，虽然 DMS 尚不支持迁移存储 SSIS 包的 SSIS 目录 (SSISDB)，但可在 Azure 数据工厂 (ADF) 中预配 Azure-SSIS 集成运行时，这将在 Azure SQL 数据库/托管实例中新建一个 SSISDB，随后即可将包重新部署到这个 SSISDB，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)。
 
 若要详细了解此方案和 DMS 的配置步骤，请参阅[使用 DMS 将本地数据库迁移到托管实例](../dms/tutorial-sql-server-to-managed-instance.md)。  
 
@@ -107,10 +108,6 @@ SQL 数据库托管实例是现有 SQL 数据库服务的扩展，提供了第�
 > 不支持还原系统数据库。 若要迁移实例级对象（存储在 master 或 msdb 数据库中），我们建议编写 T-SQL 脚本，并在目标实例上运行这些脚本。
 
 有关如何使用 SAS 凭据将数据库备份还原到托管实例的完整教程，请参阅[从备份还原到托管实例](sql-database-managed-instance-restore-from-backup-tutorial.md)。
-
-### <a name="migrate-using-bacpac-file"></a>使用 BACPAC 文件迁移
-
-可以在 BACPAC 文件中创建包含数据的原始数据库副本，将数据导入到 Azure SQL 数据库和托管实例。 请参阅[将 BACPAC 文件导入到新的 Azure SQL 数据库](sql-database-import.md)。
 
 ## <a name="monitor-applications"></a>监视应用程序
 

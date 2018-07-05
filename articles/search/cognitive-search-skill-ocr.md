@@ -4,8 +4,6 @@ description: 从 Azure 搜索扩充管道中的图像文件提取文本。
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 4ac86be25ebe7d12190cce290603ce83037a7b47
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 478afe81ed739b98487973eb092ee9cad0aa17fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640364"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055342"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
@@ -38,7 +36,7 @@ OCR 技能会从图像文件中提取文本。 支持的文件格式包括：
 | 参数名称     | 说明 |
 |--------------------|-------------|
 | detectOrientation | 启用图像方向自动检测。 <br/> 有效值：true / false。|
-|defaultLanguageCode |  输入文本的语言代码。 支持的语言包括：`ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`  如果语言代码未指定或为 null，会自动检测到语言。|
+|defaultLanguageCode | <p>  输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，会自动检测到语言。 </p> |
 | textExtractionAlgorithm | “打印”或“手写”。 “手写”文本识别 OCR 算法当前处于预览状态，仅支持英语。 |
 
 ## <a name="skill-inputs"></a>技能输入

@@ -13,18 +13,15 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ffe65260e73aa2daa4ab63840a00076000f8e6a8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5ff397e8b13d56b3b034854c507f8bef05008812
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264899"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054715"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SSIS 包。 
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 “执行 SSIS 包”活动在版本 1（正式版 (GA)）的数据工厂服务中不可用。 若要使用替代方法在版本 1 的数据工厂服务中运行 SSIS 包，请参阅[在版本 1 中使用存储过程活动运行 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,7 +56,7 @@ ms.locfileid: "36264899"
       - 选择“新建”，并输入资源组的名称。   
          
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-4. 选择“V2 (预览)”作为**版本**。
+4. 选择“V2”作为“版本”。
 5. 选择数据工厂的**位置**。 下拉列表中仅显示数据工厂支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（HDInsight 等）可以位于其他位置。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。
@@ -177,7 +174,7 @@ ms.locfileid: "36264899"
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
-* 目前，数据工厂版本 2 仅允许在“美国东部”、“美国东部 2”、“西欧”和“东南亚”区域创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 目前，数据工厂仅允许在“美国东部”、“美国东部 2”、“西欧”和“东南亚”区域创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 ### <a name="create-a-pipeline-with-an-ssis-activity"></a>创建包含 SSIS 活动的管道。 
 本步骤创建包含 SSIS 活动的管道。 该活动运行 SSIS 包。 

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a0f4a823d9a484dcae35a2741bf7904eb17a1502
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 534fbeaa8ba3c27c8d3f3bbcc59717d8bdb5c654
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622844"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050312"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-usql-activity.md)
-> * [版本 2 - 预览版](../transform-data-using-data-lake-analytics.md)
+> * [第 1 版](data-factory-usql-activity.md)
+> * [版本 2（当前版本）](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 U-SQL 活动](../transform-data-using-data-lake-analytics.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[V2 中的 U-SQL 活动](../transform-data-using-data-lake-analytics.md)。
 
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍在 **Azure Data Lake Analytics** 计算链接服务上运行 **U-SQL** 脚本的 **Data Lake Analytics U-SQL 活动**。 
 
@@ -49,7 +49,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| **类型** |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
+| type |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
 | **accountName** |Azure Data Lake Analytics 帐户名。 |是 |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |否 |
 | **subscriptionId** |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
