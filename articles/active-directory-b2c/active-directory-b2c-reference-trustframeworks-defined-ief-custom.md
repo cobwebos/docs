@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b75efe7464c32863781353549f73048b4e127ddf
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4eee1f2c9ca37227ca2cea0ef5e2ff25f6fad828
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710213"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443403"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>使用 Azure AD B2C 标识体验框架定义信任框架
 
@@ -49,7 +49,8 @@ TF 是开放标识交换 (OIX) 信任框架模型的关键，在这种模型中�
     - 参与者提供/所需的保证级别 (LOA)；例如，数字标识信息真实性的一组有序置信度评级。
     - 参与者提供/所需的保护级别 (LOP)；例如，相关社区中参与者处理的数字标识信息受保护程度的一组有序置信度评级。
 
-- **参与者提供/所需的数字标识信息的说明**。
+- 
+  **参与者提供/所需的数字标识信息的说明**。
 
 - **有关生成和使用数字标识信息的技术策略，因而这些策略也与度量 LOA 和 LOP 有关。这些书面策略通常包括以下策略类别：**
     - 标识证明策略，例如：个人标识信息的审查强度如何？

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 02a7533cf1c06142f564ed9fd6008a25be9fc603
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 98a4be02188f7e0462979792a6061d535a64a18d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034338"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095965"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli-20"></a>使用 Azure CLI 2.0 部署 Azure IoT Edge 模块
 
@@ -62,7 +62,7 @@ ms.locfileid: "37034338"
              "edgeAgent": {
                "type": "docker",
                "settings": {
-                 "image": "microsoft/azureiotedge-agent:1.0-preview",
+                 "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
                  "createOptions": "{}"
                }
              },
@@ -71,7 +71,7 @@ ms.locfileid: "37034338"
                "status": "running",
                "restartPolicy": "always",
                "settings": {
-                 "image": "microsoft/azureiotedge-hub:1.0-preview",
+                 "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
                  "createOptions": "{}"
                }
              }
@@ -83,7 +83,7 @@ ms.locfileid: "37034338"
                "status": "running",
                "restartPolicy": "always",
                "settings": {
-                 "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
+                 "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
                  "createOptions": "{}"
                }
              }

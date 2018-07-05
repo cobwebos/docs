@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4ea45bef5e50c41d07ddfeb5fcd6dba4d7247c61
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6a0f18a47bb50144d0a4d428617e0dc5c7509196
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593755"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442240"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
 本文介绍使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
@@ -138,7 +138,7 @@ Azure AD Connect 支持以*暂存模式*安装第二个服务器。 使用此模
 
 ## <a name="multiple-azure-ad-tenants"></a>多个 Azure AD 租户
 我们建议组织在 Azure AD 中部署单个租户。
-在打算使用多个 Azure AD 租户之前，请参阅 [Administrative units management in Azure AD](../active-directory-administrative-units-management.md)（Azure AD 中的管理单位管理）一文， 其中介绍了可以使用单个租户的常见方案。
+在打算使用多个 Azure AD 租户之前，请参阅 [Administrative units management in Azure AD](../users-groups-roles/directory-administrative-units.md)（Azure AD 中的管理单位管理）一文， 其中介绍了可以使用单个租户的常见方案。
 
 ![多个林和多个租户的拓扑](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
 

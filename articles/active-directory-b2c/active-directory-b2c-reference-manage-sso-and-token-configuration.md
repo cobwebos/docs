@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 43e392979c50d340a10575898edb25b119e1410b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 811fb8b2de59c9d324ab4acb8b0f51b4cec80aee
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712226"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441791"
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C：使用自定义策略管理 SSO 和令牌自定义
 与使用内置策略相比，使用自定义策略能够以相同的力度控制令牌、会话和单一登录 (SSO) 配置。  若要了解每项设置的作用，请参阅[此文档](#active-directory-b2c-token-session-sso)。

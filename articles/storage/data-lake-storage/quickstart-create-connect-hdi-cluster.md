@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 6707610fc3410eab6eb2985c7d8a0ef821354689
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9c037b35af19b94b6655cf7d1d45ba6b6182879c
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062073"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346578"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>快速入门：在 HDInsight 中设置群集
 
@@ -55,7 +55,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 
 * [资源组名称](#resource-group-name)
 * [群集类型和配置](#cluster-types) 
-* [群集登录和 SSH 用户名](#cluster-login-and-ssh-username)
+* [群集登录和 SSH 用户名](#cluster-login-and-ssh-user-name)
 * [位置](#location)
 
 > [!IMPORTANT]
@@ -117,7 +117,7 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 
 配置期间，为默认存储终结点指定 Data Lake Storage。 默认存储包含应用程序日志和系统日志。 （可选）可以选择指定群集可访问的其他已链接 Azure Data Lake Storage 帐户。 HDInsight 群集与从属存储帐户必须位于相同的 Azure 位置。
 
-![群集存储设置：与 HDFS 兼容的存储终结点](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage-TEMP.png)
+![群集存储设置：与 HDFS 兼容的存储终结点](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
 > [!IMPORTANT]
 > 确保“禁用 Data Lake Store 访问”。 此设置指的是旧版 Data Lake Store 功能，为了 Data Lake Storage 功能正常运行，需要禁用此设置。

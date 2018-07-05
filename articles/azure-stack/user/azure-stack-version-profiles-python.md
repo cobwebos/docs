@@ -1,6 +1,6 @@
 ---
-title: 使用 Python Azure 堆栈中的 API 版本配置文件 |Microsoft 文档
-description: 了解如何使用 Python Azure 堆栈中的 API 版本配置文件。
+title: 在 Azure Stack 中将 API 版本配置文件与 Python 配合使用 | Microsoft Docs
+description: 了解如何在 Azure Stack 中将 API 版本配置文件与 Python 配合使用。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,57 +10,92 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: a4fe62ba8c0732745326831b977e8975e1210436
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "34806830"
 ---
-# <a name="use-api-version-profiles-with-python-in-azure-stack"></a>使用 Python Azure 堆栈中的 API 版本配置文件
+# <a name="use-api-version-profiles-with-python-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Python 配合使用
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-## <a name="python-samples-for-azure-stack"></a>Azure 堆栈的 Python 示例 
+## <a name="python-and-api-version-profiles"></a>Python 与 API 版本配置文件
 
-以下代码示例可用于 Azure 堆栈中的虚拟机执行常见管理任务。
+Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Stack 和 Azure 公有云）用作目标。 可以使用 API 配置文件为混合云创建解决方案。 Python SDK 支持以下 API 配置文件：
 
-代码示例显示了到：
+1. **latest**  
+    该配置文件以 Azure 平台中所有服务提供程序的最新 API 版本为目标。
+2.  **2017-03-09-profile**  
+    **2017-03-09-profile**  
+    该配置文件以 Azure Stack 支持的资源提供程序 API 版本为目标。
+
+    有关 API 配置文件和 Azure Stack 的详细信息，请参阅[管理 Azure Stack 中的 API 版本配置文件](azure-stack-version-profiles.md)。
+
+## <a name="install-azure-python-sdk"></a>安装 Azure Python SDK
+
+1.  从[官方站点](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)安装 Git。
+2.  有关安装 Python SDK 的说明，请参阅[面向 Python 开发人员的 Azure](https://docs.microsoft.com/python/azure/python-sdk-azure-install?view=azure-python)。
+3.  如果不可用，请创建订阅，并保存订阅 ID 供以后使用。 有关创建订阅的说明，请参阅[在 Azure Stack 中创建套餐的订阅](../azure-stack-subscribe-plan-provision-vm.md)。 
+4.  创建服务主体并保存其 ID 和机密。 有关为 Azure Stack 创建服务主体的说明，请参阅[提供对 Azure Stack 的应用程序访问权限](../azure-stack-create-service-principals.md)。 
+5.  确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何将角色分配到服务主体的说明，请参阅[提供对 Azure Stack 的应用程序访问权限](../azure-stack-create-service-principals.md)。
+
+## <a name="prerequisites"></a>必备组件
+
+若要将 Python Azure SDK 与 Azure Stack 配合使用，必须提供以下值，然后使用环境变量来设置值。 请参阅表后针对操作系统的说明，了解如何设置环境变量。 
+
+| 值 | 环境变量 | 说明 |
+|---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
+| 租户 ID | AZURE_TENANT_ID | Azure Stack [租户 ID](../azure-stack-identity-overview.md) 的值。 |
+| 客户端 ID | AZURE_CLIENT_ID | 在本文档上一部分创建服务主体时保存的服务主体应用程序 ID。 |
+| 订阅 ID | AZURE_SUBSCRIPTION_ID | 
+  [订阅 ID](../azure-stack-plan-offer-quota-overview.md#subscriptions) 用于访问 Azure Stack 中的套餐。 |
+| 客户端机密 | AZURE_CLIENT_SECRET | 创建服务主体时保存的服务主体应用程序机密。 |
+| 资源管理器终结点 | ARM_ENDPOINT | 参阅 [Azure Stack 资源管理器终结点](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)。 |
+
+
+## <a name="python-samples-for-azure-stack"></a>适用于 Azure Stack 的 Python 示例 
+
+可以使用以下代码示例对 Azure Stack 中的虚拟机执行常见管理任务。
+
+代码示例展示了如何执行以下任务：
 
 - 创建虚拟机：
     - 创建 Linux 虚拟机
     - 创建 Windows 虚拟机
 - 更新虚拟机：
-    - 展开一个驱动器
+    - 扩展驱动器
     - 标记虚拟机
     - 附加数据磁盘
     - 分离数据磁盘
-- 运行虚拟机：
+- 操作虚拟机：
     - 启动虚拟机
     - 停止虚拟机
     - 重新启动虚拟机
 - 列出虚拟机
 - 删除虚拟机
 
-若要查看要执行这些操作的代码，请查看**run_example()** Python 脚本中的函数**Hybrid/unmanaged-disks/example.py** GitHub 存储库中[虚拟机-python 的管理](https://github.com/viananth/virtual-machines-python-manage/tree/8643ed4bec62aae6fdb81518f68d835452872f88)。
+若要查看执行这些操作的代码，请检查 GitHub 存储库 [virtual-machines-python-manage](https://github.com/viananth/virtual-machines-python-manage/tree/8643ed4bec62aae6fdb81518f68d835452872f88) 中的 Python 脚本 **Hybrid/unmanaged-disks/example.py** 中的 **run_example()** 函数。
 
-每个操作都清楚地标有注释和打印功能。
-这些示例并不一定在上面的列表显示的顺序。
+每个操作都清晰地带有注释和一个 print 函数。
+这些示例不一定按以上列表中显示的顺序执行。
 
 
-## <a name="run-the-python-sample"></a>运行的 Python 示例
+## <a name="run-the-python-sample"></a>运行 Python 示例
 
-1.  如果你还没有，[安装 Python](https://www.python.org/downloads/)。
+1.  如果还没有 Python，请[安装 Python](https://www.python.org/downloads/)。
 
-    此示例 （和 SDK） 是与 Python 2.7，3.4、 3.5 和 3.6 兼容。
+    此示例（和 SDK）与 Python 2.7、3.4、3.5 和 3.6 兼容。
 
-2.  Python 开发，一般建议是使用虚拟环境。 
+2.  对于 Python 开发，通常建议使用虚拟环境。 
     有关详细信息，请参阅 https://docs.python.org/3/tutorial/venv.html
     
-    安装和初始化 Python 3 上的"venv"模块的虚拟环境 (必须安装[virtualenv](https://pypi.python.org/pypi/virtualenv) for Python 2.7):
+    在 Python 3 上，请使用“venv”模块安装并初始化虚拟环境（对于 Python 2.7，必须安装 [virtualenv](https://pypi.python.org/pypi/virtualenv)）：
 
     ````bash
     python -m venv mytestenv # Might be "python3" or "py -3.6" depending on your Python installation
@@ -76,18 +111,16 @@ ms.lasthandoff: 05/01/2018
     git clone https://github.com/Azure-Samples/virtual-machines-python-manage.git
     ````
 
-4.  安装使用 pip 的依赖关系。
+4.  使用 pip 安装依赖项。
 
     ````bash
     cd virtual-machines-python-manage\Hybrid
     pip install -r requirements.txt
     ````
 
-5.  创建[服务主体](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals)要使用 Azure 堆栈。 请确保你的服务主体具有[参与者/所有者角色](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)对你的订阅。
+5.  创建要用于 Azure Stack 的[服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)。 确保该服务主体在你的订阅上具有[参与者/所有者角色](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)。
 
-6.  设置以下变量并将这些环境变量导出到当前的 shell。 
-
-`Note: provide an explanation of where these variables come from?`
+6.  设置以下变量并将这些环境变量导出到当前 shell 中。 
 
     ````bash
     export AZURE_TENANT_ID={your tenant id}
@@ -97,30 +130,32 @@ ms.lasthandoff: 05/01/2018
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  请注意，若要运行此示例，Ubuntu 16.04 LTS 和 windows Server 2012 R2 Datacenter 映像必须位于 Azure 堆栈市场位置。 这些可以是[从 Azure 下载](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-download-azure-marketplace-item)或[到平台映像存储库添加](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-add-vm-image)。
+7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack market place. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
 
-
-8. 运行示例。
+8. Run the sample.
 
     ```
     python unmanaged-disks\example.py
     ```
 
-## <a name="notes"></a>说明
+## Notes
 
-你可能想要尝试使用检索 VM 的 OS 磁盘`virtual_machine.storage_profile.os_disk`。
-在某些情况下，这可能预期的那样，但请注意它为您提供`OSDisk`对象。
-若要为更新 OS 磁盘的大小、`example.py`不，你无需`OSDisk`对象但`Disk`对象。
-`example.py` 获取`Disk`替换为以下对象：
+You may be tempted to try to retrieve a VM's OS disk by using
+`virtual_machine.storage_profile.os_disk`.
+In some cases, this may do what you want,
+but be aware that it gives you an `OSDisk` object.
+In order to update the OS Disk's size, as `example.py` does,
+you need not an `OSDisk` object but a `Disk` object.
+`example.py` gets the `Disk` object with the following:
 
 ```python
 os_disk_name = virtual_machine.storage_profile.os_disk.name
 os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 ```
 
-## <a name="next-steps"></a>后续步骤
+## Next steps
 
-- [Azure Python 开发中心](https://azure.microsoft.com/develop/python/)
-- [Azure 虚拟机文档](https://azure.microsoft.com/services/virtual-machines/)
-- [虚拟机的学习路径](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- 如果你没有 Microsoft Azure 订阅可以获取免费的试用帐户[此处](http://go.microsoft.com/fwlink/?LinkId=330212)。
+- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
+- [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
+- [Learning Path for Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).

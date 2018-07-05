@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 98eb104981051bd5e7440954470960977b38286d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 58108bd2851050e96df1b5453ce96856374b7163
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296964"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437029"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>使用 RBAC 管理外部用户的访问权限
 
@@ -102,7 +102,7 @@ Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如�
 
 ![虚拟机参与者内置角色](./media/role-assignments-external-users/11.png)
 
-使用此内置角色的此外部用户的正常行为是仅查看和管理虚拟机，以及部署时所需的仅限 Resource Manager 的相邻资源。 根据设计，这些受限角色只提供对在 Azure 门户中创建的相应资源的访问权限。
+使用此内置角色的此外部用户的正常行为是仅查看和管理虚拟机，以及部署时所需的仅限 Resource Manager 的相邻资源。 按照设计，这些有限的角色仅提供对在 Azure 门户中创建的其对应资源的访问权限。
 
 ![Azure 门户中的虚拟机参与者角色概览](./media/role-assignments-external-users/12.png)
 

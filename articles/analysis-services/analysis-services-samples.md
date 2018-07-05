@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 54913fa7940ac83f5de87ad9f35d6dcee07d29d0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6456663a1114ec00f2a071458c54067da53b52a7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598423"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443699"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services 示例
 使用以下示例资源来帮助了解和测试你的环境的 Analysis Services。
@@ -39,5 +39,5 @@ GitHub 上的这些示例数据库可用于创建和测试你自己的模型。
 
 ## <a name="next-steps"></a>后续步骤
 
-[Adventure Works 教程](/tutorials/aas-adventure-works-tutorial.md)   
+[Adventure Works 教程](tutorials/aas-adventure-works-tutorial.md)   
 [Azure 本地数据网关](analysis-services-gateway.md)  

@@ -2,18 +2,18 @@
 title: Azure Kubernetes 服务常见问题解答
 description: 提供有关 Azure Kubernetes 服务的某些常见问题的解答。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 6/25/2018
-ms.author: nepeters
-ms.openlocfilehash: 5155d0c85e5b3698b0a13d2d5256a235858f0e82
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.author: iainfou
+ms.openlocfilehash: ffd81835de82cc5a00b3f6705a7607a51bb3bfa0
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939757"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096445"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -58,7 +58,7 @@ AKS 支持以下[许可控制器][admission-controllers]：
 * ServiceAccount
 * DefaultStorageClass
 * DefaultTolerationSeconds
-* MutatingAdmissionWebhook 
+* MutatingAdmissionWebhook
 * ValidatingAdmissionWebhook
 * ResourceQuota
 * DenyEscalatingExec

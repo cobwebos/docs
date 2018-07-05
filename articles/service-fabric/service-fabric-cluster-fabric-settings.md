@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 84f8827a58d7f3c5dcc32943d2ba891b02c1e1ab
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062273"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083186"
 ---
-# <a name="description-of-the-different-upgrade-policies"></a>不同升级策略的说明
-
-- **动态** - 对动态配置的更改不会导致 Service Fabric 进程或服务主机进程的任何进程重启。 
-- **静态** - 对静态配置的更改将导致 Service Fabric 节点重启，以便使用该更改。 节点上的服务将重启。
-- **禁止** - 不能修改这些设置。 若要更改这些设置，需要销毁该群集并创建一个新群集。 
-
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
 本文档说明如何为 Service Fabric 群集自定义各种结构设置和结构升级策略。 可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板完成自定义。
 
 > [!NOTE]
 > 并非所有设备在门户中皆为可用。 如果不能通过门户使用下面列出的设置，请使用 Azure 资源管理器模板对其进行自定义。
 > 
+
+## <a name="description-of-the-different-upgrade-policies"></a>不同升级策略的说明
+
+- **动态** - 对动态配置的更改不会导致 Service Fabric 进程或服务主机进程的任何进程重启。 
+- **静态** - 对静态配置的更改将导致 Service Fabric 节点重启，以便使用该更改。 节点上的服务将重启。
+- **禁止** - 不能修改这些设置。 若要更改这些设置，需要销毁该群集并创建一个新群集。 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>使用资源管理器模板自定义群集设置
 下面的步骤演示如何将新设置 *MaxDiskQuotaInMB* 添加到“诊断”部分。

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/21/2018
+ms.date: 07/02/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 86b57a82573760ac73975e851b2bb4caf769845b
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 1e7eb3a0098dc27b6f3c47d8d4848b2b9b5f7e61
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308554"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447534"
 ---
 # <a name="what-is-baseline-protection---preview"></a>何为基线保护？ - 预览版  
 
@@ -51,7 +51,7 @@ ms.locfileid: "36308554"
 
 ![Azure Active Directory](./media/active-directory-conditional-access-baseline-protection/01.png)
 
-此基线策略提供了用来排除用户和组的选项。 你可能需要排除一个[紧急情况下的访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md)以确保你未锁定在租户之外。
+此基线策略提供了用来排除用户和组的选项。 你可能需要排除一个[紧急情况下的访问管理帐户](users-groups-roles/directory-emergency-access.md)以确保你未锁定在租户之外。
 
 
 ## <a name="enable-a-baseline-policy"></a>启用基线策略 
@@ -67,15 +67,15 @@ ms.locfileid: "36308554"
 
     ![Azure Active Directory](./media/active-directory-conditional-access-baseline-protection/02.png)
 
-3. 在“Azure Active Directory”页的“管理”部分，单击“条件性访问”。
+3. 在“Azure Active Directory”页的“安全性”部分中，单击“条件性访问”。
 
-    ![条件性访问](./media/active-directory-conditional-access-baseline-protection/03.png)
+    ![条件性访问](./media/active-directory-conditional-access-baseline-protection/05.png)
 
 4. 在策略列表中，单击以 **Baseline policy:** 开头的某个策略。 
 
-5. 若要该启用策略，请单击“立即使用策略”。
+5. 若要启用策略，请单击“立即使用策略”。
 
-6. 单击“保存”。 
+6. 单击“ **保存**”。 
  
 
 

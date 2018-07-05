@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5377e4b56bca09a1785d14bfe4c32de01e6db7d3
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fe5722e8d5a0a8a5bf172577777ccb899fb7b94d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711359"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443420"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-google-accounts"></a>Azure Active Directory B2C：向用户提供使用 Google+ 帐户的注册和登录功能
 ## <a name="create-a-google-application"></a>创建 Google+ 应用程序
@@ -40,7 +40,7 @@ ms.locfileid: "34711359"
 7. 在“应用程序类型”下，选择“Web 应用程序”。
    
     ![Google+ - OAuth 许可屏幕](./media/active-directory-b2c-setup-goog-app/google-web-app.png)
-8. 提供应用程序的**名称**，在**已授权 JavaScript 来源**字段中输入 `https://login.microsoftonline.com`，并在**已授权重定向 URI** 字段输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com）。 **{tenant}** 值区分大小写。 单击“创建”。
+8. 提供应用程序的**名称**，在**已授权 JavaScript 来源**字段中输入 `https://login.microsoftonline.com`，并在**已授权重定向 URI** 字段输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 {tenant} 替换为租户名称（例如 contosob2c.onmicrosoft.com）。 **{tenant}** 值区分大小写。 单击“创建”。
    
     ![Google+ - 创建客户端 ID](./media/active-directory-b2c-setup-goog-app/google-create-client-id.png)
 9. 复制“客户端 ID”和“客户端密码”的值。 将 Google+ 配置为租户中的标识提供者时需要这两个值。 **客户端密码**是一个重要的安全凭据。
@@ -50,8 +50,8 @@ ms.locfileid: "34711359"
 ## <a name="configure-google-as-an-identity-provider-in-your-tenant"></a>将 Google+ 配置为租户中的标识提供者
 1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 在 B2C 功能边栏选项卡上，单击“标识提供者”。
-3. 单击边栏选项卡顶部的“ **+添加** ”。
-4. 为标识提供者配置提供一个友好**名称**。 例如，输入“G+”。
+3. 单击边栏选项卡顶部的“+ 添加”。
+4. 为标识提供者配置提供一个友好“名称”。 例如，输入“G+”。
 5. 单击“标识提供者类型”，选择“Google”，并单击“确定”。
 6. 单击“设置此标识提供者”，并输入之前创建的 Google+ 应用程序的客户端 ID 和客户端密码。
 7. 单击“确定”，并单击“创建”以保存 Google+ 配置。

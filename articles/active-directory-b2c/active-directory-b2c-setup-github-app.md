@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 16c7f34c00bbd5bd0c2be53df2b781a1852b84ff
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3754a169b301bac97f3e12d10b754222e3cf325d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712202"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443335"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-github-accounts"></a>Azure Active Directory B2C：向使用者提供使用 GitHub 帐户的注册和登录功能
 
@@ -44,8 +44,8 @@ ms.locfileid: "34712202"
 
 1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 1. 在 B2C 功能边栏选项卡上，单击“标识提供者”。
-1. 单击边栏选项卡顶部的“ **+添加** ”。
-1. 为标识提供者配置提供一个友好**名称**。 例如，输入“GitHub”。
+1. 单击边栏选项卡顶部的“+ 添加”。
+1. 为标识提供者配置提供一个友好“名称”。 例如，输入“GitHub”。
 1. 单击“标识提供者类型”，选择“GitHub”，并单击“确定”。
 1. 单击“设置此标识提供者”，并输入之前复制的 GitHub OAuth 应用程序的客户端 ID 和客户端密码。
 1. 单击“确定”，并单击“创建”以保存 GitHub 配置。

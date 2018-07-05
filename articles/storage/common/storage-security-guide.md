@@ -3,17 +3,17 @@ title: Azure 存储安全指南 | Microsoft Docs
 description: 详细介绍保护 Azure 存储的多种方法，包括但不限于 RBAC、存储服务加密、客户端加密、SMB 3.0 和 Azure 磁盘加密。
 services: storage
 author: craigshoemaker
-manager: jeconnoc
+manager: twooley
 ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: ba008a86f76a526967bb9dab6ba37043a85f5cf3
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 3c45375a46ee7896509f061828720bcf465aded7
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304128"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342464"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
@@ -154,7 +154,6 @@ Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助�
 * [Operations on storage accounts](https://msdn.microsoft.com/library/ee460790.aspx)（存储帐户的相关操作）
 
   “存储服务管理器 REST API 参考”主题中的这篇文章提供了特定文章的链接，可据此了解如何使用 REST API 检索和重新生成存储帐户密钥。 注意：此文适用于经典存储帐户。
-* [Say goodbye to key management – manage access to Azure Storage data using Azure AD](http://www.dushyantgill.com/blog/2015/04/26/say-goodbye-to-key-management-manage-access-to-azure-storage-data-using-azure-ad/)（告别密钥管理 – 使用 Azure AD 管理对 Azure 存储数据的访问）
 
   本文介绍如何使用 Active Directory 来控制 Azure 密钥保管库中 Azure 存储密钥的访问。 此外，说明如何使用 Azure 自动化作业每小时重新生成密钥。
 

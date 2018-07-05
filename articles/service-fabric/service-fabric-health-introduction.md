@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: ed1a307cb2a2613fc7701392cd7b408715f10910
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fc0bb56e85c2a9cf7a458b0f6d97887d392ee65f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207292"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114310"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
 Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富、灵活且可扩展的运行状况评估和报告。 使用该模型可对群集及其中运行的服务的状态进行近乎实时的监视。 可以轻松获取运行状况信息，并在潜在问题级联和造成大规模停机之前予以更正。 在典型的模型中，服务基于其本地视图发送报告，并聚合信息，以提供整体的群集级别视图。
@@ -117,7 +117,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 [应用程序运行状况策略](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy)说明如何对应用程序及其子项进行事件和子项状态聚合评估。 它可以在应用程序清单（应用程序包中的 **ApplicationManifest.xml**）中定义。 如果未指定任何策略，则当运行状况报告或子项处于“警告”或“错误”运行状况状态时，Service Fabric 会假设实体不正常。
 可配置的策略是：
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx)。 指定是否在运行状况评估期间将“警告”运行状况报告视为错误。 默认值：false。
+* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 指定是否在运行状况评估期间将“警告”运行状况报告视为错误。 默认值：false。
 * [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications)。 指定应用程序被视为“错误”之前可以保留不正常的已部署应用程序的最大容忍百分比。 此百分比是将不正常的已部署应用程序数目除以目前在群集中部署的应用程序节点数目计算得出的。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 默认百分比：零。
 * [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy)。 指定默认服务类型运行状况策略，该策略会替换应用程序中所有服务类型的默认运行状况策略。
 * [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap)。 针对每个服务类型提供服务运行状况策略的映射。 这些策略取代每个指定服务类型的默认服务类型运行状况策略。 例如，如果某个应用程序包含无状态网关服务类型和有状态引擎服务类型，可以针对这些类型的评估配置不同的运行状况策略。 针对每个服务类型指定策略时，可以更精细地控制服务的运行状况。

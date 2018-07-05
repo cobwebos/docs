@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: efe3e31a1a92e21f2c3a3461deba248d2a8c97fa
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 9ec396e8a1ad36e85e1291995345ca1de24668d0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029435"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128054"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -237,4 +237,4 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 这对物理计算
       ```
 
 ## <a name="next-steps"></a>后续步骤
-认为在 IoT Edge 平台中发现了 bug？ 请[提交问题](https://github.com/Azure/iot-edge/issues)以便我们可以持续改进。 
+认为在 IoT Edge 平台中发现了 bug？ 请[提交问题](https://github.com/Azure/iotedge/issues)以便我们可以持续改进。 

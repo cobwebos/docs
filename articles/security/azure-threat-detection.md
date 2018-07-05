@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: eb1bf9f6465a8a94fd2de75f581817887c333289
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0813e0f6b51c747d033ca2c44aed21cf94c32000
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895312"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113021"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 ## <a name="introduction"></a>介绍
@@ -403,7 +403,7 @@ Cloud App Security 通过以下方式将可见性集成到云端
 
 从这些源收集数据时，Cloud App Security 会对数据运行复杂的分析。 它会立即向你发出有关异常活动的警报，帮助你获得对云环境的深度了解。 可以在 Cloud App Security 中配置策略，并使用它来保护云环境中的所有内容。
 
-## <a name="third-party-atd-capabilities-through-azure-marketplace"></a>Azure Marketplace 提供的第三方 ATD 功能
+## <a name="third-party-atd-capabilities-through-azure-marketplace"></a>Azure 市场提供的第三方 ATD 功能
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 
@@ -420,7 +420,7 @@ Web 应用程序防火墙会检查入站 Web 流量，并阻止 SQL 注入、跨
 
 以下是 Azure 应用商店中提供的 Web 应用程序防火墙的示例：
 
-[Barracuda Web 应用程序防火墙、Brocade 虚拟 Web 应用程序防火墙 (Brocade vWAF)、Imperva SecureSphere 和 ThreatSTOP IP 防火墙。](https://azure.microsoft.com/marketplace/partners/brocade_communications/brocade-virtual-web-application-firewall-templatevtmcluster/)
+[Barracuda Web 应用程序防火墙、Brocade 虚拟 Web 应用程序防火墙 (Brocade vWAF)、Imperva SecureSphere 和 ThreatSTOP IP 防火墙。](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf)
 
 ## <a name="next-steps"></a>后续步骤
 

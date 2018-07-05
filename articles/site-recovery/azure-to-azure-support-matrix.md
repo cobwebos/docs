@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: sujayt
-ms.openlocfilehash: 7f0011172185f13f51bcea8061b36012aa5da33b
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 125d521d840d2b06687d818ae7b31a2610886dfe
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36324212"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342525"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
@@ -170,8 +170,8 @@ Azure 库映像 — 由第三方发布 | 支持 | 只要 VM 在 Site Recovery �
 磁盘上的数据更改率 | 高级存储的每个磁盘上的数据更改率为 10 MBps，而标准存储的每个磁盘上的数据更改率为 2 MBps | 如果磁盘上的平均数据更改率连续超过 10 MBps（针对高级存储）和 2 MBps（针对标准存储），复制将不同步。 但是，如果只是偶尔出现数据迸发，数据更改率间或高于 10 MBps（针对高级存储）和 2 MBps（针对标准存储），但随后又降下来，则复制可同步。 在此情况下，可能会看到恢复点稍有延迟。
 标准存储帐户上的磁盘 | 支持 |
 高级存储帐户上的磁盘 | 支持 | 如果 VM 将磁盘分散在高级和标准存储帐户上，则可以为每个磁盘选择不同的目标存储帐户，以确保在目标区域中具有相同的存储配置
-标准托管磁盘 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 目前不支持政府云。  |  
-高级托管磁盘 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 目前不支持政府云。 |
+标准托管磁盘 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 |  
+高级托管磁盘 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 |
 存储空间 | 支持 |         
 静态加密 (SSE) | 支持 | SSE 是存储帐户的默认设置。   
 Azure 磁盘加密 (ADE) | 不支持 |

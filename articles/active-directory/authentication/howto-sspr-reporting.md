@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: efdef681dd94cdb97d84de657668c49022b72d95
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751490"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444236"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -26,7 +26,7 @@ ms.locfileid: "36751490"
 [Azure 门户] (https://portal.azure.com/): 中提供的报表可解答以下问题：
 
 > [!NOTE]
-> 必须是[全局管理员](../active-directory-assign-admin-roles-azure-portal.md)，并且必须选择代表组织收集这些数据。 要做出此选择，必须至少访问一次“报告”选项卡或审核日志。 在此之前，不会为组织收集数据。
+> 必须是[全局管理员](../users-groups-roles/directory-assign-admin-roles.md)，并且必须选择代表组织收集这些数据。 要做出此选择，必须至少访问一次“报告”选项卡或审核日志。 在此之前，不会为组织收集数据。
 >
 
 * 有多少人已注册了密码重置？
