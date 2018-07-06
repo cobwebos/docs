@@ -2,23 +2,23 @@
 title: Azure 上的 Kubernetes 教程 - 准备应用
 description: AKS 教程 - 准备应用
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 50c302ddc7bad9cd2de666c1b99d1fbc6d5a62a8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3e500ec0c7acbf8d8e10756c944516cd7e589610
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934108"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100929"
 ---
 # <a name="tutorial-prepare-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
-在本教程的第 1 部分（共 8 部分）中，将准备一个要在 Kubernetes 中使用的多容器应用程序。 已完成的步骤包括：
+在本教程的第 1 部分（共 7 部分），将准备一个要在 Kubernetes 中使用的多容器应用程序。 已完成的步骤包括：
 
 > [!div class="checklist"]
 > * 克隆 GitHub 中的应用程序源
@@ -98,7 +98,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>在本地测试应用程序
 
-浏览到 http://localhost:8080查看正在运行的应用程序。
+浏览到 http://localhost:8080 查看正在运行的应用程序。
 
 ![Azure 上的 Kubernetes 群集映像](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 

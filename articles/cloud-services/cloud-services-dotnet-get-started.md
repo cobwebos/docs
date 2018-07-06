@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 16d35a6b36f4dd85db430e05abdff898affbfd67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7860af5dea41ce00739b592c5409fe5a1a05383b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160015"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342287"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
@@ -291,7 +291,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
     ![设置步骤](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    本教程可以使用“高级”选项卡中的默认设置  。 有关高级选项卡的信息，请参阅 [发布 Azure 应用程序向导](http://msdn.microsoft.com/library/hh535756.aspx)。
+    本教程可以使用“高级”选项卡中的默认设置  。 有关高级选项卡的信息，请参阅 [发布 Azure 应用程序向导](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard)。
 4. 在“摘要”步骤中，单击“发布”。
 
     ![摘要步骤](./media/cloud-services-dotnet-get-started/pubsummary.png)

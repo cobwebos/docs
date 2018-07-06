@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ad2895a457a20632823260f2429ac95fad82089c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060189"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081381"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署 - 预览版
 
@@ -128,7 +128,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
    如果以前在此设备上部署了 tempSensor 模块，则它可以自动填充数据。 如果该模块不存在，请通过以下步骤来添加该模块：
 
    1. 单击“添加”，然后选择“IoT Edge 模块”。
-   2. 键入 **tempsensor** 作为名称。
+   2. 键入 **tempSensor** 作为名称。
    3. 输入 **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** 作为映像 URI。 
    4. 将其他设置保留不变。
    5. 选择“保存”。

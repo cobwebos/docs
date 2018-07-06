@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-ms.openlocfilehash: 991feaa61a73d5ac96159fbd6a7dd1fdd420fd3c
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: e2571a6854d2c3de2425547b69c5435286182ef7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291406"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448146"
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限
 
@@ -50,8 +50,8 @@ Directory | 读取所有公司信息<br>读取所有域<br>读取所有合作伙
 
 权限 | 设置说明
 ---------- | ------------
-能够创建安全组 | 将此选项设置为“否”可阻止用户创建安全组。 全局管理员和用户帐户管理员仍可创建安全组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../active-directory-accessmanagement-groups-settings-cmdlets.md)。
-能够创建 Office 365 组 | 将此选项设置为“否”可阻止用户创建 Office 365 组。 将此选项设置为“某些”可让选定的一组用户创建 Office 365 组。 全局管理员和用户帐户管理员仍可创建 Office 365 组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../active-directory-accessmanagement-groups-settings-cmdlets.md)。
+能够创建安全组 | 将此选项设置为“否”可阻止用户创建安全组。 全局管理员和用户帐户管理员仍可创建安全组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
+能够创建 Office 365 组 | 将此选项设置为“否”可阻止用户创建 Office 365 组。 将此选项设置为“某些”可让选定的一组用户创建 Office 365 组。 全局管理员和用户帐户管理员仍可创建 Office 365 组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
 限制访问 Azure AD 管理门户 | 将此选项设置为“否”可阻止用户访问 Azure Active Directory 门户。
 能够读取其他用户 | 此设置仅可在 PowerShell 中使用。 将此设置为 $false 可阻止所有非管理员用户从目录读取用户信息。 这不会阻止读取其他 Microsoft 服务（如 Exchange Online）中的用户信息。 此设置适用于特殊情况，因此不建议将此设置为 $false。
 

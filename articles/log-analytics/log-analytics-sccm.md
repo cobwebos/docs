@@ -3,7 +3,7 @@ title: 将配置管理器连接到 Log Analytics | Microsoft Docs
 description: 本文介绍将配置管理器连接到 Log Analytics 以及开始分析数据的步骤。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 5ff0687fe99f0853e29e5f0d814a8555c367027c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: na
+ms.openlocfilehash: 6bb59e4b63933500bc8571dca2422eec6c3456ee
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283990"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129751"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可将 System Center Configuration Manager 环境连接到 Azure Log Analytics 以同步设备集合数据，并在 Log Analytics 和 Azure 自动化中引用这些集合。  
@@ -59,7 +60,7 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 查看[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](log-analytics-agent-windows.md)一文，了解在托管 Configuration Manager 服务连接点站点系统角色的计算机上安装 Microsoft Monitoring Agent 的可用方法。  
 
 ## <a name="add-an-oms-connection-to-configuration-manager"></a>将 OMS 连接添加到配置管理器
-若要添加 OMS 连接，配置管理器环境必须有针对联机模式配置的[服务连接点](https://technet.microsoft.com/library/mt627781.aspx)。
+若要添加 OMS 连接，配置管理器环境必须有针对联机模式配置的服务连接点[](https://technet.microsoft.com/library/mt627781.aspx)。
 
 1. 在配置管理器的“管理”工作区中，选择“OMS 连接器”。 这会打开**添加 OMS 连接向导**。 选择“**下一步**”。
 2. 在“常规”屏幕上，确认已完成以下操作，并且具有每个项的详细信息，然后选择“下一步”。

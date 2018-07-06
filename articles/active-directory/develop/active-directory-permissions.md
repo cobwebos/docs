@@ -17,12 +17,12 @@ ms.date: 06/25/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 786757293e2ad2c47f80745f6bdd9bb5a65add80
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3b0fbbe466f51a6216716d274f238497a8a79294
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936949"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441628"
 ---
 # <a name="permissions-in-azure-active-directory"></a>Azure Active Directory 中的权限
 
@@ -36,7 +36,7 @@ Azure AD 定义两种权限：
 
 有效权限是应用在对 API 发出请求时拥有的权限。 
 
-* 对于委托的权限，应用的有效权限是（通过许可）授予应用的委托权限与当前登录用户的特权的最低特权交集。 应用的特权永远不会超过登录用户的特权。 在组织内部，可以通过策略或者一个或多个管理员角色的成员身份来确定登录用户的特权。 有关管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](/azure/active-directory/active-directory-assign-admin-roles-azure-portal.md)。
+* 对于委托的权限，应用的有效权限是（通过许可）授予应用的委托权限与当前登录用户的特权的最低特权交集。 应用的特权永远不会超过登录用户的特权。 在组织内部，可以通过策略或者一个或多个管理员角色的成员身份来确定登录用户的特权。 有关管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。
     例如，假设为应用授予了 Microsoft Graph 中的 `User.ReadWrite.All` 委托权限。 此权限在名义上会授予应用读取和更新组织中每个用户的个人资料的权限。 如果登录用户是全局管理员，则应用可以更新组织中每个用户的个人资料。 但是，如果登录用户不是充当管理员角色，则应用只能更新登录用户的个人资料。 它无法更新组织中其他用户的个人资料，因为该应用有权代表的用户没有这些特权。
 * 对于应用程序权限，应用的有效权限是权限默示的完整特权级别。 例如，拥有 `User.ReadWrite.All` 应用程序权限的应用可以更新组织中每个用户的个人资料。 
 

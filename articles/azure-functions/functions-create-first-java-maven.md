@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/15/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f9b8046e0fb730f55dbdacf567869ae88df2a524
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: df3c64938cfc5835fd9eb2f0bbed0135b611347f
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600589"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341515"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>通过 Java 和 Maven 创建你的第一个函数（预览版）
 
@@ -114,7 +114,7 @@ public class Function {
 将目录更改为新创建的项目文件夹，并通过 Maven 生成和运行此函数：
 
 ```
-cd fabrikam-function
+cd fabrikam-functions
 mvn clean package 
 mvn azure-functions:run
 ```
@@ -172,7 +172,7 @@ mvn azure-functions:deploy
 使用 `cURL` 测试在 Azure 上运行的函数应用。 需更改以下示例中的 URL，使之与前一步骤中你自己的函数应用的已部署 URL 匹配。
 
 ```
-curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
+curl -w '\n' https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
 ```Output

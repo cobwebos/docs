@@ -3,7 +3,7 @@ title: Azure CLI 脚本示例 - 使用 NGINX 创建 Linux VM | Microsoft 文档
 description: Azure CLI 脚本示例 - 使用 NGINX 创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3f222a11c19c9a2ee1e6c5c245d0823f3269cddc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b3d3f0c50bdc4ca6295158c360659226c25d8b52
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654328"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096622"
 ---
 # <a name="create-a-vm-with-nginx"></a>使用 NGINX 创建 VM
 
@@ -37,7 +37,7 @@ ms.locfileid: "34654328"
 
 ## <a name="custom-script-extension"></a>自定义脚本扩展
 
-自定义脚本扩展将此脚本复制到虚拟机上。 然后运行该脚本，安装和配置 NGINX Web 服务器。 
+自定义脚本扩展将此脚本复制到虚拟机上。 然后运行该脚本，安装和配置 NGINX Web 服务器。
 
 ```bash
 #!/bin/bash
@@ -49,11 +49,11 @@ apt-get -y update
 apt-get -y install nginx
 ```
 
-## <a name="clean-up-deployment"></a>清理部署 
+## <a name="clean-up-deployment"></a>清理部署
 
 运行以下命令来删除资源组、VM 和所有相关资源。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f8f626143e74d65fa9d4e37e1e2bfda37501f102
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49fd4a9407bd46963037b0f7078cfe257d841627
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162766"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100256"
 ---
 # <a name="run-applications-in-kubernetes"></a>在 Kubernetes 中运行应用程序
 
@@ -67,7 +67,7 @@ containers:
 
 ## <a name="deploy-application"></a>部署应用程序
 
-使用 [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) 命令运行该应用程序。 此命令分析清单文件并创建定义的 Kubernetes 对象。
+使用 [kubectl create](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) 命令运行该应用程序。 此命令分析清单文件并创建定义的 Kubernetes 对象。
 
 ```azurecli-interactive
 kubectl create -f azure-vote-all-in-one-redis.yml

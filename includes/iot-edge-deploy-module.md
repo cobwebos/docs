@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 9c562f1ce938e5f5d9371cbccf032c0eb1d67125
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3e7fcde204966e5a6a8154ab307807652cfa0419
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055024"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37086205"
 ---
 Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edge 设备。 IoT Edge 模块是以容器形式实现的可执行包。 在此部分中，将为模拟设备部署用于生成遥测数据的模块。 
 
@@ -21,7 +21,7 @@ Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edg
 1. 转到“IoT Edge”，然后选择 IoT Edge 设备。
 1. 选择“设置模块”。
 1. 在页面的“部署模块”部分中，单击“添加”，然后选择“IoT Edge 模块”。
-1. 在“名称”字段中，输入 `tempsensor`。 
+1. 在“名称”字段中，输入 `tempSensor`。 
 1. 在“映像 URI”字段中，输入 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`。 
 1. 将其他设置保留不变，然后选择“保存”。
 

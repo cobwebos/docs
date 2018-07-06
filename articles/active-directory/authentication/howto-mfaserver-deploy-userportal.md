@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 38f75b8fc48f6fdcafd4c6ae25ec0f52641b2c05
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7254e8d1b5a525c3ab06230837bd368e17911dbe
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869618"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100273"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -30,7 +30,7 @@ ms.locfileid: "33869618"
 ![MFA 用户门户](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
-> 用户门户仅适用于多重身份验证服务器。 如果在云中使用多重身份验证，则让用户参阅[设置双重验证帐户](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)或[管理双重验证设置](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md)。
+> 用户门户仅适用于多重身份验证服务器。 如果在云中使用多重身份验证，则让用户参阅[设置双重验证帐户](end-user/current/multi-factor-authentication-end-user-first-time.md)或[管理双重验证设置](end-user/current/multi-factor-authentication-end-user-manage-settings.md)。
 
 ## <a name="install-the-web-service-sdk"></a>安装 Web 服务 SDK
 

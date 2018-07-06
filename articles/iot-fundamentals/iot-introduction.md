@@ -8,12 +8,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 05/18/2018
 ms.author: bryanla
-ms.openlocfilehash: 685de6a3cfe0e3f5a2ea82da831247d7b4144fea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 858124ca92ae80313749abbd22c479fef90ce873
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636199"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081517"
 ---
 # <a name="introduction-to-azure-and-the-internet-of-things"></a>Azure 和物联网简介
 
@@ -173,7 +173,7 @@ Azure IoT 简化了 IoT 项目的复杂性，并解决了诸多问题，如：�
 [lnk-iot-edge-land]: /azure/iot-edge/index.yml
 [lnk-iot-hub-land]: /azure/iot-hub/index.md
 [lnk-iot-maps-land]: /azure/maps/index.yml
-[lnk-iot-sa-land]: ../iot-accelerators/index.md
+[lnk-iot-sa-land]: ../iot-accelerators/index.yml
 [lnk-iot-tsi-land]: /azure/time-series-insights/index.yml
 
 [lnk-iot-hub]: ../iot-hub/about-iot-hub.md
