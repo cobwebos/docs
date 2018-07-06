@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: a3c81d63593bb7bf268c1026064e34c3a363ef86
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.component: na
+ms.openlocfilehash: d083783fb4c648cde5d8f4ab611990f65e48a16e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304651"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129991"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -44,7 +45,7 @@ ms.locfileid: "34304651"
  
 ## <a name="supported-regions"></a>支持的区域
 NPM 可从以下任一区域托管的工作区监视世界上任何地方网络和应用程序之间的连接：
-* 欧洲西部
+* 西欧
 * 美国中西部
 * 美国东部
 * 东南亚
@@ -101,7 +102,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="configure-the-solution"></a>配置解决方案 
 
-1. 将网络性能监视器解决方案从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) 添加到工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程。 
+1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)添加到工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程。 
 2. 打开 Log Analytics 工作区，然后选择“概览”磁贴。 
 3. 选择消息为“解决方案需要进行额外配置”的“网络性能监视器”磁贴  **。
 

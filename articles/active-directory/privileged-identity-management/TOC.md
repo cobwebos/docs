@@ -1,6 +1,6 @@
 # 概述
 ## [什么是 Azure AD PIM？](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [安全的特许访问权限](../admin-roles-best-practices.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [安全的特许访问权限](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [PIM 中的目录角色](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [适用于 Azure 资源的 PIM](azure-pim-resource-rbac.md)
 ## [PIM 审批工作流](azure-ad-pim-approval-workflow.md)

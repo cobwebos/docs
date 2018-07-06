@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/29/2018
   ms.author: cgronlun
-  ms.openlocfilehash: 69e3643f132cbc6c428608cb1c92c22f51765b81
-  ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+  ms.openlocfilehash: 314e756981076468056dd691bce7d24073d6ff4b
+  ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/29/2018
-  ms.locfileid: "37130805"
+  ms.lasthandoff: 07/06/2018
+  ms.locfileid: "37865015"
 abstract:
   description: 了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。
 sections:
@@ -110,7 +110,7 @@ sections:
     - title: 语言
       html: <p><a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="../media/index/API_Bing_Spell_Check.svg" alt="" />必应拼写检查</a></p> <p><a class="barLink" href="/azure/cognitive-services/luis/"><img src="../media/index/API_Luis.svg" alt="" /><span>语言理解 (LUIS)</span></a></p> <p><a class="barLink" href="/azure/cognitive-services/linguisticanalysisapi/home"><img src="../media/index/API_LinguisticAnalysis.svg" alt="" /><span>语言分析&nbsp;<sup style="font-size:70%">预览</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/text-analytics/"><img src="../media/index/API_TextAnalytics.svg" alt="" />文本分析</a></p> <p><a class="barLink" href="/azure/cognitive-services/translator/"><img src="../media/index/API_TranslatorText.svg" alt="" />文本翻译</a></p> <p><a class="barLink" href="/azure/cognitive-services/web-language-model/home"><img src="../media/index/API_WebLanguageModel.svg" alt="" /><span>Web 语言模型&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
     - title: 知识
-      html: <p><a class="barLink" href="/azure/cognitive-services/custom-decision-service/"><img src="../media/index/API_Custom_Decision_Service.svg" alt="" /><span>自定义 AI 决策服务&nbsp;<sup style="font-size:70%">预览</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/qnamaker/home"><img src="../media/index/API_QnAMaker.svg" alt="" /><span>QnA Maker</span></a></p> <p><a class="barLink" href="/azure/cognitive-services/recommendations/overview"><img src="../media/index/API_Recommendations.svg" alt="" /><span>建议&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
+      html: <p><a class="barLink" href="/azure/cognitive-services/custom-decision-service/"><img src="../media/index/API_Custom_Decision_Service.svg" alt="" /><span>自定义 AI 决策服务&nbsp;<sup style="font-size:70%">预览</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/qnamaker/index"><img src="../media/index/API_QnAMaker.svg" alt="" /><span>QnA Maker</span></a></p> <p><a class="barLink" href="/azure/cognitive-services/recommendations/overview"><img src="../media/index/API_Recommendations.svg" alt="" /><span>建议&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
     - title: 搜索
       html: <p><a class="barLink" href="/azure/cognitive-services/bing-news-search/"><img src="../media/index/API_Bing_News_Search.svg" alt="" />必应新闻搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/Bing-Video-Search/"><img src="../media/index/API_Bing_Video_Search.svg" alt="" />必应视频搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-web-search/"><img src="../media/index/API_Bing_Web_Search.svg" alt="" />必应 Web 搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="../media/index/API_Bing_AutoSuggest.svg" alt="" />必应自动建议</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="../media/index/API_Bing_Custom_Search.svg" alt="" />必应自定义搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-entities-search/"><img src="../media/index/API_Bing_Entity_Search.svg" alt="" />必应实体搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="../media/index/API_Bing_Image_Search.svg" alt="" />必应图像搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-visual-search"><img src="../media/index/API_Bing_Visual_Search.svg" alt="" />必应视觉搜索</a></p>
     - title: 实验室
