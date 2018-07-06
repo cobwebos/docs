@@ -8,16 +8,16 @@ ms.author: pabuehle
 manager: mwinkle
 ms.reviewer: marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 5ff6502b0ed023f6fe8a9475a0e81991a9918cc5
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850165"
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35631911"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>使用 Azure 机器学习 Workbench 进行图像分类
 
@@ -236,7 +236,8 @@ Azure 机器训练 Workbench 将每次运行的历史记录存储在 Azure 上�
 在第一个屏幕截图中，对于所有类，DNN 优化得到的准确性优于 SVM 训练。 第二个屏幕截图显示了正在跟踪的所有指标，包括分类器是什么。 此跟踪在脚本 `5_evaluate.py` 中通过调用 Azure 机器学习 Workbench 记录器实现。 此外，该脚本还将 ROC 曲线和混淆矩阵保存到“输出”文件夹。 此“输出”文件夹很特殊，因为其内容也被 Workbench 历史记录功能跟踪，因此，可以随时访问此输出文件，无论本地副本是否被覆盖。
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/> </p>
+<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/>
+</p>
 
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/run_comparison2b.jpg" alt="alt text" width="700"/>
