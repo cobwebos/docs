@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 105c10423a9688300ba74874769b162e29572185
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418486"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128599"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
 
@@ -600,7 +600,7 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
 有关 Flux 的详细信息，请参阅 [Flux 框架 (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html)。
 
 > [!WARNING]
-> 由于 Storm 1.0.1 的一个 [bug (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055)，可能需要安装 [Storm 开发环境](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)才能在本地运行 Flux 拓扑。
+> 由于 Storm 1.0.1 的一个 [bug (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055)，可能需要安装 [Storm 开发环境](http://storm.apache.org/releases/current/Setting-up-development-environment.html)才能在本地运行 Flux 拓扑。
 
 1. 将 `WordCountTopology.java` 文件移出项目。 以前由该文件定义拓扑，但使用 Flux 时无需这么做。
 
@@ -719,9 +719,9 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
     ```
 
     > [!WARNING]
-    > 如果拓扑使用 Storm 1.0.1 位，此命令会失败。 此失败是由 [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055) 导致的。 相反，[在开发环境中安装 Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)，并按照以下步骤操作：
+    > 如果拓扑使用 Storm 1.0.1 位，此命令会失败。 此失败是由 [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055) 导致的。 相反，[在开发环境中安装 Storm](http://storm.apache.org/releases/current/Setting-up-development-environment.html)，并按照以下步骤操作：
     >
-    > 如果已[在开发环境中安装 Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)，则可以改用以下命令：
+    > 如果已[在开发环境中安装 Storm](http://storm.apache.org/releases/current/Setting-up-development-environment.html)，则可以改用以下命令：
     >
     > ```bash
     > mvn compile package

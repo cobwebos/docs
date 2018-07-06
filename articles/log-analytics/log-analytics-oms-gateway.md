@@ -3,7 +3,7 @@ title: 使用 OMS 网关连接计算机 | Microsoft Docs
 description: 使用 OMS 网关连接设备和 Operations Manager 监视的计算机，以便在无法访问 Internet 时将数据发送到 Azure 自动化和 Log Analytics 服务。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: na
+ms.openlocfilehash: ecbc88ebaaa93215f85b57becc8a643dc3e168a0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271643"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129034"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>使用 OMS 网关连接无法访问 Internet 的计算机
 本文档介绍直接连接或 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 OMS 网关，配置与 Azure 自动化和 Log Analytics 的通信。  OMS 网关是使用 HTTP CONNECT 命令，支持 HTTP 隧道的 HTTP 转发代理，它可以收集数据，然后代表这些设备将数据发送到 Azure 自动化和 Log Analytics。  
@@ -73,7 +74,7 @@ OMS 网关提供了以下语言：
 - 匈牙利语
 - 意大利语
 - 日语
-- 朝鲜语
+- 韩语
 - 波兰语
 - 葡萄牙语(巴西)
 - 葡萄牙语(葡萄牙)
@@ -170,7 +171,7 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 
 1. 打开 Operations Manager 控制台，在“Operations Management Suite”下面单击“连接”，并单击“配置代理服务器”。<br><br> ![Operations Manager – 配置代理服务器](./media/log-analytics-oms-gateway/scom01.png)<br> 
 2. 选择“使用代理服务器访问 Operations Management Suite”，并键入 OMS 网关服务器的 IP 地址或 NLB 的虚拟 IP 地址。 请务必首先键入 `http://` 前缀。<br><br> ![Operations Manager – 代理服务器地址](./media/log-analytics-oms-gateway/scom02.png)<br> 
-3. 单击“完成” 。 Operations Manager 管理组现已配置为通过网关服务器与 Log Analytics 服务通信。
+3. 单击“完成”。 Operations Manager 管理组现已配置为通过网关服务器与 Log Analytics 服务通信。
 
 ### <a name="configure-operations-manager---specific-agents-use-proxy-server"></a>配置 Operations Manager - 特定的代理使用代理服务器
 在大型或复杂环境中，可能只希望特定的服务器（或组）使用 OMS 网关服务器。  对于这些服务器，无法直接更新 Operations Manager 代理，因为此值会被管理组的全局值覆盖。  应该重写用于推送这些值的规则。  
@@ -209,7 +210,7 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 | **位置** | **URL** |
 | --- | --- |
 | 美国中北部 |ncus-jobruntimedata-prod-su1.azure-automation.net |
-| 欧洲西部 |we-jobruntimedata-prod-su1.azure-automation.net |
+| 西欧 |we-jobruntimedata-prod-su1.azure-automation.net |
 | 美国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net |
 | 美国东部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
 | 加拿大中部 |cc-jobruntimedata-prod-su1.azure-automation.net |
@@ -224,7 +225,7 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 | **位置** | **URL** |
 | --- | --- |
 | 美国中北部 |ncus-agentservice-prod-1.azure-automation.net |
-| 欧洲西部 |we-agentservice-prod-1.azure-automation.net |
+| 西欧 |we-agentservice-prod-1.azure-automation.net |
 | 美国中南部 |scus-agentservice-prod-1.azure-automation.net |
 | 美国东部 2 |eus2-agentservice-prod-1.azure-automation.net |
 | 加拿大中部 |cc-agentservice-prod-1.azure-automation.net |
@@ -297,7 +298,7 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 
 下表显示了 OMS 网关可用的性能计数器。 可以使用性能监视器来添加计数器。
 
-| **Name** | **说明** |
+| 名称 | **说明** |
 | --- | --- |
 | OMS 网关/活动客户端连接 |活动客户端网络 (TCP) 连接数 |
 | OMS 网关/错误计数 |错误数 |

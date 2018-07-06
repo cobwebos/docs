@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6db3832031a1bb960ee40c0e4fb8c3d0591a976c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7588711bd1c2a02e2e9a100d2ba182f43e7df488
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711692"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446052"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C：向具有 LinkedIn 帐户的使用者提供注册和登录
 ## <a name="create-a-linkedin-application"></a>创建 LinkedIn 应用程序
@@ -42,7 +42,7 @@ ms.locfileid: "34711692"
 ## <a name="configure-linkedin-as-an-identity-provider-in-your-tenant"></a>将 LinkedIn 配置为租户中的标识提供者
 1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 在 B2C 功能边栏选项卡上，单击“标识提供者”。
-3. 单击边栏选项卡顶部的“ **+添加** ”。
+3. 单击边栏选项卡顶部的“+ 添加”。
 4. 为标识提供者配置提供一个友好**名称**。 例如，输入“LI”。
 5. 单击“标识提供者类型”，选择“LinkedIn”，并单击“确定”。
 6. 单击“设置此标识提供者”，并输入之前创建的 LinkedIn 应用程序的客户端 ID 和客户端密码。

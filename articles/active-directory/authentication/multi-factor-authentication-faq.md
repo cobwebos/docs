@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 226400c6da5db589db6ce2f1887c3e96cf9e1f14
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: ea976f7ac80f0c485320713117c9ff2b484a287b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869863"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128684"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 
@@ -86,7 +86,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 面向 Azure 管理员的多重身份验证免费提供一部分 Azure MFA 功能让管理员访问 Microsoft 在线服务，包括 Azure 和 Office 365 管理门户。 这项优惠仅适用于 Azure Active Directory 实例中未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得完整版 Azure MFA 的全局管理员。 如果管理员使用免费版，用户随后购买完整版 Azure MFA，那么所有全局管理员都会自动提升到付费版。
 
-面向 Office 365 用户的多重身份验证免费提供一部分 Azure MFA 功能让用户访问 Office 365 在线服务，包括 Exchange Online 和 SharePoint Online。 如果 Azure Active Directory 的相应实例未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得 Azure MFA 完整版本，这项优惠将适用于已获得 Office 365 许可证的用户。
+面向 Office 365 用户的多重身份验证免费提供一部分 Azure MFA 功能让用户访问 Office 365 服务，包括 Exchange Online 和 SharePoint Online。 如果 Azure Active Directory 的相应实例未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得 Azure MFA 完整版本，这项优惠适用于已获得 Office 365 许可证的用户。
 
 **问：组织是否可以随时在“按用户”和“按身份验证”使用量计费模式之间切换？**
 
@@ -118,7 +118,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 但愿用户已配置多种验证方法。 请告诉他们再次尝试登录，但需要在登录页上选择另一种验证方法。
 
-可以让用户转到[最终用户故障排除指南](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md)。
+可以让用户转到[最终用户故障排除指南](end-user/current/multi-factor-authentication-end-user-troubleshoot.md)。
 
 
 **问：如果某个用户无法进入其帐户，我该办什么？**
@@ -131,7 +131,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 **问：如果用户无法登录到非浏览器应用，该怎么办？**
 
-如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-mfasettings.md#app-passwords)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和*应用密码*而不是普通的密码登录。
+如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-mfasettings.md#app-passwords)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](end-user/current/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和*应用密码*而不是普通的密码登录。
 
 如果组织不使用传统客户端，则应不允许用户创建应用密码。
 

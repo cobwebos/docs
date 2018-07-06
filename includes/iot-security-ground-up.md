@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c1ba6cb5b01c86c64fd6134c592829050bbb226d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 0eaf1115dc6ed5a7dc9e7354340d5eb529116c88
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34307543"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37780649"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>物联网安全基础知识
 
@@ -33,19 +33,20 @@ ms.locfileid: "34307543"
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>安全基础结构基础知识
 
-[Microsoft 云](https://www.microsoft.com/enterprise/microsoftcloud/default.aspx#fbid=WzBsRQi6aGk)基础结构支持 127 个国家/地区十亿个以上的客户。 使用 Microsoft 数十年之久构建企业软件的体验，并在世界各地运行一些大型在线服务，相较于多数客户可自行实现，Microsoft 云提供更高级别的增强安全、隐私权、合规性及威胁缓解实践。
+[Microsoft 云](https://azure.microsoft.com)基础结构支持 127 个国家/地区十亿个以上的客户。 使用 Microsoft 数十年之久构建企业软件的体验，并在世界各地运行一些大型在线服务，相较于多数客户可自行实现，Microsoft 云提供更高级别的增强安全、隐私权、合规性及威胁缓解实践。
 
 [安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/) 提供必要的全企业开发过程，将安全要求嵌入整个软件生命周期中。 为了帮助确保运行活动遵循一致的安全优先级，SDL 使用 Microsoft 运行安全保证 (OSA) 流程中规定的严苛安全指导方针。 Microsoft 还与第三方审核机构合作以持续验证其符合法规遵循义务，并通过创建卓越的中心（包括 Microsoft 反数字犯罪部门、Microsoft 安全响应中心和 Microsoft 恶意软件防护中心），致力于产生广泛的安全成果。
 
 ## <a name="microsoft-azure---secure-iot-infrastructure-for-your-business"></a>Microsoft Azure - 适用于企业的安全 IoT 基础结构
 
-Microsoft Azure 提供完整的云解决方案，其中结合了持续成长的集成式云服务（分析、机器学习、存储、安全、网络功能和 Web）集合，通过行业领先的承诺来为数据提供保护与隐私。 Microsoft 的[假设性违规](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/)策略将通过由软件安全专家组成的专属“红色团队”，来模拟攻击、测试要检测的 Azure 能力、防范新兴威胁，以及从违规中恢复。 Microsoft 的[全球事件响应](https://www.microsoft.com/TrustCenter/Security/DesignOpSecurity)团队夜以继日地工作，以减缓攻击与恶意活动造成的影响。 该团队遵循事件管理、通信和恢复所创建的过程，并与内部和外部伙伴合作来使用可探索且可预测的接口。
+Microsoft Azure 提供完整的云解决方案，其中结合了持续成长的集成式云服务（分析、机器学习、存储、安全、网络功能和 Web）集合，通过行业领先的承诺来为数据提供保护与隐私。 Microsoft 的[假设性违规](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/)策略将通过由软件安全专家组成的专属“红色团队”，来模拟攻击、测试要检测的 Azure 能力、防范新兴威胁，以及从违规中恢复。 Microsoft 的[全球事件响应](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity)团队夜以继日地工作，以减缓攻击与恶意活动造成的影响。 该团队遵循事件管理、通信和恢复所创建的过程，并与内部和外部伙伴合作来使用可探索且可预测的接口。
 
 Microsoft 的系统提供持续的入侵检测和防护、服务攻击预防、定期渗透测试和法医式工具帮助识别与缓解威胁。 [多重身份验证](../articles/active-directory/authentication/multi-factor-authentication.md)可为访问网络的最终用户提供额外的安全层。 此外，对于应用程序和主机提供程序，Microsoft 提供访问控制、监视、反恶意软件、漏洞扫描、修补和配置管理。
 
 这些解决方案加速器使用内置于 Azure 平台中的安全和隐私功能，以及针对所有 Microsoft 软件的安全开发和操作提供的 SDL 和 OSA 过程。 这些过程提供基础结构保护、网络保护，以及标识与管理功能，作为任何解决方案安全的基础。
 
-[IoT 解决方案加速器](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md)内的 [Azure IoT 中心](../articles/iot-hub/iot-hub-what-is-iot-hub.md)提供完全托管的服务，使用每一设备的安全凭据和访问控制，在 IoT 设备与 Azure 服务（例如 [Azure 机器学习](../articles/machine-learning/studio/what-is-machine-learning.md)和 [Azure 流分析](../articles/stream-analytics/stream-analytics-introduction.md)）之间启用可靠且安全的双向通信。
+
+  [IoT 解决方案加速器](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md)内的 [Azure IoT 中心](../articles/iot-hub/iot-hub-what-is-iot-hub.md)提供完全托管的服务，使用每一设备的安全凭据和访问控制，在 IoT 设备与 Azure 服务（例如 [Azure 机器学习](../articles/machine-learning/studio/what-is-machine-learning.md)和 [Azure 流分析](../articles/stream-analytics/stream-analytics-introduction.md)）之间启用可靠且安全的双向通信。
 
 为了以最佳方式传达内置于 Azure IoT 解决方案加速器的安全和隐私功能，本文将套件细分为三个主要安全领域。
 
@@ -103,5 +104,5 @@ IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有�
 * [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/)：已完全编制索引的可缩放数据库服务，适用于半结构化数据，可管理预配的设备元数据，例如属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
 * [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)：云中的实时流处理，可让用户快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入见解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
 * [**Azure 应用程序服务**](https://azure.microsoft.com/services/app-service/)：一个云平台，用以构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快速地构建 Web 应用和 API。
-* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 逻辑应用提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
+* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
 * [Azure Blob 存储](https://azure.microsoft.com/services/storage/)：可靠且符合经济效益的云存储，适用于设备要发送到云的数据。

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 729cb89fbe63dbecb65c6f948052b920bf6e70fe
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4facc88aad5338362f2220148f1b1870ade5fe7e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937446"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445477"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -117,7 +117,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 可以使用紧急访问帐户来帮助组织限制现有 Azure Active Directory 环境中的特权访问。 这些帐户拥有极高的特权，不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。 组织务必控制和减少紧急帐户的使用，只在必要时使用。 
 
-评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 *.onmicrosoft.com 域（用于“不受限”紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md)。
+评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 *.onmicrosoft.com 域（用于“不受限”紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](users-groups-roles/directory-emergency-access.md)。
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户 
 
@@ -345,7 +345,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 #### <a name="review-admin-roles-in-azure-active-directory"></a>查看 Azure Active Directory 中的管理员角色 
 
-确定当前的内置 Azure AD 管理员角色是否仍为最新，并确保用户只有与权限相对应的所需角色和委托。 使用 Azure AD 时，可以指定不同的管理员来履行不同的职责。 有关详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)。
+确定当前的内置 Azure AD 管理员角色是否仍为最新，并确保用户只有与权限相对应的所需角色和委托。 使用 Azure AD 时，可以指定不同的管理员来履行不同的职责。 有关详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](users-groups-roles/directory-assign-admin-roles.md)。
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>审核那些可以管理已加入 Azure AD 的设备的用户
 
@@ -442,7 +442,8 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 * [Microsoft 信任中心确保产品安全性](https://www.microsoft.com/en-us/trustcenter/security) - Microsoft 云产品和服务的安全特性
 
-* [Microsoft 信任中心 - 符合性](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) - Microsoft 推出的一组范围广泛的符合性产品/服务，适用于云服务
+* 
+  [Microsoft 信任中心 - 符合性](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) - Microsoft 推出的一组范围广泛的符合性产品/服务，适用于云服务
 
 * [有关如何执行风险评估的指南](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) - 管理 Microsoft 云服务的安全性和符合性要求
 

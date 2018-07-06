@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 359640384891ebdf66345d3f5664db1cbefbde77
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 89eb80dbb749b2f50ca3f1fc097c205b62b6b4a4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333739"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445290"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何配置自助应用程序分配
 
@@ -90,4 +90,4 @@ ms.locfileid: "36333739"
 这些批准仅支持单个审批工作流，这意味着如果指定了多个审批人，任何一个审批人都可以批准对该应用程序的访问。
 
 ## <a name="next-steps"></a>后续步骤
-[为自助组管理设置 Azure Active Directory](active-directory-accessmanagement-self-service-group-management.md)
+[为自助组管理设置 Azure Active Directory](users-groups-roles/groups-self-service-management.md)

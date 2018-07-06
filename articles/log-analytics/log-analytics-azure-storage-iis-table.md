@@ -3,7 +3,7 @@ title: 在 Azure Log Analytics 中使用适用于 IIS 的 blob 存储和适用�
 description: Log Analytics 可以读取将诊断写入到表存储或将 IIS 日志写入到 Blob 存储的 Azure 服务的日志。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: 8f923cc081ea652c8e32d4109225044c70c8767d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23021342"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128735"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Log Analytics 配合使用
 
@@ -71,7 +71,7 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
    3. 单击“诊断”。
    4. 将“状态”设置为“开”。
    5. 选择想要收集的每个诊断日志。
-   6. 单击 **“确定”**。
+   6. 单击“确定”。
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>在 Web 角色中为 IIS 日志和事件收集启用 Azure 诊断
 有关启用 Azure 诊断的常规步骤，请参阅[如何在云服务中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)。 下面的说明使用此信息并进行自定义以用于 Log Analytics。
@@ -132,7 +132,7 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 1. 单击“存储帐户日志”
 2. 单击“添加”任务
 3. 选择包含诊断日志的存储帐户
-   * 此帐户可以是经典存储帐户或 Azure Resource Manager 存储帐户
+   * 此帐户可以是经典存储帐户或 Azure 资源管理器存储帐户
 4. 选择要收集的日志的数据类型
    * 选项包括 IIS 日志、事件、Syslog (Linux)、ETW 日志、Service Fabric 事件
 5. 将基于数据类型自动填充源的值，不能更改

@@ -4,22 +4,23 @@ description: Log Analytics 可以从 Windows 和 Linux 计算机上的文本文�
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/27/2018
 ms.author: bwren
-ms.openlocfilehash: 28523ce3671a8104d91f04575b3e88647dde16f4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: c533d54a804ccc624246f54940ccf269361cdd7a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637066"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128667"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics 中的自定义日志
 Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。  收集后，使用 Log Analytics 的[自定义字段](log-analytics-custom-fields.md)功能可将日志中的每个记录解析到各个字段中。
@@ -65,10 +66,10 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
 
 1. 单击“浏览”，浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“选择文件”。
-2. 单击“资源组名称” 的 Azure 数据工厂。
+2. 单击“下一步”。
 3. 自定义日志向导将上传文件，并列出其标识的记录。
 4. 更改用于标识新记录的分隔符。根据日志文件中的记录，选择标识效果最好的分隔符。
-5. 单击“资源组名称” 的 Azure 数据工厂。
+5. 单击“下一步”。
 
 ### <a name="step-4-add-log-collection-paths"></a>步骤 4. 添加日志集合路径
 必须在可查找自定义日志的代理上定义一个或多个路径；  可以提供日志文件的特定路径和名称，也可以使用通配符为名称指定路径。  这样，应用程序就可以每天创建新文件，或者在某个文件达到一定大小时创建新文件。  还可以为单个日志文件提供多个路径。

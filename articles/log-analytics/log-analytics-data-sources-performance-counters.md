@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 0f7119f280f2eb51222ade2ea7984b560a02f667
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.component: na
+ms.openlocfilehash: b23c170e557d019abf2b9aab8edcb74728bc872d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783156"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128769"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Log Analytics 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
@@ -84,7 +85,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | parameters | 说明 |
 |:--|:--|
 | object\_name | 收集的对象名称。 |
-| instance\_regex |  用于定义要收集的实例的*正则表达式*。 值 `.*` 指定所有实例。 要仅收集 \_Total 实例的处理器指标，可以指定 `_Total`。 要仅收集 crond 或 sshd 实例的进程指标，可以指定：`(crond\|sshd)`。 |
+| instance\_regex |  用于定义要收集的实例的*正则表达式*。 值 `.*` 指定所有实例。 要仅收集 \_Total 实例的处理器指标，可以指定 `_Total`。 要仅收集 crond 或 sshd 实例的进程指标，可以指定 `(crond\|sshd)`。 |
 | counter\_name\_regex | 用于定义要收集的对象计数器的*正则表达式*。 要收集对象的所有计数器，请指定：`.*`。 例如，要仅收集内存对象的交换空间计数器，可以指定 `.+Swap.+` |
 | interval | 收集对象计数器时采用的频率。 |
 

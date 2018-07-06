@@ -3,7 +3,7 @@ title: 使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器�
 description: 使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器连接的 Service Manager Web 应用，集中监视和管理 ITSM 工作项。
 services: log-analytics
 documentationcenter: ''
-author: JYOTHIRMAISURI
+author: jyothirmaisuri
 manager: riyazp
 editor: ''
 ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 75c61894d5562f4bb0cb45fd8500bd9cf0f2bf8f
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.component: na
+ms.openlocfilehash: 15626a9dd2e889470477e34d6f1ebd47cce1411b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772120"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128650"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 
@@ -29,7 +30,7 @@ ms.locfileid: "32772120"
 
 - Azure 订阅详细信息
 - 资源组名称
-- Location
+- 位置
 - Service Manager 服务器详细信息（服务器名称、域、用户名和密码）
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。
