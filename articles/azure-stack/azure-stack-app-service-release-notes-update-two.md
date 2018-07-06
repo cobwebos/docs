@@ -63,7 +63,7 @@ Azure 堆栈 Update 2 上的 azure 应用程序服务包括以下改进和修补
     - NodeJS 8.11.1
   - 增加了 **NPM** 版本：
     - 5.6.0
-  - 更新.NET Core组件可以使用在公共云中的 Azure App Service 一致。
+  - 更新.NET Core 组件可以使用在公共云中的 Azure App Service 一致。
   - 更新的 Kudu
 
 - 部署的自动交换槽功能已启用-[配置自动交换](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing#configure-auto-swap)
