@@ -7,23 +7,23 @@ author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d0a9abc145a4d108e48bc81cbb6a849c62e5862b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 727147673a527f2c28c9ca01ad17b30db292b6c0
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234006"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447211"
 ---
 # <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中要求 MFA
 我们建议为所有管理员请求多重身份验证 (MFA)。 这可降低因密码泄露而受到攻击的风险。
 
-可以请求用户在登录后完成 MFA 质询。 博客文章 [MFA for Office 365 and MFA for Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/)（用于 Office 365 的 MFA 和用于 Azure 的 MFA）比较 Office 和 Azure 订阅中包含的内容，以及包含在 Microsoft Azure 多重身份验证产品/服务中的功能。
+可以请求用户在登录后完成 MFA 质询。 博客文章[用于 Office 365 的 MFA 和用于 Azure 的 MFA](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) 比较 Office 和 Azure 订阅中包含的内容，以及包含在 Microsoft Azure 多重身份验证产品/服务中的功能。
 
 还可以请求用户在 Azure AD PIM 中激活角色后完成 MFA 质询。 这样一来，如果用户在登录后未完成 MFA 质询，PIM 会提示他们完成此操作。
 

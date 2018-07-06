@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: c5f3904621dcc4fe992b2c2f8293ad706b01f713
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754167"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446769"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -45,7 +45,7 @@ ms.locfileid: "36754167"
 | 已定义和验证域 | [将自定义域名添加到 Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**注意：** Power BI 等工作负荷可能已经预配了其包含的 Azure AD 租户。 要检查给定域是否与租户关联，请导航到 https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration。 如果收到成功的相应，则域已经分配给租户，并且可能需要接管。 在这种情况下，请联系 Microsoft 获取更多指导。 如需了解有关接管选项的详细信息，请参阅[什么是 Azure 自助式服务注册？](active-directory-self-service-signup.md) |
 | 已启用 Azure AD Premium 或 EMS 试用版 | [Azure Active Directory Premium 免费使用一个月](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | 已经向 PoC 用户分配了 Azure AD Premium 或 EMS 许可证 | [向你自己以及 Azure Active Directory 中用户分配许可证](active-directory-licensing-get-started-azure-portal.md) |
-| Azure AD 全局管理员凭据 | [在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md) |
+| Azure AD 全局管理员凭据 | [在 Azure Active Directory 中分配管理员角色](users-groups-roles/directory-assign-admin-roles.md) |
 | 此项是可选项，但强烈建议执行：将实验室环境并行为回退 | [Azure AD Connect 的先决条件](./connect/active-directory-aadconnect-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>目录同步 - 密码哈希同步 (PHS) - 新安装
@@ -431,7 +431,7 @@ ms.locfileid: "36754167"
 ### <a name="considerations"></a>注意事项
 
 1. 此构建基块中的 PoC 步骤为用户的所有登录名明确设置了 MFA。 还有条件访问和 Identity Protection 等其他工具可以将 MFA 用于目标更明确的方案。 从 POC 转移到生产时需要考虑这些问题。
-2. 为方便起见，本构建基块中的 PoC 步骤明确使用电话呼叫作为 MFA 方法。 从 POC 转换为生产时，建议使用 [Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) 等应用程序作为第二个考虑的因素（如果需要）。
+2. 为方便起见，本构建基块中的 PoC 步骤明确使用电话呼叫作为 MFA 方法。 从 POC 转换为生产时，建议使用 [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) 等应用程序作为第二个考虑的因素（如果需要）。
 有关详细信息，请参阅 [DRAFT NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)（DRAFT NIST 特别发布 800-63B）
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>SaaS 应用程序的 MFA 条件访问
@@ -556,7 +556,7 @@ ms.locfileid: "36754167"
 | --- | --- |
 | 已从企业 PKI 预配了用户证书的设备（Windows、iOS 或 Android） | [部署用户证书](https://msdn.microsoft.com/library/cc770857.aspx) |
 | 与 ADFS 联合的 Azure AD 域 | [Azure AD Connect 和联合身份验证](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 证书服务概述](https://technet.microsoft.com/library/hh831740.aspx)|
-| iOS 设备需要安装 Microsoft Authenticator 应用 | [Microsoft Authenticator 应用入门](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| iOS 设备需要安装 Microsoft Authenticator 应用 | [Microsoft Authenticator 应用入门](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>步骤
 

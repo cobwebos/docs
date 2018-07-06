@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 05a70874367d578beee1dc605510f9370b6abd42
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 7dfd14246622f297a42c6b7975539fec2882bbe0
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35232986"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448163"
 ---
 # <a name="using-the-audit-log-in-pim"></a>在 PIM 中使用审核日志
 可以使用 Privileged Identity Management (PIM) 审核日志查看给定时间段内的所有用户分配和激活。 如果想要在租户中查看活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用 [Azure Active Directory 访问和使用情况报告。](active-directory-view-access-usage-reports.md)
