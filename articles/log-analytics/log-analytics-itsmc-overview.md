@@ -3,7 +3,7 @@ title: Azure Log Analytics 中的 IT Service Management Connector | Microsoft Do
 description: 本文提供 IT 服务管理连接器 (ITSMC) 的概述以及有关如何使用此解决方案集中监视和管理 Azure Log Analytics 中的 ITSM 工作项并快速解决任何问题的信息。
 services: log-analytics
 documentationcenter: ''
-author: JYOTHIRMAISURI
+author: jyothirmaisuri
 manager: riyazp
 editor: ''
 ms.assetid: 0b1414d9-b0a7-4e4e-a652-d3a6ff1118c4
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: da81d1455649f1e3f3ab43016df49953ce90e0ca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: da37e7558f93bc5073cd4ee1726a409c7defe127
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637610"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131712"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -179,7 +180,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - 服务台连接名称
 - 服务台 ID
-- State
+- 省/直辖市/自治区
 - 紧急性
 - 影响
 - Priority
@@ -237,7 +238,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics 字段 | ServiceNow 字段 |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | State |
+| IncidentState_s | 省/直辖市/自治区 |
 | Urgency_s |紧急性 |
 | Impact_s |影响|
 | Priority_s | Priority |
@@ -265,7 +266,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  简短说明 |
 | Type_s|  Type |
 | Category_s|  类别 |
-| CRState_s|  State|
+| CRState_s|  省/直辖市/自治区|
 | Urgency_s|  紧急性 |
 | Priority_s| Priority|
 | Risk_s| 风险|

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: tamram
-ms.openlocfilehash: cb77bd4418e105c877202f0f1725350380ea2308
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 241808e0a7bde1d2c53cd0af1de677275c169214
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659221"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082203"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>使用 RBAC 管理对 Azure 存储数据的访问权限（预览版）
 
@@ -35,7 +35,7 @@ Azure 存储同时支持内置和自定义 RBAC 角色。 Azure 存储提供以�
 还可以定义用于容器和队列的自定义角色。 有关详细信息，请参阅[针对 Azure 基于角色的访问控制创建自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles.md)。 
 
 > [!IMPORTANT]
-> 此预览版仅用于非生产用途。 适用于 Azure 存储的 Azure AD 集成正式发布后，生产服务级别协议 (SLA) 方可使用。 如果你的方案尚不支持 Azure AD 集成，请继续使用应用程序中的共享密钥授权或 SAS 令牌。 有关该预览版的其他信息，请参阅[使用 Azure Active Directory 验证 Azure 存储访问权限（预览版）](storage-auth-aad.md)。
+> 此预览版仅用于非生产用途。 适用于 Azure 存储的 Azure AD 集成正式发布后，生产服务级别协议 (SLA) 方可使用。 如果你的方案尚不支持 Azure AD 集成，请继续使用应用程序中的共享密钥授权或 SAS 令牌。 有关该预览版的其他信息，请参阅[使用 Azure Active Directory进行 Azure 存储访问权限身份验证（预览版）](storage-auth-aad.md)。
 >
 > 预览期间，RBAC 角色分配可能需要长达五分钟的时间进行传播。
 
@@ -61,7 +61,7 @@ Azure 存储同时支持内置和自定义 RBAC 角色。 Azure 存储提供以�
 
 若要在 Azure 门户中分配内置角色，以授予对存储帐户中所有容器或队列的访问权限，请执行以下操作：
 
-1. 在 [Azure 门户](https://azure.portal.com/)中导航到存储帐户。
+1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
 2. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置。 单击“添加”按钮以添加新角色。
 
     ![显示存储访问控制设置的屏幕截图](media/storage-auth-aad-rbac/portal-access-control.png)
@@ -78,7 +78,7 @@ Azure 存储同时支持内置和自定义 RBAC 角色。 Azure 存储提供以�
 
 分配限定于容器或队列的内置角色的步骤类似。 此处所示的过程将分配限定于容器的角色，但你可以按照相同的步骤分配限定于队列的角色： 
 
-1. 在 [Azure 门户](https://azure.portal.com/)中，导航到存储帐户并显示该帐户的“概述”。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到存储帐户并显示该帐户的“概述”。
 2. 在“Blob 服务”下选择“浏览 Blob”。 
 3. 找到要针对其分配角色的容器，并显示该容器的设置。 
 4. 选择“访问控制(IAM)”以显示容器的访问控制设置。

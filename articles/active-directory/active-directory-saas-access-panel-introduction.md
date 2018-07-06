@@ -15,12 +15,12 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 982e2cb6780e5285dc5849d655efdf830f76cf13
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bc05ff8c6961cd9389a12ff9c082867eecb79bca
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34347493"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448784"
 ---
 # <a name="what-is-the-access-panel"></a>访问面板是什么？
 
@@ -40,7 +40,7 @@ ms.locfileid: "34347493"
 
 - 查看和启动 Azure AD 管理员已授权访问的基于云的应用程序。 
 
-- 自我管理组。 管理员可以在 Azure AD 中创建和管理安全组，并请求安全组成员身份。 有关详细信息，请参阅 [Self-service group management for users in Azure AD](active-directory-accessmanagement-self-service-group-management.md)（面向 Azure AD 中用户的自助组管理）和 [Manage your groups](active-directory-manage-groups.md)（管理组）。
+- 自我管理组。 管理员可以在 Azure AD 中创建和管理安全组，并请求安全组成员身份。 有关详细信息，请参阅 [Self-service group management for users in Azure AD](users-groups-roles/groups-self-service-management.md)（面向 Azure AD 中用户的自助组管理）和 [Manage your groups](fundamentals/active-directory-manage-groups.md)（管理组）。
 
 
 
@@ -214,7 +214,7 @@ Azure 门户提供了第三个选项（名为“现有的单一登录”）用�
 
 - 若要查看与应用程序管理相关的所有主题列表，请参阅[有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)。
  
-- 若要了解如何将 SaaS 应用集成到 Azure AD，请参阅[有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)。
+- 若要了解如何将 SaaS 应用集成到 Azure AD，请参阅[有关如何集成 SaaS 应用的教程列表](saas-apps/tutorial-list.md)。
  
 - 若要详细了解如何使用 Azure AD 管理应用，请参阅[使用 Azure Active Directory 进行单一登录和应用访问权限管理简介](manage-apps/what-is-single-sign-on.md)。
  

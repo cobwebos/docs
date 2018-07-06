@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3426b6f3f248b670016713d2b58425ff030605af
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 7a83ace83176d75abdac03b354c4c4ac71eb4238
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34709115"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448898"
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Microsoft 帐户 (MSA) 作为标识提供者
 
@@ -58,7 +58,7 @@ ms.locfileid: "34709115"
 
     ![Microsoft 帐户 - 从平台列表选择 Web](media/active-directory-b2c-custom-setup-ms-account-idp/msa-web.png)
 
-7.  在“重定向 URI”字段中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com）。
+7.  在“重定向 URI”字段中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 {tenant} 替换为租户名称（例如 contosob2c.onmicrosoft.com）。
 
     ![Microsoft 帐户 - 设置重定向 URL](media/active-directory-b2c-custom-setup-ms-account-idp/msa-redirect-url.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "34709115"
 1.  打开策略的基文件（例如 TrustFrameworkBase.xml）。
 2.  找到 `<UserJourneys>` 元素并复制整个 `<UserJourneys>` 节点的内容。
 3.  打开扩展文件（例如 TrustFrameworkExtensions.xml）并找到 `<UserJourneys>` 元素。 如果该元素不存在，请添加一个。
-4.  将复制的整个 `<UserJournesy>` 节点的内容粘贴为 `<UserJourneys>` 元素的子级。
+4.  将复制的整个 `<UserJourneys>` 节点的内容粘贴为 `<UserJourneys>` 元素的子级。
 
 ### <a name="display-the-button"></a>显示按钮
 `<ClaimsProviderSelections>` 元素定义声明提供程序选择选项的列表及其顺序。  `<ClaimsProviderSelection>` 元素类似于注册/登录页上的标识提供者按钮。 如果为 Microsoft 帐户添加 `<ClaimsProviderSelection>` 元素，则当用户进入页面时，会显示一个新按钮。 添加此元素：
@@ -160,7 +160,7 @@ ms.locfileid: "34709115"
 3.  将下面的 XML 代码段添加到 `<ClaimsProviderSelections>` 节点下：
 
 ```xml
-<ClaimsProviderSelection TargetClaimsExchangeId="MSAExchange" />
+<ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
 ```
 
 ### <a name="link-the-button-to-an-action"></a>将按钮链接到操作
@@ -170,7 +170,7 @@ ms.locfileid: "34709115"
 2.  将下面的 XML 代码段添加到 `<ClaimsExchanges>` 节点下：
 
 ```xml
-<ClaimsExchange Id="MSAExchange" TechnicalProfileReferenceId="MSA-OIDC" />
+<ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
 ```
 
 > [!NOTE]

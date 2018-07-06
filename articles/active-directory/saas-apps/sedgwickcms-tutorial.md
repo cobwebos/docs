@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: d4832807bb8ce3a854bee16eae5d0ced37fedcd8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 547c3785fa307838e9a86d38280b90fb31b040b3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215069"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>教程：Azure Active Directory 与 Sedgwick CMS 集成
 
@@ -123,7 +123,7 @@ ms.locfileid: "36215069"
     | `https://claimlookup.com/Voe/sso` |
 
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Sedgwick CMS 支持团队](https://www.sedgwick.com/contact/Pages/contactform.aspx)获取这些值。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Sedgwick CMS 支持团队](https://www.sedgwick.com/help)获取这些值。
  
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。

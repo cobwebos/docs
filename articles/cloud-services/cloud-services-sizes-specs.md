@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: bde4347c487be8986c72435172b18c10effa0690
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 490fd248cdd14858e2ca71f94dcb9dbaa5726f9c
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940278"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34608808"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。
@@ -85,13 +85,13 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 | 大小            | CPU 核心数 | 内存：GiB  | 临时存储：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | 特小型      | 1         | 0.768        | 20                   | 1/低 |
-| 小型           | 1         | 1.75         | 70                   | 1/中 |
-| 中型          | 2         | 3.5          | 135                  | 1/中 |
-| 大型           | 4         | 7            | 285                  | 2/高 |
-| 超大型      | 8         | 14           | 605                  | 4/高 |
-| A5              | 2         | 14           | 135                  | 1/中 |
-| A6              | 4         | 28           | 285                  | 2/高 |
-| A7              | 8         | 56           | 605                  | 4/高 |
+| 小型           | 1         | 1.75         | 225                  | 1/中 |
+| 中型          | 2         | 3.5          | 490                  | 1/中 |
+| 大型           | 4         | 7            | 1000                 | 2/高 |
+| 超大型      | 8         | 14           | 2040                 | 4/高 |
+| A5              | 2         | 14           | 490                  | 1/中 |
+| A6              | 4         | 28           | 1000                 | 2/高 |
+| A7              | 8         | 56           | 2040                 | 4/高 |
 
 ## <a name="a-series---compute-intensive-instances"></a>A 系列 - 计算密集型实例
 有关如何使用这些大小的信息和注意事项，请参阅[高性能计算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

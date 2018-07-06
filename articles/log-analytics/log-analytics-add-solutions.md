@@ -3,7 +3,7 @@ title: 添加 Azure Log Analytics 管理解决方案 | Microsoft 文档
 description: Azure 中的管理解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f6ec6dd46d28518baf6f105dd232a4b0e77a8c6f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: na
+ms.openlocfilehash: 0cffdbcaa128dce52758e4b618b93dd763961361
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29395456"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131469"
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>将 Azure Log Analytics 管理解决方案添加到工作区
 
@@ -35,15 +35,15 @@ Log Analytics 管理解决方案是**逻辑**、**可视化**和**数据采集�
 > [!NOTE]
 > Log Analytics 包括了日志搜索功能，因此无需安装管理解决方案便可启用该功能。 不过，可以通过向工作区添加管理解决方案来获取数据可视化、建议的搜索和洞察力。
 
-根据本文，将使用 Azure 门户 Marketplace 向工作区添加管理解决方案。 添加解决方案后，会从基础结构中的服务器收集数据并将其发送到 Log Analytics。 处理通常需要几分钟到一小时。 该服务处理数据后，可以在 Log Analytics 中查看。
+根据本文，将使用 Azure 门户市场向工作区添加管理解决方案。 添加解决方案后，会从基础结构中的服务器收集数据并将其发送到 Log Analytics。 处理通常需要几分钟到一小时。 该服务处理数据后，可以在 Log Analytics 中查看。
 
 当不再需要某个管理解决方案时，可以轻松将其删除。 在删除管理解决方案时，其数据不会发送至 Log Analytics。 如果在免费定价层，删除解决方案可减少数据使用量，帮助维持在数据的每日配额以下。
 
 ## <a name="view-available-management-solutions"></a>查看可用的管理解决方案
 
-Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)列表。
+Azure 市场包含 [Log Analytics 的管理解决方案](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)列表。
 
-可以通过单击每个解决方案底部的“立即获取”链接从 Azure Marketplace 安装管理解决方案。
+可以通过单击每个解决方案底部的“立即获取”链接从 Azure 市场安装管理解决方案。
 
 ## <a name="add-a-management-solution"></a>添加管理解决方案
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
@@ -72,7 +72,7 @@ Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremark
 该表还标识了适合每个管理解决方案的定价层。
 下表中的所有解决方案都可从 Azure 门户和 Log Analytics 门户的解决方案库中获取。
 
-| 管理解决方案                                                                       | 产品                                                                     | 定价层<sup>1</sup>                                                 | 说明 |
+| 管理解决方案                                                                       | 产品/服务                                                                     | 定价层<sup>1</sup>                                                 | 说明 |
 | ---                                                                                       | ---                                                                       | ---                                                                                                       | ---   |
 | [活动 Log Analytics](log-analytics-activity.md)                                                                   | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | 90 天内数据免费使用<br>数据不受免费层资源占用限额的约束 |
 | [AD 评估](log-analytics-ad-assessment.md)                                           | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | |
@@ -116,7 +116,7 @@ Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremark
 
 社区提供的管理解决方案可从 [Azure 模板库](https://azure.microsoft.com/resources/templates/?term=Per&nbsp;Node&nbsp;(OMS))或直接从作者处获取。
 
-| 管理解决方案               | 产品                                                                     | 定价层                         | 说明 |
+| 管理解决方案               | 产品/服务                                                                     | 定价层                         | 说明 |
 | ---                               | ---                                                                       | ---                                   | ---   |
 | 所有社区提供的解决方案  | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 按&nbsp;节点&nbsp;(OMS)     |   需要将 Log Analytics 工作区链接到自动化帐户 |
 
@@ -124,7 +124,7 @@ Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremark
 
 
 ## <a name="data-collection-details"></a>数据收集详细信息
-以下各表显示了数据收集方法以及有关如何为 Log Analytics 管理解决方案和数据源收集数据的其他详细信息。 这些表按等同于[订阅定价层](https://go.microsoft.com/fwlink/?linkid=827926)的解决方案产品进行分类。 活动 Log Analytics 解决方案可供所有定价层免费使用。
+以下各表显示了数据收集方法以及有关如何为 Log Analytics 管理解决方案和数据源收集数据的其他详细信息。 这些表按等同于[订阅定价层](https://go.microsoft.com/fwlink/?linkid=827926)的解决方案套餐进行分类。 活动 Log Analytics 解决方案可供所有定价层免费使用。
 
 Log Analytics Windows 代理和 System Center Operations Manager 代理实质上相同。 Windows 代理包括附加功能，可允许它连接到 Log Analytics 工作区并通过代理服务器进行路由。 如果使用 Operations Manager 代理，则必须将其定为 OMS 代理才能与 Log Analytics 进行通信。 此表中的 Operations Manager 代理是连接到 Operations Manager 的 OMS 代理。 有关将现有 Operations Manager 环境连接到 Log Analytics 的信息，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md)。
 

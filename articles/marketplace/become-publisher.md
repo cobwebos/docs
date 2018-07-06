@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b3b9228c0733d34ea909a501e8ca6f9e11948381
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 58e3646588e500c4dd5334966d559aaed333b689
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825809"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083155"
 ---
 # <a name="become-a-publisher-in-the-storefronts-on-the-marketplace"></a>成为市场店面的发布者  
 以下步骤帮助你将自己注册为市场店面中的发布者。 根据你与 Microsoft 的当前合作情况以及所选商品类型，下面某些步骤可能不是必需的。  
@@ -30,7 +30,6 @@ ms.locfileid: "34825809"
 | 2 | 创建 Microsoft ID | 15 分钟 | [创建 Microsoft ID](#create-a-microsoft-id) |  
 | 3 | 提交市场提名表格 | 1-3 天 | [提交市场提名表格](#submit-the-marketplace-nomination-form) |  
 | 4 | 在 Microsoft 开发人员中心（简称“开发人员中心”）注册 | 5-10 天 | [在开发人员中心注册](#register-in-dev-center) |  
-| 5 | 登录到 AppSource | 15 分钟 | [登录到 AppSource](#sign-into-appSource) |  
 | 5 |  登录到云合作伙伴门户 | 15 分钟 | [登录到云合作伙伴门户](#sign-into-cloud-partner-portal) |  
 
 ## <a name="register-in-microsoft-partner-network"></a>在 Microsoft 合作伙伴网络中注册  
@@ -81,18 +80,6 @@ Microsoft ID 用于访问云合作伙伴门户。 电子邮件地址必须注册
 >[!Important]
 >在尝试创建开发人员中心帐户之前，请确认公司尚未创建开发人员中心帐户。 
 >*   有关详细信息，请访问[如何在开发人员中心注册](#how-to-register-in-dev-center)部分。  
-
----  
-
-## <a name="sign-into-appsource"></a>登录到 AppSource  
-| 15 分钟 |  
-提名获批准并且已在 MPN 和开发人员中心注册后，将会创建有权访问 AppSource 的市场帐户。 提名批准电子邮件中会发送用于首次登录的凭据。 
-*   若要访问 MPN，请访问“成员资格”页：[partner.microsoft.com/membership](https://partner.microsoft.com/membership)。  
-*   若要访问开发人员中心，请访问“Windows 开发人员中心”页：[dev.windows.com](https://dev.windows.com)。  
-*   若要访问 AppSource，请访问“AppSource”页：[appsource.microsoft.com](https://appsource.microsoft.com)。  
-*   若要访问 Microsoft 云合作伙伴门户，请访问“云合作伙伴门户”页：[cloudpartner.azure.com](https://cloudpartner.azure.com)。  
-*   有关使用云合作伙伴门户的详细信息，请访问“了解”部分：[cloudpartner.azure.com/#Learn](https://cloudpartner.azure.com/#Learn)。  
-*   有关云合作伙伴门户的文档，请访问“文档”部分：[cloudpartner.azure.com/#documentation](https://cloudpartner.azure.com/#documentation)。  
 
 ---  
 

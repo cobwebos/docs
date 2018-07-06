@@ -14,12 +14,12 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 7a58fca716389f35db7312948674e86b3104fe62
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307990"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448537"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 ## <a name="overview"></a>概述
@@ -53,7 +53,7 @@ Azure AD 支持任何 Enterprise Mobility Suite (EMS)、高级或基本许可用
 
 * [密码单一登录](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
 * 密码单一登录代理
-* [组分配](active-directory-accessmanagement-self-service-group-management.md)
+* [组分配](users-groups-roles/groups-self-service-management.md)
 * 自定义密码应用
 * [应用使用情况仪表板/报告](active-directory-passwords-get-insights.md)
 * 最终用户访问门户
@@ -65,13 +65,13 @@ Azure AD 支持任何 Enterprise Mobility Suite (EMS)、高级或基本许可用
 
 * 添加应用程序[应用库](https://azure.microsoft.com/marketplace/active-directory/)或[自定义应用程序](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
 * 将应用程序配置为使用密码单一登录 (SSO)
-* 使用[基于组的分配](active-directory-accessmanagement-group-saasapps.md)，并选择输入共享凭据的选项
+* 使用[基于组的分配](users-groups-roles/groups-saasapps.md)，并选择输入共享凭据的选项
 * 可选：在某些应用程序（例如 Facebook、Twitter 或 LinkedIn）中，可启用 [Azure AD 自动轮换密码](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)选项
 
-还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](authentication/concept-mfa-whichversion.md)），并可使用 [Azure AD 自助服务](active-directory-accessmanagement-self-service-group-management.md)“组管理”来委派有关谁有权访问应用程序的管理权。
+还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](authentication/concept-mfa-whichversion.md)），并可使用 [Azure AD 自助服务](users-groups-roles/groups-self-service-management.md)“组管理”来委派有关谁有权访问应用程序的管理权。
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [使用条件性访问保护应用](active-directory-conditional-access-azure-portal.md)
-* [自助服务组管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
+* [自助服务组管理/SSAA](users-groups-roles/groups-self-service-management.md)
 

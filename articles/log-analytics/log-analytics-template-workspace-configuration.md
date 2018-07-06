@@ -3,22 +3,24 @@ title: 使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区
 description: 可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。
 services: log-analytics
 documentationcenter: ''
-author: richrundmsft
-manager: jochan
+author: mgoedtel
+manager: carmonm
 editor: ''
 ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
-ms.topic: article
-ms.date: 04/25/2018
-ms.author: richrund
-ms.openlocfilehash: 297f15430c64e5de3c10e6f38855664a50d11a8d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: conceptual
+ms.date: 06/11/2018
+ms.author: magoedte
+ms.component: na
+ms.openlocfilehash: 6e23858bcc288b68a70750e7dbcecdf4b43b8870
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133271"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
 可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
@@ -35,6 +37,16 @@ ms.lasthandoff: 04/28/2018
 * 将日志分析配置为索引使用 Azure 诊断收集的数据
 
 本文将提供模板示例，用于演示一些可以通过模板执行的配置。
+
+## <a name="api-versions"></a>API 版本
+下表列出了此示例中使用的资源的 API 版本。
+
+| 资源 | 资源类型 | API 版本 |
+|:---|:---|:---|:---|
+| 工作区   | workspaces    | 2017-03-15-preview |
+| 搜索      | savedSearches | 2017-03-15-preview |
+| 数据源 | datasources   | 2015-11-01-preview |
+| 解决方案    | solutions     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 以下示例将使用本地计算机的模板创建一个工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。  

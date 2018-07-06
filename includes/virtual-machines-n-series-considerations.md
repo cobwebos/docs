@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 03/19/2018
+ms.date: 06/19/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3267f649e360c512a5523ce1d5948719a1969934
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4bec8c8ea29c10b8c0d0351a41ebc9183bb45d4f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32297580"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449505"
 ---
 ## <a name="deployment-considerations"></a>部署注意事项
 

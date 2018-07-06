@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 0c870b0c8de648ac65bec6857bf850c2913e7aeb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 149f91f3091f08da2e54458d708a17da928c1972
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412622"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131729"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>从 Apache Storm on HDInsight 写入 HDFS
 
-了解如何使用 Storm 将数据写入到 Apache Storm on HDInsight 使用的 HDFS 兼容存储。 HDInsight 可以使用 Azure 存储和 Azure Data Lake Store 作为 HDFS 兼容的存储。 Storm 提供可将数据写入 HDFS 的 [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 组件。 本文档提供有关从 HdfsBolt 写入上述任一存储类型的信息。 
+了解如何使用 Storm 将数据写入到 Apache Storm on HDInsight 使用的 HDFS 兼容存储。 HDInsight 可以使用 Azure 存储和 Azure Data Lake Store 作为 HDFS 兼容的存储。 Storm 提供可将数据写入 HDFS 的 [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 组件。 本文档提供有关从 HdfsBolt 写入上述任一存储类型的信息。 
 
 > [!IMPORTANT]
 > 本文档中使用的示例拓扑依赖于 Storm on HDInsight 随附的组件。 对其他 Apache Storm 群集使用此拓扑时，可能需要修改此拓扑才能让它配合 Azure Data Lake Store 工作。
@@ -65,7 +65,7 @@ HdfsBolt 使用提供的文件方案来了解如何写入 HDFS。 在 HDInsight 
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | 与群集关联的非默认（其他）Azure 存储帐户。 |
 | `adl://STORENAME/` | 群集使用的 Data Lake Store 的根目录。 使用此方案可以访问包含群集文件系统的目录外部的数据。 |
 
-有关详细信息，请参阅 apache.org 上的 [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 参考文档。
+有关详细信息，请参阅 apache.org 上的 [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 参考文档。
 
 ### <a name="example-configuration"></a>示例配置
 
