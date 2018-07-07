@@ -115,6 +115,8 @@
   items:
     - name: 常见问题
       href: FAQs.md
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
     - name: 导出或删除帐户数据

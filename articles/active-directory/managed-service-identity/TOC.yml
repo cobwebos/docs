@@ -66,6 +66,8 @@
           href: qs-configure-powershell-windows-vm.md
         - name: Azure 资源管理器模板
           href: qs-configure-template-windows-vm.md
+        - name: REST
+          href: qs-configure-rest-vm.md
         - name: Azure SDK
           href: qs-configure-sdk-windows-vm.md
     - name: 为 Azure VMSS 配置标识
@@ -78,6 +80,8 @@
           href: qs-configure-powershell-windows-vmss.md
         - name: Azure 资源管理器模板
           href: qs-configure-template-windows-vmss.md
+        - name: REST
+          href: qs-configure-rest-vmss.md
     - name: 使用 VM MSI
       items:
         - name: 获取访问令牌
@@ -96,6 +100,8 @@
           href: how-to-manage-ua-identity-powershell.md
         - name: Azure 资源管理器模板
           href: how-to-manage-ua-identity-arm.md
+        - name: REST
+          href: how-to-manage-ua-identity-rest.md
 - name: 引用
   items:
     - name: CLI
