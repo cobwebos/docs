@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: eb01d31d00177560aca3aa71750cd2d1ec096f8f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 1b59409e43a23dd63a6697a44a20df079a751516
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938546"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866852"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 2.0 配合使用
 
-你可以按照设置这篇文章中的步骤 Azure 命令行界面 (CLI) 来管理 Azure 堆栈开发工具包资源从 Linux、 Mac 和 Windows 客户端平台。
+可以按照这篇文章，若要将 Azure 命令行接口 (CLI) 设置为从 Linux、 Mac 和 Windows 客户端平台管理 Azure Stack 开发工具包资源中的步骤。
 
 ## <a name="install-cli"></a>安装 CLI
 
-登录到你的开发工作站和安装 CLI。 Azure Stack 需要 Azure CLI 2.0 版。 可以使用[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 一文中所述的步骤来安装它。 若要验证安装是否成功，请打开终端或命令提示符窗口，并运行以下命令：
+登录到开发工作站并安装 CLI。 Azure Stack 需要 Azure CLI 2.0 版。 可以使用[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 一文中所述的步骤来安装它。 若要验证安装是否成功，请打开终端或命令提示符窗口，并运行以下命令：
 
 ```azurecli
 az --version
@@ -36,33 +36,33 @@ az --version
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
 
-1. 获取从 Azure 堆栈 CA 根证书[Azure 堆栈运算符](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)和信任它。 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
+1. 从 [Azure Stack 运营商](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)获取 Azure Stack CA 根证书，并信任该证书。 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
 
-2. 查找您的计算机上的证书位置。 位置可能有所不同具体取决于你已在其中安装 Python。 你将需要具有[pip](https://pip.pypa.io)和[certifi](https://pypi.org/project/certifi/)安装的模块。 你可以使用以下 Python 命令从 bash 提示符：
+2. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 需要安装 [pip](https://pip.pypa.io) 和 [certifi](https://pypi.org/project/certifi/) 模块。 可在 bash 提示符下使用以下 Python 命令：
 
   ```bash  
     python -c "import certifi; print(certifi.where())"
   ```
 
-  记下证书位置。 例如，`~/lib/python3.5/site-packages/certifi/cacert.pem`。 你特定的路径取决于您的操作系统和所安装的 Python 版本。
+  记下证书位置。 例如，`~/lib/python3.5/site-packages/certifi/cacert.pem`。 具体的路径取决于安装的 Python 的 OS 和版本。
 
-### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>在云内设置的开发计算机的路径
+### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>设置开发计算机在云中的路径
 
-如果你从在 Azure 堆栈环境内创建的 Linux 计算机中运行 CLI，运行以下 bash 命令使用的路径为证书。
+如果从 Azure Stack 环境中创建的 Linux 计算机运行 CLI，请结合证书的路径运行以下 bash 命令。
 
 ```bash
 sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
 ```
 
-### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>在云外部设置的开发计算机的路径
+### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>设置开发计算机在云外部的路径
 
-如果你从一台计算机运行 CLI**外部**Azure 堆栈环境：  
+如果从计算机运行 CLI**外部**Azure Stack 环境：  
 
-1. 你必须设置[VPN 连接到 Azure 堆栈](azure-stack-connect-azure-stack.md)。
+1. 必须[与 Azure Stack 建立 VPN 连接](azure-stack-connect-azure-stack.md)。
 
-2. 复制你从 Azure 堆栈运算符获取的 PEM 证书，并记下文件 (PATH_TO_PEM_FILE) 的位置。
+2. 复制从 Azure Stack 运营商获取的 PEM 证书，并记下文件的位置 (PATH_TO_PEM_FILE)。
 
-3. 运行以下命令，具体取决于你开发工作站的操作系统上结束。
+3. 根据开发工作站的 OS 运行以下命令。
 
 #### <a name="linux"></a>Linux
 
@@ -210,6 +210,6 @@ az group create \
 
 [使用 Azure CLI 部署模板](azure-stack-deploy-template-command-line.md)
 
-[为 Azure 堆栈用户 （运算符） 启用 Azure CLI](..\azure-stack-cli-admin.md)
+[为 Azure Stack 用户启用 Azure CLI（操作员）](..\azure-stack-cli-admin.md)
 
 [管理用户权限](azure-stack-manage-permissions.md)
