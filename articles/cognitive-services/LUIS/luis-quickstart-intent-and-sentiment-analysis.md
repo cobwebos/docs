@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: v-geberr
-ms.openlocfilehash: ac959989dbe64460025bfba84df7b6f22c3c1c04
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 1a48810287c1639910db8e39af2da61d836b2988
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958423"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340927"
 ---
-# <a name="tutorial-create-app-that-returns-sentiment-along-with-intent-prediction"></a>教程：创建可返回情绪和意向预测结果的应用
+# <a name="tutorial-8--add-sentiment-analysis"></a>教程：8.  添加情绪分析
 在本教程中，我们将创建一个应用，用于演示如何从陈述中提取积极、消极和中性的情绪。
 
 <!-- green checkmark -->
@@ -27,12 +27,12 @@ ms.locfileid: "36958423"
 > * 训练并发布应用
 > * 查询应用终结点以查看 LUIS JSON 响应 
 
-本文需要一个免费的 [LUIS][LUIS] 帐户，以便能够创作 LUIS 应用程序。
+本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便创作 LUIS 应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
 如果还没有 [keyPhrase 实体](luis-quickstart-intent-and-key-phrase.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) Github 存储库中。
 
-若要保留原始人力资源应用，请在“设置”页上克隆版本，并将其命名为 `sentiment`。[](luis-how-to-manage-versions.md#clone-a-version) 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
+若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `sentiment`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
 ## <a name="sentiment-analysis"></a>情绪分析
 情绪分析是确定用户陈述是积极、消极还是中性的功能。 
@@ -212,13 +212,10 @@ sentimentAnalysis 是积极的，得分为 0.86。
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和陈述中的情绪数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"] 
 > [使用 C# 调用 LUIS 终结点 API](luis-get-started-cs-get-intent.md) 
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

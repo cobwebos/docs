@@ -71,8 +71,6 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: 使用模式
           href: luis-tutorial-pattern.md
-        - name: 使用短语列表
-          href: luis-tutorial-interchangeable-phrase-list.md
 - name: 示例
   items:
     - name: 代码示例
@@ -95,7 +93,7 @@
           href: luis-concept-intent.md
         - name: 实体
           href: luis-concept-entity-types.md
-        - name: 表达
+        - name: 陈述
           href: luis-concept-utterance.md
         - name: 角色
           href: luis-concept-roles.md
@@ -239,7 +237,7 @@
       href: luis-boundaries.md
     - name: 预构建的实体参考
       items:
-        - name: 基于区域性的实体数
+        - name: 每个语言区域的实体
           href: luis-reference-prebuilt-entities.md
         - name: 年龄实体
           href: luis-reference-prebuilt-age.md

@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/26/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: b718ed505babd2df6487aecd3a87f17590aef2b9
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061241"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130884"
 ---
-# <a name="tutorial-create-app-that-uses-simple-entity"></a>教程：创建使用简单实体的应用
+# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>教程：6. 添加简单实体和短语列表
 在本教程中，我们将使用**简单**实体创建一个应用，用于演示如何从陈述中提取机器学习的数据。
 
 <!-- green checkmark -->
@@ -32,9 +32,9 @@ ms.locfileid: "37061241"
 本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便创作 LUIS 应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
-如果尚未获得[分层实体](luis-quickstart-intent-and-hier-entity.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的新应用中。 要导入的应用存在于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) Github 存储库。
+如果尚未获得[分层实体](luis-quickstart-intent-and-hier-entity.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) Github 存储库中。
 
-若要保留原始人力资源应用，请在“设置”页上克隆版本，并将其命名为 `simple`。[](luis-how-to-manage-versions.md#clone-a-version) 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。  
+若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `simple`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。  
 
 ## <a name="purpose-of-the-app"></a>应用的用途
 此应用演示如何从陈述中提取数据。 假设某个聊天机器人包含以下陈述：
@@ -45,7 +45,7 @@ ms.locfileid: "37061241"
 |请提交我的申请工程职位的简历。|工程|
 |填写 123456 工作的申请|123456|
 
-本教程会添加用于提取工作名称的新实体。 用于提取特定工作编号的功能显示在正则表达式[教程](luis-quickstart-intents-regex-entity.md)中。 
+本教程会添加用于提取工作名称的新实体。 
 
 ## <a name="purpose-of-the-simple-entity"></a>简单实体的用途
 在此 LUIS 应用中，简单实体的用途是让 LUIS 知道工作名称是什么，以及在陈述中的哪个位置可以找到该工作名称。 根据选择的词汇和陈述的长度，工作在陈述中的位置因陈述而异。 LUIS 需要跨所有意向获取任一陈述的工作示例。  
@@ -85,7 +85,7 @@ ms.locfileid: "37061241"
 
     ![创建名称为“工作”、类型为“简单”的简单实体弹出模式对话框](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. 在陈述`Submit resume for engineering position`中，将“工程”一词标记为“工作”实体。 选择“工程”一词，然后从弹出菜单中选择“工作”。 
+5. 在陈述 `Submit resume for engineering position` 中，将 `engineering` 一词标记为“工作”实体。 选择 `engineering` 一词，然后从弹出菜单中选择“工作”。 
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "LUIS 的屏幕截图，其中已突出标记工作实体")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
@@ -292,7 +292,7 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "“创建新的短语列表”弹出对话框的屏幕截图")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    如果需要将更多词汇添加到短语列表中，请查看建议的词汇，然后添加相关的。 
+    如果需要将更多词汇添加到短语列表中，请查看“相关值”，然后添加相关值。 
 
 4. 选择“保存”，激活短语列表。
 
@@ -369,7 +369,7 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 添加短语列表增强了列表中词汇的信号，但**不可**将其用作完全匹配。 短语列表中有多个工作的第一个字为 `lead`，而且也有名为 `welder` 的工作，但是没有名为 `lead welder` 的工作。 此工作短语列表可能不完整。 在定期[查看终结点陈述](label-suggested-utterances.md)和查找其他工作词汇时，请将其添加到短语列表， 然后重新训练并重新发布。
 
 ## <a name="what-has-this-luis-app-accomplished"></a>此 LUIS 应用实现了哪些目的？
-此应用包含一个简单实体和一个由词汇组成的短语列表，识别了自然语言查询意向并返回了消息数据。 
+此应用包含一个简单实体和一个由词汇组成的短语列表，识别了自然语言查询意向并返回了作业数据。 
 
 现在，聊天机器人已获得足够的信息，可以确定申请工作的主要操作、该操作的参数以及所推荐的具体工作。 
 
@@ -377,9 +377,9 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 LUIS 已完成此请求。 通话应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以便使用第三方 API 向人力资源代表发送工作信息。 如果机器人或调用方应用程序有其他编程选项，LUIS 不会执行相关的工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何添加预先生成的 keyPhrase 实体](luis-quickstart-intent-and-key-phrase.md)
+> [添加预生成的 keyphrase 实体](luis-quickstart-intent-and-key-phrase.md)

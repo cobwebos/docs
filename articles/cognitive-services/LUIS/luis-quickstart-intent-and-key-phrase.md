@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9acdfdde667d37bac5b96e4497b3e86d2cdeccb8
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: f3808620c4527f2971d8eb6d53a09c893b162b59
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063402"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340944"
 ---
-# <a name="tutorial-learn-how-to-return-data-from-keyphrase-entity"></a>教程：了解如何从 keyPhrase 实体返回数据 
+# <a name="tutorial-7-add-keyphrase-entity"></a>教程：7. 添加 keyPhrase 实体 
 在本教程中，我们将使用一个应用，它演示了如何从陈述中提取关键主题。
 
 <!-- green checkmark -->
@@ -32,7 +32,7 @@ ms.locfileid: "37063402"
 ## <a name="before-you-begin"></a>开始之前
 如果尚未获得[简单实体](luis-quickstart-primary-and-secondary-data.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) Github 存储库中。
 
-若要保留原始人力资源应用，请在“设置”页上克隆版本，并将其命名为 `keyphrase`。[](luis-how-to-manage-versions.md#clone-a-version) 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
+若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `keyphrase`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
 ## <a name="keyphrase-entity-extraction"></a>keyPhrase 实体提取
 关键主题由预生成的实体 **keyPhrase** 提供。 此实体返回陈述中的关键主题。
@@ -101,7 +101,7 @@ ms.locfileid: "37063402"
 
     ![“发布”页的屏幕截图，其中已突出显示终结点 URL](media/luis-quickstart-intent-and-key-phrase/hr-endpoint-url-inline.png )
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `does form hrf-123456 cover the new dental benefits and medical plan`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 
+2. 将光标定位到地址中 URL 的末尾，并输入 `does form hrf-123456 cover the new dental benefits and medical plan`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
 ```
 {
@@ -201,10 +201,10 @@ ms.locfileid: "37063402"
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和陈述中的 keyPhrase 数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 在左上侧菜单中选择“我的应用”。 在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [创建可返回情绪和意向预测结果的应用](luis-quickstart-intent-and-sentiment-analysis.md)
+> [将情绪分析添加到应用](luis-quickstart-intent-and-sentiment-analysis.md)
 

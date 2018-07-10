@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6ba45de8ef41c8a57ca9c042a304e323a4fac263
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335554"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081687"
 ---
-# <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>教程：创建使用分层实体的应用
+# <a name="tutorial-5-add-hierarchical-entity"></a>教程：5. 添加分层的实体
 在本教程中，我们将创建一个应用，用于演示如何根据上下文查找相关的数据片段。 
 
 <!-- green checkmark -->
@@ -32,7 +32,7 @@ ms.locfileid: "36335554"
 ## <a name="before-you-begin"></a>开始之前
 如果还没有[列表实体](luis-quickstart-intent-and-list-entity.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) Github 存储库中。
 
-若要保留原始人力资源应用，请在“设置”页上克隆版本，并将其命名为 `hier`。[](luis-how-to-manage-versions.md#clone-a-version) 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
+若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `hier`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
 ## <a name="purpose-of-the-app-with-this-entity"></a>包含此实体的应用的用途
 此应用用于确定在何处将员工从原始位置（大楼和办公室）移到目标位置（大楼和办公室）。 它使用分层实体来确定陈述中的位置。 
