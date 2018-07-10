@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 68c241833aab756bfc5e71c03da5d4175401910d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5408d20a736f262e95ce7014c385b50521967ad
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335816"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127849"
 ---
-# <a name="tutorial-create-app-using-a-list-entity"></a>教程：使用列表实体创建应用
+# <a name="tutorial-4-add-list-entity"></a>教程：4. 添加列表实体
 在本教程中，我们将创建一个应用，用于演示如何获取与预定义列表匹配的数据。 
 
 <!-- green checkmark -->
@@ -30,9 +30,9 @@ ms.locfileid: "36335816"
 本文需要一个免费的 [LUIS](luis-reference-regions.md#luis-website) 帐户，以便能够创作 LUIS 应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
-如果还没有正则表达式实体[自定义域](luis-quickstart-intents-regex-entity.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) Github 存储库中。
+如果尚未获得 [regex 实体](luis-quickstart-intents-regex-entity.md)教程中所述的人力资源应用，请将 JSON [导入](create-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) Github 存储库中。
 
-若要保留原始人力资源应用，请在“设置”页上克隆版本，并将其命名为 `list`。[](luis-how-to-manage-versions.md#clone-a-version) 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
+若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `list`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
 
 ## <a name="purpose-of-the-list-entity"></a>列表实体的用途
 此应用预测的陈述涉及将员工从一个大楼移到另一个大楼。 此应用使用列表实体来提取员工。 可以使用姓名、电话号码、电子邮件或美国联邦社会安全号码来表示员工。 
@@ -97,8 +97,6 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
     |将 234-56-7891 移到 hh-2345|
 
     [![“意向”页的屏幕截图，其中已突出显示新陈述](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
-
-    此应用程序包含从前一教程添加的预生成数字实体，因此已标记每个编号。 此信息可能对客户端应用程序而言已足够，但不会使用类型来标记编号。 使用适当的名称创建新实体可以在从 LUIS 返回实体后，让客户端应用程序处理该实体。
 
 ## <a name="create-an-employee-list-entity"></a>创建员工列表实体
 **MoveEmployee** 意向有陈述以后，LUIS 需了解什么是员工。 
@@ -298,10 +296,10 @@ LUIS 在训练之前，并不知道意向和实体（模型）发生的变化。
 LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要 LUIS 应用时，请将其删除。 在左上方的菜单上选择“Mu 应用”。 在应用列表中选择应用名称右侧的省略号图标 (...)，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何添加分层实体](luis-quickstart-intent-and-hier-entity.md)
+> [将分层实体添加到应用](luis-quickstart-intent-and-hier-entity.md)
 

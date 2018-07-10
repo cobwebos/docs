@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: service-bus-messaging
+author: sethmanheim
+ms.service: service-bus-messaging
+ms.topic: include
+ms.date: 06/29/2018
+ms.author: sethm
+ms.custom: include file
+ms.openlocfilehash: bad7e87cb194fb7d8846e7e675881658a1d33b1e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138154"
+---
 请确保已创建服务总线命名空间，如[此处][namespace-how-to]所示。
 
 1. 登录到 [Azure 门户][azure-portal]。

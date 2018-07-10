@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 182d65ea955cfa2cac611080c30e145c26284369
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 3fe0d3836046ad143e746503210099ee5c640a08
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751473"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129092"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -315,7 +315,7 @@ Batch 提供作业准备任务来设置作业前的执行。 作业释放任务�
 * **作业准备任务**：在任何其他作业任务执行之前，作业准备任务在计划要运行任务的所有计算节点上运行。 你可以使用作业准备任务可以复制所有任务共享的、但对作业唯一的数据。
 * **作业释放任务**：作业完成后，作业释放任务将在池中至少运行了一个任务的每个节点上运行。 你可以使用作业释放任务可删除作业准备任务所复制的数据，或压缩并上传诊断日志数据。
 
-作业准备和释放任务允许指定调用任务时要运行的命令行。 这些任务提供许多功能，例如文件下载、提升权限的执行、自定义环境变量、最大执行持续时间、重试计数和文件保留时间。
+作业准备和释放任务允许指定调用任务时要运行的命令行。 这些任务提供许多功能，例如文件下载、以提升权限方式执行、自定义环境变量、最大执行持续时间、重试计数和文件保留时间。
 
 有关作业准备和释放任务的详细信息，请参阅 [在 Azure Batch 计算节点上运行作业准备和完成任务](batch-job-prep-release.md)。
 
@@ -506,8 +506,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 * 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
 * 在 [Get started with the Azure Batch Library for .NET](batch-dotnet-get-started.md)（适用于 .NET 的 Azure Batch 库入门）中逐步演练一个示例 Batch 应用程序。 另请参阅该教程的 [Python 版本](batch-python-tutorial.md) ，其中介绍了如何在 Linux 计算节点上运行工作负荷。
 * 下载并安装 [BatchLabs][batch_labs]，供开发 Batch 解决方案时使用。 借助 BatchLabs 来创建、调试和监视 Azure Batch 应用程序。 
-* 了解如何 [创建 Linux 计算节点池](batch-linux-nodes.md)。
-* 访问 MSDN 上的 [Azure Batch 论坛][batch_forum]。 无论你是新手还是 Batch 专家，该论坛都是一个提问的好去处。
+* 请参阅社区资源，包括 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)、[Batch 社区存储库](https://github.com/Azure/Batch)和 MSDN 上的 [Azure Batch 论坛][batch_forum]。 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 

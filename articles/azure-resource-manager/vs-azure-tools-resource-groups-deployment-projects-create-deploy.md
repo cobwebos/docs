@@ -1,37 +1,32 @@
 ---
-title: Visual Studio Azure 资源组项目 | Microsoft 文档
+title: Visual Studio Azure 资源组项目 | Microsoft Docs
 description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部署到 Azure。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 4bd084c8-0842-4a10-8460-080c6a085bec
 ms.service: azure-resource-manager
 ms.devlang: multiple
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/09/2018
+ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd2869b35d92ea92261223131476d7cc8eb854eb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: af8b91ee20ccb4d16e7666c317ea7d08a265e6d6
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360098"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435538"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
-使用 Visual Studio 和 [Azure SDK](https://azure.microsoft.com/downloads/)可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，并将该基础结构与代码一起部署。 或者，可以定义虚拟机、虚拟网络和存储帐户，并连同虚拟机上执行的脚本一起部署该基础结构。 使用 Azure 资源组部署项目，只需单个可重复的操作即可部署所有需要的资源。 有关部署和管理资源的详细信息，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
+使用 Visual Studio 可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，并将该基础结构与代码一起部署。 Visual Studio 许多不同的入门模板用于部署常见方案。 本文部署 Web 应用和 SQL 数据库。  
 
-Azure 资源组项目包含 Azure 资源管理器 JSON 模板，用于定义部署到 Azure 的资源。 若要了解资源管理器模板的元素，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。 Visual Studio 允许编辑这些模板，并提供工具来简化模板的使用。
-
-本文部署 Web 应用和 SQL 数据库。 但是，任何类型的资源的部署步骤几乎是相同的。 可以轻松地部署虚拟机及其相关资源。 Visual Studio 许多不同的入门模板用于部署常见方案。
-
-本文介绍 Visual Studio 2017。 如果使用 Visual Studio 2015 Update 2 以及用于 .NET 2.9 的 Microsoft Azure SDK，或者将 Visual Studio 2013 与 Azure SDK 2.9 配合使用，则体验大致相同。 可以使用 2.6 或更高版本的 Azure SDK；但是，用户界面体验可能会不同于本文所示的用户界面。 强烈建议先安装最新版本的 [Azure SDK](https://azure.microsoft.com/downloads/) ，再开始执行以下步骤。 
+本文介绍如何使用[装有 Azure 开发和 ASP.NET 工作负荷的 Visual Studio 2017](/dotnet/azure/dotnet-tools)。 如果使用 Visual Studio 2015 Update 2 以及用于 .NET 的 Microsoft Azure SDK 2.9，或者将 Visual Studio 2013 与 Azure SDK 2.9 配合使用，则体验大致相同。
 
 ## <a name="create-azure-resource-group-project"></a>创建 Azure 资源组项目
-在此过程中，使用“Web 应用 + SQL”模板创建 Azure 资源组项目  。
+在本部分，我们将使用“Web 应用 + SQL”模板创建 Azure 资源组项目。
 
 1. 在 Visual Studio 中，依次选择“文件”、“新建项目”，选择 **C#** 或 **Visual Basic**（选择哪种语言对以后的阶段没有任何影响，因为这些项目仅包含 JSON 和 PowerShell 的内容）。 然后选择“云”和“Azure 资源组”项目。
    
@@ -56,18 +51,18 @@ Azure 资源组项目包含 Azure 资源管理器 JSON 模板，用于定义部�
    
    | 文件名 | 说明 |
    | --- | --- |
-   | Deploy-AzureResourceGroup.ps1 |一个 PowerShell 脚本，调用 PowerShell 命令以部署到 Azure 资源管理器。<br />**请注意** Visual Studio 使用此 PowerShell 脚本来部署模板。 对此脚本进行任何更改会影响 Visual Studio 中的部署，因此请务必小心。 |
-   | WebSiteSQLDatabase.json |Resource Manager 模板，定义要部署到 Azure 的基础结构，以及在部署期间可以提供的参数。 它还定义各资源之间的依赖关系，以便 Resource Manager 按正确的顺序部署资源。 |
+   | Deploy-AzureResourceGroup.ps1 |一个 PowerShell 脚本，运行 PowerShell 命令以部署到 Azure 资源管理器。<br />**请注意** Visual Studio 使用此 PowerShell 脚本来部署模板。 对此脚本进行任何更改会影响 Visual Studio 中的部署，因此请务必小心。 |
+   | WebSiteSQLDatabase.json |资源管理器模板，定义要部署到 Azure 的基础结构，以及在部署期间可以提供的参数。 它还定义各资源之间的依赖关系，以便资源管理器按正确的顺序部署资源。 |
    | WebSiteSQLDatabase.parameters.json |包含模板所需值的参数文件。 需要传入这些参数值来自定义每个部署。 |
    
     所有资源组部署项目都包含这些基本文件。 其他项目可能包含其他文件以支持其他功能。
 
-## <a name="customize-the-resource-manager-template"></a>自定义 Resource Manager 模板
-可以通过修改 JSON 模板（描述要部署的资源）来自定义部署项目。 JSON 是“JavaScript 对象表示法”的缩写，是一种易于使用的序列化数据格式。 JSON 文件使用在每个文件顶部引用的架构。 如果想要了解该架构，可以下载并分析它。 架构定义所允许的元素、字段的类型和格式、可能的枚举值，等等。 若要了解资源管理器模板的元素，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
+## <a name="customize-the-resource-manager-template"></a>自定义资源管理器模板
+可以通过修改 JSON 模板（描述要部署的资源）来自定义部署项目。 JSON 是“JavaScript 对象表示法”的缩写，是一种易于使用的序列化数据格式。 JSON 文件使用在每个文件顶部引用的架构。 如果想要了解该架构，可以下载并分析它。 架构定义所允许的元素、字段的类型和格式，以及属性的可能值。 若要了解资源管理器模板的元素，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
 
 若要使用模板，请打开 **WebSiteSQLDatabase.json**。
 
-Visual Studio 编辑器提供了工具来帮助编辑 Resource Manager 模板。 “JSON 大纲”窗口可让你轻松查看模板中定义的元素。
+Visual Studio 编辑器提供了工具来帮助编辑资源管理器模板。 “JSON 大纲”窗口可让你轻松查看模板中定义的元素。
 
 ![显示 JSON 大纲](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-json-outline.png)
 
@@ -79,7 +74,7 @@ Visual Studio 编辑器提供了工具来帮助编辑 Resource Manager 模板。
 
 ![添加资源](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource.png)
 
-对于本教程，请选择“存储帐户”并指定其名称  。 提供一个名称，该名称不超过 11 个字符，并且只包含数字和小写字母。
+对于本教程，请选择“存储帐户”并指定其名称。 提供一个名称，该名称不超过 11 个字符，并且只包含数字和小写字母。
 
 ![添加存储](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
 
@@ -102,7 +97,7 @@ Visual Studio 编辑器提供了工具来帮助编辑 Resource Manager 模板。
 }
 ```
 
-Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些属性可用。 例如，若要编辑应用服务计划的属性，请导航到 **HostingPlan** 资源，并为 **properties** 添加值。 请注意，Intellisense 显示可用的值，并提供该值的描述。
+Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些属性可用。 例如，若要编辑应用服务计划的属性，请导航到 **HostingPlan** 资源，并为 **properties** 添加值。 请注意，Intellisense 显示可用的值，并提供该值的说明。
 
 ![显示 Intellisense](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
 
@@ -196,7 +191,7 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些�
    
    * “其他属性”包含要推送到 Azure 存储的 Web 部署包暂存位置。 请记下文件夹 (ExampleApp) 和文件 (package.zip)。 用户需要知道这些值，因为在部署应用时需提供这些值作为参数。 
    * “包含文件路径”包含创建包所在的路径。 “包含目标”包含部署执行的命令。 
-   * 默认值“生成并打包”可让部署生成并创建 Web 部署包 (package.zip)  。  
+   * 默认值“生成并打包”可让部署生成并创建 Web 部署包 (package.zip)。  
      
      不需要使用发布配置文件，因为部署将从属性中获取所需的信息来创建包。
 7. 返回到 WebSiteSQLDatabase.json，向模板添加资源。
@@ -209,7 +204,7 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些�
    
     ![添加 Web 部署](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/set-new-parameters.png)
    
-    对于“项目存储帐户”，选择部署此资源组时所用的帐户 。
+    对于“项目存储帐户”，选择部署此资源组时所用的帐户。
 10. 部署完毕后，请在门户中选择 Web 应用。 选择 URL 以浏览到此站点。
     
      ![浏览站点](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/browse-site.png)
@@ -218,11 +213,11 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些�
      ![显示已部署的应用](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
 ## <a name="add-an-operations-dashboard-to-your-deployment"></a>将操作仪表板添加到部署
-现在，我们已创建解决方案，可以到最后阶段使其可操作了。 并不仅限于通过 Visual Studio 界面提供的资源。 我们可以利用共享仪表板，它们以 JSON 格式定义为资源。 可以通过编辑模板和添加自定义资源来执行此操作。 
+并不仅限于通过 Visual Studio 界面提供的资源。 可将自定义资源添加到模板来自定义部署。 若要显示如何添加资源，请添加一个操作仪表板来管理部署的资源。
 
-1. 打开 WebsiteSqlDeploy.json 文件，在存储帐户资源后但在资源节的右 ] 前添加以下 json 代码块。
+1. 打开 WebsiteSqlDeploy.json 文件，在存储帐户资源后但在资源节的右 `]` 前添加以下 JSON。
 
-```json
+  ```json
     ,{
       "properties": {
         "lenses": {
@@ -297,23 +292,19 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些�
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-}
-```
+  }
+  ```
 
-2. 重新部署资源组，然后在 Azure 门户中查看仪表板时，将看到已添加到所选列表的共享仪表板。 
+2. 重新部署资源组。 在 Azure 门户中查看仪表板，可以看到，共享的仪表板已添加到所选列表。
 
-    ![自定义仪表板](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
+   ![自定义仪表板](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
 
+3. 选择仪表板。
 
+   ![自定义仪表板](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
 
-   > [!NOTE] 
-   > 可以使用 RBAC 组管理对仪表板的访问权限，部署资源后可以将自定义项发布到资源。 请注意，重新部署资源组时，会将其重置回模板中的默认值。 应考虑使用自定义项更新模板。 有关如何执行此操作的帮助，请参阅[以编程方式创建 Azure 仪表板](../azure-portal/azure-portal-dashboards-create-programmatically.md)
+可以使用 RBAC 组管理对仪表板的访问。 部署后，还可以自定义仪表板的外观。 但是，如果重新部署资源组，则模板中的仪表板将重置为其默认状态。 有关创建仪表板的详细信息，请参阅[以编程方式创建 Azure 仪表板](../azure-portal/azure-portal-dashboards-create-programmatically.md)。
 
-
-    ![自定义仪表板](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
-    
-    
 ## <a name="next-steps"></a>后续步骤
-* 若要了解如何通过门户管理资源，请参阅[使用 Azure 门户管理 Azure 资源](resource-group-portal.md)。
 * 若要详细了解模板，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
 

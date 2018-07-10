@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 7f8e8d920884c611965ff760bb0369e08163356e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 52d5977b2a454dec803ad1233fcb12cc9573521c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029598"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100345"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB：数据迁移工具
 
@@ -140,7 +140,7 @@ ms.locfileid: "37029598"
 > 
 > 
 
-借助 MongoDB 导出 JSON 文件源导入程序选项，可以导入一个或多个通过 mongoexport 实用程序生成的 JSON 文件。  
+借助 MongoDB 导出 JSON 文件源导入程序选项，可以导入一个或多个通过 mongoexport 实用工具生成的 JSON 文件。  
 
 ![MongoDB 导出源选项的屏幕截图](./media/import-data/mongodbexportsource.png)
 
@@ -209,7 +209,7 @@ CSV 文件源导入程序选项可用于导入一个或多个 CSV 文件。 添�
 ## <a id="AzureTableSource"></a>从 Azure 表存储导入
 借助 Azure 表存储源导入程序选项，可以从单个 Azure 表存储表导入。 可以选择性地筛选要导入的表实体。 
 
-从 Azure 表存储导入的数据可以输出到 Azure Cosmos DB 表和实体以用于表 API，或者输出到集合和文档以用于 SQL API。 不过，表 API 只能在命令行实用程序中用作目标，无法使用数据迁移工具用户界面导出到表 API。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table-import.md)。 
+从 Azure 表存储导入的数据可以输出到 Azure Cosmos DB 表和实体以用于表 API，或者输出到集合和文档以用于 SQL API。 不过，表 API 只能在命令行实用工具中用作目标，无法使用数据迁移工具用户界面导出到表 API。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table-import.md)。 
 
 ![Azure 表存储源选项的屏幕截图](./media/import-data/azuretablesource.png)
 
@@ -359,7 +359,7 @@ Azure Cosmos DB 帐户连接字符串可从 Azure 门户的“密钥”页中检
 > 
 > 
 
-若要导入到单个 DocumentDB 集合，请输入要将数据导入到的集合的名称，然后单击“添加”按钮。 若要导入到多个集合，请分别输入每个集合名称，或使用以下语法指定多个集合： collection_prefix [开始索引 - 结束索引]。 通过前述语法指定多个集合时，请注意以下指导原则：
+若要导入到单个集合，请输入要将数据导入到的集合的名称，然后单击“添加”按钮。 若要导入到多个集合，请分别输入每个集合名称，或使用以下语法指定多个集合： collection_prefix [开始索引 - 结束索引]。 通过前述语法指定多个集合时，请注意以下指导原则：
 
 1. 仅支持整数范围名称模式。 例如，指定 collection[0-3] 会创建以下集合：collection0、collection1、collection2 和 collection3。
 2. 可以使用缩写的语法：collection[3] 创建步骤 1 中所述的同一组集合。
@@ -423,7 +423,7 @@ Azure Cosmos DB 帐户连接字符串可从 Azure 门户的“密钥”页中检
 > 
 > 
 
-要导入到单个 DocumentDB 集合，请输入将向其中导入数据的集合的名称，然后单击“添加”按钮。 若要导入到多个集合，请分别输入每个集合名称，或使用以下语法指定多个集合： collection_prefix [开始索引 - 结束索引]。 通过前述语法指定多个集合时，请注意以下指导原则：
+若要导入到单个集合，请输入将向其中导入数据的集合的名称，然后单击“添加”按钮。 若要导入到多个集合，请分别输入每个集合名称，或使用以下语法指定多个集合： collection_prefix [开始索引 - 结束索引]。 通过前述语法指定多个集合时，请注意以下指导原则：
 
 1. 仅支持整数范围名称模式。 例如，指定 collection[0-3] 会创建以下集合：collection0、collection1、collection2 和 collection3。
 2. 可以使用缩写的语法：collection[3] 创建步骤 1 中所述的同一组集合。
@@ -450,7 +450,7 @@ Azure Cosmos DB 帐户连接字符串可从 Azure 门户的“密钥”页中检
 
 Azure Cosmos DB - 顺序记录导入程序具有下列高级附加选项：
 
-1. 并行请求数：工具默认设置为两个并行请求。 如果要导入的文档很小，请考虑增加并行请求的数量。 如果此数字提高得过多，则导入可能会遇到限制。
+1. 并行请求数：工具默认设置为两个并行请求。 如果要导入的文档很小，请考虑增加并行请求的数量。 如果此数字提高得过多，则导入可能会遇到速率限制。
 2. 禁用自动生成 ID︰如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
 3. 更新现有文档︰工具将默认设置为不替换存在 ID 冲突的现有文档。 选择此选项可以覆盖具有匹配 ID 的现有文档。 此功能可用于更新现有文档的计划内数据迁移。
 4. 失败重试次数：指定在发生暂时性故障（例如网络连接中断）时重试 Azure Cosmos DB 连接的次数。

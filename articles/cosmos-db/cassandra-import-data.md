@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 26731d80f5917f9d21aacafb5f8a79cfb02855af
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 73c9f1fc26f5cb36cc475a66b67705c6177bebf8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795068"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095666"
 ---
 # <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB：导入 Cassandra 数据
 
@@ -57,7 +57,7 @@ ms.locfileid: "34795068"
 1. 预创建和缩放表：
     * 默认情况下，Azure Cosmos DB 会预配一个新的 Cassandra API 表，每秒钟有 1,000 个请求单元 (RU/s)（基于 CQL 的创建预配有 400 RU/s）。 通过使用 cqlsh 开始迁移之前，从 [Azure 门户](https://portal.azure.com)或 cqlsh 预先创建所有表。 
 
-    * 在迁移期间，从 [Azure 门户](https://portal.azure.com)将表的吞吐量从默认吞吐量（400 或 1000 RU/s）增加到 10,000 RU/s。 提高吞吐量后，可避免达到上限，并缩短迁移时间。 由于 Azure Cosmos DB 采用按小时计费，因此可以在迁移后立即降低吞吐量，以节省成本。
+    * 在迁移期间，从 [Azure 门户](https://portal.azure.com)将表的吞吐量从默认吞吐量（400 或 1000 RU/s）增加到 10,000 RU/s。 提高吞吐量后，可避免受到速率限制，并缩短迁移时间。 由于 Azure Cosmos DB 采用按小时计费，因此可以在迁移后立即降低吞吐量，以节省成本。
 
 2. 确定某个操作的 RU 费用。 可以使用所选的 Azure Cosmos DB Cassandra API SDK 执行此操作。 此示例演示获取 RU 费用的 .NET 版本。 
 

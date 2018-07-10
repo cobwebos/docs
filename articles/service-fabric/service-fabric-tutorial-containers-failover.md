@@ -1,5 +1,5 @@
 ---
-title: 故障转移和缩放 Azure Service Fabric 容器应用 | Microsoft Docs
+title: 在 Azure 中故障转移和缩放 Service Fabric 上的容器应用 | Microsoft Docs
 description: 本教程介绍如何在 Azure Service Fabric 容器应用程序中处理故障转移。  还了解如何缩放群集中运行的容器和服务。
 services: service-fabric
 documentationcenter: ''
@@ -16,25 +16,27 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 27d1918125b8c2f79f6506470ae43354e402f9af
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b099d1765f0ed56d6768501086bf8b9f83d5a86a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29555474"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112263"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>教程：使用 Service Fabric 演示容器服务的故障转移和缩放
 
-本教程是一个系列中的第三部分。 在本教程中，了解如何在 Service Fabric 容器应用程序中处理故障转移。 此外，了解如何缩放容器。 在本教程中：
+本教程是一个系列中的第三部分。 在本教程中，了解如何在 Service Fabric 容器应用程序中处理故障转移。 此外，了解如何缩放容器。 本教程介绍以下操作：
 
 > [!div class="checklist"]
-> * 了解 Service Fabric 群集中的容器故障转移  
+> * 了解 Service Fabric 群集中的容器故障转移
 > * 缩放应用程序中的 Web 前端容器
 
 ## <a name="prerequisites"></a>先决条件
+
 [第 2 部分](service-fabric-tutorial-package-containers.md)中的应用程序在活动的 Service Fabric 群集中运行。
 
 ## <a name="fail-over-a-container-in-a-cluster"></a>故障转移群集中的容器
+
 Service Fabric 可确保在发生故障时，将容器实例自动转移到群集中的其他节点。 也可以手动清空容器的节点，然后将其正常转移到群集中的其他节点。 可通过多种方式缩放服务，在本示例中，我们将使用 Service Fabric Explorer。
 
 若要故障转移前端容器，请执行以下步骤：
@@ -42,13 +44,14 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 1. 在群集中打开 Service Fabric Explorer（例如，`http://lin4hjim3l4.westus.cloudapp.azure.com:19080`）。
 2. 在树视图中单击“fabric:/TestContainer/azurevotefront”节点，并展开分区节点（由 GUID 表示）。 注意树视图中的节点名称，它显示了当前正在运行容器的节点，例如 `_nodetype_1`
 3. 在树视图中展开“节点”节点。 单击正在运行容器的节点旁边的省略号（三个点）。
-1. 选择“重启”以重启该节点，并确认重启操作。 重启会导致容器故障转移到群集中的另一个节点。
+4. 选择“重启”以重启该节点，并确认重启操作。 重启会导致容器故障转移到群集中的另一个节点。
 
 ![noderestart][noderestart]
 
 请注意节点名称（指示前端容器运行位置）如何更改为群集中的另一节点。 几分钟后，应该能够重新浏览到应用程序并查看现在运行于其他节点之上的应用程序。
 
 ## <a name="scale-containers-and-services-in-a-cluster"></a>缩放群集中的容器和服务
+
 可以跨群集缩放 Service Fabric 容器，以适应服务上的负载。 可以通过更改群集中运行的实例数量来缩放容器。
 
 若要缩放 Web 前端，请执行以下步骤：
@@ -74,10 +77,10 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 在本教程中，已演示容器故障转移以及缩放应用程序。 已完成以下步骤：
 
 > [!div class="checklist"]
-> * 了解 Service Fabric 群集中的容器故障转移  
+> * 了解 Service Fabric 群集中的容器故障转移
 > * 缩放应用程序中的 Web 前端容器
 
-此教程系列介绍了如何： 
+此教程系列介绍了如何：
 > [!div class="checklist"]
 > * 创建容器映像
 > * 向 Azure 容器注册表推送容器映像

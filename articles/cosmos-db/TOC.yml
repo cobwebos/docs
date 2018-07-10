@@ -73,11 +73,11 @@ items:
     items:
       - name: 全球分布
         href: distribute-data-globally.md
-      - name: 多主设置
+      - name: 多主
         href: multi-region-writers.md
       - name: 分区
         href: partition-data.md
-      - name: Throughput
+      - name: 吞吐量
         href: request-units.md
       - name: 一致性
         href: consistency-levels.md
@@ -172,8 +172,6 @@ items:
                 href: bulk-executor-dot-net.md
               - name: BulkExecutor - Java
                 href: bulk-executor-java.md
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: 查询
                 items:
                   - name: 执行 SQL 查询
@@ -184,8 +182,6 @@ items:
                 href: indexing-policies.md
               - name: SQL 数据分区
                 href: sql-api-partition-data.md
-              - name: 存储过程、触发器和 UDF
-                href: programming.md
               - name: 更改源
                 href: change-feed.md
               - name: 数据类型
@@ -262,8 +258,6 @@ items:
                 href: sql-api-sql-query-reference.md
           - name: 资源
             items:
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: Visual Studio Code 扩展
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
               - name: SQL 演练
@@ -328,12 +322,8 @@ items:
                 href: mongodb-ttl.md
               - name: 使用 Power BI 直观显示数据
                 href: powerbi-visualize.md
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
           - name: 资源
             items:
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: Visual Studio Code 扩展
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: 图形 API 文档
@@ -352,12 +342,8 @@ items:
             items:
               - name: Graph 分区
                 href: graph-partitioning.md
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
           - name: 资源
             items:
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: Visual Studio Code 扩展
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: 表 API 文档
@@ -410,8 +396,6 @@ items:
                 href: table-sdk-python.md
           - name: 资源
             items:
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: 表存储概述
                 href: table-storage-overview.md
               - name: 表存储设计指南
@@ -450,6 +434,8 @@ items:
         href: regional-failover.md
       - name: 诊断日志记录
         href: logging.md
+      - name: 存储过程、触发器和 UDF
+        href: programming.md
       - name: BulkExecutor 概述
         href: bulk-executor-overview.md
       - name: 以经济高效的方式读取和写入
@@ -460,12 +446,10 @@ items:
         href: manage-account-with-powershell.md
       - name: 使用存储资源管理器进行管理
         href: storage-explorer.md
-      - name: 多区域写入者
+      - name: 多主设置
         href: multi-master-workaround.md
   - name: 资源
     items:
-      - name: 使用存储资源管理器进行管理
-        href: storage-explorer.md
       - name: 查询备忘单
         href: query-cheat-sheet.md
       - name: 20 天的提示

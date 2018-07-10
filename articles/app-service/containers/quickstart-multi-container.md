@@ -1,7 +1,7 @@
 ---
 title: 使用 Docker Compose 配置在用于容器的 Azure Web 应用中创建多容器（预览版）应用
 description: 在数分钟内在用于容器的 Azure Web 应用中部署你的第一个多容器应用
-keywords: azure 应用服务, web 应用, linux, docker, compose, 多容器, 容器, kubernetes
+keywords: azure 应用服务, web 应用, linux, docker compose, 多容器, 用于容器的 web 应用, 多个容器, 容器, kubernetes, wordpress, azure db for mysql, 包含容器的生产数据库
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: ec5c92415668c925fe360c0c8887fd792a121842
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: bf567402a66f9152c7eb9b97925fec2a159ffe56
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753705"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127414"
 ---
-# <a name="create-a-multicontainer-preview-app-using-web-app-for-containers"></a>使用用于容器的 Web 应用创建多容器（预览版）应用
+# <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>使用用于容器的 Web 应用创建多容器（预览版）应用
 
-在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本快速入门展示了如何在 [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) 中使用 Docker Compose 配置将多容器应用部署到用于容器的 Web 应用。 对于 Kubernetes，请遵循[多容器教程](tutorial-multi-container-app.md)中的 Kubernetes 步骤。
+在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本快速入门展示了如何在 [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) 中使用 Docker Compose 配置将多容器应用部署到用于容器的 Web 应用。 有关 Kubernetes 和使用 Azure DB for MySQL 的完整端到端解决方案，请参阅[多容器教程](tutorial-multi-container-app.md)。
 
-你将在 Cloud Shell 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli)（2.0.32 或更高版本）在本地运行这些命令。 本快速入门将使用一个 Docker Compose 配置文件。
+你将在 Cloud Shell 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli)（2.0.32 或更高版本）在本地运行这些命令。 
 
 ![用于容器的 Web 应用中的示例多容器应用][1]
 
@@ -36,7 +36,7 @@ ms.locfileid: "36753705"
 
 ## <a name="download-the-sample"></a>下载示例
 
-本快速入门使用 [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) 中的 compose 文件，但我们将对其进行修改，以包含 Azure Database for MySQL、持久性存储和 Redis。 可在 [Azure 示例](https://github.com/Azure-Samples/multicontainerwordpress)中找到该配置文件。
+本快速入门使用 [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) 中的 compose 文件。 可在 [Azure 示例](https://github.com/Azure-Samples/multicontainerwordpress)中找到该配置文件。
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
@@ -48,10 +48,12 @@ mkdir quickstart
 cd quickstart
 ```
 
-接下来，运行以下命令将示例应用存储库克隆到 quickstart 目录。
+接下来，运行以下命令将示例应用存储库克隆到 quickstart 目录。 然后切换到 `multicontainerwordpress` 目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/multicontainerwordpress
+
+cd multicontainerwordpress
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
@@ -100,11 +102,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-docker-compose-app"></a>创建 Docker Compose 应用
 
-在 Cloud Shell 终端 中，切换到 `multicontainerwordpress` 目录。 使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令在 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](app-service-linux-intro.md)。 不要忘记将 _\<app_name>_ 替换为唯一的应用名称。
+在 Cloud Shell 终端中，使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令在 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](app-service-linux-intro.md)。 不要忘记将 _\<app_name>_ 替换为唯一的应用名称。
 
 ```bash
-cd multicontainerwordpress
-
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
 ```
 
@@ -131,7 +131,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ![用于容器的 Web 应用中的示例多容器应用][1]
 
-**恭喜**，你已在用于容器的 Web 应用中创建了多容器应用。
+**祝贺你**，现已在用于容器的 Web 应用中创建了多容器应用。
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 

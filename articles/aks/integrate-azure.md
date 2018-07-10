@@ -3,16 +3,17 @@ title: 使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行�
 description: 使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 services: container-service
 author: sozercan
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: bdc97e9e28dd2af090c82378457b3c93b276cc58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 471b53be4200ff728214876dd187c3c4e427c947
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342868"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 
@@ -21,7 +22,7 @@ ms.lasthandoff: 05/07/2018
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅
 
-* Azure CLI 2.0：可[在本地安装][azure-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
+* Azure CLI：可[在本地安装][azure-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
 
 * Helm CLI 2.7+：可[在本地安装][helm-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
 
@@ -43,10 +44,16 @@ helm init --upgrade
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
-最后，使用 Helm 图表安装服务目录：
+最后，使用 Helm Chart 安装服务目录。 如果群集启用了 RBAC，请运行此命令。
 
 ```azurecli-interactive
-helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false
+helm install svc-cat/catalog --name catalog --namespace catalog --set controllerManager.healthcheck.enabled=false
+```
+
+如果群集未启用 RBAC，请运行以下命令。
+
+```azurecli-interactive
+helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.auth.enabled=false --set controllerManager.healthcheck.enabled=false
 ```
 
 运行 Helm 图表后，验证 `servicecatalog` 是否出现在以下命令的输出中：
@@ -68,7 +75,7 @@ v1beta1.storage.k8s.io               10
 
 ## <a name="install-open-service-broker-for-azure"></a>安装 Open Service Broker for Azure
 
-下一步是安装 [Open Service Broker for Azure][open-service-broker-azure]，其中包括 Azure 托管服务目录。 可用 Azure 服务的示例包括：Azure Database for PostgreSQL、Azure Redis 缓存、Azure Database for MySQL，Azure Cosmos DB、Azure SQL 数据库等。
+下一步是安装 [Open Service Broker for Azure][open-service-broker-azure]，其中包括 Azure 托管服务目录。 可用的 Azure 服务示例包括 Azure Database for PostgreSQL、Azure Database for MySQL 和 Azure SQL 数据库。
 
 首先添加 Open Service Broker for Azure Helm 存储库：
 

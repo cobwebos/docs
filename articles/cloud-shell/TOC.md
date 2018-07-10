@@ -5,13 +5,12 @@
 ## [PowerShell - 快速入门](quickstart-powershell.md)
 
 # 功能和工具
-## [Bash - 功能和工具](features.md)
-## [PowerShell - 功能和工具](features-powershell.md)
+## [功能和工具](features.md)
 
 # 操作说明
-## [Bash - 保留存储](persisting-shell-storage.md)
-## [PowerShell - 保留存储](persisting-shell-storage-powershell.md)
+## [保留存储](persisting-shell-storage.md)
 ## [使用窗口](using-the-shell-window.md)
+## [适用于 Windows 用户的 PowerShell Cloud Shell](cloud-shell-windows-users.md)
 
 # 示例
 ## [Bash - 使用 Terraform 创建资源](example-terraform-bash.md)

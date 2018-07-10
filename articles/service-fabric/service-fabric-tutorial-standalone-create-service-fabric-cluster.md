@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 85e6efcc4e213da4d6c650f7543403dd52e8337c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 7ba5fa1d4c5b87d1c4828ee98dae36f415d37c20
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248429"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344149"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>教程：安装并创建 Service Fabric 群集
 
@@ -61,13 +61,7 @@ Service Fabric 提供了一个安装程序包，用于创建独立的 Service Fa
         }
 ```
 
-然后，需要更新几个属性。  在第 34 行上，需要修改诊断存储的连接字符串，修改后应如下所示，并在 `"connectionstring": "\\\\172.31.27.1\\c$\\DiagnosticsStore"` 中替换为你的 IP 地址
-
-更新连接字符串后，请务必创建文件夹。  以下命令将创建它，请确保将下面的 IP 地址替换为你插入到连接字符串中的 IP 地址：
-
-```powershell
-mkdir \\172.31.27.1\c$\DiagnosticsStore
-```
+然后，需要更新几个属性。  在 34 行中，需要修改诊断存储的连接字符串，它应如下所示：`"connectionstring": "C:\\ProgramData\\SF\\DiagnosticsStore"`
 
 最后，请在配置的 `nodeTypes` 节中添加一个新节来映射 windows 将使用的临时端口。  该配置文件应该如下所示：
 

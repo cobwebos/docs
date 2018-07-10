@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 904641a433d55cc5f1d04b17ed067cd560c6b33c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 082275e2acd81e34c057f863651528eb46e8501e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30835994"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114946"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 
@@ -38,6 +38,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 如果需要将 ASE 出站流量路由到其他地方而不是直接路由到 Internet，则有以下选择：
 
 * 让 ASE 获得直接 Internet 访问权限
+* 将 ASE 子网配置为忽略 BGP 路由
 * 将 ASE 子网配置为使用 Azure SQL 和 Azure 存储的服务终结点
 * 将自己的 IP 添加到 ASE Azure SQL 防火墙
 
@@ -59,8 +60,22 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 ![直接 Internet 访问][1]
 
+## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>将 ASE 子网配置为忽略 BGP 路由 ## 
+
+可将 ASE 子网配置为忽略所有 BGP 路由。  如果采用这种配置，ASE 将可以访问其依赖项，而不会出现任何问题。  但是，需要创建 UDR 才能让应用访问本地资源。
+
+将 ASE 子网配置为忽略 BGP 路由：
+
+* 创建 UDR 并将其分配到 ASE 子网（如果没有 UDR）。
+* 在 Azure 门户中，打开分配到 ASE 子网的路由表的 UI。  选择“配置”。  将 BGP 路由传播设置为“已禁用”。  单击“保存”。 [创建路由表][routetable]文档介绍了如何关闭此设置。
+
+执行此操作后，应用程序不再能够访问本地资源。 若要解决此问题，请编辑分配到 ASE 子网的 UDR，并添加本地地址范围的路由。 “下一跃点类型”应设置为“虚拟网络网关”。 
+
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>为 ASE 配置服务终结点 ##
+
+ > [!NOTE]
+   > 使用 SQL 的服务终结点不适用于 US Government 区域中的 ASE。  以下信息仅在 Azure 公共区域有效。  
 
 若要路由来自 ASE 的所有出站流量（到 Azure SQL 和 Azure 存储的除外），请执行以下步骤：
 
@@ -142,3 +157,4 @@ _若要使用传出地址创建 ASE_：请按[使用模板创建应用服务环�
 [routes]: ../../virtual-network/virtual-networks-udr-overview.md
 [template]: ./create-from-template.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[routetable]: ../../virtual-network/manage-route-table.md#create-a-route-table

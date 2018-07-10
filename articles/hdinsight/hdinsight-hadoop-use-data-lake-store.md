@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 0d0fb9bad8c6120100ae3ee766aea7620dd6105f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 362a9ae9cb1a1ebc30193b76929f0a683414e5fd
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201751"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435291"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>配合使用 Data Lake Store 和 HDInsight 群集
 
@@ -100,10 +100,10 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 
 ## <a name="configure-data-lake-store-access"></a>配置 Data Lake Store 访问
 
-若要从 HDInsight 群集配置 Data Lake Store 访问，必须具有 Azure Active Directory (Azure AD) 服务主体。 只有 Azure AD 管理员才能创建服务主体。 必须使用证书创建服务主体。 有关详细信息，请参阅[配置 Data Lake Store 访问](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access)和[使用自签名证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)。
+若要从 HDInsight 群集配置 Data Lake Store 访问，必须具有 Azure Active Directory (Azure AD) 服务主体。 只有 Azure AD 管理员才能创建服务主体。 必须使用证书创建服务主体。 有关详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)以及[使用自签名证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)。
 
 > [!NOTE]
-> 若要将 Azure Data Lake Store 用作 HDInsight 群集的额外存储，则强烈建议你在创建群集时按本文说明进行操作。 向现有的 HDInsight 群集添加 Azure Data Lake Store 作为额外的存储是很复杂的过程，容易出现错误。
+> 若要将 Azure Data Lake Store 用作 HDInsight 群集的额外存储，强烈建议在创建群集时按本文说明进行操作。 将 Azure Data Lake Store 作为额外存储添加到现有 HDInsight 群集是不受支持的方案。
 >
 
 ## <a name="access-files-from-the-cluster"></a>从群集访问文件
@@ -130,7 +130,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 
 请使用以下链接，详细了解如何创建具有 Data Lake Store 访问权限的 HDInsight 群集。
 
-* [使用门户](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [使用门户](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [使用 PowerShell（Data Lake Store 作为默认存储）](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [使用 PowerShell（Data Lake Store 作为其他存储）](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [使用 Azure 模板](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -142,8 +142,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 有关详细信息，请参阅：
 
 * [Azure HDInsight 入门][hdinsight-get-started]
-* [Azure Data Lake Store 入门](../data-lake-store/data-lake-store-get-started-portal.md)
-* [通过 Azure 门户创建使用 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [通过 Azure PowerShell 创建使用 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [将数据上传到 HDInsight][hdinsight-upload-data]
 * [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]

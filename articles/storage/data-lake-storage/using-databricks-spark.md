@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 013369c84ca7f2ec232f542549c22260eca46980
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062528"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096910"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>教程：使用 Spark 通过 DataBricks 访问 Azure Data Lake Storage Gen2 预览版数据
 
@@ -61,9 +61,9 @@ ms.locfileid: "37062528"
 8. 单击页面顶部的“创建群集”（此过程可能需要长达 5 分钟的时间才能完成）。
 9. 当此过程完成时，在导航栏的左上角选择“Azure Databricks”。
 10. 在页面下半部的“新建”部分下选择“Notebook”。
-11. 在“名称”字段中输入所选名称。
+11. 在“名称”字段中输入你选择的名称，并选择“Python”作为语言。
 12. 所有其他字段可以保留默认值。
-13. 选择**创建**。
+13. 选择“创建”。
 14. 将以下代码粘贴到 **Cmd 1** 单元格中，将值替换为存储帐户中保留的值。
 
     ```bash
@@ -93,10 +93,10 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 2. 在页面下半部的“新建”部分下选择“Notebook”。
 3. 在“名称”字段中输入 **CSV2Parquet**。
 4. 所有其他字段可以保留默认值。
-5. 选择**创建**。
+5. 选择“创建”。
 6. 在 **Cmd 1** 单元格中粘贴以下代码（此代码在编辑器中自动保存）。
 
-    ```
+    ```python
     #mount Azure Blob Storage as an HDFS file system to your databricks cluster
     #you need to specify a storage account and container to connect to. 
     #use a SAS token or an account key to connect to Blob Storage.  

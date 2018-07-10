@@ -65,8 +65,10 @@
           href: luis-quickstart-intent-and-key-phrase.md
         - name: 8. 添加情绪分析
           href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: 改进预测
+    - name: 改进应用
       items:
+        - name: 查看终结点表述
+          href: luis-tutorial-review-endpoint-utterances.md
         - name: 使用模式
           href: luis-tutorial-pattern.md
         - name: 使用短语列表
@@ -313,6 +315,8 @@
       href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: 资源
   items:
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Azure 路线图
       href: 'https://aka.ms/luis-roadmap'
     - name: 术语表
@@ -326,7 +330,7 @@
     - name: UserVoice
       href: 'https://aka.ms/luis-uservoice-forum'
     - name: 搜索
-      href: 'https://docs.microsoft.com/en-us/search/index?search=LUIS'
+      href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: 博客
       href: 'https://blog.botframework.com/category/luis/'
     - name: 知识库

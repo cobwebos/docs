@@ -40,12 +40,11 @@
 #### [认知扩展](data-lake-analytics-u-sql-cognitive.md)
 #### [可编程性指南](data-lake-analytics-u-sql-programmability-guide.md)
 
-### U-SQL SDK
-#### [本地运行和调试](data-lake-analytics-data-lake-tools-local-run.md)
-#### [运行和测试](data-lake-analytics-u-sql-sdk.md) 
-
 ### Visual Studio
 #### [安装](data-lake-analytics-data-lake-tools-install.md)
+#### [本地运行](data-lake-analytics-data-lake-tools-local-run.md)
+#### [本地调试](data-lake-analytics-data-lake-tools-local-debug.md)
+#### [开发 U-SQL 数据库](data-lake-analytics-data-lake-tools-develop-usql-database.md)
 #### [浏览和查看作业](data-lake-analytics-data-lake-tools-view-jobs.md)
 #### [调试自定义 C# 代码](data-lake-analytics-debug-u-sql-jobs.md)
 #### [排查定期作业的问题](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
@@ -59,6 +58,11 @@
 #### [创作](data-lake-analytics-data-lake-tools-for-vscode.md)
 #### [自定义代码](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [本地运行和调试](data-lake-tools-for-vscode-local-run-and-debug.md)
+
+### 持续集成和持续部署
+#### [概述](data-lake-analytics-cicd-overview.md)
+#### [设置测试](data-lake-analytics-cicd-test.md)
+#### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 
 # 引用
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)

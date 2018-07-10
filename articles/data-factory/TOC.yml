@@ -138,10 +138,10 @@
           href: connector-azure-blob-storage.md
         - name: Azure Cosmos DB
           href: connector-azure-cosmos-db.md
-        - name: Azure Data Lake 存储
-          href: connector-azure-data-lake-storage.md
-        - name: Azure Data Lake Store
+        - name: Azure Data Lake Storage Gen1
           href: connector-azure-data-lake-store.md
+        - name: Azure Data Lake Storage Gen2
+          href: connector-azure-data-lake-storage.md
         - name: Azure Database for MySQL
           href: connector-azure-database-for-mysql.md
         - name: Azure Database for PostgreSQL
@@ -277,11 +277,11 @@
         - name: 复制数据工具
           href: copy-data-tool.md
           items: null
-        - name: 加载 Data Lake Storage
+        - name: 加载 Data Lake Storage Gen2
           href: load-azure-data-lake-storage-gen2.md
         - name: 加载 SQL 数据仓库
           href: load-azure-sql-data-warehouse.md
-        - name: 加载 Data Lake Store
+        - name: 加载 Data Lake Storage Gen1
           href: load-azure-data-lake-store.md
         - name: 读取或写入分区的数据
           href: how-to-read-write-partitioned-data.md

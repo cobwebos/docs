@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 06/28/2018
 ms.author: juliako
-ms.openlocfilehash: e81544d263bea3f367eaf2100ddb36a2835034c4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e5b8cc9285d9637a04c4bec47b0185652aa7c84e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637906"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114218"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>教程：使用 Azure 媒体服务分析视频 
 
@@ -30,9 +30,12 @@ ms.locfileid: "34637906"
 > * 访问媒体服务 API
 > * 配置示例应用
 > * 检查用于分析指定视频的代码
-> * 运行应用程序
+> * 运行应用
 > * 检查输出
 > * 清理资源
+
+> [!Note]
+> 根据[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)中所述，使用 Azure 门户将媒体服务帐户设置为 10 个 S3 媒体预留单元。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

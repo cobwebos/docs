@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: afc9e7c0635f9920aa3ec7c9e6012aa4e41edb9d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8e6873f45beac281adbc7a9669504f1703a9eaf5
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062035"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345485"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>将 Azure 机器学习作为 IoT Edge 模块进行部署 - 预览版
 
@@ -22,12 +22,12 @@ ms.locfileid: "37062035"
 
 本教程中创建的 Azure 机器学习模块将读取设备生成的环境数据，并将消息标记为异常或正常。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure 机器学习模块
 > * 将模块容器推送到 Azure 容器注册表
-> * 将 Azure 机器学习模块部署到 loT Edge 设备
+> * 将 Azure 机器学习模块部署到 IoT Edge 设备
 > * 查看生成的数据
 
 >[!NOTE]
@@ -60,7 +60,7 @@ Azure 机器学习模块不支持 ARM 处理器。
 sudo nano /etc/iotedge/config.yaml
 ```
 
-更新配置的 **connect** 节。 例如：
+使用你的 IP 地址更新配置的 **connect** 节。 例如：
 ```yaml
 connect:
   management_uri: "http://172.17.0.1.1:15580"
@@ -125,7 +125,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 1. 如果以前已将 tempSensor 模块部署到 IoT Edge 设备，则它可能会自动填充。 如果它尚未出现在模块列表中，请添加它。
 
     1. 单击“添加”，然后选择“IoT Edge 模块”。
-    2. 在“名称”字段中，输入 `tempsensor`。
+    2. 在“名称”字段中，输入 `tempSensor`。
     3. 在“映像 URI”字段中，输入 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`。
     4. 选择“保存”。
 

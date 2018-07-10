@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c42f7257b4b4077cc719c57e3136505f766e654c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 6079784a21b5dea8929fcfa3d8f296477b3b9520
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046827"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083322"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
@@ -46,7 +46,7 @@ ms.locfileid: "37046827"
 * 第一个管道查找需要复制到接收器数据存储的表列表。  也可以维护一个元数据表用于列出要复制到接收器数据存储的所有表。 然后，该管道触发另一个管道，后者循环访问数据库中的每个表并执行数据复制操作。
 * 第二个管道执行实际复制。 它使用表列表作为参数。 对于列表中的每个表，为获得最佳性能，会使用[通过 Blob 存储和 PolyBase 进行的分阶段复制](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)，将 Azure SQL 数据库中的特定表复制到 SQL 数据仓库中的相应表。 在本示例中，第一个管道传递表列表作为参数值。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure 存储帐户**。 Azure 存储帐户用作批量复制操作中的过渡 Blob 存储。 
@@ -93,7 +93,7 @@ ms.locfileid: "37046827"
          
       若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
 4. 选择“V2”作为“版本”。
-5. 选择数据工厂的**位置**。 目前，数据工厂 V2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+5. 选择数据工厂的**位置**。 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
@@ -129,7 +129,7 @@ ms.locfileid: "37046827"
     4. 输入要连接到 Azure SQL 数据库的**用户名称**。 
     5. 输入对应于该用户的**密码**。 
     6. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。
-    7. 单击“ **保存**”。
+    7. 单击“保存”。
 
         ![Azure SQL 数据库设置](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "37046827"
     4. 输入要连接到 Azure SQL 数据库的**用户名称**。 
     5. 输入对应于该用户的**密码**。 
     6. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。
-    7. 单击“ **保存**”。
+    7. 单击“保存”。
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>创建过渡 Azure 存储链接服务
 本教程使用 Azure Blob 存储作为临时过渡区域，以利用 PolyBase 来实现更好的复制性能。
@@ -156,7 +156,7 @@ ms.locfileid: "37046827"
 
     1. 输入 **AzureStorageLinkedService** 作为**名称**。 
     2. 对于“存储帐户名称”，请选择 **Azure 存储帐户**。
-    4. 单击“ **保存**”。
+    4. 单击“保存”。
 
 
 ## <a name="create-datasets"></a>创建数据集
@@ -173,7 +173,7 @@ ms.locfileid: "37046827"
 1. 单击左窗格中的“+ (加)”，然后单击“数据集”。 
 
     ![“新建数据集”菜单](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
-2. 在“新建数据集”窗口中，选择“Azure SQL 数据集”，然后单击“完成”。 此时会看到名为 **AzureSqlTable1** 的新选项卡。 
+2. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“完成”。 此时会看到名为 **AzureSqlTable1** 的新选项卡。 
     
     ![选择 Azure SQL 数据库](./media/tutorial-bulk-copy-portal/select-azure-sql-database-dataset.png)
 3. 在底部的属性窗口中，输入 **AzureSqlDatabaseDataset** 作为**名称**。
@@ -251,7 +251,7 @@ ms.locfileid: "37046827"
 6. 切换到“源”选项卡，然后执行以下步骤：
 
     1. 选择 **AzureSqlDatabaseDataset** 作为**源数据集**。 
-    2. 对于“使用查询”，请选择“查询”选项。 
+    2. 对于“用户查询”，请选择“查询”选项。 
     3. 单击“查询”输入框，选择下方的“添加动态内容”，为**查询**输入以下表达式，然后选择“完成”。
 
         ```sql

@@ -2,19 +2,19 @@
 title: 快速入门 - Azure Kubernetes 群集门户快速入门
 description: 快速了解如何使用 Azure 门户在 AKS 中为 Linux 容器创建 Kubernetes 群集。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 90d01ed7cc2483c8467d646ebf9ad056ea1a4baf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: aa8a1cccd4eeb45e829cd8df73f128dd6cca416d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286590"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344468"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>快速入门：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -28,11 +28,9 @@ ms.locfileid: "36286590"
 
 通过 http://portal.azure.com 登录到 Azure 门户。
 
-
-
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-选择“创建资源”，然后选择“Kubernetes 服务” > “创建”。
+选择“创建资源”，然后选择“Kubernetes 服务”。
 
 在创建 AKS 群集窗体的每个标题下完成以下步骤。
 

@@ -20,7 +20,9 @@
       href: storage-quickstart-blobs-cli.md
     - name: 使用 Blob - .NET
       href: storage-quickstart-blobs-dotnet.md
-    - name: 使用 Blob - Java
+    - name: 使用 blob - Java（存储 SDK V10）
+      href: storage-quickstart-blobs-java-v10.md
+    - name: 使用 blob - Java（存储 SDK V7）
       href: storage-quickstart-blobs-java.md
     - name: 使用 Blob - Python
       href: storage-quickstart-blobs-python.md
@@ -192,6 +194,8 @@
           href: storage-blob-immutable-storage.md
         - name: 为 Azure 存储客户端启用安全 TLS
           href: ../common/storage-security-tls.md
+        - name: 合规性产品
+          href: ../common/storage-compliance-offerings.md
     - name: 监视和故障排除
       items:
         - name: 故障排除教程

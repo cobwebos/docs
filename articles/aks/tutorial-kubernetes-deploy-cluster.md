@@ -2,50 +2,88 @@
 title: Kubernetes on Azure 教程 - 部署群集
 description: AKS 教程 - 部署群集
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 02/24/2018
-ms.author: nepeters
+ms.date: 06/29/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c793aa02e614ead146806888d26a18867ff2eebb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c8698f16138e9baeb9c9c1142a5d0c8937a69d1b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341393"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
-Kubernetes 为容器化应用程序提供一个分布式平台。 通过 AKS，使预配生产就绪的 Kubernetes 群集变得简单快捷。 在本教程的第 3 部分（共 8 部分）中，在 AKS 中部署了 Kubernetes 群集。 已完成的步骤包括：
+Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可以快速预配生产就绪的 Kubernetes 群集。 在本教程的第 3 部分（共 7 部分）中，在 AKS 中部署了 Kubernetes 群集。 已完成的步骤包括：
 
 > [!div class="checklist"]
+> * 创建用于资源交互的服务主体
 > * 部署 Kubernetes AKS 群集
 > * Kubernetes CLI (kubectl) 的安装
 > * Kubectl 的配置
 
-在后续教程中，将向该群集部署 Azure Vote 应用程序并对该应用程序进行缩放和更新，还会将 Log Analytics 配置为监视 Kubernetes 群集。
+在后续教程中，Azure 投票应用程序将部署到群集，并进行缩放和更新。
 
 ## <a name="before-you-begin"></a>开始之前
 
 在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 
-## <a name="enable-aks-preview"></a>启用 AKS 预览版
+## <a name="create-a-service-principal"></a>创建服务主体
 
-AKS 为预览版时，创建新群集需要订阅上的功能标记。 可以为任意数量的订阅请求此功能，只要你想使用。 使用 `az provider register` 命令注册 AKS 提供程序：
+若要允许 AKS 群集与其他 Azure 资源交互，请使用 Azure Active Directory 服务主体。 可以通过 Azure CLI 或门户自动创建此服务主体，也可以预先创建一个服务主体并分配其他权限。 在本教程中，你将创建一个服务主体，授予对上一教程中创建的 Azure 容器注册表 (ACR) 实例的访问权限，然后创建 AKS 群集。
+
+使用 [az ad sp create-for-rbac][] 创建服务主体。 `--skip-assignment` 参数限制分配任何其他权限。
 
 ```azurecli
-az provider register -n Microsoft.ContainerService
+az ad sp create-for-rbac --skip-assignment
 ```
 
-注册之后，即可通过 AKS 创建 Kubernetes 群集。
+输出类似于以下示例：
+
+```
+{
+  "appId": "e7596ae3-6864-4cb8-94fc-20164b1588a9",
+  "displayName": "azure-cli-2018-06-29-19-14-37",
+  "name": "http://azure-cli-2018-06-29-19-14-37",
+  "password": "52c95f25-bd1e-4314-bd31-d8112b293521",
+  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db48"
+}
+```
+
+记下 *appId* 和 *password*。 后续步骤会用到这些值。
+
+## <a name="configure-acr-authentication"></a>配置 ACR 身份验证
+
+若要访问 ACR 中存储的映像，必须授予 AKS 服务主体从 ACR 提取映像的适当权限。
+
+首先，使用 [az acr show][] 获取 ACR 资源 ID。 将 `<acrName>` 注册表名称更新为 ACR 实例和 ACR 实例所在的资源组的名称。
+
+```azurecli
+az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv
+```
+
+若要授予 AKS 群集使用 ACR 中存储的映像的适当访问权限，请使用 [az role assignment create][] 创建角色分配。 将 `<appId`> 和 `<acrId>` 替换为在前两个步骤中收集的值。
+
+```azurecli
+az role assignment create --assignee <appId> --role Reader --scope <acrId>
+```
 
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 
-下面的示例在 `myResourceGroup` 资源组中创建 `myAKSCluster` 群集。 此资源组是在[上一教程][aks-tutorial-prepare-acr]中创建的。
+现在，使用 [az aks create][] 创建 AKS 群集。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myAKSCluster* 的群集。 此资源组是在[上一教程][aks-tutorial-prepare-acr]中创建的。 提供前面在创建服务主体时指定的 `<appId>` 和 `<password>`。
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
+az aks create \
+    --name myAKSCluster \
+    --resource-group myResourceGroup \
+    --node-count 1 \
+    --generate-ssh-keys \
+    --service-principal <appId> \
+    --client-secret <password>
 ```
 
 几分钟后，部署完成并返回有关 AKS 部署的 JSON 格式信息。
@@ -54,18 +92,18 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 
 若要从客户端计算机连接到 Kubernetes 群集，请使用 [kubectl][kubectl]（Kubernetes 命令行客户端）。
 
-如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果要在本地安装它，请运行以下命令：
+如果使用的是 Azure Cloud Shell，则 kubectl 已安装。 也可以使用 [az aks install-cli][] 在本地安装：
 
 ```azurecli
 az aks install-cli
 ```
 
-## <a name="connect-with-kubectl"></a>连接 kubectl
+## <a name="connect-with-kubectl"></a>使用 kubectl 进行连接
 
-若要配置 kubectl 以连接到 Kubernetes 群集，请运行以下命令：
+若要将 kubectl 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][]。 以下示例获取 *myResourceGroup* 中 AKS 群集名称 *myAKSCluster* 的凭据：
 
 ```azurecli
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+az aks get-credentials --name myAKSCluster --resource-group myResourceGroup
 ```
 
 若要验证与群集之间的连接，请运行 [kubectl get nodes][kubectl-get] 命令。
@@ -77,42 +115,19 @@ kubectl get nodes
 输出：
 
 ```
-NAME                          STATUS    AGE       VERSION
-k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.9
-```
-
-教程完成时，AKS 群集已准备就绪，可用于工作负荷。 在后续教程中，一个多容器应用程序会部署到此群集、进行扩大、更新以及受到监视。
-
-## <a name="configure-acr-authentication"></a>配置 ACR 身份验证
-
-需要在 AKS 群集和 ACR 注册表之间配置身份验证。 这涉及到授予 AKS 标识相应的权限，以便从 ACR 注册表拉取映像。
-
-首先，获取为 AKS 配置的服务主体的 ID。 更新资源组名称和 AKS 群集名称，使之与环境相匹配。
-
-```azurecli
-CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
-```
-
-获取 ACR 注册表资源 ID。将注册表名称更新为 ACR 注册表的名称，将资源组更新为 ACR 注册表所在的资源组。
-
-```azurecli
-ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
-```
-
-创建角色分配，以便授予相应的访问权限。
-
-```azurecli
-az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+NAME                       STATUS    ROLES     AGE       VERSION
+aks-nodepool1-66427764-0   Ready     agent     9m        v1.9.6
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，在 AKS 中部署了 Kubernetes 群集。 已完成以下步骤：
+本教程在 AKS 中部署了一个 Kubernetes 群集。 已完成以下步骤：
 
 > [!div class="checklist"]
-> * 部署 Kubernetes AKS 群集
-> * 安装 Kubernetes CLI (kubectl)
-> * 配置 kubectl
+> * 创建了用于资源交互的服务主体
+> * 部署了一个 Kubernetes AKS 群集
+> * 安装了 Kubernetes CLI (kubectl)
+> * 配置了 kubectl
 
 继续学习下一个教程，了解如何在群集上运行应用程序。
 
@@ -127,3 +142,9 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 [aks-tutorial-deploy-app]: ./tutorial-kubernetes-deploy-application.md
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[az ad sp create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az acr show]: /cli/azure/acr#az-acr-show
+[az role assignment create]: /cli/azure/role/assignment#az-role-assignment-create
+[az aks create]: /cli/azure/aks#az-aks-create
+[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
+[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials

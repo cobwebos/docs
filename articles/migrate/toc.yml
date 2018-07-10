@@ -36,6 +36,10 @@
           href: contoso-migration-rehost-linux-vm.md
         - name: 8. Contoso - 在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用
           href: contoso-migration-rehost-linux-vm-mysql.md
+        - name: 9. Contoso - 基于 Azure Web 应用和 Azure SQL 数据库重构应用
+          href: contoso-migration-refactor-web-app-sql.md
+        - name: 10. Contoso - 基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用
+          href: contoso-migration-refactor-linux-app-service-mysql.md
     - name: 发现和评估大型环境
       href: how-to-scale-assessment.md
     - name: 将计算机分组

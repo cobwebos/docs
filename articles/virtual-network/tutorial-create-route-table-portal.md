@@ -17,16 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 7254e9336fca14daee2021d5bde4c5538509fe35
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 81478ace72a538f4970e114cd704fd64ceb94aa6
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30842316"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344881"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
 
-默认情况下，Azure 自动在虚拟网络中的所有子网之间路由流量。 可以创建自己的路由来覆盖 Azure 的默认路由。 创建自定义路由的功能非常有用，例如，可以通过网络虚拟设备 (NVA) 在子网之间路由流量。 本教程介绍如何执行下列操作：
+默认情况下，Azure 自动在虚拟网络中的所有子网之间路由流量。 可以创建自己的路由来覆盖 Azure 的默认路由。 创建自定义路由的功能非常有用，例如，可以通过网络虚拟设备 (NVA) 在子网之间路由流量。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建路由表
@@ -39,7 +39,7 @@ ms.locfileid: "30842316"
 
 如果你愿意，可以使用 [Azure CLI](tutorial-create-route-table-cli.md) 或 [Azure PowerShell](tutorial-create-route-table-powershell.md) 完成本教程中的步骤。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure 
 
@@ -56,7 +56,7 @@ ms.locfileid: "30842316"
     |名称|myRouteTablePublic|
     |订阅| 选择订阅。|
     |资源组 | 选择“新建”，并输入 myResourceGroup|
-    |Location|美国东部|
+    |位置|美国东部|
  
     ![创建路由表](./media/tutorial-create-route-table-portal/create-route-table.png) 
 
@@ -90,7 +90,7 @@ ms.locfileid: "30842316"
     |地址空间| 10.0.0.0/16|
     |订阅 | 选择订阅。|
     |资源组|选择“使用现有”，然后选择“myResourceGroup”。|
-    |Location|选择“美国东部”|
+    |位置|选择“美国东部”|
     |子网名称|公共|
     |地址范围|10.0.0.0/24|
     
@@ -132,7 +132,7 @@ NVA 是执行网络功能（如路由、防火墙或 WAN 优化）的 VM。
     |用户名|输入所选用户名。|
     |密码|输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“使用现有”，然后选择“myResourceGroup”。|
-    |Location|选择“美国东部”。|
+    |位置|选择“美国东部”。|
 4. 在“选择大小”下选择 VM 大小。
 5. 对于“设置”，选择或输入以下信息，然后选择“确定”：
 
@@ -202,7 +202,7 @@ NVA 是执行网络功能（如路由、防火墙或 WAN 优化）的 VM。
     mstsc /v:myVmPublic
     ```
     
-    在 *myVmPublic* VM 上通过 PowerShell 输入以下命令，允许 ICMP 通过 Windows 防火墙：
+    在 *myVmPublic* VM 上，通过 PowerShell 输入以下命令来允许 ICMP 通过 Windows 防火墙：
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
@@ -258,7 +258,7 @@ NVA 是执行网络功能（如路由、防火墙或 WAN 优化）的 VM。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你创建了一个路由表并将其关联到了某个子网。 还创建了一个简单 NVA，用于将流量从公共子网路由到专用子网。 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) 部署各种执行网络功能（例如防火墙和 WAN 优化）的预配置 NVA。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)和[管理路由表](manage-route-table.md)。
+在本教程中，你创建了一个路由表并将其关联到了某个子网。 还创建了一个简单 NVA，用于将流量从公共子网路由到专用子网。 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)部署各种执行网络功能（例如防火墙和 WAN 优化）的预配置 NVA。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)和[管理路由表](manage-route-table.md)。
 
 
 尽管可以在一个虚拟网络中部署多个 Azure 资源，但无法将某些 Azure PaaS 服务的资源部署到虚拟网络。 不过，仍可以限制为只允许来自某个虚拟网络子网的流量访问某些 Azure PaaS 服务的资源。 若要了解如何限制 Azure PaaS 资源的网络访问，请继续学习下一篇教程。

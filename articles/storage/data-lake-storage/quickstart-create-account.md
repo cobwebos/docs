@@ -10,12 +10,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: aafb86e7ebc99ea48e09b34b58682c983fe9f293
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: cf98d3097128a0f8934fc114bc37a517df118234
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063099"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085382"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>快速入门：创建 Azure Data Lake Storage Gen2 预览版存储帐户
 
@@ -28,7 +28,7 @@ Azure Data Lake Storage Gen2 预览版帐户[支持分层命名空间服务](int
 
 ## <a name="prerequisites"></a>先决条件
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 |           | 先决条件 |
 |-----------|--------------|
@@ -50,7 +50,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 ### <a name="install-the-cli-locally"></a>在本地安装 CLI
 
-也可在本地安装和使用 Azure CLI。 本快速入门需要运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
+也可在本地安装和使用 Azure CLI。 本快速入门需要运行 Azure CLI 2.0.38 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
 
 ## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>创建 Azure Data Lake Storage Gen2 帐户概述
 
@@ -115,6 +115,15 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 2. 找到要删除的资源组，右键单击列表右侧的“更多”按钮 (**...**)。
 3. 选择“删除资源组”并进行确认。
 
+
+## <a name="upgrade-your-powershell-module"></a>升级 powershell 模块
+
+若要通过 PowerShell 来与 Data Lake Storage Gen2 交互，必须将模块升级到预览版。
+
+为此，请打开提升的 PowerShell 并输入以下命令：`Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
+
+然后重启 shell。
+
 ## <a name="create-an-account-using-powershell"></a>使用 PowerShell 创建帐户
 
 使用 `Login-AzureRmAccount` 命令登录到 Azure 订阅，然后按照屏幕上的说明进行身份验证。
@@ -151,7 +160,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Location $location `
   -SkuName Standard_LRS `
   -Kind StorageV2 
-  -HierarchialNamespace $True
+  -EnableHierarchicalNamespace $True
 ```
 
 ### <a name="clean-up-resources"></a>清理资源
@@ -162,6 +171,12 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
+## <a name="upgrade-your-cli-module"></a>升级 CLI 模块
+
+若要通过 CLI 来与 Data Lake Storage Gen2 交互，必须将扩展添加到 shell。
+
+为此，请使用 Cloud Shell 或本地 shell 输入以下命令：`az extension add --name storage-preview`
+
 ## <a name="create-an-account-using-azure-cli"></a>使用 Azure CLI 创建帐户 
 
 若要启动 Azure Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。
@@ -171,6 +186,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 ```cli
 az login
 ```
+
 ### <a name="create-a-resource-group"></a>创建资源组
 
 若要通过 Azure CLI 创建新的资源组，请使用 [az group create](/cli/azure/group#az_group_create) 命令。 
@@ -195,7 +211,7 @@ az storage account create \
     --location westus2 \
     --sku Standard_LRS \
     --kind StorageV2 \
-    --hierarchical-namespace true
+    --Enable-hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>清理资源

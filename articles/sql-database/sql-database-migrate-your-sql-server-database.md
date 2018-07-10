@@ -2,19 +2,19 @@
 title: 使用 DMA 将 SQL Server DB 迁移到 Azure SQL 数据库 | Microsoft Docs
 description: 了解如何使用 DMA 将 SQL Server 数据库迁移到 Azure SQL 数据库。
 services: sql-database
-author: CarlRabeler
+author: sachinpMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 06/20/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: d0954627978c7725059e0b678783c8c6ffb9e827
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ceab627d98149774a3eb767ee56d688f9c11ff99
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308877"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346835"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>使用 DMA 将 SQL Server 数据库迁移到 Azure SQL 数据库
 
@@ -31,7 +31,7 @@ ms.locfileid: "36308877"
 > * 使用 [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) 将 SQL Server 数据库导入空 Azure SQL 数据库 
 > * 使用 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 更改数据库属性。
 
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -88,7 +88,7 @@ ms.locfileid: "36308877"
 8. 若要使用“附加存储”选项，请接受预览版条款。 
 
    > [!IMPORTANT]
-   > 除以下区域外，所有区域当前均提供超过 1 TB 的高级层存储：英国北部、美国中西部、英国南部 2、中国东部、USDoDCentral、德国中部、USDoDEast、US Gov 西南部、US Gov 中南部、德国东北部、中国北部、US Gov 东部。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+   > 除以下区域外的所有区域当前均提供超过 1 TB 的高级层存储：美国中西部、中国东部、USDoDCentral、USGov Iowa、德国中部、USDoDEast、US Gov 西南部、德国东北部、中国北部。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
 
 9. 选择服务器层、DTU 数和存储量后，单击“应用”。  
 
@@ -120,7 +120,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 4. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 单击“ **保存**”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+5. 单击“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
 6. 单击“确定”，然后关闭“防火墙设置”页。
 

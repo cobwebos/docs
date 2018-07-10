@@ -11,12 +11,12 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: mvc
 ms.date: 03/27/2018
-ms.openlocfilehash: 4d68ee7f38c317b4ee42f5b40cc4c4196114e159
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7b38548ce3266d74ffd51ce75ffa92bdb4ac24b9
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525642"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437614"
 ---
 # <a name="what-is-stream-analytics"></a>什么是流分析？
 
@@ -79,7 +79,7 @@ Azure 流分析是 Azure 中的一项完全托管的无服务器 (PaaS) 产品/�
 
 ## <a name="performance"></a>性能
 
-Azure 流分析进行了高性能优化，可以处理流数据，还可以进行内存中计算。 可以通过它进行纵向缩放，以便操控实时且复杂的事件处理应用程序。 流分析通过分区来提供性能支持。 可以在多个流节点上对复杂查询进行并行化处理，然后执行该查询。 
+Azure 流分析进行了高性能优化，可以处理流数据，还可以执行内存中计算。 可以通过它进行纵向缩放，以便操控实时且复杂的事件处理应用程序。 流分析通过分区来提供性能支持。 可以在多个流节点上对复杂查询进行并行化处理，然后执行该查询。 
 
 ## <a name="next-steps"></a>后续步骤
 

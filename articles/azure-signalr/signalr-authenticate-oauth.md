@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/17/2018
+ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: 748e5839233b9d71b9ed072d0cfe45f018471c52
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c24e3045640471ed6ee7052f877850acd8e8cf00
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869693"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100931"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>教程：Azure SignalR 服务身份验证
 
@@ -43,7 +43,7 @@ Microsoft Azure SignalR 服务目前提供[公共预览版](https://azure.micros
 ![托管在 Azure 中的 OAuth 完成](media/signalr-authenticate-oauth/signalr-oauth-complete-azure.png)
 
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 GitHub 帐户注册新的 OAuth 应用
@@ -88,9 +88,10 @@ Microsoft Azure SignalR 服务目前提供[公共预览版](https://azure.micros
 
 ### <a name="update-the-startup-class-to-support-github-authentication"></a>更新启动类以支持 GitHub 身份验证
 
-1. 将引用添加到最新的 Microsoft.AspNetCore.Authentication.Cookies 包并还原所有包。
+1. 添加对最新 *Microsoft.AspNetCore.Authentication.Cookies* 和 *AspNet.Security.OAuth.GitHub* 包的引用并还原所有包。
 
         dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
         dotnet restore
 
 1. 打开 Startup.cs，并为以下命名空间添加 `using` 语句：
@@ -478,7 +479,7 @@ connstring="Endpoint=https://$signalRhostname;AccessKey=$signalRprimarykey;"
 #Add an app setting to the web app for the SignalR connection
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "Azure:SignalR:ConnectionString=$connstring" 
+    --settings "Azure__SignalR__ConnectionString=$connstring" 
 
 #Add the app settings to use with GitHub authentication
 az webapp config appsettings set --name $WebAppName \
@@ -493,7 +494,7 @@ az webapp config appsettings set --name $WebAppName \
 | 参数 | 说明 |
 | -------------------- | --------------- |
 | GitHubClientId | 为此变量分配 GitHub OAuth 应用的机密客户端 ID。 |
-| GitHubClientSecret | 为此变量分配 GitHub OAuth 应用的密码。 |
+| GitHubClientSecret | 为此变量分配 GitHub OAuth 应用的机密密码。 |
 | ResourceGroupName | 将此变量更新为在上一部分中使用的相同资源组名称。 | 
 | SignalRServiceResource | 使用快速入门中创建的 SignalR 服务资源名称更新此变量。 例如，signalrtestsvc48778624。 | 
 | WebAppName | 使用上一部分中创建的新 Web 应用名称更新此变量。 | 
@@ -588,7 +589,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 否则，如果已完成快速入门示例应用程序，则可删除此快速入门中创建的 Azure 资源，避免产生费用。 
 
 > [!IMPORTANT]
-> 删除资源组这一操作是不可逆的，资源组以及其中的所有资源会被永久删除。 请确保不会意外删除错误的资源组或资源。 如果是在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，则可从各自的边栏选项卡逐个删除这些资源，而不是删除资源组。
+> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 > 
 > 
 

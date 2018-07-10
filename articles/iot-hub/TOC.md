@@ -98,7 +98,7 @@
 
 ### 扩展的 IoT 方案
 #### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
-#### [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
+#### [将 IoT 中心消息保存到 Azure Blob 存储](iot-hub-store-data-in-azure-table-storage.md)
 #### [Power BI 中的数据可视化](iot-hub-live-data-visualization-in-power-bi.md)
 #### [使用 Web 应用进行数据可视化](iot-hub-live-data-visualization-in-web-apps.md)
 #### [使用 Azure 机器学习预测天气](iot-hub-weather-forecast-machine-learning.md)
@@ -251,7 +251,8 @@
 # 相关内容
 ## 解决方案 
 ### [IoT 解决方案加速器](/azure/iot-suite) 
-### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
+### 
+  [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## 平台服务 
 ### [IoT 中心](/azure/iot-hub) 
 ### [IoT 中心设备预配服务](/azure/iot-dps)

@@ -47,6 +47,8 @@
       items:
         - name: 更改跟踪概述
           href: automation-change-tracking.md
+        - name: 查看所跟踪文件的文件内容
+          href: change-tracking-file-contents.md
     - name: 清单
       items:
         - name: 使用清单集合管理 VM

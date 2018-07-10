@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 5efb0087c8e1ea55051d8eb7b209059b3abd5c5c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 585dcd120c42562b1520d4454f9d04e445553101
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062753"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096183"
 ---
 # <a name="what-is-azure-redis-cache"></a>什么是 Azure Redis 缓存
 
@@ -27,7 +27,7 @@ Azure Redis 缓存基于流行的开放源代码 [Redis 缓存](https://redis.io
 
 Azure Redis 缓存也可用作内存中数据结构存储、分布式非关系数据库以及消息代理。 若要提高应用程序性能，可充分利用 Redis 引擎低延迟、高吞吐量的性能特点。
 
-可以通过 Azure Redis 缓存来访问安全、专用的 Redis 缓存，该缓存由 Microsoft 管理，托管在 Azure 中，可供 Azure 中的任何应用程序访问。
+可以通过 Azure Redis 缓存来访问安全、专用的 Redis 缓存，该缓存由 Microsoft 管理，托管在 Azure 中，可供 Azure 内或外的任何应用程序访问。
 
 ## <a name="why-use-azure-redis-cache"></a>为什么使用 Azure Redis 缓存
 

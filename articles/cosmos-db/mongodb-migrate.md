@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: cacda277082f62c9d98a7459cb5dbf74375bfd87
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795340"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100290"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB：导入 MongoDB 数据 
 
@@ -82,7 +82,7 @@ ms.locfileid: "34795340"
         
     * 默认情况下，Azure Cosmos DB 预配有一个吞吐量为每秒 1,000 个请求单位（RU/秒）的新 MongoDB 集合。 使用 mongoimport、mongorestore 或 mongomirror 开始迁移之前，通过 [Azure 门户](https://portal.azure.com)或 MongoDB 驱动程序和工具预创建所有集合。 如果集合大小超过 10GB，请务必创建包含相应分片键的[分片/分区集合](partition-data.md)。
 
-    * 在 [Azure 门户](https://portal.azure.com)中，仅出于迁移目的，提高集合吞吐量，单分区集合的起始吞吐量为 1,000 个 RU/秒，分片集合的起始吞吐量为 2,500 个 RU/秒。 提高吞吐量后，可避免达到上限，并缩短迁移时间。 由于 Azure Cosmos DB 采用按小时计费，因此可以在迁移后立即降低吞吐量，以节省成本。
+    * 在 [Azure 门户](https://portal.azure.com)中，仅出于迁移目的，提高集合吞吐量，单分区集合的起始吞吐量为 1,000 个 RU/秒，分片集合的起始吞吐量为 2,500 个 RU/秒。 提高吞吐量后，可避免受到速率限制，并缩短迁移时间。 由于 Azure Cosmos DB 采用按小时计费，因此可以在迁移后立即降低吞吐量，以节省成本。
 
     * 除了在集合级别预配 RU/秒之外，还可以在父数据库级别为一组集合预配 RU/秒。 这需要预先创建数据库和集合，以及为每个集合定义分片键。
 
