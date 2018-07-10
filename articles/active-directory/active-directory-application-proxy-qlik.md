@@ -52,7 +52,7 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 按照应用程序 1 的相同步骤操作，但存在以下例外： 
 
 **步骤 5**：外部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 HTTPS 的默认端口为 4244，HTTP 的默认端口为 4248。 例如：**https&#58;//demo.qlik.com:4244**</br></br> 
-**步骤 10：** 请勿设置 SSO，并使“单一登录”**** 处于禁用状态
+**步骤 10：** 请勿设置 SSO，并使 **“单一登录”处于禁用状态**
  
  
 ## <a name="testing"></a>测试 

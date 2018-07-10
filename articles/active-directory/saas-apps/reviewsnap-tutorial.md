@@ -110,7 +110,7 @@ ms.locfileid: "36225290"
 
     a. 在“标识符”文本框中，键入一个 URL：`https://app.reviewsnap.com`
 
-    b. 在“回复 URL”**** 文本框中，使用以下模式键入 URL：`https://app.reviewsnap.com/auth/saml/callback?namespace=<CUSTOMER_NAMESPACE>
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://app.reviewsnap.com/auth/saml/callback?namespace=<CUSTOMER_NAMESPACE>
 `
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：

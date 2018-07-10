@@ -63,9 +63,9 @@ ms.locfileid: "36316444"
 如果已在 Azure 门户中注册应用，请按照下列步骤操作。
 
 1. 登录  [Azure 门户](https://portal.azure.com/)。
-2. 导航到“应用注册”部分并选择应用 **** 。
-3. 打开应用的“属性” **** 部分。
-4. 填写“服务条款 URL”和“隐私声明 URL”字段 ****  **** 。
+2. 导航到 **“应用注册”** 部分并选择应用。
+3. 打开应用的 **“属性”** 部分。
+4. 填写 **“服务条款 URL”** 和 **“隐私声明 URL”** 字段。
 5. 保存所做更改。
 
 ![含有服务条款和隐私声明 URL 的应用属性部分](./media/active-directory-integrating-applications/azure-portal-terms-service-privacy-statement-urls.png)
@@ -74,8 +74,8 @@ ms.locfileid: "36316444"
 如果已在应用注册门户或开发人员中心中注册应用，请按照下列步骤操作。
 
 1. 登录到 [应用程序注册门户](https://apps.dev.microsoft.com/)。
-2. 选择应用并滚动到“配置文件”部分 **** 。
-3. 填写“服务条款 URL”和“隐私声明 URL”字段 ****  **** 。
+2. 选择应用并滚动到 **“配置文件”** 部分。
+3. 填写 **“服务条款 URL”** 和 **“隐私声明 URL”** 字段。
 4. 保存所做更改。
 
 ![含有服务条款和隐私声明 URL 的应用配置文件部分](./media/active-directory-integrating-applications/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
