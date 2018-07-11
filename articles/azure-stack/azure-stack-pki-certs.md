@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 9a43179998e8377dfbbb1a41ba7d46936d63aedd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 13bc82caf5e10f5b35df29d085349ec4c80628a2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030149"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929264"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -39,7 +39,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - Azure Stack 基础结构必须能够通过网络访问证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是 http 终结点
 - 轮换证书时，证书必须由签署部署时提供的证书的同一内部证书颁发机构颁发，或者由上述任何公共证书颁发机构颁发
 - 不支持使用自签名证书
-- 证书可以是单个通配符证书，其中涵盖使用者可选名称 (SAN) 字段中的所有命名空间。 或者，可以针对需要证书的终结点（例如 **acs**和 Key Vault）使用采用通配符的单个证书。 
+- 有关部署和旋转，你可以使用单个证书，其中涵盖证书的使用者名称和使用者可选名称 (SAN) 字段中的所有命名空间，也可以使用单个证书下的命名空间中的每个 Azure Stack你打算使用的服务要求。 注意： 这两种方法都要求采用通配符的终结点，它们必需的如**KeyVault**并**KeyVaultInternal**。 
 - 证书签名算法不能是 SHA1，因为算法必须更可靠。 
 - 证书格式必须是 PFX，因为安装 Azure Stack 时需要公钥和私钥。 
 - 证书 pfx 文件的“密钥用途”字段中必须包含“数字签名”和“KeyEncipherment”值。
@@ -47,7 +47,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 证书的“颁发给:”字段不能与其“颁发者:”字段相同。
 - 部署时，所有证书 pfx 文件的密码都必须相同
 - 证书 pfx 的密码必须是复杂密码。
-- 确保使用者名称和使用者备用名称扩展 (x509v3_config) 匹配项中的使用者可选名称。 使用者备用名称字段中，可以指定其他主机名 （网站、 IP 地址、 公用名） 由单个 SSL 证书进行保护。
+- 确保使用者名称与使用者可选名称扩展 (x509v3_config) 中的使用者可选名称匹配。 “使用者可选名称”字段允许你指定要受单个 SSL 证书保护的其他主机名（网站、IP 地址、公用名称）。
 
 > [!NOTE]  
 > 不支持自签名证书。

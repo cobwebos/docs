@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/02/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 60f1978b4173f169ad14deb67b075a61f9e7f149
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: bccc2dcad8e326cd29cfe031a95a7c2d0cf5ec7f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344132"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38302306"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>为 MySQL 资源提供程序添加托管服务器
 
@@ -52,9 +52,6 @@ MySQL 版本 5.6 和 5.7 8.0 可供使用的宿主服务器。 MySQL RP 不支�
    ![创建 MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
    SKU**名称**应反映的 SKU 属性，以便用户可以将其数据库部署到适当的 SKU。
-
-   >[!IMPORTANT]
-   >中不受支持特殊字符，包括空格和句点**名称**或**层**MySQL 资源提供程序创建的 SKU 时。
 
 6. 选择**确定**创建 SKU。
 > [!NOTE]

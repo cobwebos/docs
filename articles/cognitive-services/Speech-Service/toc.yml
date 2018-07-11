@@ -27,7 +27,7 @@
       href: how-to-text-to-speech.md
     - name: 翻译语音
       href: how-to-translate-speech.md
-    - name: 听录批处理
+    - name: 批量听录
       href: batch-transcription.md
     - name: 获取语音设备 SDK
       href: get-speech-devices-sdk.md
@@ -41,6 +41,8 @@
       href: how-to-customize-pronunciation.md
     - name: 自定义语音字体（机器人品牌语音）
       href: how-to-customize-voice-font.md
+    - name: 录制语音示例
+      href: record-custom-voice-samples.md
     - name: 准备脚本
       href: prepare-transcription.md
     - name: 使用自定义音频流

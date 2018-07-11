@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/10/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: e8dd425bbb5839b1c2f5ad4e217c61dc50b38ce1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c9249de56979d47a29fc9d7c12b99e41b3ada0fd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346818"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38465831"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
@@ -100,9 +100,6 @@ ms.locfileid: "37346818"
    * 若要使用现有的 SKU，选择可用的 SKU，然后选择**创建**。
    * 若要创建的 SKU，请选择 **+ 创建新的 SKU**。 在中**创建 SKU**，输入所需的信息，然后选择**确定**。
 
-     > [!IMPORTANT]
-     > 中不受支持特殊字符，包括空格和句点**名称**字段。 使用以下屏幕截图中的示例输入值**系列**，**层**，并**Edition**字段。
-
      ![创建的 SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 ## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>提供使用 SQL Alwayson 可用性组实现高可用性
@@ -119,16 +116,18 @@ ms.locfileid: "37346818"
 
 必须启用[自动种子设定](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)上每个可用性组的每个 SQL Server 实例。
 
-若要启用自动种子设定的所有实例上，编辑并运行以下 SQL 命令的每个实例：
+若要启用自动种子设定的所有实例上，编辑，然后在主副本的每个辅助实例上运行以下 SQL 命令：
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
-      MODIFY REPLICA ON 'InstanceName'
+      MODIFY REPLICA ON '<secondary_node>'
       WITH (SEEDING_MODE = AUTOMATIC)
   GO
   ```
 
-在辅助实例上编辑，然后运行以下每个实例的 SQL 命令:
+请注意，可用性组必须括在方括号中。
+
+在辅助节点上运行以下 SQL 命令：
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,7 +155,7 @@ ms.locfileid: "37346818"
 
    下**SQL 宿主服务器**，你可以连接到充当资源提供程序的后端的实际实例的 SQL Server 的 SQL Server 资源提供程序。
 
-3. 填写您的 SQL Server 实例的连接详细信息表。 请确保使用的 FQDN 地址 Always On 侦听器 （和可选端口号。）提供有关配置具有 sysadmin 权限的帐户的信息。
+3. 填写您的 SQL Server 实例的连接详细信息表。 请确保使用 Always On 侦听器 （和可选端口号和实例名称） 的 FQDN 地址。 提供有关配置具有 sysadmin 权限的帐户的信息。
 
 4. 选中 Always On 可用性组框以启用对 SQL Always On 可用性组实例的支持。
 

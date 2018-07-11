@@ -12,22 +12,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/09/2018
 ms.author: jeffgilb
-ms.reviewer: avishwan
-ms.openlocfilehash: 7d14b246220264641a3bb726d5505c25dc25bbbd
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.reviewer: brbartle
+ms.openlocfilehash: 65525ffe33ddc100dd3066e7c2b52ef8a856fbc3
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248136"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37934771"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
-将 [Azure Stack](azure-stack-poc.md) 注册到 Azure 即可从 Azure 下载 Marketplace 项，并设置向 Microsoft 报告商业数据的功能。 注册 Azure Stack 之后，使用情况会报告给 Azure 商业组件，然后你就可以在用于注册的订阅下查看它。
+将 [Azure Stack](azure-stack-poc.md) 注册到 Azure 即可从 Azure 下载市场项，并设置向 Microsoft 报告商业数据的功能。 注册 Azure Stack 之后，使用情况会报告给 Azure 商业组件，然后你就可以在用于注册的订阅下查看它。
 
-> [!IMPORTANT]
-> 需要注册才能支持完整的 Azure Stack 功能，包括 Marketplace 联合。 此外，如果你在使用即用即付计费模式时未注册，则将违反 Azure Stack 许可条款。 若要了解有关 Azure Stack 授权模型的详细信息，请参阅[“如何购买”页](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)。
+> [!IMPORTANT]  
+> 需要注册才能支持完整的 Azure Stack 功能，包括市场联合。 此外，如果你在使用即用即付计费模式时未注册，则将违反 Azure Stack 许可条款。 若要了解有关 Azure Stack 授权模型的详细信息，请参阅[“如何购买”页](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -41,17 +41,17 @@ ms.locfileid: "35248136"
 - 订阅所有者的帐户用户名和密码（支持 MSA/2FA 帐户）。
 - 已注册 Azure Stack 资源提供程序（请参阅下面的“注册 Azure Stack 资源提供程序”部分以了解详细信息）。
 
-如果你没有满足这些要求的 Azure 订阅，则可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。
+如果没有符合这些要求的 Azure 订阅，则可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。
 
 ### <a name="powershell-language-mode"></a>PowerShell 语言模式
 
-若要成功注册 Azure 堆栈，PowerShell 语言模式必须设置为**FullLanguageMode**。  若要验证的当前语言模式设置为完全，打开提升的 PowerShell 窗口并运行以下 PowerShell 命令：
+若要成功注册 Azure Stack，必须将 PowerShell 语言模式设置为 **FullLanguageMode**。  若要验证当前的语言模式是否设置为 Full，请打开权限提升的 PowerShell 窗口，并运行以下 PowerShell 命令：
 
 ```powershell
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-确保输出将返回**FullLanguageMode**。 如果返回其他任何语言模式、 注册将需要在另一台计算机上运行或语言模式将需要设置为**FullLanguageMode**才能继续。
+确保输出返回的是 **FullLanguageMode**。 如果返回了其他任何语言模式，则需要在另一台计算机上运行注册，或者将语言模式设置为 **FullLanguageMode**，然后才能继续。
 
 ### <a name="bkmk_powershell"></a>安装适用于 Azure Stack 的 PowerShell
 
@@ -150,9 +150,6 @@ Set-AzsRegistration `
 ```
 
 ## <a name="register-azure-stack-in-disconnected-environments"></a>在离线环境中注册 Azure Stack
-
-*本部分中的信息适用于 Azure Stack 1712 更新版 (180106.1) 和更高版本，不支持更低的版本。*
-
 若要在离线环境（未建立 Internet 连接）中注册 Azure Stack，需要从 Azure Stack 环境获取注册令牌，然后在可连接到 Azure 并已[安装适用于 Azure Stack 的 PowerShell](#bkmk_powershell) 的计算机上使用该令牌。  
 
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>从 Azure Stack 环境获取注册令牌
@@ -227,12 +224,12 @@ Set-AzsRegistration `
 
 ## <a name="verify-azure-stack-registration"></a>验证 Azure Stack 注册
 
-使用以下步骤来验证 Azure 堆栈成功向 Azure 注册。
+使用以下步骤来验证 Azure Stack 是否已成功注册到 Azure。
 
 1. 登录到 Azure Stack [管理员门户](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal)：https&#58;//adminportal.*&lt;区域>.&lt;fqdn>*。
-2. 选择**更多的服务** > **应用商店管理** > **添加从 Azure**。
+2. 选择“更多服务” > “市场管理” > “从 Azure 添加”。
 
-如果看到 Azure 提供的项列表（例如 WordPress），则表示激活成功。 但是，在离线环境中，Azure Stack Marketplace 不会显示 Azure Marketplace 项。
+如果看到 Azure 提供的项列表（例如 WordPress），则表示激活成功。 但是，在离线环境中，Azure Stack 市场不会显示 Azure 市场项。
 
 > [!NOTE]
 > 完成注册后，将不再显示提示未注册的活动警告。
@@ -305,4 +302,5 @@ Set-AzsRegistration `
 
 ## <a name="next-steps"></a>后续步骤
 
-[从 Azure 下载 Marketplace 项](azure-stack-download-azure-marketplace-item.md)
+
+  [从 Azure 下载市场项](azure-stack-download-azure-marketplace-item.md)

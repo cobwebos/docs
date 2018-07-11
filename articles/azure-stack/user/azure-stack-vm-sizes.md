@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: brenduns
-ms.openlocfilehash: 52ab831dfaca337cdf803f410d3824b514fd0e8a
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: bfdfc2ff879db11f5a8ba35898069b2b937c49b0
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437148"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928975"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack 中支持的虚拟机大小
 
@@ -107,7 +107,7 @@ ms.locfileid: "37437148"
 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数/预期网络带宽 (MBps) |
 |-----------------|----|----|-----|----|------|------------|---------|
-|**Standard_F1**  |1   |2   |16   |500 |3000  |4 / 4x400   |2 / 750  |
+|**Standard_F1**  |1   |2   |16   |500 |3000  |4/4x500   |2 / 750  |
 |**Standard_F2**  |2   |4   |32   |500 |6000  |8/8x500   |2 / 1500 |
 |**Standard_F4**  |4   |8   |64   |500 |12000 |16/16x500 |4 / 3000 |
 |**Standard_F8**  |8   |16  |128  |500 |24000 |32/32x500 |8 / 6000 |

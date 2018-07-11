@@ -103,6 +103,8 @@
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: 使用资源管理器模板启用诊断设置
           href: monitoring-enable-diagnostic-logs-using-template.md
+        - name: 准备 JSON Lines 诊断日志格式
+          href: monitor-diagnostic-logs-append-blobs.md
     - name: 使用活动日志
       items:
         - name: 在活动日志中查看事件

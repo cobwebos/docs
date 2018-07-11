@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 5/18/2018
+ms.date: 07/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: b3c09582f5135655640768bcbcbef91750827bfa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e2785b0beeab042d4b1ad9a9eb5f545dbb58b8b9
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38487495"
 ---
 # <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure Stack 的 PowerShell
 
@@ -28,16 +29,16 @@ ms.lasthandoff: 05/20/2018
 
 本文提供有关安装适用于 Azure Stack 的 PowerShell 的详细说明。
 
-> [!Note]
-> 以下步骤需要 PowerShell 5.0。 若要检查你的版本，请运行 $PSVersionTable.PSVersion 并比较**主要**版本。
+> [!Note]  
+> 以下步骤需要 PowerShell 5.0。 若要检查版本，请运行 $PSVersionTable.PSVersion 并比较**主**版本。
 
-通过 PowerShell 库安装适用于 Azure Stack 的 PowerShell 命令。 你可以使用以下过程验证如果 PSGallery 注册为一个存储库中，打开提升的 PowerShell 会话并运行以下命令：
+通过 PowerShell 库安装适用于 Azure Stack 的 PowerShell 命令。 可以使用以下过程来验证 PSGallery 是否已注册为存储库，请打开提升的 PowerShell 会话并运行以下命令：
 
 ```PowerShell  
 Get-PSRepository -Name "PSGallery"
 ```
 
-如果未注册存储库中，打开提升的 PowerShell 会话并运行以下命令：
+如果未注册存储库，请打开提升的 PowerShell 会话并运行以下命令：
 
 ```PowerShell  
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
@@ -45,11 +46,11 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 > [!Note]  
 > 此步骤需要访问 Internet。 
 
-## <a name="uninstall-existing-versions-of-powershell"></a>卸载现有的 PowerShell 版本
+## <a name="uninstall-existing-versions-of-the-azure-stack-powershell-modules"></a>卸载现有版本的 Azure Stack PowerShell 模块
 
-在安装之前所需的版本，请确保卸载任何以前安装的 Azure 堆栈 PowerShell 模块。 可使用以下两种方法之一卸载现有版本：
+在安装之前所需的版本，请确保卸载任何以前安装的 Azure Stack AzureRM PowerShell 模块。 可使用以下两种方法之一卸载现有版本：
 
- - 若要卸载现有的 PowerShell 模块，请关闭所有活动的 PowerShell 会话并运行以下命令：
+ - 若要卸载现有的 AzureRM PowerShell 模块，请关闭所有活动的 PowerShell 会话并运行以下命令：
 
   ```PowerShell
     Uninstall-Module AzureRM.AzureStackAdmin -Force
@@ -57,11 +58,11 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
     Uninstall-Module -Name AzureStack -Force
   ```
 
- - 从 `C:\Program Files\WindowsPowerShell\Modules` 和 `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` 文件夹中删除以“Azure”开头的所有文件夹。 删除这些文件夹中删除任何现有的 PowerShell 模块。
+ - 从 `C:\Program Files\WindowsPowerShell\Modules` 和 `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` 文件夹中删除以“Azure”开头的所有文件夹。 删除这些文件夹会删除任何现有的 PowerShell 模块。
 
 以下部分介绍安装适用于 Azure Stack 的 PowerShell 所要执行的步骤。 可在已联网、部分联网或离线场景中运行的 Azure Stack 上安装 PowerShell。
 
-## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>在连接方案中安装 PowerShell （具有 Internet 连接）
+## <a name="install-the-azure-stack-powershell-modules-in-a-connected-scenario-with-internet-connectivity"></a>在联网场景中 （具有 Internet 连接） 安装的 Azure Stack PowerShell 模块
 
 通过 API 版本配置文件安装与 Azure Stack 兼容的 AzureRM 模块。 Azure Stack 需要 **2017-03-09-profile** API 版本配置文件（可通过安装 AzureRM.Bootstrapper 模块获取）。 有关 API 版本配置文件及其提供的 cmdlet 的详细信息，请参阅[管理 API 版本配置文件](user/azure-stack-version-profiles.md)。 除了 AzureRM 模块以外，还应安装 Azure Stack 特定的 Azure PowerShell 模块。 运行以下 PowerShell 脚本，在开发工作站上安装这些模块：
 
@@ -87,12 +88,12 @@ Get-Module -ListAvailable | where-Object {$_.Name -like "Azs*"}
 
 如果安装成功，输出中会显示 AzureRM 和 AzureStack 模块。
 
-## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>安装 PowerShell 断开连接或部分连接的方案中 （具有有限的 Internet 连接）
+## <a name="install-the-azure-stack-powershell-modules-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>安装 Azure Stack PowerShell 模块已断开连接或部分联网的场景中 （Internet 连接受到限制）
 
-中断开连接的情况下，必须首先下载到计算机具有 Internet 连接的 PowerShell 模块，然后将它们传输到安装了 Azure 堆栈开发工具包。
+在离线场景中，必须先将 PowerShell 模块下载到已建立 Internet 连接的计算机，然后将其传送到 Azure Stack 开发工具包进行安装。
 
 > [!IMPORTANT]  
-> Azure 堆栈 1.3.0 PowerShell 模块的版本附带的重大更改的列表。 若要从 1.2.11 升级版本，请参阅[迁移指南](https://aka.ms/azspowershellmigration)。
+> Azure Stack 1.3.0 PowerShell 模块版本随附了重大更改列表。 若要从 1.2.11 版升级，请参阅[迁移指南](https://aka.ms/azspowershellmigration)。
 
 1. 登录到已建立 Internet 连接的计算机，使用以下脚本将 AzureRM 和 AzureStack 包下载到本地计算机：
 
@@ -117,11 +118,11 @@ Get-Module -ListAvailable | where-Object {$_.Name -like "Azs*"}
    ```
 
   > [!Important]  
-  > 如果你没有 Azure 堆栈使用运行更新 1804年或更高版本，更改**requiredversion**参数值以`1.2.11`。 
+  > 如果未运行包含更新 1804 或更高版本的 Azure Stack，请将 **requiredversion** 参数值更改为 `1.2.11`。 
 
 2. 将下载的包复制到 USB 设备。
 
-3. 登录到工作站，并将包从 USB 设备复制到工作站上的位置。
+3. 登录到工作站，将包从 USB 设备复制到工作站中的某个位置。
 
 4. 接下来，必须将此位置注册为默认存储库，并从此存储库安装 AzureRM 和 AzureStack 模块：
 
@@ -143,9 +144,9 @@ Get-Module -ListAvailable | where-Object {$_.Name -like "Azs*"}
 
 ## <a name="configure-powershell-to-use-a-proxy-server"></a>配置 PowerShell 以使用代理服务器
 
-在需要代理服务器访问 internet 的情况下，你必须首先配置 PowerShell 以使用现有的代理服务器。
+在需要代理服务器访问 Internet 的方案中，必须先将 PowerShell 配置为使用现有代理服务器。
 
-1. 打开提升的 PowerShell 提示符。
+1. 打开提升的 PowerShell 命令提示符。
 2. 运行以下命令：
 
 ````PowerShell  

@@ -59,16 +59,20 @@
           href: luis-quickstart-intent-and-list-entity.md
         - name: 5. 添加分层的实体
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: 6. 添加简单实体和短语列表
+        - name: 6. 添加复合实体
+          href: luis-tutorial-composite-entity.md
+        - name: 7. 添加简单实体和短语列表
           href: luis-quickstart-primary-and-secondary-data.md
-        - name: 7. 添加 keyPhrase 实体
+        - name: 8. 添加 keyPhrase 实体
           href: luis-quickstart-intent-and-key-phrase.md
-        - name: 8. 添加情绪分析
+        - name: 9. 添加情绪分析
           href: luis-quickstart-intent-and-sentiment-analysis.md
     - name: 改进应用
       items:
         - name: 查看终结点表述
           href: luis-tutorial-review-endpoint-utterances.md
+        - name: 使用批处理测试
+          href: luis-tutorial-batch-testing.md
         - name: 使用模式
           href: luis-tutorial-pattern.md
 - name: 示例
@@ -138,7 +142,7 @@
     - name: 规划应用
       href: luis-how-plan-your-app.md
     - name: 创建新应用
-      href: Create-new-app.md
+      href: luis-how-to-start-new-app.md
     - name: 构建模型
       items:
         - name: 添加意向
@@ -147,15 +151,15 @@
           href: luis-how-to-add-example-utterances.md
         - name: 添加实体
           href: luis-how-to-add-entities.md
-        - name: 使用复合实体提取分组的数据
-          href: luis-tutorial-composite-entity.md
-        - name: 通过 Node.js 使用列表实体匹配确切文本
-          href: luis-tutorial-list-entity.md
-        - name: 使用 Node.js 以编程方式构建应用
-          href: luis-tutorial-node-import-utterances-csv.md
+        - name: 使用 API
+          items:
+            - name: 使用 Node.js 以编程方式构建应用
+              href: luis-tutorial-node-import-utterances-csv.md
+            - name: 通过 Node.js 使用列表实体匹配确切文本
+              href: luis-tutorial-list-entity.md
     - name: 集成
       items:
-        - name: 使用必应拼写检查 API v7 更正拼写
+        - name: 使用必应拼写检查 API v7
           href: luis-tutorial-bing-spellcheck.md
         - name: 使用语音服务
           href: luis-tutorial-speech-to-intent.md
@@ -176,7 +180,7 @@
     - name: 提高预测准确性
       items:
         - name: 查看终结点表述
-          href: Label-Suggested-Utterances.md
+          href: luis-how-to-review-endoint-utt.md
         - name: 添加短语列表
           href: luis-how-to-add-features.md
         - name: 添加模式
@@ -189,36 +193,36 @@
           href: interactive-test.md
         - name: 批处理测试
           href: luis-how-to-batch-test.md
-        - name: 使用批处理测试提高准确性
-          href: luis-tutorial-batch-testing.md
     - name: 发布应用
       href: luis-how-to-publish-app.md
     - name: 使用预构建的模型
       items:
-        - name: 使用预生成的实体
+        - name: 使用实体
           href: luis-prebuilt-entities.md
-        - name: 使用预生成的域
+        - name: 使用域
           href: luis-how-to-use-prebuilt-domains.md
-        - name: 使用 Cortana 预生成的应用
+        - name: 使用 Cortana
           href: luis-how-to-cortana-prebuilt-app.md
-    - name: 管理 LUIS 应用
+    - name: 管理应用
       items:
         - name: 使用仪表板
           href: luis-how-to-use-dashboard.md
-        - name: 创建密钥
+        - name: 创建终结点密钥
           href: luis-how-to-azure-subscription.md
-        - name: 在 LUIS 中添加密钥
+        - name: 将终结点密钥添加到应用
           href: luis-how-to-manage-keys.md
-        - name: 使用 PowerShell 查看终结点使用情况
-          href: luis-how-to-manage-from-cloud-shell.md
         - name: 管理版本
           href: luis-how-to-manage-versions.md
         - name: 与其他作者协作
           href: luis-how-to-collaborate.md
-        - name: 使用流量管理器将终结点配额分布在各个密钥上
-          href: traffic-manager.md
-    - name: 管理 LUIS 帐户
-      href: luis-how-to-account-settings.md
+        - name: 管理创作密钥
+          href: luis-how-to-account-settings.md
+        - name: 管理终结点使用情况
+          items:
+            - name: 使用 PowerShell 查看终结点使用情况
+              href: luis-how-to-manage-from-cloud-shell.md
+            - name: 使用流量管理器将终结点配额分布在各个密钥上
+              href: traffic-manager.md
     - name: 迁移到 V2 API
       href: migration-v1-to-v2.md
     - name: 以编程方式查找区域
@@ -251,6 +255,8 @@
           href: luis-reference-prebuilt-deprecated.md
         - name: 电子邮件实体
           href: luis-reference-prebuilt-email.md
+        - name: KeyPhrase 实体
+          href: luis-reference-prebuilt-keyphrase.md
         - name: 数字实体
           href: luis-reference-prebuilt-number.md
         - name: 序号实体

@@ -10,6 +10,8 @@
   items:
     - name: 部署远程监视解决方案
       href: quickstart-remote-monitoring-deploy.md
+    - name: 部署设备模拟解决方案
+      href: quickstart-device-simulation-deploy.md
 - name: 教程
   items:
     - name: 监视 IoT 设备
@@ -33,7 +35,7 @@
           href: iot-accelerators-remote-monitoring-device-behavior.md
     - name: 预测性维护
       href: iot-accelerators-predictive-walkthrough.md
-    - name: 连接工厂
+    - name: 互连工厂
       href: iot-accelerators-connected-factory-features.md
       items:
         - name: 体系结构
@@ -135,7 +137,7 @@
       items:
         - name: 部署解决方案加速器
           href: iot-accelerators-predictive-overview.md
-    - name: 连接工厂
+    - name: 互连工厂
       items:
         - name: 部署解决方案加速器
           href: iot-accelerators-connected-factory-overview.md
@@ -149,10 +151,10 @@
           href: iot-accelerators-connected-factory-customize.md
     - name: 设备模拟
       items:
-        - name: 部署解决方案加速器
-          href: iot-accelerators-device-simulation-deploy.md
-        - name: 运行模拟
-          href: iot-accelerators-device-simulation-explore.md
+        - name: 使用现有 IoT 中心
+          href: iot-accelerators-device-simulation-choose-hub.md
+        - name: 使用自定义设备模型
+          href: iot-accelerators-device-simulation-custom-model.md
 - name: 引用
   items:
     - name: 开发人员参考指南
