@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: c159eec7a8674e57e6f7a815040527ed60966f46
-  ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+  ms.openlocfilehash: 5fcfe7b12acc943224d3c3158f2b39b4c35de1ee
+  ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/06/2018
-  ms.locfileid: "37887277"
+  ms.lasthandoff: 07/09/2018
+  ms.locfileid: "37916143"
 abstract:
   description: Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 数据库引擎的关系数据库即服务 (DBaaS)。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
   aside:
@@ -48,12 +48,12 @@ sections:
       image:
         src: media/index/i_perftier.svg
       title: 价格/性能层
-    - href: /azure/sql-database/sql-database-single-database-scale
+    - href: /azure/sql-database/sql-database-scale-resources
       html: <p>轻松地对数据库进行<a href="/azure/sql-database/sql-database-single-database-scale">纵向扩展</a>、<a href="/azure/sql-database/sql-database-read-scale-out">横向扩展</a>或分片，具体取决于提高应用程序性能的需求。</p>
       image:
         src: media/index/i_scale.svg
       title: 可伸缩性和弹性
-    - href: /azure/sql-database/sql-database-automatic-tuning
+    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
       html: <p>使得内置于服务中的智能<a href="/azure/sql-database/sql-database-automatic-tuning">自动优化数据库性能</a>、<a href="/azure/sql-database/sql-advanced-threat-protection">识别数据库中的威胁</a>和<a href="/azure/sql-database/sql-vulnerability-assessment">漏洞</a>。</p>
       image:
         src: media/index/i_intelligence.svg

@@ -59,10 +59,10 @@
 #### [自定义代码](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [本地运行和调试](data-lake-tools-for-vscode-local-run-and-debug.md)
 
-### 持续集成和持续部署
-#### [概述](data-lake-analytics-cicd-overview.md)
-#### [设置测试](data-lake-analytics-cicd-test.md)
-#### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
+## 持续集成和持续部署
+### [概述](data-lake-analytics-cicd-overview.md)
+### [设置测试](data-lake-analytics-cicd-test.md)
+### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 
 # 引用
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)

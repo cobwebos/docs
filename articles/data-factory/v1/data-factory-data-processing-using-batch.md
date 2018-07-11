@@ -968,7 +968,7 @@ test custom activity Microsoft test custom activity Microsoft
 * [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [数据工厂服务简介](data-factory-introduction.md)
-  * [](data-factory-build-your-first-pipeline.md)
+  * [数据工厂入门](data-factory-build-your-first-pipeline.md)
   * [在数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 

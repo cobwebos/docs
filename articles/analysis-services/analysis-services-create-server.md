@@ -9,11 +9,11 @@ ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 92209d82a6db18b7f1e1a5adbb52c1899bf4593f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443641"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950693"
 ---
 # <a name="quickstart-create-a-server---portal"></a>快速入门：创建服务器 - 门户
 

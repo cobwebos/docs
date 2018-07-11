@@ -9,11 +9,11 @@ ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 9149f15d0503b9a39ac67d9c3f6fc1ddde7e03bd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "37446616"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952760"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>快速入门：创建服务器 - PowerShell
 

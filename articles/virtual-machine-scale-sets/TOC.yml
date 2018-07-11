@@ -55,10 +55,6 @@
           href: tutorial-autoscale-powershell.md
         - name: 模板
           href: tutorial-autoscale-template.md
-    - name: 使用自定义 Packer 映像将应用部署到 Azure 虚拟机规模集
-      items:
-        - name: Azure CLI 2.0
-          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: 示例
   items:
     - name: Azure CLI 2.0
