@@ -7,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/22/2018
+ms.date: 07/03/2018
 ms.author: hux
-ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335765"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445411"
 ---
 # <a name="azure-storage-account-options"></a>Azure 存储帐户选项
 
@@ -46,7 +46,10 @@ GPv2 存储帐户在帐户级别公开“访问层”属性，可以将默认存
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>将存储帐户升级为 GPv2
 
-用户随时可以使用 PowerShell 或 Azure CLI 将 GPv1 或 Blob 存储帐户升级为 GPv2 帐户。 此更改无法撤消，不允许其他更改。
+用户随时可以使用 Azure 门户、PowerShell 或 Azure CLI 将 GPv1 或 Blob 存储帐户升级为 GPv2 帐户。 此更改无法撤消，不允许其他更改。
+
+#### <a name="upgrade-with-azure-portal"></a>使用 Azure 门户进行升级
+若要使用 Azure 门户将 GPv1 或 Blob 存储帐户升级为 GPv2 帐户，请先登录到 [Azure 门户](https://portal.azure.com)，然后选择存储帐户。 选择“设置” > “配置”。 此时将显示“升级”按钮，以及有关升级过程的说明。
 
 #### <a name="upgrade-with-powershell"></a>使用 PowerShell 进行升级
 
@@ -123,7 +126,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
     该名称必须全局唯一；在访问存储帐户中的对象时，该名称用作所需 URL 的一部分。  
 
-4. 选择 **Resource Manager** 作为部署模型。
+4. 选择“资源管理器”作为部署模型。
 
     分层存储只能用于资源管理器存储帐户；建议对新资源使用资源管理器部署模型。 有关详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。  
 
@@ -187,7 +190,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 > 更改存储层可能会产生额外费用。 有关详细信息，请参阅[定价和计费](#pricing-and-billing)部分。
 
 
-## <a name="evaluating-and-migrating-to-gpv2-storage-accounts"></a>评估 GPv2 存储帐户和迁移到 GPv2 存储帐户
+## <a name="evaluating-and-migrating-to-gpv2-storage-accounts"></a>评估和迁移到 GPv2 存储帐户
 本部分旨在帮助用户顺利地从使用 GPv1 存储帐户转变到使用 GPv2 存储帐户。 有两个用户方案：
 
 * 已经有了一个 GPv1 存储帐户，想要使用适当的存储层来评估对 GPv2 存储帐户所做的更改。
@@ -262,9 +265,9 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 ## <a name="migrating-existing-data"></a>迁移现有数据
 
-可以轻松地将 GPv1 帐户升级为 GPv2，不会造成停机或 API 更改，也不需迁移数据。 因此，强烈建议将 GPv1 帐户迁移到 GPv2 帐户而非 Blob 存储帐户。
+可以轻松地将 GPv1 或 Blob 存储帐户升级为 GPv2，无需停机或进行 API 更改，也不需迁移数据。 因此，强烈建议将 GPv1 帐户迁移到 GPv2 帐户而非 Blob 存储帐户。 有关升级到 GPv2 的详细信息，请参阅[将存储帐户升级到 GPv2](#upgrade-a-storage-account-to-gpv2)。
 
-但是，如果需要迁移到 Blob 存储帐户并且无法使用 GPv2 帐户，则可以按以下说明进行操作。 
+但是，如果需要从 GPv1 迁移到 Blob 存储帐户并且无法使用 GPv2 帐户，则可以按以下说明进行操作。 
 
 Blob 存储帐户专用于仅存储块 blob 和追加 blob。 现有的通用存储帐户（用于存储表、队列、文件和磁盘以及 Blob）无法转换为 Blob 存储帐户。 若要使用存储层，需创建新的 Blob 存储帐户并将现有的数据迁移到新创建的帐户中。 
 
@@ -272,7 +275,7 @@ Blob 存储帐户专用于仅存储块 blob 和追加 blob。 现有的通用存
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy 是一个 Windows 命令行实用程序，旨在实现高性能地将数据复制到 Azure 存储和从 Azure 存储中复制。 可以使用 AzCopy 从现有的通用存储帐户将数据复制到 Blob 存储帐户，或从本地存储设备将数据上传到 Blob 存储帐户。
+AzCopy 是一个 Windows 命令行实用工具，旨在实现高性能地将数据复制到 Azure 存储和从 Azure 存储中复制。 可以使用 AzCopy 从现有的通用存储帐户将数据复制到 Blob 存储帐户，或从本地存储设备将数据上传到 Blob 存储帐户。
 
 有关详细信息，请参阅[使用 AzCopy 命令行实用工具传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
@@ -291,7 +294,7 @@ AzCopy 是一个 Windows 命令行实用程序，旨在实现高性能地将数�
 > [!IMPORTANT]
 > 使用客户端加密进行加密的 Blob 会将与加密相关的元数据与 Blob 一起存储。 如果复制使用客户端加密来加密的 Blob，请确保复制操作保留 Blob 元数据，尤其是与加密相关的元数据。 如果复制不包含此加密元数据的 Blob，则不能再次检索 Blob 内容。 有关加密相关元数据的详细信息，请参阅 [Azure 存储客户端加密](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **现有存储帐户是否仍然可用？**
 
@@ -337,7 +340,7 @@ GPv2 和 Blob 存储帐户的热存储层中 Blob 的延迟与 GPv1 存储帐户
 
 **是否需要更改现有应用程序才能使用 GPv2 存储帐户？**
 
-GPv2 存储帐户与 GPv1 和 Blob存储帐户具有 100% 的 API 一致性。 只要应用程序使用的是块 Blob 或追加 Blob，并且使用[存储服务 REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) 的 2014-02-14 版或更高版本，则应用程序应该可以正常运行。 如果使用的协议版本较旧，则必须更新应用程序才能使用新版本，否则无法正常使用这两类存储帐户。 一般情况下，无论所使用的存储帐户类型，我们通常均建议使用最新版本。
+GPv2 存储帐户与 GPv1 和 Blob 存储帐户具有 100% 的 API 一致性。 只要应用程序使用的是块 Blob 或追加 Blob，并且使用[存储服务 REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) 的 2014-02-14 版或更高版本，则应用程序应该可以正常运行。 如果使用的协议版本较旧，则必须更新应用程序才能使用新版本，否则无法正常使用这两类存储帐户。 一般情况下，无论所使用的存储帐户类型，我们通常均建议使用最新版本。
 
 GPv2 在事务和带宽方面的价格通常高于 GPv1。 因此，在升级之前可能需要优化事务模式，避免总费用提高。
 
@@ -363,6 +366,6 @@ GPv2 存储帐户非常类似于 GPv1 存储帐户，并支持 Azure 存储的�
 
 [将数据移动到和移出 Azure 存储](../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-[使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+[使用 AzCopy 命令行实用工具传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 [浏览和了解存储帐户](http://storageexplorer.com/)
