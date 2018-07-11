@@ -382,8 +382,8 @@
 ### [使用 Azure AD Connect 集成本地标识](./connect/active-directory-aadconnect.md)
 
 ## 委托对资源的访问权限
-### [查看管理员角色的成员](users-groups-roles//directory-manage-roles-portal.md)
 ### [管理员角色](users-groups-roles/directory-assign-admin-roles.md)
+#### [查看管理员角色的成员](users-groups-roles//directory-manage-roles-portal.md)
 #### [向用户分配管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [比较成员和来宾的用户权限](fundamentals/users-default-permissions.md)
 ### [管理员角色安全性](users-groups-roles/directory-admin-roles-secure.md)  
