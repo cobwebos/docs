@@ -8,15 +8,15 @@ ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 06/07/2018
+ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: c6f397c2cfcfd9fbd4a5cc8f70a99f4abc86ba21
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34850672"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949878"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>将数据库备份还原到 Azure SQL 数据库托管实例
 
@@ -52,7 +52,7 @@ ms.locfileid: "34850672"
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**部署模型**|资源模型||
    |**帐户种类**|Blob 存储||
    |**性能**|标准或高级|磁驱动器或 SSD|
@@ -88,7 +88,7 @@ ms.locfileid: "34850672"
 
     | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**公共访问级别**|专用（不允许匿名访问）||
 
     ![容器详细信息](./media/sql-database-managed-instance-tutorial/container-detail.png)
@@ -140,7 +140,7 @@ ms.locfileid: "34850672"
 
     ![文件列表](./media/sql-database-managed-instance-tutorial/file-list.png)
 
-4. 使用以下脚本从备份文件还原 Adventure Works 2012 数据库 - 提供包含备份文件的容器的 URL：
+4. 使用以下脚本从备份文件还原 Wide World Importers 数据库 - 提供包含备份文件的容器的 URL：
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =

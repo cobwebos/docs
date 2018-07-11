@@ -14,22 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw
-ms.openlocfilehash: 813124ae7c0dd76a27dcbaea6f0d7aa19bc1e49c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f350716d0ca906376f3eadce9e117694ff14515c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35756390"
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密
 Microsoft Azure 坚决致力于确保数据隐私权和数据所有权，通过各种先进技术来加密、控制和管理加密密钥，以及控制和审核对数据的访问，让用户能够控制 Azure 托管的数据。 这样，Azure 客户便可以灵活选择最符合其业务需求的解决方案。 在本文中，我们会介绍新的技术解决方案“适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密”，以帮助你保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 本文提供有关如何使用 Azure 磁盘加密功能的详细指导，包括支持的方案和用户体验。
 
-> [!NOTE]
-> 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外许可或订阅成本。
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
+
 
 ## <a name="overview"></a>概述
 Azure 磁盘加密是用于加密 Windows 和 Linux IaaS 虚拟机磁盘的新功能。 Azure 磁盘加密利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) 集成，帮助用户管理 Key Vault 订阅中的磁盘加密密钥和机密。 此解决方案还可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
 
 在标准 VM 和使用高级存储的 VM 的所有 Azure 公共区域和 AzureGov 区域中，适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密现在以**通用版本**提供。
+
+> [!NOTE]
+> 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外许可或订阅成本。
+
 
 ### <a name="encryption-scenarios"></a>加密方案
 Azure 磁盘加密解决方案支持以下客户方案：
@@ -108,7 +113,7 @@ Azure 磁盘加密管理解决方案可以解决以下业务需求：
 2. 选择通过 Azure 磁盘加密资源管理器模板、PowerShell cmdlet 或 CLI 命令启用磁盘加密，并指定加密配置。
 
    * 对于客户加密的 VHD 方案，将加密的 VHD 上传到存储帐户，并将加密密钥材料上传到 Key Vault。 然后，提供加密配置，在新的 IaaS VM 上启用加密。
-   * 针对通过 Marketplace 创建的新 VM 和已在 Azure 中运行的现有 VM，提供加密配置以便在 IaaS VM 上启用加密。
+   * 针对通过市场创建的新 VM 和已在 Azure 中运行的现有 VM，提供加密配置以便在 IaaS VM 上启用加密。
 
 3. 向 Azure 平台授予访问权限，使其能够从 Key Vault 中读取加密密钥数据（Windows 系统的 BitLocker 加密密钥和 Linux 密码），从而在 IaaS VM 上启用加密。
 
@@ -407,8 +412,8 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 ## <a name="disk-encryption-deployment-scenarios-and-user-experiences"></a>磁盘加密部署方案和用户体验
 可启用多种磁盘加密方案，具体步骤因方案而异。 以下部分更加详细地介绍了各种方案。
 
-### <a name="enable-encryption-on-new-iaas-vms-that-are-created-from-the-marketplace"></a>在通过 Marketplace 创建的新 IaaS VM 上启用加密
-可通过[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)从 Azure Marketplace 为新的 IaaS Windows VM 启用磁盘加密。
+### <a name="enable-encryption-on-new-iaas-vms-that-are-created-from-the-marketplace"></a>在通过市场创建的新 IaaS VM 上启用加密
+可通过[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)从 Azure 市场为新的 IaaS Windows VM 启用磁盘加密。
 
 1. 在 Azure 快速入门模板上，单击“部署到 Azure”，在“参数”边栏选项卡中输入加密配置，并单击“确定”。
 
@@ -417,9 +422,9 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 > [!NOTE]
 > 此模板使用 Windows Server 2012 库映像创建新的加密 Windows VM。
 
-可以使用此[资源管理器模板](https://aka.ms/fde-rhel)在带有 200 GB RAID-0 数组的新 IaaS RedHat Linux 7.2 VM 上启用磁盘加密。 部署模板后，请按照“[在正在运行的 Linux VM 上加密 OS 驱动器](#encrypting-os-drive-on-a-running-linux-vm)”所述使用 `Get-AzureRmVmDiskEncryptionStatus` cmdlet 验证 VM 加密状态。 计算机返回 _VMRestartPending_ 状态时，重启 VM。
+可以使用此[资源管理器模板](https://aka.ms/fde-rhel)在带有 200 GB RAID-0 阵列的新 IaaS RedHat Linux 7.2 VM 上启用磁盘加密。 部署模板后，请按照“[在正在运行的 Linux VM 上加密 OS 驱动器](#encrypting-os-drive-on-a-running-linux-vm)”所述使用 `Get-AzureRmVmDiskEncryptionStatus` cmdlet 验证 VM 加密状态。 计算机返回 _VMRestartPending_ 状态时，重启 VM。
 
-下表列出了 Marketplace 方案中使用 Azure AD 客户端 ID 的新 VM 的资源管理器模板参数：
+下表列出了市场方案中使用 Azure AD 客户端 ID 的新 VM 的资源管理器模板参数：
 
 | 参数 | 说明 |
 | --- | --- |
@@ -784,7 +789,7 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“Encrypted”，表明�
 ##### <a name="prerequisites-for-os-disk-encryption"></a>OS 磁盘加密的先决条件
 
 * VM 必须使用与 [Azure 磁盘加密常见问题解答](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support)中列出的 OS 磁盘加密兼容的分发版 
-* 必须从 Azure 资源管理器中的 Marketplace 映像创建 VM。
+* 必须从 Azure 资源管理器中的市场映像创建 VM。
 * Azure VM，至少具有 4 GB RAM（建议大小为 7 GB）。
 * （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅 [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
 * 禁用 SELinux 后，重启 VM 至少一次。

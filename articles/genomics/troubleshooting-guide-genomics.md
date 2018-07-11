@@ -12,11 +12,12 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 04/13/2018
-ms.openlocfilehash: 18761c02cc423affe7b1050700e560b1f0b0594d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d3991bdbcd9c3dcd08572dc92cc75aaebb02b133
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34627358"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 本概述文章介绍解决使用 Microsoft 基因组服务时的常见问题的策略。 有关常规常见问题解答，请参阅[常见问题](frequently-asked-questions-genomics.md)。 
@@ -72,9 +73,7 @@ Fastq 文件的区别应仅在于示例标识符中是尾随 /1 还是尾随 /2�
 * `Error locating input files on worker machine`
 * `Process management failure`
 
-请尝试重新提交工作流。 如果作业继续失败或有任何其他疑问，请通过 Azure 门户与 Microsoft 基因组学支持人员联系。
-
-![在 Azure 门户中联系支持人员](./media/troubleshooting-guide/genomics-contact-support.png "Contact support on Azure portal")
+请尝试重新提交工作流。 如果作业继续失败或有任何其他疑问，请通过 Azure 门户与 Microsoft 基因组学支持人员联系。 可从[此处](file-support-ticket-genomics.md)找到有关如何提交支持请求的更多信息。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何排除和解决 Microsoft 基因组学服务的常见问题。 有关详细信息和更多常规常见问题解答，请参阅[常见问题](frequently-asked-questions-genomics.md)。 

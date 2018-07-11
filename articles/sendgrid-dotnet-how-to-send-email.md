@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 06/29/2018
 ms.locfileid: "27534849"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 中使用 SendGrid 发送电子邮件
@@ -34,7 +34,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 * 转发客户查询。
 * 处理传入的电子邮件。
 
-有关详细信息，请访问 [https://sendgrid.com](https://sendgrid.com) 或 SendGrid 的 [C# 库][sendgrid-csharp] GitHub 存储库。
+有关详细信息，请访问 [https://sendgrid.com](https://sendgrid.com) 或 SendGrid 的 [C# library][sendgrid-csharp] GitHub 存储库。
 
 ## <a name="create-a-sendgrid-account"></a>创建 SendGrid 帐户
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]

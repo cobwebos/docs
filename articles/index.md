@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: fdce9dc733f8c1a389a44374641eb27ba40d6b37
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 557717b6fbb93bf3e0ca007fcc8b793441a13283
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446004"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920900"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -177,6 +177,7 @@ Go</a>
                                                     <li><a class="barLink" href="/azure/app-service-web/">Web 应用</a></li>
                                                     <li><a class="barLink" href="/azure/azure-functions/">无服务器函数</a></li>
                                                     <li><a class="barLink" href="/azure/containers/">容器</a></li>
+                                                    <li><a class="barLink" href="/azure/aks/">将微服务与 kubernetes 配合使用</a></li>
                                                     <li><a class="barLink" href="/azure/service-fabric/">将微服务与 Service Fabric 配合使用</a></li>
                                                 </ul>
                                             </div>
@@ -494,6 +495,11 @@ Visual Studio Team Services </a>
                                                 <img src="media/index/AppService.svg" alt="" />
                                                 <p>容器的 Web 应用</p>
                                             </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/dev-spaces/">
+                                                <img src="media/index/AzureDevSpaceController_50x.svg" alt=""/>
+                                                <p>Azure Dev Spaces</p>
                                         </li>
                                     </ul>
                                     <h3>集成</h3>
@@ -883,7 +889,7 @@ Visual Studio Team Services </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cognitive-services/labs/anomaly-finder/overview">
-                                                <img src="media/index/API_Anomaly_Finder.svg" alt="" /> 
+                                                <img src="media/index/API_Anomaly_Finder.svg" alt="" />
                                                 <p>异常查找器</p>
                                             </a>
                                         </li>
@@ -2702,6 +2708,25 @@ s" alt="" />
                                                 <div class="cardText">
                                                     <h3>容器的 Web 应用</h3>
                                                     <p>轻松部署和运行可根据业务变化进行缩放的容器化 Web 应用</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/dev-spaces/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/AzureDevSpaceController_50x.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Dev Spaces</h3>
+                                                    <p>使用容器和微服务进行快速 Kubernetes 开发</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5772,6 +5797,34 @@ Service Fabric SDK and Tools 3.0.467 </h3>
                                                 </p>
                                                 <p>
                                                     <a href="https://aka.ms/dea-tool">数据库实验助手 (DEA)</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/AzureDevSpaceController_50x.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+Azure Dev Spaces </h3>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">入门</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">适用于 .NET Core 和 VS Code 的下载</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">适用于 .NET Core 和 Visual Studio 的下载</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">适用于 Node.js 的下载</a>
                                                 </p>
                                             </div>
                                         </div>

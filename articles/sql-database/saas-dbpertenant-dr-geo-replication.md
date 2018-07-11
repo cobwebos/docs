@@ -7,14 +7,15 @@ author: AyoOlubeko
 manager: craigg
 ms.service: sql-database
 ms.custom: saas apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: ayolubek
-ms.openlocfilehash: 3b2b1b767b26d844046d545e3d587621c5d14995
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f2ad92118c00f08e5dcdd4a8a12f007308b3fbd1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34645787"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>使用数据库异地复制实现多租户 SaaS 应用程序的灾难恢复
 
@@ -250,7 +251,7 @@ ms.lasthandoff: 04/28/2018
 2. 在 *PowerShell ISE* 中的 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 脚本内设置以下值：
     * **$DemoScenario = 5**：从恢复区域中的某个租户删除事件
 3. 按 **F5** 执行脚本
-4. 刷新 Contoso Concert Hall 事件页（http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall - 请将 &lt;user&gt; 替换为部署的用户值），注意最后一个事件已被删除。
+4. 刷新 Contoso Concert Hall 事件页（http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall - 请将 &lt;user&gt; 替换为部署的用户值），注意最后一个事件已删除。
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>将应用程序遣返到其原始生产区域
 
@@ -283,8 +284,8 @@ ms.lasthandoff: 04/28/2018
     * 按 **F5** 在新 PowerShell 窗口中运行恢复脚本。  遣返过程需要花费几分钟时间，可在 PowerShell 窗口中监视其进度。
     ![遣返过程](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. 运行脚本时，刷新事件中心页 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net)
-    * 请注意，所有租户都已联机，并且在整个遣返过程中都可供访问。
+4. 在脚本运行期间，刷新事件中心页 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net)
+    * 请注意，所有租户都为联机状态，并且可通过此进程访问。
 
 5. 遣返完成后，刷新事件中心并打开 Hawthorn Hall 的事件页。 请注意，此数据库已遣返到原始区域。
     ![已遣返事件中心](media/saas-dbpertenant-dr-geo-replication/events-hub-repatriated.png)

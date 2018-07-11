@@ -127,11 +127,13 @@
 #### [多重身份验证](active-directory-reporting-activity-sign-ins-mfa.md)
 
 
-
 ### 故障排除
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [在下载项中缺少数据](active-directory-reporting-troubleshoot-missing-data-download.md)
 #### [Azure Active Directory 活动日志内容包错误](active-directory-reporting-troubleshoot-content-pack.md)
+#### [Azure Active Directory 报告 API 中的错误](active-directory-reporting-troubleshoot-graph-api.md)
+
+
 ### [以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [先决条件](active-directory-reporting-api-prerequisites-azure-portal.md)
 #### [审核示例](active-directory-reporting-api-audit-samples.md)

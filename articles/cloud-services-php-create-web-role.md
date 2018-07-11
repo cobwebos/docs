@@ -13,25 +13,29 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: b9f350870dde71666d269aaae9cb7c14aaac5aad
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 9d4be08e732127d6da12a9e0367383347f53c796
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34608893"
 ---
-# <a name="how-to-create-php-web-and-worker-roles"></a>如何创建 PHP Web 角色和辅助角色
+# <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色
+
 ## <a name="overview"></a>概述
+
 本指南将说明如何执行以下操作：在 Windows 开发环境中创建 PHP Web 角色或辅助角色，从提供的“内置”版本中选择特定版本的 PHP，更改 PHP 配置，启用扩展，最后部署到 Azure。 它还介绍了如何将 Web 角色或辅助角色配置为使用提供的 PHP 运行时（带自定义配置和扩展）。
 
-## <a name="what-are-php-web-and-worker-roles"></a>什么是 PHP Web 角色和辅助角色？
 Azure 提供了三种计算模型以运行应用程序：Azure 应用服务、Azure 虚拟机和 Azure 云服务。 这三种模型都支持 PHP。 云服务（包括 Web 角色和辅助角色）提供了*平台即服务 (PaaS)*。 在云服务中，Web 角色提供专门用于托管前端 Web 应用程序的 Internet Information Services (IIS) Web 服务器。 辅助角色可运行独立于用户交互或输入的异步任务、运行时间较长的任务或永久性任务。
 
 有关这些选项的详细信息，请参阅 [Azure 提供的计算托管选项](cloud-services/cloud-services-choose-me.md)。
 
 ## <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
-[用于 PHP 的 Azure SDK] 由多个组件构成。 本文将使用其中两个：Azure PowerShell 和 Azure 模拟器。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+
+[用于 PHP 的 Azure SDK](php-download-sdk.md) 由多个组件构成。 本文将使用其中两个：Azure PowerShell 和 Azure 模拟器。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="create-a-cloud-services-project"></a>创建云服务项目
+
 创建 PHP Web 角色和辅助角色的第一步是创建 Azure 服务项目。 Azure 服务项目用作 Web 角色和辅助角色的逻辑容器，包含项目的[服务定义 (.csdef)] 和[服务配置 (.cscfg)] 文件。
 
 若要创建新的 Azure 服务项目，请以管理员身份运行 Azure PowerShell 并执行以下命令：
@@ -41,6 +45,7 @@ Azure 提供了三种计算模型以运行应用程序：Azure 应用服务、Az
 此命令将创建可将 Web 角色和辅助角色添加到的新目录 (`myProject`)。
 
 ## <a name="add-php-web-or-worker-roles"></a>添加 PHP Web 角色或辅助角色
+
 要将 PHP Web 角色添加到项目，请从项目的根目录中运行以下命令：
 
     PS C:\myProject> Add-AzurePHPWebRole roleName
@@ -55,6 +60,7 @@ Azure 提供了三种计算模型以运行应用程序：Azure 应用服务、Az
 >
 
 ## <a name="specify-the-built-in-php-version"></a>指定内置 PHP 版本
+
 在将 PHP Web 角色或辅助角色添加到项目时，将修改项目的配置文件，以便在部署应用程序的每个 Web 实例或辅助进程实例时在其上安装 PHP。 若要查看默认情况下安装的 PHP 的版本，请运行以下命令：
 
     PS C:\myProject> Get-AzureServiceProjectRoleRuntime
@@ -83,6 +89,7 @@ PHP 5.4.0           http://nodertncu.blob.core...   False
 >
 
 ## <a name="customize-the-built-in-php-runtime"></a>自定义内置 PHP 运行时
+
 当按上述步骤进行操作时，可以完全控制所安装的 PHP 运行时的配置，包括修改 `php.ini` 设置和启用扩展。
 
 若要自定义内置 PHP 运行时，请执行下列步骤：
@@ -100,9 +107,11 @@ PHP 5.4.0           http://nodertncu.blob.core...   False
 >
 
 ## <a name="use-your-own-php-runtime"></a>使用自己的 PHP 运行时
+
 在某些情况下，可能需要提供自己的 PHP 运行时，而不是如上所述那样选择并配置内置 PHP 运行时。 例如，可以在 Web 角色或辅助角色中使用在开发环境中使用的 PHP 运行时， 以便更轻松地确保应用程序不会更改生产环境中的行为。
 
 ### <a name="configure-a-web-role-to-use-your-own-php-runtime"></a>将 Web 角色配置为使用自己的 PHP 运行时
+
 要将 Web 角色配置为使用提供的 PHP 运行时，请执行下列步骤：
 
 1. 创建一个 Azure 服务项目并添加 PHP Web 角色，如本主题前面所述。
@@ -138,6 +147,7 @@ PHP 5.4.0           http://nodertncu.blob.core...   False
 >
 
 ### <a name="configure-a-worker-role-to-use-your-own-php-runtime"></a>将辅助角色配置为使用自己的 PHP 运行时
+
 要将辅助角色配置为使用提供的 PHP 运行时，请执行下列步骤：
 
 1. 创建一个 Azure 服务项目并添加 PHP 辅助角色，如本主题前面所述。
@@ -177,6 +187,7 @@ PHP 5.4.0           http://nodertncu.blob.core...   False
 6. 按照以下[发布应用程序](#publish-your-application)部分中所述发布应用程序。
 
 ## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>在计算和存储模拟器中运行应用程序
+
 Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署到云之前在该本地环境中测试此应用程序。 模拟器与 Azure 环境之间存在一些差异。 若要更好地了解该模拟器，请参阅[使用 Azure 存储模拟器进行开发和测试](storage/common/storage-use-emulator.md)。
 
 请注意，必须本地安装 PHP 才能使用计算模拟器。 计算模拟器将使用本地 PHP 安装来运行应用程序。
@@ -199,12 +210,13 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
     PS C:\MyProject> Stop-AzureEmulator
 
 ## <a name="publish-your-application"></a>发布应用程序
+
 若要发布应用程序，需要先使用 [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) cmdlet 导入发布设置。 然后使用 [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) cmdlet 发布应用程序。 有关登录的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [PHP 开发人员中心](/develop/php/)。
 
-[用于 PHP 的 Azure SDK]: /develop/php/common-tasks/download-php-sdk/
+有关详细信息，请参阅 [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
+
 [install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
 [服务定义 (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
 [服务配置 (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
