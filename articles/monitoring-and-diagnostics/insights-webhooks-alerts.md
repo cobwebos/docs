@@ -1,19 +1,19 @@
 ---
 title: 使用 Webhook 让经典指标警报通知非 Azure 系统
 description: 了解如何将 Azure 指标警报重新路由到其他非 Azure 系统。
-author: johnkemnetz
+author: snehithm
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: johnkem
+ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 9cc017aad7fbdc740ab3fa3af5603223e5b844ce
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 74a4066e3d30b1e91fe558fcfeb6f39220e41c02
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262345"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887338"
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>针对 Azure 度量值警报配置 webhook
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
@@ -37,36 +37,33 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 
 ```JSON
 {
-    "WebhookName": "Alert1515515157799",
-    "RequestBody": {
-        "status": "Activated",
-        "context": {
-            "timestamp": "2015-08-14T22:26:41.9975398Z",
-            "id": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.insights/alertrules/ruleName1",
-            "name": "ruleName1",
-            "description": "some description",
-            "conditionType": "Metric",
-            "condition": {
-                "metricName": "Requests",
-                "metricUnit": "Count",
-                "metricValue": "10",
-                "threshold": "10",
-                "windowSize": "15",
-                "timeAggregation": "Average",
-                "operator": "GreaterThanOrEqual"
-            },
-            "subscriptionId": "s1",
-            "resourceGroupName": "useast",
-            "resourceName": "mysite1",
-            "resourceType": "microsoft.foo/sites",
-            "resourceId": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1",
-            "resourceRegion": "centralus",
-            "portalLink": "https://portal.azure.com/#resource/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1"
+    "status": "Activated",
+    "context": {
+        "timestamp": "2015-08-14T22:26:41.9975398Z",
+        "id": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.insights/alertrules/ruleName1",
+        "name": "ruleName1",
+        "description": "some description",
+        "conditionType": "Metric",
+        "condition": {
+            "metricName": "Requests",
+            "metricUnit": "Count",
+            "metricValue": "10",
+            "threshold": "10",
+            "windowSize": "15",
+            "timeAggregation": "Average",
+            "operator": "GreaterThanOrEqual"
         },
-        "properties": {
-            "key1": "value1",
-            "key2": "value2"
-        }
+        "subscriptionId": "s1",
+        "resourceGroupName": "useast",
+        "resourceName": "mysite1",
+        "resourceType": "microsoft.foo/sites",
+        "resourceId": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1",
+        "resourceRegion": "centralus",
+        "portalLink": "https://portal.azure.com/#resource/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1"
+    },
+    "properties": {
+        "key1": "value1",
+        "key2": "value2"
     }
 }
 ```

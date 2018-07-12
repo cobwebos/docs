@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: e614c78ca4e8ed7afbce0d3f2423ce137c5225b5
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 850acae818638bb7c823edde03dbbecccf930073
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294964"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969317"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
@@ -46,7 +46,7 @@ ms.locfileid: "36294964"
 可使用扩展，利用 Azure Blob 存储凭据来访问 Azure Blob 存储。 或者，脚本位置可以是任何位置，只要 VM 可以路由到该终结点（如 GitHub、内部文件服务器等）即可。
 
 ### <a name="internet-connectivity"></a>Internet 连接
-如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙/网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用[存储](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)的 Azure NSG 服务标记来允许访问。
+如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙/网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用[存储](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)的 Azure NSG 服务标记来允许访问。
 
 如果脚本位于本地服务器上，则可能仍需要打开其他防火墙/网络安全组端口。
 
@@ -57,7 +57,7 @@ ms.locfileid: "36294964"
 * 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
 * 请勿将 reboot 置于脚本中，这会导致正在安装的其他扩展出现问题，并且在重启后，该扩展将不会继续。 
 * 如果脚本会导致重启，则安装应用程序并运行脚本等。应该使用 Cron 作业或者使用 DSC 或 Chef、Puppet 扩展等工具来计划重启。
-* 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
+* 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。 
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
 * 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。 

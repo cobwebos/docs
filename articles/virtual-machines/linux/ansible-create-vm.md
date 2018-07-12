@@ -3,7 +3,7 @@ title: 在 Azure 中使用 Ansible 创建基本的 Linux VM | Microsoft Docs
 description: 了解如何在 Azure 中使用 Ansible 创建和管理基本的 Linux 虚拟机
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
-ms.author: iainfou
-ms.openlocfilehash: e36bdbf84b275fb8a6a4e42496b3080bebf1b193
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: cynthn
+ms.openlocfilehash: 35dfe8348718e0edf8683f7eeddf286831697d89
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716629"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931423"
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>使用 Ansible 在 Azure 中创建基本的虚拟机
 使用 Ansible 可以在环境中自动部署和配置资源。 可以在 Azure 中使用 Ansible 管理虚拟机 (VM)，管理其他任意资源也一样。 本文介绍如何使用 Ansible 创建基本的 VM。 还可以了解如何[使用 Ansible 创建完整的 VM 环境](ansible-create-complete-vm.md)。

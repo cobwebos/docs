@@ -15,11 +15,11 @@ ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: daef85164793dd6183c41604f200864aabadf8d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153857"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610875"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
 

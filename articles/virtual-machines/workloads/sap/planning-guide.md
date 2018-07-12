@@ -18,11 +18,11 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f1c2b028521983081ba5f276789af9701b568b7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047252"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972462"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -493,7 +493,8 @@ Azure 平台减少了采购前沿技术和基础结构的需要。 它可以按�
 * 可附加的 VHD 数量；
 * 网络和存储带宽。
 
-[此文 (Linux)][virtual-machines-sizes-linux] 和[此文 (Windows)][virtual-machines-sizes-windows] 中的表格内显示了所提供的各种不同虚拟机的大小和限制。
+
+  [此文 (Linux)][virtual-machines-sizes-linux] 和[此文 (Windows)][virtual-machines-sizes-windows] 中的表格内显示了所提供的各种不同虚拟机的大小和限制。
 
 如你所见，虚拟机有不同的系列。 VM 可分为以下系列：
 

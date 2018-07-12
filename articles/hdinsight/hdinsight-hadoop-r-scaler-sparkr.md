@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 34d923cdf2dd96412996c766632ae42aac576e8c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2b16135e83ba52f7a2e6bd214791910db80634bc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061472"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952835"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
@@ -273,7 +273,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>联接天气和航班数据
 
-现在，使用 SparkR [join()](https://docs.databricks.com/spark/latest/sparkr/functions/join.html) 函数根据出发地 AirportID 和日期时间，针对航班数据和天气数据执行左外部联接。 使用外部联接可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
+现在，使用 SparkR [join()](https://docs.databricks.com/spark/1.6/sparkr/functions/join.html#join) 函数根据出发地 AirportID 和日期时间，针对航班数据和天气数据执行左外部联接。 使用外部联接可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
 
 ```
 logmsg('Join airline data with weather at Origin Airport')

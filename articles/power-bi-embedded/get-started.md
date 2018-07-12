@@ -15,16 +15,18 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
 ms.author: maghan
-ms.openlocfilehash: 7a860742192227e92a14d9bb5622dc9b61f6cb99
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 33d948ee283ff3ee873e2f17ee07a7a889889925
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716017"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969487"
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Microsoft Power BI Embedded 入门
 
-使用 Power BI Embedded，独立软件供应商 (ISV) 和开发人员可以通过基于容量的按小时计算流量模型将令人惊叹的视觉对象、报告和仪表板快速添加到应用程序中。
+
+  **
+  **使用 Power BI Embedded，独立软件供应商 (ISV) 和开发人员可以通过基于容量的按小时计算流量模型将令人惊叹的视觉对象、报告和仪表板快速添加到应用程序中。
 
 ![嵌入流关系图](media/get-started/introduction.png)
 
@@ -49,7 +51,7 @@ Power BI Embedded 为 ISV 及其开发人员和客户带来优势。 例如，IS
 在 Microsoft Azure 中创建 Power BI Embedded 容量，使应用程序进入生产。 有关如何创建容量的信息，请参阅[在 Azure 门户中创建 Power BI Embedded 容量](create-capacity.md)。
 
 > [!IMPORTANT]
-> 由于嵌入令牌仅用于开发人员测试，因此 Power BI 主帐户可以生成的嵌入令牌数是有限制的。 对于生产嵌入方案，[必须购买容量](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical)。 购买专用容量后，嵌入令牌的生成就没有限制。 转到[获取可用功能](https://msdn.microsoft.com/en-us/library/mt846473.aspx)检查当前嵌入使用情况（以百分比表示）。
+> 由于嵌入令牌仅用于开发人员测试，因此 Power BI 主帐户可以生成的嵌入令牌数是有限制的。 对于生产嵌入方案，[必须购买容量](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical)。 购买专用容量后，嵌入令牌的生成就没有限制。 转到[获取可用功能](https://msdn.microsoft.com/library/mt846473.aspx)检查当前嵌入使用情况（以百分比表示）。
 
 在 Power BI 管理门户中管理容量。 分配工作区管理员以协助你管理应用工作区。 有关详细信息，请参阅[管理 Power BI Premium 和 Power BI Embedded 中的容量](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/)。
 

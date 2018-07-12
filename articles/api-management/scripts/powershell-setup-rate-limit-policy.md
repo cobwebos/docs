@@ -14,11 +14,11 @@ ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: d238ca2b4966fc84ad633bf547fa578a3e8b1e38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934469"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38595554"
 ---
 # <a name="set-up-rate-limit-policy"></a>设置速率限制策略
 

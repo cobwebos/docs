@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743705"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718999"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
 ## <a name="overview"></a>概述
@@ -168,7 +168,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 ## <a name="cable-your-storsimple-8600-device"></a>进行 StorSimple 8600 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8600 设备布线。
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 在开始设备布线之前，需要：
 
 * 主机箱和 EBOD 机箱（完全解包）

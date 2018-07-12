@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: ecbc88ebaaa93215f85b57becc8a643dc3e168a0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a13057769bad7fcad5f95e49102adac234ebcdb4
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129034"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868933"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>使用 OMS 网关连接无法访问 Internet 的计算机
 本文档介绍直接连接或 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 OMS 网关，配置与 Azure 自动化和 Log Analytics 的通信。  OMS 网关是使用 HTTP CONNECT 命令，支持 HTTP 隧道的 HTTP 转发代理，它可以收集数据，然后代表这些设备将数据发送到 Azure 自动化和 Log Analytics。  
@@ -298,7 +298,7 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 
 下表显示了 OMS 网关可用的性能计数器。 可以使用性能监视器来添加计数器。
 
-| 名称 | **说明** |
+| **Name** | **说明** |
 | --- | --- |
 | OMS 网关/活动客户端连接 |活动客户端网络 (TCP) 连接数 |
 | OMS 网关/错误计数 |错误数 |

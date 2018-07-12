@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 3bd29e348fd067c12def8ca36fbdc1d7e35b2874
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5ba9b5534e986be1cbe55043a9acdd981d2ed7fd
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627580"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971731"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>将远程监视解决方案与 Azure Data Lake Store 集成
 
@@ -180,4 +180,4 @@ Azure 流分析使用类似于 SQL 的查询语言来指定用于流式传输数
 
 ## <a name="next-steps"></a>后续步骤
 
-Azure Data Lake Analytics 可用于针对 Data Lake Store 数据集执行大数据分析。 请在 [Data Lake Analytics 文档](https://docs.microsoft.com/en-us/azure/data-lake-analytics)中了解详细信息。
+Azure Data Lake Analytics 可用于针对 Data Lake Store 数据集执行大数据分析。 请在 [Data Lake Analytics 文档](https://docs.microsoft.com/azure/data-lake-analytics)中了解详细信息。

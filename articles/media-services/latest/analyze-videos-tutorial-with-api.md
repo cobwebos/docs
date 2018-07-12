@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/28/2018
 ms.author: juliako
-ms.openlocfilehash: e5b8cc9285d9637a04c4bec47b0185652aa7c84e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 314ffce8a9f8dde62cac670099afbc2223df37e4
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114218"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971992"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>教程：使用 Azure 媒体服务分析视频 
 
@@ -112,7 +112,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 #### <a name="job"></a>作业
 
-如上所述，[转换](https://docs.microsoft.com/rest/api/media/transforms)对象为脚本，[作业则是](https://docs.microsoft.com/en-us/rest/api/media/jobs)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。 可使用以下方法指定视频位置：HTTPS URL、SAS URL 或媒体服务帐户中的资产。 
+如上所述，[转换](https://docs.microsoft.com/rest/api/media/transforms)对象为脚本，[作业则是](https://docs.microsoft.com/rest/api/media/jobs)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。 可使用以下方法指定视频位置：HTTPS URL、SAS URL 或媒体服务帐户中的资产。 
 
 在此示例中，作业输入是一个本地视频。  
 
@@ -120,7 +120,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ### <a name="wait-for-the-job-to-complete"></a>等待作业完成
 
-此作业需要一些时间才能完成，完成时可发出通知。 可通过不同选项获取有关[作业](https://docs.microsoft.com/en-us/rest/api/media/jobs)完成情况的通知。 最简单的选项（如下所示）是使用轮询。 
+此作业需要一些时间才能完成，完成时可发出通知。 可通过不同选项获取有关[作业](https://docs.microsoft.com/rest/api/media/jobs)完成情况的通知。 最简单的选项（如下所示）是使用轮询。 
 
 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。
 

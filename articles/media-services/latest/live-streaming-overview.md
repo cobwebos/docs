@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: juliako
-ms.openlocfilehash: b8c9375d8ad915200cbc8b2e1a62979fd1b7d179
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: e9ecf1ba3022ca057fa09bad2413aa19d902ae23
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35237045"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972173"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -32,7 +32,7 @@ ms.locfileid: "35237045"
 
 ## <a name="overview-of-main-components"></a>主要组件概述
 
-在媒体服务中，[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) 负责处理实时传送视频流内容。 LiveEvent 提供输入终结点（引入 URL），然后由你将该终结点提供给本地实时编码器。 LiveEvent 从实时编码器接收 RTMP 或平滑流式处理格式的实时输入流，并通过一个或多个 [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) 使其可用于流式处理。 可以通过 [LiveOutput](https://docs.microsoft.com/en-us/rest/api/media/liveoutputs) 来控制实时流的发布、记录和 DVR 窗口设置。 LiveEvent 还提供预览终结点（预览 URL），用于在进一步处理和传送流之前对流进行预览和验证。 
+在媒体服务中，[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) 负责处理实时传送视频流内容。 LiveEvent 提供输入终结点（引入 URL），然后由你将该终结点提供给本地实时编码器。 LiveEvent 从实时编码器接收 RTMP 或平滑流式处理格式的实时输入流，并通过一个或多个 [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) 使其可用于流式处理。 可以通过 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 来控制实时流的发布、记录和 DVR 窗口设置。 LiveEvent 还提供预览终结点（预览 URL），用于在进一步处理和传送流之前对流进行预览和验证。 
 
 使用媒体服务提供的**动态打包**，可通过 MPEG DASH、HLS、平滑流式处理流式传输格式预览和广播内容，无需以手动方式将其重新打包成这些流式传输格式。 可以使用任何与 HLS、DASH 或平滑流式处理兼容的播放器进行播放。 也可以使用 [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) 来测试流。
 
@@ -91,7 +91,7 @@ ms.locfileid: "35237045"
 
 LiveEvent 的当前状态。 可能的值包括：
 
-|State|说明|
+|省/直辖市/自治区|说明|
 |---|---|
 |**已停止**| 这是 LiveEvent 在创建后的初始状态（除非指定了自动启动）。此状态下不会发生计费。 在此状态下，可以更新 LiveEvent 属性，但不允许进行流式传输。|
 |**正在启动**| LiveEvent 正在启动。 此状态下不会发生计费。 在此状态下，不允许进行更新或流式传输。 如果发生错误，则 LiveEvent 会返回到“已停止”状态。|
@@ -101,7 +101,7 @@ LiveEvent 的当前状态。 可能的值包括：
 
 ## <a name="liveoutput"></a>LiveOutput
 
-可以通过 [LiveOutput](https://docs.microsoft.com/en-us/rest/api/media/liveoutputs) 来控制实时流的发布、记录和 DVR 窗口设置。 LiveEvent 和 LiveOutput 的关系类似于传统媒体，其中频道 (LiveEvent) 具有恒定的内容流，而节目 (LiveOutput) 的范围限定为该 LiveEvent 上的一些定时事件。
+可以通过 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 来控制实时流的发布、记录和 DVR 窗口设置。 LiveEvent 和 LiveOutput 的关系类似于传统媒体，其中频道 (LiveEvent) 具有恒定的内容流，而节目 (LiveOutput) 的范围限定为该 LiveEvent 上的一些定时事件。
 可以通过设置 **ArchiveWindowLength** 属性，指定希望保留多少小时的 LiveOutput 录制内容。 **ArchiveWindowLength** 是一种表示存档时长的 ISO 8601 时段（数字视频记录器，简称 DVR）。 此值的设置范围是最短 5 分钟，最长 25 小时。 
 
 **ArchiveWindowLength** 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，LiveOutput 也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的值还决定了客户端清单能够增加多长时间。

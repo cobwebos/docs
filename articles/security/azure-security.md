@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: bda8f72de16d1d8d95823de98aab8ec209908e63
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a1cd2ecc738434fc8d5de03ef538be3ea896fa2b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437784"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971000"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -114,7 +114,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 开始对[应用服务应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview)进行漏洞测试最简单的一种方法是使用[与 Tinfoil Security 的集成](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)对应用执行一键式漏洞扫描。 可以查看易于理解的报告中的测试结果，并了解如何按照分步说明修复每个安全漏洞。
 
 ### <a name="penetration-testing"></a>渗透测试
-如果想要执行自己的渗透测试，或者想要使用其他扫描程序套件或提供程序，则必须按照 [Azure 渗透测试审批流程](https://docs.microsoft.com/en-us/azure/security/azure-security-pen-testing )来进行并获得事先批准才能执行所需的渗透测试。
+如果想要执行自己的渗透测试，或者想要使用其他扫描程序套件或提供程序，则必须按照 [Azure 渗透测试审批流程](https://docs.microsoft.com/azure/security/azure-security-pen-testing )来进行并获得事先批准才能执行所需的渗透测试。
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 [Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)中的 Web 应用程序防火墙 (WAF) 可帮助保护 Web 应用程序，使其免受常见基于 Web 的攻击威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。 同时预先配置保护，免受 [Open Web Application Security Project (OWASP) 标识为前 10 种常见漏洞](https://msdn.microsoft.com/library/)的威胁攻击。

@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: c3bb170800508d5a546573850f445b2a8991ea8c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777056"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597738"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知
 
@@ -31,7 +31,7 @@ ms.locfileid: "33777056"
 > [!NOTE]
 > 可以在 [GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal) 上找到本教程的已完成代码。
 
-在本教程中，请执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * 在 Windows 应用商店中创建应用
@@ -41,7 +41,7 @@ ms.locfileid: "33777056"
 
 
 ## <a name="prerequisites"></a>先决条件
-- **Azure 订阅**。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) 或更高版本。
 - [已安装 UWP 应用开发工具](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 - 有效的 Windows 应用商店帐户

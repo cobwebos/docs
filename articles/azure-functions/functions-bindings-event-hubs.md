@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 64914a1b3efe81a152f5463f74c70c22f01ec0c1
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7ea233f3d5b0e0b6ad1470af146f963fce6c4e94
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724038"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970666"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
@@ -327,13 +327,13 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 *function.json* 文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**类型** | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 不适用 | 在函数代码中表示事件项的变量的名称。 | 
+|类型 | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|name | 不适用 | 在函数代码中表示事件项的变量的名称。 | 
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。  | 
 |**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。  |
 |**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。 | 
@@ -344,7 +344,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 ## <a name="trigger---event-metadata"></a>触发器 - 事件元数据
 
-事件中心触发器提供了几个[元数据属性](functions-triggers-bindings.md#binding-expressions---trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [EventData](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventdata) 类的属性。
+事件中心触发器提供了几个[元数据属性](functions-triggers-bindings.md#binding-expressions---trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) 类的属性。
 
 |属性|Type|说明|
 |--------|----|-----------|
@@ -545,13 +545,13 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 *function.json* 文件和 `EventHub` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `EventHub` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**类型** | 不适用 | 必须设置为“eventHub”。 |
-|**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 | 
+|类型 | 不适用 | 必须设置为“eventHub”。 |
+|direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
+|name | 不适用 | 函数代码中使用的表示事件的变量名称。 | 
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。  | 
 |**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。  |
 |**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|

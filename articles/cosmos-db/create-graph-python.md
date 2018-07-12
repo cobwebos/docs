@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
 ms.openlocfilehash: a29a27ec633f5f67bb8cac4b9a4823c5f0966f8e
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795782"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485455"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB：使用 Python 和 Azure 门户创建图形数据库
 
@@ -71,7 +71,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 这些代码片段全部摘自 C:\git-samples\azure-cosmos-db-graph-python-getting-started\ 文件夹中的 connect.py 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 C:\git-samples\azure-cosmos-db-graph-python-getting-started\ 文件夹中的 connect.py 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。 
 
 * 在 `connect.py` 中的第 104 行对 Gremlin `client` 进行初始化：
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: ecb8a46c57d31c8a19f3a7b75306e42a7d3981bd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: feb9b0c3d90aea9d5e0351b6691e93186dbfb9f6
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335731"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902072"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>通过 Azure 门户使用基于路径的路由规则创建应用程序网关
 
@@ -33,7 +33,7 @@ ms.locfileid: "36335731"
 
 ![URL 路由示例](./media/create-url-route-portal/scenario.png)
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -159,7 +159,7 @@ ms.locfileid: "36335731"
 
     ![在应用程序网关中测试基 URL](./media/create-url-route-portal/application-gateway-iistest.png)
 
-3. 将 URL 更改为 http://&lt;ip-address&gt;:8080/video/test.htm（请将 &lt;ip-address&gt; 替换为自己的 IP 地址），然后，应会看到如以下示例所示的内容：
+3. 将 URL 更改为 http://&lt;ip-address&gt;:8080/images/test.htm（请将 &lt;ip-address&gt; 替换为自己的 IP 地址），然后，应会看到如以下示例所示的内容：
 
     ![在应用程序网关中测试映像 URL](./media/create-url-route-portal/application-gateway-iistest-images.png)
 

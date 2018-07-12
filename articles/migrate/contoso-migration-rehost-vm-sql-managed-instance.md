@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/13/2018
 ms.author: raynew
-ms.openlocfilehash: c7dc9e8406494739aa5d8f21397a606e0b74a617
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 99eda135161a228fde139458de30f5120af55153
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301246"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723609"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms-and-azure-sql-managed-instance"></a>Contoso 迁移：将本地应用重新托管到 Azure VM 和 Azure SQL 托管实例上
 
@@ -27,7 +27,7 @@ ms.locfileid: "35301246"
 
 **文章** | **详细信息** | **Status**
 --- | --- | ---
-[第 1 篇：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
+[文章 1：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
 [文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有的 Contoso 迁移方案共用同一个基础结构。 | 可用
 [文章 3：访问本地资源](contoso-migration-assessment.md)  | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel 应用。 公司使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [Azure 数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
 文章 4：重新托管到 Azure VM 和 SQL 托管实例（本文） | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure。 公司使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，同时使用 [Azure 数据库迁移](https://docs.microsoft.com/azure/dms/dms-overview)服务将应用数据库迁移到 SQL 托管实例上。 | 可用
@@ -258,7 +258,7 @@ Contoso 需完成以下几项操作才可准备 DMS：
 
 **需要更多帮助？**
 - [了解](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal)如何设置 DMS。
-- [详细了解](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-2)如何创建和使用 SAS。
+- [详细了解](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)如何创建和使用 SAS。
 
 
 ## <a name="step-3-prepare-azure-for-the-site-recovery-service"></a>步骤 3：为 Site Recovery 服务准备 Azure
@@ -301,7 +301,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 - 自动发现 VM。 至少需要一个只读帐户。
 - 安排复制、故障转移和故障回复。 需要一个可以运行诸如创建和删除磁盘、打开 VM 等操作的帐户。
 
-Contoso 如下设置帐户：
+Contoso 按如下所述设置帐户：
 
 1. 在 vCenter 级别创建一个角色。
 2. 然后向该角色分配所需权限。
@@ -409,8 +409,8 @@ Contoso 执行以下步骤：
 1. 在“准备基础结构” > “复制设置” > “复制策略” >  “创建和关联”中，创建策略“ContosoMigrationPolicy”。
 2. 使用默认设置：
     - **RPO 阈值**：默认为 60 分钟。 此值确定创建恢复点的频率。 如果连续复制超出此限制，将生成警报。
-    - **恢复点保留期**： 默认为 24 小时。 此值指定每个恢复点的保留时长。 可以将复制的虚拟机恢复到窗口中的任何点。
-    - **应用一致性快照频率**： 默认为 1 小时。 此值指定应用程序一致性快照的创建频率。
+    - **恢复点保留期**。 默认为 24 小时。 此值指定每个恢复点的保留时长。 可以将复制的虚拟机恢复到窗口中的任何点。
+    - **应用一致性快照频率**。 默认为 1 小时。 此值指定应用程序一致性快照的创建频率。
  
         ![创建复制策略](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
 
@@ -568,7 +568,7 @@ Contoso 运行快速测试故障转移，然后迁移 VM。
 
 Azure 显示已迁移的资源后，Contoso 需要积极行动、全面保护新的基础结构。
 
-### <a name="security"></a>安全性
+### <a name="security"></a>“安全”
 
 Contoso 安全团队会审查 Azure VM 和 SQL 托管实例，确定实施方面是否存在任何安全问题。
 
@@ -578,12 +578,12 @@ Contoso 安全团队会审查 Azure VM 和 SQL 托管实例，确定实施方面
 
      ![托管实例安全性](./media/contoso-migration-rehost-vm-sql-managed-instance/mi-security.png)  
 
-[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) VM 的安全实践。
+[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) VM 的安全做法。
 
 ### <a name="backups"></a>备份
 Contoso 计划使用 Azure 备份服务备份 WEBVM 上的数据。 [了解详细信息](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-### <a name="licensing-and-cost-optimization"></a>授权和成本优化
+### <a name="licensing-and-cost-optimization"></a>许可和成本优化
 
 1. Contoso 目前拥有 WEBVM 许可证并将享有 Azure 混合权益。  公司将对现有的 Azure VM 进行转换，以利用此定价的优势。
 2. Contoso 将启用由 Microsoft 子公司 Cloudyn 授权的 Azure 成本管理。 它是一个多云成本管理解决方案，可优化 Azure 和其他云资源的使用和管理。  [详细了解](https://docs.microsoft.com/azure/cost-management/overview) Azure 成本管理。 

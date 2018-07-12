@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 612c397900d496e7f2b92e70f1a1521741ba84e9
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 83cd90babaa5bcb396f792c7e933d38b3911cebb
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112229"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970350"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>快速入门：将 Java Spring Boot 应用程序部署到 Service Fabric
 
@@ -44,19 +44,19 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 1. 安装 Service Fabric SDK 和 Service Fabric 命令行界面 (CLI)
 
-    a. [Mac](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cli#cli-mac)
+    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
     
     b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
 
 2. [安装 Git](https://git-scm.com/)
 3. 安装 Yeoman
 
-    a. [Mac](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
 
     b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
 4. 设置 Java 环境
 
-    a. [Mac](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
     
     b.  [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
 
@@ -140,7 +140,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-    如果使用 Mac，请从 Docker 映像启动本地群集（此处假定你已按照[先决条件](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-mac#create-a-local-container-and-set-up-service-fabric)设置适用于 Mac 的本地群集）。 
+    如果使用 Mac，请从 Docker 映像启动本地群集（此处假定你已按照[先决条件](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-a-local-container-and-set-up-service-fabric)设置适用于 Mac 的本地群集）。 
 
     ```bash
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster

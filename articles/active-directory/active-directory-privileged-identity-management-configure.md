@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 927d2ccef6a250d489273a17b070a4a0aa820bee
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9e5039623b1f9b53c636ebaeb1e956d852185577
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767377"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952046"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -101,13 +101,13 @@ Azure AD Privileged Identity Manager 提供一个管理员仪表板，其中显�
 *   在过去 30 天获得新角色分配的用户和组数目（Azure 资源角色）
 
 
-![PIM 仪表板 — 屏幕截图][2]
+![PIM 仪表板 — 屏幕截图](./media/active-directory-privileged-identity-management-configure/PIM_Admin_Overview.png)
 
 ## <a name="privileged-role-management"></a>特权角色管理
 
 使用 Azure AD Privileged Identity Management，可以通过添加或删除每个 Azure AD 目录角色的永久或有资格的管理员，来管理管理员。 借助适用于 Azure 资源（预览版）的 PIM，能够管理租户中订阅的所有者、用户访问管理员和全局管理员可将用户或组分配到 Azure 资源角色，并指定他们有访问资格（实时访问权限）、在开始和结束日期/时间范围内拥有时限（不需要激活）访问权限，或永久性（如果已在角色设置中启用）访问权限。
 
-![PIM 添加/删除管理员 — 屏幕截图][3]
+![PIM 添加/删除管理员 — 屏幕截图](./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png)
 
 ## <a name="configure-the-role-activation-settings"></a>配置角色激活设置
 
@@ -119,7 +119,7 @@ Azure AD Privileged Identity Manager 提供一个管理员仪表板，其中显�
 * 服务票证或者事件编号
 * [审批工作流要求 - 预览](./privileged-identity-management/azure-ad-pim-approval-workflow.md)
 
-![PIM 设置 — 管理员激活 — 屏幕截图][4]
+![PIM 设置 — 管理员激活 — 屏幕截图](./media/active-directory-privileged-identity-management-configure/PIM_Settings_w_Approval_Disabled.png)
 
 请注意，图中“多重身份验证”的按钮处于禁用状态。 对于某些特权级别高的角色，我们需要 MFA 以便加强保护。
 
@@ -140,13 +140,13 @@ Azure 资源角色（预览版）的角色设置可让管理员配置“实时�
 
 角色激活可自定义。 在“PIM”设置中，可以确定激活时限，以及管理员为了激活角色而需要提供的信息。
 
-![PIM 管理员请求角色激活 — 屏幕截图][5]
+![PIM 管理员请求角色激活 — 屏幕截图](./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png)
 
 ## <a name="review-role-activity"></a>查看角色活动
 
 可通过两种方法跟踪员工和管理员使用特权角色的方式。 第一个选项是使用[目录角色审核历史记录](active-directory-privileged-identity-management-how-to-use-audit-log.md)。 审核历史记录日志会跟踪特权角色分配发生的更改、角色激活历史记录，以及 Azure 资源角色（预览版）设置发生的更改。 
 
-![PIM 激活历史记录 — 屏幕截图][6]
+![PIM 激活历史记录 — 屏幕截图](./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png)
 
 第二个选项是设置定期[访问权限审查](active-directory-privileged-identity-management-how-to-start-security-review.md)。 指派的审查人（例如团队经理）可以执行这些访问权限审查，员工也可以自行审查。 这是监视哪些人员仍然需要访问权限，哪些人员不再需要访问权限的最佳方法。
 
@@ -158,12 +158,3 @@ Azure 资源角色（预览版）的角色设置可让管理员配置“实时�
 ## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-[2]: ./media/active-directory-privileged-identity-management-configure/PIM_Admin_Overview.png
-[3]: ./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png
-[4]: ./media/active-directory-privileged-identity-management-configure/PIM_Settings_w_Approval_Disabled.png
-[5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
-[6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png

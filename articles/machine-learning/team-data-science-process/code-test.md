@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: de1ed0b85957413a254503fc72375866dfd1bea1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7d9d63d6c3d5c8ccf1777a46832457670d307d4a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837151"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970853"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>使用 UCI 成人收入预测数据集进行数据科学代码测试
 本文提供的初步指导适用于在数据科学工作流中测试代码。 数据科学家可以通过此类测试以系统且有效的方式查看其代码的质量和预期结果。 我们使用的 Team Data Science Process (TDSP) [项目使用 UCI 成人收入数据集](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)，该数据集是我们以前发布的，目的是演示代码测试方法。 
@@ -128,7 +128,7 @@ ms.locfileid: "34837151"
 
        ![模板列表和“空进程”按钮](./media/code-test/start_empty_process_template.PNG)
 
-    d. 为生成命名并选择代理。 如果需要使用 DSVM 来完成生成过程，可以选择此处的默认设置。 有关如何设置代理的详细信息，请参阅 [Build and release agents](https://docs.microsoft.com/en-us/vsts/build-release/concepts/agents/agents?view=vsts)（生成并发布代理）。
+    d. 为生成命名并选择代理。 如果需要使用 DSVM 来完成生成过程，可以选择此处的默认设置。 有关如何设置代理的详细信息，请参阅 [Build and release agents](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts)（生成并发布代理）。
     
        ![生成和代理选择](./media/code-test/select_agent.PNG)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 7afa50484c3ebf258bbdd2b7f16c9cd051710d28
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 9609a0fa5599bd34fa52f7c0311369fb27aaf955
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437886"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951152"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 > [!div class="op_single_selector"]
@@ -93,7 +93,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory 生存期
 [ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是为不同远程接口创建代理实例的工厂。 如果使用 api `ServiceProxy.Create` 创建代理，则框架将创建 ServiceProxy 的单一实例。
-在需要替代 [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory) 属性时，手动创建一个 ServiceProxyFactory 是有用的。
+在需要替代 [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) 属性时，手动创建一个 ServiceProxyFactory 是有用的。
 工厂创建是一项代价高昂的操作。 ServiceProxyFactory 维护通信客户端的内部缓存。
 最佳做法是尽可能久地缓存 ServiceProxyFactory。
 

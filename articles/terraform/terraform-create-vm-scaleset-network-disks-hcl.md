@@ -7,14 +7,14 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 06/04/2018
 ms.topic: article
-ms.openlocfilehash: b7cd9ad90198ead7c68d838547232429dbd1289f
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 5922bad24c50a9d315aae42ce11a33801b9dbcaf
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757314"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971827"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale"></a>使用 Terraform 创建 Azure 虚拟机规模集
+# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>使用 Terraform 创建 Azure 虚拟机规模集
 
 使用 [Azure 虚拟机规模集](/azure/virtual-machine-scale-sets)可以创建并管理一组相同的负载均衡虚拟机，其中的虚拟机实例数可以根据需求或定义的计划自动增加或减少。 
 

@@ -15,11 +15,11 @@ ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 6e1364db9ecba65b90be525141f03fb9b4a33d28
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28984827"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610830"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>使用 Windows VM 托管服务标识通过访问密钥访问 Azure 存储
 
@@ -41,7 +41,7 @@ ms.locfileid: "28984827"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
 

@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: seguler
 ms.openlocfilehash: 1ce3debd8b04cf6c799dd7d6a3c87f843f1e0338
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189147"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38707557"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>快速入门：使用 Go 上传、下载和列出 Blob
 
@@ -26,7 +26,7 @@ ms.locfileid: "32189147"
 * 安装 [Go 1.8 或更高版本](https://golang.org/dl/)
 * 使用 `go get -u github.com/azure/azure-storage-blob-go/2016-05-31/azblob` 下载和安装[用于 Go 的 Azure 存储 Blob SDK](https://github.com/azure/azure-storage-blob-go/)。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 

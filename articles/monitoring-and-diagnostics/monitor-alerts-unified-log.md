@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: aab3c843493048291583bea111a52fe3356dc0f0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264368"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971714"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Azure Monitor - 警报中的日志警报 
 本文提供日志警报的详细信息，该警报是新版 [Azure 警报](monitoring-overview-unified-alerts.md)中支持的警报类型之一，允许用户使用 Azure 的分析平台作为警报的基础。 有关使用日志的指标警报的详细信息，请参阅[准实时指标警报](monitoring-near-real-time-metric-alerts.md)
@@ -120,7 +120,7 @@ ms.locfileid: "35264368"
 
 有关使用 REST API 的详细信息和示例，请参阅：
 - [Log Analytics 警报 REST API](../log-analytics/log-analytics-api-alerts.md) - 为 Azure Log Analytics 创建和管理日志搜索警报规则
-- [Azure Monitor 计划查询规则 REST API](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) - 为 Azure Application Insights 创建和管理日志搜索警报规则
+- [Azure Monitor 计划查询规则 REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) - 为 Azure Application Insights 创建和管理日志搜索警报规则
 
 ### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 用户还可以利用由 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)提供的灵活性来创建和更新资源 - 用于创建或更新日志警报。

@@ -224,11 +224,13 @@
           href: virtual-machine-scale-sets-networking.md
         - name: 将模板转换为托管磁盘
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: 计划内维护
+          href: virtual-machine-scale-sets-maintenance-notifications.md
     - name: 故障排除
       items:
         - name: 自动缩放
           href: virtual-machine-scale-sets-troubleshoot.md
-    - name: 常见问题
+    - name: 常见问题解答
       items:
         - name: 规模集常见问题解答
           href: virtual-machine-scale-sets-faq.md

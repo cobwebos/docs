@@ -17,17 +17,17 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
 ms.openlocfilehash: 42910675bcf512a3d6c76369adc9f41215420a78
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187753"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972285"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
 
 Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和操作以各种语言和框架开发的十二因素应用程序。 本文档介绍了在 Azure 上运行 Cloud Foundry 的选项及其入门知识。
 
-## <a name="cloud-foundry-offerings"></a>Cloud Foundry 产品/服务
+## <a name="cloud-foundry-offerings"></a>Cloud Foundry 产品
 
 有两种形式的 Cloud Foundry 可在 Azure 上运行：开源 Cloud Foundry (OSS CF) 和 Pivotal Cloud Foundry (PCF)。 OSS CF 是完全[开源](https://github.com/cloudfoundry)版的 Cloud Foundrydation，由 Cloud Foundry Foundation 管理。 Pivotal Cloud Foundry 是来自 Pivotal Software Inc. 的 Cloud Foundry 的企业分发。我们来看看两个产品间的一些差异。
 
@@ -46,7 +46,7 @@ Microsoft 通过以下社区渠道为 OSS CF 提供最大支持：
 
 ### <a name="pivotal-cloud-foundry"></a>Pivotal Cloud Foundry
 
-Pivotal Cloud Foundry 包括与 OSS 分发相同的核心平台，以及一套专有管理工具和企业支持。 若要在 Azure 上运行 PCF，必须从 Pivotal 获取许可证。 Azure 应用商店的 PCF 产品/服务包括 90 天的试用版许可证。
+Pivotal Cloud Foundry 包括与 OSS 分发相同的核心平台，以及一套专有管理工具和企业支持。 若要在 Azure 上运行 PCF，必须从 Pivotal 获取许可证。 Azure 市场的 PCF 产品/服务包括 90 天的试用版许可证。
 
 这些工具包括一个简化部署和管理 Cloud Foundry 基础的 Web 应用程序 [Pivotal Operations Manager](http://docs.pivotal.io/pivotalcf/customizing/) 和一个用于管理用户和应用程序的 Web 应用程序 [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/)。
 
@@ -54,7 +54,8 @@ Pivotal Cloud Foundry 包括与 OSS 分发相同的核心平台，以及一套�
 
 ## <a name="azure-service-broker"></a>Azure 服务中转站
 
-Cloud Foundry 鼓励采用[“十二因素应用”](https://12factor.net/)方法论，因为它可以促进无状态应用程序进程和有状态支持服务的清晰分离。 [服务中转站](https://docs.cloudfoundry.org/services/api.html)提供了向应用程序预配和绑定后台服务一致方法。 [Azure 服务中转站](https://github.com/Azure/meta-azure-service-broker)通过此渠道提供了部分关键 Azure 服务，包括 Azure 存储和 Azure SQL。
+Cloud Foundry 鼓励采用[“十二因素应用”](https://12factor.net/)方法论，因为它可以促进无状态应用程序进程和有状态支持服务的清晰分离。 
+  [服务中转站](https://docs.cloudfoundry.org/services/api.html) 提供向应用程序预配和绑定后台服务一致方法。 [Azure 服务中转站](https://github.com/Azure/meta-azure-service-broker)通过此渠道提供了部分关键 Azure 服务，包括 Azure 存储和 Azure SQL。
 
 如果使用的是 Pivotal Cloud Foundry，也可作从 Pivotal 网络[以磁贴的形式提供](https://docs.pivotal.io/azure-sb/installing.html)服务中转站。
 
@@ -66,5 +67,6 @@ Cloud Foundry 非常适合用于开发敏捷软件，其中包括使用持续集
 
 ## <a name="next-steps"></a>后续步骤
 
-- [部署来自 Azure Marketplace 的 Pivotal Cloud Foundry](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- 
+  [部署来自 Azure 市场的 Pivotal Cloud Foundry](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
 - [将应用部署到 Azure 中的 Cloud Foundry](./cloudfoundry-deploy-your-first-app.md)

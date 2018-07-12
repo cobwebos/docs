@@ -13,11 +13,11 @@ ms.date: 12/13/2017
 ms.author: sngun
 ms.custom: mvc
 ms.openlocfilehash: 7baa1e5b4b50d1f420b514854fa4d4c9ef786c99
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763079"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582129"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>使用表 API 设置 Azure Cosmos DB 全局分发
 

@@ -18,18 +18,18 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 3205fc8597d4d501b19ace7d50c4807a47d31d03
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234183"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38602609"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>为函数创建 OpenAPI 定义
 通常使用 OpenAPI 定义（以前称为 [Swagger](http://swagger.io/) 文件）描述 REST API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。
 
 本教程将创建确定风力涡轮机上的紧急修复是否经济高效的函数。 然后为该函数应用创建一个 OpenAPI 定义，使该函数可使用其他应用和服务进行调用。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建一个函数

@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 14b9a4ed66995a73f00234f4b25f52fccbcbe556
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777294"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38562598"
 ---
 # <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Windows Phone 应用推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "33777294"
 > [!NOTE]
 > 通知中心 Windows Phone SDK 不支持将 Windows 推送通知服务 (WNS) 与 Windows Phone 8.1 Silverlight 应用配合使用。 要将 WNS（而不是 MPNS）与 Windows Phone 8.1 Silverlight 应用配合使用，请遵循使用 REST API 的 [通知中心 - Windows Phone Silverlight 教程]。
 
-本教程介绍如何执行下列操作： 
+本教程介绍如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 创建通知中心
@@ -42,7 +42,7 @@ ms.locfileid: "33777294"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 订阅**。 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+- **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 - [包含移动开发组件的 Visual Studio 2015 Express](https://www.visualstudio.com/vs/older-downloads/)
 
 完成本教程是学习有关 Windows Phone 8 应用的所有其他通知中心教程的先决条件。

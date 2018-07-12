@@ -18,11 +18,11 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082659"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38586970"
 ---
 # <a name="call-a-function-from-powerapps"></a>从 PowerApps 调用函数
 [PowerApps](https://powerapps.microsoft.com) 平台专为商业专家设计，无需写入传统的应用程序代码即可生成应用。 专业开发人员可以使用 Azure Functions 扩展 PowerApps 的功能，同时使 PowerApps 应用构建者摆脱技术细节。
@@ -209,7 +209,7 @@ ms.locfileid: "37082659"
     ![运行前完成的应用](media/functions-powerapps-scenario/finished-app-before-run.png)
 
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 已有一个完整的应用了！ 现在可以运行应用并观察操作中的函数调用。
 
 1. 在 PowerApps Studio 的右上角，单击“运行”按钮： ![运行应用按钮](media/functions-powerapps-scenario/f5-arrow-sm.png)。

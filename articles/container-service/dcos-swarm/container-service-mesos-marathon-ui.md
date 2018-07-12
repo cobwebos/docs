@@ -2,19 +2,19 @@
 title: 使用 Marathon API 管理 Azure DC/OS 群集
 description: 使用 Marathon Web UI 将容器部署到 Azure 容器服务群集服务。
 services: container-service
-author: dlepow
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: danlep
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 43407d40db0aab2772cb1baeab3471be68aee2ab
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a22bddf48f97d961d481e2aedb42f7d645f3e678
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166977"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903075"
 ---
 # <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>通过 Marathon Web UI 管理 Azure 容器服务 DC/OS 群集
 

@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: c3c0d12bbbeec85d2cbf0daead49ee16ca7728fb
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4a23ebddc29c6c519e68a00ef6cbff107061c341
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046252"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888273"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。 通过提供话语模式，LUIS 可具有极高的预测置信度。 
@@ -25,7 +25,7 @@ ms.locfileid: "37046252"
 
 ![组织结构图](./media/luis-concept-patterns/org-chart.png)
 
-|话语|预测的意向|意向得分|
+|陈述|预测的意向|意向得分|
 |--|--|--|
 |孔西明的下属员工有谁？|获取组织结构组|.30|
 |谁归孔西明管辖？|获取组织结构组|.30|
@@ -95,7 +95,7 @@ How much does {Booktitle} cost and what format is it available in?
 
 请考虑使用模式“[find] email about {subject} [from {person}]”。 在下面的话语中，主题和人员实体一个提取正确，一个提取错误：
 
-|话语|实体|提取是否正确|
+|陈述|实体|提取是否正确|
 |--|--|:--:|
 |email about dogs from Chris|subject=dogs<br>person=Chris|✔|
 |email about the man from La Mancha|subject=the man<br>person=La Mancha|X|
@@ -123,5 +123,3 @@ How much does {Booktitle} cost and what format is it available in?
 
 > [!div class="nextstepaction"]
 > [在本教程中学习如何实现模式](luis-tutorial-pattern.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

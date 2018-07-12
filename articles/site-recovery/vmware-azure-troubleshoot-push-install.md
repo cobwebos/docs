@@ -2,19 +2,19 @@
 title: 从 VMware 到 Azure 的 Azure Site Recovery 故障排除 | Microsoft 文档
 description: 解决复制 Azure 虚拟机时出现的错误。
 services: site-recovery
-author: anoopkv
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: bdd5d87670ddb26d2c4474a319fe19bef1db62f5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: ramamill
+ms.date: 07/06/2018
+ms.openlocfilehash: 8d5db03eeebb659414ea1f554e5b34c938fd2795
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29811414"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952903"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 

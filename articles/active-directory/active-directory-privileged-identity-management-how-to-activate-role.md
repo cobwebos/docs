@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e0e9e01baccd71804b26282f288d19abff8ff8fa
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: bc4280d6e0ac362712d3b406e2e32c42cf4a9be2
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444916"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952675"
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中激活或停用角色
 Azure Active Directory (AD) Privileged Identity Management 简化了企业管理以特权身份访问 Azure AD 中的资源和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）的方式。  
@@ -44,11 +44,11 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 4. 选择“激活”。 此时会显示“请求激活角色”边栏选项卡。
 5. 有些角色要求事先进行多重身份验证 (MFA) 才能激活。 只需在每个会话中执行身份验证一次。
    
-    ![在激活角色之前先执行 MFA 身份验证 - 屏幕截图][2]
+    ![在激活角色之前先执行 MFA 身份验证 - 屏幕截图](./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_activation_MFA.png)
 6. 在文本字段中输入请求激活的原因。  某些角色要求提供问题票证编号。
 7. 选择“确定”。  如果角色不需要审批，而且已经激活，此角色将出现在激活角色列表中（在合格的角色分配列表下方）。 如果[角色需要审批](./privileged-identity-management/azure-ad-pim-approval-workflow.md)才能激活，则将在浏览器右上角显示一条简短的 Toast 通知，告知你请求尚待审批。
 
-    ![请求挂起通知 - 屏幕截图][3]
+    ![请求挂起通知 - 屏幕截图](./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Toast2.png)
 
 ## <a name="deactivate-a-role"></a>停用角色
 角色激活后，在达到时间限制（符合条件的时间段）时会自动停用。
@@ -64,16 +64,9 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 4. 在“角色激活详细信息”边栏选项卡上，选择“激活尚待审批”横幅。
 5. 在“挂起的审批”边栏选项卡顶部选择“取消”。
 
-   ![取消挂起的请求屏幕截图][4]
+   ![取消挂起的请求屏幕截图](./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Banner_Cancel.png)
 
 ## <a name="next-steps"></a>后续步骤
 如果有兴趣进一步了解 Azure AD Privileged Identity Management，以下链接提供了详细信息。
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_activation_MFA.png
-[3]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Toast2.png
-[4]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Banner_Cancel.png

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9ae476e21e4935ea555e671c3c7144748d60abb6
-ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
+ms.openlocfilehash: 927c8f6d0fefbc592999487217c41aeecc96b0d9
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2018
-ms.locfileid: "35662632"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950975"
 ---
 # <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>在基于 Linux 的 Azure 应用服务中生成 Ruby 和 Postgres Web 应用
 
@@ -25,7 +25,7 @@ ms.locfileid: "35662632"
 
 ![Azure 应用服务中运行的 Ruby on Rails 应用](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 PostgreSQL 数据库
@@ -42,7 +42,7 @@ ms.locfileid: "35662632"
 完成本教程：
 
 * [安装 Git](https://git-scm.com/)
-* [安装 Ruby 2.3](https://www.ruby-lang.org/documentation/installation/)
+* [安装 Ruby 2.3](https://www.ruby-lang.org/en/documentation/installation/)
 * [安装 Ruby on Rails 5.1](http://guides.rubyonrails.org/v5.1/getting_started.html)
 * [安装并运行 PostgreSQL](https://www.postgresql.org/download/)
 

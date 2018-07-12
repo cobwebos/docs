@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 261bc78bfe427173ba81eef731e33eddd2ec379b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f9ab9b9af81bf1827c2da646908e204bd051706b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294269"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970928"
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 
@@ -48,7 +48,7 @@ Azure Application Insights 提供 Web 应用程序的监视信息，深度可达
 
 ## <a name="application-insights-search"></a>Application Insights 搜索
 
-默认情况下，在 Visual Studio 版本 2015 Update 2 或更高版本中，如果其中包含基于 ASP.NET Core 2+ 的项目，则可充分利用 [Application Insights 搜索](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-visual-studio)。即使在向项目显式添加 Application Insights 之前，也可以这样做。
+默认情况下，在 Visual Studio 版本 2015 Update 2 或更高版本中，如果其中包含基于 ASP.NET Core 2+ 的项目，则可充分利用 [Application Insights 搜索](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)。即使在向项目显式添加 Application Insights 之前，也可以这样做。
 
 若要测试此功能，请执行以下操作：
 

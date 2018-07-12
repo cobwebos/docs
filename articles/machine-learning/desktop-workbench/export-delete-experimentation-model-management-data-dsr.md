@@ -7,15 +7,15 @@ ms.author: cgronlun
 manager: haining
 ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: 7db37865c99908e0fd44be3ec04a8493d190e941
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5475ce3be24321b15ab78a078b758c25843f0ed3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833506"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723679"
 ---
 # <a name="export-or-delete-your-experimentation-or-model-management-data-in-machine-learning"></a>在机器学习中导出或删除试验或模型管理数据
 

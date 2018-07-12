@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.openlocfilehash: eb41708c7446b3139758678c9247ffbb11da8b40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659216"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969259"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 本文分步说明如何使用 Azure 导入/导出服务从 Azure Blob 存储安全地导出大量数据。 该服务要求你将空驱动器寄送到 Azure 数据中心。 该服务将数据从存储帐户导出到驱动器，然后将驱动器寄回。
@@ -48,7 +48,7 @@ ms.locfileid: "34659216"
     - 选择一个订阅。
     - 输入或选择一个资源组。
 
-        ![Basics](./media/storage-import-export-data-from-blobs/export-from-blob3.png) 
+        ![基础](./media/storage-import-export-data-from-blobs/export-from-blob3.png) 
     
 3. 在“作业详细信息”中：
 
@@ -75,8 +75,8 @@ ms.locfileid: "34659216"
 
 4. 在“回寄信息”中：
 
-    - 从下拉列表中选择承运人。
-    - 输入为该承运人创建的有效承运人帐号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 
+    - 从下拉列表中选择承运商。
+    - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 
     - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
    
 5. 在“摘要”中：

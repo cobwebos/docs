@@ -16,11 +16,11 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.openlocfilehash: c0558432c0d74e2c9fcec108182a4dbafa332904
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32176569"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952852"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>在 HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]

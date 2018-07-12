@@ -361,7 +361,7 @@
               href: migration-classic-resource-manager-errors.md
             - name: 用于迁移的社区工具
               href: migration-classic-resource-manager-community-tools.md
-            - name: 常见问题
+            - name: 常见问题解答
               href: migration-classic-resource-manager-faq.md
     - name: 故障排除
       items:
@@ -439,7 +439,7 @@
     - name: 计算 REST
       href: /rest/api/compute
     - name: 托管磁盘 REST
-      href: /rest/api/disks
+      href: /rest/api/compute/disks
 - name: 资源
   items:
     - name: 创作模板
@@ -456,5 +456,5 @@
       href: 'http://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md

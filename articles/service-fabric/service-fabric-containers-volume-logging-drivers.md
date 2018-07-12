@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: subramar
-ms.openlocfilehash: d6195eda43dfd6ad249e82dabd0b314fc162b8c6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a5b75a7069375f503cbe25554eb7c04cba868413
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301076"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969599"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric Azure 文件卷驱动程序（预览版）
 Azure 文件卷插件是一个 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)，可为 Docker 容器提供基于 [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)的卷。 该 Docker 卷插件可在打包为 Service Fabric 应用程序后部署到 Service Fabric 群集。 该插件用于为部署到群集的其他 Service Fabric 容器应用程序提供基于 Azure 文件的卷。
@@ -29,17 +29,17 @@ Azure 文件卷插件是一个 [Docker 卷插件](https://docs.docker.com/engine
 >
 
 ## <a name="prerequisites"></a>先决条件
-* Windows 版 Azure 文件卷插件仅适用于 [Windows Server 1709 版](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 1709 版](https://docs.microsoft.com/en-us/windows/whats-new/whats-new-windows-10-version-1709)或更高版本的操作系统。 Linux 版 Azure 文件卷插件适用于 Service Fabric 支持的所有操作系统版本。
+* Windows 版 Azure 文件卷插件仅适用于 [Windows Server 1709 版](https://docs.microsoft.com/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 1709 版](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709)或更高版本的操作系统。 Linux 版 Azure 文件卷插件适用于 Service Fabric 支持的所有操作系统版本。
 
 * Azure 文件卷插件仅适用于 Service Fabric 6.2 和更高版本。
 
-* 按照 [Azure 文件文档](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share)中的说明，为要用作卷的 Service Fabric 容器应用程序创建文件共享。
+* 按照 [Azure 文件文档](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)中的说明，为要用作卷的 Service Fabric 容器应用程序创建文件共享。
 
-* 需要[具有 Service Fabric 模块的 Powershell](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started) 或安装 [SFCTL](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cli)。
+* 需要[具有 Service Fabric 模块的 Powershell](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) 或安装 [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)。
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>部署 Service Fabric Azure 文件应用程序
 
-可以从以下[链接](https://aka.ms/sfvolume)下载为容器提供卷的 Service Fabric 应用程序。 可以通过 [PowerShell](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-deploy-remove-applications)、[CLI](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-lifecycle-sfctl) 或 [FabricClient API](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient) 将应用程序部署到群集。
+可以从以下[链接](https://aka.ms/sfvolume)下载为容器提供卷的 Service Fabric 应用程序。 可以通过 [PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)、[CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) 或 [FabricClient API](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient) 将应用程序部署到群集。
 
 1. 使用命令行，将目录更改为已下载的应用程序包的根目录。
 

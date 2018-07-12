@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: bf861dc6317a8cc3a3ed862dfd6c133a1dcbe685
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bf1406c8e361e0a1433b0e26c477c3c34e987fcf
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231906"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38562752"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 部署迁移基础结构
 
@@ -25,7 +25,7 @@ ms.locfileid: "36231906"
 
 **文章** | **详细信息** | **Status**
 --- | --- | ---
-[第 1 篇：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
+[文章 1：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
 文章 2：部署 Azure 基础结构（本文） | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有的 Contoso 迁移方案共用同一个基础结构。 | 可用
 [文章 3：访问本地资源](contoso-migration-assessment.md) | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel 应用。 公司使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [Azure 数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
 [文章 4：重新托管到 Azure VM 和 SQL 托管实例](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure。 公司使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，同时使用 [Azure 数据库迁移](https://docs.microsoft.com/azure/dms/dms-overview)服务将应用数据库迁移到 SQL 托管实例上。 | 可用
@@ -556,7 +556,7 @@ CUS | CONTOSODC6 | VNET-PROD-CUS | PROD-DC-CUS | 10.255.42.4
 1. 在 Azure 门户中，将新的 Windows Server VM 部署到相应的 VNet。
 2. 在 VM 的每个位置创建可用性集。 可用性集可执行以下操作：
     - 确保 Azure 结构将 VM 分隔到 Azure 区域中的不同基础结构。 
-    -  使 Contoso 能够为 Azure 中的 VM 获取 99.95% 的 SLA。  [了解详细信息](https://docs.microsoftcom/azure/virtual-machines/windows/regions-and-availability#availability-sets)。
+    -  使 Contoso 能够为 Azure 中的 VM 获取 99.95% 的 SLA。  [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)。
 
     ![可用性组](./media/contoso-migration-infrastructure/availability-group.png) 
 3. 部署 VM 后，打开 VM 的网络接口。 在其中将专用 IP 地址设为静态，然后指定一个有效地址。
@@ -755,7 +755,7 @@ Contoso 已针对其应用程序生成了相关模型。
 
 使用最低特权配置与 ASG 关联的 NSG，以确保只有经过允许的数据包可以从网络的一部分流到其目标。
 
-**Action** | 名称 | **源** | **目标** | 端口
+**Action** | **Name** | **源** | **目标** | 端口
 --- | --- | --- | --- | --- 
 允许 | AllowiInternetToFE | VNET-HUB-EUS1/IB-TrustZone | APP1-FE 80、443
 允许 | AllowWebToApp | APP1-FE | APP1-DB | 1433

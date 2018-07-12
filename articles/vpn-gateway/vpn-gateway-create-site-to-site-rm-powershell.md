@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: cherylmc
 ms.openlocfilehash: ee4e200fa57a38249b0be2997de7e3268a9302cb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603566"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38712917"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
 

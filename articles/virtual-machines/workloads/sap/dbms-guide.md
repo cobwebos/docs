@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79e77aa067cbb7262a945d94ce8ac1750e80b2d5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2caa9a5137edd4e012adf704c01dc5c470e1bb51
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054783"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972438"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机 DBMS 部署
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -288,7 +288,7 @@ ms.locfileid: "37054783"
 [virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
-[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/en-us/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
+[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
@@ -619,7 +619,9 @@ Microsoft Azure 可用性集是 VM 或服务的逻辑分组，可确保 VM 和�
 * **虚拟机 SLA**：可以在此处找到适用于 Azure 中运行的虚拟机的 SLA：<https://azure.microsoft.com/support/legal/sla/>  
 * **SQL 版本支持**：对于 SAP 客户，我们在 Microsoft Azure 虚拟机上支持 SQL Server 2008 R2 和更高版本。 不支持更早版本。 有关更多详细信息，请查看此通用[支持声明](https://support.microsoft.com/kb/956893)。 注意，Microsoft 通常也支持 SQL Server 2008。 不过，由于适用于 SAP 的重要功能是通过 SQL Server 2008 R2 引进的，因此，SQL Server 2008 R2 是适用于 SAP 的最低版本。 请记住，SQL Server 2012 和 2014 已扩展，可与 IaaS 方案更深入地集成（例如，直接对 Azure 存储进行备份）。 因此，我们将本文的范围限制为 SQL Server 2012 和 2014 及其适用于 Azure 的最新补丁级别。
 * **SQL 功能支持**：Microsoft Azure 虚拟机支持大部分 SQL Server 功能，但有一些例外。 **不支持使用共享磁盘的 SQL Server 故障转移群集**。  单个 Azure 区域内支持数据库镜像、AlwaysOn 可用性组、复制、日志传送和 Service Broker 等分布式技术。 不同的 Azure 区域之间也支持 SQL Server AlwaysOn，如此处所述：<https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>。  有关更多详细信息，请查看[支持声明](https://support.microsoft.com/kb/956893)。 [此文][virtual-machines-workload-template-sql-alwayson]提供了有关如何部署 AlwaysOn 配置的示例。 此外，请查看[此处][virtual-machines-sql-server-infrastructure-services]所述的最佳做法 
-* SQL 性能：相比其他公有云虚拟化产品，我们确信 Microsoft Azure 托管的虚拟机将运行得非常顺利，但个别结果可能不同。 请查看[此文][virtual-machines-sql-server-performance-best-practices]。
+* 
+  **
+  **SQL 性能：相比其他公有云虚拟化产品，我们确信 Microsoft Azure 托管的虚拟机将运行得非常顺利，但个别结果可能不同。 请查看[此文][virtual-machines-sql-server-performance-best-practices]。
 * 
   **使用来自 Azure 市场的映像**：部署新 Azure VM 的最快方式是使用来自 Microsoft Azure 市场的映像。 Azure 市场提供包含 SQL Server 的映像。 已经安装 SQL Server 的映像不能立即用于 SAP NetWeaver 应用程序。 原因是这些映像安装了默认的 SQL Server 排序规则，而不是 SAP NetWeaver 系统所需的排序规则。 若要使用此类映像，请查看[使用来自 Microsoft Azure 市场的 SQL Server 映像][dbms-guide-5.6]一章中所述的步骤。 
 * 有关详细信息，请查看[定价详细信息](https://azure.microsoft.com/pricing/)。 [SQL Server 2012 Licensing Guide](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf)（SQL Server 2012 许可指南）和 [SQL Server 2014 Licensing Guide](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf)（SQL Server 2014 许可指南）也是相当重要的资源。

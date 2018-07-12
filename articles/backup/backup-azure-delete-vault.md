@@ -1,19 +1,19 @@
 ---
 title: 删除 Azure 中的恢复服务保管库
 description: 本文介绍了如何删除恢复服务保管库。 本文包括了尝试删除保管库但无法删除时可采用的疑难解答步骤。
-services: service-name
+services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/21/2018
+ms.date: 7/6/2018
 ms.author: markgal
-ms.openlocfilehash: d8169eba6790e49a85d69434663faabe7430942e
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 5a3a67a41525d30b73bb203eeeacbdf49bb35193
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937594"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901844"
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
 
@@ -77,7 +77,7 @@ PowerShell 可用于强制删除恢复服务保管库。 强制删除意味着�
 
 4. 运行以下命令，从 chocolately.org 下载 Azure 资源管理器客户端包。
 
-    `iex ((New-Object System.Net.WebClient) DownloadString('https://chocolatey.org/install.ps1))`
+    `iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
 5. 运行以下命令，安装 Azure 资源管理器 API 客户端。
 

@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081381"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38540166"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署 - 预览版
 
@@ -26,7 +26,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
 本教程中的流分析模块在一个滚动的 30 秒时段内计算平均温度。 当平均温度达到 70 时，模块会发送一个警报，以便设备采取操作。 在这种情况下，该操作是重置模拟温度传感器。 在生产环境中，当温度达到危险级别时，可以使用此功能关闭机器或采取预防措施。 
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Edge 上创建 Azure 流分析作业用于处理数据。

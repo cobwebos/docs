@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
 ms.openlocfilehash: ac9d0291b38e7a8679e9c6e7707e13a90554b914
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796173"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582512"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建图形数据库
 
@@ -71,7 +71,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。
 
 以代码片段全部摘自 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java 文件。
 

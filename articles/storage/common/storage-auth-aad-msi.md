@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: tamram
-ms.openlocfilehash: 83d3a2d973604e3b8a709b24cabcb3abba1e304c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 080cb3ee536227e5ddce3fac856de79b2b061dcf
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659212"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970762"
 ---
 # <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>通过 Azure 托管服务标识使用 Azure AD 验证身份（预览版）
 
@@ -22,7 +22,7 @@ Azure 存储支持使用[托管服务标识](../../active-directory/managed-serv
 若要向存储容器或队列的托管服务标识授予权限，可将包含存储权限的 RBAC 角色分配给 MSI。 有关存储中的 RBAC 角色的详细信息，请参阅[使用 RBAC 管理存储数据访问权限（预览版）](storage-auth-aad-rbac.md)。 
 
 > [!IMPORTANT]
-> 此预览版仅用于非生产用途。 适用于 Azure 存储的 Azure AD 集成正式发布后，生产服务级别协议 (SLA) 方可使用。 如果你的方案尚不支持 Azure AD 集成，请继续使用应用程序中的共享密钥授权或 SAS 令牌。 有关该预览版的其他信息，请参阅[使用 Azure Active Directory 验证 Azure 存储访问权限（预览版）](storage-auth-aad.md)。
+> 此预览版仅用于非生产用途。 适用于 Azure 存储的 Azure AD 集成正式发布后，生产服务级别协议 (SLA) 方可使用。 如果你的方案尚不支持 Azure AD 集成，请继续使用应用程序中的共享密钥授权或 SAS 令牌。 有关该预览版的其他信息，请参阅[使用 Azure Active Directory进行 Azure 存储访问权限身份验证（预览版）](storage-auth-aad.md)。
 >
 > 预览期间，RBAC 角色分配可能需要长达五分钟的时间进行传播。
 
@@ -32,7 +32,7 @@ Azure 存储支持使用[托管服务标识](../../active-directory/managed-serv
 
 在从 VM 使用 MSI 向 Azure 存储进行身份验证前，必须先在 VM 中启用 MSI。 若要了解如何启用 MSI，请参阅以下文章之一：
 
-- [Azure 门户](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure 门户](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-service-identity/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-service-identity/qs-configure-cli-windows-vm.md)
 - [Azure 资源管理器模板](../../active-directory/managed-service-identity/qs-configure-template-windows-vm.md)
@@ -74,11 +74,11 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 ``` 
 
 > [!NOTE]
-> Azure AD 与 Azure 存储的集成要求使用 HTTPS 进行 Azure 存储操作。
+> Azure AD 与 Azure 存储集成要求用户使用 HTTPS 进行 Azure 存储操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解适用于 Azure 存储的 RBAC 角色，请参阅[使用 RBAC 管理存储数据访问权限（预览版）](storage-auth-aad-rbac.md)。
+- 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[通过 RBAC 管理存储数据访问权限（预览）](storage-auth-aad-rbac.md)。
 - 若要了解如何从存储应用程序内授予容器和队列访问权限，请参阅[将 Azure AD 与存储应用程序配合使用](storage-auth-aad-app.md)。
 - 若要了解如何使用 Azure AD 标识登录 Azure CLI 和 PowerShell，请参阅[使用 Azure AD 标识通过 CLI 或 PowerShell 访问 Azure 存储（预览版）](storage-auth-aad-script.md)。
 - 有关适用于 Azure Blob 和队列的 Azure AD 集成的其他信息，请参阅 Azure 存储团队博客文章[宣布推出适用于 Azure 存储的 Azure AD 身份验证预览版](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)。

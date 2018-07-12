@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: sngun
 ms.openlocfilehash: ff6712a70138a2178a2bddb4af467371192fdea3
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795612"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582215"
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB：迁移现有的 Node.js MongoDB Web 应用 
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="prerequisites"></a>先决条件 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 除 Azure CLI 之外，还需要在本地安装 [Node.js](https://nodejs.org/) 和 [Git](http://www.git-scm.com/downloads)，以运行 `npm` 和 `git` 命令。

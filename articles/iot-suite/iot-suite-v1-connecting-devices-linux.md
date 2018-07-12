@@ -1,12 +1,12 @@
 ---
-title: "在 Linux 上使用 C 连接设备 | Microsoft Docs"
-description: "介绍如何使用在 Linux 上运行的以 C 编写的应用程序将设备连接到 Azure IoT 套件预配置远程监视解决方案。"
-services: 
+title: 在 Linux 上使用 C 连接设备 | Microsoft Docs
+description: 介绍如何使用在 Linux 上运行的以 C 编写的应用程序将设备连接到 Azure IoT 套件预配置远程监视解决方案。
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0c7c8039-0bbf-4bb5-9e79-ed8cff433629
 ms.service: iot-suite
 ms.devlang: na
@@ -16,10 +16,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: a5768041a13d5ddc355c054dc85ba651b0752aba
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723509"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>将设备连接到远程监视预配置解决方案 (Linux)
 [!INCLUDE [iot-suite-v1-selector-connecting](../../includes/iot-suite-v1-selector-connecting.md)]
@@ -34,9 +35,9 @@ sudo apt-get install cmake gcc g++
 ```
 
 ## <a name="install-the-client-libraries-on-your-device"></a>在设备上安装客户端库
-Azure IoT 中心客户端库以包的形式提供，可以使用 **apt-get** 命令在 Ubuntu 设备上安装该包。 完成以下步骤，在 Ubuntu 计算机上安装包含 IoT 中心客户端库和标头文件的包：
+Azure IoT 中心客户端库以包的形式提供，可以使用 apt-get 命令在 Ubuntu 设备上安装该包。 完成以下步骤，在 Ubuntu 计算机上安装包含 IoT 中心客户端库和头文件的包：
 
-1. 在外壳程序中，向计算机添加 AzureIoT 库：
+1. 在 shell 中，向计算机添加 AzureIoT 库：
    
     ```
     sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
@@ -99,7 +100,7 @@ int main(void)
 ```
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
-以下步骤描述如何使用 *CMake* 生成客户端应用程序。
+以下步骤描述如何使用 CMake 生成客户端应用程序。
 
 1. 在文本编辑器中，打开 **remote_monitoring** 文件夹中的 **CMakeLists.txt** 文件。
 

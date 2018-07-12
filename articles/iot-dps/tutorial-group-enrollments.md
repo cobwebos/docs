@@ -11,11 +11,11 @@ manager: timlt
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: 02cc3f861864d3bfa878be6501b8563715f88dac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631133"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971313"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与组登记来创建和预配模拟的 X.509 设备
 

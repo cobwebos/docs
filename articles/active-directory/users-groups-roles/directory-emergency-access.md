@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 185f6730babe077332be9f054ba338ff48295eca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4f3772abc1cdbd3b35b8b1f16e7a47c0f1a17783
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448755"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38595648"
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问管理帐户 
 
@@ -82,6 +82,6 @@ ms.locfileid: "37448755"
 - [注册 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)（如果尚未已注册）。
 - [要求分配到管理员角色的各个用户使用 Azure 多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states)。
 - 如果使用 Office 365，请[在 Office 365 中配置全局管理员的额外保护](https://support.office.com/article/Protect-your-Office-365-global-administrator-accounts-6b4ded77-ac8d-42ed-8606-c014fd947560)。
-- [执行全局管理员访问评审](../active-directory-privileged-identity-management-how-to-start-security-review.md)并[将现有全局管理员转换为更具体的管理员角色](directory-assign-admin-roles.md)。
+- [执行全局管理员访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)并[将现有全局管理员转换为更具体的管理员角色](directory-assign-admin-roles.md)。
 
 

@@ -3,7 +3,7 @@ title: 教程 - 在 Azure 中使用 cloud-init 自定义 Linux VM | Microsoft Do
 description: 本教程介绍在 Azure 中首次启动 Linux VM 时如何使用 cloud-init 和 Key Vault 对其进行自定义
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9947ff74ac1256ab7f493697798aaf2776d19eff
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 754a5011bb139b313d3b0ffcf4e6560fde9a9474
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716493"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928465"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教程 - 如何在 Azure 中的 Linux 虚拟机首次启动时使用 cloud-init 对其进行自定义
 
@@ -45,7 +45,7 @@ Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 y
 
 我们正在与合作伙伴协作，将 cloud-init 纳入用户向 Azure 提供的映像中并使其在映像中正常运行。 下表概述了 cloud-init 当前在 Azure 平台映像上的可用性：
 
-| 别名 | 发布者 | 产品 | SKU | 版本 |
+| 别名 | 发布者 | 产品/服务 | SKU | 版本 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |最新 |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |最新 |

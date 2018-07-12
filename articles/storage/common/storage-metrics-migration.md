@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 03/30/2018
 ms.author: fryu
-ms.openlocfilehash: c64061aee94e8c08a3f6bcae78cffca0b4172d97
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9586d0c2b61fe97106378ec684c28be9143b5194
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650666"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969378"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure 存储指标迁移
 
@@ -110,7 +110,7 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 | **TotalIngress** | **流入量** |
 | **TotalRequests** | **Transactions** |
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="how-should-i-migrate-existing-alert-rules"></a>应如何迁移现有警报规则？
 
@@ -118,7 +118,7 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 
 ### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>新指标数据是否会默认存储在同一存储帐户中？
 
-不会。 若要将指标数据存档到存储帐户，请使用 [Azure Monitor 诊断设置 API](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate)。
+不是。 若要将指标数据存档到存储帐户，请使用 [Azure Monitor 诊断设置 API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)。
 
 ## <a name="next-steps"></a>后续步骤
 

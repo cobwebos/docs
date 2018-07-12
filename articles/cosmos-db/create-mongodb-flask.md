@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
 ms.openlocfilehash: 024ca836e4d2c58c4c942d6f7376608e40248316
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795714"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485421"
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB：借助 MongoDB API 构建 Flask 应用
 
@@ -66,7 +66,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 否则，可以跳到[运行 Web 应用](#run-the-web-app)。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以跳到[运行 Web 应用](#run-the-web-app)。 
 
 以下代码片段全部摘自 app.py 文件，并对本地 Azure Cosmos DB 模拟器使用连接字符串。 密码需要进行拆分（如下所示）以适应在其他方面无法解析的正斜杠。
 

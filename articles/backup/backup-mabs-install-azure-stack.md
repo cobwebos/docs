@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: c9dd6a1818b0afeb5e577724568a8254a70c8228
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: eda3e95c1bd8fb7eef97ee9db10c217c2885198f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753347"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970877"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
 
@@ -328,8 +328,8 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连接状态 | Azure 订阅 | 备份到 Azure | 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | --- | --- | --- | --- | --- | --- |
 | 已连接 |活动 |允许 |允许 |允许 |允许 |
-| 已连接 |已过期 |已停止 |已停止 |允许 |允许 |
-| 已连接 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
+| 连续 |已过期 |已停止 |已停止 |允许 |允许 |
+| 连续 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 | 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已过期 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
@@ -338,7 +338,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 如果防火墙或代理阻止访问 Azure，请将防火墙/代理配置文件中的以下域地址加入白名单：
 
-- www.msftncsi.com
+- `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
 - \*.WindowsAzure.com
 - \*.microsoftonline.com

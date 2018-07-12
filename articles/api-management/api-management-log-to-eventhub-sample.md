@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 8ef8d64ba90960281faffc350821d7934e35749a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4c58be8f501e72027e1692ceb73552a3f252f92a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29117062"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38603172"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>使用 Azure API 管理、事件中心和 Runscope 监视 API
 [API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后，将响应返回给 API 使用者。 API 管理服务保留要在 Azure 门户仪表板中显示的有关 API 的一些重要统计信息，但除此之外不显示详细信息。
@@ -281,5 +281,5 @@ Azure API 管理服务提供了一个理想位置用于捕获 API 的双向 HTTP
   * [事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)
 * 了解有关 API 管理和事件中心集成的详细信息
   * [如何在 Azure API 管理中将事件记录到 Azure 事件中心](api-management-howto-log-event-hubs.md)
-  * [记录器实体引用](https://msdn.microsoft.com/library/azure/mt592020.aspx)
+  * [记录器实体引用](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
   * [log-to-eventhub 策略引用](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 165180c49de75cf4b635a89dacec311d5370acd3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5db1e7b9c97a0c19ef5ec0a41ea675c33c4d46fc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837739"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950910"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
 [用于 Azure 的 SQL Server Integration Services 功能包](https://msdn.microsoft.com/library/mt146770.aspx)提供了可用于连接到 Azure，在 Azure 和本地数据源之间传输数据以及处理存储在 Azure 中的数据的组件。
@@ -54,7 +54,7 @@ ms.locfileid: "34837739"
 > 
 > 
 
-有关 SSIS 的培训资料，请参阅 [Hands On Training for SSIS](http://www.microsoft.com/download/details.aspx?id=20766)（SSIS 培训指导）
+有关 SSIS 的培训资料，请参阅 [Hands On Training for SSIS](https://www.microsoft.com/sql-server/training-certification)（SSIS 培训指导）
 
 若要深入了解如何使用 SISS 启动并运行以生成简单的提取、转换和加载 (ETL) 包，请参阅 [SSIS教程：创建简单的 ETL 包](https://msdn.microsoft.com/library/ms169917.aspx)。
 

@@ -15,11 +15,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c0823fa839df98fa81f42bfbb3f7cd2bec6d7c1a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054476"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582530"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建带有复制活动的管道
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "37054476"
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果你使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
 
 
 本教程介绍如何使用**复制向导**将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 

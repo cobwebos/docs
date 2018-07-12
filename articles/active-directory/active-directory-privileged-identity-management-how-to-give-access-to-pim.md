@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8d52469e11ac508ee8b353311f6040ac9d6f2e4e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 85bea1b042eb9b882022118d36e5a55a802a1bdc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447143"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950557"
 ---
 # <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>授予 Azure AD Privileged Identity Management 的管理访问权限
 为组织启用 Azure AD Privileged Identity Management (PIM) 的全局管理员会自动获得角色分配和 PIM 的访问权限。 但是，默认情况下，没有任何其他人会获得写入访问权限，包括其他全局管理员。 其他全局管理员、安全管理员和安全读者拥有 Azure AD PIM 的只读访问权限。 要授予对 PIM 的访问权限，第一位用户可以将其他用户分配到“特权角色管理员”角色。
@@ -34,10 +34,10 @@ ms.locfileid: "37447143"
 1. 登录到 [Azure 门户](https://portal.azure.com/)，并在仪表板上选择 **Azure AD Privileged Identity Management** 应用。
 2. 选择“管理特权角色” > “特权角色管理员” > “添加”。
    
-    ![添加特权角色管理员 - 屏幕截图][1]
+    ![添加特权角色管理员 - 屏幕截图](./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_add_PRA.png)
 3. 在“添加托管用户”边栏选项卡上，步骤 1 已完成。 请选择步骤 2“选择用户”，并搜索要添加的用户。
    
-    ![选择用户 - 屏幕截图][2]
+    ![选择用户 - 屏幕截图](./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_select_users.png)
 4. 从搜索结果中选择该用户，并单击“完成”。
 5. 单击“确定”保存选择内容。 选定的用户将出现在“特权角色管理员”列表中。
    
@@ -55,8 +55,3 @@ ms.locfileid: "37447143"
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_add_PRA.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_select_users.png

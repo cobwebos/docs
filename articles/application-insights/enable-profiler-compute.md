@@ -9,14 +9,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2017
-ms.author: ramach; mbullwin
-ms.openlocfilehash: 9d95cb637607e69c4b7a7ab22f3c6239bd67c4f7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: ramach
+ms.author: mbullwin
+ms.openlocfilehash: 9eb99ecea8efbbce322e61ac281cd534a112728b
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950659"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>为 Azure VM、Service Fabric 和 Azure 云服务启用 Application Insights Profiler
 
@@ -210,7 +212,7 @@ ms.lasthandoff: 05/08/2018
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-2. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/platform/server.aspx) 运行，请通过执行以下操作启用 `IIS Http Tracing` Windows 功能：  
+2. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 运行，请通过执行以下操作启用 `IIS Http Tracing` Windows 功能：  
 
    a. 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
 

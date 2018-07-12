@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: eb1c769e034f37d05de63896f65290db79103637
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 44c3f8ce05854e993ad551a025eec447d882c326
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293898"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969538"
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Node.js Web 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "35293898"
 > 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中创建 Node.js Web 应用](../app-service-web-get-started-nodejs.md)。
 >
 
-[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门展示了如何使用 [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) 将 Node.js 应用部署到 Linux 上的应用服务。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门展示了如何使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 将 Node.js 应用部署到 Linux 上的应用服务。
 
 你将在 Cloud Shell 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行这些命令。
 
@@ -40,7 +40,7 @@ ms.locfileid: "35293898"
 
 ## <a name="install-web-app-extension-for-cloud-shell"></a>安装 Cloud Shell 的 Web 应用扩展
 
-若要完成本快速入门，需要添加 [az Web 应用扩展](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-add)。 如果该扩展已安装，则应将其更新为最新版本。 若要更新该 Web 应用扩展，请键入 `az extension update -n webapp`。
+若要完成本快速入门，需要添加 [az Web 应用扩展](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add)。 如果该扩展已安装，则应将其更新为最新版本。 若要更新该 Web 应用扩展，请键入 `az extension update -n webapp`。
 
 若要安装该 Web 应用扩展，请运行以下命令：
 
@@ -136,7 +136,7 @@ All done.
 
 - 创建一个采用指定名称的应用。
 
-- [使用 Zip](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-zip) 将文件从当前工作目录部署到 Web 应用。
+- [使用 Zip](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip) 将文件从当前工作目录部署到 Web 应用。
 
 ## <a name="browse-to-the-app"></a>浏览到应用
 

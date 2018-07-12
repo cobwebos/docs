@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 13dcc0794c1d89bd27c79cbe6636397da4f008f9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4cc4da130d9253bf40e5d02806088a95b2195e7c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843453"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531715"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
 
@@ -95,7 +95,7 @@ ms.locfileid: "29843453"
 5. 安装完成后，单击“注册”，以便在保管库中注册服务器。
 
     ![安装位置](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。 单击“资源组名称” 的 Azure 数据工厂。
+6. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。 单击“下一步”。
 7. 在“代理连接”中，指定在 VMM 服务器上运行的提供程序如何连接到 Azure。
    - 可指定提供程序应直接连接到 Internet 还是通过代理连接。 根据需要指定代理设置。
    - 如果使用代理，则系统将使用指定的代理凭据自动创建一个 VMM 运行方式帐户 (DRAProxyAccount)。 对代理服务器进行配置以便该帐户可以成功通过身份验证。 可通过 VMM 控制台 >“设置” > “安全” > “运行方式帐户”修改运行方式帐户设置。

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0024f8ab914eba83effe8f5787cfb252775b5f0f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1697830f699c9cd50548bcfcdd038348db314020
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443379"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969653"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -63,7 +63,7 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 - 单击“下载”可将活动下载为 csv 文件
 
 ##<a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>通过 Azure AD 报告 API 访问审核日志
-审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-api-audit-reference)进行访问。 
+审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)进行访问。 
 
 ###<a name="prerequisites"></a>先决条件
 若要向 Azure AD 报告 API 进行身份验证，首先需要注册应用程序。 请确保遵循[访问 Azure AD 报告 API 的先决条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)中的步骤。
