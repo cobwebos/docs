@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 1/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: a084b50e44fe26ba2547d0f7b7ed184fb71b190c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0f851c030a05880d79a998ed4b4a941082c057b9
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "35365775"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865465"
 ---
 # <a name="video-and-transcript-moderation-tutorial"></a>视频和脚本审查教程
 

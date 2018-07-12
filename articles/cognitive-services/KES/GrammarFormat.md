@@ -9,12 +9,12 @@ ms.component: knowledge-exploration
 ms.topic: article
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 27202379b8c36696a380049336229cac040b0108
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b64025be2f5a9708162da475c1f037d7f253d2c6
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365561"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865747"
 ---
 # <a name="grammar-format"></a>语法格式
 语法是一个 XML 文件，它指定服务可解释的一组加权的自然语言查询，并指定了如何将这些自然语言查询转换为语义查询表达式。  语法句法基于 [SRGS](http://www.w3.org/TR/speech-grammar/)，这是一个面向语音识别语法的 W3C 标准，具有支持数据索引集成和语义函数的扩展程序。

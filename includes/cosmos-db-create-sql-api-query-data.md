@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: e6e70da1f939547cdb589ae7bcb6ed1f6148f22e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31429295"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38733757"
 ---
 现在可以在数据资源管理器中使用查询来检索和筛选数据。
 

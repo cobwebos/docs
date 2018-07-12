@@ -15,10 +15,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 191f8973e85186590a2ba840e473f8fff57a9d94
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "37053042"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
@@ -4821,14 +4821,14 @@ auto-
 
 | 计算环境 | 活动 |
 | --- | --- |
-| [按需 HDInsight 群集](#on-demand-azure-hdinsight-cluster)或[自己的 HDInsight 群集](#existing-azure-hdinsight-cluster) |[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce activity](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity) |
+| [按需 HDInsight 群集](#on-demand-azure-hdinsight-cluster)或[自己的 HDInsight 群集](#existing-azure-hdinsight-cluster) |[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动]\(#hdinsight-pig-activity)、[MapReduce activity](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[.NET 自定义活动](#net-custom-activity) |
 | [Azure 机器学习](#azure-machine-learning) | [机器学习批处理执行活动](#machine-learning-batch-execution-activity)、[机器学习更新资源活动](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
 | [Azure SQL 数据库](#azure-sql-database-1)、[Azure SQL 数据仓库](#azure-sql-data-warehouse-1)、[SQL Server](#sql-server-1) |[存储过程](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>按需 Azure HDInsight 群集
-Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 可以在此链接服务中运行以下转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce activity](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。 
+Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 可以在此链接服务中运行以下转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动]\(#hdinsight-pig-activity)、[MapReduce activity](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。 
 
 ### <a name="linked-service"></a>链接服务 
 下表提供了按需 HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
@@ -4866,7 +4866,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 有关详细信息，请参阅[计算链接服务](data-factory-compute-linked-services.md)一文。 
 
 ## <a name="existing-azure-hdinsight-cluster"></a>现有的 Azure HDInsight 群集
-可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。 可以在此链接服务中运行以下数据转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce activity](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。 
+可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。 可以在此链接服务中运行以下数据转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动]\(#hdinsight-pig-activity)、[MapReduce activity](#hdinsight-mapreduce-activity)、[Hadoop 流式处理活动](#hdinsight-streaming-activityd)、[Spark 活动](#hdinsight-spark-activity)。 
 
 ### <a name="linked-service"></a>链接服务
 下表提供了 Azure HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。

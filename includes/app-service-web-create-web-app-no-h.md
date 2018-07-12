@@ -9,11 +9,11 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 70548db9ef98cc8fa59ebc11c1371325e63e02fc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29348860"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38740029"
 ---
 在 Cloud Shell 的 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/app-service-web-overview.md)。 可以通过使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令完成此操作。 在以下示例中，将 \<app_name> 替换为全局唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`）。 
 
