@@ -3,7 +3,7 @@ title: 快速入门 - 使用 Azure CLI 2.0 创建 Linux VM | Microsoft Docs
 description: 本快速入门介绍如何使用 Azure CLI 2.0 创建 Linux 虚拟机
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,20 +14,20 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/24/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c45f8f010d69337d21fce327933990a573988a4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6536860bb75d068a96899f2d30ec7a6126a28436
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187923"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927625"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli-20"></a>快速入门：使用 Azure CLI 2.0 创建 Linux 虚拟机
 
 Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门演示如何使用 Azure CLI 2.0 在 Azure 中部署运行 Ubuntu 的 Linux 虚拟机 (VM)。 若要查看运行中的 VM，可以通过 SSH 登录到该 VM 并安装 NGINX Web 服务器。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +56,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-创建 VM 和支持的资源需要几分钟时间。 以下示例输出显示 VM 创建操作已成功。
+创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功。
 
 ```azurecli-interactive
 {
@@ -105,7 +105,7 @@ sudo apt-get -y install nginx
 
 ## <a name="view-the-web-server-in-action"></a>查看运行中的 Web 服务器
 
-NGINX 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 使用上一步中获取的 VM 的公共 IP 地址。 以下示例演示了默认 NGINX 网站：
+NGINX 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 使用上一步中获取的 VM 的公用 IP 地址。 以下示例演示了默认 NGINX 网站：
 
 ![NGINX 默认站点](./media/quick-create-cli/nginx.png)
 
@@ -119,7 +119,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，部署了简单的虚拟机，打开了 Web 流量的网络端口，并安装了一个基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Linux VM 的教程。
+在本快速入门中，你部署了简单的虚拟机，打开了 Web 流量的网络端口，并安装了一个基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Linux VM 的教程。
 
 
 > [!div class="nextstepaction"]

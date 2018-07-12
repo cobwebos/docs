@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 780ab56df19e8d6761fcf88fa7fbed3e8002fbe8
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 18673186e80b4d1784fa5b42e622d90dd4c889d4
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025115"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859997"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure 数据目录中的新增功能
 我们会定期发布“Azure 数据目录”的更新。 但是，并非每个版本都包括面向用户的新功能，因为某些版本聚焦于后端的服务功能。 本页重点介绍 Azure 数据目录服务新增的面向用户的功能。
@@ -93,7 +93,7 @@ ms.locfileid: "37025115"
 
 ## <a name="whats-new-for-january-2017"></a>2017 年 1 月新增功能 
 截至 2017 年 1 月，已添加到 Azure 数据目录的功能如下：
-*   Azure 数据目录现在符合 [CSA STAR](https://www.microsoft.com/trustcenter/compliance/csa-star-certification) 要求。
+*   Azure 数据目录现在符合 [CSA STAR](https://www.microsoft.com/en-us/trustcenter/compliance/csa-star-certification) 要求。
 *   与[在 Excel 2016 和 Power Query for Excel 中获取和转换功能](https://support.office.com/article/Introduction-to-Microsoft-Power-Query-for-Excel-6E92E2F4-2079-4E1F-BAD5-89F6269CD605)集成。 Excel 用户可在 Excel 内使用 Azure 数据目录共享查询和发现查询。 此功能面向具有 Power BI Pro 许可证的用户提供。
 
 ## <a name="whats-new-for-december-2016"></a>2016 年 12 月新增功能
@@ -105,7 +105,7 @@ ms.locfileid: "37025115"
 
 ## <a name="whats-new-for-november-2016"></a>2016 年 11 月新增功能
 截至 2016 年 11 月，已添加到 Azure 数据目录的功能如下：
-*   Azure 数据目录现在符合 [ISO/IEC 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001) 和 [ISO/IEC 27018](https://www.microsoft.com/TrustCenter/Compliance/iso-iec-27018) 要求。
+*   Azure 数据目录现在符合 [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27001) 和 [ISO/IEC 27018](https://www.microsoft.com/en-us/TrustCenter/Compliance/iso-iec-27018) 要求。
 *   支持使用数据目录门户和 REST API 手动注册 ODBC 数据源。
 
 ## <a name="whats-new-for-september-2016"></a>2016 年 9 月新增功能

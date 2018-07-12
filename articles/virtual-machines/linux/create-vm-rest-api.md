@@ -3,7 +3,7 @@ title: 使用 Azure REST API 创建 Linux 虚拟机 | Microsoft Docs
 description: 了解如何使用 Azure REST API 在 Azure 中创建使用托管磁盘和 SSH 身份验证的 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
-ms.author: iainfou
-ms.openlocfilehash: e3f41bea26e9a5ff45b31ae9d9a2e5955317ad7a
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.author: cynthn
+ms.openlocfilehash: 0f77b46be0207b0ce96e6dc2562fb5298afbe36b
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825970"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928176"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
 
@@ -49,10 +49,10 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 下面的通用定义用来构建请求正文：
 
-| 名称                       | 必需 | 类型                                                                                | 说明  |
+| 名称                       | 必选 | Type                                                                                | 说明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | 是     | 字符串                                                                              | 资源位置。 |
-| name                       |          | 字符串                                                                              | 虚拟机的名称。 |
+| location                   | True     | 字符串                                                                              | 资源位置。 |
+| 名称                       |          | 字符串                                                                              | 虚拟机的名称。 |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | 指定虚拟机的硬件设置。 |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | 指定虚拟机磁盘的存储设置。 |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 指定虚拟机的操作系统设置。 |
@@ -121,9 +121,9 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 对于要创建或更新虚拟机的操作，有两个成功响应：
 
-| 名称        | 类型                                                                              | 说明 |
+| 名称        | Type                                                                              | 说明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
-| 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 正常          |
+| 200 正常      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 已创建     |
 
 有关 REST API 响应的详细信息，请参阅[处理响应消息](/rest/api/azure/#process-the-response-message)。

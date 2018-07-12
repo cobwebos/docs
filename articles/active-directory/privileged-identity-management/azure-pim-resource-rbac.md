@@ -15,12 +15,12 @@ ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 7cf628495a79fe775528080ae6ec31df8e9a0f37
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 07fe49be9fcb879b86d2b8a33799d11deb7d7446
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447569"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38528614"
 ---
 # <a name="pim-for-azure-resources"></a>适用于 Azure 资源的 PIM
 
@@ -59,7 +59,7 @@ PIM 提供便捷的访问方式，让我们通过左侧导航菜单中的“任�
 
 ## <a name="activate-roles"></a>激活角色
 
-Azure 资源的激活角色功能引入了新的体验，可让有资格的角色成员计划在将来的某个日期/时间进行激活，并在最大时间范围（由管理员配置）内选择特定的激活持续时间。 在此处了解[如何激活 Azure AD 角色](../active-directory-privileged-identity-management-how-to-activate-role.md)。
+Azure 资源的激活角色功能引入了新的体验，可让有资格的角色成员计划在将来的某个日期/时间进行激活，并在最大时间范围（由管理员配置）内选择特定的激活持续时间。 在此处了解[如何激活 Azure AD 角色](pim-how-to-activate-role.md)。
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -156,7 +156,7 @@ Azure 资源的激活角色功能引入了新的体验，可让有资格的角�
 
 ![](media/azure-pim-resource-rbac/owner.png)
 
-[详细了解访问评审](../active-directory-privileged-identity-management-how-to-perform-security-review.md)
+[详细了解访问评审](pim-how-to-perform-security-review.md)
 
 >[!NOTE]
 目前只有“订阅”资源类型支持评审。
@@ -196,5 +196,5 @@ Azure 资源的激活角色功能引入了新的体验，可让有资格的角�
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)
-- [在此处了解如何激活 Azure AD 角色](../active-directory-privileged-identity-management-how-to-activate-role.md)
+- [在此处了解如何激活 Azure AD 角色](pim-how-to-activate-role.md)
 - [PIM 审批工作流](azure-ad-pim-approval-workflow.md)

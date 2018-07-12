@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
 ms.openlocfilehash: 270158bbf85a58a48a367a091ad2b09a9d114b2b
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27910837"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38700877"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置数据暂留
-Azure Redis 缓存具有不同的缓存产品（包括高级层功能，如群集、暂留和虚拟网络支持），使缓存大小和功能的选择更加灵活。 本文介绍如何配置高级 Azure Redis 缓存实例中的暂留。
+Azure Redis 缓存具有不同的缓存产品（包括群集、持久性和虚拟网络支持等高级层功能），使缓存大小和功能的选择更加灵活。 本文介绍如何配置高级 Azure Redis 缓存实例中的暂留。
 
 有关其他高级缓存功能的信息，请参阅 [Azure Redis 缓存高级层简介](cache-premium-tier-intro.md)。
 

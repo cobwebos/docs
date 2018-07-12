@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: 9bb13cde07141c576a0ec78c3b48c5a20d6dbb67
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc4438a770a8092275373ccf8da9cc9951a1f906
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657649"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858606"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>运行 Microsoft Azure SUSE Linux VM 上的 SAP NetWeaver
 此文介绍在 Microsoft Azure SUSE Linux 虚拟机 (VM) 上运行 SAP NetWeaver 时应注意的各个事项。 自 2016 年 5 月 19 日起，Azure 上的 SUSE Linux VM 已正式支持 SAP NetWeaver。 有关 Linux 版本、SAP 内核版本和其他必备组件的所有详细信息，请参阅 SAP 说明 1928533“Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型”。
@@ -129,7 +129,7 @@ SUSE 提供了一个名为“sapconf”的包，该包可管理一组特定于 S
 
 在此期间，有一种新工具将替换“sapconf - tuned-adm”。 可通过以下两个链接详细了解此工具：
 
-- 可以在[此处](https://www.suse.com/documentation/sles-for-sap-12/book_s4s/data/sec_s4s_configure_sapconf.html)找到有关“tuned-adm”配置文件 sap-hana 的 SLES 文档 
+- 可以在[此处](https://www.suse.com/documentation/sles-for-sap-12/book_s4s/data/sec_saptune.html)找到有关“tuned-adm”配置文件 sap-hana 的 SLES 文档 
 
 - 可以在[此处](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/book_s4s/book_s4s.pdf)（6.2 章节中）找到如何使用 tuned-adm 针对 SAP 工作负载优化系统的信息
 

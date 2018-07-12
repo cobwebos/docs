@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
 ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261315"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488693"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>在 Linux 上使用自定义映像创建函数（预览）
 
@@ -26,7 +26,7 @@ ms.locfileid: "35261315"
 
 本教程逐步讲解如何使用 Azure Functions 创建自定义映像并将其推送到 Docker 中心。 然后，可将此映像用作 Linux 上运行的函数应用的部署源。 使用 Docker 生成和推送映像。 使用 Azure CLI 创建函数应用并从 Docker 中心部署映像。 
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Docker 生成自定义映像。

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: cynthn
 ms.openlocfilehash: 3f5c9bb5bc8e2e766943155ee2657f7b9564e583
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653002"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704498"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>有关在 Azure 中防御推理执行旁道漏洞的指南
 

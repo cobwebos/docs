@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 11/29/2017
 ms.author: tdykstra
 ms.openlocfilehash: 0cd5730d049749949db13f29499e268a1ebccc18
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830606"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38467944"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -77,7 +77,7 @@ public class OutgoingEmail
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -128,7 +128,7 @@ public static void Run(TraceWriter log, string input, out Mail message)
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -186,13 +186,13 @@ public static void Run(
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 *function.json* 文件和 `SendGrid` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `SendGrid` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**类型**|| 必需 - 必须设置为 `sendGrid`。|
-|**direction**|| 必需 - 必须设置为 `out`。|
-|**name**|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
+|type|| 必需 - 必须设置为 `sendGrid`。|
+|direction|| 必需 - 必须设置为 `out`。|
+|name|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
 |**apiKey**|**ApiKey**| 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”。|
 |**to**|**收件人**| 收件人的电子邮件地址。 |
 |**from**|**From**| 发件人的电子邮件地址。 |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 1b70fc3d199d7f1521acb534dafec8fb3e69500e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaa7028bb37ac4c2c313efce2afebc1dc5e814d2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998842"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860072"
 ---
 # <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务：技术指南
 
@@ -104,7 +104,7 @@ Microsoft Azure BizTalk 服务提供了将 BizTalk Server 映射迁移到 BizTal
 ## <a name="orchestrations"></a>业务流程
 如需将 BizTalk Server 业务流程处理迁移到 Microsoft Azure，则需要重写该业务流程，因为 Microsoft Azure 不支持运行 BizTalk Server 业务流程。  可在 Windows Workflow Foundation 4.0 (WF4) 服务中重写业务流程功能。  这会是一次完全重写，因为当前没有从 BizTalk Server 业务流程到 WF4 的迁移。 以下是 Windows 工作流的部分资源：
 
-* [如何将 WCF 工作流服务与服务总线队列和主题集成](https://msdn.microsoft.com/library/azure/hh709041.aspx)（Paolo Salvatori 编写）。 
+* [如何将 WCF 工作流服务与服务总线队列和主题集成](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/)（Paolo Salvatori 编写）。 
 * [使用 Windows Workflow Foundation 和 Azure 构建应用会议](http://go.microsoft.com/fwlink/p/?LinkId=237314)（来自 Build 2011 大会）。
 * [Windows Workflow Foundation 开发人员中心](http://go.microsoft.com/fwlink/p/?LinkId=237315)（参见 MSDN）。
 * [Windows Workflow Foundation 4 (WF4) 文档](https://msdn.microsoft.com/library/dd489441.aspx)（参见 MSDN）。

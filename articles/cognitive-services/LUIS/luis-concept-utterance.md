@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 66a23876eebe177c767b20f60f86891c35da3385
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 9b8556a30169561488a7b46f93af87b31e049e7a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301856"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345502"
 ---
 # <a name="utterances-in-luis"></a>LUIS 中的陈述
 
@@ -47,7 +47,7 @@ When can I have a computer?
 每个意向都需要有示例陈述，至少 10 到 15 个。 如果你的意向没有任何示例陈述，则将无法训练 LUIS。 如果你的意向只有一个或非常少的示例陈述，则 LUIS 将无法准确预测意向。 
 
 ## <a name="add-small-groups-of-10-15-utterances-for-each-authoring-iteration"></a>为每个创作迭代添加由 10-15 个陈述构成的小组
-在模型的每个迭代中，不要添加大量陈述。 添加数量为 10 的陈述。 再次[训练](luis-how-to-train.md)、[发布](publishapp.md)和[测试](interactive-test.md)。  
+在模型的每个迭代中，不要添加大量陈述。 添加数量为 10 的陈述。 再次[训练](luis-how-to-train.md)、[发布](luis-how-to-publish-app.md)和[测试](interactive-test.md)。  
 
 LUIS 使用精心挑选的陈述构建有效的模型。 添加太多陈述是没有价值的，因为它会引起混乱。  
 

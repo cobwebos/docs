@@ -16,11 +16,11 @@ ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 654c187bcd552e9682115bc5e53ba69a3dca7c1d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154256"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38472707"
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用
 
@@ -78,7 +78,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在浏览器中导航至 `http://localhost:5000`。 选择“新建”链接，创建一对待办事项。
+在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建一对待办事项。
 
 ![已成功连接到 SQL 数据库](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
