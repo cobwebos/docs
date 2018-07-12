@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
 ms.openlocfilehash: b787b3f2caaff5535557c03c45b058e1bbb0c77d
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27909884"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38671395"
 ---
 # <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>使用模板创建 Web 应用和 Redis 缓存
 在本主题中，将学习如何创建用于部署 Azure Web 应用和 Redis 缓存的 Azure 资源管理器模板。 将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。

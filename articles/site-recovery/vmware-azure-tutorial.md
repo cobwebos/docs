@@ -6,22 +6,22 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/23/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 895665eef722e81030d9699c1a6c75455493bae9
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 93626e6a8f199841b285fb8a6e302e6c3054db0d
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317838"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918027"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
 [Azure Site Recovery](site-recovery-overview.md) 通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
 
-本教程介绍如何使用 Azure Site Recovery 设置并启用从 VMware VM 到 Azure 的复制。 教程旨在演示如何使用基本设置来部署 Site Recovery。 这些教程使用最简单的路径，且未显示所有选项。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 Azure Site Recovery 设置并启用从 VMware VM 到 Azure 的复制。 教程旨在演示如何使用基本设置来部署 Site Recovery。 这些教程使用最简单的路径，且未显示所有选项。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 输入复制源和目标。

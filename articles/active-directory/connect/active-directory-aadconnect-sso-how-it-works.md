@@ -4,7 +4,7 @@ description: 本文介绍 Azure Active Directory 无缝单一登录功能的工�
 services: active-directory
 keywords: 什么是 Azure AD Connect, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bcd9ec44eafd586648ba964c5cba248a184a8ec3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0b1940894ffb01595d11bc49889c6ec01714816b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591555"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918248"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
 

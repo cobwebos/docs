@@ -14,12 +14,12 @@ ms.date: 08/04/2017
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 82d475e5adadb4e7670f24a6193348c9e1b37a16
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3c71c9c49413045e3a730c10e90ea3c12648b4cb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767342"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857715"
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>在 Azure Active Directory 中创建组并添加成员
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.locfileid: "37767342"
 
    ![选择“添加”命令](./media/active-directory-groups-create-azure-portal/add-group-command.png)
 5. 在“组”边栏选项卡中，为组添加名称和描述。
-6. 要选择要添加到组的成员，请在“成员身份类型”框中选择“已分配”，并选择“成员”。 有关如何动态管理组的成员身份的详细信息，请参阅[使用属性创建组成员身份的高级规则](../active-directory-groups-dynamic-membership-azure-portal.md)。
+6. 要选择要添加到组的成员，请在“成员身份类型”框中选择“已分配”，并选择“成员”。 有关如何动态管理组的成员身份的详细信息，请参阅[使用属性创建组成员身份的高级规则](../users-groups-roles/groups-dynamic-membership.md)。
 
    ![选择要添加的成员](./media/active-directory-groups-create-azure-portal/select-members.png)
 7. 在“成员”边栏选项卡中，选择一个或多个要添加到组的用户或设备，然后选择边栏选项卡底部的“选择”按钮以将它们添加到组。 “用户”框会通过将输入内容与用户或设备名称的任何部分进行匹配来筛选显示内容。 该框中不允许使用任何通配符。
@@ -56,4 +56,4 @@ ms.locfileid: "37767342"
 * [管理组的设置](active-directory-groups-settings-azure-portal.md)
 * [管理组的成员](active-directory-groups-members-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
-* [管理组中用户的动态规则](../active-directory-groups-dynamic-membership-azure-portal.md)
+* [管理组中用户的动态规则](../users-groups-roles/groups-dynamic-membership.md)

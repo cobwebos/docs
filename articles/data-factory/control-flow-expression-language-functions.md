@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 81392cc8b6225302d6835cdb3d23e9bab7d9c930
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d862cd0223609d80c511362edbcc0ed6dd512b1f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055345"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859141"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -157,8 +157,8 @@ ms.locfileid: "37055345"
 |toUpper|将字符串转换为大写。 例如，以下表达式返回 `TWO BY TWO IS FOUR`:  `toUpper('Two by Two is Four')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要转换为大写的字符串。 如果字符串中的某个字符没有对应的大写形式，则在返回的字符串中按原样包含该字符。|  
 |indexof|在字符串中不区分大小写查找值的索引。 例如，以下表达式返回 `7`: `indexof('hello, world.', 'world')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能包含该值的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要搜索其索引的值。|  
 |lastindexof|在字符串中不区分大小写查找值的最后一个索引。 例如，以下表达式返回 `3`: `lastindexof('foofoo', 'foo')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能包含该值的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要搜索其索引的值。|  
-|startswith|检查字符串是否以某个值开头（不区分大小写）。 例如，以下表达式返回 `true`: `lastindexof('hello, world', 'hello')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能包含该值的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能为字符串开头的值。|  
-|endswith|检查字符串是否以某个值结尾（不区分大小写）。 例如，以下表达式返回 `true`: `lastindexof('hello, world', 'world')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能包含该值的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能为字符串结尾的值。|  
+|startswith|检查字符串是否以某个值开头（不区分大小写）。 例如，以下表达式返回 `true`: `startswith('hello, world', 'hello')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能包含该值的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能为字符串开头的值。|  
+|endswith|检查字符串是否以某个值结尾（不区分大小写）。 例如，以下表达式返回 `true`: `endswith('hello, world', 'world')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能包含该值的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 可能为字符串结尾的值。|  
 |split|使用分隔符拆分字符串。 例如，以下表达式返回 `["a", "b", "c"]`: `split('a;b;c',';')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要拆分的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 分隔符。|  
   
   
@@ -228,7 +228,7 @@ ms.locfileid: "37055345"
 |decodeDataUri|返回数据 URI 输入字符串的二进制表示形式。 例如，以下表达式返回`some string`的二进制表示形式：`decodeDataUri('data:;base64,c29tZSBzdHJpbmc=')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要解码为二进制表示形式的 dataURI。|  
 |uriComponent|返回某个值的 URI 编码表示形式。 例如，以下表达式返回 `You+Are%3ACool%2FAwesome: uriComponent('You Are:Cool/Awesome ')`<br /><br /> 参数详细信息：数目：1、名称：字符串、说明：必需。 要进行 URI 编码的字符串。|  
 |uriComponentToBinary|返回 URI 编码字符串的二进制表示形式。 例如，以下表达式返回`You Are:Cool/Awesome`的二进制表示形式：`uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br />**说明**：必需。 URI 编码的字符串。|  
-|uriComponentToString|返回 URI 编码字符串的字符串表示形式。 例如，以下表达式返回 `You Are:Cool/Awesome`: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **参数数目**：1<br /><br />**名称**：字符串<br /><br />**说明**：必需。 URI 编码的字符串。|  
+|uriComponentToString|返回 URI 编码字符串的字符串表示形式。 例如，以下表达式返回 `You Are:Cool/Awesome`: `uriComponentToString('You+Are%3ACool%2FAwesome')`<br /><br /> **参数数目**：1<br /><br />**名称**：字符串<br /><br />**说明**：必需。 URI 编码的字符串。|  
 |xml|返回值的 xml 表示形式。 例如，以下表达式返回 xml 内容，表示为：`'\<name>Alan\</name>'`: `xml('\<name>Alan\</name>')`。 xml 函数也支持 JSON 对象输入。 例如，参数 `{ "abc": "xyz" }` 将转换为 xml 内容 `\<abc>xyz\</abc>`<br /><br /> **参数数目**：1<br /><br />**名称**：值<br /><br />**说明**：必需。 要转换为 XML 的值。|  
 |xpath|返回与 xpath 表达式计算结果值的 xpath 表达式匹配的 xml 节点数组。<br /><br />  **示例 1**<br /><br /> 假设参数“p1”的值是以下 XML 的字符串表示形式：<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1.此代码：`xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> 将返回<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> whereas<br /><br /> 2.此代码：`xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> 将返回<br /><br /> `13`<br /><br /> <br /><br /> **示例 2**<br /><br /> 假设 XML 内容如下：<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.此代码：`@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> 或<br /><br /> 2.此代码：`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> 返回<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> and<br /><br /> 3.此代码：`@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> 返回<br /><br /> ``bar``<br /><br /> **参数数目**：1<br /><br />**名称**：Xml<br /><br />**说明**：必需。 要在其中计算 XPath 表达式的 XML。<br /><br /> **参数数目**：2<br /><br />**名称**：XPath<br /><br />**说明**：必需。 要计算的 XPath 表达式。|  
 |数组|将参数转换为数组。  例如，以下表达式返回 `["abc"]`: `array('abc')`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为数组的值。|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: df9f53694cd72a700d593550bfde13a4f25180db
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: ccd24e1498282cd2b627226df79af22e9647b64d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021747"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681565"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -445,5 +445,5 @@ A. 若要验证设备是否已列入允许列表，请使用以下故障排除�
 在 Linux 主机上配置 MPIO 时，可能还需要参考以下 CentoS 6.6 文档：
 
 * [Setting up MPIO on CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)（在 CentOS 上设置 MPIO）
-* [Linux Training Guide](http://linux-training.be/files/books/LinuxAdm.pdf)（Linux 培训指南）
+* [Linux Training Guide](http://linux-training.be/linuxsys.pdf)（Linux 培训指南）
 

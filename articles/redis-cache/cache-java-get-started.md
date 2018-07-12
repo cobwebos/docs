@@ -16,11 +16,11 @@ ms.date: 05/23/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: f76f9f6280120f5c05cb304a0b87bba9ffaee043
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639752"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38703709"
 ---
 # <a name="quickstart-how-to-use-azure-redis-cache-with-java"></a>快速入门：如何将 Azure Redis 缓存与 Java 配合使用
 
@@ -175,7 +175,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 本快速入门介绍了如何通过 Java 应用程序使用 Azure Redis 缓存。 继续学习下一个快速入门，以便将 Redis 缓存用于 ASP.NET Web 应用。
 
 > [!div class="nextstepaction"]
-> [创建使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
+> [创建使用 Azure Redis 缓存的 ASP.NET Web 应用](./cache-web-app-howto.md)。
 
 
 

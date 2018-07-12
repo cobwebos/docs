@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: cynthn
 ms.openlocfilehash: 88bd895cb3a384f1ada0394fe2da206aca86b981
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
-ms.locfileid: "28000834"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38670924"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中运行 OpenSUSE Linux 的虚拟机上安装 MySQL
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: elioda
 ms.openlocfilehash: 8c57f93a755d01dc17b369e712285c2ac8f0ef37
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807486"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309907"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>通过 .NET 使用 IoT 中心将文件从设备上传到云
 
@@ -115,7 +115,7 @@ ms.locfileid: "34807486"
     using Microsoft.Azure.Devices;
     ```
 
-1. 将以下字段添加到 **Program** 类。 将占位符值替换为在 [IoT 中心入门] 中获取的 IoT 中心连接字符串：
+1. 将以下字段添加到 Program 类。 将占位符值替换为在 [IoT 中心入门] 中获取的 IoT 中心连接字符串：
 
     ```csharp
     static ServiceClient serviceClient;

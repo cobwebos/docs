@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
 ms.openlocfilehash: 5855396fc87b7d8de17be65a66af40963c59fc71
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633472"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38687930"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>使用 .NET 后端和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
 
@@ -51,7 +51,7 @@ ms.locfileid: "34633472"
 
     ![创建 Visual Studio 项目][13]
 
-2. **安装最新的 Azure IoT 中心 .NET 设备 SDK** - 模块标识和模块孪生为公开预览版。 仅在 IoT 中心预发行设备 SDK 中提供它。 在 Visual Studio 中，打开“工具”>“NuGet 包管理器”>“管理解决方案的 NuGet 包”。 搜索 Microsoft.Azure.Devices.Client。 确保已选中“包括预发行版”复选框。 选择最新版本并安装。 现在即可访问所有模块功能。 
+2. **安装最新的 Azure IoT 中心 .NET 设备 SDK** - 模块标识和模块孪生为公开预览版。 仅在 IoT 中心预发行设备 SDK 中提供它。 在 Visual Studio 中，打开“工具”>“NuGet 包管理器”>“管理解决方案的 NuGet 包”。 搜索 Microsoft.Azure.Devices.Client。 确保已选中“包括预发行版”复选框。 选择最新版本并安装。 现在可以访问所有模块功能。 
 
     ![安装 Azure IoT 中心 .NET 服务 SDK V1.16.0-preview-005][14]
 
@@ -68,7 +68,7 @@ ms.locfileid: "34633472"
     using Newtonsoft.Json;
     ```
 
-    将以下字段添加到 **Program** 类。 将占位符值替换为模块连接字符串。
+    将以下字段添加到 Program 类。 将占位符值替换为模块连接字符串。
 
     ```csharp
     private const string ModuleConnectionString = "<Your module connection string>";

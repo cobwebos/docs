@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/20/2017
 ms.author: sethm
 ms.openlocfilehash: c4c9c94d369e0ed1ddbfe31484f55b0d276918d3
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27159885"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38701890"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>使用 Azure 门户创建中继命名空间
 

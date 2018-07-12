@@ -3,7 +3,7 @@ title: 创建使用可用性区域的 Azure 规模集 | Microsoft Docs
 description: 了解如何创建使用可用性区域的 Azure 虚拟机规模集以增加冗余防止中断
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
-ms.author: iainfou
-ms.openlocfilehash: cc91366bda4dd443392c78cd61e5cc0ddb261fe2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: cynthn
+ms.openlocfilehash: e19130c5ee418ebaa41f9ee42e217c52cdeec6cb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941606"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697936"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.openlocfilehash: 79fe30fbe0baed9d62e6bc3328e754958516ef70
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "36335401"
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>如何确定要使用哪种单一登录方法

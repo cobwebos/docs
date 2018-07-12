@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: a961565815ca0d89dc98a8d6a3e14b338b649398
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781706"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38687802"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>从 VHD 文件创建自定义映像
 
@@ -58,11 +58,14 @@ ms.locfileid: "33781706"
 
 1. 从下拉菜单中选择“VHD”。 此 VHD 将用于创建新的自定义映像。 如有必要，请选择“使用 PowerShell 上传 VHD”。
 
-1. 如果用于创建自定义映像的映像不是已授权映像（由 Microsoft 发布），还可以输入计划名称、计划产品/服务和计划发布服务器。
+1. 如果用于创建自定义映像的映像不是已授权映像（由 Microsoft 发布），还可以输入计划名称、计划套餐和计划发布服务器。
 
-   - **计划名称：** 输入从中创建此自定义映像的 Marketplace 映像 (SKU) 的名称 
-   - **计划产品/服务：** 输入从中创建此自定义映像的 Marketplace 映像的产品（服务） 
-   - **计划发布服务器：** 输入从中创建此自定义映像的 Marketplace 映像的发布服务器
+   - 
+  **计划名称：** 输入从中创建此自定义映像的市场映像 (SKU) 的名称 
+   - 
+  **计划产品/服务：** 输入从中创建此自定义映像的市场映像的产品（服务） 
+   - 
+  **计划发布服务器：** 输入从中创建此自定义映像的市场映像的发布服务器
 
    > [!NOTE]
    > 如果要用于创建自定义映像的映像**不**是已授权映像，则这些字段为空并且在你选择时可以填写。 如果该映像**是**已授权映像，则可以使用计划信息自动填充这些字段。 如果在这种情况下尝试更改这些字段，将显示一条警告消息。

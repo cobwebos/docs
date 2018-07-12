@@ -5,21 +5,21 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e9f186e682ef8f4606c50452f2e26b0d11580933
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 122fe9be768341716fb423a58560885c7d3035fe
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715983"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920631"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>将 Azure VM 迁移到另一区域
 
 除了使用 [Azure Site Recovery](site-recovery-overview.md) 服务管理和协调本地计算机和 Azure VM 的灾难恢复以实现业务连续性和灾难恢复 (BCDR) 外，还可以使用 Site Recovery 来管理以另一个区域为目的地的 Azure VM 迁移。 若要迁移 Azure VM，请为其启用复制，并将其从主区域故障转移到所选的辅助区域。
 
-本教程展示了如何将 Azure VM 迁移到另一个区域。 本教程介绍如何执行下列操作：
+本教程展示了如何将 Azure VM 迁移到另一个区域。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建恢复服务保管库

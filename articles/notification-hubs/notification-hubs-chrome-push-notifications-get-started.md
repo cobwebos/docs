@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 7bdc692104194bff4a25e6974ba72971af543cbf
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028990"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698154"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Chrome 应用推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "37028990"
 > * [将 Chrome 应用连接到通知中心](#connect-app)
 > * [向 Chrome 应用发送推送通知](#send)
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a id="register"></a>启用 Google Cloud Messaging
 1. 导航到 [Google Cloud Console](https://console.cloud.google.com/cloud-resource-manager) 网站，然后使用 Google 帐户凭据登录

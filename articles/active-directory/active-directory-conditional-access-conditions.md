@@ -18,10 +18,10 @@ ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
 ms.openlocfilehash: 42792170593dbd94d0eae9b408c70f326891508a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "36231915"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？ 
@@ -223,7 +223,7 @@ ms.locfileid: "36231915"
 
 **Exchange ActiveSync 是否支持所有条件和控件？**
 
-不会。 下面汇总了 Exchange ActiveSync (EAS) 的支持情况：
+不是。 下面汇总了 Exchange ActiveSync (EAS) 的支持情况：
 
 - EAS 仅支持用户和组目标。 它不支持来宾、角色。 如果配置了来宾/角色条件，则会阻止所有用户，因为无法确定是否应将策略应用于用户。
 
@@ -235,7 +235,7 @@ ms.locfileid: "36231915"
 
 **默认情况下，这些策略是否适用于将来的所有客户端应用？**
 
-不会。 默认的处理行为没有任何变化。 默认情况下，这些策略继续适用于浏览器和移动应用程序/桌面客户端。
+不是。 默认的处理行为没有任何变化。 默认情况下，这些策略继续适用于浏览器和移动应用程序/桌面客户端。
 
 
 
