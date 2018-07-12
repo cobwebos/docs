@@ -12,11 +12,11 @@ ms.date: 07/21/2017
 ms.author: sngun
 ms.custom: mvc
 ms.openlocfilehash: d1a45389e95dbd7f5f762b6dee0edc3897d0c3b8
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029839"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38612810"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB：使用 Golang 和 Azure 门户生成 MongoDB API 控制台应用
 
@@ -82,7 +82,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 否则，可以跳到[运行应用](#run-the-app)。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以跳到[运行应用](#run-the-app)。 
 
 以下代码片段全部摘自 main.go 文件。
 
@@ -207,7 +207,7 @@ if err != nil {
 }
 ```
     
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 1. 在 Goglang 中，确保 GOPATH（依次单击“文件”、“设置”、“Go”、“GOPATH”即可找到）包含安装 gopkg 时所在的位置，默认为 USERPROFILE\go。 
 2. 注释掉用于删除文档的行（即第 103-107 行），这样就能在运行应用后看到文档。

@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 557717b6fbb93bf3e0ca007fcc8b793441a13283
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 7e177705e5d8587f89018f4febefaf34fc5f669c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920900"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970945"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -2118,6 +2118,25 @@ s" alt="" />
                                                 <div class="cardText">
                                                     <h3>网络观察程序</h3>
                                                     <p>网络性能监视和诊断解决方案</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/virtual-wan/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/WAN.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>虚拟 WAN</h3>
+                                                    <p>构建安全的全球规模分支连接</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4367,7 +4386,7 @@ s" alt="" />
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>基于角色的访问控制</h3>
-                                                    <p>管理对 Azure 资源的访问权限</p>
+                                                    <p>管理对 Azure 资源的访问</p>
                                                 </div>
                                             </div>
                                         </div>

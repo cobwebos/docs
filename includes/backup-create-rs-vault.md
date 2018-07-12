@@ -9,21 +9,21 @@ ms.date: 5/14/2018
 ms.author: markgal
 ms.custom: include file
 ms.openlocfilehash: 5590da80a1c217e7902e8e010688e40f5624898c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34664901"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38730492"
 ---
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 恢复服务保管库是用于存储在不同时间创建的备份和恢复点的实体。 恢复服务保管库还包含与受保护虚拟机关联的备份策略。
 
 若要创建恢复服务保管库，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)中的订阅。
+1. 在 [Azure 门户](https://portal.azure.com/)中登录到自己的订阅。
 2. 在左侧菜单中，选择“所有服务”。
 
-    ![选择主菜单中的“所有服务”选项](./media/backup-create-rs-vault/click-all-services.png) <br/>
+    ![在主菜单中选择“所有服务”选项](./media/backup-create-rs-vault/click-all-services.png) <br/>
 
 3. 在“所有服务”对话框中，键入“恢复服务”。 开始键入时，会根据输入筛选资源列表。 出现“恢复服务保管库”时，请选择它。
 

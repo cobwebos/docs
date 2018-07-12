@@ -13,6 +13,7 @@
 ## [资源提供程序和类型](resource-manager-supported-services.md)
 ## [管理组](management-groups-overview.md)
 ## [订阅监管](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [用于提供云一致性的模板](templates-cloud-consistency.md)
 
 # 如何
 ## 创建模板

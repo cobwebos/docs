@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: f5132215b1fda93c62c1fbea46c3266fcc44ec46
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936545"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307273"
 ---
 # <a name="import-an-openapi-specification"></a>导入 OpenAPI 规范
 
@@ -57,7 +57,7 @@ ms.locfileid: "33936545"
     |**说明**|提供 API 的可选说明。|如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。|
     |**API URL 后缀**|会议|此后缀附加到 API 管理服务的基础 URL。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。|
     |**URL 方案**|*HTTPS*|确定可用于访问 API 的协议。 |
-    |**产品**|*不受限制*| 通过关联 API 与产品来发布 API。 若要根据需要将此新 API 添加到某个产品，请键入该产品的名称。 多次重复此步骤以将 API 添加到多个产品。<br/>产品是一个或多个 API 的关联。 可包含多个 API，并通过开发人员门户将其提供给开发人员。 开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。<br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”。 |
+    |**产品**|*不受限制*| 通过关联 API 与产品来发布 API。 若要根据需要将此新 API 添加到某个产品，请键入该产品的名称。 多次重复此步骤以将 API 添加到多个产品。<br/>产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。<br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”。 |
 
 4. 选择**创建**。
 

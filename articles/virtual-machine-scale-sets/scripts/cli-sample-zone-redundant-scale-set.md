@@ -3,7 +3,7 @@ title: Azure CLI 2.0 示例 - 区域冗余规模集 | Microsoft Docs
 description: Azure CLI 2.0 示例
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 62be536245fc9843782ce0cd9e170494499e3ac1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5b999ab1ffa9a0c576bc4f00f14b12512ebcb80d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30246417"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618159"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 创建区域冗余虚拟机规模集
 此脚本创建跨多个可用性区域运行 Ubuntu 的虚拟机规模集。 运行脚本后，可通过 RDP 访问虚拟机。

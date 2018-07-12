@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: sethm
 ms.openlocfilehash: 34b647c0405e4d0997eca12758c10b60cf862a5f
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809448"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611226"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -93,7 +93,7 @@ ms.locfileid: "34809448"
    ![][13]
    
    请注意，现已引用所需的客户端程序集并已添加部分新代码文件。
-10. 在“解决方案资源管理器”中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“OnlineOrder.cs”。 然后，单击“添加”。
+10. 在“解决方案资源管理器”中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“OnlineOrder.cs”。 然后单击“添加”。
 
 ### <a name="write-the-code-for-your-web-role"></a>为 Web 角色编写代码
 在本部分，将创建应用程序显示的各种页面。
@@ -315,7 +315,7 @@ ms.locfileid: "34809448"
 4. 在“添加新角色项目”对话框中，单击“服务总线队列的辅助角色”。
    
    ![][23]
-5. 在“名称”框中，将项目命名为“OrderProcessingRole”。 然后，单击“添加”。
+5. 在“名称”框中，将项目命名为“OrderProcessingRole”。 然后单击“添加”。
 6. 将在“创建服务总线命名空间”部分的步骤 9 中获取的连接字符串复制到剪贴板。
 7. 在“解决方案资源管理器”中，右键单击在步骤 5 中创建的“OrderProcessingRole”（确保右键单击“角色”下的“OrderProcessingRole”而不是类）。 然后单击“属性”。
 8. 在“属性”对话框的“设置”选项卡中，在“Microsoft.ServiceBus.ConnectionString”的“值”框内单击，并粘贴在步骤 6 中复制的终结点值。

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
 ms.openlocfilehash: dbb28d7df104887a4056489e9f693ce28ec406df
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635094"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619380"
 ---
 # <a name="get-started-with-device-twins-node"></a>设备孪生入门 (Node)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
 ms.openlocfilehash: 96cad0fc7f387c5f0cb14996ae6ac015c104b81d
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016693"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619431"
 ---
 # <a name="get-started-with-device-twins-java"></a>设备孪生入门 (Java)
 

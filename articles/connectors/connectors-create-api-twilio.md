@@ -16,11 +16,11 @@ ms.workload: integration
 ms.date: 09/19/2016
 ms.author: estfan; ladocs
 ms.openlocfilehash: 8bcf69a7c8e04cb45d795fd0d6f20d477c15865d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296129"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38651999"
 ---
 # <a name="get-started-with-the-twilio-connector"></a>Twilio 连接器入门
 连接到 Twilio 以发送和接收全球短信、彩信和 IP 消息。 借助 Twilio，可以：

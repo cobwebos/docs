@@ -18,11 +18,11 @@ ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: f357861a7a44b249e06f091a8693b7f2d8dd5178
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841973"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232735"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>使用 Azure CLI 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -35,7 +35,7 @@ ms.locfileid: "30841973"
 * 确认从某个子网对资源的访问
 * 确认已拒绝从某个子网和 Internet 来访问资源
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -83,7 +83,7 @@ az network vnet subnet create \
   --service-endpoints Microsoft.Storage
 ```
 
-## <a name="restrict-network-access-for-a-subnet"></a>限制对子网的网络访问
+## <a name="restrict-network-access-for-a-subnet"></a>限制子网的网络访问
 
 使用 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) 创建网络安全组。 以下示例创建名为 *myNsgPrivate* 的网络安全组。
 

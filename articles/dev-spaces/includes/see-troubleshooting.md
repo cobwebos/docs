@@ -11,11 +11,11 @@ ms.date: 05/11/2018
 ms.topic: include
 manager: douge
 ms.openlocfilehash: 72b516936d5bf0c182953c3b802d8c3db287f105
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34665685"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38728862"
 ---
 > [!Note]
-> **如果你在任何时候遇到问题**，请参见[故障排除](../troubleshooting.md)部分，或在此页上发表评论。
+> **如果在任何时候遇到问题**，请参阅[故障排除](../troubleshooting.md)部分，或在此页上发表评论。

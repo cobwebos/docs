@@ -16,11 +16,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 09cad6b76b2fdefe1163530e5437427faf29d72f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046861"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299915"
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure 门户创建用于复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "37046861"
 > 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果你使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
 
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)创建数据工厂，以便通过管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 如果不熟悉 Azure 数据工厂，请在学习本教程之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)一文。   
 

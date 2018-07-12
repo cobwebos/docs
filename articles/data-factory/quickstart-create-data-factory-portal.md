@@ -12,15 +12,15 @@ ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 454eaba26155b2bf4a0381af98047dbcbb514bb5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046810"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38644895"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](quickstart-create-data-factory-portal.md)
 
 本快速入门介绍如何使用 Azure 数据工厂 UI 创建和监视数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-portal.md)。 
@@ -60,7 +60,7 @@ ms.locfileid: "37046810"
 
    列表仅显示数据工厂支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 Azure HDInsight）可以位于其他位置。
 6. 选择“固定到仪表板”。     
-7. 选择**创建**。
+7. 选择“创建”。
 8. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
 
    ![“正在部署数据工厂”磁贴](media//quickstart-create-data-factory-portal/deploying-data-factory.png)

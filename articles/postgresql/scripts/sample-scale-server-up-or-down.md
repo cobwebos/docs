@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: ff740bf22b745e3f9e00ccbdb40c5e4d5948fb41
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30901909"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618801"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>使用 Azure CLI 监视和缩放单个 PostgreSQL 服务器
 此示例 CLI 脚本在查询指标后用于 PostgreSQL 服务器的单个 Azure 数据库缩放为不同的性能级别。 

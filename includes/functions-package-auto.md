@@ -10,10 +10,10 @@ ms.date: 05/23/2018
 ms.author: tdykstra
 ms.custom: include file
 ms.openlocfilehash: 4bffe811dcee6a92e97c66b5813211e58004bb73
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726713"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38944027"
 ---
 在所有开发环境中自动提供对该绑定的支持。 无需手动安装包或注册扩展。

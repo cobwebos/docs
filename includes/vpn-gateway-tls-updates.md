@@ -9,11 +9,11 @@ ms.date: 06/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9a17f34333503436d3da340670abdde154e45ef6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36336020"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38727518"
 ---
 从 2018 年 7 月 1 日开始，Azure VPN 网关将不再支持 TLS 1.0 和 1.1。 VPN 网关将仅支持 TLS 1.2。 若要对使用 TLS 的 Windows 7 和 Windows 8 点到站点客户端保留 TLS 支持和连接性，建议安装以下更新：
 

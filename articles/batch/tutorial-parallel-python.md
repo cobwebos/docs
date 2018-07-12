@@ -11,11 +11,11 @@ ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 916cedfb91f0711f136ff8ad679be94c68964619
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608927"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38301047"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
 
@@ -76,7 +76,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-### <a name="run-the-app"></a>运行应用程序
+### <a name="run-the-app"></a>运行应用
 
 若要运行该脚本，请执行以下操作：
 

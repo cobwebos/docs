@@ -14,15 +14,15 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: douglasl
 ms.openlocfilehash: 525a11d0cbb10d4170930fb4df362e0a9ea024e2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054269"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38623500"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
+> * [第 1 版](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [当前版本](quickstart-create-data-factory-resource-manager-template.md) 
 
 本快速入门介绍如何使用 Azure 资源管理器模板来创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。 

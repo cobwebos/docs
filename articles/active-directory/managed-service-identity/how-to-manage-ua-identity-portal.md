@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 206f508ca8df13cdc8194cc9a95d828397ea0b85
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 02073742264e4f65d3c582174348495d86f47d43
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "33929346"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903929"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-service-identity-msi-using-the-azure-portal"></a>使用 Azure 门户创建、列出或删除用户分配的托管服务标识 (MSI)
 

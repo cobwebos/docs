@@ -3,7 +3,7 @@ title: 混合标识设计 - 多重身份验证要求 Azure | Microsoft Docs
 description: 借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
 documentationcenter: ''
 services: active-directory
-author: femila
+author: billmath
 manager: billmath
 editor: ''
 ms.assetid: 9c59fda9-47d0-4c7e-b3e7-3575c29beabe
@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: fe5ac8386394bf659de8d9905827359900f08d93
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 0c4d3edabbef6fe5626ce85c753cc7775ff2f1b9
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801028"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915395"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的多重身份验证要求
 在充斥移动性的当下，用户访问云中和任何设备中的数据和应用程序，确保该信息安全变得尤为重要。  每天都会有关于安全漏洞的新闻头条。  尽管并不能保证避免此类漏洞，但多重身份验证提供了额外的安全层，可帮助防止利用这些漏洞。

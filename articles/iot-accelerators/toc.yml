@@ -10,6 +10,8 @@
   items:
     - name: 部署远程监视解决方案
       href: quickstart-remote-monitoring-deploy.md
+    - name: 部署预测性维护解决方案
+      href: quickstart-predictive-maintenance-deploy.md
     - name: 部署设备模拟解决方案
       href: quickstart-device-simulation-deploy.md
 - name: 教程
@@ -82,7 +84,7 @@
       items:
         - name: 什么是预配置的解决方案？
           href: ../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: ../iot-suite/iot-suite-v1-faq.md
         - name: 入门
           items:
@@ -205,7 +207,7 @@
   items:
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 常见问题
+    - name: 常见问题解答
       href: iot-accelerators-faq.md
     - name: 远程监视常见问题解答
       href: iot-accelerators-faq-rm-v2.md

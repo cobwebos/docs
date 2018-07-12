@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
 ms.openlocfilehash: 5c33e1a5568de5fffb5ea9cedb43bdc04aeaeba7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293829"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306754"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -155,7 +155,7 @@ Application Insights 可绘制未附加到特定事件的指标。 例如，可�
 
 * 聚合。 使用指标时，每个单次测量几乎无关紧要。 反而特定时间段内发生活动的摘要很重要。 此类摘要名为聚合。 在上一示例中，该时间段的聚合指标总数为 `1`，同时指标值的计数为 `2`。 使用聚合方法时，每个时间段只调用一次 `TrackMetric` 并发送聚合值。 建议采用此方法是因为它可以通过发送更少的数据点到 Application Insights 同时仍然收集所有相关信息来显著降低成本和性能开销。
 
-### <a name="examples"></a>示例:
+### <a name="examples"></a>示例：
 
 #### <a name="single-values"></a>单个值
 

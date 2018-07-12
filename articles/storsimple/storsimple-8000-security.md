@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 80cdd2bdad5962a9d5f6a0e20f34ac3db1942741
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 578fb3f8bfe68ccd9bbade0ad04f3a811a249c08
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650931"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906383"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -43,7 +43,7 @@ Microsoft Azure StorSimple 解决方案由四个彼此交互的主要组件组�
 
 StorSimple 设备管理器服务是 Microsoft Azure 中托管的用于管理组织已采购的所有 StorSimple 设备的管理服务。 可以通过使用组织凭据通过 Web 浏览器登录到 Azure 门户来访问 StorSimple 设备管理器服务。
 
-访问 StorSimple 设备管理器服务需要组织具备包含 StorSimple 在内的 Azure 订阅。 订阅决定可以在 Azure 门户中访问的功能。 如果组织没有 Azure 订阅，并且你想要了解有关 Azure 订阅的详细信息，请参阅[以组织名义注册 Azure](../active-directory/sign-up-organization.md)。
+访问 StorSimple 设备管理器服务需要组织具备包含 StorSimple 在内的 Azure 订阅。 订阅决定可以在 Azure 门户中访问的功能。 如果组织没有 Azure 订阅，并且你想要了解有关 Azure 订阅的详细信息，请参阅[以组织名义注册 Azure](../active-directory/fundamentals/sign-up-organization.md)。
 
 由于 StorSimple 设备管理器服务在 Azure 中托管，因此它受 Azure 安全功能保护。 有关 Microsoft Azure 提供的安全功能的详细信息，请转到 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/security/)。
 
@@ -209,7 +209,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 物理系列和虚拟系列的 StorSimple 设备管理器收集以下密钥实例中的个人信息：
 
-- 提醒用户设置，可在其中配置用户电子邮件地址。 此信息可以由管理员查看和清除。 这适用于 StorSimple 8000 系列设备和 StorSimple 虚拟阵列。
+- 提醒用户设置，可在其中配置用户电子邮件地址。 管理员可查看和清除此信息。 这适用于 StorSimple 8000 系列设备和 StorSimple 虚拟阵列。
  * 要查看和清除 StorSimple 8000 系列的设置，请按照[查看和管理 StorSimple 警报](storsimple-8000-manage-alerts.md#configure-alert-settings)中的步骤操作
  * 要查看和清除 StorSimple 虚拟阵列的设置，请按照[查看和管理 StorSimple 警报](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)中的步骤操作
 - 可访问驻留在共享上的数据的用户。 会显示可访问共享数据的用户列表，并可供查看。 删除共享时也会删除此列表。 这仅适用于 StorSimple 虚拟阵列。
@@ -267,7 +267,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **答：** 可以从 StorSimple 设备管理器服务下载新证书，然后即可将其安装到远程访问客户端的证书存储中。 有关说明，请转到：
 
-* [Import-Certificate cmdlet](https://technet.microsoft.com/library/hh848630.aspx)
+* [Import-Certificate cmdlet](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
 **问：** 如果 StorSimple 设备管理器服务受到安全威胁，我的数据是否得到保护？
 

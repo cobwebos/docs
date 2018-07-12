@@ -3,7 +3,7 @@ title: Azure CLI 2.0 示例 - 启用基于主机的自动缩放 | Microsoft Docs
 description: Azure CLI 2.0 示例
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50c4a07bf1da822f189425a129198c8f2570a899
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2f41ca6f85e28f57d6606d85c3a1d58ee390148c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30246485"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652133"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 自动缩放虚拟机规模集
 此脚本创建运行 Ubuntu 的虚拟机规模集，当 CPU 负载发生变化时，它会使用基于主机的指标自动缩放。

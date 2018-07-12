@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: a295cad2bf1cafce4dc64909174e9417daa7918e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782006"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235442"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -129,7 +129,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，必须执行以下操作之一：
 
 - [购买 MSDN 订阅](https://www.visualstudio.com/products/how-to-buy-vs)。
-- 如果具有企业协议，请通过 [Enterprise 开发/测试服务](https://azure.microsoft.com/offers/ms-azr-0148p)创建 Azure 订阅。
+- 如果具有企业协议，请通过 [Enterprise 开发/测试套餐](https://azure.microsoft.com/offers/ms-azr-0148p)创建 Azure 订阅。
 
 若要深入了解每个 MSDN 产品/服务的 Azure 信用额度，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
 

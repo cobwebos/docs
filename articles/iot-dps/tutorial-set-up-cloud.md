@@ -10,15 +10,15 @@ services: iot-dps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: e334ff0c8dec3a9611b60f64e565111064d10c18
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630079"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619276"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
-本教程演示如何利用 IoT 中心设备预配服务来设置云资源以进行自动设备预配。 本教程介绍如何执行下列操作：
+本教程演示如何利用 IoT 中心设备预配服务来设置云资源以进行自动设备预配。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户创建 IoT 中心设备预配服务并获取 ID 范围
@@ -26,7 +26,7 @@ ms.locfileid: "34630079"
 > * 将 IoT 中心链接到设备预配服务
 > * 设置设备预配服务上的分配策略
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -43,7 +43,7 @@ ms.locfileid: "34630079"
     
    | 设置       | 建议的值 | 说明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **名称** | 任何唯一名称 | -- | 
+   | **Name** | 任何唯一名称 | -- | 
    | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
    | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
    | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |   

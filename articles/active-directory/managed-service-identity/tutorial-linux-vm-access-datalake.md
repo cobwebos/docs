@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 4489f194329727160d770ab72d9cd36115f2e64d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: daveba
+ms.openlocfilehash: 92bd7190832da6ee9da7d1679b9f27b66a15e3a4
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594751"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904299"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>教程：使用 Linux VM 的托管服务标识访问 Azure Data Lake Store
 
@@ -27,7 +27,7 @@ ms.locfileid: "34594751"
 
 本教程介绍如何使用 Linux 虚拟机 (VM) 的托管服务标识访问 Azure Data Lake Store。 Azure 通过 MSI 自动管理创建的标识。 可以使用 MSI 在支持 Azure Active Directory (Azure AD) 身份验证的服务中进行身份验证，而无需在代码中插入凭据。 
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Linux VM 上启用 MSI。 

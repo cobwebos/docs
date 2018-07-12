@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
-ms.author: arluca
-ms.openlocfilehash: 57455c5abf8c566f3935ece73d0b7470863936f8
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: daveba
+ms.openlocfilehash: 67bb45f7bd27a142b978bedb48925cc41e8d1287
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699143"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904367"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管服务标识 (MSI) 访问 Azure 资源管理器
 

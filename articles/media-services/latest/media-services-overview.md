@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 06/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 489801852202163ef40d57da0082e39793196d85
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5205a6746f6a698768a60375e2e77db9cb535a71
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264088"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971901"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
 
@@ -45,7 +45,7 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * 当客户（例如电影工作室）需要限制对版权所有作品的访问和使用时，创建订阅视频服务并流式传输受 DRM 保护的内容。
 * 提供脱机内容，以便在飞机、火车和汽车上播放。 如果客户希望断开网络连接，可能需要将内容下载到手机或平板电脑上播放。
 * 为视频添加字幕和描述文字，满足更多受众的需求（例如，听力障碍人士或想用不同语言阅读的人）。 
-* 使用 Azure 媒体服务和 [Azure 认知服务 API](https://docs.microsoft.com/en-us/azure/#pivot=products&panel=ai) 实现教育在线学习视频平台，提供语音转文本字幕，多种语言翻译等等。
+* 使用 Azure 媒体服务和 [Azure 认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 实现教育在线学习视频平台，提供语音转文本字幕，多种语言翻译等等。
 * 启用 Azure CDN 实现大幅度缩放，更好地处理即时高负载（例如在产品发布活动开始时）。 
 
 ## <a name="v3-capabilities"></a>v3 功能

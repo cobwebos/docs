@@ -11,12 +11,12 @@
   items:
     - name: 创建函数 - 门户
       href: functions-create-first-azure-function.md
-    - name: 创建函数 - Azure CLI
-      href: functions-create-first-azure-function-azure-cli.md
     - name: 创建函数 - Visual Studio
       href: functions-create-your-first-function-visual-studio.md
     - name: 创建函数 - Java/Maven
       href: functions-create-first-java-maven.md
+    - name: 创建函数 - Azure CLI
+      href: functions-create-first-azure-function-azure-cli.md
     - name: 创建函数 - Linux
       href: functions-create-first-azure-function-azure-cli-linux.md
     - name: 触发器
@@ -97,6 +97,8 @@
       items:
         - name: 概述
           href: durable-functions-overview.md
+        - name: 函数类型和功能
+          href: durable-functions-types-features-overview.md
         - name: 绑定
           href: durable-functions-bindings.md
         - name: 检查点和重播

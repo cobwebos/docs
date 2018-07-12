@@ -9,11 +9,11 @@ ms.date: 02/16/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: b4b06119b9d46781b967fc8d98808c60d2b41ccb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31433243"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38753633"
 ---
 你希望确保你的组织中的用户对这些资源具有合适级别的访问权限。 你不希望向用户授予不受限的访问权限，但还需要确保他们可以执行其工作。 使用基于角色的访问控制 (RBAC)，你可以管理哪些用户有权在某个范围内完成特定操作。 一个角色定义一组允许的操作。 将角色分配至某一范围，并指定哪些用户在此范围内属于该角色。
 

@@ -16,11 +16,11 @@ ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 4bb6f12781666792aad31789a59d752dd5a822de
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205707"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307181"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL Web 应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "33205707"
 
 ![在 Azure 应用服务中运行的 PHP 应用](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 MySQL 数据库
@@ -145,7 +145,7 @@ php artisan key:generate
 php artisan serve
 ```
 
-在浏览器中导航至 `http://localhost:8000`。 在页面中添加一些任务。
+在浏览器中导航至 `http://localhost:8000` 。 在页面中添加一些任务。
 
 ![PHP 已成功连接到 MySQL](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 

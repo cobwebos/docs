@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 0f6713b9b8704e813ab1fd77ab1cf4e71e7f6670
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783346"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235423"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>使用 Azure CLI 通过开发测试实验室创建和管理虚拟机
 本快速入门将指导用户在实验室中进行创建、启动、连接、更新和清理开发计算机等操作。 
@@ -30,7 +30,7 @@ ms.locfileid: "33783346"
 * [安装 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。 若要开始，请运行 az login，创建与 Azure 的连接。 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>创建并验证虚拟机 
-使用 ssh 身份验证从 Marketplace 映像创建 VM。
+使用 ssh 身份验证从市场映像创建 VM。
 ```azurecli
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```

@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Site Recovery 中的 PowerShell 设置 VMw
 services: site-recovery
 author: bsiva
 ms.service: site-recovery
+ms.date: 07/06/2018
 ms.topic: conceptual
-ms.date: 06/20/2018
 ms.author: bsiva
-ms.openlocfilehash: 051bc3a0e1c0126826e96b49ff0a4e8008c88006
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a826817b8f2b4ebff8442da1fbee79a95990a9e8
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287848"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917806"
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 将 VMware VM 复制和故障转移到 Azure
 

@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 05/07/2018
+ms.date: 07/10/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 46d41e3ee85deb20f189bc9c82a255178f3d7eee
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 802dbcdf797147d4f4dcf7835aea9c952127113e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942246"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652262"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的内存和并发限制
 查看分配给 Azure SQL 数据仓库中的各个性能级别和资源类的内存和并发限制。 若要了解详细信息并将这些功能应用于你的工作负荷管理计划，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。 
@@ -25,7 +25,7 @@ ms.locfileid: "33942246"
 ## <a name="data-warehouse-capacity-settings"></a>数据仓库容量设置
 以下各表显示了不同性能级别的数据仓库的最大容量。 若要更改性能级别，请参阅[缩放计算 - 门户](quickstart-scale-compute-portal.md)。
 
-### <a name="gen2"></a>第 2 代
+### <a name="gen2"></a>Gen2
 
 第 2 代为每个查询提供的内存比第 1 代多 2.5 倍。 额外的内存有助于第 2 代提供快速的性能。  第 2 代的性能级别范围为 DW1000c 到 DW30000c。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "33942246"
 
 第 2 代的最大 DWU 为 DW30000c，包括 60 个计算节点，每个计算节点有一个分布区。 例如，DW30000c 级别的 600 TB 数据仓库的每个计算节点可以处理大约 10 TB 数据。
 
-### <a name="gen1"></a>第 1 代
+### <a name="gen1"></a>Gen1
 
 第 1 代的服务级别范围为 DW100 到 DW6000。 
 
@@ -67,7 +67,7 @@ ms.locfileid: "33942246"
 ## <a name="concurrency-maximums"></a>并发性最大值
 为了确保每个查询都有足够的资源来有效执行，SQL 数据仓库会通过向每个查询分配并发槽位来跟踪资源利用率。 系统将查询放入某个队列，然后，查询在队列中等待有足够的[并发槽位](resource-classes-for-workload-management.md#concurrency-slots)可用。 并发槽位还确定 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
 
-### <a name="gen2"></a>第 2 代
+### <a name="gen2"></a>Gen2
  
 **静态资源类**
 
@@ -79,7 +79,7 @@ ms.locfileid: "33942246"
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW2500c       | 48                         |  100                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW5000c       | 64                         |  200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW6000c       | 128                        |  240                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW7500c       | 128                        |  300                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
@@ -112,7 +112,7 @@ ms.locfileid: "33942246"
 
 
 
-#### <a name="gen1"></a>第 1 代
+#### <a name="gen1"></a>Gen1
 
 静态资源类
 

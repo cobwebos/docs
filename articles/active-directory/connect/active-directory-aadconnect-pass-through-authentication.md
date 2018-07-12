@@ -4,7 +4,7 @@ description: 本文介绍 Azure Active Directory (Azure AD) 传递身份验证�
 services: active-directory
 keywords: 什么是 Azure AD Connect 直通身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9b36014057eb1713b2b056cd203a099c59d9b5d4
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031764"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917272"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 

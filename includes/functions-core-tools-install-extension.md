@@ -9,11 +9,11 @@ ms.date: 04/06/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: d166a77a0636efea3b63660fde2187e3f2ec15c0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063742"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38944427"
 ---
 在本地开发函数时，可以使用 Azure Functions Core Tools 从终端或从命令提示符安装所需的扩展。 
 

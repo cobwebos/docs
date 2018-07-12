@@ -157,6 +157,16 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 资源
   items:
+    - name: '适用于 C# 的 Azure IoT 示例 (.NET)'
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+    - name: 适用于 Node.js 的 Azure IoT 示例
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+    - name: 适用于 Java 的 Azure IoT 示例
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+    - name: 适用于 Python 的 Azure IoT 示例
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+    - name: 适用于 iOS 平台的 Azure IoT 示例
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Azure IoT 中心
       href: 'https://azure.microsoft.com/services/iot-hub/'
     - name: Azure IoT 已认证设备目录

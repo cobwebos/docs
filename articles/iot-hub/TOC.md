@@ -170,7 +170,7 @@
 #### [Java](iot-hub-java-java-twin-getstarted.md)
 #### [Python](iot-hub-python-twin-getstarted.md)
 ### 模块孪生入门
-#### [Portal](iot-hub-portal-csharp-module-twin-getstarted.md)
+#### [门户](iot-hub-portal-csharp-module-twin-getstarted.md)
 #### [.NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
 #### [Python](iot-hub-python-python-module-twin-getstarted.md)
 #### [C](iot-hub-c-c-module-twin-getstarted.md)
@@ -251,7 +251,8 @@
 # 相关内容
 ## 解决方案 
 ### [IoT 解决方案加速器](/azure/iot-suite) 
-### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
+### 
+  [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## 平台服务 
 ### [IoT 中心](/azure/iot-hub) 
 ### [IoT 中心设备预配服务](/azure/iot-dps)
@@ -263,6 +264,11 @@
 ### [IoT 设备 SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 
 # 资源
+## [适用于 C# 的 Azure IoT 示例 (.NET)](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)
+## [适用于 Node.js 的 Azure IoT 示例](https://azure.microsoft.com/resources/samples/azure-iot-samples-node/)
+## [适用于 Java 的 Azure IoT 示例](https://azure.microsoft.com/resources/samples/azure-iot-samples-java/)
+## [适用于 Python 的 Azure IoT 示例](https://azure.microsoft.com/resources/samples/azure-iot-samples-python/)
+## [适用于 iOS 平台的 Azure IoT 示例](https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/)
 ## [Azure IoT 已认证设备目录](https://catalog.azureiotsuite.com/)
 ## [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot/)
 ## [客户数据请求](iot-hub-customer-data-requests.md)

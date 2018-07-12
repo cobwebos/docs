@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: f63ccd62136fe8d556a4cfb591e3294f3751dfb3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ca7d40bb3c358b374e354fa2c3ef77edba055c9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652240"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971775"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
 
@@ -617,7 +617,7 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 ````
 
-说明：[TIMESTAMP BY OVER](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) 子句分别使用子流来查看每个设备时间线。 每个 TollID 的输出事件都是在计算时生成的，这意味着事件按照每个 TollID 的顺序排列，而不是像所有设备都在同一个时钟上那样重新排序。
+说明：[TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) 子句分别使用子流来查看每个设备时间线。 每个 TollID 的输出事件都是在计算时生成的，这意味着事件按照每个 TollID 的顺序排列，而不是像所有设备都在同一个时钟上那样重新排序。
 
 
 ## <a name="get-help"></a>获取帮助

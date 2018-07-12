@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
 ms.openlocfilehash: 0ed14cc0978baaea5e334eef14d0354d8d6edcfb
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877028"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652174"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>支持约束 vCPU 的 VM 大小
 

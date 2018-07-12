@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1c68c586fb799a540f70804d181aa66b2bda9e97
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344825"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952532"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 语言理解 (LUIS) 是一种基于云的服务，可在用户对话的自然语言文本中应用自定义机器学习，从而预测整体含义并提炼出相关的详细信息。 
@@ -99,7 +99,7 @@ LUIS 提供多种方式来标识和分类实体。
 在 LUIS 应用发布和接收实时用户话语之后，LUIS 提供了多种方式来提升预测的准确性：针对终结点话语的[主动学习](#active-learning)、针对域字词内容的[短语列表](#phrase-lists)，以及用于减少所需话语数的[模式](#patterns)。
 
 ### <a name="active-learning"></a>主动学习
-在[主动学习](label-suggested-utterances.md)过程中，可通过 LUIS 选择 LUIS 应用在终结点处接收供你审阅的话语，从而运用该应用分析真实世界的话语。 你可接受或更正终结点预测，还可进行再训练和重新发布。 在这个迭代过程中，LUIS 迅速学习，尽可能占用你很少的时间和精力。 
+在[主动学习](luis-how-to-review-endoint-utt.md)过程中，可通过 LUIS 选择 LUIS 应用在终结点处接收供你审阅的话语，从而运用该应用分析真实世界的话语。 你可接受或更正终结点预测，还可进行再训练和重新发布。 在这个迭代过程中，LUIS 迅速学习，尽可能占用你很少的时间和精力。 
 
 ### <a name="phrase-lists"></a>短语列表 
 LUIS 提供了[短语列表地](luis-concept-feature.md)，可用于向模型域指出重要的字词或短语。 LUIS 使用此类列表提升这些字词和短语的重要性；若不提升，则它们不出现在模型中。

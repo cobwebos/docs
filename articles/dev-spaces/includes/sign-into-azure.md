@@ -11,11 +11,11 @@ ms.date: 05/11/2018
 ms.topic: include
 manager: douge
 ms.openlocfilehash: d8ef59b157dc01c50d96561df31bbca4a8505018
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825488"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38728870"
 ---
 ### <a name="sign-in-to-azure-cli"></a>登录 Azure CLI
 登录 Azure。 在终端窗口中键入以下命令：

@@ -8,6 +8,8 @@
       href: cheat-sheet.md
 - name: 发行说明
   items:
+    - name: 2018 年 6 月
+      href: release-notes-june-2018.md
     - name: 2018 年 5 月
       href: release-notes-may-2018.md
     - name: 2018 年 4 月
@@ -53,7 +55,7 @@
           href: sql-data-warehouse-service-capacity-limits.md
         - name: 维护
           href: service-maintenance.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: sql-data-warehouse-overview-faq.md
     - name: “安全”
       items:
@@ -233,7 +235,7 @@
       items:
         - name: 分析工作负荷
           href: analyze-your-workload.md
-    - name: 向外扩展
+    - name: 横向扩展
       items:
         - name: 自动管理计算级别
           href: manage-compute-with-azure-functions.md

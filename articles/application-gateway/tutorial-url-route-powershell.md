@@ -11,11 +11,11 @@ ms.date: 3/20/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 9aa0eec9036e32d6f3462886dfc7a796ed1844b8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356284"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306376"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>使用 Azure PowerShell 基于 URL 对 Web 流量进行路由
 
@@ -23,7 +23,7 @@ ms.locfileid: "34356284"
 
 若要启用流量路由，需要创建[路由规则](application-gateway-url-route-overview.md)并将其分配给在特定端口上侦听的侦听器以确保 Web 流量到达池中的合适服务器。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置网络
@@ -32,7 +32,7 @@ ms.locfileid: "34356284"
 
 ![URL 路由示例](./media/tutorial-url-route-powershell/scenario.png)
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
@@ -408,7 +408,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取应用程序网关的公共 IP 地址。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，http://52.168.55.24、 http://52.168.55.24:8080/images/test.htm 或 http://52.168.55.24:8080/video/test.htm。
+使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取应用程序网关的公共 IP 地址。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，*http://52.168.55.24*, *http://52.168.55.24:8080/images/test.htm*, 或 *http://52.168.55.24:8080/video/test.htm*。
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

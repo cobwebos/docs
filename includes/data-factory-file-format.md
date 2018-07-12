@@ -201,7 +201,7 @@ Azure 数据工厂支持以下格式类型：
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
 
 - `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅[指定矩形数据集的结构定义](#specifying-structure-definition-for-rectangular-datasets)部分，了解更多详细信息。
-- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 **array[x].property** 从 xth 对象中提取给定属性的值，或者使用 **array[*].property** 从包含此类属性的任何对象中查找该值。
+- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 **array[x].property** 从 xth 对象中提取给定属性的值，也可以使用 **array[*].property** 从包含此类属性的任何对象中查找该值。
 
 ```json
 "properties": {
@@ -327,7 +327,7 @@ Azure 数据工厂支持以下格式类型：
 | id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
-| #N/A | 20170120 | 3500 | Patrick |
+| 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
 每个记录将按以下格式写入到 JSON 对象中：
@@ -342,7 +342,7 @@ Azure 数据工厂支持以下格式类型：
 }
 ```
 
-**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非需要根据源列名更改属性名称，或者需要嵌套部分属性。
+**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非需要将属性名称更改为与源列名不同的名称，或者需要嵌套部分属性。
 
 ```json
 "properties": {
@@ -404,7 +404,7 @@ Azure 数据工厂支持以下格式类型：
 >
 >
 
-注意以下几点：
+请注意以下几点：
 
 * 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）
 * ORC 文件有三个[压缩相关的选项](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
@@ -423,7 +423,7 @@ Azure 数据工厂支持以下格式类型：
 >
 >
 
-注意以下几点：
+请注意以下几点：
 
 * 不支持复杂数据类型（MAP、LIST）
 * Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。

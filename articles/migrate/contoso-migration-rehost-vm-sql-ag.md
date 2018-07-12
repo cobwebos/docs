@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 03e3aaad810f6ccd5fb376765ddbada072dedb06
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 33ab56003f2d9428816ea0f32cfd6381ea857df3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301297"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611282"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso 迁移：将本地应用重新托管到 Azure VM 和 SQL Server AlwaysOn 可用性组
 
@@ -23,7 +23,7 @@ ms.locfileid: "35301297"
 
 **文章** | **详细信息** | **Status**
 --- | --- | ---
-[第 1 篇：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
+[文章 1：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
 [文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有迁移文章共用同一个基础结构。 | 可用
 [文章 3：访问本地资源](contoso-migration-assessment.md)  | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel 应用。 Contoso 使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
 [文章 4：将应用重新托管到 Azure VM 和 SQL 托管实例](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将 SmartHotel 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 SQL 托管实例。 | 可用
@@ -61,7 +61,7 @@ Contoso 云团队制定了本次迁移的目标。 这些目标用于确定最�
 
 - 该应用跨两个 VM（WEBVM 和 SQLVM）进行分层。
 - 这两个 VM 位于 VMware ESXi 主机 contosohost1.contoso.com（6.5 版）上
-- VMware 环境由 VM 上运行的 vCenter Server 6.5 (vcenter.contoso.com) 托管。
+- VMware 环境由 VM 上运行的 vCenter Server 6.5 (**vcenter.contoso.com**) 托管。
 - Contoso 有一个本地数据中心 (contoso-datacenter)，其中包含一个本地域控制器 (**contosodc1**)。
 - 迁移完成后，Contoso 数据中心的本地 VM 将停止使用。
 
@@ -339,7 +339,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 - 安排复制、故障转移和故障回复。
 - 至少需要一个只读帐户。 需要一个可以运行诸如创建和删除磁盘、打开 VM 等操作的帐户。
 
-Contoso 如下设置帐户：
+Contoso 按如下所述设置帐户：
 
 1. Contoso 在 vCenter 级别创建一个角色。
 2. 然后，Contoso 向该角色分配所需权限。
@@ -457,8 +457,8 @@ Contoso 现可创建复制策略。
 1. 在“准备基础结构” > “复制设置” > “复制策略” >  “创建和关联”中，创建策略“ContosoMigrationPolicy”。
 2. 使用默认设置：
     - **RPO 阈值**：默认为 60 分钟。 此值确定创建恢复点的频率。 如果连续复制超出此限制，将生成警报。
-    - **恢复点保留期**： 默认为 24 小时。 此值指定每个恢复点的保留时长。 可以将复制的虚拟机恢复到窗口中的任何点。
-    - **应用一致性快照频率**： 默认为 1 小时。 此值指定应用程序一致性快照的创建频率。
+    - **恢复点保留期**。 默认为 24 小时。 此值指定每个恢复点的保留时长。 可以将复制的虚拟机恢复到窗口中的任何点。
+    - **应用一致性快照频率**。 默认为 1 小时。 此值指定应用程序一致性快照的创建频率。
  
         ![创建复制策略](./media/contoso-migration-rehost-vm-sql-ag/replication-policy.png)
 
@@ -576,7 +576,7 @@ DMS 跨 Contoso 数据中心和 Azure 之间的站点到站点 VPN 连接接入�
 **需要更多帮助？**
 - 了解如何创建[可用性组](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-tutorial#create-the-availability-group)和[侦听器](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-tutorial#configure-listener)。
 - [手动设置群集，使其使用负载均衡器 IP 地址](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener#configure-the-cluster-to-use-the-load-balancer-ip-address)。
-- [详细了解](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-2)如何创建和使用 SAS。
+- [详细了解](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)如何创建和使用 SAS。
 
 
 ## <a name="step-8-migrate-the-vm-with-site-recovery"></a>步骤 8：使用 Site Recovery 迁移 VM
@@ -650,7 +650,7 @@ Contoso 运行快速测试故障转移，然后迁移 VM。
 
 Azure 显示已迁移的资源后，Contoso 需要积极行动、全面保护新的基础结构。
 
-### <a name="security"></a>安全性
+### <a name="security"></a>“安全”
 
 Contoso 安全团队会审查 Azure VMs WEBVM、SQLAOG1 和 SQLAOG2，确定是否存在任何安全问题。 
 
@@ -658,16 +658,16 @@ Contoso 安全团队会审查 Azure VMs WEBVM、SQLAOG1 和 SQLAOG2，确定是�
 - 他们正在考虑使用 Azure 磁盘加密服务和 KeyVault 保护磁盘上的数据。
 - 需评估透明数据加密 (TDE)，然后在新的 SQL AOG 上运行的 SmartHotel 数据库中启用它。 [了解详细信息](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017)。
 
-[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) VM 的安全实践。
+[详细了解](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) VM 的安全做法。
 
 ### <a name="backups"></a>备份
 
 Contoso 计划使用 Azure 备份服务备份 WEBVM, SQLAOG1 和 SQLAOG2 上的数据。 [了解详细信息](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-### <a name="licensing-and-cost-optimization"></a>授权和成本优化
+### <a name="licensing-and-cost-optimization"></a>许可和成本优化
 
 1. Contoso 目前拥有 WEBVM 许可证并将享有 Azure 混合权益。  公司将对现有的 Azure VM 进行转换，以利用此定价的优势。
-2. Contoso 将启用由 Microsoft 子公司 Cloudyn 授权的 Azure 成本管理。 它是一个多云成本管理解决方案，可优化 Azure 和其他云资源的使用和管理。  [详细了解](https://docs.microsoft.com/azure/cost-management/overview) Azure 成本管理。 
+2. Contoso 将启用由 Microsoft 子公司 Cloudyn 授权的 Azure 成本管理。 该服务是一个多云成本管理解决方案，可帮助利用和管理 Azure 与其他云资源。  [详细了解](https://docs.microsoft.com/azure/cost-management/overview) Azure 成本管理。 
 
 ## <a name="conclusion"></a>结束语
 

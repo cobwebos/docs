@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 8763f1dca110a43586619c09f5d25c340c177b09
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: cbf6ac736db9935f5ec52fa4507dab1e56bcde43
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300651"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611181"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数据中心和云中的应用程序和资源的访问。 此类保护支持附加的验证级别，比如多重身份验证和条件访问策略。 通过高级安全报告、审核和警报来监视可疑活动，以便减少潜在的安全问题。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) 向数千个云软件即服务 (SaaS) 应用提供单一登录 (SSO)，并且可以用来访问在本地运行的 Web 应用。
@@ -134,9 +134,9 @@ Azure AD 设备注册是基于设备的[条件访问](../active-directory/active
 
 了解更多：
 
-* [Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-configure.md)
-* [Azure AD Privileged Identity Management 中的角色](../active-directory/active-directory-privileged-identity-management-roles.md)
-* [Azure AD Privileged Identity Management：如何添加或删除用户角色](../active-directory/active-directory-privileged-identity-management-how-to-add-role-to-user.md)
+* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
+* [Azure AD Privileged Identity Management 中的角色](../active-directory/privileged-identity-management/pim-roles.md)
+* [Azure AD Privileged Identity Management：如何添加或删除用户角色](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>标识保护
 Azure AD Identity Protection 是一种安全服务，它提供一个综合视图，你可以在其中查看影响组织标识的风险事件和潜在漏洞。 Identity Protection 使用现有的 Azure AD 异常检测功能，该功能可通过 Azure AD 异常活动报告得到。 Identity Protection 还引入了新的可以实时检测异常的风险事件类型。

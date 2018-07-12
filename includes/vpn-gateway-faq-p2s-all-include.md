@@ -9,11 +9,11 @@ ms.date: 06/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 199998f193f375137d499913e9ce966f85ed863c
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753789"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38727521"
 ---
 ### <a name="supportedclientos"></a>点到站点连接可以用于哪些客户端操作系统？
 

@@ -13,18 +13,18 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d054ca015fd97b3ec45f18b2d3a795eccf606993
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fee4344be2875140a2e9c35bd83eb668bd1efa3f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447551"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952450"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中配置安全警报
 ## <a name="security-alerts"></a>安全警报
 如果环境中有可疑活动或不安全活动，Azure Privileged Identity Management (PIM) 将生成警报。 触发警报时，它显示在 PIM 仪表板上。 选择警报以查看列出了已触发该警报的用户或角色的报告。
 
-![PIM 仪表板安全警报 - 屏幕截图][1]
+![PIM 仪表板安全警报 - 屏幕截图](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png)
 
 | 警报 | Severity | 触发器 | 建议 |
 | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ ms.locfileid: "37447551"
 1. 登录 [Azure 门户](https://portal.azure.com/)，并从仪表板中选择“Azure AD Privileged Identity Management”磁贴。
 2. 依次选择“托管的特权角色” > “设置” > “警报设置”。
    
-    ![导航到安全警报设置][2]
+    ![导航到安全警报设置](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png)
 
 ### <a name="roles-are-being-activated-too-frequently-alert"></a>“角色激活过于频繁”警报
 如果用户在指定期限内多次激活同一特权角色，将触发此警报。 可以同时配置时间段和激活次数。
@@ -66,8 +66,3 @@ ms.locfileid: "37447551"
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png
