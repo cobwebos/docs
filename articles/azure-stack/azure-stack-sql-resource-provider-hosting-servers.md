@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c9249de56979d47a29fc9d7c12b99e41b3ada0fd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: de2e1defeff9ab2dd78bdf019009b62955f73b88
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465831"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970545"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
@@ -66,7 +66,7 @@ ms.locfileid: "38465831"
 
 * 所有 Azure Stack 存储使用 BitLocker，因此 Azure Stack 上的任何 SQL 实例将使用都加密的 blob 存储进行都加密。
 * SQL 资源提供程序完全支持 TLS 1.2。 确保通过 SQL RP 管理任何 SQL Server 配置 TLS 1.2_仅_，RP 将默认为的。 所有受支持的版本的 SQL Server 支持 TLS 1.2，请参阅[Microsoft SQL Server 的 TLS 1.2 支持](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server)。
-* 使用 SQL Server 配置管理器设置**ForceEncryption**选项以确保 SQL server 的所有通信都始终处于加密。 请参阅[若要将服务器配置为强制使用加密的连接](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections)。
+* 使用 SQL Server 配置管理器设置**ForceEncryption**选项以确保 SQL server 的所有通信都始终处于加密。 请参阅[若要将服务器配置为强制使用加密的连接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections)。
 * 请确保任何客户端应用程序还通过加密连接进行通信。
 * 配置 RP 信任 SQL Server 实例使用的证书。
 
@@ -106,8 +106,8 @@ ms.locfileid: "38465831"
 
 配置 SQL Always On 实例需要额外的步骤，并且需要三个 Vm （或物理计算机。）本文假定你已有深入了解的 Always On 可用性组。 有关详细信息，请参阅以下文章：
 
-* [引入了 SQL Server Always On 可用性组在 Azure 虚拟机](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
-* [Always On 可用性组 (SQL Server)](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
+* [引入了 SQL Server Always On 可用性组在 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Always On 可用性组 (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
 > SQL 适配器资源提供程序_仅_支持 SQL 2016 SP1 企业版或更高版本实例 Always On 可用性组。 该适配器配置要求在新的 SQL 功能，例如自动种子设定。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: ec30832e6863ad92eff8f5c2e613adc503c73af5
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 06a2d4ab12d2a7e03a538a98f5232a417fb39e4f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075742"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969463"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>基础结构备份服务最佳做法
 
@@ -42,9 +42,7 @@ ms.locfileid: "34075742"
 
 ### <a name="encryption"></a>加密
 
-加密密钥用来对导出到外部存储的备份数据进行加密。 可以使用 AzureStack-Tools 生成密钥。 
-
-![AzureStack-Tools](media\azure-stack-backup\azure-stack-backup-encryption1.png)
+加密密钥用来对导出到外部存储的备份数据进行加密。 作为的一部分生成密钥[使用 PowerShell 为 Azure Stack 启用备份](azure-stack-backup-enable-backup-powershell.md)。
 
 密钥必须存储在一个安全位置（例如，公共 Azure Key Vault 机密）。 在重新部署 Azure Stack 期间，必须使用此密钥。 
 
@@ -56,14 +54,14 @@ ms.locfileid: "34075742"
 
  - 基础结构备份控制器需要按需触发。 建议每天至少备份两次。
  - 备份作业在系统正在运行时执行，因此，管理体验和用户应用程序不会经历停机时间。 对于负载合理的解决方案，备份作业预计要花费 20-40 分钟。
- - 根据 OEM 提供的说明，手动备份网络交换机，并且硬件生命周期主机 (HLH) 应当存储在基础结构备份控制器在其中存储控制层备份数据的同一备份共享中。 请考虑将交换机和 HLH 配置存储在区域文件夹中。 如果在同一区域中有多个 Azure Stack 实例，请考虑为属于某个缩放单位的每个配置使用一个标识符。
+ - 根据 OEM 提供的说明，手动备份网络交换机，并且硬件生命周期主机 (HLH) 应当存储在基础结构备份控制器在其中存储控制层备份数据的同一备份共享中。 请考虑将交换机和 HLH 配置存储在区域文件夹中。 如果在同一区域中有多个 Azure Stack 实例，请考虑为属于某个缩放单元的每个配置使用一个标识符。
 
 ### <a name="folder-names"></a>文件夹名称
 
  - 基础结构会自动创建 MASBACKUP 文件夹。 这是由 Microsoft 管理的一个共享。 你可以在与 MASBACKUP 相同的级别创建共享。 建议不要在不是由 Azure Stack 创建的 MASBACKUP 内创建文件夹或存储数据。 
  -  在文件夹名称中使用 FQDN 和区域来区分来自不同云的备份数据。 Azure Stack 部署和终结点的完全限定的域名 (FQDN) 是区域参数和外部域名参数的组合。 有关详细信息，请参阅 [Azure Stack 数据中心集成 - DNS](azure-stack-integrate-dns.md)。
 
-例如，备份共享是 fileserver01.contoso.com 上托管的 AzSBackups。在该文件共享中，每个 Azure Stack 部署可能有一个使用外部域名的文件夹和一个使用区域名称的子文件夹。 
+例如，备份共享是 fileserver01.contoso.com 上托管的 AzSBackups。 在该文件共享中，每个 Azure Stack 部署可能有一个使用外部域名的文件夹和一个使用区域名称的子文件夹。 
 
 FQDN：contoso.com  
 区域：nyc

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 9fc58d971db18db63e4dc76123ff1311b77e0191
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 496aea1195885c582d3529d7ddb43210aad5fea1
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316427"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990126"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新
 
@@ -41,16 +41,16 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
  
 - <!-- 1779474, 1779458 - IS --> **使用 Av2 和 F 系列虚拟机**。 Azure Stack 现在可以使用基于 Av2 系列和 F 系列虚拟机大小的虚拟机。 有关详细信息，请参阅 [Azure Stack 中支持的虚拟机大小](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)。 
 
-- <!-- 1759172 - IS, ASDK --> **新的管理订阅**。 与 1804年有两个新的订阅类型可用在门户中。 这些新的订阅类型是从版本 1804年开始的新 Azure 堆栈安装除了默认提供程序订阅和可见。 *请不要使用此版本的 Azure 堆栈的这些新的订阅类型*。 我们将公布可以使用使用将来的更新这些订阅类型的可用性。 
+- <!-- 1759172 - IS, ASDK --> **新的管理订阅**。 应用更新 1804 后，门户中会显示两个新的订阅类型。 这些新订阅类型是对“默认提供程序”订阅的补充，从版本 1804 开始，会显示在新的 Azure Stack 安装中。 请不要在此 Azure Stack 版本中使用这些新订阅类型。 如果这些订阅将来可用，我们将在相应的更新中发布通告。 
 
-  如果你更新到版本 1804 Azure 堆栈，则两个新的订阅类型不可见。 但是，Azure 堆栈的新部署集成系统，并且 Azure 堆栈开发工具包版本 1804年或更高版本的安装有权访问所有三个订阅类型。  
+  如果将 Azure Stack 更新到版本 1804，这两个新订阅类型将不可见。 但是，Azure Stack 集成系统的新部署以及 Azure Stack 开发工具包 1804 或更高版本的安装能够访问所有三个订阅类型。  
 
-  这些新的订阅类型是更改的更大，若要保护的默认提供程序订阅，并以使其更轻松地部署共享的资源，如 SQL 托管服务器的一部分。 我们将此更大的更改以及将来的更新的更多部件添加到 Azure 堆栈时，部署在这些新的订阅类型下的资源可能会丢失。 
+  这些新订阅类型是某个重大更改的一部分，旨在保护“默认提供程序”订阅，以及方便部署 SQL 宿主服务器等共享资源。 在将来对 Azure Stack 进行更新的过程中，随着我们不断在此项重大更改中添加更多的部件，在这些新订阅类型下部署的资源可能会丢失。 
 
-  现在可见的三个订阅类型包括：  
-  - 默认提供程序订阅： 继续同时使用这种订阅类型。 
-  - 计数订阅：*不使用此订阅类型。*
-  - 消耗订阅：*不使用此订阅类型*
+  目前可见的三个订阅类型是：  
+  - “默认提供程序”订阅：请继续使用此订阅类型。 
+  - “计量”订阅：请不要继续使用此订阅类型。
+  - “消耗量”订阅：请不要继续使用此订阅类型。
 
   
 
@@ -68,7 +68,7 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 
 ## <a name="additional-releases-timed-with-this-update"></a>随此更新一起推出的其他发行版  
 以下版本现在可用，但不需要 Azure Stack 更新 1804。
-- **更新到 Microsoft Azure 堆栈 System Center Operations Manager 监视包**。 适用于 Azure Stack 的 Microsoft System Center Operations Manager 监视包的新版本 (1.0.3.0) 已可供[下载](https://www.microsoft.com/download/details.aspx?id=55184)。 使用此版本，可以在添加连接的 Azure Stack 部署时使用服务主体。 此版本还提供更新管理体验，可让你直接从 Operations Manager 中执行修正操作。 还有新的仪表板，用于显示资源提供程序、缩放单元和缩放单元节点。
+- **更新到 Microsoft Azure Stack 的 System Center Operations Manager 监视包**。 适用于 Azure Stack 的 Microsoft System Center Operations Manager 监视包的新版本 (1.0.3.0) 已可供[下载](https://www.microsoft.com/download/details.aspx?id=55184)。 使用此版本，可以在添加连接的 Azure Stack 部署时使用服务主体。 此版本还提供更新管理体验，可让你直接从 Operations Manager 中执行修正操作。 还有新的仪表板，用于显示资源提供程序、缩放单元和缩放单元节点。
 
 - **新的 Azure Stack 管理 PowerShell 版本 1.3.0**。  Azure Stack PowerShell 1.3.0 现已可供安装。 此版本针对所有管理资源提供程序提供了用来管理 Azure Stack 的命令。  在此版本中，某些内容将从 Azure Stack 工具 GitHub [存储库](https://github.com/Azure/AzureStack-Tools)中弃用。 
 
@@ -83,14 +83,14 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 - 在应用 Azure Stack 1804 更新之前安装 Azure Stack [1803 更新](azure-stack-update-1803.md)。    
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题   
-- 在安装期间 1804年更新，你可能会看到警报标题*错误 – FaultType UserAccounts.New 模板是缺失。*  可以放心地忽略这些警报。 更新到 1804 后，这些警报将自动关闭。   
+- 1804 更新的安装期间，可能会看到警报标题*错误-FaultType UserAccounts.New 模板缺少。*  可以放心地忽略这些警报。 更新到 1804 后，这些警报将自动关闭。   
  
 - <!-- TBD - IS --> 在安装此更新的过程中，请勿尝试创建虚拟机。 有关如何管理更新的详细信息，请参阅[在 Azure Stack 中管理更新的概述](azure-stack-updates.md#plan-for-updates)。
 
 
 ### <a name="post-update-steps"></a>更新后步骤
-安装之后 1804年，安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
- - [KB 4341392-Azure 堆栈修补程序 1.0.180523.11](https://support.microsoft.com/en-us/help/4341392)。
+1804 的安装之后, 安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
+ - [KB 4344114-Azure Stack 修补程序 1.0.180527.15](https://support.microsoft.com/help/4344114)。
 
 
 
@@ -99,13 +99,13 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 下面是内部版本 **20180513.1** 的安装后已知问题。
 
 #### <a name="portal"></a>门户
-- <!-- 1272111 - IS --> 在安装或更新到此版本的 Azure 堆栈后，你可能不能在管理门户中查看 Azure 堆栈缩放单位。  
-  解决方法： 使用 PowerShell，若要查看有关扩展单位的信息。 有关详细信息，请参阅[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0)Azure 堆栈模块 1.3.0 内容。 
+- <!-- 1272111 - IS --> 安装或更新到此 Azure Stack 版本后，可能无法在管理门户中查看 Azure Stack 缩放单元。  
+  解决方法：使用 PowerShell 查看有关缩放单元的信息。 有关详细信息，请参阅 Azure Stack 模块 1.3.0 的[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0)内容。 
 
-- <!-- 2332636 - IS -->  当你 Azure 堆栈标识系统并更新到此版本的 Azure 堆栈使用 AD FS 时，默认提供程序订阅的默认所有者将重置为内置**CloudAdmin**用户。  
-  解决方法： 若要解决此问题，在安装此更新后，使用从步骤 3[触发器的自动化功能来配置声明提供方信任 Azure 堆栈中的](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程重新设置默认提供程序订阅的所有者。   
+- <!-- 2332636 - IS --> 对 Azure Stack 标识系统使用 AD FS 并更新到此版本的 Azure Stack 时，默认提供程序订阅的默认所有者将重置为内置的 **CloudAdmin** 用户。  
+  解决方法：若要在安装此更新后解决该问题，请使用[触发自动化以便在 Azure Stack 中配置声明提供程序信任](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程中的步骤 3 来重置默认提供程序订阅的所有者。   
 
-- <!-- TBD - IS ASDK --> 某些管理订阅类型将不可用。  当你升级到此版本的 Azure 堆栈时，两个订阅类型，也是[引入了版本 1804年](#new-features)在控制台中不可见。 这是正常情况。 不可用的订阅类型*计数订阅*，和*消耗订阅*。 这些订阅类型在从版本 1804年开始的新 Azure 堆栈环境中可见，但尚不可供使用。 你应继续使用*默认提供程序*订阅类型。  
+- <!-- TBD - IS ASDK --> 某些管理订阅类型不可用。  将 Azure Stack 升级到此版本时，控制台中不会显示[版本 1804 引入](#new-features)的两个订阅类型。 这是正常情况。 不可用的订阅类型为“计量订阅”和“消耗订阅”。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。  
 
 
 - <!-- TBD -  IS ASDK -->在管理员门户中[从下拉列表提交新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 请改用以下链接：     
@@ -129,21 +129,21 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 
 
 #### <a name="health-and-monitoring"></a>运行状况和监视
-- <!-- 1264761 - IS ASDK -->  你可能会看到的警报*运行状况控制器*组件具有下列详细信息：  
+- <!-- 1264761 - IS ASDK --> 可能会看到具有以下详细信息的*运行状况控制器*组件的警报：  
 
-   警报 # 1:
-   - 名称： 基础结构角色不正常
-   - 严重性： 警告
-   - 组件： 运行状况控制器
-   - 描述： 检测信号扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。  
+   警报 #1：
+   - 名称：基础结构角色不正常
+   - 严重性：警告
+   - 组件：运行状况控制器
+   - 说明：运行状况控制器检测信号扫描仪不可用。 这可能会影响运行状况报告和指标。  
 
-  警报 # 2:
-   - 名称： 基础结构角色不正常
-   - 严重性： 警告
-   - 组件： 运行状况控制器
-   - 描述： 错误扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。
+  警报 #2：
+   - 名称：基础结构角色不正常
+   - 严重性：警告
+   - 组件：运行状况控制器
+   - 说明：运行状况控制器故障扫描仪不可用。 这可能会影响运行状况报告和指标。
 
-  可放心忽略这两个警报。 它们将自动关闭随着时间的推移。  
+  可以放心地忽略这两个警报。 它们将随着时间的推移自动关闭。  
  
 
 #### <a name="compute"></a>计算
@@ -285,7 +285,7 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 
 - <!-- TBD - IS ASDK --> 若要横向扩展基础结构（辅助角色、管理角色、前端角色），必须按照计算发行说明中的说明来使用 PowerShell。
 
-- <!-- TBD - IS ASDK --> 仅可以将应用程序服务部署到**默认提供程序订阅**在此时间。  在未来的更新 App Service 将部署到新计数的订阅中 Azure 堆栈 1804年引入和所有现有部署将迁移到此新订阅还。
+- <!-- TBD - IS ASDK --> 目前，应用服务只能部署到“默认提供程序订阅”。  在将来的更新中，应用服务将部署到 Azure Stack 1804 中引入的新“计量订阅”，所有现有部署也会迁移到此新订阅。
 
 #### <a name="usage"></a>使用情况  
 - <!-- TBD - IS ASDK --> 公共 IP 地址使用计量数据针对每条记录显示相同的 *EventDateTime* 值，而不是创建记录时显示的 *TimeDate* 时间戳。 目前，无法使用此数据来执行公共 IP 地址用量的准确计帐。

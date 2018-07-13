@@ -1,6 +1,6 @@
 ---
-title: Azure 堆栈 1805年更新 |Microsoft 文档
-description: 了解有关新增功能 1805年更新中对 Azure 堆栈集成系统，包括已知的问题和下载更新的位置。
+title: Azure Stack 1805 更新 | Microsoft Docs
+description: 了解 Azure Stack 集成系统 1805 更新的新增功能，包括已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,47 +12,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 80ed0d2353fc6ea3a515c0d05475c713920abe46
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 3ef910cc588b095b0c10f5e0928d7fadf17113f6
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295741"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989803"
 ---
-# <a name="azure-stack-1805-update"></a>Azure 堆栈 1805年更新
+# <a name="azure-stack-1805-update"></a>Azure Stack 1805 更新
 
 *适用于：Azure Stack 集成系统*
 
-本文介绍改进和 1805年更新包的已知问题有关此版本中，以及在何处下载此更新中修复。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
+本文介绍 1805 更新包中的改进与修复、此版本的已知问题，以及更新的下载位置。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]        
 > 此更新包仅适用于 Azure Stack 集成系统。 请勿将此更新包应用于 Azure Stack 开发工具包。
 
 ## <a name="build-reference"></a>内部版本参考    
-Azure 堆栈 1805年更新生成号是**1.1805.1.47**。  
+Azure Stack 1805 更新内部版本号为 **1.1805.1.47**。  
 
 > [!TIP]  
-> 根据客户反馈，没有对使用 Microsoft Azure 堆栈中的版本架构的更新。  利用此更新，1805，启动新的架构更好地表示当前的云版本。  
+> 根据客户反馈，没有用于 Microsoft Azure Stack 中的版本架构的更新。  从 1805 更新开始，新架构更能代表当前的云版本。  
 > 
-> 现在，版本架构已*Version.YearYearMonthMonth.MinorVersion.BuildNumber*其中的第二个和第三个集指示版本和发行版本。 例如，1805.1 表示*发布到生产*1805年 (RTM) 版本。  
+> 版本架构目前为 *Version.YearYearMonthMonth.MinorVersion.BuildNumber*，其中的第二和第三组数字表示版本和发行版。 例如，1805.1 表示 1805 的正式发布 (RTM) 版本。  
 
 
 ### <a name="new-features"></a>新增功能
 此更新包含对 Azure Stack 的以下改进。
 <!-- 2297790 - IS, ASDK --> 
-- **Azure 堆栈现在包括*Syslog*客户端**作为*预览功能*。 此客户端允许的转发到 Syslog 服务器或安全信息和事件管理 (SIEM) 软件外部 Azure 堆栈的 Azure 堆栈基础结构与相关的审核和安全日志。 目前，Syslog 客户端仅支持未经身份验证的 UDP 连接在默认端口为 514。 每个 Syslog 消息的负载的格式设置共同点事件格式 (CEF)。 
+- **Azure Stack 现已将 *Syslog* 客户端**包含为预览功能。 此客户端允许将与 Azure Stack 基础结构相关的审核和安全日志转发到 Azure Stack 外部的 Syslog 服务器或安全信息与事件管理 (SIEM) 软件。 目前，Syslog 客户端仅支持通过默认端口 514 建立的未经身份验证的 UDP 连接。 每条 Syslog 消息的有效负载采用通用事件格式 (CEF)。 
 
-  若要配置 Syslog 客户端，使用**集 SyslogServer**特权终结点中公开的 cmdlet。 
+  若要配置 Syslog 客户端，请使用特权终结点中公开的 **Set-SyslogServer** cmdlet。 
 
-  借助此预览版，你可能会看到以下三个警报。 在出现由 Azure 堆栈，这些警报将包括*说明*和*修正*指南。 
-  - 关闭标题： 代码完整性  
-  - 在审核模式下的标题： 代码完整性 
-  - 标题： 用户帐户创建
+  此预览版中可能会出现以下三种警报。 当 Azure Stack 显示这些警报时，警报中会包含说明和补救指导。 
+  - 标题：代码完整性关闭  
+  - 标题：代码完整性处于审核模式 
+  - 标题：已创建用户帐户
 
-  预览此功能时，它应不能依靠它在生产环境中。   
+  此功能目前以预览版提供，在生产环境中请不要依赖此功能。   
 
 
 
@@ -60,7 +60,7 @@ Azure 堆栈 1805年更新生成号是**1.1805.1.47**。
 ### <a name="fixed-issues"></a>修复的问题
 
 <!-- # - applicability -->
-- 我们解决了问题阻止[从下拉列表中打开新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)从管理门户中。 按预期方式工作现在此选项。 
+- 修复以下问题阻止[从下拉列表中打开新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)从管理门户中。 此选项现在按预期工作。 
 
 - 针对性能、稳定性、安全性以及 Azure Stack 所用操作系统的**各种修复**。
 
@@ -72,37 +72,37 @@ Azure 堆栈 1805年更新生成号是**1.1805.1.47**。
 ## <a name="before-you-begin"></a>开始之前    
 
 ### <a name="prerequisites"></a>必备组件
-- 安装 Azure 堆栈[1804年更新](azure-stack-update-1804.md)应用 Azure 堆栈 1805年更新前。    
-- 在开始安装更新 1805年之前，运行[测试 AzureStack](azure-stack-diagnostic-test.md)验证 Azure 堆栈的状态并解决找到的任何操作问题。 此外查看活动警报，并解决任何不需要采取操作。 
+- 在应用 Azure Stack 1805 更新之前安装 Azure Stack [1804 更新](azure-stack-update-1804.md)。    
+- 开始安装更新 1805 之前，请先运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 来验证 Azure Stack 的状态，并解决出现的所有操作问题。 另外，请查看活动警报，并解决所有需要采取措施的警报。 
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题   
-- 在安装期间 1805年更新，你可能会看到警报标题*错误 – FaultType UserAccounts.New 模板是缺失。*  可以放心地忽略这些警报。 对 1805年更新完成后，这些警报将自动关闭。   
+- 1805 更新的安装期间，可能会看到警报标题*错误-FaultType UserAccounts.New 模板缺少。*  可以放心地忽略这些警报。 更新到 1805 之后，这些警报将自动关闭。   
 
-- <!-- 2489559 - IS --> 在安装此更新的过程中，请勿尝试创建虚拟机。 有关管理更新，seSe[管理 Azure 堆栈概述中的更新](azure-stack-updates.md#plan-for-updates)。
+- <!-- 2489559 - IS --> 在安装此更新的过程中，请勿尝试创建虚拟机。 有关如何管理更新的详细信息，请参阅[在 Azure Stack 中管理更新的概述](azure-stack-updates.md#plan-for-updates)。
 
 
 ### <a name="post-update-steps"></a>更新后步骤
-安装之后 1805年，安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
- - [KB 4340474-Azure 堆栈修补程序 1.1805.4.53](https://support.microsoft.com/en-us/help/4340474)。
+安装 1805 之后，请安装所有适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
+ - [KB 4344102-Azure Stack 修补程序 1.1805.7.57](https://support.microsoft.com/help/4344102)。
 
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
-以下是此内部版本的安装后已知的问题。
+下面是此内部版本的安装后已知问题。
 
 ### <a name="portal"></a>门户  
-- <!-- 2551834 - IS, ASDK --> 当选择**概述**为存储帐户中的管理员或用户门户，从信息*Essentials*窗格不会显示。  Essentials 窗格显示有关帐户，如信息其*资源组*，*位置*，和*订阅 ID*。  概述用于其他选项可访问，如*服务*和*监视*，以及作为选项到*在资源管理器中打开*或*删除存储帐户*. 
+- <!-- 2551834 - IS, ASDK --> 在管理员门户或用户门户中选择存储帐户的“概述”时，“概要”窗格中的信息不会显示。  “概要”窗格显示有关帐户的信息，例如其资源组、位置和订阅 ID。  可以访问“概述”中的其他选项，例如“服务”和“监视”，以及“在资源管理器中打开”或“删除存储帐户”。 
 
-  若要查看不可用的信息，请使用[Get azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) PowerShell cmdlet。 
+  若要查看未显示的信息，请使用 [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) PowerShell cmdlet。 
 
-- <!-- 2551834 - IS, ASDK --> 当选择**标记**信息对于管理员或用户门户网站中的存储帐户，未能加载而不会显示。  
+- <!-- 2551834 - IS, ASDK --> 在管理员门户或用户门户中选择存储帐户的“标记”时，信息无法加载且不显示。  
 
-  若要查看不可用的信息，请使用[Get AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0) PowerShell cmdlet。
+  若要查看未显示的信息，请使用 [Get-AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0) PowerShell cmdlet。
 
 
-- <!-- 2332636 - IS -->  当你 Azure 堆栈标识系统并更新到此版本的 Azure 堆栈使用 AD FS 时，默认提供程序订阅的默认所有者将重置为内置**CloudAdmin**用户。  
-  解决方法： 若要解决此问题，在安装此更新后，使用从步骤 3[触发器的自动化功能来配置声明提供方信任 Azure 堆栈中的](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程重新设置默认提供程序订阅的所有者。   
+- <!-- 2332636 - IS --> 对 Azure Stack 标识系统使用 AD FS 并更新到此版本的 Azure Stack 时，默认提供程序订阅的默认所有者将重置为内置的 **CloudAdmin** 用户。  
+  解决方法：若要在安装此更新后解决该问题，请使用[触发自动化以便在 Azure Stack 中配置声明提供程序信任](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程中的步骤 3 来重置默认提供程序订阅的所有者。   
 
-- <!-- TBD - IS ASDK --> 某些管理订阅类型将不可用。  当你升级到此版本的 Azure 堆栈时，两个订阅类型，也是[引入了版本 1804年](azure-stack-update-1804.md#new-features)在控制台中不可见。 这是正常情况。 不可用的订阅类型*计数订阅*，和*消耗订阅*。 这些订阅类型在从版本 1804年开始的新 Azure 堆栈环境中可见，但尚不可供使用。 你应继续使用*默认提供程序*订阅类型。  
+- <!-- TBD - IS ASDK --> 某些管理订阅类型不可用。  将 Azure Stack 升级到此版本时，控制台中不会显示[版本 1804 引入](azure-stack-update-1804.md#new-features)的两个订阅类型。 这是正常情况。 不可用的订阅类型为“计量订阅”和“消耗订阅”。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。  
 
 - <!-- 2403291 - IS ASDK --> 可能无法使用管理员和用户门户底部的水平滚动条。 如果无法访问水平滚动条，请使用痕迹导航到门户中的上一边栏选项卡，只需从门户左上角的痕迹列表中选择要查看的边栏选项卡的名称即可。
   ![痕迹](media/azure-stack-update-1804/breadcrumb.png)
@@ -117,30 +117,42 @@ Azure 堆栈 1805年更新生成号是**1.1805.1.47**。
 
 
 ### <a name="health-and-monitoring"></a>运行状况和监视
-- <!-- 1264761 - IS ASDK -->  你可能会看到的警报*运行状况控制器*组件具有下列详细信息：  
+- <!-- 1264761 - IS ASDK --> 可能会看到具有以下详细信息的*运行状况控制器*组件的警报：  
+- 
+   警报 #1：
+   - 名称：基础结构角色不正常
+   - 严重性：警告
+   - 组件：运行状况控制器
+   - 说明：运行状况控制器检测信号扫描仪不可用。 这可能会影响运行状况报告和指标。  
 
-   警报 # 1:
-   - 名称： 基础结构角色不正常
-   - 严重性： 警告
-   - 组件： 运行状况控制器
-   - 描述： 检测信号扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。  
+  警报 #2：
+   - 名称：基础结构角色不正常
+   - 严重性：警告
+   - 组件：运行状况控制器
+   - 说明：运行状况控制器故障扫描仪不可用。 这可能会影响运行状况报告和指标。
 
-  警报 # 2:
-   - 名称： 基础结构角色不正常
-   - 严重性： 警告
-   - 组件： 运行状况控制器
-   - 描述： 错误扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。
+  可以安全地忽略 #1 和 2 这两个警报，它们将自动关闭随着时间的推移。 
 
-  这两个警报可以安全地忽略，并且它们将自动关闭随着时间的推移。  
+  您可能还会看到以下警报*容量*。 此警报描述中标识的可用内存的百分比而异：  
 
-- <!-- 2368581 - IS. ASDK --> Azure 堆栈运算符，如果你收到低内存警报，并且与部署租户虚拟机失败*Fabric VM 创建错误*，它是可能的 Azure 堆栈戳的可用内存不足。 使用[Azure 堆栈容量规划器](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822)以更好地了解用于工作负荷的可用容量。 
+  警报 #3:
+   - 名称： 低内存容量
+   - 严重性： 严重
+   - 组件： 容量
+   - 说明： 区域占用了多个 80.00%的可用内存。 使用大量的内存中创建虚拟机可能会失败。  
+
+  在此版本的 Azure Stack 中，可以正确触发此警报。 如果租户虚拟机继续成功部署，可以安全地忽略此警报。 
+  
+  警报 #3 不会自动关闭。 如果关闭此警报 Azure Stack 将在 15 分钟内创建的同一个警报。  
+
+- <!-- 2368581 - IS. ASDK --> 如果你收到内存不足警报和租户虚拟机无法使用部署 Azure Stack 操作员*Fabric VM 创建错误*，可以在 Azure Stack 模具的可用内存不足。 请使用 [Azure Stack 容量规划工具](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822)来充分了解可供工作负荷使用的容量。 
 
 
 ### <a name="compute"></a>计算
 - <!-- TBD - IS, ASDK --> 选择虚拟机大小进行虚拟机部署时，某些 F 系列 VM 大小在创建 VM 时所需的大小选择器中不可见。 以下 VM 大小不显示在选择器中：*F8s_v2*、*F16s_v2*、*F32s_v2* 和 *F64s_v2*。  
   解决方法是，使用下列方法之一部署 VM。 在每种方法中，都需要指定要使用的 VM 大小。
 
-  - **Azure 资源管理器模板：** 时使用模板时，将设置*vmSize*中你想要使用的 VM 大小相等的模板。 例如，以下条目用于部署的 VM，使用*F32s_v2*大小：  
+  - **Azure 资源管理器模板：** 使用模板时，请将模板中的 *vmSize* 设置为想要使用的 VM 大小。 例如，以下条目用于部署使用 *F32s_v2* 大小的 VM：  
 
     ```
         "properties": {
@@ -157,7 +169,7 @@ Azure 堆栈 1805年更新生成号是**1.1805.1.47**。
 
 - <!-- TBD - IS --> 通过转到“新建” > **“计算”** > “可用性集”在门户中创建可用性集时，只能创建 1 个包含 1 个容错域和 1 个更新域的可用性集。 解决方法是在创建新的虚拟机时，通过 PowerShell、CLI 或门户来创建可用性集。
 
-- <!-- TBD - IS ASDK --> 当 Azure 堆栈用户门户上创建虚拟机时，门户将显示可以将附加到的 DS 系列 VM 的数据磁盘数目不正确。 DS 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
+- <!-- TBD - IS ASDK --> 在 Azure Stack 用户门户中创建虚拟机时，该门户显示的可以附加到 DS 系列 VM 的数据磁盘数不正确。 DS 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
 
 - <!-- TBD - IS ASDK --> 无法创建 VM 映像时，可能会向 VM 映像计算边栏选项卡添加一个无法删除的故障项。
 
@@ -179,7 +191,7 @@ Azure 堆栈 1805年更新生成号是**1.1805.1.47**。
 
   目前只能将新建的公共 IP 地址用于新建的 VM。
 
-  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 所有未来都尝试连接通过在连接中，于原始 VM，而不适用于新一个此 IP 地址结果。
+  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原始 VM，而不是新的 VM。
 
 - <!-- 2292271 - IS ASDK --> 如果提高属于某个套餐和计划的网络资源的配额限制，而该套餐和计划与租户订阅相关联，则新的限制不会应用到该订阅。 但是，新限制会应用到在配额提高后创建的新订阅。
 
@@ -266,9 +278,9 @@ Azure 堆栈 1805年更新生成号是**1.1805.1.47**。
 
 
 > [!NOTE]  
-> <!-- TBD - IS --> 更新到 Azure 堆栈 1805年后，你可以继续使用以前部署的 SQL 和 MySQL 资源提供。  建议在新版本发布后更新 SQL 和 MySQL。 与 Azure Stack 一样，请将更新按顺序应用到 SQL 和 MySQL 资源提供程序。 例如，如果你使用版本 1803年，首先应用版本 1804，，然后更新到 1805年。      
+> <!-- TBD - IS --> 更新到 Azure Stack 1805 后，可以继续使用以前部署的 SQL 和 MySQL 资源提供程序。  建议在新版本发布后更新 SQL 和 MySQL。 与 Azure Stack 一样，请将更新按顺序应用到 SQL 和 MySQL 资源提供程序。 例如，如果使用版本 1803，请先应用版本 1804，然后更新到 1805。      
 >   
-> 更新 1805年安装不影响当前使用的 SQL 或 MySQL 资源提供程序由你的用户。
+> 安装更新 1805 不会影响用户当前对 SQL 或 MySQL 资源提供程序的使用。
 > 不管所用资源提供程序的版本如何，在其数据库中的用户数据不会受到影响，仍然可用。    
 
 
@@ -278,7 +290,7 @@ Azure 堆栈 1805年更新生成号是**1.1805.1.47**。
 
 - <!-- 2489178 - IS ASDK --> 若要横向扩展基础结构（辅助角色、管理角色、前端角色），必须按照计算发行说明中的说明来使用 PowerShell。
 
-- <!-- TBD - IS ASDK --> 仅可以将应用程序服务部署到*默认提供程序订阅*在此时间。 在将来更新中，App Service 将部署到新*计数订阅*Azure 堆栈 1804年中引入的。 当使用支持计量，则所有的现有部署将迁移到这个新的订阅类型中。
+- <!-- TBD - IS ASDK --> 目前，应用服务只能部署到“默认提供程序订阅”。 在将来的更新中，应用服务将部署到 Azure Stack 1804 中引入的新“计量订阅”。 支持使用“计量”时，现有的所有部署将迁移到此新订阅类型。
 
 
 ### <a name="usage"></a>使用情况  
@@ -290,7 +302,7 @@ Azure 堆栈 1805年更新生成号是**1.1805.1.47**。
 
 
 ## <a name="download-the-update"></a>下载更新
-你可以下载 Azure 堆栈 1805年更新包从[此处](https://aka.ms/azurestackupdatedownload)。
+可从[此处](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1805 更新包。
 
 
 ## <a name="see-also"></a>另请参阅

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/02/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 9216d43bd6431bb16c14e0bf2d8fb7d174365417
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c61e94191a20696a1fa8c8e632a83f980f256934
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902694"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971085"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure 市场项
 
@@ -37,7 +37,7 @@ ms.locfileid: "37902694"
 |![自定义脚本扩展](media/azure-stack-marketplace-azure-items/cse.png) | [自定义脚本扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| **请下载此更新，此更新针对用于 Windows 的自定义脚本扩展的内置版本。** | Microsoft | Windows |
 |![PowerShell DSC 扩展](media/azure-stack-marketplace-azure-items/dsc.png) | [PowerShell DSC 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| **请将此更新下载到 PowerShell DSC 扩展的内置版本。更新为支持 TLS v1.2。** | Microsoft | Windows |
 | ![Microsoft 反恶意软件扩展](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft 反恶意软件扩展](https://docs.microsoft.com/azure/security/azure-security-antimalware)| 适用于 Azure 的 Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在在后台运行而无需人工干预。 **此更新下载到的反恶意软件扩展的内置版本。** | Microsoft | Windows |
-| ![Microsoft Azure 诊断扩展](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft Azure 诊断扩展](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-windows)| Microsoft Azure 诊断是 Azure 中可启用对已部署的应用程序的诊断数据收集功能。 **此更新下载到的诊断扩展的 Windows 中内置版本。** | Microsoft | Windows || ![Microsoft 监视扩展](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft Monitoring Agent 扩展](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/oms-windows)| Microsoft Monitoring Agent 扩展用于与 OMS 提供监视功能的虚拟机。 **此更新下载到的监视代理扩展的 Windows 中内置版本。** | Microsoft | Windows |
+| ![Microsoft Azure 诊断扩展](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft Azure 诊断扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-windows)| Microsoft Azure 诊断是 Azure 中可启用对已部署的应用程序的诊断数据收集功能。 **此更新下载到的诊断扩展的 Windows 中内置版本。** | Microsoft | Windows || ![Microsoft 监视扩展](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft Monitoring Agent 扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)| Microsoft Monitoring Agent 扩展用于与 OMS 提供监视功能的虚拟机。 **此更新下载到的监视代理扩展的 Windows 中内置版本。** | Microsoft | Windows |
 |![自定义脚本扩展](media/azure-stack-marketplace-azure-items/cse.png) | [自定义脚本扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)|**请将此更新下载到 Linux 的自定义脚本扩展的内置版本。有多个版本的此扩展，你应下载 1.5.2.1 和 2.0.x。** | Microsoft | Linux |
 | ![适用于 Linux 的 VM 访问权限](media/azure-stack-marketplace-azure-items/cse.png) | [适用于 Linux 的 VM 访问](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| **请下载此更新，此更新针对适用于 Linux 的 VM 访问权限扩展的内置版本。如果计划使用 Debian Linux VM，此更新很重要。** | Microsoft | Linux |
 | ![适用于 Linux 的 Acronis 备份扩展](media/azure-stack-marketplace-azure-items/acronis.png) | [适用于 Linux 的 Acronis 备份扩展](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | 适用于 Microsoft Azure 的 Acronis 备份扩展是数据保护产品的 Acronis 备份系列的一部分。 | Acronis International GmbH。 | Linux |
@@ -163,7 +163,7 @@ Microsoft Azure Stack 支持以下 Azure Marketplace 虚拟机和解决方案模
 | ![Nginx](media/azure-stack-marketplace-azure-items/nginx.png) | [Nginx](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nginxstack) | 完整的 PHP、 MySQL 和 Nginx 开发环境。 | Bitnami |
 | ![Noalyss](media/azure-stack-marketplace-azure-items/noalyss.png) | [Noalyss](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.noalyss) | 功能强大的复式记帐系统。 | Bitnami |
 | ![Node.js](media/azure-stack-marketplace-azure-items/nodejs.png) | [node.js](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nodejs) | 开放源代码以 Javascript 编写的易于生成环境。 | Bitnami |
-| ![node.js 的高可用性群集](media/azure-stack-marketplace-azure-items/nodejs.png) | [Node.js 高可用性群集](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nodejs-ha) | Node.js 是基于 V8 JavaScript 引擎的运行时环境。 其事件驱动、 无阻塞 I/O 模型可实现快速、 可缩放的、 需要进行大量数据的服务器应用程序的开发。 此解决方案使用多个 Vm 以使用共享的文件系统中创建 Node.js 群集和负载均衡功能。  **此解决方案模板还要求 Debian 8、 Linux 2.0 扩展的自定义脚本和数据库。**| Bitnami |
+| ![Node.js 高可用性群集](media/azure-stack-marketplace-azure-items/nodejs.png) | [Node.js 高可用性群集](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nodejs-ha) | Node.js 是基于 V8 JavaScript 引擎的运行时环境。 其事件驱动、 无阻塞 I/O 模型可实现快速、 可缩放的、 需要进行大量数据的服务器应用程序的开发。 此解决方案使用多个 Vm 以使用共享的文件系统中创建 Node.js 群集和负载均衡功能。  **此解决方案模板还要求 Debian 8、 Linux 2.0 扩展的自定义脚本和数据库。**| Bitnami |
 | ![Odoo](media/azure-stack-marketplace-azure-items/odoo.png) | [Odoo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.odoo) | 可以有效地连接业务流程的 ERP 和 CRM 系统。 | Bitnami |
 | ![Open Atrium](media/azure-stack-marketplace-azure-items/openatrium.png) | [Open Atrium](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.openatrium) | 灵活且多面的 Intranet 平台。 | Bitnami |
 | ![OpenCart](media/azure-stack-marketplace-azure-items/opencart.png) | [OpenCart](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.opencart) | 适用于在线商家的免费电子商务平台。 | Bitnami |
@@ -228,7 +228,7 @@ Microsoft Azure Stack 支持以下 Azure Marketplace 虚拟机和解决方案模
   **下载两种 Chef 市场项** | Chef Software, Inc |
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | 轻松可靠地控制、监视和加密 VM。 **下载所有的 CloudLink SecureVM 项。** | Dell EMC |
 | ![EventTracker SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [EventTracker SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | EventTracker SIEM 是一个全面的安全平台，可提供高级安全审核就绪法规遵从性功能的工具。 | EventTracker |
-| ![f5](media/azure-stack-marketplace-azure-items/f5.png) | [f5 BIG-IP 虚拟版本](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | 高级的负载平衡、 GSLB、 网络防火墙、 DNS、 WAF 和应用程序访问权限。 | F5 网络 |
+| ![F5](media/azure-stack-marketplace-azure-items/f5.png) | [f5 BIG-IP 虚拟版本](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | 高级的负载平衡、 GSLB、 网络防火墙、 DNS、 WAF 和应用程序访问权限。 | F5 网络 |
 | ![Hortonworks 数据平台 (HDP) 沙盒](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks 数据平台 (HDP) 沙盒](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | 由 HDP 2.5 100%开源平台的电源 Hadoop、 Spark、 Storm、 HBase、 Kafka、 Hive、 Ambari。 | Hortonworks |
 | ![KEMP LoadMaster 负载均衡器 ADC 内容交换机](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster 负载均衡器 ADC 内容交换机](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 第 4-7 层应用程序传送控制器 (ADC) 负载均衡器、内容交换机和流量管理器。 | KEMP Technologies Inc. |
 | ![NRI mPLAT 套件-多云指挥](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT 套件-多云指挥](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | 单个窗格中的玻璃若要监视，配置、 预配、 自动化和控制任何工作负荷或云。 | NRI |

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 74a4b77bd9823e5462eecd438cf4c1d863e79892
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 80ccedc7299836cae689edd8a277a7c6d23befa7
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300632"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345050"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>添加示例表述并通过实体进行标记
 
@@ -194,7 +194,7 @@ Fix this - moved to luis-how-to-add-intents.md - how ?
 
 -->
 ## <a name="train-your-app-after-changing-model-with-utterances"></a>通过表述更改模型后对应用进行训练
-添加、编辑或删除表述后，请先[训练](luis-how-to-train.md)再[发布](PublishApp.md)应用，这样更改才会影响终结点查询。 
+添加、编辑或删除表述后，请先[训练](luis-how-to-train.md)再[发布](luis-how-to-publish-app.md)应用，这样更改才会影响终结点查询。 
 
 ## <a name="next-steps"></a>后续步骤
 

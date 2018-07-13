@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 07/11/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 752481186167fccb46d5bf3beb87c1507e0f4feb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.openlocfilehash: 2d16d1dc7a53ca388b00ba02b6447e178a9f6edb
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936511"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989231"
 ---
 # <a name="network-connectivity"></a>网络连接
 本文提供 Azure Stack 网络基础架构信息，可帮助你确定如何以最佳方式将 Azure Stack 集成到现有的网络环境。 
@@ -29,7 +29,7 @@ ms.locfileid: "33936511"
 > 若要从 Azure Stack 解析外部 DNS 名称（例如 www.bing.com），必须提供 DNS 服务器来转发 DNS 请求。 有关 Azure Stack DNS 要求的详细信息，请参阅 [Azure Stack 数据中心集成 - DNS](azure-stack-integrate-dns.md)。
 
 ## <a name="physical-network-design"></a>物理网络设计
-Azure Stack 解决方案需有弹性且高度可用的物理基础结构才能支持其操作和服务。 下图显示了建议的设计：
+Azure Stack 解决方案需有弹性且高度可用的物理基础结构才能支持其操作和服务。 从 ToR 到边界交换机的上行仅限于 SFP + 媒体和 1 GB 或 10 GB 的速度。 请与原始设备制造商 (OEM) 硬件供应商的可用性。 下图显示了建议的设计：
 
 ![建议的 Azure Stack 网络设计](media/azure-stack-network/recommended-design.png)
 
@@ -54,14 +54,14 @@ Azure Stack 的网络基础结构包括交换机上配置的多个逻辑网络�
 ![逻辑网络示意图和交换机连接](media/azure-stack-network/NetworkDiagram.png)
 
 ### <a name="bmc-network"></a>BMC 网络
-此网络专门用于将所有基板管理控制器（也称为服务处理器，例如 iDRAC、iLO、iBMC 等）连接到管理网络。 如果硬件生命周期主机 (HLH) 存在，它将位于此网络，并可提供 OEM 特定的软件，用于硬件维护或监视。 
+此网络专门用于将所有基板管理控制器（也称为服务处理器，例如 iDRAC、iLO、iBMC 等）连接到管理网络。 如果有，硬件生命周期主机 (HLH) 位于此网络上，并可提供 OEM 特定的软件用于硬件维护或监视。 
 
-HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在部署完成后删除。 此 DVM 在联网部署场景中需要进行 Internet 访问，以便测试、验证和访问多个组件。 这些组件可以在公司网络内，也可以在公司网络外，例如 NTP、DNS 和 Azure。 有关连接要求的详细信息，请参阅 [Azure Stack 防火墙集成中的 NAT 部分](azure-stack-firewall.md#network-address-translation)。 
+HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在部署完成后删除。 此 DVM 在联网部署场景中需要进行 Internet 访问，以便测试、验证和访问多个组件。 这些组件可以是内部和外部企业网络;例如，NTP、 DNS 和 Azure。 有关连接要求的详细信息，请参阅 [Azure Stack 防火墙集成中的 NAT 部分](azure-stack-firewall.md#network-address-translation)。 
 
 ### <a name="private-network"></a>专用网络
-此 /24（254 个主机 IP）网络专用于 Azure Stack 区域（不会扩展到 Azure Stack 区域的边界交换机设备以外），并划分成两个子网：
+此/24 （254 个主机 Ip） 网络专用于 Azure Stack 区域 （不会扩展 Azure Stack 区域的边界交换机设备以外），并划分成两个子网：
 
-- **存储网络**。 一个 /25（126 个主机 IP）网络，用于支持空间直通和服务器消息块 (SMB) 存储流量与虚拟机实时迁移的使用。 
+- **存储网络**。 / 25 （126 个主机 Ip） 网络用于支持使用空间直通和服务器消息块 (SMB) 存储流量和虚拟机实时迁移。 
 - **内部虚拟 IP 网络**。 一个 /25 网络，专用于软件负载均衡器的仅限内部的 VIP。
 
 ### <a name="azure-stack-infrastructure-network"></a>Azure Stack 基础结构网络
@@ -71,10 +71,10 @@ HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在
 此 /27 网络属于前面所述 Azure Stack 基础结构子网的较小范围，它无需公共 IP 地址，但确实需要通过 NAT 或透明代理进行 Internet 访问。 此网络将分配给紧急恢复控制台系统 (ERCS)。ERCS VM 在注册到 Azure 期间以及进行基础结构备份期间需要访问 Internet，。 ERCS VM 应可路由到管理网络，以便进行故障排除。
 
 ### <a name="public-vip-network"></a>公共 VIP 网络
-公共 VIP 网络分配给 Azure Stack 中的网络控制器。 它不是交换机上的逻辑网络。 SLB 针对租户工作负荷使用地址池并分配 /32 网络。 在交换机路由表中，这些 /32 IP 通过 BGP 播发为可用路由。 此网络包含外部可访问的 IP 地址或公共 IP 地址。 Azure 堆栈基础结构其余部分使用的租户 Vm 保留的第一次 31 从此公共 VIP 网络地址。 此子网中的网络大小范围为最小 /26（64 台主机）到最大 /22（1022 台主机），我们建议规划 /24 网络。
+公共 VIP 网络分配给 Azure Stack 中的网络控制器。 它不是交换机上的逻辑网络。 SLB 针对租户工作负荷使用地址池并分配 /32 网络。 在交换机路由表中，这些 /32 IP 通过 BGP 播发为可用路由。 此网络包含外部可访问的 IP 地址或公共 IP 地址。 Azure Stack 基础结构会保留此公共 VIP 网络中的前 31 个地址，剩余的地址由租户 VM 使用。 此子网中的网络大小范围为最小 /26（64 台主机）到最大 /22（1022 台主机），我们建议规划 /24 网络。
 
 ### <a name="switch-infrastructure-network"></a>交换机基础结构网络
-此 /26 网络是一个子网，其中包含可路由的点到点 IP /30（2 个主机 IP）子网和环回（专用于带内交换机管理和 BGP 路由器 ID 的 /32 子网）。 此 IP 地址范围必须可从 Azure Stack 解决方案外部路由到数据中心，可以是专用或公共 IP。
+此/26 网络是包含可路由的点到点 IP/30 （2 个主机 Ip） 子网和环回，专用子网/32 子网的带内交换机管理和 BGP 路由器 id。 此 IP 地址范围必须可从 Azure Stack 解决方案外部路由到数据中心，可以是专用或公共 IP。
 
 ### <a name="switch-management-network"></a>交换机管理网络
 此 /29（6 个主机 IP）网络专用于连接交换机的管理端口。 其允许带外访问，以完成部署、管理和故障排除。 它是从上述交换机基础结构网络计算而来的。
@@ -85,7 +85,7 @@ HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在
 ### <a name="ports-and-urls"></a>端口和 URL
 若要使 Azure Stack 服务（例如门户、Azure 资源管理器、DNS 等）可供外部网络使用，必须允许特定 URL、端口和协议的入站流量发往这些终结点。
  
-如果部署中的透明代理上行链接到传统的代理服务器，则必须允许特定的端口和 URL，以便能够进行[入站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound)和[出站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)通信。 这包括用于标识、Marketplace 联合、修补和更新、注册和用量数据的端口与 URL。
+如果部署中的透明代理上行链接到传统的代理服务器，则必须允许特定的端口和 URL，以便能够进行[入站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound)和[出站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)通信。 这包括用于标识、市场联合、修补和更新、注册和用量数据的端口与 URL。
 
 ## <a name="next-steps"></a>后续步骤
 [边界连接](azure-stack-border-connectivity.md)

@@ -15,10 +15,10 @@ ms.date: 06/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
 ms.openlocfilehash: 101686149c0e3faaf442c58f4002cbbfe0e72eaa
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
+ms.lasthandoff: 07/11/2018
 ms.locfileid: "35651561"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>创建和发布市场项目

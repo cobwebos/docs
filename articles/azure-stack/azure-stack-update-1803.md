@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: a74e77f84aa70519015a589cbc6e7478c0c41592
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 11430a0d194a722c0c0520c936db3c08b1a6b863
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318803"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989565"
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新
 
@@ -43,7 +43,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 ### <a name="prerequisites"></a>必备组件
 - 在应用 Azure Stack 1803 更新之前安装 Azure Stack [1802 更新](azure-stack-update-1802.md)。   
 
-- 安装**AzS 修补程序 – 1.0.180312.1-生成 20180222.2**应用 Azure 堆栈 1803年更新前。 此修补程序更新了 Windows Defender，在下载 Azure Stack 的更新后即可使用。
+- 安装**AzS 修补程序-1.0.180312.1 内部版本 20180222.2**应用 Azure Stack 1803 更新之前。 此修补程序更新了 Windows Defender，在下载 Azure Stack 的更新后即可使用。
 
   若要安装此修补程序，请执行[安装 Azure Stack 的更新](azure-stack-apply-updates.md)所需的常规过程。 此更新的名称显示为 **AzS 修补程序 - 1.0.180312.1**，包括以下文件： 
     - PUPackageHotFix_20180222.2-1.exe
@@ -63,7 +63,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 - <!-- 1914853 --> 使用 HTTP 访问管理员和用户门户时**自动重定向到 HTTPS**。 进行此改进是基于 Azure Stack 的 [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) 反馈。 
 
-- <!-- 2202621  --> **访问应用商店**– 你现在可以通过打开 Azure 堆栈应用商店[+ 新建](https://ms.portal.azure.com/#create/hub)选项从内的管理员和用户门户相同的方式在 Azure 门户中的操作。
+- <!-- 2202621  --> **访问 Marketplace** – 你现在可以通过打开 Azure Stack Marketplace [+ 新建](https://ms.portal.azure.com/#create/hub)选项中的管理员和用户门户在 Azure 门户中执行的相同方法。
  
 - <!-- 2202621 --> **Azure Monitor** - Azure Stack 向管理员和用户门户添加了 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 这包括用于指标和活动日志的新资源管理器。 若要从外部网络访问此 Azure Monitor，必须在防火墙配置中打开端口 **13012**。 有关 Azure Stack 所需端口的详细信息，请参阅 [Azure Stack 数据中心集成 - 发布终结点](azure-stack-integrate-endpoints.md)。
 
@@ -77,7 +77,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 - <!-- 1739988 --> 内部负载均衡 (ILB) 现在可以正确地处理后端 VM 的 MAC 地址，使 ILB 可以在后端网络上使用 Linux 实例时将数据包放置到后端网络。 ILB 适用于后端网络上的 Windows 实例。 
 
-- <!-- 1805496 --> 因 Azure Stack 使用的 IKE 策略设置不同于 Azure 所用的而导致 Azure Stack 之间的 VPN 连接断开的问题。 SALifetime （时间） 和 SALiftetime （字节） 的值未与 Azure 兼容，并且在 1803 以匹配的 Azure 设置中已更改。 之前 1803 SALifetime （秒） 的值处于 14400 而且现在变为 27000 1803年。 之前 1803 SALifetime （字节） 的值已 819,200 33,553,408 1803年中代码更改。
+- <!-- 1805496 --> 因 Azure Stack 使用的 IKE 策略设置不同于 Azure 所用的而导致 Azure Stack 之间的 VPN 连接断开的问题。 SALifetime（时间）和 SALiftetime（字节）的值与 Azure 不兼容，在 1803 中已更改，以便与 Azure 设置匹配。 在低于 1803 的版本中，SALifetime（秒）的值为 14,400，在版本 1803 中已更改为 27,000。 在低于 1803 的版本中，SALifetime（字节）的值为 819,200，在版本 1803 中已更改为 33,553,408。
 
 - <!-- 2209262 --> IP 问题，具体表现在 VPN 连接以前在门户中可见，但启用或切换“IP 转发”却没有效果。 此功能默认启用，更改此项的功能尚不受支持。  此控件已从门户中删除。 
 
@@ -95,7 +95,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 
 ### <a name="changes"></a>更改
-- 将新创建的产品/服务的状态从“专用”更改为“公用”或“停止使用”的方式已变。 有关详细信息，请参阅[创建产品/服务](azure-stack-create-offer.md)。
+- 将新创建的产品/服务的状态从“专用”更改为“公用”或“停止使用”的方式已变。 有关详细信息，请参阅[创建套餐](azure-stack-create-offer.md)。
 
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题    
@@ -106,17 +106,17 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 ### <a name="post-update-steps"></a>更新后步骤
 - 安装 1803 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。
 
-  - [KB 4341390-Azure 堆栈修补程序 1.0.180424.12](https://support.microsoft.com/en-us/help/4341390)。
+  - [KB 4344115-Azure Stack 修补程序 1.0.180427.15](https://support.microsoft.com/help/4344115)。
 
-- 安装此更新后，请查看防火墙配置以确保[必需的端口](azure-stack-integrate-endpoints.md)处于打开状态。 例如，此更新引入了*Azure 监视器*包括到活动日志的审核日志的更改。 由于此更改，端口 13012 现在已使用，并且也必须处于打开状态。  
+- 安装此更新后，请查看防火墙配置以确保[必需的端口](azure-stack-integrate-endpoints.md)处于打开状态。 例如，此次更新引入了*Azure Monitor*包括到活动日志的审核日志的更改。 由于此更改，端口 13012 现在已使用，并且也必须处于打开状态。  
 
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
 下面是内部版本 **20180323.2** 的安装后已知问题。
 
 #### <a name="portal"></a>门户
-- <!-- 2332636 - IS -->  当你 Azure 堆栈标识系统并更新到此版本的 Azure 堆栈使用 AD FS 时，默认提供程序订阅的默认所有者将重置为内置**CloudAdmin**用户。  
-  解决方法： 若要解决此问题，在安装此更新后，使用从步骤 3[触发器的自动化功能来配置声明提供方信任 Azure 堆栈中的](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程重新设置默认提供程序订阅的所有者。   
+- <!-- 2332636 - IS --> 对 Azure Stack 标识系统使用 AD FS 并更新到此版本的 Azure Stack 时，默认提供程序订阅的默认所有者将重置为内置的 **CloudAdmin** 用户。  
+  解决方法：若要在安装此更新后解决该问题，请使用[触发自动化以便在 Azure Stack 中配置声明提供程序信任](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程中的步骤 3 来重置默认提供程序订阅的所有者。   
 
 - 在管理员门户中[从下拉列表提交新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 请改用以下链接：     
     - 对于 Azure Stack 集成系统，请使用 https://aka.ms/newsupportrequest。
@@ -140,25 +140,25 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 
 #### <a name="health-and-monitoring"></a>运行状况和监视
-- <!-- 1264761 - IS ASDK -->  你可能会看到的警报*运行状况控制器*组件具有下列详细信息：  
+- <!-- 1264761 - IS ASDK --> 可能会看到具有以下详细信息的*运行状况控制器*组件的警报：  
 
-   警报 # 1:
-   - 名称： 基础结构角色不正常
-   - 严重性： 警告
-   - 组件： 运行状况控制器
-   - 描述： 检测信号扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。  
+   警报 #1：
+   - 名称：基础结构角色不正常
+   - 严重性：警告
+   - 组件：运行状况控制器
+   - 说明：运行状况控制器检测信号扫描仪不可用。 这可能会影响运行状况报告和指标。  
 
-  警报 # 2:
-   - 名称： 基础结构角色不正常
-   - 严重性： 警告
-   - 组件： 运行状况控制器
-   - 描述： 错误扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。
+  警报 #2：
+   - 名称：基础结构角色不正常
+   - 严重性：警告
+   - 组件：运行状况控制器
+   - 说明：运行状况控制器故障扫描仪不可用。 这可能会影响运行状况报告和指标。
 
-  可放心忽略这两个警报。 它们将自动关闭随着时间的推移。  
+  可以放心地忽略这两个警报。 它们将随着时间的推移自动关闭。  
 
 
 #### <a name="marketplace"></a>市场
-- 用户无需订阅就能浏览整个市场，并且能看到计划和产品/服务等管理项。 对用户而言，这些项是非功能性的。
+- 用户无需订阅就能浏览整个市场，并且能看到计划和套餐等管理项。 对用户而言，这些项是非功能性的。
 
 
 

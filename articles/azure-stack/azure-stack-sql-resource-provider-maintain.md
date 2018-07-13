@@ -15,15 +15,15 @@ ms.date: 06/20/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
 ms.openlocfilehash: ad899739dab1dc51d64368d2136ab87f73f6f3a0
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
+ms.lasthandoff: 07/11/2018
 ms.locfileid: "36300904"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL 资源提供程序维护操作
 
-SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作，您需要更新虚拟机的安全性。 若要执行此操作使用的最小特权原则，可以使用[PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/en-us/powershell/jea/overview)终结点*DBAdapterMaintenance*。 资源提供程序安装包包括用于此操作的脚本。
+SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作，您需要更新虚拟机的安全性。 若要执行此操作使用的最小特权原则，可以使用[PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview)终结点*DBAdapterMaintenance*。 资源提供程序安装包包括用于此操作的脚本。
 
 ## <a name="patching-and-updating"></a>修补和更新
 
