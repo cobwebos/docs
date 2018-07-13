@@ -337,7 +337,7 @@ Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory
 
 ## <a name="run-the-application-locally"></a>在本地运行应用程序
 
-在“解决方案资源管理器”中，选择 **Voting** 应用程序并将“应用程序 URL”属性设置为“https://localhost:443”。
+在“解决方案资源管理器”中，选择 **Voting** 应用程序并将“应用程序 URL”属性设置为 “ https://localhost:443 ” 。
 
 保存所有文件并按 F5，以便在本地运行应用程序。  在应用程序部署完以后，Web 浏览器会打开到 [https://localhost:443](https://localhost:443)。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
 

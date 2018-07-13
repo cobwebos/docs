@@ -120,7 +120,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 [证书](#Certificates)
 
-证书[](#Certificate)
+[证书](#Certificate)
 
 [导入](#Imports)
 
