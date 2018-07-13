@@ -11,11 +11,11 @@ ms.custom: ''
 ms.service: cost-management
 manager: dougeby
 ms.openlocfilehash: 254a7f2904a63381a4eeec02ee32b19890703ae1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296624"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38310099"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>注册一个单独的 Azure 订阅并查看成本数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "35296624"
 3. 在“成本管理”页上，单击“转到成本管理”，以在新窗口中打开 Cloudyn 注册页。
 4. 在 Cloudyn 门户试用注册页上，键入公司名称，然后选择“Azure 个人订阅所有者”，然后单击“下一步”。 你的帐户名称和租户 ID 被自动添加到窗体。  
     ![试用注册](./media/quick-register-azure-sub/trial-reg-ind.png)
-5. 选择与你的订阅相关联的“产品/服务 ID - 名称”。 如果不确定你的订阅的费率 ID，可以查看 Azure 账单或查找“产品/服务 ID”。
+5. 选择与你的订阅相关联的“套餐 ID - 名称”。 如果不确定你的订阅的费率 ID，可以查看 Azure 账单或查找“套餐 ID”。
 6. 同意“使用条款”，并验证相关信息，然后单击“下一步”。
 7. 在“获取其他数据”页，单击“下一步”，以授权 Cloudyn 收集 Azure 资源数据。 收集的数据包括订阅的使用情况、性能、计费和标记数据。  
     ![收集更多数据](./media/quick-register-azure-sub/gather-additional.png)

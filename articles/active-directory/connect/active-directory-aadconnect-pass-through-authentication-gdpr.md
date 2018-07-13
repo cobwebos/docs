@@ -4,7 +4,7 @@ description: 本文介绍如何处理 Azure Active Directory (Azure AD) 直通�
 services: active-directory
 keywords: Azure AD Connect 直通身份验证, GDPR, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 3343cebb85124f19fe773822e296312abad53d96
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f53f8ffcf8354d35fa552f099302456fa5226ca8
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591168"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915871"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>用户隐私和 Azure Active Directory 直通身份验证
 

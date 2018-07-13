@@ -3,7 +3,7 @@ title: Azure AD Connect 和联合身份验证 | Microsoft Docs
 description: 此页是与使用 Azure AD Connect 进行 AD FS 操作相关的所有文档的中央位置。
 services: active-directory
 documentationcenter: ''
-author: anandyadavmsft
+author: billmath
 manager: mtillman
 editor: ''
 ms.assetid: f9107cf5-0131-499a-9edf-616bf3afef4d
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.component: hybrid
-ms.author: anandy
-ms.openlocfilehash: 6c14b673bd9664aad54ea8002175999470661e34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: billmath
+ms.openlocfilehash: ce6b889d23959e9d04b95ec2bc5847340b596448
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593847"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915830"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect 和联合身份验证
 Azure Active Directory (Azure AD) Connect 可让你配置使用本地 Active Directory 联合身份验证服务 (AD FS) 和 Azure AD 进行的联合身份验证。 通过联合身份验证登录，可以让用户能够使用本地密码登录基于 Azure AD 的服务；使用公司网络时，无需再次输入密码就可登录服务。 使用 AD FS 的联合身份验证选项，可以部署 AD FS 的新安装，也可以在 Windows Server 2012 R2 场中指定现有安装。

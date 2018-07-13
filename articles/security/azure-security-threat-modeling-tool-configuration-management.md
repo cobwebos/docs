@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: cea96234083abd01cdf280129e6f75a1f69af9c6
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5b9ef9691d3d9b9aaced3ad2aaa54e6cfc03fa14
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028976"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857440"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -42,7 +42,7 @@ ms.locfileid: "37028976"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [内容安全策略简介](http://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[内容安全策略参考](http://content-security-policy.com/)、[安全功能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[内容安全策略简介](https://docs.webplatform.org/wiki/tutorials/content-security-policy)、[是否可以使用 CSP？](http://caniuse.com/#feat=contentsecuritypolicy) |
+| **参考**              | [内容安全策略简介](http://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[内容安全策略参考](http://content-security-policy.com/)、[安全功能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[内容安全策略简介](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[是否可以使用 CSP？](http://caniuse.com/#feat=contentsecuritypolicy) |
 | **步骤** | <p>内容安全策略 (CSP) 是一种深度防护安全机制，也是一项 W3C 标准，可让 Web 应用程序所有者控制其站点中嵌入的内容。 CSP 以 HTTP 响应标头的形式添加在 Web 服务器上，由浏览器在客户端实施。 它是基于允许列表的策略 - 网站可以声明一组受信任的域，而通过这些域可以加载 JavaScript 等活动内容。</p><p>CSP 提供以下安全优势：</p><ul><li>**XSS 防护：** 如果页面容易受到 XSS 攻击，攻击者可通过两种方式利用这种漏洞：<ul><li>注入 `<script>malicious code</script>`。 由于 CSP 采用 Base Restriction-1，因此这种攻击不起作用</li><li>注入 `<script src=”http://attacker.com/maliciousCode.js”/>`。 由于攻击者控制的域不会出现在 CSP 的域允许列表中，因此这种攻击不起作用</li></ul></li><li>**控制数据渗透：** 如果网页中的任何恶意内容尝试连接到外部网站并窃取数据，CSP 将中止该连接。 这是因为，目标域不会出现在 CSP 的允许列表中</li><li>**防范点击劫持：** 点击劫持是一种攻击技法，攻击者布设一个正规的网站，诱迫用户点击其中的 UI 元素。 目前，针对点击劫持的防范措施是通过配置 响应标头 X-Frame-Options 实现的。 并非所有浏览器都支持此标头，从趋势来看，CSP 是防范点击劫持的标准方式。</li><li>**实时攻击报告：** 如果启用 CSP 的网站上发生注入攻击，浏览器会自动向 Web 服务器上配置的终结点触发通知。 这样，CSP 便充当了实时警告系统。</li></ul> |
 
 ### <a name="example"></a>示例
@@ -562,7 +562,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
-| **参考**              | [IoT 中心设备管理概述](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[如何更新设备固件](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-device-jobs/) |
+| **参考**              | [IoT 中心设备管理概述](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[如何更新设备固件](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
 | **步骤** | LWM2M 是开放移动联盟为 IoT 设备管理提供的协议。 借助 Azure IoT 设备管理可以使用设备作业来与物理设备交互。 请确保云网关实施相应的过程，定期使用 Azure IoT 中心设备管理将设备和其他配置数据保持最新状态。 |
 
 ## <a id="controls-policies"></a>确保根据组织的策略在设备上配置终结点安全控制
@@ -607,7 +607,8 @@ public void ConfigureServices(IServiceCollection services)
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html) |
-| **步骤** | <p>不对系统资源的使用施加限制可能会导致资源耗尽，最终出现拒绝服务。</p><ul><li>**说明：** Windows Communication Foundation (WCF) 提供限制服务请求的功能。 允许过多的客户端请求可能会使系统泛洪并耗尽其资源。 另一方面，只允许向服务发出少量的请求可能会防碍合法用户使用该服务。 应该单独针对每个服务进行优化和配置，以允许适当数量的资源。</li><li>**建议：** 启用 WCF 的服务限制功能，并设置适合应用程序的限制。</li></ul>|
+| **步骤** | <p>不对系统资源的使用施加限制可能会导致资源耗尽，最终出现拒绝服务。</p><ul><li>
+  **说明：** Windows Communication Foundation (WCF) 提供限制服务请求的功能。 允许过多的客户端请求可能会使系统泛洪并耗尽其资源。 另一方面，只允许向服务发出少量的请求可能会防碍合法用户使用该服务。 应该单独针对每个服务进行优化和配置，以允许适当数量的资源。</li><li>**建议：** 启用 WCF 的服务限制功能，并设置适合应用程序的限制。</li></ul>|
 
 ### <a name="example"></a>示例
 下面是启用了限制的示例配置：

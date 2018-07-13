@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: de787ec5078d4cec53bcd2fcc24129e651c711bc
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: eb5801988b6fa966a0326c39be4a267ea08500a8
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896493"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916779"
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 SharePoint 应用程序以实现灾难恢复
 
@@ -72,7 +72,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 **Hyper-V** | 是 | 是
 **VMware** | 是 | 是
 **物理服务器** | 是 | 是
-**Azure** | 不可用 | 是
+**Azure** | NA | 是
 
 ### <a name="sharepoint-versions"></a>SharePoint 版本
 支持以下 SharePoint Server 版本。

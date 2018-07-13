@@ -17,12 +17,12 @@ ms.date: 08/22/2017
 ms.author: lizross
 ms.reviewer: jeffgilb
 custom: it-pro
-ms.openlocfilehash: 738e96bf631833b8d35847114ee08fc3f5bec2a4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6fc1d808fb712f7acb60e490663cb7301e22153c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767334"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856083"
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中向用户发放许可
 基于许可证的 Azure AD 服务的工作原理是在 Azure AD 租户中激活 Azure Active Directory (Azure AD) 订阅。 激活订阅之后，服务功能由 Azure AD 管理员管理，并由获得许可的用户使用。 当购买企业移动性 + 安全性、Azure AD Premium 或 Azure AD Basic 时，租户会随着订阅更新，包括其有效期和预付许可证。 可以在 Azure 门户中的 Azure Active Directory 下打开“许可证”磁贴查看订阅信息，包括已分配或可用的许可证数目。 “许可证”边栏选项卡也是管理许可证分配的最佳场所。
@@ -35,7 +35,7 @@ ms.locfileid: "37767334"
 * 可通过使用[自助服务组](../users-groups-roles/groups-self-service-management.md)，将决策权委派给组织中的其他管理者
 
 > [!TIP]
-> 有关将许可证分配到组的详细介绍（包括高级方案和 Office 365 许可方案），请参阅[在 Azure Active Directory 中按组成员身份为用户分配许可证](../active-directory-licensing-group-assignment-azure-portal.md)。
+> 有关将许可证分配到组的详细介绍（包括高级方案和 Office 365 许可方案），请参阅[在 Azure Active Directory 中按组成员身份为用户分配许可证](../users-groups-roles/licensing-groups-assign.md)。
 
 ## <a name="assign-licenses-to-users-and-groups"></a>向用户和组分配许可证
 要使用激活的订阅，首先应向自己分配许可证，并刷新浏览器，确保订阅中包含所期望的所有功能。 下一步是向需要访问 Azure AD 付费功能的用户分配许可证。 分配许可证的简单办法是将许可证分配给用户组，而不是个人。 将许可证分配给组时，将向所有组成员分配许可证。 如果在组中添加或从组中删除用户，则会相应地自动为其分配许可证，或删除其许可证。 

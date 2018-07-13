@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 824235cfdae6df9d852875281346e35a18277f74
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651300"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531654"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>教程：使用 PowerShell 和主题/订阅更新库存
 
@@ -22,7 +22,7 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
 
 本教程展示了如何使用 PowerShell 创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 > [!div class="checklist"]
 > * 使用 Azure PowerShell 创建一个服务总线主题和一个或多个对该主题的订阅
 > * 使用 PowerShell 添加主题筛选器
@@ -117,7 +117,7 @@ Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespac
    dotnet build
    ```
 6.  导航到 `\bin\Debug\netcoreapp2.0` 文件夹。
-7.  键入以下命令来运行程序。 请务必将 `myConnectionString` 替换为先前获取的值，将 `myQueueName` 替换为你创建的队列的名称：
+7.  键入以下命令以运行程序。 请务必将 `myConnectionString` 替换为先前获取的值，将 `myQueueName` 替换为所创建队列的名称：
 
    ```shell
    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
@@ -136,7 +136,7 @@ Remove-AzureRmResourceGroup -Name my-resourcegroup
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
 
-本部分包含有关示例代码功能的更多详细信息。 
+此部分包含有关示例代码功能的更多详细信息。 
 
 ### <a name="get-connection-string-and-queue"></a>获取连接字符串和队列
 
@@ -278,9 +278,9 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > * 发送消息并验证它们是否已到达预期的订阅
 > * 从订阅接收消息
 
-若要了解有关发送和接收消息的更多示例，请开始使用 [GitHub 上的服务总线示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted)。
+若要通过更多示例来了解如何发送和接收消息，请从 [GitHub 上的服务总线示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted)着手。
 
-请前进到下一教程来了解有关使用服务总线的发布/订阅功能的更多信息。
+若要详细了解如何使用服务总线的发布/订阅功能，请转到下一教程。
 
 > [!div class="nextstepaction"]
 > [使用 PowerShell 和主题/订阅更新库存](service-bus-tutorial-topics-subscriptions-cli.md)

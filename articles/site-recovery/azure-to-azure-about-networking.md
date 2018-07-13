@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: 7e717d06aaaef6031a0a3b26c5caf76f0c8c11df
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 77c445920041653ffb72d31e1dcfe4c368fb6642
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715932"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915919"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
 
@@ -77,7 +77,7 @@ Site Recovery IP 地址范围如下：
    印度南部 | 52.172.46.220 | 104.211.224.190
    美国中北部 | 23.96.195.247 | 168.62.249.226
    北欧 | 40.69.212.238 | 52.169.18.8
-   欧洲西部 | 52.166.13.64 | 40.68.93.145
+   西欧 | 52.166.13.64 | 40.68.93.145
    美国东部 | 13.82.88.226 | 104.45.147.24
    美国西部 | 40.83.179.48 | 104.40.26.199
    美国中南部 | 13.84.148.14 | 104.210.146.250

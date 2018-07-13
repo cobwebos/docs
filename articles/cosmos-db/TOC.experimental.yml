@@ -71,7 +71,7 @@ items:
     items:
       - name: 全球分布
         href: distribute-data-globally.md
-      - name: 多主设置
+      - name: 多主
         href: multi-region-writers.md
       - name: 分区
         href: partition-data.md
@@ -168,8 +168,6 @@ items:
                 href: bulk-executor-dot-net.md
               - name: BulkExecutor - Java
                 href: bulk-executor-java.md
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: 查询
                 items:
                   - name: 执行 SQL 查询
@@ -258,8 +256,6 @@ items:
                 href: sql-api-sql-query-reference.md
           - name: 资源
             items:
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: Visual Studio Code 扩展
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
               - name: SQL 演练
@@ -322,12 +318,8 @@ items:
                 href: mongodb-indexing.md
               - name: 使用 Power BI 直观显示数据
                 href: powerbi-visualize.md
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
           - name: 资源
             items:
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: Visual Studio Code 扩展
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: 图形 API 文档
@@ -346,12 +338,8 @@ items:
             items:
               - name: Graph 分区
                 href: graph-partitioning.md
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
           - name: 资源
             items:
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: Visual Studio Code 扩展
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: 表 API 文档
@@ -404,8 +392,6 @@ items:
                 href: table-sdk-python.md
           - name: 资源
             items:
-              - name: 使用存储资源管理器进行管理
-                href: storage-explorer.md
               - name: 表存储概述
                 href: table-storage-overview.md
               - name: 表存储设计指南
@@ -458,8 +444,6 @@ items:
     items:
       - name: 查询备忘单
         href: query-cheat-sheet.md
-      - name: 使用存储资源管理器进行管理
-        href: storage-explorer.md
       - name: 20 天的提示
         href: 20-days-of-tips.md
       - name: 视频
@@ -470,7 +454,7 @@ items:
         href: 'https://azure.microsoft.com/try/cosmosdb/'
       - name: 定价
         href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
-      - name: 常见问题
+      - name: 常见问题解答
         href: faq.md
       - name: 借助棒球解释数据一致性
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'

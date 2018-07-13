@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 209fdda974dee2386328da43991cc9d453e61aa7
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: edfabf1f93c78cf29ff3561f437053df11e15bd5
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062150"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857474"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -93,7 +93,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 * 执行限制。 仅允许运行一组管理所需的预定义可执行文件（称为“默认拒绝”）。 默认情况下，除非已在允许列表中明确定义，否则应该拒绝用户运行任何程序的权限。
 * 最低特权。 管理工作站的用户不应该拥有本地计算机本身的任何管理特权。 这样，他们无法更改系统配置或系统文件（无论是有意或无意）。
 
-通过在 Active Directory 域服务 (AD DS) 中使用 [组策略对象](https://www.microsoft.com/download/details.aspx?id=2612) (GPO)，并通过（本地）管理域将其应用到所有管理帐户，可以强制实施上述所有要素。
+通过在 Active Directory 域服务 (AD DS) 中使用 [组策略对象](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy) (GPO)，并通过（本地）管理域将其应用到所有管理帐户，可以强制实施上述所有要素。
 
 ### <a name="managing-services-applications-and-data"></a>管理服务、应用程序和数据
 可以在 Azure 门户或 SMAPI 中通过 Windows PowerShell 命令行接口或利用这些 RESTful 接口的自建应用程序来执行 Azure 云服务配置。 使用这些机制的服务包括 Azure Active Directory (Azure AD)、Azure 存储、Azure 网站和 Azure 虚拟网络，等等。

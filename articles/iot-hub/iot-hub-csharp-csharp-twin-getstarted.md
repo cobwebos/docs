@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: dkshir
-ms.openlocfilehash: 9419f15f2876a36769bdea84cc28537435148cac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0ce1a3983ad34882236b175d6b8eec5e538c736b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634849"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723549"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>设备孪生入门 (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -49,10 +49,10 @@ ms.locfileid: "34634849"
 1. 在“NuGet 包管理器”窗口中，选择“浏览”，并搜索“microsoft.azure.devices”。 选择“安装”以安装“Microsoft.Azure.Devices”包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
    
     ![“NuGet 包管理器”窗口][img-servicenuget]
-1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
    
         using Microsoft.Azure.Devices;
-1. 将以下字段添加到 **Program** 类。 将占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串。
+1. 将以下字段添加到 Program 类。 将占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串。
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
@@ -117,7 +117,7 @@ ms.locfileid: "34634849"
         using Microsoft.Azure.Devices.Shared;
         using Newtonsoft.Json;
 
-1. 将以下字段添加到 **Program** 类。 将占位符值替换为上一部分中所述的设备连接字符串。
+1. 将以下字段添加到 Program 类。 将占位符值替换为上一部分中所述的设备连接字符串。
    
         static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
         static DeviceClient Client = null;
@@ -224,7 +224,7 @@ ms.locfileid: "34634849"
 
 [lnk-iothub-getstarted]: iot-hub-csharp-csharp-getstarted.md
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
-[lnk-twin-how-to-configure]: iot-hub-csharp-node-twin-how-to-configure.md
+[lnk-twin-how-to-configure]: iot-hub-csharp-csharp-twin-how-to-configure.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 

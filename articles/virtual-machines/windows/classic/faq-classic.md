@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
 ms.openlocfilehash: 6e40d9269206b82fefbcdb3ecc80a1ca23c7c0ae
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917735"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630243"
 ---
 # <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-the-classic-deployment-model"></a>有关使用经典部署模型创建的 Azure Windows 虚拟机的常见问题
 > [!IMPORTANT] 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: c5f3904621dcc4fe992b2c2f8293ad706b01f713
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446769"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38451693"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -42,7 +42,7 @@ ms.locfileid: "37446769"
 | 先决条件 | 资源 |
 | --- | --- |
 | 使用有效的 Azure 订阅定义的 Azure AD 租户 | [如何获取 Azure Active Directory 租户](active-directory-howto-tenant.md)<br/>**请注意：** 如果环境中已经具备 Azure AD Premium 许可证，则可以通过导航到 https://aka.ms/accessaad 来获取零上限订阅 <br/>请访问 https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ 和 https://technet.microsoft.com/library/dn832618.aspx 了解详细信息 |
-| 已定义和验证域 | [将自定义域名添加到 Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**注意：** Power BI 等工作负荷可能已经预配了其包含的 Azure AD 租户。 要检查给定域是否与租户关联，请导航到 https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration。 如果收到成功的相应，则域已经分配给租户，并且可能需要接管。 在这种情况下，请联系 Microsoft 获取更多指导。 如需了解有关接管选项的详细信息，请参阅[什么是 Azure 自助式服务注册？](active-directory-self-service-signup.md) |
+| 已定义和验证域 | [将自定义域名添加到 Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**注意：** Power BI 等工作负荷可能已经预配了其包含的 Azure AD 租户。 要检查给定域是否与租户关联，请导航到 https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration。 如果收到成功的相应，则域已经分配给租户，并且可能需要接管。 在这种情况下，请联系 Microsoft 获取更多指导。 如需了解有关接管选项的详细信息，请参阅[什么是 Azure 自助式服务注册？](users-groups-roles/directory-self-service-signup.md) |
 | 已启用 Azure AD Premium 或 EMS 试用版 | [Azure Active Directory Premium 免费使用一个月](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | 已经向 PoC 用户分配了 Azure AD Premium 或 EMS 许可证 | [向你自己以及 Azure Active Directory 中用户分配许可证](active-directory-licensing-get-started-azure-portal.md) |
 | Azure AD 全局管理员凭据 | [在 Azure Active Directory 中分配管理员角色](users-groups-roles/directory-assign-admin-roles.md) |
@@ -125,11 +125,11 @@ ms.locfileid: "37446769"
 | 步骤 | 资源 |
 | --- | --- |
 | 在 Azure AD 管理门户中转到许可证边栏选项卡 | [Azure AD 管理门户：授权](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
-| 将许可证分配给具有 POC 用户的安全组。 | [将许可证分配给 Azure Active Directory 中的用户组](active-directory-licensing-group-assignment-azure-portal.md) |
+| 将许可证分配给具有 POC 用户的安全组。 | [将许可证分配给 Azure Active Directory 中的用户组](users-groups-roles/licensing-groups-assign.md) |
 
 ### <a name="considerations"></a>注意事项
 
-遇到任何问题，请转到[与在 Azure Active Directory 中使用组管理许可相关的方案、限制和已知问题](active-directory-licensing-group-advanced.md)
+遇到任何问题，请转到[与在 Azure Active Directory 中使用组管理许可相关的方案、限制和已知问题](users-groups-roles/licensing-group-advanced.md)
 
 ## <a name="saas-federated-sso-configuration"></a>SaaS 联合 SSO 配置
 
@@ -471,24 +471,24 @@ ms.locfileid: "37446769"
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 标识属于PIM 的 POC 的全局管理员 | [开始使用 Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) |
-| 标识将成为安全管理员的全局管理员 | [开始使用 Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)<br/> [Azure Active Directory PIM 中的不同管理角色](active-directory-privileged-identity-management-roles.md) |
-| 可选：确认全局管理员在 PIM 中是否有执行电子邮件通知的电子邮件访问权限 | [什么是 Azure AD Privileged Identity Management？：配置角色激活设置](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)
+| 标识属于PIM 的 POC 的全局管理员 | [开始使用 Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md) |
+| 标识将成为安全管理员的全局管理员 | [开始使用 Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md)<br/> [Azure Active Directory PIM 中的不同管理角色](privileged-identity-management/pim-roles.md) |
+| 可选：确认全局管理员在 PIM 中是否有执行电子邮件通知的电子邮件访问权限 | [什么是 Azure AD Privileged Identity Management？：配置角色激活设置](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)
 
 
 ### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
-| 以全局管理员 (GA) 身份登录 https://portal.azure.com 并启动“PIM”边栏选项卡。 执行此步骤的全局管理员会生成安全管理员。  我们将此参与者称为 GA1 | [使用 Azure AD Privileged Identity Management 中的安全向导](active-directory-privileged-identity-management-security-wizard.md) |
-| 标识全局管理员，并将其从固定管理员移至符合条件的管理员。 为清楚起见，该管理员应该是除步骤 1 中使用的管理员之外的独立管理员。 我们将此参与者称为 GA2 | [Azure AD Privileged Identity Management：如何添加或删除用户角色](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[什么是 Azure AD Privileged Identity Management？：配置角色激活设置](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
+| 以全局管理员 (GA) 身份登录 https://portal.azure.com 并启动“PIM”边栏选项卡。 执行此步骤的全局管理员会生成安全管理员。  我们将此参与者称为 GA1 | [使用 Azure AD Privileged Identity Management 中的安全向导](privileged-identity-management/pim-security-wizard.md) |
+| 标识全局管理员，并将其从固定管理员移至符合条件的管理员。 为清楚起见，该管理员应该是除步骤 1 中使用的管理员之外的独立管理员。 我们将此参与者称为 GA2 | [Azure AD Privileged Identity Management：如何添加或删除用户角色](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[什么是 Azure AD Privileged Identity Management？：配置角色激活设置](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | 现在，以 GA2 身份登录 https://portal.azure.com 并尝试更改“用户设置”。 请注意，某些选项为灰显。 | |
-| 现在，在新的选项卡中，在与步骤 3 相同的会话中，导航到 https://portal.azure.com 并将“PIM”边栏选项卡添加到仪表板。 | [如何在 Azure AD Privileged Identity Management 中激活或停用角色：添加 Privileged Identity Management 应用程序](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
-| 请求激活全局管理员角色 | [如何在 Azure AD Privileged Identity Management 中激活或停用角色：激活角色](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
+| 现在，在新的选项卡中，在与步骤 3 相同的会话中，导航到 https://portal.azure.com 并将“PIM”边栏选项卡添加到仪表板。 | [如何在 Azure AD Privileged Identity Management 中激活或停用角色：添加 Privileged Identity Management 应用程序](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| 请求激活全局管理员角色 | [如何在 Azure AD Privileged Identity Management 中激活或停用角色：激活角色](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | 请注意，如果 GA2 之前从未注册过 MFA，则需要注册 Azure MFA |  |
 | 返回步骤 3 中的原始选项卡，并单击浏览器中的刷新按钮。 请注意，现在已经有权更改“用户设置”了 | |
 | 或者，如果全局管理员启用了电子邮件，也可以通过勾选 GA1 和 GA2 的收件箱来查看角色被激活的通知 |  |
-| 8 查看审核历史记录并观察报告，确认显示了 GA2 的权限提升。 | [什么是 Azure AD Privileged Identity Management？：查看角色活动](active-directory-privileged-identity-management-configure.md#review-role-activity) |
+| 8 查看审核历史记录并观察报告，确认显示了 GA2 的权限提升。 | [什么是 Azure AD Privileged Identity Management？：查看角色活动](privileged-identity-management/pim-configure.md#review-role-activity) |
 
 ### <a name="considerations"></a>注意事项
 

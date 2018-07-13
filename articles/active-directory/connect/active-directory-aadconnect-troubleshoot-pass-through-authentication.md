@@ -4,7 +4,7 @@ description: 本文介绍如何对 Azure Active Directory (Azure AD) 直通身�
 services: active-directory
 keywords: 对 Azure AD Connect 直通身份验证进行故障排除, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3296ee114d3e285e77070995156ef6a242c1fc87
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2e7f3b0f01dbd6656413c233fcf64c46963d00ef
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592191"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917364"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 

@@ -6,21 +6,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f1d3076957a98eab68e0e566d8d0c594b385ee2f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 789e637f3a5806aafe0ca8cad5b6408ef77b32d0
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716034"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919608"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>运行 Azure VM 到 Azure 次要区域的灾难恢复演练
 
 [Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外停机期间使商业应用程序保持启动和运行可用状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
-本教程演示如何使用测试故障转移从一个 Azure 区域到另一个 Azure 区域对 Azure VM 运行灾难恢复演练。 演练如何在不丢失数据或不停机的情况下验证复制策略，并且不影响生产环境。 本教程介绍如何执行下列操作：
+本教程演示如何使用测试故障转移从一个 Azure 区域到另一个 Azure 区域对 Azure VM 运行灾难恢复演练。 演练如何在不丢失数据或不停机的情况下验证复制策略，并且不影响生产环境。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 检查先决条件

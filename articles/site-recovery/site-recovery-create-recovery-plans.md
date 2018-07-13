@@ -7,14 +7,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: e02672ea76eada2d660b20f91c4417019d4efc97
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 853b9c2f50967d7a203e5627bdd2fc6f14e0e4f6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30189828"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920995"
 ---
 # <a name="create-and-customize-recovery-plans"></a>创建和自定义恢复计划
 
@@ -66,9 +66,9 @@ ms.locfileid: "30189828"
     **方案** | **故障转移** | **故障回复**
     --- | --- | --- 
     Azure 到 Azure  | Runbook | Runbook
-    VMware 到 Azure | Runbook | 不可用 
+    VMware 到 Azure | Runbook | NA 
     从包含 VMM 的 Hyper-V 到 Azure | Runbook | 脚本
-    Hyper-V 站点到 Azure | Runbook | 不可用
+    Hyper-V 站点到 Azure | Runbook | NA
     从 VMM 到辅助 VMM | 脚本 | 脚本
 
 1. 在恢复计划中，单击应当将操作添加到的步骤，并指定操作应在何时发生：a. 如果希望操作在故障转移后在组中的计算机启动之前发生，请选择“添加预操作”。
