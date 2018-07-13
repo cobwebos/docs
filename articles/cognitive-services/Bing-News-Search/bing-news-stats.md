@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: scottwhi
 ms.openlocfilehash: 669e50bd468e14e97251f451d985d8627fb9c675
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365888"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38544921"
 ---
 # <a name="how-to-get-analytics-for-bing-news-search-api"></a>如何获取适用于必应新闻搜索 API 的分析
 

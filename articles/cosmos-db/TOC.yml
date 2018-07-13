@@ -318,8 +318,6 @@ items:
                 href: mongodb-readpreference.md
               - name: 索引
                 href: mongodb-indexing.md
-              - name: MongoDB 中的 TTL
-                href: mongodb-ttl.md
               - name: 使用 Power BI 直观显示数据
                 href: powerbi-visualize.md
           - name: 资源
@@ -460,7 +458,7 @@ items:
         href: 'https://azure.microsoft.com/try/cosmosdb/'
       - name: 定价
         href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
-      - name: 常见问题
+      - name: 常见问题解答
         href: faq.md
       - name: 借助棒球解释数据一致性
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'

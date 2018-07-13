@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 84baf03c83bb63883b80982056cdf6e1e25b3fb7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d7ec8648a8428558264c9bfd4d923523b90cce07
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366811"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855934"
 ---
 # <a name="about-the-text-to-speech-api"></a>关于文本转语音 API
 
@@ -35,11 +35,11 @@ ms.locfileid: "35366811"
 
 ## <a name="voice-support"></a>语音支持
 
-Microsoft 文本转语音服务提供超过 45 种语言和区域设置的 75 种以上语音。 若要使用这些标准的“语音字体”，只需在调用服务的 REST API 时使用几个其他参数指定语音名称。 有关支持语音的详细信息，请参阅[支持的语言](supported-languages.md)。 
+Microsoft 文本转语音服务提供超过 45 种语言和区域设置的 75 种以上语音。 若要使用这些标准的“语音字体”，只需在调用服务的 REST API 时使用几个其他参数指定语音名称。 有关支持语音的详细信息，请参阅[支持的语言](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/supported-languages#text-to-speech)。 
 
 如果应用程序需要独特语音，你可以从自己的语音示例创建[自定义语音字体](how-to-customize-voice-font.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 应用中识别语音](quickstart-csharp-windows.md)
+* [了解如何在 C# 中识别语音](quickstart-csharp-windows.md)

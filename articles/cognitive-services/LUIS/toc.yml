@@ -201,8 +201,6 @@
           href: luis-prebuilt-entities.md
         - name: 使用域
           href: luis-how-to-use-prebuilt-domains.md
-        - name: 使用 Cortana
-          href: luis-how-to-cortana-prebuilt-app.md
     - name: 管理应用
       items:
         - name: 使用仪表板
@@ -271,8 +269,6 @@
           href: luis-reference-prebuilt-url.md
     - name: 预构建的域参考
       href: luis-reference-prebuilt-domains.md
-    - name: Cortana 预构建的应用参考
-      href: luis-reference-cortana-prebuilt.md
     - name: 创作 V2 API
       href: 'https://aka.ms/luis-authoring-apis'
     - name: 终结点 V2 API
@@ -325,7 +321,7 @@
       href: 'https://aka.ms/luis-roadmap'
     - name: 术语表
       href: luis-glossary.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: luis-resources-faq.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'

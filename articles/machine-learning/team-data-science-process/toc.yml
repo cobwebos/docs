@@ -218,8 +218,6 @@
           items:
             - name: 概述
               href: create-features.md
-            - name: 使用 Pandas
-              href: create-features-blob.md
             - name: 使用 SQL+Python
               href: create-features-sql-server.md
             - name: 使用 Hive 查询

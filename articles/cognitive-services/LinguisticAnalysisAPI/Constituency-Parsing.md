@@ -9,12 +9,12 @@ ms.component: linguistic-analysis
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: lesun
-ms.openlocfilehash: 1cd5ac3eceb9b36654f1b012bce482c5151c4462
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bff5e587621e1278c260d555aec280a0f4c7c8a1
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365518"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082166"
 ---
 # <a name="constituency-parsing"></a>成分分析
 
@@ -92,4 +92,4 @@ ms.locfileid: "35365518"
 
 ## <a name="specification"></a>规格
 
-本文中的树使用[宾州树库](https://www.cis.upenn.edu/~treebank/)中的 S 表达式。
+本文中的树使用[宾州树库](https://catalog.ldc.upenn.edu/ldc99t42)中的 S 表达式。

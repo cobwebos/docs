@@ -17,17 +17,17 @@ ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: 887ed316605ab423159ef0d2e07f0960c702ed8b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763727"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38317951"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
 在 Linux 上，[用于容器的 Web 应用](app-service-linux-intro.md)提供内置 Docker 映像，并支持特定版本，例如 PHP 7.0 和 Node.js 4.5。 用于容器的 Web 应用使用 Docker 容器技术，以“平台即服务”的方式同时托管内置映像和自定义映像。 本教程介绍如何生成自定义 Docker 映像并将其部署到用于容器的 Web 应用。 此模式适用于内置的映像不包括所选语言的情况，或者应用程序需要的特定配置未在内置映像中提供的情况。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将自定义 Docker 映像部署到 Azure

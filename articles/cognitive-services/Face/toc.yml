@@ -29,12 +29,12 @@
   items:
     - name: 'C#'
       href: Tutorials/FaceAPIinCSharpTutorial.md
+    - name: Android
+      href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
 - name: 操作方法指南
   items:
     - name: 第一个人脸 API 应用
       items:
-        - name: 用于 Android 的 Java
-          href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
         - name: Python
           href: Tutorials/FaceAPIinPythonTutorial.md
     - name: 在图像中检测人脸
@@ -75,7 +75,7 @@
   items:
     - name: 示例
       href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face'
-    - name: 常见问题
+    - name: 常见问题解答
       href: FAQ.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'

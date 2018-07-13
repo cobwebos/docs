@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
 ms.openlocfilehash: a40971e373a6e2fe6324e06816112e2025506ba8
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/12/2018
 ms.locfileid: "34057972"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
@@ -397,7 +397,7 @@ Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
     
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 1. 出现 `400 Bad Request, Required metadata header not specified` 错误。 这是什么意思呢？
    * 实例元数据服务要求将标头 `Metadata: true` 传入请求。 将此标头传入 REST 调用即可访问实例元数据服务。 
 2. 为什么我无法获取我的 VM 的计算信息？

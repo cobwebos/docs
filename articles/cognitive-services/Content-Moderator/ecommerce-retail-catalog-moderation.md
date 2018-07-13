@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 5cb93941751c8744a19a5473d13f1e135a589eaa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365519"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095745"
 ---
 # <a name="ecommerce-catalog-moderation-with-machine-learning"></a>通过机器学习进行电子商务目录审查
 
@@ -158,7 +158,7 @@ ms.locfileid: "35365519"
 
 ## <a name="classify-into-flags-toys-and-pens"></a>分类为国旗、玩具和笔
 
-1. [登录](https://www.customvision.ai/account/signin)到[自定义视觉 API 预览](https://www.customvision.ai/)。
+1. [登录](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/)到[自定义视觉 API 预览](https://www.customvision.ai/)。
 2. 使用[快速入门](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)构建自定义分类器来检测是否可能存在国旗、玩具和笔。
    ![自定义视觉训练图像](images/tutorial-ecommerce-custom-vision.PNG)
 3. 为自定义分类器[获取预测终结点 URL](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api)。
@@ -244,7 +244,7 @@ ms.locfileid: "35365519"
 
 ## <a name="developer-code-of-conduct"></a>开发人员行为准则
 
-使用认知服务（包括此客户端库和示例）的开发人员应遵循位于 http://go.microsoft.com/fwlink/?LinkId=698895 的“Microsoft 认知服务的开发人员行为准则”。
+使用认知服务（包括此客户端库和示例）的开发人员应遵循“面向 Microsoft 认知服务的开发人员行为准则”（参见 http://go.microsoft.com/fwlink/?LinkId=698895）。
 
 ## <a name="next-steps"></a>后续步骤
 
