@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
 ms.openlocfilehash: 291de21d3d98bf9eb65adc7d506f3549171ee0a0
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743706"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696814"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 
@@ -68,13 +68,13 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
    | 启用额外的键盘功能 |Control-Alt 与 AltGr 不同 |
    
     ![支持的 Putty 设置](./media/storsimple-windows-powershell-administration/IC740877.png)
-3. 单击“应用” 。
+3. 单击“应用”。
 4. 在“**类别**”窗格中，选择“**转换**”。
 5. 在“**远程字符集**”列表框中，选择“**UTF-8**”。
 6. 在“**处理线条图形字符**”下，选择“**使用 Unicode 线条图形代码点**”。 以下屏幕截图显示了正确的 PuTTY 选择。
    
     ![UTF PuTTY 设置](./media/storsimple-windows-powershell-administration/IC740878.png)
-7. 单击“应用” 。
+7. 单击“应用”。
 
 现在可以通过执行以下步骤使用 PuTTY 连接到设备串行控制台。
 

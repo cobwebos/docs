@@ -16,11 +16,11 @@ ms.date: 05/18/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: 63bab0e5c77204ea1e122c32a508e31ed9bcd114
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660483"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696953"
 ---
 # <a name="quickstart-use-azure-redis-cache-with-a-net-core-app"></a>快速入门：将 Azure Redis 缓存与 .NET Core 应用配合使用
 
@@ -28,7 +28,7 @@ ms.locfileid: "34660483"
 
 本快速入门展示了如何开始将 Microsoft Azure Redis 缓存与 .NET Core 配合使用。 Microsoft Azure Redis 缓存基于流行的开源 Redis 缓存。 它让你访问 Microsoft 管理的安全专用的 Redis 缓存。 使用 Azure Redis 缓存创建的缓存可从 Microsoft Azure 内的任何应用程序进行访问。
 
-在本快速入门中，你将在 .NET Core 控制台应用中将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端与 C\# 代码配合使用。 你将创建缓存并配置 .NET Core 客户端应用。 然后，你将在缓存中添加和更新对象。 
+在本快速入门中，你将在 .NET Core 控制台应用中将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端与 C\# 代码配合使用。 你将创建缓存并配置 .NET Core 客户端应用。 然后，将在缓存中添加和更新对象。 
 
 可使用任何代码编辑器来完成本快速入门中的步骤。 但是，[Visual Studio Code](https://code.visualstudio.com/) 是一个很好的选项，可用于 Windows、macOS 和 Linux 平台。
 
@@ -330,7 +330,7 @@ dotnet run
 在本快速入门中，你已学习了如何从 .NET Core 应用程序中使用 Azure Redis 缓存。 请继续学习下一个快速入门，来将 Redis 缓存与 ASP.NET Web 应用配合使用。
 
 > [!div class="nextstepaction"]
-> [创建使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
+> [创建使用 Azure Redis 缓存的 ASP.NET Web 应用](./cache-web-app-howto.md)。
 
 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 2cc0e29615ad4fc19040055d847435a9dffa9c95
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 319f9cba23d088553f361b6a0d648bbde94e0743
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658922"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968555"
 ---
 # <a name="extending-geojson-geometries"></a>扩展 GeoJSON 几何图形
 
@@ -30,7 +30,7 @@ Azure Maps 提供功能强大的 API 列表，用于在地理功能内搜索/基
 * Point
 * Polygon
 
-某些 Azure Maps API（例如：[在几何图形内搜索](https://docs.microsoft.com/en-us/rest/api/maps/search/postsearchinsidegeometry)）接受“圆形”（不属于 [GeoJSON 规范][1]）等几何图形。
+某些 Azure Maps API（例如：[在几何图形内搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)）接受“圆形”（不属于 [GeoJSON 规范][1]）等几何图形。
 
 本文提供了有关 Azure Maps 如何扩展 [GeoJSON 规范][1]来表示某些几何图形的详细说明。
 

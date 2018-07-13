@@ -7,15 +7,17 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/7/2018
-ms.openlocfilehash: 12a34bc98db396482d9fde8da778db0f0ef7de4b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 30795f542bca52159f2ff0fe052a94de3743f0e8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767147"
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>快速入门：安装并开始使用 Azure 机器学习服务
 Azure 机器学习服务（预览版）是集成式的端到端数据科学和高级分析解决方案。 它可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -29,7 +31,7 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
 * 访问命令行界面 (CLI)
 
 
-作为 Microsoft Azure 产品组合的一部分，Azure 机器学习服务需要 Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+作为 Microsoft Azure 产品组合的一部分，Azure 机器学习服务需要 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 此外，必须具有足够权限，才能创建诸如资源组、虚拟机之类的资产。 
 
@@ -62,7 +64,7 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
    试验帐户名称 | 唯一的名称 |输入用于标识帐户的唯一名称。 可以使用自己的名称，或者能够最好地标识试验的部门或项目名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 
    订阅 | 用户的订阅 |选择要用于试验的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的相应订阅。
    资源组 | 你的资源组 | 使用订阅中的现有资源组，或者输入一个名称，为此试验帐户创建新的资源组。 
-   Location | _离用户最近的区域_ | 选择最靠近用户和数据资源的位置。
+   位置 | _离用户最近的区域_ | 选择最靠近用户和数据资源的位置。
    席位数 | 2 | 输入席位数。 了解[席位如何影响定价](https://azure.microsoft.com/pricing/details/machine-learning/)。<br/><br/>本快速入门只需要两个座位。 可以根据需要在 Azure 门户中添加或删除席位。
    存储帐户 | 唯一的名称 | 选择“新建”，然后提供一个名称，用于创建 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)。 名称应该 3-24 个字符长，只应包含字母数字字符。 也可选择“使用现有”，从下拉列表中选择现有的存储帐户。 存储帐户是必需的，用于保存项目内容和运行历史记录数据。 
    试验帐户的工作区 | IrisGarden<br/>（在教程中使用的名称） | 提供此帐户的工作区的名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 此工作空间包含创建、管理和发布试验所需的工具。
@@ -145,7 +147,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
    项目名称 | myIris |输入用于标识帐户的唯一名称。 可以使用自己的名称，或者能够最好地标识试验的部门或项目名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 
    项目目录 | c:\Temp\ | 指定在其中创建项目的目录。
    项目说明 | 留空 | 用于描述项目的可选字段。
-   Visualstudio.com GIT 存储库 URL |留空 | 可选字段。 还可以在 Visual Studio Team Services 中将项目与 Git 存储库进行关联，以便进行源代码管理和协作。 [了解如何进行该设置](/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)。 
+   Visualstudio.com GIT 存储库 URL |留空 | 可选字段。 还可以在 Visual Studio Team Services 中将项目与 Git 存储库进行关联，以便进行源代码管理和协作。 [了解如何进行该设置](../desktop-workbench/using-git-ml-project.md#step-3-set-up-a-machine-learning-project-and-git-repo)。 
    所选工作区 | IrisGarden（如果存在） | 在 Azure 门户中选择一个已经为试验帐户创建的工作区。 <br/>如果是按本快速入门进行的操作，则应该已经有了一个名为 IrisGarden 的工作区。 如果还没有该工作区，则请选择一个在创建试验帐户时创建的工作区，或者任何其他需要使用的工作区。
    项目模板 | 鸢尾花分类 | 模板包含的脚本和数据可以用来探索产品的功能。 此模板包含的脚本和数据是本快速入门以及此文档站点中的其他教程所需要的。 
 

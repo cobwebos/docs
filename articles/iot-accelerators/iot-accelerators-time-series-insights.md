@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 7a0a5d4f1fbba5d7bd2813e8b9c300a37853e06c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f16fdfca704b8f8cb175de637ad7f3ef143d3ed7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111470"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968949"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>使用时序见解可视化远程监视数据
 
@@ -99,7 +99,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 1. 单击“创建”。
 
 > [!NOTE]
-> 如果需要向其他用户授予对时序见解资源管理器的访问权限，可以使用这些步骤来[授予数据访问权限](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access#grant-data-access)。
+> 如果需要向其他用户授予对时序见解资源管理器的访问权限，可以使用这些步骤来[授予数据访问权限](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access#grant-data-access)。
 
 ## <a name="time-series-insights-explorer"></a>时序见解资源管理器
 

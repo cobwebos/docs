@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.openlocfilehash: fe9292459134972b44037a58235cdd817030a956
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659217"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968926"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -23,7 +23,7 @@ ms.locfileid: "34659217"
 
 在创建导入作业来将数据传输到 Azure Blob 存储之前，请仔细查看并完成此服务的以下先决条件列表。 必须：
 
-- 拥有可以用于导入/导出服务的活动 Azure 订阅。
+- 拥有可用于导入/导出服务的有效 Azure 订阅。
 - 拥有至少一个包含存储容器的 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。 有关存储容器的信息，请转到[创建存储容器](../blobs/storage-quickstart-blobs-portal.md#create-a-container)。
 - 拥有[受支持类型](storage-import-export-requirements.md#supported-disks)的足够数量的磁盘。 
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。 
@@ -78,7 +78,7 @@ ms.locfileid: "34659217"
 1. 登录到 https://portal.azure.com/。
 2. 转到“所有服务”>“存储”>“导入/导出作业”。 
     
-    ![转到“导入/导出作业”](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![转到导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
 3. 单击“创建导入/导出作业”。
 
@@ -89,7 +89,7 @@ ms.locfileid: "34659217"
     - 选择“导入到 Azure”。
     - 输入导入作业的描述性名称。 可使用此名称来跟踪作业进度。
         - 此名称只能包含小写字母、数字、连字符和下划线。
-        - 此名称必须以字母开头，且不能包含空格。
+        - 此名称必须以字母开头，并且不得包含空格。
     - 选择一个订阅。
     - 输入或选择一个资源组。  
 
@@ -107,7 +107,7 @@ ms.locfileid: "34659217"
 
     - 从下拉列表中选择承运商。
     - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](http://www.fedex.com/us/oadr/) 或 [DHL](http://www.dhl.com/) 承运商帐户。
-    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、州/省/自治区/直辖市和国家/地区。
+    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
     ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    

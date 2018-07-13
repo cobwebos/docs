@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 0959617185694d48c593996d5cd8c836098dd1cd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0aac3eab8a60dc1e1e15b4656fad9ffea062c08e
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062200"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968613"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>将 Cloud Foundry 与 Azure 集成
 
@@ -77,7 +77,7 @@ Azure Log Analytics Nozzle 是一个 Cloud Foundry 组件，可将指标从 [Clo
 ## <a name="7-cost-saving"></a>7.成本节省
 ### <a name="cost-saving-for-devtest-environments"></a>开发/测试环境的成本节省
 #### <a name="b-series-"></a>B 系列：*
-尽管我们往往建议对 Pivotal Cloud Foundry 生产环境使用 F 和 D VM 系列，但全新的“可迸发”[B 系列](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/)提供了新的选项。 对于并非持续需要 CPU 完全性能的工作负荷（如 Web 服务器、小型数据库以及开发和测试环境）而言，B 系列可突增 VM 十分理想。 这些工作负荷通常具有可突增的性能要求。 与 F1 的成本 0.05 美元/小时相比，B1 的成本已下降到 0.012 美元/小时。有关详细信息，请参阅 [VM 大小](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general)和[价格](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的完整列表。 
+尽管我们往往建议对 Pivotal Cloud Foundry 生产环境使用 F 和 D VM 系列，但全新的“可迸发”[B 系列](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/)提供了新的选项。 对于并非持续需要 CPU 完全性能的工作负荷（如 Web 服务器、小型数据库以及开发和测试环境）而言，B 系列可突增 VM 十分理想。 这些工作负荷通常具有可突增的性能要求。 与 F1 的成本 0.05 美元/小时相比，B1 的成本已下降到 0.012 美元/小时。有关详细信息，请参阅 [VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)和[价格](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的完整列表。 
 #### <a name="managed-standard-disk"></a>托管标准磁盘： 
 建议在生产环境中使用高级磁盘，以保持可靠的性能。  借助[托管磁盘](https://azure.microsoft.com/services/managed-disks/)，标准存储也能提供类似的可靠性，但性能有所差别。 针对非性能敏感型的工作负荷，例如开发/测试或非关键环境，托管标准磁盘可以充当一种成本更低的替代选项。  
 ### <a name="cost-saving-in-general"></a>大致成本节省 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
 ms.author: mikhegn
-ms.openlocfilehash: bca33fe187668d38d4451b2de5b9e54d86e40ba9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 437c38a8e674fcdf06e26a7191ceecef9d901470
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659192"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968314"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>如何：使用 Visual Studio 2017 在 Azure Service Fabric 中调试 Windows 容器
 
@@ -26,9 +26,9 @@ ms.locfileid: "34659192"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在 Windows 10 上，按照此快速入门[配置 Windows 10 以运行 Windows 容器](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10)
-* 在 Windows Server 2016 上，按照此快速入门[配置 Windows 2016 以运行 Windows 容器](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server)
-* 按照[在 Windows 上准备开发环境](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started)来设置本地 Service Fabric 环境
+* 在 Windows 10 上，按照此快速入门[配置 Windows 10 以运行 Windows 容器](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10)
+* 在 Windows Server 2016 上，按照此快速入门[配置 Windows 2016 以运行 Windows 容器](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)
+* 按照[在 Windows 上准备开发环境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)来设置本地 Service Fabric 环境
 
 ## <a name="configure-your-developer-environment-to-debug-containers"></a>配置开发人员环境以调试容器
 
@@ -47,7 +47,7 @@ ms.locfileid: "34659192"
     > 可以使用 `-CreateOneNodeCluster` 来设置单节点群集。 默认情况下将创建一个本地五节点群集。
     >
 
-    若要详细了解 Service Fabric 中的 DNS 服务，请参阅 [Azure Service Fabric 中的 DNS 服务](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice)。
+    若要详细了解 Service Fabric 中的 DNS 服务，请参阅 [Azure Service Fabric 中的 DNS 服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)。
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>在 Service Fabric 中调试容器时的已知限制
 

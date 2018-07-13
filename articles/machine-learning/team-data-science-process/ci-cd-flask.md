@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: 233da393bb9e030d885ce588f4841dc1c707c1cb
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4d95fc25ed6f2f2efec8313e5b208b3cccbb619f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836260"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968785"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>人工智能 (AI) 应用程序的 DevOps：使用 Docker 和 Kubernetes 在 Azure 上创建持续集成管道
 对于 AI 应用程序，通常有两个工作流：数据科学家构建机器学习模型，应用开发人员构建应用程序并将其公开给最终用户供使用。 在本文中，我们演示了如何为 AI 应用程序实现持续集成 (CI)/持续交付 (CD) 管道。 AI 应用程序是嵌入在预先训练的机器学习 (ML) 模型中的应用程序代码的组合。 在本文中，我们将从一个专用 Azure blob 存储帐户中提取预先训练的模型，它也可以是 AWS S3 帐户。 对于本文，我们将使用一个简单的 python flask Web 应用程序。
@@ -35,10 +35,10 @@ ms.locfileid: "34836260"
 
 ## <a name="pre-requisites"></a>先决条件
 下面是实现下文介绍的 CI/CD 管道的先决条件：
-* [Visual Studio Team Services 帐户](https://docs.microsoft.com/en-us/vsts/accounts/create-account-msa-or-work-student)
-* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [运行 Kubernetes 的 Azure 容器服务 (AKS) 群集](https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Azure 容器注册表 (ACR) 帐户](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)
+* [Visual Studio Team Services 帐户](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student)
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [运行 Kubernetes 的 Azure 容器服务 (AKS) 群集](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+* [Azure 容器注册表 (ACR) 帐户](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
 * [安装 Kubectl 以针对 Kubernetes 群集运行命令。](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 我们将需要使用此工具从 ACS 群集提取配置。 
 * 将存储库分叉到 GitHub 帐户。
 
@@ -69,6 +69,6 @@ ms.locfileid: "34836260"
 
 ## <a name="references"></a>参考
 * [Team Data Science Process (TDSP)](https://aka.ms/tdsp)
-* [Azure 机器学习 (AML)](https://docs.microsoft.com/en-us/azure/machine-learning/service/)
+* [Azure 机器学习 (AML)](https://docs.microsoft.com/azure/machine-learning/service/)
 * [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/vso/)
-* [Azure Kubernetes 服务 (AKS)](https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes)
+* [Azure Kubernetes 服务 (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)

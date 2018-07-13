@@ -3,17 +3,18 @@ title: Azure 容器注册表教程 - 将已更新的映像推送到区域部署
 description: 将修改后的 Docker 映像推送到异地复制的 Azure 容器注册表，然后查看已自动部署到多个区域中运行的 Web 应用的更改。 由三个部分构成的教程系列的第三部分。
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: f8eab93d1e6633ae4f17c5bb4836d96629d55cd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8edb35b91327bde1fa824ec456b8a98962adb7ce
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634081"
 ---
 # <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>教程：将已更新的映像推送到区域部署
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="rebuild-the-image"></a>重新生成映像
 
-更新 Web 应用程序后，请重新生成其容器映像。 如前所述，为标记使用完全限定的映像名称，包括登录服务器 URL：
+更新 Web 应用程序后，请重新生成其容器映像。 如前所述，对标记使用完全限定的映像名称，包括登录服务器的完全限定域名 (FQDN)：
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -78,15 +79,16 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-现在，将更新的 *acr-helloworld* 容器映像推送到异地复制的注册表。 在这里，我们会执行一条 `docker push` 命令将更新的映像同时部署到“美国西部”和“美国东部”区域的注册表副本。
+接下来，将更新的 *acr-helloworld* 容器映像推送到异地复制的注册表。 在这里，我们会执行一条 `docker push` 命令将更新的映像同时部署到“美国西部”和“美国东部”区域的注册表副本。
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-输出应如下所示：
+`docker push` 输出应如下所示：
 
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 5b9454e91555: Pushed
 d6803756744a: Layer already exists
@@ -126,19 +128,17 @@ Webhook 通知 Web 应用，新的映像已推送到注册表，后者会自动�
 
 ![在“美国东部”区域运行的已修改 Web 应用的浏览器视图][deployed-app-eastus-modified]
 
-我们已使用一条 `docker push` 命令更新了两个区域性 Web 应用部署，并且 Azure 容器注册表已从靠近网络的存储库中提供了容器映像。
+使用单个 `docker push`，已自动更新这两个区域 Web 应用部署中运行的 Web 应用程序。 并且，Azure 容器注册表提供离每个部署最近的存储库中的容器映像。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们已更新一个新版 Web 应用程序容器并将其推送到了异地复制的注册表。 Azure 容器注册表中的 Webhook 告知用于容器的 Web 应用已发生此项更新，更新触发了从注册表副本进行的本地提取操作。
+在本教程中，我们已更新一个新版 Web 应用程序容器并将其推送到了异地复制的注册表。 Azure 容器注册表中的 Webhook 告知用于容器的 Web 应用已发生此项更新，更新触发了从最近的注册表副本进行的本地提取操作。
 
-在本教程（教程系列的最后一部分）中执行的操作包括：
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR Build：自动映像生成和修补
 
-> [!div class="checklist"]
-> * 更新了 Web 应用程序 HTML
-> * 生成并标记了 Docker 映像
-> * 已将更改推送到 Azure 容器注册表
-> * 已查看两个不同区域中的已更新应用
+除了异地复制外，ACR Build 是 Azure 容器注册表的另一项功能，可帮助优化容器部署管道。 从 ACR Build 概述着手，了解其功能：
+
+[使用 ACR Build 自动执行 OS 和框架修补](container-registry-build-overview.md)
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

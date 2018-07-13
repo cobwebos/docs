@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 4b90d1b9b2ee64722d3c92bcbd8fa205c9b59ebd
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: d46c55f809d24529ea5deeb4d84de44dae876a4b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809601"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968980"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的备份和还原
 
@@ -84,8 +84,8 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 若要手动管理 SQL VM 上的备份和还原操作，可以根据所用的 SQL Server 版本使用多个选项。 有关备份和还原的概述，请根据所用的 SQL Server 版本参阅以下文章之一：
 
-- [适用于 SQL Server 2016 和更高版本的备份和还原](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
-- [适用于 SQL Server 2014 的备份和还原](https://msdn.microsoft.com/en-us/library/ms187048%28v=sql.120%29.aspx)
+- [适用于 SQL Server 2016 和更高版本的备份和还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
+- [适用于 SQL Server 2014 的备份和还原](https://msdn.microsoft.com/library/ms187048%28v=sql.120%29.aspx)
 - [适用于 SQL Server 2012 的备份和还原](https://msdn.microsoft.com/library/ms187048%28v=sql.110%29.aspx)
 - [适用于 SQL Server 2008 R2 的备份和还原](https://msdn.microsoft.com/library/ms187048%28v=sql.105%29.aspx)
 - [适用于 SQL Server 2008 的备份和还原](https://msdn.microsoft.com/library/ms187048%28v=sql.100%29.aspx)
@@ -105,7 +105,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 | 2016 增强功能 | 详细信息 |
 | --- | --- |
 | **条带化** |备份到 Microsoft Azure Blob 存储时，SQL Server 2016 支持备份到多个 Blob，以便能够备份高达 12.8 TB 的大型数据库。 |
-| **快照备份** |通过使用 Azure 快照，SQL Server 快照备份为使用 Azure Blob 存储服务中存储的数据库文件提供接近实时的备份和更快速的还原。 使用此功能可简化备份和还原策略。 文件快照备份还支持时间点还原。 有关详细信息，请参阅 [Azure 中针对数据库文件的快照备份](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)。 |
+| **快照备份** |通过使用 Azure 快照，SQL Server 快照备份为使用 Azure Blob 存储服务中存储的数据库文件提供接近实时的备份和更快速的还原。 使用此功能可简化备份和还原策略。 文件快照备份还支持时间点还原。 有关详细信息，请参阅 [Azure 中针对数据库文件的快照备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)。 |
 
 有关详细信息，请根据所用的 SQL Server 版本参阅以下文章之一：
 

@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 10/19/2017
 ms.author: dobett
-ms.openlocfilehash: cd669a9585ac5aecf935202a04065a828a2174be
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1bf7a647ab2fdc175231133b0cfd8abdd51b6d43
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736749"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723589"
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>使用设备管理启动设备固件更新 (.NET/.NET)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
@@ -57,14 +57,14 @@ ms.locfileid: "34736749"
 3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
 
     ![“NuGet 包管理器”窗口][img-servicenuget]
-4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+4. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
     ```csharp   
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. 将以下字段添加到 **Program** 类。 将多个占位符值替换为在上一部分中为中心创建的 IoT 中心连接字符串和设备的 ID。
+5. 将以下字段添加到 Program 类。 将多个占位符值替换为在上一部分中为中心创建的 IoT 中心连接字符串和设备的 ID。
    
     ```csharp   
     static RegistryManager registryManager;
@@ -157,7 +157,7 @@ ms.locfileid: "34736749"
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. 将以下字段添加到 **Program** 类。 将占位符值替换为在**创建设备标识**部分中记下的设备连接字符串。
+5. 将以下字段添加到 Program 类。 将占位符值替换为在**创建设备标识**部分中记下的设备连接字符串。
    
     ```csharp   
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
@@ -399,7 +399,7 @@ ms.locfileid: "34736749"
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
 [lnk-dm-getstarted]: iot-hub-csharp-csharp-device-management-get-started.md
-[lnk-tutorial-jobs]: iot-hub-csharp-node-schedule-jobs.md
+[lnk-tutorial-jobs]: iot-hub-csharp-csharp-schedule-jobs.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

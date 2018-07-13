@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 11b2fccf3c02555f50f48252f2cd9968c9ec90d7
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436083"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38632878"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>快速入门：将第一个 IoT Edge 模块从 Azure 门户部署到 Windows 设备 - 预览
 
@@ -45,7 +45,7 @@ ms.locfileid: "37436083"
 1. 确保使用的是支持的 Windows 版本：
    * Windows 10 或更高版本
    * Windows Server 2016 或更高版本
-2. 安装[适用于 Windows 的 Docker][lnk-docker] 并确保其正在运行。
+2. 安装[用于 Windows 的 Docker][lnk-docker] 并确保其正在运行。
 3. 将 Docker 配置为使用 [Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
