@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 50e0e9f5edc18aac42ee80e232f70e09736124bc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7ad205c75a02b496abe2cb910c7eb459cdb16c97
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33761881"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969232"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure 应用服务诊断概述 
 
@@ -27,7 +27,7 @@ ms.locfileid: "33761881"
  
 尽管此体验在 Web 应用过去 24 小时内出现问题时可发挥最大的作用，但是，我们随时可以使用所有诊断图形进行分析。 在右栏中可以找到其他故障排除工具，以及有用文档和论坛的链接。
 
-应用服务诊断不但适用于 Windows 上的应用，也适用于 [Linux/容器](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-intro)、[应用服务环境](https://docs.microsoft.com/en-us/azure/app-service/environment/intro)和 [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) 上的应用。 
+应用服务诊断不但适用于 Windows 上的应用，也适用于 [Linux/容器](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)、[应用服务环境](https://docs.microsoft.com/azure/app-service/environment/intro)和 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 上的应用。 
 
 ## <a name="open-app-service-diagnostics"></a>打开应用服务诊断
 

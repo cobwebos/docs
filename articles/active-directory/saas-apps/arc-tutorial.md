@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: bf811d789c0c6effd6f8940ad433092ea9ba04cb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210065"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969361"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>教程：Azure Active Directory 与 Arc Publishing - SSO 的集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "36210065"
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Arc Publishing - SSO
-2. 配置和测试 Azure AD 单一登录
+1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-arc-publishing---sso-from-the-gallery"></a>从库中添加 Arc Publishing - SSO
 若要配置 Arc Publishing - SSO 与 Azure AD 的集成，需要从库中将 Arc Publishing - SSO 添加到托管 SaaS 应用列表。
@@ -64,15 +64,15 @@ ms.locfileid: "36210065"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入 Arc Publishing - SSO，在结果面板中选择“Arc Publishing - SSO”，单击“添加”按钮添加该应用程序。
+1. 在搜索框中键入 Arc Publishing - SSO，在结果面板中选择“Arc Publishing - SSO”，单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Arc Publishing - SSO](./media/arc-tutorial/tutorial_arc_addfromgallery.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "36210065"
 若要通过 Arc Publishing - SSO 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Arc Publishing - SSO 测试用户](#create-an-arc-publishing---sso-test-user)** - 在 Arc Publishing - SSO 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. **[创建 Arc Publishing - SSO 测试用户](#create-an-arc-publishing---sso-test-user)** - 在 Arc Publishing - SSO 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -100,19 +100,19 @@ ms.locfileid: "36210065"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![“单一登录”对话框](./media/arc-tutorial/tutorial_arc_samlbase.png)
 
-3. 在“Arc Publishing - SSO 域和 URL”部分中，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
+1. 在“Arc Publishing - SSO 域和 URL”部分中，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
 
     ![Arc Publishing - SSO 域和 URL 单一登录信息](./media/arc-tutorial/tutorial_arc_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<Unique ID>`
+    1. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<Unique ID>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
+    1. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Arc Publishing - SSO 域和 URL 单一登录信息](./media/arc-tutorial/tutorial_arc_url1.png)
 
@@ -121,11 +121,11 @@ ms.locfileid: "36210065"
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Arc Publishing - SSO 客户端支持团队](mailto:inf@washpost.com)获取这些值。 
 
-5. Arc Publishing - SSO 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+1. Arc Publishing - SSO 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
     
     ![配置单一登录](./media/arc-tutorial/tutorial_arc_attribute.png)
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+1. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称 | 属性值 |
     | ---------------| --------------- |    
@@ -134,36 +134,36 @@ ms.locfileid: "36210065"
     | 电子邮件 | user.mail |
     | 组 | user.assignedroles |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    1. 单击“添加属性”，打开“添加属性”对话框。
 
      ![配置单一登录](./media/arc-tutorial/tutorial_attribute_04.png)
 
      ![配置单一登录](./media/arc-tutorial/tutorial_attribute_05.png)
     
-    b. 在“名称”文本框中，键入为该行显示的属性名称。
+    1. 在“名称”文本框中，键入为该行显示的属性名称。
     
-    c. 在“值”列表中，选择为该行显示的属性值。
+    1. 在“值”列表中，选择为该行显示的属性值。
 
-    d. 将“命名空间”留空。
+    1. 将“命名空间”留空。
     
-    d. 单击“确定”
+    1. 单击“确定”
 
     > [!NOTE]
-    > 此处使用 user.assignedroles 映射组属性。 这些是在 Azure AD 中创建的自定义角色，以将组名称映射回应用程序。 可在[此处](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management)找到有关如何在 Azure AD 中创建自定义角色的更多指导。 
+    > 此处使用 user.assignedroles 映射组属性。 这些是在 Azure AD 中创建的自定义角色，以将组名称映射回应用程序。 可在[此处](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)找到有关如何在 Azure AD 中创建自定义角色的更多指导。 
 
-7. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/arc-tutorial/tutorial_arc_certificate.png) 
 
-8. 单击“保存”按钮。
+1. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/arc-tutorial/tutorial_general_400.png)
     
-9. 在“Arc Publishing - SSO 配置”部分，单击“配置 Arc Publishing - SSO”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+1. 在“Arc Publishing - SSO 配置”部分，单击“配置 Arc Publishing - SSO”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![Arc Publishing - SSO 配置](./media/arc-tutorial/tutorial_arc_configure.png) 
 
-10. 若要在 Arc Publishing - SSO 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [Arc Publishing - SSO 支持团队](mailto:inf@washpost.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 Arc Publishing - SSO 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [Arc Publishing - SSO 支持团队](mailto:inf@washpost.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -177,25 +177,25 @@ ms.locfileid: "36210065"
 
     ![“Azure Active Directory”按钮](./media/arc-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/arc-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
     ![“添加”按钮](./media/arc-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/arc-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    1. 在“姓名”框中，键入“BrittaSimon”。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    1. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    1. 单击“创建”。
  
 ### <a name="create-an-arc-publishing---sso-test-user"></a>创建 Arc Publishing - SSO 测试用户
 
@@ -216,23 +216,23 @@ ms.locfileid: "36210065"
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Arc Publishing - SSO”。
+1. 在应用程序列表中，选择“Arc Publishing - SSO”。
 
     ![应用程序列表中的 Arc Publishing - SSO 链接](./media/arc-tutorial/tutorial_arc_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

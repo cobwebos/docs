@@ -7,14 +7,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 07/06/2018
 ms.author: rayne
-ms.openlocfilehash: 8b16f495a21ff0b3da415390877777650a9fbb82
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 97006f2dfecc8d3ade680f97cbb7776dfda98dd5
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048197"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921019"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -34,24 +34,24 @@ ms.locfileid: "37048197"
   - [排查](https://technet.microsoft.com/library/ff406382.aspx#H22) WMI 脚本和服务的问题。
 5. 在来宾 VM 上，确保运行最新版本的 Integration Services。
     - [检查](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)是否安装了最新版本。
-    - [保持](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) Integration Services 的最新状态。
+    - [始终使用](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)最新的 Integration Services。
     
 ## <a name="replication-issues"></a>复制问题
 
-按如下所述排查初始和持续复制的问题：
+按如下步骤排查初始和持续复制的问题：
 
 1. 确保运行[最新版本](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)的 Site Recovery 服务。
 2. 验证复制是否已暂停：
   - 在 Hyper-V 管理器控制台中检查 VM 运行状况。
-  - 如果问题比较严重，请右键单击 VM 并选择“复制” > “查看复制运行状况”。
+  - 如果状态为严重，请右键单击 VM 并选择“复制” > “查看复制运行状况”。
   - 如果复制已暂停，请单击“恢复复制”。
 3. 检查所需的服务是否正在运行。 如果未运行，请将其重启。
-    - 如果不使用 VMM 复制 Hyper-V，请检查以下服务是否在 Hyper-V 主机上运行：
+    - 如果在不使用 VMM 的情况下复制 Hyper-V，请检查以下服务是否在 Hyper-V 主机上运行：
         - 虚拟机管理服务
         - Microsoft Azure 恢复服务代理服务
         - Microsoft Azure Site Recovery 服务
         - WMI 提供程序主机服务
-    - 如果在环境中使用 VMM 复制，请检查以下服务是否正在运行：
+    - 如果在使用 VMM 的环境中进行复制，请检查以下服务是否正在运行：
         - 在 Hyper-V 主机上，检查虚拟机管理服务、Microsoft Azure 恢复服务代理和 WMI 提供程序主机服务是否正在运行。
         - 在 VMM 服务器上，确保 System Center Virtual Machine Manager 服务正在运行。
 4. 检查 Hyper-V 服务器与 Azure 之间的连接。 为此，请在 Hyper-V 主机上打开任务管理器。 在“性能”选项卡上，单击“打开资源监视器”。 在“网络”选项卡上的“网络活动的进程”中，检查 cbengine.exe 是否正在主动发送大量 (Mbs) 数据。
@@ -69,10 +69,10 @@ ms.locfileid: "37048197"
   - 检查 VM 是否标记为重新同步。
   - 遵循[这些步骤](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/)来调查变动的起源。
   - 当 HRL 日志文件超过可用磁盘空间的 50% 时，可能会发生数据变动。 如果这是问题所在，请为出现问题的所有 VM 预配更多的存储空间。
-  - 检查复制是否未暂停。 如果未暂停，则它会继续将更改写入 HRL 文件，从而可能导致其大小增加。
+  - 检查并确认复制未暂停。 如果已暂停，则它会继续将更改写入 HRL 文件，从而可能导致其大小增加。
  
 
-## <a name="critical-replication-state-issues"></a>严重的复制状态问题
+## <a name="critical-replication-state-issues"></a>“严重”复制状态问题
 
 1. 若要检查复制运行状况，请连接到本地 Hyper-V 管理器控制台，选择 VM，然后检查运行状况。
 
@@ -86,7 +86,7 @@ ms.locfileid: "37048197"
 
 ## <a name="app-consistent-snapshot-issues"></a>应用一致的快照问题
 
-应用一致的快照是 VM 内应用程序数据的时间点快照。 卷影复制服务 (VSS) 确保 VM 上的应用在创建快照时处于一致状态。  本部分详细说明可能会遇到的一些常见问题。
+应用一致的快照是 VM 内应用程序数据的时间点快照。 卷影复制服务 (VSS) 确保 VM 上的应用在创建快照时处于一致状态。  本部分详细说明可能会出现的一些常见问题。
 
 ### <a name="vss-failing-inside-the-vm"></a>VSS 在 VM 中失败
 
@@ -102,7 +102,7 @@ ms.locfileid: "37048197"
         - 卷影复制
          - Azure Site Recovery VSS 提供程序
     - 执行此操作后，请等待几个小时再查看是否已成功生成应用一致的快照。
-    - 最后一招是尝试重新启动 VM。 这可能会解决处于无响应状态的服务。
+    - 最后一招是尝试重新启动 VM。 这可能解决服务处于无响应状态的问题。
 3. 检查 VM 中是否不包含任何动态磁盘。 应用一致的快照不支持动态磁盘。 可在磁盘管理 (diskmgmt.msc) 中进行此项检查。
 
     ![动态磁盘](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
