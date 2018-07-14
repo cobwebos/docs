@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 60105912b075e1fa595a31f8274e02025335ec00
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 69741fb139d2225ce827f4c158603a0ffacbfa76
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990908"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004205"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1051,6 +1051,12 @@ Visual Studio Team Services </a>
                                             <a href="/azure/storage/blobs/storage-blob-storage-tiers">
                                                 <img src="media/index/storage.svg" alt="" />
                                                 <p>存档存储</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/azure-netapp-files/">
+                                                <img src="media/index/NetAppStorage.svg" alt="" />
+                                                <p>Azure NetApp 文件</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2361,6 +2367,25 @@ s" alt="" />
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/azure-netapp-files/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/NetAppStorage.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure NetApp 文件</h3>
+                                                    <p>由 NetApp 提供支持的企业级网络文件服务</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -3254,6 +3279,25 @@ s" alt="" />
                                                 <div class="cardText">
                                                     <h3>Data Lake Store</h3>
                                                     <p>适用于大数据分析工作负荷的超大规模存储库</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/azure-netapp-files/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="/azure/azure-netapp-files/media/index/netapp.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure NetApp 文件</h3>
+                                                    <p>由 NetApp 提供支持的企业级 NFS 文件服务</p>
                                                 </div>
                                             </div>
                                         </div>
