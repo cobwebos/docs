@@ -1,0 +1,52 @@
+- name: Azure 防火墙文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure 防火墙？
+      href: overview.md
+- name: 教程
+  items:
+    - name: 1. 部署和配置
+      href: tutorial-firewall-deploy-portal.md
+    - name: 2. 监视诊断日志
+      href: tutorial-diagnostics.md
+- name: 示例
+  items:
+    - name: Azure PowerShell
+      href: sample-powershell.md
+- name: 操作指南
+  items:
+    - name: 注册公共预览版
+      href: public-preview.md
+    - name: 使用模板进行部署
+      href: deploy-template.md
+- name: 引用
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure 资源管理器
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: 资源
+  items:
+    - name: 创作模板
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 社区模板
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'

@@ -7,18 +7,10 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 尝试认知搜索
-      href: cognitive-search-quickstart-blob.md
     - name: 创建服务
       href: search-create-service-portal.md
-    - name: 门户
-      items:
-        - name: 创建索引
-          href: search-create-index-portal.md
-        - name: 导入数据
-          href: search-import-data-portal.md
-        - name: 搜索浏览器
-          href: search-explorer.md
+    - name: 尝试认知搜索
+      href: cognitive-search-quickstart-blob.md
     - name: .NET
       items:
         - name: 创建索引
@@ -39,18 +31,18 @@
           href: search-fiddler.md
 - name: 教程
   items:
+    - name: 使用内置工具
+      href: search-get-started-portal.md
     - name: 认知搜索开发
       href: cognitive-search-tutorial-blob.md
-    - name: 编制 Azure SQL 数据库索引
-      href: search-indexer-tutorial.md
     - name: 编制 Azure Blob 索引
       href: search-semi-structured-data.md
+    - name: 编制 Azure SQL 数据库索引
+      href: search-indexer-tutorial.md
     - name: 在 .NET 中添加同义词
       href: search-synonyms-tutorial-sdk.md
     - name: 在 .NET 中添加自动完成
       href: search-autocomplete-tutorial.md
-    - name: 门户演练
-      href: search-get-started-portal.md
 - name: 示例
   items:
     - name: Azure 代码示例
@@ -129,6 +121,8 @@
       items:
         - name: 索引定义
           href: search-what-is-an-index.md
+        - name: 创建索引（门户）
+          href: search-create-index-portal.md
         - name: 分析器
           items:
             - name: 文本分析器
@@ -151,6 +145,8 @@
       items:
         - name: 推送和拉取索引编制
           href: search-what-is-data-import.md
+        - name: 导入向导（门户）
+          href: search-import-data-portal.md
         - name: 重新生成索引
           href: search-howto-reindex.md
         - name: 编制大数据集索引
@@ -181,6 +177,8 @@
       items:
         - name: 基本查询构造
           href: search-query-overview.md
+        - name: 搜索浏览器（门户）
+          href: search-explorer.md
         - name: 简化的查询语法
           href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
         - name: Lucene 查询语法

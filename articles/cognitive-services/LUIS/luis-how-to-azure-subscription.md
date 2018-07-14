@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: dbcbdb0f806241c015e6fbc160465390bead7c37
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 3526871f126ac975f323fe84b14883b361b684ae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340767"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "35366856"
 ---
 # <a name="manage-azure-endpoint-subscription-keys"></a>管理 Azure 终结点订阅密钥
 
@@ -40,7 +40,7 @@ ms.locfileid: "37340767"
     ![Azure 密钥](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * 登录所在地区的 [LUIS](luis-reference-regions.md) 网站，然后[添加新的 LUIS 终结点密钥](luis-how-to-manage-keys.md#assign-endpoint-key)。 
+    > * 登录所在地区的 [LUIS](luis-reference-regions.md) 网站，然后[添加新的 LUIS 终结点密钥](Manage-Keys.md#assign-endpoint-key)。 
     > * 需要记住创建的 Azure 服务的名称，以便在所在地区的 [LUIS](luis-reference-regions.md) 发布页中将其选中。  
 
 ## <a name="change-luis-pricing-tier"></a>更改 LUIS 定价层
@@ -53,7 +53,7 @@ ms.locfileid: "37340767"
     ![更改 LUIS 支付层](./media/luis-usage-tiers/plans.png)
 4.  定价更改完成后，页面将出现一个供于验证新定价层的弹出窗口。 
     ![验证 LUIS 支付层](./media/luis-usage-tiers/updated.png)
-5. 请记住在“发布”页[分配此终结点密钥](luis-how-to-manage-keys.md#assign-endpoint-key)，并将其用于所有终结点查询。 
+5. 请记住在“发布”页[分配此终结点密钥](manage-keys.md#assign-endpoint-key)，并将其用于所有终结点查询。 
 
 ## <a name="exceed-pricing-tier-usage"></a>超出定价层用量
 每层允许以特定速率向 LUIS 帐户发送终结点请求。 如果请求速率高于计费帐户的每分钟或每月的允许速率，则请求会出现 HTTP 错误“429: 请求过多”。

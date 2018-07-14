@@ -40,8 +40,6 @@
           href: blockchain-workbench-data-sql-management-studio.md
 - name: 引用
   items:
-    - name: 代码示例
-      href: 'https://github.com/Azure-Samples/blockchain'
     - name: 配置
       href: blockchain-workbench-configuration-overview.md
     - name: 数据库视图
@@ -50,6 +48,19 @@
       href: blockchain-workbench-messages-overview.md
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+- name: 资源
+  expanded: true
+  items:
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: 代码示例
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: 社区
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: 论坛
+      href: 'https://aka.ms/workbenchforum'
+    - name: 产品反馈
+      href: 'https://feedback.azure.com/forums/586780-blockchain'
     - name: 解决方案模板
       items:
         - name: Ethereum 工作量证明联盟

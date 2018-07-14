@@ -15,7 +15,7 @@
       href: quickstarts/nodejs.md
     - name: 以 Python 编写的第一个查询
       href: quickstarts/python.md
-- name: SDK
+- name: SDK 中 IsInRole 中的声明
   expanded: true
   items:
     - name: SDK 示例概述
@@ -28,6 +28,8 @@
       href: visual-search-sdk-python.md
 - name: 教程
   items:
+    - name: 视觉搜索图像上传
+      href: tutorial-visual-search-image-upload.md
     - name: 单页 Web 应用
       href: tutorial-bing-visual-search-single-page-app.md
     - name: 单页 Web 应用（源代码）

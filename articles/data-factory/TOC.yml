@@ -279,6 +279,9 @@
           items: null
         - name: 加载 Data Lake Storage Gen2
           href: load-azure-data-lake-storage-gen2.md
+          items:
+            - name: 从 Data Lake Storage Gen1 中复制
+              href: load-azure-data-lake-storage-gen2-from-gen1.md
         - name: 加载 SQL 数据仓库
           href: load-azure-sql-data-warehouse.md
         - name: 加载 Data Lake Storage Gen1
@@ -424,7 +427,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 请求功能
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: 常见问题
+    - name: 常见问题解答
       href: frequently-asked-questions.md
     - name: 路线图
       href: 'https://azure.microsoft.com/en-us/roadmap/?tag=data-factory'

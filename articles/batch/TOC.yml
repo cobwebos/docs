@@ -87,8 +87,6 @@
           href: batch-job-prep-release.md
         - name: 并发节点任务
           href: batch-parallel-node-tasks.md
-        - name: 按状态对任务计数
-          href: batch-get-task-counts.md
         - name: 任务依赖项
           href: batch-task-dependencies.md
         - name: 用于运行任务的用户帐户
@@ -119,7 +117,9 @@
           href: batch-diagnostics.md
         - name: 使用 Application Insights 进行监视
           href: monitor-application-insights.md
-        - name: 高效列表查询
+        - name: 按状态对资源计数
+          href: batch-get-resource-counts.md
+        - name: 有效查询资源
           href: batch-efficient-list-queries.md
     - name: 使用开发人员工具
       items:
