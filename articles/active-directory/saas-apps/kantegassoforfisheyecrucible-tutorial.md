@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: fe55c84964d10be971c0f1d64d2c70313098a4ee
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bf262a42751e02c939696e4c8554fc19f5a4f4bd
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215703"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>教程：Azure Active Directory 与 Kantega SSO for FishEye/Crucible 集成
 
@@ -177,7 +177,7 @@ ms.locfileid: "36215703"
 
     a. 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for FishEye/Crucible 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 18. 在“元数据导入”部分，执行以下步骤：
 
@@ -185,7 +185,7 @@ ms.locfileid: "36215703"
 
     a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 19. 在“名称和 SSO 位置”部分，执行以下步骤：
 
@@ -193,7 +193,7 @@ ms.locfileid: "36215703"
 
     a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 20. 验证签名证书，然后单击“下一步”。  
 
@@ -205,9 +205,9 @@ ms.locfileid: "36215703"
 
     a. 选择“根据需要在 FishEye 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
-22. 单击“完成” 。
+22. 单击“完成”。
 
     ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 

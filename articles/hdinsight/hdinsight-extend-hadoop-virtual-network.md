@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 9ad7a35864f8e8a1aa95f0b54174a792f069ba18
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 842746561b74860e674fbaa298c78bb0ac58bd68
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700700"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112127"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -286,7 +286,7 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
     | 中国 | 中国北部 | 42.159.96.170</br>139.217.2.219 | 443 | 入站 |
     | &nbsp; | 中国东部 | 42.159.198.178</br>42.159.234.157 | 443 | 入站 |
     | 欧洲 | 北欧 | 52.164.210.96</br>13.74.153.132 | 443 | 入站 |
-    | &nbsp; | 欧洲西部| 52.166.243.90</br>52.174.36.244 | 443 | 入站 |
+    | &nbsp; | 西欧| 52.166.243.90</br>52.174.36.244 | 443 | 入站 |
     | 德国 | 德国中部 | 51.4.146.68</br>51.4.146.80 | 443 | 入站 |
     | &nbsp; | 德国东北部 | 51.5.150.132</br>51.5.144.101 | 443 | 入站 |
     | 印度 | 印度中部 | 52.172.153.209</br>52.172.152.49 | 443 | 入站 |

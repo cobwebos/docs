@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3b767da394f6337a1110ad171f19ad789fa044d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867487"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972975"
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>登录屏幕中的“Azure AD 密码重置”
 
@@ -28,7 +28,7 @@ ms.locfileid: "33867487"
 * 安装了 Windows 10 April 2018 Update 或使用[已加入 Azure AD](../device-management-azure-portal.md) 或[已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md) 的更新客户端。
 * 必须启用 Azure AD 自助密码重置。
 * 配置和部署设置，通过下述某个方法启用“重置密码”链接：
-   * [Intune 设备配置文件](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
+   * [Intune 设备配置文件](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)。 此方法要求在 Intune 中登记设备。
    * [注册表项](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>使用 Intune 配置“重置密码”链接
@@ -66,7 +66,7 @@ ms.locfileid: "33867487"
    * 单击“选择”
 4. 单击“创建” 
 
-有关如何创建组的详细信息，可参阅[使用 Azure Active Directory 组管理对资源的访问权限](../active-directory-manage-groups.md)一文。
+有关如何创建组的详细信息，可参阅[使用 Azure Active Directory 组管理对资源的访问权限](../fundamentals/active-directory-manage-groups.md)一文。
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>将设备配置策略分配到设备组
 

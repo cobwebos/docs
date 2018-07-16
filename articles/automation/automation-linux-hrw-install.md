@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d37dbb85dc85ee8bae0447f18f771dc658de18e3
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0c677b88228097efcaa30399160dfdafa1c01788
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060232"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096336"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -49,7 +49,7 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 | **必需的程序包** | **说明** | **最低版本**|
 |--------------------- | --------------------- | -------------------|
 |Glibc |GNU C 库| 2.5-12 |
-|Openssl| OpenSSL 库 | 0.9.8e 或 1.0|
+|Openssl| OpenSSL 库 | 1.0（支持 TLS 1.1 和 TLS 1.2）|
 |Curl | cURL Web 客户端 | 7.15.5|
 |Python-ctype | |
 |PAM | 可插入验证模块|

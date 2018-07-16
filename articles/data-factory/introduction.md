@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: e4e90082f483720699fb029db33bc8110173c0aa
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: bc53d245dd814b6f9bb4edab89ddcbf841f16a8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082948"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38579171"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -120,6 +120,10 @@ Azure 数据工厂本身不存储任何数据。 它允许创建数据驱动型�
 尽管数据工厂只能在特定区域使用，但数据工厂中支持数据移动的服务可在全球多个区域使用。 如果数据存储位于防火墙后面，则可改用本地环境中安装的自承载 Integration Runtime 来移动数据。
 
 例如，假设计算环境（例如 Azure HDInsight 群集和 Azure 机器学习）即将耗尽西欧区域的资源。 可以在美国东部或美国东部 2 创建并使用一个 Azure 数据工厂实例来安排西欧计算环境中的作业。 只需几毫秒时间，数据工厂就能触发计算环境上的作业，但在计算环境上运行作业所需的时间不会改变。
+
+## <a name="accessibility"></a>可访问性
+
+可以访问 Azure 门户中的数据工厂用户体验。
 
 ## <a name="compare-with-version-1"></a>与版本 1 比较
 有关数据工厂服务版本 1 与当前版本之间的差异列表，请参阅[与版本 1 比较](compare-versions.md)。 

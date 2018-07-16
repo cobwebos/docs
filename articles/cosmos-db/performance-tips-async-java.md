@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 867a48674fe2489629a887ff9626d8e10b41e653
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e3ee75a07f19fef50d9aca61773bd7ea860f2ca4
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613976"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101341"
 ---
 > [!div class="op_single_selector"]
 > * [异步 Java](performance-tips-async-java.md)
@@ -49,7 +49,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 3. **优化 ConnectionPolicy**
 
-    使用 Async Java SDK 时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并且受制于默认的最大连接池大小 (1000)。 此默认值对于大多数用例是很理想的。 但是，如果你有一个包含许多分区的极大型集合，则可以使用 setMaxPoolSize 将最大连接池大小设置为更大的数字（例如 1500）。
+    使用 Async Java SDK 时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并且受制于默认的最大连接池大小 (1000)。 此默认值对于大多数用例是很理想的。 但是，如果你有一个包含许多分区的大型集合，则可以使用 setMaxPoolSize 将最大连接池大小设置为更大的数字（例如 1500）。
 
 4. **优化分区集合的并行查询。**
 
@@ -83,11 +83,11 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     也可以使用 setMaxItemCount 方法设置页面大小。
     
-9. **使用相应的计划程序（避免窃取 Eventloop IO Netty 线程）**
+9. **使用相应的计划程序（避免窃取事件循环 IO Netty 线程）**
 
-    Async Java SDK 对非阻塞 IO使用 [netty](https://netty.io/)。 SDK 使用固定数量的 IO netty eventloop 线程（数量与计算机提供的 CPU 核心数相同）来执行 IO 操作。 API 返回的可观测对象针对某个共享的 IO eventloop netty 线程发出结果。 因此，切勿阻塞共享的 IO eventloop netty 线程。 针对 IO eventloop netty 线程执行 CPU 密集型工作或者阻塞操作可能导致死锁，或大大减少 SDK 吞吐量。
+    Async Java SDK 对非阻塞 IO使用 [netty](https://netty.io/)。 SDK 使用固定数量的 IO netty 事件循环线程（数量与计算机提供的 CPU 核心数相同）来执行 IO 操作。 API 返回的可观测对象针对某个共享的 IO 事件循环 netty 线程发出结果。 因此，切勿阻塞共享的 IO 事件循环 netty 线程。 针对 IO 事件循环 netty 线程执行 CPU 密集型工作或者阻塞操作可能导致死锁，或大大减少 SDK 吞吐量。
 
-    例如，以下代码针对 eventloop IO netty 线程执行 CPU 密集型工作：
+    例如，以下代码针对事件循环 IO netty 线程执行 CPU 密集型工作：
 
     ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -103,7 +103,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
       });
     ```
 
-    收到结果后，如果想要针对结果执行 CPU 密集型工作，应避免针对 eventloop IO netty 线程执行。 可以提供自己的计划程序，以提供自己的线程来运行工作。
+    收到结果后，如果想要针对结果执行 CPU 密集型工作，应避免针对事件循环 IO netty 线程执行。 可以提供自己的计划程序，以提供自己的线程来运行工作。
 
     ```java
     import rx.schedulers;
@@ -126,13 +126,13 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     有关详细信息，请查看 Async Java SDK 的 [Github 页](https://github.com/Azure/azure-cosmosdb-java)。
 
-10. **禁用 netty 日志记录**Netty 库日志记录非常琐碎，因此需要将其关闭（在配置中禁用日志可能并不足够），以避免产生额外的 CPU 开销。 如果不处于调试模式，请一起禁用 netty 日志记录。 因此，如果要使用 log4j 来消除 netty 中 ``org.apache.log4j.Category.callAppenders()`` 产生的额外 CPU 开销，请将以下行添加到基代码：
+10. **禁用 netty 日志记录** Netty 库日志记录非常琐碎，因此需要将其关闭（在配置中禁止登录可能并不足够），以避免产生额外的 CPU 开销。 如果不处于调试模式，请一起禁用 netty 日志记录。 因此，如果要使用 log4j 来消除 netty 中 ``org.apache.log4j.Category.callAppenders()`` 产生的额外 CPU 开销，请将以下行添加到基代码：
 
     ```java
     org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
     ```
 
-11. **OS 打开文件资源限制**某些 Linux 系统（例如 RedHat）对打开的文件数和连接总数施加上限。 运行以下命令以查看当前限制：
+11. **OS 打开文件资源限制**某些 Linux 系统（例如 Red Hat）对打开的文件数和连接总数施加上限。 运行以下命令以查看当前限制：
 
     ```bash
     ulimit -a
@@ -170,7 +170,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     </dependency>
     ```
 
-对于其他平台（RedHat、Windows、Mac 等），请参考 https://netty.io/wiki/forked-tomcat-native.html 中的说明
+对于其他平台（Red Hat、Windows、Mac 等），请参考 https://netty.io/wiki/forked-tomcat-native.html 中的说明
 
 ## <a name="indexing-policy"></a>索引策略
  
@@ -195,7 +195,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 1. **测量和优化较低的每秒请求单位使用量**
 
-    Azure Cosmos DB 提供一组丰富的数据库操作，包括 UDF 的关系和层次查询，存储过程和触发器 – 所有这些都是对数据库集合内的文档进行的操作。 与这些操作关联的成本取决于完成操作所需的 CPU、IO 和内存。 与考虑和管理硬件资源不同的是，可以考虑将请求单位 (RU) 作为所需资源的单个措施，以执行各种数据库操作和服务应用程序请求。
+    Azure Cosmos DB 提供一组丰富的数据库操作，包括 UDF 的关系和层次查询、存储过程和触发 – 所有都在数据库集合的文档上操作。 与这些操作关联的成本取决于完成操作所需的 CPU、IO 和内存。 与考虑和管理硬件资源不同的是，可以考虑将请求单位 (RU) 作为所需资源的单个措施，以执行各种数据库操作和服务应用程序请求。
 
     吞吐量是基于为每个容器设置的[请求单位](request-units.md)数量预配的。 请求单位消耗以每秒速率评估。 如果应用程序的速率超过了为其容器预配的请求单位速率，则会受到限制，直到该速率降到容器的预配级别以下。 如果应用程序需要较高级别的吞吐量，可以通过预配更多请求单位来增加吞吐量。 
 
@@ -209,7 +209,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     response.getRequestCharge();
     ```             
 
-    在此标头中返回的请求费用是预配吞吐量的一小部分。 例如，如果预配了 2000 RU/s，上述查询返回 1000 个 1KB 文档，则操作成本为 1000。 因此在一秒内，服务器在限制后续请求之前，只接受两个此类请求。 有关详细信息，请参阅[请求单位](request-units.md)和[请求单位计算器](https://www.documentdb.com/capacityplanner)。
+    在此标头中返回的请求费用是预配吞吐量的一小部分。 例如，如果预配了 2000 RU/s，上述查询返回 1000 个 1KB 文档，则操作成本为 1000。 因此在一秒内，服务器在对后续请求进行速率限制之前，只接受两个此类请求。 有关详细信息，请参阅[请求单位](request-units.md)和[请求单位计算器](https://www.documentdb.com/capacityplanner)。
 <a id="429"></a>
 2. **处理速率限制/请求速率太大**
 

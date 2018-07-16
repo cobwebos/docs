@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 85450119b9ab25b6f812cbf8c6c64174dd6f322c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 1b9b1fa5b67e37181ff4c76773c6666ccbbcf275
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061720"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082859"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 本文提供在 Azure 数据工厂中配置 Azure-SSIS 集成运行时所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 在 Azure 的此运行时中部署并运行 SQL Server Integration Services (SSIS) 包。 
@@ -54,9 +54,9 @@ ms.locfileid: "37061720"
 - **Azure PowerShell**。 如果使用 PowerShell 运行脚本来预配在云中运行 SSIS 包的 Azure-SSIS 集成运行时，请遵照[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。 
 
 ### <a name="region-support"></a>区域支持
-可以在下述区域创建数据工厂：美国东部、美国东部 2、东南亚、西欧。 
+若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。
 
-可以在下述区域创建 Azure-SSIS IR：美国东部、美国东部 2、美国中部、美国西部 2、北欧、西欧、英国南部和澳大利亚东部。 
+若要查看目前提供 Azure-SSIS 集成运行时的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“SSIS 集成运行时”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。### 比较 SQL 数据库和托管实例（预览版）
 
 ### <a name="compare-sql-database-and-managed-instance-preview"></a>比较 SQL 数据库和托管实例（预览版）
 
@@ -67,7 +67,7 @@ ms.locfileid: "37061720"
 | **计划** | SQL Server 代理不可用。<br/><br/>请参阅[将包计划为 Azure 数据工厂管道一部分](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages.md#activity)。| SQL Server 代理可用。 |
 | **身份验证** | 可以使用包含的数据库用户帐户（代表 dbmanager 角色中的任意 Azure Active Directory 用户）创建数据库。<br/><br/>请参阅[在 Azure SQL 数据库上启用 Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)。 | 不可以使用包含的数据库用户帐户（代表除 Azure AD 管理员以外的任意 Azure Active Directory 用户）创建数据库。 <br/><br/>请参阅[在 Azure SQL 数据库托管实例上启用 Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)。 |
 | **服务层** | 在 SQL 数据库上创建 Azure-SSIS IR 时，可以选择 SSISDB 服务层。 有多个服务层。 | 在托管实例上创建 Azure-SSIS IR 时，不能选择 SSISDB 服务层。 同一托管实例上的所有数据库都共享分配给该实例的相同资源。 |
-| 虚拟网络 | 同时支持 Azure 资源管理器和经典虚拟网络。 | 仅支持 Azure 资源管理器虚拟网络。 虚拟网络是必需的。<br/><br/>如果将 Azure-SSIS IR 加入与托管实例相同的虚拟网络，请确保 Azure-SSIS IR 位于与托管实例不同的子网中。 如果将 Azure-SSIS IR 加入与托管实例不同的虚拟网络，我们建议使用虚拟网络对等互连（限于相同的区域）或虚拟网络间连接。 请参阅[将应用程序连接到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-connect-app.md)。 |
+| **虚拟网络** | 同时支持 Azure 资源管理器和经典虚拟网络。 | 仅支持 Azure 资源管理器虚拟网络。 虚拟网络是必需的。<br/><br/>如果将 Azure-SSIS IR 加入与托管实例相同的虚拟网络，请确保 Azure-SSIS IR 位于与托管实例不同的子网中。 如果将 Azure-SSIS IR 加入与托管实例不同的虚拟网络，我们建议使用虚拟网络对等互连（限于相同的区域）或虚拟网络间连接。 请参阅[将应用程序连接到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-connect-app.md)。 |
 | **分布式事务** | 通过弹性事务支持。 不支持 Microsoft 分布式事务处理协调器 (MSDTC) 事务。 如果包使用 MSDTC 协调分布式事务，请考虑迁移到 SQL 数据库弹性事务。 有关详细信息，请参阅[跨云数据库的分布式事务](../sql-database/sql-database-elastic-transactions-overview.md)。 | 不支持。 |
 | | | |
 
@@ -220,13 +220,11 @@ ms.locfileid: "37061720"
 $SubscriptionName = "[your Azure subscription name]"
 $ResourceGroupName = "[your Azure resource group name]"
 $DataFactoryName = "[your data factory name]"
-# You can create a data factory in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
 $DataFactoryLocation = "EastUS" 
 
 ### Azure-SSIS integration runtime information - This is the Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[specify a name for your Azure-SSIS IR]"
 $AzureSSISDescription = "[specify a description for your Azure-SSIS IR]"
-# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, and Australia East.
 $AzureSSISLocation = "EastUS" 
 # Only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
 $AzureSSISNodeSize = "Standard_D4_v2"
@@ -392,13 +390,11 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 $SubscriptionName = "[your Azure subscription name]"
 $ResourceGroupName = "[your Azure resource group name]"
 $DataFactoryName = "[your data factory name]"
-# You can create a data factory in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
 $DataFactoryLocation = "EastUS" 
 
 ### Azure-SSIS integration runtime information - This is the Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[specify a name for your Azure-SSIS IR]"
 $AzureSSISDescription = "[specify a description for your Azure-SSIS IR]"
-# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, and Australia East.
 $AzureSSISLocation = "EastUS" 
 # Only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
 $AzureSSISNodeSize = "Standard_D4_v2"

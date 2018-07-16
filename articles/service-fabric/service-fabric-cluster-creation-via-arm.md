@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: aljo
-ms.openlocfilehash: d9ed4134cfb8047d5d6839979cd89ba37ff0c3f8
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e963b0f816d30411aa7d1e8c172ca0c2e5ddf0f1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701346"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444355"
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -115,6 +115,10 @@ az account set --subscription $subscriptionId
 
 以下命令用于创建 Windows 和 Linux 群集，你只需相应地指定 OS。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书，但要确保已创建该证书文件夹。 命令还采用类似于 VM SKU 的其他参数。
 
+> [!NOTE]
+> 以下 Powershell 命令仅适用于 Azure 资源管理器 PowerShell 6.1 以上版本。 若要检查 Azure 资源管理器 PowerShell 版的当前版本，请运行以下 PowerShell 命令“Get-Module AzureRM”。 单击此链接升级 Azure 资源管理器 PowerShell 版。 https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.3.0
+>
+>
 ```PowerShell
 $resourceGroupLocation="westus"
 $resourceGroupName="mycluster"

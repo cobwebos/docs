@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: f75671e2e5511054f3db550a8c24e62d031492c3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4c537b06c4ff50d90d9fd5a847b378038f252790
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776706"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972268"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.Android 应用推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "33776706"
 ## <a name="overview"></a>概述
 本教程说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。 创建一个空白 Xamarin.Android 应用，以便使用 Firebase Cloud Messaging (FCM) 接收推送通知。 使用通知中心将推送通知广播到运行应用的所有设备。 [NotificationHubs 应用][GitHub]示例中提供了完成的代码。
 
-在本教程中，请执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * 创建 Firebase 项目并启用 Firebase Cloud Messaging
@@ -38,7 +38,7 @@ ms.locfileid: "33776706"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 订阅**。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 基于 Windows 的 [Visual Studio with Xamarin] 或基于 OS X 的 [Visual Studio for Mac]。
 - 有效的 Google 帐户
 
@@ -58,7 +58,7 @@ ms.locfileid: "33776706"
 
 通知中心已配置为使用 FCM，并且你有连接字符串，既可用于注册应用以接收通知，又可用于发送推送通知。
 
-## <a name="create-xamainandroid-app-and-connect-it-to-notification-hub"></a>创建 Xamarin.Android 应用并将其连接到通知中心
+## <a name="create-xamarinandroid-app-and-connect-it-to-notification-hub"></a>创建 Xamarin.Android 应用并将其连接到通知中心
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>创建 Visual Studio 项目并添加 NuGet 包
 1. 在 Visual Studio 中指向“文件”，选择“新建”，然后选择“项目”。 
@@ -142,6 +142,7 @@ ms.locfileid: "33776706"
 8. 将以下 using 语句添加到 **MyFirebaseIIDService.cs**：
    
     ```csharp
+    using Android.App;
     using Android.Util;
     using WindowsAzure.Messaging;
     using Firebase.Iid;
@@ -183,6 +184,7 @@ ms.locfileid: "33776706"
 12. 将以下 using 语句添加到 **MyFirebaseMessagingService.cs**。
     
     ```csharp
+        using Android.App;
         using Android.Util;
         using Firebase.Messaging;
     ```

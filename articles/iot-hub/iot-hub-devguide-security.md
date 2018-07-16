@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: 04823409b209d1f35a27452321cfd37d30097dde
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 43eb988915fb917923ab968d22b9b7f0ee36c0f5
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808768"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444389"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -36,13 +36,16 @@ ms.locfileid: "34808768"
 可以通过以下方式授予[权限](#iot-hub-permissions)：
 
 * **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可以在 [Azure 门户][lnk-management-portal]中定义策略，或使用 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis] 以编程方式定义策略。 新建的 IoT 中心有以下默认策略：
+  
+  | 共享访问策略 | 权限 |
+  | -------------------- | ----------- |
+  | iothubowner | 所有权限 |
+  | 服务 | **ServiceConnect** 权限 |
+  | 设备 | **DeviceConnect** 权限 |
+  | registryRead | **RegistryRead** 权限 |
+  | registryReadWrite | **RegistryRead** 和 **RegistryWrite** 权限 |
 
-  * **iothubowner**：包含所有权限的策略。
-  * **service**：包含 **ServiceConnect** 权限的策略。
-  * **device**：包含 **DeviceConnect** 权限的策略。
-  * **registryRead**：包含 **RegistryRead** 权限的策略。
-  * **registryReadWrite**：包含 **RegistryRead** 和 RegistryWrite 权限的策略。
-  * **每个设备的安全凭据**。 每个 IoT 中心都包含一个[标识注册表][lnk-identity-registry]。 对于此标识注册表中的每个设备，可配置安全凭据，授予局限于相应设备终结点的 **DeviceConnect** 权限。
+* **每个设备的安全凭据**。 每个 IoT 中心都包含一个[标识注册表][lnk-identity-registry]。 对于此标识注册表中的每个设备，可配置安全凭据，授予局限于相应设备终结点的 **DeviceConnect** 权限。
 
 例如，在典型的 IoT 解决方案中：
 
@@ -462,7 +465,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-openssl]: https://www.openssl.org/
-[lnk-selfsigned]: https://technet.microsoft.com/library/hh848633
+[lnk-selfsigned]: https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate
 
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-sas-tokens]: iot-hub-devguide-security.md#security-tokens

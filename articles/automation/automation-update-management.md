@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 237f0d2b25230528c64bd47edd10ebae62750a0c
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063504"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345376"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -35,9 +35,9 @@ ms.locfileid: "37063504"
 
 ![更新管理流程](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-在计算机执行更新符合性扫描以后，代理会将信息批量转发到 Azure Log Analytics。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时执行一次。 
+在计算机执行更新符合性扫描以后，代理会将信息批量转发到 Azure Log Analytics。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时执行一次。
 
-如果 MMA 重启，除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动。 
+如果 MMA 重启，除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动。
 
 对于 Linux 计算机，符合性扫描默认情况下每 3 小时执行一次。 如果 MMA 代理重启，则会在 15 分钟内启动符合性扫描。
 
@@ -86,7 +86,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 
 #### <a name="linux"></a>Linux
 
-对于 Linux，计算机必须能够访问更新存储库。 更新存储库可以是专用的，也可以是公共的。 此解决方案不支持适用于 Linux 且配置为向多个 Log Analytics 工作区报告的 Operations Management Suite (OMS) 代理。
+对于 Linux，计算机必须能够访问更新存储库。 更新存储库可以是专用的，也可以是公共的。 需要 TLS 1.1 或 TLS 1.2 才能与更新管理进行交互。 此解决方案不支持适用于 Linux 且配置为向多个 Log Analytics 工作区报告的 Operations Management Suite (OMS) 代理。
 
 有关如何安装适用于 Linux 的 OMS 代理以及如何下载最新版本的信息，请参阅[适用于 Linux 的 Operations Management Suite 代理](https://github.com/microsoft/oms-agent-for-linux)。 有关如何安装适用于 Windows 的 OMS 代理的信息，请参阅[适用于 Windows 的 Operations Management Suite 代理](../log-analytics/log-analytics-windows-agent.md)。
 
@@ -115,6 +115,9 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 * 更新部署 MP
 
 有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md)。
+
+> [!NOTE]
+> 对于使用 Operations Manger 代理的系统，若要能够由更新管理完全托管，需要将代理更新为 Microsoft Monitoring Agent。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](/system-center/scom/deploy-upgrade-agents.md)。
 
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>确认非 Azure 计算机已加入
 
@@ -260,6 +263,8 @@ sudo yum -q --security check-update
 |* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
 有关混合 Runbook 辅助角色所需端口的详细信息，请参阅[混合辅助角色端口](automation-hybrid-runbook-worker.md#hybrid-worker-role)。
+
+建议在定义异常时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，反映当前已部署的范围和任何即将对 IP 范围进行的更改。
 
 ## <a name="search-logs"></a>搜索日志
 

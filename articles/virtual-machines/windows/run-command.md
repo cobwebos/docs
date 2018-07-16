@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ddbac24020110e32792286a1ac64070316cfb081
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ad0366d333266af0b16a7acaaa4519f20a951a80
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332708"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342702"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
@@ -35,8 +35,7 @@ ms.locfileid: "36332708"
 * 一次只能运行一个脚本
 * 无法取消正在运行的脚本
 * 脚本最多可以运行 90 分钟，之后它将超时
-
-**PermissionsConfig-OrchestratorUsersGroup***GroupName***-OrchestratorUser***UserName***\-remote** 
+* 需要从 VM 建立出站连接才能返回脚本的结果。
 
 ## <a name="run-a-command"></a>运行命令
 

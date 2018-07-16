@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: edc44f0ab2d2cc737807dd8ad543997cdd75bd43
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 96ca5a7ec8b0c87984ea2c76af446d7a8b5504a1
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034307"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344294"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>创建充当透明网关的 Windows IoT Edge 设备
 
@@ -38,77 +38,75 @@ ms.locfileid: "37034307"
 ## <a name="prerequisites"></a>先决条件
 1.  在要用作透明网关的 Windows 设备上[安装 Azure IoT Edge 运行时][lnk-install-windows-x64]。
 
-1. 获取 OpenSSL for Windows。 安装 OpenSSL 有许多方法。 此处的说明使用 vcpkg 来实现此目的。
-   1. 使用以下从管理员 PowerShell 运行的命令下载并安装 vcpkg。 导航到要安装 OpenSSL 的目录，我们将它称为 `$VCPKGDIR`。
+1. 获取 OpenSSL for Windows。 有许多方法可以安装 OpenSSL：
 
-   ```PowerShell
-   git clone https://github.com/Microsoft/vcpkg
-   cd vcpkg
-   .\bootstrap-vcpkg.bat
-   .\vcpkg integrate install
-   .\vcpkg install openssl:x64-windows
-   ```
+   >[!NOTE]
+   >如果已在 Windows 设备上安装了 OpenSSL，则可以跳过此步骤，但请确保 `%PATH%` 环境变量中有 `openssl.exe` 可用。
 
-   1. 将环境变量 `OPENSSL_ROOT_DIR` 设置为 `$VCPKGDIR\vcpkg\packages\openssl_x64-windows` 并将 `$VCPKGDIR\vcpkg\packages\openssl_x64-windows\tools\openssl` 添加到 `PATH` 环境变量。
+   * 下载并安装任何[第三方 OpenSSL 二进制文件](https://wiki.openssl.org/index.php/Binaries)，例如从 [SourceForge 上的此项目](https://sourceforge.net/projects/openssl/)下载并安装。
+   
+   * 在计算机上下载 OpenSSL 源代码并自行生成二进制文件，或者通过 [vcpkg](https://github.com/Microsoft/vcpkg) 执行此操作。 下面列出的说明使用 vcpkg 下载源代码，在 Windows 计算机上编译并安装 OpenSSL，这些步骤都非常容易使用。
+
+      1. 导航到要安装 vcpkg 的目录。 从现在开始，我们将该目录称为 $VCPKGDIR。 按照说明下载并安装 [vcpkg](https://github.com/Microsoft/vcpkg)。
+   
+      1. 安装 vcpkg 后，在 powershell 提示符下运行以下命令以安装适用于 Windows x64 的 OpenSSL 包。 此安装通常需要大约 5 分钟才能完成。
+
+         ```PowerShell
+         .\vcpkg install openssl:x64-windows
+         ```
+      1. 将 `$VCPKGDIR\vcpkg\packages\openssl_x64-windows\tools\openssl` 添加到 `PATH` 环境变量中，以便可以调用 `openssl.exe` 文件。
+
+1. 导航到要在其中工作的目录。 从现在开始，我们将它称为 $WRKDIR。  所有文件都将在此目录中创建。
+   
+   cd $WRKDIR
 
 1.  使用以下命令获取脚本以生成所需的非生产证书。 这些脚本可帮助创建必要的证书来设置透明网关。
 
-   ```PowerShell
-   git clone https://github.com/Azure/azure-iot-sdk-c.git
-   ```
+      ```PowerShell
+      git clone https://github.com/Azure/azure-iot-sdk-c.git
+      ```
 
-1. 导航到要在其中工作的目录。 从现在开始，我们将它称为 $WRKDIR。  所有文件都将在此目录中创建。
+1. 将配置文件和脚本文件复制到工作目录中。 此外，设置环境变量 OPENSSL_CONF 以使用 openssl_root_ca.cnf 配置文件。
 
-   cd $WRKDIR
-
-1. 将配置文件和脚本文件复制到工作目录中。
    ```PowerShell
    copy azure-iot-sdk-c\tools\CACertificates\*.cnf .
    copy azure-iot-sdk-c\tools\CACertificates\ca-certs.ps1 .
+   $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
    ```
 
 1. 通过运行以下命令，启用 PowerShell 来运行脚本
+
    ```PowerShell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
    ```
 
 1. 使用以下命令，通过点源将脚本使用的函数引入 PowerShell 的全局命名空间
+   
    ```PowerShell
    . .\ca-certs.ps1
    ```
 
-1. 通过运行以下命令，验证 OpenSSL 是否已正确安装，并确保不会与现有证书发生名称冲突。
+1. 通过运行以下命令，验证 OpenSSL 是否已正确安装，并确保不会与现有证书发生名称冲突。 如果出现问题，脚本应说明如何在系统上修复这些问题。
+
    ```PowerShell
    Test-CACertsPrerequisites
    ```
 
 ## <a name="certificate-creation"></a>证书创建
-1.  创建所有者 CA 证书和一个中间证书。 这些证书都位于 `$WRKDIR` 中。
+1.  创建所有者 CA 证书和一个中间证书。 这些证书都放置在 `$WRKDIR` 中。
 
-   ```PowerShell
-   New-CACertsCertChain rsa
-   ```
-
-   脚本执行的输出是以下证书和密钥：
-   * 证书
-      * `$WRKDIR\certs\azure-iot-test-only.root.ca.cert.pem`
-      * `$WRKDIR\certs\azure-iot-test-only.intermediate.cert.pem`
-   * 密钥
-      * `$WRKDIR\private\azure-iot-test-only.root.ca.key.pem`
-      * `$WRKDIR\private\azure-iot-test-only.intermediate.key.pem`
+      ```PowerShell
+      New-CACertsCertChain rsa
+      ```
 
 1.  使用以下命令创建 Edge 设备 CA 证书和私钥。
 
    >[!NOTE]
    > 不要使用与网关的 DNS 主机名相同的名称。 这样做会导致客户端对这些证书的认证失败。
 
-      ```PowerShell
-      New-CACertsEdgeDevice "<gateway device name>"
-      ```
-
-   脚本执行的输出是以下证书和密钥：
-   * `$WRKDIR\certs\new-edge-device.*`
-   * `$WRKDIR\private\new-edge-device.key.pem`
+   ```PowerShell
+   New-CACertsEdgeDevice "<gateway device name>"
+   ```
 
 ## <a name="certificate-chain-creation"></a>证书链创建
 使用以下命令从所有者 CA 证书、中间证书和 Edge 设备 CA 证书创建证书链。 将它置于链文件中可以方便地将其安装在充当透明网关的 Edge 设备上。
@@ -116,6 +114,11 @@ ms.locfileid: "37034307"
    ```PowerShell
    Write-CACertsCertificatesForEdgeDevice "<gateway device name>"
    ```
+
+   脚本执行的输出是以下证书和密钥：
+   * `$WRKDIR\certs\new-edge-device.*`
+   * `$WRKDIR\private\new-edge-device.key.pem`
+   * `$WRKDIR\certs\azure-iot-test-only.root.ca.cert.pem`
 
 ## <a name="installation-on-the-gateway"></a>在网关上安装
 1.  从 Edge 设备上的 $WRKDIR 任意位置复制以下文件，我们将其称为 $CERTDIR。 如果已在 Edge 设备上生成证书，请跳过此步骤。
@@ -128,12 +131,12 @@ ms.locfileid: "37034307"
 
 ```yaml
 certificates:
-  device_ca_cert: "$CERTDIR\certs\new-edge-device-full-chain.cert.pem"
-  device_ca_pk: "$CERTDIR\private\new-edge-device.key.pem"
-  trusted_ca_certs: "$CERTDIR\certs\azure-iot-test-only.root.ca.cert.pem"
+  device_ca_cert: "$CERTDIR\\certs\\new-edge-device-full-chain.cert.pem"
+  device_ca_pk: "$CERTDIR\\private\\new-edge-device.key.pem"
+  trusted_ca_certs: "$CERTDIR\\certs\\azure-iot-test-only.root.ca.cert.pem"
 ```
 ## <a name="deploy-edgehub-to-the-gateway"></a>将 EdgeHub 部署到网关
-Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edge 设备。 本节创建了一个看为似空的部署；但是，即使没有其他模块，Edge 中心也会自动添加到所有部署中。 Edge 中心是 Edge 设备上唯一需要充当透明网关的模块，因此创建空的部署就已足够。 
+Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edge 设备。 本节创建了一个看似为空的部署；但是，即使没有其他模块，Edge 中心也会自动添加到所有部署中。 Edge 中心是 Edge 设备上唯一需要充当透明网关的模块，因此创建空的部署就已足够。 
 1. 在 Azure 门户中导航到 IoT 中心。
 2. 转到“IoT Edge”并选择要用作网关的 IoT Edge 设备。
 3. 选择“设置模块”。
@@ -149,7 +152,7 @@ Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edg
 6. 在“审阅模板”步骤中，选择“提交”。
 
 ## <a name="installation-on-the-downstream-device"></a>在下游设备上安装
-下游设备可以是使用 [Azure IoT 设备 SDK][lnk-devicesdk] 的任何应用程序，如[使用 .NET 将设备连接到 IoT 中心][lnk-iothub-getstarted]中描述的简单设备。 下游设备应用程序必须信任所有者 CA 证书，以便验证与网关设备的 TLS 连接。 通常可通过两种方法执行此步骤：在 OS 级别，或（对于某些语言而言）在应用程序级别。
+下游设备可以是使用 [Azure IoT 设备 SDK][lnk-devicesdk] 的任何应用程序，如[使用 .NET 将设备连接到 IoT 中心][lnk-iothub-getstarted]中描述的简单设备。 下游设备应用程序必须信任**所有者 CA** 证书，以便验证与网关设备的 TLS 连接。 通常可通过两种方法执行此步骤：在 OS 级别，或（对于某些语言而言）在应用程序级别。
 
 ### <a name="os-level"></a>OS 级别
 在 OS 证书存储中安装此证书可使所有应用程序将所有者 CA 证书用作受信任的证书。
@@ -163,7 +166,11 @@ Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edg
  
     应看到一条消息“正在更新 /etc/ssl/certs 中的证书...已添加 1 个，已删除 0 个；已完成。”
 
-* Windows - [这篇文章](https://msdn.microsoft.com/en-us/library/cc750534.aspx)详细介绍了如何使用证书导入向导在 Windows 设备上执行此操作。
+* Windows - 下面是如何在 Windows 主机上安装 CA 证书的示例。
+  * 在“开始”菜单上，键入“管理计算机证书”。 这应该会启动一个名为 `certlm` 的实用程序。
+  * 导航到“证书本地计算机”-->“受信任的根证书”-->“证书”-->右键单击 -->“所有任务”- >“导入”以启动证书导入向导。
+  * 按照指示执行步骤并导入证书文件 $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem。
+  * 完成后，应看到“已成功导入”消息。
 
 ### <a name="application-level"></a>应用程序级别
 对于 .NET 应用程序，可以添加以下片段来信任 PEM 格式的证书。 使用 `$CERTDIR\certs\azure-iot-test-only.root.ca.cert.pem` 初始化变量 `certPath`。
@@ -187,11 +194,11 @@ Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edg
    ```
 
    >[!NOTE]
-   >这是测试所有内容是否正确设置的示例命令。 应看到一条消息“验证成功”。
+   >这是测试所有内容是否已正确设置的示例命令。 应看到一条消息“验证成功”。
    >
    >openssl s_client -connect mygateway.contoso.com:8883 -CAfile $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 
-## <a name="routing-messages-from-downstream-devices"></a>从下游设备路由消息
+## <a name="routing-messages-from-downstream-devices"></a>路由来自下游设备的消息
 IoT Edge 运行时可以像模块发送的消息一样路由从下游设备发送的消息。 这允许将任何数据发送到云之前在网关上运行的模块中执行分析。 下面的路由将用于将消息从名为 `sensor` 的下游设备发送到模块名称 `ai_insights`。
 
    ```json

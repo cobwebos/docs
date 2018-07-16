@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 0f23216c6aced60dc651a0f10179281bc9a29c2c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: da8261d27ae7fad3c5ff30e4e1cce3f1bca2b70a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29802645"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035327"
 ---
 # <a name="apply-updates-in-azure-stack"></a>在 Azure Stack 中应用更新
 
 *适用于：Azure Stack 集成系统*
 
-作为 Azure Stack 操作员，可以使用管理员门户中的“更新”磁贴为 Azure Stack 应用 Microsoft 更新包。 必须下载 Microsoft 更新包，将包文件导入到 Azure Stack，然后安装更新包。 
+Azure Stack 操作员，可以将应用 Microsoft 或 OEM 更新包适用于 Azure Stack 通过使用更新磁贴在管理员门户中。 你必须下载更新包、 包文件导入到 Azure Stack，然后安装更新包。 
 
 ## <a name="download-the-update-package"></a>下载更新包
 
-当适用于 Azure Stack 的 Microsoft 更新包可用时，将该包下载到可从 Azure Stack 访问的位置，并查看包内容。 更新包通常包含以下文件：
+适用于 Azure Stack 的 Microsoft 或 OEM 更新包可用时，到可从 Azure Stack 访问的位置下载包并查看包的内容。 更新包通常包含以下文件：
 
 - 自解压 *PackageName*.exe 文件。 此文件包含更新的有效负载，例如，Windows Server 的最新累积更新。   
 - 相应的 *PackageName*.bin 文件。 这些文件为与 *PackageName*.exe 文件关联的有效负载提供压缩。 
@@ -68,7 +68,7 @@ ms.locfileid: "29802645"
  
     ![显示上传每个包文件的位置](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. 对于 *PackageName*.bin 和 Metadata.xml 文件，重复步骤 6 和步骤 7。 如果包含不要导入的补充 Notice.txt 文件。
+8. 对于 *PackageName*.bin 和 Metadata.xml 文件，重复步骤 6 和步骤 7。 不要导入 Supplemental Notice.txt 文件（如果已包含）。
 9. 完成后，可以查看通知（在门户右上角的钟形图标）。 通知应指示已完成上传。 
 10. 导航回仪表板上的“更新”磁贴。 该磁贴应指示有可用更新。 单击该磁贴可查看新添加的更新包。
 11. 若要安装更新，请选择标记为“就绪”的包，然后右键单击该包并选择“立即更新”，或者单击顶部附近的“立即更新”操作。

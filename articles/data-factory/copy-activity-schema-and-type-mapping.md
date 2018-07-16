@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 338df0e258f66b6639e59a4fe31b6cfb6c283dd3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 16275ddc4d4ad85bdac54244ceeec568603fdfef
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045521"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112093"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
 本文介绍复制数据时，Azure 数据工厂复制活动如何将架构和数据类型从源数据映射到接收器数据。

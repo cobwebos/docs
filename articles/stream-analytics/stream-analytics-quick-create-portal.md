@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031424"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902898"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
@@ -48,7 +48,7 @@ ms.locfileid: "37031424"
 
 4. 在“所有资源”页中找到上一步创建的存储帐户。 打开“概览”页，然后打开“Blob”磁贴。  
 
-5. 从“Blob 服务”页中选择“容器”，为容器提供一个**名称**（例如 *container1*），然后将“公共访问级别”更改为“Blob”（匿名读取访问权限仅适用于 Blob），然后选择“确定”。  
+5. 从“Blob 服务”页中选择“容器”，为容器提供一个**名称**（例如 *container1*），然后将“公共访问级别”更改为“专用”（禁止匿名访问），最后选择“确定”。  
 
    ![创建容器](./media/stream-analytics-quick-create-portal/create-a-storage-container.png)
 

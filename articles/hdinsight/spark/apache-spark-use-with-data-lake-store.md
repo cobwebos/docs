@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: fa6f93231cba46e29206ec312fb82ad120ed45f6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c715ea3a3c4e113ec419919d240716517c28ffb8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517618"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099514"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>使用 HDInsight Spark 群集分析 Data Lake Store 中的数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "31517618"
 
 * Azure Data Lake Store 帐户。 遵照[通过 Azure 门户使用 Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) 中的说明。
 
-* 包含 Data Lake Store（作为存储）的 Azure HDInsight Spark 群集。 遵照[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的说明。
+* 包含 Data Lake Store（作为存储）的 Azure HDInsight Spark 群集。 按照[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)中的说明进行操作。
 
     
 ## <a name="prepare-the-data"></a>准备数据

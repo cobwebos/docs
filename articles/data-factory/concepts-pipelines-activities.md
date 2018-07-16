@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 001fefef900a0dd468f8deb8d705c308d8149f71
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1a713d23a385723517ba1fe924f9ec54d81eade5
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055137"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857884"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1](v1/data-factory-create-pipelines.md)
+> * [第 1 版](v1/data-factory-create-pipelines.md)
 > * [当前版本](concepts-pipelines-activities.md)
 
 本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
@@ -58,6 +58,8 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
 [存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL 数据仓库或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
+[自定义代码](transform-data-using-dotnet-custom-activity.md) | Azure 批处理
+[Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
 
 有关详细信息，请参阅[数据转换活动](transform-data.md)一文。
 

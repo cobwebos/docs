@@ -1,6 +1,6 @@
 ---
-title: 使用提供的 MySQL 适配器 RP AzureStack 上的数据库 |Microsoft 文档
-description: 使用 MySQL 适配器资源提供程序如何创建和管理 MySQL 数据库设置
+title: 更新 Azure Stack MySQL 资源提供程序 | Microsoft Docs
+description: 了解如何更新 Azure Stack MySQL 资源提供程序。
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,59 +11,100 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 0a900d75315fd0015633c036877faef84c48d65b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4e894eaee6bb151b480204905d0a98324f5c353b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031817"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049589"
 ---
-# <a name="create-mysql-databases"></a>创建 MySQL 数据库
+# <a name="update-the-mysql-resource-provider"></a>更新 MySQL 资源提供程序 
 
-你可以创建和管理自助服务用户门户中的数据库。 Azure 堆栈用户需要通过提供，它包含 MySQL 数据库服务的订阅。
+*适用于：Azure Stack 集成系统。*
 
-## <a name="test-your-deployment-by-creating-a-mysql-database"></a>通过创建 MySQL 数据库来测试你的部署
+更新 Azure Stack 内部版本时，可能会发布新的 SQL 资源提供程序适配器。 虽然现有的适配器可以继续使用，但仍建议尽快更新到最新的内部版本。 
 
-1. 登录到 Azure 堆栈用户门户。
-2. 选择 **+ 新** > **数据 + 存储** > **MySQL 数据库** > **添加**。
-3. 下**创建 MySQL 数据库**，输入数据库名称，然后根据需要为你的环境中配置其他设置。
+>[!IMPORTANT]
+>发布时的顺序，必须安装更新。 不能跳过版本。 到中的版本列表，请参阅[部署的资源提供程序先决条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
 
-    ![创建 MySQL 测试数据库](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>更新 MySQL 资源提供程序适配器（仅限已集成的系统）
+更新 Azure Stack 内部版本时，可能会发布新的 SQL 资源提供程序适配器。 虽然现有的适配器可以继续使用，但仍建议尽快更新到最新的内部版本。  
+ 
+若要更新资源提供程序，请使用 **UpdateMySQLProvider.ps1** 脚本。 此过程类似于安装资源提供程序时所使用的过程，如本文[部署资源提供程序](#deploy-the-resource-provider)部分所述。 资源提供程序的下载包中提供此脚本。 
 
-4. 下**Create Database**，选择**SKU**。 下**选择 MySQL SKU**，选取你的数据库的 SKU。
+**UpdateMySQLProvider.ps1** 脚本可使用最新的资源提供程序代码创建新的 VM，并可将设置从旧 VM 迁移到新 VM。 迁移的设置包括数据库和宿主服务器信息，以及必需的 DNS 记录。 
 
-    ![选择一种 MySQL 的 SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
+>[!NOTE]
+>建议从市场管理下载最新的 Windows Server 2016 Core 映像。 如果需要安装更新，您可以放置**单个**MSU 包本地依赖项路径中的。 如果在此位置有多个 MSU 文件，该脚本将失败。
 
-    >[!Note]
-    >当宿主服务器添加到 Azure 堆栈时，按指定 SKU。 数据库创建的宿主 SKU 中的服务器池中。
+此脚本需要使用的参数正是针对 DeployMySqlProvider.ps1 脚本进行描述的参数。 请同样在此处提供证书。  
 
-5. 下**登录**，选择***配置所需设置***。
-6. 下**选择一个登录名**，可以选择现有登录名，也可以选择 **+ 创建一个新的登录名**设置新的登录名。  输入**数据库登录名**名称和**密码**，然后选择**确定**。
+下面是可从 PowerShell 提示符运行的 *UpdateMySQLProvider.ps1* 脚本的示例。 请务必根据需要更改帐户信息和密码：  
 
-    ![新建数据库用户名](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
+> [!NOTE] 
+> 此更新过程仅适用于集成系统。 
 
-    >[!NOTE]
-    >数据库登录名的长度不能超过在 MySQL 5.7 32 个字符。 在早期版本中不可超过 16 个字符。
+```powershell 
+# Install the AzureRM.Bootstrapper module and set the profile. 
+Install-Module -Name AzureRm.BootStrapper -Force 
+Use-AzureRmProfile -Profile 2017-03-09-profile 
 
-7. 选择**创建**来完成设置数据库。
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time. 
+$domain = "AzureStack" 
 
-部署数据库后，需要注意的**连接字符串**下**Essentials**。 在所有应用程序需要访问 MySQL 数据库，可以使用此字符串。
+# For integrated systems, use the IP address of one of the ERCS virtual machines 
+$privilegedEndpoint = "AzS-ERCS01" 
 
-![获取 MySQL 数据库的连接字符串](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+# Point to the directory where the resource provider installation files were extracted. 
+$tempDir = 'C:\TEMP\MYSQLRP' 
 
-## <a name="update-the-administrative-password"></a>更新管理密码
+# The service admin account (can be Azure Active Directory or Active Directory Federation Services). 
+$serviceAdmin = "admin@mydomain.onmicrosoft.com" 
+$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass) 
+ 
+# Set credentials for the new resource provider VM. 
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass) 
+ 
+# And the cloudadmin credential required for privileged endpoint access. 
+$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass) 
 
-可以通过更改 MySQL server 实例上修改密码。
+# Change the following as appropriate. 
+$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+ 
+# Change directory to the folder where you extracted the installation files. 
+# Then adjust the endpoints. 
+$tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds ` 
+-VMLocalCredential $vmLocalAdminCreds ` 
+-CloudAdminCredential $cloudAdminCreds ` 
+-PrivilegedEndpoint $privilegedEndpoint ` 
+-DefaultSSLCertificatePassword $PfxPass ` 
+-DependencyFilesLocalPath $tempDir\cert ` 
+-AcceptLicense 
+``` 
+ 
+### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 参数 
+可以在命令行中指定这些参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。 
 
-1. 选择“管理资源” > “MySQL 宿主服务器”。 选择宿主服务器。
-2. 下**设置**，选择**密码**。
-3. 下**密码**，输入新密码，然后选择**保存**。
-
-![更新管理密码](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
+| 参数名称 | 说明 | 注释或默认值 | 
+| --- | --- | --- | 
+| **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ | 
+| **AzCredential** | Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。 | _必需_ | 
+| **VMLocalCredential** |SQL 资源提供程序 VM 的本地管理员帐户的凭据。 | _必需_ | 
+| **PrivilegedEndpoint** | 特权终结点的 IP 地址或 DNS 名称。 |  _必需_ | 
+| **DependencyFilesLocalPath** | 同样必须将证书 .pfx 文件放在此目录中。 | _可选_（对于多节点部署是_必需_的） | 
+| **DefaultSSLCertificatePassword** | .pfx 证书的密码。 | _必需_ | 
+| **MaxRetryCount** | 操作失败时，想要重试每个操作的次数。| 2 | 
+| **RetryDuration** | 每两次重试的超时间隔（秒）。 | 120 | 
+| **卸载** | 删除资源提供程序和所有关联的资源（请参阅下面的注释）。 | 否 | 
+| **DebugMode** | 防止在失败时自动清除。 | 否 | 
+| **AcceptLicense** | 跳过接受 GPL 许可条款的提示。  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+ 
 
 ## <a name="next-steps"></a>后续步骤
-
 [维护 MySQL 资源提供程序](azure-stack-mysql-resource-provider-maintain.md)

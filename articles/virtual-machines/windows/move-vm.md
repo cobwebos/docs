@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: cynthn
-ms.openlocfilehash: b98b8c947fb34b60c7bd27b006672e0e9d923d3b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 168ba57399b2649af29820f7321dd0151618346e
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30918143"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436474"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>将 Windows VM 移到其他 Azure 订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Windows VM。 如果最初在个人订阅中创建了 VM，现在想要将其移到公司的订阅以继续工作，则在订阅之间移动 VM 可能很方便。
@@ -36,13 +36,13 @@ ms.locfileid: "30918143"
 
 ## <a name="use-powershell-to-move-a-vm"></a>使用 PowerShell 移动 VM
 
-要将虚拟机移到其他资源组，需确保同时移动所有依赖资源。 若要使用 Move-AzureRMResource cmdlet，需要各资源的 ResourceId。 可以使用 [Find-AzureRMResource](/powershell/module/azurerm.resources/find-azurermresource) cmdlet 获取 ResourceId 列表。
+要将虚拟机移到其他资源组，需确保同时移动所有依赖资源。 若要使用 Move-AzureRMResource cmdlet，需要各资源的 ResourceId。 可以使用 [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource) cmdlet 获取 ResourceId 列表。
 
 ```azurepowershell-interactive
- Find-AzureRMResource -ResourceGroupNameContains <sourceResourceGroupName> | Format-table -Property ResourceId 
+ Get-AzureRMResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
 ```
 
-若要移动 VM，需要移动多个资源。 可以使用 Find-AzureRMResource 的输出来创建 ResourceId 的逗号分隔列表并将该列表传递给 [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) 以将这些资源移到目标。 
+若要移动 VM，需要移动多个资源。 可以使用 Get-AzureRMResource 的输出来创建 ResourceId 的逗号分隔列表并将该列表传递给 [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) 以将这些资源移到目标。 
 
 ```azurepowershell-interactive
 

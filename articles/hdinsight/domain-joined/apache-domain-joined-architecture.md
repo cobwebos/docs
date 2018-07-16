@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: omidm
-ms.openlocfilehash: f4380f5d6ec379d5807f697294623a672bd270ae
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8503534031dc5774e64c58edd3e158162a5a6aee
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715235"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110447"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中计划 Azure 已加入域的 Hadoop 群集
 
@@ -50,7 +50,7 @@ HDInsight 以托管方式依赖于最流行的标识提供者 - Active Directory
 HDInsight 当前仅支持使用 AAD-DS 作为要与群集通信的主域控制器，以便通过使用 Kerberos 来保护群集。 但是，也可以实现其他复杂的 AD 设置，只要它能够将 AAD-DS 用于 HDI 访问即可。
 
 - **[Azure Active Directory 域服务 (AAD-DS)](../../active-directory-domain-services/active-directory-ds-overview.md)**：此服务提供的托管域与 Windows Server Active Directory 完全兼容。 Microsoft 负责采用高度可用的 (HA) 设置来管理、修补和监视域。 你可以部署群集，而不用担心如何维护域控制器。 将从 Azure Active Directory (AAD) 同步用户、组和密码 [从 AAD 到 AAD-DS 的单向同步]，使用户能够使用相同的公司凭据登录到群集。 有关详细信息，请参阅[如何使用 AAD-DS 配置已加入域的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
-- **本地 AD 或 IaaS VM 上的 AD**：如果你的域具有本地 AD 或其他更复杂的 AD 设置，则可以使用 AD Connect 将那些标识同步到 AAD，然后在该 AD 租户上启用 AAD-DS。 因为 Kerberos 依赖于密码哈希，因此需要[在 AAD-DS 上启用密码哈希同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。 如果你通过 AD 联合身份验证服务 (ADFS) 使用联合身份验证，则还可以将密码哈希同步设置为备用机制，以防 ADFS 基础结构发生故障。 有关详细信息，请参阅[使用 AAD Connect 同步启用密码哈希同步](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)。在加入 HDI 群集域时，不支持单独使用本地 AD（或 IaaS VM 上的 AD）而不使用 AAD 和 AAD-DS。
+- **本地 AD 或 IaaS VM 上的 AD**：如果你的域具有本地 AD 或其他更复杂的 AD 设置，则可以使用 AD Connect 将这些标识同步到 AAD，然后在该 AD 租户上启用 AAD-DS。 因为 Kerberos 依赖于密码哈希，因此需要[在 AAD-DS 上启用密码哈希同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。 如果你通过 AD 联合身份验证服务 (ADFS) 使用联合身份验证，则还可以将密码哈希同步设置为备用机制，以防 ADFS 基础结构发生故障。 有关详细信息，请参阅[使用 AAD Connect 同步启用密码哈希同步](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)。在加入 HDI 群集域时，不支持单独使用本地 AD（或 IaaS VM 上的 AD）而不使用 AAD 和 AAD-DS。
 
 ## <a name="next-steps"></a>后续步骤
 * [配置已加入域的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md)。

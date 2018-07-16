@@ -11,12 +11,12 @@ ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4d62e8e4cb778e60b39e502f09ce0aafca9b5212
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34054682"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866811"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
@@ -113,6 +113,7 @@ ConfigurationChange
 |项目名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |输入路径     | 用于查看文件的路径，例如“c:\temp\myfile.txt”       |
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：**True** 或 **False**。|
 
 ### <a name="add-a-linux-file"></a>添加 Linux 文件
 
@@ -130,6 +131,7 @@ ConfigurationChange
 |递归     | 确定在查找要跟踪的项时是否使用递归。        |
 |使用 Sudo     | 此设置决定了在查找该项时是否使用 Sudo。         |
 |链接     | 此设置决定了在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：**True** 或 **False**。|
 
    > [!NOTE]   
    > 不建议使用“管理”链接选项。 不支持文件内容检索。

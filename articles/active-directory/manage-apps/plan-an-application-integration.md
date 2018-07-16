@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 183c5f3196653ce9519c0742db7a67cd36c63fb9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c60d736798adbbcb47b94172768dc8b8e5c366fe
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292831"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37088396"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
 ## <a name="overview"></a>概述
@@ -61,8 +61,8 @@ ms.locfileid: "35292831"
 * 一个 Azure 订阅和一个 Azure Active Directory 目录。  如果没有 Azure 订阅，可以尝试 30 天 Azure 免费试用版。 [试试看！](https://azure.microsoft.com/trial/get-started-active-directory/)
 
 ## <a name="application-integration-with-azure-ad"></a>将应用程序与 Azure AD 集成
-### <a name="finding-unsanctioned-cloud-applications-with-cloud-app-discovery"></a>使用 Cloud App Discovery 查找未经认可的云应用程序
-如上所述，可能有些应用程序到目前为止仍不受组织的管理。  在盘点过程中，可以查找未经认可的云应用程序。 请参阅[使用 Cloud App Discovery 查找未经认可的云应用程序](cloud-app-discovery.md)。
+### <a name="finding-unsanctioned-cloud-applications-with-cloud-discovery"></a>使用 Cloud Discovery 查找未批准的云应用程序
+如上所述，可能有些应用程序到目前为止仍不受组织的管理。  在盘点过程中，可以查找未经认可的云应用程序。 请参阅[设置 Cloud Discovery](/cloud-app-security/set-up-cloud-discovery.md)。
 
 ### <a name="authentication-types"></a>身份验证类型
 每个应用程序可能有不同的身份验证要求。 借助 Azure AD，可对使用 SAML 2.0、WS 联合身份验证或 OpenID Connect 协议以及密码单一登录的应用程序使用签名证书。 有关可用于 Azure AD 的应用程序身份验证类型的详细信息，请参阅[在 Azure Active Directory 中管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)和[基于密码的单一登录](what-is-single-sign-on.md)。
@@ -73,9 +73,9 @@ ms.locfileid: "35292831"
 ### <a name="integrating-applications-with-azure-ad"></a>将应用程序与 Azure AD 集成
 以下文章介绍了将应用程序与 Azure AD 集成的不同方法，并提供了一些指导。
 
-* [确定要使用的 Active Directory](../active-directory-administer.md)
+* [确定要使用的 Active Directory](../fundamentals/active-directory-administer.md)
 * [使用 Azure 应用程序库中的应用程序](what-is-single-sign-on.md)
-* [集成 SaaS 应用程序教程列表](../active-directory-saas-tutorial-list.md)
+* [集成 SaaS 应用程序教程列表](../saas-apps/tutorial-list.md)
 
 ## <a name="managing-access-to-applications"></a>管理对应用程序的访问
 以下文章介绍了在使用 Azure AD 连接器和 Azure AD 将应用程序与 Azure AD 集成之后，如何管理对应用程序的访问。

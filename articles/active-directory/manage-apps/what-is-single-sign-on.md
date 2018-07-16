@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.workload: identity
 ms.topic: article
-ms.date: 06/21/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: a6f116842ce61585feda8f20e204e0751a360036
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 199aaf60a21e0362f27707de04f14854aa528297
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311161"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081500"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory 的应用程序访问与单一登录是什么？
 单一登录是指只需使用单个用户帐户登录一次，就能访问展开业务所需的全部应用程序和资源。 登录之后，用户可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。
@@ -45,7 +45,8 @@ Azure AD 能轻松集成到许多现今热门的 SaaS 应用程序。它提供�
 Azure AD 支持通过三种不同的方式登录应用程序：
 
 * 联合单一登录可让应用程序重定向到 Azure AD 进行用户身份验证，而不是提示用户输入自己的密码。 支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 等协议的应用程序都支持联合单一登录，而且这是最丰富的单一登录模式。
-* 基于密码的单一登录允许使用 Web 浏览器扩展插件或移动应用安全存储和重放应用程序的密码。 基于密码的单一登录使用应用程序提供的现有登录过程，但允许管理员管理密码，并且用户无需知道密码。
+* 基于密码的单一登录允许使用 Web 浏览器扩展插件或移动应用安全存储和重放应用程序的密码。 基于密码的单一登录使用 
+*  应用程序提供的现有登录过程，但允许管理员管理密码，并且用户无需记住密码。
 * 现有单一登录可让 Azure AD 利用针对应用程序设置的任何现有单一登录，但可让这些应用程序链接到 Office 365 或 Azure AD 访问面板门户，当其中有应用程序启动时，Azure AD 中还会生成额外的报告。
 
 在用户通过应用程序的身份验证后，他们还需要在应用程序中预配帐户记录，以告知应用程序他们对应用程序的哪些部分具有权限和访问级别。 此帐户记录的预配可以自动完成，也可以在为用户提供单一登录访问之前由管理员手动完成。
@@ -64,7 +65,7 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 ### <a name="password-based-single-sign-on"></a>基于密码的单一登录
 配置基于密码的单一登录可使组织中的用户能够使用第三方 SaaS 应用程序中的用户帐户信息通过 Azure AD 自动登录到第三方 SaaS 应用程序。 启用此功能时，Azure AD 将收集并安全地存储用户帐户信息和相关密码。
 
-对于提供了基于 HTML 的登录页的任何基于云的应用，Azure AD 都可以支持基于密码的单一登录。 使用自定义浏览器插件时，AAD 可以通过安全地检索应用程序凭据（例如目录中的用户名和密码）来自动化用户的登录过程，并代表用户将这些凭据输入到应用程序的登录页中。 下面是两个用例：
+对于提供了基于 HTML 的登录页的任何基于云的应用，Azure AD 都可以支持基于密码的单一登录。 使用自定义浏览器插件时，AAD 可以通过安全地检索应用程序凭据（例如目录中的用户名和密码）来自动化登录过程，并代表用户将这些凭据输入到应用程序的登录页中。 下面是两个用例：
 
 1. **管理员管理凭据** – 管理员可以创建和管理应用程序凭据，并将这些凭据分配给需要访问应用程序的用户或组。 在这种情况下，最终用户不需要知道凭据，但仍然能够通过单一登录方式来访问应用程序，只需通过其访问面板或提供的链接单击它即可。 此过程既可以让管理员对凭据进行生命周期管理，又为最终用户提供了方便，这些最终用户不需要记住或管理特定于应用的密码。 在自动登录过程中，最终用户提供的凭据会进行模糊化处理；不过在技术上，用户使用 Web 调试工具还是可以找到这些凭据，因此用户和管理员仍应遵循相同的安全策略，就像这些凭据是直接由用户提供一样。 需要提供在多个用户之间共享的帐户访问权限时（例如在使用社交媒体或文档共享应用程序的情况下），由管理员提供凭据很有用。
 2. **用户管理凭据** – 管理员可以将应用程序分配给最终用户或组，并允许最终用户在第一次通过访问面板访问应用程序时直接输入自己的凭据。 这会为最终用户创造方便，这样他们就不需要每次访问应用程序时不断输入特定于应用的密码。 用户可以继续通过根据需要更新或删除密码来管理其密码。 对凭据进行管理时也可以借鉴这个用例，管理员可以在未来某个日期为应用程序设置新的凭据，而不会改变最终用户的应用访问体验。
@@ -133,7 +134,8 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 
 * 使用密码 SSO 或联合 SSO（如果可用于目标 SaaS）通过 Azure AD 启用单一登录
 * （可选）为用户预配和取消预配启用用户预配（标识生命周期管理）
-* 对于启用了用户预配的应用程序，选择哪些用户可以访问该应用程序
+* 对于启用了 
+* 用户预配的应用程序，选择哪些用户可以访问该应用程序
 
 对于支持联合单一登录的库应用，配置通常要求提供附加配置设置（例如证书和元数据），以便在第三方应用程序与 Azure AD 之间建立联合信任。 配置向导指导完成详细操作，并允许轻松访问 SaaS 应用程序特定的数据和说明。
 
@@ -173,7 +175,7 @@ Azure AD 提供多种可自定义的方式来向组织中的最终用户部署�
 ### <a name="direct-sign-on-links-for-federated-password-based-or-existing-apps"></a>联合、基于密码或现有应用的直接登录链接
 Azure AD 还为支持基于密码单一登录、现有单一登录以及任何形式的联合单一登录的各个应用程序提供直接单一登录链接。
 
-这些链接是专门编写的 URL，通过 Azure AD 登录过程针对特定应用程序发送给用户，用户无需从 Azure AD 访问面板或 Office 365 启动。 可以在 Azure 门户上“Active Directory”部分中任何预先集成的应用程序的“仪表板”选项卡下找到这些单一登录 URL，如以下屏幕截图所示。
+这些链接是专门编写的 URL，用于使用户完成特定应用程序的 Azure AD 登录过程而无需用户从 Azure AD 访问面板或 Office 365 启动。 可以在 Azure 门户上“Active Directory”部分中任何预先集成的应用程序的“仪表板”选项卡下找到这些单一登录 URL，如以下屏幕截图所示。
 
 ![](./media/what-is-single-sign-on/deeplink.png)
 
@@ -192,7 +194,7 @@ Azure AD 还为支持基于密码单一登录、现有单一登录以及任何�
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)
-* [使用 Cloud App Discovery 查找未经认可的云应用程序](cloud-app-discovery.md)
+* [设置 Cloud Discovery](/cloud-app/security/set-up-cloud-discovery)
 * [管理对应用的访问简介](what-is-access-management.md)
 * [比较 Azure AD 中用于管理外部标识的功能](../active-directory-b2b-compare-b2c.md)
 

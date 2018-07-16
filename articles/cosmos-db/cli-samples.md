@@ -11,12 +11,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 11/29/2017
 ms.author: sngun
-ms.openlocfilehash: c83d8ad5b424be1a9a695f3b9a466d45ddf8f0b4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 42cfe71210b95732b4b69f7ca21a8b647e187a38
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700275"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858854"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 Azure CLI 示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "34700275"
 |**创建 Azure Cosmos DB 帐户、数据库和容器**||
 |[创建 SQL API 帐户](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| 创建单个 Azure Cosmos DB API 帐户、数据库及容器，以用于 SQL API。 |
 | [创建 MongoDB API 帐户](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 创建单个 Azure Cosmos DB MongoDB API 帐户、数据库和集合。 |
-| [创建 Gremlin API 帐户](scripts/create-graph-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 创建单个 Azure Cosmos DB Gremlin API 帐户、数据库和集合。 |
+| [创建 Gremlin API 帐户](scripts/create-graph-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 创建单个 Azure Cosmos DB Gremlin API 帐户、数据库和容器。 |
 |**缩放 Azure Cosmos DB**||
 | [缩放容器吞吐量](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 更改容器上预配的吞吐量。|
 |[将 Azure Cosmos DB 数据库帐户复制到多个区域中并配置故障转移优先级](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|在全局范围内将帐户数据复制到具有指定故障转移优先级的多个区域中。|

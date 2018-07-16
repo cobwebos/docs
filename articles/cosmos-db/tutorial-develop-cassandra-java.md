@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 379f1a369bd94f22736abfb766ba239c3f93acee
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 13e757d3d6d35227667e23eb6000eace56a0674e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798087"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582421"
 ---
 # <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure Cosmos DB：在 Java 中使用 Cassandra API 进行开发
 
@@ -75,7 +75,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 这些代码片段全都取自于 src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java。  
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 这些代码片段全都取自于 src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java。  
 
 * 已设置 Cassandra 主机、端口、用户名、密码和 SSL 选项。 连接字符串信息来自 Azure 门户中的连接字符串页。
 
@@ -185,7 +185,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 7. 保存 config.properties 文件。
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 1. 在 git 终端窗口中，通过 `cd` 命令转到 azure-cosmosdb-cassandra-java-getting-started\java-examples 文件夹。
 
@@ -228,7 +228,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 > * 查询数据
 > * 查看 SLA
 
-现在可以将其他数据导入 Azure Cosmos DB 集合。 
+现在可以将其他数据导入 Azure Cosmos DB 容器。 
 
 > [!div class="nextstepaction"]
 > [将 Cassandra 数据导入 Azure Cosmos DB](cassandra-import-data.md)

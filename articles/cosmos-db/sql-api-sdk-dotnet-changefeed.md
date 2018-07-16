@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f69742d111555e776a968454bdc004ba171e6336
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937411"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113711"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -41,39 +41,10 @@ ms.locfileid: "36937411"
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="stable-builds"></a>稳定版本
+### <a name="v2-builds"></a>v2 版本
 
-### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
-* 添加了更多日志记录。
-* 修复了多次调用待处理工作评估时出现的 DocumentClient 泄漏。
-
-### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
-* 修复了待处理工作评估。
-
-### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
-* 稳定性改进。
-  * 修复了处理取消的任务问题，该问题可能导致某些分区上的观察者停止。
-* 支持手动检查点。
-* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 及更高版本。
-
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* 增加了对 .NET Standard 2.0 的支持。 程序包现在支持 `netstandard2.0` 和 `net451` Framework 名字对象。
-* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.17.0 及更高版本。
-* 兼容 [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1 及更高版本。
-
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* 修复了更改源为空或无任何工作挂起时计算剩余工作估计值时的一个问题。
-* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 及更高版本。
-
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* 添加了一个获取更改源中剩余待处理工作估计值的方法。
-* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 及更高版本。
-
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
 * GA SDK
-* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 及更低版本。
-
-### <a name="pre-release-builds"></a>预发布版本
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3 预发布
 * 修复了以下问题：
@@ -108,6 +79,39 @@ ms.locfileid: "36937411"
 * 与 v1 API 100% 向后兼容。
 * 新建代码库。
 * 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21.1 及更高版本。
+
+### <a name="v1-builds"></a>v1 版本
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* 添加了更多日志记录。
+* 修复了多次调用待处理工作评估时出现的 DocumentClient 泄漏。
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+* 修复了待处理工作评估。
+
+### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+* 稳定性改进。
+  * 修复了处理取消的任务问题，该问题可能导致某些分区上的观察者停止。
+* 支持手动检查点。
+* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 及更高版本。
+
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+* 增加了对 .NET Standard 2.0 的支持。 程序包现在支持 `netstandard2.0` 和 `net451` Framework 名字对象。
+* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.17.0 及更高版本。
+* 兼容 [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1 及更高版本。
+
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+* 修复了更改源为空或无任何工作挂起时计算剩余工作估计值时的一个问题。
+* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 及更高版本。
+
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+* 添加了一个获取更改源中剩余待处理工作估计值的方法。
+* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 及更高版本。
+
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+* GA SDK
+* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 及更低版本。
+
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。

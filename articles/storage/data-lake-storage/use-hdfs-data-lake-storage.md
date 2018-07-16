@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 75fb07120c78c45d422ee5017eac0afcf0e80859
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 591d8ea7670bf9b29450695ee7cbee5fa39baaac
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060812"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344704"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
 
-使用 Azure Data Lake Storage Gen2 预览版，可以像使用 [Hadoop 分布式文件系统 (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 无论你是附加 HDInsight 群集还是使用 Azure Databricks 运行 Apache Spark 作业来对 Azure Data Lake Storage Gen2 中存储的数据执行分析，都可以使用命令行接口 (CLI) 来检索和操作所加载的数据。 本文的剩余内容概述了在 [Azure 存储团队致力于增加对 Azure 存储资源管理器和 Azure 门户的支持](https://azure.microsoft.com/roadmap/)时可供你选择的选项 - 尽情体验吧！
+使用 Azure Data Lake Storage Gen2 预览版，可以像使用 [Hadoop 分布式文件系统 (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 无论你是附加 HDInsight 群集还是使用 Azure Databricks 运行 Apache Spark 作业来对 Azure Data Lake Storage Gen2 中存储的数据执行分析，都可以使用命令行接口 (CLI) 来检索和操作所加载的数据。 本文的剩余内容概述了在 [Azure 存储团队致力于增加对 Azure 存储资源管理器和 Azure 门户的支持](https://azure.microsoft.com/roadmap/)时可供你选择的选项。
 
 ## <a name="hdfs-cli-with-hdinsight"></a>将 HDFS CLI 与 HDInsight 配合使用
 

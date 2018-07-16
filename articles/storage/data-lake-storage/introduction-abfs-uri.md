@@ -10,12 +10,12 @@ manager: jahogg
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 75edf6dc7382a8a2ece7c25edd09aeacfe1c5189
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: a6130d8440b16e5a72c939fc07f6bf32c0946418
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060053"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114286"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI
 
@@ -25,15 +25,7 @@ ms.locfileid: "37060053"
 
 Data Lake Storage Gen2 的 URI 语法依赖于存储帐户是否设置为将 Data Lake Storage Gen2 设为默认文件系统。
 
-如果希望寻址的支持 Data Lake Storage Gen2 的帐户在帐户创建期间设为默认文件系统，则简写 URI 语法为：
-
-<pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
-
-1. **路径**：目录结构采用正斜杠分隔 (`/`) 表示形式。
-
-2. **文件名称**：单个文件的名称。
-
-如果希望寻址的支持 Data Lake Storage Gen2 的帐户不是默认文件系统，则 URI 语法为：
+如果希望寻址的支持 Data Lake Storage Gen2 的帐户在帐户创建期间**未**设为默认文件系统，则简写 URI 语法为：
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.widows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
@@ -46,6 +38,15 @@ Data Lake Storage Gen2 的 URI 语法依赖于存储帐户是否设置为将 Dat
 4. **路径**：目录结构采用正斜杠分隔 (`/`) 表示形式。
 
 5. **文件名称**：单个文件的名称。 如果对目录寻址，则此参数是可选的。
+
+但是，如果希望寻址的帐户在帐户创建期间设为默认文件系统，则简写 URI 语法为：
+
+<pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
+
+1. **路径**：目录结构采用正斜杠分隔 (`/`) 表示形式。
+
+2. **文件名称**：单个文件的名称。
+
 
 ## <a name="next-steps"></a>后续步骤
 

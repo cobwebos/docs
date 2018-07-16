@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 2335872bcd7d3ea64e449d8b1a43f360d86bb4a0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: b41b1fcb437dac381a17bef4f1e5a7cebe213b98
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304624"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435909"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
+
 ## <a name="overview"></a>概述
+
 Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 本文介绍如何通过多种方式连接到 Azure 存储帐户并对其进行管理。
 
 ![Microsoft Azure 存储资源管理器][0]
@@ -30,6 +32,7 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 ## <a name="prerequisites"></a>先决条件
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
 以下版本的 Windows 支持 Azure 存储资源管理器：
 
 * Windows 10（推荐）
@@ -41,6 +44,7 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 [下载并安装存储资源管理器](http://www.storageexplorer.com)
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
+
 以下版本的 macOS 支持 Azure 存储资源管理器：
 
 * macOS 10.12“Sierra”及更高版本
@@ -48,13 +52,14 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 [下载并安装存储资源管理器](http://www.storageexplorer.com)
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
 以下 Linux 发行版支持 Azure 存储资源管理器：
 
 * Ubuntu 16.04 x64（推荐）
 * Ubuntu 17.10 x64
 * Ubuntu 14.04 x64
 
-Azure 存储资源管理器也许可以在其他发行版上使用，但只有上面列出的是受到正式支持的。
+Azure 存储资源管理器也许可以在其他发行版上使用，但只有上面列出的是正式受支持的。
 
 此外还必须安装以下依赖项/库，才能在 Linux 上运行 Azure 存储资源管理器：
 
@@ -70,10 +75,12 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
 ---
 
 ## <a name="connect-to-a-storage-account-or-service"></a>连接到存储帐户或服务
+
 存储资源管理器提供了多种连接到存储帐户的方式。 例如，可以：
+
 * 连接到与 Azure 订阅关联的存储帐户。
 * 连接到从其他 Azure 订阅共享的存储帐户和服务。
-* 使用 Azure 存储模拟器连接到本地存储并对其进行管理。 
+* 使用 Azure 存储模拟器连接到本地存储并对其进行管理。
 
 此外，可以在全球各区域 Azure 中使用存储帐户：
 
@@ -85,6 +92,7 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
 * [使用连接字符串连接到 Azure Cosmos DB 帐户](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)：使用连接字符串管理 Cosmos DB 帐户。
 
 ## <a name="connect-to-an-azure-subscription"></a>连接到 Azure 订阅
+
 > [!NOTE]
 > 如果没有 Azure 帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 >
@@ -100,7 +108,7 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
 
     ![登录选项][2]
 
-3. 使用 Azure 帐户成功登录后，该帐户以及与该帐户关联的 Azure Stack 订阅会添加到左窗格中。 选择使用的 Azure 订阅，然后选择“应用”（选择“所有订阅:”切换开关可选择列出的所有 Azure 订阅，或不选择其中的任何订阅）。
+4. 使用 Azure 帐户成功登录后，该帐户以及与该帐户关联的 Azure Stack 订阅会添加到左窗格中。 选择使用的 Azure 订阅，然后选择“应用”（选择“所有订阅:”切换开关可选择列出的所有 Azure 订阅，或不选择其中的任何订阅）。
 
     ![选择 Azure 订阅][3]
 
@@ -109,34 +117,40 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
     ![选择的 Azure 订阅][4]
 
 ## <a name="work-with-local-development-storage"></a>使用本地开发存储
-使用存储资源管理器，可以通过 Azure 存储模拟器对本地存储进行操作。 使用此方法可以模拟 Azure 存储的使用，而无需在 Azure 上部署存储帐户，因为 Azure 存储模拟器可模拟存储帐户。
+
+使用存储资源管理器，可以通过模拟器对本地存储进行操作。 使用此方法可以模拟 Azure 存储的使用，而无需在 Azure 上部署存储帐户。
+
+从 1.1.0 版开始，所有平台都支持本地存储模拟器。 存储资源管理器可以连接到侦听其默认本地存储终结点的任何模拟服务。
 
 > [!NOTE]
-> 目前仅 Windows 支持 Azure 存储模拟器。
->
->
+> 对存储服务和功能的支持可能因你选择的模拟器而有很大不同。 请确保模拟器支持你打算使用的服务和功能。
+
+1. 配置所选的模拟器以侦听默认终结点。
+
+   模拟服务 | 默认终结点
+   -----------------|-------------------------
+   Blob            | `http://127.0.0.1:10000`
+   队列           | `http://127.0.0.1:10001`
+   表           | `http://127.0.0.1:10002`
+
+2. 启动模拟器。
+
+3. 在存储资源管理器的左窗格中，展开“(本地和附加)” > “存储帐户” > “(开发)”节点。
+
+   可以使用此节点创建和使用本地 blob、队列和表。 若要了解如何使用每个存储帐户类型，请参阅以下指南：
+
+   * [管理 Azure Blob 存储资源](vs-azure-tools-storage-explorer-blobs.md)
+   * [管理 Azure 文件存储资源](vs-azure-tools-storage-explorer-files.md)
 
 > [!NOTE]
-> Azure 存储模拟器不支持文件存储。
->
->
-
-1. 在存储资源管理器的左窗格中，展开“(本地和附加存储)” > “存储帐户” > “(开发)” > “Blob 容器”节点。
-
-    ![本地开发节点][5]
-
-2. 如果尚未安装 Azure 存储模拟器，系统会提示用户按照信息栏中的说明进行安装。 如果该信息栏已显示，请选择“下载最新版本”，并安装模拟器。
-
-    ![“下载 Azure 存储模拟器”提示][6]
-
-3. 安装模拟器以后，即可创建和使用本地 Blob、队列和表。 若要了解如何使用每个存储帐户类型，请参阅以下指南：
-
-    * [管理 Azure Blob 存储资源](vs-azure-tools-storage-explorer-blobs.md)
+> 存储资源管理器仅支持使用默认终结点连接到本地模拟器。 启动模拟器时，请确保仅配置了默认终结点。
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>附加或分离外部存储帐户
+
 可以通过存储资源管理器附加到外部存储帐户，因此可以轻松共享存储帐户。 本部分介绍如何附加到外部存储帐户（以及如何从其分离）。
 
 ### <a name="get-the-storage-account-credentials"></a>获取存储帐户凭据
+
 要共享外部存储帐户，首先必须由该帐户的所有者获取该帐户的凭据（帐户名称和密钥），然后将该信息共享给想要附加到指定帐户的人员。 可以执行以下步骤，通过 Azure 门户获取存储帐户凭据：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -156,6 +170,7 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
     ![访问密钥][8]
 
 ### <a name="attach-to-an-external-storage-account"></a>附加到外部存储帐户
+
 若要附加到某个外部存储帐户，需要该帐户的名称和密钥。 “获取存储帐户凭据”部分说明了如何从 Azure 门户获取这些值。 但在门户中，帐户密钥称为 **key1**。 因此，当存储资源管理器要求提供帐户密钥时，请输入“key1”值。
 
 1. 在存储资源管理器中，打开“连接对话”。
@@ -171,11 +186,11 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
     ![名称和密钥页][11]
 
     > [!NOTE]
-    > 若要使用国家/地区云的名称和密钥，请使用“存储终结点域:”下拉列表选择相应的终结点域： 
+    > 若要使用国家/地区云的名称和密钥，请使用“存储终结点域:”下拉列表选择相应的终结点域：
     >
     >
 
-4. 在“连接摘要”对话框中验证信息。 如果想要更改任何设置，请选择“返回”并重新输入所需的设置。 
+4. 在“连接摘要”对话框中验证信息。 如果想要更改任何设置，请选择“返回”并重新输入所需的设置。
 
 5. 选择“连接”。
 
@@ -184,6 +199,7 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
     ![连接到外部存储帐户的结果][12]
 
 ### <a name="detach-from-an-external-storage-account"></a>从外部存储帐户分离
+
 1. 右键单击要分离的外部存储帐户，并选择“分离”。
 
     ![“从存储分离”选项][13]
@@ -191,28 +207,31 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
 2. 在确认消息中，选择“是”确认从外部存储帐户中分离。
 
 ## <a name="attach-a-storage-account-by-using-a-shared-access-signature-sas"></a>使用共享访问签名 (SAS) 附加存储帐户
+
 Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md)) 授予存储帐户的临时访问权限，不需提供 Azure 订阅凭据。
 
 为了说明这一情形，假设 UserA 是 Azure 订阅的管理员，UserA 想要允许 UserB 在有限的时间内使用特定权限访问某个存储帐户：
 
 1. UserA 生成了一个适用于特定时间段且具有所需权限的 SAS 连接字符串。
 
-2. UserA 将 SAS 与需要访问该存储帐户的人员（在本示例中为 UserB）共享。  
+2. UserA 将 SAS 与需要访问该存储帐户的人员（在本示例中为 UserB）共享。
 
 3. UserB 通过存储资源管理器使用所提供的 SAS 附加到属于 UserA 的帐户。
 
 ### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>为要共享的帐户生成 SAS 连接字符串
+
 1. 在存储资源管理器中，右键单击要共享的存储帐户，并选择“获取共享访问签名...”。
 
     ![“获取 SAS”上下文菜单选项][14]
 
 2. 在“生成共享访问签名”对话框中，指定要授予该帐户的时间范围和权限，然后单击“创建”按钮。
 
-    ![“获取 SAS”对话框][15]  
+    ![“获取 SAS”对话框][15]
 
 3. 选择“连接字符串”文本框旁边的“复制”，将其复制到剪贴板，然后单击“关闭”。
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>使用 SAS 连接字符串附加到存储帐户
+
 1. 在存储资源管理器中，打开“连接对话”。
 
     ![“连接到 Azure 存储”选项][9]
@@ -225,7 +244,7 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
 
     ![“连接到 Azure 存储”对话框][17]
 
-4. 在“连接摘要”对话框中验证信息。 要进行更改，请选择“上一步”，并输入所需的设置。 
+4. 在“连接摘要”对话框中验证信息。 要进行更改，请选择“上一步”，并输入所需的设置。
 
 5. 选择“连接”。
 
@@ -234,14 +253,17 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
     ![使用 SAS 附加到帐户的结果][18]
 
 ## <a name="attach-a-service-by-using-a-shared-access-signature-sas"></a>使用共享访问签名 (SAS) 附加服务
-“使用 SAS 附加存储帐户”部分介绍了 Azure 订阅管理员如何为存储帐户生成和共享 SAS，从而授予用户对存储帐户的临时访问权限。 同样可以在存储帐户中为特定服务（Blob 容器、队列、表或文件共享）生成 SAS。  
+
+“使用 SAS 附加存储帐户”部分介绍了 Azure 订阅管理员如何为存储帐户生成和共享 SAS，从而授予用户对存储帐户的临时访问权限。 同样可以在存储帐户中为特定服务（Blob 容器、队列、表或文件共享）生成 SAS。
 
 ### <a name="generate-an-sas-for-the-service-that-you-want-to-share"></a>为要共享的服务生成 SAS
+
 在这种情况下，服务可以是 Blob 容器、队列、表或文件共享。 若要为列出的服务生成 SAS，请参阅：
 
 * [获取 Blob 容器的 SAS](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
 
 ### <a name="attach-to-the-shared-account-service-by-using-a-sas-uri"></a>使用 SAS URI 附加到共享帐户服务
+
 1. 在存储资源管理器中，打开“连接对话”。
 
     ![“连接到 Azure 存储”选项][9]
@@ -254,15 +276,16 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
 
     ![“连接到 Azure 存储”对话框][19]
 
-3. 在“连接摘要”对话框中验证信息。 要进行更改，请选择“上一步”，并输入所需的设置。 
+4. 在“连接摘要”对话框中验证信息。 要进行更改，请选择“上一步”，并输入所需的设置。
 
-4. 选择“连接”。
+5. 选择“连接”。
 
-5. 成功附加服务后，该服务会显示在“(SAS 附加的服务)”节点下。
+6. 成功附加服务后，该服务会显示在“(SAS 附加的服务)”节点下。
 
     ![使用 SAS 附加到共享服务的结果][20]
 
 ## <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>使用连接字符串连接到 Azure Cosmos DB 帐户
+
 除了通过 Azure 订阅管理 Azure Cosmos DB 帐户外，连接到 Azure Cosmos DB 的另一种方法是使用连接字符串。 按照以下步骤可使用连接字符串进行连接。
 
 1. 在左侧树中找到“本地和附加”，右键单击“Azure Cosmos DB 帐户”，然后选择“连接到 Azure Cosmos DB...”
@@ -273,8 +296,10 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
 
     ![connection-string][22]
 
- ## <a name="connect-to-azure-data-lake-store-by-uri"></a>通过 URI 连接到 Azure Data Lake Store
+## <a name="connect-to-azure-data-lake-store-by-uri"></a>通过 URI 连接到 Azure Data Lake Store
+
 如果需要访问某些资源，但这些资源在订阅中不存在， 而其他人授予了你相关权限，可以获取资源的 URI， 在这种情况下，可以在登录后使用该 URI 连接到 Data Lake Store。 请参阅以下步骤。
+
 1. 打开存储资源管理器。
 2. 在左窗格中，展开“本地和附加”。
 3. 右键单击“Data Lake Store”，然后从上下文菜单中选择“连接到 Data Lake Store...”
@@ -288,6 +313,7 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
     ![“连接到 Data Lake Store”操作结果](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-attach-finish.png)
 
 ## <a name="search-for-storage-accounts"></a>搜索存储帐户
+
 如果需要查找某个存储资源并且不知道它的所在位置，可以使用左窗格顶部的搜索框来搜索该资源。
 
 在搜索框中键入内容时，左窗格会显示与当前已输入搜索值匹配的所有资源。 例如，以下屏幕截图显示了“终结点”的搜索结果：
@@ -300,6 +326,7 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
 >
 
 ## <a name="next-steps"></a>后续步骤
+
 * [使用存储资源管理器管理 Azure Blob 存储资源](vs-azure-tools-storage-explorer-blobs.md)
 * [在 Azure 存储资源管理器（预览版）中管理 Azure Cosmos DB](./cosmos-db/storage-explorer.md)
 * [使用存储资源管理器管理 Azure Data Lake Store 资源](./data-lake-store/data-lake-store-in-storage-explorer.md)
@@ -309,8 +336,7 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
 [2]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-SignInSelected.png
 [3]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AccountPanel.png
 [4]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/SubscriptionNode.png
-[5]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/DevelopmentNode.png
-[6]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/EmulatorNotInstalled.png
+[5]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog.png
 [7]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/PortalAccessKeys.png
 [8]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AccessKeys.png
 [9]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog.png

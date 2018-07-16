@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 893888904b6afc583c3c20b94d08eb3255a98cad
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 7c490aa958cf9e78c260dd0fbcf7952b55d8d88c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36303988"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096169"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 批量执行程序库概述
  
@@ -33,7 +33,7 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
  
 * 它可以显著减少使分配给容器的吞吐量达到饱和所需的客户端计算资源。 在客户端计算机的 CPU 已饱和的情况下，使用批量导入 API 来写入数据的单线程应用程序实现的写入吞吐量是以并行方式写入数据的多线程应用程序的 10 倍。  
 
-* 它可以在库中高效地处理各种繁冗的应用程序逻辑编写任务，因此不需用户处理请求限制、请求超时以及其他暂时性异常。  
+* 它可以在库中高效地处理请求限制、请求超时以及其他暂时性异常，因此用户不需要执行繁冗的编写应用程序逻辑任务来处理这些内容。  
 
 * 它为执行批量操作的应用程序提供简化的横向扩展机制。单个运行在 Azure VM 上的批量执行程序实例的消耗可以大于 50 万 RU/秒，并且可以通过在单个客户端 VM 上添加更多的实例来实现更高的吞吐率。  
  
@@ -47,7 +47,7 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
 
 ![批量执行程序体系结构](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-批量执行程序库可确保最大程度地利用分配给集合的吞吐量。 它使用适用于每个 Azure Cosmos DB 分区键范围的  [AIMD 样式拥塞控制机制](https://tools.ietf.org/html/rfc5681)，可以有效地处理限制和超时。 
+批量执行程序库可确保最大程度地利用分配给集合的吞吐量。 它使用适用于每个 Azure Cosmos DB 分区键范围的  [AIMD 样式拥塞控制机制](https://tools.ietf.org/html/rfc5681)，可以有效地处理速率限制和超时。 
 
 ## <a name="next-steps"></a>后续步骤 
   

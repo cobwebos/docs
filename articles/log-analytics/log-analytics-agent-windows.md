@@ -3,7 +3,7 @@ title: 将 Windows 计算机连接到 Azure Log Analytics | Microsoft 文档
 description: 本文介绍如何使用 Microsoft Monitoring Agent (MMA) 将在其他云中或本地托管的 Windows 计算机连接到 Log Analytics。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
-ms.openlocfilehash: 342387edb3793358d041702eaa6d76b462aef527
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: df61ef74d95dd9305fa8d97758bf07bcb40d54a6
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637406"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131380"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
@@ -32,7 +33,7 @@ ms.locfileid: "34637406"
 * 手动安装。 可以使用安装向导通过命令行在计算机上手动运行安装程序，也可以使用现有软件分发工具进行部署。
 * Azure 自动化 Desired State Configuration (DSC)。 配合使用 Azure 自动化中的 DSC 以及已部署在环境中的 Windows 计算机的脚本。  
 * PowerShell 脚本。
-* 适用于在 Azure Stack 中运行 Windows 本地环境的资源管理器模板。  
+* 适用于在 Azure Stack 中运行 Windows 本地环境的虚拟机的资源管理器模板。  
 
 若要了解支持的配置，请查看[支持的 Windows 操作系统](log-analytics-concept-hybrid.md#supported-windows-operating-systems)和[网络防火墙配置](log-analytics-concept-hybrid.md#network-firewall-requirements)。
 

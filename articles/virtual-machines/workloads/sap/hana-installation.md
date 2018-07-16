@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 178102990462235b9b39f2ed1ad0e43395118daf
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ecef13f0ce97c7cec5a6583479911a08a99b0877
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064264"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110722"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安装和配置 SAP HANA（大型实例）
 
@@ -32,7 +32,8 @@ ms.locfileid: "37064264"
 
 我们还经常用到其他定义，如下所述：
 - **大型实例模具：** 已通过 SAP HANA TDI 认证的硬件基础结构堆栈，专门用于在 Azure 中运行 SAP HANA 实例。
-- **Azure 上的 SAP HANA（大型实例）：** 用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
+- 
+  **Azure 上的 SAP HANA（大型实例）：** 用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
 
 
 用户有责任安装 SAP HANA，可以在切换 Azure 上的 SAP HANA（大型实例）新服务器后启动活动。 也可以在连接 Azure VNet 与 HANA 大型实例单元后启动活动。 
@@ -163,7 +164,8 @@ S72m HANA 大型实例单元上的命令 df -h 的输出如下所示：
 - [SAP Support Note #171356 – SAP Software on Linux:  General Information](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息）。
 - [SAP Support Note #1391070 – Linux UUID Solutions](https://launchpad.support.sap.com/#/notes/1391070)（SAP 支持说明 #1391070 - Linux UUID 解决方案）。
 
-[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) 是用于在 HANA 大型实例上运行 SAP HANA 的另一个产品。 现在有 RHEL 6.7 和 7.2 版本可用。 请注意，与仅支持 RHEL 7.2 及更高版本的本机 Azure VM 不同，HANA 大型实例还支持 RHEL 6.7。 但是我们建议使用 RHEL 7.x 版本。
+
+  [Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) 是用于在 HANA 大型实例上运行 SAP HANA 的另一个产品。 现在有 RHEL 6.7 和 7.2 版本可用。 请注意，与仅支持 RHEL 7.2 及更高版本的本机 Azure VM 不同，HANA 大型实例还支持 RHEL 6.7。 但是我们建议使用 RHEL 7.x 版本。
 
 其他与基于 Red Hat 的 SAP 相关的有用链接：
 - [SAP HANA on Red Hat Linux Site](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat)（“基于 Red Hat Linux 的 SAP HANA”站点）。

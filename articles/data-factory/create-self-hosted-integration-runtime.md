@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 832e4672a15368768977feedade83707a26b9965
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048782"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341573"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>如何创建和配置自承载的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -101,7 +101,7 @@ ms.locfileid: "37048782"
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
-一个自托管 Integration Runtime 可关联到多台本地计算机。 这些计算机称为节点。 至多可将 4 个节点与一个自承载集成运行时相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下：
+一个自承载集成运行时可关联到多台本地计算机。 这些计算机称为节点。 至多可将 4 个节点与一个自承载集成运行时相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下：
 1. 更高的自承载集成运行时可用性，使其不再是大数据解决方案或与 Azure 数据工厂集成的云数据中的单点故障，从而确保最多 4 个节点的连续性。
 2. 在本地和云数据存储之间移动数据期间提高了性能和吞吐量。 获取有关[性能比较](copy-activity-performance.md)的更多信息。
 
@@ -140,6 +140,7 @@ ms.locfileid: "37048782"
 *.servicebus.windows.net | 443, 80 | 用于与数据移动服务后端进行通信
 *.core.windows.net | 443 | 用于使用 Azure Blob 的暂存复制（如果已配置）
 *.frontend.clouddatahub.net | 443 | 用于与数据移动服务后端进行通信
+download.microsoft.com | 443 | 用于下载更新
 
 在 **Windows 防火墙**级别（计算机级别），通常已启用这些出站端口。 如果没有，可以在自承载集成运行时计算机上相应地配置域和端口。
 

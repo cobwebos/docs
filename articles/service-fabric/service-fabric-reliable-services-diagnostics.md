@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
+ms.date: 6/28/2018
 ms.author: dekapur
-ms.openlocfilehash: 268ec61515f438fb7f98b6cef7a8ec60ba22e23f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 51895731efd466a314877e963a5fd2c6d868ec02
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212630"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110866"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
 Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，这些事件可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
@@ -53,13 +53,16 @@ Reliable Services 运行时定义以下性能计数器类别：
 | 类别 | 说明 |
 | --- | --- |
 | Service Fabric 事务性复制器 |特定于 Azure Service Fabric 事务性复制器的计数器 |
+| Service Fabric TStore |特定于 Azure Service Fabric TStore 的计数器 |
 
-Service Fabric 事务性复制器供[可靠状态管理器](service-fabric-reliable-services-reliable-collections-internals.md)用来在给定的[副本](service-fabric-concepts-replica-lifecycle.md)集内复制事务。 
+Service Fabric 事务性复制器供[可靠状态管理器](service-fabric-reliable-services-reliable-collections-internals.md)用来在给定的[副本](service-fabric-concepts-replica-lifecycle.md)集内复制事务。
+
+Service Fabric TStore 是[可靠集合](service-fabric-reliable-services-reliable-collections-internals.md)中使用的组件，用于存储和检索键值对。
 
 Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet.microsoft.com/library/cc749249.aspx)应用程序可用于收集和查看性能计数器数据。 [Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)是另一种用于收集性能计数器数据并将其上传到 Azure 表的工具。
 
 ### <a name="performance-counter-instance-names"></a>性能计数器实例名称
-具有大量 Reliable Services 或 Reliable Services 分区的群集将具有大量事务复制器性能计数器实例。 性能计数器实例名称有助于标识与性能计数器实例相关联的特定[分区](service-fabric-concepts-partitioning.md)和服务副本。
+具有大量 Reliable Services 或 Reliable Services 分区的群集将具有大量事务复制器性能计数器实例。 对于 TStore 性能计数器也是如此，但还乘以可靠字典和可靠队列使用的数量。 性能计数器实例名称有助于标识与性能计数器实例关联的特定[分区](service-fabric-concepts-partitioning.md)、服务副本和状态提供程序（在 TStore 的情况下）。
 
 #### <a name="service-fabric-transactional-replicator-category"></a>Service Fabric 事务性复制器类别
 对于类别 `Service Fabric Transactional Replicator`，计数器实例名称采用以下格式：
@@ -76,6 +79,25 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet
 
 在上述示例中，`00d0126d-3e36-4d68-98da-cc4f7195d85e` 是 Service Fabric 分区 ID 的字符串表示形式，`131652217797162571` 是副本 ID。
 
+#### <a name="service-fabric-tstore-category"></a>Service Fabric TStore 类别
+对于类别 `Service Fabric TStore`，计数器实例名称采用以下格式：
+
+`ServiceFabricPartitionId:ServiceFabricReplicaId:ServiceFabricStateProviderId_PerformanceCounterInstanceDifferentiator`
+
+*ServiceFabricPartitionId* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 生成的。
+
+*ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一分区生成）发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
+
+*ServiceFabricStateProviderId* 是与 Reliable Service 中的状态提供程序关联的 ID。 状态提供程序 ID 包含在性能计数器实例名称中，用于区分 TStore。
+
+*PerformanceCounterInstanceDifferentiator* 是与状态提供程序中的性能计数器实例关联的区分 ID。 此区分符 包含在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一状态提供程序生成）发生冲突。
+
+以下计数器实例名称通常适用于 `Service Fabric TStore` 类别的计数器：
+
+`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337`
+
+在前面的示例中，`00d0126d-3e36-4d68-98da-cc4f7195d85e` 是 Service Fabric 分区 ID 的字符串表示形式，`131652217797162571` 是副本 ID，`142652217797162571` 是状态提供程序 ID，`1337` 是性能计数器实例区分符。
+
 ### <a name="transactional-replicator-performance-counters"></a>事务复制器性能计数器
 
 Reliable Services 运行时发出的以下事件属于 `Service Fabric Transactional Replicator`类别
@@ -88,6 +110,14 @@ Reliable Services 运行时发出的以下事件属于 `Service Fabric Transacti
 | 中止的操作数/秒 | 事务复制器出于限制原因每秒拒绝的操作数。 |
 | 平均事务用时(毫秒)/提交 | 每个事务的提交平均延时（毫秒） |
 | 平均刷新延迟(毫秒) | 由事务复制器启动的磁盘刷新操作的平均持续时间（毫秒） |
+
+### <a name="tstore-performance-counters"></a>TStore 性能计数器
+
+Reliable Services 运行时发出的以下事件属于 `Service Fabric TStore`类别
+
+ 计数器名称 | 说明 |
+| --- | --- |
+| 项计数 | 存储中的密钥数。|
 
 ## <a name="next-steps"></a>后续步骤
 [PerfView 中的 EventSource 提供程序](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

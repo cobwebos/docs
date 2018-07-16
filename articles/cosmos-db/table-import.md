@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 25e922e211304774462c747ea6a003e47fb38736
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e4e783d131c4ceee9315b3442ee504e662157d8c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797764"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856801"
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>导入要在 Azure Cosmos DB 表 API 中使用的数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "34797764"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 增加吞吐量：数据迁移的持续时间取决于为单个集合或一组集合设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 Azure 门户中增加吞吐量的详细信息，请参阅 Azure Cosmos DB 中的性能级别和定价层。
+* 增加吞吐量：数据迁移的持续时间取决于为单个容器或一组容器设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 Azure 门户中增加吞吐量的详细信息，请参阅 Azure Cosmos DB 中的性能级别和定价层。
 
 ## <a name="data-migration-tool"></a>数据迁移工具
 

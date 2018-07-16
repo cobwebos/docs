@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure 资源的托管服务标识 (MSI)
+title: 什么是 Azure 资源的托管服务标识
 description: 概述了 Azure 资源的托管服务标识。
 services: active-directory
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 851f788adee46436bd4286c803427f49ce0ed89a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3d6df04df8ceac1f868e64f0e8fbc7eb0fa317e3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724092"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38547967"
 ---
-#  <a name="what-is-managed-service-identity-msi-for-azure-resources"></a>什么是 Azure 资源的托管服务标识 (MSI)？
+#  <a name="what-is-managed-service-identity-for-azure-resources"></a>什么是 Azure 资源的托管服务标识？
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-生成云应用程序时需要应对的常见挑战是，如何管理为了通过云服务的身份验证而需要插入代码的凭据。 保护这些凭据是一项非常重要的任务。 理想情况下，它们永远不会出现在开发者工作站上，也永远不会被签入源代码管理系统中。 虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 托管服务标识 (MSI) 为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
+生成云应用程序时需要应对的常见挑战是，如何管理为了通过云服务的身份验证而需要插入代码的凭据。 保护这些凭据是一项非常重要的任务。 理想情况下，它们永远不会出现在开发者工作站上，也永远不会被签入源代码管理系统中。 虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 托管服务标识为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
 
 Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默认设置。 无需额外付费，即可使用托管服务标识。
 
@@ -40,32 +40,32 @@ Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默
 
 下面的示例展示了系统分配的标识如何与 Azure 虚拟机协同工作：
 
-![虚拟机 MSI 示例](overview/msi-vm-vmextension-imds-example.png)
+![虚拟机托管标识示例](overview/msi-vm-vmextension-imds-example.png)
 
 1. Azure 资源管理器收到请求，要求在 VM 上启用系统分配的标识。
 2. Azure 资源管理器在 Azure AD 中创建服务主体，用于表示 VM 的标识。 服务主体是在此订阅信任的 Azure AD 租户中进行创建。
 3. Azure 资源管理器在 VM 上配置标识：
     - 使用服务主体客户端 ID 和证书更新 Azure 实例元数据服务标识终结点。
-    - 预配 MSI VM 扩展并添加服务主体客户端 ID 和证书。 （即将弃用）
+    - 预配 VM 扩展并添加服务主体客户端 ID 和证书。 （即将弃用）
 4. 现在，VM 已经有一个标识，我们将使用其服务主体信息来向 VM 授予对 Azure 资源的访问权限。 例如，如果代码需要调用 Azure 资源管理器，将会在 Azure AD 中使用基于角色的访问控制 (RBAC) 向 VM 的服务主体分配相应的角色。 如果代码需要调用 Key Vault，将会授予代码对 Key Vault 中特定机密或密钥的访问权限。
 5. 在 VM 上运行的代码可以从只能从 VM 中访问的两个终结点请求令牌：
 
     - Azure 实例元数据服务 (IMDS) 标识终结点：http://169.254.169.254/metadata/identity/oauth2/token（推荐）
         - Resource 参数指定了要向其发送令牌的服务。 例如，如果希望代码通过 Azure 资源管理器的身份验证，需要使用 resource=https://management.azure.com/。
         - API 版本参数指定 IMDS 版本，请使用 api-version=2018-02-01 或更高版本。
-    - MSI VM 扩展终结点：http://localhost:50342/oauth2/token（即将弃用）
+    - VM 扩展终结点：http://localhost:50342/oauth2/token（即将弃用）
         - Resource 参数指定了要向其发送令牌的服务。 例如，如果希望代码通过 Azure 资源管理器的身份验证，需要使用 resource=https://management.azure.com/。
 
 6. 调用了 Azure AD，使用在步骤3 中配置的客户端 ID 和证书请求在步骤 5 中指定的访问令牌。 Azure AD 返回 JSON Web 令牌 (JWT) 访问令牌。
 7. 代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。
 
-下面的示例使用相同的关系图展示了用户分配的 MSI 如何与 Azure 虚拟机协同工作。
+下面的示例使用相同的关系图展示了用户分配的内容如何与 Azure 虚拟机协同工作。
 
 1. Azure 资源管理器收到请求，要求创建用户分配的标识。
 2. Azure 资源管理器在 Azure AD 中创建一个服务主体，用于表示用户分配的标识。 服务主体是在此订阅信任的 Azure AD 租户中进行创建。
 3. Azure 资源管理器收到请求，要求在 VM 上配置用户分配的标识：
     - 使用用户分配的标识服务主体客户端 ID 和证书更新 Azure 实例元数据服务标识终结点。
-    - 预配 MSI VM 扩展并添加用户分配的标识服务主体客户端 ID 和证书（即将弃用）。
+    - 预配 VM 扩展并添加用户分配的标识服务主体客户端 ID 和证书（即将弃用）。
 4. 现在已创建了用户分配的标识，我们将使用其服务主体信息来向它授予对 Azure 资源的访问权限。 例如，如果代码需要调用 Azure 资源管理器，则你将在 Azure AD 中使用基于角色的访问控制 (RBAC) 向用户分配的标识的服务主体分配相应的角色。 如果代码需要调用 Key Vault，将会授予代码对 Key Vault 中特定机密或密钥的访问权限。 注意：也可以在步骤 3 之前执行此步骤。
 5. 在 VM 上运行的代码可以从只能从 VM 中访问的两个终结点请求令牌：
 
@@ -74,7 +74,7 @@ Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默
         - 客户端 ID 参数指定为其请求令牌的标识。 当单台 VM 上有多个用户分配的标识时，这是消除歧义所必需的。
         - API 版本参数指定 IMDS 版本，请使用 api-version=2018-02-01 或更高版本。
 
-    - MSI VM 扩展终结点：http://localhost:50342/oauth2/token（即将弃用）
+    - VM 扩展终结点：http://localhost:50342/oauth2/token（即将弃用）
         - Resource 参数指定了要向其发送令牌的服务。 例如，如果希望代码通过 Azure 资源管理器的身份验证，需要使用 resource=https://management.azure.com/。
         - 客户端 ID 参数指定为其请求令牌的标识。 当单台 VM 上有多个用户分配的标识时，这是消除歧义所必需的。
 6. 调用了 Azure AD，使用在步骤3 中配置的客户端 ID 和证书请求在步骤 5 中指定的访问令牌。 Azure AD 返回 JSON Web 令牌 (JWT) 访问令牌。
@@ -84,7 +84,7 @@ Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默
 
 试用“托管服务标识”教程以了解用于访问不同 Azure 资源的端到端方案：
 <br><br>
-| 从已启用 MSI 的资源 | 了解如何操作 |
+| 从托管的支持标识的资源 | 了解如何操作 |
 | ------- | -------- |
 | A1 VM (Windows) | [使用 Windows VM 托管服务标识访问 Azure Data Lake Store](tutorial-windows-vm-access-datalake.md) |
 |                    | [使用 Windows VM 托管服务标识访问 Azure 资源管理器](tutorial-windows-vm-access-arm.md) |
@@ -111,5 +111,5 @@ Azure Active Directory Free 随附托管服务标识，这是 Azure 订阅的默
 
 参阅以下快速入门来开始使用 Azure 托管服务标识：
 
-* [使用 Windows VM 托管服务标识 (MSI) 访问资源管理器 - Windows VM](tutorial-windows-vm-access-arm.md)
-* [使用 Linux VM 托管服务标识 (MSI) 访问 Azure 资源管理器 - Linux VM](tutorial-linux-vm-access-arm.md)
+* [使用 Windows VM 托管服务标识访问资源管理器 - Windows VM](tutorial-windows-vm-access-arm.md)
+* [使用 Linux VM 托管服务标识访问 Azure 资源管理器 - Linux VM](tutorial-linux-vm-access-arm.md)

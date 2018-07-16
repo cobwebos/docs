@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 658588b29e65c9b1cd2f9d82c1c4528929875b2f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b4c885758f572851f058edb6e7851d650faed9f9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935557"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972992"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
 通过 Azure Monitor，可直观显示、查询、路由和存档来自 Azure 资源的指标或日志并对其执行操作。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看活动日志
@@ -58,10 +58,14 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 访问指标：
 
 1. 在靠近页面底部的菜单中选择“指标”。
-2. 从下拉列表中选择所需的指标（可以添加多个指标）。 
 
+    ![指标](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+
+2. 从下拉列表中选择所需的指标（可以添加多个指标）。  
     例如，从可用指标列表中选择“网关请求总数”和“失败的网关请求数”。
-3. 该图显示 API 调用总数。 此外还显示失败的 API 调用数。 
+3. 该图显示 API 调用总数。 此外还显示失败的 API 调用数。
+
+    ![指标图表](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>针对未经授权的请求设置警报规则
 
@@ -73,7 +77,10 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 配置警报：
 
-1. 在靠近页面底部的菜单栏中选择“警报规则”。
+1. 在靠近页面底部的菜单栏中选择“警报(经典)”。
+
+    ![alerts](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+
 2. 选择“添加指标警报”。
 3. 输入此警报的**名称**。
 4. 选择“未经授权的网关请求”作为要监视的指标。
@@ -100,6 +107,12 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 1. 选择 APIM 服务实例。
 2. 单击“活动日志”。
 
+    ![活动日志](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
+
+3. 选择所需的筛选范围，然后单击“应用”。
+
+    ![活动日志](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+
 ## <a name="diagnostic-logs"></a>诊断日志
 
 诊断日志提供大量有关操作和错误的信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。 活动日志提供针对 Azure 资源执行的操作的详细信息。 诊断日志提供资源执行的操作的深入信息。
@@ -108,6 +121,9 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 1. 选择 APIM 服务实例。
 2. 单击“诊断日志”。
+
+    ![诊断日志](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+
 3. 单击“启用诊断”。 可以将诊断日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Log Analytics。 
 
 API 管理当前提供有关单个 API 请求的诊断日志（每小时进行批处理），其中每个条目具有以下架构：

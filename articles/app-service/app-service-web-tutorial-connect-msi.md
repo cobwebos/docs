@@ -14,11 +14,12 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1b51638754287d3359eaea7bd5da3f71bf15cc89
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461531"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>教程：使用托管服务标识确保 SQL 数据库连接的安全
 
@@ -31,6 +32,9 @@ ms.lasthandoff: 04/23/2018
 > * 授予 SQL 数据库访问服务标识的权限
 > * 配置应用程序代码，以便使用 Azure Active Directory 身份验证通过 SQL 数据库进行身份验证
 > * 在 SQL 数据库中向服务标识授予最低特权
+
+> [!NOTE]
+> 在本地 Active Directory (AD DS) 中，Azure Active Directory 身份验证不同于[集成式 Windows 身份验证](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))。 AD DS 和 Azure Active Directory 使用的身份验证协议完全不相同。 有关详细信息，请参阅 [Windows Server AD DS 与 Azure AD 之间的差别](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +68,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app name>
 下一步将用到 `principalId` 的值。 若要在 Azure Active Directory 中查看新标识的详细信息，请使用 `principalId` 的值运行以下可选命令：
 
 ```azurecli-interactive
-az ad sp show --id <principalid>`
+az ad sp show --id <principalid>
 ```
 
 ## <a name="grant-database-access-to-identity"></a>授予数据库访问标识的权限
@@ -156,7 +160,7 @@ private MyDatabaseContext db = new MyDatabaseContext(new SqlConnection());
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
 msiobjectid=$(az webapp identity show --resource-group <group_name> --name <app_name> --query principalId --output tsv)
-az ad group member add --group $groupid --member-id $msiid
+az ad group member add --group $groupid --member-id $msiobjectid
 az ad group member list -g $groupid
 ```
 

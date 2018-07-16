@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 5014c8204b6b6da539a41aaa3308d8787fb517a7
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 7d86082abb6412072af44a6b2d794bcf536fa18d
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738524"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342720"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -51,9 +51,17 @@ Azure 文件同步以独占方式通过 HTTPS 移动文件数据和元数据，�
 Azure 文件同步会通过任何可用方式来访问 Azure，自动适应各种网络特征（例如带宽、延迟）并提供进行微调所需的管理员控制。 目前并没有提供所有功能。 如果需要配置特定的行为，请通过 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670) 告知我们。
 
 ## <a name="proxy"></a>代理
-Azure 文件同步目前支持计算机范围的代理设置。 该代理设置对 Azure 文件同步代理来说是透明的，因为服务器的整个流量是通过该代理路由的。
+Azure 文件同步支持特定于应用和计算机范围的代理设置。
 
-特定于应用的 代理设置目前正在进行开发，将在未来的 Azure 文件同步代理版本中推出。 这样就可以配置专用于 Azure 文件同步流量的代理。
+计算机范围的代理设置对 Azure 文件同步代理来说是透明的，因为服务器的整个流量都通过该代理路由。
+
+特定于应用的代理设置可以配置专用于 Azure 文件同步流量的代理。 代理版本 3.0.12.0 或更高版本支持特定于应用的代理设置，可以在代理安装期间或使用 Set-StorageSyncProxyConfiguration PowerShell cmdlet 进行配置。
+
+用于配置特定于应用的代理设置的 PowerShell 命令：
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
+```
 
 ## <a name="firewall"></a>防火墙
 如前面的部分所述，端口 443 需对外开放。 可能需要进一步对通过此端口流向特定域的流量进行限制，具体取决于所在数据中心、分支或区域的策略。
@@ -80,7 +88,7 @@ Azure 文件同步目前支持计算机范围的代理设置。 该代理设置�
 | 美国东部 | https://kailani1.one.microsoft.com |
 | 东南亚 | https://kailani10.one.microsoft.com |
 | 英国南部 | https://kailani-uks.one.microsoft.com |
-| 欧洲西部 | https://kailani6.one.microsoft.com |
+| 西欧 | https://kailani6.one.microsoft.com |
 | 美国西部 | https://kailani.one.microsoft.com |
 
 > [!Important]

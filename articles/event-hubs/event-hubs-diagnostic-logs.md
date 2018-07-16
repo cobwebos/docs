@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/30/2018
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 451fc42f573db2b60985912cfa63617e04f09e6c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: fd7b85d18aeb1674ad7a5e67dd9ac65345c56887
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28932709"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435025"
 ---
 # <a name="event-hubs-diagnostic-logs"></a>事件中心诊断日志
 
@@ -31,7 +31,7 @@ ms.locfileid: "28932709"
 
 ## <a name="enable-diagnostic-logs"></a>启用诊断日志
 
-诊断日志默认已禁用。 启用诊断日志：
+诊断日志默认已禁用。 若要启用诊断日志，请执行以下步骤：
 
 1.  在[Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，点击“诊断日志”。
 

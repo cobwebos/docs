@@ -7,28 +7,28 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: d8b7ed593fcd307e6709c17bafbcb5a22661dc83
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 99cd7fe6f9f46ff4d6dbbf6a6e024b3b32679724
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285767"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444254"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>为 Azure Cosmos DB 容器和数据库设置和获取吞吐量
 
-可通过 Azure 门户或客户端 SDK 为一个 Azure Cosmos DB 容器或一组容器设置吞吐量。 为一组容器预配吞吐量时，所有这些容器共享预配的吞吐量。 为单个容器预配吞吐量可确保为该特定容器预留吞吐量。 另一方面，为一个数据库预配吞吐量可在属于该数据库的所有容器间共享吞吐量。 在 Azure Cosmos DB 数据库中，可以让一组容器共享吞吐量，也可以让容器使用专用的吞吐量。 
+可通过 Azure 门户或客户端 SDK 为一个 Azure Cosmos DB 容器或一组容器设置吞吐量。 
 
-Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容器并拆分/重新均衡分区中不断增长的数据。
+**为单个容器预配吞吐量：** 为一组容器预配吞吐量时，所有这些容器共享预配的吞吐量。 为单个容器预配吞吐量可确保为该特定容器预留吞吐量。 在单个容器级别分配 RU/秒时，可以将容器创建为*固定*或*无限制*模式。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 若要创建无限制容器，必须指定最低 1,000 RU/秒的吞吐量和一个[分区键](partition-data.md)。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（一百到几百万个非重复值）的分区键。 通过选择具有大量非重复值的分区键，可以确保 Azure Cosmos DB 能够统一缩放容器/表/图形与请求。 
 
-在单个容器级别分配 RU/秒时，可以将容器创建为*固定*或*无限制*模式。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 若要创建无限制容器，必须指定最低 1,000 RU/秒的吞吐量和一个[分区键](partition-data.md)。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（一百到几百万个非重复值）的分区键。 通过选择具有大量非重复值的分区键，可以确保 Azure Cosmos DB 能够统一缩放容器/表/图形与请求。 
+**为一组容器或一个数据库预配吞吐量：** 为一个数据库预配吞吐量可在属于该数据库的所有容器间共享吞吐量。 在 Azure Cosmos DB 数据库中，可以让一组容器共享吞吐量，也可以让容器使用专用的吞吐量。 在一组容器中分配 RU/秒时，会将属于该组的容器视为“无限制”容器，必须指定一个分区键。
 
-在一组容器中分配 RU/秒时，会将属于该组的容器视为“无限制”容器，必须指定一个分区键。
+Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容器并拆分/重新均衡分区中不断增长的数据。 容器和数据库级吞吐量预配是单独的产品，在这两者之间切换需要将数据从源迁移到目标。 这意味着你需要创建新数据库或新集合，然后使用[批量执行程序库](bulk-executor-overview.md)或 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)迁移数据。 下图说明了不同级别的预配吞吐量：
 
 ![预配一个容器和一组容器的请求单位数](./media/request-units/provisioning_set_containers.png)
 
-本文详细介绍了在不同级别为 Azure Cosmos DB 帐户配置吞吐量所需的步骤。 
+后续部分将介绍在不同级别为 Azure Cosmos DB 帐户配置吞吐量所需的步骤。 
 
 ## <a name="provision-throughput-by-using-azure-portal"></a>使用 Azure 门户预配吞吐量
 
@@ -88,7 +88,9 @@ Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容�
 
 下面是一些注意事项，可以帮助你确定吞吐量预留策略。
 
-出现以下情况时，考虑在数据库级别（针对一组容器）预配吞吐量：
+### <a name="considerations-when-provisioning-throughput-at-the-database-level"></a>在数据库级别预配吞吐量时的注意事项
+
+在以下情况下，考虑在数据库级别（即针对一组容器）预配吞吐量：
 
 * 至少有十几个容器可以部分或全部共享吞吐量。  
 
@@ -97,6 +99,8 @@ Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容�
 * 需要根据数据库级别的共用吞吐量来考虑工作负荷的计划外峰值。  
 
 * 需获取数据库中一组容器的聚合吞吐量，不需在单个容器上设置吞吐量。
+
+### <a name="considerations-when-provisioning-throughput-at-the-container-level"></a>在容器级别预配吞吐量时的注意事项
 
 出现以下情况时，考虑在单个容器上预配吞吐量：
 
@@ -135,6 +139,7 @@ Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容�
 
 ## <a name="set-throughput-by-using-sql-api-for-net"></a>使用 SQL API for .NET 设置吞吐量
 
+### <a name="set-throughput-at-the-container-level"></a>在容器级别设置吞吐量
 以下代码片段使用 SQL API 的 .NET SDK 创建每秒 3,000 个请求单位（适用于单个容器）的容器：
 
 ```csharp
@@ -147,6 +152,8 @@ await client.CreateDocumentCollectionAsync(
     myCollection,
     new RequestOptions { OfferThroughput = 3000 });
 ```
+
+### <a name="set-throughput-at-the-for-a-set-of-containers-or-at-the-database-level"></a>为一组容器设置吞吐量，或者在数据库级别设置吞吐量
 
 以下代码片段使用 SQL API 的 .NET SDK 为一组容器预配每秒 100,000 个请求单位的吞吐量：
 

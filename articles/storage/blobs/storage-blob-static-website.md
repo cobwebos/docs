@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/26/18
 ms.author: mihauss
-ms.openlocfilehash: 7021a0499547818d702d14aecb9d8e451a820181
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: df1661b5fe7a2c0e37deef5259d6b5842ed6ee5e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025106"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131603"
 ---
 # <a name="static-website-hosting-in-azure-storage-preview"></a>Azure 存储中的静态网站托管（预览版）
 Azure 存储现提供静态网站托管（预览版），可便于用户在 Azure 上部署经济高效、可缩放的新式 Web 应用程序。 在静态网站上，网页包含静态内容和 JavaScript 或其他客户端代码。 相比之下，动态网站依赖服务器端代码，可以使用 [Azure Web 应用程序](/app-service/app-service-web-overview.md)托管动态网站。
@@ -43,6 +43,9 @@ Web 服务终结点始终允许匿名读取访问，返回格式化 HTML 页面�
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
 将 Web 资产上传到在静态网站启用过程中创建的“$web”容器。 可以直接在 Azure 门户中这样做，也可以利用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)上传整个目录结构。 请务必添加采用已配置命名的索引文档。 在此示例中，索引文档的名称为“index.html”。
+
+> [!NOTE]
+> 文档名称区分大小写，因此需要完全匹配存储中文件的名称。
 
 最后，转到 Web 终结点来测试网站。
 

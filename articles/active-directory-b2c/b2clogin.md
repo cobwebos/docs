@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c41c02acaeffa170d55f3c59f34a4b1ecae1c523
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 1d42d9a97244eeff501b9d02b0f143d6ef0c91b2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712447"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440622"
 ---
 # <a name="using-b2clogincom"></a>使用 b2clogin.com
 
@@ -24,8 +24,8 @@ ms.locfileid: "34712447"
 >
 
 现在，你可以选择使用带有 `<YourTenantName>.b2clogin.com` 的 Azure AD B2C 服务，而不是使用 `login.microsoftonline.com`。  这样做有诸多好处：
-* 将不再与其他 Microsoft 产品共享相同的 Cookie 标头大小限制
-* 可以在 URL 中删除对 Microsoft 的所有引用（可以将 `<YourTenantName>.onmicrosoft.com` 替换为你的租户 ID）
+* 将不再与其他 Microsoft 产品共享相同的 Cookie 标头大小限制。
+* 可以在 URL 中删除对 Microsoft 的所有引用（可以将 `<YourTenantName>.onmicrosoft.com` 替换为你的租户 ID）。 例如：`https://<tenantname>.b2clogin.com/tfp/<tenantname>/<policyname>/v2.0/.well-known/openid-configuration`。
 
  为了利用 b2clogin.com，你需要设置以下某些内容：
 

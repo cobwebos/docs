@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffcce12800fae3a4d9e4930c918fcafb919b96ed
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737198"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915963"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>准备 Azure 资源以进行本地计算机复制
 
@@ -23,7 +23,7 @@ ms.locfileid: "34737198"
 
 教程旨在向你展示方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 
 
-本文介绍如何在要将本地 VM（Hyper-V 或 VMware）或 Windows/Linux 物理服务器复制到 Azure 时准备 Azure 组件。 本教程介绍如何执行下列操作：
+本文介绍如何在要将本地 VM（Hyper-V 或 VMware）或 Windows/Linux 物理服务器复制到 Azure 时准备 Azure 组件。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 验证 Azure 帐户是否具有复制权限。
@@ -31,7 +31,7 @@ ms.locfileid: "34737198"
 > * 创建恢复服务保管库。 保管库保存 VM 和其他复制组件的元数据和配置信息。
 > * 设置 Azure 网络。 在故障转移后创建的 Azure VM 会加入此 Azure 网络。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -54,11 +54,12 @@ ms.locfileid: "34737198"
 1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“创建资源” > “存储” > “存储帐户 - blob、文件、表、队列”。
 2. 在“创建存储帐户”中，输入帐户的名称。 对于这些教程，我们使用 **contosovmsacct1910171607**。 所选名称在 Azure 中必须唯一，长度介于 3-24 个字符，且仅包含数字和小写字母。
 3. 在“部署模型”中，选择“资源管理器”。
-4. 在“帐户类型”中，选择“存储(常规用途 v1)”。 请不要选择 blob 存储。 在“性能”中，选择“标准”。 
+4. 在“帐户类型”中，选择“存储(常规用途 v1)”。 请不要选择 blob 存储。
 5. 在“复制”中，选择默认的“读取访问异地冗余存储”作为存储冗余。 我们将“需要安全传输”保留为“已禁用”。
-6. 在“订阅”中，选择要在其中创建新存储帐户的订阅。 
-2. 在“资源组”中，输入新的资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 对于这些教程，我们使用 **ContosoRG**。
-3. 在“位置”中，选择存储帐户的地理位置。 
+6. 在“性能”中，选择“标准”，在“访问层”中选择默认选项“热”。
+7. 在“订阅”中，选择要在其中创建新存储帐户的订阅。
+8. 在“资源组”中，输入新的资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 对于这些教程，我们使用 **ContosoRG**。
+9. 在“位置”中，选择存储帐户的地理位置。 
 
    ![创建存储帐户](media/tutorial-prepare-azure/create-storageacct.png)
 
@@ -98,7 +99,7 @@ ms.locfileid: "34737198"
 
 - [了解](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) Azure 网络。
 - [了解](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts) Azure 存储的类型。
-- - [详细了解](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage)存储冗余和存储的[安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)。
+- [详细了解](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage)存储冗余和存储的[安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)。
 
 
 

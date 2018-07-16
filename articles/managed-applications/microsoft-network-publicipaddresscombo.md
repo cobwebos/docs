@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf0ef5be609fba14ab12e1e6f9f97bc63f032aae
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d06a450595a53fdc65fba74791345abe3a1b3db4
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260554"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109563"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 元素
 一组用于选择新的或现有公用 IP 地址的控件。
@@ -63,21 +63,23 @@ ms.locfileid: "34260554"
 ```
 
 ## <a name="remarks"></a>备注
-- 如果 `constraints.required.domainNameLabel` 设置为 **true**，则用户在创建新的公用 IP 地址时必须提供域名标签。 没有标签的现有公用 IP 地址不可供选择。
+- 如果 `constraints.required.domainNameLabel` 设置为 **true**，则用户在创建新的公用 IP 地址时必须提供域名标签。 没有标签的现有公共 IP 地址不可供选择。
 - 如果 `options.hideNone` 设置为 **true**，则用于为公用 IP 地址选择 **None** 的选项会被隐藏。 默认值为 **false**。
 - 如果 `options.hideDomainNameLabel` 设置为 **true**，则域名标签的文本框会被隐藏。 默认值为 **false**。
-- 如果 `options.hideExisting` 为 true，则用户无法选择现有的公用 IP 地址。 默认值为 **false**。
+- 如果 `options.hideExisting` 为 true，则用户无法选择现有的公共 IP 地址。 默认值为 **false**。
 - 对于 `zone`，仅指定区域的公共 IP 地址或区域复原公共 IP 地址可用。
 
 ## <a name="sample-output"></a>示例输出
-如果用户未选择公用 IP 地址，则应当生成以下输出：
+如果用户未选择公共 IP 地址，则控件返回以下输出：
+
 ```json
 {
   "newOrExistingOrNone": "none"
 }
 ```
 
-如果用户选择了新的或现有 IP 地址，则应当生成以下输出：
+如果用户选择了新的或现有 IP 地址，则控件返回以下输出：
+
 ```json
 {
   "name": "ip01",
@@ -87,6 +89,7 @@ ms.locfileid: "34260554"
   "newOrExistingOrNone": "new"
 }
 ```
+
 - 当 `options.hideNone` 指定为 **true** 时，`newOrExistingOrNone` 将仅具有值 **new** 或 **existing**。
 - 当 `options.hideDomainNameLabel` 指定为 **true** 时，将取消声明 `domainNameLabel`。
 

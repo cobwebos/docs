@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 06/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 68a7e71cf374f10b4c5ced3e64da36138b0d2e4d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a641464e04421b90de15cd953bb8a0fbf9b687d3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34800718"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084716"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的标识要求
 设计混合标识解决方案的第一个步骤是确定要利用此解决方案的企业组织有何要求。  混合标识最初是一个支持角色（通过提供身份验证来支持其他所有云解决方案），并提供一些新奇的功能，为用户解锁新的工作负荷。  要为用户采用的这些工作负荷或服务指明了混合标识设计的要求。  这些服务和工作负荷在本地和云中都需要利用混合标识。  
@@ -58,7 +58,7 @@ ms.locfileid: "34800718"
 * 此集成目前已投入使用，还是在试运行期？
 
 > [!NOTE]
-> 如果无法正确映射所有应用与云服务，可以使用 Cloud App Discovery 工具。 IT 部门可以使用此工具深入了解组织的所有业务云应用与使用者云应用。 发现组织中的影子 IT 将变得前所未有的轻松，就连使用模式的详细信息，以及正在访问云应用程序的用户都能发现。 若要开始，请参阅 [Cloud App Discovery](manage-apps/cloud-app-discovery.md)。
+> Cloud Discovery 根据 Microsoft Cloud App Security 的云应用目录分析你的流量日志，该云应用目录包含超过 16,000 个基于 70 多个风险因素进行排名和评分的云应用，可让你持续了解云使用、影子 IT 和影子 IT 给你的组织带来的风险。若要开始使用，请参阅[设置 Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)。
 > 
 > 
 

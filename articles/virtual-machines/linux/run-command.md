@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 93972c88676cceef07b39b4a4ed34bab5b74cbd3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 850c5ac4df8ff3bd0e35567060b3b90dad7baacc
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334867"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342685"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>使用“运行命令”在 Linux VM 中运行 shell 脚本
 
@@ -23,7 +23,7 @@ ms.locfileid: "36334867"
 
 有多个选项可以用来访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 可以通过 Azure 门户、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 或 [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) 使用“运行命令”。
 
-此功能适用于要在虚拟机中运行脚本的所有方案，并且是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方式之一。
+此功能适用于要在虚拟机中运行脚本的所有方案，并且是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方法。
 
 ## <a name="restrictions"></a>限制
 
@@ -36,6 +36,7 @@ ms.locfileid: "36334867"
 * 不支持提示输入信息（交互模式）的脚本。
 * 无法取消正在运行的脚本
 * 脚本最多可以运行 90 分钟，之后它将超时
+* 需要从 VM 建立出站连接才能返回脚本的结果。
 
 ## <a name="azure-cli"></a>Azure CLI
 

@@ -9,13 +9,13 @@ manager: kfile
 editor: jasonwhowell
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
-ms.date: 06/02/2018
-ms.openlocfilehash: 560f36dc64480fd6aceaa50226b191ee40d2486f
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.date: 06/29/2018
+ms.openlocfilehash: 94cd8de875baac31ee6cd450707be57a3d1dfdd0
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959842"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341855"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -56,7 +56,7 @@ Connect-AzureRmAccount -SubscriptionId $subId
 Connect-AzureRmAccount -SubscriptionName $subname 
 ```
 
-## <a name="saving-authenticaiton-context"></a>保存身份验证上下文
+## <a name="saving-authentication-context"></a>保存身份验证上下文
 
 `Connect-AzureRmAccount` cmdlet 始终提示输入凭据。 可以使用以下 cmdlet 避免出现提示：
 
@@ -156,13 +156,13 @@ Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName
 
 ```powershell
 # List all the data sources
-Get-AdlAnalyticsDataSource -Name $adla
+Get-AdlAnalyticsDataSource -Account $adla
 
 # List attached Data Lake Store accounts
-Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "DataLakeStore"
+Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "DataLakeStore"
 
 # List attached Storage accounts
-Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "Blob"
+Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "Blob"
 ```
 
 ## <a name="submit-u-sql-jobs"></a>提交 U-SQL 作业

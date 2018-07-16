@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure RBAC 中的角色定义 | Microsoft Docs
-description: 了解基于角色的访问控制 (RBAC) 中的角色定义以及如何在 Azure 中定义自定义角色，以便对资源进行精细的访问权限管理。
+description: 了解基于角色的访问控制 (RBAC) 中的角色定义，以便对 Azure 中的资源进行精细的访问权限管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,19 +8,19 @@ manager: mtillman
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/18/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 9bb7808f2b483fe9cd7d22c6df3fe80d4a98f1f4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1d594b91b85a1bad3bbaa69bc27e62a4829a5661
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266850"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37438265"
 ---
 # <a name="understand-role-definitions"></a>了解角色定义
 
@@ -47,7 +47,7 @@ type
 
 使用以下格式的字符串指定操作：
 
-- `Microsoft.{ProviderName}/{ChildResourceType}/{action}`
+- `{Company}.{ProviderName}/{resourceType}/{action}`
 
 操作字符串的 `{action}` 部分指定可以对某个资源类型执行的操作类型。 例如，将在 `{action}` 中看到以下子字符串：
 
@@ -94,7 +94,7 @@ type
 
 ## <a name="management-and-data-operations-preview"></a>管理和数据操作（预览版）
 
-管理操作的基于角色的访问控制在角色定义的 `actions` 和 `notActions` 部分中指定。 下面是 Azure 中管理操作的一些示例：
+管理操作的基于角色的访问控制在角色定义的 `actions` 和 `notActions` 属性中指定。 下面是 Azure 中管理操作的一些示例：
 
 - 管理存储帐户的访问权限
 - 创建、更新或删除 blob 容器
@@ -104,13 +104,13 @@ type
 
 以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一基于角色的访问控制授权模型已扩展到数据操作（当前为预览版）。
 
-为了支持数据操作，已将新的数据节添加到角色定义结构。 数据操作在 `dataActions` 和 `notDataActions` 节中指定。 通过添加这些数据节，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `dataActions` 和 `notDataActions` 中指定的一些数据操作：
+为了支持数据操作，已将新的数据属性添加到角色定义结构。 数据操作在 `dataActions` 和 `notDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `dataActions` 和 `notDataActions` 中指定的一些数据操作：
 
 - 读取容器中的 Blob 列表
 - 在容器中写入存储 Blob
 - 删除队列中的消息
 
-下面是[存储 Blob 数据读取者（预览版）](built-in-roles.md#storage-blob-data-reader-preview)角色定义，其中包含 `actions` 和 `dataActions` 节中的操作。 使用此角色可以读取 Blob 容器以及基础 Blob 数据。
+下面是[存储 Blob 数据读者（预览版）](built-in-roles.md#storage-blob-data-reader-preview)角色定义，其中包含 `actions` 和 `dataActions` 属性中的操作。 使用此角色可以读取 Blob 容器以及基础 Blob 数据。
 
 ```json
 [
@@ -142,7 +142,7 @@ type
 ]
 ```
 
-只能将数据操作添加到 `dataActions` 和 `notDataActions` 节。 资源提供程序通过将 `isDataAction` 属性设置为 `true`，来识别哪些操作是数据操作。 若要查看 `isDataAction` 为 `true` 的操作列表，请参阅[资源提供程序操作](resource-provider-operations.md)。 没有数据操作的角色不需要在角色定义中包含 `dataActions` 和 `notDataActions` 节。
+只能将数据操作添加到 `dataActions` 和 `notDataActions` 属性。 资源提供程序通过将 `isDataAction` 属性设置为 `true`，来识别哪些操作是数据操作。 若要查看 `isDataAction` 为 `true` 的操作列表，请参阅[资源提供程序操作](resource-provider-operations.md)。 没有数据操作的角色不需要在角色定义中包含 `dataActions` 和 `notDataActions` 属性。
 
 所有管理操作 API 调用的授权由 Azure 资源管理器处理。 数据操作 API 调用的授权由资源提供程序或 Azure 资源管理器处理。
 
@@ -190,7 +190,7 @@ Bob 的权限限制为[存储 Blob 数据参与者（预览版）](built-in-role
 
 ## <a name="actions"></a>actions
 
-`actions` 权限指定角色授权访问的管理操作。 它是操作字符串的集合，可标识 Azure 资源提供程序的安全对象操作。 下面是一些可以在 `actions` 中使用的管理操作的示例。
+`actions` 权限指定该角色允许执行的管理操作。 它是操作字符串的集合，可标识 Azure 资源提供程序的安全对象操作。 下面是一些可以在 `actions` 中使用的管理操作的示例。
 
 | 操作字符串    | 说明         |
 | ------------------- | ------------------- |
@@ -210,7 +210,7 @@ Bob 的权限限制为[存储 Blob 数据参与者（预览版）](built-in-role
 
 ## <a name="dataactions-preview"></a>dataActions（预览版）
 
-`dataActions` 权限指定授权访问对象中数据的角色有权执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `dataActions` 中使用的一些数据操作的示例。
+`dataActions` 权限指定此角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `dataActions` 中使用的一些数据操作的示例。
 
 | 操作字符串    | 说明         |
 | ------------------- | ------------------- |
@@ -229,11 +229,9 @@ Bob 的权限限制为[存储 Blob 数据参与者（预览版）](built-in-role
 
 ## <a name="assignablescopes"></a>assignableScopes
 
-`assignableScopes` 部分指定角色可供分配的范围（管理组（目前处于预览状态）、订阅、资源组或资源）。 可以让角色只在需要它的订阅或资源组中进行分配，而不影响其他订阅或资源组的用户体验。 必须使用至少一个管理组、订阅、资源组或资源 ID。
+`assignableScopes` 属性指定角色可供分配的范围（管理组（目前处于预览状态）、订阅、资源组或资源）。 可以让角色只在需要它的订阅或资源组中进行分配，而不影响其他订阅或资源组的用户体验。 必须使用至少一个管理组、订阅、资源组或资源 ID。
 
-内置角色已将 `assignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 不能在自己的自定义角色中使用根范围。 如果你尝试，会收到一个授权错误。
-
-有效的可分配范围的示例包括：
+内置角色已将 `assignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 有效的可分配范围的示例包括：
 
 | 场景 | 示例 |
 |----------|---------|
@@ -242,86 +240,9 @@ Bob 的权限限制为[存储 Blob 数据参与者（预览版）](built-in-role
 | 角色只能在网络资源组中进行分配 | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
 | 角色可供在所有范围中进行分配 | `"/"` |
 
-## <a name="assignablescopes-and-custom-roles"></a>assignableScopes 和自定义角色
+有关自定义角色的 `assignableScopes` 的信息，请参阅[自定义角色](custom-roles.md)。
 
-自定义角色的 `assignableScopes` 部分还可以控制谁可以创建、删除、修改或查看自定义角色。
-
-| 任务 | Operation | 说明 |
-| --- | --- | --- |
-| 创建/删除自定义角色 | `Microsoft.Authorization/ roleDefinition/write` | 在自定义角色的所有 `assignableScopes` 上被允许此操作的用户可以创建（或删除）用于这些范围的自定义角色。 例如，订阅、资源组和资源的[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)。 |
-| 修改自定义角色 | `Microsoft.Authorization/ roleDefinition/write` | 在自定义角色的所有 `assignableScopes` 上被允许此操作的用户可以修改这些范围中的自定义角色。 例如，订阅、资源组和资源的[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)。 |
-| 查看自定义角色 | `Microsoft.Authorization/ roleDefinition/read` | 在某个范围内被允许此操作的用户可以查看可在该范围内分配的自定义角色。 所有内置角色都允许自定义角色可用于分配。 |
-
-## <a name="role-definition-examples"></a>角色定义示例
-
-以下示例显示了使用 Azure CLI 显示的[读者](built-in-roles.md#reader)角色定义：
-
-```json
-[
-  {
-    "additionalProperties": {},
-    "assignableScopes": [
-      "/"
-    ],
-    "description": "Lets you view everything, but not make any changes.",
-    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "permissions": [
-      {
-        "actions": [
-          "*/read"
-        ],
-        "additionalProperties": {},
-        "dataActions": [],
-        "notActions": [],
-        "notDataActions": []
-      }
-    ],
-    "roleName": "Reader",
-    "roleType": "BuiltInRole",
-    "type": "Microsoft.Authorization/roleDefinitions"
-  }
-]
-```
-
-以下示例显示了使用 Azure PowerShell 显示的用于监视和重启虚拟机的自定义角色：
-
-```json
-{
-  "Name":  "Virtual Machine Operator",
-  "Id":  "88888888-8888-8888-8888-888888888888",
-  "IsCustom":  true,
-  "Description":  "Can monitor and restart virtual machines.",
-  "Actions":  [
-                  "Microsoft.Storage/*/read",
-                  "Microsoft.Network/*/read",
-                  "Microsoft.Compute/*/read",
-                  "Microsoft.Compute/virtualMachines/start/action",
-                  "Microsoft.Compute/virtualMachines/restart/action",
-                  "Microsoft.Authorization/*/read",
-                  "Microsoft.Resources/subscriptions/resourceGroups/read",
-                  "Microsoft.Insights/alertRules/*",
-                  "Microsoft.Insights/diagnosticSettings/*",
-                  "Microsoft.Support/*"
-  ],
-  "NotActions":  [
-
-                 ],
-  "DataActions":  [
-
-                  ],
-  "NotDataActions":  [
-
-                     ],
-  "AssignableScopes":  [
-                           "/subscriptions/{subscriptionId1}",
-                           "/subscriptions/{subscriptionId2}",
-                           "/subscriptions/{subscriptionId3}"
-                       ]
-}
-```
-
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 * [内置角色](built-in-roles.md)
 * [自定义角色](custom-roles.md)

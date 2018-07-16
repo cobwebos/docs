@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 27e5b7fed227248d9d60c8ede460c9ecc65ca52d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5346467dff40832aa35799ee3d532e99bf14d569
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096268"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38482068"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备
 
@@ -44,6 +44,22 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
    az extension add --name azure-cli-iot-ext
    ```
 
+## <a name="prerequisites"></a>先决条件
+
+本快速入门使用 Linux 计算机作为 IoT Edge 设备。 如果没有用于测试的计算机，可使用 Azure CLI 创建一个。 
+
+创建新的资源组。 可以将此资源组用于在本快速入门中创建的其他 Azure 资源，以便简化管理。  
+
+   ```azurecli-interactive
+   az group create --name IoTEdgeResources --location westus
+   ```
+
+创建虚拟机。 不需要很大的虚拟机来测试 IoT Edge。 **B1ms** 之类的大小已足够。
+
+   ```azurecli-interactive
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_B1ms
+   ```
+
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 在 Azure 门户中创建 IoT 中心，启动快速入门。
@@ -51,17 +67,19 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
 
 免费级的 IoT 中心适用于此快速入门。 如果曾经用过 IoT 中心并且已创建免费的中心，则可使用该 IoT 中心。 每个订阅仅能有一个免费 IoT 中心。 
 
-1. 在 Azure Cloud Shell 中创建一个资源组。 以下代码在“美国西部”区域创建名为“TestResources”的资源组。 将快速入门和教程的所有资源置于一个组中可以对其集中管理。 
+1. 在 Azure Cloud Shell 中创建一个资源组（如果尚未按先决条件创建一个）。 将快速入门和教程的所有资源置于一个组中可以对其集中管理。 
 
    ```azurecli-interactive
-   az group create --name TestResources --location westus
+   az group create --name IoTEdgeResources --location westus
    ```
 
-1. 在新的资源组中创建 IoT 中心。 以下代码在资源组“TestResources”中创建免费的“F1”中心。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
+1. 在新的资源组中创建 IoT 中心。 以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
 
    ```azurecli-interactive
    az iot hub create --resource-group TestResources --name {hub_name} --sku F1 
    ```
+
+   如果由于订阅中已经有一个免费的中心而出现错误，请将 SKU 更改为 **S1**。 
 
 ## <a name="register-an-iot-edge-device"></a>注册 IoT Edge 设备
 
@@ -73,7 +91,7 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
 1. 在 Azure Cloud Shell 中输入以下命令，以便在中心创建名为 **myEdgeDevice** 的设备。
 
    ```azurecli-interactive
-   az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
+   az iot hub device-identity create --hub-name {hub_name} --device-id myEdgeDevice --edge-enabled
    ```
 
 1. 检索设备的连接字符串，该字符串将物理设备与其在 IoT 中心的标识链接在一起。 
@@ -91,6 +109,8 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
 ![注册设备][5]
 
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 每次某个 Edge 设备在启动后通过启动 IoT Edge 代理来启动此设备时，**IoT Edge 安全守护程序**就会启动。 **IoT Edge 代理**协助部署和监视 IoT Edge 设备（包括 IoT Edge 中心）的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。 
+
+在为本快速入门准备的 Linux 计算机或 VM 中完成以下步骤。 
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>注册设备，以便使用软件存储库
 
@@ -122,11 +142,16 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
    sudo apt-get update
    ```
 
-安装 Moby（容器运行时）及其 CLI 命令。 
+安装容器运行时 **Moby**。
 
    ```bash
    sudo apt-get install moby-engine
-   sudo apt-get install moby-cli   
+   ```
+
+安装 Moby 的 CLI 命令。 
+
+   ```bash
+   sudo apt-get install moby-cli
    ```
 
 ### <a name="install-and-configure-the-iot-edge-security-daemon"></a>安装并配置 IoT Edge 安全守护程序
@@ -146,15 +171,19 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
    sudo nano /etc/iotedge/config.yaml
    ```
 
-3. 添加在注册设备时复制的 IoT Edge 设备连接字符串。 替换此前在本快速入门中复制的变量 **device_connection_string** 的值。
+3. 添加 IoT Edge 设备连接字符串。 找到变量 **device_connection_string**，将其值更新为注册设备后复制的字符串。
 
-4. 重启 Edge 安全守护程序：
+4. 保存并关闭该文件。 
+
+   `CTRL + X`、`Y`、`Enter`
+
+4. 重启 IoT Edge 安全守护程序。
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-5. 查看 Edge 安全守护程序是否正作为系统服务运行：
+5. 查看 Edge 安全守护程序是否正作为系统服务运行。
 
    ```bash
    sudo systemctl status iotedge
@@ -168,13 +197,14 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
    journalctl -u iotedge
    ```
 
-6. 查看在设备上运行的模块： 
+6. 查看在设备上运行的模块。 
+
+   >[!TIP]
+   >首先，需使用 *sudo* 运行 `iotedge` 命令。 注销计算机后重新登录以更新权限，然后即可在不提升特权的情况下运行 `iotedge` 命令。 
 
    ```bash
    sudo iotedge list
    ```
-
-   先注销再登录以后，上述命令就不需要 *sudo*。
 
    ![查看设备上的一个模块](./media/quickstart-linux/iotedge-list-1.png)
 
@@ -214,7 +244,22 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要继续学习 IoT Edge 教程，可以使用在本快速入门中注册并设置的设备。 若要从设备中删除这些安装，请使用以下命令。  
+若要继续学习 IoT Edge 教程，可以使用在本快速入门中注册并设置的设备。 否则，可删除创建的 Azure 资源，并从设备中删除 IoT Edge 运行时。 
+
+### <a name="delete-azure-resources"></a>删除 Azure 资源
+
+如果是在新资源组中创建的虚拟机和 IoT 中心，则可删除该组以及所有关联的资源。 如果该资源组中有需要保留的内容，则请将要清除的资源逐一删除。 
+
+若要删除资源组，请执行以下步骤： 
+
+1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+2. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称。 
+3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
+4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
+
+### <a name="remove-the-iot-edge-runtime"></a>删除 IoT Edge 运行时
+
+若要从设备中删除这些安装，请使用以下命令。  
 
 删除 IoT Edge 运行时。
 
@@ -222,22 +267,24 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
    sudo apt-get remove --purge iotedge
    ```
 
-删除在设备上创建的容器。 
+删除 IoT Edge 运行时以后，已创建的容器会被停止，但仍存在于设备上。 查看所有容器。
 
    ```bash
-   sudo docker rm -f $(sudo docker ps -aq)
+   sudo docker ps -a
+   ```
+
+通过 IoT Edge 运行时删除在设备上创建的容器。 更改 tempSensor 容器的名称（如果使用了其他名称）。 
+
+   ```bash
+   sudo docker rm -f tempSensor
+   sudo docker rm -f edgeHub
+   sudo docker rm -f edgeAgent
    ```
 
 删除容器运行时。
 
    ```bash
    sudo apt-get remove --purge moby
-   ```
-
-如果不再需要所创建的 Azure 资源，则可使用以下命令删除已创建的资源组及其关联的任何资源：
-
-   ```azurecli-interactive
-   az group delete --name TestResources
    ```
 
 ## <a name="next-steps"></a>后续步骤

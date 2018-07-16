@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/16/2018
-ms.author: khdang
+ms.date: 06/29/2018
+ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62555d3ba3513ce7183e24506530edcf78368247
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d7d00d6236b601d145be03e6086bec2d72faafcd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798621"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344931"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -52,6 +52,13 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
+* 添加了流式故障转移支持。
+* 添加了对自定义元数据的支持。
+* 改进了会话处理逻辑。
+* 修复了分区键范围缓存中的 bug。
+* 修复了直接模式下的 NPE bug。
 
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
 * 添加了对唯一索引的支持。
@@ -150,7 +157,7 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 * 已弃用基于 IPartitionResolver 的自定义分区代码。 请使用分区集合来提高存储和吞吐量。
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* 对限制添加了重试策略支持。  
+* 添加了对速率限制的重试策略支持。  
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * 对文档添加了生存时间 (TTL) 支持。
@@ -198,6 +205,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.16.2](#1.16.2) |2018 年 6 月 29日 |--- |
 | [1.16.1](#1.16.1) |2018 年 5 月 16日 |--- |
 | [1.16.0](#1.16.0) |2018 年 3 月 15 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 11 月 14 日 |--- |

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 531aeaacf0bd70521d70afb45d141fc3296ebb04
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: a302cdcf94baa869e55262c4cd380fc05bf64299
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058108"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461599"
 ---
 # <a name="tutorial-automate-image-builds-on-base-image-update-with-azure-container-registry-build"></a>教程：使用 Azure 容器注册表生成在基础映像更新时自动化映像生成
 
@@ -33,7 +33,7 @@ ACR 生成支持在容器基础映像更新时自动化的生成执行，例如�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果想本地使用 Azure CLI，则必须已安装 Azure CLI 版本 2.0.32 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0][azure-cli]。
+如果想本地使用 Azure CLI，则必须已安装 Azure CLI 版本 2.0.32 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI][azure-cli]。
 
 ## <a name="prerequisites"></a>先决条件
 

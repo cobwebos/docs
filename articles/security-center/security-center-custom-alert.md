@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2018
+ms.date: 06/29/2018
 ms.author: terrylan
-ms.openlocfilehash: f950b6fef575e9dc2d637c17ba40b6f504d1f227
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 326b07a18b07f15850e0283ad51a05b42c1ef0ab
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284771"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341307"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure 安全中心的自定义警报规则（预览版）
 本文档介绍了如何在 Azure 安全中心创建自定义警报规则。
@@ -31,7 +31,7 @@ ms.locfileid: "36284771"
 可以使用安全中心的自定义警报规则，根据从环境中收集到的数据定义新的安全警报。 可以先创建查询，再将这些查询的结果用作自定义规则的条件，在符合该条件的情况下执行规则。 可以使用计算机安全事件、合作伙伴的安全解决方案日志或者通过 API 引入的数据来创建自定义查询。
 
 > [!NOTE]
-> 需要在选择用来存储自定义警报的工作区中具有写入权限。
+> 安全中心的[调查功能](security-center-investigation.md)不支持自定义警报。
 >
 >
 
@@ -52,7 +52,14 @@ ms.locfileid: "36284771"
 5.  在“说明”字段中根据该规则的目的键入简要说明。
 6.  在“严重性”字段中根据需要选择严重级别（高、中、低）。
 7.  在“订阅”字段中选择此规则适用的订阅。
-8.  在“工作区”字段中选择要使用此规则进行监视的工作区，并在“搜索查询”字段中选择要用于获取结果的查询。 需要在选择用来存储自定义警报的工作区中具有写入权限。 查询的结果触发警报。 请注意，键入有效查询时，会在以下字段的右角显示绿色复选标记：
+8.  在“工作区”字段中选择要使用此规则进行监视的工作区，并在“搜索查询”字段中选择要用于获取结果的查询。
+
+    > [!NOTE]
+    > 需要在选择用来存储自定义警报的工作区中具有写入权限。
+    >
+    >
+
+    查询的结果触发警报。 请注意，键入有效查询时，会在以下字段的右角显示绿色复选标记：
 
     ![查询](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
 

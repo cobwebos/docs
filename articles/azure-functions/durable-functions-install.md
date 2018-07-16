@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4dd4bbb9c382b772f8f60b259844e7e471ec73e3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6ed8265a0b1a014ad15a6bb42fabb6003fb6a775
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762347"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37343151"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>安装 Durable Functions 扩展和示例 (Azure Functions)
 
@@ -49,7 +49,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 按照与从示例开始相同的说明执行操作，但请执行以下步骤而非下载 *.zip* 文件：
 
 1. 创建一个 Function App 项目。
-2. 使用“管理 NuGet 包”搜索以下 NuGet 包引用并将其添加到项目：Microsoft.Azure.WebJobs.Extensions.DurableTask v1.4.0（请选中“包括预发行版”来搜索此包）
+2. 使用“管理 NuGet 包”搜索以下 NuGet 包引用并将其添加到项目：Microsoft.Azure.WebJobs.Extensions.DurableTask v1.5.0
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -79,7 +79,7 @@ Visual Studio Code 提供一种涵盖所有主要平台（Windows、macOS 和 Li
 3. 在命令提示/终端窗口中运行以下命令，安装 Azure Functions Durable Extension：
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
 4. 在命令提示/终端窗口中运行以下命令，安装 Azure Functions Twilio Extension：
 
@@ -101,7 +101,7 @@ Visual Studio Code 提供一种涵盖所有主要平台（Windows、macOS 和 Li
 3. 在命令提示/终端窗口中运行以下命令，安装 Azure Functions Durable Extension：
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
 4. 在命令提示/终端窗口中运行以下命令，还原 npm 包：
     
@@ -122,7 +122,7 @@ Visual Studio Code 提供一种涵盖所有主要平台（Windows、macOS 和 Li
 2. 在命令提示/终端窗口中运行以下命令，安装 Azure Functions Durable Extension：
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
 3. 运行以下命令创建函数应用项目：
 

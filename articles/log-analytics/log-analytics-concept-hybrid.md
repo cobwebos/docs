@@ -3,7 +3,7 @@ title: 使用 Azure Log Analytics 收集环境中的数据 | Microsoft Docs
 description: 本主题有助于了解如何使用 Log Analytics 收集数据并监视托管在本地或其他云环境中的计算机。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 5bf1e12c958fef0cb20eaad8cece8cadb380c196
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.component: na
+ms.openlocfilehash: a13c83fc0d35be1aec87cb5f2d2b19b0bf27f1bf
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235934"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133266"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>使用 Log Analytics 从环境中的计算机收集数据
 
@@ -91,12 +92,12 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS �
 |user | 用于代理身份验证的可选用户名 |
 |password | 用于代理身份验证的可选密码 |
 |proxyhost | 代理服务器/OMS 网关的地址或 FQDN |
-|端口 | 代理服务器/OMS 网关的可选端口号 |
+|port | 代理服务器/OMS 网关的可选端口号 |
 
 例如： `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> 如果密码中使用了特殊字符（如“@”），则会收到代理连接错误，因为值解析不正确。  若要解决此问题，请使用 [URLDecode](https://www.urldecoder.org/) 等工具在 URL 中对密码进行编码。  
+> 如果密码中使用了特殊字符（如“\@”），则会收到代理连接错误，因为值解析不正确。  若要解决此问题，请使用 [URLDecode](https://www.urldecoder.org/) 等工具在 URL 中对密码进行编码。  
 
 ## <a name="install-and-configure-agent"></a>安装并配置代理 
 可根据要求使用不同的方法将本地计算机与 Log Analytics 直接连接。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。

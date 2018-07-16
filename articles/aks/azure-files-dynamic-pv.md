@@ -2,19 +2,19 @@
 title: 将 Azure 文件与 AKS 配合使用
 description: 将 Azure 磁盘与 AKS 配合使用
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/21/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d3e92902e711ba2b1664c6497ecb66f035ea9308
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 84500791887194884e1ec7d15ddfbc169ba22517
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597495"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098339"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>含 Azure 文件的持久卷
 
@@ -24,7 +24,7 @@ ms.locfileid: "34597495"
 
 ## <a name="create-storage-account"></a>创建存储帐户
 
-将 Azure 文件共享动态创建为 Kubernetes 卷时，可以使用任何存储帐户，只要该帐户在 AKS“节点”资源组中。 使用 [az resource show][az-resource-show] 命令获取资源组名称。
+将 Azure 文件共享动态创建为 Kubernetes 卷时，可以使用任何存储帐户，只要该帐户在 AKS“节点”资源组中。 这是通过为 AKS 群集预配资源而创建的具有 `MC_` 前缀的资源组。 使用 [az resource show][az-resource-show] 命令获取资源组名称。
 
 ```azurecli-interactive
 $ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
@@ -40,13 +40,15 @@ MC_myResourceGroup_myAKSCluster_eastus
 az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
 ```
 
+> Azure 文件目前仅使用标准存储。 如果使用高级存储，卷将预配失败。
+
 ## <a name="create-storage-class"></a>创建存储类
 
 存储类用于定义如何创建 Azure 文件共享。 可在此类中指定特定的存储帐户。 如果未指定存储帐户，必须指定 `skuName` 和 `location`，并评估关联的资源组中的所有存储帐户的匹配度。
 
 有关 Azure 文件的 Kubernetes 存储类的详细信息，请参阅 [Kubernetes 存储类][kubernetes-storage-classes]。
 
-创建名为 `azure-file-sc.yaml` 的文件，并将其复制到以下清单中。 将 `storageAccount` 更新为目标存储帐户的名称。
+创建名为 `azure-file-sc.yaml` 的文件，并将其复制到以下清单中。 将 `storageAccount` 更新为目标存储帐户的名称。 有关 `mountOptions` 的详细信息，请参阅[装载选项]部分。
 
 ```yaml
 kind: StorageClass
@@ -54,8 +56,13 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: azurefile
 provisioner: kubernetes.io/azure-file
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
 parameters:
-  storageAccount: mystorageaccount
+  skuName: Standard_LRS
 ```
 
 使用 [kubectl apply][kubectl-apply] 命令创建存储类。
@@ -206,3 +213,4 @@ spec:
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
 [az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
+[mount-options]: #mount-options

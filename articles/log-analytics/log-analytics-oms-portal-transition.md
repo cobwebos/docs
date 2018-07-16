@@ -10,15 +10,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: bwren
-ms.openlocfilehash: 5719dc3719739fb561626e307ee295729752c1fa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.component: na
+ms.openlocfilehash: e47e8cbd209ea34317ca9b176a2c4b0fef10a2b2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297747"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133291"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 感谢大家使用 OMS 门户。 你们的支持让我们深受鼓舞，我们将在监视和管理服务上持续投入大量资金和精力。 客户不断地反映，他们需要通过单个用户体验来监视和管理本地与 Azure 工作负荷。 你们也许知道，Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功能，例如，为固定资源提供仪表板、为查找资源提供智能搜索，以及为资源管理提供标记。 用于整合和简化监视与管理工作流，我们已开始将 OMS 门户功能添加到 Azure 门户。 我们很高兴地宣布，OMS 门户的大部分功能现已并入 Azure 门户。 事实上，某些新功能（例如流量管理器）只在 Azure 门户中提供。 两个门户的功能差距不大，最有影响的方面是五个解决方案仍在转移到 Azure 门户。 如果你不使用这些功能，使用 Azure 门户就能完成在 OMS 门户中所能完成的任何工作，而且 Azure 门户的功能更强大。 如果你尚未使用 Azure 门户，我们建议立即开始使用！ 
@@ -94,7 +95,7 @@ OMS 移动应用将随 OMS 门户一起淘汰。 无需使用 OMS 移动应用�
 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure 网络安全组分析
-[Azure 网络安全组分析解决方案](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics)将被最近推出的[流量分析](../network-watcher/traffic-analytics.md)取代。在流量分析中可以洞察云网络上的用户和应用程序活动。 流量分析可帮助你审核组织的网络活动、保护应用程序和数据、优化工作负荷性能和保持符合性。 
+[Azure 网络安全组分析解决方案](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics)将被最近推出的[流量分析](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)取代。在流量分析中可以洞察云网络上的用户和应用程序活动。 流量分析可帮助你审核组织的网络活动、保护应用程序和数据、优化工作负荷性能和保持符合性。 
 
 此解决方案分析 NSG 流日志，并提供以下项目的见解。
 
@@ -105,7 +106,7 @@ OMS 移动应用将随 OMS 门户一起淘汰。 无需使用 OMS 移动应用�
 - 安全性，包括恶意流量、向 Internet 开放的端口、尝试访问 Internet 的应用程序或 VM。
 - 容量利用率，帮助消除过度预配或利用不足的问题。
 
-可以继续依赖使用诊断设置将 NSG 日志发送到 Log Analytics，使现有的已保存搜索、警报和仪表板可继续工作。 在收到进一步的通告之前，已安装该解决方案的客户可以继续使用它。 从 6 月 20 日开始，NSG 解决方案将从市场中删除，并通过社区以 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights)的形式提供。
+可以继续依赖使用诊断设置将 NSG 日志发送到 Log Analytics，使现有的已保存搜索、警报和仪表板可继续工作。 在收到进一步的通告之前，已安装该解决方案的客户可以继续使用它。 从 6 月 20 日开始，“网络安全组分析”解决方案将从市场中删除，并通过社区以 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights)的形式提供。
 
 ## <a name="next-steps"></a>后续步骤
 - 有关从 OMS 门户转移到 Azure 门户的指导，请参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](log-analytics-oms-portal-faq.md)。

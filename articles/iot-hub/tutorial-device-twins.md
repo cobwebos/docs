@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/14/2018
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 42be14569215af7ee98a540c2a86cef2b2a028e4
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 808cfd1f4d47f49be60c3f45278d2334ba720c49
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033555"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865176"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -103,7 +103,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 若要查看接收所需属性的模拟设备示例代码，请导航到下载的示例 Node.js 项目中的 **iot-hub/Tutorials/DeviceTwins** 文件夹。 然后在文本编辑器中打开 SimulatedDevice.js 文件。
 
-以下部分描述了在模拟设备上运行的、对发自后端应用程序的所需属性更改做出响应的代码：
+以下部分描述了在模拟设备上运行的、对发送自后端应用程序的所需属性更改做出响应的代码：
 
 ### <a name="retrieve-the-device-twin-object"></a>检索设备孪生对象
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
+ms.date: 06/28/2018
 ms.author: mikejo
-ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2ff2a619dabd7dfabf89361172557efa4884ba12
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292534"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110481"
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>为 Azure 云服务和虚拟机设置诊断
 需要对 Azure 云服务或虚拟机进行故障排除时，可使用 Visual Studio 更轻松地设置 Azure 诊断。 诊断可以在运行云服务的虚拟机和虚拟机实例上捕获系统数据和日志记录数据。 诊断数据传输到所选的存储帐户。 有关 Azure 中诊断日志记录的详细信息，请参阅[为 Azure 应用服务中的 Web 应用启用诊断日志记录](app-service/web-sites-enable-diagnostic-log.md)。
@@ -87,7 +87,11 @@ ms.locfileid: "30292534"
    * 如果选择“你的订阅”，则可选择要使用的 Azure 订阅，然后输入帐户名称。 若要管理 Azure 订阅，请选择“管理帐户”。
    * 如果选择“手动输入的凭据”选项，则请输入要使用的 Azure 帐户的名称和密钥。
 5. 若要查看“诊断配置”对话框，请选择“配置”。 每个选项卡（“常规”和“日志目录”除外）都表示可以收集的诊断数据源。 默认的“常规”选项卡提供以下诊断数据收集选项：“仅限错误”、“所有信息”和“自定义计划”。 默认的“仅限错误”选项占用最少量的存储，因为该选项不传输警告或跟踪消息。 “所有信息”选项传输的信息最多，占用最多的存储，因此是成本最高的选项。
-   
+
+   > [!NOTE]
+   > “磁盘配额(以 MB 为单位)”支持的最小大小为 4GB。 但是，如果要收集内存转储，请将此限制提高到更高值（如 10GB）。
+   >
+  
     ![启用 Azure 诊断和配置](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 6. 对于此示例，请选择“自定义计划”选项，以便自定义所收集的数据。
 7. 在“磁盘配额(MB)”框中，可以设置需要在存储帐户中为诊断数据分配的空间量。 可以更改或接受默认值。
@@ -120,7 +124,7 @@ ms.locfileid: "30292534"
    
     ![启用 Azure 诊断和配置](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
    
-    默认选项卡“常规”提供了以下诊断数据收集选项：“仅限错误”、“所有信息”和“自定义计划”。 默认选项“仅限错误”占用最少量的存储空间，因为该选项不传输警告或跟踪消息。 “所有信息”选项传输的信息最多，因此就存储来说是成本最高的选项。
+    默认选项卡“常规”提供以下诊断数据收集选项：“仅限错误”、“所有信息”和“自定义计划”。 默认选项“仅限错误”占用最少量的存储空间，因为该选项不传输警告或跟踪消息。 “所有信息”选项传输的信息最多，因此就存储来说是成本最高的选项。
 7. 对于此示例，可以选择“自定义计划”选项，以便自定义所收集的数据。
 8. “磁盘配额(MB)”框指定要在存储帐户中为诊断数据分配的空间量。 可以根据需要更改默认值。
 9. 在要收集的诊断数据的每个选项卡上，选中其“启用\<日志类型\>的传输”复选框。
@@ -217,7 +221,7 @@ ASP.NET 通过 [System.Diagnostics.aspx](https://msdn.microsoft.com/library/syst
     在 Cloud Explorer 或服务器资源管理器中，打开与部署相关联的存储帐户。
 3. 在表查看器中打开诊断表，并查看所收集的数据。 对于 IIS 日志和自定义日志，可以打开 Blob 容器。 下表列出的表或 Blob 容器包含不同日志文件的数据。 除了该日志文件的数据，表条目还包含 EventTickCount、DeploymentId、Role 和 RoleInstance，有助于确定数据由哪个虚拟机和角色生成，以及生成的时间。 
    
-   | 诊断数据 | 说明 | Location |
+   | 诊断数据 | 说明 | 位置 |
    | --- | --- | --- |
    | 应用程序日志 |代码通过调用 System.Diagnostics.Trace 类的方法而生成的日志。 |WADLogsTable |
    | 事件日志 |虚拟机上 Windows 事件日志中的数据。 Windows 在这些日志中存储信息，但应用程序和服务也使用这些日志来报告错误或记录信息。 |WADWindowsEventLogsTable |

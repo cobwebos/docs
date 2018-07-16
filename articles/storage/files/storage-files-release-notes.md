@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 946311c42088d3a5840eb35387c8a552d3d5d70f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c1ca8146db8c5d67be53ba4e30d8ab0218aca104
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735638"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128752"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Azure 文件同步代理（预览版）发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,7 +25,8 @@ ms.locfileid: "34735638"
 
 | 里程碑 | 代理版本号 | 发行日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| 刷新 2 | 3.0.12.0 | 2018 年 5 月 22 日 | 支持（建议的版本） |
+| 6 月更新汇总 | 3.0.13.0 | 2018 年 6 月 29日 | 支持（建议的版本） |
+| 刷新 2 | 3.0.12.0 | 2018 年 5 月 22 日 | 支持 |
 | 4 月更新汇总 | 2.3.0.0 | 2018 年 5 月 8 日 | 支持 |
 | 3 月更新汇总 | 2.2.0.0 | 2018 年 3 月 12 日 | 支持 |
 | 2 月更新汇总 | 2.1.0.0 | 2018 年 2 月 28 日 | 支持 |
@@ -37,6 +38,12 @@ ms.locfileid: "34735638"
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-30130"></a>代理版本 3.0.13.0
+以下发行说明适用于 Azure 文件同步代理版本 3.0.13.0（2018 年 6 月 29 日发布）。 这些说明附加到针对版本 3.0.12.0 列出的发行说明。
+
+此版本包括以下修复：
+- 如果服务器上的服务器终结点位置中存在重新分析点，则将服务器添加到现有同步组时，同步将失败。
 
 ## <a name="agent-version-30120"></a>代理版本 3.0.12.0
 以下发行说明适用于 Azure 文件同步代理版本 3.0.12.0（2018 年 5 月 22 日发布）。

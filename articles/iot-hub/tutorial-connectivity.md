@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 47d52fa412adf3f8e7f0c3c4d4afaf9009b4783e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dc857760cf0d3fa2e146f22196b7bc36d119df5f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651289"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869555"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试 IoT 中心的连接性
 
@@ -22,7 +22,7 @@ ms.locfileid: "34651289"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 > [!div class="checklist"]
 > * 检查设备身份验证
 > * 检查设备到云的连接性
@@ -49,7 +49,7 @@ az extension add --name azure-cli-iot-ext
 node --version
 ```
 
-从 https://github.com/Azure-Samples/iot-hub-tutorials-node/archive/master.zip 下载示例设备模拟器 Node.js 项目并提取 ZIP 存档。
+从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下载示例设备模拟器 Node.js 项目并提取 ZIP 存档。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -123,6 +123,9 @@ node SimulatedDevice-1.js "{your device connection string}"
 如果设备使用某个 IoT 中心设备 SDK，SDK 库代码会生成用于通过中心进行身份验证的 SAS 令牌。 可以通过中心名称、设备名称和设备密钥生成 SAS 令牌。
 
 在某些情况下，例如在云协议网关中或使用自定义身份验证方案的情况下，可能需要自行生成 SAS 令牌。 若要排查 SAS 生成代码的问题，必须能够生成可以在测试过程中使用的已知良好的 SAS 令牌。
+
+> [!NOTE]
+> SimulatedDevice-2.js 示例包括使用 SDK 和不使用 SDK 生成 SAS 令牌的示例。
 
 若要使用 CLI 生成已知良好的 SAS 令牌，请运行以下命令：
 

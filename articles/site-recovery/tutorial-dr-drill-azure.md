@@ -4,14 +4,14 @@ description: 了解使用 Azure Site Recovery 对从 Azure 本地计算机运行
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/03/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: fa66e47715940584259e5cf555f3f6cd6f07e267
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: af8062fc0134975542c8a5ec420c790f33996154
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437206"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920165"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 
@@ -20,10 +20,10 @@ ms.locfileid: "37437206"
 这是本系列的第四个教程，演示如何为本地 VMware VM 或 Hyper-V VM 设置到 Azure 的灾难恢复。
 
 本教程假定你已完成头三个教程： 
-    - 在[第一个教程](tutorial-prepare-azure.md)中，我们已准备了用于 VMware 或 Hyper-V 灾难恢复的 [Azure 组件](tutorial-prepare-azure.md)。
-    - 在第二个教程中，我们准备了用于 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 或 [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 灾难恢复的本地组件。
-    - 在第三个教程中，我们为本地 [VMware VM](vmware-azure-tutorial.md)、[包含 System Center VMM 的 Hyper-V VM](hyper-v-vmm-azure-tutorial.md) 或[不包含 VMM 的 Hyper-V VM](hyper-v-azure-tutorial.md) 设置并启用了复制。
-- 教程旨在向你展示方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 所有教程都使用最简单的设置来设置 Site Recovery，在适当的情况下使用默认值。 如果想要更详细地了解测试故障转移步骤，请阅读[操作方法指南](site-recovery-test-failover-to-azure.md)。
+    - 在[第一个教程](tutorial-prepare-azure.md)中，我们设置了 VMware 灾难恢复所需的 Azure 组件。
+    - 在[第二个教程](vmware-azure-tutorial-prepare-on-premises.md)中，我们准备了用于灾难恢复的本地组件，并查看了先决条件。
+    - 在[第三个教程](vmware-azure-tutorial.md)中，我们为本地 VMware VM 设置并启用了复制。
+    - 教程旨在介绍**方案的最简单部署路径**。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 如果想要更详细地了解测试故障转移步骤，请阅读[操作方法指南](site-recovery-test-failover-to-azure.md)。
 
 本教程介绍如何执行下列操作：
 

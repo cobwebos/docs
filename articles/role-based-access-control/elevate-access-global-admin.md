@@ -9,29 +9,29 @@ editor: bagovind
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/29/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e1e46d5fb786b09a4c006b61f52b3ac99aafd555
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0abf0a5971435fc3842a93e79d39468cba5c74da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266493"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445205"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>为 Azure Active Directory 中的全局管理员提升访问权限
 
-如果你是 Azure Active Directory (Azure AD) 中的[全局管理员](../active-directory/active-directory-assign-admin-roles-azure-portal.md#global-administrator)，则有时可能需要执行以下操作：
+如果你是 Azure Active Directory (Azure AD) 中的[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator)，则有时可能需要执行以下操作：
 
 - 在用户失去访问权限时重新获取对 Azure 订阅的访问权限
 - 授予其他用户或自己对 Azure 订阅的访问权限
 - 查看组织中的所有 Azure 订阅
 - 允许自动化应用（例如发票或审计应用）访问所有 Azure 订阅
 
-默认情况下，Azure AD 管理员角色和 Azure 基于角色的访问控制 (RBAC) 角色不会跨越 Azure AD 和 Azure。 但是，如果你是 Azure AD 中的全局管理员，则可提升访问权限以管理 Azure 订阅和管理群组。 如果提升访问权限，你将被授予特定租户的所有订阅中的[用户访问管理员](built-in-roles.md#user-access-administrator)角色（RBAC 角色）。 借助用户访问管理员角色，你可授予其他用户对根范围 (`/`) 内的 Azure 资源的访问权限。
+默认情况下，Azure AD 管理员角色和 Azure 基于角色的访问控制 (RBAC) 角色不会跨越 Azure AD 和 Azure。 但是，如果你是 Azure AD 中的全局管理员，则可提升访问权限以管理 Azure 订阅和管理组。 如果提升访问权限，你将被授予特定租户的所有订阅中的[用户访问管理员](built-in-roles.md#user-access-administrator)角色（RBAC 角色）。 借助用户访问管理员角色，你可授予其他用户对根范围 (`/`) 内的 Azure 资源的访问权限。
 
 此提升应该是临时的，并且只能在需要时执行。
 
@@ -49,7 +49,7 @@ ms.locfileid: "35266493"
 
    ![全局管理员可管理 Azure 订阅和管理组 - 屏幕截图](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   如果将开关设置为“是”，全局管理员帐户（当前登录用户）会在根范围 (`/`) 内添加到 Azure RBAC 的用户访问管理员角色，此操作可授予你查看和报告与 Azure AD 租户关联的所有 Azure 订阅的访问权限。
+   如果将开关设置为“是”，全局管理员帐户（当前登录用户）会在根范围 (`/`) 内添加到 Azure RBAC 的用户访问管理员角色，此角色可授予你查看和报告与 Azure AD 租户关联的所有 Azure 订阅的访问权限。
 
    如果将开关设置为“否”，全局管理员帐户（当前登录用户）会从 Azure RBAC 的用户访问管理员角色中删除。 你无法看到与 Azure AD 租户关联的所有 Azure 订阅，并且只能查看和管理已被授予访问权限的 Azure 订阅。
 
@@ -220,4 +220,5 @@ Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 REST 进行基于角色的访问控制](role-assignments-rest.md)
-- [管理访问权限分配](role-assignments-users.md)
+- [使用 Privileged Identity Management 管理对 Azure 资源的访问权限](pim-azure-resource.md)
+- [使用条件访问管理对 Azure 管理的访问权限](conditional-access-azure-management.md)

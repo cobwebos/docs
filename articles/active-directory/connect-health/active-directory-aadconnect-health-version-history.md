@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 3e3cebd47a259c7c297d6df0eaf76a350111f2e3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8907619b802d93cee4463a80155f38ce9030948f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319259"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129665"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。
@@ -29,6 +29,13 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 * 用于同步的 Azure AD Connect Health - 从门户诊断并修正重复的属性同步错误 
 
 **代理更新：** 
+*  适用于 AD DS 的 Azure AD Connect Health 代理（3.1.7.0 版）    
+   1. 使用 .NET Framework KB 版本监视代理的高 CPU 问题的修补程序
+
+*   适用于 AD FS 的 Azure AD Connect Health 代理（3.1.7.0 版）  
+   1. 使用 .NET Framework KB 版本监视代理的高 CPU 问题的修补程序  
+   2. 测试结果在 ADFS Server 2016 辅助服务器上修复
+   
 *   适用于 AD FS 的 Azure AD Connect Health 代理（3.1.2.0 版）  
    1. 代理内存管理和专用于版本 3.0.244.0 的相关警报修补程序
 

@@ -1,6 +1,6 @@
 ---
-title: 远程监视解决方案的体系结构 - Azure | Microsoft Docs
-description: 有关远程监视解决方案加速器的体系结构的演练。
+title: 远程监视解决方案加速器概述 - Azure | Microsoft Docs
+description: 远程监视解决方案加速器概述。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,14 +8,14 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: af7feb6c95a7de1d2211378c5eb71f09907221ff
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: a8b5d9e3917c854cb255a35d3bbc901bcce52c24
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757427"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084519"
 ---
-# <a name="remote-monitoring-solution-accelerator-architecture"></a>远程监视解决方案加速器体系结构
+# <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
 远程监视[解决方案加速器](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)针对远程位置中的多台计算机实现端到端监视解决方案。 该解决方案结合了关键 Azure 服务来提供业务方案的通用实现。 可将其用作自己实现的起点，并可以根据特定的业务要求[自定义](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)该解决方案。
 

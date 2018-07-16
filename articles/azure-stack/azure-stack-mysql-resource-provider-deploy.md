@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: e4af3dc8aa7a656fd0020285c3f73ce414ba039c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 645fa89bede1311215f1d67c64a2388e4de5c1b1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38305890"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044877"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>部署 Azure Stack 上的 MySQL 资源提供程序
 
@@ -30,23 +30,30 @@ ms.locfileid: "38305890"
 有几个系统必备组件，需要准备就绪后，才能部署 Azure Stack MySQL 资源提供程序。 若要满足这些要求，完成这篇文章中可以访问特权终结点 VM 的计算机上的步骤。
 
 * 向 Azure [注册 Azure Stack](.\azure-stack-registration.md)（如果尚未执行此操作），以便可以下载 Azure 市场项。
-* 必须安装的 Azure 和 Azure Stack PowerShell 模块上系统是否将运行此安装。 该系统必须是.NET 运行时的最新版本的 Windows 10 或 Windows Server 2016 映像。 请参阅[安装适用于 Azure Stack PowerShell](.\azure-stack-powershell-install.md)。
+* 您必须要运行此安装在系统上安装的 Azure 和 Azure Stack PowerShell 模块。 该系统必须是.NET 运行时的最新版本的 Windows 10 或 Windows Server 2016 映像。 请参阅[安装适用于 Azure Stack PowerShell](.\azure-stack-powershell-install.md)。
 * 下载 **Windows Server 2016 Datacenter - Server Core** 映像，将所需的 Windows Server 核心 VM 添加到 Azure Stack 市场。
-
-  >[!NOTE]
-  >如果你需要安装 Windows 更新，您可以放置一个。MSU 本地依赖项路径中的包。 如果多个。找到 MSU 文件中，MySQL 资源提供程序安装将失败。
 
 * 下载 MySQL 资源提供程序二进制文件，然后运行自解压程序，将内容提取到临时目录。
 
   >[!NOTE]
   >若要部署 MySQL 提供程序不具备 Internet 访问的系统上，复制[mysql-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi)到本地路径。 提供使用路径名称**DependencyFilesLocalPath**参数。
 
-* 资源提供程序有一个相应的 Azure Stack 最低内部版本。 请务必下载适用于运行中 Azure Stack 版本的正确二进制文件。
+* 资源提供程序有一个相应的 Azure Stack 最低内部版本。 请确保下载正确版本的正在运行的 Azure Stack 的二进制文件：
 
     | Azure Stack 版本 | MySQL RP 版本|
     | --- | --- |
     | 版本 1804 (1.0.180513.1)|[MySQL RP 版本 1.1.24.0](https://aka.ms/azurestackmysqlrp1804) |
-    | 版本 1802 (1.0.180302.1) | [MySQL RP 版本 1.1.18.0](https://aka.ms/azurestackmysqlrp1802) |
+    | 版本 1802 (1.0.180302.1) | [MySQL RP 版本 1.1.18.0](https://aka.ms/azurestackmysqlrp1802)|
+    |     |     |
+
+- 请确保满足数据中心集成先决条件：
+
+    |先决条件|参考|
+    |-----|-----|
+    |条件性 DNS 转发会正确设置。|[Azure Stack 数据中心集成-DNS](azure-stack-integrate-dns.md)|
+    |资源提供程序的入站的端口处于打开状态。|[Azure Stack 数据中心集成-发布终结点](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+    |PKI 证书使用者和 SAN 都正确设置。|[Azure Stack 部署必需 PKI 先决条件](azure-stack-pki-certs.md#mandatory-certificates)<br>[Azure Stack 部署 PaaS 证书先决条件](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |     |     |
 
 ### <a name="certificates"></a>证书
 
@@ -56,7 +63,7 @@ _仅适用于集成的系统安装_。 必须提供 [Azure Stack 部署 PKI 要�
 
 安装所有必备组件之后，运行**DeployMySqlProvider.ps1**脚本，以部署 MYSQL 资源提供程序。 DeployMySqlProvider.ps1 脚本提取作为你的 Azure Stack 版本下载 MySQL 资源提供程序二进制文件的一部分。
 
-若要部署 MySQL 资源提供程序，打开新的提升权限的 PowerShell 控制台窗口，并将更改为提取的 MySQL 资源提供程序二进制文件的目录。 我们建议使用新的 PowerShell 窗口，以避免已加载的 PowerShell 模块造成问题。
+若要部署 MySQL 资源提供程序，打开新的提升权限的 PowerShell 窗口 (而不是 PowerShell ISE) 并将更改为提取的 MySQL 资源提供程序二进制文件的目录。 我们建议使用新的 PowerShell 窗口，以避免已加载的 PowerShell 模块造成问题。
 
 运行**DeployMySqlProvider.ps1**脚本，完成以下任务：
 
@@ -65,8 +72,7 @@ _仅适用于集成的系统安装_。 必须提供 [Azure Stack 部署 PKI 要�
 * 发布用于部署宿主服务器的库包。
 * 部署使用 Windows Server 2016 core 映像下载，然后再安装 MySQL 资源提供程序的 VM。
 * 注册映射到资源提供程序 VM 的本地 DNS 记录。
-* 将资源提供程序注册到操作员和用户帐户的本地 Azure 资源管理器。
-* （可选）在资源提供程序安装期间安装单个 Windows Server 更新。
+* 注册资源提供程序与本地 Azure 资源管理器的操作员帐户。
 
 > [!NOTE]
 > MySQL 资源提供程序部署开始时，则**system.local.mysqladapter**创建资源组。 可能需要最多 75 分钟才能完成到此资源组所需的部署。

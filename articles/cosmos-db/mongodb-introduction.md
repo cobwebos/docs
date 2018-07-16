@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sngun
-ms.openlocfilehash: c10f1fdc7e373633298b083d1317f17cff3aa2b8
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 214dfe3e676d3b07cf688fa0f7dcaf11462edfe8
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796625"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930879"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB 简介：MongoDB API
 
@@ -26,7 +26,7 @@ ms.locfileid: "34796625"
 
 可将 Azure Cosmos DB 数据库用作针对 [MongoDB](https://docs.mongodb.com/manual/introduction/) 编写的应用的数据存储。 此功能意味着，通过使用现有[驱动程序](https://docs.mongodb.org/ecosystem/drivers/)，为 MongoDB 编写的应用程序现在可与 Azure Cosmos DB 进行通信，并可使用 Azure Cosmos DB 数据库而不是 MongoDB 数据库。 在许多情况下，只需更改连接字符串便可从使用 Azure Cosmos DB 切换到使用 MongoDB。 使用此功能，可以在 Azure 云中轻松生成和运行 MongoDB 全球分布式数据库应用程序（利用 Azure Cosmos DB 及其[行业领先的综合性 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)），并且可继续使用熟悉的技能和 MongoDB 工具。
 
-**MongoDB 兼容性**：可使用现有 MongoDB 专业知识、应用程序代码和工具，因为 Azure Cosmos DB 实现 MongoDB 3.4（版本 5）网络协议，并支持 [MongoDB 聚合管道](mongodb-feature-support.md#aggregation-pipeline)。 可使用 MongoDB 开发应用程序，并使用完全托管的全球分布式 Azure Cosmos DB 服务将其部署到生产环境。
+**MongoDB 兼容性**：可使用现有 MongoDB 专业知识、应用程序代码和工具，因为 Azure Cosmos DB 实现 MongoDB 网络协议。 可使用 MongoDB 开发应用程序，并使用完全托管的全球分布式 Azure Cosmos DB 服务将其部署到生产环境。 有关受支持版本的详细信息，请参阅 [MongoDB 协议支持](mongodb-feature-support.md#mongodb-protocol-support)。
 
 ## <a name="what-is-the-benefit-of-using-azure-cosmos-db-for-mongodb-applications"></a>将 Azure Cosmos DB 用于 MongoDB 应用程序的好处是什么？
 
@@ -36,7 +36,7 @@ ms.locfileid: "34796625"
 
 无需管理服务器：无需管理和缩放 MongoDB 数据库。 Azure Cosmos DB 是完全托管的服务，这意味着无需自己管理任何基础结构或虚拟机。 Azure Cosmos DB 在 30 多个 [Azure 区域](https://azure.microsoft.com/regions/services/)中可用。
 
-**可调整的一致性级别：** Azure Cosmos DB 当前实现了 MongoDB 3.4 版，其中具有两个一致性设置：强一致性和最终一致性。 由于 Azure Cosmos DB 是多 api，因此一致性设置在帐户级别适用，并由每个 API 控制一致性的实施。 在 MongoDB 3.6 以前，没有会话一致性的概念，因此如果将 MongoDB API 帐户设置为使用会话一致性，则使用 MongoDB API 时，该一致性会降级为最终一致性。 如果需要向某个 MongoDB API 帐户提供“读取自己的写入”保证，该帐户的默认一致性级别应设置为“强”或“有限过期”。 有关详细信息，请参阅[使用一致性级别最大化可用性和性能](consistency-levels.md)。
+**可调整的一致性级别：** 由于 Azure Cosmos DB 支持多模型 API，因此一致性设置在帐户级别适用，并由每个 API 控制一致性的实施。 在 MongoDB 3.6 以前，没有会话一致性的概念，因此如果将 MongoDB API 帐户设置为使用会话一致性，则使用 MongoDB API 时，该一致性会降级为最终一致性。 如果需要向某个 MongoDB API 帐户提供“读取自己的写入”保证，该帐户的默认一致性级别应设置为“强”或“有限过期”。 有关详细信息，请参阅[使用一致性级别最大化可用性和性能](consistency-levels.md)。
 
 | Azure Cosmos DB 的默认一致性级别 |   Mongo API (3.4) |
 |---|---|

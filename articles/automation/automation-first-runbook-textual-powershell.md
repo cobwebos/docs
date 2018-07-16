@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fe9d98b694b8c42f3342e615d92fae9824dca26
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2f5d2f3634545001dc6dc1419530223b5a1a85a3
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195142"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435785"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
 
@@ -88,13 +88,16 @@ ms.locfileid: "34195142"
 1. 通过单击 MyFirstRunbook-PowerShell 页上的“编辑”打开文本编辑器。
 2. 由于不再需要 **Write-Output** 行，因此请直接删除它。
 3. 键入（或者复制并粘贴）以下代码，对自动化运行方式帐户的身份验证进行处理：
-   
-   ```
+
+   ```powershell
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    ```
-   <br>
+
+   > [!IMPORTANT]
+   > **Add-AzureRmAccount** 和 **Login-AzureRmAccount** 现在是 **Connect-AzureRMAccount** 的别名。 如果 **Connect-AzureRMAccount** cmdlet 不存在，则可以使用 **Add-AzureRmAccount** 或 **Login-AzureRmAccount**，也可以将自动化帐户中的模块更新为最新版本。
+
 4. 单击“测试”窗格，以便测试 Runbook。
 5. 单击“启动”以启动测试  。 完成后，你会收到类似于以下内容的输出，显示帐户中的基本信息。 这可确认凭据有效。<br><br> ![身份验证](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 

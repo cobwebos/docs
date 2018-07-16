@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 2062ba20b09e8e42fd094fbff628f5e76b5ea00f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d234b34f7583441f496fb96d37166c5472cadb4c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225783"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 的集成
 
@@ -67,7 +67,7 @@ ms.locfileid: "36225783"
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
-    
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
@@ -101,7 +101,7 @@ ms.locfileid: "36225783"
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/riskware-tutorial/tutorial_riskware_samlbase.png)
 
 3. 在“Riskware 域和 URL”部分中，执行以下步骤：
@@ -113,7 +113,7 @@ ms.locfileid: "36225783"
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
     | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` | 
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：
@@ -121,10 +121,10 @@ ms.locfileid: "36225783"
     |--|--|
     | UAT| `https://riskcloud.net/uat` |
     | PROD| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` | 
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
-    > [!NOTE] 
+    > [!NOTE]
     > “登录 URL”值不是实际值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [Riskware 客户端支持团队](mailto:support@pansoftware.com.au)联系。
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
@@ -137,11 +137,11 @@ ms.locfileid: "36225783"
 
 6. 在“Riskware 配置”部分，单击“配置 Riskware”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
 
-    ![Riskware 配置](./media/riskware-tutorial/tutorial_riskware_configure.png) 
+    ![Riskware 配置](./media/riskware-tutorial/tutorial_riskware_configure.png)
 
 7. 在另一 Web 浏览器窗口中，以管理员身份登录到 Riskware 公司站点。
 
-8. 在右上角，单击“维护”打开维护页。 
+8. 在右上角，单击“维护”打开维护页。
 
     ![Riskware 配置 - 维护](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
@@ -159,16 +159,16 @@ ms.locfileid: "36225783"
 
     c. 在“说明”文本框中，键入类似于“AZURE Configuration for SSO”的说明。
 
-    d. 在“单一登录页”文本框中，粘贴从 Azure 门户中复制的“SAML 单一登录服务 URL”的值。
+    d. 在“单一登录页”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     e. 在“注销页”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    f. 在“发布窗体字段”文本框中，键入发布响应中的字段名称，其中包含类似于 SamlResponse 的 SAML
+    f. 在“发布表单字段”文本框中，键入“发布响应”中包含 SAML 的字段名称（如 SAMLResponse）
 
     g. 在“XML 标识标记名称”文本框中键入属性，其中包含 SAML 响应中的唯一标识符（如 NameID）。
 
     h. 在记事本中打开从 Azure 门户下载的**元数据 XML**，复制元数据文件中的证书，并将其粘贴到“证书”文本框中
-    
+
     i. 在“使用者 URL”文本框中，粘贴从支持团队获取的“回复 URL”值。
 
     j. 在“颁发者”文本框中，粘贴从支持团队获取的“标识符”值。
@@ -176,9 +176,9 @@ ms.locfileid: "36225783"
     > [!Note]
     > 若要获取这些值，请与 [Riskware 客户端支持团队](mailto:support@pansoftware.com.au)联系。
 
-    k. 选择“使用 POST”，将 SAML 请求作为 post 参数传递。
+    k. 选中“使用 POST”复选框。
 
-    l. 选择“使用 SAML 请求”，为发起的 SP 传递 SSO 允许 SAML 请求。
+    l. 选中“使用 SAML 请求”复选框。
 
     m. 单击“ **保存**”。
 
@@ -213,10 +213,10 @@ ms.locfileid: "36225783"
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 单击“创建”。
- 
+
 ### <a name="create-a-riskware-test-user"></a>创建 Riskware 测试用户
 
-为了使 Azure AD 用户能够登录到 Riskware，必须将其预配到 Riskware 中。 在 Riskware 中，预配属手动任务。
+要使 Azure AD 用户能够登录到 Riskware，必须将其预配到 Riskware 中。 在 Riskware 中，预配属手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
@@ -230,8 +230,8 @@ ms.locfileid: "36225783"
 
     ![Riskware 配置 - 人员](./media/riskware-tutorial/tutorial_riskware_people.png)
 
-4. 在“详细信息”选项卡中执行以下步骤：
-    
+4. 选择“详细信息”选项卡，并执行以下步骤：
+
     ![Riskware 配置 - 详细信息](./media/riskware-tutorial/tutorial_riskware_details.png)
 
     a. 选择“人员类型”，例如“员工”。
@@ -240,7 +240,7 @@ ms.locfileid: "36225783"
 
     c. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）。
 
-5. 在“安全”选项卡中，执行以下步骤：    
+5. 在“安全”选项卡中，执行以下步骤：
 
     ![Riskware 配置 - 安全性](./media/riskware-tutorial/tutorial_riskware_security.png)
 
@@ -254,8 +254,8 @@ ms.locfileid: "36225783"
 
     ![Riskware 配置 - 组织](./media/riskware-tutorial/tutorial_riskware_org.png)
 
-    a. 在“组织”部分下，为组织选择“第 1 级”组织。
-    
+    a. 选择作为 **Level1** 组织的选项。
+
     b. 在“人员的主要工作区”部分下的“位置”文本框中，键入自己的位置。
 
     c. 在“员工”部分下，选择“员工状态”，例如“休假”。
@@ -266,7 +266,7 @@ ms.locfileid: "36225783"
 
 在本部分，我们通过向 Britta Simon 授予 Riskware 的访问权限，使其能够使用 Azure 单一登录。
 
-![分配用户角色][200] 
+![分配用户角色][200]
 
 **若要将 Britta Simon 分配到 Riskware，请执行以下步骤：**
 

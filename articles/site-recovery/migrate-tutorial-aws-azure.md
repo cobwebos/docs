@@ -6,19 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0474ce532831e15738ec882dfdf451bc35d09cf
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ee38fe542ca6e2e4e1f8e09b54717d4390b453d0
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737606"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922651"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
-本教程介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 虚拟机 (VM) 迁移到 Azure VM。 将 AWS EC2 实例迁移到 Azure 时，VM 会被视作本地物理计算机。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 虚拟机 (VM) 迁移到 Azure VM。 将 AWS EC2 实例迁移到 Azure 时，VM 会被视作本地物理计算机。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 验证先决条件
@@ -29,15 +29,12 @@ ms.locfileid: "34737606"
 > * 测试故障转移，确保一切正常运行
 > * 运行到 Azure 的一次性故障转移
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="prerequisites"></a>先决条件
 - 确保要迁移的 VM 运行的是支持的 OS 版本。 支持的版本包括： 
     - Windows Server 2016
-    - Windows Server 2012 R2
-    - Windows Server 2012
-    - 64 位版本的 Windows Server 2008 R2 SP1 或更高版本
-    - Red Hat Enterprise Linux 6.7（仅限 HVM 虚拟化实例），使用 Citrix 半虚拟化驱动程序或 AWS 半虚拟化驱动程序。 不支持运行 Red Hat 半虚拟化驱动程序的实例。
+    - Red Hat Enterprise Linux 6.7（仅限 HVM 虚拟化实例），且必须仅使用 Citrix PV 或 AWS PV 驱动程序。 **不**支持运行 Red Hat PV 驱动程序的实例。
 
 - 必须在要复制的每个 VM 上安装移动服务。 
 
@@ -144,7 +141,7 @@ ms.locfileid: "34737606"
 在本部分，请输入在本教程前面的[准备 Azure 资源](#prepare-azure-resources)中创建的资源的相关信息。
 
 1. 在“订阅”中，选择用于[准备 Azure](tutorial-prepare-azure.md)教程的 Azure 订阅。
-2. 选择 **Resource Manager** 作为部署模型。
+2. 选择“资源管理器”作为部署模型。
 3. Site Recovery 会验证你是否有一个或多个兼容的 Azure 存储帐户和网络。 这些应该是在本教程前面的[准备 Azure 资源](#prepare-azure-resources)中创建的资源。
 4. 完成后，请选择“确定”。
 
@@ -230,7 +227,7 @@ ms.locfileid: "34737606"
 3. 在“测试故障转移”中，选择 Azure VM 在故障转移之后要连接到的目标 Azure 网络。 它应该是在[准备 Azure 资源](#prepare-azure-resources)中创建的网络。
 4. 选择“确定”，开始故障转移。 若要跟踪进度，请选择要查看其属性的 VM。 也可以在保管库的相应页面上选择“测试故障转移”作业。 为此，请选择“监视和报告” > “作业” >  “Site Recovery 作业”。
 5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户中。 若要查看该 VM，请选择“虚拟机”。 请确保 VM 的大小适当、已连接到正确的网络，并且正在运行。
-6. 现在应该能够连接到 Azure 中复制的虚拟机。
+6. 现在应该能够连接到 Azure 中复制的 VM。
 7. 若要删除在测试故障转移期间创建的 Azure VM，请在恢复计划中选择“清理测试故障转移”。 在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。
 
 在某些情况下，故障转移需要进行额外的处理。 完成处理需要 8 到 10 分钟的时间。

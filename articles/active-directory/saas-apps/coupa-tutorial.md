@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 06/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 3c3fde3aefe02dd3919378d39afeff7cded763fc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 36c7bfeece12fe2bb2738e50de03ba2c8fc07bfa
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215556"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111940"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>教程：Azure Active Directory 与 Coupa 的集成
 
@@ -60,14 +60,14 @@ ms.locfileid: "36215556"
 
 **若要从库中添加 Coupa，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
     ![“Azure Active Directory”按钮][1]
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
-    
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
@@ -103,21 +103,33 @@ ms.locfileid: "36215556"
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/coupa-tutorial/tutorial_coupa_samlbase.png)
 
 3. 在“Coupa 域和 URL”部分中，执行以下步骤：
 
     ![Coupa 域和 URL 单一登录信息](./media/coupa-tutorial/tutorial_coupa_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`http://<companyname>.Coupa.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.coupahost.com`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`<companyname>.coupahost.com`
+    > [!NOTE]
+    > 登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [Coupa 客户端支持团队](https://success.coupa.com/Support/Contact_Us?)获取此值。
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.coupahost.com/sp/ACS.saml2`
+    b. 在“标识符”文本框中，键入 URL：
 
-    > [!NOTE] 
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Coupa 客户端支持团队](https://success.coupa.com/Support/Contact_Us?)获取这些值。 从元数据中获取回复 URL 的值（稍后在本教程中说明）。
+    | 环境  | 代码 |
+    |:-------------|----|
+    | 沙盒 | `devsso35.coupahost.com`|
+    | 生产 | `prdsso40.coupahost.com`|
+    | | |
+
+    c. 在“回复 URL”文本框中，键入 URL：
+
+    | 环境 | 代码 |
+    |------------- |----|
+    | 沙盒 | `https://devsso35.coupahost.com/sp/ACS.saml2`|
+    | 生产 | `https://prdsso40.coupahost.com/sp/ACS.saml2`|
+    | | |
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -130,24 +142,18 @@ ms.locfileid: "36215556"
 6. 以管理员身份登录到 Coupa 公司站点。
 
 7. 转到“设置”\>“安全控制”。
-   
+
    ![安全性控制](./media/coupa-tutorial/ic791900.png "安全性控制")
 
 8. 在“使用 Coupa 凭据进行登录”部分中，执行以下步骤：
 
     ![Coupa SP 元数据](./media/coupa-tutorial/ic791901.png "Coupa SP 元数据")
-    
-    a. 选择“使用 SAML 进行登录”。
-    
-    b. 要将 Coupa 元数据文件下载到计算机，请单击“下载并导入 SP 元数据”。 打开元数据，复制“AssertionConsumerService index/URL”值，并将此值粘贴到“Coupa 域和 URL”部分中的“回复 URL”文本框内。 
-    
-    c. 单击“浏览”上传从 Azure 门户下载的元数据。
-    
-    d. 单击“ **保存**”。
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. 选择“使用 SAML 进行登录”。
+
+    b. 单击“浏览”上传从 Azure 门户下载的元数据。
+
+    c. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -180,7 +186,7 @@ ms.locfileid: "36215556"
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 单击“创建”。
- 
+
 ### <a name="create-a-coupa-test-user"></a>创建 Coupa 测试用户
 
 为了使 Azure AD 用户能够登录到 Coupa，必须将其预配到 Coupa 中。  
@@ -192,39 +198,39 @@ ms.locfileid: "36215556"
 1. 以管理员身份登录到 **Coupa** 公司站点。
 
 2. 在顶部菜单中，单击“设置”，并单击“用户”。
-   
+
    ![用户](./media/coupa-tutorial/ic791908.png "用户")
 
 3. 单击“创建”。
-   
+
    ![创建用户](./media/coupa-tutorial/ic791909.png "创建用户")
 
 4. 在“用户创建”部分中，执行以下步骤：
-   
+
    ![用户详细信息](./media/coupa-tutorial/ic791910.png "用户详细信息")
-   
+
    a. 将要预配的有效 Azure Active Directory 帐户的**登录名**、**名字**、**姓氏**、**单一登录 ID**、**电子邮件**属性键入到相关文本框中。
 
-   b. 单击“创建”。   
-   
+   b. 单击“创建”。
+
    >[!NOTE]
-   >Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。 
-   > 
+   >Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
+   >
 
 >[!NOTE]
->可以使用 Coupa 提供的任何其他 Coupa 用户帐户创建工具或 API 来预配 AAD 用户帐户。 
+>可以使用 Coupa 提供的任何其他 Coupa 用户帐户创建工具或 API 来预配 AAD 用户帐户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Coupa 的权限，允许她使用 Azure 单一登录。
 
-![分配用户角色][200] 
+![分配用户角色][200]
 
 **若要将 Britta Simon 分配到 Coupa，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
-    ![分配用户][201] 
+    ![分配用户][201]
 
 2. 在应用程序列表中，选择“Coupa”。
 
@@ -243,13 +249,13 @@ ms.locfileid: "36215556"
 6. 在“用户和组”对话框中单击“选择”按钮。
 
 7. 在“添加分配”对话框中单击“分配”按钮。
-    
+
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Coupa 磁贴时，应该会自动登录 Coupa 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -269,4 +275,3 @@ ms.locfileid: "36215556"
 [201]: ./media/coupa-tutorial/tutorial_general_201.png
 [202]: ./media/coupa-tutorial/tutorial_general_202.png
 [203]: ./media/coupa-tutorial/tutorial_general_203.png
-

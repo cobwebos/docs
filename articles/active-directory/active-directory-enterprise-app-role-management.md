@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5aa716f91a3155e81ef8dc7c436b4a9a5811238b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c9a1d605f6cf2ef9dae3a5549e3848931d508394
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34723246"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082737"
 ---
 # <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>在 Azure Active Directory 中为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -56,7 +56,7 @@ ms.locfileid: "34723246"
 
     ![“属性”页](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
+6. 在另一个窗口中打开 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
 
     a. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 

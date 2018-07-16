@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 311e58f01fac6d7786992b3c11e4b1b7c02ca838
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: f8cf5a46e1d1e3242fd46900b56f7d8cf15d3fc5
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304118"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082516"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和配置教室实验室、如何查看所有教室实验室，或者如何删除教室实验室。
@@ -86,8 +86,8 @@ ms.locfileid: "36304118"
 2. 现在，选择“发布”按钮。 此过程可能需要花费一段时间，具体取决于要创建的 VM 数，该数目也是允许进入实验室的用户数。
     
     > [!IMPORTANT]
-    > 将模板设置为公用以后，便不能将其访问权限更改为专用。 
-4. 切换到“虚拟机”页，确认是否看到五台虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 
+    > 模板一旦发布，便不能取消发布。 
+4. 切换到“虚拟机”页，确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 
 
     ![虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines.png)
 5. 等待 VM 创建完毕。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 

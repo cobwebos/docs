@@ -3,19 +3,20 @@ title: Azure SQL 数据库指标和诊断日志记录 | Microsoft Docs
 description: 了解如何配置 Azure SQL 数据库以存储资源使用情况、连接性和查询执行统计信息。
 services: sql-database
 documentationcenter: ''
-author: veljko-msft
+author: Danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vvasic
-ms.openlocfilehash: c9126080db4d8091b672a9250c68a5c5590e10c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: c7a5031fab10f44809f9533e43c3596d46dc77e3
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650173"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346019"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
@@ -49,7 +50,7 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监�
 - [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics)：包含有关查询等待统计信息的信息，可告知用户查询在什么项上等待，如 CPU、日志、锁定。
 - [错误](sql-database-metrics-diag-logging.md#errors-dataset)：包含有关此数据库发生的 SQL 错误的信息。
 - [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。
-- [超时](sql-database-metrics-diag-logging.md#time-outs-dataset)：包含有关数据库超时的信息。
+- [超时](sql-database-metrics-diag-logging.md#time-outs-dataset)：包含有关在数据库上发生的超时的信息。
 - [阻塞](sql-database-metrics-diag-logging.md#blockings-dataset)：包含有关在数据库上发生的阻塞事件的信息。
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset)：包含 Intelligent Insights。 [详细了解 Intelligent Insights](sql-database-intelligent-insights.md)。
 - Audit / SQLSecurityAuditEvents当前不可用。

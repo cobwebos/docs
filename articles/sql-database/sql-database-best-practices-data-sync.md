@@ -2,18 +2,18 @@
 title: Azure SQL 数据同步最佳做法 | Microsoft Docs
 description: 了解有关配置和运行 Azure SQL 数据同步的最佳做法。
 services: sql-database
-ms.date: 04/01/2018
+ms.date: 07/03/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: b53c72f1df4f2fc2509d91220d08aff4682b6620
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: c8b8455dac9aa1a9f7747cada4ce85644162e331
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025113"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445154"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -85,6 +85,7 @@ SQL 数据同步自动预配的限制如下：
 -   不会预配 CHECK 约束。  
 -   不会预配源表上的现有触发器。  
 -   不会在目标数据库上创建视图和存储的过程。
+-   对外键约束的 ON UPDATE CASCADE 和 ON DELETE CASCADE 操作不会在目标表中重新创建。
 
 #### <a name="recommendations"></a>建议
 

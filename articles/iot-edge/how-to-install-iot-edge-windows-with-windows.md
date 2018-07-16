@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 0ab70de83c36ec3048d9bbf74e5a315026f02b85
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 3d34628a5a47788bca8cdafcb6e199a0c2cb3bcc
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034665"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437835"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>在 Windows 上安装 Azure IoT Edge 运行时，以将其与 Windows 容器一起使用
 
@@ -89,15 +89,37 @@ Windows Registry Editor Version 5.00
 
 ## <a name="configure-the-azure-iot-edge-security-daemon"></a>配置 Azure IoT Edge 安全守护程序
 
-可以使用位于 `C:\ProgramData\iotedge\config.yaml` 的配置文件配置守护程序。边缘设备可以<!--[automatically via Device Provisioning Service][lnk-dps] or-->使用[设备连接字符串][lnk-dcs]手动进行配置。
+可以使用 `C:\ProgramData\iotedge\config.yaml` 处的配置文件配置守护程序。
 
-对于手动配置，请在 **config.yaml** 的 **provisioning:** 部分中输入设备连接字符串
+可以使用[设备连接字符串][lnk-dcs]手动配置 edge 设备或[通过设备预配服务自动][lnk-dps]配置。
 
-```yaml
-provisioning:
-  source: "manual"
-  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-```
+* 对于手动配置，取消注释**手动**预配模式。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。
+
+   ```yaml
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   # provisioning: 
+   #   source: "dps"
+   #   global_endpoint: "https://global.azure-devices-provisioning.net"
+   #   scope_id: "{scope_id}"
+   #   registration_id: "{registration_id}"
+   ```
+
+* 对于自动配置，取消注释 **dps** 预配模式。 使用 IoT 中心 DPS 实例中的值更新 **scope_id** 和 **registration_id** 的值，并使用 TPM 更新 IoT Edge 设备。 
+
+   ```yaml
+   # provisioning:
+   #   source: "manual"
+   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   provisioning: 
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "{scope_id}"
+     registration_id: "{registration_id}"
+   ```
 
 在 PowerShell 中使用 `hostname` 命令获取边缘设备的名称，再在 configuration yaml 中将其设置为 **hostname:** 的值。 例如：
 
@@ -114,30 +136,38 @@ provisioning:
   hostname: "edgedevice-1"
 ```
 
-接下来，需在配置的 **connect:** 部分中为 **workload_uri** 和 **management_uri** 提供 IP 地址和端口。
+接下来，在配置的 **connect:** 和 **listen:** 节中为 **workload_uri** 和 **management_uri** 提供 IP 地址和端口。
 
-在 PowerShell 窗口中输入 `ipconfig` 作为 IP 地址，并选择 **vEthernet (nat)** 接口的 IP 地址，如下例所示（你的系统可能使用其他 IP 地址）：  
+若要检索 IP 地址，请在 PowerShell 窗口中输入 `ipconfig`，并复制 **vEthernet (nat)** 接口的 IP 地址，如下例所示（你的系统上的 IP 地址可能不同）：  
 
 ![nat][img-nat]
 
+更新配置文件的 **connect:** 节中的 **workload_uri** 和 **management_uri**。 将 **\<GATEWAY_ADDRESS\>** 替换为复制的 IP 地址。 
+
 ```yaml
 connect:
-  management_uri: "http://172.29.240.1:15580"
-  workload_uri: "http://172.29.240.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-在配置的 **listen:** 部分中输入相同的地址。 例如：
+使用你的 IP 地址作为网关地址，在配置的 **listen:** 节中输入相同的地址。
 
 ```yaml
 listen:
-  management_uri: "http://172.29.240.1:15580"
-  workload_uri: "http://172.29.240.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-在 PowerShell 窗口中，创建包含 **management_uri** 地址的环境变量 **IOTEDGE_HOST**，例如：
+在 PowerShell 窗口中，创建包含 **management_uri** 地址的环境变量 **IOTEDGE_HOST**。
 
 ```powershell
-[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://172.29.240.1:15580")
+[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
+```
+
+在重启时保留环境变量。
+
+```powershell
+SETX /M IOTEDGE_HOST "http://<GATEWAY_ADDRESS>:15580"
 ```
 
 最后，确保取消注释 **moby_runtime:** 下的 **network:** 设置并将其设置为 **nat**
@@ -157,6 +187,8 @@ Start-Service iotedge
 ```
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
+
+如果使用了上一部分中的**手动配置**步骤，则应在设备上成功预配并运行 IoT Edge 运行时。 如果使用了**自动配置**步骤，则需要完成一些额外的步骤，以便运行时可以代表你向 IoT 中心注册你的设备。 有关后续步骤，请参阅[在 Windows 上创建和预配模拟 TPM Edge 设备](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable)。
 
 可通过以下方式查看 IoT Edge 服务的状态： 
 
@@ -193,8 +225,8 @@ iotedge list
 
 <!-- Links -->
 [lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: ../iot-hub/quickstart-send-telemetry-dotnet.md#register-a-device
-[lnk-dps]: how-to-simulate-dps-tpm.md
+[lnk-dcs]: how-to-register-device-portal.md
+[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
 [lnk-oci]: https://www.opencontainers.org/
 [lnk-moby]: https://mobyproject.org/
 [lnk-trouble]: troubleshoot.md

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4741cf306aed1c86be1bc4b54fb961383e2f70bd
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4c0f5d0c5ed3814495a68d7fd49d41cec521bbd7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763759"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114552"
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure 上的 SAP HANA（大型实例）的基础结构和连接 
 
@@ -32,7 +32,8 @@ ms.locfileid: "34763759"
 
 我们还经常用到其他定义，如下所述：
 - **大型实例模具：** 已通过 SAP HANA TDI 认证的硬件基础结构堆栈，专门用于在 Azure 中运行 SAP HANA 实例。
-- **Azure 上的 SAP HANA（大型实例）：** 用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
+- 
+  **Azure 上的 SAP HANA（大型实例）：** 用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
  
 
 在你与 Microsoft 企业帐户团队之间达成“Azure 上的 SAP HANA（大型实例）”的采购协议后，Microsoft 会要求提供以下信息来部署 HANA 大型实例单元：
@@ -243,7 +244,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID
 ```
 
-若要将网关连接到与订阅关联的多个 ExpressRoute 线路，建议多次执行这一步。 例如，建议将同一个 VNet 网关连接到将 VNet 连接到本地网络的 ExpressRoute 线路。
+若要将网关连接到与订阅关联的多个 ExpressRoute 线路，建议多次执行这一步。 例如，可能要将同一个 VNet 网关连接到将 VNet 连接到本地网络的 ExpressRoute 线路。
 
 ## <a name="adding-more-ip-addresses-or-subnets"></a>添加更多 IP 地址或子网
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3c6602bdd90c82568a50ad7354d7abb7c6a472ae
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 5cb3ccbc949f8250101fab6cb7899b859149fdfd
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287742"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341086"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>在 Durable Functions 中管理实例 (Azure Functions)
 
@@ -81,6 +81,7 @@ module.exports = function (context, input) {
 * **CustomStatus**：JSON 格式的自定义业务流程状态。 
 * **Output**：函数的输出，采用 JSON 值形式（如果该函数已完成）。 如果业务流程协调程序函数失败，此属性会包含失败详细信息。 如果业务流程协调程序函数已终止，此属性会包括提供的终止原因（如果有）。
 * **RuntimeStatus**：以下值之一：
+    * **挂起**：实例已计划但尚未开始运行。
     * **Running**：实例已开始运行。
     * **Completed**：实例已正常完成。
     * **ContinuedAsNew**：实例已重启自身并生成了新历史记录。 这是暂时性的状态。

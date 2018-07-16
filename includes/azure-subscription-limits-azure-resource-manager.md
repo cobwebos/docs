@@ -1,10 +1,27 @@
+---
+title: include 文件
+description: include 文件
+services: billing
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 07/02/2018
+ms.author: jroth
+ms.custom: include file
+ms.openlocfilehash: f47654d056a26f5a58b1ccc2c200f774bee1f19f
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37348195"
+---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 数 |每个区域 10,000 个<sup>1</sup> |每个区域 10,000 个 |
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 核心总数 |每个区域 20 个<sup>1</sup> | 联系支持人员 |
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 按系列（Dv2、F 等）核心数 |每个区域 20 个<sup>1</sup> | 联系支持人员 |
 | 每个订阅的[共同管理员数](../articles/billing-add-change-azure-subscription-administrator.md) |不受限制 |不受限制 |
-| 每个订阅的[存储帐户数](../articles/storage/common/storage-create-storage-account.md) |200 |200<sup>2</sup> |
+| 每个订阅在每个区域中的[存储帐户数](../articles/storage/common/storage-create-storage-account.md) |200 |200<sup>2</sup> |
 | 每个订阅的[资源组数](../articles/azure-resource-manager/resource-group-overview.md) |980 |980 |
 | 每个订阅的[可用性集数](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域 2,000 个 |每个区域 2,000 个 |
 | Resource Manager API 读取次数 |每小时 15,000 次 |每小时 15,000 次 |
@@ -15,7 +32,8 @@
 | 每个订阅的[云服务数](../articles/cloud-services/cloud-services-choose-me.md) |不适用<sup>4</sup> |不适用<sup>4</sup> |
 | 每个订阅的[地缘组数](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |不适用<sup>4</sup> |不适用<sup>4</sup> |
 
-<sup>1</sup>默认限制根据产品类别类型（例如免费试用、即用即付，以及系列（例如 Dv2、F、G 等））而有所不同。
+
+  <sup>1</sup>默认限制根据产品类别类型（例如免费试用、即用即付，以及系列（例如 Dv2、F、G 等））而有所不同。
 
 <sup>2</sup>这包括标准和高级存储帐户。 如果需要的存储帐户超过 100 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储团队将评审业务案例，最多可以批准 250 个存储帐户。
 

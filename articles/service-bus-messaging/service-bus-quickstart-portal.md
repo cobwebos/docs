@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
 ms.author: sethm
-ms.openlocfilehash: b970fe1d9d705bd91e616f19a6ef133d6cfd7dd2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3f8979687747453354f60eda15d73b20b2c745a0
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660486"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867199"
 ---
 # <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>快速入门：使用 Azure 门户和 .NET 发送和接收消息
 
@@ -40,7 +40,7 @@ Microsoft Azure 服务总线是一种提供安全消息传送和绝对可靠性�
 
 ## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-服务总线消息传送命名空间提供唯一的作用域容器，可以通过其[完全限定的域名][]进行引用，而在该域名中，可以创建一个或多个队列、主题和订阅。 以下示例在新的或现有的[资源组](/azure/azure-resource-manager/resource-group-portal)中创建一个服务总线消息传送命名空间：
+服务总线消息传送命名空间提供唯一的作用域容器，可以通过其[完全限定域名][]进行引用，而在该域名中，可以创建一个或多个队列、主题和订阅。 以下示例在新的或现有的[资源组](/azure/azure-resource-manager/resource-group-portal)中创建一个服务总线消息传送命名空间：
 
 1. 在门户的左侧导航窗格中，依次单击“+ 创建资源”、“企业集成”和“服务总线”。
 2. 在“创建命名空间”  对话框中，输入命名空间名称。 系统会立即检查该名称是否可用。
@@ -255,7 +255,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 
 [免费帐户]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[完全限定的域名]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[完全限定域名]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
 [connection-string]: ./media/service-bus-quickstart-portal/connection-string.png

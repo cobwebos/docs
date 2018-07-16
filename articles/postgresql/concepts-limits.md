@@ -2,25 +2,25 @@
 title: Azure Database for PostgreSQL 中的限制
 description: 本文介绍了 Azure Database for PostgreSQL 中的限制，例如连接数和存储引擎选项。
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 06/30/2018
+ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757410"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37343164"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的限制
 下列各部分介绍数据库服务中的容量和功能限制。
 
 ## <a name="maximum-connections"></a>最大连接数
-每个定价层和 vCore 的连接最大数如下所示： 
+每个定价层的最大连接数和 vCore 数如下所示： 
 
 |**定价层**| **vCore(s)**| 最大连接数 |
 |---|---|---|
@@ -43,8 +43,8 @@ Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服�
 
 ## <a name="functional-limitations"></a>功能限制
 ### <a name="scale-operations"></a>缩放操作
-1.  目前不支持跨定价层动态缩放服务器。 即，在基本、常规用途或内存优化层之间进行切换。
-2.  目前不支持减小服务器存储大小。
+- 目前不支持向/从基本定价层动态缩放。
+- 目前不支持减小服务器存储大小。
 
 ### <a name="server-version-upgrades"></a>服务器版本升级
 - 目前不支持在主要数据库引擎版本之间进行自动迁移。
@@ -52,9 +52,12 @@ Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服�
 ### <a name="subscription-management"></a>订阅管理
 - 目前不支持跨订阅和资源组动态移动服务器。
 
+### <a name="vnet-service-endpoints"></a>VNet 服务终结点
+- 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
+
 ### <a name="point-in-time-restore-pitr"></a>时间点还原 (PITR)
-1.  使用 PITR 功能时，将使用与新服务器所基于的服务器相同的配置创建新服务器。
-2.  不支持还原已删除的服务器。
+- 使用 PITR 功能时，将使用与新服务器所基于的服务器相同的配置创建新服务器。
+- 不支持还原已删除的服务器。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解[每个定价层中有哪些可用资源](concepts-pricing-tiers.md)

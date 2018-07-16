@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: 6806b0c5b5e5ac5e1189f628786f0c8f9b223395
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 403490f47ac171d4a302d2b68af65375bbdc26cd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750945"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345701"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL 数据库资源限制概述 
 
@@ -27,10 +27,11 @@ ms.locfileid: "36750945"
 | 每个服务器的数据库数 | 5000 |
 | 任意区域中每个订阅的服务器默认数量 | 20 |
 | 任意区域中每个订阅的服务器数上限 | 200 |
+| 每个服务器的 DTU/eDTU 配额 | 54,000 |
 |||
 
 > [!NOTE]
-> 若要获得超过默认数量的服务器配额，可以在 Azure 门户中为订阅提交问题类型为“配额”的新支持请求。
+> 若要获得超过默认数量的 DTU/eDTU 配额或服务器，可以在 Azure 门户中为订阅提交问题类型为“配额”的新支持请求。 每个服务器的 DTU/eDTU 配额和数据库限制约束了每个服务器的弹性池数。 
 
 > [!IMPORTANT]
 > 随着数据库的数量接近每个服务器的限制，可能出现以下情况：

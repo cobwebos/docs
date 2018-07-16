@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 01dc3a3c6489b694af26c78ae3b4756f3e8f00b7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1e79fee75b2361dd7da8c46c175a5a6532089ad6
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263110"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437233"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
@@ -25,6 +25,9 @@ ms.locfileid: "35263110"
 - 受影响的订阅。
 - 受影响的服务。
 - 受影响的区域。
+
+> [!NOTE]
+> 服务运行状况通知不会发送有关资源运行状况事件的警报。
 
 还可以配置向其发送警报的人员：
 

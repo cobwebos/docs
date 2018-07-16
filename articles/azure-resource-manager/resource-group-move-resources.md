@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7bee84e1ce473c27730b3fe84aa0a580baeba7c2
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4f73b6d735997b663ca6769aaceaf363b6d3eda7
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939794"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346478"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -30,7 +30,7 @@ ms.locfileid: "36939794"
 不能更改该资源的位置。 移动资源仅能够将其移动到新的资源组。 新的资源组可能有不同的位置，但这不会更改该资源的位置。
 
 > [!NOTE]
-> 本文介绍如何在现有 Azure 帐户产品/服务中移动资源。 如果确实想要更改 Azure 帐户产品（如从即用即付升级到预付），同时继续使用现有资源，请参阅 [Switch your Azure subscription to another offer](../billing/billing-how-to-switch-azure-offer.md)（将 Azure 订阅切换到其他产品）。
+> 本文介绍如何在现有 Azure 帐户产品/服务中移动资源。 如果确实想要更改 Azure 帐户产品/服务（如从即用即付升级到预付），同时继续使用现有资源，请参阅 [Switch your Azure subscription to another offer](../billing/billing-how-to-switch-azure-offer.md)（将 Azure 订阅切换到其他套餐）。
 >
 >
 
@@ -119,19 +119,26 @@ ms.locfileid: "36939794"
 * Application Insights
 * Analysis Services
 * 自动化
+* Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure Maps
 * Azure 中继
+* Azure Stack - 注册
+* Azure Migrate
 * Batch
-* 必应地图
+* BizTalk 服务
+* Bot 服务
 * CDN
 * 云服务 - 请参阅[经典部署限制](#classic-deployment-limitations)
 * 认知服务
+* 容器注册表
 * 内容审查器
 * 数据目录
-* 数据工厂 - 可以移动 V1 ，但不支持移动 V2（预览版）
+* 数据工厂
 * Data Lake Analytics
 * Data Lake Store
 * DNS
+* 事件网格
 * 事件中心
 * HDInsight 群集 - 请参阅 [HDInsight 限制](#hdinsight-limitations)
 * IoT 中心
@@ -145,14 +152,15 @@ ms.locfileid: "36939794"
 * 通知中心
 * 操作见解
 * 操作管理
+* 门户仪表板
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
 * Redis 缓存
 * 计划程序
 * 搜索
-* 服务器管理
 * 服务总线
 * Service Fabric
+* SignalR 服务
 * 存储
 * 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 流分析 - 当流分析作业处于运行状态时，则无法进行移动。
@@ -175,20 +183,24 @@ ms.locfileid: "36939794"
 * 应用程序网关
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
-* Azure Migrate
-* BizTalk 服务
+* Azure 数据库迁移
+* Azure Databricks
+* Batch AI
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
 * 容器服务
-* 开发测试实验室 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * Dynamics LCS
 * Express Route
 * Kubernetes 服务
+* 实验室服务 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * 负载均衡器 - 请参阅[负载均衡器限制](#lb-limitations)
 * 托管应用程序
 * 托管磁盘 - 请参阅[虚拟机限制](#virtual-machines-limitations)
+* Microsoft 基因组学
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
 * 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
+* Azure 上的 SAP HANA
 * “安全”
+* Site Recovery
 * StorSimple 设备管理器
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 

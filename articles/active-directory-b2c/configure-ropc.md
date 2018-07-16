@@ -6,73 +6,73 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f6f9b9c7ae71697efb6d722eff55d9ee3f8746d5
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5d68f8fe28b7f029d19a0ed0c03e5324c32f29c0
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712294"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446803"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-ropc-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流 (ROPC)
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
-资源所有者密码凭据 (ROPC) 流是 OAUTH 标准身份验证流，其中应用程序（也称为信赖方）使用有效凭据（例如用户 ID 和密码）交换 ID 令牌、访问令牌和刷新令牌。 
+资源所有者密码凭据 (ROPC) 流是 OAuth 标准身份验证流，其中应用程序（也称为信赖方）使用有效凭据（例如用户 ID 和密码）交换 ID 令牌、访问令牌和刷新令牌。 
 
 > [!NOTE]
 > 此功能为预览版。
 
-在 Azure AD B2C 中，以下选项受到支持：
+在 Azure Active Directory (Azure AD) B2C 中支持以下选项：
 
-- **本机客户端**：身份验证期间的用户交互使用在用户端设备上运行的代码进行，其可能会是在本机操作系统（例如 Android）中运行的移动应用程序，也可能会是在浏览器（例如 JavaScript）中运行的应用程序。
+- **本机客户端**：当代码在用户端设备上运行时，将在身份验证期间进行用户交互。 设备可以是在本机操作系统（如 Android）中运行的移动应用程序，也可以是在浏览器中运行的应用程序，例如 JavaScript。
 - **公共客户端流**：只有通过应用程序收集的用户凭据才会在 API 调用中发送。 不会发送应用程序的凭据。
 - **添加新声明**：可更改 ID 令牌内容以添加新的声明。 
 
-以下流不受支持：
+不支持以下流：
 
-- **服务器到服务器**：身份保护系统 (IDPS) 在交互过程中需要收集自调用方（本地客户端）的可靠 IP 地址。  在服务器端 API 调用中，仅会使用服务器的 IP 地址，并且如果超过失败身份验证次数的动态阈值，IDPS 可能会将重复的 IP 地址标识为攻击者。
-- **机密客户端流**：应用程序客户端 ID 已验证，但应用程序密钥未验证。
+- **服务器到服务器**：身份保护系统在交互过程中需要从调用方（本地客户端）收集的可靠 IP 地址。 在服务器端 API 调用中，仅使用服务器的 IP 地址。 如果超过了失败身份验证的动态阈值，则身份保护系统可能将重复的 IP 地址识别为攻击者。
+- **机密客户端流**：应用程序客户端 ID 已验证，但应用程序机密未验证。
 
 ##  <a name="create-a-resource-owner-policy"></a>创建资源所有者策略
 
-1. 以 Azure AD B2C 租户的全局管理员的身份登录 Azure 门户。
+1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
 2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
 3. 在“策略”下，选择“资源所有者策略”。
-4. 提供策略名称（例如 *ROPC_Auth*），然后单击“应用程序声明”。
+4. 提供策略名称（例如 *ROPC_Auth*），然后选择“应用程序声明”。
 5. 选择应用程序所需的应用程序声明，例如 *Display Name*、*Email Address* 和 *Identity Provider*。
-6. 单击“确定”，然后单击“创建”。
+6. 选择“确定”，然后选择“创建”。
 
-你随后会看到一个终结点，如以下示例所示：
+   你随后会看到一个终结点，如以下示例所示：
 
-`https://login.microsoftonline.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_ROPC_Auth`
+   `https://login.microsoftonline.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_ROPC_Auth`
 
 
 ## <a name="register-an-application"></a>注册应用程序
 
-1. 在 B2C 设置中，单击“应用程序”，然后单击“+ 添加”。
-2. 提供应用程序名称，例如 *ROPC_Auth_app*。
-3. 对“Web 应用/Web API”单击“否”，然后对“本机客户端”单击“是”。
-4. 保留所有其他值不变，然后单击“创建”。
-5. 选择新的应用程序并记下应用程序 ID。
+1. 在 B2C 设置中，选择“应用程序”，然后选择“添加”。
+2. 输入应用程序名称，例如 *ROPC_Auth_app*。
+3. 对“Web 应用/Web API”选择“否”，然后对“本机客户端”选择“是”。
+4. 保留所有其他值不变，然后选择“创建”。
+5. 选择新应用程序，并记下应用程序 ID 供以后使用。
 
 ## <a name="test-the-policy"></a>测试策略
 
 使用最喜欢的 API 开发应用程序来生成 API 调用，然后查看响应以调试策略。 使用下表中的信息构建如下所示的调用作为 POST 请求的正文：
-- 将 *yourtenant.onmicrosoft.com* 替换为 B2C 租户的名称
-- 将 *B2C_1A_ROPC_Auth* 替换为 ROPC 策略的全称
-- 将 *bef2222d56-552f-4a5b-b90a-1988a7d634c3* 替换为注册时提供的应用程序 ID。
+- 将 *\<yourtenant.onmicrosoft.com>* 替换为 B2C 租户的名称。
+- 将 *\<B2C_1A_ROPC_Auth>* 替换为资源所有者密码凭据策略的全名。
+- 将 *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* 替换为注册时提供的应用程序 ID。
 
-`https://te.cpim.windows.net/yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
+`https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
 | 密钥 | 值 |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
-| 作用域 | openid bef2222d56-552f-4a5b-b90a-1988a7d634c3 offline_access |
-| client_id | bef2222d56-552f-4a5b-b90a-1988a7d634c3 |
+| 作用域 | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 
 *Client_id* 是之前记录为应用程序 ID 的值。 如果想要接收刷新令牌，则 *Offline_access* 是可选的。 
@@ -81,14 +81,14 @@ ms.locfileid: "34712294"
 
 ```
 POST /yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token HTTP/1.1
-Host: te.cpim.windows.net
+Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
 
-具有脱机访问权限的成功响应类似以下示例：
+脱机访问的成功响应如以下示例所示：
 
 ```
 { 
@@ -102,26 +102,25 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 ## <a name="redeem-a-refresh-token"></a>兑换刷新令牌
 
-使用下表中的信息构建如下所示的 POST 调用作为请求的正文：
+使用下表中的信息构造如此处所示的 POST 调用作为请求的正文：
 
-`https://te.cpim.windows.net/yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
+`https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
 | 密钥 | 值 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
-| client_id | bef2222d56-552f-4a5b-b90a-1988a7d634c3 |
-| resource | bef2222d56-552f-4a5b-b90a-1988a7d634c3 |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* 和 *resource* 是之前记录为应用程序 ID 的值。 *Refresh_token* 是在前述身份验证调用中收到的令牌。
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>使用首选本机 SDK 实现或使用 AppAuth
 
+Azure AD B2C 实现符合公共客户端资源所有者密码凭据的 OAuth 2.0 标准，并且应与大多数客户端 SDK 兼容。 我们已在生产环境中针对适用于 iOS 的 AppAuth 和适用于 Android 的 AppAuth 广泛测试这一流程。 有关最新信息，请参阅[适用于 OAuth 2.0 的本机应用 SDK 和实现新式最佳做法的 OpenID Connect](https://appauth.io/)。
 
-Azure AD B2C 实现符合 OAuth 2.0 标准或公共客户端 ROPC，并且应该与大多数客户端 SDK 兼容。  我们已在生产环境中针对适用于 iOS 的 AppAuth 和适用于 Android 的 AppAuth 广泛测试这一流程。  有关最新信息，请参阅 https://appauth.io/。
-
-你可在 GitHub 中从 https://aka.ms/aadb2cappauthropc (Android) 和 https://aka.ms/aadb2ciosappauthropc 下载工作示例，这些示例已配置为与 Azure AD B2C 配合使用。
+从 GitHub 下载已配置为与 Azure AD B2C 一起使用的工作示例：[用于 Android](https://aka.ms/aadb2cappauthropc) 和[用于 iOS](https://aka.ms/aadb2ciosappauthropc)。
 
 
 

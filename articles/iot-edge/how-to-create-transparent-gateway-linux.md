@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5a78d6fb8ee52f0daba80a77cc8a5e75c2e5248d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 45179f8f1f46be764144bdc22d5bab3548e9401d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034378"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346053"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>创建充当透明网关的 Linux IoT Edge 设备
 
@@ -142,7 +142,11 @@ Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edg
  
     应看到一条消息“正在更新 /etc/ssl/certs 中的证书...已添加 1 个，已删除 0 个；已完成。”
 
-* Windows - [这篇文章](https://msdn.microsoft.com/en-us/library/cc750534.aspx)详细介绍了如何使用证书导入向导在 Windows 设备上执行此操作。 
+* Windows - 下面是如何在 Windows 主机上安装 CA 证书的示例。
+  * 在“开始”菜单上，键入“管理计算机证书”。 这应该会启动一个名为 `certlm` 的实用程序。
+  * 导航到“证书本地计算机”-->“受信任的根证书”-->“证书”-->右键单击 -->“所有任务”- >“导入”以启动证书导入向导。
+  * 按照指示执行步骤并导入证书文件 $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem。
+  * 完成后，应看到“已成功导入”消息。
 
 ### <a name="application-level"></a>应用程序级别
 对于 .NET 应用程序，可以添加以下片段来信任 PEM 格式的证书。 使用 `$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem` 初始化变量 `certPath`。

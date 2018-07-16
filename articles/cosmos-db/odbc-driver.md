@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e93b241c79a50380f4ef1538dfbf7615232e6c49
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725085"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096503"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB
 
 借助 Azure Cosmos DB ODBC 驱动程序，可以使用 SQL Server Integration Services、Power BI Desktop 和 Tableau 等 BI 分析工具连接到 Azure Cosmos DB，以便能够在这些解决方案中分析和创建 Azure Cosmos DB 数据的可视化效果。
 
-Azure Cosmos DB ODBC 驱动程序符合 ODBC 3.8 规范，支持 ANSI SQL-92 语法。 该驱动程序提供丰富的功能，可帮助用户重新规范化 Azure Cosmos DB 中的数据。 使用该驱动程序，能够以表和视图的形式表示 Azure Cosmos DB 中的数据。 使用该驱动程序还可以针对表和视图执行 SQL 操作，包括 group by 查询、插入、更新和删除。
+Azure Cosmos DB ODBC 驱动程序符合 ODBC 3.8 规范，支持 ANSI SQL-92 语法。 该驱动程序提供丰富的功能来帮助用户重新规范化 Azure Cosmos DB 中的数据。 使用该驱动程序，能够以表和视图的形式表示 Azure Cosmos DB 中的数据。 使用该驱动程序还可以针对表和视图执行 SQL 操作，包括 group by 查询、插入、更新和删除。
 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>为何需要将数据规范化？
 Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代其数据模型，而不会将它们限定于一个严格定义的架构，因此可以加快应用的开发。 一个 Azure Cosmos DB 数据库可以包含各种结构的 JSON 文档。 这非常适合于快速应用程序开发，但如果用户想要使用数据分析和 BI 工具来分析和创建数据报表，则数据通常需要平整化并遵守特定的架构。
@@ -63,7 +63,7 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
 4. 单击“测试”按钮，确保可以连接到 Azure Cosmos DB 帐户。 
 5. 单击“高级选项”并设置以下值：
     - **查询一致性**：选择操作的[一致性级别](consistency-levels.md)。 默认值为“会话”。
-    - **重试次数**：输入当初始请求因服务限制而未能完成时，重试操作的次数。
+    - **重试次数**：输入当初始请求因服务速率限制而未能完成时，重试操作的次数。
     - **架构文件**：此处有多个选项。
         - 默认情况下，可将此项保留原样（空白），驱动程序会在第一页的数据中扫描所有集合，确定每个集合的架构。 这称为“集合映射”。 如果未定义架构文件，驱动程序必须针对每个驱动程序会话执行扫描，这可能会导致使用 DSN 启动应用程序时需要更长的时间。 我们建议始终关联 DSN 的架构文件。
         - 如果已有一个架构文件（也许是使用[架构编辑器](#schema-editor)创建的文件），则可以单击“浏览”，导航到该文件，单击“保存”，并单击“确定”。

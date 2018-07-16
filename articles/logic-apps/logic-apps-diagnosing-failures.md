@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 10/15/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5af99821305fe6daab8a213d0351c5a1c5936461
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b0bf6cd747860d938f80787d9bef6634a6a22d09
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298784"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441526"
 ---
 # <a name="troubleshoot-and-diagnose-logic-app-failures"></a>排查和诊断逻辑应用故障
 
@@ -105,15 +105,15 @@ ms.locfileid: "35298784"
 
 ## <a name="perform-runtime-debugging"></a>执行运行时调试
 
-若要帮助进行调试，可向工作流添加诊断步骤，同时查看触发器和运行历史记录。 例如，可以添加使用 [RequestBin](http://requestb.in) 服务的步骤，以便可检查 HTTP 请求并决定其精确大小、形状和格式。
+若要帮助进行调试，可向工作流添加诊断步骤，同时查看触发器和运行历史记录。 例如，可以添加使用 [Webhook Tester](https://webhook.site/) 服务的步骤，以便可检查 HTTP 请求并确定其确切大小、形状和格式。
 
-1. 创建 RequestBin，可使其仅在浏览器中处于私密和可查看状态。
+1. 请访问 [Webhook Tester](https://webhook.site/) 并复制创建的唯一 URL
 
 2. 在逻辑应用中，添加包含想要测试的正文内容的 HTTP POST 操作（例如，某个表达式或另一个步骤的输出）。
 
-3. 在 HTTP POST 操作中粘贴 RequestBin 的 URL。
+3. 在 HTTP POST 操作中粘贴 Webhook Tester 的 URL。
 
-4. 若要查看请求在逻辑应用引擎中生成时的格式，请运行逻辑应用并刷新 RequestBin。
+4. 若要查看请求在从逻辑应用引擎生成时的格式，请运行逻辑应用并查看 Webhook Tester 了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

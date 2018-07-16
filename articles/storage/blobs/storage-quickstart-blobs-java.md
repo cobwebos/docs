@@ -1,5 +1,5 @@
 ---
-title: Azure 快速入门 - 使用 Java 在对象存储中创建 blob | Microsoft Docs
+title: Azure 快速入门 - 使用 Java 存储 SDK V7 在对象存储中创建 Blob | Microsoft Docs
 description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Java 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
 author: roygara
@@ -9,14 +9,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 197777971b92ad9cd53e91602b88858a371ce1d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 30d31a7f4b77864549dcb9e27030ba19c4fd84fe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192003"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606603"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-java"></a>快速入门：使用 Java 上传、下载和列出 Blob
+# <a name="quickstart-upload-download-and-list-blobs-using-java-sdk-v7"></a>快速入门：使用 Java SDK V7 上传、下载和列出 Blob
 
 本快速入门介绍如何使用 Java 上传、下载和列出 Azure Blob 存储的容器中的块 blob。
 
@@ -30,13 +30,13 @@ ms.locfileid: "32192003"
 
 本教程使用具有“适用于 Java 开发者的 Eclipse IDE”配置的 [Eclipse](http://www.eclipse.org/downloads/)。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
-本快速入门中使用的[示例应用程序](https://github.com/Azure-Samples/storage-blobs-java-quickstart)是基本的控制台应用程序。 
+本快速入门中使用的[示例应用程序](https://github.com/Azure-Samples/storage-blobs-java-quickstart)是基本的控制台应用程序。  
 
 使用 [git](https://git-scm.com/) 可将应用程序的副本下载到开发环境。 
 
@@ -48,7 +48,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 
 完成项目导入后，打开 AzureApp.java（位于 src/main/java 内的 blobQuickstart.blobAzureApp 中），并替换 `storageConnectionString` 字符串中的 `accountname` 和 `accountkey`。 然后运行应用程序。
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]   
+[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]    
 
 ## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
     
@@ -65,9 +65,7 @@ public static final String storageConnectionString =
 
 此示例在默认目录（对于 windows 用户，为“我的文档”）中创建一个测试文件，将其上传到 Blob 存储，列出容器中的 blob，然后下载具有新名称的文件，以便比较旧文件和新文件。 
 
-通过在 Eclipse 中按“Ctrl+F11”来运行示例。
-
-如果要在命令行使用 Maven 运行示例，请打开 shell 并导航到克隆目录中的 blobAzureApp。 然后输入 `mvn compile exec:java`。
+使用 Maven 在命令行运行示例。 打开 shell 并导航到已克隆目录中的 blobAzureApp。 然后输入 `mvn compile exec:java`。 
 
 如果打算在 Windows 上运行应用程序，以下是一个输出示例。
 
@@ -84,9 +82,9 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
- 检查这两个文件的默认目录（对于 windows 用户，为“我的文档”），再继续操作。 可以打开它们，并看到它们完全相同。 从控制台窗口复制 blob 的 URL，将其粘贴到浏览器，查看 Blob 存储中的文件的内容。 按 Enter 时，会删除存储容器和文件。
+检查这两个文件的默认目录（对于 windows 用户，为“我的文档”），再继续操作。 可以打开它们，并看到它们完全相同。 从控制台窗口复制 blob 的 URL，将其粘贴到浏览器，查看 Blob 存储中的文件的内容。 按 Enter 时，会删除存储容器和文件。 
 
-还可以使用工具（如 [Azure 存储资源管理器](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。 
+还可以使用工具（如 [Azure 存储资源管理器](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。
 
 验证文件后，按 Enter 键可完成演示并删除测试文件。 现在已了解此示例的用途，打开 AzureApp.java 文件可查看代码。 
 
@@ -113,7 +111,7 @@ Deleting the source, and downloaded files
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
-### <a name="create-a-container"></a>创建容器 
+### <a name="create-a-container"></a>创建容器
 
 在本部分中，将创建对象的实例、创建新容器，并对容器设置权限，使 blob 公开，只需 URL 即可对其进行访问。 容器名称为 quickstartblobs。 
 
@@ -205,26 +203,13 @@ if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
 
-## <a name="resources-for-developing-java-applications-with-blobs"></a>用于开发包含 Blob 的 Java 应用程序的资源
-
-查看以下附加资源，了解如何使用 Blob 存储进行 Java 开发：
-
-### <a name="binaries-and-source-code"></a>二进制文件和源代码
-
-- 在 GitHub 上查看并下载 Azure 存储的 [Java 客户端库源代码](https://github.com/Azure/azure-storage-java)。
-
-### <a name="client-library-reference-and-samples"></a>客户端库参考和示例
-
-- 参阅 [Java API 参考](https://docs.microsoft.com/java/api/overview/azure/storage)，详细了解 Java 客户端库。
-- 浏览使用 Java 客户端库编写的 [Blob 存储示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=java&term=blob)。
-
 ## <a name="next-steps"></a>后续步骤
 
-在此快速入门教程中，介绍了如何使用 Java 在本地磁盘和 Azure Blob 存储之间传输文件。 要深入了解如何使用 Blob 存储，请继续学习 Blob 存储操作说明。
+在此快速入门教程中，介绍了如何使用 Java 在本地磁盘和 Azure Blob 存储之间传输文件。 若要详细了解 Java 的用法，请转到 GitHub 源代码存储库。
 
 > [!div class="nextstepaction"]
-> [Blob 存储操作说明](storage-java-how-to-use-blob-storage.md)
+> [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java) 
+> [API 参考](https://docs.microsoft.com/en-us/java/api/storage/client?view=azure-java-stable)
+> [用于 Java 的代码示例](../common/storage-samples-java.md)
 
-若要详细了解存储资源管理器和 Blob，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md)。
-
-如需更多的 Java 示例，请参阅[使用 Java 的 Azure 存储示例](../common/storage-samples-java.md)。
+* 若要详细了解存储资源管理器和 Blob，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。

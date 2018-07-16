@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d8f3c0e4dec05b2ed968a3493a7cc560231e7331
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b57522933647c9d1d5518740d41b624b199a020e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215685"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110552"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 与 Confluence SAML SSO by Microsoft 集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "36215685"
 若要配置 Azure AD 与 Confluence SAML SSO by Microsoft 的集成，需要以下项：
 
 - Azure AD 订阅
-- 安装在 Windows 64 位服务器上的 Confluence 服务器应用程序（基于本地或云 IaaS 基础结构）
+- 安装在 Windows 64 位服务器（本地或基于云 IaaS 基础结构）上的 Confluence 服务器应用程序
 - Confluence 服务器已启用 HTTPS
 - 请注意，下面部分列出了支持的 Confluence 插件版本。
 - Confluence 服务器可以访问 Internet，尤其是访问用于身份验证的 Azure AD 登录页，还应当可以接收来自 Azure AD 的令牌

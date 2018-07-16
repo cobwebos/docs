@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ab6a66821905901515258842176ce24e485a54e3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061638"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110606"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>云中的新 DBA - 在 Azure SQL 数据库中管理数据库
 
@@ -66,7 +66,8 @@ SQL 数据库十分重视安全性和隐私性。 SQL 数据库中的安全性�
 - 保护实际数据（[透明数据加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 和 [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)）。 
 - 控制对敏感和特许数据的访问（[行级安全性](/sql/relational-databases/security/row-level-security)和[动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)）。
 
-[Azure 安全中心](https://azure.microsoft.com/services/security-center/)为 Azure、本地和其他云中运行的工作负载提供集中式安全管理。 你可以查看是否已在所有资源上配置诸如[审计](sql-database-auditing.md)和[透明数据加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)之类的基本 SQL 数据库保护，并根据你自己的需求创建策略。
+
+  [Azure 安全中心](https://azure.microsoft.com/services/security-center/)为 Azure、本地和其他云中运行的工作负载提供集中式安全管理。 你可以查看是否已在所有资源上配置诸如[审计](sql-database-auditing.md)和[透明数据加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)之类的基本 SQL 数据库保护，并根据你自己的需求创建策略。
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>在 SQL 数据库中提供了哪些用户身份验证方法？
 SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.md#authentication)： 
@@ -254,7 +255,7 @@ SQL 数据库使用的某些智能技术可以实现自动处理某些类别的�
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>如何同步 SQL 数据库 SQL Server 间的数据？
 可使用多种方法实现此目的： 
 - **[数据同步](sql-database-sync-data.md)** - 此功能可帮助你在多个本地 SQL Server 数据库和 SQL 数据库之间双向同步数据。 要与本地 SQL Server 数据库同步，则需在本地计算机上安装和配置同步代理，并打开出站 TCP 端口 1433。
-- **[事务复制](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** - 使用事务复制功能，可将数据从本地同步到 Azure SQL DB，本地作为发布服务器，而 Azure SQL DB作为订阅服务器。 目前仅支持此安装程序。 有关如何以最少停机时间将数据从本地迁移到 Azure SQL 的详细信息，请参阅：[使用事务复制](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[事务复制](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** - 使用事务复制功能，可将数据从本地同步到 Azure SQL DB，本地服务器作为发布服务器，而 Azure SQL DB 作为订阅服务器。 目前仅支持此安装程序。 有关如何以最少停机时间将数据从本地迁移到 Azure SQL 的详细信息，请参阅：[使用事务复制](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>后续步骤
 了解 [SQL 数据库](sql-database-technical-overview.md)。

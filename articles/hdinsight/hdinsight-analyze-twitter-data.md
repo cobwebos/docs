@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 35f8937ddef54d407a6e3c83566225ca8ede8bd9
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 6b47e54e56b12a2975c44ab3b87b023d20a769c3
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960121"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436158"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析 Twitter 数据
 社交网站是采用大数据的主要推动力之一。 Twitter 等网站所提供的公共 API 是一类用于分析和了解流行趋势的有用数据源。
@@ -99,7 +99,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
 
 **获取推文**
 
-1. 打开 Windows PowerShell 集成脚本环境 (ISE)。 （在 Windows 8 的“开始”屏幕上键入 **PowerShell_ISE**，并单击“Windows PowerShell ISE”。 请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][powershell-start]）。
+1. 打开 Windows PowerShell 集成脚本环境 (ISE)。 （在 Windows 8 的“开始”屏幕上键入 **PowerShell_ISE**，并单击“Windows PowerShell ISE”。 请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)
 2. 将以下脚本复制到脚本窗格中：
 
     ```powershell

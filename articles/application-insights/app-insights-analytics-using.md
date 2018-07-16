@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/02/2018
 ms.reviewer: danha
 ms.author: mbullwin
-ms.openlocfilehash: 7f8f49cf88bda8e485d2365281c13680ef796196
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: aa86e2f3b1fb147ab167c948475a5207693143c2
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295513"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341556"
 ---
 # <a name="using-analytics-in-application-insights"></a>使用 Application Insights 中的 Analytics
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
@@ -151,7 +151,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 在某些情况下，将图表固定到仪表板时，图表会应用特定的简化功能。
 
-**时间限制：** 查询自动限定为过去 14 天。 这种效果就相当于在查询中包含 `where timestamp > ago(14d)`。
+**时间限制：** 查询自动限定为过去 30 天。 这种效果就相当于在查询中包含 `where timestamp > ago(30d)`。
 
 **Bin 计数限制：** 如果显示的图表包含许多离散的 Bin（通常为条形图），所占比例较少的 Bin 将自动分组到单个“其他”Bin。 例如，以下查询：
 
