@@ -106,7 +106,7 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
              "https://localhost:3000"
          ],
 
-    将 URL 替换为自己服务的 URL。  示例包括“http://localhost:3000”（适用于 Node.js 示例服务）或“http://localhost:4400”（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
+    将 URL 替换为自己服务的 URL。  示例包括“ http://localhost:3000 ”（适用于 Node.js 示例服务）或“ http://localhost:4400 ”（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
 8. 单击屏幕右上角的“读/写”按钮。
 9. 单击绿色的“PUT”按钮。
 
