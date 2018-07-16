@@ -54,7 +54,7 @@ ms.locfileid: "36296954"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| SQL 数据库不存在。 | 该数据库已被删除或重命名。 | <ul><li>检查是否意外删除或重命名了该数据库。</li><li>如果意外删除了该数据库，若要继续备份，请将该数据库还原到原始位置。</li><li>如果删除了该数据库，且将来不需要备份，请在恢复服务保管库中单击“停止备份”和“删除/保留数据”。[](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms)</li>|
+| SQL 数据库不存在。 | 该数据库已被删除或重命名。 | <ul><li>检查是否意外删除或重命名了该数据库。</li><li>如果意外删除了该数据库，若要继续备份，请将该数据库还原到原始位置。</li><li>如果删除了该数据库，且将来不需要备份，请在恢复服务保管库中单击“停止备份 [和“删除/保留数据](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms) 。</li>|
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 

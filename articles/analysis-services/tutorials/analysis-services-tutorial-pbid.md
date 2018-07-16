@@ -26,7 +26,7 @@ ms.locfileid: "37446582"
 ## <a name="prerequisites"></a>先决条件
 
 - 向服务器中[添加 adventureworks 示例模型数据库](../analysis-services-create-sample-model.md)。
-- 具有 adventureworks 示例模型数据库的“读取”[](../analysis-services-server-admins.md)权限。
+- 具有 adventureworks 示例模型数据库的 [*读取*](../analysis-services-server-admins.md) 权限。
 - [安装最新的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
