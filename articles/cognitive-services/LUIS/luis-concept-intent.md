@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5c2feb0240b676d4e106cbda65aaaed7604a35c5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: cbf1ad2da3bbc86f8c6861458ae9e5d5c49c56ce
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265146"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888572"
 ---
 # <a name="intents-in-luis"></a>LUIS 中的意向
 
@@ -93,12 +93,10 @@ None 意向是必需的意向，不能删除或重命名。
 深入了解有关将 LUIS 和 QnA maker 应用与[调度模型](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)相结合的信息。 
 
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>请求具有大量意向的应用的帮助
-如果减少意向数或将意向划分给多个应用不起作用，请与支持部门联系。 如果 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
+如果减少意向数或将意向划分给多个应用不起作用，请与支持部门联系。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解[实体](luis-concept-entity-types.md)，这是与意向相关的重要字词
 * 了解如何在 LUIS 应用中[添加和管理意向](luis-how-to-add-intents.md)。
 * 查看意向[最佳做法](luis-concept-best-practices.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

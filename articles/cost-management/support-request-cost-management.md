@@ -23,7 +23,7 @@ ms.locfileid: "35296685"
 
 ## <a name="open-a-support-ticket"></a>开具支持票证
 
-1. 登录 Azure 门户 (https://portal.azure.com)。
+1. 登录 Azure 门户 (https://portal.azure.com) 。
 2. 单击顶部导航栏上的“帮助”。
 3. 在“帮助”菜单中，单击“帮助和支持”。
 4. 在“帮助”下的“帮助和支持”中，单击“新建支持请求”。

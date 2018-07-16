@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: f68e05ba40827375fbd76448e38916c682075228
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 6c4e4c7acb5083e758aa7c6b94e2464a85ae8e9e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264003"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951101"
 ---
 # <a name="best-practices"></a>最佳实践
 使用应用创作进程生成 LUIS 应用。 
@@ -25,7 +25,7 @@ ms.locfileid: "36264003"
 * 从终结点进行测试 
 * 添加特征
 
-[发布](publishapp.md)应用后，请采用后列创作周期：添加特征、发布和从终结点进行测试。 请勿通过添加更多话语示例来启动下一个创作周期。 这无法让 LUIS 通过真实的用户话语来学习相关模型。 
+[发布](luis-how-to-publish-app.md)应用后，请采用后列创作周期：添加特征、发布和从终结点进行测试。 请勿通过添加更多话语示例来启动下一个创作周期。 这无法让 LUIS 通过真实的用户话语来学习相关模型。 
 
 为了让 LUIS 高效学习，请勿在当前示例话语与终结点话语配对组返回较高的可信度和预测分数之前展开话语。 使用主动学习、[模式](luis-concept-patterns.md)和[短语列表](luis-concept-feature.md)来提高分数。 
 
@@ -77,7 +77,7 @@ Book a hotel
 这是回退意向，指示应用程序以外的所有内容。 针对 LUIS 应用其余部分的每 10 个话语示例，向“None”意向中添加一个话语示例。
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>应利用主动学习的建议功能
-定期使用[主动学习](label-suggested-utterances.md)的“查看终结点话语”功能，而不是将更多话语示例添加到意向。 因为应用会不断接收终结点话语，所以此列表会不断变化。
+定期使用[主动学习](luis-how-to-review-endoint-utt.md)的“查看终结点话语”功能，而不是将更多话语示例添加到意向。 因为应用会不断接收终结点话语，所以此列表会不断变化。
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>应监视应用的性能
 使用测试集监视预测准确性。 
@@ -113,6 +113,4 @@ LUIS 会预期一个意向的话语会存在变体。 在总体意思相同的�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何在 LUIS 应用中[规划应用](plan-your-app.md)。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+* 了解如何在 LUIS 应用中[规划应用](luis-how-plan-your-app.md)。

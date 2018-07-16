@@ -99,7 +99,7 @@ Operations Management Suite (OMS) 边栏选项卡允许你为网络配置 OMS �
 参数名称|说明| 允许值|默认值
 ---|---|---|---
 连接到现有 OMS|新建 Log Analytics 实例或加入现有实例|新建 加入现有|新建 Log Analytics 位置|将部署新 Log Analytics 的区域（如果选择“新建”，则可见）
-现有 OMS 工作区 ID|现有实例 OMS 服务层的工作区 ID（如果选择“加入现有”，则可见）|为新实例选择定价层。 有关详细信息，请参阅https://azure.microsoft.com/pricing/details/log-analytics/（如果选择“加入现有”，则可见）|每个节点免费独立|免费
+现有 OMS 工作区 ID|现有实例 OMS 服务层的工作区 ID（如果选择“加入现有”，则可见）|为新实例选择定价层。 有关详细信息，请参阅 https://azure.microsoft.com/pricing/details/log-analytics/ （如果选择“加入现有”，则可见）|每个节点免费独立|免费
 现有的 OMS 主键|用于连接到现有 OMS 实例的主键（如果选择“加入现有”，则可见）
 
 ### <a name="deployment-regions"></a>部署区域
