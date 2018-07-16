@@ -204,7 +204,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-将应用程序成功发布到本地群集之后，便可以在我们在 Node.js 应用程序的服务清单中输入的端口（例如 http://localhost:3000）上访问 Node.js 应用程序。
+将应用程序成功发布到本地群集之后，便可以在我们在 Node.js 应用程序的服务清单中输入的端口（例如 http://localhost:3000 ）上访问 Node.js 应用程序。
 
 在本教程中，学习了如何轻松地将两个现有应用程序打包成一个 Service Fabric 应用程序。 你也了解了如何将其部署到 Service Fabric，以便让它能够从一些 Service Fabric 功能（例如高可用性和运行状况系统整合）中获益。
 
