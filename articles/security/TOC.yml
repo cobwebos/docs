@@ -153,7 +153,7 @@
               href: security-azure-log-integration-security-center.md
             - name: 集成 Key Vault 中的日志
               href: security-azure-log-integration-keyvault-eventhub.md
-            - name: 常见问题
+            - name: 常见问题解答
               href: security-azure-log-integration-faq.md
     - name: 运营安全
       href: azure-operational-security-overview.md
@@ -218,11 +218,10 @@
           href: ./blueprints/uknhs-iaaswa-overview.md
         - name: PaaS Web 应用程序
           href: ./blueprints/uknhs-paaswa-overview.md
-    - name: UK-OFFICIAL
-      href: ./blueprints/uk-official-three-tier-applications-overview.md
+    - name: 英国官方
       items:
-        - name: 原则概述
-          href: ./blueprints/uk-official-three-tier-applications-principles-overview.md
+        - name: IaaS Web 应用程序
+          href: ./blueprints/ukofficial-iaaswa-overview.md
     - name: HIPAA/HITRUST 运行状况数据和 AI
       href: ./blueprints/azure-health.md
 - name: 白皮书

@@ -32,11 +32,6 @@
 ### [.NET](iot-hub-csharp-csharp-device-management-get-started.md)
 ### [Java](iot-hub-java-java-device-management-getstarted.md)
 ### [Python](iot-hub-python-python-device-management-get-started.md)
-## 使用设备作业更新设备固件
-### [Node.js](iot-hub-node-node-firmware-update.md)
-### [.NET](iot-hub-csharp-csharp-firmware-update.md)
-### [Java](iot-hub-java-java-firmware-update.md)
-### [Python](iot-hub-python-python-firmware-update.md)
 
 ### [批量管理 IoT 设备](iot-hub-bulk-identity-mgmt.md)
 
@@ -180,11 +175,6 @@
 #### [.NET](iot-hub-csharp-csharp-direct-methods.md)
 #### [Java](iot-hub-java-java-direct-methods.md)
 #### [Python](iot-hub-python-python-direct-methods.md)
-### 如何使用克隆属性
-#### [Node.js](iot-hub-node-node-twin-how-to-configure.md)
-#### [.NET](iot-hub-csharp-csharp-twin-how-to-configure.md)
-#### [Java](iot-hub-java-java-twin-how-to-configure.md)
-#### [Python](iot-hub-python-python-twin-how-to-configure.md)
 ### 计划和广播作业
 #### [Node.js](iot-hub-node-node-schedule-jobs.md)
 #### [.NET](iot-hub-csharp-csharp-schedule-jobs.md)
@@ -251,7 +241,8 @@
 # 相关内容
 ## 解决方案 
 ### [IoT 解决方案加速器](/azure/iot-suite) 
-### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
+### 
+  [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## 平台服务 
 ### [IoT 中心](/azure/iot-hub) 
 ### [IoT 中心设备预配服务](/azure/iot-dps)
@@ -281,6 +272,6 @@
 ## [定价](https://azure.microsoft.com/pricing/details/iot-hub/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=iot-hub)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-iot-hub)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-iot-hub)
 ## [技术案例研究](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=iot-hub)

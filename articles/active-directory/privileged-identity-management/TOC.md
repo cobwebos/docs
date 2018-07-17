@@ -42,9 +42,9 @@
 ### [开始访问审阅](pim-resource-roles-start-access-review.md)
 ### [完成访问审阅](pim-resource-roles-complete-access-review.md)
 
-# 常见问题
-## 用于资源角色的 PIM
-### [分配类型](pim-resource-roles-eligible-visibility.md)
+# 概念
+## [分配类型](pim-resource-roles-eligible-visibility.md)
+## [电子邮件通知](pim-email-notifications.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)

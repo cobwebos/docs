@@ -143,9 +143,9 @@
 ## 管理密码
 ### [密码概述](authentication/active-directory-passwords-overview.md)
 ### 用户文档
-#### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
+#### [重置或更改密码](user-help/active-directory-passwords-update-your-own-password.md)
 #### [密码最佳做法](active-directory-secure-passwords.md)
-#### [注册自助密码重置](active-directory-passwords-reset-register.md)
+#### [注册自助密码重置](user-help/active-directory-passwords-reset-register.md)
 ### [SSPR 工作原理](authentication/concept-sspr-howitworks.md)
 ### [SSPR 部署指南](authentication/howto-sspr-deployment.md)
 ### [SSPR 和 Windows 10](authentication/tutorial-sspr-windows.md)
@@ -174,8 +174,8 @@
 ### [计划 Azure AD 加入](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [常见问题](device-management-faq.md)
 ### 任务
-#### [设置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
-#### [设置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
+#### [设置已注册到 Azure AD 的 Windows 10 设备](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+#### [设置已加入 Azure AD 的设备](user-help/device-management-azuread-joined-devices-setup.md)
 #### [设置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
@@ -486,5 +486,5 @@
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-active-directory)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
