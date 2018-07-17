@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: mabrigg
-ms.openlocfilehash: e80c114b06390a72dcdcc614dffaa97b9761381e
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 43ec962c91b354d8f07f1be8885b89424d00e452
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988902"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069853"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>在 Azure Stack 中管理更新概述
 
 *适用于：Azure Stack 集成系统*
 
-新的更新包的 Azure Stack 集成系统通常发布围绕每个月的第四个星期二。 有关特定通知过程，以确保更新通知达到你的组织的信息，请咨询 OEM。 您还可以查看此文档库中下下**概述** > **发行说明**有关处于活动状态的支持的版本信息。 
+Microsoft 更新包的 Azure Stack 集成系统通常发布围绕每个月的第四个星期二。 有关特定通知过程，以确保更新通知达到你的组织的信息，请咨询 OEM。 您还可以查看此文档库中下下**概述** > **发行说明**有关处于活动状态的支持的版本信息。 
 
 每次发布的 Microsoft 软件更新均打包为单个更新包。 Azure Stack 操作员，可以导入、 安装和监视安装进度的这些更新在管理员门户中的包。 
 
-原始设备制造商 (OEM) 硬件供应商也会发布更新，例如驱动程序和固件更新。 这些更新是由 OEM 硬件供应商以单独包的形式提供，并从 Microsoft 更新分别进行管理。
+原始设备制造商 (OEM) 硬件供应商也会发布更新，例如驱动程序和固件更新。 而 OEM 硬件供应商的情况下，这些更新传送作为单独的包，它们将被导入、 安装，并且从 Microsoft 更新包导入、 安装和管理管理相同的方式更新包。
 
 若要保持系统受支持，必须始终将 Azure Stack 更新为特定版本级别。 请务必查看 [Azure Stack 服务策略](azure-stack-servicing-policy.md)。
 

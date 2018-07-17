@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: da6bb00d7538c1a26e1ed4be29d3c882aa378e9e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: cdfdaf9195f14e3cbe3db2a4507bd91a3133a26e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077405"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071379"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure Stack 的存储容量
 
@@ -159,12 +159,13 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 
     然后检查 $destinationshares：
 
-    '' PowerShell $destinationshares
+    ````PowerShell 
+    $destinationshares
     ````
 
-    ![Example: $destination shares](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+    ![示例：$destination shares](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
-4. Start migration for a container. Migration is asynchronous. If you start migration of additional containers before the first migration completes, use the job id to track the status of each.
+4. 开始迁移容器。 迁移是异步操作。 如果在首次迁移完成之前开始迁移其他容器，请使用作业 ID 来跟踪每个容器的状态。
 
   ````PowerShell
   $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
@@ -195,7 +196,7 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 
 7. 可以再次运行步骤 6 中的命令，直到系统确认迁移作业的状态为 **Canceled**：  
 
-    ![示例： 已取消的状态](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![示例：“已取消”状态](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>移动 VM 磁盘
 *此选项仅适用于多节点部署。*
