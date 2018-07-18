@@ -1,4 +1,4 @@
----
+﻿---
 title: 适用于 ASP.NET Core 的 Azure Application Insights | Microsoft Docs
 description: 监视 Web 应用程序的可用性、性能和使用情况。
 services: application-insights
@@ -28,7 +28,7 @@ Azure Application Insights 提供 Web 应用程序的监视信息，深度可达
 
 ## <a name="prerequisites"></a>先决条件
 
-- NET Core 2.0.0 SDK 或更高版本。
+- .NET Core 2.0.0 SDK 或更高版本。
 - 装有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7.3 或更高版本。 
 
 ## <a name="create-an-aspnet-core-project-in-visual-studio"></a>在 Visual Studio 中创建 ASP.NET Core 项目

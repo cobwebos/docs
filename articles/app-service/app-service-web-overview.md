@@ -24,7 +24,7 @@ ms.locfileid: "33935624"
 ---
 # <a name="web-apps-overview"></a>Web 应用概述
 
-*Azure 应用服务 Web 应用*（简称 Web 应用）是用于托管 Web 应用程序、REST API 和移动后端的服务。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。 在基于 Windows 的环境中，应用程序可以轻松地运行和缩放。 对于基于 Linux 的环境，请参阅 [Linux 上的应用服务](containers/app-service-linux-intro.md)。 
+*Azure 应用服务 Web 应用*（简称 Web 应用）是用于托管 Web 应用程序、REST API 和移动后端的服务。 可以使用 .NET、.NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。 在基于 Windows 的环境中，应用程序可以轻松地运行和缩放。 对于基于 Linux 的环境，请参阅 [Linux 上的应用服务](containers/app-service-linux-intro.md)。 
 
 Web 应用不仅可将 Microsoft Azure 的强大功能（例如安全性、负载均衡、自动缩放和自动管理）添加到应用程序， 我们还能利用其 DevOps 功能，例如来自 VSTS、GitHub、Docker 中心和其他源的持续部署，以及包管理、过渡环境、自定义域和 SSL 证书。 
 

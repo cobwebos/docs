@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure AD Connect：排查连接问题 | Microsoft Docs
 description: 介绍如何使用 Azure AD Connect 排查连接问题。
 services: active-directory
@@ -68,7 +68,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 ![使用 Microsoft 帐户](./media/active-directory-aadconnect-troubleshoot-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>无法访问 MFA 终结点
-如果无法访问终结点 **https://secure.aadcdn.microsoftonline-p.com**，并且全局系统管理员启用了 MFA，则会出现此错误。  
+如果无法访问终结点 **https://secure.aadcdn.microsoftonline-p.com** ，并且全局系统管理员启用了 MFA，则会出现此错误。  
 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
 * 如果看到此错误，请检查是否已将 **secure.aadcdn.microsoftonline-p.com** 终结点添加到代理。

@@ -1,4 +1,4 @@
----
+﻿---
 title: 基于 Azure Stack 的应用服务 Update 2 发行说明 | Microsoft Docs
 description: 了解基于 Azure Stack 的应用服务 Update 2 的功能、已知问题和更新下载位置。
 services: azure-stack

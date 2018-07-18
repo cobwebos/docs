@@ -1,4 +1,4 @@
----
+﻿---
 title: 使用 AzCopy 将本地数据迁移到 Azure 存储 | Microsoft 文档
 description: 使用 AzCopy 将数据迁移或复制到 blob、表和文件内容或从其中迁移或复制出数据。 轻松将本地存储中的数据迁移到 Azure 存储中。
 services: storage
