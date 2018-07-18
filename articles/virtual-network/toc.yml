@@ -35,7 +35,7 @@
       href: policy-samples.md
 - name: 概念
   items:
-    - name: “安全”
+    - name: 安全组
       href: security-overview.md
     - name: 路由
       href: virtual-networks-udr-overview.md
@@ -317,5 +317,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-virtual-network'
-    - name: 常见问题
+    - name: 常见问题解答
       href: virtual-networks-faq.md

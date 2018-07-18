@@ -551,7 +551,7 @@
                   href: service-fabric-cluster-scale-up-down.md
                 - name: 以编程方式横向扩展
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: 纵向扩展主节点类型 VM
+                - name: 缩放或升级主节点类型 VM
                   href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
             - name: 升级
               href: service-fabric-cluster-upgrade.md
@@ -569,8 +569,6 @@
               href: service-fabric-cluster-delete.md
             - name: 远程连接到群集节点 VM
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-            - name: 升级/迁移 VMSS SKU
-              href: service-fabric-update-vmss-sku.md
         - name: 独立群集
           items:
             - name: 创建
