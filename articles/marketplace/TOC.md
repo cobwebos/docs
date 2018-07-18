@@ -8,12 +8,8 @@
 ### 如何在市场上进行发布  
 #### [确定你的解决方案的商品信息类型](./determine-your-listing-type.md)  
 #### [成为市场上的发布者](./become-publisher.md)  
-#### [按商品信息类型列出的要求](./listing-type-requirements.md) 
-#### 业务验证清单  
-##### [指南](./guidelines.md)  
-##### [在开发人员中心注册](./register-dev-center.md)  
-##### [添加银行和税务信息](./add-bank-tax-info.md)  
-##### [通过 Azure AD 启用试用](./enable-trial-using-azure-ad.md)  
+##### [创建 Microsoft 帐户](./guidelines.md)
+##### [在开发人员中心注册](./register-dev-center.md) 
 ##### [Azure Marketplace 的计费选项](./billing-options-azure-marketplace.md)  
 
 ### 发布指南（按产品/服务类型） 
@@ -24,12 +20,21 @@
 #### [容器](./marketplace-containers.md)
 #### [咨询服务](./consulting-services.md)  
 #### [AppSource 应用](./appsource-offer-publishing-guide.md)
+#### [通过 Azure Active Directory 启用市场试用版体验](./enable-trial-using-azure-ad.md)
 
 ### [通过市场扩展业务](./grow-your-business-with-azure-marketplace.md)  
 #### [首选解决方案](./preferred-solutions.md) 
 
 ### 支持  
 #### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)  
+
+### 发布指南  
+#### [Azure Marketplace 咨询服务](consulting-services.md)  
+#### [Azure Marketplace SaaS 应用技术发布指南](marketplace-saas-applications-technical-publishing-guide.md) 
+#### [通过 Azure Active Directory 启用市场试用版](./enable-trial-using-azure-ad.md)  
+
+### [通过市场扩展业务](./grow-your-business-with-azure-marketplace.md)  
+#### [首选解决方案](./preferred-solutions.md) 
 
 ## [云合作伙伴门户](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 

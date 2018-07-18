@@ -13,14 +13,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/01/2018
+  ms.date: 07/16/2018
   ms.author: nolachar
-  ms.openlocfilehash: 21f67f7fcce505e18792a3be830524d64dd8045e
-  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+  ms.openlocfilehash: 2b82b50972c2c61c9dda5d1b1862c0c4cc8a9052
+  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37045297"
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39070104"
 abstract:
   description: 使用 Microsoft 语音服务，开发人员可以轻松地向其应用程序添加支持语音的强大功能，包括使用 <a href="rest-apis">REST API</a> 或者 <a href="speech-sdk">C#、C++ 或 Java SDK</a> 进行的语音命令控制、听录、听写和翻译。<p>语音服务可以用来自定义<a href="how-to-customize-speech-models">语音转文本</a>模型，使之适应专用词汇、杂音环境和不同的说话方式。 也可使用自定义的<a href="https://cris.ai/Home/customvoice">文本转语音</a>和<a href="https://www.microsoft.com/translator/customization.aspx">语音翻译</a>。<p>有关更多详细信息，请参阅<a href="overview">什么是语音服务？</a>
 sections:
@@ -32,27 +32,63 @@ sections:
     style: dataMatrix
     columns:
     - image:
+        src: media/index/uwp.jpg
+    - image:
         src: media/index/logo_csharp.svg
     - image:
         src: media/index/logo_cplusplus.svg
     - image:
-        src: media/index/logo_java.jpg
+        src: media/index/logo_netcore.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_rest_sr.svg
+    - image:
+        src: media/index/logo_rest_tts.svg
     rows:
     - title: Windows
       values:
+      - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
       - href: quickstart-cpp-windows
+      - href: quickstart-csharp-dotnetcore-windows
+      - href: 
+      - href: 
       - href: 
     - title: Linux
       values:
       - href: 
+      - href: 
       - href: quickstart-cpp-linux
       - href: 
-    - title: 设备 SDK (Android)
+      - href: 
+    - title: Android SDK
       values:
       - href: 
       - href: 
-      - href: https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk
+      - href: 
+      - href: 
+      - href: quickstart-java-android
+      - href: 
+      - href: 
+    - title: 设备 SDK
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: speech-devices-sdk
+      - href: 
+      - href: 
+    - title: Web
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: rest-apis
+      - href: rest-apis
 - title: 示例和参考
   items:
   - type: list
@@ -62,10 +98,8 @@ sections:
     - title: 示例
       html: <ul><li><a href="speech-to-text-sample.md">语音识别</a></li><li><a href="intent.md">意向识别</a></li><li><a href="translation.md">翻译</a></li></ul>
     - title: API 参考
-      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C# API</a></li><li><a href="https://aka.ms/csspeech/cppref">C + + API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java API（语音设备 SDK）</a></li></ul>
+      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C# API（包括 UWP 和 .NET Standard）</a></li><li><a href="https://aka.ms/csspeech/cppref">C + + API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java API</a>，用于语音 SDK<br>和语音设备 SDK</li></ul>
 - title: 语音设备 SDK
   items:
   - type: paragraph
-    text: 随着统一的语音服务的推出，Microsoft 及其合作伙伴现在提供一个针对开发支持语音的设备进行了优化的集成硬件/软件平台：<b>语音设备 SDK</b>。 此 SDK 适用于面向所有类型的应用程序开发智能语音设备。
-  - type: paragraph
-    text: 通过<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk">语音设备 SDK</a> 可以使用品牌特有的、触发音频捕获的自定义唤醒字词构建自己的环境设备。 它还从多渠道来源提供高级音频处理，以用于进行更准确的语音识别，包括噪声抑制、远场语音和波束赋形。
+    text: 随着统一的语音服务的推出，Microsoft 及其合作伙伴现在提供一个针对开发支持语音的设备进行了优化的集成硬件/软件平台：<a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>语音设备 SDK</a>。 此 SDK 适合为所有类型的应用程序开发环境设备，可以用来定义品牌所特有的自定义唤醒词<I></I>。 硬件通过多声道音频源提供高级音频处理（包括噪声抑制、远场语音和波束赋形），以提高语音识别的准确性。

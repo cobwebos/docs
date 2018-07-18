@@ -319,6 +319,10 @@
           href: transform-data-using-data-lake-analytics.md
         - name: Databricks Notebook 活动
           href: transform-data-databricks-notebook.md
+        - name: Databricks Jar 活动
+          href: transform-data-databricks-jar.md
+        - name: Databricks Python 活动
+          href: transform-data-databricks-python.md
         - name: 自定义活动
           href: transform-data-using-dotnet-custom-activity.md
         - name: 计算链接服务

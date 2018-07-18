@@ -402,6 +402,8 @@
           href: sql-database-cloud-migrate.md
         - name: 迁移到托管实例
           href: sql-database-managed-instance-migrate.md
+        - name: 将 TDE 证书迁移到托管实例
+          href: sql-database-managed-instance-migrate-tde-certificate.md
         - name: 在迁移后管理 SQL 数据库
           href: sql-database-manage-after-migration.md
     - name: 加载和移动数据
@@ -555,7 +557,7 @@
   items:
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 常见问题
+    - name: 常见问题解答
       href: sql-database-faq.md
     - name: 公共数据集
       href: sql-database-public-data-sets.md

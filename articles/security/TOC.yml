@@ -164,6 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: 管理和符合性
   items:
+    - name: FedRAMP
+      items:
+        - name: 数据分析
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: 数据仓库
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: IaaS Web 应用程序
+          href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: PaaS Web 应用程序
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       items:
         - name: 数据分析
@@ -184,20 +194,10 @@
           href: ./blueprints/gdpr-iaaswa-overview.md
         - name: PaaS Web 应用程序
           href: ./blueprints/gdpr-paaswa-overview.md
-    - name: FedRAMP
+    - name: HIPAA/HITRUST
       items:
-        - name: 数据分析
-          href: ./blueprints/fedramp-analytics-overview.md
-        - name: 数据仓库
-          href: ./blueprints/fedramp-datawarehouse-overview.md
-        - name: IaaS Web 应用程序
-          href: ./blueprints/fedramp-iaaswa-overview.md
-        - name: PaaS Web 应用程序
-          href: ./blueprints/fedramp-paaswa-overview.md
-    - name: TIC
-      items:
-        - name: 与 Azure 的受信任 Internet 连接
-          href: ./compliance/compliance-tic.md
+        - name: 运行状况数据和 AI
+          href: ./blueprints/azure-health.md
     - name: PCI DSS
       items:
         - name: 数据分析
@@ -208,6 +208,10 @@
           href: ./blueprints/pcidss-iaaswa-overview.md
         - name: PaaS Web 应用程序
           href: ./blueprints/pcidss-paaswa-overview.md
+    - name: TIC
+      items:
+        - name: 与 Azure 的受信任 Internet 连接
+          href: ./compliance/compliance-tic.md
     - name: UK NHS
       items:
         - name: 数据分析
@@ -222,8 +226,6 @@
       items:
         - name: IaaS Web 应用程序
           href: ./blueprints/ukofficial-iaaswa-overview.md
-    - name: HIPAA/HITRUST 运行状况数据和 AI
-      href: ./blueprints/azure-health.md
 - name: 白皮书
   href: security-white-papers.md
 - name: Azure 安全服务

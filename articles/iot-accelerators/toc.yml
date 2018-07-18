@@ -10,6 +10,8 @@
   items:
     - name: 部署远程监视解决方案
       href: quickstart-remote-monitoring-deploy.md
+    - name: 部署连接工厂解决方案
+      href: quickstart-connected-factory-deploy.md
     - name: 部署预测性维护解决方案
       href: quickstart-predictive-maintenance-deploy.md
     - name: 部署设备模拟解决方案
@@ -141,8 +143,8 @@
           href: iot-accelerators-predictive-overview.md
     - name: 互连工厂
       items:
-        - name: 部署解决方案加速器
-          href: iot-accelerators-connected-factory-overview.md
+        - name: 使用仪表板
+          href: iot-accelerators-connected-factory-dashboard.md
         - name: 部署网关
           href: iot-accelerators-connected-factory-gateway-deployment.md
         - name: 使用 OPC 发布服务器

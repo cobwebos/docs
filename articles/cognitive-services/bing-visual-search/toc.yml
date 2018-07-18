@@ -28,7 +28,7 @@
       href: visual-search-sdk-python.md
 - name: 教程
   items:
-    - name: 视觉搜索图像上传
+    - name: 图像上传 Web 应用
       href: tutorial-visual-search-image-upload.md
     - name: 单页 Web 应用
       href: tutorial-bing-visual-search-single-page-app.md
