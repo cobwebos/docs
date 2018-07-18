@@ -61,8 +61,6 @@
           maintainContext: true
         - name: 将 Kafka 与 Azure 容器服务配合使用
           href: apache-kafka-azure-container-services.md
-        - name: Kafka 和 Azure Functions
-          href: apache-kafka-azure-functions.md
     - name: 开发
       items:
         - name: 使用空边缘节点
