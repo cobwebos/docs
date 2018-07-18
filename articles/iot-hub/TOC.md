@@ -180,8 +180,7 @@
 # 相关内容
 ## 解决方案 
 ### [IoT 解决方案加速器](/azure/iot-accelerators) 
-### 
-  [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
+### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## 平台服务 
 ### [IoT 中心](/azure/iot-hub) 
 ### [IoT 中心设备预配服务](/azure/iot-dps)
