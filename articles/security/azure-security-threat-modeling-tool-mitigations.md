@@ -1,6 +1,6 @@
 ---
-title: "风险缓解 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "Microsoft 威胁建模工具的风险缓解页，重点介绍了针对最常见的已发生威胁的可能解决方案。"
+title: 风险缓解 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: Microsoft 威胁建模工具的风险缓解页，重点介绍了针对最常见的已发生威胁的可能解决方案。
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,12 +19,13 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23043432"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft 威胁建模工具风险缓解
 
 威胁建模工具是 Microsoft 安全开发生命周期 (SDL) 的核心要素。 当潜在安全问题处于无需花费过多成本即可相对容易解决的阶段，软件架构师可以使用威胁建模工具提前识别这些问题。 因此，它能大幅减少开发总成本。 此外，我们设计该工具时考虑到了非安全专家的体验，为他们提供有关创建和分析威胁模型的清晰指导，让所有开发人员都可以更轻松地使用威胁建模。
 
-请访问**[威胁建模工具](./azure-security-threat-modeling-tool.md)**以立即开始！
+请访问**[威胁建模工具](./azure-security-threat-modeling-tool.md)** 以立即开始！
 
 ## <a name="mitigation-categories"></a>风险缓解类别
 

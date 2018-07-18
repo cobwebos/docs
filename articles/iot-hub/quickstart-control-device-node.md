@@ -1,23 +1,21 @@
 ---
 title: 快速入门：从 Azure IoT 中心控制设备 (Node.js) | Microsoft Docs
 description: 本快速入门会运行两个示例 Node.js 应用程序。 一个为后端应用程序，可远程控制连接到中心的设备。 另一个应用程序可模拟连接到中心的可受远程控制的设备。
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: node
+services: iot-hub
+ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
-ms.date: 04/30/2018
+ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: dca312a766e38bc9f7991108559721ce354eb5ae
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 8d771fb17019e39da93995d0244c8089ea4a08b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235586"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>快速入门：控制连接到 IoT 中心的设备 (Node.js)
 
@@ -89,7 +87,7 @@ node --version
 
 模拟设备应用程序会连接到 IoT 中心上特定于设备的终结点，发送模拟遥测数据，并侦听中心的直接方法调用。 在本快速入门中，中心的直接方法调用告知设备对其发送遥测的间隔进行更改。 执行直接方法后，模拟设备会将确认发送回中心。
 
-1. 在终端窗口中，导航到示例 Node.js 项目的根文件夹。 然后导航到 Quickstarts\simulated-device-2 文件夹。
+1. 在终端窗口中，导航到示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device-2** 文件夹。
 
 1. 在所选文本编辑器中打开 SimulatedDevice.js 文件。
 
@@ -110,7 +108,7 @@ node --version
 
 后端应用程序会连接到 IoT 中心上的服务端终结点。 应用程序通过 IoT 中心对设备进行直接方法调用，并侦听确认。 IoT 中心后端应用程序通常在云中运行。
 
-1. 在另一终端窗口中，导航到示例 Node.js 项目的根文件夹。 然后导航到 Quickstarts\back-end-application 文件夹。
+1. 在另一终端窗口中，导航到示例 Node.js 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹。
 
 1. 在所选文本编辑器中打开 BackEndApplication.js 文件。
 
@@ -133,9 +131,8 @@ node --version
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续学习教程，请保留资源组和 IoT 中心，稍后再进行使用。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的资源组，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -144,4 +141,4 @@ node --version
 若要了解如何将设备到云的消息路由到云中的不同目标，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
-> [教程：将遥测路由到不同的终结点进行处理](iot-hub-node-node-process-d2c.md)
+> [教程：将遥测路由到不同的终结点进行处理](tutorial-routing.md)

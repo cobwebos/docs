@@ -3,25 +3,26 @@ title: 使用 Privileged Identity Management 激活 Azure 资源的角色 | Micr
 description: 介绍如何在 PIM 中激活角色。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a985e67cc566cc45b3ee6b8dc98e91a8f34abd1b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 483f30a6546cf21d93b96b08eede6afae828d9e4
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151104"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548298"
 ---
 # <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>使用 Privileged Identity Management 激活 Azure 资源的角色
-Privileged Identity Management (PIM) 引入了激活 Azure 资源角色的新体验。 符合条件的角色成员可计划在未来某个时间激活角色。 他们还可选择特定激活持续时间，但不能超过最长持续时间（由管理员配置）。 有关详细信息，请参阅[如何在 Azure AD Privileged Identity Management 中激活或停用角色](../active-directory-privileged-identity-management-how-to-activate-role.md)。
+Privileged Identity Management (PIM) 引入了激活 Azure 资源角色的新体验。 符合条件的角色成员可计划在未来某个时间激活角色。 他们还可选择特定激活持续时间，但不能超过最长持续时间（由管理员配置）。 有关详细信息，请参阅[如何在 Azure AD Privileged Identity Management 中激活或停用角色](pim-how-to-activate-role.md)。
 
 ## <a name="activate-roles"></a>激活角色
 转到左侧窗格中“我的角色”部分。 针对要激活的角色，选择“激活”。

@@ -1,25 +1,27 @@
 ---
-title: "使用现有 ADSync 数据库安装 Azure AD Connect | Microsoft Docs"
-description: "本主题介绍如何使用现有 ADSync 数据库。"
+title: 使用现有 ADSync 数据库安装 Azure AD Connect | Microsoft Docs
+description: 本主题介绍如何使用现有 ADSync 数据库。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.reviewer: cychua
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d65e12350e6302b0f95091f48f71cdc7d4610e2c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b28d4cc6b10b0fd47a67cfefa7cf1022921a5d96
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591763"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>使用现有 ADSync 数据库安装 Azure AD Connect
 Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使用随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，也可以使用自己的完整版本 SQL。 以前，当安装 Azure AD Connect 时，始终会创建一个名为 ADSync 的新数据库。 使用 Azure AD Connect 版本 1.1.613.0（或更高版本），可以选择通过将 Azure AD Connect 指向现有的 ADSync 数据库来安装 Azure AD Connect。
@@ -74,7 +76,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使�
 ![欢迎使用](media/active-directory-aadconnect-existing-database/db7.png)
  
  
-9.  提供凭据后，红色十字图标将被替换为绿色钩号图标。 单击“下一步”。
+9.  提供凭据后，红色十字图标将被替换为绿色钩号图标。 单击“资源组名称” 的 Azure 数据工厂。
 ![欢迎使用](media/active-directory-aadconnect-existing-database/db8.png)
  
  

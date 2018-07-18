@@ -1,10 +1,10 @@
 ---
-title: "为 Azure 移动应用启用脱机同步 (Xamarin Android)"
-description: "了解如何在 Xamarin Android 应用程序中使用应用服务移动应用缓存和同步脱机数据"
+title: 为 Azure 移动应用启用脱机同步 (Xamarin Android)
+description: 了解如何在 Xamarin Android 应用程序中使用应用服务移动应用缓存和同步脱机数据
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 91d59e4b-abaa-41f4-80cf-ee7933b32568
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 5c6ff5ac909e2dc6918f85d39beb781952ee6dd0
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e0146be345215701cf1afe86345afc286933d51b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750962"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>为 Xamarin.Android 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -32,7 +33,7 @@ ms.lasthandoff: 01/04/2018
 若要了解有关脱机同步功能的详细信息，请参阅主题 [Azure 移动应用中的脱机数据同步]。
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>更新客户端应用以支持脱机功能
-脱机情况下，可使用 Azure 移动应用脱机功能与本地数据库交互。 要在应用中使用这些功能，请将 [SyncContext] 初始化到本地存储。 然后，通过 [IMobileServiceSyncTable][IMobileServiceSyncTable] 接口引用表。 SQLite 在设备上用作本地存储。
+脱机情况下，可使用 Azure 移动应用脱机功能与本地数据库交互。 要在应用中使用这些功能，请将 [SyncContext] 初始化到本地存储。 然后，通过 [IMobileServiceSyncTable](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mobileservices.sync.imobileservicesynctable?view=azure-dotnet) 接口引用表。 SQLite 在设备上用作本地存储。
 
 1. 在 Visual Studio 中，打开在[创建 Xamarin Android 应用]教程中完成的项目中的 NuGet 包管理器。  搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
 2. 打开 ToDoActivity.cs 文件并取消注释 `#define OFFLINE_SYNC_ENABLED` 定义。

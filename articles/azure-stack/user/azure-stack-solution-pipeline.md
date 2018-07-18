@@ -16,7 +16,7 @@ ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
 ms.openlocfilehash: 41e6f64ada7c95674cc2573048eef8afc83e4385
 ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34604346"

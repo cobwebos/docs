@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Virtual Academy 中的 Azure 安全性课程 | Microsoft 文档"
-description: "本文提供来自 Microsoft Virtual Academy 的与 Azure 安全性相关的特选课程集合。  Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和数据专业人员以及学生了解最新技术、构建自己的技能并提升他们的职业生涯。"
+title: Microsoft Virtual Academy 中的 Azure 安全性课程 | Microsoft 文档
+description: 本文提供来自 Microsoft Virtual Academy 的与 Azure 安全性相关的特选课程集合。  Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和数据专业人员以及学生了解最新技术、构建自己的技能并提升他们的职业生涯。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540042"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Microsoft Virtual Academy 中的 Azure 安全性课程
 Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和数据专业人员以及学生了解最新技术、构建自己的技能并提升他们的职业生涯。

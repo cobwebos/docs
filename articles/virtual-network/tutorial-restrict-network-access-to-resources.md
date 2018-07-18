@@ -12,16 +12,16 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: virtual-networ
+ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/14/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: f53544e756bde623a604513f17f9cc92c8efe42b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2442c177b303600f936e80f6c765e2d4096b1dca
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021713"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>教程：使用 Azure 门户通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 04/05/2018
     |地址空间| 10.0.0.0/16|
     |订阅| 选择订阅|
     |资源组 | 选择“新建”，并输入 myResourceGroup|
-    |Location| 选择“美国东部” |
+    |位置| 选择“美国东部” |
     |子网名称| 公共|
     |子网地址范围| 10.0.0.0/24|
     |服务终结点| 已禁用|
@@ -64,6 +64,8 @@ ms.lasthandoff: 04/05/2018
 
 
 ## <a name="enable-a-service-endpoint"></a>启用服务终结点
+
+每个服务、每个子网均启用服务终结点。 创建子网并为该子网启用服务终结点。
 
 1. 在门户顶部的“搜索资源、服务和文档”框中，输入 *myVirtualNetwork*。 当“myVirtualNetwork”出现在搜索结果中时，将其选中。
 2. 将子网添加到虚拟网络。 在“设置”下面选择“子网”，然后选择“+ 子网”，如下图中所示：
@@ -78,23 +80,28 @@ ms.lasthandoff: 04/05/2018
     |地址范围| 10.0.1.0/24|
     |服务终结点| 在“服务”下选择“Microsoft.Storage”|
 
+> [!CAUTION]
+> 在为其中有资源的现有子网启用服务终结点之前，请参阅[更改子网设置](virtual-network-manage-subnet.md#change-subnet-settings)。
+
 ## <a name="restrict-network-access-for-a-subnet"></a>限制子网的网络访问
+
+默认情况下，子网中的所有虚拟机都可以与所有资源通信。 可以通过创建网络安全组并将其关联到子网来限制与子网中所有资源的通信。
 
 1. 选择 Azure 门户左上角的“+ 创建资源”。
 2. 依次选择“网络”、“网络安全组”。
-在“创建网络安全组”下，输入或选择以下信息，然后选择“创建”：
+3. 在“创建网络安全组”下，输入或选择以下信息，然后选择“创建”：
 
     |设置|值|
     |----|----|
     |名称| myNsgPrivate |
     |订阅| 选择订阅|
     |资源组 | 选择“使用现有资源组”，再选择“myResourceGroup”。|
-    |Location| 选择“美国东部” |
+    |位置| 选择“美国东部” |
 
 4. 创建网络安全组后，在门户顶部的“搜索资源、服务和文档”框中输入 *myNsgPrivate*。 当“myNsgPrivate”出现在搜索结果中时，将其选中。
 5. 在“设置”下，选择“出站安全规则”。
 6. 选择“+ 添加”。
-7. 创建允许对分配给 Azure 存储服务的公共 IP 地址进行出站访问的规则。 输入或选择以下信息，然后选择“确定”：
+7. 创建一条允许出站通信到 Azure 存储服务的规则。 输入或选择以下信息，然后选择“确定”：
 
     |设置|值|
     |----|----|
@@ -107,7 +114,8 @@ ms.lasthandoff: 04/05/2018
     |操作|允许|
     |Priority|100|
     |名称|Allow-Storage-All|
-8. 创建一个规则，用于替代允许对所有公共 IP 地址进行出站访问的默认安全规则。 使用以下值再次完成步骤 6 和 7：
+    
+8. 创建一个拒绝到 Internet 的出站通信的规则。 此规则将覆盖所有网络安全组中允许出站 Internet 通信的默认规则。 使用以下值再次完成步骤 6 和 7：
 
     |设置|值|
     |----|----|
@@ -159,7 +167,7 @@ ms.lasthandoff: 04/05/2018
     |复制| 本地冗余存储 (LRS)|
     |订阅| 选择订阅|
     |资源组 | 选择“使用现有资源组”，再选择“myResourceGroup”。|
-    |Location| 选择“美国东部” |
+    |位置| 选择“美国东部” |
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>在存储帐户中创建文件共享
 
@@ -171,9 +179,9 @@ ms.lasthandoff: 04/05/2018
 4. 在“名称”下输入 *my-file-share*，然后选择“确定”。
 5. 关闭“文件服务”框。
 
-### <a name="enable-network-access-from-a-subnet"></a>启用从子网的网络访问
+### <a name="restrict-network-access-to-a-subnet"></a>限制对子网的网络访问
 
-默认情况下，存储帐户接受来自任何网络中的客户端的网络连接。 若只想允许来自特定子网的访问，并拒绝来自其他所有网络的网络访问，请完成以下步骤：
+默认情况下，存储帐户接受来自任何网络（包括 Internet）中的客户端的网络连接。 除 *myVirtualNetwork* 虚拟网络中的“专用”子网之外，拒绝来自 Internet 以及所有虚拟网络中的所有其他子网的网络访问。
 
 1. 在存储帐户的“设置”下，选择“防火墙和虚拟网络”。
 2. 在“虚拟网络”下，选择“选择网络”。
@@ -213,7 +221,7 @@ ms.lasthandoff: 04/05/2018
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“使用现有资源组”，再选择“myResourceGroup”。|
-    |Location| 选择“美国东部”。|
+    |位置| 选择“美国东部”。|
 
     ![输入虚拟机的基本信息](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. 选择虚拟机的大小，然后选择“选择”。
@@ -256,13 +264,13 @@ ms.lasthandoff: 04/05/2018
 
     Azure 文件共享已成功映射到驱动器 Z。
 
-7. 通过命令提示符确认 VM 没有与其他任何公共 IP 地址建立出站连接：
+7. 通过命令提示符确认 VM 没有与 Internet 建立出站连接：
 
     ```
     ping bing.com
     ```
     
-    不会收到回复，因为除了分配给 Azure 存储服务的地址以外，关联到“专用”子网的网络安全组不允许与其他公共 IP 地址建立出站访问。
+    不会收到回复，因为关联到“专用”子网的网络安全组不允许与 Internet 建立出站访问。
 
 8. 关闭与 *myVmPrivate* VM 建立的远程桌面会话。
 
@@ -272,7 +280,7 @@ ms.lasthandoff: 04/05/2018
 2. 当“myVmPublic”出现在搜索结果中时，将其选中。
 3. 针对 *myVmPublic* VM 完成[确认对存储帐户的访问](#confirm-access-to-storage-account)中的步骤 1-6。
 
-    访问被拒绝，并且会收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在“公共”子网中。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。
+    访问被拒绝，并且会收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在“公共”子网中。 “公共”子网没有为 Azure 存储启用服务终结点。 存储帐户仅允许从“专用”子网访问网络，而不允许从“公共”子网访问。
 
 4. 关闭与 *myVmPublic* VM 建立的远程桌面会话。
 
@@ -295,7 +303,7 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们为虚拟网络子网启用了服务终结点。 我们已了解，可为通过多个 Azure 服务部署的资源启用服务终结点。 我们创建了一个 Azure 存储帐户并将该存储帐户限制为仅可供某个虚拟网络子网中的资源进行网络访问。 若要详细了解服务终结点，请参阅[服务终结点概述](virtual-network-service-endpoints-overview.md)和[管理子网](virtual-network-manage-subnet.md)。
+在本教程中，我们为虚拟网络子网启用了服务终结点。 我们已了解，可为通过多个 Azure 服务部署的资源启用服务终结点。 已创建了一个 Azure 存储帐户并将该存储帐户限制为仅可供某个虚拟网络子网中的资源进行网络访问。 若要详细了解服务终结点，请参阅[服务终结点概述](virtual-network-service-endpoints-overview.md)和[管理子网](virtual-network-manage-subnet.md)。
 
 如果帐户中有多个虚拟网络，可将两个虚拟网络连接到一起，使每个虚拟网络中的资源可以相互通信。 若要了解如何连接虚拟网络，请继续学习下一教程。
 

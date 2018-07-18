@@ -1,12 +1,12 @@
 ---
-title: "更改 Office 365 信赖方信任的签名哈希算法 | Microsoft 文档"
-description: "本页面提供有关更改 Office 365 联合身份验证信任 SHA 算法的指导"
-keywords: "SHA1,SHA256,O365,联合,aadconnect,adfs,ad fs,更改 sha,联合身份验证信任,信赖方信任"
+title: 更改 Office 365 信赖方信任的签名哈希算法 | Microsoft 文档
+description: 本页面提供有关更改 Office 365 联合身份验证信任 SHA 算法的指导
+keywords: SHA1,SHA256,O365,联合,aadconnect,adfs,ad fs,更改 sha,联合身份验证信任,信赖方信任
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: cf6880e2-af78-4cc9-91bc-b64de4428bbd
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598957"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>更改 Office 365 信赖方信任的签名哈希算法
 ## <a name="overview"></a>概述

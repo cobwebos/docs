@@ -14,11 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01-23-2017
   ms.author: carolz
-  ms.openlocfilehash: dd4d795e7740cb991c37969f148df8e0a08fa96e
-  ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+  ms.openlocfilehash: 02d6d65653c7fa77c3f1cb2be0e59caf74ca79f1
+  ms.sourcegitcommit: d2bf34f0f2e603ff7491a8614f0d3da3cca64374
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/08/2018
+  ms.lasthandoff: 06/26/2018
+  ms.locfileid: "36963830"
 abstract:
   description: Azure Functions 是一个<a href="https://azure.microsoft.com/overview/serverless-computing/">无服务器</a>计算服务，使用它可以按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。 参考我们的快速入门、教程和示例了解如何使用 Azure Functions。
   aside:
@@ -82,7 +83,7 @@ sections:
     - html: <a href="/azure/azure-functions/functions-create-serverless-api">使用 Azure Functions 创建无服务器 API</a>
     - html: <a href="/azure/azure-functions/functions-openapi-definition">为函数创建 OpenAPI 定义</a>
     - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">使用事件网格自动调整已上传图像的大小</a>
-    - html: <a href="https://docs.microsoft.com/learn/build-serverless-app/index">创建用于在 Cosmos DB 中托管图片的无服务器 Web 应用程序</a>
+    - html: <a href="https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database">创建无服务器 Web 应用以存储图片和元数据</a>
 - title: 示例
   items:
   - type: list

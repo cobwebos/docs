@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 条件访问中的条件 | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 条件访问中的分配来触发策略。
+title: Azure Active Directory 条件访问中的条件是什么？ | Microsoft Docs
+description: 了解如何在 Azure Active Directory 条件访问中使用条件来触发策略。
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
@@ -9,21 +9,22 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 42792170593dbd94d0eae9b408c70f326891508a
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770615"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "36231915"
 ---
-# <a name="conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？ 
 
 使用 [Azure Active Directory (Azure AD) 条件访问](active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用程序的方式。 在条件访问策略中，定义触发策略的诱因（“出现这种情况时”）的响应（“执行此操作”）。 
 
@@ -64,7 +65,7 @@ ms.locfileid: "32770615"
 
 某个组，它可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。
 
-此外，你还可以从策略中排除特定的用户或组。 例如，在策略强制实施多重身份验证 (MFA) 的情况下，往往会排除服务帐户。 
+还可以从策略中排除特定的用户或组。 例如，在策略强制实施多重身份验证 (MFA) 的情况下，往往会排除服务帐户。 
 
 若要部署新策略，面向特定的用户集十分有用。 在新策略中，应该只将初始用户集用作目标来验证策略行为。 
 
@@ -139,7 +140,7 @@ ms.locfileid: "32770615"
 
 - 阻止特定国家或地区的用户访问服务。 
 
-有关详细信息，请参阅 [Azure Active Directory 条件访问中的位置条件](active-directory-conditional-access-locations.md)。
+有关详细信息，请参阅 [Azure Active Directory 条件访问中的位置条件是什么？](active-directory-conditional-access-locations.md)
 
 
 ## <a name="client-apps"></a>客户端应用
@@ -149,7 +150,7 @@ ms.locfileid: "32770615"
 - 网站和服务
 - 移动应用和桌面应用程序。 
 
-![条件](./media/active-directory-conditional-access-conditions/04.png)
+
 
 应用程序分类为：
 
@@ -157,7 +158,7 @@ ms.locfileid: "32770615"
 
 - 将移动应用 OpenID Connect 用作本机客户端的移动应用或桌面应用程序。
 
-对于可以在条件性访问策略中使用的完整客户端应用列表，请参阅 [Azure Active Directory 条件性访问技术参考](active-directory-conditional-access-technical-reference.md#client-apps-condition)。
+如需可以在条件访问策略中使用的客户端应用的完整列表，请参阅“Azure Active Directory 条件访问技术参考”中的[客户端应用条件](active-directory-conditional-access-technical-reference.md#client-apps-condition)。
 
 此条件的常见用例包括执行以下操作的策略：
 
@@ -167,6 +168,20 @@ ms.locfileid: "32770615"
 
 除了使用 Web SSO 和新式身份验证协议以外，还可以对使用 Exchange ActiveSync 的邮件应用程序（例如大多数智能手机上的本机邮件应用）应用此条件。 目前，对于使用旧式协议的客户端应用，需要通过 AD FS 对其进行保护。
 
+如果 **Office 365 Exchange Online** 是所选的唯一云应用，则只能选择此条件。
+
+![云应用](./media/active-directory-conditional-access-conditions/32.png)
+
+只有在配置的策略中没有其他条件的情况下，才能选择 **Exchange ActiveSync** 作为客户端应用条件。 不过，可以缩小此条件的范围，使之仅适用于支持的平台。
+
+ 
+![支持的平台](./media/active-directory-conditional-access-conditions/33.png)
+
+仅向支持的平台应用此条件相当于将所有设备平台置于一个[设备平台条件](active-directory-conditional-access-conditions.md#device-platforms)中。
+
+![支持的平台](./media/active-directory-conditional-access-conditions/34.png)
+
+
  有关详细信息，请参阅：
 
 - [为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
@@ -174,15 +189,59 @@ ms.locfileid: "32770615"
 - [基于 Azure Active Directory 应用的条件访问](active-directory-conditional-access-mam.md) 
 
 
+### <a name="legacy-authentication"></a>旧式身份验证  
+
+条件访问现在适用于不支持新式身份验证的旧版 Office 客户端以及使用 POP、IMAP、SMTP 之类的邮件协议的客户端。因此，可以配置“阻止来自其他客户端的访问”之类的策略。
+
+
+![旧式身份验证](./media/active-directory-conditional-access-conditions/160.png)
+ 
 
 
 
+#### <a name="known-issues"></a>已知问题
+
+- 为“其他客户端”配置策略导致整个组织无法与 SPConnect 之类的特定客户端通信。 这是因为这些旧式客户端使用非预期的方式进行身份验证。 此问题不存在于主要的 Office 应用程序（例如旧版 Office 客户端）中。 
+
+- 策略生效可能需要长达 24 小时的时间。 
+
+
+#### <a name="frequently-asked-questions"></a>常见问题
+
+**这会阻止 Exchange Web 服务 (EWS) 吗？**
+
+这取决于 EWS 所使用的身份验证协议。 如果 EWS 应用程序使用新式身份验证，则请参阅“移动应用和桌面客户端”客户端应用的情况。 如果 EWS 应用程序使用基本身份验证，则请参阅“其他客户端”客户端应用的情况。
+
+
+**可以对“其他客户端”使用哪些控件？**
+
+可以为“其他客户端”配置任何控件。 不过，最终用户体验将会是所有情况下都无法访问。 “其他客户端”不支持 MFA、符合标准的设备、域加入等控件。 
+ 
+**可以对“其他客户端”使用哪些条件？**
+
+可以为“其他客户端”配置任何条件。
+
+**Exchange ActiveSync 是否支持所有条件和控件？**
+
+不是。 下面汇总了 Exchange ActiveSync (EAS) 的支持情况：
+
+- EAS 仅支持用户和组目标。 它不支持来宾、角色。 如果配置了来宾/角色条件，则会阻止所有用户，因为无法确定是否应将策略应用于用户。
+
+- EAS 仅适用于充当云应用的 Exchange。 
+
+- 除了客户端应用本身，EAS 不支持任何条件。
+
+- 可以为 EAS 配置任何控件（遵循设备符合性会导致其阻止的情况除外）。
+
+**默认情况下，这些策略是否适用于将来的所有客户端应用？**
+
+不是。 默认的处理行为没有任何变化。 默认情况下，这些策略继续适用于浏览器和移动应用程序/桌面客户端。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何配置条件访问策略，请参阅 [Azure Active Directory 中的条件访问入门](active-directory-conditional-access-azure-portal-get-started.md)。
+- 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](active-directory-conditional-access-app-based-mfa.md)。
 
 - 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。 
 

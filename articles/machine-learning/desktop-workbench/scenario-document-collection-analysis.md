@@ -7,14 +7,16 @@ ms.author: kehuan
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: cbb077796d9f14a7f9d1d00268c7b6889ade8375
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37861028"
 ---
 # <a name="document-collection-analysis"></a>文档集分析
 
@@ -73,7 +75,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="data-description"></a>数据说明
 
-此方案中使用的数据集包含美国国会采取的每项立法行动的文本摘要和相关元数据。 数据是从 [GovTrack.us](https://www.govtrack.us/) 收集的，它跟踪美国国会的活动并帮助美国人参与其国家立法过程。 可以通过[此链接](https://www.govtrack.us/data/congress/)使用手动脚本下载批量数据，该脚本不包括在此方案中。 有关如何下载数据的详细信息，可以在 [GovTrack API 文档](https://www.govtrack.us/developers/api)中找到。
+此方案中使用的数据集包含美国国会采取的每项立法行动的文本摘要和相关元数据。 数据是从 [GovTrack.us](https://www.govtrack.us/) 收集的，它跟踪美国国会的活动并帮助美国人参与其国家立法过程。 可以通过[此链接](https://www.govtrack.us/data/congress/)使用手动脚本下载批量数据，该脚本不包括在此方案中。 有关如何下载数据的详细信息，可以在 [GovTrack API 文档](https://www.govtrack.us/developers)中找到。
 
 ### <a name="data-source"></a>数据源
 

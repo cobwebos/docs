@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 中创建从 Visual Studio Team Services 部署的函数 | Microsoft Docs"
-description: "创建 Function App 并从 Visual Studio Team Services 部署函数代码"
+title: 在 Azure 中创建从 Visual Studio Team Services 部署的函数 | Microsoft Docs
+description: 创建 Function App 并从 Visual Studio Team Services 部署函数代码
 services: functions
-keywords: 
+keywords: ''
 author: syntaxc4
 ms.author: cfowler
 ms.date: 01/09/2018
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29842341"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>创建函数应用，然后从 Visual Studio Team Services 部署函数代码
 

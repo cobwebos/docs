@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights 快速入门 | Microsoft docs"
-description: "提供有关快速安装 Node.js Web 应用以使用 Application Insights 进行监视的说明"
+title: Azure Application Insights 快速入门 | Microsoft docs
+description: 提供有关快速安装 Node.js Web 应用以使用 Application Insights 进行监视的说明
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386531"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>开始监视 Node.js Web 应用程序
 

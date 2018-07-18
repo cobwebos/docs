@@ -2,7 +2,7 @@
 title: 使用 Log Analytics 监视并获取有关逻辑应用运行的见解 - Azure 逻辑应用 | Microsoft Docs
 description: 使用 Log Analytics 监视逻辑应用运行并获取用于故障排除和诊断的见解以及更丰富的调试详细信息
 author: divyaswarnkar
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -12,19 +12,20 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/9/2017
+ms.date: 06/19/2018
 ms.author: LADocs; divswa
-ms.openlocfilehash: d484aaf7d7582bd474d7437a7a62f41880690dbc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0dc7f28ebe3816ba317eb3a4e28fc640c8a12a4e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294568"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>使用 Log Analytics 监视并获取有关逻辑应用运行的见解
 
 有关监视和更丰富的调试信息，可在创建逻辑应用的同时启用 Log Analytics。 Log Analytics 提供了诊断日志记录并通过 Azure 门户监视逻辑应用运行。 添加逻辑应用管理解决方案时，你将获得逻辑应用运行的聚合状态，同时获得特定详细信息，如状态、执行时间、重新提交状态和关联 ID。
 
-本主题展示了如何开启 Log Analytics，以便查看逻辑应用的运行时事件和数据。
+本文展示了如何开启 Log Analytics，以便查看逻辑应用运行的运行时事件和数据。
 
  > [!TIP]
  > 若要监视现有逻辑应用，请按照这些步骤[启用诊断日志记录并将逻辑应用运行时数据发送到 Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
@@ -66,17 +67,17 @@ ms.lasthandoff: 04/05/2018
 
    ![选择你的 Log Analytics 工作区](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
-3. 在“管理”下，选择“OMS 门户”。
+3. 在“管理”下，选择“概述”。
 
-   ![选择“OMS 门户”](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
+   ![选择“OMS 门户”](media/logic-apps-monitor-your-logic-apps-oms/ibiza-portal-page.png)
 
-4. 在“所有解决方案”下，查找并选择“逻辑应用管理”解决方案的磁贴。
+4. 在“概述”页上，选择“添加”以打开“管理解决方案”磁贴。 
 
-   ![选择“逻辑应用管理”](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
+   ![选择“逻辑应用管理”](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
-5. 若要在 Log Analytics 工作区中安装该解决方案，请选择“添加”。
+5. 滚动浏览“管理解决方案”列表，选择“逻辑应用管理”解决方案，然后选择“创建”以将其安装到“概述”页。
 
-   ![为“逻辑应用管理”选择“添加”](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
+   ![为“逻辑应用管理”选择“添加”](media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 
@@ -99,13 +100,13 @@ ms.lasthandoff: 04/05/2018
    ![查看逻辑应用或状态的运行](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
    在此页上有两个高级选项：
-   * **跟踪属性：**此列显示逻辑应用的跟踪属性（按操作分组）。 若要查看跟踪属性，请选择“查看”。 可以使用列筛选器搜索跟踪属性。
+   * **跟踪属性：** 此列显示逻辑应用的跟踪属性（按操作分组）。 若要查看跟踪属性，请选择“查看”。 可以使用列筛选器搜索跟踪属性。
    
      ![查看逻辑应用的跟踪属性](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
      任何新添加的跟踪属性可能需要 10-15 分钟时间，才会首次显示。 了解[如何将跟踪属性添加到逻辑应用](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)。
 
-   * **重新提交：**可以重新提交一个或多个已失败、已成功或仍在运行的逻辑应用运行。 选择要重新提交的运行所对应的复选框，然后选择“重新提交”。 
+   * **重新提交：** 可以重新提交一个或多个已失败、已成功或仍在运行的逻辑应用运行。 选择要重新提交的运行所对应的复选框，然后选择“重新提交”。 
 
      ![重新提交逻辑应用运行](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 

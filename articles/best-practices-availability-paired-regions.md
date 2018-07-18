@@ -1,20 +1,17 @@
 ---
 title: 业务连续性和灾难恢复 (BCDR)：Azure 配对区域 | Microsoft Docs
 description: 了解 Azure 区域对，以确保应用程序在数据中心发生故障期间可保持复原能力。
-services: site-recovery
-documentationcenter: ''
 author: rayne-wiselman
-manager: carmonm
 ms.service: multiple
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: e2c288af881fa925c1680efdb0f86deec60b7510
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 13a2b78b50b1b10975a90c1da38810f1a62a6bb5
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302672"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436903"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -32,11 +29,11 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 |:--- |:--- |:--- |
 | 亚洲 |东亚 |东南亚 |
 | 澳大利亚 |澳大利亚东部 |澳大利亚东南部 |
-| 澳大利亚 |澳大利亚中部 |澳大利亚中部 (2) |
-| 巴西 |巴西南部 (2) |美国中南部 |
+| 澳大利亚 |澳大利亚中部 |澳大利亚中部 2 |
+| 巴西 |巴西南部 2 |美国中南部 |
 | 加拿大 |加拿大中部 |加拿大东部 |
 | 中国 |中国北部 |中国东部|
-| 欧洲 |北欧 |欧洲西部 |
+| 欧洲 |北欧 |西欧 |
 | 德国 |德国中部 |德国东北部 |
 | 印度 |印度中部 |印度南部 |
 | 印度 |印度西部 (1) |印度南部 |

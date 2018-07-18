@@ -1,8 +1,8 @@
 ---
-title: "用于能源需求预测的 Cortana Intelligence 解决方案模板演练手册 | Microsoft Docs"
-description: "包含 Microsoft Cortana Intelligence 的解决方案模板，可帮助预测能源公共事业公司的需求。"
+title: 用于能源需求预测的 Cortana Intelligence 解决方案模板演练手册 | Microsoft Docs
+description: 包含 Microsoft Cortana Intelligence 的解决方案模板，可帮助预测能源公共事业公司的需求。
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: ilanr9
 manager: ilanr9
 editor: yijichen
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23004032"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板演练手册
 ## <a name="executive-summary"></a>执行摘要
@@ -290,7 +291,7 @@ Cortana Intelligence Suite 支持最常见的数据格式，例如 CSV、TSV、J
 
 本部分列出能源需求预测模型包含的一些常见数据特征。
 
-**时间驱动的特征：**这些特征派生自日期/时间戳数据。 这些数据在提取后转换为分类别特征，例如：
+**时间驱动的特征：** 这些特征派生自日期/时间戳数据。 这些数据在提取后转换为分类别特征，例如：
 
 * 当天时间 – 这是一天中的时段，接受的值从 0 到 23
 * 星期 – 这代表星期几，接受的值从 1（星期日）到 7（星期六）
@@ -300,16 +301,16 @@ Cortana Intelligence Suite 支持最常见的数据格式，例如 CSV、TSV、J
 * 节假日 – 这是二进制值特征，接受的值为 0（平日）或 1（假日）
 * 傅立叶项 – 傅立叶项是派生自时间戳的权重，用于捕获数据中的季节性（周期）。 由于数据中可能有多个季节，因此可能需要多个傅立叶项。 例如，需求值可能有每年、每周和每日季节/周期，因此需要 3 个傅立叶项。
 
-**独立测量特征：**独立特征包括我们想要在模型中作为预测因子的所有数据元素。 在此我们排除需要预测的依赖特征。
+**独立测量特征：** 独立特征包括我们想要在模型中作为预测因子的所有数据元素。 在此我们排除需要预测的依赖特征。
 
 * 延隔特征 – 这些是实际需求的时间偏移值。 例如，相对于当前时间戳，延隔 1 的特征保留前一个小时的需求值（假设是每小时数据）。 同样，可以添加延隔 2、延隔 3，*等等*。实际使用的延隔时间组合在建模阶段经由评估模型结果确定。
 * 长期趋势 – 此特征代表年份之间需求的线性增长。
 
-**依赖特征：**依赖特征是模型要预测的数据列。 使用[监督式机器学习](https://en.wikipedia.org/wiki/Supervised_learning)时，需先使用依赖特征（也称为标签）来训练模型。 这样可让模型从依赖特征关联的数据中学习模式。 在能源需求预测中，通常需要预测实际需求，因此将它用作依赖特征。
+**依赖特征：** 依赖特征是模型要预测的数据列。 使用[监督式机器学习](https://en.wikipedia.org/wiki/Supervised_learning)时，需先使用依赖特征（也称为标签）来训练模型。 这样可让模型从依赖特征关联的数据中学习模式。 在能源需求预测中，通常需要预测实际需求，因此将它用作依赖特征。
 
-**处理缺失值：**在数据准备阶段，需要确定最佳策略来处理缺失值。 我们主要使用不同的统计[数据插补法](https://en.wikipedia.org/wiki/Imputation_\(statistics\))实现此目的。 以能源需求预测而言，通常从以前可用的数据点使用移动平均来推算缺失值。
+**处理缺失值：** 在数据准备阶段，需要确定最佳策略来处理缺失值。 我们主要使用不同的统计[数据插补法](https://en.wikipedia.org/wiki/Imputation_\(statistics\))实现此目的。 以能源需求预测而言，通常从以前可用的数据点使用移动平均来推算缺失值。
 
-**数据规范化：**数据规范化是另一种转换，用于将所有数值数据（例如需求预测）变成类似的标度。 这通常有助于改善模型的精准度。 在做法上，我们通常根据数据范围来分割实际值。
+**数据规范化：** 数据规范化是另一种转换，用于将所有数值数据（例如需求预测）变成类似的标度。 这通常有助于改善模型的精准度。 在做法上，我们通常根据数据范围来分割实际值。
 这会将原始值按比例缩小到较小范围，通常介于 -1 和 1 之间。
 
 ## <a name="modeling"></a>建模

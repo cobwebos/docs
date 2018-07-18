@@ -1,6 +1,6 @@
 ---
-title: "Microsoft 信任中心和 Azure 安全信息 | Microsoft Docs"
-description: "Microsoft 信任中心提供所需的信息让你确信运行服务的 Azure 平台是安全的。"
+title: Microsoft 信任中心和 Azure 安全信息 | Microsoft Docs
+description: Microsoft 信任中心提供所需的信息让你确信运行服务的 Azure 平台是安全的。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25541564"
 ---
 # <a name="microsoft-trust-center"></a>Microsoft 信任中心
 Azure.com 上的 Azure 安全信息站点可提供所需的信息，用于规划、设计、部署、配置和安全地管理云解决方案。 借助 Microsoft 信任中心，还可获得所需的信息，让你确信运行服务的 Azure 平台是安全的。

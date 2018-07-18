@@ -10,14 +10,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 37213012e817f0fae21a47a4334a519bbbca206b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: na
+ms.openlocfilehash: 8468186d545d7aae484b037f3962b01b0ed4cd2e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127544"
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>在 Azure Log Analytics 中使用日志搜索门户创建日志搜索
 
@@ -41,7 +43,7 @@ ms.lasthandoff: 04/05/2018
 
 1. 打开 Azure 门户。
 2. 导航到 Log Analytics 并选择工作区。
-3. 选择**“日志搜索”**。
+3. 选择 **“日志搜索”**。
 
 ![日志搜索按钮](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 

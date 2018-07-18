@@ -13,6 +13,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30902966"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
  
@@ -37,34 +38,34 @@ ms.lasthandoff: 04/06/2018
 
 * **服务总线 XML 格式**  
 
-  * **以前的版本：**Azure 流分析使用 DataContractSerializer，因此消息内容包括 XML 标记。 例如：
+  * **以前的版本：** Azure 流分析使用 DataContractSerializer，因此消息内容包括 XML 标记。 例如：
     
    @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ “SensorId”:”1”, “Temperature”:64\}\u0001 
 
-  * **当前版本：**消息内容只包含流，没有其他的标记。 例如：
+  * **当前版本：** 消息内容只包含流，没有其他的标记。 例如：
   
    { “SensorId”:”1”, “Temperature”:64} 
  
 * **字段名称保留区分大小写的做法**  
 
-  * **以前的版本：**在由 Azure 流分析引擎处理时，字段名称更改为小写。 
+  * **以前的版本：** 在由 Azure 流分析引擎处理时，字段名称更改为小写。 
 
-  * **当前版本：**在由 Azure 流分析引擎处理时，字段名称保留区分大小写的做法。 
+  * **当前版本：** 在由 Azure 流分析引擎处理时，字段名称保留区分大小写的做法。 
 
   > [!NOTE] 
   > 保留区分大小写尚不适用于使用 Edge 环境托管的流分析作业。 因此，如果在 Edge 上托管作业，所有字段名称都将转换为小写。 
 
 * **FloatNaNDeserializationDisabled**  
 
-  * **以前的版本：**CREATE TABLE 命令不使用 NaN（非数值。 例如，Infinity、-Infinity）在 FLOAT 列类型中筛选事件，因为对于这些数字来说，事件不在已记录的范围之内。
+  * **以前的版本：** CREATE TABLE 命令不使用 NaN（非数值。 例如，Infinity、-Infinity）在 FLOAT 列类型中筛选事件，因为对于这些数字来说，事件不在已记录的范围之内。
 
-  * **当前版本：**CREATE TABLE 允许指定强架构。 流分析引擎验证数据是否符合此架构。 使用这一模型，该命令可以通过 NaN 值筛选事件。 
+  * **当前版本：** CREATE TABLE 允许指定强架构。 流分析引擎验证数据是否符合此架构。 使用这一模型，该命令可以通过 NaN 值筛选事件。 
 
 * **禁止在 JSON 中对日期/时间字符串进行自动向上转换。**  
 
-  * **以前的版本：**JSON 分析器会自动将包含日期/时间/时区信息的字符串值向上转换为日期/时间类型，然后转换为 UTC。 这导致丢失时区信息。
+  * **以前的版本：** JSON 分析器会自动将包含日期/时间/时区信息的字符串值向上转换为日期/时间类型，然后转换为 UTC。 这导致丢失时区信息。
 
-  * **当前版本：**不再将包含日期/时间/时区信息的字符串值自动向上转换为日期/时间类型。 因此会保留时区信息。 
+  * **当前版本：** 不再将包含日期/时间/时区信息的字符串值自动向上转换为日期/时间类型。 因此会保留时区信息。 
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析故障排除指南](stream-analytics-troubleshooting-guide.md)

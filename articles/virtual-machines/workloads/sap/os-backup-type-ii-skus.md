@@ -1,33 +1,34 @@
 ---
-title: "为 Azure 上的 SAP HANA（大型实例）类型 II SKU 执行操作系统备份和还原 | Microsoft Docs"
-description: "为 Azure 上的 SAP HANA（大型实例）类型 II SKU 执行操作系统备份和还原"
+title: 为 Azure 上的 SAP HANA（大型实例）类型 II SKU 执行操作系统备份和还原 | Microsoft Docs
+description: 为 Azure 上的 SAP HANA（大型实例）类型 II SKU 执行操作系统备份和还原
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: saghorpa
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41349cd7fe3bf39b5b42c44ba47acf980d15ebe7
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: f01a32612b335003856a372ece15ef300b9d93db
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063268"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus"></a>为类型 II Sku 执行 OS 备份和还原
 
-本文档介绍为 HANA 大型实例的类型 II SKU 执行操作系统备份和还原。 
+本文档介绍如何为 HANA 大型实例的类型 II SKU 执行操作系统文件级备份和还原。 
 
 >[!NOTE]
 >OS 备份脚本使用预安装在服务器中的 ReaR 软件。  
 
-Microsoft 服务管理团队完成预配后，默认情况下，将通过两次备份计划配置服务器来备份整个操作系统。 可以使用以下命令查看备份作业的计划：
+Microsoft 服务管理团队完成预配后，默认情况下，将通过两次备份计划配置服务器来对操作系统进行文件系统级备份。 可以使用以下命令查看备份作业的计划：
 ```
 #crontab –l
 ```
@@ -37,7 +38,7 @@ Microsoft 服务管理团队完成预配后，默认情况下，将通过两次�
 ```
 ## <a name="how-to-take-a-manual-backup"></a>如何执行手动备份？
 
-已使用 cron 作业计划操作系统备份。 但也可以手动执行操作系统备份。 要执行手动备份，请运行以下命令：
+已使用 cron 作业计划操作系统文件系统备份。 但也可以手动执行操作系统文件级备份。 要执行手动备份，请运行以下命令：
 
 ```
 #rear -v mkbackup

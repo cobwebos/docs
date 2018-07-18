@@ -11,11 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 758906126b42c103853e0047bb19d2e96a84fae6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488693"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>在 Linux 上使用自定义映像创建函数（预览）
 
@@ -25,7 +26,7 @@ ms.lasthandoff: 03/23/2018
 
 本教程逐步讲解如何使用 Azure Functions 创建自定义映像并将其推送到 Docker 中心。 然后，可将此映像用作 Linux 上运行的函数应用的部署源。 使用 Docker 生成和推送映像。 使用 Azure CLI 创建函数应用并从 Docker 中心部署映像。 
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Docker 生成自定义映像。
@@ -43,7 +44,7 @@ ms.lasthandoff: 03/23/2018
 
 * [Git](https://git-scm.com/downloads)
 * 一个有效的 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Docker](https://docs.docker.com/get-started/#setup)
+* [Docker](https://docs.docker.com/install/)
 * 一个 [Docker 中心帐户](https://docs.docker.com/docker-id/)
 
 [!INCLUDE [Free trial note](../../includes/quickstarts-free-trial-note.md)]
@@ -226,7 +227,7 @@ AzureWebJobsStorage=$storageConnectionString
 > * 从 Docker 中心部署函数应用。
 > * 将应用程序设置添加到函数应用。
 
-详细了解如何使用 Azure Functions Core Tools 在本地开发 Azure Functions。
+了解如何启用内置于核心应用服务平台中的持续集成功能。 可以配置函数应用，以便在更新 Docker 中心内的映像时重新部署容器。
 
 > [!div class="nextstepaction"] 
-> [在本地对 Azure Functions 进行编码和测试](functions-run-local.md)
+> [使用用于容器的 Web 应用进行持续部署](../app-service/containers/app-service-linux-ci-cd.md)

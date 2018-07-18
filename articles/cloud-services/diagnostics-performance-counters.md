@@ -1,12 +1,12 @@
 ---
-title: "在 Azure 云服务中收集性能计数器 | Microsoft Docs"
-description: "了解如何使用 Azure 诊断和 Application Insights 在云服务中发现、使用和创建性能计数器。"
+title: 在 Azure 云服务中收集性能计数器 | Microsoft Docs
+description: 了解如何使用 Azure 诊断和 Application Insights 在云服务中发现、使用和创建性能计数器。
 services: cloud-services
 documentationcenter: .net
 author: thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cloud-services
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29134044"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
 

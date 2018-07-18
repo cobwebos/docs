@@ -11,22 +11,35 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 914e354265754a05476e96411d35e6cb04183213
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 183075f7407b0a0ca6ea53871e239ab8c2d89490
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098614"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 元素
 一组控件，其中包含针对 Windows 和 Linux 密码及 SSH 公钥的内置验证。
 
 ## <a name="ui-sample"></a>UI 示例
-![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
+
+对于 Windows，用户可以看到：
+
+![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+
+对于选择了密码的 Linux，用户可以看到：
+
+![Microsoft.Compute.CredentialsCombo Linux 密码](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+
+对于选择了 SSH 公钥的 Linux，用户可以看到：
+
+![Microsoft.Compute.CredentialsCombo Linux 密钥](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>架构
-如果 `osPlatform` 为 **Windows**，则使用以下架构：
+对于 Windows，请使用以下架构：
+
 ```json
 {
   "name": "element1",
@@ -51,7 +64,8 @@ ms.lasthandoff: 05/17/2018
 }
 ```
 
-如果 `osPlatform` 为 **Linux**，则使用以下架构：
+对于 **Linux**，请使用以下架构：
+
 ```json
 {
   "name": "element1",
@@ -83,13 +97,13 @@ ms.lasthandoff: 05/17/2018
 
 ## <a name="remarks"></a>备注
 - 必须指定 `osPlatform`，它可以是 **Windows** 或 **Linux**。
-- 如果 `constraints.required` 设置为 **true**，则密码或 SSH 公钥文本框中必须包含值才能成功通过验证。 默认值为 **true**。
+- 如果 `constraints.required` 设置为 **true**，则密码或 SSH 公钥文本框中必须有值才能成功通过验证。 默认值为 **true**。
 - 如果 `options.hideConfirmation` 设置为 **true**，则用于确认用户密码的第二个文本框会被隐藏。 默认值为 **false**。
 - 如果 `options.hidePassword` 设置为 **true**，则使用密码身份验证这一选项会被隐藏。 只有当 `osPlatform` 为 **Linux** 时才能使用它。 默认值为 **false**。
 - 可以使用 `customPasswordRegex` 属性实现对允许的密码的其他约束。 当密码没有通过自定义验证时，会显示 `customValidationMessage` 中的字符串。 两个属性的默认值都是 **null**。
 
 ## <a name="sample-output"></a>示例输出
-如果 `osPlatform` 为 **Windows**，或者用户提供了密码而非 SSH 公钥，则应当会生成以下输出：
+如果 `osPlatform` 为 **Windows** 或者 `osPlatform` 为 **Linux**，并且用户提供了密码而非 SSH 公钥，则控件将返回以下输出：
 
 ```json
 {
@@ -98,7 +112,8 @@ ms.lasthandoff: 05/17/2018
 }
 ```
 
-如果用户提供了 SSH 公钥，则应当会生成以下输出：
+如果 `osPlatform` 为 **Linux** 并且用户提供了 SSH 公钥，则控件将返回以下输出：
+
 ```json
 {
   "authenticationType": "sshPublicKey",

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: 69f5e29be77f25d649ce357dae6e3905ab2bf6b8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 99d09455ed73b366fb3acfb414b9bd095df6319b
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36962362"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>虚拟机串行控制台（预览版） 
 
@@ -31,6 +32,7 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="prerequisites"></a>先决条件 
 
+* 必须使用资源管理部署模型。 不支持经典部署。 
 * 虚拟机上必须已启用[启动诊断](boot-diagnostics.md) 
 * 使用串行控制台的帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[参与者角色](../../role-based-access-control/built-in-roles.md)。 
 * 有关特定于 Linux 分发版的设置，请参阅[访问适用于 Linux 的串行控制台](#accessing-serial-console-for-linux)
@@ -77,7 +79,7 @@ ms.lasthandoff: 04/16/2018
 可以通过禁用特定 VM 的启动诊断设置，针对该 VM 停用串行控制台功能。
 
 ## <a name="common-scenarios-for-accessing-serial-console"></a>访问串行控制台的常见场景 
-方案          | 串行控制台中的操作                |  OS 适用性 
+场景          | 串行控制台中的操作                |  OS 适用性 
 :------------------|:-----------------------------------------|:------------------
 受损的 FSTAB 文件 | 按 Enter 键继续，然后使用文本编辑器修复 /etc/fstab 文件。 请参阅[如何修复 fstab 问题](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) | Linux 
 错误的防火墙规则 | 访问串行控制台，并修复 iptables 或 Windows 防火墙规则 | Linux/Windows 
@@ -89,8 +91,8 @@ SSH/RDP 配置问题 | 访问串行控制台并更改设置 | Linux/Windows
 ## <a name="accessing-serial-console-for-linux"></a>访问适用于 Linux 的串行控制台
 要使串行控制台正常运行，必须将来宾操作系统配置为向串行端口读取和写入控制台消息。 大多数[认可的 Azure Linux 分发版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)默认都已配置串行控制台。 只需在门户中的“串行控制台”部分单击一下，即可访问控制台。 
 
-### <a name="access-for-redhat"></a>在 RedHat 中访问 
-Azure 中提供的 RedHat 映像默认已启用控制台访问。 RedHat 中的单用户模式需要启用 root 用户（默认已禁用）。 如果需要启用单用户模式，请遵照以下说明：
+### <a name="access-for-red-hat"></a>在 Red Hat 中访问 
+Azure 中提供的 Red Hat 映像默认已启用控制台访问。 RedHat 中的单用户模式需要启用 root 用户（默认已禁用）。 如果需要启用单用户模式，请遵照以下说明：
 
 1. 通过 SSH 登录到 RedHat 系统
 2. 启用 root 用户的密码 

@@ -9,17 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 945c238411dac8f2e64666935308ef3c1cb2f0ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 555672df5b0b86858d460ff7606bc6ca23f4f103
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186329"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834349"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>在 Azure 机器学习中创作自定义 R 模块
 本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块。 本主题解释什么是自定义 R 模块以及要使用什么文件来定义该模块。 本主题举例说明如何构建定义模块的文件以及如何在机器学习工作区中注册用于部署的模块。 随后本主题详细描述了定义自定义模块所使用的元素和属性。 本主题还讨论了如何使用辅助功能和文件以及多个输出。 
@@ -126,7 +127,7 @@ ms.locfileid: "30186329"
 * **描述**元素的内容长度不能超过 128 个字符。
 * **所有者**元素的内容长度不能超过 32 个字符。
 
-模块结果可以是确定或不确定的。\*\*默认情况下，所有模块都被视为是确定的。 也就是说，给定一组不变的输入参数和数据，模块应返回相同的结果 eacRAND 或返回其运行的时间。 考虑到此种情况，如果参数或输入数据发生改变，Azure 机器学习工作室只会重新运行标记为确定的模块。 通过返回已缓存的结果也可大幅提高实验执行速度。
+模块结果可以是确定或不确定的。**默认情况下，所有模块都被视为是确定的。 也就是说，给定一组不变的输入参数和数据，模块应返回相同的结果 eacRAND 或返回其运行的时间。 考虑到此种情况，如果参数或输入数据发生改变，Azure 机器学习工作室只会重新运行标记为确定的模块。 通过返回已缓存的结果也可大幅提高实验执行速度。
 
 存在不确定的函数，例如 RAND 或返回当前日期或时间的函数。 如果模块使用不确定的函数，则可将可选 **isDeterministic** 属性设置为 **FALSE**，将模块指定为不确定。 这可确保无论何时运行实验，都可重新运行模块，即使模块输入和参数发生了改变。 
 

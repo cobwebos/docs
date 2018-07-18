@@ -9,16 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 04c56b7b7726d9ca603f2ff38acfabc887ecaf34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: na
+ms.openlocfilehash: 240e56e3e482b81d6336f7d6d2a1f5688953ecd8
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131545"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>通过用于 Linux 的 OMS 代理将来自 Nagios 和 Zabbix 的警报收集到 Log Analytics 中 
 [Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](log-analytics-alerts.md)一起进行分析。  本文介绍了如何配置用于 Linux 的 OMS 代理，以便收集来自这些系统的警报。
@@ -56,7 +58,7 @@ ms.lasthandoff: 04/16/2018
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>配置 Zabbix 警报收集
-若要收集来自 Zabbix 服务器的警报，需要指定一个用户和明文密码。  虽然不理想，但建议你创建用户并仅向其授予用于监视的权限。
+若要收集来自 Zabbix 服务器的警报，需要指定一个用户和明文密码。  尽管不理想，仍建议创建具有捕获相关警报的只读权限的 Zabbix 用户。
 
 若要在 Nagios 服务器上收集警报，请执行以下步骤。
 
@@ -73,7 +75,7 @@ ms.lasthandoff: 04/16/2018
 
 2. 重新启动 omsagent 守护程序
 
-    sudo sh /opt/microsoft/omsagent/bin/service_control restart
+    `sudo sh /opt/microsoft/omsagent/bin/service_control restart`
 
 
 ## <a name="alert-records"></a>警报记录

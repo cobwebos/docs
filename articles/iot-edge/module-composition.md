@@ -1,37 +1,37 @@
 ---
 title: Azure IoT Edge 模块组合 | Microsoft 文档
-description: 了解将哪些内容放入 Azure IoT Edge 模块以及如何重复使用这些模块
-services: iot-edge
-keywords: ''
+description: 了解部署清单如何声明要部署的模块、如何部署这些模块以及如何在它们之间创建消息路由。
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/23/2018
-ms.topic: article
+ms.date: 06/06/2018
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 3d95a602815cd444fb4b062853d9d31b75993e6a
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: 209f159d9003838edb36728828758b76730118ff
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098458"
 ---
-# <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>了解如何使用、配置并重复使用 IoT Edge 模块 - 预览版
+# <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>了解如何使用部署清单来部署模块和建立路由
 
 每个 IoT Edge 设备至少运行两个模块：$edgeAgent 和 $edgeHub，它们构成了 IoT Edge 运行时。 除这两个标准模块以外，任何 IoT Edge 设备都可以运行多个模块来执行任意数量的进程。 一次性将所有这些模块部署到设备时，需要通过某种方式来声明要包含哪些模块，以及这些模块的交互方式。 
 
 部署清单是一个 JSON 文档，用于描述以下内容：
 
-* 必须部署哪些 IoT Edge 模块，以及它们的创建和管理选项。
+* Edge 代理的配置，这包括每个模块的容器映像，访问专用容器注册表的凭据以及应如何创建和管理每个模块的说明。
 * Edge 中心的配置，描述消息如何在模块之间流动，并最终传送到 IoT 中心。
-* 或者，在模块孪生的所需属性中设置的值，用于配置单个模块应用程序。
+* （可选）模块孪生所需的属性。
 
 所有 IoT Edge 设备均先需要使用部署清单进行配置。 在使用有效清单进行配置前，新安装的 IoT Edge 运行时会报告错误代码。 
 
-在 Azure IoT Edge 教程中，你将通过 Azure IoT Edge 门户中的向导生成部署清单。 此外，也可以使用 REST 或 IoT 中心服务 SDK 以编程方式应用部署清单。 有关 IoT Edge 部署的详细信息，请参阅[部署和监控][lnk-deploy]。
+在 Azure IoT Edge 教程中，你将通过 Azure IoT Edge 门户中的向导生成部署清单。 此外，也可以使用 REST 或 IoT 中心服务 SDK 以编程方式应用部署清单。 有关详细信息，请参阅[了解 IoT Edge 部署][lnk-deploy]。
 
 ## <a name="create-a-deployment-manifest"></a>创建部署清单。
 
-部署清单在较高级别为 IoT Edge 设备上部署的 IoT Edge 模块配置模块孪生的所需属性。 其中有两个模块始终存在：Edge 代理和 Edge 中心。
+部署清单在较高级别为 IoT Edge 设备上部署的 IoT Edge 模块配置模块孪生的所需属性。 其中两个模块始终存在：`$edgeAgent` 和 `$edgeHub`。
 
 仅包含 IoT Edge 运行时（代理和中心）的部署清单是有效的。
 
@@ -44,6 +44,7 @@ ms.lasthandoff: 05/14/2018
             "properties.desired": {
                 // desired properties of the Edge agent
                 // includes the image URIs of all modules
+                // includes container registry credentials
             }
         },
         "$edgeHub": {
@@ -67,7 +68,7 @@ ms.lasthandoff: 05/14/2018
 
 ## <a name="configure-modules"></a>配置模块
 
-除了为要部署的所有模块建立所需属性以外，还需要告知 IoT Edge 运行时要如何安装这些模块。 所有模块的配置和管理信息将会传入 **$edgeAgent** 所需属性。 此信息包括 Edge 代理本身的配置参数。 
+需要告诉 IoT Edge 运行时如何在部署中安装模块。 所有模块的配置和管理信息将会传入 **$edgeAgent** 所需属性。 此信息包括 Edge 代理本身的配置参数。 
 
 有关可以或必须包含的属性的完整列表，请参阅 [Edge 代理和 Edge 中心的属性](module-edgeagent-edgehub.md)。
 
@@ -78,6 +79,11 @@ $edgeAgent 属性遵循此结构：
     "properties.desired": {
         "schemaVersion": "1.0",
         "runtime": {
+            "settings":{
+                "registryCredentials":{ // give the edge agent access to container images that aren't public
+                    }
+                }
+            }
         },
         "systemModules": {
             "edgeAgent": {
@@ -88,7 +94,7 @@ $edgeAgent 属性遵循此结构：
             }
         },
         "modules": {
-            "{module1}": { //optional
+            "{module1}": { // optional
                 // configuration and management details
             },
             "{module2}": { // optional
@@ -158,7 +164,7 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 | `$upstream` | 将消息发送到 IoT 中心 |
 | `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | 将消息发送到模块 `{moduleId}` 的输入 `{input}` |
 
-请务必注意，Edge 中心将提供至少一次保证，这意味着，在路由无法将消息传送到其接收器的情况下（例如 Edge 中心无法连接到 IoT 中心或未连接目标模块），则会本地存储消息。
+IoT Edge 提供至少一次保证。 Edge 中心在本地存储消息，以防路由无法将消息传递到其接收器。 例如，如果 Edge 中心无法连接到 IoT 中心，或者目标模块未连接。
 
 Edge 中心会一直存储消息，直到达到在 [Edge 中心所需属性](module-edgeagent-edgehub.md)的 `storeAndForwardConfiguration.timeToLiveSecs` 属性中指定的时间。
 
@@ -168,7 +174,7 @@ Edge 中心会一直存储消息，直到达到在 [Edge 中心所需属性](mod
 
 如果未在部署清单中指定模块孪生的所需属性，则 IoT 中心将不会以任何方式修改模块孪生，并且你将能够以编程方式设置所需属性。
 
-将使用用来修改设备孪生的相同机制来修改模块孪生。 有关更多信息，请参阅[设备孪生开发人员指南](../iot-hub/iot-hub-devguide-device-twins.md)。   
+将使用用来修改设备孪生的相同机制来修改模块孪生。 有关详细信息，请参阅[设备孪生开发人员指南](../iot-hub/iot-hub-devguide-device-twins.md)。   
 
 ## <a name="deployment-manifest-example"></a>部署清单示例
 
@@ -176,72 +182,79 @@ Edge 中心会一直存储消息，直到达到在 [Edge 中心所需属性](mod
 
 ```json
 {
-"moduleContent": {
+  "moduleContent": {
     "$edgeAgent": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "runtime": {
-                "type": "docker",
-                "settings": {
-                    "minDockerVersion": "v1.25",
-                    "loggingOptions": ""
-                }
-            },
-            "systemModules": {
-                "edgeAgent": {
-                    "type": "docker",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-agent:1.0-preview",
-                    "createOptions": ""
-                    }
-                },
-                "edgeHub": {
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-hub:1.0-preview",
-                    "createOptions": ""
-                    }
-                }
-            },
-            "modules": {
-                "tempSensor": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
-                    "createOptions": "{}"
-                    }
-                },
-                "filtermodule": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "myacr.azurecr.io/filtermodule:latest",
-                    "createOptions": "{}"
-                    }
-                }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {
+              "ContosoRegistry": {
+                "username": "myacr",
+                "password": "{password}",
+                "address": "myacr.azurecr.io"
+              }
             }
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "createOptions": ""
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "createOptions": ""
+            }
+          }
+        },
+        "modules": {
+          "tempSensor": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": "{}"
+            }
+          },
+          "filtermodule": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "myacr.azurecr.io/filtermodule:latest",
+              "createOptions": "{}"
+            }
+          }
         }
+      }
     },
     "$edgeHub": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "routes": {
-                "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-                "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
-            },
-            "storeAndForwardConfiguration": {
-                "timeToLiveSecs": 10
-            }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
         }
+      }
     }
-}
+  }
 }
 ```
 

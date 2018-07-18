@@ -1,12 +1,12 @@
 ---
-title: "管理 StorSimple 卷 (Update 3) | Microsoft Docs"
-description: "介绍了如何添加、修改、监视和删除 StorSimple 卷，以及在必要时如何使其脱机。"
+title: 管理 StorSimple 卷 (Update 3) | Microsoft Docs
+description: 介绍了如何添加、修改、监视和删除 StorSimple 卷，以及在必要时如何使其脱机。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26578867"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 设备管理器服务管理卷（Update 3 或更高版本）
 

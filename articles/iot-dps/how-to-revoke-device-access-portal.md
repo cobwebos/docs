@@ -1,22 +1,19 @@
 ---
 title: 如何从 Azure IoT 中心设备预配服务取消注册设备
 description: 如何从 Azure IoT 中心设备预配服务取消注册设备以阻止预配
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-jamebr;bryanla
+ms.author: bryanla
 ms.date: 04/05/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 50074eaecacf603d2bc6170183fd632b4a1ab2d1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4b6c948765575c92c962999fe394ffaf1a0d22f3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628838"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>如何从 Azure IoT 中心设备预配服务取消注册设备
 
@@ -49,50 +46,50 @@ ms.lasthandoff: 04/16/2018
 4. 选中要加入方块列表的设备的登记项旁边的复选框。 
 5. 选择窗口顶部的“删除”，然后选择“是”以确认删除登记。 
 
-   ![在门户中删除个人注册](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
+   ![在门户中删除单独注册](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
     
 完成该过程后，会看到该项已从单独登记列表中删除。  
 
-## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>使用注册组将 X.509 中间或根 CA 证书加入方块列表
+## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>使用登记组将 X.509 中间或根 CA 证书加入方块列表
 
 X.509 证书通常排列在证书信任链中。 如果链中任何阶段的证书被盗用，则信任受损。 必须将该证书加入方块列表，以防设备预配服务预配包含该证书的任何链中的设备下游。 若要详细了解 X.509 证书和及如何用其预配服务，请参阅 [X.509 证书](./concepts-security.md#x509-certificates)。 
 
-注册组是共享 X.509 证书的常见证明机制的设备的项，由同一个中间或根 CA 签名。 注册组项配置了与中间或根 CA 相关联的 X.509 证书。 由证书链中包含该证书的设备共享的任何配置值（如孪生状态和 IoT 中心连接）。 若要将证书加入方块列表，可禁用或删除其注册组。
+注册组是共享 X.509 证书的常见证明机制的设备的项，由同一个中间或根 CA 签名。 登记组项配置了与中间或根 CA 相关联的 X.509 证书。 由证书链中包含该证书的设备共享的任何配置值（如孪生状态和 IoT 中心连接）。 若要将证书加入方块列表，可禁用或删除其登记组。
 
-若要暂时将证书加入方块列表，可禁用其注册组： 
+若要暂时将证书加入方块列表，可禁用其登记组： 
 
 1. 登录 Azure 门户，选择左侧菜单中的“所有资源”。
 2. 在资源列表中，选择要阻止签名证书访问的预配服务。
-3. 在预配服务中，选择“管理登记”，然后选择“注册组”选项卡。
+3. 在预配服务中，选择“管理登记”，然后选择“登记组”选项卡。
 4. 选择使用了要将其加入方块列表的证书的注册组。
 5. 在“启用项”开关中选择“禁用”，然后选择“保存”。  
 
    ![在门户中禁用注册组项](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
     
-若要永久将证书加入方块列表，可删除其注册组：
+若要永久将证书加入方块列表，可删除其登记组：
 
 1. 登录 Azure 门户，选择左侧菜单中的“所有资源”。
 2. 从资源列表中，单击要阻止设备访问的预配服务。
-3. 在预配服务中，选择“管理登记”，然后选择“注册组”选项卡。
-4. 选中要加入方块列表的证书的注册组旁边的复选框。 
-5. 选择窗口顶部的“删除”，然后选择“是”以确认删除注册组。 
+3. 在预配服务中，选择“管理登记”，然后选择“登记组”选项卡。
+4. 选中要加入方块列表的证书的登记组旁边的复选框。 
+5. 选择窗口顶部的“删除”，然后选择“是”以确认删除登记组。 
 
    ![在门户中删除注册组项](./media/how-to-revoke-device-access-portal/delete-enrollment-group.png)
 
-完成该过程后，会看到该项已从注册组列表中删除。  
+完成该过程后，会看到该项已从登记组列表中删除。  
 
 > [!NOTE]
-> 删除证书注册组后，如果根证书或证书链中上游位置的其他中间证书存在已启用的注册组，则证书链中包含该证书的设备可能仍将能够登记。
+> 删除证书登记组后，如果根证书或证书链中上游位置的其他中间证书存在已启用的登记组，则证书链中包含该证书的设备可能仍将能够登记。
 
 ## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>注册组中阻止特定设备
 
-实现 X.509 证明机制的设备使用设备的证书链和私钥进行身份验证。 如果设备通过设备预配服务进行连接和身份验证，服务将首先查找与设备凭据匹配的单个登记。 然后，服务搜索注册组以确定是否可以预配设备。 如果服务发现设备对应了已禁用的单个登记，它将阻止设备连接。 即使设备的证书链中存在对应于中间或根 CA 的已启用注册组，服务也会阻止连接。 
+实现 X.509 证明机制的设备使用设备的证书链和私钥进行身份验证。 如果设备通过设备预配服务进行连接和身份验证，服务将首先查找与设备凭据匹配的单个登记。 然后，服务搜索登记组以确定是否可以预配设备。 如果服务发现设备对应了已禁用的单个登记，它将阻止设备连接。 即使设备的证书链中存在对应于中间或根 CA 的已启用登记组，服务也会阻止连接。 
 
 若要阻止注册组中的单个设备，请执行以下步骤：
 
 1. 登录 Azure 门户，选择左侧菜单中的“所有资源”。
-2. 从资源列表中，选择包含要加入方块列表的设备所对应注册组的预配服务。
+2. 从资源列表中，选择包含要加入方块列表的设备所对应登记组的预配服务。
 3. 在预配服务中，选择“管理登记”，然后选择“单独登记”选项卡。
 4. 选择顶部的“添加”按钮。 
 5. 选择“X.509”作为设备的证明机制，并上传设备证书。 这是设备上安装的已签名最终实体证书。 设备使用它生成身份验证证书。

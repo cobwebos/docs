@@ -1,11 +1,11 @@
 ---
-title: "计划程序 PowerShell Cmdlet 参考"
-description: "计划程序 PowerShell Cmdlet 参考"
+title: 计划程序 PowerShell Cmdlet 参考
+description: 计划程序 PowerShell Cmdlet 参考
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039832"
 ---
 # <a name="scheduler-powershell-cmdlets-reference"></a>计划程序 PowerShell Cmdlet 参考
 下表介绍 Azure 计划程序中每个主要 cmdlet 的参考页并链接到该页。

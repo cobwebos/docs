@@ -1,11 +1,11 @@
 ---
-title: "如何更新云服务 | Microsoft Docs"
-description: "了解如何在 Azure 中更新云服务。 了解如何云服务上进行更新以确保可用性。"
+title: 如何更新云服务 | Microsoft Docs
+description: 了解如何在 Azure 中更新云服务。 了解如何云服务上进行更新以确保可用性。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24860665"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新云服务
 

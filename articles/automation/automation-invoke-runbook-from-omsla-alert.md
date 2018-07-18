@@ -6,14 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a3b14bd8409226772d210f60dadd525960f7890
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0094362ee083511b05027f22b37ed62d56d68d41
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217116"
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>从 Log Analytics 警报调用 Azure 自动化 Runbook
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 05/16/2018
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>使用 Webhook 调用 Runbook
 
-可以使用 Webhook 在 Azure 自动化中通过单个 HTTP 请求启动特定的 Runbook。 在将 [Log Analytics 警报](../log-analytics/log-analytics-alerts.md#alert-rules)配置为使用 Webhook 以警报操作的形式调用 Runbook 之前，需要针对通过此方法调用的 Runbook [创建一个 Webhook](automation-webhooks.md#creating-a-webhook)。 别忘了要记下 Webhook URL，以便在配置警报规则时引用。   
+可以使用 Webhook 在 Azure 自动化中通过单个 HTTP 请求启动特定的 Runbook。 在将[针对日志警报的 Webhook 操作](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md)配置为使用 Webhook 以警报操作的形式调用 Runbook 之前，需要针对通过此方法调用的 Runbook [创建一个 Webhook](automation-webhooks.md#creating-a-webhook)。 别忘了要记下 Webhook URL，以便在配置警报规则时引用。   
 
 ## <a name="calling-a-runbook-directly"></a>直接调用 Runbook
 
@@ -98,6 +99,6 @@ $SearchResult.SvcDisplayName_CF
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解 Log Analytics 中的警报以及如何创建警报，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md)。
+* 若要详细了解如何使用日志搜索创建 Azure 警报，请参阅 [Azure 中的日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)。
 
 * 若要了解如何使用 Webhook 触发 Runbook，请参阅 [Azure 自动化 Webhook](automation-webhooks.md)。

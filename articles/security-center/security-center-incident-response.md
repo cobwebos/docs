@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: yurid
-ms.openlocfilehash: 2f3a9344b9bd383ea59ff3cb400faa90942c5b9f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8564dd8a86cab1229f31e77e072ddd4e776947e7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029690"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>利用 Azure 安全中心进行事件响应
 许多组织只有在遭受攻击后才会去学习如何响应安全事件。 为降低成本并减少破坏，必须在攻击发生之前制定事件响应计划。 可在事件响应的不同阶段使用 Azure 安全中心。
@@ -96,7 +97,7 @@ Sam 收到 Judy 的案例，开始查看安全中心建议的补救步骤。
 ![事件响应生命周期](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
 ### <a name="additional-resources"></a>其他资源
-如果公司在调查过程中使用安全信息和事件管理 (SIEM) 解决方案，则其还可[将安全中心与解决方案集成](security-center-integrating-alerts-with-log-integration.md)。 也可通过 [Azure 日志集成工具](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/)集成 Azure 审核日志和虚拟机 (VM) 安全事件。 可结合使用该信息和安全中心提供的信息对攻击进行调查。 也可使用安全中心的[调查](https://docs.microsoft.com/azure/security-center/security-center-investigation)功能来确定事件的根本原因。
+如果公司在调查过程中使用安全信息和事件管理 (SIEM) 解决方案，则其还可[将安全中心与解决方案集成](security-center-integrating-alerts-with-log-integration.md)。 也可通过 [Azure 日志集成工具](https://azure.microsoft.com/blog/introducing-hdinsight-integration-with-azure-log-analytics/)集成 Azure 审核日志和虚拟机 (VM) 安全事件。 可结合使用该信息和安全中心提供的信息对攻击进行调查。 也可使用安全中心的[调查](https://docs.microsoft.com/azure/security-center/security-center-investigation)功能来确定事件的根本原因。
 
 ## <a name="conclusion"></a>结束语
 在事件发生之前组建安全团队对组织来说非常重要，这会积极地影响事件的处理方式。 必须使用正确的工具监视相关资源，这样该团队才能准确应对安全事件。 安全中心[检测功能](security-center-detection-capabilities.md)可协助 IT 部门快速响应安全事件，并就安全问题提供补救措施。

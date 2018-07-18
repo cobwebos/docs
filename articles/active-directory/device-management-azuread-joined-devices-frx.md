@@ -1,13 +1,14 @@
 ---
-title: "首次运行期间使用 Azure AD 加入新的 Windows 10 设备 | Microsoft Docs"
-description: "本主题说明用户如何在首次运行体验期间设置 Azure AD Join。"
+title: 首次运行期间使用 Azure AD 加入新的 Windows 10 设备 | Microsoft Docs
+description: 本主题说明用户如何在首次运行体验期间设置 Azure AD Join。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0e71df2333dee9c4eb9935d3397d343be246be65
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0341c5b65816cf1c54fe3f2f7781dde46bf084ad
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757386"
 ---
 # <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>首次运行期间使用 Azure AD 加入新的 Windows 10 设备
 
@@ -37,6 +39,8 @@ Windows 全新体验中不支持加入本地 Active Directory (AD) 域。 如果
 ## <a name="before-you-begin"></a>开始之前
 
 若要加入 Windows 10 设备，必须配置设备注册服务以允许注册设备。 除具有在 Azure AD 租户中加入设备的权限外，注册设备的数量必须少于所配置的最大数。 有关详细信息，请参阅[配置设备设置](device-management-azure-portal.md#configure-device-settings)。
+
+此外，如果你的租户为联合租户，标识提供者必须支持 WS-Fed 和 WS-Trust 用户名/密码终结点。 这可以是版本 1.3 或 2005。 将设备加入到 Azure AD 和使用密码登录到设备都需要此协议支持。
 
 ## <a name="joining-a-device"></a>加入设备
 

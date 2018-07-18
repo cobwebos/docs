@@ -5,19 +5,20 @@ services: cosmos-db
 author: rimman
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 12306b7868fa7fb2321f26657aab81beabb9db35
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cc66b2f506d81a7ba10b26c3b24287472e890682
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724901"
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Azure Cosmos DB 的全球规模多主数据库 
  
-开发能够以本地延迟做出响应，同时为全球数据保持一致视图的全球分布式应用程序具有一定的难度。 客户会使用全球分布式数据库，因为他们需要改善数据访问延迟、实现较高的数据可用性、提供灾难恢复保障并 (4) 满足其业务要求。 Azure Cosmos DB 中的多主数据库提供较高的可用性级别 (99.999%)、不到 10 毫秒的数据写入延迟和可伸缩性，并内置了全面且灵活的冲突解决方案支持。 这些功能极大地简化了全球分布式应用程序的开发。 对于全球分布式应用程序，多主数据库支持至关重要。 
+开发能够以本地延迟做出响应，同时为全球数据保持一致视图的全球分布式应用程序具有一定的难度。 客户会使用全球分布式数据库，因为他们需要改善数据访问延迟、实现较高的数据可用性、提供灾难恢复保障并满足其业务要求。 Azure Cosmos DB 中的多主数据库提供较高的可用性级别 (99.999%)、不到 10 毫秒的数据写入延迟和可伸缩性，并内置了全面且灵活的冲突解决方案支持。 这些功能极大地简化了全球分布式应用程序的开发。 对于全球分布式应用程序，多主数据库支持至关重要。 
 
 ![多主体系结构](./media/multi-region-writers/multi-master-architecture.png)
 

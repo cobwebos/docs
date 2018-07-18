@@ -1,23 +1,24 @@
 ---
-title: "将数据导入到 Azure Application Insights 中的 Analytics | Microsoft 文档"
-description: "导入要与应用遥测数据联接的静态数据，或者导入要使用 Analytics 查询的单独数据流。"
+title: 将数据导入到 Azure Application Insights 中的 Analytics | Microsoft 文档
+description: 导入要与应用遥测数据联接的静态数据，或者导入要使用 Analytics 查询的单独数据流。
 services: application-insights
-keywords: "打开架构，导入数据"
-documentationcenter: 
+keywords: 打开架构，导入数据
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 963e5cfd929f57b34dcb045df82b64f870e897e2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293615"
 ---
 # <a name="import-data-into-analytics"></a>将数据导入到 Analytics 中
 

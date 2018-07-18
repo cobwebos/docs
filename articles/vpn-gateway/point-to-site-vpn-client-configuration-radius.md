@@ -1,31 +1,36 @@
 ---
-title: "创建并安装适用于 P2S RADIUS 连接的 VPN 客户端配置文件：PowerShell：Azure | Microsoft Docs"
-description: "创建 Windows、Mac OS X 和 Linux VPN 客户端配置文件，以便使用 RADIUS 身份验证建立连接。"
+title: 创建并安装适用于 P2S RADIUS 连接的 VPN 客户端配置文件：PowerShell：Azure | Microsoft Docs
+description: 创建 Windows、Mac OS X 和 Linux VPN 客户端配置文件，以便使用 RADIUS 身份验证建立连接。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1d57537428f5ac1085b6cbae93be6f77c71b12e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 19b1090a37ae1f97537fcabe128e7958fc26a96a
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235883"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件
 
 若要通过点到站点 (P2S) 连接到虚拟网络，需要配置将从中进行连接的客户端设备。 可以通过 Windows、Mac OS X 和 Linux 客户端设备创建 P2S VPN 连接。 
 
 使用 RADIUS 身份验证时，可以选择多种身份验证选项：用户名/密码身份验证、证书身份验证，以及其他身份验证类型。 每种身份验证的 VPN 客户端配置各个不同。 若要配置 VPN 客户端，可以使用包含所需设置的客户端配置文件。 本文将会帮助你创建并安装所要使用的 RADIUS 身份验证类型的 VPN 客户端配置。
+
+>[!IMPORTANT]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
 
 P2S RADIUS 身份验证的配置工作流如下：
 
@@ -153,6 +158,10 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
  
 可以创建适用于 RADIUS 证书身份验证的 VPN 客户端配置文件，该身份验证使用 EAP-TLS 协议。 通常情况下，企业颁发的证书用于对 VPN 用户进行身份验证。 请确保所有进行连接的用户均已在其设备上安装了证书，并且你的 RADIUS 服务器可以验证该证书。
 
+>[!NOTE]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
+
 在命令中，`-AuthenticationMethod` 是 `EapTls`。 在证书身份验证过程中，客户端通过验证 RADIUS 服务器的证书完成该服务器的验证。 `-RadiusRootCert` 是包含用来验证 RADIUS 服务器的根证书的 .cer 文件。
 
 需在每个 VPN 客户端设备上安装客户端证书。 有时候，一个 Windows 设备有多个客户端证书。 在身份验证过程中，这会导致系统弹出一个对话框，其中列出所有证书。 然后，用户必须选择要使用的证书。 可以通过指定客户端证书应链接到的根证书，筛选出正确的证书。 
@@ -227,7 +236,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | 
 7. “选择标识”会显示可供选择的证书列表。 选择适当的证书，然后选择“继续”。
 
    ![“选择标识”列表](./media/point-to-site-vpn-client-configuration-radius/identity.png)
-8. 在“本地 ID”框中，指定证书的名称（见步骤 6）。 在本例中，该名称为 **ikev2Client.com**。然后，选择“应用”按钮以保存更改。
+8. 在“本地 ID”框中，指定证书的名称（见步骤 6）。 在本例中，该名称为 **ikev2Client.com**。 然后，选择“应用”按钮以保存更改。
 
    ![“本地 ID”框](./media/point-to-site-vpn-client-configuration-radius/applyconnect.png)
 9. 在“网络”对话框中，选择“应用”以保存所有更改。 然后，选择“连接”以启动到 Azure 虚拟网络的 P2S 连接。

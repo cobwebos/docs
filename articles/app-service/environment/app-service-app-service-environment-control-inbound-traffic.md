@@ -1,11 +1,11 @@
 ---
-title: "如何控制应用服务环境的入站流量"
-description: "了解如何配置网络安全规则，以控制发往应用服务环境的入站流量。"
+title: 如何控制应用服务环境的入站流量
+description: 了解如何配置网络安全规则，以控制发往应用服务环境的入站流量。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22987002"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>如何控制应用服务环境的入站流量
 ## <a name="overview"></a>概述
@@ -58,7 +59,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="creating-a-network-security-group"></a>创建网络安全组
 有关网络安全组工作原理的完整详情，请参阅以下[信息][NetworkSecurityGroups]。  以下 Azure 服务管理示例涉及网络安全组的要点，着重讲解如何配置网络安全组并将其应用到包含应用服务环境的子网。
 
-**注意：**可以使用 [Azure 门户](https://portal.azure.com)或通过 Azure PowerShell 以图形方式配置网络安全组。
+**注意：** 可以使用 [Azure 门户](https://portal.azure.com)或通过 Azure PowerShell 以图形方式配置网络安全组。
 
 网络安全组最初创建为与订阅关联的独立实体。 由于网络安全组是在 Azure 区域中创建的，因此请确保在与应用服务环境相同的区域中创建网络安全组。
 
@@ -85,7 +86,7 @@ ms.lasthandoff: 10/11/2017
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPCtrl" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '21' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPDataRange" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '10001-10020' -Protocol TCP
 
-（**注意：**数据通道端口范围在预览期可能会更改。）
+（**注意：** 数据通道端口范围在预览期可能会更改。）
 
 以下规则演示了在使用 Visual Studio 远程调试时，如何授予访问权限。  由于每个支持的 Visual Studio 版本使用不同的端口进行远程调试，因此每个版本有不同的规则。  对于 FTP 访问，远程调试流量可能不会通过传统 WAF 或代理设备正确传送。  可以改为将 *SourceAddressPrefix* 设置成运行 Visual Studio 的开发人员计算机的 IP 地址范围。
 

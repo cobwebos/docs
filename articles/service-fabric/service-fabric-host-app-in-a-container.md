@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/07/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: d0b3ce1fcabbc69c30e316a69e492da7c75d23ef
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6fe314125440096d21a1276defd082c4e1997b8e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207479"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642676"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
@@ -51,6 +51,8 @@ ms.locfileid: "34207479"
 
 ## <a name="containerize-the-application"></a>容器化应用程序
 右键单击“FabrikamFiber.Web”项目，再单击“添加” > “容器业务流程协调程序支持”。  选择“Service Fabric”作为容器业务流程协调程序，然后单击“确定”。
+
+单击“是”立即将 Docker 切换到 Windows 容器。
 
 解决方案中将创建一个新的 Service Fabric 应用程序项目，即“FabrikamFiber.CallCenterApplication”。  系统会向现有的“FabrikamFiber.Web”项目添加一个 Dockerfile。  还会向“FabrikamFiber.Web”项目添加一个“PackageRoot”目录，其中包含新 FabrikamFiber.Web 服务的服务清单和设置。 
 
@@ -120,16 +122,17 @@ Write-Host "Server name is $servername"
 >可以使用选择的任何 SQL Server 进行本地调试，只要可通过主机访问。 但是，**localdb** 不支持 `container -> host` 通信。 如果想要在生成 Web 应用程序的发布版本时使用其他 SQL 数据库，可将另一个连接字符串添加到 web.release.config 文件。
 
 ## <a name="run-the-containerized-application-locally"></a>本地运行已容器化的应用程序
-按 F5，在本地 Service Fabric 开发群集的容器中运行和调试应用程序。
+按 F5，在本地 Service Fabric 开发群集的容器中运行和调试应用程序。 如果出现一个消息框，请求授予“ServiceFabricAllowedUsers”组对Visual Studio 项目目录的读取和执行权限，请单击“是”。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
-在本地运行应用程序后，开始准备将其部署到 Azure。  需将容器映像保存在容器注册表中。  使用以下脚本创建 [Azure 容器注册表](/azure/container-registry/container-registry-intro)。  将应用程序部署到 Azure 之前，先将容器映像推送给此注册表。  应用程序部署到 Azure 中的群集时，系统会从此注册表中拉取容器映像。
+在本地运行应用程序后，开始准备将其部署到 Azure。  需将容器映像保存在容器注册表中。  使用以下脚本创建 [Azure 容器注册表](/azure/container-registry/container-registry-intro)。 容器注册表名称对其他 Azure 订阅可见，因此它必须是唯一的。
+将应用程序部署到 Azure 之前，先将容器映像推送给此注册表。  应用程序部署到 Azure 中的群集时，系统会从此注册表中拉取容器映像。
 
 ```powershell
 # Variables
 $acrresourcegroupname = "fabrikam-acr-group"
 $location = "southcentralus"
-$registryname="fabrikamregistry"
+$registryname="fabrikamregistry$(Get-Random)"
 
 New-AzureRmResourceGroup -Name $acrresourcegroupname -Location $location
 
@@ -143,7 +146,9 @@ $registry = New-AzureRMContainerRegistry -ResourceGroupName $acrresourcegroupnam
 - 通过 Visual Studio 创建一个测试群集。 可以通过此选项使用首选的配置直接从 Visual Studio 创建安全的群集。 
 - [模板创建安全的群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
-创建群集时，选择支持运行容器的 SKU（如包含容器的 Windows Server 2016 Datacenter）。 本教程通过 Visual Studio 创建群集，这非常适合测试方案。 如果通过其他方式创建群集或使用现有的群集，可复制粘贴连接终结点或从订阅中选择连接终结点。 
+本教程通过 Visual Studio 创建群集，这非常适合测试方案。 如果通过其他方式创建群集或使用现有的群集，可复制粘贴连接终结点或从订阅中选择连接终结点。 
+
+创建群集时，请选择一个支持运行容器的 SKU。 群集节点上的 Windows Server OS 必须与容器的 Windows Server OS 兼容。 若要了解更多信息，请参阅 [Windows Server 容器 OS 与主机 OS 的兼容性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)。 默认情况下，本教程将创建基于 Windows Server 2016 LTSC 的 Docker 映像。 基于此映像的容器将运行在使用带容器的 Windows Server 2016 Datacenter 创建的群集上。 但是，如果基于带容器的 Windows Server Datacenter Core 1709 创建群集或使用现有群集，则必须更改容器所基于的 Windows Server OS 映像。 打开 **FabrikamFiber.Web** 项目中的 **Dockerfile**，注释掉现有 `FROM` 语句（基于 `windowsservercore-ltsc`），并取消注释基于 `windowsservercore-1709` 的 `FROM` 语句。 
 
 1. 在解决方案资源管理器中右键单击“FabrikamFiber.CallCenterApplication”应用程序项目，然后选择“发布”。
 

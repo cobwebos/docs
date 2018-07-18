@@ -5,20 +5,19 @@ metadata:
   document_id: 
   title: Azure Maps 文档 | Microsoft Docs
   meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
-  services: azure-maps
   author: philmea
-  manager: timlt
+  manager: 
   ms.service: azure-maps
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  services: azure-maps
   ms.topic: landing-page
   ms.date: 05/07/2018
   ms.author: philmea
-  ms.openlocfilehash: 5561f4720a396a90dbffe08e420d3b9ee66ec206
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 9e9f0020ce52a5bd75e15ab333ed367244016e11
+  ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/07/2018
+  ms.lasthandoff: 06/22/2018
+  ms.locfileid: "36317514"
 abstract:
   description: Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了为 Web 和移动应用程序提供地理环境时所需的全新地图数据。 此服务是与 Azure One API 兼容的一组 REST API，随基于 Web 的 JavaScript 控件一起提供，使得开发简单、灵活且可跨多个媒体移植。
 sections:
@@ -49,7 +48,7 @@ sections:
     style: cards
     className: cardsW
     items:
-    - title: 语言
-      html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">地图控件 API - Javascript</a></p>
+    - title: JavaScript
+      html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">地图控件</a></p>
     - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/maps/">功能 API - REST</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">管理 API - REST</a></p>
+      html: <p><a href="https://docs.microsoft.com/rest/api/maps/render">呈现服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">路线服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">搜索服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">时区服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">交通服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">地图帐户管理</a></p>

@@ -2,7 +2,7 @@
 title: 在 Log Analytics 中查询 B2B 消息 - Azure 逻辑应用 | Microsoft Docs
 description: 创建查询来跟踪 Log Analytics 中的 AS2、X12 和 EDIFACT 消息
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -12,13 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 345857801035fb7f149a57a4f0d58e7668f35b81
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 48cca9919bd09906bdcc3faaaef186ec109c9169
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294303"
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>查询 Log Analytics 中的 AS2、X12 和 EDIFACT 消息
 
@@ -52,41 +53,33 @@ ms.lasthandoff: 04/16/2018
 
    ![选择你的 Log Analytics 工作区](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
-3. 在“管理”下，选择“OMS 门户”。
+3. 在“管理”下，选择“日志搜索”。
 
-   ![选择“OMS 门户”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
+   ![选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/azure-portal-page.png)
 
-4. 在主页上，选择“日志搜索”。
-
-   ![在主页上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
-
-   -或-
-
-   ![在菜单上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
-
-5. 在搜索框中，输入要查找的字段，然后按下 Enter 键。 开始输入时，Log Analytics 会显示你可以使用的可能的匹配和操作。 详细了解[如何在 Log Analytics 中查找数据](../log-analytics/log-analytics-log-searches.md)。
+4. 在搜索框中，输入要查找的字段，然后按下 Enter 键。 开始输入时，Log Analytics 会显示你可以使用的可能的匹配和操作。 详细了解[如何在 Log Analytics 中查找数据](../log-analytics/log-analytics-log-searches.md)。
 
    本示例搜索 Type=AzureDiagnostics 的事件。
 
    ![开始键入查询字符串](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-start-query.png)
 
-6. 在左侧栏中，选择要查看的时间范围。 若要向查询添加筛选器，选择“+添加”。
+5. 在左侧栏中，选择要查看的时间范围。 若要向查询添加筛选器，选择“+添加”。
 
    ![向查询添加筛选器](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
 
-7. 在“添加筛选器”下，输入筛选器名称，以便查找所需的筛选器。 选择筛选器，然后选择“+添加”。
+6. 在“添加筛选器”下，输入筛选器名称，以便查找所需的筛选器。 选择筛选器，然后选择“+添加”。
 
    要查找交换控制编号，本示例搜索“interchange”一词，并选择“event_record_messageProperties_interchangeControlNumber_s”作为筛选器。
 
    ![选择筛选器](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-add-filter.png)
 
-9. 在左侧栏中，选择要使用的筛选器值，然后选择“应用”。
+7. 在左侧栏中，选择要使用的筛选器值，然后选择“应用”。
 
    本示例中，选择所需消息的交换控制编号。
 
    ![选择筛选器值](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-select-filter-value.png)
 
-10. 现在返回到你正在生成的查询。 查询已通过你选定的筛选器事件和值进行更新。 以前的结果现在也已进行了筛选。
+8. 现在返回到你正在生成的查询。 查询已通过你选定的筛选器事件和值进行更新。 以前的结果现在也已进行了筛选。
 
     ![返回到包含筛选结果的查询](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-filtered-results.png)
 

@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 1a7cb6c5d9c3383b127ce38ae21bb2dc811e1f2e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 32970ff37d202cc73e7ab7aa1bf3d737dae895c1
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936711"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure 流分析作业中的检查点和重播概念
 本文介绍 Azure 流分析中内部检查点和重播的概念及其对作业恢复的影响。 每当运行流分析作业时，都会在内部维护状态信息。 该状态信息定期保存在检查点中。 在某些情况下，如果发生作业失败或升级，则会使用检查点信息进行作业恢复。 在另一些情况下，检查点无法用于恢复，而必须使用重播。
@@ -47,7 +48,7 @@ Microsoft 偶尔会升级在 Azure 服务中运行流分析作业的二进制文
 
 目前，每次升级后，恢复检查点格式不会保留。 因此，必须完全使用重播方法来还原流查询的状态。 若要让流分析作业重播与以前完全相同的输入，必须至少将源数据的保留策略设置为查询中的窗口大小。 否则可能会导致服务升级期间出现错误或不完整的结果，因为源数据的保留时限并不足够靠后，以致不能包含整个窗口大小。
 
-一般而言，所需的重播量与窗口大小乘以平均事件速率的结果成正比。 例如，如果某个作业的输入速率为每秒 1000 个事件，则大于 1 小时的窗口大小被认为是一个较大的重播大小。 对于具有较大重播大小的查询，可能会长时间观察到延迟输出（无输出）。 
+一般而言，所需的重播量与窗口大小乘以平均事件速率的结果成正比。 例如，如果某个作业的输入速率为每秒 1000 个事件，则大于 1 小时的窗口大小被认为是一个较大的重播大小。 为了生成完整正确的结果，最多可能需要重新处理一小时的数据，才能初始化状态，而这可能会导致输出延迟（无输出）更长时间。 无窗口或其他时态运算符（例如 `JOIN` 或 `LAG`）的查询不会重播。
 
 ## <a name="estimate-replay-catch-up-time"></a>估算重播同步时间
 若要估算服务升级导致的延迟的长度，可以遵循以下方法：

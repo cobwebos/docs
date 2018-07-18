@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 13f746697a7e694da79a6e376b45f95529049a44
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5a6fa3f2bb6ab76bf323fe3ca829797878f5e774
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100498"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -71,19 +72,19 @@ Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager �
 
     * 指定在其中创建群集的数据中心“位置”。
 
-    * 单击“资源组名称” 的 Azure 数据工厂。
+    * 单击“下一步”。
 
-4. 对于“存储”，指定是要将 Azure 存储 (WASB) 还是 Data Lake Store 作为默认存储。 有关详细信息，请查看下表。
+4. 对于“存储”，指定是要将 Azure 存储 (WASB) 还是 Data Lake Storage 作为默认存储。 有关详细信息，请查看下表。
 
     ![在 Azure 门户中创建新群集](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "在 Azure 门户中创建新群集")
 
     | 存储                                      | 说明 |
     |----------------------------------------------|-------------|
-    | **将 Azure 存储 Blob 作为默认存储**   | <ul><li>对于“主存储类型”，选择“Azure 存储”。 在此之后，如果要指定属于 Azure 订阅的存储帐户，则对于“选择方法”，可以选择“我的订阅”，并选择存储帐户。 否则，请单击“访问密钥”，并提供想要从 Azure 订阅外部选择的存储帐户的信息。</li><li>对于“默认容器”，可以选择使用门户建议的默认容器名称或自己指定。</li><li>如果使用 WASB 作为默认存储，则可以（可选）单击“其他存储帐户”以指定要与群集关联的其他存储帐户。 对于“Azure 存储密钥”，单击“添加存储密钥”，然后可从 Azure 订阅或其他订阅提供存储帐户（通过提供存储帐户访问密钥）。</li><li>如果使用 WASB 作为默认存储，则可以（可选）单击“Data Lake Store 访问”以将 Azure Data Lake Store 指定为其他存储。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。</li></ul> |
-    | **将 Azure Data Lake Store 作为默认存储** | 对于“主存储类型”，选择“Data Lake Store”，并参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)以查看说明。 |
+    | **将 Azure 存储 Blob 作为默认存储**   | <ul><li>对于“主存储类型”，选择“Azure 存储”。 在此之后，如果要指定属于 Azure 订阅的存储帐户，则对于“选择方法”，可以选择“我的订阅”，并选择存储帐户。 否则，请单击“访问密钥”，并提供想要从 Azure 订阅外部选择的存储帐户的信息。</li><li>对于“默认容器”，可以选择使用门户建议的默认容器名称或自己指定。</li><li>如果使用 WASB 作为默认存储，则可以（可选）单击“其他存储帐户”以指定要与群集关联的其他存储帐户。 对于“Azure 存储密钥”，单击“添加存储密钥”，然后可从 Azure 订阅或其他订阅提供存储帐户（通过提供存储帐户访问密钥）。</li><li>如果使用 WASB 作为默认存储，则可以（可选）单击“Data Lake Store 访问”以将 Azure Data Lake Storage 指定为其他存储。 有关详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。</li></ul> |
+    | **将 Azure Data Lake Storage 作为默认存储** | 对于“主存储类型”，请选择“Azure Data Lake Storage Gen1”或“Azure Data Lake Storage Gen2 (预览版)”，然后参阅文章[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)以获取说明。 |
     | **外部元存储**                      | （可选）可以指定 SQL 数据库用于保存与群集关联的 Hive 和 Oozie 元数据。 对于“为 Hive 选择 SQL 数据库”，选择 SQL 数据库，并提供该数据库的用户名/密码。 为 Oozie 元数据重复以上这些步骤。<br><br>将 Azure SQL 数据库用于远存储时的一些注意事项。 <ul><li>用于元存储的 Azure SQL 数据库必须允许连接到其他 Azure 服务，包括 Azure HDInsight。 在 Azure SQL 数据库仪表板的右侧单击服务器名称。 这是运行 SQL 数据库实例的服务器。 进入服务器视图后，请单击“配置”，针对“Azure 服务”单击“是”，并单击“保存”。</li><li>创建元存储时，请勿使用包含短划线或连字符的数据库名称，因为这可能会导致群集创建过程失败。</li></ul> |
 
-    单击“资源组名称” 的 Azure 数据工厂。 
+    单击“下一步”。 
 
     > [!WARNING]
     > 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
@@ -113,7 +114,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager �
     | **脚本操作** | 如果要在创建群集时使用自定义脚本自定义群集，请使用此选项。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。 |
     | **虚拟网络** | 如果要将群集放入虚拟网络，请选择 Azure 虚拟网络和子网。 有关将 HDInsight 与虚拟网络配合使用的信息（包括虚拟网络的特定配置要求），请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。 |
 
-    单击“资源组名称” 的 Azure 数据工厂。
+    单击“下一步”。
 
 8. 对于“摘要”，请验证之前输入的信息，然后单击“创建”。
 

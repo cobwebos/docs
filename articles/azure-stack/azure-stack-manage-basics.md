@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 283d1c2a7ef3484cb4fd4d9a53b543a093e9baf8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850297"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack 管理基础知识
 如果不熟悉 Azure Stack 管理，则需要了解几项事情。 本指南概述了 Azure Stack 操作员角色，以及需要告知用户哪些东西才能让他们快速提高工作效率。
@@ -31,9 +32,9 @@ ms.lasthandoff: 04/03/2018
  
 ### <a name="development-kit"></a>开发工具包
 
-如果使用 Azure Stack 开发工具包，请参阅[什么是 Azure Stack？](.\asdk\asdk-what-is.md)一文，确保了解该开发工具包的用途和限制。 应该将开发工具包作为“沙盒”使用，在其中对 Azure Stack 进行评估，并在非生产环境中开发和测试应用。 (有关部署信息，请参阅[Azure 堆栈开发工具包部署](.\asdk\asdk-deploy.md)教程。)
+如果使用 Azure Stack 开发工具包，请参阅[什么是 Azure Stack？](.\asdk\asdk-what-is.md)一文，确保了解该开发工具包的用途和限制。 应该将开发工具包作为“沙盒”使用，在其中对 Azure Stack 进行评估，并在非生产环境中开发和测试应用。 (有关部署信息，请参阅[Azure 堆栈开发工具包部署](.\asdk\asdk-install.md)文章。)
 
-正如 Azure 一样，我们的创新速度很快。 我们会定期发布新版本。 如果运行的是开发工具包，但需要更新到最新版本，则必须[重新部署 Azure Stack](.\asdk\asdk-redeploy.md)。 不能应用更新包。 此过程需要一定的时间，但好处是可以尝试最新功能。 我们网站上的开发工具包文档反映了最新的发行版。
+正如 Azure 一样，我们的创新速度很快。 我们会定期发布新版本。 如果开发包正在运行，但需要更新到最新版本，则必须[重新部署 Azure Stack](.\asdk\asdk-redeploy.md)。 不能应用更新包。 此过程需要一定的时间，但好处是可以尝试最新功能。 我们网站上的开发工具包文档反映了最新的发行版。
 
 ## <a name="learn-about-available-services"></a>了解可用的服务
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 04/03/2018
 
 目前，我们支持下述额外的平台即服务 (PaaS) 服务：
 
-- 应用服务
+- App Service
 - Azure Functions
 - SQL 和 MySQL 数据库
 
@@ -65,15 +66,15 @@ ms.lasthandoff: 04/03/2018
 Azure Stack 会持续增加对 Azure 服务的支持。 如需计划的路线图，请参阅 [Azure Stack: An extension of Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)（Azure Stack：Azure 的扩展）白皮书。 也可留意 [Azure Stack 博客文章](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)中的新公告。
 
 ## <a name="what-account-should-i-use"></a>我应使用什么帐户?
-有一些你应注意管理 Azure 堆栈时的帐户注意事项。 尤其是在部署作为标识提供程序而不是 Azure Active Directory (Azure AD) 中使用 Windows Server Active Directory 联合身份验证服务 (AD FS)。 以下的帐户注意事项适用于 Azure 堆栈集成系统和 ASDK 部署：
+管理 Azure Stack 时，应该注意帐户方面的几个事项， 尤其是在使用 Windows Server Active Directory 联合身份验证服务 (AD FS) 而不是 Azure Active Directory (Azure AD) 作为标识提供者的部署中。 以下帐户注意事项同时适用于 Azure Stack 集成系统和 ASDK 部署：
 
 
 |帐户|Azure AD|AD FS|
 |-----|-----|-----|
-|本地管理员 (。 \Administrator)|ASDK 主机管理员|ASDK 主机管理员|
-|AzureStack\AzureStackAdmin|ASDK 主机管理员<br><br>用于登录到 Azure 堆栈管理门户<br><br>若要查看和管理 Service Fabric 环的访问|ASDK 主机管理员<br><br>不能访问 Azure 堆栈管理门户<br><br>若要查看和管理 Service Fabric 环的访问<br><br>不再所有者的默认提供程序订阅 (DP)|
-|AzureStack\CloudAdmin|可以访问并运行特权终结点中的允许的命令|可以访问并运行特权终结点中的允许的命令<br><br>可以不登录到 ASDK 主机<br><br>默认提供程序订阅 (DP) 的所有者|
-|Azure AD 全局管理员|在安装期间使用<br><br>默认提供程序订阅 (DP) 的所有者|不适用|
+|本地管理员 (.\Administrator)|ASDK 主机管理员|ASDK 主机管理员|
+|AzureStack\AzureStackAdmin|ASDK 主机管理员<br><br>可用于登录到 Azure Stack 管理门户<br><br>拥有查看和管理 Service Fabric 环的访问权限|ASDK 主机管理员<br><br>没有 Azure Stack 管理门户的访问权限<br><br>拥有查看和管理 Service Fabric 环的访问权限<br><br>不再是默认提供程序订阅 (DPS) 的所有者|
+|AzureStack\CloudAdmin|可在特权终结点中访问和运行允许的命令|可在特权终结点中访问和运行允许的命令<br><br>无法登录到 ASDK 主机<br><br>默认提供程序订阅 (DPS) 的所有者|
+|Azure AD 全局管理员|安装期间使用<br><br>默认提供程序订阅 (DPS) 的所有者|不适用|
 |
 
 ## <a name="what-tools-do-i-use-to-manage"></a>使用哪些工具进行管理？
@@ -141,7 +142,7 @@ Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组�
 
 至于开发工具包，可以在 [Microsoft 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)中提出与支持相关的问题。 单击管理员门户右上角的“帮助和支持”图标（问号），然后单击“新建支持请求”，则会直接打开论坛网站。 我们会定期关注这些论坛。 由于开发工具包是一个评估环境，因此我们不会通过 Microsoft CSS 提供官方支持。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 
 - [Azure Stack 中的区域管理](azure-stack-region-management.md)
 

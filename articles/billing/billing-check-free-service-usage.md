@@ -1,5 +1,5 @@
 ---
-title: 监视和跟踪免费服务的使用情况 - Azure | Microsoft Docs
+title: 监视和跟踪 Azure 免费服务的使用情况 | Microsoft Docs
 description: 学习如何检查免费服务的使用情况。 使用 Azure 门户和 csv 使用文件。
 services: ''
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 560137d92491da46fda950dec84a0a7caa3ed720
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7fa0196b7a44ef20ecd63797869dffea55f92c3d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061310"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>检查 Azure 免费帐户中包含的免费服务的使用情况 
 
@@ -50,13 +51,13 @@ ms.lasthandoff: 05/04/2018
 
     该表包含以下列：
 
-* **测定仪名称：**确定要使用的测定仪的度量单位。 若要了解有关服务测定仪映射的信息，请参阅[了解免费服务测定仪映射](billing-understand-free-service-meter-mapping.md)。 
-* **使用情况/限值：**当前月份的测定仪使用情况和限值。 还可在状态栏中找到此信息。
-* **状态：**测定仪的使用状态。 根据使用模式，可能会具有以下其中一种状态。
-  * **未使用：**未使用测定仪或测定仪的使用情况尚未提交至计费系统。
-  * **于 \<Date> 超过：**已于 \<Date> 超过测定仪限值。
-  * **不可能超过：**不太可能超过测定仪的限值。
-  * **于 \<Date> 超过：**可能会于 \<Date> 超过测定仪限值。
+* **测定仪名称：** 确定要使用的测定仪的度量单位。 若要了解有关服务测定仪映射的信息，请参阅[了解免费服务测定仪映射](billing-understand-free-service-meter-mapping.md)。 
+* **使用情况/限值：** 当前月份的测定仪使用情况和限值。 还可在状态栏中找到此信息。
+* **状态：** 测定仪的使用状态。 根据使用模式，可能会具有以下其中一种状态。
+  * **未使用：** 未使用测定仪或测定仪的使用情况尚未提交至计费系统。
+  * **于 \<Date> 超过：** 已于 \<Date> 超过测定仪限值。
+  * **不可能超过：** 不太可能超过测定仪的限值。
+  * **于 \<Date> 超过：** 可能会于 \<Date> 超过测定仪限值。
 
 
 ## <a name="check-usage-through-the-usage-file"></a>通过使用文件检查使用情况

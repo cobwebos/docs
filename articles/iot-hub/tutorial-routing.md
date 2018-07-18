@@ -1,31 +1,26 @@
 ---
 title: 使用 Azure IoT 中心 (.NET) 配置消息路由 | Microsoft Docs
 description: 使用 Azure IoT 中心配置消息路由
-services: iot-hub
-documentationcenter: .net
 author: robinsh
 manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: dotnet
+services: iot-hub
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/01/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 0674ed033f77d7d2eca319d0b1e82171dfa4256d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ab354410ba3b0b37ae630a2b68daec63a9051555
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700819"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>教程：使用 IoT 中心配置消息路由
 
-消息路由能够将遥测数据从 IoT 设备发送到内置的与事件中心兼容的终结点或自定义终结点，例如，blob 存储、服务总线队列、服务总线主题和事件中心。 配置消息路由时，可创建路由规则，用于自定义符合特定规则的路由。 设置完成后，引入的数据将通过 IoT 中心自动路由到终结点。 
+消息路由能够将遥测数据从 IoT 设备发送到内置的与事件中心兼容的终结点或自定义终结点，例如，blob 存储、服务总线队列、服务总线主题和事件中心。 配置消息路由时，可以创建路由规则来自定义符合特定规则的路由。 设置完成后，引入的数据将通过 IoT 中心自动路由到终结点。 
 
-在本教程中，可了解如何通过 IoT 中心设置和使用路由规则。 将消息从 IoT 设备路由到多项服务（包括 blob 存储和服务总线队列）的其中一项服务中。 路由到服务总线队列的消息将有逻辑应用获取并通过电子邮件发送。 没有特别设置路由的消息将发送到默认终结点，可在 PowerBI 可视化中查看。
+在本教程中，可了解如何通过 IoT 中心设置和使用路由规则。 将消息从 IoT 设备路由到多项服务（包括 blob 存储和服务总线队列）的其中一项服务中。 路由到服务总线队列的消息将有逻辑应用获取并通过电子邮件发送。 没有专门设置路由的消息将发送到默认终结点，可在 Power BI 可视化中查看。
 
 将在本教程中执行以下任务：
 
@@ -34,11 +29,11 @@ ms.lasthandoff: 05/07/2018
 > * 在 IoT 中心为存储帐户和服务总线队列配置终结点和路由。
 > * 创建一个逻辑应用，该应用将在消息添加到服务总线队列时触发，并发送电子邮件。
 > * 下载并运行应用，该应用模拟 IoT 设备将消息发送到中心，以获得不同的路由选择。
-> * 为发送至默认终结点的数据创建 PowerBI 可视化。
+> * 为发送至默认终结点的数据创建 Power BI 可视化。
 > * 查看结果...
 > * ...在服务总线队列和电子邮件中。
 > * ...在存储帐户中。
-> * ...在 PowerBI 可视化中。
+> * ...在 Power BI 可视化中。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +41,7 @@ ms.lasthandoff: 05/07/2018
 
 - 安装 [Visual Studio for Windows](https://www.visualstudio.com/)。 
 
-- 用于分析默认终结点的流分析的 PowerBI 帐户。 （[免费试用 Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)）
+- 用于分析默认终结点的流分析的 Power BI 帐户。 （[免费试用 Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)。）
 
 - 用于发送通知电子邮件的 Office 365 帐户。 
 
@@ -104,24 +99,24 @@ ms.lasthandoff: 05/07/2018
 # You need it to create the device identity. 
 az extension add --name azure-cli-iot-ext
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 location=westus
 resourceGroup=ContosoResources
 iotHubConsumerGroup=ContosoConsumers
 containerName=contosoresults
 iotDeviceName=Contoso-Test-Device 
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-iotHubName=ContosoTestHub 
-storageAccountName=contosoresultsstorage 
-sbNameSpace=ContosoSBNamespace 
-sbQueueName=ContosoSBQueue
-
 # Create the resource group to be used
 #   for all the resources for this tutorial.
 az group create --name $resourceGroup \
     --location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+iotHubName=ContosoTestHub$RANDOM
+echo "IoT hub name = " $iotHubName
 
 # Create the IoT hub.
 az iot hub create --name $iotHubName \
@@ -131,6 +126,10 @@ az iot hub create --name $iotHubName \
 # Add a consumer group to the IoT hub.
 az iot hub consumer-group create --hub-name $iotHubName \
     --name $iotHubConsumerGroup
+
+# The storage account name must be globally unique, so add a random number to the end.
+storageAccountName=contosostorage$RANDOM
+echo "Storage account name = " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 az storage account create --name $storageAccountName \
@@ -154,11 +153,19 @@ az storage container create --name $containerName \
     --account-key $storageAccountKey \
     --public-access off 
 
+# The Service Bus namespace must be globally unique, so add a random number to the end.
+sbNameSpace=ContosoSBNamespace$RANDOM
+echo "Service Bus namespace = " $sbNameSpace
+
 # Create the Service Bus namespace.
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
     
+# The Service Bus queue name must be globally unique, so add a random number to the end.
+sbQueueName=ContosoSBQueue$RANDOM
+echo "Service Bus queue name = " $sbQueueName
+
 # Create the Service Bus queue to be used as a routing destination.
 az servicebus queue create --name $sbQueueName \
     --namespace-name $sbNameSpace \
@@ -183,23 +190,23 @@ az iot hub device-identity show --device-id $iotDeviceName \
 # Log into Azure account.
 Login-AzureRMAccount
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 $location = "West US"
 $resourceGroup = "ContosoResources"
 $iotHubConsumerGroup = "ContosoConsumers"
 $containerName = "contosoresults"
 $iotDeviceName = "Contoso-Test-Device"
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-$iotHubName = "ContosoTestHub"
-$storageAccountName = "contosoresultsstorage"
-$serviceBusNamespace = "ContosoSBNamespace"
-$serviceBusQueueName  = "ContosoSBQueue"
-
-# Create the resource group to be used  
+# Create the resource group to be used 
 #   for all resources for this tutorial.
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+$iotHubName = "ContosoTestHub$(Get-Random)"
+Write-Host "IoT hub name is " $iotHubName
 
 # Create the IoT hub.
 New-AzureRmIotHub -ResourceGroupName $resourceGroup `
@@ -213,6 +220,10 @@ Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $resourceGroup `
   -Name $iotHubName `
   -EventHubConsumerGroupName $iotHubConsumerGroup `
   -EventHubEndpointName "events"
+
+# The storage account name must be globally unique, so add a random number to the end.
+$storageAccountName = "contosostorage$(Get-Random)"
+Write-Host "storage account name is " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 # Save the context for the storage account 
@@ -228,10 +239,20 @@ $storageContext = $storageAccount.Context
 New-AzureStorageContainer -Name $containerName `
     -Context $storageContext
 
+# The Service Bus namespace must be globally unique,
+#   so add a random number to the end.
+$serviceBusNamespace = "ContosoSBNamespace$(Get-Random)"
+Write-Host "Service Bus namespace is " $serviceBusNamespace
+
 # Create the Service Bus namespace.
 New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroup `
     -Location $location `
     -Name $serviceBusNamespace 
+
+# The Service Bus queue name must be globally unique,
+#  so add a random number to the end.
+$serviceBusQueueName  = "ContosoSBQueue$(Get-Random)"
+Write-Host "Service Bus queue name is " $serviceBusQueueName 
 
 # Create the Service Bus queue to be used as a routing destination.
 New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
@@ -256,8 +277,6 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    ![显示设备详细信息（包括密钥）的屏幕截图。](./media/tutorial-routing/device-details.png)
 
-
-
 ## <a name="set-up-message-routing"></a>设置消息路由
 
 根据模拟设备附加到消息的属性将消息路由到不同资源。 未自定义路由的消息将发送到默认终结点（消息/事件）。 
@@ -266,7 +285,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 |------|------|
 |级别=“storage” |写入到 Azure 存储。|
 |级别=“critical” |写入服务总线队列。 逻辑应用从队列检索消息并使用 Office 365 通过电子邮件发送该消息。|
-|default |使用 PowerBI 显示此数据。|
+|default |使用 Power BI 显示此数据。|
 
 ### <a name="routing-to-a-storage-account"></a>路由到存储帐户 
 
@@ -278,7 +297,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
    
    **终结点类型**：从下拉列表选择“Azure 存储容器”。
 
-   单击“选取容器”以显示存储帐户列表。 选择存储帐户。 本教程使用 contosoresultsstorage。 然后选择容器。 本教程使用 contosoresults。 单击“选择”，将返回到“添加”终结点窗格。 
+   单击“选取容器”以显示存储帐户列表。 选择存储帐户。 本教程使用 **contosostorage**。 然后选择容器。 本教程使用 contosoresults。 单击“选择”，将返回到“添加”终结点窗格。 
    
    ![显示添加终结点的屏幕截图。](./media/tutorial-routing/add-endpoint-storage-account.png)
    
@@ -390,7 +409,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 ## <a name="set-up-azure-stream-analytics"></a>设置 Azure 流分析
 
-若要查看 PowerBI 可视化中的数据，首先需设置流分析作业以检索数据。 请记住，只会将“级别”为“normal”的消息发送到默认终结点，并由针对 PowerBI 可视化的流分析作业检索。
+若要在 Power BI 可视化中查看数据，首先需要设置流分析作业来检索数据。 请记住，只会将“级别”为“常规”的消息发送到默认终结点，并由针对 Power BI 可视化的流分析作业检索。
 
 ### <a name="create-the-stream-analytics-job"></a>创建流分析作业
 
@@ -405,6 +424,8 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
    **位置**：使用设置脚本中所用的相同位置。 本教程使用“美国西部”。 
 
    ![显示如何创建流分析作业的屏幕截图。](./media/tutorial-routing/stream-analytics-create-job.png)
+
+3. 单击“创建”来创建作业。 若要返回到作业，请单击“资源组”。 本教程使用 ContosoResources。 选择资源组，然后在资源列表中单击流分析作业。 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>向流分析作业添加输入
 
@@ -434,17 +455,17 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 1. 在“作业拓扑”下，单击“输出”。
 
-2. 在“输出”窗格中，单击“添加”，然后选择“PowerBI”。 在出现的屏幕上，填写以下字段：
+2. 在“输出”窗格中，单击“添加”，然后选择“Power BI”。 在出现的屏幕上，填写以下字段：
 
    **输出别名**：输出的唯一别名。 本教程使用 contosooutputs。 
 
-   **数据集名称**：PowerBI 中使用的数据集的名称。 本教程使用 contosodataset。 
+   **数据集名称**：要在 Power BI 中使用的数据集的名称。 本教程使用 contosodataset。 
 
-   **表名称**：PowerBI 中使用的表的名称。 本教程使用 contosotable。
+   **表名称**：要在 Power BI 中使用的表的名称。 本教程使用 contosotable。
 
    其余字段接受默认值。
 
-3. 单击“授权”，登录 PowerBI 帐户。
+3. 单击“授权”，并登录到你的 Power BI 帐户。
 
    ![显示如何为流分析作业设置输出的屏幕截图。](./media/tutorial-routing/stream-analytics-job-outputs.png)
 
@@ -462,19 +483,19 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 4. 单击“ **保存**”。
 
-5. 关闭“查询”窗格。
+5. 关闭“查询”窗格。 这将返回到“资源组”中的资源的视图。 单击流分析作业。 本教程中将其称为 **contosoJob**。
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
 在流分析作业中，单击“启动” > “现在” > “启动”。 成功启动作业以后，作业状态将从“已停止”更改为“正在运行”。
 
-设置 PowerBI 报表需要数据，因此将先创建设备并运行设备模拟应用程序再设置 PowerBI。
+设置 Power BI 报表需要数据，因此将先创建设备并运行设备模拟应用程序再设置 Power BI。
 
 ## <a name="run-simulated-device-app"></a>运行模拟设备应用
 
 之前的脚本设置部分中，已设置了一个使用 IoT 设备进行模拟的设备。 本部分将下载一个 .NET 控制台应用，用于模拟向 IoT 中心发送设备到云消息的设备。 该应用程序为每个不同的路由方法发送消息。 
 
-下载 [IoT 设备模拟](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)的解决方案。 这将下载一个其中含有数个应用程序的存储库；正在查找的解决方案位于 Tutorials/Routing/SimulatedDevice/。
+下载 [IoT 设备模拟](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)的解决方案。 这将下载一个其中含有数个应用程序的存储库；你要查找的解决方案位于 iot-hub/Tutorials/Routing/SimulatedDevice/ 中。
 
 双击解决方案文件 (SimulatedDevice.sln)，在 Visual Studio 中打开代码，然后打开 Program.cs。 使用 IoT 中心主机名代替 `{iot hub hostname}`。 IoT 中心主机名的格式为“{iot-hub-name}.azure-devices.net”。 本教程的中心主机名为“ContosoTestHub.azure-devices.net”。 接下来，使用之前设置模拟设备时保存的设备密钥代替 `{device key}`。 
 
@@ -512,11 +533,11 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    * 到存储帐户的路由运行正常。
 
-现在，在应用程序仍在运行的情况下，设置 PowerBI 可视化以显示来自默认路由的消息。 
+现在，在应用程序仍在运行的情况下，设置 Power BI 可视化以显示来自默认路由的消息。 
 
-## <a name="set-up-the-powerbi-visualizations"></a>设置 PowerBI 可视化
+## <a name="set-up-the-power-bi-visualizations"></a>设置 Power BI 可视化
 
-1. 登录到 [PowerBI](https://powerbi.microsoft.com/) 帐户。
+1. 登录到 [Power BI](https://powerbi.microsoft.com/) 帐户。
 
 2. 转到“工作区”，然后选择为流分析作业创建输出时设置的工作区。 本教程使用“我的工作区”。 
 
@@ -526,7 +547,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 4. 在“操作”下，单击第一个用于创建报表的图标。
 
-   ![显示 PowerBI 工作区的屏幕截图，其“操作”和报表图标中突出显示。](./media/tutorial-routing/power-bi-actions.png)
+   ![此屏幕截图显示了 PowerBI 工作区，其中突出显示了“操作”和报表图标。](./media/tutorial-routing/power-bi-actions.png)
 
 5. 创建折线图，显示某段时间的实时温度。
 
@@ -544,7 +565,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 7. 创建另一个折线图，显示某段时间的实时湿度。 要设置第二个折线图，请执行上诉相同步骤，将“EventEnqueuedUtcTime”置于 x 轴，将“湿度”置于 y 轴。
 
-   ![显示最终 PowerBI 报表的屏幕截图，其中有两个折线图。](./media/tutorial-routing/power-bi-report.png)
+   ![此屏幕截图显示了其中有两个折线图的最终 Power BI 报表。](./media/tutorial-routing/power-bi-report.png)
 
 8. 单击“保存”以保存该报表。
 
@@ -552,17 +573,17 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    * 到默认终结点的路由运行正常。
    * Azure 流分析作业的流式传输正常。
-   * PowerBI 可视化设置正确。
+   * Power BI 可视化设置正确。
 
-单击 PowerBI 窗口顶部的“刷新”按钮刷新图表，可查看最近的数据。 
+单击 Power BI 窗口顶部的“刷新”按钮刷新图表，可查看最近的数据。 
 
 ## <a name="clean-up-resources"></a>清理资源 
 
 如果想要删除已创建的所有资源，请删除资源组。 此操作会一并删除组中包含的所有资源。 在这种情况下，它会删除 IoT 中心、服务总线命名空间和队列、逻辑应用、存储帐户和资源组本身。 
 
-### <a name="clean-up-resources-in-the-powerbi-visualization"></a>清理 PowerBI 可视化中的资源
+### <a name="clean-up-resources-in-the-power-bi-visualization"></a>清理 Power BI 可视化中的资源
 
-登录 [PowerBI](https://powerbi.microsoft.com/) 帐户。 转到你的工作区。 本教程使用“我的工作区”。 若要删除 PowerBI 可视化，请转到数据集并单击“垃圾桶”图标删除该数据集。 本教程使用 contosodataset。 删除数据集时，报表也随之删除。
+登录到 [Power BI](https://powerbi.microsoft.com/) 帐户。 转到你的工作区。 本教程使用“我的工作区”。 若要删除 Power BI 可视化，请转到数据集并单击“垃圾桶”图标删除该数据集。 本教程使用 contosodataset。 删除数据集时，报表也随之删除。
 
 ### <a name="clean-up-resources-using-azure-cli"></a>使用 Azure CLI 清理资源
 
@@ -589,15 +610,15 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 > * 在 IoT 中心为存储帐户和服务总线队列配置终结点和路由。
 > * 创建一个逻辑应用，该应用将在消息添加到服务总线队列时触发，并发送电子邮件。
 > * 下载并运行应用，该应用模拟 IoT 设备将消息发送到中心，以获得不同的路由选择。
-> * 为发送至默认终结点的数据创建 PowerBI 可视化。
+> * 为发送至默认终结点的数据创建 Power BI 可视化。
 > * 查看结果...
 > * ...在服务总线队列和电子邮件中。
 > * ...在存储帐户中。
-> * ...在 PowerBI 可视化中。
+> * ...在 Power BI 可视化中。
 
 转到下一教程，了解如何管理 IoT 设备的状态。 
 
 > [!div class="nextstepaction"]
-[Azure IoT 中心设备孪生入门](iot-hub-node-node-twin-getstarted.md)
+[从后端服务配置设备](tutorial-device-twins.md)
 
  <!--  [Manage the state of a device](./tutorial-manage-state.md) -->

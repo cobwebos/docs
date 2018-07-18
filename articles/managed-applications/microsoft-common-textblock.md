@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9026313b5022dd4d29bbe1d7e80cc1d51b89516a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: cd4d1aed666b2c64ade700a768df0525029b392c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062734"
 ---
 # <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock UI 元素
 可用于向门户界面添加文本的控件。
@@ -32,7 +33,7 @@ ms.lasthandoff: 05/17/2018
   "type": "Microsoft.Common.TextBlock",
   "visible": true,
   "options": {
-    "text": "Look! Arbitrary text in templates!",
+    "text": "Please provide the configuration values for your application.",
     "link": {
       "label": "Learn more",
       "uri": "https://www.microsoft.com"
@@ -44,7 +45,7 @@ ms.lasthandoff: 05/17/2018
 ## <a name="sample-output"></a>示例输出
 
 ```json
-"Look! Arbitrary text in templates! Learn more"
+"Please provide the configuration values for your application. Learn more"
 ```
 
 ## <a name="next-steps"></a>后续步骤

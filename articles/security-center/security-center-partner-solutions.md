@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 安全中心内管理已连接的合作伙伴解决方案 | Microsoft Docs"
-description: "本文档将对 Azure 安全中心如何让你轻松监视与 Azure 订阅集成的合作伙伴解决方案的运行状态进行指导。"
+title: 在 Azure 安全中心内管理已连接的合作伙伴解决方案 | Microsoft Docs
+description: 本文档将对 Azure 安全中心如何让你轻松监视与 Azure 订阅集成的合作伙伴解决方案的运行状态进行指导。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/18/2017
+ms.locfileid: "23454971"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>在 Azure 安全中心内管理已连接的合作伙伴解决方案
 本文介绍了如何在 Azure 安全中心内管理和监视已连接的安全解决方案。

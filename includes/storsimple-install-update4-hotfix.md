@@ -28,7 +28,7 @@
 执行以下步骤安装和验证常规模式修补程序。 如果已使用 Azure 经典门户安装这些修补程序，请直接跳到[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)。
 
 1. 若要安装修补程序，请访问 StorSimple 设备串行控制台上的 Windows PowerShell 界面。 遵循 [Use PuTTy to connect to the serial console](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)（使用 PuTTy 连接到串行控制台）中的详细说明。 在命令提示符下，按 **Enter**。
-2. 选择“选项 1”，以完全访问权限登录到设备。 建议先在被动控制器中安装修补程序。
+2. 选择选项 1“以完全访问权限登录”。 建议先在被动控制器中安装修补程序。
 3. 若要安装修补程序，请在命令提示符下键入：
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -153,7 +153,7 @@
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. 使用 `Get-HcsUpdateStatus` 命令监视安装进度。 当 `RunInProgress` 更改为 `False` 时，即表示更新完成。
-4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 使用选项 1 以完全访问权限登录，并检查磁盘固件版本。 键入：
+4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 根据选项 1“以完全访问权限登录”登录，并检查磁盘固件版本。 键入：
    
    `Get-HcsFirmwareVersion`
    

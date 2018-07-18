@@ -1,11 +1,11 @@
 ---
-title: "Azure 云服务文档 - 教程和 API 参考 | Microsoft 文档"
-description: "教程、API 参考和其他文档介绍了如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。"
+title: Azure 云服务文档 - 教程和 API 参考 | Microsoft 文档
+description: 教程、API 参考和其他文档介绍了如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。
 services: cloud-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: cloud-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24101876"
 ---
 # <a name="cloud-services-documentation"></a>云服务文档
 

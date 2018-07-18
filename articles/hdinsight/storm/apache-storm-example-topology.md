@@ -4,7 +4,7 @@ description: 使用 Apache Storm on HDInsight 创建和测试的示例 Storm 拓
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: f9b1bdff-5928-4705-a76d-52fd200917cb
@@ -12,13 +12,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/30/2018
 ms.author: larryfr
-ms.openlocfilehash: f633797147b2090680ebb5ea11f60271addc7f52
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 429373a27ad9be23b986116182a4eda80bace7f7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626881"
 ---
 # <a name="example-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Apache Storm on HDInsight 的示例 Storm 拓扑和组件
 
@@ -38,6 +39,11 @@ ms.lasthandoff: 04/16/2018
 | [使用 Storm on HDInsight 建立从 Azure 事件中心读取数据的伸缩性基准][d6c540e3] |消息吞吐量、事件中心、SQL 数据库 |C#、Java |
 | [将 HDInsight 上的 Python 与 Storm 配合使用](apache-storm-develop-python-topology.md) |具有 Flux 拓扑的 Python 组件 |Python |
 | [将 HDInsight 上的 Kafka 与 Storm 配合使用](../hdinsight-apache-storm-with-kafka.md) | Apache Storm 读取和写入 Apache Kafka | Java |
+
+> [!WARNING]
+> 此列表中的 C# 示例最初通过基于 Windows 的 HDInsight 创建和测试，可能无法在基于 Linux 的 HDInsight 群集中正常运行。 基于 Linux 的群集使用 Mono 运行 .NET 代码，可能与示例中使用的框架和包有兼容性问题。
+>
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。
 
 ### <a name="next-steps"></a>后续步骤
 

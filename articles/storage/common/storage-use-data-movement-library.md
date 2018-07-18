@@ -1,12 +1,12 @@
 ---
-title: "使用 Microsoft Azure 存储数据移动库传输数据 | Microsoft 文档"
-description: "使用数据移动库将数据移动或复制到 Blob、表和文件内容，或者从中移动或复制数据。 从本地文件将数据复制到 Azure 存储，或者在存储帐户中或存储帐户之间复制数据。 轻松地将数据迁移到 Azure 存储。"
+title: 使用 Microsoft Azure 存储数据移动库传输数据 | Microsoft 文档
+description: 使用数据移动库将数据移动或复制到 Blob、表和文件内容，或者从中移动或复制数据。 从本地文件将数据复制到 Azure 存储，或者在存储帐户中或存储帐户之间复制数据。 轻松地将数据迁移到 Azure 存储。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: seguler
 manager: jahogg
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/02/2018
+ms.locfileid: "27564733"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>使用 Microsoft Azure 存储数据移动库传输数据
 

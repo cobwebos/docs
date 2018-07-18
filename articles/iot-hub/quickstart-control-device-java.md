@@ -1,23 +1,21 @@
 ---
 title: 快速入门：从 Azure IoT 中心控制设备 (Java) | Microsoft Docs
 description: 本快速入门会运行两个示例 Java 应用程序。 一个为后端应用程序，可远程控制连接到中心的设备。 另一个应用程序可模拟连接到中心的可受远程控制的设备。
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
-ms.date: 04/30/2018
+ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 6dcbf954fdfd6f5b6f65b54edf33e9da234c7d0f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5da4248f0b0a72c3614b4c3e5ea042c4341f4e03
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38573494"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>快速入门：控制连接到 IoT 中心的设备 (Java)
 
@@ -77,7 +75,7 @@ mvn --version
 
     如果为设备选择不同名称，则在运行示例应用程序之前，请在其中更新设备名称。
 
-1. 运行以下命令，获取刚注册设备的设备连接字符串：
+2. 运行以下命令，获取刚注册设备的设备连接字符串：
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -99,19 +97,19 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 模拟设备应用程序会连接到 IoT 中心上特定于设备的终结点，发送模拟遥测数据，并侦听中心的直接方法调用。 在本快速入门中，中心的直接方法调用告知设备对其发送遥测的间隔进行更改。 执行直接方法后，模拟设备会将确认发送回中心。
 
-1. 在终端窗口中，导航到示例 Java 项目的根文件夹。 然后导航到 Quickstarts\simulated-device-2 文件夹。
+1. 在终端窗口中，导航到示例 Java 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device-2** 文件夹。
 
-1. 在所选文本编辑器中打开 src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java 文件。
+2. 在所选文本编辑器中打开 src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java 文件。
 
     将 `connString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.java 文件。
 
-1. 在终端窗口中，运行以下命令，安装所需的库，并生成模拟设备应用程序：
+3. 在终端窗口中，运行以下命令，安装所需的库，并生成模拟设备应用程序：
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. 在终端窗口中，运行以下命令，运行模拟设备应用程序：
+4. 在终端窗口中，运行以下命令，运行模拟设备应用程序：
 
     ```cmd/sh
     java -jar target/simulated-device-2-1.0.0-with-deps.jar
@@ -125,19 +123,19 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 后端应用程序会连接到 IoT 中心上的服务端终结点。 应用程序通过 IoT 中心对设备进行直接方法调用，并侦听确认。 IoT 中心后端应用程序通常在云中运行。
 
-1. 在另一个终端窗口中，导航到示例 Java 项目的根文件夹。 然后导航到 Quickstarts\back-end-application 文件夹。
+1. 在另一个终端窗口中，导航到示例 Java 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹。
 
-1. 在所选文本编辑器中打开 src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java 文件。
+2. 在所选文本编辑器中打开 src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java 文件。
 
     将 `iotHubConnectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 BackEndApplication.java 文件。
 
-1. 在终端窗口中，运行以下命令，安装所需的库，并生成后端应用程序：
+3. 在终端窗口中，运行以下命令，安装所需的库，并生成后端应用程序：
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. 在终端窗口中，运行以下命令，运行终端应用程序：
+4. 在终端窗口中，运行以下命令，运行终端应用程序：
 
     ```cmd/sh
     java -jar target/back-end-application-1.0.0-with-deps.jar
@@ -153,9 +151,7 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续学习教程，请保留资源组和 IoT 中心，稍后再进行使用。
-
-如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的资源组，然后单击“删除”。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -164,4 +160,4 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 若要了解如何将设备到云的消息路由到云中的不同目标，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
-> [教程：将遥测路由到不同的终结点进行处理](iot-hub-java-java-process-d2c.md)
+> [教程：将遥测路由到不同的终结点进行处理](tutorial-routing.md)

@@ -1,26 +1,19 @@
 ---
 title: 了解 Azure IoT 中心模块孪生 | Microsoft Docs
 description: 开发人员指南 - 使用模块孪生在 IoT 中心与设备之间同步状态和配置数据
-services: iot-hub
-documentationcenter: .net
 author: chrissie926
-manager: timlt
-editor: ''
-ms.assetid: 8a3da072-a5bf-46e5-8de4-24cdbb2a03fa
+manager: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e6f52da6f7524828cef928c2ee5d5cd92a1de1e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8f567ba43c1657783f9898863aef980627800481
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201068"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436313"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
@@ -326,7 +319,7 @@ IoT 中心保留模块孪生所需属性和报告属性中每个 JSON 对象的�
 ## <a name="next-steps"></a>后续步骤
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
-* [通过 .NET 备份和 .NET 设备开始使用 IoT 中心模块标识和模块孪生][lnk-module-twin-tutorial]
+* [使用 .NET 后端和 .NET 设备创建 IoT 中心模块标识和模块孪生入门][lnk-module-twin-tutorial]
 
 <!-- links and images -->
 

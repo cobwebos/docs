@@ -87,8 +87,6 @@
           href: batch-job-prep-release.md
         - name: 并发节点任务
           href: batch-parallel-node-tasks.md
-        - name: 按状态对任务计数
-          href: batch-get-task-counts.md
         - name: 任务依赖项
           href: batch-task-dependencies.md
         - name: 用于运行任务的用户帐户
@@ -111,7 +109,7 @@
         - name: 渲染
           href: batch-rendering-service.md
         - name: 使用 Batch 和数据工厂进行数据处理
-          href: ../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json
+          href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
     - name: 监视 Batch 解决方案
       href: monitoring-overview.md
       items:
@@ -119,7 +117,9 @@
           href: batch-diagnostics.md
         - name: 使用 Application Insights 进行监视
           href: monitor-application-insights.md
-        - name: 高效列表查询
+        - name: 按状态对资源计数
+          href: batch-get-resource-counts.md
+        - name: 有效查询资源
           href: batch-efficient-list-queries.md
     - name: 使用开发人员工具
       items:
@@ -178,8 +178,8 @@
   items:
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Batch 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch'
+    - name: Batch 社区
+      href: 'https://github.com/Azure/Batch'
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: 博客

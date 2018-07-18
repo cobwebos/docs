@@ -1,11 +1,11 @@
 ---
-title: "如何配置应用服务环境 v1"
-description: "应用服务环境 v1 的配置、管理和监视"
+title: 如何配置应用服务环境 v1
+description: 应用服务环境 v1 的配置、管理和监视
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22987862"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>配置应用服务环境 v1
 

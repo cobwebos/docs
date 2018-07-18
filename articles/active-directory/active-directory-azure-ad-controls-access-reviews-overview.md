@@ -3,22 +3,24 @@ title: Azure AD 访问评审 | Microsoft Docs
 description: 可以使用 Azure Active Directory 访问评审控制组成员身份和应用程序访问权限，从而满足组织的监管、风险管理和符合性计划。
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
+ms.component: compliance-reports
 ms.date: 05/02/2018
-ms.author: billmath
-ms.openlocfilehash: 02711f4fd54051f726a3823112230247df4776d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.reviewer: mwahl
+ms.openlocfilehash: d2e0f1ecea84398f9e4d43af07b9871f36e8dd48
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193690"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295003"
 ---
 # <a name="azure-ad-access-reviews"></a>Azure AD 访问评审
 
@@ -41,4 +43,4 @@ Azure Active Directory (Azure AD) 访问评审可以使组织有效地管理组�
 - [使用 Azure AD 访问评审管理来宾访问权限](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
 - [管理 Azure AD 访问评审的计划和控制措施](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [创建对组成员的访问评审或对应用程序的访问](active-directory-azure-ad-controls-create-access-review.md)
-- [针对充当 Azure AD 管理角色的用户创建访问评审](active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [针对充当 Azure AD 管理角色的用户创建访问评审](privileged-identity-management/pim-how-to-start-security-review.md)

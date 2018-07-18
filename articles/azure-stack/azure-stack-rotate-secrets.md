@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a3dfce6ce1b136e39047cfd47b336b2fb2a35af9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8ac151a70a81f78dab5ed1f30df51a1121a42cbd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029010"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>在 Azure Stack 中轮换机密
 
@@ -48,23 +49,23 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
 
 为保持 Azure Stack 基础结构的完整性，操作员需要能够定期轮换其基础结构的机密，轮换频率应与其组织的安全要求一致。
 
-### <a name="rotating-secrets-with-external-certificates-from-a-new-certificate-authority"></a>从新的证书颁发机构的外部证书与旋转机密
+### <a name="rotating-secrets-with-external-certificates-from-a-new-certificate-authority"></a>使用新证书颁发机构颁发的外部证书轮换机密
 
-Azure 堆栈支持使用外部证书从新证书颁发机构 (CA) 的密钥轮换的以下上下文中：
+在以下上下文中，Azure Stack 支持使用新证书颁发机构 (CA) 颁发的外部证书进行机密轮换：
 
-|安装的证书的 CA|CA 旋转|支持|支持的 azure 堆栈版本|
+|已安装的证书 CA|要轮换到的 CA|支持|支持的 Azure Stack 版本|
 |-----|-----|-----|-----|-----|
 |从自签名|到企业|不支持||
-|从自签名|为自签名|不支持||
-|从自签名|为公共<sup>*</sup>|支持|1803 和更高版本|
-|从 Enterprise|到企业|支持处理程序，但前提是客户使用的同一个企业 CA，因为在部署使用|1803 和更高版本|
-|从 Enterprise|为自签名|不支持||
-|从 Enterprise|为公共<sup>*</sup>|支持|1803 和更高版本|
+|从自签名|到自签名|不支持||
+|从自签名|到公共<sup>*</sup>|支持|1803 和更高版本|
+|从企业|到企业|只要客户使用与在部署时使用的相同的企业 CA，就可以支持|1803 和更高版本|
+|从企业|到自签名|不支持||
+|从企业|到公共<sup>*</sup>|支持|1803 和更高版本|
 |从公共<sup>*</sup>|到企业|不支持|1803 和更高版本|
-|从公共<sup>*</sup>|为自签名|不支持||
-|从公共<sup>*</sup>|为公共<sup>*</sup>|支持|1803 和更高版本|
+|从公共<sup>*</sup>|到自签名|不支持||
+|从公共<sup>*</sup>|到公共<sup>*</sup>|支持|1803 和更高版本|
 
-<sup>*</sup> 以下公共证书颁发机构是那些 Windows 受信任的根计划的一部分。 你可以找到完整的列表[Microsoft 受信任根证书计划: （截至 2017 年 6 月 27 日) 的参与者](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)。
+<sup>*</sup> 这里的公共证书颁发机构属于 Windows 受信任根计划。 可以找到完整列表 [Microsoft 受信任根证书计划：参与者（截至 2017 年 6 月 27 日）](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)。
 
 ## <a name="alert-remediation"></a>警报修正
 
@@ -83,15 +84,16 @@ Azure 堆栈支持使用外部证书从新证书颁发机构 (CA) 的密钥轮�
     > [!note]  
     > 后续步骤仅适用于轮换 Azure Stack 外部机密。
 
-2.  准备新的替换外部证书集。 新集与 [Azure Stack PKI 证书要求](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)中所述的证书规范匹配。
-3.  将用于轮换的证书备份存储在安全的备份位置。 如果运行轮换时发生失败，请使用备份副本替换文件共享中的证书，然后重新运行轮换。 请记得将备份副本保存在安全的备份位置。
-3.  创建可从 ERCS VM 访问的文件共享。 该文件共享必须可供 **CloudAdmin** 标识读取和写入。
-4.  在可以访问该文件共享的计算机上打开 PowerShell ISE 控制台。 导航到该文件共享。 
-5.  运行 **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** 创建外部证书所需的目录。
+2. 确保密钥旋转尚未已成功执行你的环境在过去一个月内。 在此时间点 Azure 堆栈仅支持一次每月的机密旋转。 
+3. 准备新的替换外部证书集。 新集与 [Azure Stack PKI 证书要求](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)中所述的证书规范匹配。
+4.  将用于轮换的证书备份存储在安全的备份位置。 如果运行轮换时发生失败，请使用备份副本替换文件共享中的证书，然后重新运行轮换。 请记得将备份副本保存在安全的备份位置。
+5.  创建可从 ERCS VM 访问的文件共享。 该文件共享必须可供 **CloudAdmin** 标识读取和写入。
+6.  在可以访问该文件共享的计算机上打开 PowerShell ISE 控制台。 导航到该文件共享。 
+7.  运行 **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** 创建外部证书所需的目录。
 
 ## <a name="rotating-external-and-internal-secrets"></a>轮换外部和内部机密
 
-要旋转这两个外部内部机密：
+若要轮换外部和内部机密：
 
 1. 在前期步骤中新建的 **/Certificates** 目录内，根据 [Azure Stack PKI 证书要求](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates)的“必需证书”部分中所述的格式，将新的替换外部证书集放入目录结构。
 2. 使用 **CloudAdmin** 帐户创建具有[特权终结点](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)的 PowerShell 会话，并将会话存储为变量。 在下一步骤中要使用此变量作为参数。

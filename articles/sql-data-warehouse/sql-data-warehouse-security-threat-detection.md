@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31523891"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的威胁检测
 在 Azure SQL 数据仓库中配置威胁检测并浏览可疑事件。
@@ -53,7 +54,7 @@ ms.lasthandoff: 04/18/2018
    
     ![导航窗格](media/sql-data-warehouse-security-threat-detection/6_td_audit_record_details.png)
 4. 在“审核记录”边栏选项卡中，单击“在 Excel 中打开”以打开预配置的 Excel 模板，以导入发生可疑事件前后的审核日志，并运行更深入的分析。<br/>
-   **注意：**在 Excel 2010 或更高版本中，需要配置 Power Query 和“快速合并”设置
+   **注意：** 在 Excel 2010 或更高版本中，需要配置 Power Query 和“快速合并”设置
    
     ![导航窗格](media/sql-data-warehouse-security-threat-detection/7_td_audit_records_open_excel.png)
 5. 若要配置“快速合并”设置 - 请在“POWER QUERY”功能区选项卡中，选择“选项”以显示“选项”对话框。 选择“隐私”部分，并选择第二个选项 -“忽略隐私级别并潜在地改善性能”：

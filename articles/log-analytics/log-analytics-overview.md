@@ -9,16 +9,18 @@ editor: tysonn
 ms.assetid: bd90b460-bacf-4345-ae31-26e155beac0e
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: bwren
-ms.openlocfilehash: b951d41dab4d349a8d648e7eaa7e23b73ced2ced
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: 463ac7ee3e640f8bc275adb9e6ac27cc3e6a037a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127953"
 ---
 # <a name="what-is-azure-log-analytics"></a>什么是 Azure Log Analytics？
 Log Analytics 在 Azure 管理中发挥中心作用，具体表现在：从各种源收集遥测数据和其他数据，以及提供查询语言和分析引擎，用于了解应用程序和资源的运行情况。  可以通过日志搜索和视图直接与 Log Analytics 数据交互，也可以在其他 Azure 服务（例如 Application Insights 或 Azure 安全中心，可以将其数据存储在 Log Analytics 中）中使用分析工具。  
@@ -50,9 +52,9 @@ Log Analytics 从各种源收集数据。  收集以后，数据会按数据类�
 ![Log Analytics 组件](media/log-analytics-overview/collecting-data.png)
 
 ## <a name="add-functionality-with-management-solutions"></a>使用管理解决方案添加功能
-[管理解决方案](log-analytics-add-solutions.md)提供预打包的逻辑，适用于特定的产品或方案。  这些解决方案可以将额外的数据收集到 Log Analytics 中，也可以处理已收集的数据。  此类方案通常会包括一个视图，用于分析这些额外的数据。  解决方案适用于各种功能，我们将持续添加更多的解决方案。  可以轻松浏览可用的解决方案，并将其从 Azure Marketplace [添加到工作区](log-analytics-add-solutions.md)。  
+[管理解决方案](log-analytics-add-solutions.md)提供预打包的逻辑，适用于特定的产品或方案。  这些解决方案可以将额外的数据收集到 Log Analytics 中，也可以处理已收集的数据。  此类方案通常会包括一个视图，用于分析这些额外的数据。  解决方案适用于各种功能，我们将持续添加更多的解决方案。  可以轻松浏览可用的解决方案，并将其从 Azure 市场[添加到工作区](log-analytics-add-solutions.md)。  
 
-![Marketplace](media/log-analytics-overview/solutions.png)
+![市场](media/log-analytics-overview/solutions.png)
 
 
 ## <a name="query-language"></a>查询语言

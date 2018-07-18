@@ -1,23 +1,25 @@
 ---
-title: "用于在 Azure Log Analytics 中创建和编辑日志查询的门户 | Microsoft Docs"
-description: "本文介绍可用于在 Azure Log Analytics 中创建和编辑日志搜索的门户。"
+title: 用于在 Azure Log Analytics 中创建和编辑日志查询的门户 | Microsoft Docs
+description: 本文介绍可用于在 Azure Log Analytics 中创建和编辑日志搜索的门户。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/26/2017
+ms.topic: conceptual
+ms.date: 06/11/2018
 ms.author: magoedte; bwren
-ms.openlocfilehash: b205f226d95d94b938a70a834ac0147e76d459ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: e2ea0bf1fb3f1c63f4e6f037e465e8fdfd9a4374
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133251"
 ---
 # <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>用于在 Azure Log Analytics 中创建和编辑日志查询的门户
 
@@ -37,9 +39,16 @@ ms.lasthandoff: 10/11/2017
 ![高级分析门户](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
 
 
-这些高级功能使得高级分析门户通常作为创建和编辑查询的主要工具。  确定查询按预期方式运行后，可将其粘贴复制到日志搜索页面或视图设计器等其他地方。  由于高级分析门户支持多行查询，因此从此门户中复制查询需要注意以下事项。
+这些高级功能使得高级分析门户通常作为创建和编辑查询的主要工具。  确定查询按预期方式运行后，可将其粘贴复制到日志搜索页面或视图设计器等其他地方。  
 
-- 将查询粘贴复制到另一位置前必须将其中的注释删除。  通过在行前添加两个斜杠 (//) 可对行进行注释。  将多行查询粘贴到单行时会删除换行符。  如果包含注释，则第一个注释后所有的字符会被视为此注释的一部分。
+### <a name="firewall-requirements"></a>防火墙要求
+浏览器需要访问以下地址才能访问高级分析门户。  如果浏览器通过防火墙访问 Azure 门户，则必须允许访问这些地址。
+
+| Uri | IP | 端口 |
+|:---|:---|:---|
+| portal.loganalytics.io | 动态 | 80,443 |
+| api.loganalytics.io    | 动态 | 80,443 |
+| docs.loganalytics.io   | 动态 | 80,443 |
 
 
 ## <a name="next-steps"></a>后续步骤

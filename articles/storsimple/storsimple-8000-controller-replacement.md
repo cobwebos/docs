@@ -1,12 +1,12 @@
 ---
-title: "更换 StorSimple 8000 系列设备控制器 | Microsoft Docs"
-description: "说明如何拆卸和更换 StorSimple 8000 系列设备上的一个或两个控制器模块。"
+title: 更换 StorSimple 8000 系列设备控制器 | Microsoft Docs
+description: 说明如何拆卸和更换 StorSimple 8000 系列设备上的一个或两个控制器模块。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109125"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的控制器模块
 ## <a name="overview"></a>概述

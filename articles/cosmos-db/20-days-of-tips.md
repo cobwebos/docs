@@ -4,20 +4,18 @@ description: 在同一位置查找 Simona Cotin 的“Azure Cosmos DB 的 20 天
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: sngun
 ms.custom: cda
-ms.openlocfilehash: 79ef4a8c22143ed77535e1190b5f7e8eb5d17bb0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 43fd8b23be029511933f3a238f42b440f81aa121
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610610"
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>“Azure Cosmos DB 的 20 天”提示
 

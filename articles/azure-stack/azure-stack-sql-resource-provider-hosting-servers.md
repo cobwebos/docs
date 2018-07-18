@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 上的 SQL 宿主服务器 | Microsoft Docs
-description: 如何添加 SQL 实例以通过 SQL 适配器资源提供程序进行预配
+description: 如何添加通过 SQL 适配器资源提供程序进行预配的 SQL 实例。
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,133 +11,181 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 07/10/2018
 ms.author: jeffgilb
-ms.openlocfilehash: e08c0bfd3cbed64f5042e469801e20c913c2f70e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.reviewer: jeffgo
+ms.openlocfilehash: de2e1defeff9ab2dd78bdf019009b62955f73b88
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970545"
 ---
-# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>将宿主服务器添加为 SQL 资源提供程序
-可以使用 [Azure Stack](azure-stack-poc.md) 内部 VM 上的 SQL 实例，或者 Azure Stack 环境外部的实例，前提是资源提供程序能够连接到这些实例。 一般要求为：
+# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
-* SQL 实例必须专用于 RP 和用户工作负荷。 不能使用其他任何用户（包括 应用服务）正在使用的 SQL 实例。
-* SQL 资源提供程序 VM 未加入域，并可以仅使用 SQL 身份验证连接。
-* 你必须配置具有适当的特权，以供资源提供程序的帐户。
-* 资源提供程序和用户，如 Web Apps，使用用户网络，因此不需要连接到此网络上的 SQL 实例。 此要求通常意味着 SQL 实例的 IP 必须在公共网络上。
-* SQL 实例和及其主机的管理是完全取决于您;资源提供程序不执行修补、 备份，则凭据旋转，等等。
-* 可以使用 SKU 创建各类 SQL 功能，例如性能、Always On 等等。
+可以在中托管的虚拟机 (VM) 上的 SQL 实例[Azure Stack](azure-stack-poc.md)，或外部 Azure Stack 环境，只要 SQL 资源提供程序可以连接到的实例的 VM 上。
 
-可通过 Marketplace 管理功能获取许多 SQL IaaS 虚拟机映像。 请确保你始终下载最新版本的**SQL IaaS 扩展**部署使用应用商店项目的 VM 之前。 SQL 映像与 Azure 中提供的 SQL VM 相同。 对于从这些映像创建的 SQL VM，IaaS 扩展和相应的门户增强功能可提供自动修补和备份等功能。
+## <a name="overview"></a>概述
+
+添加 SQL 宿主服务器之前，请查看以下必需的和常规要求。
+
+### <a name="mandatory-requirements"></a>强制性的要求
+
+* 启用 SQL Server 实例上的 SQL 身份验证。 SQL 资源提供程序 VM 未加入域，因为它只能连接到宿主服务器使用 SQL 身份验证。
+* 配置为公用时安装在 Azure Stack 上的 SQL 实例的 IP 地址。 资源提供程序和用户，如 Web 应用通过用户网络通信，因此不需要连接到此网络上的 SQL 实例。
+
+### <a name="general-requirements"></a>一般要求
+
+* 将使用的 SQL 实例专用资源提供程序和用户工作负荷。 不能使用任何其他使用者正在使用的 SQL 实例。 此限制也适用于应用服务。
+* 资源提供程序 （如下所述），使用适当的权限级别配置的帐户。
+* 您负责管理 SQL 实例和其主机。  例如，资源提供程序不会将更新应用、 处理备份，或处理凭据轮换。
+
+### <a name="sql-server-virtual-machine-images"></a>SQL Server 虚拟机映像
+
+通过 Marketplace 管理功能提供了 SQL IaaS 虚拟机映像。 这些映像可以在 Azure 中提供的 SQL Vm 相同。
+
+请确保您始终下载最新版**SQL IaaS 扩展**部署使用 Marketplace 项的 SQL VM 之前。 IaaS 扩展和相应的门户增强功能提供其他功能，例如自动修补和备份。 有关此扩展的详细信息，请参阅[自动执行管理任务 Azure 虚拟机上使用 SQL Server 代理扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)。
 
 可以使用其他选项部署 SQL VM，包括 [Azure Stack 快速入门库](https://github.com/Azure/AzureStack-QuickStart-Templates)中的模板。
 
 > [!NOTE]
-> 必须通过用户订阅创建安装在多节点 Azure Stack 上的任何宿主服务器， 而不能通过默认提供商订阅创建。 必须通过用户门户或者使用相应的登录名通过 PowerShell 会话来创建这些服务器。 所有宿主服务器都是可计费的 VM，并且必须具有相应的 SQL 许可证。 服务管理员可以是订阅的所有者。
-
+> 必须通过用户订阅和不是默认提供商订阅创建安装在多节点 Azure Stack 上的任何宿主服务器。 必须通过用户门户或者使用相应的登录名通过 PowerShell 会话来创建这些服务器。 所有宿主服务器都是可计费的 Vm，并且必须具有相应的 SQL 许可证。 服务管理员可以是订阅的所有者。
 
 ### <a name="required-privileges"></a>所需的特权
 
-可以创建权限比完全 sysadmin 特权更低的新管理用户。 需要允许的特定操作为：
+以低于 SQL sysadmin 特权，可以创建一个管理用户。 用户只需为以下操作的权限：
 
-- 数据库：创建、更改、使用包含（仅限 Always On）、删除、备份
-- 可用性组：更改、联接、添加/删除数据库
-- 登录：创建、选择、更改、删除、吊销
-- 选择操作：\[master\].\[sys\].\[availability_group_listeners\] (AlwaysOn)、sys.availability_replicas (AlwaysOn)、sys.databases、\[master\].\[sys\].\[dm_os_sys_memory\]、SERVERPROPERTY、\[master\].\[sys\].\[availability_groups\] (AlwaysOn)、sys.master_files
+* 数据库： 创建、 更改使用包容 (对于仅限 Always On)、 删除、 备份
+* 可用性组：更改、联接、添加/删除数据库
+* 登录：创建、选择、更改、删除、吊销
+* 选择操作：\[master\].\[sys\].\[availability_group_listeners\] (AlwaysOn)、sys.availability_replicas (AlwaysOn)、sys.databases、\[master\].\[sys\].\[dm_os_sys_memory\]、SERVERPROPERTY、\[master\].\[sys\].\[availability_groups\] (AlwaysOn)、sys.master_files
 
+### <a name="additional-security-information"></a>其他安全信息
 
+以下信息提供了额外的安全指南：
+
+* 所有 Azure Stack 存储使用 BitLocker，因此 Azure Stack 上的任何 SQL 实例将使用都加密的 blob 存储进行都加密。
+* SQL 资源提供程序完全支持 TLS 1.2。 确保通过 SQL RP 管理任何 SQL Server 配置 TLS 1.2_仅_，RP 将默认为的。 所有受支持的版本的 SQL Server 支持 TLS 1.2，请参阅[Microsoft SQL Server 的 TLS 1.2 支持](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server)。
+* 使用 SQL Server 配置管理器设置**ForceEncryption**选项以确保 SQL server 的所有通信都始终处于加密。 请参阅[若要将服务器配置为强制使用加密的连接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections)。
+* 请确保任何客户端应用程序还通过加密连接进行通信。
+* 配置 RP 信任 SQL Server 实例使用的证书。
 
 ## <a name="provide-capacity-by-connecting-to-a-standalone-hosting-sql-server"></a>通过连接到独立宿主 SQL 服务器来提供容量。
-可以运行使用任何版本的 SQL Server 2014 或 SQL Server 2016 的独立（非 HA）SQL 服务器。 确保已准备好拥有管理特权的帐户的凭据。
 
-若要添加已预配的独立宿主服务器，请遵循以下步骤：
+可以运行使用任何版本的 SQL Server 2014 或 SQL Server 2016 的独立（非 HA）SQL 服务器。 请确保具有具有 sysadmin 权限的帐户的凭据。
 
-1. 以服务管理员身份登录到 Azure Stack 管理门户
+若要添加已设置好的独立宿主服务器，请按照下列步骤：
 
-2. 单击“浏览”&gt;“管理资源”&gt;“SQL 宿主服务器”。
+1. 以服务管理员身份登录到 Azure Stack 运营商门户。
 
-  ![](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
+2. 选择**浏览** &gt; **管理资源** &gt; **SQL 宿主服务器**。
 
-  在“SQL 宿主服务器”边栏选项卡上，可将 SQL 服务器资源提供程序连接到充当资源提供程序后端的实际 SQL 服务器实例。
+   ![SQL 宿主服务器](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
-  ![宿主服务器](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
+   下**SQL 宿主服务器**，可以将 SQL 资源提供程序连接到充当资源提供程序的后端 SQL Server 的实例。
 
-3. 在表单中填写 SQL Server 实例的连接详细信息。
+   ![SQL 适配器仪表板](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
 
-  ![新宿主服务器](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+3. 上**添加 SQL 宿主服务器**，提供您的 SQL Server 实例的连接详细信息。
 
-    可以选择性地包含实例名称，如果实例未分配给默认端口 1433，则可以提供端口号。
+   ![添加 SQL 宿主服务器](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
-  > [!NOTE]
-  > 只要用户和管理员 Azure 资源管理器可以访问 SQL 实例，资源提供程序就能控制此实例。 必须专门将 SQL 实例分配给 RP。
+    （可选） 提供一个实例的名称，并指定端口号，如果实例不分配给默认端口 1433年。
 
-4. 添加服务器时，必须将它们分配给新的或现有的 SKU，以区分服务产品。 例如，可以分配一个 SQL 企业实例来提供：
-  - 数据库容量
-  - 自动备份
-  - 为各个部门保留高性能服务器
-  - 等等。
+   > [!NOTE]
+   > 只要用户和管理员 Azure 资源管理器可以访问 SQL 实例，资源提供程序就能控制此实例。 SQL 实例__必须__到资源提供程序以独占方式分配。
 
-  SKU 名称应反映属性，使用户能够适当地放置其数据库。 SKU 中的所有宿主服务器应有相同的功能。
+4. 添加服务器时，必须将其分配到现有 SKU 或创建新的 SKU。 下**添加宿主服务器**，选择**Sku**。
 
-> [!IMPORTANT]
-> 特殊字符，包括空格和期间，不支持在**系列**或**层**名称时为 SQL 和 MySQL 资源提供程序创建一种的 SKU。
+   * 若要使用现有的 SKU，选择可用的 SKU，然后选择**创建**。
+   * 若要创建的 SKU，请选择 **+ 创建新的 SKU**。 在中**创建 SKU**，输入所需的信息，然后选择**确定**。
 
-示例：
+     ![创建的 SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
-![SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>提供使用 SQL Alwayson 可用性组实现高可用性
 
->[!NOTE]
-> SKU 最长可能需要在一小时后才显示在门户中。 在完全创建 SKU 之前，用户无法创建数据库。
+配置 SQL Always On 实例需要额外的步骤，并且需要三个 Vm （或物理计算机。）本文假定你已有深入了解的 Always On 可用性组。 有关详细信息，请参阅以下文章：
 
-## <a name="provide-capacity-using-sql-always-on-availability-groups"></a>使用 SQL Always On 可用性组提供容量
-配置 SQL Always On 实例需要执行附加的步骤，并至少提供三个 VM（或物理机）。
+* [引入了 SQL Server Always On 可用性组在 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Always On 可用性组 (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
-> 对于 Always On，SQL 适配器 RP 仅支持 SQL 2016 SP1 企业版或更高版本的实例，因为它需要新的 SQL 功能，例如自动种子设定。 除了上面所列的一般要求以外，还必须满足以下要求：
+> SQL 适配器资源提供程序_仅_支持 SQL 2016 SP1 企业版或更高版本实例 Always On 可用性组。 该适配器配置要求在新的 SQL 功能，例如自动种子设定。
 
-具体而言，必须启用[自动种子设定](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)上每个可用性组的每个 SQL Server 实例：
+### <a name="automatic-seeding"></a>自动种子设定
 
-  ```
+必须启用[自动种子设定](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)上每个可用性组的每个 SQL Server 实例。
+
+若要启用自动种子设定的所有实例上，编辑，然后在主副本的每个辅助实例上运行以下 SQL 命令：
+
+  ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
-      MODIFY REPLICA ON 'InstanceName'
+      MODIFY REPLICA ON '<secondary_node>'
       WITH (SEEDING_MODE = AUTOMATIC)
   GO
   ```
 
-在辅助实例上使用这些 SQL 命令：
+请注意，可用性组必须括在方括号中。
 
-  ```
+在辅助节点上运行以下 SQL 命令：
+
+  ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
   GO
   ```
 
-若要添加 SQL Always On 宿主服务器，请遵循以下步骤：
+### <a name="configure-contained-database-authentication"></a>配置包含的数据库身份验证
 
-1. 以服务管理员身份登录到 Azure Stack 管理门户
+在将包含的数据库添加到可用性组之前, 请确保包含的数据库身份验证服务器选项设置为 1 上的每个承载可用性组的可用性副本的服务器实例。 有关详细信息，请参阅[contained database authentication 服务器配置选项](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017)。
 
-2. 单击“浏览”&gt;“管理资源”&gt;“SQL 宿主服务器”&gt;“+添加”。
+使用以下命令以设置每个实例包含的数据库身份验证服务器选项：
 
-    在“SQL 宿主服务器”边栏选项卡上，可将 SQL 服务器资源提供程序连接到充当资源提供程序后端的实际 SQL 服务器实例。
+  ```sql
+  EXEC sp_configure 'contained database authentication', 1
+  GO
+  RECONFIGURE
+  GO
+  ```
 
-3. 使用 SQL Server 实例，确保使用始终在侦听器 （和可选端口号） 的 FQDN 地址的连接详细信息来填充窗体。 提供配置的、拥有系统管理员特权的帐户的帐户信息。
+### <a name="to-add-sql-always-on-hosting-servers"></a>若要添加 SQL Always On 宿主服务器
 
-4. 选中此框可启用 SQL Always On 可用性组实例的支持。
+1. 登录到 Azure Stack 管理门户为服务管理员。
 
-    ![宿主服务器](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
+2. 选择**浏览** &gt; **管理资源** &gt; **SQL 宿主服务器** &gt; **+ 添加**.
 
-5. 将 SQL Always On 实例添加到 SKU。 
+   下**SQL 宿主服务器**，你可以连接到充当资源提供程序的后端的实际实例的 SQL Server 的 SQL Server 资源提供程序。
 
-> [!IMPORTANT]
-> 不能在同一 SKU 中混合使用独立服务器与 Always On 实例。 尝试在错误中添加的第一个托管服务器结果后混合类型。
+3. 填写您的 SQL Server 实例的连接详细信息表。 请确保使用 Always On 侦听器 （和可选端口号和实例名称） 的 FQDN 地址。 提供有关配置具有 sysadmin 权限的帐户的信息。
 
+4. 选中 Always On 可用性组框以启用对 SQL Always On 可用性组实例的支持。
 
-## <a name="making-sql-databases-available-to-users"></a>将 SQL 数据库提供给用户使用
+   ![启用 Always On](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
-创建计划和产品/服务，使用户能够使用 SQL 数据库。 将 Microsoft.SqlAdapter 服务添加到计划，并添加现有的配额或创建新配额。 如果创建配额，请可以指定允许用户使用的容量。
+5. 将 SQL Always On 实例添加到 SKU。
 
-![创建计划和产品/服务以包含数据库](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
+   > [!IMPORTANT]
+   > 您不能与 Always On 实例在同一 SKU 中混合使用独立服务器。 尝试在添加第一个托管服务器后混合类型会导致错误。
 
+## <a name="sku-notes"></a>SKU 说明
+
+可以使用 Sku 以区分服务产品。 例如，您可以具有以下特征的 SQL 企业实例：
+  
+* 高容量
+* 高性能
+* 高可用性
+
+Sku 不能分配给特定用户或组在此版本中。
+
+ SKU 最长可能需要在一小时后才显示在门户中。 完全创建 SKU 之前，用户无法创建数据库。
+
+>[!TIP]
+>使用 SKU 名称，用于反映介绍中的 SKU，例如容量和性能的服务器的功能。 名称均可作为帮助，用于帮助用户将其数据库部署到适当的 SKU。
+
+最佳做法是，在 SKU 中的所有宿主服务器应有相同的资源和性能特征。
+
+## <a name="make-the-sql-databases-available-to-users"></a>将 SQL 数据库提供给用户
+
+创建计划和套餐，使用户能够使用 SQL 数据库。 添加**Microsoft.SqlAdapter**计划到服务并创建新的配额。
 
 ## <a name="next-steps"></a>后续步骤
 

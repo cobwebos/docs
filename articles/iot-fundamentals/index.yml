@@ -4,20 +4,19 @@ title: Azure IoT 基础
 metadata:
   title: Azure IoT 基础
   description: Azure IoT 是 Microsoft 托管的云服务的集合，这些服务用于连接、监视和控制数十亿个物联网资产。
-  services: iot
   author: BryanLa
   manager: timlt
-  ms.service: iot
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.service: iot-fundamentals
+  services: iot-fundamentals
   ms.topic: landing-page
-  ms.date: 04/20/2018
+  ms.date: 05/18/2018
   ms.author: bryanla
-  ms.openlocfilehash: 0a5f1d482b0298ddd65746783e3744728b1a5da5
-  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+  ms.openlocfilehash: 32db74234f05fcf76c8ccfe18ce295fd30a15b58
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/16/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34631150"
 abstract:
   description: 欢迎使用 Microsoft Azure 与物联网 (IoT)。 Azure IoT 汇集了各种服务和解决方案，专用于在 Azure 上创建端到端 IoT 应用程序。 Azure IoT 提供各种适合行业需求以及公司技能和资源的选项和工具，既有完全承载和托管的软件即服务 (SaaS) 解决方案，又有独特且专用的平台即服务 (PaaS) 产品/服务，还有构建智能边缘所需的技术。
 sections:
@@ -29,7 +28,7 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/iot-central/quick-deploy-iot-central">了解如何创建新的 Azure IoT 中心应用程序</a>。
-    - html: <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">了解如何部署远程监视解决方案加速器</a>。
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-deploy">了解如何部署远程监视解决方案加速器</a>。
     - html: <a href="/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started">了解如何创建 IoT 中心并将第一个模拟设备连接到 Azure (Node.js)</a>。
     - html: <a href="/azure/iot-edge/quickstart-linux">在 Windows、Linux 或 Mac 的模拟设备上部署第一个 IoT Edge 模块并处理数据</a>。
     - html: <a href="/azure/azure-maps/quick-demo-map-app">启动使用 Azure Maps 的地图搜索应用</a>。

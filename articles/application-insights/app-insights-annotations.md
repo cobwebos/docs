@@ -1,6 +1,6 @@
 ---
-title: "Application Insights 的版本批注 | Microsoft 文档"
-description: "为 Application Insights 中的指标资源管理器图表添加部署或版本标记。"
+title: Application Insights 的版本批注 | Microsoft 文档
+description: 为 Application Insights 中的指标资源管理器图表添加部署或版本标记。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: a479fa553d64f3820ae8513353484e72b57d30e4
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: fb4bcd57062017c0d7ee802ba1f46660476f6af2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293429"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 [指标资源管理器](app-insights-metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Visual Studio Team Services 生成系统](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs)可自动创建批注。 也可以[通过 PowerShell 创建批注](#create-annotations-from-powershell)用于标记所要处理的任何事件。
@@ -31,12 +32,12 @@ ms.lasthandoff: 11/01/2017
 版本批注是 Visual Studio Team Services 的基于云的生成和发布服务的一项功能。 
 
 ### <a name="install-the-annotations-extension-one-time"></a>安装批注扩展（一次性操作）
-若要创建版本批注，必须安装 Visual Studio 应用商店中提供的多个 Team Service 扩展中的一个。
+若要创建版本批注，必须安装 Visual Studio Marketplace 中提供的多个 Team Service 扩展中的一个。
 
 1. 登录到 [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) 项目。
-2. 在 Visual Studio 应用商店中，[获取“版本批注”扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)，并将其添加到 Team Services 帐户。
+2. 在 Visual Studio Marketplace 中，[获取“版本批注”扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)，并将其添加到 Team Services 帐户。
 
-![在 Team Services 网页右上角打开“应用商店”。 选择“Visual Team Services”，并在“生成与发布”下面选择“查看更多”。](./media/app-insights-annotations/10.png)
+![在 Team Services 网页右上角打开“市场”。 选择“Visual Team Services”，并在“生成与发布”下面选择“查看更多”。](./media/app-insights-annotations/10.png)
 
 只需针对 Visual Studio Team Services 帐户执行此操作一次。 现在，可为帐户中的任何项目配置版本批注。 
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 11/01/2017
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)并打开负责监视应用程序的 Application Insights 资源。 （如果尚未创建此资源，可以[立即创建一个](app-insights-overview.md)。）
 2. 打开“API 访问”，并复制“Application Insights ID”。
    
-    ![在 portal.azure.com 中打开 Application Insights 资源，然后选择“设置”。 打开“API 访问”。 复制应用程序 ID](./media/app-insights-annotations/20.png)
+    ![在 portal.azure.com 中打开你的 Application Insights 资源，并选择“设置”。 打开“API 访问”。 复制应用程序 ID](./media/app-insights-annotations/20.png)
 
 4. 在另一个浏览器窗口中，打开（或创建）可从 Visual Studio Team Services 管理部署的发布模板。 
    

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（Beta 版本）从 Netezza 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Netezza 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Netezza 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -10,25 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/09/2018
+ms.topic: conceptual
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f8c10e2200f830ea6e568e7b3fba1f0a6085cef2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940131"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055337"
 ---
-# <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Netezza 复制数据
+# <a name="copy-data-from-netezza-using-azure-data-factory"></a>使用 Azure 数据工厂从 Netezza 复制数据 
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Netezza 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
-
-> [!IMPORTANT]
-> 此连接器目前处于 Beta 版本。 欢迎试用并提供反馈。 请勿在生产环境中使用该版本。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -57,7 +51,7 @@ Netezza 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |:--- |
 | SecurityLevel | 驱动程序用于连接到数据存储区的安全级别 (SSL/TLS)。 例如 `SecurityLevel=preferredSecured`。 支持的值是：<br/>- 仅不安全 (**onlyUnSecured**)：驱动程序不使用 SSL。<br/>- 首选不安全 (preferredUnSecured)（默认）：如果服务器提供了选择，则驱动程序不使用 SSL。 <br/>- 首选安全 (preferredSecured)：如果服务器提供了选择，则驱动程序使用 SSL。 <br/>- 仅安全 (onlySecured)：除非有 SSL 连接，否则驱动程序不会连接。 | 否 |
-| CaCertFile | 服务器使用的 SSL 证书的完整路径。 例如 `UseSystemTrustStore=<cert path>;`| 是，如果启用了 SSL |
+| CaCertFile | 服务器使用的 SSL 证书的完整路径。 例如 `CaCertFile=<cert path>;`| 是，如果启用了 SSL |
 
 **示例：**
 

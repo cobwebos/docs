@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937836"
 ---
 # <a name="validate-azure-registration"></a>验证 Azure 注册 
 使用 Azure 堆栈准备情况检查器工具 (AzsReadinessChecker) 来验证你的 Azure 订阅已准备好使用与 Azure 堆栈。 在开始 Azure 堆栈部署之前，请验证注册。 准备情况检查程序会验证：

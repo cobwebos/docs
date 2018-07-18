@@ -29,6 +29,8 @@
   items:
     - name: 登记
       items:
+        - name: 从门户载入多个 VM
+          href: automation-onboard-solutions-from-browse.md
         - name: 从 Azure VM 载入
           href: automation-onboard-solutions-from-vm.md
         - name: 从自动化帐户加入
@@ -45,6 +47,8 @@
       items:
         - name: 更改跟踪概述
           href: automation-change-tracking.md
+        - name: 查看所跟踪文件的文件内容
+          href: change-tracking-file-contents.md
     - name: 清单
       items:
         - name: 使用清单集合管理 VM
@@ -159,14 +163,12 @@
       items:
         - name: Runbook 库
           href: automation-runbook-gallery.md
-        - name: 使用活动日志监视 runbook
-          href: automation-alert-activity-log.md
+        - name: 使用指标警报监视 Runbook
+          href: automation-alert-metric.md
         - name: 从 Azure 警报启动 Runbook
           href: automation-create-alert-triggered-runbook.md
         - name: 创建 Amazon Web 服务 VM
           href: automation-scenario-aws-deployment.md
-        - name: 解决 Azure VM 警报
-          href: automation-azure-vm-alert-integration.md
         - name: 在非工作时间启动/停止 VM
           href: automation-solution-vm-management.md
         - name: 删除资源组
@@ -195,10 +197,16 @@
           href: automation-migrate-account-subscription.md
     - name: 故障排除
       items:
-        - name: 排查常见错误
-          href: automation-troubleshooting-automation-errors.md
-        - name: 对混合 Runbook 辅助角色进行故障排除
-          href: automation-troubleshooting-hybrid-runbook-worker.md
+        - name: 登记
+          href: troubleshoot/onboarding.md
+        - name: Runbook
+          href: troubleshoot/runbooks.md
+        - name: Desired State Configuration (DSC)
+          href: troubleshoot/desired-state-configuration.md
+        - name: 混合 Runbook 辅助角色
+          href: troubleshoot/hybrid-runbook-worker.md
+        - name: 更新管理
+          href: troubleshoot/update-management.md
 - name: 引用
   items:
     - name: Azure PowerShell
@@ -215,16 +223,12 @@
   items:
     - name: 自动化简介视频
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
-    - name: Azure 自动化培训
-      href: 'https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382'
     - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
-    - name: 学习路径
-      href: 'https://azure.microsoft.com/documentation/learning-paths/automation/'
+      href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
     - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/automation/)'
+      href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 发行说明

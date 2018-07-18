@@ -1,24 +1,26 @@
 ---
-title: "Azure Log Analytics 中的 IIS 日志 | Microsoft Docs"
-description: "Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  本文介绍如何配置 IIS 日志收集以及在 Log Analytics 工作区中创建的记录的详细信息。"
+title: Azure Log Analytics 中的 IIS 日志 | Microsoft Docs
+description: Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  本文介绍如何配置 IIS 日志收集以及在 Log Analytics 工作区中创建的记录的详细信息。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/07/2018
+ms.date: 06/12/2018
 ms.author: bwren
-ms.openlocfilehash: b8ce4e6fe6e12aa3edb81abad1589924e3e121e4
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.comopnent: na
+ms.openlocfilehash: 65320e7d3cc97a3d53fd1a00fbbeab5559c02fce
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133275"
 ---
 # <a name="iis-logs-in-log-analytics"></a>Log Analytics 中的 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  
@@ -33,10 +35,10 @@ Log Analytics 不会收集 NCSA 或 IIS 本机格式的日志。
 
 从 [Log Analytics 设置中的“数据”菜单](log-analytics-data-sources.md#configuring-data-sources)配置 Log Analytics 中的 IIS 日志。  只需选择**收集 W3C 格式 IIS 日志文件**，即可完成配置。
 
-启用 IIS 日志收集时，建议应在每台服务器上配置 IIS 日志变换更新设置。
 
 ## <a name="data-collection"></a>数据收集
-Log Analytics 会从每个连接源收集 IIS 日志条目，时间间隔大约每 15 分钟。  代理会在将其收集到的每个事件日志的位置记录下来。  如果代理脱机，则 Log Analytics 会从上次离开的位置收集事件，即使这些事件是在代理脱机期间创建的。
+每次关闭日志并创建新日志时，Log Analytics 都会从每个代理收集 IIS 日志条目。 此频率由 IIS 站点的**日志文件滚动更新计划**设置控制，默认情况下为每天一次。 例如，如果此设置为“每小时”，则 Log Analytics 将每小时收集一次日志。  例如，如果此设置为“每日”，则 Log Analytics 将每 24 小时收集一次日志。
+
 
 ## <a name="iis-log-record-properties"></a>IIS 日志记录属性
 IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：

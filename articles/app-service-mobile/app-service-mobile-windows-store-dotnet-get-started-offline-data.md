@@ -1,10 +1,10 @@
 ---
-title: "使用移动应用为通用 Windows 平台 (UWP) 应用启用脱机同步 | Microsoft Docs"
-description: "了解如何在通用 Windows 平台 (UWP) 应用中使用 Azure 移动应用缓存和同步脱机数据。"
+title: 使用移动应用为通用 Windows 平台 (UWP) 应用启用脱机同步 | Microsoft Docs
+description: 了解如何在通用 Windows 平台 (UWP) 应用中使用 Azure 移动应用缓存和同步脱机数据。
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: a16de4cef82c29f9b6becfae1901662ee1936934
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 3df6951129f7beda7970e394ffdd32c7e02304dd
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060301"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>为 Windows 应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -30,13 +31,13 @@ ms.lasthandoff: 01/04/2018
 
 若要了解有关脱机同步功能的详细信息，请参阅主题 [Azure 移动应用中的脱机数据同步]。
 
-## <a name="requirements"></a>要求
+## <a name="requirements"></a>要求  
 本教程需要的先决条件如下：
 
 * 在 Windows 8.1 或更高版本上运行的 Visual Studio 2013。
 * 完成[创建 Windows 应用][创建 Windows 应用]。
 * [Azure 移动服务 SQLite Store][sqlite store nuget]
-* [适用于通用 Windows 平台开发的 SQLite](http://www.sqlite.org/downloads)
+* [适用于通用 Windows 平台开发的 SQLite](https://marketplace.visualstudio.com/items?itemName=SQLiteDevelopmentTeam.SQLiteforUniversalWindowsPlatform) 
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>更新客户端应用以支持脱机功能
 脱机情况下，可使用 Azure 移动应用脱机功能与本地数据库交互。 要在应用中使用这些功能，请将 [SyncContext][synccontext] 初始化到本地存储。 然后，通过 [IMobileServiceSyncTable][IMobileServiceSyncTable] 接口引用表。 SQLite 在设备上用作本地存储。

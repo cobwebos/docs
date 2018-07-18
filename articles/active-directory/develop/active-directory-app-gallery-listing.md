@@ -13,41 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 ms.author: celested
+ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b369cdeb3a58db0336d4f6e343599aaa46643b32
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354446"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316778"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
 
 
 ##  <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
 
-Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)位于 Azure Marketplace 应用商店中，所有应用程序连接器都发布在其中以用于实现单一登录和用户预配。 使用 Azure AD 作为标识提供者的客户可以查找发布在这里的各种 SaaS 应用程序连接器。 IT 管理员从应用库中添加连接器，然后对连接器进行配置并将其用于单一登录和预配。 Azure AD 支持使用所有主要的联合身份验证协议（包括 SAML 2.0、OpenID Connect、OAuth 和 WS-Fed）进行单一登录。
+Azure Active Directory (Azure AD) 是一种基于云的标识服务。 
+  [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)位于 Azure 市场中，所有应用程序连接器都发布在其中以用于实现单一登录和用户预配。 使用 Azure AD 作为标识提供者的客户可以查找发布在这里的各种 SaaS 应用程序连接器。 IT 管理员从应用库中添加连接器，然后对连接器进行配置并将其用于单一登录和预配。 Azure AD 支持使用所有主要的联合身份验证协议（包括 SAML 2.0、OpenID Connect、OAuth 和 WS-Fed）进行单一登录。
 
 ## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>将应用程序列在该库中有什么好处？
 
 *  可以为客户提供尽可能最佳的单一登录体验。
 
-*  简化并最小化了应用程序的配置。 
+*  简化并最小化了应用程序的配置。
 
 *  在库中快速搜索应用程序。
 
-*  免费、基本和高级 Azure AD 客户都可以使用此集成。 
+*  免费、基本和高级 Azure AD 客户都可以使用此集成。
 
-*  共同客户可以获得分步配置教程。 
+*  共同客户可以获得分步配置教程。
 
 *  使用 SCIM 的客户可以将预配用于同一应用。
 
-
 ##  <a name="prerequisites-implement-federation-protocol"></a>先决条件：实现联合身份验证协议
 
-若要将某个应用程序列在 Azure AD 应用库中，首先需要实现 Azure AD 支持的以下联合身份验证协议之一。 请从这里阅读 Azure AD 应用程序库的条款和条件。 
+若要将某个应用程序列在 Azure AD 应用库中，首先需要实现 Azure AD 支持的以下联合身份验证协议之一并同意 Azure AD 应用程序库条款和条件。 请在[此处](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/)阅读 Azure AD 应用程序库的条款和条件。
 
 *   **OpenID Connect**：在 Azure AD 中创建多租户应用程序并为应用程序实现 [Azure AD 许可框架](active-directory-integrating-applications.md#overview-of-the-consent-framework)。 将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。 若要将应用程序与 Azure AD 集成，请遵循[开发人员说明](active-directory-authentication-scenarios.md)。
 

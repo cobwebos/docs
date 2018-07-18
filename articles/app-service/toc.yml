@@ -55,8 +55,6 @@
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: 对用户进行身份验证
       href: app-service-web-tutorial-auth-aad.md
-    - name: 使用 VSTS 和 CI/CD 将应用部署到 Azure 应用服务
-      href: 'https://docs.microsoft.com/learn/deploy-apps-to-azure/index'
 - name: 示例
   items:
     - name: Azure CLI
@@ -168,6 +166,8 @@
           href: app-service-configure-premium-tier.md
         - name: 横向扩展到多个实例
           href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json
+        - name: 高密度承载
+          href: app-service-high-density-hosting.md
     - name: 监视应用
       items:
         - name: 配额和警报
@@ -276,3 +276,11 @@
               href: app-service-web-open-source-technologies-faq.md
             - name: 配置和管理常见问题解答
               href: app-service-web-configuration-and-management-faq.md
+    - name: IP 地址更改
+      items:
+        - name: 入站 IP 地址
+          href: ip-address-change-inbound.md
+        - name: 出站 IP 地址
+          href: ip-address-change-outbound.md
+        - name: SSL 地址
+          href: ip-address-change-ssl.md

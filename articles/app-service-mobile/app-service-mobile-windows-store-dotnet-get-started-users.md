@@ -1,11 +1,11 @@
 ---
-title: "向通用 Windows 平台 (UWP) 应用添加身份验证 | Microsoft Docs"
-description: "了解如何使用 Azure 应用服务移动应用通过各种标识提供者（包括 AAD、Google、Facebook、Twitter 和 Microsoft）对通用 Windows 平台 (UWP) 应用的用户进行身份验证。"
+title: 向通用 Windows 平台 (UWP) 应用添加身份验证 | Microsoft Docs
+description: 了解如何使用 Azure 应用服务移动应用通过各种标识提供者（包括 AAD、Google、Facebook、Twitter 和 Microsoft）对通用 Windows 平台 (UWP) 应用的用户进行身份验证。
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
 manager: panarasi
-editor: 
+editor: ''
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
 ms.openlocfilehash: 4cc597f8aca13445034c8a1691b41018d4d9bc4b
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306568"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>向 Windows 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

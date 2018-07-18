@@ -7,6 +7,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -14,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 341142222fb1440cf5118e6d10f5a254e73d53d9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 239ece0f126e1c92c2e94206baa7026ac04d604f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258101"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227983"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -236,7 +237,7 @@ ms.locfileid: "34258101"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关条件访问的概述，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)。
+- 有关条件访问的概述，请参阅 [Azure Active Directory 中的条件访问是什么？](active-directory-conditional-access-azure-portal.md)
 - 如果已准备好在环境中配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的推荐做法](active-directory-conditional-access-best-practices.md)。
 
 

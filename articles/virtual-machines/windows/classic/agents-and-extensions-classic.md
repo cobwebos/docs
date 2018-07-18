@@ -22,6 +22,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30917626"
 ---
 # <a name="about-the-virtual-machine-agent-and-extensions-for-windows-vms"></a>关于适用于 Windows VM 的虚拟机代理和扩展
 

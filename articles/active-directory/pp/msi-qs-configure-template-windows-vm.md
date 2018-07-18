@@ -1,11 +1,11 @@
 ---
-title: "如何使用 Azure 模板为 Azure VM 配置用户分配的 MSI"
-description: "分步介绍了如何使用 Azure 资源管理器模板为 Azure VM 配置用户分配的托管服务标识 (MSI)。"
+title: 如何使用 Azure 模板为 Azure VM 配置用户分配的 MSI
+description: 分步介绍了如何使用 Azure 资源管理器模板为 Azure VM 配置用户分配的托管服务标识 (MSI)。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,11 @@ ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e01e4c397e0d0a19280a32fc1e8341b57b47e4eb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610377"
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>使用 Azure 模板为 VM 配置用户分配的托管服务标识 (MSI)
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 02/03/2018
 
 与 Azure 门户和脚本一样，Azure 资源管理器模板支持部署由 Azure 资源组定义的新资源或修改后的资源。 有多种可用于执行模板编辑和部署的方法（包括本地方法和基于门户的方法），包括：
 
-   - 使用 [Azure Marketplace 中的自定义模板](~/articles/azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)，这样可以从头开始创建模板，也可以在现有常见模板或[快速入门模板](https://azure.microsoft.com/documentation/templates/)的基础之上操作。
+   - 使用 [Azure 市场中的自定义模板](~/articles/azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)，这样可以从头开始创建模板，也可以在现有常见模板或[快速入门模板](https://azure.microsoft.com/documentation/templates/)的基础之上操作。
    - 派生自现有资源组，具体方法是从[原始部署](~/articles/azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history)或[当前部署](~/articles/azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group)导出模板。
    - 使用本地 [JSON 编辑器（例如 VS Code）](~/articles/azure-resource-manager/resource-manager-create-first-template.md)，然后使用 PowerShell 或 CLI 进行上传和部署。
    - 使用 Visual Studio [Azure 资源组项目](~/articles/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)同时创建和部署模板。  

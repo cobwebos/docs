@@ -3,7 +3,7 @@ title: Azure AD Connect：设备选项 | Microsoft Docs
 description: 本文档详细介绍 Azure AD Connect 中提供的设备选项
 services: active-directory
 documentationcenter: ''
-author: anandy
+author: billmath
 manager: samueld
 editor: billmath
 ms.assetid: c0ff679c-7ed5-4d6e-ac6c-b2b6392e7892
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: anandy
-ms.openlocfilehash: d592cbb55643099b6b628a44f182d0a079a6c71e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.component: hybrid
+ms.author: billmath
+ms.openlocfilehash: e52f691c75d491897b06a4ebb492d87fda682e38
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354502"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917840"
 ---
 #<a name="azure-ad-connect-device-options"></a>Azure AD Connect：设备选项
 

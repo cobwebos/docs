@@ -1,13 +1,13 @@
 ---
-title: "将虚拟网络网关添加到 ExpressRoute 的 VNet：门户：Azure | Microsoft Docs"
-description: "本文演示如何将虚拟网络网关添加到已为 ExpressRoute 创建的 Resource Manager VNet。"
+title: 将虚拟网络网关添加到 ExpressRoute 的 VNet：门户：Azure | Microsoft Docs
+description: 本文演示如何将虚拟网络网关添加到已为 ExpressRoute 创建的 Resource Manager VNet。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23013262"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]

@@ -1,15 +1,15 @@
 ---
-title: "从 Azure Windows VM 装载 Azure 文件存储 | Microsoft Docs"
-description: "使用 Azure 文件存储在云中存储文件，并从 Azure 虚拟机 (VM) 中装载你的云文件共享。"
-documentationcenter: 
+title: 从 Azure Windows VM 装载 Azure 文件存储 | Microsoft Docs
+description: 使用 Azure 文件存储在云中存储文件，并从 Azure 虚拟机 (VM) 中装载你的云文件共享。
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27577545"
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>通过 Windows VM 使用 Azure 文件共享 
 

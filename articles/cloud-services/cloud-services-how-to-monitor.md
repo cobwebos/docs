@@ -1,12 +1,12 @@
 ---
-title: "监视 Azure 云服务 | Microsoft Docs"
-description: "介绍监视 Azure 云服务需要涉及到哪些操作，以及可以选择哪些选项。"
+title: 监视 Azure 云服务 | Microsoft Docs
+description: 介绍监视 Azure 云服务需要涉及到哪些操作，以及可以选择哪些选项。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29149897"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 

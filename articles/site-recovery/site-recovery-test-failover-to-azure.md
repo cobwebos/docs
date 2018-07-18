@@ -1,18 +1,19 @@
 ---
-title: "Azure Site Recovery 中到 Azure 的测试故障转移 | Microsoft Docs"
-description: "了解使用 Azure Site Recovery 服务运行从本地到 Azure 的测试故障转移。"
+title: Azure Site Recovery 中到 Azure 的测试故障转移 | Microsoft Docs
+description: 了解使用 Azure Site Recovery 服务运行从本地到 Azure 的测试故障转移。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: bfc9df3c1190d9b94f5e8d726665acb7f999311f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c173f4f224c7021c0a0db057cb65aa9c6f900528
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915565"
 ---
 # <a name="test-failover-to-azure-in-site-recovery"></a>Site Recovery 中到 Azure 的测试故障转移
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 03/02/2018
 
     - Site Recovery 尝试在子网中创建测试 VM，该子网的名称与 IP 地址与 VM 的“计算和网络”设置中提供的值相同。
     - 如果用于测试故障转移的 Azure 虚拟网络中没有同名的子网，则会按字母顺序在第一个子网中创建测试 VM。
-    - 如果该子网中没有相同的 IP 地址，则 VM 会接收该子网中的另一个可用 IP 地址。 [了解详细信息](#creating-a-network-for-test-failover)。
+    - 如果该子网中没有相同的 IP 地址，则 VM 会接收该子网中的另一个可用 IP 地址。 [了解详细信息](#create-a-network-for-test-failover)。
 4. 如果要故障转移到 Azure 并且启用了数据加密，请在“加密密钥”中，选择在安装提供程序期间启用加密时颁发的证书。 如果未启用加密，则可以忽略此步骤。
 5. 在“**作业**”选项卡上跟踪故障转移进度。在 Azure 门户中，应当能够看到测试副本计算机。
 6. 若要通过 RDP 与 Azure VM 发起连接，需在故障转移的 VM 的网络接口上[添加公共 IP 地址](https://aka.ms/addpublicip)。 

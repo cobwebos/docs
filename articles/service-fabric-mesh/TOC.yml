@@ -1,0 +1,63 @@
+- name: Service Fabric 网格文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 关于 Service Fabric 网格
+      href: service-fabric-mesh-overview.md
+- name: 快速入门
+  items:
+    - name: 部署 Hello World
+      href: service-fabric-mesh-quickstart-deploy-container.md
+    - name: 创建和部署 Web 应用程序
+      href: service-fabric-mesh-quickstart-dotnet-core.md
+- name: 教程
+  items:
+    - name: 创建并部署多服务 Web 应用
+      items:
+        - name: 1- 生成 ASP.NET Core 应用程序
+          href: service-fabric-mesh-tutorial-create-dotnetcore.md
+        - name: 2- 调试应用程序
+          href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
+        - name: 3- 部署应用程序
+          href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
+- name: 概念
+  items:
+    - name: 术语
+      href: service-fabric-mesh-terminology.md
+    - name: Service Fabric 资源
+      href: service-fabric-mesh-service-fabric-resources.md
+    - name: 监视和诊断
+      href: service-fabric-mesh-monitoring-diagnostics.md
+    - name: 存储状态
+      href: service-fabric-mesh-storing-state.md
+- name: 操作指南
+  items:
+    - name: 设置开发环境
+      href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
+    - name: 设置 Service Fabric 网格 CLI
+      href: service-fabric-mesh-howto-setup-cli.md
+    - name: 部署 .NET Core 微服务应用
+      href: service-fabric-mesh-howto-deploy-app-template.md
+    - name: 从专用注册表部署应用
+      href: service-fabric-mesh-howto-deploy-app-private-registry.md
+    - name: 使用 Azure 文件卷存储状态
+      href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
+    - name: 独立缩放应用中的微服务
+      href: service-fabric-mesh-howto-app-scale-out.md
+- name: 资源
+  items:
+    - name: 常见问题
+      href: service-fabric-mesh-faq.md
+    - name: 示例应用程序
+      href: 'https://github.com/Azure-Samples/service-fabric-mesh'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric-mesh'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=service-fabric-mesh'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'

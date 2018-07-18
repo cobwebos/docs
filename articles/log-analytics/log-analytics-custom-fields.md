@@ -1,24 +1,26 @@
 ---
-title: "Azure Log Analytics 中的自定义字段 | Microsoft Docs"
-description: "Log Analytics 的“自定义字段”功能，使你可以基于添加到已收集记录的属性的 Log Analytics 记录创建自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。"
+title: Azure Log Analytics 中的自定义字段 | Microsoft Docs
+description: Log Analytics 的“自定义字段”功能，使你可以基于添加到已收集记录的属性的 Log Analytics 记录创建自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
 ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: f0f3311f35f954f81560cad21e7f0e3bc850a094
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.component: na
+ms.openlocfilehash: 164b071a47c13f7c5586bd287adc41bea54a1198
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129611"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics 中的自定义字段
 Log Analytics 的**自定义字段**功能使你可以通过添加自己的可搜索字段来扩展 Log Analytics 中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
@@ -129,7 +131,7 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 
 ![初始计数](media/log-analytics-custom-fields/initial-count.png)
 
-一段时间过后，新事件已完成收集，我们可以看到：**Service_CF** 字段现在已添加到与我们的条件匹配的记录中。
+一段时间过后，新事件已完成收集，可以看到 Service_CF 字段现已添加到与条件匹配的记录中。
 
 ![最终结果](media/log-analytics-custom-fields/final-results.png)
 

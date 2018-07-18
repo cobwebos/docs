@@ -11,6 +11,7 @@
 ### [使用 ServiceNow 配置](service-health-alert-webhook-servicenow.md)
 ### [使用 PagerDuty 配置](service-health-alert-webhook-pagerduty.md)
 ### [使用 OpsGenie 配置](service-health-alert-webhook-opsgenie.md)
+### [使用 REST 检索运行状况事件](service-health-rest.md)
 # 资源
 ## [常见问题](resource-health-faq.md)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

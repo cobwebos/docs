@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 1527e8fe28d395a77d7b3c1535e40fe59df1baba
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5011dfbe496472e21a85dee9fa4901dad429a984
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031723"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：有关自动用户帐户预配的报告
 
@@ -29,9 +30,9 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 
 ## <a name="overview"></a>概述
 
-预配连接器主要是遵循需要预配用户帐户的应用程序的[随附文档](active-directory-saas-tutorial-list.md)，使用 [Azure 管理门户](https://portal.azure.com)设置和配置的。 为应用程序配置并运行预配作业后，可使用以下两种方法之一报告这些作业的状态：
+预配连接器是按照受支持应用程序的[随附文档](saas-apps/tutorial-list.md)，使用 [Azure 门户](https://portal.azure.com)设置和配置的。 配置并运行预配作业后，可使用以下两种方法之一报告这些作业的状态：
 
-* **Azure 管理门户** - 本文主要介绍如何从 [Azure 管理门户](https://portal.azure.com)检索报告信息，其中提供了预配摘要报告，以及给定应用程序的详细预配审核日志。
+* **Azure 管理门户** - 本文主要介绍如何从 [Azure 门户](https://portal.azure.com)检索报告信息，其中提供了预配摘要报告，以及给定应用程序的详细预配审核日志。
 
 * **审核 API** - Azure Active Directory 还提供审核的 API，用于以编程方式检索详细预配审核日志。 请参阅 [Azure Active Directory 审核 API 参考](active-directory-reporting-api-audit-reference.md)，获取有关使用此 API 的具体文档。 尽管本文未专门介绍如何使用该 API，但详细说明了审核日志中记录的预配事件类型。
 
@@ -53,15 +54,15 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 在此处可以访问预配摘要报告和预配审核日志，下面对此做了介绍。
 
 
-### <a name="provisioning-summary-report"></a>预配摘要报告
+## <a name="provisioning-summary-report"></a>预配摘要报告
 
 预配摘要报告显示在给定应用程序的“预配”选项卡中。 它位于“同步详细信息”部分中的“设置”下面，提供以下信息：
 
-* 已同步并且当前位于源系统与目标系统之间的预配范围内的用户和/或组总数。
+* 已同步并且当前位于源系统与目标系统之间的预配范围内的用户和/或组总数
 
-* 上次运行同步的时间。 完全同步完成后，同步通常每隔 20-40 分钟发生一次。
+* 上次运行同步的时间。 [初始同步](active-directory-saas-app-provisioning.md#what-happens-during-provisioning)完成后，同步通常每隔 20-40 分钟进行一次。
 
-* 是否已完成初始完全同步。
+* 是否已完成[初始同步](active-directory-saas-app-provisioning.md#what-happens-during-provisioning)
 
 * 预配过程是否已被隔离，隔离状态的原因是什么（例如，由于管理员凭据无效，与目标系统通信失败）
 
@@ -69,7 +70,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 
  ![摘要报告](./media/active-directory-saas-provisioning-reporting/summary_report.PNG)
 
-### <a name="provisioning-audit-logs"></a>预配审核日志
+## <a name="provisioning-audit-logs"></a>预配审核日志
 预配服务执行的所有活动记录在 Azure AD 审核日志中，可在“审核日志”选项卡中的“帐户预配”类别下面查看这些日志。 记录的活动事件类型包括：
 
 * **导入事件** - 每当 Azure AD 预配服务从源系统或目标系统检索有关单个用户或组的信息时，将记录“导入”事件。 在同步期间，将先从源系统检索用户，其结果记录为“导入”事件。 然后，将会针对目标系统查询已检索的用户的匹配 ID，以检查这些 ID 是否存在，其结果也会记录为“导入”事件。 这些事件记录发生相应事件时，Azure AD 预配服务所看到的所有已映射用户属性及其值。 
@@ -88,7 +89,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 
 3. 同步规则事件：已根据配置的属性映射规则和范围筛选器评估源和目标系统中的用户数据，以确定应执行哪个操作（如果有）。
 
-4. 导出事件：如果同步规则事件指明应执行某个操作（例如添加、更新、删除），则会在导出事件中记录该操作的结果。
+4. 导出事件：如果同步规则事件指明应执行某个操作（添加、更新、删除），则会在导出事件中记录该操作的结果。
 
 ![创建 Azure AD 测试用户](./media/active-directory-saas-provisioning-reporting/audit_logs.PNG)
 
@@ -111,6 +112,9 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 
 7. 单击单个事件可查看更多详细信息，包括发生事件期间检索、评估或写入的所有用户属性。
 
+有关如何使用审核日志的演示，请参见下面的视频。 审核日志在 5:30 左右演示：
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 ### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>有关查看预配审核日志的提示
 
@@ -132,5 +136,5 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
+* [管理企业应用的用户帐户预配](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](manage-apps/what-is-single-sign-on.md)

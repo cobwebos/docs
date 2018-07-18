@@ -1,22 +1,19 @@
 ---
 title: 使用 Power BI 可视化远程监视数据 - Azure | Microsoft Docs
 description: 本教程使用 Power BI Desktop 和 Cosmos DB 将来自远程监视解决方案的数据集成到自定义的可视化效果。 这样，用户便可以生成其自己的自定义仪表板，并将其与解决方案外部的用户共享。
-services: iot-suite
-suite: iot-suite
 author: asdonald
 manager: hegate
 ms.author: asdonald
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 55feb56008a54676bd0af332e251da94a9653aaf
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970393"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>使用 Power BI 可视化远程监视数据
 
@@ -97,9 +94,9 @@ ms.lasthandoff: 05/20/2018
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>发布仪表板并刷新数据
 
-成功创建仪表板后，我们建议[发布 Power BI 仪表板](https://docs.microsoft.com/en-us/power-bi/desktop-upload-desktop-files)，以便与他人共享。
+成功创建仪表板后，我们建议[发布 Power BI 仪表板](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files)，以便与他人共享。
 
-还需要在发布的仪表板上[刷新数据](https://docs.microsoft.com/en-us/power-bi/refresh-data)，确保获得最新的数据集。
+还需要在发布的仪表板上[刷新数据](https://docs.microsoft.com/power-bi/refresh-data)，确保获得最新的数据集。
 
 ## <a name="next-steps"></a>后续步骤
 

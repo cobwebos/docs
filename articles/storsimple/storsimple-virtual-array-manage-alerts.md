@@ -1,11 +1,11 @@
 ---
-title: "查看和管理 Microsoft Azure StorSimple 虚拟阵列警报 | Microsoft 文档"
-description: "介绍 StorSimple 虚拟阵列警报条件和严重性以及如何使用 StorSimple Manager 服务管理警报。"
+title: 查看和管理 Microsoft Azure StorSimple 虚拟阵列警报 | Microsoft 文档
+description: 介绍 StorSimple 虚拟阵列警报条件和严重性以及如何使用 StorSimple Manager 服务管理警报。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 97ee25a1-0ec3-4883-9a0a-54b722598462
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27786401"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的警报
 

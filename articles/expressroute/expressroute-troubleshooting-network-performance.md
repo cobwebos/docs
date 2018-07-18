@@ -1,12 +1,12 @@
 ---
-title: "Azure 虚拟网络性能故障排除 | Microsoft Docs"
-description: "此页提供一种标准化方法来测试 Azure 网络链接性能。"
+title: Azure 虚拟网络性能故障排除 | Microsoft Docs
+description: 此页提供一种标准化方法来测试 Azure 网络链接性能。
 services: expressroute
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27318688"
 ---
 # <a name="troubleshooting-network-performance"></a>网络性能故障排除
 ## <a name="overview"></a>概述

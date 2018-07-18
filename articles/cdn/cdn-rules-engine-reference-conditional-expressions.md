@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN 规则引擎条件表达式 | Microsoft Docs"
-description: "Azure CDN 规则引擎匹配条件和功能的参考文档。"
+title: Azure CDN 规则引擎条件表达式 | Microsoft Docs
+description: Azure CDN 规则引擎匹配条件和功能的参考文档。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22997972"
 ---
 # <a name="azure-cdn-rules-engine-conditional-expressions"></a>Azure CDN 规则引擎条件表达式
 本主题列出了 Azure 内容传送网络 (CDN) [规则引擎](cdn-rules-engine.md)的条件表达式的详细说明。

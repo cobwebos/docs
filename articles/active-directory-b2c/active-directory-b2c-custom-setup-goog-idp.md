@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用自定义策略添加 Google+ 作为 OAuth2 标识提供者
-description: 使用 OAuth2 协议将 Google+ 用作标识提供者的示例
+title: 在 Azure Active Directory B2C 中使用自定义策略将 Google+ 添加为 OAuth2 标识提供者 | Microsoft Docs
+description: 使用 OAuth2 协议将 Google+ 用作标识提供者的示例。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: f12bbc2472aa2d83088c7d4d7b8f173744fb36b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 19b7f708d43907ac45450a64f988b2a517293511
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446701"
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Google+ 作为 OAuth2 标识提供者
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 03/23/2018
 
     ![Google+ - 选择应用程序类型](media/active-directory-b2c-custom-setup-goog-idp/goog-web-app.png)
 
-13.  提供应用程序的**名称**，在**已授权 JavaScript 来源**字段中输入 `https://login.microsoftonline.com`，并在**已授权重定向 URI** 字段输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com）。 **{tenant}** 值区分大小写。 单击“创建”。
+13.  提供应用程序的**名称**，在**已授权 JavaScript 来源**字段中输入 `https://login.microsoftonline.com`，并在**已授权重定向 URI** 字段输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 {tenant} 替换为租户名称（例如 contosob2c.onmicrosoft.com）。 **{tenant}** 值区分大小写。 单击“创建”。
 
     ![Google + - 提供授权的 JavaScript 源和重定向 URI](media/active-directory-b2c-custom-setup-goog-idp/goog-create-client-id.png)
 

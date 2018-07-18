@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781836"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
 
@@ -45,8 +46,8 @@ ms.lasthandoff: 05/07/2018
 
     已授权映像显示的产品/服务状态为 
     
-    - **已接受条款：**用户可使用已授权映像创建 VM。 
-    - **需要评审条款：**用户当前不可使用已授权映像。 实验室用户必须接受许可证的条款和条件，才能将其用于创建 VM。 
+    - **已接受条款：** 用户可使用已授权映像创建 VM。 
+    - **需要评审条款：** 用户当前不可使用已授权映像。 实验室用户必须接受许可证的条款和条件，才能将其用于创建 VM。 
 
 ## <a name="making-a-licensed-image-available-to-lab-users"></a>使实验室用户能够使用已授权映像
 若要确保实验室用户能够使用已授权映像，具有管理员权限的实验室所有者必须首先接受该已授权映像的条款和条件。 启用与已授权映像相关联的订阅的编程部署将自动接受该映像的法律条款和隐私声明。 [Working with Marketplace Images on Azure Resource Manager](https://azure.microsoft.com/blog/working-with-marketplace-images-on-azure-resource-manager/)（在 Azure 资源管理器上使用 Marketplace 映像）提供了有关 Marketplace 映像的编程部署的其他信息。

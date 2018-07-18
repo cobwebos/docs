@@ -1,24 +1,19 @@
 ---
-title: "使用 Azure CLI (az.py) 配置到 IoT 中心的文件上传 | Microsoft Docs"
-description: "如何使用跨平台 Azure CLI 2.0 (az.py) 配置到 Azure IoT 中心的文件上传。"
-services: iot-hub
-documentationcenter: 
+title: 使用 Azure CLI (az.py) 配置到 IoT 中心的文件上传 | Microsoft Docs
+description: 如何使用跨平台 Azure CLI 2.0 (az.py) 配置到 Azure IoT 中心的文件上传。
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 6b100e65aba604fd8becb02c3a205b3348872bc4
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 378fb06f7ac9cbb6dc645994682786f474077d03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633846"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>使用 Azure CLI 配置 IoT 中心文件上传
 
@@ -26,7 +21,7 @@ ms.lasthandoff: 11/18/2017
 
 要使用 [IoT 中心的文件上传功能][lnk-upload]，必须先将 Azure 存储帐户与 IoT 中心关联。 可以使用现有存储帐户，也可以创建新的存储帐户。
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
 * 有效的 Azure 帐户。 如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
 * [Azure CLI 2.0][lnk-CLI-install]。

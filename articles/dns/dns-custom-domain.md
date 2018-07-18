@@ -1,6 +1,6 @@
 ---
-title: "将 Azure DNS 与 Azure 资源集成 | Microsoft Docs"
-description: "了解如何使用 Azure DNS 来为 Azure 资源提供 DNS。"
+title: 将 Azure DNS 与 Azure 资源集成 | Microsoft Docs
+description: 了解如何使用 Azure DNS 来为 Azure 资源提供 DNS。
 services: dns
 documentationcenter: na
 author: KumudD
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27994376"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 为 Azure 服务提供自定义域设置
 

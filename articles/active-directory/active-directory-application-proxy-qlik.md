@@ -3,20 +3,22 @@ title: Azure AD 应用代理和 Qlik Sense| Microsoft Docs
 description: 在 Azure 门户中，打开应用程序代理并为反向代理安装连接器。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.topic: article
-ms.date: 04/03/2018
-ms.author: markvi
+ms.date: 05/21/2018
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: ab029420ab9aa81b585c9b0315537bff2d9aaa6d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 350a43dbb96e900c48a4207c808add1484237ef6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589077"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>应用程序代理和 Qlik Sense 
 Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保可轻松使用应用程序代理来提供对 Qlik Sense 部署的远程访问。  
@@ -50,7 +52,7 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 按照应用程序 1 的相同步骤操作，但存在以下例外： 
 
 **步骤 5**：外部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 HTTPS 的默认端口为 4244，HTTP 的默认端口为 4248。 例如：**https&#58;//demo.qlik.com:4244**</br></br> 
-**步骤 10：** 请勿设置 SSO，并使“单一登录”**** 处于禁用状态
+**步骤 10：** 请勿设置 SSO，并使 **“单一登录”处于禁用状态**
  
  
 ## <a name="testing"></a>测试 

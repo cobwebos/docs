@@ -1,26 +1,21 @@
 ---
-title: 使用现有的 NPS 服务器提供 Azure MFA 功能 | Microsoft 文档
-description: 适用于 Azure 多重身份验证的网络策略服务器扩展是一个简单的解决方案，可将基于云的双步验证功能添加到现有的身份验证基础结构。
+title: 使用现有 NPS 服务器提供 Azure MFA 功能
+description: 向现有身份验证基础结构添加基于云的双重验证功能
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ''
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: d1b598dc19882a91143515e954f7dc9cdce7c384
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ac2b0e2ba3eff83462ded91bcd0ac9a7309f73b4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770247"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031135"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -63,8 +58,8 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 这些库将自动随扩展一同安装。
 
--   [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
--   [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+- [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 已安装用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块，如果尚未安装，可以通过配置脚本，作为安装过程的一部分运行。 如果尚未安装此模块，则无需提前安装。
 
@@ -75,6 +70,13 @@ Windows Server 2008 R2 SP1 或更高版本。
 安装该扩展时，需要使用 Azure AD 租户的目录 ID 和管理员凭据。 可在 [Azure 门户](https://portal.azure.com)中找到该目录 ID。 以管理员身份登录，在左侧选择“Azure Active Directory”图标，然后选择“属性”即可。 复制“目录 ID”框中的 GUID 并保存。 安装 NPS 扩展时，使用此 GUID 作为租户 ID。
 
 ![在 Azure Active Directory 属性下找到目录 ID](./media/howto-mfa-nps-extension/find-directory-id.png)
+
+### <a name="network-requirements"></a>网络要求
+
+NPS 服务器必须能够通过端口 80 和 443 与以下 URL 通信。
+
+* https://adnotifications.windowsazure.com  
+* https://login.microsoftonline.com
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -120,7 +122,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 ### <a name="register-users-for-mfa"></a>用户注册 MFA
 
-在部署和使用 NPS 扩展之前，需要执行双重验证的用户需要注册 MFA。 更直接的是，若要在部署扩展时测试扩展，则至少需要一个已针对多重身份验证进行完全注册的测试帐户。
+部署和使用 NPS 扩展前，需要先向 MFA 注册必须执行双重验证的用户。 更直接的是，若要在部署扩展时测试扩展，则至少需要一个已针对多重身份验证进行完全注册的测试帐户。
 
 使用以下步骤以启动一个测试帐户：
 1. 通过测试帐户登录 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 
@@ -136,19 +138,19 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 ### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>针对 Azure MFA 下载并安装 NPS 扩展
 
-1.  从 Microsoft 下载中心[下载 NPS 扩展](https://aka.ms/npsmfa)。
-2.  将二进制文件复制到要配置的网络策略服务器。
-3.  运行 *setup.exe* 并按照安装说明操作。 如果发生错误，请仔细检查先决条件部分的两个库是否已成功安装。
+1. 从 Microsoft 下载中心[下载 NPS 扩展](https://aka.ms/npsmfa)。
+2. 将二进制文件复制到要配置的网络策略服务器。
+3. 运行 *setup.exe* 并按照安装说明操作。 如果发生错误，请仔细检查先决条件部分的两个库是否已成功安装。
 
 ### <a name="run-the-powershell-script"></a>运行 PowerShell 脚本
 
-安装程序将在以下位置创建 PowerShell 脚本：`C:\Program Files\Microsoft\AzureMfa\Config`（其中，C:\ 是安装驱动器）。 此 PowerShell 脚本执行以下操作：
+安装程序会在以下位置创建 PowerShell 脚本：`C:\Program Files\Microsoft\AzureMfa\Config`（其中，C:\ 是安装驱动器）。 此 PowerShell 脚本在每次运行时执行以下操作：
 
--   创建自签名证书。
--   将证书的公钥关联到 Azure AD 上的服务主体。
--   将证书存储在本地计算机证书存储中。
--   向网络用户授予对证书私钥的访问权限。
--   重新启动 NPS。
+- 创建自签名证书。
+- 将证书的公钥关联到 Azure AD 上的服务主体。
+- 将证书存储在本地计算机证书存储中。
+- 向网络用户授予对证书私钥的访问权限。
+- 重新启动 NPS。
 
 除非你想要使用自己的证书（而不是 PowerShell 脚本生成的自签名证书），否则请运行该 PowerShell 脚本来完成安装。 如果在多台服务器上安装扩展，则每个服务器都应有自己的证书。
 
@@ -167,8 +169,8 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 在要针对负载均衡设置的任何其他 NPS 服务器上重复这些步骤。
 
->[!NOTE]
->如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须为“CN=\<TenantID\>”，“OU=Microsoft NPS Extension”。 
+> [!NOTE]
+> 如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须为“CN=\<TenantID\>”，“OU=Microsoft NPS Extension”。 
 
 ## <a name="configure-your-nps-extension"></a>配置 NPS 扩展
 
@@ -177,7 +179,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 ### <a name="configuration-limitations"></a>配置限制
 
 - Azure MFA 的 NPS 扩展不包含用于将用户和设置从 MFA 服务器迁移到云的工具。 出于此原因，我们建议将扩展用于新部署，而非现有部署。 如果在现有部署上使用扩展，用户必须重新进行证明才能在云中填充其 MFA 详细信息。  
-- NPS 扩展使用本地 Active Directory 中的 UPN 来标识 Azure MFA 中的用户，以便执行辅助身份验证。可将该扩展配置为使用其他标识符，例如备用登录 ID，或者除 UPN 以外的自定义 Active Directory 字段。 有关详细信息，请参阅[用于多重身份验证的 NPS 扩展的高级配置选项](howto-mfaserver-nps-vpn.md)。
+- NPS 扩展使用本地 Active Directory 中的 UPN 来标识 Azure MFA 中的用户，以便执行辅助身份验证。可将该扩展配置为使用其他标识符，例如备用登录 ID，或者除 UPN 以外的自定义 Active Directory 字段。 有关详细信息，请参阅[用于多重身份验证的 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)一文。
 - 并非所有加密协议都支持所有验证方法。
    - PAP 支持电话呼叫、单向短信、移动应用通知和移动应用验证码
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知
@@ -227,7 +229,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 此错误可能是多种原因之一造成的。 使用以下步骤可帮助排查问题：
 
 1. 重新启动 NPS 服务器。
-2. 验证是否已按预期安装了该客户端证书。
+2. 验证是否已按预期安装了客户端证书。
 3. 验证该证书是否与 Azure AD 上的租户关联。
 4. 验证是否可以从运行该扩展的服务器访问 https://login.microsoftonline.com/。
 
@@ -237,12 +239,15 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 验证 AD Connect 是否正在运行，并且该用户是否在 Windows Active Directory 和 Azure Active Directory 中存在。
 
-------------------------------------------------------------
+-------------------------------------------------------------
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>HTTP 日志中为何出现错误，并且所有身份验证都失败？
 
 验证是否可以从运行该 NPS 扩展的服务器访问 https://adnotifications.windowsazure.com。
 
+## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>管理 TLS/SSL 协议和密码套件
+
+建议禁用或删除较旧和较弱的密码套件，除非组织需要这些套件。 若要了解如何完成此任务，可以参阅[为 AD FS 管理 SSL/TLS 协议和密码套件](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

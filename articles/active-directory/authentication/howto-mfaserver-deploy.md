@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: bd1b0f21162978496750886d32e7166c3a90922d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 130e9956702515574da47dc872b03598ca19ff29
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031673"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -102,8 +103,8 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 1. 双击可执行文件。
 2. 在“选择安装文件夹”屏幕中，确保文件夹正确，并单击“下一步”。
-3. 安装完成后，单击“完成”。  此时会启动配置向导。
-4. 在配置向导欢迎屏幕上，选中“跳过使用身份验证配置向导”，并单击“下一步”。  此时向导将关闭，服务器会启动。
+3. 安装完成后，单击“完成”。 此时会启动配置向导。
+4. 在配置向导欢迎屏幕上，选中“跳过使用身份验证配置向导”，并单击“下一步”。 此时向导将关闭，服务器会启动。
 
    ![云](./media/howto-mfaserver-deploy/skip2.png)
 
@@ -115,7 +116,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 应该根据为用户配置双重验证的方式来确定所发送电子邮件的内容。 例如，如果可以从公司目录导入电话号码，则电子邮件中应该包含默认电话号码，使用户知道下一步会发生什么。 如果未导入电话号码，或者用户要使用移动应用，则发送的电子邮件会指导用户完成其帐户注册。 电子邮件中包含指向 Azure 多重身份验证用户门户的超链接。
 
-此外，电子邮件的内容根据为用户设置的验证方法（电话呼叫、短信或移动应用）的不同而异。  例如，如果要求用户在身份验证时使用 PIN 码，则该电子邮件将告诉用户其初始 PIN 码的设置。  要求用户在首次验证期间更改其 PIN 码。
+此外，电子邮件的内容根据为用户设置的验证方法（电话呼叫、短信或移动应用）的不同而异。 例如，如果要求用户在身份验证时使用 PIN 码，则该电子邮件将告诉用户其初始 PIN 码的设置。 要求用户在首次验证期间更改其 PIN 码。
 
 ### <a name="configure-email-and-email-templates"></a>配置电子邮件和电子邮件模板
 
@@ -129,14 +130,14 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ## <a name="import-users-from-active-directory"></a>从 Active Directory 导入用户
 
-安装服务器以后，需添加用户。 可以选择手动创建用户、从 Active Directory 导入用户，或者配置与 Active Directory 的自动同步。
+现在，服务器已安装，你需要添加用户。 可以选择手动创建用户、从 Active Directory 导入用户，或者配置与 Active Directory 的自动同步。
 
 ### <a name="manual-import-from-active-directory"></a>从 Active Directory 手动导入
 
 1. 在“Azure MFA 服务器”的左侧选择“用户” 。
 2. 在底部选择“从 Active Directory 导入” 。
-3. 现在，可以搜索单个用户，或在 AD 中搜索包含用户的 OU（组织单位）。  在本例中，我们将指定用户 OU。
-4. 突出显示右侧的所有用户，**并单击“导入**。  此时应会显示一个弹出窗口，指出操作已成功。  关闭导入窗口。
+3. 现在，可以搜索单个用户，或在 AD 中搜索包含用户的 OU（组织单位）。 在本例中，我们将指定用户 OU。
+4. 突出显示右侧的所有用户，**并单击“导入**。 此时应会显示一个弹出窗口，指出操作已成功。 关闭导入窗口。
 
    ![MFA 服务器用户导入](./media/howto-mfaserver-deploy/import2.png)
 
@@ -176,10 +177,14 @@ Azure MFA 服务器由三个 Web 组件组成：
 1. 在新服务器上重新安装 Azure MFA 服务器。
 2. 激活新的 Azure MFA 服务器。
 3. 停止 MultiFactorAuth 服务。
-4. 使用备份的副本覆盖 PhoneFactor.pfdata。
+4. 使用备份的副本覆盖 **PhoneFactor.pfdata**。
 5. 启动 MultiFactorAuth 服务。
 
 新服务器现已使用原始的已备份配置和用户数据启动并运行。
+
+## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>管理 TLS/SSL 协议和密码套件
+
+升级到或安装 MFA 服务器版本 8.x 或更高版本后，建议禁用或删除较旧和较弱的密码套件，除非你的组织需要这些套件。 可以在[为 AD FS 管理 SSL/TLS 协议和密码套件](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文中找到有关如何完成此任务的信息。
 
 ## <a name="next-steps"></a>后续步骤
 

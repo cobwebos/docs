@@ -7,6 +7,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d41e83c11f33b0bcbe4ea632332f2cd8bb12313f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770734"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714106"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -50,11 +51,11 @@ ms.locfileid: "32770734"
 
 **应了解的内容：** 
 
-- 每个用户的最大设备数以设备为中心。 例如：如果 *jdoe* 和 *jharnett* 登录到某个设备，会在“用户信息”选项卡中为其中每个用户单独创建一个注册 (DeviceID)。  
+- 每个用户的最大设备数以设备为中心。 例如：如果 jdoe 和 jharnett 登录到某个设备，会在“用户信息”选项卡中为其中每个用户单独创建一个注册 (DeviceID)。  
 
 - 初始注册/加入设备配置为在登录或锁定/解锁时执行尝试。 可能会有 5 分钟的延迟，由任务计划程序任务触发。 
 
-- 重新安装操作系统或者手动重新注册，可能会在 Azure AD 上创建新的注册，从而导致 Azure 门户中的“用户信息”选项卡下出现多个条目。 
+- 重新安装操作系统或者手动重新注册，可能会在 Azure AD 中创建新的注册，从而导致 Azure 门户中的“用户信息”选项卡下出现多个条目。 
 
 ## <a name="step-1-retrieve-the-registration-status"></a>步骤 1：检索注册状态 
 
@@ -89,7 +90,7 @@ ms.locfileid: "32770734"
     
     - 已登录的用户不是域用户（例如，本地用户）。 低级别设备上的混合 Azure AD 联接仅支持域用户。
     
-    - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 这可能是由于到 Azure AD URL 的出站网络连接出现问题（请检查先决条件）。 另外，还可能是由于为用户启用/配置了多重身份验证 (MFA)，但没有在联合服务器上配置 WIAORMUTLIAUTHN（请检查配置步骤）。 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 **autoworkplace.exe** 以无提示方式获取令牌。
+    - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 这可能是由于到 Azure AD URL 的出站网络连接出现问题。 另外，还可能是由于为用户启用/配置了多重身份验证 (MFA)，但没有在联合服务器上配置 WIAORMUTLIAUTHN。 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 **autoworkplace.exe** 以无提示方式获取令牌。
     
     - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”。
 

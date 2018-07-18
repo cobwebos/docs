@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/13/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0a648d0733d9d81cc0e586f5fa54dc8d75d2f6f0
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801926"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
-本主题旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本主题是特定领域的深入探讨，其他主题中也简要描述了这些概念。
+本文档旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本文档是特定领域的深入探讨，其他文档中也简要描述了这些概念。
 
 ## <a name="sourceanchor"></a>sourceAnchor
 sourceAnchor 属性定义为*在对象生存期内不会变化的属性*。 它可将对象唯一标识为本地和 Azure AD 中的相同对象。 该属性也称为 **immutableId**，这两个名称可以换用。
 
-在本主题中，“不可变”（即无法更改）一词非常重要。 由于此属性的值在设置之后就无法更改，因此请务必挑选可支持方案的设计。
+在本文档中，“不可变”（即无法更改）一词非常重要。 由于此属性的值在设置之后就无法更改，因此请务必挑选可支持方案的设计。
 
 该属性用于以下方案︰
 
@@ -40,12 +42,12 @@ sourceAnchor 属性定义为*在对象生存期内不会变化的属性*。 它�
 ### <a name="selecting-a-good-sourceanchor-attribute"></a>选择良好的 sourceAnchor 属性
 属性值必须遵循以下规则：
 
-* 长度小于 60 个字符
+* 长度少于 60 个字符
   * 系统将 a-z、A-Z 或 0-9 以外的字符编码并计为 3 个字符
 * 不包含特殊字符：&#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
 * 必须全局唯一
 * 必须是字符串、整数或二进制数
-* 不应基于用户的名称，他们会改变
+* 不应基于用户的名称，因为它们会改变
 * 不应区分大小写，避免使用可能因大小写而改变的值
 * 应在创建对象时分配
 
@@ -186,10 +188,10 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 ### <a name="custom-domain-state-and-upn"></a>自定义域状态和 UPN
 必须确保 UPN 后缀包含已验证的域。
 
-John 是 contoso.com 中的用户。在将用户同步到 Azure AD 目录 contoso.onmicrosoft.com 之后，希望 John 使用本地 UPN john@contoso.com 登录到 Azure。为此，需要将 contoso.com 添加为 Azure AD 中的自定义域并进行验证，才能开始同步用户。 如果 John 的 UPN 后缀（例如 contoso.com）与 Azure AD 中已验证的域不匹配，Azure AD 会将该 UPN 后缀替换为 contoso.onmicrosoft.com。
+John 是 contoso.com 中的用户。 在将用户同步到 Azure AD 目录 contoso.onmicrosoft.com 之后，希望 John 使用本地 UPN john@contoso.com 登录到 Azure。 为此，需要将 contoso.com 添加为 Azure AD 中的自定义域并进行验证，才能开始同步用户。 如果 John 的 UPN 后缀（例如 contoso.com）与 Azure AD 中已验证的域不匹配，Azure AD 会将该 UPN 后缀替换为 contoso.onmicrosoft.com。
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>不可路由的本地域与 Azure AD 的 UPN
-有些组织使用不可路由的域（例如 contoso.local）或简单的单标签域（例如 contoso）。 在 Azure AD 中，无法验证不可路由的域。 Azure AD Connect 只能同步到 Azure AD 中已验证的域。 创建 Azure AD 目录时，将创建可路由的域，而该域将成为 Azure AD 的默认域，例如 contoso.onmicrosoft.com。因此，如果不想要同步到默认的 onmicrosoft.com 域，则必须在此类方案中验证任何其他可路由的域。
+有些组织使用不可路由的域（例如 contoso.local）或简单的单标签域（例如 contoso）。 在 Azure AD 中，无法验证不可路由的域。 Azure AD Connect 只能同步到 Azure AD 中已验证的域。 创建 Azure AD 目录时，将创建可路由的域，而该域将成为 Azure AD 的默认域，例如 contoso.onmicrosoft.com。 因此，如果不想要同步到默认的 onmicrosoft.com 域，则必须在此类方案中验证任何其他可路由的域。
 
 有关添加和验证域的详细信息，请阅读[将自定义域名添加到 Azure Active Directory](../active-directory-domains-add-azure-portal.md)。
 

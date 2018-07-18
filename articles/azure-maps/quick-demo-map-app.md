@@ -1,22 +1,20 @@
 ---
 title: 使用 Azure Maps 执行交互式地图搜索 | Microsoft Docs
 description: Azure 快速入门 - 使用 Azure Maps 启动演示交互式地图搜索
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: quickstart
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8dedaf95289d9637f5f3d1e80a763b5fb400c617
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8765b634b81742acf9fb4d40be8864800025351d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599756"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>使用 Azure Maps 启动交互式搜索地图
 
@@ -32,7 +30,7 @@ ms.lasthandoff: 05/07/2018
 ## <a name="create-an-account-and-get-your-key"></a>创建一个帐户并获取密钥
 
 1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。
-2. 在“搜索 Marketplace”框中，键入“Maps”。
+2. 在“在市场中搜索”框中，键入“Maps”。
 3. 从“结果”中，选择“Maps”。 单击地图下面显示的“创建”按钮。 
 4. 在“创建 Maps 帐户”页上，输入以下值：
     - 新帐户的名称。 
@@ -77,3 +75,11 @@ ms.lasthandoff: 05/07/2018
 
 > [!div class="nextstepaction"]
 > [借助 Maps 搜索兴趣点](./tutorial-search-location.md)
+
+有关更多代码示例和交互式编码体验，请参阅下面的操作指南。
+
+> [!div class="nextstepaction"]
+> [如何使用 Azure Maps REST API 搜索地址](./how-to-search-for-address.md)
+
+> [!div class="nextstepaction"]
+> [如何使用 Azure Maps 地图控件](./how-to-use-map-control.md)

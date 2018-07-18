@@ -10,6 +10,8 @@
       href: stream-analytics-quick-create-portal.md
     - name: 创建作业 - PowerShell
       href: stream-analytics-quick-create-powershell.md
+    - name: 创建作业 - Visual Studio
+      href: stream-analytics-quick-create-vs.md
 - name: 教程
   items:
     - name: 1 - 创建/管理作业
@@ -18,6 +20,8 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 - 运行 JavaScript UDF
       href: stream-analytics-javascript-user-defined-functions.md
+    - name: 4 - 在 VSTS 中使用 CI/CD 进行部署
+      href: stream-analytics-tools-visual-studio-cicd-vsts.md
 - name: 示例
   items:
     - name: 代码示例
@@ -125,8 +129,6 @@
           href: stream-analytics-job-diagram-with-metrics.md
         - name: 诊断日志
           href: stream-analytics-job-diagnostic-logs.md
-        - name: 检查资源运行状况
-          href: stream-analytics-resource-health.md
         - name: SELECT INTO 语句
           href: stream-analytics-select-into.md
         - name: 事件中心接收方

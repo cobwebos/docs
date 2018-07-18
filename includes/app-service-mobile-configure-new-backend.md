@@ -1,4 +1,20 @@
-
+---
+title: include 文件
+description: include 文件
+services: app-service\mobile
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 05/25/2018
+ms.author: crdun
+ms.custom: include file
+ms.openlocfilehash: 4da469ac31c3ee50d601c87b4d7487ae5bb7bc3a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34663996"
+---
 1. 单击“应用服务”按钮，然后依次选择移动应用后端、“快速入门”、客户端平台（iOS、Android、Xamarin、Cordova）。
 
     ![突出显示移动应用快速启动的 Azure 门户][quickstart]
@@ -19,10 +35,10 @@
 
     ![Azure 门户通知“你已经有一个数据连接”][already-connection]
 
-3. 在“2.创建表 API”下，为“后端语言”选择“Node.js”。 
- 
-4. 接受确认，然后选择“创建 TodoItem 表”。  
-    此操作会在数据库中创建一个新的代办事项表。 
+3. 在“2.创建表 API”下，为“后端语言”选择“Node.js”。
+
+4. 接受确认，然后选择“创建 TodoItem 表”。
+    此操作会在数据库中创建一个新的代办事项表。
 
     >[!IMPORTANT]
     > 将现有的后端切换到 Node.js 会覆盖所有内容。 若改为创建 .NET 后端，请参阅[使用适用于移动应用的 .NET 后端服务器][instructions]。

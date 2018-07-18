@@ -1,24 +1,19 @@
 ---
-title: 安装 Azure 备份服务器 v2 | Microsoft Docs
+title: 安装 Azure 备份服务器 v2
 description: Azure 备份服务器 v2 可提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。 了解如何安装或升级到 Azure 备份服务器 v2。
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: masaran;markgal
-ms.openlocfilehash: dd7b76d9e06bc82ffd75f12131c2c247da05cc91
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: adigan
+ms.openlocfilehash: fdf69003566f704354a17335b1f46fc3077aedbc
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598384"
 ---
 # <a name="install-azure-backup-server-v2"></a>安装 Azure 备份服务器 v2
 
@@ -52,15 +47,15 @@ Azure 备份服务器可帮助保护虚拟机 (VM)、工作负载、文件和文
 
 3. 在 Microsoft Azure 备份服务器向导中的“安装”下，选择“Microsoft Azure 备份服务器”。
 
-  ![安装程序 - 选择安装](./media/backup-mabs-upgrade-to-v2/mabs-installer-s1.png)
+   ![安装程序 - 选择安装](./media/backup-mabs-upgrade-to-v2/mabs-installer-s1.png)
 
 4. 在“欢迎”页上，检查警告，然后选择“下一步”。
 
-  ![安装程序 -“欢迎”页](./media/backup-mabs-upgrade-to-v2/mabs-installer-s2.png)
+   ![安装程序 -“欢迎”页](./media/backup-mabs-upgrade-to-v2/mabs-installer-s2.png)
 
 5. 安装向导会执行先决条件检查，以确保环境可以进行升级。 在“先决条件检查”页上，选择“检查”。
 
-  ![安装程序 -“先决条件检查”页](./media/backup-mabs-upgrade-to-v2/mabs-installer-s3-perform-checks.png)
+   ![安装程序 -“先决条件检查”页](./media/backup-mabs-upgrade-to-v2/mabs-installer-s3-perform-checks.png)
 
 6. 环境必须通过先决条件检查。 如果环境未通过检查，请记下问题并修复它们。 然后选择“再次检查”。 通过先决条件检查之后，选择“下一步”。
 
@@ -68,11 +63,11 @@ Azure 备份服务器可帮助保护虚拟机 (VM)、工作负载、文件和文
 
 7. 在“SQL 设置”页上，选择 SQL 安装的相关选项，然后选择“检查并安装”。
 
-  ![安装程序 -“SQL 设置”页](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5-sql-settings.png)
+   ![安装程序 -“SQL 设置”页](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5-sql-settings.png)
 
   检查可能需要几分钟。 检查完成之后，选择“下一步”。
 
-  ![安装程序 - SQL 设置“检查并安装”按钮](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and fix-settings.png)
+   ![安装程序 - SQL 设置“检查并安装”按钮](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and-fix-settings.png)
 
 8. 在“安装设置”页上，对安装备份服务器的位置或“暂存位置”进行任何更改。 选择“**下一步**”。
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure 中的 SQLRuleAction 语法参考 | Microsoft Docs"
-description: "有关 SQLRuleAction 语法的详细信息。"
+title: Azure 中的 SQLRuleAction 语法参考 | Microsoft Docs
+description: 有关 SQLRuleAction 语法的详细信息。
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29125813"
 ---
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction 语法
 

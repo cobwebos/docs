@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 48e5a8d270701c43276e1d248d8ea4dc748d15b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1d073732b5dd9b9867813d9ffcfad5caa1131d81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101241"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集
 
 从 HDInsight 版本 3.5 开始，可以创建将 Azure Data Lake Store 用作默认文件系统的 HDInsight 群集。
-Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量数据，而且还适合用于托管共享单个 Data Lake Store 帐户的多个 HDInsight 群集。 有关如何创建将 Data Lake Store 用作存储的 HDInsight 群集的说明，请参阅[创建具有 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
+Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量数据，而且还适合用于托管共享单个 Data Lake Store 帐户的多个 HDInsight 群集。 有关如何创建使用 Data Lake Store 作为存储的 HDInsight 群集的说明，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
 本文向 Data Lake Store 管理员提供有关设置可在多个**活动** HDInsight 群集之间使用的单个和共享 Data Lake Store 帐户的建议。 这些建议适用于在共享的 Data Lake Store 帐户中托管多个安全以及不安全的 Hadoop 群集。
 
@@ -50,7 +51,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 - **Service principal** 是与帐户关联的 Azure Active Directory (AAD) 服务主体。
 - **FINGRP** 是在 AAD 中创建的用户组，其中包含财务组织中的用户。
 
-有关如何创建 AAD 应用程序（以及创建服务主体）的说明，请参阅[创建 AAD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)。 有关如何在 AAD 中创建用户组的说明，请参阅[在 Azure Active Directory 中管理组](../active-directory/active-directory-groups-create-azure-portal.md)。
+有关如何创建 AAD 应用程序（以及创建服务主体）的说明，请参阅[创建 AAD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)。 有关如何在 AAD 中创建用户组的说明，请参阅[在 Azure Active Directory 中管理组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 需要考虑一些要点。
 
@@ -96,6 +97,6 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 
 ## <a name="see-also"></a>另请参阅
 
-* [创建包含 Data Lake Store（作为存储）的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

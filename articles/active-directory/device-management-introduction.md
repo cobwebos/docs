@@ -8,19 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202127"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850002"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory 中的设备管理简介
 
@@ -31,9 +32,9 @@ ms.locfileid: "33202127"
 
 用户可通过设备访问企业资产。 为了保护企业资产，IT 管理员需要控制这些设备。 这可确保用户使用满足安全性和符合性标准的设备访问资源。 
 
-设备管理也是[基于设备的条件性访问](active-directory-conditional-access-policy-connected-applications.md)的基础。 通过基于设备的条件性访问可确保仅受信任设备才可访问环境中的资源。   
+设备管理也是[基于设备的条件性访问](active-directory-conditional-access-policy-connected-applications.md)的基础。 通过基于设备的条件访问，可确保只有受管理设备才能访问环境中的资源。   
 
-本主题介绍 Azure Active Directory 中设备管理的工作原理。
+本文介绍了 Azure Active Directory 中设备管理的工作原理。
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>使设备受到 Azure AD 控制
 
@@ -69,12 +70,16 @@ Azure AD 加入设备旨在简化：
 
 - 工作所有设备的 Windows 部署 
 - 从任何 Windows 设备访问组织的应用和资源
+- 基于云管理工作所有的设备
 
 ![Azure AD 注册设备](./media/device-management-introduction/02.png)
 
+Azure AD 加入可以通过下列任何方法进行部署： 
+ - [Windows Autopilot](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [批量部署](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
+ - [自助部署体验](device-management-azuread-joined-devices-frx.md) 
 
-通过向用户提供自助体验，使工作所有设备受到 Azure AD 控制，可以实现这些目标。  
-Azure AD 联接 面向希望成为云优先/仅使用云的组织。 对可以部署 Azure AD 联接的组织的大小或类型没有限制。 Azure AD 联接即使在混合环境中也可以良好运行，并且可以访问本地应用程序和资源。
+Azure AD 加入适用于希望成为云优先（即主要使用云服务，旨在减少使用本地基础结构）或仅限云（无本地基础结构）的组织。 对可以部署 Azure AD 加入的组织的规模或类型没有任何限制。 即使在混合环境中，Azure AD 加入也可以良好运行，提供对云和本地应用及资源的访问。
 
 实现 Azure AD 加入设备具有以下优势：
 
@@ -88,10 +93,12 @@ Azure AD 联接 面向希望成为云优先/仅使用云的组织。 对可以�
 
 - 仅限使用满足符合性策略的设备访问应用。
 
-- 当设备对本地域控制器具有视觉线时，可以无缝访问本地资源。
+- 当设备对本地域控制器具有视觉线时，可以无缝访问本地资源。 
 
 
-虽然 Azure AD Join主要面向不具有本地 Windows Server Active Directory 基础结构的组织，但是也可用于以下方案：
+虽然 Azure AD 加入主要面向没有本地 Windows Server Active Directory 基础结构的组织，但当然也可以用于以下方案：
+
+- 要使用 Azure AD 和 MDM（如 Intune）转换到基于云的基础结构。
 
 - 例如，在需要控制平板电脑和手机等设备时，无法使用本地域加入。
 
@@ -121,9 +128,9 @@ Azure AD 联接 面向希望成为云优先/仅使用云的组织。 对可以�
 
 以下情况下应选择使用 Azure AD 混合加入设备：
 
-- Win32 应用被部署到使用 NTLM/Kerberos 的设备。
+- 将 Win32 应用部署到这些依赖 Active Directory 计算机身份验证的设备。
 
-- 需要使用 GP 或 SCCM/DCM 管理设备。
+- 必须使用 GP 才能管理设备。
 
 - 想要继续使用映像解决方案为员工配置设备。
 

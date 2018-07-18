@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360251"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure 云服务定义 WorkerRole 架构
 Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处理。
@@ -113,7 +114,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 [证书](#Certificates)
 
-证书[](#Certificate)
+[证书](#Certificate)
 
 [导入](#Imports)
 

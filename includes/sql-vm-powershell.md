@@ -7,7 +7,7 @@
 > 
 > 
 
-运行 [Connect-AzureRmAccount](http://msdn.microsoft.com/library/mt619267.aspx) cmdlet，就会出现一个要求输入凭据的登录屏幕。 使用与登录 Azure 门户相同的凭据。
+运行 [Connect-AzureRmAccount](http://msdn.microsoft.com/library/mt619267.aspx) cmdlet，然后便会看到可输入凭据的登录屏幕。 使用与登录 Azure 门户相同的凭据。
 
     Connect-AzureRmAccount
 

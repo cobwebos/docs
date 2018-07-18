@@ -1,13 +1,13 @@
 ---
-title: "应用服务中 Web 应用性能缓慢 | Microsoft Docs"
-description: "本文帮助排查 Azure 应用服务中 Web 应用性能缓慢的问题。"
+title: 应用服务中 Web 应用性能缓慢 | Microsoft Docs
+description: 本文帮助排查 Azure 应用服务中 Web 应用性能缓慢的问题。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: top-support-issue
-keywords: "Web 应用性能，缓慢应用，应用缓慢"
+keywords: Web 应用性能，缓慢应用，应用缓慢
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.service: app-service-web
 ms.workload: web
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29461836"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中 Web 应用性能缓慢的问题
 本文将帮助排查 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中 Web 应用性能缓慢的问题。

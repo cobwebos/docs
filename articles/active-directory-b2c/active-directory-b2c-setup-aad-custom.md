@@ -1,25 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用自定义策略添加 Azure AD 提供程序 | Microsoft Docs
-description: 了解 Azure Active Directory B2C 自定义策略
+title: 在 Azure Active Directory B2C 中使用自定义策略添加 Azure AD 提供程序 | Microsoft Docs
+description: 了解 Azure Active Directory B2C 自定义策略。
 services: active-directory-b2c
-documentationcenter: ''
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 31f0dfe5-1ad0-4a25-a53b-8acc71bcea72
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.devlang: na
+ms.topic: conceptual
 ms.date: 04/04/2017
-ms.author: parakhj
-ms.openlocfilehash: 40943c135746925929daf7ebae4714ef70eeda51
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: davidmu
+ms.component: B2C
+ms.openlocfilehash: 139658b57cfdce2603d4413b5bf4c9a86b6a8c14
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32140217"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444321"
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C：使用 Azure AD 帐户登录
 

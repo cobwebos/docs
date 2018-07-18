@@ -1,11 +1,11 @@
 ---
-title: "从 Node.js 在适用于 Linux 的 Azure 上运行 Cassandra 群集"
-description: "如何使用 Node.js 应用在 Azure 虚拟机上通过 Linux 运行 Cassandra 群集"
+title: 从 Node.js 在适用于 Linux 的 Azure 上运行 Cassandra 群集
+description: 如何使用 Node.js 应用在 Azure 虚拟机上通过 Linux 运行 Cassandra 群集
 services: virtual-machines-linux
 documentationcenter: nodejs
 author: craigshoemaker
 manager: routlaw
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 30de1f29-e97d-492f-ae34-41ec83488de0
 ms.service: virtual-machines-linux
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b1945c68f0e320c834ae93a590f420403263a0fd
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098934"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>使用 Node.js 在适用于 Linux 的 Azure 上运行 Cassandra 群集
 
@@ -48,7 +49,7 @@ Cassandra 可以部署到单个或多个 Azure 区域，具体取决于工作负
 ### <a name="single-region-deployment"></a>单区域部署
 让我们先从学习单区域部署开始，再利用所学的知识来创建多区域模型。 使用 Azure 虚拟网络可创建独立的子网，以满足上述网络安全需求。  创建单区域部署的过程中将使用 Ubuntu 14.04 LTS 和 Cassandra 2.08。 但是，其他 Linux 变体也可轻松采用此过程。 以下是单区域部署的部分系统特征。  
 
-**高可用性：**图 1 中所示的 Cassandra 节点已部署到两个可用性集，因此这些节点是分布到多个容错域的，可用性很高。 VM 被标注了每个可用性集，并已映射到 2 个容错域。 Azure 使用容错域这一概念管理计划外的停机时间（例如硬件或软件故障）。 并使用升级域（例如主机或来宾 OS 修补/升级、应用程序升级等）这一概念管理计划内停机时间。 请参阅 [Azure 应用程序的灾难恢复和高可用性](http://msdn.microsoft.com/library/dn251004.aspx)，了解容错域和升级域在实现高可用性方面的作用。
+**高可用性：** 图 1 中所示的 Cassandra 节点已部署到两个可用性集，因此这些节点是分布到多个容错域的，可用性很高。 VM 被标注了每个可用性集，并已映射到 2 个容错域。 Azure 使用容错域这一概念管理计划外的停机时间（例如硬件或软件故障）。 并使用升级域（例如主机或来宾 OS 修补/升级、应用程序升级等）这一概念管理计划内停机时间。 请参阅 [Azure 应用程序的灾难恢复和高可用性](http://msdn.microsoft.com/library/dn251004.aspx)，了解容错域和升级域在实现高可用性方面的作用。
 
 ![单区域部署](./media/cassandra-nodejs/cassandra-linux1.png)
 
@@ -56,11 +57,11 @@ Cassandra 可以部署到单个或多个 Azure 区域，具体取决于工作负
 
 请注意，在撰写本文的时候，Azure 并不允许将一组 VM 显式映射到特定的容错域；因此，即使采用图 1 所示的部署模型，也极有可能会将所有虚拟机映射到两个容错域，而不是四个容错域。
 
-**对 Thrift 通信进行负载均衡：**Web 服务器中的 Thrift 客户端库通过内部负载均衡器连接到群集。 在使用云服务托管 Cassandra 群集的情况下，这需要执行相关过程，以便将内部负载均衡器添加到“数据”子网（参见图 1）。 定义好内部负载均衡器以后，每个节点都需要添加进行过负载均衡的终结点，并使用以前定义的负载均衡器名称对负载均衡集进行标注。 有关详细信息，请参阅 [Azure 内部负载均衡](../../../load-balancer/load-balancer-internal-overview.md)。
+**对 Thrift 通信进行负载均衡：** Web 服务器中的 Thrift 客户端库通过内部负载均衡器连接到群集。 在使用云服务托管 Cassandra 群集的情况下，这需要执行相关过程，以便将内部负载均衡器添加到“数据”子网（参见图 1）。 定义好内部负载均衡器以后，每个节点都需要添加进行过负载均衡的终结点，并使用以前定义的负载均衡器名称对负载均衡集进行标注。 有关详细信息，请参阅 [Azure 内部负载均衡](../../../load-balancer/load-balancer-internal-overview.md)。
 
 群集种子：必须选择可用性最高的节点作为种子，因为新节点需要与种子节点进行通信才能发现群集的拓扑。 会从每个可用性集中选择一个节点作为种子节点，以免出现单节点故障。
 
-**复制因子和一致性级别：**Cassandra 固有的高可用性和数据耐用性通过复制因子（RF - 存储在群集中的每一行的副本数目）和一致性级别（在将结果返回到调用方之前需要读取/写入的副本数）来表示。 复制因子是在创建 KEYSPACE（类似于关系数据库）过程中指定的，而一致性级别则是在发出 CRUD 查询时指定的。 有关一致性的详细信息以及进行仲裁计算的公式，请参阅 Cassandra 文档：[针对一致性进行配置](http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html)。
+**复制因子和一致性级别：** Cassandra 固有的高可用性和数据耐用性通过复制因子（RF - 存储在群集中的每一行的副本数目）和一致性级别（在将结果返回到调用方之前需要读取/写入的副本数）来表示。 复制因子是在创建 KEYSPACE（类似于关系数据库）过程中指定的，而一致性级别则是在发出 CRUD 查询时指定的。 有关一致性的详细信息以及进行仲裁计算的公式，请参阅 Cassandra 文档：[针对一致性进行配置](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html)。
 
 Cassandra 支持两种类型的数据完整性模型 - 一致性和最终一致性；复制因子和一致性级别共同决定了数据是在写操作完成后就表现出一致性，还是最终才表现出一致性。 例如，如果指定 QUORUM 作为一致性级别，则只要一致性级别低于需要写入的副本数，就会根据需要写入相应的副本数以满足 QUORUM（例如 1）结果，使得数据最终保持一致。
 
@@ -74,21 +75,21 @@ Cassandra 支持两种类型的数据完整性模型 - 一致性和最终一致�
 | 复制因子 (RF) |3 |给定行副本数 |
 | 一致性级别（写入） |QUORUM [(RF/2) +1) = 2] 公式的结果向下舍入 |在将响应发送到调用方之前，最多写入 2 个副本；第 3 个副本将采取最终一致性方式写入。 |
 | 一致性级别（读取） |QUORUM [(RF/2) +1= 2] 公式结果向下舍入 |在将响应发送到调用方之前读取 2 个副本。 |
-| 复制策略 |NetworkTopologyStrategy 请参阅 Cassandra 文档中的[数据复制](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)了解更多信息 |了解部署拓扑，将副本置于节点上时，需确保最终不会让所有副本位于同一机架上 |
-| Snitch |GossipingPropertyFileSnitch 请参阅 Cassandra 文档中的 [Snitch](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) 获取更多信息 |NetworkTopologyStrategy 使用 snitch 这个概念来了解拓扑。 在将每个节点映射到数据中心和机架时，使用 GossipingPropertyFileSnitch 可以更好地进行控制。 然后，该群集使用 gossip 来传播此信息。 相对于 PropertyFileSnitch，此方法在进行动态 IP 设置时要简单得多 |
+| 复制策略 |NetworkTopologyStrategy 请参阅 Cassandra 文档中的[数据复制](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html)了解更多信息 |了解部署拓扑，将副本置于节点上时，需确保最终不会让所有副本位于同一机架上 |
+| Snitch |GossipingPropertyFileSnitch 请参阅 Cassandra 文档中的 [Snitch](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) 获取更多信息 |NetworkTopologyStrategy 使用 snitch 这个概念来了解拓扑。 在将每个节点映射到数据中心和机架时，使用 GossipingPropertyFileSnitch 可以更好地进行控制。 然后，该群集使用 gossip 来传播此信息。 相对于 PropertyFileSnitch，此方法在进行动态 IP 设置时要简单得多 |
 
-**针对 Cassandra 群集的 Azure 注意事项：**Microsoft Azure 虚拟机功能使用 Azure Blob 存储以确保磁盘持久性；Azure 存储为每个磁盘保留 3 个副本以确保高耐用性。 这意味插入到 Cassandra 表的每行数据都已存储在三个副本中。 因此，即使复制因子 (RF) 为 1，也仍将处理数据一致性。 复制因子为 1 的主要问题是，即使单个 Cassandra 节点发生故障，应用程序也会体验到停机。 不过，如果某个节点因 Azure 结构控制器检测到问题（例如，硬件故障、系统软件故障）而关闭，则会使用相同的存储驱动器预配一个新节点来代替旧节点。 预配一个新节点来代替旧节点可能需要数分钟的时间。  类似地，如果要进行规划好的维护活动（例如来宾 OS 更改、Cassandra 升级和应用程序更改），Azure 结构控制器会在群集中对节点进行滚动升级。  滚动升级也会一次关闭数个节点，因此该群集会出现数个分区短暂停机的现象。 不过，由于固有的 Azure 存储冗余，数据不会丢失。  
+**针对 Cassandra 群集的 Azure 注意事项：** Microsoft Azure 虚拟机功能使用 Azure Blob 存储以确保磁盘持久性；Azure 存储为每个磁盘保留 3 个副本以确保高耐用性。 这意味插入到 Cassandra 表的每行数据都已存储在三个副本中。 因此，即使复制因子 (RF) 为 1，也仍将处理数据一致性。 复制因子为 1 的主要问题是，即使单个 Cassandra 节点发生故障，应用程序也会体验到停机。 不过，如果某个节点因 Azure 结构控制器检测到问题（例如，硬件故障、系统软件故障）而关闭，则会使用相同的存储驱动器预配一个新节点来代替旧节点。 预配一个新节点来代替旧节点可能需要数分钟的时间。  类似地，如果要进行规划好的维护活动（例如来宾 OS 更改、Cassandra 升级和应用程序更改），Azure 结构控制器会在群集中对节点进行滚动升级。  滚动升级也会一次关闭数个节点，因此该群集会出现数个分区短暂停机的现象。 不过，由于固有的 Azure 存储冗余，数据不会丢失。  
 
 对于部署到 Azure 但不需要高可用性（例如，约 99.9 的高可用性相当于 8.76 小时/年；有关详细信息，请参阅[高可用性](http://en.wikipedia.org/wiki/High_availability)）的系统，可以在 RF=1 且一致性级别=1 的情况下运行。  对于需要高可用性的应用程序，RF=3 且一致性级别=QUORUM 意味着系统可以承受一个节点的一个副本出现停机的情况。 RF=1 在传统部署（例如本地部署）中不能使用，因为如果出现磁盘故障之类的问题，就可能导致数据丢失。   
 
 ## <a name="multi-region-deployment"></a>多区域部署
 Cassandra 的上述数据中心感知型复制和一致性模型可以很方便地进行多区域部署，不需任何外部工具。 这与传统的关系数据库大不相同，后者在针对多主机写入进行数据库监视设置时可能需要完成相当复杂的操作。 在进行多区域设置时使用 Cassandra 适合多种情况，其中包括：
 
-**基于位置远近的部署：**多租户应用程序如果进行了清楚的从租户用户到区域的映射，则适合采用多区域群集，因为后者的延迟较低。 例如，适合教育机构使用的学习管理系统可以在美国东部地区和美国西部地区部署分布式群集，为这两个地区的校园提供事务处理和分析服务。 数据在读取和写入时可以在本地保持一致，最终会在这两个地区保持一致。 此外还有其他示例，例如媒体分发、电子商务等。不管什么示例，只要其服务对象是集中在某个地理区域的用户群，都适合此部署模型。
+**基于位置远近的部署：** 多租户应用程序如果进行了清楚的从租户用户到区域的映射，则适合采用多区域群集，因为后者的延迟较低。 例如，适合教育机构使用的学习管理系统可以在美国东部地区和美国西部地区部署分布式群集，为这两个地区的校园提供事务处理和分析服务。 数据在读取和写入时可以在本地保持一致，最终会在这两个地区保持一致。 此外还有其他示例，例如媒体分发、电子商务等。不管什么示例，只要其服务对象是集中在某个地理区域的用户群，都适合此部署模型。
 
-**高可用性：**若要实现软硬件的高可用性，冗余很重要；有关详细信息，请参阅“在 Microsoft Azure 中构建可靠的云系统”。 在 Microsoft Azure 中，若要实现真正的冗余，唯一可靠的方式是部署多区域群集。 应用程序可以采用主动-主动或主动-被动模式进行部署。如果某个区域停机，Azure 流量管理器可以将流量重定向到活动区域。  如果单区域部署的可用性为 99.9，双区域部署可以实现 99.9999 的可用性，计算公式为：(1-(1-0.999) * (1-0.999))*100)；有关详细信息，请参阅上面的说明。
+**高可用性：** 若要实现软硬件的高可用性，冗余很重要；有关详细信息，请参阅“在 Microsoft Azure 中构建可靠的云系统”。 在 Microsoft Azure 中，若要实现真正的冗余，唯一可靠的方式是部署多区域群集。 应用程序可以采用主动-主动或主动-被动模式进行部署。如果某个区域停机，Azure 流量管理器可以将流量重定向到活动区域。  如果单区域部署的可用性为 99.9，双区域部署可以实现 99.9999 的可用性，计算公式为：(1-(1-0.999) * (1-0.999))*100)；有关详细信息，请参阅上面的说明。
 
-**灾难恢复：**多区域 Cassandra 群集如果设计得当，可以承受灾难性的数据中心中断情况。 如果某个区域停机，可以通过部署到其他区域的应用程序为最终用户提供服务。 与任何其他业务连续性实施一样，该应用程序必须承受某种程度的数据丢失，因为数据位于异步管道中。 不过，与传统数据恢复过程相比，Cassandra 提供的恢复过程要快得多。 图 2 显示了典型的多区域部署模型，每个区域有 8 个节点。 两个区域互为镜像以确保对称性；实际设计取决于工作负荷类型（例如，是事务性还是分析性）、RPO、RTO、数据一致性和可用性要求。
+**灾难恢复：** 多区域 Cassandra 群集如果设计得当，可以承受灾难性的数据中心中断情况。 如果某个区域停机，可以通过部署到其他区域的应用程序为最终用户提供服务。 与任何其他业务连续性实施一样，该应用程序必须承受某种程度的数据丢失，因为数据位于异步管道中。 不过，与传统数据恢复过程相比，Cassandra 提供的恢复过程要快得多。 图 2 显示了典型的多区域部署模型，每个区域有 8 个节点。 两个区域互为镜像以确保对称性；实际设计取决于工作负荷类型（例如，是事务性还是分析性）、RPO、RTO、数据一致性和可用性要求。
 
 ![多区域部署](./media/cassandra-nodejs/cassandra-linux2.png)
 
@@ -109,8 +110,8 @@ Cassandra 的上述数据中心感知型复制和一致性模型可以很方便�
 | 复制因子 (RF) |3 |给定行副本数 |
 | 一致性级别（写入） |LOCAL_QUORUM [(sum(RF)/2) +1) = 4] 公式结果向下舍入 |2 个节点将同步写入第一个数据中心；满足仲裁所需的其余 2 个节点将通过异步方式写入第二个数据中心。 |
 | 一致性级别（读取） |LOCAL_QUORUM ((RF/2) +1) = 2 公式结果向下舍入 |读取请求仅从一个区域满足；在将响应发送回客户端之前，读取 2 个节点。 |
-| 复制策略 |NetworkTopologyStrategy 请参阅 Cassandra 文档中的[数据复制](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)了解更多信息 |了解部署拓扑，将副本置于节点上时，需确保最终不会让所有副本位于同一机架上 |
-| Snitch |GossipingPropertyFileSnitch 请参阅 Cassandra 文档中的 [Snitch](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) 获取更多信息 |NetworkTopologyStrategy 使用 snitch 这个概念来了解拓扑。 在将每个节点映射到数据中心和机架时，使用 GossipingPropertyFileSnitch 可以更好地进行控制。 然后，该群集使用 gossip 来传播此信息。 相对于 PropertyFileSnitch，此方法在进行动态 IP 设置时要简单得多 |
+| 复制策略 |NetworkTopologyStrategy 请参阅 Cassandra 文档中的[数据复制](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html)了解更多信息 |了解部署拓扑，将副本置于节点上时，需确保最终不会让所有副本位于同一机架上 |
+| Snitch |GossipingPropertyFileSnitch 请参阅 Cassandra 文档中的 [Snitch](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) 获取更多信息 |NetworkTopologyStrategy 使用 snitch 这个概念来了解拓扑。 在将每个节点映射到数据中心和机架时，使用 GossipingPropertyFileSnitch 可以更好地进行控制。 然后，该群集使用 gossip 来传播此信息。 相对于 PropertyFileSnitch，此方法在进行动态 IP 设置时要简单得多 |
 
 ## <a name="the-software-configuration"></a>软件配置
 在部署过程中使用以下软件版本：
@@ -119,7 +120,7 @@ Cassandra 的上述数据中心感知型复制和一致性模型可以很方便�
 <tr><th>软件</th><th>Source</th><th>版本</th></tr>
 <tr><td>JRE    </td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
 <tr><td>JNA    </td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
-<tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/2.0.8/apache-cassandra-2.0.8-bin.tar.gz)</td><td> 2.0.8</td></tr>
+<tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/)</td><td> 2.0.8</td></tr>
 <tr><td>Ubuntu    </td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
 </table>
 
@@ -355,7 +356,7 @@ Azure 在进行配置时需要用 PEM 或 DER 编码的 X509 公钥。 按照如
         #Tested with Azure Powershell - November 2014
         #This powershell script deployes a number of VMs from an existing image inside an Azure region
         #Import your Azure subscription into the current Powershell session before proceeding
-        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. crate a list of VMs from the template
+        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. create a list of VMs from the template
 
         #fundamental variables - change these to reflect your subscription
         $country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
@@ -453,7 +454,7 @@ Azure 在进行配置时需要用 PEM 或 DER 编码的 X509 公钥。 按照如
 <table>
   <tr><th> customer_id </th><th> 名 </th><th> 姓 </th></tr>
   <tr><td> 1 </td><td> John </td><td> Doe </td></tr>
-  <tr><td> #N/A </td><td> Jane </td><td> Doe </td></tr>
+  <tr><td> 2 </td><td> Jane </td><td> Doe </td></tr>
 </table>
 
 在步骤 4 中创建的密钥空间使用 SimpleStrategy 并已将 replication_factor 设置为 3。 建议使用 SimpleStrategy 进行单数据中心部署，使用 NetworkTopologyStrategy 进行多数据中心部署。 将 replication_factor 设置为 3 即可承受节点故障。
@@ -567,7 +568,7 @@ Azure 虚拟网络中的本地网络是一个代理地址空间，该空间映�
 | customer_id | 名 | 姓 |
 | --- | --- | --- |
 | 1 |John |Doe |
-| #N/A |Jane |Doe |
+| 2 |Jane |Doe |
 
 ### <a name="step-3-execute-the-following-in-the-east-region-after-logging-into-hk-w1-east-us"></a>步骤 3：登录到 hk-w1-east-us 以后，在东部地区执行以下命令：
 1. 执行 $CASS_HOME/bin/cqlsh 10.2.2.101 9160
@@ -580,7 +581,7 @@ Azure 虚拟网络中的本地网络是一个代理地址空间，该空间映�
 | customer_id | 名 | 姓 |
 | --- | --- | --- |
 | 1 |John |Doe |
-| #N/A |Jane |Doe |
+| 2 |Jane |Doe |
 
 再执行一些插入操作，会看到这些插入内容复制到群集的 west-us 部分。
 

@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4a0ac66f8f7adff99c211df20b84cf0f6f08f523
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 35d3153cb485f11fe17689f1ff1d3d88961878d3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296685"
 ---
 # <a name="create-a-support-request-for-cost-management"></a>创建成本管理支持请求
 
@@ -22,7 +23,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="open-a-support-ticket"></a>开具支持票证
 
-1. 登录到 Azure 门户 ( https://portal.azure.com) 。
+1. 登录 Azure 门户 (https://portal.azure.com) 。
 2. 单击顶部导航栏上的“帮助”。
 3. 在“帮助”菜单中，单击“帮助和支持”。
 4. 在“帮助”下的“帮助和支持”中，单击“新建支持请求”。

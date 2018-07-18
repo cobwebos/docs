@@ -3,19 +3,20 @@ title: Azure Analysis Services 中的身份验证和用户权限 | Microsoft Doc
 description: 了解 Azure Analysis Services 中的身份验证和用户权限。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 846b76bddbc771a924a1d710cd333dfa4623f5ec
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448762"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
-Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/active-directory-administer.md)中的有效用户标识。
+Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/fundamentals/active-directory-administer.md)中的有效用户标识。
 
 Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。 使用 B2B，可邀请组织外的用户作为 Azure AD 目录中的来宾用户。 来宾可来自其他 Azure AD 租户目录或任何有效的电子邮件地址。 用户受邀并接受 Azure 通过电子邮件发送的邀请函后，用户标识就会添加到租户目录中。 可将这些标识添加到安全组，或者作为服务器管理员或数据库角色的成员。
 
@@ -75,7 +76,7 @@ Azure 资源所有者。 资源所有者管理 Azure 订阅的资源。 资源�
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure Active Directory 组管理对资源的访问权限](../active-directory/active-directory-manage-groups.md)   
+[使用 Azure Active Directory 组管理对资源的访问权限](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [管理数据库角色和用户](analysis-services-database-users.md)  
 [管理服务器管理员](analysis-services-server-admins.md)  
 [基于角色的访问控制](../role-based-access-control/overview.md)  

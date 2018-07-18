@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 帐单
+title: 了解 Azure 帐单 | Microsoft Docs
 description: 了解如何阅读并理解 Azure 订阅的使用情况和帐单
 services: ''
 documentationcenter: ''
@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 06/14/2018
 ms.author: tonguyen
-ms.openlocfilehash: f3e0e3eeab88ad8ad0c4a21eb69a6340dbbe0441
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 689ea9e0d029bb65bc579fc914c6ed3073b4a96b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064292"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
 要了解 Azure 帐单，请在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较。
@@ -89,7 +90,7 @@ Azure 门户也可帮助核查费用。Azure 门户提供费用管理图表，�
 有关详细信息，请参阅[通过 Azure 计费和成本管理防止意外成本](billing-getting-started.md#costs)。
 
 ## <a name="external"></a>外部服务如何收费？
-外部服务（也称为 Azure Marketplace 订单）由独立的服务供应商提供，需要单独计费。 Azure 发票上不会记录该费用。 若要了解详细信息，请参阅[了解 Azure 外部服务收费](billing-understand-your-azure-marketplace-charges.md)。
+外部服务（也称为 Azure 市场订单）由独立的服务供应商提供，需要单独计费。 Azure 发票上不会记录该费用。 若要了解详细信息，请参阅[了解 Azure 外部服务收费](billing-understand-your-azure-marketplace-charges.md)。
 
 ## <a name="payment"></a>如何付款？
 
@@ -100,6 +101,40 @@ Azure 门户也可帮助核查费用。Azure 门户提供费用管理图表，�
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>如何查看通过信用卡付款时的付款状态？
 
 [创建支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以询问付款状态。 
+
+## <a name="are-there-different-azure-customer-types-how-do-i-know-what-customer-type-i-am"></a>是否存在不同的 Azure 客户类型？ 如何识别自己的客户类型？
+存在不同的 Azure 客户类型。 为了更好地理解自己的定价和计费情况，请查看以下客户类型描述。
+
+- **企业**：企业客户与 Azure 签订了企业协议，以达成货币承诺并获取自定义 Azure 资源定价的权限。
+- **Web 直接**：Web 直接客户没有与 Azure 签订任何自定义协议。 此类客户通过 azure.com 注册 Azure，并接受所有 Azure 资源对外公布的价格。
+- **云服务提供商**：云服务提供商通常是最终客户雇用的公司，他们负责在 Azure 的基础上生成解决方案。
+
+## <a name="why-dont-i-see-the-cost-the-resource-i-have-created-in-my-bill"></a>我为什么没有在帐单中看到自己创建的资源的费用？
+Azure 不会直接基于资源费用进行计费。 计费工作基于一个或多个计量指标，这些指标用于跟踪资源整个生存期的使用情况。 随后会使用这些计量指标来计算费用。 请参阅以下内容，了解更多关于 Azure 计量指标的信息。
+
+## <a name="how-does-azure-charge-metering-work"></a>Azure 计费计量指标如何工作？
+启用单个 Azure 资源（例如虚拟机）时，同时也会创建一个或多个计量指标实例。 这些计量指标可跟踪资源的使用情况。 每个计量指标都会发送使用情况记录，Azure 随后会在费用计量系统中使用这些记录来计算费用。 
+
+例如，如果在 Azure 中创建了一个虚拟机，那么可能会创建以下计量指标来跟踪其使用情况：
+
+- 计算小时数
+- IP 地址小时数
+- 入站数据传输
+- 出站数据传输
+- 标准托管磁盘
+- 标准托管磁盘操作数
+- 标准 IO 磁盘
+- 标准 IO 块 Blob 读取
+- 标准 IO 块 Blob 写入
+- 标准 IO 块 Blob 删除
+
+创建虚拟机后，以上所有计量指标都会开始发送使用情况记录。 Azure 计量系统随后会使用这些使用情况记录和计量指标的价格来确定向客户收取的费用。
+
+> [!Note]
+> 上面的计量指标示例可能仅仅是所创建的 VM 的计量指标的一个子集。
+
+## <a name="what-is-the-difference-between-azure-1st-party-charges-and-azure-marketplace-charges"></a>Azure 第一方费用和 Azure 市场费用的区别是什么？
+Azure 第一方费用针对的是直接由 Azure 开发并提供的资源。 Azure 市场费用针对的是由第三方软件提供商创建的资源（这些资源可以通过 Azure 市场获取）。 例如，Barracuda 防火墙是由第三方提供的 Azure 市场资源。 此防火墙的所有费用及其对应的计量指标都将显示为市场费用。 
 
 ## <a name="tips-for-cost-management"></a>成本管理建议
 - 通过使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)和[总拥有成本计算器](https://aka.ms/azure-tco-calculator)估计成本，获取[每项服务的定价信息明细](https://azure.microsoft.com/pricing/)。

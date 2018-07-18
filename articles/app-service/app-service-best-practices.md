@@ -1,8 +1,8 @@
 ---
-title: "有关 Azure 应用服务的最佳实践"
-description: "了解有关 Azure 应用服务的最佳实践和故障排除步骤。"
+title: 有关 Azure 应用服务的最佳实践
+description: 了解有关 Azure 应用服务的最佳实践和故障排除步骤。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: dariagrigoriu
 manager: erikre
 editor: mollybos
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/18/2018
+ms.locfileid: "27868312"
 ---
 # <a name="best-practices-for-azure-app-service"></a>有关 Azure 应用服务的最佳实践
 本文汇总了有关使用 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)的最佳实践。 

@@ -3,7 +3,7 @@ title: 安装和配置适用于 Azure 虚拟机的 Ansible | Microsoft Docs
 description: 了解如何在 Ubuntu、CentOS 和 SLES 上安装和配置 Ansible 以管理 Azure 资源
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/04/2018
-ms.author: iainfou
-ms.openlocfilehash: e6fad548eda35d1832cb4ecc2fd9bdabf825f361
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.author: cynthn
+ms.openlocfilehash: e7d57ead2caff87db07380582b9085b831844f1e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896123"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930063"
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>安装和配置 Ansible 以管理 Azure 中的虚拟机
 
@@ -106,7 +106,7 @@ ssh azureuser@<publicIpAddress>
 sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
 
 ## Install Ansible and Azure SDKs via pip
-pip install ansible[azure]
+sudo pip install ansible[azure]
 ```
 
 现在转到[创建 Azure 凭据](#create-azure-credentials)。
@@ -150,7 +150,7 @@ sudo pip uninstall -y cryptography
 
 Ansible 使用用户名和密码或服务主体来与 Azure 通信。 Azure 服务主体是可用于应用、服务和 Ansible 等自动化工具的安全标识。 由你控制和定义有关服务主体可以在 Azure 中执行哪些操作的权限。 为了提供比使用用户名和密码更高的安全性，本示例将创建一个基本的服务主体。
 
-在主机计算机上或在 Azure Cloud Shell 中，使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) 创建服务主体。 Ansible 所需凭据将输出到屏幕上：
+在主机计算机上或在 Azure Cloud Shell 中，使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 创建服务主体。 Ansible 所需凭据将输出到屏幕上：
 
 ```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
@@ -166,7 +166,7 @@ az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tena
 }
 ```
 
-若要向 Azure 进行身份验证，还需使用 [az account show](/cli/azure/account#az_account_show) 获取 Azure 订阅 ID：
+若要向 Azure 进行身份验证，还需使用 [az account show](/cli/azure/account#az-account-show) 获取 Azure 订阅 ID：
 
 ```azurecli-interactive
 az account show --query "{ subscription_id: id }"

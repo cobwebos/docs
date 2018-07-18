@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 76e622f500ee954852d7b42268318d35bb2133a4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1e143c8c17d5cbc3403d90f7a354d5300265d679
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868792"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100379"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>将 Azure 多重身份验证与 Azure AD 帐户配合使用时的安全指南
 
@@ -48,7 +48,7 @@ ms.locfileid: "33868792"
 
 * 无需拥有 Azure AD 目录，即可创建多重身份验证提供程序；但如果有，可以使用更多功能。 将身份验证提供程序与 Azure AD 目录关联后会实现以下功能：
   * 将双重验证功能扩展到所有用户
-  * 为全局管理员提供其他功能，如管理门户、自定义问候语和报告。
+  * 为全局管理员提供其他功能，例如管理门户、自定义问候语和报告。
 * 若要将本地 Active Directory 环境与 Azure AD 目录同步，需要有 DirSync 或 AAD Sync。如果使用不与 Active Directory 的本地实例同步的 Azure AD 目录，则不需要 DirSync 或 AAD 同步。
 * 选择最适合业务的消耗模型。 使用模型一旦选择之后，就无法对其更改。 有以下两个模型：
   * 按身份验证：针对每次验证收费。 如果要对访问某些应用的任何人（而不是特定用户）进行双重验证，请使用此模型。
@@ -106,5 +106,5 @@ Azure 多重身份验证服务器可以使用联合身份验证来保护云资�
 尽管本文重点介绍了 Azure MFA 的一些最佳实践，但其他一些资源也可以帮助你规划 MFA 的部署。 以下列表提供了在此过程中也许能够帮到一些重要文章：
 
 * [Azure 多重身份验证中的报告](howto-mfa-reporting.md)
-* [双重验证注册体验](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
+* [双重验证注册体验](end-user/current/multi-factor-authentication-end-user-first-time.md)
 * [Azure 多重身份验证常见问题](multi-factor-authentication-faq.md)

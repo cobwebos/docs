@@ -2,23 +2,20 @@
 title: Azure Cosmos DB：.NET 更改源处理器 API、SDK 和资源 | Microsoft Docs
 description: 了解有关更改源处理器 API 和 SDK 的全部信息，包括发布日期、停用日期和 .NET 更改源处理器 SDK 各版本之间所做的更改。
 services: cosmos-db
-documentationcenter: .net
 author: ealsur
 manager: kfile
-ms.assetid: f2dd9438-8879-4f74-bb6c-e1efc2cd0157
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: reference
+ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: 7ed5772df4d8677fe878d7ced831dc15bbe8cac0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885130"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113711"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -44,7 +41,50 @@ ms.locfileid: "33885130"
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="stable-builds"></a>稳定版本
+### <a name="v2-builds"></a>v2 版本
+
+### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
+* GA SDK
+
+### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3 预发布
+* 修复了以下问题：
+  * 拆分分区时，可能会重复处理拆分前修改的文档。
+  * 如果租用集合中没有租用，GetEstimatedRemainingWork API 返回的是 0。
+
+* 以下异常已公开。 实现 IPartitionProcessor 的扩展可能会抛出这些异常。
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
+
+### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-prerelease
+* 小的 API 更改：
+  * 删除了标记为过时的 ChangeFeedProcessorOptions.IsAutoCheckpointEnabled。
+
+### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
+* 稳定性改进：
+  * 更好地处理租用存储初始化。 当租用存储为空时，只有一个处理器实例可以对其进行初始化，其他处理器实例将等待。
+  * 更稳定/有效租用续订/发行版。 续订和释放一个分区的租用独立于续订其他租用。 在 v1 中，这是针对所有分区按顺序完成的。
+* 新 v2 API：
+  * 处理器的灵活构造生成器模式：ChangeFeedProcessorBuilder 类。
+    * 可以采用参数的任何组合。
+    * 可以采用用于监视的 DocumentClient 实例和/或租用集合（v1 中不可用）。
+  * IChangeFeedObserver.ProcessChangesAsync 现在采用 CancellationToken。
+  * IRemainingWorkEstimator - 剩余工作估计器可以与处理器分开使用。
+  * 新的扩展点：
+    * IParitionLoadBalancingStrategy - 用于对处理器实例之间的分区进行自定义负载均衡。
+    * ILease、ILeaseManager - 用于自定义租用管理。
+    * IPartitionProcessor - 用于对分区进行自定义处理更改。
+* 日志记录 - 使用 [LibLog](https://github.com/damianh/LibLog) 库。
+* 与 v1 API 100% 向后兼容。
+* 新建代码库。
+* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21.1 及更高版本。
+
+### <a name="v1-builds"></a>v1 版本
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* 添加了更多日志记录。
+* 修复了多次调用待处理工作评估时出现的 DocumentClient 泄漏。
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 * 修复了待处理工作评估。
@@ -72,30 +112,6 @@ ms.locfileid: "33885130"
 * GA SDK
 * 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 及更低版本。
 
-### <a name="pre-release-builds"></a>预发布版本
-
-### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-prerelease
-* 小的 API 更改：
-  * 删除了标记为过时的 ChangeFeedProcessorOptions.IsAutoCheckpointEnabled。
-
-### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
-* 稳定性改进：
-  * 更好地处理租用存储初始化。 当租用存储为空时，只有一个处理器实例可以对其进行初始化，其他处理器实例将等待。
-  * 更稳定/有效租用续订/发行版。 续订和释放一个分区的租用独立于续订其他租用。 在 v1 中，这是针对所有分区按顺序完成的。
-* 新 v2 API：
-  * 处理器的灵活构造生成器模式：ChangeFeedProcessorBuilder 类。
-    * 可以采用参数的任何组合。
-    * 可以采用用于监视的 DocumentClient 实例和/或租用集合（v1 中不可用）。
-  * IChangeFeedObserver.ProcessChangesAsync 现在采用 CancellationToken。
-  * IRemainingWorkEstimator - 剩余工作估计器可以与处理器分开使用。
-  * 新的扩展点：
-    * IParitionLoadBalancingStrategy - 用于对处理器实例之间的分区进行自定义负载均衡。
-    * ILease、ILeaseManager - 用于自定义租用管理。
-    * IPartitionProcessor - 用于对分区进行自定义处理更改。
-* 日志记录 - 使用 [LibLog](https://github.com/damianh/LibLog) 库。
-* 与 v1 API 100% 向后兼容。
-* 新建代码库。
-* 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21.1 及更高版本。
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
@@ -108,6 +124,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.3.3](#1.3.3) |2018 年 5 月 8 日 |--- |
 | [1.3.2](#1.3.2) |2018 年 4 月 18 日 |--- |
 | [1.3.1](#1.3.1) |2018 年 3 月 13 日 |--- |
 | [1.2.0](#1.2.0) |2017 年 10 月 31 日 |--- |

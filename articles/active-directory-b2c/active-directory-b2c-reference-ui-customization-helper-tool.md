@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：页面 UI 自定义帮助程序工具 | Microsoft Docs
-description: 一种用于演示 Azure Active Directory B2C 中的页面 UI 自定义功能的帮助程序工具
+title: Azure Active Directory B2C 中的页面 UI 自定义帮助程序工具 | Microsoft Docs
+description: 一种用于演示 Azure Active Directory B2C 中的页面 UI 自定义功能的帮助程序工具。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 18f921fb718aeb7ae4add2836fbb6ffabd66668f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445052"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C：用于演示页面用户界面 (UI) 自定义功能的帮助程序工具
 本文是 Azure Active Directory (Azure AD) B2C 中[主 UI 自定义文章](active-directory-b2c-reference-ui-customization.md)的一篇配套文章。 以下步骤介绍了如何使用我们提供的示例 HTML 和 CSS 内容来演练页面 UI 自定义功能。
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/18/2018
 * 在 [Azure 门户](https://portal.azure.com/)中使用策略上的“立即运行”按钮。
 
 ## <a name="customize-your-policy"></a>自定义策略
-若要自定义策略的外观风格，需要先使用 Azure AD B2C 的特定约定创建 HTML 和 CSS 文件。 然后可以将静态内容上传到公共可用位置，以便 Azure AD B2C 可以对其进行访问。 这可以是自己专用的 Web 服务器、Azure Blob 存储、Azure 内容交付网络或任何其他静态资源托管提供程序。 唯一的要求是内容必须可通过 HTTPS 使用，并且可使用 CORS 访问。 在 Web 上公开静态内容后，可以编辑策略指向此位置，向客户显示该内容。 [主 UI 自定义文章](active-directory-b2c-reference-ui-customization.md)详细介绍了 Azure AD B2C 自定义功能的工作原理。
+若要自定义策略的外观风格，需要先使用 Azure AD B2C 的特定约定创建 HTML 和 CSS 文件。 然后可以将静态内容上传到公共可用位置，以便 Azure AD B2C 可以对其进行访问。 这可以是自己专用的 Web 服务器、Azure Blob 存储、Azure 内容分发网络或任何其他静态资源托管提供程序。 唯一的要求是内容必须可通过 HTTPS 使用，并且可使用 CORS 访问。 在 Web 上公开静态内容后，可以编辑策略指向此位置，向客户显示该内容。 [主 UI 自定义文章](active-directory-b2c-reference-ui-customization.md)详细介绍了 Azure AD B2C 自定义功能的工作原理。
 
 出于本教程的目的，我们已经创建了一些示例内容并将其托管在 Azure Blob 存储上。 示例内容是我们的虚拟公司“Wingtip Toys”主题下的一个非常基本的自定义。 若要在自己的策略中进行尝试，请按照以下步骤操作：
 

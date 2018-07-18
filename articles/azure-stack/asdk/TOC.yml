@@ -7,30 +7,6 @@
       href: asdk-what-is.md
     - name: ASDK 发行说明
       href: asdk-release-notes.md
-- name: 教程
-  items:
-    - name: 1. 部署 ASDK
-      items:
-        - name: 部署 ASDK - 安装程序
-          href: asdk-deploy.md
-        - name: 部署 ASDK - PowerShell
-          href: asdk-deploy-powershell.md
-        - name: 重新部署 ASDK
-          href: asdk-redeploy.md
-    - name: 2. 添加 Marketplace 项
-      items:
-        - name: 从 Azure 下载
-          href: asdk-marketplace-item.md
-        - name: 从本地源添加
-          href: asdk-marketplace-item-offline.md
-    - name: 3. 提供 IaaS 服务
-      href: asdk-offer-services.md
-    - name: 4. 订阅产品
-      href: asdk-subscribe-services.md
-    - name: 5. 更新产品/服务和计划
-      href: asdk-update-offers.md
-    - name: 6. 从模板创建 VM
-      href: asdk-create-vm-template.md
 - name: 概念
   items:
     - name: 部署规划注意事项
@@ -49,10 +25,14 @@
           href: asdk-download.md
         - name: 准备 ASDK 主机
           href: asdk-prepare-host.md
-        - name: 安装 ASDK
+        - name: 部署 ASDK - 安装程序
           href: asdk-install.md
+        - name: 部署 ASDK - PowerShell
+          href: asdk-deploy-powershell.md
         - name: 部署后配置
           href: asdk-post-deploy.md
+        - name: 重新部署 ASDK
+          href: asdk-redeploy.md
     - name: 注册 ASDK
       href: asdk-register.md
     - name: 配置 Azure Stack 遥测设置

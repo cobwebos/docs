@@ -12,14 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 06/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19cdf81a355bae4d59cb49c1c588b995b040309b
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 12880ba3aa918873343ee8eb98e92130106e8362
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304018"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -50,14 +51,10 @@ ms.lasthandoff: 05/01/2018
 | 每个计算节点的[并发任务](batch-parallel-node-tasks.md)数 |4 x 节点核心数 |
 | 每个 Batch 帐户的[应用程序](batch-application-packages.md)数 |20 |
 | 每个应用程序的应用程序包数 |40 |
-| 应用程序包大小（每个） |约 195GB<sup>1</sup> |
-| 启动任务最大大小 | 32,768 个字符<sup>2</sup> |
-| 最长任务生存期 | 7 天<sup>3</sup> |
+| 最长任务生存期 | 7 天<sup>1</sup> |
 | 计算启用了节点间通信的池中的节点 | 100 |
 
-<sup>1</sup> 最大的块 Blob 大小的 Azure 存储限制<br />
-<sup>2</sup> 包括资源文件和环境变量<br />
-<sup>3</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 7 天。 已完成的任务会无限期保存；最长生存期内未完成的任务的数据不可访问。
+<sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 7 天。 已完成的任务会无限期保存；最长生存期内未完成的任务的数据不可访问。
 
 
 ## <a name="view-batch-quotas"></a>查看 Batch 配额
@@ -88,14 +85,14 @@ ms.lasthandoff: 05/01/2018
    
     d. “支持计划” > “配额支持 - 已包括”
    
-    单击“资源组名称” 的 Azure 数据工厂。
+    单击“下一步”。
 4. 在“问题”中：
    
     a. 根据[业务影响情况][support_sev]选择“严重性”。
    
     b. 在“详细信息”中，指定想要更改的每个配额、Batch 帐户名和新限制。
    
-    单击“资源组名称” 的 Azure 数据工厂。
+    单击“下一步”。
 5. 在“联系人信息”中：
    
     a. 选择“首选联系方法”。

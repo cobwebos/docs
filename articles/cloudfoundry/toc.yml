@@ -13,6 +13,8 @@
       href: /azure/virtual-machines/linux/cloudfoundry-get-started
     - name: 部署 CF OMS Nozzle
       href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+    - name: 将 Cloud Foundry 与 Azure 集成
+      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
 - name: 资源
   items:
     - name: Azure 路线图

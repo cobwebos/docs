@@ -1,11 +1,11 @@
 ---
-title: "使用 Python 针对 Azure 文件进行开发 | Microsoft Docs"
-description: "了解如何开发使用 Azure 文件存储文件数据的 Python 应用程序和服务。"
+title: 使用 Python 针对 Azure 文件进行开发 | Microsoft Docs
+description: 了解如何开发使用 Azure 文件存储文件数据的 Python 应用程序和服务。
 services: storage
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: tysonn
+author: wmgries
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: cee6ece907950724f6ad4a86c489a5f07dfcaaec
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1102fd516b5497b4c482986b64fa7c96e9ccc54a
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738255"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -93,7 +94,7 @@ for file_or_dir in generator:
 ```
 
 ## <a name="upload-a-file"></a>上传文件 
-Azure 文件共享至少包含文件所在的根目录。 在本部分，你将学习如何将文件从本地存储上传到共享所在的根目录。
+Azure 文件共享至少包含文件可以驻留的根目录。 在本部分，学习如何将文件从本地存储上传到共享所在的根目录。
 
 若要创建文件并上传数据，请使用 `create_file_from_path`、`create_file_from_stream`、`create_file_from_bytes` 或 `create_file_from_text` 方法。 这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
 
@@ -182,5 +183,5 @@ file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 了解如何使用 Python 操作 Azure 文件后，请单击以下链接了解更多信息。
 
 * [Python 开发人员中心](/develop/python/)
-* [Azure 存储服务 REST API](http://msdn.microsoft.com/library/azure/dd179355)
+* [Azure 存储空间服务 REST API](http://msdn.microsoft.com/library/azure/dd179355)
 * [用于 Python 的 Microsoft Azure 存储 SDK](https://github.com/Azure/azure-storage-python)

@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/17/2018
+  ms.locfileid: "34259160"
 abstract:
   description: Chef Software 为 Linux 和 Windows 提供了一个 DevOps 自动化平台，用于管理物理服务器配置和虚拟服务器配置。 使用快速入门和教程，了解如何使用 Chef Software 产品自动执行“基础结构即代码 (IaC)”脚本并在 Azure 上管理和部署虚拟机。
   aside:

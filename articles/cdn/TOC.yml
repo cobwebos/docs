@@ -16,6 +16,8 @@
   items:
     - name: 将 Azure CDN 添加到 Web 应用
       href: cdn-add-to-web-app.md
+    - name: 通过 HTTPS 使用自定义域访问 Blob
+      href: cdn-storage-custom-domain-https.md
     - name: 添加自定义域
       href: cdn-map-content-to-custom-domain.md
     - name: 在自定义域上配置 HTTPS
@@ -34,6 +36,10 @@
       href: cdn-china-delivery.md
     - name: HTTP/2 支持
       href: cdn-http2.md
+    - name: 检索 Verizon POP 列表
+      href: cdn-pop-list-api.md
+    - name: 从标准 Verizon 迁移到高级 Verizon
+      href: cdn-migrate.md
 - name: 操作指南
   items:
     - name: 优化内容
@@ -47,6 +53,8 @@
           href: cdn-dynamic-site-acceleration.md
     - name: 管理
       items:
+        - name: 创建终结点
+          href: cdn-create-endpoint-how-to.md
         - name: 使用 Azure PowerShell 进行管理
           href: cdn-manage-powershell.md
         - name: 按国家/地区限制访问
@@ -83,6 +91,8 @@
           href: cdn-resource-health.md
         - name: 用规则覆盖行为
           href: cdn-rules-engine.md
+        - name: 使用流量管理器
+          href: cdn-traffic-manager.md
     - name: 分析
       href: cdn-log-analysis.md
       items:
@@ -116,6 +126,8 @@
           href: cdn-troubleshoot-endpoint.md
         - name: 文件压缩
           href: cdn-troubleshoot-compression.md
+        - name: 允许的证书颁发机构
+          href: cdn-troubleshoot-allowed-ca.md
 - name: 引用
   items:
     - name: 规则引擎参考

@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe7b419a2f4bbc3ae4aa69dad1e3b3e0957cc848
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ec3c87c39cd8b8d1dafa8ad062776171c602135b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047054"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-azure-blob-connector.md)
-> * [版本 2 - 预览版](../connector-azure-blob-storage.md)
+> * [第 1 版](data-factory-azure-blob-connector.md)
+> * [版本 2（当前版本）](../connector-azure-blob-storage.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 Azure Blob 存储连接器](../connector-azure-blob-storage.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅 [V2 中的 Azure Blob 存储连接器](../connector-azure-blob-storage.md)。
 
 
 本文介绍如何使用 Azure 数据工厂中的复制活动向/从 Azure Blob 存储复制数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
@@ -51,16 +52,16 @@ ms.lasthandoff: 03/23/2018
 ## <a name="get-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，此管道将数据移入/移出 Azure Blob 存储。
 
-创建管道的最简单方法是使用**复制向导**。 本文[演练](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage)了如何创建管道，以便将数据从一个 Azure Blob 存储位置复制到另一个 Azure Blob 存储位置。 有关如何创建管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库的教程，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
+创建管道的最简单方法是使用复制向导。 本文[演练](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage)了如何创建管道，以便将数据从一个 Azure Blob 存储位置复制到另一个 Azure Blob 存储位置。 有关如何创建管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库的教程，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。 
-2. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure SQL 数据库，可创建两个链接服务，将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂。 有关特定于 Azure Blob 存储的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
-2. 创建**数据集**以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Azure SQL 数据库中用于保存从 Blob 存储复制的数据的 SQL 表。 有关特定于 Azure Blob 存储的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，SqlSink 作为接收器。 同样，如果从 Azure SQL 数据库复制到 Azure Blob 存储，则在复制活动中使用 SqlSource 和 BlobSink。 有关特定于 Azure Blob 存储的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。  
+2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure SQL 数据库，可创建两个链接服务，将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂。 有关特定于 Azure Blob 存储的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
+2. 创建数据集以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Azure SQL 数据库中用于保存从 Blob 存储复制的数据的 SQL 表。 有关特定于 Azure Blob 存储的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，SqlSink 作为接收器。 同样，如果从 Azure SQL 数据库复制到 Azure Blob 存储，则在复制活动中使用 SqlSource 和 BlobSink。 有关特定于 Azure Blob 存储的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。  
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure Blob 存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-blob-storage  )部分。
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="dataset-properties"></a>数据集属性
 要指定数据集来表示 Azure Blob 存储中的输入或输出数据，可以将数据集的类型属性设置为：**AzureBlob**。 将数据集的 **linkedServiceName** 属性设置为 Azure 存储或 Azure 存储 SAS 链接服务的名称。  数据集的 type 属性指定 Blob 存储中的 **Blob 容器**和**文件夹**。
 
-有关可用于定义数据集的 JSON 部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 结构、可用性和数据集 JSON 的策略等部分与所有数据集类型（Azure SQL、Azure blob、Azure 表等）类似。
+有关可用于定义数据集的 JSON 部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
 数据工厂支持使用以下符合 CLS 标准、基于 .NET 的类型值在“结构”中为读取数据源（如 Azure Blob）的架构提供类型信息：Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan。 将数据从源数据存储移到接收器数据存储时，数据工厂自动执行类型转换。
 
@@ -194,7 +195,7 @@ ms.lasthandoff: 03/23/2018
 3. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：![数据工厂主页](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>复制向导
-1. 在“数据工厂”主页上，单击“复制数据[预览]”磁贴，以在单独的选项卡上启动“复制数据向导”。    
+1. 在“数据工厂”主页上，单击“复制数据”磁贴，在单独的选项卡上启动“复制数据向导”。    
     
     > [!NOTE]
     >    如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 login.microsoftonline.com 创建一个例外，然后尝试再次启动该向导。
@@ -205,7 +206,7 @@ ms.lasthandoff: 03/23/2018
     4. 保存设置以用于“重复执行模式”。 此任务在下一步中指定的开始和结束时间之间每日运行。
     5. 将开始日期时间更改为 2017/04/21。 
     6. 将结束日期时间更改为 2017/04/25。 建议直接键入日期而不是浏览日历。     
-    8. 单击“资源组名称” 的 Azure 数据工厂。
+    8. 单击“下一步”。
       ![复制工具 - 属性页](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
 3. 在“源数据存储”页上，单击“Azure Blob 存储”磁贴。 此页用于指定复制任务的源数据存储。 可使用现有的数据存储链接服务，或指定新的数据存储。 要使用现有链接服务，请选择“来自现有链接服务” ，并选择适当的链接服务。 
     ![复制工具 - 源数据存储页](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
@@ -214,7 +215,7 @@ ms.lasthandoff: 03/23/2018
    2. 确认为“帐户选择方法”选择了“来自 Azure 订阅”。
    3. 选择 Azure 订阅或针对 Azure 订阅选择“全选”。   
    4. 从所选订阅的可用 Azure 存储帐户列表中，选择一个 **Azure 存储帐户**。 还可选择手动输入存储帐户设置，方法是在“帐户选择方法”中选择“手动输入”选项。
-   5. 单击“资源组名称” 的 Azure 数据工厂。 
+   5. 单击“下一步”。 
       ![复制工具 - 指定 Azure Blob 存储帐户](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. 在“选择输入文件或文件夹”  页上：
    1. 双击“adfblobcontainer”。
@@ -225,13 +226,13 @@ ms.lasthandoff: 03/23/2018
     2. 请勿设置“以递归方式复制文件”。 选择此选项以递归方式遍历文件夹，寻找要复制到目标的文件。 
     3. 请勿选择“二进制复制”选项。 选择此选项将对源文件执行到目标的二进制复制。 请勿对此演练选择该选项，以便在下一页中看到更多选项。 
     4. 确认“压缩类型”已设为“无”。 如果源文件使用支持的格式之一进行压缩，请为此选项选择一个值。 
-    5. 单击“资源组名称” 的 Azure 数据工厂。
+    5. 单击“下一步”。
     ![复制工具 - 选择输入文件或文件夹](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. 在“文件格式设置”页上，可以看到分隔符以及向导通过分析文件自动检测到的架构。 
     1. 请确认以下选项：a. “文件格式”已设为“文本格式”。 可在下拉列表中看到所有支持的格式。 例如：JSON、Avro、ORC 和 Parquet。
         b. “列分隔符”已设为 `Comma (,)`。 可在下拉列表中看到数据工厂支持的其他列分隔符。 还可以指定自定义分隔符。
         c. “行分隔符”已设为 `Carriage Return + Line feed (\r\n)`。 可在下拉列表中看到数据工厂支持的其他行分隔符。 还可以指定自定义分隔符。
-        d.单击“下一步”。 “跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。
+        d. “跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。
         e.  未设置“第一数据行包含列名”。 如果源文件的第一行包含列名称，请选择此选项。
         f. 已设置“将空列值视为 null”选项。
     2. 展开“高级设置”以查看可用的高级选项。
@@ -246,7 +247,7 @@ ms.lasthandoff: 03/23/2018
    2. 确认为“帐户选择方法”选择了“来自 Azure 订阅”。
    3. 选择 **Azure 订阅**。  
    4. 选择 Azure 存储帐户。 
-   5. 单击“资源组名称” 的 Azure 数据工厂。     
+   5. 单击“下一步”。     
 10. 在“选择输出文件或文件夹”页上： 
     6. 指定“文件夹路径”为 adfblobconnector/output/{年}/{月}/{日}。 输入 TAB。
     7. 对于“年”，请选择“yyyy”。
@@ -254,7 +255,7 @@ ms.lasthandoff: 03/23/2018
     9. 对于“日”，请确认它已设为“dd”。
     10. 确认“压缩类型”已设为“无”。
     11. 确认“复制行为”已设为“合并文件”。 如果已存在具有相同名称的输出文件，新内容将添加到相同文件的末尾。
-    12. 单击“资源组名称” 的 Azure 数据工厂。
+    12. 单击“下一步”。
     ![复制工具 - 选择输出文件或文件夹](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. 在“文件格式设置”页上，查看设置，并单击“下一步”。 可在此处选择“向输出文件添加标题”。 如果选择该选项，将添加一个标题行，包含源架构的列名称。 查看源的架构时，可以重命名默认列名称。 例如，可以将第一列改为“名字”，而第二列改为“姓氏”。 然后，将生成输出文件和标题，其中这些名称为列名称。 
     ![复制工具 - 目标的文件格式设置](media/data-factory-azure-blob-connector/file-format-destination.png)
@@ -771,4 +772,4 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
-请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法。
+若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

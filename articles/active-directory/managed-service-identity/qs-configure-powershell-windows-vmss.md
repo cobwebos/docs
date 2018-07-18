@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 97c5e2dde3faeaad13317597bef4f70455d22102
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 61fa6c94c0d717fe1e71bf8929f2e3b4a0982562
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930123"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903873"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>使用 PowerShell 配置 VMSS 托管服务标识 (MSI)
 
@@ -27,13 +27,13 @@ ms.locfileid: "33930123"
 
 托管服务标识为 Azure 服务提供了 Azure Active Directory 中的自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
 
-在本文中，你将了解如何在 Azure 虚拟机规模集 (VMSS) 上使用 PowerShell 执行以下托管服务标识操作：
+在本文中，你将了解如何在虚拟机规模集 (VMSS) 上使用 PowerShell 执行托管服务标识操作：
 - 在 Azure VMSS 上启用和禁用系统分配标识
 - 在 Azure VMSS 上添加和删除用户分配标识
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。 **请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)**。
+- 如果不熟悉托管服务标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配标识与用户分配标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 安装[最新版本的 Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM)（如果尚未安装）。 
 
@@ -122,8 +122,7 @@ ms.locfileid: "33930123"
 
 2. 首先，使用 `Get-AzureRmVM` cmdlet 检索 VM 属性。 然后，若要向 Azure VMSS 分配用户分配标识，请在 [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) cmdlet 上使用 `-IdentityType` 和 `-IdentityID` 开关。 将 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、`<USER ASSIGNED ID1>`、`USER ASSIGNED ID2` 替换为自己的值。
 
-   > [!IMPORTANT]
-   > 创建用户分配标识时仅支持字母数字和连字符（0-9 或 a-z 或 A-Z 或 -）字符。 另外，分配给 VM/VMSS 的名称长度应限制为 24 个字符，否则它无法正常工作。 稍后返回查看更新。 有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
+   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
    ```powershell

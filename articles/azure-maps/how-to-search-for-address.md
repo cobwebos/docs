@@ -1,17 +1,19 @@
 ---
 title: 如何使用 Azure Maps 搜索服务搜索地址 | Microsoft Docs
 description: 了解如何使用 Azure Maps 搜索服务搜索地址
-services: azure-maps
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-ms.openlocfilehash: 4a87c0d0a487706209acc1c6a4ded92e6aab8f9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: timlt
+ms.openlocfilehash: 1acb95af7b62641c371627d6250067f9c2eac99c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36323632"
 ---
 # <a name="how-to-find-an-address-using-the-azure-maps-search-service"></a>如何使用 Azure Maps 搜索服务查找地址
 

@@ -1,11 +1,11 @@
 ---
-title: "排查 Azure 导入/导出工具问题 | Microsoft Docs"
-description: "了解使用 Azure 导入/导出工具时遇到的一些常见问题及其解决方法。"
+title: 排查 Azure 导入/导出工具问题 | Microsoft Docs
+description: 了解使用 Azure 导入/导出工具时遇到的一些常见问题及其解决方法。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b91ca5eb-c557-460a-9afc-0590b38471f9
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059362"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>排查 Azure 导入/导出工具问题
 在遇到问题时，Microsoft Azure 导入/导出工具会返回错误消息。 本主题列出用户可能会遇到的一些常见问题。  

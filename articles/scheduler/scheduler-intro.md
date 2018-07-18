@@ -1,11 +1,11 @@
 ---
-title: "什么是 Azure 计划程序？ | Microsoft Docs"
-description: "Azure 计划程序允许以声明方式描述要在云中运行的操作。 然后，它自动计划并运行这些操作。"
+title: 什么是 Azure 计划程序？ | Microsoft Docs
+description: Azure 计划程序允许以声明方式描述要在云中运行的操作。 然后，它自动计划并运行这些操作。
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22715108"
 ---
 # <a name="what-is-azure-scheduler"></a>什么是 Azure 计划程序？
 Azure 计划程序允许以声明方式描述要在云中运行的操作。 然后，它自动计划并运行这些操作。  计划程序使用 [Azure 门户](scheduler-get-started-portal.md)、代码、[REST API](https://msdn.microsoft.com/library/mt629143.aspx) 或 Azure PowerShell 执行此操作。
@@ -29,8 +30,8 @@ Azure 计划程序允许以声明方式描述要在云中运行的操作。 然�
 
 有几种方案适合使用计划程序。 例如：
 
-* *重复执行应用程序操作：*定期从 Twitter 收集数据并将数据收集到源。
-* *日常维护：*每天删改日志、执行备份和其他维护任务。 例如，管理员可以选择在随后的 9 个月中，每天凌晨 1 点 备份数据库。
+* *重复执行应用程序操作：* 定期从 Twitter 收集数据并将数据收集到源。
+* *日常维护：* 每天删改日志、执行备份和其他维护任务。 例如，管理员可以选择在随后的 9 个月中，每天凌晨 1 点 备份数据库。
 
 计划程序允许在门户中使用脚本以编程方式创建、更新、删除、查看和管理作业和 [作业集合](scheduler-concepts-terms.md)。
 

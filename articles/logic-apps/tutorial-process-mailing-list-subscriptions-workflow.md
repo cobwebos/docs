@@ -1,12 +1,12 @@
 ---
-title: "生成处理邮件列表请求所需的审批工作流 - Azure 逻辑应用 | Microsoft Docs"
-description: "本教程介绍如何使用 Azure 逻辑应用来创建自动化审批工作流，以便处理邮件列表订阅"
+title: 生成处理邮件列表请求所需的审批工作流 - Azure 逻辑应用 | Microsoft Docs
+description: 本教程介绍如何使用 Azure 逻辑应用来创建自动化审批工作流，以便处理邮件列表订阅
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 4765a38689d5476331c593b89e54f94d4bd310c3
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: e31be6ac24b7b194ab77856cb7376f9431a79f24
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300668"
 ---
 # <a name="manage-mailing-list-requests-with-a-logic-app"></a>使用逻辑应用管理邮件列表请求
 
@@ -65,7 +66,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | LA-MailingList | 逻辑应用的名称 | 
+   | **名称** | LA-MailingList | 逻辑应用的名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅的名称 | 
    | **资源组** | LA-MailingList-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称 | 
    | **位置** | 美国东部 2 | 用于存储逻辑应用信息的区域 | 
@@ -130,7 +131,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **To** | <*approver-email-address*> | 审批者的电子邮件地址。 可以使用自己的地址进行测试。 | 
+   | **收件人** | <*approver-email-address*> | 审批者的电子邮件地址。 可以使用自己的地址进行测试。 | 
    | **用户选项** | 批准、拒绝 | 审批者可以选择的响应选项。 默认情况下，审批者可以选择“批准”或“拒绝”作为其响应。 | 
    | **主题** | 针对 test-members-ML 审批成员请求 | 一个描述性的电子邮件主题 | 
    |  |  |  | 
@@ -251,7 +252,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **To** | <*your-email-address*> | 一个电子邮件地址，可向其发送成功电子邮件。 为进行测试，可以使用自己的电子邮件地址。 | 
+   | **收件人** | <*your-email-address*> | 一个电子邮件地址，可向其发送成功电子邮件。 为进行测试，可以使用自己的电子邮件地址。 | 
    | **主题** | <*subject-for-success-email*> | 成功电子邮件的主题。 对于本教程，请输入以下文本并在参数列表或动态内容列表的“将成员添加到列表”下选择指定的字段： <p>“成功! 成员已添加到 'test-members-ML': **电子邮件地址**” | 
    | **正文** | <*body-for-success-email*> | 成功电子邮件的正文内容。 对于本教程，请输入以下文本并在参数列表或动态内容列表的“将成员添加到列表”下选择指定的字段：  <p>“新成员已加入 'test-members-ML': **电子邮件地址**”</br>“成员的选择加入状态: **状态**” | 
    | | | | 
@@ -276,7 +277,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **To** | <*your-email-address*> | 一个电子邮件地址，可向其发送失败电子邮件。 为进行测试，可以使用自己的电子邮件地址。 | 
+   | **收件人** | <*your-email-address*> | 一个电子邮件地址，可向其发送失败电子邮件。 为进行测试，可以使用自己的电子邮件地址。 | 
    | **主题** | <*subject-for-failure-email*> | 失败电子邮件的主题。 对于本教程，请输入以下文本并在参数列表或动态内容列表的“将成员添加到列表”下选择指定的字段： <p>“失败，成员未添加到 'test-members-ML': **电子邮件地址**” | 
    | **正文** | <*body-for-failure-email*> | 失败电子邮件的正文内容。 对于本教程，请输入以下文本： <p>“成员可能已存在。 请检查 MailChimp 帐户。” | 
    | | | | 

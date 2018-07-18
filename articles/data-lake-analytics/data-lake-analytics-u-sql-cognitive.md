@@ -1,87 +1,36 @@
 ---
-title: 在 Azure Data Lake Analytics 中使用 U-SQL 认知功能 | Microsoft 文档
+title: 在 Azure Data Lake Analytics 中使用 U-SQL 认知功能
 description: 了解如何使用 U-SQL 的认知功能智能
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
-manager: jhubbard
-editor: cgronlun
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
 ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
-ms.author: saveenr
-ms.openlocfilehash: cd06e1ae56efdfdcfcd4fec5b2c17ee843d9e9dd
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.topic: conceptual
+ms.date: 06/05/2018
+ms.openlocfilehash: ab40d466d7b60dd09b8953012c80d0e84f4ac471
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311108"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802062"
 ---
-# <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>教程：U-SQL 的认知功能入门
+# <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>U-SQL 的认知功能入门
 
 ## <a name="overview"></a>概述
 U-SQL 的认知功能使开发人员可以在其大数据程序中使用智能。 
 
 提供以下认知功能：
-* 图像处理：检测人脸
-* 图像处理：检测表情
-* 图像处理：检测对象（标记）
-* 图像处理：OCR（光学字符识别）
-* 文本：关键短语提取
-* 文本：情绪分析
+* 图像处理：检测人脸[示例](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* 图像处理：检测表情[示例](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* 图像处理：检测对象（标记）[示例](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* 图像处理：OCR（光学字符识别）[示例](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* 文本：关键短语提取和情绪分析[示例](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
-## <a name="how-to-use-cognitive-in-your-u-sql-script"></a>如何在 U-SQL 脚本中使用认知功能
-
-整个过程很简单：
-
-* 使用 `REFERENCE ASSEMBLY` 语句为 U-SQL 脚本启用认知功能
-* 借助认知 UDO 在输入行集上使用 `PROCESS` 来生成输出行集
-
-### <a name="detecting-objects-in-images"></a>在图像中检测对象
-
-下面示例演示如何使用认知功能在图像中检测对象。
-
-```
-REFERENCE ASSEMBLY ImageCommon;
-REFERENCE ASSEMBLY FaceSdk;
-REFERENCE ASSEMBLY ImageEmotion;
-REFERENCE ASSEMBLY ImageTagging;
-REFERENCE ASSEMBLY ImageOcr;
-
-// Get the image data
-
-@imgs =
-    EXTRACT 
-        FileName string, 
-        ImgData byte[]
-    FROM @"/usqlext/samples/cognition/{FileName}.jpg"
-    USING new Cognition.Vision.ImageExtractor();
-
-//  Extract the number of objects on each image and tag them 
-
-@tags =
-    PROCESS @imgs 
-    PRODUCE FileName,
-            NumObjects int,
-            Tags SQL.MAP<string, float?>
-    READONLY FileName
-    USING new Cognition.Vision.ImageTagger();
-
-@tags_serialized =
-    SELECT FileName,
-           NumObjects,
-           String.Join(";", Tags.Select(x => String.Format("{0}:{1}", x.Key, x.Value))) AS TagsString
-    FROM @tags;
-
-OUTPUT @tags_serialized
-    TO "/tags.csv"
-    USING Outputters.Csv();
-```
-有关更多示例，请查看“后续步骤”部分中的“U-SQL/认知示例”。
+## <a name="registering-cognitive-extensions-in-u-sql"></a>在 U-SQL 中注册认知扩展
+开始之前，请按照本文中的步骤在 U-SQL 中注册认知扩展：[在 U-SQL 中注册认知扩展](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/cognitive-capabilities-in-u-sql#registeringExtensions)。
 
 ## <a name="next-steps"></a>后续步骤
 * [U-SQL/认知示例](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)

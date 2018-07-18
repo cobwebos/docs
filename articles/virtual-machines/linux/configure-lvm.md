@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30912223"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>在 Azure 中的 Linux VM 上配置 LVM
 本文介绍如何在 Azure 虚拟机中配置逻辑卷管理器 (LVM)。 尽管可以在任何连接到虚拟机的磁盘上配置 LVM，但默认情况下，大多数云映像不会在 OS 磁盘上配置 LVM。 这是为了防止重复卷组相关的问题，因为 OS 磁盘可能曾经连接到相同分发和类型的 VM（例如在执行恢复方案期间）。 因此建议只在数据磁盘上使用 LVM。

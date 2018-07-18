@@ -14,10 +14,11 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307442"
 ---
 # <a name="add-an-api-manually"></a>手动添加 API 
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 05/10/2018
     |**Web 服务 URL**（可选）| "*http://httpbin.org*"| 若要模拟某个 API，可以不输入任何内容。 <br/>在此示例中，我们输入 [http://httpbin.org](http://httpbin.org)。这是一个公共测试服务。 <br/>若要导入已自动映射到后端的 API，请参阅[相关主题](#related-topics)部分中的主题之一。|
     |**URL 方案**|“*HTTPS*”|在本例中，尽管后端支持不安全的 HTTP 访问，但我们还是指定了对后端进行安全的 HTTPS APIM 访问。 <br/>此类方案（HTTPS 转 HTTP）称为 HTTPS 终结。 如果 API 位于虚拟网络（在其中，即使不使用 HTTPS，也能确认访问是安全的）中，则可以采用此方案。 <br/>可以使用“HTTPS 终结”来消减一些 CPU 周期。|
     |**URL 后缀**|“*hbin*”| 后缀是在此 APIM 实例中用于标识此特定 API 的名称。 它在此 APIM 实例中必须唯一。|
-    |**产品**|“无限制” |通过关联 API 与产品来发布 API。 如果想要发布 API 并使其对开发人员可用，请将其添加到产品中。 可在 API 创建期间执行此操作，或稍后进行设置。<br/><br/>产品是一个或多个 API 的关联。 可包含多个 API，并通过开发人员门户将其提供给开发人员。 <br/>开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。<br/><br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”。| 
+    |**产品**|“无限制” |通过关联 API 与产品来发布 API。 如果想要发布 API 并使其对开发人员可用，请将其添加到产品中。 可在 API 创建期间执行此操作，或稍后进行设置。<br/><br/>产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 <br/>开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。<br/><br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”。| 
 5. 选择**创建**。
 
 此时，APIM 中没有任何操作映射到后端 API 中的操作。 如果调用通过后端而不是通过 APIM 公开的操作，将收到 **404** 错误。 

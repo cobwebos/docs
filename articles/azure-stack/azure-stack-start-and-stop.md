@@ -15,28 +15,31 @@ ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 53015ba5c282bbe9c7b8185b080ffb6d834b6c75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930284"
 ---
 # <a name="start-and-stop-azure-stack"></a>启动和停止 Azure Stack
-你应遵循本文正确关闭并重新启动 Azure 堆栈服务中的过程。 
+应该遵循本文中的过程正确关闭再重启 Azure Stack 服务。 关闭以物理方式将关闭整个 Azure Stack 环境。 启动基础结构的所有角色上提供支持，并返回到它们在关闭之前所处的电源状态的租户资源。
 
 ## <a name="stop-azure-stack"></a>停止 Azure Stack 
 
 使用以下步骤关闭 Azure Stack：
 
-1. 从可以通过网络访问 Azure Stack ERCS VM 的计算机打开特权终结点会话 (PEP)。 有关说明，请参阅[使用 Azure Stack 中的特权终结点](azure-stack-privileged-endpoint.md)。
+1. 准备即将关闭 Azure Stack 环境的租户资源上运行的所有工作负荷。 
 
-2. 从 PEP 运行：
+2. 从可以通过网络访问 Azure Stack ERCS VM 的计算机打开特权终结点会话 (PEP)。 有关说明，请参阅[使用 Azure Stack 中的特权终结点](azure-stack-privileged-endpoint.md)。
+
+3. 从 PEP 运行：
 
     ```powershell
       Stop-AzureStack
     ```
 
-3. 等待所有物理 Azure Stack 节点关闭电源。
+4. 等待所有物理 Azure Stack 节点关闭电源。
 
 > [!Note]  
 > 可以按照提供 Azure Stack 硬件的原始设备制造商 (OEM) 的指示，确认物理节点的电源状态。 
@@ -49,6 +52,7 @@ ms.lasthandoff: 04/16/2018
 
 2. 等待直到 Azure Stack 基础结构服务启动。 Azure Stack 基础结构服务完成启动过程可能需要两个小时。 可以使用 [**Get-ActionStatus** cmdlet](#get-the-startup-status-for-azure-stack) 确认 Azure Stack 的启动状态。
 
+3. 请确保你的租户资源的所有已返回到它们在关闭之前所处的状态。 租户资源上运行的工作负荷可能需要重新配置在启动后的工作负荷管理器。
 
 ## <a name="get-the-startup-status-for-azure-stack"></a>获取 Azure Stack 的启动状态
 
@@ -86,4 +90,4 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="next-steps"></a>后续步骤 
 
-了解有关 Azure 堆栈诊断工具的详细信息和发出日志记录，请参阅[Azure 堆栈诊断工具](azure-stack-diagnostics.md)。
+若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](azure-stack-diagnostics.md)。

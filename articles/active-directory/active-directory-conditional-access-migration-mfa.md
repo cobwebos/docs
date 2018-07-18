@@ -1,14 +1,15 @@
 ---
-title: "迁移要求在 Azure 门户中进行多重身份验证的经典策略 | Microsoft Docs"
-description: "本文演示如何迁移要求在 Azure 门户中进行多重身份验证的经典策略。"
+title: 迁移要求在 Azure 门户中进行多重身份验证的经典策略 | Microsoft Docs
+description: 本文演示如何迁移要求在 Azure 门户中进行多重身份验证的经典策略。
 services: active-directory
-keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
-documentationcenter: 
+keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,12 @@ ms.workload: identity
 ms.date: 12/11/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 77484dc3773736ea15c39ede5f9d49b6b694d960
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 52d4297d2e86ad67672d38f1c527041b813f8d61
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723681"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>迁移要求在 Azure 门户中进行多重身份验证的经典策略 
 
@@ -113,7 +115,7 @@ ms.lasthandoff: 12/12/2017
 
     c. 在“选择”页上选择云应用，单击“选择”。
 
-    d.单击“下一步”。 在“云应用”页上，单击“完成”。
+    d. 在“云应用”页上，单击“完成”。
 
 
 

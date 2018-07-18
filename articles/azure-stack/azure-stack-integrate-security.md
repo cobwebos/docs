@@ -1,6 +1,6 @@
 ---
-title: "Azure 堆栈数据中心集成的安全"
-description: "了解如何将 Azure 堆栈安全集成数据中心安全"
+title: Azure 堆栈数据中心集成的安全
+description: 了解如何将 Azure 堆栈安全集成数据中心安全
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -9,12 +9,13 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
+keywords: ''
 ms.openlocfilehash: 8ce9045a3e4fd12d61e9b1600ee98880762bc544
 ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29734421"
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Azure 堆栈数据中心集成的安全
 Azure 堆栈的设计和构建考虑到了安全性。 Azure 堆栈是锁定的系统，因此不支持软件安全代理安装。
@@ -58,7 +59,7 @@ Azure 堆栈收集操作系统和安全事件的基础结构角色和缩放单�
 
    b. 粘贴的存储帐户访问密钥。
 
-   c. 下**存储终结点域**，选择**其他**，并指定存储终结点**[Region]。 [DomainName]**。
+   c. 下**存储终结点域**，选择**其他**，并指定存储终结点 **[Region]。 [DomainName]**。
 
    d.单击“验证存储凭据”以验证存储帐户。 选择**使用 HTTP**复选框。
 

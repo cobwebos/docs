@@ -1,12 +1,12 @@
 ---
-title: "将 Azure 安全数据导出到 SIEM - 管道配置 [预览版] | Microsoft Docs"
-description: "本文介绍将 Azure 安全中心日志传送至 SIEM 的过程"
+title: 将 Azure 安全数据导出到 SIEM - 管道配置 [预览版] | Microsoft Docs
+description: 本文介绍将 Azure 安全中心日志传送至 SIEM 的过程
 services: security-center
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29124827"
 ---
 # <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>将 Azure 安全数据导出到 SIEM - 管道配置 [预览版]
 

@@ -3,23 +3,25 @@ title: Privileged Identity Management 订阅 - Azure | Microsoft 文档
 description: 说明在租户中管理和使用 Azure AD Privileged Identity Management 的订阅和许可要求
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: rolyon
 manager: mtillman
-editor: mwahl
+editor: markwahl-msft
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
+ms.component: protection
 ms.date: 06/01/2017
-ms.author: barclayn
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9e49ddb8fca9ce193c92f27c307942d5f3d3d2fd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 681169fc3db69c2dfb8aa36d6e2896e0ddba8b56
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548122"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Azure Active Directory Privileged Identity Management 订阅要求
 
@@ -36,7 +38,7 @@ Azure AD Privileged Identity Management 作为 Azure AD 的 Premium P2 版本的
 2. 输入 `Connect-MsolService` 作为租户中的用户进行身份验证。
 3. 输入 `Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`。
 
-此命令可检索租户中的订阅列表。 如果未返回任何行，则需要获取 Azure AD Premium P2 试用版，购买 Azure AD Premium P2 订阅或 EMS E5 订阅，以便使用 Azure AD Privileged Identity Management。  若要获取试用版并开始使用 Azure AD Privileged Identity Management，请阅读 [Azure AD Privileged Identity Management 入门](../active-directory-privileged-identity-management-getting-started.md)。
+此命令可检索租户中的订阅列表。 如果未返回任何行，则需要获取 Azure AD Premium P2 试用版，购买 Azure AD Premium P2 订阅或 EMS E5 订阅，以便使用 Azure AD Privileged Identity Management。  若要获取试用版并开始使用 Azure AD Privileged Identity Management，请阅读 [Azure AD Privileged Identity Management 入门](pim-getting-started.md)。
 
 如果此命令返回的行中 SkuPartNumber 为“AAD_PREMIUM_P2”或“EMSPREMIUM”且 IsTrial 为“True”，这指示 Azure AD Premium P2 试用版已存在于租户中。  如果未启用订阅状态，并且未购买 Azure AD Premium P2 或 EMS E5 订阅，则必须购买 Azure AD Premium P2 订阅或 EMS E5 订阅，才能继续使用 Azure AD Privileged Identity Management。
 
@@ -59,5 +61,5 @@ Azure AD Premium P2 通过 [Microsoft 企业协议](https://www.microsoft.com/en
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure AD Privileged Identity Management 入门](../active-directory-privileged-identity-management-getting-started.md)
-- [Azure AD Privileged Identity Management 中的角色](../active-directory-privileged-identity-management-roles.md)
+- [Azure AD Privileged Identity Management 入门](pim-getting-started.md)
+- [Azure AD Privileged Identity Management 中的角色](pim-roles.md)

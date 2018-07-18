@@ -3,7 +3,7 @@
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 单击“登录策略”。
 
-单击边栏选项卡顶部的“ **+添加** ”。
+单击边栏选项卡顶部的“+ 添加”。
 
 “名称”确定应用程序使用的登录策略名称。 例如，输入 **SiIn**。
 

@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 06/28/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 16f008c6a6f97a791122a3b441c4c09eaf7eadde
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 74e6428cf0536a7c8016be6cdf29071128bf4a3b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025117"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -91,7 +92,6 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关配置出站防火墙规则的详细信息，请参阅[使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)。
 
-使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器是否能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。 
 
 ## <a name="performance-and-scalability"></a>性能和可伸缩性
 
@@ -103,7 +103,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 相比之下，内存对于连接器来说不是一个很大的问题。 联机服务会处理大部分处理负载，以及所有未经身份验证的流量。 可在云中完成的所有任务会在云中完成。 
 
-将在给定连接器组的连接器之间进行负载均衡。 我们执行轮循机制的变体来确定组中的哪个连接器为特定请求提供服务。 在选择连接器后，我们在会话持续时间内将维护用户与应用程序之间的会话相关性。 如果连接器或计算机因任何原因而变得不可用，则流量将开始转到该组中的另一个连接器。 此复原也是我们建议使用多个连接器的原因。
+将在给定连接器组的连接器之间进行负载均衡。 我们执行轮循机制的变体来确定组中的哪个连接器为特定请求提供服务。 如果连接器或计算机因任何原因而变得不可用，流量便会开始流入组中的另一个连接器。 此复原也是我们建议使用多个连接器的原因。
 
 影响性能的另一个因素是连接器之间的网络质量，包括： 
 
@@ -164,6 +164,6 @@ Register-AppProxyConnector
 
 * [使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)
 * [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)
-* [对应用程序代理和连接器错误进行故障排除](../active-directory-application-proxy-troubleshoot.md)
+* [对应用程序代理和连接器错误进行故障排除](application-proxy-troubleshoot.md)
 * [如何以无提示方式安装 Azure AD 应用程序代理连接器](application-proxy-register-connector-powershell.md)
 

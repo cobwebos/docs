@@ -1,26 +1,23 @@
 ---
-title: "通过 Azure 命令行 2.0 界面开始使用 Azure Data Lake Store | Microsoft Docs"
-description: "使用 Azure 跨平台命令行 2.0 来创建 Data Lake Store 帐户以及执行基本操作"
+title: 通过 Azure 命令行 2.0 接口开始使用 Azure Data Lake Storage Gen1 | Microsoft Docs
+description: 使用 Azure 跨平台命令行 2.0 来创建 Data Lake Store 帐户以及执行基本操作
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 4ffa0f4a-1cca-46ac-803d-1fc8538c685b
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: b93b9a801b3e5e1fd869cda7f3d67554e2d03195
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: acd1182fdc66374e9abbc4964207417a7de3aadb
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034396"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Azure Data Lake Store 入门（使用 Azure CLI 2.0）
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>通过 Azure CLI 2.0 开始使用 Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
 > * [门户](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +25,9 @@ ms.lasthandoff: 03/09/2018
 >
 > 
 
-了解如何使用 Azure CLI 2.0 来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+了解如何使用 Azure CLI 2.0 来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
 Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它可以在 macOS、Linux 和 Windows 上使用。 有关详细信息，请参阅 [Overview of Azure CLI 2.0](https://docs.microsoft.com/cli/azure)（Azure CLI 2.0 概述）。 也可查看 [Azure Data Lake Store CLI 2.0 reference](https://docs.microsoft.com/cli/azure/dls)（Azure Data Lake Store CLI 2.0 参考），获取命令和语法的完整列表。
 
@@ -53,7 +52,7 @@ Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它
     az login
     ```
 
-    将获得要在下一步骤中使用的代码。 使用 Web 浏览器打开页面 https://aka.ms/devicelogin，输入代码进行身份验证。 系统会提示使用凭据登录。
+    将获得要在下一步骤中使用的代码。 使用 Web 浏览器打开页面 https://aka.ms/devicelogin，然后输入该代码进行身份验证。 系统会提示使用凭据登录。
 
 2. 登录后，窗口会列出与帐户相关联的所有 Azure 订阅。 通过以下命令来使用特定订阅。
    

@@ -5,6 +5,7 @@
     - name: 什么是虚拟机规模集？
       href: overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 在 Azure 门户中创建
       href: quick-create-portal.md
@@ -54,16 +55,108 @@
           href: tutorial-autoscale-powershell.md
         - name: 模板
           href: tutorial-autoscale-template.md
-    - name: 使用自定义 Packer 映像将应用部署到 Azure 虚拟机规模集
-      items:
-        - name: Azure CLI 2.0
-          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: 示例
   items:
     - name: Azure CLI 2.0
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+- name: 概念
+  items:
+    - name: Azure 资源管理器
+      href: ../azure-resource-manager/resource-group-overview.md
+      maintainContext: true
+    - name: 区域和可用性
+      href: ../virtual-machines/windows/regions-and-availability.md
+      maintainContext: true
+    - name: VM 类型和大小
+      href: ../virtual-machines/windows/sizes.md
+      maintainContext: true
+      items:
+        - name: 常规用途
+          href: ../virtual-machines/windows/sizes-general.md
+          maintainContext: true
+          items:
+            - name: B 系列可突增
+              href: ../virtual-machines/windows/b-series-burstable.md
+              maintainContext: true
+        - name: 计算优化
+          href: ../virtual-machines/windows/sizes-compute.md
+          maintainContext: true
+        - name: 内存优化
+          href: ../virtual-machines/windows/sizes-memory.md
+          maintainContext: true
+          items:
+            - name: 约束的 vCPU
+              href: ../virtual-machines/windows/constrained-vcpu.md
+              maintainContext: true
+        - name: 存储优化
+          href: ../virtual-machines/windows/sizes-storage.md
+          maintainContext: true
+        - name: GPU 优化
+          href: ../virtual-machines/windows/sizes-gpu.md
+          maintainContext: true
+          items:
+            - name: 安装 GPU 驱动程序
+              href: ../virtual-machines/windows/n-series-driver-setup.md
+              maintainContext: true
+        - name: 高性能计算
+          href: ../virtual-machines/windows/sizes-hpc.md
+          maintainContext: true
+        - name: Azure 计算单元 (ACU)
+          href: ../virtual-machines/windows/acu.md
+          maintainContext: true
+        - name: 基准评分
+          href: ../virtual-machines/windows/compute-benchmark-scores.md
+          maintainContext: true
+    - name: 认可的 Linux 发行版
+      href: ../virtual-machines/linux/endorsed-distros.md
+      maintainContext: true
+    - name: 维护和更新
+      href: ../virtual-machines/windows/maintenance-and-updates.md
+      maintainContext: true
+    - name: 磁盘存储
+      href: ../virtual-machines/windows/about-disks-and-vhds.md
+      maintainContext: true
+      items:
+        - name: 托管磁盘
+          href: ../virtual-machines/windows/managed-disks-overview.md
+          maintainContext: true
+        - name: 高级存储
+          href: ../virtual-machines/windows/premium-storage.md
+          maintainContext: true
+        - name: 高级存储性能
+          href: ../virtual-machines/windows/premium-storage-performance.md
+          maintainContext: true
+        - name: 标准存储
+          href: ../virtual-machines/windows/standard-storage.md
+          maintainContext: true
+        - name: 磁盘的可伸缩性目标
+          href: ../virtual-machines/windows/disk-scalability-targets.md
+          maintainContext: true
+        - name: 磁盘的备份和灾难恢复
+          href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
+          maintainContext: true
+    - name: 网络
+      href: ../virtual-machines/windows/network-overview.md
+      maintainContext: true
+    - name: 基础结构自动化
+      href: ../virtual-machines/windows/infrastructure-automation.md
+      maintainContext: true
+    - name: 安全和策略
+      href: ../virtual-machines/windows/security-policy.md
+      maintainContext: true
+    - name: 监视
+      href: ../virtual-machines/windows/monitor.md
+      maintainContext: true
+    - name: 高性能计算
+      href: ../virtual-machines/windows/high-performance-computing.md
+      maintainContext: true
+    - name: 部署注意事项
+      items:
+        - name: vCPU 配额
+          href: ../virtual-machines/windows/quotas.md
+          maintainContext: true
 - name: 如何
   items:
     - name: 规划和设计
@@ -131,11 +224,13 @@
           href: virtual-machine-scale-sets-networking.md
         - name: 将模板转换为托管磁盘
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: 计划内维护
+          href: virtual-machine-scale-sets-maintenance-notifications.md
     - name: 故障排除
       items:
         - name: 自动缩放
           href: virtual-machine-scale-sets-troubleshoot.md
-    - name: 常见问题
+    - name: 常见问题解答
       items:
         - name: 规模集常见问题解答
           href: virtual-machine-scale-sets-faq.md

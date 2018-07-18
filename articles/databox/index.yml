@@ -1,0 +1,46 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Data Box 文档
+metadata:
+  title: Azure Data Box 文档
+  description: 使用 Azure Data Box 服务能够以快速、廉价且可靠的方式将数 TB 的数据传输到 Azure 中。 Microsoft 通过装运磁盘和处理端到端后勤来加快安全数据传输。
+  services: databox
+  author: alkohli
+  manager: twooley
+  ms.service: databox
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/10/2018
+  ms.author: alkohli
+  ms.openlocfilehash: 5077d0ba77b6bdce99f1dfdf258182980a367b6c
+  ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/13/2018
+  ms.locfileid: "39010134"
+abstract:
+  description: 使用 Azure Data Box 服务能够以快速、廉价且可靠的方式将数 TB 的数据传输到 Azure 中。 Microsoft 通过装运磁盘和处理端到端后勤来加快安全数据传输。<p>通过 4 个简单步骤将大量数据传输到 Azure – 订购，接收，将数据复制到磁盘，将磁盘返回到 Azure。 收到磁盘后，数据将引入到 Azure，然后磁盘上的数据将安全地擦除。<p><a href="/azure/databox/data-box-disk-overview">详细了解 Data Box Disk</a>。</p>
+sections:
+- title: 快速入门
+  items:
+  - type: paragraph
+    text: 了解如何使用 Data Box Disk 将数据传输到 Azure。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure 门户
+      href: /azure/databox/data-box-disk-quickstart-portal
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何使用 Data Box Disk 将数据导入到 Azure。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="data-box-disk-deploy-ordered">订购 Data Box Disk</a>
+    - html: <a href="data-box-disk-deploy-set-up">设置 Data Box Disk</a>
+    - html: <a href="data-box-disk-deploy-copy-data">将数据复制到 Data Box Disk</a>
+    - html: <a href="data-box-disk-deploy-picked-up">返回 Data Box Disk 并将数据上传到 Azure</a>

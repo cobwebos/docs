@@ -3,7 +3,7 @@ title: 教程 - 使用 Azure 模板在规模集中安装应用程序 | Microsoft
 description: 了解如何使用自定义脚本扩展通过 Azure 资源管理器模板将应用程序安装到虚拟机规模集中
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b388e0aaec29c5b9a01e0b0a306f5486f6215092
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bc55fc7822b8f60d12ad8d8d8c36c21c1f602f74
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606262"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>教程：使用 Azure 模板在虚拟机规模集中安装应用程序
-若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 前一篇教程已介绍如何创建并使用自定义 VM 映像来部署 VM 实例。 使用此自定义映像可以手动安装和配置应用程序。 也可以在部署每个 VM 实例之后，将应用程序自动安装到规模集，或者更新已在规模集中运行的应用程序。 本教程介绍如何执行下列操作：
+若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 前一篇教程介绍了如何创建自定义 VM 映像并使用它来部署 VM 实例。 使用此自定义映像可以手动安装和配置应用程序。 也可以在部署每个 VM 实例之后，将应用程序自动安装到规模集，或者更新已在规模集中运行的应用程序。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 将应用程序自动安装到规模集
@@ -110,7 +111,7 @@ az network public-ip show \
 
 ![Nginx 中的基本网页](media/tutorial-install-apps-template/running-nginx.png)
 
-将 Web 浏览器保持打开，以便在下一步骤中可以看到更新的版本。
+让 Web 浏览器保持打开状态，以便在下一步骤中可以看到更新的版本。
 
 
 ## <a name="update-app-deployment"></a>更新应用部署
@@ -169,7 +170,7 @@ az group delete --name myResourceGroup --no-wait --yes
 > * 使用 Azure 自定义脚本扩展
 > * 更新规模集中运行的应用程序
 
-请继续学习下一篇教程，了解如何自动缩放规模集。
+请继续学习下一教程，了解如何自动缩放规模集。
 
 > [!div class="nextstepaction"]
 > [自动缩放规模集](tutorial-autoscale-template.md)

@@ -4,28 +4,28 @@ description: 有关如何部署 Azure 上的 SAP HANA（大型实例）的体系
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/02/2018
+ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 3918096a977cfd48e2128646d7c552e842ab8834
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077617"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063674"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
 
 ## <a name="what-is-sap-hana-on-azure-large-instances"></a>什么是 Azure 上的 SAP HANA（大型实例）？
 
-Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方案。 除了提供虚拟机用于部署和运行 SAP HANA 以外，Azure 还可让你在专用的逻辑服务器上运行和部署 SAP HANA。 Azure 上的 SAP HANA（大型实例）解决方案在分配的非共享主机/服务器裸机硬件上进行构建。 服务器硬件嵌入在包含计算/服务器、网络和存储基础结构的较大模具中。 这作为组合经过了 HANA 定制数据中心集成 (TDI) 认证。 Azure 上的 SAP HANA（大型实例）提供各种不同的服务器 SKU 或规模。 从具有 72 个 CPU 和 768 GB 内存的单元开始，到具有 960 个 CPU 和 20 TB 内存的单元。
+Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方案。 除了提供虚拟机用于部署和运行 SAP HANA 以外，Azure 还可让你在专用的逻辑服务器上运行和部署 SAP HANA。 Azure 上的 SAP HANA（大型实例）解决方案在分配的非共享主机/服务器裸机硬件上进行构建。 服务器硬件嵌入在包含计算/服务器、网络和存储基础结构的较大模具中。 这作为组合经过了 HANA 定制数据中心集成 (TDI) 认证。 Azure 上的 SAP HANA（大型实例）提供各种不同的服务器 SKU 或规模。 单元可包含 36 个 Intel CPU 内核和 768 GB 的内存，最多可包含 480 个 Intel CPU 内核和 24 TB 的内存。
 
 基础结构模具中的客户隔离在租户中执行，详细情况如下所示：
 
@@ -68,8 +68,8 @@ HANA 大型实例指南的不同文档涵盖以下几个方面：
    本地域的域用户可以访问服务器，并可在这些 VM 上运行服务（例如 DBMS 服务）。 但无法在本地的 VM 和 Azure 部署的 VM 之间进行通信和名称解析。 这是大多数 SAP 资产的典型部署场景。 有关详细信息，请参阅 [Azure VPN 网关的设计和规划](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)以及[使用 Azure 门户创建具有站点到站点连接的虚拟网络](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 - **租户**：在 HANA 大型实例模具中部署的客户会隔离到租户中。 租户在网络、存储和计算层中相互隔离。 分配给不同租户的存储和计算单元在 HANA 大型实例模具级别上无法相互看到或进行通信。 客户可以选择部署到不同的租户中。 即使这样，HANA 大型实例模具级别上的租户之间也不进行通信。
 - **SKU 类别**：对于 HANA 大型实例，提供以下两类 SKU。
-    - **类型 I 类**：S72、S72m、S144、S144m、S192 和 S192m
-    - **类型 II 类**：S384、S384m、S384xm、S576m、S768m 和 S960m
+    - **I 类**：S72、S72m、S144、S144m、S192、S192m 和 S192xm
+    - **II 类**：S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 和 S960m
 
 
 其他各种资源介绍了如何在云中部署 SAP 工作负荷。 需要由拥有相关经验的人员来规划 Azure 中的 SAP HANA 的部署，他们应该了解 Azure IaaS 的原理，知道如何在 Azure IaaS 上部署 SAP 工作负荷。 在继续之前，请参阅[在 Azure 虚拟机上使用 SAP 解决方案](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来了解详细信息。 
@@ -80,9 +80,9 @@ HANA 大型实例指南的不同文档涵盖以下几个方面：
 
 [SAP 说明 #1928533 - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型](https://launchpad.support.sap.com/#/notes/1928533)是有关 NetWeaver 的核心 SAP 说明，对 SAP HANA 认证做了某种程度的阐述。
 
-[SAP 说明 #2316233 - Microsoft Azure 上的 SAP HANA（大型实例）](https://launchpad.support.sap.com/#/notes/2316233/E)也很重要。 其中涉及到了本指南所述的解决方案。 此外，支持在 Azure GS5 VM 中运行 SAP HANA。 [SAP 网站](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)上发布了有关此方案的信息。
+在 [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)站点中可找到 Azure 上 SAP HANA（大型实例）单元的认证记录。 
 
-SAP 说明 #2316233 中所述的“Azure 上的 SAP HANA（大型实例）”解决方案可让 Microsoft 和 SAP 客户在 Azure 中部署大型 SAP Business Suite、SAP BW、S/4 HANA、BW/4HANA 或其他 SAP HANA 工作负荷。 此解决方案基于通过 SAP HANA 认证的专用硬件模具（[SAP HANA 定制数据中心集成 – TDI](https://scn.sap.com/docs/DOC-63140)）。 以 SAP HANA TDI 配置的解决方案运行可以确信所有基于 SAP HANA 的应用程序（包括 SAP HANA 上的 SAP Business Suite、SAP HANA 上的 SAP BW、S4/HANA 和 BW4/HANA）会在硬件基础结构上正常工作。
+经 SAP HANA 认证的 IaaS 平台站点所述的“Azure 上的 SAP HANA（大型实例）”类型可让 Microsoft 和 SAP 客户在 Azure 中部署大型 SAP Business Suite、SAP BW、S/4 HANA、BW/4HANA 或其他 SAP HANA 工作负荷。 此解决方案基于通过 SAP HANA 认证的专用硬件模具（[SAP HANA 定制数据中心集成 – TDI](https://scn.sap.com/docs/DOC-63140)）。 以 SAP HANA TDI 配置的解决方案运行可以确信所有基于 SAP HANA 的应用程序（包括 SAP HANA 上的 SAP Business Suite、SAP HANA 上的 SAP BW、S4/HANA 和 BW4/HANA）会在硬件基础结构上正常工作。
 
 与在 VM 中运行 SAP HANA 相比，此解决方案具有一项优势。 它提供的内存量要大得多。 若要启用此解决方案，需要在一些重要的方面有所了解：
 
@@ -132,7 +132,9 @@ Azure 大型实例模具本身包含以下组件：
 
 如同可以为 Azure 虚拟机选择不同的 VM 类型一样，可以从针对 SAP HANA 的不同工作负荷类型定制的具有不同 SKU 的 HANA 大型实例中进行选择。 SAP 基于 Intel 处理器世代为各种工作负荷应用内存对处理器插槽比率。 下表显示提供的 SKU 类型。
 
-从 2017 年 7 月开始，Azure 上的 SAP HANA（大型实例）以多种配置在多个 Azure 区域发布，其中包括美国西部和美国东部、澳大利亚东部、澳大利亚东南部、西欧、北欧。
+多个 Azure 区域发布了多种配置的 Azure 上的 SAP HANA（大型实例）服务，其中包括美国西部和美国东部、澳大利亚东部、澳大利亚东南部、西欧、北欧、日本东部和日本西部。
+
+[经 SAP HANA 认证的 HANA 大型实例 SKU](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 列表如下：
 
 | SAP 解决方案 | CPU | 内存 | 存储 | 可用性 |
 | --- | --- | --- | --- | --- |
@@ -149,16 +151,33 @@ Azure 大型实例模具本身包含以下组件：
 |---| Azure 上的 SAP HANA S768m<br /> – 16 x Intel® Xeon® 处理器 E7-8890 v4<br /> 384 CPU 内核和 768 CPU 线程 |  16.0 TB |  36 TB | 可用 |
 |---| Azure 上的 SAP HANA S960m<br /> – 20 x Intel® Xeon® 处理器 E7-8890 v4<br /> 480 CPU 内核和 960 CPU 线程 |  20.0 TB |  46 TB | 可用 |
 
+
+在 SAP HANA TDIv5 下，SAP 允许特定于客户的规模调整和特定于客户的项目，这可能导致出现未经认证的服务器配置：
+
+- [经 SAP HANA 认证的设备](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
+- [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
+
+在许多情况下，这些特定于客户的服务器配置比经 SAP 认证的服务器单元承载更多内存。 使用 SAP 时，客户可获得 SAP 支持并对其特定于客户的规模调整服务器配置进行认证。 Azure 提供了以下 HANA 大型实例标准 SKU，Microsoft 提供了此类 TDIv5 特定于客户的规模调整项目的价目表。
+
+
+| 可在内存中 <br /> 扩展的原始 SKU | CPU | 内存 | 存储 | 可用性 |
+| --- | --- | --- | --- | --- |
+| S192m 可扩展为 | Azure 上的 SAP HANA S192xm<br /> – 4 x Intel® Xeon® 处理器 E7-8890 v4<br /> 96 CPU 内核和 192 CPU 线程 |  6.0 TB |  16 TB | 可用 |
+| S384xm 可扩展为 | Azure 上的 SAP HANA S384xxm<br /> – 8 x Intel® Xeon® 处理器 E7-8890 v4<br /> 192 CPU 内核和 384 CPU 线程 |  12.0 TB |  28 TB | 可用 |
+| S576m 可扩展为 | Azure 上的 SAP HANA S576xm<br /> – 12 x Intel® Xeon® 处理器 E7-8890 v4<br /> 288 CPU 内核和 576 CPU 线程 |  18.0 TB |  41 TB | 可用 |
+| S768m 可扩展为 | Azure 上的 SAP HANA S768xm<br /> – 16 x Intel® Xeon® 处理器 E7-8890 v4<br /> 384 CPU 内核和 768 CPU 线程 |  24.0 TB |  56 TB | 可用 |
+
 - CPU 内核数 = 服务器单元处理器之和的非超线程 CPU 内核数的总和。
-- CPU 线程数 = 服务器单元处理器之和的超线程 CPU 内核数所提供的计算线程总和。 所有单元都默认配置为使用超线程技术。
+- CPU 线程数 = 服务器单元处理器之和的超线程 CPU 内核数所提供的计算线程总和。 大多数单元都默认配置为使用超线程技术。
+- 根据供应商的建议，S768m、S768xm 和 S960m 未配置为使用超线程来运行 SAP HANA。
 
 
 选择的具体配置取决于工作负荷、CPU 资源和所需的内存。 OLTP 工作负荷可以利用针对 OLAP 工作负荷进行了优化的 SKU。 
 
-所有产品/服务的硬件基地都经过 SAP HANA TDI 认证。 两种不同类的硬件将 SKU 分为：
+除特定于客户的规模调整项目的单元外，产品/服务的硬件基础均通过了 SAP HANA TDI 认证。 两种不同类的硬件将 SKU 分为：
 
-- 称为“I 类”SKU 的 S72、S72m、S144、S144m、S192 和 S192m。
-- 称为“II 类”SKU 的 S384、S384m、S384xm、S576m、S768m 和 S960m。
+- 称为“I 类”SKU 的 S72、S72m、S144、S144m、S192、S192m 和 S192xm。
+- 称为“II 类”SKU 的 S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 和 S960m。
 
 不会将整个 HANA 大型实例模具以独占方式分配给单个客户使用。 此事实也适用于通过 Azure 中部署的网络结构连接的计算和存储资源的机架。 HANA 大型实例基础结构（例如 Azure）部署在以下三个级别中相互隔离的不同客户&quot;租户&quot;：
 
@@ -293,7 +312,7 @@ HANA 的内存需求将随数据量增长而增加。 请注意当前的内存�
    > Microsoft 提供的操作系统未向 SUSE 注册。 它未连接到订阅管理工具实例。
 
 - 在 Azure 中的 VM 上部署的 SUSE Linux 订阅管理工具。 此工具使得 Azure 上的 SAP HANA（大型实例）能够由 SUSE 进行注册并相应地进行更新。 （HANA 大型实例数据中心内没有 Internet 访问。） 
-- 适用于 SAP HANA 的 Red Hat Enterprise Linux 6.7 或 7.2 的许可证。
+- 适用于 SAP HANA 的 Red Hat Enterprise Linux 6.7 或 7.x 的许可证。
 
    > [!NOTE]
    > Microsoft 提供的操作系统未向 Red Hat 注册。 它未连接到 Red Hat 订阅管理器实例。
@@ -338,17 +357,21 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 
 请参阅下表，了解存储分配情况。 此表大致列出了不同卷的容量，这些卷是随不同的 HANA 大型实例单位一起提供的。
 
-| HANA 大型实例 SKU | hana/data | hana/log | hana/shared | hana/log/backup |
+| HANA 大型实例 SKU | hana/data | hana/log | hana/shared | hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
 | S192 | 4,608 GB | 1,024 GB | 1,536 GB | 1,024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
+| S192xm |  11,520 GB |  1,536 GB |  1,792 GB |  1,536 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
 | S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
+| S384xxm |  20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
 | S576m | 20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S576xm | 31,744 GB | 4,096 GB | 2,048 GB | 4,096 GB |
 | S768m | 28,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S768xm | 40,960 GB | 6,144 GB | 4,096 GB | 6,144 GB |
 | S960m | 36,000 GB | 4,100 GB | 2,050 GB | 4,100 GB |
 
 
@@ -370,6 +393,8 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 可能需要更多的存储。 可以通过购买额外存储（以 1 TB 为单位）的方式来添加存储。 该额外存储可以作为额外卷来添加， 也可以用来扩展一个或多个现有卷。 卷的大小（大部分如上表所述）一经部署就不能缩减。 也不能更改卷名或装入名。 如上所述的存储卷是作为 NFS4 卷附加到 HANA 大型实例单位的。
 
 可以使用存储快照来实现备份、还原和灾难恢复目的。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+请参阅[支持 HLI 的方案](hana-supported-scenario.md)，了解方案的存储布局详细信息。
 
 ### <a name="encryption-of-data-at-rest"></a>静态数据加密
 用于 HANA 大型实例存储允许数据透明加密存储在磁盘上。 在部署 HANA 大型实例单位时，可以选择启用这种加密。 还可以选择已在部署后将更改为加密卷。 将从非加密移动到加密卷是透明的并且不需要停机时间。 
@@ -473,9 +498,7 @@ Azure 中 SAP 部署的差别如下：
 
 ![跨多个虚拟网络部署 SAP 应用层](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-该图显示跨多个虚拟网络部署的 SAP 应用层或组件。 此配置会在这些虚拟网络中的应用程序之间通信时产生不可避免的延迟开销。 默认情况下，位于不同虚拟网络中的 VM 之间的网络流量通过此配置中的企业边缘路由器进行路由。 自 2016 年 9 月以后，可以优化此路由。 
-
-优化并降低两个虚拟网络之间的通信延迟的方法是将同一区域内的虚拟网络对等互连。 即使这些虚拟网络在不同订阅中，也可以使用此方法。 通过虚拟网络对等互连，两个不同虚拟网络中的 VM 可以使用 Azure 网络主干来直接相互通信。 延迟状态如同这些 VM 在同一个虚拟网络中一样。 发送到通过 Azure 虚拟网络网关连接的 IP 地址范围的流量则通过单独的虚拟网络网关进行路由。 
+该图显示跨多个虚拟网络部署的 SAP 应用层或组件。 此配置会在这些虚拟网络中的应用程序之间通信时产生不可避免的延迟开销。 默认情况下，位于不同虚拟网络中的 VM 之间的网络流量通过此配置中的企业边缘路由器进行路由。 优化并降低两个虚拟网络之间的通信延迟的方法是将同一区域内的虚拟网络对等互连。 即使这些虚拟网络在不同订阅中，也可以使用此方法。 通过虚拟网络对等互连，两个不同虚拟网络中的 VM 可以使用 Azure 网络主干来直接相互通信。 延迟状态如同这些 VM 在同一个虚拟网络中一样。 发送到通过 Azure 虚拟网络网关连接的 IP 地址范围的流量则通过单独的虚拟网络网关进行路由。 
 
 有关虚拟网络对等互连的详细信息，请参阅[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
 

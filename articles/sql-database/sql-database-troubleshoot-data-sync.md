@@ -1,25 +1,26 @@
 ---
-title: 排查 Azure SQL 数据同步（预览版）问题 | Microsoft Docs
-description: 了解如何排查 Azure SQL 数据同步（预览版）的常见问题
+title: Azure SQL 数据同步故障排除| Microsoft 文档
+description: 了解如何排查 Azure SQL 数据同步的常见问题。
 services: sql-database
-ms.date: 04/01/2018
-ms.topic: article
+ms.date: 06/20/2018
+ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: daa4ecd3ddf0e770049a81c771a8da52bac5be7f
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021385"
 ---
-# <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>排查 SQL 数据同步（预览版）的问题
+# <a name="troubleshoot-issues-with-sql-data-sync"></a>排查 SQL 数据同步的问题
 
-本文介绍如何排查 Azure SQL 数据同步（预览版）的已知问题。 如果某个问题有了解决方法，会在本文中提供。
+本文介绍如何排查 Azure SQL 数据同步的已知问题。如果某个问题有了解决方法，会在本文中提供。
 
-有关 SQL 数据同步（预览版）的概述，请参阅[使用 Azure SQL 数据同步（预览版）跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 ## <a name="sync-issues"></a>同步问题
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/06/2018
 
 #### <a name="description-and-symptoms"></a>描述和症状
 
-在 SQL 数据同步（预览版）门户 UI 中针对与代理关联的本地数据库执行同步失败。 在运行代理的本地计算机上，事件日志中出现 System.IO.IOException 错误。 这些错误指出磁盘空间不足。
+在 SQL 数据同步门户 UI 中针对与代理关联的本地数据库执行同步失败。 在运行代理的本地计算机上，事件日志中出现 System.IO.IOException 错误。 这些错误指出磁盘空间不足。
 
 #### <a name="resolution"></a>解决方法
 
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/06/2018
 
 #### <a name="description-and-symptoms"></a>描述和症状
 
-SQL 数据同步（预览版）中的同步组长时间处于“正在处理”状态。 该同步组不响应 **stop** 命令，并且日志中未显示新条目。
+SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同步组不响应 **stop** 命令，并且日志中未显示新条目。
 
 #### <a name="cause"></a>原因
 
@@ -47,14 +48,14 @@ SQL 数据同步（预览版）中的同步组长时间处于“正在处理”�
 
 -   **客户端代理已卸载或缺失**。 客户端代理是否已卸载或缺失：
 
-    1. 将代理 XML 文件（如果存在）从 SQL 数据同步（预览版）安装文件夹中删除。
+    1. 将代理 XML 文件（如果存在）从 SQL 数据同步安装文件夹中删除。
     2. 在某台本地计算机（可以是相同或不同的计算机）上安装代理。 然后，提交门户中针对显示为脱机的代理生成的代理密钥。
 
 -   **SQL 数据同步服务已停止**。
 
     1. 在“开始”菜单中，搜索“服务”。
     2. 在搜索结果中，选择“服务”。
-    3. 找到“SQL 数据同步（预览版）”服务。
+    3. 找到“SQL 数据同步”服务。
     4. 如果服务状态为“已停止”，请右键单击服务名称，选择“启动”。
 
 #### <a name="resolution"></a>解决方法
@@ -69,7 +70,7 @@ SQL 数据同步（预览版）中的同步组长时间处于“正在处理”�
 
 #### <a name="cause"></a>原因
 
-SQL 数据同步（预览版）预配过程针对不同架构中的同名表使用相同的跟踪表。 因此，这两个表中的更改会反映在同一个跟踪表中。 这会导致同步期间发生错误的数据更改。
+SQL 数据同步预配过程针对不同架构中的同名表使用相同的跟踪表。 因此，这两个表中的更改会反映在同一个跟踪表中。 这会导致同步期间发生错误的数据更改。
 
 #### <a name="resolution"></a>解决方法
 
@@ -108,10 +109,10 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 ### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a>有一条错误消息指出“无法在列 \<column\> 中插入值 NULL。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
 此错误消息表示发生了两个以下问题之一：
 -  某个表没有主键。 若要解决此问题，请将主键添加到要同步的所有表。
--  CREATE INDEX 语句中可能存在 WHERE 子句。 数据同步（预览版）不会处理这种情况。 若要解决此问题，请删除 WHERE 子句，或手动对所有数据库进行更改。 
+-  CREATE INDEX 语句中可能存在 WHERE 子句。 数据同步不会处理这种情况。 若要解决此问题，请删除 WHERE 子句，或手动对所有数据库进行更改。 
  
-### <a name="how-does-data-sync-preview-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>数据同步（预览版）如何处理循环引用？ 也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？
-数据同步（预览版）不会处理循环引用。 请务必避免循环引用。 
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>数据同步如何处理循环引用？ 也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？
+数据同步不会处理循环引用。 请务必避免循环引用。 
 
 ## <a name="client-agent-issues"></a>客户端代理问题
 
@@ -130,27 +131,6 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 也可以对 Windows Installer 执行的所有安装启用日志记录。 Microsoft 知识库文章[如何启用 Windows Installer 日志记录](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)提供了启用 Windows Installer 的日志记录的一键式解决方案。 此外它还提供了日志的位置。
 
-### <a name="my-client-agent-doesnt-work"></a>我的客户端代理不能正常运行
-
-#### <a name="description-and-symptoms"></a>描述和症状
-
-尝试使用客户端代理时收到以下消息：
-
-“同步失败并显示异常：尝试反序列化参数 www.microsoft.com/.../05:GetBatchInfoResult 时出错。” 有关详细信息，请参阅 InnerException。”
-
-“内部异常消息：类型 “Microsoft.Synchronization.ChangeBatch” 是无效的集合类型，因为它没有默认的构造函数。”
-
-#### <a name="cause"></a>原因
-
-这是 SQL 数据同步（预览版）安装存在的一个已知问题。 出现此消息的最可能原因是下列其中一项：
-
--   正在运行 Windows 8 开发人员预览版。
--   已安装 .NET Framework 4.5。
-
-#### <a name="resolution"></a>解决方法
-
-确保安装客户端代理的计算机上未运行 Windows 8 开发人员预览版，且未安装 .NET Framework 4.5。
-
 ### <a name="my-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a>取消卸载后，我的客户端代理不能正常运行
 
 #### <a name="description-and-symptoms"></a>描述和症状
@@ -159,7 +139,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 #### <a name="cause"></a>原因
 
-出现此问题的原因是 SQL 数据同步（预览版）客户端代理未存储凭据。
+出现此问题的原因是 SQL 数据同步客户端代理未存储凭据。
 
 #### <a name="resolution"></a>解决方法
 
@@ -214,18 +194,18 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 将代理的密码更新为当前服务器密码：
 
-1. 查找 SQL 数据同步（预览版）客户端代理预览服务。  
+1. 找到 SQL 数据同步客户端代理服务。  
     a. 选择“启动”。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。  
-    d. 在“服务”窗口中，滚动到 **SQL 数据同步（预览版）代理预览**的条目。  
-2. 右键单击“SQL 数据同步(预览版)代理预览版”并选择“停止”。
-3. 右键单击“SQL 数据同步(预览版)代理预览版”并选择“属性”。
-4. 在“SQL 数据同步(预览版)代理预览版属性”中，选择“登录”选项卡。
+    d. 在“服务”窗口中，滚动到 **SQL 数据同步代理**所对应的条目。  
+2. 右键单击“SQL 数据同步代理”并选择“停止”。
+3. 右键单击“SQL 数据同步代理”并选择“属性”。
+4. 在“SQL 数据同步代理属性”中，选择“登录”选项卡。
 5. 在“密码”框中输入自己的密码。
 6. 在“确认密码”框中再次输入自己的密码。
 7. 依次选择“应用”、“确定”。
-8. 在“服务”窗口中，右键单击“SQL 数据同步(预览版)代理预览版”服务并单击“启动”。
+8. 在“服务”窗口中，右键单击“SQL 数据同步代理”服务并单击“启动”。
 9. 关闭“服务”窗口。
 
 ### <a name="i-cant-submit-the-agent-key"></a>无法提交代理密钥
@@ -238,17 +218,16 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 在继续之前，请检查是否满足以下条件：
 
--   SQL 数据同步（预览版）Windows 服务正在运行。  
--   SQL 数据同步（预览版）预览 Windows 服务的服务帐户具有网络访问权限。    
--   客户端代理能够访问定位器服务。 检查以下注册表项是否具有值 https://locator.sync.azure.com/LocatorServiceApi.svc:  
-    -   x86 计算机：`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
-    -   x64 计算机：`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
+-   SQL 数据同步 Windows 服务正在运行。  
+-   SQL 数据同步 Windows 服务的服务帐户具有网络访问权限。    
+-   出站 1433 端口在本地防火墙规则中处于打开状态。
+-   本地 IP 已添加到同步元数据库的服务器或数据库防火墙规则。
 
 #### <a name="cause"></a>原因
 
 代理密钥唯一标识每个本地代理。 密钥必须满足以下两个条件：
 
--   SQL 数据同步（预览版）服务器和本地计算机上的客户端代理密钥必须相同。
+-   SQL 数据同步服务器和本地计算机上的客户端代理密钥必须相同。
 -   客户端代理密钥仅能使用一次。
 
 #### <a name="resolution"></a>解决方法
@@ -272,7 +251,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 #### <a name="description-and-symptoms"></a>描述和症状
 
-如果注册到 SQL 数据同步（预览版）客户端代理的本地终结点（即数据库）不可访问，则无法将该客户端代理删除。
+如果注册到 SQL 数据同步客户端代理的本地终结点（即数据库）不可访问，则无法将该客户端代理删除。
 
 #### <a name="cause"></a>原因
 
@@ -295,8 +274,8 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 2. 打开组件服务面板。  
     a. 在任务栏上的搜索框中输入 **services.msc**。  
     b. 在搜索结果中，双击“服务”。  
-3. 停止“SQL 数据同步(预览版)”服务。
-4. 重启“SQL 数据同步(预览版)”服务。  
+3. 停止“SQL 数据同步”服务。
+4. 重启“SQL 数据同步”服务。  
 5. 重新打开应用。
 
 ## <a name="setup-and-maintenance-issues"></a>设置和维护问题
@@ -335,12 +314,12 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 -   确保客户端代理已联机，然后重试。
 -   客户端代理是否已卸载或缺失：  
-    a. 将代理 XML 文件（如果存在）从 SQL 数据同步（预览版）安装文件夹中删除。  
+    a. 将代理 XML 文件（如果存在）从 SQL 数据同步安装文件夹中删除。  
     b. 在某台本地计算机（可以是相同或不同的计算机）上安装代理。 然后，提交门户中针对显示为脱机的代理生成的代理密钥。
--   确保 SQL 数据同步（预览版）服务正在运行：  
+-   确保“SQL 数据同步”服务正在运行：  
     a. 在“开始”菜单中，搜索“服务”。  
     b. 在搜索结果中，选择“服务”。  
-    c. 找到 **SQL 数据同步（预览版）预览**服务。  
+    c. 找到“SQL 数据同步”服务。  
     d. 如果服务状态为“已停止”，请右键单击服务名称，选择“启动”。
 -   确保 SQL 数据库和 SQL Server 数据库都已联机。
 -   等待预配或同步过程完成，然后重试删除同步组。
@@ -361,7 +340,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
     a. 选择“开始”菜单。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果窗格的“程序”部分，双击“服务”。  
-    d. 右键单击“SQL 数据同步(预览版)”服务。  
+    d. 右键单击“SQL 数据同步”服务。  
     e. 如果该服务正在运行，请将其停止。  
     f. 右键单击该服务，并选择“启动”。  
     g. 检查数据库是否仍已注册。 如果已不再注册数据库，则操作完成。 否则，请继续执行下一步。
@@ -391,7 +370,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 #### <a name="cause"></a>原因
 
-SQL 数据同步（预览版）会从服务中删除已脱机达 45 天或更长时间的数据库（从数据库脱机时算起）。 如果数据库已脱机达 45 天或更长时间，然后重新联机，则其状态会变为“过期”。
+SQL 数据同步会从服务中删除已脱机达 45 天或更长时间的数据库（从数据库脱机时算起）。 如果数据库已脱机达 45 天或更长时间，然后重新联机，则其状态会变为“过期”。
 
 #### <a name="resolution"></a>解决方法
 
@@ -421,14 +400,14 @@ SQL 数据同步（预览版）会从服务中删除已脱机达 45 天或更长
 
 #### <a name="description-and-symptoms"></a>描述和症状
 
-在卸载或停止关联的 SQL 数据同步（预览版）客户端代理后的三分钟内无法删除同步组。
+在卸载或停止关联的 SQL 数据同步客户端代理后的三分钟内无法删除同步组。
 
 #### <a name="resolution"></a>解决方法
 
 1. 在关联的同步代理处于联机状态时删除同步组（推荐）。
-2. 如果代理处于脱机状态但已安装，请在本地计算机上将其联机。 等待代理状态在 SQL 数据同步（预览版）门户中显示为“联机”。 然后删除同步组。
+2. 如果代理处于脱机状态但已安装，请在本地计算机上将其联机。 等待代理状态在 SQL 数据同步门户中显示为“联机”。 然后删除同步组。
 3. 如果代理因为被卸载而处于脱机状态：  
-    a.  将代理 XML 文件（如果存在）从 SQL 数据同步（预览版）安装文件夹中删除。  
+    a.  将代理 XML 文件（如果存在）从 SQL 数据同步安装文件夹中删除。  
     b.  在某台本地计算机（可以是相同或不同的计算机）上安装代理。 然后，提交门户中针对显示为脱机的代理生成的代理密钥。  
     c. 尝试删除同步组。
 
@@ -437,16 +416,16 @@ SQL 数据同步（预览版）会从服务中删除已脱机达 45 天或更长
 如果从备份还原丢失或损坏的数据库，数据库所属的同步组中的数据可能不收敛。
 
 ## <a name="next-steps"></a>后续步骤
-有关 SQL 数据同步（预览版）的详细信息，请参阅：
+有关 SQL 数据同步的详细信息，请参阅：
 
--   [使用 Azure SQL 数据同步（预览版）跨多个云和本地数据库同步数据](sql-database-sync-data.md)  
--   [安装 Azure SQL 数据同步（预览版）](sql-database-get-started-sql-data-sync.md)  
--   [有关 Azure SQL 数据同步（预览版）的最佳做法](sql-database-best-practices-data-sync.md)  
--   [使用 Log Analytics 监视 Azure SQL 数据同步（预览版）](sql-database-sync-monitor-oms.md)  
--   演示如何配置 SQL 数据同步（预览版）的完整 PowerShell 示例：  
+-   [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)  
+-   [设置 Azure SQL 数据同步](sql-database-get-started-sql-data-sync.md)  
+-   [Azure SQL 数据同步最佳实践](sql-database-best-practices-data-sync.md)  
+-   [使用 Log Analytics 监视 Azure SQL 数据同步](sql-database-sync-monitor-oms.md)  
+-   演示如何配置 SQL 数据同步的完整 PowerShell 示例：  
     -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [下载 SQL 数据同步（预览版）REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [下载 SQL 数据同步 REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 有关 SQL 数据库的详细信息，请参阅：
 

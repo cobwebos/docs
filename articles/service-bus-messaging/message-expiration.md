@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线消息过期 | Microsoft Docs"
-description: "Azure 服务总线消息的过期时间和生存时间"
+title: Azure 服务总线消息过期 | Microsoft Docs
+description: Azure 服务总线消息的过期时间和生存时间
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28196762"
 ---
 # <a name="message-expiration-time-to-live"></a>消息过期时间（生存时间）
 

@@ -1,24 +1,19 @@
 ---
 title: 使用 Azure CLI 创建 IoT 中心 (azure.js) | Microsoft Docs
 description: 如何使用跨平台的 Azure CLI (azure.js) 创建 Azure IoT 中心。
-services: iot-hub
-documentationcenter: .net
 author: kgremban
 manager: timlt
-editor: ''
-ms.assetid: 46a17831-650c-41d9-b228-445c5bb423d3
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.openlocfilehash: 7e761ba66f4b28dd7cc59dc8998c23810dd2b7d1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5b8a7ded940f59bba63556e844c45bd7cfb8eb63
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632085"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 IoT 中心
 

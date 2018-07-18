@@ -1,11 +1,11 @@
 ---
-title: "处理内容类型 - Azure 逻辑应用 | Microsoft 文档"
-description: "Azure 逻辑应用在设计时和运行时如何处理内容类型"
+title: 处理内容类型 - Azure 逻辑应用 | Microsoft 文档
+description: Azure 逻辑应用在设计时和运行时如何处理内容类型
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cd1f08fd-8cde-4afc-86ff-2e5738cc8288
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 809cc8524bf0d9922aec1f88aa5bfe3b8f2f4d78
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297115"
 ---
 # <a name="handle-content-types-in-logic-apps"></a>在逻辑应用中处理内容类型
 

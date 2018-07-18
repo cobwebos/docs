@@ -1,27 +1,31 @@
 ---
-title: "Azure Active Directory 域服务：管理指南 | Microsoft 文档"
-description: "在 Azure AD 域服务托管域中创建组织单位 (OU)"
+title: Azure Active Directory 域服务：管理指南 | Microsoft 文档
+description: 在 Azure AD 域服务托管域中创建组织单位 (OU)
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 197696d737e56cbdc9fe925b6fa5b9e4134e1539
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 15bd837149b9856897eb83f86052a26b24a21fb0
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334303"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域中创建组织单位 (OU)
 Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计算机”和“AADDC 用户”。 “AADDC 计算机”容器包含已加入托管域的所有计算机的计算机对象。 “AADDC 用户”容器包含 Azure AD 租户中的用户和组。 有时，可能需要在托管域上创建服务帐户才能部署工作负荷。 为此，可以在托管域上创建自定义的组织单位 (OU)，并在此 OU 中创建服务帐户。 本文说明如何在托管域中创建 OU。
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 若要执行本文中所列的任务，需要：
@@ -77,7 +81,7 @@ Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计�
 >
 
 ## <a name="related-content"></a>相关内容
-* [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
+* [管理 Azure AD 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)
 * [在托管域上配置组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory 管理中心：入门](https://technet.microsoft.com/library/dd560651.aspx)
 * [服务帐户分步指南](https://technet.microsoft.com/library/dd548356.aspx)

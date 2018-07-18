@@ -14,6 +14,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939698"
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署文本分类模型
 

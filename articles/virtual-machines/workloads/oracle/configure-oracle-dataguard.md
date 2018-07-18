@@ -1,13 +1,13 @@
 ---
-title: "在 Azure Linux 虚拟机上实现 Oracle Data Guard | Microsoft Docs"
-description: "快速部署 Oracle Data Guard 并使其在 Azure 环境中运行。"
+title: 在 Azure Linux 虚拟机上实现 Oracle Data Guard | Microsoft Docs
+description: 快速部署 Oracle Data Guard 并使其在 Azure 环境中运行。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: rclaus
-ms.openlocfilehash: 822e18db4d01210d741addad4c820f51adc8f26a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f77a34fe4157e6c7ec763701e59db3330a1003c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657931"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上实现 Oracle Data Guard 
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本文将介绍如何使用 Azure CLI 从 Azure Marketplace 映像部署 Oracle Database 12c 数据库。 本文将分步演示如何在 Azure 虚拟机 (VM) 上安装和配置 Data Guard。
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本文将介绍如何使用 Azure CLI 从 Azure 市场映像部署 Oracle Database 12c 数据库。 本文将分步演示如何在 Azure 虚拟机 (VM) 上安装和配置 Data Guard。
 
 开始之前，请先确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -35,7 +36,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本文将�
 - 主 VM (myVM1) 有一个正在运行的 Oracle 实例。
 - 备用 VM (myVM2) 仅安装了 Oracle 软件。
 
-用来创建 VM 的 Marketplace 映像是 Oracle:Oracle-Database-Ee:12.1.0.2:latest。
+用来创建 VM 的市场映像是 Oracle:Oracle-Database-Ee:12.1.0.2:latest。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure 
 
@@ -169,7 +170,7 @@ $ ssh azureuser@<publicIpAddress>
 
 ### <a name="create-the-database-on-myvm1-primary"></a>在 myVM1（主）上创建数据库
 
-Oracle 软件已在 Marketplace 映像上安装，因此下一步是安装数据库。 
+Oracle 软件已在市场映像上安装，因此下一步是安装数据库。 
 
 切换到 Oracle 超级用户：
 

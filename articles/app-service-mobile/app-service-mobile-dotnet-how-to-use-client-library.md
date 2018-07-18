@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: crdun
-ms.openlocfilehash: 2b7620611c4587d00612f98c86b5792984ff548b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f0f28d4b6573e4e6fecf0e6dd84814d4fc66cd60
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050481"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -516,8 +517,8 @@ PullOptions pullOptions = new PullOptions
 1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”，并在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
 2. （可选）若要支持 Windows 设备，请安装以下 SQLite 运行时包之一：
 
-   * **Windows 8.1 运行时：**安装 [SQLite for Windows 8.1][3]。
-   * **Windows Phone 8.1：**安装 [SQLite for Windows Phone 8.1][4]。
+   * **Windows 8.1 运行时：** 安装 [SQLite for Windows 8.1][3]。
+   * **Windows Phone 8.1：** 安装 [SQLite for Windows Phone 8.1][4]。
    * **通用 Windows 平台** 安装[适用于通用 Windows 的 SQLite][5]。
 3. （可选）。 对于 Windows 设备，单击“引用” > >“添加引用...”，展开 **Windows** 文件夹 >“扩展”，并启用相应的 **SQLite for Windows** SDK 和 **Visual C++ 2013 Runtime for Windows** SDK。
     每个 Windows 平台的 SQLite SDK 名称略有不同。
@@ -651,7 +652,7 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
 2. 在 Visual Studio 或 Xamarin Studio 中打开项目，并添加对 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet 包的引用。 搜索时，请包含预发行版。
 3. 根据使用的平台，将以下代码添加到应用程序。 在每条代码中进行以下替换：
 
-   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
+   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
    * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”下面的“高级”选项卡获取此客户端 ID。
    * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
    * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done*。
@@ -794,7 +795,7 @@ private async Task AuthenticateAsync()
 ```
 
 #### <a name="client-livesdk"></a>使用 Microsoft 帐户和 Live SDK 进行单一登录
-要对用户进行身份验证，必须在 Microsoft 帐户开发人员中心注册应用。 在移动应用后端配置注册详细信息。 要创建 Microsoft 帐户注册并将注册连接到移动应用后端，请完成[注册应用以使用 Microsoft 帐户登录]中的步骤。 如果同时拥有 Windows 应用商店和 Windows Phone 8/Silverlight 版本的应用，请先注册 Windows 应用商店版本。
+要对用户进行身份验证，必须在 Microsoft 帐户开发人员中心注册应用。 在移动应用后端配置注册详细信息。 要创建 Microsoft 帐户注册并将注册连接到移动应用后端，请完成[注册应用以使用 Microsoft 帐户登录]中的步骤。 如果同时拥有 Microsoft Store 和 Windows Phone 8/Silverlight 版本的应用，请先注册 Microsoft Store 版本。
 
 以下代码使用 Live SDK 进行身份验证，并使用返回的令牌登录到移动应用后端。
 
@@ -807,7 +808,7 @@ private async System.Threading.Tasks.Task AuthenticateAsync()
     // Get the URL the Mobile App backend.
     var serviceUrl = App.MobileService.ApplicationUri.AbsoluteUri;
 
-    // Create the authentication client for Windows Store using the service URL.
+    // Create the authentication client for Microsoft Store using the service URL.
     LiveAuthClient liveIdClient = new LiveAuthClient(serviceUrl);
     //// Create the authentication client for Windows Phone using the client ID of the registration.
     //LiveAuthClient liveIdClient = new LiveAuthClient(clientId);
@@ -883,7 +884,7 @@ private async System.Threading.Tasks.Task Authenticate()
 在服务器流中，Azure 应用服务通过显示所选提供者的登录页管理 OAuth 身份验证流。  返回标识提供者后，Azure 应用服务将生成应用服务身份验证令牌。 [LoginAsync] 方法返回 [MobileServiceUser]，后者提供已经过身份验证的用户的 [UserId]，以及 JSON Web 令牌 (JWT) 形式的 [MobileServiceAuthenticationToken]。 可以缓存此令牌，并在它过期之前重复使用。 有关详细信息，请参阅[缓存身份验证令牌](#caching)。
 
 ### <a name="caching"></a>缓存身份验证令牌
-在某些情况下，存储来自提供者的身份验证令牌可避免在首次成功身份验证后调用登录方法。  Windows 应用商店和 UWP 应用可以使用 [PasswordVault] 在成功登录后缓存当前身份验证令牌，如下所示：
+在某些情况下，存储来自提供者的身份验证令牌可避免在首次成功身份验证后调用登录方法。  Microsoft Store 和 UWP 应用可以使用 [PasswordVault] 在成功登录后缓存当前身份验证令牌，如下所示：
 
 ```
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
@@ -935,7 +936,7 @@ await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 以下主题介绍了推送通知：
 
 * [注册推送通知](#register-for-push)
-* [获取 Windows 应用商店包 SID](#package-sid)
+* [获取 Microsoft Store 包 SID](#package-sid)
 * [使用跨平台模板注册](#register-xplat)
 
 ### <a name="register-for-push"></a>如何注册推送通知
@@ -952,17 +953,17 @@ private async void InitNotificationsAsync()
 }
 ```
 
-如果要推送到 WNS，必须[获取 Windows 应用商店包 SID ](#package-sid)。  有关 Windows 应用的详细信息，包括如何注册模板，请参阅[向应用添加推送通知]。
+如果要推送到 WNS，必须[获取 Microsoft Store 包 SID](#package-sid)。  有关 Windows 应用的详细信息，包括如何注册模板，请参阅[向应用添加推送通知]。
 
 不支持从客户端请求标记。  注册时会静默删除标记请求。
 如果想要使用标记注册设备，请创建自定义 API，使用通知中心 API 自动执行注册。  [调用自定义 API](#customapi) 而不是 `RegisterNativeAsync()` 方法。
 
-### <a name="package-sid"></a>如何获取 Windows 应用商店包 SID
-在 Windows 应用商店应用中启用推送通知需有包 SID。  需要向 Windows 应用商店注册应用程序才能收到包 SID。
+### <a name="package-sid"></a>如何：获取 Microsoft Store 包 SID
+在 Microsoft Store 应用中启用推送通知需有包 SID。  需要向 Microsoft Store 注册应用程序才能收到包 SID。
 
 若要获取此值，请执行以下操作：
 
-1. 在“Visual Studio 解决方案资源管理器”中，右键单击 Windows 应用商店应用项目，再单击“应用商店” > “将应用与应用商店关联...”。
+1. 在“Visual Studio 解决方案资源管理器”中，右键单击 Microsoft Store 应用项目，再单击“Store” > “将应用与 Store 关联...”。
 2. 在向导中，单击“下一步”，使用 Microsoft 帐户登录，在“保留新应用名称”中键入应用的名称，并单击“保留”。
 3. 成功创建应用注册后，选择应用名称，再依次单击“下一步”和“关联”。
 4. 使用 Microsoft 帐户登录到 [Windows 开发人员中心]。 在“我的应用”下面，单击创建的应用注册。
@@ -1125,7 +1126,7 @@ public class MyHandler : DelegatingHandler
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
-[Windows 开发人员中心]: https://dev.windows.com/en-us/overview
+[Windows 开发人员中心]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 [Windows Live SDK]: https://msdn.microsoft.com/library/bb404787.aspx
 [PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx

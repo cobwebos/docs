@@ -19,6 +19,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204201"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli-20"></a>通过 Azure CLI 2.0 自定义 Web 应用程序防火墙规则
 

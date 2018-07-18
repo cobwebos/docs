@@ -7,15 +7,17 @@ metadata:
   services: active-directory-b2c
   author: davidmu1
   manager: mtillman
-  ms.service: active-directory-b2c
+  ms.service: active-directory
+  ms.component: B2C
   ms.topic: landing-page
   ms.date: 03/29/2018
   ms.author: davidmu
-  ms.openlocfilehash: 000874bd089583cfc75dfa0a4d28769b91808a11
-  ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+  ms.openlocfilehash: a70e3fe60291a0ee50dbaa4bd3caa460ff12ffef
+  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/30/2018
+  ms.lasthandoff: 06/20/2018
+  ms.locfileid: "36284259"
 abstract:
   description: Azure Active Directory (Azure AD) B2C 是一项标识管理服务，用于自定义和控制客户在使用应用程序时的注册、登录和管理配置文件的方式。 此类应用程序包括为 iOS、Android、 .NET 等系统开发的应用程序。 有了 Azure AD B2C，就可以在执行这些操作的同时保护客户的标识。 通过我们的快速入门、教程和示例了解如何使用 Azure AD B2C。
   aside:

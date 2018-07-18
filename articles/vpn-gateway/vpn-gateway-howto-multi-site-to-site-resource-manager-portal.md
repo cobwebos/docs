@@ -1,11 +1,11 @@
 ---
-title: "向 VNet 添加多个 VPN 网关站点到站点连接：Azure 门户：Resource Manager | Microsoft Docs"
-description: "将多站点 S2S 连接添加到包含现有连接的 VPN 网关"
+title: 向 VNet 添加多个 VPN 网关站点到站点连接：Azure 门户：Resource Manager | Microsoft Docs
+description: 将多站点 S2S 连接添加到包含现有连接的 VPN 网关
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f3e8b165-f20a-42ab-afbb-bf60974bb4b1
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29398594"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet
 
@@ -61,8 +62,8 @@ ms.lasthandoff: 02/21/2018
     ![添加连接按钮](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "添加连接按钮")<br>
 5. 在“添加连接”页面上，填写以下字段：
    
-   * **名称：**想与其建立连接的站点的名称。
-   * **连接类型：**选择“**站点到站点(IPsec)**”。
+   * **名称：** 想与其建立连接的站点的名称。
+   * **连接类型：** 选择“**站点到站点(IPsec)**”。
      
      ![“添加连接”页面](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Add connection page")<br>
 
@@ -75,9 +76,9 @@ ms.lasthandoff: 02/21/2018
     ![“创建本地网络网关”页面](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Create local network gateway")<br>
 3. 在“创建本地网络网关”页面上，填写以下字段：
    
-   * **名称：**要分配给本地网络网关资源的名称。
-   * **IP 地址：**站点上要连接到的 VPN 设备的公共 IP 地址。
-   * **地址空间：**要路由到新本地网络站点的地址空间。
+   * **名称：** 要分配给本地网络网关资源的名称。
+   * **IP 地址：** 站点上要连接到的 VPN 设备的公共 IP 地址。
+   * **地址空间：** 要路由到新本地网络站点的地址空间。
 4. 在“创建本地网络网关”页面上单击“确定”保存所做更改。
 
 ## <a name="part3"></a>第 3 部分 - 添加共享密钥并创建连接

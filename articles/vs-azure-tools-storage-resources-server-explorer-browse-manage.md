@@ -11,11 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: 0beeb8fb7f7e46db97e179f3eacf3c68dd92cff3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dd867462ce3a1841aa4e2e8943f2c2619d168b08
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112314"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>使用服务器资源管理器浏览和管理存储资源
 
@@ -156,7 +157,7 @@ Blob 数据在本地缓存，并且对照 Azure Blob 存储中 Blob 的最后修
 
 ![查看队列](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC651470.png)
 
-有关存储服务队列的详细信息，请参阅[通过 .NET 开始使用 Azure 队列存储](http://go.microsoft.com/fwlink/?LinkID=264702)。 有关存储服务队列的 Web 服务的详细信息，请参阅 [Queue Service Concepts](http://go.microsoft.com/fwlink/?LinkId=264788)（队列服务的概念）。 有关如何使用 Visual Studio 将消息发送到存储服务队列的信息，请参阅 [Sending Messages to a Storage Services Queue](https://msdn.microsoft.com/library/azure/jj649344.aspx)（将消息发送到存储服务队列）。
+有关存储服务队列的详细信息，请参阅[通过 .NET 开始使用 Azure 队列存储](http://go.microsoft.com/fwlink/?LinkID=264702)。 有关存储服务队列的 Web 服务的详细信息，请参阅 [Queue Service Concepts](http://go.microsoft.com/fwlink/?LinkId=264788)（队列服务的概念）。 有关如何使用 Visual Studio 将消息发送到存储服务队列的信息，请参阅 [Sending Messages to a Storage Services Queue](https://docs.microsoft.com/azure/visual-studio/vs-storage-cloud-services-getting-started-queues)（将消息发送到存储服务队列）。
 
 > [!NOTE]
 > 存储服务队列不同于 Azure 服务总线队列。 有关服务总线队列的详细信息，请参阅[服务总线队列、主题和订阅](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-queues-topics-subscriptions)。
@@ -218,7 +219,7 @@ Azure 表存储可存储大量结构化数据。 该服务是一个 NoSQL 数据
 1. 查询生成完毕后，关闭该对话框。 所生成文本格式的查询以 WCF 数据服务筛选器的形式显示在文本框中。
 1. 若要运行查询，请选择绿色三角形图标。
 
-如果在筛选文本框中直接输入 WCF Data Services 筛选器字符串，还可以筛选“表设计器”中显示的实体数据。 此类字符串类似 SQL WHERE 语句，但它以 HTTP 请求的形式发送到服务器。 有关如何生成筛选器字符串的信息，请参阅 [Constructing Filter Strings for the Table Designer](https://msdn.microsoft.com/library/azure/ff683669.aspx)（生成表设计器的筛选字符串）。
+如果在筛选文本框中直接输入 WCF Data Services 筛选器字符串，还可以筛选“表设计器”中显示的实体数据。 此类字符串类似 SQL WHERE 语句，但它以 HTTP 请求的形式发送到服务器。 有关如何构造筛选器字符串的信息，请参阅[构造表设计器的筛选器字符串](https://docs.microsoft.com/azure/vs-azure-tools-table-designer-construct-filter-strings)。
 
 下图显示了有效筛选字符串的示例：
 

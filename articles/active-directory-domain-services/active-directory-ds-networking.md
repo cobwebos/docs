@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: b40aa0e105c0e9fac9c9cab63a5b0a2a6116c4c9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a91120e2592e6fdaa38334f36bfd9b67c0f1b50d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300989"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD 域服务的网络注意事项
 ## <a name="how-to-select-an-azure-virtual-network"></a>如何选择 Azure 虚拟网络
@@ -67,7 +69,7 @@ Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保�
 | --- | --- | --- |
 | 443 | 必需 |与 Azure AD 租户同步 |
 | 5986 | 必需 | 用于管理域 |
-| 3389 | 可选 | 用于管理域 |
+| 3389 | 必需 | 用于管理域 |
 | 636 | 可选 | 对托管域进行安全 LDAP (LDAPS) 访问 |
 
 **端口 443（与 Azure AD 同步）**
@@ -78,12 +80,13 @@ Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保�
 **端口 5986（PowerShell 远程处理）**
 * 使用此端口可通过托管域上的 PowerShell 远程处理来执行管理任务。
 * 必须在 NSG 中允许通过此端口访问。 如果不允许访问此端口，则无法更新、配置、备份或监视托管域。
-* 可将此端口的入站访问限制为以下源 IP 地址：52.180.183.8、23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18、104.40.87.209、52.180.179.108、52.175.18.134、52.138.68.41、104.41.159.212、52.169.218.0、52.187.120.237、52.161.110.169、52.174.189.149、13.64.151.161
+* 对于任何新域或具有 ARM 虚拟网络的域，可以将对此端口的入站访问限制为以下源 IP 地址：52.180.179.108、52.180.177.87、13.75.105.168、52.175.18.134、52.138.68.41、52.138.65.157、104.41.159.212、104.45.138.161、52.169.125.119、52.169.218.0、52.187.19.1、52.187.120.237、13.78.172.246、52.161.110.169、52.174.189.149、40.68.160.142、40.83.144.56、13.64.151.161、52.180.183.67、52.180.181.39、52.175.28.111、52.175.16.141、52.138.70.93、52.138.64.115、40.80.146.22、40.121.211.60、52.138.143.173、52.169.87.10、13.76.171.84、52.187.169.156、13.78.174.255、13.78.191.178、40.68.163.143、23.100.14.28、13.64.188.43、23.99.93.197
+* 对于具有经典虚拟网络的域，可以将对此端口的入站访问限制为以下源 IP 地址：52.180.183.8、23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18、104.40.87.209、52.180.179.108、52.175.18.134、52.138.68.41、104.41.159.212、52.169.218.0、52.187.120.237、52.161.110.169、52.174.189.149、13.64.151.161
 * 托管域的域控制器通常不侦听此端口。 只有当需要为托管域执行管理或维护操作时，服务才会在托管域控制器上打开此端口。 一旦操作完成，服务会立即在托管域控制器上关闭此端口。
 
 **端口 3389（远程桌面）**
 * 此端口用于与托管域的域控制器建立远程桌面连接。
-* 可以选择性地通过 NSG 打开此端口。
+* 可将入站访问限制为以下源 IP 地址：207.68.190.32/27、13.106.78.32/27、13.106.174.32/27、13.106.4.96/27
 * 大部分时间下，此端口在托管域上也保持关闭状态。 此机制并非经常使用，因为管理和监视任务是使用 PowerShell 远程处理执行的。 只有在极少数情况下，当 Microsoft 需要远程连接到你的托管域来进行高级故障排除时，才会使用此端口。 一旦故障排除操作完成，此端口会立即关闭。
 
 **端口 636（安全 LDAP）**
@@ -104,7 +107,7 @@ Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保�
 
 ![通过 Internet 进行安全 LDAPS 访问的示例 NSG](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
-详细信息 - [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)。
+详细信息 - [创建网络安全组](../virtual-network/manage-network-security-group.md)。
 
 
 ## <a name="network-connectivity"></a>网络连接
@@ -142,4 +145,4 @@ Azure AD 域服务托管域只能在 Azure 中的单个虚拟网络中启用。
 * [Azure 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
 * [为经典部署模型配置 VNet 到 VNet 连接](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Azure 网络安全组](../virtual-network/security-overview.md)
-* [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [创建网络安全组](../virtual-network/manage-network-security-group.md)

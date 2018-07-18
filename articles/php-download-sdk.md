@@ -1,11 +1,11 @@
 ---
-title: "下载 Azure SDK for PHP"
-description: "了解如何下载和安装 Azure SDK for PHP。"
+title: 下载 Azure SDK for PHP
+description: 了解如何下载和安装 Azure SDK for PHP。
 documentationcenter: php
 services: app-service\web
 author: allclark
 manager: douge
-editor: 
+editor: ''
 ms.assetid: bac355ac-4c25-42f4-8273-c5112eafa8d4
 ms.service: app-service-web
 ms.workload: na
@@ -14,17 +14,20 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
-ms.openlocfilehash: fd3d28b133ef8e646f5c2f1c1127f654daa61b95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cfcf908145e8a384782953e045f9e10fd3c0e8f9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639463"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
+
 ## <a name="overview"></a>概述
+
 Azure SDK for PHP 包括允许针对 Azure 开发、部署和管理 PHP 应用程序的组件。 具体而言，Azure SDK for PHP 包括以下组件：
 
-* **Azure 的 PHP 客户端库**。 这些类库提供用于访问 Azure 功能（例如数据管理服务和云服务）的接口。  
+* **Azure 的 PHP 客户端库**。 这些类库提供用于访问 Azure 功能（例如数据管理服务和云服务）的接口。
 * **适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)**。 这是一组用于部署和管理 Azure 服务（例如 Azure 网站和 Azure 虚拟机）的命令。 Azure CLI 可在任何平台（包括 Mac、Linux 和 Windows）上使用。
 * **Azure PowerShell（仅限 Windows）**。 这是一组用于部署和管理 Azure 服务（例如云服务和虚拟机）的 PowerShell cmdlet。
 * **Azure 模拟器（仅限 Windows）**。 计算和存储模拟器是一系列云服务和数据管理服务的本地模拟器，允许在本地测试应用程序。 Azure 模拟器仅在 Windows 上运行。
@@ -35,32 +38,35 @@ Azure SDK for PHP 包括允许针对 Azure 开发、部署和管理 PHP 应用�
 
 > [!NOTE]
 > 若要使用 Azure 的 PHP 客户端库，则必须安装 PHP 5.5 或更高版本。
-> 
-> 
+>
+>
 
 ## <a name="php-client-libraries-for-azure"></a>Azure 的 PHP 客户端库
+
 Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure 功能（例如，数据管理服务和云服务）的接口。 可以通过 Composer 安装这些库。
 
 有关如何使用 Azure 的 PHP 客户端库的信息，请参阅[如何使用 BLOB 服务][blob-service]、[如何使用表服务][table-service]以及[如何使用队列服务][queue-service]。
 
 ### <a name="install-via-composer"></a>通过 Composer 安装
-1. [安装 Git][install-git]。
 
-    > [AZURE.NOTE] 在 Windows 上，还需要向 PATH 环境变量添加 Git 可执行文件。
+1. [安装 Git][install-git]。 在 Windows 上，还需要向 PATH 环境变量添加 Git 可执行文件。
 
-1. 在项目的根目录中创建名为 **composer.json** 的文件并向其添加以下代码：
-   
+2. 在项目的根目录中创建名为 **composer.json** 的文件并向其添加以下代码：
+
         {
             "require": {
                 "microsoft/windowsazure": "^0.4"
             }
         }
-2. 将 **[composer.phar][composer-phar]** 下载到项目根目录中。
-3. 打开命令提示符并在项目根目录中执行该文件
-   
+
+3. 将 **[composer.phar][composer-phar]** 下载到项目根目录中。
+
+4. 打开命令提示符并在项目根目录中执行该文件
+
         php composer.phar install
 
 ## <a name="azure-powershell-and-azure-emulators"></a>Azure PowerShell 和 Azure 模拟器
+
 Azure PowerShell 是一组用于部署和管理 Azure 服务（例如，云服务和虚拟机）的 PowerShell cmdlet。 Azure 模拟器是一系列云服务和数据管理服务的模拟器，允许在本地测试应用程序。 这些组件仅受 Windows 支持。
 
 安装 Azure PowerShell 和 Azure 模拟器的建议方法是使用 [Microsoft Web 平台安装程序][download-wpi]。 请注意，也可以选择安装其他开发组件，如 PHP、SQL Server、Microsoft Drivers for SQL Server for PHP 和 WebMatrix。
@@ -68,10 +74,12 @@ Azure PowerShell 是一组用于部署和管理 Azure 服务（例如，云服�
 有关如何使用 Azure PowerShell 的信息，请参阅[如何使用 Azure PowerShell][powershell-tools]。
 
 ## <a name="azure-cli"></a>Azure CLI
+
 Azure CLI 是一组用于部署和管理 Azure 服务（例如 Azure 网站和 Azure 虚拟机）的命令。 有关安装 Azure CLI 的信息，请参阅[安装 Azure CLI](cli-install-nodejs.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [PHP 开发人员中心](/develop/php/)。
+
+有关详细信息，请参阅 [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [install-php]: http://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer

@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: 4ea48300e83e1faa1250d2fba7c37a82825c820f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01635b184903b88fa12e23c370caa65bb1eb377c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37024656"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习常见问题：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -73,7 +75,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 **Azure 机器学习的主要更新有哪些？**
 
-如需最新更新，请参阅 [Azure 机器学习新增功能](whats-new.md)。
+如需最新更新，请参阅 [Azure 机器学习新增功能](../../active-directory/fundamentals/whats-new.md)。
 
 ## <a name="machine-learning-studio-questions"></a>机器学习工作室问题
 ### <a name="import-and-export-data-for-machine-learning"></a>导入和导出机器学习的数据
@@ -173,7 +175,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 **是否可以使用内置模块可视化神经网络模型的层？**
 
-不会。
+不是。
 
 **是否可以使用 C# 或其他语言创建自己的模块？**
 
@@ -210,7 +212,7 @@ Azure 机器学习有两种类型的 Web 服务：
 ### <a name="create"></a>创建
 **是否可以在本地或者在没有连接 Internet 的应用程序中部署模型？**
 
-不会。
+不是。
 
 **所有 Web 服务是否有预期的基准延迟？**
 
@@ -251,7 +253,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 **R 作业是否分散在节点之间？**
 
-不会。  
+不是。  
 
 **可以将多少数据用于训练？**
 
@@ -280,7 +282,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 **能否调整运行 Web 服务的虚拟机的大小？**
 
-不会。  
+不是。  
 
 ## <a name="security-and-availability"></a>安全性和可用性
 **默认情况下，哪些人可以访问 Web 服务的 HTTP 终结点？如何限制对终结点的访问？**
@@ -436,7 +438,7 @@ API 计算小时数是使用机器学习计算资源运行 API 调用所花费�
 支持新 Web 服务的三个生产区域提供新的计费计划：
 
 * 美国中南部
-* 欧洲西部
+* 西欧
 * 东南亚
 
 **如果在多个区域拥有 Web 服务，是否每个区域都需要一个计划？**
@@ -472,7 +474,7 @@ BES 工作负荷的计费方式相同， 但 API 事务成本表示提交的批�
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Azure 机器学习免费层和标准层
 **Azure 机器学习免费层中包括什么？**
 
-Azure 机器学习免费层旨在提供针对 Azure 机器学习工作室的深入介绍。 只需使用 Microsoft 帐户即可注册。 免费层包括每个 [Microsoft 帐户](https://www.microsoft.com/account/default.aspx)免费访问一个 Azure 机器学习工作室工作区。 在此层中，可以使用最多 10 GB 存储，并将模型作为过渡 API 进行操作。 免费层工作负载不在 SLA 范围内，只适合开发和个人使用。 
+Azure 机器学习免费层旨在提供针对 Azure 机器学习工作室的深入介绍。 只需使用 Microsoft 帐户即可注册。 免费层包括每个 [Microsoft 帐户](https://account.microsoft.com/account)免费访问一个 Azure 机器学习工作室工作区。 在此层中，可以使用最多 10 GB 存储，并将模型作为过渡 API 进行操作。 免费层工作负载不在 SLA 范围内，只适合开发和个人使用。 
 
 免费层工作区存在以下限制：
 

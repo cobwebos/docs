@@ -1,0 +1,337 @@
+- name: LUIS 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是语言理解？
+      href: Home.md
+    - name: 支持的语言
+      href: luis-supported-languages.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 构建预生成域应用
+      href: luis-get-started-create-app.md
+    - name: 使用 API
+      items:
+        - name: 使用终结点查询获取表述预测
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-get-intent.md
+            - name: Java
+              href: luis-get-started-java-get-intent.md
+            - name: JavaScript
+              href: luis-get-started-js-get-intent.md
+            - name: Node.js
+              href: luis-get-started-node-get-intent.md
+            - name: Python
+              href: luis-get-started-python-get-intent.md
+            - name: PHP
+              href: luis-get-started-php-get-intent.md
+            - name: Ruby
+              href: luis-get-started-ruby-get-intent.md
+        - name: 将表述添加到意向并训练应用
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-add-utterance.md
+            - name: Java
+              href: luis-get-started-java-add-utterance.md
+            - name: JavaScript
+              href: luis-get-started-javascript-add-utterance.md
+            - name: Node.js
+              href: luis-get-started-node-add-utterance.md
+            - name: Python
+              href: luis-get-started-python-add-utterance.md
+            - name: PHP
+              href: luis-get-started-php-add-utterance.md
+            - name: Ruby
+              href: luis-get-started-ruby-add-utterance.md
+- name: 教程
+  items:
+    - name: 构建应用
+      items:
+        - name: 1. 使用自定义域
+          href: luis-quickstart-intents-only.md
+        - name: 2. 添加预构建的意向和实体
+          href: luis-tutorial-prebuilt-intents-entities.md
+        - name: 3. 添加正则表达式实体
+          href: luis-quickstart-intents-regex-entity.md
+        - name: 4. 添加列表实体
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: 5. 添加分层的实体
+          href: luis-quickstart-intent-and-hier-entity.md
+        - name: 6. 添加复合实体
+          href: luis-tutorial-composite-entity.md
+        - name: 7. 添加简单实体和短语列表
+          href: luis-quickstart-primary-and-secondary-data.md
+        - name: 8. 添加 keyPhrase 实体
+          href: luis-quickstart-intent-and-key-phrase.md
+        - name: 9. 添加情绪分析
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: 改进应用
+      items:
+        - name: 查看终结点表述
+          href: luis-tutorial-review-endpoint-utterances.md
+        - name: 使用批处理测试
+          href: luis-tutorial-batch-testing.md
+        - name: 使用模式
+          href: luis-tutorial-pattern.md
+- name: 示例
+  items:
+    - name: 代码示例
+      href: 'https://github.com/Microsoft/LUIS-Samples'
+- name: 概念
+  items:
+    - name: 最佳实践
+      href: luis-concept-best-practices.md
+    - name: 创作应用
+      items:
+        - name: 创作周期
+          href: luis-concept-app-iteration.md
+        - name: 协作
+          href: luis-concept-collaborator.md
+        - name: 版本控制
+          href: luis-concept-version.md
+    - name: 设计模型
+      items:
+        - name: 意向
+          href: luis-concept-intent.md
+        - name: 实体
+          href: luis-concept-entity-types.md
+        - name: 陈述
+          href: luis-concept-utterance.md
+        - name: 角色
+          href: luis-concept-roles.md
+    - name: 提高应用性能
+      items:
+        - name: 预测分数
+          href: luis-concept-prediction-score.md
+        - name: 查看终结点表述
+          href: luis-concept-review-endpoint-utterances.md
+        - name: 短语列表
+          href: luis-concept-feature.md
+        - name: 模式
+          href: luis-concept-patterns.md
+    - name: 数据管理
+      items:
+        - name: 更改数据
+          href: luis-concept-data-alteration.md
+        - name: 转换数据
+          href: luis-concept-data-conversion.md
+        - name: 提取数据
+          href: luis-concept-data-extraction.md
+        - name: 数据存储
+          href: luis-concept-data-storage.md
+    - name: 测试
+      items:
+        - name: 交互式测试
+          href: luis-concept-test.md
+        - name: 批处理测试
+          href: luis-concept-batch-test.md
+    - name: Enterprise
+      items:
+        - name: 设计策略
+          href: luis-concept-enterprise.md
+    - name: “安全”
+      items:
+        - name: 应用访问
+          href: luis-concept-security.md
+        - name: 创作和终结点密钥
+          href: luis-concept-keys.md
+- name: 操作指南
+  items:
+    - name: 规划应用
+      href: luis-how-plan-your-app.md
+    - name: 创建新应用
+      href: luis-how-to-start-new-app.md
+    - name: 构建模型
+      items:
+        - name: 添加意向
+          href: luis-how-to-add-intents.md
+        - name: 添加表达
+          href: luis-how-to-add-example-utterances.md
+        - name: 添加实体
+          href: luis-how-to-add-entities.md
+        - name: 使用 API
+          items:
+            - name: 使用 Node.js 以编程方式构建应用
+              href: luis-tutorial-node-import-utterances-csv.md
+            - name: 通过 Node.js 使用列表实体匹配确切文本
+              href: luis-tutorial-list-entity.md
+    - name: 集成
+      items:
+        - name: 使用必应拼写检查 API v7
+          href: luis-tutorial-bing-spellcheck.md
+        - name: 使用语音服务
+          href: luis-tutorial-speech-to-intent.md
+        - name: 使用机器人
+          items:
+            - name: Web 应用机器人
+              items:
+                - name: Node.js
+                  href: luis-nodejs-tutorial-build-bot-framework-sample.md
+                - name: 'C#'
+                  href: luis-csharp-tutorial-build-bot-framework-sample.md
+            - name: Application Insights
+              items:
+                - name: Node.js
+                  href: luis-tutorial-function-appinsights.md
+                - name: 'C#'
+                  href: luis-tutorial-bot-csharp-appinsights.md
+    - name: 提高预测准确性
+      items:
+        - name: 查看终结点表述
+          href: luis-how-to-review-endoint-utt.md
+        - name: 添加短语列表
+          href: luis-how-to-add-features.md
+        - name: 添加模式
+          href: luis-how-to-model-intent-pattern.md
+    - name: 训练
+      href: luis-how-to-train.md
+    - name: 测试
+      items:
+        - name: 交互式测试
+          href: interactive-test.md
+        - name: 批处理测试
+          href: luis-how-to-batch-test.md
+    - name: 发布应用
+      href: luis-how-to-publish-app.md
+    - name: 使用预构建的模型
+      items:
+        - name: 使用实体
+          href: luis-prebuilt-entities.md
+        - name: 使用域
+          href: luis-how-to-use-prebuilt-domains.md
+    - name: 管理应用
+      items:
+        - name: 使用仪表板
+          href: luis-how-to-use-dashboard.md
+        - name: 创建终结点密钥
+          href: luis-how-to-azure-subscription.md
+        - name: 将终结点密钥添加到应用
+          href: luis-how-to-manage-keys.md
+        - name: 管理版本
+          href: luis-how-to-manage-versions.md
+        - name: 与其他作者协作
+          href: luis-how-to-collaborate.md
+        - name: 管理创作密钥
+          href: luis-how-to-account-settings.md
+        - name: 管理终结点使用情况
+          items:
+            - name: 使用 PowerShell 查看终结点使用情况
+              href: luis-how-to-manage-from-cloud-shell.md
+            - name: 使用流量管理器将终结点配额分布在各个密钥上
+              href: traffic-manager.md
+    - name: 迁移到 V2 API
+      href: migration-v1-to-v2.md
+    - name: 以编程方式查找区域
+      items:
+        - name: '使用 C#'
+          href: find-region-csharp.md
+        - name: 使用 Node.js
+          href: find-region-nodejs.md
+- name: 引用
+  items:
+    - name: 用户隐私
+      href: luis-reference-gdpr.md
+    - name: 区域
+      href: luis-reference-regions.md
+    - name: 边界
+      href: luis-boundaries.md
+    - name: 预构建的实体参考
+      items:
+        - name: 每个语言区域的实体
+          href: luis-reference-prebuilt-entities.md
+        - name: 年龄实体
+          href: luis-reference-prebuilt-age.md
+        - name: 货币实体
+          href: luis-reference-prebuilt-currency.md
+        - name: DatetimeV2 实体
+          href: luis-reference-prebuilt-datetimev2.md
+        - name: 维度实体
+          href: luis-reference-prebuilt-dimension.md
+        - name: 已弃用的实体
+          href: luis-reference-prebuilt-deprecated.md
+        - name: 电子邮件实体
+          href: luis-reference-prebuilt-email.md
+        - name: KeyPhrase 实体
+          href: luis-reference-prebuilt-keyphrase.md
+        - name: 数字实体
+          href: luis-reference-prebuilt-number.md
+        - name: 序号实体
+          href: luis-reference-prebuilt-ordinal.md
+        - name: 百分比实体
+          href: luis-reference-prebuilt-percentage.md
+        - name: Phonenumber 实体
+          href: luis-reference-prebuilt-phonenumber.md
+        - name: 温度实体
+          href: luis-reference-prebuilt-temperature.md
+        - name: URL 实体
+          href: luis-reference-prebuilt-url.md
+    - name: 预构建的域参考
+      href: luis-reference-prebuilt-domains.md
+    - name: 创作 V2 API
+      href: 'https://aka.ms/luis-authoring-apis'
+    - name: 终结点 V2 API
+      href: 'https://aka.ms/luis-endpoint-apis'
+    - name: HTTP 代码
+      href: luis-reference-response-codes.md
+    - name: Azure CLI 2.0
+      href: 'https://aka.ms/az-cli-cognitiveservices'
+    - name: Azure RM PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: SDK
+      items:
+        - name: Android
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
+        - name: Node.js
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Go
+          href: 'https://aka.ms/luis-sdk-go'
+        - name: Java
+          href: 'https://aka.ms/luis-java-sdk'
+        - name: Python
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
+        - name: .Net 终结点
+          href: 'https://aka.ms/luis-endpoint-sdk'
+        - name: .Net 创作
+          href: 'https://aka.ms/luis-authoring-sdk'
+- name: 相关内容
+  items:
+    - name: Bot 框架
+      href: 'https://dev.botframework.com/'
+    - name: 'Bot Builder 3.x SDK C#'
+      href: 'https://github.com/Microsoft/BotBuilder'
+    - name: 'Bot Builder 4.x SDK C#'
+      href: 'https://github.com/Microsoft/botbuilder-dotnet'
+    - name: QnA maker
+      href: 'https://qnamaker.ai/'
+    - name: 必应语音 API
+      href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+    - name: 必应拼写检查 API
+      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+    - name: 文本分析
+      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: 识别器 - 文本
+      href: 'https://github.com/Microsoft/Recognizers-Text'
+- name: 资源
+  items:
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure 路线图
+      href: 'https://aka.ms/luis-roadmap'
+    - name: 术语表
+      href: luis-glossary.md
+    - name: 常见问题解答
+      href: luis-resources-faq.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/LUIS'
+    - name: UserVoice
+      href: 'https://aka.ms/luis-uservoice-forum'
+    - name: 搜索
+      href: 'https://docs.microsoft.com/search/index?search=LUIS'
+    - name: 博客
+      href: 'https://blog.botframework.com/category/luis/'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'

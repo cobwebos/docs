@@ -13,13 +13,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/26/2018
+  ms.date: 6/13/2018
   ms.author: kumud
-  ms.openlocfilehash: bb18530a0925b88475d2c0979e4e83b46bb777ca
-  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+  ms.openlocfilehash: e8f39ef9d80283c7dffac8d4f10e38cdf643d16b
+  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/03/2018
+  ms.lasthandoff: 07/02/2018
+  ms.locfileid: "37343070"
 abstract:
   description: 了解如何使用 Azure DNS。 快速入门、教程、示例等介绍了如何设置和管理域名的 DNS 区域和记录。
 sections:
@@ -45,12 +46,13 @@ sections:
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何将域名委派给 Azure DNS，然后使用 Azure DNS 为 Web 应用创建自定义 DNS 记录。
+    text: 了解如何将域托管到 Azure DNS 中，如何使用 Azure DNS 为 Web 应用创建自定义 DNS 记录，以及如何创建专用 DNS 区域和记录。
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">将域委托给 Azure DNS</a>
+    - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">在 Azure DNS 中托管域</a>
     - html: <a href="/azure/dns/dns-web-sites-custom-domain">为 Web 应用创建自定义 DNS 记录</a>
+    - html: <a href="/azure/dns/private-dns-getstarted-powershell">创建专用 DNS 区域和记录</a>
 - title: 免费 Pluralsight 视频培训
   items:
   - type: list
@@ -90,6 +92,6 @@ sections:
     - title: 命令行
       html: <p><a href="/powershell/resourcemanager/azurerm.dns">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
     - title: 语言
-      html: <p><a href="/dotnet/api/microsoft.azure.management.dns.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.dns">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.js</a></p><p><a href="http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0">Ruby</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html">Python</a></p>
+      html: <p><a href="/dotnet/api/microsoft.azure.management.dns.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.dns">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.js</a></p><p><a href="http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0">Ruby</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.dns">Python</a></p>
     - title: REST
       html: <p><a href="/rest/api/dns/">REST API 参考</a></p>

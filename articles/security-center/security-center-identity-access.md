@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774822"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center"></a>在 Azure 安全中心监视标识和访问
 本文介绍如何使用 Azure 安全中心监视用户的标识和访问活动。

@@ -1,12 +1,12 @@
 ---
-title: "管理 StorSimple 8000 系列的备份策略 | Microsoft Docs"
-description: "介绍如何在 StorSimple 8000 系列设备上使用 StorSimple 设备管理器服务创建和管理手动备份、备份计划与备份保留。"
+title: 管理 StorSimple 8000 系列的备份策略 | Microsoft Docs
+description: 介绍如何在 StorSimple 8000 系列设备上使用 StorSimple 设备管理器服务创建和管理手动备份、备份计划与备份保留。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,11 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 569dbfdeb7dcd526cb5a54b487ea1bfb59b13cc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681571"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>在 Azure 门户中使用 StorSimple 设备管理器服务管理备份策略
 

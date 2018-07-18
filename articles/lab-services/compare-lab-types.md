@@ -1,6 +1,6 @@
 ---
 title: 比较 Azure 实验室服务中不同类型的实验室 | Microsoft Docs
-description: 介绍并比较可使用 Azure 实验室服务（以前称为开发测试实验室）创建的不同类型的实验室。
+description: 介绍并比较可使用 Azure 实验室服务创建的不同类型的实验室
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 22a1c90dd1a1ca305431d91a801e5293a6d08703
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7e86ba2b7fc729bd4663503282a936a5eaddf3ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361176"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637867"
 ---
-# <a name="compare-managed-and-devtest-labs-in-azure-lab-services"></a>比较 Azure 实验室服务中的托管实验室和开发测试实验室
-可以创建两种类型的实验室，使用 Azure 实验室服务创建的托管实验室和使用 Azure 开发测试实验室创建的自定义实验室。 如果希望仅向实验室中输入所需内容，并让服务设置和管理实验室所需基础结构，请选择一个托管实验室。 目前，教室实验室是唯一可使用 Azure 实验室服务创建的托管实验室。 如果希望管理自己的基础结构，请使用 Azure 开发测试实验室创建自定义实验室。
+# <a name="compare-managed-labs-in-azure-lab-services-and-devtest-labs"></a>比较 Azure 实验室服务中的托管实验室和开发测试实验室
+可以创建两种类型的实验室，使用 Azure 实验室服务创建的托管实验室和使用 Azure 开发测试实验室创建的自定义实验室。 如果希望仅向实验室中输入所需内容，并让服务设置和管理实验室所需基础结构，请选择一个托管实验室。 目前，教室实验室是唯一可使用 Azure 实验室服务创建的托管实验室。 如果希望管理自己的基础结构，请使用 Azure 开发测试实验室创建实验室。
 
 以下各节提供了有关这些实验室的更多详细信息。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "34361176"
 
 
 ## <a name="devtest-labs"></a>开发测试实验室
-有时用户可能希望在自己的订阅中自行管理所有基础结构和配置。 若要执行此操作，可以在 Azure 门户中使用 Azure 开发测试实验室创建自定义实验室。 对于这些实验室，无需创建实验室帐户。 这些实验不会出现在实验室帐户（为托管实验室而创建）中。  
+有时用户可能希望在自己的订阅中自行管理所有基础结构和配置。 为此，可以在 Azure 门户中使用 Azure 开发测试实验室创建实验室。 对于这些实验室，无需创建实验室帐户。 这些实验不会出现在实验室帐户（为托管实验室而创建）中。  
 
 下面是一些**开发测试实验室用例**： 
 
@@ -64,5 +64,5 @@ ms.locfileid: "34361176"
 ## <a name="next-steps"></a>后续步骤
 开始使用 Azure 实验室服务设置实验室：
 
-- [设置课堂实验室](tutorial-setup-classroom-lab.md)
-- [设置自定义实验室](tutorial-create-custom-lab.md)
+- [设置课堂实验室](classroom-labs/tutorial-setup-classroom-lab.md)
+- [设置实验室](tutorial-create-custom-lab.md)

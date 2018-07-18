@@ -1,22 +1,20 @@
 ---
 title: Azure IoT 中心简介 | Microsoft Docs
 description: 了解 Azure IoT 中心。 此 IoT 服务针对可缩放数据引入、设备管理和安全性而构建。
-services: iot-hub
-keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 04/27/2018
+ms.date: 07/04/2018
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.openlocfilehash: 7ba74834e1c3aad5915959e0457b6e034e4a49ed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: iot-hub
+manager: briz
+ms.openlocfilehash: 0e54c48eb63c5b70626e72f83de6d3676710d4c4
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860150"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
@@ -110,4 +108,4 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 
 若要尝试端对端的 IoT 解决方案，请参阅 IoT 中心快速入门：
 
-* [快速入门：将遥测数据从设备发送到 IoT 中心](iot-hub-get-started.md)
+* [快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)

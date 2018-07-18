@@ -9,23 +9,22 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8305a447ac75cf4c72a332910c9c4c90c1d8eac6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061431"
 ---
-# <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识（公共预览版）
+# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识
 
 > [!NOTE] 
-> 应用服务和 Azure Functions 的托管服务标识目前提供预览版。 目前不支持 Linux 版应用服务和用于容器的 Web 应用。
-
+> Linux 版应用服务和用于容器的 Web 应用目前不支持托管服务标识。
 
 > [!Important] 
-> 如果应用跨订阅/租户迁移，应用服务和 Azure Functions 的托管服务标识将不会按预期工作。 应用将需要获取一个新标识，在未删除站点本身的情况下，现有标识将不会正确删除。 将需要使用新标识重新创建应用，下游资源将需要可以访问更新的策略，以便使用新标识。
-
+> 如果应用跨订阅/租户迁移，应用服务和 Azure Functions 的托管服务标识将不会按预期工作。 应用将需要获取新标识，这可以通过禁用并重新启用该功能来完成。 请参阅下面的[删除标识](#remove)。 下游资源还需要更新访问策略才能使用新标识。
 
 本主题介绍如何为应用服务和 Azure Functions 应用程序创建托管应用标识，以及如何使用它来访问其他资源。 借助 Azure Active Directory 的托管服务标识，应用可以轻松访问其他受 AAD 保护的资源（如 Azure Key Vault）。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关托管服务标识的详细信息，请参阅[托管服务标识概述](../active-directory/managed-service-identity/overview.md)。
 
@@ -76,6 +75,31 @@ ms.lasthandoff: 04/28/2018
     az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
+### <a name="using-azure-powershell"></a>使用 Azure PowerShell
+
+以下步骤将指导你完成使用 Azure PowerShell 创建 Web 应用并为其分配标识的操作：
+
+1. 必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Login-AzureRmAccount` 创建与 Azure 的连接。
+
+2. 使用 Azure PowerShell 创建 Web 应用程序。 有关如何将 Azure PowerShell 用于应用服务的更多示例，请参阅[应用服务 PowerShell 示例](../app-service/app-service-powershell-samples.md)：
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzureRmResourceGroup -Name myResourceGroup -Location $location
+    
+    # Create an App Service plan in Free tier.
+    New-AzureRmAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    
+    # Create a web app.
+    New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    ```
+
+3. 运行 `identity assign` 命令为此应用程序创建标识：
+
+    ```azurepowershell-interactive
+    Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    ```
+
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 
 Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详细了解如何部署到应用服务和 Functions，请参阅[在应用服务中自动执行资源部署](../app-service/app-service-deploy-complex-application-predictably.md)和[在 Azure Functions 中自动执行资源部署](../azure-functions/functions-infrastructure-as-code.md)。
@@ -120,7 +144,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 }
 ```
 
-其中 `<TENANTID>` 和 `<PRINCIPALID>` 替换为 GUID。 tenantId 属性标识应用程序所属的 AAD 租户。 principalId 是应用程序新标识的唯一标识符。 在 AAD 中，该应用程序的名称与你为应用服务或 Azure Functions 实例提供的名称相同。
+其中 `<TENANTID>` 和 `<PRINCIPALID>` 替换为 GUID。 tenantId 属性标识该标识所属的 AAD 租户。 principalId 是应用程序新标识的唯一标识符。 在 AAD 中，服务主体的名称与你为应用服务或 Azure Functions 实例提供的名称相同。
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>获取 Azure 资源的令牌
 
@@ -204,7 +228,7 @@ Content-Type: application/json
 ```
 
 ### <a name="code-examples"></a>代码示例
-使用 C# 实现此请求：
+<a name="token-csharp"></a>使用 C# 发出此请求：
 ```csharp
 public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
     HttpClient client = new HttpClient();
@@ -215,7 +239,7 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
 > [!TIP]
 > 对于 .NET 语言，也可使用 [Microsoft.Azure.Services.AppAuthentication](#asal) 而不是自己创建此请求。
 
-在 Node.JS 中：
+<a name="token-js"></a>在 Node.JS 中：
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
@@ -230,7 +254,7 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-在 PowerShell 中运行：
+<a name="token-powershell"></a>在 PowerShell 中：
 ```powershell
 $apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -238,6 +262,21 @@ $tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVers
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
+
+## <a name="remove"></a>删除标识
+
+可以使用门户、PowerShell 或 CLI 以与创建时相同的方式禁用该功能，从而删除标识。 在 REST/ARM 模板协议中，通过将类型设置为“None”来完成此操作：
+
+```json
+"identity": {
+    "type": "None"
+}    
+```
+
+以这种方式删除标识也将从 AAD 中删除主体。 删除应用资源时，将自动从 AAD 中删除系统分配的标识。
+
+> [!NOTE] 
+> 还可以设置一个应用程序设置 (WEBSITE_DISABLE_MSI)，它只禁用本地令牌服务。 但是，它会原地保留标识，工具仍然会将 MSI 显示为“打开”或“启用”。 因此，建议不要使用此设置。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 128a6bffe4e604eb4e02a10f13d561a336fc8c61
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f56ac74c62334ef64fca45a6430a539e3c4c372c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354412"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38442530"
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>将本地目录与 Azure Active Directory 集成
 Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 本主题介绍计划、部署和操作步骤。 其中统合了与这些操作相关的主题的链接。
@@ -32,8 +33,9 @@ Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样�
 
 > 
 > - 将用户同步到 Azure AD 是一项**免费功能**，不需要客户付费购买任何订阅。
->- 同步的用户**不会自动获得***任何*许可证。 管理员仍对许可证分配拥有总体控制权。 
+> - 同步的用户**不会自动获得***任何*许可证。 管理员仍对许可证分配拥有总体控制权。 
 > - Microsoft 建议让 IT 管理员同步其所有用户。 这不仅可以解除阻止用户访问任何 Azure AD 集成资源，而且还能为 IT 管理员提供更宽广的视图，让他们查看其用户正在访问哪些应用程序。 
+> - Microsoft 强烈建议不要在 AAD 中将用户与管理员角色同步。
 
 ![什么是 Azure AD Connect](media/active-directory-aadconnect/arch.png)
 

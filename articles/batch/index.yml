@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "批处理文档"
+title: 批处理文档
 metadata:
-  title: "Batch 文档 - 教程和 API 参考 | Microsoft Docs"
-  description: "使用 Batch 在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 定义 Azure 计算资源，以并行执行或大规模执行应用程序，无需手动配置或管理基础结构。 按要求计划计算密集型任务并动态添加或删除计算资源。 使用我们的快速入门、教程和示例了解如何使用 Azure Batch。"
+  title: Batch 文档 - 教程和 API 参考 | Microsoft Docs
+  description: 使用 Batch 在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 定义 Azure 计算资源，以并行执行或大规模执行应用程序，无需手动配置或管理基础结构。 按要求计划计算密集型任务并动态添加或删除计算资源。 使用我们的快速入门、教程和示例了解如何使用 Azure Batch。
   services: batch
   author: czeumault
   manager: carolz
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 02/28/2018
+  ms.locfileid: "29686565"
 abstract:
-  description: "使用 Batch 在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 定义 Azure 计算资源，以并行执行或大规模执行应用程序，无需手动配置或管理基础结构。 按要求计划计算密集型任务并动态添加或删除计算资源。 使用我们的快速入门、教程和示例了解如何使用 Azure Batch。"
+  description: 使用 Batch 在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 定义 Azure 计算资源，以并行执行或大规模执行应用程序，无需手动配置或管理基础结构。 按要求计划计算密集型任务并动态添加或删除计算资源。 使用我们的快速入门、教程和示例了解如何使用 Azure Batch。
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解如何在 Azure 中运行第一个 Batch 作业。"
+    text: 了解如何在 Azure 中运行第一个 Batch 作业。
   - type: list
     style: icon48
     items:
@@ -34,7 +35,7 @@ sections:
       href: quick-create-cli
     - image:
         src: https://docs.microsoft.com/en-us/media/common/i_portal.svg
-      text: "Azure 门户"
+      text: Azure 门户
       href: quick-create-portal
     - image:
         src: https://docs.microsoft.com/en-us/media/logos/logo_NET.svg
@@ -44,33 +45,33 @@ sections:
         src: https://docs.microsoft.com/en-us/media/logos/logo_python.svg
       text: Python
       href: quick-run-python
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何在 Batch 中运行计算密集型工作负荷。"
+    text: 了解如何在 Batch 中运行计算密集型工作负荷。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-parallel-dotnet\">使用 .NET SDK 进行并行文件处理</a>"
-    - html: "<a href=\"tutorial-parallel-python\">使用 Python SDK 进行并行文件处理</a>"
-    - html: "<a href=\"tutorial-rendering-cli\">使用 Arnold 进行场景呈现</a>"
-    - html: "<a href=\"tutorial-r-doazureparallel\">并行 R 模拟</a>"
-- title: "示例"
+    - html: <a href="tutorial-parallel-dotnet">使用 .NET SDK 进行并行文件处理</a>
+    - html: <a href="tutorial-parallel-python">使用 Python SDK 进行并行文件处理</a>
+    - html: <a href="tutorial-rendering-cli">使用 Arnold 进行场景呈现</a>
+    - html: <a href="tutorial-r-doazureparallel">并行 R 模拟</a>
+- title: 示例
   items:
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="cli-samples">Azure CLI</a>
-- title: "引用"
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "命令行"
+    - title: 命令行
       html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/azurerm.batch">Azure PowerShell</a></p>
-    - title: "语言"
+    - title: 语言
       html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/batchservice\">Batch 服务 REST API</a></p><p><a href=\"/rest/api/batchmanagement/\">Batch 管理 REST API</a></p>"
+      html: <p><a href="/rest/api/batchservice">Batch 服务 REST API</a></p><p><a href="/rest/api/batchmanagement/">Batch 管理 REST API</a></p>

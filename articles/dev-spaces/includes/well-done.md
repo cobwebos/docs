@@ -10,20 +10,20 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: f1e997b9e7f948f29cce940574fe7db34a503dc6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: abb7b3bbdbf16760db8595261ea8e543b6ed05f2
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199086"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939150"
 ---
-## <a name="well-done"></a>做得好！
+## <a name="well-done"></a>干得不错！
 你已完成入门指南！ 你已了解如何：
 
 > [!div class="checklist"]
-> * 在 Azure 中创建针对开发进行了优化、基于 Kubernetes 的环境。
+> * 使用 Azure 中的托管 Kubernetes 群集设置 Azure Dev Spaces。
 > * 在容器中使用 VS Code 和命令行以迭代方式开发代码。
 > * 独立开发两个独立的服务，并使用 Kubernetes 的 DNS 服务发现来调用另一个服务。
 > * 在团队环境中高效地开发和测试代码。
 
-现在，已探索了 Azure Dev Spaces，请[与团队成员共享你的开发环境](../how-to/share-dev-spaces.md)，并帮助他们了解一起协作是多么容易。
+现在，已探索了 Azure Dev Spaces，请[与团队成员共享你的开发空间](../how-to/share-dev-spaces.md)，并帮助他们了解一起协作是多么容易。

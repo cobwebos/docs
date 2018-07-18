@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 中将大量数据移入/移出云存储 | Microsoft Docs"
-description: "将数据移入和移出 Azure 存储的不同方法概述。"
+title: 在 Azure 中将大量数据移入/移出云存储 | Microsoft Docs
+description: 将数据移入和移出 Azure 存储的不同方法概述。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: JarrettRenshaw
 manager: msmets
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984589"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>将数据移动到和移出 Azure 存储
 如果想将本地数据移动到 Azure 存储（或执行相反的操作），有许多种方式可以执行此操作。 最适合方法将取决于方案。 本文将提供不同方案以及针对每个方案的适当产品/服务的快速概述。

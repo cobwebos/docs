@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a628374841126a750ebf6881f8adec66340c1d29
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b10fbd953eb9ca904043973ebc1f7c6adb9f9abc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178339"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047381"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "32178339"
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> 本文适用于 Azure 数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[在数据工厂版本 2 中使用存储过程活动转换数据](../transform-data-using-stored-procedure.md)。
+> 本文适用于 Azure 数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用存储过程活动转换数据](../transform-data-using-stored-procedure.md)。
 
 ## <a name="overview"></a>概述
 可使用数据工厂[管道](data-factory-create-pipelines.md)中的数据转换活动将原始数据转换和处理为预测和见解。 存储过程活动是数据工厂支持的转换活动之一。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和数据工厂中支持的转换活动。

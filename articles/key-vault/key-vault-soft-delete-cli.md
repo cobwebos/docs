@@ -1,7 +1,7 @@
 ---
-ms.assetid: 
-title: "Azure Key Vault - 如何将软删除与 CLI 配合使用"
-description: "使用 CLI 代码剪辑进行软删除的用例示例"
+ms.assetid: ''
+title: Azure Key Vault - 如何将软删除与 CLI 配合使用
+description: 使用 CLI 代码剪辑进行软删除的用例示例
 author: lleonard-msft
 manager: mbaldwin
 ms.service: key-vault
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927968"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 

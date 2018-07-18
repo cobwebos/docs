@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f2d0b009c4451a4108222ac7aa7954ba6dd86699
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868598"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869001"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -53,7 +53,7 @@ ms.locfileid: "33868598"
 
 如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议至少选择两个身份验证方法，以便为用户提供更大的灵活性。
 
-* Email
+* 电子邮件
 * 移动电话
 * 办公电话
 * 安全提问
@@ -154,6 +154,8 @@ ms.locfileid: "33868598"
 
 自定义安全问题的最大长度为 200 个字符。
 
+要查看密码重置门户和不同本地化语言中的问题，请将“?mkt=<Locale>”附加到密码重置 URL 的末尾，后跟本地化为西班牙语的示例 [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)。
+
 ### <a name="security-question-requirements"></a>安全问题要求
 
 * 答案包含的字符数下限为 3 个字符。
@@ -233,7 +235,7 @@ ms.locfileid: "33868598"
 所有企业到企业 (B2B) 配置完全支持密码重置和更改。 以下三种情况支持 B2B 用户密码重置：
 
    * **已有 Azure AD 租户的合作伙伴组织中的用户**：如果与你合作的组织已有 Azure AD 租户，我们将遵守该租户中已启用的任何密码重置策略。 要使密码重置正常工作，合作伙伴组织只需确保启用 Azure AD SSPR。 这不会给 Office 365 客户造成额外的费用，可以遵循[密码管理入门](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)指南中的步骤启用 SSPR。
-   * 通过自助注册**注册的用户**：如果合作组织使用[自助注册](../active-directory-self-service-signup.md)功能来访问租户，我们将允许他们使用已注册的电子邮件来重置密码。
+   * 通过自助注册**注册的用户**：如果合作组织使用[自助注册](../users-groups-roles/directory-self-service-signup.md)功能来访问租户，我们将允许他们使用已注册的电子邮件来重置密码。
    * **B2B 用户**：使用新的 [Azure AD B2B 功能](../active-directory-b2b-what-is-azure-ad-b2b.md)创建的任何新 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来重置其密码。
 
 若要测试此方案，请通过这些合作伙伴用户之一转到 http://passwordreset.microsoftonline.com。 如果他们定义了备用电子邮件或身份验证电子邮件，则密码重置就能按预期方式工作。

@@ -2,17 +2,18 @@
 title: 适用于 Azure 机器学习的硬件加速 FPGA 包
 description: 了解适用于 Azure 机器学习用户的 Python 包。
 ms.service: machine-learning
-ms.component: core
+ms.component: studio
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: routlaw
 author: rloutlaw
 ms.date: 05/07/2018
-ms.openlocfilehash: 905f6943470acfd3051a33db6f6f3269470406d7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e680ef34be1d5dae2942c432de5e81fe620bbdc4
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832972"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure 机器学习硬件加速包
 
@@ -50,7 +51,7 @@ Azure 机器学习硬件加速包是适用于 Azure 机器学习的 Python pip �
     conda env create -f aml-real-time-ai/environment.yml
     ```
 
-6. 使用以下命令激活该环境：
+6. 使用以下命令激活环境：
 
     ```
     conda activate amlrealtimeai

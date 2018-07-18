@@ -1,12 +1,12 @@
 ---
-title: "Azure 服务总线的托管服务标识预览版 | Microsoft Docs"
-description: "将托管服务标识与 Azure 服务总线配合使用"
+title: Azure 服务总线的托管服务标识预览版 | Microsoft Docs
+description: 将托管服务标识与 Azure 服务总线配合使用
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874646"
 ---
 # <a name="managed-service-identity-preview"></a>托管服务标识（预览）
 

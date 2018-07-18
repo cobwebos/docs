@@ -1,23 +1,25 @@
 ---
-title: "Azure Active Directory 门户中的“有风险的登录”报告 | Microsoft Docs"
-description: "了解 Azure Active Directory 门户中的“有风险的登录”报告"
+title: Azure Active Directory 门户中的“有风险的登录”报告 | Microsoft Docs
+description: 了解 Azure Active Directory 门户中的“有风险的登录”报告
 services: active-directory
-author: MarkusVi
+author: priyamohanram
 manager: mtillman
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 11/14/2017
-ms.author: markvi
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 542a111ea5227db727deeac9c56b9f4b4a9f694c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: b0fa40999e069a0d5947585d0dc9a96240eb8b61
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225807"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的登录”报告
 

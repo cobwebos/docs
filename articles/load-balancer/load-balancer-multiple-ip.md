@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 2fbf7bd736a59cbcd6231fa8325a084f54927467
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 3b7971fec0aa0c354476073b01699f516f9439cc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261449"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637372"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
@@ -63,7 +63,7 @@ ms.locfileid: "34261449"
 
 对于虚拟网络中的每个 VM，请添加辅助 NIC 的 IP 配置：  
 
-1. 浏览到 Azure 门户：http://portal.azure.com。使用 Azure 帐户登录。
+1. 浏览到 Azure 门户：http://portal.azure.com。 使用 Azure 帐户登录。
 
 2. 在屏幕左上方，选择“资源组”图标。 然后选择 VM 所在的资源组（例如 **contosofabrikam**）。 “资源组”窗格中显示了 VM 的所有资源和 NIC。
 
@@ -87,7 +87,7 @@ ms.locfileid: "34261449"
 
 为配置创建负载均衡器：
 
-1. 浏览到 Azure 门户：http://portal.azure.com。使用 Azure 帐户登录。
+1. 浏览到 Azure 门户：http://portal.azure.com。 使用 Azure 帐户登录。
 
 2. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”。 接下来，选择“创建”。
 

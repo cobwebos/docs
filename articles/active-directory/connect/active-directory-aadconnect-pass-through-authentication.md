@@ -4,7 +4,7 @@ description: 本文介绍 Azure Active Directory (Azure AD) 传递身份验证�
 services: active-directory
 keywords: 什么是 Azure AD Connect 直通身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 377a8255961a4c7fa55f8bbc5cb98ae4deff3205
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917272"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -47,7 +49,7 @@ ms.lasthandoff: 04/19/2018
 - *安全*
   - 本地密码永远不会以任何形式存储在云中。
   - 代理只从网络内部建立出站连接。 因此，无需在外围网络（也称为 DMZ）中安装代理。
-  - 可通过无缝配合使用 [Azure AD 条件性访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)），也可通过[筛选密码搜索攻击](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)来保护用户帐户。
+  - 可通过无缝配合使用 [Azure AD 条件性访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)），也可通过[筛选密码搜索攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
 - 高可用性
   - 可在多台本地服务器上安装其他代理，提供登录请求的高可用性。
 
@@ -62,12 +64,12 @@ ms.lasthandoff: 04/19/2018
 - 可通过 [Azure AD Connect](active-directory-aadconnect.md) 启用它。
 - 该功能使用轻型本地代理侦听和响应密码验证请求。
 - 安装多个代理可提供登录请求的高可用性。
-- 该功能[保护](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)云中的本地帐户免受密码搜索攻击。
+- 该功能[保护](../authentication/howto-password-smart-lockout.md)云中的本地帐户免受密码搜索攻击。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 快速了解 Azure AD 直通身份验证。
-- [**智能锁定**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
+- [**智能锁定**](../authentication/howto-password-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
 - [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 了解支持和不支持的方案。
 - [深入技术探究](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - 了解此功能如何运作。
 - [**常见问题**](active-directory-aadconnect-pass-through-authentication-faq.md) - 常见问题解答。

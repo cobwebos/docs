@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 509df5274a5e44342390036511689fa8f8146807
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf25ae5703a632005dd73820fc05347f7b5e16a6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869795"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097489"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -42,7 +42,7 @@ ms.locfileid: "33869795"
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 浏览到“Azure Active Directory” > “MFA 服务器” > “阻止/解除阻止用户”。
 3. 选择“添加”以阻止用户。
-4. 选择“复制组”。 以 **用户名<span></span>@domain.com** 格式输入受阻用户的用户名。在“原因”字段输入注释。
+4. 选择“复制组”。 以 **用户名<span></span>@domain.com** 格式输入受阻用户的用户名。 在“原因”字段输入注释。
 5. 选择“添加”，完成阻止用户操作。
 
 ### <a name="unblock-a-user"></a>解除阻止用户
@@ -94,7 +94,7 @@ ms.locfileid: "33869795"
 
 3. 选择 **添加** 。
 4. 如有必要，可选择要免验证的复制组。
-5. 以 **username<span></span>@domain.com** 形式输入用户名。输入免验证应持续的秒数。 输入免验证的原因。 
+5. 以 **username<span></span>@domain.com** 形式输入用户名。 输入免验证应持续的秒数。 输入免验证的原因。 
 6. 选择 **添加** 。 时间限制将立即生效。 用户需在免验证一次过期前登录。 
 
 ### <a name="view-the-one-time-bypass-report"></a>查看免验证一次报告
@@ -292,7 +292,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 用户可以在最初注册时创建应用密码。 用户可在注册过程结束时选择创建应用密码。
 
-用户还可以在注册后创建应用密码。 可通过 Azure 门户或 Office 365 门户中的设置来更改应用密码。 有关适用于用户的详细信息和详细步骤，请参阅 [Azure 多重身份验证中的应用密码是什么？](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md)。
+用户还可以在注册后创建应用密码。 可通过 Azure 门户或 Office 365 门户中的设置来更改应用密码。 有关适用于用户的详细信息和详细步骤，请参阅 [Azure 多重身份验证中的应用密码是什么？](end-user/current/multi-factor-authentication-end-user-app-passwords.md)。
 
 <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>
 ## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>为受信任的设备记住多重身份验证
@@ -301,7 +301,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 >[!IMPORTANT]
 >请记住，如果帐户或设备遭到入侵，受信任的设备的多重身份验证可能影响安全性。 如果公司帐户受到安全威胁，或者受信任的设备已丢失或被盗，则应[在所有设备上还原多重身份验证](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)。
 >
->还原操作会撤销所有设备的受信任状态，需要用户重新执行双重验证。 还可以指示用户按照[管理双重验证设置](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)中的说明在其自己的设备上还原多重身份验证。
+>还原操作会撤销所有设备的受信任状态，需要用户重新执行双重验证。 还可以指示用户按照[管理双重验证设置](end-user/current/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)中的说明在其自己的设备上还原多重身份验证。
 >
 
 ### <a name="how-the-feature-works"></a>该功能的工作原理
@@ -341,7 +341,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 可使用“可选择验证方法”功能，选择用户可使用的验证方法。 下表提供了这些方法的简要概述。
 
-用户为其帐户注册 Azure 多重身份验证时，可从你启用的选项中选择其首选验证方法。 [为我的帐户设置双重验证帐户](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)中提供了用户注册过程指导。
+用户为其帐户注册 Azure 多重身份验证时，可从你启用的选项中选择其首选验证方法。 [为我的帐户设置双重验证帐户](end-user/current/multi-factor-authentication-end-user-first-time.md)中提供了用户注册过程指导。
 
 | 方法 | 说明 |
 |:--- |:--- |

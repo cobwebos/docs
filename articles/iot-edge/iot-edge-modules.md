@@ -1,21 +1,21 @@
 ---
-title: "了解 Azure IoT Edge 模块 | Microsoft 文档"
-description: "了解有关 Azure IoT Edge 模块以及如何进行配置的信息"
-services: iot-edge
-keywords: 
+title: 了解 Azure IoT Edge 模块 | Microsoft 文档
+description: 了解有关 Azure IoT Edge 模块以及如何进行配置的信息
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 02/15/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 0f3ce7496427b6975eb4ac476e7d1737321ed2e9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+services: iot-edge
+ms.openlocfilehash: 9c196ec92fc7997617fa464d676dc93ca9fe84f0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029080"
 ---
-# <a name="understand-azure-iot-edge-modules---preview"></a>了解 Azure IoT Edge 模块 - 预览版
+# <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
 通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。 若要了解如何开发、部署和维护模块，很有必要先理解以下四个组成模块的概念：
 
@@ -60,6 +60,17 @@ await client.OpenAsync();
 // Get the model twin 
 Twin twin = await client.GetTwinAsync(); 
 ```
+
+## <a name="offline-capabilities"></a>脱机功能
+
+Azure IoT Edge 支持在 IoT Edge 设备上执行脱机操作。 目前，这些功能有限，我们正在开发更多的方案。 
+
+只要满足以下要求，IoT Edge 模块可以长时间内处于脱机状态： 
+
+* **消息生存期 (TTL) 未过**。 消息 TTL 的默认值是两个小时，但可以在 IoT Edge 中心设置中的存储和转发配置中将其更改为更大或更小的值。 
+* **当处于脱机状态时，模块不需要通过 IoT Edge 中心重新进行身份验证**。 模块可以仅通过与 IoT 中心之间具有活动连接的 Edge 中心进行身份验证。 如果模块因任何原因而重启，则它们需要重新进行身份验证。 模块的 SAS 令牌过期后，模块仍然可以向 Edge 中心发送消息。 当连接恢复时，Edge 中心会向模块请求一个新令牌，并通过 IoT 中心验证该令牌。 如果成功，Edge 中心会转发它存储的模块消息，即使该消息在模块的令牌过期时已发送过。 
+* **在脱机状态下发送消息的模块在连接恢复时仍然会工作**。 在重新连接到 IoT 中心时，Edge 中心需要对新的模块令牌进行验证（如果以前的令牌已过期），然后才能转发模块消息。 如果模块不可用来提供新令牌，则 Edge 中心无法对模块的已存储消息进行操作。 
+* **Edge 中心利用磁盘空间来存储消息**。 默认情况下，消息存储在 Edge 中心容器的文件系统中。 有一个配置选项可用来指定改为使用装载的卷来存储消息。 在任一情况下，都需要有空间可用来存储延迟传递到 IoT 中心的消息。  
 
 ## <a name="next-steps"></a>后续步骤
  - [了解 Azure IoT Edge 运行时及其体系结构][lnk-runtime]

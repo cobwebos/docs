@@ -1,27 +1,22 @@
 ---
 title: 使用基于角色的访问控制管理 Azure Site Recovery | Microsoft Docs
 description: 本文介绍如何应用基于角色的访问控制 (RBAC)，并利用它来管理 Azure Site Recovery 部署
-services: site-recovery
-documentationcenter: ''
-author: mayanknayar
-manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
+author: mayanknayar
+ms.topic: conceptual
 ms.author: manayar
-ms.openlocfilehash: 072e3bc2e1a13476b43fb72c8631453e2ffa3b27
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: dfd880b6ff3a7e199ea259acc5e5ec59f89c897d
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071599"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919720"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>使用基于角色的访问控制管理 Azure Site Recovery
+# <a name="use-role-based-access-control-to-manage-site-recovery-access"></a>使用基于角色的访问控制管理 Site Recovery 访问权限
 
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 通过 RBAC 可分离团队中的职责，并按需仅向用户授予执行特定作业的特定访问权限。
 
@@ -33,7 +28,7 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 
 若要定义自己的角色以便实现进一步控制，请参阅如何[在 Azure 中生成自定义角色](../role-based-access-control/custom-roles.md)。
 
-## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>为新虚拟机启用复制时所需的权限
+## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>为新虚拟机启用复制所需的权限
 使用 Azure Site Recovery 将新虚拟机复制到 Azure 时，会验证相关用户的访问级别，确保用户具有使用提供给 Site Recovery 的 Azure 资源所需的权限。
 
 若要为新虚拟机启用复制，用户必须具有：
@@ -46,7 +41,7 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 > [!IMPORTANT]
 >确保根据用于资源部署的部署模型（Resource Manager/经典）添加相关权限。
 
-| **资源类型** | **部署模型** | **权限** |
+| **资源类型** | 部署模型 | 权限 |
 | --- | --- | --- |
 | 计算 | 资源管理器 | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |

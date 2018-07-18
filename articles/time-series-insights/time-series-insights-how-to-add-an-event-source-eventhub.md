@@ -1,21 +1,21 @@
 ---
-title: "如何向 Azure 时序见解添加事件中心事件源 | Microsoft Docs"
-description: "本文介绍如何将已连接至事件中心的事件源添加到时序见解环境"
-services: time-series-insights
+title: 如何向 Azure 时序见解添加事件中心事件源 | Microsoft Docs
+description: 本文介绍如何将已连接至事件中心的事件源添加到时序见解环境
 ms.service: time-series-insights
-author: sandshadow
+services: time-series-insights
+author: ashannon7
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: c07c847784eb13c62e350e9c655e027e7df696a3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8b1fe447cb673b9bc1f4fe4e73f7412a21f701a5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330855"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>如何向时序见解环境添加事件中心事件源
 
@@ -26,6 +26,22 @@ ms.lasthandoff: 11/22/2017
 - 创建事件中心。 有关事件中心的详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)
 - 事件中心需要有正在发送进来的活动消息事件。 有关详细信息，请参阅[使用 .NET Framework 将事件发送到 Azure 事件中心](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)。
 - 在事件中心创建专用使用者组，以供时序见解环境使用。 每个时序见解事件源都需要具有自己的专用使用者组，该组不与其他使用者共享。 如果多个读取器使用同一使用者组中的事件，则所有读取器都可能出现故障。 请注意还有一项限制，即每个事件中心最多只能有 20 个使用者组。 有关详细信息，请参阅[事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)。
+
+### <a name="add-a-consumer-group-to-your-event-hub"></a>将使用者组添加到事件中心
+应用程序使用使用者组从 Azure 事件中心提取数据。 提供专用使用者组，仅供此时序见解环境使用，以可靠地从事件中心读取数据。
+
+要将新使用者组添加到事件中心，请执行以下步骤：
+1. 在 Azure 门户中，找到并打开自己的事件中心。
+
+2. 在“实体”标题下，选择“使用者组”。
+
+   ![事件中心 - 添加使用者组](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+
+3. 选择“+ 使用者组”添加新的使用者组。 
+
+4. 在“使用者组”页上，提供新的唯一**名称**。  创建新的事件源时，请在时序见解环境中使用此相同名称。
+
+5. 选择“创建”以创建新的使用者组。
 
 ## <a name="add-a-new-event-source"></a>添加新的事件源
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -78,29 +94,14 @@ ms.lasthandoff: 11/22/2017
    | 事件序列化格式 | JSON 是目前唯一可用的序列化。 事件消息必须采用此格式，否则将无法读取任何数据。 |
    | 时间戳属性名称 | 若要确定此值，您需要了解传送到事件中心的消息数据的消息格式。 此值是消息数据中您想要用作事件时间戳的特定事件属性的**名称**。 该值区分大小写。 如果留空，则事件源中的“事件排队时间”将用作事件时间戳。 |
 
+10. 添加已添加到事件中心的专用 TSI 使用者组名称。
 
-10. 选择“创建”以添加新的事件源。
+11. 选择“创建”以添加新的事件源。
    
    ![单击创建](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
 
    创建事件源以后，时序见解就会自动将数据流式传输到你的环境中。
 
-
-### <a name="add-a-consumer-group-to-your-event-hub"></a>将使用者组添加到事件中心
-应用程序使用使用者组从 Azure 事件中心提取数据。 提供专用使用者组，仅供此时序见解环境使用，以可靠地从事件中心读取数据。
-
-要将新使用者组添加到事件中心，请执行以下步骤：
-1. 在 Azure 门户中，找到并打开自己的事件中心。
-
-2. 在“实体”标题下，选择“使用者组”。
-
-   ![事件中心 - 添加使用者组](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
-
-3. 选择“+ 使用者组”添加新的使用者组。 
-
-4. 在“使用者组”页上，提供新的唯一**名称**。  创建新的事件源时，请在时序见解环境中使用此相同名称。
-
-5. 选择“创建”以创建新的使用者组。
 
 ## <a name="next-steps"></a>后续步骤
 - [定义数据访问策略](time-series-insights-data-access.md)，以保护数据。

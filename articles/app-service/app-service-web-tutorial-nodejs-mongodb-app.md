@@ -16,10 +16,11 @@ ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 8fdad8d8e62365c33b47e67b483c929aaab0083e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38318008"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB Web 应用
 
@@ -107,7 +108,7 @@ MEAN.JS version: 0.5.0
 --
 ```
 
-在浏览器中导航至 `http://localhost:3000`。 单击菜单顶部的“注册”，并创建测试用户。 
+在浏览器中导航至 `http://localhost:3000` 。 单击菜单顶部的“注册”，并创建测试用户。 
 
 MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建用户和登录成功，应用向本地 MongoDB 数据库写入数据。
 
@@ -237,7 +238,7 @@ App version:     0.5.0
 MEAN.JS version: 0.5.0
 ```
 
-在浏览器中导航至 `http://localhost:8443`。 单击菜单顶部的“注册”，并创建测试用户。 如果创建用户并登录成功，则应用会将数据写入 Azure 中的 Cosmos DB 数据库。 
+在浏览器中导航至 `http://localhost:8443` 。 单击菜单顶部的“注册”，并创建测试用户。 如果创建用户并登录成功，则应用会将数据写入 Azure 中的 Cosmos DB 数据库。 
 
 在终端中，通过键入 `Ctrl+C` 停止 Node.js。 
 

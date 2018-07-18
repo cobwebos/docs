@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895862"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Azure Service Fabric 安全性清单
 本文提供的易用清单有助于保护 Azure Service Fabric 环境。

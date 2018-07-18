@@ -1,17 +1,18 @@
 ---
-title: "将 Terraform 与 Azure 结合使用"
-description: "介绍如何使用 Terraform 部署 Azure 基础结构并对其进行版本控制。"
+title: 将 Terraform 与 Azure 结合使用
+description: 介绍如何使用 Terraform 部署 Azure 基础结构并对其进行版本控制。
 ms.service: virtual-machines-linux
-keywords: "terraform, devops, 概述, plan, apply, 自动"
+keywords: terraform, devops, 概述, plan, apply, 自动
 author: binderjoe
 ms.author: jbinder
 ms.date: 10/19/2017
 ms.topic: article
-ms.openlocfilehash: 667752d8830cdac5e2338fd3ed7904917123be94
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5d313bda6a1067e6d023f62fb26704f9aee5c7bf
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114466"
 ---
 # <a name="terraform-with-azure"></a>Terraform 与 Azure
 

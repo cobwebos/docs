@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2018
+ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b16c88b5ec45dec7bf0fe40da24e817ae325a3e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c29d6cb0da2e394912a2584b0d3c3cedf13f054c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304068"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -43,16 +44,13 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
 ## <a name="log-analytics-api-version"></a>Log Analytics API 版本
-资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion 属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../log-analytics/log-analytics-log-search-upgrade.md)的资源，此版本有所不同。  
+资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion 属性，该属性将定义资源应使用的 API 版本。   
 
- 下表指定了旧版和升级版工作区中已保存的搜索的 Log Analytics API 版本： 
+下表列出了此示例中使用的资源的 API 版本。
 
-| 工作区版本 | API 版本 | 查询 |
+| 资源类型 | API 版本 | 查询 |
 |:---|:---|:---|
-| v1（旧版）   | 2015-11-01-preview | 旧版格式。<br> 示例：Type=Event EventLevelName = Error  |
-| v2（升级版） | 2015-11-01-preview | 旧版格式。  在安装时转换为升级版格式。<br> 示例：Type=Event EventLevelName = Error<br>转换为：Event &#124; where EventLevelName == "Error"  |
-| v2（升级版） | 2017-03-03-preview | 升级版格式。 <br>示例：Event &#124; where EventLevelName == "Error"  |
-
+| savedSearches | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
 
 
 ## <a name="saved-searches"></a>保存的搜索
@@ -89,7 +87,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 > 如果查询中包含可解释为 JSON 的字符，则可能需要在查询中使用转义字符。  例如，如果查询为 Type:AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"，那么在解决方案文件中应将其写作 Type:AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"。
 
 ## <a name="alerts"></a>警报
-通过警报规则创建 [Log Analytics 警报](../log-analytics/log-analytics-alerts.md)，该规则按固定时间间隔运行保存的搜索。  如果查询结果与指定的条件相符，则会创建一个警报记录且会运行一个或多个操作。  
+[Azure 日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)是由定期运行指定日志查询的 Azure 警报规则创建的。  如果查询结果与指定的条件相符，则会创建一个警报记录，并且会使用[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)运行一个或多个操作。  
 
 > [!NOTE]
 > 从 2018 年 5 月 14 日起，工作区的所有警报都将开始自动扩展到 Azure 。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 - Azure 资源管理器模板](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)检索或添加操作。
@@ -195,7 +193,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 | Type | 是 | 操作的类型。  警报操作的类型是 Alert。 |
 | 名称 | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
 | 说明 | 否 | 警报的可选说明。 |
-| 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br> **严重**<br>**警告**<br>**信息性**
+| 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br> 严重<br>警告<br>信息性
 
 
 #### <a name="threshold"></a>阈值
@@ -337,11 +335,12 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
           "SolutionPublisher": "Contoso",
           "ProductName": "SampleSolution",
     
-          "LogAnalyticsApiVersion": "2015-03-20",
-    
+          "LogAnalyticsApiVersion-Search": "2017-03-15-preview",
+              "LogAnalyticsApiVersion-Solution": "2015-11-01-preview",
+
           "MySearch": {
             "displayName": "Error records by hour",
-            "query": "Type=MyRecord_CL | measure avg(Rating_d) by Instance_s interval 60minutes",
+            "query": "MyRecord_CL | summarize AggregatedValue = avg(Rating_d) by Instance_s, bin(TimeGenerated, 60m)",
             "category": "Samples",
             "name": "Samples-Count of data"
           },
@@ -349,7 +348,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
             "Name": "[toLower(concat('myalert-',uniqueString(resourceGroup().id, deployment().name)))]",
             "DisplayName": "My alert rule",
             "Description": "Sample alert.  Fires when 3 error records found over hour interval.",
-            "Severity": "Critical",
+            "Severity": "critical",
             "ThresholdOperator": "gt",
             "ThresholdValue": 3,
             "Schedule": {
@@ -377,7 +376,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
             "location": "[parameters('workspaceRegionId')]",
             "tags": { },
             "type": "Microsoft.OperationsManagement/solutions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Solution')]",
             "dependsOn": [
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
@@ -405,7 +404,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [ ],
             "tags": { },
             "properties": {
@@ -418,7 +417,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name)]"
             ],
@@ -432,7 +431,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/',  variables('MyAlert').Schedule.Name, '/',  variables('MyAlert').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/',  variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]"
             ],

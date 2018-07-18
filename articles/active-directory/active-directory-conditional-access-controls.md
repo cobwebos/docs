@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 条件访问中的访问控制 | Microsoft Docs
+title: Azure Active Directory 条件访问中的访问控制是什么？ | Microsoft Docs
 description: 了解 Azure Active Directory 条件访问中的访问控制的工作原理。
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
@@ -9,21 +9,22 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 8271c4c88245e98fd3709c7279904d36ad009682
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: dc1e3fd3984d0ccbfb0565a3216ec907894e88ea
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770717"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028942"
 ---
-# <a name="access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制 
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？ 
 
 使用 [Azure Active Directory (Azure AD) 条件访问](active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用程序的方式。 在条件访问策略中，定义触发策略的诱因（“出现这种情况时”）的响应（“执行此操作”）。 
 
@@ -76,7 +77,7 @@ ms.locfileid: "32770717"
 
 ### <a name="compliant-device"></a>合规的设备
 
-可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](active-directory-conditional-access-policy-connected-applications.md#managed-devices)授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是受管理设备的选项。 如果选择了此选项，则条件访问策略会授权访问通过[已注册](device-management-introduction.md) Azure Active Directory 并由你的 MDM 解决方案标记为兼容的设备所做的尝试。
+可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](active-directory-conditional-access-policy-connected-applications.md#managed-devices)授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是受管理设备的选项。 如果选择此选项，条件访问策略会授权访问以下设备所做的访问尝试：已向 Azure Active Directory [注册](device-management-introduction.md)，且由 Intune（适用于任何设备 OS）或由 Windows 10 设备的第三方 MDM 系统标记为兼容的设备。 不支持除 Windows 10 以外的设备 OS 类型第三方 MDM 系统。
 
 有关详细信息，请参阅[设置 Azure Active Directory 基于设备的条件访问策略](active-directory-conditional-access-policy-connected-applications.md)。
 
@@ -172,6 +173,6 @@ ms.locfileid: "32770717"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何配置条件访问策略，请参阅 [Azure Active Directory 中的条件访问入门](active-directory-conditional-access-azure-portal-get-started.md)。
+- 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](active-directory-conditional-access-app-based-mfa.md)。
 
 - 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。 

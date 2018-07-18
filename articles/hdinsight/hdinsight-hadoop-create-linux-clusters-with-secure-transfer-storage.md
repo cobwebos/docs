@@ -3,25 +3,22 @@ title: 在 Azure HDInsight 中使用安全传输存储帐户创建 Hadoop 群集
 description: 了解如何使用启用安全传输的 Azure 存储帐户创建 HDInsight 群集。
 keywords: hadoop 入门,hadoop linux,hadoop 快速入门,安全传输,azure 存储帐户
 services: hdinsight
-documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/14/2018
+ms.date: 07/09/2018
 ms.author: jgao
-ms.openlocfilehash: 7a2022fd5cd67120b8dc435a950533e07017218c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1a905d574d67b5965325dba80c03d75901f97fef
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200514"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952188"
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户创建 Hadoop 群集
 
@@ -33,6 +30,7 @@ ms.locfileid: "34200514"
 * **Azure 订阅**：若要创建一个月的免费试用帐户，请访问 [azure.microsoft.com/free](https://azure.microsoft.com/free)。
 * 启用安全传输的 Azure 存储帐户。 有关说明，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)和[需要安全传输](../storage/common/storage-require-secure-transfer.md)。
 * 存储帐户中的 Blob 容器。 
+
 ## <a name="create-cluster"></a>创建群集
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32154539"
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>将现有 Node.js Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
@@ -112,7 +113,7 @@ ms.lasthandoff: 04/28/2018
 
 * 在 [Azure 门户]中，打开应用服务。
 * 选择“所有设置” -> “数据连接”。
-* 单击**“+ 添加”**。
+* 单击 **“+ 添加”**。
 * 在下拉列表中，选择“SQL 数据库”
 * 在“SQL 数据库”下选择现有数据库，并单击“选择”。
 * 在“连接字符串”下，输入数据库的用户名和密码，并单击“确定”。

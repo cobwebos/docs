@@ -1,29 +1,25 @@
 ---
-title: 循环 - 处理数组或重复执行操作 - Azure 逻辑应用 | Microsoft Docs
-description: 通过“for each”循环处理数组，或者重复执行操作，直到逻辑应用中满足特定的条件
+title: 添加循环重复执行操作或处理数组 - Azure 逻辑应用 | Microsoft Docs
+description: 如何在 Azure 逻辑应用中创建重复执行工作流操作或处理数组的循环
 services: logic-apps
-keywords: for each 循环
-documentationcenter: ''
-author: ecfan
-manager: anneta
-editor: ''
-ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 87595eeb0330a2d8210258c097c29b205b628cf4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298179"
 ---
-# <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>循环：处理数组或重复执行操作，直到满足某个条件
+# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
-若要在逻辑应用中循环访问数组，可以使用 [Foreach 循环](#foreach-loop)或[顺序的 Foreach 循环](#sequential-foreach-loop)。 标准 Foreach 循环中的周期并行运行，而顺序的 Foreach 循环中的周期一次运行一个。 若要了解 Foreach 循环在单个逻辑应用运行中可以处理的最大数组项数，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
+若要在逻辑应用中循环访问数组，可以使用 [Foreach 循环](#foreach-loop)或[顺序的 Foreach 循环](#sequential-foreach-loop)。 标准“Foreach”循环中的迭代并行运行，而顺序的“Foreach”循环中的迭代一次运行一个。 若要了解 Foreach 循环在单个逻辑应用运行中可以处理的最大数组项数，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
 
 > [!TIP] 
 > 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用 [**SplitOn** 触发器属性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)“分离”该数组。 
@@ -181,7 +177,7 @@ ms.lasthandoff: 04/28/2018
 
    | 属性 | 值 | 说明 |
    | -------- | ----- | ----------- |
-   | **Name** | 限制 | 变量的名称 | 
+   | **名称** | Limit | 变量的名称 | 
    | **类型** | Integer | 变量的数据类型 | 
    | **值** | 0 | 变量的起始值 | 
    |||| 
@@ -212,7 +208,7 @@ ms.lasthandoff: 04/28/2018
 
     | 属性 | 值 | 说明 |
     | -------- | ----- | ----------- | 
-    | **To** | *<email-address@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
+    | **收件人** | *<email-address@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
     | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
     | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
     |||| 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: b9dc2064a4d90b924730e2615378892b17340baf
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: b71d737f99a82508f9769f89d8172aa02bec817b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302526"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38542026"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>注册 CSP 合作伙伴计划并查看成本数据
 
@@ -31,7 +31,7 @@ ms.locfileid: "34302526"
 >
 >CSP 间接经销商在其 CSP 间接提供程序注册到 Cloudyn 中后，可以访问 Cloudyn。 然后，CSP 间接经销商可以向 Azure 客户和订阅提供 Cloudyn 访问权限。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 - 通过 http://portal.azure.com 登录到 Azure 门户。
 

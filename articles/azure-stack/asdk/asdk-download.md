@@ -1,12 +1,12 @@
 ---
-title: "下载并提取 Azure 堆栈开发工具包 (ASDK) |Microsoft 文档"
-description: "描述如何下载并提取 Azure 堆栈开发工具包 (ASDK)。"
+title: 下载并提取 Azure 堆栈开发工具包 (ASDK) |Microsoft 文档
+description: 描述如何下载并提取 Azure 堆栈开发工具包 (ASDK)。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29976417"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>下载并提取 Azure 堆栈开发工具包 (ASDK)
 确保你开发工具包的主机计算机满足安装 ASDK 的基本要求之后下, 一步是要下载并解压缩 ASDK 部署包，以获取 Cloudbuilder.vhdx。

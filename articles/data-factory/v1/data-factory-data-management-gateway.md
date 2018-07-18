@@ -10,20 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c1db81594f44f805cf50523b449af62d76099a08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 67b8e35f0ddafd0a39bf29757927f4ace6230547
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771042"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048911"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[版本 2 中的自托管集成运行时](../create-self-hosted-integration-runtime.md)。 
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[自承载集成运行时](../create-self-hosted-integration-runtime.md)。 
 
 > [!NOTE]
 > 数据管理网关的产品名称现在已更改为自承载 Integration Runtime。  
@@ -231,7 +231,7 @@ ms.locfileid: "33771042"
 > 不要忘记**同时**更新 diahost.exe.config 和 diawp.exe.config。  
 
 
-除了这几点，还需要确保 Microsoft Azure 列于公司的允许列表中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Microsoft Azure IP 地址列表。
+除了这几点，还需要确保 Microsoft Azure 列于公司的白名单中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Microsoft Azure IP 地址列表。
 
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>防火墙和代理服务器相关问题的可能症状
 如果遇到类似于以下的错误，可能是由于防火墙或代理服务器配置错误，阻止了网关连接到数据工厂进行自身身份验证。 请参考上一部分，确保防火墙和代理服务器已正确配置。
@@ -288,12 +288,12 @@ ms.locfileid: "33771042"
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
-[对于多节点高度可用且可伸缩的网关（预览）](data-factory-data-management-gateway-high-availability-scalability.md)
+[对于多节点高度可用的可扩展网关](data-factory-data-management-gateway-high-availability-scalability.md)
 1. 在网关计算机上启动 Windows PowerShell。
 2. 切换到 C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。   
 
-    对于具有高可用性功能（预览）的网关，需要额外的 AuthKey 参数。
+    对于具有高可用性功能的网关，需要额外的 AuthKey 参数。
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```

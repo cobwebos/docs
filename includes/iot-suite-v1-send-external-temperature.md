@@ -1,6 +1,6 @@
 ## <a name="configure-the-nodejs-simulated-device"></a>配置 Node.js 模拟设备
 1. 在远程监视仪表板上，单击“+ 添加设备”，并添加自定义设备。 记下 IoT 中心主机名、设备 ID 和设备密钥。 在本教程稍后准备 remote_monitoring.js 设备客户端应用程序时，需要使用它们。
-2. 请确保已在开发计算机上安装 Node.js 0.12.x 或更高版本。 在命令提示符或 shell 中运行 `node --version` 以检查版本。 有关使用程序包管理器在 Linux 上安装 Node.js 的信息，请参阅[]通过程序包管理器安装 Node.js[node-linux]。
+2. 请确保已在开发计算机上安装 Node.js 0.12.x 或更高版本。 在命令提示符或 shell 中运行 `node --version` 以检查版本。 有关使用程序包管理器在 Linux 上安装 Node.js 的信息，请参阅[通过程序包管理器安装 Node.js][node-linux]。
 3. 安装 Node.js 后，请将最新版本的 [azure-iot-sdk-node][lnk-github-repo] 存储库复制到开发计算机。 始终对最新版的库和示例使用**主**分支。
 4. 从 [azure-iot-sdk-node][lnk-github-repo] 存储库的本地副本中，将以下两个文件从 node/device/samples 文件夹复制到开发计算机上的某个空文件夹：
    

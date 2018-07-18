@@ -63,9 +63,11 @@
               href: deploy-with-resource-manager-template.md
             - name: 在另一区域中创建
               href: multi-geo.md
+            - name: 查看和删除 Studio 帐户数据
+              href: export-delete-personal-data-dsr.md
     - name: 获取和了解数据
       items:
-        - name: 导入培训数据
+        - name: 导入训练数据
           items:
             - name: 概述
               href: import-data.md
@@ -115,7 +117,7 @@
                   href: custom-r-modules.md
                 - name: 执行 Python 脚本
                   href: execute-python-scripts.md
-    - name: 使模型可操作化
+    - name: 使模型可操作
       items:
         - name: 概述
           href: deploy-consume-web-service-guide.md
@@ -129,7 +131,7 @@
               href: convert-training-experiment-to-scoring-experiment.md
             - name: 使用外部数据
               href: web-services-that-use-import-export-modules.md
-            - name: 多个区域部署
+            - name: 在多个区域中部署
               href: how-to-deploy-to-multiple-regions.md
             - name: 使用 Web 服务参数
               href: web-service-parameters.md
@@ -165,7 +167,7 @@
               href: consume-web-services.md
             - name: 使用 Excel
               href: consuming-from-excel.md
-            - name: 使用 Excel 外接程序
+            - name: 使用 Excel 加载项
               href: excel-add-in-for-web-services.md
             - name: 使用 Web 应用模板
               href: consume-web-service-with-web-app-template.md
@@ -215,6 +217,8 @@
           href: gallery-collections.md
         - name: 自定义模块
           href: gallery-custom-modules.md
+        - name: 查看和删除帐户数据
+          href: ai-gallery-control-personal-data-dsr.md
 - name: 资源
   items:
     - name: Azure 路线图

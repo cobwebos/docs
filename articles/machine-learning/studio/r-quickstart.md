@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227232"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>适用于 Azure 机器学习的 R 编程语言快速入门教程
 
@@ -39,7 +41,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
 在此快速入门指南中我们将使用加利福尼亚州的乳品生产和价格数据。 该数据包括几种乳品的生产和基准商品乳脂的价格的月度信息。
 
-可以在[此处下载][download]本文使用的数据和 R 脚本。 此数据最初是从威斯康星州大学提供的信息中合成的，网址为 http://future.aae.wisc.edu/tab/production.html。
+可以在[此处下载](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv)本文使用的数据和 R 脚本。 此数据最初是从威斯康星州大学提供的信息中合成的，网址为 https://dairymarkets.com。
 
 ### <a name="organization"></a>组织
 我们将通过几个步骤来了解如何在 Azure 机器学习环境中创建、测试并执行分析和数据操作 R 代码。  
@@ -96,7 +98,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
   ![弹出错误消息][2]
 
-*图 2.弹出错误消息.*
+*图 2.弹出错误消息*
 
 看来我们需要打开 output.log 文件查看此 R 错误消息。 单击“执行 R 脚本[execute-r-script]”后，单击右侧的“属性”窗格上的“查看 output.log”。[] 打开了新的浏览器窗口，我看到以下内容。
 
@@ -121,7 +123,7 @@ Azure 机器学习附带了超过 350 个预安装的 R 语言包。 可以在[�
 如果此时不了解此代码的最后一行，请继续阅读。 本文剩余部分将全面讨论在 Azure 机器学习环境中使用 R。
 
 ### <a name="introduction-to-rstudio"></a>RStudio 简介
-RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使用 RStudio 编辑、测试和调试此快速入门指南中使用的一些 R 代码。 测试并准备好 R 代码后，只需将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室的[执行 R 脚本][execute-r-script]模块中。  
+RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使用 RStudio 编辑、测试和调试此快速入门指南中使用的一些 R 代码。 测试并准备好 R 代码后，可以简单地将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室的[执行 R 脚本][execute-r-script]模块中。  
 
 如果还没有在台式计算机上安装 R 编程语言，我建议立即安装。 可以从 Comprehensive R Archive Network (CRAN) 免费下载开放源代码 R 语言，网址为 [http://www.r-project.org/](http://www.r-project.org/)。 该网站提供了适用于 Windows、Mac OS 和 Linux/UNIX 的 R 语言下载。 请选择附近的网站镜像，并按照下载说明进行操作。 此外，CRAN 包含大量有用的分析和数据操作包。
 
@@ -152,7 +154,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 * 单击左下方的“+ 新建”，并依次选择“实验”和“空白实验”。
 * 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”标题。 例如，将其改为“CA 乳品分析”。
-* 在试验页面的左侧，展开“保存的数据集”，并选择“我的数据集”。 可看到之前上传的 **cadairydata.csv**。
+* 在试验页面的左侧，展开“保存的数据集”，并选择“我的数据集”。 可看到之前上传的 cadairydata.csv。
 * 将 **csdairydata.csv 数据集**拖放到试验。
 * 在左窗格顶部的“搜索试验项”框中，键入“执行 R 脚本[execute-r-script]”。[] 可以看到模块在搜索列表中显示。
 * 将[执行 R 脚本][execute-r-script]拖放到托盘上。  
@@ -240,7 +242,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
     cadairydata <- maml.mapInputPort(1)
 
-单击**运行**按钮执行试验。 执行完成后，单击“执行 R 脚本[execute-r-script]”模块，并单击“属性”窗格上的“查看 output.log”。[] 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
+单击**运行**按钮执行试验。 执行完成后，单击[执行 R 脚本][execute-r-script]模块，并单击**属性**窗格上的“查看 output.log”。 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -835,7 +837,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 *图 18.成对相关性分析的 ccf 对象列表*
 
-每个滞后时间有一个相关性值。 没有一个相关性值足够大而具有意义。 因此可以确定我们可以单独对每个变量建模。
+每个滞后时间有一个相关性值。 这些相关性值没有一个足够大而具有意义。 因此可以确定我们可以单独对每个变量建模。
 
 ### <a name="output-a-dataframe"></a>输出数据框
 我们已经以 R ccf 对象列表的形式计算成对相关性。 这种方法有一点问题，因为结果数据集输出端口确实需要数据框。 而且，ccf 对象本身就是一个列表，而我们只需要该列表中第一个元素的值，即各种滞后时间中的相关性。

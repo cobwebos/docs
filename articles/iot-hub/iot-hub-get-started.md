@@ -1,25 +1,20 @@
 ---
 title: Azure IoT 中心 - 开始将 IoT 设备连接到云 | Microsoft Docs
 description: 了解如何将 IoT 板和初学者工具包连接到 Azure IoT 中心。 设备可以将遥测数据发送到 IoT 中心，IoT 中心可以监视和管理设备。
-services: iot-hub
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
 keywords: Azure IoT 中心教程
-ms.assetid: 24376318-5344-4a81-a1e6-0003ed587d53
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: dafb8aca34a5a41f45f76d526aa3b8f3b1b792c4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 76f427204f0ad31196ce8b995b9e4ed9676209ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634696"
 ---
 # <a name="azure-iot-hub-get-started-with-real-devices"></a>Azure IoT 中心真实设备入门
 

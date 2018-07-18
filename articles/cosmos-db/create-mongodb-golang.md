@@ -2,18 +2,21 @@
 title: Azure Cosmos DB：使用 Golang 和 Azure 门户生成 MongoDB API 控制台应用 | Microsoft Docs
 description: 演示一个可以用来连接和查询 Azure Cosmos DB 的 Golang 代码示例
 services: cosmos-db
-author: Durgaprasad-Budhwani
+author: SnehaGunda
 manager: kfile
 ms.service: cosmos-db
+ms.component: cosmosdb-mongo
+ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d5ac2f683308385b2bd4ca422cf00abaa37735fd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d1a45389e95dbd7f5f762b6dee0edc3897d0c3b8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38612810"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB：使用 Golang 和 Azure 门户生成 MongoDB API 控制台应用
 
@@ -79,7 +82,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 否则，可以跳到[运行应用](#run-the-app)。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以跳到[运行应用](#run-the-app)。 
 
 以下代码片段全部摘自 main.go 文件。
 
@@ -123,7 +126,7 @@ session.SetSafe(&mgo.Safe{})
 
 没有 SSL 连接时，使用 mgo.Dial() 方法。 对于 SSL 连接，mgo.DialWithInfo() 方法是必需的。
 
-可以使用 DialWIthInfo{} 对象的实例来创建会话对象。 建立会话以后，即可使用以下代码片段访问集合：
+可以使用 **DialWIthInfo{}** 对象的实例来创建会话对象。 建立会话以后，即可使用以下代码片段访问集合：
 
 ```go
 collection := session.DB(“database”).C(“package”)
@@ -204,10 +207,10 @@ if err != nil {
 }
 ```
     
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 1. 在 Goglang 中，确保 GOPATH（依次单击“文件”、“设置”、“Go”、“GOPATH”即可找到）包含安装 gopkg 时所在的位置，默认为 USERPROFILE\go。 
-2. 注释掉用于删除文档的行（即第 91-96 行），这样就能在运行应用后看到文档。
+2. 注释掉用于删除文档的行（即第 103-107 行），这样就能在运行应用后看到文档。
 3. 在 Goglang 中单击“运行”，然后单击“运行‘生成 main.go 并运行’”。
 
     应用完成后，将会显示在[创建文档](#create-document)中创建的文档的说明。

@@ -1,36 +1,37 @@
 ---
-title: "将 ASP.NET Core Linux Docker 容器部署到远程 Docker 主机 | Microsoft Docs"
-description: "了解如何使用 Visual Studio Tools for Docker 将 ASP.NET Core Web 应用部署到在 Azure Docker 主机 Linux VM 上运行的 Docker 容器"
+title: 向 Azure 容器注册表 (ACR) 部署 ASP.NET Docker 容器 | Microsoft Docs
+description: 了解如何使用 Visual Studio Tools for Docker 将 ASP.NET Core Web 应用部署到容器注册表
 services: azure-container-service
 documentationcenter: .net
 author: mlearned
 manager: douge
-editor: 
+editor: ''
 ms.assetid: e5e81c5e-dd18-4d5a-a24d-a932036e78b9
 ms.service: azure-container-service
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/08/2016
+ms.date: 05/21/2018
 ms.author: mlearned
-ms.openlocfilehash: 60efffd9313f6972ae46fd1925d999597d3c6ba2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 58df17b17de1d93683875b68dd7c6c087bc6d16d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972302"
 ---
-# <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>将 ASP.NET 容器部署到远程 Docker 主机
+# <a name="deploy-an-aspnet-container-to-a-container-registry-using-visual-studio"></a>使用 Visual Studio 将 ASP.NET 容器部署到容器注册表
 ## <a name="overview"></a>概述
 Docker 是轻型容器引擎，在某些方面类似于虚拟机，可以将其用于托管应用程序和服务。
-本教程将指导你完成使用 [Visual Studio Tools for Docker](https://docs.microsoft.com/dotnet/articles/core/docker/visual-studio-tools-for-docker) 扩展在 Azure 上通过 PowerShell 将 ASP.NET Core 应用部署到 Docker 主机。
+本教程介绍如何使用 Visual Studio 将容器化应用程序发布到 [ Azure 容器注册表](https://azure.microsoft.com/services/container-registry)。
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/dotnet/?utm_source=acr-publish-doc&utm_medium=docs&utm_campaign=docs)。
 
 ## <a name="prerequisites"></a>先决条件
-以下是完成本教程所要做好的准备：
+完成本教程：
 
-* 创建 Azure Docker 主机 VM，如 [How to use docker-machine with Azure](virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（如何将 docker-machine 与 Azure 配合使用）中所述
-* 安装最新版本的 [Visual Studio](https://www.visualstudio.com/downloads/)
-* 下载 [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
+* 安装带有“ASP.NET 和 Web 开发”工作负载的最新版本 [Visual Studio 2017](https://azure.microsoft.com/downloads/)
 * 安装[适用于 Windows 的 Docker](https://docs.docker.com/docker-for-windows/install/)
 
 ## <a name="1-create-an-aspnet-core-web-app"></a>1.创建一个 ASP.NET Core Web 应用
@@ -38,51 +39,22 @@ Docker 是轻型容器引擎，在某些方面类似于虚拟机，可以将其�
 
 [!INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-## <a name="2-add-docker-support"></a>2.添加 Docker 支持
-[!INCLUDE [create-aspnet5-app](../includes/vs-azure-tools-docker-add-docker-support.md)]
+## <a name="2-publish-your-container-to-azure-container-registry"></a>2.将容器发布到 Azure 容器注册表
+1. 在解决方案资源管理器中右键单击项目，并选择“发布”。
+2. 在发布目标对话框上，选择“容器注册表”选项卡。
+3. 选择“新建 Azure 容器注册表”并单击“发布”。
+4. 在“创建新 Azure 容器注册表”中填写所需的值。
 
-## <a name="3-use-the-dockertaskps1-powershell-script"></a>3.使用 DockerTask.ps1 PowerShell 脚本
-1. 打开 PowerShell 提示符，并转到项目的根目录。 
-   
-   ```
-   PS C:\Src\WebApplication1>
-   ```
-2. 验证远程主机是否正在运行。 应看到状态 =“正在运行” 
-   
-   ```
-   docker-machine ls
-   NAME         ACTIVE   DRIVER   STATE     URL                        SWARM   DOCKER    ERRORS
-   MyDockerHost -        azure    Running   tcp://xxx.xxx.xxx.xxx:2376         v1.10.3
-   ```
-   
-3. 使用 -Build 参数生成应用
-   
-   ```
-   PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release -Machine mydockerhost
-   ```  
+    | 设置      | 建议的值  | 说明                                |
+    | ------------ |  ------- | -------------------------------------------------- |
+    | **DNS 前缀** | 全局唯一名称 | 用于唯一标识容器注册表的名称。 |
+    | **订阅** | 选择订阅 | 要使用的 Azure 订阅。 |
+    | [资源组](../articles/azure-resource-manager/resource-group-overview.md) | myResourceGroup |  要在其中创建容器注册表的资源组的名称。 选择“新建”创建新的资源组。|
+    | **[SKU](https://docs.microsoft.com/azure/container-registry/container-registry-skus)** | 标准 | 容器注册表的服务层  |
+    | **注册表位置** | 靠近你的位置 | 在你附近或将使用容器注册表的其他服务附近的[区域](https://azure.microsoft.com/regions/)中，选择位置。 |
+    ![Visual Studio 的创建 Azure 容器注册表对话框][0]
+5. 单击“创建” 
 
-   > ```
-   > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release 
-   > ```  
-   > 
-   > 
-4. 使用 -Run 参数运行该应用
-   
-   ```
-   PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release -Machine mydockerhost
-   ```
-   
-   > ```
-   > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release 
-   > ```
-   > 
-   > 
-   
-   Docker 完成后，应看到与下面类似的结果：
-   
-   ![查看应用][3]
+现在可以将容器从注册表中拖放到任何能够运行 Docker 映像的主机上，例如[Azure 容器实例](./container-instances/container-instances-tutorial-deploy-app.md)。
 
-[0]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/docker-props-in-solution-explorer.png
-[1]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/change-docker-machine-name.png
-[2]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
-[3]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
+[0]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/vs-acr-provisioning-dialog.png

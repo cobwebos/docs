@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: ba4e5996a87596c88822d96faf3e80e8243ad78b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5f1d71db70bbaa6e569ad6f9a6f51bca4c5dc220
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213118"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -96,7 +97,7 @@ if __name__ == "__main__":
 docker build -t helloworldapp .
 ```
 
-该命令按 Dockerfile 中的说明生成新映像，并将映像命名（-t 表示标记）为 `helloworldapp`。 若要生成容器映像，首先从 Docker Hub 下载基础映像并在其上添加应用程序。 
+该命令按 Dockerfile 中的说明生成新映像，并将映像命名为（-t 表示标记）`helloworldapp`。 若要生成容器映像，首先从 Docker Hub 下载基础映像并在其上添加应用程序。 
 
 生成命令执行完以后，请运行 `docker images` 命令，查看有关新映像的信息：
 
@@ -118,7 +119,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 name 用于为运行的容器（而不是容器 ID）命名。
 
-连接到正在运行的容器。 打开 Web 浏览器，指向端口 4000 上返回的 IP 地址，例如 http://localhost:4000。 此时会看到标题“Hello World!” 显示在浏览器中。
+连接到正在运行的容器。 打开 Web 浏览器，指向端口 4000 上返回的 IP 地址，例如 http://localhost:4000 。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ![Hello World!][hello-world]
 
@@ -170,26 +171,12 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 指定实例计数“1”。
 
+以适当的格式指定端口映射。 对于本文，需要提供 ```80:4000``` 作为端口映射。 通过这样做，已将主机上到达端口 4000 的所有传入请求都重定向到容器上的端口 80。
+
 ![适用于容器的 Service Fabric Yeoman 生成器][sf-yeoman]
 
-## <a name="configure-port-mapping-and-container-repository-authentication"></a>配置端口映射和容器存储库身份验证
-容器化服务需要使用一个终结点进行通信。 现在，将协议、端口和类型添加到 ServiceManifest.xml 文件中“Resources”标记下面的 `Endpoint`。 本文所述的容器化服务在端口 4000 上侦听： 
-
-```xml
-
-<Resources>
-    <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="myServiceTypeEndpoint" UriScheme="http" Port="4000" Protocol="http"/>
-    </Endpoints>
-  </Resources>
- ```
- 
-提供 `UriScheme` 即可向 Service Fabric 命名服务自动注册容器终结点，确保其可以被发现。 本文末尾提供完整的 ServiceManifest.xml 示例文件。 
-
-在 ApplicationManifest.xml 文件的 `ContainerHostPolicies` 中指定 `PortBinding` 策略，以便配置容器端口到主机端口的映射。 在本文中，`ContainerPort` 为 80（容器根据 Dockerfile 中的指定值公开端口 80），`EndpointRef` 为“myServiceTypeEndpoint”（服务清单中定义的终结点）。 传入到端口 4000 上的服务的请求映射到容器上的端口 80。 如果容器需要通过专用存储库进行身份验证，则添加 `RepositoryCredentials`。 在本文中，请为 myregistry.azurecr.io 容器注册表添加帐户名和密码。 确保将策略添加到对应于适当服务包的“ServiceManifestImport”标记下面。
+## <a name="configure-container-repository-authentication"></a>配置容器存储库身份验证
+ 如果容器需要通过专用存储库进行身份验证，则添加 `RepositoryCredentials`。 在本文中，请为 myregistry.azurecr.io 容器注册表添加帐户名和密码。 确保将策略添加到对应于适当服务包的“ServiceManifestImport”标记下面。
 
 ```xml
    <ServiceManifestImport>
@@ -227,14 +214,6 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 若要禁用整个 Service Fabric 群集的 **HEALTHCHECK** 集成，则需将 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 设置为 **false**。
 
-## <a name="build-and-package-the-service-fabric-application"></a>生成并打包 Service Fabric 应用程序
-Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本，可用于从终端生成应用程序。 若要生成并打包应用程序，请运行以下命令：
-
-```bash
-cd mycontainer
-gradle
-```
-
 ## <a name="deploy-the-application"></a>部署应用程序
 生成应用程序后，可以使用 Service Fabric CLI 将其部署到本地群集。
 
@@ -252,7 +231,7 @@ sfctl cluster select --endpoint http://localhost:19080
 
 打开浏览器并导航到位于 http://localhost:19080/Explorer 的 Service Fabric Explorer（如果在 Mac OS X 上使用 Vagrant，则使用 VM 的专用 IP 替换 localhost）。 展开应用程序节点，注意现在有一个条目是用于应用程序类型，另一个条目用于该类型的第一个实例。
 
-连接到正在运行的容器。 打开 Web 浏览器，指向端口 4000 上返回的 IP 地址，例如 http://localhost:4000。 此时会看到标题“Hello World!” 显示在浏览器中。
+连接到正在运行的容器。 打开 Web 浏览器，指向端口 4000 上返回的 IP 地址，例如 http://localhost:4000 。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ![Hello World!][hello-world]
 

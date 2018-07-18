@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 774d678c00b830f3932455c5b79fb44bde284d91
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b1485ff933df7991e1c112981ae10d93bf5613da
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061535"
 ---
 # <a name="azure-network-security"></a>Azure 网络安全
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/08/2018
 
 Microsoft Azure 提供具备保密性、完整性和可用性的客户数据，同时还能实现透明的问责制。 为帮助你从客户的角度更好地了解 Microsoft Azure 中实施的网络安全控件集合，特编写本文《Azure 网络安全》，以全面了解 Microsoft Azure 提供的网络安全控件。
 
-本文旨在介绍各种网络控件，通过配置这些控件可增强 Azure 中部署的解决方案的安全性。 如果有兴趣了解 Microsoft 为保护 Azure 平台本身的网络结构而采取的措施，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trustcenter/security/azure-security)的“Azure 安全性”部分。
+本文旨在介绍各种网络控件，通过配置这些控件可增强 Azure 中部署的解决方案的安全性。 如果有兴趣了解 Microsoft 为保护 Azure 平台本身的网络结构而采取的措施，请参阅 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/cloudservices/azure)的“Azure 安全性”部分。
 
 ## <a name="azure-platform"></a>Azure 平台
 
@@ -174,7 +175,7 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 - **网络安全组 (NSG)：** 每个 NSG 可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选流量。 可将 NSG 应用到一个 VM 中的每个 NIC。 也可将 NSG 应用到 NIC 或其他 Azure 资源所连接的子网。 若要详细了解 NSG，请阅读[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
 
-- **虚拟网络设备：** 虚拟网络设备是运行软件的 VM，软件可执行网络功能，例如防火墙。 请查看 Azure Marketplace 中的可用 NVA 列表。 NVA 也可用于提供 WAN 优化和其他网络流量功能。 NVA 通常与用户定义路由或 BGP 路由配合使用。 还可使用 NVA 筛选 VNet 之间的流量。
+- **虚拟网络设备：** 虚拟网络设备是运行软件的 VM，软件可执行网络功能，例如防火墙。 请查看 Azure 市场中的可用 NVA 列表。 NVA 也可用于提供 WAN 优化和其他网络流量功能。 NVA 通常与用户定义路由或 BGP 路由配合使用。 还可使用 NVA 筛选 VNet 之间的流量。
 
 **路由**
 
@@ -341,7 +342,7 @@ NSG 附带了一些应当注意的内置规则。 其中包括：
 
 ![网络安全设备](./media/azure-network-security/azure-network-security-fig-10.png)
 
-Azure 网络安全设备可增强 VNet 安全性和网络功能。众多供应商通过 [Azure Marketplace](https://azuremarketplace.microsoft.com) 提供了这类设备。 通过部署这些虚拟安全设备，可以提供：
+Azure 网络安全设备可增强 VNet 安全性和网络功能。众多供应商通过 [Azure 市场](https://azuremarketplace.microsoft.com)提供了这类设备。 通过部署这些虚拟安全设备，可以提供：
 
 -   高度可用的防火墙
 

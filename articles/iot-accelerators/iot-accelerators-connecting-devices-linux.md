@@ -1,25 +1,19 @@
 ---
 title: 使用 C 将 Linux 设备预配到远程监视 - Azure | Microsoft Docs
 description: 介绍如何使用 Linux 上运行的以 C 编写的应用程序将设备连接到远程监视解决方案加速器。
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 0c7c8039-0bbf-4bb5-9e79-ed8cff433629
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: 9ccf2b185c5aa67b41aab650989ad0326aba0215
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5d7d6522dc663f13ce40cc638ba90ac4043d435c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611406"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>将设备连接到远程监视解决方案加速器 (Linux)
 
@@ -31,7 +25,7 @@ ms.lasthandoff: 05/20/2018
 
 与受约束设备上运行的大多数嵌入式应用程序一样，设备应用程序的客户端代码是用 C 语言编写的。在本教程中，将在运行 Ubuntu (Linux) 的计算机上生成应用程序。
 
-若要完成这些步骤，需要一个运行 Ubuntu 版本 15.04 或更高版本的设备。 继续操作之前，请使用以下命令在 Ubuntu 设备上安装必备组件包：
+要完成这些步骤，需要一台运行 Ubuntu 版本 15.04 或更高版本的设备。 继续操作之前，请使用以下命令在 Ubuntu 设备上安装必备组件包：
 
 ```sh
 sudo apt-get install cmake gcc g++
@@ -39,9 +33,9 @@ sudo apt-get install cmake gcc g++
 
 ### <a name="install-the-client-libraries-on-your-device"></a>在设备上安装客户端库
 
-Azure IoT 中心客户端库以包的形式提供，可以使用 **apt-get** 命令在 Ubuntu 设备上安装该包。 完成以下步骤，在 Ubuntu 计算机上安装包含 IoT 中心客户端库和标头文件的包：
+Azure IoT 中心客户端库以包的形式提供，可以使用 apt-get 命令在 Ubuntu 设备上安装该包。 完成以下步骤，在 Ubuntu 计算机上安装包含 IoT 中心客户端库和头文件的包：
 
-1. 在外壳程序中，向计算机添加 AzureIoT 库：
+1. 在 shell 中，向计算机添加 AzureIoT 库：
 
     ```sh
     sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
@@ -109,9 +103,9 @@ int main(void)
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
 
-以下步骤描述如何使用 *CMake* 生成客户端应用程序。
+以下步骤描述如何使用 CMake 生成客户端应用程序。
 
-1. 在文本编辑器中，打开 `remote_monitoring` 文件夹中的 **CMakeLists.txt** 文件。
+1. 在文本编辑器中，打开 `remote_monitoring` 文件夹中的 CMakeLists.txt 文件。
 
 1. 添加以下指令，以定义如何生成客户端应用程序：
 
@@ -162,7 +156,7 @@ int main(void)
     )
     ```
 
-1. 在 `remote_monitoring` 文件夹中，创建一个文件夹以存储 CMake 生成的 *make* 文件。 然后运行 **cmake** 和 **make** 命令，如下所示：
+1. 在 `remote_monitoring` 文件夹中，创建一个文件夹来存储 CMake 生成的 make 文件。 然后运行 cmake 和 make 命令，如下所示：
 
     ```sh
     mkdir cmake

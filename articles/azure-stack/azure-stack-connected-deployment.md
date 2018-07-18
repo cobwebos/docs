@@ -1,12 +1,12 @@
 ---
-title: "有关 Azure 堆栈的 azure 连接的部署决策集成系统 |Microsoft 文档"
-description: "确定部署规划 Azure 堆栈 Azure 连接的多节点部署的决策。"
+title: 有关 Azure 堆栈的 azure 连接的部署决策集成系统 |Microsoft 文档
+description: 确定部署规划 Azure 堆栈 Azure 连接的多节点部署的决策。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120380"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>规划 Azure 堆栈的决策的 azure 连接的部署集成系统
 您已决定后[如何将将 Azure 堆栈集成到你的混合云环境](azure-stack-connection-models.md)，然后才能最终完成 Azure 堆栈的部署决策。

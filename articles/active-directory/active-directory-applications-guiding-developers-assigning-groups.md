@@ -1,11 +1,11 @@
 ---
-title: "将组分配到 Azure AD 应用 | Microsoft 文档"
-description: "如何为 Azure 应用程序实现组分配。"
+title: 将组分配到 Azure AD 应用 | Microsoft 文档
+description: 如何为 Azure 应用程序实现组分配。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 29b5ba89-a1c7-4f1f-a294-248a40106617
 ms.service: active-directory
 ms.workload: identity
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26597139"
 ---
 # <a name="assign-azure-active-directory-groups-to-an-application"></a>将 Azure Active Directory 组分配到应用程序
 在将用户和组分配到应用程序之前，必须要求用户分配。 若要了解如何要求进行用户分配，请参阅[要求进行用户分配](active-directory-applications-guiding-developers-requiring-user-assignment.md)一文。

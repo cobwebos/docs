@@ -11,22 +11,26 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5d806afbfd74d68d139f494c7a5a6e871a7dae36
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 2c2553d9ffb1dfbe032385fb77e234a8b96cb239
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110059"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI 元素
 一组用于选择新的或现有虚拟网络的控件。
 
 ## <a name="ui-sample"></a>UI 示例
-![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
+当用户选取一个新的虚拟网络时，用户可以自定义每个子网的名称和地址前缀。 配置子网是可选的。
 
-- 在顶部的线框中，用户选择了一个新的虚拟网络，因此，用户可以自定义每个子网的名称和地址前缀。 在此情况下，配置子网是可选的。
-- 在底部的线框中，用户选择了一个现有虚拟网络，因此，用户必须将部署模板所需的每个子网映射到现有子网。 在此情况下，配置子网是必需的。
+![Microsoft.Network.VirtualNetworkCombo 新](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+
+当用户选取一个现有虚拟网络时，用户必须将部署模板所需的每个子网映射到现有子网。 在此情况下，配置子网是必需的。
+
+![Microsoft.Network.VirtualNetworkCombo 现有](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>架构
 ```json
@@ -87,12 +91,12 @@ ms.lasthandoff: 05/17/2018
 - 必须指定 `constraints.minAddressPrefixSize`。 地址空间小于指定值的任何现有虚拟网络都不可供选择。
 - 必须指定 `subnets`，并且必须为每个子网指定 `constraints.minAddressPrefixSize`。
 - 创建新的虚拟网络时，会根据虚拟网络的地址前缀和相应的 `addressPrefixSize` 自动计算每个子网的地址前缀。
-- 使用现有虚拟网络时，任何小于相应 `constraints.minAddressPrefixSize` 的子网都不可供选择。 另外，如果指定，则没有包含至少 `minAddressCount` 个可用地址的子网也不可供选择。
-默认值为 **0**。 要确保可用地址是连续的，请将 `requireContiguousAddresses` 指定为 **true**。 默认值为 **true**。
+- 使用现有虚拟网络时，任何小于相应 `constraints.minAddressPrefixSize` 的子网都不可供选择。 另外，如果指定，则没有至少 `minAddressCount` 个可用地址的子网也不可供选择。 默认值为 **0**。 要确保可用地址是连续的，请将 `requireContiguousAddresses` 指定为 **true**。 默认值为 **true**。
 - 不支持在现有虚拟网络中创建子网。
 - 如果 `options.hideExisting` 为 **true**，则用户无法选择现有虚拟网络。 默认值为 **false**。
 
 ## <a name="sample-output"></a>示例输出
+
 ```json
 {
   "name": "vnet01",

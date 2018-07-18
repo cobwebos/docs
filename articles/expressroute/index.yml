@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: ExpressRoute 文档
+metadata:
+  document_id: 
+  title: ExpressRoute
+  meta.description: Learn how to use ExpressRoute. Tutorials, REST APIs and other documentation show you how to configure and manage an ExpressRoute circuit.
+  author: cherylmc
+  manager: jeconnoc
+  ms.service: ExpressRoute
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/18/2018
+  ms.author: cherylmc
+  ms.openlocfilehash: d46854679e8f802e7c3d66daf5b48d2f38a2e0dc
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34648386"
+abstract:
+  description: 了解如何通过本地基础结构或共同租用设施，使用 ExpressRoute 来与 Microsoft 云服务建立快速专用连接。 教程、REST API 和其他文档可帮助你配置和管理 ExpressRoute 线路。
+sections:
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何配置和管理 ExpressRoute 线路。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/expressroute/expressroute-howto-circuit-portal-resource-manager">创建和修改 ExpressRoute 线路</a>
+    - html: <a href="/azure/expressroute/expressroute-howto-routing-portal-resource-manager">创建和修改对等互连配置</a>
+    - html: <a href="/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager">将虚拟网络链接到 ExpressRoute 线路</a>
+    - html: <a href="/azure/expressroute/how-to-routefilter-portal">配置用于 Microsoft 对等互连的路由筛选器</a>
+- title: 免费 Pluralsight 视频培训
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: 实现 Microsoft Azure 网络服务
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: 计划和设计 Microsoft Azure 网络解决方案
+      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 命令行
+      html: <p><a href="/powershell/module/azurerm.network/#expressroute">PowerShell</a></p><p><a href="/cli/azure/network/express-route">Azure CLI</a></p>
+    - title: REST
+      html: <p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST API 参考</a></p><p><a href="https://msdn.microsoft.com/library/azure/dn606310">经典 REST API 参考</a></p>

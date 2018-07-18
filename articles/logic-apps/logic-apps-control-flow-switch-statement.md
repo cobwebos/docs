@@ -1,29 +1,25 @@
 ---
-title: "Switch 语句 - 基于特定值运行步骤 - Azure 逻辑应用 | Microsoft Docs"
-description: "基于逻辑应用中的对象、表达式或令牌的值运行不同步骤"
+title: 将 Switch 语句添加到工作流 - Azure 逻辑应用 | Microsoft Docs
+description: 如何基于 Azure 逻辑应用中的特定值创建控制工作流操作的 Switch 语句
 services: logic-apps
-keywords: "Switch 语句"
-author: ecfan
-manager: anneta
-editor: 
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: e1f515189be8a5659af0f6c29b3fac0550abc9f9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: e15f89d4b7e33ce7e28676c219344f7d7d9cd465
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299610"
 ---
-# <a name="switch-statements-run-different-steps-based-on-specific-values-in-logic-apps"></a>Switch 语句：基于逻辑应用中的特定值运行不同步骤
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>基于 Azure 逻辑应用中的特定值创建运行工作流操作的 Switch 语句
 
-若要基于对象、表达式或令牌的值执行不同步骤，请使用 *switch* 语句。 此结构计算对象、表达式或令牌的值，选择与结果匹配的 case，并仅运行该 case 的步骤。 switch 语句运行时，应只有一个 case 与结果相匹配。
+若要基于对象、表达式或令牌的值运行特定操作，请添加 Switch 语句。 此结构计算对象、表达式或令牌的值，选择与结果匹配的事例，并仅运行该事例的步骤。 switch 语句运行时，应只有一个 case 与结果相匹配。
 
 例如，假设你想要一个根据电子邮件中所选的选项执行不同步骤的逻辑应用。 在此示例中，逻辑应用将检查网站的 RSS 源中是否有新内容。 当新项出现在 RSS 源中时，逻辑应用将向审批者发送电子邮件。 逻辑应用将根据审批者选择“批准”还是“拒绝”，执行不同的步骤。
 

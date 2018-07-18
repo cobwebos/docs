@@ -3,26 +3,30 @@ title: 检索 Azure AD 访问评审结果 | Microsoft Docs
 description: 如何检索 Azure Active Directory 访问评审结果。
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/16/2018
-ms.author: billmath
-ms.openlocfilehash: cdd07fd837863d9a5abced0db8cacaded6288a41
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.component: compliance-reports
+ms.date: 06/21/2018
+ms.author: rolyon
+ms.reviewer: mwahl
+ms.openlocfilehash: 96676c3ec6d96fd6c6f78aa2dbed8cf4d0a6718d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192218"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295294"
 ---
 # <a name="retrieve-access-review-results"></a>检索访问评审结果
 
-管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](active-directory-azure-ad-controls-create-access-review.md)。  具有**全局管理员**、**安全管理员**或**安全读者**角色的用户也可以读取访问评审结果。  为了将用户分配给其中一个角色，特权角色管理员可以使用 Azure AD PIM 来让用户有资格激活该角色，或者全局管理员可以永久地[将用户分配给角色](active-directory-users-assign-role-azure-portal.md)。
+管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](active-directory-azure-ad-controls-create-access-review.md)。  具有**全局管理员**、**用户帐户管理员**、**安全管理员**或**安全读者**角色的用户也可以读取访问评审结果。  为了将用户分配给其中一个角色，特权角色管理员可以使用 Azure AD PIM 来让用户有资格激活该角色，或者全局管理员可以永久地[将用户分配给角色](fundamentals/active-directory-users-assign-role-azure-portal.md)。
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="locating-an-access-review"></a>查找访问评审
 
@@ -43,9 +47,7 @@ ms.locfileid: "34192218"
 
 ## <a name="removing-users-from-an-access-review"></a>从访问评审中删除用户
 
-[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
-
-默认情况下，删除的用户将在 Azure AD 中保持删除状态 30 天，在此期间，管理员可以根据需要还原这些用户。  30 天后，该用户将被永久删除。  此外，使用 Azure Active Directory 门户，全局管理员可以在达到该时间段之前，显式地[永久删除最近删除的用户](active-directory-users-restore.md)。  某个用户被永久删除后，随后有关该用户的数据将从活动访问评审中删除。  有关已删除用户的审核信息仍保留在审核日志中。
+默认情况下，删除的用户将在 Azure AD 中保持删除状态 30 天，在此期间，管理员可以根据需要还原这些用户。  30 天后，该用户将被永久删除。  此外，使用 Azure Active Directory 门户，全局管理员可以在达到该时间段之前，显式地[永久删除最近删除的用户](fundamentals/active-directory-users-restore.md)。  某个用户被永久删除后，随后有关该用户的数据将从活动访问评审中删除。  有关已删除用户的审核信息仍保留在审核日志中。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,6 +55,6 @@ ms.locfileid: "34192218"
 - [使用 Azure AD 访问评审管理来宾访问权限](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
 - [管理 Azure AD 访问评审的计划和控制措施](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [创建对组成员的访问评审或对应用程序的访问](active-directory-azure-ad-controls-create-access-review.md)
-- [针对充当 Azure AD 管理角色的用户创建访问评审](active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [针对充当 Azure AD 管理角色的用户创建访问评审](privileged-identity-management/pim-how-to-start-security-review.md)
 
 

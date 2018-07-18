@@ -1,6 +1,6 @@
 ---
-title: "Linux 虚拟机概述 | Microsoft Docs"
-description: "Azure 门户中 Linux 虚拟机概述的帮助内容"
+title: Linux 虚拟机概述 | Microsoft Docs
+description: Azure 门户中 Linux 虚拟机概述的帮助内容
 services: virtual-machines-linux
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073905"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux 虚拟机文档
 

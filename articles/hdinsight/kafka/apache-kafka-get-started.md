@@ -3,9 +3,8 @@ title: Apache Kafka 入门 - Azure HDInsight 快速入门 | Microsoft Docs
 description: 在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 门户创建 Apache Kafka 群集。 还可以了解 Kafka 主题、订阅服务器和使用者。
 services: hdinsight
 documentationcenter: ''
-author: Blackmist
+author: dhgoelmsft
 manager: jhubbard
-editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
 ms.custom: mvc,hdinsightactive
@@ -13,13 +12,14 @@ ms.devlang: ''
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/16/2018
+ms.date: 05/23/2018
 ms.author: larryfr
-ms.openlocfilehash: c405d95c53baa07ff21a7d919177bd720202ac14
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 776705281a1909cbeee657f7915d4c83ec8bbabe
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342147"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>快速入门：创建 Kafka on HDInsight 群集
 
@@ -75,7 +75,7 @@ Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为�
     | 设置 | 值 |
     | --- | --- |
     | 群集类型 | Kafka |
-    | 版本 | Kafka 0.10.0 (HDI 3.6) |
+    | 版本 | Kafka 1.0.0 (HDI 3.6) |
 
     使用“选择”按钮保存群集类型设置，然后返回“基本信息”。
 
@@ -89,7 +89,7 @@ Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为�
     | 群集登录密码 | 访问群集上托管的 Web 服务或 REST API 时的登录密码。 |
     | 安全外壳 (SSH) 用户名 | 通过 SSH 访问群集时使用的登录名。 默认情况下，密码与群集登录密码相同。 |
     | 资源组 | 要在其中创建群集的资源组。 |
-    | Location | 要在其中创建群集的 Azure 区域。 |
+    | 位置 | 要在其中创建群集的 Azure 区域。 |
 
     > [!TIP]
     > 每个 Azure 区域（位置）均提供_容错域_。 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
@@ -100,7 +100,7 @@ Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为�
 
     使用“下一步”按钮完成基本配置。
 
-5. 在“存储”中选择或创建存储帐户。 对于本文档中的步骤，请让其他字段保留默认值。 使用“下一步”按钮保存存储配置。
+5. 在“存储”中选择或创建存储帐户。 对于本文档中的步骤，请让其他字段保留默认值。 使用“下一步”按钮保存存储配置。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
     ![设置 HDInsight 的存储帐户设置](./media/apache-kafka-get-started/storage-configuration.png)
 
@@ -112,7 +112,7 @@ Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为�
     > 若要确保 Kafka on HDInsight 的可用性，辅助角色节点数条目必须设置为 3 或以上。 默认值为 4。
     
     > [!TIP]
-    > “每个辅助角色节点的磁盘数”条目配置 Kafka on HDInsight 的可伸缩性。 Kafka on HDInsight 在群集中使用虚拟机的本地磁盘来存储数据。 由于 Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)为每个节点提供高吞吐量和更多存储。 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 磁盘类型取决于辅助角色节点（Kafka 代理）所使用的 VM 大小。 高级磁盘可自动与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
+    > “每个工作节点的磁盘数”条目配置 Kafka on HDInsight 的可伸缩性。 Kafka on HDInsight 在群集中使用虚拟机的本地磁盘来存储数据。 由于 Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)为每个节点提供高吞吐量和更多存储。 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 磁盘类型取决于辅助角色节点（Kafka 代理）所使用的 VM 大小。 高级磁盘可自动与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
     ![设置 Kafka 群集大小](./media/apache-kafka-get-started/kafka-cluster-size.png)
 
@@ -182,10 +182,13 @@ ssuhuser@hn0-mykafk:~$
     出现提示时，请输入 Kafka 群集的名称。
 
 3. 若要使用 Zookeeper 主机信息来设置环境变量，请使用以下命令：
-
+    
     ```bash
-    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    export KAFKAZKHOSTS=`curl -sS -u admin -G http://headnodehost:8080/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
+
+    > [!TIP]
+    > 此命令直接查询群集头节点上的 Ambari 服务。 也可以使用公用地址 `https://$CLUSTERNAME.azurehdinsight.net:80/` 访问 ambari。 某些网络配置可以阻止访问公用地址。 例如，使用网络安全组 (NSG) 限制对虚拟网络中的 HDInsight 的访问。
 
     出现提示时，请输入群集登录帐户（不是 SSH 帐户）的密码。
 
@@ -205,7 +208,7 @@ ssuhuser@hn0-mykafk:~$
 5. 若要使用 Kafka 代理主机信息来设置环境变量，请使用以下命令：
 
     ```bash
-    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    export KAFKABROKERS=`curl -sS -u admin -G http://headnodehost:8080/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
     ```
 
     出现提示时，请输入群集登录帐户（不是 SSH 帐户）的密码。
@@ -252,7 +255,7 @@ Kafka 在主题中存储数据流。 可以使用 `kafka-topics.sh` 实用工具
 
         * 创建新主题或分区
 
-        * 扩展群集
+        * 纵向扩展群集
 
 * 若要列出主题，请使用以下命令：
 
@@ -281,7 +284,7 @@ Kafka 在主题中存储数据流。 可以使用 `kafka-topics.sh` 实用工具
 
 ## <a name="produce-and-consume-records"></a>生成和使用记录
 
-Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生产者与使用者通过 Kafka 代理服务通信。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理主机。
+Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生产者与使用者通过 Kafka 代理服务通信。 HDInsight 群集中的每个工作节点都是 Kafka 代理主机。
 
 若要将记录存储到之前创建的测试主题，并通过使用者对其进行读取，请使用以下步骤：
 

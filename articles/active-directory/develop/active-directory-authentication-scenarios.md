@@ -17,12 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c1390945848901dd71214e01469ab3bfa765ef4
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: f85b97791c9e2d17417f82dae05d27838be63703
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157565"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319007"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Azure AD 的身份验证方案
 
@@ -105,7 +105,7 @@ Azure AD 颁发的安全令牌（访问令牌和 ID 令牌）包含与经过身�
 * **多租户应用程序** - 多租户应用程序预定在许多组织中使用，而不仅是在单个组织中使用。 它们通常是由独立软件供应商 (ISV) 编写的软件即服务 (SaaS) 应用程序。 多租户应用程序需要设置在将使用它们的每个目录中，需要经过用户或管理员许可才能注册它们。 当在目录中注册应用程序并向其授予对 Graph API 或者另一可能的 Web API 的访问权限时，此许可过程即已开始。 当其他组织的用户或管理员注册使用应用程序时，会向他们显示一个对话框，其中显示了应用程序要求的权限。 然后，用户或管理员可以许可应用程序的要求，这会向应用程序授予对指定数据的访问权限，并最终在其目录中注册该应用程序。 有关详细信息，请参阅[许可框架概述](active-directory-integrating-applications.md#overview-of-the-consent-framework)。
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>开发单租户应用或多租户应用时的其他注意事项
-与开发单租户应用程序相比，当开发多租户应用程序时，会出现一些额外的注意事项。 例如，如果要使应用程序可供多个目录中的用户使用，需要一种机制来确定用户在哪个租户中。 单租户应用程序只需要在其自己的目录中查找用户，而多租户应用程序需要从 Azure AD 中的所有目录来识别特定用户。 为此，Azure AD 提供了一个任何多租户应用程序都可以在其中对登录请求进行定向的通用身份验证终结点，而不是提供特定于租户的终结点。 对于 Azure AD 中的所有目录，此终结点为 https://login.microsoftonline.com/common，而特定于租户的终结点可能为 https://login.microsoftonline.com/contoso.onmicrosoft.com。在开发应用程序时考虑通用终结点尤为重要，因为在登录、注销和令牌验证期间需要必要的逻辑来处理多租户。
+与开发单租户应用程序相比，当开发多租户应用程序时，会出现一些额外的注意事项。 例如，如果要使应用程序可供多个目录中的用户使用，需要一种机制来确定用户在哪个租户中。 单租户应用程序只需要在其自己的目录中查找用户，而多租户应用程序需要从 Azure AD 中的所有目录来识别特定用户。 为此，Azure AD 提供了一个任何多租户应用程序都可以在其中对登录请求进行定向的通用身份验证终结点，而不是提供特定于租户的终结点。 对于 Azure AD 中的所有目录，此终结点为 https://login.microsoftonline.com/common，而特定于租户的终结点可能为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 在开发应用程序时考虑通用终结点尤为重要，因为在登录、注销和令牌验证期间需要必要的逻辑来处理多租户。
 
 如果当前在开发单租户应用程序但希望使其可供许多组织使用，可以轻松地在 Azure AD 中更改该应用程序及其配置以使其支持多租户。 此外，无论是在单租户应用程序中还是在多租户应用程序中提供身份验证，Azure AD 都将为所有目录中的所有令牌使用相同的签名密钥。
 
@@ -138,7 +138,7 @@ Azure AD 颁发的安全令牌（访问令牌和 ID 令牌）包含与经过身�
 1. 当用户访问应用程序并需要登录时，系统会通过一个登录请求将其重定向到 Azure AD 中的身份验证终结点。
 1. 用户在登录页面上进行登录。
 1. 如果身份验证成功，则 Azure AD 将创建一个身份验证令牌并将登录响应返回到应用程序的回复 URL（已在 Azure 门户中配置）。 对于生产应用程序，此回复 URL 应当采用 HTTPS 格式。 返回的令牌包括应用程序对该令牌进行验证所需的关于用户和 Azure AD 的声明。
-1. 应用程序使用 Azure AD 的联合元数据文档中提供的公用签名密钥和颁发者信息对令牌进行验证。 在应用程序对令牌进行验证后，Azure AD 将通过该用户启动一个新会话。 该会话允许用户访问应用程序，直到会话过期。
+1. 应用程序使用 Azure AD 的联合元数据文档中提供的公用签名密钥和颁发者信息对令牌进行验证。 验证令牌后，应用程序会启动与用户的新会话。 该会话允许用户访问应用程序，直到会话过期。
 
 #### <a name="code-samples"></a>代码示例
 

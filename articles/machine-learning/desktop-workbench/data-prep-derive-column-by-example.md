@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 201492f033ad3e2508bc75c0865036e7c83a652a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8b85f57f79cad0a01d3c5499383108450babd507
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833757"
 ---
 # <a name="derive-column-by-example-transformation"></a>“按示例派生列”转换
 
@@ -139,24 +141,24 @@ Workbench 分析数据，并尝试识别应由用户审核的边缘事例。 分
 该事例所需的示例数：1
 
 >[!NOTE] 
->在此示例中，特殊字符 · 表示“输出”列中的空格。
+>在此示例中，特殊字符表示“输出”列中的空格。
 
 |名字|中间名首字母|姓氏|输出|
 |:-----|:-----|:-----|:-----|
-|Laquanda||Lohmann|Laquanda··Lohmann|
+|Laquanda||Lohmann|Laquanda·Lohmann|
 |Claudio|A|Chew|**Claudio·A·Chew**|
 |Sarah-Jane|S|Smith|Sarah-Jane·S·Smith|
-|Brandi||Blumenthal|Brandi··Blumenthal|
+|Brandi||Blumenthal|Brandi·Blumenthal|
 |Jesusita|R|Journey|Jesusita·R·Journey|
-|Hermina||Hults|Hermina··Hults|
+|Hermina||Hults|Hermina·Hults|
 |Anne-Marie|W|Jones|Anne-Marie·W·Jones|
-|Rico||Ropp|Rico··Ropp|
-|Lauren-May||Fullmer|Lauren-May··Fullmer|
+|Rico||Ropp|Rico·Ropp|
+|Lauren-May||Fullmer|Lauren-May·Fullmer|
 |Marc|T|Maine|Marc·T·Maine|
-|Angie||Adelman|Angie··Adelman|
-|John-Paul||Smith|John-Paul··Smith|
+|Angie||Adelman|Angie·Adelman|
+|John-Paul||Smith|John-Paul·Smith|
 |Song|W|Staller|Song·W·Staller|
-|Jill||Jefferies|Jill··Jefferies|
+|Jill||Jefferies|Jill·Jefferies|
 |Ruby-Grace|M|Simmons|Ruby-Grace·M·Simmons|
 
 ### <a name="s5-generating-initials"></a>S5. 生成首字母

@@ -1,6 +1,6 @@
 ---
-title: "异常管理 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "针对威胁建模工具中暴露的威胁采取的缓解措施"
+title: 异常管理 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3fae9390b41d12361b820e2c37601283b37bc302
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031706"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -31,11 +32,11 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **步骤** | 可将 Windows Communication Framework (WCF) 服务配置为公开调试信息。 不应在生产环境中使用调试信息。 `<serviceDebug>` 标记定义是否为 WCF 服务启用调试信息功能。 如果 includeExceptionDetailInFaults 特性设置为 true，则将来自应用程序的异常信息返回到客户端。 攻击者可以利用他们从调试输出中获取的附加信息，针对框架、数据库或者应用程序使用的其他资源展开攻击。 |
 
 ### <a name="example"></a>示例
@@ -55,18 +56,18 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 泛型、NET Framework 3 |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **步骤** | 有关服务的公开信息可能会给攻击者提供有用的洞察数据，使他们知道如何攻击服务。 `<serviceMetadata>` 标记会启用元数据发布功能。 服务元数据可能包含不应该提供给公众访问的敏感信息。 最起码，应该只允许受信任的用户访问元数据，确保不必要的信息不会公开。 当然，更好的做法是完全禁用元数据发布功能。 安全的 WCF 配置不包含 `<serviceMetadata>` 标记。 |
 
 ## <a id="exception"></a>确保在 ASP.NET Web API 中进行适当的异常处理
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 5、MVC 6 |
 | **属性**              | 不适用  |
@@ -184,7 +185,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -195,18 +196,18 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [编辑 ASP.NET 错误页设置对话框](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **步骤** | <p>如果 ASP.NET 应用程序失败并导致 HTTP/1.x 500 内部服务器错误，或者某项功能配置（例如请求筛选）阻止显示页面，会生成错误消息。 管理员可以选择是要让应用程序向客户端显示友好的消息、向客户端显示详细的错误消息，还是只向 localhost 显示详细的错误消息。 web.config 中的 <customErrors> 标记有三种模式：</p><ul><li>**On：**指定启用自定义错误。 如果未指定 defaultRedirect 特性，用户将看到常规错误。 将向远程客户端和本地主机显示自定义错误</li><li>**Off：**指定禁用自定义错误。 将向远程客户端和本地主机显示详细的 ASP.NET 错误</li><li>**RemoteOnly：**指定只向远程客户端显示自定义错误，向本地主机显示 ASP.NET 错误。 这是默认值</li></ul><p>打开应用程序/站点的 `web.config`文件，确保该标记中定义了 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
+| **步骤** | <p>如果 ASP.NET 应用程序失败并导致 HTTP/1.x 500 内部服务器错误，或者某项功能配置（例如请求筛选）阻止显示页面，会生成错误消息。 管理员可以选择是要让应用程序向客户端显示友好的消息、向客户端显示详细的错误消息，还是只向 localhost 显示详细的错误消息。 web.config 中的 <customErrors> 标记有三种模式：</p><ul><li>**On：** 指定启用自定义错误。 如果未指定 defaultRedirect 特性，用户将看到常规错误。 将向远程客户端和本地主机显示自定义错误</li><li>**Off：** 指定禁用自定义错误。 将向远程客户端和本地主机显示详细的 ASP.NET 错误</li><li>**RemoteOnly：** 指定只向远程客户端显示自定义错误，向本地主机显示 ASP.NET 错误。 这是默认值</li></ul><p>打开应用程序/站点的 `web.config`文件，确保该标记中定义了 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
 
 ## <a id="deployment"></a>在 IIS 中将部署方法设置为 Retail
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -217,7 +218,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |

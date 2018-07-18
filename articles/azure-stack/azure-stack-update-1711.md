@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30316223"
 ---
 # <a name="azure-stack-1711-update"></a>Azure Stack 1711 更新
 
@@ -75,21 +76,21 @@ Azure Stack 1711 更新内部版本号为 **171201.3**。
 本部分描述在安装 1711 更新期间可能会遇到的已知问题。
 
 
-1. **症状：**Azure Stack 操作员在更新期间可能会看到以下错误：*"name:Install Update.", "description": "Install Update on Hosts and Infra VMs.", "errorMessage": "Type 'LiveUpdate' of Role 'VirtualMachines' raised an exception:\n\nThere is not enough space on the disk.\n\nat <ScriptBlock>, <No file>: line22", "status": "Error", "startTimeUtc": "2017-11-10T16:46:59.123Z", "endTimeUtc": "2017-11-10T19:20:29.669Z", "steps": [ ]"*
-    2. **原因：**此问题的原因是属于 Azure Stack 基础结构的一个或多个虚拟机上的可用磁盘空间不足
-    3. **解决方法：**请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
+1. **症状：** Azure Stack 操作员在更新期间可能会看到以下错误：*"name:Install Update.", "description": "Install Update on Hosts and Infra VMs.", "errorMessage": "Type 'LiveUpdate' of Role 'VirtualMachines' raised an exception:\n\nThere is not enough space on the disk.\n\nat <ScriptBlock>, <No file>: line22", "status": "Error", "startTimeUtc": "2017-11-10T16:46:59.123Z", "endTimeUtc": "2017-11-10T19:20:29.669Z", "steps": [ ]"*
+    2. **原因：** 此问题的原因是属于 Azure Stack 基础结构的一个或多个虚拟机上的可用磁盘空间不足
+    3. **解决方法：** 请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
 <br><br>
-2. **症状：**Azure Stack 操作员在更新程序期间可能看到以下错误：*Exception calling "ExtractToFile" with "3" argument(s):"The process cannot access the file '<\\<machineName>-ERCS01\C$\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.Diagnostics\Microsoft.AzureStack.Common.Tools.Diagnostics.AzureStackDiagnostics.dll>'*
-    1. **原因：**此问题的原因是通过门户恢复某项以前已使用特权结束点 (PEP) 恢复的更新。
-    2. **解决方法：**请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
+2. **症状：** Azure Stack 操作员在更新程序期间可能看到以下错误：*Exception calling "ExtractToFile" with "3" argument(s):"The process cannot access the file '<\\<machineName>-ERCS01\C$\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.Diagnostics\Microsoft.AzureStack.Common.Tools.Diagnostics.AzureStackDiagnostics.dll>'*
+    1. **原因：** 此问题的原因是通过门户恢复某项以前已使用特权结束点 (PEP) 恢复的更新。
+    2. **解决方法：** 请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
 <br><br>
 3. **症状：** Azure 堆栈运算符在更新过程中可能会看到以下错误：*"角色 VirtualMachines 的类型 CheckHealth 引发的异常： \n\nVirtual 机运行状况检查<machineName>-ACS01 生成以下错误。 \nThere 时从主机中获取 VM 信息时出错。异常详细信息:\nGet-VM: 计算机 'Node03' 上的操作失败: WS-Management 服务无法处理请求。WMI \nservice 或 WMI 提供程序返回了未知的错误: HRESULT 0x8004106c”。*
-    1. **原因：**此问题是由某个 Windows Server 问题造成的，后续的 Windows Server 更新中会解决此问题。
-    2. **解决方法：**请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
+    1. **原因：** 此问题是由某个 Windows Server 问题造成的，后续的 Windows Server 更新中会解决此问题。
+    2. **解决方法：** 请联系 Microsoft 客户服务和支持 (CSS) 寻求帮助。
 <br><br>
 4. **症状：** Azure 堆栈运算符在更新过程中可能会看到以下错误：*"角色 URP 的类型 DefenderUpdate 引发了异常： 失败获取从版本\\SU1FileServer\SU1_Public\DefenderUpdates\x64\{文件名} 在复制 AzSDefenderFiles，C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.Defender\Microsoft.AzureStack.Defender.psm1 60 尝试后的.exe： 行 262"*
-    1. **原因：**此问题由于 Windows Defender 定义更新的后台下载失败或不完整所造成。
-    2. **解决方法：**请在首次更新尝试起经过 8 小时之后，再尝试继续更新。
+    1. **原因：** 此问题由于 Windows Defender 定义更新的后台下载失败或不完整所造成。
+    2. **解决方法：** 请在首次更新尝试起经过 8 小时之后，再尝试继续更新。
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
 

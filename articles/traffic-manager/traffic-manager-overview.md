@@ -1,11 +1,11 @@
 ---
-title: "什么是流量管理器 | Microsoft 文档"
-description: "本文将有助于你了解什么是流量管理器，以及流量管理器是否是适合应用程序的流量路由选择"
+title: 什么是流量管理器 | Microsoft 文档
+description: 本文将有助于你了解什么是流量管理器，以及流量管理器是否是适合应用程序的流量路由选择
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111825"
 ---
 # <a name="overview-of-traffic-manager"></a>流量管理器概述
 

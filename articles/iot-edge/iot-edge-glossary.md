@@ -1,24 +1,19 @@
 ---
 title: Azure IoT Edge 术语表 | Microsoft Docs
 description: 概念 - 与 Azure IoT Edge 相关的常用术语表。
-services: iot-hub
-documentationcenter: .net
 author: menchi
 manager: bzurcher
-editor: ''
-ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
-ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 2/15/2018
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
+ms.date: 02/15/2018
 ms.author: menchi
-ms.openlocfilehash: 062eabc1731379456574bd1a7964c05290eb5a1b
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 79864b765282f2efbf7016cba7138efa4e1d3dc4
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597786"
 ---
 # <a name="glossary-of-iot-edge-terms"></a>IoT Edge 术语表
 本文列出了一些在 IoT Edge 文章中使用的常用术语。

@@ -1,22 +1,24 @@
 ---
-title: "使用 Microsoft Flow自动执行 Azure Log Analytics 过程"
-description: "了解如何通过 Azure Log Analytics 连接器使用 Microsoft Flow 快速自动执行可重复的过程。"
+title: 使用 Microsoft Flow自动执行 Azure Log Analytics 过程
+description: 了解如何通过 Azure Log Analytics 连接器使用 Microsoft Flow 快速自动执行可重复的过程。
 services: log-analytics
-documentationcenter: 
-author: CFreemanwa
+documentationcenter: ''
+author: mgoedtel
 manager: carmonm
 ms.service: log-analytics
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 9884b97aad8f022e6bc20b2a630ccdd07ebc64db
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.component: na
+ms.openlocfilehash: 21cf7cf3d12902b02fcbf650a1623e78004d28b4
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131694"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Log Analytics 过程
 [Microsoft Flow](https://ms.flow.microsoft.com) 支持使用数百种操作为不同服务创建自动化工作流。 来自一个操作的输出可以用作另一个操作的输入，从而在不同的服务之间创建集成。  通过用于 Microsoft Flow 的 Azure Log Analytics 连接器，可构建包含 Log Analytics 中日志搜索检索到的数据的工作流。

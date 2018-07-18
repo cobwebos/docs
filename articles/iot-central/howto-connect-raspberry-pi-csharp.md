@@ -1,19 +1,19 @@
 ---
 title: 将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#) | Microsoft Docs
 description: 如何使用 C# 以设备开发人员的身份将 Raspberry Pi 连接到 Azure IoT Central 应用程序。
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/22/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: d09d3de04f8c846eadc7367ca4d4559eb55f995b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 58f363c522f3e5abe6bf49a2aebafe4e953e00df
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200463"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628583"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#)
 
@@ -60,7 +60,7 @@ ms.locfileid: "34200463"
 
 切换设置
 
-| 显示名称 | 字段名称 | 启用文本 | 关闭文本 | Initial |
+| 显示名称 | 字段名称 | 打开文本 | 关闭文本 | Initial |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | 亮起      | 熄灭      | 关闭     |
 
@@ -69,7 +69,7 @@ ms.locfileid: "34200463"
 | Type            | 显示名称 | 字段名称 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 文本            | Location     | location   | 不适用       |
+| 文本            | 位置     | location   | 不适用       |
 
 ### <a name="add-a-real-device"></a>添加真实设备
 

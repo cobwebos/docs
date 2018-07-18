@@ -1,11 +1,11 @@
 ---
-title: "管理 StorSimple 虚拟阵列上的卷 | Microsoft 文档"
-description: "介绍 StorSimple Device Manager 并说明如何使用它在 StorSimple 虚拟阵列上管理卷。"
+title: 管理 StorSimple 虚拟阵列上的卷 | Microsoft 文档
+description: 介绍 StorSimple Device Manager 并说明如何使用它在 StorSimple 虚拟阵列上管理卷。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: caa6a26b-b7ba-4a05-b092-1a79450225cf
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110205"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务在 StorSimple 虚拟阵列上管理卷
 

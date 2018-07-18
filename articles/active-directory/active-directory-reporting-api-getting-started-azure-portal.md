@@ -3,24 +3,25 @@ title: Azure AD 报告 API 入门 | Microsoft Docs
 description: 如何开始使用 Azure Active Directory 报告 API
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 05/07/2018
-ms.author: dhanyahk;markvi
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a818c9b0e2c9097f45d2fdd39676ef6807d06ca5
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 93532f4b0b2d527a4d5c79e2ee1b2810394b2f11
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929080"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442077"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -46,6 +47,13 @@ Azure Active Directory 向你提供了各种[报告](active-directory-reporting-
  
 有关详细说明，请参阅[访问 Azure Active Directory 报告 API 的先决条件](active-directory-reporting-api-prerequisites-azure-portal.md)。
 
+## <a name="apis-with-graph-explorer"></a>Graph 浏览器的 API
+
+可以使用 [MSGraph 浏览器](https://developer.microsoft.com/en-us/graph/graph-explorer)来验证登录和审核 API 数据。 确保使用 Graph 浏览器 UI 中的两个登录按钮登录帐户，并为租户设置 **Tasks.ReadWrite** 和 **Directory.ReadAll** 权限，如下所示。   
+
+![Graph 浏览器](./media/active-directory-reporting-api-getting-started-azure-portal/graph-explorer.png)
+
+![修改权限 UI](./media/active-directory-reporting-api-getting-started-azure-portal/modify-permissions.png)
 
 ## <a name="recommendation"></a>建议 
 

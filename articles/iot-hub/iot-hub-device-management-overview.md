@@ -1,24 +1,19 @@
 ---
 title: 使用 Azure IoT 中心进行设备管理 | Microsoft Docs
 description: Azure IoT 中心的设备管理概述：企业设备生命周期和设备管理模式，如重启、恢复出厂设置、固件更新、配置、设备孪生、查询、作业。
-services: iot-hub
-documentationcenter: ''
 author: bzurcher
-manager: timlt
-editor: ''
-ms.assetid: a367e715-55f6-4593-bd68-7863cbf0eb81
+manager: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 4fe4328314e23bbd1ace13e935f82336e1e602a9
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c4d0b5d5ba429dc5d839fa054476461f96a52143
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030727"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>使用 IoT 中心进行设备管理的概述
 
@@ -56,16 +51,16 @@ IoT 带来了一系列独特的设备管理难题，每个企业级解决方案�
 
 * **计划**：使操作员能够创建可让他们轻松且精确地查询的设备元数据方案，并针对一组设备进行批量管理操作。 可以使用设备孪生以标记和属性的形式存储此设备元数据。
   
-    *其他阅读材料*：[设备孪生入门][lnk-twins-getstarted]、[了解设备孪生][lnk-twins-devguide]、[如何使用设备孪生属性][lnk-twin-properties]。
+    其他阅读材料：[设备孪生入门][lnk-twins-getstarted]、[了解设备孪生][lnk-twins-devguide]、[如何使用设备孪生属性][lnk-twin-properties]、[loT 解决方案中设备配置的最佳做法][lnk-adm-best-practices]。
 * **预配**：安全地为 IoT 中心预配新设备，使操作员立即发现设备功能。  使用 IoT 中心标识注册表创建灵活的设备标识和凭据，并使用作业成批执行此操作。 通过设备孪生中的设备属性构建设备来报告其功能和情况。
   
-    *其他阅读材料*：[管理设备标识][lnk-identity-registry]、[批量管理设备标识][lnk-bulk-identity]、[如何使用设备孪生属性][lnk-twin-properties]、[Azure IoT 中心设备预配服务][lnk-dps]。
+    其他阅读材料：[管理设备标识][lnk-identity-registry]、[批量管理设备标识][lnk-bulk-identity]、[如何使用设备孪生属性][lnk-twin-properties]、[loT 解决方案中设备配置的最佳做法][lnk-adm-best-practices]、[Azure IoT 中心设备预配服务][lnk-dps]。
 * **配置**：在保持正常运行和安全性的同时便于对设备进行批量配置更改和固件更新。 使用所需属性或通过直接方法和广播作业成批执行这些设备管理操作。
   
-    *其他阅读材料*：[使用直接方法][lnk-c2d-methods]、[对设备调用直接方法][lnk-methods-devguide]、[如何使用设备孪生属性][lnk-twin-properties]、[计划和广播作业][lnk-jobs]、[在多台设备上计划作业][lnk-jobs-devguide]。
+    其他阅读材料：[如何使用设备孪生属性][lnk-twin-properties]、[大规模配置和监视 loT 设备][lnk-adm-how-to]、[loT 解决方案中设备配置的最佳做法][lnk-adm-best-practices]。
 * **监视**：监视总体设备集合运行状况、正在进行的操作的状态并针对可能需要操作员注意的问题向操作员发出警报。  应用设备孪生以允许设备报告实时操作情况和更新操作的状态。 使用设备孪生查询生成显示最直接问题的功能强大的仪表板报告。
   
-    其他阅读材料：[如何使用设备孪生属性][lnk-twin-properties]、[用于设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query-language]。
+    其他阅读材料：[如何使用设备孪生属性][lnk-twin-properties]、[适用于设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query-language]、[大规模配置和监视 IoT 设备][lnk-adm-how-to]、[loT 解决方案中设备配置的最佳做法][lnk-adm-best-practices]。
 * **停用**：在发生故障、升级周期后，或在服务生存期结束时更换或停用设备。  使用设备孪生来维护设备信息（如果正在更换物理设备），或者将设备信息存档（如果正在停用设备）。 使用 IoT 中心标识注册表来安全地撤销设备标识和凭据。
   
     *其他阅读材料*：[如何使用设备孪生属性][lnk-twin-properties]、[管理设备标识][lnk-identity-registry]。
@@ -82,7 +77,7 @@ IoT 中心启用以下设备管理模式集。  [设备管理教程][lnk-get-sta
 * **配置** - 后端应用使用所需属性来配置设备上运行的软件。  设备使用报告属性来更新设备的配置状态。
   
     ![设备管理配置模式图形][img-config_pattern]
-* **固件更新** - 后端应用通过直接方法通知设备它已启动固件更新。  设备将启动一个多步骤过程，用于下载固件图片、应用固件图片，最后重新连接到 IoT 中心服务。  在整个多步骤过程中，设备使用报告属性来更新设备的进度和状态。
+* **固件更新** - 后端应用程序使用自动设备管理配置，以选择接收更新的设备、指示设备在哪里查找更新，以及监视更新过程。 设备启动多步骤过程，用于下载、验证和应用固件映像，然后在重新连接到 IoT 中心服务前重启设备。  在整个多步骤过程中，设备使用报告属性来更新设备的进度和状态。
   
     ![设备管理固件更新模式图形][img-fwupdate_pattern]
 * **报告进度和状态** - 解决方案后端在一组设备上运行设备孪生查询，以报告设备上运行的操作的状态和进度。
@@ -116,3 +111,5 @@ IoT 中心启用以下设备管理模式集。  [设备管理教程][lnk-get-sta
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+[lnk-adm-best-practices]: iot-hub-configuration-best-practices.md
+[lnk-adm-how-to]: iot-hub-auto-device-config.md

@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "容器服务文档"
+title: 容器服务文档
 metadata:
   document_id: 
-  title: "Azure 容器服务文档 - 教程和 API 参考 | Microsoft 文档"
+  title: Azure 容器服务文档 - 教程和 API 参考 | Microsoft 文档
   meta.description: Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.
   services: container-service
   author: czeumault
@@ -19,8 +19,9 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 10/11/2017
+  ms.locfileid: "23068366"
 abstract:
-  description: "使用 Azure 容器服务可以快速部署可供投产的 Kubernetes、DC/OS 或 Docker Swarm 群集。 使用这些快速入门、教程和示例，了解如何使用 Azure 容器服务。"
+  description: 使用 Azure 容器服务可以快速部署可供投产的 Kubernetes、DC/OS 或 Docker Swarm 群集。 使用这些快速入门、教程和示例，了解如何使用 Azure 容器服务。
 sections:
 - title: 
   items:
@@ -28,12 +29,12 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: "Kubernetes 群集入门"
+    - title: Kubernetes 群集入门
       href: /azure/container-service/kubernetes
       image:
         src: media/index/get-started.svg
         href: /azure/container-service/kubernetes
-    - title: "DC/OS 和 Docker Swarm 群集入门"
+    - title: DC/OS 和 Docker Swarm 群集入门
       href: /azure/container-service/dcos-swarm
       image:
         src: media/index/get-started.svg

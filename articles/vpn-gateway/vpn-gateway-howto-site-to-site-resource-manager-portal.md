@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914175"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
 
@@ -49,23 +50,23 @@ ms.lasthandoff: 04/06/2018
 
 本文中的示例使用以下值。 可使用这些值创建测试环境，或参考这些值以更好地理解本文中的示例。 有关通用 VPN 网关设置的详细信息，请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。
 
-* **VNet 名称：**TestVNet1
-* **地址空间：**10.1.0.0/16
-* **订阅：**要使用的订阅
-* **资源组：**TestRG1
-* **位置：**美国东部
-* **子网：**FrontEnd：10.1.0.0/24，BackEnd：10.1.1.0/24（可选，适用于本练习）
-* **网关子网名称：**GatewaySubnet（会在门户中自动填充）
-* **网关子网地址范围：**10.1.255.0/27
-* **DNS 服务器：**8.8.8.8 - 可选。 DNS 服务器的 IP 地址。
-* **虚拟网关名称：**VNet1GW
-* **公共 IP：**VNet1GWIP
-* **VPN 类型：**基于路由
-* **连接类型：**站点到站点 (IPsec)
-* **网关类型：**VPN
-* **局域网网关名称：**Site1
-* **连接名称：**VNet1toSite1
-* **共享密钥：**在此示例中，我们将使用 abc123。 但是，你可以使用与 VPN 硬件兼容的任何密钥。 重要的是连接两端的值要匹配。
+* **VNet 名称：** TestVNet1
+* **地址空间：** 10.1.0.0/16
+* **订阅：** 要使用的订阅
+* **资源组：** TestRG1
+* **位置：** 美国东部
+* **子网：** FrontEnd：10.1.0.0/24，BackEnd：10.1.1.0/24（可选，适用于本练习）
+* **网关子网名称：** GatewaySubnet（会在门户中自动填充）
+* **网关子网地址范围：** 10.1.255.0/27
+* **DNS 服务器：** 8.8.8.8 - 可选。 DNS 服务器的 IP 地址。
+* **虚拟网关名称：** VNet1GW
+* **公共 IP：** VNet1GWIP
+* **VPN 类型：** 基于路由
+* **连接类型：** 站点到站点 (IPsec)
+* **网关类型：** VPN
+* **局域网网关名称：** Site1
+* **连接名称：** VNet1toSite1
+* **共享密钥：** 在此示例中，我们将使用 abc123。 但是，你可以使用与 VPN 硬件兼容的任何密钥。 重要的是连接两端的值要匹配。
 
 ## <a name="CreatVNet"></a>1.创建虚拟网络
 

@@ -2,17 +2,19 @@
 title: Azure AD UserPrincipalName 填充
 description: 以下文档介绍了如何填充 UserPrincipalName 属性。
 author: billmath
+ms.component: hybrid
 ms.author: billmath
-ms.date: 02/02/2018
+ms.date: 06/26/2018
 ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 96b12fbddd4293c55e9029b194416541ca44c622
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6b3fddcdf6ff9c35d5932b9b83da02f60f9e081e
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064257"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填充
 
@@ -28,14 +30,14 @@ UserPrincipalName 属性值是用户帐户的 Azure AD 用户名。
 |Microsoft 联机电子邮件路由地址 (MOERA)|Azure AD 基于 Azure AD MailNickName 属性和 &lt;MailNickName&gt;&#64;&lt;初始域&gt; 形式的 Azure AD 初始域计算 MOERA。|
 |本地 mailNickName 属性|Active Directory 中的一个属性，其值表示 Exchange 组织中某个用户的别名。|
 |本地 mail 属性|Active Directory 中的一个属性，其值表示某个用户的电子邮件地址|
-|主要 SMTP 地址|Exchange 收件人对象的主要电子邮件地址。 例如，SMTP:user@contoso.com。|
+|主要 SMTP 地址|Exchange 收件人对象的主要电子邮件地址。 例如，SMTP:user\@contoso.com。|
 |备用登录 ID|除 UserPrincipalName 以外的本地属性，例如 mail 属性，用于登录。|
 
 ## <a name="what-is-userprincipalname"></a>什么是 UserPrincipalName？
 UserPrincipalName 是基于 Internet 标准 [RFC 822](http://www.ietf.org/rfc/rfc0822.txt) 的属性，表示某个用户的 Internet 样式登录名。 
 
 ### <a name="upn-format"></a>UPN 格式
-UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀与后缀以“@”符号相联接。 例如“someone@example.com”。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
+UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀与后缀以“\@”符号相联接。 例如，“someone\@example.com”。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
 
 ## <a name="upn-in-azure-ad"></a>Azure AD 中的 UPN 
 Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域是否经过验证。  如果域已验证，则允许具有该后缀的用户名登录到 Azure AD。  
@@ -45,7 +47,7 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
    ![未验证的域](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png) 
 
 ## <a name="alternate-login-id"></a>备用登录 ID
-在某些环境中，由于公司政策或本地业务线应用程序的依赖关系，最终用户只知道其电子邮件地址，而不知道其 UPN。
+在一些环境中，最终用户可能仅知道自己的电子邮件地址，但不知道自己的 UPN。  使用电子邮件地址的原因可能是公司策略或本地业务线应用程序依赖项。
 
 备用登录 ID 允许配置登录体验，用户可以使用其 UPN 以外的属性（如邮件）登录。
 
@@ -84,6 +86,8 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 
 ### <a name="scenario-1-non-verified-upn-suffix--initial-synchronization"></a>方案 1：未验证的 UPN 后缀 – 初始同步
 
+![方案 1](media/active-directory-aadconnect-userprincipalname/example1.png)
+
 本地用户对象：
 - mailNickName：&lt;未设置&gt;
 - proxyAddresses：{SMTP:us1@contoso.com}
@@ -102,6 +106,8 @@ Azure AD 租户用户对象：
 
 ### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>方案 2：未验证的 UPN 后缀 – 设置本地 mailNickName 属性
 
+![方案 2](media/active-directory-aadconnect-userprincipalname/example2.png)
+
 本地用户对象：
 - mailNickName：us4
 - proxyAddresses：{SMTP:us1@contoso.com}
@@ -117,6 +123,8 @@ Azure AD 租户用户对象：
 - UserPrincipalName：us1@contoso.onmicrosoft.com
 
 ### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>方案 3：未验证的 UPN 后缀 – 更新本地 userPrincipalName 属性
+
+![方案 3](media/active-directory-aadconnect-userprincipalname/example3.png)
 
 本地用户对象：
 - mailNickName：us4
@@ -135,6 +143,8 @@ Azure AD 租户用户对象：
 
 ### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>方案 4：未验证的 UPN 后缀 – 更新主要 SMTP 地址和本地 mail 属性
 
+![方案 4](media/active-directory-aadconnect-userprincipalname/example4.png)
+
 本地用户对象：
 - mailNickName：us4
 - proxyAddresses：{SMTP:us6@contoso.com}
@@ -142,13 +152,15 @@ Azure AD 租户用户对象：
 - userPrincipalName：us5@contoso.com
 
 将本地 mail 属性和主要 SMTP 地址的更新同步到 Azure AD 租户
-- 完成用户对象的初始同步后，本地 mail 属性和主要 SMTP 地址的更新既不影响 Azure AD MailNickName 属性，也不影响 UserPrincipalName 属性。
+- 完成用户对象的初始同步后，本地 mail 属性和主要 SMTP 地址的更新不会影响 Azure AD MailNickName 或 UserPrincipalName 属性。
 
 Azure AD 租户用户对象：
 - MailNickName：us4
 - UserPrincipalName：us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>方案 5：已验证的 UPN 后缀 – 更新本地 userPrincipalName 属性后缀
+
+![方案 5](media/active-directory-aadconnect-userprincipalname/example5.png)
 
 本地用户对象：
 - mailNickName：us4

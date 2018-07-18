@@ -1,12 +1,12 @@
 ---
-title: "StorSimple Virtual Array Update 0.4 发行说明 | Microsoft 文档"
-description: "介绍有关运行 Update 0.4 的 StorSimple Virtual Array 待解决的重要问题和解决方案。"
+title: StorSimple Virtual Array Update 0.4 发行说明 | Microsoft 文档
+description: 介绍有关运行 Update 0.4 的 StorSimple Virtual Array 待解决的重要问题和解决方案。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110595"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array Update 0.4 发行说明
 

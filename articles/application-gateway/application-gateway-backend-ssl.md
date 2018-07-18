@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 应用程序网关上启用端到端 SSL | Microsoft Docs"
-description: "此页概述应用程序网关的端到端 SSL 支持。"
+title: 在 Azure 应用程序网关上启用端到端 SSL | Microsoft Docs
+description: 此页概述应用程序网关的端到端 SSL 支持。
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22704704"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>应用程序网关的端到端 SSL 概述
 

@@ -1,0 +1,173 @@
+- name: 文本翻译 API 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是文本翻译 API？
+      href: translator-info-overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 'C#'
+      items:
+        - name: 翻译文本
+          href: quickstart-csharp-translate.md
+        - name: 转换文本脚本
+          href: quickstart-csharp-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-csharp-detect.md
+        - name: 获取备用翻译
+          href: quickstart-csharp-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-csharp-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-csharp-sentences.md
+    - name: Go
+      items:
+        - name: 翻译文本
+          href: quickstart-go-translate.md
+        - name: 转换文本脚本
+          href: quickstart-go-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-go-detect.md
+        - name: 获取备用翻译
+          href: quickstart-go-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-go-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-go-sentences.md
+    - name: Java
+      items:
+        - name: 翻译文本
+          href: quickstart-java-translate.md
+        - name: 转换文本脚本
+          href: quickstart-java-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-java-detect.md
+        - name: 获取备用翻译
+          href: quickstart-java-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-java-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-java-sentences.md
+    - name: Node.js
+      items:
+        - name: 翻译文本
+          href: quickstart-nodejs-translate.md
+        - name: 转换文本脚本
+          href: quickstart-nodejs-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-nodejs-detect.md
+        - name: 获取备用翻译
+          href: quickstart-nodejs-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-nodejs-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-nodejs-sentences.md
+    - name: PHP
+      items:
+        - name: 翻译文本
+          href: quickstart-php-translate.md
+        - name: 转换文本脚本
+          href: quickstart-php-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-php-detect.md
+        - name: 获取备用翻译
+          href: quickstart-php-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-php-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-php-sentences.md
+    - name: Python
+      items:
+        - name: 翻译文本
+          href: quickstart-python-translate.md
+        - name: 转换文本脚本
+          href: quickstart-python-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-python-detect.md
+        - name: 获取备用翻译
+          href: quickstart-python-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-python-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-python-sentences.md
+    - name: Ruby
+      items:
+        - name: 翻译文本
+          href: quickstart-ruby-translate.md
+        - name: 转换文本脚本
+          href: quickstart-ruby-transliterate.md
+        - name: 确定文本语言
+          href: quickstart-ruby-detect.md
+        - name: 获取备用翻译
+          href: quickstart-ruby-dictionary.md
+        - name: 获取支持的语言
+          href: quickstart-ruby-languages.md
+        - name: 获取文本中的句子长度
+          href: quickstart-ruby-sentences.md
+- name: 概念
+  items:
+    - name: 支持的语言
+      href: languages.md
+    - name: 自定义和改进文本翻译
+      href: customization.md
+    - name: API 如何对字符计数
+      href: character-counts.md
+- name: 操作指南
+  items:
+    - name: 注册文本翻译 API
+      href: translator-text-how-to-signup.md
+    - name: 迁移到 V3 文本 API
+      href: migrate-to-v3.md
+    - name: 添加不雅内容筛选
+      href: profanity-filtering.md
+    - name: 接收字对齐信息
+      href: word-alignment.md
+    - name: 使用动态字典功能
+      href: dynamic-dictionary.md
+    - name: 使用 WPF 创建文本翻译应用
+      href: tutorial-wpf-translation-csharp.md
+- name: 引用
+  items:
+    - name: v3 文本翻译 API 参考
+      href: reference/v3-0-reference.md
+      items:
+        - name: 语言
+          href: reference/v3-0-languages.md
+        - name: 翻译
+          href: reference/v3-0-translate.md
+        - name: 直译
+          href: reference/v3-0-transliterate.md
+        - name: 检测
+          href: reference/v3-0-detect.md
+        - name: 断句
+          href: reference/v3-0-break-sentence.md
+        - name: 字典查找
+          href: reference/v3-0-dictionary-lookup.md
+        - name: 字典示例
+          href: reference/v3-0-dictionary-examples.md
+    - name: v2 文本翻译 API 参考（已弃用）
+      href: reference/v2-0-reference.md
+      items:
+        - name: 转换文本
+          href: transform-text.md
+        - name: 如何使用协作性翻译框架 (CTF) 报告
+          href: ctf-reporting.md
+        - name: 返回 N 个最佳翻译
+          href: return-n-best-translations.md
+- name: 资源
+  items:
+    - name: GitHub 上的代码示例
+      href: 'https://aka.ms/TranslatorGitHub'
+    - name: 常见问题
+      href: 'https://www.microsoft.com/translator/faq.aspx'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'

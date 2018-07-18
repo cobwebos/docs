@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 虚拟阵列 Update 1.0 发行说明| Microsoft 文档"
-description: "描述 StorSimple 虚拟阵列运行 Update 1.0 时遇到的重要待解决问题和解决方法。"
+title: StorSimple 虚拟阵列 Update 1.0 发行说明| Microsoft 文档
+description: 描述 StorSimple 虚拟阵列运行 Update 1.0 时遇到的重要待解决问题和解决方法。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24010860"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple 虚拟阵列 Update 1.0 发行说明
 

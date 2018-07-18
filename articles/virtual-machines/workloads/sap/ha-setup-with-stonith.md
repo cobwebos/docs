@@ -1,11 +1,11 @@
 ---
-title: "使用 STONITH 为 Azure 上的 SAP HANA（大型实例）进行高可用性设置 | Microsoft Docs"
-description: "使用 STONITH 在 SUSE 中为 Azure 上的 SAP HANA（大型实例）建立高可用性"
+title: 使用 STONITH 为 Azure 上的 SAP HANA（大型实例）进行高可用性设置 | Microsoft Docs
+description: 使用 STONITH 在 SUSE 中为 Azure 上的 SAP HANA（大型实例）建立高可用性
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: saghorpa
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,16 +14,17 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d710fe24673c6ddc581d36e4f0cacdb750ff74f9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 982c6112a19654e268c9c50fec35d65fbc1766c2
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062014"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
 
-免责申明：本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。*由于面向 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以进一步了解操作系统层面的疑难解答或说明。*Microsoft 服务管理团队对 STONITH 设备进行设置并提供全力支持，可以对有关 STONITH 设备的问题进行疑难解答。
+**免责声明：** 本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。*。由于面向 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以进一步了解操作系统层面的疑难解答或说明。* Microsoft 服务管理团队对 STONITH 设备进行设置并提供全力支持，可以对有关 STONITH 设备的问题进行疑难解答。
 ## <a name="overview"></a>概述
 要使用 SUSE 群集设置高可用性，必须满足以下先决条件。
 ### <a name="pre-requisites"></a>先决条件
@@ -32,10 +33,10 @@ ms.lasthandoff: 11/22/2017
 - HANA 大型实例服务器已连接到 SMT 服务器以获取修补程序/包
 - 操作系统已安装最新的修补程序
 - NTP（时间服务器）已设置
-- 阅读并了解有关 HA 设置的最新版 SUSE 文档
+- 阅读并了解有关 HA 设置的最新版本的 SUSE 文档
 
-### <a name="set-up-details"></a>设置详细信息
-- 在本指南中，我们使用了以下设置：
+### <a name="setup-details"></a>设置详细信息
+本指南使用以下设置：
 - 操作系统：适用于 SAP 的 SLES 12 SP1
 - HANA 大型实例：2xS192（4 个套接字，2 TB）
 - HANA 版本：HANA 2.0 SP1
@@ -64,7 +65,7 @@ ms.lasthandoff: 11/22/2017
 8.  测试故障转移过程
 
 ## <a name="1---identify-the-sbd-device"></a>1. 标识 SBD 设备
-本部分介绍如何在 Microsoft 服务管理团队配置 STONITH 后确定适用于设置的 SBD 设备。 本部分仅适用于现有客户。 如果你是新客户，Microsoft 服务管理团队会向你提供 SBD 设备名称，所以，可以跳过此部分。
+本部分将介绍如何在 Microsoft 服务管理团队配置 STONITH 后确定适用于设置的 SBD 设备。 本部分仅适用于现有客户。 如果你是新客户，Microsoft 服务管理团队会向你提供 SBD 设备名称，所以，可以跳过此部分。
 
 1.1 将 /etc/iscsi/initiatorname.isci 修改为 
 ``` 
@@ -134,12 +135,12 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 设置群集
-3.2.1   可以使用 ha-cluster-init 命令或 yast2 向导设置群集。 在此情况下，我们使用 yast2 向导。 仅在主节点上执行此步骤。
+3.2.1   可以使用 ha-cluster-init 命令或 yast2 向导设置群集。 这种情况使用 yast2 向导。 仅在主节点上执行此步骤。
 
 请按照“yast2 > 高可用性 > 群集”的顺序 ![yast-control-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-单击“取消”，因为我们已安装了 halk2 包。
+由于已安装 halk2 包，请单击“取消”。
 
 ![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
@@ -261,7 +262,7 @@ crm_mon
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7.配置群集属性和资源 
 本部分将介绍配置群集资源的步骤。
-在本示例中，我们设置了以下资源，其余资源可以通过参考 SUSE HA 指南进行配置（如果需要）。 仅在其中一个节点中执行配置。 在主节点上执行该操作。
+在本示例中，设置以下资源，其余资源可以通过参考 SUSE HA 指南进行配置（如果需要）。 仅在其中一个节点中执行配置。 在主节点上执行该操作。
 
 - 群集启动
 - STONITH 设备
@@ -342,7 +343,7 @@ Service pacemaker stop
 
 
 ## <a name="9-troubleshooting"></a>9.故障排除
-本部分介绍几个在设置过程中可能会遇到的故障场景。 你不一定会遇到这些问题。
+本部分将介绍几个在安装过程中可能会遇到的失败情景。 你不一定会遇到这些问题。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>情景 1：群集节点未联机
 如果任何节点在群集管理器中都未显示为联机，则可以尝试以下方法使其联机。
@@ -369,7 +370,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
 ```
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>情景 2：yast2 不显示图形视图
-在本文档中，我们使用了 yast2 图形屏幕来设置高可用性群集。 如果 yast2 不随所示图形窗口一起打开并引发 Qt 错误，请执行以下步骤。 如果正常打开，则可以跳过这些步骤。
+在本文档中，使用 yast2 图形屏幕来设置高可用性群集。 如果 yast2 不随所示图形窗口一起打开并引发 Qt 错误，请执行以下步骤。 如果正常打开，则可以跳过这些步骤。
 
 **错误**
 
@@ -537,6 +538,6 @@ cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 可以在以下文章中找到有关 SUSE HA 设置的详细信息： 
 
 - [SAP HANA SR 性能优化方案](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
-- [基于存储的隔离](https://www.suse.com/documentation/sle-ha-2/book_sleha/data/sec_ha_storage_protect_fencing.html)
+- [基于存储的隔离](https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_storage_protect_fencing.html)
 - [博客 - 使用适用于 SAP HANA 的 Pacemaker 群集- 第 1 部分](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-1-basics/)
 - [博客 - 使用适用于 SAP HANA 的 Pacemaker 群集- 第 2 部分](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-2-failure-of-both-nodes/)

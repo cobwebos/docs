@@ -3,22 +3,23 @@ title: 应用程序代理应用程序的应用程序页无法正确显示 | Micr
 description: 当页面在已集成到 Azure AD 的应用程序代理应用程序中无法正确显示时所要遵循的指南。
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
-ms.author: asteen
-ms.openlocfilehash: d15c02d86dc4a61e7e92b4c896cfc13dd0218c61
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.date: 05/21/2018
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: ee06018cd500937c69824f796c137e3972c55f6c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070526"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334694"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>应用程序代理应用程序的应用程序页无法正确显示
 
@@ -29,7 +30,7 @@ ms.locfileid: "34070526"
 
 通过打开网络跟踪程序（如 Fiddler 或 Internet Explorer/Edge 中的 F12 工具），加载页面，并查找 404 错误，即可验证缺少资源是否是问题所在。 这样可以找出当前找不到且可能需要发布的页面。
 
-例如，假定已使用内部 URL http://myapps/expenses 发布了一个费用应用程序，但该应用使用了样式表 http://myapps/style.css。 在这种情况下，该样式表未在应用程序中予以发布；所以，如果在加载该费用应用时尝试加载 style.css，就会引发 404 错误。 在此示例中，通过使用内部 URL http://myapp/ 来发布该应用程序，即可解决这个问题。
+例如，假定已使用内部 URL http://myapps/expenses 发布了一个费用应用程序，但该应用使用了样式表 http://myapps/style.css。 在这种情况下，该样式表未在应用程序中予以发布；所以，如果在加载该开支应用时尝试加载 style.css，就会引发 404 错误。 在此示例中，通过使用内部 URL http://myapp/ 来发布该应用程序，即可解决这个问题。
 
 ## <a name="problems-with-publishing-as-one-application"></a>作为一个应用程序发布时会出现的问题
 

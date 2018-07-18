@@ -1,7 +1,7 @@
 ---
-title: "快速入门：使用 FASTQ 文件输入提交工作流 | Microsoft Docs"
+title: 快速入门：使用 FASTQ 文件输入提交工作流 | Microsoft Docs
 titleSuffix: Azure
-description: "本快速入门假定你已安装 msgen 客户端并已通过服务成功运行示例数据。"
+description: 本快速入门假定你已安装 msgen 客户端并已通过服务成功运行示例数据。
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26684477"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs"></a>使用 FASTQ 文件输入提交工作流
 

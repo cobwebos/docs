@@ -1,25 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用内置策略添加 Azure AD 提供程序 | Microsoft Docs
-description: 了解如何添加 Open ID 连接标识提供者 (Azure AD)
+title: 在 Azure Active Directory B2C 中使用内置策略添加 Azure AD 提供程序 | Microsoft Docs
+description: 了解如何添加 Open ID 连接标识提供者 (Azure AD)。
 services: active-directory-b2c
-documentationcenter: ''
-author: parakhj
-manager: krassk
-editor: parakhj
-ms.assetid: 7dac9545-d5f1-4136-a04d-1c5740aea499
-ms.service: active-directory-b2c
+author: davidmu1
+manager: mtillman
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.devlang: na
+ms.topic: conceptual
 ms.date: 04/27/2018
-ms.author: parja
-ms.openlocfilehash: 52a752df9cf199acf39596f49e7368bce27a8158
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: davidmu
+ms.component: B2C
+ms.openlocfilehash: 70d3a19b715052fe658102929a1c29cf3db2d595
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2018
-ms.locfileid: "32309012"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443701"
 ---
 # <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Azure Active Directory B2C：通过内置策略使用 Azure AD 帐户登录
 
@@ -60,8 +56,8 @@ ms.locfileid: "32309012"
 1. 在顶部栏中选择帐户。 在“目录”列表中选择 Active Directory B2C 租户 (fabrikamb2c.onmicrosoft.com).
 1. 在 Azure 门户中[导航到 Active Directory B2C 设置菜单](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 1. 在 Active Directory B2C 设置菜单中单击“标识提供者”。
-1. 单击边栏选项卡顶部的“ **+添加** ”。
-1. 为标识提供者配置提供一个友好**名称**。 例如，输入“Contoso Azure AD”。
+1. 单击边栏选项卡顶部的“+ 添加”。
+1. 为标识提供者配置提供一个友好“名称”。 例如，输入“Contoso Azure AD”。
 1. 单击“标识提供者类型”，选择“Open ID 连接”并单击“确定”。
 1. 单击“设置此标识提供者”
 1. 在“元数据 URL”中输入以下 URL，并将其中的 `yourtenant` 替换为 Azure AD 租户的名称（例如 `contoso.com`）：

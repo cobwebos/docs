@@ -6,15 +6,16 @@ author: rmatchoro
 manager: craigg
 ms.service: sql-database
 ms.custom: security, managed instance
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: 2112a0a3997af478de6b8c80abcf7924a66302f0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 14ef907717045e2e0cf297694d92468a65e57e4d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650071"
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Azure SQL 数据库托管实例威胁检测
 

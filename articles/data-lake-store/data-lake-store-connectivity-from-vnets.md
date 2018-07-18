@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 489e7eb35352e2e8fd3d159381c2177098a90399
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4086ef6ce2a95e0467eda61116ac002cf53610b5
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300784"
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>从 Azure VNET 中的 VM 访问 Azure Data Lake Store
 Azure Data Lake Store 是一种在公共 Internet IP 地址上运行的 PaaS 服务。 可以连接到公共 Internet 的服务器通常也可连接到 Azure Data Lake Store 终结点。 默认情况下，Azure VNET 中的所有 VM 都可以访问 Internet，从而可访问 Azure Data Lake Store。 但是，可以将 VNET 中的 VM 配置为无法访问 Internet。 对于此类 VM，对 Azure Data Lake Store 的访问也受到限制。 可以使用以下任何方法在 Azure VNET 中阻止 VM 的公共 Internet 访问：
@@ -41,7 +42,7 @@ Azure Data Lake Store 是一种在公共 Internet IP 地址上运行的 PaaS 服
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>使用 NSG 启用受限 VM 的连接
-使用 NSG 规则阻止对 Internet 的访问时，可创建另一个允许访问 Data Lake Store IP 地址的 NSG。 有关 NSG 规则的详细信息，请参阅[网络安全组概述](../virtual-network/security-overview.md)。 有关如何创建 NSG 的说明，请参阅[如何使用 Azure 门户管理 NSG](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)。
+使用 NSG 规则阻止对 Internet 的访问时，可创建另一个允许访问 Data Lake Store IP 地址的 NSG。 有关 NSG 规则的详细信息，请参阅[网络安全组概述](../virtual-network/security-overview.md)。 有关如何创建 NSG 的说明，请参阅[如何创建网络安全组](../virtual-network/tutorial-filter-network-traffic.md)。
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>使用 UDR 或 ExpressRoute 启用受限 VM 的连接
 路由（UDR 或 BGP 交换的路由）用于阻止对 Internet 的访问时，需要配置特殊的路由，以便此类子网中的 VM 可以访问 Data Lake Store 终结点。 有关详细信息，请参阅[用户定义路由概述](../virtual-network/virtual-networks-udr-overview.md)。 有关创建 UDR 的说明，请参阅[在 Resource Manager 中创建 UDR](../virtual-network/tutorial-create-route-table-powershell.md)。

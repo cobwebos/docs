@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/28/2018
+ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 524a587c4547808162b36ff9aa6c08b362465b0b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651199"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
 
@@ -51,7 +52,7 @@ Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，�
 | 数据移动性 |可还原到相同设备或执行项目级恢复（文件服务器） |
 | 存储层 |本地虚拟机监控程序存储和云 |
 | 共享大小 |分层：最多 20 TB；本地固定：最多 2 TB |
-| 卷大小 |分层：500 GB 到 5 TB；本地固定：50 GB 到 200 GB <br> 分层卷的本地保留空间不超过 200 GB。 |
+| 卷大小 |分层：500 GB 到 5 TB；本地固定：50 GB 到 200 GB <br> 分层卷的本地预留空间不超过 200 GB。 |
 | 快照 |崩溃一致 |
 | 项目级恢复 |是；用户可从共享还原 |
 
@@ -176,7 +177,7 @@ Microsoft Azure StorSimple 提供一个基于 Web 的用户界面（StorSimple D
 
 特定分层共享或卷的数据保证拥有自己的本地层空间（大约为该共享或卷的总预配空间的 10%）。 尽管这降低了该共享或卷所在的虚拟阵列上的可用存储，但它确保了单个共享或卷的分层不会受到其他共享或卷的分层需求的影响。 因此一个共享或卷上的非常繁忙的工作负荷无法将所有其他工作负荷强制施加到云。
 
-为 iSCSI 创建的分层卷拥有 200 GB 的最大本地保留空间（无论卷大小如何）。
+为 iSCSI 创建的分层卷拥有 200 GB 的最大本地预留空间（无论卷大小如何）。
 
 ![自动存储分层](./media/storsimple-ova-overview/automatic-storage-tiering.png)
 
@@ -206,10 +207,9 @@ StorSimple 使用删除重复和数据压缩功能进一步减少云中的存储
 
 StorSimple 数据保护功能支持创建按需备份。 此外，默认备份计划确保每天备份数据。 备份采用增量快照的形式创建，这些快照存储在云中。 快照仅记录最后一次备份以来的更改，可快速创建和还原。 在灾难恢复方案中，这些快照可能非常重要，因为它们替换辅助存储系统（如磁带备份），并且允许将数据还原到数据中心或其他站点上（如有必要）。
 
-## <a name="gdpr-compliance"></a>GDPR 符合性
-[一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 包含许多有关如何收集、存储和使用个人信息的要求。 GDPR 规则针对在欧盟运营的公司、政府机构和其他组织实施，并收集和分析与欧盟居民有关的数据。
+## <a name="managing-personal-information"></a>管理个人信息
 
-适用于虚拟系列的 StorSimple 设备管理器符合 GDPR。 有两个关于在服务中收集并显示个人信息的关键示例：
+虚拟系列的 StorSimple 设备管理器收集两个密钥实例中的个人信息：
  - 提醒用户设置，可在其中配置用户电子邮件地址。 此信息可以由管理员清除。 
  - 可访问驻留在共享上的数据的用户。 会显示可访问共享数据的用户列表，并可供导出。 删除共享时也会删除此列表。
 

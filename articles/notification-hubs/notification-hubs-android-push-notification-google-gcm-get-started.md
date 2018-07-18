@@ -17,10 +17,11 @@ ms.custom: mvc
 ms.date: 04/05/2018
 ms.author: dimazaid
 ms.openlocfilehash: efad7353a477577e5b5ac862b418ce78b1c4c304
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697246"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -34,7 +35,7 @@ ms.lasthandoff: 05/07/2018
 
 可以从 [此处](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted)的 GitHub 中下载本教程的已完成代码。
 
-在本教程中，请执行以下操作： 
+在本教程中，将执行以下操作： 
 
 > [!div class="checklist"]
 > * 创建支持 Google Cloud Messaging 的项目。
@@ -44,7 +45,7 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 订阅**。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。 
+- **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
 - [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)。
 
 ## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>创建支持 Google Cloud Messaging 的项目

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect Health -“运行状况服务数据不是最新的”警报 | Microsoft Docs"
-description: "本文档介绍了“运行状况服务数据不是最新的”警报的原因以及如何对此警报进行故障排除。"
+title: Azure AD Connect Health -“运行状况服务数据不是最新的”警报 | Microsoft Docs
+description: 本文档介绍了“运行状况服务数据不是最新的”警报的原因以及如何对此警报进行故障排除。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhiweiw
 manager: maheshu
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29715005"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>“运行状况服务数据不是最新的”警报
 

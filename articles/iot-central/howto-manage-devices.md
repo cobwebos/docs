@@ -1,19 +1,19 @@
 ---
 title: 在 Azure IoT Central 应用程序中管理设备 | Microsoft Docs
 description: 如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 75472d701160e7cfd331d01efcdc1a19ae20fb2d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303573"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937612"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
 
@@ -49,7 +49,7 @@ ms.locfileid: "34303573"
 1. 选择“真实”或“模拟”。 真实设备是指要连接到 Azure IoT Central 应用程序的物理设备。 模拟设备包含 Azure IoT Central 生成的示例数据。 本示例使用真实设备。 选择“真实”导航到新设备的“设备详细信息”页。
 
 
-## <a name="bulk-import-devices"></a>批量导入设备
+## <a name="import-devices"></a>导入设备
 
 Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大量的设备连接到应用程序。 
 
@@ -65,9 +65,12 @@ CSV 文件要求：
 
 1. 在左面板中，选择要为其批量创建设备的设备模板。
 
-1. 依次选择“新建”、“批量导入”。
+ >   [!NOTE] 
+    如果还没有设备模板，则可以在“未关联设备”下导入设备，并在没有任何模板的情况下注册这些设备。 导入设备后，就可以将其与模板关联起来作为后续步骤。
 
-    [![批量导入操作](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
+1. 单击“导入”。
+
+    [![导入操作](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
 1. 选择包含要导入的设备 ID 列表的 CSV 文件。
 
@@ -75,10 +78,51 @@ CSV 文件要求：
 
 1. 导入完成后，设备网格上会显示成功消息。
 
-    [![批量导入成功](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+    [![导入成功](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
-如果设备导入操作失败，设备网格上会显示错误。 系统会生成一个日志文件来捕获所有错误；单击错误消息可下载该文件。
+如果设备导入操作失败，将在设备网格上看到错误消息。 系统会生成一个日志文件来捕获所有错误；单击错误消息可下载该文件。
 
+
+**将设备与模板关联**
+
+如果通过在“未关联设备”下启动导入来注册设备，则无需任何设备模板关联即可创建设备。 设备必须与模板关联起来，才能浏览有关设备的数据和其他详细信息。 请按照以下步骤将设备与模板进行关联：
+1. 在左侧导航菜单中选择“Explorer”。
+1. 在左面板中，选择“未关联设备”。
+    [![未关联设备](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
+1. 选择想要与模板关联的设备。
+1. 单击“关联”选项。
+    [![关联设备](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
+1. 从可用模板列表中选择模板，然后单击“关联”按钮。
+1. 所选设备将在相应的设备模板下移动。
+
+ >   [!NOTE] 
+    设备与模板关联后，就无法取消关联或与其他模板关联。
+
+## <a name="export-devices"></a>导出设备
+
+若要预配设备以连接到 IoT Central，将需要由 IoT Central 生成的设备连接字符串。 可以使用“导出”功能从应用程序中批量获取设备的连接字符串和其他属性。 “导出”为所有选定的设备创建一个 CSV 文件，其中包含设备标识、设备名称和主要连接字符串。
+
+从应用程序中批量导出设备：
+1. 在左侧导航菜单中选择“Explorer”。
+
+1. 在左面板中，选择要为其导出设备的设备模板。
+
+1. 选择想要导出的设备，然后单击“导出”操作。
+
+    [![导出](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
+
+1. 导出过程将开始，你可以跟踪网格顶部的状态。 
+
+1. 一旦导出完成，将显示一条成功消息，并提供一个用来下载生成文件的链接。
+
+1. 单击“成功消息”将文件下载到磁盘上的本地文件夹。
+
+    [![导出成功](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
+
+1. 导出的 CSV 文件将具有以下信息：
+    1. 名称
+    1. 设备 ID
+    1. 主要连接字符串
 
 
 ## <a name="delete-a-device"></a>删除设备

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31413424"
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Azure 门户中的 Azure 计划程序入门
 在 Azure 计划程序中创建计划的作业很简单。 在本教程中，将了解如何创建作业。 还将学习计划程序的监视和管理功能。
@@ -31,8 +32,8 @@ ms.lasthandoff: 04/16/2018
 3. 让我们来创建一个作业，该作业只需要使用 GET 请求访问 http://www.microsoft.com/。 在“计划程序作业”  屏幕上，输入以下信息：
    
    1. **名称：**`getmicrosoft`  
-   2. **订阅：**Azure 订阅   
-   3. **作业集合：**选择现有的作业集合，或者单击“新建”>“输入名称”。
+   2. **订阅：** Azure 订阅   
+   3. **作业集合：** 选择现有的作业集合，或者单击“新建”>“输入名称”。
 4. 接下来，在“操作设置” 中，定义以下值：
    
    1. **操作类型：**` HTTP`  

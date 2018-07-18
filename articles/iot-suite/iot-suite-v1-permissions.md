@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT 套件和 Azure Active Directory | Microsoft Docs"
-description: "介绍 Azure IoT 套件如何使用 Azure Active Directory 管理权限。"
-services: 
+title: Azure IoT 套件和 Azure Active Directory | Microsoft Docs
+description: 介绍 Azure IoT 套件如何使用 Azure Active Directory 管理权限。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: a032fc4332c697748e658ad2615ed5b0915c56c1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4d0c7aff54ee20cf9ae4e6cdf2fc0718cd0b2f2a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35302330"
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>azureiotsuite.com 站点权限
 
@@ -80,8 +81,8 @@ Azure 管理员角色可控制将 Azure 订阅映射到 AD 租户的能力。
 
 预配应用程序中定义有两个定义的角色和一个隐式角色：
 
-* **管理员：**具有添加、管理、删除设备和修改设置的完全控制权限。
-* **只读：**可以查看设备、规则、操作、作业和遥测数据。
+* **管理员：** 具有添加、管理、删除设备和修改设置的完全控制权限。
+* **只读：** 可以查看设备、规则、操作、作业和遥测数据。
 
 可以在 [RolePermissions.cs][lnk-resource-cs] 源文件中找到分配给每个角色的权限。
 
@@ -149,7 +150,7 @@ Azure 管理员角色可控制将 Azure 订阅映射到 AD 租户的能力。
 [lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
 [lnk-portal]: https://portal.azure.com/
 [lnk-create-edit-users]: ../active-directory/active-directory-create-users.md
-[lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md
+[lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin/
 [lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs

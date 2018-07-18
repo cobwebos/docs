@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 中使用 Twilio for Voice、VoIP 和 SMS 消息传递"
-description: "了解如何在 Azure 中使用 Twilio API 服务发起电话呼叫和发送短信。 代码示例用 Node.js 编写。"
-services: 
+title: 在 Azure 中使用 Twilio for Voice、VoIP 和 SMS 消息传递
+description: 了解如何在 Azure 中使用 Twilio API 服务发起电话呼叫和发送短信。 代码示例用 Node.js 编写。
+services: ''
 documentationcenter: nodejs
 author: devinrader
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: f558cbbd-13d2-416f-b9b1-33a99c426af9
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039492"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>在 Azure 中使用 Twilio for Voice、VoIP 和 SMS 消息传递
 本指南演示如何构建与 Azure 上的 Twilio 和 node.js 进行通信的应用程序。

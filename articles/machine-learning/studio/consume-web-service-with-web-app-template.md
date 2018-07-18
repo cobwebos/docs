@@ -1,6 +1,6 @@
 ---
 title: 通过使用 Web 应用模板来使用机器学习 Web 服务 | Microsoft Docs
-description: 利用 Azure Marketplace 中的 web 应用模板来是使用 Azure 机器学习中的预测 web 服务。
+description: 利用 Azure 市场中的 web 应用模板来是使用 Azure 机器学习中的预测 web 服务。
 keywords: web 服务，操作化，REST API，机器学习
 services: machine-learning
 documentationcenter: ''
@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 81b89a1f8a053fd3b1d0d6a0a1bcc5c67d2ba728
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 03729a5b94b355869367e7f356e299f9afe38f75
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834992"
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>通过使用 Web 应用模板来使用机器学习 Web 服务
 
@@ -31,12 +33,12 @@ ms.lasthandoff: 03/23/2018
 
 可通过多种方法来使用 REST API 和访问 web 服务。 例如，可以使用部署 Web 服务时生成的示例代码，在 C#、R 或 Python 中编写应用程序。 （示例代码位于[机器学习 Web 服务门户](https://services.azureml.net/quickstart)或机器学习工作室中的 Web 服务仪表板上。）或者，可以使用在同一时间创建的示例 Microsoft Excel 工作簿。
 
-但访问 Web 服务最简单快捷的方法是通过 [Azure Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/) 提供的 Web 应用模板。
+但访问 Web 服务最简单快捷的方法是通过 [Azure 市场](https://azure.microsoft.com/marketplace/web-applications/all/)提供的 Web 应用模板。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="azure-machine-learning-web-app-templates"></a>Azure 机器学习 Web 应用模板
-Azure Marketplace 提供的 web 应用模板可创建自定义 web 应用，该应用了解 web 服务的输入数据及所需结果。 所需操作就是授予 web 应用访问 web 服务和数据的权限，余下操作由模板完成。
+Azure 市场提供的 web 应用模板可创建自定义 web 应用，该应用了解 web 服务的输入数据及所需结果。 所需操作就是授予 web 应用访问 web 服务和数据的权限，余下操作由模板完成。
 
 提供了两个模板：
 
@@ -110,7 +112,7 @@ Azure Marketplace 提供的 web 应用模板可创建自定义 web 应用，该�
 
 ![使用 BES web 模板的过程][image2]
 
-1. 按照与 RRS 模板相同的步骤来创建 BES Web 应用。 但在本例中，需转到 [Azure ML 批处理执行服务 Web 应用模板](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)以打开 Azure Marketplace 上的 BES 模板。 选择“创建 Web 应用”。
+1. 按照与 RRS 模板相同的步骤来创建 BES Web 应用。 但在本例中，需转到 [Azure ML 批处理执行服务 Web 应用模板](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)以打开 Azure 市场上的 BES 模板。 选择“创建 Web 应用”。
 
 2. 要指定结果的存储位置，请在 Web 应用主页上输入目标容器的信息。 还需指定 Web 应用获取输入值的位置：可在本地文件或 Azure 存储容器中。
    选择“提交”。

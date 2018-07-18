@@ -1,12 +1,12 @@
 ---
-title: "在 StorSimple Virtual Array 上安装更新 | Microsoft 文档"
-description: "介绍如何使用 StorSimple Virtual Array Web UI，通过 Azure 门户和修补程序方法应用更新"
+title: 在 StorSimple Virtual Array 上安装更新 | Microsoft 文档
+description: 介绍如何使用 StorSimple Virtual Array Web UI，通过 Azure 门户和修补程序方法应用更新
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,11 @@ ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
 ms.openlocfilehash: 3fb246b1515e7a637e6cff6499bf324c3f80dd45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232183"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 0.4
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
-1. 启动 Internet Explorer 并导航到 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)。
+1. 启动 Internet Explorer，并转到 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)。
 
 2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 
@@ -77,7 +78,7 @@ ms.lasthandoff: 10/11/2017
    
     ![更新设备](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. 在“更新文件路径”中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用” 。
+2. 在“更新文件路径”中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
    
     ![更新设备](./media/storsimple-virtual-array-install-update/update2m.png)
 

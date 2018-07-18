@@ -1,22 +1,19 @@
 ---
 title: Azure Maps 中支持的语言 | Microsoft Docs
 description: 了解 Azure Maps 中的服务支持的语言
-services: azure-maps
-keywords: ''
 author: juliekohler
 ms.author: julieko
-ms.date: 3/30/2018
-ms.topic: article
+ms.date: 03/30/2018
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: 8a603ebf05ec714c57955d32182943a4191627cf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: ''
+ms.openlocfilehash: 68438a317b33bb7e3e784936cdfd1282ba823ad8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600232"
 ---
 # <a name="azure-maps-supported-languages"></a>Azure Maps 支持的语言
 Azure Maps 已经采用多种语言对服务进行了本地化。  下表提供了每项服务支持的语言代码。  
@@ -51,12 +48,12 @@ Azure Maps 已经采用多种语言对服务进行了本地化。  下表提供�
 | it-IT      | 意大利语                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ja-JP      | 日语               |       |        |         |                   |                |     ✓     |
 | kk-KZ      | 哈萨克语                 |       |        |         |                   |                |     ✓     |
-| ko-KR      | 朝鲜语                 |   ✓   |        |    ✓    |                   |        ✓       |     ✓     |
+| ko-KR      | 韩语                 |   ✓   |        |    ✓    |                   |        ✓       |     ✓     |
 | es-419     | 拉丁美洲西班牙语 |       |    ✓   |         |                   |                |     ✓     |
 | lv-LV      | 拉脱维亚语                |       |    ✓   |         |         ✓         |                |     ✓     |
 | lt-LT      | 立陶宛语             |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ms-MY      | 马来语(拉丁语系)          |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| nb-NO      | 挪威博克马尔语       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| nb-NO      | 书面挪威语       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pl-PL      | 波兰语                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pt-BR      | 葡萄牙语(巴西)    |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | pt-PT      | 葡萄牙语(葡萄牙)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |

@@ -3,8 +3,8 @@ title: 使用 Azure 中的服务映射解决方案 | Microsoft Docs
 description: 服务映射是 Azure 中的解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: monitoring
@@ -12,19 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/22/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa9a6b54576ce8399471891c9ab5b80216f00ee1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 812137a8320634364a7d91fd2e61cd3e9d15fc12
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751422"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
 
-本指南介绍使用服务映射的详细信息。 有关配置服务映射和载入代理的信息，请参阅[配置 Azure 中的服务映射解决方案]( monitoring-service-map-configure.md)。
+本指南介绍载入和使用服务映射的详细信息。 有关配置服务映射和载入代理的信息，请参阅[配置 Azure 中的服务映射解决方案]( monitoring-service-map-configure.md)。
 
+## <a name="sign-in-to-azure"></a>登录 Azure
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+
+## <a name="enable-service-map"></a>启用服务映射
+1. 在 Azure 门户中，单击“+ 创建资源”。
+2. 在搜索栏中键入“Service Map”，并按“Enter”。
+3. 在市场搜索结果页，选择列表中的“服务映射”。<br><br> ![选择 Azure 市场搜索结果中的服务映射解决方案](./media/monitoring-service-map/marketplace-search-results.png)<br>
+4. 在“服务映射概述”窗格上，查看解决方案详细信息，然后单击“创建”以开始将进程载入到你的 Log Analytics 工作区。<br><br> ![载入服务映射解决方案](./media/monitoring-service-map/service-map-onboard.png)。
+5. 在“配置解决方案”窗格中，选择现有工作区或创建一个新的 Log Analytics 工作区。  有关如何创建新工作区的详细信息，请参阅[在 Azure 门户创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。 提供所需的信息后，单击“创建”。  
+
+在验证信息和部署解决方案期间，可以在菜单中的“通知”下面跟踪操作进度。 
+
+在 Azure 门户从 Log Analytics 工作区访问服务映射，并选择左窗格中的“解决方案”选项。<br><br> ![选择工作区中的“解决方案”选项](./media/monitoring-service-map/select-solution-from-workspace.png)。<br> 从解决方案列表中选择“ServiceMap(workspaceName)”，并在服务映射解决方案概述页面单击“服务映射摘要”标题。<br><br> ![服务映射摘要标题](./media/monitoring-service-map/service-map-summary-tile.png)。
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程感知依赖关系
 
@@ -43,9 +57,10 @@ ms.lasthandoff: 05/08/2018
 ### <a name="patch-management"></a>修补程序管理
 “服务映射”通过显示依赖于服务的其他团队和服务器，增强对系统更新评估的使用，以便在对系统进行修补之前通知他们。 服务映射还通过显示服务在完成修补和重启后是否可用并已正确连接，来增强修补程序管理。
 
-
 ## <a name="mapping-overview"></a>映射概述
-“服务映射”代理收集有关已安装 TCP 的服务器上所有 TCP 连接的进程的信息，以及有关每个进程的入站和出站连接的详细信息。 在左侧窗格的列表中，可选择具有服务映射代理的计算机或组，在指定时间范围内使其依赖关系可视化。 计算机依赖关系映射侧重于特定计算机，并显示属于该计算机的直接 TCP 客户端或服务器的所有计算机。  计算机组映射显示多组服务器及其依赖关系。
+“服务映射”代理收集有关已安装 TCP 的服务器上所有 TCP 连接的进程的信息，以及有关每个进程的入站和出站连接的详细信息。
+
+从左侧窗格的列表中，可选择具有服务映射代理的计算机或组，在指定时间范围内使其依赖关系可视化。 计算机依赖关系映射侧重于特定计算机，并显示属于该计算机的直接 TCP 客户端或服务器的所有计算机。  计算机组映射显示多组服务器及其依赖关系。
 
 ![服务映射概述](media/monitoring-service-map/service-map-overview.png)
 
@@ -186,16 +201,13 @@ ms.lasthandoff: 05/08/2018
 ![“进程摘要”窗格](media/monitoring-service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>警报集成
-服务映射与 Log Analytics 中的警报集成，可显示所选时间范围内所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”窗格会列出警报。
+服务映射与 Azure 警报集成，可显示所选时间范围内所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”窗格会列出警报。
 
 ![“计算机警报”窗格](media/monitoring-service-map/machine-alerts.png)
 
 若要使服务映射能够显示相关警报，请创建对特定计算机触发的警报规则。 创建相应的警报：
-- 包含一个子句，以按计算机分组（例如“by Computer interval 1minute”）。
+- 包含一个子句，以按计算机分组（例如“by Computer interval 1 minute”）。
 - 根据指标度量值选择警报。
-
-![警报配置](media/monitoring-service-map/alert-configuration.png)
-
 
 ## <a name="log-events-integration"></a>日志事件集成
 服务映射与日志搜索集成，可显示所选时间范围内所选服务器的所有可用的日志事件。 可单击事件计数列表中的任意行，跳转到“日志搜索”并查看单独的日志事件。
@@ -223,7 +235,7 @@ ms.lasthandoff: 05/08/2018
 
 下图是在选择“在 Log Analytics 中显示”后可能显示的 ConfigurationChange 事件的详细视图。
 
-![ConfigurationChange 事件](media/monitoring-service-map/configuration-change-event.png)
+![ConfigurationChange 事件](media/monitoring-service-map/configuration-change-event-01.png)
 
 
 ## <a name="performance-integration"></a>性能集成
@@ -253,7 +265,6 @@ Linux：
 “计算机安全”面板显示所选服务器的安全和审核解决方案的数据。 该窗格列出所选时间范围内服务器的所有未解决安全问题的摘要。 单击任意安全问题，向下钻取到日志搜索，了解有关安全问题的详细信息。
 
 ![“计算机安全性”窗格](media/monitoring-service-map/machine-security.png)
-
 
 ## <a name="updates-integration"></a>更新集成
 当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与更新管理集成。

@@ -1,11 +1,11 @@
 ---
-title: "适用于 Azure Marketplace 映像的安全建议 | Microsoft Docs"
-description: "本文将提供适用于市场映像的安全建议"
+title: 适用于 Azure Marketplace 映像的安全建议 | Microsoft Docs
+description: 本文将提供适用于市场映像的安全建议
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -16,6 +16,7 @@ ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/19/2017
+ms.locfileid: "23465402"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>适用于 Azure Marketplace 映像的安全建议
 

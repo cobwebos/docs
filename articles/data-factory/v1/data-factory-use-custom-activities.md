@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 88095c7b3c31c5111f1e1d1e5b157403359053bd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 044d47a294df4e218c84a928a63426dde4f8373b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053127"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-use-custom-activities.md)
-> * [版本 2 - 预览版](../transform-data-using-dotnet-custom-activity.md)
+> * [第 1 版](data-factory-use-custom-activities.md)
+> * [版本 2（当前版本）](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的自定义活动](../transform-data-using-dotnet-custom-activity.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本的数据工厂服务，请参阅 [V2 中的自定义活动](../transform-data-using-dotnet-custom-activity.md)。
 
 在 Azure 数据工厂管道中可使用两类活动。
 

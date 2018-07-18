@@ -1,6 +1,6 @@
 ---
-title: "使用 Site Recovery 对复制到 Azure 的物理服务器进行故障转移和故障回复 | Microsoft Docs"
-description: "了解如何使用 Azure Site Recovery 将物理服务器故障转移到 Azure 以及如何故障回复到本地站点"
+title: 使用 Site Recovery 对复制到 Azure 的物理服务器进行故障转移和故障回复 | Microsoft Docs
+description: 了解如何使用 Azure Site Recovery 将物理服务器故障转移到 Azure 以及如何故障回复到本地站点
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876001"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
 

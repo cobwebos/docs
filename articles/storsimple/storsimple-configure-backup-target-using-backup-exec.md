@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: a28b46e10bbdd5331cc665fad3f80523b3aa8a58
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 1326e4a84938c46a9e7acc10dd8ed94db708f62a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113079"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>用作备份目标的 StorSimple 与 Backup Exec 的集成
 
@@ -172,7 +173,7 @@ StorSimple 提供以下优势：
 
 ### <a name="deploy-backup-exec"></a>部署 Backup Exec
 
-有关 Backup Exec 的安装最佳实践，请参阅 [Backup Exec 的安装最佳实践](https://www.veritas.com/support/en_US/article.000068207)。
+有关 Backup Exec 的安装最佳实践，请参阅 [Backup Exec 的安装最佳实践](https://www.veritas.com/content/support/en_US/doc/72686287-131623464-0/v70444238-131623464)。
 
 ## <a name="set-up-the-solution"></a>设置解决方案
 
@@ -468,7 +469,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 方案 | 影响 | 如何恢复 | 说明 |
+| 场景 | 影响 | 如何恢复 | 说明 |
 |---|---|---|---|
 | StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | Backup Exec 服务器故障 | 备份和还原操作会中断。 | 根据 [How to do a manual Backup and Restore of Backup Exec (BEDB) database](http://www.veritas.com/docs/000041083)（如何对 Backup Exec (BEDB) 数据库执行手动备份和还原）中所述，重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 Backup Exec 服务器。 将数据库还原到最近的时间点。 如果还原的 Backup Exec 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |

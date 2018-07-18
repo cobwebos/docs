@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: e1a216a8bf524d22af815d077b16ab29c817e9e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e3e0855d2ac54643a6dc6128eea974d952bb56d5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335622"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>将 PhoneFactor 代理升级到 Azure 多重身份验证服务器
 
@@ -65,11 +66,8 @@ ms.lasthandoff: 05/08/2018
 
   3. 转到用户门户安装位置（例如 C:\inetpub\wwwroot\MultiFactorAuth）并编辑 web.config 文件。 将升级前备份的原始 web.config 文件的 appSettings 和 applicationSettings 节中的值复制到新的 web.config 文件。 如果在安装 Web 服务 SDK 时保留了新的默认虚拟目录名称，请更改 applicationSettings 节中的 URL，让其指向正确的位置。 如果在以前的 web.config 文件中更改了任何其他默认设置，请将这些更改应用到新的 web.config 文件。
 
-  4. 若要在 Web 服务器上安装移动应用 Web 服务，请以管理员身份打开命令提示符，并运行 MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi。
-
-    默认虚拟目录名称现在是“MultiFactorAuthMobileAppWebService”，而不是“PhoneFactorPhoneAppWebService”。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 可能想要选择较短的名称，方便最终用户在移动设备上键入。 否则，如果允许安装使用新的默认名称，应单击多重身份验证服务器中的“移动应用”图标，并更新移动应用 Web 服务 URL。
-
-  5. 转到移动应用 Web 服务安装位置（例如 C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService）并编辑 web.config 文件。 将升级前备份的原始 web.config 文件的 appSettings 和 applicationSettings 节中的值复制到新的 web.config 文件。 如果在安装 Web 服务 SDK 时保留了新的默认虚拟目录名称，请更改 applicationSettings 节中的 URL，让其指向正确的位置。 如果在以前的 web.config 文件中更改了任何其他默认设置，请将这些更改应用到新的 web.config 文件。
+> [!NOTE]
+> 从低于 8.0 的 Azure MFA 服务器版本升级到 8.0+ 时，可以在升级后卸载移动应用 Web 服务
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: "管理和连接到 Azure 中国世纪互联订阅 | Microsoft Docs"
-description: "Azure 中国世纪互联提供独特的 URL 和终结点用于管理环境。 连接到 Azure 环境后，如果组件已正确部署，则可以正常运行管理服务的操作。 了解为何必须使用正确的连接来管理环境。"
+title: 管理和连接到 Azure 中国世纪互联订阅 | Microsoft Docs
+description: Azure 中国世纪互联提供独特的 URL 和终结点用于管理环境。 连接到 Azure 环境后，如果组件已正确部署，则可以正常运行管理服务的操作。 了解为何必须使用正确的连接来管理环境。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26408147"
 ---
 # <a name="manage-and-connect-to-your-subscription"></a>管理和连接到订阅
 世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）提供独特的 URL 和终结点用于管理环境。 必须使用正确的连接来管理环境。 连接到 Azure 环境后，如果已部署相应的组件，则可以运行管理服务的正常操作。

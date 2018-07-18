@@ -1,27 +1,28 @@
 ---
-title: Azure-SSIS 集成运行时的自定义安装 | Microsoft Docs
-description: 本文介绍如何使用 Azure-SSIS 集成运行时的自定义安装界面
+title: 自定义 Azure-SSIS 集成运行时的安装 | Microsoft Docs
+description: 本文介绍如何使用 Azure-SSIS 集成运行时的自定义安装界面，安装其他组件或更改设置
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/03/2018
-ms.author: douglasl
-ms.openlocfilehash: ff47060ddfee458279c9fed0fd3fcafcf35229d2
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.date: 06/21/2018
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: 76308bbb06d6bf1cdc9147258f7c26babae371a9
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885432"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750479"
 ---
-# <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 集成运行时的自定义安装
+# <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的安装
 
-使用 Azure-SSIS 集成运行时的自定义安装界面可以更改默认的操作配置或环境（例如，启动其他 Windows 服务），或者在 Azure-SSIS IR 的每个节点上安装其他组件（例如程序集、驱动程序或扩展）。 一般情况下，该运行时会提供一个界面，用于在预配或重新配置 Azure-SSIS IR 期间添加你自己的安装步骤。
+Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于在预配或重新配置 Azure-SSIS IR 期间添加自己的安装步骤。 使用自定义安装程序可以更改默认的操作配置或环境（例如，用于启动其他 Windows 服务，或保存访问凭据以便进行文件共享），或者在 Azure-SSIS IR 的每个节点上安装其他组件（例如程序集、驱动程序或扩展）。
 
 若要配置自定义安装，需准备一个脚本及其关联的文件，并将其上传到 Azure 存储帐户中的 Blob 容器。 预配或重新配置 Azure-SSIS IR 时，为容器提供共享访问签名 (SAS) 统一资源标识符 (URI)。 然后，Azure-SSIS IR 的每个节点将从该容器下载该脚本及其关联的文件，并使用提升的特权运行自定义安装。 自定义安装完成后，每个节点会将标准执行输出和其他日志上传到容器中。
 
@@ -30,13 +31,13 @@ ms.locfileid: "33885432"
 
 ## <a name="current-limitations"></a>当前限制
 
--   如果想要使用 `gacutil.exe` 将程序集安装到全局程序集缓存 (GAC) 中，则需要在自定义安装过程中提供该工具，或使用公共预览版容器中提供的副本。
+-   如果想要使用 `gacutil.exe` 将程序集安装到全局程序集缓存 (GAC) 中，则需要在自定义安装过程中提供 `gacutil.exe`，或使用公共预览版容器中提供的副本。
 
--   如果需要使用自定义安装程序将 Azure-SSIS IR 加入 VNet，仅支持 Azure 资源管理器 VNet。 不支持经典 VNet。
+-   如果要在脚本中引用子文件夹，`msiexec.exe` 不支持使用 `.\` 表示法引用根文件夹。 请使用类似 `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` 的命令，而不要使用 `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`。
+
+-   如果需要使用自定义安装程序将 Azure-SSIS IR 加入虚拟网络，仅支持 Azure 资源管理器虚拟网络。 不支持经典虚拟网络。
 
 -   Azure-SSIS IR 目前不支持管理共享。
-
--   如果想要在自定义设置中将文件共享映射到驱动器，则 `net use` 命令当前不受支持。 因此，不能使用像 `net use d: \\fileshareserver\sharename` 这样的命令。 请改用 `cmdkey` 命令（例如，`cmdkey /add:fileshareserver /user:yyy /pass:zzz`）直接在包中访问 `\\fileshareserver\folder`。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,8 +59,7 @@ ms.locfileid: "33885432"
 
     1.  必须创建一个名为 `main.cmd` 的脚本文件，即自定义安装程序的入口点。
 
-    2.  如果想要将其他工具（例如 `msiexec.exe`）生成的其他日志上传到容器，请在脚本中指定预定义的环境变量 `CUSTOM_SETUP_SCRIPT_LOG_DIR` 作为日志文件夹（例如 `msiexec /i xxx.msi /quiet
-        /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`）。
+    2.  如果想要将其他工具（例如 `msiexec.exe`）生成的其他日志上传到容器，请在脚本中指定预定义的环境变量 `CUSTOM_SETUP_SCRIPT_LOG_DIR` 作为日志文件夹（例如 `msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`）。
 
 4.  下载、安装并启动 [Azure 存储资源管理器](http://storageexplorer.com/)。
 
@@ -87,7 +87,10 @@ ms.locfileid: "33885432"
 
        ![获取容器的共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-    7.  为容器创建一个过期时间足够长且具有读取 + 写入 + 列出权限的 SAS URI。 每当重置 Azure-SSIS IR 的任何节点的映像时，都需要使用该 SAS URI 来下载并运行自定义安装脚本及其关联文件。 需要拥有写入权限才能上传安装执行日志。
+    7.  为容器创建一个过期时间足够长且具有读取 + 写入 + 列出权限的 SAS URI。 每当将 Azure-SSIS IR 的任何节点重置映像/重启时，都需要使用该 SAS URI 来下载并运行自定义安装脚本及其关联文件。 需要拥有写入权限才能上传安装执行日志。
+
+        > [!IMPORTANT]
+        > 请确保在 Azure-SSIS IR 的整个生命周期内（从创建到删除），尤其是在此期间你经常停止并启动 Azure-SSIS IR 时，SAS URI 不会过期，并且自定义安装资源始终可用。
 
        ![生成容器的共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
 
@@ -124,7 +127,7 @@ ms.locfileid: "33885432"
 
     c. 选择已连接的公共预览版容器，并双击 `CustomSetupScript` 文件夹。 此文件夹包含以下项：
 
-       1. 一个 `Sample` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装基本任务的自定义安装程序。 该任务不会执行任何操作，而是休眠几秒。 该文件夹还包含 `gacutil` 文件夹，其中包含 `gacutil.exe`。
+       1. 一个 `Sample` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装基本任务的自定义安装程序。 该任务不会执行任何操作，而是休眠几秒。 该文件夹还包含 `gacutil` 文件夹，其中包含 `gacutil.exe`。 此外，`main.cmd` 包含用于保存访问凭据以进行文件共享的注释。
 
        2. 一个 `UserScenarios` 文件夹，其中包含用于实际用户方案的多个自定义设置。
 
@@ -138,7 +141,7 @@ ms.locfileid: "33885432"
 
        3. 一个 `EXCEL` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装开源程序集（`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll` 和 `ExcelDataReader.dll`）的自定义安装程序。
 
-       4. 一个 `MSDTC` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上修改 Microsoft 分布式事务处理协调器 (MSDTC) 实例的网络和安全配置的自定义安装。
+       4. 一个 `MSDTC` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上修改 Microsoft 分布式事务处理协调器 (MSDTC) 服务的网络和安全配置的自定义安装。 若要确保 MSDTC 已启动，请在包中控制流开头添加 Execute Process Task 以执行以下命令：`%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
        5. 一个 `ORACLE ENTERPRISE` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 Oracle OCI 驱动程序的自定义安装脚本 (`main.cmd`) 和无提示安装配置文件 (`client.rsp`)。 此安装程序允许使用 Oracle 连接管理器、源和目标。 首先，从 [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) 下载最新的 Oracle 客户端（例如 `winx64_12102_client.zip`），然后将其与 `main.cmd` 和 `client.rsp` 一起上传到容器中。 如果使用 TNS 连接到 Oracle，则还需要下载 `tnsnames.ora`，对其进行编辑，然后将其上传到容器，以便在安装期间将其复制到 Oracle 安装文件夹中。
 

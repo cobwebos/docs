@@ -9,29 +9,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 1bb4ec7cbe9e5b4ab51b4929fc63401c543d5244
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 87a71cff07d18dde25fa5c58b3718e7a57e3ce8d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046007"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-azure-ml-batch-execution-activity.md)
-> * [版本 2 - 预览版](transform-data-using-machine-learning.md)
+> * [第 1 版](v1/data-factory-azure-ml-batch-execution-activity.md)
+> * [当前版本](transform-data-using-machine-learning.md)
 
 通过 [Azure 机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)，可以生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
 
 1. **创建训练实验**。 使用 Azure 机器学习工作室执行此步骤。 机器学习工作室是一个协作式可视开发环境，可用于通过定型数据来定型和测试预测分析模型。
 2. **将其转换为预测实验**。 利用现有数据定型模型后，便可将其用于对新数据进行评分，为评分准备并简化实验。
 3. **将其部署为 Web 服务**。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。  
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的机器学习批处理执行活动](v1/data-factory-azure-ml-batch-execution-activity.md)。
-
 
 ### <a name="data-factory-and-machine-learning-together"></a>结合数据工厂和机器学习
 借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 [Azure 机器学习][azure-machine-learning] Web 服务进行预测分析。 使用 Azure 数据工厂管道中的“批处理执行活动”，可调用 Azure 机器学习 Web 服务来预测批处理中的数据。 

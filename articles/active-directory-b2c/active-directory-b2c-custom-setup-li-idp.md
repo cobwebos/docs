@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为 OAuth2 标识提供者
-description: 有关如何使用 OAuth2 协议和自定义策略设置 LinkedIn 应用程序的操作指南文章
+title: 在 Azure Active Directory B2C 中使用自定义策略将 LinkedIn 添加为 OAuth2 标识提供者 | Microsoft Docs
+description: 有关如何使用 OAuth2 协议和自定义策略设置 LinkedIn 应用程序的操作指南文章。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
-ms.openlocfilehash: 9e5235739abcfbee1e530685890098a45a1b093d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 334f696d79cf801facf7c5301b2240b69f7134f7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444372"
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/23/2018
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
 
 ## <a name="step-1-create-a-linkedin-account-application"></a>步骤 1：创建 LinkedIn 帐户应用程序
-若要将 LinkedIn 用作 Azure Active Directory B2C (Azure AD B2C) 中的标识提供者，必须创建 LinkedIn 应用程序并向其提供合适的参数。 可以转到 [LinkedIn 注册页](https://LinkedIn.com/signup)来注册 LinkedIn 应用程序。
+若要将 LinkedIn 用作 Azure Active Directory B2C (Azure AD B2C) 中的标识提供者，必须创建 LinkedIn 应用程序并向其提供合适的参数。 可以转到 [LinkedIn 注册页](https://www.linkedin.com/start/join)来注册 LinkedIn 应用程序。
 
 1. 转到 [LinkedIn 应用程序管理](https://www.linkedin.com/secure/developer?newapp=)网站，使用 LinkedIn 帐户凭据登录，选择“创建应用程序”。
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/23/2018
 
     c. 选择一种**应用程序用途**。
 
-    d.单击“下一步”。 在“网站 URL”框中，粘贴 https://login.microsoftonline.com。
+    d. 在“网站 URL”框中，粘贴 https://login.microsoftonline.com。
 
     e. 键入**办公电子邮件**地址和**办公电话**号码。
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/23/2018
     >[!NOTE]
     >客户端密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或将密钥随应用分发。
 
-5. 选择“添加”。
+5. 选择 **添加** 。
 
 6. 选择“设置”，将“应用程序状态”更改为“实时”，选择“更新”。
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 03/23/2018
 
 2. 若要查看租户中的可用密钥，请选择“策略密钥”。
 
-3. 选择“添加”。
+3. 选择 **添加** 。
 
 4. 在“选项”框中，选择“上传”。
 

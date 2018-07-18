@@ -1,22 +1,21 @@
 ---
-title: Azure Active Directory B2C：WeChat 配置 | Microsoft Docs
+title: Azure Active Directory B2C 中的微信配置 | Microsoft Docs
 description: 在 Azure Active Directory B2C 保护的应用程序中向用户提供使用微信帐户的注册和登录功能。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/26/2017
 ms.author: davidmu
-ms.openlocfilehash: ca12c84042f92dafff67dc10ce6b56b77c0456eb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: a18d41a4f45b147790a17664156659d282e710d4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30161313"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445922"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-wechat-accounts"></a>Azure Active Directory B2C：向用户提供使用微信帐户的注册和登录功能
 
@@ -39,7 +38,7 @@ ms.locfileid: "30161313"
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>将微信配置为租户中的标识提供者
 1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 在 B2C 功能边栏选项卡上，单击“标识提供者”。
-3. 单击边栏选项卡顶部的“ **+添加** ”。
+3. 单击边栏选项卡顶部的“+ 添加”。
 4. 为标识提供者配置提供一个友好**名称**。 例如，输入“微信”。
 5. 单击“标识提供者类型”，选择“微信”，并单击“确定”。
 6. 单击“设置此标识提供者”

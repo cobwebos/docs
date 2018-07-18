@@ -1,11 +1,11 @@
 ---
-title: "添加缓存以提高 Azure API 管理中的性能 | Microsoft Docs"
-description: "了解如何改善滞后时间、带宽消耗和 API 管理服务调用的 web 服务负载。"
+title: 添加缓存以提高 Azure API 管理中的性能 | Microsoft Docs
+description: 了解如何改善滞后时间、带宽消耗和 API 管理服务调用的 web 服务负载。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26127771"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减少 API 延迟、带宽消耗和不经常更改数据的 web 服务负载。

@@ -2,32 +2,31 @@
 title: Azure 上的 Kubernetes 教程 - 更新应用程序
 description: AKS 教程 - 更新应用程序
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: df118a2b5bd8e31bd3fe6101d1d3f631092b6f24
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 97d8c4bd179edc59d97914f86e2aa139681e739a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100919"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
 
 在 Kubernetes 中部署应用程序后，可以指定新的容器映像或映像版本，从而更新应用程序。 这样做时，更新会进行暂存，因此只有一部分部署会同时更新。 借助这种暂存更新，可以让应用程序在更新期间继续运行。 如果发生部署故障，还可以利用它的回滚机制。
 
-在本教程的第 6 部分（共 8 部分），便完成了对 Azure Vote 应用示例的更新。 要完成的任务包括：
+在本教程的第 6 部分（共 7 部分），便完成了对 Azure Vote 应用示例的更新。 要完成的任务包括：
 
 > [!div class="checklist"]
 > * 更新前端应用程序代码
 > * 创建更新的容器映像
 > * 将容器映像推送至 Azure 容器注册表
 > * 部署更新的容器映像
-
-在后续教程中，会将 Log Analytics 配置为监视 Kubernetes 群集。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -164,10 +163,10 @@ kubectl get service azure-vote-front
 > * 将容器映像推送到 Azure 容器注册表
 > * 部署更新的应用程序
 
-转到下一篇教程，了解如何使用 Log Analytics 监视 Kubernetes。
+继续学习下一个教程，了解如何将 Kubernetes 升级到新版本。
 
 > [!div class="nextstepaction"]
-> [使用 Log Analytics 监视 Kubernetes][aks-tutorial-monitor]
+> [升级 Kubernetes][aks-tutorial-upgrade]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/
@@ -178,5 +177,5 @@ kubectl get service azure-vote-front
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
-[aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md
+[aks-tutorial-upgrade]: ./tutorial-kubernetes-upgrade-cluster.md
 [az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login

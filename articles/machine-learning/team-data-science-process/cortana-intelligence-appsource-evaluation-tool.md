@@ -7,17 +7,19 @@ author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams
-ms.openlocfilehash: 24e6ab7e94d8a1bdbfa0b5ee9112aaaff7e358ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a94febdb89573930715006501b3690c0aa845b7b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836743"
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence 解决方案评估工具
 ## <a name="overview"></a>概述
@@ -44,13 +46,13 @@ ms.lasthandoff: 04/28/2018
 ![选择资源](./media/cortana-intelligence-appsource-evaluation-tool/3-select-resources.png)
 
 加载资源组后，请选择解决方案中包含的资源，并将任意数据资源的可访问性标识为以下选项之一：
-- 引入
+- 引流 
 - 消耗
 - 内部
 
 通过此信息，可以更好地了解解决方案如何利用各种组件，并确保面向用户的组件符合最佳做法。
 
-### <a name="ingestion"></a>引入
+### <a name="ingestion"></a>引流 
 这里的引入是指用于从解决方案外部拉取数据的任何数据源，或者用于将数据推送到解决方案的任何服务，这些服务不包括在解决方案内。
 
 ### <a name="consumption"></a>消耗
@@ -128,12 +130,12 @@ Azure SQL 和 Azure SQL DW 均支持透明数据加密 (TDE)，它提供数据�
 
 除 TDE 之外，Azure SQL 还支持 Always Encrypted，这是一种新的数据加密技术，在服务器上执行命令时，它可以确保不仅在静态时以及在客户端和服务器之间移动时加密数据，还可在使用数据时进行加密。
 
-### <a name="any-virtual-machines-must-be-deployed-from-the-azure-marketplace"></a>必须从 Azure Marketplace 部署任何虚拟机
-为了在 AppSource 中提供一致的安全级别，请在 Azure Marketplace 中认证和发布任何作为 Cortana Intelligence 解决方案一部分部署的虚拟机。
+### <a name="any-virtual-machines-must-be-deployed-from-the-azure-marketplace"></a>必须从 Azure 市场部署任何虚拟机
+为了在 AppSource 中提供一致的安全级别，请在 Azure 市场中认证和发布任何作为 Cortana Intelligence 解决方案一部分部署的虚拟机。
 
-要搜索 Azure Marketplace 映像的当前列表，请参阅 [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute)。
+要搜索 Azure 市场映像的当前列表，请参阅 [Microsoft Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute)。
 
-有关如何发布 Azure Marketplace 的虚拟机映像的信息，请参阅[为 Azure Marketplace 创建虚拟机映像的指南](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)。
+有关如何发布 Azure 市场的虚拟机映像的信息，请参阅[为 Azure 市场创建虚拟机映像的指南](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)。
 
 ## <a name="scalability-evaluation-considerations"></a>可伸缩性评估注意事项
 ### <a name="cortana-intelligence-solutions-should-include-a-scalable-big-data-platform"></a>Cortana Intelligence 解决方案应包括可缩放的大数据平台

@@ -146,7 +146,21 @@
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: 视频
-      href: videos.md
+      items:
+        - name: 产品视频
+          href: videos.md
+        - name: 操作方法视频系列
+          items:
+            - name: 了解产品功能和优势
+              href: 'https://aka.ms/postg-intro-vid'
+            - name: 将 PostgreSQL 应用迁移到 Azure
+              href: 'https://aka.ms/postg-migrate-vid'
+            - name: 生成带有认知服务的智能应用
+              href: 'https://aka.ms/postg-cogsvs-vid'
+            - name: 使用 OSBA 连接容器
+              href: 'https://aka.ms/postg-osba-vid'
+            - name: 将应用的数据连接到 Power BI
+              href: 'https://aka.ms/postg-powerbi-vid'
     - name: 反馈论坛
       href: 'https://feedback.azure.com/forums/597976-azure-database-for-postgresql'
     - name: 上市区域
@@ -155,5 +169,7 @@
       href: 'https://azure.microsoft.com/support/options/'
     - name: 客户案例
       href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'
+    - name: 合作伙伴
+      href: partners-migration-postgresql.md
     - name: 数据库迁移指南
       href: 'https://datamigration.microsoft.com/'

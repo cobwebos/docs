@@ -1,11 +1,11 @@
 ---
-title: "排查 Linux VM 经典部署问题 | Microsoft Docs"
-description: "排查在 Azure 中新建 Linux 虚拟机时遇到的经典部署问题"
+title: 排查 Linux VM 经典部署问题 | Microsoft Docs
+description: 排查在 Azure 中新建 Linux 虚拟机时遇到的经典部署问题
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: JiangChen79
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: c8a963fa-6b2a-4c7a-a1f4-7793adb02b19
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27965962"
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>排查在 Azure 中新建 Linux 虚拟机时遇到的经典部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-selectors-include.md)]
@@ -44,9 +45,9 @@ Y：如果 OS 是通用的 Linux，并且是使用通用设置上传和/或捕�
 
 **上载错误：**
 
-**N<sup>1</sup>：**如果 OS 是通用的 Linux，但是以专用设置上载的，则会发生预配超时错误，并且 VM 会卡在预配阶段。
+**N<sup>1</sup>：** 如果 OS 是通用的 Linux，但是以专用设置上载的，则会发生预配超时错误，并且 VM 会卡在预配阶段。
 
-**N<sup>2</sup>：**如果 OS 是专用的 Linux，但是以专用设置上载的，则会发生预配失败错误，因为新 VM 是以原始计算机名称、用户名和密码运行的。
+**N<sup>2</sup>：** 如果 OS 是专用的 Linux，但是以专用设置上载的，则会发生预配失败错误，因为新 VM 是以原始计算机名称、用户名和密码运行的。
 
 **解决方法：**
 
@@ -54,9 +55,9 @@ Y：如果 OS 是通用的 Linux，并且是使用通用设置上传和/或捕�
 
 **捕获错误：**
 
-**N<sup>3</sup>：**如果 OS 是通用的 Linux，但是以专用设置捕获的，则会发生预配超时错误，因为标记为通用的原始 VM 不可用。
+**N<sup>3</sup>：** 如果 OS 是通用的 Linux，但是以专用设置捕获的，则会发生预配超时错误，因为标记为通用的原始 VM 不可用。
 
-**N<sup>4</sup>：**如果 OS 是专用的 Linux，但是以专用设置捕获的，则会发生预配失败错误，因为新 VM 是以原始计算机名称、用户名和密码运行的。 此外，标记为专用的原始 VM 不可用。
+**N<sup>4</sup>：** 如果 OS 是专用的 Linux，但是以专用设置捕获的，则会发生预配失败错误，因为新 VM 是以原始计算机名称、用户名和密码运行的。 此外，标记为专用的原始 VM 不可用。
 
 **解决方法：**
 
@@ -67,7 +68,7 @@ Y：如果 OS 是通用的 Linux，并且是使用通用设置上传和/或捕�
 
 可能遇到因两种情况造成的错误，取决于用于创建新 VM 的云服务的条件约束。
 
-**原因 1：**云服务已固定到特定群集，或者链接到地缘组，因而固定到所设计的特定群集。 因此，该地缘组中新的计算资源请求将于托管现有资源的相同群集中尝试发出。 但是，同一群集可能不支持请求的 VM 大小，或者可用空间不足，导致分配错误。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
+**原因 1：** 云服务已固定到特定群集，或者链接到地缘组，因而固定到所设计的特定群集。 因此，该地缘组中新的计算资源请求将于托管现有资源的相同群集中尝试发出。 但是，同一群集可能不支持请求的 VM 大小，或者可用空间不足，导致分配错误。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
 
 **解决方法 1：**
 
@@ -80,7 +81,7 @@ Y：如果 OS 是通用的 Linux，并且是使用通用设置上传和/或捕�
 > 
 > 
 
-**原因 2：**云服务已经与链接到地缘组的虚拟网络关联，因而固定到所设计的特定群集。 该地缘组中的所有新计算资源请求将于托管现有资源的相同群集中尝试发出。 但是，同一群集可能不支持请求的 VM 大小，或者可用空间不足，导致分配错误。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
+**原因 2：** 云服务已经与链接到地缘组的虚拟网络关联，因而固定到所设计的特定群集。 该地缘组中的所有新计算资源请求将于托管现有资源的相同群集中尝试发出。 但是，同一群集可能不支持请求的 VM 大小，或者可用空间不足，导致分配错误。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
 
 **解决方法 2：**
 

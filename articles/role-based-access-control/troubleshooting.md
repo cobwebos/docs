@@ -1,6 +1,6 @@
 ---
-title: Azure 基于角色的访问控制疑难解答 RBAC | Microsoft Docs
-description: 获取有关基于角色的访问控制资源问题或疑问的帮助。
+title: 对 Azure 中的 RBAC 进行故障排除 | Microsoft Docs
+description: 排查 Azure 基于角色的访问控制 (RBAC) 的问题。
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -10,26 +10,27 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e1f9fa8e3abd3eee9d85c241000a07794af9d36b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 186bcf26639f5cff2dcbf1e805913ac7edab7df4
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437359"
 ---
-# <a name="troubleshooting-azure-role-based-access-control"></a>Azure 基于角色的访问控制疑难解答 
+# <a name="troubleshooting-rbac-in-azure"></a>对 Azure 中的 RBAC 进行故障排除
 
-本文解答了有关为角色授予的特定访问权限的常见问题，让你能够预料到在 Azure 门户中使用角色时可能出现的情况，并解决访问权限问题。 以下三种角色涵盖所有资源类型：
+本文解答有关基于角色的访问控制 (RBAC) 的常见问题，以便你了解在 Azure 门户中使用角色时可能出现的情况，并可解决访问权限问题。 以下三种角色涵盖所有资源类型：
 
 * 所有者  
 * 参与者  
 * 读取器  
 
-所有者和参与者对管理体验具有完全访问权限，但是参与者无法向其他用户或组授予访问权限。 具有读者角色事情会变得更加有趣，因此，我们将着重介绍读者角色。 有关如何授予访问权限的详细信息，请参阅[基于角色的访问控制入门文章](role-assignments-portal.md)。
+所有者和参与者对管理体验具有完全访问权限，但是参与者无法向其他用户或组授予访问权限。 具有读者角色事情会变得更加有趣，因此，我们将着重介绍读者角色。 有关如何授予访问权限的信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)。
 
 ## <a name="app-service"></a>应用服务
 ### <a name="write-access-capabilities"></a>写访问功能
@@ -96,9 +97,7 @@ ms.lasthandoff: 05/16/2018
 
 如果无法访问以上任何磁贴，则需要让管理员提供对资源组的“参与者”访问权限。
 
-## <a name="see-more"></a>另请参阅
-* [基于角色的访问控制](role-assignments-portal.md)：Azure 门户中的 RBAC 入门。
-* [内置角色](built-in-roles.md)：获取有关 RBAC 中标配角色的详细信息。
-* [Azure RBAC 中的自定义角色](custom-roles.md)：了解如何创建自定义角色，以满足访问需要。
-* [创建访问权限更改历史记录报告](change-history-report.md)：记录 RBAC 中的角色分配更改。
+## <a name="next-steps"></a>后续步骤
+* [使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)
+* [查看活动日志以了解 RBAC 更改](change-history-report.md)
 

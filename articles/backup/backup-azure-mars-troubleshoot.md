@@ -1,24 +1,19 @@
 ---
-title: 对 Azure 备份代理进行故障排除 | Microsoft Docs
+title: 对 Azure 备份代理进行故障排除
 description: 排除与 Azure 备份代理的安装和注册相关的问题
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shreeshd
-editor: ''
-ms.assetid: 778c6ccf-3e57-4103-a022-367cc60c411a
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/4/2017
-ms.author: saurse;markgal;
-ms.openlocfilehash: f7f4ac328c4e35f52bcc9708faf96d06189dd9ac
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: saurse
+ms.openlocfilehash: 89a39f6189367f91248b3868b1e1cb9f6abf0407
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228384"
 ---
 # <a name="troubleshoot-azure-backup-agent-configuration-and-registration-issues"></a>排除 Azure 备份代理配置和注册问题
 ## <a name="recommended-steps"></a>建议的步骤
@@ -41,13 +36,19 @@ ms.lasthandoff: 03/17/2018
 
 | 错误详细信息 | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |      
-| **错误** </br>*未能设置安全备份的加密密钥。由于内部服务错误“输入无效错误”，当前操作失败。请稍后重试操作。如果该问题仍然存在，请联系 Microsoft 支持部门*。 |服务器已注册到另一个保管库。| 从该保管库中取消注册服务器，然后再次注册。
+| **错误** </br>*无法设置安全备份的加密密钥，激活未完全成功，但是加密密码已保存到以下文件中*。 |<li>服务器已注册到另一个保管库。<li>在配置期间，密码已损坏| 从该保管库中取消注册服务器，然后使用新密码重新注册。
 
 ## <a name="the-activation-did-not-complete-successfully-the-current-operation-failed-due-to-an-internal-service-error-0x1fc07"></a>激活未成功完成。 由于内部服务错误 [0x1FC07]，当前操作失败
 
 | 错误详细信息 | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |          
-| **错误** </br><ol><li>*激活未成功完成。由于内部服务错误 [0x1FC07]，当前操作失败。请稍后重试操作。如果该问题仍然存在，请联系 Microsoft 支持部门* <li>错误 34506。*未在此计算机上正确配置存储的加密密码*。 | <li> Scratch 文件夹位于空间不足的卷上。 <li> 已错误地将 Scratch 文件夹移到另一位置。 <li> 缺少 OnlineBackup.KEK 文件。 | <li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5-10% 的卷。 若要正确地移动缓存位置，请参阅[有关 Azure 备份代理的问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>*scratch 文件夹的默认位置或缓存位置路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。
+| **错误** </br><ol><li>*激活未成功完成。由于内部服务错误 [0x1FC07]，当前操作失败。请稍后重试操作。如果该问题仍然存在，请联系 Microsoft 支持部门*| <li> Scratch 文件夹位于空间不足的卷上。 <li> 已错误地将 Scratch 文件夹移到另一位置。 <li> 缺少 OnlineBackup.KEK 文件。 | <li>升级到[最新版本](http://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5-10% 的卷。 若要正确地移动缓存位置，请参阅[有关 Azure 备份代理的问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>*scratch 文件夹的默认位置或缓存位置路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。
+  
+## <a name="error-34506-the-encryption-passphrase-stored-on-this-computer-is-not-correctly-configured"></a>错误 34506。 存储在此计算机上的加密密码未正确配置
+
+| 错误详细信息 | 可能的原因 | 建议的操作 |
+| ---     | ---     | ---    |          
+| **错误** </br><ol><li>错误 34506。*未在此计算机上正确配置存储的加密密码*。 | <li> Scratch 文件夹位于空间不足的卷上。 <li> 已错误地将 Scratch 文件夹移到另一位置。 <li> 缺少 OnlineBackup.KEK 文件。 | <li>升级到[最新版本](http://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5-10% 的卷。 若要正确地移动缓存位置，请参阅[有关 Azure 备份代理的问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>*scratch 文件夹的默认位置或缓存位置路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。  
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

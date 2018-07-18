@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: b406a0cd3e5176649b33d6ad8f41facb7043952d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6d8eedbbf4a682443e73ecb9cf9496f3cdd1cd9d
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837195"
 ---
 # <a name="business-understanding"></a>了解业务
 
@@ -80,7 +82,7 @@ ms.lasthandoff: 05/03/2018
 以下是此阶段中的可交付结果：
 
    * [章程文档](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md)：TDSP 项目结构定义中提供的一个标准模板。 章程文档是一个动态文档。 在发现新内容时，业务需求发生变化时，请更新整个项目中的模板。 关键是在发现过程中有进展时，对本文档进行循环访问，以添加更多详细信息。 让客户和其他利益干系人参与到更改中，并清楚地与他们交流更改的原因。  
-   * [数据源](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources)：TDSP 项目“数据报表”文件夹中的“数据定义”报表的“原始数据源”部分包含数据源。 此部分指定原始数据的原始位置和目标位置。 在后续阶段中，需要填写脚本等其他详细信息，以将数据移到分析环境中。  
+   * [数据源](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources)：TDSP 项目“数据报表”文件夹中的“数据定义”报表的“原始数据源”部分包含数据源。 此部分指定原始数据的原始位置和目标位置。 在后续阶段中，需要填写脚本等其他详细信息，以将数据移到分析环境中。  
    * [数据字典](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries)：本文档包含客户端提供的数据说明。 这些说明介绍了架构（数据类型、验证规则的相关信息（若有））和实体关系图（若有）。
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,10 +1,10 @@
 ---
-title: "为 Azure 移动应用启用脱机同步 (Xamarin.Forms) | Microsoft Docs"
-description: "了解如何在 Xamarin.Forms 应用程序中使用应用服务移动应用缓存和同步脱机数据"
+title: 为 Azure 移动应用启用脱机同步 (Xamarin.Forms) | Microsoft Docs
+description: 了解如何在 Xamarin.Forms 应用程序中使用应用服务移动应用缓存和同步脱机数据
 documentationcenter: xamarin
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: acf0f874-3ea5-4410-bd22-b0e72140f3b5
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594711"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -39,8 +40,8 @@ ms.lasthandoff: 01/04/2018
         #define OFFLINE_SYNC_ENABLED
 3. （可选）若要支持 Windows 设备，请安装以下 SQLite 运行时包之一：
 
-   * **Windows 8.1 运行时：**安装 [SQLite for Windows 8.1][3]。
-   * **Windows Phone 8.1：**安装 [SQLite for Windows Phone 8.1][4]。
+   * **Windows 8.1 运行时：** 安装 [SQLite for Windows 8.1][3]。
+   * **Windows Phone 8.1：** 安装 [SQLite for Windows Phone 8.1][4]。
    * **通用 Windows 平台**安装[适用于通用 Windows 平台的 SQLite][5]。
 
      尽管快速入门中不包含通用 Windows 项目，但通用 Windows 平台支持 Xamarin Forms。

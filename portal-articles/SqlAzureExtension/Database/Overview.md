@@ -1,6 +1,6 @@
 ---
-title: "SQL 数据库概述 | Microsoft Docs"
-description: "Azure 门户中 SQL 数据库概述的帮助内容"
+title: SQL 数据库概述 | Microsoft Docs
+description: Azure 门户中 SQL 数据库概述的帮助内容
 services: sql-database
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073922"
 ---
 # <a name="sql-database-documentation"></a>SQL 数据库文档
 

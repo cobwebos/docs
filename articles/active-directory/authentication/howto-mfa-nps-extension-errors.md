@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: aa140bceb5f7ad5e638f747fa8d88803c27f02a3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5f25213d8d1fbc95aa419c86ca5b780f345952ed
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867659"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130193"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
@@ -52,14 +52,14 @@ ms.locfileid: "33867659"
 | 错误代码 | 错误消息 | 疑难解答步骤 |
 | ---------- | ------------- | --------------------- |
 | **AccessDenied** | 调用方租户无权针对用户执行身份验证 | 检查租户域和用户主体名称 (UPN) 的域是否相同。 例如，确保 user@contoso.com 正在尝试向 Contoso 租户进行身份验证。 UPN 代表 Azure 中的租户的有效用户。 |
-| **AuthenticationMethodNotConfigured** | 未为用户配置指定的身份验证方法 | 请让用户根据[管理双重验证设置](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
+| **AuthenticationMethodNotConfigured** | 未为用户配置指定的身份验证方法 | 请让用户根据[管理双重验证设置](end-user/current/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
 | **AuthenticationMethodNotSupported** | 指定的身份验证方法不受支持。 | 请收集包含此错误的所有日志，并[联系支持人员](#contact-microsoft-support)。 联系支持人员时，请提供用户名以及触发该错误的辅助验证方法。 |
-| **BecAccessDenied** | MSODS Bec 调用返回了拒绝访问错误，原因可能是租户中未定义用户名 | 该用户在本地 Active Directory 中存在，但未由 AD Connect 同步到 Azure AD。 或者，租户中缺少该用户。 请将该用户添加到 Azure AD，并让其根据[管理双重验证设置](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
+| **BecAccessDenied** | MSODS Bec 调用返回了拒绝访问错误，原因可能是租户中未定义用户名 | 该用户在本地 Active Directory 中存在，但未由 AD Connect 同步到 Azure AD。 或者，租户中缺少该用户。 请将该用户添加到 Azure AD，并让其根据[管理双重验证设置](end-user/current/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
 | **InvalidFormat** 或 **StrongAuthenticationServiceInvalidParameter** | 电话号码采用了无法识别的格式 | 请让用户更正其验证电话号码。 |
 | **InvalidSession** | 指定的会话无效或已过期 | 完成会话花费的时间超过三分钟。 验证用户是否在发起身份验证请求后的三分钟内输入了验证码或者对应用通知做出了响应。 如果仍未解决问题，请检查客户端、NAS 服务器、NPS 服务器和 Azure MFA 终结点之间是否未出现网络延迟。  |
-| **NoDefaultAuthenticationMethodIsConfigured** | 未为用户配置默认的身份验证方法 | 请让用户根据[管理双重验证设置](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 验证用户是否已选择默认身份验证方法，并为其帐户配置了该方法。 |
+| **NoDefaultAuthenticationMethodIsConfigured** | 未为用户配置默认的身份验证方法 | 请让用户根据[管理双重验证设置](end-user/current/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 验证用户是否已选择默认身份验证方法，并为其帐户配置了该方法。 |
 | **OathCodePinIncorrect** | 输入了错误的代码和 PIN。 | NPS 扩展中应该不会出现此错误。 如果用户遇到此错误，请[联系支持人员](#contact-microsoft-support)以获得故障排除帮助。 |
-| **ProofDataNotFound** | 未为指定的身份验证方法配置证明数据。 | 请让用户尝试不同的验证方法，或者根据[管理双重验证设置](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md)中的说明添加新的验证方法。 如果确认用户的验证方法已正确设置后用户仍看到此错误，请[联系支持人员](#contact-microsoft-support)。 |
+| **ProofDataNotFound** | 未为指定的身份验证方法配置证明数据。 | 请让用户尝试不同的验证方法，或者根据[管理双重验证设置](end-user/current/multi-factor-authentication-end-user-manage-settings.md)中的说明添加新的验证方法。 如果确认用户的验证方法已正确设置后用户仍看到此错误，请[联系支持人员](#contact-microsoft-support)。 |
 | **SMSAuthFailedWrongCodePinEntered** | 输入了错误的代码和 PIN。 (OneWaySMS) | NPS 扩展中应该不会出现此错误。 如果用户遇到此错误，请[联系支持人员](#contact-microsoft-support)以获得故障排除帮助。 |
 | **TenantIsBlocked** | 租户已被阻止 | [请联系支持人员](#contact-microsoft-support)并提供 Azure 门户中 Azure AD 属性页上的目录 ID。 |
 | **UserNotFound** | 找不到指定的用户 | 该租户在 Azure AD 中不再显示为活动状态。 检查订阅是否处于活动状态，并且已创建所需的第一方应用。 此外，请确保证书使用者中的租户符合预期，并且该证书仍然有效且已在服务主体下注册。 |
@@ -96,7 +96,7 @@ ms.locfileid: "33867659"
 
 ### <a name="troubleshoot-user-accounts"></a>排查用户帐户问题
 
-如果用户[在使用双重验证时遇到问题](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md)，请帮助他们自我诊断问题。 
+如果用户[在使用双重验证时遇到问题](end-user/current/multi-factor-authentication-end-user-troubleshoot.md)，请帮助他们自我诊断问题。 
 
 ### <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
 

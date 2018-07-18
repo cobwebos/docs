@@ -1,22 +1,19 @@
 ---
 title: Azure IoT 中心设备预配服务中的服务概念 | Microsoft Docs
 description: 介绍服务预配概念，特定于使用 DPS 和 IoT 中心预配的设备
-services: iot-dps
-keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 03/30/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: d2bc58514ea716954ec3ac96151549168fedc2ed
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 2908e08e36f41ebb8a154e7c490e5c6719d911be
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628294"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT 中心设备预配服务概念
 
@@ -62,9 +59,9 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 > [!TIP]
 > 建议对共享所需初始配置的大量设备，或者全部转到同一租户的设备使用注册组。
 
-### <a name="individual-enrollment"></a>个人注册
+### <a name="individual-enrollment"></a>单独注册
 
-个人注册是用于可注册的单一设备的条目。 个人注册可使用 X.509 叶证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 个人注册中的注册 ID 是小写的字母数字，并且可包含连字符。 个人注册可能会指定所需 IoT 中心设备 ID。
+单独注册是用于可注册的单一设备的条目。 个人注册可使用 X.509 叶证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 单独注册中的注册 ID 是小写的字母数字，并且可包含连字符。 单独注册可能会指定所需 IoT 中心设备 ID。
 
 > [!TIP]
 > 对于需要唯一初始配置的设备或仅能通过 TPM 证明使用 SAS 令牌进行身份验证的设备，建议为其使用个人注册。

@@ -7,21 +7,25 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: d76ae997-2279-46dd-bfc5-c0ee29718096
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: b278f5c4c8c87590205aca13a50a82fe8712d909
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fceeb9655562d7abf6930cc484b4a9eb275ee81e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330795"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 若要执行本文中所列的任务，需要：  
@@ -82,17 +86,17 @@ sudo vi /etc/hosts
     sudo realm discover CONTOSO100.COM
     ```
 
-     > [!NOTE] 
-     > **故障排除：**如果“领域发现”找不到托管域：
+     > [!NOTE]
+     > **故障排除：** 如果“领域发现”找不到托管域：
      * 确保域可从虚拟机（请尝试 ping）进行访问。
      * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
      * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
      >
 
-2. 初始化 Kerberos。 在 SSH 终端中键入以下命令： 
+2. 初始化 Kerberos。 在 SSH 终端中键入以下命令：
 
-    > [!TIP] 
-    > * 请确保指定属于“AAD DC 管理员”组的用户。 
+    > [!TIP]
+    > * 请确保指定属于“AAD DC 管理员”组的用户。
     > * 以大写字母指定域名，否则 kinit 会失败。
     >
 
@@ -100,9 +104,9 @@ sudo vi /etc/hosts
     kinit bob@CONTOSO100.COM
     ```
 
-3. 将计算机加入域。 在 SSH 终端中键入以下命令： 
+3. 将计算机加入域。 在 SSH 终端中键入以下命令：
 
-    > [!TIP] 
+    > [!TIP]
     > 使用在前一步骤中指定的同一用户帐户（“kinit”）。
     >
 

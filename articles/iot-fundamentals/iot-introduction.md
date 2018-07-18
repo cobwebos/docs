@@ -1,24 +1,19 @@
 ---
 title: Azure 物联网 (IoT) 简介
 description: Azure IoT 和相关服务及技术概述。
-services: iot-hub
-documentationcenter: ''
 author: BryanLa
 manager: timlt
-editor: bryanla
-ms.service: iot
-ms.devlang: na
+ms.service: iot-fundamentals
+services: iot-fundamentals
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/30/2018
-ms.author: bryanla; v-clay
-layout: LandingPage
-ms.openlocfilehash: 568680d2e1eb8c09fa124a5302bb7170ba4af352
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 05/18/2018
+ms.author: bryanla
+ms.openlocfilehash: 858124ca92ae80313749abbd22c479fef90ce873
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081517"
 ---
 # <a name="introduction-to-azure-and-the-internet-of-things"></a>Azure 和物联网简介
 
@@ -131,7 +126,8 @@ Azure IoT 简化了 IoT 项目的复杂性，并解决了诸多问题，如：�
                     <div class="cardText">
                         <h3>解决方案</h3>
                         <a href="/azure/iot-suite">IoT 解决方案加速器</a><br/>
-                        <a href="/azure/iot-central">IoT 中心</a>
+  
+                        <a href="/azure/iot-central">IoT Central</a>
                     </div>
                 </div>
             </div>
@@ -177,13 +173,13 @@ Azure IoT 简化了 IoT 项目的复杂性，并解决了诸多问题，如：�
 [lnk-iot-edge-land]: /azure/iot-edge/index.yml
 [lnk-iot-hub-land]: /azure/iot-hub/index.md
 [lnk-iot-maps-land]: /azure/maps/index.yml
-[lnk-iot-sa-land]: /azure/iot-suite/index.md
+[lnk-iot-sa-land]: ../iot-accelerators/index.yml
 [lnk-iot-tsi-land]: /azure/time-series-insights/index.yml
 
-[lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
-[lnk-iot-sa]: ../articles/iot-suite/iot-suite-overview.md
+[lnk-iot-hub]: ../iot-hub/about-iot-hub.md
+[lnk-iot-sa]: ../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
 [lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
-[lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
-[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
+[lnk-protocol-gateway]:  ../iot-hub/iot-hub-protocol-gateway.md
+[lnk-refarch]: https://aka.ms/iotrefarchitecture
 
 

@@ -11,13 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/27/2018
+ms.date: 05/31/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d189af9b08f2b6e9ea194c15bfba683afc75a54
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 10774e7ca1168a58e8c8d47e6a7295ff727fa1cd
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801443"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合标识目录集成工具比较
 过去数年以来，集成工具已得到发展和演进。  本文档旨在帮助提供这些工具的合并视图，并比较每个工具提供的功能。
@@ -38,7 +40,7 @@ FR = 未来版本
 PP = 公开预览版  
 
 ## <a name="on-premises-to-cloud-synchronization"></a>本地到云的同步
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 (AAD Sync) | Azure Active Directory 同步工具 (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
+| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 (AAD Sync) - 不再支持 | Azure Active Directory 同步工具 (DirSync) - 不再支持 | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 连接到单个本地 AD 林 |● |● |● |● |● |
 | 连接到多个本地 AD 林 |● |● | |● |● |
@@ -53,7 +55,7 @@ PP = 公开预览版
 
 
 ## <a name="cloud-to-on-premises-synchronization"></a>云到本地的同步
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 | Azure Active Directory 同步工具 (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
+| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 设备写回 |● | |● | | |
 | 属性写回（适用于 Exchange 混合部署） |● |● |● |● |● |
@@ -61,15 +63,17 @@ PP = 公开预览版
 | 密码写回（通过自助密码重置 (SSPR) 和密码更改） |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>身份验证功能支持
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 | Azure Active Directory 同步工具 (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
+| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
-| 单个本地 AD 林的密码同步 |● |● |● | | |
-| 多个本地 AD 林的密码同步 |● |● | | | |
+| 单个本地 AD 林的密码哈希同步 |●|●|● | | |
+| 多个本地 AD 林的密码哈希同步 |●|● | | | |
+| 单个本地 AD 林的直通身份验证 |●| | | | |
 | 使用联合身份验证的单一登录 |● |● |● |● |● |
+| 无缝单一登录|● |||||
 | 密码写回（通过 SSPR 和密码更改） |● |● | | | |
 
 ## <a name="set-up-and-installation"></a>设置和安装
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 | Azure Active Directory 同步工具 (DirSync) | Microsoft 标识管理器 2016 (MIM) |
+| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|
 | 支持在域控制器上安装 |● |● |● | |
 | 支持使用 SQL Express 安装 |● |● |● | |
@@ -80,7 +84,7 @@ PP = 公开预览版
 | 对 Windows Server 2012 和 Windows Server 2012 R2 的支持 |● |● |● |● |
 
 ## <a name="filtering-and-configuration"></a>筛选和配置
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 | Azure Active Directory 同步工具 (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
+| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 筛选域和组织单位 |● |● |● |● |● |
 | 筛选对象的属性值 |● |● |● |● |● |

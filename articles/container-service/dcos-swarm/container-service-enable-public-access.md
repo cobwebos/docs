@@ -1,6 +1,6 @@
 ---
-title: "启用对 Azure DC/OS 容器应用的访问"
-description: "如何启用对 Azure 容器服务中 DC/OS 容器的公共访问。"
+title: 启用对 Azure DC/OS 容器应用的访问
+description: 如何启用对 Azure 容器服务中 DC/OS 容器的公共访问。
 services: container-service
 author: sauryadas
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26332273"
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>启用对 Azure 容器服务应用程序的公共访问
 

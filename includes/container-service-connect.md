@@ -168,7 +168,7 @@ docker info
 
 5. 选择“SSH”>“隧道”并配置以下转发端口：
 
-    * **源端口：**为 DC/OS 使用 80，为 Swarm 使用 2375。
+    * **源端口：** 为 DC/OS 使用 80，为 Swarm 使用 2375。
     * **目标：** DC/OS 使用 localhost:80，Swarm 使用 localhost:2375。
 
     以下示例适用于 DC/OS，但 Docker Swarm 与之类似。

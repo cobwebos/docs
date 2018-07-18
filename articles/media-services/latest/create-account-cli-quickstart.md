@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 CLI 2.0 创建 Azure 媒体服务帐户 | Microsoft Docs
+title: 快速入门 - 使用 Azure CLI 创建 Azure 媒体服务帐户 | Microsoft Docs
 description: 按照本快速入门的步骤，创建 Azure 媒体服务帐户。
 services: media-services
 documentationcenter: ''
@@ -12,11 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: f7e5cb28f90466e9366c0a32e2a333e6823b9396
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767096"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>快速入门：创建 Azure 媒体服务帐户
 
@@ -25,7 +26,7 @@ ms.lasthandoff: 05/07/2018
 
 无论是开发人员还是媒体内容创建者，若要在 Azure 中存储、加密、编码、管理和流式传输媒体内容，都需要创建媒体服务帐户。 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的 ID。 指定存储帐户会附加到媒体服务帐户。 此存储帐户资源必须位于媒体服务帐户所在的地理区域内。  
 
-本快速入门介绍使用 CLI 2.0 创建新 Azure 媒体服务帐户的步骤。  
+本快速入门介绍使用 Azure CLI 创建新 Azure 媒体服务帐户的步骤。  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 05/07/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求使用 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本主题要求使用 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="set-the-azure-subscription"></a>设置 Azure 订阅
 

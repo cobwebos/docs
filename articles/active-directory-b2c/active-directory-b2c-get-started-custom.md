@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：自定义策略入门 | Microsoft Docs
-description: 如何开始使用 Azure Active Directory B2C 自定义策略
+title: Azure Active Directory B2C 中的自定义策略入门 | Microsoft Docs
+description: Azure Active Directory B2C 自定义策略入门方法。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 502f88bd08c05f71988763fedeba4d596aa409b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: e25103d2fcbfc70be7f96f5c0e5fa6abe13fe393
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446735"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C：自定义策略入门
 
@@ -35,30 +35,30 @@ ms.lasthandoff: 03/23/2018
 1. 打开 Azure AD B2C 租户设置中的“标识体验框架”边栏选项卡。
 2. 选择“策略密钥”，查看租户中的可用密钥。
 3. 如果不存在 B2C_1A_TokenSigningKeyContainer，请创建一个：<br>
-    a. 选择“添加”。 <br>
+    a. 选择 **添加** 。 <br>
     b. 然后选择“生成”。<br>
     c. 使用 `TokenSigningKeyContainer` 作为“名称”。 <br> 
     可能会自动添加前缀 `B2C_1A_`。<br>
-    d.单击“下一步”。 使用 RSA 作为“密钥类型”。<br>
+    d. 使用 RSA 作为“密钥类型”。<br>
     e. 对“日期”使用默认值。 <br>
     f. 使用“签名”作为“密钥用法”。<br>
     g. 选择**创建**。<br>
 4. 如果不存在 B2C_1A_TokenEncryptionKeyContainer，请创建一个：<br>
- a. 选择“添加”。<br>
+ a. 选择 **添加** 。<br>
  b. 然后选择“生成”。<br>
  c. 使用 `TokenEncryptionKeyContainer` 作为“名称”。 <br>
    可能会自动添加前缀 `B2C_1A`_。<br>
- d.单击“下一步”。 使用 RSA 作为“密钥类型”。<br>
+ d. 使用 RSA 作为“密钥类型”。<br>
  e. 对“日期”使用默认值。<br>
  f. 使用“加密”作为“密钥用法”。<br>
  g. 选择**创建**。<br>
 5. 创建 B2C_1A_FacebookSecret。 <br>
 如果已有 Facebook 应用程序机密，请将它作为策略密钥添加到租户。 否则，必须创建包含占位符值的密钥，使策略能够通过验证。<br>
- a. 选择“添加”。<br>
+ a. 选择 **添加** 。<br>
  b. 对于“选项”，使用“手动”。<br>
  c. 使用 `FacebookSecret` 作为“名称”。 <br>
  可能会自动添加前缀 `B2C_1A_`。<br>
- d.单击“下一步”。 在“机密”框中，输入 developers.facebook.com 提供的 FacebookSecret，或输入 `0` 作为占位符。 *这不是 Facebook 应用 ID。* <br>
+ d. 在“机密”框中，输入 developers.facebook.com 提供的 FacebookSecret，或输入 `0` 作为占位符。 *这不是 Facebook 应用 ID。* <br>
  e. 使用“签名”作为“密钥用法”。 <br>
  f. 选择“创建”并确认创建。
 
@@ -95,7 +95,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
    * 选择“属性”。 <br>
    * 复制应用程序 ID 并保存以备后用。
 1. 选择“所需权限”。
-1. 选择“添加”。
+1. 选择 **添加** 。
 1. 选择“选择 API”。
 1. 搜索名称 IdentityExperienceFramework。 在结果中选择 IdentityExperienceFramework，然后单击“选择”。
 1. 选择“访问 IdentityExperienceFramework”旁边的复选框，然后单击“选择”。

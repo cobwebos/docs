@@ -1,22 +1,19 @@
 ---
 title: IoT 中心设备预配服务 - 自动预配的概念
 description: 本文提供使用 IoT 设备预配服务、IoT 中心和客户端 SDK 自动预配设备所要经历的阶段的概念性概述。
-services: iot-dps
-keywords: ''
 author: BryanLa
 ms.author: bryanla
-ms.date: 03/27/2018
+ms.date: 06/01/2018
 ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5ac8b6116eebb400c12d50de010b93bded268ff
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736400"
 ---
 # <a name="auto-provisioning-concepts"></a>自动预配的概念
 
@@ -33,7 +30,7 @@ ms.lasthandoff: 04/16/2018
 
 2. **设备登记** - 使设备预配服务实例将来识别尝试注册的设备的过程。 [登记](concepts-service.md#enrollment)是通过在预配服务中配置设备标识信息来实现的。可以针对单个设备进行“单独登记”，也可以针对多个设备进行“组登记”。 标识基于设备应该使用的[认证机制](concepts-security.md#attestation-mechanism)，使预配服务在注册过程中认证设备的真实性：
 
-   - **TPM**：配置为“单独登记”的设备标识基于 TPM 注册 ID 和公共认可密钥。 既然 TPM 是一种[规范]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/))，服务期望只会根据规范进行认证，而不考虑 TPM 实现方式（硬件或软件）如何。 有关基于 TPM 的认证的详细信息，请参阅[设备预配：使用 TPM 进行标识认证](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/)。 
+   - **TPM**：配置为“单独登记”的设备标识基于 TPM 注册 ID 和公共认可密钥。 既然 TPM 是一种[规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)，服务期望只会根据规范进行认证，而不考虑 TPM 实现方式（硬件或软件）如何。 有关基于 TPM 的认证的详细信息，请参阅[设备预配：使用 TPM 进行标识认证](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/)。 
 
    - **X509**：配置为“单独登记”或“组登记”的设备标识基于作为 .pem 或 .cer 文件上传到登记组件的 X.509 数字证书。
 
@@ -62,7 +59,7 @@ ms.lasthandoff: 04/16/2018
 
 下图汇总了设备自动预配期间的角色和操作顺序：
 <br><br>
-![设备的自动预配顺序](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png) 
+[![设备的自动预配顺序](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
 > （可选）制造商还可以使用设备预配服务 API（而不是通过操作员）执行“登记设备标识”操作。 有关此顺序和其他要素的详细讨论，请观看[自动将设备注册到 Azure IoT](https://myignite.microsoft.com/sessions/55087) 视频（从 41:00 标记处开始）

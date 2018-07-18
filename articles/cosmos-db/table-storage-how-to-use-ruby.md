@@ -1,31 +1,29 @@
 ---
 title: 如何通过 Ruby 使用 Azure 表存储或 Azure Cosmos DB 表 API | Microsoft Docs
-description: 使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。
+description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
 services: cosmos-db
-documentationcenter: ruby
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: 047cd9ff-17d3-4c15-9284-1b5cc61a3224
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: ruby
-ms.topic: article
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 19ffdab40b3032421612ef4ba1b840eeb0d2e62b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d1583001550f5f272f4070006a4a6ac3be000de6
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798264"
 ---
-# <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-ruby"></a>如何通过 Ruby 使用 Azure 表存储或 Azure Cosmos DB 表 API
+# <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>如何通过 Ruby 使用 Azure 表存储或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>概述
-本指南介绍了如何使用 Azure 表服务和 Azure Cosmos DB 表 API 执行常见方案。 示例是采用 Ruby 编写的，并使用了[用于 Ruby 的 Azure 存储表客户端库](https://github.com/azure/azure-storage-ruby/tree/master/table)。 涉及的方案包括创建和删除表、在表中插入和查询条目。
+本指南介绍如何使用 Azure 表服务和 Azure Cosmos DB 表 API 执行常见方案。 示例是采用 Ruby 编写的，并使用了[用于 Ruby 的 Azure 存储表客户端库](https://github.com/azure/azure-storage-ruby/tree/master/table)。 涉及的方案包括创建和删除表、在表中插入和查询条目。
 
 ## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
@@ -33,7 +31,7 @@ ms.lasthandoff: 04/16/2018
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>创建 Azure Cosmos DB 表 API 帐户
+### <a name="create-an-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="add-access-to-storage-or-azure-cosmos-db"></a>添加对存储或 Azure Cosmos DB 的访问权限
@@ -98,10 +96,10 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>更新实体
 可使用多种方法来更新现有实体：
 
-* **update_entity()：**通过替换来更新现有实体。
-* **merge_entity()：**通过将新属性值合并到现有实体来更新现有实体。
-* **insert_or_merge_entity()：**通过替换来更新现有实体。 如果不存在实体，将插入一个新实体。
-* **insert_or_replace_entity()：**通过将新属性值合并到现有实体来更新现有实体。 如果不存在实体，将插入一个新实体。
+* **update_entity()：** 通过替换来更新现有实体。
+* **merge_entity()：** 通过将新属性值合并到现有实体来更新现有实体。
+* **insert_or_merge_entity()：** 通过替换来更新现有实体。 如果不存在实体，将插入一个新实体。
+* **insert_or_replace_entity()：** 通过将新属性值合并到现有实体来更新现有实体。 如果不存在实体，将插入一个新实体。
 
 以下示例演示使用 update_entity() 更新实体：
 

@@ -10,22 +10,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 3c80ce6e221acb8905c00e6178dd2fec1f8816af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1b59409e43a23dd63a6697a44a20df079a751516
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866852"
 ---
-# <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>使用 Azure 堆栈中的 Azure CLI 2.0 使用 API 版本配置文件
+# <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 2.0 配合使用
 
-本文介绍从 Linux 和 Mac 客户端平台使用 Azure 命令行接口 (CLI) 管理 Azure Stack 开发工具包资源的整个过程。 
+可以按照这篇文章，若要将 Azure 命令行接口 (CLI) 设置为从 Linux、 Mac 和 Windows 客户端平台管理 Azure Stack 开发工具包资源中的步骤。
 
 ## <a name="install-cli"></a>安装 CLI
 
-接下来，登录到开发工作站并安装 CLI。 Azure Stack 需要 Azure CLI 2.0 版。 可以使用[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 一文中所述的步骤来安装它。 若要验证安装是否成功，请打开终端或命令提示符窗口，并运行以下命令：
+登录到开发工作站并安装 CLI。 Azure Stack 需要 Azure CLI 2.0 版。 可以使用[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 一文中所述的步骤来安装它。 若要验证安装是否成功，请打开终端或命令提示符窗口，并运行以下命令：
 
 ```azurecli
 az --version
@@ -35,27 +36,47 @@ az --version
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
 
-从 Azure Stack 运营商获取 Azure Stack CA 根证书，并信任该证书。 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。 如果从 Azure Stack 环境中创建的 Linux 计算机运行 CLI，请运行以下 bash 命令：
+1. 从 [Azure Stack 运营商](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)获取 Azure Stack CA 根证书，并信任该证书。 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
+
+2. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 需要安装 [pip](https://pip.pypa.io) 和 [certifi](https://pypi.org/project/certifi/) 模块。 可在 bash 提示符下使用以下 Python 命令：
+
+  ```bash  
+    python -c "import certifi; print(certifi.where())"
+  ```
+
+  记下证书位置。 例如，`~/lib/python3.5/site-packages/certifi/cacert.pem`。 具体的路径取决于安装的 Python 的 OS 和版本。
+
+### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>设置开发计算机在云中的路径
+
+如果从 Azure Stack 环境中创建的 Linux 计算机运行 CLI，请结合证书的路径运行以下 bash 命令。
 
 ```bash
-sudo cat /var/lib/waagent/Certificates.pem >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
 ```
 
-如果从 Azure Stack 环境外部的计算机运行 CLI，则必须先设置[与 Azure Stack 的 VPN 连接](azure-stack-connect-azure-stack.md)。 现在，请将前面导出的 PEM 证书复制到开发工作站，然后根据开发工作站的 OS 运行以下命令。
+### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>设置开发计算机在云外部的路径
 
-### <a name="linux"></a>Linux
+如果从计算机运行 CLI**外部**Azure Stack 环境：  
+
+1. 必须[与 Azure Stack 建立 VPN 连接](azure-stack-connect-azure-stack.md)。
+
+2. 复制从 Azure Stack 运营商获取的 PEM 证书，并记下文件的位置 (PATH_TO_PEM_FILE)。
+
+3. 根据开发工作站的 OS 运行以下命令。
+
+#### <a name="linux"></a>Linux
 
 ```bash
-sudo cat PATH_TO_PEM_FILE >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-### <a name="macos"></a>macOS
+#### <a name="macos"></a>macOS
 
 ```bash
-sudo cat PATH_TO_PEM_FILE >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-### <a name="windows"></a>Windows
+#### <a name="windows"></a>Windows
 
 ```powershell
 $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -88,7 +109,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
 ## <a name="get-the-virtual-machine-aliases-endpoint"></a>获取虚拟机别名终结点
 
-在使用 CLI 创建虚拟机之前，用户必须联系 Azure Stack 运营商，并获取虚拟机别名终结点 URI。 例如，Azure 使用以下 URI：https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json。 云管理员应使用 Azure Stack Marketplace 中提供的映像，为 Azure Stack 设置类似的终结点。 用户需将终结点 URI 传递给 `az cloud register` 命令的 `endpoint-vm-image-alias-doc` 参数，如以下部分所示。 
+在使用 CLI 创建虚拟机之前，用户必须联系 Azure Stack 运营商，并获取虚拟机别名终结点 URI。 例如，Azure 使用以下 URI：https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json。 云管理员应使用 Azure Stack 市场中提供的映像，为 Azure Stack 设置类似的终结点。 用户需将终结点 URI 传递给 `az cloud register` 命令的 `endpoint-vm-image-alias-doc` 参数，如以下部分所示。 
    
 
 ## <a name="connect-to-azure-stack"></a>连接到 Azure Stack
@@ -181,14 +202,14 @@ az group create \
 ## <a name="known-issues"></a>已知问题
 在 Azure Stack 中使用 CLI 时，必须注意一些已知问题：
 
-* Azure Stack 尚不支持 CLI 交互模式（例如 `az interactive` 命令）。
-* 若要获取 Azure Stack 中可用的虚拟机映像列表，请使用 `az vm images list --all` 命令，而不是 `az vm image list` 命令。 指定 `--all` 选项可确保响应只返回 Azure Stack 环境中可用的映像。 
-* Azure 中可用的虚拟机映像别名可能不适用于 Azure Stack。 使用虚拟机映像时，必须使用整个 URN 参数 (Canonical:UbuntuServer:14.04.3-LTS:1.0.0)，而不是映像别名。 此 URN 必须与派生自 `az vm images list` 命令的映像规范相匹配。
-* 默认情况下，CLI 2.0 使用“Standard_DS1_v2”作为默认的虚拟机映像大小。 但是，此大小目前在 Azure Stack 中不可用，因此，在创建虚拟机时需要显式指定 `--size` 参数。 可以使用 `az vm list-sizes --location <locationName>` 命令获取 Azure Stack 中可用的虚拟机大小列表。
-
+ - Azure Stack 尚不支持 CLI 交互模式（例如 `az interactive` 命令）。
+ - 若要获取 Azure Stack 中可用的虚拟机映像列表，请使用 `az vm images list --all` 命令，而不是 `az vm image list` 命令。 指定 `--all` 选项可确保响应只返回 Azure Stack 环境中可用的映像。
+ - Azure 中可用的虚拟机映像别名可能不适用于 Azure Stack。 使用虚拟机映像时，必须使用整个 URN 参数 (Canonical:UbuntuServer:14.04.3-LTS:1.0.0)，而不是映像别名。 此 URN 必须与派生自 `az vm images list` 命令的映像规范相匹配。
 
 ## <a name="next-steps"></a>后续步骤
 
 [使用 Azure CLI 部署模板](azure-stack-deploy-template-command-line.md)
+
+[为 Azure Stack 用户启用 Azure CLI（操作员）](..\azure-stack-cli-admin.md)
 
 [管理用户权限](azure-stack-manage-permissions.md)

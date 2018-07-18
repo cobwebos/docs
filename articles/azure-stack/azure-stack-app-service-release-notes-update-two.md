@@ -1,6 +1,6 @@
----
-title: Azure 堆栈上的应用服务更新 2 发行说明 |Microsoft 文档
-description: 了解什么是在更新中两个用于 Azure 堆栈上的 App Service、 已知的问题和下载更新的位置。
+﻿---
+title: 基于 Azure Stack 的应用服务 Update 2 发行说明 | Microsoft Docs
+description: 了解基于 Azure Stack 的应用服务 Update 2 的功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -15,31 +15,32 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 8e1790b7d0b3a210a9142fc8580ff8ed4d64311c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: be09773a1ce3e80547d9e5f0e9de2a2d9e093c60
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970911"
 ---
-# <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service 上 Azure 堆栈 update 2 发行说明
+# <a name="app-service-on-azure-stack-update-2-release-notes"></a>基于 Azure Stack 的应用服务 Update 2 发行说明
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-这些发行说明描述的改进和在 Azure App Service 中的修补程序，Azure 堆栈 Update 2 和任何已知的问题。 已知问题分为与部署、更新过程直接相关的问题，以及内部版本（安装后）的问题。
+这些发行说明介绍了基于 Azure Stack 的 Azure 应用服务 Update 2 中的改进和修复，以及任何已知问题。 已知问题分为与部署、更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]
-> 将 1804年更新应用于你的 Azure 堆栈集成系统，或在部署 Azure 应用程序服务 1.2 之前部署的最新的 Azure 堆栈开发工具包。
+> 请将 1804 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.2。
 >
 >
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure 堆栈 Update 2 生成号上的应用程序服务已**72.0.13698.10**
+基于 Azure Stack 的应用服务 Update 2 的生成号为 **72.0.13698.10**
 
 ### <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
-> 基于 Azure Stack 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为目前在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新的使用者是 **\*。 sso.appservice。\<区域\>。\<domainname\>。\<扩展\>**
+> 基于 Azure Stack 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为目前在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新的使用者是 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
 >
 >
 
@@ -47,14 +48,14 @@ Azure 堆栈 Update 2 生成号上的应用程序服务已**72.0.13698.10**
 
 ### <a name="new-features-and-fixes"></a>新功能和修复
 
-Azure 堆栈 Update 2 上的 azure 应用程序服务包括以下改进和修补程序：
+基于 Azure Stack 的 Azure 应用服务 Update 2 包含以下改进和修复：
 
 - 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack 门户 SDK 版本一致。
 
-- 更新到核心服务，以提高可靠性和错误消息启用更容易诊断常见的问题。
+- 针对核心服务的更新，用于提高可靠性和错误消息传递，以便更轻松地诊断常见问题。
 
 - **针对以下应用程序框架和工具的更新**：
-  - 添加的.Net Framework 4.7.1
+  - 添加了 .Net Framework 4.7.1
   - 增加了 **Node.JS** 版本：
     - NodeJS 6.12.3
     - NodeJS 8.9.4
@@ -62,39 +63,39 @@ Azure 堆栈 Update 2 上的 azure 应用程序服务包括以下改进和修补
     - NodeJS 8.11.1
   - 增加了 **NPM** 版本：
     - 5.6.0
-  - 更新.NET Core 组件可以使用在公共云中的 Azure App Service 一致。
-  - 更新的 Kudu
+  - 更新了 .Net Core 组件，使其与公有云中的 Azure 应用服务保持一致。
+  - 更新了 Kudu
 
-- 部署的自动交换槽功能已启用-[配置自动交换](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing#configure-auto-swap)
+- 启用了部署槽位自动交换功能 - [配置自动交换](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing#configure-auto-swap)
 
-- 在生产功能已启用-中的测试[在生产中测试的简介](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)
+- 启用了在生产中测试功能 - [在生产中测试简介](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)
 
-- 已启用-azure 函数代理[工作与 Azure 函数代理](https://docs.microsoft.com/en-us/azure/azure-functions/functions-proxies)
+- 启用了 Azure Functions 代理 - [使用 Azure Functions 代理](https://docs.microsoft.com/azure/azure-functions/functions-proxies)
 
-- App Service 管理扩展 UX 支持添加：
-  - 密钥轮换
-  - 证书旋转
-  - 系统凭据旋转
-  - 连接字符串旋转
+- 针对以下项添加了应用服务管理扩展 UX 支持：
+  - 机密轮换
+  - 证书轮换
+  - 系统凭据轮换
+  - 连接字符串轮换
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
 
-- 工作人员都无法访问文件服务器时在现有的虚拟网络中部署应用程序服务和文件服务器才私有网络上可用。
+- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。
 
-如果你选择要部署到现有的虚拟网络与内部 IP 地址连接到你的文件服务器，必须添加出站安全规则，启用辅助子网和文件服务器之间的 SMB 流量。 若要执行此操作，请转到在管理门户中 WorkersNsg 并添加出站安全规则具有以下属性：
- * 源： 任何
- * 源端口范围: *
- * 目标： IP 地址
- * 目标 IP 地址范围： Ip 范围为文件服务器
- * 目标端口范围： 445
- * 协议： TCP
- * 操作： 允许
- * 优先级： 700
- * 名称： Outbound_Allow_SMB445
+如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
+ * 源：任何
+ * 源端口范围：*
+ * 目标：IP 地址
+ * 目标 IP 地址范围：文件服务器的 IP 范围
+ * 目标端口范围：445
+ * 协议：TCP
+ * 操作：允许
+ * 优先级：700
+ * 名称：Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
 
-中的文档，请参阅[Azure 堆栈 1804年发行说明](azure-stack-update-1804.md)
+请参阅 [Azure Stack 1804 发行说明](azure-stack-update-1804.md)中的文档
 
 ## <a name="next-steps"></a>后续步骤
 

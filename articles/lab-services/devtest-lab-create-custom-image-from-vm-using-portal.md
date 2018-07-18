@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c98918dcd08c2e8ec72cc995c633b8320da8057
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22f1579b2df2acdc736ed4c1d5cee64d096c320a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635331"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>从 VM 创建自定义映像
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 05/07/2018
 
     ![创建自定义映像菜单项](./media/devtest-lab-create-template/create-custom-image.png)
 
-1. 在“自定义映像”窗格中，输入自定义映像的名称和说明。 创建 VM 时，此信息显示在基项列表中。
+1. 在“自定义映像”窗格中，输入自定义映像的名称和说明。 创建 VM 时，此信息显示在基项列表中。 自定义映像将包含 OS 磁盘和所有附加到虚拟机的数据磁盘。
 
     ![“创建自定义映像”窗格](./media/devtest-lab-create-template/create-custom-image-blade.png)
 

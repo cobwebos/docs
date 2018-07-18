@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用自定义策略添加 Twitter 作为 OAuth1 标识提供者
-description: 使用 OAuth1 协议将 Twitter 用作标识提供者
+title: 在 Azure Active Directory B2C 中使用自定义策略将 Twitter 添加为 OAuth1 标识提供者 | Microsoft Docs
+description: 使用 OAuth1 协议将 Twitter 用作标识提供者。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
-ms.openlocfilehash: 4a7cc552f49877874dc173a47efe22873d5aeeed
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 786f0dfd0cf3cf2e9ab0d16e26811fabd6bfc17c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440934"
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Twitter 作为 OAuth1 标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -38,9 +38,9 @@ ms.lasthandoff: 03/23/2018
 
     b. 在“网站”框中，粘贴 https://login.microsoftonline.com。 
 
-    c. 在“回调 URL”框中，粘贴 https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp。 将 {*tenant*} 替换为你自己的租户名称（例如 contosob2c.onmicrosoft.com）。 请务必使用 HTTPS 方案。 
+    c. 4. 对于“回调 URL”，输入 `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`。 确保将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com），将 **{policyId}** 替换为策略 ID（例如 b2c_1_policy）。  **回调 URL 必须采用全小写形式。** 你应该为使用 Twitter 登录的所有策略添加回调 URL。 如果在应用程序中使用它，请确保使用 `b2clogin.com` 而不是 ` login.microsoftonline.com`。
 
-    d.单击“下一步”。 在页面底部，阅读并接受条款，然后选择“创建 Twitter 应用程序”。
+    d. 在页面底部，阅读并接受条款，然后选择“创建 Twitter 应用程序”。
 
     ![Twitter 帐户 - 添加新应用](media/active-directory-b2c-custom-setup-twitter-idp/adb2c-ief-setup-twitter-idp-new-app2.png)
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/23/2018
 
 2. 若要查看租户中的可用密钥，请选择“策略密钥”。
 
-3. 选择“添加”。
+3. 选择 **添加** 。
 
 4. 在“选项”框中，选择“手动”。
 

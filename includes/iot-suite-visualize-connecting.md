@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eca35141544e8ea451dfc7471a83e3e1e980360
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 5702c6e9c9d75c6cccb82f1c57684ef7b9898c34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34307611"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34665987"
 ---
 ## <a name="view-device-telemetry"></a>查看设备遥测数据
 
@@ -33,9 +33,9 @@ ms.locfileid: "34307611"
 
 ## <a name="act-on-your-device"></a>对设备执行操作
 
-若要对设备调用方法，请使用远程监视解决方案中的“设备”页。 例如，在远程监视解决方案中，**冷却器**设备实现了 **FirmwareUpdate** 方法。
+若要对设备调用方法，请使用远程监视解决方案中的“设备”页。 例如，在远程监视解决方案中，冷却器设备实现了 FirmwareUpdate 方法。
 
-1. 选择“设备”可导航到解决方案中的“设备”页。
+1. 选择“设备”，导航到解决方案中的“设备”页面。
 
 1. 在“设备”页上的设备列表中选择已预配的设备：
 
@@ -43,7 +43,7 @@ ms.locfileid: "34307611"
 
 1. 若要显示可在设备上调用的方法列表，请选择“作业”，然后选择“运行方法”。 若要计划在多个设备上运行的作业，可以在列表中选择多个设备。 “作业”面板会显示普遍适用于所有选定设备的方法类型。
 
-1. 选择 **FirmwareUpdate**，将作业名称设置为 **UpdatePhysicalChiller**。 将“固件版本”设置为 **2.0.0**，将“固件 URI”设置为 **http://contoso.com/updates/firmware.bin**，然后选择“应用”：
+1. 选择 FirmwareUpdate，将作业名称设置为 UpdatePhysicalChiller。 将“固件版本”设置为 **2.0.0**，将“固件 URI”设置为 **http://contoso.com/updates/firmware.bin**，然后选择“应用”：
 
     ![计划固件更新](media/iot-suite-visualize-connecting/deviceschedule.png)
 

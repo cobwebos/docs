@@ -17,6 +17,38 @@
           tocHref: /java/azure/spring-framework/
           topicHref: /java/azure/spring-framework/
 - name: Azure
+  tocHref: /powershell/
+  topicHref: /azure/index
+  items:
+    - name: Key Vault
+      tocHref: /powershell/module/
+      topicHref: /azure/key-vault/
+      items:
+        - name: Key Vault PowerShell cmdlet
+          tocHref: /powershell/module/azurerm.keyvault/
+          topicHref: /powershell/module/azurerm.keyvault/
+- name: Azure
+  tocHref: /cli/
+  topicHref: /azure/index
+  items:
+    - name: Key Vault
+      tocHref: /cli/azure/
+      topicHref: /azure/key-vault/
+      items:
+        - name: Key Vault CLI 参考
+          tocHref: /cli/azure/keyvault/
+          topicHref: /azure/key-vault/
+          items:
+            - name: 证书
+              tocHref: /cli/azure/keyvault/certificate
+              topicHref: /azure/key-vault/
+            - name: 密钥
+              tocHref: /cli/azure/keyvault/key
+              topicHref: /azure/key-vault/
+            - name: 机密
+              tocHref: /cli/azure/keyvault/secret
+              topicHref: /azure/key-vault/
+- name: Azure
   tocHref: /sccm/
   topicHref: /azure/index
   items:

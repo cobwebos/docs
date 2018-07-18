@@ -1,8 +1,8 @@
 ---
-title: "访问防火墙后的密钥保管库 | Microsoft 文档"
-description: "了解如何从防火墙后的应用程序访问 Azure 密钥保管库"
+title: 访问防火墙后的密钥保管库 | Microsoft 文档
+description: 了解如何从防火墙后的应用程序访问 Azure 密钥保管库
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: ad31e869d998d29d403ff97c17150c5078ce856d
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d017c0d9940288cb5eeaa45694b324f93b9bb144
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736242"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙保护下的 Azure 密钥保管库
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>问：我的密钥保管库客户端应用程序需位于防火墙之后。 我应该打开哪些端口、主机或 IP 地址才可启用对密钥保管库的访问？
@@ -26,7 +27,7 @@ ms.lasthandoff: 01/17/2018
 
 * 通过 Azure Active Directory (Azure AD) 进行身份验证。
 * Azure 密钥保管库的管理。 这包括通过 Azure 资源管理器创建、读取、更新、删除和设置访问策略。
-* 通过密钥保管库特定的终结点（例如 [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)），访问和管理密钥保管库本身存储的对象（密钥和密码）。  
+* 通过密钥保管库特定的终结点（例如 [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)），访问和管理密钥保管库本身存储的对象（密钥和机密）。  
 
 根据配置和环境，会有一些不同。   
 
@@ -60,7 +61,7 @@ ms.lasthandoff: 01/17/2018
 | 操作包括对密钥的加密操作；创建、读取、更新和删除密钥和密码；设置或获取密钥保管库对象（密钥或密码）上的标记和其他属性 |**全局：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |
 
 ## <a name="ip-address-ranges"></a>IP 地址范围
-密钥保管库服务使用其他 Azure 资源，如 PaaS 基础结构。 因此，不可能提供密钥保管库服务终结点在任何特定时间具有的 IP 地址的特定范围。 如果防火墙仅支持 IP 地址范围，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)文档。 对于身份验证和标识 (Azure Active Directory)，应用程序必须能够连接到[身份验证和标识地址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的终结点。
+密钥保管库服务使用其他 Azure 资源，如 PaaS 基础结构。 因此，不可能提供密钥保管库服务终结点在任何特定时间具有的 IP 地址的特定范围。 如果防火墙仅支持 IP 地址范围，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)文档。 身份验证和标识 (Azure Active Directory) 是一项全球性服务，可能会故障转移到其他区域或移动流量，恕不另行通知。 在这种情况下，[身份验证和标识 IP 地址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)中列出的所有 IP 范围都应添加到防火墙中。
 
 ## <a name="next-steps"></a>后续步骤
 如果对密钥保管库有任何疑问，请访问 [Azure 密钥保管库论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)。

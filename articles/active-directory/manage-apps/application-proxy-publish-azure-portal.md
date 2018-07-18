@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 6ab0e36fc0b4bd3f04d75499b6dfe734a9f72d4d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 8eb629396629a92503907439a64cca9d70747010
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594104"
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布应用程序
 
@@ -29,6 +30,9 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
 如果不熟悉应用程序代理，可通过[如何提供对本地应用程序的安全远程访问](application-proxy.md)一文详细了解此功能。
 
+## <a name="before-you-begin"></a>开始之前
+
+本文假定你已安装并注册连接器。 如果仍需执行这些步骤，请参阅[开始使用应用程序代理并安装连接器](application-proxy-enable.md)。
 
 ## <a name="publish-an-on-premises-app-for-remote-access"></a>发布进行远程访问的本地应用
 

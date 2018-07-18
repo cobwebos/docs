@@ -51,6 +51,8 @@
           href: tutorial-prepare-azure.md
         - name: 将本地计算机迁移到 Azure
           href: migrate-tutorial-on-premises-azure.md
+        - name: 将 Windows Server 2008、2008 R2 服务器迁移到 Azure
+          href: migrate-tutorial-windows-server-2008.md
         - name: 将 AWS 实例迁移到 Azure
           href: migrate-tutorial-aws-azure.md
         - name: 将 Azure VM 迁移到另一区域
@@ -101,6 +103,14 @@
               href: hyper-v-vmm-secondary-support-matrix.md
             - name: Hyper-V 到辅助站点体系结构
               href: hyper-v-vmm-architecture.md
+    - name: 网络
+      items:
+        - name: 将 Azure 流量管理器与 Site Recovery 配合使用
+          href: concepts-traffic-manager-with-site-recovery.md
+        - name: 将 ExpressRoute 与 Site Recovery 配合使用
+          href: concepts-expressroute-with-site-recovery.md
+        - name: 将网络安全组与 Site Recovery 配合使用
+          href: concepts-network-security-group-with-site-recovery.md
     - name: 应用的灾难恢复
       href: site-recovery-workload.md
     - name: 关于恢复计划
@@ -109,11 +119,7 @@
       href: migrate-overview.md
     - name: 关于将基于角色的访问控制与 Site Recovery 配合使用
       href: site-recovery-role-based-linked-access-control.md
-    - name: 关于将 Azure 流量管理器与 Site Recovery 配合使用
-      href: concepts-traffic-manager-with-site-recovery.md
-    - name: 关于将 ExpressRoute 与 Site Recovery 配合使用
-      href: concepts-expressroute-with-site-recovery.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: site-recovery-faq.md
 - name: 操作方法指南
   items:
@@ -231,6 +237,8 @@
               href: vmware-azure-manage-configuration-server.md
             - name: 管理配置服务器以进行物理服务器复制
               href: physical-manage-configuration-server.md
+            - name: 管理进程服务器
+              href: vmware-azure-manage-process-server.md
             - name: 管理 vCenter 服务器
               href: vmware-azure-manage-vcenter.md
             - name: 删除服务器并禁用保护

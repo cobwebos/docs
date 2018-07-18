@@ -1,28 +1,24 @@
 ---
-title: 使用 Azure Data Lake U-SQL SDK 缩放 U-SQL 本地运行和测试 | Microsoft Docs
-description: 了解如何使用 Azure Data Lake U-SQL SDK 通过命令行和本地工作站上的编程接口缩放 U-SQL 作业本地运行和测试。
+title: 使用 Azure Data Lake U-SQL SDK 在本地运行和测试 U-SQL 作业
+description: 了解如何使用命令行和本地工作站上的编程接口在本地运行和测试 U-SQL 作业。
 services: data-lake-analytics
-documentationcenter: ''
-author: ''
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/01/2017
+author: yanacai
 ms.author: yanacai
-ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 03/01/2017
+ms.openlocfilehash: 11a2bfdcda09a071667cc034ef1ff42794b73a33
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737065"
 ---
-# <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 缩放 U-SQL 本地运行和测试
+# <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 运行和测试 U-SQL
 
-开发 U-SQL 脚本时，在将其提交到云之前通常需要在本地运行并测试 U-SQL 脚本。 针对此方案，Azure Data Lake 提供了名为 Azure Data Lake U-SQL SDK 的 Nuget 包，通过它可轻松地缩放 U-SQL 本地运行和测试。 还能将此 U-SQL 测试与 CI（持续集成）系统集成，以自动执行编译和测试。
+开发 U-SQL 脚本时，在将其提交到云之前通常需要在本地运行并测试 U-SQL 脚本。 针对此方案，Azure Data Lake 提供了名为“Azure Data Lake U-SQL SDK”的 Nuget 包，通过它可轻松地缩放 U-SQL 运行和测试。 还能将此 U-SQL 测试与 CI（持续集成）系统集成，以自动执行编译和测试。
 
 如果想了解如何通过 GUI 工具手动本地运行和调试 U-SQL 脚本，则可使用针对 Visual Studio 的 Azure Data Lake 工具以实现此操作。 可从[此处](data-lake-analytics-data-lake-tools-local-run.md)了解详细信息。
 
@@ -212,12 +208,12 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 
 以下是用于 **execute** 的可选参数：
 
-|参数|说明|
-|--------|-----------|
-|-DataRoot [default value '']|元数据执行的数据根。 默认为 **LOCALRUN_DATAROOT** 环境变量。|
-|-MessageOut [default value '']|将控制台上的消息转储到文件。|
-|-Parallel [default value '1']|指示使用指定的并行度运行生成的本地运行步骤。|
-|-Verbose [default value 'False']|指示显示运行时的详细输出。|
+|参数|默认值|说明|
+|--------|-------------|-----------|
+|-DataRoot | '' |元数据执行的数据根。 默认为 **LOCALRUN_DATAROOT** 环境变量。|
+|-MessageOut | '' |将控制台上的消息转储到文件。|
+|-Parallel | '1' |指示使用指定的并行度运行生成的本地运行步骤。|
+|-Verbose | 'False' |指示显示运行时的详细输出。|
 
 下面是用法示例：
 

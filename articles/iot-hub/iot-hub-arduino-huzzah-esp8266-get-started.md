@@ -1,25 +1,20 @@
 ---
 title: ESP8266 到云 - 将 Feather HUZZAH ESP8266 连接到 Azure IoT 中心 | Microsoft Docs
 description: 在本教程中了解如何设置 Adafruit Feather HUZZAH ESP8266 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
-keywords: ''
-ms.assetid: c505aacf-89a8-40ed-a853-493b75bec524
+manager: nasing
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: b850bb25d7a6d06a2d0f55ed915321badf76bb39
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3431cc729550c0dd6eae8f332e2f8996cde9b02f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235670"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>将 Adafruit Feather HUZZAH ESP8266 连接到云中的 Azure IoT 中心
 

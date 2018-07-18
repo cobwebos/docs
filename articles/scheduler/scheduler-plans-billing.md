@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30837432"
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Azure 计划程序中的计划和计费方式
 ## <a name="job-collection-plans"></a>作业集合计划

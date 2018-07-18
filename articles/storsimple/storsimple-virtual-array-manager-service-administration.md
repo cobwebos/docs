@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure StorSimple Manager 虚拟阵列管理 | Microsoft Docs"
-description: "了解如何在 Azure 门户中使用 StorSimple Device Manager 服务管理本地 StorSimple 虚拟阵列。"
+title: Microsoft Azure StorSimple Manager 虚拟阵列管理 | Microsoft Docs
+description: 了解如何在 Azure 门户中使用 StorSimple Device Manager 服务管理本地 StorSimple 虚拟阵列。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 958244a5-f9f5-455e-b7ef-71a65558872e
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109895"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列
 ![安装流程](./media/storsimple-virtual-array-manager-service-administration/manage4.png)

@@ -1,8 +1,8 @@
 ---
-title: "通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署 | Microsoft Docs"
-description: "通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署"
+title: 通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署 | Microsoft Docs
+description: 通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: tomarcher
 manager: routlaw
 tags: azure-cloud-shell
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386514"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署
 本文逐步讲解如何使用 [Terraform AzureRM 提供程序](https://www.terraform.io/docs/providers/azurerm/index.html)创建资源组。 

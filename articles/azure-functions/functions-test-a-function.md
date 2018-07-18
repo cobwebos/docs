@@ -1,13 +1,13 @@
 ---
-title: "测试 Azure Functions | Microsoft Docs"
-description: "使用 Postman、cURL 和 Node.js 测试 Azure functions。"
+title: 测试 Azure Functions | Microsoft Docs
+description: 使用 Postman、cURL 和 Node.js 测试 Azure functions。
 services: functions
 documentationcenter: na
-author: wesmc7777
+author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions，函数，事件处理，webhook，动态计算，无服务体系结构，测试"
+editor: ''
+tags: ''
+keywords: Azure Functions，函数，事件处理，webhook，动态计算，无服务体系结构，测试
 ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: functions
 ms.devlang: multiple
@@ -15,13 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: wesmc
+ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41796a8cdde0756e5157ba276463a56b07679d04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4f6bf89ec5c83a497666a8a410a156c5f9bb359
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083239"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 

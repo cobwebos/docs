@@ -26,8 +26,10 @@
 4. 安装 Intel MPI 库。 从 Intel [购买和下载](https://software.intel.com/intel-mpi-library/)库或下载[免费评估版本](https://registrationcenter.intel.com/en/forms/?productid=1740)。
 
   ```bash
- wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/11595/l_mpi_2017.3.196.tgz
-   ```
+  wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
+  ```
+ 
+ 仅支持 Intel MPI 5.x 运行时。
  
  有关安装步骤，请参阅 [Intel MPI 库安装指南](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)。
 

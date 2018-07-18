@@ -1,11 +1,11 @@
 ---
-title: "常见的云服务管理任务 | Microsoft Docs"
-description: "了解如何在 Azure 门户中管理云服务。 这些示例使用 Azure 门户。"
+title: 常见的云服务管理任务 | Microsoft Docs
+description: 了解如何在 Azure 门户中管理云服务。 这些示例使用 Azure 门户。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121189"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 门户中管理云服务
 在 Azure 门户的“云服务”区域中，可以：

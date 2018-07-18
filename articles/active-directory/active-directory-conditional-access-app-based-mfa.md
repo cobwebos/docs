@@ -8,19 +8,20 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: protection
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 475b0229b9e627a56b02d2299ee2e5400aa0ede1
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0a2cddec1308b96b960cd0bbc5ccae9fd1a1a9a7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156103"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448906"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>快速入门：要求使用 Azure Active Directory 条件访问对特定应用进行 MFA 
 
@@ -41,8 +42,18 @@ ms.locfileid: "34156103"
 
 - **对 Azure AD Premium 版本的访问权限**：Azure AD 条件访问是一项 Azure AD Premium 功能。 
 
-- **名为 Isabella Simonsen 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](add-users-azure-active-directory.md#add-cloud-based-users)。
+- **名为 Isabella Simonsen 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](fundamentals/add-users-azure-active-directory.md#add-cloud-based-users)。
 
+
+## <a name="test-your-sign-in"></a>测试登录
+
+此步骤的目标是在没有条件访问策略的情况下获得登录体验的印象。
+
+**若要初始化环境，请执行以下操作：**
+
+1. 以 Isabella Simonsen 身份登录到 Azure 门户。
+
+2. 注销。
 
 
 ## <a name="create-your-conditional-access-policy"></a>创建条件访问策略 
@@ -68,7 +79,7 @@ ms.locfileid: "34156103"
 
 **若要配置条件访问策略，请执行以下操作：**
 
-1. 以全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
+1. 以全局管理员、安全管理员或条件访问管理员的身份登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在 Azure 门户的左侧导航栏中，单击“Azure Active Directory”。 
 
@@ -198,7 +209,7 @@ ms.locfileid: "34156103"
 
 当不再需要时，删除测试用户和条件访问策略：
 
-- 如果不知道如何删除 Azure AD 用户，请参阅[从 Azure AD 中删除用户](add-users-azure-active-directory.md#delete-users-from-azure-ad)。
+- 如果不知道如何删除 Azure AD 用户，请参阅[从 Azure AD 中删除用户](fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad)。
 
 - 若要删除策略，请选择该策略，然后在快速访问工具栏中单击“删除”。
 
@@ -207,5 +218,6 @@ ms.locfileid: "34156103"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关条件性访问的详细信息，请参阅 [Azure Active Directory 条件性访问](active-directory-conditional-access-azure-portal.md)。
-
+> [!div class="nextstepaction"]
+> [需要接受使用条款](./active-directory-conditional-access-tou.md)
+> [检测到会话风险时阻止访问](./active-directory-conditional-access-app-sign-in-risk.md)

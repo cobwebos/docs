@@ -1,25 +1,19 @@
 ---
-title: 监视 Azure 应用程序和资源 | Microsoft Docs
+title: 监视 Azure 应用程序和资源
 description: 适用于 Azure 服务和应用程序的完整监视策略所涉及的 Microsoft 服务及功能的概述。
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 1b962c74-8d36-4778-b816-a893f738f92d
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: overview
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.component: ''
+ms.openlocfilehash: e6adcc136c273210cc40d23ed2cb177287654005
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777546"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265126"
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>监视 Azure 应用程序和资源
 
@@ -118,9 +112,9 @@ Application Insights 和 Azure 安全中心将数据存储在 Log Analytics 数�
 
 [网络观察程序](../network-watcher/network-watcher-monitoring-overview.md)为 Azure 中的不同网络方案提供基于方案的监视和诊断。 它将数据存储在 Azure 指标和诊断中，供将来进行分析。 它可以与以下解决方案配合使用，监视网络的各个方面。
 
-[网络性能监视器 (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) 是一种基于云的网络监视解决方案，用于监视公有云、数据中心和本地环境之间的连接。
+[网络性能监视器 (NPM)](../log-analytics/log-analytics-network-performance-monitor.md) 是一种基于云的网络监视解决方案，用于监视公有云、数据中心和本地环境之间的连接。
 
-[ExpressRoute 监视器](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/)是一种 NPM 功能，用于通过 Azure ExpressRoute 线路监视端到端连接和性能。
+[ExpressRoute 监视器](../expressroute/how-to-npm.md)是一种 NPM 功能，用于通过 Azure ExpressRoute 线路监视端到端连接和性能。
 
 [DNS Analytics](../log-analytics/log-analytics-dns.md) 是一种解决方案，可以根据 DNS 服务器提供与安全、性能和操作相关的见解。
 

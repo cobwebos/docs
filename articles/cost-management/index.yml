@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure 成本管理文档"
+title: Azure 成本管理文档
 metadata:
-  title: "成本管理文档 - 教程和 API 参考 | Microsoft Docs"
-  description: "Azure 成本管理是一个多云成本管理解决方案，可帮助你使用 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。"
+  title: 成本管理文档 - 教程和 API 参考 | Microsoft Docs
+  description: Azure 成本管理是一个多云成本管理解决方案，可帮助你使用 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。
   services: cost-management
   author: bandersmsft
   manager: carmonm
@@ -18,29 +18,30 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 03/16/2018
+  ms.locfileid: "29935326"
 abstract:
-  description: "Cloudyn（一家 Microsoft 子公司）授权的 Azure 成本管理是一个多云成本管理解决方案，可帮助你最佳地利用并管理 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。"
+  description: Cloudyn（一家 Microsoft 子公司）授权的 Azure 成本管理是一个多云成本管理解决方案，可帮助你最佳地利用并管理 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解如何将 Azure 协议或订阅信息注册到成本管理并开始查看成本数据。"
+    text: 了解如何将 Azure 协议或订阅信息注册到成本管理并开始查看成本数据。
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: "查看成本数据"
+      text: 查看成本数据
       href: quick-register-azure-sub
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何使用成本管理查看用量与成本、主动管理成本、预测开支以及优化成本。"
+    text: 了解如何使用成本管理查看用量与成本、主动管理成本、预测开支以及优化成本。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-review-usage\">查看用量和成本以检测异常和效率</a>"
-    - html: "<a href=\"tutorial-forecast-spending\">预测将来的支出</a>"
-    - html: "<a href=\"tutorial-manage-costs\">根据成本分配和 Showback 与 Chargeback 报表管理成本</a>"
-    - html: "<a href=\"tutorial-optimize-reserved-instances\">优化保留实例</a>"
-    - html: "<a href=\"tutorial-user-access\">分配对成本管理数据的访问权限</a>"
+    - html: <a href="tutorial-review-usage">查看用量和成本以检测异常和效率</a>
+    - html: <a href="tutorial-forecast-spending">预测将来的支出</a>
+    - html: <a href="tutorial-manage-costs">根据成本分配和 Showback 与 Chargeback 报表管理成本</a>
+    - html: <a href="tutorial-optimize-reserved-instances">优化保留实例</a>
+    - html: <a href="tutorial-user-access">分配对成本管理数据的访问权限</a>

@@ -4,7 +4,7 @@ description: 本文讨论 Azure Active Directory (Azure AD) 无缝 SSO 和 GDPR 
 services: active-directory
 keywords: 什么是 Azure AD Connect, GDPR, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bffa5a3aa57c5b01e3361bc6fc6b284348707800
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 50c97ce7a492c934e15634622d86bf587ffb3fb7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149521"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915718"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>用户隐私和 Azure AD 无缝单一登录
 
@@ -28,11 +29,11 @@ ms.locfileid: "32149521"
 ## <a name="overview"></a>概述
 
 
-Azure AD 无缝 SSO 创建可包含 EUII 的以下日志类型：
+Azure AD 无缝 SSO 创建可包含个人数据的以下日志类型： 
 
 - Azure AD Connect 跟踪日志文件。
 
-可通过两种方式使无缝 SSO 实现用户隐私符合性：
+通过两种方式改善无缝 SSO 的用户隐私：
 
 1.  根据请求提取用户的数据以及从安装项中删除该用户的数据。
 2.  确保数据保留时长均不超过 48 小时。

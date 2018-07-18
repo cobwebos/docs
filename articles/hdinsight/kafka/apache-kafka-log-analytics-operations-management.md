@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32772256"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>分析 HDInsight 上 Apache Kafka 的日志
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 05/03/2018
     >
     > * HDInsight 群集名称。
     > * 用于 Log Analytics 的工作区 ID。 可以在 Log Analytics 工作区中找到工作区 ID。
-    > * 用于 Log Analytics 连接的主密钥。 若要查找主密钥，请依次选择 Log Analytics 实例和 __OMS 门户__。 在 OMS 门户中，依次选择__“设置”__、__“已连接的源”__和__“Linux 服务器”__。
+    > * 用于 Log Analytics 连接的主密钥。 若要查找主密钥，请依次选择 Log Analytics 实例和 __OMS 门户__。 在 OMS 门户中，依次选择 __“设置”__、__“已连接的源”__ 和 __“Linux 服务器”__。
 
 
 > [!IMPORTANT]
@@ -49,7 +50,7 @@ ms.lasthandoff: 05/03/2018
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 Log Analytics 工作区。
 
-2. 选择__“日志搜索”__。 从此处可搜索从 Kafka 所收集的数据。 一下是一些示例搜索：
+2. 选择 __“日志搜索”__。 从此处可搜索从 Kafka 所收集的数据。 一下是一些示例搜索：
 
     * 磁盘使用情况：`Perf | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)`
 

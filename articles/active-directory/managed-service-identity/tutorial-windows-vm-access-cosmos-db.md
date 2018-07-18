@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
-ms.author: arluca
-ms.openlocfilehash: d04bfe601760dcbf832aeec0cc66d8e1eda51178
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: daveba
+ms.openlocfilehash: ed1aff411ae5446688fe717ddc4570ea756c4c1e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304335"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904265"
 ---
 # <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>教程：使用 Windows VM MSI 访问 Azure Cosmos DB
 
@@ -210,4 +210,9 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 MSI 的概述，请参阅[托管服务标识概述](overview.md)。
+在本教程中，你学习了如何创建 Windows 托管服务标识来访问 Cosmos DB。  若要详细了解 Cosmos DB，请参阅：
+
+> [!div class="nextstepaction"]
+>[Azure Cosmos DB 概述](/azure/cosmos-db/introduction)
+
+

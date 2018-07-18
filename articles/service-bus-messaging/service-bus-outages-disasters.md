@@ -1,32 +1,27 @@
 ---
-title: "使 Azure 服务总线应用程序免受服务总线中断和灾难影响 | Microsoft Docs"
-description: "保护应用程序免受潜在服务总线故障影响的技术。"
+title: 使 Azure 服务总线应用程序免受服务总线中断和灾难影响 | Microsoft Docs
+description: 保护应用程序免受潜在服务总线故障影响的技术。
 services: service-bus-messaging
-documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: fd9fa8ab-f4c4-43f7-974f-c876df1614d4
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1d960349b50e2618365fd085cba7b3e55fa53874
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301710"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 
-任务关键型应用程序必须连续运行，即使是在计划外中断或灾难发生时。 本主题介绍可用于保护服务总线应用程序免受潜在的服务中断和灾难影响的技术。
+任务关键型应用程序必须连续运行，即使是在计划外中断或灾难发生时。 本文介绍可用于保护服务总线应用程序免受潜在的服务中断和灾难影响的技术。
 
 中断定义为 Azure 服务总线暂时不可用。 中断会影响服务总线的一些组件，例如消息存储空间，甚至整个数据中心。 问题解决后，服务总线将恢复可用。 通常情况下，中断不会导致消息或其他数据丢失。 组件故障的一个示例是特定的消息存储空间不可用。 数据中心范围中断的示例有数据中心电源故障或数据中心网络交换机故障。 中断可能会持续几分钟到几天的时间。
 
-灾难定义为服务总线缩放单位或数据中心永久丢失。 数据中心可能会也可能不会恢复可用。 通常，灾难将导致消息或其他数据的部分或全部丢失。 灾难的示例包括火灾、洪灾或地震。
+灾难定义为服务总线缩放单元或数据中心永久丢失。 数据中心可能会也可能不会恢复可用。 通常，灾难将导致消息或其他数据的部分或全部丢失。 灾难的示例包括火灾、洪灾或地震。
 
 ## <a name="current-architecture"></a>当前体系结构
 服务总线使用多个消息存储空间来存储发送到队列或主题的消息。 将未分区的队列或主题分配到一个消息存储空间。 如果此消息存储空间不可用，则针对该队列或主题的所有操作将都失败。
@@ -34,7 +29,9 @@ ms.lasthandoff: 02/01/2018
 所有服务总线消息传送实体（队列、主题、中继）都位于同一服务命名空间中，它隶属于数据中心。 当前，[服务总线支持命名空间级别的异地灾难恢复和异地复制](service-bus-geo-dr.md)。
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>保护队列和主题免受消息存储故障的影响
-将未分区的队列或主题分配到一个消息存储空间。 如果此消息存储空间不可用，则针对该队列或主题的所有操作将都失败。 另一方面，分区的队列包括多个片段。 每个片段存储在不同的消息存储空间中。 当向分区的队列或主题发送消息时，服务总线会将该消息分配到其中一个片段。 如果相应的消息存储空间不可用，则服务总线会将消息写入另一片段（如有可能）。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
+将未分区的队列或主题分配到一个消息存储空间。 如果此消息存储空间不可用，则针对该队列或主题的所有操作将都失败。 另一方面，分区的队列包括多个片段。 每个片段存储在不同的消息存储空间中。 当向分区的队列或主题发送消息时，服务总线会将该消息分配到其中一个片段。 如果相应的消息存储空间不可用，则服务总线会将消息写入另一片段（如有可能）。 [高级 SKU](service-bus-premium-messaging.md) 中不再支持分区实体。 
+
+有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
 
 ## <a name="protecting-against-datacenter-outages-or-disasters"></a>针对数据中心中断或灾难进行保护
 要允许在两个数据中心之间进行故障转移，可以在每个数据中心中各创建一个服务总线服务命名空间。 例如，服务总线服务命名空间 **contosoPrimary.servicebus.windows.net** 可能位于美国北部/中部区域，而 **contosoSecondary.servicebus.windows.net** 可能位于美国南部/中部区域。 如果必须在数据中心中断的情况下仍可访问服务总线消息传送实体，可以在两个命名空间中都创建该实体。
@@ -81,6 +78,17 @@ ms.lasthandoff: 02/01/2018
 
 服务总线支持命名空间级别的异地灾难恢复和异地复制。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。 灾难恢复功能仅适用于[高级 SKU](service-bus-premium-messaging.md)，可实现元数据灾难恢复，并且依赖于主要和辅助灾难恢复命名空间。
 
+## <a name="availability-zones-preview"></a>可用性区域（预览版）
+
+服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在 Azure 区域内提供故障隔离位置。 
+
+> [!NOTE]
+> 仅在美国中部、美国东部 2 和法国中部区域支持可用性区域预览版。
+
+可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持现有命名空间的迁移。 在命名空间上启用区域冗余之后，不能将其禁用。
+
+![1][]
+
 ## <a name="next-steps"></a>后续步骤
 若要了解有关灾难恢复的详细信息，请参阅这些文章：
 
@@ -96,3 +104,5 @@ ms.lasthandoff: 02/01/2018
 [Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
+
+[1]: ./media/service-bus-outages-disasters/az.png

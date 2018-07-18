@@ -1,6 +1,6 @@
 ---
-title: "将托管缓存服务应用程序迁移到 Redis - Azure | Microsoft 文档"
-description: "了解如何将托管缓存服务和角色中缓存应用程序迁移到 Azure Redis 缓存"
+title: 将托管缓存服务应用程序迁移到 Redis - Azure | Microsoft 文档
+description: 了解如何将托管缓存服务和角色中缓存应用程序迁移到 Azure Redis 缓存
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 0d52454ae1c2159814d4601d07259aba319e8598
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f499925ecea8ca127c90691f7d92e74e8df68cf9
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697331"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>从托管缓存服务迁移到 Azure Redis 缓存
-在将使用 Azure 托管缓存服务的应用程序迁移到 Azure Redis 缓存时，只需对应用程序略做更改，具体情况取决于缓存应用程序所使用的托管缓存服务功能。 API 虽非完全相同，但却极为类似，而且使用托管缓存服务来访问缓存的多数现有代码，只需略做更改即可重复使用。 本主题介绍了为迁移托管缓存服务应用程序以使用 Azure Redis 缓存，如何进行必要的配置和应用程序更改；还介绍了如何使用 Azure Redis 缓存的某些功能实现托管缓存服务缓存功能。
+在将使用 Azure 托管缓存服务的应用程序迁移到 Azure Redis 缓存时，只需对应用程序略做更改，具体情况取决于缓存应用程序所使用的托管缓存服务功能。 API 虽非完全相同，但却极为类似，而且使用托管缓存服务来访问缓存的多数现有代码，只需略做更改即可重复使用。 本文介绍了为迁移托管缓存服务应用程序以使用 Azure Redis 缓存，如何进行必要的配置和应用程序更改；还介绍了如何使用 Azure Redis 缓存的某些功能实现托管缓存服务缓存功能。
 
 >[!NOTE]
 >托管缓存服务和角色中缓存在 2016 年 11 月 30 日[停用](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)。 如果要将角色中缓存部署迁移到 Azure Redis 缓存，可按照本文中的步骤执行。
@@ -51,7 +52,7 @@ Azure 托管缓存服务与 Azure Redis 缓存类似，但两者在实现某些�
 | 通知 |当命名缓存上发生各种缓存操作时，允许客户端接收异步通知。 |客户端应用程序可以使用 Redis pub/sub 或[密钥空间通知](cache-configure.md#keyspace-notifications-advanced-settings)来实现与通知类似的功能。 |
 | 本地缓存 |在客户端本地存储缓存对象的副本，以实现超快访问。 |客户端应用程序需使用字典或类似的数据结构来实现此功能。 |
 | 逐出策略 |无或 LRU。 默认策略是 LRU。 |Azure Redis 缓存支持以下逐出策略：volatile-lru、allkeys-lru、volatile-random、allkeys-random、volatile-ttl、noeviction。 默认策略是 volatile-lru。 有关详细信息，请参阅[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。 |
-| 过期策略 |默认过期策略为“绝对”，默认过期间隔为 10 分钟。 另外也提供“滑动”和“永不”策略。 |默认情况下，缓存中的项不会过期，但可以使用缓存集重载，对每次写入配置过期时间。 有关详细信息，请参阅[添加和从缓存检索对象](cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache)。 |
+| 过期策略 |默认过期策略为“绝对”，默认过期间隔为 10 分钟。 另外也提供“滑动”和“永不”策略。 |默认情况下，缓存中的项不会过期，但可以使用缓存集重载，对每次写入配置过期时间。 |
 | 区域和标记 |区域是缓存项的子组。 区域也支持使用称为标记的额外描述性字符串为缓存项添加批注。 区域支持对该区域内的任何标记项执行搜索操作的能力。 区域内的所有项全部位于缓存群集的单个节点内。 |Redis 缓存由单个节点组成（除非已启用 Redis 群集），因此托管缓存服务区域的概念不适用。 Redis 支持在检索键时执行搜索和通配符操作，让描述性标记可以嵌入键名称内并在后面用于检索项。 有关使用 Redis 实现标记解决方案的示例，请参阅[使用 Redis 实现缓存标记](http://stackify.com/implementing-cache-tagging-redis/)。 |
 | 序列化 |托管缓存支持 NetDataContractSerializer 和 BinaryFormatter，也支持使用自定义序列化程序。 默认值为 NetDataContractSerializer。 |由客户端应用程序负责先将 .NET 对象序列化，再将它们放入缓存中，至于要选择使用哪个序列化程序则由客户端应用程序开发人员决定。 有关详细信息和示例代码，请参阅[处理缓存中的 .NET 对象](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)。 |
 | 缓存模拟器 |托管缓存提供本地缓存模拟器。 |Azure Redis 缓存没有模拟器，但可以通过[在本地运行 redis-server.exe 的 MSOpenTech 生成](cache-faq.md#cache-emulator)来提供模拟器体验。 |
@@ -65,7 +66,7 @@ Microsoft Azure Redis 缓存提供以下层：
 
 每个级别在功能和定价方面存在差异。 在本指南的后面介绍这些功能，而有关定价的详细信息，则请参阅[缓存定价详细信息](https://azure.microsoft.com/pricing/details/cache/)。
 
-迁移操作的第一步是选择与以前的托管缓存服务缓存大小匹配的大小，并根据应用程序的需求进行增减。 有关如何选择合适 Azure Redis 缓存产品/服务的详细指导，请参阅[我应使用哪种 Redis 缓存产品/服务和大小？](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)。
+迁移操作的第一步是选择与以前的托管缓存服务缓存大小匹配的大小，并根据应用程序的需求进行增减。 有关如何选择合适 Azure Redis 缓存产品/服务的详细信息，请参阅[我应使用哪种 Redis 缓存产品/服务和大小](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)。
 
 ## <a name="create-a-cache"></a>创建缓存
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -83,7 +84,7 @@ Microsoft Azure Redis 缓存提供以下层：
 
 ![卸载 Azure 托管缓存服务 NuGet 包](./media/cache-migrate-to-redis/IC757666.jpg)
 
-卸载托管缓存服务 NuGet 包时，会删除客户端应用程序的 app.config 或 web.config 中的托管缓存服务组件和托管缓存服务条目。 卸载 NuGet 包时可能不会删除部分自定义设置，因此请打开 web.config 或 app.config，确保已彻底删除以下元素。
+卸载托管缓存服务 NuGet 包时，会删除客户端应用程序的 app.config 或 web.config 中的托管缓存服务组件和托管缓存服务条目。 卸载 NuGet 包时可能不会删除部分自定义设置，因此请打开 web.config 或 app.config，确保已删除以下元素。
 
 确保已从 `configSections` 元素中删除 `dataCacheClients` 条目。 请勿删除整个 `configSections` 元素，只需删除 `dataCacheClients` 条目（如果存在）。
 
@@ -129,14 +130,14 @@ StackExchange.Redis 缓存客户端的 API 与托管缓存服务类似。 本节
 using StackExchange.Redis
 ```
 
-如果此命名空间并未解析，请确保已如[配置缓存客户端](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)中所述添加了 StackExchange.Redis NuGet 包。
+如果此命名空间并未解析，请确保已如[快速入门：将 Azure Redis 缓存与 .NET 应用程序配合使用](cache-dotnet-how-to-use-azure-redis-cache.md)中所述添加了 StackExchange.Redis NuGet 包。
 
 > [!NOTE]
 > 请注意，StackExchange.Redis 客户端需要 .NET Framework 4 或更高版本。
 > 
 > 
 
-若要连接到 Azure Redis 缓存实例，请调用静态 `ConnectionMultiplexer.Connect` 方法并传入终结点和密钥。 共享应用程序中的 `ConnectionMultiplexer` 实例的一个方法是，拥有返回连接示例的静态属性（与下列示例类似）。 这种线程安全方法，可仅初始化单一连接的 `ConnectionMultiplexer` 实例。 在此示例中，`abortConnect` 设置为 false，这表示即使未建立缓存连接，也可成功调用。 `ConnectionMultiplexer` 的一个关键功能是，一旦还原网络问题和其他原因，它会自动还原缓存连接。
+若要连接到 Azure Redis 缓存实例，请调用静态 `ConnectionMultiplexer.Connect` 方法并传入终结点和密钥。 共享应用程序中的 `ConnectionMultiplexer` 实例的一个方法是，拥有返回连接示例的静态属性（与下列示例类似）。 此方法是一种线程安全方法，初始化一个连接的 `ConnectionMultiplexer` 实例。 在此示例中，`abortConnect` 设置为 false，这表示即使未建立缓存连接，也可成功调用。 `ConnectionMultiplexer` 的一个关键功能是，一旦还原网络问题和其他原因，它会自动还原缓存连接。
 
 ```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -172,9 +173,9 @@ int key2 = (int)cache.StringGet("key2");
 
 StackExchange.Redis 客户端使用 `RedisKey` 和 `RedisValue` 类型在缓存中访问和存储项。 这些类型可映射到最基本的语言类型（包括字符串），但通常不直接使用。 Redis 字符串是最基本的一种 Redis 值，可包含许多类型的数据（包括序列化的二进制数据流），可能不会直接使用此类型，但你会使用在名称中包含 `String` 的方法。 对于最基本的数据类型，会使用 `StringSet` 和 `StringGet` 方法在缓存中存储和检索项，除非要在缓存中存储集合或其他 Redis 数据类型。 
 
-`StringSet` 和 `StringGet` 非常类似于托管缓存服务的 `Put` 和 `Get` 方法，其中最主要的差异在于，要设置 .NET 对象并将其放到缓存中，必须先将其序列化。 
+`StringSet` 和 `StringGet` 类似于托管缓存服务的 `Put` 和 `Get` 方法，其中最主要的差异在于，要设置 .NET 对象并将其放到缓存中，必须先将其序列化。 
 
-调用 `StringGet` 时，如果该对象存在，则返回它，如果该对象不存在，则返回 null。 在这种情况可以从所需的数据源检索值，并将其存储在缓存中供后续使用。 这称为缓存端模式。
+调用 `StringGet` 时，如果该对象存在，则返回它，如果该对象不存在，则返回 null。 在这种情况下，可以从所需的数据源检索值，并将其存储在缓存中供后续使用。 此模式称为缓存端模式。
 
 要在缓存中指定项的过期时间，请使用 `StringSet` 的 `TimeSpan` 参数。
 
@@ -182,7 +183,7 @@ StackExchange.Redis 客户端使用 `RedisKey` 和 `RedisValue` 类型在缓存�
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 ```
 
-Azure Redis 缓存可以处理 .NET 对象以及基元数据类型，但在缓存 .NET 对象之前，必须先将其序列化。 这是应用程序开发人员的责任。 这可让开发人员灵活地选择序列化程序。 有关详细信息和示例代码，请参阅[处理缓存中的 .NET 对象](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)。
+Azure Redis 缓存可以处理 .NET 对象以及基元数据类型，但在缓存 .NET 对象之前，必须先将其序列化。 此序列化是应用程序开发人员的责任，同时赋与开发人员选择序列化程序的弹性。 有关详细信息和示例代码，请参阅[处理缓存中的 .NET 对象](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)。
 
 ## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-redis-cache"></a>将 ASP.NET 会话状态和输出缓存迁移到 Azure Redis 缓存
 Azure Redis 缓存有适用于 ASP.NET 会话状态和页面输出缓存的提供程序。 要迁移使用这些提供程序的托管缓存服务版本的应用程序，请先从 web.config 中删除现有节，然后配置这些提供程序的 Azure Redis 缓存版本。 有关使用 Azure Redis 缓存 ASP.NET 提供程序的说明，请参阅 [Azure Redis 缓存的 ASP.NET 会话状态提供程序](cache-aspnet-session-state-provider.md)和 [Azure Redis 缓存的 ASP.NET 输出缓存提供程序](cache-aspnet-output-cache-provider.md)。

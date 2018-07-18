@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 06/27/2018
 ms.author: maheshu
-ms.openlocfilehash: 8da03990ace37b527553b0fe3ff0032515e1b812
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5838dbefab9f7100ed4776eebef7a1d07d2db1a6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061039"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 
@@ -46,7 +48,7 @@ ms.lasthandoff: 05/20/2018
 4. 默认情况下，已禁用对托管域的安全 LDAP 访问。 将“安全 LDAP”切换为“启用”。
 
     ![启用安全 LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. 默认情况下，已禁用通过 Internet 对托管域的安全 LDAP 访问。 将“允许通过 Internet 进行安全 LDAP 访问”切换为“启用”。 
+5. 默认情况下，已禁用通过 Internet 对托管域的安全 LDAP 访问。 将“允许通过 Internet 进行安全 LDAP 访问”切换为“启用”。
 
     > [!WARNING]
     > 在通过 Internet 启用安全 LDAP 访问时，你的域容易受到来自 Internet 的密钥搜索攻击。 因此，我们建议设置 NSG 以将访问锁定到所需的源 IP 地址范围。 请参阅[通过 Internet 锁定对托管域的 LDAPS 访问](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet)的说明。
@@ -109,6 +111,23 @@ ms.lasthandoff: 05/20/2018
 
 <br>
 
+## <a name="bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>使用 LDP.exe 通过 LDAP 绑定到托管域
+可使用远程服务器管理工具包中包含的 LDP.exe 工具，通过 LDAP 进行绑定和搜索。
+
+首先，打开 LDP 并连接到托管域。 单击“连接”，再单击菜单中的“连接...”。 指定托管域的 DNS 域名。 指定用于连接的端口。 对于 LDAP 连接，请使用端口 389。 对于 LDAPS 连接，请使用端口 636。 单击“确定”按钮，连接到托管域。
+
+接下来，绑定到托管域。 单击“连接”，再单击菜单中的“绑定...”。 提供属于“AAD DC 管理员”组的用户帐户的凭据。
+
+选择“视图”，然后选择菜单中的“树”。 将“基 DN”字段留空，再单击“确定”。 导航到想要搜索的容器，右键单击该容器，再选择“搜索”。
+
+> [!TIP]
+> - 从 Azure AD 同步的用户和组存储在“AADDC 用户”容器中。 此容器的搜索路径类似于 ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```。
+> - 加入托管域的计算机的计算机帐户存储在“AADDC 计算机”容器中。 此容器的搜索路径类似于 ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```。
+>
+>
+
+更多信息 - [ LDAP 查询基础知识](https://technet.microsoft.com/library/aa996205.aspx)
+
 
 ## <a name="troubleshooting"></a>故障排除
 如果在使用安全 LDAP 连接到托管域时遇到问题，请执行以下故障排除步骤：
@@ -127,6 +146,7 @@ ms.lasthandoff: 05/20/2018
 ## <a name="related-content"></a>相关内容
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [管理 Azure AD 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)
+* [LDAP 查询基础知识](https://technet.microsoft.com/library/aa996205.aspx)
 * [管理 Azure AD 域服务托管域上的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 * [网络安全组](../virtual-network/security-overview.md)
-* [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [创建网络安全组](../virtual-network/tutorial-filter-network-traffic.md)

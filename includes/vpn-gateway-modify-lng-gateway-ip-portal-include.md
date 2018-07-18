@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a929149f115d716bf7f9d850abe5ba97bd5a8189
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a79184a5e08aa43a4675194adf5f10b9807418db
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329546"
 ---
 ### <a name="gwipnoconnection"></a> 修改本地网络网关 IP 地址 - 无网关连接
 
@@ -22,7 +23,7 @@ ms.lasthandoff: 03/23/2018
 2. 在“IP 地址”框中，修改 IP 地址。
 3. 单击“保存”保存这些设置。
 
-### <a name="gwipwithconnection"></a>修改本地网络网关 IP 地址 - 存在网关连接
+### <a name="gwipwithconnection"></a>修改本地网络网关 IP 地址的具体步骤 - 现有网关连接
 
 若要修改具有连接的本地网络网关，需先删除该连接。 删除连接后，可修改网关 IP 地址并重新创建一个新的连接。 此外可同时修改地址前缀。 这会导致 VPN 连接中断一段时间。 修改网关 IP 地址时，不需删除 VPN 网关。 只需删除连接。
  

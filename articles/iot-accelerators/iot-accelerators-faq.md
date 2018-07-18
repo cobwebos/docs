@@ -1,25 +1,19 @@
 ---
 title: Azure IoT 解决方案加速器常见问题解答 | Microsoft Docs
 description: IoT 解决方案加速器常见问题解答
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 6c8c87dc4f7bb91ce227bbfbaf1cabf0c44d2e0b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: decae2fee0d040d0857950bec507df173e2820b9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627153"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
@@ -54,7 +48,7 @@ ms.lasthandoff: 05/20/2018
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>在 Azure 门户中删除资源组与在 azureiotsuite.com 中对解决方案加速器单击删除之间的区别是什么？
 
-* 如果在 [azureiotsuite.com](https://www.azureiotsuite.com/) 中删除解决方案加速器，则会删除在创建解决方案加速器时预配的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
+* 如果在 [azureiotsuite.com](https://www.azureiotsolutions.com/) 中删除解决方案加速器，则会删除在创建解决方案加速器时预配的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
 * 如果在 [Azure 门户](https://portal.azure.com)中删除资源组，则只会删除该资源组中的资源。 此外还需要删除与解决方案加速器关联的 Azure Active Directory 应用程序。
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>是否可以继续利用 Azure IoT 解决方案加速器中的现有投资？
@@ -93,6 +87,6 @@ ms.lasthandoff: 05/20/2018
 还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
 * [探索远程监视解决方案加速器的功能](iot-accelerators-remote-monitoring-explore.md)
-* [预测性维护解决方案加速器概述](../iot-suite/iot-suite-predictive-overview.md)
+* [预测性维护解决方案加速器概述](iot-accelerators-predictive-overview.md)
 * [连接工厂解决方案加速器概述](iot-accelerators-connected-factory-overview.md)
-* [从头保障 IoT 的安全](../iot-suite/securing-iot-ground-up.md)
+* [从头保障 IoT 的安全](securing-iot-ground-up.md)

@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 2372550548f40ad07b4f76c19bc3bc1cb8380830
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99838a7038672998d4940bfb437bd31311d3600f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653427"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -93,9 +94,9 @@ ms.lasthandoff: 04/06/2018
      ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## 注意：将此项设置为所需的内容。
 15. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo waagent -force -deprovision
-    # <a name="export-histsize0"></a>export HISTSIZE=0
-    # <a name="logout"></a>logout
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 16. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 - - -
@@ -128,7 +129,7 @@ ms.lasthandoff: 04/06/2018
         # sudo zypper update
 5. 安装 Azure Linux 代理。
    
-   # <a name="sudo-zypper-install-walinuxagent"></a>sudo zypper install WALinuxAgent
+        # sudo zypper install WALinuxAgent
 6. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开“/boot/grub/menu.lst”，并确保默认内核包含以下参数：
    
      console=ttyS0 earlyprintk=ttyS0 rootdelay=300
@@ -139,7 +140,7 @@ ms.lasthandoff: 04/06/2018
 7. 建议编辑文件“/etc/sysconfig/network/dhcp”，并将 `DHCLIENT_SET_HOSTNAME` 参数更改为以下值：
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **重要提示：**在“/etc/sudoers”中，注释掉或删除以下行（如果存在）：
+8. **重要提示：** 在“/etc/sudoers”中，注释掉或删除以下行（如果存在）：
    
      Defaults targetpw   # 要求提供目标用户（即 root）的密码 ALL    ALL=(ALL) ALL   # 警告！ 仅将此项与“Defaults targetpw”一起使用！
 9. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。  这通常是默认设置。
@@ -150,9 +151,9 @@ ms.lasthandoff: 04/06/2018
      ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## 注意：将此项设置为所需的内容。
 11. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo waagent -force -deprovision
-    # <a name="export-histsize0"></a>export HISTSIZE=0
-    # <a name="logout"></a>logout
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 12. 确保在启动时运行 Azure Linux 代理：
     
         # sudo systemctl enable waagent.service

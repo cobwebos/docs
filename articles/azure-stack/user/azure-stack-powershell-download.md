@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: a5bc23ee6f986da80630371bafcd8ec80dde3577
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: f4c4d907fe76c5e6ee5893b5b4dd1b2d766877a7
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287241"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>从 GitHub 下载 Azure Stack 工具
 
@@ -28,17 +29,18 @@ AzureStack-Tools 是托管 PowerShell 模块的 GitHub 存储库，可用于管�
 
 ## <a name="download-targets"></a>下载目标
 
-您可以下载并使用这些 PowerShell 模块到 Azure 堆栈开发工具包中，或使用 VPN 连接到基于 Windows 的外部客户端。
+可以将这些 PowerShell 模块下载到 Azure Stack 开发工具包或使用 VPN 连接的基于 Windows 的外部客户端，并加以使用。
 
 ## <a name="how-to-get-the-tools"></a>如何获取工具
 
-若要获取这些工具，克隆 AzureStack 工具 GitHub 存储库或通过运行以下脚本，下载 AzureStack 工具文件夹：
+若要获取这些工具，请克隆 AzureStack-Tools GitHub 存储库，或运行以下脚本来下载 AzureStack-Tools 文件夹：
 
 ```PowerShell
 # Change directory to the root directory
 cd \
 
 # Download the tools archive
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip

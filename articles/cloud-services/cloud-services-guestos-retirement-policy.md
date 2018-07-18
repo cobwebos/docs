@@ -1,11 +1,11 @@
 ---
-title: "Azure 来宾 OS 可支持性和停用策略指南 | Microsoft Docs"
-description: "介绍有关 Microsoft 对云服务使用的 Azure 来宾 OS 提供的支持的信息。"
+title: Azure 来宾 OS 可支持性和停用策略指南 | Microsoft Docs
+description: 介绍有关 Microsoft 对云服务使用的 Azure 来宾 OS 提供的支持的信息。
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 919dd781-4dc6-4e50-bda8-9632966c5458
 ms.service: cloud-services
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 4bc2d57cf4c7d6e0981aa1a5c7c989860600b897
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfa3bac95b9827789950b4931e3198237de4a1fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608556"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure 来宾 OS 可支持性和停用策略
 本页面上的信息与 Azure 来宾操作系统（[来宾 OS](cloud-services-guestos-update-matrix.md)）相关。来宾 OS 仅适用于云服务辅助角色和 Web 角色 (PaaS)。 而不适用于虚拟机 (IaaS)。
@@ -33,9 +34,7 @@ Microsoft 已发布[来宾 OS 的支持策略](http://support.microsoft.com/gp/a
 
 有时，可能会支持两个以上的系列或发行版。 将在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中显示正式的来宾 OS 支持信息。
 
-## <a name="when-a-guest-os-family-or-version-is-retired"></a>何时停用来宾 OS 系列或版本
-在发布新的正式 Windows Server 操作系统版本后，会在某个时间推出新的来宾 OS **系列**。 每次推出新的来宾 OS 系列时，Microsoft 将停用最早的来宾 OS 系列。
-
+## <a name="when-a-guest-os-version-is-retired"></a>何时停用来宾 OS 版本
 大约每个月都会推出新来宾 OS **版本**，以合并最新 MSRC 更新。 由于定期每月更新，来宾 OS 版本正常情况下会在其发布的大约 60 天后禁用。 对于每个可供使用的系列，此活动都至少保留两个来宾 OS 版本。
 
 ### <a name="process-during-a-guest-os-family-retirement"></a>来宾 OS 停用的过程

@@ -13,10 +13,11 @@ ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
 ms.openlocfilehash: 49ec67d06446d6c48e45aef90e2bd528a1b541a9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473008"
 ---
 # <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>教程：在 Azure 中生成 Python 和 PostgreSQL Web 应用
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 05/04/2018
 
 ![Linux 应用服务中的 Python Flask 应用](./media/app-service-web-tutorial-python-postgresql/docker-flask-in-azure.png)
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 PostgreSQL 数据库
@@ -112,7 +113,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-在浏览器中导航至 `http://localhost:5000`。 单击“注册!” 创建一个测试用户。
+在浏览器中导航至 `http://localhost:5000` 。 单击“注册!” 创建一个测试用户。
 
 ![在本地运行的 Python Flask 应用程序](./media/app-service-web-tutorial-python-postgresql/local-app.png)
 
@@ -226,7 +227,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-在浏览器中导航至 http://localhost:5000。 单击“注册!” 并创建测试注册。 现在，正将数据写入 Azure 中的数据库。
+在浏览器中导航至 http://localhost:5000 。 单击“注册!” 并创建测试注册。 现在，正将数据写入 Azure 中的数据库。
 
 ![在本地运行的 Python Flask 应用程序](./media/app-service-web-tutorial-python-postgresql/local-app.png)
 

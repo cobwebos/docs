@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 04/27/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 1f87d411e244d10437e3b6f9befbdee13dde14e9
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 01e5dc3b7c141841dd6dbd44290360b94493b548
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601269"
 ---
 # <a name="audit-diagnostic-setting"></a>审核诊断设置
 
@@ -81,4 +82,4 @@ az policy assignment delete --name "Audit diagnostics" --resource-group myResour
 
 ## <a name="next-steps"></a>后续步骤
 
-- 其他 Azure 策略模板示例位于 [Azure 策略模板](../json-samples.md)。
+- 在 [Azure 策略示例](../json-samples.md)中查看更多示例。

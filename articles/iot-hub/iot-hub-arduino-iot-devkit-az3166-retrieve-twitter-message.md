@@ -1,26 +1,22 @@
 ---
 title: 使用 Azure Functions 检索 Twitter 消息 | Microsoft Docs
-description: 使用动作传感器检测抖动，然后使用 Azure Functions 查找包含指定的井号标签的随机推文。
-services: iot-hub
-documentationcenter: ''
+description: 使用动作传感器检测抖动，然后使用 Azure Functions 查找包含指定的井号标签的随机推文
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 50ce34cb3289e346e7b637d917730dac8e8a097b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5a4605a1668d25d5a90dc7d7873efa83ddc767ff
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752673"
 ---
-# <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>“Shake, Shake”推文项目 -- 使用 Azure Functions 检索 Twitter 消息
+# <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>“Shake, Shake”推文项目 -- 使用 Azure Functions 检索 Twitter 消息！
 
 此项目演示如何 Azure Functions 通过动作传感器触发事件。 该应用会检索包含 Arduino 草图中配置的 # 井号标签的随机推文。 该推文显示在 DevKit 屏幕上。
 
@@ -40,7 +36,7 @@ ms.lasthandoff: 05/07/2018
 
 ### <a name="start-vs-code"></a>启动 VS Code
 
-- 确保 DevKit **未**连接到计算机。
+- 确保 DevKit 已连接到计算机。
 - 启动 VS Code。
 - 将 DevKit 连接到计算机。
 
@@ -49,7 +45,10 @@ ms.lasthandoff: 05/07/2018
 
 ### <a name="open-arduino-examples-folder"></a>打开 Arduino 示例文件夹
 
-展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > AzureIoT”，然后选择“ShakeShake”。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
+展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > AzureIoT”，然后选择“ShakeShake”。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。  
+
+> [!NOTE]
+> 如果看不到“MXCHIP AZ3166”部分，请确保设备已正确连接，并重启 Visual Studio Code。  
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
@@ -128,7 +127,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 ![Ready-to-shake](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-3.png)
 
 ### <a name="processing"></a>正在处理...
-![正在处理](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-4.png)
+![Processing](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-4.png)
 
 ### <a name="press-b-to-read"></a>按 B 读取...
 ![Press-B-to-read](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-5.png)

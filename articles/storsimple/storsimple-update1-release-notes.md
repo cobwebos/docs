@@ -15,11 +15,12 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67603c04cf7b5f45517d16620e5b79241aaae94d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7810027e4ab9df6742b4431d12daf9ba2b678bf6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061803"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 1.2 发行说明
 
@@ -53,7 +54,7 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
   * **业务连续性**，通过将 5000-7000 系列设备上的现有数据迁移到 8000 系列设备来实现。
   * **8000 系列设备的改进功能**，例如通过 StorSimple Manager 服务对多个设备进行高效的集中式管理、更高级的硬件和已更新的固件、虚拟设备、数据移动性，以及未来路线图中的功能。
     
-    有关如何将 StorSimple 5000-7000 系列迁移到 8000 系列设备的详细信息，请参阅[迁移指南](http://www.microsoft.com/download/details.aspx?id=47322)。 
+    有关如何将 StorSimple 5000-7000 系列迁移到 8000 系列设备的详细信息，请参阅[迁移指南](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)。 
 * **Azure Government 门户中的可用性** — Azure Government 门户中现已提供 StorSimple。 请参阅如何[在 Azure Government 门户中部署 StorSimple 设备](storsimple-deployment-walkthrough-gov.md)。
 * **支持其他云服务提供商** — 支持的其他云服务提供商有 Amazon S3、具有 RRS 的 Amazon S3、HP 和 OpenStack（试用版）。
 * **最新存储 API 的更新** — 通过此版本，StorSimple 已更新到最新的 Azure 存储服务 API。 运行 Update 1 前的软件版本（版本 0.1、0.2 和 0.3）的 StorSimple 8000 系列设备，使用的是 2009 年 7 月 17 日之前的 Azure 存储服务 API 版本。 如更新的[有关存储服务版本删除的公告](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)中所述，这些 API 将于 2016 年 8 月 1 日被弃用。 请务必在 2016 年 8 月 1 日之前应用 StorSimple 8000 系列 Update 1。 如果无法执行此操作，StorSimple 设备将停止正常工作。
@@ -63,7 +64,7 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 ## <a name="issues-fixed-in-update-12"></a>在 Update 1.2 中修复的问题
 下表提供在 Update 1.2、1.1 和 1 中已修复问题的摘要。    
 
-| 不会。 | 功能 | 问题 | 更新中已修复 | 适用于物理设备 | 适用于虚拟设备 |
+| 不是。 | 功能 | 问题 | 更新中已修复 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell for StorSimple |用户远程使用 Windows PowerShell for StorSimple 访问 StorSimple 设备，再启动安装向导时，只要输入 Data 0 IP 就会发生崩溃。 这个 bug 现已在 Update 1 中修复。 |Update 1 |是 |是 |
 | 2 |恢复出厂设置 |在某些情况下，执行恢复出厂设置时，StorSimple 设备会卡住并显示此消息：**正在进行恢复出厂设置 (阶段 8)**。 如果在该 cmdlet 正在运行时按下 CTRL+C，就会发生这种情况。 这个 bug 现已修复。 |Update 1 |是 |否 |
@@ -81,7 +82,7 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 ## <a name="known-issues-in-update-12"></a>Update 1.2 中的已知问题
 下表提供了此版本中已知问题的摘要。
 
-| 不会。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 不是。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，然后存储池会脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
 | 2 |控制器 ID 错误 |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |

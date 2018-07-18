@@ -3,8 +3,8 @@ title: 在 Azure 中配置服务映射 | Microsoft Docs
 description: 服务映射是 Azure 中的解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
 ms.service: monitoring
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/18/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa85f06355ad5afc8e67ff4bace3b0ed471dc703
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 872d5f05e4d607c9445d1af5cc9b9cb984c19e11
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204186"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752568"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -27,7 +27,7 @@ ms.locfileid: "34204186"
 本文介绍了配置服务映射和载入代理的详细信息。 有关使用服务映射的信息，请参阅[在 Azure 中使用服务映射解决方案]( monitoring-service-map.md)。
 
 ## <a name="dependency-agent-downloads"></a>依赖关系代理下载
-| 文件 | 操作系统 | 版本 | SHA-256 |
+| 文件 | OS | 版本 | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.5.0 | 8B8FE0F6B0A9F589C4B7B52945C2C25DF008058EB4D4866DC45EE2485062C9D7 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.5.1 | 09D56EF43703A350FF586B774900E1F48E72FE3671144B5C99BB1A494C201E9E |
@@ -49,7 +49,7 @@ ms.locfileid: "34204186"
 
 在 Linux 上，适用于 Linux 的 OMS 代理收集监视数据并将其发送到 Log Analytics。 可对具有 OMS 直接代理的服务器或通过 System Center Operations Manager 管理组附加到 Log Analytics 的服务器使用服务映射。  
 
-本文中将所有代理都称为“OMS 代理”（不论是在 Linux 还是在 Windows 上，也不论是连接到 System Center Operations Manager 管理组还是直接连接到 Log Analytics）。 仅在上下文需要时才使用代理的具体部署名称。
+本文中将所有代理都称为“OMS 代理”（不论是 Linux 还是 Windows，也不论是连接到 System Center Operations Manager 管理组还是直接连接到 Log Analytics）。 仅在上下文需要时才使用代理的具体部署名称。
 
 服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 服务映射中的数据始终由 OMS 代理直接或通过 OMS 网关传输到 Log Analytics。
 
@@ -60,7 +60,7 @@ ms.locfileid: "34204186"
 - 如果 System Center Operations Manager 代理可以访问 Internet 来连接到 Log Analytics，则无需进行额外配置。  
 - 如果 System Center Operations Manager 代理无法通过 Internet 访问 Log Analytics，则需配置 OMS 网关来与 System Center Operations Manager 配合使用。
   
-如果使用的是 OMS 直接代理，则需要配置 OMS 代理本身才能连接到 Log Analytics 或 OMS 网关。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 OMS 网关。
+如果使用的是 OMS 直接代理，则需要配置 OMS 代理本身才能连接到 Log Analytics 或 OMS 网关。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 OMS 网关。 有关如何部署和配置 OMS 网关的详细信息，请参阅[使用 OMS 网关连接无法访问 Internet 的计算机](../log-analytics/log-analytics-oms-gateway.md)。  
 
 ### <a name="management-packs"></a>管理包
 在 Log Analytics 工作区中激活服务映射时，将向该工作区中的所有 Windows 服务器发送 300KB 的管理包。 若在[连接的管理组](../log-analytics/log-analytics-om-agents.md)中使用 System Center Operations Manager 代理，则会从 System Center Operations Manager 部署服务映射管理包。 如果代理是直接连接的，则 Log Analytics 会传送管理包。
@@ -75,7 +75,7 @@ ms.locfileid: "34204186"
 
 使用以下步骤在每台 Windows 计算机上安装依赖关系代理：
 
-1.  请按照[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](../log-analytics/log-analytics-windows-agent.md)中的说明安装 OMS 代理。
+1.  按照[使用 Log Analytics 从环境中的计算机收集数据](../log-analytics/log-analytics-concept-hybrid.md)中所述的方法之一安装 OMS 代理。
 2.  下载 Windows 代理，并使用以下命令运行： <br>`InstallDependencyAgent-Windows.exe`
 3.  按照向导安装代理。
 4.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 代理上，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。 
@@ -99,7 +99,7 @@ ms.locfileid: "34204186"
  
 使用以下步骤在每台 Linux 计算机上安装依赖关系代理：
 
-1.  按照[从 Linux 计算机收集和管理数据](https://technet.microsoft.com/library/mt622052.aspx)中的说明安装 OMS 代理。
+1.  按照[使用 Log Analytics 从环境中的计算机收集数据](../log-analytics/log-analytics-concept-hybrid.md)中所述的方法之一安装 OMS 代理。
 2.  使用以下命令将 Linux 依赖关系代理安装为根：<br>`sh InstallDependencyAgent-Linux64.bin`
 3.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 /var/opt/microsoft/dependency-agent/log。
 
@@ -115,7 +115,7 @@ ms.locfileid: "34204186"
 
 依赖关系代理的文件放置在以下目录中：
 
-| 文件 | Location |
+| 文件 | 位置 |
 |:--|:--|
 | 核心文件 | /opt/microsoft/dependency-agent |
 | 日志文件 | /var/opt/microsoft/dependency-agent/log |
@@ -143,6 +143,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 可以使用 [Azure VM 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features)轻松地将依赖项代理部署到 Azure VM。  借助 Azure VM 扩展，可以通过 PowerShell 脚本或直接在 VM 的 Azure 资源管理器模板中将依赖项代理部署到 VM。  有一个扩展可用于 Windows (DependencyAgentWindows) 和 Linux (DependencyAgentLinux)。  如果通过 Azure VM 扩展进行部署，则代理可以自动更新到最新版本。
 
 若要通过 PowerShell 部署 Azure VM 扩展，可以使用以下示例：
+
 ```PowerShell
 #
 # Deploy the Dependency Agent to every VM in a Resource Group
@@ -169,7 +170,8 @@ ForEach-Object {
 }
 ```
 
-一种甚至更简单的用于确保依赖项代理位于每个 VM 上的方法是在 Azure 资源管理器模板中包含代理。  请注意，依赖项代理仍依赖于 OMS 代理，因此必须先部署 [OMS 代理 VM 扩展](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-vm-extension)。  以下 JSON 片段可以添加到模板的资源节中。
+一种甚至更简单的用于确保依赖项代理位于每个 VM 上的方法是在 Azure 资源管理器模板中包含代理。  请注意，依赖项代理仍依赖于 OMS 代理，因此必须先部署 [OMS 代理 VM 扩展](../virtual-machines/extensions/oms-linux.md)。  以下 JSON 片段可以添加到模板的资源节中。
+
 ```JSON
 "type": "Microsoft.Compute/virtualMachines/extensions",
 "name": "[concat(parameters('vmName'), '/DependencyAgent')]",
@@ -190,6 +192,7 @@ ForEach-Object {
 
 ## <a name="desired-state-configuration"></a>Desired State Configuration
 若通过 Desired State Configuration 部署依赖关系代理，可使用 xPSDesiredStateConfiguration 模块和少量代码进行操作，如下所示：
+
 ```
 configuration ServiceMap {
 
@@ -231,10 +234,13 @@ Node localhost
 ### <a name="uninstall-the-dependency-agent-on-linux"></a>卸载 Linux 上的依赖关系代理
 通过以下命令，可以从 Linux 卸载依赖关系代理。
 <br>RHEL、CentOs 或 Oracle：
+
 ```
 sudo rpm -e dependency-agent
 ```
+
 Ubuntu：
+
 ```
 sudo apt -y purge dependency-agent
 ```
@@ -242,7 +248,7 @@ sudo apt -y purge dependency-agent
 如果安装或运行服务映射时遇到任何问题，可通过本部分内容获得帮助。 如果仍然无法解决问题，请联系 Microsoft 支持部门。
 
 ### <a name="dependency-agent-installation-problems"></a>依赖关系代理安装问题
-#### <a name="installer-asks-for-a-reboot"></a>安装程序要求重启
+#### <a name="installer-prompts-for-a-reboot"></a>安装程序提示重新启动
 安装或卸载依赖关系代理时，通常不需要重启。 在极少数的某些情况下，Windows Server 需要重启才能继续安装。 依赖关系（通常是 Microsoft Visual C++ 可再发行组件）因锁定的文件而需要重启时会发生这种情况。
 
 #### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>将显示“无法安装依赖关系代理：Visual Studio 运行时库安装失败 (code = [code_number])”消息
@@ -272,7 +278,7 @@ Microsoft 依赖关系代理基于 Microsoft Visual Studio 运行时库。 如�
 
         * Computer="<your computer name here>" | measure count() by Type
         
-  结果中是否有多种不同的事件？ 是否为最新数据？ 如果是，则表示 OMS 代理正常运行并正在与 Log Analytics 服务通信。 如果不是，请在服务器上检查 OMS 代理：[用于 Windows 的 OMS 代理疑难解答](https://support.microsoft.com/help/3126513/how-to-troubleshoot- monitoring-onboarding-issues)或[用于 Linux 的 OMS 代理疑难解答](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)。
+  结果中是否有多种不同的事件？ 是否为最新数据？ 如果是，则表示 OMS 代理正常运行并正在与 Log Analytics 服务通信。 如果不是，请在服务器上检查 OMS 代理：[用于 Windows 的 OMS 代理疑难解答](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues)或[用于 Linux 的 OMS 代理疑难解答](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>服务器会在服务映射中显示，但没有任何进程
 如果在服务映射中看到了服务器，但没有任何进程或连接数据，则表明已安装并运行依赖关系代理，但未加载内核驱动程序。 
@@ -287,7 +293,7 @@ Microsoft 依赖关系代理基于 Microsoft Visual Studio 运行时库。 如�
 ## <a name="supported-azure-regions"></a>支持的 Azure 区域
 服务映射当前在以下 Azure 区域中提供：
 - 美国东部
-- 欧洲西部
+- 西欧
 - 美国中西部
 - 东南亚
 

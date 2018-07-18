@@ -3,7 +3,7 @@ title: Azure Log Analytics 中的容器监视解决方案 | Microsoft Docs
 description: Log Analytics 中的容器监视解决方案可帮助用户在单个位置查看和管理 Docker 和 Windows 容器主机。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 6adde6a76a7675ef4d8b63757fc9419500872dd9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: na
+ms.openlocfilehash: a5c459fa9bafa48bb8731009a0813cdff7a900d8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970796"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -92,7 +94,7 @@ ms.lasthandoff: 05/04/2018
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-1. 通过 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview)或[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将容器监视解决方案添加到 Log Analytics 工作区。
+1. 通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview)或[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将容器监视解决方案添加到 Log Analytics 工作区。
 
 2. 通过 OMS 代理安装和使用 Docker。 根据所用操作系统和 Docker Ochestrator，可使用下列方法来配置代理。
   - 对于独立主机：
@@ -128,7 +130,7 @@ ms.lasthandoff: 05/04/2018
 启动要监视的容器。 修改并使用以下示例：
 
 ```
-sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
+sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
 ```
 
 对于包括 CoreOS 在内的所有 Azure 政府 Linux 容器主机：
@@ -136,7 +138,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 启动要监视的容器。 修改并使用以下示例：
 
 ```
-sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
+sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
 ```
 
 从使用已安装的 Linux 代理切换为使用容器中的 Linux 代理
@@ -150,7 +152,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 - 在主节点上运行以下命令。
 
     ```
-    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock  -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
+    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
     ```
 
 ##### <a name="secure-secrets-for-docker-swarm"></a>保护 Docker Swarm 的机密
@@ -528,7 +530,7 @@ KEY:    88 bytes
 
 ## <a name="solution-components"></a>解决方案组件
 
-如果使用的是 Windows 代理，添加此解决方案后，将使用代理在每台计算机上安装以下管理包。 无需对管理包进行任何配置或维护。
+在 OMS 门户中，导航到“解决方案库”并添加“容器监视解决方案”。 如果使用的是 Windows 代理，添加此解决方案后，将使用代理在每台计算机上安装以下管理包。 无需对管理包进行任何配置或维护。
 
 - ContainerManagement.xxx 安装在 C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs 中
 
@@ -563,6 +565,7 @@ KEY:    88 bytes
 
 ## <a name="monitor-containers"></a>监视容器
 在 Log Analytics 门户中启用解决方案后，“容器”磁贴显示有关容器主机和在主机中运行的容器的摘要信息。
+
 
 ![容器磁贴](./media/log-analytics-containers/containers-title.png)
 

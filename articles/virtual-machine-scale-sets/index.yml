@@ -12,11 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/14/2018
   ms.author: carolz
-  ms.openlocfilehash: d26c3a94c166a91644397e4a31aeede55ec29284
-  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+  ms.openlocfilehash: ea8437adf7224c4605f31ccdea281669b89bb7c9
+  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/10/2018
+  ms.lasthandoff: 07/10/2018
+  ms.locfileid: "37949724"
 abstract:
   description: 使用 Azure 虚拟机规模集可以创建并管理一组完全相同的、负载均衡的、自动缩放的虚拟机。 使用我们的快速入门、教程和示例了解如何创建、配置、管理和自动缩放虚拟机规模集。
 sections:
@@ -51,7 +52,6 @@ sections:
     - html: 通过 <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI 2.0</a> 或 <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure PowerShell</a> 使用自定义 VM 映像
     - html: 使用 <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI 2.0</a> 或 <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure PowerShell</a> 将应用部署到规模集
     - html: 使用 <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI 2.0</a> 或 <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure PowerShell</a> 自动缩放规模集
-    - html: <a href="https://docs.microsoft.com/learn/deploy-custom-vmss-app/index">使用自定义 Packer 映像将应用部署到 Azure 虚拟机规模集</a>
 - title: 示例
   items:
   - type: paragraph

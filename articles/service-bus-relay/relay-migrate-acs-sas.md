@@ -1,11 +1,11 @@
 ---
-title: "从 Azure Active Directory 访问控制服务迁移到共享访问签名授权 | Microsoft Docs"
-description: "将应用程序从访问控制服务迁移到 SAS"
+title: 从 Azure Active Directory 访问控制服务迁移到共享访问签名授权 | Microsoft Docs
+description: 将应用程序从访问控制服务迁移到 SAS
 services: service-bus-relay
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855376"
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 

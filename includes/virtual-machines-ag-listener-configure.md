@@ -22,7 +22,7 @@
     c. 在“名称”框中，创建新侦听器的名称。 
    新侦听器的名称是应用程序用来连接 SQL Server 可用性组中数据库的网络名称。
    
-    d.单击“下一步”。 要完成创建侦听器，请单击“下一步”两次，并单击“完成”。 不要在此时使侦听器或资源联机。
+    d. 要完成创建侦听器，请单击“下一步”两次，并单击“完成”。 不要在此时使侦听器或资源联机。
 
 3. <a name="congroup"></a>配置可用性组的 IP 资源。
 
@@ -51,7 +51,7 @@
 
    ![IP 资源](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
-    d.单击“下一步”。 单击“确定”。
+    d. 单击“确定”。
 
 5. <a name="listname"></a>使客户端接入点资源依赖于 IP 地址。
 
@@ -65,7 +65,7 @@
 
    ![IP 资源](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
-    d.单击“下一步”。 右键单击侦听器名称，并单击“联机”。 
+    d. 右键单击侦听器名称，并单击“联机”。 
 
     >[!TIP]
     >可以验证是否正确配置了依赖项。 在故障转移群集管理器中，转到“角色”，右键单击可用性组，单击“更多操作”，并单击“显示依赖项报告”。 正确配置依赖项后，可用性组将依赖于网络名称，网络名称将依赖于 IP 地址。 
@@ -79,6 +79,31 @@
     $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
     $IPResourceName = "<IPResourceName>" # the IP Address resource name
     $ILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+    [int]$ProbePort = <nnnnn>
+    
+    Import-Module FailoverClusters
+    
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
+
+    b. 通过在某个群集节点上运行 PowerShell 脚本来设置群集参数。  
+
+重复上述步骤以设置 WSFC 群集 IP 地址的群集参数。
+
+1. 获取 WSFC 群集 IP 地址的 IP 地址名称。 在**故障转移群集管理器**中的“群集核心资源”下，找到“服务器名称”。
+
+1. 右键单击“IP 地址”，并选择“属性”。
+
+1. 记下 IP 地址的**名称**。 该项可能为 `Cluster IP Address`。 
+
+1. <a name="setwsfcparam"></a>在 PowerShell 中设置群集参数。
+    
+    a. 将以下 PowerShell 脚本复制到某个 SQL Server 实例。 请更新环境的变量。     
+    
+    ```PowerShell
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+    $ILBIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
     [int]$ProbePort = <nnnnn>
     
     Import-Module FailoverClusters

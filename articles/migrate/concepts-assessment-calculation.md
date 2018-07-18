@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的评估计算。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: be4fb15d96f5598d4b1ddbbaa4befe7f6530152c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203535"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287882"
 ---
 # <a name="assessment-calculations"></a>评估计算
 
@@ -40,7 +40,7 @@ Azure Migrate 检查本地 VM 的以下属性来确认 VM 是否可在 Azure 上
 --- | --- | ---
 **启动类型** | Azure 支持启动类型为 BIOS（而非 UEFI）的 VM。 | 如果启动类型为 UEFI，则状态为 Auzre 有条件的就绪。
 **核心数** | 计算机中的内核数必须等于或小于 Azure VM 支持的最大内核数量 (32)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果在评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果内核数大于 32，则为未就绪。
-**内存** | 计算机内存大小必须等于或小于 Azure VM 允许的最大内存 (448 GB)。 <br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存以进行比较。 如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果内存大小大于 448 GB，则为未就绪。
+内存 | 计算机内存大小必须等于或小于 Azure VM 允许的最大内存 (448 GB)。 <br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存以进行比较。 如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果内存大小大于 448 GB，则为未就绪。
 **存储磁盘** | 分配的磁盘大小必须为 4 TB (4096 GB) 或更小。<br/><br/> 连接到计算机的磁盘（包括操作系统磁盘）数必须为 65 个或更少。 | 如果有任何磁盘的大小大于 4 TB，或计算机附加了超过 65 个磁盘，则为未就绪。
 **网络** | 连接到计算机的 NIC 数必须为 32 个或更少。 | 如果计算机有超过 32 个 NIC，则为未就绪
 
@@ -69,12 +69,12 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
 ## <a name="sizing"></a>调整大小
 
-计算机被标记为 Azure 已就绪后，Azure Migrate 会调整 VM 大小及其用于 Azure 的磁盘大小。 如果评估属性中指定的大小调整条件是执行基于性能的大小调整，则 Azure Migrate 将考虑计算机的性能历史记录以确认 Azure 中的 VM 大小。 当你超额分配了本地 VM 但利用率较低，而又希望适当调整 Azure 中的 VM 大小以节省成本时，此方法非常有用。
+计算机被标记为 Azure 已就绪后，Azure Migrate 会调整 VM 大小及其用于 Azure 的磁盘大小。 如果评估属性中指定的大小调整条件是执行基于性能的大小调整，则 Azure Migrate 将考虑计算机的性能历史记录以确认 Azure 中的 VM 大小和磁盘类型。 当你超额分配了本地 VM 但利用率较低，而又希望适当调整 Azure 中的 VM 大小以节省成本时，此方法非常有用。
 
 > [!NOTE]
 > Azure Migrate 从 vCenter Server 收集本地 VM 的性能历史记录。 为了确保准确调整大小，请确保 vCenter Server 中的统计信息设置设为级别 3，并等待至少一天再发起本地 VM 发现。 如果 vCenter Server 中的统计信息设置低于级别 3，则不会收集磁盘和网络的性能数据。
 
-如果不想考虑 VM 大小调整的性能历史记录而希望按原样将 VM 迁移到 Azure，可指定大小调整条件为“按本地”，这样 Azure Migrate 便会基于本地配置调整 VM 大小，而不会考虑利用率数据。 在这种情况下，磁盘大小仍将基于性能数据。
+如果不想考虑 VM 大小调整的性能历史记录而希望按原样将 VM 迁移到 Azure，可指定大小调整条件为“按本地”，这样 Azure Migrate 便会基于本地配置调整 VM 大小，而不会考虑利用率数据。 在这种情况下，磁盘的大小调整将根据你在评估属性中指定的存储类型（标准磁盘或高级磁盘）来完成
 
 ### <a name="performance-based-sizing"></a>基于性能的大小
 
@@ -103,25 +103,13 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
     - 如果有多个合格的 Azure VM 大小，建议选择成本最低的那一个。
 
 ### <a name="as-on-premises-sizing"></a>按本地大小调整
-如果大小调整条件为“按本地大小调整”，Azure Migrate 不会考虑 VM 的性能历史记录，并将基于本地分配的大小分配 VM。 但是，对于磁盘大小调整，它会考虑磁盘的性能历史记录以推荐标准或高级磁盘。  
-- 存储：Azure Migrate 将附加到计算机的每个磁盘映射到 Azure 中的磁盘。
-
-    > [!NOTE]
-    > Azure Migrate 仅支持托管磁盘进行评估。
-
-    - 为获取有效的磁盘 I/O 每秒 (IOPS) 和吞吐量 (MBps)，Azure Migrate 将用舒适因子乘以磁盘 IOPS 和吞吐量。 基于有效的 IOPS 和吞吐量值，Azure Migrate 将确认磁盘应映射到 Azure 中的标准磁盘还是高级磁盘。
-    - 如果 Azure Migrate 找不到具有所需 IOPS 和吞吐量的磁盘，则会将计算机标记为不适用于 Azure。 [详细了解](../azure-subscription-service-limits.md#storage-limits) Azure 对每磁盘和 VM 的限制。
-    - 如果找到了一组合适的磁盘，Azure Migrate 将选择支持存储冗余方法以及在评估设置中指定的位置的磁盘。
-    - 如果有多个合格的磁盘，将选择成本最低的磁盘。
-    - 如果磁盘的性能数据不可用，那么所有磁盘都将映射到 Azure 中的标准磁盘。
-- **网络**：对于每个网络适配器，建议选择 Azure 中的网络适配器。
-- **计算**：Azure Migrate 查看本地 VM 的内核数和内存大小，并建议具有相同配置的 Azure VM。 如果有多个合格的 Azure VM 大小，建议选择成本最低的那一个。 用于 CPU 和内存的使用率数据不视为本地大小调整。
+如果大小调整条件为“按本地大小调整”，Azure Migrate 不会考虑 VM 和磁盘的性能历史记录，并将基于本地分配的大小分配 Azure 中的 VM SKU。 同样对于磁盘的大小调整，它将查找在评估属性中指定的存储类型（标准/高级），并相应地建议磁盘类型。 默认存储类型为高级磁盘。
 
 ### <a name="confidence-rating"></a>置信度分级
 
 在 Azure Migrate 中进行的每次评估都会与置信度分级相关联。置信度分为 1 星到 5 星，1 星表示置信度最低，5 星表示置信度最高。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 对评估的置信度分级可以用来评估 Azure Migrate 提供的大小建议的可靠性。
 
-对 VM 进行基于性能的大小调整时，Azure Migrate 需要 CPU 和内存的利用率数据。 另外，对于每个附加到 VM 的磁盘的大小调整，需要读/写 IOPS 和吞吐量。 同样，对于每个附加到 VM 的网络适配器，Azure Migrate 需要进行基于性能的大小调整所需的网络流入/流出量。 如果上述利用率数据在 vCenter Server 中均不可用，则 Azure Migrate 提供的大小建议可能不可靠。 根据可用数据点的百分比，提供评估的置信度分级，如下所示：
+评估的置信度分级对于大小调整条件为“基于性能的大小调整”的评估更为有用。 对于基于性能的大小调整，Azure Migrate 需要 VM 的 CPU 和内存的利用率数据。 此外，对于每个附加到 VM 的磁盘，它需要磁盘 IOPS 和吞吐量数据。 同样，对于每个附加到 VM 的网络适配器，Azure Migrate 需要网络流入/流出量才能执行基于性能的大小调整。 如果上述利用率数据在 vCenter Server 中均不可用，则 Azure Migrate 提供的大小建议可能不可靠。 根据可用数据点的百分比，提供评估的置信度分级，如下所示：
 
    **数据点的可用性** | **置信度分级**
    --- | ---
@@ -144,7 +132,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
 大小建议完成后，Azure Migrate 将计算迁移后计算和存储成本。
 
-- 计算成本：使用建议的 Azure VM 大小，Azure Migrate 使用计费 API 来计算 VM 每月成本。 该计算会考虑操作系统、软件保障、位置和货币设置。 它将所有计算机的成本求和，计算每月总计算成本。
+- 计算成本：使用建议的 Azure VM 大小，Azure Migrate 使用计费 API 来计算 VM 每月成本。 该计算会考虑操作系统、软件保障、预留实例、VM 运行时间、位置和货币设置。 它将所有计算机的成本求和，计算每月总计算成本。
 - 存储成本：一台计算机的每月存储成本的计算方法为，将连接到该计算机的所有磁盘的每月成本求和。 Azure Migrate 通过将所有计算机的存储成本求和，计算每月总存储成本。 当前该计算不考虑在评估设置中指定的优惠。
 
 成本以在评估设置中指定的币种显示。

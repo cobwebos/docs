@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 4c9e7ec65db80e0af91645d70cea39bb1a396791
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ff658fd14700e9fdf66b9d929da133f7a3b3f3a0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831779"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>面向企业客户的报告 API 概述
 报告 API 使企业 Azure 客户能够以编程方式将消耗数据和计费数据提取到首选的数据分析工具。 
@@ -30,16 +31,18 @@ ms.lasthandoff: 05/04/2018
 
 |请求标头密钥 | 值|
 |-|-|
-|授权| 用以下格式指定该值：bearer {API_KEY} <br/> 示例：bearer eyr....09|
+|授权| 用以下格式指定该值：bearer {API_KEY} <br/> 示例：bearer eyr....09| 
 
 ## <a name="consumption-apis"></a>消耗量 API
 可在[此处](https://consumption.azure.com/swagger/ui/index)找到为下面所述的 API 提供的 Swagger 终结点，该终结点可以使用 [AutoRest](https://github.com/Azure/AutoRest) 或 [Swagger CodeGen](http://swagger.io/swagger-codegen/) 进行简单的 API 自检并生成客户端 SDK。 2014 年 5 月 1 日开始的数据就是通过此 API 提供的。 
 
-* **余额和摘要** - [余额和摘要 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) 提供关于余额、新购买、Azure Marketplace 服务费用、调整和超额费用信息的每月摘要。
+* 
+  **余额和摘要** - [余额和摘要 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) 提供关于余额、新购买、Azure 市场服务费用、调整和超额费用信息的每月摘要。
 
 * 使用情况详细信息 - [使用情况详细信息 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) 提供已耗用量和注册估计费用的日常明细。 结果还包括有关实例、计量和部门信息。 可以按照计费周期或指定的开始日期和结束日期查询 API。 
 
-* **Marketplace 应用商店费用** - [Marketplace 应用商店费用 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) 会返回基于使用情况的 Marketplace 费用明细（不包括一次性费用），且按指定计费周期的天或开始和结束日期排列。
+* 
+  **市场应用商店费用** - [市场应用商店费用 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) 会返回基于使用情况的市场费用明细（不包括一次性费用），且按指定计费周期的天或开始和结束日期排列。
 
 * 价目表 - [价目表 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) 为给定注册和计费周期的每个计量提供适用的费率。 
 
@@ -50,7 +53,7 @@ ms.lasthandoff: 05/04/2018
  列出计费周期 - [计费周期 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) 会以倒序顺序为指定的注册返回具有消耗数据的计费周期列表。 每个周期都有一个属性指向以下 4 个数据集的 API 路由：BalanceSummary、UsageDetails、Marketplace Charge 和 PriceSheet。
 
 
-## <a name="api-response-codes"></a>API 响应代码  
+## <a name="api-response-codes"></a>API 响应代码   
 |响应状态代码|消息|说明|
 |-|-|-|
 |200| OK|无错误|

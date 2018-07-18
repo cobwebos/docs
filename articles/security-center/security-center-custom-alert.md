@@ -3,31 +3,37 @@ title: Azure 安全中心的自定义警报规则 | Microsoft Docs
 description: 本文档介绍了如何在 Azure 安全中心创建自定义警报规则。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: f335d8c4-0234-4304-b386-6f1ecda07833
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
-ms.author: yurid
-ms.openlocfilehash: e43d925317e32d2fcbdeb75eff71de0cc5a91378
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/29/2018
+ms.author: terrylan
+ms.openlocfilehash: 326b07a18b07f15850e0283ad51a05b42c1ef0ab
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341307"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure 安全中心的自定义警报规则（预览版）
 本文档介绍了如何在 Azure 安全中心创建自定义警报规则。
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>安全中心的自定义警报规则是什么？
 
-安全中心有一组预定义的[安全警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)，这些警报在出现威胁或可疑活动时触发。 在某些情况下，可能要根据环境的具体需求创建自定义警报。 
+安全中心有一组预定义的[安全警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)，这些警报在出现威胁或可疑活动时触发。 在某些情况下，可能要根据环境的具体需求创建自定义警报。
 
-可以使用安全中心的自定义警报规则，根据从环境中收集到的数据定义新的安全警报。 可以先创建查询，再将这些查询的结果用作自定义规则的条件，在符合该条件的情况下执行规则。 可以使用计算机安全事件、合作伙伴的安全解决方案日志或者通过 API 引入的数据来创建自定义查询。 
+可以使用安全中心的自定义警报规则，根据从环境中收集到的数据定义新的安全警报。 可以先创建查询，再将这些查询的结果用作自定义规则的条件，在符合该条件的情况下执行规则。 可以使用计算机安全事件、合作伙伴的安全解决方案日志或者通过 API 引入的数据来创建自定义查询。
+
+> [!NOTE]
+> 安全中心的[调查功能](security-center-investigation.md)不支持自定义警报。
+>
+>
 
 ## <a name="how-to-create-a-custom-alert-rule-in-security-center"></a>如何在安全中心创建自定义警报规则？
 
@@ -37,16 +43,23 @@ ms.lasthandoff: 05/03/2018
 2.  在“安全中心 - 自定义警报规则(预览版)”页中单击“新建自定义警报规则”。
 
     ![自定义警报](./media/security-center-custom-alert/security-center-custom-alert-fig1.png)
-    
+
 3.  此时会显示“创建自定义警报规则”页，其中包含以下选项：
-    
+
     ![创建](./media/security-center-custom-alert/security-center-custom-alert-fig2.png)
 
 4.  在“名称”字段中，键入此自定义规则的名称。
 5.  在“说明”字段中根据该规则的目的键入简要说明。
 6.  在“严重性”字段中根据需要选择严重级别（高、中、低）。
 7.  在“订阅”字段中选择此规则适用的订阅。
-8.  在“工作区”字段中选择要使用此规则进行监视的工作区，并在“搜索查询”字段中选择用于获取结果的查询。 查询的结果触发警报。 请注意，键入有效查询时，会在以下字段的右角显示绿色复选标记：
+8.  在“工作区”字段中选择要使用此规则进行监视的工作区，并在“搜索查询”字段中选择要用于获取结果的查询。
+
+    > [!NOTE]
+    > 需要在选择用来存储自定义警报的工作区中具有写入权限。
+    >
+    >
+
+    查询的结果触发警报。 请注意，键入有效查询时，会在以下字段的右角显示绿色复选标记：
 
     ![查询](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
 
@@ -72,7 +85,6 @@ ms.lasthandoff: 05/03/2018
 * [Managing and responding to security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)（管理和响应 Azure 安全中心的安全警报）。 了解如何管理警报并响应安全中心的安全事件。
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md)（在 Azure 安全中心进行安全运行状况监视）。 了解如何监视 Azure 资源的运行状况。
 * [了解 Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同类型的安全警报。
-* [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何排查安全中心的常见问题。 
+* [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何排查安全中心的常见问题。
 * [Azure Security Center FAQ](security-center-faq.md)（Azure 安全中心常见问题）。 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。
-

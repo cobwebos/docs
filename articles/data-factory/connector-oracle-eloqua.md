@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（Beta 版本）从 Oracle Eloqua 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Oracle Eloqua 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Oracle Eloqua 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b1540ccd8a80d1cb3e3cff7b0ee488dd58c48df5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 821e345933ba52ed2c71251bab3ba159e5412568
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048367"
 ---
-# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Oracle Eloqua 复制数据
+# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory"></a>使用 Azure 数据工厂从 Oracle Eloqua 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle Eloqua 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
-> [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
-
 > [!IMPORTANT]
-> 此连接器目前处于 Beta 版本。 可以进行试用并提供反馈。 请勿在生产环境中使用该版本。
+> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -48,8 +46,8 @@ Oracle Eloqua 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Eloqua** | 是 |
-| endpoint | Eloqua 服务器的终结点。 （即，eloqua.example.com）  | 是 |
-| username | 以下格式的站点名称和 Eloqua 帐户的用户名：站点名称/用户名。 （即，Eloqua/Alice）  | 是 |
+| endpoint | Eloqua 服务器的终结点。 Eloqua 支持多个数据中心，用于确定终结点、使用凭据登录 https://login.eloqua.com，然后通过 `xxx.xxx.eloqua.com` 模式从重定向 URL 复制“基 URL”部分。 | 是 |
+| username | Eloqua 帐户的站点名称和用户名采用以下格式：`SiteName\Username`，例如 `Eloqua\Alice`。  | 是 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
@@ -63,8 +61,8 @@ Oracle Eloqua 链接服务支持以下属性：
     "properties": {
         "type": "Eloqua",
         "typeProperties": {
-            "endpoint" : "eloqua.example.com",
-            "username" : "Eloqua/Alice",
+            "endpoint" : "<base URL e.g. xxx.xxx.eloqua.com>",
+            "username" : "<site name>\\<user name e.g. Eloqua\\Alice>",
             "password": {
                  "type": "SecureString",
                  "value": "<password>"

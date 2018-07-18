@@ -1,8 +1,8 @@
 ---
-title: "Azure Databricks：常见问题和帮助 | Microsoft Docs"
-description: "获取有关 Azure Databricks 的常见问题的答案和故障诊断信息。"
+title: Azure Databricks：常见问题和帮助 | Microsoft Docs
+description: 获取有关 Azure Databricks 的常见问题的答案和故障诊断信息。
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -11,13 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: cd231a6baad74cd88d82b219e2e58e9252187ff5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598991"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
@@ -75,7 +76,7 @@ Databricks 预配过程中会创建新的虚拟网络。 不能在此版本中�
     
     c. 授予新用户 Databricks 工作区资源的“参与者”角色。
     
-    d.单击“下一步”。 使用新用户登录到 Azure 门户，并找到 Databricks 工作区。
+    d. 使用新用户登录到 Azure 门户，并找到 Databricks 工作区。
     
     e. 以此用户的身份启动 Databricks 工作区。
 

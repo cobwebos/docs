@@ -1,11 +1,11 @@
 ---
-title: "使用 API 管理中的客户端证书身份验证确保 API 安全 - Azure API 管理 | Microsoft 文档"
-description: "了解如何使用客户端证书保护对 API 的访问"
+title: 使用 API 管理中的客户端证书身份验证确保 API 安全 - Azure API 管理 | Microsoft 文档
+description: 了解如何使用客户端证书保护对 API 的访问
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26406737"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 

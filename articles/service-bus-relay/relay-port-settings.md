@@ -1,51 +1,53 @@
 ---
-title: "Azure 中继端口设置 | Microsoft Docs"
-description: "有关 Azure 中继端口值的详细信息。"
+title: Azure 中继端口设置 | Microsoft Docs
+description: 有关 Azure 中继端口值的详细信息。
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 06/26/2018
 ms.author: sethm
-ms.openlocfilehash: 055f04d496b56a5e8542911aa78292d7746ae80b
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 56688b6941d58c0ecc8d0ff4ba3c8a8392e71496
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029367"
 ---
 # <a name="azure-relay-port-settings"></a>Azure 中继端口设置
 
 下表描述 Azure 中继端口值的所需配置。
 
 ## <a name="hybrid-connections"></a>混合连接
-混合连接将 WebSocket 用作仅使用 **HTTPS** 的基础传输机制。 
+
+混合连接在端口 443 上结合使用 WebSocket 和 SSL，以用作仅使用 HTTPS 的基础传输机制。 
 
 ## <a name="wcf-relays"></a>WCF 中继
   
 |绑定|传输安全|端口|  
 |-------------|------------------------|----------|  
 |[BasicHttpRelayBinding 类](/dotnet/api/microsoft.servicebus.basichttprelaybinding)（客户端）|是|HTTPS| 
-| |" |否|HTTP|  
+|" |否|HTTP|  
 |[BasicHttpRelayBinding 类](/dotnet/api/microsoft.servicebus.basichttprelaybinding)（服务）|任一个|9351/HTTP|  
 |[NetEventRelayBinding 类](/dotnet/api/microsoft.servicebus.neteventrelaybinding)（客户端）|是|9351/HTTPS|  
-||" |否|9350/HTTP|  
+|" |否|9350/HTTP|  
 |[NetEventRelayBinding 类](/dotnet/api/microsoft.servicebus.neteventrelaybinding)（服务）|任一个|9351/HTTP|  
 |[NetTcpRelayBinding 类](/dotnet/api/microsoft.servicebus.nettcprelaybinding)（客户端/服务）|任一个|5671/9352/HTTP（9352/9353，如果使用混合）|  
 |[NetOnewayRelayBinding 类](/dotnet/api/microsoft.servicebus.netonewayrelaybinding)（客户端）|是|9351/HTTPS|  
-||" |否|9350/HTTP|  
+|" |否|9350/HTTP|  
 |[NetOnewayRelayBinding 类](/dotnet/api/microsoft.servicebus.netonewayrelaybinding)（服务）|任一个|9351/HTTP|  
 |[WebHttpRelayBinding 类](/dotnet/api/microsoft.servicebus.webhttprelaybinding)（客户端）|是|HTTPS|  
-||" |否|HTTP|  
+|" |否|HTTP|  
 |[WebHttpRelayBinding 类](/dotnet/api/microsoft.servicebus.webhttprelaybinding)（服务）|任一个|9351/HTTP|  
 |[WS2007HttpRelayBinding 类](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding)（客户端）|是|HTTPS|  
-||" |否|HTTP|  
+|" |否|HTTP|  
 |[WS2007HttpRelayBinding 类](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding)（服务）|任一个|9351/HTTP|
 
 ## <a name="next-steps"></a>后续步骤

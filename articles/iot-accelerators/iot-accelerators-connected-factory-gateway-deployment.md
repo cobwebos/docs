@@ -1,24 +1,19 @@
 ---
 title: 部署连接的工厂网关 - Azure | Microsoft Docs
 description: 如何在 Windows 或 Linux 上部署网关，以便连接到连接的工厂解决方案加速器。
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 829b2031458b78a1046e900dbf37028ac9eb4dc8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c2805ddf7627ad520f6cc6585baedc7f5194aad6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626898"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>在 Windows 或 Linux 上为连接的工厂解决方案加速器部署边缘网关
 
@@ -170,6 +165,6 @@ OPC 代理会在安装期间保存连接字符串。 后续运行时，应省略
 
 ## <a name="next-steps"></a>后续步骤
 
-若要深入了解连接的工厂解决方案加速器的体系结构，请参阅[连接的工厂解决方案加速器演练](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough)。
+若要深入了解连接的工厂解决方案加速器的体系结构，请参阅[连接的工厂解决方案加速器演练](iot-accelerators-connected-factory-sample-walkthrough.md)。
 
 了解 [OPC 发布服务器引用实现](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher)。

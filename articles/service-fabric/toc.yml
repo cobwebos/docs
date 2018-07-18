@@ -163,6 +163,13 @@
           href: service-fabric-application-model.md
         - name: 应用程序和服务清单
           href: service-fabric-application-and-service-manifests.md
+        - name: 应用程序和服务清单示例
+          href: service-fabric-manifest-examples.md
+          items:
+            - name: Reliable Services 应用程序和服务清单示例
+              href: service-fabric-manifest-example-reliable-services-app.md
+            - name: 多容器应用程序和服务清单示例
+              href: service-fabric-manifest-example-container-app.md
         - name: 托管模型
           href: service-fabric-hosting-model.md
         - name: 应用程序安全性
@@ -208,6 +215,10 @@
               href: service-fabric-image-store-connection-string.md
         - name: 服务资源
           href: service-fabric-service-manifest-resources.md
+        - name: 定期备份和还原
+          items:
+            - name: 了解定期备份配置
+              href: service-fabric-backuprestoreservice-configure-periodic-backup.md
     - name: 群集
       href: service-fabric-deploy-anywhere.md
       items:
@@ -399,6 +410,8 @@
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: 生成 ASP.NET Core 服务
           href: service-fabric-add-a-web-frontend.md
+        - name: 在 Linux 上生成 Apache Tomcat 服务器容器
+          href: service-fabric-get-started-tomcat.md
         - name: 配置安全性
           items:
             - name: 管理应用程序机密
@@ -419,6 +432,8 @@
               href: service-fabric-securing-containers.md
             - name: 设置 Windows 容器的 gMSA
               href: service-fabric-setup-gmsa-for-windows-containers.md
+            - name: 在 Linux 上配置证书
+              href: service-fabric-configure-certificates-linux.md
         - name: 配置定期备份（Azure 上的群集）
           href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
         - name: 配置定期备份（独立群集）
@@ -449,6 +464,13 @@
           href: service-fabric-debugging-your-application-java.md
         - name: 在本地监视和诊断
           href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+    - name: 在 VS Code 环境中工作
+      href: service-fabric-get-started-vs-code.md
+      items:
+        - name: '通过 VS Code 开发 C# Service Fabric 应用程序'
+          href: service-fabric-develop-csharp-applications-with-vs-code.md
+        - name: 通过 VS Code 开发 Java Service Fabric 应用程序
+          href: service-fabric-develop-java-applications-with-vs-code.md
     - name: 从云服务迁移
       items:
         - name: 云服务与 Service Fabric 的比较
@@ -523,17 +545,13 @@
                   href: service-fabric-cluster-creation-via-arm.md
                 - name: 使用证书公用名称的群集
                   href: service-fabric-create-cluster-using-cert-cn.md
-                - name: 启用 Windows 磁盘加密
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: 启用 Linux 磁盘加密
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
             - name: 缩放
               items:
                 - name: 手动横向扩展
                   href: service-fabric-cluster-scale-up-down.md
                 - name: 以编程方式横向扩展
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: 纵向扩展主节点类型 VM
+                - name: 缩放或升级主节点类型 VM
                   href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
             - name: 升级
               href: service-fabric-cluster-upgrade.md
@@ -551,8 +569,6 @@
               href: service-fabric-cluster-delete.md
             - name: 远程连接到群集节点 VM
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-            - name: 升级/迁移 VMSS SKU
-              href: service-fabric-update-vmss-sku.md
         - name: 独立群集
           items:
             - name: 创建
@@ -601,13 +617,13 @@
               href: service-fabric-diagnostics-event-aggregation-wad.md
             - name: Linux Azure 诊断
               href: service-fabric-diagnostics-event-aggregation-lad.md
-            - name: 设置 OMS Log Analytics
+            - name: 设置 Log Analytics
               href: service-fabric-diagnostics-oms-setup.md
-            - name: 使用 OMS 进行监视
+            - name: 使用 Log Anaytics 进行监视
               href: service-fabric-diagnostics-event-analysis-oms.md
         - name: 监视基础架构
           items:
-            - name: 通过 OMS 代理监视性能
+            - name: 使用 Log Analytics 代理监视性能
               href: service-fabric-diagnostics-oms-agent.md
             - name: 通过 WAD 监视性能
               href: service-fabric-diagnostics-perf-wad.md
@@ -623,6 +639,10 @@
           href: service-fabric-troubleshoot-local-cluster-setup.md
         - name: 诊断常见方案
           href: service-fabric-diagnostics-common-scenarios.md
+    - name: 最佳实践
+      items:
+        - name: 生产就绪情况核对清单
+          href: service-fabric-production-readiness-checklist.md
 - name: 引用
   items:
     - name: Azure PowerShell

@@ -10,25 +10,23 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/27/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 58e1c88629c21940e09efd6832d536c0b2b47ace
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 92b45c1038fd099926360dc80802ababf0e8ee93
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37052760"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 复制数据
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-azure-documentdb-connector.md)
-> * [版本 2 - 预览版](connector-azure-cosmos-db.md)
+> * [第 1 版](v1/data-factory-azure-documentdb-connector.md)
+> * [当前版本](connector-azure-cosmos-db.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Cosmos DB (SQL API) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Cosmos DB 连接器](v1/data-factory-azure-documentdb-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -111,8 +109,8 @@ Azure Cosmos DB 链接的服务支持以下属性：
 
 对于无架构的数据存储（如 Azure Cosmos DB），复制活动使用下列方式之一推断架构。 因此，最好在 structure 部分指定数据结构，除非要[按原样导入/导出 JSON 文档](#importexport-json-documents)。
 
-1. 如果使用数据集定义中的**结构**属性指定数据的结构，数据工厂服务会将此结构作为架构。 在这种情况下，如果行不包含列的值，则为其提供 null 值。
-2. 如果不使用数据集定义中的**结构**属性指定数据结构，数据工厂服务将通过使用数据中的第一行来推断架构。 在这种情况下，如果第一行不包含完整架构，则复制操作的结果中将丢失部分列。
+*. 如果使用数据集定义中的**结构**属性指定数据的结构，数据工厂服务会将此结构作为架构。 在这种情况下，如果行不包含列的值，则为其提供 null 值。
+*. 如果不使用数据集定义中的**结构**属性指定数据结构，数据工厂服务将通过使用数据中的第一行来推断架构。 在这种情况下，如果第一行不包含完整架构，则复制操作的结果中将丢失部分列。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -210,8 +208,8 @@ Azure Cosmos DB 链接的服务支持以下属性：
 
 要实现此类“架构不可知”复制：
 
-- 在 Cosmos DB 数据集中，请勿指定“结构”部分；在复制活动 Cosmos DB 源/接收器中，请勿指定“nestingSeparator”属性。
-- 导入或导出 JSON 文件时，在相应的文件存储数据集中，指定“JsonFormat”作为格式类型，并适当配置“filePattern”（请参阅 [JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)部分，了解详细信息），然后不指定“structure”部分并跳过其他格式设置。
+* 使用复制数据工具时，选中“原样导出到 JSON 文件或 Cosmos DB 集合”选项。
+* 使用活动创作时，请勿指定 Cosmos DB 数据集中的“结构”（亦称为架构）部分，也不要指定复制活动中 Cosmos DB 源/接收器的“nestingSeparator”属性。 导入或导出 JSON 文件时，在相应的文件存储数据集中，指定“JsonFormat”作为格式类型，并适当配置“filePattern”（请参阅 [JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)部分以了解详细信息），然后不指定“结构”（亦称为架构）部分并跳过其他格式设置。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

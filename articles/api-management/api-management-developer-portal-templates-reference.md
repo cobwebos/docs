@@ -1,11 +1,11 @@
 ---
-title: "Azure API 管理开发人员门户模板 | Microsoft Docs"
-description: "了解如何在 Azure API 管理中使用一组模板自定义开发人员门户页面的内容。"
+title: Azure API 管理开发人员门户模板 | Microsoft Docs
+description: 了解如何在 Azure API 管理中使用一组模板自定义开发人员门户页面的内容。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26128743"
 ---
 # <a name="developer-portal-templates"></a>开发人员门户模板
 

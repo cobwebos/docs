@@ -3,7 +3,7 @@ title: Azure IT 操作人员入门指南 | Microsoft Docs
 description: Azure IT 操作人员入门指南
 services: ''
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,12 +14,13 @@ ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
-ms.author: nepeters
-ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: iainfou
+ms.openlocfilehash: f79f727ed46f85866f59468be418ba8975c17bd8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099487"
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>云计算和 Microsoft Azure 简介
 
@@ -60,7 +61,7 @@ SaaS 是集中托管和管理的软件。 它通常基于多租户体系结构 -
 
 Microsoft Office 365 就是一款典型的 SaaS 服务。 订阅者支付月度订阅或年度订阅的费用，以服务的形式获得 Microsoft Exchange、Microsoft OneDrive 以及其余 Microsoft Office 套件。 订阅者获取的始终是最新版本，并且 Exchange 服务器由系统进行管理。 与每年安装和升级 Office 相比，这可以节省金钱和精力。
 
-#### <a name="paas-platform-as-a-service"></a>PaaS：平台即服务 
+#### <a name="paas-platform-as-a-service"></a>PaaS：平台即服务
 
 使用 PaaS，可以将应用程序部署到云服务供应商提供的环境中。 由供应商进行所有基础结构管理，因此用户可以专注于应用程序开发。
 
@@ -148,7 +149,7 @@ Azure 是一个全球性云平台，在世界各地的许多区域都可以使�
 ### <a name="azure-portal"></a>Azure 门户
 
 
-Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户位于 https://portal.azure.com。它包括一个可自定义的仪表板和用于管理 Azure 资源的工具。 还提供计费和订阅信息。 有关详细信息，请参阅 [Microsoft Azure 门户概述](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)和[通过门户管理 Azure 资源](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)。
+Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户位于 https://portal.azure.com。 它包括一个可自定义的仪表板和用于管理 Azure 资源的工具。 还提供计费和订阅信息。 有关详细信息，请参阅 [Microsoft Azure 门户概述](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)和[通过门户管理 Azure 资源](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)。
 
 ### <a name="resources"></a>资源
 
@@ -329,7 +330,7 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持将 Windows 或 Linux 虚拟机部署到 Microsoft Azure 数据中心。 通过 Azure 虚拟机，用户可以完全控制 VM 配置，并负责所有软件安装、配置和维护。
 
-在部署 Azure VM 时，可从 Microsoft Azure Marketplace 中选择一个映像，也可提供自己的通用映像。 此映像用于应用操作系统和初始配置。 在部署期间，资源管理器将处理一些配置设置，例如分配计算机名称、管理凭据和网络配置。 可以使用 Azure 虚拟机扩展来进一步自动化配置，如软件安装、防病毒配置和监视解决方案。
+在部署 Azure VM 时，可从 Microsoft Azure 市场中选择一个映像，也可提供自己的通用映像。 此映像用于应用操作系统和初始配置。 在部署期间，资源管理器将处理一些配置设置，例如分配计算机名称、管理凭据和网络配置。 可以使用 Azure 虚拟机扩展来进一步自动化配置，如软件安装、防病毒配置和监视解决方案。
 
 可以创建多个不同大小的虚拟机。 虚拟机的大小决定了如何分配资源，如处理、内存和存储容量。 在某些情况下，只有特定大小的 VM 上才可使用特定功能，如启用了 RDMA 的网络适配器和 SSD 磁盘。 有关 VM 大小和功能的完整列表，请参阅 [Azure 中 Windows 虚拟机的大小](../../virtual-machines/windows/sizes.md)和 [Azure 中 Linux 虚拟机的大小](../../virtual-machines/linux/sizes.md)。
 
@@ -380,11 +381,11 @@ Azure 存储帐户可以配置不同级别的冗余：
 
 -   **读取访问异地冗余存储**是一种异地冗余存储，能够读取次要区域中的数据。 此能力使其适用于部分灾难恢复。 如果主要区域出现问题，可将应用程序更改为对配对区域具有只读访问权限。
 
-### <a name="use-cases"></a>用例 
+### <a name="use-cases"></a>用例
 
 每个存储类型具有不同的用例。
 
-**Blob 存储** 
+**Blob 存储**
 
 “Blob”是二进制大型对象的缩写。 Blob 和计算机上存储的文件一样，是非结构化文件。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。 Azure Blob 存储还可保存 Azure 虚拟机数据磁盘。
 
@@ -444,7 +445,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 ### <a name="access-and-security-for-azure-storage"></a>Azure 存储的访问和安全性
 
-可通过多种方式访问 Azure 存储，包括通过 Azure 门户进行访问、在 VM 创建和操作期间访问，以及从存储客户端库访问。 
+可通过多种方式访问 Azure 存储，包括通过 Azure 门户进行访问、在 VM 创建和操作期间访问，以及从存储客户端库访问。
 
 **虚拟机磁盘**
 

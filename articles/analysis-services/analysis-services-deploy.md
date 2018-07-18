@@ -3,16 +3,17 @@ title: 通过 SSDT 部署到 Azure Analysis Services | Microsoft Docs
 description: 了解如何通过 SSDT 将表格模型部署到 Azure Analysis Services 服务器。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a25066ef8446449148bc0ca95989dc6ca3ca6839
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a3b969af861d6fb750b8aad666f2e1dfb7c8a3d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447279"
 ---
 # <a name="deploy-a-model-from-ssdt"></a>从 SSDT 部署模型
 在 Azure 订阅中创建服务器之后，便可以开始将表格模型数据库部署到其中。 SQL Server Data Tools (SSDT) 可用于生成和部署正在处理的表格模型项目。 
@@ -29,15 +30,18 @@ ms.lasthandoff: 04/16/2018
 > 
 > 
 
-## <a name="to-deploy-a-tabular-model-from-ssdt"></a>从 SSDT 部署表格模型
+## <a name="get-the-server-name"></a>获取服务器名称
 
-1. 在部署之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制服务器名称。
+在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制服务器名称。
    
-    ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. 在SSDT > “解决方案资源管理器”中，右键单击项目，并选择“属性”。 然后在“部署” > “服务器”中粘贴服务器名称。   
+![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
+
+## <a name="to-deploy-from-ssdt"></a>若要从 SSDT 部署
+
+1. 在SSDT > “解决方案资源管理器”中，右键单击项目，并选择“属性”。 然后在“部署” > “服务器”中粘贴服务器名称。   
    
     ![将服务器名称粘贴到部署服务器属性](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
-3. 在**解决方案资源管理器**中，右键单击“属性”，并单击“部署”。 系统可能会提示登录到 Azure。
+2. 在**解决方案资源管理器**中，右键单击“属性”，并单击“部署”。 系统可能会提示登录到 Azure。
    
     ![部署到服务器](./media/analysis-services-deploy/aas-deploy-deploy.png)
    

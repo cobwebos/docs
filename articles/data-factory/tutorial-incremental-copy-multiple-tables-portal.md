@@ -3,7 +3,7 @@ title: 使用 Azure 数据工厂以增量方式复制多个表 | Microsoft Docs
 description: 在本教程中，请创建一个 Azure 数据工厂管道，将增量数据以增量方式从本地 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 399e132f0a28ffc6b60e3d757afff5aae60f7674
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: c35d267acfd1778e80605cdfe9eec0edbb18a281
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052838"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -36,9 +37,6 @@ ms.lasthandoff: 03/23/2018
 > * 在源表中添加或更新数据。
 > * 重新运行和监视管道。
 > * 查看最终结果。
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用数据工厂服务的第 1 版（正式版），请参阅[数据工厂第 1 版文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="overview"></a>概述
 下面是创建此解决方案所要执行的重要步骤： 
@@ -59,7 +57,7 @@ ms.lasthandoff: 03/23/2018
 
     c. 创建 Copy 活动，用于复制源数据存储中其水印列值大于旧水印值但小于新水印值的行。 然后，该活动将源数据存储中的增量数据作为新文件复制到 Azure Blob 存储。
 
-    d.单击“下一步”。 创建 StoredProcedure 活动，用于更新下一次运行的管道的水印值。 
+    d. 创建 StoredProcedure 活动，用于更新下一次运行的管道的水印值。 
 
     下面是高级解决方案示意图： 
 
@@ -253,7 +251,7 @@ END
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
-9. 创建完成后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/tutorial-incremental-copy-multiple-tables-portal/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
@@ -369,16 +367,25 @@ END
 3. 此时会在 Web 浏览器中看到打开的新选项卡，用于配置数据集。 树状视图中也会看到数据集。 在底部的“属性”窗口的“常规”选项卡中，输入 **SinkDataset** 作为**名称**。
 
    ![接收器数据集 - 常规](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-general.png)
-4. 在“属性”窗口中切换到“连接”选项卡，然后选择 **AzureSqlLinkedService** 作为“链接服务”。 
-
-   ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
-5. 在“属性”窗口中切换到“参数”选项卡，然后执行以下步骤： 
+4. 在“属性”窗口中切换到“参数”选项卡，然后执行以下步骤： 
 
     1. 在“创建/更新参数”部分单击“新建”。 
     2. 输入 **SinkTableName** 作为**名称**，输入**字符串**作为**类型**。 此数据集采用 **SinkTableName** 作为参数。 SinkTableName 参数由管道在运行时动态设置。 管道中的 ForEach 活动循环访问一个包含表名的列表，每一次迭代都将表名传递到此数据集。
-    3. 在“可参数化属性”部分，输入 `@{dataset().SinkTableName}` 作为 **tableName** 属性。 使用传递给 **SinkTableName** 参数的值初始化数据集的 **tableName** 属性。 
-
+   
        ![接收器数据集 - 属性](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+5. 在“属性”窗口中切换到“连接”选项卡，然后选择 **AzureSqlLinkedService** 作为“链接服务”。 对于“表”属性，单击“添加动态内容”。 
+
+   ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
+    
+    
+6. 在“参数”部分中选择 **SinkTableName**
+   
+   ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
+
+   
+ 7. 单击“完成”后，可以看到表名为 **@dataset().SinkTableName**。
+   
+   ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
 ### <a name="create-a-dataset-for-a-watermark"></a>为水印创建数据集
 在此步骤中，创建用于存储高水印值的数据集。 
@@ -644,7 +651,7 @@ VALUES
     ]
     ```
 
-## <a name="monitor-the-pipeline"></a>监视管道
+## <a name="monitor-the-pipeline-again"></a>再次监视管道
 
 1. 在左侧切换到“监视”选项卡。 可以看到**手动触发器**触发的管道运行。 单击“刷新”按钮刷新列表。 使用“操作”列中的链接可以查看与管道运行关联的活动运行，以及重新运行管道。 
 

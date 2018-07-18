@@ -2,22 +2,19 @@
 title: 使用 Azure Cosmos DB 全局分发数据 | Microsoft Docs
 description: 了解如何通过 Azure Cosmos DB（一种全球分布式多模型数据库服务），使用全球数据库进行全球范围的异地复制、故障转移和数据恢复。
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 967e7458d43dccd4601440138b7445eb876b9f01
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4f548e180ca315013d5ca91118041cac2e622520
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611443"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>如何使用 Azure Cosmos DB 在全球范围内分发数据
 Azure 无处不在 - 它的足迹遍布全球 50 多个地理区域，并且还在不断扩展。 借助其在全球范围的足迹，Azure 为其开发人员提供的特色功能之一是能够轻松生成、部署和管理全局分布式应用程序。 
@@ -87,7 +84,7 @@ Azure Cosmos DB 允许将区域（与数据库关联）配置为“读取”、�
 Azure Cosmos DB 允许触发数据库帐户的故障转移，以验证整个应用程序（超出数据库）的端到端可用性属性。 由于故障检测和前导选择的安全性和活跃度属性均得到了保证，Azure Cosmos DB 可确保租户启动的手动故障转移操作实现“零数据丢失”。
 
 ### <a id="AutomaticFailover"></a>自动故障转移
-Azure Cosmos DB 支持在发生一个或多个区域性故障时自动进行故障转移。 区域故障转移期间，Azure Cosmos DB 会保持其读取延迟率、运行时间可用性、一致性和吞吐量 SLA。 Azure Cosmos DB 对自动故障转移操作完成的持续时间设置了上限。 这是区域性故障期间潜在的数据丢失时间段。
+Azure Cosmos DB 支持在发生一个或多个区域性故障期间自动进行故障转移。 区域故障转移期间，Azure Cosmos DB 会保持其读取延迟率、运行时间可用性、一致性和吞吐量 SLA。 Azure Cosmos DB 对自动故障转移操作完成的持续时间设置了上限。 这是区域性故障期间潜在的数据丢失时间段。
 
 ### <a id="GranularFailover"></a>旨在实现不同的故障转移粒度
 目前，自动和手动故障转移功能以数据库帐户的粒度进行公开。 请注意，在内部，Azure Cosmos DB 旨在以更精细的数据库、容器甚或（拥有一系列键的容器的）分区粒度提供自动故障转移。 
@@ -174,7 +171,7 @@ Azure Cosmos DB 一致性 SLA 保证 100% 的读取请求满足指定的（数�
 
 
 ### <a id="ConsistencyAndAvailability"></a>一致性与可用性的关系
-[CAP 定理](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf)的[不可能结果](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)证明遇到故障时，系统确实不可能保持可用并提供线性一致性。 数据库服务必须选择采用 CP 还是 AP，其中 CP 系统会放弃可用性以支持线性一致性，而 AP 系统会放弃[线性一致性](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)以支持可用性。 Azure Cosmos DB 绝不会违反所请求的一致性模型，由此可准确判断其为 CP 系统。 但在实践中，一致性并不是一个“全有或者全无”的命题；介于线性一致性和最终一致性之间的一致性范畴中还存在多个定义完善的一致性模型。 在 Azure Cosmos DB 中，我们已尝试标识数个适用于真实世界场景且可以直观使用的宽松一致性模型。 Azure Cosmos DB 提供[多个宽松但完善定义的一致性模型](consistency-levels.md)、99.99% 的一致性（对于所有单区域的数据库帐户）、99.999% 的读写可用性（对于所有多区域数据库帐户），从而进行一致性与可用性的权衡取舍。 
+[CAP 定理](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf)的[不可能结果](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)证明遇到故障时，系统确实不可能保持可用并提供线性一致性。 数据库服务必须选择采用 CP 还是 AP，其中 CP 系统会放弃可用性以支持线性一致性，而 AP 系统会放弃[线性一致性](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)以支持可用性。 Azure Cosmos DB 绝不会违反所请求的一致性模型，由此可准确判断其为 CP 系统。 但在实践中，一致性并不是一个“全有或者全无”的命题；介于线性一致性和最终一致性之间的一致性范畴中还存在多个定义完善的一致性模型。 在 Azure Cosmos DB 中，标识数个适用于真实世界场景且可以直观使用的宽松一致性模型。 Azure Cosmos DB 提供[多个宽松但完善定义的一致性模型](consistency-levels.md)、99.99% 的一致性（对于所有单区域的数据库帐户）、99.999% 的读写可用性（对于所有多区域数据库帐户），从而进行一致性与可用性的权衡取舍。 
 
 ### <a id="ConsistencyAndAvailability"></a>一致性与延迟的关系
 CAP 定理更全面的变体名为 [PACELC](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf)，该变体也用于稳定状态下的延迟和一致性的权衡取舍。 该定理认为在稳定状态下，数据库系统必须在一致性和延迟间做出选择。 通过多个宽松的一致性模型（由异步复制以及本地读取和写入仲裁提供支持），Azure Cosmos DB 可确保所有读取和写入操作分别在读取和写入区域本地进行。 这允许 Azure Cosmos DB 针对给定的一致性模型在区域内提供低延迟保证。  
@@ -192,11 +189,11 @@ Azure Cosmos DB 允许根据需求，灵活地跨任意数量区域缩放吞吐�
 
 ![Azure Cosmos DB 分布集合和分区集合](../cosmos-db/media/introduction/azure-cosmos-db-global-distribution.png)
 
-**单个 Azure Cosmos DB 容器 横向分区（跨区域内的三个资源分区），然后跨三个 Azure 区域全局分布**
+单个 Azure Cosmos DB 容器 横向分区（跨区域内的三个资源分区），然后跨三个 Azure 区域全局分布
 
 Azure Cosmos DB 容器在两个维度中进行分布：(i) 在区域内以及 (ii) 跨区域。 方法如下： 
 
-* **本地分布**：在单个区域中，Azure Cosmos DB 根据资源分区横向扩展。 每个资源分区管理一组键，属于强一致且高度可用，由名为“副本集”的四个副本和这些副本中的状态机复制实现物理表示。 Azure Cosmos DB 是一种完全由资源管理的系统，其中资源分区负责传递系统资源分配给它的预算吞吐量。 Azure Cosmos DB 容器的缩放对用户是完全透明的。 Azure Cosmos DB 管理资源分区，并按照存储和吞吐量需求更改所需对它们进行拆分和合并。 
+* **本地分布**：在单个区域中，Azure Cosmos DB 根据资源分区横向扩展。 每个资源分区管理一组键，属于强一致且高度可用，由名为“副本集”的四个副本和这些副本中的状态机复制实现物理表示。 Azure Cosmos DB 是一种完全由资源管理的系统，其中资源分区负责传递系统资源分配给它的预算吞吐量。 Azure Cosmos DB 容器的缩放对用户是透明的。 Azure Cosmos DB 管理资源分区，并按照存储和吞吐量需求更改所需对它们进行拆分和合并。 
 * **全局分布**：如果是多区域数据库，那么跨这些区域分布每个资源分区。 跨各个区域拥有同一组键的资源分区构成分区集（请参阅[前图](#ThroughputGuarantees)）。  通过跨多个与数据库相关联的区域使用状态机复制，对分区集内的资源分区进行协调。 根据配置的一致性级别，使用不同的拓扑（例如，星号、菊花链、树等）动态配置分区集内的资源分区。 
 
 凭借高响应分区管理、负载均衡和严格的资源管理，Azure Cosmos DB 允许跨多个与 Azure Cosmos DB 容器或数据相关联的 Azure 区域灵活缩放吞吐量。 更改预配吞吐量是 Azure Cosmos DB 中的运行时操作。 类似于其他数据库操作，针对更改预配吞吐量的请求，Azure Cosmos DB 保证延迟的绝对上限。 例如，下图显示了一个根据需求灵活预配吞吐量（在两个区域之间，范围为 1M-10M 个请求/秒）的客户容器。

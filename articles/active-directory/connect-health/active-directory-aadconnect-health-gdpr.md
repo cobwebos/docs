@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: billmath
 ms.openlocfilehash: 5fedbac439636b56da217e7babd30820bce7b342
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33931752"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38442560"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>用户隐私和 Azure AD Connect Health 
 

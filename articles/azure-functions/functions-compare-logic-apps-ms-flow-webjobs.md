@@ -15,11 +15,12 @@ ms.workload: na
 ms.date: 04/09/2018
 ms.author: tdykstra
 ms.custom: mvc
-ms.openlocfilehash: 6df97a40be7bf1c437c5228006d114ace768f8ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9b9ef150a86a754d4ed328184eb02c1937008b7b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970132"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>比较流、逻辑应用、函数和 WebJobs
 
@@ -49,7 +50,7 @@ ms.lasthandoff: 04/28/2018
 | 设计工具 |浏览器内和移动应用、仅 UI |浏览器和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[代码视图](../logic-apps/logic-apps-author-definitions.md)可用 |
 | 应用程序生命周期管理 (ALM) |在非生产环境中进行设计和测试，并在准备就绪后推向生产。 |DevOps：[Azure 资源管理](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)中的源代码管理、测试、支持、自动化和可管理性 |
 | 管理员体验 |管理流环境和数据丢失防护 (DLP) 策略，跟踪许可 [https://admin.flow.microsoft.com](https://admin.flow.microsoft.com) |管理资源组、连接、访问管理和日志记录 [https://portal.azure.com](https://portal.azure.com) |
-| 安全 |Office 365 安全性和符合性审核日志、数据丢失防护 (DLP)、针对敏感数据的[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption)等。 |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)等等。 |
+| “安全” |Office 365 安全性和符合性审核日志、数据丢失防护 (DLP)、针对敏感数据的[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption)等。 |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)等等。 |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>比较 Azure Functions 和 Azure 逻辑应用
 

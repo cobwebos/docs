@@ -5,14 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 03/22/2018
+ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 36f48e4cc321b534c0fd2e896bf3f43623c540bb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6e0d2b881e00acc6b1fccd3196187309fc36cba2
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568137"
 ---
 #### <a name="expressroute-limits"></a>ExpressRoute 限制
 下列限制适用于每个订阅的 ExpressRoute 资源。
@@ -27,6 +28,7 @@ ms.lasthandoff: 04/05/2018
 | 具有 ExpressRoute Premium 附加设备的 Azure 公共对等互连的最大路由数 |200 |
 | 具有 ExpressRoute Standard 的 Azure Microsoft 对等互连的最大路由数 |200 |
 | 具有 ExpressRoute Premium 附加设备的 Azure Microsoft 对等互连的最大路由数 |200 |
+| 链接到不同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |4 |
 | 每个 ExpressRoute 线路允许的虚拟网络链接数 |请参阅下表 |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>每个 ExpressRoute 线路的虚拟网络数

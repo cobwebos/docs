@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 74bc28619996b7cd52d2280d4d8b6288aa7c904f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 16b715261329544687fd78ed9c022d7392cc32d9
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304301"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901470"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>教程：使用 Linux VM 托管服务标识 (MSI) 访问 Azure Key Vault 
 
@@ -135,12 +135,12 @@ ms.locfileid: "34304301"
     
 在检索 Key Vault 中的密钥后，可以使用该密钥对需要名称和密码的服务进行身份验证。
 
+## <a name="next-steps"></a>后续步骤
 
-## <a name="related-content"></a>相关内容
+在本教程中，你学习了如何使用 Linux 虚拟机上的托管服务标识来访问 Azure Key Vault。  若要详细了解 Azure Key Vault，请参阅：
 
-- 有关 MSI 的概述，请参阅[托管服务标识概述](overview.md)。
-
-使用以下评论部分提供反馈，帮助我们改进内容。
+> [!div class="nextstepaction"]
+>[Azure Key Vault](/azure/key-vault/key-vault-whatis)
 
 
 

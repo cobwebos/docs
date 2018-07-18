@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 62b8504f5c10f338539d263bb231cf96eb405ba6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d9c18d576f3975d4c8272efff7161366f3f53fe
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930334"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901351"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>使用 Azure 门户配置 VM 托管服务标识 (MSI)
 
@@ -30,7 +30,7 @@ ms.locfileid: "33930334"
 本文将介绍如何使用 Azure 门户为 Azure VM 启用和禁用系统分配标识。 当前不支持通过 Azure 门户在 Azure VM 中分配和移除用户分配标识。
 
 > [!NOTE]
-> 目前，不支持通过 Azure 门户执行用户分配标识操作。 稍后返回查看更新。 
+> 目前，不支持通过 Azure 门户执行用户分配标识操作。 请关注后续更新。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +48,7 @@ ms.locfileid: "33930334"
 
 ## <a name="enable-managed-service-identity-on-an-existing-azure-vm"></a>在现有 Azure VM 上启用托管服务标识
 
-若要在原先预配时没有系统分配标识的 VM 上启用系统分配标识：
+若要在初始预配时没有系统分配标识的 VM 上启用系统分配标识：
 
 1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”。
 

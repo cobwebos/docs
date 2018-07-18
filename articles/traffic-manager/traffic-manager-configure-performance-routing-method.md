@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 流量管理器配置性能流量路由方法 | Microsoft Docs"
-description: "本文介绍了如何配置流量管理器以将流量路由到终结点并保证最低延迟"
+title: 使用 Azure 流量管理器配置性能流量路由方法 | Microsoft Docs
+description: 本文介绍了如何配置流量管理器以将流量路由到终结点并保证最低延迟
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110655"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>配置性能流量路由方法
 

@@ -1,11 +1,11 @@
 ---
-title: "设置 Azure 导入/导出工具 v1 | Microsoft Docs"
-description: "了解如何设置 Azure 导入/导出服务的驱动器准备和修复工具。 本文所述的导入/导出工具为 v1 版本。"
+title: 设置 Azure 导入/导出工具 v1 | Microsoft Docs
+description: 了解如何设置 Azure 导入/导出服务的驱动器准备和修复工具。 本文所述的导入/导出工具为 v1 版本。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: c312b1ab-5b9e-4d24-becd-790a88b3ba8d
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059782"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>设置 Azure 导入/导出工具
 Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务配合使用的驱动器准备和修复工具。 可以使用该工具实现以下功能：  

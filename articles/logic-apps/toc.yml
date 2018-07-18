@@ -47,6 +47,8 @@
               href: logic-apps-control-flow-loops.md
             - name: 作用域
               href: logic-apps-control-flow-run-steps-group-scopes.md
+        - name: 创建用于保存值的变量
+          href: logic-apps-create-variables-store-values.md
         - name: 使用 Azure Functions 添加自定义代码
           href: logic-apps-azure-functions.md
         - name: 使用 Azure Functions 调用逻辑应用
@@ -61,6 +63,8 @@
           href: logic-apps-content-type.md
         - name: 处理错误和异常
           href: logic-apps-exception-handling.md
+        - name: 处理大型消息
+          href: logic-apps-handle-large-messages.md
         - name: 保护逻辑应用
           href: logic-apps-securing-a-logic-app.md
         - name: 开发自定义连接器
@@ -224,13 +228,15 @@
           href: ../connectors/connectors-native-recurrence.md
         - name: SendGrid
           href: ../connectors/connectors-create-api-sendgrid.md
+        - name: SFTP
+          href: ../connectors/connectors-create-api-sftp.md
         - name: SharePoint Online
           href: ../connectors/connectors-create-api-sharepointonline.md
         - name: SharePoint Server
           href: ../connectors/connectors-create-api-sharepointserver.md
         - name: Slack
           href: ../connectors/connectors-create-api-slack.md
-        - name: SQL Azure 和 SQL Server
+        - name: SQL Server
           href: ../connectors/connectors-create-api-sqlazure.md
         - name: 转换 XML
           href: logic-apps-enterprise-integration-transform.md
@@ -264,14 +270,14 @@
       items:
         - name: 监视逻辑应用状态
           href: logic-apps-monitor-your-logic-apps.md
-        - name: 使用 Log Analytics 在 OMS 中监视逻辑应用状态
+        - name: 使用 Azure Log Analytics 监视逻辑应用状态
           href: logic-apps-monitor-your-logic-apps-oms.md
         - name: 监视 B2B 消息
           href: logic-apps-monitor-b2b-message.md
           items:
-            - name: 在 OMS 中跟踪 B2B 消息
+            - name: 在 Azure Log Analytics 中跟踪 B2B 消息
               href: logic-apps-track-b2b-messages-omsportal.md
-            - name: 在 OMS 中查询 B2B 消息
+            - name: 在 Azure Log Analytics 中查询 B2B 消息
               href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
     - name: 示例、方案和演练
       href: logic-apps-examples-and-scenarios.md
@@ -286,6 +292,13 @@
           href: logic-apps-enterprise-integration-b2b.md
 - name: 引用
   items:
+    - name: 体系结构模式
+      href: logic-apps-architectures-simple-enterprise-integration.md
+      items:
+        - name: 简单企业集成
+          href: logic-apps-architectures-simple-enterprise-integration.md
+        - name: 企业集成与队列和事件
+          href: logic-apps-architectures-enterprise-integration-with-queues-events.md
     - name: 连接器 - 完整详细信息
       href: 'https://docs.microsoft.com/connectors/'
     - name: 限制和配置

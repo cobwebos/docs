@@ -4,17 +4,18 @@ description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 4342e8c58c9bb20580d8428a6c9869f9a3b893cb
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: e52674014a888913e288f7b0749d9b2e05bedf45
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292780"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为 ASP.NET 应用程序设置登录
 
@@ -43,9 +44,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 示例解决方案中有两个项目：
 
-**Web 应用示例应用 (TaskWebApp)：**用于创建和编辑任务列表的 Web 应用。 此 Web 应用使用**注册或登录**策略来注册或登录用户。
+**Web 应用示例应用 (TaskWebApp)：** 用于创建和编辑任务列表的 Web 应用。 此 Web 应用使用**注册或登录**策略来注册或登录用户。
 
-**Web API 示例应用 (TaskService)：**一个 Web API，支持创建、读取、更新和删除任务列表的功能。 此 Web API 受 Azure AD B2C 保护，可以通过 Web 应用进行调用。
+**Web API 示例应用 (TaskService)：** 一个 Web API，支持创建、读取、更新和删除任务列表的功能。 此 Web API 受 Azure AD B2C 保护，可以通过 Web 应用进行调用。
 
 在此快速入门中，请同时运行 `TaskWebApp` 和 `TaskService` 项目。 
 
@@ -123,4 +124,4 @@ Azure Active Directory B2C 提供允许用户更新个人资料的功能。 示�
 继续阅读本教程可以了解如何将示例 ASP.NET 配置为使用你自己的 Azure AD B2C 租户。
 
 > [!div class="nextstepaction"]
-> [教程：使用 Azure Active Directory B2C 在 ASP.NET Web 应用中进行用户身份验证](active-directory-b2c-tutorials-web-app.md)
+> [在 Azure 门户中创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)

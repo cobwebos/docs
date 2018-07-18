@@ -75,6 +75,8 @@
           href: concepts-firewall-rules.md
         - name: 配置 SSL
           href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
     - name: 业务连续性
       items:
         - name: 概述
@@ -89,6 +91,10 @@
           href: concepts-compatibility.md
         - name: 应用程序开发
           href: concepts-database-application-development.md
+    - name: 复制
+      items:
+        - name: 复制中数据
+          href: concepts-data-in-replication.md
 - name: 操作指南
   items:
     - name: 管理服务器
@@ -141,18 +147,30 @@
       items:
         - name: 针对指标创建警报
           href: howto-alert-on-metric.md
+    - name: 复制
+      items:
+        - name: 配置复制中数据
+          href: howto-data-in-replication.md
     - name: 故障排除
       items:
         - name: 查询性能故障排除
           href: howto-troubleshoot-query-performance.md
         - name: 如何使用 sys 架构中的视图
           href: howto-troubleshoot-sys-schema.md
+    - name: 虚拟网络
+      items:
+        - name: Azure 门户
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-using-cli.md
 - name: 引用
   items:
     - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
+    - name: 复制中数据存储过程
+      href: reference-data-in-stored-procedures.md
 - name: 资源
   items:
     - name: 部署模板
@@ -166,7 +184,19 @@
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: 视频
-      href: videos.md
+      items:
+        - name: 产品视频
+          href: videos.md
+        - name: 操作方法视频系列
+          items:
+            - name: 了解产品功能和优势
+              href: 'https://aka.ms/mysql-intro-vid'
+            - name: 将 MySQL 应用迁移到 Azure
+              href: 'https://aka.ms/mysql-migrate-vid'
+            - name: 生成和部署 Web 应用
+              href: 'https://aka.ms/mysql-webapps-vid'
+            - name: 使用 OSBA 连接容器
+              href: 'https://aka.ms/mysql-osba-vid'
     - name: 请求功能
       href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
     - name: 上市区域
@@ -175,5 +205,7 @@
       href: 'https://azure.microsoft.com/support/options/'
     - name: 客户案例
       href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'
+    - name: 合作伙伴
+      href: partners-migration-mysql.md
     - name: 数据库迁移指南
       href: 'https://datamigration.microsoft.com/'

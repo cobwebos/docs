@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937829"
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>在过渡环境中测试解决方案模板产品/服务
 过渡表示将产品/服务部署到专用“沙盒”，可先在其中进行测试，再发布到生产。 产品/服务出现在过渡环境中，就像客户已对它进行部署一样。 产品/服务必须经过认证才能推送到过渡环境。

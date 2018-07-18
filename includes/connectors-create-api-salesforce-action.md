@@ -10,7 +10,7 @@
 1. 选择“添加操作”链接。 这会打开可搜索要采取的任何操作的搜索框。 本示例关注的操作是 Salesforce 操作。      
    ![Salesforce 操作图像 1](./media/connectors-create-api-salesforce/action-1.png)  
 2. 输入 *salesforce* 搜索与 salesforce 相关的操作。
-3. 选择“Salesforce - 获取对象”作为要执行的操作。   **注意：**系统会提示授权逻辑应用访问 Salesforce 帐户（如果之前尚未这样做）。    
+3. 选择“Salesforce - 获取对象”作为要执行的操作。   **注意：** 系统会提示授权逻辑应用访问 Salesforce 帐户（如果之前尚未这样做）。    
    ![Salesforce 操作图像 2](./media/connectors-create-api-salesforce/action-2.png)    
 4. 此时会打开“获取对象”控件。  
 5. 选择“潜在顾客”作为对象类型。

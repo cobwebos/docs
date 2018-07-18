@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 07/20/2017
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: elisol
-ms.openlocfilehash: 9f73f31c7afd7ca13107653d097e1ac11ef94f0d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: elisol, sureshja
+ms.openlocfilehash: 7448a6c37df2c0bbffbebf23d211e3ace8d12edc
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157069"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317389"
 ---
 # <a name="azure-active-directory-application-manifest"></a>Azure Active Directory 应用程序清单
 与 Azure AD 集成的应用必须注册到 Azure AD 租户。 可以在 [Azure 门户](https://portal.azure.com)中使用应用清单配置此应用（在“Azure AD”边栏选项卡下面）。

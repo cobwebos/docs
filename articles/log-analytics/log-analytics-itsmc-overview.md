@@ -3,7 +3,7 @@ title: Azure Log Analytics 中的 IT Service Management Connector | Microsoft Do
 description: 本文提供 IT 服务管理连接器 (ITSMC) 的概述以及有关如何使用此解决方案集中监视和管理 Azure Log Analytics 中的 ITSM 工作项并快速解决任何问题的信息。
 services: log-analytics
 documentationcenter: ''
-author: JYOTHIRMAISURI
+author: jyothirmaisuri
 manager: riyazp
 editor: ''
 ms.assetid: 0b1414d9-b0a7-4e4e-a652-d3a6ff1118c4
@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/23/2018
+ms.topic: conceptual
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 8fb75484537d577cb19b04fa091bab69d6723c9b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.component: na
+ms.openlocfilehash: da37e7558f93bc5073cd4ee1726a409c7defe127
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131712"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -56,7 +58,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
     ![Azure 新资源](./media/log-analytics-itsmc/azure-add-new-resource.png)
 
-2.  在 Marketplace 中搜索“IT 服务管理连接器”，然后单击“创建”。
+2.  在市场中搜索“IT 服务管理连接器”，然后单击“创建”。
 
     ![添加 ITSMC 解决方案](./media/log-analytics-itsmc/add-itsmc-solution.png)
 
@@ -98,7 +100,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
     > [!NOTE]
 
-    > 默认情况下，ITSMC 每隔 24 小时刷新连接配置数据一次。 若要即时刷新连接的数据以获取执行的任何编辑或模板更新，可单击连接旁边显示的“刷新”按钮。
+    > 默认情况下，ITSMC 每隔 24 小时刷新连接配置数据一次。 若要即时刷新连接的数据以获取执行的任何编辑或模板更新，单击连接边栏选项卡上的“同步”按钮。
 
     ![连接刷新](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
 
@@ -137,58 +139,6 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 >[!NOTE]
 
 > 有关 ITSM 操作的定价信息，请参阅操作组的[定价页](https://azure.microsoft.com/pricing/details/monitor/)。
-
-
-## <a name="create-itsm-work-items-from-log-analytics-alerts"></a>基于 Log Analytics 警报创建 ITSM 工作项
-
-可以使用以下过程在 Azure Log Analytics 门户中配置警报规则，以便在 ITSM 工具中创建工作项。
-
-1. 在“日志搜索”窗口中，运行一个用于查看数据的日志搜索查询。 查询结果即是工作项的源。
-2. 在“日志搜索”中，单击“警报”打开“添加警报规则”页。
-
-    ![Log Analytics 屏幕](./media/log-analytics-itsmc/itsmc-work-items-for-azure-alerts.png)
-
-3. 在“添加警报规则”窗口中，为“名称”、“严重性”、“搜索查询”和“警报条件”（时间范围/指标度量值）提供所需的详细信息。
-4. 为“ITSM 操作”选择“是”。
-5. 在“选择连接”列表中选择 ITSM 连接。
-6. 提供所需的详细信息。
-7. 若要为此警报的每个日志项单独创建工作项，请选中“为每个日志项目创建单独的工作项”复选框。
-
-    或
-
-    如果将此复选框保留未选中状态，则对于此警报下的任何数量的日志项，只会创建一个工作项。
-
-7. 单击“ **保存**”。
-
-可以在“设置”>“警报”下查看创建的 Log Analytics 警报。 符合指定警报的条件时，将创建相应 ITSM 连接的工作项。
-
-
-## <a name="create-itsm-work-items-from-log-analytics-log-records"></a>基于 Log Analytics 日志记录创建 ITSM 工作项
-
-此外，还可从日志记录直接在连接的 ITSM 源中创建工作项。 可以使用此工作项来测试连接是否正常。
-
-
-1. 在“日志搜索”中搜索所需的数据，选择详细信息，并单击“创建工作项”。
-
-    此时会显示“创建 ITSM 工作项”窗口：
-
-    ![Log Analytics 屏幕](media/log-analytics-itsmc/itsmc-work-items-from-azure-logs.png)
-
-2.   添加以下详细信息：
-
-  - **工作项标题**：工作项的标题。
-  - **工作项说明**：新工作项的说明。
-  - **受影响的计算机**：在其中找到此日志数据的计算机的名称。
-  - **选择连接**：要在其中创建此工作项的 ITSM 连接。
-  - **工作项**：工作项的类型。
-
-3. 要对某个事件使用现有的工作项模板，请在“基于模板生成工作项”选项下单击“是”，然后单击“创建”。
-
-    或者，
-
-    如果想要提供自定义值，请单击“否”。
-
-4. 在“联系人类型”、“影响”、“紧急性”、“类别”和“子类别”文本框中提供相应的值，并单击“创建”。
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>可视化和分析事件与更改请求数据
@@ -230,7 +180,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - 服务台连接名称
 - 服务台 ID
-- State
+- 省/直辖市/自治区
 - 紧急性
 - 影响
 - Priority
@@ -288,7 +238,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics 字段 | ServiceNow 字段 |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | State |
+| IncidentState_s | 省/直辖市/自治区 |
 | Urgency_s |紧急性 |
 | Impact_s |影响|
 | Priority_s | Priority |
@@ -316,7 +266,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  简短说明 |
 | Type_s|  Type |
 | Category_s|  类别 |
-| CRState_s|  State|
+| CRState_s|  省/直辖市/自治区|
 | Urgency_s|  紧急性 |
 | Priority_s| Priority|
 | Risk_s| 风险|

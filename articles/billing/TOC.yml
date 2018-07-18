@@ -111,8 +111,26 @@
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: 联系支持人员
       href: ../azure-supportability/how-to-create-azure-support-request.md
+- name: 示例
+  items:
+    - name: REST API
+      items:
+        - name: 查看企业成本
+          href: billing-review-enterprise-billing.md
+        - name: 查看订阅使用情况
+          href: billing-review-subscription-billing.md
+    - name: .NET 示例
+      items:
+        - name: 发票 API 代码示例
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: 使用情况 API 代码示例
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: RateCard API 代码示例
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: 引用
   items:
+    - name: 计费自动化方案
+      href: billing-cost-management-automation-scenarios.md
     - name: Azure 计费 API 概述
       href: billing-usage-rate-card-overview.md
       items:
@@ -120,7 +138,8 @@
           href: 'https://docs.microsoft.com/rest/api/billing'
         - name: 合作伙伴解决方案 – Cloud Cruiser
           href: billing-usage-rate-card-partner-solution-cloudcruiser.md
-    - name: Azure 使用情况 API
+    - name: Azure 使用情况 API 概述
+      href: billing-consumption-api-overview.md
       items:
         - name: Azure 使用情况 REST API
           href: 'https://docs.microsoft.com/rest/api/consumption'
@@ -133,11 +152,3 @@
       items:
         - name: Enterprise Reporting REST API
           href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
-    - name: 计费代码示例
-      items:
-        - name: 发票 API 代码示例
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: 使用情况 API 代码示例
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: RateCard API 代码示例
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'

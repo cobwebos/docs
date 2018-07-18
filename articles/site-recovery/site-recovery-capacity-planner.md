@@ -1,24 +1,25 @@
 ---
-title: "估算 Azure 中的复制容量 | Microsoft 文档"
-description: "参考本文估算使用 Azure Site Recovery 进行复制时可用的容量"
+title: 估算 Azure 中的复制容量 | Microsoft 文档
+description: 参考本文估算使用 Azure Site Recovery 进行复制时可用的容量
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: d9c2645be73c4b6e34d194d6b2444a700e3900d2
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d177dae71cd0787a343bbada7c900aebdbad86cc
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920655"
 ---
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>计划用于使用 Site Recovery 保护 Hyper-V VM 的容量
 
@@ -63,7 +64,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 
    c. 将 Hyper-V VM 复制到 Azure 时，不使用“压缩”设置。 对于压缩，请使用第三方应用程序（例如 Riverbed）。
 
-   d.单击“下一步”。 在“保留天数”中，指定副本应保留的天数。
+   d. 在“保留天数”中，指定副本应保留的天数。
 
    e. 在“完成成批虚拟机的初始复制所需的小时数”和“初始复制批处理的虚拟机数”中，可以输入用于计算初始复制要求的设置。 部署 Site Recovery 时，应上传整个初始数据集。
 
@@ -101,7 +102,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 
    c. **NIC 数**：指定源服务器上的网络适配器数。
 
-   d.单击“下一步”。 在“总存储空间(GB)”中指定 VM 存储空间的总大小。 例如，如果源服务器有 3 个磁盘，每个磁盘的大小为 500 GB，则总的存储空间大小为 1500 GB。
+   d. 在“总存储空间(GB)”中指定 VM 存储空间的总大小。 例如，如果源服务器有 3 个磁盘，每个磁盘的大小为 500 GB，则总的存储空间大小为 1500 GB。
 
    e. 在“附加磁盘数”中指定源服务器的磁盘总数。
 

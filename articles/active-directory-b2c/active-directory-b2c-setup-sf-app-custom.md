@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用自定义策略添加 Salesforce SAML 提供程序 | Microsoft Docs
+title: 在 Azure Active Directory B2C 中使用自定义策略添加 Salesforce SAML 提供程序 | Microsoft Docs
 description: 了解如何创建和管理 Azure Active Directory B2C 自定义策略。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/11/2017
 ms.author: davidmu
-ms.openlocfilehash: 1ccf5c58eab9df9016224a91ddda952a05457e2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 1307fc455cacde81cb25ad58c5e99df21f126568
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448248"
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Azure Active Directory B2C：使用 Salesforce 帐户通过 SAML 登录
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/23/2018
 ### <a name="create-a-connected-app-in-salesforce"></a>在 Salesforce 中创建连接的应用
 
 1. 在“标识提供者”页上，转到“服务提供程序”。
-2. 单击“现在通过连接的应用创建服务提供程序”**。**请单击此处”。
+2. 单击“现在通过连接的应用创建服务提供程序”**。** 请单击此处”。
 3. 在“基本信息”下，为连接的应用输入所需值。
 4. 在“Web 应用设置”下，选中“启用 SAML”复选框。
 5. 在“实体 ID”字段中，输入以下 URL。 确保替换 `tenantName` 的值。

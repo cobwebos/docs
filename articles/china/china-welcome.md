@@ -1,6 +1,6 @@
 ---
-title: "欢迎访问 Azure 中国世纪互联 | Microsoft Docs"
-description: "Microsoft Azure 中国世纪互联是中国大陆的云服务的物理独立实例。 这些服务立足于 Microsoft 全球云服务所涵盖的相同 Azure、Office 365 和 Power BI 技术，并提供与全球云服务相当的服务级别。"
+title: 欢迎访问 Azure 中国世纪互联 | Microsoft Docs
+description: Microsoft Azure 中国世纪互联是中国大陆的云服务的物理独立实例。 这些服务立足于 Microsoft 全球云服务所涵盖的相同 Azure、Office 365 和 Power BI 技术，并提供与全球云服务相当的服务级别。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635187"
 ---
 # <a name="welcome-to-azure-china-21vianet"></a>欢迎访问 Azure 中国世纪互联
 世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）是位于中国大陆的云服务的物理独立实例，其运营和交易由上海蓝云网络科技有限公司（即“世纪互联”，北京世纪互联宽带数据中心有限公司的全资子公司）展开。 

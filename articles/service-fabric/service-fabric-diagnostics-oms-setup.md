@@ -14,22 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/03/2018
 ms.author: srrengar
-ms.openlocfilehash: af94e3270493f6967c4f8c484170751c098bf181
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 90a28162fb1f455c154ad4d2da7beac6bc785bc7
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301030"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>为群集设置 Log Analytics
 
-若要监视群集级别的事件，建议使用 Log Analytics。 可以通过 Azure 资源管理器、PowerShell 或 Azure Marketplace 设置 Log Analytics 工作区。 对于所做的部署，如果要保留更新的资源管理器模板供将来使用，请使用同一模板设置 Log Analytics 环境。 如果部署的群集已启用诊断，则通过 Marketplace 部署更方便。 如果你在要部署到的帐户中没有订阅级别访问权限，请通过 PowerShell 或资源管理器模板进行部署。
+若要监视群集级别的事件，建议使用 Log Analytics。 可以通过 Azure 资源管理器、PowerShell 或 Azure 市场设置 Log Analytics 工作区。 对于所做的部署，如果要保留更新的资源管理器模板供将来使用，请使用同一模板设置 Log Analytics 环境。 如果部署的群集已启用诊断，则通过市场部署更方便。 如果你在要部署到的帐户中没有订阅级别访问权限，请通过 PowerShell 或资源管理器模板进行部署。
 
 > [!NOTE]
 > 要设置 Log Analytics 来监视群集，需要启用诊断功能以监视群集级别或平台级别事件。 有关详细信息，请参阅[如何在 Windows 群集中设置诊断](service-fabric-diagnostics-event-aggregation-wad.md)和[如何在 Linux 群集中设置诊断](service-fabric-diagnostics-event-aggregation-lad.md)
 
-## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>使用 Azure Marketplace 部署 Log Analytics 工作区
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>使用 Azure 市场部署 Log Analytics 工作区
 
-若要在部署群集之后添加 Log Analytics 工作区，请转到门户中的 Azure Marketplace，然后查找“Service Fabric 分析”。 这是一个适用于 Service Fabric 部署的自定义解决方案，其数据是特定于 Service Fabric 的。 在此过程中，需创建解决方案（用于查看见解的仪表板）和工作区（聚合了基础的群集数据）。
+若要在部署群集之后添加 Log Analytics 工作区，请转到门户中的 Azure 市场，然后查找“Service Fabric 分析”。 这是一个适用于 Service Fabric 部署的自定义解决方案，其数据是特定于 Service Fabric 的。 在此过程中，需创建解决方案（用于查看见解的仪表板）和工作区（聚合了基础的群集数据）。
 
 1. 在左侧导航菜单中选择“新建”。 
 
@@ -37,20 +38,20 @@ ms.lasthandoff: 05/16/2018
 
 3. 选择**创建**。
 
-    ![Marketplace 中的 OMS SF 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
+    ![市场中的 Service Fabric 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
 4. 在 Service Fabric 分析创建窗口中，为“OMS 工作区”字段选中“选择工作区”，然后选择“创建新工作区”。 填写所需的条目。 此处仅要求 Service Fabric 群集和工作区的订阅相同。 验证条目后，即开始部署工作区。 几分钟即可完成部署。
 
 5. 完成后，在 Service Fabric 分析创建窗口底部再次选择“创建”。 请确保新工作区显示在 OMS 工作区下。 此操作会将解决方案添加到所创建的工作区中。
 
-如果使用的是 Windows，请继续执行以下步骤，将 OMS 连接到群集事件所在的存储帐户。 
+如果使用的是 Windows，请继续执行以下步骤，将 Log Analytics 连接到存储群集事件的存储帐户。 
 
 >[!NOTE]
 >尚不可对 Linux 群集启用此体验。 
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>将 Log Analytics 工作区连接到群集 
 
-1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfWorkspace\>**，然后转到其概述页。 可在此处更改解决方案设置和工作区设置，还可访问 OMS 门户。
+1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfWorkspace\>**，然后转到其概述页。 可在此处更改解决方案设置和工作区设置，还可访问 Log Analytics 工作区。
 
 2. 在左侧导航菜单的“工作区数据源”下，选择“存储帐户日志”。
 
@@ -64,16 +65,16 @@ ms.lasthandoff: 05/16/2018
 
 7. 选择“确定”，将工作区连接到群集的日志。
 
-    ![将存储帐户日志添加到 OMS](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![将存储帐户日志添加到 Log Analytics](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
 该帐户现显示为工作区数据源中存储帐户日志的一部分。
 
-已将 Service Fabric 分析解决方案添加到 OMS Log Analytics 工作区中，后者现已正确连接到群集的平台和应用程序日志表。 可以用相同的方式将其他源添加到工作区中。
+已将 Service Fabric 分析解决方案添加到 Log Analytics 工作区中，后者现已正确连接到群集的平台和应用程序日志表。 可以用相同的方式将其他源添加到工作区中。
 
 
-## <a name="deploy-oms-by-using-a-resource-manager-template"></a>使用资源管理器模板部署 OMS
+## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>使用资源管理器模板部署 Log Analytics
 
-使用资源管理器模板部署群集时，该模板还会新建一个 OMS 工作区，向其添加 Service Fabric 解决方案，并将其配置为读取相应存储表中的数据。
+使用资源管理器模板部署群集时，该模板还会新建一个 Log Analytics 工作区，向其添加 Service Fabric 解决方案，并将其配置为读取相应存储表中的数据。
 
 可使用[此示例模板](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms)，还可进行修改，使其满足你的要求。
 
@@ -85,7 +86,7 @@ ms.lasthandoff: 05/16/2018
         "type": "string",
         "defaultValue": "sfomsworkspace",
         "metadata": {
-            "description": "Name of your OMS Log Analytics Workspace"
+            "description": "Name of your Log Analytics Workspace"
         }
     },
     "omsRegion": {
@@ -97,21 +98,21 @@ ms.lasthandoff: 05/16/2018
             "Southeast Asia"
         ],
         "metadata": {
-            "description": "Specify the Azure Region for your OMS workspace"
+            "description": "Specify the Azure Region for your Log Analytics workspace"
         }
     }
     ```
 
     `omsRegion` 值必须符合一组特定值。 选择离群集部署最近的值。
 
-2. 如果要向 OMS 发送任意应用程序日志，请先确认模板中已包含 `applicationDiagnosticsStorageAccountType` 和 `applicationDiagnosticsStorageAccountName` 作为参数。 如果未包含，请将它们添加到变量部分，并按需编辑其值。 还可按照上述格式将其包含为参数。
+2. 如果要向 Log Analytics 发送任何应用程序日志，请先确认模板中已包含 `applicationDiagnosticsStorageAccountType` 和 `applicationDiagnosticsStorageAccountName` 作为参数。 如果未包含，请将它们添加到变量部分，并按需编辑其值。 还可按照上述格式将其包含为参数。
 
     ```json
     "applicationDiagnosticsStorageAccountType": "Standard_LRS",
     "applicationDiagnosticsStorageAccountName": "[toLower(concat('oms', uniqueString(resourceGroup().id), '3' ))]"
     ```
 
-3. 将 Service Fabric OMS 解决方案添加到模板的变量：
+3. 将 Service Fabric 解决方案添加到模板的变量：
 
     ```json
     "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
@@ -187,16 +188,16 @@ ms.lasthandoff: 05/16/2018
 
     Azure 资源管理器可检测出此命令要更新到现有资源。 它仅处理驱动现有部署的模板和提供的新模板之间的变化。
 
-## <a name="deploy-oms-by-using-azure-powershell"></a>使用 Azure PowerShell 部署 OMS
+## <a name="deploy-log-analytics-by-using-azure-powershell"></a>使用 Azure PowerShell 部署 Log Analytics
 
-还可使用 `New-AzureRmOperationalInsightsWorkspace` 命令通过 PowerShell 部署 OMS Log Analytics 资源。 要使用此方法，请确保已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1)。 使用此脚本新建 OMS Log Analytics 工作区，并向其添加 Service Fabric 解决方案： 
+还可使用 `New-AzureRmOperationalInsightsWorkspace` 命令通过 PowerShell 部署 Log Analytics 资源。 要使用此方法，请确保已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1)。 使用此脚本新建 Log Analytics 工作区，并向其添加 Service Fabric 解决方案： 
 
 ```PowerShell
 
 $SubscriptionName = "<Name of your subscription>"
 $ResourceGroup = "<Resource group name>"
 $Location = "<Resource group location>"
-$WorkspaceName = "<OMS Log Analytics workspace name>"
+$WorkspaceName = "<Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
 # Log in to Azure and access the correct subscription
@@ -215,11 +216,11 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 ```
 
-完成后，请按照上一部分中的步骤将 OMS Log Analytics 连接到相应的存储帐户。
+完成后，请按照上一部分中的步骤将 Log Analytics 连接到相应的存储帐户。
 
-还可添加其他解决方案或使用 PowerShell 对 OMS 工作区进行其他修改。 有关详细信息，请参阅 [使用 PowerShell 管理 Log Analytics](../log-analytics/log-analytics-powershell-workspace-configuration.md)。
+还可添加其他解决方案或使用 PowerShell 对 Log Analytics 工作区进行其他修改。 有关详细信息，请参阅 [使用 PowerShell 管理 Log Analytics](../log-analytics/log-analytics-powershell-workspace-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [将 OMS 代理部署到节点上](service-fabric-diagnostics-oms-agent.md)，以收集性能计数器、docker 统计信息和容器日志
+* [将 Log Analytics 代理部署到节点上](service-fabric-diagnostics-oms-agent.md)，以收集性能计数器、docker 统计信息和容器日志
 * 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
 * [使用视图设计器在 Log Analytics 中创建自定义视图](../log-analytics/log-analytics-view-designer.md)

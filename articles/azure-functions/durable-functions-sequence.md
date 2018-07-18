@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e53b38bf336816ca670fad3ab70a43e5cc8b3437
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a5b337e5318154e299f82b1102ca832303d752f7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970048"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 05/07/2018
 
 所有 JavaScript 业务流程函数都必须包括 `durable-functions` 模块。 这是一个 JavaScript 库，它将业务流程函数的操作转换为进程外语言的 Durable Functions 执行协议。 业务流程函数与其他 JavaScript 函数之间有三个明显差异：
 
-1. 此函数是一个[生成器函数](https://docs.microsoft.com/en-us/scripting/javascript/advanced/iterators-and-generators-javascript)。
+1. 此函数是一个[生成器函数](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)。
 2. 此函数包装在对 `durable-functions` 模块的调用（此处为 `df`）中。
 3. 此函数通过调用 `return` 而非 `context.done` 结束。
 

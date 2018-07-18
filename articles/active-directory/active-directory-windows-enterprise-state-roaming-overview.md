@@ -1,9 +1,9 @@
 ---
-title: "企业状态漫游概述 | Microsoft Docs"
-description: "提供有关 Windows 设备中的企业状态漫游设置的信息。 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。"
+title: 企业状态漫游概述 | Microsoft Docs
+description: 提供有关 Windows 设备中的企业状态漫游设置的信息。 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。
 services: active-directory
-keywords: "什么是企业状态漫游, 企业同步, Windows 云"
-documentationcenter: 
+keywords: 什么是企业状态漫游, 企业同步, Windows 云
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614945"
 ---
 # <a name="enterprise-state-roaming-overview"></a>企业状态漫游概述
 通过 Windows 10，[Azure Active Directory (Azure AD)](active-directory-whatis.md) 用户能够安全地将其用户设置和应用程序设置数据同步到云。 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。 企业状态漫游的操作类似于首次在 Windows 8 中引入的标准[用户设置同步](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs)。 此外，企业状态漫游还提供以下优势：

@@ -1,5 +1,7 @@
 - name: 数据工厂 V1 文档
   href: null
+- name: 切换到当前版本的文档
+  href: ../introduction.md
 - name: 概述
   items:
     - name: Azure 数据工厂简介
@@ -74,7 +76,7 @@
               href: data-factory-azure-blob-connector.md
             - name: Azure Cosmos DB
               href: data-factory-azure-documentdb-connector.md
-            - name: Azure Data Lake Store
+            - name: Azure Data Lake Storage Gen1
               href: data-factory-azure-datalake-connector.md
             - name: Azure 搜索
               href: data-factory-azure-search-connector.md

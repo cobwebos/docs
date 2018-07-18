@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: saysa
-ms.openlocfilehash: 047b3d00da4f192febeeab79c9c87b67a8a0489b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: efdbfa9664e180031926982adedfcf94a4184081
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972242"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>使用 Jenkins 生成和部署 Linux 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
@@ -27,7 +28,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 本文介绍设置 Jenkins 环境的几种可行方法以及生成应用程序后将其部署到 Service Fabric 群集的不同方法。 按照下列常规步骤成功设置 Jenkins，从 GitHub 拉取更改，生成应用程序，以及将其部署到群集：
 
 1. 请确保安装[必备组件](#prerequisites)。
-2. 然后，按照这些部分的步骤设置 Jenkins：
+2. 然后，按照以下对应部分的步骤设置 Jenkins：
    * [在 Service Fabric 群集中设置 Jenkins](#set-up-jenkins-inside-a-service-fabric-cluster)， 
    * [在 Service Fabric 群集外部设置 Jenkins](#set-up-jenkins-outside-a-service-fabric-cluster)，或者
    * [在现有 Jenkins 环境中安装 Service Fabric 插件](#install-service-fabric-plugin-in-an-existing-jenkins-environment)。
@@ -39,11 +40,11 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 ## <a name="prerequisites"></a>先决条件
 
 - 确保本地安装 Git。 可以根据操作系统[从 Git 下载页](https://git-scm.com/downloads)安装相应的 Git 版本。 如果你是 Git 的新用户，请通过 [Git 文档](https://git-scm.com/docs)了解详细信息。
-- 本文章使用 GitHub 上的 Service Fabric 入门示例：[https://github.com/Azure-Samples/service-fabric-java-getting-started](https://github.com/Azure-Samples/service-fabric-java-getting-started) 适用于生成和部署应用程序。 可以创建此存储库的分支来完成，或者，修改一下说明，使用自己的 GitHub 项目。
+- 本文章使用 GitHub 上的 Service Fabric 入门示例：[https://github.com/Azure-Samples/service-fabric-java-getting-started](https://github.com/Azure-Samples/service-fabric-java-getting-started) 适用于生成和部署应用程序。 可以创建此存储库的分支来按照说明进行操作，也可以使用自己的 GitHub 项目并对说明进行相应修改。
 
 
 ## <a name="install-service-fabric-plugin-in-an-existing-jenkins-environment"></a>在现有 Jenkins 环境中安装 Service Fabric 插件
-如果要将 Service Fabric 插件添加到现有 Jenkins 环境，则需要以下条件：
+如果要将 Service Fabric 插件添加到现有 Jenkins 环境，需要以下条件：
 
 - [Service Fabric CLI](service-fabric-cli.md) (sfctl).
 
@@ -54,7 +55,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 - 若要部署 Java 应用程序，请同时安装 [Gradle 和 Open JDK 8.0](service-fabric-get-started-linux.md#set-up-java-development)。 
 - 若要部署 .NET Core 2.0 应用程序，请安装 [.NET Core 2.0 SDK](service-fabric-get-started-linux.md#set-up-net-core-20-development)。 
 
-安装环境所需的必备组件后，可以在 Jenkins 商城中搜索 Azure Service Fabric 插件并安装它。
+安装环境所需的必备组件后，可以在 Jenkins 市场中搜索 Azure Service Fabric 插件并安装它。
 
 安装插件后，跳到[创建和配置 Jenkins 作业](#create-and-configure-a-jenkins-job)。
 
@@ -64,7 +65,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 可在 Service Fabric 群集内部或外部设置 Jenkins。 以下各部分展示了如何在群集内部对其进行设置，同时使用 Azure 存储帐户保存容器实例的状态。
 
 ### <a name="prerequisites"></a>先决条件
-- 已安装包含 Docker 的 Service Fabric Linux 群集。 在 Azure 中运行的 Service Fabric 群集已安装 Docker。 如果要在本地（OneBox 开发环境）运行群集，请使用 `docker info` 命令检查计算机上是否安装了 Docker。 如果未安装，请使用以下命令安装它：
+- 准备好已安装 Docker 的 Service Fabric Linux 群集。 在 Azure 中运行的 Service Fabric 群集已安装 Docker。 如果要在本地（OneBox 开发环境）运行群集，请使用 `docker info` 命令检查计算机上是否安装了 Docker。 如果未安装，请使用以下命令安装它：
 
    ```sh
    sudo apt-get install wget
@@ -95,7 +96,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
    > 必须在群集节点中安装 cifs-utils 包，才能安装 cifs 共享。      
    >
 
-4. 从步骤 2 使用 azure 存储详细信息更新 `setupentrypoint.sh` 脚本中的占位符值。
+4. 使用步骤 2 中获得的 azure 存储详细信息更新 `setupentrypoint.sh` 脚本中的占位符值。
    ```sh
    vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
    ```
@@ -192,7 +193,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
       cat /var/jenkins_home/secrets/initialAdminPassword
       ```      
    3. 若要登录到 Jenkins 仪表板，请在 web 浏览器中打开以下 URL：`http://<HOST-IP>:8080`。 使用上一步的密码解锁 Jenkins。
-   4. （可选。）首次登录后，可以创建自己的用户帐户供以下步骤使用，或者继续使用管理员帐户。 如果创建了一个用户，则需要继续使用该用户。
+   4. （可选。）首次登录后，可以创建自己的用户帐户供后续步骤使用，或者继续使用管理员帐户。 如果创建了一个用户，则需要继续使用该用户。
 5. 使用[生成新的 SSH 密钥并将其添加到 SSH 代理](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)中的步骤，将 GitHub 设置为使用 Jenkins。
    * 根据 GitHub 提供的说明生成 SSH 密钥，然后将 SSH 密钥添加到托管存储库的 GitHub 帐户。
    * 在 Jenkins Docker shell（而不是主机）中运行上述链接中提到的命令。
@@ -208,7 +209,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 
 ## <a name="create-and-configure-a-jenkins-job"></a>创建和配置 Jenkins 作业
 
-此部分中的步骤演示如何配置 Jenkins 作业以响应 GitHub 存储库中的更改，提取更改，并生成它们。 本部分结束时，会执行最后的步骤，将作业配置为基于部署到开发/测试环境还是部署到生产环境来部署应用程序。 
+此部分中的步骤演示如何配置 Jenkins 作业以响应 GitHub 存储库中的更改，提取更改，并生成它们。 本部分结束时，会执行最后的步骤，也就是根据选择的部署环境配置作业，使其将应用程序部署到开发/测试环境或生产环境。 
 
 1. 在 Jenkins 仪表板上，单击“新建项”。
 2. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。
@@ -297,12 +298,12 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 
 对于开发和测试环境，可以通过配置 Azure 凭据或群集管理终结点来部署应用程序。 有关如何配置群集管理终结点的详细信息，请参阅[使用群集管理终结点配置部署](#configure-deployment-using-cluster-management-endpoint)。   
 
-1. 若要创建 Azure Active Directory 服务主体并在 Azure 订阅中分配其权限，请按照[使用门户创建 Azure Active Directory 应用程序和服务主体](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)中的步骤操作。 请注意以下几点：
+1. 若要创建 Azure Active Directory 服务主体并在 Azure 订阅中分配其权限，请按照[使用门户创建 Azure Active Directory 应用程序和服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)中的步骤操作。 请注意以下几点：
 
    * 按照本主题中的步骤操作时，请务必复制并保存以下值：应用程序 ID、应用程序密钥、目录 ID（租户 ID）和订阅 ID。 在 Jenkins 中配置 Azure 凭据时，需要这些值。
-   * 如果目录上没有[所需权限](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)，则需要请求管理员授予权限或为你创建服务主体，否则，需要在 Jenkins 作业的“生成后操作”中配置群集的管理终结点。
-   * 在[创建 Azure Active Directory 应用程序](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application)部分中，“登录 URL”可以输入任何格式标准的 URL。
-   * 在[为应用程序分配角色](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)部分中，可以在群集的资源组上为应用程序分配“读者”角色。
+   * 如果目录上没有[所需权限](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)，则需要请求管理员授予权限或为你创建服务主体，否则，需要在 Jenkins 作业的“生成后操作”中配置群集的管理终结点。
+   * 在[创建 Azure Active Directory 应用程序](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application)部分中，“登录 URL”可以输入任何格式标准的 URL。
+   * 在[为应用程序分配角色](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)部分中，可以在群集的资源组上为应用程序分配“读者”角色。
 
 2. 在 Jenkins 作业中，单击“生成后操作”选项卡。
 3. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 

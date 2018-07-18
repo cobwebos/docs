@@ -1,23 +1,24 @@
 ---
-title: "选择 Azure 混合标识解决方案 | Microsoft Docs"
-description: "大致了解可用的混合标识解决方案和建议，以便为组织做出最明智的标识监管决策。"
-keywords: 
+title: 选择 Azure 混合标识解决方案 | Microsoft Docs
+description: 大致了解可用的混合标识解决方案和建议，以便为组织做出最明智的标识监管决策。
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
 ms.date: 03/02/2018
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 905cedd6ee781ca163731a6f71b083acfc11b5eb
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332365"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft 混合标识解决方案
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 混合标识解决方案使你能够将本地目录与 Azure AD 同步，同时仍可在本地管理用户。 如果计划将本地 Windows Server Active Directory 与 Azure AD 进行同步，首先需要决定是使用已同步的标识还是使用联合标识。 通过已同步标识和可选密码哈希，你的用户能够使用相同密码访问本地和基于云的组织资源。 对于更高级的方案要求，如单一登录 (SSO) 或本地 MFA，需要将 Active Directory 联合身份验证服务 (AD FS) 部署到联合标识。 
@@ -52,7 +53,7 @@ ms.lasthandoff: 03/08/2018
 - 加入通过其验证用户的林中的域
 
 ## <a name="federated-identity-ad-fs"></a>联合标识 (AD FS)
-若要更好地控制用户访问 Office 365 和其他云服务的方式，可使用 [Active Directory 联合身份验证服务 (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server-2016) 设置与单一登录 (SSO) 的目录同步。 使用 AD FS 联合验证用户的登录时，可将身份验证委托给验证用户凭据的本地服务器。 在此模型中，本地 Active Directory 凭据永远不会传递到 Azure AD 中。
+若要更好地控制用户访问 Office 365 和其他云服务的方式，可使用 [Active Directory 联合身份验证服务 (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server) 设置与单一登录 (SSO) 的目录同步。 使用 AD FS 联合验证用户的登录时，可将身份验证委托给验证用户凭据的本地服务器。 在此模型中，本地 Active Directory 凭据永远不会传递到 Azure AD 中。
 
 ![联合标识](./media/choose-hybrid-identity-solution/federated-identity.png)
 

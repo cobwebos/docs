@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute 线路配置工作流 | Microsoft Docs"
-description: "本页指导完成配置 ExpressRoute 线路和对等互连的工作流"
+title: ExpressRoute 线路配置工作流 | Microsoft Docs
+description: 本页指导完成配置 ExpressRoute 线路和对等互连的工作流
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23013122"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
 本页从较高层面引导完成服务预配和路由配置工作流。

@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/14/2018
+  ms.locfileid: "34166483"
 abstract:
   description: Azure Windows 虚拟机使用 Windows Server 按需提供具有高可伸缩性并且十分安全的虚拟化基础结构。 使用我们的快速入门、教程和示例了解如何创建、配置、管理和缩放 Windows VM。
   aside:

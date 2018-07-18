@@ -2,19 +2,19 @@
 title: Azure SQL 数据库审核入门 | Microsoft 文档
 description: 使用 Azure SQL 数据库审核跟踪写入审核日志的数据库事件。
 services: sql-database
-author: giladm
+author: giladmit
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
-ms.date: 04/01/2018
+ms.topic: conceptual
+ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 95c5793bec228e2da8c98ea9263475f55de739d9
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: f187a5fe1541f5508e55443abe80fc295ee63c87
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072161"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081449"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
@@ -62,20 +62,18 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 以下部分介绍如何使用 Azure 门户配置审核。
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 转到要审核的 SQL 数据库/SQL Server 的“设置”边栏选项卡。 在“设置”边栏选项卡中，选择“审核和威胁检测”。
+2. 导航到“SQL 数据库/服务器”窗格中“安全性”标题下的“审核”。
 
     <a id="auditing-screenshot"></a> ![导航窗格][1]
 3. 如果想设置服务器审核策略，可以选择数据库审核边栏选项卡中的“查看服务器设置”链接。 然后，可查看或修改服务器审核设置。 服务器审核策略应用于此服务器上所有现有和新建数据库。
 
     ![导航窗格][2]
-4. 如果想要在数据库级别启用 blob 审核，为“审核”选择“开”，为“审核类型”选择“Blob”。
+4. 如果希望在数据库级别启用审核，请将“审核”切换到“启用”。
 
-    如果启用了服务器 blob 审核，数据库配置的审核会与服务器 blob 审核并存。
+    如果启用了服务器审核，数据库配置的审核将与服务器审核并存。
 
     ![导航窗格][3]
 5. 若要打开“审核日志存储”边栏选项卡，请选择“存储详细信息”。 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 将删除旧日志。 然后单击“确定”。
-    >[!TIP]
-    >若要充分利用审核报告模板，请为所有审核的数据库使用相同的存储帐户。
 
     <a id="storage-screenshot"></a> ![导航窗格][4]
 6. 若要自定义已审核的事件，可通过 [PowerShell cmdlet](#subheading-7) 或 [REST API](#subheading-9) 执行此操作。
@@ -102,7 +100,8 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
     此时会打开“审核记录”边栏选项卡，可在其中查看日志。
 
     - 可单击“审核记录”边栏选项卡顶部的“筛选”，查看特定的日期。
-    - 可在服务器策略审核或数据库策略审核创建的审核记录之间切换。
+    - 可以通过切换“审核源”在服务器审核策略和数据库审核策略创建的审核记录之间进行切换。
+    - 通过选中“仅显示 SQL 注入的审核记录”复选框，可以仅查看与 SQL 注入相关的审核记录。
 
        ![导航窗格][8]
 
@@ -147,8 +146,8 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
 * 服务器级（推荐）：同时在主服务器和辅助服务器上启用审核 - 基于各自的服务器级策略，将分别对主数据库和辅助数据库进行审核。
 
 * 数据库级：辅助数据库的数据库级审核只能从主数据库审核设置进行配置。
-   * 必须在主数据库本身上启用 blob 审核，而不要在服务器上启用。
-   * 在主数据库上启用 blob 审核后，也会在辅助数据库上启用 blob 审核。
+   * 必须在主数据库本身上启用审核，而不是在服务器上启用。
+   * 在主数据库上启用审核后，也会在辅助数据库上启用审核。
 
     >[!IMPORTANT]
     >在数据库级审核中，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
@@ -200,12 +199,16 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
 
 **REST API - Blob 审核**：
 
-* [创建或更新数据库 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-* [创建或更新服务器 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-* [获取数据库 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-* [获取服务器 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt771860.aspx)
-* [获取服务器 Blob 审核操作结果](https://msdn.microsoft.com/library/azure/mt771862.aspx)
+* [创建或更新数据库 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [创建或更新服务器 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [获取数据库 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
+* [获取服务器 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
 
+支持使用 WHERE 子句执行附加筛选的扩展策略：
+* [创建或更新数据库扩展 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [创建或更新服务器扩展 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [获取数据库扩展 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [获取服务器扩展 Blob 审核策略](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

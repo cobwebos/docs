@@ -12,17 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2018
+ms.date: 05/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 1f8876ec21fe8f823bc4ded84ec1cd90142f96c1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2261b20849727de2ab4d43acdb60630aa2fc7c8b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38552258"
 ---
-[!INCLUDE [1. Introduction](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-introduction.md)]
-[!INCLUDE [2. Setup](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-setup.md)]
-[!INCLUDE [3. Use](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-use.md)]
-[!INCLUDE [4. Configure](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-configure.md)]
-[!INCLUDE [5. Test and Validate](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-test.md)]
+[[1. Introduction](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-introduction.md)] [!INCLUDE [2. Setup](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-setup.md)] [!INCLUDE [3. Use](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-use.md)] [!INCLUDE [4. Configure](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-configure.md)] [!INCLUDE [5. Test and Validate](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-test.md)]

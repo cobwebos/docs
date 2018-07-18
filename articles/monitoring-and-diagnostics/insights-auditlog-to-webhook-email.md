@@ -1,24 +1,19 @@
 ---
-title: "针对 Azure 活动日志警报调用 Webhook | Microsoft Docs"
-description: "了解如何将活动日志事件路由到其他服务用于自定义操作。 例如发送短信、记录 bug，或者通过聊天或消息传送服务通知团队。"
+title: 针对 Azure 活动日志警报（经典）调用 Webhook
+description: 了解如何将活动日志事件路由到其他服务用于自定义操作。 例如发送短信、记录 bug，或者通过聊天或消息传送服务通知团队。
 author: johnkemnetz
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 64d333d1-7f37-4a00-9d16-dda6e69a113b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: johnkem
-ms.openlocfilehash: 9872c30d123f0a7443e28dc58ee0d4e16572a390
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: e825d0f2487c20c8c7f3d210d7180b07742d7173
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262454"
 ---
 # <a name="call-a-webhook-on-an-azure-activity-log-alert"></a>针对 Azure 活动日志警报调用 Webhook
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 还可以将活动日志警报设置为激活时发送电子邮件。

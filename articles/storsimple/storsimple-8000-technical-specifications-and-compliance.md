@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 技术规格 | Microsoft Docs"
-description: "介绍 StorSimple 硬件组件的技术规格和法规标准符合性信息。"
+title: StorSimple 技术规格 | Microsoft Docs
+description: 介绍 StorSimple 硬件组件的技术规格和法规标准符合性信息。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27785520"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
 

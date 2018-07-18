@@ -4,7 +4,7 @@ description: 使用 Azure 应用服务创建逻辑应用。 利用 Trello，不�
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 6773ddd1da5c013b7a0ca7d2855806d606720469
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8f7fefde5f35c65d707ad96a475935dd0d791259
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296180"
 ---
 # <a name="get-started-with-the-trello-connector"></a>Trello 连接器入门
 利用 Trello，不管是在工作还是在家，随时都可以掌管自己的所有项目。  这是一款简单灵活而又免费的工具，可让你以可视化方式管理项目和安排任何事务。  连接到 Trello 以管理看板、列表和卡片。

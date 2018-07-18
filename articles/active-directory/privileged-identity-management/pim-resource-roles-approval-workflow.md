@@ -3,22 +3,23 @@ title: Privileged Identity Management 中 Azure 资源角色的审批工作流 |
 description: 介绍 Azure 资源的审批工作流程。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7781c858a5c0e4db8593df0cf77b868b6fd23622
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 42b0a8f94ff09b308a579b962bc99c4796c73c2e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151087"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443029"
 ---
 # <a name="approval-workflow-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure 资源角色的审批工作流
 

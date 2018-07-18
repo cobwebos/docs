@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782576"
 ---
 # <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>配置 Azure Media Clipper 键盘快捷方式
 Azure Media Clipper 支持通过提供可选的 `keymap` JSON 参数自定义默认的键盘快捷方式。

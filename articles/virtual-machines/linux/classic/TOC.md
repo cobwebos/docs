@@ -4,7 +4,7 @@
 ## [常见问题](faq-classic.md)
 
 # 入门
-## [使用 Azure 门户创建 Linux VM](createportal-classic.md)
+## [创建 Linux VM](createportal-classic.md)
 
 # 如何
 ## 计算

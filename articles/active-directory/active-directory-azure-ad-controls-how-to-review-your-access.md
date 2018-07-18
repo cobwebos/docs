@@ -1,21 +1,24 @@
 ---
-title: "评审访问权限 | Microsoft Docs"
-description: "使用 Azure Active Directory 评审访问权限"
-author: markwahl-msft
+title: 评审访问权限 | Microsoft Docs
+description: 使用 Azure Active Directory 评审访问权限
+author: rolyon
 manager: mtillman
-editor: 
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
+ms.component: compliance-reports
 ms.date: 09/19/2017
-ms.author: billmath
-ms.openlocfilehash: ded64234d4b40c594a0b92e15e5a446d4ae176b6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: rolyon
+ms.reviewer: mwahl
+ms.openlocfilehash: 0ac43637adc91c22aaab78f04732a613c74706d9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446094"
 ---
 # <a name="review-your-access"></a>评审访问权限
 

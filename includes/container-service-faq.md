@@ -64,7 +64,7 @@ DNSnamePrefix.AzureRegion.cloudapp.azure.net
 
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>如何确定在群集中运行的 Orchestrator 版本？
 
-* DC/OS：请参阅 [Mesosphere 文档](https://support.mesosphere.com/hc/en-us/articles/207719793-How-to-get-the-DCOS-version-from-the-command-line-)
+* DC/OS：请参阅 [Mesosphere 文档](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)
 * Docker Swarm：运行 `docker version`
 * Kubernetes：运行 `kubectl version`
 

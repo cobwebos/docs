@@ -1,6 +1,6 @@
 ---
-title: R Server on HDInsight 入门 - Azure | Microsoft Docs
-description: 了解如何在包含 R Server 的 HDInsight 群集上创建 Apache Spark，并在群集上提交 R 脚本。
+title: HDInsight 上的 ML Services 入门 - Azure | Microsoft Docs
+description: 了解如何在包含 ML Services 的 HDInsight 群集上创建 Apache Spark，并在群集上提交 R 脚本。
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -13,18 +13,18 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: d6910ab257312626ca25126721410edeed6cdeae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: efc7ada12f722b0447712594de496e933bde3d36
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053426"
 ---
-# <a name="get-started-with-r-server-cluster-on-azure-hdinsight"></a>Azure HDInsight 上的 R Server 群集入门
+# <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML Services 入门
 
-Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项允许 R 脚本使用 Spark 和 MapReduce 运行分布式计算。 本文介绍如何创建 R Server on HDInsight 群集， 然后介绍如何运行 R 脚本，演示如何使用 Spark 进行分布式 R 计算。
-
+可以使用 Azure HDInsight 创建 ML Services 群集。 此选项允许 R 脚本使用 Spark 和 MapReduce 运行分布式计算。 在本文中，你将学习如何在 HDInsight 上创建 ML Services 群集，以及如何运行演示了使用 Spark 进行分布式 R 计算的一个 R 脚本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,13 +52,13 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
 
 4. 选择“群集类型”，并在“群集配置”部分设置以下值：
 
-    * **群集类型**：R Server
+    * **群集类型**：ML Services
 
     * **操作系统**：Linux
 
-    * **版本**：R Server 9.1 (HDI 3.6)。 可在 [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-r-server#r-server-91) 上获取 R Server 可用版本的发行说明。
+    * **版本**：ML Server 9.3 (HDI 3.6)。 [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server) 上提供了 ML Server 9.3 的发行说明。
 
-    * **R Server 的 R Studio 社区版**：此基于浏览器的 IDE 默认安装在边缘节点上。 如果不想安装它，请清除相应的复选框。 如果选择安装它，请在创建群集后，在群集的门户应用程序边栏选项卡上找到用于访问 RStudio Server 登录界面的 URL。
+    * **ML Server 的 R Studio 社区版**：此基于浏览器的 IDE 默认安装在边缘节点上。 如果不想安装它，请清除相应的复选框。 如果选择安装它，请在创建群集后，在群集的门户应用程序边栏选项卡上找到用于访问 RStudio Server 登录界面的 URL。
 
         ![群集基本详细信息](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -80,11 +80,11 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
 
 如果选择安装 RStudio Server Community Edition 作为 HDInsight 群集的一部分，可以使用以下两种方法之一访问 RStudio 登录页：
 
-* **选项 1** - 转到以下 URL（其中的 **CLUSTERNAME** 是创建的 R Server 群集的名称）：
+* **选项 1** - 转到以下 URL（其中的 **CLUSTERNAME** 是你创建的 ML Services 群集的名称）：
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **选项 2** - 在 Azure 门户中打开 R Server 群集，在“快速链接”下面单击“R Server 仪表板”。
+* **选项 2** - 在 Azure 门户中打开 ML 服务群集，在“快速链接”下，单击“ML Services 仪表板”。
 
      ![设置 HDInsight 的存储帐户设置](./media/r-server-get-started/dashboard-quick-links.png)
 
@@ -174,9 +174,9 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
 <a name="connect-to-edge-node"></a>
 ## <a name="connect-to-the-cluster-edge-node"></a>连接到群集边缘节点
 
-本部分介绍如何使用 SSH 连接到 R Server HDInsight 群集的边缘节点。 若要熟悉 SSH 的用法，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+本部分介绍了如何使用 SSH 连接到 ML Services HDInsight 群集的边缘节点。 若要熟悉 SSH 的用法，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-用于连接 R Server 群集边缘节点的 SSH 命令为：
+用于连接 ML Services 群集边缘节点的 SSH 命令为：
 
    `ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net`
 
@@ -193,15 +193,15 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
     sshuser@ed00-myrclu:~$
 
 <a name="use-r-console"></a>
-## <a name="use-the-r-server-console"></a>使用 R Server 控制台
+## <a name="use-the-r-console"></a>使用 R 控制台
 
 1. 在 SSH 会话中，使用以下命令启动 R 控制台：  
 
         R
 
-2. 此时应会显示包含 R Server 版本以及其他信息的输出。
+2. 此时应会显示包含 ML Server 版本以及其他信息的输出。
     
-3. 可以通过 `>` 提示符输入 R 代码。 HDInsight 上的 R Server 包含可以轻松与 Hadoop 交互并运行分布式计算的包。 例如，若要查看 HDInsight 群集的默认文件系统根目录，可使用以下命令：
+3. 可以通过 `>` 提示符输入 R 代码。 HDInsight 上的 ML Services 包含可以轻松与 Hadoop 交互并运行分布式计算的包。 例如，若要查看 HDInsight 群集的默认文件系统根目录，可使用以下命令：
 
         rxHadoopListFiles("/")
 
@@ -215,11 +215,11 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
 
 ## <a name="automated-cluster-creation"></a>自动创建群集
 
-可以使用 Azure 资源管理器模板、SDK 和 PowerShell 自动为 HDInsight 创建 R Server 群集。
+可以使用 SDK 和 PowerShell 自动为 HDInsight 创建 ML Services 群集。
 
-* 若要使用 Azure 资源管理模板创建 R Server 群集，请参阅[部署 R Server for HDInsight 群集](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/)。
-* 若要使用 .NET SDK 创建 R Server 群集，请参阅[使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)。
-* 若要使用 PowerShell 创建 R Server 群集，请参阅有关[使用 Azure PowerShell 创建 HDInsight 群集](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)的文章。
+<!---* To create an ML Server cluster using an Azure Resource Management template, see [Deploy an R Server for HDInsight cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/).--->
+* 若要使用 .NET SDK 创建 ML Services 群集，请参阅[使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)。
+* 若要使用 PowerShell 创建 ML Services 群集，请参阅有关[使用 Azure PowerShell 创建 HDInsight 群集](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)的文章。
 
 ## <a name="delete-the-cluster"></a>删除群集
 
@@ -231,10 +231,10 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何在 Azure HDInsight 中创建新的 R Server 群集，以及有关从 SSH 会话使用 R 控制台的基础知识。 以下文章介绍了管理和使用 HDInsight 上的 R Server 的其他方式：
+在本文中，你已学习了如何在 Azure HDInsight 中创建新的 ML Services 群集，以及有关从 SSH 会话使用 R 控制台的基础知识。 以下文章介绍了管理和使用 HDInsight 上的 ML Services 的其他方式：
 
 * [从针对 Visual Studio 的 R 工具提交作业](r-server-submit-jobs-r-tools-vs.md)
-* [管理 HDInsight 上的 R Server 群集](r-server-hdinsight-manage.md)
-* [使 HDInsight 上的 R Server 群集可操作](r-server-operationalize.md)
-* [适用于 HDInsight 上的 R Server 群集的计算上下文选项](r-server-compute-contexts.md)
-* [适用于 HDInsight 上的 R Server 群集的 Azure 存储选项](r-server-storage.md)
+* [管理 HDInsight 上的 ML Services 群集](r-server-hdinsight-manage.md)
+* [使 HDInsight 上的 ML Services 群集开始运转](r-server-operationalize.md)
+* [适用于 HDInsight 上的 ML Services 群集的计算上下文选项](r-server-compute-contexts.md)
+* [适用于 HDInsight 上的 ML Services 群集的 Azure 存储选项](r-server-storage.md)

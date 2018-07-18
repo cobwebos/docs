@@ -1,13 +1,13 @@
 ---
-title: "使用 Azure CLI 2.0 管理用于容器的 Web 应用 | Microsoft Docs"
-description: "使用 Azure CLI 管理用于容器的 Web 应用。"
-keywords: "azure app service、Web 应用、cli、linux、oss"
+title: 使用 Azure CLI 2.0 管理用于容器的 Web 应用 | Microsoft Docs
+description: 使用 Azure CLI 管理用于容器的 Web 应用。
+keywords: azure app service、Web 应用、cli、linux、oss
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24105383"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>使用 Azure CLI 管理用于容器的 Web 应用
 

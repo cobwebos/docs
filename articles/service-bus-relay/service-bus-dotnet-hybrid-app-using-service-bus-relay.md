@@ -1,11 +1,11 @@
 ---
-title: "Azure WCF 中继本地/云混合应用程序 (.NET) | Microsoft Docs"
-description: "了解如何使用 Azure WCF 中继创建 .NET 本地/云混合应用程序。"
+title: Azure WCF 中继本地/云混合应用程序 (.NET) | Microsoft Docs
+description: 了解如何使用 Azure WCF 中继创建 .NET 本地/云混合应用程序。
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
 ms.service: service-bus-relay
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29346435"
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>使用 Azure WCF 中继创建 .NET 本地/云混合应用程序
 

@@ -9,21 +9,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 06e07d566afe64b55470f73e232cf45feccd47fb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ba965b0610525f66c24dd6d5bad3fd113a6b6758
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050859"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure 数据工厂服务标识
 
 本文帮助读者了解什么是数据工厂服务标识及其工作原理。
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="overview"></a>概述
 
@@ -38,7 +36,7 @@ ms.lasthandoff: 03/23/2018
 
 按如下所述生成数据工厂服务标识：
 
-- 从 ADF V2 公共预览版开始，通过 **Azure 门户或 PowerShell** 创建数据工厂时，始终会自动创建服务标识。
+- 通过“Azure 门户”或“PowerShell”创建数据工厂时，始终会自动创建服务标识。
 - 通过 **SDK** 创建数据工厂时，仅当在要创建的工厂对象中指定了“Identity = new FactoryIdentity()”时，才会创建服务标识。 请参阅 [.NET 快速入门 - 创建数据工厂](quickstart-create-data-factory-dot-net.md#create-a-data-factory)中的示例。
 - 通过 **REST API** 创建数据工厂时，仅当在请求正文中指定了 "identity" 节时，才会创建服务标识。 请参阅 [REST 快速入门 - 创建数据工厂](quickstart-create-data-factory-rest-api.md#create-a-data-factory)中的示例。
 

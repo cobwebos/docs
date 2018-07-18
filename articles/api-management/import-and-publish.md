@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7a4391b436af4ffa303741397f0be7abf0186fb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722841"
 ---
 # <a name="import-and-publish-your-first-api"></a>导入和发布第一个 API 
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/10/2018
 
 后端 API 导入到 API 管理 (APIM) 之后，APIM API 即成为后端 API 的外观。 在导入后端 API 时，源 API 和 APIM API 均相同。 通过 APIM，无需触摸后端 API 即可根据需要自定义外观。 有关详细信息，请参阅[转换和保护 API](transform-api.md)。 
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 导入第一个 API
@@ -52,6 +53,8 @@ ms.lasthandoff: 05/10/2018
 
     可在创建时设置 API 或稍后转到“设置”选项卡进行设置。带有红色星号的字段是必填的。
 
+    使用下表中的值来创建第一个 API。
+
     |设置|值|说明|
     |---|---|---|
     |**OpenAPI 规范**|http://conferenceapi.azurewebsites.net?format=json|引用实现 API 的服务。 API 管理将请求转发到此地址。|
@@ -74,19 +77,21 @@ ms.lasthandoff: 05/10/2018
 1. 从“API”选项卡选择在上一步骤中创建的 API。
 2. 按“测试”选项卡。![测试 API](./media/api-management-get-started/test-api.png)
 3. 单击“GetSpeakers”。
-    该页显示查询参数的字段，但在此示例中，我们并没有这些字段。 此外，还会显示标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 将自动填充该密钥。
+    该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 将自动填充该密钥。
 4. 按“发送”。
 
     后端以“200 正常”和某些数据做出响应。
 
 ## <a name="call-operation"> </a>从开发人员门户调用操作
 
-此外，也可以从**开发人员门户**调用操作来测试 API。 
+此外，也可以从**开发人员门户**调用操作来测试 API。
 
-1. 选择“演示会议 API”。
-2. 单击“GetSpeakers”。
+1. 导航到**开发人员门户**。
+![开发人员门户](./media/api-management-get-started/developer-portal.png)
+
+2. 选择“API”，单击“演示会议 API”，然后单击“GetSpeakers”。
     
-    该页显示查询参数的字段，但在此示例中，我们并没有这些字段。 此外，还会显示标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。
+    该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。
 3. 按“试用”。
 4. 按“发送”。
     

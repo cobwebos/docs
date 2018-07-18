@@ -11,14 +11,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/02/2018
+ms.date: 05/15/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9cf1d485f32c861ac5b5720cd77a988eee624f4d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: df3c64938cfc5835fd9eb2f0bbed0135b611347f
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341515"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>通过 Java 和 Maven 创建你的第一个函数（预览版）
 
@@ -43,23 +44,9 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
-[Azure Functions 核心工具 2.0](https://www.npmjs.com/package/azure-functions-core-tools) 为编写、运行和调试 Azure Functions 提供了本地开发环境。 
+Azure Functions Core Tools 为从终端或命令提示符编写、运行和调试 Azure Functions 提供了本地开发环境。 
 
-若要进行安装，请访问 Azure Functions Core Tools 项目的[安装](https://github.com/azure/azure-functions-core-tools#installing)部分，找到操作系统的具体说明。
-
-也可以在安装以下必备组件后，使用 [Node.js](https://nodejs.org/) 随附的 [npm](https://www.npmjs.com/) 手动安装此工具：
-
--  最新版本的 [.NET Core](https://www.microsoft.com/net/core)。
--  [Node.js](https://nodejs.org/download/) 8.6 或更高版本。
-
-若要继续进行基于 npm 的安装，请运行：
-
-```
-npm install -g azure-functions-core-tools@core
-```
-
-> [!NOTE]
-> 如果在安装 Azure Functions 核心工具版本 2.0 时遇到问题，请参阅[版本 2.x 运行时](/azure/azure-functions/functions-run-local#version-2x-runtime)。
+在继续操作前，请在本地计算机上安装 [Core Tools 版本 2](functions-run-local.md#v2)。
 
 ## <a name="generate-a-new-functions-project"></a>生成新的 Functions 项目
 
@@ -127,7 +114,7 @@ public class Function {
 将目录更改为新创建的项目文件夹，并通过 Maven 生成和运行此函数：
 
 ```
-cd fabrikam-function
+cd fabrikam-functions
 mvn clean package 
 mvn azure-functions:run
 ```
@@ -185,7 +172,7 @@ mvn azure-functions:deploy
 使用 `cURL` 测试在 Azure 上运行的函数应用。 需更改以下示例中的 URL，使之与前一步骤中你自己的函数应用的已部署 URL 匹配。
 
 ```
-curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
+curl -w '\n' https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
 ```Output
@@ -194,7 +181,7 @@ Hello AzureFunctions!
 
 ## <a name="next-steps"></a>后续步骤
 
-你已使用简单的 HTTP 触发器创建 Java 函数应用，并将其部署到 Azure Functions。
+已使用简单的 HTTP 触发器创建了 Java 函数应用，并将其部署到了 Azure Functions。
 
 - 有关开发 Java 函数的详细信息，请查看 [Java 函数开发人员指南](functions-reference-java.md)。
 - 使用 `azure-functions:add` Maven 目标将具有不同触发器的其他函数添加到你的项目。

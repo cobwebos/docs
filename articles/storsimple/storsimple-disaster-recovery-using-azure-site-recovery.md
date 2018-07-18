@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure Site Recovery 实现 StorSimple 文件共享的自动灾难恢复 | Microsoft 文档"
-description: "介绍有关针对 Microsoft Azure StorSimple 存储中托管的文件共享创建灾难恢复解决方案的步骤和最佳实践。"
+title: 使用 Azure Site Recovery 实现 StorSimple 文件共享的自动灾难恢复 | Microsoft 文档
+description: 介绍有关针对 Microsoft Azure StorSimple 存储中托管的文件共享创建灾难恢复解决方案的步骤和最佳实践。
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23452406"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 ## <a name="overview"></a>概述

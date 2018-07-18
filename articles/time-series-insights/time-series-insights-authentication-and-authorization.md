@@ -1,22 +1,22 @@
 ---
-title: "如何在 Azure 时序见解中使用 API 进行身份验证和授权"
-description: "本文介绍如何为调用 Azure 时序见解 API 的自定义应用程序配置身份验证和授权。"
-services: time-series-insights
+title: 如何在 Azure 时序见解中使用 API 进行身份验证和授权
+description: 本文介绍如何为调用 Azure 时序见解 API 的自定义应用程序配置身份验证和授权。
 ms.service: time-series-insights
-author: dmdenmsft
+services: time-series-insights
+author: ashannon7
 ms.author: dmden
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: dd78e1e726029aaceef5aff0e0eed84acac646cf
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 90fb5ee2bf222e260da802c149d80ed15df2e259
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295081"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 

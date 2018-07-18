@@ -12,67 +12,83 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/22/2018
+ms.date: 06/04/2018
 ms.author: jeffgilb
 ms.custom: mvc
-ms.openlocfilehash: 1deabcf64b3fbf3cbc89232c340a8882cd2591e8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a0e742ab3ac43cc7977761dd94c9689e3a7c2e0b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235179"
 ---
-# <a name="quickstart-evaluate-the-azure-stack-development-kit"></a>快速入门：评估 Azure Stack 开发工具包
-[Azure 堆栈开发工具包 (ASDK)](.\asdk\asdk-what-is.md)是一个测试和开发环境，你可以部署评估并演示 Azure 堆栈功能和服务。 若要开始使用 ASDK，需要准备计算机硬件的主机，然后运行一些脚本 （安装花几个小时）。 之后，你可以登录到管理员和用户门户若要开始使用 Azure 堆栈。
+# <a name="quickstart-evaluate-the-azure-stack-development-kit"></a>快速入门： 评估 Azure 堆栈开发工具包
 
-## <a name="prerequisites"></a>必备组件 
-在安装之前 ASDK，需要准备将承载开发工具包 （开发工具包主机） 的计算机。 开发工具包主机计算机必须满足最低硬件、 软件和网络要求。 
+[Azure Stack 开发工具包 (ASDK)](.\asdk\asdk-what-is.md) 是一个测试和开发环境，可以在部署后用来评估和演示 Azure Stack 功能和服务。 若要开始使用 ASDK，需先准备主机硬件，然后运行一些脚本（安装可能需要数小时）。 之后，你可以登录到管理员或用户门户若要开始使用 Azure 堆栈。
 
-你还需要选择是要使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识解决方案为你的部署。 
+## <a name="prerequisites"></a>必备组件
 
-请确保开发工具包主机满足最低硬件要求以及你已启动你的部署，以便顺利运行安装过程之前，使你标识解决方案决策。 
+### <a name="asdk-host-computer-requirements"></a>ASDK 主机计算机要求
 
-**[查看 ASDK 部署规划注意事项](.\asdk\asdk-deploy-considerations.md)**
+在安装之前 ASDK，需要准备将承载开发工具包的计算机。 开发工具包主机计算机必须满足硬件、 软件和网络要求中所述**[查看 ASDK 部署规划注意事项](.\asdk\asdk-deploy-considerations.md)**。
 
 > [!TIP]
-> 你可以使用[Azure 堆栈部署要求检查工具](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b)以确认你的硬件满足所有要求在开发工具包主机计算机上安装操作系统后。
+> 在开发工具包主机上安装操作系统以后，可以使用 [Azure Stack 部署要求检查工具](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b)来确认硬件是否满足所有要求。
+
+### <a name="account-requirements"></a>帐户要求
+
+还需选择是使用 Azure Active Directory (Azure AD) 还是 Active Directory 联合身份验证服务 (AD FS) 作为部署的标识解决方案。 查看中的帐户要求**[部署规划注意事项](.\asdk\asdk-deploy-considerations.md#account-requirements)**
 
 ## <a name="download-and-extract-the-deployment-package"></a>下载并提取部署包
-确保你开发工具包的主机计算机满足安装 ASDK 的基本要求之后下, 一步是要下载并解压缩 ASDK 部署包。 部署包包括 Cloudbuilder.vhdx 文件，它是虚拟硬盘，其中包括可启动的操作系统和 Azure 堆栈安装文件。
 
-你可以将部署包下载到开发工具包主机或另一台计算机。 提取的部署文件占用 60 GB 的可用磁盘空间，因此使用另一台计算机有助于减少开发工具包主机的硬件要求。
+准备你的开发工具包主机计算机之后, 下载并提取 ASDK 部署包。 部署包包括可启动的操作系统虚拟硬盘 (VHD) 的 Cloudbuilder.vhdx 文件和 Azure 堆栈安装文件。
 
-**[下载并提取 Azure 堆栈开发工具包 (ASDK)](.\asdk\asdk-download.md)**
+可以将部署包下载到开发工具包主机或另一台计算机。 提取的部署文件需要 60 GB 的可用磁盘空间，以便使用另一台计算机可以帮助减少开发工具包主机上的存储要求。
 
-## <a name="prepare-the-development-kit-host-computer"></a>准备开发工具包主机计算机
-你可以在主计算机上安装 ASDK 之前，必须准备环境和系统配置为启动从 VHD。 已准备好开发工具包主机计算机后，它从其启动 CloudBuilder.vhdx 虚拟机硬盘空间，以便可以开始 ASDK 部署。
+**[下载并提取 Azure Stack 开发工具包 (ASDK)](.\asdk\asdk-download.md)**
 
-**[准备 ASDK 主计算机](.\asdk\asdk-prepare-host.md)**
+## <a name="prepare-the-host-computer"></a>准备主机
 
-## <a name="install-the-asdk-on-the-host-computer"></a>在主计算机上安装 ASDK
-在准备好开发工具包主机计算机后, ASDK 可以部署到 CloudBuilder.vhdx 映像。 可以使用提供通过下载并运行 asdk installer.ps1 PowerShell 脚本或者完全从提供的图形用户界面 (GUI) 部署 ASDK[命令行](.\asdk\asdk-deploy-powershell.md)。 
+你可以安装 ASDK 之前，必须准备主机环境和系统配置为启动从开发工具包 VHD。 重新启动主机时，它从 CloudBuilder.vhdx 启动，并可以开始部署 ASDK。
+
+**[准备 ASDK 主机](.\asdk\asdk-prepare-host.md)**
+
+## <a name="install-the-asdk-on-the-host-computer"></a>在主机上安装 ASDK
+
+从 VHD 启动主机后，你可以部署到 Cloudbuilder 虚拟环境开发工具包。 你可以部署使用图形用户界面 (GUI)，提供通过运行 asdk installer.ps1 PowerShell 脚本，或从 ASDK [PowerShell 命令行](.\asdk\asdk-deploy-powershell.md)
 
 > [!NOTE]
-> （可选） 的主机计算机引导到 CloudBuilder.vhdx 之后，你可以配置[Azure 堆栈遥测设置](.\asdk\asdk-telemetry.md#set-telemetry-level-in-the-windows-registry)*之前*安装 ASDK。
+> 从 Cloudbuilder.vhdx 映像启动主机后，你可以选择配置[Azure 堆栈遥测设置](.\asdk\asdk-telemetry.md#set-telemetry-level-in-the-windows-registry)*之前*安装 ASDK。
 
+**[安装 Azure Stack 开发工具包 (ASDK)](.\asdk\asdk-install.md)**
 
-**[安装 Azure 堆栈开发工具包 (ASDK)](.\asdk\asdk-install.md)**
+## <a name="perform-post-deployment-configurations"></a>执行部署后配置
 
-## <a name="perform-post-deployment-configurations"></a>执行后期部署配置
-安装后 ASDK，有几个建议的安装后检查和应做的配置更改。 你可以验证你的安装已成功使用测试 AzureStack cmdlet 中，安装并安装 Azure 堆栈 PowerShell 和 GitHub 工具。 
+安装 ASDK 之后，建议进行一些安装后检查和配置更改。
 
-在完成使用 Azure AD 的部署以后，必须激活 Azure Stack 管理员门户和租户门户。 对于目录的所有用户来说，此激活是指同意为 Azure Stack 门户和 Azure 资源管理器提供正确的权限（已在同意页上列出）。
+**工具**
+
+安装 Azure 堆栈 PowerShell 和 GitHub 工具，并检查你使用测试 AzureStack cmdlet 的安装成功。
+
+**标识解决方案**
+
+对于使用 Azure AD 部署，你必须激活 Azure 堆栈管理员和租户门户。 对于目录的所有用户来说，此激活是指同意为 Azure Stack 门户和 Azure 资源管理器提供正确的权限（已在同意页上列出）。
+
+**密码过期**
 
 你应该重置以确保开发工具包宿主的密码不会评估期结束前过期的密码过期策略。
 
 > [!NOTE]
-> （可选） 还可以配置[Azure 堆栈遥测设置](.\asdk\asdk-telemetry.md#enable-or-disable-telemetry-after-deployment)*后*安装 ASDK。
+> 你还可以配置的选项[Azure 堆栈遥测设置](.\asdk\asdk-telemetry.md#enable-or-disable-telemetry-after-deployment)*后*安装 ASDK。
 
-**[Post ASDK 部署任务](.\asdk\asdk-post-deploy.md)**
+**[ASDK 后部署任务](.\asdk\asdk-post-deploy.md)**
 
-## <a name="register-with-azure"></a>注册 Azure
-你必须向 Azure 注册 Azure 堆栈，以便您能够[下载 Azure 应用商店项](.\asdk\asdk-marketplace-item.md)到 Azure 堆栈。
+## <a name="register-with-azure"></a>注册到 Azure
 
-**[向 Azure 注册 Azure 堆栈](.\asdk\asdk-register.md)**
+必须将 Azure Stack 注册到 Azure，以便[将 Azure Marketplace 项下载](.\asdk\asdk-marketplace-item.md)到 Azure Stack。
+
+**[将 Azure Stack 注册到 Azure](.\asdk\asdk-register.md)**
 
 ## <a name="next-steps"></a>后续步骤
-祝贺你！ 完成这些步骤后，你将有两种版本同时开发工具包环境[管理员](https://adminportal.local.azurestack.external)和[用户](https://portal.local.azurestack.external)门户。 
+
+祝贺你！ 通过完成本快速入门教程中的步骤中，你可以具有的 ASDK 环境[管理员](https://adminportal.local.azurestack.external)门户和[用户](https://portal.local.azurestack.external)门户。

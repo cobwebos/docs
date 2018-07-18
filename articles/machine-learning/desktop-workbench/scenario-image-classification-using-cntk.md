@@ -8,15 +8,16 @@ ms.author: pabuehle
 manager: mwinkle
 ms.reviewer: marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 8bf5cd802198cba48a99c029d0c75c25dd5f6d84
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "31606516"
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35631911"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>使用 Azure 机器学习 Workbench 进行图像分类
 
@@ -235,7 +236,8 @@ Azure 机器训练 Workbench 将每次运行的历史记录存储在 Azure 上�
 在第一个屏幕截图中，对于所有类，DNN 优化得到的准确性优于 SVM 训练。 第二个屏幕截图显示了正在跟踪的所有指标，包括分类器是什么。 此跟踪在脚本 `5_evaluate.py` 中通过调用 Azure 机器学习 Workbench 记录器实现。 此外，该脚本还将 ROC 曲线和混淆矩阵保存到“输出”文件夹。 此“输出”文件夹很特殊，因为其内容也被 Workbench 历史记录功能跟踪，因此，可以随时访问此输出文件，无论本地副本是否被覆盖。
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/> </p>
+<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/>
+</p>
 
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/run_comparison2b.jpg" alt="alt text" width="700"/>
@@ -243,15 +245,20 @@ Azure 机器训练 Workbench 将每次运行的历史记录存储在 Azure 上�
 
 
 ### <a name="parameter-tuning"></a>参数优化
+
 与大多数机器学习项目一样，新数据集要获得较好的结果，就需要小心优化参数，以及计算不同的设计决策。 为了帮助完成这些任务，在一个位置（`PARAMETERS.py` 文件中）指定所有重要参数，并提供简短说明。
 
 最理想的改进方法包括：
 
 - 数据质量：确保训练和测试集具有较高的质量。 即，正确批注图像，删除不明确的图像（例如，同时有条纹和圆点的服装），属性之间互斥（即，选择后每个图像恰好属于一个属性）。
+
 - 如果相关对象在图像中很小，则已知图像分类方法将不能很好的进行分类。 在这些情况下，请考虑使用该[教程](https://github.com/Azure/ObjectDetectionUsingCntk)中所述的对象检测方法。
 - DNN 优化：最重要的参数可能是学习率 `rf_lrPerMb`。 如果训练集的准确性（第 2 部分的第一个图）不接近于 0-5%，最可能的原因是学习率错误。 以 `rf_` 开头的其他参数都不太重要。 通常情况下，训练错误应以指数递减，且训练后接近于 0%。
+
 - 输入分辨率：默认图像分辨率为 224 x 224 像素。 使用更高的图像分辨率（参数：`rf_inputResoluton`）（例如，448 x 448 或 896 x 896 像素），通常可以显著提高准确性，但会降低 DNN 优化的速度。 使用更高的图像分辨率是几乎免费的午餐，并且几乎总是可以提高准确性。
+
 - DNN 过度配适：避免 DNN 优化期间训练和测试准确性之间差异过大（第 2 部分的第一个图）。 可以使用退出率 `rf_dropoutRate` 0.5 或更大的值并增加正则化矩阵权重 `rf_l2RegWeight` 来减小此差异。 如果 DNN 输入图像分辨率较高，则使用高退出率会特别有用。
+
 - 请尝试通过将 `rf_pretrainedModelFilename` 从 `ResNet_18.model` 更改为 `ResNet_34.model` 或 `ResNet_50.model`，使用更深层的 DNN。 Resnet-50 模型不仅更深层，而且其倒数第二层的输出大小为 2048 浮点数（而 ResNet-18 和 ResNet-34 模型为 512 浮点数）。 训练 SVM 分类器时，这个增加的维度非常有用。
 
 ## <a name="part-3---custom-dataset"></a>第 3 部分 - 自定义数据集

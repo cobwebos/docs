@@ -13,12 +13,12 @@ Azure 表存储可存储大量结构化数据。 该服务是一个 NoSQL 数据
 
 ![表存储组件图][Table1]
 
-* **URL 格式：**Azure 表存储帐户使用此格式：`http://<storage account>.table.core.windows.net/<table>`
+* **URL 格式：** Azure 表存储帐户使用此格式：`http://<storage account>.table.core.windows.net/<table>`
 
   Azure Cosmos DB 表 API 帐户使用此格式：`http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   可以直接使用此地址和 OData 协议来访问 Azure 表。 有关详细信息，请参阅 [OData.org][OData.org]。
-* **帐户：**对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../articles/storage/common/storage-scalability-targets.md) 。 
+* **帐户：** 对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../articles/storage/common/storage-scalability-targets.md) 。 
 
     对 Azure Cosmos DB 进行的所有访问都要通过表 API 帐户完成。 有关创建表 API 帐户的详细信息，请参阅[创建表 API 帐户](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)。
 * **表**：表是实体的集合。 表不对实体强制实施架构，这意味着单个表可以包含具有不同属性集的实体。  

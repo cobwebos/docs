@@ -1,0 +1,71 @@
+- name: 自定义影像服务文档
+- name: 概述
+  items:
+    - name: 什么是自定义影像服务？
+      href: home.md
+- name: 操作指南
+  items:
+    - name: 开始使用自定义影像服务
+      items:
+        - name: 生成分类器
+          href: getting-started-build-a-classifier.md
+        - name: 测试模型
+          href: test-your-model.md
+        - name: 改进分类器
+          href: getting-started-improving-your-classifier.md
+        - name: 使用预测 API
+          href: use-prediction-api.md
+        - name: 将模型导出到移动设备
+          href: export-your-model.md
+        - name: 将 ONNX 模型与 Windows ML 配合使用
+          href: custom-vision-onnx-windows-ml.md
+        - name: 运行以 Python 编写的 TensorFlow 模型
+          href: export-model-python.md
+    - name: 生成应用
+      items:
+        - name: 图像分类
+          items:
+            - name: 'C# 教程'
+              href: csharp-tutorial.md
+            - name: Python 教程
+              href: python-tutorial.md
+        - name: 对象检测
+          items:
+            - name: 'C# 教程'
+              href: csharp-tutorial-od.md
+            - name: Python 教程
+              href: python-tutorial-od.md
+- name: 引用
+  items:
+    - name: 自定义视觉训练 API
+      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
+    - name: 自定义视觉预测 API
+      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
+    - name: 术语表
+      href: glossary-of-terms.md
+    - name: SDK
+      items:
+        - name: Windows
+          href: 'http://github.com/Microsoft/Cognitive-CustomVision-Windows'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
+        - name: Go
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
+- name: 资源
+  items:
+    - name: 示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/'
+    - name: 导出或删除帐户数据
+      href: ./export-delete-data.md
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: 限制和配额
+      href: limits-and-quotas.md

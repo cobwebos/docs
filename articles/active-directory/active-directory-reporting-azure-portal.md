@@ -1,25 +1,27 @@
 ---
-title: "Azure Active Directory 报告 | Microsoft Docs"
-description: "概述 Azure Active Directory 报告。"
+title: Azure Active Directory 报告 | Microsoft Docs
+description: 概述 Azure Active Directory 报告。
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 66c53b84e1e820178083b3ae703e0a1feada187f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 1bcd7f9e0a134173a8942b71259428a720a3d076
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222495"
 ---
 # <a name="azure-active-directory-reporting"></a>Azure Active Directory 报告
 

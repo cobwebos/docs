@@ -1,11 +1,11 @@
 ---
-title: "在 Visual Studio 中优化 Azure 代码 | Microsoft Docs"
-description: "了解 Visual Studio 中的 Azure 代码优化工具如何帮助提高代码的可靠性和性能。"
+title: 在 Visual Studio 中优化 Azure 代码 | Microsoft Docs
+description: 了解 Visual Studio 中的 Azure 代码优化工具如何帮助提高代码的可靠性和性能。
 services: visual-studio-online
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: ed48ee06-e2d2-4322-af22-07200fb16987
 ms.service: multiple
 ms.devlang: dotnet
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: cawa
-ms.openlocfilehash: a606c8e7d8b730b67bd8481656e099900eb39fbc
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 3ee2cc3ac5098ebf205331167faffa2b5f9b6d56
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937551"
 ---
 # <a name="optimizing-your-azure-code"></a>优化 Azure 代码
 对使用 Microsoft Azure 的应用程序进行编程时，应遵循某些编码做法，以免在云环境中应用程序的伸缩性、行为和性能出现问题。 Microsoft 提供了 Azure 代码分析工具，该工具可识别并确定部分常见问题并帮助你解决这些问题。 可以通过 NuGet 在 Visual Studio 中下载该工具。
@@ -98,7 +99,7 @@ AP2000
 请通过 [Azure 代码分析反馈](http://go.microsoft.com/fwlink/?LinkId=403771)来分享看法和意见。
 
 ### <a name="reason"></a>原因
-为了增强安全性，Azure Active Directory 会将 ACS 身份验证替换为 SAS 身份验证。 有关过渡计划的信息，请参阅 [Azure Active Directory is the future of ACS](http://blogs.technet.com/b/ad/archive/2013/06/22/azure-active-directory-is-the-future-of-acs.aspx)（Azure Active Directory 是 ACS 的未来）。
+为了增强安全性，Azure Active Directory 会将 ACS 身份验证替换为 SAS 身份验证。 有关过渡计划的信息，请参阅 [Azure Active Directory is the future of ACS](https://cloudblogs.microsoft.com/enterprisemobility/2013/06/22/azure-active-directory-is-the-future-of-acs/)（Azure Active Directory 是 ACS 的未来）。
 
 ### <a name="solution"></a>解决方案
 在应用中使用 SAS 身份验证。 以下示例说明如何使用现有 SAS 令牌访问服务总线命名空间或实体。

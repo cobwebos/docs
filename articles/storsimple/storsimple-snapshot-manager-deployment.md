@@ -1,11 +1,11 @@
 ---
-title: "部署 StorSimple Snapshot Manager | Microsoft Docs"
-description: "了解如何下载和安装 StorSimple Snapshot Manager，这是用于管理 StorSimple 数据保护和备份功能的 MMC 管理单元。"
+title: 部署 StorSimple Snapshot Manager | Microsoft Docs
+description: 了解如何下载和安装 StorSimple Snapshot Manager，这是用于管理 StorSimple 数据保护和备份功能的 MMC 管理单元。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110665"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>部署 StorSimple Snapshot Manager MMC 管理单元
 

@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e15016da271d512fd9b87d5c14091305a92770b5
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a2405eb9698b326693b873edf1cc1396eecadafa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34665986"
 ---
 ## <a name="specify-the-behavior-of-the-iot-device"></a>指定 IoT 设备的行为
 
@@ -30,7 +31,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
     - 可以将温度、压力和湿度作为遥测数据发送。
     - 可以向 IoT 中心中的设备孪生发送已报告的属性。 这些报告属性包括有关遥测架构和受支持方法的信息。
     - 可以接收和处理在 IoT 中心的设备孪生中设置的所需属性。
-    - 可响应从 UI 调用的 **Reboot**、**FirmwareUpdate**、**EmergencyValveRelease** 和 **IncreasePressure** 直接方法。 设备使用报告的属性发送有关其支持的直接方法的信息。
+    - 可响应从 UI 调用的 Reboot、FirmwareUpdate、EmergencyValveRelease 和 IncreasePressure 直接方法。 设备使用报告的属性发送有关其支持的直接方法的信息。
 
     ```c
     // Define the Model
@@ -284,7 +285,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
     - 初始化平台。
     - 向序列化库注册 Contoso 命名空间。
     - 使用设备连接字符串初始化客户端。
-    - 创建**冷却器**模型的实例。
+    - 创建冷却器模型的实例。
     - 创建并发送报告属性值。
     - 创建一个循环，以便在固件更新状态为“正在等待”时每隔五秒发送一次遥测数据。
     - 取消初始化所有资源。
@@ -415,7 +416,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
     }
     ```
 
-    下面提供发送到解决方案加速器的示例**遥测数据**消息，以供参考：
+    下面提供发送到解决方案加速器的示例遥测数据消息，以供参考：
 
     ```
     Device: [myCDevice],

@@ -19,6 +19,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33207521"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>监视 Azure 容器的概述
 借助 Azure，可以有效地监视和管理运行 Kubernetes 或 Docker 的 Azure 容器上部署的工作负载。 请务必了解如何执行包含多个微服务应用程序的容器，以大规模提供可靠的服务并支持监视计划。 本文简要概述 Azure 的管理和监视功能，有助于了解每个功能，从而帮助你根据需求选择合适的功能。

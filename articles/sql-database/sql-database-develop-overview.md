@@ -7,15 +7,15 @@ manager: craigg
 ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: sstein
-ms.openlocfilehash: 37f143ce9dabdc2d0eaf6c60dd551c682a141c17
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2194293d23e5db277f2ff7aa207c298533f74571
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187668"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308860"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
 本文逐步讲解开发人员在编写代码以连接到 Azure SQL 数据库时应考虑的基本注意事项。
@@ -33,11 +33,14 @@ ms.locfileid: "32187668"
 你可以利用类似 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/) 的开源工具。 此外，Azure SQL 数据库可与 Microsoft 工具（如 [Visual Studio](https://www.visualstudio.com/downloads/) 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)）配合使用。  还可以使用 Azure 管理门户、PowerShell 和 REST API 帮助提高工作效率。
 
 ## <a name="resource-limitations"></a>资源限制
-Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源：资源调控和强制限制。
+Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源：资源调控和强制限制。 有关详细信息，请参阅：
 
-* 更多信息：[Azure SQL 数据库基于 DTU 的资源模型限制](sql-database-dtu-resource-limits.md)[Azure SQL 数据库基于 vCore 的资源模型限制（预览版）](sql-database-vcore-resource-limits.md)。
+- [基于 DTU 的资源模型限制 - 单一数据库](sql-database-dtu-resource-limits-elastic-pools.md)
+- [基于 DTU 的资源模型限制 - 单一数据库](sql-database-dtu-resource-limits-elastic-pools.md)
+- [基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)
+- [基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据和监视活动的资源。
 
 * 详细信息：[保护 SQL 数据库](sql-database-security-overview.md)。

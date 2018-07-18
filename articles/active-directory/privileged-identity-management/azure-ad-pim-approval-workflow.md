@@ -1,24 +1,26 @@
 ---
-title: "Azure Privileged Identity Management 审批工作流 | Microsoft Docs"
-description: "了解 Privileged Identity Management (PIM) 审批工作流"
+title: Azure Privileged Identity Management 审批工作流 | Microsoft Docs
+description: 了解 Privileged Identity Management (PIM) 审批工作流
 services: active-directory
-documentationcenter: 
-author: barclayn
+documentationcenter: ''
+author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/28/2017
-ms.author: barclayn
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f30dd06417d9ce4d71c88ba170a4f3169b5fccd7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 025bcd0cde8d73cfdd4d79a77256a1705950f90a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444640"
 ---
 # <a name="approvals"></a>审批
 

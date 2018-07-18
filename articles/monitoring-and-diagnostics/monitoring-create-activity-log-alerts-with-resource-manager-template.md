@@ -1,24 +1,19 @@
 ---
-title: "使用资源管理器模板创建活动日志警报 | Microsoft Docs"
-description: "创建 Azure 资源时收到通知。"
+title: 使用资源管理器模板创建活动日志警报
+description: 创建 Azure 资源时收到通知。
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 07/06/2017
 ms.author: ancav
-ms.openlocfilehash: b30912c44bd66f8c6fca548dc905f750e05c8621
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.component: alerts
+ms.openlocfilehash: a1e28f08231ae1fbef3e0d0306e986c1dc9d1d1c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262984"
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建活动日志警报
 本文说明如何使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)配置活动日志警报。 使用模板，可以轻松设置在自动执行的部署过程中基于特定活动日志事件条件激活的多个警报。

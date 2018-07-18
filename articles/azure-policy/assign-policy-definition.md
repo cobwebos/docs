@@ -4,17 +4,17 @@ description: 本文引导你完成创建策略定义的步骤，以识别不合�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 9b1cfd762d6f050994688d1cd6afd91f0e43bfc3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 43f069fbd8f4fcc13bbc4d9e75763fa98aec1065
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195771"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601456"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>创建策略分配，识别 Azure 环境中的不合规资源
 
@@ -49,7 +49,7 @@ ms.locfileid: "34195771"
    - 应用标记和值
    - 需要 SQL Server 版本 12.0
 
-    如需所有可用内置策略的完整列表，请参阅[策略模板](json-samples.md)。
+    如需所有可用内置策略的完整列表，请参阅[策略示例](json-samples.md)。
 
 7. 在策略定义列表中搜索，找到“审核未使用托管磁盘的 VM”定义。 单击该策略，再单击“选择”。
 
@@ -78,7 +78,7 @@ ms.locfileid: "34195771"
 | 新建 | Audit、AuditIfNotExist\* | True | 不合规 |
 | 新建 | Audit、AuditIfNotExist\* | False | 符合 |
 
-\* Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
+\*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
 
 ## <a name="clean-up-resources"></a>清理资源
 

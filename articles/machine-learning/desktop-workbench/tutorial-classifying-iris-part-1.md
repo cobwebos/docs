@@ -7,15 +7,17 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/7/2018
-ms.openlocfilehash: 1e8ad7a85739f67bf8130011ba18243ad0b4b9d0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 56f1d26d5d687982366b9a8fb20235ff338a9573
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722977"
 ---
 # <a name="tutorial-1-classify-iris---preparing-the-data"></a>教程 1：鸢尾花分类 - 准备数据
 
@@ -32,7 +34,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 ## <a name="prerequisites"></a>先决条件
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 若要完成本教程，必须满足以下先决条件：
 - 一个 Azure 机器学习试验帐户

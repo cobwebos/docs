@@ -2,21 +2,25 @@
 
 # 概述
 ## [什么是 Resource Manager？](resource-group-overview.md)
-## [资源提供程序和类型](resource-manager-supported-services.md)
-## [Resource Manager 部署和经典部署](resource-manager-deployment-model.md)
-## [订阅监管](/azure/architecture/cloud-adoption-guide/subscription-governance)
-## [使用管理组组织资源](management-groups-overview.md)
+## [资源管理器部署和经典部署](resource-manager-deployment-model.md)
 
 # 入门
 ## [创建和部署模板](resource-manager-create-first-template.md)
 ## [模板的 VS Code 扩展](resource-manager-vscode-extension.md)
 ## [Visual Studio 与 Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
+# 概念
+## [资源提供程序和类型](resource-manager-supported-services.md)
+## [管理组](management-groups-overview.md)
+## [订阅监管](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [用于提供云一致性的模板](templates-cloud-consistency.md)
+
 # 如何
 ## 创建模板
 ### [模板节](resource-group-authoring-templates.md)
 #### [参数](resource-manager-templates-parameters.md)
 #### [变量](resource-manager-templates-variables.md)
+#### [函数](resource-group-authoring-templates.md#functions)
 #### [资源](resource-manager-templates-resources.md)
 #### [输出](resource-manager-templates-outputs.md)
 ### [链接和嵌套模板](resource-group-linked-templates.md)
@@ -47,7 +51,8 @@
 ### [Azure 门户](resource-group-portal.md)
 ### [使用标记来组织资源](resource-group-using-tags.md)
 ### [将资源移到新组或订阅](resource-group-move-resources.md)
-### [以编程方式创建 EA 订阅](programmatically-create-subscription.md)
+### [创建 EA 订阅](programmatically-create-subscription.md)
+### [授予访问权限以创建 EA 订阅](grant-access-to-create-subscription.md)
 ### [创建管理组](management-groups-create.md)
 ### [管理你的管理组](management-groups-manage.md)
 

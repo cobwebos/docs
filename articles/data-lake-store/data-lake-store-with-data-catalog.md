@@ -10,13 +10,14 @@ ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ea5d658b8f465b3a527033ef5e9d2126732c7029
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3f1bc925b772265a9f72c34f5ac661088123bb1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626131"
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>在 Azure 数据目录中从 Data Lake Store 注册数据
 在本文中，将了解如何将 Azure Data Lake Store 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/16/2018
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 为 Data Lake Store 公共预览**启用 Azure 订阅**。 请参阅[说明](data-lake-store-get-started-portal.md)。
-* **Azure Data Lake Store 帐户**。 遵循[使用 Azure 门户，实现 Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)中的说明。 在本教程中，需创建一个名为 **datacatalogstore** 的 Data Lake Store 帐户。
+* **Azure Data Lake Store 帐户**。 遵循[使用 Azure 门户，实现 Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)中的说明。 在本教程中，创建一个名为 datacatalogstore 的 Data Lake Store 帐户。
 
     创建帐户后，将示例数据集上传到其中。 在本教程中，上传 [Azure Data Lake Git存储库](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/)中 **AmbulanceDota** 文件夹下的所有.csv文件。 可以使用各种客户端（[Azure 存储资源管理器](http://storageexplorer.com/)将数据上传到 blob 容器。
 * **Azure 数据目录**。 组织必须已具有为组织创建的 Azure数据目录。 每个组织只允许有一个目录。
@@ -55,7 +56,7 @@ ms.lasthandoff: 05/16/2018
 
     b. **可用对象**框中列出 **AmbulanceData** 文件夹下的文件和文件夹。
 
-    c. **要注册的对象**框中列出要在 Azure 数据目录中注册的文件和文件夹。
+    c. “要注册的对象”框中列出要在 Azure 数据目录中注册的文件和文件夹。
 
     ![查看数据结构](./media/data-lake-store-with-data-catalog/view-data-structure.png "查看数据结构")
 8. 在本教程中，应在目录中注册所有文件。 为此，请单击（![移动对象](./media/data-lake-store-with-data-catalog/move-objects.png "移动对象")）按钮将所有文件移到“要注册的对象”框。

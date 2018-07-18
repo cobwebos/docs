@@ -1,21 +1,21 @@
 ---
-title: 授权代码流 - Azure AD B2C | Microsoft Docs
+title: Azure Active Directory B2C 中的授权代码流 | Microsoft Docs
 description: 了解如何使用 Azure AD B2C 和 OpenID Connect 身份验证协议生成 Web 应用。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: d8ed5747f29f969535bbafc1624d9d02e54c8418
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: 6baeba9cc7e631c6dbdf2284db484dc5f95adcce
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444195"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C：OAuth 2.0 授权代码流
 可使用 OAuth 2.0 授权代码向设备上安装的应用授权，获取访问受保护资源（例如 Web API）的权限。 通过使用 OAuth 2.0 的 Azure Active Directory B2C (Azure AD B2C) 实现，可向移动应用和桌面应用添加注册、登录和其他标识管理任务。 本文与语言无关。 本文介绍在不使用任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/05/2018
 
 Azure AD B2C 扩展了标准 OAuth 2.0 流，使其功能远远超出了简单的身份验证和授权。 它引入了[策略参数](active-directory-b2c-reference-policies.md)。 借助内置策略，可使用 OAuth 2.0 向应用添加用户体验，例如注册、登录和配置文件管理。 本文演示如何使用 OAuth 2.0 和策略在本机应用程序中实现每个体验。 我们还将演示如何获取用于访问 Web API 的访问令牌。
 
-在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 **fabrikamb2c.onmicrosoft.com**。我们还使用示例应用程序和策略。 可使用这些值自行尝试这些请求，或使用自己的值替换它们。
+在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 **fabrikamb2c.onmicrosoft.com**。 我们还使用示例应用程序和策略。 可使用这些值自行尝试这些请求，或使用自己的值替换它们。
 了解如何[获取自己的 Azure AD B2C 目录、应用程序和策略](#use-your-own-azure-ad-b2c-directory)。
 
 ## <a name="1-get-an-authorization-code"></a>1.获取授权代码

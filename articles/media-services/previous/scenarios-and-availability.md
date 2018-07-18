@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 777ba32a6c3ec7545c9911c820ceda7ac823096a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8381cdfffd34ffa25d1b87be3a3aca3de69c2802
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809271"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
 可以使用 Microsoft Azure 媒体服务 (AMS) 安全地上传、存储、编码和打包视频或音频内容，以便通过点播和实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
-AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地理区域，让你可以灵活选择构建应用程序的位置。 可查看[区域及其位置的列表](https://azure.microsoft.com/regions/)。 
+AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地理区域，让用户可灵活选择构建应用程序的位置。 可查看[区域及其位置的列表](https://azure.microsoft.com/regions/)。 
 
 本主题演示了[实时](#live_scenarios)交付内容或[点播](#vod_scenarios)交付内容的常见方案。 本主题还详细说明了媒体功能和服务的跨数据中心可用性。
 
@@ -147,12 +148,12 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
     “高级”流式处理终结点适用于高级工作负荷，可提供专用且可缩放的带宽容量。 默认情况下，使用高级流式处理终结点的客户会获得一个流式处理单位 (SU)。 可通过添加 SU 来缩放流式处理终结点。 每个 SU 为应用程序提供额外的带宽容量。 若要详细了解如何缩放“高级”流式处理终结点，请参阅[缩放流式处理终结点](media-services-portal-scale-streaming-endpoints.md)主题。
 
-* 媒体服务帐户与保留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下保留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 保留单位类型相比，使用 **S2** 保留单位类型时，同一编码作业运行速度更快。
+* 媒体服务帐户与预留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下预留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。
 
-    除了指定保留单位类型，还可以指定为帐户预配保留单位 (RU)。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
+    除了指定预留单位类型，还可以指定为帐户预配预留单位 (RU)。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
 
     >[!NOTE]
-    >RU 可用于并行化所有媒体处理，包括使用 Azure Media Indexer 为作业编制索引。 但是，与编码不同，索引作业使用更快的保留单位并不能更快地完成处理。
+    >RU 可用于并行化所有媒体处理，包括使用 Azure Media Indexer 为作业编制索引。 但是，与编码不同，索引作业使用更快的预留单位并不能更快地完成处理。
 
     有关详细信息，请参阅[缩放媒体处理](media-services-portal-scale-media-processing.md)。
 * 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。 每个存储帐户大小限制为 500 TB。 要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。 有关详细信息，请参阅[管理存储帐户](meda-services-managing-multiple-storage-accounts.md)。
@@ -165,7 +166,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-若要确定数据中心是否提供 Azure 媒体服务，请浏览到 https://azure.microsoft.com/status/，并滚动到 MEDIA 表。
+若要确定数据中心是否提供媒体服务，请浏览到 https://azure.microsoft.com/status/，并滚动到 MEDIA 表。
 
 ### <a name="streaming-endpoints"></a>流式处理终结点 
 
@@ -227,9 +228,9 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 |PlayReady|GA|全部|
 |Widevine|GA|德国、美国联邦政府和中国除外。
 
-### <a name="reserved-units-rus"></a>保留单位 (RU)
+### <a name="reserved-units-rus"></a>预留单位 (RU)
 
-设置的保留单位数决定了给定帐户中可并发处理的媒体任务数。 
+设置的预留单位数决定了给定帐户中可并发处理的媒体任务数。 
 
 有关详细信息，请参阅[缩放](#scaling)部分。
 
@@ -237,9 +238,9 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 在所有数据中心可用。
 
-### <a name="reserved-unit-ru-type"></a>保留单位 (RU) 类型
+### <a name="reserved-unit-ru-type"></a>预留单位 (RU) 类型
 
-媒体服务帐户与保留单位类型关联，后者决定了处理媒体处理任务的速度。 可以在以下保留单位类型中进行选择：S1、S2 或 S3。
+媒体服务帐户与预留单位类型关联，后者决定了处理媒体处理任务的速度。 可以在以下预留单位类型中进行选择：S1、S2 或 S3。
 
 有关详细信息，请参阅[缩放](#scaling)部分。
 

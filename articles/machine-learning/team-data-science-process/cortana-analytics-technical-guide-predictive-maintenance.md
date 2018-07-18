@@ -1,24 +1,25 @@
 ---
 title: 借助 Azure 的航天工业预见性维护 - Cortana Intelligence 解决方案技术指南 | Microsoft Docs
 description: 在航天工业、实用工具和运输业中用于预见性维护的 Microsoft Cortana Intelligence 解决方案模板的技术指南。
-services: cortana-analytics
+services: machine-learning
 documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2c4d2147-0f05-4705-8748-9527c2c1f033
-ms.service: cortana-analytics
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3715dcceb4330f6eaab01f49aee9d4d19663b62e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099649"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
@@ -53,14 +54,14 @@ ms.lasthandoff: 04/05/2018
 ### <a name="synthetic-data-source"></a>综合数据源
 对于此模板，使用的数据源是从桌面应用程序生成的，将下载应用程序并于部署成功后在本地运行。
 
-若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) 由 [NASA 数据存储库](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)中的公开可用数据派生的。
+若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) 由 [NASA 数据存储库](https://c3.nasa.gov/dashlink/resources/139/)中的公开可用数据派生的。
 
-仅当它在计算机上运行时，事件生成应用程序才填充 Azure 事件中心。
+仅当它在计算机上运行时，事件生成应用程序才填充 Azure 事件中心。  
 
-### <a name="azure-event-hub"></a>Azure 事件中心
+### <a name="azure-event-hub"></a>Azure 事件中心  
 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)服务是综合数据源提供的输入接收者。
 
-## <a name="data-preparation-and-analysis"></a>数据准备和分析
+## <a name="data-preparation-and-analysis"></a>数据准备和分析  
 ### <a name="azure-stream-analytics"></a>Azure 流分析
 使用 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)对 [Azure 事件中心](#azure-event-hub)服务的输入流提供近乎实时的分析。 然后可将结果发布到 [Power BI](https://powerbi.microsoft.com) 仪表板，在 [Azure 存储服务](https://azure.microsoft.com/services/storage/)中存档所有原始传入事件，供 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务做后续处理。
 
@@ -81,7 +82,7 @@ ms.lasthandoff: 04/05/2018
 ## <a name="how-to-bring-in-your-own-data"></a>如何输入自己的数据
 本部分说明如何将自己的数据输入 Azure，以及对于放入此体系结构的数据，需要更改哪些方面。
 
-你的数据集不可能符合用于此解决方案模板的 [Turbofan 引擎降级模拟数据集](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan)所使用的数据集。 了解数据与需求对于如何修改此模板以配合自己的数据非常重要。 
+你的数据集不可能符合用于此解决方案模板的 [Turbofan 引擎降级模拟数据集](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)所使用的数据集。 了解数据与需求对于如何修改此模板以配合自己的数据非常重要。 
 
 以下部分介绍引入新数据集需要修改的模板部分。
 
@@ -112,11 +113,11 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 第二个流分析作业 **maintenancesa02asablob** 中的查询将所有[事件中心](https://azure.microsoft.com/services/event-hubs/)事件输出到 [Azure 存储](https://azure.microsoft.com/services/storage/)，由于将完整的事件信息流输出到存储，因此无论数据格式为何都无需进行修改。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
-[Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务协调数据的移动和处理。 在航天工业预测性维护的解决方案模板中，数据工厂由 3 个[管道](../../data-factory/v1/data-factory-create-pipelines.md)组成，使用不同的技术移动和处理数据。  可以打开随解决方案部署创建的解决方案模板图示底部的数据工厂节点来访问数据工厂。 数据集下的错误之所以发生，是因为启动数据生成器之前已部署数据工厂。 这些错误可以忽略，不会防碍数据工厂的正常运行
+[Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务协调数据的移动和处理。 在航天工业预测性维护的解决方案模板中，数据工厂由 3 个[管道](../../data-factory/concepts-pipelines-activities.md)组成，使用不同的技术移动和处理数据。  可以打开随解决方案部署创建的解决方案模板图示底部的数据工厂节点来访问数据工厂。 数据集下的错误之所以发生，是因为启动数据生成器之前已部署数据工厂。 这些错误可以忽略，不会防碍数据工厂的正常运行
 
 ![数据工厂数据集错误](./media/cortana-analytics-technical-guide-predictive-maintenance/data-factory-dataset-error.png)
 
-本部分介绍 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)中包含的必要[管道](../../data-factory/v1/data-factory-create-pipelines.md)和[活动](../../data-factory/v1/data-factory-create-pipelines.md)。 下面是解决方案的图示视图。
+本部分介绍了 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)中的必要[管道和活动](../../data-factory/concepts-pipelines-activities.md)。 下面是解决方案的图示视图。
 
 ![Azure 数据工厂](./media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
@@ -125,22 +126,22 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 类似于 [Azure 流分析](#azure-stream-analytics-1)查询，[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本对传入的数据格式有隐含了解，必须根据数据格式进行更改。
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-该[管道](../../data-factory/v1/data-factory-create-pipelines.md)包含单个活动 - [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) 活动，其使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，在 [Azure 流分析作业](https://azure.microsoft.com/services/stream-analytics/)期间对放入 [Azure 存储](https://azure.microsoft.com/services/storage/)的数据进行分区。
+该[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动，其使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，在 [Azure 流分析作业](https://azure.microsoft.com/services/stream-analytics/)期间对放入 [Azure 存储](https://azure.microsoft.com/services/storage/)的数据进行分区。
 
 此分区任务的 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateFlightInfo.hql***
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
-此[管道](../../data-factory/v1/data-factory-create-pipelines.md)包含多个活动，其最终结果为来自与此解决方案模板关联的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验评分的预测。
+此[管道](../../data-factory/concepts-pipelines-activities.md)包含多个活动，其最终结果为来自与此解决方案模板关联的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验评分的预测。
 
 包含的活动有：
 
-* 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) 活动运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本来执行 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验所需的聚合及特征设计。
+* 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本来执行 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验所需的聚合及特征设计。
   此分区任务的 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***PrepareMLInput.hql***。
-* [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动将来自 [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) 活动的结果移到可供 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动访问的单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
+* [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动将来自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动的结果移到可供 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动访问的单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动调用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验，将结果放入单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-此[管道](../../data-factory/v1/data-factory-create-pipelines.md)包含单个活动 - [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动，将 [Azure 机器学习](#azure-machine-learning)试验的结果从 ***MLScoringPipeline*** 移到随解决方案模板安装一起预配的 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)。
+此[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动，将 [Azure 机器学习](#azure-machine-learning)试验的结果从 ***MLScoringPipeline*** 移到随解决方案模板安装一起预配的 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)。
 
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 用于此解决方案模板的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验提供了飞机引擎的剩余使用寿命 (RUL)。 该试验因使用的数据集而有所不同，需要专门针对引入的数据进行修改或替换。
@@ -199,7 +200,7 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
      <br/>
    * 要计划数据刷新，请将鼠标悬停在 **PredictiveMaintenanceAerospace** 数据集上，单击![省略号图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png)，然后选择“计划刷新”。
      <br/>
-     **注意：**如果看到警告消息，请单击“编辑凭据”，确保数据库凭据与步骤 1 中所述相同。
+     **注意：** 如果看到警告消息，请单击“编辑凭据”，确保数据库凭据与步骤 1 中所述相同。
      <br/>
      ![计划刷新](./media/cortana-analytics-technical-guide-predictive-maintenance/schedule-refresh.png)
      <br/>

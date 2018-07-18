@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI 脚本示例 - 轮换存储帐户访问密钥 | Microsoft Docs"
-description: "创建 Azure 存储帐户，然后检索并轮换其帐户访问密钥。"
+title: Azure CLI 脚本示例 - 轮换存储帐户访问密钥 | Microsoft Docs
+description: 创建 Azure 存储帐户，然后检索并轮换其帐户访问密钥。
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29847805"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>创建存储帐户并轮换其帐户访问密钥
 

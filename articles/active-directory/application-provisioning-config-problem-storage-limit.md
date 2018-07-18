@@ -1,23 +1,26 @@
 ---
-title: "配置 Azure AD 库应用程序的用户预配时保存管理员凭据时遇到问题 | Microsoft Docs"
-description: "当为在 Azure AD 应用程序库中列出的某个应用程序配置用户预配时，如何解决面对的常见问题"
+title: 配置 Azure AD 库应用程序的用户预配时保存管理员凭据时遇到问题 | Microsoft Docs
+description: 当为在 Azure AD 应用程序库中列出的某个应用程序配置用户预配时，如何解决面对的常见问题
 services: active-directory
-documentationcenter: 
-author: asmalser-msft
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
-ms.author: asmalser
-ms.openlocfilehash: 6617345c8923b1fc8081b01ddfe8b4bedf10b6ea
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.author: barbkess
+ms.reviewer: asmalser
+ms.openlocfilehash: 1146df364a08128b5cd191ed1120198ae31b763e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337085"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>配置 Azure Active Directory 库应用程序的用户预配时保存管理员凭据时遇到问题 
 
@@ -37,7 +40,7 @@ Azure AD 当前对与应用程序的单个实例关联的所有证书、机密�
 
 目前有两种用来解决此问题的可行方法：
 
-1. **使用两个库应用程序实例，一个用于单一登录，一个用于用户预配** - 以库应用程序 [LinkedIn Elevate](active-directory-saas-linkedinelevate-tutorial.md) 为例，可以从库中添加 LinkedIn Elevate 并为其配置单一登录。 对于预配，从 Azure AD 应用库中添加 LinkedIn Elevate 的另一个实例，并将其命名为“LinkedIn Elevate (Provisioning)”。 对于这第二个实例，配置[预配](active-directory-saas-linkedinelevate-provisioning-tutorial.md)，但不配置单一登录。 使用此解决方法时，需要向两个应用程序[分配](active-directory-coreapps-assign-user-azure-portal.md)相同的用户和组。 
+1. **使用两个库应用程序实例，一个用于单一登录，一个用于用户预配** - 以库应用程序 [LinkedIn Elevate](saas-apps/linkedinelevate-tutorial.md) 为例，可以从库中添加 LinkedIn Elevate 并为其配置单一登录。 对于预配，从 Azure AD 应用库中添加 LinkedIn Elevate 的另一个实例，并将其命名为“LinkedIn Elevate (Provisioning)”。 对于这第二个实例，配置[预配](saas-apps/linkedinelevate-provisioning-tutorial.md)，但不配置单一登录。 使用此解决方法时，需要向两个应用程序[分配](manage-apps/assign-user-or-group-access-portal.md)相同的用户和组。 
 
 2. **减少所存储的配置数据量** - 在“预配”选项卡的[管理员凭据](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)部分中输入的所有数据都与 SAML 证书存储在同一位置。 虽然不可能减小所有这些数据的长度，但是可以删除诸如“通知电子邮件”之类的可选配置字段。
 

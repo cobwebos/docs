@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 04/19/2018
+  ms.locfileid: "31590779"
 abstract:
   description: “数据科学和深入学习虚拟机”是 Azure 上的自定义 VM 映像，带有用于生成智能应用程序以进行高级分析的数据科学工具。
 sections:

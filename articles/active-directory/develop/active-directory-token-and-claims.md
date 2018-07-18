@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/22/2018
+ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 95ce83a3f1288d1b731aeeb8dcc32e58bcaefe21
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a12ac87eba14db4ff13868446cf8d14b10d1f5fb
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157915"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317820"
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD 令牌参考
 Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。 
@@ -56,7 +56,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | JWT 声明 | 名称 | 说明 |
 | --- | --- | --- |
 | `aud` |目标受众 |令牌的目标接收方。 接收令牌的应用程序必须验证受众值是否正确，并拒绝任何针对其他受众的令牌。 <br><br> **SAML 值示例**： <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT 值示例**： <br> `"aud":"https://contoso.com"` |
-| `appidacr` |应用程序身份验证上下文类引用 |表示对客户端进行身份验证的方式。 对于公共客户端，该值为 0。 如果使用客户端 ID 和客户端机密，则该值为 1。 <br><br> **JWT 值示例**： <br> `"appidacr": "0"` |
+| `appidacr` |应用程序身份验证上下文类引用 |表示对客户端进行身份验证的方式。 对于公共客户端，该值为 0。 如果使用客户端 ID 和客户端机密，则该值为 1。 如果使用客户端证书进行身份验证，值为 2。 <br><br> **JWT 值示例**： <br> `"appidacr": "0"` |
 | `acr` |身份验证上下文类引用 |表示使用者的身份验证方式，此方式与应用程序的身份验证上下文类引用声明中的客户端身份验证截然不同。 值为“0”指示最终用户身份验证不符合 ISO/IEC 29115 要求。 <br><br> **JWT 值示例**： <br> `"acr": "0"` |
 | 即时身份验证 |记录身份验证发生的日期和时间。 <br><br> **SAML 值示例**： <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |身份验证方法 |标识对令牌使用者的身份验证方式。 <br><br> **SAML 值示例**： <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **JWT 值示例**：`“amr”: ["pwd"]` |
@@ -113,7 +113,8 @@ JWT 包含三个段（以 `.` 字符分隔）。 第一个段称为**标头**，
 {
   "typ": "JWT",
   "alg": "RS256",
-  "x5t": "kriMPdmBvx68skT8-mPAB3BseeA"
+  "x5t": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
+  "kid": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
 }
 ```
 
@@ -129,12 +130,13 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 > [!TIP]
 > 在浏览器中尝试打开此 URL！
-> 
-> 
 
 此元数据文档是一个 JSON 对象，包含一些有用的信息，例如执行 OpenID Connect 身份验证所需的各种终结点的位置。 
 
 它还包含 `jwks_uri`，其提供用于对令牌进行签名的公钥集的位置。 位于 `jwks_uri` 的 JSON 文档包含在该特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明选择本文档中已用于对特定令牌进行签名的公钥。 然后可以使用正确的公钥和指定的算法来执行签名验证。
+
+> [!NOTE]
+> v1.0 终结点会返回 `x5t` 和 `kid` 声明。 v2.0 令牌中缺少 `x5t` 声明。 v2.0 终结点以 `kid` 声明进行响应。 从目前开始，我们建议使用 `kid` 声明来验证令牌。
 
 执行签名验证超出了本文档的范围 - 有许多开放源代码库可帮助这么做（如有必要）。
 
@@ -153,21 +155,31 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ## <a name="token-revocation"></a>令牌吊销
 
 刷新令牌可能由于各种原因而随时失效或吊销。 这些原因主要分为两个类别：超时和吊销。 
-* 令牌超时
-  * MaxInactiveTime：如果在 MaxInactiveTime 指定的时间内未使用刷新令牌，刷新令牌将不再有效。 
-  * MaxSessionAge：如果 MaxAgeSessionMultiFactor 或 MaxAgeSessionSingleFactor 已设置为其默认值（“直到吊销”）以外的值，则在经过 MaxAgeSession* 中设置的时间后，将需要重新进行身份验证。 
-  * 示例:
-    * 租户的 MaxInactiveTime 为 5 天，用户去度假一周，因此 AAD 在 7 天内未看到用户发出的新令牌请求。 下次用户请求新令牌时，他们将看到其刷新令牌已被吊销，他们必须重新输入其凭据。 
-    * 敏感应用程序的 MaxAgeSessionSingleFactor 为 1 天。 如果用户在星期一登录，则在星期二（已经过 25 个小时后），他们将需要重新进行身份验证。 
-* 吊销
-  * 自愿密码更改：如果用户更改了其密码，他们可能需要在其某些应用程序中重新进行身份验证，具体取决于获得令牌的方式。 请参阅下面的注释，了解例外情况。 
-  * 非自愿密码更改：如果管理员强制用户更改其密码或重置密码，则使用其密码获得的用户令牌将会失效。 请参阅下面的注释，了解例外情况。 
-  * 安全漏洞：如果出现安全漏洞（例如本地存储的密码泄露），管理员可以撤消当前颁发的所有刷新令牌。 这将强制所有用户重新进行身份验证。 
+
+**令牌超时**
+
+* MaxInactiveTime：如果在 MaxInactiveTime 指定的时间内未使用刷新令牌，刷新令牌将不再有效。 
+* MaxSessionAge：如果 MaxAgeSessionMultiFactor 或 MaxAgeSessionSingleFactor 已设置为其默认值（“直到吊销”）以外的值，则在经过 MaxAgeSession* 中设置的时间后，将需要重新进行身份验证。 
+* 示例：
+  * 租户的 MaxInactiveTime 为 5 天，用户去度假一周，因此 AAD 在 7 天内未看到用户发出的新令牌请求。 下次用户请求新令牌时，他们将看到其刷新令牌已被吊销，他们必须重新输入其凭据。 
+  * 敏感应用程序的 MaxAgeSessionSingleFactor 为 1 天。 如果用户在星期一登录，则在星期二（已经过 25 个小时后），他们将需要重新进行身份验证。 
+
+**撤销**
+
+|   | 基于密码的 Cookie | 基于密码的令牌 | 不基于密码的 Cookie | 不基于密码的令牌 | 机密客户端令牌| 
+|---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
+|密码到期| 一直有效|一直有效|一直有效|一直有效|一直有效|
+|用户更改了密码| 已撤销 | 已撤销 | 一直有效|一直有效|一直有效|
+|用户执行 SSPR|已撤销 | 已撤销 | 一直有效|一直有效|一直有效|
+|管理员重置密码|已撤销 | 已撤销 | 一直有效|一直有效|一直有效|
+|用户[通过 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) 撤销刷新令牌 | 已撤销 | 已撤销 |已撤销 | 已撤销 |已撤销 | 已撤销 |
+|管理员[通过 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 撤销租户的所有刷新令牌 | 已撤销 | 已撤销 |已撤销 | 已撤销 |已撤销 | 已撤销 |
+|在 Web 上[单一注销](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code#single-sign-out) | 已撤销 | 一直有效 |已撤销 | 一直有效 |一直有效 |一直有效 |
 
 > [!NOTE]
->如果使用了非密码的身份验证方法（Windows Hello、Authenticator 应用、面部或指纹等生物识别）来获得令牌，更改用户的密码不会强制用户重新进行身份验证（但它会强制其 Authenticator 应用重新进行身份验证）。 这是因为其所选身份验证输入（例如面部）并未发生更改，因此可再次使用进行重新身份验证。
+> “不基于密码”登录是指用户在未键入密码的情况下登录。  例如，使用 Windows Hello 人脸登录、FIDO 密钥或 PIN 登录。 
 >
-> 机密客户端不受密码更改吊销影响。 在密码更改之前颁发了刷新令牌的机密客户端将继续能够使用该刷新令牌获取更多令牌。 
+> Windows 主刷新令牌存在已知问题。  如果 PRT 是通过密码获取，然后用户通过 Hello 登录，这不会更改 PRT 的来源，并且它会在用户更改密码时遭撤销。 
 
 ## <a name="sample-tokens"></a>示例令牌
 

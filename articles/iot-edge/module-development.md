@@ -1,21 +1,21 @@
 ---
-title: "开发 Azure IoT Edge 模块 | Microsoft Docs"
-description: "了解如何创建 Azure IoT Edge 的自定义模块"
-services: iot-edge
-keywords: 
+title: 开发 Azure IoT Edge 模块 | Microsoft Docs
+description: 了解如何创建 Azure IoT Edge 的自定义模块
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 95b1d5d4e5e11f96b6abb17f0aeba935cc65512d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+services: iot-edge
+ms.openlocfilehash: dbbd07e93602855afb0c9755e8872e0b46557611
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030013"
 ---
-# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules---preview"></a>了解开发 IoT Edge 模块的要求和工具 - 预览
+# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>了解开发 IoT Edge 模块的要求和工具
 
 本文介绍编写作为 IoT Edge 模块运行的应用程序时可用的功能，以及如何充分利用它们。
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 11/15/2017
 IoT Edge 运行时提供基础结构可集成多个 IoT Edge 模块的功能并将其部署到 IoT Edge 设备上。 概括而言，任意程序都可打包为 IoT Edge 模块。 但是，若要充分利用 IoT Edge 通信和管理功能，在模块中运行的程序需要连接到本地 IoT Edge 中心，集成在 IoT Edge 运行时中。
 
 ## <a name="using-the-iot-edge-hub"></a>使用 IoT Edge 中心
-IoT Edge 中心提供两种主要功能：连接到 IoT Edge 的代理和本地通信。
+IoT Edge 中心提供两种主要功能：连接到 IoT 中心的代理和本地通信。
 
 ### <a name="iot-hub-primitives"></a>IoT 中心基元
 IoT 中心将看到类似设备的模块实例，从某种意义上：

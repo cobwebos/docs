@@ -4,7 +4,7 @@ description: 了解如何使用 Azure 逻辑应用和 Azure Functions 构建客�
 keywords: ''
 services: logic-apps
 author: jeffhollan
-manager: SyntaxC4
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 0a31a71305a4729575c5266b3a6138004d2dbdc6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3ee3ec3107cf8aad834e8201405c9aa833d838af
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299954"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
 

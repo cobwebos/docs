@@ -6,13 +6,14 @@ author: lakasa
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 06/12/2018
 ms.author: lakasa
-ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d469dfb5092f1269a6600ee8ee2f81778fd83b96
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448786"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储服务加密
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 04/18/2018
 
 **问：若已有经典存储帐户。能否对其启用存储服务加密？**
 
-答：默认对所有存储帐户（经典和资源管理器）启用存储服务加密。
+答：会对所有存储帐户（经典和资源管理器）启用存储服务加密。
 
 **问：如何在经典存储帐户中加密数据？**
 
@@ -52,7 +53,7 @@ ms.lasthandoff: 04/18/2018
 
 **问：如何在资源管理器存储帐户中加密数据？**
 
-答：默认对所有存储帐户（经典和资源管理器）启用存储服务加密，启用加密前创建的存储帐户中的任何已有文件都会由后台加密进程以追溯方式进行加密。
+答：会为所有存储帐户（经典和资源管理器）启用存储服务加密，启用加密前创建的存储帐户中的任何已有文件都会由后台加密进程以追溯方式进行加密。
 
 **问：是否可以使用 Azure PowerShell 和 Azure CLI 创建存储帐户并启用存储服务加密？**
 
@@ -72,7 +73,7 @@ ms.lasthandoff: 04/18/2018
 
 **问：创建存储帐户时，是否会默认启用存储服务加密？**
 
-答：是的，默认情况下，会为所有存储帐户和所有 Azure 存储服务启用存储服务加密。
+答：是的，会为所有存储帐户和所有 Azure 存储服务启用存储服务加密。
 
 **问：此功能与 Azure 磁盘加密有何不同？**
 
@@ -92,7 +93,11 @@ ms.lasthandoff: 04/18/2018
 
 **问：存储服务加密是否仅允许在特定区域使用？**
 
-答：存储服务加密在所有区域针对所有服务提供。 
+答：存储服务加密在所有区域针对所有服务提供。
+
+**问：存储服务加密是否符合 FIPS 140-2？**
+
+答：是的，存储服务加密符合 FIPS 140-2。
 
 **问：如果遇到问题或想要提供反馈时怎样进行联系？**
 

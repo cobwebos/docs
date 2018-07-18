@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 应用程序网关上托管多个站点 | Microsoft Docs"
-description: "此页概述了应用程序网关的多站点支持。"
+title: 在 Azure 应用程序网关上托管多个站点 | Microsoft Docs
+description: 此页概述了应用程序网关的多站点支持。
 documentationcenter: na
 services: application-gateway
 author: amsriva
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
 ms.service: application-gateway
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22704755"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 

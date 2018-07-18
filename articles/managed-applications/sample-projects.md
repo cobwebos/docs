@@ -1,6 +1,6 @@
 ---
-title: "Azure 托管应用程序示例项目 | Microsoft Docs"
-description: "总结了可用于 Azure 托管应用程序的示例项目"
+title: Azure 托管应用程序示例项目 | Microsoft Docs
+description: 总结了可用于 Azure 托管应用程序的示例项目
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26753054"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Azure 托管应用程序的示例项目
 

@@ -1,19 +1,20 @@
 ---
-title: "在 Azure Database for MySQL 服务器中创建用户"
-description: "本文介绍如何创建新的用户帐户，以与 Azure Database for MySQL 服务器进行交互。"
+title: 在 Azure Database for MySQL 服务器中创建用户
+description: 本文介绍如何创建新的用户帐户，以与 Azure Database for MySQL 服务器进行交互。
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 9fd592efe48adefc6aca7a6caea24f546da23fa5
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: ee74ea9e114f6401bfcafe44ca3caedfcd0005c5
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265612"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 服务器中创建用户 
 本文介绍如何在 Azure Database for MySQL 服务器中创建用户。

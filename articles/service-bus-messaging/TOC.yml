@@ -6,6 +6,7 @@
       href: service-bus-messaging-overview.md
     - name: 比较消息服务
       href: ../event-grid/compare-messaging-services.md
+      maintainContext: true
 - name: 快速入门
   items:
     - name: 发送消息 - PowerShell
@@ -125,6 +126,10 @@
               href: service-bus-amqp-request-response.md
         - name: 高级功能
           items:
+            - name: IP 连接筛选器
+              href: service-bus-ip-filtering.md
+            - name: 虚拟网络服务终结点
+              href: service-bus-service-endpoints.md
             - name: 死信队列
               href: service-bus-dead-letter-queues.md
             - name: 预取消息

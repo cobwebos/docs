@@ -27,7 +27,7 @@
 ### [通过模板将 Windows Server VM 加入托管域](active-directory-ds-join-windows-vm-template.md)
 ### [CentOS](active-directory-ds-join-centos-linux-vm.md)
 ### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
-### [RedHat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
+### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
 ### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## 管理托管域
 ### [管理托管域](active-directory-ds-admin-guide-administer-domain.md)
@@ -38,6 +38,7 @@
 #### [任务 3：使用 Azure 门户为托管域启用安全 LDAP](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [在托管域上创建 OU](active-directory-ds-admin-guide-create-ou.md)
+### [在托管域上创建组托管服务帐户](active-directory-ds-create-gmsa.md)
 ### [管理托管域中的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 ## [选择虚拟网络](active-directory-ds-networking.md)
 ## 部署应用程序
@@ -53,13 +54,14 @@
 #### [恢复缺少的服务主体](active-directory-ds-troubleshoot-service-principals.md)
 #### [安全 LDAP 错误](active-directory-ds-troubleshoot-ldaps.md)
 ### [解决“不匹配的租户”错误](active-directory-ds-mismatched-tenant-error.md)
+### [挂起的域](active-directory-ds-suspension.md)
 
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # 相关内容
-## [Azure Active Directory](../active-directory/active-directory-whatis.md)
+## [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
 ## [多重身份验证](../active-directory/authentication/multi-factor-authentication.md)
 

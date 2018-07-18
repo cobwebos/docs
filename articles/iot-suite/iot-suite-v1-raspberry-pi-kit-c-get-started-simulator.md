@@ -1,12 +1,12 @@
 ---
-title: "使用 C 与模拟遥测将 Raspberry Pi 连接到 Azure IoT 套件 | Microsoft Docs"
-description: "使用适用于 Raspberry Pi 3 的 Microsoft Azure IoT 初学者工具包和 Azure IoT 套件。 使用 C 将 Raspberry Pi 连接到远程监视解决方案，将模拟遥测数据发送到云，并响应从解决方案仪表板调用的方法。"
-services: 
+title: 使用 C 与模拟遥测将 Raspberry Pi 连接到 Azure IoT 套件 | Microsoft Docs
+description: 使用适用于 Raspberry Pi 3 的 Microsoft Azure IoT 初学者工具包和 Azure IoT 套件。 使用 C 将 Raspberry Pi 连接到远程监视解决方案，将模拟遥测数据发送到云，并响应从解决方案仪表板调用的方法。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: c
 ms.topic: article
@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 19b16bff7874a03578b8766668c431553da0d875
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635602"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-simulated-telemetry-using-c"></a>使用 C 将 Raspberry Pi 3 连接到远程监视解决方案，并发送模拟遥测数据
 

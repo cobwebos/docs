@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/10/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 440b07b494b34db7ff3fcdf5d5ac830b165c339d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6079784a21b5dea8929fcfa3d8f296477b3b9520
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083322"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
 > [!NOTE]
 > - 如果你对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
-> - 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 从较高层面讲，本教程涉及以下步骤：
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/23/2018
 * 第一个管道查找需要复制到接收器数据存储的表列表。  也可以维护一个元数据表用于列出要复制到接收器数据存储的所有表。 然后，该管道触发另一个管道，后者循环访问数据库中的每个表并执行数据复制操作。
 * 第二个管道执行实际复制。 它使用表列表作为参数。 对于列表中的每个表，为获得最佳性能，会使用[通过 Blob 存储和 PolyBase 进行的分阶段复制](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)，将 Azure SQL 数据库中的特定表复制到 SQL 数据仓库中的相应表。 在本示例中，第一个管道传递表列表作为参数值。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure 存储帐户**。 Azure 存储帐户用作批量复制操作中的过渡 Blob 存储。 
@@ -92,14 +92,14 @@ ms.lasthandoff: 03/23/2018
       - 选择“新建”，并输入资源组的名称。   
          
       若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-4. 选择“V2 (预览)”作为**版本**。
-5. 选择数据工厂的**位置**。 目前，数据工厂 V2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+4. 选择“V2”作为“版本”。
+5. 选择数据工厂的**位置**。 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
-9. 创建完成后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
     ![数据工厂主页](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
@@ -129,7 +129,7 @@ ms.lasthandoff: 03/23/2018
     4. 输入要连接到 Azure SQL 数据库的**用户名称**。 
     5. 输入对应于该用户的**密码**。 
     6. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。
-    7. 单击“ **保存**”。
+    7. 单击“保存”。
 
         ![Azure SQL 数据库设置](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 03/23/2018
     4. 输入要连接到 Azure SQL 数据库的**用户名称**。 
     5. 输入对应于该用户的**密码**。 
     6. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。
-    7. 单击“ **保存**”。
+    7. 单击“保存”。
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>创建过渡 Azure 存储链接服务
 本教程使用 Azure Blob 存储作为临时过渡区域，以利用 PolyBase 来实现更好的复制性能。
@@ -156,15 +156,15 @@ ms.lasthandoff: 03/23/2018
 
     1. 输入 **AzureStorageLinkedService** 作为**名称**。 
     2. 对于“存储帐户名称”，请选择 **Azure 存储帐户**。
-    4. 单击“ **保存**”。
+    4. 单击“保存”。
 
 
 ## <a name="create-datasets"></a>创建数据集
 在本教程中创建源和接收器数据集，用于指定数据的存储位置。 
 
-输入数据集 AzureSqlDatabaseDataset 是指 AzureSqlDatabaseLinkedService。 链接服务指定用于连接到数据库的连接字符串。 数据集指定数据库的名称以及包含源数据的表。 
+输入数据集 **AzureSqlDatabaseDataset** 是指 **AzureSqlDatabaseLinkedService**。 链接服务指定用于连接到数据库的连接字符串。 数据集指定数据库的名称以及包含源数据的表。 
 
-输出数据集 AzureSqlDWDataset 是指 AzureSqlDWLinkedService。 链接服务指定用于连接到数据仓库的连接字符串。 数据集指定数据库以及要向其复制数据的表。 
+输出数据集 **AzureSqlDWDataset** 是指 **AzureSqlDWLinkedService**。 链接服务指定用于连接到数据仓库的连接字符串。 数据集指定数据库以及要向其复制数据的表。 
 
 在本教程中，源和目标 SQL 表未在数据集定义中硬编码， 而是通过 ForEach 活动在运行时将表的名称传递到“复制”活动。 
 
@@ -173,12 +173,11 @@ ms.lasthandoff: 03/23/2018
 1. 单击左窗格中的“+ (加)”，然后单击“数据集”。 
 
     ![“新建数据集”菜单](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
-2. 在“新建数据集”窗口中，选择“Azure SQL 数据集”，然后单击“完成”。 此时会看到名为 **AzureSqlTable1** 的新选项卡。 
+2. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“完成”。 此时会看到名为 **AzureSqlTable1** 的新选项卡。 
     
     ![选择 Azure SQL 数据库](./media/tutorial-bulk-copy-portal/select-azure-sql-database-dataset.png)
 3. 在底部的属性窗口中，输入 **AzureSqlDatabaseDataset** 作为**名称**。
 
-    ![源数据集名称](./media/tutorial-bulk-copy-portal/source-dataset-general.png)
 4. 切换到“连接”选项卡，然后执行以下步骤： 
 
     1. 选择 **AzureSqlDatabaseLinkedService** 作为**链接服务**。
@@ -192,14 +191,21 @@ ms.lasthandoff: 03/23/2018
 1. 单击左窗格中的“+ (加)”，然后单击“数据集”。 
 2. 在“新建数据集”窗口中，选择“Azure SQL 数据仓库”，然后单击“完成”。 此时会看到名为 **AzureSqlDWTable1** 的新选项卡。 
 3. 在底部的属性窗口中，输入 **AzureSqlDWDataset** 作为**名称**。
-4. 切换到“连接”选项卡，选择 **AzureSqlDatabaseLinkedService** 作为**链接服务**。
-5. 切换到“参数”选项卡，然后单击“+ 新建”
+5. 切换到“参数”选项卡，单击“+ 新建”，并输入 **DWTableName** 作为参数名称。 如果从页面中复制/粘贴此名称，请确保 **DWTableName** 末尾没有**尾随空格字符**。 
 
-    ![源数据集连接页](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter-button.png)
-6. 输入 **DWTableName** 作为参数名称。 如果从页面中复制/粘贴此名称，请确保 **DWTableName** 末尾没有**尾随空格字符**。 
-7. 在“参数化属性”部分，输入 `@{dataset().DWTableName}` 作为 **tableName** 属性。 数据集的 **tableName** 属性设置为一个特定值，该值作为 **DWTableName** 参数的自变量传递。 ForEach 活动循环访问一系列表，然后将这些表逐个传递到“复制”活动。 
-   
-    ![参数名称](./media/tutorial-bulk-copy-portal/dwtablename-tablename.png)
+    ![源数据集连接页](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter.png)
+
+6. 切换到“连接”选项卡。 
+
+    a. 为“链接服务”选择“AzureSqlDatabaseLinkedService”。
+
+    b. 对于“表”，选中“编辑”选项，在表名输入框中单击，然后单击下方的“添加动态内容”链接。 
+    
+    ![参数名称](./media/tutorial-bulk-copy-portal/table-name-parameter.png)
+
+    c. 在“添加动态内容”页面中，单击“参数”下的 **DWTAbleName**，这将自动填充顶部的表达式文本框 `@dataset().DWTableName`，然后单击“完成”。 数据集的 **tableName** 属性设置为一个特定值，该值作为 **DWTableName** 参数的自变量传递。 ForEach 活动循环访问一系列表，然后将这些表逐个传递到“复制”活动。 
+
+    ![数据集参数生成器](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
 
 ## <a name="create-pipelines"></a>创建管道
 在本教程中，请创建两个管道：**IterateAndCopySQLTables** 和 **GetTableListAndTriggerCopyData**。 
@@ -216,63 +222,65 @@ ms.lasthandoff: 03/23/2018
 1. 在左窗格中单击“+ (加)”，然后单击“管道”。
 
     ![“新建管道”菜单](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-2. 在“属性”窗口中，将管道的名称更改为 **IterateAndCopySQLTables**。 
+2. 在“常规”选项卡中，指定 **IterateAndCopySQLTables** 作为名称。 
 
-    ![管道名称](./media/tutorial-bulk-copy-portal/first-pipeline-name.png)
 3. 切换到“参数”选项卡，然后执行以下操作： 
 
     1. 单击“+ 新建”。 
     2. 输入 **tableList** 作为参数**名称**。
-    3. 选择“对象”作为**类型**。
+    3. 选择“数组”作为**类型**。
 
         ![管道参数](./media/tutorial-bulk-copy-portal/first-pipeline-parameter.png)
-4. 在“活动”工具栏中展开“迭代和条件”，然后将 **ForEach** 活动拖放到管道设计图面。 也可在“活动”工具箱中搜索活动。 在底部的“属性”窗口中，输入 **IterateSQLTables** 作为**名称**。 
+4. 在“活动”工具栏中展开“迭代和条件”，然后将 **ForEach** 活动拖放到管道设计图面。 也可在“活动”工具箱中搜索活动。 
 
-    ![ForEach 活动名称](./media/tutorial-bulk-copy-portal/for-each-activity-name.png)
-5. 切换到“设置”选项卡，输入 `@pipeline().parameters.tableList` 作为**项**。
+    a. 在底部的“常规”选项卡中，输入 **IterateSQLTables** 作为**名称**。 
+
+    b. 切换到“设置”选项卡，单击“项”的输入框，然后单击下方的“添加动态内容”链接。 
 
     ![ForEach 活动设置](./media/tutorial-bulk-copy-portal/for-each-activity-settings.png)
-6. 若要向 **ForEach** 活动添加子活动，请**双击** ForEach 活动，或者单击“编辑(铅笔图标)”。 仅当选中某个活动时，才会看到该活动的操作链接。 
 
-    ![ForEach 活动名称](./media/tutorial-bulk-copy-portal/edit-for-each-activity.png)
-7. 在“活动”工具箱中展开 **DataFlow**，将**复制**活动拖放到管道设计器图面，然后在“属性”窗口中将名称更改为 **CopyData**。 请注意顶部的痕迹导航菜单。 IterateAndCopySQLTable 是管道名称，IterateSQLTables 是 ForEach 活动名称。 设计器处于活动范围内。 若要从 ForEach 编辑器切换回管道编辑器，请单击痕迹导航菜单中的链接。 
+    c. 在“添加动态内容”页面中，折叠“系统变量和函数”部分，单击“参数”下的 **tableList**，这会将顶部的表达式文本框自动填充为 `@pipeline().parameter.tableList`，然后单击“完成”。 
+
+    ![Foreach 参数生成器](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
+    
+    d. 切换到“活动”选项卡，单击“添加活动”来向 **ForEach** 活动添加子活动。
+
+5. 在“活动”工具箱中，展开“数据流”，将“复制”活动拖放到管道设计器图面中。 请注意顶部的痕迹导航菜单。 IterateAndCopySQLTable 是管道名称，IterateSQLTables 是 ForEach 活动名称。 设计器处于活动范围内。 若要从 ForEach 编辑器切换回管道编辑器，请单击痕迹导航菜单中的链接。 
 
     ![在 ForEach 中复制](./media/tutorial-bulk-copy-portal/copy-in-for-each.png)
-8. 切换到“源”选项卡，然后执行以下步骤：
+6. 切换到“源”选项卡，然后执行以下步骤：
 
     1. 选择 **AzureSqlDatabaseDataset** 作为**源数据集**。 
-    2. 对于“使用查询”，请选择“查询”选项。 
-    3. 对于“查询”，请输入以下 SQL 查询。
+    2. 对于“用户查询”，请选择“查询”选项。 
+    3. 单击“查询”输入框，选择下方的“添加动态内容”，为**查询**输入以下表达式，然后选择“完成”。
 
         ```sql
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
         ![复制源设置](./media/tutorial-bulk-copy-portal/copy-source-settings.png)
-9. 切换到“接收器”选项卡，然后执行以下步骤： 
+7. 切换到“接收器”选项卡，然后执行以下步骤： 
 
     1. 选择 **AzureSqlDWDataset** 作为**接收器数据集**。
+    2. 单击 DWTableName 参数的“值”输入框，选择下方的“添加动态内容”，输入 `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` 表达式作为脚本，然后选择“完成”。
     2. 展开“Polybase 设置”，然后选择“允许 Polybase”。 
     3. 清除“使用类型默认值”选项。 
-    4. 输入以下 SQL 脚本作为**清理脚本**。 
+    4. 单击“清理脚本”输入框，选择下方的“添加动态内容”，输入以下表达式作为脚本，然后选择“完成”。 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
         ![复制接收器设置](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
-10. 切换到“参数”选项卡，根据需要向下滚动，即可看到包含 **DWTableName** 参数的“接收器数据集”部分。 将此参数的值设置为 `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]`。
 
-    ![复制接收器参数](./media/tutorial-bulk-copy-portal/copy-sink-parameters.png)
-11. 切换到“设置”选项卡，然后执行以下步骤： 
+8. 切换到“设置”选项卡，然后执行以下步骤： 
 
     1. 对于“启用暂存”，请选择 **True**。
     2. 选择 **AzureStorageLinkedService** 作为**存储帐户链接服务**。
 
         ![启用暂存](./media/tutorial-bulk-copy-portal/copy-sink-staging-settings.png)
-12. 若要验证管道设置，请单击“验证”。 确认没有任何验证错误。 若要关闭“管道验证报告”，请单击 **>>**。
 
-    ![管道验证报告](./media/tutorial-bulk-copy-portal/first-pipeline-validation-report.png)
+9. 若要验证管道设置，请单击管道工具栏上的“验证”。 确认没有任何验证错误。 若要关闭“管道验证报告”，请单击 **>>**。
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>创建管道 GetTableListAndTriggerCopyData
 
@@ -286,7 +294,6 @@ ms.lasthandoff: 03/23/2018
     ![“新建管道”菜单](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
 2. 在“属性”窗口中，将管道的名称更改为 **GetTableListAndTriggerCopyData**。 
 
-    ![管道名称](./media/tutorial-bulk-copy-portal/second-pipeline-name.png)
 3. 在“活动”工具箱中展开“常规”，将**查找**活动拖放到管道设计器图面，然后执行以下步骤：
 
     1. 输入 **LookupTableList** 作为**名称**。 
@@ -314,7 +321,7 @@ ms.lasthandoff: 03/23/2018
     2. 展开“高级”部分。 
     3. 在“参数”部分单击“+ 新建”。 
     4. 输入 **tableList** 作为参数**名称**。
-    5. 输入 `@activity('LookupTableList').output.value` 作为参数**值**。 你是在将“查找”活动的结果列表设置为第二个管道的输入。 结果列表包含一系列表，这些表的数据需要复制到目标。 
+    5. 单击“值”输入框，选择下方的“添加动态内容”，输入 `@activity('LookupTableList').output.value` 作为表名值，然后选择“完成”。 你是在将“查找”活动的结果列表设置为第二个管道的输入。 结果列表包含一系列表，这些表的数据需要复制到目标。 
 
         ![“执行管道”活动 - 设置页](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 7. 将“查找”活动**连接**到“执行管道”活动，方法是：将附加到“查找”活动的**绿框**拖至“执行管道”活动左侧。
@@ -322,17 +329,13 @@ ms.lasthandoff: 03/23/2018
     ![连接“查找”和“执行管道”活动](./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png)
 8. 若要验证管道，请单击工具栏中的“验证”。 确认没有任何验证错误。 若要关闭“管道验证报告”，请单击 **>>**。
 
-    ![第二个管道 - 验证报告](./media/tutorial-bulk-copy-portal/second-pipeline-validation-report.png)
-9. 若要将实体（数据集、管道等）发布到数据工厂服务，请单击“全部发布”。 等待发布成功。 
-
-    ![发布按钮](./media/tutorial-bulk-copy-portal/publish.png)
+9. 若要将实体（数据集、管道等）发布到数据工厂服务，请单击窗口顶部的“全部发布”。 等待发布成功。 
 
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
 
-1. 确认“GetTableListAndTriggerCopyData”选项卡处于活动状态。 
-2. 单击“触发器”，然后单击“立即触发”。 
+转到管道 **GetTableListAndTriggerCopyData**，单击“触发器”，然后单击“立即触发”。 
 
-    ![立即触发](./media/tutorial-bulk-copy-portal/trigger-now.png)
+![立即触发](./media/tutorial-bulk-copy-portal/trigger-now.png)
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
 

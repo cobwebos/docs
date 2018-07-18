@@ -4,17 +4,19 @@ description: 此方案展示了如何使用 Azure Machine Learning Workbench 执
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 70baa1160e9f521ac5533eaa15d4a9ab57433a49
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6347500b8968394a922969dd3dd2f00dd51cb6dd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034356"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 执行超参数的分布式优化
 
@@ -155,7 +157,7 @@ ms.lasthandoff: 04/19/2018
 
 文件上传需要花费数分钟时间，具体取决于 Internet 连接。 
 
-在代码中，我们使用 [Azure 存储 SDK](https://azure-storage.readthedocs.io/en/latest/) 将数据集从 blob 存储下载到当前的执行环境。 下载是通过 load_data.py 文件中的 load\_data() 函数执行的。 若要使用此代码，需要将 <ACCOUNT_NAME> 和 <ACCOUNT_KEY> 替换为承载着该数据集的存储帐户的名称和主密钥。 可以看见帐户名称显示在存储帐户的 Azure 页面的左上角中。 若要获取帐户密钥，请在存储帐户的 Azure 页面中选择“访问密钥”（请参阅“数据引入”部分中的第一个屏幕截图），然后复制密钥列的第一行中的长字符串：
+在代码中，我们使用 [Azure 存储 SDK](https://docs.microsoft.com/en-us/python/azure/) 将数据集从 blob 存储下载到当前的执行环境。 下载是通过 load_data.py 文件中的 load\_data() 函数执行的。 若要使用此代码，需要将 <ACCOUNT_NAME> 和 <ACCOUNT_KEY> 替换为承载着该数据集的存储帐户的名称和主密钥。 可以看见帐户名称显示在存储帐户的 Azure 页面的左上角中。 若要获取帐户密钥，请在存储帐户的 Azure 页面中选择“访问密钥”（请参阅“数据引入”部分中的第一个屏幕截图），然后复制密钥列的第一行中的长字符串：
  
 ![访问密钥](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
 

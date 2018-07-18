@@ -35,7 +35,7 @@
       href: policy-samples.md
 - name: 概念
   items:
-    - name: “安全”
+    - name: 安全组
       href: security-overview.md
     - name: 路由
       href: virtual-networks-udr-overview.md
@@ -69,10 +69,10 @@
       items:
         - name: 网络安全组
           items:
+            - name: Azure PowerShell
+              href: tutorial-filter-network-traffic-powershell.md
             - name: Azure CLI
               href: tutorial-filter-network-traffic-cli.md
-            - name: Azure 门户
-              href: virtual-networks-create-nsg-arm-pportal.md
         - name: 路由表
           items:
             - name: Azure PowerShell
@@ -161,12 +161,8 @@
               href: virtual-networks-dmz-nsg.md
     - name: 配置
       items:
-        - name: 虚拟机
-          items:
-            - name: 添加或删除网络接口
-              href: virtual-network-network-interface-vm.md
-            - name: VM 和云服务的名称解析
-              href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: VM 和云服务的名称解析
+          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: 将动态 DNS 用于自己的 DNS 服务器
           href: virtual-networks-name-resolution-ddns.md
         - name: 优化网络吞吐量
@@ -191,17 +187,16 @@
               href: virtual-network-nsg-manage-log.md
         - name: 路由表
           href: manage-route-table.md
-        - name: 网络接口
-          href: virtual-network-network-interface.md
+        - name: 虚拟机网络
           items:
-            - name: IP 地址
+            - name: 创建或删除网络接口
+              href: virtual-network-network-interface.md
+            - name: 添加或删除网络接口
+              href: virtual-network-network-interface-vm.md
+            - name: 添加或删除 IP 地址
               href: virtual-network-network-interface-addresses.md
         - name: 公共 IP 地址
           href: virtual-network-public-ip-address.md
-        - name: 虚拟机
-          items:
-            - name: 将 VM 移到其他子网
-              href: virtual-networks-move-vm-role-to-subnet.md
     - name: 故障排除
       items:
         - name: 网络安全组
@@ -277,6 +272,8 @@
                       href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
                     - name: Azure PowerShell
                       href: virtual-networks-acl-powershell.md
+                - name: 将 VM 移到其他子网
+                  href: virtual-networks-move-vm-role-to-subnet.md
         - name: 云服务和网络安全
           href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
           items:
@@ -320,5 +317,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-virtual-network'
-    - name: 常见问题
+    - name: 常见问题解答
       href: virtual-networks-faq.md

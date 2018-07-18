@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3dcf4211df5d40c4b174fd9a818d3268ffaa3a0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295704"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
@@ -65,7 +66,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 
 ![“异常详细信息”边栏选项卡](./media/app-insights-asp-net-exceptions/ExceptionDetailsBlade.png)
 
-**或者，**可以切换到“异常”选项卡，从异常的总体视图开始，而不是查看特定失败操作的异常：
+**或者，** 可以切换到“异常”选项卡，从异常的总体视图开始，而不是查看特定失败操作的异常：
 
 ![失败会审视图（“异常”选项卡）](./media/app-insights-asp-net-exceptions/FailuresTriageView_Exceptions.png)
 
@@ -168,7 +169,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 ## <a name="browser-exceptions"></a>浏览器异常
 报告大多数浏览器异常。
 
-如果网页包括内容交付网络或其他域中的脚本文件，确保脚本标记具有属性 ```crossorigin="anonymous"```，并且服务器可发送 [CORS 标头](http://enable-cors.org/)。 这允许从这些资源中获取有关未处理的 JavaScript 异常的堆栈跟踪和详细信息。
+如果网页包括内容分发网络或其他域中的脚本文件，确保脚本标记具有属性 ```crossorigin="anonymous"```，并且服务器可发送 [CORS 标头](http://enable-cors.org/)。 这允许从这些资源中获取有关未处理的 JavaScript 异常的堆栈跟踪和详细信息。
 
 ## <a name="web-forms"></a>Web 窗体
 在 Web 窗体中，当不存在通过 CustomErrors 配置的重定向时，HTTP 模块能够收集异常

@@ -48,12 +48,14 @@
           href: security-center-customize-os-security-config.md
         - name: 使用 Azure 策略的安全策略
           href: security-center-azure-policy.md
+        - name: 租户范围可见性
+          href: security-center-management-groups.md
     - name: 实施安全建议
       href: security-center-recommendations.md
     - name: 监视安全运行状况
       href: security-center-monitoring.md
       items:
-        - name: 计算安全
+        - name: 计算和应用安全
           href: security-center-virtual-machine-recommendations.md
           items:
             - name: 应用磁盘加密
@@ -74,6 +76,10 @@
               href: security-center-update-os-version.md
             - name: 未安装漏洞评估
               href: security-center-vulnerability-assessment-recommendations.md
+            - name: 添加 Web 应用程序防火墙
+              href: security-center-add-web-application-firewall.md
+            - name: 完成应用程序保护
+              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
         - name: 网络安全
           href: security-center-network-recommendations.md
           items:
@@ -94,13 +100,6 @@
               href: security-center-enable-auditing-on-sql-servers.md
             - name: 启用透明数据加密
               href: security-center-enable-transparent-data-encryption.md
-        - name: 应用程序安全性
-          href: security-center-application-recommendations.md
-          items:
-            - name: 添加 Web 应用程序防火墙
-              href: security-center-add-web-application-firewall.md
-            - name: 完成应用程序保护
-              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
         - name: 标识和访问
           href: security-center-identity-access.md
     - name: 应用云防御措施
@@ -109,6 +108,8 @@
           href: security-center-just-in-time.md
         - name: 自适应应用程序控制
           href: security-center-adaptive-application.md
+        - name: 文件完整性监视
+          href: security-center-file-integrity-monitoring.md
     - name: 管理安全解决方案
       href: security-center-partner-integration.md
       items:
@@ -145,6 +146,8 @@
           href: security-center-threat-intel.md
         - name: 调查
           href: security-center-investigation.md
+        - name: 管理调查用户数据
+          href: security-center-investigation-user-data.md
     - name: 自动执行安全工作流
       items:
         - name: 逻辑应用演练手册
@@ -169,6 +172,8 @@
       href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
 - name: 资源
   items:
+    - name: 管理用户数据
+      href: security-center-privacy.md
     - name: 常见问题
       href: security-center-faq.md
     - name: 支持的平台

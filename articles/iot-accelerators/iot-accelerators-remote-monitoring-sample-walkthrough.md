@@ -1,27 +1,21 @@
 ---
-title: 远程监视解决方案的体系结构 - Azure | Microsoft Docs
-description: 有关远程监视解决方案加速器的体系结构的演练。
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
+title: 远程监视解决方案加速器概述 - Azure | Microsoft Docs
+description: 远程监视解决方案加速器概述。
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 3effde81dfa48e9544d89153d40c160ff972d047
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a8b5d9e3917c854cb255a35d3bbc901bcce52c24
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084519"
 ---
-# <a name="remote-monitoring-solution-accelerator-architecture"></a>远程监视解决方案加速器体系结构
+# <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
 远程监视[解决方案加速器](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)针对远程位置中的多台计算机实现端到端监视解决方案。 该解决方案结合了关键 Azure 服务来提供业务方案的通用实现。 可将其用作自己实现的起点，并可以根据特定的业务要求[自定义](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)该解决方案。
 
@@ -29,7 +23,7 @@ ms.lasthandoff: 05/20/2018
 
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。
-* 设计自己的 IoT 解决方案，以使用 Azure 服务。
+* 设计使用 Azure 服务的 IoT 解决方案。
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
@@ -39,7 +33,7 @@ ms.lasthandoff: 05/20/2018
 
 ## <a name="why-microservices"></a>为何使用微服务？
 
-自 Microsoft 发布第一款解决方案加速器以来，云体系结构已经演变。 [微服务](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)应运而生，经证实能够在不降低开发速度的情况下实现可伸缩性和灵活性。 有多种 Microsoft 服务在内部使用此体系结构模式，且获得了出色的可靠性和可伸缩性。 更新的解决方案加速器将这些知识付诸实践，使我们也能从中受益。
+自 Microsoft 发布第一款解决方案加速器以来，云体系结构已有所演变。 [微服务](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)应运而生，经证实能够在不降低开发速度的情况下实现可伸缩性和灵活性。 有多种 Microsoft 服务在内部使用此体系结构模式，且获得了出色的可靠性和可伸缩性。 更新的解决方案加速器将这些知识付诸实践，使我们也能从中受益。
 
 > [!TIP]
 > 若要详细了解微服务体系结构，请参阅 [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture)（.NET 应用程序体系结构）和 [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)（微服务：由云推动的应用程序革命）。
@@ -103,7 +97,7 @@ ms.lasthandoff: 05/20/2018
 
 警报存储在 Cosmos DB 中。
 
-`telemetry-agent` 微服务使解决方案门户能够读取设备发送的遥测数据。 解决方案门户还使用此服务：
+[telemetry-agent](https://github.com/Azure/telemetry-agent-dotnet) 微服务使解决方案门户能够读取设备发送的遥测数据。 解决方案门户还使用此服务：
 
 * 定义监视规则，例如触发警报的阈值
 * 检索以往警报的列表。
@@ -114,9 +108,9 @@ ms.lasthandoff: 05/20/2018
 
 [storage-adapter](https://github.com/Azure/pcs-storage-adapter-dotnet) 微服务是解决方案加速器使用的主存储服务前面的适配器。 它提供简单的集合和键值存储。
 
-解决方案加速器的标准部署使用 Cosmos DB 作为其主存储服务。
+解决方案加速器的标准部署使用 Azure Cosmos DB 作为其主存储服务。
 
-Cosmos DB 数据库将数据存储在解决方案加速器中。 **storage-adapter** 微服务充当解决方案中其他微服务的适配器，用于访问存储服务。
+Azure Cosmos DB 数据库将数据存储在解决方案加速器中。 storage-adapter 微服务充当解决方案中其他微服务的适配器，用于访问存储服务。
 
 ## <a name="presentation"></a>呈现
 
@@ -141,6 +135,8 @@ Cosmos DB 数据库将数据存储在解决方案加速器中。 **storage-adapt
 
 * [使用 Azure IoT 进行远程监视的解决方案加速器 (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
 * [使用 Azure IoT 进行远程监视的解决方案加速器 (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
-* [用于远程监视的解决方案加速器（体系结构）](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
+
+详细的解决方案体系结构示意图：
+* [用于远程监视体系结构的解决方案加速器](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
 
 有关远程监视解决方案加速器的更多概念性信息，请参阅[自定义解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。

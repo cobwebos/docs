@@ -3,7 +3,7 @@ title: 教程 - 监视和更新 Azure 中的 Linux 虚拟机 | Microsoft Docs
 description: 本教程介绍如何在 Linux 虚拟机上监视启动诊断和性能指标，以及管理程序包更新
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2017
-ms.author: iainfou
+ms.date: 06/06/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0dc403d92855902daef09c91a5dd022beb23fd71
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f5773d2f6634d1de9674351ff30a15b488bdd672
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597457"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视和更新 Azure 中的 Linux 虚拟机
 
-为确保 Azure 中的虚拟机 (VM) 正常运行，可以查看启动诊断、性能指标，并管理程序包更新。 本教程介绍如何执行下列操作：
+为确保 Azure 中的虚拟机 (VM) 正常运行，可以查看启动诊断、性能指标，并管理程序包更新。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 VM 上启用启动诊断
@@ -43,13 +44,13 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="create-vm"></a>创建 VM
 
-若要查看诊断和指标的状态，需要创建一个 VM。 首先，使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 *eastus* 位置创建名为 *myResourceGroupMonitor* 的资源组。
+若要查看诊断和指标的状态，需要创建一个 VM。 首先，使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 以下示例在 *eastus* 位置创建名为 *myResourceGroupMonitor* 的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-现使用 [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) 创建 VM。 以下示例创建一个名为 *myVM* 的 VM：
+现使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 以下示例将创建名为 myVM 的 VM，并生成 SSH 密钥（如果它们尚不存在于 *~/.ssh/* 中）：
 
 ```azurecli-interactive
 az vm create \
@@ -64,7 +65,7 @@ az vm create \
 
 Linux VM 启动时，启动诊断扩展将捕获启动输出并将其存储在 Azure 存储中。 此数据可以用于排查 VM 启动问题。 使用 Azure CLI 创建 Linux VM 时，不会自动启用启动诊断。
 
-在启用启动诊断之前，需要创建一个存储帐户来存储启动日志。 存储帐户的名称必须全局唯一，介于 3 和 24 个字符之间，并且只能包含数字和小写字母。 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令创建存储帐户。 本示例使用一个随机字符串来创建唯一的存储帐户名称。
+在启用启动诊断之前，需要创建一个存储帐户来存储启动日志。 存储帐户的名称必须全局唯一，介于 3 和 24 个字符之间，并且只能包含数字和小写字母。 使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令创建存储帐户。 本示例使用一个随机字符串来创建唯一的存储帐户名称。
 
 ```azurecli-interactive
 storageacct=mydiagdata$RANDOM
@@ -82,7 +83,7 @@ az storage account create \
 bloburi=$(az storage account show --resource-group myResourceGroupMonitor --name $storageacct --query 'primaryEndpoints.blob' -o tsv)
 ```
 
-现在，请使用 [az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable) 启用启动诊断。 `--storage` 值是在上一步骤中收集的 Blob URI。
+现在，请使用 [az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-enable) 启用启动诊断。 `--storage` 值是在上一步骤中收集的 Blob URI。
 
 ```azurecli-interactive
 az vm boot-diagnostics enable \
@@ -93,19 +94,19 @@ az vm boot-diagnostics enable \
 
 ## <a name="view-boot-diagnostics"></a>查看启动诊断
 
-启用引导诊断后，每当停止再启动 VM 时，会将有关启动过程的信息写入日志文件。 本示例首先使用 [az vm deallocate](/cli/azure/vm#az_vm_deallocate) 命令解除分配 VM，如下所示：
+启用引导诊断后，每当停止再启动 VM 时，会将有关启动过程的信息写入日志文件。 本示例首先使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 命令解除分配 VM，如下所示：
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
-现在，请使用 [az vm start]( /cli/azure/vm#az_vm_stop) 命令启动 VM，如下所示：
+现在，请使用 [az vm start]( /cli/azure/vm#az-vm-stop) 命令启动 VM，如下所示：
 
 ```azurecli-interactive
 az vm start --resource-group myResourceGroupMonitor --name myVM
 ```
 
-可以使用 [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) 命令获取 *myVM* 的启动诊断数据，如下所示：
+可以使用 [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-get-boot-log) 命令获取 *myVM* 的启动诊断数据，如下所示：
 
 ```azurecli-interactive
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --name myVM
@@ -115,24 +116,18 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 
 Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收集该主机的指标，可以在 Azure 门户中查看这些指标，如下所示：
 
-1. 在 Azure 门户中单击“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。
-1. 要查看主机 VM 的执行方式，请在 VM 边栏选项卡上单击“指标”，并选择“可用指标”下面的任一“[主机]”指标。
+1. 在 Azure 门户中选择“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。
+1. 若要查看主机 VM 的性能情况，请在 VM 窗口中选择“指标”，并选择“可用指标”下面的任一“[主机]”指标。
 
     ![查看主机指标](./media/tutorial-monitoring/monitor-host-metrics.png)
 
 ## <a name="install-diagnostics-extension"></a>安装诊断扩展
 
-> [!IMPORTANT]
-> 本文档介绍了已弃用的 Linux 诊断扩展 2.3 版。 2018 年 6 月 30 日后将不再支持 2.3 版。
->
-> 可改为启用 Linux 诊断扩展 3.0 版。 有关详细信息，请参阅[文档](./diagnostic-extension.md)。
-
 可以使用基本的主机指标，但若要查看更详细的指标和 VM 特定的指标，需在 VM 上安装 Azure 诊断扩展。 使用 Azure 诊断扩展可从 VM 检索其他监视数据和诊断数据。 可以查看这些性能指标，并根据 VM 的性能情况创建警报。 诊断扩展是通过 Azure 门户安装的，如下所述：
 
-1. 在 Azure 门户中，单击“资源组”，选择“myResourceGroup”，并在资源列表中选择“myVM”。
-1. 单击“诊断设置”。 列表中会显示已在上一部分启用的“启动诊断”。 单击“基本指标”对应的复选框。
-1. 在“存储帐户”部分中，浏览到在上一部分创建的 *mydiagdata[1234]* 帐户并将其选中。
-1. 单击“保存”按钮  。
+1. 在 Azure 门户中选择“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。
+1. 选择“诊断设置”。 在“选取存储帐户”下拉菜单中，如果尚未选择，请选择在上一部分中创建的“mydiagdata[1234]”帐户。
+1. 选择“启用来宾级监视”按钮。
 
     ![查看诊断指标](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
@@ -140,8 +135,8 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 可以像查看主机 VM 指标一样查看 VM 指标：
 
-1. 在 Azure 门户中，单击“资源组”，选择“myResourceGroup”，并在资源列表中选择“myVM”。
-1. 要查看 VM 的性能情况，请在 VM 边栏选项卡上单击“指标”，并选择“可用指标”下的任一诊断指标。
+1. 在 Azure 门户中选择“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。
+1. 若要查看 VM 的性能情况，请在 VM 窗口上选择“指标”，并选择“可用指标”下的任一“[来宾]”诊断指标。
 
     ![查看 VM 指标](./media/tutorial-monitoring/monitor-vm-metrics.png)
 
@@ -151,12 +146,12 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 以下示例针对平均 CPU 使用率创建警报。
 
-1. 在 Azure 门户中，单击“资源组”，选择“myResourceGroup”，并在资源列表中选择“myVM”。
-2. 在 VM 边栏选项卡上单击“警报规则”，并单击警报边栏选项卡顶部的“添加指标警报”。
+1. 在 Azure 门户中选择“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。
+2. 选择“警报(经典)”，然后在警报窗口顶部选择“添加指标警报(经典)”。
 3. 为警报提供**名称**，例如 *myAlertRule*
 4. 若要在 CPU 百分比持续 5 分钟超过 1.0 时触发警报，请保留选中其他所有默认值。
 5. （可选）选中“电子邮件所有者、参与者和阅读者”对应的框，以便向他们发送电子邮件通知。 默认操作是在门户中显示通知。
-6. 单击“确定”按钮。
+6. 选择“确定”按钮。
 
 ## <a name="manage-package-updates"></a>管理程序包更新
 
@@ -171,7 +166,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 1. 在屏幕的左侧，选择“虚拟机”。
 2. 从列表中选择一个虚拟机。
-3. 在 VM 屏幕上的“操作”部分，单击“更新管理”。 “启用更新管理”屏幕随即打开。
+3. 在 VM 屏幕上的“操作”部分中，选择“更新管理”。 “启用更新管理”屏幕随即打开。
 
 执行验证以确定是否为该 VM 启用了更新管理。
 验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
@@ -183,7 +178,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和自动化混合 Runbook 辅助角色。
 此代理用于与虚拟机通信并获取关于更新状态的信息。
 
-选择 Log analytics 工作区和自动化帐户，然后单击“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
+选择 Log Analytics 工作区和自动化帐户，然后选择“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 如果在载入过程中发现缺少下列任何先决条件，则会自动添加这些条件：
 
@@ -191,7 +186,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 * [自动化](../../automation/automation-offering-get-started.md)
 * VM 上已启用[混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
 
-“更新管理”屏幕随即打开。 配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
+“更新管理”屏幕随即打开。 配置要使用的位置、Log Analytics 工作区和自动化帐户，然后选择“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
 
 ![启用“更新管理解决方案”](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
@@ -207,7 +202,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 若要安装更新，请计划一个遵循你的发布时间和服务窗口的部署。 可选择在部署中包括哪种更新类型。 例如，可包括关键或安全更新，排除更新汇总。
 
-单击“更新管理”屏幕顶部的“计划更新部署”，计划用于虚拟机的新的更新部署。 在“新建更新部署”屏幕中，指定以下信息：
+若要为 VM 计划新的更新部署，请选择“更新管理”屏幕顶部的“计划更新部署”。 在“新建更新部署”屏幕中，指定以下信息：
 
 * 名称- 提供用于标识更新部署的唯一名称。
 * 更新分类- 选择部署中包含的更新部署的软件类型。 分类类型：
@@ -218,13 +213,13 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
   ![更新计划设置屏幕](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
 
 * 计划设置- 可以接受默认的日期和时间，即当前时间后 30 分钟，或指定不同的时间。
-  还可以指定部署是发生一次还是设置定期计划。 单击“重复周期”下的“重复执行”选项可设置定期计划。
+  还可以指定部署是发生一次还是设置定期计划。 若要设置定期计划，请选择“重复周期”下的“重复执行”选项。
 
   ![更新计划设置屏幕](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
 
 * 维护时段(分钟) - 指定要在其中进行更新部署的时间段。 这有助于确保在定义的服务时段内执行更改。
 
-完成配置计划后，单击“创建”按钮，然后返回到状态仪表板。
+完成配置计划后，选择“创建”按钮，然后返回到状态仪表板。
 请注意，“已计划”表显示你创建的部署计划。
 
 > [!WARNING]
@@ -235,7 +230,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 在计划性部署开始后，可以在“更新管理”屏幕的“更新部署”选项卡上查看该部署的状态。
 如果部署当前正在运行，则状态显示为“正在运行”。 如果部署已成功完成，则状态会更改为“成功”。
 如果部署中有一个或多个更新失败，则状态为“部分失败”。
-单击已完成的更新部署，查看该更新部署的仪表板。
+选择已完成的更新部署，查看该更新部署的仪表板。
 
 ![特定部署的更新部署状态仪表板](./media/tutorial-monitoring/manage-updates-view-results.png)
 
@@ -246,11 +241,11 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 * 成功- 更新成功
 * 失败- 更新失败
 
-单击“所有日志”，查看部署创建的所有日志条目。
+若要查看部署创建的所有日志条目，请选择“所有日志”。
 
-单击“输出”磁贴，查看负责管理目标虚拟机更新部署的 runbook 的作业流。
+选择“输出”磁贴，查看负责管理目标 VM 更新部署的 runbook 的作业流。
 
-单击“错误”，查看有关部署中的任何错误的详细信息。
+若要查看有关部署中错误的详细信息，请选择“错误”。
 
 ## <a name="monitor-changes-and-inventory"></a>监视器更改和清单
 
@@ -262,9 +257,9 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 1. 在屏幕的左侧，选择“虚拟机”。
 2. 从列表中选择一个虚拟机。
-3. 在 VM 屏幕上的“操作”部分中，单击“清单”或“更改跟踪”。 此时会打开“启用更改跟踪和清单”屏幕。
+3. 在 VM 屏幕上的“操作”部分中，选择“清单”或“更改跟踪”。 此时会打开“启用更改跟踪和清单”屏幕。
 
-配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。 即使这些解决方案在菜单上是分开的，它们也是同一解决方案。 启用一个解决方案就会为 VM 启用两个解决方案。
+配置要使用的位置、Log Analytics 工作区和自动化帐户，然后选择“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。 即使这些解决方案在菜单上是分开的，它们也是同一解决方案。 启用一个解决方案就会为 VM 启用两个解决方案。
 
 ![启用更改和清单跟踪](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -272,7 +267,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 ### <a name="track-changes"></a>跟踪更改
 
-在 VM 中的“操作”下选择“更改跟踪”。 单击“编辑设置”，此时会显示“更改跟踪”页。 选择要跟踪的设置类型，然后单击“+ 添加”配置设置。 Linux 上的可用选项为“Linux 文件”。
+在 VM 中的“操作”下选择“更改跟踪”。 选择“编辑设置”，此时会显示“更改跟踪”页。 选择要跟踪的设置类型，然后选择“+ 添加”以配置设置。 Linux 上的可用选项为“Linux 文件”。
 
 有关更改跟踪的详细信息，请参阅[排查 VM 上的更改问题](../../automation/automation-tutorial-troubleshoot-changes.md)
 

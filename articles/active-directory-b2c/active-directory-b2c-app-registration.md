@@ -1,20 +1,21 @@
 ---
-title: 应用程序注册 - Azure Active Directory B2C
+title: Azure Active Directory B2C 中的应用程序注册 | Microsoft Docs
 description: 如何将应用程序注册到 Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 6/13/2017
 ms.author: davidmu
-ms.openlocfilehash: 8ba511464f8ce0bef2a14706a272f6c09dfe5d07
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: ecb9cfa08888a8998473a7f23f1b4de6d12c5808
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38477506"
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C：注册应用程序
 
@@ -99,7 +100,7 @@ ms.lasthandoff: 04/18/2018
 
 `https://new.login.contoso.com`
 
-在这种情况下，将引用 login.contoso.com 的 DNS 子域。如果希望应用使用 login-east.contoso.com 和 login-west.contoso.com 作为回复 URL，必须按以下顺序添加这些回复 URL：
+在这种情况下，将引用 login.contoso.com 的 DNS 子域。 如果希望应用使用 login-east.contoso.com 和 login-west.contoso.com 作为回复 URL，必须按以下顺序添加这些回复 URL：
 
 `https://contoso.com`
 

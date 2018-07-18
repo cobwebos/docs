@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29943235"
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>将产品/服务部署到 Azure Marketplace
 如果对产品/服务感到满意（即，已测试客户方案、市场营销内容等）并为启动做好准备，请在“发布”选项卡上请求“推动到生产”。  

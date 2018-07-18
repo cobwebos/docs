@@ -1,11 +1,11 @@
 ---
-title: "管理 StorSimple 虚拟阵列的访问控制记录 | Microsoft 文档"
-description: "介绍如何管理访问控制记录 (ACR)，以确定哪些主机可以连接到 StorSimple Virtual Array 上的卷。"
+title: 管理 StorSimple 虚拟阵列的访问控制记录 | Microsoft 文档
+description: 介绍如何管理访问控制记录 (ACR)，以确定哪些主机可以连接到 StorSimple Virtual Array 上的卷。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
 ms.devlang: na
@@ -16,10 +16,11 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2ce65aa4efba735305208f7a6d761bc2814d1b8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718880"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的访问控制记录
 
@@ -62,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="to-add-an-acr"></a>添加 ACR
 
-1. 在服务登陆页上，选择服务、双击服务名称，然后在“配置”部分中单击“访问控制记录”。
+1. 在服务登陆页上，选择你的服务、双击服务名称，并在“配置”部分中单击“访问控制记录”。
 2. 在“访问控制记录”边栏选项卡中，单击“添加”。
 3. 在“添加 ACR”边栏选项卡中，执行以下操作：
    

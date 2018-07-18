@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: aea43eed0cb66b0e0d3bb7a393f569714feb475d
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850131"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -56,12 +57,13 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 监视器
 
-用于 ExpressRoute 的 NPM 针对专用的对等互连连接提供了全面的 ExpressRoute 监视。 可以通过 ExpressRoute 监视分支办事处与 Azure 之间的 E2E 连接和性能。 主要功能包括：
+用于 ExpressRoute 的 NPM 针对 Azure 专用对等互连和 Microsoft 对等互连连接提供了全面的 ExpressRoute 监视。 可以通过 ExpressRoute 监视分支办事处与 Azure 之间的 E2E 连接和性能。 主要功能包括：
 
 * 自动检测与你的订阅关联的 ER 线路
 * 检测从本地到你的云应用程序的网络拓扑
-* 每个虚拟网络的容量规划、利用率分析和带宽利用率
+* 容量规划、带宽利用率分析
 * 针对主要路径和辅助路径进行监视并发出警报
+* 通过 ExpressRoute 监视与 Azure 服务（如 Office 365、Dynamics 365 等）的连接情况
 * 检测与 VNet 的连接的降级
 
 ![显示各区域流量的地图](./media/network-monitoring-overview/expressroute-topology-map.png) 

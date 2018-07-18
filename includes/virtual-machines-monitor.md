@@ -1,4 +1,4 @@
-通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/monitoring-and-diagnostics/monitoring-overview-azure-monitor.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)在 VM 上配置诊断以收集更多指标数据。 还可以使用更多高级监视选项，如 [Application Insights](../articles/application-insights/app-insights-overview.md) 和 [Log Analytics](../articles/log-analytics/log-analytics-overview.md)。
+通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/monitoring-and-diagnostics/monitoring-overview-azure-monitor.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)配置 VM 的诊断以收集更多指标数据。 还可以使用更为高级的监视选项，如 [Application Insights](../articles/application-insights/app-insights-overview.md) 和 [Log Analytics](../articles/log-analytics/log-analytics-overview.md)。
 
 ## <a name="diagnostics-and-metrics"></a>诊断和指标 
 
@@ -6,7 +6,7 @@
 
 - **观察 VM 的基本指标。** Azure 门户的“概述”屏幕上显示的基本指标包括 CPU 使用率、网络使用情况、总磁盘字节数以及每秒的磁盘操作数。
 
-- **启用启动诊断数据收集并使用 Azure 门户查看它。** 将自己的映像加载到 Azure 或者启动某个平台映像时，可能会因为许多原因而导致 VM 进入无法启动状态。 可以在创建 VM 时通过针对“设置”屏幕的“监视”部分下的“启动诊断”单击“已启用”，轻松启用启动诊断。
+- **使用 Azure 门户启用并查看启动诊断数据收集。** 将自己的映像加载到 Azure 或者启动某个平台映像时，可能会因为许多原因而导致 VM 进入无法启动状态。 创建 VM 时，针对“设置”屏幕的“监视”部分下的“启动诊断”单击“已启用”，即可轻松启用启动诊断。
 
     VM 启动时，启动诊断代理将捕获启动输出并将其存储在 Azure 存储中。 此数据可以用于排查 VM 启动问题。 从命令行工具创建 VM 时，不会自动启用启动诊断。 在启用启动诊断之前，需要创建一个存储帐户来存储启动日志。 如果在 Azure 门户中启用启动诊断，则会自动创建一个存储帐户。
 
@@ -14,15 +14,15 @@
 
 - **启用来宾 OS 诊断数据收集。** 创建 VM 时，可以在“设置”屏幕上启用来宾 OS 诊断。 如果确实启用了诊断数据收集，[用于 Linux 的 IaaSDiagnostics 扩展](../articles/virtual-machines/linux/diagnostic-extension.md)或[用于 Windows 的 IaaSDiagnostics 扩展](../articles/virtual-machines/windows/ps-extensions-diagnostics.md)将添加到 VM，使你可以收集更多的磁盘、CPU 和内存数据。
 
-    使用收集的诊断数据，可以为 VM 配置自动缩放。 还可以配置日志，以便存储数据并设置警报，从而在性能不正常时通知你。
+    使用收集的诊断数据，可以为 VM 配置自动缩放。 还可以配置日志，以便存储数据并设置警报，从而在性能不正常时获得通知。
 
 ## <a name="alerts"></a>警报
 
-可以根据特定的性能指标创建[警报](../articles/monitoring-and-diagnostics/monitoring-overview-alerts.md)。 可能会提醒你注意的问题的示例包括，平均 CPU 使用率超过特定的阈值，或者可用磁盘空间低于特定的空间量。 可以在 [Azure 门户](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)中或者使用 [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md) 或 [Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) 来配置警报。
+可以根据特定的性能指标创建[警报](../articles/monitoring-and-diagnostics/monitoring-overview-alerts.md)。 举例来说，可以根据以下问题生成警报，平均 CPU 使用率超过特定的阈值，或者可用磁盘空间低于特定的空间量。 可以在 [Azure 门户](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)中或者使用 [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md) 或 [Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) 来配置警报。
 
 ## <a name="azure-service-health"></a>Azure 服务运行状况
 
-[Azure 服务运行状况](../articles/service-health/service-health-overview.md)会在 Azure 服务问题影响你时提供个性化的指导和支持，并且会帮助你为即将到来的计划内维护做好准备。 Azure 服务运行状况将使用具有针对性和灵活性的通知提醒你和你的团队。
+[Azure 服务运行状况](../articles/service-health/service-health-overview.md)会在 Azure 服务问题影响你时提供个性化的指导和支持，并且会帮助你为即将到来的计划内维护做好准备。 Azure 服务运行状况使用具有针对性和灵活性的通知提醒你和你的团队。
 
 ## <a name="azure-resource-health"></a>Azure 资源运行状况
 

@@ -8,16 +8,17 @@ manager: hjerez
 editor: jasonwhowell
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 3efc351861a7d5b3c02c08b96494e83a3ccb99f6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 233ae50246619c3e503e42081c3b4de88090f411
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362135"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835026"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure 机器学习模型管理帐户 API 参考
 
@@ -668,7 +669,7 @@ AutoScaler 设置。
 
 |名称|说明|架构|
 |---|---|---|
-|**cpu**  <br>（可选）|指定 CPU 预留。 有关 Kubernetes 的格式，请参阅 [CPU 的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)。|字符串|
+|**cpu**  <br>（可选）|指定 CPU 保留。 有关 Kubernetes 的格式，请参阅 [CPU 的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)。|字符串|
 |**memory**  <br>（可选）|指定内存预留。 有关 Kubernetes 的格式，请参阅[内存的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)。|字符串|
 
 

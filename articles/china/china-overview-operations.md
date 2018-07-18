@@ -1,6 +1,6 @@
 ---
-title: "中国与全球 Azure 中的 Azure 运营 | Microsoft Docs"
-description: "Microsoft Azure 是在中国推出的、符合政府法规的第一个外资公有云服务提供程序。 Azure 中国世纪互联在运营模式与可供服务方面不同于全球 Azure，它提供多种优势。"
+title: 中国与全球 Azure 中的 Azure 运营 | Microsoft Docs
+description: Microsoft Azure 是在中国推出的、符合政府法规的第一个外资公有云服务提供程序。 Azure 中国世纪互联在运营模式与可供服务方面不同于全球 Azure，它提供多种优势。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635184"
 ---
 # <a name="azure-operations-in-china-vs-global-azure"></a>中国与全球 Azure 中的 Azure 运营
 

@@ -1,6 +1,6 @@
 ---
-title: "如何将 Hudson 与 Blob 存储一起使用 | Microsoft Docs"
-description: "介绍如何将 Hudson 与 Microsoft Azure Blob 存储一起使用作为生成项目的存储库。"
+title: 如何将 Hudson 与 Blob 存储一起使用 | Microsoft Docs
+description: 介绍如何将 Hudson 与 Microsoft Azure Blob 存储一起使用作为生成项目的存储库。
 services: storage
 documentationcenter: java
 author: seguler
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23060122"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>将 Azure 存储用于 Hudson 持续集成解决方案
 ## <a name="overview"></a>概述

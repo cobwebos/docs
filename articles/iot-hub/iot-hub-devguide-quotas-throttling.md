@@ -1,25 +1,19 @@
 ---
 title: 了解 Azure IoT 中心配额和限制 | Microsoft Docs
 description: 开发人员指南 - 介绍适用于 IoT 中心的配额和预期限制行为。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 425e1b08-8789-4377-85f7-c13131fae4ce
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 026ff0394e988081bdc581bf001417b13e44427b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 9521bd47db9676c70993c535f1207b3519123353
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303590"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633309"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -70,7 +64,7 @@ ms.locfileid: "34303590"
 
 IoT 中心强制实施的其他操作限制：
 
-| Operation | 限制 |
+| Operation | Limit |
 | --------- | ----- |
 | 文件上传 URI | 存储帐户一次可传出 10000 个 SAS URI。 <br/> 一次可传出 10 个 SAS URI/设备。 |
 | 作业<sup>1</sup> | 作业历史记录最多保留 30 天 <br/> 最大并发作业数为 1（适用于免费版和 S1）、5（适用于 S2）、10（适用于 S3）。 |

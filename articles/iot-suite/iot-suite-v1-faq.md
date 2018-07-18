@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT 套件常见问题解答 | Microsoft Docs"
-description: "有关 IoT 套件的常见问题"
-services: 
+title: Azure IoT 套件常见问题解答 | Microsoft Docs
+description: 有关 IoT 套件的常见问题
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: 6c644395aa7ad51c289cdc4a23b02e9e0239a0fe
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 77b9fab68b66fe8998733a8f890acb9dd6b97899
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34702274"
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>有关 IoT 套件的常见问题
 
-另请参阅连接工厂相关[常见问题解答](iot-suite-faq-cf.md)。
+另请参阅连接工厂相关[常见问题解答](../iot-accelerators/iot-accelerators-faq-cf.md)。
 
 ### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>在哪里可以找到预配置解决方案的源代码？
 
@@ -104,11 +105,11 @@ ms.lasthandoff: 01/05/2018
 还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
 
 * [预见性维护预配置解决方案概述][lnk-predictive-overview]
-* [连接工厂预配置解决方案概述](iot-suite-connected-factory-overview.md)
+* [连接工厂预配置解决方案概述](../iot-accelerators/iot-accelerators-connected-factory-overview.md)
 * [从源头保障 IoT 的安全][lnk-security-groundup]
 
-[lnk-predictive-overview]: iot-suite-predictive-overview.md
-[lnk-security-groundup]: securing-iot-ground-up.md
+[lnk-predictive-overview]:../iot-accelerators/iot-accelerators-predictive-overview.md
+[lnk-security-groundup]:../iot-accelerators/securing-iot-ground-up.md
 
 [link-azuresupportticket]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade 
 [link-azuresublimits]: https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/#iot-hub-limits

@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL 中的服务器概念"
-description: "本文提供配置和管理 Azure Database for PostgreSQL 服务器的注意事项和指南。"
+title: Azure Database for PostgreSQL 中的服务器概念
+description: 本文提供配置和管理 Azure Database for PostgreSQL 服务器的注意事项和指南。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 2db18b014606799bdf5707c4c19f363bbc323e5c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 05/22/2018
+ms.openlocfilehash: f877f6df51cd7aed29260331d27d5c96f0584afc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640007"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL 服务器
 本文提供使用 Azure Database for PostgreSQL 服务器的注意事项和指南。
@@ -45,13 +46,22 @@ Azure Database for PostgreSQL 服务器：
 | TCP/IP | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |
 | **防火墙** | 为帮助保护数据，在用户指定具有访问权限的计算机之前，防火墙规则将禁止所有对服务器及其数据库的访问。 请参阅 [Azure Database for PostgreSQL 服务器防火墙规则](concepts-firewall-rules.md)。 |
 
-## <a name="how-do-i-manage-a-server"></a>如何管理服务器？
+## <a name="managing-your-server"></a>管理服务器
 可使用 [Azure 门户](https://portal.azure.com)或 [Azure CLI](/cli/azure/postgres) 管理 Azure Database for PostgreSQL 服务器。
+
+在创建服务器时，设置管理员用户的凭据。 管理员用户是在服务器上具有最高特权的用户。 它属于角色 azure_pg_admin。 此角色没有完整的超级用户权限。 
+
+PostgreSQL 超级用户属性分配给属于托管服务的 azure_superuser。 你无权访问此角色。
+
+Azure Database for PostgreSQL 服务器具有两个默认数据库： 
+- postgres - 可以在创建服务器后连接到的默认数据库。
+- azure_maintenance - 此数据库用于将提供托管服务的进程与用户操作分开。 你无权访问此数据库。
+
 
 ## <a name="server-parameters"></a>服务器参数
 PostgreSQL 服务器参数可确定服务器的配置。 在 Azure Database for PostgreSQL 中，可使用 Azure 门户或 Azure CLI 查看和编辑参数列表。 
 
-由于是 Postgres 的托管服务，Azure Database for PostgreSQL 中的可配置参数是本地 Postgres 实例中的参数的子集（有关 Postgres 参数的详细信息，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/9.6/static/runtime-config.html)）。 在创建时为每个参数使用了默认值，启用了 Azure Database for PostgreSQL 服务器。 用户不能配置需要服务器重启或超级用户访问权限才能使更改生效的参数。
+由于是 Postgres 的托管服务，Azure Database for PostgreSQL 中的可配置参数是本地 Postgres 实例中的参数的子集（有关 Postgres 参数的详细信息，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/9.6/static/runtime-config.html)）。 在创建时为每个参数使用了默认值，启用了 Azure Database for PostgreSQL 服务器。 用户不能配置某些需要服务器重启或超级用户访问权限才能使更改生效的参数。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
-ms.openlocfilehash: 1b9c0514e93fa89f8776d830ef242fc4963a6f7b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d5ec76a62b56769ee3065cac3542f5a94df4a1c6
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133258"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
@@ -57,8 +58,8 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 
 用户帐户的提升级别指示任务是否可以使用提升的访问权限运行。 自动用户帐户和命名用户帐户都可以使用提升的访问权限运行。 提升级别的两个选项为：
 
-- **NonAdmin：**任务以没有提升访问权限的标准用户身份运行。 批处理用户帐户的默认提升级别始终为 **NonAdmin**。
-- **Admin：**任务以拥有提升访问权限的用户身份运行，以完全管理员权限操作。 
+- **NonAdmin：** 任务以没有提升访问权限的标准用户身份运行。 批处理用户帐户的默认提升级别始终为 **NonAdmin**。
+- **Admin：** 任务以拥有提升访问权限的用户身份运行，以完全管理员权限操作。 
 
 ## <a name="auto-user-accounts"></a>自动用户帐户
 
@@ -172,8 +173,8 @@ Console.WriteLine("Creating pool [{0}]...", poolId);
 // Create a pool using the cloud service configuration.
 pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
-    targetDedicatedComputeNodes: 3,                                                         
-    virtualMachineSize: "small",                                                
+    targetDedicatedComputeNodes: 3,
+    virtualMachineSize: "standard_d1_v2",
     cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));   
 
 // Add named user accounts.
@@ -333,6 +334,4 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ## <a name="next-steps"></a>后续步骤
 
-### <a name="batch-forum"></a>Batch 论坛
-
-MSDN 上的 [Azure Batch 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch)是探讨批处理服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些精华贴子，并发布你在构建批处理解决方案时遇到的问题。
+* 有关 Batch 深入概述的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)。

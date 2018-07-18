@@ -1,6 +1,6 @@
 ---
-title: "在 Azure Database for PostgreSQL 中配置服务参数"
-description: "本文介绍如何使用 Azure CLI 命令行在 Azure Database for PostgreSQL 中配置服务参数。"
+title: 在 Azure Database for PostgreSQL 中配置服务参数
+description: 本文介绍如何使用 Azure CLI 命令行在 Azure Database for PostgreSQL 中配置服务参数。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -15,6 +15,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29691387"
 ---
 # <a name="customize-server-configuration-parameters-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
 可以使用命令行接口 (Azure CLI) 列出、显示和更新 Azure PostgreSQL 服务器的配置参数。 会在服务器级别公开引擎配置的一个子集，并且可以进行修改。 

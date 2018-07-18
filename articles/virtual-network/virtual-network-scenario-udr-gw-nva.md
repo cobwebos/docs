@@ -1,6 +1,6 @@
 ---
-title: "包含双层应用程序的混合连接 | Microsoft 文档"
-description: "了解如何部署虚拟设备和 UDR 以便在 Azure 中创建多层应用程序环境"
+title: 包含双层应用程序的混合连接 | Microsoft 文档
+description: 了解如何部署虚拟设备和 UDR 以便在 Azure 中创建多层应用程序环境
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/31/2017
+ms.locfileid: "23643861"
 ---
 # <a name="virtual-appliance-scenario"></a>虚拟设备方案
 在较大的 Azure 客户中，一种常见情况是需要向 Internet 公开某个双层应用程序，同时允许从本地数据中心访问后端层。 本文档指导实施一种使用用户定义的路由 (UDR)、VPN 网关和网络虚拟设备部署双层环境的方案，该方案可满足以下要求：

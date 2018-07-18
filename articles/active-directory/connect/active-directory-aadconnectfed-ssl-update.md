@@ -1,9 +1,7 @@
 ---
-title: "Azure AD Connect - 更新 AD FS 场的 SSL 证书 | Microsoft Docs"
-description: "本文档详述了使用 Azure AD Connect 更新 AD FS 场的 SSL 证书的步骤。"
+title: Azure AD Connect - 更新 AD FS 场的 SSL 证书 | Microsoft Docs
+description: 本文档详述了使用 Azure AD Connect 更新 AD FS 场的 SSL 证书的步骤。
 services: active-directory
-keywords: "azure ad connect, adfs ssl 更新, adfs 证书更新, 更改 adfs 证书, 新建 adfs 证书, adfs 证书, 更新 adfs ssl 证书, 更新 ssl 证书 adfs, 配置 adfs ssl 证书, adfs, ssl, 证书, adfs 服务通信证书, 更新联合身份验证, 配置联合身份验证, aad connect"
-authors: anandyadavmsft
 manager: mtillman
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
@@ -12,14 +10,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
-ms.author: anandy
+ms.date: 07/09/2018
+ms.component: hybrid
+author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: b31a4d178d287eba275a0072936b4222a2c84346
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.author: billmath
+ms.openlocfilehash: 0eeb3f7d54617ff060481795bcdaa8b54e36dfa8
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917646"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书
 
@@ -85,7 +86,7 @@ Azure AD Connect 会尝试通过以下方式自动获取有关 AD FS 场的信�
 
 * **对于新的 AD FS SSL 证书，证书的使用者名称应该是什么？**
 
-    Azure AD Connect 会检查证书的使用者名称/备用使用者名称是否包含联合身份验证服务名称。 例如，如果联合身份验证服务名称为 fs.contoso.com，则使用者名称/备用使用者名称必须为 fs.contoso.com。也接受通配符证书。
+    Azure AD Connect 会检查证书的使用者名称/备用使用者名称是否包含联合身份验证服务名称。 例如，如果联合身份验证服务名称为 fs.contoso.com，则使用者名称/备用使用者名称必须为 fs.contoso.com。  也接受通配符证书。
 
 * **为什么在 WAP 服务器页上又要求我提供凭据？**
 

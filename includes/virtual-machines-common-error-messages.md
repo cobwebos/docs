@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/25/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: db241c1a3c8bfd15e13ae0bd9f1cdf4c92c7081d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 00cb6cb59f8144782fdacd8c2f9763c2f7036880
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906830"
 ---
 >[!NOTE]
 > 可以通过本反馈页面或 [Azure 反馈](https://feedback.azure.com/forums/216843-virtual-machines)使用 #azerrormessage 标记给我们留言。
@@ -163,7 +164,7 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  OperationNotAllowed  |  无法重设 VM 大小，因为请求的大小 {0} 不可用于当前分配有 VM 的群集。 要将 VM 重设为 {1}，请解除分配(此操作为 Azure 门户中的“停止”操作)并重试重设大小操作。 访问 https://aka.ms/azure-resizevm 详细了解重设 VM 大小的策略。  |
 |  OSProvisioningClientError  |  VM“{0}”的 OS 预配失败，因为当前正在预配来宾 OS。  |
 |  OSProvisioningClientError  |  VM“{0}”的 OS 预配失败。 错误详细信息: {1} 请确保已正确准备(通用化)映像。 <ul><li>适用于 Windows 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH 主机密钥生成失败。 错误详细信息: {0}。 若要解决此问题，请验证 Linux 代理是否设置正确。 <ul><li>可以查看以下位置的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-agent-user-guide/ </li></ul> |
+|  OSProvisioningClientError  |  SSH 主机密钥生成失败。 错误详细信息: {0}。 若要解决此问题，请验证 Linux 代理是否设置正确。 <ul><li>可以查看以下位置的说明: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  为 VM 指定的用户名对于此 Linux 分发版无效。 错误详细信息: {0}。  |
 |  OSProvisioningInternalError  |  VM“{0}”的 OS 预配因内部错误而失败。  |
 |  OSProvisioningTimedOut  |  VM“{0}”的 OS 预配未在分配的时间内完成。 该 VM 仍可能成功完成预配。 请于稍后检查预配状态。  |
@@ -197,9 +198,9 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  VMExtensionProvisioningError  |  VM 在处理扩展“{0}”时报告失败。 错误消息:“{1}”。  |
 |  VMExtensionProvisioningError  |  未能在 VM 上预配多个 VM 扩展。 有关详细信息，请参阅 VM 扩展实例视图。  |
 |  VMExtensionProvisioningTimeout  |  预配 VM 扩展“{0}”超时。扩展安装可能耗时过长，或无法获得扩展状态。  |
-|  VMMarketplaceInvalidInput  |  从非 Marketplace 映像创建虚拟机无需计划信息，请删除请求中的计划信息。 OS 磁盘名称为 {0}。  |
-|  VMMarketplaceInvalidInput  |  购买信息不匹配。 无法从 Marketplace 映像部署。 OS 磁盘名称为 {0}。  |
-|  VMMarketplaceInvalidInput  |  从 Marketplace 映像创建虚拟机需要请求中的计划信息。 OS 磁盘名称为 {0}。  |
+|  VMMarketplaceInvalidInput  |  从非市场映像创建虚拟机无需计划信息，请删除请求中的计划信息。 OS 磁盘名称为 {0}。  |
+|  VMMarketplaceInvalidInput  |  购买信息不匹配。 无法从市场映像部署。 OS 磁盘名称为 {0}。  |
+|  VMMarketplaceInvalidInput  |  从市场映像创建虚拟机需要请求中的计划信息。 OS 磁盘名称为 {0}。  |
 |  VMNotFound  |  找不到 VM“{0}”。  |
 |  VMRedeploymentFailed  |  VM“{0}”的重新部署因内部错误而失败。 请稍后重试。  |
 |  VMRedeploymentTimedOut  |  VM“{0}”的重新部署未在分配的时间内完成。 不久即可成功完成。 否则，可以重试该请求。  |

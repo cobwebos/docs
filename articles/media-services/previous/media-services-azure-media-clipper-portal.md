@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782786"
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>在门户使用 Azure 媒体剪辑器创建剪辑
 可以在门户中使用 Azure 媒体剪辑器通过媒体服务帐户中的资产来创建剪辑。 要开始，请在门户中导航到媒体服务帐户。 接下来，选择“子剪辑”选项卡。

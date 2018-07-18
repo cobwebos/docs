@@ -1,8 +1,8 @@
 ---
-title: "有关 SQL Server Stretch Database 服务的所有主题 | Microsoft 文档"
-description: "位于 http://azure.microsoft.com/documentation/articles/ 且名为 SQL Server Stretch Database 的 Azure 服务的所有主题的表格，包括标题和描述。"
+title: 有关 SQL Server Stretch Database 服务的所有主题 | Microsoft 文档
+description: 位于 http://azure.microsoft.com/documentation/articles/ 且名为 SQL Server Stretch Database 的 Azure 服务的所有主题的表格，包括标题和描述。
 services: sql-server-stretch-database
-documentationcenter: 
+documentationcenter: ''
 author: DouglasL
 manager: jhubbard
 editor: MightyPen
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23055522"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>有关 Azure SQL Server Stretch Database 服务的所有主题
 本主题列出的每个主题都可以直接应用于 Azure **SQL Server Stretch Database** 服务。 可使用 **Ctrl+F** 来搜索此网页的关键字，以便查找当前感兴趣的主题。
@@ -27,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 | &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
 | 1 |[通过运行延伸数据库顾问来识别符合 Stretch Database 条件的数据库和表](sql-server-stretch-database-identify-databases.md) |了解如何识别符合 Stretch Database 条件的数据库和表。 |
-| #N/A |[Stretch Database 的限制](sql-server-stretch-database-limitations.md) |了解 Stretch Database 的限制。 |
+| 2 |[Stretch Database 的限制](sql-server-stretch-database-limitations.md) |了解 Stretch Database 的限制。 |
 | 3 |[Stretch Database 概述](sql-server-stretch-database-overview.md) |了解 Stretch Database 如何透明、安全地将冷数据迁移到 Microsoft Azure 云。 |
 | 4 |[通过运行“为数据库启用延伸向导”开始操作](sql-server-stretch-database-wizard.md) |了解如何通过运行“为数据库启用延伸向导”，来为 Stretch Database 配置数据库。 |
 

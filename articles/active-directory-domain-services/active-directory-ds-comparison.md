@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 550354ceab3026cfd724cd77c3266b22682e4431
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212565"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>如何确定 Azure AD 域服务是否适合具体的用例
 凭借 Azure AD 域服务，可以在 Azure 基础结构服务中部署工作负荷，而无需担心如何维护 Azure 中的标识基础结构。 此托管服务不同于自行部署和管理的典型 Windows Server Active Directory 部署。 此服务易于部署，并提供自动化的运行状况监视和修正。 我们正在持续改进该服务，以求添加对常见部署方案的支持。
@@ -104,9 +106,9 @@ Azure AD 域服务托管域可在 Azure 的单个虚拟网络中使用。 对于
 ## <a name="do-it-yourself-diy-ad-deployment-options"></a>DIY（“自己动手”）AD 部署选项
 在某些部署用例中，可能需要用到 Windows Server AD 安装所提供的一些功能。 在这种情况下，请考虑以下 DIY 选项之一：
 
-* **独立云域：**可以使用配置为域控制器的 Azure 虚拟机来设置独立的“云域”。 此基础结构不会与本地 AD 环境集成。 此选项要求使用一组不同的“云凭据”来登录/管理云中的 VM。
-* **资源林部署：**可以使用配置为域控制器的 Azure 虚拟机在资源林拓扑中设置域。 接下来，可以配置与本地 AD 环境的 AD 信任关系。 可以将计算机 (Azure VM) 的域加入云中的此资源林。 用户身份验证通过与本地目录建立的 VPN/ExpressRoute 连接发生。
-* **将本地域扩展到 Azure：**可以使用 VPN/ExpressRoute 连接将 Azure 虚拟网络连接到本地网络。 此设置使 Azure VM 能够加入本地 AD。 另一种做法是将 Azure 中本地域的副本域控制器升级为 VM。 然后，将它设置为通过与本地目录建立的 VPN/ExpressRoute 连接进行复制。 此部署模式可以有效地将本地域扩展到 Azure。
+* **独立云域：** 可以使用配置为域控制器的 Azure 虚拟机来设置独立的“云域”。 此基础结构不会与本地 AD 环境集成。 此选项要求使用一组不同的“云凭据”来登录/管理云中的 VM。
+* **资源林部署：** 可以使用配置为域控制器的 Azure 虚拟机在资源林拓扑中设置域。 接下来，可以配置与本地 AD 环境的 AD 信任关系。 可以将计算机 (Azure VM) 的域加入云中的此资源林。 用户身份验证通过与本地目录建立的 VPN/ExpressRoute 连接发生。
+* **将本地域扩展到 Azure：** 可以使用 VPN/ExpressRoute 连接将 Azure 虚拟网络连接到本地网络。 此设置使 Azure VM 能够加入本地 AD。 另一种做法是将 Azure 中本地域的副本域控制器升级为 VM。 然后，将它设置为通过与本地目录建立的 VPN/ExpressRoute 连接进行复制。 此部署模式可以有效地将本地域扩展到 Azure。
 
 > [!NOTE]
 > 可能觉得 DIY 选项更适合部署用例。 欢迎各位[分享反馈](active-directory-ds-contact-us.md)，让我们了解哪些功能可在你们今后选择 Azure AD 域服务时提供帮助。 此外，这些反馈可帮助我们改进服务，使其更好地满足部署需求，适合具体的用例。

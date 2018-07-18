@@ -1,20 +1,21 @@
 ---
-title: 通过 Azure AD B2C 使用 Application Insights 中的事件跟踪用户行为 | Microsoft Docs
+title: 通过 Azure Active Directory B2C 使用 Application Insights 中的事件跟踪用户行为 | Microsoft Docs
 description: 有关如何通过 Azure AD B2C 用户旅程使用自定义策略在 Application Insights 中启用事件日志的分步指南（预览版）
 services: active-directory-b2c
-documentationcenter: dev-center-name
 author: davidmu1
 manager: mtillman
-ms.service: active-directory-b2c
-ms.topic: article
+ms.service: active-directory
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: davidmu
-ms.openlocfilehash: db9ba62cb6ef0d2627dbeb07cb8165a4ac7ae490
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 300a8a15552fe1e8ec9d6b434a14a31b3d827f19
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445579"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>使用 Application Insights 在 Azure AD B2C 旅程中跟踪用户行为
 
@@ -254,7 +255,7 @@ Referenced using: {Culture:One of the property names below}
 | 声明 | 定义 | 示例 |
 | ----- | -----------| --------|
 | LanguageName | 语言的两字母 ISO 代码 | en |
-| RegionName | 区域的两字母 ISO 代码 | US |
+| RegionName | 区域的两字母 ISO 代码 | 美国 |
 | RFC5646 | RFC5646 语言代码 | en-US |
 | LCID   | 语言代码的 LCID | 1033 |
 
@@ -285,7 +286,6 @@ Referenced using {OIDC:One of the property names below}
 |  MaxAge | max_age | 不适用 |
 | ClientId | client_id | 不适用 |
 | 用户名 | login_hint | 不适用 |
-| 密码 | domain_hint | 不适用 |
 |  资源 | resource| 不适用 |
 | AuthenticationContextReferences | acr_values | 不适用 |
 
@@ -303,11 +303,11 @@ Referenced using { OAUTH-KV:Querystring parameter name }
 https://login.microsoftonline.com/sampletenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=e1d2612f-c2bc-4599-8e7b-d874eaca1ae1&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&app_session=0a2b45c&loyalty_number=1234567
 
 ```
-然后，可将 `Input Claim` 元素添加到 Application Insights 事件，以添加声明：
+然后，可将 `Input Claim` 元素添加到 Application Insights 事件，以添加声明。 通过语法 {property:NAME} 添加事件的属性，其中 NAME 是要添加到事件的属性。 例如：
 
 ```
-<InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="app_session" DefaultValue="{OAUTH-KV:app_session}" />
-<InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="loyalty_number" DefaultValue="{OAUTH-KV:loyalty_number}" />
+<InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
+<InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 ```
 
 ### <a name="other-system-claims"></a>其他系统声明

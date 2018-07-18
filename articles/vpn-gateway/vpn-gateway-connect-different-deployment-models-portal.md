@@ -16,10 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2018
 ms.author: cherylmc
 ms.openlocfilehash: 5e51027455da1f8be34d99c79bc79bc37df57d14
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38721549"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -97,7 +98,7 @@ SKU = VpnGw1 <br>
 
 1. 打开 [Azure 门户](https://ms.portal.azure.com)，然后使用 Azure 帐户登录。
 2. 单击“+ 创建资源”打开“新建”页。
-3. 在“搜索 Marketplace”字段中，键入“虚拟网络”。 如果改为选择“网络”->“虚拟网络”，则不会显示用于创建经典 VNet 的选项。
+3. 在“在市场中搜索”字段中，键入“虚拟网络”。 如果改为选择“网络”->“虚拟网络”，则不会显示用于创建经典 VNet 的选项。
 4. 从返回的列表中找到“虚拟网络”，单击它打开“虚拟网络”页面。 
 5. 在“虚拟网络”页面上，选择“经典”以创建经典 VNet。 如果此处采用默认值，最终会创建资源管理器 VNet。
 
@@ -153,7 +154,7 @@ SKU = VpnGw1 <br>
 
 ### <a name="2-create-a-gateway-subnet"></a>2.创建网关子网
 
-**示例值：**GatewaySubnet = 192.168.0.0/26
+**示例值：** GatewaySubnet = 192.168.0.0/26
 
 创建虚拟网络网关前，先要创建网关子网。 创建 CIDR 计数为 /28 或更大（/27、/26 等）的网关子网。 如果正在练习创建此配置，可以使用示例值。
 
@@ -177,7 +178,7 @@ SKU = VpnGw1 <br>
 
 ### <a name="createlng"></a>4.创建本地网络网关
 
-**示例值：**本地网络网关 = ClassicVNetLocal
+**示例值：** 本地网络网关 = ClassicVNetLocal
 
 | 虚拟网络 | 地址空间 | 区域 | 连接到本地网络站点 |网关公共 IP 地址|
 |:--- |:--- |:--- |:--- |:--- |

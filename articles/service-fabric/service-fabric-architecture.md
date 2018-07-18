@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209964"
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric 体系结构
 Service Fabric 是利用分层子系统而生成的。 使用这些子系统，可以编写下面这样的应用程序：

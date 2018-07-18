@@ -6,19 +6,18 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: e3acedf4135166f5239b95eb21eb5dfd66d6100f
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 77c445920041653ffb72d31e1dcfe4c368fb6642
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312621"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915919"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
 
->[!NOTE]
-> 用于 Azure 虚拟机的 Site Recovery 复制当前处于预览状态。
+
 
 本文提供了使用 [Azure Site Recovery](site-recovery-overview.md) 在不同区域之间复制和恢复 Azure VM 的网络指南。
 
@@ -32,7 +31,7 @@ ms.locfileid: "32312621"
 
 ![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
-如果使用 Azure ExpressRoute 或从本地网络到 Azure 的 VPN 连接，则环境如下所示：
+如果使用 Azure ExpressRoute 或从本地网络到 Azure 的 VPN 连接，则环境如下：
 
 ![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
@@ -78,7 +77,7 @@ Site Recovery IP 地址范围如下：
    印度南部 | 52.172.46.220 | 104.211.224.190
    美国中北部 | 23.96.195.247 | 168.62.249.226
    北欧 | 40.69.212.238 | 52.169.18.8
-   欧洲西部 | 52.166.13.64 | 40.68.93.145
+   西欧 | 52.166.13.64 | 40.68.93.145
    美国东部 | 13.82.88.226 | 104.45.147.24
    美国西部 | 40.83.179.48 | 104.40.26.199
    美国中南部 | 13.84.148.14 | 104.210.146.250
@@ -156,7 +155,7 @@ Site Recovery IP 地址范围如下：
 
 ### <a name="forced-tunneling"></a>强制隧道
 
-对 0.0.0.0/0 地址前缀，可将 Azure 默认系统路由重写为[自定义路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes)，并将 VM 流量转换为本地网络虚拟设备 (NVA)，但不建议对 Site Recovery 复制使用此配置。 如果使用自定义路由，应在虚拟网络中为“存储”[创建一个虚拟网络服务终结点](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)，这样复制流量就不会离开 Azure 边界。
+对 0.0.0.0/0 地址前缀，可将 Azure 默认系统路由重写为[自定义路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes)，并将 VM 流量转换为本地网络虚拟设备 (NVA)，但不建议对 Site Recovery 复制使用此配置。 如果使用自定义路由，则应在虚拟网络中为“存储”[创建一个虚拟网络服务终结点](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)，这样复制流量就不会离开 Azure 边界。
 
 ## <a name="next-steps"></a>后续步骤
 - [复制 Azure 虚拟机](site-recovery-azure-to-azure.md)，开始对工作负荷进行保护。

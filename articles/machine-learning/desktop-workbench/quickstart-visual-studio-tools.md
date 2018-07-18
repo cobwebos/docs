@@ -7,22 +7,24 @@ ms.author: ahgyger
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: bbcb2ea5a7ceeb976f590393608cc29c67d9a49e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 735bfd911a738d4e71974f5cdcd94afa50acc502
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932976"
 ---
 # <a name="visual-studio-tools-for-ai"></a>用于 AI 的 Visual Studio Tools
 用于 AI 的 Visual Studio Tools 是一个开发扩展，用于生成、测试和部署深度学习/AI 解决方案。 它具有与 Azure 机器学习的无缝集成，尤其是运行历史记录视图，其中详细列出了以前的训练和自定义指标的性能。 它还提供了一个示例资源管理器视图，允许通过 [Microsoft Cognitive Toolkit（以前称为 CNTK）](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org) 和其他深度学习框架浏览和启动新项目。 最后，它针对计算目标提供了一个资源管理器，可以使用该资源管理器提交作业以在远程环境（例如 Azure 虚拟机或具有 GPU 的 Linux 服务器）中训练模型。 它还可用于快速访问 [Azure Batch AI（预览版）](https://docs.microsoft.com/azure/batch-ai/)。
  
 ## <a name="getting-started"></a>入门 
 若要开始，首先需下载并安装 [Visual Studio](https://www.visualstudio.com/downloads/)。 打开 Visual Studio 后，执行以下步骤：
-1. 单击 Visual Studio 中的菜单栏，选择“扩展和更新...”
+1. 单击 Visual Studio 中的菜单栏上的“工具”，选择“扩展和更新...”
 2. 单击“联机”选项卡，选择“搜索 Visual Studio Marketplace”。
 3. 搜索“用于 AI 的 Visual Studio”。 
 3. 单击“**下载**”按钮。 

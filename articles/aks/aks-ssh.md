@@ -2,18 +2,19 @@
 title: 通过 SSH 登录到 Azure Kubernetes 服务 (AKS) 群集节点
 description: 创建与 Azure Kubernetes 服务 (AKS) 群集节点的 SSH 连接
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/06/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 95b385e9847a7809492bbb74bd1eba616df90d72
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 8f4c70814566a963d86c119044f9ed3ef3238483
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099392"
 ---
 # <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>通过 SSH 登录到 Azure Kubernetes 服务 (AKS) 群集节点
 

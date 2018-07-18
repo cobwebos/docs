@@ -1,6 +1,6 @@
 ---
-title: "入门 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "这是着重强调威胁建模工具操作的更深入的概述。"
+title: 入门 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 这是着重强调威胁建模工具操作的更深入的概述。
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,13 +19,14 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26754180"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威胁建模工具入门
 
-云和企业安全工具团队今年的早些时候发布了威胁建模工具预览版，是免费的**[单击下载](https://aka.ms/tmtpreview)**版本。 交付机制中的更改使我们能够在客户每次打开该工具时向他们推送最新的改进和 bug 修复，使其更易于维护和使用。
+云和企业安全工具团队今年的早些时候发布了威胁建模工具预览版，是免费的**[单击下载](https://aka.ms/tmtpreview)** 版本。 交付机制中的更改使我们能够在客户每次打开该工具时向他们推送最新的改进和 bug 修复，使其更易于维护和使用。
 本文将指导你开始使用 Microsoft SDL 威胁建模方法的过程，并演示如何使用该工具来开发优秀的威胁模型，以作为安全进程的主干。
 
-本文基于 SDL 威胁建模方法的现有认知。 若要快速查看，请参阅**[威胁建模 Web 应用程序](https://msdn.microsoft.com/library/ms978516.aspx)**和 2006 年发布的**[使用 STRIDE 方法发现安全漏洞](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN 文章的存档版本。
+本文基于 SDL 威胁建模方法的现有认知。 若要快速查看，请参阅**[威胁建模 Web 应用程序](https://msdn.microsoft.com/library/ms978516.aspx)** 和 2006 年发布的**[使用 STRIDE 方法发现安全漏洞](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN 文章的存档版本。
 
 简而言之，此方法涉及创建关系图、识别威胁、缓解问题和验证每个缓解操作。 下面的关系图重点突出了此过程：
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 12/18/2017
 | **创建模型**                          | 为你打开空白画布以绘制关系图。 请确保选出想用于你的模型的模板                                                                                                                                                                                                                                                                                                                                                                       |
 | **新模型的模板**                 | 创建模型前，必须选出想要使用的模板。 我们的主要模板是 Azure 威胁模型模板，其中包含特定于 Azure 的模具、威胁和缓解操作。 对于通用模型，请从下拉菜单中选择 SDL TM 知识库。 想要创建自己的模板或为所有用户提交新的模板？ 查看我们的**[模板存储库](https://github.com/Microsoft/threat-modeling-templates)** GitHub 页以了解详细信息                              |
 | **打开模型**                            | <p>打开以前保存的威胁模型。 如需打开最近经常使用的文件，“最近打开的模型”功能很实用。 将鼠标悬停在选项上方时，可以看到打开模型的两种方法：</p><p><ul><li>“从本计算机打开”  – 使用本地存储打开文件的经典方法</li><li>“从 OneDrive 打开” – 团队可以使用 OneDrive 中的文件夹在一个位置保存和共享他们的威胁模型，以帮助提升效率和协作</li></ul></p> |
-| **入门指南**                   | 打开 **[Microsoft 威胁建模工具](./azure-security-threat-modeling-tool.md)**主页                                                                                                                                                                                                                                                                                                                                                                                            |
+| **入门指南**                   | 打开 **[Microsoft 威胁建模工具](./azure-security-threat-modeling-tool.md)** 主页                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ### <a name="template-section"></a>模板部分
 
@@ -78,14 +79,14 @@ ms.lasthandoff: 12/18/2017
 > - 他们正向我们的 Web 服务器发送命令—圆圈
 > - Web 服务器正向数据库发出请求（两条平行线）
 
-Ricardo 刚才向 Cristina 介绍的是 DFD，即**[数据流关系图](https://en.wikipedia.org/wiki/Data_flow_diagram)**的简写。 威胁建模工具可使用户指定信任边界（用红色虚线显示），以显示不同的实体被控制的位置。 例如，IT 管理员需要 Active Directory 系统以进行身份验证，因此 Active Directory 是不受其控制的。
+Ricardo 刚才向 Cristina 介绍的是 DFD，即**[数据流关系图](https://en.wikipedia.org/wiki/Data_flow_diagram)** 的简写。 威胁建模工具可使用户指定信任边界（用红色虚线显示），以显示不同的实体被控制的位置。 例如，IT 管理员需要 Active Directory 系统以进行身份验证，因此 Active Directory 是不受其控制的。
 
 > Cristina：我觉得没问题。 关于威胁呢？
 > Ricardo：让我给你看一下。
 
 ## <a name="analyzing-threats"></a>分析威胁
 
-他单击图标菜单选项（带有放大镜的文件）中的分析视图后，即转到威胁建模工具基于默认模板建立的已生成威胁的列表，该列表使用名为 **[STRIDE（欺骗、篡改、信息泄露、拒绝服务和特权提升）](https://en.wikipedia.org/wiki/STRIDE_(security))**的 SDL 方法。 思路是，软件来自可预测的一组威胁，可使用这 6 类找到。
+他单击图标菜单选项（带有放大镜的文件）中的分析视图后，即转到威胁建模工具基于默认模板建立的已生成威胁的列表，该列表使用名为 **[STRIDE（欺骗、篡改、信息泄露、拒绝服务和特权提升）](https://en.wikipedia.org/wiki/STRIDE_(security))** 的 SDL 方法。 思路是，软件来自可预测的一组威胁，可使用这 6 类找到。
 
 此方法类似于通过先确保房子里的每扇门、每扇窗都锁好来保护房屋的安全，然后再添加警报或抓小偷。
 
@@ -142,4 +143,4 @@ Ricardo 和 Cristina 查看列表并添加重要事项、缓解/理由、优先�
 
 ## <a name="next-steps"></a>后续步骤
 
-将你的问题、评论和疑问发送至 tmtextsupport@microsoft.com。**[下载](https://aka.ms/tmtpreview)**威胁建模工具以开始。
+将你的问题、评论和疑问发送至 tmtextsupport@microsoft.com。**[下载](https://aka.ms/tmtpreview)** 威胁建模工具以开始。

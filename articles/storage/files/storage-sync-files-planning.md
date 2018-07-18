@@ -4,8 +4,8 @@ description: 了解规划 Azure 文件部署时应考虑的问题。
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: ebfa7da32859f8d2d0ff3778af3b5cca99bdf1f4
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 1927ab29e82836c60b2ba36c3eec0acf49778082
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077668"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335833"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>规划 Azure 文件同步（预览版）部署
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -145,6 +145,12 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 
 有关详细信息，请参阅 [DFS 复制概述](https://technet.microsoft.com/library/jj127250)。
 
+### <a name="sysprep"></a>Sysprep
+不支持在安装了 Azure 文件同步代理的服务器上使用 sysprep，那样做会导致意外结果。 应该在部署服务器映像并完成 sysprep 迷你安装后再安装代理和注册服务器。
+
+### <a name="windows-search"></a>Windows 搜索
+如果在服务器终结点上启用了云分层功能，则已分层的文件将被跳过，并且不会被 Windows 搜索进行索引。 非分层文件会适当进行索引。
+
 ### <a name="antivirus-solutions"></a>防病毒解决方案
 由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 由于分层文件设置有“脱机”属性，因此建议咨询软件供应商，了解如何配置解决方案以跳过读取脱机文件。 
 
@@ -158,6 +164,11 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 
 ### <a name="backup-solutions"></a>备份解决方案
 与防病毒解决方案一样，备份解决方案可能导致重新调用分层文件。 建议使用云备份解决方案来备份 Azure文件共享，而不是使用本地备份产品。
+
+如果使用的是本地备份解决方案，则应在已禁用云分层的同步组中的服务器上执行备份。 在服务器终结点位置内还原文件时，请使用文件级还原选项。 还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。
+
+> [!Note]  
+> 应用程序感知、卷级别和裸机还原 (BMR) 选项可能导致意外结果，目前不受支持。 未来版本将支持这些还原选项。
 
 ### <a name="encryption-solutions"></a>加密解决方案
 是否支持加密解决方案取决于其实现方式。 Azure 文件同步现支持：
@@ -180,6 +191,7 @@ Azure 文件同步仅在以下区域提供预览版：
 | 区域 | 数据中心位置 |
 |--------|---------------------|
 | 澳大利亚东部 | 新南威尔士州 |
+| 澳大利亚东南部 | 维多利亚 |
 | 加拿大中部 | 多伦多 |
 | 加拿大东部 | 魁北克市 |
 | 美国中部 | 爱荷华州 |
@@ -189,7 +201,8 @@ Azure 文件同步仅在以下区域提供预览版：
 | 北欧 | 爱尔兰 |
 | 东南亚 | 新加坡 |
 | 英国南部 | 伦敦 |
-| 欧洲西部 | 荷兰 |
+| 英国西部 | 加的夫 |
+| 西欧 | 荷兰 |
 | 美国西部 | California |
 
 在预览版中，仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。

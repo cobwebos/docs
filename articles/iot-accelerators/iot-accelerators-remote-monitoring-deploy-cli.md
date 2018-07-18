@@ -1,22 +1,19 @@
 ---
 title: 部署 Java 远程监视解决方案 - Azure | Microsoft Docs
 description: 本教程演示如何使用 CLI 预配远程监视解决方案加速器。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3178d51cd2c04f3be8d4a6284a4f1635845def8c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017503"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署远程监视解决方案加速器
 
@@ -57,7 +54,7 @@ pcs login
 | SKU    | `basic`、`standard`、`local` | 基本部署适用于测试和演示，它将所有微服务部署到一个虚拟机上。 标准部署适用于生产，它将微服务部署到多个虚拟机上。 本地部署通过配置 Docker 容器在本地计算机中运行微服务，并在云中使用 Azure 服务（如存储和 Cosmos DB）。 |
 | 运行时 | `dotnet`、`java` | 选择微服务的语言实现。 |
 
-要了解如何使用本地部署，请参阅 [Running the remote monitoring solution locally](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables)（在本地运行远程监视解决方案）。
+要了解如何使用本地部署，请参阅[在本地运行远程监视解决方案](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables)。
 
 ## <a name="basic-vs-standard-deployments"></a>基本部署与标准部署
 
@@ -71,7 +68,7 @@ pcs login
 | Count | 资源                       | Type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/) | 标准 D1 V2  | 托管微服务 |
-| 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 – 基本层 | 设备管理和通信 |
+| 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 - 标准层 | 设备管理和通信 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 标准        | 存储配置数据和设备遥测数据，例如规则、警报和消息 |  
 | 1     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 标准        | 适用于 VM 和流式处理检查点的存储 |
 | 1     | [Web 应用程序](https://azure.microsoft.com/services/app-service/web/)        |                 | 托管前端 Web 应用程序 |
@@ -85,7 +82,7 @@ pcs login
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/)   | 标准 D2 V2  | 1 个 master，3 个代理，用于在确保冗余的情况下托管微服务 |
 | 1     | [Azure 容器服务](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) 业务流程协调程序 |
-| 1     | [Azure IoT 中心][https://azure.microsoft.com/services/iot-hub/]                     | S1 – 基本层 | 设备管理、命令和控制 |
+| 1     | [Azure IoT 中心][https://azure.microsoft.com/services/iot-hub/]                     | S2 - 标准层 | 设备管理、命令和控制 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 标准        | 存储配置数据和设备遥测数据，例如规则、警报和消息 |
 | 5     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 标准        | 4 个用于 VM 存储，1 个用于流式处理检查点 |
 | 1     | [应用服务](https://azure.microsoft.com/services/app-service/web/)             | S1 标准     | 基于 SSL 的应用程序网关 |

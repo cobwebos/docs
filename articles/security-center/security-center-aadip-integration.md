@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774176"
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>将 Azure Active Directory Identity Protection 连接到 Azure 安全中心
 本文档可帮助配置 Azure Active Directory (AD) Identity Protection 和 Azure 安全中心之间的集成。

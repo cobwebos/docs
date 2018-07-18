@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 系列设备的故障转移、灾难恢复 | Microsoft Docs"
-description: "了解如何将 StorSimple 设备故障转移到其自身、另一个物理设备或云设备。"
+title: StorSimple 8000 系列设备的故障转移、灾难恢复 | Microsoft Docs
+description: 了解如何将 StorSimple 设备故障转移到其自身、另一个物理设备或云设备。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108475"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列设备的故障转移和灾难恢复
 

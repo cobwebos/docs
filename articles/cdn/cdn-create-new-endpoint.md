@@ -1,10 +1,10 @@
 ---
 title: 快速入门 - 创建 Azure CDN 配置文件和终结点 | Microsoft Docs
-description: 本快速入门介绍如何通过创建新 CDN 配置文件和终结点启用 Azure CDN。
+description: 本快速入门介绍如何通过创建新 CDN 配置文件和 CDN 终结点启用 Azure CDN。
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: cdn
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/13/2018
-ms.author: mazha
+ms.date: 05/24/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 87216a861aa150c5f9a16f6193f2abf2af6d57d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cf0a0b10d8df3b119f5abbd8060f8821d54172bb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198701"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607865"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>快速入门：创建 Azure CDN 配置文件和终结点
 在本快速入门中，请通过创建新的 Azure 内容分发网络 (CDN) 配置文件和 CDN 终结点来启用 CDN。 创建配置文件和终结点以后，即可将内容交付给客户。
@@ -28,7 +28,7 @@ ms.locfileid: "34198701"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
-就本快速入门来说，必须创建名为 *mystorageacct123* 的存储帐户，将其用作源服务器主机名。 有关详细信息，请参阅[将 Azure 存储帐户与 Azure CDN 集成](cdn-create-a-storage-account-with-cdn.md)
+就本快速入门来说，必须创建名为 *mystorageacct123* 的存储帐户，将其用作源服务器主机名。 有关详细信息，请参阅[将 Azure 存储帐户与 Azure CDN 集成](cdn-create-a-storage-account-with-cdn.md)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
@@ -47,23 +47,23 @@ ms.locfileid: "34198701"
    
     ![CDN 配置文件](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
-    此时会显示“添加终结点”页。
+    此时会显示“添加终结点”窗格。
 
-    使用图像后的表中指定的设置。
-   
-    ![“添加终结点”窗格](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+3. 对于终结点设置，请使用下表中指定的值：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | **Name** | 输入 *my-endpoint-123* 作为终结点主机名。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。 此名称用于访问在域 _&lt;终结点名称&gt;_.azureedge.net 中缓存的资源。|
+    | **名称** | 输入 *my-endpoint-123* 作为终结点主机名。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。 此名称用于访问在域 _&lt;终结点名称&gt;_.azureedge.net 中缓存的资源。|
     | **源服务器类型** | 选择“存储”。 | 
-    | **源服务器主机名** | 输入 *mystorageacct123.blob.core.windows.net* 作为主机名。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称 |
+    | **源服务器主机名** | 输入 *mystorageacct123.blob.core.windows.net* 作为主机名。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。 |
     | **源服务器路径** | 留空。 |
     | **源服务器主机标头** | 保留默认的生成值。 |  
     | **协议** | 保留默认选择的 **HTTP** 和 **HTTPS** 选项。 |
     | **源服务器端口** | 保留默认的端口值。 | 
     | **优化对象** | 保留默认选择“常规 Web 交付”。 |
-    
+
+    ![“添加终结点”窗格](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+
 3. 选择“添加”可创建新的终结点。
    
    终结点在创建后出现在配置文件的终结点列表中。

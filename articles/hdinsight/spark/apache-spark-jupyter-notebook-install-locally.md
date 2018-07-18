@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31528352"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 04/18/2018
           }
         }
 
-4. 将 **{USERNAME}**、**{CLUSTERDNSNAME}** 和**{BASE64ENCODEDPASSWORD}** 替换为适当的值。 可以使用许多以你偏好的编程语言编写的实用工具或联机实用工具，生成 base64 编码的密码作为实际密码。
+4. 将 **{USERNAME}**、**{CLUSTERDNSNAME}** 和 **{BASE64ENCODEDPASSWORD}** 替换为适当的值。 可以使用许多以你偏好的编程语言编写的实用工具或联机实用工具，生成 base64 编码的密码作为实际密码。
 
 5. 在 `config.json` 中配置相应的检测信号设置。 应以早前添加 `kernel_python_credentials` 和 `kernel_scala_credentials` 代码片段的等级添加这些设置。 有关添加该信号检测设置的方法和位置的示例，请参阅此[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)。
 

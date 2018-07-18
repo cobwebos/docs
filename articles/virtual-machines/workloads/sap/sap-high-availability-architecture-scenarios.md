@@ -1,13 +1,13 @@
 ---
-title: "Azure 虚拟机上 SAP NetWeaver 的高可用性体系结构和方案 | Microsoft 文档"
-description: "Azure 虚拟机上 SAP NetWeaver 的高可用性体系结构和方案"
+title: Azure 虚拟机上 SAP NetWeaver 的高可用性体系结构和方案 | Microsoft 文档
+description: Azure 虚拟机上 SAP NetWeaver 的高可用性体系结构和方案
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31f3765d807882e65a247819a5999c191f9e7ac5
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6612e3fb5368d8d5a4f59c0e5eefc8ef24c04aec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656918"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性体系结构和方案
 
@@ -146,7 +147,7 @@ ms.lasthandoff: 11/15/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP 多 SID 高可用性配置)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -344,17 +345,18 @@ _**图 1：高可用性 SAP 应用程序服务器**_
 * 所有虚拟机同属一个更新域。  
     更新域可确保虚拟机在计划的维护停机时间期间不会同时更新。
 
-    [更新域][planning-guide-3.2.2]部分已介绍了在 Azure 缩放单位内的不同更新域和容错域上构建的基本功能。
+    
+  [更新域][planning-guide-3.2.2]部分已介绍了在 Azure 缩放单元内的不同更新域和容错域上构建的基本功能。
 
 * 所有虚拟机都是同一个容错域的一部分。  
     容错域可确保将虚拟机部署为任何单一故障点都不会影响所有虚拟机的可用性。
 
-Azure 缩放单位内的 Azure 可用性集可使用不限数目的更新和容错域。 如果你不断将 VM 添加到单个可用性集，则会两个或多个 VM 最终将在同一个容错或更新域中。
+Azure 缩放单元内的 Azure 可用性集可使用不限数目的更新和容错域。 如果你不断将 VM 添加到单个可用性集，则会两个或多个 VM 最终将在同一个容错或更新域中。
 
 如果将一些 SAP 应用程序服务器实例部署在其专用 VM 中，假设有 5 个更新域，则会出现下图所示的情况。 可用性集内的更新域和容错域的实际数目上限将来可能会变化：
 
 ![图 2：在 Azure 可用性集中 SAP 应用程序服务器的高可用性][planning-guide-figure-3000]
-****图 2：在 Azure 可用性集中 SAP 应用程序服务器的高可用性__
+_**图 2：** 在 Azure 可用性集中 SAP 应用程序服务器的高可用性_
 
 有关详细信息，请参阅[在 Azure 中管理 Windows 虚拟机的可用性][azure-virtual-machines-manage-availability]。
 

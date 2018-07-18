@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（Beta 版本）从 Presto 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Presto 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Presto 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/26/2017
+ms.topic: conceptual
+ms.date: 06/15/2017
 ms.author: jingwang
-ms.openlocfilehash: e0d801dbb8060cf2fa175086fc5324f444870412
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4b3e022bd22242bdc246e1dd30aa6cc3e00134e0
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052617"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Presto 复制数据
+# <a name="copy-data-from-presto-using-azure-data-factory"></a>使用 Azure 数据工厂从 Presto 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Presto 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
-
 > [!IMPORTANT]
-> 此连接器目前处于 Beta 版本。 欢迎试用并提供反馈。 请勿在生产环境中使用该版本。
+> 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -37,7 +35,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Presto 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -51,7 +49,7 @@ Presto 链接服务支持以下属性：
 | host | Presto 服务器的 IP 地址或主机名。 （即 192.168.222.160）  | 是 |
 | serverVersion | Presto 服务器的版本。 （即 0.148-t）  | 是 |
 | 目录 | 针对服务器的所有请求的目录上下文。  | 是 |
-| 端口 | Presto 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8080。  | 否 |
+| port | Presto 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8080。  | 否 |
 | authenticationType | 用于连接到 Presto 服务器的身份验证机制。 <br/>允许的值为：Anonymous、LDAP | 是 |
 | username | 用于连接到 Presto 服务器的用户名。  | 否 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |

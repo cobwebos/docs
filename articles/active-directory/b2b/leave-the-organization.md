@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 3415989cb6cec68f95e7d317671c31ba9bd231e9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 17b34b173a10a355817fee0f5928b7fb478125e3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266964"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38506517"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>以来宾用户身份离开组织
 
@@ -23,7 +23,7 @@ ms.locfileid: "34266964"
 
 ## <a name="leave-an-organization"></a>离开组织
 
-若要以“访问面板”登录用户的身份离开组织，请执行以下操作[](https://myapps.microsoft.com)：
+若要以 [“访问面板”](https://myapps.microsoft.com) 登录用户的身份离开组织，请执行以下操作：
 
 1. 如果尚未登录要离开的组织，请在右上角选择你的姓名，然后单击要离开的组织。
 2. 在右上角选择你的姓名。

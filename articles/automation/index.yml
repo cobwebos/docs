@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 01/11/2018
+  ms.locfileid: "27773819"
 abstract:
   description: 了解如何在混合环境中使用自动化来配置和自动完成操作任务。 教程、API 参考和其他文档介绍了如何实现过程自动化、执行更新管理、交付所需状态配置、跟踪更改和收集清单。
 sections:

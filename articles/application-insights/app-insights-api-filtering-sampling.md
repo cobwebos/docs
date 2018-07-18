@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/23/2016
-ms.author: mbullwin; borooji
-ms.openlocfilehash: 987ae184a0812f24df99a0b6e6543c8be55a9e79
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: mbullwin
+ms.openlocfilehash: a8905f4f14b5f4f78e9f3113ec5a655b12599609
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294086"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 

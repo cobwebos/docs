@@ -1,8 +1,8 @@
 ---
-title: "Azure 计算选项 - Azure 云服务 | Microsoft Docs"
-description: "了解 Azure 计算托管选项及其工作原理：应用服务、Azure 云服务和虚拟机"
+title: Azure 计算选项 - Azure 云服务 | Microsoft Docs
+description: 了解 Azure 计算托管选项及其工作原理：应用服务、Azure 云服务和虚拟机
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120278"
 ---
 # <a name="should-i-choose-azure-cloud-services-or-something-else"></a>应该选择 Azure 云服务还是其他服务？
 Azure 云服务是适合选择吗？ Azure 提供了用于运行应用程序的不同托管模型。 每个模型都提供了一组不同的服务。 选择哪个模型取决于你具体打算做什么。

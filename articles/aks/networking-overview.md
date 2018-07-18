@@ -6,13 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/15/2018
 ms.author: marsma
-ms.openlocfilehash: 818bae2e05f6a3256ccbf0cbcc901dd337b9a260
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 207accc30e10c4e2bed5b713fc59e2f9ad86a876
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311091"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络配置
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 05/14/2018
 ## <a name="advanced-networking"></a>高级网络
 
 “高级”网络将 Pod 放在配置的 Azure 虚拟网络 (VNet) 中，可让这些 Pod 自动连接到 VNet 资源，并与 VNet 提供的丰富功能集相集成。
-目前，仅当使用 [Azure 门户][portal]或资源管理器模板部署 AKS 群集时，高级网络才可用。
+目前，当使用 [Azure 门户][portal]、Azure CLI 或资源管理器模板部署 AKS 群集时，高级网络才可用。
 
 为高级网络配置的 AKS 群集中的节点使用 [Azure 容器网络接口 (CNI)][cni-networking] Kubernetes 插件。
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 05/14/2018
 高级网络提供以下优势：
 
 * 将 AKS 群集部署到现有的 VNet，或者为群集创建新的 VNet 和子网。
-* 群集中的每个 Pod 在 VNet 中分配有一个 IP 地址，并可直接与群集中的其他 Pod 以及 VNet 中的其他 VM 通信。
+* 群集中的每个 Pod 在 VNet 中分配有一个 IP 地址，并可直接与群集中的其他 Pod 以及 VNet 中的其他节点通信。
 * Pod 可以通过 ExpressRoute 和站点到站点 (S2S) VPN 连接来与对等互连 VNet 中的其他服务和本地网络建立连接。 还可以从本地访问 Pod。
 * 通过 Azure 负载均衡器在外部或内部公开 Kubernetes 服务。 这也是基本网络的一项功能。
 * 启用了服务终结点的子网中的 Pod 可以安全地连接到 Azure 服务（例如 Azure 存储和 SQL 数据库）。
@@ -46,33 +47,79 @@ ms.lasthandoff: 05/14/2018
 * Pod 可以访问公共 Internet 上的资源。 这也是基本网络的一项功能。
 
 > [!IMPORTANT]
-> 为高级网络配置的 AKS 群集中的每个节点最多可以托管 **30 个 Pod**。 预配用于 Azure CNI 插件的每个 VNet 限制为 **4096 个 IP 地址** (/20)。
+> 当使用 Azure 门户进行配置时，为高级网络配置的 AKS 群集中的每个节点最多可以托管 **30 个 Pod**。  只能在使用资源管理器模板部署群集时，通过修改 maxPods 属性来更改最大值。 预配用于 Azure CNI 插件的每个 VNet 限制为 4096 个配置的 IP 地址。
 
-## <a name="configure-advanced-networking"></a>配置高级网络
+## <a name="advanced-networking-prerequisites"></a>高级网络先决条件
 
-在 Azure 门户中[创建 AKS 群集](kubernetes-walkthrough-portal.md)时，可为高级网络配置以下参数：
+* AKS 群集的 VNet 必须允许出站 Internet 连接。
+* 不要在同一子网中创建多个 AKS 群集。
+* AKS 高级网络不支持使用 Azure 专用 DNS 区域的 VNet。
+* AKS 群集可能不会使用 Kubernetes 服务地址范围的 `169.254.0.0/16`、`172.30.0.0/16` 或 `172.31.0.0/16`。
+* 用于 AKS 群集的服务主体必须具有对包含现有 VNet 的资源组的 `Contributor` 权限。
+
+## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
+
+使用高级网络配置的群集需要额外的规划。 VNet 及其子网的大小必须适应你计划运行的 Pod 数以及群集的节点数。
+
+Pod 和群集节点的 IP 地址是从 VNet 中指定的子网分配的。 为每个节点配置一个主要 IP（即节点的 IP），以及 Azure CNI 预配置的 30 个附加 IP 地址，这些附加 IP 地址将分配给节点上安排的 Pod。 横向扩展群集时，将使用子网中的 IP 地址以类似方式配置每个节点。
+
+AKS 群集 IP 地址计划包括 VNet、至少一个节点和 Pod 子网以及 Kubernetes 服务地址范围。
+
+| 地址范围 / Azure 资源 | 限制和调整大小 |
+| --------- | ------------- |
+| 虚拟网络 | Azure VNet 可以最大为 /8，但可能只有 4096 个配置的 IP 地址。 |
+| 子网 | 必须足够大才能容纳节点和 Pod。 若要计算最小子网大小：（节点数）+（节点数 * 每个节点的 Pod）。 对于 50 个节点群集：(50) + (50 * 30) = 1,550，你的子网大小必须为 /21 或更大。 |
+| Kubernetes 服务地址范围 | 此范围不应由此 VNet 上或连接到此 VNet 的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 |
+| Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址将由群集服务发现 (kube-dns) 使用。 |
+| Docker 桥地址 | IP 地址（采用 CIDR 表示法）用作节点上的 Docker 桥 IP 地址。 默认地址为 172.17.0.1/16。 |
+
+如前所述，预配用于 Azure CNI 插件的每个 VNet 限制为 4096 个配置的 IP 地址。 为高级网络配置的群集中的每个节点最多可以托管 **30 个 Pod**。
+
+## <a name="deployment-parameters"></a>部署参数
+
+创建 AKS 群集时，可为高级网络配置以下参数：
 
 **虚拟网络**：要将 Kubernetes 群集部署到的 VNet。 若要为群集创建新的 VNet，请选择“新建”，并遵循“创建虚拟网络”部分中的步骤。
 
 **子网**：要将群集部署到的 VNet 中的子网。 若要在 VNet 中为群集创建新的子网，请选择“新建”，并遵循“创建子网”部分中的步骤。
 
-**Kubernetes 服务地址范围**：Kubernetes 群集服务 IP 的 IP 地址范围。 此范围不得在群集的 VNet IP 地址范围内。
+Kubernetes 服务地址范围：Kubernetes 服务地址范围是来自分配给群集中 Kubernetes 服务的地址的 IP 范围（有关 Kubernetes 服务的详细信息，请参阅 Kubernetes 文档中的[服务][services]）。
+
+Kubernetes 服务 IP 地址范围：
+
+* 不得在群集的 VNet IP 地址范围内
+* 不得与群集 VNet 对等的任何其他 VNet 重叠
+* 不得与任何本地 IP 重叠
+
+如果使用重叠的 IP 范围，则可能导致不可预测的行为。 例如，如果 pod 尝试访问群集外的 IP，并且该 IP 也恰好是服务 IP，则可能会看到不可预测的行为和失败。
 
 **Kubernetes DNS 服务 IP 地址**：群集 DNS 服务的 IP 地址。 此地址必须在 Kubernetes 服务地址范围内。
 
 **Docker 网桥地址**：分配给 Docker 网桥的 IP 地址和子网掩码。 此 IP 地址不得在群集的 VNet IP 地址范围内。
 
+## <a name="configure-networking---cli"></a>配置网络 - CLI
+
+使用 Azure CLI 创建 AKS 群集时，还可以配置高级网络。 使用以下命令在启用了高级网络功能的状态下创建新的 AKS 群集。
+
+首先，将现有子网的子网资源 ID 加入到 AKS 群集将加入的子网资源 ID：
+
+```console
+$ az network vnet subnet list --resource-group myVnet --vnet-name myVnet --query [].id --output tsv
+
+/subscriptions/d5b9d4b7-6fc1-46c5-bafe-38effaed19b2/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
+```
+
+使用带有 `--network-plugin azure` 参数的 [az aks create][az-aks-create] 命令创建具有高级网络的群集。 使用上一步中收集的子网 ID 更新 `--vnet-subnet-id` 值：
+
+```azurecli
+az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin azure --vnet-subnet-id <subnet-id> --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.2.0.10 --service-cidr 10.2.0.0/24
+```
+
+## <a name="configure-networking---portal"></a>配置网络 - 门户
+
 以下 Azure 门户屏幕截图显示了在创建 AKS 群集过程中配置这些设置的示例：
 
 ![Azure 门户中的高级网络配置][portal-01-networking-advanced]
-
-## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
-
-使用高级网络配置的群集需要额外的规划。 VNet 及其子网的大小必须适应你要在群集中同时运行的 Pod 数，并符合缩放要求。
-
-Pod 和群集节点的 IP 地址是从 VNet 中指定的子网分配的。 为每个节点配置一个主要 IP（即节点本身的 IP），以及 Azure CNI 预配置的 30 个附加 IP 地址，这些附加 IP 地址将分配给节点上安排的 Pod。 横向扩展群集时，将使用子网中的 IP 地址以类似方式配置每个节点。
-
-如前所述，预配用于 Azure CNI 插件的每个 VNet 限制为 **4096 个 IP 地址** (/20)。 为高级网络配置的群集中的每个节点最多可以托管 **30 个 Pod**。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -80,19 +127,19 @@ Pod 和群集节点的 IP 地址是从 VNet 中指定的子网分配的。 为�
 
 * 是否可以使用 Azure CLI 配置高级网络？
 
-  不会。 目前，仅当使用 Azure 门户或资源管理器模板部署 AKS 群集时，高级网络才可用。
+  不是。 目前，仅当使用 Azure 门户或资源管理器模板部署 AKS 群集时，高级网络才可用。
 
 * 是否可以在群集子网中部署 VM？
 
-  不会。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一 VNet 中，但必须部署在不同的子网中。
+  不是。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一 VNet 中，但必须部署在不同的子网中。
 
 * *是否可以配置基于 Pod 的网络策略？*
 
-  不会。 目前不支持基于 Pod 的网络策略。
+  不是。 目前不支持基于 Pod 的网络策略。
 
 * 可部署到节点的 Pod 数上限是否可配置？
 
-  默认情况下，每个节点最多可以托管 30 个 Pod。 目前，只能在使用资源管理器模板部署群集时，通过修改 `maxPods` 属性来更改最大值。
+  默认情况下，每个节点最多可以托管 30 个 Pod。 只能在使用资源管理器模板部署群集时，通过修改 `maxPods` 属性来更改最大值。
 
 * 如何配置创建 AKS 群集期间创建的子网的其他属性？例如服务终结点。
 
@@ -124,7 +171,9 @@ Pod 和群集节点的 IP 地址是从 VNet 中指定的子网分配的。 为�
 [acs-engine]: https://github.com/Azure/acs-engine
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [portal]: https://portal.azure.com
 
 <!-- LINKS - Internal -->
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: aks-ssh.md

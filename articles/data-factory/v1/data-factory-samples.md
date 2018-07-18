@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b0b8f56266f77724a60253991556b15a923e537f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 417425a6982ca92e486ccfb578131ebc898a0466
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046082"
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[数据工厂版本 2 中的 PowerShell 示例](../samples-powershell.md)和 [Azure 代码示例库中的代码示例](https://azure.microsoft.com/resources/samples/?service=data-factory)。
+> 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅[数据工厂中的 PowerShell 示例](../samples-powershell.md)和 [Azure 代码示例库中的代码示例](https://azure.microsoft.com/resources/samples/?service=data-factory)。
 
 
 ## <a name="samples-on-github"></a>GitHub 上的示例
@@ -105,7 +106,7 @@ ms.lasthandoff: 04/28/2018
    3. 选择要在其中创建数据工厂的 **Azure 订阅**。
    4. 为数据工厂选择**资源组**。
    5. 在“区域”中选择“美国西部”、“美国东部”或“北欧”。
-   6. 单击“资源组名称” 的 Azure 数据工厂。
+   6. 单击“下一步”。
 6. 在“配置数据存储”页上，指定现有的“Azure SQL 数据库”和“Azure 存储帐户”或创建数据库/存储，并单击“下一步”。
 7. 在“配置计算”页上，选择“默认”，并单击“下一步”。
 8. 在“摘要”页上，查看所有设置，并单击“下一步”。

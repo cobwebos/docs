@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2018
+ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b802c7b96bd8d0cfa56347d45542495caf69d7e4
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365655"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824704"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS 防护：最佳做法和参考体系结构
 
@@ -150,7 +150,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 #### <a name="web-application-firewall-for-resource-attacks"></a>防范资源攻击的 Web 应用程序防火墙
 
-针对应用层中发生的资源攻击，应该配置 Web 应用程序防火墙 (WAF) 来帮助保护 Web 应用程序。 WAF 会检查入站 Web 流量，以阻止 SQL 注入、跨站点脚本、DDoS 和其他第 7 层攻击。 Azure 提供 [WAF 作为应用程序网关的一项功能](../application-gateway/application-gateway-web-application-firewall-overview.md)，以便在出现常见攻击和漏洞时为 Web 应用程序提供集中保护。 此外，Azure 合作伙伴还会通过 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1) 提供其他 WAF 产品/服务，它们可能更适合解决你的需求。
+针对应用层中发生的资源攻击，应该配置 Web 应用程序防火墙 (WAF) 来帮助保护 Web 应用程序。 WAF 会检查入站 Web 流量，以阻止 SQL 注入、跨站点脚本、DDoS 和其他第 7 层攻击。 Azure 提供 [WAF 作为应用程序网关的一项功能](../application-gateway/application-gateway-web-application-firewall-overview.md)，以便在出现常见攻击和漏洞时为 Web 应用程序提供集中保护。 此外，Azure 合作伙伴还会通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)提供其他 WAF 产品/服务，它们可能更适合解决你的需求。
 
 即使是 Web 应用程序防火墙这样的服务，也很容易遭受容量耗尽和状态耗尽攻击。 我们强烈建议在 WAF 虚拟网络上启用标准 DDoS 防护，以帮助防范容量耗尽攻击和协议攻击。 有关详细信息，请参阅 [DDoS 防护参考体系结构](#ddos-protection-reference-architectures)部分。
 
@@ -292,18 +292,9 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 有关此参考体系结构的详细信息，请参阅[使用 Azure 虚拟网络扩展 Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) 文档。
 
-### <a name="azure-api-management"></a>Azure API 管理
-
-此参考体系结构帮助保护向组织外部客户发布 API 的 [Azure API 管理](../api-management/api-management-key-concepts.md)资源公共终结点。 在外部虚拟网络中部署 API 管理，以启用 DDoS 防护。
-
-![API 管理的参考体系结构示意图](media/azure-ddos-best-practices/image15.png)
-
-配置外部虚拟网络时，可以通过公共负载均衡器从公共 Internet 访问 API 管理网关和开发人员门户。 在此体系结构中，已在 API 管理的外部虚拟网络上启用标准 DDoS 防护。 流量将从 Internet 路由到可防范第 3 层和第 4 层网络攻击的 API 管理的公共 IP 地址。 若要防范第 7 层 HTTP/HTTPS 攻击，可以在 WAF 模式下配置应用程序网关。
-
-有关可在虚拟网络中的部署、可为标准 DDoS 防护配置的其他服务列表，请参阅[此文](../virtual-network/virtual-network-for-azure-services.md)。 标准 DDoS 防护仅支持 Azure 资源管理器资源。 
 
 > [!NOTE]
-> 虚拟网络中使用公共 IP 的 PowerApps 注入式应用服务环境部署原生不受支持。 有关保护应用服务环境的详细信息，请参阅此部分。
+> 虚拟网络中使用公共 IP 的 PowerApps 或 API 管理的 Azure 应用服务环境都原生不受支持。
 
 ## <a name="next-steps"></a>后续步骤
 

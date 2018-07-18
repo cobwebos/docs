@@ -16,11 +16,12 @@
 # 示例
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=key-vault)
 # 概念
+## [什么是密钥保管库？](key-vault-whatis.md)
 ## [安全体系](key-vault-ovw-security-worlds.md)
 ## [软删除](key-vault-ovw-soft-delete.md)
 ## [存储帐户密钥](key-vault-ovw-storage-keys.md)
 ## [限制](key-vault-ovw-throttling.md)
-## [什么是密钥保管库？](key-vault-whatis.md)
+
 
 # 操作指南
 ## 管理
@@ -40,11 +41,11 @@
 # 引用
 ## [Azure PowerShell](/powershell/module/azurerm.keyvault)
 ## [Azure CLI](/cli/azure/keyvault)
-## [.NET](/dotnet/api/microsoft.azure.keyvault)
-## [Java](/java/api/com.microsoft.azure.keyvault)
+## [.NET](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/keyvault/client?view=azure-dotnet)
+## [Java](/java/api/overview/azure/keyvault?view=azure-java-stable)
 ## Node.js
-### [保管库管理](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
-### [保管库内容管理](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest)
+### [保管库管理](https://docs.microsoft.com/javascript/api/azure-keyvault/index?view=azure-node-latest)
+### [保管库内容管理](https://docs.microsoft.com/javascript/api/azure-arm-keyvault/index?view=azure-node-latest)
 ## [REST](/rest/api/keyvault)
 ## 开发
 ### [开发人员快速入门视频](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start)
@@ -73,7 +74,7 @@
 ## [Key Vault 版本](key-vault-versions.md)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [博客](http://blogs.technet.com/b/kv/)
-## [代码示例](https://www.microsoft.com/download/details.aspx?id=45343)
+## [代码示例](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault&type=&language=)
 ## [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
 ## [定价](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

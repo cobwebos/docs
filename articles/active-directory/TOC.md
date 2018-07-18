@@ -1,28 +1,30 @@
+# [Azure Active Directory 文档](index.md)
+
 # 概述
-## [什么是 Azure Active Directory？](active-directory-whatis.md)
-## [关于 Azure 标识管理](identity-fundamentals.md)
-## [了解 Azure 标识解决方案](understand-azure-identity-solutions.md)
+## [什么是 Azure Active Directory？](fundamentals/active-directory-whatis.md)
+## [关于 Azure 标识管理](fundamentals/identity-fundamentals.md)
+## [了解 Azure 标识解决方案](fundamentals/understand-azure-identity-solutions.md)
 ## [部署混合标识解决方案](choose-hybrid-identity-solution.md)
-## [关联 Azure 订阅](active-directory-how-subscriptions-associated-directory.md)
-## [驻留和数据注意事项](active-directory-data-storage-eu.md)
-## [常见问题](active-directory-faq.md)
-## [新增功能](whats-new.md)
+## [关联 Azure 订阅](fundamentals/active-directory-how-subscriptions-associated-directory.md)
+## [驻留和数据注意事项](fundamentals/active-directory-data-storage-eu.md)
+## [常见问题](fundamentals/active-directory-faq.md)
+## [新增功能](fundamentals/whats-new.md)
 
 
 # 入门
-## [Azure AD 入门](get-started-azure-ad.md)
-## [注册 Azure AD Premium](active-directory-get-started-premium.md)
-## [添加自定义域名](add-custom-domain.md)
-## [配置公司品牌](customize-branding.md)
-## [将用户添加到 Azure AD](add-users-azure-active-directory.md)
-## [将许可证分配给用户](license-users-groups.md)
+## [Azure AD 入门](fundamentals/get-started-azure-ad.md)
+## [注册 Azure AD Premium](fundamentals/active-directory-get-started-premium.md)
+## [添加自定义域名](fundamentals/add-custom-domain.md)
+## [配置公司品牌](fundamentals/customize-branding.md)
+## [将用户添加到 Azure AD](fundamentals/add-users-azure-active-directory.md)
+## [将许可证分配给用户](fundamentals/license-users-groups.md)
 ## [配置自助服务密码重置](authentication/quickstart-sspr.md)
 ## [在 Azure AD 中添加组织的隐私信息](active-directory-properties-area.md)
 
 
 # 如何
 ## 规划和设计
-### [了解 Azure AD 体系结构](active-directory-architecture.md)
+### [了解 Azure AD 体系结构](fundamentals/active-directory-architecture.md)
 ### [Azure Active Directory 中的声明映射](active-directory-claims-mapping.md)
 ### [部署混合标识解决方案](active-directory-hybrid-identity-design-considerations-overview.md)
 #### 确定要求
@@ -42,10 +44,11 @@
 #### [工具比较](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 
 ## 管理用户
-### [将新用户添加到 Azure AD](add-users-azure-active-directory.md)
-### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
+### [将新用户添加到 Azure AD](fundamentals/add-users-azure-active-directory.md)
+### [管理用户个人资料](fundamentals/active-directory-users-profile-azure-portal.md)
 ### [共享帐户](active-directory-sharing-accounts.md)
-### [将用户分配到管理员角色](active-directory-users-assign-role-azure-portal.md)
+### [将用户分配到管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
+### [还原已删除的用户](fundamentals/active-directory-users-restore.md)
 ### [添加另一个目录中的来宾用户 (B2B)](b2b/what-is-b2b.md)
 #### [管理员添加 B2B 用户](b2b/add-users-administrator.md)
 #### [信息工作者添加 B2B 用户](b2b/add-users-information-worker.md)
@@ -77,31 +80,32 @@
 #### [B2B 协作与 B2C 的比较](b2b/compare-with-b2c.md)
 #### [获取 B2B 支持](b2b/get-support.md)
 
-## [管理组和成员](active-directory-manage-groups.md)
+## [管理组和成员](fundamentals/active-directory-manage-groups.md)
 ### 管理组
-#### [Azure 门户](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-### [管理组成员](active-directory-groups-members-azure-portal.md)
-### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
-### [管理组成员身份](active-directory-groups-membership-azure-portal.md)
-### [使用组分配许可证](active-directory-licensing-whatis-azure-portal.md)
-#### [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
-#### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
-#### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
-#### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
-#### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
-#### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
-### [设置 Office 365 组过期时间](active-directory-groups-lifecycle-azure-portal.md)
-### [查看所有组](active-directory-groups-view-azure-portal.md)
-### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
-### [还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)
-### 管理组设置
-#### [Azure 门户](active-directory-groups-settings-azure-portal.md)
-#### [Cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure 门户](fundamentals/active-directory-groups-create-azure-portal.md)
+#### [用于 Graph 的 Azure AD PowerShell (v2)](users-groups-roles/groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline](users-groups-roles/groups-settings-cmdlets.md)
+### [管理组成员](fundamentals/active-directory-groups-members-azure-portal.md)
+### [管理组所有者](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
+### [管理组成员身份](fundamentals/active-directory-groups-membership-azure-portal.md)
+### [使用组分配许可证](fundamentals/active-directory-licensing-whatis-azure-portal.md)
+#### [将许可证分配到组](users-groups-roles/licensing-groups-assign.md)
+#### [识别和解决组中的许可证问题](users-groups-roles/licensing-groups-resolve-problems.md)
+#### [将单个许可用户迁移到基于组的许可](users-groups-roles/licensing-groups-migrate-users.md)
+#### [在产品许可证之间迁移用户](users-groups-roles/licensing-groups-change-licenses.md)
+#### [基于组的许可的其他方案](users-groups-roles/licensing-group-advanced.md)
+#### [基于组的许可的 Azure PowerShell 示例](users-groups-roles/licensing-ps-examples.md)
+#### [Azure AD 中的产品和服务计划的参考](users-groups-roles/licensing-service-plan-reference.md)
+### [设置 Office 365 组过期时间](users-groups-roles/groups-lifecycle.md)
+### [为组强制执行命名策略](users-groups-roles/groups-naming-policy.md)
+### [查看所有组](fundamentals/active-directory-groups-view-azure-portal.md)
+### [添加对 SaaS 应用的组访问权限](users-groups-roles/groups-saasapps.md)
+### [还原已删除的 Office 365 组](fundamentals/active-directory-groups-restore-azure-portal.md)
+### [管理组设置](fundamentals/active-directory-groups-settings-azure-portal.md) 
 ### 创建高级规则
-#### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
-### [设置自助服务组](active-directory-accessmanagement-self-service-group-management.md)
-### [故障排除](active-directory-accessmanagement-troubleshooting.md)
+#### [Azure 门户](users-groups-roles/groups-dynamic-membership.md)
+### [设置自助服务组](users-groups-roles/groups-self-service-management.md)
+### [故障排除](users-groups-roles/groups-troubleshooting.md)
 
 ## [管理报表](active-directory-reporting-azure-portal.md)
 ### [登录活动](active-directory-reporting-activity-sign-ins.md)
@@ -114,20 +118,23 @@
 #### [配置命名位置](active-directory-named-locations.md)
 #### [查找活动报表](active-directory-reporting-migration.md)
 #### [使用 Azure Active Directory Power BI 内容包](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [修复已标记为存在风险的用户](active-directory-report-security-user-at-risk-remediation.md)
 ### 引用
 #### [保留](active-directory-reporting-retention.md)
 #### [延迟](active-directory-reporting-latencies-azure-portal.md)
-#### [通知](active-directory-reporting-notifications.md)
 #### [审核活动参考](active-directory-reporting-activity-audit-reference.md)
 #### [登录活动错误代码](active-directory-reporting-activity-sign-ins-errors.md)
 #### [多重身份验证](active-directory-reporting-activity-sign-ins-mfa.md)
+
+
 ### 故障排除
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [在下载项中缺少数据](active-directory-reporting-troubleshoot-missing-data-download.md)
 #### [Azure Active Directory 活动日志内容包错误](active-directory-reporting-troubleshoot-content-pack.md)
+#### [Azure Active Directory 报告 API 中的错误](active-directory-reporting-troubleshoot-graph-api.md)
+
+
 ### [以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)
-#### [审核参考](active-directory-reporting-api-audit-reference.md)
-#### [登录参考](active-directory-reporting-api-sign-in-activity-reference.md)
 #### [先决条件](active-directory-reporting-api-prerequisites-azure-portal.md)
 #### [审核示例](active-directory-reporting-api-audit-samples.md)
 #### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
@@ -136,9 +143,9 @@
 ## 管理密码
 ### [密码概述](authentication/active-directory-passwords-overview.md)
 ### 用户文档
-#### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
+#### [重置或更改密码](user-help/active-directory-passwords-update-your-own-password.md)
 #### [密码最佳做法](active-directory-secure-passwords.md)
-#### [注册自助密码重置](active-directory-passwords-reset-register.md)
+#### [注册自助密码重置](user-help/active-directory-passwords-reset-register.md)
 ### [SSPR 工作原理](authentication/concept-sspr-howitworks.md)
 ### [SSPR 部署指南](authentication/howto-sspr-deployment.md)
 ### [SSPR 和 Windows 10](authentication/tutorial-sspr-windows.md)
@@ -146,8 +153,15 @@
 ### [SSPR 自定义](authentication/concept-sspr-customization.md)
 ### [SSPR 数据要求](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR 报告](authentication/howto-sspr-reporting.md)
+### [智能锁定](authentication/howto-password-smart-lockout.md)
+### [消除弱密码](authentication/concept-password-ban-bad.md)
+### [配置禁止的密码列表](authentication/howto-password-ban-bad.md)
+### [本地集成](authentication/concept-password-ban-bad-on-premises.md)
+### [部署 Azure AD 密码保护](authentication/howto-password-ban-bad-on-premises.md)
+### [配置 Azure AD 密码保护](authentication/howto-password-ban-bad-on-premises-operations.md)
+### [监视 Azure AD 密码保护](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### IT 管理员：重置密码
-#### [Azure 门户](active-directory-users-reset-password-azure-portal.md)
+#### [Azure 门户](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [许可 SSPR](authentication/concept-sspr-licensing.md)
 ### [密码写回](authentication/howto-sspr-writeback.md)
 ### [故障排除](authentication/active-directory-passwords-troubleshoot.md)
@@ -160,8 +174,8 @@
 ### [计划 Azure AD 加入](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [常见问题](device-management-faq.md)
 ### 任务
-#### [设置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
-#### [设置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
+#### [设置已注册到 Azure AD 的 Windows 10 设备](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+#### [设置已加入 Azure AD 的设备](user-help/device-management-azuread-joined-devices-setup.md)
 #### [设置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
@@ -172,12 +186,16 @@
 ## 管理应用
 ### [概述](manage-apps/what-is-application-management.md)
 ### [入门](manage-apps/plan-an-application-integration.md)
-### [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
-### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
-#### [创建快照报表](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
-#### [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [使用自定义日志分析器](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
+### [SaaS 应用集成教程](saas-apps/tutorial-list.md)
 
+### [对 SaaS 应用进行用户预配和取消预配](active-directory-saas-app-provisioning.md) 
+#### [应用集成教程](saas-apps/tutorial-list.md) 
+#### [对启用 SCIM 的应用自动执行预配](manage-apps/use-scim-to-provision-users-and-groups.md) 
+#### [自定义属性映射](active-directory-saas-customizing-attribute-mappings.md) 
+#### [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md) 
+#### [使用范围筛选器](active-directory-saas-scoping-filters.md) 
+#### [针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md) 
+#### [排查用户预配问题](active-directory-application-provisioning-content-map.md) 
 
 ### [使用应用代理远程访问应用](manage-apps/application-proxy.md)
 #### 入门
@@ -211,55 +229,148 @@
 #### 发布演练
 ##### [远程桌面](manage-apps/application-proxy-integrate-with-remote-desktop-services.md)
 ##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
-##### [Microsoft Teams](application-proxy-teams.md)
-##### [Tableau](active-directory-application-proxy-tableau.md)
+##### [Microsoft Teams](manage-apps/application-proxy-integrate-with-teams.md)
+##### [Tableau](manage-apps/application-proxy-integrate-with-tableau.md)
 ##### [Qlik](active-directory-application-proxy-qlik.md)
+#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) 
 
-
-#### [故障排除](active-directory-application-proxy-troubleshoot.md)
+#### [故障排除](manage-apps/application-proxy-troubleshoot.md)
 
 ### 管理企业应用
-#### [分配用户](active-directory-coreapps-assign-user-azure-portal.md)
-#### [自定义品牌](active-directory-coreapps-change-app-logo-user-azure-portal.md)
-#### [禁用用户登录](active-directory-coreapps-disable-app-azure-portal.md)
-#### [删除用户](active-directory-coreapps-remove-assignment-azure-portal.md)
-#### [查看所有应用](active-directory-coreapps-view-azure-portal.md)
-#### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-#### [管理适用于企业应用的单一登录](active-directory-enterprise-apps-manage-sso.md)
-#### [SAML 应用的高级证书签名](active-directory-enterprise-apps-advance-certificate-options.md)
-#### [从用户的体验中隐藏第三方应用](active-directory-coreapps-hide-third-party-app.md)
-### [使用 HRD 策略配置登录自动加速](active-directory-auto-acceleration-using-hrd.md)
-
-### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
+#### [分配用户](manage-apps/assign-user-or-group-access-portal.md)
+#### [自定义品牌](manage-apps/change-name-or-logo-portal.md)
+#### [禁用用户登录](manage-apps/disable-user-sign-in-portal.md)
+#### [删除用户](manage-apps/remove-user-or-group-access-portal.md)
+#### [查看所有应用](manage-apps/view-applications-portal.md)
+#### [管理用户帐户预配](manage-apps/configure-automatic-user-provisioning-portal.md)
+#### [管理适用于企业应用的单一登录](manage-apps/configure-single-sign-on-portal.md)
+#### [SAML 应用的高级证书签名](manage-apps/certificate-signing-options.md)
+#### [从用户体验中隐藏应用程序](manage-apps/hide-application-from-user-portal.md)
+### [使用 HRD 策略配置登录自动加速](manage-apps/configure-authentication-for-federated-users-portal.md)
+### [将 AD FS 应用迁移到 Azure AD](manage-apps/migrate-adfs-apps-to-azure.md) 
+### [管理对应用的访问权限](manage-apps/what-is-access-management.md)
 #### [SSO 访问](manage-apps/what-is-single-sign-on.md)
-#### [SSO 证书](active-directory-sso-certs.md)
-#### [租户限制](active-directory-tenant-restrictions.md)
-#### [使用 SCIM 预配用户](active-directory-scim-provisioning.md)
+#### [SSO 证书](manage-apps/manage-certificates-for-federated-single-sign-on.md)
+#### [租户限制](manage-apps/tenant-restrictions.md)
+#### [使用 SCIM 预配用户](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [故障排除](active-directory-application-troubleshoot-content-map.md)
-#### [应用程序开发](active-directory-application-dev-troubleshoot-content-map.md)
-##### [配置和注册](active-directory-application-dev-config-content-map.md)
-##### [开发](active-directory-application-dev-development-content-map.md)
-#### [应用程序管理](active-directory-application-management-troubleshoot-content-map.md)
-##### [配置](active-directory-application-config-content-map.md)
-##### [登录](active-directory-application-sign-in-content-map.md)
-##### [预配](active-directory-application-provisioning-content-map.md)
-##### [管理访问](active-directory-application-access-content-map.md)
-##### [访问面板](active-directory-application-access-panel-content-map.md)
-##### [应用程序代理](active-directory-application-proxy-content-map.md)
-##### [条件性访问](active-directory-application-conditional-access-content-map.md)
+
+### 故障排除
+
+
+
+#### 访问面板
+##### [应用未出现](application-access-panel-unexpected-application-not-appearing.md)
+##### [出现意外的应用](application-access-panel-unexpected-application-appears.md)
+##### [无法登录](application-access-panel-web-sign-in-problem.md)
+##### [安装浏览器扩展时出错](application-access-panel-extension-problem-installing.md)
+##### [如何使用自助服务应用访问权限](application-access-panel-self-service-applications-how-to.md)
+##### [使用自助服务应用访问权限时出错](application-access-panel-self-service-applications-problem.md)
+
+#### 添加应用
+##### [选择应用类型](application-config-add-app-problem-how-to-choose-application-type.md)
+##### [常见问题 - 库应用](application-config-add-app-problem-problem-adding-gallery-app.md)
+##### [常见问题 - 非库应用](application-config-add-app-problem-problem-adding-non-gallery-app.md)
+
+#### 应用程序代理
+##### [显示应用页时出现问题](application-proxy-page-appearance-broken-problem.md)
+##### [应用程序加载时间过长](application-proxy-page-load-speed-problem.md)
+##### [应用程序页上的链接不起作用](application-proxy-page-links-broken-problem.md)
+##### [要为应用打开哪些端口](application-proxy-connectivity-ports-how-to.md)
+##### [应用的连接器组中没有起作用的连接器](application-proxy-connectivity-no-working-connector.md)
+##### [在管理门户中配置](application-proxy-config-how-to.md)
+##### [为应用配置单一登录](application-proxy-config-sso-how-to.md)
+##### [在管理门户中创建应用时出现问题](application-proxy-config-problem.md)
+##### [配置 Kerberos 约束委派](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+##### [使用 PingAccess 配置](application-proxy-back-end-ping-access-how-to.md)
+##### [“无法访问此企业应用程序”错误](application-proxy-sign-in-bad-gateway-timeout-error.md)
+##### [安装应用程序代理程序连接器时出现问题](application-proxy-connector-installation-problem.md)
+
+
+#### 应用程序注册
+##### [为应用程序对象填写字段](application-dev-registration-config-specific-application-property-how-to.md)
+##### [更改令牌生存期默认值](application-dev-registration-config-change-token-lifetime-how-to.md)
+
+#### 身份验证
+##### [配置终结点](application-dev-registration-config-how-to.md)
+
+#### 条件性访问
+##### [客户不符合设备注册先决条件](active-directory-conditional-access.md)
+##### [由于条件访问策略设置不当，租户被阻止](active-directory-conditional-access-device-remediation.md)
+##### [企业网络外部规则如何以及何时生效？](https://aka.ms/calocation)
+##### [如何增加允许用户在 Azure AD 中注册的设备数？](active-directory-azureadjoin-setup.md)
+##### [如何为 Exchange Online 设置条件访问？](https://aka.ms/csforexchange)
+##### [如何为 Windows 7 设备设置条件访问？](active-directory-conditional-access.md#device-based-conditional-access)
+##### [哪些应用程序支持条件访问？](active-directory-conditional-access-supported-apps.md)
+
+#### 查找 API
+##### [查找 API](application-dev-api-find-an-api-how-to.md)
+
+#### 管理访问权限
+##### [为应用分配用户和组](application-access-assignment-how-to-add-assignment.md)
+##### [删除对应用的用户访问权限](application-access-assignment-how-to-remove-assignment.md)
+##### [配置自助服务应用分配](application-access-self-service-how-to.md)
+##### [分配了意外的用户](application-access-unexpected-user-assignment.md)
+##### [应用程序列表中的意外应用](application-access-unexpected-application.md)
+
+#### 多租户应用
+##### [配置新应用](application-dev-setup-multi-tenant-app.md)
+##### [添加到应用库](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+
+#### 权限
+##### [选择 API 的权限](application-dev-perms-for-given-api.md)
+##### [为应用授予权限](application-dev-registration-config-grant-permissions-how-to.md)
+##### [委派权限与应用程序权限](application-dev-delegated-and-app-perms.md)
+##### [应用程序许可](application-dev-consent-framework.md)
+
+#### 设置
+##### [花费多长时间](application-provisioning-when-will-provisioning-finish-specific-user.md)
+##### [花费数小时 - 库应用](application-provisioning-when-will-provisioning-finish.md)
+##### [配置用户预配 - 库应用](application-provisioning-config-how-to.md)
+##### [配置用户预配时出现问题 - 库应用](application-provisioning-config-problem.md)
+##### [配置用户预配时保存管理员凭据出现问题 - 库应用](application-provisioning-config-problem-storage-limit.md)
+##### [未预配用户 - 库应用](application-provisioning-config-problem-no-users-provisioned.md)
+##### [预配了错误的用户 - 库应用](application-provisioning-config-problem-wrong-users-provisioned.md)
+
+#### 单一登录
+##### [选择方法](application-config-sso-how-to-choose-sign-on-method.md)
+##### [配置](application-dev-registration-config-sso-how-to.md)
+##### [配置联合单一登录 - 库应用](application-config-sso-how-to-configure-federated-sso-gallery.md)
+##### [配置联合单一登录时常见的问题 - 库应用](application-config-sso-problem-configure-federated-sso-gallery.md)
+##### [配置联合单一登录 - 非库应用](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+##### [配置联合单一登录时常见的问题 - 非库应用](application-config-sso-problem-configure-federated-sso-non-gallery.md)
+##### [配置密码 - 库应用](application-config-sso-how-to-configure-password-sso-gallery.md)
+##### [配置密码时常见的问题 - 库应用](application-config-sso-problem-configure-password-sso-gallery.md)
+##### [配置密码 - 非库应用](application-config-sso-how-to-configure-password-sso-non-gallery.md)
+##### [配置密码时常见的问题 - 非库应用](application-config-sso-problem-configure-password-sso-non-gallery.md)
+
+#### 用户登录问题
+##### [意外的许可提示](application-sign-in-unexpected-user-consent-prompt.md)
+##### [用户许可错误](application-sign-in-unexpected-user-consent-error.md)
+##### [从自定义门户登录时出现问题](application-sign-in-other-problem-deeplink.md)
+##### [从访问面板登录时出现问题](application-sign-in-other-problem-access-panel.md)
+##### [应用程序登录页上的错误](application-sign-in-problem-application-error.md)
+##### [使用密码单一登录时出现的问题 - 非库应用](application-sign-in-problem-password-sso-non-gallery.md)
+##### [使用密码单一登录时出现的问题 - 库应用](application-sign-in-problem-password-sso-gallery.md)
+##### [登录到 Microsoft 应用时出现问题](application-sign-in-problem-first-party-microsoft.md)
+##### [使用联合单一登录时出现的问题 - 非库应用](application-sign-in-problem-federated-sso-non-gallery.md)
+##### [使用联合单一登录时出现的问题 - 库应用](application-sign-in-problem-federated-sso-gallery.md)
+##### [登录自定义开发的应用时出现的问题](application-sign-in-problem-custom-dev.md)
+##### [登录本地应用时出现的问题 - 应用程序代理](application-sign-in-problem-on-premises-application-proxy.md)
+
 ### [开发应用](active-directory-applications-guiding-developers-for-lob-applications.md)
 ### [文档库](active-directory-apps-index.md)
 
 ## 管理目录
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### 自定义域名
-#### [快速入门](add-custom-domain.md)
-#### [添加自定义域名](active-directory-domains-manage-azure-portal.md)
-### [管理目录](active-directory-administer.md)
-### [多个目录](active-directory-licensing-directory-independence.md)
-### [自助服务注册](active-directory-self-service-signup.md)
-### [接管非托管目录](domains-admin-takeover.md)
+#### [快速入门](fundamentals/add-custom-domain.md)
+#### [添加自定义域名](users-groups-roles/domains-manage.md)
+### [管理目录](fundamentals/active-directory-administer.md)
+### [删除目录](users-groups-roles/directory-delete-howto.md)
+### [多个目录](users-groups-roles/licensing-directory-independence.md)
+### [自助服务注册](users-groups-roles/directory-self-service-signup.md)
+### [接管非托管目录](users-groups-roles/domains-admin-takeover.md)
 ### [企业状态漫游](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [启用](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [组策略设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
@@ -270,16 +381,15 @@
 
 ### [使用 Azure AD Connect 集成本地标识](./connect/active-directory-aadconnect.md)
 
-## [管理对 Azure 的访问权限](../role-based-access-control/toc.yml)
-
 ## 委托对资源的访问权限
-### [管理员角色](active-directory-assign-admin-roles-azure-portal.md)
-#### [分配管理员角色](active-directory-users-assign-role-azure-portal.md)
-#### [默认用户权限](users-default-permissions.md)
-### [管理单元](active-directory-administrative-units-management.md)
+### [管理员角色](users-groups-roles/directory-assign-admin-roles.md)
+#### [查看管理员角色的成员](users-groups-roles//directory-manage-roles-portal.md)
+#### [向用户分配管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
+#### [比较成员和来宾的用户权限](fundamentals/users-default-permissions.md)
+### [管理员角色安全性](users-groups-roles/directory-admin-roles-secure.md)  
+#### [创建紧急访问管理员帐户](users-groups-roles/directory-emergency-access.md)
+### [管理单元](users-groups-roles/directory-administrative-units.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
-### [管理紧急访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md)
-### [保护特权角色](admin-roles-best-practices.md)
 
 ## 访问评审
 ### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)
@@ -294,30 +404,33 @@
 
 ## 保护标识
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
-#### [条件](active-directory-conditional-access-conditions.md)
-#### [位置条件](active-directory-conditional-access-locations.md)
-#### [控制](active-directory-conditional-access-controls.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
-#### [最佳实践](active-directory-conditional-access-best-practices.md)
-#### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
-#### [迁移经典策略](active-directory-conditional-access-migration.md)
-#### [假设分析工具](active-directory-conditional-access-whatif.md)
 #### 快速入门
 ##### [根据云应用 MFA 进行配置](active-directory-conditional-access-app-based-mfa.md)
-#### 任务
+##### [需要接受使用条款](active-directory-conditional-access-tou.md)
+##### [检测到会话风险时阻止访问](active-directory-conditional-access-app-sign-in-risk.md)
+#### 教程
 ##### [迁移经典 MFA 策略](active-directory-conditional-access-migration-mfa.md)
+#### 概念
+##### [基线保护](active-directory-conditional-access-baseline-protection.md)
+##### [条件](active-directory-conditional-access-conditions.md)
+##### [位置条件](active-directory-conditional-access-locations.md)
+##### [控制](active-directory-conditional-access-controls.md)
+##### [假设分析工具](active-directory-conditional-access-whatif.md)
+##### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
+#### 操作指南
+##### [最佳实践](active-directory-conditional-access-best-practices.md)
+##### [针对来自不受信任网络的访问尝试配置条件访问策略](active-directory-conditional-access-untrusted-networks.md)
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
 ##### [设置基于应用的条件访问](active-directory-conditional-access-mam.md)
 ##### [为用户和应用提供使用条款](active-directory-tou.md)
+##### [迁移经典策略](active-directory-conditional-access-migration.md)
 ##### [设置 VPN 连接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [设置 SharePoint 和 Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [补救方法](active-directory-conditional-access-device-remediation.md)
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
 #### [常见问题](active-directory-conditional-faqs.md)
 
-### Windows Hello
-#### [无密码身份验证](active-directory-azureadjoin-passport.md)
-#### [启用 Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
 ### 基于证书的身份验证
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
@@ -334,16 +447,16 @@
 #### [常见问题](active-directory-identity-protection-faqs.md)
 #### [术语表](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
-### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
+### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [将其他服务与 Azure AD 集成]()
-### [启用 LinkedIn 集成](linkedin-integration.md)
+## 将其他服务与 Azure AD 集成 
+### [将 LinkedIn 与 Azure AD 集成](users-groups-roles/linkedin-integration.md)
 
 ## [在 Azure 中部署 AD FS](active-directory-aadconnect-azure-adfs.md)
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [更改签名哈希算法](active-directory-federation-sha256-guidance.md)
 
-## [故障排除](active-directory-troubleshooting-support-howto.md)
+## [故障排除](fundamentals/active-directory-troubleshooting-support-howto.md)
 
 ## 部署 Azure AD 概念证明 (PoC)
 ### [PoC 演练手册：简介](active-directory-playbook-intro.md)
@@ -357,14 +470,14 @@
 ## [Azure PowerShell cmdlet](/powershell/azure/overview)
 ## [Java API 参考](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
-## [服务限制和局限性](active-directory-service-limits-restrictions.md)
+## [服务限制和局限性](users-groups-roles/directory-service-limits-restrictions.md)
 
 # 相关内容
 ## [多重身份验证](/azure/multi-factor-authentication/)
 ## [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
 ## [适用于开发人员的 Azure AD](./develop/active-directory-how-to-integrate.md)
-## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
+## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 
 # 资源
 ## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
@@ -373,5 +486,5 @@
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-active-directory)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)

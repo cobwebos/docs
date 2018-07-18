@@ -1,24 +1,19 @@
 ---
-title: "常见自动缩放模式的概述 | Microsoft Docs"
-description: "了解一些可在 Azure 中自动缩放资源的常见模式。"
+title: 常见自动缩放模式的概述
+description: 了解一些可在 Azure 中自动缩放资源的常见模式。
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
-ms.openlocfilehash: fce51546e041c8989d813c3935e058c52b38ba77
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 84727ec3694f64d40ad002a248a255df9074d7f4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263253"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常见自动缩放模式的概述
 本文介绍一些常见模式，这些模式可在 Azure 中缩放资源。
@@ -52,7 +47,7 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 
 拥有 Web 应用（/VMSS/云服务角色）并且 
 
-- 希望在默认情况下基于 CPU 使用率向上扩展/向下扩展
+- 希望在默认情况下基于 CPU 使用率扩展/缩减
 - 但是，在节假日（或对于业务来说非常重要的特定日子）期间你想要覆盖默认值，并希望有更多容量可供支配。
 
 ![在节假日以不同方式缩放][4]

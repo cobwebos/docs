@@ -1,11 +1,11 @@
 ---
-title: "计划程序出站身份验证"
-description: "计划程序出站身份验证"
+title: 计划程序出站身份验证
+description: 计划程序出站身份验证
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040332"
 ---
 # <a name="scheduler-outbound-authentication"></a>计划程序出站身份验证
 计划程序作业可能需要调用要求进行身份验证的服务。 这样，被调用的服务可以确定计划程序作业是否可以访问其资源。 其中的某些服务包括其他 Azure 服务、Salesforce.com、Facebook 和安全的自定义网站。

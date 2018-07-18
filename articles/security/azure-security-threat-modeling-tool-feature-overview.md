@@ -1,6 +1,6 @@
 ---
-title: "Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "了解威胁建模工具中提供的所有功能"
+title: Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 了解威胁建模工具中提供的所有功能
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26754739"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威胁建模工具功能概述
 

@@ -6,14 +6,15 @@ author: giladm
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: d1114d6c5073aa6e60d6fb700989fb3d205ee914
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b615e9ff67788c2f02c2fa0c33e0de3331e77885
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645623"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL 数据库 - 针对表审核的下层客户端支持和 IP 终结点更改
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/06/2018
 * JDBC（JDBC 虽然支持 TDS 7.4，但不完全支持 TDS 重定向功能）
 * Tedious（适用于 Node.JS）
 
-**注释：**上面的服务器 FDQN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。
+**注释：** 上面的服务器 FDQN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。
 
 ## <a id="subheading-2"></a>启用审核时的 IP 终结点变化
 请注意，启用表审核时，数据库的 IP 终结点将发生更改。 如果有严格的防火墙设置，请相应地更新这些防火墙设置。

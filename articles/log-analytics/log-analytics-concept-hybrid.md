@@ -3,7 +3,7 @@ title: 使用 Azure Log Analytics 收集环境中的数据 | Microsoft Docs
 description: 本主题有助于了解如何使用 Log Analytics 收集数据并监视托管在本地或其他云环境中的计算机。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/02/2018
+ms.topic: conceptual
+ms.date: 06/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 2597b434bc6db0d5639709a9ce869462c3e47f56
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.component: na
+ms.openlocfilehash: a13c83fc0d35be1aec87cb5f2d2b19b0bf27f1bf
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133266"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>使用 Log Analytics 从环境中的计算机收集数据
 
@@ -40,12 +42,9 @@ Azure Log Analytics 可以从驻留在以下环境中的 Windows 或 Linux 计�
 
 如果使用 System Center 2016（Operations Manager 或 Operations Manager 2012 R2）监视计算机，该计算机可以与 Log Analytics 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 [Operations Manager](log-analytics-om-agents.md) 监视。 受 Operations Manager 管理组监视并与 Log Analytics 集成的 Linux 计算机不通过管理组接收数据源配置，也不转发收集的数据。 Windows 代理最多可以向四个工作区报告，而 Linux 代理只支持向单个工作区报告。  
 
-适用于 Linux 和 Windows 的代理不仅可连接到 Log Analytics，还支持使用 Azure 自动化来托管混合 Runbook 辅助角色和管理解决方案（例如更改跟踪和更新管理）。  有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../automation/automation-hybrid-runbook-worker.md)。
+适用于 Linux 和 Windows 的代理不仅可连接到 Log Analytics，还支持使用 Azure 自动化来托管混合 Runbook 辅助角色和管理解决方案（例如更改跟踪和更新管理）。  有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../automation/automation-hybrid-runbook-worker.md)。  
 
-## <a name="prerequisites"></a>先决条件
-开始之前，请查看以下详细信息，验证是否满足最低系统要求。
-
-### <a name="windows-operating-system"></a>Windows 操作系统
+## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
 Windows 代理正式支持以下版本的 Windows 操作系统：
 
 * Windows Server 2008 Service Pack 1 (SP1) 或更高版本
@@ -54,17 +53,7 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 > [!NOTE]
 > Windows 代理仅支持传输层安全性 (TLS) 1.0 和 1.1。  
 
-#### <a name="network-configuration"></a>网络配置
-下面的信息列出了实现 Windows 代理与 Log Analytics 通信所必需的代理和防火墙配置信息。 流量从网络传出到 Log Analytics 服务。 
-
-| 代理资源 | 端口 | 绕过 HTTPS 检查|
-|----------------|-------|------------------------|
-|*.ods.opinsights.azure.com |443 | 是 |
-|*.oms.opinsights.azure.com | 443 | 是 | 
-|* .blob.core.windows.net | 443 | 是 | 
-|*.azure-automation.net | 443 | 是 | 
-
-### <a name="linux-operating-systems"></a>Linux 操作系统
+## <a name="supported-linux-operating-systems"></a>支持的 Linux 操作系统
 以下 Linux 分发版受官方支持。  不过，Linux 代理在未列出的其他发行版上可能也可以运行。  除非另行说明，列出每个主要版本支持所有的次要版本。  
 
 * Amazon Linux 2012.09 到 2015.09 (x86/x64)
@@ -75,19 +64,22 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 * Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 和 12 (x86/x64)
 
-#### <a name="network-configuration"></a>网络配置
-下面的信息列出了实现 Linux 代理与 Log Analytics 通信所必需的代理和防火墙配置信息。  
+## <a name="network-firewall-requirements"></a>网络防火墙要求
+下面的信息列出了实现 Linux 和 Windows 代理与 Log Analytics 通信所必需的代理和防火墙配置信息。  
 
-|代理资源| 端口 | 方向 |  
-|------|---------|--------|  
-|*.ods.opinsights.azure.com | 端口 443 | 入站和出站|  
-|*.oms.opinsights.azure.com | 端口 443 | 入站和出站|  
-|* .blob.core.windows.net | 端口 443 | 入站和出站|  
-|* .azure-automation.net | 端口 443 | 入站和出站|  
+|代理资源|端口 |方向 |绕过 HTTPS 检查|
+|------|---------|--------|--------|   
+|*.ods.opinsights.azure.com |端口 443 |入站和出站|是 |  
+|*.oms.opinsights.azure.com |端口 443 |入站和出站|是 |  
+|* .blob.core.windows.net |端口 443 |入站和出站|是 |  
+|* .azure-automation.net |端口 443 |入站和出站|是 |  
 
-Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 Log Analytics 服务进行通信。  并同时支持匿名身份验证和基本身份验证（用户名/密码）。  可在安装期间指定代理服务器，也可在安装后通过修改 proxy.conf 配置文件来指定。  
 
-代理配置值具有以下语法：
+如果计划使用 Azure 自动化混合 Runbook 辅助角色连接并注册自动化服务以在环境中使用 Runbook，则它必须可以访问[针对混合 Runbook 辅助角色配置网络](../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 URL。 
+
+Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 Log Analytics 服务进行通信。  并同时支持匿名身份验证和基本身份验证（用户名/密码）。  对于直接连接到服务的 Windows 代理，代理配置在安装过程中指定，或[在部署后](log-analytics-agent-manage.md#update-proxy-settings)从控制面板或使用 PowerShell 指定。  
+
+对于 Linux 代理，代理服务器在安装过程中指定，或者[在安装后](/log-analytics-agent-manage.md#update-proxy-settings)通过修改 proxy.conf 配置文件来指定。  Linux 代理的代理配置值具有以下语法：
 
 `[protocol://][user:password@]proxyhost[:port]`
 
@@ -100,12 +92,12 @@ Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 Log 
 |user | 用于代理身份验证的可选用户名 |
 |password | 用于代理身份验证的可选密码 |
 |proxyhost | 代理服务器/OMS 网关的地址或 FQDN |
-|端口 | 代理服务器/OMS 网关的可选端口号 |
+|port | 代理服务器/OMS 网关的可选端口号 |
 
 例如： `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> 如果密码中使用了特殊字符（如“@”），则会收到代理连接错误，因为值解析不正确。  若要解决此问题，请使用 [URLDecode](https://www.urldecoder.org/) 等工具在 URL 中对密码进行编码。  
+> 如果密码中使用了特殊字符（如“\@”），则会收到代理连接错误，因为值解析不正确。  若要解决此问题，请使用 [URLDecode](https://www.urldecoder.org/) 等工具在 URL 中对密码进行编码。  
 
 ## <a name="install-and-configure-agent"></a>安装并配置代理 
 可根据要求使用不同的方法将本地计算机与 Log Analytics 直接连接。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。

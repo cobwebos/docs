@@ -1,6 +1,6 @@
 ---
-title: "规划 Azure 中国世纪互联的 Azure 部署 | Microsoft Docs"
-description: "从创立中国商店到在 Azure 中国区托管工作负荷，需要做出许多的决策。 本文提供有关 ICP 备案、SLA 协议、符合具体要求、查找合作伙伴和部署应用程序的指导。"
+title: 规划 Azure 中国世纪互联的 Azure 部署 | Microsoft Docs
+description: 从创立中国商店到在 Azure 中国区托管工作负荷，需要做出许多的决策。 本文提供有关 ICP 备案、SLA 协议、符合具体要求、查找合作伙伴和部署应用程序的指导。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635211"
 ---
 # <a name="plan-an-azure-deployment"></a>规划 Azure 部署
 从创立中国商店到在世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）中托管工作负荷，组织需要做出许多决策：

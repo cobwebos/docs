@@ -1,11 +1,11 @@
 ---
-title: "SQL Server 的高可用性和灾难恢复 | Microsoft Docs"
-description: "介绍 Azure 虚拟机中运行的 SQL Server 的各种 HADR 策略。"
+title: SQL Server 的高可用性和灾难恢复 | Microsoft Docs
+description: 介绍 Azure 虚拟机中运行的 SQL Server 的各种 HADR 策略。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401253"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的高可用性和灾难恢复
 

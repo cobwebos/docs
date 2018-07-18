@@ -1,16 +1,17 @@
 ---
-title: "使用 Azure Site Recovery 执行 VMware/物理服务器复制的体系结构 | Microsoft Docs"
-description: "本文概述使用 Azure Site Recovery 将本地 VMware VM 或物理 Windows/Linux 服务器复制到辅助 VMware 站点时使用的组件和体系结构"
+title: 使用 Azure Site Recovery 执行 VMware/物理服务器复制的体系结构 | Microsoft Docs
+description: 本文概述使用 Azure Site Recovery 将本地 VMware VM 或物理 Windows/Linux 服务器复制到辅助 VMware 站点时使用的组件和体系结构
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 97a990aa3ed9043280888900d8fc7b604b6c22b5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 04591c57f90e3c540963d77c2213498bf0ad2577
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922695"
 ---
 # <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>执行 VMware VM/物理服务器到 VMware 的复制的体系结构
 
@@ -19,7 +20,7 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="architectural-components"></a>体系结构组件
 
-**区域** | **组件** | **详细信息**
+**区域** | 组件 | **详细信息**
 --- | --- | ---
 **Azure** | 使用 InMage Scout 部署此方案。 | 若要获取 InMage Scout，需要 Azure 订阅。<br/><br/> 创建恢复服务保管库后，可以下载 InMage Scout 并安装最新的更新，以设置部署。
 **进程服务器** | 位于主站点 | 可以部署进程服务器来处理缓存、压缩和数据优化操作。<br/><br/> 它还可以将安装的统一代理推送到要保护的计算机。

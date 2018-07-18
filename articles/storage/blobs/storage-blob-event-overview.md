@@ -8,11 +8,12 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: db062fc36478d6ba2cf0f00544793f635ccdbb06
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650122"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -118,7 +119,7 @@ Blob 存储事件使用者使用的格式：
 
 要匹配在共享 blob 后缀的特定容器中创建的 blob 的事件，请使用 `subjectEndsWith` 筛选器，例如“.log”或“.jpg”
 
-有关详细信息，请参阅 [事件网格概念](../../event-grid/concepts.md#filters)。
+有关详细信息，请参阅 [事件网格概念](../../event-grid/concepts.md#event-subscriptions)。
 
 ## <a name="practices-for-consuming-events"></a>使用事件的做法
 处理 Blob 存储事件的应用程序应遵循以下建议的做法：

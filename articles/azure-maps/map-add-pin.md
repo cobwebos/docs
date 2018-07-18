@@ -1,22 +1,20 @@
 ---
 title: 使用 Azure Maps 添加图钉 | Microsoft Docs
 description: 如何向 Javascript 地图添加图钉
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 189b30ff0b5c47d0a4bd3181c8eb2143213ad6cd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 094abe08c0c88c7561185675ceb8529be2c87a0a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294642"
 ---
 # <a name="add-pins-to-the-map"></a>向地图添加图钉
 
@@ -36,3 +34,8 @@ ms.lasthandoff: 05/07/2018
 详细了解本文中使用的类和方法： 
 * [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+    
+有关可向地图添加的更多代码示例，请参阅以下文章： 
+* [添加弹出项](./map-add-popup.md)
+* [添加形状](./map-add-shape.md)
+

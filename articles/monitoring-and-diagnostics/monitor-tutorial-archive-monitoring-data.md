@@ -1,20 +1,20 @@
 ---
-title: Azure 监视数据存档 | Microsoft Docs
+title: 使用 Azure 存储将 Azure 指标和日志数据存档
 description: 将 Azure 内生成的日志和指标数据存档到存储帐户。
 author: johnkemnetz
-manager: orenr
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
+services: azure-monitor
+ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: b44bbd9cb2f54107d2593b1ab7f07f07fcc41e57
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: metrics
+ms.openlocfilehash: f6b7b9fe73f5e815e08bbf4f6493ee181a0c692b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918265"
 ---
 # <a name="archive-azure-monitoring-data"></a>Azure 监视数据存档
 
@@ -28,7 +28,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 > * 查看其中的监控数据
 > * 清理资源
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -136,6 +136,11 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 现在，虚拟机的监视数据将流入到存储帐户。
 
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>查看存储帐户中的监视数据
+
+> [!WARNING]
+> 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
 如果已执行前述步骤，则数据已开始流向存储帐户。
 

@@ -1,11 +1,11 @@
 ---
-title: "Windows Server Azure VM 上的 Django Web 应用 | Microsoft Docs"
-description: "了解如何使用经典部署模型在 Azure 中使用 Windows Server 2012 R2 Datacenter VM 托管基于 Django 的网站。"
+title: Windows Server Azure VM 上的 Django Web 应用 | Microsoft Docs
+description: 了解如何使用经典部署模型在 Azure 中使用 Windows Server 2012 R2 Datacenter VM 托管基于 Django 的网站。
 services: virtual-machines-windows
 documentationcenter: python
 author: huguesv
 manager: wpickett
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: e36484d1-afbf-47f5-b755-5e65397dc1c3
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24057012"
 ---
 # <a name="django-hello-world-web-app-on-a-windows-server-vm"></a>Windows Server VM 上的 Django Hello World Web 应用
 

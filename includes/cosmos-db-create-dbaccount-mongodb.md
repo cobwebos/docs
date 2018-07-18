@@ -9,10 +9,11 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 690c5f07a2b0f7a88e16f0b0bbbaa9ca78e37317
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38728980"
 ---
 1. 在新窗口中，登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在左菜单中，依次单击“创建资源”、“数据库”，然后在“Azure Cosmos DB”下单击“创建”。
@@ -30,6 +31,6 @@ ms.lasthandoff: 04/16/2018
 
     ![Azure Cosmos DB 的“新建帐户”页](./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png)
 
-4. 创建帐户需要几分钟时间。 等待门户中显示“祝贺你!**使用 MongoDB API 的 Azure Cosmos DB 帐户已准备就绪”**页。
+4. 创建帐户需要几分钟时间。 等待门户中显示“祝贺你!**使用 MongoDB API 的 Azure Cosmos DB 帐户已准备就绪”** 页。
 
     ![Azure 门户“通知”窗格](./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png)

@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：LinkedIn 配置 | Microsoft Docs
-description: 在 Azure Active Directory B2C 保护的应用程序中，向具有 LinkedIn 帐户的使用者提供注册和登录
+title: Azure Active Directory B2C 中的 LinkedIn 配置 | Microsoft Docs
+description: 在 Azure Active Directory B2C 保护的应用程序中，向具有 LinkedIn 帐户的使用者提供注册和登录。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 91970b3ec41c645cd1cd3e203cc96ad655dafd7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 7588711bd1c2a02e2e9a100d2ba182f43e7df488
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446052"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C：向具有 LinkedIn 帐户的使用者提供注册和登录
 ## <a name="create-a-linkedin-application"></a>创建 LinkedIn 应用程序
@@ -35,14 +35,14 @@ ms.lasthandoff: 03/23/2018
    > “客户端密钥”是一个重要的安全凭据。
    > 
    > 
-6. 在（**OAuth 2.0** 下的）“授权重定向 URL”字段中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contoso.onmicrosoft.com）。 单击“添加”，并单击“更新”。 **{tenant}** 值区分大小写。
+6. 在（**OAuth 2.0** 下的）“授权重定向 URL”字段中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contoso.onmicrosoft.com）。 单击“添加”，并单击“更新”。 {tenant} 值应为小写。
    
     ![LinkedIn - 安装应用](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
 
 ## <a name="configure-linkedin-as-an-identity-provider-in-your-tenant"></a>将 LinkedIn 配置为租户中的标识提供者
 1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 在 B2C 功能边栏选项卡上，单击“标识提供者”。
-3. 单击边栏选项卡顶部的“ **+添加** ”。
+3. 单击边栏选项卡顶部的“+ 添加”。
 4. 为标识提供者配置提供一个友好**名称**。 例如，输入“LI”。
 5. 单击“标识提供者类型”，选择“LinkedIn”，并单击“确定”。
 6. 单击“设置此标识提供者”，并输入之前创建的 LinkedIn 应用程序的客户端 ID 和客户端密码。

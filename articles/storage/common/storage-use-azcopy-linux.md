@@ -12,13 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: fe13f8441bd91d0defebd0fa94bdb716b7ab9ca6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3ed449912df1e16b5c8f1dfa3c83b81eaf635227
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034355"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>使用 AzCopy on Linux 传输数据
 
@@ -34,7 +35,9 @@ AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能�
 ### <a name="installation-on-linux"></a>在 Linux 上安装
 
 > [!NOTE]
-> 可能需要安装此 [.NET Core 先决条件文章](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)中重点介绍的 .NET Core 2.1 依赖项，具体取决于你的发行版。 对于 Ubuntu 16.04 和 RHEL 7 等主流发行版，通常不需要执行此操作。
+> 可能需要安装此 [.NET Core 先决条件文章](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)中重点介绍的 .NET Core 2.1 依赖项，具体取决于你的发行版。 
+>
+> 对于 RHEL 7 发行版，请安装 ICU 和 libunwind 依赖项：```yum install -y libunwind icu```
 
 安装 AzCopy on Linux（v7.2 或更高版本）很简单，只需要提取一个 tar 包并运行安装脚本。 
 
@@ -61,7 +64,7 @@ sudo ./install.sh
 添加 Microsoft Linux 产品存储库的 apt 源并安装 AzCopy：
 
 ```bash
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/ xenial main" > azure.list
+sudo echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod/ trusty main" > azure.list
 sudo cp ./azure.list /etc/apt/sources.list.d/
 apt-key adv --keyserver packages.microsoft.com --recv-keys B02C46DF417A0893
 ```
@@ -76,7 +79,7 @@ sudo apt-get install azcopy
 添加 Microsoft Linux 产品存储库的 apt 源并安装 AzCopy：
 
 ```bash
-sudo echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod/ trusty main" > azure.list
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/ xenial main" > azure.list
 sudo cp ./azure.list /etc/apt/sources.list.d/
 apt-key adv --keyserver packages.microsoft.com --recv-keys B02C46DF417A0893
 ```
@@ -722,4 +725,3 @@ azcopy \
 * [AzCopy: Transfer data with restartable mode and SAS token](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)（AzCopy：使用可重启的模式和 SAS 令牌传输数据）
 * [AzCopy: Using cross-account Copy Blob](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)（AzCopy：使用跨帐户复制 Blob）
 * [AzCopy: Uploading/downloading files for Azure Blobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)（AzCopy：为 Azure Blob 上传/下载文件）
-

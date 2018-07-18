@@ -4,7 +4,7 @@ description: Azure CDN 的查询字符串缓存可以控制 Web 请求在包含�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: mazha
-ms.openlocfilehash: fcb4676325066dd6960070d996b1779fb3471dd9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: aa553dfc04a755be1169fa117ec66dd10ea75b54
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260424"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>使用查询字符串控制 Azure CDN 缓存行为 - 标准层
 > [!div class="op_single_selector"]
@@ -57,10 +58,10 @@ ms.lasthandoff: 05/07/2018
    ![CDN 查询字符串缓存选项](./media/cdn-query-string/cdn-query-string.png)
 
 > [!IMPORTANT]
-> 由于注册通过 CDN 传播需要时间，缓存字符串设置更改不会立即显示：
-> - 对于**来自 Microsoft 的标准 Azure CDN** 配置文件，传播通常可在 10 分钟内完成。 
+> 由于注册需要一段时间才能在整个 Azure CDN 内传播，因此缓存字符串设置更改可能不会立即显示：
+> - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
 > - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-> - 对于**来自 Verizon 的标准 Azure CDN** 和**来自 Verizon 的高级 Azure CDN** 配置文件，传播通常可在 90 分钟内完成。 
+> - 对于“Verizon 提供的 Azure CDN 标准版”和“Verizon 提供的 Azure CDN 高级版”配置文件，传播通常在 10 分钟内完成。 
 
 
 

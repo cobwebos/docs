@@ -1,5 +1,5 @@
 ---
-title: 访问 Azure 开发测试实验室中的自定义实验室 | Microsoft Docs
+title: 访问 Azure 开发测试实验室中的实验室 | Microsoft Docs
 description: 在本教程中，访问使用 Azure 开发测试实验室创建的实验室，认领虚拟机、使用它们然后取消认领。
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: be4bde6bd320e8af7cd3119ff4ccdabd942963ca
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cd623767c9627810afb64ca9185c991c5c9f3858
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361832"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638018"
 ---
-# <a name="tutorial-access-a-custom-lab-in-azure-devtest-labs"></a>教程：访问 Azure 开发测试实验室中的自定义实验室
-在本教程中，使用[教程：创建自定义实验室](tutorial-create-custom-lab.md)中创建的自定义实验室。
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>教程：访问 Azure 开发测试实验室中的实验室
+本教程使用[教程：在 Azure 开发测试实验室中创建实验室](tutorial-create-custom-lab.md)中创建的实验室。
 
 在本教程中，将执行以下操作：
 
 > [!div class="checklist"]
-> * 认领自定义实验室中的虚拟机 (VM)
+> * 认领实验室中的虚拟机 (VM)
 > * 连接到 VM
 > * 取消认领 VM
 
@@ -70,8 +70,8 @@ ms.locfileid: "34361832"
 1. 取消认领操作完成后，可看到该 VM 位于“可认领虚拟机”列表底部。 
     
 ## <a name="next-steps"></a>后续步骤
-本教程演示了如何访问和使用通过 Azure 开发测试实验室创建的自定义实验室。 有关在自定义实验室中访问和使用 VM 的详细信息，请参阅 
+本教程演示了如何访问和使用通过 Azure 开发测试实验室创建的实验室。 有关在实验室中访问和使用 VM 的详细信息，请参阅 
 
 > [!div class="nextstepaction"]
-> [如何：在自定义实验室中使用 VM](devtest-lab-add-vm.md)
+> [如何：在实验室中使用 VM](devtest-lab-add-vm.md)
 

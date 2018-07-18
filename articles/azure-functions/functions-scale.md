@@ -14,14 +14,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 06/05/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8b6d85fbfdde463352ae80cc8922025a7dcc03f3
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807527"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -43,10 +44,10 @@ ms.lasthandoff: 05/11/2018
 
 ## <a name="consumption-plan"></a>消耗量计划
 
-使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 此计划会自动缩放，仅当函数运行时，才会产生计算资源费用。 对于消耗计划，一个函数最长可运行 10 分钟。 
+使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 此计划会自动缩放，仅当函数运行时，才会产生计算资源费用。 在消费计划中，函数执行在可配置的时间段后超时。 
 
 > [!NOTE]
-> 对于消耗量计划，函数的默认超时时间为 5 分钟。 可通过更改 [host.json](functions-host-json.md#functiontimeout) 项目文件中的属性 `functionTimeout`，将函数应用的该值增加到 10 分钟。
+> 对于消耗量计划，函数的默认超时时间为 5 分钟。 可通过更改 [host.json](functions-host-json.md#functiontimeout) 项目文件中的属性 `functionTimeout`，将函数应用的该值最多增加到最大值 10 分钟。
 
 账单将基于执行数量、执行时间和所用内存。 账单是基于函数应用内的所有函数聚合而生成的。 有关详细信息，请参阅 [Azure Functions 定价页]。
 
@@ -90,7 +91,7 @@ VM 使得成本不再取决于执行数量、执行时间和所用内存。 因�
 
 ## <a name="how-the-consumption-plan-works"></a>如何使用消耗量计划
 
-在消耗计划中，缩放控制器通过根据触发函数的事件数添加额外的 Functions 主机实例来自动缩放 CPU 和内存资源。 Functions 主机的每个实例的上限为 1.5 GB 内存。  主机实例是函数应用，这意味着，函数应用中的所有函数共享某个实例中的资源并同时缩放。
+在消耗计划中，缩放控制器通过根据触发函数的事件数添加额外的 Functions 主机实例来自动缩放 CPU 和内存资源。 Functions 主机的每个实例的上限为 1.5 GB 内存。  主机实例是函数应用，这意味着，函数应用中的所有函数共享某个实例中的资源并同时缩放。 共享同一消耗计划的函数应用单独缩放。  
 
 使用消耗托管计划时，函数代码文件存储在函数的主存储帐户的 Azure 文件共享上。 删除函数应用的主存储帐户时，函数代码文件将被删除并且无法恢复。
 

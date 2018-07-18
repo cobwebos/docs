@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8f0cd8aad2d5c5142fc66c78393b57ff210a7b83
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f6b2be357ad53a1852973d40e221da3d41b09ffb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050567"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
-> 本文适用于 Azure 数据工厂版本 1（即正式版）。 如果使用数据工厂服务版本 2（即预览版），请参阅[数据工厂版本 2 中的自定义活动](../transform-data-using-dotnet-custom-activity.md)。
+> 本文适用于 Azure 数据工厂第 1 版（即正式版）。 如果使用数据工厂服务的当前版本，请参阅[数据工厂中的自定义活动](../transform-data-using-dotnet-custom-activity.md)。
 
 本文介绍示例解决方案的体系结构，该解决方案通过计划的自动方式移动并处理大规模数据集。 它还提供使用数据工厂和 Azure Batch 来实现此解决方案的端到端演练。
 
@@ -78,12 +79,12 @@ ms.lasthandoff: 04/20/2018
 
 * **数据工厂使用 Batch 分配的池运行自定义活动。** 数据工厂可同时运行多个活动。 每个活动处理一个数据切片。 结果存储在存储中。
 
-* **数据工厂将最终结果移动至第三个位置，**通过应用将其分发或使用其他工具进行进一步处理。
+* **数据工厂将最终结果移动至第三个位置，** 通过应用将其分发或使用其他工具进行进一步处理。
 
 ## <a name="implementation-of-the-sample-solution"></a>示例解决方案的实现
 示例解决方案特意是简单的解决方案。 它旨在演示如何结合使用数据工厂和 Batch 来处理数据集。 该解决方案对搜索词“Microsoft”在按时序排列的输入文件中出现的次数计数。 它随后将计数输出到输出文件。
 
-**时间：**如果熟悉 Azure、数据工厂和 Batch 的基础知识，且已完成以下先决条件，则完成此解决方案需要一到两小时。
+**时间：** 如果熟悉 Azure、数据工厂和 Batch 的基础知识，且已完成以下先决条件，则完成此解决方案需要一到两小时。
 
 ### <a name="prerequisites"></a>先决条件
 #### <a name="azure-subscription"></a>Azure 订阅
@@ -577,7 +578,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. 对于 **batchUri** JSON 属性，输入 batch URI。
 
       > [!IMPORTANT]
-      > “Batch 帐户”边栏选项卡中的 URL 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
+      > “Batch 帐户”边栏选项卡中的 URL 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 

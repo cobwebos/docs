@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect 同步：更改 AD DS 帐户密码 | Microsoft Docs"
-description: "本主题文档介绍如何在 AD DS 帐户的密码更改后更新 Azure AD Connect。"
+title: Azure AD Connect 同步：更改 AD DS 帐户密码 | Microsoft Docs
+description: 本主题文档介绍如何在 AD DS 帐户的密码更改后更新 Azure AD Connect。
 services: active-directory
-keywords: "AD DS 帐户, Active Directory 帐户, 密码"
-documentationcenter: 
+keywords: AD DS 帐户, Active Directory 帐户, 密码
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
@@ -14,19 +14,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5bc296b594917f68f35d7d15653b7b0c60cde514
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: a4d0d062b28b03de7f1e606202dddae28bf6a2f3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592453"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码
 AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用户帐户。 如果更改 AD DS 帐户的密码，则必须使用新密码更新 Azure AD Connect Synchronization Service。 否则，Synchronization 不再能正确与本地 Active Directory 同步，且会遇到以下错误：
 
 * 在 Synchronization Service Manager 中，本地 AD 的导入/导出操作失败，出现 **no-start-credentials** 错误。
 
-* 在 Windows 事件查看器下，应用程序事件日志包含一个错误，**事件 ID 为 6000**，消息为**“管理代理‘contoso.com’未能运行，因为凭据无效”**。
+* 在 Windows 事件查看器下，应用程序事件日志包含一个错误，**事件 ID 为 6000**，消息为 **“管理代理‘contoso.com’未能运行，因为凭据无效”**。
 
 
 ## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>如何使用 AD DS 帐户的新密码更新 Synchronization Service

@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: ab07a11883b3462c4b9d0f9adab6c55e4fe49d78
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 887611f1293e276070df51ac06df51a994161ec1
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112180"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure 中的管理解决方案的数据收集详细信息
 本文包括了 Microsoft 提供的[管理解决方案](monitoring-solutions.md)的列表以及指向其详细文档的链接。  它还提供了这些解决方案将数据收集到 Log Analytics 中时采用的方法和频率的相关信息。  可以使用本文中的信息来了解可用的各种解决方案，并了解各种管理解决方案的数据流和连接要求。 
@@ -64,9 +65,6 @@ ms.lasthandoff: 05/10/2018
 | [网络性能监视器](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | 每隔 5 秒钟进行 TCP 握手，每隔 3 分钟发送数据 |
 | [Office 365 分析（预览版）](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |通知时 |
 | **管理解决方案** | 平台 | **Microsoft Monitoring Agent** | **Operations Manager 代理** | **Azure 存储** | **是否需要 Operations Manager？** | **通过管理组发送 Operations Manager 代理数据** | **收集频率** |
-| [安全和审核](../operations-management-suite/oms-security-getting-started.md) (Syslog) | Linux | &#8226; | | |  |  | 到达时 |
-| [安全和审核](../operations-management-suite/oms-security-getting-started.md)（安全事件日志） |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | 到达时 |
-| [安全和审核](../operations-management-suite/oms-security-getting-started.md)（防火墙日志） |Windows |&#8226; |&#8226; |  |  |  |到达时 |
 | [Service Fabric 分析（预览版）](../log-analytics/log-analytics-service-fabric.md) |Windows | | |&#8226; | | |5 分钟 |
 | [服务地图](../operations-management-suite/operations-management-suite-service-map.md) | Windows 和 Linux | &#8226; | &#8226; |  |  |  | 15 秒 |
 | [SQL 评估](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 天 |

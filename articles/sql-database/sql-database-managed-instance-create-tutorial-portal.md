@@ -11,11 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 198a637fcfc2268e393a63b27a153b163dc4331e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850604"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库托管实例
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 05/10/2018
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**地址空间**|任何有效的地址范围，例如 10.14.0.0/24|虚拟网络的地址名称，采用 CIDR 表示法。|
    |**订阅**|你的订阅|有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。|
    |**资源组**|任何有效的资源组（新的或现有的）|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
@@ -103,7 +104,7 @@ ms.lasthandoff: 05/10/2018
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**订阅**|你的订阅|有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。|
    |**资源组**|选择在前述过程中创建的资源组|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**位置**|选择在前面的过程中指定的位置| 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
@@ -161,16 +162,16 @@ ms.lasthandoff: 05/10/2018
 
    ![托管实例“创建”按钮](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
-3. 选择订阅，并验证预览版条款是否显示“已接受”。
+4. 选择订阅，并验证预览版条款是否显示“已接受”。
 
    ![托管实例预览版已接受](./media/sql-database-managed-instance-tutorial/preview-accepted.png)
 
-4. 根据下表中的说明，在托管实例窗体中填充请求的信息：
+5. 根据下表中的说明，在托管实例窗体中填充请求的信息：
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
    |**托管实例名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
-   |**托管实例管理员登录名**|任何有效的用户名|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。| 
+   |**托管实例管理员登录名**|任何有效的用户名|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。| 
    |**密码**|任何有效的密码|密码必须至少 16 个字符，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
    |**资源组**|之前创建的资源组||
    |**位置**|以前选择的位置|有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
@@ -178,17 +179,17 @@ ms.lasthandoff: 05/10/2018
 
    ![托管实例“创建”窗体](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
 
-5. 单击“定价层”，设置计算和存储资源的大小并查看定价层选项。 默认情况下，实例获得 32 GB 的免费存储空间，这对应用程序来说可能不够。
-6. 使用滑块或文本框指定存储量和虚拟核心数。 
-   ![托管实例“创建”窗体](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+6. 单击“定价层”，设置计算和存储资源的大小并查看定价层选项。 默认情况下，实例获得 32 GB 的免费存储空间，这对应用程序来说可能不够。
+7. 使用滑块或文本框指定存储量和虚拟核心数。 
+   ![托管实例定价层](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
 
-7. 完成后单击“应用”，保存选择的内容。  
-8. 单击“创建”，部署托管实例。
-9. 单击“通知”图标，查看部署的状态。
+8. 完成后单击“应用”，保存选择的内容。  
+9. 单击“创建”，部署托管实例。
+10. 单击“通知”图标，查看部署的状态。
  
    ![部署进度](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
 
-9. 单击“正在进行的部署”以打开“托管实例”窗口，进一步监视部署进度。
+11. 单击“正在进行的部署”以打开“托管实例”窗口，进一步监视部署进度。
  
    ![部署进度 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
@@ -213,7 +214,7 @@ ms.lasthandoff: 05/10/2018
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**地址范围(CIDR 块)**|VNet 中任何有效的地址范围（使用默认值）||
    |**网络安全组**|无||
    |**路由表**|无||
@@ -236,7 +237,7 @@ ms.lasthandoff: 05/10/2018
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   |**Name**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+   |**名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    | **VM 磁盘类型**|SSD|SSD 的性价比最佳。|   
    |**用户名**|任何有效的用户名|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。| 
    |**密码**|任何有效的密码|密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。| 
@@ -248,18 +249,18 @@ ms.lasthandoff: 05/10/2018
 
    ![虚拟机“创建”窗体](./media/sql-database-managed-instance-tutorial/virtual-machine-create-form.png)
 
-3. 单击“确定”。
-4. 为 VM 选择大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 本教程只需小型虚拟机。
+4. 单击“确定”。
+5. 为 VM 选择大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 本教程只需小型虚拟机。
 
     ![VM 大小](./media/sql-database-managed-instance-tutorial/virtual-machine-size.png)  
 
-5. 单击“选择”。
-6. 在“设置”窗体中单击“子网”，然后选择“vm_subnet”。 请勿选择在其中预配了托管实例的子网，而应选择同一 Vnet 中的另一子网。
+6. 单击“选择”。
+7. 在“设置”窗体中单击“子网”，然后选择“vm_subnet”。 请勿选择在其中预配了托管实例的子网，而应选择同一 Vnet 中的另一子网。
 
     ![VM 设置](./media/sql-database-managed-instance-tutorial/virtual-machine-settings.png)  
 
-7. 单击“确定”。
-8. 在摘要页上查看产品/服务详细信息，然后单击“创建”，开始虚拟机部署。
+8. 单击“确定”。
+9. 在摘要页上查看产品/服务详细信息，然后单击“创建”，开始虚拟机部署。
  
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 

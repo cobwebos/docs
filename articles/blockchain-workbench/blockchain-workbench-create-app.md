@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e4e2866e18c508c0df7a9a9e85a22c98e4372661
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: a4b704f433f02afcff7b94f98c19a478caaa02b2
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302147"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808054"
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中创建区块链应用程序
 
@@ -238,7 +238,7 @@ Solidity 中的智能合同类似于面向对象的语言中的类。 每个合�
 
 ### <a name="base-class"></a>基类
 
-Blockchain Workbench 可以使用 **WorkbenchBase** 基类来创建和更新合同。 Blockchain Workbench 特定的智能合同代码需要该基类。 合同需继承自 **WorkbenchBase** 基类。
+Blockchain Workbench 可以使用 WorkbenchBase 基类来创建和更新合同。 Blockchain Workbench 特定的智能合同代码需要该基类。 合同需继承自 **WorkbenchBase** 基类。
 
 在 `HelloBlockchain.sol` 智能合同代码文件的开头添加 **WorkbenchBase** 类。 
 
@@ -375,7 +375,7 @@ contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') 
 若要将区块链应用程序添加到 Blockchain Workbench，请上传配置和智能合同文件以定义应用程序。
 
 1. 在 Web 浏览器中，导航到 Blockchain Workbench 的 Web 地址。 例如 `https://{workbench URL}.azurewebsites.net/`。该 Web 应用程序是部署 Blockchain Workbench 时创建的。 有关如何查找 Blockchain Workbench Web 地址的信息，请参阅 [Blockchain Workbench Web URL](blockchain-workbench-deploy.md#blockchain-workbench-web-url)
-2. 以 Blockchain Workbench 管理员身份登录。 有关管理用户的详细信息，请参阅[在 Azure Blockchain Workbench 中管理用户](blockchain-workbench-manage-users.md)。
+2. 以 [Blockchain Workbench 管理员](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators)身份登录。
 3. 选择“应用程序” > “新建”。 此时会显示“新建应用程序”窗格。
 4. 选择“上传合同配置” > “浏览”，找到创建的 **HelloBlockchain.json** 配置文件。 系统会自动验证该配置文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
 5. 选择“上传合同代码” > “浏览”，找到 **HelloBlockchain.sol** 智能合同代码文件。 系统会自动验证该代码文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。

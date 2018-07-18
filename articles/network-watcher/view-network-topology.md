@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 6ef165ddc481bf84c6189635e36b97eb9518261e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 1725a3d6a4eb82ca57078f648efa14866d2fe390
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077802"
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35768000"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
 
@@ -37,10 +37,12 @@ ms.locfileid: "34077802"
 
     ![查看拓扑](./media/view-network-topology/view-topology.png)
 
-    如上图所示，此虚拟网络包含三个子网。 一个子网中部署了一个 VM。 该 VM 有一个附加的网络接口和一个关联的公共 IP 地址。 另外两个子网有一个关联的路由表。 每个路由表包含两个路由。 一个子网有一个关联的网络安全组。 仅为符合以下条件的资源显示拓扑信息：- 与 *myVnet* 虚拟网络位于同一资源组和区域中。 例如，不会显示 *MyResourceGroup* 之外的资源组中存在的网络安全组，即使该网络安全组与 *MyVnet* 虚拟网络中的子网相关联。
-        - 位于 *myVnet* 虚拟网络中，或与其中的资源相关联。 例如，不会显示与 *myVnet* 虚拟网络中的子网或网络接口不相关联的网络安全组，即使该网络安全组位于 *MyResourceGroup* 资源组中。
+    如上图所示，此虚拟网络包含三个子网。 一个子网中部署了一个 VM。 该 VM 有一个附加的网络接口和一个关联的公共 IP 地址。 另外两个子网有一个关联的路由表。 每个路由表包含两个路由。 一个子网有一个关联的网络安全组。 只会显示以下资源的拓扑信息：
+    
+    - 位于 *myVnet* 虚拟网络所在资源组和区域内的资源。 例如，不会显示 *MyResourceGroup* 之外的资源组中存在的网络安全组，即使该网络安全组与 *MyVnet* 虚拟网络中的子网相关联。
+    - 位于 *myVnet* 虚拟网络中或与其中的资源相关联的资源。 例如，不会显示与 *myVnet* 虚拟网络中的子网或网络接口不相关联的网络安全组，即使该网络安全组位于 *MyResourceGroup* 资源组中。
 
-    图中显示的拓扑对应的虚拟网络是在部署 **“通过网络虚拟设备路由流量”脚本示例**后创建的，该示例可以通过 [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 部署。
+  图中显示的拓扑对应的虚拟网络是在部署 **“通过网络虚拟设备路由流量”脚本示例**后创建的，该示例可以通过 [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 部署。
 
 6. 选择“下载拓扑”，以 svg 格式将映像下载为可编辑文件。
 

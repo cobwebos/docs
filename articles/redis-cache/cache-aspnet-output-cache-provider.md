@@ -1,6 +1,6 @@
 ---
-title: "缓存 ASP.NET 输出缓存提供程序"
-description: "了解如何使用 Azure Redis 缓存来缓存 ASP.NET 页面输出"
+title: 缓存 ASP.NET 输出缓存提供程序
+description: 了解如何使用 Azure Redis 缓存来缓存 ASP.NET 页面输出
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909816"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Azure Redis 缓存的 ASP.NET 输出缓存提供程序
 Redis 输出缓存提供程序是用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。

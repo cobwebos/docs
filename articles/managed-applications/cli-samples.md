@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 示例 - Azure 托管应用程序 | Microsoft Docs"
-description: "Azure CLI 示例 - Azure 托管应用程序"
+title: Azure CLI 示例 - Azure 托管应用程序 | Microsoft Docs
+description: Azure CLI 示例 - Azure 托管应用程序
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23632548"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 

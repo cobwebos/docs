@@ -1,11 +1,11 @@
 ---
-title: "Azure 中国世纪互联文档 - 教程和 API 参考 | Microsoft Docs"
-description: "世纪互联运营的 Microsoft Azure（Azure 中国世纪互联，也称为 Mooncake），是由中国境内的数据受托人运营的云平台，包含不断增长的云服务集合，开发人员和 IT 专业人员可使用这些服务来构建、部署和管理应用程序。 Azure 中国世纪互联是一个主权云 — 即，位于中国大陆的云服务的物理独立实例，其运营和交易由上海蓝云网络科技有限公司（即“世纪互联”）独立进行。"
+title: Azure 中国世纪互联文档 - 教程和 API 参考 | Microsoft Docs
+description: 世纪互联运营的 Microsoft Azure（Azure 中国世纪互联，也称为 Mooncake），是由中国境内的数据受托人运营的云平台，包含不断增长的云服务集合，开发人员和 IT 专业人员可使用这些服务来构建、部署和管理应用程序。 Azure 中国世纪互联是一个主权云 — 即，位于中国大陆的云服务的物理独立实例，其运营和交易由上海蓝云网络科技有限公司（即“世纪互联”）独立进行。
 services: china
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: china
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26408103"
 ---
 # <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 

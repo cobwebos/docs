@@ -19,6 +19,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34075759"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>管理密钥保管库中使用 PowerShell 的 Azure 堆栈
 

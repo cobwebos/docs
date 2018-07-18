@@ -31,6 +31,9 @@
       href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
     - name: 连接到数据源
       href: databricks-connect-to-data-sources.md
+    - name: 与 Azure 数据工厂配合使用
+      href: ../data-factory/transform-data-using-databricks-notebook.md
+      maintainContext: true
     - name: 使用 Excel、R 和 Python 连接
       href: connect-databricks-excel-python-r.md
     - name: 从 Azure Cloud Shell 中使用 Databricks CLI

@@ -1,11 +1,11 @@
 ---
-title: "停用和删除 Microsoft Azure StorSimple 虚拟阵列 | Microsoft 文档"
-description: "介绍了如何使用该服务通过先停用再删除 StorSimple 设备的方式来删除该设备。"
+title: 停用和删除 Microsoft Azure StorSimple 虚拟阵列 | Microsoft 文档
+description: 介绍了如何使用该服务通过先停用再删除 StorSimple 设备的方式来删除该设备。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a929f5bc-03e2-4b01-b925-973db236f19f
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109875"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>停用和删除 StorSimple Virtual Array
 

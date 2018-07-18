@@ -20,6 +20,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33776971"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>如何：发送预定通知
 ## <a name="overview"></a>概述

@@ -1,11 +1,11 @@
 ---
-title: "流量管理器终结点类型 | Microsoft 文档"
-description: "本文介绍可以通过 Azure 流量管理器来使用的不同类型的终结点"
+title: 流量管理器终结点类型 | Microsoft 文档
+description: 本文介绍可以通过 Azure 流量管理器来使用的不同类型的终结点
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4e506986-f78d-41d1-becf-56c8516e4d21
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23112685"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
 使用 Microsoft Azure 流量管理器可以控制如何将网络流量分布到在不同数据中心运行的应用程序部署。 需要在流量管理器中将每个应用程序部署配置为一个“终结点”。 当流量管理器收到 DNS 请求时，将选择要在 DNS 响应中返回的可用终结点。 流量管理器根据当前终结点状态和流量路由方法做出这种选择。 相关详细信息，请参阅[流量管理器工作原理](traffic-manager-how-traffic-manager-works.md)。

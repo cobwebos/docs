@@ -1,9 +1,9 @@
 ---
-title: "组策略和 MDM 设置 | Microsoft Docs"
-description: "提供有关在公司自有设备上使用的组策略和移动设备管理 (MDM) 设置的信息。 这些策略适用于用户的整个设备。"
+title: 组策略和 MDM 设置 | Microsoft Docs
+description: 提供有关在公司自有设备上使用的组策略和移动设备管理 (MDM) 设置的信息。 这些策略适用于用户的整个设备。
 services: active-directory
-keywords: "企业状态漫游的组策略和 MDM 设置, 企业状态漫游, Windows 云"
-documentationcenter: 
+keywords: 企业状态漫游的组策略和 MDM 设置, 企业状态漫游, Windows 云
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614903"
 ---
 # <a name="group-policy-and-mdm-settings"></a>组策略和 MDM 设置
 仅在公司自有设备上使用这些组策略和移动设备管理 (MDM) 设置，因为这些策略将应用于用户的整个设备。 应用 MDM 策略禁用个人设备和用户自有设备的设置同步，这会对该设备的使用产生负面影响。 此外，设备上的其他用户帐户也将受到该策略的影响。

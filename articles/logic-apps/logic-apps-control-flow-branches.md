@@ -1,29 +1,25 @@
 ---
-title: "并行分支 - Azure 逻辑应用 | Microsoft Docs"
-description: "在逻辑应用中创建或联接平行分支"
+title: 创建或联接并行分支 - Azure 逻辑应用 | Microsoft Docs
+description: 如何创建或联接 Azure 逻辑应用中的工作流的并行分支
 services: logic-apps
-keywords: "分支, 并行处理"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 9a836b707a576b9a938f43397ef35c00aeb476bf
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 2a8dcd82b67ee64e5687d8687415056b0aab39aa
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298849"
 ---
-# <a name="create-or-join-parallel-branches-in-your-logic-app"></a>在逻辑应用中创建或联接平行分支
+# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>创建或联接 Azure 逻辑应用中的工作流的并行分支
 
-默认情况下，按顺序运行逻辑应用中的操作。 若要同时执行独立操作，可以创建[并行分支](#parallel-branches)，然后在流中[联接这些分支](#join-branches)。 
+默认情况下，逻辑应用工作流中的操作按顺序运行。 若要同时执行独立操作，可以创建[并行分支](#parallel-branches)，然后在流中[联接这些分支](#join-branches)。 
 
 > [!TIP] 
 > 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用 [**SplitOn** 触发器属性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)“分离”该数组。
@@ -175,7 +171,7 @@ ms.lasthandoff: 03/05/2018
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能和建议或为功能和建议投票，请访问 [Azure 逻辑应用用户反馈站点](http://aka.ms/logicapps-wish)。
+* 若要提交功能和建议或者为其投票，请访问 [Azure 逻辑应用用户反馈站点](http://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

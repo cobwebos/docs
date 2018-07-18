@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: de8b354cf0199d36d5e0b1410a9f79d4a9e3e05c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: efd8e93f32020d1ef3695e7fc6b9907374275848
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359775"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608383"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
 
@@ -55,6 +55,9 @@ ms.locfileid: "34359775"
 
 打开浏览器并导航到 [Azure 门户](https://portal.azure.com)。
 
+### <a name="dynamic-site-acceleration-optimization"></a>动态站点加速优化
+如果想要针对动态站点加速 (DSA) 优化 CDN 终结点，则应使用 [CDN 门户](cdn-create-new-endpoint.md)创建配置文件和终结点。 通过 [DSA 优化](cdn-dynamic-site-acceleration.md)，显著改进了包含动态内容的网页性能。 有关如何从 CDN 门户针对 DSA 优化 CDN 终结点的说明，请参阅[用于加速传送动态文件的 CDN 终结点配置](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files)。 否则，如果不想优化新的终结点，则可以按照下一节中的步骤使用 Web 应用门户来创建它。 请注意，对于“来自 Verizon 的 Azure CDN”配置文件，无法在创建 CDN 终结点后更改其优化设置。
+
 ## <a name="create-a-cdn-profile-and-endpoint"></a>创建 CDN 配置文件和终结点
 
 在左侧导航窗格中，选择“应用服务”，并选择在[静态 HTML 快速入门](../app-service/app-service-web-get-started-html.md)中创建的应用。
@@ -64,9 +67,6 @@ ms.locfileid: "34359775"
 在“应用服务”页的“设置”部分，选择“网络”>“为应用配置 Azure CDN”。
 
 ![在门户中选择 CDN](media/cdn-add-to-web-app/portal-select-cdn.png)
-
-### <a name="dynamic-site-acceleration-optimization"></a>动态站点加速优化
-如果想要针对动态站点加速 (DSA) 优化 CDN 终结点，请使用 CDN 门户直接创建终结点。 通过 [DSA 优化](cdn-dynamic-site-acceleration.md)，显著改进了包含动态内容的网页性能。 有关从 CDN 门户针对 DSA 优化 CDN 终结点的详细信息，请参阅[用于加速传送动态文件的 CDN 终结点配置](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files)。 对于“Verizon 的 Azure CDN”配置文件，无法在创建 CDN 终结点后更改其优化设置。
 
 在“Azure 内容分发网络”页中，按表中的指定提供“新建终结点”设置。
 
@@ -87,7 +87,7 @@ Azure 将创建配置文件和终结点。 新的终结点显示在“终结点�
 ### <a name="test-the-cdn-endpoint"></a>测试 CDN 终结点
 
  终结点不会立即可供使用，因为注册传播需花时间： 
-   - 对于 Microsoft 的 Azure CDN 标准版配置文件，传播通常可在 10 分钟内完成。 
+   - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
    - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
    - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成。 
 

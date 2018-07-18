@@ -1,11 +1,11 @@
 ---
-title: "混合连接概述 | Microsoft Docs"
-description: "了解混合连接、安全、TCP 端口和受支持的配置。 MABS，WABS。"
+title: 混合连接概述 | Microsoft Docs
+description: 了解混合连接、安全、TCP 端口和受支持的配置。 MABS，WABS。
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 216e4927-6863-46e7-aa7c-77fec575c8a6
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26629680"
 ---
 # <a name="hybrid-connections-overview"></a>混合连接概述
 

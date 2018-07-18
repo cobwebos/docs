@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: f121a1f95eed04bf8086c03a5d4406c092dc9445
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ea6ffa9d07be719c43ca33cfca76876c161d69bc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048465"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
@@ -60,7 +61,7 @@ HDInsight 提供可从大量结构化、非结构化和快速移动的数据中�
 HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 * [机器学习和 Spark](#machine-learning-and-spark)
-* [R 和 R Server](#r-and-r-server)
+* [R 和 ML Services](#r-and-r-server)
 * [Azure 机器学习和 Hive](#azure-machine-learning-and-hive)
 * [Spark 和深度学习](#spark-and-deep-learning)
 
@@ -74,9 +75,9 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 * [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) - SparkML 是一个较新的包，提供构建在 Spark DataFrames 基础之上的高级 API 用于构造机器学习管道。
 * [**MMLSpark**](https://github.com/Azure/mmlspark) - 适用于 Apache Spark 的 Microsoft 机器学习库 (MMLSpark) 旨在提升数据科学家在 Spark 上的生产力，它不仅可以提高试验成功率，而且还能利用前沿的机器学习技术，包括深度学习。 MMLSpark 库简化了在 PySpark 中构建模型的常见建模任务。 
 
-### <a name="r-and-r-server"></a>R 和 R Server
+### <a name="r-and-ml-services"></a>R 和 ML Services
 
-可以使用 HDInsight 随附的 [R Server](../r-server/r-server-overview.md) 创建随时可与大型数据集和模型配合使用的 HDInsight 群集。 这项新功能为数据科学家和统计学家提供了通过 HDInsight 可按需缩放的熟悉 R 界面，并消除了群集设置和维护方面的开销。
+可以使用 HDInsight 随附的 [ML Services](../r-server/r-server-overview.md) 创建随时可与大型数据集和模型配合使用的 HDInsight 群集。 这项新功能为数据科学家和统计学家提供了通过 HDInsight 可按需缩放的熟悉 R 界面，并消除了群集设置和维护方面的开销。
 
 ### <a name="azure-machine-learning-and-hive"></a>Azure 机器学习和 Hive
 

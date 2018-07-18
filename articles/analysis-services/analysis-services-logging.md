@@ -3,16 +3,17 @@ title: Azure Analysis Services 诊断日志记录 | Microsoft Docs
 description: 了解如何设置 Azure Analysis Services 诊断日志记录。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 396ee2fc132abb5fbfd29bf5fffe9b1388b9a964
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d19e45710aca3e1e18be6c4529da6474a97bc59f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448796"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
@@ -56,7 +57,6 @@ ms.lasthandoff: 04/19/2018
 
 |操作名称  |发生条件  |
 |---------|---------|
-|CreateGateway     |   用户在服务器上配置网关      |
 |ResumeServer     |    恢复服务器     |
 |SuspendServer    |   暂停服务器      |
 |DeleteServer     |    删除服务器     |
@@ -294,7 +294,7 @@ Tags                        :
 
 此输出确认已为服务器启用日志记录，会将信息保存到存储帐户。
 
-还可为日志设置保留策略，以便自动删除较旧的日志。 例如，使用 **-RetentionEnabled** 标志将保留期策略设置为**$true**，并将 **-RetentionInDays** 参数设置为 **90**。 将自动删除超过 90 天的日志。
+还可为日志设置保留策略，以便自动删除较旧的日志。 例如，使用 **-RetentionEnabled** 标志将保留期策略设置为 **$true**，并将 **-RetentionInDays** 参数设置为 **90**。 将自动删除超过 90 天的日志。
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`

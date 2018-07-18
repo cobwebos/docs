@@ -1,23 +1,24 @@
 ---
 title: 使用 Azure Stack API | Microsoft Docs
-description: 了解如何从 Azure 将 API 请求发送到 Azure 堆栈中检索身份验证。
+description: 了解如何从 Azure 检索身份验证令牌，以向 Azure Stack 发出 API 请求。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: cblackuk
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 07/02/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: e8a9489a3f487a45303bac45f805381b41427b4b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3b89564bf17a9884640b51faa1c3966dce93f89a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346784"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -25,19 +26,19 @@ ms.lasthandoff: 05/20/2018
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 堆栈应用程序编程接口 (API) 可以用于自动执行操作，如联合应用商店项。
+应用程序编程接口 (API) 可用于自动执行将 VM 添加到你的 Azure Stack 云等操作。
 
-此 API 要求您的客户端对 Microsoft Azure 登录终结点进行身份验证。 终结点会返回用于在每个请求发送到 Azure 堆栈 API 的标头中使用的令牌。 Microsoft Azure 使用 Oauth 2.0。
+此 API 要求您向 Microsoft Azure 登录终结点进行身份验证的客户端。 该终结点返回一个要在发送到 Azure Stack API 的每个请求的标头中使用的令牌。 Microsoft Azure 使用 Oauth 2.0。
 
-本文提供了使用的示例**cURL**实用程序来创建 Azure 堆栈请求。 应用程序，cURL，是具有用于将数据传输的库的命令行工具。 这些示例演练中检索令牌以访问 Azure 堆栈 API 的过程。 大多数编程语言提供具有可靠令牌的管理和句柄任务此类刷新令牌的 Oauth 2.0 库。
+本文提供了使用 **cURL** 实用工具创建 Azure Stack 请求的示例。 应用程序 cURL 是一个命令行工具，它有一个用于传输数据的库。 这些示例演练了检索令牌来访问 Azure Stack API 的过程。 大多数编程语言都提供了 Oauth 2.0 库，这些库提供可靠的令牌管理，并可以处理刷新令牌等任务。
 
-查看 Azure 堆栈 REST API 使用通过泛型 REST 客户端，如的整个过程**cURL**，来帮助你了解基础请求，并演示你可能需要的接收响应有效负载中。
+查看配合常规 REST 客户端（例如 **cURL**）使用 Azure Stack REST API 的整个过程有助于了解基础请求，该过程还显示了应可以在响应有效负载中收到的内容。
 
-本文不了解可用于检索标记例如交互式登录或创建专用应用程序 Id 的所有选项。 若要获取有关这些主题的信息，请参阅[Azure REST API 参考](https://docs.microsoft.com/rest/api/)。
+另外，本文并未探究可用于检索令牌的所有选项，例如交互式登录或创建专用应用 ID。 若要获取有关这些主题的信息，请参阅 [Azure REST API 参考](https://docs.microsoft.com/rest/api/)。
 
 ## <a name="get-a-token-from-azure"></a>从 Azure 获取令牌
 
-创建请求正文使用格式设置内容类型 x-响应客户-窗体-urlencoded 以获取访问令牌。 使用 POST 将请求发布到 Azure REST 身份验证和登录终结点。
+创建请求正文并使用内容类型 x-www-form-urlencoded 设置其格式，以获取访问令牌。 使用 POST 将请求发布到 Azure REST 身份验证和登录终结点。
 
 ### <a name="uri"></a>URI
 
@@ -47,9 +48,9 @@ POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 
 **租户 ID** 为下列其中一项：
 
- - 你的租户域，如 `fabrikam.onmicrosoft.com`
- - 你的租户 ID 如 `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
- - 独立于租户的密钥的默认值： `common`
+ - 租户域，例如 `fabrikam.onmicrosoft.com`
+ - 租户 ID，例如 `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
+ - 租户独立密钥的默认值：`common`
 
 ### <a name="post-body"></a>POST 正文
 
@@ -65,20 +66,20 @@ grant_type=password
 对于每个值：
 
  - **grant_type**  
-    要使用的身份验证方案类型。 在此示例中，值 `password`
+    要使用的身份验证方案类型。 在此示例中，值为 `password`
 
  - **resource**  
     令牌访问的资源。 可以通过查询 Azure Stack 管理元数据终结点找到该资源。 请查看 **audiences** 部分
 
- - **Azure 堆栈管理终结点**  
+ - **Azure Stack 管理终结点**  
     ```
     https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
     ```
 
   > [!NOTE]  
-  > 如果你是管理员尝试访问租户 API 然后你必须确保使用租户终结点，例如： `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
+  > 如果你是尝试访问租户 API 的管理员，请务必使用租户终结点，例如：`https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
-  例如，使用 Azure 堆栈开发工具包为终结点：
+  例如，使用 Azure Stack 开发工具包作为终结点：
 
     ```bash
     curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
@@ -125,7 +126,7 @@ grant_type=password
 
   **username**
 
-  例如，Azure 堆栈 AAD 帐户：
+  例如 Azure Stack AAD 帐户：
 
   ```
   azurestackadmin@fabrikam.onmicrosoft.com
@@ -166,7 +167,7 @@ curl -X "POST" "https://login.windows.net/fabrikam.onmicrosoft.com/oauth2/token"
 
 ## <a name="api-queries"></a>API 查询
 
-你的访问令牌后，你需要将其作为标头添加到每个 API 请求。 为此，需要创建值为 `Bearer <access token>` 的标头**授权**。 例如：
+获取访问令牌后，需将其作为标头添加到每个 API 请求。 为此，需要创建值为 `Bearer <access token>` 的标头**授权**。 例如：
 
 请求：
 

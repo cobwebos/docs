@@ -7,18 +7,20 @@ author: eringreenlee
 manager: ''
 editor: ''
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 7cd16d64d18b4cdcb710f68c55a8251904acda86
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 716be5b7f35ad1d163e99e92ec65dc906743803c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219190"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>排查托管域中无效的服务主体配置
 
@@ -26,7 +28,7 @@ ms.lasthandoff: 03/30/2018
 
 ## <a name="alert-aadds102-service-principal-not-found"></a>警报 AADDS102：找不到服务主体
 
-**警报消息：**已从 Azure AD 目录中删除 Azure AD 域服务正常运行所需的服务主体。*此配置影响 Microsoft 监视、管理、修补和同步托管域的功能。
+**警报消息：** 已从 Azure AD 目录中删除 Azure AD 域服务正常运行所需的服务主体。* 此配置影响 Microsoft 监视、管理、修补和同步托管域的功能。
 
 [服务主体](../active-directory/develop/active-directory-application-objects.md)是指 Microsoft 用于管理、更新和维护托管域的应用程序。 如果删除服务主体，将中断 Microsoft 为域提供服务的功能。
 
@@ -48,7 +50,7 @@ ms.lasthandoff: 03/30/2018
 ## <a name="recreate-a-missing-service-principal-with-powershell"></a>使用 PowerShell 重新创建缺失的服务主体
 如果 Azure AD 目录中缺少 ID 为 ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` 的服务主体，请按照以下步骤操作。
 
-**解决方法：**需使用 Azure AD PowerShell 完成以下步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
+**解决方法：** 需使用 Azure AD PowerShell 完成以下步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
 
 若要解决此问题，在 PowerShell 窗口中键入以下命令：
 1. 安装 Azure AD PowerShell 模块并将其导入。
@@ -76,7 +78,7 @@ ms.lasthandoff: 03/30/2018
 ## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>使用 Azure 门户重新注册到 Microsoft.AAD 命名空间
 如果 Azure AD 目录中缺少 ID 为 ```443155a6-77f3-45e3-882b-22b3a8d431fb``` 或 ```abba844e-bc0e-44b0-947a-dc74e5d09022``` 的服务主体，请按照以下步骤操作。
 
-**解决方法：**请使用以下步骤还原目录上的域服务：
+**解决方法：** 请使用以下步骤还原目录上的域服务：
 
 1. 导航到 Azure 门户中的[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)页。
 2. 从与托管域相关联的表中选择订阅
@@ -88,15 +90,15 @@ ms.lasthandoff: 03/30/2018
 ## <a name="service-principals-that-self-correct"></a>自动更正的服务主体
 如果 Azure AD 目录中缺少 ID 为 ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` 的服务主体，请按照以下步骤操作。
 
-**解决方法：**如果此特定服务主体缺失、配置错误或已被删除，Azure AD 域服务可检测出来。 该服务会自动重新创建此服务主体。 但是，将需要删除应用程序和使用已删除应用程序的对象，因为当证书滚动更新时，新的服务主体将不再能够修改该应用程序和对象。 这将导致在域上出现新错误。 请按照 [AADDS105 部分](#alert-aadds105-password-synchronization-application-is-out-of-date)中所述的步骤来防止出现此问题。 然后，请在两小时后检查托管域的运行状况，确保已重新创建新服务主体。
+**解决方法：** 如果此特定服务主体缺失、配置错误或已被删除，Azure AD 域服务可检测出来。 该服务会自动重新创建此服务主体。 但是，将需要删除应用程序和使用已删除应用程序的对象，因为当证书滚动更新时，新的服务主体将不再能够修改该应用程序和对象。 这将导致在域上出现新错误。 请按照 [AADDS105 部分](#alert-aadds105-password-synchronization-application-is-out-of-date)中所述的步骤来防止出现此问题。 然后，请在两小时后检查托管域的运行状况，确保已重新创建新服务主体。
 
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>警报 AADDS105：密码同步应用程序已过期
 
-**警报消息：**应用程序 ID 为“d87dcbc6-a371-462e-88e3-28ad15ec4e64”的服务主体已删除并重新创建。 重新创建会导致在为托管域提供服务所需的 Azure AD 域服务资源上出现不一致的权限。 托管域上的密码同步可能会受影响。
+**警报消息：** 应用程序 ID 为“d87dcbc6-a371-462e-88e3-28ad15ec4e64”的服务主体已删除并重新创建。 重新创建会导致在为托管域提供服务所需的 Azure AD 域服务资源上出现不一致的权限。 托管域上的密码同步可能会受影响。
 
 
-**解决方法：**需使用 Azure AD PowerShell 完成以下步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
+**解决方法：** 需使用 Azure AD PowerShell 完成以下步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
 
 若要解决此问题，在 PowerShell 窗口中键入以下命令：
 1. 安装 Azure AD PowerShell 模块并将其导入。

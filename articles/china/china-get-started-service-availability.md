@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: 661ef414784ad7593f616ea1a06a6af29e2aadc2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: dc81d25bfc21e7c9c15bb6556410945e27486458
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940164"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757477"
 ---
 # <a name="azure-service-availability-in-china"></a>在中国可用的 Azure 服务
 
@@ -38,7 +38,7 @@ ms.locfileid: "33940164"
 | Azure 云服务       | GA                                                                                                                                                                                 | GA                                                                                                                           |
 | Azure 批处理                | GA                                                                                                                                                                                 | GA                                                                                                                           |
 | Azure Service Fabric       | GA                                                                                                                                              | GA                                                                                      |
-| Azure Functions            | GA                                                                                                                                                                                 | *不可用*                                                                                                              |
+| Azure Functions            | GA                                                                                                                                                                                 | GA                                                                                                              |
 | Azure Kubernetes 服务 (AKS)    | GA                                                                                                                                                                                 | *不可用*                                                                                                              |
 | Azure 容器注册表   | GA                                                                                                                                                                                 | *不可用*                                                                                                              |
 | Azure 容器实例  | 预览                                                                                                                                                                            | *不可用*                                                                                                              |
@@ -161,7 +161,7 @@ ms.locfileid: "33940164"
 |------------------------|----------------------------------------------|--------------------------|
 | Azure 门户           | GA                                           | GA                       |
 | Azure 资源管理器 | GA                                           | GA                       |
-| Marketplace            | GA                                           | GA                  |
+| 市场            | GA                                           | GA                  |
 | 计划程序              | GA                        | GA    |
 | 自动化             | GA | GA               |
 | Log Analytics          | GA                              | *不可用*          |

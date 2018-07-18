@@ -1,12 +1,12 @@
 ---
-title: "通过门户启用 Azure 事件中心捕获 | Microsoft Docs"
-description: "通过 Azure 门户启用事件中心捕获功能。"
+title: 通过门户启用 Azure 事件中心捕获 | Microsoft Docs
+description: 通过 Azure 门户启用事件中心捕获功能。
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855005"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>通过 Azure 门户启用事件中心捕获
 

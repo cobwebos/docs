@@ -1,11 +1,11 @@
 ---
-title: "逻辑应用连接器概述 | Microsoft Docs"
-description: "可在逻辑应用中使用的连接器概述"
-services: 
-documentationcenter: 
+title: 逻辑应用连接器概述 | Microsoft Docs
+description: 可在逻辑应用中使用的连接器概述
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: ca8dab2e-9b69-4b1e-865d-1facd9f0cdac
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27961646"
 ---
 # <a name="using-connectors-in-a-logic-app"></a>在逻辑应用中使用连接器
 连接器提供对服务、协议和平台上的事件、数据和操作的快速访问。  逻辑应用支持的连接器完整列表可[在此处找到](apis-list.md)。  连接器可在逻辑应用中用作触发器或操作，并且可能需要使用已配置的*连接*（例如：授权 Twitter 帐户代表你进行访问或发布）。

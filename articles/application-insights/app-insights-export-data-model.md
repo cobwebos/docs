@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights 数据模型 | Microsoft Docs"
-description: "介绍在 JSON 中通过连续导出导出的、用作筛选器的属性。"
+title: Azure Application Insights 数据模型 | Microsoft Docs
+description: 介绍在 JSON 中通过连续导出导出的、用作筛选器的属性。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: mbullwin
-ms.openlocfilehash: 86aef6ba93224bbbb41bc7e651aaeec394fd8718
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ee6597b78ac8de8fc3a7f3796010f22919243b23
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294888"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
 此表列出了从 [Application Insights](app-insights-overview.md) SDK 发送到门户的遥测属性。
@@ -114,7 +115,7 @@ ms.lasthandoff: 11/01/2017
 ## <a name="context"></a>上下文
 所有类型的遥测随附上下文部分。 并非所有字段都连同每个数据点传输。
 
-| 路径 | 类型 | 说明 |
+| 路径 | Type | 说明 |
 | --- | --- | --- |
 | context.custom.dimensions [0] |object [ ] |自定义属性参数设置的键-值字符串对。 键的最大长度为 100，值的最大长度为 1024。 如果唯一值超过 100 个，属性可搜索，但不可用于分段。 每个 ikey 最多有 200 个键。 |
 | context.custom.metrics [0] |object [ ] |自定义测量参数和 TrackMetrics 设置的键-值对。 键的最大长度为 100，值可以是数字。 |
@@ -151,12 +152,12 @@ ms.lasthandoff: 11/01/2017
 | context.user.authAcquisitionDate |字符串 |[经过身份验证的用户](app-insights-api-custom-events-metrics.md#authenticated-users) |
 | context.user.isAuthenticated |布尔值 | |
 | internal.data.documentVersion |字符串 | |
-| internal.data.id |字符串 | |
+| internal.data.id |字符串 | 将项引入到 Application Insights 时分配的唯一 ID |
 
-## <a name="events"></a>事件
+## <a name="events"></a>活动
 [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) 生成的自定义事件。
 
-| 路径 | 类型 | 说明 |
+| 路径 | Type | 说明 |
 | --- | --- | --- |
 | event [0] count |integer |100/([采样](app-insights-sampling.md)率)。 例如 4 =&gt; 25%。 |
 | event [0] name |字符串 |事件名称。  最大长度为 250。 |
@@ -164,10 +165,10 @@ ms.lasthandoff: 11/01/2017
 | event [0] urlData.base |字符串 | |
 | event [0] urlData.host |字符串 | |
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 报告服务器和浏览器中发生的[异常](app-insights-asp-net-exceptions.md)。
 
-| 路径 | 类型 | 说明 |
+| 路径 | Type | 说明 |
 | --- | --- | --- |
 | basicException [0] assembly |字符串 | |
 | basicException [0] count |integer |100/([采样](app-insights-sampling.md)率)。 例如 4 =&gt; 25%。 |
@@ -196,7 +197,7 @@ ms.lasthandoff: 11/01/2017
 ## <a name="trace-messages"></a>跟踪消息
 由 [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace) 和[日志记录适配器](app-insights-asp-net-trace-logs.md)发送。
 
-| 路径 | 类型 | 说明 |
+| 路径 | Type | 说明 |
 | --- | --- | --- |
 | message [0] loggerName |字符串 | |
 | message [0] parameters |字符串 | |
@@ -206,7 +207,7 @@ ms.lasthandoff: 11/01/2017
 ## <a name="remote-dependency"></a>远程依赖项
 由 TrackDependency 发送。 用于报告服务器中[依赖项调用](app-insights-asp-net-dependencies.md)以及浏览器中 AJAX 调用的性能和用法。
 
-| 路径 | 类型 | 说明 |
+| 路径 | Type | 说明 |
 | --- | --- | --- |
 | remoteDependency [0] async |布尔值 | |
 | remoteDependency [0] baseName |字符串 | |
@@ -224,10 +225,10 @@ ms.lasthandoff: 11/01/2017
 | remoteDependency [0] urlData.hashTag |字符串 | |
 | remoteDependency [0] urlData.host |字符串 |最大长度为 200 |
 
-## <a name="requests"></a>请求
+## <a name="requests"></a>Requests
 由 [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) 发送。 标准模块使用此属性报告在服务器上测量的服务器响应时间。
 
-| 路径 | 类型 | 说明 |
+| 路径 | Type | 说明 |
 | --- | --- | --- |
 | request [0] count |integer |100/([采样](app-insights-sampling.md)率)。 例如：4 =&gt; 25%。 |
 | request [0] durationMetric.value |数字 |从请求到响应花费的时间。 1e7 == 1s |
@@ -245,7 +246,7 @@ ms.lasthandoff: 11/01/2017
 
 上下文值显示客户端 OS 和浏览器版本。
 
-| 路径 | 类型 | 说明 |
+| 路径 | Type | 说明 |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess.value |integer |从接收 HTML 完成到显示页面花费的时间。 |
 | clientPerformance [0] name |字符串 | |
@@ -262,7 +263,7 @@ ms.lasthandoff: 11/01/2017
 ## <a name="page-views"></a>页面视图
 由 trackPageView() 或 [stopTrackPage](app-insights-api-custom-events-metrics.md#page-views) 发送
 
-| 路径 | 类型 | 说明 |
+| 路径 | Type | 说明 |
 | --- | --- | --- |
 | view [0] count |integer |100/([采样](app-insights-sampling.md)率)。 例如 4 =&gt; 25%。 |
 | view [0] durationMetric.value |integer |在 trackPageView() 中设置的，或者由 startTrackPage() - stopTrackPage() 设置的可选值。 与 clientPerformance 值不同。 |
@@ -275,7 +276,7 @@ ms.lasthandoff: 11/01/2017
 ## <a name="availability"></a>可用性
 报告[可用性 Web 测试](app-insights-monitor-web-app-availability.md)。
 
-| 路径 | 类型 | 说明 |
+| 路径 | Type | 说明 |
 | --- | --- | --- |
 | availability [0] availabilityMetric.name |字符串 |availability |
 | availability [0] availabilityMetric.value |数字 |1.0 或 0.0 |

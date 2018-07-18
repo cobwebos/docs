@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782896"
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>将资产加载到 Azure 媒体剪辑器
 可以通过两种方法将资产加载到 Azure 媒体剪辑器：

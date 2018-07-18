@@ -1,8 +1,8 @@
 ---
-title: "从 Excel、Python 或 R 连接到 Azure Databricks | Microsoft Docs"
-description: "了解如何使用 Simba 驱动程序来将 Azure Databricks 连接到 Excel、Python 或 R。"
+title: 从 Excel、Python 或 R 连接到 Azure Databricks | Microsoft Docs
+description: 了解如何使用 Simba 驱动程序来将 Azure Databricks 连接到 Excel、Python 或 R。
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -11,13 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 9daa7d30036d0a0f98d079e03a69c29d11e49664
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 333ff3ac3de053eae604ffeab600df7d35874f69
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085226"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>从 Excel、Python 或 R 连接到 Azure Databricks
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 03/05/2018
     |---------|---------|
     |**数据源名称**     | 为数据源提供一个名称。        |
     |**主机**     | 提供从 Databricks 工作区中为*服务器主机名*复制的值。        |
-    |**端口**     | 输入 *443*。        |
+    |端口     | 输入 *443*。        |
     |**身份验证** > **机制**     | 选择“用户名和密码”。        |
     |**用户名**     | 输入 *token*。        |
     |**密码**     | 输入从 Databricks 工作区中复制的令牌值。 |
@@ -99,10 +100,13 @@ ms.lasthandoff: 03/05/2018
 
 ## <a name="connect-from-r"></a>从 R 进行连接
 
+> [!NOTE]
+> 本部分提供有关如何将桌面上运行的 R Studio 客户端与 Azure Databricks 集成的信息。 有关如何在 Azure Databricks 群集本身上使用 R Studio 的说明，请参阅 [Azure Databricks 上的 R Studio](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html)。
+
 在本部分中，你将使用 R 语言 IDE 来引用 Azure Databricks 中可用的数据。 在开始之前，必须在计算机上安装以下各项。
 
 * R 语言的 IDE。 本文中使用了 RStudio for Desktop。 可以从 [R Studio 下载](https://www.rstudio.com/products/rstudio/download/)安装该软件。
-* 如果使用 RStudio for Desktop 作为 IDE，还需要从 [http://aka.ms/rclient/](http://aka.ms/rclient/) 安装 Microsoft R 客户端。 
+* 如果使用 RStudio for Desktop 作为 IDE，还需要从 [http://aka.ms/rclient/](http://aka.ms/rclient/) 安装 Microsoft R Client。 
 
 打开 RStudio 并执行以下步骤：
 

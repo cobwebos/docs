@@ -3,7 +3,7 @@ title: Azure AD Connect：完成混合 Azure AD 加入所要执行的配置后�
 description: 本文档详细介绍完成混合 Azure AD 加入所要执行的配置后任务
 services: active-directory
 documentationcenter: ''
-author: anandyadavmsft
+author: billmath
 manager: samueld
 editor: billmath
 ms.assetid: ''
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
-ms.author: anandyadavmsft
-ms.openlocfilehash: 02f1cbd1f2b8f7b0bec2f8016a300ede1d6f0439
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.component: hybrid
+ms.author: billmath
+ms.openlocfilehash: 9949275b18206ca66f38bab036337a00fdde6ee5
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354508"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916541"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>混合 Azure AD 加入所需的配置后任务
 

@@ -6,15 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
-ms.date: 02/12/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: c84104ac9094980d0e6d16b535dcf13c462a645a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2956dfab3b9c1e6e8de54648dae9d2be99788ac2
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195441"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309208"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>优化 Azure SQL 数据库性能
 
@@ -25,7 +25,7 @@ ms.locfileid: "32195441"
 - 优化应用程序，并应用一些可以提升性能的最佳做法。 
 - 通过更改索引和查询来优化数据库，以便更有效地处理数据。
 
-这些是手动方法，因为你需要决定哪些[基于 DTU 的模型资源限制](sql-database-dtu-resource-limits.md)和[基于 vCore 的模型资源限制（预览版）](sql-database-vcore-resource-limits.md)满足你的需求。 否则，你需要重写应用程序或数据库代码并部署更改。
+这些是手动方法，因为你需要确定满足需求所需的资源量。 否则，你需要重写应用程序或数据库代码并部署更改。
 
 ## <a name="increasing-performance-tier-of-your-database"></a>增加数据库性能层
 
@@ -135,7 +135,7 @@ Azure SQL 数据库有助于查找并修复常见缺少索引情况。 Azure SQL
 
 ![已更正索引的查询计划](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-重要见解是共享商用系统的 IO 容量会比专用服务器计算机的容量受到更多限制。 客观上鼓励将不必要 IO 降至最低，最大限度地在 Azure SQL 数据库服务层的每个性能级别 DTU 范围内利用系统。 选择适当的物理数据库设计方式可显著缩短单个查询的延迟、提高对于每个缩放单位可处理的并发请求的吞吐量，以及将满足查询所需的成本降至最低。 有关缺少索引 DMV 的详细信息，请参阅 [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)。
+重要见解是共享商用系统的 IO 容量会比专用服务器计算机的容量受到更多限制。 客观上鼓励将不必要 IO 降至最低，最大限度地在 Azure SQL 数据库服务层的每个性能级别 DTU 范围内利用系统。 选择适当的物理数据库设计方式可显著缩短单个查询的延迟、提高按缩放单元处理的并发请求的吞吐量，以及将满足查询所需的成本降至最低。 有关缺少索引 DMV 的详细信息，请参阅 [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)。
 
 ### <a name="query-tuning-and-hinting"></a>查询优化和提示
 Azure SQL 数据库中的查询优化器与传统的 SQL Server 查询优化器相似。 有关优化查询和了解查询优化器的推理模型限制的最佳实践也大多适用于 Azure SQL 数据库。 如果优化 Azure SQL 数据库中的查询，则可能会获得另一个降低总资源需求的好处。 与未经优化的同等应用程序相比，应用程序可能能够以更低的成本运行，因为它可用更低的性能级别运行。
@@ -271,8 +271,8 @@ SQL Server 用户经常将许多功能集中在单一数据库内。 例如，�
 某些数据库应用程序包含具有大量读取操作的工作负荷。 缓存层可减少数据库上的负载，还有可能降低支持使用 Azure SQL 数据库的数据库所需的性能级别。 如果读取工作负荷较重，通过 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)，只需读取数据一次（也许只需对每个应用层计算机读取一次，具体取决于其配置方式），然后将该数据存储在 SQL 数据库外部。 这样可降低数据库负载（CPU 和读取 IO），但对于事务一致性有影响，因为从缓存读取的数据可能与数据库中数据不同步。 虽然许多应用程序可接受一定的不一致，但并非所有工作负荷都是这样。 应该先完全了解任何应用程序要求，再实施应用程序层缓存策略。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关基于 DTU 的服务层的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 DTU 的模型资源限制](sql-database-dtu-resource-limits.md)
-* 有关基于 vCore 的服务层的详细信息，请参阅[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)和[基于 vCore 的资源限制（预览版）](sql-database-vcore-resource-limits.md)
+* 有关基于 DTU 的服务层的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。
+* 有关基于 vCore 的服务层的详细信息，请参阅[基于 vCore 的购买模型（预览版）](sql-database-service-tiers-vcore.md)。
 * 有关弹性池的详细信息，请参阅[什么是 Azure 弹性池？](sql-database-elastic-pool.md)
 * 有关性能和弹性池的信息，请参阅[何时考虑弹性池](sql-database-elastic-pool-guidance.md)
 

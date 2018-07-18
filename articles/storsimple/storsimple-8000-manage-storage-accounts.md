@@ -1,12 +1,12 @@
 ---
-title: "管理 Microsoft Azure StorSimple 8000 系列设备的 StorSimple 存储帐户凭据 | Microsoft Docs"
-description: "介绍如何使用 StorSimple 设备管理器的“配置”页添加、编辑、删除或更改存储帐户的安全密钥。"
+title: 管理 Microsoft Azure StorSimple 8000 系列设备的 StorSimple 存储帐户凭据 | Microsoft Docs
+description: 介绍如何使用 StorSimple 设备管理器的“配置”页添加、编辑、删除或更改存储帐户的安全密钥。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,11 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688722"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 设备管理器服务管理存储帐户凭据
 

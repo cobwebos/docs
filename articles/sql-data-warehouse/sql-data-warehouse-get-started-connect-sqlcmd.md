@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31600696"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>使用 sqlcmd 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -31,13 +32,13 @@ ms.lasthandoff: 04/19/2018
 ## <a name="1-connect"></a>1.连接
 若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入 **sqlcmd**，后跟 SQL 数据仓库数据库的连接字符串。 连接字符串需要以下参数：
 
-* **服务器 (-S)：**采用 `<`Server Name`>`.database.windows.net 格式的服务器
+* **服务器 (-S)：** 采用 `<`Server Name`>`.database.windows.net 格式的服务器
 * **数据库 (-d)：** 数据库名称。
 * **启用带引号的标识符 (-I)：** 必须启用带引号的标识符才能连接到 SQL 数据仓库实例。
 
 若要使用 SQL Server 身份验证，需要添加用户名/密码参数：
 
-* **用户 (-U)：**采用`<`用户`>`格式的服务器用户
+* **用户 (-U)：** 采用`<`用户`>`格式的服务器用户
 * **密码 (-P)：** 与用户关联的密码
 
 例如，连接字符串可能如下所示：

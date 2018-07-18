@@ -1,19 +1,19 @@
 ---
 title: 将 DevKit 设备连接到 Azure IoT Central 应用程序 | Microsoft Docs
 description: 了解如何以设备开发人员的身份将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 4c7074e5e7d3858919f3fc17005fea4f8dce1560
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200735"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261570"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -28,7 +28,9 @@ ms.locfileid: "34200735"
 
 基于“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **MXChip** 设备模板：
 
-### <a name="telemetry-measurements"></a>遥测度量
+### <a name="measurements"></a>度量
+
+#### <a name="telemetry"></a>遥测 
 
 | 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
 | -------------- | ------ | ------- | ------- | -------------- |
@@ -44,6 +46,20 @@ ms.locfileid: "34200735"
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+#### <a name="states"></a>States 
+
+| 名称          | 显示名称   | 正常 | 小心 | 危险 | 
+| ------------- | -------------- | ------ | ------- | ------ | 
+| DeviceState   | 设备状态   | 绿色  | 橙色  | 红色    | 
+
+#### <a name="events"></a>活动 
+
+| 名称             | 显示名称      | 
+| ---------------- | ----------------- | 
+| ButtonBPressed   | 按钮 B 已按下  | 
+
+
 
 ### <a name="settings"></a>设置
 
@@ -66,19 +82,8 @@ ms.locfileid: "34200735"
 | Type            | 显示名称 | 字段名称 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 文本            | Location     | location   | 不适用       |
+| 文本            | 位置     | location   | 不适用       |
 
-### <a name="states"></a>States 
-
-| 名称          | 显示名称   | 正常 | 小心 | 危险 | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | 设备状态   | 绿色  | 橙色  | 红色    | 
-
-### <a name="events"></a>活动 
-
-| 名称             | 显示名称      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | 按钮 B 已按下  | 
 
 ### <a name="add-a-real-device"></a>添加真实设备
 

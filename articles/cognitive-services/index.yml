@@ -1,0 +1,118 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 认知服务文档
+metadata:
+  title: 认知服务文档 - 教程和 API 参考
+  description: 了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出、理解和解释用户需求。 教程、快速入门、API 参考和示例演示了如何使用这些 API。
+  services: cognitive-services
+  author: cjgronlund
+  manager: cgronlun
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/29/2018
+  ms.author: cgronlun
+  ms.openlocfilehash: 5ac8d7ca6f607acd54ab40402bb83376fd8b5d63
+  ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39089575"
+abstract:
+  description: 了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何将认知智能添加到你的第一个应用：
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_Csharp.svg
+      title: C#
+    - image:
+        src: media/index/logo_java.svg
+      title: Java
+    - image:
+        src: media/index/logo_nodejs.svg
+      title: Node.js
+    - image:
+        src: media/index/logo_python.svg
+      title: Python
+    - image:
+        src: media/index/blue_globe_icon.png
+      title: Web
+    rows:
+    - title: 计算机视觉 - 分析图像
+      values:
+      - href: /azure/cognitive-services/Computer-vision/quickstarts-sdk/csharp-analyze-sdk
+      - href: /azure/cognitive-services/Computer-vision/Quickstarts/java-analyze
+      - href: /azure/cognitive-services/Computer-vision/Quickstarts/node-analyze
+      - href: /azure/cognitive-services/Computer-vision/Quickstarts/python-analyze
+      - href: 
+    - title: 语音服务 - 识别语音
+      values:
+      - href: /azure/cognitive-services/speech-service/quickstart-csharp-windows
+      - href: 
+      - href: 
+      - href: 
+      - href: /azure/cognitive-services/speech-service/get-started
+    - title: LUIS - 使用预构建的家庭自动化
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: /azure/cognitive-services/luis/luis-get-started-create-app
+    - title: 文本分析 - 检测语言，分析情绪
+      values:
+      - href: /azure/cognitive-services/Text-Analytics/quickstarts/csharp
+      - href: /azure/cognitive-services/Text-Analytics/quickstarts/java
+      - href: /azure/cognitive-services/Text-Analytics/quickstarts/nodejs
+      - href: /azure/cognitive-services/Text-Analytics/quickstarts/python
+      - href: 
+    - title: 必应 Web 搜索 - 获取相关 Web 查询
+      values:
+      - href: /azure/cognitive-services/bing-web-search/quickstarts/csharp
+      - href: /azure/cognitive-services/bing-web-search/quickstarts/java
+      - href: /azure/cognitive-services/bing-web-search/quickstarts/nodejs
+      - href: /azure/cognitive-services/bing-web-search/quickstarts/python
+      - href: 
+    - title: 必应图像搜索 - 获取相关图像查询
+      values:
+      - href: /azure/cognitive-services/bing-image-search/quickstarts/csharp
+      - href: /azure/cognitive-services/bing-image-search/quickstarts/java
+      - href: /azure/cognitive-services/bing-image-search/quickstarts/nodejs
+      - href: /azure/cognitive-services/bing-image-search/quickstarts/python
+      - href: 
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何构建智能应用或机器人：
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">检测和定格图像中的人脸</a>
+    - html: <a href="/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page">构建自定义搜索网页</a>
+    - html: <a href="/azure/cognitive-services/luis/luis-nodejs-tutorial-build-bot-framework-sample">在机器人中使用语言理解 (LUIS)</a>
+    - html: <a href="/azure/cognitive-services/luis/luis-tutorial-batch-testing">提高家庭自动化命令的意向准确性</a>
+- title: 认知服务 API
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 影像
+      html: <p><a class="barLink" href="/azure/cognitive-services/computer-vision/"><img src="../media/index/API_Computer_Vision.svg" alt="" />计算机视觉</a></p> <p><a class="barLink" href="/azure/cognitive-services/content-moderator/overview"><img src="../media/index/API_Content_Moderator.svg" alt="" />内容审查器</a></p> <p><a class="barLink" href="/azure/cognitive-services/Custom-Vision-Service/home"><img src="../media/index/API_Custom_Vision.svg" alt="" /><span>自定义影像服务&nbsp;<sup style="font-size:70%">预览</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/emotion/home"><img src="../media/index/API_Emotion.svg" alt="" /><span>表情 API&nbsp;<sup style="font-size:70%">预览</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/face/"><img src="../media/index/API_Face.svg" alt="" />人脸 API</a></p> <p><a class="barLink" href="/azure/cognitive-services/video-indexer/video-indexer-overview"><img src="../media/index/API_VideoIndexer.svg" alt="" /><span>视频索引器&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
+    - title: 语音
+      html: <p><a class="barLink" href="/azure/cognitive-services/speech-service"><img src="../media/index/API_Speech_Service.svg" alt="" />语音服务&nbsp;<sup style="font-size:70%">预览</sup></a></p> <p><a class="barLink" href="/azure/cognitive-services/speech/home"><img src="../media/index/API_Bing_Speech.svg" alt="" />语音 API</a></p> <p><a class="barLink" href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><img src="../media/index/API_Custom_Speech.svg" alt="" /><span>自定义语音服务&nbsp;<sup style="font-size:70%">预览</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/speaker-recognition/home"><img src="../media/index/API_Speaker_Recognition.svg" alt="" /><span>说话人识别&nbsp;<sup style="font-size:70%">预览</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/translator-speech/"><img src="../media/index/API_TranslatorSpeech.svg" alt="" />语音翻译</a></p>
+    - title: 语言
+      html: <p><a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="../media/index/API_Bing_Spell_Check.svg" alt="" />必应拼写检查</a></p> <p><a class="barLink" href="/azure/cognitive-services/luis/"><img src="../media/index/API_Luis.svg" alt="" /><span>语言理解 (LUIS)</span></a></p> <p><a class="barLink" href="/azure/cognitive-services/linguisticanalysisapi/home"><img src="../media/index/API_LinguisticAnalysis.svg" alt="" /><span>语言分析&nbsp;<sup style="font-size:70%">预览</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/text-analytics/"><img src="../media/index/API_TextAnalytics.svg" alt="" />文本分析</a></p> <p><a class="barLink" href="/azure/cognitive-services/translator/"><img src="../media/index/API_TranslatorText.svg" alt="" />文本翻译</a></p> <p><a class="barLink" href="/azure/cognitive-services/web-language-model/home"><img src="../media/index/API_WebLanguageModel.svg" alt="" /><span>Web 语言模型&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
+    - title: 知识
+      html: <p><a class="barLink" href="/azure/cognitive-services/custom-decision-service/"><img src="../media/index/API_Custom_Decision_Service.svg" alt="" /><span>自定义 AI 决策服务&nbsp;<sup style="font-size:70%">预览</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/qnamaker/index"><img src="../media/index/API_QnAMaker.svg" alt="" /><span>QnA Maker</span></a></p> <p><a class="barLink" href="/azure/cognitive-services/recommendations/overview"><img src="../media/index/API_Recommendations.svg" alt="" /><span>建议&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
+    - title: 搜索
+      html: <p><a class="barLink" href="/azure/cognitive-services/bing-news-search/"><img src="../media/index/API_Bing_News_Search.svg" alt="" />必应新闻搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/Bing-Video-Search/"><img src="../media/index/API_Bing_Video_Search.svg" alt="" />必应视频搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-web-search/"><img src="../media/index/API_Bing_Web_Search.svg" alt="" />必应 Web 搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="../media/index/API_Bing_AutoSuggest.svg" alt="" />必应自动建议</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="../media/index/API_Bing_Custom_Search.svg" alt="" />必应自定义搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-entities-search/"><img src="../media/index/API_Bing_Entity_Search.svg" alt="" />必应实体搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="../media/index/API_Bing_Image_Search.svg" alt="" />必应图像搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/bing-visual-search"><img src="../media/index/API_Bing_Visual_Search.svg" alt="" />必应视觉搜索</a></p>
+    - title: 实验室
+      html: <p><a class="barLink" href="https://docs.microsoft.com/gestures/"><img src="../media/index/labs-hand-gesture.svg" alt="" />项目手势</a></p> <p><a class="barLink" href="/azure/cognitive-services/project-personality-chat/overview"><img src="media/index/project-personality-chat-icon.svg" alt="" />项目个性聊天</a></p> <p><a class="barLink" href="https://labs.cognitive.microsoft.com/en-us/Project-Cuzco/documentation/overview"><img src="../media/index/labs-event-tracker.svg" alt="" />项目事件跟踪</a></p> <p><a class="barLink" href="/azure/cognitive-services/academic-knowledge/home"><img src="../media/index/API_Know_Academic.svg" alt="" />项目学术知识</a></p> <p><a class="barLink" href="https://labs.cognitive.microsoft.com/en-us/Project-Wollongong/documentation"><img src="../media/index/labs-local-insight.svg" alt="" />项目本地见解</a></p> <p><a class="barLink" href="/azure/cognitive-services/kes/overview"><img src="../media/index/API_KnowledgeExploration.svg" alt="" /><span>项目知识探索服务</a></p> <p><a class="barLink" href="/azure/cognitive-services/entitylinking/home"><img src="../media/index/API_Entity_LinkingIntelligence.svg" alt="" /><span>项目实体链接</a></p> <p><a class="barLink" href="/azure/cognitive-services/labs/url-preview/overview"><img src="../media/index/API_URL_Preview.svg" alt="" /><span>项目 URL 预览</a></p> <p><a class="barLink" href="/azure/cognitive-services/labs/answer-search/overview"><img src="../media/index/API_Answer_Search.svg" alt="" /><span>项目答案搜索</a></p> <p><a class="barLink" href="/azure/cognitive-services/labs/anomaly-finder/overview"><img src="../media/index/API_Anomaly_Finder.svg" alt="" /><span>项目异常查找器</a></p> <p><a class="barLink" href="/azure/cognitive-services/labs/conversation-learner/overview"><img src="../media/index/API_Conversation_Learner.svg" alt="" /><span>项目对话学习器</a></p>

@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell 示例 - Azure 托管应用程序 | Microsoft Docs"
-description: "Azure PowerShell 示例 - Azure 托管应用程序"
+title: Azure PowerShell 示例 - Azure 托管应用程序 | Microsoft Docs
+description: Azure PowerShell 示例 - Azure 托管应用程序
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23636977"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell 示例
 

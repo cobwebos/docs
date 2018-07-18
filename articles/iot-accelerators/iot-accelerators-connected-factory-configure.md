@@ -1,24 +1,19 @@
 ---
 title: 配置连接的工厂拓扑 | Microsoft Docs
 description: 如何配置连接的工厂解决方案加速器的拓扑。
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 1674ffefb3ee12584771e27d785e014830f84642
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c6c5e27dad7f80a329edbd8fbcb95647dc4cd15a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626713"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
 
@@ -272,7 +267,7 @@ ms.lasthandoff: 05/20/2018
 * 名称
 * 说明
 * 映像
-* Location
+* 位置
 * 单位
 * Visible
 

@@ -8,11 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
-ms.openlocfilehash: 335781a8048e1497b74f0ecf9bef337c923d95b7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: aeff3be89121bb93432d03f108ab5d2e5fa6f007
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099531"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -98,7 +99,7 @@ USGS 数据集包含罗得岛州的相关记录。 如果在空白搜索框中�
 ## <a name="next-steps"></a>后续步骤
 这是第一个基于 Node.js 和 USGS 数据集的 Azure 搜索教程。 日后，本教程会进一步扩展，演示自定义解决方案中可能要使用的其他搜索功能。
 
-如果已对 Azure 搜索有一定的了解，可以将此教程用作尝试使用建议器（提前键入或自动完成查询）、筛选器和分面导航的跳板。 还可以通过添加计数以及批处理文档，改进搜索结果页，以便用户可以翻阅结果。
+如果已对 Azure 搜索有一定的了解，可以将此示例用作尝试使用建议器（提前键入或自动完成查询）、筛选器和分面导航的跳板。 还可以通过添加计数以及批处理文档，改进搜索结果页，以便用户可以翻阅结果。
 
 不熟悉 Azure 搜索？ 建议尝试其他教程，深入了解可以创建哪些内容。 请访问 [文档页](https://azure.microsoft.com/documentation/services/search/) 查找更多资源。 还可以查看 [视频和教程列表](search-video-demo-tutorial-list.md) 中的链接以获取详细信息。
 

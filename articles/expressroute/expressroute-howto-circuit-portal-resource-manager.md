@@ -1,11 +1,11 @@
 ---
-title: "创建和修改 ExpressRoute 线路：Azure 门户 | Microsoft 文档"
-description: "本文介绍如何创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。"
+title: 创建和修改 ExpressRoute 线路：Azure 门户 | Microsoft 文档
+description: 本文介绍如何创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 68d59d59-ed4d-482f-9cbc-534ebb090613
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29389506"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]

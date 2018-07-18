@@ -1,11 +1,11 @@
 ---
-title: "使用 Docker Machine 在 Azure 中创建 Docker 主机 | Microsoft Docs"
-description: "介绍如何使用 Docker Machine 在 Azure 中创建 Docker 主机。"
+title: 使用 Docker Machine 在 Azure 中创建 Docker 主机 | Microsoft Docs
+description: 介绍如何使用 Docker Machine 在 Azure 中创建 Docker 主机。
 services: azure-container-service
 documentationcenter: na
 author: mlearned
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 7a3ff6e1-fa93-4a62-b524-ab182d2fea08
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23124495"
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>使用 Docker-Machine 在 Azure 中创建 Docker 主机
 运行 [Docker](https://www.docker.com/) 容器时需要使用运行 Docker 守护程序的主机 VM。

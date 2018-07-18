@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/15/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: a24cb03cd30b212650a36cd5ac40977de5eea11e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 748cb4612b2b5aed26ba8197cfad0782f2645e1e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37902123"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>高性能计算虚拟机大小
 
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="distributions"></a>分发
  
-从支持 RDMA 连接的 Azure Marketplace 中的一个映像部署计算密集型 VM：
+从支持 RDMA 连接的 Azure 市场中的一个映像部署计算密集型 VM：
   
 * Ubuntu - Ubuntu Server 16.04 LTS。 在 VM 上配置 RDMA 驱动程序，并注册 Intel 下载 Intel MPI：
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 04/06/2018
 - [内存优化](sizes-memory.md)
 - [存储优化](sizes-storage.md)
 - [GPU](../windows/sizes-gpu.md)
-
+- [前几代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>后续步骤
 

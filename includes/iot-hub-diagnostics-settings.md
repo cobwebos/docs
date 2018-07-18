@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: iot-hub
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 1c7f006c066a4f1505a642af04a1ef027fde0a44
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34666936"
+---
 ### <a name="enable-logging-with-diagnostics-settings"></a>通过诊断设置启用日志记录
 
 1. 登录 [Azure 门户][lnk-portal]，并导航到 IoT 中心。
@@ -19,8 +36,8 @@
    * 文件上传
    * 消息路由
    * 云到设备孪生操作
-   * 设备到云克隆操作
-   * 克隆操作
+   * 设备到云孪生操作
+   * 孪生操作
    * 作业操作
    * 直接方法  
 1. 保存新设置。 

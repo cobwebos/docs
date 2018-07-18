@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 57d4a3767d0ad02f136686d95703817055566c33
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: cbb56ce6befaaa6a5d38cc6afbad0ba6db259711
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303380"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901596"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Linux VM 托管服务标识通过 SAS 凭据访问 Azure 存储
 
@@ -254,10 +254,7 @@ az storage blob download --container-name
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 MSI 的概述，请参阅[托管服务标识概述](overview.md)。
-- 若要了解如何使用存储帐户密钥完成此同一教程，请参阅[使用 Linux VM 托管服务标识访问 Azure 存储](tutorial-linux-vm-access-storage.md)
-- 有关 Azure 存储帐户 SAS 功能的详细信息，请参阅：
-  - [使用共享访问签名 (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [Constructing a Service SAS](/rest/api/storageservices/Constructing-a-Service-SAS.md)（构造服务 SAS）
+在本教程中，你学习了如何使用 Linux 虚拟机上的托管服务标识来访问使用 SAS 凭据的 Azure 存储。  若要深入了解 Azure 存储 SAS，请参阅：
 
-使用以下评论部分提供反馈，帮助我们改进内容。
+> [!div class="nextstepaction"]
+>[使用共享访问签名 (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

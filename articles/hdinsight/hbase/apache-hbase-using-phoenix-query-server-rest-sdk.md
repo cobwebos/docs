@@ -18,6 +18,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164578"
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix 查询服务器 REST SDK
 

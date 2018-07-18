@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/24/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 309bd35eabe1d5c4af9a35d5f2b879bce225a402
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 5c2088ab39e32c049ce867698e84efba759c9a87
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604363"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447330"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>在 Azure Stack 中提供虚拟机映像
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-在 Azure Stack 中，可以使虚拟机映像可供用户使用。 可以让 Azure 资源管理器模板引用这些映像，也可以将它们作为 Marketplace 项添加到 Azure Marketplace UI。 可以使用来自全球 Azure Marketplace 的映像，也可以添加自己的自定义映像。 可以使用门户或 Windows PowerShell 添加 VM。
+在 Azure Stack 中，可以使虚拟机映像可供用户使用。 可以让 Azure 资源管理器模板引用这些映像，也可以将它们作为市场项添加到 Azure 市场 UI。 可以使用来自全球 Azure 市场的映像，也可以添加自己的自定义映像。 可以使用门户或 Windows PowerShell 添加 VM。
 
 ## <a name="add-a-vm-image-through-the-portal"></a>通过门户添加 VM 映像
 
 > [!NOTE]
-> 使用此方法时，必须单独创建 Marketplace 项。
+> 使用此方法时，必须单独创建市场项。
 
 映像必须能够通过 Blob 存储 URI 进行引用。 以 VHD（不是 VHDX）格式准备 Windows 或 Linux 操作系统映像，然后将映像上传到 Azure 或 Azure Stack 中的存储帐户。 如果映像已上传到 Azure 或 Azure Stack 中的 Blob 存储，则可跳过步骤 1。
 
@@ -54,7 +54,7 @@ ms.locfileid: "34604363"
 
    ![将 Blob 访问权限设置为公共](./media/azure-stack-add-vm-image/image2.png)
 
-2. 以操作员身份登录到 Azure Stack。 在菜单中，选择“更多服务” > “资源提供程序”。 然后，选择“计算” > “VM 映像” > “添加”。
+2. 以操作员身份登录到 Azure Stack。 在菜单中，选择**更多服务**。 然后，选择“计算” > “VM 映像” > “添加”。
 
 3. 在“添加 VM 映像”下，输入虚拟机映像的发布者、产品/服务、SKU 和版本。 这些名称段是指资源管理器模板中的 VM 映像。 确保正确地选择 **osType** 值。 对于“OS 磁盘 Blob URI”，请输入在其中上传了映像的 Blob URI。 然后选择“创建”，开始创建 VM 映像。
 
@@ -62,17 +62,20 @@ ms.locfileid: "34604363"
 
    成功创建映像后，VM 映像状态会更改为“已成功”。
 
-4. 为了方便用户在 UI 中使用虚拟机映像，可以[创建 Marketplace 项](azure-stack-create-and-publish-marketplace-item.md)。
+4. 为了方便用户在 UI 中使用虚拟机映像，可以[创建市场项](azure-stack-create-and-publish-marketplace-item.md)。
 
 ## <a name="remove-a-vm-image-through-the-portal"></a>通过门户删除 VM 映像
 
 1. 打开管理门户（[https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external)）。
 
-2. 选择“Marketplace 管理”，然后选择要删除的 VM。
+2. 选择“市场管理”，然后选择要删除的 VM。
 
 3. 单击“删除” 。
 
-## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>使用 PowerShell 将 VM 映像添加到 Marketplace
+## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>使用 PowerShell 将 VM 映像添加到市场
+
+> [!Note]  
+> 当你添加映像仅可供 Azure 资源管理器基于模板和 PowerShell 的部署。 若要使映像可用作为 marketplace 项，用户在文章中，使用步骤将 marketplace 项发布[创建和发布 Marketplace 项](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)
 
 1. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。  
 
@@ -93,9 +96,10 @@ ms.locfileid: "34604363"
   - **publisher**  
     例如： `Canonical`  
     VM 映像的发布者名称段，供用户在部署映像时使用。 例如，**Microsoft**。 此字段不得包含空格或其他特殊字符。  
-  - **offer**  
+  - 
+      **offer**  
     例如： `UbuntuServer`  
-    VM 映像的产品/服务名称段，供用户在部署 VM 映像时使用。 例如，**WindowsServer**。 此字段不得包含空格或其他特殊字符。  
+VM 映像的产品/服务名称段，供用户在部署 VM 映像时使用。 例如，**WindowsServer**。 此字段不得包含空格或其他特殊字符。  
   - **sku**  
     例如： `14.04.3-LTS`  
     VM 映像的 SKU 名称段，供用户在部署 VM 映像时使用。 例如，**Datacenter2016**。 此字段不得包含空格或其他特殊字符。  
@@ -109,9 +113,9 @@ ms.locfileid: "34604363"
     例如： `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
     可以指定 `osDisk` 的 Blob 存储 URI。  
 
-    有关详细信息，请参阅的 PowerShell 参考[添加 AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet 和[新建 DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) cmdlet。
+    有关详细信息，请参阅 [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet 和 [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) cmdlet 的 PowerShell 参考。
 
-## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>使用 PowerShell 将自定义 VM 映像添加到 Marketplace
+## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>使用 PowerShell 将自定义 VM 映像添加到市场
 
 1. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
 
@@ -178,7 +182,7 @@ ms.locfileid: "34604363"
 
 ## <a name="remove-a-vm-image-by-using-powershell"></a>使用 PowerShell 删除 VM 映像
 
-不再需要上传的虚拟机映像时，可使用以下 cmdlet 从 Marketplace 中删除它：
+不再需要上传的虚拟机映像时，可使用以下 cmdlet 从市场中删除它：
 
 1. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
 
@@ -197,9 +201,10 @@ ms.locfileid: "34604363"
   - **publisher**  
     例如： `Canonical`  
     VM 映像的发布者名称段，供用户在部署映像时使用。 例如，**Microsoft**。 此字段不得包含空格或其他特殊字符。  
-  - **offer**  
+  - 
+      **offer**  
     例如： `UbuntuServer`  
-    VM 映像的产品/服务名称段，供用户在部署 VM 映像时使用。 例如，**WindowsServer**。 此字段不得包含空格或其他特殊字符。  
+VM 映像的产品/服务名称段，供用户在部署 VM 映像时使用。 例如，**WindowsServer**。 此字段不得包含空格或其他特殊字符。  
   - **sku**  
     例如： `14.04.3-LTS`  
     VM 映像的 SKU 名称段，供用户在部署 VM 映像时使用。 例如，**Datacenter2016**。 此字段不得包含空格或其他特殊字符。  
@@ -207,7 +212,7 @@ ms.locfileid: "34604363"
     例如： `1.0.0`  
     VM 映像的版本，供用户在部署 VM 映像时使用。 此版本采用以下格式 *\#。\#。\#* 例如，**1.0.0**。 此字段不得包含空格或其他特殊字符。  
     
-    有关 Remove-AzsPlatformImage cmdlet 的详细信息，请参阅 Microsoft PowerShell [Azure Stack 操作员模块文档](https://docs.microsoft.com/powershell/module/)。
+    有关删除 AzsPlatformImage cmdlet 的详细信息，请参阅 Microsoft PowerShell [Azure Stack 操作员模块文档](https://docs.microsoft.com/powershell/module/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 45183e51e9071647e07cfd0738522f0dfa28bd7b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33868996"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37444236"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -26,7 +26,7 @@ ms.locfileid: "33868996"
 [Azure 门户] (https://portal.azure.com/): 中提供的报表可解答以下问题：
 
 > [!NOTE]
-> 必须是[全局管理员](../active-directory-assign-admin-roles-azure-portal.md)，并且必须选择代表组织收集这些数据。 要做出此选择，必须至少访问一次“报告”选项卡或审核日志。 在此之前，不会为组织收集数据。
+> 必须是[全局管理员](../users-groups-roles/directory-assign-admin-roles.md)，并且必须选择代表组织收集这些数据。 要做出此选择，必须至少访问一次“报告”选项卡或审核日志。 在此之前，不会为组织收集数据。
 >
 
 * 有多少人已注册了密码重置？
@@ -54,25 +54,6 @@ ms.locfileid: "33868996"
 6. 要筛选此视图以便仅查看密码重置的相关事件，请选择窗格顶部的“筛选”按钮。
 7. 在“筛选”菜单中选择“类别”下拉列表，然后将其更改为“自助密码管理”类别类型。
 8. （可选）通过选择所需的特定“活动”进一步筛选该列表。
-
-## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>如何通过 Azure AD 报告和事件 API 检索密码管理事件
-
-Azure AD 报表和事件 API 支持检索密码重置和密码重置注册报表中包含的所有信息。 使用此 API，可以下载单个密码重置和密码重置注册事件，并将其与所选报表技术集成。
-
-> [!IMPORTANT]
-> 目前，Azure AD 报表和事件 API 最多可以检索 [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) 和 [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) 类型的 75,000 个事件。 该 API 的检索范围为过去 30 天。
-> 
-> 如果需要检索或存储的数据超过此时间范围，建议使用该 API 来查询生成的差异数据，以便将数据保存在外部数据库中。 建议当开始在组织中使用 SSPR 时即开始检索此数据。 将其保留在外部，然后继续跟踪之后的差异数据。
->
-
-### <a name="how-to-get-started-with-the-reporting-api"></a>如何开始使用报告 API
-
-要访问此数据，需要编写一个小型应用程序或脚本，以便从我们的服务器检索这些数据。 有关详细信息，请参阅 [Azure AD 报表 API 入门](../active-directory-reporting-api-getting-started-azure-portal.md)。
-
-编写有效的脚本后，请根据方案，检查可以检索的密码重置和注册事件：
-
-* [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)：列出密码重置事件可用的列。
-* [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent)：列出密码重置注册事件可用的列。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 

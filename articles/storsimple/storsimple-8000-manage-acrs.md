@@ -1,12 +1,12 @@
 ---
-title: "管理 StorSimple 中的访问控制记录 | Microsoft Docs"
-description: "介绍如何使用访问控制记录 (ACR)，以确定哪些主机可以连接到 StorSimple 设备上的卷。"
+title: 管理 StorSimple 中的访问控制记录 | Microsoft Docs
+description: 介绍如何使用访问控制记录 (ACR)，以确定哪些主机可以连接到 StorSimple 设备上的卷。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: 9173e34f889ce1c082b20bb382cb6ca9a03dd797
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597491"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>使用 StorSimple Manager 服务管理访问控制记录
 
@@ -90,7 +91,7 @@ ms.lasthandoff: 10/11/2017
 
     ![编辑访问控制记录](./media/storsimple-8000-manage-acrs/editacr2.png)
 
-4. 单击“保存” 。 出现确认提示时，单击“是”。 
+4. 单击“ **保存**”。 出现确认提示时，单击“是”。 
 
     ![编辑访问控制记录](./media/storsimple-8000-manage-acrs/editacr3.png)
 

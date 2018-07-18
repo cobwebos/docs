@@ -1,22 +1,19 @@
 ---
-title: 接收有关 Azure 服务通知的活动日志警报 | Microsoft Docs
+title: 接收有关 Azure 服务通知的活动日志警报
 description: 在 Azure 服务发生时，通过短信、电子邮件或 webhook 接收通知。
 author: johnkemnetz
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/09/2018
 ms.author: johnkem
-ms.openlocfilehash: b4c4fdeb825bbcab54f074c5224140282a24d196
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: alerts
+ms.openlocfilehash: 1e79fee75b2361dd7da8c46c175a5a6532089ad6
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437233"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
@@ -28,6 +25,9 @@ ms.lasthandoff: 03/29/2018
 - 受影响的订阅。
 - 受影响的服务。
 - 受影响的区域。
+
+> [!NOTE]
+> 服务运行状况通知不会发送有关资源运行状况事件的警报。
 
 还可以配置向其发送警报的人员：
 
@@ -51,17 +51,22 @@ ms.lasthandoff: 03/29/2018
 
     ![“创建服务运行状况警报”命令](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. 在“活动日志警报名称”框中输入一个名称，然后提供“说明”。
+4. 选择要针对其发出警报的**订阅**、**服务**和**区域**。
 
-    ![“添加活动日志警报”对话框](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-service-notification-new-action-group-sh.png)
+    ![“添加活动日志警报”对话框](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
-5. “订阅”框会自动填充当前订阅。 此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
+> [!NOTE]
+> 此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
 
-6. 选择在其中创建警报资源的“资源组”。 这不是由警报进行监视的资源组。 相反，它是警报资源所在的资源组。
+5. 选择要针对其发出警报的**事件类型**：*服务问题*、*计划内维护*和*运行状况公告* 
 
-7. “事件类别”框将自动设置为“服务运行状况”。 （可选）选择要接收的服务运行状况通知的“服务”、“区域”和“类型”。
+6. 通过输入**警报规则名称**和**说明**定义警报详细信息。
 
-8. 在“报警方式”下，选择“新建”操作组按钮。 在“操作组名称”框中输入名称，然后在“短名称”框中输入名称。 在触发此警报时，将引用已发送通知中的短名称。
+7. 选择要将警报保存到的**资源组**。
+
+8. 通过选择“新建操作组”创建一个新操作组。 在“操作组名称”框中输入名称，然后在“短名称”框中输入名称。 在触发此警报时，将引用已发送通知中的短名称。
+
+    ![创建新的操作组](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
 9. 通过提供接收方来定义接收方的列表：
 
@@ -71,7 +76,7 @@ ms.lasthandoff: 03/29/2018
 
     c. **详细信息**：根据所选操作类型，输入电话号码、电子邮件地址、Webhook URI 等。
 
-10. 选择“确定”以创建警报。
+10. 选择“确定”以创建操作组，然后选择“创建警报规则”以完成警报。
 
 在几分钟内，警报将处于活动状态，并根据创建期间指定的条件开始触发。
 
@@ -86,9 +91,9 @@ ms.lasthandoff: 03/29/2018
 
 1. 执行上一节中的步骤 1 至 7 来创建服务运行状况通知。 
 
-2. 在“报警方式”下，选择“现有”操作组按钮。 选择适当的操作组。
+2. 在“定义操作组”下，单击“选择操作组”按钮。 选择适当的操作组。
 
-3. 选择“确定”以创建警报。
+3. 选择“添加”以添加操作组，然后选择“创建警报规则”以完成警报。
 
 在几分钟内，警报将处于活动状态，并根据创建期间指定的条件开始触发。
 

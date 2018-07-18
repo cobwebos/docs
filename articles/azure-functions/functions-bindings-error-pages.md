@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions 错误处理指南 | Microsoft Docs"
-description: "提供有关如何处理函数执行时发生的错误的常规指南，并链接到特定于绑定的错误主题。"
+title: Azure Functions 错误处理指南 | Microsoft Docs
+description: 提供有关如何处理函数执行时发生的错误的常规指南，并链接到特定于绑定的错误主题。
 services: functions
-cloud: 
-documentationcenter: 
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-ms.assetid: 
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: multiple
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29133694"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions 错误处理
 

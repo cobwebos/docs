@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager 备份作业 | Microsoft Docs"
-description: "介绍如何使用 StorSimple Snapshot Manager MMC 管理单元查看和管理已计划的、当前运行的和已完成的备份作业。"
+title: StorSimple Snapshot Manager 备份作业 | Microsoft Docs
+description: 介绍如何使用 StorSimple Snapshot Manager MMC 管理单元查看和管理已计划的、当前运行的和已完成的备份作业。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109855"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>使用 StorSimple Snapshot Manager查看和管理备份作业
 

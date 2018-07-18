@@ -1,11 +1,11 @@
 ---
-title: "Azure API 管理概述和重要概念 | Microsoft 文档"
-description: "了解有关 API、产品、角色、组和其他 API 管理关键概念。"
+title: Azure API 管理概述和重要概念 | Microsoft 文档
+description: 了解有关 API、产品、角色、组和其他 API 管理关键概念。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 0410e0176d5c853e1110fe3460c7d9314e7fd397
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: cded90d4f36e353241bb594bae35b7c7e03599b9
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435992"
 ---
 # <a name="what-is-api-management"></a>什么是 API 管理？
 
@@ -31,8 +32,10 @@ API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部
 要使用 API 管理，管理员需要创建 API。 每个 API 包括一个或多个操作，并可以将每个 API 添加到一个或多个产品。 要使用的 API，开发人员需要订阅包含该 API 的产品，它们可以调用该 API 的操作，根据任何可能生效的使用情况策略。 常见方案包括：
 
 * **保护移动基础结构** 通过使用 API 密钥控制访问，使用限制或使用高级安全策略（如 JWT 令牌验证）阻止 DOS 攻击。
-* **启用 ISV 合作伙伴生态系统** 通过开发人员门户提供快速的合作伙伴加入，并构建 API 外观使其与未准备好供合作伙伴使用的内部实现分离。
-* **运行内部的 API 程序** 通过为组织提供一个集中位置来交流 API 的可用性和最新更改，基于组织帐户控制访问所有这一切都基于 API 网关与后端之间的安全通道。
+* 
+  **启用 ISV 合作伙伴生态系统** 通过开发人员门户提供快速的合作伙伴加入，并构建 API 外观使其与未准备好供合作伙伴使用的内部实现分离。
+* 
+  **运行内部的 API 程序** 通过为组织提供一个集中位置来交流 API 的可用性和最新更改，基于组织帐户控制访问，所有这一切都基于 API 网关与后端之间的安全通道。
 
 系统由以下组件组成：
 

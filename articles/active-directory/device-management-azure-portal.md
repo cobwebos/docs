@@ -8,25 +8,27 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6947358c6c845ff2c2a35cb218c11294a2841dc8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ddce312d6299a7749f1a40a83f67ce3c26876591
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713994"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>使用 Azure 门户管理设备
 
 
 使用 Azure Active Directory (Azure AD) 中的设备管理，可以确保用户从满足安全性和符合性标准的设备访问资源。 
 
-本主题内容：
+本文：
 
 - 假设用户熟悉 [Azure Active Directory 中的设备管理简介](device-management-introduction.md)
 
@@ -185,10 +187,17 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。 管理�
 
 ### <a name="view-or-copy-bitlocker-keys"></a>查看或复制 BitLocker 密钥
 
-管理员可以查看和复制 BitLocker 密钥，帮助用户恢复其加密的驱动器。 这些密钥仅适用于已加密并将其密钥存储在 Azure AD 中的 Windows 设备。 访问设备的详细信息时，可以复制这些密钥。
+你可以查看和复制 BitLocker 密钥，帮助用户恢复其加密的驱动器。 这些密钥仅适用于已加密并将其密钥存储在 Azure AD 中的 Windows 设备。 访问设备的详细信息时，可以复制这些密钥。
  
 ![查看 BitLocker 密钥](./media/device-management-azure-portal/36.png)
 
+若要查看或复制 BitLocker 密钥，你需要是设备所有者，或者是至少分配了以下一个角色的用户：
+
+- 全局管理员
+- Helpdesk Admin
+- 安全管理员
+- 安全读者
+- Intune 服务管理员
 
 
 ## <a name="audit-logs"></a>审核日志

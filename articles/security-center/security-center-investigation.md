@@ -3,35 +3,41 @@ title: 调查 Azure 安全中心的事件和警报 | Microsoft Docs
 description: 本文档介绍如何使用 Azure 安全中心的调查功能调查安全事件和警报。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
-ms.author: yurid
-ms.openlocfilehash: bab7b64a1635639991d639fb838b7118e234aa5b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/29/2018
+ms.author: terrylan
+ms.openlocfilehash: 010c641c247552a8994c9d1c945cd585148fadf9
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340784"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>调查 Azure 安全中心的事件和警报（预览版）
 本文档介绍如何使用 Azure 安全中心的调查功能调查安全事件和警报。
 
 ## <a name="what-is-investigation-in-security-center"></a>什么是安全中心调查？
 使用安全中心的调查功能，可以对潜在的[安全事件](https://docs.microsoft.com/azure/security-center/security-center-incident)进行会审，了解其范围并跟踪其根本原因。
- 
+
 这样做的目的是将所有涉及所调查事件的实体（[安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)、用户、计算机和事件）关联到一起，加快调查过程。  为此，可以通过安全中心将相关数据和所涉及的实体关联在一起，并通过实时图公开这种关联性。你可以通过实时图来浏览对象并将相关信息可视化。
+
+> [!NOTE]
+> 安全中心的调查功能不支持[自定义警报](security-center-custom-alert.md)。
+>
+>
 
 
 ## <a name="how-investigation-works"></a>如何进行调查？
 调查功能包含一个关系图，该图占据了调查仪表板的中心区域。 关系图始终聚焦在特定的实体上，并呈现与之相关的实体。 实体可能是安全警报、用户、计算机或事件。
- 
+
 ![映射](./media/security-center-investigation/security-center-investigation-fig1.png)
 
 用户可以从一个实体导航到另一个实体，只需在图中单击相应的实体即可。 关系图会自动聚焦在所选实体及其相关实体上。 可以从图中删除不再相关的实体。
@@ -42,7 +48,7 @@ ms.lasthandoff: 05/03/2018
 ![路径](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>常规信息
-在关系图中呈现某个实体时，选项卡会显示该实体的其他信息。 “信息”选项卡提供实体的常规信息，这些信息来自不同的可用信息源。 
+在关系图中呈现某个实体时，选项卡会显示该实体的其他信息。 “信息”选项卡提供实体的常规信息，这些信息来自不同的可用信息源。
 
 ![常规信息](./media/security-center-investigation/security-center-investigation-fig3.png)
 
@@ -70,7 +76,7 @@ ms.lasthandoff: 05/03/2018
 
 ### <a name="timeline"></a>时间线
 
-在关系图和各个选项卡中提供的大多数数据是在特定时间段内相关。 此时间范围是使用关系图左上方的时间范围选择器设置的。 调查者可以使用多种方法来选择时间范围。 
+在关系图和各个选项卡中提供的大多数数据是在特定时间段内相关。 此时间范围是使用关系图左上方的时间范围选择器设置的。 调查者可以使用多种方法来选择时间范围。
 
 ![时间线](./media/security-center-investigation/security-center-investigation-fig7.png)
 
@@ -102,7 +108,7 @@ ms.lasthandoff: 05/03/2018
 
     ![调查仪表板](./media/security-center-investigation/security-center-investigation-fig9.png)
 
-此时可以浏览涉及此事件的实体，以及每个实体的更多详细信息。 
+此时可以浏览涉及此事件的实体，以及每个实体的更多详细信息。
 
 ## <a name="see-also"></a>另请参阅
 本文档介绍了如何使用安全中心的调查功能。 若要了解有关安全中心的详细信息，请参阅以下文章：
@@ -110,7 +116,6 @@ ms.lasthandoff: 05/03/2018
 * [Managing and responding to security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)（管理和响应 Azure 安全中心的安全警报）。 了解如何管理警报并响应安全中心的安全事件。
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md)（在 Azure 安全中心进行安全运行状况监视）。 了解如何监视 Azure 资源的运行状况。
 * [了解 Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同类型的安全警报。
-* [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何排查安全中心的常见问题。 
+* [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何排查安全中心的常见问题。
 * [Azure Security Center FAQ](security-center-faq.md)（Azure 安全中心常见问题）。 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。
-

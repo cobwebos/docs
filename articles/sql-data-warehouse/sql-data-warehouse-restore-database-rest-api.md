@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31524418"
 ---
 # <a name="restore-an-azure-sql-data-warehouse-with-rest-apis"></a>使用 REST API 还原 Azure SQL 数据仓库
 使用 REST API 还原 Azure SQL 数据仓库。

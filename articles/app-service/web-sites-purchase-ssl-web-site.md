@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 63592a1a1c20dd25e5eea66d501f26efeaf0cf21
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807452"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -196,13 +197,24 @@ SSL 证书购买过程完成之后，需要打开[应用服务证书](https://po
 
 通过重新生成证书的密钥，将使用证书颁发机构颁发的新证书滚动更新现有证书。
 
+## <a name="renew-the-certificate"></a>续订证书
+
+若要随时打开证书的自动续订，请单击证书管理页中的“自动续订设置”。 选择“开”，然后单击“保存”。
+
+![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+
+若要改为手动续订证书，请单击“手动续订”。
+
+> [!NOTE]
+> 无论是手动续订还是自动续订，续订的证书都不会自动绑定到应用。 若要将其绑定到应用，请参阅[续订证书](./app-service-web-tutorial-custom-ssl.md#renew-certificates)。 
+
 <a name="notrenewed"></a>
-## <a name="why-is-my-ssl-certificate-not-auto-renewed"></a>为什么我的 SSL 证书不自动续订？
+## <a name="why-is-my-certificate-not-auto-renewed"></a>为什么我的证书不自动续订？
 
-如果你的 SSL 证书配置为自动续订，但没有自动续订，则可能存在未完成的域验证。 注意以下事项： 
+如果你的 SSL 证书配置为自动续订，但没有自动续订，则可能存在未完成的域验证。 请注意： 
 
-- GoDaddy，用于生成应用服务证书，要求每三年进行一次域验证。 域管理员每隔三年会收到一封电子邮件，要求对域进行验证。 如果没有检查该电子邮件或者没有验证你的域，则会阻止自动续订应用服务证书。 
-- 在 2017 年 3 月 31 日之前颁发的所有应用服务证书在下次续订时都会要求重新验证域（即使为证书启用了自动续订也是如此）。 这是 GoDaddy 策略变更的结果。 请检查电子邮件并完成此一次性域验证，以继续自动续订应用服务证书。 
+- GoDaddy（用于生成应用服务证书）要求每两年进行一次域验证。 域管理员每隔三年会收到一封电子邮件，要求对域进行验证。 如果没有检查该电子邮件或者没有验证你的域，则会阻止自动续订应用服务证书。 
+- 由于 GoDaddy 策略更改，在 2018 年 3 月 1 日之前颁发的所有应用服务证书在下次续订时都会要求重新验证域（即使为证书启用了自动续订也是如此）。 请检查电子邮件并完成此一次性域验证，以继续自动续订应用服务证书。 
 
 ## <a name="more-resources"></a>更多资源
 

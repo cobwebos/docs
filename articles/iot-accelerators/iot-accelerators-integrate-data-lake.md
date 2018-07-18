@@ -1,19 +1,19 @@
 ---
 title: 将远程监视解决方案与 Azure Data Lake Store 集成 | Microsoft Docs
 description: 了解如何使用 Azure 流分析作业将远程监视解决方案与 Azure Data Lake Store 集成。
-+services: ''
-+suite: iot-suite
-+author: philmea
-+manager: timlt
-+ms.author: philmea
-+ms.date: 04/029/2018
-+ms.topic: article
-+ms.service: iot-suite
-ms.openlocfilehash: 426ded8079ba5d6de4c186a8d18dd284082b0c1c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+author: philmea
+manager: timlt
+ms.author: philmea
+ms.date: 04/29/2018
+ms.topic: conceptual
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.openlocfilehash: 5ba9b5534e986be1cbe55043a9acdd981d2ed7fd
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971731"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>将远程监视解决方案与 Azure Data Lake Store 集成
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 05/20/2018
 
 若要完成本操作指南，需要满足以下条件：
 
-* [部署远程监视预配置解决方案](iot-accelerators-remote-monitoring-deploy.md)。
+* [部署远程监视解决方案加速器](iot-accelerators-remote-monitoring-deploy.md)。
   * 远程监视解决方案会将本文中使用的 IoT 中心和 Azure 流分析作业部署到 Azure 订阅。
 * [部署 Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
   * 应将 Data Lake Store 部署到远程监视解决方案所在的同一区域。
@@ -57,7 +57,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 创建一个 Azure 流分析作业，以便将数据从 IoT 中心流式传输到 Azure Data Lake Store。
 
-1. 单击“创建资源”，从 Marketplace 中选择“物联网”，然后单击“流分析作业”。
+1. 单击“创建资源”，从市场中选择“物联网”，然后单击“流分析作业”。
 
     ![新建流分析作业](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
@@ -180,4 +180,4 @@ Azure 流分析使用类似于 SQL 的查询语言来指定用于流式传输数
 
 ## <a name="next-steps"></a>后续步骤
 
-Azure Data Lake Analytics 可用于针对 Data Lake Store 数据集执行大数据分析。 请在 [Data Lake Analytics 文档](https://docs.microsoft.com/en-us/azure/data-lake-analytics)中了解详细信息。
+Azure Data Lake Analytics 可用于针对 Data Lake Store 数据集执行大数据分析。 请在 [Data Lake Analytics 文档](https://docs.microsoft.com/azure/data-lake-analytics)中了解详细信息。

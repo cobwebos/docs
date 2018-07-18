@@ -1,8 +1,8 @@
 ---
-title: "向上缩放 Azure 中的应用 | Microsoft Docs"
-description: "了解如何扩展 Azure 应用服务中的应用规模以增加容量和功能。"
+title: 向上缩放 Azure 中的应用 | Microsoft Docs
+description: 了解如何扩展 Azure 应用服务中的应用规模以增加容量和功能。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 01c20e7f43c11a077d3870ee32c1d8be98a95696
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306427"
 ---
 # <a name="scale-up-an-app-in-azure"></a>向上缩放 Azure 中的应用
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 02/14/2018
 2. 在应用服务应用页面，单击“所有设置”，然后单击“纵向扩展”。
    
     ![导航以纵向扩展 Azure 应用规模。][ChooseWHP]
-3. 选择层，并单击“选择”。
+3. 选择层，并单击“应用”。
    
     在操作完成后，“通知”选项卡上将闪现绿色的**成功**字样。
 
@@ -97,7 +98,7 @@ ms.lasthandoff: 02/14/2018
   
     [Microsoft Azure 的虚拟机和云服务大小][vmsizes]
   
-* 有关 Azure应用服务最佳实践的信息，包括构建可缩放和可复原的体系结构，请参阅 [Best Practices: Azure App Service Web Apps](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)（最佳实践：Azure 应用服务 Web 应用）。
+* 有关 Azure应用服务最佳实践的信息，包括构建可缩放和可复原的体系结构，请参阅 [Best Practices: Azure App Service Web Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/)（最佳实践：Azure 应用服务 Web 应用）。
 * 有关缩放应用服务应用的视频，请参阅以下资源：
   
   * [When to Scale Azure Websites](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)（何时缩放 Azure 网站）- 主讲人：Stefan Schackow
@@ -107,7 +108,7 @@ ms.lasthandoff: 02/14/2018
 <!-- LINKS -->
 [vmsizes]:/pricing/details/app-service/
 [SQLaccountsbilling]:http://go.microsoft.com/fwlink/?LinkId=234930
-[azuresubscriptions]:http://go.microsoft.com/fwlink/?LinkID=235288
+[azuresubscriptions]:https://account.windowsazure.com/subscriptions
 [portal]: https://portal.azure.com/
 
 <!-- IMAGES -->

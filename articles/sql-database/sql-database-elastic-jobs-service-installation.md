@@ -6,14 +6,15 @@ manager: craigg
 author: ddove
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 4aeb18a4cdd0fc115c0d604797cf60c867455337
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 5760ca693f347068e03770b348d88b3b2adbf678
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645606"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>安装弹性数据库作业概述
 可以通过 PowerShell 或 Azure 门户安装[**弹性数据库作业**](sql-database-elastic-jobs-overview.md)。只有安装了 PowerShell 程序包，才能获取使用 PowerShell API 创建和管理作业的权限。 此外，PowerShell API 目前提供的功能明显多于门户。
@@ -147,7 +148,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>使用门户安装弹性数据库作业组件
 [创建弹性池](sql-database-elastic-pool-manage-portal.md)后，可以安装**弹性数据库作业**组件，以便对弹性池中的每个数据库执行管理任务。 与使用**弹性数据库作业** PowerShell API 不同，门户界面目前限制为只能针对现有的池执行。
 
-**估计完成时间：**10 分钟。
+**估计完成时间：** 10 分钟。
 
 1. 在 [Azure 门户](https://portal.azure.com/#)上的弹性池的仪表板视图中，单击“创建作业”。
 2. 如果是首次创建作业，必须通过单击“**预览版条款**”安装“**弹性数据库作业**”。

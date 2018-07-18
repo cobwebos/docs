@@ -1,6 +1,6 @@
 ---
-title: PowerShell 脚本：将 marketplace 映像添加到 Azure 实验室服务中的自定义实验室 | Microsoft Docs
-description: 此 PowerShell 脚本将 marketplace 映像添加到 Azure 实验室服务中的自定义实验室。
+title: PowerShell 脚本：将市场映像添加到 Azure 开发测试实验室中的实验室 | Microsoft Docs
+description: 此 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 64d168c132edce4ecd128b795fbfa5ab2607cb19
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9a65237b3eba6c9878d73148f0143f20dd60dd79
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636542"
 ---
-# <a name="use-powershell-to-add-a-marketplace-image-to-a-custom-lab"></a>使用 PowerShell 将 marketplace 映像添加到自定义实验室
+# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 将市场映像添加到 Azure 开发测试实验室中的实验室
 
-此示例 PowerShell 脚本将 marketplace 映像添加到 Azure 实验室服务中的自定义实验室。
+此示例 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>先决条件
-* **自定义实验室**。 此脚本要求拥有现有的自定义实验室。 
+* 实验室。 此脚本要求拥有现有的实验室。 
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../powershell_scripts/devtest-lab/add-marketplace-images-to-lab/add-marketplace-images-to-lab.ps1 "Add marketplace images to a custom lab")]
+[!code-powershell[main](../../../powershell_scripts/devtest-lab/add-marketplace-images-to-lab/add-marketplace-images-to-lab.ps1 "Add marketplace images to a lab")]
 
 ## <a name="script-explanation"></a>脚本说明
 

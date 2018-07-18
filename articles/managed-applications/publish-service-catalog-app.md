@@ -8,18 +8,18 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f8bbcad39000e7e71149824535a6a82b26c758
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305304"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247874"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>发布托管应用程序供内部使用
 
-可以创建和发布适用于组织中成员的 Azure [托管应用程序](overview.md)。 例如，IT 部门可发布确保符合组织标准的托管应用程序。 这些托管应用程序通过服务目录（而不是 Azure Marketplace）提供。
+可以创建和发布适用于组织中成员的 Azure [托管应用程序](overview.md)。 例如，IT 部门可发布符合组织标准的托管应用程序。 这些托管应用程序通过服务目录（而不是 Azure 市场）提供。
 
 若要发布服务目录的托管应用程序，必须执行以下操作：
 
@@ -29,11 +29,13 @@ ms.locfileid: "34305304"
 * 确定需要对客户订阅中的资源组具有访问权限的用户、组或应用程序。
 * 创建指向 .zip 包并请求标识访问权限的托管应用程序定义。
 
-对于本文，托管应用程序只包含存储帐户。 它用于说明发布托管应用程序的步骤。 有关完整示例，请参阅 [Azure 托管应用程序的示例项目](sample-projects.md)。
+对于本文，托管应用程序只具有存储帐户。 它用于说明发布托管应用程序的步骤。 有关完整示例，请参阅 [Azure 托管应用程序的示例项目](sample-projects.md)。
+
+本文中的 PowerShell 示例需要 Azure PowerShell 6.2 或更高版本。 如果需要，请[更新版本](/powershell/azure/install-azurerm-ps)。
 
 ## <a name="create-the-resource-template"></a>创建资源模板
 
-每个托管应用程序定义均包含一个名为 **mainTemplate.json** 的文件。 可在其中定义要预配的 Azure 资源。 该模板与常规资源管理器模板并没有不同。
+每个托管应用程序定义均包含一个名为 **mainTemplate.json** 的文件。 可在其中定义要部署的 Azure 资源。 该模板与常规资源管理器模板并没有不同。
 
 创建一个名为 **mainTemplate.json** 的文件。 该名称区分大小写。
 
@@ -209,6 +211,10 @@ New-AzureRmManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
+### <a name="make-sure-users-can-see-your-definition"></a>请确保用户可以看到你的定义
+
+你可以访问托管应用程序定义，但你希望确保组织中的其他用户可以访问它。 至少授予他们对定义的读者角色。 他们可能已从订阅或资源组继承了此级别的访问权限。 若要查看谁可以访问定义并添加用户或组，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
+
 ## <a name="create-the-managed-application"></a>创建托管应用程序
 
 可以通过门户、PowerShell 或 Azure CLI 部署托管应用程序。
@@ -256,6 +262,16 @@ New-AzureRmManagedApplication `
 1. 从可用解决方案列表中查找要创建的托管应用程序并选择它。 选择**创建**。
 
    ![查找托管应用程序](./media/publish-service-catalog-app/find-application.png)
+
+   如果无法通过门户查看托管应用程序定义，则可能需要更改门户设置。 选择“目录和订阅筛选器”。
+
+   ![选择订阅筛选器](./media/publish-service-catalog-app/select-filter.png)
+
+   检查全局订阅筛选器是否包括包含托管应用程序定义的订阅。
+
+   ![检查订阅筛选器](./media/publish-service-catalog-app/check-global-filter.png)
+
+   选择订阅后，重新开始创建服务目录托管应用程序。 你现在应该看到该定义。
 
 1. 提供托管应用程序所需的基本信息。 指定订阅和要包含托管应用程序的新资源组。 对于位置，选择“美国中西部”。 完成后，选择“确定”。
 

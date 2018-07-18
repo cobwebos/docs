@@ -1,13 +1,13 @@
 ---
-title: "使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例 | Microsoft Docs"
-description: "了解如何使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例。"
+title: 使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例 | Microsoft Docs
+description: 了解如何使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fa09de63c6f148064861479138934976f1f3e38
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 646c30be171a5aaaa17e40eae3cef6952b2b2747
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657054"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -90,7 +91,7 @@ ms.lasthandoff: 12/08/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP 多 SID 高可用性配置)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -257,7 +258,7 @@ SAP 开发了可以取代群集共享磁盘的新方法和新方案，用于将 
 
 ![图 2：采用 SMB 文件共享的 SAP ASCS/SCS HA 体系结构][sap-ha-guide-figure-8004]
 
-**图 2：**采用 SMB 文件共享的新 SAP ASCS/SCS HA 体系结构
+**图 2：** 采用 SMB 文件共享的新 SAP ASCS/SCS HA 体系结构
 
 SMB 文件共享的先决条件：
 
@@ -272,7 +273,7 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 
 ![图 3：使用文件共享所需的 SAP \<SID\> 群集角色资源][sap-ha-guide-figure-8005]
 
-**图 3：**使用文件共享所需的 SAP &lt;SID&gt; 群集角色资源
+**图 3：** 使用文件共享所需的 SAP &lt;SID&gt; 群集角色资源
 
 
 ## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>在 Azure 中用作 SAPMNT 文件共享且具有存储空间直通功能的横向扩展文件共享
@@ -281,7 +282,7 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 
 ![图 4：用于保护 SAP 全局主机文件的横向扩展文件共享][sap-ha-guide-figure-8006]
 
-**图 4：**用于保护 SAP 全局主机文件的横向扩展文件共享
+**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享
 
 > [!IMPORTANT]
 > Microsoft Azure 云和本地环境均完全支持横向扩展文件共享。
@@ -334,7 +335,7 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 
 ![图 5：在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享][sap-ha-guide-figure-8007]
 
-**图 5：**在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享
+**图 5：** 在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享
 
 > [!IMPORTANT]
 > 在 Azure 云中，每个用于 SAP 和横向扩展文件共享的群集都必须部署在自己的 Azure 可用性集中。 这样可确保将群集 VM 分散放置在其下的 Azure 基础结构中。

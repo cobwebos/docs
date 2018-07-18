@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect Sync Service Manager Metaverse 搜索 | Microsoft 文档"
-description: "了解 Azure AD Connect 的 Synchronization Service Manager 中的“Metaverse 搜索”选项卡。"
+title: Azure AD Connect Sync Service Manager Metaverse 搜索 | Microsoft 文档
+description: 了解 Azure AD Connect 的 Synchronization Service Manager 中的“Metaverse 搜索”选项卡。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 20234dd4-3328-4817-b7ff-268f953d376d
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d62542f905a76788852649eec92234a62e3d4853
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 52f5a12a36c43fad54ef562e367bd4bdf63da904
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594374"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Sync Service Manager Metaverse 搜索
 

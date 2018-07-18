@@ -11,12 +11,12 @@
   items:
     - name: 创建函数 - 门户
       href: functions-create-first-azure-function.md
-    - name: 创建函数 - Azure CLI
-      href: functions-create-first-azure-function-azure-cli.md
     - name: 创建函数 - Visual Studio
       href: functions-create-your-first-function-visual-studio.md
     - name: 创建函数 - Java/Maven
       href: functions-create-first-java-maven.md
+    - name: 创建函数 - Azure CLI
+      href: functions-create-first-azure-function-azure-cli.md
     - name: 创建函数 - Linux
       href: functions-create-first-azure-function-azure-cli-linux.md
     - name: 触发器
@@ -49,8 +49,8 @@
       href: functions-openapi-definition.md
     - name: 使用事件网格调整图像大小
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: 创建使用 Functions 作为 API 的无服务器 Web 应用程序
-      href: 'https://docs.microsoft.com/learn/build-serverless-app/index'
+    - name: 创建无服务器 Web 应用
+      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
     - name: Linux 上的 Functions
       items:
         - name: 自定义映像
@@ -97,6 +97,8 @@
       items:
         - name: 概述
           href: durable-functions-overview.md
+        - name: 函数类型和功能
+          href: durable-functions-types-features-overview.md
         - name: 绑定
           href: durable-functions-bindings.md
         - name: 检查点和重播
@@ -138,9 +140,11 @@
         - name: 测试函数
           href: functions-test-a-function.md
         - name: 在本地开发和调试
-          href: functions-run-local.md
+          href: functions-develop-local.md
         - name: Visual Studio 开发
           href: functions-develop-vs.md
+        - name: Core Tools 开发
+          href: functions-run-local.md
         - name: 管理连接
           href: manage-connections.md
         - name: 错误处理。

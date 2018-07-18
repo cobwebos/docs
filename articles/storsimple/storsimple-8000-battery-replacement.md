@@ -1,12 +1,12 @@
 ---
-title: "更换 Microsoft Azure StorSimple 8000 系列设备上的电池 | Microsoft Docs"
-description: "介绍如何移除、替换和维护 StorSimple 设备上的备用电池模块。"
+title: 更换 Microsoft Azure StorSimple 8000 系列设备上的电池 | Microsoft Docs
+description: 介绍如何移除、替换和维护 StorSimple 设备上的备用电池模块。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27742807"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的备用电池模块
 

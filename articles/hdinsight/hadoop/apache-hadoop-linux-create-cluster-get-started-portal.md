@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: nitinme
-ms.openlocfilehash: 69c3ebf5a51151cd8e77c637ddd57eb18c8a9d15
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dd803fed4bc6a25904b2ea00a5b21af606ad7153
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097890"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-the-azure-portal"></a>快速入门：通过 Azure 门户在 Azure HDInsight 中开始使用 Hadoop 和 Hive
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 05/07/2018
 
 目前，HDInsight 附带[七个不同的群集类型](./apache-hadoop-introduction.md#cluster-types-in-hdinsight)。 每个群集类型都支持一组不同的组件。 所有群集类型都支持 Hive。 有关 HDInsight 中受支持组件的列表，请参阅 [HDInsight 提供的 Hadoop 群集版本中有哪些新功能？](../hdinsight-component-versioning.md)  
 
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-hadoop-cluster"></a>创建 Hadoop 群集
 
@@ -65,7 +66,7 @@ ms.lasthandoff: 05/07/2018
     
     |属性  |说明  |
     |---------|---------|
-    |**群集类型**     | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
+    |**群集类型**     | 选择“Hadoop” |
     |**操作系统**     |  选择 Azure 订阅。 |
     |**版本**     | 选择 Hadoop 2.7.3 (HDI 3.6)|
 
@@ -79,7 +80,7 @@ ms.lasthandoff: 05/07/2018
     
     |属性  |说明  |
     |---------|---------|
-    |**主存储类型**     | 在本文中，选择“Azure 存储”，将 Azure 存储 Blob 用作默认存储帐户。 还可以将 Azure Data Lake Store 作为默认存储。 |
+    |**主存储类型**     | 在本文中，选择“Azure 存储”，将 Azure 存储 Blob 用作默认存储帐户。 还可以将 Azure Data Lake Storage 用作默认存储。 |
     |**选择方法**     |  在本文中，选择“我的订阅”，使用 Azure 订阅中的存储帐户。 若要使用其他订阅中的存储帐户，请选择“访问密钥”，然后提供该帐户的访问密钥。 |
     |**新建存储帐户**     | 为存储帐户提供名称。|
 
@@ -89,7 +90,7 @@ ms.lasthandoff: 05/07/2018
 
     ![HDInsight Linux 入门群集摘要](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-portal-summary.png "HDInsight Linux 入门群集摘要")
       
-4. 选择**创建**。 门户仪表板上应会显示标题为“为 HDInsight 提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
+4. 选择“创建”。 门户仪表板上应会显示标题为“为 HDInsight 提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
 
     ![HDInsight Linux 入门资源组](./media/apache-hadoop-linux-create-cluster-get-started-portal/deployment-progress-tile.png "Azure HDInsight 群集资源组")
 
@@ -129,9 +130,9 @@ ms.lasthandoff: 05/07/2018
    > 
    > 
 
-5. 选择”**执行**“。 “结果”选项卡将显示在“查询”选项卡下面，并显示有关作业的信息。 
+5. 选择“执行”。 “结果”选项卡将显示在“查询”选项卡下面，并显示有关作业的信息。 
    
-    完成查询后，“查询”选项卡将显示操作结果。 **hivesampletable**的表。 所有 HDInsight 群集都随附了此示例 Hive 表。
+    完成查询后，“查询”选项卡将显示操作结果。 应会看到一个名为 **hivesampletable** 的表。 所有 HDInsight 群集都随附了此示例 Hive 表。
    
     ![HDInsight Hive 视图](./media/apache-hadoop-linux-tutorial-get-started/hiveview.png "HDInsight Hive 视图查询编辑器")
 
@@ -163,12 +164,12 @@ ms.lasthandoff: 05/07/2018
 
     ![删除 HDInsight 群集](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-delete-cluster.png "删除 HDInsight 群集")
 
-2. 如果希望删除群集和默认存储库帐户，请选择资源组名称（之前的屏幕截图中已突出显示），打开资源组页。
+2. 如果希望删除群集和默认存储帐户，请选择资源组名称（之前的屏幕截图中已突出显示），打开资源组页。
 
 3. 选择“删除资源组”，删除资源组（包括群集和默认存储帐户）。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
 
 ## <a name="next-steps"></a>后续步骤
-本教程已介绍如何使用 Resource Manager 模板创建基于 Linux 的 HDInsight 群集，以及如何执行基本 Hive 查询。 下一篇文章将介绍如何使用 Hadoop on HDInsight 执行提取、转换和加载 (ETL) 操作。
+本教程已介绍如何使用资源管理器模板创建基于 Linux 的 HDInsight 群集，以及如何执行基本 Hive 查询。 下一篇文章将介绍如何使用 Hadoop on HDInsight 执行提取、转换和加载 (ETL) 操作。
 
 > [!div class="nextstepaction"]
 >[使用 Apache Hive on HDInsight 提取、转换和加载数据](../hdinsight-analyze-flight-delay-data-linux.md)
@@ -176,6 +177,7 @@ ms.lasthandoff: 05/07/2018
 如果已准备好开始处理自己的数据，并需要进一步了解 HDInsight 存储数据的方式或如何将数据导入 HDInsight，请参阅以下文章：
 
 * 有关 HDInsight 如何使用 Azure 存储的信息，请参阅[将 Azure 存储与 HDInsight 配合使用](../hdinsight-hadoop-use-blob-storage.md)。
+* 有关如何创建包含 Data Lake Storage 的 HDInsight 群集的信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * 若要了解如何将数据上传到 HDInsight，请参阅[将数据上传到 HDInsight](../hdinsight-upload-data.md)。
 
 有关如何使用 HDInsight 分析数据的详细信息，请参阅以下文章：

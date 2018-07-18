@@ -1,6 +1,6 @@
 ---
-title: "将域委托给 Azure DNS | Microsoft 文档"
-description: "了解如何更改域委托并使用 Azure DNS 名称服务器提供域托管。"
+title: 将域委托给 Azure DNS | Microsoft 文档
+description: 了解如何更改域委托并使用 Azure DNS 名称服务器提供域托管。
 services: dns
 documentationcenter: na
 author: KumudD
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030512"
 ---
 # <a name="delegate-a-domain-to-azure-dns"></a>将域委托给 Azure DNS
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 01/24/2018
    |---|---|---|
    |**Name**|contoso.net|提供 DNS 区域的名称。|
    |**订阅**|[订阅]|选择要在其中创建应用程序网关的订阅。|
-   |**资源组**|**新建：**contosoRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups)这篇概述文章。|
+   |**资源组**|**新建：** contosoRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups)这篇概述文章。|
    |**位置**|美国西部||
 
 > [!NOTE]
@@ -171,7 +172,7 @@ default TTL = 300 (5 mins)
    |---|---|---|
    |**Name**|partners.contoso.net|提供 DNS 区域的名称。|
    |**订阅**|[订阅]|选择要在其中创建应用程序网关的订阅。|
-   |**资源组**|**使用现有：**contosoRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
+   |**资源组**|**使用现有：** contosoRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
    |**位置**|美国西部||
 
 > [!NOTE]

@@ -1,19 +1,20 @@
 ---
-title: "在 Azure 门户中为 Azure Database for MySQL 配置指标警报"
-description: "本文介绍了如何通过 Azure 门户配置和访问针对 Azure Database for MySQL 的指标警报。"
+title: 在 Azure 门户中为 Azure Database for MySQL 配置指标警报
+description: 本文介绍了如何通过 Azure 门户配置和访问针对 Azure Database for MySQL 的指标警报。
 services: mysql
 author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 025e7089f797b0accf8ee7d14028e5b5ab23c113
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3accc31f433e6db40c7d1de2b56dfbd4180b4933
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265160"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>使用 Azure 门户设置针对 Azure Database for MySQL 指标的警报 
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 02/28/2018
 * 调用 Webhook
 
 可使用以下项配置并获取预警规则相关信息：
-* [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
 * [命令行接口 (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)

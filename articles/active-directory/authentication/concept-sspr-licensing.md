@@ -10,30 +10,32 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 78d4d721f2821a8365185c0bad6d795c67a75292
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 64c12177e5cf6c82018731b493c0da22e1895b7f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33864648"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855518"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD 自助密码重置的授权要求
 
-要使 Azure Active Directory (Azure AD) 密码重置正常工作，*必须在组织中至少分配一个许可证*。 我们不对密码重置体验强制实施每用户授权。 如果用户从该许可证覆盖的任意功能中受益（无论间接还是直接），都需要相应的许可证。
+要使 Azure Active Directory (Azure AD) 密码重置正常工作，*必须在组织中至少为该用户分配一个许可证*。 如果用户从该许可证覆盖的任意功能中受益（无论间接还是直接），都需要相应的许可证。
 
 * **仅限云用户**：Office 365 任何付费 SKU 或 Azure AD Basic
 * **云**或**本地用户**：Azure AD Premium P1 或 P2、企业移动性 + 安全性 (EMS) 或 Microsoft 365
 
-## <a name="licenses-required-for-password-writeback"></a>密码写回所需的许可证
+## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
+
+**通过本地写回实现自助密码重置/更改/解锁是 Azure AD 的一项高级功能**。 有关许可的详细信息，请参阅 [Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 若要使用密码写回，必须在租户中分配以下许可证之一：
 
 * Azure AD Premium P1
 * Azure AD Premium P2
-* 企业移动性 + 安全性 E3
-* 企业移动性 + 安全性 E5
-* Microsoft 365 E3
-* Microsoft 365 E5
+* 企业移动性 + 安全性 E3 或 A3
+* 企业移动性 + 安全性 E5 或 A5
+* Microsoft 365 E3 或 A3
+* Microsoft 365 E5 或 A5
 * Microsoft 365 F1
 
 > [!WARNING]
@@ -49,7 +51,7 @@ ms.locfileid: "33864648"
 
 ## <a name="enable-group-or-user-based-licensing"></a>启用基于组或基于用户的许可
 
-Azure AD 现在支持基于组的许可。 管理员可以将许可证批量分配给一组用户，而不是一次一个用户地分配。 有关详细信息，请参阅[分配、验证许可证和解决许可证问题](../active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses)。
+Azure AD 现在支持基于组的许可。 管理员可以将许可证批量分配给一组用户，而不是一次一个用户地分配。 有关详细信息，请参阅[分配、验证许可证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)。
 
 某些 Microsoft 服务不能在所有位置使用。 将许可证分配给用户之前，管理员必须为该用户指定“使用位置”属性。 可在 Azure 门户中的“用户” > “配置文件” > “设置”部分下完成分配许可证。 *使用组许可证分配时，任何没有指定使用位置的用户将继承该目录的位置。*
 

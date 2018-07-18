@@ -17,20 +17,16 @@
       href: quick-deploy-iot-central.md
 - name: 教程
   items:
-    - name: 构建者
-      items:
-        - name: 1 - 定义新设备类型
-          href: tutorial-define-device-type.md
-        - name: 2 - 配置规则
-          href: tutorial-configure-rules.md
-        - name: 3 - 自定义操作员的视图
-          href: tutorial-customize-operator.md
-    - name: 运算符
-      items:
-        - name: 4 - 监视设备
-          href: tutorial-monitor-devices.md
-        - name: 5 - 添加设备
-          href: tutorial-add-device.md
+    - name: 1 - 定义新设备类型
+      href: tutorial-define-device-type.md
+    - name: 2 - 配置规则
+      href: tutorial-configure-rules.md
+    - name: 3 - 自定义操作员的视图
+      href: tutorial-customize-operator.md
+    - name: 4 - 监视设备
+      href: tutorial-monitor-devices.md
+    - name: 5 - 添加设备
+      href: tutorial-add-device.md
 - name: 概念
   items:
     - name: 体系结构
@@ -41,10 +37,12 @@
   items:
     - name: 管理员
       items:
-        - name: 创建应用程序
-          href: howto-create-application.md
+        - name: 以 CSP 身份创建和管理应用程序
+          href: howto-create-and-manage-applications-as-CSP.md
         - name: 管理应用程序
           href: howto-administer.md
+        - name: 导出数据
+          href: howto-export-data.md
     - name: 构建者
       items:
         - name: 设置设备模板
@@ -55,6 +53,10 @@
           href: howto-create-telemetry-rules.md
         - name: 创建事件中心
           href: howto-create-event-rules.md
+        - name: 在 Microsoft Flow 中构建工作流
+          href: howto-add-microsoft-flow.md
+        - name: 配置主页
+          href: howto-configure-homepage.md
         - name: 准备和上传图像
           href: howto-prepare-images.md
     - name: 运算符

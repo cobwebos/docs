@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0c18fc065ae4d9a9401a8d603f051e9d6236c538
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c2c7ea043d2da41442829321ac663325f30ff066
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297322"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>连接 Amazon Web Services 帐户
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/28/2018
 
 第一个步骤是从 Azure 成本管理门户中获取唯一的连接通行短语。 该通行短语在 AWS 中用作**外部 ID**。
 
-1. 可以从 Azure 门户打开 Cloudyn 门户，也可以导航到 [https://azure.cloudyn.com](https://azure.cloudyn.com) 并登录。
+1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 [https://azure.cloudyn.com](https://azure.cloudyn.com) 并进行登录。
 2. 单击齿轮符号，然后选择“云帐户”。
 3. 在“帐户管理”中选择“AWS 帐户”选项卡，然后单击“新增 +”。
 4. 在“添加 AWS 帐户”对话框中，复制“外部 ID”并保存此值，以便在下一部分创建 AWS 角色时使用。 “外部 ID”是帐户唯一的 ID。 在下图中，示例外部 ID 是 _Contoso_ 后接一个数字。 你的 ID 与此不同。  
@@ -54,7 +55,7 @@ ms.lasthandoff: 04/28/2018
 
 ### <a name="configure-aws-iam-role-access-in-cost-management"></a>在成本管理中配置 AWS IAM 角色访问
 
-1. 可以从 Azure 门户打开 Cloudyn 门户，也可以导航到 https://azure.cloudyn.com/ 并登录。
+1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 https://azure.cloudyn.com/ 并进行登录。
 2. 单击齿轮符号，然后选择“云帐户”。
 3. 在“帐户管理”中选择“AWS 帐户”选项卡，然后单击“新增 +”。
 4. 在“帐户名称”中，键入帐户的名称。
@@ -91,7 +92,7 @@ AWS 帐户显示在帐户列表中。 列出的“所有者 ID”与“角色 AR
 
 ### <a name="configure-aws-iam-user-based-access-in-cost-management"></a>在成本管理中配置基于 AWS IAM 用户的访问
 
-1. 可以从 Azure 门户打开 Cloudyn 门户，也可以导航到 https://azure.cloudyn.com/ 并登录。
+1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 https://azure.cloudyn.com/ 并进行登录。
 2. 单击齿轮符号，然后选择“云帐户”。
 3. 在“帐户管理”中选择“AWS 帐户”选项卡，然后单击“新增 +”。
 4. 对于“帐户名称”，请键入帐户名称。

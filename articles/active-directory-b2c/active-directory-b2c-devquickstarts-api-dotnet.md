@@ -1,21 +1,21 @@
 ---
-title: 保护 Web API - ASP.NET - Azure Active Directory B2C | Microsoft Docs
+title: 在 Azure Active Directory B2C 中保护 ASP.NET Web API | Microsoft Docs
 description: 如何使用 Azure Active Directory B2C 构建 .NET Web API，以及使用 OAuth 2.0 身份验证访问令牌保护该 API。
 services: active-directory-b2c
-documentationcenter: .net
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2018
 ms.author: davidmu
-ms.openlocfilehash: c64ca3546c5c2d21b00b379c297c9265b264cb9a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 2e93a8340699d1fcf68c53baa87990e799bc933d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447570"
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C：构建 .NET Web API
 

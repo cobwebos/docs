@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 0303f16de143247ac30a7dd4773b4da11f29c9d3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38573394"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -44,7 +45,7 @@ ms.lasthandoff: 05/07/2018
 | **VM 基本任务** | | | |
 | 添加和删除自定义映像 |否 |是 |是 |
 | 添加、更新和删除公式 |是 |是 |是 |
-| Azure Marketplace 映像允许列表 |否 |是 |是 |
+| 将 Azure 市场映像加入允许列表 |否 |是 |是 |
 | **VM 任务** | | | |
 | 创建 VM |是 |是 |是 |
 | 启动、停止和删除 VM |用户仅创建 VM |是 |是 |
@@ -60,25 +61,27 @@ ms.lasthandoff: 05/07/2018
 > 
 
 ## <a name="add-an-owner-or-user-at-the-lab-level"></a>在实验室级别添加所有者或用户
-可以通过 Azure 门户在实验室级别添加所有者和用户。 这包括具有有效的 [Microsoft 帐户 (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account) 的外部用户。
+可以通过 Azure 门户在实验室级别添加所有者和用户。 用户可以是具有有效的 [Microsoft 帐户 (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account) 的外部用户。
 以下步骤介绍在 Azure 开发测试实验室中将所有者或用户添加到实验室的过程：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。
-4. 在实验室的边栏选项卡上，选择“配置”。 
-5. 在“配置”边栏选项卡上，选择“用户”。
-6. 在“用户”边栏选项卡上选择“+ 添加”。
-   
+4. 在实验室的边栏选项卡中，选择“配置和策略”。 
+5. 在“配置和策略”页面，选择左侧菜单中的“访问控制 (IAM)”。 
+6. 选择工具栏上的“添加”以将用户添加到角色。
+
     ![添加用户](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-7. 在“选择角色”边栏选项卡上，选择所需的角色。 [每个角色可以执行的操作](#actions-that-can-be-performed-in-each-role)部分列出了所有者、开发测试用户和参与者三种角色的用户可以执行的各种操作。
-8. 在“添加用户”边栏选项卡上，输入要添加到指定角色中的用户的电子邮件地址或名称。 如果找不到用户，则会显示一条错误消息来解释此问题。 如果找到该用户，则会列出并选择该用户。 
-9. 选择“选择”。
-10. 选择“确定”关闭“添加访问”边栏选项卡。
+1. 在“添加权限”窗口中，执行以下操作： 
+    1. 选择一个角色（例如：DevTest Labs 用户）。 [每个角色可以执行的操作](#actions-that-can-be-performed-in-each-role)部分列出了所有者、开发测试用户和参与者三种角色的用户可以执行的各种操作。
+    2. 选择要被添加到角色的用户。 
+    3. 选择“保存”。 
+
+        ![将用户添加到角色](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. 返回到“用户”边栏选项卡时，已添加该用户。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>使用 PowerShell 将外部用户添加到实验室
-除了添加 Azure 门户中的用户，还可以使用 PowerShell 脚本将外部用户添加到实验室。 在下面的示例中，只需修改“要更改的值”注释下的参数值便可。
+除了添加 Azure 门户中的用户，还可以使用 PowerShell 脚本将外部用户添加到实验室。 在下例中，修改“要更改的值”注释下的参数值。
 可以从 Azure 门户的实验室边栏选项卡中检索 `subscriptionId`、`labResourceGroup` 和 `labName` 值。
 
 > [!NOTE]

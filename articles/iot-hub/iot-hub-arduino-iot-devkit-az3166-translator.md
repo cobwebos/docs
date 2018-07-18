@@ -1,24 +1,20 @@
 ---
 title: 使用 Azure 函数和认知服务的 IoT DevKit 翻译 | Microsoft Docs
-description: 使用 IoT DevKit 上的麦克风接收语音消息，并使用 Azure 认知服务将语音消息处理为英文翻译文本。
-services: iot-hub
-documentationcenter: ''
+description: 使用 IoT DevKit 上的麦克风接收语音消息，并使用 Azure 认知服务将语音消息处理为英文翻译文本
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
-ms.service: iot-hube
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+manager: jeffya
+ms.service: iot-hub
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: 20e5a5f4fb381dedc42d698464819a6098c3579b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ba2325272552a13d6e464797b1fb523415393100
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945932"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>将 IoT DevKit AZ3166 与 Azure 函数和认知服务配合使用生成语言翻译
 
@@ -42,13 +38,16 @@ ms.lasthandoff: 05/07/2018
 
 ### <a name="a-start-vs-code"></a>A. 启动 VS Code
 
-- 确保 DevKit 未连接到电脑。
+- 确保 DevKit 已连接到电脑。
 - 启动 VS Code
 - 将 DevKit 连接到计算机。
 
 ### <a name="b-open-the-arduino-examples-folder"></a>B. 打开 Arduino 示例文件夹
 
-展开左侧的“ARDUINO 示例”>“MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“DevKitTranslator”。 它将打开一个新的 VS Code 窗口，其中包含 DEVKITTRANSLATOR 项目文件夹。
+展开左侧的“ARDUINO 示例”>“MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“DevKitTranslator”。 它将打开一个新的 VS Code 窗口，其中包含 DEVKITTRANSLATOR 项目文件夹。  
+
+> [!NOTE]
+> 如果看不到“MXCHIP AZ3166”部分的示例，请确保设备已正确连接，并重启 Visual Studio Code。  
 
 ![IoT DevKit 示例](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
 

@@ -17,10 +17,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 083b0c956055ab5b54a4af2eec57f096613cbe65
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681513"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 应用推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -42,7 +43,7 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-- 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。[](https://azure.microsoft.com/free) 
+- 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一 [个免费试用帐户](https://azure.microsoft.com/free)。 
 - [Windows Azure Messaging Framework]
 - 最新版本的 [Xcode]
 - 支持 iOS 10（或更高版本）的设备
@@ -164,7 +165,7 @@ ms.lasthandoff: 05/07/2018
 11. 若要验证是否没有故障，请在设备上生成并运行应用。
 
 ## <a name="send-test-push-notifications"></a>发送测试推送通知
-可以在 [Azure 门户]中使用“测试性发送”选项，在应用中测试通知的发送。 它会向设备发送测试推送通知。
+可以在 [Azure 门户]中使用“测试性发送”选项，在应用中测试通知的发送。 它会向设备发送测试性的推送通知。
 
 ![Azure 门户 - 测试性发送][30]
 

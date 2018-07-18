@@ -1,6 +1,6 @@
 ---
-title: "使用增量快照备份和恢复非托管的 Azure Windows VM 磁盘 | Microsoft Docs"
-description: "创建自定义解决方案，使用增量快照备份和恢复 Azure Windows 虚拟机磁盘。"
+title: 使用增量快照备份和恢复非托管的 Azure Windows VM 磁盘 | Microsoft Docs
+description: 创建自定义解决方案，使用增量快照备份和恢复 Azure Windows 虚拟机磁盘。
 services: virtual-machines-windows
 documentationcenter: na
 author: aungoo-msft
@@ -15,9 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: aungoo
 ms.openlocfilehash: aea91f4d402e88d74cc1917efe1b368c458f1322
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696701"
 ---
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

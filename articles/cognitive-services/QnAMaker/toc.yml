@@ -1,0 +1,134 @@
+- name: QnA Maker 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 QnA Maker？
+      href: Overview/overview.md
+    - name: 支持的语言
+      href: Overview/languages-supported.md
+- name: 快速入门
+  items:
+    - name: 创建新的知识库
+      items:
+        - name: 'C#'
+          href: Quickstarts/create-new-kb-csharp.md
+        - name: Go
+          href: Quickstarts/create-new-kb-go.md
+        - name: Java
+          href: Quickstarts/create-new-kb-java.md
+        - name: Node.js
+          href: Quickstarts/create-new-kb-nodejs.md
+        - name: Python
+          href: Quickstarts/create-new-kb-python.md
+    - name: 更新知识库
+      items:
+        - name: 'C#'
+          href: Quickstarts/update-kb-csharp.md
+        - name: Go
+          href: Quickstarts/update-kb-go.md
+        - name: Java
+          href: Quickstarts/update-kb-java.md
+        - name: Node.js
+          href: Quickstarts/update-kb-nodejs.md
+        - name: Python
+          href: Quickstarts/update-kb-python.md
+    - name: 发布知识库
+      items:
+        - name: 'C#'
+          href: Quickstarts/publish-kb-csharp.md
+        - name: Go
+          href: Quickstarts/publish-kb-go.md
+        - name: Java
+          href: Quickstarts/publish-kb-java.md
+        - name: Node.js
+          href: Quickstarts/publish-kb-nodejs.md
+        - name: Python
+          href: Quickstarts/publish-kb-python.md
+- name: 概念
+  items:
+    - name: 知识库
+      href: Concepts/knowledge-base.md
+    - name: 知识库的开发生命周期
+      href: Concepts/development-lifecycle-knowledge-base.md
+    - name: 置信度分数
+      href: Concepts/confidence-score.md
+    - name: 支持的数据源
+      href: Concepts/data-sources-supported.md
+- name: 操作指南
+  items:
+    - name: 设置 QnA Maker 服务
+      href: How-To/set-up-qnamaker-service-azure.md
+    - name: 创建并发布知识库
+      href: Quickstarts/create-publish-knowledge-base.md
+    - name: 创建知识库
+      href: How-To/create-knowledge-base.md
+    - name: 将元数据与 GenerateAnswer API 配合使用
+      href: How-To/metadata-generateanswer-usage.md
+    - name: 从预览版迁移知识库
+      href: Tutorials/migrate-knowledge-base.md
+    - name: 编辑知识库
+      href: How-To/edit-knowledge-base.md
+    - name: 针对知识库进行协作
+      href: How-To/collaborate-knowledge-base.md
+    - name: 测试知识库
+      href: How-To/test-knowledge-base.md
+    - name: 发布知识库
+      href: How-To/publish-knowledge-base.md
+    - name: 获取有关知识库的分析
+      href: How-To/get-analytics-knowledge-base.md
+    - name: 管理密钥
+      href: How-To/key-management.md
+    - name: 以另一种语言创建知识库
+      href: How-To/language-knowledge-base.md
+    - name: 使用 Azure 机器人服务创建 QnA 机器人
+      href: Tutorials/create-qna-bot.md
+    - name: 集成 QnA Maker 和 LUIS
+      href: Tutorials/integrate-qnamaker-luis.md
+    - name: 为 QnA Maker 创建业务连续性计划
+      href: How-To/business-continuity-plan.md
+    - name: 为 QnA Maker 开发选择容量
+      href: Tutorials/choosing-capacity-qnamaker-deployment.md
+    - name: 升级 QnA Maker 服务
+      href: How-To/upgrade-qnamaker-service.md
+    - name: 排查 QnAMaker 运行时问题并对其更新
+      href: How-To/troubleshooting-runtime.md
+    - name: 使用 QnA Maker API
+      items:
+        - name: 'C#'
+          href: Quickstarts/csharp.md
+        - name: Java
+          href: Quickstarts/java.md
+        - name: Node.js
+          href: Quickstarts/nodejs.md
+        - name: Python
+          href: Quickstarts/python.md
+        - name: Go
+          href: Quickstarts/go.md
+- name: 引用
+  items:
+    - name: API 参考
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff'
+    - name: 常见问题
+      href: faqs.md
+    - name: 最佳实践
+      href: Concepts/best-practices.md
+    - name: 限制
+      href: limits.md
+    - name: 术语表
+      href: glossary.md
+- name: 资源
+  items:
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://aka.ms/qnamaker-pricing'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
+    - name: UserVoice
+      href: 'https://aka.ms/qnamaker-uservoice'
+    - name: 搜索
+      href: 'https://docs.microsoft.com/en-us/search/index?search=QnAMaker'
+    - name: 博客
+      href: 'https://blog.botframework.com/category/QnAMaker/'

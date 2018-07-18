@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 云服务中运行启动任务 | Microsoft Docs"
-description: "启动任务可帮助为应用准备云服务环境。 这会讲授启动任务的工作方式以及如何生成启动任务"
+title: 在 Azure 云服务中运行启动任务 | Microsoft Docs
+description: 启动任务可帮助为应用准备云服务环境。 这会讲授启动任务的工作方式以及如何生成启动任务
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 886939be-4b5b-49cc-9a6e-2172e3c133e9
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22999132"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何配置和运行云服务的启动任务
 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。

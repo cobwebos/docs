@@ -4,20 +4,18 @@ description: 了解 Azure Cosmos DB MongoDB API 为 MongoDB 3.4 提供的功能�
 services: cosmos-db
 author: alekseys
 manager: kfile
-documentationcenter: ''
-ms.assetid: 29b6547c-3201-44b6-9e0b-e6f56e473e24
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: cadf637dd3a71e040fef8188f7290907659e5cdb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2c86cbe2ac9a0611873aca35480af92304abe5b5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928679"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>针对 MongoDB 功能和语法的 MongoDB API 支持
 
@@ -25,14 +23,19 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 通过使用 Azure Cosmos DB MongoDB API，可以像以往一样从 MongoDB API 中受益，并且可使用 Azure Cosmos DB 提供的所有企业功能：[全局分发](distribute-data-globally.md)、[自动分片](partition-data.md)、可用性和延迟保证、自动编制每个字段的索引、静态加密和备份等。
 
+## <a name="mongodb-protocol-support"></a>MongoDB 协议支持
+
+默认情况下，Azure Cosmos DB MongoDB API 兼容 MongoDB Server 版本 **3.2**。 支持的运算符以及限制或例外已列在下面。 在 MongoDB 版本 **3.4** 中添加的功能或查询运算符目前以预览版功能形式提供。 任何理解这些协议的客户端驱动程序应该都可以使用 MongoDB API 连接到 Cosmos DB。
+
+[MongoDB 聚合管道](#aggregation-pipeline)目前也以单独的预览版功能形式提供。
+
 ## <a name="mongodb-query-language-support"></a>MongoDB 查询语言支持
 
 Azure Cosmos DB MongoDB API 全面支持 MongoDB 查询语言构造。 可以在下面查找当前支持的操作、运算符、阶段、命令和选项的详细列表。
 
-
 ## <a name="database-commands"></a>数据库命令
 
-在所有 MongoDB API 帐户上，Azure Cosmos DB 都支持以下数据库命令。 
+在所有 MongoDB API 帐户上，Azure Cosmos DB 都支持以下数据库命令。
 
 ### <a name="query-and-write-operation-commands"></a>查询和写入操作命令
 - delete
@@ -289,7 +292,11 @@ $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` | 
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
-$text |  | 不支持。 改为使用 $regex 
+$text |  | 不支持。 改为使用 $regex。
+
+## <a name="unsupported-operators"></a>不支持的运算符
+
+```$where``` 和 ```$eval``` 运算符不受 Azure Cosmos DB 支持。
 
 ### <a name="methods"></a>方法
 
@@ -318,6 +325,10 @@ Azure Cosmos DB 尚不支持用户和角色。 Azure Cosmos DB 支持基于角�
 ## <a name="replication"></a>复制
 
 Azure Cosmos DB 支持在最低层进行自动本机复制。 此逻辑经过扩展，还可实现低延迟和全局复制。 Azure Cosmos DB 不支持手动复制命令。
+
+## <a name="write-concern"></a>写关注
+
+某些 MongoDB API 支持指定[写关注](https://docs.mongodb.com/manual/reference/write-concern/)，后者指定写入操作期间需要的响应数。 考虑到 Cosmos DB 在后台处理复制的方式，所有写入默认情况下都自动成为仲裁。 由客户端代码指定的任何写关注都会被系统忽略。 有关详细信息，请参阅[使用一致性级别最大化可用性和性能](consistency-levels.md)。
 
 ## <a name="sharding"></a>分片
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 中的 DNS | Microsoft Docs
-description: 使用 Azure 堆栈中的 DNS
+description: 使用 Azure Stack 中的 DNS
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -13,61 +13,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4e854a2751ce366e3ca3a353487f2c972401c248
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8459a5f88bf660ac460f778f67618e9805afa29d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970697"
 ---
-# <a name="using-dns-in-azure-stack"></a>使用 Azure 堆栈中的 DNS
+# <a name="using-dns-in-azure-stack"></a>使用 Azure Stack 中的 DNS
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure 堆栈支持以下域名系统 (DNS) 功能：
+Azure Stack 支持以下域名系统 (DNS) 功能：
 
 * DNS 主机名解析
-* 创建和管理 DNS 区域和记录使用 API
+* 使用 API 创建和管理 DNS 区域和记录
 
 ## <a name="support-for-dns-hostname-resolution"></a>支持 DNS 主机名解析
 
-你可以指定公共 IP 资源的 DNS 域名称标签。 Azure 堆栈使用*domainnamelabel.location*。 标签名称和到公用 IP 地址在 Azure 堆栈中的映射 cloudapp.azurestack.external 托管 DNS 服务器。
+可以为公用 IP 资源指定一个 DNS 域名标签。 Azure Stack 使用 *domainnamelabel.location*.cloudapp.azurestack.external 作为标签名称并将其映射到 Azure Stack 托管 DNS 服务器的公用 IP 地址。
 
-例如，如果你创建具有的公共 IP 资源**contoso**作为在本地 Azure 堆栈位置中，域名标签[完全限定的域名称](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)(FQDN) **contoso.local.cloudapp.azurestack.external**解析为资源的公共 IP 地址。 可以使用此 FQDN 创建自定义域 CNAME 记录，该记录指向 Azure Stack 中的公共 IP 地址。
+例如，如果创建一个公用 IP 资源并以 **contoso** 作为本地 Azure Stack 位置中的域名标签，则[完全限定域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) **contoso.local.cloudapp.azurestack.external** 会解析为资源的公用 IP 地址。 可以使用此 FQDN 创建自定义域 CNAME 记录，该记录指向 Azure Stack 中的公共 IP 地址。
 
-若要了解有关名称解析的详细信息，请参阅[DNS 解析](https://docs.microsoft.com/en-us/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)文章。
+若要了解有关名称解析的详细信息，请参阅[DNS 解析](https://docs.microsoft.com/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文。
 
 > [!IMPORTANT]
-> 你创建每个域名标签必须在其 Azure 堆栈位置中唯一。
+> 创建的每个域名标签在其 Azure Stack 位置中必须是唯一的。
 
-下一个屏幕捕获显示**创建公共 IP 地址**对话框用于创建使用门户的公共 IP 地址。
+下面的屏幕捕获显示了使用门户创建公用 IP 地址时的“创建公用 IP 地址”对话框。
 
 ![创建公共 IP 地址](media/azure-stack-whats-new-dns/image01.png)
 
 **示例方案**
 
-必须处理来自 web 应用程序请求的负载平衡器。 负载平衡器是一个或多个虚拟机上运行的网站。 你可以访问负载平衡使用网站的 DNS 名称，而不是 IP 地址。
+你有一个用于处理来自 Web 应用程序的请求的负载均衡器。 负载均衡器的后面是一个在一台或多台虚拟机上运行的网站。 可以使用 DNS 名称而非 IP 地址来访问进行了负载均衡的网站。
 
-## <a name="create-and-manage-dns-zones-and-records-using-the-api"></a>创建和管理 DNS 区域和记录使用 API
+## <a name="create-and-manage-dns-zones-and-records-using-the-api"></a>使用 API 创建和管理 DNS 区域和记录
 
 可以在 Azure Stack 中创建和管理 DNS 区域和记录。
 
-Azure Stack 使用与 Azure DNS API 一致的 API 提供与 Azure 类似的 DNS 服务。  通过托管在 Azure 堆栈 DNS 域，你可以管理你使用相同的凭据、 Api 和工具的 DNS 记录。 你可以使用相同的计费和支持作为其他 Azure 服务。
+Azure Stack 使用与 Azure DNS API 一致的 API 提供与 Azure 类似的 DNS 服务。  通过将域托管在 Azure Stack DNS 中，可以使用相同的凭据、API 和工具来管理 DNS 记录。 还可以使用与其他 Azure 服务相同的计费和支持功能。
 
-Azure 堆栈 DNS 基础结构是比 Azure 的更为精简。 大小和 Azure 堆栈部署的位置将影响 DNS 作用域、 缩放和性能。 这也意味着性能、 可用性、 全局分发和高可用性可以改变部署部署。
+Azure Stack DNS 的基础结构比 Azure 的更为精简。 Azure Stack 部署的大小和位置将影响 DNS 的作用域、规模和性能。 这还意味着性能、可用性、全局分发和高可用性等可能会因部署而异。
 
 ## <a name="comparison-with-azure-dns"></a>与 Azure DNS 比较
 
-Azure 堆栈中的 DNS 是类似于在 Azure 中，DNS 但有主要您需要了解的异常。
+Azure Stack 中的 DNS 类似于 Azure 中的 DNS，但有几个重要例外，你需要了解它们。
 
 * **不支持 AAAA 记录**
 
     Azure Stack 不支持 AAAA 记录，因为 Azure Stack 不支持 IPv6 地址。  这是 Azure DNS 与 Azure Stack DNS 之间的主要差异。
 * **不是多租户**
 
-    Azure 堆栈中的 DNS 服务不是多租户。 每个租户不能创建相同的 DNS 区域。 仅首个订阅尝试创建区域会成功，后续请求都会失败。  这是已知问题，也是 Azure DNS 和 Azure Stack DNS 之间的主要差异。 此问题将在未来版本中解决。
-* **标记、 元数据和 Etag**
+    Azure Stack 中的 DNS 服务不是多租户的。 各个租户不能创建相同的 DNS 区域。 仅首个订阅尝试创建区域会成功，后续请求都会失败。  这是已知问题，也是 Azure DNS 和 Azure Stack DNS 之间的主要差异。 此问题将在未来版本中解决。
+* **标记、元数据和 Etag**
 
-    有细微的差异，标记、 元数据、 Etag 时，和限制 Azure 堆栈的处理方式。
+    Azure Stack DNS 在处理标记、元数据、Etag 和限制的方式方面也有一些细微差异。
 
 若要了解有关 Azure DNS 的详细信息，请参阅[DNS 区域和记录](../../dns/dns-zones-records.md)。
 

@@ -14,11 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d08ac9f2cbdf98493b3132fa9dd3a3e973576451
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098811"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>使用本地编码器实时传送视频流以创建多比特率流
 
@@ -145,7 +146,7 @@ ms.lasthandoff: 05/10/2018
 
 可以在创建频道时获取预览 URL。 若要获取该 URL，频道不一定要处于“正在运行”状态。 在频道开始引入数据后，可以预览流。
 
-当前，不管指定了哪种输入类型，都只能以分片 MP4（平滑流式处理）流格式来传送预览流。 可以使用[平滑流式处理运行状况监视器](http://smf.cloudapp.net/healthmonitor)播放器来测试平滑流。 还可以使用 Azure 门户中托管的播放器来查看流。
+当前，不管指定了哪种输入类型，都只能以分片 MP4（平滑流式处理）流格式来传送预览流。 可以使用[平滑流式处理运行状况监视器](http://playready.directtaps.net/smoothstreaming/)播放器来测试平滑流。 还可以使用 Azure 门户中托管的播放器来查看流。
 
 #### <a name="allowed-ip-addresses"></a>允许的 IP 地址
 可以定义允许连接到预览终结点的 IP 地址。 如果未指定 IP 地址，则允许任何 IP 地址。 允许的 IP 地址可以指定为以下项之一：

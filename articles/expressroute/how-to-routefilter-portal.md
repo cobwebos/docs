@@ -1,13 +1,13 @@
 ---
-title: "配置用于 Azure ExpressRoute Microsoft 对等互连的路由筛选器：门户 | Microsoft Docs"
-description: "本文介绍如何使用 Azure 门户配置用于 Microsoft 对等互连的路由筛选器"
+title: 配置用于 Azure ExpressRoute Microsoft 对等互连的路由筛选器：门户 | Microsoft Docs
+description: 本文介绍如何使用 Azure 门户配置用于 Microsoft 对等互连的路由筛选器
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29387721"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure 门户
 > [!div class="op_single_selector"]

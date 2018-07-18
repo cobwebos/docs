@@ -1,0 +1,87 @@
+- name: 必应视频搜索文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是必应视频搜索？
+      href: search-the-web.md
+- name: REST API 快速入门
+  expanded: true
+  items:
+    - name: 入门
+      href: quick-start.md
+    - name: 'C#'
+      href: csharp.md
+    - name: Java
+      href: java.md
+    - name: Node.js
+      href: nodejs.md
+    - name: PHP
+      href: php.md
+    - name: Python
+      href: python.md
+    - name: Ruby
+      href: ruby.md
+- name: SDK 快速入门
+  items:
+    - name: SDK 示例概述
+      href: sdk.md
+    - name: '视频搜索 SDK C# 快速入门'
+      href: video-search-sdk-quickstart.md
+    - name: 视频搜索 SDK Node 快速入门
+      href: video-search-sdk-node-quickstart.md
+    - name: 视频搜索 SDK Python 快速入门
+      href: video-sdk-python-quickstart.md
+    - name: 视频搜索 SDK Java 快速入门
+      href: video-sdk-java-quickstart.md
+- name: 教程
+  items:
+    - name: 单页 Web 应用
+      href: tutorial-bing-video-search-single-page-app.md
+    - name: 单页 Web 应用（源代码）
+      href: tutorial-bing-video-search-single-page-app-source.md
+- name: 示例
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
+- name: 操作指南
+  items:
+    - name: 使用和显示要求
+      href: UseAndDisplayRequirements.md
+    - name: 获取视频见解
+      href: video-insights.md
+    - name: 获取热门视频
+      href: trending-videos.md
+    - name: 对视频进行分页
+      href: paging-videos.md
+    - name: 调整和裁剪缩略图
+      href: resize-and-crop-thumbnails.md
+    - name: 从 v5 升级到 v7
+      href: bing-video-upgrade-guide-v5-to-v7.md
+- name: 引用
+  items:
+    - name: 必应视频搜索 API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference'
+    - name: 必应视频搜索 API v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference'
+- name: 资源
+  items:
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/video/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/911452-bing-video-search-api'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/search?q=bing+video+search'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: 获取 API 密钥
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api'
+    - name: 试试看！
+      href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8'
+    - name: 必应视频搜索终结点
+      href: video-search-endpoints.md
+    - name: 适用于必应视频搜索 API 的分析
+      href: bing-video-stats.md

@@ -21,6 +21,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203963"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>了解外部服务收费的 Azure 计费
 外部服务由 Azure Marketplace 中的第三方软件供应商发布。 例如，ClearDB 和 SendGrid 是可以在 Azure 中购买的外部服务，但不是 Microsoft 发布的。

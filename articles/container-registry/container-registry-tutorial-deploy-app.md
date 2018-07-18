@@ -3,21 +3,22 @@ title: Azure 容器注册表教程 - 从 Azure 容器注册表部署 Web 应用
 description: 使用异地复制的 Azure 容器注册表中的容器映像部署基于 Linux 的 Web 应用。 由三个部分构成的教程系列的第二部分。
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 51aa3c6fc56e974fc1729a1d2fe35c889adf35e2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6347c460ab88929152424d301445a219720b98e8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582295"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>快速入门：从 Azure 容器注册表部署 Web 应用
 
-本文是由三个部分构成的教程系列的第二部分。 在[第一部分](container-registry-tutorial-prepare-registry.md)中，已创建一个专用的异地复制容器注册表，已从源生成容器映像并将其推送到该注册表。 本文将容器部署到位于两个不同 Azure 区域的两个 Web 应用实例中，以利用异地复制注册表的“紧靠网络”特点。
+本文是由三个部分构成的教程系列的第二部分。 在[第一部分](container-registry-tutorial-prepare-registry.md)中，已创建一个专用的异地复制容器注册表，已从源生成容器映像并将其推送到该注册表。 本文通过将容器部署到位于两个不同 Azure 区域的两个 Web 应用实例中，以利用异地复制注册表的“临近网络”特点。 然后，每个实例从最近的注册表中提取容器映像。
 
 本教程（教程系列的第二部分）的内容包括：
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/28/2018
 
 如果尚未创建异地复制的注册表并将容器化示例应用程序的映像推送到注册表，请返回本教程系列的前一篇教程：[准备异地复制的 Azure 容器注册表](container-registry-tutorial-prepare-registry.md)。
 
-在教程系列的下一部分，我们将会更新该应用程序，然后将新的容器映像推送到注册表。 最后，浏览到每个正在运行的 Web 应用实例，以查看所做的更改是否自动反映在这两个实例中，并查看 Azure 容器注册表异地复制和 Webhook 的运行情况。
+在本系列的下一篇文章中，我们将会更新该应用程序，然后将更新的容器映像推送到注册表。 最后，浏览到每个正在运行的 Web 应用实例，以查看所做的更改是否自动反映在这两个实例中，并查看 Azure 容器注册表异地复制和 Webhook 的运行情况。
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>自动部署到用于容器的 Web 应用
 
@@ -103,11 +104,7 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已从异地复制的 Azure 容器注册表部署了两个用于容器的 Web 应用实例。 我们已遵循本教程中的步骤执行以下操作：
-
-> [!div class="checklist"]
-> * 已将容器映像部署到两个用于容器的 Web 应用实例
-> * 验证了已部署的应用程序
+本教程已从异地复制的 Azure 容器注册表部署了两个用于容器的 Web 应用实例。
 
 请继续学习下一篇教程更新容器映像，将新的容器映像部署到容器注册表，然后验证两个区域中运行的 Web 应用是否已自动更新。
 

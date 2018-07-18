@@ -1,12 +1,12 @@
 ---
-title: "Azure 应用服务计划概述 | Microsoft Docs"
-description: "了解针对 Azure 应用服务的应用服务计划的工作原理，以及如何利用它们进行管理。"
-keywords: "应用服务, azure 应用服务, 缩放, 可缩放, 可伸缩性, 应用服务计划, 应用服务成本"
+title: Azure 应用服务计划概述 | Microsoft Docs
+description: 了解针对 Azure 应用服务的应用服务计划的工作原理，以及如何利用它们进行管理。
+keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 可伸缩性, 应用服务计划, 应用服务成本
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.service: app-service
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862353"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 

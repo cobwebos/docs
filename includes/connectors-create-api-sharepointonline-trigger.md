@@ -1,7 +1,7 @@
 本示例介绍在 SharePoint Online 列表中创建新项时，如何使用“SharePoint Online - 创建新项时”触发器启动逻辑应用工作流。
 
 > [!NOTE]
-> 如果尚未与 SharePoint Online 建立*连接*，系统会提示登录到 SharePoint 帐户。  
+> 如果尚未与 SharePoint Online 建立连接，系统会提示登录到 SharePoint 帐户。  
 > 
 > 
 

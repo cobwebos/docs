@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 24b20766997a9a41956f575f6cab8ee5ef0d9e25
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034367"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -36,7 +37,7 @@ ms.lasthandoff: 04/20/2018
 * 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如："公司名称: \"Contoso\""
 
 ## <a name="list-of-functions"></a>函数列表
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
 ### <a name="append"></a>附加
@@ -95,6 +96,18 @@ ms.lasthandoff: 04/20/2018
 | **length** |必选 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
 
 - - -
+### <a name="normalizediacritics"></a>NormalizeDiacritics
+**函数：**<br> NormalizeDiacritics(source)
+
+**说明：**<br> 需要一个字符串参数。 返回字符串，但将任何标注字符替换为等效的非标注字符。 通常用于将包含标注字符（重音符号）的名字和姓氏转换为可用于各种用户标识符（例如用户主体名称、SAM 帐户名称和电子邮件地址）的合法值。
+
+**参数：**<br> 
+
+| 名称 | 必选/重复 | Type | 说明 |
+| --- | --- | --- | --- |
+| **source** |必选 |String | 通常是名字或姓氏属性 |
+
+- - -
 ### <a name="not"></a>Not
 **函数：**<br> Not(source)
 
@@ -128,7 +141,6 @@ ms.lasthandoff: 04/20/2018
   * 如果 **source** 有值，则使用 **regexPattern** 和 **regexGroupName** 从具有 **replacementPropertyName** 的属性中提取替换值。 替换值作为结果返回
 
 **参数：**<br> 
-
 | 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必选 |String |通常是来自源对象的属性的名称。 |
@@ -143,7 +155,7 @@ ms.lasthandoff: 04/20/2018
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **函数：**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**说明：**<br> 对于给定的应用程序，从向一个用户分配的所有 appRoleAssignments 列表中返回单个 appRoleAssignment。 需要此函数才能将 appRoleAssignments 对象转换为单个角色名称字符串。 请注意，最佳做法是确保每次只向一个用户分配一个 appRoleAssignment，如果分配了多个角色，则返回的角色字符串可能是不可预测的。
+**说明：**<br> 需要一个字符串参数。 返回字符串，但将任何标注字符替换为等效的非标注字符。
 
 **参数：**<br> 
 
@@ -214,16 +226,16 @@ ms.lasthandoff: 04/20/2018
 * **输入** (surname)：“Doe”
 * **输出**：“JohDoe”
 
-### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>从字符串中删除音调符号并转换为小写
-需要从字符串中删除特殊字符，并将大写字符转换为小写。
+### <a name="remove-diacritics-from-a-string"></a>从字符串中删除音调符号
+需要将包含重音符号的字符替换为不包含重音符号的等效字符。
 
 **表达式：** <br>
-`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+NormalizeDiacritics([givenName])
 
 **示例输入/输出：** <br>
 
 * **输入** (givenName)：“Zoë”
-* **输出**：“zoe”
+* **输出**：“Zoe”
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
 需要以某种格式将日期发送到 SaaS 应用程序。 <br>
@@ -256,7 +268,7 @@ ms.lasthandoff: 04/20/2018
 * [在 SaaS 应用中自动预配和取消预配用户](active-directory-saas-app-provisioning.md)
 * [为用户预配自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)
 * [用于用户预配的作用域筛选器](active-directory-saas-scoping-filters.md)
-* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md)
+* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [帐户预配通知](active-directory-saas-account-provisioning-notifications.md)
-* [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
+* [有关如何集成 SaaS 应用的教程列表](saas-apps/tutorial-list.md)
 

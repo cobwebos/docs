@@ -61,8 +61,6 @@
           maintainContext: true
         - name: 将 Kafka 与 Azure 容器服务配合使用
           href: apache-kafka-azure-container-services.md
-        - name: Kafka 和 Azure Functions
-          href: apache-kafka-azure-functions.md
     - name: 开发
       items:
         - name: 使用空边缘节点
@@ -86,7 +84,7 @@
               maintainContext: true
             - name: 使用 REST 安装应用
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
-            - name: 将 HDInsight 应用发布到 Azure Marketplace
+            - name: 将 HDInsight 应用发布到 Azure 市场
               href: ../hdinsight-apps-publish-applications.md
               maintainContext: true
             - name: 安装已发布的应用 - Cask Data Application Platform (CDAP)
@@ -223,13 +221,10 @@
         - name: 将 HDInsight 与本地网络相连
           href: ../connect-on-premises-network.md
           maintainContext: true
-    - name: 使用 OMS 进行监视
+    - name: 使用 Log Analytics 进行监视
       items:
         - name: 使用 Azure Log Analytics
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: 特定于群集的仪表板
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
         - name: 将查询与 Log Analytics 配合使用
           href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md

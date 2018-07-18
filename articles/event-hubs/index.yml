@@ -1,0 +1,92 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure 事件中心文档
+metadata:
+  document_id: ''
+  title: Azure 事件中心文档 - 教程、快速入门和 API 参考
+  meta.description: Learn how to use Event Hubs to ingest millions of events per second from connected IoT devices and applications on a broad set of platforms.
+  services: event-hubs
+  author: sethmanheim
+  manager: timlt
+  ms.service: event-hubs
+  ms.topic: landing-page
+  ms.date: 05/14/2018
+  ms.author: sethm
+  ms.openlocfilehash: 481a11b284f0bfba73fe8a44b640eac0cdc6f833
+  ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/02/2018
+  ms.locfileid: "37344057"
+abstract:
+  description: Azure 事件中心是一个数据流式处理平台，也是一种事件处理服务，能够每秒接收和处理数百万事件。 对于事件发布而言，该服务支持 HTTPS 和 AMQP 1.0 协议以及 Apache Kafka 生态系统。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: /azure/event-hubs/media/index/azure-messaging-and-event-based-architecture.png
+      width: 250
+    title: Azure 消息传送和基于事件的体系结构 (1:24:32)
+    href: https://azure.microsoft.com/resources/videos/build-2018-azure-messaging-and-event-based-architecture-in-the-real-world-lessons-learned-rebuilding-microsoft-s-supply-chain-on-azure-serverless/
+    width: 250
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何使用事件中心对数据进行流式传输：
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/event-hubs/media/index/portal.svg
+      text: Azure 门户
+      href: /azure/event-hubs/event-hubs-quickstart-portal
+    - image:
+        src: /azure/event-hubs/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/event-hubs/event-hubs-quickstart-cli
+    - image:
+        src: /azure/event-hubs/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/event-hubs/event-hubs-quickstart-powershell
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何使用 Azure 事件中心创建、管理事件以及对事件进行流式处理
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://review.docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?branch=release-mvc-event-hubs">使用 Azure 流分析读取事件中心数据流并直观显示异常</a>
+- title: 免费 Pluralsight 视频培训
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: 在 Azure 上使用 .NET 进行开发
+      href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
+- title: 示例
+  items:
+  - type: paragraph
+    text: 查找脚本来管理常见任务。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://github.com/Azure/azure-event-hubs/tree/master/samples/Management">Azure PowerShell</a>
+    - html: <a href="https://github.com/Azure/azure-event-hubs/tree/master/samples/Management">Azure CLI</a>
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 命令行
+      html: <p><a href="/powershell/module/azurerm.eventhub/">Azure PowerShell</a></p><p><a href="/cli/azure/eventhubs">Azure CLI</a></p>
+    - title: 语言
+      html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p><p><a href="/dotnet/api/microsoft.azure.eventhubs">.NET 标准</a></p><p><a href="/java/api/overview/azure/eventhub">Java</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/eventhub/">REST API 参考</a></p>

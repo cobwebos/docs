@@ -17,11 +17,12 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19ca9d70f769a19556d131d1d131f1bc9d107ef0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8b11d4ab7188141b36b998e16429329c33f09cee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599562"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -116,7 +117,8 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 可[在主机配置文档中](functions-host-json.md)找到其他主机配置选项。
 
 ## <a name="next-steps"></a>后续步骤
+
 有关详细信息，请参阅以下资源：
 
-由于 Azure Functions 使用 Azure 应用服务，用户还应该了解应用服务准则。
-* [模式和实践 HTTP 性能优化](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
+* [如何在 Azure Functions 中管理连接](manage-connections.md)
+* [Azure 应用服务最佳实践](../app-service/app-service-best-practices.md)

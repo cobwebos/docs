@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中国世纪互联管理性能和连接 | Microsoft Docs"
-description: "在 Microsoft Azure 中国世纪互联部署和操作应用程序或工作负荷时，我们建议执行性能和网络测试。 如果 Azure 应用程序为中国境外的用户提供服务，则还要注意其他事项。"
+title: 在 Azure 中国世纪互联管理性能和连接 | Microsoft Docs
+description: 在 Microsoft Azure 中国世纪互联部署和操作应用程序或工作负荷时，我们建议执行性能和网络测试。 如果 Azure 应用程序为中国境外的用户提供服务，则还要注意其他事项。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635188"
 ---
 # <a name="manage-performance-and-connectivity"></a>管理性能和连接
 在世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）中部署和操作应用程序或工作负荷时，我们建议执行性能和网络测试。 此外，如果 Azure 应用程序为中国境外的用户提供服务，请注意以下事项：

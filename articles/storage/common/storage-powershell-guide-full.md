@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 33ca8af49ed9c3a8e7133eedfd284a1b71a9a9f9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 951b69877718c5da3c165c24c297906a1ad9a976
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652495"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
 
@@ -175,7 +176,7 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 ```
 
 > [!IMPORTANT]
-> 在删除存储帐户时，还会删除该帐户中存储的所有资产。 如果意外删除某个帐户，请立即致电支持人员，并打开票证以还原该存储帐户。 不保证数据能得以恢复，但有时上述操作能起作用。 在支持票证得到解决之前，请不要使用相同的旧帐户名创建新的存储帐户。 
+> 在删除存储帐户时，还会删除该帐户中存储的所有资产。 如果意外删除某个帐户，请立即致电支持人员，并创建工单以还原该存储帐户。 不保证数据能得以恢复，但有时上述操作能起作用。 在支持工单得到解决之前，请不要使用相同的旧帐户名创建新的存储帐户。 
 >
 
 ### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>使用 VNet 和防火墙保护存储帐户
@@ -214,7 +215,7 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 * [如何使用 PowerShell 管理 blob](../blobs/storage-how-to-use-blobs-powershell.md)
 * [如何使用 PowerShell 管理文件](../files/storage-how-to-use-files-powershell.md)
 * [如何使用 PowerShell 管理队列](../queues/storage-powershell-how-to-use-queues.md)
-* [使用 PowerShell 执行 Azure 表存储操作](../../cosmos-db/table-storage-how-to-use-powershell.md)
+* [使用 PowerShell 执行 Azure 表存储操作](../../storage/tables/table-storage-how-to-use-powershell.md)
 
 Azure Cosmos DB 表 API 提供了用于表存储的高级功能，如统包全局分发、低延迟读取和写入、自动辅助索引和专用吞吐量。 
 

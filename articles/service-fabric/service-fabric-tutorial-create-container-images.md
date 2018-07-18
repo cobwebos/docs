@@ -1,14 +1,14 @@
 ---
-title: "创建 Azure Service Fabric 的容器映像 | Microsoft Docs"
-description: "本教程介绍如何创建多容器 Service Fabric 应用程序的容器映像。"
+title: 在 Azure 中的 Service Fabric 上创建容器映像 | Microsoft Docs
+description: 本教程介绍如何创建多容器 Service Fabric 应用程序的容器映像。
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, 容器, 微服务, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, 容器, 微服务, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -16,24 +16,25 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 13cf13ce4a1456731d08f356ca405119ce1a6480
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a2814ff299d1bfb003b6133e2b75b47a312f8728
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114034"
 ---
-# <a name="tutorial-create-container-images-for-service-fabric"></a>教程：创建 Service Fabric 的容器映像
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
 
-本教程是演示如何在 Linux Service Fabric 群集中使用容器的教程系列的第 1 部分。 本教程中准备了一个要用于 Service Fabric 的多容器应用程序。 在后续教程中，这些映像用作 Service Fabric 应用程序的一部分。 本教程介绍如何执行下列操作： 
+本教程是演示如何在 Linux Service Fabric 群集中使用容器的教程系列的第 1 部分。 本教程中准备了一个要用于 Service Fabric 的多容器应用程序。 在后续教程中，这些映像用作 Service Fabric 应用程序的一部分。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 克隆 GitHub 中的应用程序源  
+> * 克隆 GitHub 中的应用程序源
 > * 根据应用程序源创建容器映像
 > * 部署 Azure 容器注册表 (ACR) 实例
 > * 标记 ACR 的容器映像
 > * 向 ACR 上传映像
 
-此教程系列介绍了如何： 
+此教程系列介绍了如何：
 
 > [!div class="checklist"]
 > * 创建 Service Fabric 的容器映像
@@ -42,13 +43,13 @@ ms.lasthandoff: 02/24/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-- 设置 Service Fabric 的 Linux 开发环境。 按照[此处](service-fabric-get-started-linux.md)的说明设置 Linux 环境。 
-- 本教程需要运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
-- 此外，还需要拥有可用的 Azure 订阅。 有关免费试用版的详细信息，请转到[此处](https://azure.microsoft.com/free/)。
+* 设置 Service Fabric 的 Linux 开发环境。 按照[此处](service-fabric-get-started-linux.md)的说明设置 Linux 环境。
+* 本教程需要运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+* 此外，还需要拥有可用的 Azure 订阅。 有关免费试用版的详细信息，请转到[此处](https://azure.microsoft.com/free/)。
 
 ## <a name="get-application-code"></a>获取应用程序代码
 
-本教程使用的示例应用程序是一个投票应用。 该应用程序由前端 Web 组件和后端 Redis 实例组成。 该组件打包到容器映像中。 
+本教程使用的示例应用程序是一个投票应用。 该应用程序由前端 Web 组件和后端 Redis 实例组成。 该组件打包到容器映像中。
 
 使用 git 可将应用程序的副本下载到开发环境。
 
@@ -58,11 +59,11 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-该解决方案包含两个文件夹和一个“docker-compose.yml”文件。 “azure-vote”文件夹包含 Python 前端服务以及用于生成映像的 Dockerfile。 “Voting”目录包含部署到群集的 Service Fabric 应用程序包。 这些目录包含本教程所需的资产。  
+该解决方案包含两个文件夹和一个“docker-compose.yml”文件。 “azure-vote”文件夹包含 Python 前端服务以及用于生成映像的 Dockerfile。 “Voting”目录包含部署到群集的 Service Fabric 应用程序包。 这些目录包含本教程所需的资产。
 
 ## <a name="create-container-images"></a>创建容器映像
 
-在“azure-vote”目录中，运行以下命令，生成前端 Web 组件的映像。 下面的命令使用此目录中的 Dockerfile 生成映像。 
+在“azure-vote”目录中，运行以下命令，生成前端 Web 组件的映像。 下面的命令使用此目录中的 Dockerfile 生成映像。
 
 ```bash
 docker build -t azure-vote-front .
@@ -85,13 +86,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>部署 Azure 容器注册表
 
-首先，运行 **az login** 命令，登录 Azure 帐户。 
+首先，运行 **az login** 命令，登录 Azure 帐户。
 
 ```bash
 az login
 ```
 
-接下来，使用 **az account** 命令来选择订阅，创建 Azure 容器注册表。 必须输入你的 Azure 订阅的订阅 ID 来代替 <subscription_id>。 
+接下来，使用 **az account** 命令来选择订阅，创建 Azure 容器注册表。 必须输入你的 Azure 订阅的订阅 ID 来代替 <subscription_id>。
 
 ```bash
 az account set --subscription <subscription_id>
@@ -105,13 +106,13 @@ az account set --subscription <subscription_id>
 az group create --name <myResourceGroup> --location westus
 ```
 
-使用 **az acr create** 命令创建 Azure 容器注册表。 将 \<acrName> 替换为要在订阅下创建的容器注册表的名称。 此名称必须为字母数字且唯一。 
+使用 **az acr create** 命令创建 Azure 容器注册表。 将 \<acrName> 替换为要在订阅下创建的容器注册表的名称。 此名称必须为字母数字且唯一。
 
 ```bash
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
-在本教程的余下部分，将使用“acrName”作为所选容器注册表名称的占位符。 请记下此值。 
+在本教程的余下部分，将使用“acrName”作为所选容器注册表名称的占位符。 请记下此值。
 
 ## <a name="log-in-to-your-container-registry"></a>登录容器注册表
 
@@ -163,7 +164,6 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 标记后即可运行“docker images”验证操作。
 
-
 输出：
 
 ```bash
@@ -209,13 +209,13 @@ azure-vote-front
 本教程中从 Github 拉取了一个应用程序、创建了容器映像并将容器映像推送到注册表。 已完成以下步骤：
 
 > [!div class="checklist"]
-> * 克隆 GitHub 中的应用程序源  
+> * 克隆 GitHub 中的应用程序源
 > * 根据应用程序源创建容器映像
 > * 部署 Azure 容器注册表 (ACR) 实例
 > * 标记 ACR 的容器映像
 > * 向 ACR 上传映像
 
-转到下一教程，了解如何使用 Yeoman 将容器打包到 Service Fabric 应用程序。 
+转到下一教程，了解如何使用 Yeoman 将容器打包到 Service Fabric 应用程序。
 
 > [!div class="nextstepaction"]
 > [打包容器并将其部署为 Service Fabric 应用程序](service-fabric-tutorial-package-containers.md)

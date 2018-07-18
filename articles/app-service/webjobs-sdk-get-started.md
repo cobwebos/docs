@@ -1,5 +1,5 @@
 ---
-title: WebJobs SDK 入门 - Azure
+title: Azure WebJobs SDK 入门
 description: 用于事件驱动的后台处理的 WebJobs SDK 简介。 了解如何访问 Azure 服务和第三方服务中的数据。
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,19 +13,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: b1de898ec4f661c54b5227367ad416a5edec80ed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018449"
 ---
-# <a name="get-started-with-the-webjobs-sdk"></a>WebJobs SDK 入门
+# <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
-本文介绍如何创建 WebJobs SDK 项目、在本地运行它，然后将其部署到 Azure。
+本文介绍如何创建 Azure WebJobs SDK 项目、在本地运行它，然后将其部署到 Azure 应用服务。
 
 本文中的说明适用于 [Visual Studio 2017](https://www.visualstudio.com/vs/)，也可以使用其他工具（例如 [Visual Studio Code](https://code.visualstudio.com/)）完成相同的任务。
 
-## <a name="what-is-the-webjobs-sdk"></a>什么是 WebJobs SDK
+## <a name="what-is-the-azure-webjobs-sdk"></a>什么是 Azure WebJobs SDK
 
 Azure WebJobs SDK 是一种框架，可简化编写后台处理代码来访问 Azure 服务中的数据的任务。 该 SDK 采用声明性语法，以便指定应触发某个函数的事件，例如，在队列中添加了新消息。 触发某个函数后，类似的声明性语法将控制数据的读取和写入。 此触发器和绑定系统会处理大部分与访问 Azure 和第三方服务相关的低级别代码编写任务。
 
@@ -65,6 +66,9 @@ public static void Run(
 2. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
 
    若要创建 3.x 项目，请选择“.NET Core”>“控制台应用(.NET Core)”。
+   
+   > [!NOTE]
+   > 3.x 仍在预览中且正处于开发阶段。 本文中的 3.x 说明并不完整，有关最新信息，请参阅页面底部的 GitHub 问题。
 
 3. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
 

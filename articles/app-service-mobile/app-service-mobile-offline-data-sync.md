@@ -1,10 +1,10 @@
 ---
-title: "Azure 移动应用中的脱机数据同步 | Microsoft Docs"
-description: "Azure 移动应用脱机数据同步功能的概念参考和概述"
+title: Azure 移动应用中的脱机数据同步 | Microsoft Docs
+description: Azure 移动应用脱机数据同步功能的概念参考和概述
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 5ea1d655f50da49be88f7b6ae91231c4d2258fa7
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 403b3289a6135a59e888c4a7bf1cd9cbe40c8ac0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597971"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 移动应用中的脱机数据同步
 ## <a name="what-is-offline-data-sync"></a>什么是脱机数据同步？
@@ -52,7 +53,7 @@ ms.lasthandoff: 01/04/2018
 ## <a name="what-is-a-local-store"></a>什么是本地存储？
 本地存储是客户端设备上的数据持久层。 Azure 移动应用客户端 SDK 提供默认的本地存储实现。 在 Windows、Xamarin 和 Android 上，它基于 SQLite。 在 iOS 上，它基于 Core Data。
 
-若要在 Windows Phone 或 Windows 应用商店 8.1 中使用基于 SQLite 的实现，需要安装 SQLite 扩展。 有关详细信息，请参阅[通用 Windows 平台：启用脱机同步]。Android 和 iOS 设备的操作系统本身包含 SQLite 版本，因此不需要引用自己的 SQLite 版本。
+若要在 Windows Phone 或 Microsoft Store 中使用基于 SQLite 的实现，需要安装 SQLite 扩展。 有关详细信息，请参阅[通用 Windows 平台：启用脱机同步]。Android 和 iOS 设备的操作系统本身包含 SQLite 版本，因此不需要引用自己的 SQLite 版本。
 
 开发人员也可以实现自己的本地存储。 例如，如果希望将数据以加密格式存储在移动客户端上，可以定义使用 SQLCipher 进行加密的本地存储。
 

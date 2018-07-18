@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 中继的 REST 教程 | Microsoft 文档"
-description: "生成一个简单的 Azure 服务总线中继主机应用程序，该应用程序公开基于 REST 的接口。"
+title: 使用 Azure 中继的 REST 教程 | Microsoft 文档
+description: 生成一个简单的 Azure 服务总线中继主机应用程序，该应用程序公开基于 REST 的接口。
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24008030"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF 中继 REST 教程
 

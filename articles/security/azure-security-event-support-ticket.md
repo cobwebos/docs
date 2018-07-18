@@ -1,6 +1,6 @@
 ---
-title: "如何记录安全事件支持票证 - Azure | Microsoft Docs"
-description: "作为 Azure Marketplace 上的销售商，在标识潜在的安全事件之后，我需要了解如何记录相应的票证。"
+title: 如何记录安全事件支持票证 - Azure | Microsoft Docs
+description: 作为 Azure Marketplace 上的销售商，在标识潜在的安全事件之后，我需要了解如何记录相应的票证。
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129934"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>如何记录安全事件支持票证
 

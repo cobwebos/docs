@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774567"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Azure 安全中心的威胁智能
 本文介绍如何使用 Azure 安全中心威胁智能解决与安全性相关的问题。

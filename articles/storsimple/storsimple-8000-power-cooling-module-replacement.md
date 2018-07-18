@@ -1,12 +1,12 @@
 ---
-title: "更换 StorSimple 8000 系列设备上的 PCM | Microsoft Docs"
-description: "说明如何拆卸和更换 StorSimple 设备上的电源和散热模块 (PCM)"
+title: 更换 StorSimple 8000 系列设备上的 PCM | Microsoft Docs
+description: 说明如何拆卸和更换 StorSimple 设备上的电源和散热模块 (PCM)
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108595"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的电源和散热模块
 ## <a name="overview"></a>概述

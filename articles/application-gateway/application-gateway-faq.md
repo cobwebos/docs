@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/29/2018
+ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: d5861df9dbfe554f966d19a8e3ed77b55f1f2cd2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355840"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295522"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -84,6 +84,11 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 应用程序网关仅支持一个公共 IP 地址。
 
+**问：应该为应用程序网关创建多大的子网？**
+
+如果配置了专用前端 IP 配置，则应用程序网关使用每个实例的一个专用 IP 地址，以及另一个专用 IP 地址。 另外，Azure 会在每个子网中保留前四个 IP 地址和最后一个 IP 地址供内部使用。
+例如，如果应用程序网关设置为三个实例并且没有专用前端 IP，则需要 /29 子网大小或更大。 在这种情况下，应用程序网关使用三个 IP 地址。 如果将三个实例和一个 IP 地址用于专用前端 IP 配置，则需要 /28 子网大小或更大，因为需要四个 IP 地址。
+
 **问：应用程序网关是否支持 x-forwarded-for 标头？**
 
 支持。应用程序网关会将 x-forwarded-for、x-forwarded-proto 和 x-forwarded-port 标头插入转发到后端的请求中。 x-forwarded-for 标头的格式是逗号分隔的“IP:端口”列表。 x-forwarded-proto 的有效值为 http 或 https。 x-forwarded-port 指定请求抵达应用程序网关时所在的端口。
@@ -110,7 +115,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 应用程序网关子网支持网络安全组，但存在以下限制：
 
-* 必须提交端口 65503-65534 上传入流量的异常，以便后台运行状况正常工作。
+* 必须提交端口 65503-65534 上传入流量的异常。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
 
 * 不能阻止出站 Internet 连接。
 
@@ -154,13 +159,17 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 * 允许来自源 IP/IP 范围的传入流量。
 
-* 允许来自所有源的请求传入端口 65503-65534，进行[后端运行状况通信](application-gateway-diagnostics.md)。
+* 允许来自所有源的请求传入端口 65503-65534，进行[后端运行状况通信](application-gateway-diagnostics.md)。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
 
 * 允许 [NSG](../virtual-network/security-overview.md) 上的传入 Azure 负载均衡器探测（AzureLoadBalancer 标记）和入站虚拟网络流量（VirtualNetwork 标记）。
 
 * 使用“拒绝所有”规则阻止其他所有传入流量。
 
 * 允许所有目的地的 Internet 出站流量。
+
+**问：能否对面向公共和面向私人的侦听器使用相同的端口？**
+
+否，不支持这样做。
 
 ## <a name="performance"></a>性能
 
@@ -184,6 +193,21 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 是的。 可配置连接排出以更改后端池内的成员，而无需中断操作。 这将允许继续将现有连接发送到其以前的目标，直到该连接被关闭或可配置超时到期。 请注意，连接排出仅等待当前未完成的连接完成。 应用程序网关不了解应用程序会话状态。
 
+**问：有哪些应用程序网关大小？**
+
+应用程序网关目前有三种大小：**小型**、**中型**和**大型**。 小型实例大小适用于开发和测试方案。
+
+最多可为每个订阅创建 50 个应用程序网关，每个应用程序网关最多可有 10 个实例。 每个应用程序网关可以包含 20 个 http 侦听器。 有关应用程序网关限制的完整列表，请参阅[应用程序网关服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)。
+
+下表显示了已启用 SSL 卸载的每个应用程序网关实例的平均性能吞吐量：
+
+| 平均后端页面响应大小 | 小型 | 中型 | 大型 |
+| --- | --- | --- | --- |
+| 6KB |7.5 Mbps |13 Mbps |50 Mbps |
+| 100KB |35 Mbps |100 Mbps |200 Mbps |
+
+> [!NOTE]
+> 这些值是应用程序网关吞吐量的大约值。 实际吞吐量取决于平均页面大小、后端实例的位置、提供页面所需的处理时间等各种环境详细信息。 如需确切的性能数字，则应运行自己的测试。 提供的这些值仅适用于容量规划指南。
 
 **问：是否可以在不造成中断的情况下，将实例大小从中型更改为大型？**
 

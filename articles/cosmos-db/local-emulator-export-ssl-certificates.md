@@ -2,25 +2,22 @@
 title: 导出 Azure Cosmos DB 模拟器证书 | Microsoft Docs
 description: 以不使用 Windows 证书存储的语言和运行时进行开发时，需要导出并管理 SSL 证书。 本文提供分步说明。
 services: cosmos-db
-documentationcenter: ''
 keywords: Azure Cosmos DB 模拟器
 author: voellm
 manager: kfile
 editor: ''
-ms.assetid: ef43deda-c2e9-4193-99e2-7f6a88a0319f
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87d453cd544b3e913209f50e4e08b77282efab39
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 237ab0ed99793f54574c4b81e883acb8c2bc57a9
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082095"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>导出 Azure Cosmos DB 模拟器证书供 Java、Python 和 Node.js 使用
 
@@ -57,7 +54,7 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
     ![Azure Cosmos DB 本地模拟器导出步骤 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
 
-4. 单击“资源组名称” 的 Azure 数据工厂。
+4. 单击“下一步”。
 
     ![Azure Cosmos DB 本地模拟器导出步骤 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
@@ -73,7 +70,7 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
     ![Azure Cosmos DB 本地模拟器导出步骤 7](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
 
-8. 单击“完成” 。
+8. 单击“完成”。
 
     ![Azure Cosmos DB 本地模拟器导出步骤 8](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
 
@@ -102,7 +99,7 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 > * 导出 SSL 证书
 > * 了解了如何在 Java、Python 和 Node.js 中使用证书
 
-现在可以继续完成“使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器”教程。
+现在可以转到“概念”部分详细了解 Azure Cosmos DB。 
 
 > [!div class="nextstepaction"]
-> [通过从 Azure Cosmos DB 输入创建 Azure Function](tutorial-functions-http-trigger.md) 
+>[Azure Cosmos DB 中的可优化数据一致性级别](../cosmos-db/consistency-levels.md)

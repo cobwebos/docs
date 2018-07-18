@@ -1,22 +1,20 @@
 ---
 title: 使用 Azure Maps 处理鼠标事件 | Microsoft Docs
 description: 如何使用地图事件生成交互式 Javascript 地图
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d0aad8c51ca2927e2ba7daa7a849ecd3f738ad7f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6b673b415b4e93fc7ceb4288b88d6d72740f0259
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600191"
 ---
 # <a name="interacting-with-the-map--mouse-events"></a>与地图交互 - 鼠标事件 
 
@@ -35,3 +33,8 @@ ms.lasthandoff: 05/07/2018
 
 * [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addeventlistener)
+
+有关可向地图添加的更多代码示例，请参阅以下文章： 
+* [显示搜索结果](./map-search-location.md)
+
+查看我们的[代码示例页](http://aka.ms/AzureMapsSamples)，了解更多映射方案。

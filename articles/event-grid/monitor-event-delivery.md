@@ -6,13 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: f9719bb1f1563c55537c7ef32278411a2034bd75
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 625f3e228bb28c85e68fb592914fb2191baf3e4e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626983"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 
 
@@ -41,9 +42,15 @@ ms.lasthandoff: 05/18/2018
 
 ## <a name="event-subscription-status"></a>事件订阅状态
 
-若要查看事件订阅的指标，请在可用服务中搜索“事件网格订阅”，并选择它。
+若要查看事件订阅的指标，可以按订阅类型搜索或按特定资源的订阅搜索。
 
-![搜索事件订阅](./media/monitor-event-delivery/select-event-subscriptions.png)
+若要按事件订阅类型搜索，请选择“所有服务”。
+
+![选择所有服务](./media/monitor-event-delivery/all-services.png)
+
+搜索事件网格，并从可用选项中选择“事件网格订阅”。
+
+![搜索事件订阅](./media/monitor-event-delivery/search-and-select.png)
 
 按事件类型、订阅和位置进行筛选。 针对要查看的订阅选择“指标”。
 
@@ -53,9 +60,15 @@ ms.lasthandoff: 05/18/2018
 
 ![查看事件指标](./media/monitor-event-delivery/subscription-metrics.png)
 
+若要查找特定资源的指标，请选择该资源。 然后，选择“事件”。
+
+![选择资源的事件](./media/monitor-event-delivery/select-events.png)
+
+你会看到该资源的订阅指标。
+
 ## <a name="custom-event-status"></a>自定义事件状态
 
-如果已发布自定义主题，可以查看其指标。 选择包含该主题的资源组，然后选择主题。
+如果已发布自定义主题，则可以查看其指标。 选择该主题的资源组，然后选择主题。
 
 ![选择自定义主题](./media/monitor-event-delivery/select-custom-topic.png)
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155831"
 ---
 # <a name="azure-ad-nodejs-web-api-getting-started"></a>Azure AD Node.js Web API 入门
 

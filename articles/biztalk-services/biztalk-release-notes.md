@@ -1,11 +1,11 @@
 ---
-title: "Azure BizTalk 服务发行说明 | Microsoft Docs"
-description: "列出 Azure BizTalk 服务的已知问题"
+title: Azure BizTalk 服务发行说明 | Microsoft Docs
+description: 列出 Azure BizTalk 服务的已知问题
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f4906fdc-4cd9-4a57-a007-a88c2e51a18f
 ms.service: biztalk-services
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5c05c7c4c0f8f0b3619b36390c8a0224a03c900a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063536"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk 服务发行说明
 
@@ -65,11 +66,11 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
   无法将文件 <Path to DLL> 复制到“bin\Debug\FileName.dll”。 进程无法访问文件“bin\Debug\FileName.dll”，因为其他进程正使用此文件。  
 
 #### <a name="workaround"></a>解决方法
-* 如已安装 [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305)，则可使用以下两个选项：
+* 如已安装 [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs)，则可使用以下两个选项：
   
   * 重启 Visual Studio，或者
   * 重启解决方案。 然后，只对解决方案执行“生成”操作。  
-* 如未安装 [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305)，请打开任务管理器，并依次单击“进程”选项卡、“MSBuild.exe”进程和“结束进程”按钮。  
+* 如未安装 [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs)，请打开任务管理器，并依次单击“进程”选项卡、“MSBuild.exe”进程和“结束进程”按钮。  
 
 ### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>如果将不可打印字符升级为 HTTP 标头，则不可从网桥和 BizTalk 服务门户路由到 BasicHttpRelay 终结点
 如果使用不可打印字符作为已升级消息属性的一部分，则无法将这些消息路由到使用 BasicHttpRelay 绑定的中继目标。 另外，可用作跟踪内容的已升级属性会对 blob 进行 URL 编码，并对目标取消编码。  

@@ -1,11 +1,11 @@
 ---
-title: "应用服务环境的网络体系结构概述"
-description: "应用服务网络拓扑的体系结构概述。"
+title: 应用服务环境的网络体系结构概述
+description: 应用服务网络拓扑的体系结构概述。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986772"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
 ## <a name="introduction"></a>介绍

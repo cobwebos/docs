@@ -1,23 +1,21 @@
 ---
 title: 快速入门：向 Azure IoT 中心发送遥测数据 (C#) | Microsoft Docs
 description: 本快速入门将运行两个示例 C# 应用程序，从而向 IoT 中心发送模拟遥测数据，并读取 IoT 中心的遥测数据，在云中进行处理。
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: 9feade4407f800312556a1db39ce6c315c9330c2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 501a8f2dad0537f0288dfd6a6d7bedcac054ab86
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619295"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序从中心读取遥测数据 (C#)
 
@@ -62,7 +60,7 @@ dotnet --version
 
     如果为设备选择不同名称，则在运行示例应用程序之前，请在其中更新设备名称。
 
-1. 运行以下命令，获取刚注册设备的设备连接字符串：
+2. 运行以下命令，获取刚注册设备的设备连接字符串：
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -70,7 +68,7 @@ dotnet --version
 
     记下看起来类似于 `Hostname=...=` 的设备连接字符串。 稍后会在快速入门中用到此值。
 
-1. 还需要来自 IoT 中心的与事件中心兼容的终结点、与事件中心兼容的路径和 iothubowner 主键，确保后端应用程序能连接到 IoT 中心并检索消息。 以下命令可检索 IoT 中心的这些值：
+3. 还需要来自 IoT 中心的与事件中心兼容的终结点、与事件中心兼容的路径和 iothubowner 主键，确保后端应用程序能连接到 IoT 中心并检索消息。 以下命令可检索 IoT 中心的这些值：
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
@@ -86,19 +84,19 @@ dotnet --version
 
 模拟设备应用程序会连接到 IoT 中心上特定于设备的终结点，并发送模拟的温度和湿度遥测数据。
 
-1. 在终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 Quickstarts\simulated-device 文件夹。
+1. 在终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device** 文件夹。
 
-1. 在所选文本编辑器中打开 SimulatedDevice.cs 文件。
+2. 在所选文本编辑器中打开 SimulatedDevice.cs 文件。
 
-    将 `connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.cs 文件。
+    将 `s_connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.cs 文件。
 
-1. 在终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
+3. 在终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. 在终端窗口中，运行以下命令，生成并运行模拟设备应用程序：
+4. 在终端窗口中，运行以下命令，生成并运行模拟设备应用程序：
 
     ```cmd/sh
     dotnet run
@@ -112,23 +110,23 @@ dotnet --version
 
 后端应用程序会连接到 IoT 中心上的服务端“事件”终结点。 应用程序会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
 
-1. 在另一个终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 Quickstarts\read-d2c-messages 文件夹。
+1. 在另一个终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\read-d2c-messages 文件夹。
 
-1. 在所选文本编辑器中打开 ReadDeviceToCloudMessages.cs 文件。
+2. 在所选文本编辑器中打开 ReadDeviceToCloudMessages.cs 文件。 更新以下变量并保存对文件所做的更改。
 
-    将 `eventHubsCompatibleEndpoint` 变量的值替换为之前记下的与事件中心兼容的终结点。
+    | 变量 | 值 |
+    | -------- | ----------- |
+    | `s_eventHubsCompatibleEndpoint` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
+    | `s_eventHubsCompatiblePath`     | 将变量的值替换为之前记下的与事件中心兼容的路径。 |
+    | `s_iotHubSasKey`                | 将变量的值替换为之前记下的 iothubowner 主键。 |
 
-    将 `eventHubsCompatiblePath` 变量的值替换为之前记下的与事件中心兼容的路径。
-
-    将 `iotHubSasKey` 变量的值替换为之前记下的 iothubowner 主键。 然后将更改保存到 ReadDeviceToCloudMessages.cs 文件。
-
-1. 在终端窗口中，运行以下命令，安装后端应用程序所需的库：
+3. 在终端窗口中，运行以下命令，安装后端应用程序所需的库：
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. 在终端窗口中，运行以下命令，生成并运行后端应用程序：
+4. 在终端窗口中，运行以下命令，生成并运行后端应用程序：
 
     ```cmd/sh
     dotnet run
@@ -140,9 +138,7 @@ dotnet --version
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算完成下一快速入门教程，请保留资源组和 IoT 中心，稍后再进行使用。
-
-如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的 qs-iot-hub-rg 资源组，然后单击“删除”。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

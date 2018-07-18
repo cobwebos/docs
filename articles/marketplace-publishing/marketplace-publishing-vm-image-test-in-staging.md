@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936933"
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>在过渡环境中测试 Azure Marketplace 的 VM 产品/服务
 过渡表示将 SKU 部署到专用“沙盒”，可在其中测试和验证它的功能，然后再部署到 Marketplace。 SKU 出现在过渡环境中，就像客户已对它进行部署一样。 VM 映像必须经过认证才能推送到过渡环境。

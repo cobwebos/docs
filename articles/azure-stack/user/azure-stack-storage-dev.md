@@ -1,35 +1,35 @@
 ---
-title: 开始使用 Azure 堆栈存储开发工具 |Microsoft 文档
-description: 若要开始使用 Azure 堆栈存储开发工具使用的指南
+title: Azure Stack 存储开发工具入门 | Microsoft Docs
+description: 使用 Azure Stack 存储开发工具的入门指南
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 05/21/2018
+ms.date: 07/03/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 0ceda393412f8217a893a347ec5f3a9ac03efa3d
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 40f256b7a2be5a5a1d642983fa6ce018ee602ac2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604471"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441706"
 ---
-# <a name="get-started-with-azure-stack-storage-development-tools"></a>开始使用 Azure 堆栈存储开发工具
+# <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack 存储开发工具入门
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Microsoft Azure 堆栈提供一组存储服务，包括 blob、 表和队列存储。
+Microsoft Azure Stack 提供了一组存储服务包括 blob、 表和队列存储。
 
-使用本文作为指南，若要开始使用 Azure 堆栈存储开发工具。 可以在相应的 Azure 存储教程中找到更多详细的信息和示例代码。
+使用本文作为使用 Azure Stack 存储开发工具的入门指南。 可以在对应的 Azure 存储教程中，找到更多的详细信息和示例代码。
 
 > [!NOTE]  
-> 存在一些已知 Azure 堆栈存储和 Azure 存储，其中包括针对每个平台的特定需求之间的差异。 例如，Azure Stack 有特定的客户端库以及特定的终结点后缀需求。 有关详细信息，请参阅[Azure 堆栈存储： 差异和注意事项](azure-stack-acs-differences.md)。
+> Azure Stack 存储和 Azure 存储之间存在一些已知差异，包括每个平台的特定需求。 例如，Azure Stack 有特定的客户端库以及特定的终结点后缀需求。 有关详细信息，请参阅 [Azure Stack 存储：差异和注意事项](azure-stack-acs-differences.md)。
 
 ## <a name="azure-client-libraries"></a>Azure 客户端库
 
-有关 Azure 堆栈存储支持的 REST API 版本为自 2017 年 1-04-17、 2016年-05-31、 2015年-12-11、 2015年-07-08、 2015年-04-05 1802年更新或更新版本，和 2015年-04-05 对于以前的版本。 Azure 堆栈终结点没有与 Azure 存储 REST API 的最新版本的完整奇偶校验。 对于存储客户端库，需要知道与 REST API 兼容的版本。
+Azure Stack 存储支持的 REST API 版本是 2017-04-17、2016-05-31、2015-12-11、2015-07-08、2015-04-05（适用于 1802 更新或更高版本），以及 2015-04-05（适用于以前的版本）。 Azure Stack 终结点并不完全等同于最新版的 Azure 存储 REST API。 对于存储客户端库，需要知道与 REST API 兼容的版本。
 
 ### <a name="1802-update-or-newer-versions"></a>1802 更新或更高版本
 
@@ -210,4 +210,4 @@ EndpointSuffix=local.azurestack.external
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Microsoft Azure 存储空间简介](../../storage/common/storage-introduction.md)
+* [Microsoft Azure 存储简介](../../storage/common/storage-introduction.md)

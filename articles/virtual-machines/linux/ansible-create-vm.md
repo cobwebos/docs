@@ -3,7 +3,7 @@ title: 在 Azure 中使用 Ansible 创建基本的 Linux VM | Microsoft Docs
 description: 了解如何在 Azure 中使用 Ansible 创建和管理基本的 Linux 虚拟机
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
-ms.author: iainfou
-ms.openlocfilehash: a2bf047d5a08bfd3df6a6c76116d2b9b9ab81fad
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 05/30/2018
+ms.author: cynthn
+ms.openlocfilehash: 35dfe8348718e0edf8683f7eeddf286831697d89
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896157"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931423"
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>使用 Ansible 在 Azure 中创建基本的虚拟机
 使用 Ansible 可以在环境中自动部署和配置资源。 可以在 Azure 中使用 Ansible 管理虚拟机 (VM)，管理其他任意资源也一样。 本文介绍如何使用 Ansible 创建基本的 VM。 还可以了解如何[使用 Ansible 创建完整的 VM 环境](ansible-create-complete-vm.md)。
@@ -34,17 +34,17 @@ ms.locfileid: "33896157"
 - Azure 凭据和配置后使用 Azure 凭据的 Ansible。
     - [创建 Azure 凭据和配置 Ansible](ansible-install-configure.md#create-azure-credentials)
 - Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 
-    - 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 也可以通过浏览器使用 [Cloud Shell](/azure/cloud-shell/quickstart)。
+    - 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 也可以通过 Web 浏览器使用 [Azure Cloud Shell](/azure/cloud-shell/quickstart)。
 
 
 ## <a name="create-supporting-azure-resources"></a>创建支持的 Azure 资源
-在此示例中，创建一个 runbook 将 VM 部署到现有的基础结构中。 首先，使用 [az group create](/cli/azure/vm#az_vm_create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+在此示例中，创建一个 runbook 将 VM 部署到现有的基础结构中。 首先，使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 为 VM 创建虚拟网络。 以下示例创建一个名为 *myVnet* 的虚拟网络和一个名为 *mySubnet* 的子网：
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 为 VM 创建虚拟网络。 以下示例创建一个名为 *myVnet* 的虚拟网络和一个名为 *mySubnet* 的子网：
 
 ```azurecli
 az network vnet create \
@@ -77,7 +77,7 @@ az network vnet create \
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.3'
+        sku: '7.5'
         version: latest
 ```
 

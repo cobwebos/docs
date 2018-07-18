@@ -1,42 +1,113 @@
-### <a name="prerequisites"></a>先决条件
-* Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 一个 [Azure SQL 数据库](../articles/sql-database/sql-database-get-started.md)及其连接信息（其中包括服务器名称、数据库名称和用户名/密码）。 该信息将包含在 SQL 数据库连接字符串中：
-  
-    Server=tcp:*yoursqlservername*.database.windows.net,1433;Initial Catalog=*yourqldbname*;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-  
-    详细了解 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database)。
+---
+title: include 文件
+description: include 文件
+services: logic-apps
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 05/15/2018
+ms.author: estfan
+ms.custom: include file
+ms.openlocfilehash: 4ffda692da0ab7b63f7376c36dfab0bec914e334
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138059"
+---
+* 如果使用 Azure SQL 数据库，请按照[连接到 Azure SQL 数据库](#connect-azure-sql-db)中的步骤进行操作。 
 
-> [!NOTE]
-> 在创建 Azure SQL 数据库时，还可以使用 SQL 创建包含的示例数据库。 
-> 
-> 
+* 如果使用 SQL Server，请按照[连接到 SQL Server](#connect-sql-server) 中的步骤进行操作。
 
-在逻辑应用中使用 Azure SQL 数据库之前，请先连接到 SQL 数据库。 可以在 Azure 门户中的逻辑应用内轻松地执行此操作。  
+<a name="connect-azure-sql-db"></a>
 
-按照以下步骤操作，即可连接到 Azure SQL 数据库：  
+### <a name="connect-to-azure-sql-database"></a>连接到 Azure SQL 数据库
 
-1. 创建逻辑应用。 在逻辑应用设计器中，添加触发器，并添加操作。 在下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“sql”。 选择其中一个操作：  
-   
-    ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/sql-actions.png)
-2. 如果以前尚未创建任何与 SQL 数据库的连接，系统会提示输入连接详细信息：  
-   
-    ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/connection-details.png) 
-3. 输入 SQL 数据库详细信息。 带有星号的属性必填。
-   
-   | 属性 | 详细信息 |
-   | --- | --- |
-   | 通过网关连接 |将该属性保留未选中状态。 在连接到本地 SQL Server 时，会使用该属性。 |
-   | 连接名称 * |为连接输入任何名称。 |
-   | SQL Server 名称 * |输入服务器名称；这有点类似于 *servername.database.windows.net*。 该服务器名称会显示在 Azure 门户中的 SQL 数据库属性中，也会显示在连接字符串中。 |
-   | SQL 数据库名称 * |输入 SQL 数据库的名称。 该名称将列在连接字符串中的 SQL 数据库属性中：Initial Catalog=*yoursqldbname*。 |
-   | 用户名 * |输入在创建 SQL 数据库时创建的用户名。 该用户名将列在 Azure 门户中的 SQL 数据库属性中。 |
-   | 密码 * |输入在创建 SQL 数据库时创建的密码。 |
-   
-    这些凭据用于授权逻辑应用进行连接，然后访问 SQL 数据。 完成之后，连接详细信息会类似于下面这样：  
-   
-    ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/sample-connection.png) 
-4. 选择“创建” 。 
-5. 请注意，连接已创建。 现在，继续在逻辑应用中执行其他步骤： 
-   
-    ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/table.png)
+1. SQL 触发器或操作提示你输入连接信息时，请按照下列步骤操作：
 
+   1. 创建连接名称。
+
+   2. 选择 SQL server，然后选择数据库。 
+
+      仅在选择 SQL server 后，数据库列表才会出现。
+ 
+   3. 提供服务器的用户名和密码。
+
+      可在 Azure 门户中的 SQL 数据库属性下或连接字符串中找到该信息： 
+      
+      "User ID=<*yourUserName*>"
+      <br>
+      "Password=<*yourPassword*>"
+
+   此示例显示了触发器的连接信息，但这些步骤同样适用于操作。
+
+   ![创建 Azure SQL 数据库连接](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+   <br>
+   星号 (*) 表示必填值。
+
+   | 属性 | 值 | 详细信息 | 
+   |----------|-------|---------| 
+   | 连接名称 | <my-sql-connection> | 连接名称 | 
+   | SQL Server 名称 | <my-sql-server> | SQL Server 名称 |
+   | SQL 数据库名 | <my-sql-database>  | SQL 数据库名称 | 
+   | 用户名 | <my-sql-username> | 用于访问数据库的用户名称 |
+   | 密码 | <my-sql-password> | 用于访问数据库的密码 | 
+   |||| 
+
+2. 完成后，选择“创建”。
+
+3. 创建连接后，继续[添加 SQL 触发器](#add-sql-trigger)或[添加 SQL 操作](#add-sql-action)。
+
+<a name="connect-sql-server"></a>
+
+### <a name="connect-to-sql-server"></a>连接到 SQL Server
+
+选择网关前，请确保已经[设置数据网关](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)。 这样一来，创建连接时，网关会显示在网关列表中。
+
+1. SQL 触发器或操作提示你输入连接信息时，请按照下列步骤操作：
+
+   1. 在触发器或操作中，选择“通过本地数据网关连接”，以便显示 SQL Server 选项。
+
+   2. 创建连接名称。
+
+   3. 提供 SQL Server 地址，然后提供数据库名称。
+   
+      可在连接字符串中找到该信息： 
+      
+      * "Server=<*yourServerAddress*>"
+      * "Database=<*yourDatabaseName*>"
+
+   4. 提供服务器的用户名和密码。
+
+      可在连接字符串中找到该信息： 
+      
+      * "User ID=<*yourUserName*>"
+      * "Password=<*yourPassword*>"
+
+   5. 如果 SQL Server 使用 Windows 或基本身份验证，选择身份验证类型。
+
+   6. 选择之前创建的本地数据网关的名称。
+   
+      如果网关未出现在列表中，请检查是否已经正确[设置网关](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)。
+
+   此示例显示了触发器的连接信息，但这些步骤同样适用于操作。
+
+   ![创建 SQL Server 连接](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
+   <br>
+   星号 (*) 表示必填值。
+
+   | 属性 | 值 | 详细信息 | 
+   |----------|-------|---------| 
+   | 通过本地网关连接 | 首先为 SQL Server 设置选择该选项。 | | 
+   | 连接名称 | <my-sql-connection> | 连接名称 | 
+   | SQL Server 名称 | <my-sql-server> | SQL Server 名称 |
+   | SQL 数据库名 | <my-sql-database>  | SQL 数据库名称 |
+   | 用户名 | <my-sql-username> | 用于访问数据库的用户名称 |
+   | 密码 | <my-sql-password> | 用于访问数据库的密码 | 
+   | 身份验证类型 | Windows 或基本 | 可选：SQL server 的身份验证类型 | 
+   | 网关 | <my-data-gateway> | 本地数据网关的名称 | 
+   |||| 
+
+2. 完成后，选择“创建”。 
+
+3. 创建连接后，继续[添加 SQL 触发器](#add-sql-trigger)或[添加 SQL 操作](#add-sql-action)。

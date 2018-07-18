@@ -89,6 +89,9 @@
     - name: Azure 中国世纪互联
       tocHref: /azure/china/
       topicHref: /azure/china/
+    - name: Azure NetApp 文件
+      tocHref: /azure/azure-netapp-files/
+      topicHref: /azure/azure-netapp-files/
     - name: Azure 门户
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/
@@ -271,7 +274,7 @@
     - name: Data Lake Analytics
       tocHref: /azure/data-lake-analytics/
       topicHref: /azure/data-lake-analytics/
-    - name: Data Lake Store
+    - name: Data Lake Storage Gen1
       tocHref: /azure/data-lake-store/
       topicHref: /azure/data-lake-store/
     - name: 开发测试实验室
@@ -289,6 +292,9 @@
     - name: ExpressRoute
       tocHref: /azure/expressroute/
       topicHref: /azure/expressroute/
+    - name: 防火墙
+      tocHref: /azure/firewall/
+      topicHref: /azure/firewall/
     - name: 指南
       tocHref: /azure/guidance/
       topicHref: /azure/guidance/
@@ -311,7 +317,7 @@
         - name: 企业安全性
           tocHref: /azure/hdinsight/domain-joined
           topicHref: /azure/hdinsight/domain-joined/apache-domain-joined-introduction
-        - name: R Server
+        - name: ML Services
           tocHref: /azure/hdinsight/r-server
           topicHref: /azure/hdinsight/r-server-overview
         - name: Spark
@@ -379,10 +385,10 @@
         - name: 数据科学虚拟机
           tocHref: /azure/machine-learning/data-science-virtual-machine
           topicHref: /azure/machine-learning/data-science-virtual-machine/
-    - name: Marketplace 消费者
+    - name: 市场消费者
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/
-    - name: Marketplace 发布
+    - name: 市场发布
       tocHref: /azure/marketplace-publishing/
       topicHref: /azure/marketplace-publishing/
     - name: 媒体服务
@@ -469,6 +475,9 @@
     - name: 复原
       tocHref: /azure/resiliency/
       topicHref: /azure/resiliency/
+    - name: 基于角色的访问控制
+      tocHref: /azure/role-based-access-control/
+      topicHref: /azure/role-based-access-control/
     - name: 服务运行状况
       tocHref: /azure/service-health/
       topicHref: /azure/service-health/
@@ -515,6 +524,9 @@
         - name: Blob
           tocHref: /azure/storage/blobs/
           topicHref: /azure/storage/blobs/storage-blobs-introduction
+        - name: Data Lake Storage Gen2
+          tocHref: /azure/storage/data-lake-storage-gen2/
+          topicHref: /azure/storage/data-lake-storage/introduction
         - name: 文件
           tocHref: /azure/storage/files/
           topicHref: /azure/storage/files/storage-files-introduction

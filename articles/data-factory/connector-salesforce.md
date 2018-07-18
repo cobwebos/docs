@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: f4de97ef2df5351ac7e8574717ee1439b54a90e8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c139b68421061362f40856af55ad0338118ab49a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051876"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](v1/data-factory-salesforce-connector.md)
-> * [版本 2 - 预览版](connector-salesforce.md)
+> * [第 1 版](v1/data-factory-salesforce-connector.md)
+> * [当前版本](connector-salesforce.md)
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 Salesforce 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用已正式发布的版本 1 的数据工厂，请参阅[版本 1 中的 Salesforce 连接器](v1/data-factory-salesforce-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -307,7 +305,7 @@ Salesforce 链接服务支持以下属性。
 | 货币 |Double |
 | 日期 |DateTime |
 | 日期/时间 |DateTime |
-| Email |String |
+| 电子邮件 |String |
 | ID |String |
 | 查找关系 |String |
 | 多选择列表 |String |

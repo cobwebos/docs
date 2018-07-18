@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937847"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>修正常见的 Azure 堆栈 PKI 证书问题
 这篇文章中的信息可以帮助您了解和解决常见的 Azure 堆栈 PKI 证书问题。 使用 Azure 堆栈准备情况检查程序工具，可以发现问题[验证 Azure 堆栈 PKI 证书](azure-stack-validate-pki-certs.md)。 该工具会检查以确保证书满足 Azure 堆栈部署和 Azure 堆栈机密旋转的 PKI 要求和结果记录[report.json 文件](azure-stack-validation-report.md)。  

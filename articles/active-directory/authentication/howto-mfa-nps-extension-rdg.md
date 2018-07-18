@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: fbca491e845ad96ecafc6afb5f40d46b99c047bf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 19d602570337b101e4a5cf759fc56822313c631c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33932092"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097999"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -95,7 +95,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 ### <a name="configure-accounts-for-two-step-verification"></a>配置帐户进行双重验证
 为 MFA 启用帐户后，在成功配置用于二次身份验证的受信任的设备并且使用双重验证进行身份验证前，你将无法登录 MFA 策略管理的资源。
 
-按照[Azure 多重身份验证对我而言有什么用途？](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md)中的步骤，使用你的用户帐户了解并正确配置 MFA 的设备。
+按照[Azure 多重身份验证对我而言有什么用途？](end-user/current/multi-factor-authentication-end-user.md)中的步骤，使用你的用户帐户了解并正确配置 MFA 的设备。
 
 ## <a name="install-and-configure-nps-extension"></a>安装和配置 NPS 扩展
 本部分将说明如何配置 RDS 基础结构，以通过远程桌面网关使用 Azure MFA 进行客户端身份验证。

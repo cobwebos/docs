@@ -1,12 +1,12 @@
 ---
-title: "有关 Microsoft Azure StorSimple 和云解决方案提供商计划的常见问题解答（针对合作伙伴）| Microsoft Docs"
-description: "针对合作伙伴的有关 StorSimple 和 CSP 的常见问题解答。"
+title: 有关 Microsoft Azure StorSimple 和云解决方案提供商计划的常见问题解答（针对合作伙伴）| Microsoft Docs
+description: 针对合作伙伴的有关 StorSimple 和 CSP 的常见问题解答。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109055"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>适用于云解决方案提供商计划的 StorSimple：常见问题解答
 

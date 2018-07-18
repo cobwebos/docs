@@ -1,9 +1,9 @@
 ---
-title: "在 AD DS 中使用 Azure AD Connect Health | Microsoft 文档"
-description: "本页与 Azure AD Connect Health 相关，介绍如何监视 AD DS。"
+title: 在 AD DS 中使用 Azure AD Connect Health | Microsoft 文档
+description: 本页与 Azure AD Connect Health 相关，介绍如何监视 AD DS。
 services: active-directory
-documentationcenter: 
-author: arluca
+documentationcenter: ''
+author: zhiweiw
 manager: mtillman
 editor: curtand
 ms.assetid: 19e3cf15-f150-46a3-a10c-2990702cd700
@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: dcfb43003e81bb51574b401c21202925b16305f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f30c09e4942cf6992be69d9aedcd5b9b0c02b0a6
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886726"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>在 AD DS 中使用 Azure AD Connect Health
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Active Directory 域服务。 支持的 AD DS 版本为：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016。
 
 有关使用 Azure AD Connect Health 监视 AD FS 的详细信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Azure AD Connect（同步）的信息，请参阅 [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)。
 
-![用于 AD DS 的 Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnect-health-adds-entry.png)
+![用于 AD DS 的 Azure AD Connect Health](./media/active-directory-aadconnect-health-adds/domainservicesnapshot.PNG)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-ad-ds"></a>用于 AD DS 的 Azure AD Connect Health 的警报
 用于 AD DS 的 Azure AD Connect Health 中的“警报”部分提供一个与域控制器相关的活动和已解决警报列表。 如果选择某个活动或已解决警报，将打开一个新的边栏选项卡，其中包含一些附加信息、解决方法步骤和支持文档链接。 每种警报类型可以有一个或多个实例，它们对应于受该特定警报影响的每一个域控制器。 在警报边栏选项卡底部附近，可以双击某个受影响的域控制器打开另一个边栏选项卡，其中包含有关该警报实例的更多详细信息。

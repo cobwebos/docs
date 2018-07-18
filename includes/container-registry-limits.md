@@ -5,24 +5,26 @@ services: container-registry
 author: mmacy
 ms.service: container-registry
 ms.topic: include
-ms.date: 03/23/2018
+ms.date: 05/29/2018
 ms.author: marsma
 ms.custom: include file
-ms.openlocfilehash: 575483192954f4e05db50e701e223829e041cffc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 942b9bdf0201acaefe3333bcf928772899b9bdc2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34665039"
 ---
 | 资源 | 基本 | 标准 | 高级 |
 |---|---|---|---|---|
 | 存储 | 10 GiB | 100 GiB| 500 GiB |
+| 最大映像层大小 | 20 GiB | 20 GiB | 50 GiB |
 | 每分钟读取操作数<sup>1、2</sup> | 1000 | 3000 | 10000 |
 | 每分钟写入操作数<sup>1、3</sup> | 100 | 500 | 2000 |
 | 下载带宽 (MBps)<sup>1</sup> | 30 | 60 | 100 |
 | 上传带宽 (MBps)<sup>1</sup> | 10 | 20 | 50 |
 | Webhook | 2 | 10 | 100 |
-| 异地复制 | 不适用 | 不适用 | [支持（预览版）](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication) |
+| 异地复制 | 不适用 | 不适用 | [支持](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication) |
 
 <sup>1</sup>读取操作数、写入操作数和带宽是最小估计值。 ACR 旨在随使用情况增多提升性能。
 

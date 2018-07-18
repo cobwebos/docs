@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b87838a80c7c7706b9af2bd4ea274335d04a5c52
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751507"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](app-service-web-overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。 
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/28/2018
 备份功能支持以下数据库解决方案： 
    - [SQL 数据库](https://azure.microsoft.com/services/sql-database/)
    - [用于 MySQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/services/mysql)
-   - [用于 PostgreSQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/services/postgres)
+   - [用于 PostgreSQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/services/postgresql)
    - [MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 

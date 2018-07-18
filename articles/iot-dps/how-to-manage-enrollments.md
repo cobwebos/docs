@@ -1,22 +1,19 @@
 ---
 title: 通过 Azure 门户管理设备注册 | Microsoft Docs
 description: 如何在 Azure 门户中管理 DPS 服务的设备注册
-services: iot-dps
-keywords: ''
 author: dsk-2015
 ms.author: dkshir
 ms.date: 04/05/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 55486d9a37968351f5313c708e9ef26e5b89063c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b13f74e0c3df5090d1b1b2e0c48e3dc612821250
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628430"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>如何通过 Azure 门户管理设备注册
 
@@ -42,9 +39,9 @@ ms.lasthandoff: 04/16/2018
        [![门户中的注册组](./media/how-to-manage-enrollments/group-enrollment.png)]  (./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
-* 个人注册是用于单个设备注册的条目。 个人注册可使用 x509 证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 对于需要唯一初始配置的设备或仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备，建议使用个人注册。 个人注册可能会指定所需 IoT 中心设备 ID。
+* 单独注册是用于单个设备注册的条目。 个人注册可使用 x509 证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 对于需要唯一初始配置的设备或仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备，建议使用单独注册。 单独注册可能会指定所需 IoT 中心设备 ID。
 
-    可通过以下步骤在门户中创建个人注册。
+    可通过以下步骤在门户中创建单独注册。
 
     1. 登录 Azure 门户，单击左侧菜单中的“所有资源”。
     2. 从资源列表中单击要向其注册设备的设备预配服务。
@@ -52,7 +49,7 @@ ms.lasthandoff: 04/16/2018
        a. 单击“管理注册”，然后选择“个人注册”选项卡。  
        b. 单击顶部的“添加”按钮。   
        c. 当“添加注册”面板出现时，输入注册列表项的信息。 首先为设备选择证明**机制**（X.509 或 TPM）。 X.509 证明要求为设备上传叶**主证书**。 TPM 要求为设备输入**证明密钥**和**注册 ID**。  
-       d. 单击“ **保存**”。 注册组创建成功后，应可在“个人注册”选项卡下看到设备。  
+       d. 单击“ **保存**”。 注册组创建成功后，应可在“单独注册”选项卡下看到设备。  
 
        [![门户中的个人注册](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 

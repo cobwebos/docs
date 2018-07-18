@@ -19,6 +19,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057098"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>按缩写列出的 Azure CDN POP 位置
 > [!div class="op_single_selector"]

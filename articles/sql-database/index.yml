@@ -14,13 +14,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: b7888a2bece1a9b601c3629deb1c1dd1fc5cbbe3
-  ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+  ms.openlocfilehash: 5fcfe7b12acc943224d3c3158f2b39b4c35de1ee
+  ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/06/2018
+  ms.lasthandoff: 07/09/2018
+  ms.locfileid: "37916143"
 abstract:
-  description: Azure SQL 数据库是使用 Microsoft SQL Server 引擎的关系数据库即服务。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
+  description: Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 数据库引擎的关系数据库即服务 (DBaaS)。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
   aside:
     image:
       alt: 
@@ -31,25 +32,103 @@ abstract:
     href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
     width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/sql-database/sql-database-technical-overview
+      html: <p><a href="/azure/sql-database/sql-database-high-availability">高度可用的</a> PaaS 数据库，它始终运行于最新稳定版的 SQL Server 数据库引擎和已使用<a href="/azure/sql-database/sql-database-automated-backups">自动数据库备份</a>修补的 OS 之上。</p>
+      image:
+        src: media/index/i_managed.svg
+      title: 完全托管
+    - href: /azure/sql-database/sql-database-service-tiers
+      html: <p>通过<a href="/azure/sql-database/sql-database-service-tiers">灵活的性能层</a>（跨度从经济实惠的 5$/月的数据库到功能强大的 80 核数据库）定制价格/性能比，以满足你的需求。</p>
+      image:
+        src: media/index/i_perftier.svg
+      title: 价格/性能层
+    - href: /azure/sql-database/sql-database-scale-resources
+      html: <p>轻松地对数据库进行<a href="/azure/sql-database/sql-database-single-database-scale">纵向扩展</a>、<a href="/azure/sql-database/sql-database-read-scale-out">横向扩展</a>或分片，具体取决于提高应用程序性能的需求。</p>
+      image:
+        src: media/index/i_scale.svg
+      title: 可伸缩性和弹性
+    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
+      html: <p>使得内置于服务中的智能<a href="/azure/sql-database/sql-database-automatic-tuning">自动优化数据库性能</a>、<a href="/azure/sql-database/sql-advanced-threat-protection">识别数据库中的威胁</a>和<a href="/azure/sql-database/sql-vulnerability-assessment">漏洞</a>。</p>
+      image:
+        src: media/index/i_intelligence.svg
+      title: 内置智能
+    - href: /azure/sql-database/sql-database-servers-databases
+      html: <p>将<a href="/azure/sql-database/sql-database-managed-instance">逻辑服务器中托管的单一数据库</a>用于需要一个具有可预测性能的单一数据库的 <a href="/azure/sql-database/saas-tenancy-app-design-patterns">SaaS 应用程序</a>和微服务。</p>
+      image:
+        src: media/index/i_db.svg
+      title: 单一数据库
+    - href: /azure/sql-database/sql-database-managed-instance
+      html: <p>使用<a href="/azure/sql-database/sql-database-managed-instance">托管实例</a>可轻松地<a href="azure/sql-database/sql-database-managed-instance-migrate">将本地数据库迁移</a>到 Azure PaaS，只需更改极少数据库代码或无需更改数据库代码。</p>
+      image:
+        src: media/index/i_mi.svg
+      title: 托管实例
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 了解如何创建 SQL 数据库、使用 SQL Management Studio 管理该数据库以及采用 C#、Java、Python、Node.js 和 Ruby 通过该数据库进行开发：
-  - type: list
-    style: icon48
-    items:
+    text: 可以通过 Azure 门户、Azure CLI 和 Azure PowerShell 使用 Azure SQL 数据库轻松地执行基本的管理任务。 了解如何使用以下快速入门示例执行基本的管理任务：
+  - type: table
+    style: dataMatrix
+    columns:
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
-      text: Azure 门户
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal
+        src: media/index/portal.svg
+      title: Azure 门户
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/cli.svg
-      text: Azure CLI
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-cli
+        src: media/index/cli.svg
+      title: Azure CLI
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-powershell
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    - image:
+        src: media/index/logo_arm.svg
+      title: Azure 资源管理器模板
+    rows:
+    - title: 创建单个 SQL 数据库
+      values:
+      - href: /azure/sql-database/sql-database-get-started-portal
+      - href: /azure/sql-database/sql-database-get-started-cli
+      - href: /azure/sql-database/sql-database-get-started-powershell
+      - href: 
+    - title: 创建 SQL 托管实例
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+      - href: 
+    - title: 创建 SQL 弹性池
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
+    - title: 缩放单个 SQL 数据库
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
+      - href: 
+    - title: 缩放 SQL 弹性池
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
+    - title: 缩放托管实例
+      values:
+      - href: 
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
+      - href: 
+    - title: 配置适用于托管实例的 Azure 网络
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment
 - title: 分步教程
   items:
   - type: paragraph

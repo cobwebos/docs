@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 开发测试实验室创建自定义实验室 | Microsoft Docs
-description: 在此快速入门中，使用 Azure 开发测试实验室创建自定义实验室。
+title: 使用 Azure 开发测试实验室创建实验室 | Microsoft Docs
+description: 在此快速入门中，使用 Azure 开发测试实验室创建实验室。
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,26 +14,26 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3a4f964fe4f103e970a6edb3e9ba716fd72b8c79
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5a93feec7996fc0ebf742b8d62b159dca5f1c1ed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362237"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636981"
 ---
-# <a name="tutorial-set-up-a-custom-lab-by-using-azure-devtest-labs"></a>教程：使用 Azure 开发测试实验室设置自定义实验室
-在此教程中，使用 Azure 门户创建自定义实验室。 实验室管理员在组织中设置实验室、创建实验室中的 VM 并配置策略。 实验室用户（例如：开发人员和测试人员）认领、连接到并使用实验室中的 VM。 
+# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教程：使用 Azure 开发测试实验室设置实验室
+在此教程中，使用 Azure 门户创建实验室。 实验室管理员在组织中设置实验室、创建实验室中的 VM 并配置策略。 实验室用户（例如：开发人员和测试人员）认领、连接到并使用实验室中的 VM。 
 
 在本教程中，将执行以下操作：
 
 > [!div class="checklist"]
-> * 创建自定义实验室
+> * 创建实验室
 > * 将虚拟机 (VM) 添加到实验室
 > * 将用户添加到实验室用户角色
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="create-a-custom-lab"></a>创建自定义实验室
+## <a name="create-a-lab"></a>创建实验室
 以下步骤演示了如何使用 Azure 门户在 Azure 开发测试实验室中创建实验室。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -97,8 +97,8 @@ ms.locfileid: "34362237"
 4. 重复这些步骤，以删除所创建的名为 `<your resource group name><random numbers>` 的其他资源组。 例如：`splab3988722144001`。 是在此资源组中创建虚拟机，而不是在具有实验室的所有资源组中创建。 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，创建了带有 VM 的自定义实验室并向一个用户提供了此实验室的访问权限。 若要了解如何作为实验室用户访问实验室，请进入下一教程：
+在本教程中，创建了带有 VM 的实验室并向一个用户提供了此实验室的访问权限。 若要了解如何作为实验室用户访问实验室，请进入下一教程：
 
 > [!div class="nextstepaction"]
-> [教程：访问自定义实验室](tutorial-use-custom-lab.md)
+> [教程：访问实验室](tutorial-use-custom-lab.md)
 

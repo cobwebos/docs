@@ -1,25 +1,24 @@
 ---
 title: 快速入门：向 Azure IoT 中心发送遥测数据 | Microsoft Docs
 description: 在本快速入门中，请运行一个示例 iOS 应用程序，以便向 IoT 中心发送模拟遥测数据，以及从 IoT 中心读取需在云中处理的遥测数据。
-services: iot-hub
 author: kgremban
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: ''
+services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
-ms.date: 04/20//2018
+ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: 0f1d3a5f714a2202836f477e78a30aa080947239
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: dbc1cc4a72d0346c92d506358c39a66a4d780b32
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309739"
 ---
-# <a name="send-telemetry-from-a-device-to-an-iot-hub-swift"></a>将遥测数据从设备发送到 IoT 中心 (Swift)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>快速入门：将遥测数据从设备发送到 IoT 中心 (iOS)
+
+[!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 在本文中，请将遥测数据从模拟设备应用程序发送到 IoT 中心， 然后即可从后端应用程序查看数据。 
 
@@ -42,32 +41,8 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-第一步是使用 Azure 门户在订阅中创建 IoT 中心。 IoT 中心用于将大量遥测数据从许多设备引入到云中。 然后，该中心会允许一个或多个在云中运行的后端服务读取和处理该遥测数据。
+[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
 
-1. 登录到 [Azure 门户](http://portal.azure.com)。
-
-1. 选择“创建资源” > “物联网” > “IoT 中心”。 
-
-   ![选择安装 IoT 中心](media/quickstart-send-telemetry-ios/selectiothub.png)
-
-1. 若要创建 IoT 中心，请使用以下表中的值：
-
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 中心的唯一名称 |
-    | 定价和缩放层 | F1 免费 |
-    | IoT 中心单位 | 1 |
-    | 设备到云的分区 | 2 个分区 |
-    | 订阅 | Azure 订阅。 |
-    | 资源组 | 新建。 输入资源组名称。 |
-    | Location | 最靠近你的位置。 |
-    | 固定到仪表板 | 是 |
-
-1. 单击“创建”。  
-
-   ![中心设置](media/quickstart-send-telemetry-ios/hubdefinition.png)
-
-1. 记下IoT 中心和资源组的名称。 本快速入门后面会用到这些值。
 
 ## <a name="register-a-device"></a>注册设备
 
@@ -160,18 +135,19 @@ iothub-explorer monitor-events myiOSdevice --login "{your hub service connection
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续在其他文章中测试 IoT 中心，请保留资源组和 IoT 中心，在以后重用它们。
-
-如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的资源组，然后单击“删除”。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 在本文中，你设置了 IoT 中心、注册了设备、将模拟遥测数据从 iOS 设备发送到了中心，并从中心读取了遥测数据。 
 
-若要继续了解如何将 iOS 设备与 IoT 中心配合使用，请参阅[通过 iOS 发送云到设备的消息 (Swift)](iot-hub-ios-swift-c2d.md)
+若要了解如何从后端应用程序控制模拟设备，请继续阅读下一快速入门教程。
+
+> [!div class="nextstepaction"]
+> [快速入门：控制连接到 IoT 中心的设备](quickstart-control-device-node.md)
 
 <!-- Links -->
-[lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-process-d2c-tutorial]: tutorial-routing.md
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/

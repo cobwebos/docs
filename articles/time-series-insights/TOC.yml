@@ -16,6 +16,8 @@
       href: tutorial-explore-js-client-lib.md
     - name: 创建 TSI 环境
       href: tutorial-create-populate-tsi-environment.md
+    - name: 创建 TSI 单页 Web 应用
+      href: tutorial-create-tsi-sample-spa.md
 - name: 概念
   items:
     - name: 规划环境

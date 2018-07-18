@@ -1,24 +1,25 @@
 ---
-title: Azure SQL 数据同步最佳做法（预览版）| Microsoft 文档
-description: 了解有关配置和运行 Azure SQL 数据同步（预览版）的最佳做法。
+title: Azure SQL 数据同步最佳做法 | Microsoft Docs
+description: 了解有关配置和运行 Azure SQL 数据同步的最佳做法。
 services: sql-database
-ms.date: 04/01/2018
-ms.topic: article
+ms.date: 07/03/2018
+ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c8b8455dac9aa1a9f7747cada4ce85644162e331
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445154"
 ---
-# <a name="best-practices-for-sql-data-sync-preview"></a>SQL 数据同步最佳做法（预览版） 
+# <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
-本文介绍了针对 Azure SQL 数据同步（预览版）的最佳做法。
+本文介绍了针对 Azure SQL 数据同步的最佳做法。
 
-有关 SQL 数据同步（预览版）的概述，请参阅[使用 Azure SQL 数据同步（预览版）跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 ## <a name="security-and-reliability"></a>安全性和可靠性
 
@@ -49,10 +50,10 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 
 #### <a name="sql-database-instance-size"></a>SQL 数据库实例大小
 
-创建新的 SQL 数据库实例时，请设置最大大小，以使其始终大于你部署的数据库。 如果未将最大大小设置为大于部署的数据库，则同步会失败。 尽管 SQL 数据同步（预览版）不提供自动增长，但可以在创建数据库后运行 `ALTER DATABASE` 命令来增加数据库的大小。 请确保始终保持在 SQL 数据库实例大小限制之内。
+创建新的 SQL 数据库实例时，请设置最大大小，以使其始终大于你部署的数据库。 如果未将最大大小设置为大于部署的数据库，则同步会失败。 尽管 SQL 数据同步不提供自动增长，但可以在创建数据库后运行 `ALTER DATABASE` 命令来增加数据库的大小。 请确保始终保持在 SQL 数据库实例大小限制之内。
 
 > [!IMPORTANT]
-> SQL 数据同步（预览版）会为每个数据库存储额外的元数据。 请确保在计算所需的空间时考虑此元数据。 增加的开销量与表宽度（例如，窄表会需要更多的开销）和流量大小有关。
+> SQL 数据同步会为每个数据库存储额外的元数据。 请确保在计算所需的空间时考虑此元数据。 增加的开销量与表宽度（例如，窄表会需要更多的开销）和流量大小有关。
 
 ### <a name="table-considerations-and-constraints"></a> 表考虑因素和约束
 
@@ -62,19 +63,19 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 
 #### <a name="primary-keys"></a>主键
 
-同步组中的每个表均必须具有主键。 SQL 数据同步（预览版）服务无法同步不具有主键的表。
+同步组中的每个表均必须具有主键。 SQL 数据同步服务无法同步没有主键的表。
 
-在使用 SQL 数据同步（预览版）投入生产之前，请测试初始和正在进行的同步性能。
+在生产中使用 SQL 数据同步之前，请测试初始和正在进行的同步性能。
 
 ### <a name="provisioning-destination-databases"></a> 预配目标数据库
 
-SQL 数据同步（预览版）提供了基本的数据库自动预配。
+SQL 数据同步提供了基本的数据库自动预配。
 
-本部分讨论 SQL 数据同步（预览版）预配的限制。
+本部分讨论 SQL 数据同步预配的限制。
 
 #### <a name="autoprovisioning-limitations"></a>自动预配限制
 
-SQL 数据同步（预览版）自动预配的限制如下：
+SQL 数据同步自动预配的限制如下：
 
 -   在目标表中仅选择已创建的列。  
     在目标表中，不会对不属于同步组一部分的任何列进行预配。
@@ -84,10 +85,11 @@ SQL 数据同步（预览版）自动预配的限制如下：
 -   不会预配 CHECK 约束。  
 -   不会预配源表上的现有触发器。  
 -   不会在目标数据库上创建视图和存储的过程。
+-   对外键约束的 ON UPDATE CASCADE 和 ON DELETE CASCADE 操作不会在目标表中重新创建。
 
 #### <a name="recommendations"></a>建议
 
--   仅在尝试使用该服务时使用 SQL 数据同步（预览版）自动预配功能。  
+-   仅在尝试使用该服务时使用 SQL 数据同步自动预配功能。  
 -   对于生产环境，应预配数据库架构。
 
 ### <a name="locate-hub"></a> 在哪里定位中心数据库
@@ -113,7 +115,7 @@ SQL 数据同步（预览版）自动预配的限制如下：
 
 #### <a name="how-initial-sync-works"></a>初始同步工作原理
 
-创建同步组时，请先仅处理一个数据库中的数据。 如果数据在多个数据库中，SQL 数据同步（预览版）会将每一行都视为需要解决的冲突。 此冲突解决会导致初始同步运行缓慢。 如果数据在多个数据库中，则初始同步可能需要几天到几个月的时间，具体要取决于数据库大小。
+创建同步组时，请先仅处理一个数据库中的数据。 如果数据在多个数据库中，SQL 数据同步会将每一行都视为需要解决的冲突。 此冲突解决会导致初始同步运行缓慢。 如果数据在多个数据库中，则初始同步可能需要几天到几个月的时间，具体要取决于数据库大小。
 
 如果数据库在不同的数据中心，每行都必须在不同的数据中心之间穿行。 这也增加了初始同步的成本。
 
@@ -208,16 +210,16 @@ SQL 数据同步（预览版）自动预配的限制如下：
 如果你尝试先删除数据库，然后编辑同步组而不先部署其中一个更改，则一个或另一个操作会失败。 门户界面可能会出现不一致状态。 如果出现此情况，请刷新页面以还原正确的状态。
 
 ## <a name="next-steps"></a>后续步骤
-有关 SQL 数据同步（预览版）的详细信息，请参阅：
+有关 SQL 数据同步的详细信息，请参阅：
 
--   [使用 Azure SQL 数据同步（预览版）跨多个云和本地数据库同步数据](sql-database-sync-data.md)
--   [安装 Azure SQL 数据同步（预览版）](sql-database-get-started-sql-data-sync.md)
--   [使用 Log Analytics 监视 Azure SQL 数据同步（预览版）](sql-database-sync-monitor-oms.md)
--   [解决 Azure SQL 数据同步（预览版）的问题](sql-database-troubleshoot-data-sync.md)  
--   演示如何配置 SQL 数据同步（预览版）的完整 PowerShell 示例：  
+-   [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)
+-   [设置 Azure SQL 数据同步](sql-database-get-started-sql-data-sync.md)
+-   [使用 Log Analytics 监视 Azure SQL 数据同步](sql-database-sync-monitor-oms.md)
+-   [Azure SQL 数据同步问题疑难解答](sql-database-troubleshoot-data-sync.md)  
+-   演示如何配置 SQL 数据同步的完整 PowerShell 示例：  
     -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [下载 SQL 数据同步（预览版）REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
+-   [下载 SQL 数据同步 REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 有关 SQL 数据库的详细信息，请参阅：
 

@@ -1,12 +1,12 @@
 ---
-title: "更换 StorSimple 8000 系列设备的机箱 | Microsoft 文档"
-description: "介绍如何移除和更换 StorSimple 主机箱或 EBOD 机箱的底盘。"
+title: 更换 StorSimple 8000 系列设备的机箱 | Microsoft 文档
+description: 介绍如何移除和更换 StorSimple 主机箱或 EBOD 机箱的底盘。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108155"
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>更换 StorSimple 设备上的底盘
 ## <a name="overview"></a>概述

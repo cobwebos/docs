@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: c58e731f6b8c86a0b7d6f2500d81077904b2f5ef
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 566b1e731f137863e9d4bc284d8868d408c7a575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058040"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640194"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>如何处理和提取认知搜索方案中的图像中的信息
 
@@ -40,10 +40,12 @@ ms.locfileid: "34058040"
 > [!NOTE]
 > 如果将 *imageAction* 属性设置为 "none" 之外的其他值，则只能将 *parsingMode* 属性设置为 "default"。  在索引器配置中，只能将这两个属性中的一个设置为非默认值。
 
+将 **parsingMode** 参数设置为 `json`（将每个 Blob 作为单个文档进行索引编制）或 `jsonArray`（如果 Blob 包含 JSON 数组，且需要将数组的每个元素视为单独的文档）。
+
 将规范化图像的最大宽度和高度默认设置为 2000 像素是考虑到 [OCR 技术](cognitive-search-skill-ocr.md)所能够支持的最大大小以及[图像分析技术](cognitive-search-skill-image-analysis.md)。 如果提高最大限制，则在处理较大的图像时可能会失败。
 
 
-可以指定[索引器定义](ref-create-indexer.md)中所述的 imageAction，如下所示：
+可以指定[索引器定义](https://docs.microsoft.com/rest/api/searchservice/create-indexer)中所述的 imageAction，如下所示：
 
 ```json
 {
@@ -216,7 +218,7 @@ ms.locfileid: "34058040"
 ```
 
 ## <a name="see-also"></a>另请参阅
-+ [创建索引器 (REST)](ref-create-indexer.md)
++ [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [分析图像技术](cognitive-search-skill-image-analysis.md)
 + [OCR 技术](cognitive-search-skill-ocr.md)
 + [文本合并技术](cognitive-search-skill-textmerger.md)

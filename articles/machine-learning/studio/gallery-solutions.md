@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: a07c517ac3bfeabc1fe87ead07083c9b8b61dc7f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19861955dcf82d0ffae674400552ca1f0c439a81
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834875"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现解决方案
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -30,7 +32,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="discover"></a>发现
   要浏览库中的解决方案，请打开[库](http://gallery.cortanaintelligence.com)，并单击库主页顶部的“解决方案”。
 
- **[解决方案](https://gallery.cortanaintelligence.com/solutions)**页显示最近添加的解决方案列表。
+ **[解决方案](https://gallery.cortanaintelligence.com/solutions)** 页显示最近添加的解决方案列表。
 单击“查看所有”可查看所有解决方案。
 在本页中，可以浏览库中的所有解决方案。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 

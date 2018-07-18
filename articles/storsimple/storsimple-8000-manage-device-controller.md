@@ -1,12 +1,12 @@
 ---
-title: "管理 StorSimple 8000 系列设备控制器 | Microsoft Docs"
-description: "了解如何停止、重新启动、关闭或重置 StorSimple 设备控制器。"
+title: 管理 StorSimple 8000 系列设备控制器 | Microsoft Docs
+description: 了解如何停止、重新启动、关闭或重置 StorSimple 设备控制器。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108675"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 设备控制器
 

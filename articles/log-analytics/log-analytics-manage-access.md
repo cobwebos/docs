@@ -3,7 +3,7 @@ title: 管理 Azure Log Analytics 和 OMS 门户中的工作区 | Microsoft 文�
 description: 可以通过对用户、帐户、工作区和 Azure 帐户使用各种管理任务来管理 Azure Log Analytics 和 OMS 门户中的工作区。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: d0e5162d-584b-428c-8e8b-4dcaa746e783
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.topic: conceptual
+ms.date: 05/17/2018
 ms.author: magoedte
-ms.openlocfilehash: d2480936ed54ec58ba289eae1ba605a16e27f0b3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: na
+ms.openlocfilehash: 3b4e0f978cc7d23d0157b78fd2dff27096d2768b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271664"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133215"
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -29,7 +30,7 @@ ms.locfileid: "34271664"
 
 1. 一个 Azure 订阅。
 2. 选择工作区名称。
-3. 将该工作区与订阅相关联。
+3. 将工作区与订阅和资源组之一相关联。
 4. 选择地理位置。
 
 ## <a name="determine-the-number-of-workspaces-you-need"></a>确定所需工作区数
@@ -40,15 +41,14 @@ ms.locfileid: "34271664"
 工作区目前提供：
 
 * 数据存储的地理位置
-* 计费粒度
-* 数据隔离
-* 配置的作用域
+* 数据隔离，以定义不同的用户访问权限
+* 设置配置的范围，如保留期和数据上限
 
-基于上述特征，在以下情况下可能需要创建多个工作区：
+从使用角度来看，我们建议创建尽可能少的工作区。 它使管理和查询体验更轻松、更快捷。 但是，基于上述特征，在以下情况下可能需要创建多个工作区：
 
 * 贵公司是全球性公司，因数据所有权和合规性需要将数据存储于特定区域。
 * 正在使用 Azure，并希望通过让工作区与它所管理的 Azure 资源位于同一区域，避免产生出站数据传输费用。
-* 希望根据使用情况将费用分配到不同部门或业务组。 为每个部门或业务组创建工作区时，Azure 帐单和使用声明单独显示每个工作区的费用。
+* 希望根据使用情况将费用分配到不同部门或业务组。 为每个部门或业务组在其自己的 Azure 订阅中创建工作区时。
 * 公司是托管服务提供商，需要为所管理的每位客户单独保留 Log Analytics 数据，即与其他客户的数据分开保存。
 * 管理多个客户，并希望每个客户/部门/业务组能够看到自己的数据，而不是他人的数据。
 
@@ -58,7 +58,7 @@ ms.locfileid: "34271664"
 
 ### <a name="workspace-information"></a>工作区信息
 
-可以在 Azure 门户中查看有关工作区的详细信息。 也可以在 OMS 门户中查看详细信息。
+可以在 Azure 门户中查看有关工作区的详细信息。 
 
 #### <a name="view-workspace-information-in-the-azure-portal"></a>在 Azure 门户中查看工作区信息
 
@@ -71,34 +71,14 @@ ms.locfileid: "34271664"
 
 
 ## <a name="manage-accounts-and-users"></a>管理帐户和用户
-每个工作区可有多个与其关联的帐户，每个帐户（Microsoft 帐户或组织帐户）可访问多个工作区。
+每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 通过 [Azure 基于角色的访问权限](../active-directory/role-based-access-control-configure.md)来管理访问权限。 这些访问权限同时适用于 Azure 门户和 API 访问。
 
-默认情况下，用于创建工作区的 Microsoft 帐户或组织帐户会成为该工作区的管理员。
-
-可以通过两种权限模型控制对 Log Analytics 工作区的访问：
-
-1. 旧式 Log Analytics 用户角色
-2. [Azure 基于角色的访问权限](../active-directory/role-based-access-control-configure.md)
-
-下表汇总了可以通过每个权限模型设置的访问权限：
-
-|                          | Log Analytics 门户 | Azure 门户 | API（包括 PowerShell） |
-|--------------------------|----------------------|--------------|----------------------------|
-| Log Analytics 用户角色 | 是                  | 否           | 否                         |
-| Azure 基于角色的访问权限  | 是                  | 是          | 是                        |
-
-> [!NOTE]
-> Log Analytics 正在准备使用 Azure 基于角色的访问权限作为权限模型，替代 Log Analytics 用户角色。
->
->
-
-旧式 Log Analytics 用户角色仅控制对 [Log Analytics 门户](https://mms.microsoft.com)中执行的活动的访问权限。
 
 以下活动也需要 Azure 权限：
 
 | 操作                                                          | 所需 Azure 权限 | 说明 |
 |-----------------------------------------------------------------|--------------------------|-------|
-| 添加和删除管理解决方案                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| 添加和删除管理解决方案                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 需要在资源组或订阅级别授予这些权限。 |
 | 更改定价层                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | 查看*备份* 和 *Site Recovery* 解决方案磁贴中的数据 | 管理员/共同管理员 | 访问通过经典部署模型部署的资源 |
 | 在 Azure 门户中创建工作区                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
@@ -115,27 +95,34 @@ Log Analytics 读者角色的成员可以：
 - 查看和搜索所有监视数据 
 - 查看监视设置，包括查看 Azure 诊断在所有 Azure 资源上的配置。
 
+Log Analytics 读者角色包括以下 Azure 操作：
+
 | Type    | 权限 | 说明 |
 | ------- | ---------- | ----------- |
-| 操作 | `*/read`   | 能够查看所有资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置 |
+| 操作 | `*/read`   | 能够查看所有 Azure 资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置 |
 | 操作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 能够执行 Log Search v2 查询 |
 | 操作 | `Microsoft.OperationalInsights/workspaces/search/action` | 能够执行 Log Search v1 查询 |
 | 操作 | `Microsoft.Support/*` | 能够打开支持案例 |
-|非操作 | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | 防止读取工作区密钥，该密钥是使用数据集合 API 和安装代理所必需的 |
+|非操作 | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | 防止读取工作区密钥，该密钥是使用数据集合 API 和安装代理所必需的。 这可以防止用户向工作区添加新资源 |
 
 
 Log Analytics 参与者角色的成员可以：
-- 读取所有监视数据 
-- 创建和配置自动化帐户
-- 添加和删除管理解决方案
-- 读取存储帐户密钥 
-- 从 Azure 存储配置日志集合
+- 像 Log Analytics 读者一样读取所有监视数据  
+- 创建和配置自动化帐户  
+- 添加和删除管理解决方案    
+    > [!NOTE] 
+    > 若要成功执行最后两个操作，需要在资源组或订阅级别授予此权限。  
+
+- 读取存储帐户密钥   
+- 从 Azure 存储配置日志集合  
 - 编辑 Azure 资源的监视设置，包括
   - 将 VM 扩展添加到 VM
   - 在所有 Azure 资源上配置 Azure 诊断
 
 > [!NOTE] 
 > 可以使用此功能向虚拟机添加虚拟机扩展，获取对虚拟机的完全控制。
+
+Log Analytics 参与者角色包括以下 Azure 操作：
 
 | 权限 | 说明 |
 | ---------- | ----------- |
@@ -157,105 +144,10 @@ Log Analytics 参与者角色的成员可以：
 - 资源组 - 访问资源组中的所有工作区
 - 资源 - 仅访问指定工作区
 
-使用[自定义角色](../active-directory/role-based-access-control-custom-roles.md)，创建具有所需的特定权限的角色。
-
-### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Azure 用户角色和 Log Analytics 门户用户角色
-如果对 Log Analytics 工作区的权限至少为 Azure 读取权限，则可在查看 Log Analytics 工作区时单击“OMS 门户”任务，打开 Log Analytics 门户。
-
-打开 Log Analytics 门户时，请改用旧式 Log Analytics 用户角色。 如果系统尚未在 Log Analytics 门户中分配角色，该服务会[检查你在工作区中的 Azure 权限](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource)。
-可以通过下表来确定系统在 Log Analytics 门户中分配的角色：
-
-| 条件                                                   | 分配的 Log Analytics 用户角色 | 说明 |
-|--------------------------------------------------------------|----------------------------------|-------|
-| 帐户属于旧式 Log Analytics 用户角色     | 指定的 Log Analytics 用户角色 | |
-| 帐户不属于旧式 Log Analytics 用户角色 <br> 对工作区的完全 Azure 权限（`*` 权限 <sup>1</sup>） | 管理员 ||
-| 帐户不属于旧式 Log Analytics 用户角色 <br> 对工作区的完全 Azure 权限（`*` 权限 <sup>1</sup>） <br> *不是* `Microsoft.Authorization/*/Delete` 和 `Microsoft.Authorization/*/Write` 的操作 | 参与者 ||
-| 帐户不属于旧式 Log Analytics 用户角色 <br> Azure 读取权限 | 只读 ||
-| 帐户不属于旧式 Log Analytics 用户角色 <br> 无法理解 Azure 权限 | 只读 ||
-| 适用于云解决方案提供商 (CSP) 托管的订阅 <br> 登录时使用的帐户位于链接到工作区的 Azure Active Directory 中 | 管理员 | 通常为 CSP 的客户 |
-| 适用于云解决方案提供商 (CSP) 托管的订阅 <br> 登录时使用的帐户不在链接到工作区的 Azure Active Directory 中 | 参与者 | 通常为 CSP |
-
-<sup>1</sup> 有关角色定义的详细信息，请参阅 [Azure 权限](../active-directory/role-based-access-control-custom-roles.md)。 在评估角色时，`*` 操作与 `Microsoft.OperationalInsights/workspaces/*` 不等效。
-
-有关 Azure 门户需记住的一些要点：
-
-* 通过 http://mms.microsoft.com 登录 OMS 门户时，可看到“选择工作区”列表。 该列表仅包含你在其中有 Log Analytics 用户角色的工作区。 若要查看使用 Azure 订阅可以访问的工作区，需要指定租户作为 URL 的一部分。 例如：`mms.microsoft.com/?tenant=contoso.com`。 租户标识符通常是用于登录的电子邮件地址的最后一部分。
-* 如果希望直接导航到使用 Azure 权限可以访问的门户，需要指定资源作为 URL 的一部分。 使用 PowerShell 可以获得此 URL。
-
-  例如，`(Get-AzureRmOperationalInsightsWorkspace).PortalUrl`。
-
-  URL 如下所示：`https://eus.mms.microsoft.com/?tenant=contoso.com&resource=%2fsubscriptions%2faaa5159e-dcf6-890a-a702-2d2fee51c102%2fresourcegroups%2fdb-resgroup%2fproviders%2fmicrosoft.operationalinsights%2fworkspaces%2fmydemo12`
-
-### <a name="managing-users-in-the-oms-portal"></a>在 OMS 门户管理用户
-在“设置”页中“帐户”选项卡下的“管理用户”选项卡中，管理用户和组。   
-
-![管理用户](./media/log-analytics-manage-access/setup-workspace-manage-users.png)
-
-
-#### <a name="add-a-user-to-an-existing-workspace"></a>将用户添加到现有工作区
-使用以下步骤将用户或组添加到工作区。
-
-1. 在 OMS 门户中，单击“设置”磁贴。
-2. 单击“帐户”选项卡，并单击“管理用户”选项卡。
-3. 在“管理用户”部分，选择要添加的帐户类型：**组织帐户**、**Microsoft 帐户**、**Microsoft 支持**。
-
-   * 如果选择 Microsoft 帐户，键入与 Microsoft 帐户关联的用户的电子邮件地址。
-   * 如果选择组织帐户，请输入用户名/组名或电子邮件别名的一部分，随后下拉框中会显示一系列匹配的用户和组。 选择用户或组。
-   * 使用 Microsoft 支持可向 Microsoft 支持工程师或其他 Microsoft 员工提供临时访问工作区的权限，帮助进行疑难解答。
-
-     > [!NOTE]
-     > 要获得最佳性能，可将与单个 OMS 帐户关联的 Active Directory 组数限制为三个，分别用于管理员、参与者和只读用户。 使用多个组可能会影响 Log Analytics 的性能。
-     >
-     >
-4. 选择要添加的用户或组的类型：**管理员**、**参与者**或**只读用户**。  
-5. 单击 **“添加”**。
-
-   如果正要添加 Microsoft 帐户，系统会向所提供的电子邮件发送加入工作区的邀请。 用户按照邀请中的说明加入 OMS 后，便可访问此工作区。
-   如果正要添加组织帐户，该帐户用户可以立即访问 Log Analytics。  
-
-#### <a name="edit-an-existing-user-type"></a>编辑现有用户类型
-可以更改与 OMS 帐户关联的用户帐户角色。 可以使用以下角色选项：
-
-* 管理员：可以管理用户、查看和处理所有警报，并添加和删除服务器
-* 参与者：可以查看和处理所有警报，并添加和删除服务器
-* 只读用户：标记为只读的用户无法：
-
-  1. 添加/删除解决方案。 已隐藏解决方案库。
-  2. 在“我的仪表板”上添加/修改/删除磁贴。
-  3. 查看“设置”页。 已隐藏该页面。
-  4. 在“搜索”视图中，已隐藏“PowerBI 配置”、“保存的搜索”和“警报任务”。
-
-#### <a name="to-edit-an-account"></a>编辑帐户
-1. 在 OMS 门户中，单击“设置”磁贴。
-2. 单击“帐户”选项卡，并单击“管理用户”选项卡。
-3. 选择想要更改的用户角色。
-4. 在确认对话框中，单击“是”。
-
-### <a name="remove-a-user-from-a-workspace"></a>从工作区中删除用户
-使用以下步骤可从工作区中删除用户。 删除用户不会关闭工作区。 而会删除该用户与工作区之间的关联。 如果用户与多个工作区关联，该用户仍可以登录 OMS 并查看其他工作区。
-
-1. 在 OMS 门户中，单击“设置”磁贴。
-2. 单击“帐户”选项卡，并单击“管理用户”选项卡。
-3. 在要删除的用户名旁，单击“删除”。
-4. 在确认对话框中，单击“是”。
-
-### <a name="add-a-group-to-an-existing-workspace"></a>将组添加到现有工作区
-1. 执行上面“将用户添加到现有工作区”部分的步骤 1 - 4。
-2. 在“选择用户/组”下，选择“组”。  
-   ![将组添加到现有工作区](./media/log-analytics-manage-access/add-group.png)
-3. 输入要添加的组的显示名称或电子邮件地址。
-4. 在列表结果中选择该组，并单击“添加”。
+我们建议你在资源级别（工作区）执行分配，以确保准确的访问控制。  使用[自定义角色](../active-directory/role-based-access-control-custom-roles.md)，创建具有所需的特定权限的角色。
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>将现有工作区链接到 Azure 订阅
 2016 年 9 月 26 日之后创建的所有工作区必须在创建时链接到 Azure 订阅。 此日期之前创建的工作区必须在登录时链接到某工作区。 从 Azure 门户创建工作区或者将工作区链接到 Azure 订阅时，Azure Active Directory 会链接为组织帐户。
-
-### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>将工作区链接到 OMS 门户中的 Azure 订阅
-
-- 登录到 OMS 门户时，系统会提示用户选择一个 Azure 订阅。 选择要链接到工作区的订阅，并单击“链接”。  
-    ![链接 Azure 订阅](./media/log-analytics-manage-access/required-link.png)
-
-    > [!IMPORTANT]
-    > 若要链接工作区，Azure 帐户必须已可以访问要链接的工作区。  换言之，用于访问 Azure 门户的帐户必须与用于访问工作区的帐户**相同**。 否则，请参阅[将用户添加到现有工作区](#add-a-user-to-an-existing-workspace)。
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>将工作区链接到 Azure 门户中的 Azure 订阅
 1. 登录到 [Azure 门户](http://portal.azure.com)。
@@ -271,7 +163,7 @@ Log Analytics 参与者角色的成员可以：
 7. 如果需要，可以更改以下项的值：
    * 订阅
    * 资源组
-   * Location
+   * 位置
    * 定价层  
      ![更改值](./media/log-analytics-manage-access/manage-access-link-azure05.png)
 8. 单击“确定”。 工作区现已链接到 Azure 帐户。
@@ -350,18 +242,6 @@ OMS 订阅权利在 Azure 或 OMS 门户中不可见。 可在企业门户中看
 使用独立定价层和 OMS 定价层时，可将数据保留长达 2 年（730 天）之久。 如果数据的存储超过默认的 31 天，将产生数据保留费。 有关价格详细信息，请参阅[超额费用](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
 若要更改数据保留期长度，请参阅[通过在 Log Analytics 中控制数据量和保留期来管理成本](log-analytics-manage-cost-storage.md)。
-
-## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>更改工作区的 Azure Active Directory 组织
-
-可以更改工作区的 Azure Active Directory 组织 更改 Azure Active Directory 组织可将该目录中的用户和组添加到工作区。
-
-### <a name="to-change-the-azure-active-directory-organization-for-a-workspace"></a>更改工作区的 Azure Active Directory 组织
-
-1. 在 OMS 门户中的“设置”页上单击“帐户”，并单击“管理用户”选项卡。  
-2. 查看组织帐户的有关信息，并单击“更改组织”。  
-    ![更改组织](./media/log-analytics-manage-access/manage-access-add-adorg01.png)
-3. 输入 Azure Active Directory 域管理员的标识信息。 随后，可看到说明工作区已链接到 Azure Active Directory 域的确认消息。  
-    ![已链接工作区确认](./media/log-analytics-manage-access/manage-access-add-adorg02.png)
 
 
 ## <a name="delete-a-log-analytics-workspace"></a>删除 Log Analytics 工作区

@@ -1,10 +1,10 @@
 ---
-title: "XML 验证的架构 - Azure 逻辑应用 | Microsoft 文档"
-description: "使用 Azure 逻辑应用和 Enterprise Integration Pack 的架构验证 XML 文档"
+title: XML 验证的架构 - Azure 逻辑应用 | Microsoft 文档
+description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 的架构验证 XML 文档
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
-manager: anneta
+manager: jeconnoc
 editor: cgronlun
 ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: db2d9313e443ebc9dd32fcb905b0ae62219e4bbf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e23500ec3c16e66b8dc74fcba29e9b58f0b41790
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299056"
 ---
 # <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 的架构验证 XML
 

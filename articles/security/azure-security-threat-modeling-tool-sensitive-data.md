@@ -1,6 +1,6 @@
 ---
-title: "敏感数据 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "针对威胁建模工具中暴露的威胁采取的缓解措施"
+title: 敏感数据 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 8d7189ea4b01d43cea709e3300d8ed71d266f5c9
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bfc1e8dd6acf2cba5b4622785aa3714a7ff037c9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031798"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -39,7 +40,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 计算机信任边界 | 
+| 组件               | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -50,7 +51,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 计算机信任边界 | 
+| 组件               | 计算机信任边界 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -61,7 +62,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 计算机信任边界 | 
+| 组件               | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -72,7 +73,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、Web 窗体、MVC5、MVC6 |
 | **属性**              | 不适用  |
@@ -125,7 +126,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -136,7 +137,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -155,7 +156,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -166,7 +167,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12，SQL 版本 - MsSQL2016 |
@@ -177,7 +178,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -188,7 +189,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | SQL 版本 - 所有 |
@@ -199,7 +200,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -210,7 +211,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12，SQL 版本 - MsSQL2014 |
@@ -221,7 +222,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 5、MVC 6 |
 | **属性**              | 标识提供者 - ADFS，标识提供者 - Azure AD |
@@ -245,7 +246,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure Document DB | 
+| 组件               | Azure Document DB | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -256,18 +257,18 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure IaaS VM 信任边界 | 
+| 组件               | Azure IaaS VM 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [使用 Azure 磁盘加密来加密虚拟机所用的磁盘](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
-| **步骤** | <p>Azure 磁盘加密是一项新功能，目前以预览版提供。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。 Azure 磁盘加密解决方案支持以下三种客户加密方案：</p><ul><li>在通过客户加密的 VHD 文件和客户提供的加密密钥（存储在 Azure 密钥保管库中）创建的新 IaaS VM 上启用加密。</li><li>在通过 Azure Marketplace 创建的新 IaaS VM 上启用加密。</li><li>在 Azure 中已运行的现有 IaaS VM 上启用加密。</li></ul>| 
+| **步骤** | <p>Azure 磁盘加密是一项新功能，目前以预览版提供。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。 Azure 磁盘加密解决方案支持以下三种客户加密方案：</p><ul><li>在通过客户加密的 VHD 文件和客户提供的加密密钥（存储在 Azure 密钥保管库中）创建的新 IaaS VM 上启用加密。</li><li>在通过 Azure 市场创建的新 IaaS VM 上启用加密。</li><li>在 Azure 中已运行的现有 IaaS VM 上启用加密。</li></ul>| 
 
 ## <a id="fabric-apps"></a>加密 Service Fabric 应用程序中的机密
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Service Fabric 信任边界 | 
+| 组件               | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure |
@@ -278,7 +279,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Dynamics CRM | 
+| 组件               | Dynamics CRM | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -289,7 +290,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Dynamics CRM | 
+| 组件               | Dynamics CRM | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -300,7 +301,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Dynamics CRM | 
+| 组件               | Dynamics CRM | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -311,7 +312,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Dynamics CRM | 
+| 组件               | Dynamics CRM | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -322,7 +323,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -333,7 +334,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -344,7 +345,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 移动客户端 | 
+| 组件               | 移动客户端 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 通用、Xamarin  |
 | **属性**              | 不适用  |
@@ -394,7 +395,7 @@ Allow screen capture
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 移动客户端 | 
+| 组件               | 移动客户端 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -405,11 +406,11 @@ Allow screen capture
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
-| **参考**              | [Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [Fortify](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
 | **步骤** | 通过未加密的通道使用包含明文密码的 UsernameToken 会向探查 SOAP 消息的攻击者透露密码。 使用 UsernameToken 的服务提供程序可能会接受以明文形式发送的密码。 通过未加密的通道发送明文密码会向探查 SOAP 消息的攻击者透露凭据。 | 
 
 ### <a name="example"></a>示例
@@ -424,11 +425,11 @@ Allow screen capture
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **属性**              | 安全模式 - 传输，安全模式 - 消息 |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/vulncat/index.html)、[WCF 安全基础知识 - CoDe 杂志](http://www.codemag.com/article/0611051) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled)、[WCF 安全基础知识 - CoDe 杂志](http://www.codemag.com/article/0611051) |
 | **步骤** | 未定义任何传输或消息安全性。 在未定义传输或消息安全性的情况下传输消息的应用程序无法保证消息的完整性或机密性。 如果 WCF 安全绑定设置为 None，将同时禁用传输和消息安全性。 |
 
 ### <a name="example"></a>示例

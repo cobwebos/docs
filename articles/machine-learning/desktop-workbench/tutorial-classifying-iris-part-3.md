@@ -7,15 +7,17 @@ ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 8eb6470afb44ba1b41e0077a890a36601db5387e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5b751546320ca6728573954290bd2258e837775f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723215"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>教程 3：鸢尾花分类：部署模型
 Azure 机器学习（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -35,7 +37,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 ## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
-- Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已创建一个试验帐户，并已根据此[快速入门](../service/quickstart-installation.md)中所述安装了 Azure Machine Learning Workbench
 - [教程第 2 部分](tutorial-classifying-iris-part-2.md)中所述的分类模型
 - 在本地安装和运行的 Docker 引擎
@@ -274,7 +276,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    若要创建清单，请使用以下命令并提供前一步骤生成的模型 ID 输出：
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json
+   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json -c aml_config\conda_dependencies.yml
    ```
    此命令生成清单 ID。
 
@@ -283,7 +285,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    若要创建 Docker 映像，请使用以下命令并提供前一步骤生成的清单 ID 值输出。 也可选择使用 `-c` 开关来包括 conda 依赖项。
 
    ```azurecli
-   az ml image create -n irisimage --manifest-id <manifest ID> -c aml_config\conda_dependencies.yml
+   az ml image create -n irisimage --manifest-id <manifest ID> 
    ```
    此命令生成 Docker 映像 ID。
    

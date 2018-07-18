@@ -1,10 +1,10 @@
 ---
-title: "Azure Active Directory 直通身份验证安全性深入研究 | Microsoft Docs"
-description: "本文介绍 Azure Active Directory (Azure AD) 传递身份分验证如何保护本地帐户"
+title: Azure Active Directory 直通身份验证安全性深入研究 | Microsoft Docs
+description: 本文介绍 Azure Active Directory (Azure AD) 传递身份分验证如何保护本地帐户
 services: active-directory
-keywords: "Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
-author: swkrish
+keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
+author: billmath
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84a5ef23739635ba4d2f0adc688c1b506f643a36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ea7fb5951cd0b2925aa3dd5ae14b452292ba582c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917986"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -130,20 +132,21 @@ ms.lasthandoff: 12/11/2017
 1. 用户尝试访问某个应用程序，例如 [Outlook Web 应用](https://outlook.office365.com/owa)。
 2. 如果用户尚未登录，此应用程序将浏览器重定向到 Azure AD 登录页面。
 3. Azure AD STS 服务通过“用户登录”页面反向响应。
-4. 用户在“用户登录”页中输入其用户名和密码，然后选择“登录”按钮。
-5. 在 HTTPS POST 请求中，将用户名和密码提交到 Azure AD STS。
-6. Azure AD STS 从 Azure SQL 数据库检索租户上注册的所有身份验证代理的公钥，并将其用于加密密码。 
+4. 用户在“用户登录”页中输入其用户名，然后选择“下一步”按钮。
+5. 用户在“用户登录”页中输入其密码，然后选择“登录”按钮。
+6. 在 HTTPS POST 请求中，将用户名和密码提交到 Azure AD STS。
+7. Azure AD STS 从 Azure SQL 数据库检索租户上注册的所有身份验证代理的公钥，并将其用于加密密码。 
     - 如果租户上注册了“N”个身份验证代理，它就会生成“N”个加密密码值。
-7. Azure AD STS 将密码验证请求（包含用户名和加密密码值）置于特定于租户的服务总线队列上。
-8. 由于初始化的身份验证代理持续连接到服务总线队列，因此其中一个可用身份验证代理会检索密码验证请求。
-9. 身份验证代理将使用标识符查找特定于其公钥的加密密码值，并使用其私钥进行解密。
-10. 此身份验证代理将使用 [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)（将 **dwLogonType** 参数设置为 **LOGON32_LOGON_NETWORK**），尝试向本地 Active Directory 验证用户名和密码。 
+8. Azure AD STS 将密码验证请求（包含用户名和加密密码值）置于特定于租户的服务总线队列上。
+9. 由于初始化的身份验证代理持续连接到服务总线队列，因此其中一个可用身份验证代理会检索密码验证请求。
+10. 身份验证代理将使用标识符查找特定于其公钥的加密密码值，并使用其私钥进行解密。
+11. 此身份验证代理将使用 [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)（将 **dwLogonType** 参数设置为 **LOGON32_LOGON_NETWORK**），尝试向本地 Active Directory 验证用户名和密码。 
     - 在联合登录方案中，Active Directory 联合身份验证服务 (AD FS) 即使用此 API 登录用户。
     - 此 API 依赖 Windows Server 中的标准解析进程来查找域控制器。
-11. 身份验证代理从 Active Directory 检索结果（例如成功、用户名或密码不正确或密码过期）。
-12. 身份验证代理通过端口 443，由经相互身份验证的出站 HTTPS 通道将此结果转发回 Azure AD STS。 相互身份验证使用先前在注册期间发布给此身份验证代理的证书。
-13. Azure AD STS 验证此结果与租户上的特定登录请求相关联。
-14. Azure AD STS 按配置继续进行登录过程。 例如，如果密码验证成功，则可能要求用户进行多重身份验证，或者将用户重定向回该应用程序。
+12. 身份验证代理从 Active Directory 检索结果（例如成功、用户名或密码不正确或密码过期）。
+13. 身份验证代理通过端口 443，由经相互身份验证的出站 HTTPS 通道将此结果转发回 Azure AD STS。 相互身份验证使用先前在注册期间发布给此身份验证代理的证书。
+14. Azure AD STS 验证此结果与租户上的特定登录请求相关联。
+15. Azure AD STS 按配置继续进行登录过程。 例如，如果密码验证成功，则可能要求用户进行多重身份验证，或者将用户重定向回该应用程序。
 
 ## <a name="operational-security-of-the-authentication-agents"></a>身份验证代理的操作安全性
 
@@ -206,7 +209,7 @@ Azure AD 以已签名 Windows Installer 程序包 (MSI) 的形式，托管该软
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md)：了解支持和不支持的方案。
 - [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md)：快速了解 Azure AD 直通身份验证。
-- [智能锁定](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)：在租户中配置智能锁定功能以保护用户帐户。
+- [智能锁定](../authentication/howto-password-smart-lockout.md)：在租户中配置智能锁定功能以保护用户帐户。
 - [工作原理](active-directory-aadconnect-pass-through-authentication-how-it-works.md)：了解 Azure AD 直通身份验证的基本工作原理。
 - [常见问题解答](active-directory-aadconnect-pass-through-authentication-faq.md)：查找常见问题的解答。
 - [故障诊断](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。

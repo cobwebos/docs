@@ -1,23 +1,23 @@
 ---
 title: 在 Azure IoT Central 应用程序中创建和管理事件规则 | Microsoft Docs
 description: 可以通过 Azure IoT Central 事件规则以近实时方式监视设备并自动调用操作（例如在触发规则时发送电子邮件）。
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/29/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932b1906b767ee7676f46ffd7242ad3d478d41c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 30223fdca9d848ddc407981bf4a3ca683a10575a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201585"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628362"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建事件规则并设置通知
 
-可以使用 Microsoft Azure IoT Central 对连接的设备进行远程监视。 可以通过 Azure IoT Central 规则以近实时方式监视设备并自动调用操作（例如在触发规则时发送电子邮件）。 只需几次单击即可定义用于监视设备数据的条件并配置要调用的操作。 本文详细介绍事件监视规则。
+可以使用 Microsoft Azure IoT Central 对连接的设备进行远程监视。 可以通过 Azure IoT Central 规则近乎实时地监视设备并自动调用操作（例如在触发规则时发送电子邮件）。 只需几次单击即可定义用于监视设备数据的条件并配置要调用的操作。 本文详细介绍事件监视规则。
 
 Azure IoT Central 使用[事件度量](howto-set-up-template.md)来捕获设备数据。 每种类型的度量都有用于定义度量的关键属性。 可以创建规则来监视每种类型的设备度量，在触发规则时生成警报。 当设备报告所选设备事件时，会触发事件规则。
 
@@ -31,7 +31,7 @@ Azure IoT Central 使用[事件度量](howto-set-up-template.md)来捕获设备�
 
     ![尚无规则](media\howto-create-event-rules\image1.png)
 
-1. 在“规则”选项卡上选择“+ 新建规则”即可查看能够创建的规则的类型。
+1. 在“规则”选项卡上选择“+ 新建规则”可以查看能够创建的规则类型。
 
     ![规则类型](media\howto-create-event-rules\image2.png)
 
@@ -41,7 +41,7 @@ Azure IoT Central 使用[事件度量](howto-set-up-template.md)来捕获设备�
 
 1. 选择一个名称，以便确定此设备模板中的规则。
 
-1. 若要立即为所有根据此模板创建的设备启用此规则，请切换到“启用规则”。
+1. 若要立即为所有根据此模板创建的设备启用此规则，请切换“启用规则”。
 
 ### <a name="configure-the-rule-condition"></a>配置规则条件
 
@@ -60,9 +60,9 @@ Azure IoT Central 使用[事件度量](howto-set-up-template.md)来捕获设备�
 
 ### <a name="configure-the-action"></a>配置操作
 
-此部分介绍如何通过添加操作来指定在满足条件的情况下规则所执行的操作。
+本部分介绍如何通过添加操作来指定在满足条件的情况下规则所执行的操作。
 
-1. 选择“操作”旁边的“+”。 在这里可以看到可用操作的列表。 在公共预览版发布期间，唯一支持的操作是“电子邮件”。
+1. 选择“操作”旁边的“+”。 在此处可以看到可用操作的列表。 在公共预览版发布期间，唯一支持的操作是“电子邮件”。
 
     ![添加操作](media\howto-create-event-rules\image5.png)
 
@@ -81,15 +81,15 @@ Azure IoT Central 使用[事件度量](howto-set-up-template.md)来捕获设备�
 
 ## <a name="delete-a-rule"></a>删除规则
 
-如果不再需要某项规则，则可打开该规则并选择“删除”，以便将其删除。 删除规则会将其从设备模板和所有关联的设备中删除。
+如果不再需要某项规则，可打开该规则并选择“删除”，以将其删除。 删除规则会将其从设备模板和所有关联的设备中删除。
 
 ## <a name="enable-or-disable-a-rule-for-a-device-template"></a>启用或禁用设备模板的规则
 
-导航到设备，然后选择要启用或禁用的规则。 切换规则中的“为此模板的所有设备启用规则”按钮即可为与设备模板关联的所有设备启用或禁用该规则。
+导航到设备，然后选择要启用或禁用的规则。 切换规则中的“为此模板的所有设备启用规则”按钮可为与设备模板关联的所有设备启用或禁用该规则。
 
 ## <a name="enable-or-disable-a-rule-for-a-device"></a>启用或禁用设备的规则
 
-导航到设备，然后选择要启用或禁用的规则。 切换“启用此设备的规则”按钮即可启用或禁用该设备的规则。
+导航到设备，然后选择要启用或禁用的规则。 切换“启用此设备的规则”按钮可启用或禁用该设备的规则。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,24 +1,25 @@
 ---
-title: "选择 Azure Batch 池的 VM 大小 | Microsoft Docs"
-description: "如何选择 Azure Batch 池中计算节点的可用 VM 大小"
+title: 选择 Azure Batch 池的 VM 大小 | Microsoft Docs
+description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 06/27/2018
 ms.author: danlep
-ms.openlocfilehash: addd1e9314a754b40cc5d49c0299f007580f512f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8f428df07de029bc79f26d5941d22e7472addb95
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915990"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -40,9 +41,8 @@ ms.lasthandoff: 03/05/2018
 | 基本 A 系列 | Basic_A0 (A0) |
 | A 系列 | Standard_A0 |
 | B 系列 | 全部 |
-| Fsv2 系列<sup>*</sup> | 全部 |
 
-<sup>*</sup>此系列的大小在将来提供支持的路线图上。
+
 
 ### <a name="pools-in-cloud-service-configuration"></a>云服务配置中的池
 

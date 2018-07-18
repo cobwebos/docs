@@ -5,20 +5,17 @@ keywords: Power BI 教程, 可视化数据, Power BI 连接器
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: cd1b7f70-ef99-40b7-ab1c-f5f3e97641f7
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: sngun
-ms.openlocfilehash: 8a0f50ad6df1135e05cd69be78e6b7f7820f90c6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 67ea7a9ea1a1be4fd0780f8b8ce22f1a133615e0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615863"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 的 Power BI 教程：使用 Power BI 连接器可视化数据
 [PowerBI.com](https://powerbi.microsoft.com/) 是一个在线服务，在此处可以创建和共享包含对你和组织来说很重要的数据的仪表板和报表。  Power BI Desktop 是一个专用的报表创作工具，使你能够从各种数据源检索数据、合并和转换数据、创建功能强大的报表和可视化效果以及将报表发布到 Power BI。  使用最新版本的 Power BI Desktop，现在可以通过 Power BI 的 Azure Cosmos DB 连接器连接到 Azure Cosmos DB 帐户。   
@@ -34,7 +31,7 @@ ms.lasthandoff: 04/23/2018
 * 如何在 PowerBI.com 中发布和共享我的报表？
 
 > [!NOTE]
-> 用于 Azure Cosmos DB 连接到 Power BI Desktop 以获取和转换数据的 Power BI 连接器。 在 Power BI Desktop 中创建的报表随后可以发布到 PowerBI.com。无法在 PowerBI.com 中执行 Azure Cosmos DB 数据的直接提取和转换。 
+> 用于 Azure Cosmos DB 连接到 Power BI Desktop 以获取和转换数据的 Power BI 连接器。 在 Power BI Desktop 中创建的报表随后可以发布到 PowerBI.com。 无法在 PowerBI.com 中执行 Azure Cosmos DB 数据的直接提取和转换。 
 
 > [!NOTE]
 > 若要使用 MongoDB API 将 Azure Cosmos DB 连接到 Power BI，必须使用 [Simba MongoDB ODBC 驱动程序](http://www.simba.com/drivers/mongodb-odbc-jdbc/)。
@@ -49,7 +46,7 @@ ms.lasthandoff: 04/23/2018
     * 只读密钥：MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
   * 或者，要创建自己帐户，请参阅[使用 Azure 门户创建 Azure Cosmos DB 数据库帐户](https://azure.microsoft.com/documentation/articles/create-account/)。 然后，要获取类似于本教程中使用的示例火山数据（但不包含 GeoJSON 块），请参阅 [NOAA 站点](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5)，并使用 [Azure Cosmos DB 数据迁移工具导入数据](import-data.md)。
 
-要在 PowerBI.com 中共享报表，必须在 PowerBI.com 中拥有帐户。若要了解更多有关 Power BI 免费版和 Power BI Pro 的信息，请访问 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)。
+要在 PowerBI.com 中共享报表，必须在 PowerBI.com 中拥有帐户。  若要了解更多有关 Power BI 免费版和 Power BI Pro 的信息，请访问 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)。
 
 ## <a name="lets-get-started"></a>让我们开始吧
 在本教程中，假设你是一位研究世界各地火山的地理学家。  火山数据存储在 Azure Cosmos DB 帐户中且 JSON 文档的外观如以下示例文档所示。
@@ -130,7 +127,7 @@ ms.lasthandoff: 04/23/2018
     coordinates[0] 元素表示经度，coordinates[1] 表示纬度。
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 坐标列表](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. 若要平展坐标数组，请创建一个名为 LatLong 的**自定义列**。  选择“添加列”功能区并单击“自定义列”。  此时将显示“自定义列”窗口。
-8. 为新列提供一个名称，例如 LatLong。
+8. 为新列提供一个名称，例如经纬度。
 9. 接下来，为新列指定自定义公式。  对于我们的示例，我们将如下所示，使用以下公式连接逗号分隔的纬度值和经度值：`Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 单击“确定”。
    
     有关数据分析表达式 (DAX)（包括 DAX 函数）的详细信息，请访问 [Power BI Desktop 中的 DAX Basic](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)。
@@ -139,7 +136,7 @@ ms.lasthandoff: 04/23/2018
 
 10. 现在，中央窗格将显示填充了值的新 LatLong 列。
     
-    ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 自定义 LatLong 列](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
+    ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 自定义经纬度列](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
     
     如果新的列中出现“错误”，请确保“查询设置”中应用的步骤与下图匹配：
     
@@ -167,7 +164,7 @@ ms.lasthandoff: 04/23/2018
 下面将演示创建简单交互地图视图报表的基本步骤。
 
 1. 对于我们的示例，我们将创建显示每座火山的位置的地图视图。  在“可视化”窗格中，单击如上屏幕截图中突出显示的“地图”视觉对象类型。  应该会看到绘制在“报表”画布上的地图视觉对象类型。  “可视化”窗格也应该显示一组与地图视觉对象类型相关的属性。
-2. 现在，从“字段”窗格中将 LatLong 字段拖放到“可视化”窗格中的“位置”属性。
+2. 现在，从“字段”窗格将经纬度字段拖放到“可视化”窗格中的“位置”属性。
 3. 接下来，将“火山名称”字段拖放到“图例”属性。  
 4. 然后，将“海拔”字段拖放到“大小”属性。  
 5. 现在，你应会看到该地图视觉对象显示有一组表示每座火山位置的气泡，并用气泡的大小对应火山的海拔。

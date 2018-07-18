@@ -28,12 +28,13 @@
 3. 使用以下命令并替换占位符，以创建新的 Azure Active Directory 应用程序：
    
    * **{Display name}**：应用程序的显示名称，例如 **MySampleApp**
-   * **{Home page URL}：**应用主页的 URL，例如 http://mysampleapp/home。 此 URL 不需要指向实际的应用程序。
-   * **{Application identifier}：**唯一标识符，例如 http://mysampleapp。 此 URL 不需要指向实际的应用程序。
+   * **{Home page URL}：** 应用主页的 URL，例如 http://mysampleapp/home。 此 URL 不需要指向实际的应用程序。
+   * **{Application identifier}：** 唯一标识符，例如 http://mysampleapp。 此 URL 不需要指向实际的应用程序。
    * **{Password}**：用于向应用进行身份验证的密码。
      
      ```powershell
-     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
+     $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
+     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. 请记下创建的应用程序的 **ApplicationId**。 稍后会需要它。
 5. 使用以下命令（将 **{MyApplicationId}** 替换为上一步骤中的 **ApplicationId**）创建新的服务主体：

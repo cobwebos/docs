@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 80724a7d8d2b5cec19bdbce27cdafd4a9c09eb47
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452492"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>添加 Git 存储库以存储自定义项目和资源管理器模板
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 05/07/2018
 
 ### <a name="get-the-visual-studio-team-services-repository-clone-url-and-personal-access-token"></a>获取 Visual Studio Team Services 存储库克隆 URL 和个人访问令牌
 
-1. 转到团队集合主页（例如 https://contoso-web-team.visualstudio.com)），并选择项目。
+1. 转到团队集合主页（例如 https://contoso-web-team.visualstudio.com) ） ，并选择项目。
 2. 在项目主页上，选择“代码”。
 3. 若要查看克隆 URL，在项目“代码”页上，选择“克隆”。
 4. 保存 URL。 稍后会用到该 URL。

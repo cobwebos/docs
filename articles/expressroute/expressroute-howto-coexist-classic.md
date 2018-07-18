@@ -1,11 +1,11 @@
 ---
-title: "配置可以并存的 ExpressRoute 连接和站点到站点 VPN 连接：经典：Azure | Microsoft Docs"
-description: "本文指导配置可在经典部署模型中并存的 ExpressRoute 连接和站点到站点 VPN 连接。"
+title: 配置可以并存的 ExpressRoute 连接和站点到站点 VPN 连接：经典：Azure | Microsoft Docs
+description: 本文指导配置可在经典部署模型中并存的 ExpressRoute 连接和站点到站点 VPN 连接。
 documentationcenter: na
 services: expressroute
 author: charwen
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: dcf1a5af-a289-466a-b812-0bfedbd2bda0
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "22710127"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]

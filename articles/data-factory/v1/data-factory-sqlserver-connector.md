@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f1a2ec3bdf77e6f4f433c88b470e108b734fc4c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c4038ea5a450f32a46f24a306d1ee30bd61308a5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054579"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出本地或 IaaS (Azure VM) 中的 SQL Server
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - 正式版](data-factory-sqlserver-connector.md)
-> * [版本 2 - 预览版](../connector-sql-server.md)
+> * [第 1 版](data-factory-sqlserver-connector.md)
+> * [版本 2（当前版本）](../connector-sql-server.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 SQL Server 连接器](../connector-sql-server.md)。
+> 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的 SQL Server 连接器](../connector-sql-server.md)。
 
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出本地 SQL Server 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
 
@@ -52,16 +53,16 @@ ms.lasthandoff: 03/23/2018
 ## <a name="getting-started"></a>入门
 可创建包含复制活动的管道，该活动使用不同的工具/API 将数据移入/移出本地 SQL Server 数据库。
 
-创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
 1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。 
 2. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 SQL Server 数据库复制到 Azure Blob 存储，可创建两个链接服务，将 SQL Server 数据库和 Azure 存储帐户链接到数据工厂。 有关特定于 SQL Server 数据库的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
-3. 创建**数据集**以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 SQL Server 数据库中包含输入数据的 SQL 表。 创建了另一个数据集来指定 blob 容器和用于保存从 SQL Server 数据库复制的数据的文件夹。 有关特定于 SQL Server 数据库的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
-4. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，对复制活动使用 SqlSource 作为源，BlobSink 作为接收器。 同样，如果要从 Azure Blob 存储复制到 SQL Server 数据库，则在复制活动中使用 BlobSource 和 SqlSink。 有关特定于 SQL Server 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。 
+3. 创建数据集以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 SQL Server 数据库中包含输入数据的 SQL 表。 创建了另一个数据集来指定 blob 容器和用于保存从 SQL Server 数据库复制的数据的文件夹。 有关特定于 SQL Server 数据库的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
+4. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，对复制活动使用 SqlSource 作为源，BlobSink 作为接收器。 同样，如果要从 Azure Blob 存储复制到 SQL Server 数据库，则在复制活动中使用 BlobSource 和 SqlSink。 有关特定于 SQL Server 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。 
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从本地 SQL Server 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-from-and-to-sql-server)部分。 
 
@@ -125,7 +126,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="dataset-properties"></a>数据集属性
 在示例中，已使用 **SqlServerTable** 类型的数据集来表示 SQL Server 数据库中的表。  
 
-有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（SQL Server、Azure blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分类似。
+有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（SQL Server、Azure blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分类似。
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **SqlServerTable** 类型的数据集的 **typeProperties** 部分具有以下属性：
 
@@ -695,4 +696,4 @@ create table dbo.TargetTbl
 从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
-请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法。
+若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

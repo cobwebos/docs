@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/14/2018
+ms.date: 05/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7e64bc34f5c39edaf87cc732d7c4702655df0e3e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7dadaadd0e6a6e6d71685356568076ad26305cc2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212664"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642217"
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>创建你的第一个 C# Service Fabric 有状态 Reliable Services 应用程序
 
@@ -68,12 +68,15 @@ ms.locfileid: "34212664"
 
 有了应用程序以后，即可通过以下步骤运行、部署和调试它。
 
-1. 在 Visual Studio 中选择 F5，部署要调试的应用程序。
+1. 在 Visual Studio 中选择 F5，部署要调试的应用程序。  如果出现一个消息框，请求授予“ServiceFabricAllowedUsers”组对Visual Studio 项目目录的读取和执行权限，请单击“是”。
 
     >[!NOTE]
     >首次在本地运行和部署应用程序时，Visual Studio 会创建用于调试的本地群集。 这可能需要一些时间。 群集创建状态显示在 Visual Studio 输出窗口中。
-
-    群集准备就绪时，将从 SDK 随附的本地群集系统托盘管理器应用程序收到通知。
+    
+     群集准备就绪时，将从 SDK 随附的本地群集系统托盘管理器应用程序收到通知。
+     
+    >[!NOTE]
+    >此练习需要 5 节点（而不是1 节点）群集。 可以按以下方式验证这一点：右键单击“Service Fabric 本地群集管理器”系统托盘应用程序，然后单击“切换群集模式”，以便启用 Service Fabric Explorer 工具。 如当前果已选中“1 节点”，请单击“5 节点”。
     
     ![本地群集系统托盘通知][4]
 
@@ -107,7 +110,7 @@ ms.locfileid: "34212664"
 
     ![有状态服务 RunAsync 方法中的断点][7]
 
-7. 右键单击“本地群集管理器”系统托盘应用程序并选择“管理本地群集”，以便启动 Service Fabric Explorer 工具。
+7. 右键单击“Service Fabric 本地群集管理器”系统托盘应用程序并选择“管理本地群集”，以便启动 Service Fabric Explorer 工具。
 
     ![从本地群集管理器启动 Service Fabric Explorer][systray-launch-sfx]
 
@@ -117,7 +120,7 @@ ms.locfileid: "34212664"
 
     ![在 Service Fabric 资源管理器中停止节点][sfx-stop-node]
 
-    随着你在一个节点上进行的计算无缝地故障转移到另一个节点，应立即在 Visual Studio 中看到命中了断点。
+    随着你在一个节点上进行的计算无缝地故障转移到另一个节点，应立即在 Visual Studio 中看到命中了断点。 按 F5 以继续操作。
 
 9. 接下来，返回到诊断事件查看器并观察消息。 计数器在继续递增，即使事件实际上来自不同的节点。
 

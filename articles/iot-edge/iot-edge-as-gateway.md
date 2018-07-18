@@ -1,21 +1,21 @@
 ---
-title: "使用 Azure IoT Edge 设备作为网关 | Microsoft Docs"
-description: "使用 Azure IoT Edge 创建一个透明、不透明或代理网关设备，以将数据从多个下游设备发送到云或在本地对其进行处理。"
-services: iot-edge
-keywords: 
+title: 使用 Azure IoT Edge 设备作为网关 | Microsoft Docs
+description: 使用 Azure IoT Edge 创建一个透明、不透明或代理网关设备，以将数据从多个下游设备发送到云或在本地对其进行处理。
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 11/27/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: fe7ad2444b9378550e9624e3d109c8be4fd29f23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+services: iot-edge
+ms.openlocfilehash: 0e085d6c2962ec2a2324bfc134b0e201df04a336
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028959"
 ---
-# <a name="how-an-iot-edge-device-can-be-used-as-a-gateway---preview"></a>如何将 IoT Edge 设备用作网关 - 预览版
+# <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 
 IoT 解决方案中的网关用途特是定于解决方案的，并将设备连接与边缘分析结合起来。 Azure IoT Edge 可用于满足 IoT 网关的所有需求，无论它们是否与连接、标识或边缘分析相关。 本文中的网关模式仅指下游设备连接和设备标识的特征，而不是指在网关上处理设备数据的方式。
 
@@ -54,7 +54,7 @@ IoT 解决方案中的网关用途特是定于解决方案的，并将设备连�
 ## <a name="next-steps"></a>后续步骤
 将 IoT Edge 设备用作[透明网关][lnk-iot-edge-as-transparent-gateway] 
 
-[lnk-iot-edge-as-transparent-gateway]: ./how-to-create-transparent-gateway.md
+[lnk-iot-edge-as-transparent-gateway]: ./how-to-create-transparent-gateway-linux.md
 [lnk-iothub-throttles-quotas]: ../iot-hub/iot-hub-devguide-quotas-throttling.md
 
 [1]: ./media/iot-edge-as-gateway/edge-as-gateway.png

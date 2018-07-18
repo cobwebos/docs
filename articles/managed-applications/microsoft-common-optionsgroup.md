@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5387f3911c58b115629c461420737230fce6b85a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e51061dc781e4ec6e822cde9cc450887ff3b1368
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061179"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 元素
 一个具有一行可用选项的选择控件。
@@ -31,7 +32,7 @@ ms.lasthandoff: 05/17/2018
   "name": "element1",
   "type": "Microsoft.Common.OptionsGroup",
   "label": "Some options group",
-  "defaultValue": "my value",
+  "defaultValue": "Value two",
   "toolTip": "",
   "constraints": {
     "allowedValues": [
@@ -43,7 +44,8 @@ ms.lasthandoff: 05/17/2018
         "label": "Value two",
         "value": "two"
       }
-    ]
+    ],
+    "required": true
   },
   "visible": true
 }
@@ -52,12 +54,11 @@ ms.lasthandoff: 05/17/2018
 ## <a name="remarks"></a>备注
 - `constraints.allowedValues` 的标签是项的显示文本，并且当选中时，其值是元素的输出值。
 - 如果已指定，则默认值必须是 `constraints.allowedValues` 中存在的一个标签。 如果未指定，则默认情况下将选择 `constraints.allowedValues` 中的第一个项。 默认值为 **null**。
-- `constraints.allowedValues` 必须至少包含一个项。
-- 此元素不支持 `constraints.required` 属性；必须选择一个项才能成功通过验证。
+- `constraints.allowedValues` 必须至少有一项。
 
 ## <a name="sample-output"></a>示例输出
 ```json
-"Bar"
+"two"
 ```
 
 ## <a name="next-steps"></a>后续步骤

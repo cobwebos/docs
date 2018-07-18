@@ -1,0 +1,11 @@
+- name: 项目个性聊天文档
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是项目个性聊天？
+      href: overview.md
+- name: 资源
+  expanded: true
+  items:
+    - name: 常见问题
+      href: faq.md

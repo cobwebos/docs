@@ -14,11 +14,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: f8d403e46f7460dff92cc418b829cc5510efd982
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f293aab67fb5e952dc32e20a6370d45cded682b5
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "35761991"
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>从远程桌面连接运行 Pig 作业
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -76,7 +77,8 @@ ms.lasthandoff: 04/16/2018
     <tr>
     <td>RESULT = order FREQUENCIES by COUNT desc;</td><td>按计数为日志级别排序（降序），并存储到 RESULT</td>
     </tr>
-    </table>
+</table>
+
 6. 也可以使用 `STORE` 语句保存转换结果。 例如，以下命令将 `RESULT` 保存到群集的默认存储容器中的 **/example/data/pigout**目录：
 
         STORE RESULT into 'wasb:///example/data/pigout'
@@ -85,6 +87,7 @@ ms.lasthandoff: 04/16/2018
    > 数据将存储到指定目录中名为 **part-nnnnn** 的文件中。 如果该目录已存在，则会收到错误消息。
    >
    >
+   
 7. 若要退出 grunt 提示符，请输入以下语句。
 
         QUIT;

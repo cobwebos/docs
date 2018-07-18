@@ -1,12 +1,12 @@
 ---
-title: "排查 StorSimple 8000 系列部署问题 | Microsoft Docs"
-description: "介绍如何诊断和修复首次部署 StorSimple 时发生的错误。"
+title: 排查 StorSimple 8000 系列部署问题 | Microsoft Docs
+description: 介绍如何诊断和修复首次部署 StorSimple 时发生的错误。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d6642231bf9d012b0015902c82d2bfde3b86285c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61719d482a4db1c737bbe38277f2ac3b2d684b63
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342415"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>排查 StorSimple 设备部署问题
 ## <a name="overview"></a>概述
@@ -68,10 +69,10 @@ ms.lasthandoff: 10/11/2017
 * 注册设备。
 
 ## <a name="errors-during-the-required-network-settings"></a>配置所需的网络设置期间的错误
-| 否。 | 错误消息 | 可能的原因 | 建议的操作 |
+| 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：此命令只能在主动控制器上运行。 |在被动控制器上执行配置。 |从主动控制器运行此命令。 有关详细信息，请参阅[标识设备上的主动控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
-| #N/A |Invoke-HcsSetupWizard：设备未准备就绪。 |DATA 0 上的网络连接存在问题。 |检查 DATA 0 上的物理网络连接。 |
+| 2 |Invoke-HcsSetupWizard：设备未准备就绪。 |DATA 0 上的网络连接存在问题。 |检查 DATA 0 上的物理网络连接。 |
 | 3 |Invoke-HcsSetupWizard：有一个 IP 地址与网络上的另一个系统冲突（异常来自 HRESULT：0x80070263）。 |为 DATA 0 提供的 IP 已被另一个系统使用。 |提供一个未使用的新 IP。 |
 | 4 |Invoke-HcsSetupWizard：群集资源失败。 （异常来自 HRESULT：0x800713AE）。 |VIP 重复。 提供的 IP 已在使用中。 |提供一个未使用的新 IP。 |
 | 5 |Invoke-HcsSetupWizard：IPv4 地址无效。 |提供的 IP 地址的格式不正确。 |检查格式并再次提供 IP 地址。 有关详细信息，请参阅 [Ipv4 寻址][1]。 |
@@ -82,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 | 否。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：参数无效（异常来自 HRESULT：0x80070057） |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式：http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
-| #N/A |Invoke-HcsSetupWizard：RPC 服务器不可用（异常来自 HRESULT：0x800706ba） |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，需要[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
+| 2 |Invoke-HcsSetupWizard：RPC 服务器不可用（异常来自 HRESULT：0x800706ba） |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，需要[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
 | 3 |Invoke-HcsSetupWizard：RPC 调用失败（异常来自 HRESULT：0x800706be） |群集已关闭。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。 |
 | 4 |Invoke-HcsSetupWizard：找不到群集资源（异常来自 HRESULT：0x8007138f） |找不到群集资源。 安装不正确时可能出现这个错误。 |可能需要将设备重置为出厂默认设置。 [联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md) 以创建群集资源。 |
 | 5 |Invoke-HcsSetupWizard：群集资源无法联机（异常来自 HRESULT：0x8007138c） |群集资源未联机。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
@@ -102,10 +103,10 @@ ms.lasthandoff: 10/11/2017
 
 设置设备管理员密码和 StorSimple Snapshot Manager 密码时，可能会遇到以下一个或多个错误。
 
-| 否。 | 错误消息 | 建议的操作 |
+| 不是。 | 错误消息 | 建议的操作 |
 | --- | --- | --- |
 | 1 |密码超过最大长度。 |设备管理员密码必须介于 8 到 15 个字符之间。 |
-| #N/A |密码不符合所需的长度。 |设备管理员密码必须介于 8 到 15 个字符之间。|
+| 2 |密码不符合所需的长度。 |设备管理员密码必须介于 8 到 15 个字符之间。|
 | 3 |密码必须包含小写字符。 |密码必须包含以下 4 种字符类型中的 3 种：小写字符、大写字符、数字字符和特殊字符。 请确保密码满足这些要求。 |
 | 4 |密码必须包含数字字符。 |密码必须包含以下 4 种字符类型中的 3 种：小写字符、大写字符、数字字符和特殊字符。 请确保密码满足这些要求。 |
 | 5 |密码必须包含特殊字符。 |密码必须包含以下 4 种字符类型中的 3 种：小写字符、大写字符、数字字符和特殊字符。 请确保密码满足这些要求。 |
@@ -125,12 +126,12 @@ ms.lasthandoff: 10/11/2017
 ## <a name="errors-during-device-registration"></a>设备注册期间的错误
 可以使用在 Microsoft Azure 中运行的 StorSimple 设备管理器服务来注册设备。 在设备注册过程中，可能会遇到以下一个或多个问题。
 
-| 否。 | 错误消息 | 可能的原因 | 建议的操作 |
+| 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |错误 350027：无法使用 StorSimple 设备管理器注册设备。 | |等候几分钟时间，并重试操作。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 |
-| #N/A |错误 350013：注册设备时发生错误。 这可能是由于服务注册密钥不正确。 | |请使用正确的服务注册密钥再次注册该设备。 有关详细信息，请参阅[获取服务注册密钥](storsimple-8000-manage-service.md#get-the-service-registration-key)。 |
+| 2 |错误 350013：注册设备时发生错误。 这可能是由于服务注册密钥不正确。 | |请使用正确的服务注册密钥再次注册该设备。 有关详细信息，请参阅[获取服务注册密钥](storsimple-8000-manage-service.md#get-the-service-registration-key)。 |
 | 3 |错误 350063：已通过对 StorSimple 设备管理器服务的身份认证，但注册失败。 请稍后重试操作。 |此错误表示已通过使用 ACS 的身份验证，但对服务的注册调用失败。 这可能是偶发性网络故障的结果。 |如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 |
-| 4 |错误 350049：在注册期间无法访问服务。 |当对服务进行调用时，接收到 Web 异常。 在某些情况下，稍后重试该操作即可解决此问题。 |请检查 IP 地址和 DNS 名称，然后重试该操作。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 |
+| 4 |错误 350049：在注册期间无法访问服务。 |当对服务进行调用时，接收到 Web 异常。 在某些情况下，稍后重试该操作即可解决此问题。 |请检查 IP 地址和 DNS 名称，并重试该操作。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 |
 | 5 |错误 350031：设备已注册。 | |无需执行任何操作。 |
 | 6 |错误 350016：设备注册失败。 | |请确保注册密钥正确。 |
 | 7 |Invoke-HcsSetupWizard：注册设备时发生错误；这可能是由于 IP 地址或 DNS 名称不正确。 请检查网络设置，然后重试。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 （错误 350050） |确保设备可以 ping 外部网络。 如果没有连接到外部网络，则注册可能会失败并出现此错误。 此错误可能是以下一个或多个原因的组合：<ul><li>IP 不正确</li><li>子网不正确</li><li>网关不正确</li><li>DNS 设置不正确</li></ul> |请参阅[分步故障排除示例](#step-by-step-storsimple-troubleshooting-example)中的步骤。 |
@@ -188,7 +189,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
    * 如果接口正常运行但未启用，**ifIndex** 状态显示为 **NotPresent**。
    * 如果接口不存在，则不会出现在此列表中。 StorSimple 设备管理器服务 UI 仍会显示此接口处于失败状态。
 
-有关如何使用此 cmdlet 的详细信息，请转到 Windows PowerShell cmdlet 参考中的 [GetNetAdapter](https://technet.microsoft.com/library/jj130867.aspx)。
+有关如何使用此 cmdlet 的详细信息，请转到 Windows PowerShell cmdlet 参考中的 [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps)。
 
 以下部分显示 `Get-NetAdapter` cmdlet 的输出示例。
 

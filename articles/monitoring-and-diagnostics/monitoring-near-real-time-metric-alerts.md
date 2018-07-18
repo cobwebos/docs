@@ -1,39 +1,22 @@
 ---
-title: Azure Monitor 支持的资源中的新型指标警报 | Microsoft Docs
+title: 新型 Azure Monitor 指标警报支持的资源
 description: 新型 Azure 准实时指标警报的支持指标和日志参考。
 author: snehithm
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/27/2018
-ms.author: snmuvva, vinagara
-ms.custom: ''
-ms.openlocfilehash: c4a4a82eedc41b7690af005faecc1505257183ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: snmuvva
+ms.component: alerts
+ms.openlocfilehash: d5eaa4dafc9c155d3e6f85bc67c578c8a12da7cf
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778107"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264504"
 ---
-# <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Azure 门户中 Azure 服务的新型指标警报
-Azure Monitor 现在支持一种新型指标警报类型。 新型警报与[经典指标警报](insights-alerts-portal.md)在以下方面有所不同：
-
-- **延迟降低**：新型指标警报的运行频率可达每分钟一次。 旧式指标警报每 5 分钟方可运行 1 次。 由于引入日志需要时间，日志警报的延迟仍然超过 1 分钟。 
-- **支持多维指标**：支持对维度指标发出警报，从而可仅监视关注的指标段。 
-- **更好地控制指标条件**：可以定义更丰富的警报规则。 新型警报支持监视指标的最大值、最小值、平均值和总值。 
-- **综合监视多个指标**：可以使用单个规则监视多个指标（目前最多为两个指标）。 如果两个指标在指定时间段内违反其各自的阈值，则会触发警报。 
-- **更好的通知系统**：所有新型警报均使用[操作组](monitoring-action-groups.md)，这些组是命名的通知和操作组，可以在多个警报中重复使用。 经典指标警报和旧版 Log Analytics 警报不使用操作组。 
-- **日志中的指标**（受限公共预览版）：进入 Log Analytics 的日志数据现在可以提取并转换为 Azure Monitor 指标，然后就像其他指标一样，基于其发出警报。 
-
-若要了解如何在 Azure 门户中创建新型指标警报，请参阅[在 Azure 门户中创建警报规则](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal)。 创建后，可以按照[在 Azure 门户中管理警报](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal)中所述的步骤管理警报。
-
+# <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>新型指标警报支持的指标和创建方法
+Azure Monitor 现在支持[新型指标警报类型](monitoring-overview-unified-alerts.md)，它比旧式[经典指标警报](insights-alerts-portal.md)具有显著的优势。 旧式警报支持[大型指标列表](monitoring-supported-metrics.md)。 新型警报支持更大列表的一个（不断增长的）子集。 本文列出了该子集。 
 
 ## <a name="portal-powershell-cli-rest-support"></a>门户、PowerShell、CLI、REST 支持
 目前，仅可在 Azure 门户、[REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) 或[资源管理器模板](monitoring-create-metric-alerts-with-templates.md)中创建新型指标警报。 即将推出使用 PowerShell 和 Azure 命令行接口 (Azure CLI 2.0) 配置新型警报的支持功能。
@@ -43,7 +26,7 @@ Azure Monitor 现在支持一种新型指标警报类型。 新型警报与[经�
 
 下面是新型警报支持的 Azure Monitor 指标源的完整列表：
 
-|资源类型  |支持的维度  | 可用指标|
+|资源类型  |支持维度  | 可用指标|
 |---------|---------|----------------|
 |Microsoft.ApiManagement/service     | 是        | [API 管理](monitoring-supported-metrics.md#microsoftapimanagementservice)|
 |Microsoft.Automation/automationAccounts     |     是   | [自动化帐户](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
@@ -85,74 +68,74 @@ Azure Monitor 现在支持一种新型指标警报类型。 新型警报与[经�
 
 支持下面列出的基于 Log Analytics 日志的指标源：
 
-指标名称/详细信息  |支持的维度  | 日志类型  |
+指标名称/详细信息  |支持维度  | 日志类型  |
 |---------|---------|---------|
-|Average_Avg. 磁盘秒数/读取     |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-| Average_Avg. 磁盘秒数/写入     |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-| Average_Current Disk Queue Length   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-| Average_Disk Reads/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-| Average_Disk Transfers/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-|   Average_% Free Space    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-| Average_Available MBytes     |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-| Average_% Committed Bytes In Use    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-| Average_Bytes Received/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-|  Average_Bytes Sent/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-|  Average_Bytes Total/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-|  Average_% Processor Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-|   Average_Processor Queue Length    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计算器      |
-|   Average_% Free Inodes   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Free Space   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Used Inodes  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Used Space   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Disk Read Bytes/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Disk Reads/sec |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Disk Transfers/sec |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Disk Write Bytes/sec   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Disk Writes/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Free Megabytes |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Logical Disk Bytes/sec |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Available Memory |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Available Swap Space |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Used Memory  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Used Swap Space  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Available MBytes Memory    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Available MBytes Swap  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Page Reads/sec |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Page Writes/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Pages/sec  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Used MBytes Swap Space |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Used Memory MBytes |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Total Bytes Transmitted    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Total Bytes Received   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Total Bytes    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Total Packets Transmitted  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Total Packets Received |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Total Rx Errors    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Total Tx Errors    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Total Collisions   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Avg. 磁盘秒数/读取 |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Avg. 磁盘秒数/传输 |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Avg. 磁盘秒数/写入    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Physical Disk Bytes/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Pct Privileged Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Pct User Time  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Used Memory kBytes |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Virtual Shared Memory  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% DPC Time |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Idle Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Interrupt Time   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% IO Wait Time |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Nice Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Privileged Time  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% Processor Time   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_% User Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Free Physical Memory   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Free Space in Paging Files |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Free Virtual Memory    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Processes  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Size Stored In Paging Files    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Uptime |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
-|    Average_Users  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计算器      |
+|Average_Avg. 磁盘秒数/读取     |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+| Average_Avg. 磁盘秒数/写入     |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+| Average_Current Disk Queue Length   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+| Average_Disk Reads/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+| Average_Disk Transfers/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+|   Average_% Free Space    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+| Average_Available MBytes     |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+| Average_% Committed Bytes In Use    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+| Average_Bytes Received/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+|  Average_Bytes Sent/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+|  Average_Bytes Total/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+|  Average_% Processor Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+|   Average_Processor Queue Length    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Windows 性能计数器      |
+|   Average_% Free Inodes   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Free Space   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Used Inodes  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Used Space   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Disk Read Bytes/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Disk Reads/sec |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Disk Transfers/sec |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Disk Write Bytes/sec   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Disk Writes/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Free Megabytes |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Logical Disk Bytes/sec |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Available Memory |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Available Swap Space |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Used Memory  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Used Swap Space  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Available MBytes Memory    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Available MBytes Swap  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Page Reads/sec |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Page Writes/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Pages/sec  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Used MBytes Swap Space |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Used Memory MBytes |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Total Bytes Transmitted    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Total Bytes Received   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Total Bytes    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Total Packets Transmitted  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Total Packets Received |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Total Rx Errors    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Total Tx Errors    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Total Collisions   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Avg. 磁盘秒数/读取 |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Avg. 磁盘秒数/传输 |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Avg. 磁盘秒数/写入    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Physical Disk Bytes/sec    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Pct Privileged Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Pct User Time  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Used Memory kBytes |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Virtual Shared Memory  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% DPC Time |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Idle Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Interrupt Time   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% IO Wait Time |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Nice Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Privileged Time  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% Processor Time   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_% User Time    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Free Physical Memory   |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Free Space in Paging Files |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Free Virtual Memory    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Processes  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Size Stored In Paging Files    |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Uptime |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
+|    Average_Users  |     是 - Computer, ObjectName, InstanceName, CounterPath & SourceSystem    |   Linux 性能计数器      |
 |    检测信号  |     是 - Computer, OSType, Version & SourceComputerId    |   检测信号记录 |
 |    更新 |     是 - Computer, Product, Classification, UpdateState, Optional & Approved    |   更新管理 |
 

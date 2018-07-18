@@ -1,92 +1,83 @@
 ---
-title: "部署 Azure 堆栈的 PowerShell |Microsoft 文档"
-description: "在本教程中，从命令行安装 ASDK。"
+title: 部署 Azure Stack - PowerShell | Microsoft Docs
+description: 在本文中，你可以从命令行使用 PowerShell 安装 ASDK。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 48ccccaba6b7f5780f1d42dfbe5d9747c5e30292
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f0d7daa479f6e6ea345e010962488c1ecad5b7e2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849951"
 ---
-# <a name="tutorial-deploy-the-asdk-from-the-command-line"></a>教程： 部署从命令行 ASDK
-在本教程中，你将部署 Azure 堆栈开发工具包 (ASDK) 从命令行在非生产环境中。 
-
-ASDK 是一个测试和开发的环境，你可以部署评估并演示 Azure 堆栈功能和服务。 若要获取其启动并正在运行，需要准备环境硬件并运行 （这将需要几个小时） 一些脚本。 之后，你可以登录到管理员和用户门户若要开始使用 Azure 堆栈。
-
-本教程介绍如何执行下列操作：
-
-> [!div class="checklist"]
-> * 下载并提取部署包
-> * 准备开发工具包主机计算机 
-> * 执行后期部署配置
-> * 注册 Azure
+# <a name="deploy-the-asdk-from-the-command-line"></a>部署从命令行 ASDK
+ASDK 是一个测试和开发环境，可以在部署后用来评估和演示 Azure Stack 功能和服务。 若要启动并运行该工具包，需要准备环境硬件并运行一些脚本（这将需要几个小时）。 之后便可以登录到管理员门户和用户门户，开始使用 Azure Stack。
 
 ## <a name="prerequisites"></a>必备组件 
-准备开发工具包主机计算机。 规划你的硬件、 软件和网络。 承载开发工具包的计算机（开发工具包主机）必须满足硬件、软件和网络要求。 你还必须使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 之间进行选择。 请务必在开始部署前符合这些先决条件，以便安装进程能顺利运行。 
+准备开发工具包主机。 计划硬件、软件和网络。 承载开发工具包的计算机（开发工具包主机）必须满足硬件、软件和网络要求。 还必须选择是使用 Azure Active Directory (Azure AD) 还是使用 Active Directory 联合身份验证服务 (AD FS)。 请务必在开始部署前符合这些先决条件，以便安装进程能顺利运行。 
 
-在部署 ASDK 之前，请确保你计划的开发工具包的主机计算机的硬件、 操作系统、 帐户和网络配置满足安装 ASDK 的最低要求。
+在部署 ASDK 之前，请确保计划的开发工具包主机的硬件、操作系统、帐户和网络配置符合安装 ASDK 所需的最低要求。
 
 **[查看 ASDK 部署规划注意事项](asdk-deploy-considerations.md)**
 
 > [!TIP]
-> 你可以使用[Azure 堆栈部署要求检查工具](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b)后安装操作系统，以确认你的硬件满足所有要求。
+> 安装操作系统以后，可以使用 [Azure Stack 部署要求检查工具](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b)来确认硬件是否满足所有要求。
 
 ## <a name="download-and-extract-the-deployment-package"></a>下载并提取部署包
-确保你开发工具包的主机计算机满足安装 ASDK 的基本要求之后下, 一步是要下载并解压缩 ASDK 部署包。 部署包包括 Cloudbuilder.vhdx 文件，它是虚拟硬盘，其中包括可启动的操作系统和 Azure 堆栈安装文件。
+在确保开发工具包主机满足安装 ASDK 的基本要求以后，下一步是下载并提取 ASDK 部署包。 部署包包括 Cloudbuilder.vhdx 文件，该文件是一个虚拟硬盘驱动器，其中包括一个可启动的操作系统，以及 Azure Stack 安装文件。
 
-你可以将部署包下载到开发工具包主机或另一台计算机。 提取的部署文件占用 60 GB 的可用磁盘空间，因此使用另一台计算机有助于减少开发工具包主机的硬件要求。
+可以将部署包下载到开发工具包主机或另一台计算机。 提取的部署文件占用 60 GB 的可用磁盘空间，因此使用另一台计算机有助于减少开发工具包主机的硬件要求。
 
-**[下载并提取 Azure 堆栈开发工具包 (ASDK)](asdk-download.md)**
+**[下载并提取 Azure Stack 开发工具包 (ASDK)](asdk-download.md)**
 
-## <a name="prepare-the-development-kit-host-computer"></a>准备开发工具包主机计算机
-你可以在主计算机上安装 ASDK 之前，必须准备环境和系统配置为启动从 VHD。 此步骤后，开发工具包主机将启动到 Cloudbuilder.vhdx （虚拟硬盘，其中包括可启动的操作系统和 Azure 堆栈安装文件）。
+## <a name="prepare-the-development-kit-host-computer"></a>准备开发工具包主机
+必须先准备环境并将系统配置为从 VHD 启动，然后才能在主机上安装 ASDK。 此步骤完成后，开发工具包主机将启动到 Cloudbuilder.vhdx（一个包含可启动操作系统和 Azure Stack 安装文件的虚拟硬盘）。
 
-使用 PowerShell 来配置 ASDK 主计算机来从 CloudBuilder.vhdx 启动。 这些命令将从已下载并解压 Azure 堆栈虚拟硬盘 (CloudBuilder.vhdx) 启动你 ASDK 主机计算机的配置。 完成这些步骤后，请重启 ASDK 主机。
+使用 PowerShell 将 ASDK 主机配置为从 CloudBuilder.vhdx 启动。 以下命令会将 ASDK 主机配置为从下载后提取的 Azure Stack 虚拟硬盘 (CloudBuilder.vhdx) 启动。 完成这些步骤后，请重启 ASDK 主机。
 
-若要配置 ASDK 主机计算机启动时从 CloudBuilder.vhdx:
+若要将 ASDK 主机配置为从 CloudBuilder.vhdx 启动，请执行以下操作：
 
   1. 以管理员身份启动命令提示符。
   2. 运行 `bcdedit /copy {current} /d "Azure Stack"`
-  3. 复制 (CTRL+C) 返回的 CLSID 值，包括必需的 {}。 该值称为 {CLSID}，需要在余下的步骤中粘贴进去（CTRL+V 或右键单击）。
+  3. 副本 (CTRL + C) CLSID 值返回，包括所需{}s。 该值称为 {CLSID}，需要在余下的步骤中粘贴进去（CTRL+V 或右键单击）。
   4. 运行 `bcdedit /set {CLSID} device vhd=[C:]\CloudBuilder.vhdx` 
   5. 运行 `bcdedit /set {CLSID} osdevice vhd=[C:]\CloudBuilder.vhdx` 
   6. 运行 `bcdedit /set {CLSID} detecthal on` 
   7. 运行 `bcdedit /default {CLSID}`
   8. 若要验证启动设置，请运行 `bcdedit`。 
-  9. 确保已将 CloudBuilder.vhdx 文件移动到 C:\ 驱动器的根目录 (C:\CloudBuilder.vhdx)，然后重启开发工具包主机。 重新启动 ASDK 主机计算机后，它应从 CloudBuilder.vhdx 虚拟机硬盘空间，以开始 ASDK 部署进行启动。 
+  9. 确保已将 CloudBuilder.vhdx 文件移动到 C:\ 驱动器的根目录 (C:\CloudBuilder.vhdx)，然后重启开发工具包主机。 重启 ASDK 主机时，该主机应该从 CloudBuilder.vhdx 虚拟机硬盘启动，然后开始进行 ASDK 部署。 
 
 > [!IMPORTANT]
-> 确保你能够直接物理计算机或 KVM 访问开发工具包主机计算机然后重新启动它。 当第一次启动 VM 时，它会提示你完成 Windows Server 安装程序。 提供用于登录到开发工具包主机计算机的相同管理员凭据。 
+> 确保可以直接通过物理方式或 KVM 方式访问开发工具包主机，然后再重启它。 VM 在第一次启动时会提示你完成 Windows Server 设置。 提供的管理员凭据是用来登录到开发工具包主机的凭据。 
 
 ### <a name="prepare-the-development-kit-host-using-powershell"></a>使用 PowerShell 准备开发工具包主机 
-之后的开发工具包主机计算机已成功启动到 CloudBuilder.vhdx 映像，使用相同的本地管理员凭据用于登录到开发工具包主计算机 （和完成 Windows Server 的一部分提供的日志安装程序仅当从 VHD 启动主计算机）。 
+在开发工具包主机成功启动到 CloudBuilder.vhdx 映像中以后，请使用登录到开发工具包主机时使用过的本地管理员凭据（也是当主机从 VHD 启动时你在完成 Windows Server 设置过程中提供的凭据）登录。 
 
 > [!NOTE]
-> （可选） 还可以配置[Azure 堆栈遥测设置](asdk-telemetry.md#set-telemetry-level-in-the-windows-registry)*之前*安装 ASDK。
+> 也可在安装 ASDK 之前配置 [Azure Stack 遥测设置](asdk-telemetry.md#set-telemetry-level-in-the-windows-registry)。
 
-打开已提升权限的 PowerShell 控制台，并在此部分以部署 ASDK 开发工具包主机上的运行命令。
+打开提升了权限的 PowerShell 控制台并运行此部分的命令，以便在开发工具包主机上部署 ASDK。
 
 > [!IMPORTANT] 
 > ASDK 安装支持使用一个网络接口卡 (NIC) 进行网络连接。 如果有多个 NIC，请确保只启用一个（所有其他 NIC 均禁用），然后再运行部署脚本。
 
-你可以部署与 Azure AD 的 Azure 堆栈或为标识提供程序的 Windows Server AD FS。 Azure Stack、资源提供程序和其他应用程序使用这二者的方式是相同的。
+可以将 Azure AD 或 Windows Server AD FS 作为标识提供者来部署 Azure Stack。 Azure Stack、资源提供程序和其他应用程序使用这二者的方式是相同的。
 
 > [!TIP]
-> 如果你不提供任何 （InstallAzureStackPOC.ps1 可选参数和下面的示例，请参阅此项） 的安装程序参数，则会提示所需的参数。
+> 如果不提供任何安装参数（参见下面的 InstallAzureStackPOC.ps1 可选参数和示例），系统会提示输入必需的参数。
 
 ### <a name="deploy-azure-stack-using-azure-ad"></a>使用 Azure AD 部署 Azure Stack 
 若要**使用 Azure AD 作为标识提供者**来部署 Azure Stack，必须通过直接方式或透明代理方式建立 Internet 连接。 
@@ -119,7 +110,7 @@ ASDK 是一个测试和开发的环境，你可以部署评估并演示 Azure �
 
 
 #### <a name="azure-ad-deployment-script-examples"></a>Azure AD 部署脚本示例
-可以编写整个 Azure AD 部署的脚本。 下面是几个注释的示例，包括一些可选的参数。
+可以编写整个 Azure AD 部署的脚本。 下面是一些加注的示例，其中包括一些可选参数。
 
 如果 Azure AD 标识只与**一个** Azure AD 目录相关联，请执行以下代码：
 ```powershell
@@ -137,18 +128,18 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<Azure AD directory in the form of domainname.onmicrosoft.com or an Azure AD verified custom domain name>" -TimeServer 52.168.138.145 #Example time server IP address.
 ```
 
-如果你的环境不具有已启用 DHCP，您必须包括以下其他参数 （提供的示例用法） 上方选项之一： 
+如果环境没有启用 DHCP，则必须在上述某个选项中包括下述额外的参数（已提供用法示例）： 
 
 ```powershell
 .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -NatIPv4Subnet 10.10.10.0/24 -NatIPv4Address 10.10.10.3 -NatIPv4DefaultGateway 10.10.10.1 -TimeServer 10.222.112.26
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK InstallAzureStackPOC.ps1 可选参数
-|参数|必需/可选|说明|
+|参数|必需/可选|描述|
 |-----|-----|-----|
-|AdminPassword|需要|在所有虚拟机（在开发工具包部署过程中创建）上设置本地管理员帐户和所有其他的用户帐户。 此密码必须与当前主机上的本地管理员密码匹配。|
-|InfraAzureDirectoryTenantName|需要|设置租户目录。 使用此参数指定一个具体的目录，使 AAD 帐户有权在其中管理多个目录。 完整的 AAD 目录租户中的格式的名称。 onmicrosoft.com 或 Azure AD 验证自定义域名。|
-|TimeServer|需要|使用此参数指定具体的时间服务器。 必须以有效的时间服务器 IP 地址的形式提供此参数。 服务器名称不受支持。|
+|AdminPassword|必需|在所有虚拟机（在开发工具包部署过程中创建）上设置本地管理员帐户和所有其他的用户帐户。 此密码必须与当前主机上的本地管理员密码匹配。|
+|InfraAzureDirectoryTenantName|必需|设置租户目录。 使用此参数指定一个具体的目录，使 AAD 帐户有权在其中管理多个目录。 完整的 AAD 目录租户中的格式的名称。 onmicrosoft.com 或 Azure AD 验证自定义域名。|
+|TimeServer|必需|使用此参数指定具体的时间服务器。 必须以有效的时间服务器 IP 地址的形式提供此参数。 服务器名称不受支持。|
 |InfraAzureDirectoryTenantAdminCredential|可选|设置 Azure Active Directory 用户名和密码。 这些 Azure 凭据必须是组织 ID。|
 |InfraAzureEnvironment|可选|选择 Azure 环境，以便将此 Azure Stack 部署注册到其中。 选项包括“公共 Azure”、“Azure - 中国”、“Azure - 美国政府”。|
 |DNSForwarder|可选|在 Azure Stack 部署过程中会创建 DNS 服务器。 若要允许解决方案中的计算机解析标记外部的名称，请提供现有的基础结构 DNS 服务器。 标记内 DNS 服务器将未知的名称解析请求转发至此服务器。|
@@ -158,34 +149,23 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 |重新运行|可选|使用此标志重新运行部署。 将使用所有以前的输入。 不支持重新输入以前提供的数据，因为已生成多个唯一的值并将其用于部署。|
 
 
-## <a name="perform-post-deployment-configurations"></a>执行后期部署配置
-安装后 ASDK，有几个建议的安装后检查和应做的配置更改。 你可以验证你的安装已成功使用测试 AzureStack cmdlet 中，安装并安装 Azure 堆栈 PowerShell 和 GitHub 工具。 
+## <a name="perform-post-deployment-configurations"></a>执行部署后配置
+安装 ASDK 之后，建议进行一些安装后检查和配置更改。 可以使用 test-AzureStack cmdlet 来验证安装是否成功，然后安装 Azure Stack PowerShell 和 GitHub 工具。 
 
-你应该重置以确保开发工具包宿主的密码不会评估期结束前过期的密码过期策略。
+还应重置密码过期策略，确保开发工具包主机的密码不在评估期结束之前过期。
 
 > [!NOTE]
-> （可选） 还可以配置[Azure 堆栈遥测设置](asdk-telemetry.md#enable-or-disable-telemetry-after-deployment)*后*安装 ASDK。
+> 也可在安装 ASDK 之后配置 [Azure Stack 遥测设置](asdk-telemetry.md#enable-or-disable-telemetry-after-deployment)。
 
-**[后 ASDK 部署任务](asdk-post-deploy.md)**
+**[ASDK 后部署任务](asdk-post-deploy.md)**
 
-## <a name="register-with-azure"></a>注册 Azure
-你必须向 Azure 注册 Azure 堆栈，以便您能够[下载 Azure 应用商店项](asdk-marketplace-item.md)到 Azure 堆栈。
+## <a name="register-with-azure"></a>注册到 Azure
+必须将 Azure Stack 注册到 Azure，以便[将 Azure Marketplace 项下载](asdk-marketplace-item.md)到 Azure Stack。
 
-**[向 Azure 注册 Azure 堆栈](asdk-register.md)**
+**[将 Azure Stack 注册到 Azure](asdk-register.md)**
 
-## <a name="next-steps"></a>后续步骤
-祝贺你！ 完成这些步骤后，你将有两种版本同时开发工具包环境[管理员](https://adminportal.local.azurestack.external)和[用户](https://portal.local.azurestack.external)门户。 
+## <a name="next-steps"></a>接下来的步骤
+祝贺您! 完成这些步骤后，便具备了包含[管理员](https://adminportal.local.azurestack.external)门户和[用户](https://portal.local.azurestack.external)门户的开发工具包环境。 
 
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 下载并提取部署包
-> * 准备开发工具包主机计算机 
-> * 执行后期部署配置
-> * 注册 Azure
-
-前进到下一步的教程，若要了解如何添加 Azure 堆栈应用商店项。
-
-> [!div class="nextstepaction"]
-> [添加 Azure 堆栈应用商店项](asdk-marketplace-item.md)
+[ASDK 安装后配置任务](asdk-post-deploy.md)
 

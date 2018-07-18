@@ -11,25 +11,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2018
+ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 08fcc2eec1914d9f7535ea66d33045240452e2a6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0af6ea05b663f0954785ce966440e3f698ad14a8
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867080"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [版本 1 - 正式版](v1/data-factory-scheduling-and-execution.md)
-> * [版本 2 - 预览版](concepts-pipeline-execution-triggers.md)
+> * [第 1 版](v1/data-factory-scheduling-and-execution.md)
+> * [当前版本](concepts-pipeline-execution-triggers.md)
 
-“管道运行”在 Azure 数据工厂第 2 版中用于定义管道执行的实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。 
+Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。 
 
 管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道时，可以手动，也可以使用触发器。 本文提供了有关执行管道的两种方式的详细信息。
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用 Azure 数据工厂第 1 版（即正式版 (GA)），请参阅 [Azure 数据工厂第 1 版中的计划和执行](v1/data-factory-scheduling-and-execution.md)。
 
 ## <a name="manual-execution-on-demand"></a>手动执行（按需）
 管道的手动执行也称为按需执行。
@@ -107,8 +105,8 @@ Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickSt
 
 ```json
 {
-  “sourceBlobContainer”: “MySourceFolder”,
-  “sinkBlobCountainer”: “MySinkFolder”
+  "sourceBlobContainer": "MySourceFolder",
+  "sinkBlobCountainer": "MySinkFolder"
 }
 ```
 
@@ -135,10 +133,13 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 > 可以使用 .NET SDK 从 Azure Functions、自己的 Web 服务等位置调用数据工厂管道。
 
 <h2 id="triggers">触发器执行</h2>
-触发器是可以执行管道运行的另一种方法。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持两种类型的触发器：
+触发器是可以执行管道运行的另一种方法。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持三种类型的触发器：
 
 - 计划触发器：按时钟计划调用管道的触发器。
-- 翻转窗口触发器：一种触发器，可以定期运行，同时还能保留状态。 Azure 数据工厂目前不支持基于事件的触发器。 例如，对文件到达事件进行响应的管道运行的触发器不受支持。
+
+- 翻转窗口触发器：一种触发器，可以定期运行，同时还能保留状态。
+
+- 基于事件的触发器：响应某个事件的触发器。
 
 管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道，单个触发器也可以启动多个管道。 在以下触发器定义中，pipelines 属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
 
@@ -173,9 +174,6 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 计划触发器按时钟计划运行管道。 此触发器支持定期和高级日历选项。 例如，此触发器支持“每周”或“星期一下午 5:00 和星期四晚上 9:00”之类的时间间隔。 计划触发器很灵活，因为数据集模式与数据类型无关，该触发器不区分时序数据和非时序数据。
 
 如需计划触发器的详细信息和示例，请参阅[创建计划触发器](how-to-create-schedule-trigger.md)。
-
-## <a name="tumbling-window-trigger"></a>翻转窗口触发器
-翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 如需翻转窗口触发器的详细信息和示例，请参阅[创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
 
 ## <a name="schedule-trigger-definition"></a>计划触发器定义
 创建计划触发器时，请使用 JSON 定义指定计划和定期触发。 
@@ -318,6 +316,17 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **工作日** | 运行触发器的星期日期。 此值只能使用与星期相关的频率来指定。|<br />- Monday<br />- Tuesday<br />- Wednesday<br />- Thursday<br />- Friday<br />- Saturday<br />- Sunday<br />- 星期值的数组（最大数组值为 7）<br /><br />星期值不区分大小写|
 | **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 |- **monthlyOccurence** 对象的数组：`{ "day": day,  "occurrence": occurence }`<br />- **day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。<br />- **occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。|
 | **monthDays** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 |<= -1 且 >= -31 的任意值<br />>= 1 且 <= 31 的任意值<br />- 值组成的数组|
+
+## <a name="tumbling-window-trigger"></a>翻转窗口触发器
+翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。
+
+如需翻转窗口触发器的详细信息和示例，请参阅[创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
+
+## <a name="event-based-trigger"></a>基于事件的触发器
+
+基于事件的触发器在 Azure Blob 存储中通过运行管道来响应某个事件，例如某个文件已到达，或者某个文件已删除。
+
+若要详细了解基于事件的触发器，请参阅[创建可以通过运行管道来响应事件的触发器](how-to-create-event-trigger.md)。
 
 ## <a name="examples-of-trigger-recurrence-schedules"></a>触发器定期触发计划示例
 此部分提供定期触发计划的示例， 重点介绍 **schedule** 对象及其元素。

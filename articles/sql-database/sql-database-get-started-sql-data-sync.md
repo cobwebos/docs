@@ -1,27 +1,28 @@
 ---
-title: 设置 Azure SQL 数据同步（预览版）| Microsoft Docs
-description: 本教程演示如何设置 Azure SQL 数据同步（预览版）
+title: 设置 Azure SQL 数据同步 | Microsoft Docs
+description: 本教程介绍了如何设置 Azure SQL 数据同步
 services: sql-database
-author: douglaslms
+author: allenwux
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: douglasl
+ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 86b0e78f362d1cf3c2480aad97ef5281c5f3bc95
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7cb7ce0ea81cf99c2ee14a6f209864894563d237
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111773"
 ---
-# <a name="set-up-sql-data-sync-preview"></a>设置 SQL 数据同步（预览版）
+# <a name="set-up-sql-data-sync"></a>设置 SQL 数据同步
 本教程将介绍如何创建包含 Azure SQL 数据库和 SQL Server 实例的混合同步组，从而设置 Azure SQL 数据同步。 新的同步组进行了全面配置，可根据所设定的计划进行同步。
 
 阅读本教程的前提是，至少具有 SQL 数据库和 SQL Server 领域的一些经验。 
 
-有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步（预览版）跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 有关显示如何配置 SQL 数据同步的完整 PowerShell 示例，请参阅下列文章：
 -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
@@ -198,7 +199,7 @@ ms.lasthandoff: 04/16/2018
 
 ### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>SQL 数据同步是否能完全创建和预配表？
 
-如果同步架构表尚未在目标数据库中创建，则 SQL 数据同步（预览版）将使用所选列进行创建。 但是，此行为不会导致完全保真架构，原因如下：
+如果同步架构表尚未在目标数据库中创建，SQL 数据同步会创建包含选定列的表。 但是，此行为不会导致完全保真架构，原因如下：
 
 -   在目标表中仅创建所选的列。 如果源表中的某些列不是同步组的一部分，则不会在目标表中预配这些列。
 
@@ -214,7 +215,7 @@ ms.lasthandoff: 04/16/2018
 
 考虑到这些限制，我们的建议如下：
 -   对于生产环境，请自行预配完全保真架构。
--   若要试用服务，SQL 数据同步（预览版）的自动预配功能非常有用。
+-   若要试用服务，还可以使用 SQL 数据同步的自动预配功能。
 
 ### <a name="why-do-i-see-tables-that-i-did-not-create"></a>为什么出现了未创建的表？  
 数据同步在数据库中创建用于跟踪的端表。 请不要删除这些表，否则数据同步会停止工作。
@@ -245,7 +246,7 @@ ms.lasthandoff: 04/16/2018
 
 ### <a name="why-do-i-need-a-client-agent"></a>为什么需要客户端代理？
 
-SQL 数据同步（预览版）服务通过客户端代理与 SQL Server 数据库进行通信。 此安全功能可防止与防火墙后的数据库进行直接通信。 SQL 数据同步（预览版）服务与代理通信时，使用加密连接和唯一令牌或代理密钥来执行此操作。 SQL Server 数据库使用连接字符串和代理密钥对代理进行身份验证。 这种设计为数据提供高度安全性。
+SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信。 此安全功能可防止与防火墙后的数据库进行直接通信。 与代理通信时，SQL 数据同步服务使用加密连接和唯一令牌或代理密钥。 SQL Server 数据库使用连接字符串和代理密钥对代理进行身份验证。 这种设计为数据提供高度安全性。
 
 ### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>可以运行多少个本地代理 UI 实例？
 
@@ -257,7 +258,7 @@ SQL 数据同步（预览版）服务通过客户端代理与 SQL Server 数据�
 
 ### <a name="how-do-i-change-my-agent-key"></a>如何更改我的代理密钥？
 
-一个代理只能使用一次代理密钥。 删除并重新安装新代理后，不能重复使用它，它也不能被多个代理使用。 如果需要为现有代理创建新密钥，必须确保使用客户端代理和 SQL 数据同步（预览版）服务记录相同密钥。
+一个代理只能使用一次代理密钥。 删除并重新安装新代理后，不能重复使用它，它也不能被多个代理使用。 如果需要为现有代理新建密钥，必须确保使用客户端代理和 SQL 数据同步服务记录相同密钥。
 
 ### <a name="how-do-i-retire-a-client-agent"></a>如何停用客户端代理？
 
@@ -269,7 +270,7 @@ SQL 数据同步（预览版）服务通过客户端代理与 SQL Server 数据�
 
 1. 在所需的计算机上安装代理。
 
-2. 登录 SQL 数据同步（预览版）门户，为新代理重新生成代理密钥。
+2. 登录 SQL 数据同步门户，为新代理重新生成代理密钥。
 
 3. 使用新代理的 UI 提交新代理密钥。
 

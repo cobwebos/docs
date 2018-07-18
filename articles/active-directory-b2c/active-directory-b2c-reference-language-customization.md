@@ -1,22 +1,21 @@
 ---
-title: Azure AD B2C 中的语言自定义 | Microsoft Docs
+title: Azure Active Directory B2C 中的语言自定义 | Microsoft Docs
 description: 了解如何自定义语言体验。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 097033b78e3e4f640e7bf4008fd970c53315d5d7
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: B2C
+ms.openlocfilehash: affd52352dcc745557dd66c61ccfa1e7a99dcdb7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200546"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442315"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的语言自定义
 
@@ -199,7 +198,7 @@ Chrome 和 Firefox 都会请求其设置的语言。 如果支持该语言，将
 | 意大利语               | it            |
 | 日语              | ja            |
 | 卡纳达语               | kn            |
-| 朝鲜语                | ko            |
+| 韩语                | ko            |
 | 马拉雅拉姆语             | ml            |
 | 马拉地语               | mr            |
 | 马来语                 | ms            |

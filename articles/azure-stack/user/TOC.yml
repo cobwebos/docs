@@ -27,6 +27,10 @@
       href: azure-stack-solution-hybrid-identity.md
     - name: 配置混合云连接
       href: azure-stack-solution-hybrid-connectivity.md
+    - name: 订阅产品
+      href: azure-stack-subscribe-services.md
+    - name: 从模板创建 VM
+      href: azure-stack-create-vm-template.md
 - name: 操作指南
   items:
     - name: 使用 Azure Stack 门户

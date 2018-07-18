@@ -3,7 +3,7 @@ title: 在 Azure 中使用 Ansible 创建完整的 Linux VM | Microsoft Docs
 description: 了解如何在 Azure 中使用 Ansible 创建和管理完整的 Linux 虚拟机环境
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
-ms.author: iainfou
-ms.openlocfilehash: 22b580e74ec412763b9c34a7fa2fea97c8a277d0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 05/30/2018
+ms.author: cynthn
+ms.openlocfilehash: 63228f8bf8729f1bf3796a77516490ae7088d5ed
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896174"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930838"
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>在 Azure 中使用 Ansible 创建完整的 Linux 虚拟机环境
 使用 Ansible 可以在环境中自动部署和配置资源。 可以在 Azure 中使用 Ansible 管理虚拟机 (VM)，管理其他任意资源也一样。 本文介绍了如何使用 Ansible 创建完整的 Linux 环境和支持资源。 还可以了解如何[使用 Ansible 创建基本 VM](ansible-create-vm.md)。
@@ -38,6 +38,8 @@ ms.locfileid: "33896174"
 
 
 ## <a name="create-virtual-network"></a>创建虚拟网络
+让我们看看 Ansible playbook 的每个部分，并创建单个 Azure 资源。 有关完整的 playbook，请参阅[该文章的此部分](#complete-ansible-playbook)。
+
 Ansible 操作手册中的以下部分在 10.0.0.0/16 地址空间中创建了名为 myVnet 的虚拟网络：
 
 ```yaml
@@ -116,14 +118,14 @@ Ansible 操作手册中的以下部分在 10.0.0.0/16 地址空间中创建了�
     vm_size: Standard_DS1_v2
     admin_username: azureuser
     ssh_password_enabled: false
-    ssh_public_keys: 
+    ssh_public_keys:
       - path: /home/azureuser/.ssh/authorized_keys
         key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
     network_interfaces: myNIC
     image:
       offer: CentOS
       publisher: OpenLogic
-      sku: '7.3'
+      sku: '7.5'
       version: latest
 ```
 
@@ -177,18 +179,18 @@ Ansible 操作手册中的以下部分在 10.0.0.0/16 地址空间中创建了�
       vm_size: Standard_DS1_v2
       admin_username: azureuser
       ssh_password_enabled: false
-      ssh_public_keys: 
+      ssh_public_keys:
         - path: /home/azureuser/.ssh/authorized_keys
           key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
       network_interfaces: myNIC
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.3'
+        sku: '7.5'
         version: latest
 ```
 
-Ansible 需要一个资源组来部署所有资源。 使用 [az group create](/cli/azure/vm#az_vm_create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+Ansible 需要一个资源组来部署所有资源。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

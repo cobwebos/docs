@@ -1,22 +1,21 @@
 ---
-title: Azure Active Directory B2C：自定义策略 | Microsoft Docs
-description: 有关 Azure Active Directory B2C 自定义策略的主题
+title: Azure Active Directory B2C 自定义策略 | Microsoft Docs
+description: 了解 Azure Active Directory B2C 自定义策略。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 22d34ac4128da1d1a9f20619aec2aaccc2425a21
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: 0724227da425eb2faeee9ac4ae8449782e62a241
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32138911"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445938"
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C：自定义策略
 
@@ -40,16 +39,16 @@ ms.locfileid: "32138911"
 
 ## <a name="policy-files"></a>策略文件
 
-自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 XML 元素定义：声明架构、声明转换、内容定义、声明提供程序/技术配置文件、Userjourney 业务流程步骤，以及其他元素。
+自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 XML 元素定义：声明架构、声明转换、内容定义、声明提供程序/技术配置文件、用户旅程业务流程步骤，以及其他元素。
 
 我们建议使用三种类型的策略文件：
 
 - **BASE 文件**：包含大多数定义，Azure 为此提供了完整的示例。  我们建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略
 - **EXTensions 文件**：保存租户的唯一配置更改
-- **信赖方 (RP) 文件**：注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。  有关详细信息，请阅读有关策略文件定义的文章。  每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
+- **信赖方 (RP) 文件**是注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。  有关详细信息，请阅读有关策略文件定义的文章。  每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
 
 
-Azure AD B2C 中的内置策略遵循上面描述的 3 文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户会在后台对扩展文件进行更改。
+Azure AD B2C 中的内置策略遵循上面描述的三文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户会在后台对扩展文件进行更改。
 
 ## <a name="core-concepts-you-should-know-when-using-custom-policies"></a>使用自定义策略时应了解的核心概念
 
@@ -76,7 +75,7 @@ Azure AD B2C 按顺序与标识提供者、用户、其他系统和本地用户�
 
 在 Azure AD B2C 租户中定义标识体验框架行为的配置文件。 自定义策略可作为一个或多个 XML 文件（请参阅“策略文件定义”）进行访问，这些文件在信赖方（例如，应用程序）调用时由标识体验框架执行。 标识开发人员可以直接编辑自定义策略来完成数量几乎不受限制的任务。 配置自定义策略的开发人员必须严谨地定义信任关系，以包含元数据终结点和确切的声明交换定义，并配置每个标识提供者所需的机密、密钥和证书。
 
-## <a name="policy-file-definitions-for-identity-experience-framework-trustframeworks"></a>标识体验框架信任框架的策略文件定义
+## <a name="policy-file-definitions-for-identity-experience-framework-trust-frameworks"></a>标识体验框架信任框架的策略文件定义
 
 ### <a name="policy-files"></a>策略文件
 

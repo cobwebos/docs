@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 存储模拟器进行开发和测试 | Microsoft Docs
-description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。 了解如何对请求进行身份验证、如何从应用程序连接到模拟器以及如何使用命令行工具。
+description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。 了解如何对请求进行授权、如何从应用程序连接到模拟器以及如何使用命令行工具。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -8,11 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: c6500cd1ddd31d789b8cd5d72d6e4614db3f88db
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291932"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -80,14 +81,14 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 > 可使用 [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 管理 SQL Server 实例，包括 LocalDB 安装。 在 SMSS“连接到服务器”对话框的“服务器名称:”字段中，指定 `(localdb)\MSSQLLocalDb` 以连接到 LocalDB 实例。
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>针对存储模拟器的请求进行身份验证
-安装并启动存储模拟器后，可针对此模拟器测试代码。 与云端的 Azure 存储一样，针对存储模拟器的每个请求都必须进行身份验证，除非它是匿名请求。 可以使用共享密钥身份验证或使用共享的访问签名 (SAS) 针对存储模拟器的请求进行身份验证。
+安装并启动存储模拟器后，可针对此模拟器测试代码。 与云中的 Azure 存储一样，针对存储模拟器发出的每个请求都必须经过授权，除非它是匿名请求。 可以使用共享密钥身份验证或使用共享访问签名 (SAS) 针对存储模拟器的请求进行授权。
 
-### <a name="authenticate-with-shared-key-credentials"></a>使用共享密钥凭据进行身份验证
+### <a name="authorize-with-shared-key-credentials"></a>使用共享密钥凭据进行授权
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
 有关连接字符串的详细信息，请参阅[配置 Azure 存储连接字符串](../storage-configure-connection-string.md)。
 
-### <a name="authenticate-with-a-shared-access-signature"></a>使用共享访问签名进行身份验证
+### <a name="authorize-with-a-shared-access-signature"></a>使用共享访问签名进行授权
 某些 Azure 存储客户端库（诸如 Xamarin 库）仅支持使用共享的访问签名 (SAS) 令牌进行身份验证。 可使用[存储资源管理器](http://storageexplorer.com/)之类的工具或其他支持共享密钥身份验证的应用程序创建 SAS 令牌。
 
 还可使用 Azure PowerShell 来生成 SAS 令牌。 以下示例会生成可完全访问 blob 容器的 SAS 令牌：
@@ -203,12 +204,23 @@ https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2015-
 模拟器中的队列存储没有任何差异。
 
 ## <a name="storage-emulator-release-notes"></a>存储模拟器发行说明
+
+### <a name="version-55"></a>版本 5.5
+* 存储模拟器现在支持 Blob、队列和表服务终结点上的 2017-11-09 版本的存储服务。
+* 已添加对 blob **Created** 属性的支持，该属性返回 blob 的创建时间。
+
+### <a name="version-54"></a>版本 5.4
+为了提高安装稳定性，模拟器在安装时不再尝试预留端口。 如果需要端口预留，请使用 **init** 命令的 *-reserveports* 选项进行指定。
+
+### <a name="version-53"></a>版本 5.3
+存储模拟器现在支持 Blob、队列和表服务终结点上的 2017-07-29 版本的存储服务。
+
 ### <a name="version-52"></a>版本 5.2
 * 存储模拟器现在支持 Blob、队列和表服务终结点上 2017-04-17 版本的存储服务。
 * 修复了表属性值未正确编码的 bug。
 
 ### <a name="version-51"></a>版本 5.1
-* 修复了一个 Bug。出现该 Bug 时，存储模拟器会在某些不包含服务的响应中返回 `DataServiceVersion` 标头。
+修复了一个 Bug。出现该 Bug 时，存储模拟器会在某些不包含服务的响应中返回 `DataServiceVersion` 标头。
 
 ### <a name="version-50"></a>版本 5.0
 * 存储模拟器安装程序不再检查现有的 MSSQL 和 .NET Framework 是否已安装。

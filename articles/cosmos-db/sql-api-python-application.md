@@ -3,23 +3,21 @@ title: 适用于 Azure Cosmos DB 的 Python Flask Web 应用程序教程 | Micro
 description: 查看一个数据库教程，其中介绍了使用 Azure Cosmos DB 从 Azure 上托管的 Python Flask Web 应用程序来存储和访问数据。 查找应用程序开发解决方案。
 keywords: 应用程序开发, Python Flask, Python Web 应用程序, Python Web 开发
 services: cosmos-db
-documentationcenter: python
 author: SnehaGunda
 manager: kfile
-ms.assetid: 20ebec18-67c2-4988-a760-be7c30cfb745
 ms.service: cosmos-db
-ms.workload: data-management
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: python
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3746a8f3d565d06dd81077efe84c8a9173a68dd7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a1a6ef61934c765eced259ddc535c018acf52fb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38629044"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>构建使用 Azure Cosmos DB 的 Python Flask Web 应用程序
 > [!div class="op_single_selector"]
@@ -368,7 +366,7 @@ def vote():
 6. 按 Shift+F5 停止调试该项目。
 
 ## <a name="step-5-deploy-the-web-application-to-azure"></a>步骤 5：将 Web 应用程序部署到 Azure
-创建可在本地针对 Azure Cosmos DB 正常工作的完整应用程序后，我们要创建一个 web.config 文件，将服务器上的文件更新为与本地环境匹配，然后在 Azure 中查看已完成的应用。 此过程只能在 Visual Studio 2017 中执行。 如果使用其他 Visual Studio 版本，请参阅[发布到 Azure 应用服务](/visualstudio/python/publishing-to-azure.md)。
+创建可在本地针对 Azure Cosmos DB 正常工作的完整应用程序后，我们要创建一个 web.config 文件，将服务器上的文件更新为与本地环境匹配，然后在 Azure 中查看已完成的应用。 此过程只能在 Visual Studio 2017 中执行。 如果使用其他 Visual Studio 版本，请参阅[发布到 Azure 应用服务](/visualstudio/python/publishing-to-azure)。
 
 1. 在 Visual Studio 的“解决方案资源管理器”中，右键单击项目，并选择“添加”>“新建项...”。在显示的对话框中，选择“Azure web.config (Fast CGI)”模板，再选择“确定”。 随后会在项目根目录中创建一个 `web.config` 文件。 
 
@@ -406,7 +404,7 @@ def vote():
 
 10. 在“选择扩展”页上，向下滚动到最近的 Python 2.7 安装并选择 x86 或 x64 位选项，然后单击“确定”接受法律条款。  
    
-11. 使用 Kudu 控制台（可通过 `https://<your app service name>.scm.azurewebsites.net/DebugConsole` 访问）安装应用的 `requirements.txt` 文件中所列的包。 为此，请在 Kudu 诊断控制台中导航到 Python 文件夹 `D:\home\Python27`，并根据 [Kudu 控制台](/visual-studio/python/managing-python-on-azure-app-service.md#azure-app-service-kudu-console)部分中所述运行以下命令：
+11. 使用 Kudu 控制台（可通过 `https://<your app service name>.scm.azurewebsites.net/DebugConsole` 访问）安装应用的 `requirements.txt` 文件中所列的包。 为此，请在 Kudu 诊断控制台中导航到 Python 文件夹 `D:\home\Python27`，并根据 [Kudu 控制台](/visualstudio/python/managing-python-on-azure-app-service#azure-app-service-kudu-console)部分中所述运行以下命令：
 
     ```
     D:\home\Python27>python -m pip install --upgrade -r /home/site/wwwroot/requirements.txt
@@ -439,9 +437,3 @@ def vote():
 有关 Azure、Visual Studio 和 Python 的详细信息，请参阅 [Python 开发人员中心](https://azure.microsoft.com/develop/python/)。 
 
 有关其他 Python Flask 教程，请参阅 [The Flask Mega-Tutorial, Part I: Hello, World!（Flask 大型教程，第 I 部分：Hello, World!）](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)。 
-
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[2]: https://www.python.org/downloads/windows/
-[3]: https://www.microsoft.com/download/details.aspx?id=44266
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Azure portal]: http://portal.azure.com

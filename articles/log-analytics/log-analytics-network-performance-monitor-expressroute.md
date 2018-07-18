@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9610a8b37ead976cfdfa2fed81d4d3932055ddcc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: 55308c2f144ea90636fb477f82c19fd3f8276af5
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131122"
 ---
 # <a name="expressroute-manager"></a>ExpressRoute 管理器
 
@@ -36,7 +38,7 @@ ms.lasthandoff: 03/28/2018
 ### <a name="configure-network-security-group-rules"></a>配置网络安全组规则 
 对于 Azure 中用于通过网络性能监视器进行监视的服务器，配置网络安全组 (NSG) 规则以允许将网络性能监视器在端口上使用的 TCP 流量用于综合事务。 默认端口为 8084。 此配置允许安装在 Azure VM 上的 Operations Management Suite 代理与本地监视代理进行通信。 
 
-有关 NSG 的详细信息，请参阅 [网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)。 
+有关 NSG 的详细信息，请参阅 [网络安全组](../virtual-network/manage-network-security-group.md)。 
 
 >[!NOTE]
 > 在继续执行此步骤之前，请安装本地服务器代理和 Azure 服务器代理，然后运行 EnableRules.ps1 PowerShell 脚本。 

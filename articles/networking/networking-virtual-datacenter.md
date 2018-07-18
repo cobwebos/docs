@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure 虚拟数据中心：网络透视图 | Microsoft Docs
+title: Azure 虚拟数据中心 - 网络透视图
 description: 了解如何在 Azure 中生成虚拟数据中心
 services: networking
 author: tracsman
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: a62d52e30b04b525dc8ff685ed6c3033d6029542
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2c8ca8bcce43596d521fa9c81438ac6a16f6dcdf
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942439"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445375"
 ---
-# <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure 虚拟数据中心：网络透视图
+# <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure 虚拟数据中心：网络透视图
 **Microsoft Azure**：更快更省地迁移、集成本地应用和数据
 
 ## <a name="overview"></a>概述
@@ -226,17 +226,21 @@ NAT 在本地边缘路由器或 Azure 环境中时可避免 IP 地址冲突，�
 
 不同的 LOB 通常使用许多 Web 应用程序，这些应用程序易遭受各种漏洞和潜在攻击。 Web 应用程序防火墙是一款特殊产品，相较通用防火墙而言，它能够更深入的检测对 Web 应用程序 (HTTP/HTTPS) 的攻击。 与传统防火墙技术相比，WAF 拥有一组用于保护内部 Web 服务器免受威胁的特定功能。
 
-防火墙场是一组在同一公共管理下串联工作的防火墙，拥有一组安全规则，用于保护辐射中托管的工作负荷并控制对本地网络的访问权限。 与 WAF 相比，防火墙场的专用软件更少，但应用范围广泛，可以筛选和检查出口和入口的任何流量类型。 防火墙场通常通过网络虚拟设备 (NVA) 在 Azure 中实现，Azure Marketplace 提供了这些设备。
+防火墙场是一组在同一公共管理下串联工作的防火墙，拥有一组安全规则，用于保护辐射中托管的工作负荷并控制对本地网络的访问权限。 与 WAF 相比，防火墙场的专用软件更少，但应用范围广泛，可以筛选和检查出口和入口的任何流量类型。 防火墙场通常通过网络虚拟设备 (NVA) 在 Azure 中实现，Azure 市场提供了这些设备。
 
 建议对源自 Internet 的流量使用一组 NVA，对源自本地的流量使用另一组 NVA。 若仅对两组网络流量使用一组 NVA，则存在安全风险，因为它不会在两组网络流量之间提供安全外围。 使用不同 NVA 可以降低检查安全规则的复杂性，并指明哪项规则与哪项传入网络请求对应。
 
 大多数大型企业都管理多个域。 Azure DNS 可以用来托管某个特定域的 DNS 记录。 例如，可以在 Azure DNS 记录的 A 记录中登记 Azure 外部负载均衡器（或 WAF）的虚拟 IP 地址 (VIP)。
 
-[**Azure 负载均衡器**][ALB] Azure 负载均衡器提供高度可用的第 4 层（TCP 和 UDP）服务，该服务可以在负载均衡集定义的服务实例间分配传入流量。 可以将由前端终结点（公共 IP 终结点或专用 IP 终结点）发送到负载均衡器的流量重新分配（通过/不通过地址转换）到一组后端 IP 地址池（如网络虚拟设备或 VM）。
+
+  [
+  **Azure 负载均衡器**][ALB] Azure 负载均衡器提供高度可用的第 4 层（TCP 和 UDP）服务，该服务可以在负载均衡集定义的服务实例间分配传入流量。 可以将由前端终结点（公共 IP 终结点或专用 IP 终结点）发送到负载均衡器的流量重新分配（通过/不通过地址转换）到一组后端 IP 地址池（如网络虚拟设备或 VM）。
 
 Azure 负载均衡器也可以探测各种服务器实例的运行状态，当探测无法响应时，负载均衡器会停止向不正常的实例发送流量。 在 vDC 中，中心的外部负载均衡器可以均衡发送到 NVA 的流量，辐射中的外部负载均衡器可以执行均衡多层应用程序的不同 VM 之间的流量等任务。
 
-[**应用程序网关**][AppGW] Microsoft Azure 应用程序网关是一个专用的虚拟设备，以服务形式提供应用程序传送控制器 (ADC)，并为应用程序提供各种第 7 层负载均衡功能。 可以用它将 CPU 密集型 SSL 终点卸载到应用程序网关，优化 Web 场工作效率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Web 应用程序防火墙 (WAF) 也作为 WAF SKU 应用程序网关的一部分提供。 此 SKU 可保护 Web 应用程序免受 Web 常见漏洞和攻击的影响。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 
+
+  [
+  **应用程序网关**][AppGW] Microsoft Azure 应用程序网关是一个专用的虚拟设备，以服务形式提供应用程序传送控制器 (ADC)，并为应用程序提供各种第 7 层负载均衡功能。 可以用它将 CPU 密集型 SSL 终点卸载到应用程序网关，优化 Web 场工作效率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Web 应用程序防火墙 (WAF) 也作为 WAF SKU 应用程序网关的一部分提供。 此 SKU 可保护 Web 应用程序免受 Web 常见漏洞和攻击的影响。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 
 
 [**公共 IP**][PIP] 可以通过一些 Azure 功能将服务终结点关联到允许从 Internet 访问资源的公共 IP 地址。 该终结点使用网络地址转换 (NAT) 将流量路由到 Azure 虚拟网络上的内部地址和端口。 此路径是外部流量进入虚拟网络的主要方式。 可以对公共 IP 地址进行配置，确定可以传入哪种流量、如何在虚拟网络上转换该流量以及要将它路由到何处。
 

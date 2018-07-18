@@ -15,11 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c3f07aa0ef4fea773e214e3e161a61e9337dc617
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 673f41e368d54aeed903400179a818e534845860
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292732"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项
 
@@ -175,4 +176,4 @@ ms.lasthandoff: 05/14/2018
 - [启用应用程序代理](application-proxy-enable.md)
 - [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
 - [启用条件性访问](application-proxy-integrate-with-sharepoint-server.md)
-- [解决使用应用程序代理时遇到的问题](../active-directory-application-proxy-troubleshoot.md)
+- [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)

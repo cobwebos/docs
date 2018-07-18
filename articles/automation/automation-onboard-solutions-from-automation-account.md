@@ -5,20 +5,20 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 2f5d664b660d43e61dba46d13aff1ced796de884
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0174e2a3c0b14c52b5750e343932a5df39d18976
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193346"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833346"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
-Azure 自动化提供了解决方案来管理操作系统安全性更新、跟踪更改以及列出计算机上所安装项的清单。 可以通过多种方式来载入计算机，可以通过[虚拟机](automation-onboard-solutions-from-vm.md)、自动化帐户或 [Runbook](automation-onboard-solutions.md) 载入解决方案。 本文介绍了如何从自动化帐户载入这些解决方案。
+Azure 自动化提供了解决方案来管理操作系统安全性更新、跟踪更改以及列出计算机上所安装项的清单。 载入计算机的方式有多种，可以[通过虚拟机](automation-onboard-solutions-from-vm.md)、[通过浏览多个计算机](automation-onboard-solutions-from-browse.md)、通过自动化帐户或通过 [runbook](automation-onboard-solutions.md) 载入解决方案。 本文介绍了如何从自动化帐户载入这些解决方案。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -69,29 +69,27 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ![保存的搜索](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
-## <a name="onboard-an-azure-machine"></a>载入 Azure 计算机
+## <a name="onboard-azure-vms"></a>载入 Azure VM
 
 从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
 
-单击“+ 添加 Azure VM”，从列表中选择一个 VM。 在“更新管理”页面上，单击“启用”。 这会将当前 VM 添加到计算机组为此解决方案保存的搜索。
+单击“+ 添加 Azure VM”，从列表中选择一个或多个 VM。 无法启用的虚拟机为灰显，无法选择。 在“启用更新管理”页上，单击“启用”。 这会将选定 VM 添加到计算机组“为此解决方案保存的搜索结果”。
+
+![启用 Azure VM](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
 ## <a name="onboard-a-non-azure-machine"></a>载入非 Azure 计算机
 
-从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
+需要手动添加 Azure 中没有的计算机。 从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
 
-单击“添加非 Azure 计算机”。 这将打开一个新的浏览器窗口，其中说明了如何在计算机上安装 Microsoft Monitoring Agent 以使计算机可以开始向解决方案进行报告。 如果你载入当前由 System Center Operations Manager 管理的计算机，则不需要新代理，工作区信息将输入到现有代理中。
+单击“添加非 Azure 计算机”。 这会打开新浏览器窗口，其中[介绍了如何在计算机上安装并配置 Microsoft Monitoring Agent](../log-analytics/log-analytics-concept-hybrid.md)，让计算机能够开始向解决方案进行报告。 如果你载入当前由 System Center Operations Manager 管理的计算机，则不需要新代理，工作区信息将输入到现有代理中。
 
 ## <a name="onboard-machines-in-the-workspace"></a>在工作区中载入计算机
 
-从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
+必须将手动安装的计算机或已向工作区进行报告的计算机添加到 Azure 自动化中，才能启用解决方案。 从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
 
 选择“管理计算机”。 这将打开“管理计算机”页面。 此页面允许你在所选一组计算机上、所有可用的计算机上启用解决方案，或者为所有当前计算机启用解决方案并为所有将来的计算机启用解决方案。
 
 ![保存的搜索](media/automation-onboard-solutions-from-automation-account/managemachines.png)
-
-### <a name="selected-machines"></a>所选计算机
-
-若要为一台或多台计算机启用解决方案，请选择“在所选计算机上启用”并单击要添加到解决方案的每台计算机旁边的“添加”。 此任务会将所选计算机名称添加到计算机组为此解决方案保存的搜索查询。
 
 ### <a name="all-available-machines"></a>所有可用计算机
 
@@ -100,6 +98,10 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 ### <a name="all-available-and-future-machines"></a>所有可用的和将来的计算机
 
 若要为所有可用的计算机和所有将来的计算机启用解决方案，请选择“在所有可用的和将来的计算机上启用”。 此选项会从工作区中删除已保存的搜索和作用域配置。 这将为向工作区进行报告的所有 Azure 和非 Azure 计算机打开解决方案。
+
+### <a name="selected-machines"></a>所选计算机
+
+若要为一台或多台计算机启用解决方案，请选择“在所选计算机上启用”并单击要添加到解决方案的每台计算机旁边的“添加”。 此任务会将所选计算机名称添加到计算机组为此解决方案保存的搜索查询。
 
 ## <a name="next-steps"></a>后续步骤
 

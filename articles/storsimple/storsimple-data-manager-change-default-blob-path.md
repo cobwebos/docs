@@ -1,12 +1,12 @@
 ---
-title: "更改默认的 blob 路径 | Microsoft Docs"
-description: "了解如何设置 Azure 函数以重命名 blob 文件路径"
+title: 更改默认的 blob 路径 | Microsoft Docs
+description: 了解如何设置 Azure 函数以重命名 blob 文件路径
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862394"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>更改默认的 blob 路径
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 01/17/2018
      
         ![创建的 Function App](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
-5. 选择**函数**，然后单击**+ 新建函数**。
+5. 选择**函数**，然后单击 **+ 新建函数**。
 
     ![单击“+ 新建函数”](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
 

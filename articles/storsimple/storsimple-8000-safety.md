@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 设备的安全性 | Microsoft Docs"
-description: "描述安全约定、指南和注意事项，并解释如何安全地安装和运行 StorSimple 设备。"
+title: StorSimple 设备的安全性 | Microsoft Docs
+description: 描述安全约定、指南和注意事项，并解释如何安全地安装和运行 StorSimple 设备。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108655"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
 ![警告图标](./media/storsimple-safety/IC740879.png)

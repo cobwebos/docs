@@ -18,6 +18,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32170095"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
@@ -118,7 +119,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
     出现提示时，请输入群集的 HTTP 登录用户和密码。
 
-2. 从页面左侧的服务列表中选择“HDFS”。 然后，在页面中心选择__“配置”__选项卡。
+2. 从页面左侧的服务列表中选择“HDFS”。 然后，在页面中心选择 __“配置”__ 选项卡。
 
 3. 在“筛选...”字段中，输入值 __fs.azure.account__。 这会返回已添加到群集的任何其他存储帐户的条目。 条目的类型为两种：__keyprovider__ 和 __key__。 这两种类型都包含存储帐户名称，作为密钥名称的一部分。
 
@@ -127,7 +128,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
         fs.azure.account.keyprovider.mystorage.blob.core.windows.net
         fs.azure.account.key.mystorage.blob.core.windows.net
 
-4. 确定需要删除的存储帐户密钥后，使用条目右侧的红色“-”图标将其删除。 然后使用__“保存”__按钮保存更改。
+4. 确定需要删除的存储帐户密钥后，使用条目右侧的红色“-”图标将其删除。 然后使用 __“保存”__ 按钮保存更改。
 
 5. 保存更改后，使用脚本操作将存储帐户和新的密钥值添加到群集。
 

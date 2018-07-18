@@ -14,11 +14,13 @@ ms.topic: tutorial
 ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 6345fe89a3bf25041621213274ea0c3081848d99
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: na
+ms.openlocfilehash: 6b25712d660c26f2e7206b361c443b8f97aad361
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867607"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>查看或分析使用 Log Analytics 日志搜索收集的数据
 
@@ -40,8 +42,8 @@ ms.lasthandoff: 04/05/2018
 ## <a name="open-the-log-search-portal"></a>打开日志搜索门户 
 首先打开日志搜索门户。   
 
-1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
-2. 在 Log Analytics 订阅窗格中，选择一个工作区，然后选择“日志搜索”磁贴。<br><br> ![“日志搜索”按钮](media/log-analytics-tutorial-viewdata/azure-portal-02.png)
+1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“监视器”。 开始键入时，会根据输入筛选该列表。 选择“监视器”。
+2. 在监视器导航菜单中，选择“Log Analytics”，然后选择一个工作区
 
 ## <a name="create-a-simple-search"></a>创建简单的搜索
 用于检索某些要使用的数据的最快方法是使用一个简单查询，它可返回表中的所有记录。  如果将任何 Windows 或 Linux 客户端连接到自己的工作区，将具有 Event（事件）(Windows) 或 Syslog (Linux) 表中的数据。
@@ -123,7 +125,7 @@ Perf
 返回所有性能对象和计数器的数百万条记录并不是很有用。  但可使用上面使用的同一方法来筛选数据，或只需直接在“日志搜索”框中键入以下查询。  这样只会返回 Windows 和 Linux 计算机的处理器利用率记录。
 
 ```
-Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time")
+Perf | where ObjectName == "Processor"  | where CounterName == "% Processor Time"
 ```
 
 ![处理器利用率](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-02.png)
@@ -131,7 +133,9 @@ Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor T
 这会将数据限制到一个特定的计数器，但数据的显示方式仍不会很有用。  可以折线图的形式显示数据，但首先需要按“计算机”和“TimeGenerated”对数据进行分组。  若要按多个字段进行分组，需要直接修改查询，所以请将查询修改为以下内容。  这会在“CounterValue”属性上使用 [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) 函数来计算每小时的平均值。
 
 ```
-Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated
+Perf  
+| where ObjectName == "Processor"  | where CounterName == "% Processor Time"
+| summarize avg(CounterValue) by Computer, TimeGenerated
 ```
 
 ![性能数据图表](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-03.png)
@@ -139,7 +143,10 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 现已对数据进行适当分组，通过添加 [render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) 运算符，可在可视图表中显示数据。  
 
 ```
-Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated | render timechart
+Perf  
+| where ObjectName == "Processor" | where CounterName == "% Processor Time" 
+| summarize avg(CounterValue) by Computer, TimeGenerated 
+| render timechart
 ```
 
 ![折线图](media/log-analytics-tutorial-viewdata/log-analytics-portal-linechart-01.png)

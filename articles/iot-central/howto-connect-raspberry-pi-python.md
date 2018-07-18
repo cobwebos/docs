@@ -1,19 +1,19 @@
 ---
 title: 将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (Python) | Microsoft Docs
 description: 如何使用 Python 以设备开发人员的身份将 Raspberry Pi 连接到 Azure IoT Central 应用程序。
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/23/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: 23ab31d6d2357bfcb184e5b3022155bef5ace658
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e9c2d18a518bd5c98fcc35efdb0dff36970a49b2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199871"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629059"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (Python)
 
@@ -25,7 +25,7 @@ ms.locfileid: "34199871"
 
 若要完成本文中的步骤，需要以下各项：
 
-* 从“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
+* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
 * 运行 Raspbian 操作系统的 Raspberry Pi 设备。 需要将监视器、键盘和鼠标连接到 Raspberry Pi 才能访问 GUI 环境。 Raspberry Pi 必须能够[连接到 Internet](https://www.raspberrypi.org/learning/software-guide/wifi/)。
 * （可选）一个适用于 Raspberry Pi 的 [Sense Hat](https://www.raspberrypi.org/products/sense-hat/) 加载板。 此板从各种传感器收集遥测数据，然后将其发送到 Azure IoT Central 应用程序。 如果没有 **Sense Hat** 板，可以改用模拟器。
 
@@ -60,7 +60,7 @@ ms.locfileid: "34199871"
 
 切换设置
 
-| 显示名称 | 字段名称 | 启用文本 | 关闭文本 | Initial |
+| 显示名称 | 字段名称 | 打开文本 | 关闭文本 | Initial |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | 亮起      | 熄灭      | 关闭     |
 
@@ -69,7 +69,7 @@ ms.locfileid: "34199871"
 | Type            | 显示名称 | 字段名称 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 文本            | Location     | location   | 不适用       |
+| 文本            | 位置     | location   | 不适用       |
 
 ### <a name="add-a-real-device"></a>添加真实设备
 

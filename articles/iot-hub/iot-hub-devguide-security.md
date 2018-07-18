@@ -1,24 +1,19 @@
 ---
 title: 了解 Azure IoT 中心安全性 | Microsoft Docs
 description: 开发人员指南 - 如何控制设备应用和后端应用对 IoT 中心的访问。 其中包括安全令牌和 X.509 证书支持的相关信息。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 45631e70-865b-4e06-bb1d-aae1175a52ba
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: 25a1c05dc3e72d14482ee6bd1b26a8355cfc7dd9
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 43eb988915fb917923ab968d22b9b7f0ee36c0f5
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444389"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -41,13 +36,16 @@ ms.lasthandoff: 05/18/2018
 可以通过以下方式授予[权限](#iot-hub-permissions)：
 
 * **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可以在 [Azure 门户][lnk-management-portal]中定义策略，或使用 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis] 以编程方式定义策略。 新建的 IoT 中心有以下默认策略：
+  
+  | 共享访问策略 | 权限 |
+  | -------------------- | ----------- |
+  | iothubowner | 所有权限 |
+  | 服务 | **ServiceConnect** 权限 |
+  | 设备 | **DeviceConnect** 权限 |
+  | registryRead | **RegistryRead** 权限 |
+  | registryReadWrite | **RegistryRead** 和 **RegistryWrite** 权限 |
 
-  * **iothubowner**：包含所有权限的策略。
-  * **service**：包含 **ServiceConnect** 权限的策略。
-  * **device**：包含 **DeviceConnect** 权限的策略。
-  * **registryRead**：包含 **RegistryRead** 权限的策略。
-  * **registryReadWrite**：包含 **RegistryRead** 和 RegistryWrite 权限的策略。
-  * **每个设备的安全凭据**。 每个 IoT 中心都包含一个[标识注册表][lnk-identity-registry]。 对于此标识注册表中的每个设备，可配置安全凭据，授予局限于相应设备终结点的 **DeviceConnect** 权限。
+* **每个设备的安全凭据**。 每个 IoT 中心都包含一个[标识注册表][lnk-identity-registry]。 对于此标识注册表中的每个设备，可配置安全凭据，授予局限于相应设备终结点的 **DeviceConnect** 权限。
 
 例如，在典型的 IoT 解决方案中：
 
@@ -467,7 +465,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-openssl]: https://www.openssl.org/
-[lnk-selfsigned]: https://technet.microsoft.com/library/hh848633
+[lnk-selfsigned]: https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate
 
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-sas-tokens]: iot-hub-devguide-security.md#security-tokens
@@ -494,4 +492,4 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
-[lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-d2c-tutorial]: tutorial-routing.md

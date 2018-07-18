@@ -1,11 +1,11 @@
 ---
-title: "使用请求和响应操作 | Microsoft Docs"
-description: "Azure 逻辑应用中的请求和响应触发器和操作的概述"
-services: 
-documentationcenter: 
+title: 使用请求和响应操作 | Microsoft Docs
+description: Azure 逻辑应用中的请求和响应触发器和操作的概述
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27960555"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>请求和响应组件入门
 借助逻辑应用中的请求和响应组件，可以实时响应事件。

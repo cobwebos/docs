@@ -1,11 +1,11 @@
 ---
-title: "Azure 事件中心消息传送异常 | Microsoft Docs"
-description: "Azure 事件中心消息传送异常和建议的操作列表。"
+title: Azure 事件中心消息传送异常 | Microsoft Docs
+description: Azure 事件中心消息传送异常和建议的操作列表。
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2c6273de-0106-47e5-b45d-59040e51f2c5
 ms.service: event-hubs
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783122"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>事件中心消息传送异常
 

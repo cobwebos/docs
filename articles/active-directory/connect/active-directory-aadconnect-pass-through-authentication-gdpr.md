@@ -4,7 +4,7 @@ description: 本文介绍如何处理 Azure Active Directory (Azure AD) 直通�
 services: active-directory
 keywords: Azure AD Connect 直通身份验证, GDPR, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f53f8ffcf8354d35fa552f099302456fa5226ca8
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150617"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915871"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>用户隐私和 Azure Active Directory 直通身份验证
 
@@ -29,13 +30,13 @@ ms.locfileid: "32150617"
 
 ## <a name="overview"></a>概述
 
-Azure AD 直通身份验证创建可以包含 EUII 的以下日志类型：
+Azure AD 直通身份验证创建可以包含个人数据的以下日志类型：
 
 - Azure AD Connect 跟踪日志文件。
 - 身份验证代理跟踪日志文件。
 - Windows 事件日志文件。
 
-可通过两种方式实现直通身份验证的用户隐私：
+可通过两种方式改进直通身份验证的用户隐私：
 
 1.  根据请求提取用户的数据以及从安装项中删除该用户的数据。
 2.  确保数据保留时长均不超过 48 小时。

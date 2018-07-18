@@ -3,7 +3,7 @@ title: Azure Log Analytics Linux 代理故障排除 | Microsoft Docs
 description: 针对 Log Analytics Linux 代理的最常见问题，描述症状、原因和解决方法。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 80d7e39b284554ebfa8cac4488e1663b3e3648e8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: 49a53b68fd394772f38b6040b80ec80c93d9c46c
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131763"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-linux-agent-for-log-analytics"></a>如何排查 Log Analytics Linux 代理问题
 

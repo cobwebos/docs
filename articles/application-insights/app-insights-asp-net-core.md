@@ -1,4 +1,4 @@
----
+﻿---
 title: 适用于 ASP.NET Core 的 Azure Application Insights | Microsoft Docs
 description: 监视 Web 应用程序的可用性、性能和使用情况。
 services: application-insights
@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 02/21/2018
+ms.topic: conceptual
+ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2245fcdaa8b7e85ea37e9af9c939cd188c4d7ed9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f9ab9b9af81bf1827c2da646908e204bd051706b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157136"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970928"
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 
@@ -29,72 +29,164 @@ Azure Application Insights 提供 Web 应用程序的监视信息，深度可达
 ## <a name="prerequisites"></a>先决条件
 
 - .NET Core 2.0.0 SDK 或更高版本。
-- 装有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 版本 15.3 或以上。
+- 装有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7.3 或更高版本。 
 
 ## <a name="create-an-aspnet-core-project-in-visual-studio"></a>在 Visual Studio 中创建 ASP.NET Core 项目
 
 1. 单击右键，并管理员身份启动 **Visual Studio 2017**。
 2. 选择“文件” > “新建” > “项目”(Ctrl-Shift-N)。
 
-   ![Visual Studio 中“文件”>“新建”>“项目”菜单的屏幕截图](./media/app-insights-asp-net-core/0001-file-new-project.png)
+   ![Visual Studio 中“文件”>“新建”>“项目”菜单的屏幕截图](./media/app-insights-asp-net-core/001-new-project.png)
 
 3. 展开“Visual C#”，选择“.NET Core” > “ASP.NET Core Web 应用程序”。 输入“名称” > “解决方案名称”，选中“创建新的 Git 存储库”。
 
-   ![Visual Studio 中“文件”>“新建”>“项目”向导的屏幕截图](./media/app-insights-asp-net-core/0002-new-project-web-application.png)
+   ![Visual Studio 中“文件”>“新建”>“项目”向导的屏幕截图](./media/app-insights-asp-net-core/002-asp-net-core-web-application.png)
 
 4. 选择“.Net Core” > “ASP.NET Core 2.0 Web 应用程序” > “确定”。
 
-    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/0003-dot-net-core.png)
+    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/003-web-application.png)
+
+## <a name="application-insights-search"></a>Application Insights 搜索
+
+默认情况下，在 Visual Studio 版本 2015 Update 2 或更高版本中，如果其中包含基于 ASP.NET Core 2+ 的项目，则可充分利用 [Application Insights 搜索](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)。即使在向项目显式添加 Application Insights 之前，也可以这样做。
+
+若要测试此功能，请执行以下操作：
+
+1. 单击 IIS Express 运行应用 ![Visual Studio 中 IIS Express 图标的屏幕截图](./media/app-insights-asp-net-core/004-iis-express.png)
+
+2. 选择“视图” > “其他窗口” > “Application Insights 搜索”。
+
+   ![Visual Studio 诊断工具的屏幕截图](./media/app-insights-asp-net-core/005-view-other-windows-search.png)
+
+3. 调试会话遥测目前仅适用于本地分析。 若要完全启用 Application Insights，请选择右上角的“遥测就绪性”，或者按下一部分的步骤操作。
+
+   ![Visual Studio Application Insights 搜索的屏幕截图](./media/app-insights-asp-net-core/006-search.png)
+
+> [!NOTE]
+> 若要详细了解 Visual Studio 如何在你向 ASP.NET Core 项目添加 Application Insights 之前在本地启用 [Application Insights 搜索](app-insights-visual-studio.md)和 [CodeLens](app-insights-visual-studio-codelens.md) 之类的功能，请查看[本文末尾](#Application-Insights-search-continued)的说明。
 
 ## <a name="add-application-insights-telemetry"></a>添加 Application Insights 遥测
 
-1. 选择“项目” > “添加 Application Insights 遥测...”（或者，可以右键单击“连接的服务”并选择“添加连接的服务”。）
+1. 选择“项目” > “添加 Application Insights 遥测...”。（也可右键单击“连接的服务”，然后选择“添加连接的服务”。）
 
-    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/0004-add-application-insights-telemetry.png)
+    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/007-project-add-telemetry.png)
 
-2. 选择“免费开始”。
+2. 选择“入门”。 （根据 Visual Studio 版本的不同，文本可能会稍有不同。 某些较旧的版本仍使用“免费开始”按钮。）
 
-    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/0005-start-free.png)
+    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/008-get-started.png)
 
-3. 选择相应的“订阅” > “资源”，指定是否允许每月收集超过 1 GB 数据，选择“注册”。
-
-    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/0006-register.png)
+3. 选择相应的“订阅” > “资源” > “注册”。
 
 ## <a name="changes-made-to-your-project"></a>对项目所做的更改
 
-Application Insights 的系统开销很低。 通过添加 Application Insights 遥测来查看对项目所做的修改：
+Application Insights 的系统开销低。 通过添加 Application Insights 遥测来查看对项目所做的修改：
 
 选择“视图” > “团队资源管理器”(Ctrl+\, Ctrl+M) >“项目” > “更改”
 
 - 共有四项更改：
 
-  ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0007-changes.png)
+  ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/009-changes.png)
 
 - 创建了一个新文件：
 
-   **ConnectedService.json**
+   _ConnectedService.json_
 
-  ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0008-connectedservice-json.png)
+```json
+{
+  "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
+  "Version": "8.12.10405.1",
+  "GettingStartedDocument": {
+    "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
+  }
+}
+```
 
-- 修改了三个文件：
+- 修改了三个文件：（添加额外注释是为了突出显示所做的更改）
 
-  **appsettings.json**
+  _appsettings.json_
 
-   ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0009-appsettings-json.png)
+```json
+{
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+// Changes to file post adding Application Insights Telemetry:
+  "ApplicationInsights": {
+    "InstrumentationKey": "10101010-1010-1010-1010-101010101010"
+  }
+}
+//
+```
 
-  **ContosoDotNetCore.csproj**
+  _ContosoDotNetCore.csproj_
 
-   ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0010-contoso-netcore-csproj.png)
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+ <!--Changes to file post adding Application Insights Telemetry:-->
+    <ApplicationInsightsResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsAnnotationResourceId>
+<!---->
+  </PropertyGroup>
+  <ItemGroup>
+ <!--Changes to file post adding Application Insights Telemetry:-->
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
+<!---->
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+<!--Changes to file post adding Application Insights Telemetry:-->
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+<!---->
+</Project>
+```
 
-   **Program.cs**
+   _Program.cs_
 
-   ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0011-program-cs.png)
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+
+namespace DotNetCore
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            BuildWebHost(args).Run();
+        }
+
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+// Change to file post adding Application Insights Telemetry:
+                .UseApplicationInsights()
+//
+                .UseStartup<Startup>()
+                .Build();
+    }
+}
+```
 
 ## <a name="synthetic-transactions-with-powershell"></a>使用 PowerShell 创建综合事务
 
-启动应用，然后手动单击各个链接来生成测试流量。 但是，在 PowerShell 中创建简单的综合事务通常很有帮助。
+若要通过综合事务来自动向应用发起请求，请执行以下操作：
 
-1. 单击 IIS Express 运行应用 ![Visual Studio 中 IIS Express 图标的屏幕截图](./media/app-insights-asp-net-core/0012-iis-express.png)
+1. 单击 IIS Express 运行应用 ![Visual Studio 中 IIS Express 图标的屏幕截图](./media/app-insights-asp-net-core/004-iis-express.png)
 
 2. 复制浏览器地址栏中的 URL。 它采用以下格式：http://localhost:{random 端口号}
 
@@ -102,7 +194,7 @@ Application Insights 的系统开销很低。 通过添加 Application Insights 
 
 3. 运行以下 PowerShell 循环，针对测试应用创建 100 个综合事务。 修改 **localhost:** 后面的端口号，使之与上一步骤中复制的 URL 相匹配。
 
-   ```PS
+   ```PowerShell
    for ($i = 0 ; $i -lt 100; $i++)
    {
     Invoke-WebRequest -uri http://localhost:50984/
@@ -115,7 +207,7 @@ Application Insights 的系统开销很低。 通过添加 Application Insights 
 
 在 Visual Studio 菜单中，选择“项目” > “Application Insights” > “打开 Application Insights 门户”
 
-   ![Application Insights 概述的屏幕截图](./media/app-insights-asp-net-core/0014-portal-01.png)
+   ![Application Insights 概述的屏幕截图](./media/app-insights-asp-net-core/010-portal.png)
 
 > [!NOTE]
 > 在上面的示例屏幕截图中，目前尚未收集“实时流”、“页面视图加载时间”和“失败的请求数”。 下一部分将逐步讲解如何添加每项设置。 如果已开始收集“实时流”和“页面视图加载时间”，则只需遵循“失败的请求数”的步骤。
@@ -128,15 +220,31 @@ Application Insights 的系统开销很低。 通过添加 Application Insights 
 
 1. 在“解决方案资源管理器”中展开“页面” > “About.cshtml”，打开“About.cshtml.cs”。
 
-   ![Visual Studio 解决方案资源管理器的屏幕截图](./media/app-insights-asp-net-core/0015-solution-explorer-about.png)
+   ![Visual Studio 解决方案资源管理器的屏幕截图](./media/app-insights-asp-net-core/011-about.png)
 
 2. 在 ``Message=`` 下面添加一个异常，然后保存对该文件所做的更改。
 
-   ```C#
-   throw new Exception("Test Exception");
-   ```
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
 
-   ![异常代码的屏幕截图](./media/app-insights-asp-net-core/000016-exception.png)
+    namespace DotNetCore.Pages
+    {
+        public class AboutModel : PageModel
+        {
+            public string Message { get; set; }
+
+            public void OnGet()
+            {
+                Message = "Your application description page.";
+                throw new Exception("Test Exception");
+            }
+        }
+    }
+    ```
 
 ### <a name="live-stream"></a>实时流
 
@@ -144,36 +252,34 @@ Application Insights 的系统开销很低。 通过添加 Application Insights 
 
 在 Visual Studio 中，选择“项目” > “管理 NuGet 包” > “Microsoft.ApplicationInsights.AspNetCore”>“版本 **2.2.0**” > “更新”。
 
-  ![NuGet 包管理器的屏幕截图](./media/app-insights-asp-net-core/0017-update-nuget.png)
+  ![NuGet 包管理器的屏幕截图](./media/app-insights-asp-net-core/012-nuget-update.png)
 
-系统会显示多条确认提示，请阅读提示，并确认是否同意更改。
+会出现多次确认提示。 请阅读提示，并确认是否同意更改。
 
 ### <a name="page-view-load-time"></a>页面视图加载时间
 
-1. 在 Visual Studio 中，导航到“解决方案资源管理器” > “页面”。需要修改两个文件：**_Layout.cshtml** 和 **_ViewImports.cshtml**
+1. 在 Visual Studio 中，导航到“解决方案资源管理器” > “页面”。需要修改两个文件：__Layout.cshtml_ 和 __ViewImports.cshtml_
 
-2. 在 **_ViewImports.cshtml** 中添加：
+2. 在 __ViewImports.cshtml_ 中添加：
 
-   ```C#
+   ```csharp
    @using Microsoft.ApplicationInsights.AspNetCore
    @inject JavaScriptSnippet snippet
    ```
-     ![_ViewImports.cshtml 中的代码更改屏幕截图](./media/app-insights-asp-net-core/00018-view-imports.png)
 
-3. 在 **_Layout.cshtml** 中的 ``</head>`` 标记前面添加以下行。该行必须添加在其他任何脚本的前面。
+3. 在 **_Layout.cshtml** 中的 ``</head>`` 标记前面添加以下行，而且该行必须添加在其他任何脚本的前面。
 
-    ```C#
+    ```csharp
     @Html.Raw(snippet.FullScript)
     ```
-    ![layout.cshtml 中的代码更改屏幕截图](./media/app-insights-asp-net-core/0018-layout-cshtml.png)
 
 ### <a name="test-failed-requests-page-view-load-time-live-stream"></a>测试“失败的请求数”、“页面视图加载时间”和“实时流”
 
-完成前面的步骤后，可以测试并确认一切是否正常。
+若要测试并确认一切正常，请执行以下操作：
 
 1. 单击 IIS Express 运行应用 ![Visual Studio 中 IIS Express 图标的屏幕截图](./media/app-insights-asp-net-core/0012-iis-express.png)
 
-2. 导航到“关于”页，触发测试异常。 （如果在调试模式下运行，则需要在 Visual Studio 中单击“继续”，然后，Application Insights 才会拾取该异常。）
+2. 导航到“关于”页，触发测试异常。 （如果在“调试”模式下运行，则需在 Visual Studio 中单击“继续”，然后 Application Insights 中就会显示该异常。）
 
 3. 重新运行前面所述的模拟 PowerShell 事务脚本（可能需要调整脚本中的端口号。）
 
@@ -192,7 +298,7 @@ Application Insights 的系统开销很低。 通过添加 Application Insights 
 
 ## <a name="app-insights-sdk-comparison"></a>Application Insights SDK 的比较
 
-Application Insights 产品小组一直在努力使[完整版 .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) 与 .Net Core SDK 的功能尽量接近。 适用于 Application Insights 的 [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) 版本 2.2.0 已经基本填补了两者的功能差距。
+Application Insights 产品小组一直在努力使[完整版 .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) 与 .Net Core SDK 的功能接近。 适用于 Application Insights 的 [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) 版本 2.2.0 已经基本填补了两者的功能差距。
 
 了解 [.NET 与 .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) 之间的差异与利弊。
 
@@ -208,6 +314,93 @@ Application Insights 产品小组一直在努力使[完整版 .NET Framework SDK
 
 ## <a name="open-source-sdk"></a>开源 SDK
 [阅读代码或为其做出贡献](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
+
+## <a name="application-insights-search-continued"></a>Application Insights 搜索（继续）
+
+若要更好地了解如何在用于 ASP.NET Core 2 项目的 Visual Studio 中使用 Application Insights 搜索（即使尚未显式安装 Application Insights NuGet 包）， 可查看“调试输出”。
+
+如果在输出中搜索 _insight_ 一词，则会突出显示相关结果，如下所示：
+
+```DebugOuput
+'dotnet.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\store\x64\netcoreapp2.0\microsoft.aspnetcore.applicationinsights.hostingstartup\2.0.3\lib\netcoreapp2.0\Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll'.
+'dotnet.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\store\x64\netcoreapp2.0\microsoft.applicationinsights.aspnetcore\2.1.1\lib\netstandard1.6\Microsoft.ApplicationInsights.AspNetCore.dll'.
+
+Application Insights Telemetry (unconfigured): {"name":"Microsoft.ApplicationInsights.Dev.Message","time":"2018-06-03T17:32:38.2796801Z","tags":{"ai.location.ip":"127.0.0.1","ai.operation.name":"DEBUG /","ai.internal.sdkVersion":"aspnet5c:2.1.1","ai.application.ver":"1.0.0.0","ai.cloud.roleInstance":"CONTOSO-SERVER","ai.operation.id":"de85878e-4618b05bad11b5a6","ai.internal.nodeName":"CONTOSO-SERVER","ai.operation.parentId":"|de85878e-4618b05bad11b5a6."},"data":{"baseType":"MessageData","baseData":{"ver":2,"message":"Request starting HTTP/1.1 DEBUG http://localhost:53022/  0","severityLevel":"Information","properties":{"AspNetCoreEnvironment":"Development","Protocol":"HTTP/1.1","CategoryName":"Microsoft.AspNetCore.Hosting.Internal.WebHost","Host":"localhost:53022","Path":"/","Scheme":"http","ContentLength":"0","DeveloperMode":"true","Method":"DEBUG"}}}}
+```
+
+CoreCLR 正在加载两个程序集： 
+
+- _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_
+- _Microsoft.ApplicationInsights.AspNetCore.dll_.
+
+Application Insights 遥测的每个实例中的 _unconfigured_ 表示此应用程序未与任何 ikey 关联，因此应用程序运行时生成的数据不会发送到 Azure，仅供本地搜索和分析之用。
+
+部分原因是，NuGet 包 _Microsoft.AspNetCore.All_ 使用 [_Microsoft.ASPNetCoreApplicationInsights.HostingStartup_](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.applicationinsights.hostingstartup.applicationinsightshostingstartup?view=aspnetcore-2.1) 作为依赖项
+
+![适用于 Microsoft.AspNETCore.all 的 NuGet 依赖项关系图的屏幕截图](./media/app-insights-asp-net-core/013-dependency.png)
+
+在 Visual Studio 之外，如果你是在 VSCode 或某个其他的编辑器中编辑 ASP.NET Core 项目，则在未向项目显式添加 Application Insights 的情况下，这些程序集不会在调试过程中自动加载。
+
+但在 Visual Studio 中，可以通过 [IHostingStartup 界面](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1)（可以在调试过程中动态添加 Application Insights）从外部程序集以这种方式启用本地 Application Insights 功能。
+
+详细了解如何通过 [ASP.NET Core 中带 IHostingStartup 的外部程序集](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/platform-specific-configuration?view=aspnetcore-2.1)来增强应用。 
+
+### <a name="how-to-disable-application-insights-in-visual-studio-net-core-projects"></a>如何在 Visual Studio .NET Core 项目中禁用 Application Insights
+
+虽然自动启动 Application Insights 搜索功能对某些人来说可能很有用，但如果意外出现生成的调试遥测数据，可能会造成混淆。
+
+如果只需禁用遥测生成，则可将以下代码块添加到 _Startup.cs_ 文件的 Configure 方法中：
+
+```csharp
+  var configuration = app.ApplicationServices.GetService<Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration>();
+            configuration.DisableTelemetry = true;
+            if (env.IsDevelopment())
+```
+
+CoreCLR 仍会加载 _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_ 和 _Microsoft.ApplicationInsights.AspNetCore.dll_，但它们不会执行任何操作。
+
+若要在 Visual Studio .NET Core 项目中完全禁用 Application Insights，则首选方法是选择“工具” > “选项” > “项目和解决方案” > “Web 项目”，然后勾选相应的框来禁用适用于 ASP.NET Core Web 项目的本地 Application Insights。 此功能已在 Visual Studio 15.6 中添加。
+
+![Visual Studio 选项的 Window Web 项目屏幕的屏幕截图](./media/app-insights-asp-net-core/014-disable.png)
+
+如果运行的是较早版本的 Visual Studio，需要彻底删除通过 IHostingStartup 加载的所有程序集，则可添加：
+
+`.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")`
+
+到 _Program.cs_：
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+
+namespace DotNetCore
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            BuildWebHost(args).Run();
+        }
+
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")
+                .UseStartup<Startup>()
+                .Build();
+    }
+}
+```
+
+也可添加 ``"ASPNETCORE_preventHostingStartup": "True"`` 到 _launchSettings.json_ 环境变量。
+
+使用这其中的任一方法时的问题是，它不仅禁用 Application Insights，而且会禁用 Visual Studio 中利用 IHostingStartup 启动功能的任何东西。
 
 ## <a name="video"></a>视频
 

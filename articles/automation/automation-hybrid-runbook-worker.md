@@ -1,6 +1,6 @@
 ---
 title: Azure 自动化混合 Runbook 辅助角色
-description: 本文介绍如何安装和使用混合 Runbook 辅助角色，该角色是 Azure 自动化的一项功能，可以用于在本地数据中心或云提供商的计算机上运行 Runbook。
+description: 本文介绍如何安装和使用混合 Runbook 辅助角色，该角色是 Azure 自动化的一项功能，可用于在本地数据中心或云提供商的计算机上运行 Runbook。
 services: automation
 ms.service: automation
 ms.component: process-automation
@@ -9,49 +9,49 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 270990d5dea53c2467bf2d7df4695a14b3dbec8c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: be79f0111cb569509cb05b24c99f86d4ca9534b0
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194615"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064260"
 ---
-# <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
+# <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
-Azure 自动化中的 Runbook 可能无法访问其他云或本地环境中的资源，因为它们在 Azure 云中运行。 利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一个或多个指定计算机。
+Azure 自动化中的 Runbook 可能无法访问其他云或本地环境中的资源，因为它们在 Azure 云平台中运行。 利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一个或多个指定计算机。
 
 下图说明了此功能：
 
 ![混合 Runbook 辅助角色概述](media/automation-hybrid-runbook-worker/automation.png)
 
-## <a name="hybrid-runbook-worker-groups"></a>混合 Runbook 辅助角色组
-
 每个混合 Runbook 辅助角色都是你在安装代理时指定的混合 Runbook 辅助角色组的成员。 一个组可以包含一个代理，但是可以在一个组中安装多个代理，以实现高可用性。
 
-在混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组中的每个辅助角色都会轮询 Azure 自动化以查看是否有可用作业。 如果有可用的作业，则获取作业的第一个辅助角色将执行该作业。 不能指定特定的辅助角色。
+在混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组中的每个辅助角色都会轮询 Azure 自动化以查看是否有可用作业。 如果作业可用，获取作业的第一个辅助角色将执行该作业。 不能指定特定的辅助角色。
 
-## <a name="installing-a-hybrid-runbook-worker"></a>安装混合 Runbook 辅助角色
+## <a name="install-a-hybrid-runbook-worker"></a>安装混合 Runbook 辅助角色
 
-安装混合 Runbook 辅助角色的过程根据 OS 而有所不同。 下表包含指向可用于安装混合 Runbook 辅助角色的不同方法的链接。 若要安装和配置 Windows 混合 Runbook 辅助角色，可以使用两种方法。 建议的方法是使用自动化 Runbook 来彻底实现配置 Windows 计算机所需的过程的自动化。 第二种方法使用分步过程来手动安装和配置角色。 对于 Linux 计算机，运行 Python 脚本以在计算机上安装代理
+安装混合 Runbook 辅助角色的过程取决于 OS。 下表包含指向可用于安装的方法的链接。 
 
-|操作系统  |部署类型  |
+若要安装和配置 Windows 混合 Runbook 辅助角色，可使用两种方法。 建议的方法是使用自动化 Runbook 来彻底实现配置 Windows 计算机过程的自动化。 第二种方法使用分步过程来手动安装和配置角色。 对于 Linux 计算机，运行 Python 脚本，在计算机上安装代理。
+
+|OS  |部署类型  |
 |---------|---------|
 |Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手动](automation-windows-hrw-install.md#manual-deployment)        |
-|Linux     | [Python](automation-linux-hrw-install.md#installing-linux-hybrid-runbook-worker)        |
+|Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
 > 为了使用所需状态配置 (DSC) 管理支持混合 Runbook 辅助角色的服务器配置，需将其添加为 DSC 节点。 若要进一步了解如何载入它们以供 DSC 管理，请参阅[载入由 Azure 自动化 DSC 管理的计算机](automation-dsc-onboarding.md)。
 >
->如果启用[更新管理解决方案](automation-update-management.md)，任何连接到 Log Analytics 工作区的计算机将自动配置为混合 Runbook 辅助角色，以支持此解决方案中包括的 Runbook。 但是，该计算机未注册到任何已在自动化帐户中定义的混合辅助角色组。 只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将该计算机添加到自动化帐户的混合 Runbook 辅助角色组，以支持自动化 Runbook。 此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。
+>如果启用[更新管理解决方案](automation-update-management.md)，任何连接到 Azure Log Analytics 工作区的计算机将自动配置为混合 Runbook 辅助角色，以支持此解决方案中包括的 Runbook。 但是，该计算机未注册到任何已在自动化帐户中定义的混合辅助角色组。 只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将该计算机添加到自动化帐户的混合 Runbook 辅助角色组，以支持自动化 Runbook。 此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。
 
-开始部署混合 Runbook 辅助角色之前，请查看[有关规划网络的信息](#network-planning)。 成功部署 Runbook 辅助角色后，请查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
+开始部署混合 Runbook 辅助角色之前，请查看[有关规划网络的信息](#network-planning)。 成功部署辅助角色后，请查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
 
-## <a name="removing-hybrid-runbook-worker"></a>删除混合 Runbook 辅助角色
+## <a name="remove-a-hybrid-runbook-worker"></a>删除混合 Runbook 辅助角色
 
 可以从组中删除一个或多个混合 Runbook 辅助角色，或者根据要求删除该组。 若要从本地计算机中删除混合 Runbook 辅助角色，请执行以下步骤：
 
-1. 在 Azure 门户中，导航到自动化帐户。
-2. 在“设置”边栏选项卡中，选择“密钥”并记下“URL”和“主访问密钥”字段的值。 下一步需要用到此信息。
+1. 在 Azure 门户中，转到自动化帐户。
+2. 在“设置”下，选择“密钥”并记下“URL”和“主访问密钥”的值。 下一步需要用到此信息。
 
 ### <a name="windows"></a>Windows
 
@@ -74,22 +74,22 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ```
 
 > [!NOTE]
-> 这不会从计算机中删除 Microsoft 监视代理，而只会删除混合 Runbook 辅助角色的功能和配置。
+> 此代码不会从计算机中删除 Microsoft Monitoring Agent，而只会删除混合 Runbook 辅助角色的功能和配置。
 
-## <a name="remove-hybrid-worker-groups"></a>删除混合辅助角色组
+## <a name="remove-a-hybrid-worker-group"></a>删除混合辅助角色组
 
-要删除某个组，首先需要使用前面所示的过程，从每台计算机中删除属于该组的混合 Runbook 辅助角色，然后执行以下步骤删除该组。
+要删除某个组，首先需要使用前面所示的过程，从每台计算机中删除属于该组的混合 Runbook 辅助角色。 然后，执行以下步骤删除该组：
 
 1. 在 Azure 门户中打开自动化帐户。
-1. 在“流程自动化”下选择“混合辅助角色组”。 选择要删除的组。 在选择特定的组之后，会显示“混合辅助角色组”属性页面。
+1. 在“流程自动化”下选择“混合辅助角色组”。 选择要删除的组。 将显示该组的属性页。
 
-   ![混合 Runbook 辅助角色组页面](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
+   ![“属性”页](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-1. 在所选组的属性页面中，单击“删除”。 此时会显示一条消息请求确认此操作，如果确定要继续，请选择“是”。
+1. 在所选组的属性页中，选择“删除”。 系统会显示一条消息，要求确认此操作。 如果确定要继续，请选择“是”。
 
-   ![确认删除组对话框](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
+   ![确认消息](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
-   此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。
+   完成此过程可能需要数秒钟的时间。 可以在菜单中的“通知”下面跟踪操作进度。
 
 ## <a name="network-planning"></a>配置网络
 
@@ -106,7 +106,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 * 美国弗吉尼亚州政府的全局 URL：*.azure-automation.us
 * 代理服务：https://\<workspaceId\>.agentsvc.azure-automation.net
 
-如果为特定的区域定义了自动化帐户，则可以限制与该区域数据中心之间的通信。 下表提供了每个区域的 DNS 记录。
+如果为特定的区域定义了自动化帐户，则可以限制与该区域数据中心之间的通信。 下表提供了每个区域的 DNS 记录：
 
 | **区域** | **DNS 记录** |
 | --- | --- |
@@ -114,7 +114,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 | 美国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | 美国东部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | 加拿大中部 |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| 欧洲西部 |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
+| 西欧 |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | 北欧 |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | 东南亚 |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | 印度中部 |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
@@ -142,22 +142,10 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshoot"></a>故障排除
 
-混合 Runbook 辅助角色依靠代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 对于 Windows，此代理为 Microsoft Monitoring Agent。 对于 Linux，此代理为适用于 Linux 的 OMS 代理。 如果辅助角色注册失败，以下是一些可能导致此错误的原因：
-
-### <a name="the-hybrid-worker-is-behind-a-proxy-or-firewall"></a>混合辅助角色在代理或防火墙后面
-
-确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
-
-### <a name="the-computer-the-hybrid-worker-is-running-on-has-less-than-the-minimum-hardware-requirements"></a>运行混合辅助角色的计算机不满足最低硬件要求
-
-运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，才能指定它托管此功能。 否则，在执行过程中，根据其他后台进程的资源使用率和 runbook 所导致的争用，该计算机将变为过度使用，从而导致 runbook 作业延迟或超时。
-
-确认指定为运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存利用率，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 如果存在内存或 CPU 压力，这可能指示需要升级或添加额外的处理器或增加内存来解决资源瓶颈问题，从而解决此错误。 或者，选择其他可支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。
-
-有关对特定 OS 进行故障排除的其他信息，请参阅 [Linux 混合 Runbook 辅助角色](automation-linux-hrw-install.md#troubleshooting)或 [Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md#troubleshooting)
+若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅[混合 Runbook 辅助角色的故障排除](troubleshoot/hybrid-runbook-worker.md#general)
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
+若要了解如何配置 Runbook，使本地数据中心或其他云环境中的过程自动化，请参阅[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)。

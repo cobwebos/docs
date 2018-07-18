@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: a5f323b98fa30d2c4c89fa8fe8e75c1d89089b6e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c0794ebd953160c8569502db5d58c6d2b9ad892a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061490"
 ---
 # <a name="governance-in-azure"></a>Azure 中的监管
 
@@ -412,7 +413,7 @@ Azure 安全中心监视以下 Azure 资源：
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Log Analytics 软件开发和服务团队的信息安全和[监管计划](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md)支持其业务需求，并遵循 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)和 [Microsoft 信任中心符合性](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)中所述的法律和法规。 其中还介绍了 Log Analytics 如何建立安全要求、识别安全控制、管理和监控风险。 每年，我们都会对策略、标准、过程和指导原则进行评审。
+Log Analytics 软件开发和服务团队的信息安全和[监管计划](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md)支持其业务需求，并遵循 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)和 [Microsoft 信任中心符合性](https://microsoft.com/en-us/trustcenter/compliance)中所述的法律和法规。 其中还介绍了 Log Analytics 如何建立安全要求、识别安全控制、管理和监控风险。 每年，我们都会对策略、标准、过程和指导原则进行评审。
 
 每个 Log Analytics 开发团队成员都会接受正式的应用程序安全培训。 在内部，我们将版本控制系统用于软件开发。 每个软件项目都受版本控制系统保护。
 
@@ -438,7 +439,7 @@ Azure 操作管理器通过提供管理解决方案扩展其功能。 [管理解
 
 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高在 Log Analytics 方面所做投资的价值。
 
-合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
+合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 市场或快速启动模板将它们提供给用户。
 
 ## <a name="performance-alerting-and-monitoring"></a>性能警报和监视
 

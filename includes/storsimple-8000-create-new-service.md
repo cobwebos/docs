@@ -3,9 +3,9 @@
 
 #### <a name="to-create-a-new-service"></a>创建新服务
 
-1. 使用 Microsoft 帐户凭据登录到 [Azure 门户](https://portal.azure.com/)。
+1. 使用你的 Microsoft 帐户凭据登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 在 Azure 门户中单击“创建资源”，然后在 Marketplace 中单击“全部查看”。
+2. 在 Azure 门户中单击“创建资源”，然后在市场中单击“全部查看”。
 
     ![创建 StorSimple Device Manager](./media/storsimple-8000-create-new-service/createssdevman1.png)
 

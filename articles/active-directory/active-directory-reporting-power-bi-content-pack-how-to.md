@@ -1,23 +1,25 @@
 ---
-title: "如何使用 Azure Active Directory Power BI 内容包 | Microsoft Docs"
-description: "了解如何使用 Azure Active Directory Power BI 内容包"
+title: 如何使用 Azure Active Directory Power BI 内容包 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory Power BI 内容包
 services: active-directory
-author: MarkusVi
+author: priyamohanram
 manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
-ms.devlang: 
-ms.topic: get-started-article
-ms.tgt_pltfrm: 
+ms.devlang: ''
+ms.topic: conceptual
+ms.tgt_pltfrm: ''
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 12/06/2017
-ms.author: markvi
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 503b3f4c576382d8ce965d1f90aadda32c819a0b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 531d192bf024def1a90d9e5034645b6ec6e0c0e1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225416"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>如何使用 Azure Active Directory Power BI 内容包
 

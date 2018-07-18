@@ -1,23 +1,21 @@
 ---
-title: 将 OpenID Connect 标识提供者添加到内置策略 - Azure AD B2C | Microsoft Docs
-description: 关于如何在 Azure AD B2C 中将 OpenID Connect 提供者添加到内置策略的概述指南
+title: 在 Azure Active Directory B2C 中将 OpenID Connect 标识提供者添加到内置策略 | Microsoft Docs
+description: 关于如何在 Azure AD B2C 中将 OpenID Connect 提供者添加到内置策略的概述指南。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 357d193a-e33b-469c-8a93-0a8f45a60a9f
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: davidmu
-ms.openlocfilehash: 46223f1ec6b82828983861dae26ec8d777b77b86
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.component: B2C
+ms.openlocfilehash: e5baf95cd2426c9753620cba7c5a67b4c1672788
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2018
-ms.locfileid: "32308978"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444219"
 ---
 # <a name="azure-active-directory-b2c-add-a-custom-openid-connect-identity-provider-in-built-in-policies"></a>Azure Active Directory B2C：将自定义的 OpenID Connect 标识提供者添加到内置策略
 

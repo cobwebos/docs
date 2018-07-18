@@ -1,11 +1,11 @@
 ---
-title: "对 Azure 安全中心中的 SQL 数据库启用审核和威胁检测 | Microsoft Docs"
-description: "本文档演示如何实现 Azure 安全中心建议**对 SQL 数据库启用审核和威胁检测**。"
+title: 对 Azure 安全中心中的 SQL 数据库启用审核和威胁检测 | Microsoft Docs
+description: 本文档演示如何实现 Azure 安全中心建议**对 SQL 数据库启用审核和威胁检测**。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 224b6755-2b36-4ecd-9af8-139a198e0df1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040102"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>对 Azure 安全中心中的 SQL 数据库启用审核和威胁检测
 Azure 安全中心将建议对所有 SQL 数据库启用审核和威胁检测（如果尚未启用）。 审核和威胁检测可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。

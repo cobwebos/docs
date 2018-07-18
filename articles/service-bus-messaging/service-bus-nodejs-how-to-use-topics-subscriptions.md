@@ -1,11 +1,11 @@
 ---
-title: "如何通过 Node.js 使用 Azure 服务总线主题和订阅 | Microsoft Docs"
-description: "了解如何在来自 Node.js 应用的 Azure 中使用服务总线主题和订阅。"
+title: 如何通过 Node.js 使用 Azure 服务总线主题和订阅 | Microsoft Docs
+description: 了解如何在来自 Node.js 应用的 Azure 中使用服务总线主题和订阅。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
 ms.service: service-bus-messaging
 ms.workload: na
@@ -14,29 +14,39 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: d9e463273fff0ecc198b0574443c4241dde7be79
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d3a7ebd135f705a6a3ea91feb4e037a9ed6d0c79
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704990"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>如何通过 Node.js 使用服务总线主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-本指南演示如何从 Node.js 应用程序使用服务总线主题和订阅。 涉及的应用场景包括**创建主题和订阅**、**创建订阅筛选器**、**将消息发送到**主题、**从订阅接收消息**以及**删除主题和订阅**。 有关主题和订阅的详细信息，请参阅[后续步骤](#next-steps)一节。
+本指南演示如何从 Node.js 应用程序使用服务总线主题和订阅。 涉及的方案包括：
+
+- 创建主题和订阅 
+- 创建订阅筛选器 
+- 将消息发送到主题 
+- 从订阅接收消息
+- 删除主题和订阅 
+
+有关主题和订阅的详细信息，请参阅[后续步骤](#next-steps)一节。
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 创建一个空的 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell），或“使用 WebMatrix 创建网站”。
 
-## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用 Service Bus
+## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用应用程序
 若要使用服务总线，请下载 Node.js Azure 包。 此包包括一组用来与服务总线 REST 服务通信的库。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node 包管理器 (NPM) 可获取该程序包
-1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行接口导航到在其中创建了示例应用程序的文件夹。
-2. 在命令窗口中键入 **npm install azure**，这应会生成以下输出：
+1. 打开命令行接口，例如 PowerShell (Windows)、Terminal (Mac) 或 Bash (Unix)。
+2. 导航到创建示例应用程序的文件夹。
+3. 在命令窗口中键入 **npm install azure**，这应会生成以下输出：
 
    ```
        azure@0.7.5 node_modules\azure
@@ -65,7 +75,7 @@ Azure 模块将读取前面在执行步骤“获取凭据”时获取的连接�
 
 有关设置 Azure 云服务环境变量的示例，请参阅[使用存储的 Node.js 云服务][Node.js Cloud Service with Storage]。
 
-有关设置 Azure 网站环境变量的示例，请参阅[使用存储的 Node.js Web 应用程序][Node.js Web Application with Storage]。
+
 
 ## <a name="create-a-topic"></a>创建主题
 可以通过 **ServiceBusService** 对象处理主题。 以下代码创建 **ServiceBusService** 对象。 将它添加到靠近 **server.js** 文件顶部、用于导入 azure 模块的语句之后的位置：
@@ -74,7 +84,7 @@ Azure 模块将读取前面在执行步骤“获取凭据”时获取的连接�
 var serviceBusService = azure.createServiceBusService();
 ```
 
-通过对 ServiceBusService 对象调用 `createTopicIfNotExists`，将返回指定的主题（如果存在），否则将使用指定名称创建新主题。 以下代码使用 `createTopicIfNotExists` 创建或连接到名为 `MyTopic` 的主题：
+如果调用 ServiceBusService 对象上的 `createTopicIfNotExists`，会返回指定的主题（如果存在），否则会使用指定的名称创建一个新主题。 以下代码使用 `createTopicIfNotExists` 创建或连接到名为 `MyTopic` 的主题：
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -85,7 +95,9 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-`createServiceBusService` 方法还支持其他选项，通过这些选项可以替代默认主题设置，例如消息生存时间或最大主题大小。 以下示例将最大主题大小设置为 5GB，将生存时间设置为 1 分钟：
+`createServiceBusService` 方法还支持其他选项，通过这些选项可以替代默认主题设置，例如消息生存时间或最大主题大小。 
+
+以下示例将最大主题大小设置为 5GB，将生存时间设置为 1 分钟：
 
 ```javascript
 var topicOptions = {
@@ -107,13 +119,13 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 function handle (requestOptions, next)
 ```
 
-在对请求选项执行预处理后，该方法会调用 `next`，传递具有以下签名的回调：
+在对请求选项执行预处理后，该方法会调用 `next`，传递具有以下签名的回叫：
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-在此回调中并且在处理 `returnObject`（来自对服务器请求的响应）后，回调需要调用 next（如果存在），继续处理其他筛选器，或者调用 `finalCallback`，结束服务调用。
+在此回叫中并且在处理 `returnObject`（来自对服务器请求的响应）后，回叫必须调用 next（如果存在），继续处理其他筛选器或调用 `finalCallback` 以结束服务调用。
 
 Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码创建一个 **ServiceBusService** 对象，该对象使用 **ExponentialRetryPolicyFilter**：
 
@@ -123,15 +135,15 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="create-subscriptions"></a>创建订阅
-主题订阅也是使用 **ServiceBusService** 对象创建的。 为订阅命名，并且订阅可以具有可选筛选器，以限制传送到订阅的虚拟队列的消息集。
+主题订阅也是使用 **ServiceBusService** 对象创建的。 订阅已命名，并可具有可选筛选器，用于限制传送到订阅的虚拟队列的消息集。
 
 > [!NOTE]
-> 订阅是永久性的，并且除非删除它或删除与之相关的主题，否则订阅将一直存在。 如果应用程序包含创建订阅的逻辑，则它应首先使用 `getSubscription` 方法检查该订阅是否已经存在。
+> 除非删除它或与之相关的主题，否则订阅是永久性的。 如果应用程序包含创建订阅的逻辑，则它应首先使用 `getSubscription` 方法检查该订阅是否存在。
 >
 >
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
-**MatchAll** 筛选器是默认筛选器，在创建新订阅时未指定筛选器的情况下使用。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 **MatchAll** 筛选器。
+MatchAll 筛选器是创建订阅时使用的默认筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 MatchAll 筛选器。
 
 ```javascript
 serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
@@ -144,7 +156,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ### <a name="create-subscriptions-with-filters"></a>创建具有筛选器的订阅
 还可以创建筛选器，以确定发送到主题的哪些消息应该在特定主题订阅中显示。
 
-订阅支持的最灵活的一种筛选器是 **SqlFilter**，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
+订阅支持的最灵活的一种筛选器类型是 **SqlFilter**，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
 
 可以使用 ServiceBusService 对象的 `createRule` 方法向订阅中添加筛选器。 此方法允许向现有订阅中添加新筛选器。
 
@@ -223,14 +235,14 @@ var rule={
 }
 ```
 
-现在，当消息发送到 `MyTopic` 时，它始终会传送给订阅了 `AllMessages` 主题订阅的接收者，并且选择性地传送给订阅了 `HighMessages` 和 `LowMessages` 主题订阅的接收者（具体取决于消息内容）。
+现在，当消息发送到 `MyTopic` 时，它会传送给订阅了 `AllMessages` 主题订阅的接收者，并且选择性地传送给订阅了 `HighMessages` 和 `LowMessages` 主题订阅的接收者（具体取决于消息内容）。
 
 ## <a name="how-to-send-messages-to-a-topic"></a>如何将消息发送到主题
 要将消息发送到服务总线主题，应用程序必须使用 ServiceBusService 对象的 `sendTopicMessage` 方法。
 发送到服务总线主题的消息是 **BrokeredMessage** 对象。
 BrokeredMessage 对象具有一组标准属性（如 `Label` 和 `TimeToLive`）、一个用于保存特定于应用程序的自定义属性的字典，以及一段字符串数据正文。 应用程序可以通过将字符串值传递给 `sendTopicMessage` 设置消息正文，并且任何必需的标准属性将用默认值填充。
 
-以下示例演示如何向 `MyTopic` 发送五条测试消息。 请注意，每条消息的 `messagenumber` 属性值因循环迭代而异（这会确定接收消息的订阅）：
+以下示例演示如何向 `MyTopic` 发送五条测试消息。 每条消息的 `messagenumber` 属性值因循环迭代而异（这会确定哪些订阅接收它）：
 
 ```javascript
 var message = {
@@ -254,12 +266,12 @@ for (i = 0;i < 5;i++) {
 服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 此主题大小是在创建时定义的，上限为 5 GB。
 
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
-对 ServiceBusService 对象使用 `receiveSubscriptionMessage` 方法可从订阅接收消息。 默认情况下，消息被读取后即从订阅删除；但是可以读取（速览）并锁定消息而不将其从订阅删除，只要将可选参数 `isPeekLock` 设置为“true”即可。
+对 ServiceBusService 对象使用 `receiveSubscriptionMessage` 方法可从订阅接收消息。 默认情况下，会在读取消息后将其从订阅删除。 但是，可以将可选参数 `isPeekLock` 设置为“true”以读取（速览）并锁定消息，而不将其从订阅中删除。
 
-在接收过程中读取并删除消息的默认行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“将使用”，因此当应用程序重启并重新开始使用消息时，它会丢失在发生崩溃前使用的消息。
+在接收过程中读取并删除消息的默认行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“将使用”，因此当应用程序重启并重新开始使用消息时，它会丢失在发生崩溃前使用的消息。
 
-如果将 `isPeekLock` 参数设置为“true”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。
-应用程序处理完该消息（或将它可靠地存储起来留待将来处理）后，通过调用 **deleteMessage** 方法并提供要删除的消息作为参数来完成接收过程的第二阶段。 **deleteMessage** 方法会将消息标记为已使用，并将其从订阅中删除。
+如果将 `isPeekLock` 参数设置为“true”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序。 服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用者接收它，并将该消息返回给应用程序。
+应用程序处理该消息（或将它可靠地存储起来留待将来处理）后，通过调用 deleteMessage 方法来完成接收过程的第二阶段，并将要删除的消息作为参数传递。 deleteMessage 方法会将消息标记为已使用，并将其从订阅中删除。
 
 以下示例演示如何使用 `receiveSubscriptionMessage` 接收和处理消息。 该示例先从“LowMessages”订阅接收并删除一条消息，然后将 `isPeekLock` 设置为“true”，从“HighMessages”订阅接收一条消息。 最后使用 `deleteMessage` 删除该消息：
 
@@ -285,11 +297,11 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 ServiceBusService 对象调用 `unlockMessage` 方法。 这会导致服务总线解锁订阅中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 ServiceBusService 对象调用 `unlockMessage` 方法。 此方法会导致服务总线解锁订阅中的消息并使其能够重新被接收。 在此实例中，消息被相同的使用方应用程序或另一个使用方应用程序重新接收。
 
-另外，还存在与订阅中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线会自动解锁该消息并使其可再次被接收。
+订阅中也有一个超时与锁定的消息关联。 如果应用程序无法在锁定超时期满前处理消息（例如，如果应用程序发生故障），服务总线会自动解锁消息，让它再次可供接收。
 
-如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此情况通常称作*至少处理一次*，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可以通过使用消息的 **MessageId** 属性来实现，该属性在多次传送尝试中保持不变。
+如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。 也就是说，每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应该向应用程序添加逻辑来处理重复消息传送。 可以使用消息的 MessageId 属性，该属性在各次传送尝试中保持不变。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 主题和订阅具有持久性，必须通过 [Azure 门户][Azure portal]或以编程方式显式删除。
@@ -328,4 +340,4 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [创建 Node.js 应用程序并将其部署到 Azure 网站]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node.js Web Application with Storage]:../cosmos-db/table-storage-cloud-service-nodejs.md
+

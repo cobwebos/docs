@@ -1,22 +1,22 @@
 ---
 title: 计划 Azure 时序见解环境的缩放 | Microsoft Docs
-description: 本文介绍了在计划 Azure 时序见解环境（包括存储容量、数据保留、入口容量和监控）时如何遵循最佳做法。
+description: 本文介绍了在计划 Azure 时序见解环境（包括存储容量、数据保留、入口容量、监视和业务灾难恢复 (BCDR)）时如何遵循最佳做法。
 services: time-series-insights
 ms.service: time-series-insights
-author: jasonwhowell
+author: ashannon7
 ms.author: jasonh
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 4da62d808caf1e88aef8e67f91815b959a19af0f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f0f414e43231fc6d873d639902fd4f71e48f1002
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751163"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>计划 Azure 时序见解环境
 
@@ -94,8 +94,18 @@ ms.lasthandoff: 04/28/2018
 
 请注意，参考数据不以追溯方式进行联接。 这意味着在配置并上传数据后，只会将当前和将来的入口数据匹配并联接到参考数据集。  如果打算向 TSI 发送大量历史数据并且不先在 TSI 中上传或创建参考数据，则可能必须重做你的工作（这意味着很无趣）。  
 
-若要详细了解如何在 TSI 中创建、上传和管理参考数据，请转至“参考数据”文档 [文档]（https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)）。
+若要详细了解如何在 TSI 中创建、上传和管理参考数据，请转至“参考数据”文档[文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)。
 
+## <a name="business-disaster-recovery"></a>业务灾难恢复
+作为一项 Azure 服务，时序见解在 Azure 区域级别使用冗余来提供高可用性 (HA)，而解决方案不需要执行任何额外的工作。 此外，Microsoft Azure 平台还包含了相关功能来帮助你构建提供灾难恢复 (DR) 功能或跨区域可用性的解决方案。 若要为设备或用户提供全局性的跨区域高可用性，请利用这些 Azure DR 功能。 [Azure 业务持续性技术指南](../resiliency/resiliency-technical-guidance.md)一文描述了针对业务连续性和 DR 的 Azure 内置功能。 [Azure 应用程序的灾难恢复和高可用性][Azure 应用程序的灾难恢复和高可用性]一文针对 Azure 应用程序的 HA 和 DR 实现策略提供了体系结构指导。
+
+时序见解没有内置业务灾难恢复 (BCDR) 功能。  但是，需要 BCDR 的客户仍然可以实现恢复策略。 在备份 Azure 区域中创建第二个时序见解环境，然后利用第二个专用使用者组，根据主要事件源的 BCDR 指南将事件从该事件源发送到此辅助环境。  
+
+1.  在第二个区域中创建环境。  在[此处](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started)了解有关创建时序见解环境的更多信息。
+2.  为事件源创建第二个专用使用者组，并将该事件源连接到新环境。  请务必指定第二个专用使用者组。  可以参考 [IoT 中心文档](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)或[事件中心文档](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access)了解有关详细信息。
+3.  如果主要区域在灾难事件期间发生故障，请将操作切换到备用时序见解环境。  
+
+若要了解有关 IoT 中心的 BCDR 策略的详细信息，请访问[此处](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr)。  若要了解有关事件中心的 BCDR 策略的详细信息，请访问[此处](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr)。  
 
 ## <a name="next-steps"></a>后续步骤
 - [如何添加事件中心事件源](time-series-insights-how-to-add-an-event-source-eventhub.md)

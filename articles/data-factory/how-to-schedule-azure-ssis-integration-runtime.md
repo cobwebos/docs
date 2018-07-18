@@ -3,35 +3,37 @@ title: 如何计划 Azure SSIS 集成运行时 | Microsoft Docs
 description: 本文介绍如何使用 Azure 自动化和数据工厂来计划 Azure SSIS 集成运行时的启动和停止。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
-ms.date: 05/18/2018
-ms.author: douglasl
-ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.date: 06/01/2018
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360319"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050601"
 ---
-# <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>如何计划 Azure SSIS 集成运行时的启动和停止 
-运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 下面是本文所述的概要步骤：
+# <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure SSIS 集成运行时
+本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们通常希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。
+
+例如，可以使用 Webhook 将 Web 活动创建到 Azure 自动化 PowerShell runbook，并在它们之间链接执行 SSIS 包活动。 Web 活动可以在运行包之前和之后及时启动和停止 Azure-SSIS IR。 有关执行 SSIS 包活动的详细信息，请参阅[在 Azure 数据工厂中使用 SSIS 活动运行 SSIS 包](how-to-invoke-ssis-package-ssis-activity.md)。
+
+## <a name="overview-of-the-steps"></a>步骤概述
+
+下面是本文所述的概要步骤：
 
 1. **创建并测试 Azure 自动化 Runbook。** 此步骤使用脚本创建一个 PowerShell Runbook 用于启动或停止 Azure SSIS IR。 然后，在“启动”和“停止”方案中测试该 Runbook，并确认 IR 是否已启动或停止。 
 2. **为 Runbook 创建两个计划。** 对于第一个计划，请在 Runbook 中将“启动”配置为操作。 对于第二个计划，请在 Runbook 中将“停止”配置为操作。 针对这两个计划，指定运行 Runbook 的频率。 例如，可将第一个 Runbook 计划为在每天的上午 8 点运行，将第二个 Runbook 计划为在每天的晚上 11 点运行。 第一个 Runbook 在运行时将启动 Azure SSIS IR。 第二个 Runbook 在运行时将停止 Azure SSIS IR。 
 3. **为 Runbook 创建两个 Webhook**，一个用于“启动”操作，另一个用于“停止”操作。 在数据工厂管道中配置 Web 活动时，将使用这些 Webhook 的 URL。 
 4. **创建数据工厂管道**。 创建的管道由三个活动组成。 第一个 **Web** 活动调用第一个 Webhook 来启动 Azure SSIS IR。 **存储过程**活动运行一个 SQL 脚本来运行 SSIS 包。 第二个 **Web** 活动停止 Azure SSIS IR。 有关使用存储过程活动从数据工厂管道调用 SSIS 包的详细信息，请参阅[调用 SSIS 包](how-to-invoke-ssis-package-stored-procedure-activity.md)。 然后，创建一个计划触发器，用于将管道计划为按指定的频率运行。
 
-> [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[在版本 1 中使用存储过程活动调用 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
-
- 
 ## <a name="prerequisites"></a>先决条件
 如果尚未预配 Azure SSIS 集成运行时，请遵照[此教程](tutorial-create-azure-ssis-runtime-portal.md)中的说明预配。 
 
@@ -74,11 +76,11 @@ ms.locfileid: "34360319"
 
     ![验证所需的模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  转到 [AzureRM.DataFactoryV2 0.5.2 模块](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/0.5.2)的 PowerShell 库，选择“部署到 Azure 自动化”，选择“自动化帐户”，然后选择“确定”。 返回查看左侧菜单“共享资源”部分中的“模块”并等待，直到看到 AzureRM.DataFactoryV2 0.5.2 模块的“状态”更改为“可用”。
+2.  转到 [AzureRM.DataFactoryV2 模块](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/)的 PowerShell 库，选择“部署到 Azure 自动化”，选择自动化帐户，然后选择“确定”。 返回查看左侧菜单“共享资源”部分中的“模块”并等待，直到看到 AzureRM.DataFactoryV2 模块的“状态”更改为“可用”。
 
     ![验证数据工厂模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  转到 [AzureRM.Profile 4.5.0 模块](https://www.powershellgallery.com/packages/AzureRM.profile/4.5.0)的 PowerShell 库，单击“部署到 Azure 自动化”，选择“自动化帐户”，然后选择“确定”。 返回查看左侧菜单“共享资源”部分中的“模块”并等待，直到看到 AzureRM.Profile 4.5.0 模块的“状态”更改为“可用”。
+3.  转到 [AzureRM.Profile 模块](https://www.powershellgallery.com/packages/AzureRM.profile/)的 PowerShell 库，单击“部署到 Azure 自动化”，选择自动化帐户，然后选择“确定”。 返回查看左侧菜单“共享资源”部分中的“模块”并等待，直到看到 AzureRM.Profile 模块的“状态”更改为“可用”。
 
     ![验证配置文件模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
@@ -240,7 +242,7 @@ ms.locfileid: "34360319"
  
    Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误，请更改数据工厂的名称（例如改为 yournameMyAzureSsisDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
-       `Data factory name “MyAzureSsisDataFactory” is not available`
+       `Data factory name �MyAzureSsisDataFactory� is not available`
 3. 选择要在其中创建数据工厂的 Azure **订阅**。 
 4. 对于**资源组**，请执行以下步骤之一：
      
@@ -248,7 +250,7 @@ ms.locfileid: "34360319"
       - 选择“新建”，并输入资源组的名称。   
          
       若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-4. 选择“V2 (预览)”作为**版本**。
+4. 选择“V2”作为“版本”。
 5. 选择数据工厂的**位置**。 列表中只会显示支持创建数据工厂的位置。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。
@@ -382,6 +384,9 @@ ms.locfileid: "34360319"
     ![触发器运行](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
 
 ## <a name="next-steps"></a>后续步骤
+请参阅以下博客文章：
+-   [使用 ADF 管道中的 SSIS 活动来实现 ETL/ELT 工作流的现代化并对其进行扩展](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)
+
 参阅 SSIS 文档中的以下文章： 
 
 - [在 Azure 上部署、运行和监视 SSIS 包](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   

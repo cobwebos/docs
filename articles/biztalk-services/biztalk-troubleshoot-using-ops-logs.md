@@ -1,11 +1,11 @@
 ---
-title: "利用操作日志对 BizTalk 服务进行故障排除 | Microsoft Docs"
-description: "利用操作日志对 BizTalk 服务进行故障排除。 MABS, WABS"
+title: 利用操作日志对 BizTalk 服务进行故障排除 | Microsoft Docs
+description: 利用操作日志对 BizTalk 服务进行故障排除。 MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 1081a9c6-58cc-4a76-8ac8-11e5e7a6ea27
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102012"
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk 服务：利用操作日志进行故障排除
 

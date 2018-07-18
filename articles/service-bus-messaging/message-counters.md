@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线消息计数 | Microsoft Docs"
-description: "检索 Azure Service Bus 消息计数。"
+title: Azure 服务总线消息计数 | Microsoft Docs
+description: 检索 Azure Service Bus 消息计数。
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197725"
 ---
 # <a name="message-counters"></a>消息计数器
 

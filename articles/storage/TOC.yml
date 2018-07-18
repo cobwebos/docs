@@ -8,6 +8,8 @@
       href: ./common/storage-decide-blobs-files-disks.md
 - name: Blob
   href: ./blobs/storage-blobs-introduction.md
+- name: Data Lake Storage Gen2
+  href: ./data-lake-storage/introduction.md
 - name: 文件
   href: ./files/storage-files-introduction.md
 - name: 队列

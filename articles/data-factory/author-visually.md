@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a226402f16f98c830c1e1cf34653b8f6513f06b4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265282"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。 可通过两种方法使用 UX 执行视觉对象创作：
@@ -46,8 +47,8 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>使用 Azure 数据工厂配置 VSTS Git 存储库
 用户可通过两种方法使用数据工厂配置 VSTS GIT 存储库。
 
-<a name="method1"></a>
-#### <a name="configuration-method-1-lets-get-started-page"></a>配置方法 1：“开始使用”页面
+#### <a name="method1"></a> 配置方法 1：“开始使用”页面
+
 在 Azure 数据工厂，转到**让我们开始吧**页。 选择“配置代码存储库”：
 
 ![VSTS 代码存储库配置](media/author-visually/configure-repo.png)
@@ -62,11 +63,11 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 |:--- |:--- |:--- |
 | **存储库类型** | VSTS 代码存储库的类型。<br/>**注意**：当前不支持 GitHub。 | Visual Studio Team Services Git |
 | **Azure Active Directory** | Azure AD 租户的名称。 | <your tenant name> |
-| **Visual Studio Team Services 帐户** | VSTS 帐户名称。 可以在 `https://{account name}.visualstudio.com` 找到 VSTS 帐户名称。 可以[登录到 VSTS 帐户](https://www.visualstudio.com/team-services/git/)并访问 Visual Studio 配置文件以查看存储库和项目 | \<你的帐户名> |
-| **ProjectName** | VSTS 项目名称。 可以在 `https://{account name}.visualstudio.com/{project name}` 找到 VSTS 项目名称。 | \<你的 VSTS 项目名称> |
-| **RepositoryName** | VSTS 代码存储库名称。 VSTS 项目包含 Git 存储库，随着项目的发展来管理源代码。 要么创建一个新的存储库，要么使用项目中已有的存储库。 | \<你的 VSTS 代码存储库名称> |
-| **协作分支** | 将用于发布的 VSTS 协作分支。 默认为 `master`。 如果希望从其他分支发布资源，可对其进行更改。 | \<你的协作分支名称> |
-| **根文件夹** | VSTS 协作分支中的根文件夹。 | \<你的根文件夹名称> |
+| **Visual Studio Team Services 帐户** | VSTS 帐户名称。 可以在 `https://{account name}.visualstudio.com` 找到 VSTS 帐户名称。 可以[登录到 VSTS 帐户](https://www.visualstudio.com/team-services/git/)并访问 Visual Studio 配置文件以查看存储库和项目 | <your account name> |
+| **ProjectName** | VSTS 项目名称。 可以在 `https://{account name}.visualstudio.com/{project name}` 找到 VSTS 项目名称。 | <your VSTS project name> |
+| **RepositoryName** | VSTS 代码存储库名称。 VSTS 项目包含 Git 存储库，随着项目的发展来管理源代码。 要么创建一个新的存储库，要么使用项目中已有的存储库。 | <your VSTS code repository name> |
+| **协作分支** | 将用于发布的 VSTS 协作分支。 默认为 `master`。 如果希望从其他分支发布资源，可对其进行更改。 | <your collaboration branch name> |
+| **根文件夹** | VSTS 协作分支中的根文件夹。 | <your root folder name> |
 | 确认选中“将现有的数据工厂资源导入存储库”选项。 | 指定是否从 UX 导入现有数据工厂资源**创作画布**入 VSTS Git 存储库中。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>配置方法 2：UX 创作画布
@@ -75,6 +76,14 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 此时将显示配置窗格。 有关配置设置的详细信息，请参阅中的说明<a href="#method1">配置方法 1</a>。
 
 ![配置 UX 创作的代码存储库设置](media/author-visually/configure-repo-2.png)
+
+#### <a name="switch-to-a-different-git-repo"></a>切换到不同 Git 存储库
+
+若要切换到不同 Git 存储库，请在“数据工厂概述”页的右上角找到该图标，如以下屏幕截图所示。 如果看不到该图标，请清除本地浏览器缓存。 选择该图标以删除与当前存储库的关联。
+
+删除与当前存储库的关联后，可以将 Git 设置配置为使用不同的存储库。 然后，可以将现有的数据工厂资源导入到新存储库。
+
+![删除与当前 Git 存储库的关联。](media/author-visually/remove-repo.png)
 
 ### <a name="use-version-control"></a>使用版本控制
 版本控制（也称为_源代码管理_）系统允许开发人员协作处理代码并跟踪对基本代码所做的更改。 源代码管理是用于多开发人员项目的重要工具。

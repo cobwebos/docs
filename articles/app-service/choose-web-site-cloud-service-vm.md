@@ -15,17 +15,18 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f930cec984a8b92e00ec613ce3bba91a40518911
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f7396ac761ce5eeb5a671d3b04aabf944c361b8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597920"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure 应用服务、虚拟机、Service Fabric 和云服务的比较
 ## <a name="overview"></a>概述
 Azure 提供几种托管网站的方式：[Azure 应用服务][Azure App Service]、[虚拟机][Virtual Machines]、[Service Fabric][Service Fabric] 和[云服务][Cloud Services]。 本文可帮助你了解这几种方式，并针对 Web 应用程序做出正确的选择。
 
-Azure 应用服务是大多数 Web 应用的最佳选择。 部署和管理都已集成到平台，站点可以快速缩放以应对高流量负载，而内置的负载均衡和流量管理器可以实现高可用性。 可使用[联机迁移工具](https://www.migratetoazure.net/)将现有站点轻松迁移到 Azure 应用服务、使用 Web 应用程序库中的开源应用，还可使用所选框架和工具新建站点。 [WebJobs][WebJobs] 功能使得将后台作业处理添加到应用服务 Web 应用变得轻松。
+Azure 应用服务是大多数 Web 应用的最佳选择。 部署和管理都已集成到平台，站点可以快速缩放以应对高流量负载，而内置的负载均衡和流量管理器可以实现高可用性。 可使用[联机迁移工具][migrate-tool]将现有站点轻松迁移到 Azure 应用服务、使用 Web 应用程序库中的开源应用，还可使用所选框架和工具新建站点。 [WebJobs][WebJobs] 功能使得将后台作业处理添加到应用服务 Web 应用变得轻松。
 
 如果要创建新应用或重新编写现有应用以使用微服务体系结构，Service Fabric 是不错的选择。 在共享计算机池上运行的应用可以从小规模开始，根据需要扩展为包含成百上千个计算机的大规模。 有状态服务可轻松地以一致且可靠的方式存储应用状态，而 Service Fabric 会自动管理服务分区、缩放和可用性。  Service Fabric 也支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 的 WebAPI。  与应用服务相比，Service Fabric 也能更好地控制或直接访问基础结构。 可以远程登录服务器，或配置服务器启动任务。 云服务的控制和易用程度类似于 Service Fabric，但它现在是旧版服务，因此建议将 Service Fabric 用于新的开发。
 
@@ -97,7 +98,7 @@ Azure 应用服务是托管公司网站的理想解决方案。 通过 Web 应�
 * 与 Azure Active Directory 集成
 
 ### <a id="iis6"></a> 我拥有在 Windows Server 2003 上运行的 IIS6 应用程序。
-Azure 应用服务可轻松避免在迁移较旧的 IIS6 应用程序时带来的基础结构成本。 Microsoft 已经创建[易于使用的迁移工具和详细的迁移指南](https://www.migratetoazure.net/)，可利用它检查兼容性，并确定需要进行的任何更改。 因为与 Visual Studio、TFS 和常见的 CMS 工具集成，所以能够更轻松地将 IIS6 应用程序直接部署到云中。 部署后，Azure 门户可以提供强大的管理工具，帮助你通过缩减规模管理成本，并根据需要扩展规模来满足业务要求。 使用迁移工具可以：
+Azure 应用服务可轻松避免在迁移较旧的 IIS6 应用程序时带来的基础结构成本。 Microsoft 已经创建[易于使用的迁移工具和详细的迁移指南][migrate-tool]，可利用这些工具和指南检查兼容性，并确定需要进行的任何更改。 因为与 Visual Studio、TFS 和常见的 CMS 工具集成，所以能够更轻松地将 IIS6 应用程序直接部署到云中。 部署后，Azure 门户可以提供强大的管理工具，帮助你通过缩减规模管理成本，并根据需要扩展规模来满足业务要求。 使用迁移工具可以：
 
 * 轻松快速地将旧版 Windows Server 2003 Web 应用程序迁移到云中。
 * 选择在本地保留附加的 SQL 数据库，以创建混合应用程序。
@@ -191,3 +192,4 @@ Azure 应用服务是适合该情况的强大解决方案，原因是其可免�
 <!-- IMG List -->
 
 [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_3.png
+[migrate-tool]: https://www.movemetothecloud.net/

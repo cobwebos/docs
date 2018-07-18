@@ -1,13 +1,13 @@
 ---
-title: "配置用于 Azure ExpressRoute Microsoft 对等互连的路由筛选器：CLI | Microsoft Docs"
-description: "本文介绍如何使用 Azure CLI 配置用于 Microsoft 对等互连的路由筛选器"
+title: 配置用于 Azure ExpressRoute Microsoft 对等互连的路由筛选器：CLI | Microsoft Docs
+description: 本文介绍如何使用 Azure CLI 配置用于 Microsoft 对等互连的路由筛选器
 documentationcenter: na
 services: expressroute
 author: anzaman
 manager: ganesr
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23013192"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure CLI
 

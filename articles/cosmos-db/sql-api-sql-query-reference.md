@@ -4,20 +4,18 @@ description: Azure Cosmos DB SQL 查询语言参考文档。
 services: cosmos-db
 author: LalithaMV
 manager: kfile
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 83ee1d37dd6d79ce26ae95cd1486298f0210f661
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 13337e7979a378382df5e62661b04bac8dffa689
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798825"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL 语法参考
 
@@ -246,7 +244,7 @@ JOIN 示例 1，具有 2 个源：
   
     若 `input_alias1 = A,`，表示集 {1, 2}  
   
-    若 `input_alias1 = B,`，表示集 {3}  
+    若 `input_alias1 = B,`，表示 {3}  
   
     若 `input_alias1 = C,`，表示集 {4, 5}  
   
@@ -489,7 +487,7 @@ ORDER BY <sort_specification>
   
  一元运算符：  
   
-|**Name**|运算符|**详细信息**|  
+|**名称**|运算符|**详细信息**|  
 |-|-|-|  
 |算术|+<br /><br /> -|返回数字值。<br /><br /> 位求反。 返回求反后的数字值。|  
 |位|~|一的补数。 返回数字值的补数。|  
@@ -497,7 +495,7 @@ ORDER BY <sort_specification>
   
  二进制运算符：  
   
-|**Name**|运算符|**详细信息**|  
+|**名称**|运算符|**详细信息**|  
 |-|-|-|  
 |算术|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加。<br /><br /> 减。<br /><br /> 乘。<br /><br /> 除。<br /><br /> 取模。|  
 |位|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|位或。<br /><br /> 位与。<br /><br /> 位异或。<br /><br /> 左移。<br /><br /> 右移。<br /><br /> 补零右移。|  

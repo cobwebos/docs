@@ -1,24 +1,25 @@
 ---
-title: "Azure 服务总线主题和订阅入门 | Microsoft Docs"
-description: "编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。"
+title: Azure 服务总线主题和订阅入门 | Microsoft Docs
+description: 编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/6/2017
+ms.date: 07/03/2018
 ms.author: sethm
-ms.openlocfilehash: aa75ac48d650f28d4aaeb612f2900d705cf71b5b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8916ccb430da6bea66de3894201a11a70bb45df9
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38298956"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
@@ -424,11 +425,11 @@ ms.lasthandoff: 02/21/2018
    
     ![主题长度][topic-message-receive]
 
-祝贺你！ 你现在已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
+祝贺你！ 现已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 [GitHub 存储库](https://github.com/Azure/azure-service-bus/tree/master/samples)中的示例，了解服务总线消息传送的一些更高级的功能。
+查看服务总线 [GitHub 存储库](https://github.com/Azure/azure-service-bus/tree/master/samples)中的示例，了解服务总线消息传送的一些更高级的功能。
 
 <!--Image references-->
 

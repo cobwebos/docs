@@ -1,23 +1,25 @@
 ---
-title: "如何向自定义开发的应用程序授予权限 | Microsoft Docs"
-description: "如何使用 Azure AD 门户或 URL 参数向自定义开发的应用程序授予权限"
+title: 如何向自定义开发的应用程序授予权限 | Microsoft Docs
+description: 如何使用 Azure AD 门户或 URL 参数向自定义开发的应用程序授予权限
 services: active-directory
-documentationcenter: 
-author: ajamess
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 0f13efd5e629bde592a3ab3a3e2db4a22180b5bb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.openlocfilehash: 3310a08047700a577c5c6cbada90e575fcd12089
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333698"
 ---
 # <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>如何向自定义开发的应用程序授予权限
 

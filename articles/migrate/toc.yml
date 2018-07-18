@@ -14,7 +14,7 @@
       href: concepts-collector.md
     - name: 评估计算
       href: concepts-assessment-calculation.md
-    - name: 依赖项可视化
+    - name: 关于依赖项可视化
       href: concepts-dependency-visualization.md
 - name: 操作指南
   items:
@@ -22,12 +22,30 @@
       items:
         - name: 1. Contoso - 迁移概述
           href: contoso-migration-overview.md
-        - name: 2. Contoso - 设置 Azure 基础结构
+        - name: 2. Contoso - 部署 Azure 基础结构
           href: contoso-migration-infrastructure.md
         - name: 3. Contoso - 评估要迁移到 Azure 的本地资源
-          href: migrate-scenarios-assessment.md
-        - name: 4. Contoso - 在 Azure VM 和 Azure SQL 托管实例上重新托管
-          href: migrate-scenarios-lift-and-shift.md
+          href: contoso-migration-assessment.md
+        - name: 4. Contoso - 在 Azure VM 和 Azure SQL 托管实例上重新托管应用
+          href: contoso-migration-rehost-vm-sql-managed-instance.md
+        - name: 5. Contoso - 在 Azure VM 上重新托管应用
+          href: contoso-migration-rehost-vm.md
+        - name: 6. Contoso - 在 Azure VM 和 Azure SQL AlwaysOn 可用性组上重新托管应用
+          href: contoso-migration-rehost-vm-sql-ag.md
+        - name: 7. Contoso - 在 Azure VM 上重新托管 Linux 应用
+          href: contoso-migration-rehost-linux-vm.md
+        - name: 8. Contoso - 在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用
+          href: contoso-migration-rehost-linux-vm-mysql.md
+        - name: 9. Contoso - 基于 Azure Web 应用和 Azure SQL 数据库重构应用
+          href: contoso-migration-refactor-web-app-sql.md
+        - name: 10. Contoso - 基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用
+          href: contoso-migration-refactor-linux-app-service-mysql.md
+        - name: 11. Contoso - 从 TFS 迁移到 VSTS
+          href: contoso-migration-tfs-vsts.md
+        - name: 12. Contoso - 在 Azure 容器和 Azure SQL 数据库上重塑应用架构
+          href: contoso-migration-rearchitect-container-sql.md
+        - name: 13. Contoso - 在 Azure 中重新生成应用
+          href: contoso-migration-rebuild.md
     - name: 发现和评估大型环境
       href: how-to-scale-assessment.md
     - name: 将计算机分组
@@ -48,3 +66,5 @@
       href: 'https://azure.microsoft.com/migrate'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: 常见问题解答
+      href: resources-faq.md

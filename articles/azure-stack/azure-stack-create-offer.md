@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack 中创建产品/服务 | Microsoft Docs
-description: 作为云管理员，了解如何在 Azure Stack 中为用户创建产品/服务。
+title: 在 Azure Stack 中创建套餐 | Microsoft Docs
+description: 作为云管理员，了解如何在 Azure Stack 中为用户创建套餐。
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,53 +12,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 07/2/2018
 ms.author: brenduns
-ms.openlocfilehash: 6a59d0c8144492ef907e5c395f05e4e8a16678a5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345883"
 ---
-# <a name="create-an-offer-in-azure-stack"></a>在 Azure Stack 中创建产品/服务
+# <a name="create-an-offer-in-azure-stack"></a>在 Azure Stack 中创建套餐
 
-[产品/服务](azure-stack-key-features.md)是提供者提供给用户购买或订阅的一个或多个计划的组合。 本文档演示如何创建包含在上一步中[创建的计划](azure-stack-create-plan.md)的产品/服务。 订阅方使用此产品/服务可以预配虚拟机。
+[套餐](azure-stack-key-features.md)是提供者提供给用户购买或订阅的一个或多个计划的组合。 本文档介绍如何创建包含[创建的计划](azure-stack-create-plan.md)的套餐。 订阅方可以使用此套餐设置虚拟机。
 
-1. 登录到 Azure 堆栈管理员门户 (https://adminportal.local.azurestack.external) > 单击**新建** > **租户提供 + 计划** > **提供**。
+1. 登录到 Azure Stack 管理员门户 (https://adminportal.local.azurestack.external)，选择“新建” > “租户套餐 + 计划” > “套餐”。
 
-   ![](media/azure-stack-create-offer/image01.png)
-2. 在“新建产品/服务”窗格中，填写**显示名称**和**资源名称**，然后选择一个新的或现有**资源组**。 显示名称是产品/服务的友好名称。 此友好名称是用户在订阅时可看到的有关该产品/服务的唯一信息。 因此，请务必使用直观名称，以帮助用户了解该产品/服务附带了什么功能。 只有管理员可以看到资源名称。 管理员使用此名称将该产品/服务作为 Azure 资源管理器资源处理。
+   ![创建产品](media/azure-stack-create-offer/image01.png)
+  
+2. 在“新建套餐”下，输入“显示名称”和“资源名称”，然后在“资源组”下选择“新建”或“使用现有项”。 显示名称是产品/服务的友好名称。 此友好名称是用户在订阅套餐时可看到的有关该套餐的唯一信息。 请使用直观名称，以帮助用户了解该套餐附带了什么功能。 只有管理员可以看到资源名称。 管理员使用此名称将该产品/服务作为 Azure 资源管理器资源处理。
 
-   ![](media/azure-stack-create-offer/image01a.png)
-3. 单击“基本计划”以打开“计划”窗格，选择要包含该产品/服务的计划，然后单击“选择”。 单击“创建”以创建该产品/服务。
+   ![新建套餐](media/azure-stack-create-offer/image01a.png)
+  
+3. 选择“基本计划”打开“计划”。 选择要包含在套餐中的计划，然后选择“选择”。 若要创建套餐，请选择“创建”。
 
-   ![](media/azure-stack-create-offer/image02.png)
-4. 在创建后的产品/服务，你可以更改其状态。 必须将提供*公共*用户它们在订阅时获得的完整视图。 产品/服务可以是：
+   ![选择计划](media/azure-stack-create-offer/image02.png)
+  
+4. 创建套餐后，可以更改其状态。 必须将产品/服务设为“公共”，用户才能在订阅时获得完整视图。 产品/服务可以是：
+
    - **公共**：对用户可见。
-   - **私有**： 仅可见云管理员。 在以下情况下有用：起草计划或产品/服务时，或者如果云管理员想要[为用户创建每个订阅](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator)。
+   - **专用**：仅对云管理员可见。 起草计划或套餐时，或者当云管理员想要[为用户创建每个订阅](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator)时，此设置非常有用。
    - **已解除授权**：已对新订阅方关闭。 云管理员可以使用已解除授权来防止将来订阅，但不影响当前订阅方。
 
    > [!TIP]  
-   > 产品/服务的更改不会对用户立即可见。 若要查看所做的更改，用户可能必须注销并再次登录用户门户，以便查看新的产品/服务。 
+   > 套餐的更改不会对用户立即可见。 若要查看所做的更改，用户可能需要先注销，然后重新登录到用户门户，这样才能看到新的套餐。
 
-   若要更改产品/服务的状态： 
+   若要更改套餐的状态：
 
-   - **1803 及更高版本**:  
-     在提议概述边栏选项卡，单击**可访问性状态**，选择你想要使用，如的状态*公共*，然后单击**保存**。 
+   - **1803 和更高版本**：  
+     在套餐的“概述”中，选择“访问性状态”。 选择要使用的状态（例如“公共”），然后选择“保存”。
  
-     ![选择可访问性状态](media/azure-stack-create-offer/change-state.png) 
+     ![选择辅助功能状态](media/azure-stack-create-offer/change-state.png)
 
-     或者，你访问某项服务后你可以转到**提供设置**，然后选择**可访问性状态**的状态更改。 
+     或者，在访问套餐之后，可以转到“套餐设置”。 选择“访问性状态”以更改状态。
 
-   - **之前的版本 1803年**:  
-     单击“所有资源”，搜索新产品/服务，单击该新产品/服务，单击“更改状态”，然后单击“公共”。
+   - **低于 1803 的版本**：  
+     选择“所有资源”，搜索新套餐，然后选择新套餐。 依次选择“更改状态”、“公共”。
 
-  
-   > [!NOTE] 
-   > 你还可以使用 PowerShell 创建默认提供程序、 计划和配额。 有关详细信息，请参阅[Azure 堆栈服务管理员自述](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin)。
-   >
+   > [!NOTE]
+   > 还可以使用 PowerShell 来创建默认套餐、计划和配额。 有关详细信息，请参阅[Azure Stack PowerShell 模块 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0)。
 
+## <a name="next-steps"></a>后续步骤
 
-### <a name="next-steps"></a>后续步骤
-[创建订阅](azure-stack-subscribe-plan-provision-vm.md)      
-[预配虚拟机](azure-stack-provision-vm.md)
+- [创建订阅](azure-stack-subscribe-plan-provision-vm.md)
+- [预配虚拟机](azure-stack-provision-vm.md)

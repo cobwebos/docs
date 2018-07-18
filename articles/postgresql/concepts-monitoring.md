@@ -1,6 +1,6 @@
 ---
-title: "在 Azure Database for PostgreSQL 中进行监视"
-description: "本文介绍用于对 Azure Database for PostgreSQL 进行监视并发出警报的指标，包括 CPU、存储和连接统计信息。"
+title: 在 Azure Database for PostgreSQL 中进行监视
+description: 本文介绍用于对 Azure Database for PostgreSQL 进行监视并发出警报的指标，包括 CPU、存储和连接统计信息。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687602"
 ---
 # <a name="monitoring-in-azure-database-for-postgresql"></a>在 Azure Database for PostgreSQL 中进行监视
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解为 PostgreSQL 服务器提供支持的资源的行为。 

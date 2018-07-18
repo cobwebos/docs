@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线消息浏览 | Microsoft Docs"
-description: "浏览和速览服务总线消息"
+title: Azure 服务总线消息浏览 | Microsoft Docs
+description: 浏览和速览服务总线消息
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28196614"
 ---
 # <a name="message-browsing"></a>消息浏览
 

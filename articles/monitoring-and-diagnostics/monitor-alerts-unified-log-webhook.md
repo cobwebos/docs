@@ -1,24 +1,19 @@
 ---
-title: 用于 Azure 警报中日志警报的 Webhook 操作 | Microsoft Docs
+title: 用于 Azure 警报中日志警报的 Webhook 操作
 description: 本文介绍了使用 Log Analytics 或 application insights 的日志警报规则如何作为 HTTP Webhook 推送数据，以及可能的不同自定义设置的详细信息。
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 28c8e6ab6a23a46bdea31c71b08b9c6a28d1be33
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: alerts
+ms.openlocfilehash: 304476e2d6862fbb6a859ae6fefe96d177b1111b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264249"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建警报](monitor-alerts-unified-usage.md)时，可以选择[使用操作组配置](monitoring-action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
@@ -47,11 +42,11 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 | Severity |#severity |为触发的日志警报设置的严重性。 |
 | AlertThresholdOperator |#thresholdoperator |警报规则的阈值运算符。  *大于*或*小于*。 |
 | AlertThresholdValue |#thresholdvalue |警报规则的阈值。 |
-| LinkToSearchResults |#linktosearchresults |指向 Log Analytics 日志搜索的链接，该搜索会从创建警报的查询返回记录。 |
+| LinkToSearchResults |#linktosearchresults |指向 Analytics 门户的链接，该门户会从创建警报的查询返回记录。 |
 | ResultCount |#searchresultcount |搜索结果中的记录数。 |
-| 搜索时间间隔结束时间 |#searchintervalendtimeutc |查询结束时间（UTC 格式）。 |
-| 搜索时间间隔 |#searchinterval |警报规则的时间范围。 |
-| 搜索时间间隔开始时间 |#searchintervalstarttimeutc |查询开始时间（UTC 格式）。 
+| 搜索时间间隔结束时间 |#searchintervalendtimeutc |查询结束时间 (UTC)，格式 - mm/dd/yyyy HH:mm:ss AM/PM。 |
+| 搜索时间间隔 |#searchinterval |警报规则的时间范围，格式 - HH:mm:ss。 |
+| 搜索时间间隔开始时间 |#searchintervalstarttimeutc |查询开始时间 (UTC)，格式 - mm/dd/yyyy HH:mm:ss AM/PM。 
 | SearchQuery |#searchquery |警报规则所使用的日志搜索查询。 |
 | SearchResults |"IncludeSearchResults": true|如果在自定义 JSON Webhook 定义中添加了 "IncludeSearchResults": true 作为顶级属性，则查询以 JSON 表形式返回的记录将限制为前 1,000 条记录。 |
 | WorkspaceID |#workspaceid |Log Analytics 工作区的 ID。 |
@@ -74,6 +69,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
+由于自定义 Webhook 中的所有变量都必须在 JSON enclosure（如“#searchinterval”）内指定，因此生成的 Webhook 在 enclosure（如“00:05:00”）内也会有可变数据。
 
 若要在自定义有效负载中包含搜索结果，请确保在 json 有效负载中将 **IncudeSearchResults** 设置为顶级属性。 
 

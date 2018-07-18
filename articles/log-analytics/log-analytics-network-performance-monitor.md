@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: a3c81d63593bb7bf268c1026064e34c3a363ef86
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.component: na
+ms.openlocfilehash: d083783fb4c648cde5d8f4ab611990f65e48a16e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304651"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129991"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -44,7 +45,7 @@ ms.locfileid: "34304651"
  
 ## <a name="supported-regions"></a>支持的区域
 NPM 可从以下任一区域托管的工作区监视世界上任何地方网络和应用程序之间的连接：
-* 欧洲西部
+* 西欧
 * 美国中西部
 * 美国东部
 * 东南亚
@@ -101,7 +102,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="configure-the-solution"></a>配置解决方案 
 
-1. 将网络性能监视器解决方案从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) 添加到工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程。 
+1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)添加到工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程。 
 2. 打开 Log Analytics 工作区，然后选择“概览”磁贴。 
 3. 选择消息为“解决方案需要进行额外配置”的“网络性能监视器”磁贴  **。
 
@@ -137,12 +138,12 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>编辑子网和节点的监视设置 
 
-配置页的“子网”选项卡中会列出至少安装了一个代理的所有子网 **** 。 
+配置页的 **“子网”** 选项卡中会列出至少安装了一个代理的所有子网。 
 
 
 启用或禁用对特定子网的监视：
 
-1. 选中或清除“子网 ID”旁的复选框 ****。 然后，请确保选中或清除“用于监视”（视情况而定） **** 。 可以选择或清除多个子网。 禁用时，不会监视子网，但会更新代理以停止 ping 其他代理。 
+1. 选中或清除 **“子网 ID”** 旁的复选框。 然后，请确保选中或清除 **“用于监视”** （视情况而定）。 可以选择或清除多个子网。 禁用时，不会监视子网，但会更新代理以停止 ping 其他代理。 
 2. 在特定子网中选择要监视的节点。 从列表中选择子网，并在包含未监视节点的列表与包含已监视节点的列表之间移动所需节点。 可以向子网添加自定义说明。
 3. 选择“保存”以保存配置。 
 
@@ -209,7 +210,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 可以选择解决方案仪表板中的各个链接来进一步了解任何感兴趣部分。 例如，看到警报或不正常的网络链接出现在仪表板上时，可选择它进一步进行调查。 会转到列出该特定网络链接的所有子网链接的页面。 可以看到每个子网链接的丢失、延迟和运行状况状态。 可以快速找到引发问题的子网链接。 选择“查看节点链接” ，查看不正常的子网链接的所有节点链接。 然后，可以查看个别节点到节点链接，找到不正常的节点链接。 
 
-选择“查看拓扑” **** ，查看源节点和目标节点之间路由的逐跳拓扑。 不正常的路由显示为红色。 可以查看每个跃点导致的延迟，从而快速确定网络特定部分的问题。
+选择 **“查看拓扑”** ，查看源节点和目标节点之间路由的逐跳拓扑。 不正常的路由显示为红色。 可以查看每个跃点导致的延迟，从而快速确定网络特定部分的问题。
 
  
 
@@ -249,7 +250,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="log-analytics-search"></a>Log Analytics 搜索 
 
-通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在 [Log Analytics 搜索](log-analytics-log-search-new.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的“常见查询”区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表 **** 。 
+通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在 [Log Analytics 搜索](log-analytics-log-search-new.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的 **“常见查询”** 区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
 
 ## <a name="alerts"></a>警报
 

@@ -6,19 +6,20 @@ author: MichaelHauss
 manager: vamshik
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/31/2018
 ms.author: mihauss
-ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 93b60f8957a6ae225dbc5beb33a7de817ffc5bc2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34701677"
 ---
-# <a name="soft-delete-for-azure-storage-blobs-preview"></a>Azure 存储 blob 的软删除（预览版）
+# <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除
 
 ## <a name="overview"></a>概述
 
-Azure 存储现提供 blob 对象软删除（预览版），从而可在应用程序或其他存储帐户用户错误修改或删除数据后可更轻松地恢复数据。
+Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或其他存储帐户用户错误地修改或删除数据后可以更轻松地恢复数据。
 
 ## <a name="how-does-it-work"></a>工作原理
 
@@ -29,10 +30,6 @@ Azure 存储现提供 blob 对象软删除（预览版），从而可在应用�
 
 软删除向后兼容；无需对应用程序进行任何更改即可利用此功能提供的保护。 但是，[数据恢复](#recovery)会引入新的撤销删除 Blob API。
 
-> [!NOTE]
-> 公共预览期间，不允许对包含快照的 blob 调用“设置 Blob 层”。
-软删除将生成快照，以在数据被覆盖时保护数据。 我们正努力开发一种解决方案，从而支持对含有快照的 blob 进行分层。
-
 ### <a name="configuration-settings"></a>配置设置
 
 创建新帐户时，默认关闭软删除。 对于现有存储帐户，软删除也默认处于关闭状态。 在存储帐户的生存期内，可随时启用和关闭该功能。
@@ -41,7 +38,7 @@ Azure 存储现提供 blob 对象软删除（预览版），从而可在应用�
 
 保持期指示已软删除数据的存储和可恢复时间期限。 对于显式删除的 blob 和 blob 快照，保持期从删除数据时开始计时。 对于覆盖数据时软删除功能生成的软删除快照，保持期从生成快照时开始计时。 当前，软删除数据可保留 1 - 365 天。
 
-可随时更改软删除保持期。 更新后的保持期仅适用于新删除的数据。 之前删除的数据的过期时间取决于删除该数据时配置的保持期。
+可随时更改软删除保持期。 更新后的保持期仅适用于新删除的数据。 之前删除的数据的过期时间取决于删除该数据时配置的保持期。 尝试删除某个软删除的对象不会影响其到期时间。
 
 ### <a name="saving-deleted-data"></a>保存已删除的数据
 
@@ -51,7 +48,7 @@ Azure 存储现提供 blob 对象软删除（预览版），从而可在应用�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照*。
+软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照。
 
 > [!NOTE]
 > 对目标 blob 的帐户启用软删除时，软删除仅对复制操作提供覆盖保护。
@@ -63,13 +60,13 @@ Azure 存储现提供 blob 对象软删除（预览版），从而可在应用�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。调用 Snapshot Blob 时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除*。
+软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。调用 Snapshot Blob 时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除。
 
 如果对基础 blob（本身不是快照的任何 blob）调用“删除 Blob”，该 blob 将被标记为软删除。 与以前的行为一致，对具有活动快照的 blob 调用“删除 Blob”将返回错误。 对具有软删除快照的 blob 调用“删除 Blob”不会返回错误。 启用软删除后，仍可在单个操作中删除 blob 及其所有快照。 执行该操作会将基础 blob 和快照标记为软删除。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除*。
+软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除。
 
 > [!NOTE]
 > 覆盖软删除 blob 时，将自动生成写入操作前 blob 状态的软删除快照。 新 blob 将继承被覆盖 blob 的层级。
@@ -102,7 +99,7 @@ Azure 存储现提供 blob 对象软删除（预览版），从而可在应用�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。此处对 blob B 调用了撤销删除 Blob，从而将基础 blob B1 和所有相关快照（此处仅为 B0）还原为活动状态。第二步中将 B0 复制到了基础 blob。此复制操作将生成 B1 的软删除快照*。
+软删除数据呈现为灰色，而活动数据为蓝色。最新写入的数据显示在旧数据下方。此处对 blob B 调用了撤销删除 Blob，从而将基础 blob B1 和所有相关快照（此处仅为 B0）还原为活动状态。第二步中将 B0 复制到了基础 blob。此复制操作将生成 B1 的软删除快照。
 
 若要查看软删除 blob 和 blob 快照，可选择将已删除数据包含在列表 Blob 中。 可选择仅查看软删除的基础 blob，或者也将软删除的 blob 快照包含在内。 对于所有软删除数据，可以查数据删除的时间以及数据永久过期的剩余天数。
 
@@ -140,7 +137,7 @@ Copy a snapshot over the base blob:
 - HelloWorld (is soft deleted: False, is snapshot: False)
 ```
 
-请参阅[后续步骤](#Next steps)部分，了解产生此输出的应用程序的指针。
+请参阅[后续步骤](#next-steps)部分，了解产生此输出的应用程序的指针。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
@@ -204,6 +201,19 @@ $Blobs.ICloudBlob.Properties
 # Undelete the blobs
 $Blobs.ICloudBlob.Undelete()
 ```
+### <a name="azure-cli"></a>Azure CLI 
+若要启用软删除，请更新 blob 客户端的服务属性：
+
+```azurecli-interactive
+az storage blob service-properties delete-policy update --days-retained 7  --account-name mystorageaccount --enable true
+```
+
+若要验证软删除是否已启用，请使用以下命令： 
+
+```azurecli-interactive
+az storage blob service-properties delete-policy show --account-name mystorageaccount 
+```
+
 ### <a name="python-client-library"></a>Python 客户端库
 
 若要启用软删除，请更新 blob 客户端的服务属性：
@@ -276,11 +286,15 @@ blockBlob.StartCopy(copySource);
 
 **软删除是否适用于所有存储帐户类型？**
 
-是的，软删除适用于 blob 存储帐户以及通用存储帐户中的 blob。 这同时适用于标准和高级帐户。 软删除不适用于托管磁盘。
+是的，软删除适用于 Blob 存储帐户以及常规用途（GPv1 和 GPv2）存储帐户中的 Blob。 这同时适用于标准和高级帐户。 软删除不适用于托管磁盘。
 
 **软删除是否适用于所有存储层？**
 
 是的，软删除适用于所有存储层，包括热、冷和存档层。 但是，软删除对存档层中的 blob 不提供覆盖保护。
+
+**是否可以使用“设置 Blob 层 API”将 Blob 与软删除的快照置于一层？**
+
+是的。 软删除的快照会保留在原始层中，但基础 Blob 会移到新层中。 
 
 **高级存储帐户每个 blob 的快照上限为 100.软删除快照是否计入此限制？**
 

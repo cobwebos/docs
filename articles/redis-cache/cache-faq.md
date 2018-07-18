@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 66340e690e5a6ac3e440b8b4d26e1a8b2abab266
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f78dd2a28575ad8e3fa30ac9c2bbd29c7d85a78f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640466"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis 缓存常见问题
 了解常见问题的答案，以及有关 Azure Redis 缓存的模式和最佳实践。
@@ -385,7 +386,7 @@ CLR 线程池具有两种类型的线程 —“辅助角色”和“I/O 完成�
 
 如何配置此设置：
 
-* 在 ASP.NET 中，可在 web.config 中的 `<processModel>` 配置元素下使用[“minIoThreads”配置设置]["minIoThreads" configuration setting]。如果在 Azure 网站内部运行，则此设置不会通过配置选项进行公开。 但是，应该仍然能够通过 global.asax.cs 中的 Application_Start 方法以编程方式配置此设置置（请参阅下文）。
+* 在 ASP.NET 中，可在 web.config 中的 `<processModel>` 配置元素下使用[“minIoThreads”或“minWorkerThreads”配置设置]["minIoThreads" configuration setting]。如果在 Azure 网站内部运行，则此设置不会通过配置选项进行公开。 但是，应该仍然能够通过 global.asax.cs 中的 Application_Start 方法以编程方式配置此设置置（请参阅下文）。
 
   > [!NOTE] 
   > 此配置元素中指定的值是*按核心*设置。 例如，如果使用 4 核计算机，并且希望 minIOThreads 设置在运行时为 200，则使用 `<processModel minIoThreads="50"/>`。

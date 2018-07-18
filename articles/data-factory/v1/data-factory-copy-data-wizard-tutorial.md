@@ -14,11 +14,12 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8407249ed56059f278f8e4f84a4466ab286a0c24
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c0823fa839df98fa81f42bfbb3f7cd2bec6d7c1a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582530"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建带有复制活动的管道
 > [!div class="op_single_selector"]
@@ -32,7 +33,7 @@ ms.lasthandoff: 03/23/2018
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[版本 2 中的复制活动教程文档](../quickstart-create-data-factory-dot-net.md)。 
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
 
 
 本教程介绍如何使用**复制向导**将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 
@@ -74,7 +75,7 @@ ms.lasthandoff: 03/23/2018
    ![数据工厂主页](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
-1. 在“数据工厂”边栏选项卡上单击“复制数据 [预览]”，启动“复制向导”。 
+1. 在“数据工厂”边栏选项卡上，单击“复制数据”以启动“复制向导”。 
    
    > [!NOTE]
    > 如果 Web 浏览器卡在“正在授权...”处，请在浏览器设置中禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 **login.microsoftonline.com** 创建一个例外，并尝试再次启动该向导。
@@ -83,7 +84,7 @@ ms.lasthandoff: 03/23/2018
    1. 输入 **CopyFromBlobToAzureSql** 作为**任务名称**
    2. 输入 **说明** （可选）。
    3. 更改“开始日期时间”和“结束日期时间”，使结束日期设置为当天，开始日期设置为五天前。  
-   4. 单击“资源组名称” 的 Azure 数据工厂。  
+   4. 单击“下一步”。  
       
       ![复制工具 - 属性页](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
 3. 在“源数据存储”页上，单击“Azure Blob 存储”磁贴。 此页用于指定复制任务的源数据存储。 
@@ -119,7 +120,7 @@ ms.lasthandoff: 03/23/2018
    3. 选择 **Azure 订阅**。  
    4. 选择**服务器名称**和**数据库**。
    5. 输入**用户名**和**密码**。
-   6. 单击“资源组名称” 的 Azure 数据工厂。  
+   6. 单击“下一步”。  
       
       ![复制工具 - 指定 Azure SQL 数据库](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. 在“表映射”页上，在“目标”字段中通过下拉列表中选择“emp”，单击**向下箭头**查看架构并预览数据（可选）。

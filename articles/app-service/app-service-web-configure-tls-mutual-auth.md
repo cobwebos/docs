@@ -1,8 +1,8 @@
 ---
-title: "如何为 Web 应用配置 TLS 相互身份验证"
-description: "了解如何将 Web 应用配置为使用 TLS 客户端证书身份验证。"
+title: 如何为 Web 应用配置 TLS 相互身份验证
+description: 了解如何将 Web 应用配置为使用 TLS 客户端证书身份验证。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -19,12 +19,13 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22985762"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>如何为 Web 应用配置 TLS 相互身份验证
 ## <a name="overview"></a>概述
 通过为 Azure Web 应用启用不同类型的身份验证可以限制对网站的访问。 执行此操作的方法之一是在通过 TLS/SSL 发送请求时使用客户端证书进行身份验证。 此机制称为 TLS 相互身份验证或客户端证书身份验证，本文将详细说明如何将 Web 应用设置为使用客户端证书身份验证。
 
-> **注意：**如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则不应允许通过 HTTP 对应用程序发出请求。
+> **注意：** 如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则不应允许通过 HTTP 对应用程序发出请求。
 > 
 > 
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 
 也可使用 https://resources.azure.com 将 `clientCertEnabled` 属性切换为 `true`。
 
-> **注意：**如果从 Powershell 运行 ARMClient，必须使用重音符 ` 为 JSON 文件转义 @ 符号。
+> **注意：** 如果从 Powershell 运行 ARMClient，必须使用重音符 ` 为 JSON 文件转义 @ 符号。
 > 
 > 
 

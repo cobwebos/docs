@@ -4,20 +4,21 @@ description: 可以使用 CDN 缓存规则全局性地和根据条件（例如 U
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
-ms.openlocfilehash: 09705893c50e56cce5d888db097d7b810624b5d8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4095ed763de378a673908d033d87b2aa6d72f13c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260000"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>使用缓存规则控制 Azure CDN 缓存行为
 
@@ -105,7 +106,12 @@ Azure 内容分发网络 (CDN) 提供了两种方法来控制文件的缓存方�
 如果设置了这些规则，则对 _&lt;endpoint hostname&gt;_.azureedge.net/home/index.html 发出的请求将触发自定义缓存规则 #2，该规则设置为“缺少时设置”且缓存过期持续时间为 3 天。 因此，如果 *index.html* 文件包含 `Cache-Control` 或 `Expires` HTTP 标头，则会遵循这些标头；如果未设置这些标头，则会将文件缓存 3 天。
 
 > [!NOTE] 
-> 在发生规则更改之前缓存的文件会保留其源缓存持续时间设置。 若要重置其缓存持续时间，必须[清除文件](cdn-purge-endpoint.md)。 对于**来自 Verizon 的 Azure CDN** 终结点，新缓存规则最长可能需要 90 分钟才会生效。
+> 在发生规则更改之前缓存的文件会保留其源缓存持续时间设置。 若要重置其缓存持续时间，必须[清除文件](cdn-purge-endpoint.md)。 
+>
+> Azure CDN 配置更改可能需要一段时间，才能在整个网络中传播： 
+> - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
+> - 对于“Verizon 提供的 Azure CDN 标准版”配置文件，传播通常在 10 分钟内完成。  
+>
 
 ## <a name="see-also"></a>另请参阅
 

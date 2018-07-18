@@ -1,11 +1,11 @@
 ---
-title: "在逻辑应用中添加延迟 | Microsoft Docs"
-description: "延迟和延迟到操作以及如何将它们用于 Azure 逻辑应用的概述。"
-services: 
-documentationcenter: 
+title: 在逻辑应用中添加延迟 | Microsoft Docs
+description: 延迟和延迟到操作以及如何将它们用于 Azure 逻辑应用的概述。
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 915f48bf-3bd8-4656-be73-91a941d0afcd
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27963666"
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>延迟和延迟到操作入门
 通过使用延迟和“延迟到”操作，可以完成各种工作流方案。

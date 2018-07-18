@@ -1,22 +1,19 @@
 ---
 title: 远程监视解决方案中的设备模拟 - Azure | Microsoft Docs
 description: 本教程介绍如何在远程监视解决方案加速器中使用设备模拟器。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/15/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c10d983ea6b864d21f4589a3cbfdd5def39ac753
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37088399"
 ---
 # <a name="create-a-new-simulated-device"></a>创建新的模拟设备
 
@@ -49,7 +46,7 @@ ms.lasthandoff: 05/20/2018
 > [!NOTE]
 > 对于所有模拟类型来说，**联机**遥测值是必需的。
 
-*方法*
+方法
 
 下表显示了新设备支持的操作：
 
@@ -106,7 +103,7 @@ ms.lasthandoff: 05/20/2018
 
 ### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>在 Azure 中配置对解决方案虚拟机的 SSH 访问
 
-在 [www.azureiotsuite.com](https://www.azureiotsuite.com) 中创建远程监视解决方案时，已选择了一个解决方案名称。 该解决方案名称将是包含解决方案所用的各个已部署资源的 Azure 资源组的名称。 以下命令使用名为 **Contoso-01** 的资源组，应将 **Contoso-01** 替换为自己的资源组名称。
+在 [www.azureiotsolutions.com](https://www.azureiotsolutions.com) 中创建远程监视解决方案时，选择了一个解决方案名称。 该解决方案名称将是包含解决方案所用的各个已部署资源的 Azure 资源组的名称。 以下命令使用名为 **Contoso-01** 的资源组，应将 **Contoso-01** 替换为自己的资源组名称。
 
 以下命令使用 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中的 `az` 命令。 可以在开发计算机上安装 Azure CLI 2.0，或者在 [Azure 门户](http://portal.azure.com)中使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 Cloud Shell 中已预装 Azure CLI 2.0。
 
@@ -194,15 +191,15 @@ ms.lasthandoff: 05/20/2018
 
 修改设备模拟服务时，可以在本地运行该服务以测试更改。 在本地运行设备模拟服务之前，必须按如下所示停止虚拟机中运行的实例：
 
-1. 若要查找 **device-simulation** 服务的**容器 ID**，请在已连接到虚拟机的 SSH 会话中运行以下命令：
+1. 若要查找 **device-simulation-dotnet** 服务的**容器 ID**，请在已连接到虚拟机的 SSH 会话中运行以下命令：
 
     ```sh
     docker ps
     ```
 
-    记下 **device-simulation** 服务的容器 ID。
+    记下 **device-simulation-dotnet** 服务的容器 ID。
 
-1. 若要停止 **device-simulation** 容器，请运行以下命令：
+1. 若要停止 **device-simulation-dotnet** 容器，请运行以下命令：
 
     ```sh
     docker stop container-id-from-previous-step
@@ -251,12 +248,6 @@ ms.lasthandoff: 05/20/2018
 ## <a name="create-a-simulated-device-type"></a>创建模拟设备类型
 
 在设备模拟服务中创建新设备类型的最简单方法是复制并修改现有类型。 以下步骤说明如何复制内置的**冷却器**设备以创建新的**灯泡**设备：
-
-1. 在 Visual Studio 中，打开 **device-simulation** 存储库的本地副本中的 **device-simulation.sln** 解决方案文件。
-
-1. 在解决方案资源管理器中，右键单击“SimulationAgent”项目，并依次选择“属性”、“调试”。
-
-1. 在“环境变量”部分，将 **PCS\_IOTHUB\_CONNSTRING** 变量的值编辑成前面记下的 IoT 中心连接字符串。 保存更改。
 
 1. 在解决方案资源管理器中，右键单击“WebService”项目，并依次选择“属性”、“调试”。
 
@@ -388,18 +379,21 @@ ms.lasthandoff: 05/20/2018
 1. 如以下片段中所示，编辑 **main** 函数以实现行为：
 
     ```js
-    function main(context, previousState) {
+    function main(context, previousState, previousProperties) {
 
-      // Restore the global state before generating the new telemetry, so that
-      // the telemetry can apply changes using the previous function state.
-      restoreState(previousState);
+        // Restore the global device properties and the global state before
+        // generating the new telemetry, so that the telemetry can apply changes
+        // using the previous function state.
+        restoreSimulation(previousState, previousProperties);
 
-      state.temperature = vary(200, 5, 150, 250);
+        state.temperature = vary(200, 5, 150, 250);
 
-      // Make this flip every so often
-      state.status = flip(state.status);
+        // Make this flip every so often
+        state.status = flip(state.status);
 
-      return state;
+        updateState(state);
+
+        return state;
     }
     ```
 
@@ -484,7 +478,7 @@ ms.lasthandoff: 05/20/2018
 
     ![连接的设备数](./media/iot-accelerators-remote-monitoring-test/connecteddevices.png)
 
-1. 在浏览器中，导航到远程监视解决方案的**仪表板**。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示所有模拟设备的温度：
+1. 在浏览器中，导航到远程监视解决方案的“仪表板”。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示所有模拟设备的温度：
 
     ![温度遥测](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
@@ -548,11 +542,11 @@ ms.lasthandoff: 05/20/2018
 
     脚本已将 **testing** 标记添加到映像。
 
-1. 使用 SSH 连接到 Azure 中的解决方案虚拟机。 然后导航到 **App** 文件夹并编辑 **docker-compose.yaml** 文件：
+1. 使用 SSH 连接到 Azure 中的解决方案虚拟机。 然后导航到 **App** 文件夹并编辑 **docker-compose.yml** 文件：
 
     ```sh
     cd /app
-    sudo nano docker-compose.yaml
+    sudo nano docker-compose.yml
     ```
 
 1. 编辑设备模拟服务对应的条目，以使用该 docker 映像：
@@ -584,7 +578,7 @@ ms.lasthandoff: 05/20/2018
 
 现已完成将设备模拟服务更新版本部署到远程监视解决方案的步骤。
 
-在浏览器中，导航到远程监视解决方案的**仪表板**。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示两个模拟设备的温度：
+在浏览器中，导航到远程监视解决方案的“仪表板”。 在**仪表板**上的遥测面板中，选择“温度”。 图表中将显示两个模拟设备的温度：
 
 ![温度遥测](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
@@ -608,7 +602,7 @@ ms.lasthandoff: 05/20/2018
 
 以下步骤说明如何查找用于定义内置**冷却器**设备的文件：
 
-1. 使用以下命令将**设备模拟** GitHub 存储库克隆到本地计算机（如果尚未这样做）：
+1. 使用以下命令将 **device-simulation-dotnet** GitHub 存储库克隆到本地计算机（如果尚未这样做）：
 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -676,9 +670,9 @@ ms.lasthandoff: 05/20/2018
 
 ### <a name="test-the-chiller-device-type"></a>测试冷却器设备类型
 
-若要测试已更新的**冷却器**设备类型，请先运行 **device-simulation** 服务的本地副本，以测试设备类型的行为是否符合预期。 在本地测试并调试已更新的设备类型后，可以重新生成容器，并将**设备模拟**服务重新部署到 Azure。
+若要测试已更新的**冷却器**设备类型，请先运行 **device-simulation-dotnet** 服务的本地副本，以测试设备类型的行为是否符合预期。 在本地测试并调试已更新的设备类型后，可以重新生成容器，并将 **device-simulation-dotnet** 服务重新部署到 Azure。
 
-在本地运行**设备模拟**服务时，该服务会将遥测数据发送到远程监视解决方案。 在“设备”页上，可以预配已更新类型的实例。
+在本地运行 **device-simulation-dotnet** 服务时，该服务会将遥测数据发送到远程监视解决方案。 在“设备”页上，可以预配已更新类型的实例。
 
 若要在本地测试和调试更改，请参阅上一部分[在本地测试灯泡设备类型](#test-the-lightbulb-device-type-locally)。
 

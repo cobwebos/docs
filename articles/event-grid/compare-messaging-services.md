@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 03/16/2018
+ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1437916e62e7c2987c0a1d8c3a5ac4a5f332134d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 69db32698951519c2630a0a8697e4ebe74f69b04
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303549"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930471"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>在传递消息的 Azure 服务之间进行选择
 
@@ -53,13 +53,14 @@ Azure 提供三种协助在整个解决方案中传递事件消息的服务。 �
 
 事件网格是启用事件驱动、反应编程的事件底板。 它使用发布-订阅模式。 发布服务器发出事件，但不知道处理哪些事件。 订阅服务器决定需要处理的事件。
 
-事件网格与 Azure 服务深度集成，并可与第三方服务集成。 它简化事件消耗，并通过消除不断的轮询需求降低成本。 事件网格高效可靠地路由来自 Azure 和非 Azure 资源的事件。 它将事件分布到注册的订阅服务器终结点。 事件消息包含你需要对服务和应用程序中的更改做出响应的信息。 事件网格不是数据管道，并且不提供已更新的实际对象。
+事件网格与 Azure 服务深度集成，并可与第三方服务集成。 它简化事件消耗，并通过消除不断的轮询需求降低成本。 事件网格高效可靠地路由来自 Azure 和非 Azure 资源的事件。 它将事件分布到注册的订阅服务器终结点。 事件消息包含对服务和应用程序中的更改做出响应所需的信息。 事件网格不是数据管道，并且不提供已更新的实际对象。
 
 它具有以下特征：
 
 * 动态可缩放
 * 低成本
 * 无服务器
+* “至少一次”交付
 
 ### <a name="event-hubs"></a>事件中心
 
@@ -69,6 +70,7 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 * 低延迟
 * 每秒可以接收和处理数百万的事件
+* “至少一次”交付
 
 ### <a name="service-bus"></a>服务总线
 
@@ -80,6 +82,7 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 * 需要轮询的可靠异步消息传递（企业消息传递作为服务）
 * 高级消息传递功能，例如，FIFO、批处理/会话、事务、死信、时态控制、路由和筛选以及重复检测
+* “刚好一次”交付
 
 ## <a name="use-the-services-together"></a>同时使用多种服务
 

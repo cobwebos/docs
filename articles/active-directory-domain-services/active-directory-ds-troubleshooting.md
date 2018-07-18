@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory 域服务：故障排除指南 | Microsoft 文档"
-description: "Azure AD 域服务故障排除指南"
+title: Azure Active Directory 域服务：故障排除指南 | Microsoft 文档
+description: Azure AD 域服务故障排除指南
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 0956476931396c6455bf3e4fc7582da3bf3deb33
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: b15f339889aa2a4602295e662877e82a1d3a6b46
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219432"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
 本文提供设置或管理 Azure Active Directory (AD) 域服务时可能遇到的问题的故障排除提示。
@@ -126,7 +128,7 @@ if ($sp -ne $null)
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>用户无法登录 Azure AD 域服务托管域
 如果 Azure AD 租户中有一个或多个用户无法登录到新建的托管域，请执行以下故障排除步骤：
 
-* **使用 UPN 格式登录：**尝试使用 UPN 格式（例如“joeuser@contoso.com”）而非 SAMAccountName 格式（例如“CONTOSO\joeuser”）登录。 对于 UPN 前缀过长或与托管域上另一用户相同的用户，系统可能会自动生成 SAMAccountName。 UPN 格式可保证在 Azure AD 租户中唯一。
+* **使用 UPN 格式登录：** 尝试使用 UPN 格式（例如“joeuser@contoso.com”）而非 SAMAccountName 格式（例如“CONTOSO\joeuser”）登录。 对于 UPN 前缀过长或与托管域上另一用户相同的用户，系统可能会自动生成 SAMAccountName。 UPN 格式可保证在 Azure AD 租户中唯一。
 
 > [!NOTE]
 > 建议使用 UPN 格式登录到 Azure AD 域服务托管域。
@@ -134,8 +136,8 @@ if ($sp -ne $null)
 >
 
 * 确保根据《入门指南》中所述的步骤[启用密码同步](active-directory-ds-getting-started-password-sync.md)。
-* **外部帐户：**确保受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（例如“joe@live.com”），或来自外部 Azure AD 目录的用户帐户。 由于 Azure AD 域服务没有此类用户帐户的凭据，因此这些用户无法登录到托管域。
-* **已同步的帐户：**如果受影响的用户帐户已从本地目录同步，请确认：
+* **外部帐户：** 确保受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（例如“joe@live.com”），或来自外部 Azure AD 目录的用户帐户。 由于 Azure AD 域服务没有此类用户帐户的凭据，因此这些用户无法登录到托管域。
+* **已同步的帐户：** 如果受影响的用户帐户已从本地目录同步，请确认：
 
   * 已部署或更新到[最新版本的 Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594)。
   * 已将 Azure AD Connect 配置为[执行完全同步](active-directory-ds-getting-started-password-sync.md)。

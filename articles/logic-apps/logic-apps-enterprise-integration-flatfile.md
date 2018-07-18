@@ -4,7 +4,7 @@ description: 如何在逻辑应用中使用 Enterprise Integration Pack 内的�
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: divyaswarnkar
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; divswa
-ms.openlocfilehash: 410f2e184a92b879d4f75b31216da783e82dc953
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2f88b9c3d25b1a4771772e32bac8a4f7893831cf
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300073"
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>企业集成与平面文件概述
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 03/16/2018
    
     c. 在搜索框中输入“平面”一词，以便在所有操作中筛选出要使用的操作。
    
-    d.单击“下一步”。 从列表中选择“平面文件编码”选项。   
+    d. 从列表中选择“平面文件编码”选项。   
    ![“平面文件编码”选项的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
 4. 在“平面文件编码”对话框中，选择“内容”文本框。  
    ![“内容”文本框的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
@@ -68,7 +69,7 @@ ms.lasthandoff: 03/16/2018
    
     c. 在搜索框中输入“平面”一词，以便在所有操作中筛选出要使用的操作。
    
-    d.单击“下一步”。 从列表中选择“平面文件解码”选项。   
+    d. 从列表中选择“平面文件解码”选项。   
    ![“平面文件解码”选项的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
 3. 选择“内容”控件。 这会生成来自前面步骤的内容的列表，这些内容可以用作要解码的内容。 请注意，传入 HTTP 请求的正文可供用作要解码的内容。 还可以直接在“内容”控件中输入要解码的内容。     
 4. 选择正文标记。 请注意，正文标记现在处于“内容”控件中。

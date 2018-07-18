@@ -1,25 +1,19 @@
 ---
-title: Azure Monitor - 警报中的日志警报 | Microsoft Docs
+title: Azure Monitor 中的日志警报
 description: 当满足指定的分析查询条件时，Azure 警报会触发电子邮件、通知、调用网站 URL (Webhook) 或自动化。
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 8bf534177e8236a7d72d6dfdd4612b5f6f492b17
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.component: alerts
+ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057315"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971714"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Azure Monitor - 警报中的日志警报 
 本文提供日志警报的详细信息，该警报是新版 [Azure 警报](monitoring-overview-unified-alerts.md)中支持的警报类型之一，允许用户使用 Azure 的分析平台作为警报的基础。 有关使用日志的指标警报的详细信息，请参阅[准实时指标警报](monitoring-near-real-time-metric-alerts.md)
@@ -36,7 +30,7 @@ ms.locfileid: "34057315"
 - **日志查询**。  这是每次触发预警规则时都会运行的查询。  此查询返回的记录用于确定是否创建警报。 *Azure Application Insights* 查询还可以包含[跨应用程序调用](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery)，前提是用户具有对外部应用程序的访问权限。 
 
     > [!IMPORTANT]
-    > 对 [Application Insights 的跨应用程序查询](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery)的支持处于预览状态 - 功能和用户体验可能会发生更改。 目前，Azure 警报**不支持**使用 Log Analytics 的[跨工作区查询](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery)和[跨资源查询](../log-analytics/log-analytics-cross-workspace-search.md)。
+    > 对 [Application Insights 的跨应用程序查询](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery)的支持处于预览状态 - 该功能限制为用于 2 个或更多应用并且用户体验可能会发生更改。 目前，Azure 警报**不支持**使用 Log Analytics 的[跨工作区查询](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery)和[跨资源查询](../log-analytics/log-analytics-cross-workspace-search.md)。
 
 - **时间段**。  指定查询的时间范围。 查询仅返回在当前时间的这个范围内创建的记录。 时间段限制为日志查询提取的数据以防止滥用，并规避日志查询中使用的任何时间命令（如 ago）。 <br>*例如，如果时间段设置为 60 分钟，且在下午 1:15 运行查询，则执行日志查询时仅返回中午 12:15 和下午 1:15 之间创建的记录。现在，如果日志查询使用时间命令（如 ago (7d)），则日志查询将仅针对中午 12:15 和下午 1:15 之间的数据运行 - 就像仅存在过去 60 分钟的数据一样。而不是按在日志查询中所指定针对七天的数据。*
 - **频率**。  指定应运行查询的频率。 可以是介于 5 分钟到 24 小时之间的任何值。 应等于或小于时间段。  如果该值大于时间段，则会有记录缺失的风险。<br>*例如，假设时间段为 30 分钟，频率为 60 分钟。如果查询在下午 1:00 运行，则会返回中午 12:30 和下午 1:00 之间的记录。下次运行查询的时间是下午 2:00，会返回下午 1:30 到 2:00 之间的记录。在下午 1:00 和 1:30 之间创建的任何记录不会获得评估。*
@@ -126,7 +120,7 @@ ms.locfileid: "34057315"
 
 有关使用 REST API 的详细信息和示例，请参阅：
 - [Log Analytics 警报 REST API](../log-analytics/log-analytics-api-alerts.md) - 为 Azure Log Analytics 创建和管理日志搜索警报规则
-- [Azure Monitor 计划查询规则 REST API](https://docs.microsoft.com/en-us/rest/api/monitorr/scheduledqueryrules/) - 为 Azure Application Insights 创建和管理日志搜索警报规则
+- [Azure Monitor 计划查询规则 REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) - 为 Azure Application Insights 创建和管理日志搜索警报规则
 
 ### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 用户还可以利用由 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)提供的灵活性来创建和更新资源 - 用于创建或更新日志警报。

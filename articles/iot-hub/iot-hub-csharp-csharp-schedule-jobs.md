@@ -1,24 +1,19 @@
 ---
 title: 使用 Azure IoT 中心安排作业 (.NET/.NET) | Microsoft Docs
 description: 如何安排 Azure IoT 中心作业对多台设备调用直接方法。 使用适用于 .NET 的 Azure IoT 设备 SDK 实现模拟设备应用以及用于运行作业的服务应用。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 012/16/2018
-ms.author: v-masebo;dobett
-ms.openlocfilehash: 76c8d3739b2af3c010cd80585c93c097fc9eb466
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+services: iot-hub
+ms.topic: conceptual
+ms.date: 03/06/2018
+ms.author: dobett
+ms.openlocfilehash: beb1e1e166325cb41a5d4e4fa07565b1f3d4b3bb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666910"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>计划和广播作业 (.NET/.NET)
 
@@ -82,13 +77,14 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
     using Newtonsoft.Json;
     ```
 
-1. 将以下字段添加到 **Program** 类。 将占位符值替换为上一部分中所述的设备连接字符串：
+1. 将以下字段添加到 Program 类。 将占位符值替换为上一部分中所述的设备连接字符串：
 
     ```csharp
     static string DeviceConnectionString = "<yourDeviceConnectionString>";
     static DeviceClient Client = null;
+    ```
 
-1. Add the following to implement the direct method on the device:
+1. 添加以下函数，实现设备上的直接方法：
 
     ```csharp
     static Task<MethodResponse> LockDoor(MethodRequest methodRequest, object userContext)
@@ -100,8 +96,9 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
         string result = "'Door was locked.'";
         return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
     }
+    ```
 
-1. Add the following to implement the device twins listener on the device:
+1. 添加以下内容，实现设备上的设备孪生侦听程序：
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
@@ -158,7 +155,7 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
 
     ![“NuGet 包管理器”窗口][img-servicenuget]
 
-1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
     
     ```csharp
     using Microsoft.Azure.Devices;
@@ -172,9 +169,10 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
     using System.Threading.Tasks;
     ```
 
-1. 将以下字段添加到 **Program** 类。 将占位符替换为在上一部分为中心创建的 IoT 中心连接字符串以及设备的名称。
+1. 将以下字段添加到 Program 类。 将占位符替换为在上一部分为中心创建的 IoT 中心连接字符串以及设备的名称。
 
     ```csharp
+    static JobClient jobClient;
     static string connString = "<yourIotHubConnectionString>";
     static string deviceId = "<yourDeviceId>";
     ```

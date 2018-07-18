@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a7bdbee064e6acdd3d1ef95879b98daa43fdb230
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 823b647dbc171050f7b36cfc729b0d3529e1f296
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301744"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901222"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Windows VM 托管服务标识通过访问密钥访问 Azure 存储
 
@@ -196,15 +196,10 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
+## <a name="next-steps"></a>后续步骤
 
-## <a name="related-content"></a>相关内容
+在本教程中，你学习了如何创建托管服务标识来访问使用访问密钥的 Azure 存储。  若要详细了解 Azure 存储访问密钥，请参阅：
 
-- 有关 MSI 的概述，请参阅[托管服务标识概述](overview.md)。
-- 若要了解如何使用存储 SAS 凭据完成此同一教程，请参阅[使用 Windows VM 托管服务标识通过 SAS 凭据访问 Azure 存储](tutorial-windows-vm-access-storage-sas.md)
-- 有关 Azure 存储帐户 SAS 功能的详细信息，请参阅：
-  - [使用共享访问签名 (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [Constructing a Service SAS](/rest/api/storageservices/Constructing-a-Service-SAS.md)（构造服务 SAS）
-
-使用以下评论部分提供反馈，帮助我们改进内容
-
+> [!div class="nextstepaction"]
+>[管理存储访问密钥](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
 

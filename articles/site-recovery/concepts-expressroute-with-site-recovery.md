@@ -7,14 +7,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 7cc4c84ebae7ade4169f8d85a2d5cc11f1df6f87
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ac64c73ac26c610c08dceff13cbd524916853146
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071441"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916404"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>将 Azure ExpressRoute 与 Azure Site Recovery 结合使用
 
@@ -30,7 +30,8 @@ ExpressRoute 线路表示通过连接提供商在本地基础结构与 Microsoft
 
 一条 ExpressRoute 线路有多个关联的路由域：
 -   [Azure 专用对等互连](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)：可以通过专用对等互连域来连接虚拟网络内部署的 Azure 计算服务（即虚拟机 (IaaS) 和云服务 (PaaS)）。 专用对等互连域被视为进入 Microsoft Azure 的核心网络的受信任扩展。
--   [Azure 公共对等互连](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)：Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的。 可以通过公共对等路由域私下连接到公共 IP 地址（包括云服务的 VIP）上托管的服务。 对于新创建的服务，不应再使用公共对等互连；对于 Azure PaaS 服务，应改用 Microsoft 对等互连。
+-   
+  [Azure 公共对等互连](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)：Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的。 可以通过公共对等路由域私下连接到公共 IP 地址（包括云服务的 VIP）上托管的服务。 对于新创建的服务，不应再使用公共对等互连；对于 Azure PaaS 服务，应改用 Microsoft 对等互连。
 -   [Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoft-peering)：与 Microsoft 联机服务（Office 365、Dynamics 365 和 Azure PaaS 服务）的连接通过 Microsoft 对等互连建立。 在连接到 Azure PaaS 服务时，建议使用 Microsoft 对等互连作为路由域。
 
 从[此处](../expressroute/expressroute-circuit-peerings.md#routing-domain-comparison)详细了解并比较 ExpressRoute 路由域。

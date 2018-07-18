@@ -5,21 +5,22 @@
     - name: 什么是 Azure DNS？
       href: dns-overview.md
 - name: 快速入门
+  expanded: true
   items:
-    - name: 创建 DNS 区域和记录 - 门户
+    - name: 名称解析 - 门户
       href: dns-getstarted-portal.md
-    - name: 创建 DNS 区域和记录 - PowerShell
+    - name: 名称解析 - PowerShell
       href: dns-getstarted-powershell.md
-    - name: 创建 DNS 区域和记录 - CLI
+    - name: 名称解析 - CLI
       href: dns-getstarted-cli.md
 - name: 教程
   items:
-    - name: 创建专用 DNS 区域和记录
-      href: private-dns-getstarted-powershell.md
-    - name: 将域委托给 Azure DNS
+    - name: 在 Azure DNS 中托管域
       href: dns-delegate-domain-azure-dns.md
     - name: 为 Web 应用创建自定义 DNS 记录
       href: dns-web-sites-custom-domain.md
+    - name: 创建专用 DNS 区域和记录
+      href: private-dns-getstarted-powershell.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -40,6 +41,8 @@
       href: dns-alerts-metrics.md
     - name: 反向 DNS
       href: dns-reverse-dns-overview.md
+    - name: 使用 Azure DNS 和流量管理器进行灾难恢复
+      href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: 如何
   items:
     - name: 创建自定义 DNS 区域和记录 - Azure CLI

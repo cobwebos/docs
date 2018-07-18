@@ -1,12 +1,12 @@
 ---
-title: "将身份验证添加到自定义 API - Azure 逻辑应用 | Microsoft Docs"
-description: "通过逻辑应用为对自定义 API 的调用设置身份验证"
+title: 将身份验证添加到自定义 API - Azure 逻辑应用 | Microsoft Docs
+description: 通过逻辑应用为对自定义 API 的调用设置身份验证
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 2528f4318d92bbfdc1008795876f0240a5e3e4f6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 705abb2a3cc25c965bdce364eb169b4e3a814bff
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298543"
 ---
 # <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>通过逻辑应用保护对自定义 API 的调用
 
@@ -116,7 +117,7 @@ ms.lasthandoff: 11/03/2017
 
 **在 Azure 门户中为已部署的应用创建应用程序标识并开启身份验证**
 
-1. 在 [Azure 门户](https://portal.azure.com "https://portal.azure.com")中，找到并选择你的 Web 应用或 API 应用。 
+1. 在 [Azure 门户](https://portal.azure.com "https://portal.azure.com")中，找到并选择 Web 应用或 API 应用。 
 
 2. 在“设置”下，选择“身份验证/授权”。 在“应用服务身份验证”下，“开启”身份验证。 在“身份验证提供程序”下，选择“Azure Active Directory”。
 

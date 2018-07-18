@@ -1,6 +1,6 @@
 ---
 title: 将 ASDK 注册到 Azure | Microsoft Docs
-description: 介绍如何将 Azure Stack 注册到 Azure，以实现 Marketplace 联合并报告使用情况。
+description: 介绍如何将 Azure Stack 注册到 Azure，以实现市场联合并报告使用情况。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,18 +11,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/26/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: bc17045106b2656cdeb5f51037b3138aeac9ee0f
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 08a300d0e2d1565428f282a2073d91b5dd08c060
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757461"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016993"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack 注册
-可将 Azure Stack 开发工具包 (ASDK) 安装注册到 Azure，以便从 Azure 下载 Marketplace 项，并设置向 Microsoft 报告商务数据的功能。 需要注册才能支持完整的 Azure Stack 功能，包括 Marketplace 联合。 之所以建议注册，是因为这样可以测试重要的 Azure Stack 功能，例如 Marketplace 联合和使用情况报告。 注册 Azure Stack 之后，使用情况将报告给 Azure 商业组件。 用于注册的订阅下会显示此信息。 但是，ASDK 用户无需付费，不管他们报告的用量是多少。
+可将 Azure Stack 开发工具包 (ASDK) 安装注册到 Azure，以便从 Azure 下载市场项，并设置向 Microsoft 报告商务数据的功能。 需要注册才能支持完整的 Azure Stack 功能，包括市场联合。 之所以建议注册，是因为这样可以测试重要的 Azure Stack 功能，例如市场联合和使用情况报告。 注册 Azure Stack 之后，使用情况将报告给 Azure 商业组件。 用于注册的订阅下会显示此信息。 但是，ASDK 用户无需付费，不管他们报告的用量是多少。
 
 如果未注册 ASDK，则可能会看到“需要激活”警告警报，建议注册 Azure Stack 开发工具包。 这是预期的行为。
 
@@ -83,4 +83,5 @@ $ExecutionContext.SessionState.LanguageMode
     ![](media/asdk-register/3.PNG)
 
 ## <a name="next-steps"></a>后续步骤
-[添加 Azure Stack Marketplace 项](asdk-marketplace-item.md)
+
+  [添加 Azure Stack 市场项](.\.\azure-stack-marketplace.md)

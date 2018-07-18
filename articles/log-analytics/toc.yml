@@ -27,20 +27,22 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 工作区升级
+    - name: OMS 门户转换
       items:
-        - name: 升级概述
-          href: log-analytics-log-search-upgrade.md
-        - name: 更改摘要
-          href: log-analytics-log-search-upgrade-changes.md
-        - name: 升级常见问题解答
-          href: log-analytics-log-search-faq.md
+        - name: 概述
+          href: log-analytics-oms-portal-transition.md
+        - name: 常见问题
+          href: log-analytics-oms-portal-faq.md
     - name: Log Analytics 常见问题解答
       href: log-analytics-faq.md
+    - name: 数据引入时间
+      href: log-analytics-data-ingestion-time.md
     - name: 数据安全
       href: log-analytics-data-security.md
     - name: 管理访问权限
       href: log-analytics-manage-access.md
+    - name: 代理概述
+      href: ../monitoring/monitoring-overview-azure-agents.md
     - name: 监视混合环境
       href: log-analytics-concept-hybrid.md
     - name: 适用于服务提供商的功能
@@ -169,94 +171,104 @@
           href: log-analytics-agent-linux-support.md
     - name: 使用解决方案
       items:
-        - name: 解决方案概述
-          href: log-analytics-add-solutions.md
+        - name: 安装解决方案
+          href: ../monitoring/monitoring-solutions.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: 解决方案清单
+          href: ../monitoring/monitoring-solutions-inventory.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: 目标解决方案
           href: ../monitoring/monitoring-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Azure 活动日志
+        - name: 解决方案指南
           items:
-            - name: 分析
-              href: log-analytics-activity.md
-            - name: 跨订阅收集
-              href: log-analytics-activity-logs-subscriptions.md
-        - name: AD 评估
-          href: log-analytics-ad-assessment.md
-        - name: AD 复制状态
-          href: log-analytics-ad-replication-status.md
-        - name: 代理运行状况
-          href: ../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: 警报管理
-          href: log-analytics-solution-alert-management.md
-        - name: Application Insights 连接器
-          href: log-analytics-app-insights-connector.md
-        - name: Azure SQL 分析
-          href: log-analytics-azure-sql.md
-        - name: Azure Web 应用分析
-          href: log-analytics-azure-web-apps-analytics.md
-        - name: 容量和性能
-          href: log-analytics-capacity.md
-        - name: 更改跟踪
-          href: log-analytics-change-tracking.md
-        - name: 容器
-          href: log-analytics-containers.md
-        - name: DNS Analytics
-          href: log-analytics-dns.md
-        - name: IT Service Management Connector
-          href: log-analytics-itsmc-overview.md
-          items:
-            - name: IT Service Management 连接
-              href: log-analytics-itsmc-connections.md
-        - name: Key Vault
-          href: log-analytics-azure-key-vault.md
-        - name: 逻辑应用 B2B 消息
-          items:
-            - name: 逻辑应用 B2B 消息解决方案
-              href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
-            - name: 逻辑应用 B2B 自定义跟踪架构
-              href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: 网络分析
-          href: log-analytics-azure-networking-analytics.md
-        - name: 网络性能监视器
-          items:
-            - name: 解决方案概述
-              href: log-analytics-network-performance-monitor.md
-            - name: 性能监视
-              href: log-analytics-network-performance-monitor-performance-monitor.md
-            - name: 服务终结点
-              href: log-analytics-network-performance-monitor-service-endpoint.md
-            - name: ExpressRoute
-              href: log-analytics-network-performance-monitor-expressroute.md
-            - name: 定价
-              href: log-analytics-network-performance-monitor-pricing-faq.md
-        - name: Office 365
-          href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: SCOM 运行状况检查
-          href: log-analytics-scom-assessment.md
-        - name: 安全审核
-          href: ../security-center/security-center-intro.md
-        - name: 将 Service Fabric 与 Azure PowerShell 配合使用
-          href: log-analytics-service-fabric.md
-          items:
-            - name: 将 Service Fabric 与 Azure 资源管理器配合使用
-              href: log-analytics-service-fabric-azure-resource-manager.md
-        - name: 服务映射
-          href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: SQL 运行状况检查
-          href: log-analytics-sql-assessment.md
-        - name: Surface Hub
-          href: log-analytics-surface-hubs.md
-        - name: 更新管理
-          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: VMware
-          href: log-analytics-vmware.md
-        - name: Windows 分析
-          items:
-            - name: 更新符合性
-              href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
-            - name: 升级就绪情况
-              href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
-        - name: 传输数据
-          href: log-analytics-wire-data.md
+            - name: Azure 活动日志
+              items:
+                - name: 分析
+                  href: log-analytics-activity.md
+                - name: 跨订阅收集
+                  href: log-analytics-activity-logs-subscriptions.md
+            - name: AD 评估
+              href: log-analytics-ad-assessment.md
+            - name: AD 复制状态
+              href: log-analytics-ad-replication-status.md
+            - name: 代理运行状况
+              href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: 警报管理
+              href: log-analytics-solution-alert-management.md
+            - name: Application Insights 连接器
+              href: log-analytics-app-insights-connector.md
+            - name: Azure SQL 分析
+              href: log-analytics-azure-sql.md
+            - name: Azure Web 应用分析
+              href: log-analytics-azure-web-apps-analytics.md
+            - name: 容量和性能
+              href: log-analytics-capacity.md
+            - name: 更改跟踪
+              href: log-analytics-change-tracking.md
+            - name: 容器
+              href: log-analytics-containers.md
+            - name: DNS Analytics
+              href: log-analytics-dns.md
+            - name: IT Service Management Connector
+              href: log-analytics-itsmc-overview.md
+              items:
+                - name: IT Service Management 连接
+                  href: log-analytics-itsmc-connections.md
+            - name: Key Vault
+              href: log-analytics-azure-key-vault.md
+            - name: 逻辑应用 B2B 消息
+              items:
+                - name: 逻辑应用 B2B 消息解决方案
+                  href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: 逻辑应用 B2B 自定义跟踪架构
+                  href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: 网络分析
+              href: log-analytics-azure-networking-analytics.md
+            - name: 网络性能监视器
+              items:
+                - name: 解决方案概述
+                  href: log-analytics-network-performance-monitor.md
+                - name: 性能监视
+                  href: log-analytics-network-performance-monitor-performance-monitor.md
+                - name: 服务终结点
+                  href: log-analytics-network-performance-monitor-service-endpoint.md
+                - name: ExpressRoute
+                  href: log-analytics-network-performance-monitor-expressroute.md
+                - name: 定价
+                  href: log-analytics-network-performance-monitor-pricing-faq.md
+            - name: Office 365
+              href: ../monitoring/monitoring-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: SCOM 运行状况检查
+              href: log-analytics-scom-assessment.md
+            - name: 安全审核
+              href: ../security-center/security-center-intro.md
+            - name: 将 Service Fabric 与 Azure PowerShell 配合使用
+              href: log-analytics-service-fabric.md
+              items:
+                - name: 将 Service Fabric 与 Azure 资源管理器配合使用
+                  href: log-analytics-service-fabric-azure-resource-manager.md
+            - name: 服务映射
+              items:
+                - name: 用途
+                  href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: 配置
+                  href: ../monitoring/monitoring-service-map-configure.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: 与 Operations Manager 集成
+                  href: ../monitoring/monitoring-service-map-scom.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: SQL 运行状况检查
+              href: log-analytics-sql-assessment.md
+            - name: Surface Hub
+              href: log-analytics-surface-hubs.md
+            - name: 更新管理
+              href: ../automation/automation-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: VMware
+              href: log-analytics-vmware.md
+            - name: Windows 分析
+              items:
+                - name: 更新符合性
+                  href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
+                - name: 升级就绪情况
+                  href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
+            - name: 传输数据
+              href: log-analytics-wire-data.md
     - name: 开发
       items:
         - name: PowerShell cmdlet

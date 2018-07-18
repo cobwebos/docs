@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 1186776742562566be893c411a642d2feb819a86
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 11430a0d194a722c0c0520c936db3c08b1a6b863
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603938"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989565"
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新
 
@@ -43,7 +43,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 ### <a name="prerequisites"></a>必备组件
 - 在应用 Azure Stack 1803 更新之前安装 Azure Stack [1802 更新](azure-stack-update-1802.md)。   
 
-- 安装**AzS 修补程序 – 1.0.180312.1-生成 20180222.2**应用 Azure 堆栈 1803年更新前。 此修补程序更新了 Windows Defender，在下载 Azure Stack 的更新后即可使用。
+- 安装**AzS 修补程序-1.0.180312.1 内部版本 20180222.2**应用 Azure Stack 1803 更新之前。 此修补程序更新了 Windows Defender，在下载 Azure Stack 的更新后即可使用。
 
   若要安装此修补程序，请执行[安装 Azure Stack 的更新](azure-stack-apply-updates.md)所需的常规过程。 此更新的名称显示为 **AzS 修补程序 - 1.0.180312.1**，包括以下文件： 
     - PUPackageHotFix_20180222.2-1.exe
@@ -54,45 +54,40 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
   
   与 Azure Stack 的更新不同，此更新的安装不更改 Azure Stack 的版本。 若要确认此更新是否已安装，请查看“已安装更新”列表。
 
-### <a name="post-update-steps"></a>更新后步骤
-- 安装 1803 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。
 
-  - [KB 4294441 - 针对租户资源的操作失败，并且在同一租户或基础结构卷上创建了意外共享](https://support.microsoft.com/en-us/help/4294441)
-
-- 安装此更新后，请查看防火墙配置以确保[必需的端口](azure-stack-integrate-endpoints.md)处于打开状态。 例如，此更新引入了 Azure Monitor，其中包括将审核日志更改为活动日志。 由于此更改，端口 13012 现在已使用，并且也必须处于打开状态。  
 
 ### <a name="new-features"></a>新增功能 
 此更新包含以下适用于 Azure Stack 的改进和修复。
 
 - **更新 Azure Stack 机密** -（帐户和证书）。 有关如何管理机密的详细信息，请参阅[在 Azure Stack 中轮换机密](azure-stack-rotate-secrets.md)。 
 
-- <!-- 1914853 --> **Automatic redirect to HTTPS** when you use HTTP to access the administrator and user portals. This improvement was made based on [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) feedback for Azure Stack. 
+- <!-- 1914853 --> 使用 HTTP 访问管理员和用户门户时**自动重定向到 HTTPS**。 进行此改进是基于 Azure Stack 的 [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) 反馈。 
 
-- <!-- 2202621  --> **Access the Marketplace** – You can now open the Azure Stack Marketplace by using the [+New](https://ms.portal.azure.com/#create/hub) option from within the admin and user portals the same way you do in the Azure portals.
+- <!-- 2202621  --> **访问 Marketplace** – 你现在可以通过打开 Azure Stack Marketplace [+ 新建](https://ms.portal.azure.com/#create/hub)选项中的管理员和用户门户在 Azure 门户中执行的相同方法。
  
-- <!-- 2202621 --> **Azure Monitor** - Azure Stack adds [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) to the admin and user portals. This includes new explorers for metrics and activity logs. To access this Azure Monitor from external networks, port **13012** must be open in firewall configurations. For more information about ports required by Azure Stack, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md).
+- <!-- 2202621 --> **Azure Monitor** - Azure Stack 向管理员和用户门户添加了 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 这包括用于指标和活动日志的新资源管理器。 若要从外部网络访问此 Azure Monitor，必须在防火墙配置中打开端口 **13012**。 有关 Azure Stack 所需端口的详细信息，请参阅 [Azure Stack 数据中心集成 - 发布终结点](azure-stack-integrate-endpoints.md)。
 
    另外，“更多服务”下的“审核日志”现在显示为“活动日志”，这也是此次更改的内容。 此功能现在与 Azure 门户一致。 
 
-- <!-- 1664791 --> **Sparse files** -  When you add a New image to Azure Stack, or add an image through marketplace syndication, the image is converted to a sparse file. Images that were added prior to using Azure Stack version 1803 cannot be converted. Instead, you must use marketplace syndication to resubmit those images to take advantage of this feature. 
+- <!-- 1664791 --> **稀疏文件** - 向 Azure Stack 添加新映像时，或者通过市场联合添加映像时，映像会转换为稀疏文件。 在使用 Azure Stack 版本 1803 之前添加的映像不能进行转换， 而只能使用市场联合重新提交这些映像，以便利用此功能。 
  
    稀疏文件是一种文件格式，在减少存储空间占用并提高 I/O 方面很有效。  有关详细信息，请参阅 [Fsutil sparse](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse)（适用于 Windows Server）。 
 
 ### <a name="fixed-issues"></a>修复的问题
 
-- <!-- 1739988 --> Internal Load Balancing (ILB) now properly handles MAC addresses for back-end VMs, which causes ILB to drop packets to the back-end network when using Linux instances on the back-end network. ILB works fine with Windows instances on the back-end network. 
+- <!-- 1739988 --> 内部负载均衡 (ILB) 现在可以正确地处理后端 VM 的 MAC 地址，使 ILB 可以在后端网络上使用 Linux 实例时将数据包放置到后端网络。 ILB 适用于后端网络上的 Windows 实例。 
 
-- <!-- 1805496 --> An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure.  The values now match the values in Azure. 
+- <!-- 1805496 --> 因 Azure Stack 使用的 IKE 策略设置不同于 Azure 所用的而导致 Azure Stack 之间的 VPN 连接断开的问题。 SALifetime（时间）和 SALiftetime（字节）的值与 Azure 不兼容，在 1803 中已更改，以便与 Azure 设置匹配。 在低于 1803 的版本中，SALifetime（秒）的值为 14,400，在版本 1803 中已更改为 27,000。 在低于 1803 的版本中，SALifetime（字节）的值为 819,200，在版本 1803 中已更改为 33,553,408。
 
-- <!-- 2209262 --> The IP issue where VPN Connections was previously visible in the portal; however enabling or toggling IP Forwarding has no effect. The feature is turned on by default and the ability to change this not yet supported.  The control has been removed from the portal. 
+- <!-- 2209262 --> IP 问题，具体表现在 VPN 连接以前在门户中可见，但启用或切换“IP 转发”却没有效果。 此功能默认启用，更改此项的功能尚不受支持。  此控件已从门户中删除。 
 
-- <!-- 1766332 --> Azure Stack does not support Policy Based VPN Gateways, even though the option appears in the Portal.  The option has been removed from the Portal. 
+- <!-- 1766332 --> Azure Stack 不支持“基于策略的 VPN 网关”，即使此选项显示在门户中。  此选项已从门户中删除。 
 
-- <!-- 1868283 --> Azure Stack now prevents resizing of a virtual machine that is created with dynamic disks. 
+- <!-- 1868283 --> Azure Stack 现在阻止重设使用动态磁盘创建的虚拟机的大小。 
 
-- <!-- 1756324 --> Usage data for virtual machines is now separated at hourly intervals. This is consistent with Azure. 
+- <!-- 1756324 --> 虚拟机的使用情况数据现在按“小时”时间间隔进行划分。 这与 Azure 一致。 
 
-- <!--  2253274 --> The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and manage this information.
+- <!--  2253274 --> 管理员和用户门户中 vNet 子网的“设置”边栏选项卡无法加载的问题。 解决方法是使用 PowerShell 和 [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet 来查看和管理此信息。
 
 - 在创建虚拟机时，“无法显示定价”消息不再在选择某个大小作为 VM 大小时显示。
 
@@ -100,24 +95,33 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 
 ### <a name="changes"></a>更改
-- 将新创建的产品/服务的状态从“专用”更改为“公用”或“停止使用”的方式已变。 有关详细信息，请参阅[创建产品/服务](azure-stack-create-offer.md)。
+- 将新创建的产品/服务的状态从“专用”更改为“公用”或“停止使用”的方式已变。 有关详细信息，请参阅[创建套餐](azure-stack-create-offer.md)。
 
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题    
-<!-- 2328416 --> During installation of the 1803 update, there can be downtime of the blob service and internal services that use blob service. This includes some virtual machine operations. This down time can cause failures of tenant operations or alerts from services that can’t access data. This issue resolves itself when the update completes installation. 
+<!-- 2328416 --> 在安装 1803 更新期间，Blob 服务以及使用 Blob 服务的内部服务可能无法使用。 这包括某些虚拟机操作。 这些服务无法使用可能导致租户操作失败，或者导致无法访问数据的服务发出警报。 当更新安装完以后，此问题会自行解决。 
+
+
+
+### <a name="post-update-steps"></a>更新后步骤
+- 安装 1803 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。
+
+  - [KB 4344115-Azure Stack 修补程序 1.0.180427.15](https://support.microsoft.com/help/4344115)。
+
+- 安装此更新后，请查看防火墙配置以确保[必需的端口](azure-stack-integrate-endpoints.md)处于打开状态。 例如，此次更新引入了*Azure Monitor*包括到活动日志的审核日志的更改。 由于此更改，端口 13012 现在已使用，并且也必须处于打开状态。  
 
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
 下面是内部版本 **20180323.2** 的安装后已知问题。
 
 #### <a name="portal"></a>门户
-- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
-  解决方法： 若要解决此问题，在安装此更新后，使用从步骤 3[触发器的自动化功能来配置声明提供方信任 Azure 堆栈中的](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程重新设置默认提供程序订阅的所有者。   
+- <!-- 2332636 - IS --> 对 Azure Stack 标识系统使用 AD FS 并更新到此版本的 Azure Stack 时，默认提供程序订阅的默认所有者将重置为内置的 **CloudAdmin** 用户。  
+  解决方法：若要在安装此更新后解决该问题，请使用[触发自动化以便在 Azure Stack 中配置声明提供程序信任](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)过程中的步骤 3 来重置默认提供程序订阅的所有者。   
 
 - 在管理员门户中[从下拉列表提交新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 请改用以下链接：     
     - 对于 Azure Stack 集成系统，请使用 https://aka.ms/newsupportrequest。
 
-- <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.
+- <!-- 2050709 --> 在管理员门户中，不能编辑 Blob 服务、表服务或队列服务的存储指标。 转到“存储”并选择 Blob、表或队列服务磁贴后，就会打开一个新的边栏选项卡，其中显示该 服务的指标图表。 如果随后从指标图表磁贴顶部选择“编辑”，则会打开“编辑图表”边栏选项卡，但其中不显示用于编辑指标的选项。
 
 - 无法在管理员门户中查看计算或存储资源。 此问题的原因是更新安装过程中出错，导致系统错误地将更新报告为成功。 如果发生此问题，请联系 Microsoft 客户支持服务部门以寻求帮助。
 
@@ -136,25 +140,25 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 
 #### <a name="health-and-monitoring"></a>运行状况和监视
-- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+- <!-- 1264761 - IS ASDK --> 可能会看到具有以下详细信息的*运行状况控制器*组件的警报：  
 
-   警报 # 1:
-   - 名称： 基础结构角色不正常
-   - 严重性： 警告
-   - 组件： 运行状况控制器
-   - 描述： 检测信号扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。  
+   警报 #1：
+   - 名称：基础结构角色不正常
+   - 严重性：警告
+   - 组件：运行状况控制器
+   - 说明：运行状况控制器检测信号扫描仪不可用。 这可能会影响运行状况报告和指标。  
 
-  警报 # 2:
-   - 名称： 基础结构角色不正常
-   - 严重性： 警告
-   - 组件： 运行状况控制器
-   - 描述： 错误扫描程序的运行状况控制器不可用。 这可能会影响运行状况报告和度量值。
+  警报 #2：
+   - 名称：基础结构角色不正常
+   - 严重性：警告
+   - 组件：运行状况控制器
+   - 说明：运行状况控制器故障扫描仪不可用。 这可能会影响运行状况报告和指标。
 
-  可放心忽略这两个警报。 它们将自动关闭随着时间的推移。  
+  可以放心地忽略这两个警报。 它们将随着时间的推移自动关闭。  
 
 
-#### <a name="marketplace"></a>Marketplace
-- 用户无需订阅就能浏览整个商城，并且能看到计划和产品/服务等管理项。 对用户而言，这些项是非功能性的。
+#### <a name="marketplace"></a>市场
+- 用户无需订阅就能浏览整个市场，并且能看到计划和套餐等管理项。 对用户而言，这些项是非功能性的。
 
 
 
@@ -173,7 +177,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 -  如果在 VM 部署上预配某个扩展时耗时过长，用户应让预配超时，而不应尝试通过停止该进程来解除 VM 的分配或将 VM 删除。  
 
-- <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings.  
+- <!-- 1662991 --> Azure Stack 不支持 Linux VM 诊断。 在部署启用 VM 诊断的 Linux VM 时，部署会失败。 如果通过诊断设置启用 Linux VM 的基本指标，部署也会失败。  
 
 
 #### <a name="networking"></a>网络
@@ -191,7 +195,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 - Azure Stack 不支持在部署某个 VM 实例后向该 VM 添加其他的网络接口。 如果该 VM 需要多个网络接口，这些接口必须在部署时定义。
 
-- <!-- 2096388 --> You cannot use the admin portal to update rules for a network security group. 
+- <!-- 2096388 --> 不能使用管理员门户更新网络安全组的规则。 
 
     针对应用服务的解决方法：如需通过远程桌面连接到控制器实例，请使用 PowerShell 修改网络安全组中的安全规则。  以下示例说明了如何先将配置设置为 *allow*，然后再还原为 *deny*：  
     
@@ -262,7 +266,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 - 只有资源提供程序才能在托管 SQL 或 MySQL 的服务器上创建项目。 如果在不是由资源提供程序创建的主机服务器上创建项目，则此类项目可能导致状态不匹配。  
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
+- <!-- IS, ASDK --> 为 SQL 和 MySQL 资源提供程序创建 SKU 时，**系列**名称中不支持使用特殊字符（包括空格和句点）。
 
 > [!NOTE]  
 > 更新到 Azure Stack 1803 以后，可以继续使用以前部署的 SQL 和 MySQL 资源提供程序。  建议在新版本发布后更新 SQL 和 MySQL。 与 Azure Stack 一样，请将更新按顺序应用到 SQL 和 MySQL 资源提供程序。  例如，如果使用版本 1711，请先应用版本 1712，然后应用 1802,，再应用 1803 的更新。      

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 76ed74f2df62d478b83e109a492977ec2d580198
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 61555eb6cca6995215ce43051abbda9aa43539ec
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305083"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284832"
 ---
 # <a name="assets"></a>资产
 
@@ -50,7 +50,7 @@ ms.locfileid: "34305083"
 
 有关完整定义，请参阅[资产](https://docs.microsoft.com/rest/api/media/assets)。
 
-## <a name="filtering-ordering-and-paging-support"></a>筛选、排序和分页支持
+## <a name="filtering-ordering-paging"></a>筛选、排序、分页
 
 媒体服务支持对资产使用以下 OData 查询选项： 
 
@@ -88,7 +88,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 已启用的四个排序顺序均支持分页。 
 
-如果查询响应包含许多（当前超过 1000）项，该服务会返回“@odata.nextLink”属性以获取下一页结果。 这可用于逐页浏览整个结果集。 用户不能配置页面大小。 
+如果查询响应包含许多（当前超过 1000）项，该服务会返回“\@odata.nextLink”属性以获取下一页结果。 这可用于逐页浏览整个结果集。 用户不能配置页面大小。 
 
 如果在逐页浏览集合时创建或删除资产，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
 
@@ -105,6 +105,21 @@ while (currentPage.NextPageLink != null)
 ```
 
 有关 REST 示例，请参阅 [Assets - List](https://docs.microsoft.com/rest/api/media/assets/list)（资产 - 列出）
+
+
+## <a name="storage-side-encryption"></a>存储端加密
+
+若要保护静态资产，应通过存储端加密对资产进行加密。 下表显示了存储端加密在媒体服务中的工作方式：
+
+|加密选项|说明|媒体服务 v2|媒体服务 v3|
+|---|---|---|---|
+|媒体服务存储加密|AES-256 加密，媒体服务管理的密钥|支持<sup>(1)</sup>|不支持<sup>(2)</sup>|
+|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户管理的密钥|支持|支持|
+|[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|由 Azure 存储提供的客户端加密，由 Key Vault 中的客户管理的密钥|不支持|不支持|
+
+<sup>1</sup> 虽然媒体服务确实支持处理明文形式（未经过任何形式的加密）的内容，但不建议这样做。
+
+<sup>2</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性。 这意味着 v3 会处理现有的存储加密资产，但不会允许创建新资产。
 
 ## <a name="next-steps"></a>后续步骤
 

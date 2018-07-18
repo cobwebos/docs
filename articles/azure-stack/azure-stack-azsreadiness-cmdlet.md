@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937862"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>开始 AzsReadinessChecker cmdlet 参考
 

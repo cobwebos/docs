@@ -6,13 +6,14 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 11/07/2017
+ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 1837fc6511ac734766c55bd1c2a2a7a40219c31a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0c7f9807605236a8250d75623d0885730c9945a0
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950665"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
 
@@ -28,8 +29,8 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="find-azure-search"></a>查找 Azure 搜索
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击左上角的加号（“+”）。
-3. 选择“Web + 移动” > “Azure 搜索”。
+2. 单击左上角的加号（“+ 创建资源”）。
+3. 选择“Web” > “Azure 搜索”。
 
 ![](./media/search-create-service-portal/find-search3.png)
 
@@ -57,7 +58,8 @@ ms.lasthandoff: 04/23/2018
 作为 Azure 服务，Azure 搜索可托管在世界各地的数据中心中。 请注意，[价格因地域而异](https://azure.microsoft.com/pricing/details/search/)。
 
 ## <a name="select-a-pricing-tier-sku"></a>选择定价层 (SKU)
-[Azure 搜索当前以多个定价层提供](https://azure.microsoft.com/pricing/details/search/)：免费、基本或标准。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 有关相关指南，请参阅[选择定价层或 SKU](search-sku-tier.md)。
+
+  [Azure 搜索当前以多个定价层提供](https://azure.microsoft.com/pricing/details/search/)：免费、基本或标准。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 有关相关指南，请参阅[选择定价层或 SKU](search-sku-tier.md)。
 
 在本演练中，我们已为服务选择了标准层。
 
@@ -76,12 +78,14 @@ ms.lasthandoff: 04/23/2018
 
 ***副本***允许服务处理负载更高的搜索查询。
 
+添加资源会增加每月账单费用。 可以通过[定价计算器](https://azure.microsoft.com/pricing/calculator/)来了解添加资源对账单明细的影响。 请记住，可以根据负载来调整资源。 例如，可以通过增加资源来创建完整的初始索引，在以后再将资源减少到与增量索引编制相适应的某个程度。
+
 > [!Important]
 > 一个服务必须具有[2 个用于只读 SLA 的副本和 3 个用于读/写 SLA 的副本](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
 
 1. 在 Azure 门户中转到“搜索服务”页。
 2. 在左侧导航窗格中，选择“设置” > “缩放”。
-3. 使用滑块添加副本或分区。
+3. 使用滑块添加任一类型的资源。
 
 ![](./media/search-create-service-portal/settings-scale.png)
 

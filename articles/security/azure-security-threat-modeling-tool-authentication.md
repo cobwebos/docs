@@ -1,6 +1,6 @@
 ---
-title: "身份验证 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "针对威胁建模工具中暴露的威胁采取的缓解措施"
+title: 身份验证 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1ac614156755b9b29db7c968c708a5cff706f7a8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d53ade1e5c31ca25636b95d4f8b9e0fe29f9d081
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031101"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -41,7 +42,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -52,7 +53,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -63,7 +64,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -74,7 +75,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -85,7 +86,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -96,18 +97,18 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| 详细信息 | <p>应该实施与组织策略和最佳做法相符的密码与帐户策略。</p><p>为了防范暴力破解和基于字典的猜测：必须实现强密码策略，确保用户创建复杂密码（例如，最小长度为 12 个字符，必须包含字母数字和特殊字符）。</p><p>可按以下方式实施帐户锁定策略：</p><ul><li>**软锁定：**这可能是防止用户遭受暴力破解攻击的不错选项。 例如，每当用户输入错误的密码三次，应用程序会将其帐户锁定一分钟，以减慢暴力破解密码的过程，使攻击者的继续入侵不会有更大的利益。 对于本示例，如果想要实施硬锁定对策，可以通过永久锁定帐户来实现“Dos”。 或者，应用程序可以生成 OTP（一次性密码），并将其以带外方式（通过电子邮件、短信等）发送给用户。 另一种做法是在达到失败尝试次数的阈值后实施 CAPTCHA。</li><li>**硬锁定：**每当检测到某个用户攻击应用程序时，应该应用这种类型的锁定并对其采取对策：永久锁定其帐户，直到响应团队对其取证。 完成此过程后，可以决定是要恢复该用户的帐户，还是采取进一步的法律措施。 这种方式可以防止攻击者进一步侵入应用程序和基础结构。</li></ul><p>为了防范针对默认与可预测帐户的攻击，请验证所有密钥和密码是否可替换，并且是否是在安装后生成或替换的。</p><p>如果应用程序必须自动生成密码，请确保生成的密码是随机的并具有高熵。</p>|
+| 详细信息 | <p>应该实施与组织策略和最佳做法相符的密码与帐户策略。</p><p>为了防范暴力破解和基于字典的猜测：必须实现强密码策略，确保用户创建复杂密码（例如，最小长度为 12 个字符，必须包含字母数字和特殊字符）。</p><p>可按以下方式实施帐户锁定策略：</p><ul><li>**软锁定：** 这可能是防止用户遭受暴力破解攻击的不错选项。 例如，每当用户输入错误的密码三次，应用程序会将其帐户锁定一分钟，以减慢暴力破解密码的过程，使攻击者的继续入侵不会有更大的利益。 对于本示例，如果想要实施硬锁定对策，可以通过永久锁定帐户来实现“Dos”。 或者，应用程序可以生成 OTP（一次性密码），并将其以带外方式（通过电子邮件、短信等）发送给用户。 另一种做法是在达到失败尝试次数的阈值后实施 CAPTCHA。</li><li>**硬锁定：** 每当检测到某个用户攻击应用程序时，应该应用这种类型的锁定并对其采取对策：永久锁定其帐户，直到响应团队对其取证。 完成此过程后，可以决定是要恢复该用户的帐户，还是采取进一步的法律措施。 这种方式可以防止攻击者进一步侵入应用程序和基础结构。</li></ul><p>为了防范针对默认与可预测帐户的攻击，请验证所有密钥和密码是否可替换，并且是否是在安装后生成或替换的。</p><p>如果应用程序必须自动生成密码，请确保生成的密码是随机的并具有高熵。</p>|
 
 ## <a id="controls-username-enum"></a>实施控制来防止用户名枚举
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -118,7 +119,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | OnPrem |
 | **属性**              | SQL 版本 - 所有 |
@@ -129,18 +130,18 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure |
 | **属性**              | SQL 版本 - V12 |
 | **参考**              | [使用 Azure Active Directory 身份验证连接到 SQL 数据库](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
-| **步骤** | **最低版本：**需要安装 Azure SQL 数据库 V12 才能允许 Azure SQL 数据库针对 Microsoft 目录使用 AAD 身份验证 |
+| **步骤** | **最低版本：** 需要安装 Azure SQL 数据库 V12 才能允许 Azure SQL 数据库针对 Microsoft 目录使用 AAD 身份验证 |
 
 ## <a id="authn-account-pword"></a>使用 SQL 身份验证模式时，确保对 SQL Server 实施帐户和密码策略
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -151,7 +152,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | OnPrem、SQL Azure |
 | **属性**              | SQL 版本 - MSSQL2012，SQL 版本 - V12 |
@@ -162,7 +163,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 事件中心 | 
+| 组件               | Azure 事件中心 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -173,7 +174,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 信任边界 | 
+| 组件               | Azure 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -184,7 +185,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Service Fabric 信任边界 | 
+| 组件               | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure  |
@@ -195,7 +196,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Service Fabric 信任边界 | 
+| 组件               | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure，环境 - 独立 |
@@ -206,7 +207,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Service Fabric 信任边界 | 
+| 组件               | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure |
@@ -217,7 +218,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Service Fabric 信任边界 | 
+| 组件               | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure |
@@ -228,7 +229,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 标识服务器 | 
+| 组件               | 标识服务器 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -239,7 +240,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 标识服务器 | 
+| 组件               | 标识服务器 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -250,7 +251,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 计算机信任边界 | 
+| 组件               | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -261,7 +262,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用 |
@@ -301,11 +302,11 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 客户端凭据类型 - None |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
 | **步骤** | 缺少身份验证意味着每个人都能访问此服务。 不对其客户端进行身份验证的服务允许所有用户访问。 将应用程序配置为对客户端凭据进行身份验证。 为此，可将消息 clientCredentialType 设置为 Windows 或 Certificate。 |
 
 ### <a name="example"></a>示例
@@ -317,11 +318,11 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **属性**              | 客户端凭据类型 - None |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **步骤** | 缺少身份验证意味着每个人都能访问此服务。 不对其客户端进行身份验证的服务允许所有用户访问其功能。 将应用程序配置为对客户端凭据进行身份验证。 为此，可将传输 clientCredentialType 设置为 Windows 或 Certificate。 |
 
 ### <a name="example"></a>示例
@@ -333,7 +334,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -344,7 +345,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure AD | 
+| 组件               | Azure AD | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -355,7 +356,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure AD | 
+| 组件               | Azure AD | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -366,7 +367,7 @@ ms.lasthandoff: 01/24/2018
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure AD | 
+| 组件               | Azure AD | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -427,7 +428,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure AD | 
+| 组件               | Azure AD | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -438,7 +439,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 现场网关 | 
+| 组件               | IoT 现场网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -449,12 +450,12 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 云网关 | 
+| 组件               | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、C#、Node.JS,  |
 | **属性**              | 不适用，网关选项 - Azure IoT 中心 |
 | **参考**              | 不适用，[使用 .NET 的 Azure IoT 中心](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[IoT 中心和 Node JS 入门](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、[使用 SAS 和证书保护 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、[Git 存储库](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
-| **步骤** | <ul><li>**泛型：**使用传输层安全性 (TLS) 或 IPSec 对设备进行身份验证。 如果设备无法处理完全非对称加密，则基础结构应该支持在这些设备上使用预共享密钥 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：**创建 DeviceClient 实例时，Create 方法默认创建使用 AMQP 协议来与 IoT 中心通信的 DeviceClient 实例。 要使用 HTTPS 协议，请使用 Create 方法的重写，它可以让你指定协议。 如果使用 HTTPS 协议，则还应在项目中添加 `Microsoft.AspNet.WebApi.Client` NuGet 包，以包含 `System.Net.Http.Formatting` 命名空间。</li></ul>|
+| **步骤** | <ul><li>**泛型：** 使用传输层安全性 (TLS) 或 IPSec 对设备进行身份验证。 如果设备无法处理完全非对称加密，则基础结构应该支持在这些设备上使用预共享密钥 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：** 创建 DeviceClient 实例时，Create 方法默认创建使用 AMQP 协议来与 IoT 中心通信的 DeviceClient 实例。 要使用 HTTPS 协议，请使用 Create 方法的重写，它可以让你指定协议。 如果使用 HTTPS 协议，则还应在项目中添加 `Microsoft.AspNet.WebApi.Client` NuGet 包，以包含 `System.Net.Http.Formatting` 命名空间。</li></ul>|
 
 ### <a name="example"></a>示例
 ```csharp
@@ -549,7 +550,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 云网关  | 
+| 组件               | IoT 云网关  | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
@@ -560,7 +561,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -571,7 +572,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用 |

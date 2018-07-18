@@ -1,11 +1,11 @@
 ---
-title: "Azure BizTalk 服务文档 - 教程 | Microsoft 文档"
-description: "了解如何使用 BizTalk 服务为 SAP、Oracle EBS、SQL Server 和 PeopleSoft 提供云到本地和业务线应用程序的集成。"
+title: Azure BizTalk 服务文档 - 教程 | Microsoft 文档
+description: 了解如何使用 BizTalk 服务为 SAP、Oracle EBS、SQL Server 和 PeopleSoft 提供云到本地和业务线应用程序的集成。
 services: biztalk-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: biztalk-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26625090"
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk 服务文档
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell 脚本示例 - 创建托管应用程序定义 | Microsoft Docs"
-description: "Azure PowerShell 脚本示例 - 创建托管应用程序定义"
+title: Azure PowerShell 脚本示例 - 创建托管应用程序定义 | Microsoft Docs
+description: Azure PowerShell 脚本示例 - 创建托管应用程序定义
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23636987"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>使用 PowerShell 创建托管应用程序定义
 

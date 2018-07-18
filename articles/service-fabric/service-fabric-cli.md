@@ -6,13 +6,14 @@ author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 05/23/2018
 ms.author: bikang
-ms.openlocfilehash: 7b62631bd386a2feaa675b0ebd234768bec2f5e1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0c5509d323f14a6bb62f465fa23584ca927e0e61
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763351"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -32,7 +33,8 @@ Service Fabric CLI 旨在支持 Service Fabric SDK 的最新运行时版本。 �
 
 | CLI 版本   | 支持的运行时版本 |
 |---------------|---------------------------|
-| 最新 (~=4)  | 最新 (~=6.1)            |
+| 最新 (~=5)  | 最新 (~=6.2)            |
+| 4.0.0         | 6.1                       |
 | 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
 
@@ -69,7 +71,7 @@ python --version
 pip --version
 ```
 
-然后运行以下命令，安装 Service Fabric CLI：
+然后运行以下命令来安装 Azure Service Fabric CLI (sfctl) 并查看 CLI 帮助页：
 
 ```bat
 pip install sfctl
@@ -120,7 +122,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-如需对安装进行测试，可参阅“适用于 Linux 的 Ubuntu 和 Windows 子系统”部分提到的步骤。
+如需对安装进行测试，可参阅“适用于 Linux 的 Ubuntu 和 Windows 子系统”部分中提到的步骤
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
@@ -231,13 +233,13 @@ openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certif
 
 某些操作可能会生成以下消息：
 
-`Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known`
+`Failed to establish a new connection`
 
 验证指定的群集终结点是否可用且正进行侦听。 另请验证是否可以在该主机和端口上使用 Service Fabric Explorer UI。 若要更新终结点，请使用 `sfctl cluster select`。
 
 ### <a name="detailed-logs"></a>详细日志
 
-调试或报告某个问题时，详细日志通常很有用。 全局 `--debug` 标志可提高日志文件的详细程度。
+调试或报告某个问题时，详细日志通常很有用。 `--debug` 标志可提高输出的详细程度。
 
 ### <a name="command-help-and-syntax"></a>命令帮助和语法
 

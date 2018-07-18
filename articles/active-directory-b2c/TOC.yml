@@ -16,8 +16,8 @@
       href: active-directory-b2c-quickstarts-spa.md
 - name: 教程
   items:
-    - name: 1 - 注册应用程序
-      href: tutorial-register-applications.md
+    - name: 1 - 创建 B2C 租户
+      href: tutorial-create-tenant.md
     - name: 2 - 对帐户进行身份验证
       items:
         - name: ASP.NET
@@ -157,6 +157,8 @@
           href: b2clogin.md
         - name: 使用年龄门控
           href: basic-age-gating.md
+        - name: 直接登录
+          href: direct-signin.md
     - name: 标识体验框架
       items:
         - name: 自定义策略

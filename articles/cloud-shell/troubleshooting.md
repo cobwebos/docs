@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: damaerte
-ms.openlocfilehash: 3c01a31eae2b90ecb54cbfba7f565fd140db3773
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608944"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -43,11 +44,6 @@ ms.lasthandoff: 04/19/2018
  - **解决方法**：检查是否已将网络设置配置为允许向域（*.console.azure.com）发送 https 请求和 websocket 请求。
 
 ## <a name="bash-troubleshooting"></a>Bash 故障排除
-
-### <a name="cannot-run-az-login"></a>无法运行 az login
-
-- **详细信息**：无法运行 `az login`，原因是已在用于登录 Cloud Shell 或 Azure 门户的帐户下进行身份验证。
-- **解决方法**：利用用于登录或注销的帐户并对目标 Azure 帐户重新进行身份验证。
 
 ### <a name="cannot-run-the-docker-daemon"></a>无法运行 docker 守护程序
 

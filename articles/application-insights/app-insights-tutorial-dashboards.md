@@ -1,7 +1,7 @@
 ---
-title: "在 Azure Application Insights 中创建自定义仪表板 | Microsoft Docs"
-description: "使用 Azure Application Insights 创建自定义 KPI 仪表板的教程。"
-keywords: 
+title: 在 Azure Application Insights 中创建自定义仪表板 | Microsoft Docs
+description: 使用 Azure Application Insights 创建自定义 KPI 仪表板的教程。
+keywords: ''
 services: application-insights
 author: mrbullwinkle
 ms.author: mbullwin
@@ -15,6 +15,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29178185"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 

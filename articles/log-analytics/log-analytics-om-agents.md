@@ -3,7 +3,7 @@ title: 将 Operations Manager 连接到 Log Analytics | Microsoft Docs
 description: 若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与工作区集成。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/03/2018
+ms.topic: conceptual
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: b11cffcb006ba4f0598bd7f5cf6ed13daad2db42
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: 29ab649f8fe06ae598ff138ff98eb2611ec38e1f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128871"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。  这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
@@ -77,7 +79,9 @@ ms.lasthandoff: 05/10/2018
 如果这是首次向 Log Analytics 工作区注册 Operations Manager 管理组，且管理服务器需通过代理或 OMS 网关服务器与服务通信，则为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
 
 1. 打开提升的命令指示符。
-1. 键入以下命令并按 Enter：
+   a. 转到“启动”，然后键入“cmd”。
+   b. 右键单击“命令提示符”然后选择“以管理员身份运行”**。
+2. 键入以下命令并按 Enter：
 
     `netsh winhttp set proxy <proxy>:<port>`
 
@@ -112,7 +116,7 @@ ms.lasthandoff: 05/10/2018
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 展开 Operations Management Suite，并单击“**连接**”。
 3. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
-4. 在“Operations Management Suite 向导: 代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，键入包含端口号的 URL，例如 http://corpproxy:80，并单击“完成”。
+4. 在“Operations Management Suite 向导: 代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，键入包含端口号的 URL，例如 http://corpproxy:80 ，并单击“完成”。
 
 如果代理服务器要求身份验证，请执行以下步骤，配置需要向管理组中 OMS 报告的受管理计算机传播的凭据和设置。
 
@@ -197,9 +201,9 @@ ms.lasthandoff: 05/10/2018
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
-1. 打开 Azure 门户中 Log Analytics 工作区的“高级设置”菜单。
-1. 选择“已连接的源”，然后选择“System Center”。
-1. 应该会出现要从工作区删除的管理组的名称。  在“**最后的数据**”列下，单击“**移除**”。  
+7. 在 OMS 门户中，单击“设置”磁贴。
+8. 选择“**相连的源**”。
+9. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。  在“**最后的数据**”列下，单击“**移除**”。  
    
     > [!NOTE]
     > 如果没有从连接的管理组中检测到活动，“移除”链接在 14 天后才可用。  
@@ -210,7 +214,7 @@ ms.lasthandoff: 05/10/2018
 要删除两个连接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor Connector，请将以下 PowerShell 脚本保存到计算机，并使用以下示例执行删除：
 
 ```
-    .\OM2012_DeleteConnector.ps1 “Advisor Connector” <ManagementServerName>
+    .\OM2012_DeleteConnectors.ps1 “Advisor Connector” <ManagementServerName>
     .\OM2012_DeleteConnectors.ps1 “Microsoft.SytemCenter.Advisor.DataConnector” <ManagementServerName>
 ```
 

@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用客户端证书保护 RESTful 服务
+title: 在 Azure Active Directory B2C 中使用客户端证书保护 RESTful 服务 | Microsoft Docs
 description: 使用客户端证书保护 Azure AD B2C 中的自定义 REST API 声明交换
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: fb5c8a48a676a2909cce3c4d126218e48a4c8ce2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 0832b3b8e0b2b6d7459eeddb8d8e5a93a7f17d09
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448343"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 
@@ -38,21 +38,13 @@ ms.lasthandoff: 04/18/2018
 * 获取有效的证书（包含私钥的 .pfx 文件）。
 
 ## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>步骤 1：将 Web 应用配置为使用客户端证书身份验证
-若要将 **Azure 应用服务**设置为要求提供客户端证书，请将 Web 应用的 `clientCertEnabled` 站点设置指定为 *true*。 若要进行此项更改，必须使用 REST API。 可通过 Azure 门户中的管理体验完成此项设置。 若要找到该项设置，请在 RESTful 应用程序的“设置”菜单中的“开发工具”下面，选择“资源浏览器”。
+若要将 **Azure 应用服务**设置为要求提供客户端证书，请将 Web 应用的 `clientCertEnabled` 站点设置指定为 *true*。 若要进行此更改，请在 Azure 门户中打开 Web 应用页。 在左侧导航栏中的“设置”下，选择“SSL 设置”。 在“客户端证书”部分中，启用“传入客户端证书”选项。
 
 >[!NOTE]
 >确保 Azure 应用服务计划使用标准或更高的层。 有关详细信息，请参阅 [Azure 应用服务计划深入概述](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)。
 
-
-使用 [Azure 资源浏览器（预览版）](https://resources.azure.com)将 **clientCertEnabled** 属性设置为 *true*，如下图所示：
-
-![通过 Azure 资源浏览器设置 clientCertEnabled](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-resource-explorer.png)
-
 >[!NOTE]
 >有关设置 **clientCertEnabled** 属性的详细信息，请参阅[为 Web 应用配置 TLS 相互身份验证](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)。
-
->[!TIP]
->或者，可以使用 [ARMClient](https://github.com/projectkudu/ARMClient) 工具更轻松地编写 REST API 调用。
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>步骤 2：将证书上传到 Azure AD B2C 策略密钥
 将 `clientCertEnabled` 设置为 *true* 之后，与 RESTful API 之间的通信需要客户端证书。 若要获取、上传以及在 Azure AD B2C 租户中存储客户端证书，请执行以下操作： 

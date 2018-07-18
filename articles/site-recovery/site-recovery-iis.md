@@ -6,13 +6,14 @@ author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 1ed0184ac76b5fb3e607458559327da5e8fe90c5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 830ced767a34302a635b9e685a2aee60c95fc81f
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920842"
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application"></a>复制基于 IIS 的多层 Web 应用程序
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确保知道如何执行以下任务：
+开始之前，请确保自己知道如何执行以下任务：
 
 * [将虚拟机复制到 Azure](vmware-azure-tutorial.md)
 * [设计恢复网络](site-recovery-network-design.md)
@@ -58,12 +59,12 @@ ms.lasthandoff: 03/08/2018
 
 ### <a name="source-and-target"></a>源和目标
 
-方案 | 到辅助站点 | 到 Azure
+场景 | 到辅助站点 | 到 Azure
 --- | --- | ---
 Hyper-V | 是 | 是
 VMware | 是 | 是
 物理服务器 | 否 | 是
-Azure|不可用|是
+Azure|NA|是
 
 ## <a name="replicate-virtual-machines"></a>复制虚拟机
 
@@ -95,7 +96,7 @@ Azure|不可用|是
 在故障转移后或测试故障转移期间，可能需要在 Azure 虚拟机上执行一些操作才能让 IIS Web 场正常工作。 可将某些故障转移后的操作自动化。 例如，可在恢复计划中添加相应的脚本，来更新 DNS 条目、更改站点绑定或更改连接字符串。 [将 VMM 脚本添加到恢复计划](site-recovery-how-to-add-vmmscript.md)介绍了如何使用脚本来设置自动化任务。
 
 #### <a name="dns-update"></a>DNS 更新
-如果为动态 DNS 更新配置了 DNS，则虚拟机在启动时，通常会使用新的 IP 地址更新 DNS。 如果想要添加一个明确的步骤来使用虚拟机的新 IP 地址更新 DNS，请添加这个[用于更新 DNS 中的 IP 的脚本](https://aka.ms/asr-dns-update)，作为恢复计划组中的故障转移后操作。  
+如果为 DNS 配置了动态 DNS 更新，则虚拟机在启动时，通常会使用新的 IP 地址更新 DNS。 如果想要添加一个明确的步骤来使用虚拟机的新 IP 地址更新 DNS，请添加这个[用于更新 DNS 中的 IP 的脚本](https://aka.ms/asr-dns-update)，作为恢复计划组中的故障转移后操作。  
 
 #### <a name="connection-string-in-an-applications-webconfig"></a>应用程序 web.config 中的连接字符串
 连接字符串指定与网站通信的数据库。 如果连接字符串包含数据库虚拟机的名称，则故障转移后无需进行其他步骤。 应用程序可自动与数据库通信。 此外，如果数据库虚拟机的 IP 地址得到保留，则不需要更新连接字符串。 

@@ -1,25 +1,26 @@
 ---
-title: "在 Azure 中部署 OpenShift 容器平台 | Microsoft Docs"
-description: "在 Azure 中部署 OpenShift 容器平台。"
+title: 在 Azure 中部署 OpenShift 容器平台 | Microsoft Docs
+description: 在 Azure 中部署 OpenShift 容器平台。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
 ms.openlocfilehash: f1ba6a3d3b9e576d513b55beac4e9365102433e9
 ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29125735"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>在 Azure 中部署 OpenShift 容器平台
 

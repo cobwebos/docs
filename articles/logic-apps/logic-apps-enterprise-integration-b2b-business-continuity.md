@@ -1,11 +1,11 @@
 ---
-title: "B2B 集成帐户的灾难恢复 - Azure 逻辑应用 | Microsoft Docs"
-description: "逻辑应用 B2B 灾难恢复"
+title: B2B 集成帐户的灾难恢复 - Azure 逻辑应用 | Microsoft Docs
+description: 逻辑应用 B2B 灾难恢复
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 0ef3965adac03f21c386765a43290c93d58d1c18
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 1882207207327214ee6519a98715d06a7e32ab93
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045596"
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>逻辑应用 B2B 跨区域灾难恢复
 
@@ -84,7 +85,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 根据控制编号，设计 EDI X12 文档的业务连续性：
 
 > [!TIP]
-> 还可使用 [X12 快速入门模板](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/)创建逻辑应用。 使用该模板的先决条件是创建主要和次要的集成帐户。 该模板有助于创建两个逻辑应用，一个用于接收的控制编号，另一个用于生成的控制编号。 各自的触发器和操作会在逻辑应用中创建，然后将触发器连接到主要集成帐户，将操作连接到次要集成帐户。
+> 还可使用 [X12 快速入门模板](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/)创建逻辑应用。 使用该模板的先决条件是创建主要和次要的集成帐户。 该模板有助于创建两个逻辑应用，一个用于接收的控制编号，另一个用于生成的控制编号。 各自的触发器和操作会在逻辑应用中创建，然后将触发器连接到主要集成帐户，将操作连接到次要集成帐户。
 
 **先决条件**
 

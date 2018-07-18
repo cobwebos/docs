@@ -1,11 +1,11 @@
 ---
-title: "创建和管理混合连接 | Microsoft Docs"
-description: "了解如何创建混合连接、管理连接以及安装混合连接管理器。 MABS，WABS"
+title: 创建和管理混合连接 | Microsoft Docs
+description: 了解如何创建混合连接、管理连接以及安装混合连接管理器。 MABS，WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aac0546b-3bae-41e0-b874-583491a395ea
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26628838"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>创建和管理混合连接
 

@@ -1,22 +1,22 @@
 ---
 title: 如何使用 Azure 资源管理器模板管理 Azure 时序见解环境 | Microsoft Docs
 description: 本文介绍如何使用 Azure 资源管理器以编程方式管理 Azure 时序见解环境。
-services: time-series-insights
 ms.service: time-series-insights
-author: sandshadow
+services: time-series-insights
+author: ashannon7
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 8355248f28a019ef4712f542c8eac731362330ce
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 561483b801773b39ed2ff61efa1496eba472530d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293347"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
@@ -92,7 +92,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
    | --- | --- |
    | eventHubNamespaceName | 源事件中心的命名空间。 |
    | eventHubName | 源事件中心的名称。 |
-   | consumerGroupName | 由时序见解服务用来从事件中心读取数据的使用者组的名称。 **注意：**为了避免资源争用，此使用者组必须专门用于时序见解服务，而不能与其他读取者共享。 |
+   | consumerGroupName | 由时序见解服务用来从事件中心读取数据的使用者组的名称。 **注意：** 为了避免资源争用，此使用者组必须专门用于时序见解服务，而不能与其他读取者共享。 |
    | environmentName | 环境的名称。 此名称不能包含：'<', '>', '%', '&', ':', '\\', '?', '/' 和任何控制字符。 允许其他所有字符。|
    | eventSourceName | 事件源子资源的名称。 此名称不能包含：'<', '>', '%', '&', ':', '\\', '?', '/' 和任何控制字符。 允许其他所有字符。 |
 
@@ -100,7 +100,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
    | 参数 | 说明 |
    | --- | --- |
-   | existingEventHubResourceId | 要通过事件源连接到时序见解环境的现有事件中心的可选资源 ID。 **注意：**部署模板的用户必须有权对事件中心执行 listkeys 操作。 如果未传递任何值，则模板会创建新的事件中心。 |
+   | existingEventHubResourceId | 要通过事件源连接到时序见解环境的现有事件中心的可选资源 ID。 **注意：** 部署模板的用户必须有权对事件中心执行 listkeys 操作。 如果未传递任何值，则模板会创建新的事件中心。 |
    | environmentDisplayName | 要在工具或用户界面中显示的可选友好名称，而不是环境名称。 |
    | environmentSkuName | SKU 的名称。 有关详细信息，请参阅[时序见解定价页](https://azure.microsoft.com/pricing/details/time-series-insights/)。  |
    | environmentSkuCapacity | SKU 的单位容量。 有关详细信息，请参阅[时序见解定价页](https://azure.microsoft.com/pricing/details/time-series-insights/)。|

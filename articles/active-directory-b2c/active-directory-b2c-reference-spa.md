@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：使用隐式流的单页应用 | Microsoft Docs
+title: Azure Active Directory B2C 中使用隐式流的单页应用 | Microsoft Docs
 description: 了解如何直接通过使用 Azure Active Directory B2C 的 OAuth 2.0 隐式流生成单页应用。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2017
 ms.author: davidmu
-ms.openlocfilehash: 3347eac16e447091ffcaaf403e1291e2c7175a2d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: B2C
+ms.openlocfilehash: ee341fd3b54d748849da34cd11db30e5ea758fb1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445260"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C：使用 OAuth 2.0 隐式流的单页应用登录
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/16/2018
 
 Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](active-directory-b2c-reference-policies.md)。 通过该策略参数，你可以使用 OAuth 2.0 向应用添加用户体验，例如注册、登录和配置文件管理。 在本文中，我们将介绍如何使用隐式流和 Azure AD 在单页应用程序中实现上述每种体验。 为了帮助你开始操作，请查看我们的 [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) 和 [Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) 示例。
 
-在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 fabrikamb2c.onmicrosoft.com。此外，我们还使用自己的示例应用程序和策略。 你可以使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
+在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 fabrikamb2c.onmicrosoft.com。 此外，我们还使用自己的示例应用程序和策略。 你可以使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
 了解如何[获取自己的 Azure AD B2C 目录、应用程序和策略](#use-your-own-b2c-tenant)。
 
 

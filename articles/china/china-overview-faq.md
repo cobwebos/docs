@@ -1,6 +1,6 @@
 ---
-title: "Azure 中国世纪互联常见问题解答 | Microsoft Docs"
-description: "获取有关世纪互联运营的 Microsoft Azure (Microsoft Azure) 的常见问题的解答。 主题包括帐户和订阅、门户及操作。"
+title: Azure 中国世纪互联常见问题解答 | Microsoft Docs
+description: 获取有关世纪互联运营的 Microsoft Azure (Microsoft Azure) 的常见问题的解答。 主题包括帐户和订阅、门户及操作。
 services: china
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23635189"
 ---
 # <a name="azure-china-21vianet-faq"></a>Azure 中国世纪互联常见问题解答
 获取有关世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）的常见问题的解答。 所述的主题包括帐户和订阅、门户及操作。

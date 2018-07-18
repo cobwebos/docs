@@ -4,21 +4,23 @@ description: 可以通过 Log Analytics 中的视图设计器创建自定义视�
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: ''
 ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/18/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: d63d47c39054230307416e24ed1c8295fbf68d93
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: d900a778aa003357fb85d3e8ec8e40dee64f0f9c
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131848"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>在 Log Analytics 中使用视图设计器创建自定义视图
 在 [Azure Log Analytics](log-analytics-overview.md) 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
@@ -54,13 +56,14 @@ ms.lasthandoff: 03/16/2018
 |:--|:--|
 | 刷新   | 使用最新数据刷新视图。 | 
 | 分析 | 打开[高级分析门户](log-analytics-log-search-portals.md#advanced-analytics-portal)，使用日志搜索对数据进行分析。 |
-| 筛选器    | 为包含在视图中的数据设置时间筛选器。 |
-| 编辑      | 在视图设计器中打开视图，以便编辑其内容和配置。  |
-| 克隆     | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
+| 编辑       | 在视图设计器中打开视图，以便编辑其内容和配置。  |
+| 克隆      | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
+| 日期范围 | 为视图中包含的数据设置日期和时间范围筛选器。 |
+| +          | 定义为视图定义的自定义筛选器。 |
 
 
 ## <a name="create-a-new-view"></a>创建新视图
-可以在视图设计器中创建新视图，方法是在 Log Analytics 工作区中的“概览”页中选择“视图设计器”磁贴。
+可以在视图设计器中创建新视图，方法是在 Log Analytics 工作区的菜单中选择“视图设计器”。
 
 ![视图设计器磁贴](media/log-analytics-view-designer/view-designer-tile.png)
 
@@ -103,7 +106,6 @@ ms.lasthandoff: 03/16/2018
 | 导出      | 将视图导出至 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)，可将此模板导入其它工作区。 文件的名称为视图的名称，包含 *omsview* 扩展名。 |
 | 导入      | 导入从另一个工作区中导出的 *omsview* 文件。 此操作覆盖现有视图的配置。 |
 | 克隆       | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
-| 发布     | 将视图导出到可插入到[管理解决方案](../operations-management-suite/operations-management-suite-solutions-resources-views.md)中的 JSON 文件。 文件名与视图名相同，但带有 *json* 扩展名。 使用扩展名 *resjson* 创建的第二个文件包含在 JSON 文件中定义的资源的值。
 
 ## <a name="next-steps"></a>后续步骤
 * 将[磁贴](log-analytics-view-designer-tiles.md)添加到自定义视图。

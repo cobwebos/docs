@@ -3,16 +3,17 @@ title: Azure Analysis Services 教程第 11 课：创建角色 | Microsoft Docs
 description: 介绍了在 Azure Analysis Services 教程项目中如何创建角色。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7a34884482a53a9b96dac87dc30803be08fdc806
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 38c69b65d33a915d0b7cf43dc8ef5d43413163eb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441237"
 ---
 # <a name="create-roles"></a>创建角色
 

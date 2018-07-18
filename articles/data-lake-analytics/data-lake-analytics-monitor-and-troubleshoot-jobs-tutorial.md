@@ -1,25 +1,21 @@
 ---
-title: 使用 Azure 门户监视 Azure Data Lake Analytics 中的作业 | Microsoft Docs
-description: '了解如何使用 Azure 门户对 Data Lake Analytics 作业进行疑难解答。 '
+title: 使用 Azure 门户监视 Azure Data Lake Analytics 中的作业
+description: 本文介绍如何使用 Azure 门户对 Azure Data Lake Analytics 作业进行故障排除。
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
-ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 14b1f4ec9dff78e4b5d2480755a4b1f2579ec135
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+manager: kfile
+editor: jasonwhowell
+ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
+ms.topic: conceptual
+ms.date: 12/05/2016
+ms.openlocfilehash: 8c61b8736dfb13f0c2c2520f22979ac51646e05f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33884773"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623649"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户监视 Azure Data Lake Analytics 中的作业
 

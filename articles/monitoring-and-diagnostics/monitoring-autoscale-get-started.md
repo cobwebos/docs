@@ -1,24 +1,19 @@
 ---
-title: "Azure 中的自动缩放入门 | Microsoft Docs"
-description: "了解如何在 Azure 中缩放资源。"
+title: Azure 中的自动缩放入门
+description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、虚拟机或虚拟机规模集。
 author: rajram
-manager: rboucher
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
-ms.openlocfilehash: 84ce3af2bef1e3204ad91567d155d7cbf90e9c7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 2781e718e3829c13dcc8cdd998936cfba30d8550
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263640"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -59,11 +54,11 @@ Azure Monitor 自动缩放功能仅适用于虚拟机规模集、云服务、Azu
 
     c. 将“阈值”设置为 20。
 
-    d.单击“下一步”。 将“操作”设置为“按以下值递减计数”。
+    d. 将“操作”设置为“按以下值递减计数”。
 
    现在应已创建一个可以根据 CPU 使用率进行扩展/缩减的缩放设置。
    ![基于 CPU 进行缩放][8]
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 
 祝贺你！ 现已成功创建第一个缩放设置，用于根据 CPU 使用率自动缩放 Web 应用。
 

@@ -1,11 +1,11 @@
 ---
-title: "安装 Microsoft Azure StorSimple 8100 设备 | Microsoft 文档"
-description: "介绍如何在部署和配置软件之前打开 StorSimple 8100 设备的包装并进行机架安装和布线。"
+title: 安装 Microsoft Azure StorSimple 8100 设备 | Microsoft 文档
+description: 介绍如何在部署和配置软件之前打开 StorSimple 8100 设备的包装并进行机架安装和布线。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,11 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 5fbc407a9792d033037fdaa2b14f4055d94c15ab
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38701936"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>打开 StorSimple 8100 设备的包装并进行机架安装和布线
 ## <a name="overview"></a>概述
@@ -156,7 +157,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 ## <a name="cable-your-storsimple-8100-device"></a>进行 StorSimple 8100 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8100 设备布线。
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 在开始进行设备布线之前，需要：
 
 * 存储设备已完全打开包装并已完成机架安装。

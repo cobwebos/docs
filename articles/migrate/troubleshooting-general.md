@@ -3,14 +3,15 @@ title: 排查 Azure Migrate 问题 | Microsoft 文档
 description: 概述 Azure Migrate 服务中的已知问题，并针对常见错误提供故障排除技巧。
 author: rayne-wiselman
 ms.service: azure-migrate
-ms.topic: troubleshooting
-ms.date: 05/15/2018
+ms.topic: conceptual
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: a878bab2bef31ff853dbad503a706e1a8d5803fe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 896e918f6031f3bc6b925a2ecdfa2a5c82f00e0b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228248"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -18,8 +19,29 @@ ms.lasthandoff: 05/16/2018
 
 [Azure Migrate](migrate-overview.md) 会评估要迁移到 Azure 的本地工作负载。 使用本文内容来排查在部署和使用 Azure Migrate 期间出现的问题。
 
+### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>无法创建迁移项目，错误消息为“请求必须包含用户标识头”
 
-收集器不能连接到 Internet
+如果用户无权访问组织的 Azure Active Directory (Azure AD) 租户，可能会发生此问题。 首次添加到 Azure AD 租户中时，用户会收到一封电子邮件，邀请其加入租户。 用户需要访问电子邮件并接受邀请，才能被成功添加到租户中。 如果看不到电子邮件，请联系已有权访问租户的用户，让其按照[此处](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)介绍的步骤操作，重新向你发送邀请。
+
+收到邀请电子邮件后，需要打开电子邮件，并单击电子邮件中的链接来接受邀请。 完成此操作后，需要注销 Azure 门户并重新登录，刷新浏览器并不起作用。 然后，可以尝试创建迁移项目。
+
+### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>磁盘和网络适配器的性能数据显示为零
+
+如果在 vCenter 服务器上的统计信息设置级别设置为小于 3，便会出现此问题。 在级别 3 或更高级别上，vCenter 存储有关计算、存储和网络的 VM 性能历史记录。 如果小于级别 3，vCenter 将不会存储存储器和网络数据，而只存储 CPU 和内存数据。 在此方案中，性能数据在 Azure Migrate 中显示为零，而 Azure Migrate 根据从本地计算机上收集的元数据，为磁盘和网络提供大小建议。
+
+若要启用磁盘和网络性能数据收集，请将统计信息设置级别更改为 3。 然后，至少等待一天来发现环境并进行评估。
+
+### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>我已安装代理并使用依赖项可视化效果创建组。 现在，在执行故障转移后，计算机显示“安装代理”操作，而不是“查看依赖项”
+* 发布计划或计划外故障转移，本地计算机将处于关闭状态，而等效计算机会在 Azure 中处于启动状态。 这些计算机将获得一个不同的 MAC 地址。 它们可能会根据用户是否选择保留本地 IP 地址而获得不同的 IP 地址。 如果 MAC 和 IP 地址不同，Azure Migrate 则不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
+* 发布测试故障转移，本地计算机会按预期保持开启状态。 在 Azure 中启动的等效计算机将获取不同的 MAC 地址，并且可能会获取不同的 IP 地址。 除非用户阻止从这些计算机输出 Log Analytics 流量，否则 Azure Migrate 不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
+
+## <a name="collector-errors"></a>收集器错误
+
+### <a name="deployment-of-collector-ova-failed"></a>无法部署收集器 OVA
+
+如果未全部下载 OVA，或因浏览器原因（使用 vSphere Web 客户端部署 OVA 的话），可能会发生这种情况。 请确保完整下载 OVA，并尝试使用其他浏览器部署 OVA。
+
+### <a name="collector-is-not-able-to-connect-to-the-internet"></a>收集器无法连接到 Internet
 
 若所用的计算机使用代理，则可能发生这种情况。 请确保提供代理所需的授权凭据。
 如果使用任何基于 URL 的防火墙代理控制出站连接，请确保将下列必需的 URL 列入允许列表：
@@ -42,7 +64,7 @@ ms.lasthandoff: 05/16/2018
 7. 验证代理是否可以连接到该项目。 如果不能，则验证设置。 如果代理可以连接，但收集器无法连接，请联系支持部门。
 
 
-错误 802：收到日期和时间同步错误。
+### <a name="error-802-date-and-time-synchronization-error"></a>错误 802：日期和时间同步错误
 
 服务器时钟可能与当前时间不同步，相差超过 5 分钟。 更改收集器 VM 上的时钟时间以匹配当前时间，如下所示：
 
@@ -50,20 +72,32 @@ ms.lasthandoff: 05/16/2018
 2. 若要检查时区，请运行 w32tm /tz。
 3. 若要同步时间，请运行 w32tm /resync。
 
-我的项目密钥在末端有“==”符号。这些符号通过收集器编码为其他字母数字字符。** 这是正常情况吗？
+### <a name="vmware-powercli-installation-failed"></a>无法安装 VMware PowerCLI
 
-是的，每个项目密钥均以“==”结尾。 收集器在处理项目密钥前会对其进行加密。
+Azure Migrate 收集器下载 PowerCLI，并在设备上安装它。 无法安装 PowerCLI 可能是因为 PowerCLI 存储库的终结点无法访问。 若要排除故障，请尝试按照以下步骤操作，在收集器 VM 中手动安装 PowerCLI：
 
-磁盘和网络适配器的性能数据显示为零
+1. 在管理员模式下打开 Windows PowerShell
+2. 转到目录 C:\ProgramFiles\ProfilerService\VMWare\Scripts\
+3. 运行脚本 InstallPowerCLI.ps1
 
-如果在 vCenter 服务器上的统计信息设置级别设置为小于 3，便会出现此问题。 在级别 3 或更高级别上，vCenter 存储有关计算、存储和网络的 VM 性能历史记录。 如果小于级别 3，vCenter 将不会存储存储器和网络数据，而只存储 CPU 和内存数据。 在此方案中，性能数据在 Azure Migrate 中显示为零，而 Azure Migrate 根据从本地计算机上收集的元数据，为磁盘和网络提供大小建议。
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>UnhandledException 错误 发生内部错误: System.IO.FileNotFoundException
 
-若要启用磁盘和网络性能数据收集，请将统计信息设置级别更改为 3。 然后，至少等待一天来发现环境并进行评估。
+这是在收集器版本低于 1.0.9.5 时出现的问题。 如果使用的收集器是 1.0.9.2 版或预发行版本（例如 1.0.8.59），则会遇到此问题。 请访问[此处提供的论坛链接，获取详细的解答](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate)。
 
-我已安装代理并使用依赖项可视化效果创建组。现发布故障转移，计算机会显示“安装代理”操作，而不是“查看依赖项”
-* 发布计划或计划外故障转移，本地计算机将处于关闭状态，而等效计算机会在 Azure 中处于启动状态。 这些计算机将获得一个不同的 MAC 地址。 它们可能会根据用户是否选择保留本地 IP 地址而获得不同的 IP 地址。 如果 MAC 和 IP 地址不同，Azure Migrate 则不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
-* 发布测试故障转移，本地计算机会按预期保持开启状态。 在 Azure 中启动的等效计算机将获取不同的 MAC 地址，并且可能会获取不同的 IP 地址。 除非用户阻止从这些计算机输出 Log Analytics 流量，否则 Azure Migrate 不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
+[通过升级收集器来解决问题](https://aka.ms/migrate/col/checkforupdates)。
 
+### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer 错误
+
+无法连接到 vCenter Server“Servername.com:9443”，因为存在以下错误：在可以接受消息的 https://Servername.com:9443/sdk 上没有终结点在侦听。
+
+检查要运行的收集器设备是否是最新版本。如果不是，将设备升级到[最新版本](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector)。
+
+如果是最新版本但此问题仍出现，可能是因为收集器设备无法解析指定的 vCenter Server 名称，或指定的端口不正确。 默认情况下，如果端口未指定，收集器会尝试连接到端口号 443。
+
+1. 请尝试在收集器设备中对 Servername.com 执行 ping 操作。
+2. 如果步骤 1 失败，请尝试通过 IP 地址连接到 vCenter Server。
+3. 确定可连接到 vCenter 的正确端口号。
+4. 最后检查 vCenter Server 是否已启动并运行。
 
 ## <a name="troubleshoot-readiness-issues"></a>排查就绪性问题
 
@@ -125,43 +159,23 @@ ms.lasthandoff: 05/16/2018
  - 在 Edge/IE 中，右键单击错误并选择“复制所有”。
 7. 关闭“开发人员工具”。
 
-
-## <a name="vcenter-errors"></a>vCenter 错误
-
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>UnhandledException 错误 发生内部错误: System.IO.FileNotFoundException
-
-这是在收集器版本低于 1.0.9.5 时出现的问题。 如果使用的收集器是 1.0.9.2 版或预发行版本（例如 1.0.8.59），则会遇到此问题。 请访问[此处提供的论坛链接，获取详细的解答](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate)。
-
-[通过升级收集器来解决问题](https://aka.ms/migrate/col/checkforupdates)。
-
-### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer 错误
-
-无法连接到 vCenter Server“Servername.com:9443”，因为存在以下错误：在可以接受消息的 https://Servername.com:9443/sdk 上没有终结点在侦听。
-
-当收集器计算机无法解析指定的 vCenter Server 名称或者指定的端口错误时，会发生这种情况。 默认情况下，如果端口未指定，收集器会尝试连接到端口号 443。
-
-1. 尝试从收集器计算机 ping Servername.com。
-2. 如果步骤 1 失败，请尝试通过 IP 地址连接到 vCenter Server。
-3. 确定可连接到 vCenter 的正确端口号。
-4. 最后检查 vCenter Server 是否已启动并运行。
-
 ## <a name="collector-error-codes-and-recommended-actions"></a>收集器错误代码和建议的操作
 
-|           |                                |                                                                               |                                                                                                       |                                                                                                                                            | 
-|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------| 
-| 错误代码 | 错误名称                      | 消息                                                                       | 可能的原因                                                                                        | 建议的操作                                                                                                                          | 
-| 601       | CollectorExpired               | 收集器已过期。                                                        | 收集器已过期。                                                                                    | 请下载新版本的收集器，然后重试。                                                                                      | 
-| 751       | UnableToConnectToServer        | 由于出现错误，无法连接到 vCenter Server“%Name;”: %ErrorMessage;     | 检查错误消息以了解更多详细信息。                                                             | 解决问题，然后重试。                                                                                                           | 
-| 752       | InvalidvCenterEndpoint         | 服务器“%Name;”不是 vCenter Server。                                  | 请提供 vCenter Server 详细信息。                                                                       | 利用正确的 vCenter Server 详细信息，重试操作。                                                                                   | 
-| 753       | InvalidLoginCredentials        | 由于出现错误，无法连接到 vCenter Server“%Name;”: %ErrorMessage; | 由于登录凭据无效，连接到 vCenter Server 失败。                             | 请确保所提供的登录凭据正确无误。                                                                                    | 
-| 754       | NoPerfDataAvaialable           | 性能数据不可用。                                               | 在 vCenter Server 中检查统计信息级别。 它应设置为 3，性能数据才可用。 | 将统计信息级别更改为 3（适用于 5 分钟、30 分钟和 2 小时持续时间），并在至少等待一天后重试。                   | 
-| 756       | NullInstanceUUID               | 遇到 InstanceUUID 为 null 的计算机                                  | vCenter Server 可能具有不合适的对象。                                                      | 解决问题，然后重试。                                                                                                           | 
-| 757       | VMNotFound                     | 找不到虚拟机                                                  | 虚拟机可能被删除: %VMID;                                                                | 请确保在发现过程中限定 vCenter 清单存在时，选择虚拟机                                      | 
-| 758       | GetPerfDataTimeout             | VCenter 请求超时。消息: %Message;                                  | vCenter Server 凭据不正确                                                              | 检查 vCenter Server 凭据，并确保 vCenter Server 可访问。 请重试操作即可。 如果该问题仍然存在，请联系支持部门。 | 
-| 759       | VmwareDllNotFound              | 找不到 VMWare.Vim DLL。                                                     | PowerCLI 未正确安装。                                                                   | 请检查 PowerCLI 是否正确安装。 请重试操作即可。 如果该问题仍然存在，请联系支持部门。                               | 
-| 800       | ServiceError                   | Azure Migrate 收集器服务未运行。                               | Azure Migrate 收集器服务未运行。                                                       | 使用 services.msc 启动该服务并重试此操作。                                                                             | 
-| 801       | PowerCLIError                  | VMware PowerCLI 安装失败。                                          | VMware PowerCLI 安装失败。                                                                  | 请重试操作即可。 如果该问题仍然存在，请手动安装它，然后重试此操作。                                                   | 
-| 802       | TimeSyncError                  | 时间未与 Internet 时间服务器同步。                            | 时间未与 Internet 时间服务器同步。                                                    | 请确保计算机上的时间已根据计算机的时区准确设置并重试此操作。                                 | 
-| 702       | OMSInvalidProjectKey           | 指定的项目键无效。                                                | 指定的项目键无效。                                                                        | 请用正确的项目键重试此操作。                                                                                              | 
-| 703       | OMSHttpRequestException        | 发送请求时出错。 消息: %Message;                                | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题持续出现，请联系 Microsoft 支持。                                                                     | 
-| 704       | OMSHttpRequestTimeoutException | HTTP 请求超时。消息: %Message;                                     | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题持续出现，请联系 Microsoft 支持。                                                                     | 
+|           |                                |                                                                               |                                                                                                       |                                                                                                                                            |
+|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| 错误代码 | 错误名称                      | 消息                                                                       | 可能的原因                                                                                        | 建议的操作                                                                                                                          |
+| 601       | CollectorExpired               | 收集器已过期。                                                        | 收集器已过期。                                                                                    | 请下载新版本的收集器，然后重试。                                                                                      |
+| 751       | UnableToConnectToServer        | 由于出现错误，无法连接到 vCenter Server“%Name;”: %ErrorMessage;     | 检查错误消息以了解更多详细信息。                                                             | 解决问题，然后重试。                                                                                                           |
+| 752       | InvalidvCenterEndpoint         | 服务器“%Name;”不是 vCenter Server。                                  | 请提供 vCenter Server 详细信息。                                                                       | 利用正确的 vCenter Server 详细信息，重试操作。                                                                                   |
+| 753       | InvalidLoginCredentials        | 由于出现错误，无法连接到 vCenter Server“%Name;”: %ErrorMessage; | 由于登录凭据无效，连接到 vCenter Server 失败。                             | 请确保所提供的登录凭据正确无误。                                                                                    |
+| 754       | NoPerfDataAvaialable           | 性能数据不可用。                                               | 在 vCenter Server 中检查统计信息级别。 它应设置为 3，性能数据才可用。 | 将统计信息级别更改为 3（适用于 5 分钟、30 分钟和 2 小时持续时间），并在至少等待一天后重试。                   |
+| 756       | NullInstanceUUID               | 遇到 InstanceUUID 为 null 的计算机                                  | vCenter Server 可能具有不合适的对象。                                                      | 解决问题，然后重试。                                                                                                           |
+| 757       | VMNotFound                     | 找不到虚拟机                                                  | 虚拟机可能被删除: %VMID;                                                                | 请确保在发现过程中限定 vCenter 清单存在时，选择虚拟机                                      |
+| 758       | GetPerfDataTimeout             | VCenter 请求超时。消息: %Message;                                  | vCenter Server 凭据不正确                                                              | 检查 vCenter Server 凭据，并确保 vCenter Server 可访问。 请重试操作即可。 如果该问题仍然存在，请联系支持部门。 |
+| 759       | VmwareDllNotFound              | 找不到 VMWare.Vim DLL。                                                     | PowerCLI 未正确安装。                                                                   | 请检查 PowerCLI 是否正确安装。 请重试操作即可。 如果该问题仍然存在，请联系支持部门。                               |
+| 800       | ServiceError                   | Azure Migrate 收集器服务未运行。                               | Azure Migrate 收集器服务未运行。                                                       | 使用 services.msc 启动该服务并重试此操作。                                                                             |
+| 801       | PowerCLIError                  | VMware PowerCLI 安装失败。                                          | VMware PowerCLI 安装失败。                                                                  | 请重试操作即可。 如果该问题仍然存在，请手动安装它，然后重试此操作。                                                   |
+| 802       | TimeSyncError                  | 时间未与 Internet 时间服务器同步。                            | 时间未与 Internet 时间服务器同步。                                                    | 请确保计算机上的时间已根据计算机的时区准确设置并重试此操作。                                 |
+| 702       | OMSInvalidProjectKey           | 指定的项目键无效。                                                | 指定的项目键无效。                                                                        | 请用正确的项目键重试此操作。                                                                                              |
+| 703       | OMSHttpRequestException        | 发送请求时出错。 消息: %Message;                                | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题持续出现，请联系 Microsoft 支持。                                                                     |
+| 704       | OMSHttpRequestTimeoutException | HTTP 请求超时。消息: %Message;                                     | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题持续出现，请联系 Microsoft 支持。                                                                     |

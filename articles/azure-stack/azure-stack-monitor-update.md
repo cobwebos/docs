@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/06/2018
+ms.locfileid: "27621855"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>监视使用特权终结点的 Azure 堆栈中的更新
 

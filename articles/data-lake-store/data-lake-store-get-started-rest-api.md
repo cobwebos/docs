@@ -1,24 +1,23 @@
 ---
-title: "REST API：Azure Data Lake Store 上的帐户管理选项 | Microsoft Docs"
-description: "使用 Azure Data Lake Store 和 WebHDFS REST API 在 Data Lake Store 中执行帐户管理操作"
+title: REST API：Azure Data Lake Store 上的帐户管理选项 | Microsoft Docs
+description: 使用 Azure Data Lake Store 和 WebHDFS REST API 在 Data Lake Store 中执行帐户管理操作
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 57ac6501-cb71-4f75-82c2-acc07c562889
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5fafde870a01a6ceb5e86f7b00b0ca11b748c68a
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 5b31188eb5618d0ec5ac1f89c590913e4e284d9f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337145"
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-rest-api"></a>Azure Data Lake Store 上的帐户管理操作（使用 REST API）
 > [!div class="op_single_selector"]
@@ -30,7 +29,7 @@ ms.lasthandoff: 01/10/2018
 
 本文介绍如何使用 REST API 在 Data Lake Store 上执行帐户管理操作。 帐户管理操作包括创建 Data Lake Store 帐户、删除 Data Lake Store 帐户，等等。若要了解如何使用 REST API 在 Data Lake Store 上执行文件系统操作，请参阅[在 Data Lake Store 上使用 REST API 进行的文件系统操作](data-lake-store-data-operations-rest-api.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **[cURL](http://curl.haxx.se/)**。 本文使用 cURL 演示如何对 Data Lake Store 帐户进行 REST API 调用。
@@ -43,7 +42,7 @@ ms.lasthandoff: 01/10/2018
 
 
 ## <a name="create-a-data-lake-store-account"></a>创建 Data Lake Store 帐户
-此操作基于 [此处](https://msdn.microsoft.com/library/mt694078.aspx)定义的 REST API 调用。
+此操作基于 [此处](https://docs.microsoft.com/en-us/rest/api/datalakestore/accounts/create)定义的 REST API 调用。
 
 使用以下 cURL 命令。 将 **\<yourstorename>** 替换为 Data Lake Store 名称。
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 01/10/2018
     }    
 
 ## <a name="delete-a-data-lake-store-account"></a>删除 Data Lake Store 帐户
-此操作基于 [此处](https://msdn.microsoft.com/library/mt694075.aspx)定义的 REST API 调用。
+此操作基于 [此处](https://docs.microsoft.com/en-us/rest/api/datalakestore/accounts/delete)定义的 REST API 调用。
 
 使用以下 cURL 命令删除 Data Lake Store 帐户。 将 **\<yourstorename>** 替换为 Data Lake Store 名称。
 

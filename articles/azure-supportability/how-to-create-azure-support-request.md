@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31512504"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>如何创建 Azure 支持请求
 ## <a name="summary"></a>摘要

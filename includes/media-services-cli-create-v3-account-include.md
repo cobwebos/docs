@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 3157f5db58be5735fa7b194393b0ab6d0e143a91
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9ecb07a2cb278f6cde4ffdc3b252cb9e816d08da
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33830430"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38733284"
 ---
 ## <a name="create-a-media-services-account"></a>创建媒体服务帐户
 
-首先需创建媒体服务帐户。 本部分介绍需要些什么才能使用 CLI 2.0 创建帐户。
+首先需创建媒体服务帐户。 本部分介绍使用 Azure CLI 创建帐户所需的内容。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 

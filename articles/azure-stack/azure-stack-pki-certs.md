@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: faf85c34c527dd72889f0fcb5021925b79481163
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 13bc82caf5e10f5b35df29d085349ec4c80628a2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823843"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929264"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -30,7 +30,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 获取与这些规范匹配的证书的过程是什么
 - 如何在部署期间准备、验证和使用这些证书
 
-> [!NOTE]
+> [!Note]  
 > 在部署期间，必须将证书复制到与要部署的标识提供者（Azure AD 或 AD FS）匹配的部署文件夹中。 如果将单个证书用于所有终结点，必须将该证书文件复制到下表所述的每个部署文件夹。 该文件夹的结构已预先在部署虚拟机中构建，路径为：C:\CloudDeployment\Setup\Certificates。 
 
 ## <a name="certificate-requirements"></a>证书要求
@@ -39,7 +39,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - Azure Stack 基础结构必须能够通过网络访问证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是 http 终结点
 - 轮换证书时，证书必须由签署部署时提供的证书的同一内部证书颁发机构颁发，或者由上述任何公共证书颁发机构颁发
 - 不支持使用自签名证书
-- 证书可以是单个通配符证书，其中涵盖使用者可选名称 (SAN) 字段中的所有命名空间。 或者，可以针对需要证书的终结点（例如 **acs**和 Key Vault）使用采用通配符的单个证书。 
+- 有关部署和旋转，你可以使用单个证书，其中涵盖证书的使用者名称和使用者可选名称 (SAN) 字段中的所有命名空间，也可以使用单个证书下的命名空间中的每个 Azure Stack你打算使用的服务要求。 注意： 这两种方法都要求采用通配符的终结点，它们必需的如**KeyVault**并**KeyVaultInternal**。 
 - 证书签名算法不能是 SHA1，因为算法必须更可靠。 
 - 证书格式必须是 PFX，因为安装 Azure Stack 时需要公钥和私钥。 
 - 证书 pfx 文件的“密钥用途”字段中必须包含“数字签名”和“KeyEncipherment”值。
@@ -47,12 +47,12 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 证书的“颁发给:”字段不能与其“颁发者:”字段相同。
 - 部署时，所有证书 pfx 文件的密码都必须相同
 - 证书 pfx 的密码必须是复杂密码。
-- 确保所有证书的“使用者名称”和“使用者可选名称”匹配本文中所述的规范，以免部署失败。
+- 确保使用者名称与使用者可选名称扩展 (x509v3_config) 中的使用者可选名称匹配。 “使用者可选名称”字段允许你指定要受单个 SSL 证书保护的其他主机名（网站、IP 地址、公用名称）。
 
-> [!NOTE]
+> [!NOTE]  
 > 不支持自签名证书。
 
-> [!NOTE]
+> [!NOTE]  
 > 支持在证书的信任链 IS 中包含中间证书颁发机构。 
 
 ## <a name="mandatory-certificates"></a>必需的证书
@@ -76,20 +76,6 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | 队列存储 | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Key Vault | vault.&lt;region>.&lt;fqdn> |
 | KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） |  内部 Key Vault |  adminvault.&lt;region>.&lt;fqdn> |
-
-### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>适用于 1803 以前版本上的 Azure Stack 环境
-
-|部署文件夹|所需的证书使用者和使用者可选名称 (SAN)|范围（按区域）|子域命名空间|
-|-----|-----|-----|-----|
-|公共门户|portal.*&lt;region>.&lt;fqdn>*|门户|*&lt;region>.&lt;fqdn>*|
-|管理门户|adminportal.*&lt;region>.&lt;fqdn>*|门户|*&lt;region>.&lt;fqdn>*|
-|Azure 资源管理器公共门户|management.*&lt;region>.&lt;fqdn>*|Azure 资源管理器|*&lt;region>.&lt;fqdn>*|
-|Azure 资源管理器管理门户|adminmanagement.*&lt;region>.&lt;fqdn>*|Azure 资源管理器|*&lt;region>.&lt;fqdn>*|
-|ACS<sup>1</sup>|一个包含使用者可选名称的多子域通配符证书：<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.table.*&lt;region>.&lt;fqdn>*|存储|blob.*&lt;region>.&lt;fqdn>*<br>table.*&lt;region>.&lt;fqdn>*<br>queue.*&lt;region>.&lt;fqdn>*|
-|KeyVault|&#42;.vault.*&lt;region>.&lt;fqdn>*<br>（通配符 SSL 证书）|Key Vault|vault.*&lt;region>.&lt;fqdn>*|
-|KeyVaultInternal|&#42;.adminvault.*&lt;region>.&lt;fqdn>*<br>（通配符 SSL 证书）|内部 Key Vault|adminvault.*&lt;region>.&lt;fqdn>*|
-|
-<sup>1</sup> ACS 证书要求单个证书中包含三个通配符 SAN。 并非所有公共证书颁发机构都支持在单个证书中包含多个通配符 SAN。 
 
 如果使用 Azure AD 部署模式来部署 Azure Stack，只需请求上表中所列的证书。 但是，如果使用 AD FS 部署模式来部署 Azure Stack，则还必须请求下表中所述的证书：
 

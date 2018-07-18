@@ -3,17 +3,18 @@ title: Azure 快速入门 - 创建存储帐户 | Microsoft Docs
 description: 快速了解如何使用 Azure 门户、Azure PowerShell 或 Azure CLI 创建新的存储帐户。
 services: storage
 author: tamram
-manager: jeconnoc
+manager: twooley
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/19/2018
+ms.date: 07/03/2018
 ms.author: tamram
-ms.openlocfilehash: 1dffceb629df5d0197bfc8ac66120df3912d70b1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 92215c759cd51ce429708ec54b17722c486b7ca6
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856522"
 ---
 # <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -24,9 +25,9 @@ Azure 存储帐户提供云中的唯一命名空间，用于在 Azure 存储中�
 
 ## <a name="prerequisites"></a>先决条件
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[门户](#tab/portal)
 
 无。
 
@@ -59,7 +60,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[门户](#tab/portal)
 
 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -87,7 +88,7 @@ az login
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[门户](#tab/portal)
 
 若要在 Azure 门户中创建资源组，请执行以下步骤：
 
@@ -157,14 +158,14 @@ Azure 存储提供两种类型的常规用途存储帐户：
 - 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 - 存储帐户名称在 Azure 中必须是唯一的。 没有两个存储帐户可以有相同的名称。
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[门户](#tab/portal)
 
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 
 1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“所有服务”。 然后向下滚动到“存储”，接着选择“存储帐户”。 在显示的“存储帐户”窗口中，选择“添加”。
 2. 输入存储帐户的名称。
 3. 将“帐户类型”字段设置为“StorageV2 (常规用途 v2)”。
-4. 将“复制”字段保持设置为“本地冗余存储(LRS)”。 或者，可以选择“区域冗余存储(ZRS 预览版)”、“异地冗余存储(GRS)”或“读取访问异地冗余存储(RA-GRS)”。
+4. 将“复制”字段保持设置为“本地冗余存储(LRS)”。 另外，也可以选择“区域冗余存储(ZRS)”、“异地冗余存储(GRS)”或“读取访问异地冗余存储(RA-GRS)”。
 5. 将以下字段设置为默认值：“部署模型”、“性能”、“需要安全传输”。
 6. 选择要在其中创建存储帐户的订阅。
 7. 在“资源组”部分选择“使用现有资源组”，然后选择在上一部分创建的资源组。
@@ -185,7 +186,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2 
 ```
 
-若要使用区域冗余存储（ZRS 预览版）、异地冗余存储 (GRS) 或读取访问异地冗余存储 (RA-GRS) 创建常规用途 v2 存储帐户，请将 **SkuName** 参数替换为下表中的所需值。 
+若要使用区域冗余存储 (ZRS) （预览版）、异地冗余存储 (GRS) 或读取访问异地冗余存储 (RA-GRS) 创建常规用途 v2 存储帐户，请将 **SkuName** 参数替换为下表中的所需值。 
 
 |复制选项  |SkuName 参数  |
 |---------|---------|
@@ -218,19 +219,13 @@ az storage account create \
 
 ---
 
-> [!NOTE]
-> [区域冗余存储](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-zone-redundant-storage/preview/)目前以预览版提供，只能在以下位置使用：
->    - 美国东部 2
->    - 美国中部
->    - 法国中部（此区域目前处于预览状态。 请参阅[法国现已开通具有 Azure 可用性区域的 Microsoft Azure 预览版](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france)来请求访问。）
-    
-有关不同的可用复制类型的详细信息，请参阅[存储复制选项](storage-redundancy.md)。
+有关可用的复制选项的详细信息，请参阅[存储复制选项](storage-redundancy.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 若要清理本快速入门创建的资源，可以直接删除资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[门户](#tab/portal)
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
@@ -260,7 +255,7 @@ az group delete --name myResourceGroup
 
 在本快速入门中，已创建一个通用的标准存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请继续阅读 Blob 存储快速入门。
 
-# <a name="portaltabportal"></a>[Portal](#tab/portal)
+# <a name="portaltabportal"></a>[门户](#tab/portal)
 
 > [!div class="nextstepaction"]
 > [使用 Azure 门户将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象](../blobs/storage-quickstart-blobs-portal.md)

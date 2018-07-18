@@ -7,17 +7,19 @@ author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams
-ms.openlocfilehash: 3817d58cd61fb349d7815984420d0deb1ae0edd9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f4e88be7b9b8e3ed7f6a2bbd299fd1e92f9c7af
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836613"
 ---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Cortana Intelligence AppSource 发布指南
 
@@ -47,7 +49,7 @@ AppSource 是业务决策制定者 (BDM) 的单个目标平台，用户可在其
 
     - HDInsight
     - 机器学习
-    - 数据湖分析
+    - Data Lake Analytics
     - 流分析
     - 认知服务
     - Bot 框架
@@ -78,7 +80,7 @@ AppSource 是业务决策制定者 (BDM) 的单个目标平台，用户可在其
 ## <a name="provide-info-for-microsoft-sellers"></a>提供 Microsoft 卖家信息
 对于合作伙伴而言，AppSource 的关键价值主张之一是能够与 Microsoft 卖方协作，面向潜在客户定位合作伙伴应用。
 
-填写 [Microsoft 卖方的合作伙伴解决方案信息](https://aka.ms/aapartnerappinfo)并将其发送到 [appsourcecissupport@microsoft.com](mailto:appsourcecissupport@microsoft.com?subject=Request%20publisher%20account%20creation%20for%20%3cPartner%20Name%3e%20and%20whitelist%20owner/contributer%20AAD/MSA%20email%20IDs)。需要执行此步骤才能使 Cortana Intelligence 应用获得批准进行发布。
+填写 [Microsoft 卖方的合作伙伴解决方案信息](https://aka.ms/aapartnerappinfo)并将其发送到 [appsourcecissupport@microsoft.com](mailto:appsourcecissupport@microsoft.com?subject=Request%20publisher%20account%20creation%20for%20%3cPartner%20Name%3e%20and%20whitelist%20owner/contributer%20AAD/MSA%20email%20IDs)。 需要执行此步骤才能使 Cortana Intelligence 应用获得批准进行发布。
 
 ## <a name="build-a-compelling-customer-walkthrough-on-appsource"></a>在 AppSource 上构建具有吸引力的客户演练
 首先，在 AppSource 上查看 [Neal Analytics 库存优化](https://appsource.microsoft.com/en-us/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview&tag=CISHome)。 除了试用体验的入口点之外，AppSource 中的每个应用条目还具有标题、摘要（不超过 100 个字符）、说明（不超过 1300 个字符）、图像、视频（可选）和 pdf 文档。 合作伙伴应利用所有这些信息构建具有吸引力的客户体验。

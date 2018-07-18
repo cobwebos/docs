@@ -5,15 +5,16 @@ services: cosmos-db
 author: kanshiG
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: b07a159e69a11656555a8550b807cce0b2c9ef6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109736"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>使用 Azure 虚拟网络服务终结点保护对 Azure Cosmos DB 帐户的访问
 
@@ -48,7 +49,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
    ![选择虚拟网络和子网](./media/vnet-service-endpoint/choose-subnet-and-vnet.png)
 
    > [!NOTE]
-   > 如果之前没有为选定的 Azure 虚拟网络和子网配置 Azure Cosmos DB 服务终结点，可以在执行此操作的过程中进行配置。 启用访问权限最长需要 15 分钟才能完成。 
+   > 如果之前没有为选定的 Azure 虚拟网络和子网配置 Azure Cosmos DB 服务终结点，可以在执行此操作的过程中进行配置。 启用访问权限最长需要 15 分钟才能完成。 在记下防火墙 ACL 的内容后禁用 IP 防火墙以便稍后重新启用它们，这一点非常重要。 
 
    ![已成功配置虚拟网络和子网](./media/vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
@@ -57,6 +58,9 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 ### <a name="configure-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>为新的 Azure 虚拟网络和子网配置服务终结点
 
 1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。  
+
+> [!NOTE]
+> 如果为 Azure Cosmos DB 帐户配置了现有的 IP 防火墙，请记下防火墙配置，删除 IP 防火墙，然后启用服务终结点。 如果在未禁用防火墙的情况下启用服务终结点，则来自该 IP 范围的流量将丢失虚拟 IP 标识，然后会被丢弃并显示 IP 筛选器错误消息。 因此，为防止出现此错误，应始终禁用防火墙规则，将其复制，从子网启用服务终结点，并最终从 Cosmos DB 对子网执行 ACL。 配置服务终结点并添加 ACL 后，可根据需要重新启用 IP 防火墙。
 
 2. 在启用虚拟网络服务终结点之前，请复制与 Azure Cosmos DB 帐户关联的 IP 防火墙信息，供将来使用。 配置服务终结点后，可以重新启用 IP 防火墙。  
 
@@ -76,7 +80,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 
 如果 Azure Cosmos DB 帐户由其他 Azure 服务（例如 Azure 搜索）使用，或者从流分析或 Power BI 进行访问，请选中“允许 Azure 服务的访问”来允许这种访问。
 
-为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许 Azure 门户的访问”选项。 若要详细了解这些选项，请参阅[来自 Azure 门户的连接](firewall-support.md#connections-from-the-azure-portal)和[来自 Azure PaaS 服务的连接](firewall-support.md#connections-from-other-azure-paas-services)部分。 选择访问权限后，选择“保存”以保存设置。
+为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许 Azure 门户的访问”选项。 若要详细了解这些选项，请参阅[来自 Azure 门户的连接](firewall-support.md#connections-from-the-azure-portal)和[来自 Azure PaaS 服务的连接](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services)部分。 选择访问权限后，选择“保存”以保存设置。
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>删除虚拟网络或子网 
 
@@ -95,6 +99,10 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 在 Azure PowerShell 中使用以下步骤配置 Azure Cosmos DB 帐户的服务终结点：  
 
 1. 安装最新的 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) 并[登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。  在为帐户启用服务终结点之前，请务必记下 IP 防火墙设置并彻底删除 IP 防火墙。
+
+
+> [!NOTE]
+> 如果为 Azure Cosmos DB 帐户配置了现有的 IP 防火墙，请记下防火墙配置，删除 IP 防火墙，然后启用服务终结点。 如果在未禁用防火墙的情况下启用服务终结点，则来自该 IP 范围的流量将丢失虚拟 IP 标识，然后会被丢弃并显示 IP 筛选器错误消息。 因此，为防止出现此错误，应始终禁用防火墙规则，将其复制，从子网启用服务终结点，并最终从 Cosmos DB 对子网执行 ACL。 配置服务终结点并添加 ACL 后，可根据需要重新启用 IP 防火墙。
 
 2. 在启用虚拟网络服务终结点之前，请复制与 Azure Cosmos DB 帐户关联的 IP 防火墙信息，供将来使用。 配置服务终结点后，请重新启用 IP 防火墙。  
 
@@ -117,15 +125,16 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 4. 确保已在虚拟网络和子网中为 Azure Cosmos DB 启用了服务终结点，为在 CosmosDB 帐户中启用 ACL 做好准备。
 
    ```powershell
-   $subnet = Get-AzureRmVirtualNetwork `
-    -ResourceGroupName $rgname `
-    -Name $vnName  | Get-AzureRmVirtualNetworkSubnetConfig -Name $sname
-   $vnProp = Get-AzureRmVirtualNetwork `-Name $vnName  -ResourceGroupName $rgName
+   $vnProp = Get-AzureRmVirtualNetwork `
+     -Name $vnName  -ResourceGroupName $rgName
    ```
 
 5. 运行以下 cmdlet 获取 Azure Cosmos DB 帐户的属性：  
 
    ```powershell
+   $apiVersion = "2015-04-08"
+   $acctName = "<Azure Cosmos DB account name>"
+
    $cosmosDBConfiguration = Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
@@ -136,15 +145,24 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 
    ```powershell
    $locations = @(@{})
+
+   <# If you have read regions in addition to a write region, use the following code to set the $locations variable instead.
+
+   $locations = @(@{"locationName"="<Write location>"; 
+                 "failoverPriority"=0}, 
+               @{"locationName"="<Read location>"; 
+                  "failoverPriority"=1}) #>
+
    $consistencyPolicy = @{}
    $cosmosDBProperties = @{}
 
    $locations[0]['failoverPriority'] = $cosmosDBConfiguration.Properties.failoverPolicies.failoverPriority
    $locations[0]['locationName'] = $cosmosDBConfiguration.Properties.failoverPolicies.locationName
+
    $consistencyPolicy = $cosmosDBConfiguration.Properties.consistencyPolicy
 
    $accountVNETFilterEnabled = $True
-   $subnetID = $vnProp.Id+"/subnets/" + $subnetName  
+   $subnetID = $vnProp.Id+"/subnets/" + $sname  
    $virtualNetworkRules = @(@{"id"=$subnetID})
    $databaseAccountOfferType = $cosmosDBConfiguration.Properties.databaseAccountOfferType
    ```
@@ -158,7 +176,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
    $cosmosDBProperties['virtualNetworkRules'] = $virtualNetworkRules
    $cosmosDBProperties['isVirtualNetworkFilterEnabled'] = $accountVNETFilterEnabled
 
-   Set-AzureRmResource ``
+   Set-AzureRmResource `
      -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
@@ -219,15 +237,19 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 
 一个 Azure Cosmos DB 帐户允许 64 个虚拟网络服务终结点。
 
-### <a name="what-is-the-relationship-of-service-endpoint-with-respect-to-network-security-group-nsg-rules"></a>服务终结点与网络安全组 (NSG) 规则之间存在怎样的关系？  
+### <a name="what-is-the-relationship-between-service-endpoint-and-network-security-group-nsg-rules"></a>服务终结点与网络安全组 (NSG) 规则之间存在怎样的关系？  
 
-NSG 的 Azure Cosmos DB 规则允许将访问权限限制为 Azure Cosmos DB IP 地址范围。
+Azure Cosmos DB 中的 NSG 规则允许你限制对特定 Azure Cosmos DB IP 地址范围的访问。 如果希望允许访问特定[区域](https://azure.microsoft.com/global-infrastructure/regions/)中的 Azure Cosmos DB 实例，可以按照以下格式指定该区域： 
+
+    AzureCosmosDB.<region name>
+
+若要详细了解 NSG 标记，请参阅[虚拟网络服务标记](../virtual-network/security-overview.md#service-tags)一文。 
   
 ### <a name="what-is-relationship-between-an-ip-firewall-and-virtual-network-service-endpoint-capability"></a>IP 防火墙与虚拟网络服务终结点功能之间存在怎样的关系？  
 
 这两个功能互为补充，确保 Azure Cosmos DB 资产的隔离并对其进行保护。 使用 IP 防火墙可确保静态 IP 能够访问 Azure Cosmos DB 帐户。  
 
-### <a name="can-an-on-premise-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>通过 Azure 虚拟网络网关 (VPN) 或 ExpressRoute 网关连接的本地设备的 IP 地址是否可以访问 Azure Cosmos DB 帐户？  
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>通过 Azure 虚拟网络网关 (VPN) 或 Express Route 网关连接的本地设备的 IP 地址是否可以访问 Azure Cosmos DB 帐户？  
 
 应将本地设备的 IP 地址或 IP 地址范围添加到静态 IP 列表，这样它们才能访问 Azure Cosmos DB 帐户。  
 

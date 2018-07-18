@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C：Microsoft 帐户配置 | Microsoft Docs
+title: Azure Active Directory B2C 中的 Microsoft 帐户配置 | Microsoft Docs
 description: 在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Microsoft 帐户的注册和登录功能。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: e167c8737bc600f52759f33456fec3bc6e0a3678
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: c788b14a99125a208390cd4f8ead338efed06933
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444161"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C：向用户提供使用 Microsoft 帐户的注册和登录功能
 ## <a name="create-a-microsoft-account-application"></a>创建 Microsoft 帐户应用程序
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/23/2018
     ![Microsoft 帐户 — 添加平台](./media/active-directory-b2c-setup-msa-app/msa-add-platform.png)
    
     ![Microsoft 帐户 — Web](./media/active-directory-b2c-setup-msa-app/msa-web.png)
-6. 在“重定向 URI”字段中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com）。
+6. 在“重定向 URI”字段中输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 {tenant} 替换为租户名称（例如 contosob2c.onmicrosoft.com）。
    
     ![Microsoft 帐户 — 重定向 URL](./media/active-directory-b2c-setup-msa-app/msa-redirect-url.png)
 7. 单击“应用程序密码”部分下的“生成新密码”。 复制屏幕上显示的新密码。 将 Microsoft 帐户配置为租户中的标识提供者时需要此项。 该密码是一个非常重要的安全凭据。
@@ -51,8 +51,8 @@ ms.lasthandoff: 03/23/2018
 ## <a name="configure-microsoft-account-as-an-identity-provider-in-your-tenant"></a>将 Microsoft 帐户配置为租户中的标识提供者
 1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 在 B2C 功能边栏选项卡上，单击“标识提供者”。
-3. 单击边栏选项卡顶部的“ **+添加** ”。
-4. 为标识提供者配置提供一个友好**名称**。 例如，输入“MSA”。
+3. 单击边栏选项卡顶部的“+ 添加”。
+4. 为标识提供者配置提供一个友好“名称”。 例如，输入“MSA”。
 5. 单击“标识提供者类型”，选择“Microsoft 帐户”，并单击“确定”。
 6. 单击“设置此标识提供者”，输入之前创建的 Microsoft 帐户应用程序的应用程序 Id 和密码。
 7. 单击“确定”，并单击“创建”以保存 Microsoft 帐户配置。

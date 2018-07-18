@@ -1,12 +1,12 @@
 ---
-title: "在 StorSimple 8000 系列上从备份还原卷 | Microsoft Docs"
-description: "介绍如何使用 StorSimple 设备管理器服务备份目录从备份集还原 StorSimple 卷。"
+title: 在 StorSimple 8000 系列上从备份还原卷 | Microsoft Docs
+description: 介绍如何使用 StorSimple 设备管理器服务备份目录从备份集还原 StorSimple 卷。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109255"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nitinme
-ms.openlocfilehash: b80c49b67c7cca835ae08346561984e168e3df4e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6ccdb1fff5ecdcb61beedf1b12904d3785d4921d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048493"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习
 
@@ -32,13 +33,13 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) 目前是世界上最常用的统计编程语言。 它是一种开源数据可视化工具，其社区的用户超过 250 万，并且仍在增长。 R 拥有蓬勃增长的用户群，其用户贡献的程序包超过 8,000 个，是许多需要机器学习的公司的极佳选择。 可以使用 R Server 创建随时可与大型数据集和模型配合使用的 HDInsight 群集。 这项功能为数据科学家和统计学家提供了可通过 HDInsight 按需缩放的熟悉 R 界面，并消除了群集设置和维护方面的开销。
+[R](https://www.r-project.org/) 目前是世界上最常用的统计编程语言。 它是一种开源数据可视化工具，其社区的用户超过 250 万，并且仍在增长。 R 拥有蓬勃增长的用户群，其用户贡献的程序包超过 8,000 个，是许多需要机器学习的公司的极佳选择。 可以使用 ML Services 创建随时可与大型数据集和模型配合使用的 HDInsight 群集。 这项功能为数据科学家和统计学家提供了可通过 HDInsight 按需缩放的熟悉 R 界面，并消除了群集设置和维护方面的开销。
 
 ![通过 R Server 进行预测训练](./media/hdinsight-machine-learning-overview/r-training.png)
 
 群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。  还可以选择跨群集的各个节点运行 R 脚本，只需使用 ScaleR 的 Hadoop Map Reduce 或 Spark 计算上下文即可。
 
-在带 Spark 的 HDInsight 上使用 R Server 时，可以使用 Spark 计算上下文跨群集的节点进行并行训练。 可以根据需要直接在边缘节点上运行 R 脚本，并行使用所有可用的核心。 也可以在边缘节点中运行代码，开始执行分布在群集的所有节点上的处理任务。 使用带 Spark 的 HDInsight 上的 R Server，还可以根据需要并行执行开源 R 包中的函数。
+在带 Spark 的 HDInsight 上使用 ML Services 时，可以使用 Spark 计算上下文跨群集的节点进行并行训练。 可以根据需要直接在边缘节点上运行 R 脚本，并行使用所有可用的核心。 也可以在边缘节点中运行代码，开始执行分布在群集的所有节点上的处理任务。 使用带 Spark 的 HDInsight 上的 ML Services，还可以根据需要并行执行开源 R 包中的函数。
 
 ## <a name="azure-machine-learning-and-hive"></a>Azure 机器学习和 Hive
 

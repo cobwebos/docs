@@ -1,33 +1,22 @@
 ---
-title: 创建并管理 Azure SQL 服务器和数据库 | Microsoft Docs
-description: 了解 Azure SQL 数据库服务器和数据库的概念，以及如何创建和管理服务器和数据库。
+title: Azure SQL 逻辑服务器和单一数据库 | Microsoft Docs
+description: 了解 Azure SQL 数据库逻辑服务器和单一数据库概念及其资源。
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 3ffae541020a2672affab774ee6da2a8c707745f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 505fd88959feb1c84abc53c6435776a5c5b4123c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195526"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309174"
 ---
-# <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>创建并管理 Azure SQL 数据库服务器和数据库
-
-SQL 数据库提供了三种类型的数据库：
-
-- 可以使用[一组组合计算和存储资源](sql-database-service-tiers-dtu.md)或[独立的计算和存储资源规模](sql-database-service-tiers-vcore.md)，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建单个数据库。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
-- 使用[一组组合计算和存储资源（基于 DTU）](sql-database-service-tiers-dtu.md)或[由池中所有数据库共享的独立计算和存储资源规模（基于 vCore）](sql-database-service-tiers-vcore.md)，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建数据库，作为[数据库池](sql-database-elastic-pool.md)的一部分。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
-- 使用定义的一组用于服务器实例上所有数据库的计算和存储资源，在 [Azure 资源](../azure-resource-manager/resource-group-overview.md)组中创建 [SQL 服务器的实例](sql-database-managed-instance.md)（托管实例）。 一个托管实例同时包含系统和用户数据库。 使用托管实例可将数据库即时转移到完全托管的 PaaS，而无需重新设计应用程序。 托管实例与本地 SQL Server 编程模型高度兼容，支持大多数 SQL Server 功能，并支持随附的工具和服务。  
-
-Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7.3 版或更高版本，并仅允许加密的 TCP/IP 连接。
-
-> [!IMPORTANT]
-> SQL 数据库托管实例（当前处于公共预览状态）提供单个常规用途服务层。 有关详细信息，请参阅 [SQL 数据库托管实例](sql-database-managed-instance.md)。 本文剩余部分不适用于托管实例。
+# <a name="azure-sql-database-logical-servers-and-single-databases-and-their-resources"></a>Azure SQL 数据库逻辑服务器和单一数据库及其资源
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>什么是 Aure SQL 逻辑服务器？
 
@@ -59,6 +48,20 @@ Azure 数据库逻辑服务器：
 - 服务器级主体登录名可以管理服务器上的所有数据库
 - 可以包含与本地 SQL Server 实例中的登录名类似的登录名，这些登录名有权访问服务器上的一个或多个数据库，并可以向这些登录名授予有限的管理权限。 有关详细信息，请参阅[登录名](sql-database-manage-logins.md)。
 - 用于所有在逻辑服务器上创建的用户数据库的默认排序规则是 `SQL_LATIN1_GENERAL_CP1_CI_AS`，其中 `LATIN1_GENERAL` 为英语（美国），`CP1` 为代码页 1252，`CI` 不区分大小写，`AS` 区分重音符。
+
+## <a name="logical-servers-and-databases"></a>逻辑服务器和数据库
+
+在逻辑服务器上，可以创建：
+
+- 可以使用[一组组合计算和存储资源](sql-database-service-tiers-dtu.md)或[独立的计算和存储资源规模](sql-database-service-tiers-vcore.md)，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建单个数据库。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
+- 使用[一组组合计算和存储资源（基于 DTU）](sql-database-service-tiers-dtu.md)或[由池中所有数据库共享的独立计算和存储资源规模（基于 vCore）](sql-database-service-tiers-vcore.md)，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建数据库，作为[数据库池](sql-database-elastic-pool.md)的一部分。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
+
+> [!IMPORTANT]
+> SQL 数据库托管实例（目前以公共预览版提供）是使用定义的一组用于该服务器实例上所有数据库的计算和存储资源，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建的 [SQL Server 实例](sql-database-managed-instance.md)（托管实例）。 一个托管实例同时包含系统和用户数据库。 使用托管实例可将数据库即时转移到完全托管的 PaaS，而无需重新设计应用程序。 托管实例与本地 SQL Server 编程模型高度兼容，支持大多数 SQL Server 功能，并支持随附的工具和服务。 有关详细信息，请参阅 [SQL 数据库托管实例](sql-database-managed-instance.md)。 本文剩余部分不适用于托管实例。
+
+## <a name="tds-and-tcpip-connections"></a>TDS 和 TCP/IP 连接
+
+Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7.3 版或更高版本，并仅允许加密的 TCP/IP 连接。
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Azure SQL 数据库受 SQL 数据库防火墙保护
 
@@ -109,7 +112,7 @@ Azure 数据库逻辑服务器：
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|获取一个或多个数据库|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|设置数据库的属性，或将现有数据库移到弹性池中|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|删除数据库|
-|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|创建资源组
+|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|创建资源组|
 |[New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver)|创建服务器|
 |[Get-AzureRmSqlServer](/powershell/module/azurerm.sql/get-azurermsqlserver)|返回服务器的相关信息|
 |[Set-AzureRmSqlServer](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlserver)|修改服务器的属性|
