@@ -28,14 +28,6 @@
 ### 支持  
 #### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)  
 
-### 发布指南  
-#### [Azure Marketplace 咨询服务](consulting-services.md)  
-#### [Azure Marketplace SaaS 应用技术发布指南](marketplace-saas-applications-technical-publishing-guide.md) 
-#### [通过 Azure Active Directory 启用市场试用版](./enable-trial-using-azure-ad.md)  
-
-### [通过市场扩展业务](./grow-your-business-with-azure-marketplace.md)  
-#### [首选解决方案](./preferred-solutions.md) 
-
 ## [云合作伙伴门户](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 
 ## 资源  

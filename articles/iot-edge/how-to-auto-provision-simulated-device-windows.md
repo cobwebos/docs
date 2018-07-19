@@ -8,12 +8,12 @@ ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0a973b248022cf3c0497f72bc2fcdd45a6527e65
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 46970d5628df3b46ec88df998a328928f60e15b4
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115312"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090225"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>在 Windows 上创建和预配模拟 TPM Edge 设备
 
@@ -87,12 +87,6 @@ Stop-Service iotedge -NoWait
 sleep 5
 Start-Service iotedge
 ```
-
-检查 IoT Edge 运行时是否正在运行。 
-
-   ```bash
-   sudo systemctl status iotedge
-   ```
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 

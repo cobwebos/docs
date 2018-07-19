@@ -243,8 +243,8 @@
       maintainContext: true
     - name: Cortana Intelligence 合作伙伴解决方案
       items:
-        - name: Cortana Intelligence 库
-          href: 'https://gallery.cortanaintelligence.com'
+        - name: Azure AI 库
+          href: 'https://gallery.azure.ai'
         - name: Cortana Intelligence 发布指南
           href: cortana-intelligence-appsource-publishing-guide.md
         - name: Cortana Intelligence 解决方案评估工具

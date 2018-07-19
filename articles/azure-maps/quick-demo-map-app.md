@@ -1,26 +1,26 @@
 ---
 title: 使用 Azure Maps 执行交互式地图搜索 | Microsoft Docs
 description: Azure 快速入门 - 使用 Azure Maps 启动演示交互式地图搜索
-author: kgremban
-ms.author: kgremban
+author: dsk-2015
+ms.author: dkshir
 ms.date: 05/07/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8765b634b81742acf9fb4d40be8864800025351d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 002d9820cb4414d8f33cdd362e28f31e7e8b6273
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599756"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989548"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>使用 Azure Maps 启动交互式搜索地图
 
 本文演示 Azure Maps 功能如何创建地图，为用户提供交互式搜索体验。 本文逐步讲解了自行创建 Maps 帐户，以及获取要在演示 Web 应用程序中使用的帐户密钥的基本步骤。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户

@@ -1,24 +1,24 @@
 ---
 title: 使用 Azure Maps 进行搜索 | Microsoft Docs
 description: 使用 Azure Maps 搜索附近兴趣点
-author: kgremban
-ms.author: kgremban
+author: dsk-2015
+ms.author: dkshir
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4a414b5b865d31dd99b54ef9693abafb5490a50f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ffc4b7625a6c43f8e2801313c61f14c785a3ec5f
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34601779"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988868"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
 
-本教程演示如何为 Azure Maps 设置帐户，然后使用 Maps API 搜索兴趣点。 本教程介绍如何执行下列操作：
+本教程演示如何为 Azure Maps 设置帐户，然后使用 Maps API 搜索兴趣点。 本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Maps 帐户
@@ -26,7 +26,7 @@ ms.locfileid: "34601779"
 > * 使用 Map Control API 创建新网页
 > * 使用 Maps 搜索服务查找附近的兴趣点
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com)。

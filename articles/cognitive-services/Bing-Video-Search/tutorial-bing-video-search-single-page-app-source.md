@@ -9,18 +9,18 @@ ms.component: bing-video-search
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: v-gedod
-ms.openlocfilehash: c0842e53cbc297c1980a9d08733d838def073835
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365492"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112454"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教程：单页视频搜索应用
 
 这是必应视频搜索的[单页应用教程](tutorial-bing-video-search-single-page-app.md)的完整源代码。 若要运行应用，请将源代码复制到记事本或其他文本编辑器中，并将它另存为“`bing.html`”。 然后，在 Microsoft Edge 或其他常用浏览器中打开已保存的文件。
 
-````html
+```html
 <!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
 <!-- the above Mark of the Web lets IE run this page in the Internet security zone,
@@ -615,3 +615,4 @@ function doPrevSearchPage() {
 
 </body>
 </html>
+```

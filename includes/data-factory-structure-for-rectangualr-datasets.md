@@ -41,7 +41,7 @@
 * 小数
 * Byte[]
 * Bool
-* 字符串 
+* String 
 * Guid
 * Datetime
 * Datetimeoffset

@@ -3,7 +3,7 @@ title: Azure IT 操作人员入门指南 | Microsoft Docs
 description: Azure IT 操作人员入门指南
 services: ''
 documentationcenter: ''
-author: iainfoulds
+author: themichaelbender-ms
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
-ms.author: iainfou
-ms.openlocfilehash: f79f727ed46f85866f59468be418ba8975c17bd8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: mibender
+ms.openlocfilehash: 86f11e7c2d5503a0c474a6c15501a6b872c564e3
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099487"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072328"
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>云计算和 Microsoft Azure 简介
 
@@ -141,13 +141,11 @@ Azure 在其云计算平台中提供多种服务。 这些服务包括：
 
 ### <a name="datacenters-and-regions"></a>数据中心和区域
 
-
 Azure 是一个全球性云平台，在世界各地的许多区域都可以使用。 在 Azure 中预配服务、应用程序或 VM 时，需要选择一个区域。 所选区域代表运行应用程序的特定数据中心。 有关详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。
 
 使用 Azure 的好处之一是，可以将应用程序部署到全球范围内的各种数据中心。 选择的区域可能会影响应用程序的性能。 最好选择更接近于大部分客户的区域，以减少网络请求的延迟。 也可以根据在某些国家/地区分发应用的法律要求选择区域。
 
 ### <a name="azure-portal"></a>Azure 门户
-
 
 Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户位于 https://portal.azure.com。 它包括一个可自定义的仪表板和用于管理 Azure 资源的工具。 还提供计费和订阅信息。 有关详细信息，请参阅 [Microsoft Azure 门户概述](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)和[通过门户管理 Azure 资源](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)。
 
@@ -165,7 +163,6 @@ Azure 资源管理器模板是一个 JavaScript 对象表示法 (JSON) 文件，
 
 ### <a name="automation"></a>自动化
 
-
 除了通过使用 Azure 门户创建、管理和删除资源之外，还可以使用 PowerShell 或 Azure 命令行接口 (CLI) 自动执行这些活动。
 
 **Azure PowerShell**
@@ -178,9 +175,7 @@ Azure 命令行接口是一种可用于从命令行创建、管理和删除 Azur
 
 **REST API** Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大多数 REST API 还支持以编程方式在任何启用了 Internet 的设备上预配和管理 Azure 资源和应用。 有关详细信息，请参阅 [Azure REST SDK Reference](https://docs.microsoft.com/rest/api/index)（Azure REST SDK 参考）。
 
-
 ## <a name="azure-subscriptions"></a>Azure 订阅
-
 
 订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务按订阅计费。 Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。 除了管理员外，还可以通过 RBAC 对单个帐户授予对 Azure 资源的详细控制权限。
 
@@ -200,10 +195,7 @@ Azure 命令行接口是一种可用于从命令行创建、管理和删除 Azur
 
 **企业协议**：达成企业协议，即表示承诺在接下来一年里使用一定数量的 Azure 服务，并提前支付费用。 所做的承诺在一整年内有效。 如果超出承诺金额，可以拖欠支付超额部分。 根据承诺的金额，可以享受 Azure 服务价格折扣。
 
-
-
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>授予对 Azure 订阅的管理访问权限
-
 
 多个帐户管理员角色可用，并且可以随时更改。 两个主要角色是：
 
@@ -215,13 +207,11 @@ Azure 命令行接口是一种可用于从命令行创建、管理和删除 Azur
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>在 Azure 门户中查看计费信息
 
-
 使用 Azure 的一个重要元素是能够查看计费信息。 可通过 Azure 门户全面细致地了解 Azure 计费信息。
 
 有关详细信息，请参阅[如何下载 Azure 帐单发票和每日使用数据](../../billing/billing-download-azure-invoice-daily-usage-date.md)。
 
 ### <a name="get-billing-information-from-billing-apis"></a>从计费 API 获取计费信息
-
 
 除了在门户中查看计费外，还可以通过 Azure 计费 REST API 使用脚本或程序访问计费信息：
 
@@ -262,7 +252,6 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 -   可以通过查看一组共享相同标记的资源的成本来理清组织的帐单。
 
 ### <a name="tips-for-creating-resource-groups"></a>创建资源组的提示
-
 
 制定有关资源组的决策时，请考虑以下提示：
 
@@ -347,7 +336,6 @@ Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持
 要使用 Azure 门户部署虚拟机，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可选择使用不同配置的多个不同的操作系统映像。 所有存储和网络要求都在部署期间配置。 有关详细信息，请参阅[使用 Azure 门户创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-portal.md) 和[使用 Azure 门户创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-portal.md)。
 
 使用 Azure 门户，除了部署虚拟机之外，还可以部署 Azure 资源管理器模板。 这将部署并配置模板中定义的所有资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
-
 
 **PowerShell**
 

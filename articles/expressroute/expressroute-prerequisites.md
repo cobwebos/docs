@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 332bfba0664391b6126669c4c89e38d1af4cf4fa
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b4358d1ccffd31d1f347f1872237620bee081251
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30265078"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989353"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 先决条件和清单
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需确认是否符合以下部分中所列的要求。
@@ -65,6 +65,6 @@ ms.locfileid: "30265078"
 * 查找 ExpressRoute 连接服务提供商。 请参阅 [ExpressRoute 合作伙伴和对等位置](expressroute-locations.md)。
 * 请参阅[路由](expressroute-routing.md)、[NAT](expressroute-nat.md) 和 [QoS](expressroute-qos.md) 的要求。
 * 配置 ExpressRoute 连接。
-  * [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)
-  * [配置路由](expressroute-howto-routing-classic.md)
-  * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
+  * [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)
+  * [配置路由](expressroute-howto-routing-arm.md)
+  * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)

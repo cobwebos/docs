@@ -101,7 +101,7 @@
     - name: 客户数据请求
       href: time-series-insights-customer-data-requests.md
     - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
     - name: 定价计算器

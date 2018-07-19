@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: ed1aff411ae5446688fe717ddc4570ea756c4c1e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: cee3a1425d7c3ad8f680394831175165203b4839
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904265"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005639"
 ---
 # <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>教程：使用 Windows VM MSI 访问 Azure Cosmos DB
 
@@ -56,7 +56,7 @@ ms.locfileid: "37904265"
 5. 要选择在其中创建虚拟机的新资源组，请选择“新建”。 完成后，单击“确定”。
 6. 选择 VM 大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 在“设置”页中保留默认值，然后单击“确定”。
 
-   ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+   ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI 
 
@@ -66,7 +66,7 @@ ms.locfileid: "37904265"
 2. 在左侧导航栏中，单击“配置”。 
 3. 此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。 
 4. 务必单击“保存”，以保存配置。  
-   ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-cosmos-db-account"></a>创建 Cosmos DB 帐户 
 

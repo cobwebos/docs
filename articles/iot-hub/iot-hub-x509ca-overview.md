@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 690a58a939e6866bfcdf80d05e52d7bfc7fd3586
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eebaf679ada9da554f8582ad89db4e7491dcc134
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635597"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004347"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 证书进行设备身份验证
 
@@ -42,7 +42,7 @@ X.509 CA 证书位于每个设备的证书链的顶层。  可以根据目标用
 
 不管 X.509 CA 证书是如何获取的，都请确保保持其相应私钥的机密性，并随时对此私钥进行保护。  这是确保能够在 X.509 CA 身份验证中建立信任的必要措施。 
 
-了解如何[创建自签名的 CA 证书](iot-hub-security-x509-create-certificates.md#createcerts)（在这整篇功能介绍中可用于试验）。
+了解如何[创建自签名的 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)（在这整篇功能介绍中可用于试验）。
 
 ## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>在证书信任链中为设备签名
 
@@ -50,7 +50,7 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-在此处了解如何像为设备签名时一样[创建证书链](iot-hub-security-x509-create-certificates.md#createcertchain)。
+在此处了解如何像为设备签名时一样[创建证书链](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)。
 
 ## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>如何将 X.509 CA 证书注册到 IoT 中心
 

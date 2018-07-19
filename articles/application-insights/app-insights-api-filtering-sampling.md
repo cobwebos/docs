@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: a8905f4f14b5f4f78e9f3113ec5a655b12599609
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d46ff5563df1423e3c01ba945b328b748b5979b4
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294086"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091565"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -54,7 +54,7 @@ ms.locfileid: "35294086"
 
     请注意，遥测处理器构建一个处理链。 实例化遥测处理器时，会传递指向该链中下一个处理器的链接。 将遥测数据点传递到处理方法时，它实现该方法，然后调用该链中的下一个遥测处理器。
 
-    ``` C#
+    ```csharp
 
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
@@ -101,7 +101,7 @@ ms.locfileid: "35294086"
     ```
 1. 在 ApplicationInsights.config 中插入此项：
 
-```XML
+```xml
 
     <TelemetryProcessors>
       <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
@@ -141,7 +141,7 @@ ms.locfileid: "35294086"
 #### <a name="synthetic-requests"></a>综合请求
 筛选出机器人和 Web 测试。 尽管指标资源管理器提供筛选出综合源的选项，但此选项可通过在 SDK 上筛选它们减少流量。
 
-``` C#
+```csharp
 
     public void Process(ITelemetry item)
     {
@@ -182,7 +182,7 @@ public void Process(ITelemetry item)
 >
 >
 
-``` C#
+```csharp
 
 public void Process(ITelemetry item)
 {
@@ -255,6 +255,7 @@ public void Process(ITelemetry item)
 
 在 ApplicationInsights.config 中：
 
+```xml
     <ApplicationInsights>
       <TelemetryInitializers>
         <!-- Fully qualified type name, assembly name: -->
@@ -262,6 +263,7 @@ public void Process(ITelemetry item)
         ...
       </TelemetryInitializers>
     </ApplicationInsights>
+```
 
 *或者，* 可以在代码中实例化初始值设定项，例如在 Global.aspx.cs 中：
 

@@ -135,7 +135,7 @@
         - name: 数据库备份
           href: sql-database-automated-backups.md
         - name: 长期备份保留
-          itmes:
+          items:
             - name: 长期备份保留
               href: sql-database-long-term-retention.md
             - name: 配置长期备份保留 - SQL 存储
