@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/07/2017
+ms.date: 06/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0ee712b24478b52dfc5864e59e885e3b9dd6137b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 897671ef592ac691402a4e452f7a0baa04aa228a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294060"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129051"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -104,7 +104,7 @@ Microsoft 只使用这些数据来向你提供服务。
 
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>这是否意味着必须在美国、欧洲或东南亚托管我的应用？
-* 不会。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
+* 不是。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
 
 ## <a name="how-secure-is-my-data"></a>数据的安全性如何？
 Application Insights 是一项 Azure 服务。 [Azure Security, Privacy, and Compliance white paper](http://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中介绍了安全政策。
@@ -126,35 +126,60 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 在数据中心之间移动的所有数据都经过加密。
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>从应用程序传输到 Application Insights 服务器的数据是否经过加密？
-是。我们使用 https 将数据从几乎所有 SDK（包括 Web 服务器、设备和 HTTPS 网页）发送到门户。 唯一的例外是从纯 HTTP 网页发送的数据。 
+是。我们使用 https 将数据从几乎所有 SDK（包括 Web 服务器、设备和 HTTPS 网页）发送到门户。 唯一的例外是从纯 HTTP 网页发送的数据。
 
-## <a name="personally-identifiable-information"></a>个人身份信息
-#### <a name="could-personally-identifiable-information-pii-be-sent-to-application-insights"></a>个人身份信息 (PII) 有可能会发送到 Application Insights 吗？
-是的，有可能。 
+## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>如何使用 TLS 1.2 将数据发送到 Application Insights？
 
-一般准则是：
+为了确保传输到 Application Insights 终结点的数据的安全性，我们强烈建议客户将其应用程序配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**，并且行业即将放弃对这些旧协议的支持。 
 
-* 大多数标准遥测数据（即，在未编写任何代码的情况下发送的遥测数据）不包含明确的 PII。 但是，从事件集合的推断可能会识别个人的身份。
-* 异常和跟踪消息可能包含 PII
-* 自定义遥测数据 - 即，使用 API 以代码编写的调用（例如 TrackEvent）或日志跟踪 - 可能包含选定的任何数据。
+[PCI 安全标准委员会](https://www.pcisecuritystandards.org/)规定 [2018 年 6 月 30 日](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf)是停用旧版 TLS/SSL 并升级到更安全协议的截止时间。 在 Azure 放弃旧版支持后，如果应用程序/客户端无法通过最低版本 TLS 1.2 进行通信，则你无法将数据发送到 Application Insights。 测试和验证应用程序对 TLS 的支持的方法根据操作系统/平台以及应用程序使用的语言/框架而异。
 
-本文档末尾的表格包含收集的数据的更详细说明。
+除非绝对必要，否则我们不建议将应用程序显式设置为仅使用 TLS 1.2，因为这可能会破坏平台级安全功能，导致无法自动检测并利用推出的更新且更安全的协议，例如 TLS 1.3。 我们建议针对应用程序代码执行全面的审核，以检查特定 TLS/SSL 版本的硬编码。
 
-#### <a name="am-i-responsible-for-complying-with-laws-and-regulations-in-regard-to-pii"></a>我是否需要负责遵守有关 PII 的法规？
-是的。 有责任确保数据的收集与使用符合法规和 Microsoft Online Services 条款。
+### <a name="platformlanguage-specific-guidance"></a>特定于平台/语言的指导
 
-应该适当地通知客户有关应用程序所收集的数据和数据用法。
+|平台/语言 | 支持 | 更多信息 |
+| --- | --- | --- |
+| Azure 应用服务  | 受支持，可能需要配置。 | 已在 2018 年 4 月宣告支持。 阅读有关[配置详细信息](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)的宣告。  |
+| Azure 函数应用 | 受支持，可能需要配置。 | 已在 2018 年 4 月宣告支持。 阅读有关[配置详细信息](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)的宣告。 |
+|.NET | 受支持，配置因版本而异。 | 有关 .NET 4.7 和更低版本的详细配置信息，请参阅[这些说明](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12)。  |
+|状态监视器 | 受支持，需要配置 | 状态监视器依赖于使用 [OS 配置](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) + [.NET 配置](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12)来支持 TLS 1.2。
+|Node.js |  受支持，在 v10.5.0 中可能需要配置。 | 使用[官方的 Node.js TLS/SSL 文档](https://nodejs.org/api/tls.html)完成任何特定于应用程序的配置。 |
+|Java | 受支持，[JDK 6 Update 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) 和 [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) 中添加了对 TLS 1.2 的 JDK 支持。 | JDK 8 [默认使用 TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)。  |
+|Linux | Linux 分发版往往依赖于 [OpenSSL](https://www.openssl.org) 来提供 TLS 1.2 支持。  | 请检查 [OpenSSL 变更日志](https://www.openssl.org/news/changelog.html)，确认你的 OpenSSL 版本是否受支持。|
+| Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)。  |
+| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)页。  |
+| Windows Server 2008 SP2 | 对 TLS 1.2 的支持需要更新。 | 请参阅 Windows Server 2008 SP2 中的[更新以添加对 TLS 1.2 的支持](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)。 |
+|Windows Vista | 。 | 不适用
+
+### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>检查 Linux 分发版正在运行哪个 OpenSSL 版本
+
+若要检查安装的 OpenSSL 版本，请打开终端并运行：
+
+```terminal
+openssl version -a
+```
+
+### <a name="run-a-test-tls-12-transaction-on-linux"></a>在 Linux 上运行测试 TLS 1.2 事务
+
+运行基本的初步测试来查看 Linux 系统是否能够通过 TLS 1.2 进行通信。 打开终端并运行：
+
+```terminal
+openssl s_client -connect bing.com:443 -tls1_2
+```
+
+## <a name="personal-data-stored-in-application-insights"></a>Application Insights 中存储的个人数据
+
+[Application Insights 个人数据文章](app-insights-customer-data.md)深入探讨了此问题。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>用户是否可以关闭 Application Insights？
 无法直接关闭。 我们未提供用户可操作的开关来关闭 Application Insights。
 
 但是，可以在应用程序中实现此类功能。 所有 SDK 都包括关闭遥测收集的 API 设置。 
 
-#### <a name="my-application-is-unintentionally-collecting-sensitive-information-can-application-insights-scrub-this-data-so-it-isnt-retained"></a>我的应用程序无意中收集了敏感信息。 Application Insights 是否可以擦除这些数据，以免将它保留？
-Application Insights 不会筛选或删除数据。 应该适当地管理数据，避免将此类数据发送到 Application Insights。
-
 ## <a name="data-sent-by-application-insights"></a>Application Insights 发送的数据
-不同的平台有不同的 SDK，并且有多个可安装的组件。 （请参阅 [Application Insights - 概述][start]。）每个组件发送不同的数据。
+SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Application Insights - 概述][start]。）每个组件发送不同的数据。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>不同情况下发送的数据类
 | 操作 | 收集的数据类（参阅下一表格） |
@@ -162,7 +187,7 @@ Application Insights 不会筛选或删除数据。 应该适当地管理数据�
 | [将 Application Insights SDK 添加到 .NET Web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>Requests<br/>**异常**<br/>会话<br/>users |
 | [在 IIS 上安装状态监视器][redfield] |依赖项<br/>ServerContext<br/>推断<br/>性能计数器 |
 | [将 Application Insights SDK 添加到 Java Web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>users |
-| [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>Page<br/>ClientPerf<br/>Ajax |
+| [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>页<br/>ClientPerf<br/>Ajax |
 | [定义默认属性][apiproperties] |所有标准事件和自定义事件的**属性** |
 | [调用 TrackMetricapi][api] |数字值<br/>**属性** |
 | [调用跟踪*][api] |事件名称<br/>**属性** |

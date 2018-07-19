@@ -6,25 +6,25 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 52cf34d56f87d2543fb272ce99dbe011bc0ea037
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: adf2f555e907976f8b8efa863f255aa283098be9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34711121"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448756"
 ---
 # <a name="manage-user-access-in-azure-ad-b2c"></a>在 Azure AD B2C 中管理用户访问
 
-本文提供有关如何使用 Azure Active Directory (AD) B2C 管理用户对应用程序的访问的信息。 应用程序中的访问管理包括：
+本文介绍如何使用 Azure Active Directory (AD) B2C 管理用户对应用程序的访问。 应用程序中的访问管理包括：
 
-- 识别未成年人，以及对应用程序的访问和使用
-- 要求未成年人在使用应用程序之前经过家长的同意
-- 从用户收集出生日期和国家/地区数据
-- 捕获使用条款的同意状态和限制访问
+- 识别未成年人，以及控制用户对应用程序的访问。
+- 要求未成年人在使用应用程序之前经过家长的同意。
+- 从用户收集出生日期和国家/地区数据。
+- 捕获使用条款的同意状态和限制访问。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -35,38 +35,50 @@ ms.locfileid: "34711121"
 
 应用程序和组织可以决定阻止未成年人使用并非面向此类受众的应用程序和服务。 或者，应用程序和组织可以决定接受未成年人访问，随后管理家长的同意，并根据企业规则和法规条例的规定，向未成年人提供许可的体验。 
 
-如果某个用户被识别为未成年人，Azure AD B2C 中的用户流可能会设置为以下三个选项之一：
+如果已将某个用户识别为未成年人，则你可以将 Azure AD B2C 中的用户流设置为以下三个选项之一：
 
-- **将签名的 JWT id_token 发回到应用程序** - 在目录中注册用户，并将令牌返回到应用程序。 然后，应用程序继续使用企业规则。 例如，应用程序可能继续采取家长同意过程。 为此，请选择从应用程序接收 **ageGroup** 和 **consentProvidedForMinor** 声明。
-- **将未签名的 JSON 令牌发送到应用程序** - Azure AD B2C 让应用程序知道用户是未成年人，并提供该用户的家长同意状态。 然后，应用程序继续使用企业规则。 JSON 令牌不会在应用程序中成功完成身份验证。 应用程序必须根据 JSON 令牌中包含的声明处理未经身份验证的用户，这些声明可能包括 **name**、**email**、**ageGroup** 和 **consentProvidedForMinor**。
-- **阻止用户** - 如果用户是未成年人，并且未获得家长同意。  然后，Azure AD B2C 可向该用户显示一个屏幕，告知访问被阻止。  不会颁发令牌，访问将被阻止，并且不会在注册旅程期间创建用户帐户。 若要实现这一点，可以提供适当的 HTML/CSS 内容页来告知用户，并显示相应的选项。 应用程序不需要对新的注册采取进一步的措施。
+- **将签名的 JWT id_token 发回到应用程序**：在目录中注册用户，并将令牌返回到应用程序。 然后，应用程序将通过应用企业规则继续运行。 例如，应用程序可能继续采取家长同意过程。 若要使用此方法，请选择从应用程序接收 **ageGroup** 和 **consentProvidedForMinor** 声明。
+
+- **将未签名的 JSON 令牌发送到应用程序**：Azure AD B2C 让应用程序知道用户是未成年人，并提供该用户的家长同意状态。 然后，应用程序将通过应用企业规则继续运行。 JSON 令牌不会在应用程序中成功完成身份验证。 应用程序必须根据 JSON 令牌中包含的声明处理未经身份验证的用户，这些声明可能包括 **name**、**email**、**ageGroup** 和 **consentProvidedForMinor**。
+
+- **阻止用户**：如果用户是未成年人，并且未获得家长同意，则 Azure AD B2C 可以告知该用户他（她）已被阻止。 不会颁发令牌，访问将被阻止，并且不会在注册旅程期间创建用户帐户。 若要实现此通知，可以提供适当的 HTML/CSS 内容页来告知用户，并显示相应的选项。 应用程序不需要对新的注册采取进一步的措施。
 
 ## <a name="get-parental-consent"></a>获得家长同意
 
-根据应用程序的管制，认证为成年人的用户可能需要提供家长同意。  Azure AD B2C 不提供相应的体验来认证个人的年龄，然后允许认证的成年人向未成年人提供家长同意。  此体验必须由应用程序或其他服务提供程序提供。
+根据应用程序的管制，认证为成年人的用户可能需要提供家长同意。 Azure AD B2C 不提供相应的体验来认证个人的年龄，然后允许认证的成年人向未成年人提供家长同意。 此体验必须由应用程序或其他服务提供程序提供。
 
 下面是收集家长同意的用户流示例：
 
 1. [Azure Active Directory 图形 API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) 操作将用户识别为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
-2. 应用程序处理 JSON 令牌，并向未成年人显示一个屏幕，告知需要家长同意，并请求家长在线同意。 
-3. Azure AD B2C 显示可让用户正常登录的登录旅程，并向应用程序颁发一个令牌，该令牌设置为包含 **legalAgeGroupClassification ="minorWithParentalConsent"**。应用程序收集家长的电子邮件地址，并使用受信任的源（例如身份证颁发机构、执照验证或信用卡证明）验证该家长是否为成年人。 如果成功，则应用程序会提示未成年人使用 Azure AD B2C 用户流登录。 如果同意被拒绝（例如 **legalAgeGroupClassification ="minorWithoutParentalConsent"**），则 Azure AD B2C 会向应用程序返回 JSON 令牌（并非登录名），以重启同意过程。 可以选择性地自定义用户流，让未成年人或成年人重获未成年人帐户的访问权限，方法是向记录的未成年人电子邮件地址或成年人电子邮件地址发送一个注册码。
-4. 应用程序提供一个选项让未成年人撤消同意。
-5. 未成年人或成人撤消同意时，可以使用 Azure AD 图形 API 将 **consetProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
 
-有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 "extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth": "2011-01-01T00:00:00Z"
+2. 应用程序处理 JSON 令牌，并向未成年人显示一个屏幕，告知他（她）需要家长同意，并请求家长在线同意。 
+
+3. Azure AD B2C 显示可让用户正常登录的登录旅程，并向应用程序颁发一个令牌，该令牌设置为包含 **legalAgeGroupClassification ="minorWithParentalConsent"**。 应用程序收集家长的电子邮件地址，并验证该家长是否为成年人。 为此，它会使用受信任的源，例如身份证颁发机构、执照验证或信用卡证明。 如果验证成功，则应用程序会提示未成年人使用 Azure AD B2C 用户流登录。 如果同意被拒绝（例如 **legalAgeGroupClassification ="minorWithoutParentalConsent"**），则 Azure AD B2C 会向应用程序返回 JSON 令牌（并非登录名），以重启同意过程。 可以选择性地自定义用户流，让未成年人或成年人重获未成年人帐户的访问权限，方法是向记录的未成年人电子邮件地址或成年人电子邮件地址发送一个注册码。
+
+4. 应用程序提供一个选项让未成年人撤消同意。
+
+5. 未成年人或成人撤消同意时，可以使用 Azure AD 图形 API 将 **consentProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
+
+有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*。
 
 ## <a name="gather-date-of-birth-and-country-data"></a>收集出生日期和国家/地区数据
 
-在注册期间，应用程序可能依赖于使用 Azure AD B2C 从所有用户收集出生日期 (DOB) 和国家/地区数据。 如果 DOB 或国家/地区信息不存在，在下一次身份验证（登录）旅程期间，可以要求用户提供此信息。 在不提供 DOB 和国家/地区信息的情况下，用户无法继续。 提供国家/地区和 DOB 信息后，Azure AD B2C 会根据该国家/地区的法规标准，判断是否要将该用户视为未成年人。 
+在注册期间，应用程序可能依赖于使用 Azure AD B2C 从所有用户收集出生日期 (DOB) 和国家/地区信息。 如果此信息不存在，在下一次身份验证（登录）旅程期间，应用程序可以请求用户提供此信息。 在不提供 DOB 和国家/地区信息的情况下，用户无法继续。 Azure AD B2C 使用此信息根据该国家/地区的法规标准，判断是否要将该用户视为未成年人。 
 
-自定义的用户流可以收集 DOB 和国家/地区信息，使用 Azure AD B2C 声明转换来确定 **ageGroup**，并将结果保存在目录中（或直接保存国家/地区和 DOB 信息）。
+自定义的用户流可以收集 DOB 和国家/地区信息，使用 Azure AD B2C 声明转换来确定 **ageGroup**，并将结果保存在目录中（或直接保存 DOB 和国家/地区信息）。
 
-以下步骤演示用于从出生日期计算 **ageGroup** 的逻辑：
+以下步骤演示用于从用户的出生日期计算 **ageGroup** 的逻辑：
 
 1. 尝试按列表中的国家/地区代码查找国家/地区。 如果未找到该国家/地区，则回退到 **Default**。
-2. 如果 country 元素中存在 **MinorConsent** 节点： <br>a. 计算用户必须至少在哪个日期出生，才能将其视为成年人。 示例：如果出生日期为 2015 年 3 月 14 日，**MinorConsent** 为 18，则最小出生日期应为 2000 年 3 月 14。
-    <br>b. 将最小出生日期与实际出生日期相比较。 如果最小出生日期在用户的实际出生日期之前，则计算会返回 **Minor** 作为年龄组计算结果。
+
+2. 如果 country 元素中存在 **MinorConsent** 节点：
+
+    a. 计算用户必须在哪个日期出生，才能将其视为成年人。 例如，如果当前日期为 2015 年 3 月 14 日，**MinorConsent** 为 18，则出生日期必须晚于 2000 年 3 月 14。
+
+    b. 将最小出生日期与实际出生日期相比较。 如果最小出生日期在用户的实际出生日期之前，则计算会返回 **Minor** 作为年龄组计算结果。
+
 3. 如果 country 元素中存在 **MinorNoConsentRequired** 节点，请使用 **MinorNoConsentRequired** 中的值重复步骤 2a 和 2b。 如果最小出生日期在用户的实际出生日期之前，则 2b 的输出将返回 **MinorNoConsentRequired**。 
+
 4. 如果任何计算都未返回 true，则计算会返回 **Adult**。
 
 如果应用程序已通过其他方法可靠收集了 DOB 或国家/地区数据，应用程序可以通过图形 API 使用此信息更新用户记录。 例如：
@@ -78,24 +90,28 @@ ms.locfileid: "34711121"
 
 ## <a name="capture-terms-of-use-agreement"></a>捕获用户条款的同意状态
 
-开发应用程序时，我们通常会从用户目录捕获用户在其应用程序中接受使用条款的情况，其中规定不允许或只允许未成年人参与应用程序。  但是，有时可以使用 Azure AD B2C 用户流来收集使用条款的同意状态、限制为只有在接受条款的情况下才允许访问，并强制要求接受未来对使用条款所做的更改（基于上次接受日期，以及使用条款最新版本的发布日期）。
+开发应用程序时，我们通常会从用户目录捕获用户在其应用程序中接受使用条款的情况，其中规定不允许或只允许未成年人参与应用程序。 但是，有时可以使用 Azure AD B2C 用户流来收集用户对使用条款的接受状态、限制为只有在接受条款的情况下才允许访问，并强制要求接受未来对使用条款所做的更改（基于上次接受日期，以及使用条款最新版本的发布日期）。
 
-**使用条款**还可以包含“同意与第三方共享数据。”  可以通过技术手段统一收集用户对这些条件的积极接受状态，或者，用户可以根据当地法规和企业规则，接受其中一个条款，而不接受另一个条款。
+**使用条款**还可以包含“同意与第三方共享数据。” 可以根据当地法规和企业规则统一收集用户对这两个条件的接受状态，或者可以允许用户接受其中一个条件，而不接受另一个条件。
 
-以下步骤描述用于管理使用条款的功能：
+以下步骤描述如何管理使用条款：
 
-1. 使用图形 API 和扩展属性记录使用条款的接受状态以及接受日期。 可以使用内置和自定义的用户流实现此目的。 建议创建并使用 **extension_termsOfUseConsentDateTime** 和 **extension_termsOfUseConsentVersion** 属性。
-2. 创建标题为“接受使用条款”的所需复选框，并记录注册期间的结果。 可以使用内置和自定义的用户流实现此目的。
-3. Azure AD B2C 会存储使用条款的同意状态。 可以使用图形 API，通过读取用于记录响应的扩展属性（例如读取 **termsOfUseTestUpdateDateTime**）来查询任何用户的状态。 可以使用内置和自定义的用户流实现此目的。
-4. 将接受日期与使用条款最新版本的发布日期进行比较，要求接受更新的使用条款。 只能使用自定义用户流实现此目的。 使用扩展属性 **extension_termsOfUseConsentDateTime** 并比较声明 **termsOfUseTextUpdateDateTime** 的值，如果接受日期更早，则强制显示自我断言的接受条款新屏幕；否则阻止使用策略逻辑进行访问。
-5. 将接受版本号与上次接受的版本号进行比较，要求接受更新的使用条款。 只能使用自定义用户流实现此目的。 使用扩展属性 **extension_termsOfUseConsentDateTime** 并比较声明 **extension_termsOfUseConsentVersion** 的值，如果接受日期更早，则强制显示自我断言的接受条款新屏幕；否则阻止使用策略逻辑进行访问。
+1. 使用图形 API 和扩展属性记录使用条款的接受状态以及接受日期。 可以使用内置和自定义的用户流实现此目的。 我们建议创建并使用 **extension_termsOfUseConsentDateTime** 和 **extension_termsOfUseConsentVersion** 属性。
 
-在以下情况下，可以向用户呈现有关捕获使用条款同意状态的屏幕：
+2. 创建标有“接受使用条款”的所需复选框，并记录注册期间的结果。 可以使用内置和自定义的用户流实现此目的。
 
-- 新用户正在注册。 显示使用条款并存储同意结果。
+3. Azure AD B2C 会存储使用条款协议和用户的接受状态。 可以使用图形 API，通过读取用于记录响应的扩展属性（例如读取 **termsOfUseTestUpdateDateTime**）来查询任何用户的状态。 可以使用内置和自定义的用户流实现此目的。
+
+4. 将接受日期与使用条款最新版本的发布日期进行比较，要求接受更新的使用条款。 只能使用自定义用户流来比较日期。 使用扩展属性 **extension_termsOfUseConsentDateTime** 并比较 **termsOfUseTextUpdateDateTime** 声明的值。 如果接受日期更早，则通过显示自我断言的屏幕来强制接受新条款。 否则使用策略逻辑阻止访问。
+
+5. 将接受版本号与最近接受的版本号进行比较，要求接受更新的使用条款。 只能使用自定义用户流比较版本号。 使用扩展属性 **extension_termsOfUseConsentDateTime** 并比较 **extension_termsOfUseConsentVersion** 声明的值。 如果接受日期更早，则通过显示自我断言的屏幕来强制接受新条款。 否则使用策略逻辑阻止访问。
+
+在以下情况下，可以捕获使用条款的接受状态：
+
+- 新用户正在注册。 显示使用条款，并存储接受结果。
 - 用户正在登录，并已事先接受最新或现行的协议条款。 不显示使用条款。
-- 用户正在登录，且尚未接受最新或现行的使用条款。 显示使用条款并存储同意结果。
-- 用户正在登录，并已接受旧版使用条款。该版本现已更新。 显示使用条款并存储同意结果。
+- 用户正在登录，且尚未接受最新或现行的使用条款。 显示使用条款，并存储接受结果。
+- 用户正在登录，并已接受旧版使用条款，该版本现已更新为最新版本。 显示使用条款，并存储接受结果。
 
 下图显示了建议的用户流：
 
@@ -162,4 +178,4 @@ ms.locfileid: "34711121"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[管理用户数据](manage-user-data.md)中了解如何删除和导出用户数据
+- 若要了解如何删除和导出用户数据，请参阅[管理用户数据](manage-user-data.md)。
